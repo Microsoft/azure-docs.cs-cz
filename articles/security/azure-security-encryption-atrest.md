@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 2be65ba185ebc1ad8bde0cdf33f264351301d45a
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 71351a979e8bb443864c975b91539c527bea7f2a
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051401"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033423"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure Data šifrování neaktivních
 
@@ -261,7 +261,7 @@ Podpora pro šifrování serveru aktuálně poskytuje prostřednictvím funkce S
 | **Úložiště a databází**        |                    |                    |                    |                    |                    |
 | Disk (IaaS)                      | -                  | Ano, RSA 2048 bitů  | Ano               | -                  |
 | SQL Server (IaaS)                | Ano                | Ano, RSA 2048 bitů  | Ano                | Ano                |
-| Azure SQL Database (PaaS)        | Ano                | Ano, RSA 2048 bitů  | -                  | Ano                |
+| Azure SQL (databáze/datový sklad) | Ano                | Ano, RSA 2048 bitů  | -                  | Ano                |
 | Azure Storage (objekty BLOB bloku nebo stránky) | Ano                | Ano, RSA 2048 bitů  | -                  | Ano                |
 | Azure Storage (soubory)            | Ano                | Ano, RSA 2048 bitů  | -                  | -                  |
 | Azure Storage (tabulky, fronty)   | Ano                | -                  | -                  | Ano                |

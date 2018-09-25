@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 08/02/2018
+ms.date: 09/20/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 9a2eb8ab4e3ee65e97de578c825bf106aee1b829
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: e418316a74ccf27ec730261957a8b6c64de5d063
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480336"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040597"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>Vytvoření dynamické skupiny a zkontrolovat stav
 
@@ -29,7 +29,7 @@ Tento článek podrobně popisuje, jak nastavit pravidlo, na webu Azure Portal p
 
 ## <a name="to-create-a-group-membership-rule"></a>Chcete-li vytvořit pravidla členství ve skupině
 
-1. Přihlaste se k [centrum pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který je globální správce nebo správce uživatelských účtů.
+1. Přihlaste se k [centrum pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který je v roli globálního správce, Správce služby Intune nebo správce uživatelských účtů v tenantovi.
 2. Vyberte **skupiny**.
 3. Vyberte **všechny skupiny**a vyberte **novou skupinu**.
 

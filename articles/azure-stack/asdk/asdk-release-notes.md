@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/17/2018
 git ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: 7770f4c45d974e8ce5750dbd3aee0d8393281151
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 1adfef9c679ccbe7a56178a041175713f4932aac
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984437"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056535"
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Zpráva k vydání verze Azure Stack Development Kit  
 Tento článek obsahuje informace o vylepšení, oprav a známé problémy v Azure Stack Development Kit. Pokud si nejste jistí, kterou verzi používáte, můžete si [použití portálu ke kontrole](.\.\azure-stack-updates.md#determine-the-current-version).
@@ -289,7 +289,7 @@ Toto sestavení obsahuje následující vylepšení a oprav pro Azure Stack.
 
 - <!-- 2368581 - IS. ASDK --> Operátory Azure stacku, pokud se zobrazí upozornění na nedostatek paměti a virtuální počítače klientů selhání nasazení *Chyba při vytváření virtuálních počítačů Fabric*, je možné, že toto razítko Azure Stack je nedostatek dostupné paměti. Použití [Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) nejlépe pochopit dostupné kapacity pro vaše úlohy.
 
-- <!-- TBD - IS. ASDK --> Při spuštění rutiny Test-AzureStack v koncovém bodě oprávnění (období), testu vygeneruje zprávu UPOZORNIT/selhání pro virtuální počítač ERCS. Můžete nadále používat ASDK.
+- <!-- TBD - IS. ASDK --> Při spuštění **testovací AzureStack** rutinu na privilegované koncový bod (období), **výkonu instancí Azure Stack infrastrukturu Role** test vydá zprávu UPOZORNIT ERCS virtuálního počítače. Můžete bezpečně ignorovat UPOZORNIT a pokračovat v používání ASDK.
 
 #### <a name="compute"></a>Compute
 - <!-- 2494144 - IS, ASDK --> Když vyberete velikost virtuálního počítače pro nasazení virtuálního počítače, některé velikosti virtuálních počítačů řady F-Series se nezobrazí jako součást modulu pro výběr velikost při vytváření virtuálního počítače. Tyto velikosti virtuálních počítačů se nezobrazí v selektoru: *F8s_v2*, *F16s_v2*, *F32s_v2*, a *F64s_v2*.  

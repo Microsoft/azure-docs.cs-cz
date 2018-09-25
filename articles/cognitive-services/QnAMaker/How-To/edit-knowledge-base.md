@@ -3,19 +3,19 @@ title: Úprava znalostní báze – QnA Maker
 titleSuffix: Azure Cognitive Services
 description: Nástroj QnA Maker umožňuje spravovat obsah znalostní báze tím, že poskytuje editační rozhraní snadným ovládáním.
 services: cognitive-services
-author: nstulasi
+author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
-ms.author: saneppal
-ms.openlocfilehash: 919a7dbcb3ea898182e19e4cd0de793e7a80dea9
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.author: tulasim
+ms.openlocfilehash: ca35e13c502efadad07ef78077271923951ae4b1
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543288"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038217"
 ---
 # <a name="edit-a-knowledge-base"></a>Úprava znalostní báze
 

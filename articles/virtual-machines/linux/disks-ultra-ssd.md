@@ -1,0 +1,27 @@
+---
+title: Ultra SSD spravované disky pro virtuální počítače s Linuxem | Dokumentace Microsoftu
+description: Další informace o Ultra SSD spravované disky pro virtuální počítače Azure
+services: virtual-machines-linux
+author: roygara
+ms.service: virtual-machines-linux
+ms.workload: storage
+ms.tgt_pltfrm: vm-linux
+ms.devlang: na
+ms.topic: article
+ms.date: 09/24/2018
+ms.author: rogarana
+ms.openlocfilehash: 29be5088ed26ace494ab4f5aed6907863b453dc2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981191"
+---
+[!INCLUDE [virtual-machines-disks-ultra-ssd](../../../includes/virtual-machines-disks-ultra-ssd.md)]
+
+## <a name="next-steps"></a>Další postup
+
+Pokud máte zájem o vyzkoušení ultra disků SSD, přejděte jak vodítko k tomuto tématu.
+
+> [!div class="nextstepaction"]
+> [Jak povolit a používat Ultra disky SSD](disks-enable-ultra-ssd.md)

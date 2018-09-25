@@ -8,50 +8,50 @@ ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 09/14/2018
+ms.date: 09/20/2018
 ms.author: v-daljep
-ms.openlocfilehash: 9c2bb85d9c0bb02b7eb698dbee07f488c2ad0b62
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: b6e619f75ebf6ee58f3c259b665cd38c3546d2ff
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733176"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040631"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Řešení problémů s výkonem Azure SQL Database s Intelligent Insights
 
-Tato stránka poskytuje informace o problémy s výkonem Azure SQL Database, které jsou zjištěné [Intelligent Insights](sql-database-intelligent-insights.md) protokolu diagnostiky výkonu databáze. Je možné odeslat tento diagnostický protokol [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md), [Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md), [služby Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage), nebo řešení třetí strany pro vlastní vývoj a provoz upozorňování a generování sestav Možnosti.
+Tato stránka poskytuje informace o Azure SQL Database a zjištěné problémy s výkonem Managed Instance [Intelligent Insights](sql-database-intelligent-insights.md) protokolu diagnostiky výkonu databáze. Telemetrická data diagnostiky protokolu můžete Streamovat do [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md), [Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md), [služby Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage), nebo řešení třetí strany pro vlastní výstrahy DevOps a Možnosti vytváření sestav.
 
 > [!NOTE]
-> Rychlé SQL Database performance Průvodce odstraňováním potíží prostřednictvím inteligentních přehledů, najdete v článku [doporučené řešení potíží s tok](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) vývojový diagram v tomto dokumentu.
+> Rychlý výkon databáze SQL pomocí Intelligent Insights Průvodce odstraňováním potíží, najdete v článku [doporučené řešení potíží s tok](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) vývojový diagram v tomto dokumentu.
 >
 
 ## <a name="detectable-database-performance-patterns"></a>Vzory výkonu zjistitelná databáze
 
-Problémy s výkonem Intelligent Insights automaticky rozpozná službou SQL Database založené na čekací dobu provádění dotazů, chyb nebo vypršení časových limitů. Potom vypíše vzory zjištěné výkonu do protokolu diagnostiky. Vzory zjistitelná výkonu jsou shrnuty v následující tabulce:
+Problémy s výkonem Intelligent Insights automaticky rozpozná s databází SQL Database a Managed Instance na základě čekací dobu provádění dotazů, chyb nebo vypršení časových limitů. Výstupu zjištěné výkonu vzory v protokolu diagnostiky. Vzory zjistitelná výkonu jsou shrnuty v následující tabulce.
 
-| Vzory zjistitelná výkonu | Podrobnosti výstupu |
-| :------------------- | ------------------- |
-| [Dosáhnout omezení prostředků](sql-database-intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | Spotřeby dostupných prostředků (Dtu), database pracovních vláken nebo relace přihlášení databáze k dispozici na monitorovaných předplatné bylo dosaženo omezení, což způsobí, že problémy s výkonem SQL Database. |
-| [Zvýšení zatížení](sql-database-intelligent-insights-troubleshoot-performance.md#workload-increase) | Zvýšení zatížení nebo průběžné akumulací úloh v databázi byla zjištěna, což způsobí, že problémy s výkonem SQL Database. |
-| [Přetížení paměti](sql-database-intelligent-insights-troubleshoot-performance.md#memory-pressure) | Pracovní procesy, které požadované paměti uděluje se muset počkat, než pro přidělení paměti pro statisticky značné množství času. Nebo existuje zvýšené nahromadění dělníky, kteří požadované paměti uděluje, což ovlivňuje výkon databáze SQL. |
-| [Uzamčení](sql-database-intelligent-insights-troubleshoot-performance.md#locking) | Uzamčení nadměrné databáze bylo zjištěno, což má vliv na výkon SQL Database. |
-| [Zvýšená MAXDOP](sql-database-intelligent-insights-troubleshoot-performance.md#increased-maxdop) | Došlo ke změně maximální míru paralelismu možnost (MAXDOP) a ovlivňuje efektivitu provádění dotazu. |
-| [Pagelatch kolizí](sql-database-intelligent-insights-troubleshoot-performance.md#pagelatch-contention) | Byl zjištěn Pagelatch kolize, což má vliv na výkon SQL Database. Více vláken současně pokus o přístup k stránky stejné vyrovnávací paměti dat v paměti. Výsledkem je zvýšená čekací dobu, což ovlivňuje výkon databáze SQL. |
-| [Chybějící Index](sql-database-intelligent-insights-troubleshoot-performance.md#missing-index) | Byl zjištěn problém s chybějící index, který ovlivňuje výkon databáze SQL. |
-| [Nový dotaz](sql-database-intelligent-insights-troubleshoot-performance.md#new-query) | Byl zjištěn nový dotaz, který má vliv na celkový výkon SQL Database. |
-| [Statistiky neobvyklé čekání](sql-database-intelligent-insights-troubleshoot-performance.md#unusual-wait-statistic) | Byly zjištěny neobvyklé databáze čekací dobu, což má vliv na výkon SQL Database. |
-| [Databáze TempDB kolizí](sql-database-intelligent-insights-troubleshoot-performance.md#tempdb-contention) | Několik vláken pokusí o přístup ke stejné prostředky databáze tempDB, které způsobí, že kritický bod, který ovlivňuje výkon databáze SQL. |
-| [Nedostatek DTU elastického fondu](sql-database-intelligent-insights-troubleshoot-performance.md#elastic-pool-dtu-shortage) | Nedostatek dostupné edtu v elastickém fondu ovlivňuje výkon databáze SQL. |
-| [Regrese plán](sql-database-intelligent-insights-troubleshoot-performance.md#plan-regression) | Nový plán nebo ke změně v úloze existující plán byl zjištěn, což má vliv na výkon SQL Database. |
-| [Změna hodnoty konfigurace s rozsahem databáze](sql-database-intelligent-insights-troubleshoot-performance.md#database-scoped-configuration-value-change) | Změna konfigurace v databázi ovlivňuje výkon databáze SQL. |
-| [Pomalé klienta](sql-database-intelligent-insights-troubleshoot-performance.md#slow-client) | Bylo zjištěno pomalé žádosti klienta, který se nedá využívat, výstup z databáze SQL, který je dostatečně rychle, což ovlivňuje výkon databáze SQL. |
-| [Přechod na starší cenová úroveň](sql-database-intelligent-insights-troubleshoot-performance.md#pricing-tier-downgrade) | Cenové akce downgrade úrovně snížení dostupné prostředky, které má vliv na výkon SQL Database. |
+| Vzory zjistitelná výkonu | Popis pro Azure SQL Database a elastické fondy | Popis pro databáze ve spravované instanci |
+| :------------------- | ------------------- | ------------------- |
+| [Dosáhnout omezení prostředků](sql-database-intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | Spotřeby dostupných prostředků (Dtu), database pracovních vláken nebo relace přihlášení databáze k dispozici na monitorovaných předplatné bylo dosaženo omezení. To ovlivňuje výkon databáze SQL. | Spotřeba prostředků procesoru dosahuje limity Managed Instance. To ovlivňuje výkon databáze. |
+| [Zvýšení zatížení](sql-database-intelligent-insights-troubleshoot-performance.md#workload-increase) | Bylo zjištěno zvýšení zatížení nebo průběžné akumulací zatížení na databázi. To ovlivňuje výkon databáze SQL. | Byl zjištěn zvýšení zatížení. To ovlivňuje výkon databáze. |
+| [Přetížení paměti](sql-database-intelligent-insights-troubleshoot-performance.md#memory-pressure) | Pracovní procesy, které požadované paměti uděluje se muset počkat, než pro přidělení paměti pro statisticky značné množství času. Nebo vyšší nahromadění dělníky, kteří požadované paměti uděluje existuje. To ovlivňuje výkon databáze SQL. | Pracovní procesy, které si vyžádali paměti uděluje čekají na přidělení paměti pro statisticky významná množství času. To ovlivňuje výkon databáze. |
+| [Uzamčení](sql-database-intelligent-insights-troubleshoot-performance.md#locking) | Uzamčení nadměrné databáze byla zjištěna by to mělo dopad výkon SQL Database. | Uzamčení nadměrné databáze byla zjištěna by to mělo dopad výkon databáze. |
+| [Zvýšená MAXDOP](sql-database-intelligent-insights-troubleshoot-performance.md#increased-maxdop) | Maximální volnost paralelismu možnost (MAXDOP) se změnila by to ovlivnilo efektivity provádění dotazu. To ovlivňuje výkon databáze SQL. | Maximální volnost paralelismu možnost (MAXDOP) se změnila by to ovlivnilo efektivity provádění dotazu. To ovlivňuje výkon databáze. |
+| [Pagelatch kolizí](sql-database-intelligent-insights-troubleshoot-performance.md#pagelatch-contention) | Více vláken jsou současně pokouší o přístup stejné vyrovnávací paměti stránky dat v paměti výsledkem je zvýšená čekací dobu a způsobí pagelatch kolize. To ovlivňuje výkon databáze SQL. | Více vláken jsou současně pokouší o přístup stejné vyrovnávací paměti stránky dat v paměti výsledkem je zvýšená čekací dobu a způsobí pagelatch kolize. To ovlivňuje výkon databáze. |
+| [Chybějící Index](sql-database-intelligent-insights-troubleshoot-performance.md#missing-index) | Chybějící index byl zjištěn by to mělo dopad výkon SQL database. | Chybějící index byl zjištěn by to mělo dopad výkon databáze. |
+| [Nový dotaz](sql-database-intelligent-insights-troubleshoot-performance.md#new-query) | Nový dotaz byl zjištěn by to mělo dopad na celkový výkon SQL Database. | Nový dotaz byl zjištěn by to mělo dopad na celkový výkon databáze. |
+| [Statistiky neobvyklé čekání](sql-database-intelligent-insights-troubleshoot-performance.md#unusual-wait-statistic) | Neobvyklé databáze čekací dobu byly zjištěny by to mělo dopad výkon SQL database. | Neobvyklé databáze čekací dobu byly zjištěny by to mělo dopad výkon databáze. |
+| [Databáze TempDB kolizí](sql-database-intelligent-insights-troubleshoot-performance.md#tempdb-contention) | Více vláken se pokoušíte získat přístup stejné databáze TempDB prostředek, který způsobuje kritický bod. To ovlivňuje výkon databáze SQL. | Více vláken se pokoušíte získat přístup stejné databáze TempDB prostředek, který způsobuje kritický bod. To ovlivňuje výkon databáze. |
+| [Nedostatek DTU elastického fondu](sql-database-intelligent-insights-troubleshoot-performance.md#elastic-pool-dtu-shortage) | Nedostatek dostupné Edtu v elastickém fondu ovlivňuje výkon databáze SQL. | Není k dispozici pro Managed Instance používá modelu virt. jader. |
+| [Regrese plán](sql-database-intelligent-insights-troubleshoot-performance.md#plan-regression) | Byl zjištěn nový plán nebo ke změně v úloze existující plán. To ovlivňuje výkon databáze SQL. | Byl zjištěn nový plán nebo ke změně v úloze existující plán. To ovlivňuje výkon databáze. |
+| [Změna hodnoty konfigurace s rozsahem databáze](sql-database-intelligent-insights-troubleshoot-performance.md#database-scoped-configuration-value-change) | Byla zjištěna změna konfigurace pro SQL Database, bychom ovlivnili výkon databáze. | Byla zjištěna změna konfigurace v databázi, ovlivňuje výkon databáze. |
+| [Pomalé klienta](sql-database-intelligent-insights-troubleshoot-performance.md#slow-client) | Pomalé žádosti klienta není schopen dostatečně rychle využívat výstup z databáze. To ovlivňuje výkon databáze SQL. | Pomalé žádosti klienta není schopen dostatečně rychle využívat výstup z databáze. To ovlivňuje výkon databáze. |
+| [Přechod na starší cenová úroveň](sql-database-intelligent-insights-troubleshoot-performance.md#pricing-tier-downgrade) | Cenové úrovně downgrade akce snížení dostupné prostředky. To ovlivňuje výkon databáze SQL. | Cenové úrovně downgrade akce snížení dostupné prostředky. To ovlivňuje výkon databáze. |
 
 > [!TIP]
 > Optimalizace výkonu průběžné služby SQL Database, povolte [automatické ladění Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-automatic-tuning). Tato jedinečná funkce SQL Database integrované inteligentní funkce nepřetržitě monitoruje vaši databázi SQL, automaticky vyladí indexy a použije opravy plán provádění dotazu.
 >
 
-Následující část popisuje vzory dříve uvedených zjistitelná výkonu podrobněji.
+Následující část popisuje vzory zjistitelná výkonu podrobněji.
 
 ## <a name="reaching-resource-limits"></a>Dosáhnout omezení prostředků
 
@@ -59,11 +59,11 @@ Následující část popisuje vzory dříve uvedených zjistitelná výkonu pod
 
 Tento model zjistitelná výkonu kombinuje problémy s výkonem, které se vztahují k dosažení omezení dostupných prostředků, pracovních procesů limity a omezení relací. Po zjištění, tento problém s výkonem, pole Popis diagnostický protokol označuje, zda se tyto problémy s výkonem související s prostředků, pracovních procesů nebo omezení relace.
 
-Prostředky pro službu SQL Database se obvykle označují jako [DTU prostředky](https://docs.microsoft.com/azure/sql-database/sql-database-what-is-a-dtu). Skládají se z měří prostředky procesoru a vstupů/výstupů (dat a protokolů transakcí vstupně-výstupní operace). Vzor dosažení omezení prostředků je rozpoznán při zjištění snížení výkonu dotazu je způsobeno tím, že žádné limity prostředků měřené dosáhnout.
+Prostředky pro službu SQL Database se obvykle označují [DTU](https://docs.microsoft.com/azure/sql-database/sql-database-what-is-a-dtu) nebo [vCore](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tiers-vcore) prostředky. Vzor dosažení omezení prostředků je rozpoznán při zjištění snížení výkonu dotazu je způsobeno tím, že žádné limity prostředků měřené dosáhnout.
 
 Omezení prostředků relace označuje počet souběžných přihlášení k dispozici ke službě SQL database. Tento model výkonu je rozpoznán po aplikace, které jsou připojené k databázím SQL bylo dosaženo počtu dostupných souběžných přihlášení k databázi. Pokud se aplikace pokusí použít další relace, než je k dispozici na databázi, je vliv na výkon dotazů.
 
-Dosažení omezení pracovního procesu je zvláštní případ dosažení omezení prostředků, protože dostupné pracovní procesy nejsou započteny v využití DTU. Dosažení omezení pracovních procesů na databázi může způsobit vzestup specifické podle prostředků čekací dobu, což vede k snížení výkonu dotazů.
+Dosažení omezení pracovních procesů je zvláštní případ dosáhnout omezení prostředků, protože nejsou dostupné pracovní procesy počítá využití DTU nebo vCore. Dosažení omezení pracovních procesů na databázi může způsobit vzestup specifické podle prostředků čekací dobu, což vede k snížení výkonu dotazů.
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
@@ -283,7 +283,7 @@ Změny konfigurace s rozsahem databáze můžete nastavit pro každé jednotliv�
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
-Diagnostika protokolů výstupů s rozsahem databáze konfigurace provedené změny nedávno způsobující snížení výkonu ve srovnání s předchozím chování úloh sedm dní. Můžete vracet změny konfigurace na předchozí hodnoty. Také můžete vyladit hodnoty hodnotou až do dosažení požadovaného výpočetního prostředí. Obor databáze konfigurační hodnoty můžete zkopírovat z podobně jako databáze s vyhovující výkon. Pokud nemůžete vyřešit výkon, vrátit k výchozí databázi SQL výchozí hodnoty a pokuste se vyladění od těchto standardních hodnot.
+Diagnostika protokolů výstupů s rozsahem databáze konfigurace provedené změny nedávno způsobující snížení výkonu ve srovnání s předchozím chování úloh sedm dní. Můžete vracet změny konfigurace na předchozí hodnoty. Také můžete vyladit hodnoty hodnotou dokud není dosaženo úrovně požadovaného výkonu. Obor databáze konfigurační hodnoty můžete zkopírovat z podobně jako databáze s vyhovující výkon. Pokud nemůžete vyřešit výkon, vrátit k výchozí databázi SQL výchozí hodnoty a pokuste se vyladění od těchto standardních hodnot.
 
 Další informace o optimalizaci s rozsahem databáze konfigurace a syntaxi T-SQL na změnu konfigurace najdete v tématu [Alter database scoped configuration (Transact-SQL)](https://msdn.microsoft.com/library/mt629158.aspx).
 

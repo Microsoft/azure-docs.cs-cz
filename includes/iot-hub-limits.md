@@ -20,7 +20,7 @@ Následující tabulka uvádí omezení, která se vztahují na prostředky slu�
 | Maximální počet identit zařízení<br/> vrácených v jednom volání |1000 |
 | Maximální doba uchování zpráv typu zařízení-cloud ve službě IoT Hub |7 dní |
 | Maximální velikost zprávy typu zařízení-cloud |256 kB |
-| Maximální velikost dávky typu zařízení-cloud |256 kB |
+| Maximální velikost dávky typu zařízení-cloud |AMQP a HTTP: 256 KB pro celý batch <br/>MQTT: 256 KB pro každou zprávu |
 | Maximální počet zpráv v dávce typu zařízení-cloud |500 |
 | Maximální velikost zprávy typu cloud-zařízení |64 kB |
 | Maximální hodnota TTL pro zprávy typu cloud-zařízení |2 dny |

@@ -14,16 +14,19 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 4663da6d28d62230ced937cdb5e597a1236c7f99
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 0482a882b2dea47752eb38eadbaaa72e36ae2eae
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258940"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031964"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Rozšíření virtuálního počítače výkonu Azure Diagnostics pro Windows
 
 Rozšíření Azure VM Diagnostika výkonu umožňuje shromažďovat diagnostická data výkonu z virtuálních počítačů Windows. Rozšíření provádí analýzu a poskytuje sestavy s výsledky a doporučení k identifikaci a řešení potíží s výkonem na virtuálním počítači. Toto rozšíření nainstaluje nástroje pro odstraňování potíží volá [PerfInsights](http://aka.ms/perfinsights).
+
+> [!NOTE]
+    > Pokud chcete spustit diagnostiku na vašem virtuálním počítači z portálu Azure portal, pro který není klasický virtuální počítače, se doporučuje použít nové prostředí. Další informace najdete v tématu [výkonu diagnostiky pro virtuální počítače Azure](performance-diagnostics.md) 
 
 ## <a name="prerequisites"></a>Požadavky
 

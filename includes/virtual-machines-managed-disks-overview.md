@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: b011dd5993e63fe9bce36ec8b8c1b4739dbf704b
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 617f60345fb2a349eddb0db697604ba383794591
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39037542"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060398"
 ---
 # <a name="azure-managed-disks-overview"></a>Přehled služby Azure Managed Disks
 
-Služba Azure Managed Disks zjednodušuje správu disků virtuálních počítačů Azure IaaS pomocí správy [účty úložiště](../articles/storage/common/storage-introduction.md) přidružené k diskům virtuálních počítačů. Stačí jenom zadat typ ([standardní HDD](../articles/virtual-machines/windows/standard-storage.md), SSD na úrovni Standard, nebo [Premium SSD](../articles/virtual-machines/windows/premium-storage.md)) a velikost disku, je nutné, a Azure vytvoří a spravuje disk za vás.
+Služba Azure Managed Disks zjednodušuje správu disků virtuálních počítačů Azure IaaS pomocí správy [účty úložiště](../articles/storage/common/storage-introduction.md) přidružené k diskům virtuálních počítačů. Stačí jenom zadat typ ([standardní HDD](../articles/virtual-machines/windows/standard-storage.md), [SSD na úrovni Standard](../articles/virtual-machines/windows/disks-standard-ssd.md), nebo [Premium SSD](../articles/virtual-machines/windows/premium-storage.md)) a velikost disku, je nutné, a Azure vytvoří a spravuje disk za vás.
 
 ## <a name="benefits-of-managed-disks"></a>Výhody spravovaných disků
 
@@ -29,7 +29,7 @@ Pojďme se podívat na některé z výhod, získáte s použitím spravovaných 
 
 Managed Disks se stará o úložiště za vás na pozadí. Dřív jste museli vytvářet účty úložiště pro uložení disků (soubory VHD) pro virtuální počítače Azure. Během vertikálního navyšování kapacity, museli jste Ujistěte se, že jste vytvořili další účty úložiště, abyste neměli překročit limit vstupně-výstupních operací pro úložiště s žádným z disků. Se službou Managed Disks zpracování úložiště jste už omezení limity účtu úložiště (jako je například 20 000 IOPS účtu). Také již budete muset zkopírovat vlastní Image (soubory VHD) k několika účtům úložiště. Můžete spravovat v centrálním umístění – jeden účet úložiště podle oblasti Azure – a jejich používání při vytváření stovek virtuálních počítačů v rámci předplatného.
 
-Spravované disky vám umožní vytvořit virtuální počítač s až 50 000 **disky** typu v předplatné a oblast, která vám umožní vytvořit tisíce **virtuálních počítačů** v rámci jednoho předplatného. Tato funkce také dále zvyšuje škálovatelnost [Virtual Machine Scale Sets](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) , neboť umožňuje vytvořit až na tisíce virtuálních počítačů ve škálovací sadu virtuálních počítačů pomocí imagí Marketplace. 
+Spravované disky vám umožní vytvořit virtuální počítač s až 50 000 **disky** typu v předplatné a oblast, která vám umožní vytvořit tisíce **virtuálních počítačů** v rámci jednoho předplatného. Tato funkce také dále zvyšuje škálovatelnost [Virtual Machine Scale Sets](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) , neboť umožňuje vytvořit až na tisíce virtuálních počítačů ve škálovací sadu virtuálních počítačů pomocí imagí Marketplace.
 
 ### <a name="better-reliability-for-availability-sets"></a>Vyšší spolehlivost pro skupiny dostupnosti
 
@@ -44,11 +44,13 @@ Disky Azure jsou navržené pro 99,999% dostupnost. Rozhraní REST klidní s vě
 Můžete použít [Azure Role-Based řízení přístupu (RBAC)](../articles/role-based-access-control/overview.md) k přiřazení konkrétních oprávnění pro spravovaného disku do jednoho nebo více uživatelů. Spravované disky zpřístupňuje nejrůznějších operací, včetně čtení, zápis (vytvoření/aktualizace), odstranit a načtením [sdílený přístupový podpis (SAS) URI](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) disku. Můžete udělit přístup jenom k operacím uživatel potřebuje pro výkon své práce. Například pokud nechcete, aby uživatel ke zkopírování spravovaného disku do účtu úložiště, můžete rozhodnete udělit přístup k exportu akce pro tento spravovaný disk. Podobně pokud nechcete, aby osoba, která použít identifikátor URI SAS ke zkopírování spravovaného disku, můžete neudělujte oprávnění, které chcete spravovaného disku.
 
 ### <a name="azure-backup-service-support"></a>Podpora služby Azure Backup
-Vytváření úlohy zálohování s časovou synchronizací zálohy, snadné obnovení virtuálního počítače a zásady uchovávání záloh pomocí služby Azure Backup se službou Managed Disks. Spravované disky podporují pouze místně redundantní úložiště (LRS) jako možnost replikace. Tři kopie dat uchovávány v rámci jedné oblasti. Místní zotavení po havárii, je nutné zálohovat disky virtuálních počítačů v jiné oblasti pomocí [služba Azure Backup](../articles/backup/backup-introduction-to-azure-backup.md) a účtu úložiště GRS jako trezor služby backup. Azure Backup nyní podporuje všechny velikosti disků, včetně disků 4TB. Je potřeba [upgradu zásobník záloh virtuálních počítačů v2](../articles/backup/backup-upgrade-to-vm-backup-stack-v2.md) pro podporu disků 4 TB. Další informace najdete v tématu [služby pomocí Azure Backup pro virtuální počítače se spravovanými disky](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup).
+
+Vytváření úlohy zálohování s časovou synchronizací zálohy, snadné obnovení virtuálního počítače a zásady uchovávání záloh pomocí služby Azure Backup se službou Managed Disks. Spravované disky podporují pouze místně redundantní úložiště (LRS) jako možnost replikace. Tři kopie dat uchovávány v rámci jedné oblasti. Místní zotavení po havárii, je nutné zálohovat disky virtuálních počítačů v jiné oblasti pomocí [služba Azure Backup](../articles/backup/backup-introduction-to-azure-backup.md) a účtu úložiště GRS jako trezor služby backup. Azure Backup nyní podporuje disky o velikosti až 4 TB disky. Je potřeba [upgradu zásobník záloh virtuálních počítačů v2](../articles/backup/backup-upgrade-to-vm-backup-stack-v2.md) pro podporu disků 4 TB. Další informace najdete v tématu [služby pomocí Azure Backup pro virtuální počítače se spravovanými disky](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup).
 
 ## <a name="pricing-and-billing"></a>Ceny a fakturace
 
 Při použití Managed Disks, platí následující aspekty fakturace:
+
 * Typ úložiště
 
 * Velikost disku
@@ -61,29 +63,27 @@ Při použití Managed Disks, platí následující aspekty fakturace:
 
 Pojďme se na ně podívat tyto možnosti.
 
-**Typ služby Storage:** Managed Disks nabízí 3 úrovně výkonu: [standardní HDD](../articles/virtual-machines/windows/standard-storage.md), SSD na úrovni Standard (Preview), a [Premium](../articles/virtual-machines/windows/premium-storage.md). Fakturace spravovaného disku závisí na jaký typ úložiště zvolíte pro disk.
-
+**Typ služby Storage:** Managed Disks nabízí 3 úrovně výkonu: [standardní HDD](../articles/virtual-machines/windows/standard-storage.md), [SSD na úrovni Standard](../articles/virtual-machines/windows/disks-standard-ssd.md), a [Premium](../articles/virtual-machines/windows/premium-storage.md). Fakturace spravovaného disku závisí na jaký typ úložiště zvolíte pro disk.
 
 **Velikost disku**: fakturace za spravované disky závisí na velikosti zřízeného disku. Zřízená velikost (zaokrouhluje nahoru) Azure mapuje na nejbližší možnost Managed Disks uvedená v následujících tabulkách. Každý spravovaný disk mapuje na jednu z podporovaných velikostí zřízené a účtuje se odpovídajícím způsobem. Například pokud vytvoříte standardní spravovaný disk a zadejte zřízená velikost 200 GB, účtuje se vám ceníku typ s.15 disku.
 
 Tady jsou k dispozici pro spravovaný disk úrovně premium velikosti disků:
 
-| **Premium Managed <br>typ disku** | **P4** | **P6** |**P10** | **P15** | **P20** | **P30** | **P40** | **P50** | 
-|------------------|---------|---------|---------|---------|---------|----------------|----------------|----------------|  
-| Velikost disku        | 32 GiB   | 64 GiB   | 128 GiB  | 256 GiB  | 512 GiB  | 1024 giB (1 TB) | 2048 giB (2 TB) | 4095 GiB (4 TiB) | 
+| **Premium HDD Managed <br>typ disku** | **P4** | **P6** | **P10** | **P15** | **P20** | **P30** | **P40** | **P50** | **P60** | **P70** | **P80** |
+|------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
+| Velikost disku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1 024 giB (1 TB) | 2 048 giB (2 TB) | 4095 giB (4 TB) | 8192 giB (8 TB) | 16384 giB (16 TB) | 32 767 giB (TB) |
 
 Tady jsou k dispozici pro standardní spravovaný disk SSD velikosti disků:
 
-| **SSD na úrovni Standard Managed <br>typ disku** | **E10** | **E15** | **E20** | **E30** | **E40** | **E50** |
-|------------------|--------|--------|--------|----------------|----------------|----------------| 
-| Velikost disku        | 128 GiB | 256 GiB | 512 GiB | 1024 giB (1 TB) | 2048 giB (2 TB) | 4095 GiB (4 TiB) | 
+| **SSD na úrovni Standard Managed <br>typ disku** | **E10** | **E15** | **E20** | **E30** | **E40** | **E50** | **E60** | **E70** | **E80** |
+|------------------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
+| Velikost disku        | 128 GiB | 256 GiB | 512 GiB | 1 024 giB (1 TB) | 2 048 giB (2 TB) | 4095 giB (4 TB) | 8192 giB (8 TB) | 16384 giB (16 TB) | 32 767 giB (TB) |
 
 Tady jsou k dispozici pro spravovaných disků úrovně standard HDD velikosti disků:
 
-| **Standardní HDD spravované <br>typ disku** | **S4** | **S6** | **S10** | **S.15** | **S20** | **S30** | **S40** | **S50** |
-|------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------| 
-| Velikost disku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 giB (1 TB) | 2048 giB (2 TB) | 4095 GiB (4 TiB) | 
-
+| **Standardní HDD spravované <br>typ disku** | **S4** | **S6** | **S10** | **S.15** | **S20** | **S30** | **S40** | **S50** | **S60** | **S70** | **S80** |
+|------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
+| Velikost disku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1 024 giB (1 TB) | 2 048 giB (2 TB) | 4095 giB (4 TB) | 8192 giB (8 TB) | 16384 giB (16 TB) | 32 767 giB (TB) |
 
 **Počet transakcí**: se vám účtuje počet transakcí, které provedete na standardní spravovaný disk.
 
@@ -107,14 +107,14 @@ Další informace o tom, jak vytvářet snímky se službou Managed Disks, nalez
 * [Vytvoření kopie VHD uložené jako spravovaný disk pomocí snímků ve Windows](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
 * [Vytvoření kopie VHD uložené jako spravovaný disk pomocí snímků v Linuxu](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
 
-
 ## <a name="images"></a>Image
 
 Spravované disky podporují také vytváření spravovanou vlastní image. Image můžete vytvořit z vašeho vlastního virtuálního pevného disku v účtu úložiště nebo přímo z generalizovaného virtuálního počítače (sys připravit). Tento proces zachytí do jediného image všechny spravované disky přidružené k virtuálnímu počítači, včetně disků operačního systému i data. Tuto spravovanou vlastní image umožňuje vytváření stovek virtuálních počítačů pomocí vlastní image bez nutnosti kopírovat nebo spravovat všechny účty úložiště.
 
 Informace o vytváření bitové kopie naleznete v následujících článcích:
+
 * [Jak zachytit spravované image zobecněného virtuálního počítače v Azure](../articles/virtual-machines/windows/capture-image-resource.md)
-* [Generalizace a zachytit virtuální počítač s Linuxem pomocí rozhraní příkazového řádku Azure CLI 2.0](../articles/virtual-machines/linux/capture-image.md)
+* [Generalizace a zachytit virtuální počítač s Linuxem pomocí Azure CLI](../articles/virtual-machines/linux/capture-image.md)
 
 ## <a name="images-versus-snapshots"></a>Imagí a snímky
 
@@ -132,7 +132,6 @@ Existují dva typy šifrování fattica v souvislosti s aplikací spravované di
 
 [Azure Storage Service Encryption](../articles/storage/common/storage-service-encryption.md) poskytuje šifrování v klidovém stavu a zabezpečit vaše data, aby splňovala závazky vaší organizace zabezpečení a dodržování předpisů z hlediska. SSE je ve výchozím nastavení povolená pro všechny spravované disky, snímky a Image ve všech oblastech, kde jsou k dispozici spravované disky. Od 10. června 2017, všechny nové spravované disky, snímky a Image a nová data zapsaná na existující spravované disky jsou automaticky šifrována – v klidovém stavu pomocí klíčů spravovaných microsoftem ve výchozím nastavení. Přejděte [stránku s nejčastějšími dotazy disky spravované](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) další podrobnosti.
 
-
 ### <a name="azure-disk-encryption-ade"></a>Azure Disk Encryption (ADE)
 
 Azure Disk Encryption umožňuje šifrovat disky operačního systému a dat používané ve virtuální počítač IaaS. Toto šifrování zahrnuje spravované disky. Pro Windows jsou šifrované jednotky pomocí standardní technologie šifrování nástrojem BitLocker. Pro Linux disky jsou šifrované pomocí technologii DM-Crypt. Proces šifrování je integrovaná s Azure Key Vault, aby bylo možné řídit a spravovat klíče pro šifrování disků. Další informace najdete v tématu [Azure Disk Encryption pro Windows a virtuálních počítačů IaaS s Linuxem](../articles/security/azure-security-disk-encryption.md).
@@ -145,7 +144,7 @@ Další informace o službě Managed Disks najdete v následujících článcíc
 
 * [Vytvoření virtuálního počítače pomocí Resource Manageru a PowerShellu](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md)
 
-* [Vytvoření virtuálního počítače s Linuxem pomocí rozhraní příkazového řádku Azure CLI 2.0](../articles/virtual-machines/linux/quick-create-cli.md)
+* [Vytvoření virtuálního počítače s Linuxem pomocí rozhraní příkazového řádku Azure CLI](../articles/virtual-machines/linux/quick-create-cli.md)
 
 * [Připojení spravovaného datového disku k virtuálnímu počítači s Windows pomocí Powershellu](../articles/virtual-machines/windows/attach-disk-ps.md)
 

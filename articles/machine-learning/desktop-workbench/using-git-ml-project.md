@@ -11,14 +11,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/18/2017
-ms.openlocfilehash: 58ab1d77218595344c899dff654ba5b7a5bfb0d8
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ROBOTS: NOINDEX
+ms.openlocfilehash: 16c102641321117f4776d761aba6c2148d15f1f5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296632"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995635"
 ---
 # <a name="use-a-git-repo-with-a-machine-learning-workbench-project"></a>Použití úložiště Git s projektem aplikace Machine Learning Workbench
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 Zjistěte, jak Azure Machine Learning Workbench používá Git k zajištění správy verzí a zajištění reprodukovatelnost v experimentu datové vědy. Zjistěte, jak přidružit cloudovému úložišti Git (úložiště) svůj projekt.
 
 Machine Learning Workbench je určená pro integrace Gitu. Když vytvoříte nový projekt, složku projektu je automaticky "Git inicializována" jako místní úložiště Git. Druhý, skrytý místní úložiště Git se také vytvoří větev s názvem AzureMLHistory /\<projektu GUID\>. Větev uchovává informace o změny složku projektu pro každé spuštění. 
@@ -42,7 +47,7 @@ Abyste mohli začít používat vzdálené úložiště Git, proveďte kroky, kt
 > Azure Machine Learning v současné době podporuje úložiště Git pouze na Azure DevOps organizace.
 
 ## <a name="step-1-create-a-machine-learning-experimentation-account"></a>Krok 1. Vytvoření účtu experimentování ve službě Machine Learning
-Vytvoření účtu experimentování ve službě Machine Learning a nainstalujte aplikaci Azure Machine Learning Workbench. Další informace najdete v tématu [instalace a vytvoření rychlý Start](../service/quickstart-installation.md).
+Vytvoření účtu experimentování ve službě Machine Learning a nainstalujte aplikaci Azure Machine Learning Workbench. Další informace najdete v tématu [instalace a vytvoření rychlý Start](quickstart-installation.md).
 
 ## <a name="step-2-create-an-azure-devops-project-or-use-an-existing-project"></a>Krok 2. Vytvořte projekt Azure DevOps nebo použijte existující projekt
 V [webu Azure portal](https://portal.azure.com/), vytvořte nový projekt:

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4c33466af6e57264e02a7d5c298f7f1f9fbf4ed8
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 7e6a897ed0606d8844f66e318b93449d7790e2be
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717297"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963421"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Nastaví přehled automatického škálování díky škálování virtuálních počítačů Azure
 Škálovací sady virtuálních počítačů Azure můžete automaticky zvýšit nebo snížit počet instancí virtuálních počítačů, na kterých běží vaše aplikace. Toto chování automatizované a elastické snižuje režie na správu pro monitorování a optimalizace výkonu vaší aplikace. Můžete vytvořit pravidla, která definují přijatelný výkon pro pozitivní zkušenosti. Pokud jsou splněny tyto definované prahové hodnoty, pravidla automatického škálování provést akci Upravit kapacitu škálovací sady. Můžete také naplánovat události pro automatické zvýšení nebo snížení kapacity škálovací sady na pevnou časy. Tento článek obsahuje základní informace o výkonu, které metriky jsou k dispozici a jaké akce automatického škálování můžete provádět.
@@ -42,7 +42,7 @@ Pravidla automatického škálování využívající metriky hostitele je možn
 
 - [Azure Portal](virtual-machine-scale-sets-autoscale-portal.md)
 - [Azure PowerShell](tutorial-autoscale-powershell.md)
-- [Azure CLI 2.0](tutorial-autoscale-cli.md)
+- [Azure CLI](tutorial-autoscale-cli.md)
 - [Šablony Azure](tutorial-autoscale-template.md)
 
 Chcete-li vytvořit pravidla automatického škálování použít podrobnější metriky výkonu, můžete [nainstalujte a nakonfigurujte rozšíření Azure diagnostics](#in-guest-vm-metrics-with-the-azure-diagnostics-extension) na instancích virtuálních počítačů nebo [konfigurace vaší aplikace pomocí App Insights](#application-level-metrics-with-app-insights).
@@ -139,7 +139,7 @@ Následující příklady jsou scénáře, které můžou mít užitek použití
 Můžete vytvořit pravidla automatického škálování využívající metriky hostitele s jedním z následujících nástrojů:
 
 - [Azure PowerShell](tutorial-autoscale-powershell.md)
-- [Azure CLI 2.0](tutorial-autoscale-cli.md)
+- [Azure CLI](tutorial-autoscale-cli.md)
 - [Šablony Azure](tutorial-autoscale-template.md)
 
 Tento přehled podrobné pomocí pravidla automatického škálování horizontálně škálovat a zvýšit nebo snížit *číslo* instancí virtuálních počítačů ve škálovací nastavit. Můžete také škálovat vertikálně zvyšte nebo snižte instance virtuálního počítače *velikost*. Další informace najdete v tématu [vertikální automatické škálování s Virtual Machine Scale sets](virtual-machine-scale-sets-vertical-scale-reprovision.md).

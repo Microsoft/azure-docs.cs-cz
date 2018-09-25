@@ -2,7 +2,7 @@ V následující tabulce jsou uvedeny vazby, které jsou podporovány ve dvou hl
 
 | Typ | 1.x | 2.x | Trigger | Vstup | Výstup |  
 | ---- | :-: | :-: | :------: | :---: | :----: |
-| [Blob Storage](../articles/azure-functions/functions-bindings-storage-blob.md)          |✔|✔<sup>1</sup>|✔|✔|✔|  
+| [Blob Storage](../articles/azure-functions/functions-bindings-storage-blob.md)          |✔|✔|✔|✔|✔|  
 | [Databáze Cosmos](../articles/azure-functions/functions-bindings-documentdb.md)               |✔|✔|✔|✔|✔|  
 | [Event Grid](../articles/azure-functions/functions-bindings-event-grid.md)              |✔|✔|✔| | |  
 | [Event Hubs](../articles/azure-functions/functions-bindings-event-hubs.md)              |✔|✔|✔| |✔|  
@@ -14,16 +14,16 @@ V následující tabulce jsou uvedeny vazby, které jsou podporovány ve dvou hl
 | [Microsoft Graph<br/>Outlookový e-mail](../articles/azure-functions/functions-bindings-microsoft-graph.md)  ||✔| | |✔|
 | [Microsoft Graph<br/>události](../articles/azure-functions/functions-bindings-microsoft-graph.md)         ||✔|✔|✔|✔|
 | [Microsoft Graph<br/>ověřovacích tokenů](../articles/azure-functions/functions-bindings-microsoft-graph.md)    ||✔| |✔| |
-| [Mobile Apps](../articles/azure-functions/functions-bindings-mobile-apps.md)             |✔|✔| |✔|✔|  
+| [Mobile Apps](../articles/azure-functions/functions-bindings-mobile-apps.md)             |✔| | |✔|✔|  
 | [Notification Hubs](../articles/azure-functions/functions-bindings-notification-hubs.md) |✔|| | |✔|
-| [Queue Storage](../articles/azure-functions/functions-bindings-storage-queue.md)         |✔|✔<sup>1</sup>|✔| |✔|  
+| [Queue Storage](../articles/azure-functions/functions-bindings-storage-queue.md)         |✔|✔|✔| |✔|  
 | [SendGrid](../articles/azure-functions/functions-bindings-sendgrid.md)                   |✔|✔| | |✔|
 | [Service Bus](../articles/azure-functions/functions-bindings-service-bus.md)             |✔|✔|✔| |✔|  
-| [Table Storage](../articles/azure-functions/functions-bindings-storage-table.md)         |✔|✔<sup>1</sup>| |✔|✔|  
-| [Časovač](../articles/azure-functions/functions-bindings-timer.md)                         |✔|✔|✔| | |
+| [Table Storage](../articles/azure-functions/functions-bindings-storage-table.md)         |✔|✔| |✔|✔|  
+| [Časovač](../articles/azure-functions/functions-bindings-timer.md)                         |✔|✔<sup>1</sup>|✔| | |
 | [Twilio](../articles/azure-functions/functions-bindings-twilio.md)                       |✔|✔| | |✔|
 | [Webhooky](../articles/azure-functions/functions-bindings-http-webhook.md)             |✔||✔| |✔|
   
-<sup>1</sup> v 2.x, musí být zaregistrovaný všechny vazby s výjimkou HTTP, časovač a Azure Storage. Zobrazit [registraci rozšíření vazby](../articles/azure-functions/functions-triggers-bindings.md#register-binding-extensions).
+<sup>1</sup> v 2.x, musí být zaregistrovaný všechny vazby s výjimkou HTTP a časovač. Zobrazit [registraci rozšíření vazby](../articles/azure-functions/functions-triggers-bindings.md#register-binding-extensions).
 
 <sup>2</sup> experimentální &mdash; není podporováno a může být v budoucnu opuštěna.

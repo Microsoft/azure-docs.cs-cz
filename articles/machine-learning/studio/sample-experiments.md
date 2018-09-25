@@ -14,14 +14,14 @@ ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 01/05/2018
-ms.openlocfilehash: 11cc4889690cb44cb621ed53f3e3614afcc57abf
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
-ms.translationtype: HT
+ms.openlocfilehash: f93d0d4e12d97fadb23476afc3199599b3268580
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837991"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998045"
 ---
 # <a name="create-machine-learning-experiments-from-working-examples-in-azure-ai-gallery"></a>Vytváření experimentů se strojovým učením na základě funkčních příkladů v galerii Azure AI
 
@@ -67,7 +67,7 @@ Nový experiment v nástroji Machine Learning Studio můžete vytvořit také po
 
 V pracovním prostoru Machine Learning Studio se vytvoří nový experiment s využitím příkladu experimentu jako šablony.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Import dat z různých zdrojů](import-data.md)
 * [Stručný úvodní kurz k jazyku R ve službě Machine Learning](r-quickstart.md)
 * [Nasazení webové služby Machine Learning](publish-a-machine-learning-web-service.md)

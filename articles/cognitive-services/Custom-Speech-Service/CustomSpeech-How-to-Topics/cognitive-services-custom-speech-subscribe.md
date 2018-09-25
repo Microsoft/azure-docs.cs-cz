@@ -9,12 +9,13 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ms.openlocfilehash: d3969114323f5675c5e14ab36990b124e84ead37
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ROBOTS: NOINDEX
+ms.openlocfilehash: e5cac34a9aead209bec90cfd5f89e94a005a1995
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39427563"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46980351"
 ---
 # <a name="obtain-subscription-keys"></a>Získání klíčů předplatného
 Abyste mohli začít používat Azure Custom Speech Service, musíte nejprve propojí váš účet uživatele k předplatnému Azure. Předplatná na bezplatné a placené úrovně jsou k dispozici. Informace o úrovních najdete v tématu [stránce s cenami](https://www.microsoft.com/cognitive-services/en-us/pricing).

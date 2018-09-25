@@ -16,14 +16,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
-ms.openlocfilehash: f6ce43c2d290bacee10e102cc6c382981db9917f
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ROBOTS: NOINDEX
+ms.openlocfilehash: 775d0701f9eeaf7d26a83b814711bea630efb2a6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42054670"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46973758"
 ---
 # <a name="biomedical-entity-recognition-using-team-data-science-process-tdsp-template"></a>Rozpoznávání biomedicínských entit rozpoznávání pomocí šablony vědecké zpracování týmových dat (TDSP)
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Extrakce entity je dílčí úkol extrakci informací (označované také jako [rozpoznávání pojmenované entit (NER)](https://en.wikipedia.org/wiki/Named-entity_recognition), entity dat a identifikaci entity). Cílem této scénářem z reálného prostředí je zvýraznit jak používat Azure Machine Learning Workbench k řešit složité úloh zpracování přirozeného jazyka (NLP) jako je extrakce entity z nestrukturovaného textu:
 
@@ -95,7 +100,7 @@ Tady je odkaz na veřejné úložiště GitHub scénářem z reálného prostře
 ## <a name="prerequisites"></a>Požadavky 
 
 * Azure [předplatného](https://azure.microsoft.com/free/)
-* Aplikace Azure Machine Learning Workbench. Zobrazit [Průvodce instalací](../service/quickstart-installation.md). Aktuálně lze nainstalovat aplikaci Azure Machine Learning Workbench na jenom následující operační systémy: 
+* Aplikace Azure Machine Learning Workbench. Zobrazit [Průvodce instalací](quickstart-installation.md). Aktuálně lze nainstalovat aplikaci Azure Machine Learning Workbench na jenom následující operační systémy: 
     * Windows 10 nebo Windows Server 2016
     * macOS Sierra (nebo novější)
 
@@ -118,7 +123,7 @@ Všechny požadované závislosti jsou definovány v souboru aml_config/conda_de
 
 ### <a name="basic-instructions-for-azure-machine-learning-aml-workbench"></a>Základní pokyny pro Azure Machine Learning (AML) workbench
 * [Přehled](../service/overview-what-is-azure-ml.md)
-* [Instalace](../service/quickstart-installation.md)
+* [Instalace](quickstart-installation.md)
 * [Použití TDSP](how-to-use-tdsp-in-azure-ml.md)
 * [Čtení a zápis souborů](how-to-read-write-files.md)
 * [Použití poznámkových bloků Jupyter](how-to-use-jupyter-notebooks.md)

@@ -12,14 +12,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: a8c258a9bc8e006d5bbae4b7bbb61c7ef6e95412
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ROBOTS: NOINDEX
+ms.openlocfilehash: 83d6f529330a05e6a7c46ad45b19f0338f93bfc7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605942"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995087"
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>Klasifikace obrázků s využitím Azure Machine Learning Workbench
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Přístupy klasifikace Image je možné vyřešit velké množství problémů pro počítačové zpracování obrazu.
 Mezi ně patří vytváření modelů, které odpovědi na otázky jako: *je k dispozici v bitové kopii objektu?* kde OBJEKT může být například *pes*, *car*, nebo  *dodávejte*. Nebo složitější otázky typu: *jaké třída závažnosti stádiu oka je evinced podle této pacienta retinal kontroly?*.
@@ -51,7 +56,7 @@ Zatímco předchozí zkušenosti s machine learning a CNTK není vyžadována, j
 Požadavky na spuštění v tomto příkladu jsou následující:
 
 1. [Účtu Azure](https://azure.microsoft.com/free/) (bezplatné zkušební verze jsou k dispozici).
-2. [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) následující [Stručná Instalační příručka](../service/quickstart-installation.md) k instalaci a vytvoření pracovního prostoru.  
+2. [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) následující [Stručná Instalační příručka](quickstart-installation.md) k instalaci a vytvoření pracovního prostoru.  
 3. Počítače s Windows. Operační systém Windows je nezbytné, protože v aplikaci Workbench podporuje pouze Windows a MacOS při společnosti Microsoft Cognitive Toolkit (který použijeme jako knihovna obsáhlého learningu) podporuje pouze Windows a Linux.
 4. Vyhrazené GPU se nevyžaduje ke spuštění trénovací SVM v části 1, ale je potřeba pro upřesnění sady DNN je popsáno v části 2. Pokud nemají silné GPU, má tak moct trénovat na více GPU nebo nemáte počítače s Windows, zvažte použití operačního systému Windows Azure pro virtuální počítač pro hloubkové učení. Zobrazit [tady](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning) pro Průvodce nasazením 1 jedním kliknutím. Po nasazení, připojte se k virtuálnímu počítači pomocí připojení ke vzdálené ploše, existuje aplikaci Workbench můžete nainstalovat a místně spusťte kód z virtuálního počítače.
 5. Různé knihovny jazyka Python, jako je například OpenCV potřeba nainstalovat. Klikněte na tlačítko *otevřít příkazový řádek* z *souboru* nabídky v aplikaci Workbench a spusťte následující příkazy pro instalaci těchto závislostí:  

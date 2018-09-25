@@ -1,3 +1,20 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: virtual-machines
+author: roygara
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 09/24/2018
+ms.author: rogarana
+ms.custom: include file
+ms.openlocfilehash: f0ed4b20f9dbfef4824f66eab3ab953a5dbcfaae
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060851"
+---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: Návrh pro vysoký výkon
 
 Tento článek obsahuje pokyny pro vytváření vysoce výkonné aplikace využívající Azure Premium Storage. Můžete použít pokyny uvedené v tomto dokumentu v kombinaci s osvědčené postupy z hlediska výkonu pro technologie, které používá vaše aplikace. Pro ilustraci, pokyny, jsme pomocí SQL serveru běžícího na Premium Storage jako příklad v tomto dokumentu.
@@ -17,16 +34,19 @@ Nabízíme tyto pokyny konkrétně pro Premium Storage, protože úlohy běžíc
 Než začnete, pokud jste ještě na Premium Storage, nejdřív přečíst [Premium Storage: vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../articles/virtual-machines/windows/premium-storage.md) a [Azure Storage škálovatelnost a cíle výkonnosti](../articles/storage/common/storage-scalability-targets.md)článků.
 
 ## <a name="application-performance-indicators"></a>Ukazatele výkonu aplikace
+
 Vyhodnocení, jestli si aplikace vede dobře nebo není pomocí výkonnostních ukazatelů, jako je, jak rychle aplikace zpracovává žádost uživatele, kolik dat zpracovává aplikace každý požadavek, kolik požadavků aplikace zpracovává v konkrétní časový úsek, jak dlouho musí uživatel čekat na odpověď po odeslání žádosti. Technické podmínky pro tyto ukazatele výkonu jsou vstupně-výstupních operací, propustnost nebo šířku pásma a latencí.
 
 V této části se budeme zabývat běžných ukazatelů výkonu v rámci služby Premium Storage. V následující části požadavky aplikací na shromažďování, se dozvíte, jak vyhodnocovat tyto ukazatele výkonu pro vaši aplikaci. Později v optimalizace výkonu aplikace se dozvíte o faktorech, které mají vliv tyto ukazatele výkonu a doporučení k optimalizaci je.
 
 ## <a name="iops"></a>IOPS
+
 Vstupně-výstupních operací je počet požadavků, které vaše aplikace odesílá do disky úložiště v jedné sekundy. Vstupně výstupní operace může číst nebo zapisovat sekvenční nebo náhodné. OLTP aplikací, jako je online maloobchodních webech potřeba zpracovat okamžitě mnoho souběžných uživatelských požadavků. Požadavky uživatelů jsou vložení a aktualizujte náročné databázové transakce, které musí aplikace rychle zpracovávají. Proto OLTP aplikace vyžadují velmi vysoké vstupně-výstupních operací. Tyto žádosti zpracovat miliony požadavků malé a náhodných vstupně-výstupních operací. Pokud máte takovou aplikaci, je třeba navrhnout aplikační infrastruktury pro optimalizaci pro vstupně-výstupních operací. V pozdější části *optimalizace výkonu aplikace*, si popíšeme podrobně všech faktorů, které musíte zvážit, chcete-li získat vysoké vstupně-výstupních operací.
 
 Když připojíte disk úložiště úrovně premium k vaší velké škálování virtuálních počítačů, Azure zřídí pro vás zaručené počet vstupně-výstupních operací podle specifikace disku. Například P50 disk zřídí 7500 vstupně-výstupních operací. Každý měřítko velikosti virtuálního počítače má také určený limit vstupně-výstupních operací, který může tolerovat. Virtuální počítače GS5 Standard má například 80 000 vstupně-výstupních operací omezte.
 
 ## <a name="throughput"></a>Propustnost
+
 Propustnost nebo šířku pásma je množství dat, které vaše aplikace odesílá do disky úložiště v zadaném intervalu. Pokud aplikace provádí vstupně výstupní operace s velké velikosti jednotky vstupně-výstupních operací, vyžaduje vysokou propustnost. Datový sklad aplikace mají tendenci k vydávání operace kontroly náročné na prostředky, které využívají velké části dat najednou a běžně provádět hromadné operace. Jinými slovy tyto aplikace vyžaduje vyšší propustnost. Pokud máte takovou aplikaci, je třeba navrhnout jeho infrastruktury za účelem optimalizace propustnosti. V další části si popíšeme podrobně faktorů, třeba vyladit dosáhnout.
 
 Když připojíte disk úložiště úrovně premium na velké škály virtuálního počítače, Azure ustanovení propustnost podle specifikaci disku. Například P50 disk zřídí 250 MB na druhý disk propustnost. Každý měřítko velikosti virtuálního počítače má také jako konkrétní omezení propustnosti, který může tolerovat. Například virtuální počítače GS5 Standard má maximální propustností 2 000 MB za sekundu. 
@@ -38,18 +58,20 @@ Existuje vztah mezi propustnost a vstupně-výstupních operací, jak je znázor
 Proto je důležité určit optimální hodnoty vstupně-výstupních operací a propustnosti, které vaše aplikace vyžaduje. Při pokusu o optimalizaci jedné druhé také získá vliv. V další části *optimalizace výkonu aplikace*, se budeme zabývat v další podrobnosti o optimalizaci IOPS a propustnost.
 
 ## <a name="latency"></a>Latence
+
 Latence je dlouho trvá, aplikace pro příjem jednoho požadavku, odeslání na discích úložiště a odeslat odpověď do klienta. To je důležité míra výkon vaší aplikace kromě IOPS a propustnost. Latence disk úložiště úrovně premium je čas potřebný k načtení informací pro požadavek a komunikaci zpět do aplikace. Premium Storage poskytuje konsistentní nízkou latencí. Pokud povolíte jen pro čtení hostitele ukládání do mezipaměti na disky premium storage, získáte mnohem nižší latence čtení. Pojednává o používání mezipaměti disku podrobněji v pozdější části na *optimalizace výkonu aplikace*.
 
 Pokud chcete optimalizovat vaše aplikace, abyste získali lepší vstupně-výstupních operací a vyšší propustnost, bude mít vliv na latenci vaší aplikace. Po ladění výkonu aplikace, vždy vyhodnoceny latence aplikace, aby se zabránilo neočekávaným vysokou latencí chování.
 
 ## <a name="gather-application-performance-requirements"></a>Shromáždění požadavků na výkon aplikace
+
 Prvním krokem při návrhu vysoce výkonné aplikace běžící na Azure Premium Storage je pochopit požadavky na výkon vaší aplikace. Po shromáždění požadavků na výkon, můžete optimalizovat aplikace pro dosažení optimálního výkonu.
 
 V předchozí části jsme vysvětlení běžných ukazatelů výkonu vstupně-výstupních operací, propustnosti a latence. Musíte určit, které tyto ukazatele výkonu jsou důležité pro vaši aplikaci pro zajištění požadovaného uživatelské prostředí. Například vysoké IOPS nejvíc aplikacím OLTP zpracování milionů transakcí za sekundu. Vzhledem k tomu, Vysoká propustnost je velmi důležité pro datový sklad aplikace zpracování velkého objemu dat za sekundu. Mimořádně nízkou latencí je zásadní pro aplikace v reálném čase, jako je živé video streamování websites.
 
 Potom změřte požadavky na maximální výkon vaší aplikace v průběhu svého životního cyklu. Ukázka kontrolního seznamu níže použijte jako spuštění. Zaznamenejte požadavky na maximální výkon během normální, období zatížení ve špičce a době mimo špičku. Identifikaci požadavků pro všechny úrovně zatížení, budete moct určit požadavek na celkový výkon vaší aplikace. Běžné úlohy web pro elektronické obchodování například bude transakcí, které slouží během většina dní v roce. Zátěž ve špičce na webu budou transakcí, které slouží během sváteční období nebo speciální prodej události. Ve špičce je obvykle zkušení po omezenou dobu, ale můžou vyžadovat, aby škálování dvakrát nebo vícekrát normálním provozu vaší aplikace. Přečtěte si 50. percentil, 90. percentil a požadavky na 99. percentilu. To pomáhá odfiltrovat všechny odlehlé hodnoty v části požadavky na výkon a můžete se soustředit své úsilí na optimalizaci pro správné hodnoty.
 
-**Kontrolní seznam požadavků na výkon aplikace**
+### <a name="application-performance-requirements-checklist"></a>Kontrolní seznam požadavků na výkon aplikace
 
 | **Požadavky na výkon** | **50. percentil** | **90. percentil** | **99. percentilu** |
 | --- | --- | --- | --- |
@@ -71,14 +93,13 @@ Potom změřte požadavky na maximální výkon vaší aplikace v průběhu své
 
 > [!NOTE]
 > Měli byste zvážit škálování tato čísla podle očekávané budoucí růst vaší aplikace. Je vhodné počítali s růstem předem, protože by mohlo být těžší infrastrukturu pro zlepšení výkonu později změnit.
->
->
 
 Pokud máte existující aplikaci a chcete přejít na Premium Storage, nejprve sestavte kontrolní seznam výše pro existující aplikace. Potom, sestavíte prototyp vaší aplikace ve službě Storage úrovně Premium a navrhněte aplikaci podle pokynů popsaných v *optimalizace výkonu aplikace* v další části tohoto dokumentu. Další část popisuje nástroje, které vám umožní získat měření výkonu.
 
 Vytvořte kontrolní seznam podobný stávající aplikaci pro prototypu. Pomocí nástroje Benchmarking můžete simulovat zatížení a měření výkonu v aplikaci prototypu. Naleznete v části [Benchmarking](#benchmarking) Další informace. Tímto způsobem, aby mohl určit, zda služby Premium Storage můžete odpovídat nebo toto vašim požadavkům na výkon aplikace. Potom můžete implementovat stejné pokyny jako pro aplikace v produkčním prostředí.
 
 ### <a name="counters-to-measure-application-performance-requirements"></a>Čítače na míru požadavkům na výkon aplikace
+
 Nejlepší způsob, jak měřit požadavky na výkon vaší aplikace, je použití nástroje Sledování výkonu, které jsou k dispozici v operačním systému serveru. Nástroj PerfMon pro Windows a iostat můžete použít pro Linux. Tyto nástroje zaznamenávají čítače odpovídající každá míra je vysvětleno výše v části. Hodnoty těchto čítačů musí zachytit, když vaše aplikace běží její normální, zatížení ve špičce a době mimo špičku.
 
 Čítače výkonu jsou k dispozici pro procesor, paměť a každý logický disk a fyzický disk serveru. Pokud použijete disky storage úrovně premium s virtuálním Počítačem, jsou čítače Fyzický disk pro každý disk storage úrovně premium a čítače logický disk se pro každý svazek na disky premium storage vytvoří. Hodnoty pro disky, které hostují úlohy vaší aplikace musí zachytit. Pokud existuje mapování 1: 1 mezi logické a fyzické disky, můžete odkazovat na fyzický disk čítačů; v opačném případě odkazují na logický disk čítače. V Linuxu příkaz iostat vygeneruje sestavu využití procesoru a disku. Sestava využití disku poskytuje statistické údaje na fyzické zařízení nebo oddíl. Pokud máte databázový server pomocí protokolu a data na různých discích, shromažďování těchto dat pro oba disky. Následující tabulka popisuje čítače pro disky, procesoru a paměti:
@@ -97,6 +118,7 @@ Nejlepší způsob, jak měřit požadavky na výkon vaší aplikace, je použit
 Další informace o [iostat](https://linux.die.net/man/1/iostat) a [PerfMon](https://msdn.microsoft.com/library/aa645516.aspx).
 
 ## <a name="optimizing-application-performance"></a>Optimalizace výkonu aplikace
+
 Hlavní faktory, které mají vliv na výkon aplikace běžící na Premium Storage jsou povahy z vstupně-výstupní operace žádosti, velikost virtuálního počítače, velikost disků, počtu disků, používání mezipaměti disku, Multithreading a hloubka fronty. Některé z těchto faktorů může ovládacím prvkem knoflíky poskytované systémem. Většina aplikací nemusí být možné přímo měnit velikost vstupně-výstupní operace a hloubka fronty. Například pokud používáte systém SQL Server, nemůžete hloubky velikost a fronty vstupně-výstupních operací. SQL Server vybere optimální vstupně-výstupních operací velikost fronty hloubky hodnoty a většina výkon. Je potřeba vysvětlit dopady oba typy faktory na výkon vašich aplikací tak, že zřídíte příslušných prostředků podle potřeb výkonu.
 
 V této části se odkazují na kontrolní požadavky na aplikace, kterou jste vytvořili, chcete-li určit, kolik je potřeba optimalizovat výkon vašich aplikací. Na základě toho budou moct určit faktory, které z této části budete muset vyladit. Určující každý faktor vliv na výkon vašich aplikací, nástrojích pro srovnávací testy spouštět instalace aplikace. Odkazovat [Benchmarking](#Benchmarking) oddílu na konci tohoto článku najdete postup spouštění běžných nástrojích pro srovnávací testy na Windows a virtuální počítače s Linuxem.
@@ -122,6 +144,7 @@ Další informace o velikostech virtuálních počítačů a na vstupně-výstup
 | **Hloubka fronty** |Větší hloubky fronty poskytuje vyšší vstupně-výstupních operací. |Větší hloubky fronty poskytuje vyšší propustnost. |Menší hloubka fronty vrací nižší latenci. |
 
 ## <a name="nature-of-io-requests"></a>Povaha požadavků na vstupně-výstupních operací
+
 Požadavek na vstupně-výstupních operací je jednotka vstupně výstupní operace, která vaše aplikace bude provádět. Identifikace povaze vstupně-výstupní požadavky, náhodných nebo sekvenčních, čtení nebo zápisu, malé nebo velké, vám pomůže určit požadavky na výkon vaší aplikace. Je velmi důležité pro pochopení povahy požadavků na vstupně-výstupních operací na dělat správná rozhodnutí při navrhování vaší aplikační infrastruktury.
 
 Velikost vstupně-výstupních operací je jedním z důležitých faktorů. Velikost vstupně-výstupních operací je velikost vstupně výstupní operace žádosti vygenerované aplikace. Velikost vstupně-výstupní operace má významný dopad na výkon, zejména u IOPS a šířky pásma, která je možné zajistit aplikace. Tento vzorec znázorňuje vztah mezi IOPS, vstupně-výstupní operace velikosti a šířka pásma nebo propustnosti.  
@@ -152,12 +175,11 @@ IOPS a šířky pásma, vyšší než maximální hodnota disk úložiště jedn
 
 > [!NOTE]
 > Zvyšuje se vstupně-výstupních operací nebo druhé se taky vyznačuje větší propustnost, zkontrolujte, zda že není dosáhnete propustnost nebo limity vstupně-výstupních operací disku nebo virtuálního počítače při zvýšení jednu.
->
->
 
 Pokud chcete určující účinky velikost vstupně-výstupních operací na výkon aplikace, můžete spustit nástrojích pro srovnávací testy na virtuální počítač a disky. Vytvořit více testovacích běhů a zobrazení dopadů použít jinou velikost vstupně-výstupních operací pro každé spuštění. Odkazovat [Benchmarking](#Benchmarking) části na konci tohoto článku najdete další podrobnosti.
 
 ## <a name="high-scale-vm-sizes"></a>Velikosti virtuálních počítačů s vysokou škálovatelností
+
 Když se pustíte do návrhu aplikace, jedním z první kroky, které je, vyberte virtuální počítač pro hostování vaší aplikace. Premium Storage se dodává s vysokou virtuálního škálování virtuálního počítače velikostí, mezi které můžete spustit aplikace, které potřebují vyšší výpočetní výkon a místní disk vysoké vstupně-výstupní výkon. Tyto virtuální počítače mají rychlejší procesory, vyšší poměr paměti k jádrům a Solid-State jednotky SSD (Solid-State Drive) pro místní disk. Vysoká škálování virtuálních počítačů služby Premium Storage podporuje příklady řady DS, DSv2 a GS virtuálních počítačů.
 
 Vysoká škálování virtuálních počítačů jsou k dispozici v různých velikostech s různým počtem jader procesoru, paměti, operačního systému a velikost dočasného disku. Všechny velikosti virtuálních počítačů má také maximální počet datových disků, které lze připojit k virtuálnímu počítači. Proto se zvolenou velikost virtuálního počítače bude mít vliv na tom, kolik zpracování, paměť, a kapacita úložiště je k dispozici pro vaši aplikaci. Ovlivní také výpočetní prostředky a náklady na úložiště. V následující tabulce jsou specifikace největší možnou velikost virtuálního počítače DS-series, DSv2 series a GS-series:
@@ -196,14 +218,14 @@ Díky Azure Premium Storage budete mít stejnou úroveň výkonu pro virtuální
 Pokud se službou Premium Storage s Linuxem, zkontrolujte nejnovější informace o požadované ovladače kvůli vysokému výkonu.
 
 ## <a name="premium-storage-disk-sizes"></a>Velikosti disků úložiště úrovně Premium
-Azure Premium Storage je momentálně nabízí osm velikosti disků. Velikost každého disku má limit různých škálování pro vstupně-výstupních operací, šířku pásma a úložiště. Volby nejvhodnější velikosti disků úložiště úrovně Premium v závislosti na požadavcích aplikace a vysokou škálovatelností velikost virtuálního počítače. Následující tabulka ukazuje velikosti 8 disků a jejich funkce. Velikosti P4, P6 a P15 se aktuálně podporuje jenom pro službu Managed Disks.
 
-| Typ disky Premium  | P4    | P6    | P10   | P15 | P20   | P30   | P40   | P50   | 
-|---------------------|-------|-------|-------|-------|-------|-------|-------|-------|
-| Velikost disku           | 32 GB | 64 GB | 128 GB| 256 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
-| Vstupně-výstupní operace za sekundu / disk       | 120   | 240   | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 
-| Propustnost / disk | 25 MB za sekundu  | 50 MB za sekundu  | 100 MB za sekundu |125 MB za sekundu | 150 MB za sekundu | 200 MB za sekundu | 250 MB za sekundu | 250 MB za sekundu | 
+Azure Premium Storage nabízí osm GA velikosti disků a třech velikostech disků, které jsou aktuálně ve verzi preview. Velikost každého disku má limit různých škálování pro vstupně-výstupních operací, šířku pásma a úložiště. Volby nejvhodnější velikosti disků úložiště úrovně Premium v závislosti na požadavcích aplikace a vysokou škálovatelností velikost virtuálního počítače. Následující tabulka ukazuje velikosti jedenáct disků a jejich funkce. Velikosti P4 P6, P15, P60, P70 a P80 jsou aktuálně podporuje jenom pro službu Managed Disks.
 
+| Typ disky Premium  | P4    | P6    | P10   | P15 | P20   | P30   | P40   | P50   | P60   | P70   | P80   |
+|---------------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
+| Velikost disku           | 32 GiB | 64 GiB | 128 GiB| 256 GiB| 512 GB            | 1 024 giB (1 TB)    | 2 048 giB (2 TB)    | 4095 giB (4 TB)    | 8192 giB (8 TB)    | 16384 giB (16 TB)    | 32 767 giB (32 GB)    |
+| Vstupně-výstupní operace za sekundu / disk       | 120   | 240   | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12 500              | 15 000              | 20,000              |
+| Propustnost / disk | 25 MiB za sekundu  | 50 MiB za sekundu  | 100 MiB za sekundu |125 MiB za sekundu | 150 MiB za sekundu | 200 MiB za sekundu | 250 MiB za sekundu | 250 MiB za sekundu | 480 MiB za sekundu | 750 MiB za sekundu | 750 MiB za sekundu |
 
 Kolik disků, které zvolíte, závisí na disku velikost zvolená. Můžete použít jeden disk P50 nebo více disků P10 pro splnění požadavků vašich aplikací. Zohlednit při rozhodování níže uvedené důležité informace o účtu.
 
@@ -216,8 +238,6 @@ Například, pokud požadavek na aplikaci je maximálně 250 MB za sekundu, prop
 > Čtení obsluhuje mezipaměti nejsou součástí diskové vstupně-výstupních operací a propustnosti, proto nevztahuje se na ně omezení disku. Mezipaměť má samostatné limit IOPS a propustnost na virtuální počítač.
 >
 > Zpočátku operací čtení a zápisu jsou například 60MB za sekundu a 40MB za sekundu v uvedeném pořadí. V průběhu času mezipaměti warms a obsluhuje více a více čtení z mezipaměti. Potom můžete získat zápisu vyšší propustnost disku.
->
->
 
 *Počet disků*  
 Určete počet disků, které budete potřebovat tím, že posoudí požadavky aplikace. Všechny velikosti virtuálních počítačů má také omezený počet disků, které můžete připojit k virtuálnímu počítači. Obvykle je to dvojnásobný počet jader. Ujistěte se, že velikost virtuálního počítače, které zvolíte podporují počet disků.
@@ -225,12 +245,12 @@ Určete počet disků, které budete potřebovat tím, že posoudí požadavky a
 Mějte na paměti, disků Premium Storage mají vyšší výkon funkce ve srovnání s disky Storage úrovně Standard. Proto pokud provádíte migraci aplikace z virtuálního počítače Azure IaaS pomocí úložiště úrovně Standard na Premium Storage, budete pravděpodobně potřebovat méně disky úrovně premium, abyste dosáhli stejné nebo vyšší výkon pro vaše aplikace.
 
 ## <a name="disk-caching"></a>Používání mezipaměti disku
+
 Vysoké škálování virtuálních počítačů, které využívají Azure Premium Storage mají vícevrstvé technologií ukládání do mezipaměti volá BlobCache. BlobCache používá kombinaci RAM virtuálního počítače a místní disk SSD pro ukládání do mezipaměti. Tato mezipaměť je dostupná pro trvalé disky úrovně Premium Storage a místní disky virtuálních počítačů. Ve výchozím nastavení toto nastavení mezipaměti je nastavena pro čtení a zápis pro disky s operačním systémem a jen pro čtení pro datové disky hostované na Premium Storage. Pomocí disku na disky Storage úrovně Premium povolené ukládání do mezipaměti, virtuální počítače s vysokou škálovatelností může dosáhnout velmi vysokou úroveň výkonu, které přesahují základní výkon disku.
 
 > [!WARNING]
+> Ukládání do mezipaměti disku je podporována pouze pro disky o velikosti až 4 TB.
 > Změna nastavení mezipaměti disku Azure odpojí a znovu připojí cílový disk. Pokud je disk s operačním systémem, je virtuální počítač restartoval. Zastavte všechny aplikace nebo služby, které by mohly mít dopad této přerušení před změnou nastavení mezipaměti disku.
->
->
 
 Další informace o tom, jak BlobCache funguje, najdete v tématu uvnitř [Azure Premium Storage](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/) blogový příspěvek.
 
@@ -267,6 +287,7 @@ Jako příklad, můžete použít tyto pokyny pro SQL Server běžící na Premi
    a.  Soubory protokolů mají primárně operace náročné na zápis. Proto že nejsou nijak přínosné mezipaměti jen pro čtení.
 
 ## <a name="disk-striping"></a>Prokládání disků
+
 Při velkém měřítku, které virtuální počítač je připojený s několik trvalých disků premium storage, disky můžete společně prokládané agregovat jejich vstupně-výstupních operací, šířky pásma a kapacity úložiště.
 
 Na Windows můžete prostory úložiště stripe disků najednou. Musíte nakonfigurovat jeden sloupec pro každý disk ve fondu. V opačném případě celkový výkon prokládaný svazek může být nižší, než se očekávalo, z důvodu nerovnoměrné distribuci provozu discích.
@@ -284,10 +305,9 @@ V závislosti na typu úlohy, která vaše aplikace běží, vyberte velikosti o
 
 > [!NOTE]
 > Můžete společně prokládanou maximálně 32 disky storage úrovně premium na DS-series virtuálních počítačů a 64 disky storage úrovně premium na GS-series virtuálních počítačů.
->
->
 
 ## <a name="multi-threading"></a>Více vláken
+
 Azure je navržená tak, platforma Premium Storage bude masivně paralelní. Proto vícevláknové aplikace dosáhne mnohem vyšší výkon než jednovláknová aplikace. Vícevláknové aplikace rozděluje její úkoly napříč několika vlákny a zvyšuje efektivitu spuštění s využitím virtuálních počítačů a diskové prostředky na maximum.
 
 Například pokud vaše aplikace běží na jednojádrový virtuálního počítače pomocí dvěma vlákny, CPU můžete přepínat mezi těmito dvěma vlákny k dosažení efektivity. Zatímco jedno vlákno čeká na disk vstupně-výstupních operací na dokončení, CPU můžete přepnout na vlákno. Tímto způsobem můžete provádět dvěma vlákny více než jedním vláknem a sdíleli. Pokud virtuální počítač má více než jedno jádro, další sníží doba spuštění od každé jádro můžete spustit paralelně úloh.
@@ -301,6 +321,7 @@ Existují nastavení konfigurace, které je možné změnit to ovlivnit více vl
 Další informace o [stupňů paralelismu](https://technet.microsoft.com/library/ms188611.aspx) v systému SQL Server. Přečtěte si tato nastavení, které ovlivňují více vláken v aplikaci a jejich konfigurace za účelem optimalizace výkonu.
 
 ## <a name="queue-depth"></a>Hloubka fronty
+
 Hloubka fronty nebo délka fronty nebo velikost fronty je počet čekajících požadavků na vstupně-výstupní operace v systému. Hodnota hloubky fronty určuje počet operací vstupně-výstupních operací vaší aplikace můžete zarovnejte, který bude zpracovávat disky úložiště. To má vliv na všechny ukazatele výkonu tři aplikace, které jsme probírali v tomto článku tvořeno vstupně-výstupních operací, propustnosti a latence.
 
 Fronty hloubky a ukryta jsou úzce související. Hloubka fronty hodnota udává, kolik více vláken může aplikace dosáhnout. Při velké hloubce fronty aplikace mohou být další operace prováděna současně, jinými slovy, více vláken. Je-li hloubka fronty je malý, i když je aplikace Vícevláknová, nebude mít dostatek požadavky zarovnány pro souběžné spouštění.
@@ -327,9 +348,11 @@ Prokládané svazku udržujte hloubka dostatečně vysoká fronty tak, aby každ
     ![](media/premium-storage-performance/image7.png)
 
 ## <a name="throttling"></a>Throttling
+
 Azure Premium Storage ustanovení zadaný počet IOPS a propustnost v závislosti na velikosti virtuálních počítačů a velikosti disků, které zvolíte. Kdykoli se aplikace pokusí Centrum umožňující prosazovat vstupně-výstupních operací nebo propustnost vyšší než tato omezení, co virtuální počítač nebo disku můžete pracovat, se omezení služby Premium Storage je. To manifesty ve formě snížení výkonu v aplikaci. To může znamenat vyšší latencí, snížení propustnosti nebo nižší vstupně-výstupních operací. Pokud není omezení služby Premium Storage, vaše aplikace může selhat zcela podle překročení, jaké jsou její prostředky schopné dosáhnout. Tak aby se zabránilo problémům s výkonem z důvodu omezení, vždy zřídit dostatek prostředků pro vaši aplikaci. Vzít v úvahu, co jsme probírali v sekcích velikosti disku výše a velikosti virtuálních počítačů. Srovnávací testy je nejlepší způsob, jak zjistit, jaké prostředky, které potřebujete k hostování vaší aplikace.
 
 ## <a name="benchmarking"></a>Srovnávací testy
+
 Srovnávací testy je proces simulace různých úloh ve své aplikaci a měření výkonu aplikace pro jednotlivá zatížení. Pomocí kroků popsaných v předchozí části jste shromáždili požadavky na výkon aplikace. Nástrojích pro srovnávací testy běží na virtuálních počítačích, který je hostitelem aplikace, můžete určit úrovně výkonu, které vaše aplikace může dosáhnout díky službě Premium Storage. V této části nabízíme příklady srovnávací testy Standard DS14 VM zřízené disky Azure Premium Storage.
 
 Jsme použili běžných nástrojích pro srovnávací testy Iometer a FIO, pro Windows a Linux v uvedeném pořadí. Tyto nástroje více vláken simulaci výrobní jako úlohu nejde vytvořit podřízený a měřit výkon systému. Pomocí nástrojů, můžete také nakonfigurovat parametry, jako je velikost a fronty bloku hloubka, které obvykle se nedá změnit pro aplikaci. To poskytuje větší flexibilitu umožňující prosazovat maximální výkon ve velkém měřítku virtuálním počítači zřízeném díky diskům premium pro různé typy úloh aplikací. Další informace o jednotlivých nástrojích pro srovnávací testy najdete tady: [Iometer](http://www.iometer.org/) a [FIO](http://freecode.com/projects/fio).
@@ -341,10 +364,9 @@ Disk s použití mezipaměti u hostitele jen pro čtení budou moci poskytnout v
 
 > **Důležité:**  
 > Mezipaměť musí zahřívání před spuštěním srovnávací testy, pokaždé, když se virtuální počítač nerestartuje.
->
->
 
 #### <a name="iometer"></a>Iometer
+
 [Stáhněte si nástroj Iometer](http://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download) na virtuálním počítači.
 
 *Soubor testu*  
@@ -414,6 +436,7 @@ Tady jsou snímky obrazovky Iometer výsledky testu pro kombinované scénáře 
 ![](media/premium-storage-performance/image10.png)
 
 ### <a name="fio"></a>FIO
+
 FIO je oblíbený nástroj pro srovnávací test úložiště na virtuální počítače s Linuxem. Má flexibilitu k výběru různých velikostí vstupně-výstupních operací, sekvenční nebo náhodné čtení a zápisu. Vytvoří se pracovní vlákna a procesy k provedení zadané vstupně-výstupních operací. Můžete zadat typ každého pracovního vlákna musí provádět pomocí úlohy souborů vstupně-výstupních operací. Vytvořili jsme jeden soubor projektu scénář předvedené v příkladech níže. Můžete změnit podle požadavků v těchto souborech úlohy do testu výkonnosti různé úlohy běžící na Premium Storage. V příkladech používáme spuštěné virtuální počítače Standard DS 14 **Ubuntu**. Použijte stejné nastavení, které jsou popsané na začátku [srovnávací testy části](#Benchmarking) a zahřívání mezipaměti před spuštěním testů srovnávací testy.
 
 Než začnete, [stáhnout FIO](https://github.com/axboe/fio) a nainstalujte ho na virtuálním počítači.
@@ -567,6 +590,7 @@ Při spuštění testů se bude moct zobrazit počet kombinované čtení a záp
 Chcete-li získat maximální kombinovat pro čtení a zápis propustnost, větší velikosti bloku a hloubka fronty velké pomocí více vláken provádění operací čtení a zápisu. Můžete použít velikost bloku 64 kB a hloubka fronty 128.
 
 ## <a name="next-steps"></a>Další kroky
+
 Další informace o službě Azure Premium Storage:
 
 * [Premium Storage: Vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../articles/virtual-machines/windows/premium-storage.md)  

@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: e62dd48af69dd54abd26c21d7510ec872500e274
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: ab0162c6c38b2abef840836114d33f3d92efe1a8
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737426"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042495"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového ve službě Azure Active Directory?
 
->Dostanete o tom, kdy revidovat tuto stránku aktualizace přidáním tohoto [URL](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20in%20azure%20active%20directory%22&locale=docs.microsoft.com/) do vaší ![ikona RSS](./media/whats-new/feed-icon-16x16.png) kanálů.
+>Dostanete o tom, kdy revidovat tuto stránku aktualizace přidáním tohoto [URL](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20in%20azure%20active%20directory%22&locale=en-us/) do vaší ![ikona RSS](./media/whats-new/feed-icon-16x16.png) kanálů.
 
 Azure AD obdrží vylepšení průběžně. Abyste mohli používat aktuální pomocí nejnovější vývoj, tento článek poskytuje informace o:
 

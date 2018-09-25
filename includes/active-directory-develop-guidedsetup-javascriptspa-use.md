@@ -15,131 +15,122 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 94d57abc95dabf1da579f6d2105ca6c74140a86f
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: be8ffeae1977fb2f56e0f85a716d982a6d2f84dc
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46293700"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060818"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>Přihlásit uživatele pomocí knihovny Microsoft Authentication Library (MSAL)
 
-1.  Vytvořte soubor s názvem `app.js`. Pokud používáte Visual Studio, vyberte projekt (Kořenová složka projektu), klikněte pravým tlačítkem myši a vyberte: `Add`  >  `New Item`  >  `JavaScript File`:
-2.  Přidejte následující kód, který vaše `app.js` souboru:
+1. Přidejte následující kód, který vaše `index.html` soubor `<script></script>` značky:
 
 ```javascript
-// Graph API endpoint to show user profile
-var graphApiEndpoint = "https://graph.microsoft.com/v1.0/me";
+//Pass null for default authority (https://login.microsoftonline.com/common)
+var myMSALObj = new Msal.UserAgentApplication(applicationConfig.clientID, null, acquireTokenRedirectCallBack,
+    {storeAuthStateInCookie: true, cacheLocation: "localStorage"});
 
-// Graph API scope used to obtain the access token to read user profile
-var graphAPIScopes = ["https://graph.microsoft.com/user.read"];
-
-// Initialize application
-var userAgentApplication = new Msal.UserAgentApplication(msalconfig.clientID, null, loginCallback, {
-    redirectUri: msalconfig.redirectUri
-});
-
-//Previous version of msal uses redirect url via a property
-if (userAgentApplication.redirectUri) {
-    userAgentApplication.redirectUri = msalconfig.redirectUri;
+function signIn() {
+    myMSALObj.loginPopup(applicationConfig.graphScopes).then(function (idToken) {
+        //Login Success
+        showWelcomeMessage();
+        acquireTokenPopupAndCallMSGraph();
+    }, function (error) {
+        console.log(error);
+    });
 }
 
-window.onload = function () {
-    // If page is refreshed, continue to display user info
-    if (!userAgentApplication.isCallback(window.location.hash) && window.parent === window && !window.opener) {
-        var user = userAgentApplication.getUser();
-        if (user) {
-            callGraphApi();
-        }
-    }
-}
-
-/**
- * Call the Microsoft Graph API and display the results on the page. Sign the user in if necessary
- */
-function callGraphApi() {
-    var user = userAgentApplication.getUser();
-    if (!user) {
-        // If user is not signed in, then prompt user to sign in via loginRedirect.
-        // This will redirect user to the Azure Active Directory v2 Endpoint
-        userAgentApplication.loginRedirect(graphAPIScopes);
-        // The call to loginRedirect above frontloads the consent to query Graph API during the sign-in.
-        // If you want to use dynamic consent, just remove the graphAPIScopes from loginRedirect call.
-        // As such, user will be prompted to give consent when requested access to a resource that 
-        // he/she hasn't consented before. In the case of this application - 
-        // the first time the Graph API call to obtain user's profile is executed.
-    } else {
-        // If user is already signed in, display the user info
-        var userInfoElement = document.getElementById("userInfo");
-        userInfoElement.parentElement.classList.remove("hidden");
-        userInfoElement.innerHTML = JSON.stringify(user, null, 4);
-
-        // Show sign-out button
-        document.getElementById("signOutButton").classList.remove("hidden");
-
-        // Now Call Graph API to show the user profile information:
-        var graphCallResponseElement = document.getElementById("graphResponse");
-        graphCallResponseElement.parentElement.classList.remove("hidden");
-        graphCallResponseElement.innerText = "Calling Graph ...";
-
-        // In order to call the Graph API, an access token needs to be acquired.
-        // Try to acquire the token used to query Graph API silently first:
-        userAgentApplication.acquireTokenSilent(graphAPIScopes)
-            .then(function (token) {
-                //After the access token is acquired, call the Web API, sending the acquired token
-                callWebApiWithToken(graphApiEndpoint, token, graphCallResponseElement, document.getElementById("accessToken"));
-
+function acquireTokenPopupAndCallMSGraph() {
+    //Call acquireTokenSilent (iframe) to obtain a token for Microsoft Graph
+    myMSALObj.acquireTokenSilent(applicationConfig.graphScopes).then(function (accessToken) {
+        callMSGraph(applicationConfig.graphEndpoint, accessToken, graphAPICallback);
+    }, function (error) {
+        console.log(error);
+        // Call acquireTokenPopup (popup window) in case of acquireTokenSilent failure due to consent or interaction required ONLY
+        if (error.indexOf("consent_required") !== -1 || error.indexOf("interaction_required") !== -1 || error.indexOf("login_required") !== -1) {
+            myMSALObj.acquireTokenPopup(applicationConfig.graphScopes).then(function (accessToken) {
+                callMSGraph(applicationConfig.graphEndpoint, accessToken, graphAPICallback);
             }, function (error) {
-                // If the acquireTokenSilent() method fails, then acquire the token interactively via acquireTokenRedirect().
-                // In this case, the browser will redirect user back to the Azure Active Directory v2 Endpoint so the user 
-                // can reenter the current username/ password and/ or give consent to new permissions your application is requesting.
-                // After authentication/ authorization completes, this page will be reloaded again and callGraphApi() will be executed on page load.
-                // Then, acquireTokenSilent will then get the token silently, the Graph API call results will be made and results will be displayed in the page.
-                if (error) {
-                    userAgentApplication.acquireTokenRedirect(graphAPIScopes);
-                }
+                console.log(error);
             });
-    }
+        }
+    });
 }
 
-/**
- * Callback method from sign-in: if no errors, call callGraphApi() to show results.
- * @param {string} errorDesc - If error occur, the error message
- * @param {object} token - The token received from sign-in
- * @param {object} error - The error string
- * @param {string} tokenType - The token type: For loginRedirect, tokenType = "id_token". For acquireTokenRedirect, tokenType:"access_token".
- */
-function loginCallback(errorDesc, token, error, tokenType) {
-    if (errorDesc) {
-        showError(msal.authority, error, errorDesc);
-    } else {
-        callGraphApi();
-    }
+function graphAPICallback(data) {
+    //Display user data on DOM
+    var divWelcome = document.getElementById('WelcomeMessage');
+    divWelcome.innerHTML += " to Microsoft Graph API!!";
+    document.getElementById("json").innerHTML = JSON.stringify(data, null, 2);
 }
 
-/**
- * Show an error message in the page
- * @param {string} endpoint - the endpoint used for the error message
- * @param {string} error - Error string
- * @param {string} errorDesc - Error description
- */
-function showError(endpoint, error, errorDesc) {
-    var formattedError = JSON.stringify(error, null, 4);
-    if (formattedError.length < 3) {
-        formattedError = error;
-    }
-    document.getElementById("errorMessage").innerHTML = "An error has occurred:<br/>Endpoint: " + endpoint + "<br/>Error: " + formattedError + "<br/>" + errorDesc;
-    console.error(error);
+function showWelcomeMessage() {
+    var divWelcome = document.getElementById('WelcomeMessage');
+    divWelcome.innerHTML += 'Welcome ' + myMSALObj.getUser().name;
+    var loginbutton = document.getElementById('SignIn');
+    loginbutton.innerHTML = 'Sign Out';
+    loginbutton.setAttribute('onclick', 'signOut();');
 }
 
+// This function can be removed if you do not need to support IE
+function acquireTokenRedirectAndCallMSGraph() {
+    //Call acquireTokenSilent (iframe) to obtain a token for Microsoft Graph
+    myMSALObj.acquireTokenSilent(applicationConfig.graphScopes).then(function (accessToken) {
+      callMSGraph(applicationConfig.graphEndpoint, accessToken, graphAPICallback);
+    }, function (error) {
+        console.log(error);
+        //Call acquireTokenRedirect in case of acquireToken Failure
+        if (error.indexOf("consent_required") !== -1 || error.indexOf("interaction_required") !== -1 || error.indexOf("login_required") !== -1) {
+            myMSALObj.acquireTokenRedirect(applicationConfig.graphScopes);
+        }
+    });
+}
+
+function acquireTokenRedirectCallBack(errorDesc, token, error, tokenType)
+{
+ if(tokenType === "access_token")
+ {
+     callMSGraph(applicationConfig.graphEndpoint, accessToken, graphAPICallback);
+ } else {
+     console.log("token type is:"+tokenType);
+ }
+}
+
+
+// Browser check variables
+var ua = window.navigator.userAgent;
+var msie = ua.indexOf('MSIE ');
+var msie11 = ua.indexOf('Trident/');
+var msedge = ua.indexOf('Edge/');
+var isIE = msie > 0 || msie11 > 0;
+var isEdge = msedge > 0;
+
+//If you support IE, our recommendation is that you sign-in using Redirect APIs
+//If you as a developer are testing using Edge InPrivate mode, please add "isEdge" to the if check
+if (!isIE) {
+    if (myMSALObj.getUser()) {// avoid duplicate code execution on page load in case of iframe and popup window.
+        showWelcomeMessage();
+        acquireTokenPopupAndCallMSGraph();
+    }
+}
+else {
+    document.getElementById("SignIn").onclick = function () {
+        myMSALObj.loginRedirect(applicationConfig.graphScopes);
+    };
+    if (myMSALObj.getUser() && !myMSALObj.isCallback(window.location.hash)) {// avoid duplicate code execution on page load in case of iframe and popup window.
+        showWelcomeMessage();
+        acquireTokenRedirectAndCallMSGraph();
+    }
+}
 ```
 
 <!--start-collapse-->
 ### <a name="more-information"></a>Další informace
 
-Po kliknutí *"Volat Microsoft Graph API"* tlačítko poprvé, `callGraphApi` volání metody `loginRedirect` k přihlášení uživatele. Výsledkem přesměrování uživatele do této metody *koncového bodu Microsoft Azure Active Directory v2* výzvu a ověření přihlašovacích údajů uživatele. V důsledku u úspěšné přihlášení, bude uživatel přesměrován zpět na původní *index.html* stránky a token pro přijetí zpracovány `msal.js` a informací obsažených v tokenu se uloží do mezipaměti. Tento token se označuje jako *ID token* a obsahuje základní informace o uživateli, jako je zobrazované jméno uživatele. Pokud máte v plánu používat data poskytuje tento token pro účely, musíte zajistit, aby že tento token je potvrzen v back-end serveru k zajištění, že byl token vydán platnému uživateli služby pro vaši aplikaci.
+Po kliknutí *"Sign In"* tlačítko poprvé, `signIn` volání metody `loginPopup` k přihlášení uživatele. Tato metoda má za následek otevřete okno automaticky otevírané okno s *koncového bodu Microsoft Azure Active Directory v2* výzvu a ověření přihlašovacích údajů uživatele. V důsledku u úspěšné přihlášení, bude uživatel přesměrován zpět na původní *index.html* stránky a token pro přijetí zpracovány `msal.js` a informací obsažených v tokenu se uloží do mezipaměti. Tento token se označuje jako *ID token* a obsahuje základní informace o uživateli, jako je zobrazované jméno uživatele. Pokud máte v plánu používat data poskytuje tento token pro účely, musíte zajistit, aby že tento token je potvrzen v back-end serveru k zajištění, že byl token vydán platnému uživateli služby pro vaši aplikaci.
 
-Jednostránková aplikace vygenerované Tato příručka neposkytuje využívání ID token – místo toho, které volá `acquireTokenSilent` a/nebo `acquireTokenRedirect` získat *přístupový token* používá k dotazování na rozhraní Microsoft Graph API. Pokud potřebujete vzorku, který ověří ID token, podívejte se na [to](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "active-directory-javascript-singlepageapp-dotnet-webapi-v2 ukázky Githubu") ukázková aplikace v Githubu – Ukázka používá ASP .NET webového rozhraní API pro ověřování tokenů.
+Jednostránková aplikace vygenerované to provede volání `acquireTokenSilent` a/nebo `acquireTokenPopup` získat *přístupový token* používá k dotazování na rozhraní Microsoft Graph API pro informace o profilu uživatele. Pokud potřebujete vzorku, který ověří ID token, podívejte se na [to](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "active-directory-javascript-singlepageapp-dotnet-webapi-v2 ukázky Githubu") ukázková aplikace v Githubu – Ukázka používá ASP .NET webového rozhraní API pro ověřování tokenů.
 
 #### <a name="getting-a-user-token-interactively"></a>Získání tokenu uživatele interaktivně
 
@@ -148,89 +139,53 @@ Po počátečním přihlášení, nechcete žádat uživatele nutnost opakované
 - Aplikace žádá o přístup k prostředku, který uživatel musí vyjádřit souhlas
 - Dvoufaktorové ověřování je povinné
 
-Volání *acquireTokenRedirect(scope)* výsledkem přesměrování uživatelů na koncový bod Azure Active Directory v2 (nebo *acquireTokenPopup(scope)* výsledky v automaticky otevíraném okně) Pokud uživatelé potřebují pracovat potvrzení přihlašovacích údajů, udělení souhlasu pro požadovaný prostředek, nebo dokončení dvoufaktorové ověřování.
+Volání *acquireTokenPopup(scope)* výsledky v automaticky otevíraném okně (nebo *acquireTokenRedirect(scope)* výsledkem přesměrování uživatelů na koncový bod Azure Active Directory verze 2) Pokud uživatelé potřebují k interakce potvrzení přihlašovacích údajů, udělení souhlasu pro požadovaný prostředek, nebo dokončení dvoufaktorového ověřování.
 
 #### <a name="getting-a-user-token-silently"></a>Získání tokenu uživatele bez upozornění
-` acquireTokenSilent` Obsluhovala token pořízení a obnovení bez nutnosti zásahu uživatele. Po `loginRedirect` (nebo `loginPopup`) provádí poprvé, `acquireTokenSilent` je metoda běžně používá k získání tokenů použít pro přístup k chráněným prostředkům pro pozdější volání – jako volání na vyžádání nebo tokeny obnovení probíhají bezobslužně.
+` acquireTokenSilent` Obsluhovala token pořízení a obnovení bez nutnosti zásahu uživatele. Po `loginPopup` (nebo `loginRedirect`) provádí poprvé, `acquireTokenSilent` je metoda běžně používá k získání tokenů použít pro přístup k chráněným prostředkům pro pozdější volání – jako volání na vyžádání nebo tokeny obnovení probíhají bezobslužně.
 `acquireTokenSilent` nemusí v některých případech – třeba hesla vypršela. Vaše aplikace dokáže zpracovat tuto výjimku dvěma způsoby:
 
-1.  Volání `acquireTokenRedirect` okamžitě, jehož výsledkem výzvy k přihlášení. Tento model se běžně používá v online aplikace tam, kde není žádná neověřená obsah v aplikaci k dispozici pro uživatele. Ukázka vygeneroval tento instalační program s asistencí používá tento model.
+1.  Volání `acquireTokenPopup` okamžitě, jehož výsledkem výzvy k přihlášení. Tento model se běžně používá v online aplikace tam, kde není žádná neověřená obsah v aplikaci k dispozici pro uživatele. Ukázka vygeneroval tento instalační program s asistencí používá tento model.
 
 2. Aplikace lze také nastavit vizuální označení pro uživatele, který interaktivnímu přihlášení je nutné, takže uživatel může vybrat správný čas pro přihlášení, nebo aplikace může pokus zopakovat, `acquireTokenSilent` později. To se běžně používá, když uživatel může používat další funkce aplikace bez narušení – například je neověřené obsah k dispozici v aplikaci. V takovém případě se uživatel může rozhodnout, pokud chtějí přihlášení pro přístup k chráněnému prostředku nebo aktualizujte zastaralé informace.
 
+> [!NOTE]
+> Výše uvedený kód používá `loginRedirect` a `acquireTokenRedirect` metody, když se používá prohlížeč je aplikace Internet Explorer z důvodu [známý problém](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser) souvisejících s zpracování zobrazována místní okna v prohlížeči Internet Explorer.
 <!--end-collapse-->
 
 ## <a name="call-the-microsoft-graph-api-using-the-token-you-just-obtained"></a>Volání rozhraní Microsoft Graph API pomocí tokenu, který jste získali
 
-Přidejte následující kód, který vaše `app.js` souboru:
+Přidejte následující kód, který vaše `index.html` soubor `<script></script>` značky:
 
 ```javascript
-/**
- * Call a Web API using an access token.
- * @param {any} endpoint - Web API endpoint
- * @param {any} token - Access token
- * @param {object} responseElement - HTML element used to display the results
- * @param {object} showTokenElement = HTML element used to display the RAW access token
- */
-function callWebApiWithToken(endpoint, token, responseElement, showTokenElement) {
-    var headers = new Headers();
-    var bearer = "Bearer " + token;
-    headers.append("Authorization", bearer);
-    var options = {
-        method: "GET",
-        headers: headers
-    };
-
-    fetch(endpoint, options)
-        .then(function (response) {
-            var contentType = response.headers.get("content-type");
-            if (response.status === 200 && contentType && contentType.indexOf("application/json") !== -1) {
-                response.json()
-                    .then(function (data) {
-                        // Display response in the page
-                        console.log(data);
-                        responseElement.innerHTML = JSON.stringify(data, null, 4);
-                        if (showTokenElement) {
-                            showTokenElement.parentElement.classList.remove("hidden");
-                            showTokenElement.innerHTML = token;
-                        }
-                    })
-                    .catch(function (error) {
-                        showError(endpoint, error);
-                    });
-            } else {
-                response.json()
-                    .then(function (data) {
-                        // Display response as error in the page
-                        showError(endpoint, data);
-                    })
-                    .catch(function (error) {
-                        showError(endpoint, error);
-                    });
-            }
-        })
-        .catch(function (error) {
-            showError(endpoint, error);
-        });
+function callMSGraph(theUrl, accessToken, callback) {
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200)
+            callback(JSON.parse(this.responseText));
+    }
+    xmlHttp.open("GET", theUrl, true); // true for asynchronous
+    xmlHttp.setRequestHeader('Authorization', 'Bearer ' + accessToken);
+    xmlHttp.send();
 }
 ```
 <!--start-collapse-->
 
 ### <a name="more-information-on-making-a-rest-call-against-a-protected-api"></a>Další informace o provádění volání REST chráněné rozhraní API
 
-V ukázkové aplikaci vytvořil tento průvodce `callWebApiWithToken()` aby protokolu HTTP se používá metoda `GET` požadavku na chráněný prostředek, který se vyžaduje token a potom vrátí obsah volajícímu. Tato metoda přidá tokenu získaného v *hlavičku protokolu HTTP ověřování*. Pro ukázkovou aplikaci vytvořené v této příručce, prostředek je v rozhraní Microsoft Graph API *mě* koncový bod – zobrazí informace o profilu uživatele.
+V ukázkové aplikaci vytvořil tento průvodce `callMSGraph()` aby protokolu HTTP se používá metoda `GET` požadavku na chráněný prostředek, který se vyžaduje token a potom vrátí obsah volajícímu. Tato metoda přidá tokenu získaného v *hlavičku protokolu HTTP ověřování*. Pro ukázkovou aplikaci vytvořené v této příručce, prostředek je v rozhraní Microsoft Graph API *mě* koncový bod – zobrazí informace o profilu uživatele.
 
 <!--end-collapse-->
 
 ## <a name="add-a-method-to-sign-out-the-user"></a>Přidejte metodu k neodhlásí uživatele
 
-Přidejte následující kód, který vaše `app.js` souboru:
+Přidejte následující kód, který vaše `index.html` soubor `<script></script>` značky:
 
 ```javascript
 /**
  * Sign out the user
  */
-function signOut() {
-    userAgentApplication.logout();
-}
+ function signOut() {
+     myMSALObj.logout();
+ }
 ```

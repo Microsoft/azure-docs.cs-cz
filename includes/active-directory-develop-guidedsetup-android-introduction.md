@@ -15,23 +15,23 @@ ms.workload: identity
 ms.date: 09/13/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 7e7e9d078bf9339beb2ad5ac53ea858e843242ce
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: a1cd25012461ae8bb445dcb1de8fe5be49e04760
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46293596"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47061008"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Přihlašování uživatelů a volání Microsoft Graphu z aplikace pro Android
 
-V tomto kurzu se dozvíte, jak vytvářet aplikace pro Android a integrovat do společnosti Microsoft identity platform. Konkrétně tato aplikace se přihlásit uživatele získání přístupového tokenu pro volání rozhraní Microsoft Graph API a vytvořte žádost na základní rozhraní Microsoft Graph API.  
+V tomto kurzu se dozvíte, jak vytvářet aplikace pro Android a integrace do Microsoft identity platform. Konkrétně tato aplikace se přihlásit uživatele získání přístupového tokenu pro volání rozhraní Microsoft Graph API a vytvořte žádost na základní rozhraní Microsoft Graph API.  
 
 Po dokončení průvodce bude vaše aplikace akceptovat přihlášení osobní účty Microsoft (včetně outlook.com, live.com a další) a pracovní nebo školní účty z jakéhokoli společnosti nebo organizace, která používá Azure Active Directory. 
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Jak funguje ukázkové aplikace vygenerované v této příručce
 ![Fungování této ukázky](media/active-directory-develop-guidedsetup-android-intro/android-intro.png)
 
-Aplikace v této ukázce se přihlásit uživatele a jejich jménem získat data.  Tato data budou mít přístup přes vzdálenou API (Microsoft Graph API v tomto případě), který vyžaduje ověření a je také chráněný platformou identit společnosti Microsoft. 
+Aplikace v této ukázce se přihlásit uživatele a jejich jménem získat data.  Tato data budou mít přístup přes vzdálenou API (Microsoft Graph API v tomto případě), který vyžaduje ověření a také chráněn platforma identit Microsoft. 
 
 Přesněji řečeno, 
 * Vaše aplikace se spustí webovou stránku pro přihlášení uživatele.

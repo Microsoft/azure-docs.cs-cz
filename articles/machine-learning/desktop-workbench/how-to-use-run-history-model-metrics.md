@@ -11,14 +11,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: 34fe72087a3de133d65ea4a4737ab5dba45242f4
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 52b02460d444464211fc74c8982379424abebb5c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35642796"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965492"
 ---
 # <a name="how-to-use-run-history-and-model-metrics-in-azure-machine-learning-workbench"></a>Postup použití historie spouštění a metriky modelu v aplikaci Azure Machine Learning Workbench
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Azure Machine Learning Workbench podporuje datové vědy experimentování ve službě prostřednictvím jeho **historie běhů** a **metrik Model** funkce.
 **Historie spuštění** poskytuje prostředky ke sledování výstupů vašich se strojovým učením a pak povolí filtrování a porovnání jejich výsledky.
@@ -27,8 +32,8 @@ Tento článek popisuje, jak efektivně využívat tyto funkce, které zvyšují
 
 ## <a name="prerequisites"></a>Požadavky
 Pro jednotlivé kroky v této příručce s postupy, musíte:
-* [Vytvořte a nainstalujte Azure Machine Learning](../service/quickstart-installation.md)
-- [Vytvoření projektu](../service/quickstart-installation.md)
+* [Vytvořte a nainstalujte Azure Machine Learning](quickstart-installation.md)
+- [Vytvoření projektu](quickstart-installation.md)
 
 
 ## <a name="azure-ml-logging-api-overview"></a>Přehled rozhraní API pro Azure ML protokolování
@@ -51,7 +56,7 @@ logger.log("all values", [5, 6, 7])
 Je snadné použijte protokolovací nástroj v rámci vašich projektů Azure ML Workbench a v tomto článku se dozvíte, jak postupovat.
 
 ## <a name="create-a-project-in-azure-ml-workbench"></a>Vytvoření projektu v aplikaci Azure ML Workbench
-Pokud projekt ještě nemáte, můžete vytvořit jeden z [vytvoření a instalace rychlý Start](../service/quickstart-installation.md) z **řídicí panel projekt**, můžete otevřít **iris_sklearn.py** skriptu () jak je znázorněno.)
+Pokud projekt ještě nemáte, můžete vytvořit jeden z [vytvoření a instalace rychlý Start](quickstart-installation.md) z **řídicí panel projekt**, můžete otevřít **iris_sklearn.py** skriptu () jak je znázorněno.)
 
 ![na kartě souborů přístup ke skriptu](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-01b.png)
 

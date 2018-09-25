@@ -1,5 +1,5 @@
 ---
-title: Azure instalace ovladačů v instancích N-series pro Linux | Dokumentace Microsoftu
+title: Azure instalace ovladačů v instancích N-series GPU pro Linux | Dokumentace Microsoftu
 description: Jak nastavit ovladače NVIDIA GPU pro virtuální počítače řady N-series s Linuxem v Azure
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/30/2018
+ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3d85bc79ddd08cb051b2e4d978a931f460020c10
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 822261e74f7da941ac89090e5d493c4be18bc307
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364496"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038880"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Instalace ovladačů NVIDIA GPU na virtuálních počítačích řady N-series s Linuxem
 
@@ -55,7 +55,7 @@ Potom spusťte instalaci příkazů specifických pro vaši distribuci.
 
 1. Stáhněte a nainstalujte CUDA ovladače.
   ```bash
-  CUDA_REPO_PKG=cuda-repo-ubuntu1604_9.1.85-1_amd64.deb
+  CUDA_REPO_PKG=cuda-repo-ubuntu1604_10.0.130-1_amd64.deb
 
   wget -O /tmp/${CUDA_REPO_PKG} http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/${CUDA_REPO_PKG} 
 
@@ -99,7 +99,7 @@ sudo reboot
 
 ### <a name="centos-or-red-hat-enterprise-linux-73-or-74"></a>CentOS nebo Red Hat Enterprise Linux 7.3 nebo 7.4
 
-1. Aktualizujte jádra.
+1. Aktualizujte jádra (doporučeno). Pokud se rozhodnete neaktualizovat jádra, ujistěte se, že verze `kernel-devel` a `dkms` jsou vhodné pro vaše jádra.
 
   ```
   sudo yum install kernel kernel-tools kernel-headers kernel-devel
@@ -127,7 +127,7 @@ sudo reboot
 
   sudo yum install dkms
 
-  CUDA_REPO_PKG=cuda-repo-rhel7-9.1.85-1.x86_64.rpm
+  CUDA_REPO_PKG=cuda-repo-rhel7-10.0.130-1.x86_64.rpm
 
   wget http://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/${CUDA_REPO_PKG} -O /tmp/${CUDA_REPO_PKG}
 
@@ -170,9 +170,9 @@ Nasazení podporující RDMA virtuálních počítačů řady N-series z někter
 
 * **Založené na centOS 7.4 HPC** -ovladače RDMA a Intel MPI 5.1 jsou nainstalovány ve virtuálním počítači.
 
-## <a name="install-grid-drivers-on-nv-series-vms"></a>Instalace ovladačů mřížky na virtuálních počítačích řada NV
+## <a name="install-grid-drivers-on-nv-or-nvv2-series-vms"></a>Instalace ovladačů mřížky na NV nebo virtuálních počítačích řady NVv2
 
-Instalace ovladačů NVIDIA GRID na NV-series virtuálních počítačů, vytvořte připojení SSH ke všem virtuálním počítačům a postupujte podle kroků pro vaši Linuxovou distribuci. 
+Instalace ovladačů NVIDIA GRID na NV nebo virtuálních počítačích řady NVv2, vytvořte připojení SSH ke všem virtuálním počítačům a postupujte podle kroků pro vaši Linuxovou distribuci. 
 
 ### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
 
@@ -189,7 +189,7 @@ Instalace ovladačů NVIDIA GRID na NV-series virtuálních počítačů, vytvo�
 
   sudo apt-get install build-essential ubuntu-desktop -y
   ```
-3. Zakážete Nouveau ovladač jádra, která není kompatibilní s ovladač NVIDIA. (Použijte pouze ovladač NVIDIA na virtuálních počítačích NV.) Chcete-li to provést, vytvořte soubor v `/etc/modprobe.d `s názvem `nouveau.conf` s následujícím obsahem:
+3. Zakážete Nouveau ovladač jádra, která není kompatibilní s ovladač NVIDIA. (Použijte pouze ovladač NVIDIA na NV nebo NVv2 virtuální počítače.) Chcete-li to provést, vytvořte soubor v `/etc/modprobe.d `s názvem `nouveau.conf` s následujícím obsahem:
 
   ```
   blacklist nouveau
@@ -232,7 +232,7 @@ Instalace ovladačů NVIDIA GRID na NV-series virtuálních počítačů, vytvo�
 
 ### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS nebo Red Hat Enterprise Linux 
 
-1. Aktualizace jádra a DKMS.
+1. Aktualizace jádra a DKMS (doporučeno). Pokud se rozhodnete neaktualizovat jádra, ujistěte se, že verze `kernel-devel` a `dkms` jsou vhodné pro vaše jádra.
  
   ```bash  
   sudo yum update
@@ -244,7 +244,7 @@ Instalace ovladačů NVIDIA GRID na NV-series virtuálních počítačů, vytvo�
   sudo yum install dkms
   ```
 
-2. Zakážete Nouveau ovladač jádra, která není kompatibilní s ovladač NVIDIA. (Použijte pouze ovladač NVIDIA na virtuálních počítačích NV.) Chcete-li to provést, vytvořte soubor v `/etc/modprobe.d `s názvem `nouveau.conf` s následujícím obsahem:
+2. Zakážete Nouveau ovladač jádra, která není kompatibilní s ovladač NVIDIA. (Použijte pouze ovladač NVIDIA na NV nebo NV2 virtuální počítače.) Chcete-li to provést, vytvořte soubor v `/etc/modprobe.d `s názvem `nouveau.conf` s následujícím obsahem:
 
   ```
   blacklist nouveau
@@ -304,7 +304,7 @@ Pokud je nainstalovaný ovladač, zobrazí se výstup podobný následujícímu.
  
 
 ### <a name="x11-server"></a>X11 serveru
-Pokud budete potřebovat X11 server pro vzdálená připojení k virtuálnímu počítači NV, [x11vnc](http://www.karlrunge.com/x11vnc/) se doporučuje, protože umožňuje hardwarovou akceleraci grafiky. BusID M60 zařízení je nutné ručně přidat do X11 konfigurační soubor (obvykle `etc/X11/xorg.conf`). Přidat `"Device"` části podobný následujícímu:
+Pokud budete potřebovat X11 server pro vzdálená připojení na NV nebo NVv2 VM [x11vnc](http://www.karlrunge.com/x11vnc/) se doporučuje, protože umožňuje hardwarovou akceleraci grafiky. BusID M60 zařízení je nutné ručně přidat do X11 konfigurační soubor (obvykle `etc/X11/xorg.conf`). Přidat `"Device"` části podobný následujícímu:
  
 ```
 Section "Device"

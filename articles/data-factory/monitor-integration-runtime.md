@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: douglasl
-ms.openlocfilehash: 59c2f865ae5e056b0fabb360712f6eb622943145
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 4f1e6e7e61cdfd72251120f3c03df7a689aecafe
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574616"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997450"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Monitorování prostředí integration runtime ve službě Azure Data Factory  
 **Prostředí Integration runtime** je výpočetní infrastruktura, službou Azure Data Factory používá k poskytování různé možnosti integrace dat v různých síťových prostředích. Existují tři typy prostředí integration runtime nabízí datové továrny:
@@ -168,10 +168,10 @@ Prostředí Azure-SSIS integration runtime je plně spravovaný cluster Azure vi
 | NodeSize | Velikost každého uzlu vašeho prostředí Azure-SSIS integration runtime. |
 | NodeCount | Počet uzlů v prostředí Azure-SSIS integration runtime. |
 | MaxParallelExecutionsPerNode | Počet paralelních úloh na uzlu v prostředí Azure-SSIS integration runtime. |
-| CatalogServerEndpoint | Koncový bod vašeho existujícího serveru Azure SQL Database/spravované Instance (Preview) pro hostování služby SSISDB. |
-| CatalogAdminUserName | Uživatelské jméno správce vašeho existujícího serveru Azure SQL Database/spravované Instance (Preview). Služba data Factory používá tyto informace můžete připravit a spravovat databáze SSISDB vaším jménem. |
-| CatalogAdminPassword | Heslo správce vašeho existujícího serveru Azure SQL Database/spravované Instance (Preview). |
-| CatalogPricingTier | Cenovou úroveň pro databází SSISDB hostovanou ve vaší stávající server Azure SQL Database.  Neplatí pro Azure SQL Managed Instance (Preview) hostování databáze SSISDB. |
+| CatalogServerEndpoint | Koncový bod vašeho existujícího serveru Azure SQL Database/spravované Instance pro hostování služby SSISDB. |
+| CatalogAdminUserName | Uživatelské jméno správce z existujícího serveru Azure SQL Database/spravované Instance. Služba data Factory používá tyto informace můžete připravit a spravovat databáze SSISDB vaším jménem. |
+| CatalogAdminPassword | Heslo správce existujícího serveru Azure SQL Database/spravované Instance. |
+| CatalogPricingTier | Cenovou úroveň pro databází SSISDB hostovanou ve vaší stávající server Azure SQL Database.  Neplatí pro Azure SQL Database Managed Instance hostování databáze SSISDB. |
 | VNetId | Virtuální síť ID prostředku pro prostředí Azure-SSIS integration runtime připojit. |
 | Podsíť | Název podsítě pro vaše prostředí Azure-SSIS integration runtime připojit. |
 | ID | ID prostředku vašeho prostředí Azure-SSIS integration runtime. |
@@ -223,7 +223,7 @@ Naleznete v následujících článcích se dozvíte další informace o Azure-S
 
 - [Prostředí Azure-SSIS Integration Runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime). Tento článek obsahuje koncepční informace o prostředí integration runtime obecně včetně Azure-SSIS IR. 
 - [Kurz: Nasazení balíčků SSIS do Azure](tutorial-create-azure-ssis-runtime-portal.md) Tento článek obsahuje podrobné pokyny pro vytvoření Azure-SSIS IR a využívá databázi Azure SQL k hostování katalogu SSIS. 
-- [Postup: Vytvoření prostředí Azure-SSIS Integration Runtime](create-azure-ssis-integration-runtime.md) Tento článek dále navazuje na tento kurz a obsahuje pokyny k použití spravované instance SQL Azure (Preview) a připojení IR k virtuální síti. 
+- [Postup: Vytvoření prostředí Azure-SSIS Integration Runtime](create-azure-ssis-integration-runtime.md) Tento článek dál navazuje na tento kurz a obsahuje pokyny k používání Azure SQL Database Managed Instance a připojení IR k virtuální síti. 
 - [Správa Azure-SSIS IR](manage-azure-ssis-integration-runtime.md). Tento článek ukazuje, jak zastavit, spustit nebo odebrat Azure-SSIS IR. Ukazuje také postup horizontálního navýšení kapacity Azure-SSIS IR přidáním více uzlů. 
 - [Připojení Azure-SSIS IR k virtuální síti](join-azure-ssis-integration-runtime-virtual-network.md). Tento článek obsahuje koncepční informace o připojení Azure-SSIS IR k virtuální síti Azure. Poskytuje také kroky konfigurace virtuální sítě tak, aby prostředí Azure-SSIS IR se může připojit k virtuální síti pomocí webu Azure portal. 
 

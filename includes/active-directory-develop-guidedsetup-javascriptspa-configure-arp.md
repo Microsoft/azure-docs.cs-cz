@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: fc06da3b1ad66aa15237a25d2f50374043c860ba
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: eead4c6a66a317c7404205415cbf04c442ffe8d1
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46293706"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060929"
 ---
 ## <a name="add-the-applications-registration-information-to-your-app"></a>Informace o registraci vaší aplikace přidejte do své aplikace
 
@@ -31,26 +31,26 @@ V tomto kroku budete muset nakonfigurovat adresy URL přesměrování registrač
 Konfigurace `Redirect URL` polí s adresou URL pro stránku index.html založené na vašem webovém serveru a potom klikněte na *aktualizace*.
 
 
-> #### <a name="visual-studio-instructions-for-obtaining-redirect-url"></a>Visual Studio pokyny pro získání adresy URL pro přesměrování
-> Získat adresu URL přesměrování:
-> 1.    V *Průzkumníka řešení*, vyberte projekt a podívejte se na `Properties` okna (Pokud se nezobrazí okno Vlastnosti, stiskněte klávesu `F4`)
-> 2.    Zkopírujte hodnotu z `URL` do schránky:<br/> ![Vlastnosti projektu](media/active-directory-develop-guidedsetup-javascriptspa-configure/vs-project-properties-screenshot.png)<br />
-> 3.    Vložte tuto hodnotu jako `Redirect URL` horní části této stránky, klikněte na `Update`
+> #### <a name="visual-studio-instructions-for-obtaining-the-redirect-url"></a>Visual Studio pokyny pro získání adresy URL pro přesměrování
+> Postupujte podle těchto kroků k získání adresy URL pro přesměrování:
+> 1.    V **Průzkumníka řešení**, vyberte projekt a podívejte se na **vlastnosti** okna. Pokud se nezobrazí **vlastnosti** okna, stisknutím klávesy **F4**.
+> 2.    Zkopírujte hodnotu z **URL** do schránky:<br/> ![Vlastnosti projektu](media/active-directory-develop-guidedsetup-javascriptspa-configure/vs-project-properties-screenshot.png)<br />
+> 3.    Vložte tuto hodnotu jako **adresy URL pro přesměrování** horní části této stránky, klikněte na **aktualizace**
 
 <p/>
 
 > #### <a name="setting-redirect-url-for-node"></a>Nastavení adresy URL pro přesměrování pro uzel
-> Pro Node.js, můžete nastavit na webu port serveru v *server.js* souboru. Tento kurz používá port 30662 pro odkaz, ale teď můžete použít jakýkoli jiný port, které jsou k dispozici. Chcete-li nastavit adresu URL pro přesměrování v informace o registraci aplikace v každém případě použijte následující pokyny:<br/>
-> Nastavte `http://localhost:30662/` jako `Redirect URL` horní části této stránky, nebo použijte `http://localhost:[port]/` Pokud používáte vlastní port TCP (ve kterém *[port]* je vlastní číslo portu TCP) a potom kliknutím na tlačítko 'Aktualizovat'
+> Pro Node.js, můžete nastavit na webu port serveru v *server.js* souboru. Tento kurz používá port 30662 pro odkaz, ale můžete použít další dostupný port. Postupujte podle níže uvedených pokynů a nastavte adresu URL pro přesměrování v informace o registraci aplikace:<br/>
+> Nastavit `http://localhost:30662/` jako **adresy URL pro přesměrování** horní části této stránky, nebo použijte `http://localhost:[port]/` Pokud používáte vlastní port TCP (ve kterém *[port]* je vlastní číslo portu TCP) a potom klikněte na tlačítko  **Aktualizace**
 
 ### <a name="configure-your-javascript-spa-application"></a>Konfigurace aplikace SPA v JavaScriptu
 
-1.  Vytvořte soubor s názvem `msalconfig.js` obsahující informace o registraci aplikace. Pokud používáte Visual Studio, vyberte projekt (Kořenová složka projektu), klikněte pravým tlačítkem a vyberte: `Add`  >  `New Item`  >  `JavaScript File`. Pojmenujte ji `msalconfig.js`
-2.  Přidejte následující kód, který vaše `msalconfig.js` souboru:
+1.  V `index.html` soubor vytvořen během instalace projektu, přidejte informace o registraci aplikace. Přidejte následující kód v horní části v rámci `<script></script>` značky v těle vaše `index.html` souboru:
 
 ```javascript
-var msalconfig = {
+var applicationConfig = {
     clientID: "[Enter the application Id here]",
-    redirectUri: location.origin
+    graphScopes: ["user.read"],
+    graphEndpoint: "https://graph.microsoft.com/v1.0/me"
 };
-``` 
+```

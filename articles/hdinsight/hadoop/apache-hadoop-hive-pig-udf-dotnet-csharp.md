@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: jasonh
-ms.openlocfilehash: 9a214aa51bcd4b7aab7a65cf2989edd9e9dd3dc6
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: ebc4c918745e273700a0efb54db4408bb702c75e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43044887"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46991364"
 ---
 # <a name="use-c-user-defined-functions-with-hive-and-pig-streaming-on-hadoop-in-hdinsight"></a>Použití uživatelem definovaných funkcí jazyka C# s Hivem a Pig streamování platformy hadoop v HDInsight
 
@@ -31,7 +31,7 @@ Obě Hive a Pig můžete předat data do externí aplikace pro zpracování. Ten
 
     * Pomocí libovolné integrované vývojové prostředí má. Doporučujeme [sady Visual Studio](https://www.visualstudio.com/vs) 2015, 2017, nebo [Visual Studio Code](https://code.visualstudio.com/). Kroky v tomto dokumentu pomocí sady Visual Studio 2017.
 
-* Způsob, jak nahrát soubory .exe do clusteru a spouštět úlohy Pigu a Hivu. Doporučujeme vám nástroje Data Lake pro Visual Studio, Azure Powershellu a rozhraní příkazového řádku Azure. Kroky v tomto dokumentu využívají Data Lake Tools pro Visual Studio pro nahrávání souborů a spuštění příkladu dotaz Hive.
+* Způsob, jak nahrát soubory .exe do clusteru a spouštět úlohy Pigu a Hivu. Doporučujeme vám nástroje Data Lake pro Visual Studio, Azure Powershellu a rozhraní příkazového řádku Azure Classic. Kroky v tomto dokumentu využívají Data Lake Tools pro Visual Studio pro nahrávání souborů a spuštění příkladu dotaz Hive.
 
     Informace o dalších způsobech spuštění Hive dotazy a úlohy Pig, najdete v následujících dokumentech:
 

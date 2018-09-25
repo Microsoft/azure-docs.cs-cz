@@ -4,18 +4,18 @@ titleSuffix: Azure
 description: Tento článek obsahuje datetimeV2 informace předem připravených entit v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: diberry
-ms.openlocfilehash: 13f62e98a33aac51eae86d5ce1b802d4701ef3f6
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: b7d5b14121f533c49f29759293c0e5379ea2555e
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39236767"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036690"
 ---
 # <a name="datetimev2-entity"></a>Entita DatetimeV2
 

@@ -1,6 +1,6 @@
 ---
 title: Použití rozšíření Azure Docker VM | Dokumentace Microsoftu
-description: Další informace o použití rozšíření Docker VM pro rychle a bezpečně nasazení prostředí Docker v Azure pomocí šablon Resource Manageru a rozhraní příkazového řádku Azure CLI 2.0
+description: Další informace o použití rozšíření Docker VM pro rychle a bezpečně nasazení prostředí Docker v Azure pomocí šablon Resource Manageru a Azure CLI
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -14,15 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
 ms.author: cynthn
-ms.openlocfilehash: 44c307a5f21937cd2a3ef345fd4573c67efdaf59
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 59dbbb8374455088d759a5e837b8d3bc22145d3e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928614"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981293"
 ---
 # <a name="create-a-docker-environment-in-azure-using-the-docker-vm-extension"></a>Vytvoření prostředí pro Docker v Azure pomocí rozšíření Docker VM
-Docker je oblíbených kontejneru platforma pro správu a pro vytváření bitových kopií, která umožňuje rychlou práci s kontejnery v Linuxu. V Azure existují různé způsoby, které můžete nasadit Docker podle vašich potřeb. Tento článek se týká použití rozšíření Docker VM a šablon Azure Resource Manageru s využitím rozhraní příkazového řádku Azure CLI 2.0. 
+
+Docker je oblíbených kontejneru platforma pro správu a pro vytváření bitových kopií, která umožňuje rychlou práci s kontejnery v Linuxu. V Azure existují různé způsoby, které můžete nasadit Docker podle vašich potřeb. Tento článek se týká použití rozšíření Docker VM a šablon Azure Resource Manageru pomocí rozhraní příkazového řádku Azure. 
 
 > [!WARNING]
 > Rozšíření Azure Docker VM pro Linux je zastaralá a skončí. listopadu 2018.
@@ -38,7 +39,7 @@ Další informace o různých metodách nasazení, včetně použití Docker Mac
 
 
 ## <a name="deploy-a-template-with-the-azure-docker-vm-extension"></a>Nasazení šablony pomocí rozšíření Azure Docker VM
-Použijeme existující šablony rychlý start k vytvoření virtuálního počítače s Ubuntu, který používá rozšíření Azure Docker VM pro instalaci a konfiguraci hostitele Dockeru. Můžete zobrazit šablonu tady: [jednoduchému nasazení virtuálního počítače s Ubuntu s Dockerem](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). Budete potřebovat nejnovější [příkazového řádku Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az_login).
+Použijeme existující šablony rychlý start k vytvoření virtuálního počítače s Ubuntu, který používá rozšíření Azure Docker VM pro instalaci a konfiguraci hostitele Dockeru. Můžete zobrazit šablonu tady: [jednoduchému nasazení virtuálního počítače s Ubuntu s Dockerem](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). Budete potřebovat nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az_login).
 
 Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
 

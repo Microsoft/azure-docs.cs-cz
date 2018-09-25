@@ -1,6 +1,6 @@
 ---
-title: S Azure Storage pomocí Azure CLI 2.0 | Dokumentace Microsoftu
-description: Zjistěte, jak používat rozhraní příkazového řádku Azure (Azure CLI) 2.0, službou Azure Storage a vytvářet a spravovat účty úložiště a pracovat s objekty BLOB Azure a službou soubory. Rozhraní příkazového řádku Azure CLI 2.0 je nástroj pro různé platformy napsané v Pythonu.
+title: Použití Azure CLI s Azure Storage | Dokumentace Microsoftu
+description: Zjistěte, jak používat rozhraní příkazového řádku Azure (Azure CLI) pomocí služby Azure Storage k vytváření a Správa účtů úložiště a pracovat s objekty BLOB Azure a soubory.
 services: storage
 author: roygara
 ms.service: storage
@@ -9,18 +9,18 @@ ms.topic: article
 ms.date: 06/02/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: 10b0d475113e5fcd413c7e62f88dcd434fc72a52
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: cd2399e25889cdc9c885b76e002e47415c0629e5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732767"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46984369"
 ---
-# <a name="using-the-azure-cli-20-with-azure-storage"></a>Použití Azure CLI 2.0 s Azure Storage
+# <a name="using-the-azure-cli-with-azure-storage"></a>Použití Azure CLI s Azure Storage
 
-Open source, napříč platformami Azure CLI 2.0 poskytuje sadu příkazů pro práci s platformou Azure. Poskytuje většinu stejné funkce, které jsou součástí [webu Azure portal](https://portal.azure.com), včetně velké množství dat přístup.
+Azure open source, multiplatformní rozhraní příkazového řádku poskytuje sadu příkazů pro práci s platformou Azure. Poskytuje většinu stejné funkce, které jsou součástí [webu Azure portal](https://portal.azure.com), včetně velké množství dat přístup.
 
-V této příručce, ukážeme, jak používat [příkazového řádku Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) provedení několika úkolů práci s prostředky ve vašem účtu úložiště Azure. Doporučujeme stáhnout a nainstalovat nebo upgradovat na nejnovější verzi Azure CLI 2.0 před použitím tohoto průvodce.
+V této příručce, ukážeme, jak používat [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) provedení několika úkolů práci s prostředky ve vašem účtu úložiště Azure. Doporučujeme stáhnout a nainstalovat nebo upgradovat na nejnovější verzi rozhraní příkazového řádku před použitím tohoto průvodce.
 
 V příkladech v Průvodci se předpokládá použití prostředí Bash na Ubuntu, ale jiné platformy by měl provádět podobně. 
 
@@ -33,9 +33,9 @@ Tento průvodce to předpokládá, že chápete základní koncepty služby Azur
 * **Účet Azure**: Pokud ještě nemáte předplatné Azure, [vytvořit si bezplatný účet Azure](https://azure.microsoft.com/free/).
 * **Účet Storage**: Viz část [Vytvoření účtu úložiště](storage-quickstart-create-account.md) v článku [Informace o účtech Azure Storage](storage-create-storage-account.md).
 
-### <a name="install-the-azure-cli-20"></a>Instalace Azure CLI 2.0
+### <a name="install-the-azure-cli"></a>Instalace rozhraní příkazového řádku Azure CLI
 
-Stáhnout a nainstalovat rozhraní příkazového řádku Azure CLI 2.0 podle pokynů uvedených v [instalace Azure CLI 2.0](/cli/azure/install-az-cli2).
+Stáhnout a nainstalovat rozhraní příkazového řádku Azure podle pokynů uvedených v [instalace rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2).
 
 > [!TIP]
 > Pokud máte potíže s instalací, podívejte se [řešení potíží s instalací](/cli/azure/install-az-cli2#installation-troubleshooting) části tohoto článku a [nainstalovat řešení potíží s](https://github.com/Azure/azure-cli/blob/master/doc/install_troubleshooting.md) Průvodce na Githubu.
@@ -96,9 +96,9 @@ Pro práci s prostředky ve vašem předplatném Azure, musíte nejdřív přihl
   * To nebude fungovat s účty Microsoft a účty, které používají ověřování službou Multi-Factor Authentication.
 * **Přihlaste se pomocí instančního objektu**: `az login --service-principal -u http://azure-cli-2016-08-05-14-31-15 -p VerySecret --tenant contoso.onmicrosoft.com`
 
-## <a name="azure-cli-20-sample-script"></a>Ukázkový skript Azure CLI 2.0
+## <a name="azure-cli-sample-script"></a>Ukázkový skript Azure CLI
 
-V dalším kroku budete spolupracujeme se skript malé prostředí, která vydává několik základních příkazů Azure CLI 2.0 k interakci s prostředky služby Azure Storage. Skript nejprve vytvoří nový kontejner v účtu úložiště a pak odešle existujícího souboru (jako objekt blob) do tohoto kontejneru. Pak zobrazí seznam všech objektů BLOB v kontejneru a nakonec stáhne soubor do cílového umístění na místním počítači, který zadáte.
+V dalším kroku budete spolupracujeme se skript malé prostředí, která vydává několik základních příkazů rozhraní příkazového řádku Azure k interakci s prostředky služby Azure Storage. Skript nejprve vytvoří nový kontejner v účtu úložiště a pak odešle existujícího souboru (jako objekt blob) do tohoto kontejneru. Pak zobrazí seznam všech objektů BLOB v kontejneru a nakonec stáhne soubor do cílového umístění na místním počítači, který zadáte.
 
 ```bash
 #!/bin/bash
@@ -519,8 +519,8 @@ Ukázkový výstup
 ```
 
 ## <a name="next-steps"></a>Další postup
-Tady jsou některé další prostředky pro dostávat další informace o práci s Azure CLI 2.0.
+Tady jsou některé další prostředky pro dostávat další informace o práci s Azure CLI. 
 
-* [Začínáme s Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
-* [Přehled příkazů Azure CLI 2.0](/cli/azure)
-* [Azure CLI 2.0 na Githubu](https://github.com/Azure/azure-cli)
+* [Začínáme s Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
+* [Referenční informace k příkazu Azure CLI](/cli/azure)
+* [Rozhraní příkazového řádku Azure na Githubu](https://github.com/Azure/azure-cli)

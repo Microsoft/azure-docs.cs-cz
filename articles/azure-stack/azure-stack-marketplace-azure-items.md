@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2018
+ms.date: 09/21/2018
 ms.author: sethm
 ms.reviewer: jeffgo
-ms.openlocfilehash: 16590fe5b27c85fdb5e1fa52ec3b835eaccbb2de
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 8e0a73f800a2b56577b5684762e125d0a67b188d
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630956"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032287"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Položky Azure Marketplace k dispozici pro službu Azure Stack
 
@@ -43,6 +43,8 @@ Pokaždé, když jsou dostupné aktualizace rozšíření virtuálních počíta
 | ![Rozšíření Acronis zálohování pro Windows](media/azure-stack-marketplace-azure-items/acronis.png) | [Rozšíření Acronis zálohování pro Windows](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-win-arm) | Rozšíření zálohování Acronis pro Microsoft Azure je součástí Acronis zálohování produktovou řadu data protection. | Acronis International GmbH. | Windows |
 | ![CloudLink SecureVM rozšíření pro Linux](media/azure-stack-marketplace-azure-items/cloudlink.png) | [CloudLink SecureVM rozšíření pro Linux](https://azuremarketplace.microsoft.com/marketplace/apps/cloudlink.cloudlink-securevm)  | Ovládací prvek, monitorovat a šifrování virtuálních počítačů snadno a s jistotou. | Dell EMC | Linux |
 | ![CloudLink SecureVM rozšíření pro Windows](media/azure-stack-marketplace-azure-items/cloudlink.png) | [CloudLink SecureVM rozšíření pro Windows](https://azuremarketplace.microsoft.com/marketplace/apps/cloudlink.cloudlink-securevm)  | Ovládací prvek, monitorovat a šifrování virtuálních počítačů snadno a s jistotou. | Dell EMC | Windows |
+| ![Kaspersky](media/azure-stack-marketplace-azure-items/kaspersky.png) | [Kaspersky hybridního cloudového zabezpečení agenta pro Windows](https://azuremarketplace.microsoft.com/marketplace/apps/KasperskyLab.ksws-windows-arm?tab=Overview) | S Kaspersky zabezpečení v hybridním cloudu můžete zřídit možnosti příkazu o kyberbezpečnosti přímo v cloudu úloh prostřednictvím rozšíření Azure. | Kaspersky testovacího prostředí | Windows |
+| ![Kaspersky](media/azure-stack-marketplace-azure-items/kaspersky.png) | [Kaspersky hybridního cloudového zabezpečení agenta pro Linux](https://azuremarketplace.microsoft.com/marketplace/apps/KasperskyLab.kesl-linux-arm?tab=Overview) | S Kaspersky zabezpečení v hybridním cloudu můžete zřídit možnosti příkazu o kyberbezpečnosti přímo v cloudu úloh prostřednictvím rozšíření Azure. | Kaspersky testovacího prostředí | Linux |
 
 ## <a name="microsoft-virtual-machine-images-and-solution-templates"></a>Image virtuálních počítačů společnosti Microsoft a šablony řešení
 
@@ -101,7 +103,7 @@ Microsoft Azure Stack podporuje následující virtuální počítače Azure Mar
 
 |  | Název položky | Popis | Vydavatel |
 | --- | --- | --- | --- |
-| ![Arista vEOS směrovače](media/azure-stack-marketplace-azure-items/arista.png) | [Arista vEOS směrovače](https://azuremarketplace.microsoft.com/marketplace/apps/arista-networks.veos-router) | VEOS Arista směrovače se funkce bohaté multicloudové a vícehypervisorové virtuální směrovač, který umožňuje podnikům a poskytovatelů cloudu, k vytvoření konzistentní, vysoce zabezpečené a škálovatelné hybridní sítě. | Arista Networks |
+| ![Arista vEOS směrovače](media/azure-stack-marketplace-azure-items/arista.png) | [Arista vEOS směrovače](https://azuremarketplace.microsoft.com/marketplace/apps/arista-networks.veos-router) | VEOS Arista směrovač je plně funkční, více cloudu a vícehypervisorové virtuální směrovač, který umožňuje podnikům a poskytovatelů cloudu, k vytvoření konzistentní, vysoce zabezpečené a škálovatelné hybridní sítě. | Arista Networks |
 | ![AbanteCart](media/azure-stack-marketplace-azure-items/abantecart.png) | [AbanteCart](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.abantecart) | Open source elektronického obchodování nákupní košík. | Bitnami |
 | ![ActiveMQ](media/azure-stack-marketplace-azure-items/activemq.png) | [ActiveMQ](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.activemq) | Zprostředkovatele zpráv Open source v jazyce Java. | Bitnami |
 | ![Akeneo](media/azure-stack-marketplace-azure-items/akeneo.png) | [Akeneo](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.akeneo) | Výkonné PIM navržené pro zjednodušení procesů správy. | Bitnami |
@@ -140,6 +142,7 @@ Microsoft Azure Stack podporuje následující virtuální počítače Azure Mar
 | ![JRuby](media/azure-stack-marketplace-azure-items/jruby.png) | [JRuby](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.jrubystack) | Vysoce výkonné Java provádění Ruby. | Bitnami |
 | ![Kafka](media/azure-stack-marketplace-azure-items/kafka.png) | [Kafka](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.kafka) | Efektivní distribuované publikování a odběru systému zasílání zpráv. | Bitnami |
 | ![Clusteru Kafka](media/azure-stack-marketplace-azure-items/kafka.png) | [Clusteru Kafka](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.kafka-cluster) | Apache Kafka je publikování a odběru rethought protokolu distribuovaného potvrzení pro zasílání zpráv. Toto řešení zvyšuje spolehlivost clusteru Kafka zřízením několika zprostředkovatelům systému Kafka a instance Zookeeper. **Tato šablona řešení také vyžaduje Debian 8 a vlastní skript pro Linuxové rozšíření 2.0.** | Bitnami |
+| ![Kaspersky](media/azure-stack-marketplace-azure-items/kaspersky.png) | [Zabezpečení v Kaspersky hybridním cloudu](https://azuremarketplace.microsoft.com/marketplace/apps/kaspersky_lab.kaspersky_hybrid_cloud_security?tab=Overview) | Kaspersky hybridní Cloud Security umožňuje bez problémů orchestrovaný a adaptivní příkazu o kyberbezpečnosti ekosystém. | Kaspersky testovacího prostředí |
 | ![LAMP](media/azure-stack-marketplace-azure-items/lamp.png) | [LAMP](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.lampstack) | Plně integrované a připravené ke spuštění vývojového prostředí. | Bitnami |
 | ![LAPP](media/azure-stack-marketplace-azure-items/lapp.png) | [LAPP](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.lappstack) | Dokončení PHP, PostgreSQL a Apache vývojové prostředí. | Bitnami |
 | ![Pojďme si popovídat](media/azure-stack-marketplace-azure-items/letschat.png) | [Pojďme si popovídat](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.letschat) | Open source trvalé aplikace pro zasílání zpráv. | Bitnami |
@@ -241,4 +244,4 @@ Microsoft Azure Stack podporuje následující virtuální počítače Azure Mar
 | ![Puppet Enterprise](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | Puppet Enterprise umožňuje automatizovat celý životní cyklus vaší infrastruktury Azure stacku. **Stažení položek z obou Puppet Marketplace.** | Puppet |
 | ![Quest rychlého obnovení](media/azure-stack-marketplace-azure-items/quest.png) | [Quest rychlého obnovení Core](https://azuremarketplace.microsoft.com/marketplace/apps/quest.rapid-recovery-core-vm) | Rychlé obnovení rozšířené ochrany dat sjednocuje zálohování, replikace a obnovení v jediném řešení softwaru snadným ovládáním. | Quest softwaru |
 | ![SUSE správce 3.1 Proxy (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE správce 3.1 Proxy (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSE-Manager) | Správa infrastruktury ve své třídě nejlepší open source. | SUSE |
-| ![BCaaS ZeroDown softwaru](media/azure-stack-marketplace-azure-items/zerodown.png) | [Kontinuita podnikových procesů ZeroDown Software jako služba](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.bcaasforazure) | Firmách nepřetržitý přístup ke své firemní data prostřednictvím jejich obchodní kontinuity podnikových procesů poskytuje technologie ZeroDown® Software jako služba (BCaaS)™ architektury, ochranu aplikací a transakce v případě přerušení sítě, které by obvykle cripple podniku. | ZeroDown softwaru |
+| ![BCaaS ZeroDown softwaru](media/azure-stack-marketplace-azure-items/zerodown.png) | [Kontinuita podnikových procesů ZeroDown Software jako služba](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.bcaasforazure) | Firmách nepřetržitý přístup ke své firemní data prostřednictvím jejich obchodní kontinuity podnikových procesů poskytuje technologie ZeroDown® Software jako služba (BCaaS)™ architektury, ochranu aplikací a transakce, pokud dojde k přerušení sítě, který se normálně cripple podniku. | ZeroDown softwaru |

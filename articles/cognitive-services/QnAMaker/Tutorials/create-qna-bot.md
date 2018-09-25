@@ -2,22 +2,22 @@
 title: Nástroj QnA robotů pomocí služeb Azure Bot Service – QnA Maker
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: nstulasi
+author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
-ms.author: nstulasi
-ms.openlocfilehash: 0c6feb67b273ec30afba89f2d4d9b59a8a9f5acf
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.author: tulasim
+ms.openlocfilehash: 74c7bc5c601cd36a8dd2454506745406bc00dac0
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731407"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031284"
 ---
-# <a name="create-a-qna-bot-with-azure-bot-service"></a>Vytváření robotů QnA pomocí služby Azure Bot Service
-Tento kurz vás provede vytváření robota QnA pomocí služby Azure Bot service na portálu Azure portal.
+# <a name="create-a-qna-bot-with-azure-bot-service-v3"></a>Vytváření QnA robotů s využitím Azure Bot Service v3
+Tento kurz vás provede vytváření robota QnA s Azure Bot service v3 na portálu Azure portal.
 
 ## <a name="prerequisite"></a>Požadavek
 Před sestavením, postupujte podle kroků v [vytvoření znalostní báze](../How-To/create-knowledge-base.md) vytvořte službu QnA Maker s otázkami a odpověďmi.
@@ -33,16 +33,24 @@ Robot odpoví na dotazy ze znalostní báze, který jste vytvořili prostřednic
 
     ![Výběr služby bot](../media/qnamaker-tutorials-create-bot/bot-service-selection.png)
 
-3. V **Bot Service okno**, zadejte požadované informace a vyberte **vytvořit**. Tím se vytvoří a nasadí do Azure bot service s QnAMakerDialog.
+3. V **Bot Service okno**, zadejte požadované informace:
 
     - Nastavte **název aplikace** na název svého robota. Název se používá jako subdoménu svého robota nasazené do cloudu (například mynotesbot.azurewebsites.net).
     - Vyberte předplatné, skupinu prostředků, plán služby App service a umístění.
-    - Vyberte **otázek a odpovědí** (Node.js, nebo C#) šablona pro pole Bot šablony.
-    - Zaškrtněte políčko potvrzení právních upozornění. Podmínky právních upozornění jsou níže na zaškrtávací políčko.
 
-        ![Výběr služby bot](../media/qnamaker-tutorials-create-bot/bot-service-qna-template.PNG)
+4. Přečtěte si pokyny pro vytváření robota QnA pomocí sady SDK v4-naleznete v tématu [QnA v4 bot šablony](https://aka.ms/qna-bot-v4). Použití šablony verze 3, vyberte verzi sady SDK **SDK v3** a sady SDK jazyka **jazyka C#** nebo **Node.js**.
 
-4. Potvrďte, že byla nasazena bot service.
+    ![nastavení sady sdk robota](../media/qnamaker-tutorials-create-bot/bot-v3.png)
+
+5. Vyberte **otázku a odpověď** šablon pro pole Bot šablony a potom uložte nastavení šablony tak, že vyberete **vyberte**.
+
+    ![Výběr služby bot](../media/qnamaker-tutorials-create-bot/bot-v3-template.png)
+
+6. Zkontrolujte nastavení a pak vyberte **vytvořit**. Tím se vytvoří a nasadí do Azure bot service s QnAMakerDialog.
+
+    ![Výběr služby bot](../media/qnamaker-tutorials-create-bot/bot-blade-settings-v3.png)
+
+7. Potvrďte, že byla nasazena bot service.
 
     - Vyberte **oznámení** (ikona zvonku umístěné podél horního okraje na webu Azure portal). Oznámení se změní z **nasazení začalo** k **nasazení bylo úspěšné**.
     - Po oznámení změn **nasazení bylo úspěšné**vyberte **přejít k prostředku** na toto oznámení.

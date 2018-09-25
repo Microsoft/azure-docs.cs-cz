@@ -16,89 +16,79 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 7350cbd3e8aed6098f24d0edaa5807d241890287
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: bae71c55bdea838d0ef5e0ae3acbac3e98a92fa0
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45581472"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47055036"
 ---
 # <a name="how-to-configure-the-sign-in-risk-policy"></a>Postupy: Konfigurace zásad rizika přihlašování
 
 Azure Active Directory detekuje [typech rizikových událostí](../reports-monitoring/concept-risk-events.md#risk-event-types) v reálném čase a v režimu offline. Každý rizikovou událost, která byla zjištěna přihlásit uživatele přispívá k logický pojem volána rizikových přihlášení. Riziková přihlášení je indikátorem pokusu přihlásit, který se nemusí provést legitimním vlastníkem uživatelského účtu.
 
 
-## <a name="sign-in-risk-level"></a>Úroveň rizika přihlášení
+## <a name="what-is-the-sign-in-risk-policy"></a>Co jsou zásady rizik přihlašování?
 
-Úroveň rizika přihlášení je označení (vysoká, střední nebo nízká) pravděpodobnost, že pokus o přihlášení nebyl prováděné legitimním vlastníkem uživatelského účtu.
+Azure AD analyzuje každé přihlášení uživatele. Cílem analýzy je ke zjištění podezřelé akce, které společně přihlášení. Například je přihlášení provést pomocí anonymní IP adresy, nebo je přihlášení zahájené z neznámého umístění? Ve službě Azure AD jsou podezřelé akce, které systém může zjistit, označované také jako rizikové události. Podle rizikové události, které byly zjištěny při přihlašování, Azure AD, vypočítá hodnotu. Hodnota představuje pravděpodobnost, že přihlášení není provést legitimní uživatel, (nízká, střední, vysoká). Pravděpodobnost se nazývá **úroveň rizika přihlášení**.
 
-## <a name="mitigating-sign-in-risk-events"></a>Zmírnění rizika přihlašování události
+Zásady rizik přihlašování je automatické reakce, které můžete konfigurovat pro úroveň rizika konkrétních přihlášení. V odpovědi může blokovat přístup k vašim prostředkům nebo vyžadují předávání výzvu ověřování službou Multi-Factor Authentication (MFA) k získání přístupu.
 
-Omezení rizik je akci, kterou chcete omezit schopnost útočníka zneužít ohrožení zabezpečení identity nebo zařízení bez obnovení identity nebo zařízení do bezpečného stavu. Omezení rizik nevyřeší předchozí přihlášení rizikové události spojené s identity nebo zařízení.
-
-Zmírnění rizikových přihlášení automaticky, můžete nakonfigurovat zásady zabezpečení rizik přihlašování. Pomocí těchto zásad, zvažte úroveň rizika uživatele nebo přihlášení k blokování rizikových přihlášení nebo vyžadovat, aby uživatel k provedení ověřování Multi-Factor Authentication. Tato akce může zabránit útočníkům ve využívajícím krádež identity způsobit poškození a může dát nějaký čas zabezpečit identitu.
-
-## <a name="sign-in-risk-security-policy"></a>Zásady zabezpečení rizik přihlašování
-Zásady rizik přihlašování se zásady podmíněného přístupu, která vyhodnotí riziko pro konkrétní přihlášení a použije omezení rizik na základě předem definované podmínky a pravidla.
-
+   
+## <a name="how-do-i-access-the-sign-in-risk-policy"></a>Jak získám přístup do zásady rizik přihlašování?
+   
+Zásady rizik přihlašování **konfigurovat** části na [stránku služby Azure AD Identity Protection](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy).
+   
 ![Zásady rizik přihlašování](./media/howto-sign-in-risk-policy/1014.png "zásady rizik přihlašování")
 
-Služba Azure AD Identity Protection umožňuje správu zmírnění rizikových přihlášení tím, že vám umožňuje:
 
-* Nastavte uživatele a skupiny, které zásady platí pro:
+## <a name="policy-settings"></a>Nastavení zásad
 
-    ![Zásady rizik přihlašování](./media/howto-sign-in-risk-policy/1015.png "zásady rizik přihlašování")
-* Nastavte rizika přihlašování úrovně prahovou hodnotu (nízká, střední nebo vysoké), která aktivuje zásady:
+Když konfigurujete zásady rizik přihlašování, budete muset nastavit:
 
-    ![Zásady rizik přihlašování](./media/howto-sign-in-risk-policy/1016.png "zásady rizik přihlašování")
-* Můžete nastavte řízení vynucení při aktivaci zásady:  
+- Uživatelé a skupiny, které zásady platí pro:
 
-    ![Zásady rizik přihlašování](./media/howto-sign-in-risk-policy/1017.png "zásady rizik přihlašování")
-* Přepnutí stavu zásad:
+    ![Uživatelé a skupiny](./media/howto-sign-in-risk-policy/11.png)
 
-    ![Registrace MFA](./media/howto-sign-in-risk-policy/403.png "registrace MFA")
-* Kontrola a vyhodnocení dopadu změn před aktivací ho:
+- Úroveň rizika přihlášení, která aktivuje zásady:
 
-    ![Zásady rizik přihlašování](./media/howto-sign-in-risk-policy/1018.png "zásady rizik přihlašování")
+    ![Úroveň rizika přihlášení](./media/howto-sign-in-risk-policy/12.png)
 
-## <a name="what-you-need-to-know"></a>Co je potřeba vědět
+- Typ přístupu, kterou chcete vynutit, pokud byly splněny úroveň rizika přihlášení:  
+
+    ![Access](./media/howto-sign-in-risk-policy/13.png)
+
+- Stav zásad:
+
+    ![Vynucení zásad](./media/howto-sign-in-risk-policy/14.png)
+
+
+Dialogové okno Konfigurace zásad vám poskytne možnost zhodnotit dopad změny konfigurace.
+
+![Odhadovaný dopad](./media/howto-sign-in-risk-policy/15.png)
+
+## <a name="what-you-should-know"></a>Co byste měli vědět
+
 Můžete nakonfigurovat zásady zabezpečení rizik přihlašování vyžadovat vícefaktorové ověřování:
 
-![Zásady rizik přihlašování](./media/howto-sign-in-risk-policy/1017.png "zásady rizik přihlašování")
+![Vyžadování MFA](./media/howto-sign-in-risk-policy/16.png)
 
-Ale z bezpečnostních důvodů se toto nastavení funguje jenom pro uživatele, kteří jsou již zaregistrovány ověřování službou Multi-Factor Authentication. Tento uživatel je zablokovaný, pokud je splněna podmínka tak, aby vyžadovala vícefaktorové ověřování pro uživatele, který ještě není zaregistrovaný k vícefaktorovému ověřování.
+Ale z bezpečnostních důvodů se toto nastavení funguje jenom pro uživatele, kteří jsou již zaregistrovány pro vícefaktorové ověřování. Ochrana identity blokuje uživatelů pomocí požadavku na vícefaktorové ověřování, pokud, nejsou ještě zaregistrovaný pro MFA.
 
-Jako osvědčený postup Pokud chcete, aby ověřování službou Multi-Factor Authentication pro rizikových přihlášení, měli byste:
+Pokud chcete vyžadovat vícefaktorové ověřování pro rizikových přihlášení, měli byste:
 
 1. Povolit [zásady registrace pro vícefaktorové ověřování](#multi-factor-authentication-registration-policy) pro ovlivnění uživatelé.
-2. Vyžadovat ovlivněných uživatelů na přihlášení v relaci rizikové k provedení registrace MFA
+
+2. Vyžadovat ovlivněných uživatelů pro přihlášení v relaci rizikové k provedení registrace MFA.
 
 Dokončení těchto kroků se zajistí, že ověřování službou Multi-Factor Authentication je vyžadováno pro rizikové přihlášení.
 
-## <a name="best-practices"></a>Osvědčené postupy
-Výběr **vysokou** prahová hodnota snižuje počet, kolikrát zásada se aktivuje a minimalizuje dopad na uživatele.  
-
-Ale nezahrnuje **nízká** a **střední** přihlášení označených jako rizikoví ze zásad, které nemusí blokovat útočník ze zneužití ohrožení zabezpečení identity.
-
-Při nastavování zásad,
-
-* Vyloučit uživatele, kteří nejsou / nemůže mít ověřování službou Multi-Factor Authentication
-* Vyloučit uživatele v národních prostředí, kde není praktické povolení zásad (například žádný přístup k technické podpory)
-* Vyloučit uživatele, kteří mohou generovat velké množství pozitivní hodnotu false (vývojáři, analytikům zabezpečení)
-* Použití **vysokou** prahové hodnoty během počáteční zásad uvádění, nebo pokud musíte minimalizovat problémy, koncový uživatel neuvidí.
-* Použití **nízká** prahovou hodnotu, pokud vaše organizace vyžaduje vyšší úroveň zabezpečení. Výběr **nízká** prahová hodnota představuje další uživatele přihlásit výzvy, ale zvýšené zabezpečení.
-
-Doporučené výchozí nastavení pro většinu organizací je a nakonfigurujte pravidlo pro **střední** prahová hodnota hledají rovnováhu mezi použitelnost a zabezpečení.
-
 Zásady rizik přihlašování je:
 
-* Použít pro všechny prohlížeče provoz a přihlášení pomocí moderního ověřování.
-* Bez použití aplikací s použitím starší protokoly zabezpečení tím, že zakážete koncového bodu WS-Trust ve federovaných zprostředkovatele identity, jako jsou služby AD FS.
+- Použít pro všechny prohlížeče provoz a přihlášení pomocí moderního ověřování.
 
-**Rizikových událostí** stránky v konzole Identity Protection obsahuje seznam všech událostí:
+- Bez použití aplikací s použitím starší protokoly zabezpečení tím, že zakážete koncového bodu WS-Trust ve federovaných zprostředkovatele identity, jako jsou služby AD FS.
 
-* Tato zásada byla použita k
-* Můžete zkontrolovat aktivity a zjistit, jestli byla akce odpovídající
 
 Přehled související uživatelské prostředí naleznete v tématu:
 
@@ -106,11 +96,27 @@ Přehled související uživatelské prostředí naleznete v tématu:
 * [Riziková přihlášení blokováno](flows.md#risky-sign-in-blocked)  
 * [Možnosti přihlašování s Azure AD Identity Protection](flows.md)  
 
-**Chcete-li otevřít dialogové okno Konfigurace související**:
+## <a name="best-practices"></a>Osvědčené postupy
 
-- Na **Azure AD Identity Protection** okno v **konfigurovat** klikněte na tlačítko **zásady rizik přihlašování**.
+Výběr **vysokou** prahová hodnota snižuje počet, kolikrát zásada se aktivuje a minimalizuje dopad na uživatele.  
 
-    ![Zásady rizik uživatelů](./media/howto-sign-in-risk-policy/1014.png "zásady rizik uživatelů")
+Ale nezahrnuje **nízká** a **střední** přihlášení označených jako rizikoví ze zásad, které nemusí blokovat útočník ze zneužití ohrožení zabezpečení identity.
+
+Při nastavování zásad,
+
+- Vyloučit uživatele, kteří nejsou / nemůže mít ověřování službou Multi-Factor Authentication
+
+- Vyloučit uživatele v národních prostředí, kde není praktické povolení zásad (například žádný přístup k technické podpory)
+
+- Vyloučit uživatele, kteří jsou pravděpodobně vygeneruje mnoho false poplachů (vývojáři, analytikům zabezpečení)
+
+- Použití **vysokou** prahové hodnoty během zavádění počáteční zásad, nebo pokud musíte minimalizovat problémy, koncový uživatel neuvidí.
+
+- Použití **nízká** prahovou hodnotu, pokud vaše organizace vyžaduje vyšší úroveň zabezpečení. Výběr **nízká** prahová hodnota představuje další uživatele přihlásit výzvy, ale zvýšené zabezpečení.
+
+Doporučené výchozí nastavení pro většinu organizací je a nakonfigurujte pravidlo pro **střední** prahová hodnota hledají rovnováhu mezi použitelnost a zabezpečení.
+
+
 
 
 

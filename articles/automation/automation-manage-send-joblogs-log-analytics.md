@@ -9,15 +9,16 @@ ms.author: gwallace
 ms.date: 06/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 12628b5a552b864784d780e5f2adc00aac579911
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 13ba4d774cbc347830c32385ba4927a0df687159
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215029"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035466"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>Předávání stavu úlohy a datové proudy úlohy ze služby Automation do Log Analytics
-Automatizace můžete odeslat runbook datové proudy úlohy stavu a úlohu do pracovního prostoru Log Analytics. Protokoly úloh a datové proudy úlohy jsou viditelné na webu Azure Portal nebo pomocí Powershellu, pro jednotlivé úlohy, což umožňuje provádět jednoduché šetření. Teď pomocí Log Analytics vám umožňuje:
+
+Automatizace můžete odeslat runbook datové proudy úlohy stavu a úlohu do pracovního prostoru Log Analytics. Tento proces nezahrnuje propojení pracovního prostoru a je zcela nezávislé. Protokoly úloh a datové proudy úlohy jsou viditelné na webu Azure Portal nebo pomocí Powershellu, pro jednotlivé úlohy, což umožňuje provádět jednoduché šetření. Teď pomocí Log Analytics vám umožňuje:
 
 * Získejte přehled o vašich úloh služby Automation.
 * Aktivační událost e-mailem nebo výstrahy založené na váš stav úlohy runbooku (například chybných nebo pozastavených).
@@ -26,12 +27,12 @@ Automatizace můžete odeslat runbook datové proudy úlohy stavu a úlohu do pr
 * V čase můžete Vizualizujte historii úlohy.
 
 ## <a name="prerequisites-and-deployment-considerations"></a>Požadavky a důležité informace o nasazení
+
 Pokud chcete začít, odeslání protokolů služby Automation do Log Analytics, budete potřebovat:
 
 * Listopad 2016 nebo novější verze [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) (v2.3.0).
 * Pracovní prostor Log Analytics. Další informace najdete v tématu [Začínáme se službou Log Analytics](../log-analytics/log-analytics-get-started.md). 
 * ID prostředku účtu Azure Automation.
-
 
 Vyhledání ID prostředku účtu Azure Automation:
 
@@ -159,7 +160,18 @@ Nakonec můžete chtít vizualizovat historii úloh v čase. Tento dotaz můžet
 `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and ResultType != "started" | summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h)`  
 <br> ![Log Analytics historie úlohy stavu grafu](media/automation-manage-send-joblogs-log-analytics/historical-job-status-chart.png)<br>
 
+## <a name="remove-diagnostic-settings"></a>Odebrání nastavení diagnostiky
+
+K odebrání nastavení diagnostiky účtu Automation, spusťte následující příkazy:
+
+```powershell-interactive
+$automationAccountId = "[resource id of your automation account]"
+
+Remove-AzureRmDiagnosticSetting -ResourceId $automationAccountId
+```
+
 ## <a name="summary"></a>Souhrn
+
 Odesláním data stavu a datový proud úlohy Automation do Log Analytics můžete získat lepší přehled o stavu vašich úloh služby Automation podle:
 + Nastavení výstrah, které vás upozorní, když dojde k problému.
 + Použití vlastní zobrazení a vyhledávací dotazy k vizualizaci výsledků sad runbook, stav úlohy runbooku a další související klíčových indikátorů nebo metriky.  

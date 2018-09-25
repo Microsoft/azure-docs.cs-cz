@@ -1,60 +1,74 @@
 ---
-title: Odchozí ověření scheduleru
-description: Odchozí ověření scheduleru
+title: Ověřování odchozích spojení - Azure Scheduleru
+description: Zjistěte, jak nastavit nebo odebrat odchozí ověřování pro Azure Scheduler
 services: scheduler
-documentationcenter: .NET
-author: derek1ee
-manager: kevinlam1
-editor: ''
-ms.assetid: 6707f82b-7e32-401b-a960-02aae7bb59cc
 ms.service: scheduler
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
+author: derek1ee
+ms.author: deli
+ms.reviewer: klam
+ms.assetid: 6707f82b-7e32-401b-a960-02aae7bb59cc
 ms.topic: article
 ms.date: 08/15/2016
-ms.author: deli
-ms.openlocfilehash: e345b2e22daae5b24c23645f7d2636f66df630ff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 88f2fe0781bad4b652826b6a8d1961dd39b063e1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23926505"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993325"
 ---
-# <a name="scheduler-outbound-authentication"></a>Odchozí ověření scheduleru
-Plánovač úloh možná muset volat na služby, které vyžadují ověřování. Tímto způsobem názvem služby můžete určit Pokud úlohy plánovače může přistupovat k prostředkům. Některé z těchto služeb zahrnují dalším službám Azure, Salesforce.com, Facebook a zabezpečené vlastní weby.
+# <a name="outbound-authentication-for-azure-scheduler"></a>Ověřování odchozích připojení pro Azure Scheduler
 
-## <a name="adding-and-removing-authentication"></a>Přidávání a odebírání ověřování
-Přidání ověřování do úlohy plánovače je jednoduchá – přidání podřízený element JSON `authentication` k `request` element při vytváření nebo aktualizaci úlohy. Tajné klíče předaný služby plánovače v požadavku PUT, PATCH nebo POST – jako součást `authentication` objektu – nikdy jsou vráceny v odpovědi. V odpovědi, tajné informace nastavena na hodnotu null, nebo může mít veřejné token, který představuje ověřený entitu.
+> [!IMPORTANT]
+> [Služba Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje Azure Scheduleru, která se vyřazuje. K plánování úloh, [místo toho vyzkoušet Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
 
-Pokud chcete odebrat ověřování, PUT nebo PATCH úlohu explicitně, nastavení `authentication` objekt, který má hodnotu null. Neuvidíte žádné vlastnosti ověřování zpět v odpovědi.
+Azure Scheduleru úlohy může být nutné volat služby, které vyžadují ověřování, jako je například jiných služeb Azure, Salesforce.com, Facebook a zabezpečené vlastní weby. Volané služby můžete určit, jestli úloha Scheduleru můžete přistupovat k požadovaným prostředkům. 
 
-V současné době jsou typy podporované jenom ověřování `ClientCertificate` (pro použití protokolu SSL/TLS klientské certifikáty), `Basic` (pro základní ověřování) a `ActiveDirectoryOAuth` (pro ověřování Active Directory OAuth.)
+Scheduler podporuje tyto modely ověřování: 
 
-## <a name="request-body-for-clientcertificate-authentication"></a>Text žádosti pro ClientCertificate ověřování
-Při přidávání ověřování pomocí `ClientCertificate` model, zadejte následující další prvky v textu požadavku.  
+* *Klientský certifikát* ověřování při použití klientské certifikáty SSL/TLS.
+* *Základní* ověřování
+* *Active Directory OAuth* ověřování
 
-| Element | Popis |
-|:--- |:--- |
-| *ověřování (nadřazený element)* |Objekt ověřování pro použití klientský certifikát SSL. |
-| *Typ* |Povinná hodnota. Typ ověřování. Pro klientské certifikáty protokolu SSL, hodnota musí být `ClientCertificate`. |
-| *soubor PFX* |Povinná hodnota. Kódování Base64 obsah souboru PFX. |
-| *heslo* |Povinná hodnota. Heslo pro přístup k souboru PFX. |
+## <a name="add-or-remove-authentication"></a>Přidání nebo odebrání ověřování
 
-## <a name="response-body-for-clientcertificate-authentication"></a>Text odpovědi pro ClientCertificate ověřování
-Když přijde požadavek je s informacemi ověřování, odpověď obsahuje následující prvky souvisejících s ověřováním.
+* Chcete-li přidat ověřování do úlohy Scheduleru, při vytváření nebo aktualizace úlohy, přidejte `authentication` podřízený element zápis JSON (JavaScript Object) do `request` element. 
 
-| Element | Popis |
-|:--- |:--- |
-| *ověřování (nadřazený element)* |Objekt ověřování pro použití klientský certifikát SSL. |
-| *Typ* |Typ ověřování. Pro klientské certifikáty protokolu SSL, je hodnota `ClientCertificate`. |
-| *certificateThumbprint* |Kryptografický otisk certifikátu. |
-| *certificateSubjectName* |Rozlišující název subjektu certifikátu. |
-| *certificateExpiration* |Datum vypršení platnosti certifikátu. |
+  Nikdy nevracet tajné kódy, které se předávají služby Plánovač prostřednictvím požadavku PUT, PATCH nebo příspěvek v odpovědi `authentication` objektu. 
+  Odpovědi tajných informací nastavena na hodnotu null, nebo použít veřejné token, který představuje ověřený entity. 
 
-## <a name="sample-rest-request-for-clientcertificate-authentication"></a>Ukázka REST žádost o ověření ClientCertificate
-```
-PUT https://management.azure.com/subscriptions/1fe0abdf-581e-4dfe-9ec7-e5cb8e7b205e/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobcollections/southeastasiajc/jobs/httpjob?api-version=2016-01-01 HTTP/1.1
+* Pokud chcete odebrat ověřování z úlohy Scheduleru, explicitně požadavek PUT nebo PATCH spouštět úlohy a nastavte `authentication` objekt má hodnotu null. Odpověď nebude obsahovat všechny vlastnosti ověřování.
+
+## <a name="client-certificate"></a>Klientský certifikát
+
+### <a name="request-body---client-certificate"></a>Text požadavku - klientského certifikátu
+
+Při přidání pomocí ověřování `ClientCertificate` model, určit tyto další prvky v textu požadavku.  
+
+| Element | Požaduje se | Popis |
+|---------|----------|-------------|
+| **ověřování** (nadřazený element) | Objekt ověřování pro použití klientský certifikát SSL |
+| **type** | Ano | Typ ověřování. Pro klientské certifikáty SSL, je hodnota `ClientCertificate`. |
+| **PFX** | Ano | Obsah souboru PFX s kódováním base64 |
+| **Heslo** | Ano | Heslo pro přístup k souboru PFX |
+||| 
+
+### <a name="response-body---client-certificate"></a>Text odpovědi - klientského certifikátu 
+
+Žádost o odeslání se informace o ověřování, odpověď obsahuje tyto prvky ověřování.
+
+| Element | Popis | 
+|---------|-------------| 
+| **ověřování** (nadřazený element) | Objekt ověřování pro použití klientský certifikát SSL |
+| **type** | Typ ověřování. Pro klientské certifikáty SSL, je hodnota `ClientCertificate`. |
+| **Miniatura certifikátu** |Kryptografický otisk certifikátu |
+| **CertificateSubjectName** |Rozlišující název subjektu certifikátu |
+| **certificateExpiration** | Datum vypršení platnosti certifikátu |
+||| 
+
+### <a name="sample-rest-request---client-certificate"></a>Ukázka požadavku REST - klientského certifikátu
+
+```json
+PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobcollections/southeastasiajc/jobs/httpjob?api-version=2016-01-01 HTTP/1.1
 User-Agent: Fiddler
 Host: management.azure.com
 Authorization: Bearer sometoken
@@ -83,15 +97,15 @@ Content-Type: application/json; charset=utf-8
       "endTime": "2016-04-10T08:00:00Z",
       "interval": 1
     },
-    "state": "enabled",
+    "state": "enabled"
   }
 }
 ```
 
-## <a name="sample-rest-response-for-clientcertificate-authentication"></a>Ukázková odpověď REST pro ClientCertificate ověřování
-```
-HTTP/1.1 200 OK
-Cache-Control: no-cache
+### <a name="sample-rest-response---client-certificate"></a>Ukázková odpověď REST - klientského certifikátu
+
+```json
+HTTP/1.1 200 OKCache-Control: no-cache
 Pragma: no-cache
 Content-Length: 858
 Content-Type: application/json; charset=utf-8
@@ -107,7 +121,7 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains
 Date: Wed, 16 Mar 2016 19:04:23 GMT
 
 {
-  "id": "/subscriptions/1fe0abdf-581e-4dfe-9ec7-e5cb8e7b205e/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobCollections/southeastasiajc/jobs/httpjob",
+  "id": "/subscriptions/<Azure-subscription-ID>/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobCollections/southeastasiajc/jobs/httpjob",
   "type": "Microsoft.Scheduler/jobCollections/jobs",
   "name": "southeastasiajc/httpjob",
   "properties": {
@@ -144,28 +158,35 @@ Date: Wed, 16 Mar 2016 19:04:23 GMT
 }
 ```
 
-## <a name="request-body-for-basic-authentication"></a>Text žádosti pro základní ověřování
-Při přidávání ověřování pomocí `Basic` model, zadejte následující další prvky v textu požadavku.
+## <a name="basic"></a>Basic
 
-| Element | Popis |
-|:--- |:--- |
-| *ověřování (nadřazený element)* |Objekt ověřování pro použití základního ověřování. |
-| *Typ* |Povinná hodnota. Typ ověřování. Pro základní ověřování, musí být hodnota `Basic`. |
-| *uživatelské jméno* |Povinná hodnota. Uživatelské jméno k ověření. |
-| *heslo* |Povinná hodnota. Heslo k ověření. |
+### <a name="request-body---basic"></a>Text – Basic žádosti
 
-## <a name="response-body-for-basic-authentication"></a>Text odpovědi pro základní ověřování
-Když přijde požadavek je s informacemi ověřování, odpověď obsahuje následující prvky souvisejících s ověřováním.
+Při přidání pomocí ověřování `Basic` model, určit tyto další prvky v textu požadavku.
 
-| Element | Popis |
-|:--- |:--- |
-| *ověřování (nadřazený element)* |Objekt ověřování pro použití základního ověřování. |
-| *Typ* |Typ ověřování. Pro základní ověřování, je hodnota `Basic`. |
-| *uživatelské jméno* |Ověřené uživatelské jméno. |
+| Element | Požaduje se | Popis |
+|---------|----------|-------------|
+| **ověřování** (nadřazený element) | Objekt ověřování pro použití základního ověřování | 
+| **type** | Ano | Typ ověřování. Pro základní ověřování, je hodnota `Basic`. | 
+| **uživatelské jméno** | Ano | Uživatelské jméno pro ověřování | 
+| **Heslo** | Ano | Heslo k ověření |
+|||| 
 
-## <a name="sample-rest-request-for-basic-authentication"></a>Ukázková žádost REST pro základní ověřování
-```
-PUT https://management.azure.com/subscriptions/1d908808-e491-4fe5-b97e-29886e18efd4/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobcollections/southeastasiajc/jobs/httpjob?api-version=2016-01-01 HTTP/1.1
+### <a name="response-body---basic"></a>Text odpovědi – Basic
+
+Žádost o odeslání se informace o ověřování, odpověď obsahuje tyto prvky ověřování.
+
+| Element | Popis | 
+|---------|-------------|
+| **ověřování** (nadřazený element) | Objekt ověřování pro použití základního ověřování |
+| **type** | Typ ověřování. Pro základní ověřování, je hodnota `Basic`. |
+| **uživatelské jméno** | Ověřené uživatelské jméno |
+||| 
+
+### <a name="sample-rest-request---basic"></a>Ukázka požadavku REST – Basic
+
+```json
+PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobcollections/southeastasiajc/jobs/httpjob?api-version=2016-01-01 HTTP/1.1
 User-Agent: Fiddler
 Host: management.azure.com
 Authorization: Bearer sometoken
@@ -195,13 +216,14 @@ Content-Type: application/json; charset=utf-8
       "endTime": "2016-04-10T08:00:00Z",
       "interval": 1
     },
-    "state": "enabled",
+    "state": "enabled"
   }
 }
 ```
 
-## <a name="sample-rest-response-for-basic-authentication"></a>Ukázková odpověď REST pro základní ověřování
-```
+### <a name="sample-rest-response---basic"></a>Ukázková odpověď REST – Basic
+
+```json
 HTTP/1.1 200 OK
 Cache-Control: no-cache
 Pragma: no-cache
@@ -219,7 +241,7 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains
 Date: Wed, 16 Mar 2016 19:05:06 GMT
 
 {  
-   "id":"/subscriptions/1d908808-e491-4fe5-b97e-29886e18efd4/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobCollections/southeastasiajc/jobs/httpjob",
+   "id":"/subscriptions/<Azure-subscription-ID>/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobCollections/southeastasiajc/jobs/httpjob",
    "type":"Microsoft.Scheduler/jobCollections/jobs",
    "name":"southeastasiajc/httpjob",
    "properties":{  
@@ -236,14 +258,14 @@ Date: Wed, 16 Mar 2016 19:05:06 GMT
                "type":"Basic"
             }
          },
-         "type":"http"
+         "type":"Http"
       },
       "recurrence":{  
-         "frequency":"minute",
+         "frequency":"Minute",
          "endTime":"2016-04-10T08:00:00Z",
          "interval":1
       },
-      "state":"enabled",
+      "state":"Enabled",
       "status":{  
          "nextExecutionTime":"2016-03-16T19:06:00Z",
          "executionCount":0,
@@ -254,35 +276,39 @@ Date: Wed, 16 Mar 2016 19:05:06 GMT
 }
 ```
 
-## <a name="request-body-for-activedirectoryoauth-authentication"></a>Text žádosti pro ActiveDirectoryOAuth ověřování
-Při přidávání ověřování pomocí `ActiveDirectoryOAuth` model, zadejte následující další prvky v textu požadavku.
+## <a name="active-directory-oauth"></a>Active Directory OAuth
+
+### <a name="request-body---active-directory-oauth"></a>Text – Active Directory OAuth žádosti 
+
+Při přidání pomocí ověřování `ActiveDirectoryOAuth` model, určit tyto další prvky v textu požadavku.
+
+| Element | Požaduje se | Popis |
+|---------|----------|-------------|
+| **ověřování** (nadřazený element) | Ano | Objekt ověřování pro použití ověřování ActiveDirectoryOAuth |
+| **type** | Ano | Typ ověřování. ActiveDirectoryOAuth ověřování, je hodnota `ActiveDirectoryOAuth`. |
+| **tenanta** | Ano | Identifikátor tenanta pro tenanta Azure AD. Chcete-li najít identifikátor tenanta pro tenanta Azure AD, spusťte `Get-AzureAccount` v prostředí Azure PowerShell. |
+| **Cílová skupina** | Ano | Tato hodnota nastavená na `https://management.core.windows.net/`. | 
+| **ID klienta** | Ano | Identifikátor klienta pro aplikaci Azure AD | 
+| **Tajný klíč** | Ano | Tajný klíč pro klienta, který žádá token | 
+|||| 
+
+### <a name="response-body---active-directory-oauth"></a>Text odpovědi – Active Directory OAuth
+
+Žádost o odeslání se informace o ověřování, odpověď obsahuje tyto prvky ověřování.
 
 | Element | Popis |
-|:--- |:--- |
-| *ověřování (nadřazený element)* |Objekt ověřování pro použití ActiveDirectoryOAuth ověřování. |
-| *Typ* |Povinná hodnota. Typ ověřování. ActiveDirectoryOAuth ověřování, musí být hodnota `ActiveDirectoryOAuth`. |
-| *klienta* |Povinná hodnota. Identifikátor klienta pro klienta Azure AD. |
-| *Cílová skupina* |Povinná hodnota. To je nastavena na https://management.core.windows.net/. |
-| *clientId* |Povinná hodnota. Zadejte identifikátor klienta aplikace Azure AD. |
-| *tajný klíč* |Povinná hodnota. Tajný klíč klienta, který vyžaduje token. |
+|---------|-------------|
+| **ověřování** (nadřazený element) | Objekt ověřování pro použití ověřování ActiveDirectoryOAuth |
+| **type** | Typ ověřování. ActiveDirectoryOAuth ověřování, je hodnota `ActiveDirectoryOAuth`. | 
+| **tenanta** | Identifikátor tenanta pro tenanta Azure AD |
+| **Cílová skupina** | Tato hodnota nastavená na `https://management.core.windows.net/`. |
+| **ID klienta** | Identifikátor klienta pro aplikaci Azure AD |
+||| 
 
-### <a name="determining-your-tenant-identifier"></a>Určení ID vašeho klienta
-Identifikátor klienta pro klienta služby Azure AD můžete najít spuštěním `Get-AzureAccount` v prostředí Azure PowerShell.
+### <a name="sample-rest-request---active-directory-oauth"></a>Ukázka požadavku REST - Active Directory OAuth
 
-## <a name="response-body-for-activedirectoryoauth-authentication"></a>Text odpovědi pro ActiveDirectoryOAuth ověřování
-Když přijde požadavek je s informacemi ověřování, odpověď obsahuje následující prvky souvisejících s ověřováním.
-
-| Element | Popis |
-|:--- |:--- |
-| *ověřování (nadřazený element)* |Objekt ověřování pro použití ActiveDirectoryOAuth ověřování. |
-| *Typ* |Typ ověřování. Pro ověřování ActiveDirectoryOAuth hodnota je `ActiveDirectoryOAuth`. |
-| *klienta* |Identifikátor klienta pro klienta Azure AD. |
-| *Cílová skupina* |To je nastavena na https://management.core.windows.net/. |
-| *clientId* |Identifikátor klienta aplikace Azure AD. |
-
-## <a name="sample-rest-request-for-activedirectoryoauth-authentication"></a>Ukázka REST žádost o ověření ActiveDirectoryOAuth
-```
-PUT https://management.azure.com/subscriptions/1d908808-e491-4fe5-b97e-29886e18efd4/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobcollections/southeastasiajc/jobs/httpjob?api-version=2016-01-01 HTTP/1.1
+```json
+PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobcollections/southeastasiajc/jobs/httpjob?api-version=2016-01-01 HTTP/1.1
 User-Agent: Fiddler
 Host: management.azure.com
 Authorization: Bearer sometoken
@@ -307,20 +333,21 @@ Content-Type: application/json; charset=utf-8
           "type":"ActiveDirectoryOAuth"
         }
       },
-      "type": "http"
+      "type": "Http"
     },
     "recurrence": {
-      "frequency": "minute",
+      "frequency": "Minute",
       "endTime": "2016-04-10T08:00:00Z",
       "interval": 1
     },
-    "state": "enabled",
+    "state": "Enabled"
   }
 }
 ```
 
-## <a name="sample-rest-response-for-activedirectoryoauth-authentication"></a>Ukázková odpověď REST pro ActiveDirectoryOAuth ověřování
-```
+### <a name="sample-rest-response---active-directory-oauth"></a>Ukázková odpověď REST - Active Directory OAuth
+
+```json
 HTTP/1.1 200 OK
 Cache-Control: no-cache
 Pragma: no-cache
@@ -337,59 +364,49 @@ x-ms-routing-request-id: WESTUS:20160316T191003Z:5183bbf4-9fa1-44bb-98c6-6872e3f
 Strict-Transport-Security: max-age=31536000; includeSubDomains
 Date: Wed, 16 Mar 2016 19:10:02 GMT
 
-{  
-   "id":"/subscriptions/1d908808-e491-4fe5-b97e-29886e18efd4/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobCollections/southeastasiajc/jobs/httpjob",
-   "type":"Microsoft.Scheduler/jobCollections/jobs",
-   "name":"southeastasiajc/httpjob",
-   "properties":{  
-      "startTime":"2015-05-14T14:10:00Z",
-      "action":{  
-         "request":{  
-            "uri":"https://mywebserviceendpoint.com",
-            "method":"GET",
-            "headers":{  
-               "x-ms-version":"2013-03-01"
+{
+   "id": "/subscriptions/<Azure-subscription-ID>/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobCollections/southeastasiajc/jobs/httpjob",
+   "type": "Microsoft.Scheduler/jobCollections/jobs",
+   "name": "southeastasiajc/httpjob",
+   "properties": {
+      "startTime": "2015-05-14T14:10:00Z",
+      "action": {  
+         "request": {
+            "uri": "https://mywebserviceendpoint.com",
+            "method": "GET",
+            "headers": {  
+               "x-ms-version": "2013-03-01"
             },
-            "authentication":{  
-               "tenant":"microsoft.onmicrosoft.com",
-               "audience":"https://management.core.windows.net/",
-               "clientId":"dc23e764-9be6-4a33-9b9a-c46e36f0c137",
-               "type":"ActiveDirectoryOAuth"
+            "authentication": {  
+               "tenant": "microsoft.onmicrosoft.com",
+               "audience": "https://management.core.windows.net/",
+               "clientId": "dc23e764-9be6-4a33-9b9a-c46e36f0c137",
+               "type": "ActiveDirectoryOAuth"
             }
          },
-         "type":"http"
+         "type": "Http"
       },
-      "recurrence":{  
-         "frequency":"minute",
-         "endTime":"2016-04-10T08:00:00Z",
-         "interval":1
+      "recurrence": {  
+         "frequency": "minute",
+         "endTime": "2016-04-10T08:00:00Z",
+         "interval": 1
       },
-      "state":"enabled",
-      "status":{  
-         "lastExecutionTime":"2016-03-16T19:10:00.3762123Z",
-         "nextExecutionTime":"2016-03-16T19:11:00Z",
-         "executionCount":5,
-         "failureCount":5,
-         "faultedCount":1
+      "state": "Enabled",
+      "status": {  
+         "lastExecutionTime": "2016-03-16T19:10:00.3762123Z",
+         "nextExecutionTime": "2016-03-16T19:11:00Z",
+         "executionCount": 5,
+         "failureCount": 5,
+         "faultedCount": 1
       }
    }
 }
 ```
 
-## <a name="see-also"></a>Viz také
- [Co je Scheduler?](scheduler-intro.md)
+## <a name="see-also"></a>Další informace najdete v tématech
 
- [Koncepty, terminologie a hierarchie entit Azure Scheduleru](scheduler-concepts-terms.md)
-
- [Úvod do používání Scheduleru na portálu Azure Portal](scheduler-get-started-portal.md)
-
- [Plány a fakturace v Azure Scheduleru](scheduler-plans-billing.md)
-
- [REST API Azure Scheduleru – referenční informace](https://msdn.microsoft.com/library/mt629143)
-
- [Rutiny PowerShellu pro Azure Scheduler – referenční informace](scheduler-powershell-reference.md)
-
- [Vysoká dostupnost a spolehlivost Azure Scheduleru](scheduler-high-availability-reliability.md)
-
- [Omezení, výchozí hodnoty a chybové kódy Azure Scheduleru](scheduler-limits-defaults-errors.md)
-
+* [Co je Azure Scheduler?](scheduler-intro.md)
+* [Koncepty, terminologie a hierarchie entit Azure Scheduleru](scheduler-concepts-terms.md)
+* [Omezení, výchozí hodnoty a chybové kódy Azure Scheduleru](scheduler-limits-defaults-errors.md)
+* [Rozhraní REST API služby Azure Scheduler](https://msdn.microsoft.com/library/mt629143)
+* [Rutiny PowerShellu pro Azure Scheduler – referenční informace](scheduler-powershell-reference.md)

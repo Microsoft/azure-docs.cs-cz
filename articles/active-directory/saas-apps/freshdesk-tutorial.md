@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2018
+ms.date: 09/17/2018
 ms.author: jeedes
 ms.reviewer: jeedes
-ms.openlocfilehash: db4750e01b62835cf08fd52e3288e94aea539b26
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: ce302db74f831e67b576e4c0001f21473fd7f2e0
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161318"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037520"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>Kurz: Integrace Azure Active Directory pomocí Freshdesku
 
@@ -85,7 +85,7 @@ V této části Konfigurace a testování Azure AD jednotné přihlašování po
 
 Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšek ve Freshdesku je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské ve Freshdesku musí být vytvořeno.
 
-Tento odkaz vztah navázaný přiřazením hodnoty **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** ve Freshdesku.
+Tento odkaz vztah navázaný přiřazením hodnoty **uživatelské jméno** ve službě Azure AD jako hodnotu **e-mailová adresa** ve Freshdesku.
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování pomocí Freshdesku, které potřebujete k dokončení následujících stavebních bloků:
 
@@ -116,47 +116,46 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<tenant-name>.freshdesk.com` nebo jakoukoli jinou hodnotu navrhl Freshdesku.
 
     > [!NOTE]
-    > Všimněte si, že to není skutečné hodnoty. Budete muset zaktualizujte příslušnou hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory Freshdesku klienta](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg) tuto výhodu získáte.  
+    > Všimněte si, že to není skutečné hodnoty. Budete muset zaktualizujte příslušnou hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory Freshdesku klienta](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg) tuto výhodu získáte.
 
-4. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
+4. Vaše aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Následující snímek obrazovky ukazuje příklad pro tuto. Výchozí hodnota **identifikátor uživatele** je **user.userprincipalname** ale **Freshdesku** očekává, že to namapovat s e-mailovou adresu uživatele. K tomu můžete použít **user.mail** atribut ze seznamu nebo použijte hodnotu odpovídajícího atributu na základě vaší konfigurace organizace.
+
+    ![Konfigurace jednotného přihlašování](./media/freshdesk-tutorial/tutorial_attribute.png)
+
+5. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
 
     ![Konfigurace jednotného přihlašování](./media/freshdesk-tutorial/tutorial_freshdesk_certificate.png)
 
     > [!NOTE]
     > Pokud máte nějaké problémy, najdete na tomto [odkaz](https://support.freshdesk.com/support/discussions/topics/317543).
 
-5. Klikněte na tlačítko **Uložit** tlačítko.
+6. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Konfigurace jednotného přihlašování](./media/freshdesk-tutorial/tutorial_general_400.png)
 
-6. Nainstalujte **OpenSSL** ve vašem systému, pokud jste nenainstalovali ve vašem systému.
+7. Nainstalujte **OpenSSL** ve vašem systému, pokud jste nenainstalovali ve vašem systému.
 
-7. Otevřít **příkazového řádku** a spusťte následující příkazy:
+8. Otevřít **příkazového řádku** a spusťte následující příkazy:
 
     a. Zadejte `openssl x509 -inform DER -in FreshDesk.cer -out certificate.crt` hodnotu v příkazovém řádku.
 
     > [!NOTE]
     > Tady **FreshDesk.cer** je certifikát, který jste si stáhli z portálu Azure portal.
 
-    b. Zadejte `openssl x509 -noout -fingerprint -sha256 -inform pem -in certificate.crt` hodnotu v příkazovém řádku. Tady **certificate.crt** je výstupní certifikát, který je generován v předchozím kroku.
+    b. Zadejte `openssl x509 -noout -fingerprint -sha256 -inform pem -in certificate.crt` hodnotu v příkazovém řádku. 
+    
+    > [!NOTE]
+    > Tady **certificate.crt** je výstupní certifikát, který je generován v předchozím kroku.
 
     c. Kopírovat **kryptografický otisk** hodnotu a vložte ho do poznámkového bloku. Použití dvojteček odebrání kryptografický otisk a získejte poslední hodnotu kryptografického otisku.
 
-8. Na **Freshdesku konfigurace** klikněte na tlačítko **nakonfigurovat Freshdesku** konfigurovat přihlašování – okno. Zkopírujte SAML jednotné přihlašování – adresa URL služby a adresu URL odhlašování z **Stručná referenční příručka** oddílu.
+9. Na **Freshdesku konfigurace** klikněte na tlačítko **nakonfigurovat Freshdesku** konfigurovat přihlašování – okno. Zkopírujte SAML jednotné přihlašování – adresa URL služby a adresu URL odhlašování z **Stručná referenční příručka** oddílu.
 
     ![Konfigurace jednotného přihlašování](./media/freshdesk-tutorial/tutorial_freshdesk_configure.png)
 
-9. V okně jiné webové prohlížeče přihlaste jako správce serveru vaší společnosti Freshdesku.
+10. V okně jiné webové prohlížeče přihlaste jako správce serveru vaší společnosti Freshdesku.
 
-10. V nabídce v horní části klikněte na tlačítko **správce**.
-
-    ![Správce](./media/freshdesk-tutorial/IC776768.png "správce")
-
-11. V **obecné nastavení** klikněte na tlačítko **zabezpečení**.
-  
-    ![Zabezpečení](./media/freshdesk-tutorial/IC776769.png "zabezpečení")
-
-12. V **zabezpečení** části, proveďte následující kroky:
+11. Vyberte **ikona nastavení** a **zabezpečení** části, proveďte následující kroky:
 
     ![Jednotné přihlašování](./media/freshdesk-tutorial/IC776770.png "jednotné přihlašování")
   
@@ -229,22 +228,19 @@ V případě Freshdesku zřizování se ruční úlohy.
 
    ![Informace o agentovi](./media/freshdesk-tutorial/IC776775.png "informace o agentovi")
 
-   a. V **jméno a příjmení** textového pole zadejte název účtu služby Azure AD, které chcete zřídit.
+   a. V **e-mailu** textové pole, typ služby Azure AD e-mailovou adresu účtu služby Azure AD, které chcete zřídit.
 
-   b. V **e-mailu** textové pole, typ služby Azure AD e-mailovou adresu účtu služby Azure AD, které chcete zřídit.
+   b. V **jméno a příjmení** textového pole zadejte název účtu služby Azure AD, které chcete zřídit.
 
    c. V **název** textového pole zadejte název účtu služby Azure AD, které chcete zřídit.
 
-   d. Vyberte **agentů role**a potom klikněte na tlačítko **přiřadit**.
-
-   e. Klikněte na **Uložit**.
+   d. Klikněte na **Uložit**.
 
     >[!NOTE]
     >Držitel účtu Azure AD se zobrazí e-mailu, který obsahuje odkaz pro potvrzení účtu předtím, než se aktivuje.
     >
     >[!NOTE]
-    >Můžete použít jakékoli jiné Freshdesku uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných Freshdesku uživatelským účtům, zřídit AAD.
-    do Freshdesku.
+    >Můžete použít jakékoli jiné Freshdesku uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných Freshdesku zřídit AAD uživatelských účtů do Freshdesku.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 

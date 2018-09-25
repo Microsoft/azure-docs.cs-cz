@@ -1,24 +1,25 @@
 ---
-title: Pomocí jazyka C#, integrace LUIS s využitím botu pomocí Bot Builder SDK - Azure Cognitive Services | Dokumentace Microsoftu
+title: Služba LUIS robotů s C# – Web app Bot - Bot Framework SDK 3.0
+titleSuffix: Azure Cognitive Services
 description: Pomocí jazyka C#, sestavení je chatovací robot integrovaná jazyka (LUIS). Tuto chatovací robot používá předem připravených HomeAutomation doménu k rychlé implementaci řešení robota.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 08/13/2018
+ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: d0010ccf51fc688fa66e1be82c735ae38455509b
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 0ad95d5683ea10803c2f3986be97617051f191cf
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41987614"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032270"
 ---
-# <a name="web-app-bot-using-the-luis-template-for-c"></a>Web App Bot pomocí služby LUIS šablony pro jazyk C#
+# <a name="luis-bot-in-c"></a>Služba LUIS robotů v jazyce C#
 
-Pomocí jazyka C#, sestavení je chatovací robot integrovaná jazyka (LUIS). Tuto chatovací robot používá předem připravených HomeAutomation doménu k rychlé implementaci řešení robota. 
+Pomocí jazyka C#, sestavení je chatovací robot integrovaná jazyka (LUIS). Tuto chatovací robot používá předem připravených HomeAutomation doménu k rychlé implementaci řešení robota. Robot využívá rozhraní Bot Framework 3.x a použijete Azure Web app bot.
 
 ## <a name="prerequisite"></a>Požadavek
 
@@ -46,11 +47,14 @@ Pomocí jazyka C#, sestavení je chatovací robot integrovaná jazyka (LUIS). Tu
 4. V **Bot Service**, zadejte požadované informace a klikněte na tlačítko **vytvořit**. Tím se vytvoří a nasadí bot service a LUIS aplikace do Azure. Pokud chcete použít [řeči dočištění](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming), zkontrolujte [požadavků oblasti](luis-resources-faq.md#what-luis-regions-support-bot-framework-speech-priming) před vytvořením svého robota. 
     * Nastavte **název aplikace** na název svého robota. Název se používá jako subdoménu svého robota nasazené do cloudu (například mynotesbot.azurewebsites.net). <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
     * Vyberte předplatné, [skupiny prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), plán služby App service, a [umístění](https://azure.microsoft.com/regions/).
-    * Vyberte **Language understanding (C#)** šablonu **Bot šablony** pole.
+    * Pro **Bot šablony**vyberte:
+        * **Sada SDK v3**
+        * **C#**
+        * **Rozpoznávání jazyka**
     * Vyberte **umístění aplikace LUIS**. Toto je vytváření [oblasti](luis-reference-regions.md) vytvoření aplikace v.
     * Zaškrtněte políčko potvrzení právních upozornění. Podmínky právních upozornění jsou níže na zaškrtávací políčko.
 
-    ![Služba Bot](./media/luis-tutorial-cscharp-web-bot/bot-service-setting-callout-template.png)
+    ![Bot Service](./media/luis-tutorial-cscharp-web-bot/bot-service-setting-callout-template.png)
 
 
 5. Potvrďte, že byla nasazena bot service.

@@ -2,7 +2,7 @@
 title: Automatizace replikace změn schématu synchronizace dat SQL Azure | Dokumentace Microsoftu
 description: Zjistěte, jak automatizovat replikaci změn schématu synchronizace dat SQL Azure.
 services: sql-database
-ms.date: 06/19/2018
+ms.date: 09/20/2018
 ms.topic: conceptual
 ms.service: sql-database
 author: allenwux
@@ -10,12 +10,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: 6859784dcb3b3905459e83cfcb7812d7f23ac630
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 6e3f1710d342d97312cfd764726904c1d70ce199
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721853"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035024"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Automatizace replikace změn schématu synchronizace dat SQL Azure
 
@@ -30,7 +30,7 @@ Tento článek představuje řešení, které automaticky replikovat změny sch�
 Tento článek používá příkaz ALTER TABLE s ukázkovým změnu schématu, ale toto řešení funguje i pro jiné typy změn schématu.
 
 > [!IMPORTANT]
-> Doporučujeme, abyste si přečetli to článek pečlivě, zejména v částech o [Poradce při potížích s](#troubleshooting) a [další důležité informace](#other), než začnete provádět automatizované schématu replikace změn v prostředí synchronizace. Doporučujeme také, abyste si přečetli [synchronizaci dat napříč několika cloudu a místními databázemi pomocí synchronizace dat SQL](sql-database-sync-data.md). Některé operace databáze způsobit nefunkčnost řešení popsaných v tomto článku. Další znalosti SQL serveru a jazyka Transact-SQL, může být nutné tyto problémy vyřešit.
+> Doporučujeme, abyste si přečetli to článek pečlivě, zejména v částech o [Poradce při potížích s](#troubleshoot) a [další důležité informace](#other), než začnete provádět automatizované schématu replikace změn v prostředí synchronizace. Doporučujeme také, abyste si přečetli [synchronizaci dat napříč několika cloudu a místními databázemi pomocí synchronizace dat SQL](sql-database-sync-data.md). Některé operace databáze způsobit nefunkčnost řešení popsaných v tomto článku. Další znalosti SQL serveru a jazyka Transact-SQL, může být nutné tyto problémy vyřešit.
 
 ![Automatizace replikace změn schématu](media/sql-database-update-sync-schema/automate-schema-changes.png)
 

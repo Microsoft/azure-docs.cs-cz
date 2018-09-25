@@ -3,23 +3,26 @@ title: Migrace databáze SQL Serveru do služby Azure SQL Database | Dokumentace
 description: V této části se dozvíte, jak migrovat místní databázi SQL Serveru do služby Azure SQL Database v cloudu.
 keywords: migrace databáze, migrace databáze systému sql server, nástroje pro migraci databáze, migrace databáze, migrace sql database
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: migrate
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/14/2018
+author: CarlRabeler
 ms.author: carlrab
-ms.openlocfilehash: 88b46fbda3bd459d5ec66b5c9d6eb443e8d275ed
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 65258622c006cc384df24898c18b154b4c523a7f
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735288"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064284"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>Migrace databáze SQL serveru do Azure SQL Database
 
-V tomto článku se dozvíte o základních způsobech migrace systému SQL Server 2005 nebo novější do jedné nebo součástí fondu databáze ve službě Azure SQL Database. Informace o migraci do spravované Instance najdete v tématu [migrace na instanci systému SQL Server do Azure SQL Database Managed Instance (preview)](sql-database-managed-instance-migrate.md). 
+V tomto článku se dozvíte o základních způsobech migrace systému SQL Server 2005 nebo novější do jedné nebo součástí fondu databáze ve službě Azure SQL Database. Informace o migraci do spravované Instance najdete v tématu [migrace na instanci systému SQL Server do Azure SQL Database Managed Instance](sql-database-managed-instance-migrate.md). 
 
 ## <a name="migrate-to-a-single-database-or-a-pooled-database"></a>Migrace na jednu databázi nebo databázi ve fondu
 Existují dvou základních způsobech migrace systému SQL Server 2005 nebo novější do jedné nebo součástí fondu databáze ve službě Azure SQL Database. První způsob je jednodušší, ale vyžaduje nějaké, potenciálně dlouhé, prostoje během migrace. Druhý způsob je složitější, ale podstatným způsobem eliminuje prostoje během migrace.

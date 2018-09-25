@@ -1,6 +1,6 @@
 ---
-title: Rozhraní příkazového řádku Azure 2.0 Začínáme s Azure Data Lake Storage Gen1 | Dokumentace Microsoftu
-description: Použít – multiplatformního rozhraní příkazového řádku Azure 2.0 k vytvoření účtu Data Lake Storage Gen1 a provádění základních operací
+title: Začínáme s Azure Data Lake Storage Gen1 pomocí rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+description: Pomocí Azure CLI k vytvoření účtu Data Lake Storage Gen1 a provádění základních operací
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -10,26 +10,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: b75fc3a96ce4e46fbd9efb03aa2ea9c2c4aaa15c
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: d8232b1e29a3d2585e79cf56d0f180a5084fd13e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124775"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46979062"
 ---
-# <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-cli-20"></a>Začínáme s Azure Data Lake Storage Gen1 pomocí Azure CLI 2.0
+# <a name="get-started-with-azure-data-lake-store-using-azure-cli"></a>Začínáme s Azure Data Lake Store pomocí rozhraní příkazového řádku Azure
 > [!div class="op_single_selector"]
 > * [Azure Portal](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
-> * [Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)
+> * [Azure CLI](data-lake-store-get-started-cli-2.0.md)
 >
 > 
 
-[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+Zjistěte, jak používat rozhraní příkazového řádku Azure k vytvoření účtu Azure Data Lake Storage Gen1 a provádění základních operací, jako je vytváření složek, nahrávání a stahování datových souborů, odstranění účtu atd. Další informace o Data Lake Storage Gen1 najdete v tématu [přehled nástroje Data Lake Storage Gen1](data-lake-store-overview.md).
 
-Zjistěte, jak používat Azure CLI 2.0 k vytvoření účtu Azure Data Lake Storage Gen1 a provádění základních operací, jako je vytváření složek, nahrávání a stahování datových souborů, odstranění účtu atd. Další informace o Data Lake Storage Gen1 najdete v tématu [přehled nástroje Data Lake Storage Gen1](data-lake-store-overview.md).
-
-Rozhraní příkazového řádku Azure CLI 2.0 představuje nové prostředí příkazového řádku Azure pro správu prostředků Azure. Je možné používat ho v systémech macOS, Linux a Windows. Další informace najdete v [přehledu rozhraní příkazového řádku Azure CLI 2.0](https://docs.microsoft.com/cli/azure). Můžete také prohlédnout [odkaz na Azure Data Lake Storage Gen1 CLI 2.0](https://docs.microsoft.com/cli/azure/dls) úplný seznam příkazů a syntaxe.
+Azure CLI je prostředí příkazového řádku Azure pro správu prostředků Azure. Je možné používat ho v systémech macOS, Linux a Windows. Další informace najdete v tématu [přehled Azure CLI](https://docs.microsoft.com/cli/azure). Můžete také prohlédnout [příkazového řádku Azure Data Lake Storage Gen1 odkaz](https://docs.microsoft.com/cli/azure/dls) úplný seznam příkazů a syntaxe.
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -37,7 +35,7 @@ Je nutné, abyste před zahájením tohoto článku měli tyto položky:
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Rozhraní příkazového řádku Azure CLI 2.0** – Pokyny najdete v článku [Instalace Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* **Azure CLI** – viz [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) pokyny.
 
 ## <a name="authentication"></a>Authentication
 
@@ -164,7 +162,7 @@ Výstup by měl vypadat přibližně takto:
 
 ## <a name="work-with-permissions-and-acls-for-a-data-lake-storage-gen1-account"></a>Práce s oprávněními a seznamy ACL pro účet Data Lake Storage Gen1
 
-V této části se naučíte spravovat seznamy řízení přístupu a oprávnění prostřednictvím rozhraní příkazového řádku Azure CLI 2.0. Podrobné informace o způsobu implementace seznamů řízení přístupu v Azure Data Lake Storage Gen1, naleznete v tématu [řízení přístupu v Azure Data Lake Storage Gen1](data-lake-store-access-control.md).
+V této části se dozvíte o tom, jak spravovat seznamy řízení přístupu a oprávnění pomocí Azure CLI. Podrobné informace o způsobu implementace seznamů řízení přístupu v Azure Data Lake Storage Gen1, naleznete v tématu [řízení přístupu v Azure Data Lake Storage Gen1](data-lake-store-access-control.md).
 
 * **Chcete-li aktualizovat vlastníka souboru nebo složky**, použijte následující příkaz:
 

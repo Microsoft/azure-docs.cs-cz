@@ -1,6 +1,6 @@
 ---
-title: Pokyny pro přepis ve službě vlastní řeči na Azure | Microsoft Docs
-description: Zjistěte, jak připravit data pro vlastní službu řeči v kognitivní služby.
+title: Pokyny pro přepis ve službě Custom Speech Service v Azure | Dokumentace Microsoftu
+description: Zjistěte, jak připravit data pro Custom Speech Service ve službě Cognitive Services.
 services: cognitive-services
 author: PanosPeriorellis
 manager: onano
@@ -9,103 +9,104 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ms.openlocfilehash: 2785a35ac7583ac3d9503cb721d10078d86aa365
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2772665107f94a273731d2147154e546225b22dd
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342514"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999728"
 ---
 # <a name="transcription-guidelines"></a>Pokyny pro přepis
-K zajištění nejlepší využití vašich dat text pro přizpůsobení modelu acoustic a jazyk, vhodné dodržovat následující pokyny přepis. Tyto pokyny jsou jenom určitých jazyků.
+Následující pokyny určené k transkripci byste měli dodržet, aby co nejlíp využít textových dat pro přizpůsobení akustických a jazykových modelu. Tyto pokyny jsou specifické pro konkrétní jazyk.
 
-## <a name="text-normalization"></a>Normalizaci textu
+## <a name="text-normalization"></a>Normalizace text
 
-Pro optimální použití v modelu přizpůsobení acoustic nebo jazyk textová data musí být normalizovány, což znamená, že převede na standardní, jednoznačným formuláře čitelný v systému. Tato část popisuje text normalizaci zajišťuje služba rozpoznávání řeči vlastní při importu dat a normalizaci text, který musí uživatel provést před import dat.
+Pro optimální využití v přizpůsobení akustických nebo jazyka modelu textová data musí být normalizovaná, což znamená, že transformována do čitelné podoby jednoznačnou, kompletní standardní systém. Tato část popisuje normalizace text prováděné Custom Speech Service při importu dat a normalizace text, který musí uživatel provést před importem dat.
 
-## <a name="inverse-text-normalization"></a>Inverzní text normalizaci
+## <a name="inverse-text-normalization"></a>Normalizace inverzní textu
 
-Proces převodu "nezpracovaných" neformátovaný text zpět na formátovaný text, tj. s malá a velká písmena nebo interpunkční znaménka, se nazývá normalizace inverzní text (ITN). ITN se provádí na výsledky vrácené rozhraním API pro rozpoznávání řeči kognitivní služby. Koncový bod vlastní nasazení pomocí vlastní řeči služba používá stejný ITN jako API pro rozpoznávání řeči kognitivní služby. Ale tato služba nepodporuje aktuálně vlastní ITN, takže nové podmínky zaváděné model vlastní jazyk nebude naformátovaný ve výsledcích rozpoznávání.
+Proces převodu "neupravené" neformátovaného textu zpět do formátovaného textu, tj. s malá a velká písmena a interpunkční znaménka, je nazvaný normalizace inverzní text (není). NENÍ se provádí na výsledky vrácená rozhraním API pro rozpoznávání řeči Cognitive Services. Vlastní koncový bod nasazeným v rámci Custom Speech Service používá není stejný jako Microsoft Cognitive Services Speech API. Ale tato služba nepodporuje aktuálně vlastní není tak nové podmínky zavedené vlastního jazykového modelu nebudou naformátovaná do výsledky rozpoznávání.
 
-## <a name="transcription-guidelines-for-en-us"></a>Přepis pokyny pro en US
+## <a name="transcription-guidelines-for-en-us"></a>Pokyny pro přepis pro en US
 
-Textová data do této služby nahrán by měly být zapsány ve formátu prostého textu pomocí pouze ASCII tisknutelná znaková sada. Každý řádek souboru by mělo obsahovat text pro pouze jeden utterance.
+Text daty nahranými do této služby by měly být napsány v prostém textu pomocí pouze ASCII tisknutelný znakové sady. Každý řádek v souboru by měl obsahovat text pro pouze jednu utterance.
 
-Je důležité k zamezení interpunkční znaky kódování Unicode. To může nastat nechtěně když přípravu dat v textovém editoru nebo oškrabávání data z webové stránky. Tyto znaky nahraďte příslušné náhrady ASCII. Příklad:
+Je důležité se vyhněte použití interpunkční znaky znakové sady Unicode. To může nastat neúmyslně přípravě dat v textovém editoru nebo automatizované získávání dat data z webové stránky. Nahraďte tyto znaky náhrady odpovídající ASCII. Příklad:
 
-| Znakové sady Unicode, aby se zabránilo | Nahrazení ASCII |
+| Kódování Unicode, aby se zabránilo | Nahrazení ASCII |
 |----- | ----- |
-| "Hello, world" (otevírají a zavírají dvojité uvozovky) | "Hello, world" (dvojité uvozovky) |
-| Jan pro den (vpravo jednoduché uvozovky) | Jan pro den (apostrof) |
+| "Hello world" (otevírají a zavírají dvojité uvozovky) | "Hello world" (dvojité uvozovky) |
+| John's na den (vpravo jednoduché uvozovky) | John's na den (apostrof) |
 
-### <a name="text-normalization-performed-by-the-custom-speech-service"></a>Text normalizaci zajišťuje služba rozpoznávání řeči vlastní
+### <a name="text-normalization-performed-by-the-custom-speech-service"></a>Text normalizace prováděné Custom Speech Service
 
-Tato služba bude provádět následující text normalizaci dat importován jako jazyk datové sady nebo transcriptions pro akustickými datovou sadu. To zahrnuje
+Tato služba bude provádět následující text normalizaci dat importovat jako jazyk datové sady nebo přepisů pro akustický datové sady. Jedná se o
 
-*   Nižší-velká a malá písmena veškerého textu
-*   Odebrání veškerou interpunkci s výjimkou Wordu interní apostrofy
-*   Rozšíření čísel na mluvené formulář, včetně objemy dolar
+*   Malá písmena veškerý text
+*   Odebrat všechny interpunkční znaménka s výjimkou Wordu interní apostrofy
+*   Rozšíření čísel do mluvené řeči formuláře, včetně korunách
 
-Zde jsou některé příklady
+Tady je několik příkladů
 
-| Původní Text | Po normalizaci |
+| Původní Text | Po normalizace |
 |----- | ----- |
 | Starbucks kávy | starbucks kávy |
-| "Tichá kráva!" uvedené Batman. | tichá kráva uvedená batman |
-| "Co?" uvedené Batman sidekick, každý s každým. | jaké uvedené batman sidekick dotazování |
-| Přejděte get - em! | em přejděte get |
-| Jsem double-jointed | i mě double otočně připevněna |
-| 104 hlavní třída | jeden jejda čtyři hlavní ulice |
-| Naladění 102.7 | vyladění na jednu jejda dva bodu sedm |
-| Pi je o 3.14 | Pi je přibližně tři čtyři jeden bod |
-| Náklady na něj $3.14 | náklady na něj tři čtrnáct |
+| "Tichá krávy!" uvedené Batman. | tichá krávy říká, že batman |
+| "Co?" uvedené Batman sidekick dotazování. | jaké uvedené batman sidekick dotazování |
+| Go get - em! | em přejděte get |
+| Já jsem double-jointed | i teď double jointed |
+| 104 hlavní ulice | jeden ale čtyři hlavní ulice |
+| Vyladění 102.7 | ladění na jednu ale sedm dvě bodu |
+| Pi je asi 3.14 | Pi je přibližně tři čtyři jeden bod |
+| To stojí $3.14 | to stojí tři čtrnáct |
 
-### <a name="text-normalization-required-by-users"></a>Text normalizaci požadovaných uživateli
+### <a name="text-normalization-required-by-users"></a>Text normalizace vyžadované uživatele
 
-Pro zajištění nejlepšího využití vašich dat, bude použito ke svým datům před jeho import následující pravidla normalizace.
+Aby bylo zajištěno co nejlíp využít vaše data, bude použito následující pravidla normalizace pro vaše data před importem.
 
-*   Zkratky by měl být napsána v slova, aby odrážela mluvené formuláře
+*   Zkratky by měl uvádět tak, aby odrážely formuláře mluveného slova
 *   Nestandardní číselných řetězců by měla být napsána v slova
-*   By měla být přepsána slova s neabecedními znaky nebo smíšeném alfanumerické znaky, jako vyslovováno
-*   Běžné režim může být ponecháno jako jedna entita bez tečky nebo mezery mezi písmena, ale všechny ostatní režim by měly být zapsány v samostatných písmena s každou písmeno oddělených a jedna mezera
+*   Slov s neabecedními znaky nebo smíšené alfanumerické znaky by měla být přepsána, jak vyslovováno
+*   Běžné zkratky ji lze ponechat jako jedna entita bez tečky ani mezery mezi písmena, ale další zkratky by měl zapíšou v samostatných písmena s každé písmeno oddělené jedna mezera
 
-Zde jsou některé příklady
+Tady je několik příkladů
 
-| Původní Text | Po normalizaci |
+| Původní Text | Po normalizace |
 |----- | ----- |
-| 3. NE 14 zotavení po havárii. | čtrnáct severovýchod třetí jednotky |
-| Dr. Strangelove | Doctor Strangelove |
-| James dokumentových 007 | James vytvořit vazbu mezi double jejda sedm |
-| Nastavit jako$ ha | Kesha |
-| Jak dlouho je 2 x 4 | Jak dlouho je pomocí čtyř |
-| Schůzka přejde z – 3: 00 | Přejde schůzku od jedné do tří pm |
-| Moje krve typ je O + | Moje krve typ je O kladné |
-| horních je H20 | horních je H 2 O |
-| přehrání OU812 podle Van Halen | přehrání U O 2 1 8 podle Van Halen |
+| 14 NE 3rd zotavení po havárii. | čtrnáct severovýchod třetí disk |
+| Dr. Strangelove | Lékař Strangelove |
+| James Bond 007 | James vytvořit vazbu mezi double ale sedm |
+| Ke$ ha | Kesha |
+| Jak dlouhé je 2 × 4 | Jak dlouhé je pomocí čtyř |
+| Schůzky přejde z 1 – 15: 00 | Schůzky přechází z jedné do tří hodin |
+| Můj typ krve je O + | Můj typ krve je O pozitivní |
+| hodnota je H20 | hodnota je H 2 O |
+| Přehrát OU812 podle Van Halen | Přehrát U O 8 1 2 Van Halen |
 
-## <a name="transcription-guidelines-for-zh-cn"></a>Přepis pokyny pro zh-CN
+## <a name="transcription-guidelines-for-zh-cn"></a>Pokyny pro přepis pro zh-CN
 
-Textová data odešlou do služby řeči vlastní využít **kódování UTF-8 (včetně BOM)**. Každý řádek souboru by mělo obsahovat text pro pouze jeden utterance.
+Textová data nahrát do služby Custom Speech Service používali **kódování UTF-8 (včetně BOM)**. Každý řádek v souboru by měl obsahovat text pro pouze jednu utterance.
 
-Je důležité k zamezení znaky interpunkce poloviční šířky. To může nastat nechtěně když přípravu dat v textovém editoru nebo oškrabávání data z webové stránky. Tyto znaky nahraďte příslušné náhrady plnou šířkou. Příklad:
+Je důležité se vyhněte použití poloviční šířku interpunkční znaménka. To může nastat neúmyslně přípravě dat v textovém editoru nebo automatizované získávání dat data z webové stránky. Nahraďte tyto znaky náhrady odpovídající plnou šířkou. Příklad:
 
-| Znakové sady Unicode, aby se zabránilo | Nahrazení ASCII |
+| Kódování Unicode, aby se zabránilo | Nahrazení ASCII |
 |----- | ----- |
 | "你好" (otevření a zavření dvojité uvozovky) | "你好" (dvojité uvozovky) |
 | 需要什么帮助? (otazník) | 需要什么帮助? |
 
-### <a name="text-normalization-performed-by-the-custom-speech-service"></a>Text normalizaci zajišťuje služba rozpoznávání řeči vlastní
+### <a name="text-normalization-performed-by-the-custom-speech-service"></a>Text normalizace prováděné Custom Speech Service
 
-Tato služba rozpoznávání řeči provede normalizaci následující text pro data importován jako jazyk datové sady nebo transcriptions pro akustickými datovou sadu. To zahrnuje
+Tato služba speech bude provádět následující text normalizaci dat importovat jako jazyk datové sady nebo přepisů pro akustický datové sady. Jedná se o
 
-*   Odebrání všech interpunkce
-*   Rozšíření čísel na mluvené formulář
-*   Převeďte plnou šířkou písmena poloviční šířky.
-*   Všechny horní-velká a malá písmena anglické slova
+*   Odebrat všechny interpunkční znaménka
+*   Rozšíření čísel do mluvené řeči formuláře
+*   Převeďte na poloviční šířku písmena plnou šířkou.
+*   Velká písmena všech slov v angličtině
 
 Zde je několik příkladů:
 
-| Původní Text | Po normalizaci |
+| Původní Text | Po normalizace |
 |----- | ----- |
 | 3,1415 | 三 点 一 四 一 五 |
 | ￥3.5 | 三 元 五 角 |
@@ -115,72 +116,72 @@ Zde je několik příkladů:
 | 下午5:00的航班 | 下午 五点 的 航班 |
 | 我今年21岁 | 我 今年 二十 一 岁 |
 
-### <a name="text-normalization-required-by-users"></a>Text normalizaci požadovaných uživateli
+### <a name="text-normalization-required-by-users"></a>Text normalizace vyžadované uživatele
 
-Pro zajištění nejlepšího využití vašich dat, bude použito následující pravidla normalizace ke svým datům _předchozí_ k importu.
+Aby bylo zajištěno co nejlíp využít vaše data, bude použito následující pravidla normalizace ke svým datům _předchozí_ k importu.
 
-*   Zkratky by měl být napsána v slova, aby odrážela mluvené formuláře
-*   Tuto službu nezahrnuje všechny číselné počty. Je spolehlivější k zapsání číselných řetězců v mluvené formuláře
+*   Zkratky by měl uvádět tak, aby odrážely formuláře mluveného slova
+*   Tuto službu nezahrnuje všechny číselné množství. Je spolehlivější vypsat číselných řetězců v podobě mluvené slovo
 
-Zde jsou některé příklady
+Tady je několik příkladů
 
-| Původní Text | Po normalizaci |
+| Původní Text | Po normalizace |
 |----- | ----- |
 | 我今年21 | 我今年二十一 |
 | 3号楼504 | 三号 楼 五 零 四 |
 
-## <a name="transcription-guidelines-for-de-de"></a>Přepis pokyny pro de-DE
+## <a name="transcription-guidelines-for-de-de"></a>Pokyny pro přepis pro de-DE
 
-Textová data odešlou do služby řeči vlastní měli používat jenom **kódování UTF-8 (včetně BOM)**. Každý řádek souboru by mělo obsahovat text pro pouze jeden utterance.
+Používejte pouze textová data nahrát do služby Custom Speech Service **kódování UTF-8 (včetně BOM)**. Každý řádek v souboru by měl obsahovat text pro pouze jednu utterance.
 
-### <a name="text-normalization-performed-by-the-custom-speech-service"></a>Text normalizaci zajišťuje služba rozpoznávání řeči vlastní
+### <a name="text-normalization-performed-by-the-custom-speech-service"></a>Text normalizace prováděné Custom Speech Service
 
-Tato služba bude provádět následující text normalizaci dat importován jako jazyk datové sady nebo transcriptions pro akustickými datovou sadu. To zahrnuje
+Tato služba bude provádět následující text normalizaci dat importovat jako jazyk datové sady nebo přepisů pro akustický datové sady. Jedná se o
 
-*   Nižší-velká a malá písmena veškerého textu
-*   Odebrání veškerou interpunkci, včetně angličtině nebo němčině uvozovky ("test", "test", "test" nebo "test" jsou v pořádku)
-*   Zahodit všechny řádky, obsahující všechny včetně speciální znak: ^ hodnot l ¤ y ¦ smyslu © ª ¬® ° rozmezí ² µ × ÿ Ø¬¬
-*   Rozšíření čísla do aplikace word formuláře, včetně dolar nebo euro objemy
-*   Můžeme přijmout jenom samohlásky pro a, e, u; ostatní bude nahrazena "th" nebo zrušených
+*   Malá písmena veškerý text
+*   Odebrat všechny interpunkční znaménka, včetně anglické a německé uvozovky ("test", "test", "test" nebo "test" jsou v pořádku)
+*   Zahodit všechny řádky obsahující všechny speciální znak včetně: ^ z l ¤ y ¦ smyslu © ª ¬® ° rozmezí ² µ × ÿ Ø¬¬
+*   Rozšíření čísel, tvaru, včetně dolar nebo euro objemy
+*   Můžeme přijmout jenom samohlásky pro a o u; ostatní bude nahrazen "th" nebo zahozeny
 
-Zde jsou některé příklady
+Tady je několik příkladů
 
-| Původní Text | Po normalizaci |
+| Původní Text | Po normalizace |
 |----- | ----- |
-| Frankfurter prstenec | frankfurter prstenec |
-| "Hallo, Mama!" sagt die Tochter. | hallo mama sagt die tochter |
+| Aktualizační kanál Frankfurter | aktualizační kanál frankfurter |
+| "Hallo, Mama!" sagt kostka Tochter. | hallo mama sagt kostka tochter |
 | ¡Eine Frage! | eine frage |
 | WIR haben | WIR haben |
-| DAS macht 10 | DAS macht zehn odběru |
+| DAS macht 10 USD | DAS macht zehn dolarů |
 
 
-### <a name="text-normalization-required-by-users"></a>Text normalizaci požadovaných uživateli
+### <a name="text-normalization-required-by-users"></a>Text normalizace vyžadované uživatele
 
-Pro zajištění nejlepšího využití vašich dat, bude použito ke svým datům před jeho import následující pravidla normalizace.
+Aby bylo zajištěno co nejlíp využít vaše data, bude použito následující pravidla normalizace pro vaše data před importem.
 
-*   Musí být desetinné čárky a ne. například 2,3 % a není 2.3 %
-*   Oddělovač času mezi hodin a minut musí být: a not., například 12:00 Uhr
-*   Zkratky, jako je například "certifikační autority.", "bzw." nejsou nahradit. Doporučujeme používat úplný formát, aby bylo možné používat správnou výslovnost.
-*   Odebrání pět hlavní matematické operátory: +, -, \*, /.
- Doporučujeme, abyste je Pokud chcete nahradit jejich literálu formuláři plus minus špatný, geteilt.
-*   Totéž platí i pro komparátorů (=, <>,) - gleich, kleiner als, grösser als
-*   Použít zlomek například 3 nebo 4 v podobě word drei viertel místo ¾
-*   € Symbol nahraďte formuláře slovo "Euro"
+*   By měl být desetinné čárky a ne. například 2,3 % a ne % 2.3
+*   Oddělovač času mezi hodiny a minuty musí být: a., například 12:00 Uhr
+*   Zkratky jako "certifikační autorita.", "bzw." nejsou nahrazeny. Doporučujeme použít úplný formát, abyste měli správná výslovnost.
+*   Pět hlavních matematické operátory jsou odebrány: +, -, \*, /.
+ Doporučujeme nahradit je jejich literálu formulářem plus/minus mal geteilt.
+*   To samé platí pro komparátorů (=, <>,) - gleich kleiner als, grösser als
+*   Použijte ve tvaru drei viertel místo ¾ zlomek například 3/4
+*   Nahraďte formulářem, slovo "Euro" € symbol
 
 
-Zde jsou některé příklady
+Tady je několik příkladů
 
-| Původní Text | Po normalizaci uživatele | Po normalizaci systému
+| Původní Text | Po normalizace uživatele | Po normalizace systému
 |--------  | ----- | -------- |
-| ES ist 12.23Uhr | ES ist 12:23Uhr | ES ist zwölf uhr drei a zwanzig uhr |
+| ES TIS 12.23Uhr | 12:23Uhr TIS ES | ES TIS zwölf uhr drei a zwanzig uhr |
 | {12.45} | {12,45} | zwölf komma vier fünf |
 | 3 < 5 | 3 kleiner als 5 | drei kleiner als vier |
-| 2 a 3 4 | 2 a 3 minus 4 | zwei plus drei minus vier|
-| DAS macht 12€ | DAS macht 12 EUR | DAS macht zwölf EUR |
+| 2 + 3-4 | 2 a 3 minus 4 | zwei plus drei minus vier|
+| DAS macht 12€ | DAS macht 12 eurech | eurech zwölf macht DAS |
 
 
 
 ## <a name="next-steps"></a>Další postup
-* [Jak používat vlastní koncový bod řeči na text](cognitive-services-custom-speech-create-endpoint.md)
-* Zvyšte přesnost s vaší [vlastní akustickými modelu](cognitive-services-custom-speech-create-acoustic-model.md)
-* Zvyšte přesnost s [vlastní jazyk modelu](cognitive-services-custom-speech-create-language-model.md)
+* [Použití vlastního koncového bodu převodu řeči na text](cognitive-services-custom-speech-create-endpoint.md)
+* Zvyšte přesnost s vaší [vlastního akustického modelu](cognitive-services-custom-speech-create-acoustic-model.md)
+* Zlepšit přesnost [vlastních jazykových modelů](cognitive-services-custom-speech-create-language-model.md)

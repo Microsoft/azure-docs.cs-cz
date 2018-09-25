@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/03/2018
 ms.author: yeki
-ms.openlocfilehash: 6b20ef98e008d9c5d984ba29eed894b1c5ec8c09
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 935b3ff0fe03984b02dc2e1137f48e53b06ce0c2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39263244"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995104"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-upgrades"></a>Automatické upgrady operačního systému sady škálování virtuálních počítačů Azure
 
@@ -199,7 +199,7 @@ az policy assignment create --display-name "Enforce automatic OS upgrades with a
 ```
 
 ## <a name="configure-auto-updates"></a>Konfigurace automatických aktualizací
-Konfigurace automatických upgradů, ujistěte se, že *automaticOSUpgrade* je nastavena na *true* v škálovací sady definice modelu. Tuto vlastnost můžete nakonfigurovat pomocí Azure Powershellu nebo rozhraní příkazového řádku Azure CLI 2.0.
+Konfigurace automatických upgradů, ujistěte se, že *automaticOSUpgrade* je nastavena na *true* v škálovací sady definice modelu. Tuto vlastnost můžete nakonfigurovat pomocí Azure Powershellu nebo rozhraní příkazového řádku Azure.
 
 ### <a name="powershell"></a>PowerShell
 Následující příklad používá prostředí Azure PowerShell (4.4.1 nebo novější) ke konfiguraci automatické upgrady pro škálovací sadu s názvem *myVMSS* ve skupině prostředků s názvem *myResourceGroup*:
@@ -223,7 +223,7 @@ az vmss update --name $vmssname --resource-group $rgname --set upgradePolicy.Aut
 
 
 ## <a name="check-the-status-of-an-automatic-os-upgrade"></a>Kontrola stavu automatický upgrade operačního systému
-Můžete zkontrolovat stav posledního upgradu operačního systému provést ve škálovací sadě pomocí Azure Powershellu, příkazového řádku Azure CLI 2.0 nebo rozhraní REST API.
+Můžete zkontrolovat stav poslední upgrade operačního systému provést na škálovací sadě pomocí Azure Powershellu, rozhraní příkazového řádku Azure nebo rozhraní REST API.
 
 ### <a name="powershell"></a>PowerShell
 Následující příklad používá prostředí Azure PowerShell (4.4.1 nebo novější) a zkontrolujte stav pro škálovací sadu s názvem *myVMSS* ve skupině prostředků s názvem *myResourceGroup*:
@@ -232,7 +232,8 @@ Následující příklad používá prostředí Azure PowerShell (4.4.1 nebo nov
 Get-AzureRmVmssRollingUpgrade -ResourceGroupName myResourceGroup -VMScaleSetName myVMSS
 ```
 
-### <a name="cli-20"></a>CLI 2.0
+### <a name="azure-cli"></a>Azure CLI
+
 Následující příklad používá rozhraní příkazového řádku Azure (2.0.20 nebo novější) a zkontrolujte stav pro škálovací sadu s názvem *myVMSS* ve skupině prostředků s názvem *myResourceGroup*:
 
 ```azurecli

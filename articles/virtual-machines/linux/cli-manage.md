@@ -1,6 +1,6 @@
 ---
-title: Příkazy společné 2.0 rozhraní příkazového řádku Azure | Microsoft Docs
-description: Další některé běžné příkazy Azure CLI 2.0 začněte správu virtuálních počítačů v režimu Azure Resource Manager
+title: Běžné příkazy rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+description: Seznamte se s některými běžné příkazy Azure CLI, které vám pomůžou začít správu virtuálních počítačů v režimu Azure Resource Manageru
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/12/2017
 ms.author: rclaus
-ms.openlocfilehash: 94ac84a3e951fcd75fe0872ae4cd3b6ddbd64af1
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 3051c865d03e49964d01c09516bc76ae5ec55d0e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30840123"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998917"
 ---
-# <a name="common-azure-cli-20-commands-for-managing-azure-resources"></a>Běžné Azure CLI 2.0 příkazy pro správu prostředků Azure
+# <a name="common-azure-cli-commands-for-managing-azure-resources"></a>Běžné příkazy rozhraní příkazového řádku Azure pro správu prostředků Azure
 [!INCLUDE [virtual-machines-common-cli-manage](../../../includes/virtual-machines-common-cli-manage.md)]
 

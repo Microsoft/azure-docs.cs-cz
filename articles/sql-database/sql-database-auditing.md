@@ -2,20 +2,22 @@
 title: Začínáme s auditem databáze Azure SQL | Dokumentace Microsoftu
 description: Auditování služby Azure SQL database použijte ke sledování databázových událostí do protokolu auditu.
 services: sql-database
-author: giladmit
-manager: craigg
 ms.service: sql-database
-ms.custom: security
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/10/2018
+author: giladmit
 ms.author: giladm
 ms.reviewer: vanto
-ms.openlocfilehash: 935baf791d9244f2fa4f5be9c02d4778244754de
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+manager: craigg
+ms.date: 09/10/2018
+ms.openlocfilehash: dd1672c0cdae243bf6ff19efa22df66239611b44
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543742"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064166"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditem databáze SQL
 Auditování Azure SQL database sleduje události databáze a zapisuje je do auditu protokolu ve vašem účtu úložiště Azure. Také auditování:
@@ -98,10 +100,25 @@ Následující část popisuje konfigurace auditování pomocí webu Azure porta
 11. Po dokončení konfigurace nastavení auditu, můžete zapnout nové funkce detekce hrozeb a konfigurovat také e-maily přijímat výstrahy zabezpečení. Při použití detekce hrozeb dostávat proaktivní výstrahy na neobvyklé databázové aktivity, které můžete značí potenciální bezpečnostní hrozby. Další informace najdete v tématu [Začínáme s detekcí hrozeb](sql-database-threat-detection-get-started.md). 
 
 ## <a id="subheading-3"></a>Analýza protokolů auditu a sestavy
+Pokud jste zvolili pro zápis protokolů auditu do Log Analytics:
+- Použití [webu Azure portal](https://portal.azure.com).  Otevřete příslušnou databázi. V horní části databáze **auditování** klikněte na **zobrazit protokoly auditu**.
+
+    ![Zobrazení protokolů auditování](./media/sql-database-auditing-get-started/7_auditing_get_started_blob_view_audit_logs.png)
+
+- Potom kliknutím na **otevřete v OMS** v horní části **záznamy auditu** stránka se otevře zobrazení protokolů v Log Analytics, ve kterém můžete upravit časový rozsah a vyhledávací dotaz.
+
+    ![Otevřít v OMS](./media/sql-database-auditing-get-started/auditing_open_in_oms.png)
+
+- Alternativně můžete také přistupovat protokolů auditu v okně Log Analytics. Otevření pracovního prostoru Log Analytics a v části **Obecné** klikněte na tlačítko **protokoly**. Můžete začít s jednoduchého dotazu, jako například: vyhledávání *"SQLSecurityAuditEvents"* zobrazíte auditování protokoluje.
+    Z tohoto místa můžete také použít [Operations Management Suite (OMS) Log Analytics](../log-analytics/log-analytics-log-search.md) ke spuštění rozšířené hledání na data protokolů auditu. Log Analytics nabízí provozní informace v reálném čase pomocí integrovaného vyhledávání a vlastních řídicích panelů, díky kterým můžete analyzovat miliony záznamů napříč vašimi úlohami a servery. Další užitečné informace o vyhledávací jazyk OMS Log Analytics a příkazy najdete v tématu [referenční příručce k vyhledávání Log Analytics](../log-analytics/log-analytics-log-search.md).
+
+Pokud jste zvolili pro zápis protokolů auditu do centra událostí:
+- Chcete-li využívají data protokolů auditu z centra událostí, je potřeba nastavit, aby datový proud zpracování událostí a jejich zápisu do cílového. Další informace najdete v tématu [dokumentace k Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/).
+
 Pokud jste zvolili pro zápis protokolů auditu do účtu služby Azure storage, existuje několik metod, které lze použít k zobrazení protokolů:
 - Protokoly auditu se agregují v účtu, který jste zvolili během instalace. Protokoly auditu můžete prozkoumat pomocí nástroje [Průzkumníka služby Azure Storage](http://storageexplorer.com/). Ve službě Azure storage, se ukládají protokoly auditování jako kolekce souborů, objektů blob v kontejneru s názvem **sqldbauditlogs**. Další podrobnosti o hierarchii složky úložiště konvence pojmenování a formát protokolu, najdete v článku [odkaz na formát protokolu auditování objektů Blob](https://go.microsoft.com/fwlink/?linkid=829599).
 
-- Použití [webu Azure portal](https://portal.azure.com).  Otevřete příslušnou databázi. V horní části databáze **auditování a detekce hrozeb** klikněte na **zobrazit protokoly auditu**.
+- Použití [webu Azure portal](https://portal.azure.com).  Otevřete příslušnou databázi. V horní části databáze **auditování** klikněte na **zobrazit protokoly auditu**.
 
     ![Navigační podokno][7]
 
@@ -137,16 +154,6 @@ Pokud jste zvolili pro zápis protokolů auditu do účtu služby Azure storage,
 
      * Použití [rozšířené události čtečky](https://blogs.msdn.microsoft.com/extended_events/2011/07/20/introducing-the-extended-events-reader/) knihovny v jazyce C#.
      * [Dotazování rozšířené události soubory](https://sqlscope.wordpress.com/2014/11/15/reading-extended-event-files-using-client-side-tools-only/) pomocí prostředí PowerShell.
-
-Pokud jste zvolili pro zápis protokolů auditu do Log Analytics:
-- Chcete-li zobrazit protokoly auditu v Log Analytics, otevřete pracovního prostoru Log Analytics a v části **vyhledávání a analýza protokolů**, klikněte na tlačítko **zobrazit protokoly**. V zobrazení prohledávání protokolu můžete spustit kliknutím **všechna data shromážděná**.  
-
-    ![prohledávání protokolu OMS](./media/sql-database-auditing-get-started/oms_log_search.png)
-
-   Z tohoto místa můžete použít [Operations Management Suite (OMS) Log Analytics](../log-analytics/log-analytics-log-search.md) ke spuštění rozšířené hledání na data protokolů auditu. Log Analytics nabízí provozní informace v reálném čase pomocí integrovaného vyhledávání a vlastních řídicích panelů, díky kterým můžete analyzovat miliony záznamů napříč všemi svými úlohami a servery. Další užitečné informace o vyhledávací jazyk OMS Log Analytics a příkazy najdete v tématu [referenční příručce k vyhledávání Log Analytics](../log-analytics/log-analytics-log-search.md).
-
-Pokud jste zvolili pro zápis protokolů auditu do centra událostí:
-- Chcete-li využívají data protokolů auditu z centra událostí, je potřeba nastavit, aby datový proud zpracování událostí a jejich zápisu do cílového. Další informace najdete v tématu [dokumentace k Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/).
 
 ## <a id="subheading-5"></a>Postupy v produkčním prostředí
 <!--The description in this section refers to preceding screen captures.-->
@@ -210,16 +217,16 @@ Ukázkový skript, naleznete v tématu [konfigurace auditování a detekce hroze
 
 **Rozhraní REST API – auditování objektů Blob**:
 
-* [Vytvořit nebo aktualizovat objekt Blob databázi zásady auditu](https://docs.microsoft.com/en-us/rest/api/sql/database%20auditing%20settings/createorupdate)
-* [Vytvořit nebo aktualizovat objekt Blob Server zásady auditu](https://docs.microsoft.com/en-us/rest/api/sql/server%20auditing%20settings/createorupdate)
-* [Získat zásady auditování objektů Blob v databázi](https://docs.microsoft.com/en-us/rest/api/sql/database%20auditing%20settings/get)
-* [Získat zásady auditování objektů Blob v serveru](https://docs.microsoft.com/en-us/rest/api/sql/server%20auditing%20settings/get)
+* [Vytvořit nebo aktualizovat objekt Blob databázi zásady auditu](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/createorupdate)
+* [Vytvořit nebo aktualizovat objekt Blob Server zásady auditu](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
+* [Získat zásady auditování objektů Blob v databázi](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/get)
+* [Získat zásady auditování objektů Blob v serveru](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
 Rozšířené zásady pomocí kde klauzule podpory pro další filtrování:
-* [Vytvořit nebo aktualizovat databázi *rozšířené* zásady auditování objektů Blob](https://docs.microsoft.com/en-us/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
-* [Vytvořit nebo aktualizovat Server *rozšířené* zásady auditování objektů Blob](https://docs.microsoft.com/en-us/rest/api/sql/server%20extended%20auditing%20settings/createorupdate)
-* [Získat databázi *rozšířené* zásady auditování objektů Blob](https://docs.microsoft.com/en-us/rest/api/sql/database%20extended%20auditing%20settings/get)
-* [Získat Server *rozšířené* zásady auditování objektů Blob](https://docs.microsoft.com/en-us/rest/api/sql/server%20extended%20auditing%20settings/get)
+* [Vytvořit nebo aktualizovat databázi *rozšířené* zásady auditování objektů Blob](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
+* [Vytvořit nebo aktualizovat Server *rozšířené* zásady auditování objektů Blob](https://docs.microsoft.com/rest/api/sql/server%20extended%20auditing%20settings/createorupdate)
+* [Získat databázi *rozšířené* zásady auditování objektů Blob](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
+* [Získat Server *rozšířené* zásady auditování objektů Blob](https://docs.microsoft.com/rest/api/sql/server%20extended%20auditing%20settings/get)
 
 <!--Anchors-->
 [Azure SQL Database Auditing overview]: #subheading-1

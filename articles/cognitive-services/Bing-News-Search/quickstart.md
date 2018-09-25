@@ -1,6 +1,6 @@
 ---
-title: Rychlý start zprávy rozhraní API služby Search | Microsoft Docs
-description: Ukazuje, jak začít používat rozhraní API služby Bing zprávy Search.
+title: Rychlý start pro rozhraní API pro vyhledávání zpráv | Dokumentace Microsoftu
+description: Ukazuje, jak začít používat rozhraní API pro vyhledávání zpráv Bingu.
 services: cognitive-services
 author: swhite-msft
 manager: ehansen
@@ -10,18 +10,18 @@ ms.component: bing-news-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 2aa1b3de07bd61eebfc1d410cda76c32fc7c958e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b3f2b36034ab33b4f5eec2d138103c3e4d8e21f4
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343526"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034327"
 ---
-# <a name="your-first-news-search-query"></a>Svůj první dotaz vyhledávání zprávy
+# <a name="your-first-news-search-query"></a>Svůj první dotaz vyhledávání zpráv
 
-Předtím, než bude možné vytvářet první volání, které je potřeba získat předplatné klíč kognitivní služby. Získat klíč, najdete v části [zkuste kognitivní služby](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api).
+Předtím, než můžete provést první volání, je nutné získat klíč předplatného služeb Cognitive Services. Chcete-li získat klíče, naleznete v tématu [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api).
 
-Chcete-li získat výsledky hledání jen zprávy, by odeslat požadavek GET na následující koncový bod:
+Chcete-li získat výsledky hledání jen zprávy, bude posílat požadavek GET na následující koncový bod:
 
 ```http
 https://api.cognitive.microsoft.com/bing/v7.0/news/search
@@ -29,24 +29,24 @@ https://api.cognitive.microsoft.com/bing/v7.0/news/search
 
 Žádost musí používat protokol HTTPS.
 
-Doporučujeme vám, že všechny požadavky pocházejí ze serveru. Distribuce klíč v rámci klientské aplikace poskytuje další možnost pro třetí strana k přístupu. Navíc volání ze serveru poskytuje snadný upgrade pro budoucí verze rozhraní API.
+Doporučujeme vám, že všechny požadavky pocházejí ze serveru. Distribuce klíč v rámci klientské aplikace nabízí další možnost pro třetí strana pro přístup k ní. Kromě toho volání ze serveru umožňuje jednorázovou upgradu pro budoucí verze rozhraní API.
 
-Musíte zadat požadavek [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query) parametr dotazu, který obsahuje uživatele hledaný termín. Přestože je volitelné, žádost by také určit [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#mkt) parametr dotazu, který identifikuje na trhu, kam chcete výsledky pocházet z. Seznam volitelné dotaz parametry `freshness` a `textDecorations`, najdete v části [parametry dotazu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query-parameters). Všechny hodnoty parametru dotazu musí být kódovaná adresou URL.
+Musíte zadat požadavek [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query) parametr dotazu, který obsahuje hledaný termín daného uživatele. I když je volitelné, byste zadat také požadavek [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#mkt) parametr dotazu, který identifikuje na trhu, kde chcete výsledky pocházet z. Seznam volitelných parametrů dotazu, jako `freshness` a `textDecorations`, naleznete v tématu [parametry dotazu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query-parameters). Všechny hodnoty parametru dotazu musí mít kódování URL.
 
-Musíte zadat požadavek [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#subscriptionkey) záhlaví. I když je volitelné, vám doporučujeme, aby se také určit následující hlavičky:
+Musíte zadat požadavek [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#subscriptionkey) záhlaví. I když je volitelné, jsou ukončena. doporučujeme zadat také následující hlavičky:
 
 - [Uživatelský Agent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#useragent)
-- [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#clientid)
-- [X-vyhledávání – když](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#clientip)
-- [Umístění X vyhledávání](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#location)
+- [X-MSEdge ClientID](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#clientid)
+- [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#clientip)
+- [X-Search umístění](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#location)
 
-Hlavičky protokolu IP a umístění klienta jsou důležité pro vrácení obsahu vědět umístění.
+Záhlaví IP a umístění klienta jsou důležité pro vrácení vědět umístění obsahu.
 
-Seznam všech hlaviček žádostí a odpovědí najdete v tématu [hlavičky](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#headers).
+Seznam všech hlaviček žádostí a odpovědí najdete v tématu [záhlaví](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#headers).
 
-## <a name="the-request"></a>Požadavek
+## <a name="the-request"></a>Žádost
 
-Na obrázku je požadavek na zprávy, který obsahuje všechny parametry navrhované dotazu a hlavičky. Pokud je poprvé volání některé z rozhraní API služby Bing, neobsahují záhlaví ID klienta. Pokud jste dříve volat rozhraní API pro Bing a Bing vrátil ID klienta pro uživatele a zařízení kombinace pouze zahrnují ID klienta.
+Následuje ukázka zprávy žádosti, která zahrnuje všechny parametry navrhovaných dotazů a hlaviček. Pokud voláte některé z rozhraní API Bingu poprvé, nezahrnujte do volání hlavičku ID klienta. ID klienta zahrňte pouze v případě, že jste již dříve volali rozhraní API Bingu a Bing vrátil ID klienta pro příslušnou kombinaci uživatele a zařízení.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies&mkt=en-us HTTP/1.1
@@ -60,96 +60,232 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="the-response"></a>Odpověď
 
-Následující obrázek znázorňuje odpověď na předchozí požadavek. Tento příklad také ukazuje hlavičky odpovědi specifické pro Bing.
+Následující příklad ukazuje odpověď na předchozí požadavek. Příklad také ukazuje hlavičky odpovědi.
 
-```http
-BingAPIs-TraceId: 76DD2C2549B94F9FB55B4BD6FEB6AC
-X-MSEdge-ClientID: 1C3352B306E669780D58D607B96869
+```
+BingAPIs-TraceId: 994974CC8D994C95A5C31387296A510A
+BingAPIs-SessionId: 92C9798D29C846ABBDAE4AB6C47CC888
+X-MSEdge-ClientID: 3358F499A06F6A562B88F8F4A1236BC0
 BingAPIs-Market: en-US
+X-MSEdge-Ref: Ref A: 994974CC8D994C95A5C31387296A510A Ref B: BY3EDGE0207 Ref C: 2018-09-17T16:55:22Z
 
 {
-    "_type" : "News",
-    "readLink" : "https:\/\/api.cognitive.microsoft.com\/bing\/v7\/news\/search?q=sailing+dinghies",
-    "totalEstimatedMatches" : 88400,
-    "value" : [{
-        "name" : "Sailing Vies for Four Trophies",
-        "url" : "http:\/\/www.bing.com\/cr?IG=CCE2F06CA...",
-        "image" : {
-            "thumbnail" : {
-                "contentUrl" : "https:\/\/www.bing.com\/th?id=ON.9C23AA5...",
-                "width" : 650,
-                "height" : 341
+   "_type": "News",
+   "readLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/news\/search?q=sailing%2bdinghies",
+   "queryContext": {
+      "originalQuery": "sailing+dinghies",
+      "adultIntent": false
+   },
+   "totalEstimatedMatches": 60000,
+   "sort": [
+      {
+         "name": "Best match",
+         "id": "relevance",
+         "isSelected": true,
+         "url": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/news\/search?q=sailing%2bdinghies"
+      },
+      {
+         "name": "Most recent",
+         "id": "date",
+         "isSelected": false,
+         "url": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/news\/search?q=sailing%2bdinghies&sortby=date"
+      }
+   ],
+   "value": [
+      {
+         "name": "Global single-handed sailing dinghy market research illuminated by new report",
+         "url": "https:\/\/www.whatech.com\/market-research\/consumer\/506504-global-single-handed-sailing-dinghy-market-research-illuminated-by-new-report",
+         "image": {
+            "thumbnail": {
+               "contentUrl": "https:\/\/www.bing.com\/th?id=ON.784C1E1F53BA96E21EAD9382C8D47855&pid=News",
+               "width": 490,
+               "height": 280
             }
-        },
-        "description" : "Sailing College Rankings, presented by Zim...",
-        "provider" : [{
-            "_type" : "Organization",
-            "name" : "contoso.com"
-        }],
-        "datePublished" : "2017-04-14T15:28:00"
-    },
-    {
-        "name" : "Reunion at Fabrikam Lakes Sailing Club, celebrates 50 years...",
-        "url" : "http:\/\/www.bing.com\/cr?IG=CCE2F06CA750455891F...",
-        "image" : {
-            "thumbnail" : {
-                "contentUrl" : "https:\/\/www.bing.com\/th?id=ON.38210...",
-                "width" : 650,
-                "height" : 366
+         },
+         "description": "With this Single-Handed Sailing Dinghy Market report, one is sure to keep up with information on the dogged competition for market share and control, between elite manufacturers. It also features, price, production, and revenue. Global Single-Handed ...",
+         "about": [
+            {
+               "readLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/entities\/ba5cfb68-96fd-4529-bdd3-060f6fca43f1",
+               "name": "Single-handed sailing"
             }
-        },
-        "description" : "The reunion on April 29, at Fabrikam Lakes Sailing...",
-        "provider" : [{
-            "_type" : "Organization",
-            "name" : "Contoso"
-        }],
-        "datePublished" : "2017-04-14T13:08:00"
-    },
-    {
-        "name" : "Sailing Club to host Dinghy Sailing World...",
-        "url" : "http:\/\/www.bing.com\/cr?IG=CCE2F06CA750455891FE99...",
-        "image" : {
-            "thumbnail" : {
-                "contentUrl" : "https:\/\/www.bing.com\/th?id=ON.364AB41...",
-                "width" : 448,
-                "height" : 300
+         ],
+         "provider": [
+            {
+               "_type": "Organization",
+               "name": "WhaTech",
+               "image": {
+                  "thumbnail": {
+                     "contentUrl": "https:\/\/www.bing.com\/th?id=AR_7f43f11eb94501973a55b64ec0721b55&pid=news"
+                  }
+               }
             }
-        },
-        "description" : "The sailing club that trained Olympian Ben...",
-        "provider" : [{
-            "_type" : "Organization",
-            "name" : "Contoso"
-        }],
-        "datePublished" : "2017-04-04T11:02:00",
-        "category" : "Sports"
-    },
-    {
-        "name" : "A 24-Carat Dinghy",
-        "url" : "http:\/\/www.bing.com\/cr?IG=CCE2F06CA750455891F...",
-        "image" : {
-            "thumbnail" : {
-                "contentUrl" : "https:\/\/www.bing.com\/th?id=ON.6CC2...",
-                "width" : 700,
-                "height" : 466
+         ],
+         "datePublished": "2018-09-12T05:30:00.0000000Z",
+         "category": "Business"
+      },
+      {
+         "name": "Boat collides with luxury craft at sail launch",
+         "url": "https:\/\/www.sunshinecoastdaily.com.au\/news\/boat-capsizes-in-display-at-the-launch-of-the-sout\/3523096\/",
+         "image": {
+            "thumbnail": {
+               "contentUrl": "https:\/\/www.bing.com\/th?id=ON.C2D335BDDAB1844EAF7775B121433119&pid=News",
+               "width": 460,
+               "height": 258
             }
-        },
-        "description" : "“Hard dinghies are for purists, the kind of people who...",
-        "provider" : [{
-            "_type" : "Organization",
-            "name" : "contoso.com"
-        }],
-        "datePublished" : "2017-04-03T12:14:00",
-        "category" : "Politics"
-    }]
+         },
+         "description": "The annual spectacle is never a dull affair with a flotilla of club vessels - from small sailing dinghy's to powerboats - completing a tight turn in the marina right in front of the club house. A strong northerly made conditions extra tricky for the 70 ...", "provider": [{"_type": "Organization", "name": "Sunshine Coast Daily", "image": {"thumbnail": {"contentUrl": "https:\/\/www.bing.com\/th?id=AR_73ce1412dfbebb5c4f539ac7c5e31429&pid=news"}}}], "datePublished": "2018-09-16T22:03:00.0000000Z", "category": "Sports"}, {"name": "Boat capsizes in display at the launch of the Southport Yacht Club sailing season", "url": "https:\/\/www.goldcoastbulletin.com.au\/news\/gold-coast\/boat-capsizes-in-display-at-the-launch-of-the-southport-yacht-club-sailing-season\/news-story\/6c0fb5366ed6a1abe93e85825598aee8", "image": {"thumbnail": {"contentUrl": "https:\/\/www.bing.com\/th?id=ON.247A9B91E2888976DA8F4776DC9B2372&pid=News", "width": 700, "height": 393}}, "description": "The annual spectacle is never a dull affair with a flotilla of club vessels - from small sailing dinghy’s to powerboats - completing a tight turn in the marina right in front of the club house. A strong northerly made conditions extra tricky for the 70 ...", "about": [{"readLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/entities\/cf2ea25d-2faf-1486-6db8-0e4c16cabed7", "name": "Southport"}], "provider": [{"_type": "Organization", "name": "Gold Coast Sun"}], "datePublished": "2018-09-16T14:05:00.0000000Z", "category": "Sports"}, {"name": "Caribbean Dinghy Championship 2018", "url": "https:\/\/www.sailingscuttlebutt.com\/2018\/09\/06\/caribbean-dinghy-championship-2018\/", "image": {"thumbnail": {"contentUrl": "https:\/\/www.bing.com\/th?id=ON.C9D13963192B123805E8BD0707370BFF&pid=News", "width": 620, "height": 350}}, "description": "After storms forced the cancellation of the 2017 Caribbean Dinghy Championship, the event returns in 2018 ... Launched in 1997, Scuttlebutt provides sailing news with a North American focus. Look for the latest information to be posted on the website ...", "about": [{"readLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/entities\/7ee7f148-7ed7-b73e-7461-900ee716ef61", "name": "Caribbean"}], "provider": [{"_type": "Organization", "name": "Scuttlebutt Sailing News", "image": {"thumbnail": {"contentUrl": "https:\/\/www.bing.com\/th?id=AR_bce37315275c769315a43e2792dab150&pid=news"}}}], "datePublished": "2018-09-06T18:29:00.0000000Z"}, {"name": "Severna Park sailor places fifth at Optimist World Championship", "url": "http:\/\/www.capitalgazette.com\/sports\/ac-cs-tommy-sitzmann-feature-20180915-story.html", "description": "When the sailing conditions are right ... he could be a top contender on an international level by placing fifth at the United States Optimist Dinghy Association Team Trials, held April 26-29 out of Key Biscayne Yacht Club. That in itself was a massive ...", "about": [{"readLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/entities\/1883f6c3-f9bf-357c-01b1-96120862af67", "name": "Severna Park"}, {"readLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/entities\/5254c06e-0891-5637-4e51-45fa4eec4ca2", "name": "Optimist dinghy"}], "provider": [{"_type": "Organization", "name": "Capital Gazette", "image": {"thumbnail": {"contentUrl": "https:\/\/www.bing.com\/th?id=AR_ef9a3ded8bb90aef15d34f327e53e2ec&pid=news"}}}], "datePublished": "2018-09-15T22:04:00.0000000Z", "category": "Sports"}, {"name": "A Dorset dinghy celebrates 60 years on the water", "url": "https:\/\/www.bbc.co.uk\/programmes\/p06kk2zv", "description": "If you learned to sail as a child, or if you have children or grandchildren who sail then you will know about the AB sailing dinghy. The simple little boat was first designed and built in Poole in 1958 and this year it's celebrating its 60th anniversary.",
+         "about": [
+            {
+               "readLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/entities\/248ebd80-8904-8a43-be23-3cd065a30350",
+               "name": "Dorset"
+            },
+            {
+               "readLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/entities\/84fb5887-86ed-ecdb-55b7-718ba1cdefb8",
+               "name": "BBC Radio Solent"
+            },
+            {
+               "readLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/entities\/1cf31e75-0340-8af2-1efc-e2cd0d0fa253",
+               "name": "Water"
+            }
+         ],
+         "provider": [
+            {
+               "_type": "Organization",
+               "name": "BBC",
+               "image": {
+                  "thumbnail": {
+                     "contentUrl": "https:\/\/www.bing.com\/th?id=AR_b639c1691c4fa767d85fd87b7042f9e6&pid=news"
+                  }
+               }
+            }
+         ],
+         "datePublished": "2018-09-07T10:29:00.0000000Z"
+      },
+      {
+         "name": "Angst as Sailing misses Paris 2024 Paralympic inclusion",
+         "url": "https:\/\/www.sail-world.com\/news\/210021\/Four-more-years--Para-Sailing-misses-Paris-cut",
+         "image": {
+            "thumbnail": {
+               "contentUrl": "https:\/\/www.bing.com\/th?id=ON.0C996DAB550F7202E8C53BBCFF51B9F3&pid=News",
+               "width": 700,
+               "height": 466
+            }
+         },
+         "description": "World Sailing has also put the second oldest Olympic class, the two-handed 470 on the skids, with moves to drop the men's and women's two-person dinghy events and replace them with a single mixed gender doublehander, with the class yet to be selected.",
+         "about": [
+            {
+               "readLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/entities\/819fda72-a524-6f49-5e39-5d559e2a5969",
+               "name": "2024 Summer Olympics"
+            },
+            {
+               "readLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/entities\/24256509-f062-baaa-3ed3-3ec1a7a2d38c",
+               "name": "Sailing"
+            }
+         ],
+         "provider": [
+            {
+               "_type": "Organization",
+               "name": "Sail World News"
+            }
+         ],
+         "datePublished": "2018-09-15T06:24:00.0000000Z"
+      },
+      {
+         "name": "West Sacramento sailing club uses warm weather for wind surfing",
+         "url": "http:\/\/www.dailydemocrat.com\/article\/NI\/20180912\/NEWS\/180919960",
+         "image": {
+            "thumbnail": {
+               "contentUrl": "https:\/\/www.bing.com\/th?id=ON.6BC8EBF8DEFBA55247EFEEAF545DDE15&pid=News",
+               "width": 384,
+               "height": 400
+            }
+         },
+         "description": "Once comfortable, newcomers can join in on the many hosted races, like the annual Delta Ditch Dinghy Race that begins in Rio Vista. “It truly is the best kept secret in Sacramento,” Glovin said. “It’s the best sailing around. You get the consistent ...",
+         "about": [
+            {
+               "readLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/entities\/aaf3c53a-9932-f043-c1ca-9cae2d19f9cf",
+               "name": "West Sacramento"
+            }
+         ],
+         "provider": [
+            {
+               "_type": "Organization",
+               "name": "Woodland Daily Democrat",
+               "image": {
+                  "thumbnail": {
+                     "contentUrl": "https:\/\/www.bing.com\/th?id=AR_0b1348a0984c3f1177b2fff3b8f27549&pid=news"
+                  }
+               }
+            }
+         ],
+         "datePublished": "2018-09-12T22:55:00.0000000Z"
+      },
+      {
+         "name": "SAILING: Sailing teams begin busy 2018–19",
+         "url": "https:\/\/yaledailynews.com\/blog\/2018\/09\/11\/sailing-teams-begin-busy-2018-19\/",
+         "image": {
+            "thumbnail": {
+               "contentUrl": "https:\/\/www.bing.com\/th?id=ON.ACEBE0C4D4E85B3E3DE149E8D31BC026&pid=News",
+               "width": 700,
+               "height": 524
+            }
+         },
+         "description": "On the first day, Arcot and Ware sailed six of seven races in the Firefly dinghy, a boat with which they had no previous experience. Next weekend, both coed and women’s sailing head to Boston College. The coed team also scatters to MIT and Bowdoin while ...",
+         "about": [
+            {
+               "readLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/entities\/dac17b74-6cf9-27ba-27ff-8dc6f57b7a31",
+               "name": "Sailing"
+            },
+            {
+               "readLink": "https:\/\/api.cognitive.microsoft.com\/api\/v7\/entities\/dacda48e-35d6-bcad-0e81-96951267dfda",
+               "name": "Sailing"
+            }
+         ],
+         "provider": [
+            {
+               "_type": "Organization",
+               "name": "Yale Daily News",
+               "image": {
+                  "thumbnail": {
+                     "contentUrl": "https:\/\/www.bing.com\/th?id=AR_6b2f0dfab97da868e0d3df07012f44a4&pid=news"
+                  }
+               }
+            }
+         ],
+         "datePublished": "2018-09-11T04:31:00.0000000Z",
+         "category": "Sports"
+      },
+      {
+         "name": "Tasar UK National Championship at Hayling Island Sailing Club",
+         "url": "https:\/\/www.sail-world.com\/news\/209889",
+         "image": {
+            "thumbnail": {
+               "contentUrl": "https:\/\/www.bing.com\/th?id=ON.6A28956676E79790BED64ACD9498F7AF&pid=News",
+               "width": 700,
+               "height": 497
+            }
+         },
+         "description": "Under the beautiful backdrop of the Spinnaker Tower, the Tasar fleet, who had the pleasure of sharing the sailing space with 43 Contenders, had fun milling around the Committee Boat waiting to start. The sight of so many dinghies is always gorgeous ...",
+         "provider": [
+            {
+               "_type": "Organization",
+               "name": "Sail World News"
+            }
+         ],
+         "datePublished": "2018-09-11T15:30:00.0000000Z",
+         "category": "Sports"
+      }
+   ]
 }
+
 ```
 
 ## <a name="next-steps"></a>Další postup
 
-Vyzkoušejte rozhraní API. Přejděte na [zprávy vyhledávání API testovací konzolu](https://dev.cognitive.microsoft.com/docs/services/56b43f72cf5ff8098cef380a/operations/56f02400dbe2d91900c68553).
+Vyzkoušejte si rozhraní API. Přejděte na [konzole testování rozhraní API pro vyhledávání zpráv](https://dev.cognitive.microsoft.com/docs/services/56b43f72cf5ff8098cef380a/operations/56f02400dbe2d91900c68553).
 
-Podrobnosti o spotřebě objektů odpovědi najdete v tématu [co je vyhledávání zprávy Bing?](./search-the-web.md). Najdete tu taky Další informace o následující běžné akce:
+Podrobnosti o použití objekty odpovědi najdete v tématu [co je pro vyhledávání zpráv Bingu?](./search-the-web.md). Také zjistíte další informace o následující běžné akce:
 
-- [Získávání dnešní nejnovější](./search-the-web.md#getting-todays-top-news)
-- [Získávání zprávy podle kategorie](./search-the-web.md#getting-news-by-category)
-- [Získávání trendů zprávy](./search-the-web.md#getting-trending-news)
+- [Získání dnešní hlavní zprávy](./search-the-web.md#getting-todays-top-news)
+- [Získání zpráv podle kategorie](./search-the-web.md#getting-news-by-category)
+- [Získávání nejsledovanější zprávy](./search-the-web.md#getting-trending-news)

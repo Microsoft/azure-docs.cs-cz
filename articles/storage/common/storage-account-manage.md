@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: tamram
-ms.openlocfilehash: 5237be9fd75edc8abf5c5fa043574e8c2deb79e9
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 768fd4a715d4c0df154f823d159fd63898c9715b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45740709"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981327"
 ---
 # <a name="manage-storage-account-settings-in-the-azure-portal"></a>Spravovat nastavení účtu úložiště na webu Azure Portal
 
@@ -26,6 +26,14 @@ Azure Storage podporuje ověřování pomocí Azure Active Directory pro úloži
 
 > [!NOTE]
 > Ověřování uživatelů a aplikací s použitím přihlašovacích údajů Azure AD poskytuje nejvyšší zabezpečení a snadné použití přes jiným způsobem autorizace. Když můžete nadále používat povolení sdíleného klíče s vašimi aplikacemi, používání služby Azure AD obchází potřebou ukládání přístupový klíč k účtu s vaším kódem. Můžete taky dál používat sdílené přístupové podpisy (SAS) k udělení velice přesně kontrolovat přístup k prostředkům ve vašem účtu úložiště, ale Azure AD nabízí podobné funkce bez nutnosti spravovat tokeny SAS nebo si dělat starosti o odvolání SAS ohrožení zabezpečení. 
+
+## <a name="tags"></a>Značky
+
+Azure Storage podporuje značky Azure Resource Manageru pro uspořádání vašich prostředků Azure s vlastní taxonomii. Značky můžete použít k účtům úložiště tak, že je můžete seskupit v rámci vašeho předplatného logickým způsobem. 
+
+Pro účty úložiště název značky je omezen na 128 znaků a hodnota značky je omezena na 256 znaků.
+
+Další informace najdete v tématu [používání značek k uspořádání prostředků Azure](../../azure-resource-manager/resource-group-using-tags.md).
 
 ## <a name="access-keys"></a>Přístupové klíče
 

@@ -13,19 +13,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/22/2018
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7954a4eebaf25e2a22e5a39721098ac8db1ed8dd
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 9e8d35ee606d66f5c4f6e11512247fc909ecfb9f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581205"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999847"
 ---
 # <a name="v20-protocols---spas-using-the-implicit-flow"></a>verze 2.0 protokolů – SPA pomocí implicitní tok
-S koncovým bodem v2.0 se můžete přihlásit uživatele do vaší jednostránkové aplikace s osobní i pracovní nebo školní účty od Microsoftu. Jediné stránce a dalších aplikací jazyka JavaScript, které poběží především v prohlížeči plochy pár zajímavých vyzve při rozhodování o ověřování:
+
+S koncovým bodem v2.0 se můžete přihlásit uživatele své jednostránkové aplikace pomocí osobní i pracovní nebo školní účty od Microsoftu. Jediné stránce a dalších aplikací jazyka JavaScript, které poběží především v prohlížeči plochy pár zajímavých vyzve při rozhodování o ověřování:
 
 * Vlastnosti zabezpečení těchto aplikací se značně liší od tradiční serverových webových aplikací.
 * Mnoho autorizace servery a zprostředkovatelů identity požadavků CORS nepodporují.
@@ -33,21 +34,21 @@ S koncovým bodem v2.0 se můžete přihlásit uživatele do vaší jednostránk
 
 Pro tyto aplikace (myslíte: AngularJS, Ember.js, React.js, etc) Azure AD podporuje toku implicitní Grant OAuth 2.0. Implicitní tok je popsána v [specifikaci OAuth 2.0](http://tools.ietf.org/html/rfc6749#section-4.2). Jeho primární výhodou je, že umožňuje aplikaci získat tokeny ze služby Azure AD bez provedení back-end serveru výměnou přihlašovacích údajů. To umožňuje aplikaci pro uživatele, Udržovat relaci a získat tokeny do dalších webových rozhraní API vše v rámci klienta kódu jazyka JavaScript. Existuje několik důležité informace o zabezpečení vzít v úvahu při použití implicitní tok – konkrétně přibližně [klienta](http://tools.ietf.org/html/rfc6749#section-10.3) a [zosobnění uživatele](http://tools.ietf.org/html/rfc6749#section-10.3).
 
-Pokud chcete použít implicitní tok a Azure AD k přidání ověřování do aplikace jazyka JavaScript, doporučujeme použít naše open source knihovna jazyka JavaScript, [adal.js](https://github.com/AzureAD/azure-activedirectory-library-for-js). Nejsou k dispozici několik AngularJS kurzy [tady](active-directory-appmodel-v2-overview.md#getting-started) k vám pomůžou začít. 
+Pokud chcete použít implicitní tok a Azure AD k přidání ověřování do aplikace jazyka JavaScript, doporučujeme použít naše open source knihovna jazyka JavaScript, [adal.js](https://github.com/AzureAD/azure-activedirectory-library-for-js). Nejsou k dispozici několik AngularJS kurzy [tady](v2-overview.md#getting-started) k vám pomůžou začít.
 
 Ale pokud chcete raději použít knihovnu v jednostránkové aplikaci a pošlete sami sobě zprávy protokolu, postupujte podle obecných kroků.
 
 > [!NOTE]
 > Ne všechny scénáře Azure Active Directory a funkce jsou podporovány bodem v2.0. Pokud chcete zjistit, pokud je vhodné použít koncový bod verze 2.0, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
-> 
-> 
 
 ## <a name="protocol-diagram"></a>Diagram protokolu
+
 Celý implicitní přihlášení tok by měl vypadat asi takto – všechny kroky jsou podrobně popsány v níže.
 
 ![OpenId Connect plaveckých drah](./media/v2-oauth2-implicit-grant-flow/convergence_scenarios_implicit.png)
 
 ## <a name="send-the-sign-in-request"></a>Odeslat žádost o přihlášení
+
 Pro počáteční přihlášení uživatele do vaší aplikace, můžete odeslat [OpenID Connect](v2-protocols-oidc.md) žádost o autorizaci a získat `id_token` z koncového bodu v2.0:
 
 > [!IMPORTANT]
@@ -69,8 +70,6 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > [!TIP]
 > Klikněte na odkaz níže k provedení tohoto požadavku. Po přihlášení by měl prohlížeč přesměrován na `https://localhost/myapp/` s `id_token` do adresního řádku.
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token+token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&response_mode=fragment&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
-> 
-> 
 
 | Parametr |  | Popis |
 | --- | --- | --- |
@@ -86,12 +85,12 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | login_hint |nepovinné |Umožňuje předem vyplnit pole uživatelské jméno nebo e-mailová adresa přihlašovací stránka pro uživatele, pokud znáte svoje uživatelské jméno předem. Často aplikace bude používat tento parametr během opětovné ověření uživatelského jména s již extrahovat z předchozí přihlášení pomocí `preferred_username` deklarací identity. |
 | domain_hint |nepovinné |Může být jedna z `consumers` nebo `organizations`. Pokud zahrnutý, budou přeskočeny procesu zjišťování na základě e-mailu tento uživatel prochází na v2.0 přihlašovací stránku, což vede k poněkud jednodušší činnost koncového uživatele. Často aplikace bude používat tento parametr během opětovné ověření extrahováním `tid` deklarace identity z požadavku id_token. Pokud `tid` deklarace identity, je hodnota `9188040d-6c67-4c5b-b112-36a304b66dad` (Account Microsoft tenanta příjemce), měli byste použít `domain_hint=consumers`. Jinak použijte `domain_hint=organizations`. |
 
-
 V tomto okamžiku uživatele vyzve k zadání přihlašovacích údajů a bylo možné ověření dokončit. Koncový bod v2.0 také pomohou zajistit, aby uživatel vyjádřil souhlas se oprávnění uvedená v `scope` parametr dotazu. Pokud uživatele. nevyjádřil souhlas některý z těchto oprávnění, požádá o souhlas požadovaná oprávnění. Podrobnosti o [zde uvedené aplikace s více tenanty, oprávnění a souhlas](v2-permissions-and-consent.md).
 
 Jakmile se uživatel ověří a udělí svůj souhlas, koncový bod verze 2.0 vrátí odpověď na vaši aplikaci na označený `redirect_uri`, pomocí metody popsané v `response_mode` parametru.
 
 #### <a name="successful-response"></a>Úspěšné odpovědi
+
 Úspěšné odpovědi pomocí `response_mode=fragment` a `response_type=id_token+token` vypadá podobně jako následující okno, kde konců řádků pro čitelnost:
 
 ```
@@ -110,10 +109,11 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | token_type |Pokud zahrnutý `response_type` zahrnuje `token`. Bude vždy `Bearer`. |
 | expires_in |Pokud zahrnutý `response_type` zahrnuje `token`. Určuje počet sekund, po které je token platný, pro účely ukládání do mezipaměti. |
 | scope |Pokud zahrnutý `response_type` zahrnuje `token`. Označuje počet rozsahů:, pro které bude platit access_token. |
-| id_token |Id_token požadovanou aplikaci. Požadavku id_token slouží k ověření identity uživatele a zahájit relaci s uživatelem. Další podrobnosti o id_tokens a jejich obsah je součástí [token reference koncového bodu v2.0](v2-id-and-access-tokens.md). |
+| id_token      | Bez znaménka JSON Web Token (JWT). Aplikace může dekódovat segmenty tento token na žádost o informace o uživateli, který přihlášení. Aplikaci můžete ukládat do mezipaměti hodnoty a jejich zobrazení, ale na ně neměli spoléhat pro povolení nebo hranice zabezpečení. Další informace o id_tokens, najdete v článku [ `id_token reference` ](id-tokens.md). <br> **Poznámka:** pouze zadaný if `openid` byl vyžádán oboru. |
 | state |Pokud parametr stavu je zahrnutý v požadavku, by se zobrazit stejnou hodnotu v odpovědi. Aplikace by měl ověřit, že jsou identické hodnoty stavu v požadavku a odpovědi. |
 
 #### <a name="error-response"></a>Odpověď na chybu
+
 Chybové odpovědi může také být odeslán `redirect_uri` tak aplikaci můžete odpovídajícím způsobem zpracovat:
 
 ```
@@ -128,9 +128,10 @@ error=access_denied
 | error_description |Určité chybové zprávě, který vám pomůže vývojář zjistit původní příčinu chyby ověřování. |
 
 ## <a name="validate-the-idtoken"></a>Ověření požadavku id_token
+
 Pouhého získání tokentu id_token není dostatečná k ověření uživatele. je nutné ověřit podpis požadavku id_token a ověřte, deklarace identity v tokenu podle požadavků vaší aplikace. Koncový bod verze 2.0 používá [webové tokeny JSON (Jwt)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) a kryptografii využívající veřejného klíče pro podepisování tokenů a ověřte, že jsou platné.
 
-Můžete také ověřit `id_token` v klientovi kód, ale běžnou praxí je odeslat `id_token` back-end server a provést ověření existuje. Jakmile ověříte podpisu požadavku id_token, existují několik deklarací identity, které budete muset ověřit. Najdete v článku [odkaz tokenu v2.0](v2-id-and-access-tokens.md) Další informace, včetně [ověřování tokenů](v2-id-and-access-tokens.md#validating-tokens) a [důležité informace o podpisový klíč výměny](v2-id-and-access-tokens.md#validating-tokens). Doporučujeme, abyste využívající knihovnu k analýze a ověřování tokenů: k dispozici aspoň jeden k dispozici pro většinu jazyky a platformy.
+Můžete také ověřit `id_token` v klientovi kód, ale běžnou praxí je odeslat `id_token` back-end server a provést ověření existuje. Jakmile ověříte podpisu požadavku id_token, existují několik deklarací identity, které budete muset ověřit. Najdete v článku [ `id_token` odkaz](id-tokens.md) Další informace, včetně [ověřování tokenů](id-tokens.md#validating-idtokens) a [důležité informace o podpisový klíč výměny](active-directory-signing-key-rollover.md). Doporučujeme, abyste využívající knihovnu k analýze a ověřování tokenů: k dispozici aspoň jeden k dispozici pro většinu jazyky a platformy.
 <!--TODO: Improve the information on this-->
 
 Také můžete chtít ověřit další deklarace identity v závislosti na vašem scénáři. Některé běžné ověření patří:
@@ -139,12 +140,11 @@ Také můžete chtít ověřit další deklarace identity v závislosti na vaše
 * Zajistit, že uživatel má správnou autorizaci/oprávnění
 * Zajištění sílu ověřování došlo, jako je ověřování službou Multi-Factor Authentication.
 
-Další informace o deklarace identity v tokentu id_token, najdete v článku [token reference koncového bodu v2.0](v2-id-and-access-tokens.md).
-
-Jakmile ověříte zcela požadavku id_token, můžete zahájit relaci s uživatelem a používat deklarace identity v požadavku id_token k získání informací o uživateli ve vaší aplikaci. Tyto informace můžete použít pro zobrazení záznamů, autorizace, atd.
+Jakmile ověříte zcela požadavku id_token, můžete zahájit relaci s uživatelem a používat deklarace identity v požadavku id_token k získání informací o uživateli ve vaší aplikaci. Tyto informace můžete použít pro zobrazení záznamů, přizpůsobení, atd.
 
 ## <a name="get-access-tokens"></a>Získání přístupových tokenů
-Teď, když uživatel přihlásíte vaši jednostránkovou aplikaci, můžete získat přístupové tokeny pro volání webových rozhraní API zabezpečené pomocí Azure AD, jako [Microsoft Graphu](https://graph.microsoft.io). I v případě, že jste už dostali tokenu pomocí `token` typ odpovědi, tuto metodu můžete použít k získání tokenů na další zdroje bez nutnosti přesměrovat uživatele se znovu přihlásit.
+
+Teď, když uživatel přihlásíte jednostránkovou aplikaci, můžete získat přístupové tokeny pro volání webových rozhraní API zabezpečené pomocí Azure AD, jako [Microsoft Graphu](https://graph.microsoft.io). I v případě, že jste už dostali tokenu pomocí `token` typ odpovědi, tuto metodu můžete použít k získání tokenů na další zdroje bez nutnosti přesměrovat uživatele se znovu přihlásit.
 
 V normálním toku OpenID Connect a OAuth, provedli byste to provedením požadavku v2.0 `/token` koncového bodu. Koncový bod v2.0 však nepodporuje požadavků CORS, tak volání jazyka AJAX k získání a obnovovacích tokenů je mimo dotaz. Místo můžete použít implicitní tok v skryté iframe získat nové tokeny pro jiné webové rozhraní API: 
 
@@ -164,8 +164,6 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 > [!TIP]
 > Zkuste kopírování a vkládání nižší než požadavek na kartě prohlížeče! (Nezapomeňte nahradit `domain_hint` a `login_hint` správné hodnoty pro vaše uživatele)
-> 
-> 
 
 ```
 https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&response_mode=fragment&state=12345&nonce=678910&prompt=none&domain_hint={{consumers-or-organizations}}&login_hint={{your-username}}
@@ -188,6 +186,7 @@ https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de7
 K `prompt=none` parametr, tento požadavek buď úspěšné nebo selže okamžitě a vraťte se do vaší aplikace. Úspěšné odpovědi se pošle do vaší aplikace na adrese označený `redirect_uri`, pomocí metody popsané v `response_mode` parametru.
 
 #### <a name="successful-response"></a>Úspěšné odpovědi
+
 Úspěšné odpovědi pomocí `response_mode=fragment` vypadá jako:
 
 ```
@@ -208,6 +207,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | scope |Obory, které je přístupový token platný pro. |
 
 #### <a name="error-response"></a>Odpověď na chybu
+
 Chybové odpovědi může také být odeslán `redirect_uri` tak aplikaci můžete odpovídajícím způsobem zpracovat. V případě třídy `prompt=none`, budou mít očekávanou chybou:
 
 ```
@@ -231,12 +231,14 @@ Jakmile obdržíte access_token, ujistěte se, že k ověření podpisu tokenu, 
 * **Vystavitel** deklarace identity, chcete-li ověřit, zda byl token vydán do vaší aplikace koncovým bodem v2.0
 * **Ne dříve než** a **čas vypršení platnosti** deklarací, chcete-li ověřit, že nevypršela platnost tokenu
 
-Další informace o deklarace identity v tokenu přístupu k dispozici, najdete v článku [token reference koncového bodu v2.0](v2-id-and-access-tokens.md)
+Další informace o deklarace identity v tokenu přístupu k dispozici, najdete v článku [přístup referenční informace o tokenech](access-tokens.md)
 
 ## <a name="refreshing-tokens"></a>Aktualizace tokeny
+
 Implicitní grant neposkytuje obnovovací tokeny. Obě `id_token`s a `access_token`s vyprší po krátké době čas, takže vaše aplikace musí být připravené k aktualizaci těchto tokenů pravidelně. Pokud chcete aktualizovat buď typ tokenu, můžete provést stejný požadavek skryté iframe ze pomocí `prompt=none` parametr pro řízení chování Azure AD. Pokud chcete dostávat nové `id_token`, nezapomeňte použít `response_type=id_token` a `scope=openid`, a také `nonce` parametru.
 
 ## <a name="send-a-sign-out-request"></a>Odeslat odhlášení žádosti
+
 OpenIdConnect `end_session_endpoint` umožňuje vaší aplikaci odesílat požadavek na koncový bod verze 2.0 k ukončení relace uživatele a zrušte zaškrtnutí nastavte koncovým bodem v2.0 soubory cookie. Plně podepsat uživatele z webové aplikace, aplikace by měla ukončit svou vlastní relaci s uživatelem (obvykle zaškrtnutím nebo zrušením tokenu mezipaměti odstranit soubory cookie) a pak přesměrovat prohlížeč, aby:
 
 ```

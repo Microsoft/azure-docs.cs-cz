@@ -1,6 +1,6 @@
 ---
-title: 'Hledání vlastní Bing: Stránka prostřednictvím webové stránky k dispozici | Microsoft Docs'
-description: Ukazuje, jak na stránku prostřednictvím všechny webové stránky, která vrací Bing.
+title: 'Vlastní vyhledávání Bingu: Stránkovat webové stránky k dispozici | Dokumentace Microsoftu'
+description: Ukazuje, jak stránce přes všechny webové stránky, která vrací Bingu.
 services: cognitive-services
 author: brapel
 manager: ehansen
@@ -10,18 +10,18 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 09/28/2017
 ms.author: v-brapel
-ms.openlocfilehash: f2f545a5a9195fc65515ea716f277723600cbb78
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 5692776736090c55547c2fe934e2c0aaf840d3c5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342374"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982354"
 ---
-# <a name="paging-webpages"></a>Stránkování webové stránky 
+# <a name="paging-webpages"></a>Webové stránky stránkování 
 
-Při volání rozhraní API pro vyhledávání vlastní Bing vrátí seznam výsledků. V seznamu je podmnožinou celkový počet výsledků, které mohou být relevantní pro dotaz. Odhadovaný celkový počet dostupných výsledků získáte přístup k objektu odpovědí [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#totalestimatedmatches) pole.  
+Při volání rozhraní API pro vlastní vyhledávání Bingu vrátí seznam výsledků. V seznamu je podmnožinou celkový počet výsledků, které můžou být relevantní pro dotaz. Odhadované celkový počet dostupných výsledků získáte přístup k objektu odpovědi [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#totalestimatedmatches) pole.  
   
-Následující příklad ukazuje `totalEstimatedMatches` pole, které zahrnuje webové odpovědí.  
+Následující příklad ukazuje `totalEstimatedMatches` pole, které obsahuje webovou odpověď.  
   
 ```  
 {
@@ -34,26 +34,26 @@ Následující příklad ukazuje `totalEstimatedMatches` pole, které zahrnuje w
 }  
 ```  
   
-Na stránku prostřednictvím webové stránky k dispozici, použijte [počet](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#count) a [posun](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#offset) parametrů dotazu.  
+Na stránce prostřednictvím webové stránky k dispozici, použijte [počet](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#count) a [posun](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#offset) parametrů dotazu.  
   
-`count` Parametr určuje počet výsledků vrátit v odpovědi. Maximální počet výsledků, které můžete požádat v odpovědi je 50. Výchozí hodnota je 10. Skutečný počet doručit může být nižší než požadovaný.
+`count` Parametr určuje počet výsledků vrátit v odpovědi. Maximální počet výsledků, které může vyžadovat v odpovědi je 50. Výchozí hodnota je 10. Skutečný počet doručení může být menší než požadovaný.
 
-`offset` Parametr určuje počet výsledků tak, aby přeskočil. `offset` Je počítáno od nuly a měl by být menší než (`totalEstimatedMatches` - `count`).  
+`offset` Parametr určuje počet výsledků, chcete-li přeskočit. `offset` Je založený na nule a musí být menší než (`totalEstimatedMatches` - `count`).  
   
-Pokud chcete zobrazit 15 webové stránky na stránku, nastavíte `count` na 15 a `offset` na hodnotu 0, chcete-li získat první stránky s výsledky. Pro každý další stránku, zvýšit `offset` 15 (například 15, 30).  
+Pokud chcete zobrazit 15 webové stránky na stránku, nastavíte `count` 15 a `offset` na hodnotu 0, chcete-li získat první stránka výsledků. Pro každou stránku následné zvýšení `offset` 15 (například 15, 30).  
   
-Následuje příklad, který požaduje 15 webové stránky začínající na posunu 45.  
+Následuje příklad, který požaduje začínající na posunu 45 15 webové stránky.  
   
 ```  
-GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?q=sailing+dinghies&count=15&offset=45&mkt=en-us HTTP/1.1  
+GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?q=sailing+dinghies&count=15&offset=45&mkt=en-us&customConfig=123456 HTTP/1.1  
 Ocp-Apim-Subscription-Key: <subscription ID>
 Host: api.cognitive.microsoft.com  
 ```  
 
-Pokud výchozí `count` hodnotu funguje týkající se vaší implementace, budete muset zadat `offset` parametr dotazu.  
+Pokud výchozí `count` hodnota se dá použít pro vaší implementace, je třeba určit pouze `offset` parametr dotazu.  
   
 ```  
-GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?q=sailing+dinghies&offset=45&mkt=en-us HTTP/1.1  
+GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?q=sailing+dinghies&offset=45&mkt=en-us&customConfig=123456 HTTP/1.1  
 Ocp-Apim-Subscription-Key: <subscription ID>  
 Host: api.cognitive.microsoft.com  
 ```  

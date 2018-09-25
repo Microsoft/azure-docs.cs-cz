@@ -1,21 +1,23 @@
 ---
 title: Databáze na tenanta SaaS kurz – Azure SQL Database | Dokumentace Microsoftu
 description: Nasazení a zkoumání SaaS aplikace Wingtip Tickets víceklientské aplikace, která ukazuje vzor databáze na tenanta a ostatní vzorce SaaS pomocí Azure SQL Database.
-keywords: kurz k sql database
 services: sql-database
-author: MightyPen
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: MightyPen
 ms.author: genemi
-ms.openlocfilehash: 87560f3fb34c281b6802ef5079fd1445caba6db8
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.reviewer: sstein
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 77e3cdcbd18a4a5313160b947ce278a75f3e3de3
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983627"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056382"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Nasazení a zkoumání víceklientské aplikace SaaS, která používá vzor databáze na tenanta s využitím SQL Database
 

@@ -4,20 +4,20 @@ titleSuffix: Azure Cognitive Services
 description: Zvyšte záměr a entity předpovědi současně méně projevy příklad pomocí vzorce. Vzor je k dispozici prostřednictvím utterance příkladu šablony, zahrnující syntaxi k identifikaci entity a textového ignorable.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: language-understanding
 ms.topic: article
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 3b41105a20b765abd084fc387370a49b657d1cba
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: ec006d8941d8832d139a09b1e8af13000ff5a43e
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634723"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040699"
 ---
-# <a name="tutorial-3-add-common-utterance-formats"></a>Kurz: 3. Přidat společné utterance formáty
+# <a name="tutorial-3-add-common-utterance-formats"></a>Kurz: 3. Přidání běžných formátů promluv
 
 V tomto kurzu použijte ke zvýšení záměr a entity předpovědi současně méně projevy příklad vzory. Vzor je k dispozici prostřednictvím utterance příkladu šablony, zahrnující syntaxi k identifikaci entity a textového ignorable. Vzorek je kombinací odpovídající výraz a strojové učení.  Příklad utterance šablony, spolu s záměr projevů poskytnout LUIS lepší představu, z jaké projevy přizpůsobit záměr. 
 

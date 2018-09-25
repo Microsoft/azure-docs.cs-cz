@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 085df618eb6d3eb78e42261d1b324c3a2374877b
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: a477554c836a7f84e1694c5d00abd6373f544aa6
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123381"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036197"
 ---
 # <a name="hostjson-reference-for-azure-functions"></a>referenční materiály k Host.JSON pro Azure Functions
 
@@ -442,6 +442,12 @@ Nastavení konfigurace, které vytvoříte pomocí `TraceWriter` objektu. Zobraz
 |---------|---------|---------| 
 |consoleLevel|informace|Úroveň trasování pro protokolování konzoly. Možnosti jsou: `off`, `error`, `warning`, `info`, a `verbose`.|
 |fileLoggingMode|debugOnly|Úroveň trasování pro protokolování do souboru. Možnosti jsou `never`, `always`, `debugOnly`.| 
+
+## <a name="version"></a>verze
+
+*Verze 2.x*
+
+Řetězec verze `"version": "2.0"` je vyžadován pro aplikaci function app, zaměřuje na modul runtime verze 2.
 
 ## <a name="watchdirectories"></a>watchDirectories
 

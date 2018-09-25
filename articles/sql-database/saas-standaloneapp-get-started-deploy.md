@@ -1,21 +1,23 @@
 ---
 title: Kurz pro jednoho tenanta SaaS – Azure SQL Database | Dokumentace Microsoftu
 description: Nasazení a zkoumání SaaS aplikace samostatné jednoho tenanta, využívající Azure SQL Database.
-keywords: kurz k sql database
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/19/2018
+author: MightyPen
 ms.author: genemi
-ms.openlocfilehash: 806cea75a9050c5d74f4c6b929d76712e51dd9d1
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.reviewer: sstein
+manager: craigg
+ms.date: 09/19/2018
+ms.openlocfilehash: 28f572ee61271c4c81319f7c263172012788765a
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46497769"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47055539"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Nasazení a zkoumání samostatné aplikace jednoho tenanta, který používá Azure SQL Database
 

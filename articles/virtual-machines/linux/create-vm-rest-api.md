@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 0f77b46be0207b0ce96e6dc2562fb5298afbe36b
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 11d9f5efb452d46e5ca30169861582f6f2bbbd1b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928178"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46969389"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Vytvoření virtuálního počítače s Linuxem, které využívá ověřování SSH pomocí rozhraní REST API
 
@@ -141,9 +141,9 @@ Zhuštěnému *201 – vytvořeno* odpovědi z předchozího textu požadavku p�
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o rozhraní REST API služby Azure nebo jiné nástroje pro správu, jako je Azure CLI 2.0 nebo Azure Powershellu naleznete v následujících tématech:
+Další informace o rozhraní REST API služby Azure nebo jiné nástroje pro správu, jako je například Azure Powershellu nebo rozhraní příkazového řádku Azure naleznete v následujících tématech:
 
 - [Rozhraní REST API poskytovatele Azure Compute](/rest/api/compute/)
 - [Začínáme s Azure REST API](/rest/api/azure/)
-- [Azure CLI 2.0](/cli/azure/)
+- [Azure CLI](/cli/azure/)
 - [Modul Azure PowerShell](/powershell/azure/overview)

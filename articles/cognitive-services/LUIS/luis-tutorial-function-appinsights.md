@@ -1,24 +1,26 @@
 ---
-title: Přidat LUIS data do Application Insights s využitím Node.js | Dokumentace Microsoftu
-titleSuffix: Azure
+title: Data Application Insights pomocí jazyka C# služby luis
+titleSuffix: Azure Cognitive Services
 description: Vytvořte robota, integruje se službou LUIS aplikace a Application Insights s využitím Node.js.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 01/18/2018
+ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 5b65747bea7d2496558c5b3b533bb8420eee6254
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 342c4f98d854d94426c3e4a1eb79bb2a6adffaad
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39236835"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037996"
 ---
-# <a name="add-luis-results-to-application-insights-from-a-web-app-bot"></a>Přidání služby LUIS výsledky do Application Insights z použijete web app bot
+# <a name="add-luis-results-to-application-insights"></a>Přidání LUIS výsledky do Application Insights
 V tomto kurzu přidá LUIS požadavku a odpovědi informace, které [Application Insights](https://azure.microsoft.com/services/application-insights/) úložiště dat telemetrie. Až budete mít data, můžete ji dotazovat s Kusto jazyk nebo Power BI k analýze, agregovat a vytváření sestav o záměry a entity utterance v reálném čase. Tato analýza pomůže zároveň pomáhá určit, pokud by měl přidat nebo upravit záměry a entity aplikace LUIS.
+
+Robot využívá rozhraní Bot Framework 3.x a použijete Azure Web app bot.
 
 V tomto kurzu se naučíte:
 
@@ -151,7 +153,7 @@ Služba Application Insights poskytuje výkonné nástroje pro dotazování dat 
     ![Analýza hlavní záměr](./media/luis-tutorial-appinsights/app-insights-top-intent.png)
 
 
-Další informace o [Kusto dotazovací jazyk](https://docs.loganalytics.io/docs/Learn/Getting-Started/Getting-started-with-queries) nebo [export dat do Power BI](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi). 
+Další informace o [Kusto dotazovací jazyk](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries) nebo [export dat do Power BI](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi). 
 
 ## <a name="next-steps"></a>Další postup
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: deguhath
-ms.openlocfilehash: 2cce0b883c18a813aed386186c825c26b0e4b674
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: e6e6b8e03102825a15035adbea80ac5e9f3fa404
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303774"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996447"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Co je vědecké zpracování týmových dat?
 
@@ -92,7 +92,7 @@ TDSP poskytuje doporučení pro správu sdílené analýzy a infrastruktury úlo
 - systémy souborů cloudu pro ukládání datových sad 
 - databáze
 - clustery velkých objemů dat (Hadoop nebo Spark) 
-- služby Machine learning. 
+- Služba Machine learning 
 
 Analýzy a úložné infrastruktuře může být v cloudu nebo místně. To je, kde jsou uloženy zpracovaných a nezpracovaných datové sady. Tato infrastruktura umožňuje reprodukovatelné analýzy. Také předejdete duplikace, což může vést k nekonzistencím a zbytečným nákladům na infrastrukturu. Nástroje jsou k dispozici zřízení sdílených prostředků, sledovat a povolit jednotlivým členům týmu se navázat zabezpečené připojení k těmto prostředkům. Je také vhodné mít členy projektu vytvořit konzistentní výpočetní prostředí. Různí členové týmu můžete replikovat a ověřit experimentů.
 

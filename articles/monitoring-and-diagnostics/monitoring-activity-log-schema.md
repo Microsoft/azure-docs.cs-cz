@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 4/12/2018
 ms.author: dukek
 ms.component: activitylog
-ms.openlocfilehash: 9c1f4699f067ece3108813d28ff834c68f44316d
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: d267ffd5085c27c60e9eb229e2d9026fa83ef848
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003827"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998220"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure schéma událostí protokolu aktivit
 **Protokolu aktivit Azure** je protokol, který nabízí pohled na všechny události na úrovni předplatného, ke kterým došlo v Azure. Tento článek popisuje schéma událostí podle jednotlivých kategorií data. Schéma dat se liší v závislosti na tom, při čtení dat na portálu, Powershellu, rozhraní příkazového řádku, nebo přímo přes rozhraní REST API a [streamovaná data do úložiště nebo Event Hubs pomocí profilu protokolu](./monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile). Následující příklady ukazují schématu jako k dispozici prostřednictvím portálu, Powershellu, rozhraní příkazového řádku a rozhraní REST API. Mapování těchto vlastností [Azure diagnostické protokoly schématu](./monitoring-diagnostic-logs-schema.md) je k dispozici na konci tohoto článku.
@@ -192,6 +192,95 @@ Tato kategorie obsahuje záznam všechny incidenty health service, ke kterým do
 }
 ```
 Odkazovat [služby oznámení o stavu](./monitoring-service-notifications.md) článku pro dokumentaci o hodnotách ve vlastnostech.
+
+## <a name="resource-health"></a>Stav prostředků
+Tato kategorie obsahuje záznam všechny události stavu prostředků, ke kterým došlo u vašich prostředků Azure. Je například typ události, kterou byste viděli v této kategorii "Virtuální počítač stav změní na není k dispozici." Události stavu prostředků může představovat jeden z čtyř stavů stav: k dispozici, není k dispozici, snížený nebo neznámý. Kromě toho události stavu prostředků můžete zařadit iniciovanou platformy nebo uživatele.
+
+### <a name="sample-event"></a>Událost vzorku
+
+```json
+{
+    "channels": "Admin, Operation",
+    "correlationId": "28f1bfae-56d3-7urb-bff4-194d261248e9",
+    "description": "",
+    "eventDataId": "a80024e1-883d-37ur-8b01-7591a1befccb",
+    "eventName": {
+        "value": "",
+        "localizedValue": ""
+    },
+    "category": {
+        "value": "ResourceHealth",
+        "localizedValue": "Resource Health"
+    },
+    "eventTimestamp": "2018-09-04T15:33:43.65Z",
+    "id": "/subscriptions/<subscription Id>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>/events/a80024e1-883d-42a5-8b01-7591a1befccb/ticks/636716720236500000",
+    "level": "Critical",
+    "operationId": "",
+    "operationName": {
+        "value": "Microsoft.Resourcehealth/healthevent/Activated/action",
+        "localizedValue": "Health Event Activated"
+    },
+    "resourceGroupName": "<resource group>",
+    "resourceProviderName": {
+        "value": "Microsoft.Resourcehealth/healthevent/action",
+        "localizedValue": "Microsoft.Resourcehealth/healthevent/action"
+    },
+    "resourceType": {
+        "value": "Microsoft.Compute/virtualMachines",
+        "localizedValue": "Microsoft.Compute/virtualMachines"
+    },
+    "resourceId": "/subscriptions/<subscription Id>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>",
+    "status": {
+        "value": "Active",
+        "localizedValue": "Active"
+    },
+    "subStatus": {
+        "value": "",
+        "localizedValue": ""
+    },
+    "submissionTimestamp": "2018-09-04T15:36:24.2240867Z",
+    "subscriptionId": "<subscription Id>",
+    "properties": {
+        "stage": "Active",
+        "title": "Virtual Machine health status changed to unavailable",
+        "details": "Virtual machine has experienced an unexpected event",
+        "healthStatus": "Unavailable",
+        "healthEventType": "Downtime",
+        "healthEventCause": "PlatformInitiated",
+        "healthEventCategory": "Unplanned"
+    },
+    "relatedEvents": []
+}
+```
+
+### <a name="property-descriptions"></a>Popisy vlastností
+| Název elementu | Popis |
+| --- | --- |
+| kanály | Vždy "Admin, operace" |
+| correlationId | Identifikátor GUID ve formátu řetězce. |
+| description |Popis statický text oznámení události. |
+| eventDataId |Jedinečný identifikátor události upozornění. |
+| category | Vždy ResourceHealth"" |
+| eventTimestamp |Časové razítko události vygenerované službou Azure zpracování požadavku odpovídající události. |
+| úroveň |Úroveň události. Jeden z následujících hodnot: "Kritický", "Chyba", "Upozornění", "Informační" a "Verbose" |
+| operationId |Identifikátor GUID sdílen události, které odpovídají jedné operace. |
+| operationName |Název operace |
+| resourceGroupName |Název skupiny prostředků, který obsahuje prostředek. |
+| Název resourceProviderName |Vždy "Microsoft.Resourcehealth/healthevent/action". |
+| Typ prostředku | Typ prostředku, který byl ovlivněn události Resource Health. |
+| resourceId | Název ID prostředku pro ovlivněných prostředků. |
+| status |Řetězec popisující stav události stavu. Hodnoty mohou být: aktivní, vyřešeno, InProgress, aktualizované. |
+| Podřízený stav | Obvykle s hodnotou null pro výstrahy. |
+| submissionTimestamp |Časové razítko, kdy je k dispozici pro dotazování na události. |
+| subscriptionId |ID předplatného Azure. |
+| properties |Sada `<Key, Value>` páry (tj. slovník) popisující podrobnosti o události.|
+| Properties.Title | Popisný řetězec, který popisuje stav prostředku. |
+| Properties.details | Popisný řetězec, který popisuje další podrobnosti o události. |
+| properties.currentHealthStatus | Aktuální stav prostředku. Jeden z následujících hodnot: "K dispozici", "Není k dispozici", "Snížený" a "Neznámý". |
+| properties.previousHealthStatus | Předchozí stav prostředku. Jeden z následujících hodnot: "K dispozici", "Není k dispozici", "Snížený" a "Neznámý". |
+| properties.type | Popis typu události stavu prostředků. |
+| Properties.Cause | Popis příčinách události stavu prostředků. "UserInitiated" a "PlatformInitiated". |
+
 
 ## <a name="alert"></a>Výstrahy
 Tato kategorie obsahuje záznam všech aktivací upozornění v Azure. Je například typ události, kterou byste viděli v této kategorii "% využití procesoru na myVM je už více než 80 posledních 5 minut." Výstrahy koncept mají různé systémy pro Azure – můžete definovat pravidla s nějakým a když podmínky odpovídají tímto pravidlem, dostanete oznámení. Pokaždé, když typ podporovaných Azure výstrahy "aktivuje," nebo ke generování oznámení o splnění podmínek, záznamy o aktivaci se nasdílejí také do této kategorie protokolu aktivit.

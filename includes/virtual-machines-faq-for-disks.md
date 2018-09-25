@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e8005da056c08b21bf0b91dc71b3dafac281de1f
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: c0c215c4c599bbd5551891cdf6f999719983d31e
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40237053"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060424"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Nejčastější dotazy týkající se disky virtuálního počítače Azure IaaS a spravovaných a nespravovaných prémiové disky
 
@@ -101,7 +101,7 @@ Zákazníkům můžete pořídit snímek jejich spravované disky a pak pomocí 
 
 Ano, spravované a nespravované disky se podporují. Doporučujeme použít spravované disky pro nové úlohy a aktuálních úloh migrace na spravované disky.
 
-**Je-li vytvořit 128 GB disk a potom zvětšit velikost až 130 GB, bude mi účtovat další velikost disku (256 GB)?**
+**Je-li vytvořit 128 GB disk a potom dojít ke zvětšení na 130 GB, bude mi účtovat další velikost disku (256 GB)?**
 
 Ano.
 
@@ -137,10 +137,10 @@ Ne, při vytvoření nového disku je úplné samostatnou kopii tohoto objektu b
 
 Za spravované disky nelze přejmenovat je. Může však přejmenovat nespravovaný disk, tak dlouho, dokud není aktuálně připojen k virtuální počítač nebo virtuální pevný disk.
 
-## <a name="standard-ssd-disks-preview"></a>Standardní disky SSD (Preview)
+## <a name="standard-ssd-disks"></a>Standardní disky SSD
 
 **Co jsou disky SSD na úrovni Standard Azure?**
-Standardní disky SSD jsou standardní disky zálohovanými SSD média, optimalizované jako nákladově efektivní úložiště pro úlohy, které je třeba zajistit konzistentní výkon na nižších úrovních vstupně-výstupních operací. Ve verzi preview jsou k dispozici v omezeném počtu oblastí, s omezenou správu (k dispozici prostřednictvím šablon Resource Manageru).
+Standardní disky SSD jsou standardní disky zálohovanými SSD média, optimalizované jako nákladově efektivní úložiště pro úlohy, které je třeba zajistit konzistentní výkon na nižších úrovních vstupně-výstupních operací.
 
 <a id="standard-ssds-azure-regions"></a>**Co jsou oblasti, které aktuálně podporuje pro disky SSD na úrovni Standard?**
 Všechny oblasti Azure teď podporují disků SSD na úrovni Standard.
@@ -275,7 +275,7 @@ Není k dispozici pro jednotlivé velikosti disku, který se dodává na vstupn�
 
 **Jaká jsou omezení pro počet IOPS a propustnost, které můžu získat z mezipaměti disku?**
 
-Kombinované omezení pro mezipaměť a místní disk SSD pro DS-series jsou 4 000 IOPS na jádro a 33 MB za sekundu na jádro. Řada GS nabízí 5 000 IOPS na jádro a přes 50 MB za sekundu na jádro.
+Kombinované omezení pro mezipaměť a místní disk SSD pro DS-series jsou 4 000 IOPS na jádro a 33 MiB za sekundu na jádro. Řada GS nabízí 5 000 IOPS na jádro a 50 MiB za sekundu na jádro.
 
 **Je podporován místní disk SSD pro virtuální počítač spravované disky?**
 
@@ -287,38 +287,60 @@ Neexistuje žádné nevýhodou použití operace TRIM na Azure disks na premium 
 
 ## <a name="new-disk-sizes-managed-and-unmanaged"></a>Nové velikosti disků: spravovaných a nespravovaných
 
-**Co je největší velikost disku podporované pro operační systém a datové disky?**
+**Co je největší velikost disku spravované podporováno pro operační systém a datové disky?**
 
-Typ oddílu, které Azure podporuje pro disk s operačním systémem je hlavní spouštěcí záznam (MBR). Podporuje formát hlavního spouštěcího záznamu a disk velikost až do velikosti 2 TB. Největší velikost, které Azure podporuje pro disk s operačním systémem je 2 TB. Azure podporuje až na 4 TB pro datové disky. 
+Typ oddílu, které Azure podporuje pro disk s operačním systémem je hlavní spouštěcí záznam (MBR). Formát hlavního spouštěcího záznamu podporuje velikost disku až 2 TB. Největší velikost, které Azure podporuje pro disk s operačním systémem je 2 TB. Azure podporuje až 32 TB pro spravované datové disky. Spravované disky o velikosti větší než 4 TB jsou ve verzi preview. Další informace o nich najdete v našich [blogový příspěvek](http://aka.ms/azure-large-disk-32TB-preview-blog).
+
+**Co je největší velikost nespravovaného disku podporované pro operační systém a datové disky?**
+
+Typ oddílu, které Azure podporuje pro disk s operačním systémem je hlavní spouštěcí záznam (MBR). Formát hlavního spouštěcího záznamu podporuje velikost disku až 2 TB. Největší velikost, které Azure podporuje pro nespravovaný disk s operačním systémem je 2 TB. Azure podporuje až 4 TB pro nespravované disky data.
 
 **Co je největší velikost objektu blob stránky, která je podporována?**
 
-Největší velikost objektu blob stránky, které Azure podporuje je 8 TB (8191 GB). Maximální blogu velikost stránky při připojení k virtuálnímu počítači jako data nebo disky operačního systému je 4 TB (4 095 GB).
+Největší velikost objektu blob stránky, které Azure podporuje je 8 TB (8191 GiB). Maximální blogu velikost stránky při připojení k virtuálnímu počítači jako data nebo disky operačního systému je 4 TB (4095 GiB).
 
 **Je nutné použít na novou verzi nástroje Azure a vytvořit, připojit, změna velikosti a nahrát disků větších než 1 TB?**
 
-Nemusíte upgradovat svoje stávající nástroje Azure k vytvoření, připojení nebo změna velikosti disků větších než 1 TB. K odeslání souboru VHD z místního přímo do Azure jako objekt blob stránky nebo nespravovaný disk, budete muset použít nejnovější sady nástrojů:
+Nemusíte upgradovat svoje stávající nástroje Azure k vytvoření, připojení nebo změna velikosti disků větších než 1 TB. K odeslání souboru VHD z místního přímo do Azure jako objekt blob stránky nebo nespravovaný disk, budete muset použít nejnovější sady nástrojů uvedených níže. Podporujeme jenom virtuální pevný disk nahrávání až do 8 TB.
 
 |Nástroje Azure      | Podporované verze                                |
 |-----------------|---------------------------------------------------|
 |Azure PowerShell | Číslo verze 4.1.0: verzi z června 2017 nebo novější|
 |Azure CLI verze 1     | Číslo verze 0.10.13: uvolněte. května 2017 nebo novější|
+|Azure CLI verze 2     | Číslo verze 2.0.12: verzi z července 2017 nebo novější|
 |AzCopy           | Číslo verze 6.1.0: verzi z června 2017 nebo novější|
-
-Podpora Azure CLI verze 2 a Průzkumníka služby Azure Storage je již brzy. 
 
 **Podporují se velikosti disků P4 a P6 pro nespravované disky a objekty BLOB stránky?**
 
-Ne. P4 (32 GB) a P6 (64 GB) velikosti disků jsou podporovány pouze pro spravované disky. Podpora pro objekty BLOB stránky a nespravované disky už brzy bude.
+P4 (32 GB) a P6 (64 GiB) velikosti disků nejsou podporovány jako výchozí vrstvy disku pro nespravované disky a objekty BLOB stránky. Je potřeba explicitně [nastavit úroveň objektu Blob](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) P4 a P6 mají disku namapované k těmto vrstvám. Pokud provádíte nasazení nespravovaného disku nebo stránek blob se velikost disku nebo délka obsahu menší než 32 GiB nebo mezi 32 GB na 64 GB bez nastavení na úrovni objektů Blob, budou přesměrováni na P10 s 500 IOPS a 100 MiB/s a mapované cenovou úroveň.
 
-**Pokud Můj existující premium managed disku menší než 64 GB byl vytvořen před povolením malý disk (kolem 15. června 2017), jak se účtuje?**
+**Pokud Můj existující premium managed disku menší než 64 GiB byl vytvořen před povolením malý disk (kolem 15. června 2017), jak se účtuje?**
 
-Existující malé premium disky menší než 64 GB služby nadále fakturovat podle cenové úrovně P10. 
+Existující malé premium disky menší než 64 GiB služby nadále fakturovat podle cenové úrovně P10.
 
-**Jak můžu přejít na úrovni disku malé prémiové disky menší než 64 GB z P10 P4 nebo P6?**
+**Jak můžu přejít na úrovni disku v rámci malé prémiové disky menší než 64 GiB z P10 P4 nebo P6?**
 
-Můžete pořídit snímek malé disky a pak vytvořte na cenovou úroveň se automaticky přepnout na P4 nebo P6 závisí na velikosti zřízeného disku. 
+Můžete pořídit snímek malé disky a pak vytvořte na cenovou úroveň se automaticky přepnout na P4 nebo P6 závisí na velikosti zřízeného disku.
 
+**Můžete je změnit velikost existující spravované disky z velikostí menší než 4 TB pro nové nově zavedená disky o velikosti až 32 TB?**
+
+Nové velikosti spravovaného disku 8 TB, 16 TiB a 32 TB jsou aktuálně ve verzi Preview. Dosud nepodporujeme změnu velikosti existujícího velikosti disků na nové velikosti disků.
+
+**Co je největší velikostí disků, podporované službou Azure Backup a Azure Site Recovery?**
+
+Největší velikost disku podporované službou Azure Backup a Azure Site Recovery je 4 TB.
+
+**Co jsou doporučené virtuální počítač o velikosti pro velké disky o velikosti (> 4TiB) za SEKUNDU a šířky pásma na disku SSD na úrovni Standard a standardní HDD disky k dosažení optimalizovaná?**
+
+K dosažení propustnost disku SSD na úrovni Standard a standardní HDD velké disky o velikosti (> 4TB) nad rámec 60 MiB/s a 500 IOPS, by měl používat jednu z následujících velikostí virtuálních počítačů pro optimalizaci výkonu: B-series, DSv2-series, řada Dsv3-Series, ESv3-Series, Fs-series Fsv2-series, M-series, GS-series, řada NCv2, řady NCv3-series nebo virtuální počítače řady Ls-Series.
+
+**Které oblasti jsou spravovaný disk větší než 4 TB podporováno v?**
+
+V tuto chvíli ve verzi preview podporují velikosti spravovaného disku jenom v západní USA – střed.
+
+**Podporujeme povolení ukládání do mezipaměti hostitele na novější velikosti disků?**
+
+Disky o velikosti menší než 4TiB podporujeme hostitele ukládání do mezipaměti ReadOnly a čtení a zápisu. Pro disky o velikosti více než 4 TB nepodporujeme nastavení ukládání do mezipaměti možnost Žádný. Doporučujeme, abyste využití ukládání do mezipaměti pro menší velikost disku, kde můžete očekávat sledovat lepší zvýšení výkonu s daty v mezipaměti k virtuálnímu počítači.
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>Co když můj dotaz zde nenalezl?
 

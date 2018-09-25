@@ -1,6 +1,6 @@
 ---
-title: Jak změnit velikost virtuálního počítače s Linuxem pomocí Azure CLI 2.0 | Microsoft Docs
-description: Jak škálovat nahoru i dolů virtuální počítač s Linuxem změnou velikosti virtuálního počítače.
+title: Jak změnit velikost virtuálního počítače s Linuxem pomocí rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+description: Jak škálovat nahoru nebo dolů virtuálního počítače s Linuxem, změnou velikosti virtuálního počítače.
 services: virtual-machines-linux
 documentationcenter: na
 author: mikewasson
@@ -16,35 +16,35 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2017
 ms.author: mwasson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 900c45713541825ea36fe0b2d8684863b8138507
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 0b8802c91ceb59d391dc27a71da905de9c15a1dc
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36936638"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993221"
 ---
-# <a name="resize-a-linux-virtual-machine-using-cli-20"></a>Změnit velikost virtuální počítač s Linuxem pomocí rozhraní příkazového řádku 2.0
+# <a name="resize-a-linux-virtual-machine-using-azure-cli"></a>Změna velikosti virtuálního počítače s Linuxem pomocí Azure CLI 
 
-Po zřízení virtuálního počítače (VM) virtuálního počítače můžete škálovat nahoru nebo dolů, můžete změnit [velikost virtuálního počítače][vm-sizes]. V některých případech se musí nejprve navrácení virtuálního počítače. Budete muset zrušit přidělení virtuálního počítače, pokud požadovaná velikost není k dispozici na hardwaru clusteru, který je hostitelem virtuálního počítače. Tento článek podrobné informace o tom, jak změnit velikost virtuálního počítače s Linuxem pomocí Azure CLI 2.0. 
+Po zřízení virtuálního počítače (VM) virtuálního počítače můžete škálovat směrem nahoru nebo dolů, tak, že změníte [velikost virtuálního počítače][vm-sizes]. V některých případech je nejdřív uvolněte virtuální počítač. Je potřeba zrušit přidělení virtuálního počítače, pokud je požadovaná velikost není k dispozici v clusteru hardwaru, který je hostitelem virtuálního počítače. Tento článek podrobně popisuje, jak změnit velikost virtuálního počítače s Linuxem pomocí Azure CLI. 
 
 ## <a name="resize-a-vm"></a>Změna velikosti virtuálního počítače
-Chcete-li změnit velikost virtuálního počítače, je třeba nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalován a přihlášení k účtu Azure pomocí [az přihlášení](/cli/azure/reference-index#az_login).
+Změna velikosti virtuálního počítače, budete potřebovat nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az_login).
 
-1. Zobrazit seznam dostupných velikostí virtuálních počítačů v clusteru hardwaru je hostitelem virtuálního počítače s [az virtuálních počítačů seznamu-virtuálních počítačů-změny velikosti options](/cli/azure/vm#az_vm_list_vm_resize_options). Následující příklad vypíše velikosti virtuálních počítačů pro virtuální počítač s názvem `myVM` ve skupině prostředků `myResourceGroup` oblasti:
+1. Zobrazit seznam dostupných velikostí virtuálních počítačů v clusteru hardwaru je hostitelem virtuálního počítače s [az vm seznam vm-resize-options](/cli/azure/vm#az_vm_list_vm_resize_options). Následující příklad zobrazí seznam velikostí virtuálních počítačů pro virtuální počítač s názvem `myVM` ve skupině prostředků `myResourceGroup` oblasti:
    
     ```azurecli
     az vm list-vm-resize-options --resource-group myResourceGroup --name myVM --output table
     ```
 
-2. V případě, že požadovaná velikost virtuálního počítače je uvedena, změňte velikost virtuálního počítače s [změnit velikost virtuálního počítače az](/cli/azure/vm#az_vm_resize). Následující příklad změní velikost virtuálního počítače s názvem `myVM` k `Standard_DS3_v2` velikost:
+2. Pokud je uvedený požadovanou velikost virtuálního počítače, změna velikosti virtuálního počítače s [změnit velikost virtuálního počítače az](/cli/azure/vm#az_vm_resize). Následující příklad změní velikost virtuálního počítače s názvem `myVM` k `Standard_DS3_v2` velikost:
    
     ```azurecli
     az vm resize --resource-group myResourceGroup --name myVM --size Standard_DS3_v2
     ```
    
-    Virtuální počítač se restartuje během tohoto procesu. Po restartování jsou mapovány stávajícího operačního systému a datové disky. Nic na dočasné disku se ztratí.
+    Virtuální počítač se restartuje během tohoto procesu. Po restartování budou přemapovány stávající operační systém a datové disky. Nic na dočasném disku se ztratí.
 
-3. Pokud není uvedené požadované velikosti virtuálního počítače, je třeba nejprve zrušit přidělení virtuálního počítače s [az OM deallocate](/cli/azure/vm#az_vm_deallocate). Tento proces umožňuje virtuálnímu počítači potom změnit na libovolnou velikost, která je k dispozici, že oblast podporuje a pak spustit. Následující kroky navrácení, přizpůsobit a pak spusťte virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`:
+3. Pokud je požadovaná velikost virtuálního počítače není uvedený, budete muset nejprve zrušte přidělení virtuálního počítače s [az vm deallocate](/cli/azure/vm#az_vm_deallocate). Tento proces umožňuje virtuálnímu počítači následně možnosti změnit velikost na libovolnou velikost, která je k dispozici, že oblasti podporuje a potom spuštěna. Následující kroky uvolnění, změna velikosti a potom spusťte virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`:
    
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
@@ -53,10 +53,10 @@ Chcete-li změnit velikost virtuálního počítače, je třeba nejnovější [A
     ```
    
    > [!WARNING]
-   > Rušení přidělení virtuálního počítače uvolní také všechny dynamické IP adresy přiřazené k virtuálnímu počítači. Ovlivněné nejsou disky operačního systému a data.
+   > Rušení přidělení virtuálního počítače uvolní také všechny dynamické IP adresy přiřazené k virtuálnímu počítači. Operační systém a datové disky nejsou ovlivněny.
 
 ## <a name="next-steps"></a>Další postup
-Pro další škálovatelnost spustit více instancí virtuálního počítače a horizontální rozšíření kapacity. Další informace najdete v tématu [automaticky škálovat počítače se systémem Linux v sadě škálování virtuálního počítače][scale-set]. 
+Pro dodatečnou škálovatelnost spusťte několik instancí virtuálních počítačů a horizontální navýšení kapacity. Další informace najdete v tématu [automatické škálování počítačů s Linuxem ve Škálovací sadě virtuálních počítačů][scale-set]. 
 
 <!-- links -->
 [boot-diagnostics]: https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/

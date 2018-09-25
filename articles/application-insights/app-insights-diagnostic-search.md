@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 7ba278a244327e717c114177cd8878cd00dfd7b4
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 1bf716d4e5a37739de2e820725449be2576054ea
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46497905"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038762"
 ---
 # <a name="using-search-in-application-insights"></a>Pomocí vyhledávání ve službě Application Insights
 Hledání je funkce [Application Insights](app-insights-overview.md) , který používáte k vyhledání a prozkoumejte telemetrická data jednotlivých položek, například zobrazení stránek, výjimky nebo webové požadavky. A můžete zobrazit trasování protokolů a událostí, které jste nakódovali.
@@ -123,8 +123,8 @@ Tady jsou hledaných výrazů, které můžete použít:
 | Ukázkový dotaz | Efekt |
 | --- | --- |
 | `apple` |Najít všechny události v časovém rozsahu, jejichž pole obsahují slovo "apple" |
-| `apple AND banana` <br/>`apple banana` |Najdete akce, které obsahují i slova. Použít kapitálu "a" Ne "a". |
-| `apple OR banana` |Najdete akce, které obsahují buď aplikace word. Použití "Nebo", ne "nebo".<br/>Krátký tvar. |
+| `apple AND banana` <br/>`apple banana` |Najdete akce, které obsahují i slova. Použít kapitálu "a" Ne "a". <br/>Krátký tvar. |
+| `apple OR banana` |Najdete akce, které obsahují buď aplikace word. Použití "Nebo", ne "nebo". |
 | `apple NOT banana` |Najdete akce, které obsahují jedno slovo ale nikoli u druhého. |
 
 ## <a name="sampling"></a>Vzorkování

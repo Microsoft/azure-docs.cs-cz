@@ -1,6 +1,6 @@
 ---
 title: Azure SQL Database modely nákupu | Dokumentace Microsoftu
-description: Další informace o zakoupení modelu pro službu Azure SQL Database.
+description: Další informace o nákupní model modely, které jsou k dispozici databáze ve službě Azure SQL Database.
 services: sql-database
 author: CarlRabeler
 ms.service: sql-database
@@ -9,18 +9,21 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 4fe75d8d350ee2d2a97b9d7efb10ff3c1675168d
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 651f80c8b8f4bc5f8aa8cf117e3208f4126e964c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737093"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961072"
 ---
 # <a name="azure-sql-database-purchasing-models-and-resources"></a>Azure SQL Database nákupu modely a prostředky 
 
 Azure SQL Database umožňuje jednoduše koupit plně spravovanou PaaS databázový stroj, který nejlépe vyhovuje vašim potřebám výkonu a nákladů. V závislosti na modelu nasazení Azure SQL Database můžete vybrat nákupní model, který nejlépe vyhovuje vašim potřebám: 
- - [Logické servery](sql-database-logical-servers.md) v [Azure SQL Database](sql-database-technical-overview.md) nabízí dva modely nákupu pro výpočty, úložiště a vstupně-VÝSTUPNÍCH prostředků: nákupní model založený na DTU a [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md). 
+ - [Logické servery](sql-database-logical-servers.md) v [Azure SQL Database](sql-database-technical-overview.md) nabízí dva modely nákupu pro výpočty, úložiště a vstupně-VÝSTUPNÍCH prostředků: [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) a [založený na virtuálních jádrech nákupní model](sql-database-service-tiers-vcore.md). V rámci této nákupní model, můžete zvolit [izolované databáze](sql-database-single-databases-manage.md) nebo [elastické fondy](sql-database-elastic-pool.md).
  - [Spravované instance](sql-database-managed-instance.md) jenom nabídky Azure SQL Database [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md).
+
+> [!IMPORTANT]
+> [Velkokapacitní databáze (preview)](sql-database-hyperscale.md) jsou dostupná jenom u založený na virtuálních jádrech nákupní model pro izolované databáze s logický server nebo v rámci Managed Instance. 
 
 Následující tabulku a graf porovnání a kontrast tyto dva modely nákupu.
 
@@ -34,17 +37,12 @@ Následující tabulku a graf porovnání a kontrast tyto dva modely nákupu.
 
 ## <a name="vcore-based-purchasing-model"></a>nákupní model založený na virtuálních jádrech 
 
-Virtuální jádro reprezentuje logický procesor nabízený s možností volby mezi generacemi hardwaru a fyzické charakteristiky hardwaru (například počet jader, paměti a velikost úložiště). Nákupní model založený na virtuálních jádrech poskytuje flexibilitu, kontrolu, transparentnost spotřeby jednotlivých prostředků a jednoduchý způsob převodu místních požadavků na zatížení do cloudu. Tento model umožňuje zvolit výpočetních, paměťových a úložiště na základě jejich potřebám provádění úloh. V nákupní model založený na virtuálních jádrech Zákazníci si mohou vybrat mezi [Obecné](sql-database-high-availability.md#standardgeneral-purpose-availability) a [pro důležité obchodní informace](sql-database-high-availability.md#premiumbusiness-critical-availability) úrovně služeb pro obě [izolované databáze](sql-database-single-database-scale.md), [spravované instance](sql-database-managed-instance.md), a [elastické fondy](sql-database-elastic-pool.md). 
+Virtuální jádro reprezentuje logický procesor nabízený s možností volby mezi generacemi hardwaru a fyzické charakteristiky hardwaru (například počet jader, paměti a velikost úložiště). Nákupní model založený na virtuálních jádrech poskytuje flexibilitu, kontrolu, transparentnost spotřeby jednotlivých prostředků a jednoduchý způsob převodu místních požadavků na zatížení do cloudu. Tento model umožňuje zvolit výpočetních, paměťových a úložiště na základě jejich potřebám provádění úloh. V nákupní model založený na virtuálních jádrech můžete vybrat mezi [Obecné](sql-database-high-availability.md#standardgeneral-purpose-availability) a [pro důležité obchodní informace](sql-database-high-availability.md#premiumbusiness-critical-availability) úrovně služeb pro obě [izolované databáze](sql-database-single-database-scale.md), [ spravované instance](sql-database-managed-instance.md), a [elastické fondy](sql-database-elastic-pool.md). Pro izolované databáze, můžete také [Hyperškálovatelného (preview)](sql-database-hyperscale.md) úroveň služby.
 
 Nákupní model založený na virtuálních jádrech umožňuje nezávisle na sobě vybrat úložnou a výpočetní prostředky, odpovídají zajištění místního výkonu a optimalizovat cena. V nákupní model založený na virtuálních jádrech zákazníci platí za:
-- COMPUTE (úrovni služby a počet virtuálních jader a množství paměti a generaci) *
+- COMPUTE (úrovni služby a počet virtuálních jader a množství paměti a generaci)
 - Typ a velikost úložiště dat a protokolů 
-- Počet IOs ** - pro [logické servery](sql-database-logical-servers.md) pouze
-- Zálohování úložišť (pro čtení RA-GRS) ** 
-
-\* V počáteční verzi public preview, logické procesory generace 4 jsou založené na Intel E5-2673 v3 (Haswell) 2,4 GHz procesorech.
-
-\*\* Během období preview je zdarma sedm dní a IOs.
+- Záložní úložiště (pro čtení RA-GRS) 
 
 > [!IMPORTANT]
 > Výpočetní prostředky, IOs, data a úložiště protokolů se bude fakturovat za databázi nebo elastický fond. Úložiště záloh se účtuje za každou databázi. Podrobné informace o Managed Instance poplatky, najdete v tématu [Azure SQL Database Managed Instance](sql-database-managed-instance.md).

@@ -2,18 +2,22 @@
 title: Migrovat na nové úlohy Elastic Database | Dokumentace Microsoftu
 description: Migrace na nové úlohy Elastic Database.
 services: sql-database
-author: johnpaulkee
-manager: craigg
 ms.service: sql-database
-ms.topic: article
-ms.date: 06/14/2018
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: johnpaulkee
 ms.author: johnpaulkee
-ms.openlocfilehash: 7b6dd7d3724f486670b07709d317739d01e9fd21
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.reviewer: ''
+manager: craigg
+ms.date: 06/14/2018
+ms.openlocfilehash: cf9520c257b2d3aa133fa4861face02b378af26f
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035302"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47055422"
 ---
 # <a name="migrate-to-the-new-elastic-database-jobs"></a>Migrovat na nové úlohy elastické databáze
 
@@ -30,7 +34,7 @@ Upgradovaná verze úlohy elastické databáze má nová sada rutin prostředí 
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-Nainstalujte **AzureRM.Sql** 4.8.1-preview modulu zobrazíte nejnovější rutiny Elastických úloh. Spusťte následující příkazy v prostředí PowerShell s přístupem pro správu.
+Nainstalujte modul **AzureRM.Sql** 4.8.1 ve verzi Preview, se kterým získáte nejnovější rutiny pro elastické úlohy. Spusťte následující příkazy v PowerShellu s přístupem pro správu.
 
 ```powershell
 # Installs the latest PackageManagement powershell package which PowershellGet v1.6.5 is dependent on

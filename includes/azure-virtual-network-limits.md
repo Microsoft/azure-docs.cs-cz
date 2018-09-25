@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 4ab574f99f678683497b0f00b36abcda89991f88
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 673faff51c3d06e50941a6982a9f654c28598d86
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "43435583"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47006482"
 ---
 <a name="virtual-networking-limits-classic"></a>Následující omezení platí pouze pro síťové prostředky spravované přes model nasazení Classic na předplatné. Zjistěte, jak [zobrazit aktuální využití prostředků pro vaše předplatné omezení](../articles/networking/check-usage-against-limits.md).
 
@@ -60,6 +60,8 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 | Směrovací tabulky definované uživatelem |200 |
 | Trasy definované uživatelem na směrovací tabulku |400 |
 | Kořenové certifikáty typu Point-to-Site na službu VPN Gateway |20 |
+| Klepne virtuální sítě |100 |
+| Klepněte na konfiguraci síťového rozhraní na virtuální síť, klepněte na |100 |
 
 #### <a name="publicip-address"></a>Veřejné IP adresy omezení
 

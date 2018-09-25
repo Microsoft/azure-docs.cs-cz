@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: efd512395b49d3c274bb5aa409d1cbd527673659
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 35cd773c2a30549dde10a73b2fbe6db1a0c8b34a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43781883"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989375"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Síť rozšíření virtuálních počítačů sledovacích procesů agenta pro Linux
 
@@ -87,7 +87,7 @@ Následující kód JSON ukazuje schéma pro rozšíření Network Watcher Agent
 
 Rozšíření virtuálních počítačů Azure pomocí šablony Azure Resource Manageru můžete nasadit. Pokud chcete nasadit rozšíření Network Watcher Agent, v šabloně použijte předchozí schématu json.
 
-## <a name="azure-cli-10-deployment"></a>Nasazení v Azure CLI 1.0
+## <a name="azure-classic-cli-deployment"></a>Nasazení Azure classic rozhraní příkazového řádku
 
 Následující příklad nasadí rozšíření síťových sledovacích procesů agenta virtuálního počítače do existující virtuální počítač nasadit prostřednictvím modelu nasazení classic:
 
@@ -96,7 +96,7 @@ azure config mode asm
 azure vm extension set myVM1 NetworkWatcherAgentLinux Microsoft.Azure.NetworkWatcher 1.4
 ```
 
-## <a name="azure-cli-20-deployment"></a>Nasazení v Azure CLI 2.0
+## <a name="azure-cli-deployment"></a>Nasazení v Azure CLI
 
 Následující příklad nasadí rozšíření síťových sledovacích procesů agenta virtuálního počítače do existujícího virtuálního počítače nasazeného pomocí nástroje Resource Manager:
 
@@ -110,7 +110,7 @@ az vm extension set --resource-group myResourceGroup1 --vm-name myVM1 --name Net
 
 Můžete načíst data o stavu nasazení rozšíření pomocí webu Azure portal nebo rozhraní příkazového řádku Azure.
 
-Následující příklad ukazuje stav nasazení rozšíření pro virtuální počítače nasazené prostřednictvím modelu nasazení classic pomocí rozhraní příkazového řádku Azure CLI 1.0:
+Následující příklad ukazuje stav nasazení rozšíření pro virtuální počítače nasazené prostřednictvím modelu nasazení classic pomocí Azure classic CLI:
 
 ```azurecli
 azure config mode asm
@@ -122,7 +122,7 @@ Rozšíření provádění výstup je zaznamenán soubory nalezené v následuj�
 /var/log/azure/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentLinux/
 `
 
-Následující příklad ukazuje stav nasazení NetworkWatcherAgentLinux rozšíření pro virtuální počítače nasazené prostřednictvím Resource Manageru pomocí rozhraní příkazového řádku Azure CLI 2.0:
+Následující příklad ukazuje stav nasazení NetworkWatcherAgentLinux rozšíření pro virtuální počítače nasazené prostřednictvím Resource Manageru pomocí rozhraní příkazového řádku Azure:
 
 ```azurecli
 az vm extension show --name NetworkWatcherAgentLinux --resource-group myResourceGroup1 --vm-name myVM1

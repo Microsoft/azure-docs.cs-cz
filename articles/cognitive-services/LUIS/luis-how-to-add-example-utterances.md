@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Informace o přidání projevů v aplikacích Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: eb859dfd2dca37415d074e8a0398be37fcc0a6b8
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 387668263a6bab6e12a21adf04aebfbbf108a006
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051762"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036486"
 ---
 # <a name="add-example-utterances-and-label-with-entities"></a>Přidejte příklad projevy a popisek s entitami
 

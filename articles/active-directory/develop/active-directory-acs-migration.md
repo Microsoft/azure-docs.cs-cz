@@ -1,6 +1,6 @@
 ---
 title: Migrace ze služby Azure Access Control service | Dokumentace Microsoftu
-description: Možnosti pro přesun aplikace a služby ze služby Azure Access Control
+description: Další informace o možnostech pro přesun aplikace a služby z Azure Access Control Service (ACS).
 services: active-directory
 documentationcenter: dev-center-name
 author: CelesteDG
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/06/2018
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: 3120bf36c32a8be42f325ef584bfc8a2c5cd04df
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 59856418adde1ea29a0513a1ca7c0c60531768d8
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055290"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036537"
 ---
-# <a name="migrate-from-the-azure-access-control-service"></a>Migrace ze služby Azure Access Control service
+# <a name="how-to-migrate-from-the-azure-access-control-service"></a>Postupy: migrace ze služby Azure Access Control service
 
 Microsoft Azure Access Control Service (ACS), služba Azure Active Directory (Azure AD), se vyřadí dne 7. května 2018. Aplikací a služeb, které používají řízení přístupu musí být plně migrovat na jiný mechanismus ověřování té. Tento článek popisuje doporučení pro stávající zákazníky, plánujete přestat používat vaše užívání řízení přístupu. Pokud nepoužíváte aktuálně řízení přístupu, není nutné provádět žádnou akci.
 
@@ -37,7 +37,7 @@ Případy použití pro řízení přístupu můžete rozdělit do tří hlavní
 - Přidání ověřování do webové aplikace, vlastní a připravená (jako je SharePoint). Pomocí řízení přístupu "pasivní" ověřování webové aplikace může podporovat přihlášení pomocí účtu Microsoft (dřív Live ID) a pomocí účtů z Google, Facebooku, Yahoo, Azure AD a služby Active Directory Federation Services (AD FS).
 - Zabezpečení vlastních webových služeb s tokeny vystavené službou Access Control. Webové služby s použitím "aktivní" ověřování, můžete zajistit, že se povolí přístup pouze k známí klienti, které jste se ověřili pomocí řízení přístupu.
 
-Každá z těchto případů a jejich doporučená migrace, které jsou popsané strategie použít v následujících částech. 
+Každá z těchto případů a jejich doporučená migrace, které jsou popsané strategie použít v následujících částech.
 
 > [!WARNING]
 > Ve většině případů jsou potřeba změny významné kódu pro migraci stávajících aplikací a služeb na novější technologií. Doporučujeme, abyste ihned začít plánovat a realizaci migrace předcházet veškerým potenciální výpadků nebo výpadek.
@@ -61,6 +61,51 @@ Veškerá komunikace s STS a operace správy se provádějí na této adrese URL
 Výjimkou je veškerý provoz do `https://accounts.accesscontrol.windows.net`. Provoz na tuto adresu URL již zpracovává jinou službou a **není** ovlivněny vyřazení řízení přístupu. 
 
 Další informace o řízení přístupu najdete v tématu [2.0 služby Řízení přístupu (archivovaným)](https://msdn.microsoft.com/library/hh147631.aspx).
+
+## <a name="find-out-which-of-your-apps-will-be-impacted"></a>Zjistěte, které vaše aplikace bude mít vliv
+
+Postupujte podle kroků v této části a zjistěte, které vaše aplikace bude mít vliv vyřazení z provozu služby ACS.
+
+### <a name="download-and-install-acs-powershell"></a>Stáhněte a nainstalujte prostředí PowerShell služby ACS
+
+1. Přejít do Galerie prostředí PowerShell a stáhnout [Acs.Namespaces](https://www.powershellgallery.com/packages/Acs.Namespaces/1.0.2).
+1. Nainstalujte modul spuštěním
+
+    ```powershell
+    Install-Module -Name Acs.Namespaces
+    ```
+
+1. Získat seznam všech možných příkazů
+
+    ```powershell
+    Get-Command -Module Acs.Namespaces
+    ```
+
+    Pokud chcete zobrazit nápovědu ke konkrétnímu příkazu, spusťte:
+
+    ```
+     Get-Help [Command-Name] -Full
+    ```
+    
+    kde `[Command-Name]` je název příkazu ACS.
+
+### <a name="list-your-acs-namespaces"></a>Seznam obory názvů ACS
+
+1. Připojte se k používání služby ACS **AcsAccount připojit** rutiny.
+  
+    Budete muset spustit `Set-ExecutionPolicy -ExecutionPolicy Bypass` před spuštěním příkazů, a být správce těchto předplatných za účelem provedení příkazu.
+
+1. Dostupná předplatná Azure pomocí seznamu **Get-AcsSubscription** rutiny.
+1. Seznam pomocí oborů názvů ACS **Get-AcsNamespace** rutiny.
+
+### <a name="check-which-applications-will-be-impacted"></a>Zkontrolujte, které aplikace budou mít vliv
+
+1. Obor názvů z předchozího kroku a přejděte na `https://<namespace>.accesscontrol.windows.net`
+
+    Například pokud jedna z obory názvů contoso-test, přejděte na `https://contoso-test.accesscontrol.windows.net`
+
+1. V části **vztahy důvěryhodnosti**vyberte **aplikace předávající strany** zobrazíte seznam aplikací, které budou mít vliv vyřazení z provozu služby ACS.
+1. Opakujte kroky 1 – 2 pro všechny ostatní služby ACS namespace (s), které máte.
 
 ## <a name="retirement-schedule"></a>Plán vyřazení z provozu
 

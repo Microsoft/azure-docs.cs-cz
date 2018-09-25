@@ -2,20 +2,22 @@
 title: Azure SQL Database Data zjišťování a klasifikace | Dokumentace Microsoftu
 description: Azure SQL Database Data zjišťování a klasifikace
 services: sql-database
-author: giladmit
-manager: craigg
-ms.reviewer: vanto
 ms.service: sql-database
-ms.custom: security
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/10/2018
+author: giladmit
 ms.author: giladm
-ms.openlocfilehash: aca01e67339d5f6d003021cb17f1787093b79eda
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.reviewer: vanto
+manager: craigg
+ms.date: 09/10/2018
+ms.openlocfilehash: d34bb54729fe0adc4b26d213bfaa4ad4fb210ab7
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543958"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064172"
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Azure SQL Database Data zjišťování a klasifikace
 Data zjišťování a klasifikace (aktuálně ve verzi preview) nabízí rozšířené možnosti, které jsou integrované do Azure SQL Database pro **zjišťování**, **klasifikace**, **označování**  &  **ochrana** citlivá data ve vašich databázích.
@@ -115,9 +117,9 @@ T-SQL můžete použít k přidání nebo odebrání klasifikace sloupců, jako�
 > [!NOTE]
 > Při použití jazyka T-SQL ke správě popisků, neexistuje žádné ověření, která popisky přidané k sloupec existuje v zásadě ochrany informací v organizaci (sadu popisků, které se zobrazují v portálu doporučení). Je pro vás, abyste to ověřit.
 
-* Přidat nebo aktualizovat klasifikaci jeden nebo více sloupců: [přidat klasifikace utajení](https://docs.microsoft.com/en-us/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
-* Odebrání klasifikace z jednoho nebo více sloupců: [VYŘADIT klasifikace utajení](https://docs.microsoft.com/en-us/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
-* Zobrazit všechny klasifikace pro databázi: [sys.sensitivity_classifications](https://docs.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
+* Přidat nebo aktualizovat klasifikaci jeden nebo více sloupců: [přidat klasifikace utajení](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
+* Odebrání klasifikace z jednoho nebo více sloupců: [VYŘADIT klasifikace utajení](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
+* Zobrazit všechny klasifikace pro databázi: [sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
 Můžete také použít rozhraní REST API můžete programově spravovat klasifikace. Publikovaná rozhraní REST API podporují tyto operace:
 * [Vytvoření nebo aktualizace](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) – vytvoří nebo aktualizuje označení citlivosti daného sloupce

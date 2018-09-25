@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 04/29/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9d24e37642a41e4d60b33f42a60d7e56cb4b35b5
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 9a9a86d445deaea4872615f443ad53f76638a758
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446720"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056518"
 ---
 #<a name="using-age-gating-in-azure-ad-b2c"></a>Používat ověřování věku v Azure AD B2C
 
 >[!IMPORTANT]
->Tato funkce je ve verzi private preview.  Podrobnosti najdete na naší [blog služby](https://blogs.msdn.microsoft.com/azureadb2c/) podrobnosti, jako to bude k dispozici, nebo se obraťte AADB2CFeedback@microsoft.com.  Nepoužívejte to o adresářích produkčního prostředí, pomocí těchto nových funkcích může vést ke ztrátě dat a může mít neočekávaným změnám v chování, až přejdeme do všeobecné dostupnosti.  
+>Tato funkce je ve verzi private preview.  Podrobnosti najdete na naší [blog služby](https://blogs.msdn.microsoft.com/azureadb2c/) podrobnosti, jako to bude k dispozici, nebo se obraťte AADB2CPreview@microsoft.com.  Nepoužívejte to o adresářích produkčního prostředí, pomocí těchto nových funkcích může vést ke ztrátě dat a může mít neočekávaným změnám v chování, až přejdeme do všeobecné dostupnosti.  
 >
 
 ##<a name="age-gating"></a>Věku
@@ -56,13 +56,3 @@ Toky uživatelů, které povolit buď sign up, přihlaste se nebo obojí můžet
 Toky uživatelů, které povolit buď sign up, přihlaste se nebo obojí můžete zablokovat nezletilým bez souhlasu z aplikace.  Existují dvě možnosti pro zpracování blokovaným uživatelům v Azure AD B2C:
 * Poslat JSON zpět do aplikace – tato možnost pošle odpověď zpět do aplikace, za byl zablokován.
 * Zobrazit chybovou stránku - uživateli se zobrazí stránka s informací, že nemají přístup k aplikaci
-
-##<a name="known-issues"></a>Známé problémy
-###<a name="format-for-the-response-when-a-minor-is-blocked"></a>Formát pro odpověď, když dojde k zablokování za.
-Odpověď aktuálně není správně vytvořen, tato chyba bude vyřešen v příští aktualizaci.
-
-###<a name="deleting-specific-attributes-that-were-added-during-setup-can-make-your-directory-unable-to-use-age-gating"></a>Odstraňuje se konkrétní atributy, které byly přidány během instalace může být adresáři nelze použít věku.
-V instalačním programu věku jste nakonfigurovali přes možnost v adresáři vaší `Properties`.  Pokud odstraníte buď `legalCountry` nebo `dateOfBirth` prostřednictvím grafu adresáři již nelze použít věku a tyto vlastnosti nejde znovu vytvořit.
-
-###<a name="list-of-countries-is-incomplete"></a>Seznam zemí, není kompletní
-Aktuálně není úplný seznam zemí pro legalCountry, přidáme ostatních zemí v některé z příštích aktualizací.

@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 93b017482006507d616d9125cd17fd2f14389d59
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 6c8790110b0ecb8ea7d38756661774b3526f7a7c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983042"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983391"
 ---
 # <a name="choosing-a-vcore-service-tier-compute-memory-storage-and-io-resources"></a>Výběr úrovně služeb vCore, výpočty, paměť, úložiště a vstupně-VÝSTUPNÍCH prostředků
 
 Nákupní model založený na virtuálních jádrech umožňuje nezávisle na sobě škálovat výpočetní prostředky a prostředky úložiště, odpovídají zajištění místního výkonu a optimalizovat cena. Umožňuje také můžete vybrat generaci:
 - Až 24 logické procesory generace 4 - podle Intel E5-2673 v3 (Haswell) 2,4 GHz, vCore = 1 PP (fyzických jader), 7 GB na jádro, připojené SSD
-- Až 80 logické procesory generace 5 - podle Intel E5-2673 v4 (Broadwell) 2,3 GHz procesorech, vCore = 1 LP (hyper vlákno), 5.1. GB na jádro, rychlé eNVM SSD
+- Až 80 logické procesory generace 5 - podle Intel E5-2673 v4 (Broadwell) 2,3 GHz procesorech, vCore = 1 LP (hyper vlákno), 5.5. GB na jádro, rychlé eNVM SSD
 
 modelu virt. jader také umožňuje používat [zvýhodněné hybridní využití Azure pro SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) získat úspory nákladů.
 
@@ -30,19 +30,19 @@ Modelu virt. jader nabízí dvě úrovně služeb pro obecné účely a pro důl
 
 Následující tabulka vám pomůže pochopit rozdíly mezi těmito dvěma vrstvami:
 
-||**Obecné účely**|**Pro důležité obchodní informace**|
-|---|---|---|
-|Nejvhodnější pro|Většinu obchodních úloh. Nabídky rozpočtu orientovaný vybalancovaných a škálovatelných výpočetních možností a možností ukládání.|Podnikové aplikace s vysokými nároky na V/V. Nabízí nejvyšší odolnost proti selhání s využitím několika izolovaných replik.|
-|Compute|Gen4: vCore 1 až 24<br/>Gen5: vCore 1 až 80|Gen4: vCore 1 až 24<br/>Gen5: vCore 1 až 80|
-|Memory (Paměť)|Gen4: 7 GB na jádro<br>Gen5: 5.1 GB na jádro | Gen4: 7 GB na jádro<br>Gen5: 5.1 GB na jádro |
-|Úložiště|[Vzdálené úložiště úrovně Premium](../virtual-machines/windows/premium-storage.md),<br/>Izolované databáze: 5 GB až 4 TB<br/>Spravovanou instanci: 32 GB až 8 TB |Místní úložiště SSD<br/>Izolované databáze: 5 GB až 1 TB<br/>Spravovanou instanci: 32 GB až 4 TB |
-|Vstupně-výstupní propustnost (přibližné)|Izolované databáze: 500 IOPS na vCore s 7000 maximální IOPS</br>Spravovanou instanci: Závisí na [velikost souboru](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)|5000 IOPS na jádro s 200000 maximální IOPS|
-|Dostupnost|1 repliky, žádné škálování pro čtení|3 repliky, 1 [repliky pro čtení škálování](sql-database-read-scale-out.md),<br/>Zóna redundantní HA|
-|Zálohování|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 dní (7 dní ve výchozím nastavení)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 dní (7 dní ve výchozím nastavení)|
-|V paměti|neuvedeno|Podporováno|
+||**Obecné účely**|**Pro důležité obchodní informace**|**Velkokapacitní (preview)**|
+|---|---|---|---|
+|Nejvhodnější pro|Většinu obchodních úloh. Nabídky rozpočtu orientovaný vybalancovaných a škálovatelných výpočetních možností a možností ukládání.|Podnikové aplikace s vysokými nároky na V/V. Nabízí nejvyšší odolnost proti selhání s využitím několika izolovaných replik.|Většina podnikových úloh pomocí vysoce škálovatelného úložiště a požadavky na škálování pro čtení|
+|Compute|Gen4: vCore 1 až 24<br/>Gen5: vCore 1 až 80|Gen4: vCore 1 až 24<br/>Gen5: vCore 1 až 80|Gen4: vCore 1 až 24<br/>Gen5: vCore 1 až 80|
+|Memory (Paměť)|Gen4: 7 GB na jádro<br>Gen5: 5.5 GB na jádro | Gen4: 7 GB na jádro<br>Gen5: 5.5 GB na jádro |Gen4: 7 GB na jádro<br>Gen5: 5.5 GB na jádro|
+|Úložiště|[Vzdálené úložiště úrovně Premium](../virtual-machines/windows/premium-storage.md),<br/>Izolované databáze: 5 GB až 4 TB<br/>Spravovanou instanci: 32 GB až 8 TB |Místní úložiště SSD<br/>Izolované databáze: 5 GB až 4 TB<br/>Spravovanou instanci: 32 GB až 4 TB |Flexibilní, auto-grow úložiště podle potřeby. Podporuje až 100 TB úložiště a další. Místní úložiště SSD pro mezipaměť fondu místní vyrovnávací paměti a místní datové úložiště. Jako konečné dlouhodobé úložiště dat Azure vzdálené úložiště. |
+|Vstupně-výstupní propustnost (přibližné)|Izolované databáze: 500 IOPS na vCore s 7000 maximální IOPS</br>Spravovanou instanci: Závisí na [velikost souboru](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)|5000 IOPS na jádro s 200 000 maximální IOPS|Bude doplněno|
+|Dostupnost|1 repliky, žádné škálování pro čtení|3 repliky, 1 [repliky pro čtení škálování](sql-database-read-scale-out.md),<br/>Zóna redundantní HA|?|
+|Zálohování|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 dní (7 dní ve výchozím nastavení)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 dní (7 dní ve výchozím nastavení)|zálohování na snímku do vzdáleného úložiště Azure a obnovení použijte tyto snímky pro rychlé obnovení. Zálohy jsou okamžité a nemají vliv vstupně-výstupním výkonem výpočetního výkonu. Obnovení jsou velmi rychlé a ne o velikosti operace s daty (v minutách hodin nebo dnů).|
+|V paměti|Nepodporuje se|Podporováno|Nepodporuje se|
 |||
 
-Další informace najdete v tématu [vCore omezení prostředků v databázi Singelton](sql-database-vcore-resource-limits-single-databases.md) a [vCore omezení prostředků ve spravované instanci](sql-database-managed-instance.md#vcore-based-purchasing-model). 
+Další informace najdete v tématu [vCore omezení prostředků v jedné databázi](sql-database-vcore-resource-limits-single-databases.md) a [vCore omezení prostředků ve spravované instanci](sql-database-managed-instance.md#vcore-based-purchasing-model). 
 
 > [!IMPORTANT]
 > Pokud budete potřebovat méně než jedno virtuální jádro výpočetní kapacity, použijte nákupní model založený na DTU.
@@ -51,6 +51,7 @@ Zobrazit [nejčastější dotazy k SQL Database](sql-database-faq.md) odpovědi 
 
 ## <a name="storage-considerations"></a>Aspekty úložišť
 
+### <a name="general-purpose-and-business-critical-service-tiers"></a>Obecné účely a pro důležité obchodní informace úrovně služeb
 Zvažte použití těchto zdrojů:
 - Přidělené úložiště využívané datové soubory (MDF) a soubory protokolu souborů (LDF).
 - Každou izolovanou databázi vypočítat velikost podporuje maximální velikost databáze, s výchozí maximální velikost 32 GB.
@@ -70,12 +71,22 @@ Chcete-li monitorovat aktuální celková velikost MDF a LDF, použijte [sp_spac
 > [!IMPORTANT]
 > Za určitých okolností budete muset zmenšit databázi uvolnění nevyužívaného místa. Další informace najdete v tématu [spravovat místo souborů ve službě Azure SQL Database](sql-database-file-space-management.md).
 
+### <a name="hyperscale-service-tier-preview"></a>Úroveň služeb Hyperškálovatelného (preview)
+
+Úložiště se automaticky spravované databáze hyperškálovatelný systém. Úložiště rostou potřeby. "Nekonečné protokol" úložiště na rychlé Azure premium storage disky SSD s zkrácení žádné časté protokolu potřeba.
+
 ## <a name="backups-and-storage"></a>Zálohování a úložiště
+
+### <a name="general-purpose-and-business-critical-service-tiers"></a>Obecné účely a pro důležité obchodní informace úrovně služeb
 
 Přidělení úložiště pro zálohování databáze podporují bod v webu času obnovení (PITR) a [dlouhá období uchovávání dat (LTR)](sql-database-long-term-retention.md) schopnosti služby SQL Database. Toto úložiště je přidělena odděleně pro každou databázi a účtovat jako dvě samostatné na databázi poplatky. 
 
 - **PITR**: zálohování jednotlivých databází se zkopírují do [úložiště RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md) se automaticky. Velikost úložiště zvyšuje dynamicky vytvářené nových záloh.  Úložiště využívané týdenními úplnými zálohami, denními rozdílovými zálohami a zálohami protokolů transakcí se kopíruje každých 5 minut. Spotřeba úložiště závisí na četnosti změn databáze a dobu uchování. Můžete nakonfigurovat samostatný uchovávají pro každou databázi mezi 7 až 35 dnů. Minimální objem úložiště rovna 1 x velikosti dat je k dispozici bez dalších poplatků. Pro většinu databází je tato částka dostatečná k uložení zálohy za 7 dní.
 - **LTR**: SQL Database nabízí možnost konfigurace dlouhodobého uchovávání úplné zálohy po dobu až 10 let. Pokud je povolené zásady LTR, tyto zálohy se ukládají do úložiště RA-GRS automaticky, ale můžete řídit, jak často se zkopírují zálohy. Aby splnila požadavek na dodržení jiný, můžete vybrat různých období uchovávání záloh týdenní, měsíční nebo roční. Tato konfigurace bude definovat, jak velké úložiště se použije k zálohování LTR. Zleva doprava cenové kalkulačky můžete odhadnout náklady na úložiště zleva doprava. Další informace najdete v tématu [Dlouhodobé uchovávání](sql-database-long-term-retention.md).
+
+### <a name="hyperscale-service-tier-preview"></a>Úroveň služeb Hyperškálovatelného (preview)
+
+zálohování na snímku do vzdáleného úložiště Azure a obnovení použijte tyto snímky pro rychlé obnovení. Zálohy jsou okamžité a nemají vliv vstupně-výstupním výkonem výpočetního výkonu. Obnovení jsou velmi rychlé a ne o velikosti operace s daty (v minutách hodin nebo dnů).
 
 ## <a name="azure-hybrid-use-benefit"></a>Azure Hybrid Use Benefit
 

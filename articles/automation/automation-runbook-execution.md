@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6e449c1216fabf64da2b2abb59a7066fa30e332d
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: b577f697f4467656166b83ea78efdfe6d742941f
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982973"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032525"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Spuštění Runbooku ve službě Azure Automation
 
@@ -145,7 +145,8 @@ Toto je k ochraně služby z runbooky, které běží po neomezenou dobu bez dok
 
 Pokud sada runbook nemá žádné kontrolní body nebo úloha nedosáhla první kontrolní bod před uvolňován, pak restartuje od začátku.
 
-Pro dlouho běžící úlohy se doporučuje použít funkci [Hybrid Runbook Worker](automation-hrw-run-runbooks.md#job-behavior). Pro funkce Hybrid Runbook Worker neplatí omezení spravedlivého sdílení ani omezení maximální doby provádění runbooku.
+Pro dlouho běžící úlohy se doporučuje použít funkci [Hybrid Runbook Worker](automation-hrw-run-runbooks.md#job-behavior). Pro funkce Hybrid Runbook Worker neplatí omezení spravedlivého sdílení ani omezení maximální doby provádění runbooku. Další úlohy [omezení](../azure-subscription-service-limits.md#automation-limits) platí pro Azure karantény a procesy Hybrid Runbook Worker.
+
 
 Pokud použijete runbook pracovního postupu Powershellu v Azure, při vytváření sady runbook, měli byste zajistit, že čas ke spuštění všech aktivit mezi dvěma body obnovení není delší než tři hodiny. Budete muset přidání kontrolních bodů do sady runbook a ujistěte se, že nemá dosažení maximálního počtu 3 hodiny nebo rozdělte dlouhé běžící operace. Vaše sada runbook může například provádět reindex velké databáze SQL. Pokud tento jedné operace nedokončí v rámci limitu spravedlivé sdílení, je tato úloha byla uvolněna a spuštěno znovu od začátku. V takovém případě by měl rozdělte reindex operace do více kroků, jako je například Reindexace jedné tabulky v době a vložte kontrolní bod po každé operaci tak, aby úloha může pokračovat po poslední operaci dokončit.
 

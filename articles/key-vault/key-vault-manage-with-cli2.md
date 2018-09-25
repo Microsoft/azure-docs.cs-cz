@@ -1,6 +1,6 @@
 ---
 title: Správa služby Azure Key Vault pomocí rozhraní příkazového řádku | Dokumentace Microsoftu
-description: V tomto článku použijte k automatizaci běžných úkolů ve službě Key Vault pomocí Azure CLI 2.0
+description: V tomto článku použijte k automatizaci běžných úkolů ve službě Key Vault pomocí rozhraní příkazového řádku Azure
 services: key-vault
 documentationcenter: ''
 author: barclayn
@@ -14,18 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2018
 ms.author: barclayn
-ms.openlocfilehash: f88e98561a88380fbe40ecc9627ffabe39b0071c
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 00d79462fcaad785820e3879079414c88c958a89
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295170"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961480"
 ---
-# <a name="manage-key-vault-using-cli-20"></a>Správa služby Key Vault pomocí CLI 2.0
+# <a name="manage-key-vault-using-the-azure-cli"></a>Správa služby Key Vault pomocí rozhraní příkazového řádku Azure 
 
-Tento článek popisuje, jak začít pracovat s Azure Key Vault pomocí rozhraní příkazového řádku Azure CLI 2.0. Můžete zobrazit informace na:
+Tento článek popisuje, jak začít pracovat s Azure Key Vault pomocí rozhraní příkazového řádku Azure.  Můžete zobrazit informace na:
 
-- Požadavky
 - Jak v Azure vytvořit zesílený kontejner (trezor)
 - Přidání klíče, tajné nebo certifikát do služby key vault
 - Registrace aplikace v Azure Active Directory
@@ -50,7 +49,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 Použití příkazů rozhraní příkazového řádku Azure v tomto článku, musíte mít následující položky:
 
 * Předplatné Microsoft Azure. Pokud žádný nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial).
-* Rozhraní příkazového řádku verze 2.0 nebo novější. Pokud chcete nainstalovat nejnovější verzi, najdete v článku [instalace a konfigurace rozhraní příkazového řádku 2.0 pro různé platformy Azure](/cli/azure/install-azure-cli).
+* Rozhraní příkazového řádku Azure verze 2.0 nebo novější. Pokud chcete nainstalovat nejnovější verzi, najdete v článku [instalace rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli).
 * Aplikace, která nakonfigurujete pro použití klíče nebo hesla, které vytvoříte v tomto článku. Vzorová aplikace je k dispozici ve službě [Microsoft Download Center](http://www.microsoft.com/download/details.aspx?id=45343). Pokyny najdete v tématu zahrnutý soubor Readme.
 
 ### <a name="getting-help-with-azure-cross-platform-command-line-interface"></a>Získání nápovědy pomocí rozhraní příkazového řádku Azure Cross-Platform
@@ -67,7 +66,7 @@ az account set -h
 Také si můžete přečíst následující články a seznamte se s Azure Resource Managerem v rozhraní příkazového řádku Azure Cross-Platform:
 
 * [Instalace rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli)
-* [Začínáme s Azure CLI 2.0](/cli/azure/get-started-with-azure-cli)
+* [Začínáme s Azure CLI](/cli/azure/get-started-with-azure-cli)
 
 ## <a name="how-to-create-a-hardened-container-a-vault-in-azure"></a>Jak v Azure vytvořit zesílený kontejner (trezor)
 
@@ -200,7 +199,7 @@ Aplikace, které používají trezor klíčů, se musí ověřit pomocí tokenu 
 
 Pro získání tokenu musí aplikace obě tyto hodnoty poskytnout do Azure Active Directory. Konfigurace aplikace získá token bude záviset na aplikaci. Pro [ukázkovou aplikaci Key Vault](https://www.microsoft.com/download/details.aspx?id=45343) nastavuje majitel tyto hodnoty v souboru app.config.
 
-Podrobné pokyny k registraci aplikace v Azure Active Directory si můžete projít v článcích [integrace aplikací s Azure Active Directory](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md), [použití portálu k vytvoření Azure Active Adresář aplikace a instanční objekt, který má přístup k prostředkům](../azure-resource-manager/resource-group-create-service-principal-portal.md), a [vytvoření instančního objektu Azure pomocí příkazového řádku Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli).
+Podrobné pokyny k registraci aplikace v Azure Active Directory si můžete projít v článcích [integrace aplikací s Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md), [použití portálu k vytvoření Azure Active Adresář aplikace a instanční objekt, který má přístup k prostředkům](../azure-resource-manager/resource-group-create-service-principal-portal.md), a [vytvoření instančního objektu Azure pomocí rozhraní příkazového řádku Azure](/cli/azure/create-an-azure-service-principal-azure-cli).
 
 Pro registraci aplikace ve službě Azure Active Directory:
 

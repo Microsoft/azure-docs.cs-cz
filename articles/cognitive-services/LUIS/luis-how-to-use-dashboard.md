@@ -3,18 +3,18 @@ title: Řídicí panel aplikací pro aplikace LUIS | Dokumentace Microsoftu
 description: Další informace o řídicím panelu aplikací, vizualizovaných nástrojů pro generování sestav, která umožňuje monitorování aplikací na jeden první pohled.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: diberry
-ms.openlocfilehash: 518227d9f4165a08fafefa357de255d97c710f61
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: cab07a994f2bdfb7ef8491adbb482c1902e4d4cb
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224496"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031981"
 ---
 # <a name="application-dashboard"></a>Řídicí panel aplikací
 Řídicí panel aplikací umožňuje monitorovat aplikace jeden pohled. **Řídicí panel** zobrazí při otevření aplikace po kliknutí na název aplikace **Moje aplikace** stránce vyberte **řídicí panel** v horním panelu. 

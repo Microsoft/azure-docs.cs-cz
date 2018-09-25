@@ -3,19 +3,19 @@ title: Správa prostředků a klíč – QnA Maker
 titleSuffix: Azure Cognitive Services
 description: Vaše služba QnA Maker se zabývá dvěma druhy klíče, klíče předplatného a klíče koncového bodu.
 services: cognitive-services
-author: nstulasi
+author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
-ms.author: saneppal
-ms.openlocfilehash: 9134819fc4610daadb617e123d861673e8cbfd32
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.author: tulasim
+ms.openlocfilehash: f48b4b7da4990de0efb9b7de5d97731d748f0e7f
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543429"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040444"
 ---
 # <a name="key-management"></a>Správa klíčů
 

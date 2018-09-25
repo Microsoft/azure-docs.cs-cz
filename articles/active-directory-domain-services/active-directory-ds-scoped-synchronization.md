@@ -8,19 +8,19 @@ manager: mtillman
 editor: curtand
 ms.assetid: 9389cf0f-0036-4b17-95da-80838edd2225
 ms.service: active-directory
-ms.component: domains
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2018
 ms.author: maheshu
-ms.openlocfilehash: 1f7e07880c22ec6975f93d8349343986716b9445
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: ada6e7536ec91e5b1f35f1740177ae264fe68cf7
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46499213"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063485"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-your-managed-domain"></a>Konfigurace vymezených synchronizace z Azure AD do spravované domény
 V tomto článku se dozvíte, jak nakonfigurovat pouze konkrétní uživatelské účty, které se mají synchronizovat z adresáře služby Azure AD do spravované domény služby Azure AD Domain Services.

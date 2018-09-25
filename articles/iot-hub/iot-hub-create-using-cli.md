@@ -7,14 +7,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: robinsh
-ms.openlocfilehash: 95741b1a00c47468c7189e0103608c1dd7fa1d90
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 90830c4e27e90af6c9d77509844696f64e4909f0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046166"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46994764"
 ---
-# <a name="create-an-iot-hub-using-azure-cli"></a>Vytvoření IoT hubu pomocí rozhraní příkazového řádku Azure
+# <a name="create-an-iot-hub-using-the-azure-cli"></a>Vytvoření IoT hubu pomocí rozhraní příkazového řádku Azure
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 

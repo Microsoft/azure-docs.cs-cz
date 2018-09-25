@@ -2,20 +2,22 @@
 title: Automatické ladění e-mailová oznámení s postupy Průvodce – Azure SQL Database | Dokumentace Microsoftu
 description: Povolení e-mailová oznámení pro ladění automatické dotazů Azure SQL Database.
 services: sql-database
-author: danimir
-manager: craigg
-ms.reviewer: carlrab
 ms.service: sql-database
-ms.custom: monitor & tune
+ms.subservice: performance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/19/2018
+author: danimir
 ms.author: v-daljep
-ms.openlocfilehash: 546a21c4be13fdd0d06e29253d73c6b67cb8c91c
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/19/2018
+ms.openlocfilehash: 86639be7c4d934929272e6d578485bfc8bfb9cc9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498466"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064097"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>E-mailová oznámení pro automatické ladění
 
@@ -205,12 +207,12 @@ Dalším krokem je přidání tří úlohy (vytvoření, výstup get a odesílá
 1. Vytvoření akce pro spuštění skriptu prostředí PowerShell k načtení doporučení pro vyladění
 - Vyberte "**+ nový krok**", za nímž následují"**přidat akci**" v podokně toku opakování
 - Hledání zadejte do pole "**automatizace**"a vyberte"**Azure Automation – vytvořit úlohu**" ve výsledcích hledání
-- V podokně úlohy vytvoření konfigurace vlastností projektu. Pro tuto konfiguraci budete potřebovat podrobnosti ID, skupiny prostředků předplatného Azure a účet Automation **zaznamenaných** na **podokně účtu Automation**. Další informace o možnostech dostupných v této části najdete v tématu [Azure Automation – vytvoření úlohy](https://docs.microsoft.com/connectors/azureautomation/#Create_job).
+- V podokně úlohy vytvoření konfigurace vlastností projektu. Pro tuto konfiguraci budete potřebovat podrobnosti ID, skupiny prostředků předplatného Azure a účet Automation **zaznamenaných** na **podokně účtu Automation**. Další informace o možnostech dostupných v této části najdete v tématu [Azure Automation – vytvoření úlohy](https://docs.microsoft.com/connectors/azureautomation/#create-job).
 - Dokončení vytváření tuto akci kliknutím na "**uložit tok**"
 
 2. Vytvoření akce načíst výstup z provedený skript prostředí PowerShell
 - Vyberte "**+ nový krok**", za nímž následují"**přidat akci**" v podokně toku opakování
-- Hledání zaznamenaná typu "**automatizace**"a vyberte"**Azure Automation – získat výstup úlohy**" ve výsledcích hledání. Další informace o možnostech dostupných v této části najdete v tématu [Azure Automation – získat výstup úlohy](https://docs.microsoft.com/connectors/azureautomation/#Get_job_output).
+- Hledání zaznamenaná typu "**automatizace**"a vyberte"**Azure Automation – získat výstup úlohy**" ve výsledcích hledání. Další informace o možnostech dostupných v této části najdete v tématu [Azure Automation – získat výstup úlohy](https://docs.microsoft.com/connectors/azureautomation/#get-job-output).
 - Naplnit pole vyžaduje (podobné jako vytvoření předchozí úlohy) – naplnění vašeho předplatného Azure ID, skupinu prostředků a účet Automation (jak je zadáno v podokně účtu Automation)
 - Klikněte do pole "**ID úlohy**" pro "**dynamický obsah**" nabídky se zobrazí. V rámci této nabídky vyberte možnost "**ID úlohy**".
 - Dokončení vytváření tuto akci kliknutím na "**uložit tok**"

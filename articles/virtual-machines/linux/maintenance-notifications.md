@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: shants
-ms.openlocfilehash: 543c30b4d2c960f3c7453369162a62dc4606d06e
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 1ac965896dc3356f33e6461cf390e4345663c3d3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39068623"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982082"
 ---
 # <a name="handling-planned-maintenance-notifications-for-linux-virtual-machines"></a>Zpracování oznámení plánované údržby pro virtuální počítače s Linuxem
 
@@ -108,7 +108,7 @@ az vm perform-maintenance -g rgName -n vmName
 
 ## <a name="classic-deployments"></a>Nasazení Classic
 
-Pokud máte starší verze virtuálních počítačů, které byly nasazené pomocí modelu nasazení classic, je použití 1.0 rozhraní příkazového řádku k dotazování služby pro virtuální počítače a zahájení údržby.
+Pokud máte starší verze virtuálních počítačů, které byly nasazené pomocí modelu nasazení classic, můžete použít Azure CLI classic k dotazu pro virtuální počítače a zahájení údržby.
 
 Ujistěte se, že jste do správného režimu pro práci s klasický virtuální počítač tak, že zadáte:
 

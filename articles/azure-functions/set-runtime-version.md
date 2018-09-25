@@ -9,31 +9,28 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: glenga
-ms.openlocfilehash: ced4b6846d291bfbb718c3346ea588ca9e961d07
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 889a5a40409238462ee81d3bbd51ac6b77d28173
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093698"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947480"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Jak se zaměřit na verze modulu runtime Azure Functions
 
 Aplikace function app se spouští na konkrétní verzi modulu runtime Azure Functions. Existují dvě hlavní verze: [1.x a 2.x](functions-versions.md). Tento článek vysvětluje, jak nakonfigurovat aplikaci function app v Azure pro spouštění na zvolené verzi. Informace o tom, jak nakonfigurovat místní vývojové prostředí pro konkrétní verzi, najdete v části [kódu a testování Azure Functions místně](functions-run-local.md).
 
->[!IMPORTANT]   
-> Modul runtime služby Azure Functions 2.0 je ve verzi preview a aktuálně ne všechny funkce Azure Functions se nepodporuje. Další informace najdete v tématu [přehled verze modulu runtime Azure Functions](functions-versions.md).
-
 ## <a name="automatic-and-manual-version-updates"></a>Verze automatické a ruční aktualizace
 
 Funkce umožňuje cílit na konkrétní verzi modulu runtime s použitím `FUNCTIONS_EXTENSION_VERSION` nastavení aplikace function app. Aplikace function app se ukládají na zadaný hlavní verze, dokud se nerozhodnete explicitně přesunout na novou verzi.
 
-Pokud zadáte jenom hlavní verzi (~ 1"pro 1.x) nebo"beta"pro 2.x, aplikace function app se automaticky aktualizují na nový dílčí verze modulu runtime, jakmile budou k dispozici. Nový dílčí verze není zavést rozbíjející změny. Pokud chcete zadat vedlejší verze (například "1.0.11360"), aplikace function app se ukládají na tuto verzi, dokud ji explicitně nezměníte. 
+Pokud zadáte jenom hlavní verzi ("~ 2" pro 2.x nebo "~ 1" pro 1.x), aplikace function app se automaticky aktualizují na nový dílčí verze modulu runtime, jakmile budou k dispozici. Nový dílčí verze není zavést rozbíjející změny. Pokud chcete zadat vedlejší verze (například "2.0.12345"), aplikace function app se ukládají na tuto verzi, dokud ji explicitně nezměníte. 
 
 Když je veřejně dostupná nová verze, výzvu na portálu poskytuje možnost Přesunout nahoru na tuto verzi. Po přesunutí na novou verzi, můžete kdykoli použít `FUNCTIONS_EXTENSION_VERSION` nastavení aplikace, které chcete vrátit k předchozí verzi.
 
 Ke změně verze modulu runtime způsobí, že se aplikace function app k restartování.
 
-Hodnoty můžete nastavit `FUNCTIONS_EXTENSION_VERSION` nastavení Povolit automatické aktualizace aplikace jsou v tuto chvíli "~ 1" pro modul runtime verze 1.x a 2.x "betatestování".
+Hodnoty můžete nastavit `FUNCTIONS_EXTENSION_VERSION` nastavení, které povolí automatické aktualizace aplikací jsou aktuálně "~ 1" pro modul runtime verze 1.x a "~ 2" pro 2.x.
 
 ## <a name="view-the-current-runtime-version"></a>Zobrazit aktuální verze modulu runtime
 
@@ -55,7 +52,7 @@ Když budete potřebovat cílit na verzi než aktuální hlavní verze nebo verz
 
     ![Vyberte nastavení aplikace function app](./media/functions-versions/add-update-app-setting1a.png)
 
-2. V **nastavení aplikace** kartu, najdete `FUNCTIONS_EXTENSION_VERSION` nastavení a změňte hodnotu na platnou verzi modul runtime verze 1.x nebo `beta` pro verze 2.0. Tilda s hlavní verzí znamená, že používat nejnovější verzi Tato hlavní verze (například "~ 1"). 
+2. V **nastavení aplikace** kartu, najdete `FUNCTIONS_EXTENSION_VERSION` nastavení a změňte hodnotu na platnou verzi modul runtime verze 1.x nebo `~2` pro verze 2.0. Tilda s hlavní verzí znamená, že používat nejnovější verzi Tato hlavní verze (například "~ 1"). 
 
     ![Nastavení aplikace – funkce](./media/functions-versions/add-update-app-setting2.png)
 
@@ -70,7 +67,7 @@ az functionapp config appsettings set --name <function_app> \
 --resource-group <my_resource_group> \
 --settings FUNCTIONS_EXTENSION_VERSION=<version>
 ```
-V tomto kódu nahraďte `<function_app>` s názvem aplikace function App. Také nahraďte `<my_resource_group>` s názvem skupiny prostředků pro vaši aplikaci function app. Nahraďte `<version>` s platnou verzi modul runtime verze 1.x nebo `beta` pro verze 2.0. 
+V tomto kódu nahraďte `<function_app>` s názvem aplikace function App. Také nahraďte `<my_resource_group>` s názvem skupiny prostředků pro vaši aplikaci function app. Nahraďte `<version>` s platnou verzi modul runtime verze 1.x nebo `~2` verze 2.x. 
 
 Tento příkaz můžete spustit [Azure Cloud Shell](../cloud-shell/overview.md) výběrem **vyzkoušet** v předchozím příkladu kódu. Můžete také použít [rozhraní příkazového řádku Azure místně](/cli/azure/install-azure-cli) k provedení tohoto příkazu po provedení [az login](/cli/azure/reference-index#az-login) k přihlášení.
 

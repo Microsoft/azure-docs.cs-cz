@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2448b1f799c5253b36a18f108af1ff2de8b6ced3
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: e79419c764229e7dc52a32389b8b1116668dddfc
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127427"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039731"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -204,6 +204,7 @@ Následující seznam obsahuje obecný přehled služby Azure, které lze přesu
 * Log Analytics
 * Logic Apps
 * Machine Learning – Machine Learning Studio webové služby je možné přesunout do skupiny prostředků ve stejném předplatném, ale jiné předplatné. Další prostředky služby Machine Learning je možné přesunout mezi předplatnými.
+* Managed Disks – viz [omezení virtuálních počítačů pro omezení](#virtual-machines-limitations)
 * Spravovaná identita - přiřazená uživatelem
 * Media Services
 * Mobile Engagement
@@ -254,7 +255,6 @@ Následující seznam obsahuje obecný přehled služby Azure, které nelze pře
 * Je povoleno Lab Services - přesunout do nové skupiny prostředků ve stejném předplatném, ale přesun mezi předplatnými není povolen.
 * Nástroje pro vyrovnávání zatížení – viz [omezení nástroje pro vyrovnávání zatížení](#lb-limitations)
 * Managed Applications
-* Managed Disks – viz [omezení virtuálních počítačů](#virtual-machines-limitations)
 * Microsoft Genomics
 * NetApp
 * Veřejná IP adresa – viz [omezení veřejné IP adresy](#pip-limitations)
@@ -267,22 +267,36 @@ Následující seznam obsahuje obecný přehled služby Azure, které nelze pře
 
 ## <a name="virtual-machines-limitations"></a>Omezení virtuálních počítačů
 
-Spravované disky nepodporují přesunout. Toto omezení znamená, že několik související prostředky se nedají přesunout příliš. Nelze přesunout:
+Spravované disky se podporují pro přesunutí od 24. září 2018. Budete muset zaregistrovat k povolení této funkce
 
-* Managed Disks
+#### <a name="powershell"></a>PowerShell
+`Register-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute`
+#### <a name="cli"></a>Rozhraní příkazového řádku
+`az feature register Microsoft.Compute ManagedResourcesMove`
+
+
+To znamená, že můžete také přesunout:
+
 * Virtuální počítače se spravovanými disky
-* Obrázky vytvořené ze spravované disky
-* Snímky vytvořené ze spravované disky
+* Spravovaná Image
+* Spravované snímky
 * Skupiny dostupnosti s virtuálními počítači se spravovanými disky
 
-I když nelze přesunout spravovaného disku, můžete vytvořit kopii a pak vytvořit nový virtuální počítač z existujícího spravovaného disku. Další informace naleznete v tématu:
+Tady jsou omezení, které se zatím nepodporují
 
-* Kopírování spravovaných disků do stejného předplatného nebo jiném předplatném s [PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md) nebo [rozhraní příkazového řádku Azure](../virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md)
-* Vytvoření virtuálního počítače pomocí existujícího spravovaného disku operačního systému s [PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md) nebo [rozhraní příkazového řádku Azure](../virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md).
+* Virtuální počítače pomocí certifikátu uloženého ve službě Key Vault můžete přesunout do nové skupiny prostředků ve stejném předplatném, ale ne napříč předplatnými.
+* Virtuální počítače nakonfigurované s Azure Backup. Používá následující alternativní řešení Chcete-li přesunout tyto virtuální počítače
+  * Vyhledejte umístění virtuálního počítače.
+  * Vyhledejte skupinu prostředků pomocí následující vzor pro pojmenování: "AzureBackupRG_<location of your VM>_1" například AzureBackupRG_westus2_1
+  * Pokud na webu Azure Portal, pak zaškrtněte "Zobrazit skryté typy"
+  * Pokud v prostředí PowerShell, použijte `Get-AzureRmResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` rutiny
+  * Pokud v rozhraní příkazového řádku, použijte `az resource list -g AzureBackupRG_<location of your VM>_1`
+  * Nyní s typem najděte prostředek `Microsoft.Compute/restorePointCollections` , který má vzor pro pojmenování `AzureBackup_<name of your VM that you're trying to move>_###########`
+  * Odstranit tento prostředek
+  * Po odstranění je dokončeno, bude se moct přesunout virtuální počítač
+* Škálovací sady virtuálních počítačů pomocí nástroje pro vyrovnávání zatížení standardní SKU nebo standardní veřejnou IP Adresou skladové položky nelze přesunout.
+* Virtuální počítače vytvořené z Marketplace prostředky s plány připojené se nedají přesouvat mezi skupinami prostředků nebo předplatných. Zrušení zřízení virtuálního počítače v rámci aktuálního předplatného a znovu nasadit v rámci nového předplatného.
 
-Virtuální počítače vytvořené z Marketplace prostředky s plány připojené se nedají přesouvat mezi skupinami prostředků nebo předplatných. Zrušení zřízení virtuálního počítače v rámci aktuálního předplatného a znovu nasadit v rámci nového předplatného.
-
-Virtuální počítače pomocí certifikátu uloženého ve službě Key Vault můžete přesunout do nové skupiny prostředků ve stejném předplatném, ale ne napříč předplatnými.
 
 ## <a name="virtual-networks-limitations"></a>Omezení virtuální sítě
 

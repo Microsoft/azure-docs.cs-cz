@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: agaiha
-ms.openlocfilehash: a51e4e61b8d0a9f9a80acc513dbba32c74372f5e
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: ac09754876d52798add58d9e0752d776ca29f247
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348850"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46994798"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Použití diagnostického rozšíření Linuxu pro monitorování metrik a protokolů
 
@@ -54,7 +54,7 @@ Ke stažení konfigurace je uvedené jenom jako příklad; upravte jej podle sv�
 ### <a name="prerequisites"></a>Požadavky
 
 * **Agent Azure Linux verze 2.2.0 nebo novější**. Většina Image z Galerie virtuálních počítačů Azure s Linuxem obsahují verzi 2.2.7 nebo novější. Spustit `/usr/sbin/waagent -version` k potvrzení verze nainstalovaná na virtuálním počítači. Pokud virtuální počítač běží starší verze agenta hosta, postupujte podle [tyto pokyny](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) ji aktualizovat.
-* **Azure CLI**. [Nastavení rozhraní příkazového řádku Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) prostředí na svém počítači.
+* **Azure CLI**. [Nastavení rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) prostředí na svém počítači.
 * Příkaz wget, pokud ještě nemáte ho: Spusťte `sudo apt-get install wget`.
 * Stávající předplatné Azure a účet úložiště v rámci něj chcete uložit data.
 * Seznam podporovaných Linuxových distribucích se na https://github.com/Azure/azure-linux-extensions/tree/master/Diagnostic#supported-linux-distributions

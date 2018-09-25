@@ -1,5 +1,5 @@
 ---
-title: Azure Cognitive Services, Cognitive Services – Reference k rozhraní API dokumentace k – kurzy, sada SDK API pro zpracování řeči
+title: Azure Cognitive Services, reference k rozhraní API dokumentace k – kurzy, sada SDK API služeb Cognitive Services řeči
 description: Další informace o vytváření a vývoj aplikací s využitím Cognitive Services SDK řeči
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
@@ -9,16 +9,16 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: wolfma
-ms.openlocfilehash: 65ff0e47cf7a53d519bfd0c50ea4c3ebd09a5766
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: b920b7bcb86d94b2948ed0a9bf783cee1282b33f
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41987980"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47041071"
 ---
-# <a name="shipping-an-application"></a>Přesouvání aplikace
+# <a name="ship-an-application"></a>Dodávejte aplikace
 
-Podívejte se [sadou SDK pro řeč licence](license.md), stejně jako [oznámení softwaru třetích stran](third-party-notices.md) při distribuci Cognitive Services SDK řeči. Projděte si také, [prohlášení o ochraně osobních údajů Microsoft](https://aka.ms/csspeech/privacy).
+Podívejte se [sadou SDK pro řeč licence](license.md), stejně jako [oznámení k softwaru třetích stran](third-party-notices.md) při distribuci Azure Cognitive Services sadou SDK pro řeč. Projděte si také, [prohlášení o ochraně osobních údajů Microsoft](https://aka.ms/csspeech/privacy).
 
 V závislosti na platformě existují různých závislostí ke spuštění vaší aplikace.
 
@@ -33,9 +33,9 @@ Cognitive Services řeči SDK vyžaduje [Microsoft Visual C++ Redistributable pr
 
 Pokud vaše aplikace používá spravovaného kódu `.NET Framework 4.6.1` nebo novější je nutné na cílovém počítači.
 
-Knihovny Media Foundation pro vstup mikrofon, potřeba nainstalovat. Tyto knihovny jsou součástí sady Windows 10 a Windows serveru 2016. Mikrofon se nepoužívá jako vstupní zvuková zařízení, je možné použít sadu SDK pro řeč bez těchto knihoven.
+U mikrofon vstup je potřeba nainstalovat knihovny Media Foundation. Tyto knihovny jsou součástí sady Windows 10 a Windows serveru 2016. Mikrofon se nepoužívá jako vstupní zvuková zařízení, je možné použít sadu SDK pro řeč bez těchto knihoven.
 
-Požadované sadou SDK pro řeč soubory je možné nasadit ve stejném adresáři jako vaši aplikaci. Tímto způsobem vaší aplikace můžete přistupovat přímo na knihovny. Ujistěte se, zda že jste vybrali správnou verzi (Win32/x64) odpovídající vaší aplikace.
+Požadované sadou SDK pro řeč soubory je možné nasadit ve stejném adresáři jako vaši aplikaci. Tímto způsobem vaší aplikace můžete přistupovat přímo na knihovny. Ujistěte se, zda že jste vybrali správnou verzi (Win32/x64), která odpovídá vaší aplikace.
 
 | Název | Funkce
 |:-----|:----|
@@ -45,15 +45,15 @@ Požadované sadou SDK pro řeč soubory je možné nasadit ve stejném adresá�
 
 ## <a name="linux"></a>Linux
 
-Pro nativní aplikace, budete potřebovat k odeslání knihovně sadou SDK pro řeč `libMicrosoft.CognitiveServices.Speech.core.so`.
-Ujistěte se, že při výběru verze (x86, x64) odpovídající vaší aplikace. V závislosti na verzi systému Linux budete také muset zahrnovat následující závislosti:
+Pro nativní aplikaci, je třeba dodávat knihovně sadou SDK pro řeč `libMicrosoft.CognitiveServices.Speech.core.so`.
+Ujistěte se, zda že jste vybrali verzi (x86, x64), která odpovídá vaší aplikace. V závislosti na verzi systému Linux můžete také potřebovat zahrnout tyto závislosti:
 
 * Sdílené knihovny knihovna GNU C (včetně knihovny POSIX vlákna programování `libpthreads`)
 * Knihovny OpenSSL (`libssl.so.1.0.0`)
 * Knihovna cURL (`libcurl.so.4`)
 * Sdílená knihovna pro aplikace ALSA (`libasound.so.2`)
 
-Na Ubuntu 16.04 například knihovny GNU C musí již být nainstalováno ve výchozím nastavení. Poslední tři můžete nainstalovat pomocí těchto příkazů:
+Na Ubuntu 16.04 například knihovny GNU C musí již být nainstalováno ve výchozím nastavení. Poslední tři lze nainstalovat pomocí těchto příkazů:
 
 ```sh
 sudo apt-get update

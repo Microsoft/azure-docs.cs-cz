@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 62c171381201f3cedee869aba301859a7047f5ce
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: c94fd0bb68a03c64935c20fef1fab7b68c9c2c9b
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294900"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032984"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Nasazení Windows Hybrid Runbook Worker
 
@@ -49,7 +49,7 @@ Po úspěšně nasazení procesu runbook worker, zkontrolujte [spouštění runb
 
 Proveďte následující kroky k automatizaci instalace a konfigurace role Windows Hybrid Worker:
 
-1. Stáhněte si skript New-OnPremiseHybridWorker.ps1 z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker/DisplayScript) přímo z počítače se spuštěnou rolí pracovního procesu Hybrid Runbook Worker nebo z jiného počítače ve vašem prostředí. Zkopírujte skript do pracovního procesu.
+1. Stáhněte si skript New-OnPremiseHybridWorker.ps1 z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker) přímo z počítače se spuštěnou rolí pracovního procesu Hybrid Runbook Worker nebo z jiného počítače ve vašem prostředí. Zkopírujte skript do pracovního procesu.
 
    Skript New-OnPremiseHybridWorker.ps1 vyžaduje následující parametry během spuštění:
 

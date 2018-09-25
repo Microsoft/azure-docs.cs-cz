@@ -15,15 +15,15 @@ ms.service: sql-database
 ms.tgt_pltfrm: ''
 ms.devlang: azurecli, powershell
 ms.topic: conceptual
-ms.date: 06/28/2018
+ms.date: 09/20/2018
 ms.author: aliceku
 monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: 11e190e1a4d0309bdbdcb7a578fccaf84fabb8e3
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 65f9384bb0ceedd6c2bde8ef513040e198ccc4d2
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543773"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036367"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-using-your-own-key-from-azure-key-vault"></a>Prostředí PowerShell a rozhraní příkazového řádku: povolit transparentní šifrování dat pomocí vlastní klíče ze služby Azure Key Vault
 
@@ -35,11 +35,11 @@ Tento článek vás provede postupem použití klíče ze služby Azure Key Vaul
 - [Nepovinné ale doporučeno] Mají modulu hardwarového zabezpečení (HSM) nebo místní klíč úložiště pro vytváření místní kopie klíče ochrana TDE.
 - Musíte mít Azure PowerShell verze 4.2.0 nebo novější nainstalován a spuštěn. 
 - Vytvoření služby Azure Key Vault a klíče pro TDE.
-   - [Pokyny pro PowerShell ze služby Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started)
-   - [Pokyny pro používání modulu hardwarového zabezpečení (HSM) a služby Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started#a-idhsmaif-you-want-to-use-a-hardware-security-module-hsm)
+   - [Pokyny pro PowerShell ze služby Key Vault](../key-vault/key-vault-get-started.md)
+   - [Pokyny pro používání modulu hardwarového zabezpečení (HSM) a služby Key Vault](../key-vault/key-vault-get-started.md#HSM)
  - Key vault musí mít následující vlastnost, která má být použit pro transparentní šifrování dat:
-   - [obnovitelné odstranění](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
-   - [Jak používat obnovitelné odstranění Key Vaultu s využitím PowerShellu](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell) 
+   - [obnovitelné odstranění](../key-vault/key-vault-ovw-soft-delete.md)
+   - [Jak používat obnovitelné odstranění Key Vaultu s využitím PowerShellu](../key-vault/key-vault-soft-delete-powershell.md) 
 - Klíč musí mít následující atributy, které se použije pro transparentní šifrování dat:
    - Žádné datum vypršení platnosti
    - Není zakázáno
@@ -201,11 +201,11 @@ Pokud dojde k problému zkontrolujte následující:
 - [Nepovinné ale doporučeno] Mají modulu hardwarového zabezpečení (HSM) nebo místní klíč úložiště pro vytváření místní kopie klíče ochrana TDE.
 - Rozhraní příkazového řádku verze 2.0 nebo novější. Nainstalujte nejnovější verzi a připojte se ke svému předplatnému Azure najdete v tématu [instalace a konfigurace rozhraní příkazového řádku 2.0 pro různé platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). 
 - Vytvoření služby Azure Key Vault a klíče pro TDE.
-   - [Správa služby Key Vault pomocí CLI 2.0](https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2)
-   - [Pokyny pro používání modulu hardwarového zabezpečení (HSM) a služby Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started#a-idhsmaif-you-want-to-use-a-hardware-security-module-hsm)
+   - [Správa služby Key Vault pomocí CLI 2.0](../key-vault/key-vault-manage-with-cli2.md)
+   - [Pokyny pro používání modulu hardwarového zabezpečení (HSM) a služby Key Vault](../key-vault/key-vault-get-started.md#HSM)
  - Key vault musí mít následující vlastnost, která má být použit pro transparentní šifrování dat:
-   - [obnovitelné odstranění](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
-   - [Jak používat obnovitelné odstranění Key Vaultu s využitím CLI](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-cli) 
+   - [obnovitelné odstranění](../key-vault/key-vault-ovw-soft-delete.md)
+   - [Jak používat obnovitelné odstranění Key Vaultu s využitím CLI](../key-vault/key-vault-soft-delete-cli.md) 
 - Klíč musí mít následující atributy, které se použije pro transparentní šifrování dat:
    - Žádné datum vypršení platnosti
    - Není zakázáno

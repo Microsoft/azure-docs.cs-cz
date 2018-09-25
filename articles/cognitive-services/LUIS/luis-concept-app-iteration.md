@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Služba LUIS učí nejlepší v iterativní cyklus změny modelu, příklady utterance, publikování a shromažďování dat z koncového bodu dotazů.  Služba LUIS aplikace vyžadují počítají s iteracemi návrhu pro trénování LUIS získat nejlepší extrakce dat.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 5eba6867bdf6ca6ca362bcd6bb3ab747780d1a5e
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 05f5ceb5a0f3529d7635f7aae0c3c41c19f0b1ad
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634213"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031947"
 ---
 # <a name="authoring-cycle"></a>Cyklus vytváření
 Služba LUIS učí nejlepší v iterativní cyklus změny modelu, příklady utterance, publikování a shromažďování dat z koncového bodu dotazů. 

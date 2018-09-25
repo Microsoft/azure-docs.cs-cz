@@ -1,6 +1,6 @@
 ---
-title: Import a export souboru zóny domény do DNS Azure pomocí Azure CLI 2.0 | Dokumentace Microsoftu
-description: Zjistěte, jak importovat a exportovat soubor zóny DNS do Azure DNS pomocí Azure CLI 2.0
+title: Importovat a exportovat soubor zóny domény do DNS Azure pomocí rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+description: Zjistěte, jak importovat a exportovat soubor zóny DNS do Azure DNS pomocí rozhraní příkazového řádku Azure
 services: dns
 documentationcenter: na
 author: vhorne
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: victorh
-ms.openlocfilehash: 7578d078b147b5c4bf42f5343d3fdfdf6f0bc42e
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 5afb607f0410b428d8e67fdff043a4e376dd60a5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171601"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956349"
 ---
-# <a name="import-and-export-a-dns-zone-file-using-the-azure-cli-20"></a>Import a export souboru zóny DNS pomocí rozhraní příkazového řádku Azure CLI 2.0 
+# <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Import a export souboru zóny DNS pomocí Azure CLI 
 
-Tento článek vás provede pro import a export zón DNS pro Azure DNS pomocí rozhraní příkazového řádku Azure CLI 2.0.
+Tento článek vás provede pro import a export zón DNS pro Azure DNS pomocí Azure CLI.
 
 ## <a name="introduction-to-dns-zone-migration"></a>Úvod do migrace zóny DNS
 
@@ -30,7 +30,7 @@ Soubor zóny DNS je textový soubor, který obsahuje podrobné informace o všec
 
 Azure DNS podporuje import a export zón s použitím rozhraní příkazového řádku Azure (CLI). Import souboru zóny je **není** prostřednictvím Azure Powershellu nebo na webu Azure portal aktuálně podporován.
 
-Rozhraní příkazového řádku Azure CLI 2.0 je nástroj příkazového řádku napříč platformami pro správu služeb Azure. Je dostupná pro platformy Windows, Mac a Linux z [stránky pro stažení Azure](https://azure.microsoft.com/downloads/). Podporu pro různé platformy je důležité pro import a export zón, protože serverový software nejběžnější název [SVÁZAT](https://www.isc.org/downloads/bind/), obvykle běží na systému Linux.
+Azure CLI je nástroj příkazového řádku napříč platformami pro správu služeb Azure. Je dostupná pro platformy Windows, Mac a Linux z [stránky pro stažení Azure](https://azure.microsoft.com/downloads/). Podporu pro různé platformy je důležité pro import a export zón, protože serverový software nejběžnější název [SVÁZAT](https://www.isc.org/downloads/bind/), obvykle běží na systému Linux.
 
 
 ## <a name="obtain-your-existing-dns-zone-file"></a>Získat existující soubor zóny DNS

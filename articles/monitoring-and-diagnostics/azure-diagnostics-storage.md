@@ -1,25 +1,25 @@
 ---
 title: Ukládání a zobrazení diagnostických dat v Azure Storage
-description: Získat Azure diagnostická data do úložiště Azure a jeho zobrazení
+description: Získání dat diagnostiky Azure do služby Azure Storage a jeho zobrazení
 services: azure-monitor
-author: thraka
+author: jpconnock
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 08/01/2016
-ms.author: adegeo
+ms.author: jeconnoc
 ms.component: diagnostic-extension
-ms.openlocfilehash: 6590e6991f07b7315c09a995152879c991fafcef
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 733c84ef9e6cee1a8ea488f0007ade1e72f39737
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267658"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033244"
 ---
-# <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Úložiště a zobrazení diagnostických dat ve službě Azure Storage
-Diagnostických dat není uložena trvale, pokud ho přenést na emulátor úložiště Microsoft Azure nebo do úložiště Azure. Jednou v úložišti, prohlížení s jedním z několika dostupných nástrojů.
+# <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Store a zobrazení diagnostických dat ve službě Azure Storage
+Diagnostická data nejsou ukládána trvale, pokud přenos pro emulátor úložiště Microsoft Azure nebo do úložiště Azure. Jednou v úložišti, bude možné dokument zobrazit s jedním z několika dostupných nástrojů.
 
 ## <a name="specify-a-storage-account"></a>Zadejte účet úložiště
-Zadáte účet úložiště, který chcete použít v souboru ServiceConfiguration.cscfg souboru. Informace o účtu je definován jako připojovací řetězec v nastavení konfigurace. Následující příklad ukazuje výchozí připojovací řetězec vytvořený pro nový projekt cloudové služby v sadě Visual Studio:
+Zadáte účet úložiště, který chcete použít v souboru ServiceConfiguration.cscfg souboru. Informace o účtu je definován jako připojovací řetězec v nastavení konfigurace. Následující příklad ukazuje výchozí připojovací řetězec pro nový projekt cloudové služby v sadě Visual Studio vytvoří:
 
 ```
     <ConfigurationSettings>
@@ -29,11 +29,11 @@ Zadáte účet úložiště, který chcete použít v souboru ServiceConfigurati
 
 Tento připojovací řetězec k poskytování informací o účtu pro účet úložiště Azure, můžete změnit.
 
-V závislosti na typu diagnostických dat, jež jsou shromažďována používá Azure Diagnostics služby objektů Blob nebo služby Table. V následující tabulce jsou zdroje dat, které jsou nastavené jako trvalé a jejich formátu.
+V závislosti na typu diagnostická data, jež jsou shromažďována diagnostiky Azure používá službu Blob service nebo služby Table service. V následující tabulce jsou uvedeny zdroje dat, které jsou trvalé a jejich formátu.
 
 | Zdroj dat | Formát úložiště |
 | --- | --- |
-| Azure protokoly |Table |
+| Protokoly Azure |Table |
 | Protokoly služby IIS 7.0 |Objekt blob |
 | Protokolů infrastruktury Azure Diagnostics |Table |
 | Protokoly trasování požadavku se nezdařilo |Objekt blob |
@@ -43,40 +43,40 @@ V závislosti na typu diagnostických dat, jež jsou shromažďována používá
 | Vlastní protokoly chyb |Objekt blob |
 
 ## <a name="transfer-diagnostic-data"></a>Přenos dat diagnostiky
-Pro sadu SDK, 2.5 nebo novější může dojít, žádosti o převedení diagnostických dat pomocí konfiguračního souboru. Diagnostická data můžou přenášet v naplánovaných intervalech jako zadaný v konfiguraci.
+Pro sadu SDK 2.5 nebo novější může dojít, požadavek na převod diagnostických dat pomocí konfiguračního souboru. Diagnostická data můžou přenášet v naplánovaných intervalech, jak je zadáno v konfiguraci.
 
-SDK 2.4 a předchozí může požádat o přenos diagnostických dat prostřednictvím konfiguračním souboru jako prostřednictvím kódu programu. Programový přístup také umožňuje provádět přenosy na vyžádání.
+Pro sadu SDK 2.4 a předchozí můžete požádat o převod diagnostických dat prostřednictvím konfiguračního souboru jako prostřednictvím kódu programu. Programový přístup také umožňuje provádět převody na vyžádání.
 
 > [!IMPORTANT]
-> Při přenosu dat diagnostiky do účtu úložiště Azure, se vynakládá pro prostředky úložiště, které používá diagnostická data.
+> Při přenosu dat diagnostiky do účtu úložiště Azure se vám účtovat náklady pro prostředky úložiště, které používá vaše diagnostická data.
 > 
 > 
 
-## <a name="store-diagnostic-data"></a>Ukládání diagnostických dat
-Data protokolu se ukládají v úložišti objektů Blob nebo tabulky s těmito názvy:
+## <a name="store-diagnostic-data"></a>Diagnostická data Store
+Data protokolu se ukládají v úložišti objektů Blob nebo tabulek s následujícími názvy:
 
 **Tabulky**
 
-* **WadLogsTable** – protokoly, které jsou napsané v kódu pomocí naslouchací proces trasování.
-* **WADDiagnosticInfrastructureLogsTable** -diagnostiky změny monitorování a konfigurace.
-* **WADDirectoriesTable** – adresáře, které monitoruje monitorování diagnostiky.  To zahrnuje protokoly služby IIS, služba IIS nezdařilo požadavek protokoly a vlastní adresářů.  Umístění souboru protokolu objektu blob je zadána v poli kontejneru a název objektu blob je v poli RelativePath.  Pole Absolutní_cesta označuje umístění a název souboru, který existoval na virtuální počítač Azure.
+* **WadLogsTable** – protokoly, které jsou napsané v kódu s využitím naslouchací služby stopy.
+* **WADDiagnosticInfrastructureLogsTable** -diagnostické sledování a změn konfigurace.
+* **WADDirectoriesTable** – adresáře, které monitoruje monitorování diagnostiky.  Jedná se o protokoly služby IIS, služby IIS se nezdařilo, žádost o protokoly a vlastní adresáře.  Zadané umístění souboru protokolu objektů blob v kontejneru polí a název objektu blob je v poli RelativePath.  Pole Absolutní_cesta označuje umístění a název souboru, který existoval na virtuálním počítači Azure.
 * **WADPerformanceCountersTable** – čítače výkonu.
-* **WADWindowsEventLogsTable** – protokoly událostí systému Windows.
+* **WADWindowsEventLogsTable** – protokoly událostí Windows.
 
 **Objekty blob**
 
-* **kontejneru ovládacího prvku wad** – (jenom pro SDK 2.4 a předchozí) obsahuje konfigurační soubory XML, které se řídí Azure diagnostics.
-* **wad. Služba iis failedreqlogfiles** – obsahuje informace z protokolů žádostí služby IIS se nezdařilo.
-* **wad. Služba iis logfiles** – obsahuje informace o protokoly služby IIS.
-* **"vlastní"** – vlastní kontejner podle konfigurace adresáře, které jsou monitorovány pomocí monitorování diagnostiky.  Název kontejneru objektu blob budou zadány v WADDirectoriesTable.
+* **kontejneru ovládacího prvku wad** – (jenom pro sadu SDK 2.4 a předchozí) obsahuje konfigurační soubory XML, které řídí diagnostiky Azure.
+* **wad-iis-failedreqlogfiles** – obsahuje informace z protokolů neúspěšných požadavků služby IIS.
+* **wad-iis-logfiles** – obsahuje informace o protokolech služby IIS.
+* **"vlastní"** – vlastní kontejner podle konfigurace adresáře, které jsou monitorovány pomocí monitorování diagnostiky.  V WADDirectoriesTable bude zadán název tento kontejner objektů blob.
 
 ## <a name="tools-to-view-diagnostic-data"></a>Nástroje pro zobrazení diagnostických dat
-Několik nástrojů je možné zobrazit data, jakmile se přenese do úložiště. Příklad:
+Několik nástroje jsou k dispozici k zobrazení dat po převedení do úložiště. Příklad:
 
-* Průzkumník serveru v sadě Visual Studio – Pokud jste nainstalovali nástroje Azure pro sadu Microsoft Visual Studio, můžete v uzlu úložiště Azure v Průzkumníku serveru k zobrazení jen pro čtení objektů blob a data tabulky z účtům Azure storage. Můžete zobrazit data z účtu emulátor místního úložiště a taky z účtů úložiště jste vytvořili pro Azure. Další informace najdete v tématu [procházení a Správa prostředků úložiště pomocí Průzkumníka serveru](../vs-azure-tools-storage-resources-server-explorer-browse-manage.md).
-* [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) je samostatná aplikace, která umožňuje snadno pracovat s daty Azure Storage v systému Windows, na OSX a Linux.
-* [Azure Management Studio](http://www.cerebrata.com/products/azure-management-studio/introduction) zahrnuje Azure Diagnostics správce, který umožňuje zobrazit, stahování a správě diagnostiky data shromažďovaná společností aplikace běžící v Azure.
+* Průzkumník serveru v sadě Visual Studio – Pokud jste nainstalovali nástroje Azure pro sadu Microsoft Visual Studio, můžete uzlu služby Azure Storage v Průzkumníku serveru k zobrazení jen pro čtení objektů blob a tabulky data z vašich účtů úložiště Azure. Můžete zobrazit data z vašeho účtu emulátor místního úložiště a také z účtů úložiště jste vytvořili pro Azure. Další informace najdete v tématu [procházení a Správa prostředků úložiště pomocí Průzkumníku serveru](../vs-azure-tools-storage-resources-server-explorer-browse-manage.md).
+* [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) je samostatná aplikace, která umožňuje jednoduchá práci s daty Azure Storage ve Windows, os x a Linuxu.
+* [Azure Management Studio](http://www.cerebrata.com/products/azure-management-studio/introduction) zahrnuje správce diagnostiky Azure, které umožňuje zobrazit, stáhnout a spravovat diagnostická data shromážděná z aplikací spuštěných v Azure.
 
 ## <a name="next-steps"></a>Další kroky
-[Trasování toku v aplikaci s Azure Diagnostics cloudové služby](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
+[Trasování toku do aplikace cloudové služby pomocí diagnostiky Azure](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
 

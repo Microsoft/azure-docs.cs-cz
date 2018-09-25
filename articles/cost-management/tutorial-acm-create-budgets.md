@@ -1,0 +1,96 @@
+---
+title: Kurz – vytvoření a Správa rozpočtů Azure | Dokumentace Microsoftu
+description: Tento kurz pomůže plánu a účet pro náklady na služby Azure, které skutečně využijete.
+services: cost-management
+keywords: ''
+author: bandersmsft
+ms.author: banders
+ms.date: 09/21/2018
+ms.topic: conceptual
+ms.service: cost-management
+manager: dougeby
+ms.custom: ''
+ms.openlocfilehash: 6c6143cad04178fcafc825d9dae13c1a0620fb93
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033443"
+---
+# <a name="tutorial-create-and-manage-azure-budgets"></a>Kurz: Vytvoření a Správa rozpočtů Azure
+
+Rozpočty ve službě Cost Management vám pomohou naplánovat a organizace tak podpořit přebírání odpovědnosti. S rozpočty může účet pro služby Azure využívat nebo přihlášení k odběru určité době. Pomáhají informovat ostatní o jejich útraty aktivně spravovat náklady a sledovat, jak útraty postupuje v čase. Uvidíte jak útraty průběh v čase. Při překročení prahových hodnot rozpočtu, který jste vytvořili, se aktivují jenom oznámení. Žádná z vašich prostředků neovlivní a spotřebu není zastavená. Rozpočty můžete porovnat a sledovat výdaje podle analýzu nákladů.
+
+Rozpočty automaticky resetovat na konci období (měsíčně, čtvrtletně nebo ročně) pro velkou rozpočtu vyberete datum vypršení platnosti v budoucnosti. Protože resetují se stejnou velikostí rozpočtu, budete muset vytvořit samostatné rozpočty při rozpočtu peněžních hodnot se liší v budoucích obdobích.
+
+Příklady v tomto kurzu vás provedou vytvořením a úpravy rozpočet pro předplatné Azure Enterprise Agreement (EA).
+
+V tomto kurzu se naučíte:
+
+> [!div class="checklist"]
+> * Vytvořit rozpočet na webu Azure Portal
+> * Upravit rozpočtu
+
+## <a name="prerequisites"></a>Požadavky
+
+Rozpočty jsou k dispozici pro všechny zákazníky Azure EA. Musíte mít přístup pro čtení k předplatnému Azure EA můžete vytvářet a spravovat rozpočet. EA fakturační účty nejsou podporovány rozpočtů.
+
+Rozpočty se vytvářejí na úrovni skupiny prostředků nebo předplatného jednotlivě. Následující oprávnění Azure se podporuje na předplatné pro rozpočty uživatelů a skupin:
+
+- Vlastník – můžete vytvořit, upravit nebo Odstranit rozpočty pro předplatné.
+- Přispěvatel – můžete vytvořit, upravit nebo odstranit vlastní rozpočty. Můžete upravit hodnotu rozpočtu rozpočtů vytvořené někým jiným.
+- Čtenář – můžete zobrazit rozpočty, ke kterým mají oprávnění.
+
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+
+- Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
+
+## <a name="create-a-budget-in-the-azure-portal"></a>Vytvořit rozpočet na webu Azure Portal
+
+Rozpočet předplatné Azure můžete vytvořit pro měsíčně, čtvrtletně nebo roční období. Navigační obsah na webu Azure Portal určuje, zda rozpočet pro předplatné nebo skupinu prostředků vytvoříte.
+
+Na webu Azure Portal, přejděte na **Správa nákladů a fakturace** &gt; **předplatná** &gt; vybrat odběr, který &gt; **rozpočty**. V tomto příkladu je rozpočtu, který vytvoříte pro předplatné, které jste vybrali.
+
+Po vytvoření rozpočty, zobrazí se vaše aktuální útratu proti nim jednoduché zobrazení.
+
+Klikněte na tlačítko **Add** (Přidat).
+
+![Správa rozpočtů nákladů](./media/tutorial-acm-create-budgets/budgets01.png)
+
+V **vytvořit rozpočtu** okno, zadejte název rozpočtu a částka rozpočtu. Zvolte buď měsíčně, čtvrtletně, nebo roční dobu trvání období. V dalším kroku vyberte koncové datum. Rozpočty vyžadují aspoň jednu cenu prahové hodnoty (% rozpočtu) a odpovídající e-mailovou adresu. Může volitelně zahrnovat až pět prahové hodnoty a pět e-mailových adres v jedné rozpočtu.
+
+Tady je příklad vytvoření měsíční rozpočet pro $4500. Když je dosaženo 90 % z rozpočtu získá vygenerována výstraha e-mailu.
+
+![Příklad měsíční rozpočtu](./media/tutorial-acm-create-budgets/monthly-budget01.png)
+
+Při vytváření čtvrtletní rozpočtu funguje stejným způsobem jako měsíční rozpočtu. Rozdíl je, že je rozpočtu částka za čtvrtletí rovnoměrně rozdělené mezi tři měsíce ve čtvrtletí. Jak byste asi očekávali, roční částka rozpočtu rovnoměrně mezi všechny 12 měsíců kalendářního roku.
+
+Aktuální útratu s rozpočty se aktualizuje pokaždé, když přijme aktualizovaná data fakturační náklady na správu. Obvykle, každý den.
+
+![Aktuální útratu s rozpočty](./media/tutorial-acm-create-budgets/budgets-current-spending.png)
+
+Po vytvoření rozpočtu, se zobrazí v analýze nákladů. Zobrazení vašemu rozpočtu ve vztahu k vaší útraty trend je jedním z prvních kroků při spuštění [analyzovat vaše náklady a výdaje](quick-acm-cost-analysis.md).
+
+![Rozpočtu ukazuje analýzy nákladů](./media/tutorial-acm-create-budgets/cost-analysis.png)
+
+V předchozím příkladu jste vytvořili rozpočet pro předplatné. Můžete však také vytvořit rozpočet pro skupinu prostředků. Pokud chcete vytvořit rozpočet pro skupinu prostředků, přejděte na **Správa nákladů a fakturace** &gt; **předplatná** &gt; Vybrat předplatné > **prostředků skupiny** > vyberte skupinu prostředků > **rozpočty** > a pak **přidat** rozpočtu.
+
+## <a name="edit-a-budget"></a>Upravit rozpočtu
+
+V závislosti na úrovni přístupu, kterou máte můžete upravit rozpočtu, chcete-li změnit jeho vlastnosti. V tomto příkladu postupujte podle některé vlastnosti jsou jen pro čtení vzhledem k tomu, že má uživatel jenom oprávnění přispěvatele k předplatnému. V současné době **datum vypršení platnosti** zakázána a nemůže modifikovat po nastavení.
+
+![Upravit rozpočtu – oprávnění Přispěvatel](./media/tutorial-acm-create-budgets/edit-budget.png)
+
+
+## <a name="next-steps"></a>Další postup
+
+V tomto kurzu jste se naučili:
+
+> [!div class="checklist"]
+> * Vytvořit rozpočet na webu Azure Portal
+> * Upravit rozpočtu
+
+Přejděte k dalšímu kurzu, kde vytvořit opakované export pro vaše datům služby cost management.
+
+> [!div class="nextstepaction"]
+> [Vytvoření a správa exportovaná data](tutorial-export-acm-data.md)
