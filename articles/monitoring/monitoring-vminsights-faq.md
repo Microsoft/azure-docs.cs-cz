@@ -1,0 +1,98 @@
+---
+title: Azure Monitor pro virtuální počítače – nejčastější dotazy | Dokumentace Microsoftu
+description: Azure Monitor pro virtuální počítače je řešení v Azure, která kombinuje stavu a výkonu monitorování operačního systému virtuálního počítače Azure, stejně jako automatické zjišťování mezi součástmi aplikace a závislosti s jiným prostředkům a mapuje komunikace mezi je. Tento článek obsahuje odpovědi na běžné dotazy.
+services: azure-monitor
+documentationcenter: ''
+author: mgoedtel
+manager: carmonm
+editor: tysonn
+ms.assetid: ''
+ms.service: azure-monitor
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 09/19/2018
+ms.author: magoedte
+ms.openlocfilehash: 308a447ff99cd11ad6a28df0bdb515764b0f546b
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063451"
+---
+# <a name="azure-monitor-for-vms-frequently-asked-questions"></a>Nejčastější dotazy k Azure Monitor pro virtuální počítače
+Tato FAQ Microsoft je uveden seznam nejčastější dotazy týkající se Azure Monitor pro virtuální počítače v Microsoft Azure. Pokud máte nějaké další dotazy ohledně řešení, přejděte [diskusní fórum](https://feedback.azure.com/forums/34192--general-feedback) a zveřejněte své dotazy. Pokud je dotaz pokládán často, přidáme ji k tomuto článku tak, aby jej lze rychle a snadno najít.
+
+## <a name="can-i-onboard-to-an-existing-workspace"></a>Můžu připojit k existujícímu pracovnímu prostoru?
+Pokud vaše virtuální počítače jsou již připojeni k pracovnímu prostoru Log Analytics, můžete dál používat tento pracovní prostor při připojení ke službě Azure Monitor pro virtuální počítače, za předpokladu, že je v jednom z podporovaných oblastech uvedených [tady](monitoring-vminsights-onboard.md#prerequisites).
+
+Při připojování, nakonfigurujeme čítače výkonu pro pracovní prostor, který způsobí, že všechny virtuální počítače hlásí data do pracovního prostoru zahajte shromažďování těchto informací pro zobrazení a analýza ve službě Azure Monitor pro virtuální počítače.  V důsledku toho se zobrazí data o výkonu z všechny virtuální počítače připojené k vybranému pracovnímu prostoru.  Funkce stav a mapování jsou povolené jenom pro virtuální počítače, které jste zadali, a připojit.
+
+Další informace o výkonu, které jsou povoleny čítače, najdete v našich [připojování](monitoring-vminsights-onboard.md) článku.
+
+## <a name="can-i-onboard-to-a-new-workspace"></a>Můžu připojit k nový pracovní prostor? 
+Pokud vaše virtuální počítače momentálně nejste připojení k existující pracovní prostor Log Analytics, musíte vytvořit nový pracovní prostor pro ukládání vašich dat.  Vytváří se nový výchozího pracovního prostoru se provádí automaticky při konfiguraci jednoho virtuálního počítače Azure pro monitorování Azure pro virtuální počítače na webu Azure portal.
+
+Pokud se rozhodnete používat metodu založenou na skript, tyto kroky jsou popsané v [připojování](monitoring-vminsights-onboard.md) článku. 
+
+## <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>Co mám dělat, když je můj virtuální počítač už hlásí do existujícího pracovního prostoru?
+Pokud jsou již shromažďování dat z vašich virtuálních počítačů, možná jste již nakonfigurovali ho na data sestavy do existujícího pracovního prostoru Log Analytics.  Za předpokladu, tento pracovní prostor je v jednom z našich podporovaných oblastí, můžete povolit monitorování Azure pro virtuální počítače do tohoto pracovního prostoru už existující.  Pokud pracovní prostor, který již používáte, není v jednom z našich podporovaných oblastí, nebudete moct připojit k Azure Monitor pro virtuální počítače v tuto chvíli.  Aktivně pracujeme na podporu dalších oblastech.
+
+>[!NOTE]
+>Nakonfigurujeme čítače výkonu pro pracovní prostor, který ovlivňuje všechny virtuální počítače hlásit do pracovního prostoru, jestli se rozhodli jste se připojit je na platformě Azure Monitor pro virtuální počítače. Podrobné informace o konfiguraci čítače výkonu pracovního prostoru najdete na naší [dokumentaci](../log-analytics/log-analytics-data-sources-performance-counters.md). Informace o čítačích nakonfigurovaná pro monitorování Azure pro virtuální počítače, naleznete v našem [najdete dokumentaci k onboardingu](monitoring-vminsights-onboard.md#performance-counters-enabled).  
+
+## <a name="why-did-my-vm-fail-to-onboard"></a>Proč můj virtuální počítač nezdařilo se připojení?
+Při připojování virtuálního počítače Azure na webu Azure Portal, jsou provedeny následující kroky:
+
+* Výchozí pracovní prostor Log Analytics se vytvoří, pokud, který jste vybrali možnost.
+* Čítače výkonu jsou nakonfigurované pro vybraný pracovní prostor. Pokud tento krok nezdaří, si všimnete, že některé výkonu grafů a tabulek nejsou zobrazena data pro virtuální počítač jste připojili. Problém můžete vyřešit spuštěním skriptu prostředí PowerShell, které jsou popsány [tady](monitoring-vminsights-onboard.md#enable-with-powershell).
+* Agenta Log Analytics je nainstalován na virtuálních počítačích Azure pomocí rozšíření virtuálního počítače, je-li určit, že je povinný.  
+* Monitorování Azure pro virtuální počítače mapu závislostí agenta je nainstalován na virtuálních počítačích Azure s využitím rozšíření, je-li určit, že je vyžadován.  
+* Azure Monitor komponenty podporující funkci stavu jsou nakonfigurované v případě potřeby a virtuální počítač je nakonfigurovaný k datům o stavu sestavy.
+
+Během procesu připojení zkontrolujeme stav v každém z výše uvedených vrátí stav oznámení na portálu.  Konfigurace pracovního prostoru a instalace agenta obvykle trvá 5 až 10 minut.  Zobrazení dat monitorování a stavu na portálu trvat dalších 5 až 10 minut.  
+
+Pokud inicializovali připojování a zobrazit zprávy oznamující, že virtuální počítač musí být připojili, povolit po dobu až 30 minut pro daný virtuální počítač k dokončení procesu. 
+
+## <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>Se mi nezobrazují některé nebo všech dat v grafech výkonu pro virtuální počítač
+Pokud se nezobrazí údaje o výkonu v tabulce disku nebo v některé z grafy výkonu. čítače výkonu nemusí být nakonfigurovaná v pracovním prostoru. Pokud chcete vyřešit, spusťte následující příkaz [skript prostředí PowerShell](monitoring-vminsights-onboard.md#enable-with-powershell).
+
+## <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>Jak se Azure Monitor pro funkci Mapa virtuální počítače liší od řešení Service Map?
+Azure Monitor pro virtuální počítače mapování funkce je založená na mapě služby, ale má následující rozdíly:
+
+* Zobrazení mapy je přístupný z okna virtuálního počítače a z Azure monitoru pro virtuální počítače v části Azure Monitor.
+* Připojení v mapě jsou nyní kliknout, čímž a zobrazení dat metrik připojení v postranní panel pro vybrané připojení.
+* Není k dispozici nové rozhraní API, která se používá k vytvoření mapy pro lepší podporu složitější mapy.
+* Monitorovaných virtuálních počítačů jsou teď součástí uzel skupiny klienta a prstencový graf znázorňuje podíl sledované vs nemonitorované virtuální počítače ve skupině.  To lze použít také pro filtrování seznamu počítačů, když je skupina rozbalena.
+* Monitorovaných virtuálních počítačů jsou teď součástí na uzlech skupiny portů serveru a prstencový graf znázorňuje podíl sledované vs nemonitorovaných počítačů ve skupině.  To lze použít také pro filtrování seznamu počítačů, když je skupina rozbalena.
+* Styl mapa byla aktualizována byly konzistentnější s Mapa aplikace ze služby Application insights.
+* Boční panely byly aktualizovány, ale ještě není kompletní integrace společnosti, které se podporovaly v Service Map - Update Management, Change Tracking, zabezpečení a oddělení služeb. 
+* Možnost pro výběr skupin a počítačů k mapování byl aktualizován a nyní podporuje předplatná, skupiny prostředků, škálovací sady virtuálních počítačů Azure a cloudových služeb.
+* Nelze vytvořit nové skupiny počítačů řešení Service Map ve službě Azure Monitor pro funkci mapování virtuálních počítačů.  
+
+## <a name="why-do-my-performance-charts-show-dotted-lines"></a>Proč se Moje grafy výkonu zobrazit tečkované čáry
+
+Tato situace může nastat z několika důvodů.  V případech, ve kterých je mezera v shromažďování dat jsme znázornění řádky jako tečkovaná.  Pokud změníte data vzorkovací frekvence pro čítače výkonu povoleno (výchozí nastavení je ke shromažďování dat každých 60 sekund), uvidíte tečkované čáry v grafu, pokud zvolíte úzký časový rozsah pro graf a vzorkovací frekvence je menší než velikost kbelíku používaných v grafu (například vzorkovací frekvence je každých 10 minut a každý blok v grafu je 5 minut).  Výběr širší časový rozsah pro zobrazení by se měl grafu řádky v tomto případě se zobrazí jako čar spíše než tečky.
+
+## <a name="are-groups-supported-with-azure-monitor-for-vms"></a>Skupiny podporovaných službou Azure Monitor pro virtuální počítače?
+Funkce výkonu podporuje skupiny založené na zvýrazněný prostředky v rámci konkrétní pracovní prostor, jakož i seskupení založené na konkrétní virtuální počítač Azure škálovací sadu a cloudové služby.
+
+## <a name="how-do-i-see-the-details-for-what-is-driving-the-95th-percentile-line-in-the-aggregate-performance-charts"></a>Jak můžu zobrazit podrobnosti pro co ovlivňuje 95. percentil řádek v agregované grafy výkonu?
+Ve výchozím nastavení je seznam seřazen k zobrazení virtuálních počítačů, které mají nejvyšší hodnotu 95. percentil pro vybranou metriku, s výjimkou grafu dostupné paměti, která zobrazuje počítače s nejnižší hodnotu 5. percentil.  Otevře se kliknutím na graf **N nejlepších** zobrazení s odpovídající vybranou metrikou.
+
+## <a name="how-does-the-map-feature-handle-duplicate-ips-across-different-vnets-and-subnets"></a>Jak funkce mapy zpracovává duplicitní IP adresy v různých virtuálních sítích a podsítích?
+Pokud jsou duplikování rozsahy IP adres pomocí virtuálních počítačů nebo virtuální počítač Azure škálovacích sad napříč podsítěmi a virtuálními sítěmi, může to způsobit monitorování Azure pro virtuální počítače mapu zobrazit nesprávné informace. Jedná se o známý problém a zkoumá možnosti na zdokonalování tohoto prostředí.
+
+## <a name="does-map-feature-support-ipv6"></a>Mapování funkce podpory protokolu IPv6?
+Mapování funkce aktuálně podporuje jenom IPv4 a zkoumá podpory pro IPv6. Podporují se i IPv4, který je tunelovým propojením uvnitř IPv6.
+
+## <a name="when-i-load-a-map-for-a-resource-group-or-other-large-group-the-map-is-difficult-to-view"></a>Načíst mapu pro skupinu prostředků nebo další velké skupiny mapy při ztěžovalo prohlížení
+Zatímco provedli jsme vylepšení Map pro zpracování velkých a složitých konfigurací, Uvědomujeme si, že mapa může mít mnoho uzlů, připojení a uzel fungovat jako cluster.  Naší prioritou je pokračováním vylepšit podporu o zvýšení škálovatelnosti.   
+
+## <a name="why-does-the-network-chart-on-the-performance-tab-look-different-than-the-network-chart-on-the-azure-vm-overview-page"></a>Proč grafu sítě na kartě Výkon vypadat jinak než sítě graf na stránce Přehled virtuálních počítačů Azure?
+
+Stránka s přehledem pro virtuální počítač Azure zobrazuje grafy založené na hostitele měření aktivity ve virtuálním počítači hosta.  Sítě grafu na Přehled virtuálních počítačů Azure se zobrazí pouze síťový provoz, který se bude účtovat.  To nezahrnuje provoz mezi virtuálními sítěmi vnet.  Data a grafy, které jsou uvedené pro monitorování Azure pro virtuální počítače je na základě dat z hosta virtuálního počítače a sítě grafu se zobrazuje veškerý provoz protokolu TCP/IP, který je příchozí a odchozí tomuto virtuálnímu počítači, včetně mezi sítěmi vnet.
+
+## <a name="next-steps"></a>Další postup
+Kontrola [připojení Azure Monitor pro virtuální počítače](monitoring-vminsights-onboard.md) vám pomohou pochopit požadavky a metody, pokud chcete povolit monitorování virtuálních počítačů.

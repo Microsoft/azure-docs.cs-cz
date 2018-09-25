@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Projevy jsou vstupy od uživatele, který vaše aplikace potřebuje k interpretaci. Shromážděte frázích, které si myslíte, že budou uživatelé zadávat. Zahrňte projevy, které mají stejný význam, ale jsou vytvořeny jinak než délka slova a umístění aplikace word.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: c455296348e3b4378a2912fa5388098b206b3ea4
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 39c99cc35f4c2549efc9c20af0680b77483325c5
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632309"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038931"
 ---
 # <a name="utterances-in-luis"></a>Projevy v LUIS
 

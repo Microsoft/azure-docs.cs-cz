@@ -1,6 +1,6 @@
 ---
-title: O Azure Point-to-Site směrování | Microsoft Docs
-description: Tento článek vám pomůže pochopit chování směrování Point-to-Site VPN.
+title: Informace o Azure Point-to-Site směrování | Dokumentace Microsoftu
+description: Tento článek vám pomůže porozumět chování směrování VPN typu Point-to-Site.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -15,248 +15,248 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/16/2018
 ms.author: anzaman
-ms.openlocfilehash: a0576e00d22b731f7ee9de3a9b021c0f52fc8ef9
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 620a2bf9221bdb7c46dc36a2b3ed23d853faff35
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34702172"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031706"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>Směrování VPN typu Point-to-Site
 
-Tento článek vám pomůže pochopit chování směrování Azure Point-to-Site VPN. Chování směrování P2S VPN je závislá na klientského operačního systému, protokol použitý pro připojení k síti VPN a jak jsou navzájem připojené virtuální sítě (virtuální sítě).
+Tento článek vám pomůže porozumět chování směrování Azure Point-to-Site VPN. Chování směrování P2S VPN je závislá na klientský operační systém, protokol použitý pro připojení k síti VPN a připojení virtuální sítě (Vnet) k sobě navzájem.
 
-Azure aktuálně podporuje dva protokoly pro vzdálený přístup, a to díky protokolům IKEv2 a SSTP. Protokol IKEv2 je podporován v mnoha klientskými operačními systémy včetně systému Windows, Linux, systému MacOS, Android a iOS. SSTP je podporována pouze v systému Windows. Pokud změňte topologie sítě a klienti VPN ve Windows, musí být Stáhnout balíček klienta VPN pro klienty se systémem Windows a znovu nainstalovat změny, které má být použita pro klienta.
+Azure aktuálně podporuje dva protokoly pro vzdálený přístup, IKEv2 a SSTP. Protokol IKEv2 je podporován v mnoha operačních systémech klienta, včetně Windows, Linux, MacOS, Android a iOS. SSTP je podporována pouze na Windows. Pokud provedete změnu topologii vaší sítě a máte klienty Windows VPN, musí balíček klienta VPN pro klienty Windows stáhnout a nainstalovat znovu v pořadí, změny se použijí ke klientovi.
 
 > [!NOTE]
 > Tento článek se týká pouze pro IKEv2.
 >
 
-## <a name="diagrams"></a>O diagramy
+## <a name="diagrams"></a>Informace o diagramech
 
-Existuje několik různých diagramů v tomto článku. Každá část ukazuje různé topologie nebo konfigurace. Pro účely tohoto článku Site-to-Site (S2S) a připojení VNet-to-VNet fungovat stejně, jako jsou obě tunelových propojení IPsec. Všechny brány sítě VPN v tomto článku jsou založené na trasách.
+Existuje mnoho různých diagramů v tomto článku. Každá část ukazuje různé topologie nebo konfigurace. Pro účely tohoto článku Site-to-Site (S2S) a připojení VNet-to-VNet fungovat stejným způsobem, jako jsou oba tunely IPsec. Všechny brány sítě VPN v tomto článku jsou založené na směrování.
 
-## <a name="isolatedvnet"></a>Jeden izolované virtuální sítě
+## <a name="isolatedvnet"></a>Jeden samostatný virtuální sítě
 
-Připojení brány VPN Point-to-Site v tomto příkladu je pro virtuální síť, který není připojený nebo peered s žádné jiné virtuální síti (VNet1). V tomto příkladu můžete přístup klientů pomocí protokolu SSTP nebo IKEv2 VNet1.
+Připojení brány VPN typu Point-to-Site v tomto příkladu je pro virtuální síť, který není připojený, nebo v partnerském vztahu s žádné jiné virtuální síti (síti VNet1). V tomto příkladu klientů pomocí protokolu SSTP nebo IKEv2 přístupná ze sítě VNet1.
 
-![izolované virtuální sítě směrování](./media/vpn-gateway-about-point-to-site-routing/1.jpg "izolované virtuální sítě směrování")
+![samostatný virtuální sítě, směrování](./media/vpn-gateway-about-point-to-site-routing/1.jpg "samostatný směrování virtuální sítě")
 
 ### <a name="address-space"></a>Adresní prostor
 
-* VNet1: 10.1.0.0/16
+* Ze sítě VNet1: 10.1.0.0/16
 
-### <a name="routes-added"></a>Přidání tras
+### <a name="routes-added"></a>Přidání trasy
 
 * Trasy přidané klientům Windows: 10.1.0.0/16, 192.168.0.0/24
 
-* Trasy přidané klientům jiný systém než Windows: 10.1.0.0/16, 192.168.0.0/24
+* Trasy přidané klientům mimo Windows: 10.1.0.0/16, 192.168.0.0/24
 
 ### <a name="access"></a>Access
 
-* Klienti Windows mají přístup k VNet1
+* Klienti Windows mají přístup k síti VNet1
 
-* Klienti jiných systémů než Windows mají přístup k VNet1
+* Klienti bez Windows mají přístup k síti VNet1
 
-## <a name="multipeered"></a>Více peered virtuálních sítí
+## <a name="multipeered"></a>Několika navázání partnerského vztahu virtuálních sítí
 
-V tomto příkladu je připojení brány VPN Point-to-Site pro VNet1. VNet1 je peered s VNet2. Virtuální sítě 2 je peered s VNet3. VNet1 je peered s VNet4. Není žádný přímý partnerský vztah mezi VNet1 a VNet3. VNet1 má "Povolit přenosu brány" a VNet2 "Použití vzdáleného brány" povoleno.
+V tomto příkladu připojení brány VPN typu Point-to-Site je ze sítě vnet1. Síť VNet1 je v partnerském vztahu s ze sítě VNet2. 2 virtuální sítě je v partnerském vztahu s síti VNet3. Síť VNet1 je v partnerském vztahu s virtuální síti Testvnet4. Neexistuje žádné přímé partnerský vztah mezi ze sítě VNet1 a síti VNet3. Ze sítě VNet1 má "Povolit průchod bránou" a ze sítě VNet2 "Používat vzdálené brány" povolena.
 
-Klienti, kteří používají Windows můžete přistupovat přímo peered virtuálních sítí, ale klient VPN musí znova stáhnout, pokud jsou udělají jakékoli změny partnerského vztahu virtuální síť nebo síťové topologie. Klienti jiných systémů než Windows můžou přistupovat přímo peered virtuální sítě. Přístup není přenositelné a je omezený pouze přímo peered virtuálních sítí.
+Klienti, kteří používají Windows mají přístup k přímo partnerských virtuálních sítích, ale klient VPN musí znova stáhnout, pokud jsou všechny změny provedené partnerský vztah virtuální sítě nebo topologii sítě. Klienti bez Windows mají přístup k přímo partnerských virtuálních sítích. Přístup není tranzitivní a je omezená na pouze přímo partnerských virtuálních sítích.
 
-![více peered virtuálních sítí](./media/vpn-gateway-about-point-to-site-routing/2.jpg "peered více virtuálních sítí")
+![několika navázání partnerského vztahu virtuálních sítí](./media/vpn-gateway-about-point-to-site-routing/2.jpg "několika navázání partnerského vztahu virtuálních sítí")
 
 ### <a name="address-space"></a>Adresní prostor:
 
-* VNet1: 10.1.0.0/16
+* Ze sítě VNet1: 10.1.0.0/16
 
-* VNet2: 10.2.0.0/16
+* Ze sítě VNet2: 10.2.0.0/16
 
-* VNet3: 10.3.0.0/16
+* Síti VNet3: 10.3.0.0/16
 
-* VNet4: 10.4.0.0/16
+* Virtuální síti Testvnet4: 10.4.0.0/16
 
-### <a name="routes-added"></a>Přidání tras
+### <a name="routes-added"></a>Přidání trasy
 
 * Trasy přidané klientům Windows: 10.1.0.0/16, 10.2.0.0/16, 10.4.0.0/16, 192.168.0.0/24
 
-* Trasy přidané klientům jiný systém než Windows: 10.1.0.0/16, 10.2.0.0/16, 10.4.0.0/16, 192.168.0.0/24
+* Trasy přidané klientům mimo Windows: 10.1.0.0/16, 10.2.0.0/16, 10.4.0.0/16, 192.168.0.0/24
 
 ### <a name="access"></a>Access
 
-* VNet1, VNet2 a VNet4 mají přístup klienti systému Windows, ale klient VPN musí být znovu stažena pro všechny topologie změny se projeví.
+* Klienti Windows mají přístup k ze sítě VNet1 a VNet2, virtuální síti Testvnet4, ale k nějakým změnám topologii projevily musí znova stáhnout klienta VPN.
 
-* VNet1, VNet2 a VNet4 mají přístup klienti nejsou pro Windows
+* Klienti bez Windows mají přístup k ze sítě VNet1 a VNet2, virtuální síti Testvnet4
 
-## <a name="multis2s"></a>Více virtuálních sítí připojené pomocí S2S VPN
+## <a name="multis2s"></a>Více virtuálních sítí připojenou pomocí S2S VPN
 
-V tomto příkladu je připojení brány VPN Point-to-Site pro VNet1. VNet1 je připojený k VNet2 pomocí připojení Site-to-Site VPN. VNet2 je připojený k VNet3 pomocí připojení Site-to-Site VPN. Neexistuje žádné přímé partnerský vztah nebo připojení Site-to-Site VPN mezi VNet1 a VNet3. Všechna připojení Site-to-Site neběží pro směrování protokolu BGP.
+V tomto příkladu připojení brány VPN typu Point-to-Site je ze sítě vnet1. Je připojen ze sítě VNet1 do sítě VNet2 pomocí připojení Site-to-Site VPN. Síť VNet2 je připojen do sítě VNet3 pomocí připojení Site-to-Site VPN. Neexistuje žádné přímé vytvoření partnerského vztahu nebo připojení Site-to-Site VPN mezi ze sítě VNet1 a síti VNet3. Všechna připojení Site-to-Site neběží pro směrování protokolu BGP.
 
-Klienti, kteří používají Windows nebo jiné podporovaný operační systém, můžete přístup jenom k VNet1. Pro přístup k další virtuální sítě, se musí použít protokol BGP.
+Klienti, kteří používají Windows, nebo jiný podporovaný operační systém, můžete přistupovat pouze ze sítě VNet1. Pro přístup k další virtuální sítě, se musí použít protokol BGP.
 
 ![více virtuálních sítí a S2S](./media/vpn-gateway-about-point-to-site-routing/3.jpg "více virtuálních sítí a S2S")
 
 ### <a name="address-space"></a>Adresní prostor
 
-* VNet1: 10.1.0.0/16
+* Ze sítě VNet1: 10.1.0.0/16
 
-* VNet2: 10.2.0.0/16
+* Ze sítě VNet2: 10.2.0.0/16
 
-* VNet3: 10.3.0.0/16
+* Síti VNet3: 10.3.0.0/16
 
-### <a name="routes-added"></a>Přidání tras
+### <a name="routes-added"></a>Přidání trasy
 
 * Trasy přidané klientům Windows: 10.1.0.0/16, 192.168.0.0/24
 
-* Trasy přidané klientům nejsou pro Windows: 10.1.0.0/16, 10.2.0.0/16, 192.168.0.0/24
+* Trasy přidané klientům Non-Windows: 10.1.0.0/16, 10.2.0.0/16, 192.168.0.0/24
 
 ### <a name="access"></a>Access
 
-* Klienti Windows mají přístup pouze k VNet1
+* Klienti Windows mají přístup pouze k ze sítě VNet1
 
-* Klienti jiných systémů než Windows mají přístup k VNet1 pouze
+* Klienti non-Windows mají přístup k síti VNet1 pouze
 
-## <a name="multis2sbgp"></a>Více virtuálních sítí připojených přes VPN S2S (BGP)
+## <a name="multis2sbgp"></a>Více virtuálních sítí připojenou pomocí VPN S2S (BGP)
 
-V tomto příkladu je připojení brány VPN Point-to-Site pro VNet1. VNet1 je připojený k VNet2 pomocí připojení Site-to-Site VPN. VNet2 je připojený k VNet3 pomocí připojení Site-to-Site VPN. Neexistuje žádné přímé partnerský vztah nebo připojení Site-to-Site VPN mezi VNet1 a VNet3. Všechna připojení Site-to-Site běží pro směrování protokolu BGP.
+V tomto příkladu připojení brány VPN typu Point-to-Site je ze sítě vnet1. Je připojen ze sítě VNet1 do sítě VNet2 pomocí připojení Site-to-Site VPN. Síť VNet2 je připojen do sítě VNet3 pomocí připojení Site-to-Site VPN. Neexistuje žádné přímé vytvoření partnerského vztahu nebo připojení Site-to-Site VPN mezi ze sítě VNet1 a síti VNet3. Všechna připojení Site-to-Site fungují pro směrování protokolu BGP.
 
-Klienti, kteří používají Windows nebo jiné podporovaný operační systém, můžete přístup všechny virtuální sítě, které jsou připojené pomocí připojení Site-to-Site VPN, ale trasy připojených virtuálních sítí musí ručně přidat do klientů systému Windows.
+Klienti, kteří používají Windows, nebo jiný podporovaný operační systém, dostanete všechny virtuální sítě, které jsou propojeny pomocí připojení Site-to-Site VPN, ale muset ručně přidat do klientů Windows trasy a připojené virtuální sítě.
 
 ![více virtuálních sítí a S2S (BGP)](./media/vpn-gateway-about-point-to-site-routing/4.jpg "více virtuálních sítí a S2S protokol BGP")
 
 ### <a name="address-space"></a>Adresní prostor
 
-* VNet1: 10.1.0.0/16
+* Ze sítě VNet1: 10.1.0.0/16
 
-* VNet2: 10.2.0.0/16
+* Ze sítě VNet2: 10.2.0.0/16
 
-* VNet3: 10.3.0.0/16
+* Síti VNet3: 10.3.0.0/16
 
-### <a name="routes-added"></a>Přidání tras
+### <a name="routes-added"></a>Přidání trasy
 
 * Trasy přidané klientům Windows: 10.1.0.0/16
 
-* Trasy přidané klientům nejsou pro Windows: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 192.168.0.0/24
+* Trasy přidané klientům Non-Windows: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 192.168.0.0/24
 
 ### <a name="access"></a>Access
 
-* VNet1, VNet2 a VNet3 mají přístup klienti systému Windows, ale trasy VNet2 a VNet3 bude muset ručně přidat.
+* Klienti Windows mají přístup k síti VNet3, ze sítě VNet1 a VNet2, ale bude nutné ručně přidat trasy do sítě VNet2 a síti VNet3.
 
-* VNet1, VNet2 a VNet3 mají přístup klienti nejsou pro Windows
+* Klienti bez Windows mají přístup k síti VNet3, ze sítě VNet1 a VNet2
 
-## <a name="vnetbranch"></a>Jedna virtuální síť a pobočky
+## <a name="vnetbranch"></a>Jednu virtuální síť a pobočky
 
-V tomto příkladu je připojení brány VPN Point-to-Site pro VNet1. VNet1 není připojen / peered s jiné virtuální síti, ale je připojen na místní web prostřednictvím připojení k síti VPN Site-to-Site, která neběží protokolu BGP.
+V tomto příkladu připojení brány VPN typu Point-to-Site je ze sítě vnet1. Ze sítě VNet1 není připojený / partnerský vztah s druhou virtuální síť, ale je připojené k místní lokalitě prostřednictvím připojení VPN typu Site-to-Site, která není spuštěná protokolu BGP.
 
-VNet1 a na pobočce (web1) mají přístup klienti systému Windows, ale jsou trasy k web1 musí ručně přidat do klienta. Klienti jiných systémů než Windows mají přístup k VNet1, stejně jako místní web1.
+Klienty se systémy Windows a jiných Windows můžete přistupovat pouze ze sítě VNet1.
 
 ![směrování s virtuální síť a pobočky](./media/vpn-gateway-about-point-to-site-routing/5.jpg "směrování s virtuální síť a pobočky")
 
 ### <a name="address-space"></a>Adresní prostor
 
-* VNet1: 10.1.0.0/16
+* Ze sítě VNet1: 10.1.0.0/16
 
 * Web1: 10.101.0.0/16
 
-### <a name="routes-added"></a>Přidání tras
+### <a name="routes-added"></a>Přidání trasy
 
 * Trasy přidané klientům Windows: 10.1.0.0/16, 192.168.0.0/24
 
-* Trasy přidané klientům nejsou pro Windows: 10.1.0.0/16, 10.101.0.0/16, 192.168.0.0/24
+* Trasy přidané klientům Non-Windows: 10.1.0.0/16, 192.168.0.0/24
 
 ### <a name="access"></a>Access
 
-* Klienti Windows můžou přistupovat jenom VNet1
+* Klienti Windows mají přístup k pouze ze sítě VNet1
 
-* Klienti jiných systémů než Windows mají přístup k VNet1 pouze
+* Klienti non-Windows mají přístup k síti VNet1 pouze
 
-## <a name="vnetbranchbgp"></a>Jedna virtuální síť a pobočky (BGP)
+## <a name="vnetbranchbgp"></a>Jednu virtuální síť a pobočky (BGP)
 
-V tomto příkladu je připojení brány VPN Point-to-Site pro VNet1. VNet1 není připojen nebo peered s jiné virtuální síti, ale je připojená k místní lokalitě (web1) prostřednictvím připojení VPN typu Site-to-Site s BGP.
+V tomto příkladu připojení brány VPN typu Point-to-Site je ze sítě vnet1. Ze sítě VNet1 není připojený nebo partnerský vztah s druhou virtuální síť, ale je připojená k místní lokalitě (web1) přes připojení VPN typu Site-to-Site s BGP.
 
-Klienti Windows mají přístup k virtuální síti a na pobočce (web1), ale jsou trasy k web1 musí ručně přidat do klienta. Klienti jiných systémů než Windows mají přístup k virtuální síti a také na místní pobočce.
+Klienti Windows mají přístup k virtuální síti a pobočce (web1), ale trasy pro web1 musí ručně přidali do klienta. Klienti bez Windows mají přístup k virtuální síti, stejně jako místní firemní pobočce.
 
-![jedna virtuální síť a pobočky (BGP)](./media/vpn-gateway-about-point-to-site-routing/6.jpg "jednu virtuální síť a pobočky")
+![jednu virtuální síť a pobočky (BGP)](./media/vpn-gateway-about-point-to-site-routing/6.jpg "jednu virtuální síť a pobočky")
 
 ### <a name="address-space"></a>Adresní prostor
 
-* VNet1: 10.1.0.0/16
+* Ze sítě VNet1: 10.1.0.0/16
 
 * Web1: 10.101.0.0/16
 
-### <a name="routes-added"></a>Přidání tras
+### <a name="routes-added"></a>Přidání trasy
 
 * Trasy přidané klientům Windows: 10.1.0.0/16, 192.168.0.0/24
 
-* Trasy přidané klientům nejsou pro Windows: 10.1.0.0/16, 10.101.0.0/16, 192.168.0.0/24
+* Trasy přidané klientům Non-Windows: 10.1.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
 ### <a name="access"></a>Access
 
-* VNet1 a web1 mají přístup klienti systému Windows, ale bude nutné ručně přidat trasy k web1.
+* Klienti Windows mají přístup k síti VNet1 a web1, ale bude nutné ručně přidat trasy a web1.
 
-* Klienti jiných systémů než Windows mají přístup k VNet1 a web1.
+* Klienti Windows bez přístupná ze sítě VNet1 a web1.
 
 
-## <a name="multivnets2sbranch"></a>Více virtuálních sítí, které jsou propojeny pomocí S2S a pobočky
+## <a name="multivnets2sbranch"></a>Více virtuálních sítí připojenou pomocí S2S a firemní pobočky
 
-V tomto příkladu je připojení brány VPN Point-to-Site pro VNet1. VNet1 je připojený k VNet2 pomocí připojení Site-to-Site VPN. VNet2 je připojený k VNet3 pomocí připojení Site-to-Site VPN. Neexistuje žádné přímé partnerský vztah nebo tunelu Site-to-Site VPN mezi sítěmi VNet1 a VNet3. VNet3 je připojený k firemní pobočku (web1) pomocí připojení Site-to-Site VPN. Všechna připojení VPN nejsou spuštěné protokolu BGP.
+V tomto příkladu připojení brány VPN typu Point-to-Site je ze sítě vnet1. Je připojen ze sítě VNet1 do sítě VNet2 pomocí připojení Site-to-Site VPN. Síť VNet2 je připojen do sítě VNet3 pomocí připojení Site-to-Site VPN. Neexistuje žádné přímé vytvoření partnerského vztahu ani tunelového připojení sítě Site-to-Site VPN mezi sítí ze sítě VNet1 a síti VNet3. Síti VNet3 je připojený k firemní pobočka (web1) pomocí připojení Site-to-Site VPN. Všechna připojení VPN nejsou spuštěné protokolu BGP.
 
-Všichni klienti mají přístup k VNet1 pouze.
+Všichni klienti můžete přistupovat pouze ze sítě VNet1.
 
-![více VNet S2S a větve office](./media/vpn-gateway-about-point-to-site-routing/7.jpg "office S2S a větve více VNet")
+![Multi-virtuální síť S2S a větev office](./media/vpn-gateway-about-point-to-site-routing/7.jpg "multi-virtuální síť S2S a větev office")
 
 ### <a name="address-space"></a>Adresní prostor
 
-* VNet1: 10.1.0.0/16
+* Ze sítě VNet1: 10.1.0.0/16
 
-* VNet2: 10.2.0.0/16
+* Ze sítě VNet2: 10.2.0.0/16
 
-* VNet3: 10.3.0.0/16
+* Síti VNet3: 10.3.0.0/16
 
 * Web1: 10.101.0.0/16
 
-### <a name="routes-added"></a>Přidání tras
+### <a name="routes-added"></a>Přidání trasy
 
-* Klienti přidat trasy: 10.1.0.0/16, 192.168.0.0/24
+* Přidá trasy klientů: 10.1.0.0/16, 192.168.0.0/24
 
-* Trasy přidané klientům nejsou pro Windows: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
+* Trasy přidané klientům Non-Windows: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
 ### <a name="access"></a>Access
 
-* Klienti Windows mají přístup k VNet1 pouze
+* Klienti Windows mají přístup k síti VNet1 pouze
 
-* Klienti jiných systémů než Windows mají přístup k VNet1 pouze
+* Klienti non-Windows mají přístup k síti VNet1 pouze
 
-## <a name="multivnets2sbranchbgp"></a>Více virtuálních sítí, které jsou propojeny pomocí S2S a pobočky (BGP)
+## <a name="multivnets2sbranchbgp"></a>Více virtuálních sítí připojenou pomocí S2S a že firemní pobočka (BGP)
 
-V tomto příkladu je připojení brány VPN Point-to-Site pro VNet1. VNet1 je připojený k VNet2 pomocí připojení Site-to-Site VPN. VNet2 je připojený k VNet3 pomocí připojení Site-to-Site VPN. Neexistuje žádné přímé partnerský vztah nebo tunelu Site-to-Site VPN mezi sítěmi VNet1 a VNet3. VNet3 je připojený k firemní pobočku (web1) pomocí připojení Site-to-Site VPN. Všechna připojení sítě VPN běží protokolu BGP.
+V tomto příkladu připojení brány VPN typu Point-to-Site je ze sítě vnet1. Je připojen ze sítě VNet1 do sítě VNet2 pomocí připojení Site-to-Site VPN. Síť VNet2 je připojen do sítě VNet3 pomocí připojení Site-to-Site VPN. Neexistuje žádné přímé vytvoření partnerského vztahu ani tunelového připojení sítě Site-to-Site VPN mezi sítí ze sítě VNet1 a síti VNet3. Síti VNet3 je připojený k firemní pobočka (web1) pomocí připojení Site-to-Site VPN. Všechna připojení VPN běží protokolu BGP.
 
-Klienti, kteří používají Windows přístup k virtuálním sítím a lokalit, které jsou připojené pomocí připojení Site-to-Site VPN, ale jsou trasy k VNet2, VNet3 a web1, je třeba ručně přidat do klienta. Klienti jiných systémů než Windows mají přístup k virtuálním sítím a lokalit, které jsou připojené pomocí připojení Site-to-Site VPN bez jakékoli ruční zásah. Přístup je přenositelné a klienti mají přístup k prostředkům v všechny připojené virtuální sítě a lokality (místní).
+Klienti, kteří používají Windows mít přístup k virtuálním sítím a lokalitami propojenými pomocí připojení Site-to-Site VPN, ale trasy do sítě VNet2 a síti VNet3 web1 musí ručně přidali do klienta. Klienti bez Windows mají přístup k virtuálním sítím a lokalitami propojenými pomocí připojení Site-to-Site VPN bez ručního zásahu. Přístup je přenosné a klienti mají přístup k prostředkům v propojení virtuálních sítí a serverů (místní).
 
-![více VNet S2S a větve office](./media/vpn-gateway-about-point-to-site-routing/8.jpg "office S2S a větve více VNet")
+![Multi-virtuální síť S2S a větev office](./media/vpn-gateway-about-point-to-site-routing/8.jpg "multi-virtuální síť S2S a větev office")
 
 ### <a name="address-space"></a>Adresní prostor
 
-* VNet1: 10.1.0.0/16
+* Ze sítě VNet1: 10.1.0.0/16
 
-* VNet2: 10.2.0.0/16
+* Ze sítě VNet2: 10.2.0.0/16
 
-* VNet3: 10.3.0.0/16
+* Síti VNet3: 10.3.0.0/16
 
 * Web1: 10.101.0.0/16
 
-### <a name="routes-added"></a>Přidání tras
+### <a name="routes-added"></a>Přidání trasy
 
-* Klienti přidat trasy: 10.1.0.0/16, 192.168.0.0/24
+* Přidá trasy klientů: 10.1.0.0/16, 192.168.0.0/24
 
-* Trasy přidané klientům nejsou pro Windows: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
+* Trasy přidané klientům Non-Windows: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
 ### <a name="access"></a>Access
 
-* VNet1, VNet2, VNet3 a web1 mají přístup klienti systému Windows, ale trasy VNet2, VNet3 a web1 musí ručně přidat do klienta.
+* Klienti Windows mají přístup k sítě VNet1, ze sítě VNet2, síti VNet3 a web1, ale trasy do sítě VNet2 a síti VNet3 web1 musí ručně přidali do klienta.
 
-* Klienti jiných systémů než Windows mají přístup k VNet1, Vnet2, VNet3 a web1.
+* Klienti non-Windows mají přístup k síti VNet1, ze sítě Vnet2, síti VNet3 a web1.
 
 ## <a name="next-steps"></a>Další postup
 
-V tématu [vytvořit pomocí portálu Azure VPN P2S](vpn-gateway-howto-point-to-site-resource-manager-portal.md) zahajte proces vytváření P2S síť VPN.
+Zobrazit [P2S VPN pomocí webu Azure portal vytvořit](vpn-gateway-howto-point-to-site-resource-manager-portal.md) a začněte vytvářet svou síť VPN P2S.

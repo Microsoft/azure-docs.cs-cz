@@ -1,6 +1,6 @@
 ---
 title: Vytvoření virtuálního počítače s Linuxem v Azure s několika síťovými kartami | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit virtuální počítač s Linuxem s více síťovými kartami připojenými k němu pomocí šablon Resource Manageru nebo Azure CLI 2.0.
+description: Zjistěte, jak vytvořit virtuální počítač s Linuxem s více síťovými kartami připojenými k němu pomocí šablon Resource Manageru nebo rozhraní příkazového řádku Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: iainfoulds
@@ -14,21 +14,20 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: iainfou
-ms.openlocfilehash: 77feb52a4ba2013bd6ec0afcd30a20f05227031e
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 4982de352af2ce33f4dbf6dba00ff9296cc9b873
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42058080"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999747"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Jak vytvořit virtuální počítač s Linuxem v Azure s několika síťových karet
-Vytvoření virtuálního počítače (VM) v Azure, která má několik virtuálních síťových rozhraní (NIC) k němu připojená. Běžný scénář, kdy je, aby různé podsítě pro front-endu a back-end připojení nebo síť vyhrazený pro řešení monitorování nebo zálohování. Tento článek podrobně popisuje vytvoření virtuálního počítače s více síťovými kartami připojenými k němu a postup přidání nebo odebrání síťových rozhraní z existujícího virtuálního počítače. Různé [velikosti virtuálních počítačů](sizes.md) podporují různé počet síťových adaptérů, proto odpovídajícím způsobem upravit velikost virtuálního počítače.
 
-Tento článek podrobně popisuje, jak vytvořit virtuální počítač s několika síťovými kartami s Azure CLI 2.0. K provedení těchto kroků můžete také využít [Azure CLI 1.0](multiple-nics-nodejs.md).
 
+Tento článek podrobně popisuje, jak vytvořit virtuální počítač s několika síťovými kartami pomocí Azure CLI.
 
 ## <a name="create-supporting-resources"></a>Vytvořte Podpůrné prostředky
-Nainstalujte nejnovější [příkazového řádku Azure CLI 2.0](/cli/azure/install-az-cli2) a přihlaste se k Azure pomocí účtu [az login](/cli/azure/reference-index#az_login).
+Nainstalujte nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) a přihlaste se k Azure pomocí účtu [az login](/cli/azure/reference-index#az_login).
 
 V následujících příkladech nahraďte ukázkové názvy parametrů s vlastními hodnotami. Ukázkové názvy parametrů zahrnutých *myResourceGroup*, *mystorageaccount*, a *myVM*.
 
@@ -104,7 +103,7 @@ az vm create \
 Přidání tabulek směrování do hostovaného operačního systému podle postupu uvedeného v [konfigurace hostovaného operačního systému pro několik síťových karet](#configure-guest-os-for- multiple-nics).
 
 ## <a name="add-a-nic-to-a-vm"></a>Přidat síťové rozhraní k virtuálnímu počítači
-V předchozích krocích vytvořili virtuální počítač s několika síťovými kartami. Síťové adaptéry můžete také přidat do existujícího virtuálního počítače pomocí Azure CLI 2.0. Různé [velikosti virtuálních počítačů](sizes.md) podporují různé počet síťových adaptérů, proto odpovídajícím způsobem upravit velikost virtuálního počítače. V případě potřeby můžete [změnit velikost virtuálního počítače](change-vm-size.md).
+V předchozích krocích vytvořili virtuální počítač s několika síťovými kartami. Síťové adaptéry můžete také přidat do existujícího virtuálního počítače pomocí Azure CLI. Různé [velikosti virtuálních počítačů](sizes.md) podporují různé počet síťových adaptérů, proto odpovídajícím způsobem upravit velikost virtuálního počítače. V případě potřeby můžete [změnit velikost virtuálního počítače](change-vm-size.md).
 
 Vytvořte další síťová karta s [az network nic vytvořit](/cli/azure/network/nic#az_network_nic_create). Následující příklad vytvoří síťové rozhraní s názvem *myNic3* připojené k back endové podsítě a skupinu zabezpečení sítě vytvořené v předchozích krocích:
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 3a0e2b78de8cea3929ac457bab3d5e07a2b85401
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 9b0c58fdbfb0d55b3b8998f4edfc1222b9a3d4aa
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603375"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46988593"
 ---
 # <a name="working-with-date-time-values-in-log-analytics-queries"></a>Práce s hodnotami data a času v dotazy Log Analytics
 
@@ -49,33 +49,33 @@ Dotazovací jazyk Log Analytics má dva hlavní datové typy související s dat
 
 Data a času mohou vytvořit řetězec pomocí přetypování `todatetime` operátor. Například zkontrolujte prezenční signály virtuálního počítače odesílají v konkrétní časový rámec, můžete nastavit využívání [mezi operátor](https://docs.loganalytics.io/docs/Language-Reference/Scalar-operators/between-operator) což je vhodné zadat časový rozsah...
 
-```KQL
+```Kusto
 Heartbeat
 | where TimeGenerated between(datetime("2018-06-30 22:46:42") .. datetime("2018-07-01 00:57:27"))
 ```
 
 Další z typických možností je porovnávání datetime až po současnost. Například pokud chcete zobrazit všechny prezenční signály za posledních dvou minut, můžete použít `now` operátor spolu s časový interval představující dvě minuty:
 
-```KQL
+```Kusto
 Heartbeat
 | where TimeGenerated > now() - 2m
 ```
 
 Zástupce je také k dispozici pro tuto funkci:
-```KQL
+```Kusto
 Heartbeat
 | where TimeGenerated > now(-2m)
 ```
 
 I když pomocí metody co nejkratší a nejvíce čitelné `ago` operátor:
-```KQL
+```Kusto
 Heartbeat
 | where TimeGenerated > ago(2m)
 ```
 
 Předpokládejme, že místo znalost počáteční a koncový čas, znát počáteční čas a dobu trvání. Dotaz je možné přepsat následujícím způsobem:
 
-```KQL
+```Kusto
 let startDatetime = todatetime("2018-06-30 20:12:42.9");
 let duration = totimespan(25m);
 Heartbeat
@@ -86,7 +86,7 @@ Heartbeat
 ## <a name="converting-time-units"></a>Převádění časových jednotek
 Může být užitečné express datum a čas nebo časový interval v časovou jednotku než výchozí hodnotu. Například předpokládejme, že už kontrolujete chybové události z posledních 30 minut a potřebují počítaný sloupec, který ukazuje, jak dávno k události došlo:
 
-```KQL
+```Kusto
 Event
 | where TimeGenerated > ago(30m)
 | where EventLevelName == "Error"
@@ -95,7 +95,7 @@ Event
 
 Zobrazí se _timeAgo_ sloupec obsahuje hodnoty jako například: "00:09:31.5118992", což znamená, jsou formátovány jako hh:mm:ss.fffffff. Pokud chcete naformátovat tyto hodnoty _numver_ minut od doby spuštění, jednoduše dělit tuto hodnotu "1 minuta":
 
-```KQL
+```Kusto
 Event
 | where TimeGenerated > ago(30m)
 | where EventLevelName == "Error"
@@ -109,7 +109,7 @@ Jiné velmi běžný scénář je potřeba získat statistiku za určité časov
 
 Použijte tento dotaz se získat počet událostí, ke kterým došlo během poslední půlhodiny každých 5 minut:
 
-```KQL
+```Kusto
 Event
 | where TimeGenerated > ago(30m)
 | summarize events_count=count() by bin(TimeGenerated, 5m) 
@@ -127,7 +127,7 @@ Tímto se vytvoří v následující tabulce:
 
 Dalším způsobem, jak vytvořit kbelíků výsledků je použití funkcí, jako například `startofday`:
 
-```KQL
+```Kusto
 Event
 | where TimeGenerated > ago(4d)
 | summarize events_count=count() by startofday(TimeGenerated) 
@@ -147,7 +147,7 @@ Vytvoří se následující výsledky:
 ## <a name="time-zones"></a>Časová pásma
 Protože všechny hodnoty data a času jsou vyjádřeny ve standardu UTC, často je užitečné pro převod do místní časové pásmo. Tento výpočet například použijte k převodu času UTC na PST časy:
 
-```KQL
+```Kusto
 Event
 | extend localTimestamp = TimeGenerated - 8h
 ```

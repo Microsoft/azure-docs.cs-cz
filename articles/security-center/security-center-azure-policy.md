@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/5/2018
 ms.author: terrylan
-ms.openlocfilehash: bc6226d462bac7e9c50ce3f348007023bf861ec3
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 3c198ea44953c0b2e72a544cd0e83b6592d9a81f
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162287"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032068"
 ---
 # <a name="setting-security-policies-in-security-center-or-in-azure-policy"></a>Nastavení zásad zabezpečení ve službě Security Center nebo ve službě Azure Policy
 
@@ -111,7 +111,7 @@ Následující tabulku můžete použít jako referenci pro pochopení definic z
 Pokud má vaše organizace mnoho předplatných, možná budete potřebovat způsob, jak efektivně spravovat přístup, zásady a dodržování předpisů pro tato předplatná. Skupiny pro správu Azure poskytují úroveň rozsahu nad předplatnými. Předplatná uspořádáte do kontejnerů označovaných jako skupiny pro správu a na tyto skupiny pro správu použijete své zásady správného řízení. Všechna předplatná v rámci skupiny pro správu automaticky dědí zásady, které se vztahují na skupinu pro správu. Každý adresář obdrží jednu skupinu pro správu nejvyšší úrovně označovanou jako kořenová skupina pro správu. Tato kořenová skupina pro správu je integrovaná do hierarchie tak, aby pod ní spadaly všechny skupiny pro správu a všechna předplatná. Tato kořenová skupina pro správu umožňuje používání globálních zásad a přiřazení RBAC na úrovni adresáře. Pokud chcete nastavit skupiny pro správu pro použití se službou Azure Security Center, postupujte podle pokynů v článku [Získání viditelnosti v rámci celého tenanta pro Azure Security Center](security-center-management-groups.md). 
 
 > [!NOTE]
-> Je důležité, abyste rozuměli hierarchii skupin pro správu a předplatných. Další informace o skupinách pro správu, kořenových skupinách pro správu a přístupu ke skupinám pro správu najdete v tématu věnovaném [uspořádání prostředků pomocí skupin pro správu Azure](../azure-resource-manager/management-groups-overview.md#root-management-group-for-each-directory).
+> Je důležité, abyste rozuměli hierarchii skupin pro správu a předplatných. Další informace o skupinách pro správu, kořenových skupinách pro správu a přístupu ke skupinám pro správu najdete v tématu věnovaném [uspořádání prostředků pomocí skupin pro správu Azure](../governance/management-groups/index.md#root-management-group-for-each-directory).
 >
 >
 

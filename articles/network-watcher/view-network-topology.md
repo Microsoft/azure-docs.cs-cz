@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: jdial
-ms.openlocfilehash: 1725a3d6a4eb82ca57078f648efa14866d2fe390
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: e5e9901d6265b48a7b57cdf2c146ebb623ad5c3d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "35903195"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46992198"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Zobrazení topologie služby Azure virtual network
 
@@ -52,7 +52,7 @@ Prostředky uvedené v diagramu jsou podmnožinou síťové součásti ve virtu�
 
 Spusťte příkazy v následujících kroků:
 - Ve službě Azure Cloud Shell, tak, že vyberete **vyzkoušet** nahoře napravo od libovolného příkazu. Azure Cloud Shell je bezplatné interaktivní prostředí, který má běžné nástroje Azure, včetně a nakonfigurovány pro použití s vaším účtem.
-- Pomocí rozhraní příkazového řádku z vašeho počítače. Při spuštění rozhraní příkazového řádku z počítače, kroky v tomto článku vyžadují použití Azure CLI verze 2.0.31 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte také spustit `az login` vytvořit připojení k Azure.
+- Pomocí rozhraní příkazového řádku z vašeho počítače. Při spuštění rozhraní příkazového řádku z počítače, kroky v tomto článku vyžadují použití Azure CLI verze 2.0.31 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte také spustit `az login` vytvořit připojení k Azure.
 
 Vámi používaný účet musí mít potřebná [oprávnění](required-rbac-permissions.md).
 

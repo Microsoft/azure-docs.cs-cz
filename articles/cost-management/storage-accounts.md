@@ -1,27 +1,27 @@
 ---
-title: Konfigurace účtů úložiště Azure Cost Management | Dokumentace Microsoftu
-description: Tento článek popisuje, jak nakonfigurovat účty úložiště Azure a AWS úložiště kontejnerů Azure Cost Management.
+title: Konfigurace účtů úložiště pro Cloudyn v Azure | Dokumentace Microsoftu
+description: Tento článek popisuje, jak nakonfigurovat účty úložiště Azure a kontejnery úložiště AWS pro Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/07/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: carmonm
 ms.custom: ''
-ms.openlocfilehash: dab7100c97fab7e086352916ec222ec70a0d0400
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 829995d40a73dc181a28a467e4d16fef0bdeb454
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42056611"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990650"
 ---
-# <a name="configure-storage-accounts-for-cost-management"></a>Konfigurace účtů úložiště pro Cost Management
+# <a name="configure-storage-accounts-for-cloudyn"></a>Konfigurace účtů úložiště pro Cloudyn
 
-<!--- intent: As a Cost Management user, I want to configure Cost Management to use my cloud service provider storage account to store my reports. -->
+<!--- intent: As a Cloudyn user, I want to configure Cloudyn to use my cloud service provider storage account to store my reports. -->
 
-Cost Management sestavy můžete uložit na portálu Cloudyn, Azure storage nebo kontejnery úložiště AWS. Ukládání sestav na portálu Cloudyn je zdarma. Ale ukládání sestav do poskytovatele cloudových služeb úložiště je volitelná a má za následek další poplatky. Tento článek vám pomůže nakonfigurovat účty úložiště Azure a kontejnery úložiště Amazon Web Services (AWS) pro uložení sestavy.
+Cloudyn sestavy můžete uložit na portálu Cloudyn, Azure storage nebo kontejnery úložiště AWS. Ukládání sestav na portálu Cloudyn je zdarma. Ale ukládání sestav do poskytovatele cloudových služeb úložiště je volitelná a má za následek další poplatky. Tento článek vám pomůže nakonfigurovat účty úložiště Azure a kontejnery úložiště Amazon Web Services (AWS) pro uložení sestavy.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -33,7 +33,7 @@ Pokud nemáte k dispozici AWS kbelíku simple storage service (S3), musíte ji v
 
 ## <a name="configure-your-azure-storage-account"></a>Konfigurace účtu služby Azure storage
 
-Konfigurace je úložiště Azure pro použití služba Cost Management je jednoduché. Shromážděte informace o účtu úložiště a zkopírujte je na portálu Cloudyn.
+Konfigurace je úložiště Azure pro použití u Cloudyn je jednoduché. Shromážděte informace o účtu úložiště a zkopírujte je na portálu Cloudyn.
 
 1. Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 2. Klikněte na tlačítko **všechny služby**vyberte **účty úložiště**, přejděte do účtu úložiště, který chcete použít a potom vyberte účet.
@@ -163,4 +163,4 @@ Sestavy můžete uložit do služby Azure storage. V sestavách, klikněte na tl
 
 ## <a name="next-steps"></a>Další postup
 
-- Kontrola [Principy sestav správy nákladů](understanding-cost-reports.md) Další informace o základní strukturu a funkce sestav služby cost management.
+- Kontrola [Principy Cloudyn sestavy](understanding-cost-reports.md) Další informace o základní strukturu a funkce sestavách Cloudyn.

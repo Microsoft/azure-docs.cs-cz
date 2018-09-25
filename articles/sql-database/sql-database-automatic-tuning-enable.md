@@ -2,20 +2,21 @@
 title: Povolení automatického ladění pro službu Azure SQL Database | Dokumentace Microsoftu
 description: Můžete povolit automatické vyladění Azure SQL Database snadno.
 services: sql-database
-author: danimir
-manager: craigg
 ms.service: sql-database
-ms.custom: monitor & tune
+ms.subservice: performance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: d825ddd75bfc829aa82bab4cede0381dda2d36da
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 4f043cfc9c85513abe16bde38c5cac6e16e34af9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575286"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063315"
 ---
 # <a name="enable-automatic-tuning"></a>Povolení automatického ladění
 
@@ -86,7 +87,7 @@ Chcete-li konfigurovat jednotlivé možnosti automatického ladění prostředni
    
 Nastavení jednotlivých možnost na hodnotu ON, přepíše nastavení, která databáze dědí a povolte možnost. Nastavení na hodnotu OFF, bude také přepsat nastavení, která databáze dědí a zakažte možnost. Možnosti automatického ladění, což výchozí nastavení je definováno, bude tuto konfiguraci dědit z automatického ladění nastavení úroveň databáze.  
 
-Najít možnosti jazyka T-SQL pro konfiguraci automatického ladění, naleznete v tématu o našich dalších [možnostem ALTER DATABASE SET (Transact-SQL) pro logický server služby SQL Database](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=sql-server-2017&tabs=sqldbls#arguments-1).
+Najít možnosti jazyka T-SQL pro konfiguraci automatického ladění, naleznete v tématu o našich dalších [možnostem ALTER DATABASE SET (Transact-SQL) pro logický server služby SQL Database](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current).
 
 ## <a name="disabled-by-the-system"></a>Zakázaná v systému
 Automatické ladění monitoruje všechny akce, kterou zabere v databázi a v některých případech můžete určit, že automatické ladění nejde fungovat správně v databázi. V takovém případě možnost vyladění bude zakázán systémem. Ve většině případů k tomu dochází, protože není povolená Query Store nebo se nachází ve stavu jen pro čtení v konkrétní databázi.

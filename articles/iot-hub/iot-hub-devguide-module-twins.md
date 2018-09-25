@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: 8f567ba43c1657783f9898863aef980627800481
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 0df1170079e66bda95e38bcf17dcce738269eeb0
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436315"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039373"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>Principy a použití dvojčat modulů ve službě IoT Hub
 
@@ -250,7 +250,7 @@ Ohlášené vlastnosti, značky a požadované vlastnosti jsou objekty JSON s n�
     }
     ```
 
-* Všechny hodnoty řetězec může obsahovat nejvýše 4 KB délku.
+* Všechny hodnoty řetězec může obsahovat nejvýše délce 512 bajtů.
 
 ## <a name="module-twin-size"></a>Velikost dvojčete modulu
 IoT Hub vynucuje omezení velikosti 8KB na všech příslušných celkové hodnoty `tags`, `properties/desired`, a `properties/reported`, s výjimkou prvků jen pro čtení.

@@ -16,14 +16,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2017
 ms.author: miprasad
-ms.openlocfilehash: 7c7b50098cfd1bcac534156dd905b37affab80bd
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 0210e65c0859b00caac0fe66baa1c73063f644c8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35643050"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947937"
 ---
 # <a name="customer-churn-prediction-using-azure-machine-learning"></a>Předpověď výpovědi zákazníka pomocí Azure Machine Learning
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Udržování stávající zákazníci je v průměru pětkrát levnější než náklady na přijetí nové značky. V důsledku toho vedoucí pracovníci marketingu často naleznou sami sebe snaží odhadnout pravděpodobnost výpovědi zákazníků a přijít na výpovědí minimalizovat.
 
@@ -61,7 +66,7 @@ V tomto řešení využijeme konkrétní příklad sestavení změn modelu predi
 
 * [Účtu Azure](https://azure.microsoft.com/free/) (bezplatné zkušební verze jsou k dispozici)
 
-* Nainstalovaná kopie produktu [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) následující [Stručná Instalační příručka](../service/quickstart-installation.md) k instalaci a vytvoření pracovního prostoru
+* Nainstalovaná kopie produktu [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) následující [Stručná Instalační příručka](quickstart-installation.md) k instalaci a vytvoření pracovního prostoru
 
 * Operacionalizace je nejvhodnější v případě, že máte nainstalovaný a místně spuštěný modul Docker. Pokud ne, použijte možnost clusteru, ale mějte na paměti spuštění Azure Container Service (ACS) může být nákladné.
 

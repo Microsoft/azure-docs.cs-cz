@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/07/2018
 ms.author: cynthn
-ms.openlocfilehash: 9d8e868eb11e45a01b3992022b729369da6b42e4
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 20d3568fa3f583c190f087de861d857fe3e793a9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931486"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985421"
 ---
 # <a name="how-to-encrypt-virtual-disks-on-a-windows-vm"></a>Postup zašifrování virtuální disky na virtuálním počítači s Windows
-Vylepšené virtuálních počítačů (VM) zabezpečení a dodržování předpisů mohou být šifrována virtuálních disků v Azure. Disky jsou šifrované pomocí kryptografických klíčů, které jsou zabezpečené v Azure Key Vault. Řízení těchto kryptografických klíčů a auditovat jejich použití. Tento článek podrobně popisuje, jak šifrování virtuálních disků na virtuálním počítači s Windows pomocí Azure Powershellu. Můžete také [zašifrovat virtuální počítač s Linuxem pomocí rozhraní příkazového řádku Azure CLI 2.0](../linux/encrypt-disks.md).
+Vylepšené virtuálních počítačů (VM) zabezpečení a dodržování předpisů mohou být šifrována virtuálních disků v Azure. Disky jsou šifrované pomocí kryptografických klíčů, které jsou zabezpečené v Azure Key Vault. Řízení těchto kryptografických klíčů a auditovat jejich použití. Tento článek podrobně popisuje, jak šifrování virtuálních disků na virtuálním počítači s Windows pomocí Azure Powershellu. Můžete také [zašifrovat virtuální počítač s Linuxem pomocí Azure CLI](../linux/encrypt-disks.md).
 
 ## <a name="overview-of-disk-encryption"></a>Přehled šifrování disku
 Virtuální disky na virtuálních počítačích s Windows se šifrují při nečinnosti pomocí Bitlockeru. Neplatí žádné poplatky pro šifrování virtuálních disků v Azure. Kryptografické klíče jsou uložené ve službě Azure Key Vault software ochrany, nebo můžete importovat nebo generovat klíče v modulech hardwarového zabezpečení (HSM) certifikovaných podle standardů FIPS 140-2 úrovně 2 standardů. Tyto klíče se používají k šifrování a dešifrování virtuální disky připojené k virtuálnímu počítači. Uchování kontroly nad těmito kryptografické klíče a můžete kontrolovat jejich použití. Instančního objektu služby Azure Active Directory poskytuje zabezpečené mechanismus pro vydávání těchto kryptografických klíčů, jako jsou virtuální počítače využívající zapnout a vypnout.

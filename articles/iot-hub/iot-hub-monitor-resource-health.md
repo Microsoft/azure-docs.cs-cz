@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: kgremban
-ms.openlocfilehash: 4f7eefc7d6b067c360fdc3ce12b9a7ae36080bd8
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: d3c32c2258f7542a02549fbc531aa9e8293d0235
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43336870"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996294"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Monitorování stavu služby Azure IoT Hub a rychlá Diagnostika potíží
 
@@ -329,7 +329,7 @@ Další informace o tom, jak interpretovat data o stavu, najdete v článku [př
 - [Sada IoT vzdálené monitorování a oznámení pomocí Azure Logic Apps propojení vaší služby IoT hub a poštovní schránky][lnk-monitoring-notifications]
 
 
-[lnk-AM]: ../monitoring-and-diagnostics/index.yml
+[lnk-AM]: ../azure-monitor/index.yml
 [lnk-ARH]: ../service-health/resource-health-overview.md
 [lnk-metrics]: iot-hub-metrics.md
 [lnk-migrate]: iot-hub-migrate-to-diagnostics-settings.md

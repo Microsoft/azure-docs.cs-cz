@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 1cff44e8430af0a544da948b33a15439fae56d8e
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: a076ee5275a4d053613902a1980542590263385c
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735644"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034265"
 ---
 # <a name="set-up-a-device-template"></a>Nastavení šablony zařízení
 
@@ -74,6 +74,9 @@ Například můžete přidat nové měření teploty telemetrická data:
 
 Po výběru **provádí**, **teploty** měření se zobrazí v seznamu měření. Operátor můžete zobrazit vizualizaci, která zařízení shromažďuje data o teplotě.
 
+> [!NOTE]
+  Datový typ telemetrických dat měření je double.
+
 ### <a name="create-an-event-measurement"></a>Vytvoření měření událostí
 Chcete-li přidat novou událost měření **upravit šablonu**a potom klikněte na tlačítko **a nové měření** tlačítko. Vyberte **události** jako měření typ a zadejte podrobnosti **vytvořit událost** formuláře.
 
@@ -91,6 +94,8 @@ Chcete-li zobrazit další podrobnosti o události, vyberte ikonu události v gr
 
 ![Podrobnosti o události "Ventilátor Motor chyba"](./media/howto-set-up-template/eventmeasurementsdetail.png)
 
+> [!NOTE]
+  Datový typ měření událostí je řetězec.
 
 ### <a name="create-a-state-measurement"></a>Vytvoření měření stavu
 Chcete-li přidat nový měření stavu **upravit šablonu**a potom klikněte na tlačítko **a nové měření** tlačítko. Vyberte **stavu** jako měření typ a zadejte podrobnosti **vytvořit stavu** formuláře.
@@ -106,6 +111,9 @@ Po výběru **provádí**, **ventilátor režimu** měření stavu se zobrazí v
 ![Měření stavu grafu](./media/howto-set-up-template/statemeasurementschart.png)
 
 Pokud zařízení pošle příliš mnoho datových bodů v malých dobu trvání, zobrazí se měření stavu s jiný vizuál, jak je znázorněno na následujícím snímku obrazovky. Pokud kliknete na graf, všechny datové body v rámci tohoto časového období se zobrazují v chronologickém pořadí. Také můžete zúžit rozsah času zobrazíte měření vykreslit v grafu.
+
+> [!NOTE]
+  Datový typ měření stavu je řetězec.
 
 ## <a name="settings"></a>Nastavení
 

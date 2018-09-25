@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 1f3a24cebe5061f7e3ca3897692b068531780431
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 405c85c24ca3a956a3d75733c5dd13a6f12de46a
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43668117"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042410"
 ---
 # <a name="how-to-use-perfinsights"></a>Použití PerfInsights
 
-[PerfInsights](http://aka.ms/perfinsightsdownload) je nástroj Diagnostika samoobslužné podpory, který shromažďuje a analyzuje diagnostická data a poskytuje sestavy, které vám pomohou vyřešit problémy s výkonem virtuálního počítače Windows v Azure. PerfInsights může běžet na virtuálních počítačích jako samostatný nástroj nebo přímo z portálu pomocí instalace [rozšíření virtuálního počítače Azure výkonu Diagnostics](performance-diagnostics-vm-extension.md).
+[PerfInsights](http://aka.ms/perfinsightsdownload) je nástroj Diagnostika samoobslužné podpory, který shromažďuje a analyzuje diagnostická data a poskytuje sestavy, které vám pomohou vyřešit problémy s výkonem virtuálního počítače Windows v Azure. PerfInsights může běžet na virtuálních počítačích jako samostatný nástroj, přímo z portálu pomocí [výkonu diagnostiky pro virtuální počítače Azure](performance-diagnostics.md), nebo po instalaci [rozšíření virtuálního počítače výkon diagnostiky Azure ](performance-diagnostics-vm-extension.md).
 
 Pokud máte problémy s výkonem s virtuálními počítači, než se obrátíte na podporu, spusťte tento nástroj.
 

@@ -11,18 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: govindk
-ms.openlocfilehash: b21debdd6baa0a6587318ad861a821840ec6879c
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: ebfba4d54b4d4158a2dc0bc2aed09699012ac157
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666693"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038047"
 ---
 # <a name="azure-cosmos-db-firewall-support"></a>Podpora brány firewall služby Azure Cosmos DB
 Zabezpečení dat uložených v účtu databáze Azure Cosmos DB, Azure Cosmos DB poskytuje podporu pro tajného kódu na základě [modelu autorizace](https://msdn.microsoft.com/library/azure/dn783368.aspx) , který využívá ověřovací kód zprávy silné Hash-based (metoda HMAC). Nyní kromě tajného kódu autorizace na základě modelu služby Azure Cosmos DB podporuje zásady řízení přístupu na základě IP adresy pro podporu brány firewall pro příchozí řízené. Tento model je podobný pravidla brány firewall tradiční databázový systém a poskytuje další úroveň zabezpečení, které účet databáze Azure Cosmos DB. V tomto modelu teď můžete nakonfigurovat k účtu databáze Azure Cosmos DB k vyla přístupná jen v schválenou sadu počítačů nebo cloudových služeb. Přístup k prostředkům služby Azure Cosmos DB z těchto schválených sad počítače a služby se stále vyžadují volající předložit platný autorizační token.
-
-> [!NOTE]
-> Podpora brány firewall je aktuálně dostupná pro účty SQL API služby Azure Cosmos DB a rozhraní API Mongodb. Brzy bude k dispozici možnost ke konfiguraci brány firewall pro ostatní rozhraní API a suverénních cloudech, jako je Azure Germany a Azure Government. Pokud máte v úmyslu nakonfigurovat koncový bod služby seznamu ACL pro účet služby Azure Cosmos DB, který má existující brány firewall protokolu IP nakonfigurovaný, mějte prosím na paměti konfigurace brány firewall, odeberte brány firewall protokolu IP a potom nakonfigurovat seznam ACL koncového bodu služby. Po dokončení konfigurace koncového bodu služby, můžete znovu povolit brány firewall protokolu IP v případě potřeby.
 
 ## <a name="ip-access-control-overview"></a>Přehled řízení přístupu IP
 Ve výchozím nastavení je účet databáze Azure Cosmos DB přístupný z veřejného internetu za předpokladu, že k žádosti je přiložený platný autorizační token. Při konfiguraci řízení přístupu na základě zásad IP musí uživatel poskytnout sadu IP adres nebo rozsahy IP adres ve formátu CIDR. Zahrnou se jako seznam povolených klientských IP adres pro příslušný účet databázový účet. Jakmile se tato konfigurace použije, server blokuje všechny požadavky z počítačů mimo tento seznam povolených.  Připojení zpracování toku pro řízení přístupu na základě IP adresy je popsaný v následujícím diagramu:

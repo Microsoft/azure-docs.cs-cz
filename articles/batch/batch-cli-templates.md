@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: big-compute
 ms.date: 08/02/2018
 ms.author: danlep
-ms.openlocfilehash: 50ed5a6b57c3c994f636db5cc975ad1908e50c7d
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 753a36eb6fb7a0c007c62bbab7fe7390e706b1f5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493429"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964288"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Použití šablon rozhraní příkazového řádku Azure Batch a přenos souborů
 
@@ -47,7 +47,7 @@ Například [ffmpeg](http://ffmpeg.org/) je Oblíbené aplikace, která zpracov�
 
 ## <a name="installation"></a>Instalace
 
-Nejprve nainstalovat rozšíření rozhraní příkazového řádku Azure Batch [instalace Azure CLI 2.0](/cli/azure/install-azure-cli), nebo můžete spouštět v Azure CLI [Azure Cloud Shell](../cloud-shell/overview.md).
+Nejprve nainstalovat rozšíření rozhraní příkazového řádku Azure Batch [nainstalovat rozhraní příkazového řádku Azure CLI 2.0](/cli/azure/install-azure-cli), nebo můžete spouštět v Azure CLI [Azure Cloud Shell](../cloud-shell/overview.md).
 
 Nainstalujte nejnovější verzi rozšíření služby Batch pomocí následujícího příkazu rozhraní příkazového řádku Azure:
 

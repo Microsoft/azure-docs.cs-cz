@@ -11,14 +11,19 @@ ms.component: core
 services: machine-learning
 ms.workload: data-services
 ms.date: 12/13/2017
-ms.openlocfilehash: eb788f56825166ccaa376d32b07371db0588edc8
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5ca47c8234239b56a2d829903828dda8220d53cb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35899013"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967604"
 ---
 # <a name="aerial-image-classification"></a>Klasifikace leteckých snímků
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Tento příklad ukazuje, jak používat Azure Machine Learning Workbench ke koordinaci distribuované trénování a operacionalizaci modelů klasifikace imagí. Můžeme použít dva přístupy k trénování: (i) upřesnění, hluboké neuronové sítě pomocí [Azure Batch AI](https://docs.microsoft.com/azure/batch-ai/) clusteru GPU a (ii) pomocí [Microsoft Machine Learning pro Apache Spark (MMLSpark)](https://github.com/Azure/mmlspark) balíček do vytrénovaných Image, pomocí které je předem vytrénované CNTK modely a tak moct trénovat třídění díky funkcím, které odvozené. Můžeme následně trénované modely paralelní způsobem použít nastaví velký obrázek v cloudu pomocí [Azure HDInsight Spark](https://azure.microsoft.com/services/hdinsight/apache-spark/) clusteru, abychom mohli rychlosti školení a operacionalizaci škálovat přidáváním nebo odebíráním pracovních uzlů.
 
@@ -61,7 +66,7 @@ Postupujte podle následujících pokynů vás provede procesem nastavení prost
        - Pokud máte k dispozici menší počet jader, můžete upravit šablony clusteru HDInsight, která má snížit počet pracovních procesů, které jsou zřízené. Pokyny k tomuto se zobrazí v části "Vytvoření clusteru HDInsight Spark".
     - Tato ukázka vytvoří cluster Batch AI Training s dvěma NC6 (1 GPU, virtuálním procesorem 6) virtuálních počítačů. Ujistěte se, že váš účet má dostatek dostupných jader v oblasti USA – východ kontrolou "využití a kvóty" karty pro vaše předplatné na webu Azure portal.
 - [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md)
-    - Postupujte podle [instalace a vytvoření rychlý Start](../service/quickstart-installation.md) nainstalujte aplikaci Azure Machine Learning Workbench a vytvářet experimenty a účty správy modelů.
+    - Postupujte podle [instalace a vytvoření rychlý Start](../desktop-workbench/quickstart-installation.md) nainstalujte aplikaci Azure Machine Learning Workbench a vytvářet experimenty a účty správy modelů.
 - [Batch AI](https://github.com/Azure/BatchAI) Python SDK a Azure CLI
     - Dokončení v následujících částech [služby Batch AI recepty README](https://github.com/Azure/BatchAI/tree/master/recipes):
         - "Požadavky"

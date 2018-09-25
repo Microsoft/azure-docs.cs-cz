@@ -12,14 +12,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
-ms.openlocfilehash: 33d95e0c17e8b9b18313cb0854532337ec76cfd1
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ROBOTS: NOINDEX
+ms.openlocfilehash: e0f6148e1fb28838bf99c63fbfbfbfe8cd127c8c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42054665"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46973198"
 ---
 #  <a name="q--a-matching-using-azure-machine-learning-workbench"></a>Funkce Q & odpovídající pomocí Azure Machine Learning workbench
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 Odpovídání na dotazy otevřít zakončeno je složité a často vyžadují ruční práce od odborníků na danou problematiku (MSP). Chcete-li snížit požadavky na interní malé a střední podniky, společnosti často vytvořit seznam – nejčastější dotazy (FAQ) jako prostředek pomoci uživatelům. V tomto příkladu představuje různé metody efektivní machine learning tak, aby odpovídaly otevřené zakončeno dotazy na existující dvojice – nejčastější dotazy a odpovědi na otázky. Tento příklad ukazuje snadný vývoj procesu pro sestavení řešení, pomocí aplikace Azure Machine Learning Workbench. 
 
 ## <a name="link-to-the-gallery-github-repository"></a>Propojit úložiště GitHub Galerie
@@ -42,7 +47,7 @@ Jsou klíčové kroky potřebné k zajištění tohoto řešení:
 Požadavky na spuštění v tomto příkladu jsou následující:
 
 1. [Účtu Azure](https://azure.microsoft.com/free/) (bezplatné zkušební verze jsou k dispozici).
-2. Nainstalovaná kopie produktu [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) následující [Stručná Instalační příručka](../service/quickstart-installation.md) k instalaci a vytvoření pracovního prostoru.
+2. Nainstalovaná kopie produktu [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) následující [Stručná Instalační příručka](quickstart-installation.md) k instalaci a vytvoření pracovního prostoru.
 3. V tomto příkladu by bylo možné spustit na libovolný výpočetní kontext. Ale doporučuje se ho spustit na počítači s více jádry s aspoň 16GB paměti a místa na disku 5GB.
 
 ## <a name="create-a-new-workbench-project"></a>Vytvořte nový projekt aplikace workbench

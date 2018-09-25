@@ -16,18 +16,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
-ms.openlocfilehash: 10e39a205950d50794169e9bedaa65f480f1e9b5
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 91e9cb6b436cc78a0c5bd4769d38622abda4c04d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35756035"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977566"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Optimalizace virtuálního počítače s Linuxem v Azure
 Vytvoření virtuálního počítače s Linuxem (VM) je snadné provést z příkazového řádku nebo z portálu. V tomto kurzu se dozvíte, jak zajistit jste ho nastavili optimalizace jeho výkonu na platformě Microsoft Azure. Toto téma používá virtuální počítač s Ubuntu Server, ale můžete také vytvořit virtuální počítač Linux pomocí [svých vlastních imagí jako šablony](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
 
 ## <a name="prerequisites"></a>Požadavky
-Toto téma předpokládá, že již máte funkční předplatného Azure ([registraci bezplatné zkušební verze](https://azure.microsoft.com/pricing/free-trial/)) a už zřízení virtuálního počítače do vašeho předplatného Azure. Ujistěte se, že máte nejnovější [příkazového řádku Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k předplatnému Azure pomocí [az login](/cli/azure/reference-index#az_login) před [vytvoření virtuálního počítače](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Toto téma předpokládá, že již máte funkční předplatného Azure ([registraci bezplatné zkušební verze](https://azure.microsoft.com/pricing/free-trial/)) a už zřízení virtuálního počítače do vašeho předplatného Azure. Ujistěte se, že máte nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k předplatnému Azure pomocí [az login](/cli/azure/reference-index#az_login) před [vytvoření virtuálního počítače](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="azure-os-disk"></a>Azure Disk s operačním systémem
 Po vytvoření virtuálního počítače s Linuxem v Azure má dva disky, které s ním spojená. **/ dev/sda** je disk s operačním systémem **/dev/sdb** je dočasný disk.  Nepoužívejte hlavní disk s operačním systémem (**/dev/sda**) pro všechno, co s výjimkou operačního systému, protože je optimalizovaný pro rychlé spuštění virtuálního počítače a neposkytuje dostatečný výkon pro vaše úlohy. Chcete se připojit jeden nebo víc disků k virtuálnímu počítači k získání trvalého a optimalizované úložiště pro vaše data. 
@@ -42,7 +42,7 @@ K dosažení nejvyšší počet IOps na disky Premium Storage, kde jejich nastav
 * Pokud používáte **XFS**, překážek zakázat použití možnosti připojení `nobarrier` (pro povolení bariéry, použijte možnost `barrier`)
 
 ## <a name="unmanaged-storage-account-considerations"></a>Důležité informace o účtech nespravovaného úložiště
-Výchozí akce při vytváření virtuálního počítače pomocí Azure CLI 2.0 je používat službu Azure Managed Disks.  Tyto disky jsou zpracovány platformou Azure, nevyžadují žádné přípravy ani umístění, kam ji uložit.  Nespravované disky se vyžaduje účet úložiště a mají některé důležité informace o dalších výkonu.  Další informace o spravovaných discích najdete v tématu [Přehled služby Azure Managed Disks](../windows/managed-disks-overview.md).  Následující část popisuje důležité informace o výkonu pouze v případě, že používáte nespravované disky.  Znovu, výchozí a doporučený úložiště řešením je použití spravovaných disků.
+Výchozí akce při vytváření virtuálního počítače pomocí Azure CLI je používat službu Azure Managed Disks.  Tyto disky jsou zpracovány platformou Azure, nevyžadují žádné přípravy ani umístění, kam ji uložit.  Nespravované disky se vyžaduje účet úložiště a mají některé důležité informace o dalších výkonu.  Další informace o spravovaných discích najdete v tématu [Přehled služby Azure Managed Disks](../windows/managed-disks-overview.md).  Následující část popisuje důležité informace o výkonu pouze v případě, že používáte nespravované disky.  Znovu, výchozí a doporučený úložiště řešením je použití spravovaných disků.
 
 Pokud vytvoříte virtuální počítač s nespravovanými disky, ujistěte se, že disky připojit z účtů úložiště, které se nacházejí ve stejné oblasti jako virtuální počítač k zajištění těsné blízkosti a minimalizaci latence sítě.  Každý účet úložiště úrovně Standard může mít nejvýše z 20 tisíc vstupně-výstupních operací a kapacity velikosti 500 TB.  Tento limit funguje na přibližně 40 vytížený disky, včetně disk s operačním systémem a všechny datové disky, které vytvoříte. Pro účty služby Premium Storage neexistuje žádné omezení maximální vstupně-výstupních operací, ale neexistuje omezení velikosti 32 TB. 
 

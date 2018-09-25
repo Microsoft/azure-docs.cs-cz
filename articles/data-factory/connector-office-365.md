@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/19/2018
+ms.date: 09/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 3783bc6ccda7a559e749a84005f20d860ab56755
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: a077c7d154235205126d77e5523c0acd96e70ad5
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368640"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031607"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-preview"></a>Zkopírovat data z Office 365 do Azure pomocí Azure Data Factory (Preview) 
 
@@ -46,7 +46,6 @@ Chcete-li kopírovat data z Office 365 do Azure, proveďte následující nutné
     - ID tenanta.  Pokyny najdete v tématu [získání ID tenanta](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
     - Klíč ID aplikace a aplikace.  Pokyny najdete v tématu [Get aplikace ID a ověřovacího klíče](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key).
 - Přidejte identitu uživatele, kteří budou využívat žádost o přístup dat jako vlastník webovou aplikaci Azure AD (ze služby Azure AD webová aplikace > Nastavení > vlastníky > Přidat vlastníka).
-- _(Doporučeno)_  [Zásady Azure přiřadit](../azure-policy/assign-policy-definition.md) pro šifrování dat k vašim úložištím dat. Informace o zásadách dodržování předpisů zobrazí schvalovatelům data jako součást požadavku na data. Po přiřazení zásady je vytvořené pro každé spuštění, aktivity kopírování ADF zkontroluje, abyste měli jistotu, že toto přiřazení zásady bude vynucovat. Přečtěte si [tady](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/Capabilities#policies) pro úplný seznam podporovaných zásad.
 
 ## <a name="approving-new-data-access-requests"></a>Schvalování nové žádosti o data access
 
@@ -54,9 +53,23 @@ Pokud je to poprvé, kdy požadujete data pro tento kontext (kombinace dat, kter
 
 Přečtěte si [tady](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/Approving-a-data-access-request) na tom, jak můžete schválit schvalující přístup k žádosti o data a najdete v [tady](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/On-boarding) vysvětlení na celkovou integraci s Privileged Access managementu, včetně nastavení dat Schvalovatel skupiny pro řetězce klíčů.
 
+## <a name="policy-validation"></a>Ověření zásad
+
+Pokud ADF je vytvořen jako součást spravované aplikace a přiřazení zásady Azure jsou provedeny s prostředky v rámci skupiny pro správu prostředků, pak pro každou aktivitu kopírování, spuštění, ADF zkontroluje Ujistěte se, že se vynucují přiřazení zásad. Přečtěte si [tady](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/Capabilities#policies) seznam podporovaných zásad.
+
 ## <a name="getting-started"></a>Začínáme
 
-Vytvoření kanálu s aktivitou kopírování pomocí sady .NET SDK, Python SDK, Azure Powershellu, rozhraní REST API nebo šablony Azure Resource Manageru. Zobrazit [kurz aktivity kopírování](quickstart-create-data-factory-dot-net.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
+>[!TIP]
+>Postup použití konektoru Office 365, najdete v části [načítat data z Office 365](load-office-365-data.md) článku.
+
+Vytvoříte kanál s aktivitou kopírování pomocí jedné z následujících nástrojů nebo sad SDK. Vyberte odkaz přejděte na kurz s podrobnými pokyny k vytvoření kanálu s aktivitou kopírování. 
+
+- [Azure Portal](quickstart-create-data-factory-portal.md)
+- [.NET SDK](quickstart-create-data-factory-dot-net.md)
+- [Python SDK](quickstart-create-data-factory-python.md)
+- [Azure PowerShell](quickstart-create-data-factory-powershell.md)
+- [REST API](quickstart-create-data-factory-rest-api.md)
+- [Šablona Azure Resource Manageru](quickstart-create-data-factory-resource-manager-template.md). 
 
 Následující části obsahují podrobnosti o vlastnostech, které se používají k definování entit služby Data Factory konkrétní konektor Office 365.
 

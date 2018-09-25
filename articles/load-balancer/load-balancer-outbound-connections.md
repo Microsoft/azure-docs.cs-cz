@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/27/2018
 ms.author: kumud
-ms.openlocfilehash: ea8e8ae9b0f487481ac2f25d4e2b9c5733e15431
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 24eec3b1f3c85384f80823b82962038c235b6dac
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842251"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036986"
 ---
 # <a name="outbound-connections-in-azure"></a>Odchozích připojení v Azure
 
@@ -69,7 +69,7 @@ Dočasné porty nástroje pro vyrovnávání zatížení veřejnou IP adresu fro
 
 SNAT porty jsou předpřidělené, jak je popsáno v [SNAT principy a token PAT](#snat) oddílu. Jsou to omezené prostředek, který může dojít k vyčerpání. Je důležité pochopit, jak jsou [spotřebované](#pat). Chcete-li pochopit, jak navrhnout za toto využití a zmírnit podle potřeby, zkontrolovat [Správa SNAT vyčerpání](#snatexhaust).
 
-Když [několika (veřejných) IP adresy jsou spojeny s základní nástroje pro vyrovnávání zatížení](load-balancer-multivip-overview.md), všechny tyto veřejné IP adresy jsou [Release candidate pro odchozí toky](#multivipsnat), a jedna je vybrána.  
+Když [několik veřejných IP adres jsou spojeny s základní nástroje pro vyrovnávání zatížení](load-balancer-multivip-overview.md), všechny tyto veřejné IP adresy jsou [Release candidate pro odchozí toky](#multivipsnat), a jedna náhodně vybraná.  
 
 Pokud chcete monitorovat stav odchozí připojení s základní nástroje pro vyrovnávání zatížení, můžete použít [Log Analytics pro nástroj pro vyrovnávání zatížení](load-balancer-monitor-log.md) a [upozornění protokolů událostí](load-balancer-monitor-log.md#alert-event-log) pro monitorování zpráv vyčerpání portů SNAT.
 

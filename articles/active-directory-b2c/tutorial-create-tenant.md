@@ -1,21 +1,21 @@
 ---
 title: Kurz – vytvoření tenanta Azure Active Directory B2C | Dokumentace Microsoftu
 description: Zjistěte, jak připravit pro registraci vaší aplikace tak, že vytvoříte tenanta služby Azure Active Directory B2C na webu Azure portal.
-services: active-directory-b2c
+services: B2C
 author: davidmu1
 manager: mtillman
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 06/19/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: d5831d868bec940c4e38f62e70e456ae84903ada
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: fe86541ed64d780c094eeb761053c76028b38862
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604906"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063604"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Kurz: Vytvoření klienta služby Azure Active Directory B2C
 

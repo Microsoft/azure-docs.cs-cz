@@ -9,14 +9,14 @@ ms.service: sql-database
 ms.prod_service: sql-database, sql-data-warehouse
 ms.custom: security
 ms.topic: conceptual
-ms.date: 09/07/2018
+ms.date: 09/20/2018
 ms.author: vanto
-ms.openlocfilehash: 118911687326bfa938c7276337377e3d3cb66bf2
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 698014c24d6a3af3fb79980a07e25483554b1007
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44715393"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042427"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-firewall-rules"></a>Azure SQL Database a SQL Data Warehouse pravidla brány firewall 
 
@@ -75,7 +75,7 @@ Pokud chcete umožnit aplikacím z Azure připojení k vašemu serveru SQL Azure
 > 
 
 ## <a name="creating-and-managing-firewall-rules"></a>Vytváření a Správa pravidel brány firewall
-První nastavení brány firewall na úrovni serveru můžete vytvořit pomocí [webu Azure portal](https://portal.azure.com/) nebo programově pomocí [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql), [rozhraní příkazového řádku Azure](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create), nebo [ Rozhraní REST API](https://docs.microsoft.com/rest/api/sql/firewallrules). Další pravidla brány firewall na úrovni serveru můžete vytvářet a spravovat těmito způsoby nebo prostřednictvím jazyka Transact-SQL. 
+První nastavení brány firewall na úrovni serveru můžete vytvořit pomocí [webu Azure portal](https://portal.azure.com/) nebo programově pomocí [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql), [rozhraní příkazového řádku Azure](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create), nebo [ Rozhraní REST API](https://docs.microsoft.com/rest/api/sql/firewallrules). Další pravidla brány firewall na úrovni serveru můžete vytvářet a spravovat těmito způsoby nebo prostřednictvím jazyka Transact-SQL. 
 
 > [!IMPORTANT]
 > Pravidla brány firewall na úrovni databáze lze vytvořit pouze a spravují s použitím příkazů jazyka Transact-SQL. 
@@ -167,11 +167,11 @@ New-AzureRmSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 ## <a name="manage-firewall-rules-using-azure-cli"></a>Správa pravidel brány firewall pomocí Azure CLI
 | Rutina | Úroveň | Popis |
 | --- | --- | --- |
-|[Vytvoření az sql server firewall-rule](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create)|Server|Vytvoří pravidlo brány firewall serveru|
-|[AZ sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_list)|Server|Obsahuje seznam pravidel brány firewall na serveru|
-|[AZ sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_show)|Server|Zobrazí podrobnosti pravidla brány firewall|
-|[AZ sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az_sql_server_firewall_rule_update)|Server|Aktualizuje pravidlo brány firewall|
-|[AZ sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_delete)|Server|Odstraní pravidlo brány firewall|
+|[Vytvoření az sql server firewall-rule](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|Server|Vytvoří pravidlo brány firewall serveru|
+|[AZ sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|Server|Obsahuje seznam pravidel brány firewall na serveru|
+|[AZ sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-show)|Server|Zobrazí podrobnosti pravidla brány firewall|
+|[AZ sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-update)|Server|Aktualizuje pravidlo brány firewall|
+|[AZ sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|Server|Odstraní pravidlo brány firewall|
 
 Následující příklad nastaví pravidlo brány firewall na úrovni serveru pomocí Azure CLI: 
 

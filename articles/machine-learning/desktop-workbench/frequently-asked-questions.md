@@ -11,14 +11,17 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
-ms.openlocfilehash: 94a1f3bbba83e8e71cf9440b5ded0784f4616c99
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4785f87515663831b1177c6c0958d3d965351797
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38674151"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996566"
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Nejčastější dotazy k Azure Machine Learning
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
 
 Služba Azure Machine Learning je plně spravovaná služba Azure, která umožňuje vytvářet, testovat, spravovat a nasadit modely AI a strojové učení. Naše služby a aplikace ke stažení nabízejí přístup založeno na kódu, který využívá cloud, místní a hraničními zařízeními a poskytují vlaku, nasazovat, spravovat a monitorovat modelů pomocí power, rychlost a pružnost. Případně Azure Machine Learning Studio nabízí založené na prohlížeči visual a přetahování pro vytváření prostředí a kde není vyžadováno žádné kódování. 
 
@@ -31,10 +34,6 @@ Azure Blob Storage a Azure Container Registry se používají technologii Azure 
 **Jak Azure Machine Learning souvisí Microsoft Machine Learning Services v SQL serveru 2017?**   
 
 Machine Learning Services v SQL serveru 2017 je rozšiřitelný, škálovatelnou platformu pro integraci úlohy strojového učení do databáze pracovních postupů. To se skvěle hodí pro scénáře, ve kterém jsou vyžadována pro příklad, ve kterém přesun dat je nákladné nebo untenable místní řešení. Naproti tomu Cloudová nebo hybridní úlohy se skvěle hodí pro naše nové služby Azure. 
-
-**Podporujete Pythonu a r.? A co jiných programovacích jazycích, jako je C++**
-
-V tuto chvíli podporujeme Python pouze. Jsme pracujete integrace R a očekávají, že budete ho mít dostupný brzy. 
 
 **Jak Azure Machine Learning souvisí Microsoft Machine Learning pro Spark?**
 
@@ -172,4 +171,4 @@ Naše produkty ve verzi preview a služeb zahrnují nejlepší open source komun
 
 **Jak Azure Machine Learning souvisí Microsoft Cognitive Toolkit?**
 
-[Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/) je jednou z mnoha architektur podporuje našich nových nástrojů a služeb. Sada Cognitive Toolkit je jednotný nástrojů pro obsáhlého learningu a umožňuje využívat a kombinovat Oblíbené modelů strojového učení, včetně kanál dopředné hluboké Neuronové sítě, Konvoluční sítě pořadí pořadí a Rekurentní sítě. Další informace o Microsoft Cognitive Toolkit, navštivte naši [dokumentaci k produktu](https://docs.microsoft.com/cognitive-toolkit/). 
+[Microsoft Cognitive Toolkit](https://www.microsoft.com/cognitive-toolkit/) je jednou z mnoha architektur podporuje našich nových nástrojů a služeb. Sada Cognitive Toolkit je jednotný nástrojů pro obsáhlého learningu a umožňuje využívat a kombinovat Oblíbené modelů strojového učení, včetně kanál dopředné hluboké Neuronové sítě, Konvoluční sítě pořadí pořadí a Rekurentní sítě. Další informace o Microsoft Cognitive Toolkit, navštivte naši [dokumentaci k produktu](https://docs.microsoft.com/cognitive-toolkit/). 

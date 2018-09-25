@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) umožňuje neustále pracovat na aplikaci zpřesnit jej a zvýšit jeho umožňující porozumět jazyku.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: f697e55e095baf113b7e622c4e7447b78444d4ac
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 6bb03975e36e93c2496eb4c6013be21ebc891ed1
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054737"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039697"
 ---
 # <a name="test-your-luis-app"></a>Testování aplikace LUIS
 <a name="train-your-app"></a>

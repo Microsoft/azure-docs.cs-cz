@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: jimdial
-ms.openlocfilehash: c11883156f53ab53ebe6f84d66232f81f8cf31ff
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: bd8a9e651c3b2369ae29be966ba4c9cbe0ae579b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38697360"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972908"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Přiřadit několik IP adres pro virtuální počítače pomocí Azure CLI
 
@@ -34,7 +34,7 @@ Tento článek vysvětluje, jak vytvořit virtuální počítač (VM) prostředn
 
 Následující kroky popisují, jak vytvořit virtuální počítač příklad s několika IP adresami, jak je popsáno ve scénáři. Změna hodnot proměnných v "" a typy IP adres, jak je vyžadováno pro implementaci. 
 
-1. Nainstalujte [příkazového řádku Azure CLI 2.0](/cli/azure/install-az-cli2) Pokud ještě nemáte nainstalovaný.
+1. Nainstalujte [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) Pokud ještě nemáte nainstalovaný.
 2. Vytvoření veřejného a privátního pár klíčů SSH pro virtuální počítače s Linuxem podle postupu uvedeného v [vytvoření veřejného a privátního pár klíčů SSH pro virtuální počítače s Linuxem](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 3. Z příkazového prostředí, přihlaste se pomocí příkazu `az login` a vyberte předplatné, které používáte.
 4. Vytvoření virtuálního počítače tak, že spustíte skript, který odpovídá na počítači se systémem Linux nebo Mac. Skript vytvoří skupinu prostředků, jednou virtuální sítí (VNet), jednu síťovou kartu pomocí tří konfigurací protokolu IP a virtuální počítač se dvěma síťovými kartami k němu připojená. Síťové rozhraní, veřejné IP adresy, virtuální síť a prostředky virtuálního počítače musí existovat ve stejném umístění a předplatném. I když prostředky všechny nemusí existovat ve stejné skupině prostředků, v následujícím skriptu dělají.
@@ -157,7 +157,7 @@ az vm create \
 
 Kromě vytvoření virtuálního počítače se síťovým rozhraním s 3: Konfigurace protokolu IP, skript vytvoří:
 
-- Na úrovni premium jeden spravovaný disk ve výchozím nastavení, ale máte další možnosti pro typ disku, které lze vytvořit. Přečtěte si [vytvořit virtuální počítač s Linuxem pomocí rozhraní příkazového řádku Azure CLI 2.0](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , kde najdete podrobnosti.
+- Na úrovni premium jeden spravovaný disk ve výchozím nastavení, ale máte další možnosti pro typ disku, které lze vytvořit. Přečtěte si [vytvořit virtuální počítač s Linuxem pomocí Azure CLI](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , kde najdete podrobnosti.
 - Virtuální síť s jednou podsítí a dvě veřejné IP adresy. Alternativně můžete použít *existující* virtuální sítě, podsítě, síťová karta nebo prostředky veřejné IP adresy. Chcete-li další informace o použití stávajících síťových prostředků, namísto vytváření dalších prostředků, zadejte `az vm create -h`.
 
 Veřejné IP adresy mají nominální poplatek. Další informace o cenách IP adres, [ceny IP adres](https://azure.microsoft.com/pricing/details/ip-addresses) stránky. Platí omezení na počet veřejné IP adresy, které je možné v rámci předplatného. Další informace o omezeních najdete v článku o [omezeních Azure](../azure-subscription-service-limits.md#networking-limits).
@@ -170,7 +170,7 @@ Přidat privátních IP adres do operačního systému virtuálního počítače
 
 Provedením následujících kroků můžete přidat další privátní a veřejné IP adresy pro existující rozhraní sítě Azure. V příkladech stavět [scénář](#Scenario) popsaných v tomto článku.
 
-1. Otevřete příkazové okno a proveďte zbývající kroky v této části v rámci jedné relace. Pokud ještě nemáte rozhraní příkazového řádku Azure, instalaci a konfiguraci, proveďte kroky v [instalace Azure CLI 2.0](/cli/azure/install-az-cli2?toc=%2fazure%2fvirtual-network%2ftoc.json) článku a přihlaste se k Azure, účet se `az-login` příkazu.
+1. Otevřete příkazové okno a proveďte zbývající kroky v této části v rámci jedné relace. Pokud ještě nemáte rozhraní příkazového řádku Azure, instalaci a konfiguraci, proveďte kroky v [instalace Azure CLI](/cli/azure/install-az-cli2?toc=%2fazure%2fvirtual-network%2ftoc.json) článku a přihlaste se k Azure, účet se `az-login` příkazu.
 
 2. Proveďte kroky v jednom z následujících částí, na základě vašich požadavků:
 

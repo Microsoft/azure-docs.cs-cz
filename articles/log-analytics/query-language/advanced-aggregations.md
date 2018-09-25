@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 661ff7c07ba2bb17eb5830b38bb39e1c3e80bb55
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 288af0eae50634f44d6af8c787b56112bb3119ff
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45602902"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998589"
 ---
 # <a name="advanced-aggregations-in-log-analytics-queries"></a>Pokročilé agregace v dotazy Log Analytics
 
@@ -34,7 +34,7 @@ Tento článek popisuje některé pokročilejší možnosti agregace, která je 
 ## <a name="generating-lists-and-sets"></a>Generování seznamy a sad
 Můžete použít `makelist` kontingenční data pořadím hodnot v určitém sloupci. Můžete třeba prozkoumat nejběžnější pořadí událostí se provádějí na počítačích. V podstatě můžete přesouvat data pořadím identifikátory EventID v rozmezí na každém počítači. 
 
-```KQL
+```Kusto
 Event
 | where TimeGenerated > ago(12h)
 | order by TimeGenerated desc
@@ -50,7 +50,7 @@ Event
 
 Je také užitečné vytvořit seznam pouze jedinečné hodnoty. Tento postup se nazývá _nastavit_ a dá vygenerovat pomocí `makeset`:
 
-```KQL
+```Kusto
 Event
 | where TimeGenerated > ago(12h)
 | order by TimeGenerated desc
@@ -67,11 +67,12 @@ Stejně jako `makelist`, `makeset` také pracuje s seřazených dat a bude gener
 ## <a name="expanding-lists"></a>Rozbalování seznamů
 Inverzní operace k `makelist` nebo `makeset` je `mvexpand`, který rozbalí seznam hodnot k oddělení řádků. Můžete rozbalit napříč libovolným počtem dynamické sloupce, JSON a pole. Například můžete zkontrolovat *prezenčního signálu* tabulky pro odesílání dat z počítačů, které odeslaly prezenční signál za poslední hodinu řešení:
 
-```KQL
+```Kusto
 Heartbeat
 | where TimeGenerated > ago(1h)
 | project Computer, Solutions
 ```
+
 | Počítač | Řešení | 
 |--------------|----------------------|
 | POČÍTAČ1 | "zabezpečení", "aktualizace", "sledování změn ve" |
@@ -81,23 +82,28 @@ Heartbeat
 
 Použití `mvexpand` zobrazíte každá hodnota na samostatném řádku namísto seznam oddělený čárkami:
 
-Prezenční signál | kde TimeGenerated > ago(1h) | Projekt počítače, rozdělit (řešení, ",") | mvexpand řešení
+```Kusto
+Heartbeat
+| where TimeGenerated > ago(1h)
+| project Computer, split(Solutions, ",")
+| mvexpand Solutions
 ```
-| Computer | Solutions | 
+
+| Počítač | Řešení | 
 |--------------|----------------------|
-| computer1 | "security" |
-| computer1 | "updates" |
-| computer1 | "changeTracking" |
-| computer2 | "security" |
-| computer2 | "updates" |
-| computer3 | "antiMalware" |
-| computer3 | "changeTracking" |
+| POČÍTAČ1 | "zabezpečení" |
+| POČÍTAČ1 | "aktualizace" |
+| POČÍTAČ1 | "sledování změn ve" |
+| POČÍTAČ2 | "zabezpečení" |
+| POČÍTAČ2 | "aktualizace" |
+| POČÍTAČ3 | "Antimalwarové" |
+| POČÍTAČ3 | "sledování změn ve" |
 | ... | ... | ... |
-```
+
 
 Můžete pak použít `makelist` znovu k seskupení položek najednou a tentokrát naleznete v seznamu počítačů podle řešení:
 
-```KQL
+```Kusto
 Heartbeat
 | where TimeGenerated > ago(1h)
 | project Computer, split(Solutions, ",")
@@ -115,7 +121,7 @@ Heartbeat
 ## <a name="handling-missing-bins"></a>Chybějící přihrádek zpracování
 Užitečné použití `mvexpand` je potřeba vyplnit výchozí hodnoty pro chybějící přihrádky. Předpokládejme například, že se díváte provozuschopnost konkrétní počítač, ve kterých prezenčního signálu. Chcete také zobrazit prezenčního signálu, který je ve zdroji _kategorie_ sloupce. Za normálních okolností bychom použili jednoduchý příkaz shrnout takto:
 
-```KQL
+```Kusto
 Heartbeat
 | where TimeGenerated > ago(12h)
 | summarize count() by Category, bin(TimeGenerated, 1h)
@@ -131,7 +137,7 @@ Heartbeat
 
 V těchto výsledků ale sady přidružené k "2017-06-06T19:00:00Z" chybí, protože není k dispozici žádná data prezenčního signálu pro určitou hodinu. Použití `make-series` funkci přiřadí výchozí hodnotu prázdných kbelíků. Tím se vygeneruje řádek pro každou kategorii se dvěma sloupci další pole, jeden pro hodnoty a jeden pro odpovídající časovým intervalům:
 
-```KQL
+```Kusto
 Heartbeat
 | make-series count() default=0 on TimeGenerated in range(ago(1d), now(), 1h) by Category 
 ```
@@ -143,7 +149,7 @@ Heartbeat
 
 Třetího prvku pole *count_* pole má hodnotu 0, podle očekávání a neexistuje odpovídající razítko "2017-06-06T19:00:00.0000000Z" v _TimeGenerated_ pole. Formát tohoto pole je obtížné číst ale. Použití `mvexpand` rozbalte pole a vytvořit stejný formát výstupu vygenerovanými `summarize`:
 
-```KQL
+```Kusto
 Heartbeat
 | make-series count() default=0 on TimeGenerated in range(ago(1d), now(), 1h) by Category 
 | mvexpand TimeGenerated, count_
@@ -165,7 +171,7 @@ Heartbeat
 Běžný scénář, kdy je výběr názvy některé konkrétní entity založené na sadě kritérií a potom filtrování jinou sadu dat do této sady entit. Například můžete najít počítače, na kterých je známo, že jim chybí aktualizace a identifikovat IP adresy, které uvádějí tyto počítače k:
 
 
-```KQL
+```Kusto
 let ComputersNeedingUpdate = toscalar(
     Update
     | summarize makeset(Computer)

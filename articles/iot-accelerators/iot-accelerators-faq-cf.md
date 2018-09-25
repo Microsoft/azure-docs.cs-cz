@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: d2f5ce97ee81deaf590771f4794af4adf0fdbd1b
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 737a76ba313dddaa58c302f1df501f16a5c4e9e8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248583"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966540"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Nejčastější dotazy pro akcelerátor řešení připojená továrna
 
@@ -111,7 +111,7 @@ Simulace vlastní zaregistruje následující zařízení:
 * publisher.rio.corp.contoso
 * publisher.seattle.corp.contoso
 
-Použití [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) nebo [rozšíření IoT pro Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension) nástroj, můžete zkontrolovat zařízení, která jsou zaregistrovaná v centru IoT vaše řešení používá. Pokud chcete použít Průzkumník zařízení, potřebujete připojovací řetězec pro službu IoT hub ve vašem nasazení. Použití rozšíření IoT pro Azure CLI 2.0, potřebujete název vašeho centra IoT.
+Použití [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) nebo [rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension) nástroj, můžete zkontrolovat zařízení, která jsou zaregistrovaná v centru IoT vaše řešení používá. Pokud chcete použít Průzkumník zařízení, potřebujete připojovací řetězec pro službu IoT hub ve vašem nasazení. Použití rozšíření IoT pro Azure CLI, potřebujete název vašeho centra IoT.
 
 ### <a name="how-can-i-get-log-data-from-the-simulation-components"></a>Jak lze získat data protokolu z simulované komponenty?
 

@@ -8,12 +8,12 @@ ms.date: 06/06/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: af4a831c084ae10b381b8e08fd0ce4798b21b394
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: a65eb029dbf10b194bd28bf7ad82f5aa839338a2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382167"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990616"
 ---
 # <a name="learn-how-to-use-deployment-manifests-to-deploy-modules-and-establish-routes"></a>Zjistěte, jak můžete nasadit moduly a vytvářet manifesty nasazení
 
@@ -148,7 +148,7 @@ Můžete vytvářet dotazy kolem všechny tři parametry s následující syntax
 * Vlastnosti aplikace: `<propertyName>`
 * Vlastnosti textu: `$body.<propertyName>` 
 
-Příklady o tom, jak vytvářet dotazy na vlastnosti zprávy, najdete v článku [trasy výrazech dotazů zprávy typu zařízení cloud](../iot-hub/iot-hub-devguide-query-language.md#device-to-cloud-message-routes-query-expressions).
+Příklady o tom, jak vytvářet dotazy na vlastnosti zprávy, najdete v článku [trasy výrazech dotazů zprávy typu zařízení cloud](../iot-hub/iot-hub-devguide-routing-query-syntax.md).
 
 Příklad, který je specifický pro IoT Edge je, když chcete filtrovat zprávy, které byly přijaty zařízení brány ze zařízení typu list. Zprávy, které pocházejí z modulů obsahují systém vlastnost s názvem **connectionModuleId**. Takže pokud chcete pro směrování zpráv ze zařízení typu list přímo do služby IoT Hub, použijte k vyloučení zprávy modulu pro následující trasy:
 
@@ -265,7 +265,7 @@ Tento příklad dokumentu JSON manifestu nasazení.
 * Teď, když víte, jak se používají moduly IoT Edge, [pochopení požadavků a nástroje pro vývoj modulů IoT Edge][lnk-module-dev].
 
 [lnk-deploy]: module-deployment-monitoring.md
-[lnk-iothub-query]: ../iot-hub/iot-hub-devguide-query-language.md
+[lnk-iothub-query]: ../iot-hub/iot-hub-devguide-routing-query-syntax.md
 [lnk-docker-create-options]: https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate
 [lnk-docker-logging-options]: https://docs.docker.com/engine/admin/logging/overview/
 [lnk-module-dev]: module-development.md

@@ -15,16 +15,17 @@ ms.workload: big-compute
 ms.date: 04/05/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 85bda9e1a936f19a37be2f2c1c42f948cab727d6
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 98bd088d4995bd1444b059531dc5b19d0283f551
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122463"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965523"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch metriky, výstrahy a protokoly pro diagnostické hodnocení a monitorování
 
-Tento článek vysvětluje, jak monitorovat pomocí funkce účtu Batch [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md). Azure Monitor provádí sběr [metriky](../monitoring-and-diagnostics/monitoring-overview-metrics.md) a [diagnostické protokoly](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) pro prostředky v účtu Batch. Shromažďování a používání těchto dat různými způsoby, jak monitorovat účtu Batch a diagnostikovat problémy s. Můžete taky nakonfigurovat [upozornění na metriku](../monitoring-and-diagnostics/monitoring-overview-alerts.md#alerts-on-azure-monitor-data) tak můžete dostávat upozornění na metriku dosáhne zadanou hodnotu. 
+ 
+Tento článek vysvětluje, jak monitorovat pomocí funkce účtu Batch [Azure Monitor](../azure-monitor/overview.md). Azure Monitor provádí sběr [metriky](../monitoring/monitoring-data-collection.md#metrics) a [diagnostické protokoly](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) pro prostředky v účtu Batch. Shromažďování a používání těchto dat různými způsoby, jak monitorovat účtu Batch a diagnostikovat problémy s. Můžete taky nakonfigurovat [upozornění na metriku](../monitoring-and-diagnostics/monitoring-overview-alerts.md) tak můžete dostávat upozornění na metriku dosáhne zadanou hodnotu. 
 
 ## <a name="batch-metrics"></a>Metriky služby batch
 
@@ -64,7 +65,8 @@ Konfigurace upozornění na metriku na portálu:
 2. V části **monitorování**, klikněte na tlačítko **pravidla upozornění** > **přidat upozornění metriky**.
 3. Vyberte metriku, výstražný stav (např. Pokud metrika překročí určitou hodnotu v období) a minimálně jedno oznámení.
 
-Můžete také nakonfigurovat, a téměř v reálném čase výstrahy s použitím [rozhraní REST API](https://docs.microsoft.com/rest/api/monitor/). Další informace najdete v tématu [použití novějších upozornění metrik pro služby Azure na webu Azure portal](../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md)
+Můžete také nakonfigurovat, a téměř v reálném čase výstrahy s použitím [rozhraní REST API](https://docs.microsoft.com/rest/api/monitor/). Další informace najdete v tématu [přehled výstrah](../monitoring-and-diagnostics/monitoring-overview-alerts.md)
+
 ## <a name="batch-diagnostics"></a>Diagnostika služby batch
 
 Diagnostické protokoly obsahují informace, protože ho vygeneroval prostředky Azure, které popisují operace každého prostředku. Pro službu Batch můžete shromažďovat tyto protokoly:

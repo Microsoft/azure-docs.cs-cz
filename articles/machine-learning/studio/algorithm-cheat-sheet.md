@@ -3,7 +3,6 @@ title: Služby Machine learning tahák k algoritmům – Azure | Dokumentace Mic
 description: Tisknutelný strojového učení tahák k algoritmům pomůže vám zvolit správný algoritmus pro prediktivní model Azure Machine Learning Studio.
 keywords: tahák k algoritmům, tahák, algoritmu strojového učení
 services: machine-learning
-documentationcenter: ''
 author: pakalra
 ms.author: pakalra
 manager: cgronlun
@@ -11,51 +10,39 @@ editor: cgronlun
 ms.assetid: e1dc31ec-1acb-463f-ba77-de565d4ddf4d
 ms.service: machine-learning
 ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: b080a739aa73e3c8ef95c7db9a6358d942e94bba
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 56fadde5694dbd298c812db258105e03b7d23d45
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238382"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996736"
 ---
-# <a name="machine-learning-algorithm-cheat-sheet-for-microsoft-azure-machine-learning-studio"></a>Tahák k algoritmům služby Machine Learning pro Microsoft Azure Machine Learning Studio
-**Aktualizace Microsoft Azure Machine Learning algoritmus Ošidit list** pomáhá vybrat správné algoritmu pro model prediktivní analýzy.
+# <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-studio"></a>Machine learning tahák pro Azure Machine Learning Studio
+
+**Azure Machine Learning algoritmus Ošidit list** pomáhá vybrat správné algoritmu pro model prediktivní analýzy.
 
 [Azure Machine Learning Studio](https://studio.azureml.net/) má velké knihovny algoritmů z ***regrese***, ***klasifikace***, ***clustering***, a  ***detekce anomálií*** rodiny. Každý se zaměřuje na řešení jiného typu problému machine learning.
 
 ## <a name="download-machine-learning-algorithm-cheat-sheet"></a>Stažení: Machine learning tahák k algoritmům
-**Stáhněte si tahák tady: [Machine Learning algoritmus Ošidit list (11 × 17 palců)](http://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v6.pdf)**
 
-![Machine Learning tahák: Zjistěte, jak zvolit algoritmus Machine Learning.][cheat-sheet]
+**Stáhněte si tahák tady: [Machine Learning algoritmus Ošidit list (11 × 17 palců)](http://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v7.pdf)**
+
+![Služby Machine learning tahák k algoritmům: Zjistěte, jak zvolit algoritmus strojového učení.][cheat-sheet]
 
 [cheat-sheet]: ./media/algorithm-cheat-sheet/machine-learning-algorithm-cheat-sheet-small_v_0_6-01.png
 
-Stáhnout a vytisknout Machine Learning algoritmus Ošidit listu ve velikosti tabloid zachovat po ruce a získat pomoc s výběrem algoritmus.
+Stáhnout a vytisknout Machine Learning Studio algoritmus Ošidit listu ve velikosti tabloid zachovat po ruce a získat pomoc s výběrem algoritmus.
 
 > [!NOTE]
-> Přečtěte si článek [jak zvolit algoritmy pro Microsoft Azure Machine Learning](algorithm-choice.md) podrobné pokyny k používání tento tahák.
-> 
-> 
+> Pomoc při používání tento tahák pro výběr správné algoritmus plus hlubší diskuzi o různých typech algoritmů strojového učení a jak se používají, najdete v části [jak zvolit algoritmy pro Microsoft Azure Machine Learning](algorithm-choice.md).
 
-## <a name="more-help-with-algorithms"></a>Další pomoc s algoritmy
-* Pomoc při používání tento tahák pro výběr správné algoritmus plus hlubší diskuzi o různých typech algoritmů strojového učení a jak se používají, najdete v části [jak zvolit algoritmy pro Microsoft Azure Machine Learning](algorithm-choice.md).
-* Infografika ke stažení, která popisuje algoritmy a poskytuje příklady, naleznete v tématu [Infografika ke stažení: Základy s příklady algoritmů služby Machine learning](basics-infographic-with-algorithm-examples.md).
-* Seznam podle kategorie všechny dostupných algoritmů strojového učení v nástroji Machine Learning Studio najdete v tématu [inicializovat Model] [ initialize-model] Machine Learning Studio algoritmus a pomůže modulu.
-* Úplný abecední seznam algoritmů a modulů v Machine Learning Studio najdete v tématu [seznam A-Z modulů Machine Learning Studio] [ a-z-list] Studio algoritmu strojového učení a pomůže modulu.
-* Pokud si chcete stáhnout a vytisknout diagram s přehledem funkcí nástroje Machine Learning Studio, nahlédněte do tématu [Diagram s přehledem možností nástroje Machine Learning Studio](studio-overview-diagram.md).
-
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
-
-## <a name="notes-and-terminology-definitions-for-the-machine-learning-algorithm-cheat-sheet"></a>Poznámky a definice terminologie pro strojové učení algoritmu tahák
+## <a name="notes-and-terminology-definitions-for-the-machine-learning-studio-algorithm-cheat-sheet"></a>Poznámky a definice terminologie pro algoritmus Machine Learning Studio tahák
 
 * Tento tahák k algoritmům nabízí návrhy jsou přibližné pravidla nástroje jezdce. Některé můžou ohnuty a některé mohou být flagrantly došlo k porušení. To je určený pro návrh výchozí bod. Nebojte se ke spuštění head-to-head konkurence mezi několik algoritmů s vašimi daty. Není jednoduše náhradu pochopení principů jednotlivých algoritmů a Principy systému, která vygenerovala vaše data.
 
-* Každý algoritmu strojového učení má svůj vlastní styl nebo *indukční posun*. Pro určitý problém může být vhodné několik algoritmů a jeden algoritmus může být vhodný lepší než jiné. Ale to není vždy možné předem znát, což je nejvhodnější. V takových případech patří několik algoritmů společně v stručný přehled stylů. Vhodné strategie může být jeden algoritmus a pokud výsledky ještě nejsou uspokojivé kvality, akci ostatní. Tady je příklad z [galerii Azure AI](http://gallery.cortanaintelligence.com/) experimentu, který se pokusí několik algoritmů na stejná data a porovnává výsledky: [porovnání třídění roc: písmeno rozpoznávání](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92).
+* Každý algoritmu strojového učení má svůj vlastní styl nebo *indukční posun*. Pro určitý problém může být vhodné několik algoritmů a jeden algoritmus může být vhodný lepší než jiné. Ale to není vždy možné předem znát, což je nejvhodnější. V takových případech patří několik algoritmů společně v stručný přehled stylů. Vhodné strategie může být jeden algoritmus a pokud výsledky ještě nejsou uspokojivé kvality, akci ostatní. Tady je příklad z [galerii Azure AI](http://gallery.azure.ai/) experimentu, který se pokusí několik algoritmů na stejná data a porovnává výsledky: [porovnání třídění roc: písmeno rozpoznávání](http://gallery.azure.ai/Details/a635502fc98b402a890efe21cec65b92).
 
 * Existují tři hlavní kategorie služby machine learning: **pod dohledem learning**, **supervize**, a **zpětnovazebnému učení**.
 
@@ -75,15 +62,20 @@ Stáhnout a vytisknout Machine Learning algoritmus Ošidit listu ve velikosti ta
 
 * Neuronové sítě je možné s kategorií proměnné tak, že vytvoříte **fiktivní proměnná** pro každou kategorii ji nastavíte na 1 v případech, kde platí kategorii, 0, pokud tomu tak není.
 
+## <a name="next-steps"></a>Další postup
 
-<!-- This is how you can embed a link in an image in HTML. Don't know how to do this in markdown.
-<a href="http://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet.pdf">
-<img src="C:\Users\garye\azure-docs-pr\articles\media\machine-learning-algorithm-cheat-sheet\cheat-sheet-small.png">
-</a>
--->
+* Infografika ke stažení, která popisuje algoritmy a poskytuje příklady, naleznete v tématu [Infografika ke stažení: Základy s příklady algoritmů služby Machine learning](basics-infographic-with-algorithm-examples.md).
+
+* Seznam podle kategorie všechny dostupných algoritmů strojového učení v nástroji Machine Learning Studio najdete v tématu [inicializovat Model] [ initialize-model] Machine Learning Studio algoritmus a pomůže modulu.
+
+* Úplný abecední seznam algoritmů a modulů v Machine Learning Studio najdete v tématu [seznam A-Z modulů Machine Learning Studio] [ a-z-list] Studio algoritmu strojového učení a pomůže modulu.
+
+* Pokud si chcete stáhnout a vytisknout diagram s přehledem funkcí nástroje Machine Learning Studio, nahlédněte do tématu [Diagram s přehledem možností nástroje Machine Learning Studio](studio-overview-diagram.md).
+
+[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 <!-- Module References -->
-[a-z-list]: https://msdn.microsoft.com/library/azure/dn906033.aspx
-[initialize-model]: https://msdn.microsoft.com/library/azure/0c67013c-bfbc-428b-87f3-f552d8dd41f6/
-[k-means-clustering]: https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/
-[one-vs-all-multiclass]: https://msdn.microsoft.com/library/azure/7191efae-b4b1-4d03-a6f8-7205f87be664/
+[a-z-list]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/a-z-module-list
+[initialize-model]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/machine-learning-initialize-model
+[k-means-clustering]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/k-means-clustering
+[one-vs-all-multiclass]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/one-vs-all-multiclass

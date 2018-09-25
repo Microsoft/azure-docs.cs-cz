@@ -2,20 +2,22 @@
 title: ActiveDirectoryInteractive připojuje k SQL | Dokumentace Microsoftu
 description: Příklad kódu jazyka C#, s vysvětlením, pro připojení ke službě Azure SQL Database s použitím SqlAuthenticationMethod.ActiveDirectoryInteractive režimu.
 services: sql-database
-author: GithubMirek
-manager: craigg
 ms.service: sql-database
+ms.subservice: security
 ms.custom: active directory
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/06/2018
+author: GithubMirek
 ms.author: MirekS
 ms.reviewer: GeneMi
-ms.openlocfilehash: 3d6eb70b3ce9072dc2c51220af89549022b5dacf
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.date: 04/06/2018
+manager: craigg
+ms.openlocfilehash: 80944e73f21d75943d4fa71c7ac9500e47bab250
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238264"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47055522"
 ---
 # <a name="use-activedirectoryinteractive-mode-to-connect-to-azure-sql-database"></a>Režim ActiveDirectoryInteractive slouží k připojení ke službě Azure SQL Database
 
@@ -122,13 +124,13 @@ Program jazyka C# spoléhá na obor názvů **Microsoft.IdentityModel.Clients.Ac
 
 Je jeden obory názvů, příklad jazyka C# využívající **System.Data.SqlClient**. Výčet je speciální zájmová **SqlAuthenticationMethod**. Tento výčet má následující hodnoty:
 
-- **SqlAuthenticationMethod.ActiveDirectory*interaktivní ***:&nbsp; použijte tento fragment se uživatelské jméno Azure AD k dosažení vícefaktorové ověřování služby Multi-Factor authentication.
+- **SqlAuthenticationMethod.ActiveDirectory * interaktivní ***:&nbsp; použijte tento fragment se uživatelské jméno Azure AD k dosažení vícefaktorové ověřování služby Multi-Factor authentication.
     - Tato hodnota je hlavním cílem tohoto článku. Vytvoří interaktivní zobrazením dialogová okna pro heslo uživatele a pro ověřování MFA, pokud vícefaktorové ověřování se vynucují na tohoto uživatele.
     - Tato hodnota je k dispozici od verze rozhraní .NET Framework verze 4.7.2.
 
-- **SqlAuthenticationMethod.ActiveDirectory*integrované ***:&nbsp; se používá *federované* účtu. Pro federované účet, který se označuje uživatelské jméno k doméně Windows. Tato metoda nepodporuje vícefaktorové ověřování.
+- **SqlAuthenticationMethod.ActiveDirectory * integrované ***:&nbsp; se používá *federované* účtu. Pro federované účet, který se označuje uživatelské jméno k doméně Windows. Tato metoda nepodporuje vícefaktorové ověřování.
 
-- **SqlAuthenticationMethod.ActiveDirectory*heslo ***:&nbsp; používá se pro ověřování, které vyžaduje uživatele služby Azure AD a heslo uživatele. Azure SQL Database provádí ověřování. Tato metoda nepodporuje vícefaktorové ověřování.
+- **SqlAuthenticationMethod.ActiveDirectory * heslo ***:&nbsp; používá se pro ověřování, které vyžaduje uživatele služby Azure AD a heslo uživatele. Azure SQL Database provádí ověřování. Tato metoda nepodporuje vícefaktorové ověřování.
 
 
 

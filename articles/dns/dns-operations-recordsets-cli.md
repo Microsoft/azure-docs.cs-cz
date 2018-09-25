@@ -1,6 +1,6 @@
 ---
-title: Správa záznamů DNS v DNS Azure pomocí rozhraní příkazového řádku Azure CLI 2.0 | Dokumentace Microsoftu
-description: Správa DNS sad záznamů a záznamů v Azure DNS, při hostování vaší domény ve službě Azure DNS. Všechny příkazy CLI 2.0 pro operace v sadách záznamů a záznamy.
+title: Správa záznamů DNS v DNS Azure pomocí rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+description: Správa DNS sad záznamů a záznamů v Azure DNS, při hostování vaší domény ve službě Azure DNS.
 services: dns
 documentationcenter: na
 author: vhorne
@@ -14,23 +14,23 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 05/15/2018
 ms.author: victorh
-ms.openlocfilehash: 41366f29ecf5dcd6ffe23148acd61100681620df
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 1f1ee4f69cc1ab656df04ed30cae6f4c3e55bfa7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39174385"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963811"
 ---
-# <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli-20"></a>Správa DNS záznamů a sad záznamů v DNS Azure pomocí rozhraní příkazového řádku Azure CLI 2.0
+# <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>Správa DNS záznamů a sad záznamů v DNS Azure pomocí Azure CLI
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](dns-operations-recordsets-portal.md)
-> * [Azure CLI 2.0](dns-operations-recordsets-cli.md)
+> * [Azure CLI](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
-V tomto článku se dozvíte, jak spravovat záznamy DNS pro zónu DNS s využitím – multiplatformního rozhraní příkazového řádku Azure (CLI) 2.0, který je k dispozici pro Windows, Mac a Linux. Můžete také spravovat svoje záznamy DNS pomocí [prostředí Azure PowerShell](dns-operations-recordsets.md) nebo [webu Azure portal](dns-operations-recordsets-portal.md).
+V tomto článku se dozvíte, jak spravovat záznamy DNS pro zónu DNS pomocí Azure CLI pro různé platformy, které je dostupné pro Windows, Mac a Linux. Můžete také spravovat svoje záznamy DNS pomocí [prostředí Azure PowerShell](dns-operations-recordsets.md) nebo [webu Azure portal](dns-operations-recordsets-portal.md).
 
-V příkladech v tomto článku předpokládá, že jste již [nainstalované Azure CLI 2.0, přihlásili jste se a vytvořili jste zónu DNS](dns-operations-dnszones-cli.md).
+V příkladech v tomto článku předpokládá, že jste již [nenainstalovali Azure CLI, přihlásili jste se a vytvořili jste zónu DNS](dns-operations-dnszones-cli.md).
 
 ## <a name="introduction"></a>Úvod
 

@@ -1,26 +1,29 @@
 ---
-title: Získání hodnot pro aplikaci ověřování – Azure SQL Database | Microsoft Docs
-description: Vytvořte objekt služby pro přístup k SQL Database z kódu.
+title: Získání hodnot pro ověřování pomocí služby app - Azure SQL Database | Dokumentace Microsoftu
+description: Vytvoření instančního objektu pro přístup k SQL Database z kódu.
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: develop apps
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: f6d3599425669a6717a58bb1e5ac0af4b291d4d6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: f9b66a430e1ca5b24853a5ff31ce13393b12b0c5
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646322"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063766"
 ---
-# <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Získat požadované hodnoty pro ověřování aplikace pro přístup k databázi SQL z kódu
-Chcete-li vytvořit a spravovat databáze SQL z kódu vaší aplikace je nutné zaregistrovat v Azure Active Directory (AAD) domény v rámci předplatného, kde byly vytvořeny vašich prostředků Azure.
+# <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Získání požadovaných hodnot pro ověření aplikace pro přístup k SQL Database z kódu
+Vytvoření a Správa služby SQL Database z kódu je nutné zaregistrovat aplikaci v doméně Azure Active Directory (AAD) v rámci předplatného, ve kterém byly vytvořeny prostředky Azure.
 
-## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Vytvořit objekt služby pro přístup k prostředkům z aplikace
-Je potřeba mít nejnovější [prostředí Azure PowerShell](https://msdn.microsoft.com/library/mt619274.aspx) nainstalovaná a spuštěná. Podrobné informace najdete v tématu [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azureps-cmdlets-docs).
+## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Vytvořit instanční objekt pro přístup k prostředkům z aplikace
+Je potřeba mít na nejnovější verzi [prostředí Azure PowerShell](https://msdn.microsoft.com/library/mt619274.aspx) nainstalovaná a spuštěná. Podrobné informace najdete v tématu [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azureps-cmdlets-docs).
 
 Následující skript prostředí PowerShell vytvoří aplikaci Active Directory (AD) a instanční objekt, který potřebujeme k ověření naší aplikace v jazyce C#. Skript vypíše hodnoty potřebné pro předchozí ukázku v jazyce C#. Podrobné informace najdete v tématu [Vytvoření instančního objektu pro přístup k prostředkům pomocí prostředí Azure PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md).
 
@@ -67,5 +70,5 @@ Následující skript prostředí PowerShell vytvoří aplikaci Active Directory
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 * [Vytvoření databáze SQL pomocí C#](sql-database-get-started-csharp.md)
-* [Připojení k databázi SQL pomocí ověřování Azure Active Directory](sql-database-aad-authentication.md)
+* [Připojení k SQL Database pomocí ověřování Azure Active Directory](sql-database-aad-authentication.md)
 

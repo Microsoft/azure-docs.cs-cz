@@ -11,14 +11,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 29f493449d48df26919a98452fa7f832d653d45e
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ROBOTS: NOINDEX
+ms.openlocfilehash: 762955103aeb48eb8a9b62f4e3ffe193bba71a38
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37861647"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947213"
 ---
 # <a name="document-collection-analysis"></a>Analýza kolekce dokumentů
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Tento scénář ukazuje, jak vytvořit souhrn a analyzovat velké kolekce dokumentů, včetně technik, jako je například learning frázi, tématu modelování a téma model analýza s využitím Azure ML Workbench. Azure Machine Learning Workbench poskytuje pro snadné škálování pro kolekci velmi velkých dokumentů a mechanismy pro trénování a vyladit modely v rámci různých výpočetní kontext, od místní výpočetní prostředky pro virtuální počítače pro datové vědy ke clusteru Spark. Snadný vývoj je zajišťováno prostřednictvím poznámkové bloky Jupyter v Azure Machine Learning Workbench.
 
@@ -60,7 +65,7 @@ Algoritmů strojového učení techniky/používané v tomto scénáři patří:
 
 Požadavky na spuštění v tomto příkladu jsou následující:
 
-* Ujistěte se, že jste správně nainstalovali [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) podle [instalace a vytvoření rychlý Start](../service/quickstart-installation.md).
+* Ujistěte se, že jste správně nainstalovali [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) podle [instalace a vytvoření rychlý Start](quickstart-installation.md).
 
 * V tomto příkladu by bylo možné spustit na libovolný výpočetní kontext. Ale doporučuje se ho spustit na počítači s více jádry s aspoň 16GB paměti a místa na disku 5GB.
 

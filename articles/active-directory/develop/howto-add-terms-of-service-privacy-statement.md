@@ -9,19 +9,19 @@ editor: ''
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/23/2018
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: cb05139241f92eb930a99c387e2f06cabac35caf
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 21cd4990e2117cef2d36fa2607a601afd1a4c4e4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581203"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990497"
 ---
 # <a name="terms-of-service-and-privacy-statement-for-registered-azure-active-directory-apps"></a>Podmínky služby a o ochraně osobních údajů pro registrované aplikace Azure Active Directory
 
@@ -54,12 +54,14 @@ Příklady: `https://myapp.com/terms-of-service` a `https://myapp.com/privacy-st
 ## <a name="adding-links-to-the-terms-of-service-and-privacy-statement"></a>Přidání odkazů na podmínky služby a o ochraně osobních údajů – příkaz
 
 Jakmile jsou připravené podmínkami služby a o ochraně osobních údajů, můžete přidat odkazy k těmto dokumentům ve své aplikaci pomocí jedné z těchto metod:
+
 * [Na webu Azure portal](#registered-in-azure-portal)
 * [V portálu pro registraci aplikací nebo Centrum pro vývojáře](#registered-in-app-reg-portal)
 * [Pomocí aplikace objektu JSON](#app-object-json)
 * [Pomocí MSGraph beta verze rozhraní REST API](#msgraph-beta-rest-api)
 
 ### <a name="registered-in-azure-portal"></a>Pokud jste vaši aplikaci zaregistrovali na webu Azure portal
+
 Pokud jste vaši aplikaci zaregistrovali na webu Azure portal, postupujte podle těchto kroků.
 
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com/).
@@ -68,9 +70,10 @@ Pokud jste vaši aplikaci zaregistrovali na webu Azure portal, postupujte podle 
 4. Vyplňte **URL podmínek služby** a **adresa URL prohlášení o ochraně osobních údajů** pole.
 5. Uložte provedené změny.
 
-![Oddíl properties aplikace s podmínkami adresy URL služby a o ochraně osobních údajů – příkaz](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
+    ![Oddíl properties aplikace s podmínkami adresy URL služby a o ochraně osobních údajů – příkaz](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
 
 ### <a name="registered-in-app-reg-portal"></a>Pokud jste vaši aplikaci zaregistrovali na portál pro registraci aplikace
+
 Pokud jste zaregistrovali aplikaci v portálu pro registraci aplikací nebo Centrum pro vývojáře, postupujte podle těchto kroků.
 
 1. Přihlaste se k [portál pro registraci aplikací](https://apps.dev.microsoft.com/).
@@ -78,9 +81,10 @@ Pokud jste zaregistrovali aplikaci v portálu pro registraci aplikací nebo Cent
 3. Vyplňte **URL podmínek služby** a **adresa URL prohlášení o ochraně osobních údajů** pole.
 4. Uložte provedené změny.
 
-![Části profilu aplikace s podmínkami adresy URL služby a o ochraně osobních údajů – příkaz](./media/howto-add-terms-of-service-privacy-statement/app-registration-portal-profile-terms-service-privacy-statement-urls.png)
+    ![Části profilu aplikace s podmínkami adresy URL služby a o ochraně osobních údajů – příkaz](./media/howto-add-terms-of-service-privacy-statement/app-registration-portal-profile-terms-service-privacy-statement-urls.png)
 
 ### <a name="app-object-json"></a>Pomocí aplikace objektu JSON
+
 Pokud chcete upravit aplikaci objekt JSON přímo, vám pomůže editoru manifestu v portálu Azure portal nebo portálu pro registraci aplikace zahrnovat odkazy na podmínky služby a o ochraně osobních údajů vaší aplikace.
 
 ```json
@@ -91,6 +95,7 @@ Pokud chcete upravit aplikaci objekt JSON přímo, vám pomůže editoru manifes
 ```
 
 ### <a name="msgraph-beta-rest-api"></a>Pomocí MSGraph beta verze rozhraní REST API
+
 Programově aktualizovat všechny aplikace, můžete použít MSGraph beta verze rozhraní REST API aktualizovat všechny vaše aplikace zahrnovat odkazy na podmínky služby a o ochraně osobních údajů příkaz dokumenty.
 
 ```

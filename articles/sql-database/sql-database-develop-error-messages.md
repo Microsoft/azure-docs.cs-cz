@@ -3,19 +3,22 @@ title: Kódy chyb SQL – Chyba připojení databáze | Dokumentace Microsoftu
 description: 'Další informace o kódy chyb SQL pro klientské aplikace SQL Database, jako je například běžných chyb připojení databáze, databáze kopírování problémy a obecné chyby. '
 keywords: Kód chyby SQL, přístup k sql, Chyba připojení databáze, kódy chyb sql
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: develop apps
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/14/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 643add4e0e4732734e9ef763a587755bf8700605
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: d5b98f573b60115002e813ebbef59eb7983ce3c2
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730998"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064386"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>Kódy chyb SQL pro klientské aplikace SQL Database: chyby připojení a dalších problémů databáze
 

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/25/2018
 ms.author: mahender
-ms.openlocfilehash: 5d058059f523d3567817cad8ac11e837fb4a0a49
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: fb9b50ecb16bd37d005403a14ea11c6d89f50dfe
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714240"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983640"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Použití spravované identity pro App Service a Azure Functions
 
@@ -52,7 +52,7 @@ Pokud chcete nastavit spravovanou identitu pomocí Azure CLI, budete muset použ
 
 - Použití [Azure Cloud Shell](../cloud-shell/overview.md) z portálu Azure portal.
 - Použijte vložené Azure Cloud Shell pomocí "Vyzkoušet" tlačítka, nachází v pravém horním rohu každý blok kódu níže.
-- [Nainstalujte nejnovější verzi 2.0 rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 nebo novější) Pokud byste radši chtěli použít místní konzoly příkazového řádku. 
+- [Nainstalujte nejnovější verzi Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 nebo novější) Pokud byste radši chtěli použít místní konzoly příkazového řádku. 
 
 Následující postup vás provede procesem vytvoření webové aplikace a její přiřazení identitu pomocí rozhraní příkazového řádku:
 
@@ -157,7 +157,7 @@ Neexistuje jednoduchý protokolu REST pro získání tokenu v App Service a Azur
 
 ### <a name="asal"></a>Pomocí knihovnu Microsoft.Azure.Services.appauthentication přistupovat pro .NET
 
-Pro aplikace .NET a funkce je nejjednodušší způsob, jak pracovat s spravovanou identitu prostřednictvím balíčku Microsoft.Azure.Services.appauthentication přistupovat. Tato knihovna také umožňuje testovat kód místně na svém vývojovém počítači, pomocí uživatelského účtu z aplikace Visual Studio [příkazového řádku Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest), nebo integrované ověřování Active Directory. Další informace o možnostech místní vývoj pomocí této knihovny, najdete v článku [Odkaz na Microsoft.Azure.Services.appauthentication přistupovat]. V této části se dozvíte, jak začít pracovat s knihovnou ve vašem kódu.
+Pro aplikace .NET a funkce je nejjednodušší způsob, jak pracovat s spravovanou identitu prostřednictvím balíčku Microsoft.Azure.Services.appauthentication přistupovat. Tato knihovna také umožňuje testovat kód místně na svém vývojovém počítači, pomocí uživatelského účtu z aplikace Visual Studio [rozhraní příkazového řádku Azure](/cli/azure), nebo integrované ověřování Active Directory. Další informace o možnostech místní vývoj pomocí této knihovny, najdete v článku [Odkaz na Microsoft.Azure.Services.appauthentication přistupovat]. V této části se dozvíte, jak začít pracovat s knihovnou ve vašem kódu.
 
 1. Přidat odkazy [Microsoft.Azure.Services.appauthentication přistupovat](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) a [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) balíčky NuGet pro vaši aplikaci.
 
