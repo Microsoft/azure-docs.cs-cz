@@ -14,11 +14,11 @@ ms.date: 06/15/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.openlocfilehash: 2f974b7773e7a4cbc0eda32a267bb5ab939644d8
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35998413"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47095112"
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription-or-a-storage-account"></a>Připojení Průzkumníka služby storage k předplatnému Azure Stack nebo účet úložiště
 
@@ -97,7 +97,7 @@ Pomocí následujících kroků pro připojení storage Exploreru k předplatné
 1. Vyberte **spravovat účty**. V Průzkumníku seznam předplatných Microsoft, které jste se přihlásili.
 2. Vyberte **přidat účet** pro připojení k předplatnému Azure Stack.
 
-    ![Přidat účet](media/azure-stack-storage-connect-se/add-an-account.png)
+    ![Přidání účtu](media/azure-stack-storage-connect-se/add-an-account.png)
 
 3. Vyberte **Další**. V okně připojení k Azure Storage dialogovém okně v části **prostředí Azure**vyberte **použít vlastní prostředí**, pak klikněte na tlačítko **Další**.
 
@@ -112,7 +112,7 @@ Pomocí následujících kroků pro připojení storage Exploreru k předplatné
 
     Pokud pracujete ve službě Azure Stack integrovaný systém a nemusíte vědět koncového bodu správy, obraťte se operátor.
 
-    ![Přidat účet](./media/azure-stack-storage-connect-se/custom-environments.png)
+    ![Přidání účtu](./media/azure-stack-storage-connect-se/custom-environments.png)
 
 5. Vyberte **přihlášení**, které umožňuje připojení k účtu Azure Stack, který je přidružený alespoň k jednomu aktivnímu předplatnému Azure Stack.
 
@@ -132,11 +132,11 @@ Můžete také připojit k účtu úložiště Azure Stack pomocí názvu účtu
 
 1. V levém podokně storage Exploreru vyberte spravovat účty. Zobrazí se všechny účty Microsoft, které jste se přihlásili.
 
-    ![Přidat účet](./media/azure-stack-storage-connect-se/azure-stack-sub-add-an-account.png)
+    ![Přidání účtu](./media/azure-stack-storage-connect-se/azure-stack-sub-add-an-account.png)
 
 2. Pro připojení k předplatnému Azure Stack, vyberte **přidat účet**.
 
-    ![Přidat účet](./media/azure-stack-storage-connect-se/azure-stack-use-a-storage-and-key.png)
+    ![Přidání účtu](./media/azure-stack-storage-connect-se/azure-stack-use-a-storage-and-key.png)
 
 3. V okně připojení k Azure Storage, dialogové okno Vybrat **použít název účtu úložiště a klíč**.
 

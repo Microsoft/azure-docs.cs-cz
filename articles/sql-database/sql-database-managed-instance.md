@@ -11,16 +11,16 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: bonova
-ms.openlocfilehash: 113f171f5ad4bcc8ee9abc2935a9741f7c23c3b0
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 711a076409ed1d90c197bbf97a6e15144c0a4d38
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734214"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956621"
 ---
-# <a name="what-is-a-managed-instance-preview"></a>Co je Managed Instance (preview)?
+# <a name="what-is-a-managed-instance"></a>Co je Managed Instance?
 
-Azure SQL Database Managed Instance (preview) je nový model nasazení služby Azure SQL Database poskytuje téměř 100 % kompatibilitu s nejnovějšími serveru SQL Server v místním (Enterprise Edition) databázový stroj, poskytuje nativní [(virtuální sítě Virtuální síť)](../virtual-network/virtual-networks-overview.md) implementace, která řeší běžné problémy zabezpečení a [obchodního modelu](https://azure.microsoft.com/pricing/details/sql-database/) uspokojivým pro zákazníky v místním systému SQL Server. Managed Instance umožňuje stávající zákazníci systému SQL Server k přenosu svých místních aplikací do cloudu s minimálními změnami aplikace a databáze. Managed Instance ve stejnou dobu, zachová všechny možnosti modelu PaaS (automatické použití dílčích oprav a verze aktualizace [automatické zálohování](sql-database-automated-backups.md), [vysoké dostupnosti](sql-database-high-availability.md) ), který výrazně snižuje režii na správu a celkové náklady na vlastnictví.
+Azure SQL Database Managed Instance je nový model nasazení služby Azure SQL Database poskytuje téměř 100 % kompatibilitu s nejnovějšími serveru SQL Server v místním (Enterprise Edition) databázový stroj, poskytuje nativní [virtuální síť (VNet)](../virtual-network/virtual-networks-overview.md) implementace, která řeší běžné problémy zabezpečení a [obchodního modelu](https://azure.microsoft.com/pricing/details/sql-database/) uspokojivým pro zákazníky v místním systému SQL Server. Managed Instance umožňuje stávající zákazníci systému SQL Server k přenosu svých místních aplikací do cloudu s minimálními změnami aplikace a databáze. Managed Instance ve stejnou dobu, zachová všechny možnosti modelu PaaS (automatické použití dílčích oprav a verze aktualizace [automatické zálohování](sql-database-automated-backups.md), [vysoké dostupnosti](sql-database-high-availability.md) ), který výrazně snižuje režii na správu a celkové náklady na vlastnictví.
 
 > [!IMPORTANT]
 > Seznam oblastí, ve kterých je Managed Instance aktuálně k dispozici, najdete v tématu [Migrace databází do plně spravované služby pomocí Azure SQL Database Managed Instance](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/).
@@ -69,7 +69,7 @@ Následující tabulka vám pomůže pochopit postup výběru optimální konfig
 
 Managed Instance je k dispozici ve dvou úrovních služeb:
 - **Obecné účely**: určená pro aplikace s typické výkon a latenci vstupně-výstupních operací.
-- **Důležité obchodní informace**: určená pro aplikace s nízkou latenci vstupně-výstupní operace a minimální dopad základní údržbových operací u zatížení.
+- **Důležité obchodní informace (preview)**: určená pro aplikace s nízkou latenci vstupně-výstupní operace a minimální dopad základní údržbových operací u zatížení.
 
 Obě úrovně služeb 99,99 % dostupnost a vám umožní nezávisle na sobě vyberte velikost úložiště a výpočetní kapacitu. Další informace o architektura pro vysokou dostupnost služby Azure SQL Database najdete v tématu [vysokou dostupnost a Azure SQL Database](sql-database-high-availability.md).
 
@@ -109,7 +109,7 @@ Následující seznam popisuje klíčové vlastnosti vrstvy služby s obecné ú
 
 Další informace najdete v části [dostupnost/Standard pro obecné účely a architektura](sql-database-high-availability.md#standardgeneral-purpose-availability) ve službě Azure SQL Database.
 
-### <a name="business-critical-service-tier"></a>Obchodní vrstvy kritické služby
+### <a name="business-critical-service-tier-preview"></a>Obchodní vrstvu služby (preview)
 
 Obchodní vrstvy kritické služby je sestaven pro aplikace s vysokými požadavky na vstupně-výstupních operací. Nabízí nejvyšší odolnost proti selhání s využitím několika izolovaných Always On replik. 
 
@@ -141,6 +141,9 @@ Následující seznam popisuje klíčové vlastnosti pro důležité obchodní i
 
 Další informace najdete v části [úrovně Premium/důležitých dostupnosti a architektura](sql-database-high-availability.md#premiumbusiness-critical-availability) ve službě Azure SQL Database.
 
+> [!IMPORTANT]
+> **Pro důležité obchodní informace** úrovně služeb je ve verzi preview.
+
 ## <a name="advanced-security-and-compliance"></a>Pokročilé zabezpečení a dodržování předpisů 
 
 Azure SQL Database Managed Instance kombinuje rozšířené funkce zabezpečení poskytované cloudu Azure a SQL Server Database Engine. 
@@ -171,7 +174,7 @@ Azure SQL Database poskytuje sadu rozšířené funkce zabezpečení, které je 
 - [Detekce hrozeb](sql-database-managed-instance-threat-detection.md) doplňuje [Managed Instance auditování](sql-database-managed-instance-auditing.md) ve poskytuje další úroveň zabezpečení funkce intelligence integrované do služby, který zjistí a potenciálně nebezpečné pokusy o přístup nebo zneužití databáze. Upozorní vás na podezřelé aktivity, potenciální ohrožení zabezpečení a útoky prostřednictvím injektáže SQL, stejně jako vzory přístupu k databázi neobvyklé. Výstrahy detekce hrozeb můžete zobrazit v [Azure Security Center](https://azure.microsoft.com/services/security-center/) a zadejte podrobnosti o podezřelé aktivitě a doporučení akce k prošetření a zmírnění hrozby.  
 - [Dynamické maskování dat](/sql/relational-databases/security/dynamic-data-masking) omezuje riziko ohrožení citlivých dat jejich maskováním pro neoprávněným uživatelům. Dynamické maskování dat pomáhá zabránit neoprávněnému přístupu k citlivým datům tím, že vám určit, kolik citlivých dat zobrazíte s minimálním dopadem na aplikační vrstvu. Je to funkce zabezpečení založená na zásadách, která skrývá citlivá data v sadě výsledků dotazu nad určenými poli databáze, zatímco data v databázi se nemění. 
 - [Zabezpečení na úrovní řádků](/sql/relational-databases/security/row-level-security) umožňuje řídit přístup k řádkům v databázové tabulce na základě charakteristiky uživatele spouštějícího dotaz (například podle skupiny členství nebo kontext spuštění). Zabezpečení na úrovni řádku (RLS) zjednodušuje návrh a psaní kódu zabezpečení v aplikaci. RLS umožňuje implementovat omezení přístupu k datovým řádkům. Například pro zajištění, že pracovníci mají přístup pouze řádky dat, které se vztahují k jejich oddělení, nebo pro omezení přístupu k datům jenom na relevantní data. 
-- [Transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) šifruje datové soubory spravované Instance Azure SQL, označované jako šifruje neaktivní uložená data. Transparentní šifrování dat provádí v reálném čase vstupně-výstupní operace šifrování a dešifrování souborů protokolu a data. Šifrování používá databázi šifrovací klíč (DEK), která je uložena v spouštěcí záznam databáze dostupnosti během obnovení. Všechny databáze ve spravované instanci pomocí transparentního šifrování dat můžete chránit. TDE je prověřená technologie SQL pro šifrování v klidovém stavu, kterou vyžaduje řada standardů dodržování předpisů z důvodu ochrany před krádeží úložného média. Ve verzi public preview se podporuje model automatické správy klíčů (prováděnou platforma PaaS). 
+- [Transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) šifruje datové soubory Azure SQL Database Managed Instance, označované jako šifruje neaktivní uložená data. Transparentní šifrování dat provádí v reálném čase vstupně-výstupní operace šifrování a dešifrování souborů protokolu a data. Šifrování používá databázi šifrovací klíč (DEK), která je uložena v spouštěcí záznam databáze dostupnosti během obnovení. Všechny databáze ve spravované instanci pomocí transparentního šifrování dat můžete chránit. TDE je prověřená technologie SQL pro šifrování v klidovém stavu, kterou vyžaduje řada standardů dodržování předpisů z důvodu ochrany před krádeží úložného média. Ve verzi public preview se podporuje model automatické správy klíčů (prováděnou platforma PaaS). 
 
 Azure Database Migration Service (DMS) nebo nativní obnovení se podporuje migrace šifrované databázi do spravované Instance SQL. Pokud máte v plánu migrovat šifrované databázi pomocí nativní obnovení, se migrace stávajícího certifikátu transparentní šifrování dat z SQL serveru na místní nebo virtuální počítač s SQL serverem do spravované instance o požadovaný krok. Další informace o možnostech migrace najdete v tématu [migrace instance SQL serveru do Azure SQL Database Managed Instance](sql-database-managed-instance-migrate.md).
 
@@ -226,7 +229,7 @@ Managed Instance výhody z se vždycky nahoru – k datu v cloudu, což znamená
 - Managed Instance nepovoluje zadání úplné fyzické cesty, takže všechny odpovídající scénáře a jinak není podporován: obnovení databáze nepodporuje se přesun, vytvořit DB neumožňuje fyzické cesty, BULK INSERT funguje s objekty BLOB Azure pouze atd. 
 - Managed Instance podporuje [ověřování Azure AD](sql-database-aad-authentication.md) jako cloudové alternativu k ověřování Windows. 
 - Spravovaná Instance automaticky spravuje skupiny souborů XTP a soubory pro databáze, které obsahují objekty OLTP v paměti
-- Podporuje spravovanou instanci SQL Server Integration Services (SSIS) a můžete hostitele katalogu služby SSIS (SSISDB), která ukládá balíčků služby SSIS, ale jsou prováděna na spravované prostředí Azure-SSIS Integration Runtime (IR) v Azure Data Factory (ADF), najdete v článku [Create Prostředí Azure-SSIS IR ve službě ADF](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime). Porovnání funkcí služby SSIS v SQL Database a Managed Instance, najdete v článku [porovnání SQL Database a spravované Instance (Preview)](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-and-managed-instance-preview).
+- Podporuje spravovanou instanci SQL Server Integration Services (SSIS) a můžete hostitele katalogu služby SSIS (SSISDB), která ukládá balíčků služby SSIS, ale jsou prováděna na spravované prostředí Azure-SSIS Integration Runtime (IR) v Azure Data Factory (ADF), najdete v článku [Create Prostředí Azure-SSIS IR ve službě ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). Porovnání funkcí služby SSIS v SQL Database a Managed Instance, najdete v článku [logický server porovnání SQL Database a Managed Instance](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-logical-server-and-sql-database-managed-instance).
 
 ### <a name="managed-instance-administration-features"></a>Funkce správy spravované Instance  
 
@@ -244,7 +247,7 @@ V následující tabulce jsou uvedeny několik vlastností, které jsou přístu
 |`@@VERSION`|Microsoft SQL Azure (RTM) - 2018-03-07 12.0.2000.8 Copyright (C) 2018 Microsoft Corporation.|Tato hodnota je stejné jako u databáze SQL.|
 |`SERVERPROPERTY ('Edition')`|SQL Azure|Tato hodnota je stejné jako u databáze SQL.|
 |`SERVERPROPERTY('EngineEdition')`|8|Tato hodnota jednoznačně identifikuje Managed Instance.|
-|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Název DNS úplná instance v následujícím formátu:<instanceName>.<dnsPrefix>. Database.Windows.NET, kde <instanceName> je poskytnutá výhradně zákazník, zatímco <dnsPrefix> je automaticky generovanou částí názvu zaručující globální jedinečnost názvu DNS ("wcus17662feb9ce98", například)|Příklad: Moje managed-instance.wcus17662feb9ce98.database.windows.net|
+|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Název DNS úplná instance v následujícím formátu:<instanceName>.<dnsPrefix>.Database.Windows.NET, kde <instanceName> je poskytnutá výhradně zákazník, zatímco <dnsPrefix> je automaticky generovanou částí názvu zaručující globální jedinečnost názvu DNS ("wcus17662feb9ce98", například)|Příklad: Moje managed-instance.wcus17662feb9ce98.database.windows.net|
 
 ## <a name="next-steps"></a>Další postup
 

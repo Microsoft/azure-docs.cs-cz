@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/08/2018
 ms.author: mabrigg
 ms.openlocfilehash: 39dc48b1357b07932efbccaf002f54ca58edae24
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35899014"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47093292"
 ---
 # <a name="azure-stack-administration-basics"></a>Základy správy Azure Stack
 Existuje několik věcí, které je potřeba vědět, pokud je pro vás nová pro správu služby Azure Stack. Tento návod poskytuje přehled o vaší role jako jejich operátory Azure stacku a co je potřeba říct uživatelům pro ně a být tak produktivní rychle.

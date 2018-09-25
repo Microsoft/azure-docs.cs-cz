@@ -16,11 +16,11 @@ ms.date: 06/08/2018
 ms.author: brenduns
 ms.reviewer: ''
 ms.openlocfilehash: 57869de8a99c65810da0c75f81c75d93eac88412
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35998405"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47090812"
 ---
 # <a name="validate-azure-registration"></a>Ověření registrace služby Azure 
 Použijte nástroj Kontrola připravenosti Azure Stack (AzsReadinessChecker) k ověření, že vaše předplatné Azure je připravený k použití s Azure Stack. Ověření registrace před zahájením nasazení služby Azure Stack. Kontrola připravenosti ověří:
