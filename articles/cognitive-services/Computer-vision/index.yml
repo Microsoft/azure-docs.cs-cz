@@ -1,28 +1,58 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: da70af8eb2239fb9246071605aa5323e2e9e041e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958437"
 documentType: LandingData
-title: Dokumentace k počítačovému zpracování obrazu
+title: Dokumentace k rozhraní API pro počítačové zpracování obrazu
 metadata:
-  title: Dokumentace k počítačovému zpracování obrazu – rychlá zprovoznění, kurzy, reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
+  title: Dokumentace k rozhraní API pro počítačové zpracování obrazu – rychlá zprovoznění, kurzy, reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
   description: Naučte se využívat k počítačové zpracování obrazu ke zpracování obrázků a vrácení informací. Kurzy vám ukážou, jak vytvářet aplikace, které toto rozhraní API používají.
   services: cognitive-services
-  author: noellelacharite
-  manager: nolachar
+  author: nitinme
+  manager: cgronlun
   ms.service: cognitive-services
   ms.component: computer-vision
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 06/22/2018
-  ms.author: nolachar
-  ms.openlocfilehash: 7a68ff1e0cc80c99ec94cfe6f0480408afa92431
-  ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
-  ms.translationtype: HT
-  ms.contentlocale: cs-CZ
-  ms.lasthandoff: 07/02/2018
-  ms.locfileid: "37340705"
+  ms.date: 09/24/2018
+  ms.author: nitinme
 abstract:
   description: Cloudové rozhraní API pro počítačové zpracování obrazu poskytuje vývojářům přístup k pokročilým algoritmům pro zpracování obrázků a vrácení informací. Na základě nahrání obrázku nebo zadání adresy URL obrázku mohou algoritmy Microsoftu pro počítačové zpracování obrazu různými způsoby analyzovat vizuální obsah, a to v závislosti na vstupech a volbách uživatelů. Pomocí rychlých zprovoznění, kurzů a ukázek se naučíte různými způsoby analyzovat vizuální obsah.
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: ../media/index/computer-vision-landing-page-video.png
+      width: 250
+    title: Vneste do svých aplikací inteligentní funkce pomocí rozhraní API pro zpracování obrazu (05:41)
+    href: https://azure.microsoft.com/resources/videos/connect-2017-microsoft-cognitive-services-put-intelligence-into-your-business-apps/
+    width: 250
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/computer-vision/home
+      html: <p>Naučte se využívat rozhraní API pro počítačové zpracování obrazu.</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Co je počítačové zpracování obrazu?
+    - href: /azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtosubscribe
+      html: <p>Přečtěte si, jak získat klíče předplatného pro rozhraní API pro počítačové zpracování obrazu.</p>
+      image:
+        src: ../media/index/i_tasks.svg
+      title: Klíče předplatného pro rozhraní API pro počítačové zpracování obrazu
+    - href: /azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtocallvisionapi
+      html: <p>Seznamte se se základy volání rozhraní API pro počítačové zpracování obrazu.</p>
+      image:
+        src: ../media/index/i_tasks.svg
+      title: Volání rozhraní API pro počítačové zpracování obrazu
 - title: Zprovoznění během 5 minut
   items:
   - type: paragraph
@@ -50,6 +80,14 @@ sections:
         src: media/index/logo_go.svg
       text: Přejít
       href: QuickStarts/go-analyze
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: 'Naučte se vyvíjet aplikace s využitím počítačového zpracování obrazu:'
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="Tutorials/CSharpTutorial.md">Vytvoření aplikace s využitím počítačového zpracování obrazu pomocí C#</a>
 - title: Referenční informace
   items:
   - type: list
@@ -60,3 +98,7 @@ sections:
       html: <p><a href="https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44">Rozhraní API pro počítačové zpracování obrazu v2.0</a></p> <p><a href="https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739">Rozhraní API pro počítačové zpracování obrazu v1.0</a></p>
     - title: Sady SDK
       html: <p><a href="https://github.com/Microsoft/Cognitive-vision-windows">Windows</a></p> <p><a href="https://docs.microsoft.com/javascript/api/overview/azure/cognitive-services?view=azure-node-latest#vision-modules">Node.js</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python#vision-modules">Python</a></p> <p><a href="https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/computervision">Go</a></p> <p><a href="https://github.com/Microsoft/Cognitive-vision-android">Android</a></p> <p><a href="https://github.com/DanilaVladi/Microsoft-Cognitive-Services-Swift-SDK">Swift</a></p>
+    - title: PowerShell
+      html: <p><a href="https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services">Azure PowerShell</a></p>
+    - title: Rozhraní příkazového řádku
+      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list">Azure CLI</a></p>

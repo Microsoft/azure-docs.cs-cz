@@ -33,6 +33,8 @@ items:
     href: point-to-site-about.md
   - name: Směrování VPN typu Point-to-Site
     href: vpn-gateway-about-point-to-site-routing.md
+  - name: Zónově redundantní brány pro zóny dostupnosti
+    href: about-zone-redundant-vnet-gateways.md
 - name: Návody
   items:
   - name: Konfigurace připojení typu Site-to-Site
@@ -77,6 +79,12 @@ items:
       href: point-to-site-vpn-client-configuration-radius.md
     - name: Integrace ověřování P2S VPN RADIUS s využitím serveru NPS
       href: vpn-gateway-radiuis-mfa-nsp.md
+  - name: Konfigurace OpenVPN
+    items:
+    - name: Konfigurace OpenVPN pro připojení typu point-to-site
+      href: vpn-gateway-howto-openvpn.md
+    - name: Konfigurace klientů OpenVPN
+      href: vpn-gateway-howto-openvpn-clients.md
   - name: Konfigurace připojení typu VNet-to-VNet
     items:
     - name: portál Azure
@@ -234,9 +242,9 @@ items:
     href: https://azure.microsoft.com/support/legal/sla
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=vpn-gateway
-ms.openlocfilehash: 130a20a5ce01b9be1b47050f11cbcea8e354b0a6
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 9d5ece68343d498992a80b46210d03634b63544d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299317"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971463"

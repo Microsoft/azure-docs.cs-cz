@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: c781f99d47da9705e1439af660e9801ecac91665
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: f6015f9dc436d7c5e9e526aacae0f67d2f2fa1f8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39324268"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978843"
 documentType: LandingData
 title: Dokumentace k Azure Storage
 metadata:
@@ -96,6 +96,29 @@ sections:
     - html: Java &#58; <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=blob&sort=0&platform=java">Blobs</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=file&sort=0&platform=java">Files</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=queue&sort=0&platform=java">Queues</a>
     - html: <a href="/azure/storage/blobs/storage-samples-blobs-powershell">Azure PowerShell</a>
     - html: <a href="/azure/storage/blobs/storage-samples-blobs-cli">Azure CLI</a>
+- title: Získávání dovedností pomocí Microsoft Learn
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: Úvodní informace k datům v Azure
+      href: /learn/modules/intro-to-data-in-azure/
+      image:
+        src: /learn/achievements/intro-to-data-in-azure.svg
+        href: //learn/modules/intro-to-data-in-azure/
+    - title: " Volba přístupu k ukládání dat v Azure"
+      href: /learn/modules/choose-storage-approach-in-azure/
+      image:
+        src: /learn/achievements/choose-storage-approach-in-azure.svg
+        href: /learn/modules/choose-storage-approach-in-azure/
+    - title: Vytvoření účtu úložiště Azure
+      href: /learn/modules/create-azure-storage-account/
+      image:
+        src: /learn/achievements/create-azure-storage-account.svg
+        href: /learn/modules/create-azure-storage-account/
+  - type: paragraph
+    text: <a href="/learn/browse/?products=azure-storage">Další interaktivní výuka...</a>
 - title: Bezplatné školicí video od Pluralsightu
   items:
   - type: list

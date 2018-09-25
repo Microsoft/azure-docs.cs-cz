@@ -1,0 +1,262 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 845fb826d18949c30663c829e65537156bd2f865
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46986060"
+documentType: LandingData
+title: Microsoft Identity Platform (Azure Active Directory pro vývojáře)
+metadata:
+  title: Microsoft Identity Platform (Azure Active Directory pro vývojáře)
+  description: Zjistěte, jak lze pomocí platformy Microsoft Identity Platform vytvářet aplikace, které bezpečně přihlašují uživatele ve všech identitách od Microsoftu a získají tokeny pro volání Microsoft Graphu, dalších rozhraní API od Microsoftu nebo rozhraní API, která vytvořili vývojáři.
+  services: active-directory
+  author: CelesteDG
+  manager: mtillman
+  ms.service: active-directory
+  ms.component: develop
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 09/24/2018
+  ms.author: celested
+abstract:
+  description: Microsoft Identity Platform vznikla z platformy pro vývojáře a službu identit Azure Active Directory (Azure AD). Umožňuje vývojářům vytvářet aplikace, které přihlašují všechny identity od Microsoftu a získají tokeny pro volání Microsoft Graphu, dalších rozhraní API od Microsoftu nebo rozhraní API, která vytvořili vývojáři. Je to plnohodnotná platforma, kterou tvoří ověřovací služba, open-source knihovny, registrace a konfigurace aplikací, úplná dokumentace pro vývojáře, ukázky kódu a další obsah pro vývojáře. Microsoft Identity Platform podporuje standardní oborové protokoly, jako jsou OAuth 2.0 a OpenID Connect.
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: ./media/index/video-featured.png
+      width: 250
+    title: Vytváření řešení webových aplikací s ověřováním (9:31)
+    href: https://www.youtube.com/watch?v=QWh5HZK9vRA
+    width: 250
+sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/active-directory/develop/about-microsoft-identity-platform
+      html: <p>Přečtěte si další informace o platformě Microsoft Identity Platform a o jejích funkcích a možnostech.</p>
+      image:
+        src: ./media/index/i_get-started.svg
+      title: O platformě Microsoft Identity Platform
+    - href: /azure/active-directory/develop/azure-ad-developers-guide/
+      html: <p>Umožňuje ověřovat identity Azure AD (pracovní a školní účty) pomocí žádostí o tokeny z koncového bodu Azure AD v1.0, využívá Azure AD Authentication Library (ADAL), Azure Portal a rozhraní Azure AD Graph API.</p>
+      image:
+        src: ./media/index/i_advanced.svg
+      title: v1.0
+    - href: /azure/active-directory/develop/v2-overview
+      html: <p>Umožňuje ověřovat širší sadu identit od Microsoftu pomocí koncového bodu Azure AD v2.0, využívá Microsoft Authentication Library (MSAL), Azure Portal a rozhraní Microsoft Graph API.</p>
+      image:
+        src: ./media/index/i_investigate.svg
+      title: v2.0
+- title: Šablony Rychlý start
+  items:
+  - type: paragraph
+    text: Podle těchto šablon Rychlý start můžete rychle vytvořit aplikaci a přidat funkce, jako jsou získání tokenů, aktualizace tokenů, přihlášení uživatele, zobrazení některých informací o uživateli a další.
+  - type: paragraph
+    text: <b>Jednostránkové aplikace</b>
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: ./media/index/angularjs-shield.svg
+      title: AngularJS
+    - image:
+        src: ./media/index/logo_js.svg
+      title: JavaScript
+    rows:
+    - title: v1.0
+      values:
+      - href: quickstart-v1-angularjs-spa.md
+      - href: https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi
+    - title: v2.0
+      values:
+      - href: 
+      - href: quickstart-v2-javascript.md
+  - type: paragraph
+    text: <b>Web Apps</b>
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: ./media/index/logo_NET.svg
+      title: ASP .NET
+    - image:
+        src: ./media/index/logo_NETcore.svg
+      title: ASP .NET Core
+    - image:
+        src: ./media/index/logo_java.svg
+      title: Java
+    - image:
+        src: ./media/index/logo_nodejs.svg
+      title: NodeJS
+    - image:
+        src: ./media/index/logo_python.svg
+      title: Python
+    rows:
+    - title: v1.0
+      values:
+      - href: quickstart-v1-aspnet-webapp.md
+      - href: 
+      - href: https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect
+      - href: quickstart-v1-openid-connect-code.md
+      - href: https://github.com/Azure-Samples/active-directory-python-webapp-graphapi
+    - title: v2.0
+      values:
+      - href: quickstart-v2-aspnet-webapp.md
+      - href: quickstart-v2-aspnet-core-webapp.md
+      - href: 
+      - href: https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs
+      - href: 
+  - type: paragraph
+    text: <b>Webová rozhraní API</b>
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: ./media/index/logo_NET.svg
+      title: ASP .NET
+    - image:
+        src: ./media/index/logo_NETcore.svg
+      title: ASP .NET Core
+    - image:
+        src: ./media/index/logo_nodejs.svg
+      title: NodeJS
+    rows:
+    - title: v1.0
+      values:
+      - href: quickstart-v1-dotnet-webapi.md
+      - href: 
+      - href: quickstart-v1-nodejs-webapi.md
+    - title: v2.0
+      values:
+      - href: https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet
+      - href: https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore-v2
+      - href: 
+  - type: paragraph
+    text: <b>Mobilní a desktopové aplikace</b>
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: ./media/index/logo_android.svg
+      title: Android
+    - image:
+        src: ./media/index/logo_ios.svg
+      title: iOS
+    - image:
+        src: ./media/index/logo_Windows.svg
+      title: Univerzální platforma Windows
+    - image:
+        src: ./media/index/logo_Windows.svg
+      title: Windows Desktop .NET
+    - image:
+        src: ./media/index/logo_xamarin.svg
+      title: Xamarin
+    rows:
+    - title: v1.0
+      values:
+      - href: quickstart-v1-android.md
+      - href: quickstart-v1-ios.md
+      - href: 
+      - href: quickstart-v1-dotnet.md
+      - href: quickstart-v1-xamarin.md
+    - title: v2.0
+      values:
+      - href: quickstart-v2-android.md
+      - href: quickstart-v2-ios.md
+      - href: quickstart-v2-uwp.md
+      - href: quickstart-v2-windows-desktop.md
+      - href: 
+  - type: paragraph
+    text: <b>Služba-služba</b>
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: ./media/index/logo_NET.svg
+      title: .NET
+    rows:
+    - title: v1.0
+      values:
+      - href: sample-v1-code.md#server-or-daemon-application-to-web-api
+    - title: v2.0
+      values:
+      - href: https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: Použijte platformu Microsoft Identity Platform a postupujte podle podrobných, na scénářích založených procedur pro vývojářské úlohy s nejvyšší úrovní ověřování, jako jsou získání přístupových tokenů, implementace přihlášení u Microsoftu a další.
+  - type: paragraph
+    text: <b>Jednostránkové aplikace</b>
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: ./media/index/logo_js.svg
+      title: JavaScript
+    rows:
+    - title: v1.0
+      values:
+      - href: 
+    - title: v2.0
+      values:
+      - href: tutorial-v2-javascript-spa.md
+  - type: paragraph
+    text: <b>Web Apps</b>
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: ./media/index/logo_NET.svg
+      title: ASP .NET
+    rows:
+    - title: v1.0
+      values:
+      - href: 
+    - title: v2.0
+      values:
+      - href: tutorial-v2-asp-webapp.md
+  - type: paragraph
+    text: <b>Mobilní a desktopové aplikace</b>
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: ./media/index/logo_android.svg
+      title: Android
+    - image:
+        src: ./media/index/logo_ios.svg
+      title: iOS
+    - image:
+        src: ./media/index/logo_Windows.svg
+      title: Univerzální platforma Windows
+    - image:
+        src: ./media/index/logo_Windows.svg
+      title: Windows Desktop .NET
+    rows:
+    - title: v1.0
+      values:
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+    - title: v2.0
+      values:
+      - href: tutorial-v2-android.md
+      - href: tutorial-v2-ios.md
+      - href: tutorial-v2-windows-uwp.md
+      - href: tutorial-v2-windows-desktop.md
+- title: Ukázky
+  items:
+  - type: paragraph
+    text: Vyhledejte ukázky kódu podle typu vyvíjené aplikace, platformy a používaného rozhraní API.
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/active-directory/develop/sample-v1-code">Ukázky kódu v1.0 podle scénáře</a>
+    - html: <a href="/azure/active-directory/develop/sample-v2-code">Ukázky kódu v2.0 podle scénáře</a>

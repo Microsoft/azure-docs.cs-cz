@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 5134722ab2467d7bb63d76bd83c263457ec8284a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948109"
 documentType: LandingData
 title: Dokumentace k Azure Event Grid
 metadata:
@@ -13,12 +19,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 08/10/2017
   ms.author: carolz
-  ms.openlocfilehash: 494cd1b862169998a15786b70a6c7d88f830613e
-  ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
-  ms.translationtype: HT
-  ms.contentlocale: cs-CZ
-  ms.lasthandoff: 02/01/2018
-  ms.locfileid: "28921765"
 abstract:
   description: Azure Event Grid je plně spravovaná služba inteligentního směrování událostí, která umožňuje jednotnou spotřebu událostí s využitím modelu publikování a odběru. Azure Event Grid vám umožní reagovat na relevantní události služeb Azure i mimo Azure, a to téměř v reálném čase. Naučte se používat Azure Event Grid prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.
 sections:
@@ -64,6 +64,19 @@ sections:
     - html: <a href="/azure/event-grid/monitor-virtual-machine-changes-event-grid-logic-app">Monitorování změn ve virtuálních počítačích pomocí aplikací logiky</a>
     - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event">Změna velikosti nahraných obrázků</a>
     - html: <a href="/azure/event-grid/ensure-tags-exists-on-new-virtual-machines">Integrace Azure Automation se službou Event Grid</a>
+- title: Získávání dovedností pomocí Microsoft Learn
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: Vyberte model zasílání zpráv v Azure pro volné připojení služeb.
+      href: /learn/modules/choose-a-messaging-model-in-azure-to-connect-your-services/
+      image:
+        src: /learn/achievements/choose-a-messaging-model-in-azure-to-connect-your-services.svg
+        href: /learn/modules/choose-a-messaging-model-in-azure-to-connect-your-services/
+  - type: paragraph
+    text: <a href="/learn/browse/?products=azure-event-grid">Další interaktivní výuka...</a>
 - title: Referenční informace
   items:
   - type: list

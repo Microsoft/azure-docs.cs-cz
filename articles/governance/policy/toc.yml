@@ -1,0 +1,225 @@
+items:
+- name: Dokumentace k Azure Policy
+  href: index.yml
+- name: Přehled
+  items:
+  - name: Přehled zásad Azure
+    href: overview.md
+- name: Šablony Rychlý start
+  items:
+  - name: Přiřazení zásad – portál
+    href: assign-policy-portal.md
+  - name: Přiřazení zásad – PowerShell
+    href: assign-policy-powershell.md
+  - name: Přiřazení zásad – rozhraní příkazového řádku Azure
+    href: assign-policy-azurecli.md
+  expanded: true
+- name: Kurzy
+  items:
+  - name: Vytvoření a správa zásad Azure
+    href: ./tutorials/create-and-manage.md
+- name: Ukázky
+  href: ./samples/index.md
+  items:
+  - name: Obecné
+    items:
+    - name: Pojmenování
+      items:
+      - name: Povolení více vzorů s názvy
+        href: samples/allow-multiple-name-patterns.md
+      - name: Vyžadování vzoru s podmínkou like
+        href: samples/enforce-like-pattern.md
+      - name: Vyžadování shody se vzorem
+        href: samples/enforce-match-pattern.md
+      - name: Vyžadování shody značky se vzorem
+        href: samples/enforce-tag-match-pattern.md
+    - name: Značky
+      items:
+      - name: Zavedení značky a její výchozí hodnoty
+        href: samples/apply-tag-def-val.md
+      - name: Iniciativa zásad fakturačních značek
+        href: samples/billing-tags-policy-init.md
+      - name: Vynucovat použití značky a její hodnoty
+        href: samples/enforce-tag-val.md
+      - name: Vynucení značky a její hodnoty ve skupinách prostředků
+        href: samples/enforce-tag-rg.md
+    - name: Umístění
+      items:
+      - name: Povolená umístění
+        href: samples/allowed-locs.md
+    - name: Typy prostředků
+      items:
+      - name: Povolené typy prostředků
+        href: samples/allowed-res-types.md
+      - name: Nepovolené typy prostředků
+        href: samples/not-allowed-res-type.md
+  - name: Compute
+    items:
+    - name: Virtuální počítače
+      items:
+      - name: Povolení vlastní image virtuálního počítače ze skupiny prostředků
+        href: samples/allow-custom-vm-image.md
+      - name: Povolené skladové položky účtů úložišť a virtuálních počítačů
+        href: samples/allowed-skus-storage.md
+      - name: Schválené image virtuálních počítačů
+        href: samples/allowed-custom-images.md
+      - name: Auditování, když neexistuje rozšíření
+        href: samples/audit-ext-not-exist.md
+      - name: Nepovolená rozšíření virtuálního počítače
+        href: samples/not-allowed-vm-ext.md
+    - name: Škálovací sady virtuálních počítačů
+      items:
+      - name: Audit virtuálního počítače, který nepoužívá spravovaný disk
+        href: samples/create-vm-managed-disk.md
+      - name: Vytvoření virtuálního počítače, který používá spravovaný disk
+        href: samples/use-managed-disk-vm.md
+      - name: Odepření zvýhodněného hybridního využití
+        href: samples/deny-hybrid-use.md
+      - name: Povolení jenom určité image platformy virtuálního počítače
+        href: samples/allow-certain-vm-image.md
+  - name: Data Lake
+    items:
+    - name: Vynucení šifrování Data Lake Store
+      href: samples/enforce-datalakestore-encryption.md
+  - name: Monitorování
+    items:
+    - name: Auditování nastavení diagnostiky
+      href: samples/audit-diag-setting.md
+  - name: Síť
+    items:
+    - name: Síťová rozhraní
+      items:
+      - name: NSG X ve všech síťových rozhraních
+        href: samples/nsg-on-nic.md
+      - name: Použití schválené podsítě pro síťová rozhraní virtuálních počítačů
+        href: samples/use-approved-subnet-vm-nics.md
+      - name: Použití schválené virtuální sítě pro síťová rozhraní virtuálních počítačů
+        href: samples/use-approved-vnet-vm-nics.md
+    - name: Virtuální sítě
+      items:
+      - name: Povolené skladové položky aplikační brány
+        href: samples/allowed-app-gate-sku.md
+      - name: Blokování partnerských vztahů se sítí ER
+        href: samples/no-peering-er-net.md
+      - name: Bez tabulky směrování definované uživatelem
+        href: samples/no-user-def-route-table.md
+      - name: NSG X ve všech podsítích
+        href: samples/nsg-on-subnet.md
+      - name: Použití schválené podsítě pro síťová rozhraní virtuálních počítačů
+        href: samples/use-approved-subnet-vm-nics.md
+      - name: Použití schválené virtuální sítě pro síťová rozhraní virtuálních počítačů
+        href: samples/use-approved-vnet-vm-nics.md
+    - name: Skupiny zabezpečení sítě
+      items:
+      - name: NSG X ve všech síťových rozhraních
+        href: samples/nsg-on-nic.md
+      - name: NSG X ve všech podsítích
+        href: samples/nsg-on-subnet.md
+    - name: ExpressRoute
+      items:
+      - name: Povolená šířka pásma pro ExpressRoute
+        href: samples/allowed-er-band.md
+      - name: Povolené skladové položky Express Route
+        href: samples/allowed-er-skus.md
+      - name: Povolené umístění partnerského vztahu pro Express Route
+        href: samples/allowed-peering-er.md
+    - name: Sledovací procesy sítě
+      items:
+      - name: Provedení auditu, pokud oblast nemá povolenou službu Network Watcher
+        href: samples/net-watch-not-enabled.md
+    - name: Application Gateway
+      items:
+      - name: Povolené skladové položky aplikační brány
+        href: samples/allowed-app-gate-sku.md
+  - name: SQL
+    items:
+    - name: SQL Servery
+      items:
+      - name: Auditování, když není žádný správce Azure Active Directory
+        href: samples/audit-no-aad-admin.md
+      - name: Audit nastavení detekce hrozeb na úrovni serveru
+        href: samples/audit-sql-ser-threat-det-setting.md
+      - name: Audit nastavení auditování SQL Serveru
+        href: samples/sql-server-audit.md
+      - name: Audit nastavení auditování na úrovni SQL Serveru
+        href: samples/audit-sql-ser-leve-audit-setting.md
+      - name: Vyžadovat SQL Server verze 12.0
+        href: samples/req-sql-12.md
+    - name: Databáze SQL
+      items:
+      - name: Povolené skladové položky pro databáze SQL
+        href: samples/allowed-sql-db-skus.md
+      - name: Audit nastavení detekce hrozeb na úrovni databáze SQL
+        href: samples/audit-db-threat-det-setting.md
+      - name: Audit šifrování databáze SQL
+        href: samples/sql-database-encryption-audit.md
+      - name: Audit nastavení auditování na úrovni databáze SQL
+        href: samples/audit-sql-db-audit-setting.md
+      - name: Auditování stavu transparentního šifrování dat
+        href: samples/audit-trans-data-enc-status.md
+  - name: Úložiště
+    items:
+    - name: Povolené skladové položky pro účet úložiště a virtuální počítače
+      href: samples/allowed-skus-storage.md
+    - name: Povolené skladové položky účtu úložiště
+      href: samples/allowed-stor-acct-skus.md
+    - name: Odepření studených úrovní přístupu pro účty úložiště
+      href: samples/deny-cool-access-tiering.md
+    - name: Zajištění výhradně provozu HTTPS pro účet úložiště
+      href: samples/ensure-https-stor-acct.md
+    - name: Zajištění šifrování souborů úložiště
+      href: samples/ensure-store-file-enc.md
+    - name: Povinné šifrování účtu úložiště
+      href: samples/req-store-acct-enc.md
+- name: Koncepty
+  items:
+  - name: Struktura definic Azure Policy
+    href: ./concepts/definition-structure.md
+  - name: Vysvětlení efektu služby Policy
+    href: ./concepts/effects.md
+- name: Návody
+  items:
+  - name: Programové vytváření zásad
+    href: ./how-to/programmatically-create.md
+  - name: Získávání dat o dodržování předpisů
+    href: ./how-to/getting-compliance-data.md
+  - name: Oprava prostředků, které nevyhovují předpisům
+    href: ./how-to/remediate-resources.md
+- name: Referenční informace
+  items:
+  - name: Azure CLI
+    href: /cli/azure/policy
+  - name: Azure PowerShell
+    href: /powershell/module/azurerm.resources/#policies
+  - name: REST API
+    items:
+    - name: Události
+      href: /rest/api/policy-insights/policyevents
+    - name: Stavy
+      href: /rest/api/policy-insights/policystates
+    - name: Přiřazení
+      href: /rest/api/resources/policyassignments
+    - name: Definice zásad
+      href: /rest/api/resources/policydefinitions
+    - name: Definice iniciativ
+      href: /rest/api/resources/policysetdefinitions
+- name: Zdroje a prostředky
+  items:
+  - name: GitHub – Ukázky Azure Policy
+    href: https://github.com/Azure/azure-policy
+  - name: Video – Build 2018
+    href: https://channel9.msdn.com/events/Build/2018/THR2030
+  - name: Video – Ignite 2017
+    href: https://myignite.microsoft.com/videos/54781
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/
+  - name: Cenová kalkulačka
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: UserVoice
+    href: https://feedback.azure.com/forums/915958-azure-governance
+ms.openlocfilehash: edae8729cc6089c61261b1e388512d5cbd856574
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47054706"

@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 64d2ad6990b41c7c9ff28a667b4fd51729877670
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46986927"
 documentType: LandingData
 title: Dokumentace ke službě Container Service
 metadata:
@@ -14,12 +20,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 07-21-2017
   ms.author: carolz
-  ms.openlocfilehash: 7625fbb02a1ede91c01c35cddd286f4c26ad77be
-  ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-  ms.translationtype: HT
-  ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/11/2017
-  ms.locfileid: "23068368"
 abstract:
   description: Azure Container Service umožňuje rychle nastavit cluster Kubernetes, DC/OS nebo Docker Swarm připravený pro produkční prostředí. Naučte se používat službu Azure Container Service prostřednictvím těchto šablon Rychlý start, kurzů a ukázek.
 sections:
@@ -39,3 +39,26 @@ sections:
       image:
         src: media/index/get-started.svg
         href: /azure/container-service/dcos-swarm
+- title: Získávání dovedností pomocí Microsoft Learn
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: Seznámení s kontejnery v Azure
+      href: /learn/modules/intro-to-containers/
+      image:
+        src: /learn/achievements/intro-to-containers.svg
+        href: /learn/modules/intro-to-containers/
+    - title: Spouštění kontejnerů Dockeru s využitím služby Azure Container Instances
+      href: /learn/modules/run-docker-with-azure-container-instances/
+      image:
+        src: /learn/achievements/run-docker-with-azure-container-instances.svg
+        href: /learn/modules/run-docker-with-azure-container-instances/
+    - title: Sestavení a uložení imagí kontejnerů s využitím služby Azure Container Registry
+      href: /learn/modules/build-and-store-container-images/
+      image:
+        src: /learn/achievements/build-and-store-container-images.svg
+        href: /learn/modules/build-and-store-container-images/
+  - type: paragraph
+    text: <a href="/learn/browse/?products=azure-container-registry%2Cazure-container-instances">Další interaktivní výuka...</a>

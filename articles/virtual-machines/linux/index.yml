@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 078da85f8ad4addd23a35b456a49d5a8248fc59b
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: cfe8611def427577cb000efe0e7c0568193aa4f8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44294370"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993438"
 documentType: LandingData
 title: Linux Virtual Machines
 metadata:
@@ -74,6 +74,24 @@ sections:
     - html: <a href="/azure/virtual-machines/linux/tutorial-build-deploy-jenkins">Průběžná integrace a doručování s využitím Azure Pipelines</a>
     - html: Vytvoření zásobníku webového serveru pomocí <a href="/azure/virtual-machines/linux/tutorial-lamp-stack">LAMP</a>, <a href="/azure/virtual-machines/linux/tutorial-lemp-stack">LEMP</a> nebo <a href="/azure/virtual-machines/linux/tutorial-mean-stack">MEAN</a>
     - html: <a href="/azure/virtual-machines/linux/tutorial-secure-web-server">Zabezpečení webového serveru pomocí SSL</a>
+- title: Získávání dovedností pomocí Microsoft Learn
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: " Vytvoření virtuálního počítače s Linuxem v Azure"
+      href: /learn/modules/create-linux-virtual-machine-in-azure/
+      image:
+        src: /learn/achievements/create-linux-virtual-machine-in-azure.svg
+        href: /learn/modules/create-linux-virtual-machine-in-azure/
+    - title: Vytvoření a spuštění webové aplikace se zásobníkem MEAN na virtuálním počítači s Linuxem v Azure
+      href: /learn/modules/build-a-web-app-with-mean-on-a-linux-vm/
+      image:
+        src: /learn/achievements/build-a-web-app-with-mean-on-a-linux-vm.svg
+        href: /learn/modules/build-a-web-app-with-mean-on-a-linux-vm/
+  - type: paragraph
+    text: <a href="/learn/browse/?products=azure-virtual-machines">Další interaktivní výuka...</a>
 - title: Bezplatné školicí video od Pluralsightu
   items:
   - type: list

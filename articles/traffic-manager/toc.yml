@@ -19,6 +19,8 @@ items:
     href: traffic-manager-configure-weighted-routing-method.md
   - name: Směrování provozu do prioritního koncového bodu
     href: traffic-manager-configure-priority-routing-method.md
+  - name: Směrování provozu na základě podsítě uživatele
+    href: tutorial-traffic-manager-subnet-routing.md
 - name: Ukázky
   items:
   - name: Azure CLI
@@ -128,9 +130,9 @@ items:
     href: https://azure.microsoft.com/support/legal/sla/traffic-manager/
   - name: Videa
     href: https://azure.microsoft.com/resources/videos/index/?services=traffic-manager
-ms.openlocfilehash: 31549ccb0241d174d42d1cb748a905539b01cfef
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: e83620f2a1d72483979b545c2805927916d7f788
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124282"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954360"

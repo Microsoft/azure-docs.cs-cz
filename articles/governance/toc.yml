@@ -1,0 +1,83 @@
+items:
+- name: Dokumentace k zásadám správného řízení Azure
+  href: index.yml
+- name: Přehled
+  items:
+  - name: Správa Azure
+    href: azure-management.md
+  expanded: true
+- name: Komponenty a služby
+  items:
+  - name: Skupiny pro správu
+    href: management-groups/overview.md
+    items:
+    - name: Vytvořit
+      href: management-groups/create.md
+    - name: Spravovat
+      href: management-groups/manage.md
+  - name: Graf prostředků
+    href: resource-graph/overview.md
+  - name: Zásada
+    href: policy/overview.md
+  - name: Podrobné plány
+    href: blueprints/overview.md
+  expanded: true
+- name: Implementace
+  items:
+  - name: Přechod na podnikový cloud
+    items:
+    - name: Co jsou zásady správného řízení cloudových prostředků?
+      href: /azure/architecture/cloud-adoption/getting-started/what-is-governance?toc=/azure/governance/toc.json
+    - name: Zásady správného řízení přístupu k prostředkům v Azure
+      href: /azure/architecture/cloud-adoption/getting-started/azure-resource-access?toc=/azure/governance/toc.json
+    - name: Návrh zásad správného řízení pro jeden tým
+      href: /azure/architecture/cloud-adoption/governance/governance-single-team?toc=/azure/governance/toc.json
+    - name: Návrh zásad správného řízení pro několik týmů
+      href: /azure/architecture/cloud-adoption/governance/governance-multiple-teams?toc=/azure/governance/toc.json
+  - name: Vygenerované podnikové uživatelské prostředí v Azure
+    items:
+    - name: Zásady správného řízení pro předplatná
+      href: /azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=/azure/governance/toc.json
+    - name: Implementace vygenerovaného podnikového uživatelského prostředí v Azure
+      href: /azure/architecture/cloud-adoption/appendix/azure-scaffold-examples?toc=/azure/governance/toc.json
+  expanded: true
+- name: Odkazy
+  items:
+  - name: Podrobné plány
+    items:
+    - name: REST API
+      href: /rest/api
+    - name: Azure CLI
+      href: /cli/azure
+  - name: Zásada
+    items:
+    - name: REST API
+      href: /rest/api
+    - name: Azure CLI
+      href: /cli/azure
+    - name: Azure PowerShell
+      href: /powershell/azure
+  - name: Graf prostředků
+    items:
+    - name: Azure CLI
+      href: /cli/azure
+    - name: Azure PowerShell
+      href: /powershell/azure
+- name: Zdroje a prostředky
+  items:
+  - name: Odkaz na video
+    href: /
+  - name: GitHubu
+    href: /
+  - name: Plány Azure do budoucna
+    href: /
+  - name: Cenová kalkulačka
+    href: /
+  - name: Článek na blogu
+    href: /
+ms.openlocfilehash: 4006c484adcdb0cf46646ebace847ba4d45efe26
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982238"

@@ -1,36 +1,63 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: bec19b959aa2ce99a7237894a50c49666341827b
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 460c0708bf51966bd1b6862445a6541436723688
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42440257"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952286"
 documentType: LandingData
-title: Speech a sada Speech SDK (Preview)
+title: Dokumentace k sadě Speech SDK
 metadata:
-  title: Dokumentace ke službě Speech – kurzy, rychlá zprovoznění, reference k rozhraní API – Cognitive Services | Microsoft Docs
+  title: Dokumentace k sadě Speech SDK – kurzy, rychlá zprovoznění, reference k rozhraní API – Cognitive Services | Microsoft Docs
   meta.description: >
     The Speech Service provides developers an easy way to add powerful speech-enabled features to their applications.
 
     Examples include&#58; voice command control & dialog, natural speech conversation, speech transcription & dictation, and speech translation.
   services: cognitive-services
-  author: noellelacharite
-  manager: nolachar
+  author: nitinme
+  manager: cgronlun
   layout: LandingPage
   ms.service: cognitive-services
   ms.component: speech-service
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 07/16/2018
-  ms.author: nolachar
+  ms.date: 09/24/2018
+  ms.author: nitinme
 abstract:
-  description: >
-    Prostřednictvím naší sady Speech SDK <a href="overview">služba Speech</a> pomáhá vývojářům začlenit do jejich aplikací funkce s podporou řeči.
-
-    Mezi tyto funkce patří <i>převod řeči na text</i> (rozpoznávání řeči/SR), <i>záměr</i>, <i>překlad</i> a <i>převod textu na řeč</i> (TTS).
+  description: Přečtěte si, jak můžete pomocí služby Speech a sady Speech SDK přidat do vašich aplikací funkce s podporou řeči. Pomocí sady Speech SDK můžete do vašich aplikací přidat funkce <i>převod řeči na text</i> (rozpoznávání řeči), <i>záměr</i>, <i>překlad</i> a <i>převod textu na řeč</i>. Služba Speech nabízí také rozhraní REST API, které funguje s jakýmkoli programovacím jazykem, který dokáže provádět požadavky HTTP.
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: ../media/index/speech-landing-page-video.png
+      width: 250
+    title: Přehled služby Speech (10:34)
+    href: https://azure.microsoft.com/resources/videos/connect-2017-microsoft-cognitive-services-overview-of-advanced-speech-capabilities/
+    width: 250
 sections:
-- title: Stažení sady SDK a rychlé zprovoznění během 5 minut
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/speech-service/overview
+      html: <p>Přečtěte si informace o službě Azure Speech.</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Co je služba Speech?
+    - href: /azure/cognitive-services/speech-service/get-started
+      html: <p>Přečtěte si, jak si službu Speech zdarma zaregistrovat.</p>
+      image:
+        src: ../media/index/i_get-started.svg
+      title: Registrace služby Speech
+    - href: /azure/cognitive-services/speech-service/speech-devices-sdk
+      html: <p>Přečtěte si referenční informace o hardwaru s podporou řeči.</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Speech Devices SDK
+- title: Zprovoznění během 5 minut
   items:
   - type: paragraph
     text: Informace o stažení, instalaci a použití získáte kliknutím na požadovaný odkaz <img src="media/index/link.jpg" height="15" width="15"></img> níže.
@@ -48,6 +75,10 @@ sections:
     - image:
         src: media/index/logo_java.jpg
     - image:
+        src: media/index/logo_objc.jpg
+    - image:
+        src: media/index/logo_js.svg
+    - image:
         src: media/index/logo_rest_sr.svg
     - image:
         src: media/index/logo_rest_tts.svg
@@ -61,12 +92,16 @@ sections:
       - href: quickstart-java-jre
       - href: 
       - href: 
+      - href: 
+      - href: 
     - title: Windows 10 (x86)
       values:
       - href: quickstart-csharp-uwp
       - href: quickstart-csharp-windows
       - href: quickstart-cpp-windows
       - href: quickstart-csharp-dotnetcore-windows
+      - href: 
+      - href: 
       - href: 
       - href: 
       - href: 
@@ -79,11 +114,15 @@ sections:
       - href: quickstart-java-jre
       - href: 
       - href: 
+      - href: 
+      - href: 
     - title: Linux (x86)
       values:
       - href: 
       - href: 
       - href: quickstart-cpp-linux
+      - href: 
+      - href: 
       - href: 
       - href: 
       - href: 
@@ -97,6 +136,8 @@ sections:
       - href: quickstart-java-android
       - href: 
       - href: 
+      - href: 
+      - href: 
     - title: Devices SDK (ARM64)
       values:
       - href: 
@@ -106,6 +147,19 @@ sections:
       - href: speech-devices-sdk
       - href: 
       - href: 
+      - href: 
+      - href: 
+    - title: iOS (ARM64)
+      values:
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: quickstart-objectivec-ios
+      - href: 
+      - href: 
+      - href: 
     - title: Web
       values:
       - href: 
@@ -113,49 +167,51 @@ sections:
       - href: 
       - href: 
       - href: 
+      - href: 
+      - href: quickstart-js-browser
       - href: rest-apis
       - href: rest-apis
-- title: Ukázky a reference k sadě Speech SDK
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: 'Naučte se vyvíjet aplikace s využitím služby Speech:'
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="speech-to-text-sample.md">Převod řeči na text (rozpoznávání řeči)</a><br/>
+    - html: <a href="intent.md">Rozpoznávání záměru</a><br/>
+    - html: <a href="translation.md">Překlad</a>
+- title: Ukázky
+  items:
+  - type: paragraph
+    text: 'Projděte si ukázky pro službu Speech na Githubu:'
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk">Ukázky sady SDK pro službu</a><br/>
+    - html: <a href="https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK">Ukázky sady SDK pro zařízení</a><br/>
+- title: Referenční informace
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: Ukázky
+    - title: Referenční informace k sadě SDK
       html: >
-        &nbsp;&#8226; <a href="speech-to-text-sample.md">Převod řeči na text (SR)</a><br/>
+        <p><a href="https://aka.ms/csspeech/csharpref">Rozhraní API C# (UPW a .NET)</a></p>
 
-        &nbsp;&#8226; <a href="intent.md">Rozpoznávání záměru</a><br/>
+        <p><a href="https://aka.ms/csspeech/cppref">Rozhraní API C++</a></p>
 
-        &nbsp;&#8226; <a href="translation.md">Překlad</a>
-    - title: Referenční materiály k rozhraní API
+        <p><a href="https://aka.ms/csspeech/javaref">Rozhraní API Javy</a></p>
+
+        <p><a href="https://aka.ms/csspeech/objectivecref">Rozhraní API Objective-C</a></p>
+
+        <p><a href="https://aka.ms/csspeech/javascript">Rozhraní JavaScript API</a></p>
+    - title: REST API
       html: >
-        &nbsp;&#8226; <a href="https://aka.ms/csspeech/csharpref">C# API (UPW a .NET)</a><br/>
-
-        &nbsp;&#8226; <a href="https://aka.ms/csspeech/cppref">C++ API</a><br/>
-
-        &nbsp;&#8226; <a href="https://aka.ms/csspeech/javaref">Java API</a>
-    - title: Nejčastější dotazy
+        <p><a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis">REST API</a></p>
+    - title: PowerShell
       html: >
-        &nbsp;&#8226; <a href="faq-stt">Převod řeči na text</a><br/>
-
-        &nbsp;&#8226; <a href="faq-text-to-speech">Převod textu na řeč</a><br/>
-
-        &nbsp;&#8226; <a href="https://www.microsoft.com/translator/faq.aspx">Překlad</a>
-  - type: paragraph
-    text: Výše uvedené ukázky a rozhraní API využijte s vaším klíčem předplatného (viz téma <a href="get-started.md">Vyzkoušejte si službu Speech zdarma</a>).
-- title: Přizpůsobení řeči s využitím vlastních dat
-  items:
-  - type: paragraph
-    text: >
-      Naše služba Speech také umožňuje přizpůsobit modely tak, aby vyhovovaly specializovaným slovníkům, hlučným prostředím a různým způsobům řeči.<br/>
-
-      &nbsp;&#8226; <a href="how-to-customize-speech-models">Přizpůsobený převod řeči na text</a><br/>
-
-      &nbsp;&#8226; <a href="https://www.microsoft.com/translator/customization.aspx">Přizpůsobený překlad řeči</a><br/>
-
-      &nbsp;&#8226;<a href="https://cris.ai/Home/customvoice">Přizpůsobený převod textu na řeč</a>
-- title: Referenční návrh hardwaru s podporou řeči
-  items:
-  - type: paragraph
-    text: Ti, kteří si chtějí sestavit nový hardware zařízení s podporou řeči, si mohou prohlédnout naše referenční zařízení v sadě <a href='https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk'>Speech Devices SDK</a>.
+        <p><a href=https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services">Azure PowerShell</a></p>
+    - title: Rozhraní příkazového řádku
+      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list">Azure CLI</a></p>

@@ -1,0 +1,37 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 739d46e900b51e93c0d232e57a54a9b05cfe49ce
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965071"
+documentType: LandingData
+title: Dokumentace ke službě Azure Resource Graph
+metadata:
+  title: Dokumentace ke službě Azure Resource Graph – kurzy, reference k rozhraní API
+  description: Azure Resource Graph je služba v Azure, která umožňuje komplexní dotazování na prostředky v potřebném měřítku.
+  services: resource-graph
+  author: DCtheGeek
+  manager: carmonm
+  ms.service: resource-graph
+  ms.topic: landing-page
+  ms.date: 09/18/2018
+  ms.author: dacoulte
+abstract:
+  description: Dokumentace ke službě Azure Resource Graph vám usnadní konfiguraci a seznámení se s dotazovacím jazykem, abyste mohli zjišťovat a prozkoumávat prostředky v potřebném měřítku.
+sections:
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: Nakonfigurujte si Resource Graph a spusťte svůj první dotaz.
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: ./media/cli.svg
+      text: Azure CLI
+      href: first-query-azurecli.md
+    - image:
+        src: ./media/powershell.svg
+      text: Azure PowerShell
+      href: first-query-powershell.md

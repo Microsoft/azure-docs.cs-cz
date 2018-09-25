@@ -1,27 +1,57 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 9c0e5c668210ec7fff5c7e2bb37afb123db8c5c4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983306"
 documentType: LandingData
 title: Dokumentace ke službě Language Understanding (LUIS)
 metadata:
   document_id: 
   title: Služba Language Understanding (LUIS) – kurzy, rychlá zprovoznění, reference k rozhraní API
   description: Zjistěte, jak využít službu Language Understanding k tomu, aby vaší aplikaci umožnila pochopit, co lidé vlastními slovy chtějí.
-  author: Kaiqb
-  manager: carolz
+  author: nitinme
+  manager: cgronlun
   ms.service: cognitive-services
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 06/28/2018
-  ms.author: kamrani
-  ms.openlocfilehash: f3ccbb033354afc01fa840b3129d305f04942ffd
-  ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
-  ms.translationtype: HT
-  ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/29/2018
-  ms.locfileid: "37095566"
+  ms.date: 09/24/2018
+  ms.author: nitinme
 abstract:
   description: Služba Language Understanding (LUIS) umožňuje vaší aplikaci pochopit, co lidé vlastními slovy chtějí. Služba LUIS využívá strojové učení a umožňuje vývojářům sestavovat aplikace, které dokážou přijmout uživatelský vstup v přirozeném jazyce a extrahovat jeho význam.
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: ../media/index/luis-landing-page-video.png
+      width: 250
+    title: Co je nového ve službě LUIS (18:28)
+    href: https://azure.microsoft.com/resources/videos/whats-new-with-language-understanding-service-luis
+    width: 250
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/luis/what-is-luis
+      html: <p>Přečtěte si informace o službě Language Understanding (LUIS).</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Co je LUIS?
+    - href: /azure/cognitive-services/luis/luis-how-plan-your-app
+      html: <p>Připravte si přehled záměrů a entit, které jsou pro vaši aplikaci relevantní.</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Naplánování aplikace LUIS
+    - href: /azure/cognitive-services/luis/luis-concept-best-practices
+      html: <p>Při vytváření aplikace LUIS použijte tyto osvědčené postupy.</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Doporučené postupy pro aplikaci LUIS
 - title: Zprovoznění během 5 minut
   items:
   - type: table
@@ -73,13 +103,18 @@ sections:
     - html: <a href="luis-quickstart-primary-and-secondary-data">Přidání jednoduché entity a seznamu frází</a>
     - html: <a href="luis-quickstart-intent-and-key-phrase">Přidání entity klíčové fráze</a>
     - html: <a href="luis-quickstart-intent-and-sentiment-analysis">Přidání analýzy mínění</a>
+- title: Ukázky
+  items:
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="https://aka.ms/luis-code-samples">Ukázky na GitHubu</a><br/>
 - title: Videa
   items:
   - type: list
     style: unordered
     items:
     - html: <a href="https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player" > Azure Friday na konferenci Build 2018 – Cognitive Services – Language (LUIS)</a>
-    - html: <a href="https://channel9.msdn.com/Shows/AI-Show/Whats-New-with-Language-Understanding-Service-LUIS/player" > Předvedení AI na konferenci Build 2018 – Novinky služby Language Understanding Service (LUIS)</a>
     - html: <a href="https://channel9.msdn.com/events/Build/2018/BRK3208" >Seminář na konferenci Build 2018 – Inteligence robotů, možnosti využití řeči a osvědčené postupy NLU</a>
 - title: Referenční informace
   items:
@@ -91,5 +126,7 @@ sections:
       html: <p><a href="https://aka.ms/luis-endpoint-apis">Rozhraní API pro koncové body</a></p><p><a href="https://aka.ms/luis-authoring-apis">Rozhraní API pro vytváření</a></p>
     - title: Sady SDK
       html: <p><a href="https://aka.ms/luis-endpoint-sdk">.NET Endpoint SDK</a></p><p><a href="https://aka.ms/luis-authoring-sdk"> .NET Authoring SDK</a></p>
-    - title: Ukázky kódů
-      html: <p><a href="https://aka.ms/luis-code-samples">Ukázky kódu</a></p>
+    - title: PowerShell
+      html: <p><a href=https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services">Azure PowerShell</a></p>
+    - title: Rozhraní příkazového řádku
+      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list">Azure CLI</a></p>

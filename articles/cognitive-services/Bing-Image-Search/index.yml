@@ -1,28 +1,49 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 94663fc33c172497c0ff1b129dd557eda0f4344a
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: cb9fe97bf1b71731f6d4a09b22cf2fb4d6de47a1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35624171"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965366"
 documentType: LandingData
-title: Dokumentace k Vyhledávání obrázků Bingu
+title: Dokumentace k rozhraní API Bingu pro vyhledávání obrázků
 metadata:
   document_id: ce69fd12-adf8-11e7-abc4-cec278b6b50a
-  title: Dokumentace k Vyhledávání obrázků Bingu – kurzy, šablony Rychlý start, reference k rozhraní API | Microsoft Docs
+  title: Dokumentace k rozhraní API Bingu pro vyhledávání obrázků – kurzy, šablony Rychlý start, reference k rozhraní API | Microsoft Docs
   description: Naučte se používat rozhraní API Bingu pro vyhledávání obrázků k získání obrázků z webu, které jsou relevantní pro dotazy uživatelů. Kurzy vám ukážou, jak vytvářet aplikace, které tuto službu používají.
   services: cognitive-services
-  author: v-jerkin
-  manager: carolz
+  author: nitinme
+  manager: cgronlun
   ms.service: bing-image-search
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 10/10/2017
-  ms.author: v-jerkin
+  ms.date: 9/24/2018
+  ms.author: nitinme
 abstract:
   description: Rozhraní API Bingu pro vyhledávání obrázků poskytuje prostředí podobné jako Bing.com/images. Vrací obrázky, u kterých Bing rozhodne, že jsou pro dotaz uživatele relevantní.
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/bing-image-search/overview
+      html: <p>Přečtěte si o rozhraní API Bingu pro vyhledávání obrázků.</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Co je Vyhledávání obrázků Bingu?
+    - href: /azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries
+      html: <p>Zjistěte, jak odesílat dotazy pro vyhledávání obrázků do Bingu.</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Dotazy pro vyhledávání obrázků
+    - href: /azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images
+      html: <p>Vysvětlení odpovědi Vyhledávání obrázků</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Odpověď Vyhledávání obrázků
 - title: Zprovoznění během 5 minut
   items:
   - type: paragraph
@@ -61,15 +82,27 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="tutorial-bing-image-search-single-page-app">Jednostránková webová aplikace</a> &#124; <a href="tutorial-bing-image-search-single-page-app-source">zdrojový kód</a>
-    - html: <a href="tutorial-image-post">Odeslání obrázků Bingu pro získání přehledů </a> &#124; <a href="tutorial-image-post-source">zdrojový kód</a>
+    - html: <a href="tutorial-bing-image-search-single-page-app">Jednostránková webová aplikace</a>
+    - html: <a href="tutorial-image-post">Odeslání obrázků Bingu pro získání přehledů</a>
+- title: Ukázky
+  items:
+  - type: paragraph
+    text: 'Projděte si ukázky pro rozhraní API Bingu pro vyhledávání obrázků:'
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Image+Search">Ukázky kódu</a>
 - title: Referenční informace
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: Rozhraní API
+    - title: REST
       html: <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference">Rozhraní API Bingu pro vyhledávání obrázků v7</a></p><p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference/">Rozhraní API Bingu pro vyhledávání obrázků v5</p>
     - title: Sady SDK
       html: <p><a href="sdk.md">Sada SDK pro Vyhledávání Bingu</a></p>
+    - title: PowerShell
+      html: <p><a href="https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services">Azure PowerShell</a></p>
+    - title: Rozhraní příkazového řádku
+      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list">Azure CLI</a></p>

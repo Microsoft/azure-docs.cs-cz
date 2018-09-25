@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2a7957a1fd75a91864b372f9c976d90b245b6d79
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: f6849bf8b4070f018f0b410bd8aedc73755c2c62
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39281261"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985619"
 documentType: LandingData
 title: Dokumentace ke službě Azure Security Center
 metadata:
@@ -55,6 +55,19 @@ sections:
     - html: <a href="/azure/security-center/tutorial-security-policy">Definování a vyhodnocení zásad zabezpečení</a>
     - html: <a href="/azure/security-center/tutorial-protect-resources">Ochrana vašich prostředků</a>
     - html: <a href="/azure/security-center/tutorial-security-incident">Reakce na incidenty zabezpečení</a>
+- title: Získávání dovedností pomocí Microsoft Learn
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: "  Úvod do zabezpečení v Azure"
+      href: /learn/modules/intro-to-security-in-azure/
+      image:
+        src: /learn/achievements/intro-to-security-in-azure.svg
+        href: /learn/modules/intro-to-security-in-azure/
+  - type: paragraph
+    text: <a href="/learn/browse/?term=security">Další interaktivní výuka...</a>
 - title: Bezplatné školicí video
   items:
   - type: list

@@ -1,11 +1,17 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 19bb8a72e6455010477805a78bc15de554a2eb83
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987471"
 documentType: LandingData
 title: Dokumentace k rozhraní Text Analytics API
 metadata:
   title: Dokumentace k rozhraní Text Analytics API – kurzy, reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
   description: Zjistěte, jak provádět pokročilé zpracování textu přirozeného jazyka pomocí rozhraní API pro analýzu textu. Kurzy vám ukážou, jak psát kód, který využívá službu Analýza textu.
   services: cognitive-services
-  author: HeidiSteen
+  author: nitinme
   manager: cgronlun
   layout: LandingPage
   ms.service: cognitive-services
@@ -13,21 +19,36 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 03/07/2018
-  ms.author: heidist
-  ms.openlocfilehash: aee5b1c47d3db4f630c528707f03d175e52c2c4f
-  ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-  ms.translationtype: HT
-  ms.contentlocale: cs-CZ
-  ms.lasthandoff: 07/11/2018
-  ms.locfileid: "38398628"
+  ms.date: 09/24/2018
+  ms.author: nitinme
 abstract:
   description: 'Rozhraní API pro analýzu textu je cloudová služba, která poskytuje rozšířené zpracování přirozeného jazyka pro nezpracovaný text a zahrnuje tři hlavní funkce: analýzu mínění, extrakci klíčových frází a rozpoznávání jazyka. Pomocí našich šablon Rychlý start, kurzů a ukázek se naučíte různými způsoby analyzovat obsah.'
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/text-analytics/overview
+      html: <p>Přečtěte si o rozhraní API pro analýzu textu.</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Co je Analýza textu?
+    - href: /azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-signup
+      html: <p>Přečtěte si, jak si zaregistrovat rozhraní API pro analýzu textu.</p>
+      image:
+        src: ../media/index/i_get-started.svg
+      title: Registrace rozhraní API pro analýzu textu
+    - href: /azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-access-key
+      html: <p>Přečtěte si, jak získat přístupové klíče a koncové body pro rozhraní API pro analýzu textu.</p>
+      image:
+        src: ../media/index/i_tasks.svg
+      title: Přístupové klíče pro rozhraní API pro analýzu textu
 - title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: 'Začněte používat rozhraní API pro analýzu textu při detekci jazyka, analýze mínění a extrakci klíčových frází:'
+    text: 'Začněte při detekci jazyka, analýze mínění a extrakci klíčových frází používat rozhraní API pro analýzu textu:'
   - type: list
     style: icon48
     items:
@@ -68,3 +89,7 @@ sections:
     items:
     - title: REST
       html: <p><a href="https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7">Referenční materiály k rozhraní API</a></p>
+    - title: PowerShell
+      html: <p><a href=https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services">Azure PowerShell</a></p>
+    - title: Rozhraní příkazového řádku
+      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list">Azure CLI</a></p>

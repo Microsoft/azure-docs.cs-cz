@@ -1,28 +1,49 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 9c9c5671e835e3402fe4dfbf45b295256009caa6
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 7eb8996e786d7ee97569c84d70b808cc4210c947
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43185275"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987301"
 documentType: LandingData
-title: Dokumentace k Vyhledávání na webu Bingu
+title: Dokumentace k rozhraní API Bingu pro vyhledávání na webu
 metadata:
   document_id: 6111ada8-aec2-11e7-abc4-cec278b6b50a
-  title: Dokumentace k Vyhledávání na webu Bingu – kurzy, šablony Rychlý start, reference k rozhraní API | Microsoft Docs
+  title: Dokumentace k rozhraní API Bingu pro vyhledávání na webu – kurzy, šablony Rychlý start, reference k rozhraní API | Microsoft Docs
   description: Naučte se používat rozhraní API Bingu pro vyhledávání na webu k získání výsledků z webu, které jsou relevantní pro dotazy uživatelů. Kurzy vám ukážou, jak vytvářet aplikace, které tuto službu používají.
   services: cognitive-services
-  author: v-jerkin
+  author: nitinme
   manager: cgronlun
   ms.service: bing-web-search
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 10/10/2017
-  ms.author: v-jerkin
+  ms.date: 9/24/2018
+  ms.author: nitinme
 abstract:
   description: Rozhraní API Bingu pro vyhledávání na webu poskytuje prostředí podobné Bingu. Vrací výsledky hledání, u kterých Bing rozhodne, že jsou relevantní por dotaz uživatele. Výsledky zahrnují webové stránky a mohou také zahrnovat obrázky, videa a další prvky.
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/bing-web-search/overview
+      html: <p>Přečtěte si o rozhraní API Bingu pro vyhledávání na webu.</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Co je Vyhledávání na webu Bingu?
+    - href: /azure/cognitive-services/bing-web-search/search-responses
+      html: <p>Vysvětlení textu odpovědi rozhraní API Bingu pro vyhledávání na webu</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Odpovědi Vyhledávání na webu
+    - href: /azure/cognitive-services/bing-web-search/autosuggest-bing-search-terms
+      html: <p>Přečtěte si, jak fungují automatické návrhy pro vyhledávací dotaz.</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Automatické návrhy Bingu pro dotazy
 - title: Zprovoznění během 5 minut
   items:
   - type: paragraph
@@ -65,15 +86,27 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="tutorial-bing-web-search-single-page-app">Jednostránková webová aplikace</a> &#124; <a href="tutorial-bing-web-search-single-page-app-source">zdrojový kód</a>
-    - html: <a href="computer-vision-web-search-tutorial.md">Mobilní aplikace pro vizuální vyhledávání</a>
+    - html: <a href="tutorial-bing-web-search-single-page-app">Jednostránková webová aplikace</a>
+- title: Ukázky
+  items:
+  - type: paragraph
+    text: 'Projděte si ukázky pro rozhraní API Bingu pro vyhledávání na webu:'
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="https://github.com/Azure-Samples/cognitive-services-REST-api-samples">Ukázky REST</a>
+    - html: <a href="sdk-samples.md">Ukázky SDK</a>
 - title: Referenční informace
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: Rozhraní API
+    - title: REST
       html: <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference">Rozhraní API Bingu pro vyhledávání na webu v7</a></p><p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v5-reference/">Rozhraní API Bingu pro vyhledávání na webu v5</a></p>
     - title: Sady SDK
-      html: <p><a href="sdk-samples.md">Ukázky sady SDK pro Vyhledávání na webu Bingu</a></p>
+      html: <p><a href="sdk-samples.md">Odkaz sady SDK a ukázky</a></p>
+    - title: PowerShell
+      html: <p><a href="https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services">Azure PowerShell</a></p>
+    - title: Rozhraní příkazového řádku
+      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list">Azure CLI</a></p>

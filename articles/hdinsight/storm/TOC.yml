@@ -1,308 +1,318 @@
+items:
 - name: Dokumentace k Azure HDInsightu
   href: /azure/hdinsight
 - name: Storm v HDInsightu
   items:
-    - name: Přehled
-      href: apache-storm-overview.md
-    - name: Správa verzí komponent
-      href: ../hdinsight-component-versioning.md
-      maintainContext: true
+  - name: Přehled
+    href: apache-storm-overview.md
+  - name: Správa verzí komponent
+    href: ../hdinsight-component-versioning.md
+    maintainContext: true
+  - name: HDInsight 4.0
+    href: ../hdinsight-version-release.md
+    maintainContext: true
 - name: Začínáme
   items:
-    - name: Vytvoření clusteru Storm
-      href: apache-storm-tutorial-get-started-linux.md
-    - name: Instalace aplikací HDInsight
-      href: ../hdinsight-apps-install-applications.md
-      maintainContext: true
-    - name: Plánování kapacity
-      href: ../hdinsight-capacity-planning.md
-      maintainContext: true
+  - name: Vytvoření clusteru Storm
+    href: apache-storm-tutorial-get-started-linux.md
+  - name: Instalace aplikací HDInsight
+    href: ../hdinsight-apps-install-applications.md
+    maintainContext: true
+  - name: Plánování kapacity
+    href: ../hdinsight-capacity-planning.md
+    maintainContext: true
 - name: Postup
   items:
-    - name: Vývoj topologií Storm
-      items:
-        - name: Vývoj topologií pomocí Javy
-          href: apache-storm-develop-java-topology.md
-        - name: Vývoj topologií pomocí Pythonu
-          href: apache-storm-develop-python-topology.md
-        - name: 'Vývoj topologií pomocí C#'
-          href: apache-storm-develop-csharp-visual-studio-topology.md
-        - name: Průvodce programováním pro SCP.NET
-          href: apache-storm-scp-programming-guide.md
-        - name: Příklady použití Storm
-          href: apache-storm-example-topology.md
-    - name: Nasazení a monitorování topologií
-      href: apache-storm-deploy-monitor-topology-linux.md
-    - name: Vytváření streamovacích kanálů
-      items:
-        - name: Kafka a Storm (Java)
-          href: ../hdinsight-apache-storm-with-kafka.md
-          maintainContext: true
-        - name: 'Event Hub, Storage a Data Lake Store (Java)'
-          href: 'https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/'
-        - name: 'Event Hub a Storm (C# a Java)'
-          href: apache-storm-develop-csharp-event-hub-topology.md
-        - name: Azure Storage/Data Lake Store (Java)
-          href: apache-storm-write-data-lake-store.md
-        - name: 'Event Hub, HBase (Java)'
-          href: apache-storm-sensor-data-analysis.md
-    - name: Rozšíření clusterů
-      items:
-        - name: Přizpůsobení clusterů pomocí Bootstrap
-          href: ../hdinsight-hadoop-customize-cluster-bootstrap.md
-          maintainContext: true
-        - name: Přizpůsobení clusterů pomocí akce skriptu
-          href: ../hdinsight-hadoop-customize-cluster-linux.md
-          maintainContext: true
-        - name: Vývoj akcí skriptů
-          href: ../hdinsight-hadoop-script-actions-linux.md
-          maintainContext: true
-        - name: Instalace nebo aktualizace Mono
-          href: ../hdinsight-hadoop-install-mono.md
-          maintainContext: true
-        - name: Vytváření aplikací HDInsight
-          items:
-            - name: Instalace vlastních aplikací
-              href: ../hdinsight-apps-install-custom-applications.md
-              maintainContext: true
-            - name: Použití REST k instalací aplikací
-              href: 'https://msdn.microsoft.com/library/mt706515.aspx'
-            - name: Publikování aplikací HDInsight na Azure Marketplace
-              href: ../hdinsight-apps-publish-applications.md
-              maintainContext: true
-            - name: Instalace publikované aplikace – CDAP (Cask Data Application Platform)
-              href: ../hdinsight-apps-install-cask.md
-              maintainContext: true
-            - name: Instalace publikované aplikace – Dataiku
-              href: ../hdinsight-apps-install-dataiku.md
-              maintainContext: true
-            - name: Instalace publikované aplikace – Datameer
-              href: ../hdinsight-apps-install-datameer.md
-              maintainContext: true
-            - name: Instalace publikované aplikace – H2O
-              href: ../hdinsight-apps-install-h2o.md
-              maintainContext: true
-            - name: Instalace publikované aplikace – Streamsets
-              href: ../hdinsight-apps-install-streamsets.md
-              maintainContext: true
-    - name: Zabezpečení
-      items:
-        - name: Použití SSH s HDInsightem
-          href: ../hdinsight-hadoop-linux-use-ssh-unix.md
-          maintainContext: true
-        - name: Použití tunelového propojení SSH
-          href: ../hdinsight-linux-ambari-ssh-tunnel.md
-          maintainContext: true
-        - name: Omezení přístupu k datům
-          href: ../hdinsight-storage-sharedaccesssignature-permissions.md
-          maintainContext: true
-    - name: Spravovat
-      items:
-        - name: Vytvoření clusterů s Linuxem
-          href: ../hdinsight-hadoop-provision-linux-clusters.md
-          maintainContext: true
-          items:
-            - name: Použití Azure Powershell
-              href: ../hdinsight-hadoop-create-linux-clusters-azure-powershell.md
-              maintainContext: true
-            - name: Použití cURL a rozhraní Azure REST API
-              href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
-              maintainContext: true
-            - name: Použití sady .NET SDK
-              href: ../hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md
-              maintainContext: true
-            - name: Použití Azure CLI
-              href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
-              maintainContext: true
-            - name: Použití webu Azure Portal
-              href: ../hdinsight-hadoop-create-linux-clusters-portal.md
-              maintainContext: true
-            - name: Použití šablon Azure Resource Manageru
-              href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
-              maintainContext: true
-        - name: Použití clusterů Hadoop
-          href: ../hdinsight-administer-use-portal-linux.md
-          maintainContext: true
-          items:
-            - name: Použití sady .NET SDK
-              href: ../hdinsight-administer-use-dotnet-sdk.md
-              maintainContext: true
-            - name: Použití Azure Powershell
-              href: ../hdinsight-administer-use-powershell.md
-              maintainContext: true
-            - name: Použití Azure CLI
-              href: ../hdinsight-administer-use-command-line.md
-              maintainContext: true
-        - name: Správa clusterů pomocí webového uživatelského rozhraní Ambari
-          href: ../hdinsight-hadoop-manage-ambari.md
-          maintainContext: true
-          items:
-            - name: Optimalizace clusterů s využitím webového uživatelského rozhraní Ambari
-              href: ../hdinsight-changing-configs-via-ambari.md
-              maintainContext: true
-            - name: Použití rozhraní Ambari REST API
-              href: ../hdinsight-hadoop-manage-ambari-rest-api.md
-              maintainContext: true
-        - name: Správa protokolů pro cluster HDInsight
-          href: ../hdinsight-log-management.md
-          maintainContext: true
-        - name: Přidání účtů úložiště
-          href: ../hdinsight-hadoop-add-storage.md
-          maintainContext: true
-        - name: Nahrání dat pro úlohy systému Hadoop
-          href: ../hdinsight-upload-data.md
-          maintainContext: true
-        - name: Několik clusterů HDInsight se službou Data Lake Store
-          href: ../hdinsight-multiple-clusters-data-lake-store.md
-          maintainContext: true
-        - name: Import a export dat pomocí Sqoop
-          href: ../hdinsight-use-sqoop.md
-          maintainContext: true
-          items:
-            - name: Připojení přes SSH
-              href: ../hdinsight-use-sqoop-mac-linux.md
-              maintainContext: true
-            - name: Spuštění pomocí cURL
-              href: ../hdinsight-hadoop-use-sqoop-curl.md
-              maintainContext: true
-            - name: Spuštění pomocí sady .NET SDK
-              href: ../hdinsight-hadoop-use-sqoop-dotnet-sdk.md
-              maintainContext: true
-            - name: Spuštění pomocí Azure PowerShellu
-              href: ../hdinsight-hadoop-use-sqoop-powershell.md
-              maintainContext: true
-        - name: Použití Oozie pro pracovní postupy
-          href: ../hdinsight-use-oozie-linux-mac.md
-          maintainContext: true
-        - name: Použití časových koordinátorů Oozie
-          href: ../hdinsight-use-oozie-coordinator-time.md
-          maintainContext: true
-        - name: Porty a identifikátory URI clusterů a služeb
-          href: ../hdinsight-hadoop-port-settings-for-services.md
-          maintainContext: true
-        - name: Migrace do vývojových nástrojů Resource Manageru
-          href: ../hdinsight-hadoop-development-using-azure-resource-manager.md
-          maintainContext: true
-        - name: 'Dostupnost a spolehlivost '
-          href: ../hdinsight-high-availability-linux.md
-          maintainContext: true
-        - name: Upgrade clusteru HDInsight na novější verzi
-          href: ../hdinsight-upgrade-cluster.md
-          maintainContext: true
-        - name: Opravy operačního systému pro cluster HDInsight
-          href: ../hdinsight-os-patching.md
-          maintainContext: true
-    - name: Řešení potíží
-      href: ../hdinsight-troubleshoot-guide.md
+  - name: Vývoj topologií Storm
+    items:
+    - name: Vývoj topologií pomocí Javy
+      href: apache-storm-develop-java-topology.md
+    - name: Vývoj topologií pomocí Pythonu
+      href: apache-storm-develop-python-topology.md
+    - name: Vývoj topologií pomocí C#
+      href: apache-storm-develop-csharp-visual-studio-topology.md
+    - name: Průvodce programováním pro SCP.NET
+      href: apache-storm-scp-programming-guide.md
+    - name: Příklady použití Storm
+      href: apache-storm-example-topology.md
+  - name: Nasazení a monitorování topologií
+    href: apache-storm-deploy-monitor-topology-linux.md
+  - name: Vytváření streamovacích kanálů
+    items:
+    - name: Kafka a Storm (Java)
+      href: ../hdinsight-apache-storm-with-kafka.md
       maintainContext: true
+    - name: Event Hub, Storage a Data Lake Store (Java)
+      href: https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/
+    - name: Event Hub a Storm (C# a Java)
+      href: apache-storm-develop-csharp-event-hub-topology.md
+    - name: Azure Storage/Data Lake Store (Java)
+      href: apache-storm-write-data-lake-store.md
+    - name: Event Hub, HBase (Java)
+      href: apache-storm-sensor-data-analysis.md
+  - name: Rozšíření clusterů
+    items:
+    - name: Přizpůsobení clusterů pomocí Bootstrap
+      href: ../hdinsight-hadoop-customize-cluster-bootstrap.md
+      maintainContext: true
+    - name: Přizpůsobení clusterů pomocí akce skriptu
+      href: ../hdinsight-hadoop-customize-cluster-linux.md
+      maintainContext: true
+    - name: Vývoj akcí skriptů
+      href: ../hdinsight-hadoop-script-actions-linux.md
+      maintainContext: true
+    - name: Instalace nebo aktualizace Mono
+      href: ../hdinsight-hadoop-install-mono.md
+      maintainContext: true
+    - name: Vytváření aplikací HDInsight
       items:
-        - name: Řešení potíží s pomalým clusterem HDInsight nebo jeho selháním
-          href: ../hdinsight-troubleshoot-failed-cluster.md
-          maintainContext: true
-        - name: Řešení potíží s HDFS
-          href: ../hdinsight-troubleshoot-hdfs.md
-          maintainContext: true
-        - name: Řešení potíží se STORM
-          href: apache-troubleshoot-storm.md
-        - name: Řešení potíží s YARN
-          href: ../hdinsight-troubleshoot-yarn.md
-          maintainContext: true
-        - name: Zdroje a prostředky
-          items:
-            - name: Informace o používání HDInsightu v Linuxu
-              href: ../hdinsight-hadoop-linux-information.md
-              maintainContext: true
-            - name: Výkon a paměť Hadoopu
-              href: ../hdinsight-hadoop-stack-trace-error-messages.md
-              maintainContext: true
-            - name: Přístup k protokolům aplikací Hadoop YARN v Linuxu
-              href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md
-              maintainContext: true
-            - name: Povolení výpisů paměti haldy pro služby Hadoop
-              href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md
-              maintainContext: true
+      - name: Instalace vlastních aplikací
+        href: ../hdinsight-apps-install-custom-applications.md
+        maintainContext: true
+      - name: Použití REST k instalací aplikací
+        href: https://msdn.microsoft.com/library/mt706515.aspx
+      - name: Publikování aplikací HDInsight na Azure Marketplace
+        href: ../hdinsight-apps-publish-applications.md
+        maintainContext: true
+      - name: Instalace publikované aplikace – CDAP (Cask Data Application Platform)
+        href: ../hdinsight-apps-install-cask.md
+        maintainContext: true
+      - name: Instalace publikované aplikace – Dataiku
+        href: ../hdinsight-apps-install-dataiku.md
+        maintainContext: true
+      - name: Instalace publikované aplikace – Datameer
+        href: ../hdinsight-apps-install-datameer.md
+        maintainContext: true
+      - name: Instalace publikované aplikace – H2O
+        href: ../hdinsight-apps-install-h2o.md
+        maintainContext: true
+      - name: Instalace publikované aplikace – Streamsets
+        href: ../hdinsight-apps-install-streamsets.md
+        maintainContext: true
+  - name: Zabezpečení
+    items:
+    - name: Použití SSH s HDInsightem
+      href: ../hdinsight-hadoop-linux-use-ssh-unix.md
+      maintainContext: true
+    - name: Použití tunelového propojení SSH
+      href: ../hdinsight-linux-ambari-ssh-tunnel.md
+      maintainContext: true
+    - name: Omezení přístupu k datům
+      href: ../hdinsight-storage-sharedaccesssignature-permissions.md
+      maintainContext: true
+  - name: Spravovat
+    items:
+    - name: Vytvoření clusterů s Linuxem
+      href: ../hdinsight-hadoop-provision-linux-clusters.md
+      items:
+      - name: Použití Azure Powershell
+        href: ../hdinsight-hadoop-create-linux-clusters-azure-powershell.md
+        maintainContext: true
+      - name: Použití cURL a rozhraní Azure REST API
+        href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
+        maintainContext: true
+      - name: Použití sady .NET SDK
+        href: ../hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md
+        maintainContext: true
+      - name: Použití Azure Classic CLI
+        href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
+        maintainContext: true
+      - name: Použití webu Azure Portal
+        href: ../hdinsight-hadoop-create-linux-clusters-portal.md
+        maintainContext: true
+      - name: Použití šablon Azure Resource Manageru
+        href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
+        maintainContext: true
+      maintainContext: true
+    - name: Použití clusterů Hadoop
+      href: ../hdinsight-administer-use-portal-linux.md
+      items:
+      - name: Použití sady .NET SDK
+        href: ../hdinsight-administer-use-dotnet-sdk.md
+        maintainContext: true
+      - name: Použití Azure Powershell
+        href: ../hdinsight-administer-use-powershell.md
+        maintainContext: true
+      - name: Použití Azure Classic CLI
+        href: ../hdinsight-administer-use-command-line.md
+        maintainContext: true
+      maintainContext: true
+    - name: Správa clusterů pomocí webového uživatelského rozhraní Ambari
+      href: ../hdinsight-hadoop-manage-ambari.md
+      items:
+      - name: Optimalizace clusterů s využitím webového uživatelského rozhraní Ambari
+        href: ../hdinsight-changing-configs-via-ambari.md
+        maintainContext: true
+      - name: Použití rozhraní Ambari REST API
+        href: ../hdinsight-hadoop-manage-ambari-rest-api.md
+        maintainContext: true
+      maintainContext: true
+    - name: Správa protokolů pro cluster HDInsight
+      href: ../hdinsight-log-management.md
+      maintainContext: true
+    - name: Přidání účtů úložiště
+      href: ../hdinsight-hadoop-add-storage.md
+      maintainContext: true
+    - name: Nahrání dat pro úlohy systému Hadoop
+      href: ../hdinsight-upload-data.md
+      maintainContext: true
+    - name: Několik clusterů HDInsight se službou Data Lake Store
+      href: ../hdinsight-multiple-clusters-data-lake-store.md
+      maintainContext: true
+    - name: Import a export dat pomocí Sqoop
+      href: ../hdinsight-use-sqoop.md
+      items:
+      - name: Připojení přes SSH
+        href: ../hdinsight-use-sqoop-mac-linux.md
+        maintainContext: true
+      - name: Spuštění pomocí cURL
+        href: ../hdinsight-hadoop-use-sqoop-curl.md
+        maintainContext: true
+      - name: Spuštění pomocí sady .NET SDK
+        href: ../hdinsight-hadoop-use-sqoop-dotnet-sdk.md
+        maintainContext: true
+      - name: Spuštění pomocí Azure PowerShellu
+        href: ../hdinsight-hadoop-use-sqoop-powershell.md
+        maintainContext: true
+      maintainContext: true
+    - name: Použití Oozie pro pracovní postupy
+      href: ../hdinsight-use-oozie-linux-mac.md
+      maintainContext: true
+    - name: Použití časových koordinátorů Oozie
+      href: ../hdinsight-use-oozie-coordinator-time.md
+      maintainContext: true
+    - name: Porty a identifikátory URI clusterů a služeb
+      href: ../hdinsight-hadoop-port-settings-for-services.md
+      maintainContext: true
+    - name: Migrace do vývojových nástrojů Resource Manageru
+      href: ../hdinsight-hadoop-development-using-azure-resource-manager.md
+      maintainContext: true
+    - name: 'Dostupnost a spolehlivost '
+      href: ../hdinsight-high-availability-linux.md
+      maintainContext: true
+    - name: Upgrade clusteru HDInsight na novější verzi
+      href: ../hdinsight-upgrade-cluster.md
+      maintainContext: true
+    - name: Opravy operačního systému pro cluster HDInsight
+      href: ../hdinsight-os-patching.md
+      maintainContext: true
+  - name: Řešení potíží
+    href: ../hdinsight-troubleshoot-guide.md
+    items:
+    - name: Řešení potíží s pomalým clusterem HDInsight nebo jeho selháním
+      href: ../hdinsight-troubleshoot-failed-cluster.md
+      maintainContext: true
+    - name: Řešení potíží s HDFS
+      href: ../hdinsight-troubleshoot-hdfs.md
+      maintainContext: true
+    - name: Řešení potíží se STORM
+      href: apache-troubleshoot-storm.md
+    - name: Řešení potíží s YARN
+      href: ../hdinsight-troubleshoot-yarn.md
+      maintainContext: true
+    - name: Zdroje a prostředky
+      items:
+      - name: Informace o používání HDInsightu v Linuxu
+        href: ../hdinsight-hadoop-linux-information.md
+        maintainContext: true
+      - name: Výkon a paměť Hadoopu
+        href: ../hdinsight-hadoop-stack-trace-error-messages.md
+        maintainContext: true
+      - name: Přístup k protokolům aplikací Hadoop YARN v Linuxu
+        href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md
+        maintainContext: true
+      - name: Povolení výpisů paměti haldy pro služby Hadoop
+        href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md
+        maintainContext: true
+    maintainContext: true
 - name: Připravenost pro podnikové zpracování
   items:
-    - name: Zabezpečení dat
-      href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
+  - name: Zabezpečení dat
+    href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
+    maintainContext: true
+  - name: Síťový přístup
+    items:
+    - name: HDInsight ve virtuální síti Azure
+      href: ../hdinsight-extend-hadoop-virtual-network.md
       maintainContext: true
-    - name: Síťový přístup
-      items:
-        - name: HDInsight ve virtuální síti Azure
-          href: ../hdinsight-extend-hadoop-virtual-network.md
-          maintainContext: true
-        - name: Připojení služby HDInsight k místní síti
-          href: ../connect-on-premises-network.md
-          maintainContext: true
-    - name: Monitorování s využitím Log Analytics
-      items:
-        - name: Použití Azure Log Analytics
-          href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
-          maintainContext: true
-        - name: Použití dotazů se službou Log Analytics
-          href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
-          maintainContext: true
-        - name: Monitorování výkonu clusteru
-          href: ../hdinsight-key-scenarios-to-monitor.md
-          maintainContext: true
+    - name: Připojení služby HDInsight k místní síti
+      href: ../connect-on-premises-network.md
+      maintainContext: true
+  - name: Monitorování s využitím Log Analytics
+    items:
+    - name: Použití Azure Log Analytics
+      href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
+      maintainContext: true
+    - name: Použití dotazů se službou Log Analytics
+      href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
+      maintainContext: true
+    - name: Monitorování výkonu clusteru
+      href: ../hdinsight-key-scenarios-to-monitor.md
+      maintainContext: true
 - name: Referenční informace
   items:
-    - name: Ukázky kódů
-      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight'
-    - name: Azure PowerShell
-      href: /powershell/module/azurerm.hdinsight
-    - name: .NET (Hadoop)
-      href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hd-insight?view=azure-dotnet'
-    - name: .NET (HBase)
-      href: 'https://www.nuget.org/packages/Microsoft.HBase.Client/'
-    - name: .NET (Avro)
-      href: 'https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library'
-    - name: REST
-      href: /rest/api/hdinsight/
-    - name: REST (Spark)
-      href: /rest/api/hdinsightspark/
+  - name: Ukázky kódů
+    href: https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight
+  - name: Azure PowerShell
+    href: /powershell/module/azurerm.hdinsight
+  - name: .NET (Hadoop)
+    href: https://docs.microsoft.com/dotnet/api/overview/azure/hd-insight?view=azure-dotnet
+  - name: .NET (HBase)
+    href: https://www.nuget.org/packages/Microsoft.HBase.Client/
+  - name: .NET (Avro)
+    href: https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library
+  - name: REST
+    href: /rest/api/hdinsight/
+  - name: REST (Spark)
+    href: /rest/api/hdinsightspark/
 - name: Související
   items:
-    - name: Clustery s Windows
-      items:
-        - name: Migrace clusterů s Windows na clustery s Linuxem
-          href: ../hdinsight-migrate-from-windows-to-linux.md
-          maintainContext: true
-        - name: Migrace řešení .NET do linuxových clusterů
-          href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md
-          maintainContext: true
-        - name: Nasazení a správa topologií Storm
-          href: apache-storm-deploy-monitor-topology.md
-        - name: Použití Maven k vytváření aplikací v Javě
-          href: ../hdinsight-hbase-build-java-maven.md
-          maintainContext: true
-        - name: Přizpůsobení pomocí akce skriptu
-          href: ../hdinsight-hadoop-customize-cluster.md
-          maintainContext: true
-        - name: Přístup k protokolům aplikace YARN
-          href: ../hdinsight-hadoop-access-yarn-app-logs.md
-          maintainContext: true
-        - name: Vývoj akcí skriptů
-          href: ../hdinsight-hadoop-script-actions.md
-          maintainContext: true
-        - name: Správa clusterů pomocí webu Azure Portal
-          href: ../hdinsight-administer-use-management-portal.md
-          maintainContext: true
-        - name: Monitorování clusterů pomocí rozhraní Ambari API
-          href: ../hdinsight-monitor-use-ambari-api.md
-          maintainContext: true
+  - name: Clustery s Windows
+    items:
+    - name: Migrace clusterů s Windows na clustery s Linuxem
+      href: ../hdinsight-migrate-from-windows-to-linux.md
+      maintainContext: true
+    - name: Migrace řešení .NET do linuxových clusterů
+      href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md
+      maintainContext: true
+    - name: Nasazení a správa topologií Storm
+      href: apache-storm-deploy-monitor-topology.md
+    - name: Použití Maven k vytváření aplikací v Javě
+      href: ../hdinsight-hbase-build-java-maven.md
+      maintainContext: true
+    - name: Přizpůsobení pomocí akce skriptu
+      href: ../hdinsight-hadoop-customize-cluster.md
+      maintainContext: true
+    - name: Přístup k protokolům aplikace YARN
+      href: ../hdinsight-hadoop-access-yarn-app-logs.md
+      maintainContext: true
+    - name: Vývoj akcí skriptů
+      href: ../hdinsight-hadoop-script-actions.md
+      maintainContext: true
+    - name: Správa clusterů pomocí webu Azure Portal
+      href: ../hdinsight-administer-use-management-portal.md
+      maintainContext: true
+    - name: Monitorování clusterů pomocí rozhraní Ambari API
+      href: ../hdinsight-monitor-use-ambari-api.md
+      maintainContext: true
 - name: Zdroje a prostředky
   items:
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
-    - name: Získejte pomoc na fóru
-      href: 'https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight'
-    - name: Postup výuky
-      href: 'https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/'
-    - name: Program Microsoft Professional pro velké objemy dat
-      href: 'https://academy.microsoft.com/en-us/professional-program/big-data/'
-    - name: Cenová kalkulačka
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Nástroje Windows pro HDInsight
-      href: ../hdinsight-hadoop-windows-tools.md
-      maintainContext: true
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/?category=intelligence-analytics
+  - name: Získejte pomoc na fóru
+    href: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight
+  - name: Postup výuky
+    href: https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/
+  - name: Program Microsoft Professional pro velké objemy dat
+    href: https://academy.microsoft.com/en-us/professional-program/big-data/
+  - name: Cenová kalkulačka
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Nástroje Windows pro HDInsight
+    href: ../hdinsight-hadoop-windows-tools.md
+    maintainContext: true
+ms.openlocfilehash: 24f9cea8b89c20e64ac5aa31e8508cf071fa0381
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46992690"

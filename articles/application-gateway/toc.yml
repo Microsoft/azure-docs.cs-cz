@@ -1,177 +1,188 @@
+items:
 - name: Dokumentace ke službě Application Gateway
   href: index.yml
 - name: Přehled
   items:
-    - name: Informace o službách Application Gateway
-      href: overview.md
+  - name: Informace o službách Application Gateway
+    href: overview.md
 - name: Šablony Rychlý start
-  expanded: true
   items:
-    - name: Správa webového provozu – portál
-      href: quick-create-portal.md
-    - name: Správa webového provozu – PowerShell
-      href: quick-create-powershell.md
-    - name: Správa webového provozu – Azure CLI
-      href: quick-create-cli.md
+  - name: Správa webového provozu – portál
+    href: quick-create-portal.md
+  - name: Správa webového provozu – PowerShell
+    href: quick-create-powershell.md
+  - name: Správa webového provozu – Azure CLI
+    href: quick-create-cli.md
+  expanded: true
 - name: Kurzy
   items:
-    - name: Správa webového provozu
-      href: tutorial-manage-web-traffic-cli.md
-    - name: Povolení firewallu webových aplikací
-      href: tutorial-restrict-web-traffic-cli.md
-    - name: Zabezpečení pomocí protokolu SSL
-      href: tutorial-ssl-cli.md
-    - name: Hostování několika webů
-      href: tutorial-multiple-sites-cli.md
-    - name: Směrování podle adres URL
-      href: tutorial-url-route-cli.md
-    - name: Přesměrování webového provozu
-      href: tutorial-url-redirect-cli.md
+  - name: Správa webového provozu
+    href: tutorial-manage-web-traffic-cli.md
+  - name: Povolení firewallu webových aplikací
+    href: tutorial-restrict-web-traffic-cli.md
+  - name: Zabezpečení pomocí protokolu SSL
+    href: tutorial-ssl-cli.md
+  - name: Hostování několika webů
+    href: tutorial-multiple-sites-cli.md
+  - name: Směrování podle adres URL
+    href: tutorial-url-route-cli.md
+  - name: Přesměrování webového provozu
+    href: tutorial-url-redirect-cli.md
 - name: Ukázky
   items:
-    - name: Azure PowerShell
-      href: powershell-samples.md
-    - name: Azure CLI
-      href: cli-samples.md
+  - name: Azure PowerShell
+    href: powershell-samples.md
+  - name: Azure CLI
+    href: cli-samples.md
 - name: Koncepty
   items:
-    - name: Ukončení protokolu SSL
-      href: ssl-overview.md
-    - name: Přehled zásad SSL
-      href: application-gateway-ssl-policy-overview.md
-    - name: Brána firewall webových aplikací
-      href: waf-overview.md
-    - name: Směrování adres URL
-      href: url-route-overview.md
-    - name: Hostování několika webů
-      href: multiple-site-overview.md
-    - name: Podpora přesměrování
-      href: redirect-overview.md
-    - name: Podpora více tenantů
-      href: application-gateway-web-app-overview.md
-    - name: Monitorování stavu
-      href: application-gateway-probe-overview.md
-    - name: Podpora protokolu WebSocket
-      href: application-gateway-websocket.md
+  - name: Ukončení protokolu SSL
+    href: ssl-overview.md
+  - name: Přehled zásad SSL
+    href: application-gateway-ssl-policy-overview.md
+  - name: Brána firewall webových aplikací
+    href: waf-overview.md
+  - name: Konfigurace WAF
+    href: application-gateway-waf-configuration.md
+  - name: Směrování adres URL
+    href: url-route-overview.md
+  - name: Hostování několika webů
+    href: multiple-site-overview.md
+  - name: Automatické škálování a redundance zón
+    href: application-gateway-autoscaling-zone-redundant.md
+  - name: Podpora přesměrování
+    href: redirect-overview.md
+  - name: Podpora více tenantů
+    href: application-gateway-web-app-overview.md
+  - name: Monitorování stavu
+    href: application-gateway-probe-overview.md
+  - name: Podpora protokolu WebSocket
+    href: application-gateway-websocket.md
 - name: Návody
   items:
-    - name: Správa webového provozu
+  - name: Správa webového provozu
+    items:
+    - name: Azure PowerShell
+      href: tutorial-manage-web-traffic-powershell.md
+    - name: Šablona
+      href: create-vmss-template.md
+  - name: Konfigurace interního nástroje pro vyrovnávání zatížení
+    items:
+    - name: Azure PowerShell
+      href: application-gateway-ilb-arm.md
+  - name: Konfigurace ukončení protokolu SSL
+    items:
+    - name: Ukončení protokolu SSL s využitím webu Azure Portal
+      href: create-ssl-portal.md
+    - name: Ukončení protokolu SSL s využitím Azure PowerShellu
+      href: tutorial-ssl-powershell.md
+    - name: Kompletní ukončení SSL s využitím Azure PowerShellu
+      href: application-gateway-end-to-end-ssl-powershell.md
+    - name: Obnovení certifikátů
+      href: renew-certificates.md
+    - name: Konfigurace zásad SSL
+      href: application-gateway-configure-ssl-policy-powershell.md
+  - name: Konfigurace Firewallu webových aplikací
+    items:
+    - name: portál Azure
+      href: application-gateway-web-application-firewall-portal.md
+    - name: Azure PowerShell
+      href: tutorial-restrict-web-traffic-powershell.md
+  - name: Přizpůsobení pravidel WAF
+    items:
+    - name: portál Azure
+      href: application-gateway-customize-waf-rules-portal.md
+    - name: Azure PowerShell
+      href: application-gateway-customize-waf-rules-powershell.md
+    - name: Azure CLI
+      href: application-gateway-customize-waf-rules-cli.md
+  - name: Směrování podle adres URL
+    items:
+    - name: portál Azure
+      href: create-url-route-portal.md
+    - name: Azure PowerShell
+      href: tutorial-url-route-powershell.md
+  - name: Hostování několika webů
+    items:
+    - name: portál Azure
+      href: create-multiple-sites-portal.md
+    - name: Azure PowerShell
+      href: tutorial-multiple-sites-powershell.md
+  - name: Přesměrování provozu
+    items:
+    - name: HTTP do HTTPS
       items:
-        - name: Azure PowerShell
-          href: tutorial-manage-web-traffic-powershell.md
-        - name: Šablona
-          href: create-vmss-template.md
-    - name: Konfigurace interního nástroje pro vyrovnávání zatížení
+      - name: Azure PowerShell
+        href: redirect-http-to-https-powershell.md
+      - name: Azure CLI
+        href: redirect-http-to-https-cli.md
+    - name: Přesměrování interního provozu
       items:
-        - name: Azure PowerShell
-          href: application-gateway-ilb-arm.md
-    - name: Konfigurace ukončení protokolu SSL
-      items:
-        - name: Ukončení protokolu SSL s využitím webu Azure Portal
-          href: create-ssl-portal.md
-        - name: Ukončení protokolu SSL s využitím Azure PowerShellu
-          href: tutorial-ssl-powershell.md
-        - name: Kompletní ukončení SSL s využitím Azure PowerShellu
-          href: application-gateway-end-to-end-ssl-powershell.md
-        - name: Obnovení certifikátů
-          href: renew-certificates.md
-        - name: Konfigurace zásad SSL
-          href: application-gateway-configure-ssl-policy-powershell.md
-    - name: Konfigurace Firewallu webových aplikací
-      items:
-        - name: portál Azure
-          href: application-gateway-web-application-firewall-portal.md
-        - name: Azure PowerShell
-          href: tutorial-restrict-web-traffic-powershell.md
-    - name: Přizpůsobení pravidel WAF
-      items:
-        - name: portál Azure
-          href: application-gateway-customize-waf-rules-portal.md
-        - name: Azure PowerShell
-          href: application-gateway-customize-waf-rules-powershell.md
-        - name: Azure CLI
-          href: application-gateway-customize-waf-rules-cli.md
-    - name: Směrování podle adres URL
-      items:
-        - name: portál Azure
-          href: create-url-route-portal.md
-        - name: Azure PowerShell
-          href: tutorial-url-route-powershell.md
-    - name: Hostování několika webů
-      items:
-        - name: portál Azure
-          href: create-multiple-sites-portal.md
-        - name: Azure PowerShell
-          href: tutorial-multiple-sites-powershell.md
-    - name: Přesměrování provozu
-      items:
-        - name: HTTP do HTTPS
-          items:
-            - name: Azure PowerShell
-              href: redirect-http-to-https-powershell.md
-            - name: Azure CLI
-              href: redirect-http-to-https-cli.md
-        - name: Přesměrování interního provozu
-          items:
-            - name: Azure PowerShell
-              href: redirect-internal-site-powershell.md
-            - name: Azure CLI
-              href: redirect-internal-site-cli.md
-    - name: Podpora více tenantů
-      items:
-        - name: Konfigurace podpory více tenantů
-          href: create-web-app.md
-    - name: Přesměrování webového provozu s využitím Azure Powershellu
-      href: tutorial-url-redirect-powershell.md
-    - name: Vytvoření zónově redundantní brány Application Gateway
-      href: create-zone-redundant.md
-    - name: Vlastní sběry dat
-      items:
-        - name: Portál
-          href: application-gateway-create-probe-portal.md
-        - name: Classic PowerShell
-          href: application-gateway-create-probe-classic-ps.md
-        - name: PowerShell s Resource Managerem
-          href: application-gateway-create-probe-ps.md
-    - name: Řešení potíží
-      items:
-        - name: Řešení chyb typu Chybná brána (502)
-          href: application-gateway-troubleshooting-502.md
-        - name: Diagnostika
-          href: application-gateway-diagnostics.md
+      - name: Azure PowerShell
+        href: redirect-internal-site-powershell.md
+      - name: Azure CLI
+        href: redirect-internal-site-cli.md
+  - name: Podpora více tenantů
+    items:
+    - name: Konfigurace podpory více tenantů
+      href: create-web-app.md
+  - name: Přesměrování webového provozu s využitím Azure Powershellu
+    href: tutorial-url-redirect-powershell.md
+  - name: Vytvoření zónově redundantní brány Application Gateway
+    href: create-zone-redundant.md
+  - name: Vlastní sběry dat
+    items:
+    - name: Portál
+      href: application-gateway-create-probe-portal.md
+    - name: Classic PowerShell
+      href: application-gateway-create-probe-classic-ps.md
+    - name: PowerShell s Resource Managerem
+      href: application-gateway-create-probe-ps.md
+  - name: Řešení potíží
+    items:
+    - name: Řešení chyb typu Chybná brána (502)
+      href: application-gateway-troubleshooting-502.md
+    - name: Diagnostika
+      href: application-gateway-diagnostics.md
 - name: Referenční informace
   items:
-    - name: Pravidla CRS
-      href: application-gateway-crs-rulegroups-rules.md
-    - name: Azure CLI
-      href: /cli/azure/network/application-gateway
-    - name: Azure PowerShell
-      href: /powershell/azure/overview
-    - name: .NET
-      href: /dotnet/api
-    - name: Java
-      href: /java/api
-    - name: Node.js
-      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
-    - name: Python
-      href: 'https://azure.microsoft.com/develop/python/'
-    - name: REST
-      href: /rest/api/applicationgateway
-    - name: Azure Resource Manager
-      href: ../azure-resource-manager/resource-group-overview.md
+  - name: Pravidla CRS
+    href: application-gateway-crs-rulegroups-rules.md
+  - name: Azure CLI
+    href: /cli/azure/network/application-gateway
+  - name: Azure PowerShell
+    href: /powershell/azure/overview
+  - name: .NET
+    href: /dotnet/api
+  - name: Java
+    href: /java/api
+  - name: Node.js
+    href: https://azure.microsoft.com/develop/nodejs/#azure-sdk
+  - name: Python
+    href: https://azure.microsoft.com/develop/python/
+  - name: REST
+    href: /rest/api/applicationgateway
+  - name: Azure Resource Manager
+    href: ../azure-resource-manager/resource-group-overview.md
 - name: Zdroje a prostředky
   items:
-    - name: Tvorba šablon
-      href: ../azure-resource-manager/resource-group-authoring-templates.md
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Komunitní šablony
-      href: 'https://azure.microsoft.com/documentation/templates'
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/#Linux'
-    - name: Regionální dostupnost
-      href: 'https://azure.microsoft.com/regions/services/'
-    - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/azure-application-gateway'
-    - name: Nejčastější dotazy
-      href: application-gateway-faq.md
+  - name: Tvorba šablon
+    href: ../azure-resource-manager/resource-group-authoring-templates.md
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/
+  - name: Komunitní šablony
+    href: https://azure.microsoft.com/documentation/templates
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/#Linux
+  - name: Regionální dostupnost
+    href: https://azure.microsoft.com/regions/services/
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-application-gateway
+  - name: Nejčastější dotazy
+    href: application-gateway-faq.md
+ms.openlocfilehash: ae7eb1ff103326cfd1b5e24a3918e6b02666aaac
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964034"

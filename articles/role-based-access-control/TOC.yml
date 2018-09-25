@@ -1,76 +1,88 @@
+items:
 - name: Dokumentace k řízení přístupu na základě role
   href: index.yml
-  items: null
 - name: Přehled
   items:
-    - name: Co je RBAC?
-      href: overview.md
-    - name: Vysvětlení různých rolí
-      href: rbac-and-directory-admin-roles.md
+  - name: Co je RBAC?
+    href: overview.md
+  - name: Vysvětlení různých rolí
+    href: rbac-and-directory-admin-roles.md
 - name: Šablony Rychlý start
   items:
-    - name: Udělení přístupu pro uživatele
-      href: quickstart-assign-role-user-portal.md
+  - name: Udělení přístupu pro uživatele
+    href: quickstart-assign-role-user-portal.md
 - name: Kurzy
   items:
-    - name: Udělení přístupu pro uživatele – PowerShell
-      href: tutorial-role-assignments-user-powershell.md
-    - name: Udělení přístupu pro skupinu – PowerShell
-      href: tutorial-role-assignments-group-powershell.md
-    - name: Vytvoření vlastní role – PowerShell
-      href: tutorial-custom-role-powershell.md
-    - name: Vytvoření vlastní role – rozhraní příkazového řádku
-      href: tutorial-custom-role-cli.md
+  - name: Udělení přístupu pro uživatele – PowerShell
+    href: tutorial-role-assignments-user-powershell.md
+  - name: Udělení přístupu pro skupinu – PowerShell
+    href: tutorial-role-assignments-group-powershell.md
+  - name: Vytvoření vlastní role – PowerShell
+    href: tutorial-custom-role-powershell.md
+  - name: Vytvoření vlastní role – rozhraní příkazového řádku
+    href: tutorial-custom-role-cli.md
 - name: Koncepty
   items:
-    - name: Vysvětlení definic rolí
-      href: role-definitions.md
-    - name: Privileged Identity Management (PIM) pro RBAC
-      href: pim-azure-resource.md
-    - name: Podmíněný přístup pro správu Azure
-      href: conditional-access-azure-management.md
+  - name: Vysvětlení definic rolí
+    href: role-definitions.md
+  - name: Vysvětlení zamítnutých přiřazení
+    href: deny-assignments.md
+  - name: Privileged Identity Management (PIM) pro RBAC
+    href: pim-azure-resource.md
+  - name: Podmíněný přístup pro správu Azure
+    href: conditional-access-azure-management.md
 - name: Návody
   items:
-    - name: Správa přístupu
-      items:
-        - name: Portál
-          href: role-assignments-portal.md
-        - name: PowerShell
-          href: role-assignments-powershell.md
-        - name: Azure CLI
-          href: role-assignments-cli.md
-        - name: REST API
-          href: role-assignments-rest.md
-        - name: Šablona
-          href: role-assignments-template.md
-    - name: Vlastní role
-      href: custom-roles.md
-      items:
-        - name: PowerShell
-          href: custom-roles-powershell.md
-        - name: Azure CLI
-          href: custom-roles-cli.md
-        - name: REST API
-          href: custom-roles-rest.md
-    - name: Zobrazení protokolů aktivit
-      href: change-history-report.md
-    - name: Zvýšení oprávnění přístupu pro globálního správce
-      href: elevate-access-global-admin.md
-    - name: Správa přístupu pro externí uživatele
-      href: role-assignments-external-users.md
-    - name: Řešení potíží
-      href: troubleshooting.md
+  - name: Správa přístupu
+    items:
+    - name: Portál
+      href: role-assignments-portal.md
+    - name: PowerShell
+      href: role-assignments-powershell.md
+    - name: Azure CLI
+      href: role-assignments-cli.md
+    - name: REST API
+      href: role-assignments-rest.md
+    - name: Šablona
+      href: role-assignments-template.md
+  - name: Odepření přístupu
+    items:
+    - name: REST API
+      href: deny-assignments-rest.md
+  - name: Vlastní role
+    href: custom-roles.md
+    items:
+    - name: PowerShell
+      href: custom-roles-powershell.md
+    - name: Azure CLI
+      href: custom-roles-cli.md
+    - name: REST API
+      href: custom-roles-rest.md
+  - name: Zobrazení protokolů aktivit
+    href: change-history-report.md
+  - name: Zvýšení oprávnění přístupu pro globálního správce
+    href: elevate-access-global-admin.md
+  - name: Správa přístupu pro externí uživatele
+    href: role-assignments-external-users.md
+  - name: Řešení potíží
+    href: troubleshooting.md
 - name: Referenční informace
   items:
-    - name: Vestavěné role
-      href: built-in-roles.md
-    - name: Operace poskytovatele prostředků
-      href: resource-provider-operations.md
-    - name: Omezení RBAC
-      href: '../azure-subscription-service-limits.md#role-based-access-control-limits'
-    - name: Azure PowerShell
-      href: /powershell/module/azurerm.resources
-    - name: Azure CLI
-      href: /cli/azure/role?view=azure-cli-latest
-    - name: REST API
-      href: /rest/api/authorization/
+  - name: Vestavěné role
+    href: built-in-roles.md
+  - name: Operace poskytovatele prostředků
+    href: resource-provider-operations.md
+  - name: Omezení RBAC
+    href: ../azure-subscription-service-limits.md#role-based-access-control-limits
+  - name: Azure PowerShell
+    href: /powershell/module/azurerm.resources
+  - name: Azure CLI
+    href: /cli/azure/role?view=azure-cli-latest
+  - name: REST API
+    href: /rest/api/authorization/
+ms.openlocfilehash: 8a113e60cd9af0e7f9c0f192bc20ca674c56c0f8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982779"

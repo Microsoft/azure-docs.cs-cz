@@ -5,26 +5,28 @@ items:
   items:
   - name: Přehled
     href: apache-domain-joined-introduction.md
-  - name: Plán pro clustery připojené k doméně
+  - name: Plánování pro clustery ESP
     href: apache-domain-joined-architecture.md
-  - name: Konfigurace clusterů připojených k doméně s využitím Azure AD DS
+  - name: Konfigurace clusterů ESP s využitím Azure AD DS
     href: apache-domain-joined-configure-using-azure-adds.md
   - name: Synchronizace uživatelů Azure AD do clusteru služby HDInsight
     href: ../hdinsight-sync-aad-users-to-cluster.md
     maintainContext: true
   - name: Konfigurace zásad Hivu
     href: apache-domain-joined-run-hive.md
+  - name: Konfigurace zásad Kafka
+    href: apache-domain-joined-run-kafka.md
     maintainContext: true
-  - name: Propojení s clusterem připojeným k doméně pomocí VSCode
+  - name: Použití VSCode k propojení s clusterem ESP
     href: ../hdinsight-for-vscode.md
     maintainContext: true
-  - name: Propojení s clusterem připojeným k doméně pomocí IntelliJ
+  - name: Použití IntelliJ k propojení s clusterem ESP
     href: ../spark/apache-spark-intellij-tool-plugin.md
     maintainContext: true
-  - name: Propojení s clusterem připojeným k doméně pomocí Eclipse
+  - name: Použití Eclipse k propojení s clusterem ESP
     href: ../spark/apache-spark-eclipse-tool-plugin.md
     maintainContext: true
-  - name: Použití Oozie v clusterech připojených k doméně
+  - name: Použití Oozie v clusterech ESP
     href: hdinsight-use-oozie-domain-joined-clusters.md
 - name: Zabezpečení dat
   href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
@@ -92,9 +94,9 @@ items:
   - name: Nástroje Windows pro HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 130ff5525a19a6ea08c99c5ccce7ea8888477743
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: cb3119bf0ef4e885c5c97cacf51eed15fec6db64
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "41928035"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998659"

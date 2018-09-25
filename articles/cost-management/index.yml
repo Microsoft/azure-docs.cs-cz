@@ -1,47 +1,57 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: cad92cb36f3e5e038186e9b97f30bed9525e2fea
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978739"
 documentType: LandingData
 title: Dokumentace k řešení Azure Cost Management
 metadata:
   title: Dokumentace ke správě nákladů – kurzy, reference k rozhraní API | Dokumentace Microsoftu
-  description: Azure Cost Management je multicloudové řešení správy nákladů, které pomáhá využívat Azure a další cloudové prostředky. Prostřednictvím našich šablon Rychlý start a kurzů se naučíte, jak kontrolovat využití a náklady, aktivně spravovat náklady, odhadovat útratu a optimalizovat náklady.
+  description: Azure Cost Management je řešení pro správu nákladů, které pomáhá monitorovat a kontrolovat útratu za Azure a optimalizovat využití prostředků. Prostřednictvím našich rychlých zprovoznění a kurzů se naučíte analyzovat náklady, vytvářet a spravovat rozpočty, exportovat data, kontrolovat doporučení a reagovat na ně.
   services: cost-management
   author: bandersmsft
-  manager: carmonm
+  manager: dougeby
   ms.service: cost-management
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 02/27/2018
+  ms.date: 09/14/2019
   ms.author: banders
-  ms.openlocfilehash: d6fa2486944fdecab67996bd7a8c7f656ffb2e72
-  ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
-  ms.translationtype: HT
-  ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/16/2018
-  ms.locfileid: "29935328"
 abstract:
-  description: Multicloudové řešení správy nákladů Azure Cost Management, které licencuje pobočka Microsoftu Cloudyn, pomáhá co nejlépe využívat a spravovat Azure a další cloudové prostředky. Prostřednictvím našich šablon Rychlý start a kurzů se naučíte, jak kontrolovat využití a náklady, aktivně spravovat náklady, odhadovat útratu a optimalizovat náklady.
+  description: Azure Cost Management je řešení pro správu nákladů, které pomáhá monitorovat a kontrolovat útratu za Azure a optimalizovat využití prostředků. Prostřednictvím našich rychlých zprovoznění a kurzů se naučíte analyzovat náklady, vytvářet a spravovat rozpočty, exportovat data, kontrolovat doporučení a reagovat na ně.
 sections:
 - title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: Naučte se, jak zaregistrovat informace o předplatném nebo smlouvě Azure s využitím Cost Managementu a začněte sledovat informace o cenách.
+    text: Zjistěte, jak začít Azure Cost Management využívat k analýze nákladů ve vaší organizaci.
   - type: list
     style: icon48
     items:
     - image:
         src: https://docs.microsoft.com/media/common/i_portal.svg
-      text: Zobrazit informace o cenách
-      href: quick-register-azure-sub
+      text: Analýza nákladů
+      href: quick-acm-cost-analysis
 - title: Podrobné kurzy
   items:
   - type: paragraph
-    text: Naučte se kontrolovat využití a náklady, aktivně spravovat náklady, odhadovat útratu a optimalizovat náklady pomocí Cost Managementu.
+    text: Naučte se vytvářet rozpočty, exportovat data, kontrolovat doporučení a reagovat na ně s využitím služby Cost Management.
   - type: list
     style: ordered
     items:
-    - html: <a href="tutorial-review-usage">Kontrola využití a nákladů a rozpoznávání anomálií a efektivity</a>
-    - html: <a href="tutorial-forecast-spending">Odhad budoucích výdajů</a>
-    - html: <a href="tutorial-manage-costs">Správa nákladů s přidělováním nákladů a sestavami metod showback a chargeback</a>
-    - html: <a href="tutorial-optimize-reserved-instances">Optimalizace rezervovaných instancí</a>
-    - html: <a href="tutorial-user-access">Přiřazení přístupu k datům Cost Managementu</a>
+    - html: <a href="tutorial-acm-create-budgets">Vytváření a správa rozpočtů</a>
+    - html: <a href="tutorial-export-acm-data">Export dat</a>
+    - html: <a href="tutorial-acm-opt-recommendations">Kontrola optimalizačních doporučení a reakce na ně</a>
+- title: Získávání dovedností pomocí Microsoft Learn
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: Predikce nákladů a optimalizace útraty pro Azure
+      href: /learn/modules/predict-costs-and-optimize-spending/
+      image:
+        src: /learn/achievements/predict-costs-and-optimize-spending.svg
+  - type: paragraph
+    text: <a href="/learn/browse/?products=azure-cost-management">Další interaktivní výuka...</a>

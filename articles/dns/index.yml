@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2ee8284861d62d4405d0f949ee74b1992440b66e
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 701bf7db8304189b9348cad1c920f3e5ec1fecf1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43184556"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46991126"
 documentType: LandingData
 title: Dokumentace ke službě Azure DNS
 metadata:
@@ -48,11 +48,14 @@ sections:
   - type: paragraph
     text: Naučíte se hostovat domény v Azure DNS, vytvářet vlastní záznamy DNS pro webovou aplikaci s využitím Azure DNS a vytvářet privátní zónu a záznamy DNS.
   - type: list
-    style: ordered
+    style: unordered
     items:
     - html: <a href="/azure/dns/dns-delegate-domain-azure-dns">Hostování vaší domény v Azure DNS</a>
     - html: <a href="/azure/dns/dns-web-sites-custom-domain">Vytvoření vlastních záznamů DNS pro webovou aplikaci</a>
     - html: <a href="/azure/dns/private-dns-getstarted-powershell">Vytvoření privátní zóny a záznamu DNS</a>
+    - html: <a href="/azure/dns/tutorial-alias-pip">Konfigurace záznamu aliasu s odkazem na veřejnou IP adresu Azure</a>
+    - html: <a href="/azure/dns/tutorial-alias-tm">Konfigurace záznamu aliasu pro podporu názvů kořenových domén bez subdomén v Traffic Manageru</a>
+    - html: <a href="/azure/dns/tutorial-alias-rr">Konfigurace záznamu aliasu pro záznamy zón</a>
 - title: Bezplatné školicí video od Pluralsightu
   items:
   - type: list

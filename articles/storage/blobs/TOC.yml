@@ -198,6 +198,8 @@ items:
       href: storage-https-custom-domain-cdn.md
     - name: Neměnné objekty blob
       href: storage-blob-immutable-storage.md
+    - name: Rozšířená ochrana před internetovými útoky (Preview)
+      href: ../common/storage-advanced-threat-protection.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Povolení zabezpečeného TLS pro klienta Azure Storage
       href: ../common/storage-security-tls.md
     - name: Nabídky pro dodržování předpisů
@@ -309,9 +311,9 @@ items:
       href: ../common/storage-powershell-guide-full.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: PowerShell pro cloudy China, Government a Germany
       href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: Azure CLI 2.0
+    - name: Azure CLI
       href: ../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: Azure CLI 1.0
+    - name: Azure Classic CLI
       href: ../common/storage-azure-cli-nodejs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Správa objektů blob pomocí Storage Exploreru
       href: ../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -457,9 +459,9 @@ items:
       href: https://github.com/Azure/azure-storage-ruby
     - name: iOS
       href: https://github.com/Azure/azure-storage-ios
-ms.openlocfilehash: 23ebd6f4c44e75883d948359b94811649674c49b
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: bcbeff3cb506aefd47c26a548489d8f24f2ef2cd
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127308"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978161"

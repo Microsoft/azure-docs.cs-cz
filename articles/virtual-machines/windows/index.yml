@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 83394520291a44cb2db1f69f82e962caccceb588
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: c670ddf7543cc4a88827bed6a495c9f5d83d446f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44294409"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950915"
 documentType: LandingData
 title: Dokumentace k virtuálním počítačům s Windows
 metadata:
@@ -82,6 +82,19 @@ sections:
     - html: <a href="/azure/virtual-machines/windows/tutorial-vsts-iis-cicd">Vytvoření kanálu průběžné integrace se sadou Visual Studio</a>
     - html: <a href="/azure/virtual-machines/windows/tutorial-iis-sql">Instalace zásobníku SQL/IIS/.NET</a>
     - html: <a href="/azure/virtual-machines/windows/tutorial-secure-web-server">Zabezpečení webového serveru pomocí SSL</a>
+- title: Získávání dovedností pomocí Microsoft Learn
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: " Vytvoření virtuálního počítače s Windows v Azure"
+      href: /learn/modules/create-windows-virtual-machine-in-azure/
+      image:
+        src: /learn/achievements/create-windows-virtual-machine-in-azure.svg
+        href: /learn/modules/create-windows-virtual-machine-in-azure/
+  - type: paragraph
+    text: <a href="/learn/browse/?products=azure-virtual-machines">Další interaktivní výuka...</a>
 - title: Bezplatné školicí video od Pluralsightu
   items:
   - type: list

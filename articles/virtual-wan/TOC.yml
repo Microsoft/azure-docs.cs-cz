@@ -1,34 +1,53 @@
+items:
 - name: Dokumentace k virtuální síti WAN
   href: index.yml
 - name: Přehled
   items:
-    - name: Informace o virtuální síti WAN
-      href: virtual-wan-about.md
+  - name: Informace o virtuální síti WAN
+    href: virtual-wan-about.md
 - name: Kurzy
   items:
-    - name: Vytvoření připojení typu Site-to-Site
-      href: virtual-wan-site-to-site-portal.md
+  - name: Vytvoření připojení typu Site-to-Site
+    href: virtual-wan-site-to-site-portal.md
+  - name: Vytvoření připojení ExpressRoute
+    href: virtual-wan-expressroute-portal.md
+  - name: Vytvoření připojení typu Point-to-Site
+    href: virtual-wan-point-to-site-portal.md
+- name: Koncepty
+  items:
+  - name: Umístění a partneři
+    href: virtual-wan-locations-partners.md
+  - name: Rovina řízení Office 365 ve službě Virtual WAN
+    href: virtual-wan-office365-overview.md
 - name: Návody
   items:
-    - name: Konfigurace automatizace – partneři sítě WAN
-      href: virtual-wan-configure-automation-providers.md
+  - name: Partneři služby Virtual WAN – automatizace
+    href: virtual-wan-configure-automation-providers.md
+  - name: Směrování provozu z virtuálního rozbočovače do síťového virtuálního zařízení
+    href: virtual-wan-route-table.md
 - name: Referenční informace
   items:
-    - name: REST
-      href: /rest/api/azure
+  - name: REST
+    href: /rest/api/azure
 - name: Zdroje a prostředky
   items:
-    - name: Nejčastější dotazy
-      href: virtual-wan-faq.md
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/?category=networking'
-    - name: Blog
-      href: 'https://azure.microsoft.com/blog/topics/networking'
-    - name: Omezení služeb a předplatných
-      href: ../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/vpn-gateway'
-    - name: Cenová kalkulačka
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: SLA
-      href: 'https://azure.microsoft.com/support/legal/sla'
+  - name: Nejčastější dotazy
+    href: virtual-wan-faq.md
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/?category=networking
+  - name: Blog
+    href: https://azure.microsoft.com/blog/topics/networking
+  - name: Omezení služeb a předplatných
+    href: ../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/vpn-gateway
+  - name: Cenová kalkulačka
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: SLA
+    href: https://azure.microsoft.com/support/legal/sla
+ms.openlocfilehash: a8b9bf44a68e389547e08055e5036562457f6175
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46957376"

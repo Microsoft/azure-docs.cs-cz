@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: b00d2c68748372c644a0966d76d5adb8e430e2d5
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: b5fa216c561340402b1b60a65402491c9256ec5e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053597"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965015"
 documentType: LandingData
 title: Dokumentace k databázi Azure Cosmos
 metadata:
@@ -101,7 +101,7 @@ sections:
       values:
       - href: /azure/cosmos-db/create-sql-api-java
       - href: /azure/cosmos-db/create-sql-api-dotnet
-      - href: /azure/cosmos-db/create-sql-api-nodejs-preview
+      - href: /azure/cosmos-db/create-sql-api-nodejs
       - href: /azure/cosmos-db/create-sql-api-python
       - href: 
       - href: 
@@ -155,6 +155,29 @@ sections:
     - html: Globální replikace databází pomocí služby Azure Cosmos DB&#58; <a href="/azure/cosmos-db/tutorial-global-distribution-sql-api">SQL</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-mongodb">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-table">Table</a>
     - html: <a href="local-emulator">Lokální vývoj aplikace pomocí emulátoru</a>
     - html: <a href="/azure/cosmos-db/tutorial-functions-http-trigger">Vytvoření triggeru HTTP s využitím vstupní vazby Azure Cosmos DB</a>
+- title: Získávání dovedností pomocí Microsoft Learn
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: " Vytvoření škálovatelné databáze Azure Cosmos DB"
+      href: /learn/modules/create-cosmos-db-for-scale/
+      image:
+        src: /learn/achievements/create-cosmos-db-for-scale.svg
+        href: /learn/modules/create-cosmos-db-for-scale/
+    - title: Vložení dat do databáze Azure Cosmos DB a dotazování na tato data
+      href: /learn/modules/access-data-with-cosmos-db-and-sql-api/
+      image:
+        src: /learn/achievements/access-data-with-cosmos-db-and-sql-api.svg
+        href: /learn/modules/access-data-with-cosmos-db-and-sql-api/
+    - title: Vytvoření aplikace .NET Core pro Azure Cosmos DB ve Visual Studio Code
+      href: /learn/modules/build-cosmos-db-app-with-vscode
+      image:
+        src: /learn/achievements/build-cosmos-db-app-with-vscode.svg
+        href: /learn/modules/build-cosmos-db-app-with-vscode
+  - type: paragraph
+    text: <a href="/learn/browse/?products=azure-cosmos-db">Další interaktivní výuka...</a>
 - title: Referenční informace
   items:
   - type: list

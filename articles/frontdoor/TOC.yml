@@ -1,0 +1,61 @@
+items:
+- name: Dokumentace ke službě Front Door Service
+  href: index.yml
+- name: Přehled
+  items:
+  - name: Co je Azure Front Door Service?
+    href: front-door-overview.md
+- name: Šablony Rychlý start
+  items:
+  - name: Vytvoření služby Front Door
+    href: quickstart-create-front-door.md
+- name: Kurzy
+  items:
+  - name: Přidání vlastní domény do služby Front Door
+    href: front-door-custom-domain.md
+- name: Ukázky
+  items:
+  - name: Šablony Resource Manageru
+    href: front-door-quickstart-template-samples.md
+- name: Koncepty
+  items:
+  - name: Back-endy a back-endové fondy
+    href: front-door-backend-pool.md
+  - name: Ochrana před útoky DDoS a zabezpečení aplikační vrstvy
+    href: front-door-ddos-security.md
+  - name: Vyrovnávání zatížení s využitím sady pro doručování aplikací Azure
+    href: front-door-lb-with-azure-app-delivery-suite.md
+  - name: Architektura směrování
+    href: front-door-routing-architecture.md
+  - name: Metody směrování provozu
+    href: front-door-routing-methods.md
+  - name: Jak Front Door zpracovává směrování pro požadavky
+    href: front-door-route-matching.md
+  - name: Sondy stavu
+    href: front-door-health-probes.md
+  - name: Přepsání adresy URL
+    href: front-door-url-rewrite.md
+  - name: Ukládání do mezipaměti s využitím služby Front Door
+    href: front-door-caching.md
+  - name: Podpora HTTP/2
+    href: front-door-http2.md
+  - name: Podpora hlaviček protokolů HTTP
+    href: front-door-http-headers-protocol.md
+  - name: Monitorování
+    href: front-door-diagnostics.md
+- name: Zdroje a prostředky
+  items:
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/frontdoor/
+  - name: Cenová kalkulačka
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Aktualizace služeb
+    href: https://azure.microsoft.com/updates/?product=frontdoor
+ms.openlocfilehash: e44b12e49ea03cb344288367f1f9a97e195f39a4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949124"

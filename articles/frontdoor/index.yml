@@ -1,0 +1,50 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 6afc5f657e720912f429dbac63297e09074087b8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46962347"
+documentType: LandingData
+title: Dokumentace ke službě Azure Front Door Service (Preview)
+metadata:
+  title: Dokumentace ke službě Azure Front Door Service (Preview)
+  meta.description: Azure Front Door Service provides a scalable and secure entry point for fast delivery of your global web applications. Learn how to use Front Door with our quickstarts, tutorials, and samples.
+  services: frontdoor
+  author: dlepow
+  ms.service: frontdoor
+  ms.topic: landing-page
+  ms.date: 9/14/2018
+  ms.author: danlep
+abstract:
+  description: Služba Azure Front Door Service poskytuje škálovatelný a zabezpečený vstupní bod pro rychlé doručování globálních webových aplikací. Naučte se používat službu Front Door prostřednictvím našich rychlých zprovoznění, výukových kurzů a ukázek.
+sections:
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: Vytvořte si Front Door pro vysoce dostupnou globální webovou aplikaci.
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: https://docs.microsoft.com/en-us/media/common/i_portal.svg
+      text: Azure Portal
+      href: quickstart-create-front-door.md
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: Naučte se konfigurovat Azure Front Door Service podle vašich potřeb.
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="front-door-custom-domain.md">Přidání vlastní domény do služby Front Door</a>
+- title: Referenční informace
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Příkazový řádek
+      html: <p><a href="https://go.microsoft.com/fwlink/?linkid=2020937">Azure CLI</a></p><p><a href="https://go.microsoft.com/fwlink/?linkid=2020942">Azure PowerShell</a></p>
+    - title: REST
+      html: <p><a href="https://go.microsoft.com/fwlink/?linkid=2020948">REST API</a></p>

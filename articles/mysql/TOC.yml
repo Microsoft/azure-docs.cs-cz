@@ -1,211 +1,222 @@
+items:
 - name: Dokumentace k Azure DB for MySQL
   href: index.yml
 - name: Přehled
   items:
-    - name: Azure DB for MySQL
-      href: overview.md
+  - name: Azure DB for MySQL
+    href: overview.md
 - name: Šablony Rychlý start
-  expanded: true
   items:
-    - name: Vytvoření databáze – portál
-      href: quickstart-create-mysql-server-database-using-azure-portal.md
-    - name: Vytvoření databáze – Azure CLI
-      href: quickstart-create-mysql-server-database-using-azure-cli.md
-    - name: Připojení a dotazování
-      items:
-        - name: PHP
-          href: connect-php.md
-        - name: Java
-          href: connect-java.md
-        - name: .Net
-          href: connect-csharp.md
-        - name: Python
-          href: connect-python.md
-        - name: Node.js
-          href: connect-nodejs.md
-        - name: Ruby
-          href: connect-ruby.md
-        - name: C++
-          href: connect-cpp.md
-        - name: Přejít
-          href: connect-go.md
-        - name: MySQL Workbench
-          href: connect-workbench.md
+  - name: Vytvoření databáze – portál
+    href: quickstart-create-mysql-server-database-using-azure-portal.md
+  - name: Vytvoření databáze – Azure CLI
+    href: quickstart-create-mysql-server-database-using-azure-cli.md
+  - name: Připojení a dotazování
+    items:
+    - name: PHP
+      href: connect-php.md
+    - name: Java
+      href: connect-java.md
+    - name: .Net
+      href: connect-csharp.md
+    - name: Python
+      href: connect-python.md
+    - name: Node.js
+      href: connect-nodejs.md
+    - name: Ruby
+      href: connect-ruby.md
+    - name: C++
+      href: connect-cpp.md
+    - name: Přejít
+      href: connect-go.md
+    - name: MySQL Workbench
+      href: connect-workbench.md
+  expanded: true
 - name: Kurzy
   items:
-    - name: 1. Návrh databáze
-      items:
-        - name: Azure Portal
-          href: tutorial-design-database-using-portal.md
-        - name: Azure CLI
-          href: tutorial-design-database-using-cli.md
-    - name: 2. Vytvoření webové aplikace
-      items:
-        - name: WordPress – portál
-          href: 'https://portal.azure.com/#create/WordPress.WordPress'
-        - name: PHP s MySQL
-          href: ../app-service/app-service-web-tutorial-php-mysql.md?toc=%2fazure%2fmysql%2ftoc.json
-        - name: Java s MySQL
-          href: ../app-service/app-service-web-tutorial-java-mysql.md?toc=%2fazure%2fmysql%2ftoc.json
+  - name: 1. Návrh databáze
+    items:
+    - name: portál Azure
+      href: tutorial-design-database-using-portal.md
+    - name: Azure CLI
+      href: tutorial-design-database-using-cli.md
+  - name: 2. Vytvoření webové aplikace
+    items:
+    - name: WordPress – portál
+      href: https://portal.azure.com/#create/WordPress.WordPress
+    - name: PHP s MySQL
+      href: ../app-service/app-service-web-tutorial-php-mysql.md?toc=%2fazure%2fmysql%2ftoc.json
+    - name: Java s MySQL
+      href: ../app-service/app-service-web-tutorial-java-mysql.md?toc=%2fazure%2fmysql%2ftoc.json
 - name: Ukázky
   items:
-    - name: Azure CLI
-      href: sample-scripts-azure-cli.md
+  - name: Azure CLI
+    href: sample-scripts-azure-cli.md
 - name: Koncepty
   items:
-    - name: Databáze a servery
-      items:
-        - name: Servery
-          href: concepts-servers.md
-        - name: Podporované verze
-          href: concepts-supported-versions.md
-        - name: Protokoly serveru
-          href: concepts-server-logs.md
-        - name: Vysoká dostupnost
-          href: concepts-high-availability.md
-    - name: Zdroje a prostředky
-      items:
-        - name: Cenové úrovně
-          href: concepts-pricing-tiers.md
-        - name: Omezení
-          href: concepts-limits.md
-    - name: Přístup k datům a zabezpečení
-      items:
-        - name: Pravidla brány firewall
-          href: concepts-firewall-rules.md
-        - name: Konfigurace SSL
-          href: concepts-ssl-connection-security.md
-        - name: VNet
-          href: concepts-data-access-and-security-vnet.md
-    - name: Kontinuita podnikových procesů
-      items:
-        - name: Přehled
-          href: concepts-business-continuity.md
-        - name: Zálohování a obnovení
-          href: concepts-backup.md
-    - name: Monitorování
-      href: concepts-monitoring.md
-    - name: Vývoj
-      items:
-        - name: Kompatibilita ovladačů a nástrojů
-          href: concepts-compatibility.md
-        - name: Vývoj aplikací
-          href: concepts-database-application-development.md
-    - name: Replikace
-      items:
-        - name: Replikace příchozích dat
-          href: concepts-data-in-replication.md
+  - name: Databáze a servery
+    items:
+    - name: Servery
+      href: concepts-servers.md
+    - name: Podporované verze
+      href: concepts-supported-versions.md
+    - name: Protokoly serveru
+      href: concepts-server-logs.md
+    - name: Vysoká dostupnost
+      href: concepts-high-availability.md
+  - name: Zdroje a prostředky
+    items:
+    - name: Cenové úrovně
+      href: concepts-pricing-tiers.md
+    - name: Omezení
+      href: concepts-limits.md
+  - name: Přístup k datům a zabezpečení
+    items:
+    - name: Pravidla brány firewall
+      href: concepts-firewall-rules.md
+    - name: Konfigurace SSL
+      href: concepts-ssl-connection-security.md
+    - name: VNet
+      href: concepts-data-access-and-security-vnet.md
+  - name: Kontinuita podnikových procesů
+    items:
+    - name: Přehled
+      href: concepts-business-continuity.md
+    - name: Zálohování a obnovení
+      href: concepts-backup.md
+  - name: Monitorování
+    href: concepts-monitoring.md
+  - name: Vývoj
+    items:
+    - name: Kompatibilita ovladačů a nástrojů
+      href: concepts-compatibility.md
+    - name: Vývoj aplikací
+      href: concepts-database-application-development.md
+  - name: Replikace
+    items:
+    - name: Replikace příchozích dat
+      href: concepts-data-in-replication.md
+    - name: Čtení replik
+      href: concepts-read-replicas.md
 - name: Návody
   items:
-    - name: Správa serveru
-      items:
-        - name: Azure Portal
-          href: howto-create-manage-server-portal.md
-    - name: Pravidla brány firewall
-      items:
-        - name: Azure Portal
-          href: howto-manage-firewall-using-portal.md
-        - name: Azure CLI
-          href: howto-manage-firewall-using-cli.md
-    - name: Obnovení serveru
-      items:
-        - name: Azure Portal
-          href: howto-restore-server-portal.md
-        - name: Azure CLI
-          href: howto-restore-server-cli.md
-    - name: Migrace databáze
-      items:
-        - name: Výpis a obnovení
-          href: concepts-migrate-dump-restore.md
-        - name: Import a export
-          href: concepts-migrate-import-export.md
-        - name: Migrace s minimem výpadků
-          href: howto-migrate-online.md
-    - name: Připojení aplikací
-      items:
-        - name: Vytvoření uživatelů
-          href: howto-create-users.md
-        - name: Připojovací řetězce
-          href: howto-connection-string.md
-        - name: Konfigurace SSL
-          href: howto-configure-ssl.md
-        - name: Webové aplikace
-          href: howto-connect-webapp.md
-    - name: Konfigurace parametrů serveru
-      items:
-        - name: Azure Portal
-          href: howto-server-parameters.md
-        - name: Azure CLI
-          href: howto-configure-server-parameters-using-cli.md
-    - name: Přístup k protokolům serveru
-      items:
-        - name: Azure Portal
-          href: howto-configure-server-logs-in-portal.md
-        - name: Azure CLI
-          href: howto-configure-server-logs-in-cli.md
-    - name: Monitorování
-      items:
-        - name: Vytváření upozornění na metriky
-          href: howto-alert-on-metric.md
-    - name: Replikace
-      items:
-        - name: Konfigurace replikace příchozích dat
-          href: howto-data-in-replication.md
-    - name: Řešení potíží
-      items:
-        - name: Řešení potíží s výkonem dotazů
-          href: howto-troubleshoot-query-performance.md
-        - name: Použití zobrazení ve schématu sys
-          href: howto-troubleshoot-sys-schema.md
-    - name: Virtual Network
-      items:
-        - name: Azure Portal
-          href: howto-manage-vnet-using-portal.md
-        - name: Azure CLI
-          href: howto-manage-vnet-using-cli.md
+  - name: Správa serveru
+    items:
+    - name: portál Azure
+      href: howto-create-manage-server-portal.md
+  - name: Pravidla brány firewall
+    items:
+    - name: portál Azure
+      href: howto-manage-firewall-using-portal.md
+    - name: Azure CLI
+      href: howto-manage-firewall-using-cli.md
+  - name: Obnovení serveru
+    items:
+    - name: portál Azure
+      href: howto-restore-server-portal.md
+    - name: Azure CLI
+      href: howto-restore-server-cli.md
+  - name: Migrace databáze
+    items:
+    - name: Výpis a obnovení
+      href: concepts-migrate-dump-restore.md
+    - name: Import a export
+      href: concepts-migrate-import-export.md
+    - name: Migrace s minimem výpadků
+      href: howto-migrate-online.md
+  - name: Připojení aplikací
+    items:
+    - name: Vytvoření uživatelů
+      href: howto-create-users.md
+    - name: Připojovací řetězce
+      href: howto-connection-string.md
+    - name: Konfigurace SSL
+      href: howto-configure-ssl.md
+    - name: Webové aplikace
+      href: howto-connect-webapp.md
+  - name: Konfigurace parametrů serveru
+    items:
+    - name: portál Azure
+      href: howto-server-parameters.md
+    - name: Azure CLI
+      href: howto-configure-server-parameters-using-cli.md
+  - name: Přístup k protokolům serveru
+    items:
+    - name: portál Azure
+      href: howto-configure-server-logs-in-portal.md
+    - name: Azure CLI
+      href: howto-configure-server-logs-in-cli.md
+  - name: Monitorování
+    items:
+    - name: Vytváření upozornění na metriky
+      href: howto-alert-on-metric.md
+  - name: Replikace
+    items:
+    - name: Konfigurace replikace příchozích dat
+      href: howto-data-in-replication.md
+    - name: Vytváření replik pro čtení – Azure Portal
+      href: howto-read-replicas-portal.md
+  - name: Řešení potíží
+    items:
+    - name: Řešení potíží s výkonem dotazů
+      href: howto-troubleshoot-query-performance.md
+    - name: Použití zobrazení ve schématu sys
+      href: howto-troubleshoot-sys-schema.md
+  - name: Virtual Network
+    items:
+    - name: portál Azure
+      href: howto-manage-vnet-using-portal.md
+    - name: Azure CLI
+      href: howto-manage-vnet-using-cli.md
 - name: Referenční informace
   items:
-    - name: Azure CLI
-      href: /cli/azure/mysql
-    - name: REST API
-      href: /rest/api/mysql
-    - name: Uložené procedury replikace příchozích dat
-      href: reference-data-in-stored-procedures.md
+  - name: Azure CLI
+    href: /cli/azure/mysql
+  - name: REST API
+    href: /rest/api/mysql
+  - name: Uložené procedury replikace příchozích dat
+    href: reference-data-in-stored-procedures.md
 - name: Zdroje a prostředky
   items:
-    - name: Šablony nasazení
-      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformysql'
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/?category=databases'
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/mysql/'
-    - name: Fórum MSDN
-      href: 'https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL'
-    - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/azure-database-mysql'
-    - name: Videa
+  - name: Šablony nasazení
+    href: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformysql
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/?category=databases
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/mysql/
+  - name: Fórum MSDN
+    href: https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-database-mysql
+  - name: Videa
+    items:
+    - name: Videa k produktům
+      href: videos.md
+    - name: Série videí s postupy
       items:
-        - name: Videa k produktům
-          href: videos.md
-        - name: Série videí s postupy
-          items:
-            - name: Seznámení s výhodami a funkcemi produktů
-              href: 'https://aka.ms/mysql-intro-vid'
-            - name: Migrace aplikace MySQL do Azure
-              href: 'https://aka.ms/mysql-migrate-vid'
-            - name: Sestavení a nasazení Web Apps
-              href: 'https://aka.ms/mysql-webapps-vid'
-            - name: Připojení kontejnerů s využitím OSBA
-              href: 'https://aka.ms/mysql-osba-vid'
-    - name: Žádost o funkci
-      href: 'https://feedback.azure.com/forums/597982-azure-database-for-mysql'
-    - name: Dostupnost v oblastech
-      href: 'https://azure.microsoft.com/regions/services/'
-    - name: Možnosti podpory
-      href: 'https://azure.microsoft.com/support/options/'
-    - name: Příběhy zákazníků
-      href: 'https://customers.microsoft.com/en-us/search?sq="Azure%20Database%20for%20MySQL%20"'
-    - name: Partneři
-      href: partners-migration-mysql.md
-    - name: Průvodce migrací databází
-      href: 'https://datamigration.microsoft.com/'
+      - name: Seznámení s výhodami a funkcemi produktů
+        href: https://aka.ms/mysql-intro-vid
+      - name: Migrace aplikace MySQL do Azure
+        href: https://aka.ms/mysql-migrate-vid
+      - name: Sestavení a nasazení Web Apps
+        href: https://aka.ms/mysql-webapps-vid
+      - name: Připojení kontejnerů s využitím OSBA
+        href: https://aka.ms/mysql-osba-vid
+  - name: Žádost o funkci
+    href: https://feedback.azure.com/forums/597982-azure-database-for-mysql
+  - name: Dostupnost v oblastech
+    href: https://azure.microsoft.com/regions/services/
+  - name: Možnosti podpory
+    href: https://azure.microsoft.com/support/options/
+  - name: Příběhy zákazníků
+    href: https://customers.microsoft.com/en-us/search?sq="Azure%20Database%20for%20MySQL%20"
+  - name: Partneři
+    href: partners-migration-mysql.md
+  - name: Průvodce migrací databází
+    href: https://datamigration.microsoft.com/
+ms.openlocfilehash: 7c2ba8eecdf39d1e00abe91d9918fdaf2f1cec88
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46980793"

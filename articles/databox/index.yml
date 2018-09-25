@@ -1,9 +1,15 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: f4ef48157896d7cf4947fbc8ef6eba8b59ec414b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46986506"
 documentType: LandingData
-title: Dokumentace ke službě Azure Data Box
+title: Azure Data Box pro offline přenos
 metadata:
-  title: Dokumentace ke službě Azure Data Box
-  description: Služba Azure Data Box umožňuje přenášet terabajty dat do Azure rychlým, cenově dostupným a spolehlivým způsobem. Microsoft urychluje zabezpečený přenos dat dodáváním disků a zajištěním kompletní logistiky.
+  title: Dokumentace ke službě Azure Data Box pro offline přenos
+  description: Řada služeb Azure Data Box umožňuje přenášet stovky terabajtů dat do Azure rychlým, cenově dostupným a spolehlivým způsobem. Pokud vás při přenosu dat offline omezuje čas, síť nebo cena, použijte zařízení Data Box.
   services: databox
   author: alkohli
   manager: twooley
@@ -11,36 +17,35 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 07/10/2018
+  ms.date: 09/24/2018
   ms.author: alkohli
-  ms.openlocfilehash: 5077d0ba77b6bdce99f1dfdf258182980a367b6c
-  ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
-  ms.translationtype: HT
-  ms.contentlocale: cs-CZ
-  ms.lasthandoff: 07/13/2018
-  ms.locfileid: "39010136"
 abstract:
-  description: Služba Azure Data Box umožňuje přenášet terabajty dat do Azure rychlým, cenově dostupným a spolehlivým způsobem. Microsoft urychluje zabezpečený přenos dat dodáváním disků a zajištěním kompletní logistiky.<p>Přenášejte velké objemy dat do Azure ve 4 snadných krocích – objednávka, přijetí, kopírování dat na disky a vrácení disků do Azure. Po přijetí disků se data ingestují do Azure a disky se bezpečně vymažou.<p><a href="/azure/databox/data-box-disk-overview">Další informace o disku Data Box</a></p>
+  description: Řada služeb Azure Data Box umožňuje přenášet stovky terabajtů dat do Azure rychlým, cenově dostupným a spolehlivým způsobem. Pokud vás při přenosu dat offline omezuje čas, síť nebo cena, použijte zařízení Data Box.<p>Podle velikosti vašich dat zvolte službu Data Box Disk, Data Box<SUP>Preview</SUP> nebo Data Box Heavy<SUP>Preview</SUP>. U každého zařízení probíhá přenos do Azure ve 4 snadných krocích – objednání, přijetí, kopírování dat na zařízení a vrácení zařízení do Azure. V datacentru Azure se data nahrají a potom vymažou.</p><p>Naučte se využívat službu Data Box pro offline přenos dat prostřednictvím našich šablon Rychlý start a kurzů.</p>
 sections:
 - title: Rychlý start
   items:
-  - type: paragraph
-    text: Další informace o použití disku Data Box k přenosu dat do Azure
   - type: list
     style: icon48
     items:
     - image:
-        src: https://docs.microsoft.com/media/common/i_portal.svg
-      text: Azure Portal
+        src: https://docs.microsoft.com/media/common/i_quick-start.svg
+      text: Nastavení služby Data Box na webu Azure Portal
+      href: /azure/databox/data-box-quickstart-portal
+    - image:
+        src: https://docs.microsoft.com/media/common/i_quick-start.svg
+      text: Nastavení služby Data Box Disk<SUP>Preview</SUP> na webu Azure Portal
       href: /azure/databox/data-box-disk-quickstart-portal
-- title: Podrobný kurz
+    - image:
+        src: https://docs.microsoft.com/media/common/i_quick-start.svg
+      text: Registrace služby Data Box Heavy<SUP>Preview</SUP>
+      href: /azure/databox/data-box-heavy-overview#sign-up
+- title: Kurzy
   items:
-  - type: paragraph
-    text: Zjistěte, jak disk Data Box umožňuje importovat data do Azure.
   - type: list
-    style: ordered
+    style: cards
+    className: cardsD
     items:
-    - html: <a href="data-box-disk-deploy-ordered">Objednání disku Data Box</a>
-    - html: <a href="data-box-disk-deploy-set-up">Nastavení disku Data Box</a>
-    - html: <a href="data-box-disk-deploy-copy-data">Kopírování dat na disk Data Box</a>
-    - html: <a href="data-box-disk-deploy-picked-up">Vrácení disku Data Box a nahrání dat do Azure</a>
+    - title: Pro Data Box
+      html: <p><a href="/azure/databox/data-box-deploy-ordered">Objednání zařízení Azure Data Box</a></p><p><a href="/azure/databox/data-box-deploy-set-up">Zapojení a připojení zařízení Azure Data Box</a></p><p><a href="/azure/databox/data-box-deploy-copy-data">Kopírování dat na zařízení Azure Data Box</a></p><p><a href="/azure/databox/data-box-deploy-picked-up">Vrácení zařízení Azure Data Box a ověření nahrání</a></p>
+    - title: Pro Data Box Disk<SUP>Preview</SUP>
+      html: <p><a href="/azure/databox/data-box-disk-deploy-ordered">Objednání Azure Data Box Disku</a></p><p><a href="/azure/databox/data-box-disk-deploy-set-up">Rozbalení, připojení a odemknutí Azure Data Box Disku</a></p><p><a href="/azure/databox/data-box-disk-deploy-copy-data">Kopírování dat na Azure Data Box Disk</a></p><p><a href="/azure/databox/data-box-disk-deploy-picked-up">Vrácení Azure Data Box Disku a ověření nahrání</a></p>

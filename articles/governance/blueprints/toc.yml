@@ -1,0 +1,45 @@
+items:
+- name: Dokumentace ke službě Azure Blueprint
+  href: index.yml
+- name: Přehled
+  items:
+  - name: Přehled služby Azure Blueprint
+    href: overview.md
+  expanded: true
+- name: Šablony Rychlý start
+  items:
+  - name: Vytvoření podrobného plánu – portál
+    href: create-blueprint-portal.md
+  - name: Vytvoření podrobného plánu – REST API
+    href: create-blueprint-rest-api.md
+  expanded: true
+- name: Koncepty
+  items:
+  - name: Životní cyklus podrobného plánu
+    href: ./concepts/lifecycle.md
+  - name: Dynamické parametry v podrobném plánu
+    href: ./concepts/parameters.md
+  - name: Pořadí úloh v nasazení podrobného plánu
+    href: ./concepts/sequencing-order.md
+  - name: Zamykání prostředků ve službě Blueprint
+    href: ./concepts/resource-locking.md
+  expanded: true
+- name: Návody
+  items:
+  - name: Aktualizace existujících přiřazení
+    href: ./how-to/update-existing-assignments.md
+  expanded: true
+- name: Řešení potíží
+  href: ./troubleshoot/general.md
+- name: Zdroje a prostředky
+  items:
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/
+  - name: Cenová kalkulačka
+    href: https://azure.microsoft.com/pricing/calculator/
+ms.openlocfilehash: 25a4453dc1387d26cdd8c6d3cf6a5da0360df221
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982150"

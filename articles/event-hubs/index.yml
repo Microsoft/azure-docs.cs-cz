@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: cb280602f48504069e5ac5e89a470d154cc855fc
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 5ed6a94eb0a8737cc8a6a7d5b26d3aa7e84ef1e1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "41927659"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952524"
 documentType: LandingData
 title: Dokumentace ke službě Azure Event Hubs
 metadata:
@@ -57,6 +57,19 @@ sections:
     style: unordered
     items:
     - html: <a href="https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-tutorial-visualize-anomalies">Čtení streamu dat Event Hubs s využitím Azure Stream Analytics a vizualizace anomálií</a>
+- title: Získávání dovedností pomocí Microsoft Learn
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: Povolení spolehlivého zasílání zpráv pro aplikace s velkými objemy dat pomocí Azure Event Hubs
+      href: /learn/modules/enable-reliable-messaging-for-big-data-apps-using-event-hubs/
+      image:
+        src: /learn/achievements/enable-reliable-messaging-for-big-data-apps-using-azure-event-hubs.svg
+        href: /learn/modules/enable-reliable-messaging-for-big-data-apps-using-event-hubs/
+  - type: paragraph
+    text: <a href="/learn/browse/?products=azure-event-hubs">Další interaktivní výuka...</a>
 - title: Bezplatné školicí video od Pluralsightu
   items:
   - type: list

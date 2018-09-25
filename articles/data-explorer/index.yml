@@ -1,0 +1,77 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 8985bfa71532cc73dbfeef8d63109476d6893c7f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46975968"
+documentType: LandingData
+title: Dokumentace k Průzkumníku dat Azure
+metadata:
+  title: Dokumentace k Průzkumníku dat Azure – rychlá zprovoznění, kurzy a reference k jazykům a rozhraní API | Microsoft Docs
+  description: Průzkumník dat Azure je cloudová platforma analýzy protokolů, která je optimalizovaná pro ad-hoc dotazy nad velkými objemy dat.
+  author: mgblythe
+  manager: kfile
+  ms.service: data-explorer
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 09/24/2018
+  ms.author: mblythe
+abstract:
+  description: <p>Průzkumník dat Azure je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Pomáhá zpracovávat celou řadu datových proudů generovaných moderním softwarem, takže můžete shromažďovat, ukládat a analyzovat data. Průzkumník služby Azure Data je ideální pro analýzu velkých objemů různých dat z libovolného zdroje dat, jako jsou weby, aplikace, zařízení IoT a další.</p><p>Naučte se používat Průzkumník dat Azure prostřednictvím našich rychlých zprovoznění, kurzů a referenčního obsahu.</p>
+sections:
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: 'Naučte se zřizovat a používat Průzkumník dat Azure:'
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: /azure/data-explorer/media/index/portal.svg
+      text: Vytvoření clusteru a databáze
+      href: /azure/data-explorer/create-cluster-database-portal
+    - image:
+        src: /azure/data-explorer/media/index/portal.svg
+      text: Ingestování streamovaných dat ze služby Event Hubs
+      href: /azure/data-explorer/ingest-data-event-hub
+    - image:
+        src: /azure/data-explorer/media/index/portal.svg
+      text: Dotazy na data s využitím webového uživatelského rozhraní
+      href: /azure/data-explorer/web-query-data
+    - image:
+        src: /azure/data-explorer/media/index/logo-python.svg
+      text: Ingestování dat ve frontě s využitím Pythonu
+      href: /azure/data-explorer/python-ingest-data
+    - image:
+        src: /azure/data-explorer/media/index/logo-python.svg
+      text: Dotazy na data s využitím Pythonu
+      href: /azure/data-explorer/python-query-data
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: 'Naučte se vytvářet kompletní řešení:'
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/data-explorer/visualize-power-bi">Vizualizace dat z Průzkumníku dat Azure v Power BI</a>
+- title: Bezplatné školicí video od Pluralsightu
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: Dotazovací jazyk pro Průzkumník dat Azure
+      href: https://app.pluralsight.com/library/courses/kusto-query-language-kql-from-scratch
+      image:
+        src: /azure/data-explorer/media/index/logo-pluralsight.svg
+        href: https://app.pluralsight.com/library/courses/kusto-query-language-kql-from-scratch
+- title: Referenční informace
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Jazyky a rozhraní API
+      html: <p><a href="https://aka.ms/kustolangref">Dotazovací jazyk, příkazy pro správu a rozhraní API</a>

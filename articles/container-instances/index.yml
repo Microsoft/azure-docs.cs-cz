@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 613362471636b0f9de611bb0cd9580c89afec3b5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985924"
 documentType: LandingData
 title: Dokumentace ke službě Azure Container Instances
 metadata:
@@ -13,12 +19,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 07/26/2017
   ms.author: carolz
-  ms.openlocfilehash: dc21a3a7a75035c253213bcb7f2e3f033c54b54c
-  ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-  ms.translationtype: HT
-  ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/01/2018
-  ms.locfileid: "34609721"
 abstract:
   description: Služba Azure Container Instances nabízí nejrychlejší a nejjednodušší způsob provozování kontejneru v Azure. Není přitom nutné zřizovat žádné virtuální počítače nebo využívat služby vyšší úrovně. Naučte se vytvářet a spravovat instance kontejnerů prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.<p>Pokud vyžadujete kompletní řešení orchestrace kontejnerů, prohlédněte si <a href="/azure/aks/">dokumentaci ke službě Azure Kubernetes Service (AKS)</a>.</p>
 sections:
@@ -51,6 +51,18 @@ sections:
     - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">Balení aplikace do image kontejneru</a>
     - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-acr">Vytvoření služby Azure Container Registry a uložení image kontejneru</a>
     - html: <a href="/azure/container-instances/container-instances-tutorial-deploy-app">Nasazení image do instance kontejneru Azure</a>
+- title: Získávání dovedností pomocí Microsoft Learn
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: Spouštění kontejnerů Dockeru ve službě Azure Container Instances
+      href: /learn/modules/run-docker-with-azure-container-instances/
+      image:
+        src: /learn/achievements/run-docker-with-azure-container-instances.svg
+  - type: paragraph
+    text: <a href="/learn/browse/?products=azure-container-instances">Další interaktivní výuka...</a>
 - title: Referenční informace
   items:
   - type: list

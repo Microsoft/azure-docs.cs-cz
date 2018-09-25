@@ -1,37 +1,38 @@
 # [Dokumentace ke službě Scheduler](index.md)
 
 # Přehled
-## [Co je Scheduler?](scheduler-intro.md)
+## [Co je Azure Scheduler?](scheduler-intro.md)
 
 # Začínáme
-## [Vytvoření a správa událostí](scheduler-get-started-portal.md)
-## [Koncepty a terminologie](scheduler-concepts-terms.md)
+## [Vytváření a správa úloh – portál](scheduler-get-started-portal.md)
+## [Migrace ze služby Scheduler na Logic Apps](migrate-from-scheduler-to-logic-apps.md)
 
-# Postup
+# Koncepty
+## [Koncepty, termíny a entity](scheduler-concepts-terms.md)
+
+# Návody
 ## Plánování a návrh
 ### [Plány a fakturace](scheduler-plans-billing.md)
-### [Kvóty a omezení](scheduler-limits-defaults-errors.md)
+### [Limity, kvóty a výchozí hodnoty](scheduler-limits-defaults-errors.md)
 ### [Vysoká dostupnost a spolehlivost](scheduler-high-availability-reliability.md)
 
 ## Vývoj
-### [Složité plány pomocí REST API](scheduler-advanced-complexity.md)
-
+### [Vytváření složitých plánů a pokročilých opakování](scheduler-advanced-complexity.md)
+### [Vytváření a správa plánů – Azure PowerShell](scheduler-powershell-reference.md)
 
 ## Zabezpečení
-### [Ověřování odchozích spojení](scheduler-outbound-authentication.md)
+### [Ověřování odchozích volání](scheduler-outbound-authentication.md)
 
 # Referenční informace
 ## [Azure PowerShell](/powershell/module/azurerm.scheduler)
-## [REST](/rest/api/scheduler)
+## [REST API](/rest/api/scheduler)
 
 # Zdroje a prostředky
-## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/?category=monitoring-management)
+## [Plán služby Azure Scheduler](https://azure.microsoft.com/updates/?product=scheduler)
+## [Plány Azure do budoucna](https://azure.microsoft.com/updates/)
 ## [Fórum MSDN](https://social.msdn.microsoft.com/Forums/home?forum=azurescheduler)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-scheduler)
 ## [Ceny](https://azure.microsoft.com/pricing/details/scheduler/)
 ## [ Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)
 ## [Aktualizace služeb](https://azure.microsoft.com/updates/?product=scheduler)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-scheduler)
 ## [Videa](https://azure.microsoft.com/documentation/videos/index/?services=scheduler)
-
-
-

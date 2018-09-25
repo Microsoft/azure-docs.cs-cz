@@ -1,63 +1,112 @@
+items:
 - name: Dokumentace k řešení Azure Cost Management
   href: index.yml
-- name: Přehled
   items:
+  - name: Přehled
+    items:
     - name: Co je správa nákladů?
-      href: overview.md
-- name: Šablony Rychlý start
-  expanded: true
-  items:
-    - name: Zobrazení informací o nákladech
-      href: quick-register-azure-sub.md
-    - name: Zobrazení informací o nákladech – EA
-      href: quick-register-ea.md
-    - name: Zobrazení informací o nákladech – CSP
-      href: quick-register-csp.md
-- name: Kurzy
-  items:
-    - name: 1. Kontrola využití a nákladů
-      href: tutorial-review-usage.md
-    - name: 2. Odhad nákladů
-      href: tutorial-forecast-spending.md
-    - name: 3. Správa nákladů
-      href: tutorial-manage-costs.md
-    - name: 4. Optimalizace rezervovaných instancí
-      href: tutorial-optimize-reserved-instances.md
-    - name: 5. Řízení přístupu k datům
-      href: tutorial-user-access.md
-- name: Koncepty
-  items:
-    - name: Vysvětlení sestav nákladů
-      href: understanding-cost-reports.md
-- name: Návody
-  items:
-    - name: Aktivace účtů a předplatných Azure
-      href: activate-subs-accounts.md
-    - name: Přidání rozšířené metriky pro virtuální počítače
-      href: azure-vm-extended-metrics.md
-    - name: Připojení účtu Google
-      href: connect-google-account.md
-    - name: Připojení účtu AWS
-      href: connect-aws-account.md
-    - name: Konfigurace účtů úložiště
-      href: storage-accounts.md
-    - name: Použití sestav Cost Managementu
-      href: use-reports.md
-    - name: Použití řídicích panelů
-      href: dashboards.md
-    - name: Správa rozpočtů
-      href: manage-budgets.md
-- name: Zdroje a prostředky
-  items:
-    - name: Videa ke správě nákladů
-      href: ref-videos.md
+      href: overview-cost-mgt.md
+  - name: Šablony Rychlý start
+    items:
+    - name: Začínáme s analýzou nákladů
+      href: quick-acm-cost-analysis.md
+    expanded: true
+  - name: Kurzy
+    items:
+    - name: 1. Vytváření a správa rozpočtů
+      href: tutorial-acm-create-budgets.md
+    - name: 2. Export dat
+      href: tutorial-export-acm-data.md
+    - name: 3. Doporučení pro optimalizaci
+      href: tutorial-acm-opt-recommendations.md
+  - name: Koncepty
+    items:
+    - name: Osvědčené postupy ve službě Azure Cost Management
+      href: cost-mgt-best-practices.md
+  - name: Referenční informace
+    items:
+    - name: Přehled rozhraní API služby Azure Consumption
+      href: ../billing/billing-consumption-api-overview.md
+      items:
+      - name: Rozhraní REST API služby Azure Consumption
+        href: https://docs.microsoft.com/rest/api/consumption
     - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/'
+      href: https://azure.microsoft.com/roadmap/
+  - name: Zdroje a prostředky
+    items:
+    - name: Získávání dovedností pomocí Microsoft Learn
+      href: /learn/browse/?products=azure-cost-management
+    - name: Plány Azure do budoucna
+      href: https://azure.microsoft.com/roadmap/
     - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/cost-management'
+      href: https://azure.microsoft.com/pricing/details/cost-management
     - name: Dostupnost podle oblastí
-      href: 'https://azure.microsoft.com/en-us/regions/services/'
-    - name: Nejčastější dotazy
-      href: cost-mgt-faq.md
-    - name: Kontaktování podpory
-      href: support-request-cost-management.md
+      href: https://azure.microsoft.com/regions/services/
+  - name: Cloudyn
+    items:
+    - name: Přehled
+      items:
+      - name: Co je Cloudyn?
+        href: overview.md
+    - name: Šablony Rychlý start
+      items:
+      - name: Zobrazení informací o nákladech
+        href: quick-register-azure-sub.md
+      - name: Zobrazení informací o nákladech – EA
+        href: quick-register-ea.md
+      - name: Zobrazení informací o nákladech – CSP
+        href: quick-register-csp.md
+    - name: Kurzy
+      items:
+      - name: 1. Kontrola využití a nákladů
+        href: tutorial-review-usage.md
+      - name: 2. Odhad nákladů
+        href: tutorial-forecast-spending.md
+      - name: 3. Správa nákladů
+        href: tutorial-manage-costs.md
+      - name: 4. Optimalizace rezervovaných instancí
+        href: tutorial-optimize-reserved-instances.md
+      - name: 5. Řízení přístupu k datům
+        href: tutorial-user-access.md
+    - name: Koncepty
+      items:
+      - name: Vysvětlení sestav nákladů
+        href: understanding-cost-reports.md
+    - name: Návody
+      items:
+      - name: Aktivace účtů a předplatných Azure
+        href: activate-subs-accounts.md
+      - name: Přidání rozšířené metriky pro virtuální počítače
+        href: azure-vm-extended-metrics.md
+      - name: Připojení účtu Google
+        href: connect-google-account.md
+      - name: Připojení účtu AWS
+        href: connect-aws-account.md
+      - name: Konfigurace účtů úložiště
+        href: storage-accounts.md
+      - name: Použití sestav Cloudyn
+        href: use-reports.md
+      - name: Použití řídicích panelů
+        href: dashboards.md
+      - name: Správa rozpočtů
+        href: manage-budgets.md
+    - name: Zdroje a prostředky
+      items:
+      - name: Cloudyn – videa
+        href: ref-videos.md
+      - name: Plány Azure do budoucna
+        href: https://azure.microsoft.com/roadmap/
+      - name: Cloudyn – ceny
+        href: https://azure.microsoft.com/pricing/details/cost-management
+      - name: Cloudyn – dostupnost podle oblastí
+        href: https://azure.microsoft.com/regions/services/
+      - name: Cloudyn – nejčastější dotazy
+        href: cost-mgt-faq.md
+      - name: Obraťte se na podporu Cloudyn
+        href: support-request-cost-management.md
+ms.openlocfilehash: 8bce54dbde8acd8fb8d03479036c934242d434cf
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972449"
