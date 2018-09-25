@@ -11,18 +11,22 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 09d8e3da543cdf4433d986b321697abcad88eb22
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ROBOTS: NOINDEX
+ms.openlocfilehash: 8e8944a9bdfa2b75f6442e03d45dfb6977c2a122
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44157986"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974353"
 ---
 # <a name="how-to-use-gpu-in-azure-machine-learning"></a>Jak používat GPU ve službě Azure Machine Learning
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
 Grafického procesoru (GPU) se často používá ke zpracování výpočetně náročné úlohy, ke kterým lze obvykle dochází při tréninku modelů určité hluboké neuronové sítě. S využitím GPU, můžete výrazně zkrátit čas trénování modelů. V tomto dokumentu se dozvíte, jak nakonfigurovat aplikaci Azure ML Workbench používat [DSVM (virtuální počítač datové vědy)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview) vybavené GPU jako cíl spuštění. 
 
 ## <a name="prerequisites"></a>Požadavky
-- Pro jednotlivé kroky v této příručce s postupy, musíte si nejdřív [nainstalujte aplikaci Azure ML Workbench](../service/quickstart-installation.md).
+- Pro jednotlivé kroky v této příručce s postupy, musíte si nejdřív [nainstalujte aplikaci Azure ML Workbench](quickstart-installation.md).
 - Musíte mít přístup k počítačům s grafickými procesory NVidia.
     - Skripty můžete spustit přímo v místním počítači (Windows nebo macOS) s grafickými procesory.
     - Můžete také spouštět skripty v kontejneru Dockeru na počítači s Linuxem s grafickými procesory...

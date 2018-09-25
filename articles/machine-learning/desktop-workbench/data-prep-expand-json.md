@@ -12,14 +12,19 @@ ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: dbda4b7b6d82e8cf1e89dc78ce82efbac08b9933
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 0a5cbca114b220686d656f93edb00a199e3cbeeb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35644498"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989817"
 ---
 # <a name="expand-json-transformation"></a>Rozbalte transformace JSON
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 **Rozbalte JSON** transformace umožňuje rozšířit existující sloupec, který obsahuje platný text JSON do více sloupců.
 
 ## <a name="how-to-perform-this-transformation"></a>Jak provést tuto transformaci
@@ -33,7 +38,7 @@ U zdrojového sloupce jsou přidány nové sloupce. Tyto sloupce obsahují vlast
 
 ## <a name="examples"></a>Příklady
 
-Zdroj požadován *zákazníka* rozbalen do dvou sloupců *Customer.Name* a *Customer.Phone*.
+Zdrojový sloupec *zákazníka* rozbalen do dvou sloupců *Customer.Name* a *Customer.Phone*.
 
 | Zákazník                                                | Customer.Name   | Customer.Phone |
 |---------------------------------------------------------|-----------------|----------------|

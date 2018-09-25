@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s brány virtuální sítě Azure a připojení – Azure CLI 2.0 | Dokumentace Microsoftu
-description: Tato stránka vysvětluje, jak používat Azure Network Watcher Poradce při potížích s Azure CLI 2.0
+title: Řešení potíží s brány virtuální sítě Azure a připojení – rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+description: Tato stránka vysvětluje, jak používat Azure Network Watcher Poradce při potížích s Azure CLI
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: 5f843b42a108968e2fbefacddcd22f331a04691e
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 5a8ac32f43ecadb8908582fa853fc3f2bec7ac55
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091097"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46970987"
 ---
-# <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-azure-cli-20"></a>Řešení potíží s brány virtuální sítě a připojení pomocí Azure Network Watcher Azure CLI 2.0
+# <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-azure-cli"></a>Řešení potíží s brány virtuální sítě a připojení pomocí rozhraní příkazového řádku Azure Network Watcher Azure
 
 > [!div class="op_single_selector"]
 > - [Azure Portal](diagnose-communication-problem-between-networks.md)
@@ -31,9 +31,7 @@ ms.locfileid: "39091097"
 
 Sledovací proces sítě poskytuje mnoho funkcí, jako má vztah k pochopení síťovým prostředkům v Azure. Jeden z těchto funkcí je prostředek řešení potíží. Řešení potíží s prostředků lze volat na portálu, Powershellu, rozhraní příkazového řádku nebo rozhraní REST API. Při volání, Network Watcheru kontroluje stav brány virtuální sítě nebo připojení a vrátí jeho zjištění.
 
-Tento článek používá naše nová generace rozhraní příkazového řádku pro model nasazení resource management, Azure CLI 2.0, které je dostupné pro Windows, Mac a Linux.
-
-K provedení kroků v tomto článku, budete muset [instalace rozhraní příkazového řádku Azure pro Mac, Linux a Windows (Azure CLI)](https://docs.microsoft.com/cli/azure/install-az-cli2).
+K provedení kroků v tomto článku, budete muset [instalace rozhraní příkazového řádku Azure pro Mac, Linux a Windows (CLI)](/cli/azure/install-azure-cli).
 
 ## <a name="before-you-begin"></a>Než začnete
 

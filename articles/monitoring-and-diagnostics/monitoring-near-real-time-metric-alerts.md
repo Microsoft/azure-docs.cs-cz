@@ -1,6 +1,6 @@
 ---
-title: Podporované zdroje informací pro novější upozornění metrik Azure monitoru
-description: Odkaz na podporu metriky a protokoly pro novější Azure téměř v reálném čase upozornění metrik.
+title: Podporované zdroje pro upozornění metrik ve službě Azure Monitor
+description: Odkaz na podporu metriky a protokoly pro upozornění metrik ve službě Azure Monitor
 author: snehithm
 services: monitoring
 ms.service: azure-monitor
@@ -8,17 +8,18 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 019f245a7cc1feedcbd520c336f53a60ed1e9ddc
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 102f087f31aa304aaaee49e0e39ff8c6874127b4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579085"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966783"
 ---
-# <a name="supported-resources-for-newer-azure-monitor-metric-alerts"></a>Podporované zdroje informací pro novější upozornění metrik Azure monitoru
-Azure teď podporuje sledování [novou výstrahu typu metrika](monitoring-overview-unified-alerts.md) která má významné výhody přes starší [klasického upozornění metrik](insights-alerts-portal.md). Metriky jsou k dispozici pro [velké seznam služeb Azure](monitoring-supported-metrics.md). Novější upozornění podporují podmnožinu typů prostředků (rostoucí). Tento článek uvádí tuto podmnožinu. 
+# <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Podporované zdroje pro upozornění metrik ve službě Azure Monitor
 
-Novějších upozornění metrik můžete použít také u oblíbených protokoly analýzy protokolu extrahovat jako metriky jako součást metriky z protokolů (Preview)  
+Azure teď podporuje sledování [novou výstrahu typu metrika](monitoring-overview-unified-alerts.md) která má významné výhody přes starší [klasického upozornění metrik](insights-alerts-portal.md). Metriky jsou k dispozici pro [velké seznam služeb Azure](monitoring-supported-metrics.md). Novější upozornění podporují podmnožinu typů prostředků (rostoucí). Tento článek uvádí tuto podmnožinu.
+
+Novějších upozornění metrik můžete použít také u oblíbených protokoly analýzy protokolu extrahovat jako metriky jako součást metriky z protokolů 
 - [Čítače výkonu](../log-analytics/log-analytics-data-sources-performance-counters.md) u počítačů s Windows a Linuxu
 - [Záznamy prezenčního signálu služby Agent Health](../operations-management-suite/oms-solution-agenthealth.md)
 - [Správa aktualizací](../operations-management-suite/oms-solution-update-management.md) záznamů
@@ -28,7 +29,7 @@ Novějších upozornění metrik můžete použít také u oblíbených protokol
 > Určité metriky a/nebo dimenze pouze zobrazí-li data pro něj existuje za vybrané období. Tyto metriky jsou k dispozici pro zákazníky s pracovních prostorů Azure Log Analytics v oblastech východní USA, západní USA, střed USA a západní Evropa. Metriky z Log Analytics je aktuálně ve verzi public preview a může se měnit.
 
 ## <a name="portal-powershell-cli-rest-support"></a>Portálu, Powershellu, rozhraní příkazového řádku, REST podpory
-V současné době můžete pouze na portálu Azure vytvořit novějších upozornění metrik [rozhraní REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate) nebo [šablon Resource Manageru](monitoring-create-metric-alerts-with-templates.md). Podpora konfigurace novější upozornění pomocí prostředí PowerShell a rozhraní příkazového řádku Azure (Azure CLI 2.0) už brzy bude.
+V současné době můžete pouze na portálu Azure vytvořit novějších upozornění metrik [rozhraní REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate) nebo [šablon Resource Manageru](monitoring-create-metric-alerts-with-templates.md). Podpora konfigurace novější výstrah pomocí Powershellu a Azure CLI verze 2.0 a vyšší je již brzy.
 
 ## <a name="metrics-and-dimensions-supported"></a>Metriky a dimenze podporována
 Novějších upozornění metrik podporují výstrahy pro metriky, které dimenze použít. Dimenze můžete použít k filtrování vaší metrika správnou úroveň. Všechny podporované metriky spolu s příslušné dimenze můžete prozkoumat a vizualizovat z [Azure Monitor – Průzkumník metrik (Preview)](monitoring-metric-charts.md).
@@ -66,7 +67,9 @@ Tady je úplný seznam podporovaných novější upozornění metriky zdrojů Az
 |Microsoft.Storage/storageAccounts/services     |     Ano    | [Objekt BLOB služby](monitoring-supported-metrics.md#microsoftstoragestorageaccountsblobservices), [souborové služby](monitoring-supported-metrics.md#microsoftstoragestorageaccountsfileservices), [fronty služby](monitoring-supported-metrics.md#microsoftstoragestorageaccountsqueueservices) a [tabulky služeb](monitoring-supported-metrics.md#microsoftstoragestorageaccountstableservices)|
 |Microsoft.StreamAnalytics/streamingjobs     |  neuvedeno       | [Stream Analytics](monitoring-supported-metrics.md#microsoftstreamanalyticsstreamingjobs)|
 | Microsoft.Web/serverfarms | Ano | [Plány služby App Service](monitoring-supported-metrics.md#microsoftwebserverfarms)  |
-|Microsoft.OperationalInsights/workspaces (Preview) | Ano|[Pracovní prostory log Analytics](monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces)|
+| Microsoft.Web/sites | Ano | [App Services](monitoring-supported-metrics.md#microsoftwebsites-excluding-functions) a [funkce](monitoring-supported-metrics.md#microsoftwebsites-functions)|
+| Microsoft.Web/sites/slots | Ano | [Sloty služby App Service](monitoring-supported-metrics.md#microsoftwebsitesslots)|
+|Microsoft.OperationalInsights/workspaces| Ano|[Pracovní prostory log Analytics](monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces)|
 
 
 

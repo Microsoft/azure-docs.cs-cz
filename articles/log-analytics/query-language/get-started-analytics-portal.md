@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 2c35d71d127903a67dce2280b2d0ab335079b480
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 3bcc5368a99dc7c7c32381ca0226119d81fc2c0a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604463"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978195"
 ---
 # <a name="get-started-with-log-analytics-in-the-azure-portal"></a>Začínáme se službou Log Analytics na portálu Azure portal
 
@@ -47,7 +47,7 @@ Na stránce Log Analytics je webový nástroj pro zápis a spouštění dotazů 
 ## <a name="basic-queries"></a>Základní dotazy
 Hledané termíny, rozpoznávejte trendy, analyzovat vzory a poskytují mnoho přehledy na základě vašich dat je možné dotazy. Začínáme s základní dotazy:
 
-```KQL
+```Kusto
 Event | search "error"
 ```
 
@@ -57,7 +57,7 @@ Dotazy můžete spustit buď pomocí názvu tabulky nebo **hledání** příkazu
 
 Jiný způsob psaní tohoto stejného dotazu by byl:
 
-```KQL
+```Kusto
 search in (Event) "error"
 ```
 
@@ -81,7 +81,7 @@ V každé tabulce dat uspořádány do sloupce s různými datovými typy je ur�
 ## <a name="filter-the-results"></a>Filtrování výsledků
 Začněte tím, že tu být všechno _události_ tabulky.
 
-```KQL
+```Kusto
 Event
 ```
 
@@ -135,7 +135,7 @@ Pokud dotaz obsahuje explicitně filtr pro _TimeGenerated_, se zobrazí název v
 ## <a name="charts"></a>Grafy
 Kromě vracení výsledků v tabulce, můžete výsledky dotazu uvedené v visual formátů. Jako příklad použijte následující dotaz:
 
-```KQL
+```Kusto
 Event 
 | where EventLevelName == "Error" 
 | where TimeGenerated > ago(1d) 

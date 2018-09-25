@@ -5,11 +5,12 @@ Pokud jste ještě nenainstalovali Azure CLI a nepřipojili se ke svým předpla
 ## <a name="cli-versions-to-complete-the-task"></a>Verze rozhraní příkazového řádku pro dokončení úlohy
 K dokončení úlohy můžete využít jednu z následujících verzí rozhraní příkazového řádku:
 
-- Azure CLI 10 – naše rozhraní příkazového řádku pro modely nasazení Classic a Resource Manager (tento článek)
-- [Azure CLI 2.0](../articles/virtual-machines/linux/cli-manage.md) – naše rozhraní příkazového řádku nové generace pro model nasazení správy prostředků
+- Azure CLI classic – naše rozhraní příkazového řádku pro classic a resource management modelech nasazení (Tento článek)
+- [Azure CLI](../articles/virtual-machines/linux/cli-manage.md) – naše nová generace rozhraní příkazového řádku pro model nasazení správy prostředků
 
-## <a name="basic-azure-resource-manager-commands-in-azure-cli"></a>Základní příkazy Azure Resource Manageru v Azure CLI
-Tento článek obsahuje základní příkazy, které budete moct používat v Azure CLI ke správě a interakci s prostředky (hlavně virtuálními počítači) ve vašich předplatných Azure.  Podrobnější nápovědu ke konkrétním přepínačům a možnostem příkazového řádku můžete získat pomocí online nápovědy k příkazům a jejich možnostem zadáním `azure <command> <subcommand> --help` nebo `azure help <command> <subcommand>`.
+## <a name="basic-azure-resource-manager-commands-in-azure-classic-cli"></a>Základní příkazy Azure Resource Manageru v klasickém rozhraní příkazového řádku Azure
+
+Tento článek popisuje základní příkazy, které můžete použít ke správě a interakci s prostředky (hlavně virtuálními počítači) ve vašem předplatném Azure pomocí Azure classic CLI.  Podrobnější nápovědu ke konkrétním přepínačům a možnostem příkazového řádku můžete získat pomocí online nápovědy k příkazům a jejich možnostem zadáním `azure <command> <subcommand> --help` nebo `azure help <command> <subcommand>`.
 
 > [!NOTE]
 > Tyto příklady nezahrnují operace založené na šablonách, které se obecně doporučují pro nasazení virtuálních počítačů v Resource Manageru. Informace najdete ve článcích [Použití Azure CLI s Azure Resource Managerem](../articles/xplat-cli-azure-resource-manager.md) a [Nasazení a správa virtuálních počítačů pomocí šablon Azure Resource Manageru a Azure CLI](../articles/virtual-machines/linux/create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -40,5 +41,5 @@ Tento článek obsahuje základní příkazy, které budete moct používat v Az
 | Získání využití prostředků virtuálního počítače |`azure vm list-usage [options] <location>` |
 | Získání všech dostupných velikostí virtuálních počítačů |`azure vm sizes [options]` |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další příklady příkazů rozhraní příkazového řádku, které přesahují základní správu virtuálních počítačů, najdete v článku [Použití Azure CLI s Azure Resource Managerem](../articles/virtual-machines/azure-cli-arm-commands.md).

@@ -1,48 +1,48 @@
 ---
-title: Jak používat dávkování pro zvýšení výkonu aplikací Azure SQL Database
-description: V tématu poskytuje důkazy této dávkování databázových operací výrazně imroves rychlosti a škálovatelnost aplikací Azure SQL Database. I když tyto dávkování techniky fungovat pro libovolnou databázi systému SQL Server, je zaměřená článek v Azure.
+title: Použití dávkování pro zvýšení výkonu aplikací Azure SQL Database
+description: Téma poskytuje důkazy této dávkování databázové operace značně imroves rychlost a škálovatelnost aplikací Azure SQL Database. I když tyto dávkování techniky fungují pro libovolnou databázi systému SQL Server, zaměřuje článku se na Azure.
 services: sql-database
 author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 09/20/2018
 ms.author: sstein
-ms.openlocfilehash: c0e1ff3cf018e185ae2dfb329e2aa56766cc247c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 92640eeb068b8e9a95dbe1209b2c8834e5f29da8
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649777"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036095"
 ---
-# <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Jak používat dávkování pro zvýšení výkonu aplikací databáze SQL
-Dávkování operací do Azure SQL Database výrazně zvyšuje výkon a škálovatelnost aplikací. Chcete-li pochopit výhody, první část tohoto článku popisuje některé ukázkové výsledky testů, porovnávající postupného a dávkové požadavky na databázi SQL. Zbývající část článek ukazuje techniky, scénáře a požadavky umožňují použít dávkování úspěšně v aplikacích Azure.
+# <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Použití dávkování pro zvýšení výkonu aplikací SQL Database
+Dávkování operací do služby Azure SQL Database výrazně zlepšuje výkon a škálovatelnost aplikací. Chcete-li pochopit výhody, první část tohoto článku popisuje některé výsledky testů ukázky, které porovnávají sekvenční a dávkové žádosti do služby SQL Database. Zbytek tohoto článku ukazuje techniky, scénáře a aspekty, které umožňují použití dávkování úspěšně v aplikacích Azure.
 
-## <a name="why-is-batching-important-for-sql-database"></a>Proč je dávkování důležité pro databázi SQL?
-Dávkování volání vzdálené služby je dobře známé strategie pro zvýšení výkonu a škálovatelnosti. Jsou pevně dané zpracování náklady na všechny interakce s vzdálené služby, jako je například serializace, přenos v síti a deserializace. Balení mnoho samostatné transakcí do jedné dávkové minimalizuje tyto náklady.
+## <a name="why-is-batching-important-for-sql-database"></a>Proč je dávkování důležité pro službu SQL Database?
+Dávkové zpracování volání vzdálené služby je dobře známé strategie pro zvýšení výkonu a škálovatelnosti. Jsou pevně dané náklady zpracování, které všechny interakce s vzdálené služby, jako je například serializace, přenos v síti a deserializace. Balení mnoho samostatné transakce do jedné dávkové minimalizuje tyto náklady.
 
-V tomto dokumentu jsme chcete prověřit různé SQL Database dávkování strategie a scénáře. I když tyto strategie jsou také důležité pro místní aplikace, které používají systém SQL Server, tady je několik důvodů pro zvýraznění dávkování pro databázi SQL. použití:
+V tomto dokumentu budeme chtít různých SQL Database dávkování strategie a scénáře. I když tyto strategie jsou také důležité pro místní aplikace, které používají SQL Server, existuje několik důvodů pro zvýraznění použití dávkování pro službu SQL Database:
 
-* Je potenciálně vyšší latence sítě přístup k databázi SQL, zejména pokud v přístupu k databázi SQL z mimo stejného datového centra Microsoft Azure.
-* Víceklientské vlastnosti SQL Database znamená, že efektivitu na data přístup vrstvy odpovídá celkové škálovatelnost databáze. Databáze SQL zabránit přivlastňuje databázových prostředků na úkor ostatních klientů žádné jednoho klienta nebo uživatele. Databáze SQL v reakci na využití překračující předdefinované kvóty, můžete snížit propustnost nebo odpovědět s omezení výjimky. Efektivitu své činnosti, jako je například dávkování, umožňují provést u databáze SQL dříve, než dorazila těchto mezních hodnot. 
-* Dávkování je také efektivní pro architektury, které používají více databází (horizontálního dělení). Efektivitu interakce se jednotlivých jednotek databáze je stále klíčovým faktorem vaší celkovou škálovatelnost. 
+* Je potenciálně větší latence sítě v přístupu k SQL Database, zejména v případě, že při přístupu k SQL Database z oblasti mimo stejné datové centrum Microsoft Azure.
+* Vlastnosti víceklientské služby SQL Database znamená, že efektivitu koreluje vrstvu přístupu dat pro celkovou škálovatelnost databáze. SQL Database musí jediný tenant nebo uživatel zabránit přivlastňuje databázových prostředků na úkor jiných tenantů. SQL Database v reakci na využívání služeb nad rámec předdefinované kvóty, můžete snížit propustnosti nebo odpoví omezování výjimky. Efektivitu, jako jsou dávkové zpracování, umožňují více práce na SQL Database před překročení těchto omezení. 
+* Dávkování platí také pro architektury, které používají více databází (sharding). Efektivity vaší interakce se každá jednotka databáze stále je ale klíčovým faktorem celkovou škálovatelnost. 
 
-Jednou z výhod používání databáze SQL je, že nemáte ke správě serverů, které jsou hostiteli databáze. Však této spravované infrastruktury také znamená, že můžete mít jinak myslet optimalizace databáze. Už můžete zobrazit ke zlepšení databáze hardware nebo síť infrastruktury. Microsoft Azure řídí těchto prostředích. Hlavní oblasti, která můžete řídit je, jak vaše aplikace komunikuje s databází SQL. Dávkování je jedním z těchto optimalizace. 
+Jednou z výhod použití SQL Database je, že není nutné ke správě serverů, které hostují databáze. Tato spravovaná infrastruktura ale také znamená, že budete muset uvažovat jinak o optimalizace databáze. Můžete už zvažte vylepšení infrastruktury hardwarem nebo síťovými databáze. Microsoft Azure řídí těchto prostředích. Hlavní oblasti, které lze řízeně je, jak aplikace komunikuje se službou SQL Database. Dávkování je jedním z těchto optimalizacích. 
 
-První část papíru prověří různé dávkování techniky pro aplikace .NET, které používají SQL Database. Poslední dvě části se věnují dávkování pokyny a scénáře.
+První část papíru prozkoumá různých technik vytváření dávkování pro aplikace .NET, které používají SQL Database. Poslední dvě části se věnují dávkování pokyny a scénáře.
 
-## <a name="batching-strategies"></a>Dávkování strategie
-### <a name="note-about-timing-results-in-this-article"></a>Všimněte si o výsledcích časování v tomto článku
+## <a name="batching-strategies"></a>Strategie dávkování
+### <a name="note-about-timing-results-in-this-article"></a>Mějte na paměti o časování výsledky v tomto článku
 > [!NOTE]
-> Výsledky nejsou srovnávacích testů, ale jsou určené k zobrazení **relativní výkon**. Časování jsou založené na v průměru minimálně 10 test spustí. Operace se vloží do prázdná tabulka. Tyto testy byly měřená pre-V12 a jejich nemusí odpovídat nutně propustnosti, kterou může docházet v databázi V12 pomocí nové [DTU úrovně služeb](sql-database-service-tiers-dtu.md) nebo [úrovně služeb vCore](sql-database-service-tiers-vcore.md). Relativní výhodou dávkování technika by mělo být podobné.
+> Výsledky nejsou srovnávací testy, ale jsou určené k zobrazení **relativní výkon**. Časování jsou vycházet z průměru minimálně 10 testovacích běhů. Operace se vloží do prázdné tabulky. Tyto testy se měřené pre-V12 a jejich nemusí odpovídat nutně propustnost, které můžete zaznamenat do databáze V12 pomocí nového [jednotek DTU úrovně služeb](sql-database-service-tiers-dtu.md) nebo [– vCore úrovně služeb](sql-database-service-tiers-vcore.md). Relativní výhody dávkování postup by měl vypadat přibližně.
 > 
 > 
 
 ### <a name="transactions"></a>Transakce
-Podle všeho neobvyklé zahájíte o dávkování podle hovoříte o transakce. Ale použití transakce na straně klienta má vliv dávkování jemně straně serveru, který zlepšuje výkon. A transakce lze přidat pouze zadání několika řádků kódu, takže poskytují rychlý způsob, jak zvýšit výkon při sekvenčních operací.
+Vypadá to strangeová začít kontrolu dávkování podle diskuze o transakce. Ale použití transakcí na straně klienta má jemný dávkování efekt na straně serveru, který zlepšuje výkon. A transakce jde přidat jenom pár řádků kódu, takže poskytují rychlý způsob, jak zvýšit výkon při sekvenčních operací.
 
-Vezměte v úvahu následující C# kód, který obsahuje posloupnost vložení a aktualizace operací na jednoduché tabulky.
+Vezměte v úvahu následující kód jazyka C#, která obsahuje posloupnost vložení a aktualizujte operace s jednoduchou tabulku.
 
     List<string> dbOperations = new List<string>();
     dbOperations.Add("update MyTable set mytext = 'updated text' where id = 1");
@@ -52,7 +52,7 @@ Vezměte v úvahu následující C# kód, který obsahuje posloupnost vložení 
     dbOperations.Add("insert MyTable values ('new value',2)");
     dbOperations.Add("insert MyTable values ('new value',3)");
 
-Následující kód ADO.NET postupně provádí tyto operace.
+Následující kód ADO.NET postupně provede tyto operace.
 
     using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
     {
@@ -65,7 +65,7 @@ Následující kód ADO.NET postupně provádí tyto operace.
         }
     }
 
-Nejlepší způsob, jak optimalizovat tento kód je implementace určitou formu klienta dávkování těchto volání. Ale je jednoduchý způsob, jak zvýšit výkon tento kód jednoduše zabalení pořadí volání v transakci. Zde je stejný kód, který používá transakce.
+Nejlepší způsob, jak optimalizovat tento kód je implementace nějaké formy dávkování na straně klienta z těchto volání. Ale neexistuje jednoduchý způsob, jak zvýšit výkon tento kód jednoduše obalením sekvence volání v transakci. Zde je stejný kód, který používá transakce.
 
     using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
     {
@@ -81,11 +81,11 @@ Nejlepší způsob, jak optimalizovat tento kód je implementace určitou formu 
         transaction.Commit();
     }
 
-Transakce se používá ve skutečnosti v obou těchto příkladech. V prvním příkladu každý jednotlivých volání je implicitní transakci. V druhém příkladu explicitní transakce zabalí všechny volání. Za v dokumentaci [předběžné transakčního protokolu](https://msdn.microsoft.com/library/ms186259.aspx), záznamy protokolu jsou vyprazdňuje na disk, když transakce potvrzena. Další volání uvedete v transakci, můžete tak zápis transakčního protokolu počkat, až je transakce potvrzena. V důsledku toho jsou povolení dávkování při zápisu do protokolu transakcí serveru.
+V obou těchto příkladech se používají ve skutečnosti transakce. V prvním příkladu je každého jednotlivého volání implicitní transakce. V druhém příkladu zabalí explicitní transakce všech volání. Za dokumentaci [dávky zápisu transakční protokol](https://msdn.microsoft.com/library/ms186259.aspx), záznamy protokolu jsou zapsány na disk při potvrzení transakce. Pokud uvedete více volání v transakci, můžete tak zápis do transakčního protokolu zpoždění, dokud je transakce potvrzena. V důsledku toho jsou povolení dávkování pro zápis do protokolu transakcí serveru.
 
-V následující tabulce jsou uvedeny některé výsledky testování ad hoc. Testy provést stejné sekvenční vložení a bez transakce. Pro další perspektivy první sada testů spustili vzdáleně z přenosného počítače do databáze v Microsoft Azure. Druhá sada testů spustili z cloudové služby a databáze oba nacházejí ve stejném datovém centru Microsoft Azure (západní USA). Následující tabulka uvádí dobu v milisekundách sekvenční operace INSERT a bez transakce.
+V následující tabulce jsou uvedeny některé výsledky testování ad hoc. Testy provést stejnou sekvenční vložení a nemusíte transakce. Pro další perspektivy první sadu testů spustila vzdáleně z přenosného počítače do databáze v Microsoft Azure. Druhá sada testů spustili z cloudové služby a databáze i nacházejí ve stejném datacentru Microsoft Azure (USA – západ). Následující tabulka uvádí doba trvání v MS sekvenční operace vložení a nemusíte transakce.
 
-**Místním nasazením a Azure**:
+**On-Premises do Azure**:
 
 | Operace | Žádná transakce (ms) | Transakce (ms) |
 | --- | --- | --- |
@@ -94,7 +94,7 @@ V následující tabulce jsou uvedeny některé výsledky testování ad hoc. Te
 | 100 |12662 |10395 |
 | 1000 |128852 |102917 |
 
-**Azure do Azure (stejného datového centra)**:
+**Azure do Azure (stejném datovém centru)**:
 
 | Operace | Žádná transakce (ms) | Transakce (ms) |
 | --- | --- | --- |
@@ -104,27 +104,25 @@ V následující tabulce jsou uvedeny některé výsledky testování ad hoc. Te
 | 1000 |21479 |2756 |
 
 > [!NOTE]
-> Výsledky nejsou srovnávacích testů. Najdete v článku [Poznámka o výsledcích časování v tomto tématu](#note-about-timing-results-in-this-topic).
-> 
-> 
+> Výsledky nejsou srovnávací testy. Zobrazit [Poznámka o časování výsledky v tomto článku](#note-about-timing-results-in-this-article).
 
-Na základě předchozího výsledků testu zabalení jedné operace v transakci ve skutečnosti sníží výkon. Ale můžete zvýšit počet operací v rámci jedné transakce, zlepšování výkonu stane více označen. Rozdíl výkonu je také více patrné, dojde-li všechny operace v rámci datového centra Microsoft Azure. Zvýší latence používání databáze SQL z oblasti mimo datové centrum Microsoft Azure ruší výkonnější použití transakcí.
+Podle předchozí výsledky testů, ve skutečnosti obtékání jediná operace v rámci transakce snižuje výkon. Ale zvyšuje počet operací v rámci jedné transakce stane více označena zlepšení výkonu. Rozdíly ve výkonnosti se snadněji postřehnutelné také dojde-li všechny operace v rámci datového centra Microsoft Azure. Zvýší latence používat SQL Database z oblasti mimo datové centrum Microsoft Azure ruší výkonový zisk plynoucí z použití transakcí.
 
-Přestože použití transakcí může zvýšit výkon, i nadále [sledovat osvědčené postupy pro připojení a transakce](https://msdn.microsoft.com/library/ms187484.aspx). Zachovat transakce co nejkratší a zavřete připojení k databázi po dokončení práce. Pomocí příkazu v předchozím příkladu zaručuje, že připojení je ukončeno po dokončení následných kód bloku.
+I když využívání transakce může zvýšit výkon, nadále [dodržovat osvědčené postupy pro transakce a připojení](https://msdn.microsoft.com/library/ms187484.aspx). Zachovat transakce co nejkratší a ukončete připojení k databázi po dokončení práce. Používání příkaz v předchozím příkladu zaručuje, že se připojení uzavře, po dokončení bloku následující kód.
 
-Předchozí příklad ukazuje, můžete přidat místní transakce pro jakýkoli kód ADO.NET se dvěma řádky. Transakce nabízejí rychlý způsob, jak zlepšit výkon kód, který umožňuje sekvenční vložit, aktualizovat a odstraňovat operace. Ale nejrychlejší výkonu, zvažte změnu kód dále využít výhody dávkování na straně klienta, jako jsou parametry s hodnotou tabulky.
+Předchozí příklad ukazuje, že můžete přidat místní transakce k veškerému kódu ADO.NET se dvěma řádky. Transakce nabízejí rychlý způsob, jak zlepšit výkon kód, který provádí sekvenční vložení, aktualizace a odstranění operace. Ale nejrychlejší výkon, zvažte možnost změnit kód dál využívat dávkování na straně klienta, jako jsou parametry s hodnotou tabulky.
 
-Další informace o transakcích v ADO.NET naleznete v tématu [místní transakce v ADO.NET](https://docs.microsoft.com/dotnet/framework/data/adonet/local-transactions).
+Další informace o transakce v rozhraní ADO.NET, naleznete v tématu [místní transakce v rozhraní ADO.NET](https://docs.microsoft.com/dotnet/framework/data/adonet/local-transactions).
 
-### <a name="table-valued-parameters"></a>Parametry s hodnotou tabulky
-Parametry s hodnotou tabulky podporují uživatelem definovaná tabulka typy jako parametry příkazy jazyka Transact-SQL, uložené procedury a funkce. Tato technika dávkování na straně klienta, umožní vám odesílat více řádků dat v rámci parametr s hodnotou tabulky. Pokud chcete používat parametry s hodnotou tabulky, nejdříve definujte typ tabulky. Následující příkaz Transact-SQL vytvoří typ tabulky s názvem **MyTableType**.
+### <a name="table-valued-parameters"></a>Parametry Table-valued
+Parametry Table-valued podporu uživatelem definovaná Tabulka typů jako parametrů příkazů jazyka Transact-SQL, uložených procedur a funkcí. Tato technika dávkování na straně klienta umožňuje odeslat více řádků v rámci parametr s hodnotou tabulky. Použití parametrů table-valued, nejprve definujte typ tabulky. Následující příkaz jazyka Transact-SQL umožňuje vytvořit typ tabulky s názvem **MyTableType**.
 
     CREATE TYPE MyTableType AS TABLE 
     ( mytext TEXT,
       num INT );
 
 
-V kódu, můžete vytvořit **DataTable** s přesnou stejné názvy a typy typu tabulky. To předat **DataTable** parametr v textu dotazu nebo uložené proceduře volání. Následující příklad ukazuje, tento postup:
+V kódu, můžete vytvořit **DataTable** s přesně stejné názvy a typy typu tabulky. Předá **DataTable** v parametru text dotazu nebo uložené procedury volání. Následující příklad ukazuje tento postup:
 
     using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
     {
@@ -155,9 +153,9 @@ V kódu, můžete vytvořit **DataTable** s přesnou stejné názvy a typy typu 
         cmd.ExecuteNonQuery();
     }
 
-V předchozím příkladu **SqlCommand** objekt vloží řádky z parametr s hodnotou tabulky **@TestTvp**. Dříve vytvořenou **DataTable** objektu je přiřazen tento parametr se **SqlCommand.Parameters.Add** metoda. Dávkování vloží jedno volání výrazně zvyšuje výkon přes sekvenční vložení.
+V předchozím příkladu **SqlCommand** objekt vloží řádků z parametru s hodnotou tabulky, **@TestTvp**. Dříve vytvořený **DataTable** je přiřazen objekt pro tento parametr se **SqlCommand.Parameters.Add** metoda. Dávkování vložení v jednom volání výrazně zvyšuje výkon přes sekvenční operace vložení.
 
-Chcete-li zlepšit další předchozí příklad, použijte uložené procedury místo příkaz založený na textu. Následující příkaz Transact-SQL vytvoří uložené procedury, která přebírá **SimpleTestTableType** parametr s hodnotou tabulky.
+Aby se zvýšil z předchozího příkladu dále, použití uložené procedury místo příkazu založený na textu. Následující příkaz jazyka Transact-SQL vytvoří uloženou proceduru, která přebírá **SimpleTestTableType** parametr s hodnotou tabulky.
 
     CREATE PROCEDURE [dbo].[sp_InsertRows] 
     @TestTvp as MyTableType READONLY
@@ -168,16 +166,16 @@ Chcete-li zlepšit další předchozí příklad, použijte uložené procedury 
     END
     GO
 
-Změňte **SqlCommand** deklarace v předchozím příkladu kódu pro následující objekt.
+Změňte **SqlCommand** objektu deklarace v předchozím příkladu následující kód.
 
     SqlCommand cmd = new SqlCommand("sp_InsertRows", connection);
     cmd.CommandType = CommandType.StoredProcedure;
 
-Ve většině případů parametry s hodnotou tabulky mít ekvivalentní, nebo lepší výkon než jinými technikami, dávkování. Parametry s hodnotou tabulky jsou často vhodnější, protože jsou flexibilnější než jiné možnosti. Jinými technikami, jako je například hromadného kopírování SQL, například povolit jenom vkládání nových řádků. Ale s parametry s hodnotou tabulky, můžete použít logiku v uložené proceduře k určení, které řádky jsou aktualizace a který se vloží. Typ tabulky můžete také upravit tak, aby obsahovala sloupec "Operace", která určuje, zda zadaný řádek by měl být vložit, aktualizovat nebo odstranit.
+Ve většině případů parametrů table-valued mají ekvivalentní, nebo lepší výkon než jiné postupy dávkování. Parametry Table-valued jsou často vhodnější, protože jsou flexibilnější, než jiné možnosti. Jiné techniky, jako je například hromadná kopie SQL, například povolit pouze vkládání nových řádků. Ale s parametry s hodnotou tabulky, můžete použít logiku v uložené proceduře k určení, které řádky jsou aktualizace a které jsou vloží. Typ tabulky můžete také upravit tak, aby obsahovala sloupec "Operace", která určuje, zda zadaný řádek by měl být vložen, aktualizoval nebo odstranil.
 
-V následující tabulce jsou uvedeny ad-hoc výsledků testů pro použití s hodnotou tabulky parametrů v milisekundách.
+V následující tabulce jsou uvedeny ad-hoc výsledky testu pro použití parametrů table-valued v milisekundách.
 
-| Operace | Místním nasazením a Azure (ms) | Azure stejného datového centra (ms) |
+| Operace | On-Premises do Azure (ms) | Stejné datové centrum Azure (ms) |
 | --- | --- | --- |
 | 1 |124 |32 |
 | 10 |131 |25 |
@@ -186,16 +184,16 @@ V následující tabulce jsou uvedeny ad-hoc výsledků testů pro použití s h
 | 10000 |23830 |3586 |
 
 > [!NOTE]
-> Výsledky nejsou srovnávacích testů. Najdete v článku [Poznámka o výsledcích časování v tomto tématu](#note-about-timing-results-in-this-topic).
+> Výsledky nejsou srovnávací testy. Zobrazit [Poznámka o časování výsledky v tomto článku](#note-about-timing-results-in-this-article).
 > 
 > 
 
-Zvýšení výkonu z dávkování je okamžitě zřejmá. V předchozím testu sekvenčních 1000 operace trvalo 129 sekund mimo datové centrum a 21 sekund z v rámci datového centra. Ale s parametry s hodnotou tabulky 1000 operace trvat jenom 2.6 sekund mimo datové centrum a 0,4 sekundy v rámci datového centra.
+Výkonový zisk plynoucí z dávkování je okamžitě zřejmý. V předchozím testu sekvenčních 1000 operace trvalo 129 sekund mimo datové centrum a 21 sekund z v rámci datového centra. Ale s parametry table-valued 1000 operace trvat pouze 2.6 sekund mimo datové centrum a 0.4 sekund v rámci datového centra.
 
-Další informace o parametry s hodnotou tabulky najdete v tématu [zavolat parametry](https://msdn.microsoft.com/library/bb510489.aspx).
+Další informace o parametry table-valued najdete v tématu [Table-Valued parametry](https://msdn.microsoft.com/library/bb510489.aspx).
 
-### <a name="sql-bulk-copy"></a>Hromadné kopírování SQL
-Hromadné kopírování SQL je další způsob vložení velkých objemů dat do cílové databáze. Aplikace .NET mohou použít **SqlBulkCopy** třída provést hromadné operace vložení. **SqlBulkCopy** je podobně jako u nástroj příkazového řádku **Bcp.exe**, nebo pomocí příkazu Transact-SQL **BULK INSERT**. Následující příklad kódu ukazuje, jak hromadně kopírovat řádky ve zdroji **DataTable**, tabulky do cílové tabulky v systému SQL Server MyTable.
+### <a name="sql-bulk-copy"></a>Hromadná kopie SQL
+Hromadná kopie SQL je další způsob, jak vložit velkých objemů dat do cílové databáze. Aplikace .NET mohou použít **SqlBulkCopy** pro provádění hromadných operací vložení. **SqlBulkCopy** je podobné funkce jako nástroj příkazového řádku **Bcp.exe**, nebo pomocí příkazu jazyka Transact-SQL **BULK INSERT**. Následující příklad kódu ukazuje, jak hromadně kopírovat řádků ve zdroji **DataTable**, tabulky do cílové tabulky v SQL serveru, tabulka.
 
     using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
     {
@@ -210,11 +208,11 @@ Hromadné kopírování SQL je další způsob vložení velkých objemů dat do
         }
     }
 
-Existují případy, kdy je hromadné kopírování upřednostňované nad parametry s hodnotou tabulky. Podívejte se na tabulku porovnání s hodnotou tabulky parametrů versus BULK INSERT operace v článku [zavolat parametry](https://msdn.microsoft.com/library/bb510489.aspx).
+Existují případy, kdy hromadné kopírování je upřednostňované nad parametry s hodnotou tabulky. Zobrazit srovnávací tabulka z parametrů Table-Valued oproti operace HROMADNÉHO vložení v článku [Table-Valued parametry](https://msdn.microsoft.com/library/bb510489.aspx).
 
-Zobrazit následující výsledky testů ad-hoc výkon dávkování s **SqlBulkCopy** v milisekundách.
+Výkon dávkování se zobrazit následující výsledky testů ad-hoc **SqlBulkCopy** v milisekundách.
 
-| Operace | Místním nasazením a Azure (ms) | Azure stejného datového centra (ms) |
+| Operace | On-Premises do Azure (ms) | Stejné datové centrum Azure (ms) |
 | --- | --- | --- |
 | 1 |433 |57 |
 | 10 |441 |32 |
@@ -223,16 +221,16 @@ Zobrazit následující výsledky testů ad-hoc výkon dávkování s **SqlBulkC
 | 10000 |21605 |2737 |
 
 > [!NOTE]
-> Výsledky nejsou srovnávacích testů. Najdete v článku [Poznámka o výsledcích časování v tomto tématu](#note-about-timing-results-in-this-topic).
+> Výsledky nejsou srovnávací testy. Zobrazit [Poznámka o časování výsledky v tomto článku](#note-about-timing-results-in-this-article).
 > 
 > 
 
-V menší velikosti dávky, použijte parametry s hodnotou tabulky outperformed **SqlBulkCopy** třídy. Ale **SqlBulkCopy** provést 12-31 % rychlejší než parametry s hodnotou tabulky pro testy 1 000 a 10 000 řádků. Jako parametry s hodnotou tabulky **SqlBulkCopy** je vhodný pro dávkové vložení, zejména v případě, že ve srovnání s výkon operací jiný-zpracovat v dávce.
+V menší velikosti dávky, použijte parametry table-valued překonal **SqlBulkCopy** třídy. Ale **SqlBulkCopy** provést 31. 12 % rychlejší než parametrů table-valued testů 1 000 a 10 000 řádků. Jako parametry table-valued **SqlBulkCopy** je dobrou volbou pro dávkové operace vložení, zejména v případě, že ve srovnání s výkon operací dávce.
 
-Další informace o hromadné kopírování v ADO.NET naleznete v tématu [operace hromadného kopírování v systému SQL Server](https://msdn.microsoft.com/library/7ek5da1a.aspx).
+Další informace o hromadné kopírování v ADO.NET, naleznete v tématu [operace hromadného kopírování na SQL serveru](https://msdn.microsoft.com/library/7ek5da1a.aspx).
 
 ### <a name="multiple-row-parameterized-insert-statements"></a>Příkazy s parametry vložit více řádků
-Jeden alternativou k malé dávky je vytvořit velké parametrizované příkaz INSERT, který se vloží více řádků. Následující příklad kódu ukazuje tento postup.
+Jeden alternativu pro malé dávky je pro sestavení velkých parametrizovaného příkazu INSERT, který vloží několik řádků. Následující příklad kódu ukazuje tento postup.
 
     using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
     {
@@ -253,52 +251,52 @@ Jeden alternativou k malé dávky je vytvořit velké parametrizované příkaz 
     }
 
 
-Tento příklad slouží k zobrazení základní koncept. Realističtější scénář by projít požadované entity současně vytvořit řetězec dotazu a parametry příkazu. Jste omezený na celkem parametry dotazu 2100, toto nastavení omezuje celkový počet řádků, které lze zpracovat tímto způsobem.
+V tomto příkladu slouží k zobrazení základní princip. Vyzkoušet realističtější scénář by projít požadované entity, které chcete současně vytvořit řetězec dotazu a parametry příkazu. Jste omezeni na celkový počet parametrů dotazu 2100, toto nastavení omezuje celkový počet řádků, které mohou být zpracovány tímto způsobem.
 
-Následující výsledky testů ad-hoc zobrazit výkon tento typ příkazu insert v milisekundách.
+Následující výsledky testů ad-hoc zobrazení výkonu tento typ příkazu insert v milisekundách.
 
-| Operace | Parametry s hodnotou tabulky (ms) | Vložení jedním příkazem (ms) |
+| Operace | Parametry Table-valued (ms) | Jedním příkazem INSERT (ms) |
 | --- | --- | --- |
 | 1 |32 |20 |
 | 10 |30 |25 |
 | 100 |33 |51 |
 
 > [!NOTE]
-> Výsledky nejsou srovnávacích testů. Najdete v článku [Poznámka o výsledcích časování v tomto tématu](#note-about-timing-results-in-this-topic).
+> Výsledky nejsou srovnávací testy. Zobrazit [Poznámka o časování výsledky v tomto článku](#note-about-timing-results-in-this-article).
 > 
 > 
 
-Tento přístup může být mírně rychlejší pro balíků, které jsou menší než 100 řádků. I když zlepšení je malý, tento postup je další možností, které může fungovat i ve vašem scénáři konkrétní aplikaci.
+Tento přístup může být mírně rychlejší pro listy, které jsou kratší než 100 řádků. Sice malé zlepšení, tato technika je další možností, které může fungovat dobře ve vašem scénáři konkrétní aplikaci.
 
-### <a name="dataadapter"></a>DataAdapter
-**DataAdapter** třída umožňuje upravovat **datovou sadu** objektu a pak odeslat provedené změny jako operace INSERT, UPDATE a DELETE. Pokud používáte **DataAdapter** tímto způsobem je důležité si uvědomit, že samostatné volání jsou vytvářeny pro každou operaci distinct. Chcete-li zvýšit výkon, použijte **UpdateBatchSize** vlastnost počet operací, které by měl zpracovat v dávce najednou. Další informace najdete v tématu [provádění dávkové operace pomocí DataAdapters](https://msdn.microsoft.com/library/aadf8fk2.aspx).
+### <a name="dataadapter"></a>Vlastnost DataAdapter
+**DataAdapter** třída umožňuje změnit **datovou sadu** objekt a potom odešlete změny jako operace INSERT, UPDATE a DELETE. Pokud používáte **DataAdapter** tímto způsobem, je důležité si uvědomit, že samostatné volání pro každou operaci distinct. Chcete-li zvýšit výkon, použijte **UpdateBatchSize** na počet operací, které by měl být dávce najednou. Další informace najdete v tématu [provádění dávky operací pomocí adaptérů dat](https://msdn.microsoft.com/library/aadf8fk2.aspx).
 
 ### <a name="entity-framework"></a>Rozhraní Entity framework
-Rozhraní Entity Framework aktuálně nepodporuje dávkování. Různé vývojáři v komunitě Pokusili jste se ukazují alternativní řešení, například přepsání **SaveChanges** metoda. Ale řešení jsou obvykle komplexní a přizpůsobit v aplikaci a datového modelu. Rozhraní Entity Framework projektu webu codeplex má v současnosti diskusní stránky na žádost o této funkce. Tato diskuse najdete v tématu [poznámky ze schůzky návrhu - 2 srpen 2012](http://entityframework.codeplex.com/wikipage?title=Design%20Meeting%20Notes%20-%20August%202%2c%202012).
+Entity Framework nepodporuje aktuálně dávkování. Různými vývojáři v komunitě jste se pokusili ukazují alternativní řešení, jako je například přepsání **SaveChanges** metody. Ale řešení jsou obvykle složitý a vlastní aplikace a data modelu. Entity Framework projektu codeplex aktuálně obsahuje stránku diskuze na žádost o tuto funkci. Tato diskuse, naleznete v tématu [poznámky ze schůzky návrhu - 2. srpna 2012](http://entityframework.codeplex.com/wikipage?title=Design%20Meeting%20Notes%20-%20August%202%2c%202012).
 
 ### <a name="xml"></a>XML
-Pro úplnost se domníváme, že je potřeba mluvit o XML jako strategie dávkování. Použití XML má však žádné výhody přes jiné metody a několik nevýhody. Přístup je podobná parametry s hodnotou tabulky, ale souboru XML nebo řetězec předaný uložené proceduře místo uživatelem definovaná tabulka. Uložená procedura analyzuje příkazy v uložené proceduře.
+Pro úplnost domníváme, že je důležité mluvit o XML jako strategie dávkování. Použití XML má však žádné výhody oproti jiné metody a několik nevýhody. Tento přístup je podobný parametrů table-valued ale souboru XML nebo řetězec je předaný uložené proceduře místo uživatelem definovaná tabulka. Uložená procedura analyzuje příkazy v uložené proceduře.
 
 Existuje několik nevýhod tohoto přístupu:
 
-* Práce s XML může být náročná a chyba náchylné k chybám.
-* Analýza kódu XML v databázi, může být náročná na prostředky procesoru.
-* Ve většině případů je tato metoda pomalejší než parametry s hodnotou tabulky.
+* Práce s XML může být náročné a náchylné k chybám.
+* Při parsování kódu XML v databázi, může být náročné na CPU.
+* Ve většině případů je pomalejší než parametrů table-valued této metody.
 
-Z těchto důvodů se nedoporučuje použití XML pro dotazy batch.
+Z těchto důvodů použití XML pro dávkové dotazy, se nedoporučuje.
 
-## <a name="batching-considerations"></a>Dávkování aspekty
-Následující části obsahují další pokyny pro použití dávkování v aplikacích databáze SQL.
+## <a name="batching-considerations"></a>Dávkování důležité informace
+Následující části obsahují další pokyny k použití dávkování aplikace SQL Database.
 
 ### <a name="tradeoffs"></a>Kompromisy
-V závislosti na vaší architektury dávkování může zahrnovat kompromis mezi výkon a odolnost. Zvažte například scénář, kde vaše role neočekávaně ocitne mimo provoz. Pokud ztratíte jeden řádek dat, dopad je menší než dopad ztráty velké dávku neodeslané řádků. Existuje větší riziko, pokud vyrovnávací paměť řádky před jejich odesláním do databáze v zadaném časovém období.
+V závislosti na vaší architektuře dávkování může zahrnovat kompromis mezi výkonem a odolnost proti chybám. Zvažte například scénář, kde vaše role se neočekávaně ocitne mimo provoz. Pokud ztratíte jeden řádek dat, dopad je menší než dopad ztráty dávky velké neodeslané řádků. Existuje větší riziko při buffer řádky před jejich odesláním do databáze v zadaném časovém období.
 
-Z důvodu této kompromis Vyhodnoťte typ operací, že batch můžete. Batch důkladnějšímu (větší dávky a delší dobu windows) s daty, která je méně kritický.
+Kvůli kompromis Vyhodnoťte typ operace této služby batch můžete. Batch agresivnější (větších dávek a delší časová okna) data, která jsou méně důležité.
 
 ### <a name="batch-size"></a>Velikost dávky
-V našich testech se obvykle žádnou výhodu nejnovější velké dávky na menší bloky. Ve skutečnosti tento pododdíl často za následek nižší výkon než jeden velký dávky. Zvažte například scénář, kam chcete vložit 1 000 řádků. Následující tabulka ukazuje, jak dlouho Pokud chcete používat parametry s hodnotou tabulky vložit 1 000 řádků při rozdělit do menších dávek.
+V testech obvykle došlo k rozdělení velké dávky do menších bloků žádnou jinou výhodu. Ve skutečnosti tento pododdíl často za následek pomalejší výkon než jedné dávkové velké. Zvažte například scénář, ve které chcete vložit 1 000 řádků. Následující tabulka ukazuje, jak dlouho trvá pomocí parametrů table-valued vložte 1000 řádků při rozdělit do menších dávek.
 
-| Velikost dávky | Iterace | Parametry s hodnotou tabulky (ms) |
+| Velikost dávky | Iterace | Parametry Table-valued (ms) |
 | --- | --- | --- |
 | 1000 |1 |347 |
 | 500 |2 |355 |
@@ -306,20 +304,20 @@ V našich testech se obvykle žádnou výhodu nejnovější velké dávky na men
 | 50 |20 |630 |
 
 > [!NOTE]
-> Výsledky nejsou srovnávacích testů. Najdete v článku [Poznámka o výsledcích časování v tomto tématu](#note-about-timing-results-in-this-topic).
+> Výsledky nejsou srovnávací testy. Zobrazit [Poznámka o časování výsledky v tomto článku](#note-about-timing-results-in-this-article).
 > 
 > 
 
-Uvidíte, že je všechny najednou odeslat je nejlepší výkon pro 1 000 řádků. Jiné testy (není tady zobrazené) bylo malé výkonnější dávce 10000 řádek rozdělit na dvě dávky 5000. Ale schématu tabulky pro tyto testy je poměrně jednoduché, měli byste provést testy na konkrétních dat a velikosti dávky k ověření těchto zjištění.
+Uvidíte, že nejlepší výkon pro 1 000 řádků je odešlete je všechny najednou. V jiných testech (není tady zobrazené) bylo malé výkonnější batch 10000 řádek rozdělit na dvě dávky 5000. Ale schéma tabulky pro tyto testy je poměrně jednoduché, takže by měl provádět testy na určitá data a velikosti dávky k ověření tyto poznatky.
 
-Dalším faktorem vzít v úvahu je, že pokud celkový počet batch příliš velká, SQL Database může omezení a odmítnout potvrzení dávky. Nejlepších výsledků dosáhnete otestujte konkrétní scénář k určení, jestli je velikost dávky ideální. Velikost dávky konfigurovatelné za běhu, aby povolit rychlé úpravy na základě výkonu nebo chyby.
+Dalším faktorem vzít v úvahu je, že pokud celkový počet batch stane příliš velký, SQL Database může omezit a odmítnout potvrdit dávku. Nejlepších výsledků dosáhnete Otestujte váš konkrétní scénář k určení, zda je velikost ideální dávky. Velikost dávky konfigurovatelné za běhu, abyste povolit rychlé úpravy na základě výkonu nebo chyby.
 
-Nakonec vyrovnávat velikost dávky s riziky spojenými s dávkování. Pokud nejsou přechodné chyby nebo roli selže, vezměte v úvahu důsledky opakováním operace nebo ke ztrátě dat v dávce.
+Nakonec pomocí rizika spojená s dávkování vyrovnat velikost dávky. Pokud nejsou přechodné chyby nebo roli nezdaří, vezměte v úvahu důsledky opakováním operace nebo ztráty dat. v dávce.
 
 ### <a name="parallel-processing"></a>Paralelní zpracování
-Co když trvalo přístup snižuje velikost dávky, ale používá více vláken k provedení práce? Naše testy znovu, ukázalo, že několik menších vícevláknové dávek zpravidla dělá horší, než jeden větší batch. Následující test se pokusí vložit řádky 1000 do jedné nebo více paralelních dávek. Tento test ukazuje, jak více souběžných dávky ve skutečnosti snížení výkonu.
+Co když postavili snížit velikost dávky, ale používá více vláken k provedení práce? Znovu naše testy jsme si ukázali, že několik menších s více vlákny dávky zpravidla dělá horší, než v jedné dávce větší. Následující test se pokusí vložit 1000 řádků v jedné nebo více paralelních dávky. Tento test ukazuje, jak více souběžných dávky ve skutečnosti snížení výkonu.
 
-| Velikost dávky [iterací] | Dva vláken (ms) | Čtyři vláken (ms) | Šest vláken (ms) |
+| Velikost dávky [iterace] | Dvě vlákna (ms) | Čtyři vláken (ms) | Šest vláken (ms) |
 | --- | --- | --- | --- |
 | 1000 [1] |277 |315 |266 |
 | 500 [2] |548 |278 |256 |
@@ -327,39 +325,39 @@ Co když trvalo přístup snižuje velikost dávky, ale používá více vláken
 | 100 [10] |488 |439 |391 |
 
 > [!NOTE]
-> Výsledky nejsou srovnávacích testů. Najdete v článku [Poznámka o výsledcích časování v tomto tématu](#note-about-timing-results-in-this-topic).
+> Výsledky nejsou srovnávací testy. Zobrazit [Poznámka o časování výsledky v tomto článku](#note-about-timing-results-in-this-article).
 > 
 > 
 
-Existuje několik možných důvodů pro snížení výkonu z důvodu paralelismus:
+Pro snížení výkonu z důvodu paralelismu několik možných příčin:
 
-* Existuje více souběžných sítě volání místo jeden.
-* Více operací pro jedinou tabulku může způsobit konflikty a blokování.
-* Existují režijní náklady spojené s více vláken.
-* Náklady otevření více připojení převáží výhodou paralelní zpracování.
+* Existuje několik souběžných síťových volání místo jednoho.
+* Více operací s jednu tabulku může způsobit konflikty a blokování.
+* Existují režie spojené s multithreading.
+* Prostředky na otevření více připojení převažuje získané výhody paralelní zpracování.
 
-Pokud cílíte různých tabulek nebo databází, je možné zobrazit některé výkonu získáte pomocí této strategie. Scénář pro tento postup by horizontálního dělení databáze nebo federace. Horizontálního dělení používá více databází a směruje různých datových na každou databázi. Pokud každé malé dávky k jiné databázi, může být efektivnější pak paralelní provádění operací. Zvýšení výkonu však není dostatečně významné chcete použít jako základ pro rozhodnutí a použít horizontálního dělení databáze ve vašem řešení.
+Pokud je cílem různých tabulek nebo databází, je možné si zobrazit, získáte pomocí této strategie výkonu. Horizontální dělení databází nebo federace by scénář pro tento přístup. Horizontální dělení používá několik databází a směruje jiná data pro každou databázi. Je-li každé malé dávky k jiné databázi, potom paralelní provádění operací může být efektivnější. Zvýšení výkonu však není natolik závažné, chcete použít jako základ pro rozhodnutí a používat horizontální dělení databází ve vašem řešení.
 
-V některé návrhy můžete paralelní provádění menší dávek způsobit lepší propustnost požadavky v rámci systému zatížení. V takovém případě i když je rychlejší zpracovat jeden větší batch, více listů paralelní zpracování může být efektivnější.
+V některé návrhy můžete po menších dávkách pro paralelní zpracování způsobit lepší propustnost žádostí o systém pod zátěží. V takovém případě i když je rychlejší jedné větší dávkové zpracování, zpracování několika dávek současně může být efektivnější.
 
-Pokud používáte paralelní provádění, vezměte v úvahu řízení maximální počet pracovních vláken. Zmenšete počet může být výsledkem nižší výskyt kolizí a rychlejší dobu provádění. Zvažte také další zátěže, které to umístí na cílovou databázi v připojení a transakce.
+Pokud používáte paralelního spouštění, vezměte v úvahu řízení maximální počet pracovních vláken. Menší číslo může znamenat nižší výskyt kolizí a rychlejší dobu spuštění. Zvažte také další zátěž, která to umístí na cílové databázi v připojení a transakce.
 
 ### <a name="related-performance-factors"></a>Faktory související výkonu
-Dávkování ovlivní také typické pokyny na výkon databáze. Můžete například vložit pro tabulky, které mají velký primární klíč, nebo mnoho neclusterované indexy je snížit výkon.
+Typické doprovodné materiály k výkonu databáze má vliv také dávkování. Například vložit pro tabulky, které mají velké primární klíč, nebo více neclusterovaných indexů je snížení výkonu.
 
-Pokud parametry s hodnotou tabulky pomocí uložené procedury, můžete použít příkaz **SET NOCOUNT ON** na začátku procesu. Tento příkaz potlačí návrat počet ovlivněných řádků v postupu. Ale v našich testech se použití **SET NOCOUNT ON** nemělo žádný vliv nebo snížení výkonu. Test uložené procedury bylo jednoduché s jedním **vložit** příkazu z parametru s hodnotou tabulky. Je možné, že by složitější uložené procedury těžit z tohoto prohlášení. Ale Nepředpokládejte, že přidání **SET NOCOUNT ON** uložené procedury automaticky zvyšuje výkon. Chcete-li pochopení dopadu, otestovat vaše uložené procedury s i bez **SET NOCOUNT ON** příkaz.
+Pokud parametry table-valued pomocí uložené procedury, můžete použít příkaz **SET NOCOUNT na** na začátku postupu. Tento příkaz potlačí vrátit počet ovlivněných řádků v postupu. Nicméně v testech, použití **SET NOCOUNT na** nemělo žádný vliv nebo snížení výkonu. Test uložené procedury bylo jednoduché pomocí jediného **vložit** z parametru s hodnotou tabulky. Je možné, že složitější uložené procedury, budou těžit z tohoto prohlášení. Ale Nepředpokládejte, že přidání **SET NOCOUNT na** uložené procedury automaticky zvyšuje výkon. K pochopení dopadu testu uložená procedura a nemusíte **SET NOCOUNT na** příkazu.
 
 ## <a name="batching-scenarios"></a>Dávkování scénáře
-Následující části popisují, jak používat parametry s hodnotou tabulky v tři scénáře aplikací. První scénář popisuje, jak ukládání do vyrovnávací paměti a dávkování vzájemně spolupracují. Druhý scénář zlepšuje výkon provádění operací s podrobnostmi v jedné uložené procedury volání. Poslední scénář popisuje, jak používat parametry s hodnotou tabulky v operace "UPSERT".
+Následující části popisují způsob použití parametrů table-valued ve třech scénářích aplikací. První scénář popisuje, jak ukládání do vyrovnávací paměti a dávek vzájemně spolupracují. Druhý scénář zvyšuje výkon tím, že provádí hlavní podrobnosti operace v rámci volání jedné uložené procedury. Poslední scénář popisuje, jak používat parametry table-valued do činnosti "UPSERT".
 
-### <a name="buffering"></a>Ukládání do vyrovnávací paměti
-I když je několik scénářů, které jsou zřejmé kandidáta pro dávkování, existuje mnoho scénářů, které může využívat výhod dávkování zpožděné zpracování. Zpožděné zpracování však představuje větší riziko, že data jsou v případě neočekávaného selhání ztraceny. Je důležité pochopit toto riziko a zvážit důsledky.
+### <a name="buffering"></a>ukládání do vyrovnávací paměti
+I když jsou některé scénáře, které jsou zřejmí kandidáti pro dávkové zpracování, existuje mnoho scénářů, které může využívat dávkové zpracování pomocí zpožděného zpracování. Zpožděné zpracování, ale taky mají větší riziko, že data nejsou ztracena v případě neočekávaného selhání. Je důležité porozumět toto riziko a zvážit důsledky.
 
-Představte si třeba webové aplikace, která sleduje navigační historii jednotlivých uživatelů. S každým požadavkem stránky může aplikace Změna databáze volání k zaznamenání zobrazení stránky uživatele. Ale vyšší výkon a škálovatelnost lze dosáhnout ukládání do vyrovnávací paměti navigační aktivity uživatelů a pak odešle tato data do databáze v dávkách. Můžete aktivovat aktualizaci databáze uplynulý čas nebo velikost vyrovnávací paměti. Pravidlo může například určit, že by měl po 20 sekund nebo pokud vyrovnávací paměť dosáhne 1000 položek zpracování dávky.
+Představte si třeba webovou aplikaci, která sleduje historii navigace jednotlivých uživatelů. S každým požadavkem stránky může aplikace provádět volání zaznamenat zobrazení stránky uživatele databáze. Ale vyšší výkon a škálovatelnost lze dosáhnout tak, že ukládání do vyrovnávací paměti navigace aktivit uživatelů a potom odešlete data do databáze v dávkách. Můžete aktivovat aktualizaci databáze zabralo nebo velikost vyrovnávací paměti. Pravidlo například může určit, že služby batch by měl být zpracován až po 20 sekund nebo když vyrovnávací paměti dosáhne 1000 položek.
 
-Následující příklad kódu používá [reaktivní rozšíření - Rx](https://msdn.microsoft.com/data/gg577609) ke zpracování ve vyrovnávací paměti události vyvolané službou třída monitorování. Když vyrovnávací vyplní celé nebo dosaženo časového limitu, je odeslána dávky dat uživatele do databáze s parametr s hodnotou tabulky.
+Následující příklad kódu používá [Reactive Extensions - Rx](https://msdn.microsoft.com/data/gg577609) ke zpracování ve vyrovnávací paměti události vyvolané službou třídu monitorování. Když vyplní vyrovnávací paměti nebo je dosaženo časového limitu, batch uživatelská data se odesílají do databáze s parametr s hodnotou tabulky.
 
-Následující třídy NavHistoryData modelů navigační podrobností o uživateli. Obsahuje základní informace, jako je identifikátor uživatele, adresu URL přístup a doba přístupu k.
+Následující třídy NavHistoryData modely navigace podrobností o uživateli. Obsahuje základní informace, jako je identifikátor uživatele, adresu URL získat přístup a čas přístupu.
 
     public class NavHistoryData
     {
@@ -370,7 +368,7 @@ Následující třídy NavHistoryData modelů navigační podrobností o uživat
         public DateTime AccessTime { get; set; }
     }
 
-Třída NavHistoryDataMonitor je zodpovědná za ukládání do vyrovnávací paměti navigační data uživatele do databáze. Obsahuje metody, RecordUserNavigationEntry, který odpovídá zobrazením **OnAdded** událostí. Následující kód ukazuje konstruktor logiky, která používá Rx můžete vytvořit kolekci pozorovatelné založené na události. Pak přihlásí se k této kolekci pozorovatelné s metodou vyrovnávací paměti. Přetížení Určuje, že vyrovnávací paměti by měly být odeslány každých 20 sekund nebo 1 000 položek.
+Třída NavHistoryDataMonitor zodpovídá za ukládání do vyrovnávací paměti navigační data uživatele do databáze. Obsahuje metody, RecordUserNavigationEntry, které reaguje vyvoláním **OnAdded** událostí. Následující kód ukazuje logiku konstruktoru, který používá Rx k vytvoření pozorovatelných kolekce založené na události. Pak přihlásí se k této pozorovatelných kolekce s metodou vyrovnávací paměti. Přetížení Určuje, že vyrovnávací paměti by měly být odeslány každých 20 sekund nebo 1 000 položek.
 
     public NavHistoryDataMonitor()
     {
@@ -380,7 +378,7 @@ Třída NavHistoryDataMonitor je zodpovědná za ukládání do vyrovnávací pa
         observableData.Buffer(TimeSpan.FromSeconds(20), 1000).Subscribe(Handler);           
     }
 
-Obslužná rutina převede všechny položky ve vyrovnávací paměti typu s hodnotou tabulky a pak předá tento typ uložené procedury, která zpracovává dávky. Následující kód ukazuje dokončení definice pro NavHistoryDataEventArgs i NavHistoryDataMonitor třídy.
+Obslužná rutina převede všechny položky ve vyrovnávací paměti na typ s hodnotou tabulky a pak předá tento typ uloženou proceduru, která zpracovává dávka. Následující kód ukazuje úplnou definici NavHistoryDataEventArgs a NavHistoryDataMonitor třídy.
 
     public class NavHistoryDataEventArgs : System.EventArgs
     {
@@ -439,10 +437,10 @@ Obslužná rutina převede všechny položky ve vyrovnávací paměti typu s hod
         }
     }
 
-Pokud chcete používat tuto třídu vyrovnávací paměti, aplikace vytvoří objekt statické NavHistoryDataMonitor. Pokaždé, když uživatel přistupuje k na stránce aplikace volá metodu NavHistoryDataMonitor.RecordUserNavigationEntry. Abyste dbali odesláním těchto položek do databáze v dávkách pokračuje logice vyrovnávací paměti.
+Pokud chcete použít tuto třídu vyrovnávací paměti, aplikace vytvoří objekt statické NavHistoryDataMonitor. Pokaždé, když uživatel přistupuje k na stránce aplikace volá metodu NavHistoryDataMonitor.RecordUserNavigationEntry. Vyrovnávací paměti logiky pokračuje postará o odesílání těchto položek do databáze v dávkách.
 
 ### <a name="master-detail"></a>Hlavní podrobností
-Parametry s hodnotou tabulky jsou užitečné pro jednoduché scénáře INSERT. Však může být více náročné dávkového vložení, které zahrnují více než jedna tabulka. Scénář "hlavního a podrobného" je dobrým příkladem. Hlavní tabulka obsahuje primární entity. Minimálně jedna tabulka podrobností uložit víc dat o entitě. V tomto scénáři vynutit relace cizích klíčů relace podrobnosti jedinečný hlavní entity. Vezměte v úvahu zjednodušenou verzi PurchaseOrder tabulka a její přidružené OrderDetail tabulkou. Následující příkaz Transact-SQL vytvoří tabulku PurchaseOrder s čtyři sloupce: OrderID, OrderDate, CustomerID a stav.
+Parametry Table-valued jsou užitečné pro jednoduché scénáře vložit. Však může být náročnější operace vložení služby batch, které se týkají více než jednou tabulkou. "Záznamů master/detail" scénář je typický příklad. Hlavní tabulka obsahuje primární entity. Jeden nebo více tabulka a tabulka podrobností uložit víc dat o entitě. V tomto scénáři cizího klíče vynucují vztah podrobnosti na jedinečné entity hlavní. Vezměte v úvahu zjednodušenou verzi PurchaseOrder tabulku a její přidružené OrderDetail. Následující příkaz jazyka Transact-SQL vytvoří tabulku PurchaseOrder se čtyřmi sloupci: OrderID, OrderDate, CustomerID a stav.
 
     CREATE TABLE [dbo].[PurchaseOrder](
     [OrderID] [int] IDENTITY(1,1) NOT NULL,
@@ -452,7 +450,7 @@ Parametry s hodnotou tabulky jsou užitečné pro jednoduché scénáře INSERT.
      CONSTRAINT [PrimaryKey_PurchaseOrder] 
     PRIMARY KEY CLUSTERED ( [OrderID] ASC ))
 
-Každý pořadí obsahuje jeden nebo více nákupy produktu. Tyto informace se zaznamená v tabulce PurchaseOrderDetail. Následující příkaz Transact-SQL vytvoří tabulku PurchaseOrderDetail s pěti sloupce: OrderID, OrderDetailID, ProductID, UnitPrice a OrderQty.
+Jednotlivé objednávky obsahuje jeden nebo více nákupů produktu. Tyto informace jsou zachyceny PurchaseOrderDetail tabulky. Následující příkaz jazyka Transact-SQL vytvoří PurchaseOrderDetail tabulku s 5 sloupci: OrderID, OrderDetailID, ProductID, UnitPrice a OrderQty.
 
     CREATE TABLE [dbo].[PurchaseOrderDetail](
     [OrderID] [int] NOT NULL,
@@ -463,13 +461,13 @@ Každý pořadí obsahuje jeden nebo více nákupy produktu. Tyto informace se z
      CONSTRAINT [PrimaryKey_PurchaseOrderDetail] PRIMARY KEY CLUSTERED 
     ( [OrderID] ASC, [OrderDetailID] ASC ))
 
-Sloupce OrderID v tabulce PurchaseOrderDetail musíte odkázat pořadí z tabulky PurchaseOrder. Následující definice cizího klíče vynucuje toto omezení.
+Sloupce OrderID v tabulce PurchaseOrderDetail musí odkazovat na pořadí z tabulky PurchaseOrder. Následující definice cizího klíče vynucuje toto omezení.
 
     ALTER TABLE [dbo].[PurchaseOrderDetail]  WITH CHECK ADD 
     CONSTRAINT [FK_OrderID_PurchaseOrder] FOREIGN KEY([OrderID])
     REFERENCES [dbo].[PurchaseOrder] ([OrderID])
 
-Aby bylo možné používat parametry s hodnotou tabulky, musí mít jeden typ uživatelem definovaná tabulka pro každou cílovou tabulku.
+Pokud chcete používat parametry table-valued, musí mít jeden typ uživatelem definovaná tabulka pro každou cílovou tabulku.
 
     CREATE TYPE PurchaseOrderTableType AS TABLE 
     ( OrderID INT,
@@ -485,7 +483,7 @@ Aby bylo možné používat parametry s hodnotou tabulky, musí mít jeden typ u
       OrderQty SMALLINT );
     GO
 
-Poté definujte uložené procedury, která přijímá tabulky z těchto typů. Tento postup umožňuje aplikaci místně dávky sadu objednávek a podrobnosti o pořadí v jediném volání. Následující příkaz Transact-SQL poskytuje deklaraci dokončení uložené procedury v tomto příkladu pořadí nákupu.
+Potom definujte uloženou proceduru, která přijímá tabulek z těchto typů. Tento postup umožňuje aplikaci místně batch sadu objednávky a podrobnosti objednávky v jednom volání. Následující příkaz jazyka Transact-SQL poskytuje kompletní uloženou proceduru deklarace pro tento příklad pořadí nákupu.
 
     CREATE PROCEDURE sp_InsertOrdersBatch (
     @orders as PurchaseOrderTableType READONLY,
@@ -528,9 +526,9 @@ Poté definujte uložené procedury, která přijímá tabulky z těchto typů. 
     JOIN @IdentityLink L ON L.SubmittedKey = D.OrderID;
     GO
 
-V tomto příkladu místně definované @IdentityLink ukládá skutečnými hodnotami OrderID z nově vložené řádky tabulky. Tyto identifikátory pořadí se liší od dočasné hodnoty OrderID @orders a @details parametry s hodnotou tabulky. Z tohoto důvodu @IdentityLink pak připojí OrderID hodnoty z tabulky @orders parametr skutečné hodnoty OrderID pro nové řádky v tabulce PurchaseOrder. Po provedení tohoto kroku @IdentityLink tabulky můžete usnadnit vkládání podrobnosti pořadí s skutečné OrderID, který splňuje omezení cizího klíče.
+V tomto příkladu místně definované @IdentityLink tabulka ukládá skutečnými hodnotami OrderID z nově vloženou řádků. Tyto identifikátory pořadí se liší od dočasné OrderID hodnot v @orders a @details parametry s hodnotou tabulky. Z tohoto důvodu @IdentityLink pak připojí OrderID hodnot z tabulky @orders parametr do skutečné hodnoty OrderID pro nové řádky v tabulce PurchaseOrder. Po provedení tohoto kroku @IdentityLink tabulka může usnadnit vkládání OrderDetails s skutečné OrderID, která splňuje omezení cizího klíče.
 
-Tuto uloženou proceduru lze z kódu nebo jiná volání jazyka Transact-SQL. Parametry s hodnotou tabulky části tohoto dokumentu příklad kódu. Následující příkaz Transact-SQL ukazuje způsob volání sp_InsertOrdersBatch.
+Tuto uloženou proceduru lze z kódu nebo z jiných volání příkazů jazyka Transact-SQL. V části parametrů table-valued tohoto dokumentu příklad kódu. Následující příkaz jazyka Transact-SQL ukazuje, jak volat sp_InsertOrdersBatch.
 
     declare @orders as PurchaseOrderTableType
     declare @details as PurchaseOrderDetailTableType
@@ -550,14 +548,14 @@ Tuto uloženou proceduru lze z kódu nebo jiná volání jazyka Transact-SQL. Pa
 
     exec sp_InsertOrdersBatch @orders, @details
 
-Toto řešení umožňuje každé dávky používat sadu OrderID hodnoty, které začínají znakem 1. Tyto hodnoty dočasné OrderID popisu relací v dávce, ale skutečný OrderID hodnoty jsou určeny v době operace insert. Můžete spustit stejné příkazy v předchozím příkladu opakovaně a generovat jedinečný objednávky v databázi. Z tohoto důvodu je vhodné přidat další kód nebo databáze logiku, která brání duplicitní objednávky při použití tohoto dávkování techniku.
+Toto řešení umožňuje každé dávky použít sady hodnot OrderID, které začínají hodnotou 1. Tyto dočasné hodnoty OrderID popisu vztahů v dávce, ale skutečné hodnoty OrderID jsou určeny v době operace insert. Můžete spustit stejný příkaz v předchozím příkladu opakovaně a generovat jedinečný objednávky v databázi. Z tohoto důvodu zvažte možnost přidat další kód nebo databáze logiku, která brání duplicitní objednávky při použití této funkce dávkování technika.
 
-Tento příklad ukazuje, že i složitější databázových operací, jako je například seznam podrobnosti operace, může zpracovat v dávce pomocí parametry s hodnotou tabulky.
+Tento příklad ukazuje, že ještě složitější databázových operací, jako jsou hlavní podrobnosti operace, můžete sjednotit pomocí parametrů table-valued.
 
-### <a name="upsert"></a>UPSERT
-Jiné dávkování scénář zahrnuje současně aktualizaci existujících řádků a vkládání nových řádků. Tato operace se někdy označuje jako "UPSERT" (aktualizace + insert) operaci. Místo samostatné volání k vložení a aktualizace, je nejvhodnější pro tuto úlohu příkazu MERGE. Příkaz MERGE můžete provést i insert a operace v jednom volání aktualizace.
+### <a name="upsert"></a>UPSERTOVAT
+Dávkování jiný scénář zahrnuje současně aktualizaci existující řádky a vkládání nových řádků. Tato operace je někdy označovány jako "UPSERT" (aktualizace + insert) operaci. Místo samostatných volání pro vložení a aktualizace, je nejvhodnější pro tuto úlohu příkazu MERGE. Příkazu MERGE můžete provést i insert a operace v jednom volání aktualizace.
 
-Parametry s hodnotou tabulky můžete použít s příkazem MERGE k provádění aktualizací a vložení. Představte si třeba zjednodušené tabulky zaměstnanců, která obsahuje následující sloupce: EmployeeID, FirstName, LastName, SocialSecurityNumber:
+Parametry Table-valued lze pomocí příkazu MERGE k provádění aktualizací a vložení. Představte si třeba zjednodušené tabulky zaměstnanců, která obsahuje následující sloupce: EmployeeID, FirstName, LastName, SocialSecurityNumber:
 
     CREATE TABLE [dbo].[Employee](
     [EmployeeID] [int] IDENTITY(1,1) NOT NULL,
@@ -567,7 +565,7 @@ Parametry s hodnotou tabulky můžete použít s příkazem MERGE k provádění
      CONSTRAINT [PrimaryKey_Employee] PRIMARY KEY CLUSTERED 
     ([EmployeeID] ASC ))
 
-V tomto příkladu můžete skutečnost, že je SocialSecurityNumber jedinečný ke sloučení více zaměstnanců. Nejprve vytvořte typ uživatelem definovaná tabulka:
+V tomto příkladu můžete použít skutečnost, že je SocialSecurityNumber jedinečný provést SLOUČENÍ více zaměstnanců. Nejprve vytvořte typ uživatelem definovaná tabulka:
 
     CREATE TYPE EmployeeTableType AS TABLE 
     ( Employee_ID INT,
@@ -576,7 +574,7 @@ V tomto příkladu můžete skutečnost, že je SocialSecurityNumber jedinečný
       SocialSecurityNumber NVARCHAR(50) );
     GO
 
-Dále vytvořte uloženou proceduru nebo napsat kód, který používá příkaz MERGE k provádění aktualizace a vložit. Následující příklad používá příkazu MERGE na parametr s hodnotou tabulky @employees, typu EmployeeTableType. Obsah @employees tabulky nejsou zobrazeny zde.
+V dalším kroku vytvořte uloženou proceduru nebo napsat kód, který se používá k provedení aktualizace a vložit příkazu MERGE. Následující příklad pomocí příkazu MERGE na parametr s hodnotou tabulky @employees, typu EmployeeTableType. Obsah @employees tabulky se tady nezobrazují.
 
     MERGE Employee AS target
     USING (SELECT [FirstName], [LastName], [SocialSecurityNumber] FROM @employees) 
@@ -590,28 +588,28 @@ Dále vytvořte uloženou proceduru nebo napsat kód, který používá příkaz
        INSERT ([FirstName], [LastName], [SocialSecurityNumber])
        VALUES (source.[FirstName], source.[LastName], source.[SocialSecurityNumber]);
 
-Další informace najdete v dokumentaci a příklady příkazu MERGE. I když můžete provést stejný pracovní v kroku více uložené volání procedury s oddělené INSERT a operace aktualizace, příkazu MERGE je efektivnější. Kód databáze můžete také vytvořit volání jazyka Transact-SQL, která pomocí příkazu MERGE přímo bez nutnosti dvě volání databáze pro příkaz INSERT a UPDATE.
+Další informace najdete v dokumentaci a příklady příkazu MERGE. I když nejde provést stejnou práci v kroku více uložené volání procedury s samostatné INSERT a operace aktualizace, příkazu MERGE je mnohem efektivnější. Kód databáze můžete také sestavit volání příkazů jazyka Transact-SQL, která pomocí příkazu MERGE přímo bez nutnosti dvě volání databáze pro INSERT a UPDATE.
 
-## <a name="recommendation-summary"></a>Souhrnná doporučení
+## <a name="recommendation-summary"></a>Souhrn doporučení
 Následující seznam obsahuje souhrn dávkování doporučení popsaných v tomto článku:
 
-* Pokud chcete zvýšit výkon a škálovatelnost databáze SQL aplikace pomocí ukládání do vyrovnávací paměti a dávkování.
-* Pochopení kompromisy mezi dávkování nebo ukládání do vyrovnávací paměti a odolnost. Při selhání role riziko ztráty nezpracované dávku důležitých podnikových dat vyváží výkon výhodou dávkování.
-* Pokus zachovat všechna volání do databáze v rámci jednoho datového centra ke snížení latence.
-* Pokud si zvolíte jednu dávkování techniku, parametry s hodnotou tabulky nabízí nejlepší výkon a flexibilitu.
-* Nejrychlejší vložení výkonu postupujte podle následujících obecných pokynů ale otestovat váš scénář:
-  * < 100 řádků pomocí jedné parametrizovaného příkaz INSERT.
+* Můžete zvýšit výkon a škálovatelnost aplikací SQL Database pomocí ukládání do vyrovnávací paměti a dávek.
+* Seznamte se s kompromisy mezi dávkové zpracování a ukládání do vyrovnávací paměti a odolnost proti chybám. Během selhání role riziko ztráty nezpracované dávku důležitých podnikových dat vyváží výkon výhodou dávkování.
+* Pokus zachovat všechna volání do databáze v jednom datacentru snížit latenci.
+* Pokud se rozhodnete jednoho technika dávkování, parametry table-valued nabízí nejlepší výkon a flexibilitu.
+* Nejrychlejší výkon vložit postupujte podle následujících obecných pokynů, ale test váš scénář:
+  * < 100 řádků pomocí jediného parametrizovaného příkazu INSERT.
   * < 1 000 řádků použijte parametry s hodnotou tabulky.
   * Pro > = 1 000 řádků, použijte SqlBulkCopy.
-* Pro aktualizaci a operace odstranění, použijte parametry s hodnotou tabulky s logiky uložené procedury, která určuje správné operaci na každý řádek v tabulce parametru.
+* Pro aktualizace a operace odstranění, použijte parametry table-valued pomocí uložené procedury logiku, která určuje správnou funkci na každý řádek v tabulce parametru.
 * Pokyny pro velikost dávky:
-  * Použijte největší velikosti dávky, které dávají smysl pro vaše aplikace a podnikových požadavků.
-  * Vyrovnávat zvýšení výkonu velkých dávek s rizika dočasné nebo závažné selhání. Co je důsledkem opakování nebo ztrátě dat v dávce? 
-  * Otestujte největší velikost dávky k ověření, že databáze SQL není odmítnout ho.
-  * Vytvořte nastavení konfigurace tohoto ovládacího prvku dávkování, jako je například velikost dávky nebo vyrovnávací paměti časový interval. Tato nastavení poskytují flexibilitu. Dávkování chování v produkčním prostředí můžete změnit bez opětovného nasazení cloudové služby.
-* Vyhněte se paralelní zpracování dávek, které působí na jednotlivé tabulky v jedné databáze. Pokud si zvolíte jedné dávkové rozdělit mezi několik pracovních vláken, spusťte testy můžete určit ideální počet vláken. Po neurčené prahová hodnota další podprocesy bude snížit výkon, a nikoli zvýšit ji.
-* Vezměte v úvahu ukládání do vyrovnávací paměti na velikost a čas jako způsob implementace dávkování pro více scénářů.
+  * Použijte největší velikosti služby batch, které dávají smysl pro vaše aplikace a obchodní požadavky.
+  * Zajistit rovnováhu mezi zvýšení výkonu velkých dávek rizik dočasné nebo katastrofální chyby. Co je důsledkem opakování nebo ke ztrátě dat v dávce? 
+  * Otestujte největší velikost dávky k ověření, že databáze SQL není ho odmítnout.
+  * Vytvořte nastavení konfigurace tohoto ovládacího prvku dávkové zpracování, jako je například velikost dávky nebo vyrovnávací paměti časový interval. Tato nastavení poskytují flexibilitu. Chování dávkového zpracování v produkčním prostředí můžete změnit bez opětovného nasazení cloudové služby.
+* Nepoužívejte paralelní spouštění dávek, které pracují na jedné tabulce v jedné databázi. Pokud budete chtít rozdělit v jedné dávce napříč několika pracovních vláken, spuštění testů, abyste zjistili ideální počet vláken. Po neurčené prahovou hodnotu další vlákna se snížit výkon spíše než ji zvětšete.
+* Zvažte možnost ukládání do vyrovnávací paměti o velikosti a čas jako způsob implementace dávkování pro další scénáře.
 
 ## <a name="next-steps"></a>Další postup
-Tento článek zaměřuje na jak návrhu databáze a kódování techniky související s dávkování může zlepšit výkon aplikace a škálovatelnost. Ale toto je pouze jediný faktor v vaše celková strategie. Další způsoby, jak zvýšit výkon a škálovatelnost, najdete v části [Azure SQL Database – Průvodce výkonem pro izolované databáze](sql-database-performance-guidance.md) a [cenové a výkonové požadavky fondu elastické databáze](sql-database-elastic-pool-guidance.md).
+Tento článek se zaměřuje na způsob návrhu databáze a kódování postupy související s dávkování může zlepšit škálovatelnosti a výkonu aplikace. Ale to je pouze jediný faktor do celkové strategie. Další způsoby, jak vylepšit výkon a škálovatelnost, naleznete v tématu [Průvodce výkonem Azure SQL Database pro izolované databáze](sql-database-performance-guidance.md) a [cenové a výkonové požadavky fondu elastické databáze](sql-database-elastic-pool-guidance.md).
 

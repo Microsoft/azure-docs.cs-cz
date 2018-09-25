@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: 4883791a32a65746a72afb63755ecf608dc840d9
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 01e8b5c518931411ba6e2d75168de6753bf55260
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503821"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971718"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Vytvoření partnerského vztahu virtuálních sítí – různé modely nasazení a předplatná
 
@@ -97,18 +97,17 @@ Tento kurz používá různé účty pro každé předplatné. Pokud používát
 
 ## <a name="cli"></a>Vytvoření partnerského vztahu – rozhraní příkazového řádku Azure
 
-Tento kurz používá různé účty pro každé předplatné. Pokud používáte účet, který má oprávnění k oběma předplatným, můžete použít stejný účet pro všechny kroky, přeskočte kroky pro přihlášení z Azure a odebrat řádky skriptu, které vytvářejí přiřazení rolí uživatele. Nahraďte UserA@azure.com a UserB@azure.com ve všech z následujících skriptů se uživatelská jména, že používáte UserA a UserB. 
+Tento kurz používá různé účty pro každé předplatné. Pokud používáte účet, který má oprávnění k oběma předplatným, můžete použít stejný účet pro všechny kroky, přeskočte kroky pro přihlášení z Azure a odebrat řádky skriptu, které vytvářejí přiřazení rolí uživatele. Nahraďte UserA@azure.com a UserB@azure.com ve všech z následujících skriptů se uživatelská jména, že používáte UserA a UserB. Proveďte následující kroky pomocí Azure classic CLI a Azure CLI. Kroky v Azure Cloud Shell, můžete dokončit právě výběrem **vyzkoušet** tlačítko v některém z následujících kroků, nebo po instalaci [rozhraní příkazového řádku classic](/cli/azure/install-cli-version-1.0.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a [rozhraní příkazového řádku](/cli/azure/install-azure-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a spuštění příkazů v místním počítači.
 
-1. [Nainstalujte](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Azure CLI 1.0, chcete-li vytvořit virtuální síť (klasická).
-2. Otevřete relaci příkazového řádku a přihlaste se k Azure jako UserB s použitím `azure login` příkazu. Účet, který jste přihlášení, musí mít potřebná oprávnění k vytvoření partnerského vztahu virtuálních sítí. Seznam oprávnění najdete v tématu [virtuálních sítí oprávnění pro partnerské vztahy](virtual-network-manage-peering.md#permissions).
-3. Spuštění rozhraní příkazového řádku v režimu správy služby tak, že zadáte `azure config mode asm` příkazu.
-4. Zadejte následující příkaz k vytvoření virtuální sítě (classic):
- 
+1. Pokud používáte Cloud Shell, přejděte ke kroku 2, protože službě Cloud Shell se automaticky přihlásí můžete do Azure. Otevřete relaci příkazového řádku a přihlášení do Azure s využitím `azure login` příkazu.
+2. Spuštění rozhraní příkazového řádku classic v režimu správy služby tak, že zadáte `azure config mode asm` příkazu.
+3. Zadejte následující příkaz rozhraní příkazového řádku classic k vytvoření virtuální sítě (classic):
+
     ```azurecli
     azure network vnet create --vnet myVnetB --address-space 10.1.0.0 --cidr 16 --location "East US"
     ```
-5. Zbývající kroky musí dokončit pomocí skriptu bash skořápce pomocí Azure CLI verze 2.0.4 nebo novější [nainstalované](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json), nebo s použitím Azure Cloud Shell. Služba Azure Cloud Shell je volně dostupné prostředí Bash, které můžete spustit přímo z portálu Azure Portal. Má předinstalované rozhraní Azure CLI, které je nakonfigurované pro použití s vaším účtem. Klikněte na tlačítko **vyzkoušet** tlačítko ve skriptech, které následují, které se otevře Cloud Shell, která jste se zaznamená do svého účtu Azure. Možnosti na spuštěný bash skripty rozhraní příkazového řádku na klientovi Windows, najdete v části [nainstalovat rozhraní příkazového řádku Azure na Windows](/cli/azure/install-azure-cli-windows). 
-6. Zkopírujte následující skript do textového editoru ve vašem počítači. Nahraďte `<SubscriptionB-Id>` svým ID předplatného. Pokud si nejste jisti Id předplatného, zadejte `az account show` příkazu. Hodnota pro **id** ve výstupu je vaše ID předplatného. Zkopírujte upravený skript a vložte ji do relace CLI 2.0, stiskněte klávesu `Enter`. 
+4. Zbývající kroky musí dokončit pomocí prostředí bash pomocí rozhraní příkazového řádku Azure (ne rozhraní příkazového řádku classic).
+5. Zkopírujte následující skript do textového editoru ve vašem počítači. Nahraďte `<SubscriptionB-Id>` svým ID předplatného. Pokud si nejste jisti Id předplatného, zadejte `az account show` příkazu. Hodnota pro **id** ve výstupu je vaše ID předplatného. Zkopírujte upravený skript, vložte ji do relace příkazového řádku a potom stiskněte klávesu `Enter`.
 
     ```azurecli-interactive
     az role assignment create \
@@ -118,8 +117,8 @@ Tento kurz používá různé účty pro každé předplatné. Pokud používát
     ```
 
     Při vytváření virtuální sítě (classic) v kroku 4, Azure vytvoří virtuální sítě *výchozí sítě* skupinu prostředků.
-7. Protokolovat UserB mimo Azure a přihlaste se jako uživatel a v Azure CLI 2.0.
-8. Vytvořte skupinu prostředků a virtuální síť (Resource Manager). Zkopírujte následující skript, vložte ji do relace příkazového řádku a potom stiskněte klávesu `Enter`. 
+6. Protokolovat UserB mimo Azure a přihlaste se jako UserA v rozhraní příkazového řádku.
+7. Vytvořte skupinu prostředků a virtuální síť (Resource Manager). Zkopírujte následující skript, vložte ji do relace příkazového řádku a potom stiskněte klávesu `Enter`.
 
     ```azurecli-interactive
     #!/bin/bash
@@ -153,7 +152,7 @@ Tento kurz používá různé účty pro každé předplatné. Pokud používát
       --scope $vNetAId
     ```
 
-9. Vytvořte virtuální síť vytvoření partnerského vztahu mezi dvěma virtuálními sítěmi vytvořenými prostřednictvím různých modelů nasazení. Zkopírujte následující skript do textového editoru ve vašem počítači. Nahraďte `<SubscriptionB-id>` s ID vašeho předplatného. Pokud si nejste jisti Id předplatného, zadejte `az account show` příkazu. Hodnota pro **id** ve výstupu je vaše ID předplatného. Azure vytvoří virtuální síť (klasická), kterou jste vytvořili v kroku 4 ve skupině prostředků s názvem *výchozí sítě*. Vložte upravený skript v relaci příkazového řádku a potom stiskněte klávesu `Enter`.
+8. Vytvořte virtuální síť vytvoření partnerského vztahu mezi dvěma virtuálními sítěmi vytvořenými prostřednictvím různých modelů nasazení. Zkopírujte následující skript do textového editoru ve vašem počítači. Nahraďte `<SubscriptionB-id>` s ID vašeho předplatného. Pokud si nejste jisti Id předplatného, zadejte `az account show` příkazu. Hodnota pro **id** ve výstupu je vaše ID předplatného. Azure vytvoří virtuální síť (klasická), kterou jste vytvořili v kroku 4 ve skupině prostředků s názvem *výchozí sítě*. Vložte upravený skript v relaci příkazového řádku a potom stiskněte klávesu `Enter`.
 
     ```azurecli-interactive
     # Peer VNet1 to VNet2.
@@ -165,7 +164,7 @@ Tento kurz používá různé účty pro každé předplatné. Pokud používát
       --allow-vnet-access
     ```
 
-10. Po spuštění skriptu zkontrolujte partnerský vztah virtuální sítě (Resource Manager). Zkopírujte následující skript a následně jej vložte do relace prostředí rozhraní příkazového řádku:
+9. Po spuštění skriptu zkontrolujte partnerský vztah virtuální sítě (Resource Manager). Zkopírujte následující skript a následně jej vložte do relace prostředí rozhraní příkazového řádku:
 
     ```azurecli-interactive
     az network vnet peering list \
@@ -177,8 +176,8 @@ Tento kurz používá různé účty pro každé předplatné. Pokud používát
 
     Veškeré prostředky Azure, které vytvoříte v obou virtuálních sítích jsou nyní schopen komunikovat mezi sebou pomocí jejich IP adres. Pokud používáte výchozí rozlišování názvů Azure pro virtuální sítě, prostředky ve virtuálních sítích nejsou překládat názvy mezi virtuálními sítěmi. Pokud chcete překlad názvů přes partnerský vztah virtuální sítě, musíte vytvořit vlastní server DNS. Zjistěte, jak nastavit [překladu IP adresy serveru DNS](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
 
-11. **Volitelné**: když se v tomto kurzu nevztahuje vytváření virtuálních počítačů, můžete vytvořit virtuální počítač v obou virtuálních sítích a připojit z jednoho virtuálního počítače do jiného, a ověřit připojení.
-12. **Volitelné**: Odstraňte prostředky, které vytvoříte v tomto kurzu, dokončete kroky v [odstraňte prostředky](#delete-cli) v tomto článku.
+10. **Volitelné**: když se v tomto kurzu nevztahuje vytváření virtuálních počítačů, můžete vytvořit virtuální počítač v obou virtuálních sítích a připojit z jednoho virtuálního počítače do jiného, a ověřit připojení.
+11. **Volitelné**: Odstraňte prostředky, které vytvoříte v tomto kurzu, dokončete kroky v [odstraňte prostředky](#delete-cli) v tomto článku.
 
 ## <a name="powershell"></a>Vytvoření partnerského vztahu – PowerShell
 
@@ -284,45 +283,45 @@ Po dokončení tohoto kurzu, můžete chtít odstranit prostředky, které jste 
 
 ### <a name="delete-cli"></a>Rozhraní příkazového řádku Azure
 
-1. Přihlaste se k Azure pomocí Azure CLI 2.0 odstranit virtuální síť (Resource Manager) pomocí následujícího příkazu:
+1. Přihlaste se k Azure pomocí rozhraní příkazového řádku se odstranit virtuální síť (Resource Manager) pomocí následujícího příkazu:
 
-    ```azurecli-interactive
-    az group delete --name myResourceGroupA --yes
-    ```
+   ```azurecli-interactive
+   az group delete --name myResourceGroupA --yes
+   ```
 
-2. Přihlaste se k Azure pomocí rozhraní příkazového řádku Azure CLI 1.0 odstranit virtuální síť (classic) pomocí následujících příkazů:
+2. Přihlaste se k Azure pomocí rozhraní příkazového řádku classic odstranit virtuální síť (classic) pomocí následujících příkazů:
 
-    ```azurecli
-    azure config mode asm 
+   ```azurecli-interactive
+   azure config mode asm
 
-    azure network vnet delete --vnet myVnetB --quiet
-    ```
+   azure network vnet delete --vnet myVnetB --quiet
+   ```
 
 ### <a name="delete-powershell"></a>PowerShell
 
 1. Příkazovém řádku prostředí PowerShell zadejte následující příkaz se odstranit virtuální síť (Resource Manager):
 
-    ```powershell
-    Remove-AzureRmResourceGroup -Name myResourceGroupA -Force
-    ```
+   ```powershell
+   Remove-AzureRmResourceGroup -Name myResourceGroupA -Force
+   ```
 
 2. Pokud chcete odstranit virtuální síť (classic) pomocí prostředí PowerShell, je třeba upravit existující konfigurační soubor sítě. Zjistěte, jak [export, aktualizovat a import konfiguračních souborech sítě](virtual-networks-using-network-configuration-file.md). Odeberte virtuální sítě v tomto kurzu používá následující element VirtualNetworkSite:
 
-    ```xml
-    <VirtualNetworkSite name="myVnetB" Location="East US">
-      <AddressSpace>
-        <AddressPrefix>10.1.0.0/16</AddressPrefix>
-      </AddressSpace>
-      <Subnets>
-        <Subnet name="default">
-          <AddressPrefix>10.1.0.0/24</AddressPrefix>
-        </Subnet>
-      </Subnets>
-    </VirtualNetworkSite>
-    ```
+   ```xml
+   <VirtualNetworkSite name="myVnetB" Location="East US">
+     <AddressSpace>
+       <AddressPrefix>10.1.0.0/16</AddressPrefix>
+     </AddressSpace>
+     <Subnets>
+       <Subnet name="default">
+         <AddressPrefix>10.1.0.0/24</AddressPrefix>
+       </Subnet>
+     </Subnets>
+   </VirtualNetworkSite>
+   ```
 
-    > [!WARNING]
-    > Import souboru konfigurace sítě změněné může způsobit změny do existující virtuální sítě (classic) v rámci vašeho předplatného. Ujistěte se, jenom odebrat předchozí virtuální sítě a změníte nebo z předplatného odebrat ostatní existující virtuální sítě. 
+   > [!WARNING]
+   > Import souboru konfigurace sítě změněné může způsobit změny do existující virtuální sítě (classic) v rámci vašeho předplatného. Ujistěte se, jenom odebrat předchozí virtuální sítě a změníte nebo z předplatného odebrat ostatní existující virtuální sítě. 
 
 ## <a name="next-steps"></a>Další postup
 

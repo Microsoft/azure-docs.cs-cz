@@ -10,12 +10,13 @@ ms.component: translator-speech
 ms.topic: conceptual
 ms.date: 3/5/2018
 ms.author: v-jansko
-ms.openlocfilehash: 216a3caf9b4e6f3f512ba13361de9f3933f83b13
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3c0d0e17026dc0c970138c30f83dc9eb98db4228
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985141"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950178"
 ---
 # <a name="languages-supported-by-the-translator-speech-api"></a>Jazyky podporované rozhraní Translator Speech API
 Pro překlad řeči se podporují tyto jazyky. Pokud oba jazyky jsou podporovány pro překlad řeči, převod řeči na řeč a převod řeči na text je k dispozici. Pokud cílový jazyk není podporován pro překlad řeči, je k dispozici pouze převod řeči na text překladu. 

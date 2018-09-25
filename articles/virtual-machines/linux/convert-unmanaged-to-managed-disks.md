@@ -1,6 +1,6 @@
 ---
-title: Převeďte virtuální počítač s Linuxem v Azure z nespravovaných disků na spravované disky - disky spravované Azure | Microsoft Docs
-description: Jak převést virtuální počítač s Linuxem z disků nespravované na spravované disky pomocí Azure CLI 2.0 v modelu nasazení Resource Manager
+title: Převést virtuální počítač s Linuxem v Azure z nespravovaných disků na managed disks – Azure Managed Disks | Dokumentace Microsoftu
+description: Postup převedení virtuálního počítače s Linuxem z nespravovaných disků na managed disks pomocí příkazového řádku Azure v modelu nasazení Resource Manager
 services: virtual-machines-linux
 documentationcenter: ''
 author: roygara
@@ -15,53 +15,53 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: rogarana
-ms.openlocfilehash: a3a2bbc15dd94ef09755d34a20e69c97854416b3
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 62ac70134c1bdf9d178d59723ff73561049a4bbf
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30289256"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993066"
 ---
-# <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Převeďte virtuální počítač s Linuxem z disků nespravované na spravované disky
+# <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Převod virtuálního počítače s Linuxem z nespravovaných disků na managed disks
 
-Pokud máte existující virtuální počítače s Linuxem (VM) používající nespravované disky, můžete převést virtuální počítače používat [Azure spravované disky](../linux/managed-disks-overview.md). Tento proces převede disk operačního systému a všechny připojené datových disků.
+Pokud máte existující virtuální počítače s Linuxem (VM), které používají nespravované disky, můžete převést virtuální počítače používat [Azure Managed Disks](../linux/managed-disks-overview.md). Tento proces převede disk s operačním systémem i všechny připojené datové disky.
 
-Tento článek ukazuje, jak převést virtuální počítače pomocí rozhraní příkazového řádku Azure. Pokud je potřeba nainstalovat nebo upgradovat najdete v tématu [nainstalovat Azure CLI 2.0](/cli/azure/install-azure-cli). 
+V tomto článku se dozvíte, jak převést virtuální počítače pomocí rozhraní příkazového řádku Azure. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI](/cli/azure/install-azure-cli). 
 
 ## <a name="before-you-begin"></a>Než začnete
-* Zkontrolujte [– nejčastější dotazy o migraci disků spravovaných](faq-for-disks.md#migrate-to-managed-disks).
+* Kontrola [nejčastější dotazy týkající se migrace na spravované disky](faq-for-disks.md#migrate-to-managed-disks).
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
 
 
-## <a name="convert-single-instance-vms"></a>Převést virtuální počítače jednou instancí
-Tato část popisuje jak převést virtuální počítače Azure jednou instancí z nespravovaných disků na spravované disky. (Pokud jsou vaše virtuální počítače v nastavení dostupnosti, najdete v další části.) Tento proces můžete převést virtuální počítače z disků disky na disky premium spravované nebo z standard (HDD) nespravované premium (SSD) nespravované na spravované standardní disky.
+## <a name="convert-single-instance-vms"></a>Převést virtuální počítače s jednou instancí
+Tato část popisuje, jak převést virtuální počítače Azure s jednou instancí z nespravovaných disků na managed disks. (Pokud jsou vaše virtuální počítače ve skupině dostupnosti, najdete v další části.) Tento postup můžete použít k převodu virtuálních počítačů z úrovně premium (SSD) nespravované disky na spravované disky úrovně premium, nebo z úrovně standard (HDD), nespravované disky na spravované disky úrovně standard.
 
-1. Zrušit přidělení virtuálního počítače pomocí [az OM deallocate](/cli/azure/vm#az_vm_deallocate). Následující příklad zruší přidělení virtuálního počítače s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`:
+1. Uvolněte virtuální počítač s použitím [az vm deallocate](/cli/azure/vm#az_vm_deallocate). V následujícím příkladu se uvolní virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`:
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
-2. Převeďte virtuální počítač na spravované disky pomocí [převést virtuální počítač az](/cli/azure/vm#az_vm_convert). Následující proces převede virtuální počítač s názvem `myVM`, včetně disku operačního systému a všechny datové disky:
+2. Převod virtuálního počítače na managed disks pomocí [az vm, převést](/cli/azure/vm#az_vm_convert). Následující proces převede virtuální počítač s názvem `myVM`, včetně disk s operačním systémem a všechny datové disky:
 
     ```azurecli
     az vm convert --resource-group myResourceGroup --name myVM
     ```
 
-3. Spusťte virtuální počítač po převodu na spravované disky pomocí [spuštění virtuálního počítače az](/cli/azure/vm#az_vm_start). Následující příklad spustí virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`.
+3. Spusťte virtuální počítač po převodu na spravované disky pomocí [az vm start](/cli/azure/vm#az_vm_start). Následující příklad spustí virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`.
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
     ```
 
-## <a name="convert-vms-in-an-availability-set"></a>Převést virtuální počítače v nastavení dostupnosti
+## <a name="convert-vms-in-an-availability-set"></a>Převod virtuálních počítačů ve skupině dostupnosti
 
-Pokud virtuální počítače, které chcete převést na spravované disky jsou v nastavení dostupnosti, je nutné nejprve převést skupinu dostupnosti do skupiny spravované dostupnosti.
+Pokud virtuální počítače, které chcete převést na spravované disky jsou ve skupině dostupnosti, musíte nejprve převést dostupnosti na spravované skupině dostupnosti.
 
-Všechny virtuální počítače v sadě dostupnosti musí být navrácena předtím, než převedete sadu dostupnosti. Naplánujte převeďte všechny virtuální počítače na spravovaného disky po samotné sadu dostupnosti byl převeden na sadu spravovaných dostupnosti. Potom spusťte všechny virtuální počítače a pokračovat normální.
+Všechny virtuální počítače ve skupině dostupnosti musí být napřed zrušit přidělení převést skupinu dostupnosti. Plán pro převod všech virtuálních počítačů na managed disks po samotné skupinu dostupnosti se převedly na spravované skupině dostupnosti. Potom spusťte všechny virtuální počítače a pokračovat v činnosti, jako obvykle.
 
-1. Zobrazí seznam všech virtuálních počítačů ve skupině dostupnosti, nastavit pomocí [seznamu skupinu dostupnosti virtuálních počítačů az](/cli/azure/vm/availability-set#az_vm_availability_set_list). Následující příklad vypíše všechny virtuální počítače ve skupině s názvem dostupnosti `myAvailabilitySet` ve skupině prostředků s názvem `myResourceGroup`:
+1. Seznam všech virtuálních počítačů ve skupině dostupnosti s využitím [az vm skupinu dostupnosti seznamu](/cli/azure/vm/availability-set#az_vm_availability_set_list). Následující příklad zobrazí seznam všech virtuálních počítačů ve skupině dostupnosti s názvem `myAvailabilitySet` ve skupině prostředků s názvem `myResourceGroup`:
 
     ```azurecli
     az vm availability-set show \
@@ -71,13 +71,13 @@ Všechny virtuální počítače v sadě dostupnosti musí být navrácena před
         --output table
     ```
 
-2. Deallocate všechny virtuální počítače pomocí [az OM deallocate](/cli/azure/vm#az_vm_deallocate). Následující příklad zruší přidělení virtuálního počítače s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`:
+2. Uvolnit všechny virtuální počítače s použitím [az vm deallocate](/cli/azure/vm#az_vm_deallocate). V následujícím příkladu se uvolní virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`:
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
-3. Převést skupinu dostupnosti pomocí [převést skupinu dostupnosti virtuálních počítačů az](/cli/azure/vm/availability-set#az_vm_availability_set_convert). Následující příklad převede skupinu dostupnosti s názvem `myAvailabilitySet` ve skupině prostředků s názvem `myResourceGroup`:
+3. Převést skupině dostupnosti s využitím [az vm skupinu dostupnosti převést](/cli/azure/vm/availability-set#az_vm_availability_set_convert). Následující příklad převádí skupinu dostupnosti `myAvailabilitySet` ve skupině prostředků s názvem `myResourceGroup`:
 
     ```azurecli
     az vm availability-set convert \
@@ -85,17 +85,17 @@ Všechny virtuální počítače v sadě dostupnosti musí být navrácena před
         --name myAvailabilitySet
     ```
 
-4. Převeďte všechny virtuální počítače na spravovaného disky pomocí [převést virtuální počítač az](/cli/azure/vm#az_vm_convert). Následující proces převede virtuální počítač s názvem `myVM`, včetně disku operačního systému a všechny datové disky:
+4. Převést všechny virtuální počítače na managed disks pomocí [az vm, převést](/cli/azure/vm#az_vm_convert). Následující proces převede virtuální počítač s názvem `myVM`, včetně disk s operačním systémem a všechny datové disky:
 
     ```azurecli
     az vm convert --resource-group myResourceGroup --name myVM
     ```
 
-5. Spusťte všechny virtuální počítače po převodu na spravované disky pomocí [spuštění virtuálního počítače az](/cli/azure/vm#az_vm_start). Následující příklad spustí virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`:
+5. Spustit všechny virtuální počítače po převodu na spravované disky s použitím [az vm start](/cli/azure/vm#az_vm_start). Následující příklad spustí virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`:
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
     ```
 
 ## <a name="next-steps"></a>Další postup
-Další informace o možnostech úložiště najdete v tématu [přehled Azure spravované disky](../windows/managed-disks-overview.md).
+Další informace o možnostech úložiště najdete v tématu [Přehled služby Azure Managed Disks](../windows/managed-disks-overview.md).

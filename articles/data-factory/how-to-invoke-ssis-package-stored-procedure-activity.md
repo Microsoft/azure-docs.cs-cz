@@ -1,6 +1,6 @@
 ---
-title: Spusťte balíček SSIS s aktivity uložené procedury - Azure | Microsoft Docs
-description: Tento článek popisuje způsob spouštění balíčku integrační služby SSIS (SQL Server) v kanál služby Azure Data Factory pomocí aktivity uložené procedury.
+title: Spouštění balíčků služby SSIS pomocí aktivity uložené procedury – Azure | Dokumentace Microsoftu
+description: Tento článek popisuje, jak spustit balíček SQL Server Integration Services (SSIS) v kanálu Azure Data Factory pomocí aktivity uložených procedur.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,40 +13,40 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 42abb5fdaf05424d5f39ecf4a2c88afcefd17312
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 98a833667aa4073e05b94a62a3e3aea4355e8fb0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37084735"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958959"
 ---
-# <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>Spusťte balíček SSIS s aktivity uložené procedury v Azure Data Factory
-Tento článek popisuje způsob spouštění balíčku služby SSIS v kanál služby Azure Data Factory pomocí aktivity uložené procedury. 
+# <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>Spouštění balíčků služby SSIS pomocí aktivity uložené procedury ve službě Azure Data Factory
+Tento článek popisuje, jak spustit balíčku SSIS pomocí aktivity uložených procedur v kanálu Azure Data Factory. 
 
 ## <a name="prerequisites"></a>Požadavky
 
 ### <a name="azure-sql-database"></a>Azure SQL Database 
-Návod v tomto článku používá databázi Azure SQL, který je hostitelem služby SSIS katalogu. Můžete také použít Azure spravované Instance SQL (Preview).
+Názorný postup v tomto článku se používá Azure SQL database, který hostuje katalog služby SSIS. Můžete také použít Azure SQL Database Managed Instance.
 
 ## <a name="create-an-azure-ssis-integration-runtime"></a>Vytvoření prostředí Azure-SSIS Integration Runtime
-Vytvoření modulu runtime integrace Azure SSIS, pokud nemáte dodržením podrobných pokynů v [kurz: balíčky nasazení SSIS](tutorial-create-azure-ssis-runtime-portal.md).
+Vytvořit prostředí Azure-SSIS integration runtime, pokud nemáte podle podrobných pokynů v [kurz: balíčků služby SSIS nasazovat](tutorial-create-azure-ssis-runtime-portal.md).
 
-## <a name="data-factory-ui-azure-portal"></a>Uživatelské rozhraní objektu pro vytváření dat (portál Azure)
-V této části použijte uživatelské rozhraní objektu pro vytváření dat vytvořit objekt pro vytváření dat kanál s aktivitou uložené procedury, která volá balíčku služby SSIS.
+## <a name="data-factory-ui-azure-portal"></a>Uživatelské rozhraní služby Data Factory (portál Azure portal)
+V této části použijete uživatelské rozhraní služby Data Factory vytvoříte kanál služby Data Factory s aktivitou uložené procedury, která volá balíčku SSIS.
 
 ### <a name="create-a-data-factory"></a>Vytvoření datové továrny
-Prvním krokem je pro vytváření dat pomocí portálu Azure. 
+Prvním krokem je vytvoření datové továrny pomocí webu Azure portal. 
 
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
 2. Přejděte na [Azure Portal](https://portal.azure.com). 
 3. V nabídce vlevo klikněte na **Nový**, klikněte na **Data + analýzy** a pak na **Data Factory**. 
    
-   ![Nový -> Objekt pro vytváření dat](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory-menu.png)
+   ![Nový -> Datová továrna](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory-menu.png)
 2. Na stránce **Nová datová továrna** jako **název** zadejte **ADFTutorialDataFactory**. 
       
      ![Stránka Nová datová továrna](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory.png)
  
-   Název objektu pro vytváření dat Azure musí být **globálně jedinečný**. Pokud se zobrazí následující chyba pole názvu, změňte název datové továrny (například na vaše_jméno_ADFTutorialDataFactory). Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
+   Název datové továrny Azure musí být **globálně jedinečný**. Pokud se zobrazí následující chyba pole názvu, změňte název datové továrny (například na vaše_jméno_ADFTutorialDataFactory). Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
   
      ![Název není dostupný – chyba](./media/how-to-invoke-ssis-package-stored-procedure-activity/name-not-available-error.png)
 3. Vyberte své **předplatné** Azure, ve kterém chcete vytvořit datovou továrnu. 
@@ -56,8 +56,8 @@ Prvním krokem je pro vytváření dat pomocí portálu Azure.
       - Vyberte **Vytvořit novou** a zadejte název skupiny prostředků.   
          
     Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
-4. Vyberte **V2** pro **verze**.
-5. Vyberte **umístění** pro objekt pro vytváření dat. V rozevíracím seznamu se zobrazí pouze umístění podporovaná službou Data Factory. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou můžou být v jiných umístěních.
+4. Jako **verzi** vyberte **V2**.
+5. Vyberte **umístění** pro datovou továrnu. V rozevíracím seznamu se zobrazí pouze umístění podporovaná službou Data Factory. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou můžou být v jiných umístěních.
 6. Zaškrtněte **Připnout na řídicí panel**.     
 7. Klikněte na možnost **Vytvořit**.
 8. Na řídicím panelu vidíte následující dlaždice se statusem: **Nasazování datové továrny**. 
@@ -65,91 +65,91 @@ Prvním krokem je pro vytváření dat pomocí portálu Azure.
     ![nasazování dlaždice datové továrny](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
 9. Po vytvoření se zobrazí stránka **Datová továrna**, jak je znázorněno na obrázku.
    
-    ![Domovská stránka objektu pro vytváření dat](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
+    ![Domovská stránka datové továrny](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
 10. Kliknutím na dlaždici **Vytvořit a monitorovat** otevřete na samostatné kartě aplikaci uživatelského rozhraní služby Azure Data Factory. 
 
 ### <a name="create-a-pipeline-with-stored-procedure-activity"></a>Vytvoření kanálu s aktivitou uložené procedury
-V tomto kroku použijete rozhraní Data Factory vytvořit kanál. Přidání aktivity uložené procedury do kanálu a nakonfigurovat jej pro spuštění balíčku služby SSIS pomocí sp_executesql uložené procedury. 
+V tomto kroku použijete uživatelské rozhraní služby Data Factory vytvoříte kanál. Přidat aktivitu uložené procedury do kanálu a nakonfigurovat jej pro spuštění balíčku služby SSIS pomocí sp_executesql uložené procedury. 
 
-1. Na stránku Začínáme, klikněte na **vytvořit kanál**: 
+1. Na stránce Začínáme, klikněte na **vytvořit kanál**: 
 
     ![Stránka Začínáme](./media/how-to-invoke-ssis-package-stored-procedure-activity/get-started-page.png)
-2. V **aktivity** sada nástrojů, rozbalte položku **Obecné**a přetáhněte jej **uloženou proceduru** aktivity na plochu návrháře kanálu. 
+2. V **aktivity** sady nástrojů, rozbalte **Obecné**a přetáhněte **uložená procedura** aktivity na plochu návrháře kanálu. 
 
-    ![Aktivita uložené procedury a přetažení](./media/how-to-invoke-ssis-package-stored-procedure-activity/drag-drop-sproc-activity.png)
-3. V okně vlastnosti aktivity uložené procedury přepnout **účet SQL** a klikněte na **+ nový**. Vytvoříte připojení k databázi Azure SQL, který je hostitelem katalogu služby SSIS (SSIDB databáze). 
+    ![Aktivita uložená procedura přetažení myší](./media/how-to-invoke-ssis-package-stored-procedure-activity/drag-drop-sproc-activity.png)
+3. V okně vlastnosti aktivity uložených procedur, přepněte **účet SQL** kartu a klikněte na tlačítko **+ nová**. Vytvoření připojení k databázi Azure SQL, který hostuje katalog služby SSIS (databázi SSIDB). 
    
     ![Tlačítko Nová propojená služba](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-linked-service-button.png)
 4. V okně **Nová propojená služba** proveďte následující kroky: 
 
-    1. Vyberte **databáze Azure SQL** pro **typu**.
-    2. Vyberte **výchozí** Runtime integrace Azure pro připojení k databázi SQL Azure, který je hostitelem `SSISDB` databáze.
+    1. Vyberte **Azure SQL Database** pro **typ**.
+    2. Vyberte **výchozí** prostředí Azure Integration Runtime připojit ke službě Azure SQL Database, který je hostitelem `SSISDB` databáze.
     3. Vyberte databázi SQL Azure, který je hostitelem databáze SSISDB pro **název serveru** pole.
-    4. Vyberte **SSISDB** pro **název databáze**.
+    4. Vyberte **SSISDB** pro **název_databáze**.
     5. Pro **uživatelské jméno**, zadejte jméno uživatele, který má přístup k databázi.
     6. Pro **heslo**, zadejte heslo uživatele. 
-    7. Otestujte připojení k databázi kliknutím **testovací připojení** tlačítko.
-    8. Kliknutím na Uložit propojené služby **Uložit** tlačítko. 
+    7. Otestujte připojení k databázi kliknutím **Test připojení** tlačítko.
+    8. Propojenou službu uložit kliknutím **Uložit** tlačítko. 
 
         ![Propojená služba Azure SQL Database](./media/how-to-invoke-ssis-package-stored-procedure-activity/azure-sql-database-linked-service-settings.png)
-5. V okně vlastností přepnout **uloženou proceduru** kartě z **účet SQL** kartě a proveďte následující kroky: 
+5. V okně Vlastnosti přepněte **uložená procedura** karty **účet SQL** kartu, a proveďte následující kroky: 
 
     1. Vyberte **Upravit**. 
     2. Pro **název uložené procedury** pole, zadejte `sp_executesql`. 
-    3. Klikněte na tlačítko **+ nový** v **uložené procedury parametry** části. 
-    4. Pro **název** parametru, zadejte **příkazu Insert**. 
-    5. Pro **typ** parametru, zadejte **řetězec**. 
-    6. Pro **hodnota** parametru, zadejte následujícího dotazu SQL:
+    3. Klikněte na tlačítko **+ nová** v **parametry uložené procedury** oddílu. 
+    4. Pro **název** parametru zadejte **příkazu Insert**. 
+    5. Pro **typ** parametru zadejte **řetězec**. 
+    6. Pro **hodnotu** parametru, zadejte následující dotaz SQL:
 
-        V příkazu jazyka SQL, zadejte správné hodnoty pro **název_složky**, **název_projektu**, a **název_balíčku** parametry. 
+        V dotazu SQL, zadejte správné hodnoty **název_složky**, **project_name**, a **název_balíčku** parametry. 
 
         ```sql
         DECLARE @return_value INT, @exe_id BIGINT, @err_msg NVARCHAR(150)    EXEC @return_value=[SSISDB].[catalog].[create_execution] @folder_name=N'<FOLDER name in SSIS Catalog>', @project_name=N'<PROJECT name in SSIS Catalog>', @package_name=N'<PACKAGE name>.dtsx', @use32bitruntime=0, @runinscaleout=1, @useanyworker=1, @execution_id=@exe_id OUTPUT    EXEC [SSISDB].[catalog].[set_execution_parameter_value] @exe_id, @object_type=50, @parameter_name=N'SYNCHRONIZED', @parameter_value=1    EXEC [SSISDB].[catalog].[start_execution] @execution_id=@exe_id, @retry_count=0    IF(SELECT [status] FROM [SSISDB].[catalog].[executions] WHERE execution_id=@exe_id)<>7 BEGIN SET @err_msg=N'Your package execution did not succeed for execution ID: ' + CAST(@exe_id AS NVARCHAR(20)) RAISERROR(@err_msg,15,1) END
         ```
 
         ![Propojená služba Azure SQL Database](./media/how-to-invoke-ssis-package-stored-procedure-activity/stored-procedure-settings.png)
-6. Chcete-li ověřit konfiguraci kanálu, klikněte na tlačítko **ověřením** na panelu nástrojů. Pokud chcete **Sestavu ověření kanálu** zavřít, klikněte na **>>**.
+6. Chcete-li ověřit konfiguraci kanálu, klikněte na tlačítko **ověřit** na panelu nástrojů. Pokud chcete **Sestavu ověření kanálu** zavřít, klikněte na **>>**.
 
     ![Ověření kanálu](./media/how-to-invoke-ssis-package-stored-procedure-activity/validate-pipeline.png)
-7. Publikování kanálu pro vytváření dat kliknutím **publikovat všechny** tlačítko. 
+7. Publikování kanálu služby Data Factory kliknutím **Publikovat vše** tlačítko. 
 
     ![Publikování](./media/how-to-invoke-ssis-package-stored-procedure-activity/publish-all-button.png)    
 
 ### <a name="run-and-monitor-the-pipeline"></a>Spuštění a monitorování kanálu
-V této části se aktivuje spuštění kanálu a jeho sledování. 
+V této části se aktivuje spuštění kanálu a potom monitorovat. 
 
-1. Chcete-li aktivovat kanálu spustit, klikněte na tlačítko **aktivační událost** na panelu nástrojů a klikněte na tlačítko **nyní spustit**. 
+1. Aktivace spuštění kanálu, klikněte na tlačítko **aktivační událost** na panelu nástrojů a klikněte na tlačítko **aktivovat**. 
 
     ![Aktivovat](media/how-to-invoke-ssis-package-stored-procedure-activity/trigger-now.png)
 
 2. V okně **Spuštění kanálu** vyberte **Dokončit**. 
-3. Vlevo přepněte na kartu **Monitorování**. Zobrazí kanálu spustit a její stav se společně s dalšími informacemi (například čas spuštění spuštění). Pokud chcete zobrazení aktualizovat, klikněte na **Aktualizovat**.
+3. Vlevo přepněte na kartu **Monitorování**. Se zobrazí spuštění kanálu a jeho stav spolu s dalšími informacemi (jako je čas začátku spuštění). Pokud chcete zobrazení aktualizovat, klikněte na **Aktualizovat**.
 
     ![Spuštění kanálu](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)
 
-3. Klikněte na odkaz **Zobrazit spuštění aktivit** ve sloupci **Akce**. Zobrazí jenom jedna aktivita spustit, protože kanál obsahuje pouze jednu aktivitu (aktivita uložené procedury).
+3. Klikněte na odkaz **Zobrazit spuštění aktivit** ve sloupci **Akce**. Zobrazí se pouze jednu aktivitu spustit, protože tento kanál obsahuje pouze jednu aktivitu (aktivita uložené procedury).
 
     ![Spuštění aktivit](./media/how-to-invoke-ssis-package-stored-procedure-activity/activity-runs.png)
 
-4. Můžete spustit následující **dotazu** proti SSISDB databáze serveru Azure SQL ověřit, jestli balíček provést. 
+4. Spuštěním následujícího **dotazu** proti databáze SSISDB databáze na serveru služby Azure SQL a ověřte, že balíček provedeny. 
 
     ```sql
     select * from catalog.executions
     ```
 
-    ![Ověření spuštění balíčku](./media/how-to-invoke-ssis-package-stored-procedure-activity/verify-package-executions.png)
+    ![Ověřte spuštění balíčku](./media/how-to-invoke-ssis-package-stored-procedure-activity/verify-package-executions.png)
 
 
 > [!NOTE]
-> Můžete také vytvořit naplánované aktivační událost pro svůj kanál tak, aby kanál spouští podle plánu (hodinový, denní, atd.). Příklad, naleznete v části [vytvořit objekt pro vytváření dat – uživatelské rozhraní objektu pro vytváření dat](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule).
+> Můžete také vytvořit naplánovanou aktivační událost pro svůj kanál tak, aby kanál se spouští podle plánu (každou hodinu, každý den atd.). Příklad najdete v tématu [vytvoření datové továrny – uživatelské rozhraní služby Data Factory](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule).
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-V této části použijte prostředí Azure PowerShell k vytvoření objektu pro vytváření dat kanál s aktivitou uložené procedury, která volá balíčku služby SSIS. 
+V této části použijete Azure PowerShell k vytvoření kanálu Data Factory s aktivitou uložené procedury, která volá balíčku SSIS. 
 
 Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/install-azurerm-ps). 
 
 ### <a name="create-a-data-factory"></a>Vytvoření datové továrny
-Můžete buď použijte stejné data factory, který má IR Azure SSIS nebo vytvoření samostatné data factory. Následující postup popisuje kroky k vytvoření služby data factory. Vytvoření kanálu s aktivitou uložené procedury v této datové továrně. Aktivita uložené procedury spustí uloženou proceduru v databázi SSISDB ke spuštění vašeho balíčku služby SSIS. 
+Můžete použít stejné datové továrny, který má Azure-SSIS IR, nebo vytvořit samostatné datové továrny. Následující postup předvádí kroky k vytvoření datové továrny. Vytvoření kanálu s aktivitou uložené procedury v této datové továrně. Aktivity uložených procedur spouští uloženou proceduru v databázi SSISDB pro spuštění vašeho balíčku služby SSIS. 
 
 1. Definujte proměnnou pro název skupiny prostředků, kterou použijete později v příkazech PowerShellu. Zkopírujte do PowerShellu následující text příkazu, zadejte název [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) v uvozovkách a pak příkaz spusťte. Například: `"adfrg"`. 
    
@@ -187,15 +187,15 @@ Je třeba počítat s následujícím:
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
     ```
 * Pro vytvoření instancí Data Factory musí být uživatelský účet, který použijete pro přihlášení k Azure, členem rolí **přispěvatel** nebo **vlastník** nebo **správcem** předplatného Azure.
-* Seznam oblastí Azure, ve kterých je aktuálně dostupné pro vytváření dat, vyberte oblasti, které vás zajímají na následující stránce a potom rozbalte **Analytics** najít **Data Factory**: [ Produkty podle oblasti](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+* Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:** [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>Vytvoření propojené služby Azure SQL Database
-Vytvoření propojené služby propojení Azure SQL database, který je hostitelem služby SSIS katalogu datovou továrnu. Objekt pro vytváření dat používá informace v rámci této propojené služby pro připojení k databázi SSISDB a spustí uloženou proceduru spustit balíčku služby SSIS. 
+Vytvořte propojenou službu, která propojí vaši databázi Azure SQL, který hostuje katalog služby SSIS se svou datovou továrnou. Data Factory používá pro připojení k databázi SSISDB informace v této propojené službě a spouští uloženou proceduru pro spuštění balíčku SSIS. 
 
-1. Vytvořte soubor JSON s názvem **AzureSqlDatabaseLinkedService.json** v **C:\ADF\RunSSISPackage** složku s následujícím obsahem: 
+1. Vytvořte soubor JSON s názvem **AzureSqlDatabaseLinkedService.json** v **C:\ADF\RunSSISPackage** složka s následujícím obsahem: 
 
     > [!IMPORTANT]
-    > Nahraďte &lt;servername&gt;, &lt;uživatelské jméno&gt;, a &lt;heslo&gt; s hodnotami vaší databázi SQL Azure před uložením souboru.
+    > Nahraďte &lt;servername&gt;, &lt;uživatelské jméno&gt;, a &lt;heslo&gt; hodnotami pro Azure SQL Database před uložením tohoto souboru.
 
     ```json
     {
@@ -212,7 +212,7 @@ Vytvoření propojené služby propojení Azure SQL database, který je hostitel
     }
     ```
 
-2. V **prostředí Azure PowerShell**, přepnout **C:\ADF\RunSSISPackage** složky.
+2. V **prostředí Azure PowerShell**, přepněte **C:\ADF\RunSSISPackage** složky.
 
 3. Spuštěním rutiny **Set-AzureRmDataFactoryV2LinkedService** vytvořte propojenou službu **AzureSqlDatabaseLinkedService**. 
 
@@ -221,12 +221,12 @@ Vytvoření propojené služby propojení Azure SQL database, který je hostitel
     ```
 
 ### <a name="create-a-pipeline-with-stored-procedure-activity"></a>Vytvoření kanálu s aktivitou uložené procedury 
-V tomto kroku vytvoříte kanál s aktivitou uložené procedury. Aktivity vyvolá sp_executesql uložený postup spuštění vašeho balíčku služby SSIS. 
+V tomto kroku vytvoříte kanál s aktivitou uložené procedury. Aktivita vyvolá sp_executesql uložené procedury pro spuštění vašeho balíčku služby SSIS. 
 
-1. Vytvořte soubor JSON s názvem **RunSSISPackagePipeline.json** v **C:\ADF\RunSSISPackage** složku s následujícím obsahem:
+1. Vytvořte soubor JSON s názvem **RunSSISPackagePipeline.json** v **C:\ADF\RunSSISPackage** složka s následujícím obsahem:
 
     > [!IMPORTANT]
-    > Nahraďte &lt;název složky&gt;, &lt;název projektu&gt;, &lt;název balíčku&gt; s názvy složek, projekt a balíčku v katalogu služby SSIS před uložením souboru. 
+    > Nahraďte &lt;název složky&gt;, &lt;název projektu&gt;, &lt;název balíčku&gt; složky, projektu a balíčku v katalogu služby SSIS před uložením tohoto souboru. 
 
     ```json
     {
@@ -255,13 +255,13 @@ V tomto kroku vytvoříte kanál s aktivitou uložené procedury. Aktivity vyvol
     }
     ```
 
-2. K vytvoření kanálu: **RunSSISPackagePipeline**spusťte **Set-AzureRmDataFactoryV2Pipeline** rutiny.
+2. Chcete-li vytvořit kanál: **RunSSISPackagePipeline**, spusťte **Set-AzureRmDataFactoryV2Pipeline** rutiny.
 
     ```powershell
     $DFPipeLine = Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -Name "RunSSISPackagePipeline" -DefinitionFile ".\RunSSISPackagePipeline.json"
     ```
 
-    Zde je ukázkový výstup:
+    Tady je ukázkový výstup:
 
     ```
     PipelineName      : Adfv2QuickStartPipeline
@@ -272,7 +272,7 @@ V tomto kroku vytvoříte kanál s aktivitou uložené procedury. Aktivity vyvol
     ```
 
 ### <a name="create-a-pipeline-run"></a>Vytvoření spuštění kanálu
-Použití **Invoke-AzureRmDataFactoryV2Pipeline** můžete spustit kanál. Tato rutina vrací ID spuštění kanálu pro budoucí monitorování.
+Použití **Invoke-AzureRmDataFactoryV2Pipeline** rutiny pro spuštění kanálu. Tato rutina vrací ID spuštění kanálu pro budoucí monitorování.
 
 ```powershell
 $RunId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -PipelineName $DFPipeLine.Name
@@ -299,10 +299,10 @@ while ($True) {
 }   
 ```
 
-### <a name="create-a-trigger"></a>Vytvořit aktivační událost
-V předchozím kroku vyvolá kanál na vyžádání. Můžete také vytvořit aktivační událost plán chcete-li kanál spouštět podle plánu (hodinový, denní, atd.).
+### <a name="create-a-trigger"></a>Vytvoření aktivační události
+V předchozím kroku kdybyste vyvolali kanálu na vyžádání. Můžete také vytvořit aktivační událost plánovače pro spuštění kanálu podle plánu (každou hodinu, každý den atd.).
 
-1. Vytvořte soubor JSON s názvem **MyTrigger.json** v **C:\ADF\RunSSISPackage** složku s následujícím obsahem: 
+1. Vytvořte soubor JSON s názvem **MyTrigger.json** v **C:\ADF\RunSSISPackage** složka s následujícím obsahem: 
 
     ```json
     {
@@ -328,29 +328,29 @@ V předchozím kroku vyvolá kanál na vyžádání. Můžete také vytvořit ak
         }
     }    
     ```
-2. V **prostředí Azure PowerShell**, přepnout **C:\ADF\RunSSISPackage** složky.
-3. Spustit **Set-AzureRmDataFactoryV2Trigger** rutiny, které vytvoří aktivační událost. 
+2. V **prostředí Azure PowerShell**, přepněte **C:\ADF\RunSSISPackage** složky.
+3. Spustit **Set-AzureRmDataFactoryV2Trigger** rutiny, která vytvoří aktivační událost. 
 
     ```powershell
     Set-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResGrp.ResourceGroupName -DataFactoryName $DataFactory.DataFactoryName -Name "MyTrigger" -DefinitionFile ".\MyTrigger.json"
     ```
-4. Ve výchozím nastavení aktivační událost je v zastaveném stavu. Spusťte aktivační událost spuštěním **Start-AzureRmDataFactoryV2Trigger** rutiny. 
+4. Ve výchozím nastavení trigger je v zastaveném stavu. Spusťte trigger spuštěním **Start-AzureRmDataFactoryV2Trigger** rutiny. 
 
     ```powershell
     Start-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResGrp.ResourceGroupName -DataFactoryName $DataFactory.DataFactoryName -Name "MyTrigger" 
     ```
-5. Zkontrolujte, zda je spuštěná aktivační událost spuštěním **Get-AzureRmDataFactoryV2Trigger** rutiny. 
+5. Potvrďte, že aktivační událost se spouští spuštěním **Get-AzureRmDataFactoryV2Trigger** rutiny. 
 
     ```powershell
     Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"     
     ```    
-6. Spusťte následující příkaz po do příští hodiny. Například pokud je aktuální čas UTC 3:25 hodin, spusťte příkaz na 16: 00 UTC. 
+6. Spusťte následující příkaz po do příští hodiny. Například pokud je aktuální čas UTC času 15:25, spusťte příkaz v 16: 00 UTC. 
     
     ```powershell
     Get-AzureRmDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-06" -TriggerRunStartedBefore "2017-12-09"
     ```
 
-    Můžete spustit následující dotaz na databázi SSISDB v serveru Azure SQL ověřit, jestli balíček provést. 
+    Spuštěním následujícího dotazu proti databázi SSISDB na serveru služby Azure SQL a ověřte, že balíček provedeny. 
 
     ```sql
     select * from catalog.executions
@@ -358,4 +358,4 @@ V předchozím kroku vyvolá kanál na vyžádání. Můžete také vytvořit ak
 
 
 ## <a name="next-steps"></a>Další postup
-Také můžete monitorovat kanál pomocí portálu Azure. Podrobné pokyny najdete v tématu [kanál monitorovat](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
+Také můžete monitorovat kanál pomocí webu Azure portal. Podrobné pokyny najdete v tématu [monitorování kanálu](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).

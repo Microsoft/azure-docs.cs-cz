@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 5ce80e85f00c4c3542bf61e910baec9ccd635bcd
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 6355a7ce203f2bf75b5c93d225502f961deeee43
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161301"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032072"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>Rychlý start: Ruční instalace jedné instance SAP HANA na virtuálních počítačích Azure
 ## <a name="introduction"></a>Úvod
@@ -93,6 +93,11 @@ Azure typy virtuálních počítačů, které jsou certifikované SAP pro SAP Ne
 >Integrace se službou SAP-Linux-Azure je podporována pouze na Azure Resource Manageru a modelu nasazení classic. 
 
 ## <a name="manual-installation-of-sap-hana"></a>Ruční instalace SAP HANA
+
+> [!IMPORTANT]
+> Ujistěte se, že je operační systém, vyberete na konkrétní typy virtuálních počítačů, které používáte pro SAP HANA s certifikací SAP. Seznam SAP HANA certified typy virtuálních počítačů a operační systém verze pro ty lze vyhledávat [platformách IaaS certifikací SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Ujistěte se, že klikněte na tlačítko na podrobné informace o typu virtuálního počítače uvedené zobrazíte úplný seznam SAP HANA nepodporuje verzí operačního systému pro konkrétní typ virtuálního počítače. Uvědomte si, že v příkladu v tomto dokumentu jsme použili operačním systémem SLES verze, která není podporována SAP pro SAP HANA na virtuálních počítačích řady M-Series.
+>
+
 Tato příručka popisuje, jak ručně nainstalovat SAP HANA na virtuálních počítačích Azure dvěma různými způsoby:
 
 * S použitím distribuované instalaci NetWeaver v kroku "instance databáze instalace" v rámci SAP Software zřizování správce (SWPM)

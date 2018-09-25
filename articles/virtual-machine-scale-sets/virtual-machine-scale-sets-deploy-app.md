@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 25773124fcd479489f5d2d544cc5b6e3b11e325a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 86bb231a4eb9468ccc92c182b099714950b2a81c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301136"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46979431"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Nasazení aplikace do škálovací sady virtuálních počítačů
 Pokud chcete spouštět aplikace na instancích virtuálních počítačů ve škálovací sadě, musíte nejprve nainstalovat komponenty aplikace a požadované soubory. Tento článek představuje způsobů, jak vytvářet vlastní image virtuálního počítače pro instancí ve škálovací, nastavení nebo automatické spouštění skriptů instalace v existujících instancích virtuálních počítačů. Také se dozvíte, jak spravovat aplikace nebo aktualizace operačního systému na škálovací sadu.
@@ -31,14 +31,14 @@ Pokud používáte některou k imagí platformy Azure k vytvoření instancí ve
 
 Pokud chcete snížit správu konfigurací a čas pro zřízení virtuálního počítače, můžete vytvořit vlastní image virtuálního počítače, který je připraven ke spuštění aplikace co nejdříve po zřízení instance ve škálovací sadě. Další informace o tom, jak vytvořit a používat vlastní image virtuálního počítače se škálovací sady najdete v následujících kurzech:
 
-- [Azure CLI 2.0](tutorial-use-custom-image-cli.md)
+- [Azure CLI](tutorial-use-custom-image-cli.md)
 - [Azure PowerShell](tutorial-use-custom-image-powershell.md)
 
 
 ## <a name="already-provisioned"></a>Instalace aplikace s využitím rozšíření vlastních skriptů
 Rozšíření vlastních skriptů stahuje a spouští skripty na virtuálních počítačích Azure. Toto rozšíření je užitečné pro konfiguraci po nasazení, instalaci softwaru nebo jakékoli jiné úlohy konfigurace nebo správy. Skripty si můžete stáhnout z úložiště Azure nebo z GitHubu, případně je za běhu rozšíření najdete na webu Azure Portal. Další informace o tom, jak vytvořit a používat vlastní image virtuálního počítače se škálovací sady najdete v následujících kurzech:
 
-- [Azure CLI 2.0](tutorial-install-apps-cli.md)
+- [Azure CLI](tutorial-install-apps-cli.md)
 - [Azure PowerShell](tutorial-install-apps-powershell.md)
 - [Šablona Azure Resource Manageru](tutorial-install-apps-template.md)
 

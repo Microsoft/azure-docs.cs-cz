@@ -1,31 +1,31 @@
 ---
-title: Nejčastější dotazy ke službě Azure Cost Management | Dokumentace Microsoftu
-description: Poskytuje odpovědi na některé běžné otázky o službě Azure Cost Management.
+title: Nejčastější dotazy ke službě Cloudyn v Azure | Dokumentace Microsoftu
+description: Poskytuje odpovědi na některé běžné dotazy týkající se Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 07/20/2018
+ms.date: 09/18/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 255056390cdbdbee49eba47f8168618929b386c8
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 2126875a18d4a6581629ea1c8362236242a666a8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187253"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961021"
 ---
-# <a name="frequently-asked-questions-for-azure-cost-management"></a>Nejčastější dotazy ke službě Azure Cost Management
+# <a name="frequently-asked-questions-for-cloudyn"></a>Nejčastější dotazy pro Cloudyn
 
-Tento článek se zabývá některými běžnými dotazy o službě Azure Cost Management (označované také jako Cloudyn). Pokud máte dotazy týkající se Cost Management, můžete požádat je na [nejčastější dotazy k Azure Cost Management](https://social.msdn.microsoft.com/Forums/en-US/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-azure-cost-management-by-cloudyn?forum=Cloudyn).
+Tento článek se zabývá některými běžnými dotazy o Cloudyn. Pokud máte dotazy týkající se Cloudyn, můžete požádat je na [nejčastější dotazy pro Cloudyn](https://social.msdn.microsoft.com/Forums/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-azure-cost-management-by-cloudyn?forum=Cloudyn).
 
 ## <a name="how-can-i-resolve-common-indirect-enterprise-setup-problems"></a>Jak můžu řešit běžných problémů s instalací nepřímé enterprise?
 
 Při prvním použití portálu Cloudyn, může zobrazit následující zprávy, pokud jste uživatelem smlouvu Enterprise nebo Cloud Solution Provider (CSP):
 
-- "Zadaný klíč rozhraní API není klíč nejvyšší úrovně zápisu" zobrazí v **nastavte si Azure Cost Management** průvodce.
+- "Zadaný klíč rozhraní API není klíč nejvyšší úrovně zápisu" zobrazí v **nastavit Cloudyn** průvodce.
 - "Přímá registrace – ne" zobrazí na portálu Enterprise Agreement.
 - "Za posledních 30 dní se nenašla žádná data o využití. Obraťte se prosím na vaše distributora, abyste měli jistotu, že kód byl povolen pro váš účet Azure"zobrazí na portálu Cloudyn.
 
@@ -35,9 +35,9 @@ Tady je postup řešení těchto potíží:
 
 1. Váš prodejce musí pro váš účet povolit _revize_. Postup najdete v [pokynech k nepřímé registraci zákazníka](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
 
-2. Vygenerujete klíč smlouvy Azure Enterprise pro použití s Cloudyn. Pokyny najdete v tématu [přidání Azure EA](https://support.cloudyn.com/hc/en-us/articles/210429585-Adding-Your-AZURE-EA) nebo [jak najít svůj EA registrace ID a klíč rozhraní API](https://youtu.be/u_phLs_udig).
+2. Vygenerujete klíč smlouvy Azure Enterprise pro použití s Cloudyn. Pokyny najdete v tématu [přidání Azure EA](https://support.cloudyn.com/hc/articles/210429585-Adding-Your-AZURE-EA) nebo [jak najít svůj EA registrace ID a klíč rozhraní API](https://youtu.be/u_phLs_udig).
 
-Službu Cost Management může povolit jenom správce služeb Azure. Oprávnění spolusprávce k tomu nestačí.
+Pouze správce služby Azure můžete povolit Cloudyn. Oprávnění spolusprávce k tomu nestačí.
 
 Než můžete vygenerovat klíč rozhraní API smlouvy Azure Enterprise k nastavení Cloudyn, musíte povolit API pro fakturaci Azure podle pokynů na adrese:
 
@@ -74,7 +74,7 @@ Po dokončení předchozích kroků můžete zobrazit doporučení pro optimaliz
 
 Nejprve Pojďme se podívat nanejvýš běžný scénář, který způsobí, že uživatelské účty, chcete-li získat *initiallySuspended*.
 
-> Admin1 může být uživatel Microsoft Cloud Solution Provider a smlouvy Enterprise. Jeho organizace je začít využívat Cost Management.  Osoba zaregistruje na webu Azure portal a přihlásí na portálu Cloudyn. Jako osobě, která registruje službu Cost Management a přihlásí do portálu Cloudyn, se *primární správce*. Admin1 nevytvoří všechny uživatelské účty. Ale na portálu Cloudyn mohl vytvořit účty Azure a nastaví hierarchie entit. Admin1 informuje Admin2, správce klienta, který potřebuje k registraci ve službě Cost Management a přihlaste se k portálu Cloudyn.
+> Admin1 může být uživatel Microsoft Cloud Solution Provider a smlouvy Enterprise. Jeho organizace je začít využívat Cloudyn.  Osoba zaregistruje na webu Azure portal a přihlásí na portálu Cloudyn. Jako osobě, která registruje službu Cloudyn a přihlásí do portálu Cloudyn, se *primární správce*. Admin1 nevytvoří všechny uživatelské účty. Ale na portálu Cloudyn mohl vytvořit účty Azure a nastaví hierarchie entit. Admin1 informuje Admin2, správce klienta, který mu je potřeba zaregistrovat ve službě Cloudyn a přihlaste se k portálu Cloudyn.
 
 > Admin2 zaregistruje na webu Azure portal. Ale při snaží se přihlaste k portálu Cloudyn, že získá chyba s oznámením o svém účtu je **pozastaveno**. Primární správce Admin1, je oznámení o pozastavení účtu. Admin1 musí aktivovat Admin2 na účet a udělte *přístup správce entity* pro příslušné entity a umožňuje přístup ke správě uživatelů a aktivní uživatelský účet.
 
@@ -94,13 +94,13 @@ Pokud změníte e-mailovou adresu ve službě Cloudyn z výchozí adresy v Azure
 
 Doporučujeme vytvořit aspoň dva účty Cloudyn správce v případě, že jeden z účtů získá uzamčen.
 
-Pokud nemůžete se přihlásit k portálu Cloudyn, ujistěte se, že používáte správnou adresu URL Azure Cost Management pro přihlášení do Cloudyn. Použití [ https://azure.cloudyn.com ](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade).
+Pokud nemůžete se přihlásit k portálu Cloudyn, ujistěte se, že používáte správnou adresu URL pro přihlášení do Cloudyn. Použití [ https://azure.cloudyn.com ](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade).
 
 Vyhněte se pomocí přímé adresy URL Cloudyn https://app.cloudyn.com.
 
 ## <a name="how-do-i-activate-unactivated-accounts-with-azure-credentials"></a>Jak si můžu aktivovat neaktivovaných účty pomocí přihlašovacích údajů Azure?
 
-Poté, co zjistí účtů Azure Cloudyn, datům služby cost okamžitě součástí sestavy založené na náklady. Ale pro Cloudyn poskytují data o využití a výkonu, budete muset zaregistrovat přihlašovací údaje pro účty Azure. Pokyny najdete v tématu [přidat Azure Resource Manageru](https://support.cloudyn.com/hc/en-us/articles/212784085-Adding-Azure-Resource-Manager).
+Poté, co zjistí účtů Azure Cloudyn, datům služby cost okamžitě součástí sestavy založené na náklady. Ale pro Cloudyn poskytují data o využití a výkonu, budete muset zaregistrovat přihlašovací údaje pro účty Azure. Pokyny najdete v tématu [přidat Azure Resource Manageru](https://support.cloudyn.com/hc/articles/212784085-Adding-Azure-Resource-Manager).
 
 Přidat Azure přihlašovací údaje k účtu na portálu Cloudyn, vyberte symbol úpravy napravo od názvu účtu, ne předplatného.
 
@@ -110,8 +110,8 @@ Dokud přihlašovací údaje Azure jsou přidány do Cloudyn, účet se zobrazí
 
 Další entity se používají k přidání dalších smlouvy Enterprise s předplatným Cloudyn. Následující odkazy popisují, jak přidat další entity:
 
-- [Přidání Entity](https://support.cloudyn.com/hc/en-us/articles/212016145-Adding-an-Entity) článku
-- [Definování hierarchii s Cost Entities](https://support.cloudyn.com/hc/en-us/articles/115005142529-Video-Defining-your-hierarchy-with-Cost-Entities) videa
+- [Přidání Entity](https://support.cloudyn.com/hc/articles/212016145-Adding-an-Entity) článku
+- [Definování hierarchii s Cost Entities](https://support.cloudyn.com/hc/articles/115005142529-Video-Defining-your-hierarchy-with-Cost-Entities) videa
 
 Pro CSP:
 
@@ -141,7 +141,7 @@ Pokud dochází ke zpoždění odesílání dat z Azure do Cloudyn, data se stá
 
 ## <a name="cost-fluctuations-in-cloudyn-cost-reports"></a>Cenově kolísání v sestavách nákladů Cloudyn
 
-Sestavy nákladů můžete zobrazit náklady kolísání pokaždé, když se aktualizované soubory fakturační odeslat poskytovatelů cloudových služeb. Kolísá dojít, když nové soubory, které byly přijaty z poskytovatele cloudových služeb mimo obvyklého denní nebo měsíční plán vytváření sestav. Cenově změny není výsledkem přepočet Cloudyn. 
+Sestavy nákladů můžete zobrazit náklady kolísání pokaždé, když se aktualizované soubory fakturační odeslat poskytovatelů cloudových služeb. Kolísá dojít, když nové soubory, které byly přijaty z poskytovatele cloudových služeb mimo obvyklého denní nebo měsíční plán vytváření sestav. Cenově změny není výsledkem přepočet Cloudyn.
 
 V průběhu měsíce jsou všechny fakturační soubory odeslané poskytovatele cloudových služeb odhad denních nákladů. Někdy se často aktualizuje data – čas od času víc než jednou za den. Aktualizace jsou častější od AWS do Azure. Nákladů celkový počet položek by měla zůstat po dokončení výpočet fakturace za předchozí měsíc a po přijetí poslední fakturace souboru. Obvykle pomocí 10 měsíce.
 
@@ -155,7 +155,7 @@ Pokyny najdete v tématu [konfigurace přístupu nepřímých poskytovatelů CSP
 
 Po přidání přístupu k Azure Resource Manageru a data se shromažďují, měli byste vidět **optimalizace** možnost. Chcete-li aktivovat přístup do Azure Resource Manageru, přečtěte si téma [jak si můžu aktivovat neaktivovaných účty pomocí přihlašovacích údajů Azure?](#how-do-i-activate-unactivated-accounts-with-azure-credentials)
 
-## <a name="is-cost-managementcloudyn-agent-based"></a>Je na základě Cost Management/Cloudyn agenta?
+## <a name="is-cloudyn-agent-based"></a>Je na základě Cloudyn agenta?
 
 Ne. Agenti nejsou používány. Shromáždění dat metriky virtuálního počítače Azure pro virtuální počítače z rozhraní API Microsoft Insights. Pokud chcete shromažďovat data metrik z virtuálních počítačů Azure, musí mít povolené nastavení diagnostiky.
 

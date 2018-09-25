@@ -4,18 +4,18 @@ titleSuffix: Azure
 description: Referenční informace pro předem připravených domén, které jsou předem sestavené kolekce záměry a entity z Language Understanding Intelligent Services (LUIS).
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: diberry
-ms.openlocfilehash: 36e527f9afdce58475ca4c3c6e54ce393c48c983
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: f424abd339bda6c29079e3d286cbe96593f16f52
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238892"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040036"
 ---
 # <a name="prebuilt-domain-reference"></a>Referenční informace k předem připraveným doménám
 V tomto materiálu najdete informace o [předem připravených domén](luis-how-to-use-prebuilt-domains.md), které jsou předem sestavené kolekce záměry a entity, které nabízí služba LUIS.
@@ -107,7 +107,7 @@ Doména komunikace poskytuje záměry a entity související s e-mailu, zpráv a
 | FindContact| Najdete kontaktní údaje podle názvu.|Najít číslo Karolínu<br/>Zobrazit číslo Karolínu<br/>|
 | FindSpeedDial| Najdete číslo rychlé vytáčení, telefonní číslo je nastavena na a naopak.|Co je volání čísla 5?<br/>Je nutné rychlost vytáčení sady?<br/>Co je počet volání pro 941-5555-333?|
 | GetForwardingsStatus| Získejte aktuální stav předávání volání.|Moje předávání volání zapnutý?<br/>Řekněte mi, pokud je můj stav volání zapnutí nebo vypnutí<br/>|
-| GoBack| Přejděte zpět na předchozí krok.|Přejděte zpět na twitteru<br/>Přejděte zpět krok<br/>Přejít zpět|
+| GoBack| Přejděte zpět na předchozí krok.|Přejděte zpět na twitteru<br/>Přejděte zpět krok<br/>Přejít zpátky|
 | Ignorovat| Ignorujte příchozí volání.|Není odpovědět<br/>Ignorovat volání|
 | IgnoreWithMessage| Ignorovat příchozí volání a místo toho odpovědět s textem.|Toto volání není odpovědět, ale místo odeslání zprávy.<br/>Ignorovat a odeslala textová zpráva zpět.|
 | PressKey| Na klávesnici stiskněte tlačítko nebo číslo.|Volání na hvězdičku.<br/>Stiskněte 1 2 3.|
@@ -180,7 +180,7 @@ Doména události poskytuje záměry a entity související s rezervace letenek 
 | Adresa | Umístění události nebo adresu. |Palo Alto<br/>300 112th uložit SE <br/> Seattle |
 | Název | Název události.|Shakespeare v Park|
 | PlaceName| Název události umístění.|Louvre<br/>Opera House<br/>Broadway|
-| PlaceType | Typ umístění událost bude uchovávat v datovém typu.|Cafe<br/>Oblasti divadla<br/>Knihovna|
+| PlaceType | Typ umístění událost bude uchovávat v datovém typu.|Kavárna<br/>Oblasti divadla<br/>Knihovna|
 | Typ | Typ události.|Vzájemné součinnosti<br/>Sportovní hra|
 
 ## <a name="fitness"></a>Způsobilost 
@@ -197,7 +197,7 @@ Doména vhodnosti poskytuje záměry a entity související vhodnosti aktivity p
 ### <a name="entities"></a>Entity
 | Název entity | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| ActivityType | Typ aktivity pro sledování. |Spusťte<br/>Procházení<br/>Drah<br/>Cyklus |
+| ActivityType | Typ aktivity pro sledování. |Spusťte<br/>Chůze<br/>Drah<br/>Cyklus |
 | Potravinářství | Typ potravin můžete sledovat v vhodnosti aplikace. |Banánů<br/>Lososová<br/>Bílkovin zatřesením|
 | MealType| Typ jídla ke sledování stavu nebo vhodnosti aplikace.|Snídani<br/>Společnost dinner<br/>Oběd<br/>Supper|
 | Měření| Typ měření času, vzdálenost či váha pro použití v aplikaci vhodnosti nebo stavu.|Kilometrů<br/>Mil<br/>Minut<br/>Kg|
@@ -234,7 +234,7 @@ Doména HomeAutomation poskytuje záměry a entity související s řízením in
 | Název entity | Popis | Příklady |
 | ---------------- |-----------------------|----|
 | Zařízení | Typ zařízení, které je možné zapnout nebo vypnout.|kávy maker<br/>Termostat<br/>indikátory|
-| Operace | Stav nastavení zařízení.|Zámek<br/>otevřít<br/>zapnuté<br/>vypnuto|
+| Operace | Stav nastavení zařízení.|Zámek<br/>open (otevírá)<br/>zapnuté<br/>vypnuto|
 | Místnosti | Umístění nebo místnosti, ve kterém zařízení nachází.|Obývací pokoj<br/>ložnici<br/>kuchyně|
 
 ## <a name="movietickets"></a>MovieTickets 
@@ -415,9 +415,9 @@ At what time does Safeway close?
 |Hodnocení|Získáte popis hodnocení restaurace nebo místa.|Kolik hvězdiček DIČ Contoso má?|
 |ReadAloud|Seznam míst číst nahlas.|Soubor Readme první z nich<br/>Soubor Readme podrobnosti|
 |Selectitem –|Zvolte položku ze seznamu voleb týkajících se místa nebo místa.|Vyberte druhou<br/>Vyberte první|
-|ShowMap|Zobrazit mapu oblast.|Zobrazit mapu pro druhý<br/>Zobrazit mapu<br/>Najít kalifornském San Franciscu na mapě|
+|ShowMap|Zobrazit mapu oblast.|Zobrazit mapu pro druhý<br/>Zobrazení mapy<br/>Najít kalifornském San Franciscu na mapě|
 |ShowNext|Zobrazte další položky v řadě.|Zobrazit další příkaz<br/>Přejít na další stránku|
-|ShowPrevious|Zobrazte předchozí položky v řadě.|Zobrazit předchozí<br/>předchozí<br/>Přejít na předchozí|
+|ShowPrevious|Zobrazte předchozí položky v řadě.|Zobrazit předchozí<br/>Předchozí<br/>Přejít na předchozí|
 |StartOver|Restartování aplikace nebo zahájit novou relaci.|Začít znovu<br/>Nová relace<br/>
 restart|
 |TakesReservations|Dotaz, jestli místo přijímá rezervace.|Nepřijme umělecké galerie rezervace<br/>Je možné provádět rezervace na kachnami Olivově
@@ -430,13 +430,13 @@ restart|
 | Prostředí | Prostředí na místě.|dětský zařízení<br/>příležitostné restaurace<br/>Sporty|
 | Kuchyni | Kuchyni na místě. |Středozemního<br/>italština<br/>Území v Indickém|
 | DestinationAddress| Cílové umístění nebo adresu.|Palo Alto<br/>300 112th uložit SE<br/>Seattle|
-| DestinationPlaceName| Název cíl, který je firmy, restaurace, veřejné přitažlivosti nebo instituce.|centrální park<br/>safeway<br/>walmart|
+| DestinationPlaceName| Název cíl, který je firmy, restaurace, veřejné přitažlivosti nebo instituce.|centrální park<br/>Safeway<br/>Walmart|
 | DestinationPlaceType | Zadejte cíl, který je místní firmy, restaurace, veřejné přitažlivosti nebo instituce. |Restaurace<br/>Opera<br/>kina|
 | Vzdálenost | Vzdálenost na místo.|15 mil.<br/>5 mil.<br/>10 mil okamžitě|
 | MealType | Typ jídla jako snídani nebo oběd. |Snídani<br/>Společnost dinner<br/>Oběd<br/>Supper|
 | OpenStatus | Určuje, zda místo, kde je otevřeno nebo Uzavřeno.|Otevřenost<br/>Uzavřeno<br/>Otevření|
 | PlaceName | Název na místě.|Objekt pro vytváření cheesecake|
-| PlaceType | Typ na místě.|Cafe<br/>Oblasti divadla<br/>Knihovna|
+| PlaceType | Typ na místě.|Kavárna<br/>Oblasti divadla<br/>Knihovna|
 | PreferredRoute | O trasu upřednostňovanou specifikovaných uživatelem. | 101 <br/>202 <br/>Trasa 401|
 | Produkt | Produkt nabízí na místě. | Oblečení<br/>Azure Site Recovery digitální fotoaparáty<br/>Čerstvé ryb | 
 | PublicTransportationRoute | Název veřejné transportation trasy, který je vyhledat uživatele. | Severovýchodní ose trénování<br/>Route Service bus 3 X |
@@ -494,7 +494,7 @@ Table for 3 in Palo Alto at 7
 | Kuchyni | Typ food, kuchyni nebo kuchyni příslušnosti. |Čínština<br/>italština<br/>Mexické|
 | MealType | Typ jídla přidružené k rezervaci.|Snídani<br/>Společnost dinner<br/>Oběd<br/>Supper|
 | PlaceName | Název místní firmy, restaurace, veřejné přitažlivosti nebo instituce.|IHOP<br/>Objekt pro vytváření cheesecake<br/>Louvre|
-| PlaceType | Typ místní firmy, restaurace, veřejné přitažlivosti nebo instituce.|restaurace<br/>Opera<br/>kina|
+| PlaceType | Typ místní firmy, restaurace, veřejné přitažlivosti nebo instituce.|Restaurace<br/>Opera<br/>kina|
 | Hodnocení | Hodnocení místa nebo restauraci.|5 hvězdiček<br/>3 hvězdičky<br/>4 hvězdičky|
 
 ## <a name="taxi"></a>Taxislužby města 
@@ -588,7 +588,7 @@ Repeat last question please
 | Zrušit | Zrušte akci.|Zrušit zprávy<br/>Nechci už odeslat e-mailu|
 | Potvrdit | Potvrďte akci.|Ano ale potvrzuji, že<br/>Kvalitní můžu jsem potvrzení<br/>Dobře I jsem potvrzení|
 | FinishTask | Dokončení úkolu uživatel začal.|Už mám všechno<br/>Dokončena<br/>To se dělá|
-| GoBack | Vrátit zpět o jeden krok nebo návrat k předchozímu kroku.|Přejděte zpět na Twitteru<br/>Přejděte zpět krok<br/>Přejít zpět|
+| GoBack | Vrátit zpět o jeden krok nebo návrat k předchozímu kroku.|Přejděte zpět na Twitteru<br/>Přejděte zpět krok<br/>Přejít zpátky|
 | Nápověda | Žádost o pomoc.|Pomozte<br/>Otevření nápovědy<br/>Nápověda|
 | Opakovat | Opakujte akci.|Opakujte prosím poslední dotaz<br/>Opakujte poslední skladby|
 | ShowNext | Zobrazte další položky v řadě. |Zobrazit další příkaz<br/>Přejít na další stránku|

@@ -13,14 +13,19 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: 07b9ac8389a2bf06e0356f65d816d75d49cc0cf5
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9168ac1d26432ca3eee5a59b63aa0cec3ae72856
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35644515"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989052"
 ---
 # <a name="supported-matrix-for-this-release"></a>Podporované matice pro tuto verzi 
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 Pokud váš kód načítá data s použitím zdroje dat Machine Learning Azure nebo Azure Machine Learning Příprava dat, získávání buď Pandas nebo Spark dataframe následující kombinace experiment výpočetní prostředí a umístění se podporují:
 
 |     |Místní soubory  |Azure Blob Storage  |Databáze systému SQL Server ***  |

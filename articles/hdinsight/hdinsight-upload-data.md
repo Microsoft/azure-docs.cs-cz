@@ -1,6 +1,6 @@
 ---
 title: Nahrání dat úloh Hadoopu do služby HDInsight
-description: Zjistěte, jak nahrát a přístup k datům pro úlohy systému Hadoop v HDInsight pomocí rozhraní příkazového řádku Azure, Průzkumníka služby Azure Storage, Azure Powershellu, příkazového řádku Hadoopu nebo Sqoopu.
+description: Zjistěte, jak nahrát a přístup k datům pro úlohy systému Hadoop v HDInsight pomocí Azure classic CLI, Průzkumníka služby Azure Storage, Azure Powershellu, příkazového řádku Hadoopu nebo Sqoopu.
 keywords: ETL hadoop, přesun dat do služby hadoop, hadoop načítání dat
 services: hdinsight
 author: jasonwhowell
@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: 838444898500ce7127e1a9e999d0b5ee7b1e3687
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 44aaccee436011bd7d27bec87515fde0e898732e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051820"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985975"
 ---
 # <a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>Nahrání dat úloh Hadoopu do služby HDInsight
 
@@ -38,22 +38,22 @@ Společnost Microsoft poskytuje následující nástroje pro práci s Azure Stor
 
 | Nástroj | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [Rozhraní příkazového řádku Azure][azurecli] |✔ |✔ |✔ |
+| [Klasické rozhraní příkazového řádku Azure][azurecli] |✔ |✔ |✔ |
 | [Prostředí Azure PowerShell][azure-powershell] | | |✔ |
 | [AzCopy][azure-azcopy] |✔ | |✔ |
 | [Příkaz Hadoop](#commandline) |✔ |✔ |✔ |
 
 > [!NOTE]
-> Rozhraní příkazového řádku Azure, Azure Powershellu a AzCopy můžete využít z mimo Azure, příkaz Hadoop je dostupná pouze na clusteru HDInsight. A tento příkaz umožňuje pouze načítání dat z místního systému souborů do služby Azure Storage.
+> Rozhraní příkazového řádku Azure Classic, prostředí Azure PowerShell a AzCopy můžete využít z mimo Azure, příkaz Hadoop je dostupná pouze na clusteru HDInsight. A tento příkaz umožňuje pouze načítání dat z místního systému souborů do služby Azure Storage.
 >
 >
 
-#### <a id="xplatcli"></a>Rozhraní příkazového řádku Azure
-Azure CLI je nástroj napříč platformami, která vám umožní spravovat služby Azure. Následujícím postupem nahrání dat do služby Azure Storage:
+#### <a id="xplatcli"></a>Klasické rozhraní příkazového řádku Azure
+Rozhraní příkazového řádku Azure Classic je multiplatformní nástroj, který vám umožní spravovat služby Azure. Následujícím postupem nahrání dat do služby Azure Storage:
 
-[!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
-1. [Instalace a konfigurace Azure CLI pro Mac, Linux a Windows](../cli-install-nodejs.md).
+1. [Instalace a konfigurace rozhraní příkazového řádku Classic Azure pro Mac, Linux a Windows](../cli-install-nodejs.md).
 2. Otevřete příkazový řádek, prostředí bash nebo jiné prostředí a použijte následující postup k ověření ke svému předplatnému Azure.
 
     ```cli

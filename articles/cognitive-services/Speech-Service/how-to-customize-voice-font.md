@@ -7,12 +7,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: nolach
-ms.openlocfilehash: 35572f046b3702deba56e86819b8ad0cd7ae6e9b
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 042216d03749273c590ce5ba812f7a6d609f8e83
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842462"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987898"
 ---
 # <a name="creating-custom-voice-fonts"></a>Vytvoření vlastního hlasového písma
 
@@ -25,7 +25,7 @@ Můžete začít s menším objemem dat pro testování konceptu. Ale čím víc
 
 ## <a name="prerequisites"></a>Požadavky
 
-Převod textu na řeč hlasová přizpůsobení funkce je aktuálně ve verzi private preview. [Vyplňte formulář přihlášky](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0N8Vcdi8MZBllkZb70o6KdURjRaUzhBVkhUNklCUEMxU0tQMEFPMjVHVi4u) považovat pro přístup.
+**Převod textu na řeč** hlasová přizpůsobení funkce je aktuálně ve verzi private preview. [Vyplňte formulář přihlášky](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0N8Vcdi8MZBllkZb70o6KdURjRaUzhBVkhUNklCUEMxU0tQMEFPMjVHVi4u) považovat pro přístup.
 
 Potřebujete účet Azure a předplatné služby řeči. [Vytvořte si ho](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started) Pokud jste tak již neučinili. Vaše předplatné připojení k portálu vlastní hlasové následujícím způsobem.
 

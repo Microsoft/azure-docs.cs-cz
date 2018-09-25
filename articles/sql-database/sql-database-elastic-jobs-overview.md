@@ -10,18 +10,18 @@ ms.custom: scale out apps
 ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: sstein
-ms.openlocfilehash: 3fc9ab0505fda84464ead01b4937756707993cf0
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 21cd1b171f25d5abdaa89f631ac5bab8e4a351af
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35643329"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46968865"
 ---
 # <a name="managing-scaled-out-cloud-databases"></a>Správa databází s horizontálním navýšením kapacity
 
 [!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
 
-**Úlohy elastic Database** hostované zákazníků Azure Cloudová služba, která umožňuje spouštět ad-hoc a naplánované úlohy správy, které se nazývají **úlohy**. S úlohami můžete snadno a spolehlivě spravovat velké skupiny databází Azure SQL Database pomocí jazyka Transact-SQL skriptů k provádění operací správy. 
+**Úlohy elastic Database** hostované zákazníků Azure Cloudová služba, která umožňuje spouštět ad-hoc a naplánované úlohy správy, které se nazývají **úlohy**. S úlohami můžete snadno a spolehlivě spravovat velké skupiny databází Azure SQL pomocí jazyka Transact-SQL skriptů k provádění operací správy. 
 
 Chcete-li správa horizontálně dělených databází s horizontálním navýšením kapacity, **úlohy elastické databáze** funkce (preview) umožňuje spolehlivě spustit skript jazyka Transact-SQL (T-SQL) napříč skupinou databází, včetně:
 
@@ -33,7 +33,7 @@ Chcete-li správa horizontálně dělených databází s horizontálním navýš
 * [Nainstalujte součásti úlohy elastické databáze](sql-database-elastic-jobs-service-installation.md). 
 * [Začínáme s úlohami Elastic Database](sql-database-elastic-jobs-getting-started.md).
 * [Vytváření a Správa úloh pomocí Powershellu](sql-database-elastic-jobs-powershell.md).
-* [Vytvářet a spravovat škálovaná databází Azure SQL Database](sql-database-elastic-jobs-getting-started.md)
+* [Vytvářet a spravovat škálovaná databází Azure SQL](sql-database-elastic-jobs-getting-started.md)
 
 
 
@@ -46,11 +46,11 @@ Snadno proveďte změny ve schématu, Správa přihlašovacích údajů, aktuali
 
 **Sestavy**
 
-Agregovaná data z kolekce databází Azure SQL Database do jedné cílové tabulky.
+Agregace dat z kolekce databází Azure SQL do jedné cílové tabulky.
 
 **Snížit režii**
 
-Pokud chcete spouštět příkazy jazyka Transact-SQL nebo provádět jiné úlohy správy, za normálních okolností se musíte připojit ke každé databázi zvlášť. Úloha zajišťuje přihlášení ke každé databázi v cílové skupině. Můžete také definujte, udržovat a zachovat skriptů Transact-SQL, který se spustí v rámci skupiny databází Azure SQL Database.
+Pokud chcete spouštět příkazy jazyka Transact-SQL nebo provádět jiné úlohy správy, za normálních okolností se musíte připojit ke každé databázi zvlášť. Úloha zajišťuje přihlášení ke každé databázi v cílové skupině. Můžete také definovat, spravovat a uchovávat skripty Transact-SQL, které se spustí pro skupinu databází Azure SQL.
 
 **Monitorování účtů**
 
@@ -58,7 +58,7 @@ Pokud chcete spouštět příkazy jazyka Transact-SQL nebo provádět jiné úlo
 
 **Flexibilita**
 
-Definovat vlastní skupiny databází Azure SQL Database a nastavit plány, které ke spuštění úlohy.
+Můžete definovat vlastní skupiny databází Azure SQL a plány spouštění úloh.
 
 > [!NOTE]
 > Na webu Azure Portal je k dispozici pouze s omezenou sadou funkcí, které jsou omezené na elastické fondy SQL Azure. Pomocí rozhraní API prostředí PowerShell pro přístup k úplné sadě funkcí aktuální.

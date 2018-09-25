@@ -4,15 +4,15 @@ description: Najděte odpovědi na nejčastější dotazy o službě soubory Azu
 services: storage
 author: RenaShahMSFT
 ms.service: storage
-ms.date: 07/19/2018
+ms.date: 09/11/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 31f5b2792aa83d15a1478cf201ca674995816430
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 43acff5c4d37c46245566fb2e1d74d3e14d527bb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42055082"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949838"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>O službě soubory Azure – nejčastější dotazy (FAQ)
 [Služba soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné prostřednictvím standardních průmyslových [zprávy bloku SMB (Server) protokol](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure je možné připojit současně v cloudových i místních nasazení systémů Windows, Linux a macOS. Také můžete ukládat do mezipaměti sdílených složek Azure v počítačích s Windows serverem pomocí Azure File Sync pro rychlý přístup blízko, ve kterém jsou využívány.
@@ -81,7 +81,7 @@ Tento článek obsahuje odpovědi na běžné otázky o Azure Files funkce a fun
 **Chci zobrazit konkrétní funkci přidali do služby soubory Azure. Můžete ho přidat?**  
     Tým Azure Files zajímají vaše všechny názory, které máte s našimi službami. Prosím hlasovat pro požadavky na funkce na [UserVoice soubory Azure](https://feedback.azure.com/forums/217298-storage/category/180670-files)! Právě se díváme vpřed na okouzlí vám s mnoha novými funkcemi.
 
-## <a name="azure-file-sync"></a>Azure File Sync
+## <a name="azure-file-sync"></a>Synchronizace souborů Azure
 
 * <a id="afs-region-availability"></a>
 **Jaké oblasti jsou podporovány pro Azure File Sync?**  
@@ -196,44 +196,97 @@ Tento článek obsahuje odpovědi na běžné otázky o Azure Files funkce a fun
 **Můžete přesunout službu synchronizace úložiště a/nebo účtu úložiště do jiné skupiny prostředků nebo předplatného?**  
    Ano, služba synchronizace úložiště a/nebo účtu úložiště lze přesunout do jiné skupiny prostředků nebo předplatného. Pokud účet úložiště se přesune, budete muset poskytnout přístup hybridní služby File Sync k účtu úložiště (viz [zajistit Azure File Sync má přístup k účtu úložiště](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
 
+* <a id="afs-ntfs-acls"></a>
+**Azure File Sync se zachovat adresářů a souborů úrovni systému souborů NTFS seznamy řízení přístupu spolu s daty uloženými v Azure Files?**
+
+    Seznamy ACL systému souborů NTFS provádět z místní soubor, který servery jsou zachované v Azure File Sync jako metadata. Služba soubory Azure nepodporuje ověřování pomocí přihlašovacích údajů Azure AD pro přístup ke sdíleným složkám, které jsou spravované službou Azure File Sync.
+    
 ## <a name="security-authentication-and-access-control"></a>Zabezpečení, ověřování a řízení přístupu
 * <a id="ad-support"></a>
 **Je ověřování pomocí služby Active Directory a access control nepodporuje soubory Azure?**  
-    Služba soubory Azure nabízí dva způsoby, jak spravovat řízení přístupu:
+    
+    Ano, podporuje soubory Azure založené na identitě ověřování a řízení přístupu se službou Azure Active Directory (Azure AD) (Preview). Azure AD authentication přes protokol SMB pro soubory Azure využívá Azure Active Directory Domain Services povolit připojených k doméně virtuální počítače pro přístup k sdílených složek, adresářů a souborů pomocí přihlašovacích údajů Azure AD. Další podrobnosti najdete v tématu [přehled o Azure Active Directory authentication přes protokol SMB pro soubory Azure (Preview)](storage-files-active-directory-overview.md). 
+
+    Služba soubory Azure nabízí dva další způsoby, jak spravovat řízení přístupu:
 
     - Sdílené přístupové podpisy (SAS) můžete použít ke generování tokenů, které mají konkrétní oprávnění, a které jsou platné pro zadaný časový interval. Můžete například vygenerovat token s přístupem jen pro čtení ke konkrétnímu souboru, který má platnost během 10 minut. Každý, kdo má token, zatímco je token platný má přístup jen pro čtení pro daný soubor pro těchto 10 minut. V současné době klíče sdíleného přístupového podpisu jsou podporovány pouze přes rozhraní REST API nebo klientských knihoven. Sdílené složky Azure přes protokol SMB je nutné připojit s použitím klíče účtu úložiště.
 
     - Azure File Sync chrání a replikuje všechny volitelné seznamy řízení přístupu nebo volitelné seznamy řízení přístupu, (ať už prostřednictvím služby Active Directory nebo místní) pro všechny koncové body serveru, které se synchronizuje. Vzhledem k tomu, že systém Windows Server můžete už ověřování pomocí Active Directory, Azure File Sync je efektivní možnost stop mezery do plnou podporu pro ověřování pomocí služby Active Directory a přijde podpora seznam ACL.
 
-    V současné době soubory Azure Active Directory přímo nepodporuje.
+* <a id="ad-support-regions"></a>
+**Je ve verzi preview služby Azure AD prostřednictvím protokolu SMB pro soubory Azure k dispozici ve všech oblastech Azure?**
+
+    Verzi preview je k dispozici ve všech veřejných oblastech s výjimkou: USA – Západ, USA – západ 2, střed USA – Jih, USA – východ, USA – východ 2, střed USA, střed USA – sever, Austrálie – východ, západní Evropa, Severní Evropa.
+
+* <a id="ad-support-on-premises"></a>
+**Ověřování pomocí Azure AD z místní počítače podporuje ověřování Azure AD prostřednictvím protokolu SMB pro soubory Azure (Preview)?**
+
+    Ne, Azure Files nepodporuje ověřování pomocí Azure AD z místních počítačů ve verzi preview.
+
+* <a id="ad-support-devices"></a>
+**Fakturuje se u služby Azure AD authentication přes protokol SMB pro soubory Azure (Preview) podporu protokolu SMB přístup pomocí přihlašovacích údajů Azure AD ze zařízení připojená k nebo zaregistrované v Azure AD?**
+
+    Ne, tento scénář není podporován.
+
+* <a id="ad-support-rest-apis"></a>
+**Dochází k rozhraní REST API pro podporu Get/Set/kopírování adresářů a souborů NTFS seznamy ACL?**
+
+    Verzi preview nepodporuje rozhraní REST API k získání, nastavení, nebo zkopírujte NTFS seznamy ACL pro soubory nebo adresáře.
+
+* <a id="ad-vm-subscription"></a>
+**Mohu přistupovat pomocí přihlašovacích údajů Azure AD z virtuálního počítače v rámci jiného předplatného Azure Files?**
+
+    Pokud předplatné, ve kterém je nasazená sdílené složky je spojen se stejným tenantem Azure AD jako nasazení služby Azure AD Domain Services, ke které je virtuální počítač připojený k doméně a pak budete moct soubory Azure pomocí stejných přihlašovacích údajů Azure AD. Omezení je nastaveno z důvodu není v předplatném, ale na související služby Azure AD tenanta.    
+    
+* <a id="ad-support-subscription"></a>
+**Můžu povolit ověřování Azure AD prostřednictvím protokolu SMB pro soubory Azure s tenantem Azure AD, která se liší od primární tenant se kterým je sdílená složka file assoicated?**
+
+    Ne, soubory Azure podporuje pouze integraci Azure AD s tenantem Azure AD, který se nachází ve stejném předplatném jako sdílené. Jenom jedno předplatné, může být přidružen k tenantovi Azure AD.
+
+* <a id="ad-linux-vms"></a>
+**Podporuje ověřování Azure AD prostřednictvím protokolu SMB pro soubory Azure (Preview) virtuálních počítačů s Linuxem?**
+
+    Ne, není podporován ověřování z virtuálních počítačů s Linuxem ve verzi preview.
+
+* <a id="ad-aad-smb-afs"></a>
+**Můžete využít ověřování Azure AD prostřednictvím funkce protokolu SMB ve sdílených složkách, které spravuje Azure File Sync?**
+
+    Ne, Azure Files nepodporuje zachování seznamů ACL systému souborů NTFS ve sdílených složkách, které spravuje Azure File Sync. Soubor, který seznamy řízení přístupu provedených v místní souborové servery jsou zachované v Azure File Sync. Ve službě Azure File Sync se přepíšou všechny seznamy řízení přístupu systému souborů NTFS nativně nakonfigurované pro soubory Azure. Soubory Azure navíc nepodporuje ověřování pomocí přihlašovacích údajů Azure AD pro přístup ke sdíleným složkám, které jsou spravované službou Azure File Sync.
 
 * <a id="encryption-at-rest"></a>
 **Jak můžete zajistit, že Moje sdílené složky Azure se šifrují při nečinnosti**  
+
     Šifrování služby Azure Storage se právě probíhá povolená ve výchozím nastavení ve všech oblastech. Pro tyto oblasti nemusíte provádět žádné akce Povolit šifrování. Pro ostatní oblasti, naleznete v tématu [šifrování na straně serveru](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 * <a id="access-via-browser"></a>
 **Jak umožním přístup ke konkrétnímu souboru pomocí webového prohlížeče?**  
+
     Sdílené přístupové podpisy lze použít ke generování tokenů, které mají konkrétní oprávnění, a které jsou platné pro zadaný časový interval. Můžete například vygenerovat token, který poskytuje přístup jen pro čtení ke konkrétnímu souboru po nastavenou dobu. Zatímco je token platný každý, kdo má adresu URL můžete přístup k souboru přímo z libovolného webového prohlížeče. Lze snadno generovat sdílený přístupový klíč podpisu z uživatelského rozhraní, jako je Průzkumník úložišť.
 
 * <a id="file-level-permissions"></a>
 **Je možné zadat jen pro čtení nebo jen pro zápis oprávnění pro složky ve sdílené složce?**  
+
     Připojení sdílené složky pomocí protokolu SMB, nemáte složku úroveň kontroly nad oprávněními. Pokud vytvoříte sdíleného přístupového podpisu pomocí rozhraní REST API nebo klientských knihoven, můžete však zadat oprávnění jen pro čtení nebo jen pro zápis pro složky ve sdílené složce.
 
 * <a id="ip-restrictions"></a>
 **Můžete implementovat omezení IP adres pro sdílené složky Azure?**  
+
     Ano. Přístup ke sdílené složky Azure mohou být omezeny na úrovni účtu úložiště. Další informace najdete v tématu [virtuálních sítí a bran firewall nakonfigurovat Storage Azure](../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 * <a id="data-compliance-policies"></a>
 **Zásady dodržování předpisů dat nepodporuje soubory Azure?**  
+
    Služba soubory Azure se spouští nad rámec stejné architektury úložiště, který se používá v dalších službách úložiště ve službě Azure Storage. Služba soubory Azure platí stejné zásady dodržování předpisů dat, které se používají v jiných služeb úložiště Azure. Další informace o dodržování předpisů pro data služby Azure Storage najdete [nabídek dodržování předpisů služby Azure Storage](https://docs.microsoft.com/en-us/azure/storage/common/storage-compliance-offerings)a přejděte [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx).
 
 ## <a name="on-premises-access"></a>Místní přístup
 * <a id="expressroute-not-required"></a>
 **Máte připojení do služby soubory Azure pomocí Azure ExpressRoute nebo použít Azure File Sync v místním?**  
+
     Ne. ExpressRoute není vyžadován pro přístup k sdílené složky Azure. Pokud se připojujete sdílené složky Azure přímo v místním, všechny, které je nutné je máte port 445 (odchozí TCP) otevřete pro přístup k Internetu (to je port, který komunikuje pomocí protokolu SMB). Pokud používáte Azure File Sync, všechny, které je nutné je port 443 (odchozí TCP) pro přístup k protokolu HTTPS (bez protokolu SMB povinné). Však můžete *můžete* ExpressRoute pomocí některé z těchto možností přístupu.
 
 * <a id="mount-locally"></a>
 **Jak můžu připojit sdílené složky Azure na místním počítači?**  
+
     Připojení sdílené složky pomocí protokolu SMB, pokud je otevřený port 445 (odchozí TCP) a váš klient podporuje protokol SMB 3.0 (například pokud používáte Windows 10 nebo Windows Server 2016). Pokud je port 445 blokovaný podle zásad vaší organizace nebo svého poskytovatele internetových služeb, můžete použít Azure File Sync pro přístup k vaší sdílené složky Azure.
 
 ## <a name="backup"></a>Backup
@@ -242,6 +295,7 @@ Tento článek obsahuje odpovědi na běžné otázky o Azure Files funkce a fun
     Můžete použít pravidelné [sdílet snímky](storage-snapshots-files.md) pro ochranu před náhodným odstraněním. Můžete také můžete použít AzCopy, Robocopy nebo zálohování nástroj třetí strany, který můžete zálohovat připojené sdílené složky. Azure Backup poskytuje zálohování souborů Azure. Další informace o [zálohování Azure sdílených složek pomocí Azure Backup](https://docs.microsoft.com/en-us/azure/backup/backup-azure-files).
 
 ## <a name="share-snapshots"></a>Snímky sdílené složky
+
 ### <a name="share-snapshots-general"></a>Sdílet snímky: Obecné
 * <a id="what-are-snaphots"></a>
 **Co jsou snímky sdílené složky?**  
@@ -262,10 +316,14 @@ Tento článek obsahuje odpovědi na běžné otázky o Azure Files funkce a fun
 * <a id="snapshot-limits"></a>
 **Existují omezení počtu snímků sdílené složky, které můžete použít?**  
     Ano. Služba soubory Azure uchovávat maximálně 200 sdílet snímky. Snímky sdílené složky se nepočítají do kvóta pro sdílenou složku, takže není nijak celkové místo, které používají všechny snímky sdílené složky za sdílené složky. Stále platí omezení účtu úložiště. Po snímků 200 sdílených složek je nutné odstranit starší snímky k vytvoření nových snímků sdílené složky.
+
 * <a id="snapshot-cost"></a>
-**Kolik sdílí náklady na snímku?**  
+**Kolik sdílí náklady na snímky?**  
     Standardní transakce a náklady na úložiště úrovně standard se bude vztahovat na snímek. Snímky se přičítají ze své podstaty. Je základní snímek sdílené složky, samotného. Všechny další snímky se přičítají a uloží pouze rozdíl od předchozího snímku. To znamená, že rozdílové změny, které se zobrazí ve vyúčtování bude minimální, pokud je minimální vaše klidové vytížení. Zobrazit [stránce s cenami](https://azure.microsoft.com/pricing/details/storage/files/) pro standardní informace o cenách službě soubory Azure. V dnešní době je způsob, jak se podívat na velikosti spotřebované snímku sdílené složky porovnáním billed kapacitu se kapacita využitá. Pracujeme na nástroje k vylepšení vytváření sestav.
 
+* <a id="ntfs-acls-snaphsots"></a>
+**Jsou seznamy ACL systému souborů NTFS na adresáře a soubory jako trvalý v snímků sdílené složky?**
+    Seznamy ACL systému souborů NTFS na adresářů a souborů se uchovávají v snímků sdílené složky.
 
 ### <a name="create-share-snapshots"></a>Vytvoření snímků sdílené složky
 * <a id="file-snaphsots"></a>
@@ -285,7 +343,7 @@ Tento článek obsahuje odpovědi na běžné otázky o Azure Files funkce a fun
 ### <a name="manage-share-snapshots"></a>Správa snímků sdílené složky
 * <a id="browse-snapshots-linux"></a>
 **Můžete procházet Moje snímků sdílené složky z Linuxu?**  
-    Vytváření, výpisu, procházení a obnovení snímků sdílené složky v systému Linux, můžete použít Azure CLI 2.0.
+    Vytváření, výpisu, procházení a obnovení snímků sdílené složky v systému Linux, můžete použít rozhraní příkazového řádku Azure.
 
 * <a id="copy-snapshots-to-other-storage-account"></a>
 **Můžete zkopírovat snímky sdílené složky do jiného účtu úložiště?**  

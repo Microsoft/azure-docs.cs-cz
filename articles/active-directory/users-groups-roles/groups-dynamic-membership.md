@@ -10,22 +10,22 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 09/20/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 9c0bb676cc59820d3ae83612893c8920d5d0aebe
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c3121f8b303d9f82ed949d598a942906d0d24f7e
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424367"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47041019"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Pravidla dynamického členství pro skupiny ve službě Azure Active Directory
 
 Ve službě Azure Active Directory (Azure AD) můžete vytvořit komplexní pravidla založená na atributu umožňující dynamickým členstvím ve skupinách. Členství v dynamické skupině snižuje administrativní režii potřebnou ke přidávání a odebírání uživatelů. Tento článek podrobně popisuje vlastnosti a syntaxe pro vytvoření pravidla dynamického členství pro uživatele nebo zařízení. Pravidlo pro dynamické členství můžete nastavit pro skupiny zabezpečení nebo pro skupiny Office 365.
 
-Když se změní libovolné atributy uživatele nebo zařízení, systém vyhodnotí všechna dynamická pravidla skupin v adresáři a zjistěte, jestli tato změna se aktivuje všechny skupiny přidá nebo odebere. Pokud uživatel nebo zařízení splňuje pravidlo pro skupinu, se přidají jako člena této skupiny. Pokud již uživatel pravidlo, se odeberou.
+Když se změní libovolné atributy uživatele nebo zařízení, systém vyhodnotí všechna dynamická pravidla skupin v adresáři a zjistěte, jestli tato změna se aktivuje všechny skupiny přidá nebo odebere. Pokud uživatel nebo zařízení splňuje pravidlo pro skupinu, se přidají jako člena této skupiny. Pokud již uživatel pravidlo, se odeberou. Nemůžete ručně přidat nebo odebrat členem dynamické skupiny.
 
 * Můžete vytvořit dynamické skupiny zařízení nebo uživatelů, ale nelze vytvořit pravidlo, které obsahuje uživatele a zařízení.
 * Nelze vytvořit skupinu zařízení na základě atributů zařízení vlastníků. Pravidla členství zařízení mohou odkazovat pouze na atributy zařízení.
@@ -101,7 +101,7 @@ Toto jsou vlastnosti uživatele, které vám umožní vytvořit jeden výraz.
 | Příjmení |Některé řetězcová hodnota nebo *null* |(user.surname - eq "value") |
 | telephoneNumber |Některé řetězcová hodnota nebo *null* |(user.telephoneNumber - eq "value") |
 | Místo využívání |Dvě lettered směrové číslo země |(user.usageLocation - eq "USA") |
-| userPrincipalName |Libovolnou hodnotou řetězce |(user.userPrincipalName -eq "alias@domain") |
+| userPrincipalName (Hlavní název uživatele) |Libovolnou hodnotou řetězce |(user.userPrincipalName -eq "alias@domain") |
 | UserType |člen hosta *null* |(user.userType - eq "Člen") |
 
 ### <a name="properties-of-type-string-collection"></a>Vlastnosti kolekce typu řetězec

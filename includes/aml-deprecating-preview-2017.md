@@ -1,0 +1,2 @@
+>[!Note]
+>**Tento článek je zastaralý.** Podpora pro starší verze této služby skončí postupně. [Zobrazení časové osy podpory](../articles/machine-learning/service/overview-what-happened-to-workbench.md#timeline). Začněte používat nejnovější verzi s tímto [rychlý Start](../articles/machine-learning/service/index.yml).

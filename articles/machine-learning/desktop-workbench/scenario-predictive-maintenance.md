@@ -12,14 +12,19 @@ ms.workload: data-services
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/05/2017
-ms.openlocfilehash: a5531ae256a263f1c34496819ac435ce67156b49
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: c154b0124acb5bee93211adb611356555526d2c0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35643391"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996209"
 ---
 # <a name="predictive-maintenance-for-real-world-scenarios"></a>Reálné scénáře prediktivní údržby
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Neplánované prostoje zařízení můžou mít pro řadu firem vážné důsledky. Je důležité mít pole zařízení pro maximalizaci využití a výkonu a minimalizovat tak prostoje nákladná, neplánované. Včasné identifikaci problémů pomáhají přidělit prostředky omezené údržby v nákladově efektivní způsob a vylepšení kvality a zadat řetězec procesy. 
 
@@ -41,10 +46,10 @@ Pro tato Simulovaná data obchodního problému je možnost předvídat problém
 ## <a name="prerequisites"></a>Požadavky
 
 * [Účtu Azure](https://azure.microsoft.com/free/) (bezplatné zkušební verze jsou k dispozici).
-* Nainstalovaná kopie produktu [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md). Postupujte podle [instalační příručky rychlý Start](../service/quickstart-installation.md) k instalaci a vytvoření pracovního prostoru.
+* Nainstalovaná kopie produktu [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md). Postupujte podle [instalační příručky rychlý Start](quickstart-installation.md) k instalaci a vytvoření pracovního prostoru.
 * Azure Machine Learning Operacionalizace vyžaduje prostředí pro místní nasazení a [účtu správy modelů Azure Machine Learning](model-management-overview.md).
 
-Tento příklad se spouští na libovolný výpočetní kontext aplikace Machine Learning Workbench. Však doporučujeme spustit příklad s minimálně 16 GB paměti. Tento scénář se sestaví a otestují na počítač s Windows 10 spuštění vzdálené standard DS4_V2 [dat virtuálního počítače VĚDY pro Linux (Ubuntu)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu).
+Tento příklad se spouští na libovolný výpočetní kontext aplikace Machine Learning Workbench. Však doporučujeme spustit příklad s minimálně 16 GB paměti. Tento scénář se sestaví a otestují na počítač s Windows 10 spuštění vzdálené standard DS4_V2 [dat virtuálního počítače VĚDY pro Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu).
 
 Operacionalizace modelu bylo provedeno pomocí 0.1.0a22 verze rozhraní příkazového řádku Azure Machine Learning.
 
@@ -71,7 +76,7 @@ Tento příkaz zjistí ověřovací klíč pro použití s https:\\aka.ms\device
 az ml experiment prepare --target docker --run-configuration docker
 ```
 
-Doporučuje se spouštět [DSVM pro Linux (Ubuntu)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) pro požadavky na paměť a disk. Po dokončení konfigurace datové VĚDY, připravte se na vzdáleném prostředí Dockeru pomocí následujících dvou příkazů:
+Doporučuje se spouštět [DSVM pro Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) pro požadavky na paměť a disk. Po dokončení konfigurace datové VĚDY, připravte se na vzdáleném prostředí Dockeru pomocí následujících dvou příkazů:
 
 ```
 az ml computetarget attach remotedocker --name [Connection_Name] --address [VM_IP_Address] --username [VM_Username] --password [VM_UserPassword]

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: c492709ca3da0f9f3ab4b1457be34dd5d6fc7b35
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 64c7985508ed7f03b32340cbb2c78de61242f7e1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391231"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46984275"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>Použití Azure Data Lake Storage Gen1 pro potřeby velkého objemu dat
 
@@ -40,7 +40,7 @@ To představuje menší datové sady, které se používá pro vytváření prot
 
 | Zdroj dat | Ingestování pomocí |
 | --- | --- |
-| Místní počítač |<ul> <li>[Azure Portal](data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Azure Cross-platform CLI 2.0](data-lake-store-get-started-cli-2.0.md)</li> <li>[Pomocí nástrojů Data Lake pro Visual Studio](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md) </li></ul> |
+| Místní počítač |<ul> <li>[Azure Portal](data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Azure CLI](data-lake-store-get-started-cli-2.0.md)</li> <li>[Pomocí nástrojů Data Lake pro Visual Studio](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md) </li></ul> |
 | Azure Storage Blob |<ul> <li>[Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)</li> <li>[Nástroj AdlCopy](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[DistCp běžící v clusteru HDInsight](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
 
 ### <a name="streamed-data"></a>Datové proudy
@@ -61,7 +61,7 @@ Můžete také zdroje dat z relačních databází. Po určitou dobu shromažďo
 ### <a name="web-server-log-data-upload-using-custom-applications"></a>Data protokolu webového serveru (nahrávání pomocí vlastních aplikací)
 Tento typ datové sady je konkrétně volat, protože analýzy dat protokolů webového serveru je běžným případem použití pro velké objemy dat aplikace a vyžaduje velké objemy soubory protokolů k nahrání do Data Lake Storage Gen1. K zápisu vlastních skriptů nebo aplikací k odeslání těchto dat můžete použít některý z následujících nástrojů.
 
-* [Azure Cross-platform CLI 2.0](data-lake-store-get-started-cli-2.0.md)
+* [Azure CLI](data-lake-store-get-started-cli-2.0.md)
 * [Azure PowerShell](data-lake-store-get-started-powershell.md)
 * [Azure Data Lake Storage Gen1 .NET SDK](data-lake-store-get-started-net-sdk.md)
 * [Azure Data Factory](../data-factory/copy-activity-overview.md)
@@ -81,7 +81,7 @@ Velké objemy dat mohou být uložena ve stávajících clusterů Hadoop, místn
 | Přístup | Podrobnosti | Výhody | Požadavky |
 | --- | --- | --- | --- |
 | Použití Azure Data Factory (ADF) ke kopírování dat do Azure Data Lake Storage Gen1 přímo z clusterů Hadoop |[ADF podporuje HDFS jako zdroj dat](../data-factory/connector-hdfs.md) |ADF poskytuje podporu out-of-the-box HDFS a prvotřídní end-to-end správy a monitorování |Vyžaduje bránu správy dat nasazená místně, nebo infrastruktury jako clusterů |
-| Exportujte dat z Hadoopu jako soubory. Zkopírujte soubory do Azure Data Lake Storage Gen1 pomocí vhodný mechanismus. |Zkopírujte soubory do Azure Data Lake Storage Gen1 pomocí: <ul><li>[Prostředí Azure PowerShell pro operační systém Windows](data-lake-store-get-started-powershell.md)</li><li>[Azure Cross-platform CLI 2.0 pro Windows OS](data-lake-store-get-started-cli-2.0.md)</li><li>Vlastní aplikace pomocí sady SDK všechny Data Lake Storage Gen1</li></ul> |Rychle začít. Můžete provést vlastní nahrávání |Vícefázový proces, který zahrnuje více technologií. Monitorování a správa přibude být problém v čase vzhledem k povaze vlastní nástroje |
+| Exportujte dat z Hadoopu jako soubory. Zkopírujte soubory do Azure Data Lake Storage Gen1 pomocí vhodný mechanismus. |Zkopírujte soubory do Azure Data Lake Storage Gen1 pomocí: <ul><li>[Prostředí Azure PowerShell pro operační systém Windows](data-lake-store-get-started-powershell.md)</li><li>[Azure CLI](data-lake-store-get-started-cli-2.0.md)</li><li>Vlastní aplikace pomocí sady SDK všechny Data Lake Storage Gen1</li></ul> |Rychle začít. Můžete provést vlastní nahrávání |Vícefázový proces, který zahrnuje více technologií. Monitorování a správa přibude být problém v čase vzhledem k povaze vlastní nástroje |
 | Použití Distcp ke kopírování dat z Hadoopu do služby Azure Storage. Zkopírujte data ze služby Azure Storage k Data Lake Storage Gen1 pomocí vhodný mechanismus. |Pomocí Data Lake Storage Gen1 můžete kopírování dat ze služby Azure Storage: <ul><li>[Azure Data Factory](../data-factory/copy-activity-overview.md)</li><li>[Nástroj AdlCopy](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[Apache DistCp spouštění v clusterech HDInsight](data-lake-store-copy-data-wasb-distcp.md)</li></ul> |Můžete použít open source nástroje. |Vícefázový proces, který zahrnuje více technologií |
 
 ### <a name="really-large-datasets"></a>Velmi rozsáhlé datové sady
@@ -121,7 +121,7 @@ V takovém případě můžete použít některý z následujících možností:
 
 Následující metody můžete také napsat vlastní skript nebo aplikaci stáhnout data z Data Lake Storage Gen1.
 
-* [Azure Cross-platform CLI 2.0](data-lake-store-get-started-cli-2.0.md)
+* [Azure CLI](data-lake-store-get-started-cli-2.0.md)
 * [Azure PowerShell](data-lake-store-get-started-powershell.md)
 * [Azure Data Lake Storage Gen1 .NET SDK](data-lake-store-get-started-net-sdk.md)
 

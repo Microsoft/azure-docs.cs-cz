@@ -13,14 +13,19 @@ ms.custom: mvc
 ms.devlang: ''
 ms.topic: article
 ms.date: 11/22/2017
-ms.openlocfilehash: 83e1f14db317f59ab2063a9d020adbdb6fe78e5f
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5d52433a32d8dc764c7535dacf5872e55f0082ac
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35644535"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995512"
 ---
 # <a name="deep-learning-for-predictive-maintenance-real-world-scenarios"></a>Obsáhlý learning k reálné scénáře prediktivní údržby
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Hloubkové učení je jedním z nejoblíbenějších trendy ve službě machine learning a má aplikací na mnoha oblastech, včetně:
 - Standardizovaných automobilů a robotika.
@@ -75,7 +80,7 @@ Tento příkaz zjistí ověřovací klíč pro použití s https:\\aka.ms\device
 az ml experiment prepare --target docker --run-configuration docker
 ```
 
-Doporučuje se spouštět [dat virtuálního počítače VĚDY pro Linux (Ubuntu)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) pro požadavky na paměť a disk. Po dokončení konfigurace datové VĚDY, připravte se na vzdáleném prostředí Dockeru pomocí následujících dvou příkazů:
+Doporučuje se spouštět [dat virtuálního počítače VĚDY pro Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) pro požadavky na paměť a disk. Po dokončení konfigurace datové VĚDY, připravte se na vzdáleném prostředí Dockeru pomocí následujících dvou příkazů:
 
 ```
 az ml computetarget attach remotedocker --name [Connection_Name] --address [VM_IP_Address] --username [VM_Username] --password [VM_UserPassword]

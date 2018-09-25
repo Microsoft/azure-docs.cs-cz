@@ -1,6 +1,6 @@
 ---
 title: Šifrování disků pro Azure škálovací sady pomocí rozhraní příkazového řádku Azure | Dokumentace Microsoftu
-description: Zjistěte, jak použít rozhraní příkazového řádku Azure CLI 2.0 k šifrování instancí virtuálních počítačů a připojených disků ve škálovací sadě virtuálních počítačů Linux
+description: Zjistěte, jak používat rozhraní příkazového řádku Azure k šifrování instancí virtuálních počítačů a připojených disků ve škálovací sadě virtuálních počítačů Linux
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: cynthn
-ms.openlocfilehash: a01a0ae09b91b550af4617a46f7c0d8647a5f4be
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fecf7e121b1c0404f1ec67d46cc88008250b9d68
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38704551"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981055"
 ---
-# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli-20-preview"></a>Šifrování operačního systému a připojené datové disky ve virtuálním počítači škálovací sadě pomocí Azure CLI 2.0 (Preview)
+# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli-preview"></a>Šifrování operačního systému a připojené datové disky ve virtuálním počítači škálovací sadě pomocí Azure CLI (Preview)
 
 Pro ochranu dat v klidovém stavu pomocí standardní šifrovací technologie, podporují škálovací sady virtuálních počítačů Azure Disk Encryption (ADE). Šifrování je možné povolit pro systémy Linux a Windows virtuálního počítače škálovací sady. Další informace najdete v tématu [Azure Disk Encryption pro systémy Linux a Windows](../security/azure-security-disk-encryption.md).
 
@@ -38,7 +38,7 @@ Azure disk encryption je podporována:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, tento kurz vyžaduje použití Azure CLI verze 2.0.31 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, tento kurz vyžaduje použití Azure CLI verze 2.0.31 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="register-for-disk-encryption-preview"></a>Zaregistrovat se na disk encryption ve verzi preview
 
@@ -180,6 +180,6 @@ az vmss encryption disable --resource-group myResourceGroup --name myScaleSet
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku se používá rozhraní příkazového řádku Azure CLI 2.0 k šifrování škálovací sadu virtuálních počítačů. Můžete také použít [prostředí Azure PowerShell](virtual-machine-scale-sets-encrypt-disks-ps.md) nebo šablony pro [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox) nebo [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox).
+V tomto článku se používá rozhraní příkazového řádku Azure k šifrování škálovací sadu virtuálních počítačů. Můžete také použít [prostředí Azure PowerShell](virtual-machine-scale-sets-encrypt-disks-ps.md) nebo šablony pro [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox) nebo [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox).
 
 Příklad souboru začátku do konce dávky pro Linux škálovací sady dat šifrování disku najdete [tady](https://gist.githubusercontent.com/ejarvi/7766dad1475d5f7078544ffbb449f29b/raw/03e5d990b798f62cf188706221ba6c0c7c2efb3f/enable-linux-vmss.bat). Tento příklad vytvoří skupinu prostředků, škálovací sady pro Linux, připojí disk 5 GB dat a šifruje škálovací sadu virtuálních počítačů.

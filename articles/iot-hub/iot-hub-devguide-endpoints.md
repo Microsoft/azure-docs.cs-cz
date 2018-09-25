@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: bf23046b8a80b02bc1667f647cb1d475503a8feb
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: e6b4ee3425f6a490f33f998cab4f33734b23df22
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125772"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982099"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Reference – koncové body IoT Hubu
 
@@ -61,7 +61,7 @@ Použít všechny koncové body IoT Hubu [TLS] [ lnk-tls] protokol a žádný ko
 
 ## <a name="custom-endpoints"></a>Vlastní koncové body
 
-Můžete propojit existující služby Azure ve vašem předplatném tak, aby fungoval jako koncové body pro směrování zpráv služby IoT hub. Tyto koncové body fungují jako koncové body služby a slouží jako jímky pro směrování zpráv. Zařízení nemůže zapisovat přímo do další koncové body. Další informace o směrování zpráv, naleznete v příspěvku Příručka pro vývojáře na [odesílání a příjem zpráv pomocí služby IoT hub][lnk-devguide-messaging].
+Můžete propojit existující služby Azure ve vašem předplatném tak, aby fungoval jako koncové body pro směrování zpráv služby IoT hub. Tyto koncové body fungují jako koncové body služby a slouží jako jímky pro směrování zpráv. Zařízení nemůže zapisovat přímo do další koncové body. Další informace o [směrování zpráv](../iot-hub/iot-hub-devguide-messages-d2c.md).
 
 Následující služby Azure IoT Hub aktuálně podporuje jako další koncové body:
 
@@ -70,32 +70,7 @@ Následující služby Azure IoT Hub aktuálně podporuje jako další koncové 
 * Fronty služby Service Bus
 * Témata služby Service Bus
 
-IoT Hub potřebuje oprávnění k zápisu do těchto koncových bodů služby pro směrování zpráv do práce. Při konfiguraci vašich koncových bodů na webu Azure portal, potřebná oprávnění jsou přidány automaticky. Ujistěte se, že konfigurace služeb pro podporu očekávané propustnosti. Při první konfiguraci řešení IoT, budete muset monitorovat další koncové body a proveďte všechny nezbytné úpravy podle skutečné zátěže.
-
-Pokud zpráva odpovídá více tras odkazujících na stejný koncový bod, IoT Hub doručí zprávu do tohoto koncového bodu pouze jednou. Proto není potřeba konfigurace odstranění duplicitních dat na frontu služby Service Bus nebo téma. V dělené fronty oddílu spřažení záruky pořadí zpráv.
-
 Omezení pro počet koncových bodů můžete přidat, naleznete v tématu [kvóty a omezování][lnk-devguide-quotas].
-
-### <a name="when-using-azure-storage-containers"></a>Při použití kontejnery služby Azure Storage
-
-IoT Hub podporuje pouze zápis dat do služby Azure Storage kontejnery jako objekty BLOB v [Apache Avro](http://avro.apache.org/) formátu. IoT Hub dávek zpráv a zapisuje data do objektu blob pokaždé, když:
-
-* Dávka dosáhne určité velikosti.
-* Nebo uplynutí určité doby.
-
-IoT Hub bude zapisovat do prázdný objekt blob, pokud neexistuje žádná data k zápisu.
-
-Výchozí nastavení služby IoT Hub následujícími zásadami vytváření názvů souborů:
-
-```
-{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}
-```
-
-Můžete použít jakýkoli soubor konvence, kterou požadujete, ale je nutné použít všechny uvedené tokeny.
-
-### <a name="when-using-service-bus-queues-and-topics"></a>Při použití fronty a témata Service Bus
-
-Fronty služby Service Bus a témat použít jako nesmí obsahovat koncové body IoT Hubu **relace** nebo **duplicit** povolena. Pokud některý z těchto možností jsou povolené, koncový bod se zobrazí jako **Unreachable** na webu Azure Portal.
 
 ## <a name="field-gateways"></a>Bran v terénu
 

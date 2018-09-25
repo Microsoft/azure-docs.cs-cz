@@ -8,28 +8,29 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 03/16/2018
+ms.date: 09/20/2018
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: aa031b87df51bd9f7dec40a6c3e56023e2d82d96
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 2c848ba87d7f42f6329e7b3166a4410cadbd63a0
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579492"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037945"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrik a protokolování diagnostiky 
-Azure SQL Database můžete generovat metriky a diagnostické protokoly pro snazší monitorování. SQL Database můžete nakonfigurovat pro ukládání využití prostředků, pracovních procesů, relací a možností připojení do jednoho z těchto prostředků Azure:
 
-* **Azure Storage**: používá pro archivaci obrovských objemů telemetrických dat za nízkou cenu.
+Azure SQL Database a databází Managed Instance můžete generovat metriky a diagnostické protokoly pro snazší monitorování výkonu. Můžete nakonfigurovat databázi pro datový proud využití prostředků, pracovních procesů a relací a možností připojení do jednoho z těchto prostředků Azure:
+
+* **Azure SQL Analytics**: použít jako integrované databáze Azure inteligentní výkon řešení s generování sestav, upozorňování a snížení rizik souvisejících s možností monitorování.
 * **Azure Event Hubs**: použít pro integraci telemetrických dat služby SQL Database s vlastními řešeními monitorování nebo aktivními kanály.
-* **Azure Log Analytics**: použít pro řešení monitorování v out-of-the-box s generování sestav, upozorňování a snížení rizik souvisejících s možností. Tato funkce je součástí [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md).
+* **Azure Storage**: používá pro archivaci obrovských objemů telemetrických dat za nízkou cenu.
 
     ![Architektura](./media/sql-database-metrics-diag-logging/architecture.png)
 
-## <a name="enable-logging"></a>Povolit protokolování
+## <a name="enable-logging-for-a-database"></a>Povolení protokolování pro databázi
 
-Ve výchozím nastavení není povoleno protokolování Diagnostika a metriky. Můžete povolit a spravovat metrik a diagnostických nástrojů protokolování pomocí jedné z následujících metod:
+Diagnostika protokolování pro SQL Database nebo spravované Instance databáze a metriky není standardně povolená. Můžete povolit a spravovat Diagnostika a metriky telemetrická data protokolování na databázi pomocí jedné z následujících metod:
 
 - portál Azure
 - PowerShell
@@ -37,40 +38,56 @@ Ve výchozím nastavení není povoleno protokolování Diagnostika a metriky. M
 - Rozhraní REST API služby Azure Monitor 
 - Šablona Azure Resource Manageru
 
-Když povolíte metrik a protokolování diagnostiky, je třeba zadat prostředek Azure, kde se shromažďují data vybrané. Dostupné možnosti zahrnují:
+Když povolíte metrik a protokolování diagnostiky, je třeba zadat prostředek Azure, kde budou shromažďovány vybraná data. Dostupné možnosti zahrnují:
 
-- Log Analytics
+- SQL Analytics
 - Event Hubs
 - Úložiště 
 
-Můžete zřídit nového prostředku Azure nebo si vybrat existující prostředek. Po výběru prostředků úložiště, musíte zadat shromažďovaných údajů. Dostupné možnosti zahrnují:
+Můžete zřídit nového prostředku Azure nebo si vybrat existující prostředek. Po výběru prostředku, pomocí databáze možnost nastavení diagnostiky, musíte zadat shromažďovaných údajů. Mezi dostupné možnosti, díky podpoře pro Azure SQL Database a spravované instanci databáze patří:
 
-- [Všechny metriky](sql-database-metrics-diag-logging.md#all-metrics): procento obsahuje DTU, omezení jednotek DTU, procentuální využití procesoru, fyzické data načtená procento, protokolu zapisovat procento, úspěšné nebo neúspěšné/zablokovaný připojení brány firewall, procento relací, procento pracovních procesů, úložiště, procento úložiště a procento úložiště XTP.
-- [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics): obsahuje informace o statistiku modulu runtime dotazu, jako je například doba využití procesoru využití a dotazu.
-- [QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics): obsahuje informace o statistiky čekání dotazu, který vás informuje, co vaše dotazy čekat, jako jsou procesor, protokol a UZAMČENÍ.
-- [Chyby](sql-database-metrics-diag-logging.md#errors-dataset): obsahuje informace o chybách SQL, ke kterým došlo u této databáze.
-- [DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-wait-statistics-dataset): obsahuje informace o tom, kolik času databázi strávený čeká čekání různých typů.
-- [Vypršení časových limitů](sql-database-metrics-diag-logging.md#time-outs-dataset): obsahuje informace o časových limitů, ke které došlo v databázi.
-- [Bloky](sql-database-metrics-diag-logging.md#blockings-dataset): obsahuje informace o blokování události, ke kterým došlo v databázi.
-- [SQLInsights](sql-database-metrics-diag-logging.md#intelligent-insights-dataset): obsahuje užitečné přehledy. [Další informace o inteligentních přehledů](sql-database-intelligent-insights.md).
-- **Audit** / **SQLSecurityAuditEvents**: aktuálně není k dispozici.
+| Monitorování telemetrických dat | Podpora Azure SQL Database | Databáze v podpoře Managed Instance |
+| :------------------- | ------------------- | ------------------- |
+| [Všechny metriky](sql-database-metrics-diag-logging.md#all-metrics): obsahuje DTU a procesoru procento DTU a procesoru omezit, fyzické data načtená procento, procento zápisu protokolu, úspěšné nebo neúspěšné/zablokovaný připojení brány firewall, procento relací, procento pracovních procesů, úložiště, procento úložiště, a Procento úložiště XTP. | Ano | Ne |
+| [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics): obsahuje informace o statistiku modulu runtime dotazu, jako je využití procesoru a dotazování Statistika trvání. | Ano | Ano |
+| [QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics): obsahuje informace o statistiky čekání dotazu, který vás informuje, co vaše dotazy čekat, jako jsou procesor, protokol a UZAMČENÍ. | Ano | Ano |
+| [Chyby](sql-database-metrics-diag-logging.md#errors-dataset): obsahuje informace o chybách SQL, ke kterým došlo u této databáze. | Ano | Ne |
+| [DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-wait-statistics-dataset): obsahuje informace o tom, kolik času databázi strávený čeká čekání různých typů. | Ano | Ne |
+| [Vypršení časových limitů](sql-database-metrics-diag-logging.md#time-outs-dataset): obsahuje informace o časových limitů, ke které došlo v databázi. | Ano | Ne |
+| [Bloky](sql-database-metrics-diag-logging.md#blockings-dataset): obsahuje informace o blokování události, ke kterým došlo v databázi. | Ano | Ne |
+| [SQLInsights](sql-database-metrics-diag-logging.md#intelligent-insights-dataset): obsahuje užitečné přehledy o výkonu. [Další informace o inteligentních přehledů](sql-database-intelligent-insights.md). | Ano | Ano |
+
+**Mějte prosím na paměti**: protokoly auditu a SQLSecurityAuditEvents používat, i když tyto možnosti jsou k dispozici v nastavení diagnostiky databáze, tyto protokoly povolena pouze prostřednictvím **auditování SQL** řešení ke konfiguraci datový proud telemetrických dat do Log Analytics, Centrum událostí nebo úložiště.
 
 Pokud vyberete služby Event Hubs nebo účet úložiště, můžete zadat zásady uchovávání informací. Tato zásada odstraňuje data, která je starší než vybrané časové období. Pokud chcete zadat Log Analytics, zásady uchovávání informací, závisí na vybrané cenové úrovně. Další informace najdete v tématu [přehledu cen Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/). 
 
-Zjistěte, jak povolit protokolování a pochopit kategorie metrik a protokolů, které podporují různé služby Azure, doporučujeme, abyste si přečetli: 
+## <a name="enable-logging-for-elastic-pools-or-managed-instance"></a>Povolení protokolování pro elastické fondy nebo spravované Instance
+
+Metriky a elastické fondy protokolování diagnostiky nebo spravované Instance není standardně povolená. Můžete povolit a spravovat metrik a protokolování telemetrická data diagnostiky pro elastický fond nebo spravované Instance. Následující data jsou k dispozici pro kolekci:
+
+| Monitorování telemetrických dat | Podpora elastického fondu | Managed Instance podpory |
+| :------------------- | ------------------- | ------------------- |
+| [Všechny metriky](sql-database-metrics-diag-logging.md#all-metrics) (elastické fondy): obsahuje procento eDTU a využití procesoru, limit eDTU/procesoru, fyzických čtení dat procento, protokolu zapisovat, procento, procento relací, procento pracovních procesů, úložiště, procento úložiště, limit úložiště a XTP úložiště . | Ano | neuvedeno |
+| [ResourceUsageStats](sql-database-metrics-diag-logging.md#resource-usage-stats) (Managed Instance): obsahuje počet virtuálních jader, průměrné procento využití procesoru, vstupně-výstupní požadavky, načtených/zapsaných bajtů, vyhrazený úložný prostor, používá prostor úložiště. | neuvedeno | Ano |
+
+Vysvětlení metrik a protokolů kategorií, které podporují různé služby Azure, doporučujeme, abyste si přečetli:
 
 * [Přehled metrik v Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
 * [Přehled protokoly diagnostiky Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) 
 
 ### <a name="azure-portal"></a>portál Azure
 
-1. Chcete-li povolit Diagnostika a metriky shromažďování protokolů na portálu, přejděte k vaší databázi nebo elastický fond stránky a vyberte **nastavení diagnostiky**.
+- Povolit metriky a diagnostické protokoly kolekce fir SQL Database nebo spravované Instance databáze, přejděte k vaší databázi a pak vyberte **nastavení diagnostiky**. Vyberte **+ přidat nastavení diagnostiky** nakonfigurovat nové nastavení, nebo **upravit nastavení** Úprava existujícího nastavení.
 
    ![Povolit na webu Azure Portal](./media/sql-database-metrics-diag-logging/enable-portal.png)
 
-2. Vytvořit novou nebo upravit stávající nastavení diagnostiky tak, že vyberete cíl a telemetrická data.
+- Pro **Azure SQL Database** vytvořit novou nebo upravit stávající nastavení diagnostiky tak, že vyberete cíl a telemetrická data.
 
    ![Nastavení diagnostiky](./media/sql-database-metrics-diag-logging/diagnostics-portal.png)
+
+- Pro **Managed Instance databáze** vytvořit novou nebo upravit stávající nastavení diagnostiky tak, že vyberete cíl a telemetrická data.
+
+   ![Nastavení diagnostiky](./media/sql-database-metrics-diag-logging/diagnostics-portal-mi.png)
 
 ### <a name="powershell"></a>PowerShell
 
@@ -174,7 +191,7 @@ Monitorování fleet databáze SQL je jednoduchý s Log Analytics. Vyžadují se
 
 2. Konfigurace databáze do záznamu metriky a diagnostické protokoly v prostředku Log Analytics, který jste vytvořili.
 
-3. Nainstalujte **Azure SQL Analytics** řešení v galerii ve službě Log Analytics.
+3. Nainstalujte **Azure SQL Analytics** řešení z Azure Marketplace.
 
 ### <a name="create-a-log-analytics-resource"></a>Vytvoření prostředku Log Analytics
 
@@ -259,15 +276,52 @@ Zjistěte, jak [stažení Diagnostika a metriky protokolů ze služby Storage](.
 
 ## <a name="metrics-and-logs-available"></a>Metriky a protokoly, které jsou k dispozici
 
-### <a name="all-metrics"></a>Všechny metriky
+Ve spravované instanci najdete podrobný obsah monitorování telemetrie metrik a protokolů, které jsou k dispozici pro Azure SQL Database, elastické fondy, Managed Instance a databáze.
+
+## <a name="all-metrics"></a>Všechny metriky
+
+### <a name="all-metrics-for-elastic-pools"></a>Všechny metriky pro elastické fondy
 
 |**Prostředek**|**Metriky**|
 |---|---|
-|Databáze|Procento DTU DTU použít, omezení jednotek DTU, procentuální využití procesoru, procento fyzických datových čtení, zápisu protokolu procento, úspěšné nebo neúspěšné/zablokovaný připojení brány firewall, procento relací, procento pracovních procesů, úložiště, procento úložiště, procento XTP úložiště, a zablokování |
 |Elastický fond|Procento eDTU eDTU používá, omezení eDTU, procentuální využití procesoru, procentuální čtení fyzické, protokolu zapisovat, procento, procento relací, procento pracovních procesů, úložiště, procento úložiště, limit úložiště, XTP procento úložiště |
-|||
 
-### <a name="logs"></a>Logs
+### <a name="all-metrics-for-azure-sql-database"></a>Všechny metriky pro službu Azure SQL Database
+
+|**Prostředek**|**Metriky**|
+|---|---|
+|Azure SQL Database|Procento DTU DTU použít, omezení jednotek DTU, procentuální využití procesoru, procento fyzických datových čtení, zápisu protokolu procento, úspěšné nebo neúspěšné/zablokovaný připojení brány firewall, procento relací, procento pracovních procesů, úložiště, procento úložiště, procento XTP úložiště, a zablokování |
+
+## <a name="logs"></a>Logs
+
+### <a name="logs-for-managed-instance"></a>Protokoly pro spravovanou instanci
+
+### <a name="resource-usage-stats"></a>Statistika využití prostředků
+
+|Vlastnost|Popis|
+|---|---|
+|ID Tenanta|ID vašeho tenanta.|
+|SourceSystem|Vždy: Azure|
+|TimeGenerated [UTC]|Časové razítko, kdy se přihlášení v protokolu.|
+|Typ|Vždy: AzureDiagnostics|
+|ResourceProvider|Název poskytovatele prostředků. Vždy: MICROSOFT. SQL|
+|Kategorie|Název kategorie. Vždy: ResourceUsageStats|
+|Prostředek|Název prostředku.|
+|ResourceType|Název typu prostředku. Vždy: MANAGEDINSTANCES|
+|SubscriptionId|GUID, které databáze patří do předplatného.|
+|ResourceGroup|Název skupiny prostředků, které databáze patří.|
+|LogicalServerName_s|Název spravované instance.|
+|ID prostředku|Identifikátor URI prostředku.|
+|SKU_s|SKU produktu spravované Instance|
+|virtual_core_count_s|Numver dostupná virtuální jádra|
+|avg_cpu_percent_s|Průměrné procento CPU|
+|reserved_storage_mb_s|Kapacita vyhrazeného úložiště na Managed Instance|
+|storage_space_used_mb_s|Využité úložiště na Managed Instance|
+|io_requests_s|Počet vstupně-výstupních operací|
+|io_bytes_read_s|Přečtené bajty vstupně-výstupních operací|
+|io_bytes_written_s|Zapsané bajty vstupně-výstupních operací|
+
+### <a name="logs-for-azure-sql-database-and-managed-instance-database"></a>Protokoly pro databázi Azure SQL Database a Managed Instance
 
 ### <a name="query-store-runtime-statistics"></a>Statistické údaje o Query Store
 

@@ -11,14 +11,17 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: a68e7cfe2966592861f3fb58c99327c5849a6004
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 6b5a45bfcfc02c6b313e868fb3ba037ce3ba48c9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721592"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967570"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Vazby Mobile Apps pro službu Azure Functions 
+
+> [!NOTE]
+> Azure Mobile Apps vazby jsou dostupné jenom pro Azure Functions 1.x. Nejsou podporované ve službě Azure Functions 2.x.
 
 Tento článek vysvětluje, jak pracovat s [Azure Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) vazby ve službě Azure Functions. Azure Functions podporuje vstupní a výstupní vazby pro Mobile Apps.
 
@@ -31,12 +34,6 @@ Vazby Mobile Apps vám umožní číst a aktualizovat tabulky dat v mobilních a
 Vazby Mobile Apps jsou součástí [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) balíčku NuGet, verzi 1.x. Zdrojový kód pro tento balíček je v [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.MobileApps/) úložiště GitHub.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
-
-## <a name="packages---functions-2x"></a>Balíčky – funkce 2.x
-
-Vazby Mobile Apps jsou součástí [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) balíčku NuGet, verze 3.x. Zdrojový kód pro tento balíček je v [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/) úložiště GitHub.
-
-[!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="input"></a>Vstup
 

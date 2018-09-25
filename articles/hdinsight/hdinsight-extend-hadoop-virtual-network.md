@@ -8,14 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/26/2018
-ms.openlocfilehash: 659c33ec0e989003e68b5165fab70f50c607868c
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 98c62f54e2413bd67600db182c452d0d5965f239
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39591877"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972177"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozšíření Azure HDInsight pomocí Azure Virtual Network
+
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 Zjistěte, jak používat HDInsight s [Azure Virtual Network](../virtual-network/virtual-networks-overview.md). Použití služby Azure Virtual Network umožňuje následující scénáře:
 
@@ -70,7 +72,7 @@ Pomocí kroků v této části zjistíte, jak přidat nové HDInsight do existuj
 
     HDInsight je hostitelem více služeb, které používají různé porty. Neblokujete provoz na těchto portech. Seznam portů, aby přes virtuální zařízení brány firewall, najdete v článku [zabezpečení](#security) oddílu.
 
-    Najít existující konfiguraci zabezpečení, použijte následující příkazy prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure:
+    Najít existující konfiguraci zabezpečení, použijte následující příkazy prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure Classic:
 
     * Skupiny zabezpečení sítě
 
@@ -107,7 +109,7 @@ Pomocí kroků v této části zjistíte, jak přidat nové HDInsight do existuj
 
     * [Vytvoření HDInsight pomocí webu Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md)
     * [Vytvoření HDInsight pomocí Azure PowerShellu](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
-    * [Vytvoření HDInsight pomocí Azure CLI 1.0](hdinsight-hadoop-create-linux-clusters-azure-cli.md)
+    * [Vytvoření HDInsight pomocí rozhraní příkazového řádku Azure Classic](hdinsight-hadoop-create-linux-clusters-azure-cli.md)
     * [Vytvoření HDInsight pomocí šablony Azure Resource Manageru](hdinsight-hadoop-create-linux-clusters-arm-templates.md)
 
   > [!IMPORTANT]
@@ -441,7 +443,7 @@ $vnet | Set-AzureRmVirtualNetwork
 > Add-AzureRmNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 306 -Direction Inbound
 > ```
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-classic-cli"></a>Klasické rozhraní příkazového řádku Azure
 
 Následujícím postupem vytvoření virtuální sítě, které omezují příchozí provoz, ale umožní provoz z IP adresy vyžaduje HDInsight.
 
@@ -510,7 +512,7 @@ Tento příklad vytvoří následující předpoklady:
 
 Na vlastní server DNS ve virtuální síti:
 
-1. Najít příponu DNS virtuální sítě pomocí Azure Powershellu nebo rozhraní příkazového řádku Azure:
+1. Najít příponu DNS virtuální sítě pomocí Azure Powershellu nebo rozhraní příkazového řádku Azure Classic:
 
     ```powershell
     $resourceGroupName = Read-Input -Prompt "Enter the resource group that contains the virtual network used with HDInsight"
@@ -592,7 +594,7 @@ Tento příklad vytvoří následující předpoklady:
 
 * [Vytvoření vazby](https://www.isc.org/downloads/bind/) je nainstalován na vlastních serverech DNS.
 
-1. Najít příponu DNS obě virtuální sítě pomocí Azure Powershellu nebo rozhraní příkazového řádku Azure:
+1. Najít příponu DNS obě virtuální sítě pomocí Azure Powershellu nebo rozhraní příkazového řádku Azure Classic:
 
     ```powershell
     $resourceGroupName = Read-Input -Prompt "Enter the resource group that contains the virtual network used with HDInsight"

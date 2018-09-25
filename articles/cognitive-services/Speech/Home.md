@@ -10,12 +10,13 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 637259b2fac46cf2c903c1986e6dfb303fe89408
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3b4ab55f4bd8bbd66f2edc8c262524169c79d7f5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366250"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46975629"
 ---
 # <a name="what-is-bing-speech"></a>Co je pro zpracování řeči Bingu?
 

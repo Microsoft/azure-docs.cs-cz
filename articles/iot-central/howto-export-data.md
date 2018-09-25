@@ -5,15 +5,15 @@ services: iot-central
 author: viv-liu
 ms.author: viviali
 ms.date: 09/18/2018
-ms.topic: article
-ms.service: azure-iot-central
+ms.topic: conceptual
+ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: a1a7e6a62a88057cc8bc512a0c46de79a55ccd53
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 86128abd82ee41459a84fc7d9169042179807793
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368133"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034905"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Exportujte data v Azure IoT Central
 

@@ -8,20 +8,20 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/16/2018
+ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: f7299b9193c5ab24431feb9c73a0a3cf97596da3
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 4e40a731530e9423c7be6f2e2449aad970bb327c
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734937"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040240"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Reference k nastavení aplikací pro službu Azure Functions
 
 Nastavení aplikace v aplikaci function app obsahovat globální konfiguraci možností, které ovlivňují všechny funkce pro tuto aplikaci function app. Když spouštíte místně, tato nastavení jsou v seznamu proměnných prostředí. Tento článek uvádí nastavení aplikace, které jsou k dispozici v aplikace function App.
 
-[! Zahrnout [nastavení aplikace Function app] (.. /.. /Includes/Functions-App-Settings.MD]
+[!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
 Existují další možnosti globální konfiguraci v [host.json](functions-host-json.md) souboru a [local.settings.json](functions-run-local.md#local-settings-file) souboru.
 
@@ -40,6 +40,9 @@ Připojovací řetězec účtu volitelné úložiště pro ukládání protokol�
 |Klíč|Ukázková hodnota|
 |---|------------|
 |AzureWebJobsDashboard|DefaultEndpointsProtocol = https; AccountName = [název]; AccountKey = [klíč]|
+
+> [!TIP]
+> Pro činnosti a výkonu se doporučuje pro účely sledování místo AzureWebJobsDashboard APPINSIGHTS_INSTRUMENTATIONKEY a App Insights
 
 ## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
@@ -111,11 +114,19 @@ Platné hodnoty jsou "readwrite" a "jen pro čtení".
 
 ## <a name="functionsextensionversion"></a>FUNKCE\_ROZŠÍŘENÍ\_VERZE
 
-Verze modulu runtime Azure Functions pro použití v této aplikace function app. Tilda s hlavní verzí znamená, že používat nejnovější verzi Tato hlavní verze (například "~ 1"). Když jsou k dispozici nová verze pro stejný hlavní verze, jsou automaticky nainstalovány do aplikace function App. Chcete-li připnout aplikaci na konkrétní verzi, použijte celé číslo verze (například "1.0.12345"). Výchozí hodnota je "~ 1".
+Verze modulu runtime Azure Functions pro použití v této aplikace function app. Tilda s hlavní verzí znamená, že používat nejnovější verzi Tato hlavní verze (například "~ 2"). Když jsou k dispozici nová verze pro stejný hlavní verze, jsou automaticky nainstalovány do aplikace function App. Chcete-li připnout aplikaci na konkrétní verzi, použijte celé číslo verze (například "2.0.12345"). Výchozí hodnota je "~ 2".
 
 |Klíč|Ukázková hodnota|
 |---|------------|
-|FUNKCE\_ROZŠÍŘENÍ\_VERZE|~1|
+|FUNKCE\_ROZŠÍŘENÍ\_VERZE|~ 2|
+
+## <a name="functionsworkerruntime"></a>FUNKCE\_PRACOVNÍHO PROCESU\_MODULU RUNTIME
+
+Pracovního procesu CLR pro načtení do aplikace function App.  To bude odpovídat jazyku používán ve vaší aplikaci (například "dotnet"). Pro funkce v několika jazycích, je potřeba publikovat je do více aplikacemi, každý s odpovídající hodnotou modulu runtime pracovního procesu.  Platné hodnoty jsou `dotnet`, `node`, a `java`.
+
+|Klíč|Ukázková hodnota|
+|---|------------|
+|FUNKCE\_PRACOVNÍHO PROCESU\_MODULU RUNTIME|DotNet|
 
 ## <a name="websitecontentazurefileconnectionstring"></a>WEBSITE_CONTENTAZUREFILECONNECTIONSTRING
 
@@ -138,19 +149,19 @@ Pro pouze plány consumption. Cesta k souboru kódu aplikace funkcí a konfigura
 Maximální počet instancí, které aplikace function app můžete horizontální navýšení kapacity na. Výchozí hodnota je neomezený.
 
 > [!NOTE]
-> Toto nastavení je pro funkci ve verzi preview.
+> Toto nastavení je ve verzi preview funkce – a pouze spolehlivé if nastaven na hodnotu < = 5
 
 |Klíč|Ukázková hodnota|
 |---|------------|
-|WEB\_MAXIMÁLNÍ\_DYNAMICKÉ\_APLIKACE\_ŠKÁLOVÁNÍ\_NAVÝŠENÍ KAPACITY|10|
+|WEB\_MAXIMÁLNÍ\_DYNAMICKÉ\_APLIKACE\_ŠKÁLOVÁNÍ\_NAVÝŠENÍ KAPACITY|5|
 
 ## <a name="websitenodedefaultversion"></a>WEB\_UZEL\_DEFAULT_VERSION
 
-Výchozí hodnota je "6.5.0".
+Výchozí hodnota je "8.11.1".
 
 |Klíč|Ukázková hodnota|
 |---|------------|
-|WEB\_UZEL\_DEFAULT_VERSION|6.5.0|
+|WEB\_UZEL\_DEFAULT_VERSION|8.11.1|
 
 ## <a name="websiterunfrompackage"></a>WEB\_SPUSTIT\_FROM\_BALÍČKU
 

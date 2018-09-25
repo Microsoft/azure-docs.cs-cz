@@ -9,12 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: yizhon
-ms.openlocfilehash: 4f8ad67fafa20fd9adce62e8beb619999203ef62
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: db9c22acfba0f6f1781348b36a1d253a515cc063
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346657"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977262"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Pro zařízení Azure IoT SDK pro jazyk C
 
@@ -71,7 +71,7 @@ Existuje několik opensourcových nástrojů, které vám pomohou při správě 
 
 * Aplikace Windows s názvem [Průzkumník zařízení](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer).
 * Volá se, Visual Studio Code příponou napříč platformami [Azure IoT Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
-* Nástroje Python CLI napříč platformami volá [rozšíření IoT pro Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension).
+* Python – multiplatformního rozhraní příkazového řádku volá [rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension).
 
 Tento kurz používá grafickém *Průzkumník zařízení* nástroj. Můžete použít *rozšíření Azure IoT Toolkit pro VS Code* při vývoji v nástroji VS Code. Můžete také použít *rozšíření IoT pro Azure CLI 2.0* nástroj, pokud byste radši chtěli použít nástroj příkazového řádku.
 

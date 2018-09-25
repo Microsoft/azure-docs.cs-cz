@@ -1,24 +1,25 @@
 ---
-title: Integrace LUIS s využitím botu pomocí Bot Builder SDK pro Node.js v Azure | Dokumentace Microsoftu
+title: Služba LUIS robotů s Node.js – Web app Bot - Bot Framework 3.0 SDK
+titleSuffix: Azure Cognitive Services
 description: Vytvořte robota, integrovaná aplikace LUIS pomocí rozhraní Bot Framework.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 6d6937105b11d94138b51660dc9f3c5e682e19bc
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 0bd191da3f2625bc202ee66100e7dac25d9d65de
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224071"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042325"
 ---
-# <a name="integrate-luis-with-a-bot-using-the-bot-builder-sdk-for-nodejs"></a>Integrace LUIS s využitím botu pomocí Bot Builder SDK pro Node.js
+# <a name="luis-bot-in-nodejs"></a>Služba LUIS robotů v Node.js
 
-Tento kurz vás provede postupem vytvoření robotů s [Bot Framework] [ BotFramework] , která je integrovaná s využitím aplikace LUIS.
+Pomocí Node.js, sestavení je chatovací robot součástí jazyka (LUIS). Tuto chatovací robot používá předem připravených HomeAutomation doménu k rychlé implementaci řešení robota. Robot využívá rozhraní Bot Framework 3.x a použijete Azure Web app bot.
 
 ## <a name="prerequisite"></a>Požadavek
 
@@ -45,7 +46,10 @@ Robot jsou reaguje na záměry od HomeAutomation domény, které jsou v aplikaci
 3. V **Bot Service** okno, zadejte požadované informace a vyberte **vytvořit**. Tím se vytvoří a nasadí bot service a LUIS aplikace do Azure. Pokud chcete použít [řeči dočištění](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming), zkontrolujte [požadavků oblasti](luis-resources-faq.md#what-luis-regions-support-bot-framework-speech-priming) před vytvořením svého robota. 
     * Nastavte **název aplikace** na název svého robota. Název se používá jako subdoménu svého robota nasazené do cloudu (například mynotesbot.azurewebsites.net). <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
     * Vyberte předplatné, [skupiny prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), plán služby App service, a [umístění](https://azure.microsoft.com/regions/).
-    * Vyberte **Language understanding (Node.js)** šablonu **Bot šablony** pole.
+    * Pro **Bot šablony**vyberte:
+        * **Sada SDK v3**
+        * **Node.js**
+        * **Rozpoznávání jazyka**
     * Vyberte **umístění aplikace LUIS**. Toto je vytváření [oblasti] [ LUIS] vytvoření aplikace v.
     * Zaškrtněte políčko potvrzení právních upozornění. Podmínky právních upozornění jsou níže na zaškrtávací políčko.
 

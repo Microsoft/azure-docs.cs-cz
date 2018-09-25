@@ -8,15 +8,16 @@ ms.topic: include
 ms.date: 03/28/2018
 ms.author: wesmc
 ms.custom: include file
-ms.openlocfilehash: 0289604cce7f956406d65743d5b058ec92111724
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0ae24deca1cce14a475c59046be71b3b17ca5505
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32182658"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46957681"
 ---
 ### <a name="retrieve-host-name-ports-and-access-keys-using-azure-cli"></a>Načtení názvu hostitele, portů a přístupových klíčů pomocí Azure CLI
-Chcete-li načíst název hostitele a porty pomocí Azure CLI 2.0, můžete zavolat příkaz [az redis show](https://docs.microsoft.com/cli/azure/redis#az_redis_show). K načtení klíčů můžete zavolat příkaz [az redis list-keys](https://docs.microsoft.com/cli/azure/redis#az_redis_list_keys). Následující skript volá tyto dva příkazy a vypíše název hostitele, porty a klíče na konzolu.
+
+Chcete-li načíst název hostitele a porty pomocí Azure CLI můžete volat [az redis show](https://docs.microsoft.com/cli/azure/redis#az_redis_show)a k načtení klíčů můžete zavolat [az redis list-keys](https://docs.microsoft.com/cli/azure/redis#az_redis_list_keys). Následující skript volá tyto dva příkazy a vypíše název hostitele, porty a klíče na konzolu.
 
 ```azurecli
 #/bin/bash
@@ -38,4 +39,4 @@ echo "Primary Key:" ${keys[0]}
 echo "Secondary Key:" ${keys[1]}
 ```
 
-Další informace o tomto skriptu najdete v tématu o [získání názvu hostitele, portů a klíčů pro Azure Redis Cache](../articles/redis-cache/scripts/cache-keys-ports.md). Další informace o Azure CLI 2.0 najdete v tématech [Instalace Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) a [Začínáme s Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).
+Další informace o tomto skriptu najdete v tématu o [získání názvu hostitele, portů a klíčů pro Azure Redis Cache](../articles/redis-cache/scripts/cache-keys-ports.md). Další informace o Azure CLI najdete v části [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) a [Začínáme s Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).

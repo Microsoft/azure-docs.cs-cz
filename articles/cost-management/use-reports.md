@@ -1,29 +1,31 @@
 ---
-title: Použití sestav Cost managementu ve službě Azure Cost Management | Dokumentace Microsoftu
-description: Tento článek popisuje, jak pomocí různých sestav Cost managementu na portálu Cloudyn.
+title: Použití Cloudyn sestav v Azure | Dokumentace Microsoftu
+description: Tento článek popisuje, jak pomocí různých sestav na portálu Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 07/06/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 055584bd27c978fb71e6c09995c28be7348acda8
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 8267401a0dade0ca7cfb1dbf69d2fdfd6786f1df
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37908270"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46976780"
 ---
-# <a name="use-cost-management-reports"></a>Použití sestav služby Cost Management
+# <a name="use-cloudyn-reports"></a>Použití sestav Cloudyn
 
-Tento článek popisuje účel sestav služby cost management, které jsou součástí portálu Cloudyn. Také popisuje, jak lze efektivně používat sestavy. Většina sestav jsou výsledkem je intuitivní a mít jednotný vzhled a chování. Většinu akcí, které vám pomůžou v jedné sestavě, můžete provést také v jiných sestavách. Přehled o tom, jak pomocí sestav služby cost management, včetně postupu při přizpůsobení a uložit nebo k naplánování sestavy, naleznete v tématu [vysvětlení sestav nákladů](understanding-cost-reports.md).
+Tento článek popisuje účel sestavách Cloudyn, které jsou součástí portálu Cloudyn. Také popisuje, jak lze efektivně používat sestavy. Většina sestav jsou výsledkem je intuitivní a mít jednotný vzhled a chování. Většinu akcí, které vám pomůžou v jedné sestavě, můžete provést také v jiných sestavách. Přehled o tom, jak používat sestavách Cloudyn, včetně postupu při přizpůsobení a uložit nebo k naplánování sestavy, naleznete v tématu [vysvětlení sestav nákladů](understanding-cost-reports.md).
+
+Azure Cost Management nabízí podobné funkce do Cloudyn. Azure Cost Management je řešení správy nákladů na nativní Azure. Pomůže vám analýzu nákladů, vytvořit a spravovat rozpočty, exportovat data a zkontrolujte a reagovat na doporučení pro optimalizaci ještě ušetříte peníze. Další informace najdete v tématu [Azure Cost Management](overview-cost-mgt.md).
 
 ## <a name="report-types"></a>Typy sestav
 
-Existují tři typy sestav služby cost management:
+Existují tři typy Cloudyn sestav:
 
 - Útoky over-pass-the sestav. Například sestava Cost Over Time. Útoky over-pass-the sestav zobrazit časové řadě dat. v intervalu vybraného předdefinovaného řešení a zobrazit týdenní řešení po dobu posledních dvou měsíců. Přiblížit k různým datovým bodům, můžete použít seskupování a filtrování.
   - Útoky over-pass-the sestav můžete zobrazit trendy a odhalte provozní špičky nebo anomálie.
@@ -49,7 +51,7 @@ _Analýza nákladů_ sestavy zobrazují fakturačních dat z vašich poskytovate
 
 Některé _analýza nákladů_ sestavy Neseskupovat náklady podle značek prostředků. A podle klíčových slov fakturační informace se zobrazí jenom v sestavách po přidělení nákladů ve vytváření s použitím modelu nákladů [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs).
 
-_Přidělení nákladů_ sestavy jsou k dispozici po vytvoření modelu nákladů pomocí [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs). Cost Management zpracovává náklady a fakturačních dat a _odpovídá_ data, která mají data o využití a značky z vašich účtů cloudu. Cost Management tak, aby odpovídaly data, vyžaduje přístup k data o využití. Pokud máte účty, kterým chybí přihlašovací údaje jsou označeny jako _Nezařazeno do kategorie prostředků_.
+_Přidělení nákladů_ sestavy jsou k dispozici po vytvoření modelu nákladů pomocí [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs). Cloudyn zpracovává data nákladů a fakturace a _odpovídá_ data, která mají data o využití a značky z vašich účtů cloudu. Cloudyn tak, aby odpovídaly data, vyžaduje přístup k data o využití. Pokud máte účty, kterým chybí přihlašovací údaje jsou označeny jako _Nezařazeno do kategorie prostředků_.
 
 ## <a name="dashboards"></a>Řídicí panely
 
@@ -57,7 +59,7 @@ _Přidělení nákladů_ sestavy jsou k dispozici po vytvoření modelu náklad�
 
 ## <a name="budget-information-in-reports"></a>Informace o rozpočtu v sestavách
 
-Mnoho z hlediska nákladů rozpočtu informace o správě sestav zobrazit až ručně vytvoříte jeden. Aby sestavy nebudou zobrazovat informace rozpočtu, dokud nevytvoříte rozpočtu. Další informace najdete v tématu [rozpočtu nastavení](#budget-settings).
+Mnoho sestavách Cloudyn zobrazit rozpočtu informace po jedné ruční vytvoření. Aby sestavy nebudou zobrazovat informace rozpočtu, dokud nevytvoříte rozpočtu. Další informace najdete v tématu [rozpočtu nastavení](#budget-settings).
 
 ## <a name="reports-and-reporting-features"></a>Sestavy a funkce generování sestav
 
@@ -81,7 +83,7 @@ Sestava analýzy nákladů se počítají za metod showback a chargeback, na zá
 
 Zásady nastavené [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) se používají v Cost Analysis sestavy a výsledky se následně se spojí dohromady s informace z nezpracovaných dat od dodavatele cloudu.
 
-Jak se počítá tuto sestavu? Služba Cost Management zajišťuje přidělování zachová integrita každý propojený účet s použitím _účtu spřažení_. Spřažení zajistí, že účet, který nepoužívá konkrétní služba nemá žádné náklady na tuto službu přiřazen. Náklady na operace účet zůstane v tomto účtu a nejsou vypočítaných zásady přidělování. Například může mít pět propojené účty. Pokud jenom tři z nich používat služby storage, náklady na úložiště služby je přidělena pouze ve mezi značky v tři účty.
+Jak se počítá tuto sestavu? Služba Cloudyn zajišťuje přidělování zachová integrita každý propojený účet použitím _účtu spřažení_. Spřažení zajistí, že účet, který nepoužívá konkrétní služba nemá žádné náklady na tuto službu přiřazen. Náklady na operace účet zůstane v tomto účtu a nejsou vypočítaných zásady přidělování. Například může mít pět propojené účty. Pokud jenom tři z nich používat služby storage, náklady na úložiště služby je přidělena pouze ve mezi značky v tři účty.
 
 Pomocí sestavy analýzy nákladů na:
 
@@ -147,7 +149,7 @@ Tato sada amortizované náklady sestavy zobrazuje lineárním bez využití na 
 - Poplatky za nákupy rezervovaných instancí
 - Některé položky Azure Marketplace
 
-V souboru fakturace jsou charakteristické jednorázové poplatky při používání služby počáteční a koncové datum (časové razítko) mají stejné hodnoty. Služba Cost Management pak je pak rozezná jako jednorázové poplatky, které jsou amortizovaných. Nejsou amortizovaných jiné služby založenou na skutečné spotřebě s náklady na využití na vyžádání.
+V souboru fakturace jsou charakteristické jednorázové poplatky při používání služby počáteční a koncové datum (časové razítko) mají stejné hodnoty. Služba Cloudyn pak je pak rozezná jako jednorázové poplatky, které jsou amortizovaných. Nejsou amortizovaných jiné služby založenou na skutečné spotřebě s náklady na využití na vyžádání.
 
 Sestavy amortizovaných nákladů patří:
 
@@ -158,9 +160,9 @@ Sestavy amortizovaných nákladů patří:
 
 Sestava analýzy nákladů poskytuje pohled na vaše využití cloudu a výdaje během vybraného časového rámce. Zásady nastavené [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) se používají v sestavě analýzy nákladů.
 
-Jak vypočítat náklady na správu tuto sestavu?
+Jak Cloudyn vypočítat tuto sestavu?
 
-Služba Cost Management zajišťuje, že přidělování zachován integrity každý propojený účet použitím _účtu spřažení_. Spřažení zajistí, že účet, který nepoužívá konkrétní službu také nemá žádné náklady na tuto službu přiřazen. Náklady na operace účet zůstane v tomto účtu a nejsou vypočítaných zásady přidělování. Například může mít pět propojené účty. Pokud jenom tři z nich používat služby storage, náklady na úložiště služby je přidělena pouze ve mezi značky v tři účty.
+Zajišťuje Cloudyn, zůstane přidělení integrity každý propojený účet použitím _účtu spřažení_. Spřažení zajistí, že účet, který nepoužívá konkrétní službu také nemá žádné náklady na tuto službu přiřazen. Náklady na operace účet zůstane v tomto účtu a nejsou vypočítaných zásady přidělování. Například může mít pět propojené účty. Pokud jenom tři z nich používat služby storage, náklady na úložiště služby je přidělena pouze ve mezi značky v tři účty.
 
 Pomocí sestavy analýzy nákladů na:
 
@@ -206,7 +208,7 @@ Vlastní poplatky se zobrazí v sestavách nákladů. Například otevřete sest
 
 Cost Allocation 360 použijete k vytvoření vlastní nákladový model přidělování nákladů přiřadit využité cloudové prostředky. Mnoho sestav zobrazovat informace z vlastní nákladový model, které jste vytvořili pomocí vlastní nákladový model. A některé sestavy pouze zobrazit informace, až vytvoříte vlastní model nákladů s přidělováním nákladů.
 
-Další informace o vytváření vlastních nákladový model, najdete v části [kurz: Správa nákladů pomocí Azure Cost Management](tutorial-manage-costs.md).
+Další informace o vytváření vlastních nákladový model, najdete v části [kurz: Správa nákladů pomocí Cloudyn](tutorial-manage-costs.md).
 
 ### <a name="cost-vs-budget-over-time-report"></a>Cost vs. Sestava rozpočtu v čase
 
@@ -248,11 +250,11 @@ Po dokončení vašemu rozpočtu se zobrazí v sestavách analýzy nákladů a v
 
 ### <a name="azure-resource-explorer-report"></a>Sestava Průzkumníka prostředků Azure
 
-Azure Resource Exploreru sestava zobrazí seznam hromadně všechny prostředky Azure k dispozici ve službě Cost Management. Efektivně používat sestavy, by měl mít účtů Azure rozšířené povolené metriky. Rozšířené metriky poskytují Cost Management přístup k vašim virtuálním počítačům Azure. Další informace najdete v tématu [přidání rozšířené metriky pro virtuální počítače Azure](azure-vm-extended-metrics.md).
+Azure Resource Exploreru sestava zobrazí seznam hromadně všechny prostředky Azure k dispozici ve službě Cloudyn. Efektivně používat sestavy, by měl mít účtů Azure rozšířené povolené metriky. Rozšířené metriky poskytovat přístup do Cloudyn virtuální počítače Azure. Další informace najdete v tématu [přidání rozšířené metriky pro virtuální počítače Azure](azure-vm-extended-metrics.md).
 
 ### <a name="azure-resources-over-time-report"></a>Sestava Azure prostředků v čase
 
-Prostředky Azure v čase sestava obsahuje rozpis všech prostředků s konkrétní období. Efektivně používat sestavy, by měl mít účtů Azure rozšířené povolené metriky. Rozšířené metriky poskytují Cost Management přístup k vašim virtuálním počítačům Azure. Další informace najdete v tématu [přidání rozšířené metriky pro virtuální počítače Azure](azure-vm-extended-metrics.md).
+Prostředky Azure v čase sestava obsahuje rozpis všech prostředků s konkrétní období. Efektivně používat sestavy, by měl mít účtů Azure rozšířené povolené metriky. Rozšířené metriky poskytovat přístup do Cloudyn virtuální počítače Azure. Další informace najdete v tématu [přidání rozšířené metriky pro virtuální počítače Azure](azure-vm-extended-metrics.md).
 
 ### <a name="instance-explorer-report"></a>Sestava instance Průzkumníka
 
@@ -355,7 +357,7 @@ Tři možnosti platby pro rezervované instance, které jsou všechny předem:
 - Žádné předem – ve kterém náklady na rezervovanou Instanci platí v měsíčních splátek za celou dobu rezervované instance, nabízí nejnižší slevu
 - Částečné předem, ve které ¼ - ½ ceny platí ještě před zahájením a rest v měsíčních splátek s zvýhodněná sazba, která je nižší, ale zavřete, všechny předem rychlost
 
-Služba Cost Management vyhodnotí dobu provozu jednotlivých počítačů za posledních 30 dní. Správa nákladů doporučuje nákup rezervované instance, pokud bude cenově výhodnější ke spuštění počítače s rezervovanou Instanci na aktuální úrovni doby provozu.
+Cloudyn vyhodnotí dobu provozu jednotlivých počítačů za posledních 30 dní. Cloudyn doporučuje nákup rezervované instance, pokud bude cenově výhodnější ke spuštění počítače s rezervovanou Instanci na aktuální úrovni doby provozu.
 
 Tato sestava zobrazuje zdůvodnění svá doporučení nejvíce ušetřit za rok. Doporučení navrhnout nahradíte rezervované instance na vyžádání. Rezervované instance si můžete zakoupit přímo od sestavy.
 
@@ -363,9 +365,9 @@ Každá karta se otevře jako úplnou sestavu. Významné části karty patří:
 
 - **Dopadu nákupu rezervované instance EC2** – v této části najdete simulaci rozdíl mezi rezervované instance vs na vyžádání. Klikněte na tlačítko **přiblížit**, abyste si zobrazili úplná sestava dopadu nákupu rezervované instance EC2 s filtry již definována pro vaše doporučení. Tato sestava zobrazuje dopad nákupu všech potenciálních nákupy rezervovaných Instancí. Můžete upravit očekávané průměrné doby provozu zobrazíte potenciál ukládání při nákupu rezervovaných instancí EC2.
 
-- **Ukládá se analýza** – Tato část obsahuje potenciální úspory dosažené a měsíc úspor jsou actualized podle doporučení Cost Management. Skutečné úspory a procento uložili se zvýrazní červeně.
+- **Ukládá se analýza** – Tato část obsahuje potenciální úspory dosažené a měsíc úspor jsou actualized podle doporučení pro Cloudyn. Skutečné úspory a procento uložili se zvýrazní červeně.
 
-- **Porovnání typů rezervovaných Instancí EC2** – v této části zvýrazní návratnost investic nejdůležitější funkce obsahuje doporučené nasazení Cost Management, včetně všechny příslušné možnosti. Výsledky v této sestavě se předpokládá, že je počítač se spouští ve 100 % dostupnost. Klikněte na tlačítko **přiblížit** otevřete podrobné sestavy.
+- **Porovnání typů rezervovaných Instancí EC2** – v této části zvýrazní návratnost investic nejdůležitější funkce obsahuje doporučené nasazení od Cloudyn, včetně všechny příslušné možnosti. Výsledky v této sestavě se předpokládá, že je počítač se spouští ve 100 % dostupnost. Klikněte na tlačítko **přiblížit** otevřete podrobné sestavy.
 
 - **Instance v čase** – v této části zobrazí přehled všechny instance přidružené doporučení, OnDemand, rezervované instance a místo. Klikněte na tlačítko **přiblížit** otevřete podrobné sestavy.
 - **Body Breakeven** – v této části zobrazí tabulku všech možných doporučuje nasazení a návratnost investic a měsíc, kdy dochází k návratnost investic. Klikněte na tlačítko **přiblížit** otevřete podrobné sestavy.
@@ -394,7 +396,7 @@ Sestava doporučení k nákupu rezervovaných Instancí vzdálené plochy se dop
 Každá karta se otevře jako úplnou sestavu. Významné části karty patří:
 
 - **Dopadu nákupu rezervované instance RDS** – Tato část obsahuje simulaci rozdíl mezi na vyžádání rezervovaných instancích vs. Klikněte na tlačítko **přiblížit** zobrazíte úplnou sestavu dopadu nákupu rezervované instance vzdálené plochy s filtry již definována pro vaše doporučení. Tato sestava umožňuje zobrazit dopad nákupu všech potenciálních nákupy rezervovaných Instancí.  Můžete upravit očekávané průměrné doby provozu a zjistit potenciální ukládání nákupu rezervované instance.
-- **Ukládá se analýza** – Tato část obsahuje potenciální úspory dosažené a měsíc úspor jsou actualized podle doporučení Cost Management. Skutečné úspory a procento uložili se zvýrazní červeně.
+- **Ukládá se analýza** – Tato část obsahuje potenciální úspory dosažené a měsíc úspor jsou actualized podle doporučení pro Cloudyn. Skutečné úspory a procento uložili se zvýrazní červeně.
 
 - **Porovnání typů RI RDS** – v této části zvýrazní návratnost investic nejdůležitější funkce obsahuje doporučené nasazení, včetně všechny příslušné možnosti. Výsledky v této sestavě se předpokládá, že je počítač se spouští ve 100 % dostupnost. Klikněte na tlačítko **přiblížit** otevřete podrobnou zprávu pro vybraný počítač.
 - **Instance v čase** – v této části zobrazí přehled všechny instance přidružené doporučení, OnDemand, rezervované instance a místo. Klikněte na tlačítko **přiblížit** otevřete podrobné sestavy.
@@ -417,7 +419,7 @@ Nelze stáhnout seznam instance ID, která se doporučuje, aby downsize z této 
 
 Podívejte se na následující příklad downsizing:
 
-Můžete mít šest m3.xlarge spuštěné instance. Analýza nákladů správy ukazuje, že pět z nich mají nízké využití procesoru. Vezměte v úvahu downsizing je.
+Můžete mít šest m3.xlarge spuštěné instance. Cloudyn analýza ukazuje, že pět z nich mají nízké využití procesoru. Vezměte v úvahu downsizing je.
 
 V dopad náklady se počítá dopad náklady. V tomto příkladu tak, že rozbalíte položku řádku vidíte, že aktuální ceny pro jednu instanci m3.xlarge (Linux/Unix) stojí 0.266 $ za hodinu a náklady na instanci (Linux/Unix) jeden m3.large 0.133 $ za hodinu. Roční náklady tedy 11,651 pro pět instancí m3.xlarge spuštěné ve 100 % využití. Roční náklady jsou 5,825 pro pět instancí m3.large spuštěné ve 100 % využití. Potenciální úspory jsou 5,825 $.
 
@@ -425,7 +427,7 @@ K zobrazení justifications nákladově efektivního nastavení velikosti, klikn
 
 - **Doporučení odůvodnění** části zobrazí aktuální nasazení a počtu instancí doporučuje downsize.
 - **Náklady dopad** části zobrazí výpočet použitý ke zjištění potenciálních úspor.
-- **Potenciální roční úspory** části zobrazí potenciální roční úspory při downsizing za doporučení Cost Management.
+- **Potenciální roční úspory** části zobrazí potenciální roční úspory při downsizing za doporučení pro Cloudyn.
 
 ### <a name="all-sizing-recommendations-report"></a>Všechny sestavy doporučení velikosti
 
@@ -483,11 +485,11 @@ Pokud chcete zobrazit konkrétní instanci metriky v čase:
 
 ### <a name="rds-sizing-recommendations-report"></a>Sestava doporučení velikosti vzdálené plochy
 
-Sestava doporučení velikosti vzdálené plochy poskytuje vzdálené plochy pro změnu velikosti doporučení k optimalizaci využití cloudu. Poskytuje seznam nedostatečně využité instancí, které jsou kandidáty na downsize. Cost Management doporučení jsou založená na data o využití a výkonu z posledních 30 dní. Můžete filtrovat podle názvu účtu, oblasti, typu Instance a stav doporučení.
+Sestava doporučení velikosti vzdálené plochy poskytuje vzdálené plochy pro změnu velikosti doporučení k optimalizaci využití cloudu. Poskytuje seznam nedostatečně využité instancí, které jsou kandidáty na downsize. Cloudyn doporučení jsou založená na data o využití a výkonu z posledních 30 dní. Můžete filtrovat podle názvu účtu, oblasti, typu Instance a stav doporučení.
 
 ### <a name="sizing-threshold-manager-report"></a>Správce prahová hodnota velikosti sestav
 
-Služba Cost Management doporučení integrované velikosti vypočítají na základě komplexní algoritmus k pošlete nám návrhy, určení správné velikosti. Můžete upravit prahové hodnoty pro downsizing doporučení.
+Doporučení integrované velikosti od Cloudyn vypočítají na základě komplexní algoritmus k pošlete nám návrhy, určení správné velikosti. Můžete upravit prahové hodnoty pro downsizing doporučení.
 
 Chcete-li ručně upravit doporučení velikosti prahové hodnoty:
 

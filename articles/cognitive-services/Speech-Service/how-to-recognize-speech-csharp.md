@@ -8,14 +8,14 @@ author: wolfma61
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: c5ccd813dc1210eabd201c7628b41cc592fb5f6a
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 842452028671ef3db91348886676a95120335d86
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127379"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972840"
 ---
 # <a name="recognize-speech-by-using-the-speech-sdk-for-c"></a>Rozpoznávání řeči pomocí sadou SDK pro řeč pro jazyk C#
 

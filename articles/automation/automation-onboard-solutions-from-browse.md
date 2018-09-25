@@ -9,12 +9,12 @@ ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 83a768b82172b8736ea06bfed012309ac92734b7
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 5bb36c693db5b2d7d46b772fd8b92bcda3667dc7
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46497956"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039424"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Povolení správy aktualizací, Change Tracking a inventář řešení na několika virtuálních počítačích
 
@@ -62,6 +62,43 @@ Pokud vybraný pracovní prostor není propojený s účtem Automation, zobrazí
 Zrušit zaškrtnutí políčka vedle libovolného virtuálního počítače, které nechcete povolit. Virtuálních počítačů, které není možné je už vybraná.
 
 Klikněte na tlačítko **povolit** povolte řešení. Povolení řešení trvá přibližně 15 minut.
+
+## <a name="unlink-workspace"></a>Zrušit propojení pracovního prostoru
+
+Následující řešení jsou závislé na pracovní prostor Log Analytics:
+
+* [Správa aktualizací](automation-update-management.md)
+* [Sledování změn](automation-change-tracking.md)
+* [Spuštění/zastavení virtuálních počítačů mimo špičku](automation-solution-vm-management.md)
+
+Pokud se rozhodnete, že již nechcete integraci vašeho účtu Automation s Log Analytics, můžete svůj účet neodpojíte přímo z portálu Azure portal. Než budete pokračovat, budete nejdřív muset odebrat řešení již bylo zmíněno dříve, jinak nebudou moct tento proces budete pokračovat. Přečtěte si článek pro konkrétní řešení, které jste importovali pochopit kroky nutné k jeho odebrání.
+
+Po odebrání těchto řešení provedením následujících kroků se zrušit propojení účtu Automation.
+
+> [!NOTE]
+> Některá řešení, včetně starších verzí řešení monitorování Azure SQL pravděpodobně vytvořena prostředky služby automation a může také muset před rušení propojení pracovního prostoru odebrat.
+
+1. Z portálu Azure portal otevřete svůj účet Automation, a na automatizaci účtu vyberte stránku **pracovní prostor propojený** části **související prostředky** na levé straně.
+
+1. Na stránce zrušit propojení pracovního prostoru klikněte na tlačítko **zrušit propojení pracovního prostoru**.
+
+   ![Zrušit propojení pracovního prostoru stránky](media/automation-onboard-solutions-from-browse/automation-unlink-workspace-blade.png).
+
+   Zobrazí se výzva s dotazem, jestli chcete pokračovat.
+
+1. Zatímco bude Azure Automation se pokusí zrušit propojení účtu pracovního prostoru Log Analytics, můžete sledovat průběh **oznámení** z nabídky.
+
+Pokud jste použili řešení Update Management, Volitelně můžete odebrat následující položky, které už nejsou potřeba po odebrání řešení.
+
+* Plány aktualizace – každá bude mít názvy, které odpovídají vámi vytvořených nasazení aktualizací)
+
+* Skupiny hybridních pracovních procesů vytvořené pro dané řešení – každá bude mít název podobně jako na machine1.contoso.com_9ceb8108 - 26 c 9-4051-b6b3-227600d715c8).
+
+Pokud jste použili spouštění/zastavování virtuálních počítačů špičku, Volitelně můžete odebrat následující položky, které už nejsou potřeba po odebrání řešení.
+
+* Spouštět a zastavovat sady runbook plány virtuálního počítače
+* Spuštění a zastavení sad runbook virtuálního počítače
+* Proměnné
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

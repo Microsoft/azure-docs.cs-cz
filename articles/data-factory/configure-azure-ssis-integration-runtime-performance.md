@@ -1,6 +1,6 @@
 ---
-title: Konfigurace výkonu pro modul Runtime integrace Azure SSIS | Microsoft Docs
-description: Zjistěte, jak konfigurovat vlastnosti Runtime integrace Azure SSIS pro vysoký výkon
+title: Konfigurace výkonu prostředí Azure-SSIS Integration runtime | Dokumentace Microsoftu
+description: Další informace o konfiguraci vlastností prostředí Azure-SSIS Integration Runtime pro vysoký výkon
 services: data-factory
 ms.date: 01/10/2018
 ms.topic: conceptual
@@ -10,23 +10,23 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: ac53e1a8a7c6c1b2c2959b92e14c7911065aed6d
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 2592c81947f48c10891fe920647612d5c30af64f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37052024"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989071"
 ---
-# <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Konfigurace modulu Runtime Azure SSIS integrace pro vysoký výkon
+# <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Konfigurace prostředí Azure-SSIS Integration Runtime pro vysoký výkon
 
-Tento článek popisuje postup konfigurace služby Azure SSIS integrace modulu Runtime (IR) pro vysoký výkon. IR Azure SSIS umožňuje nasadit a spustit balíčky integrační služby SSIS (SQL Server) v Azure. Další informace o Azure SSIS IR najdete v tématu [integrace runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime) článku. Informace o nasazení a spouštění balíčků SSIS v Azure najdete v tématu [navýšení a shift SQL Server Integration Services úloh na cloud](/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview).
+Tento článek popisuje, jak nakonfigurovat Azure-SSIS Integration Runtime (IR) pro vysoce výkonné. Prostředí Azure-SSIS IR umožňuje nasazení a spouštění balíčků SQL Server Integration Services (SSIS) v Azure. Další informace o Azure-SSIS IR najdete v tématu [prostředí Integration runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime) článku. Informace o nasazování a spouštění balíčků služby SSIS v Azure najdete v tématu [Lift and shift úloh SQL Server Integration Services do cloudu](/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview).
 
 > [!IMPORTANT]
-> Tento článek obsahuje výsledky a připomínky z interní testování provádí členové týmu pro vývoj služby SSIS. Výsledky se může lišit. Proveďte vlastní testování před dokončení nastavení konfigurace, které ovlivňují nákladů a výkonu.
+> Tento článek obsahuje výsledky výkonu a připomínek interní testování provádí členové vývojového týmu prostředí SSIS. Vaše výsledky se mohou lišit. Proveďte vlastní testování před další změny nastavení konfigurace, které ovlivňují náklady a výkon.
 
 ## <a name="properties-to-configure"></a>Vlastnosti konfigurace
 
-Následující část konfigurační skript zobrazuje vlastnosti, které můžete nakonfigurovat při vytváření modulu Runtime integrace Azure SSIS. Dokončení skriptu prostředí PowerShell a popis najdete v tématu [balíčky nasazení SQL Server Integration Services do Azure](tutorial-deploy-ssis-packages-azure-powershell.md).
+Následující část skript konfigurace jsou uvedeny vlastnosti, které můžete nakonfigurovat při vytváření prostředí Azure-SSIS Integration Runtime. Celý skript prostředí PowerShell a popis najdete v tématu [balíčků nasazení SQL Server Integration Services do Azure](tutorial-deploy-ssis-packages-azure-powershell.md).
 
 ```powershell
 $SubscriptionName = "<Azure subscription name>"
@@ -51,16 +51,16 @@ $AzureSSISMaxParallelExecutionsPerNode = 2
 $SSISDBServerEndpoint = "<Azure SQL server name>.database.windows.net"
 $SSISDBServerAdminUserName = "<Azure SQL server - user name>"
 $SSISDBServerAdminPassword = "<Azure SQL server - user password>"
-# Remove the SSISDBPricingTier variable if you are using Azure SQL Managed Instance (Preview)
+# Remove the SSISDBPricingTier variable if you are using Azure SQL Database Managed Instance
 # This parameter applies only to Azure SQL Database. For the basic pricing tier, specify "Basic", not "B". For standard tiers, specify "S0", "S1", "S2", 'S3", etc.
 $SSISDBPricingTier = "<pricing tier of your Azure SQL server. Examples: Basic, S0, S1, S2, S3, etc.>"
 ```
 
 ## <a name="azuressislocation"></a>AzureSSISLocation
-**AzureSSISLocation** je umístění integrace modulu runtime pracovního uzlu. Pracovního uzlu udržuje konstantní připojení k databázi katalogu služby SSIS (SSISDB) na Azure SQL database. Nastavte **AzureSSISLocation** do stejného umístění jako databázového SQL serveru, který je hostitelem SSISDB, které umožní integrace modulu runtime jako efektivní práci.
+**AzureSSISLocation** je umístění pro pracovníka uzel integration runtime. Pracovní uzel udržuje stálé připojení k databázi katalogu služby SSIS (SSISDB) ve službě Azure SQL database. Nastavte **AzureSSISLocation** do stejného umístění jako databáze SQL serveru, který je hostitelem databáze SSISDB, což umožňuje prostředí integration runtime jako efektivní práce.
 
 ## <a name="azuressisnodesize"></a>AzureSSISNodeSize
-Objekt pro vytváření dat, včetně Azure SSIS IR, podporuje následující možnosti:
+Data Factory, včetně Azure-SSIS IR podporuje následující možnosti:
 -   Standardní\_A4\_v2
 -   Standardní\_A8\_v2
 -   Standardní\_D1\_v2
@@ -68,32 +68,32 @@ Objekt pro vytváření dat, včetně Azure SSIS IR, podporuje následující mo
 -   Standardní\_D3\_v2
 -   Standardní\_D4\_v2.
 
-V neoficiální interní testování technický tým služby SSIS, řady D pravděpodobně vhodnější pro spouštění balíčku služby SSIS než A řady.
+V neoficiální interní testování pomocí služby SSIS technický tým, řady D series pravděpodobně vhodnější pro spouštění balíčku služby SSIS než řady A series.
 
--   Poměr výkonu nebo cena série D je vyšší než A řady.
--   Propustnost pro řady D je vyšší než řady A za stejnou cenu.
+-   Výkon a cenu poměr řady D series je vyšší než řady A series.
+-   Propustnost pro řady D series je vyšší než řada A za stejnou cenu.
 
 ### <a name="configure-for-execution-speed"></a>Konfigurace pro rychlost provádění
-Pokud nemáte mnoho balíčky ke spuštění a mají rychlé spuštění balíčky, použijte informace v následující tabulce vybrat vhodnou pro váš scénář typu virtuálního počítače.
+Pokud nemáte mnoho balíčky ke spuštění a chcete, aby balíčky pro rychlé spouštění, použijte informace v následující tabulce vybrat typ virtuálního počítače, který je vhodný pro váš scénář.
 
-Tato data představuje jeden balíček spuštění na jedné pracovního uzlu. Balíček načte 10 milionů záznamy s názvem první a poslední název sloupce z Azure Blob Storage, generuje úplný název sloupce a zapíše záznamy, které mají úplný název, který je delší než 20 znaků do úložiště objektů Blob Azure.
+Tato data představuje jeden balíček provádění na jeden pracovního uzlu. Balíček načte 10 milionů záznamů s názvem prvního a posledního sloupce z Azure Blob Storage vygeneruje úplný název sloupce a zapíše záznamy, které mají příjmení delší než 20 znaků do Azure Blob Storage.
 
-![Rychlost provádění balíčku služby SSIS integrace Runtime](media/configure-azure-ssis-integration-runtime-performance/ssisir-execution-speed.png)
+![Rychlost provádění balíčků služby SSIS Integration Runtime](media/configure-azure-ssis-integration-runtime-performance/ssisir-execution-speed.png)
 
 ### <a name="configure-for-overall-throughput"></a>Konfigurace pro celkovou propustnost
 
-Pokud máte velké balíčky ke spuštění a vám nejvíc záleží celkovou propustnost, použijte informace v následující tabulce vybrat vhodnou pro váš scénář typu virtuálního počítače.
+Pokud máte velké balíčky ke spuštění a vám nejvíce jde o celkovou propustnost, vyberte typ virtuálního počítače, který je vhodný pro váš scénář pomocí informací v následující tabulce.
 
-![Maximální celková propustnost Runtime integrační služby SSIS](media/configure-azure-ssis-integration-runtime-performance/ssisir-overall-throughput.png)
+![Maximální celkovou propustnost služby SSIS Integration Runtime](media/configure-azure-ssis-integration-runtime-performance/ssisir-overall-throughput.png)
 
 ## <a name="azuressisnodenumber"></a>AzureSSISNodeNumber
 
-**AzureSSISNodeNumber** upraví škálovatelnost integrace modulu runtime. Propustnost běhového modulu integrace je úměrná **AzureSSISNodeNumber**. Nastavte **AzureSSISNodeNumber** na malou hodnotu nejprve monitorování propustnost integrace modulu runtime a pak upravte hodnotu pro váš scénář. Chcete-li překonfigurovat počet uzlů pracovního procesu, přečtěte si téma [spravovat modulu runtime integrace Azure SSIS](manage-azure-ssis-integration-runtime.md).
+**AzureSSISNodeNumber** upraví škálovatelnost prostředí integration runtime. Propustnost modulu runtime integrace je přímo úměrný **AzureSSISNodeNumber**. Nastavte **AzureSSISNodeNumber** malou hodnotu při prvním sledovat propustnost prostředí integration runtime a pak upravte hodnotu pro váš scénář. Změna konfigurace počet uzlů pracovního procesu, naleznete v tématu [správě prostředí Azure-SSIS integration runtime](manage-azure-ssis-integration-runtime.md).
 
 ## <a name="azuressismaxparallelexecutionspernode"></a>AzureSSISMaxParallelExecutionsPerNode
 
-Pokud už používáte výkonné pracovního uzlu ke spuštění balíčky, zvýšení **AzureSSISMaxParallelExecutionsPerNode** může zvýšit celkovou propustnost integrace modulu runtime. Paralelní spuštění 1 – 4 na uzel Standard_D1_v2 uzly jsou podporovány. Pro všechny ostatní typy uzlů jsou podporovány paralelní spuštěních 1 – 8 na každém uzlu.
-Chcete-li odhadnout odpovídající hodnotu na základě nákladů vašeho balíčku a následující konfigurace pro uzly pracovního procesu. Další informace najdete v tématu [velikostí virtuálních počítačů pro obecné účely](../virtual-machines/windows/sizes-general.md).
+Pokud už používáte výkonné pracovního uzlu ke spouštění balíčků, zvýšení **AzureSSISMaxParallelExecutionsPerNode** může zvýšit celkovou propustnost prostředí integration runtime. 1 – 4 paralelních úloh na uzlu Standard_D1_v2 uzly, jsou podporovány. Pro všechny ostatní typy uzlů se podporují 1-8 paralelních úloh na uzlu.
+Chcete-li odhadnout příslušnou hodnotu na základě nákladů balíčku a následujících konfigurací pracovních uzlů. Další informace najdete v tématu [velikostí virtuálních počítačů pro obecné účely](../virtual-machines/windows/sizes-general.md).
 
 | Velikost             | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální propustnost datových disků: IOPS | Max. počet síťových karet / Očekávaný výkon sítě (Mb/s) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|
@@ -104,24 +104,24 @@ Chcete-li odhadnout odpovídající hodnotu na základě nákladů vašeho balí
 | Standardní\_A4\_v2 | 4    | 8           | 40                     | 4000 / 80 / 40                                             | 8 / 8×500                         | 4 / 1 000                                       |
 | Standardní\_A8\_v2 | 8    | 16          | 80                     | 8000 / 160 / 80                                            | 16 / 16×500                       | 8 / 2 000                                       |
 
-Tady najdete pokyny pro nastavení správné hodnoty **AzureSSISMaxParallelExecutionsPerNode** vlastnost: 
+Tady jsou pokyny pro nastavení správné hodnoty pro **AzureSSISMaxParallelExecutionsPerNode** vlastnost: 
 
-1. Nastavte na hodnotu malou na první.
-2. Zvýšit ji malou zkontrolujte, zda je vyšší, celkovou propustnost.
-3. Zastavte, zvýšení hodnoty, když celkovou propustnost dosáhne maximální hodnota.
+1. Nastavte malou hodnotu při prvním.
+2. Zvýšit o malou část ke kontrole, jestli je lepší celkovou propustnost.
+3. Zastavte, pokud celková propustnost nedosáhne maximální hodnoty zvýšit hodnotu.
 
 ## <a name="ssisdbpricingtier"></a>SSISDBPricingTier
 
-**SSISDBPricingTier** je cenovou úroveň pro databázi katalogu služby SSIS (SSISDB) na Azure SQL database. Toto nastavení ovlivňuje maximální počet pracovních procesů v instanci reakcí na Incidenty, rychlosti do fronty spouštění balíčku a rychlosti načíst protokolu spuštění.
+**SSISDBPricingTier** je cenovou úroveň pro databázi katalogu služby SSIS (SSISDB) ve službě Azure SQL database. Toto nastavení má vliv na maximální počet pracovních procesů v instanci reakcí na Incidenty, rychlost do fronty spouštění balíčku a rychlost pro načtení protokolu spuštění.
 
--   Pokud vám nezáleží rychlosti fronty balíček spouštění a načtení protokolu spuštění, můžete vybrat nejnižší cenová úroveň databáze. Databáze SQL Azure s základní ceny podporuje 8 pracovních procesů v instanci integrace modulu runtime.
+-   Pokud vám nezáleží na rychlost spouštění balíčku fronty a pro načtení protokolu spuštění, můžete databázi nejnižší cenovou úroveň. Základní ceny za Azure SQL Database podporuje 8 pracovních procesů v instanci modulu runtime integrace.
 
--   Zvolte výkonnější databáze než základní, pokud počet pracovního procesu je větší než 8, nebo počet jader je více než 50. V opačném případě problémové místo integrace modulu runtime instance se změní na databázi a je mít negativní dopad na celkový výkon.
+-   Zvolte databázi výkonnější než základní, pokud počet pracovních procesů je víc než 8, nebo počet jader je více než 50. Jinak databáze se stane kritickým bodem instance modulu runtime integrace a je celkový výkon negativně ovlivněn.
 
-Můžete také upravit databázi cenová úroveň na základě [jednotky transakcí databáze](../sql-database/sql-database-what-is-a-dtu.md) (DTU) informace o využití dostupné na portálu Azure.
+Můžete také upravit databázi cenovou úroveň na základě [jednotky transakcí databáze](../sql-database/sql-database-what-is-a-dtu.md) (DTU) informace o využití na portálu Azure portal.
 
 ## <a name="design-for-high-performance"></a>Návrh pro vysoký výkon
-Navrhování balíčku služby SSIS ke spuštění na Azure se liší od návrhu balíček pro místní spuštění. Místo kombinace více nezávislých úloh ve stejném balíčku, oddělte je do více balíčků pro více efektivní provádění v infračerveného signálu Azure SSIS. Vytvořte spouštění balíčku pro každý balíček, takže není nutné čekat na Další ukončíte. Tento přístup výhody z škálovatelnost runtime integrace Azure SSIS a zlepšuje celkovou propustnost.
+Navrhování balíčku SSIS v Azure se liší od návrhu balíčku pro místní spuštění. Místo kombinování více nezávislých úloh, které ve stejném balíčku, oddělte je do několika balíčků pro efektivnější spouštění v prostředí Azure-SSIS IR. Spouštění balíčků pro každý balíček, vytvořte tak, aby si uživatelé nebudou muset čekat na jiných na dokončení. Tento přístup těží z prostředí Azure-SSIS integration runtime škálovatelnost a zlepšuje celkovou propustnost.
 
 ## <a name="next-steps"></a>Další postup
-Další informace o běhu integrace Azure SSIS. V tématu [Runtime integrace Azure SSIS](concepts-integration-runtime.md#azure-ssis-integration-runtime).
+Další informace o Azure-SSIS Integration Runtime. Zobrazit [prostředí Azure-SSIS Integration Runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime).

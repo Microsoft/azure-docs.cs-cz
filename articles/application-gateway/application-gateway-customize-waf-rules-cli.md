@@ -1,6 +1,6 @@
 ---
-title: Přizpůsobení pravidel brány firewall webových aplikací v Azure Application Gateway - 2.0 rozhraní příkazového řádku Azure | Microsoft Docs
-description: Tento článek obsahuje informace o tom, jak přizpůsobit pravidla brány firewall webových aplikací v Application Gateway pomocí Azure CLI 2.0.
+title: Přizpůsobení pravidel firewallu webových aplikací ve službě Azure Application Gateway – rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+description: Tento článek obsahuje informace o tom, jak přizpůsobení pravidel firewallu webových aplikací ve službě Application Gateway pomocí Azure CLI.
 documentationcenter: na
 services: application-gateway
 author: vhorne
@@ -14,35 +14,35 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 07/26/2017
 ms.author: victorh
-ms.openlocfilehash: b0bd79bb7ce584a9abaffbb6c30d6fbfe64f87c2
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: c02e4edabdcb73bc14c64b42788cddc98d78498c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33204203"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964117"
 ---
-# <a name="customize-web-application-firewall-rules-through-the-azure-cli-20"></a>Přizpůsobení pravidla brány firewall webových aplikací pomocí Azure CLI 2.0
+# <a name="customize-web-application-firewall-rules-through-the-azure-cli"></a>Přizpůsobení pravidel firewallu webových aplikací pomocí rozhraní příkazového řádku Azure
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](application-gateway-customize-waf-rules-portal.md)
 > * [PowerShell](application-gateway-customize-waf-rules-powershell.md)
-> * [Azure CLI 2.0](application-gateway-customize-waf-rules-cli.md)
+> * [Azure CLI](application-gateway-customize-waf-rules-cli.md)
 
-Azure Application Gateway brány firewall webových aplikací (firewall webových aplikací) poskytuje ochranu pro webové aplikace. Tyto ochrany jsou poskytovány pomocí aplikace otevřete webový projekt zabezpečení (OWASP) základní pravidlo nastavit CRS (). Některá pravidla můžete způsobit falešně pozitivních zjištění a blokování skutečné provozu. Z tohoto důvodu Application Gateway poskytuje schopnost přizpůsobit skupiny pravidla a pravidla. Další informace o konkrétní pravidlo skupiny a pravidel najdete v tématu [seznam webových aplikací brány firewall řádku pravidlo skupiny a pravidel](application-gateway-crs-rulegroups-rules.md).
+Firewall webových aplikací (WAF) Azure Application Gateway chrání webové aplikace. Tyto ochrany jsou k dispozici ve Open Web Application zabezpečení projektu (OWASP) základní pravidlo nastavte (CRS). Některá pravidla může způsobit, že počet falešně pozitivních výsledků a blokovat skutečný provoz. Z tohoto důvodu Application Gateway poskytuje schopnost přizpůsobit skupin pravidel a pravidla. Další informace o příslušné pravidlo skupiny a pravidel, naleznete v tématu [seznam skupin pravidel CRS firewallu webových aplikací a pravidla](application-gateway-crs-rulegroups-rules.md).
 
-## <a name="view-rule-groups-and-rules"></a>Zobrazit skupiny pravidla a pravidla
+## <a name="view-rule-groups-and-rules"></a>Zobrazení skupin pravidel a pravidla
 
-Následující příklady kódu ukazují, jak zobrazit pravidla a pravidla skupiny, které se dají konfigurovat.
+Následující příklady kódu ukazují, jak zobrazení pravidel a skupin pravidel, které se dají konfigurovat.
 
-### <a name="view-rule-groups"></a>Zobrazení pravidla skupiny
+### <a name="view-rule-groups"></a>Zobrazit pravidla skupiny
 
-Následující příklad ukazuje, jak chcete-li zobrazit skupiny pravidel:
+Následující příklad ukazuje, jak zobrazit skupiny pravidel:
 
 ```azurecli-interactive
 az network application-gateway waf-config list-rule-sets --type OWASP
 ```
 
-Tento výstup je oříznuta odpovědí z předchozího příkladu:
+Následující výstup je zkrácený odpovědi z předchozího příkladu:
 
 ```
 [
@@ -89,13 +89,13 @@ Tento výstup je oříznuta odpovědí z předchozího příkladu:
 
 ### <a name="view-rules-in-a-rule-group"></a>Zobrazení pravidel skupiny pravidla
 
-Následující příklad ukazuje, jak chcete zobrazit pravidla ve skupině zadaným pravidlem:
+Následující příklad ukazuje, jak zobrazit pravidel ve skupině a zadané pravidlo:
 
 ```azurecli-interactive
 az network application-gateway waf-config list-rule-sets --group "REQUEST-910-IP-REPUTATION"
 ```
 
-Tento výstup je oříznuta odpovědí z předchozího příkladu:
+Následující výstup je zkrácený odpovědi z předchozího příkladu:
 
 ```
 [
@@ -126,9 +126,9 @@ Tento výstup je oříznuta odpovědí z předchozího příkladu:
 ]
 ```
 
-## <a name="disable-rules"></a>Zakázání pravidla
+## <a name="disable-rules"></a>Zákaz pravidel
 
-Následující příklad zakazuje pravidla `910018` a `910017` na aplikační brány:
+Následující příklad zakazuje pravidla `910018` a `910017` ve službě application gateway:
 
 ```azurecli-interactive
 az network application-gateway waf-config set --resource-group AdatumAppGatewayRG --gateway-name AdatumAppGateway --enabled true --rule-set-version 3.0 --disabled-rules 910018 910017
@@ -136,7 +136,7 @@ az network application-gateway waf-config set --resource-group AdatumAppGatewayR
 
 ## <a name="next-steps"></a>Další postup
 
-Po dokončení konfigurace zakázaná pravidla, můžete naučit k zobrazení protokolů firewall webových aplikací. Další informace najdete v tématu [diagnostics Application Gateway](application-gateway-diagnostics.md#diagnostic-logging).
+Po dokončení konfigurace zakázaná pravidla se dozvíte, jak si chcete zobrazit protokoly WAF. Další informace najdete v tématu [diagnostice služby Application Gateway](application-gateway-diagnostics.md#diagnostic-logging).
 
 [fig1]: ./media/application-gateway-customize-waf-rules-portal/1.png
 [1]: ./media/application-gateway-customize-waf-rules-portal/figure1.png

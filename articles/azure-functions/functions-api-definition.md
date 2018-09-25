@@ -10,15 +10,18 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.openlocfilehash: 68077e576fe3451627d8a5c8e1ff1b26d06d96b7
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 93e6b8c606c0a6d7abebeb515b938a45001757c1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44091834"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950365"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Podpora metadat OpenAPI 2.0 ve službě Azure Functions (preview)
 OpenAPI 2.0 (dříve Swagger) podpora metadat ve službě Azure Functions je funkce ve verzi preview, můžete použít k zápisu definici rozhraní OpenAPI 2.0 v aplikaci function app. Tento soubor pak můžete hostovat pomocí aplikace function app.
+
+> [!IMPORTANT]
+> OpenAPI funkce ve verzi preview nabízíme jenom dnes v modul runtime verze 1.x. Informace o tom, jak vytvořit aplikaci function app 1.x [najdete tady](./functions-versions.md#creating-1x-apps).
 
 [OpenAPI metadata](http://swagger.io/) umožňuje funkci, která je hostitelem rozhraní REST API pro širokou škálu dalšího softwaru. Tento software obsahuje nabídkami Microsoftu jako PowerApps a [funkce API Apps služby Azure App Service](../app-service/app-service-web-overview.md), nástroje pro vývojáře třetích stran, jako je [Postman](https://www.getpostman.com/docs/importing_swagger), a [řada dalších balíčků](http://swagger.io/tools/).
 

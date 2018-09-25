@@ -5,33 +5,33 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/12/2018
+ms.date: 08/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: b7e4665dc3579f357ce1e28bf34be35c931736bd
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 9c09f473f5d8b399c4fb1b1ad449c783c797f4dd
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35642913"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46968505"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Přidání rozšířené metriky pro virtuální počítače Azure
 
-Služba Cost Management využívá Azure metriky data z vašich virtuálních počítačů Azure zobrazíte podrobné informace o jejich prostředky. Data metriky, čítače výkonu, nazývané také používá ke generování sestav Cost Management. Ale Cost Management není shromažďovat automaticky všech dat metriky Azure z virtuálních počítačů hosta, je nutné povolit shromažďování metrik. Tento článek vám pomůže povolit a nakonfigurovat dalších diagnostických metrik pro virtuální počítače Azure.
+Cloudyn používá Azure metriky data z vašich virtuálních počítačů Azure zobrazíte podrobné informace o jejich prostředků. Data metriky, čítače výkonu, nazývané také používá ke generování sestav Cloudyn. Nicméně Cloudyn není shromažďovat automaticky všech dat metriky Azure z virtuálních počítačů hosta, je nutné povolit shromažďování metrik. Tento článek vám pomůže povolit a nakonfigurovat dalších diagnostických metrik pro virtuální počítače Azure.
 
 Po povolení shromažďování metrik můžete:
 
 - Vědět, když vaše virtuální počítače jsou tam dostupné pro jejich omezení procesoru, disku a paměti.
 - Detekujte trendy využití a anomálie.
 - Řídit své náklady podle velikosti podle využití.
-- Získání nákladů efektivní velikosti optimalizace doporučení Cost Management.
+- Získání nákladů efektivní velikosti doporučení optimalizace Cloudyn.
 
 Například můžete chtít sledovat % procesoru a paměti % virtuální počítače Azure. Metriky virtuálního počítače Azure odpovídají _[hostitele] využití CPU_ a _procento paměti [hosta]_.
 
 > [!NOTE]
-> Kolekce rozšířených dat metriky se podporuje jenom s využitím Azure monitoru úrovni hosta. Služba Cost Management není kompatibilní s rozšířením Log Analytics VM.
+> Kolekce rozšířených dat metriky se podporuje jenom s využitím Azure monitoru úrovni hosta. Cloudyn není kompatibilní s rozšířením Log Analytics VM.
 
 ## <a name="verify-that-metrics-are-enabled-on-vms"></a>Ověřte, že jsou na virtuálních počítačích povolené metriky
 
@@ -68,7 +68,7 @@ Při vytváření nové virtuální počítače, ujistěte se, že vyberete **Di
 
 ## <a name="resource-manager-credentials"></a>Přihlašovací údaje správce prostředků
 
-Po povolení rozšířené metriky, ujistěte se, že Cost Management má přístup k vaší [Resource Manageru přihlašovacími údaji](activate-subs-accounts.md). Vaše přihlašovací údaje jsou požadovány pro Cost Management ke shromáždění a zobrazení dat výkonu pro virtuální počítače. Také slouží k vytvoření doporučení pro optimalizaci nákladů. Služba Cost Management potřebuje aspoň tři dny údaje o výkonu z instance k určení, zda je mezi kandidáty pro doporučení downsizing.
+Po povolení rozšířené metriky, ujistěte se, Cloudyn má přístup k vaší [Resource Manageru přihlašovacími údaji](activate-subs-accounts.md). Vaše přihlašovací údaje jsou požadovány pro Cloudyn ke shromáždění a zobrazení dat výkonu pro virtuální počítače. Také slouží k vytvoření doporučení pro optimalizaci nákladů. Cloudyn vyžaduje alespoň tři dny údaje o výkonu z instance k určení, zda je mezi kandidáty pro doporučení downsizing.
 
 ## <a name="enable-vm-metrics-with-a-script"></a>Zapnutí metrik virtuálního počítače pomocí skriptu
 

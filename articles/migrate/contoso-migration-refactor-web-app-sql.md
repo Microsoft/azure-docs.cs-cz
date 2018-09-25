@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/03/2018
+ms.date: 09/20/2018
 ms.author: raynew
-ms.openlocfilehash: d42839bb744d3ed09feb482d09946ccee2f691e7
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 39444b20dfefd947abb2f2bc00a9945398996dd0
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297396"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040529"
 ---
 # <a name="contoso-migration-refactor-an-on-premises-app-to-an-azure-web-app-and-azure-sql-database"></a>Migrace Contoso: Refaktorovat místní aplikace do webové aplikace Azure a Azure SQL database
 
@@ -57,7 +57,7 @@ Tým cloudových Contoso má připnutou dolů cíle pro tuto migraci. Tyto cíle
 **Aplikace** | Aplikace ve službě Azure zůstane tak kritický, protože se ještě dnes.<br/><br/> Měl by mít stejné možnosti výkonu, stejně jako aktuálně ve službě VMWare.<br/><br/> Tým nechce investovat do aplikace. Prozatím se správci jednoduše přesune aplikace bezpečně do cloudu.<br/><br/> Tým má zastavit podporu Windows Server 2008 R2, která je aktuálně spuštění aplikace.<br/><br/> Také chce tým přesunout mimo systém SQL Server 2008 R2 na moderní platformě databáze PaaS, což minimalizuje potřebu správy.<br/><br/> Contoso má využívat své investice do licencí SQL serveru se Software Assurance, kde je to možné.<br/><br/> Kromě toho Contoso chce zmírnit jediný bod selhání na webové vrstvy.
 **Omezení** | Aplikace se skládá z aplikace ASP.NET a WCF služby spuštěné na stejném virtuálním počítači. Chtějí se to rozdělit mezi dva webové aplikace s využitím služby Azure App Service. 
 **Azure** | Contoso chce přejít aplikace do Azure, ale nechce spustit na virtuálních počítačích. Contoso chce využívat služby Azure PaaS pro úrovně web a data. 
-**DevOps** | Contoso chce přesunout do modelu DevOps pomocí Visual Studio Team Services (VSTS) pro svá sestavení a vydávání kanálů.
+**DevOps** | Contoso chce přesunout do modelu DevOps pomocí Azure DevOps pro jejich sestavení a vydávání kanálů.
 
 ## <a name="solution-design"></a>Návrh řešení
 
@@ -80,7 +80,7 @@ Po Připnutí dolů cíle a požadavky, Contoso navrhuje, zkontrolujte nasazení
     - S programem Software Assurance si mohou vyměňovat Contoso stávající licence pro zlevněné sazby pro SQL Database, pomocí zvýhodněné hybridní využití Azure pro SQL Server. To může poskytovat úspory až 30 %.
     - SQL Database poskytuje mnoho funkcí zabezpečení, včetně maskování neustálé šifrování, dynamických dat a detekce ohrožení/zabezpečení na úrovni řádků.
 - Pro webovou vrstvu aplikace Contoso se rozhodl používat Azure App Service. Tato služba PaaS umožňuje, aby nasazení aplikace s pár změn konfigurace. Contoso se pomocí sady Visual Studio proveďte požadovanou změnu a nasaďte dvě webové aplikace. Jeden pro web a jeden pro službu WCF.
-- Abyste splnili požadavky pro kanál DevOps, Contoso vybral pomocí VSTS. VSTS vám nasadí s úložišti Git pro správu zdrojového kódu (SCM). Automatizované buildy a vydání se použije k sestavení kódu a nasazení do Azure Web Apps.
+- Abyste splnili požadavky pro kanál DevOps, Contoso vybral používat Azure DevOps s úložišti Git pro správu zdrojového kódu (SCM). Automatizované buildy a vydání se použije k sestavení kódu a nasazení do Azure Web Apps.
   
 ### <a name="solution-review"></a>Kontrola řešení
 Contoso vyhodnotí své navrhované návrhu společně vložením seznam výhody a nevýhody.
@@ -109,6 +109,7 @@ Contoso vyhodnotí své navrhované návrhu společně vložením seznam výhody
 [Database Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | Společnost Contoso použije DMA k vyhodnocení a zjištění problémů s kompatibilitou, které může mít vliv na jejich fungování databáze v Azure. DMA vyhodnocuje paritu funkcí mezi SQL zdroje a cíle a doporučuje vylepšení výkonu a spolehlivosti. | Tento nástroj je zdarma ke stažení.
 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) | Inteligentní, plně spravovaná relační Cloudová databázová služba. | Náklady na základě funkcí, propustnosti a velikosti. [Další informace](https://azure.microsoft.com/pricing/details/sql-database/managed/).
 [Azure App Service – Web Apps](https://docs.microsoft.com/azure/app-service/app-service-web-overview) | Vytváření výkonných cloudových aplikací s využitím plně spravované platformy | Náklady podle doby trvání velikost, umístění a využití. [Další informace](https://azure.microsoft.com/pricing/details/app-service/windows/).
+[Azure DevOps](https://docs.microsoft.com/azure/azure-portal/tutorial-azureportal-devops) | Poskytuje průběžné integrace a průběžného nasazování (CI/CD) kanálů pro vývoj aplikací. Kanál začíná úložiště Git pro správu kód aplikace, systém sestavení pro vytváření balíčků a další artefakty sestavení a systém správy vydaných verzí nasazení změny do vývojových, testovacích a produkčních prostředích. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -128,9 +129,9 @@ Tady je způsob spuštění migrace Contoso:
 > * **Krok 1: Zřízení instance SQL Database v Azure**: Contoso zřídí instanci SQL v Azure. Poté, co je web aplikace migraci do Azure, webové aplikace služby WCF bude odkazovat na tuto instanci.
 > * **Krok 2: Migrace databáze pomocí DMA**: Contoso migraci databáze aplikace pomocí Pomocníka s migrací databáze.
 > * **Krok 3: Zřízení webové aplikace**: Contoso ustanovení dvě webové aplikace.
-> * **Krok 4: Nastavení VSTS**: Contoso vytvoří nový projekt VSTS a naimportuje úložiště Git.
+> * **Krok 4: Nastavení Azure DevOps**: Contoso vytvoří nový projekt Azure DevOps a naimportuje úložiště Git.
 > * **Krok 5: Konfigurace připojovacích řetězců**: Contoso nakonfiguruje připojovacích řetězců tak, aby webové vrstvy webové aplikace, webové aplikace služby WCF a instanci SQL lze komunikovat.
-> * **Krok 6: Nastavení sestavení a vydávání kanálů ve službě VSTS**: Contoso nastaví v posledním kroku, sestavení a vydání kanály vytvořte aplikaci a nasadí je do dvou samostatných Azure Web Apps.
+> * **Krok 6: Nastavení sestavení a vydávání kanálů**: Contoso nastaví v posledním kroku, sestavení a vydání kanály vytvořte aplikaci a nasadí je do dvou samostatných Azure Web Apps.
 
 
 ## <a name="step-1-provision-an-azure-sql-database"></a>Krok 1: Zřízení služby Azure SQL Database
@@ -236,26 +237,26 @@ S databází migrovat, správce společnosti Contoso můžete nyní zřídit dv�
 4. Po jejich dokončení, přejděte na adresu aplikací ke kontrole, že jste byla úspěšně vytvořena.
 
 
-## <a name="step-4-set-up-vsts"></a>Krok 4: Nastavení VSTS
+## <a name="step-4-set-up-azure-devops"></a>Krok 4: Nastavení Azure DevOps
 
 
-Contoso potřebuje pro sestavení infrastruktury DevOps a kanály pro aplikaci.  K tomuto účelu správce společnosti Contoso vytvořit nový projekt VSTS, import kódu, nastavení sestavení a vydávání kanálů.
+Contoso potřebuje pro sestavení infrastruktury DevOps a kanály pro aplikaci.  K tomuto účelu správce společnosti Contoso vytvořit nový projekt DevOps, naimportovat kód a pak nastavení sestavení a vydávání kanálů.
 
-1.   V účtu VSTS společnosti Contoso, vytvořte nový projekt (**ContosoSmartHotelRefactor**) a vyberte **Git** pro správu verzí.
+1.   V účtu Contoso Azure DevOps, vytvořte nový projekt (**ContosoSmartHotelRefactor**) a vyberte **Git** pro správu verzí.
 
     ![Nový projekt](./media/contoso-migration-refactor-web-app-sql/vsts1.png)
-
 2. Jejich importovat úložiště Git, která nyní obsahuje jejich kód aplikace. Se [veřejného úložiště](https://github.com/Microsoft/SmartHotel360-internal-booking-apps) a můžete ji stáhnout.
 
     ![Stáhněte si kód aplikace](./media/contoso-migration-refactor-web-app-sql/vsts2.png)
-
+    
 3. Po importu kód, připojte se k úložišti aplikace Visual Studio a klonování kódu pomocí Průzkumníka týmových projektů.
 
-    ![Připojení k úložišti](./media/contoso-migration-refactor-web-app-sql/vsts3.png)
+    ![Připojte se k projektu](./media/contoso-migration-refactor-web-app-sql/devops1.png)
 
 4. Po naklonování úložiště do počítače pro vývojáře, otevřete soubor řešení pro aplikaci. Webové aplikace a wcf služby mají oddělení v rámci souboru projektu.
 
     ![Soubor řešení](./media/contoso-migration-refactor-web-app-sql/vsts4.png)
+    
 
 ## <a name="step-5-configure-connection-strings"></a>Krok 5: Konfigurace připojovacích řetězců
 
@@ -277,15 +278,15 @@ Správce společnosti Contoso se muset ujistit, že webové aplikace a databáze
 5. Jakmile jsou změny v kódu, musí se správci tím potvrdíte změny. Pomocí Průzkumníka týmových projektů v sadě Visual Studio, že commmit a synchronizace.
 
 
-## <a name="step-6-set-up-build-and-release-pipelines-in-vsts"></a>Krok 6: Nastavení sestavení a vydávání kanálů ve VSTS
+## <a name="step-6-set-up-build-and-release-pipelines-in-azure-devops"></a>Krok 6: Nastavení sestavení a vydávání kanálů v Azure DevOps
 
-Správce společnosti Contoso teď nakonfigurovat VSTS k provedení sestavení a vydání postup akce postupy DevOps.
+Správce společnosti Contoso teď nakonfigurovat Azure DevOps k provedení sestavení a proces vydávání verzí.
 
-1. Ve VSTS, kliknou **sestavení a vydání** > **nový kanál**.
+1. V Azure DevOps kliknou **sestavení a vydání** > **nový kanál**.
 
     ![Nový kanál](./media/contoso-migration-refactor-web-app-sql/pipeline1.png)
 
-2. Vyberou **VSTS Git** a příslušné úložiště.
+2. Vyberou **úložiště Git v Azure** a příslušné úložiště.
 
     ![Git a úložiště](./media/contoso-migration-refactor-web-app-sql/pipeline2.png)
 
@@ -293,15 +294,15 @@ Správce společnosti Contoso teď nakonfigurovat VSTS k provedení sestavení a
 
      ![Šablony ASP.NET](./media/contoso-migration-refactor-web-app-sql/pipeline3.png)
     
-4. Zadejte název položky konfigurace ContosoSmartHotelRefactor technologie ASP.NET pro sestavení a klikněte na tlačítko **Uložit & frontu**.
+4. Název **ContosoSmartHotelRefactor. technologie ASP.NET CI** se používá pro sestavení. Kliknutím na **Uložit & frontu**.
 
      ![Uložit a fronty](./media/contoso-migration-refactor-web-app-sql/pipeline4.png)
 
-5. To zahajuje svoje první sestavení. Kliknutí na číslo sestavení ke sledování procesu. Po dokončení uvidí proces zpětné vazby.
+5. To zahajuje první sestavení. Kliknutí na číslo sestavení ke sledování procesu. Po dokončení se mohou zobrazit proces zpětné vazby a klikněte na tlačítko **artefakty** zobrazení výsledků sestavení.
 
-    ![Váš názor](./media/contoso-migration-refactor-web-app-sql/pipeline5.png)
+    ![Zkontrolovat](./media/contoso-migration-refactor-web-app-sql/pipeline5.png)
 
-6. Po úspěšném sestavení, pak otevřete sestavení a klikněte na tlačítko kliknou **artefakty**. Tato složka obsahuje výsledků sestavení
+6. Složka **vyřadit** obsahuje výsledků sestavení.
 
     - Soubory zip dva jsou balíčky obsahující aplikace.
     - Tyto soubory se používají v kanál pro vydávání verzí pro nasazení do Azure Web Apps
@@ -316,11 +317,11 @@ Správce společnosti Contoso teď nakonfigurovat VSTS k provedení sestavení a
 
     ![Šablony Azure App Service](./media/contoso-migration-refactor-web-app-sql/pipeline8.png)
 
-9. Jejich název kanál pro vydávání verzí **ContosoSmartHotelRefactor**a zadejte název webové aplikace WCF (SHWCF EUS2) pro název prostředí.
+9. Jejich název kanál pro vydávání verzí **ContosoSmartHotel360Refactor**a zadejte název webové aplikace WCF (SHWCF EUS2) **fáze** název.
 
     ![Prostředí](./media/contoso-migration-refactor-web-app-sql/pipeline9.png)
 
-10. V rámci prostředí a kliknou **fáze 1, 1 úloha** ke konfiguraci nasazení služby WCF.
+10. V části fáze, kliknou **úlohy 1, 1 úloha** ke konfiguraci nasazení služby WCF.
 
     ![Nasazení WCF](./media/contoso-migration-refactor-web-app-sql/pipeline10.png)
 
@@ -328,7 +329,7 @@ Správce společnosti Contoso teď nakonfigurovat VSTS k provedení sestavení a
 
      ![Vyberte službu app service](./media/contoso-migration-refactor-web-app-sql/pipeline11.png)
 
-12. V **artefakty**, vyberou **+ přidat artefakt**a vyberte k sestavení **ContosoSmarthotelRefactor. technologie ASP.NET CI** kanálu.
+12. V kanálu > **artefakty**, vyberou **+ přidat artefakt**a vyberte k sestavení **ContosoSmarthotel360Refactor** kanálu.
 
      ![Sestavení](./media/contoso-migration-refactor-web-app-sql/pipeline12.png)
 
@@ -336,11 +337,11 @@ Správce společnosti Contoso teď nakonfigurovat VSTS k provedení sestavení a
 
      ![Blesk](./media/contoso-migration-refactor-web-app-sql/pipeline13.png)
 
-16. Navíc si všimněte, že trigger průběžného nasazování by mělo být nastavené **povoleno**.
+16. Trigger průběžného nasazování musí být nastavená na **povoleno**.
 
    ![Průběžné nasazování povoleno](./media/contoso-migration-refactor-web-app-sql/pipeline14.png) 
 
-17. Nyní, klikněte na **nasazení služby Azure App Service**.
+17. Teď, přecházejí zpět do fáze 1 úlohy můžu úkoly a klikněte na **nasazení služby Azure App Service**.
 
     ![Nasadit službu app service](./media/contoso-migration-refactor-web-app-sql/pipeline15.png)
 
@@ -348,7 +349,7 @@ Správce společnosti Contoso teď nakonfigurovat VSTS k provedení sestavení a
 
     ![Uložit WCF](./media/contoso-migration-refactor-web-app-sql/pipeline16.png)
 
-19. Kliknutím na **kanálu** >**+ přidat**, chcete-li přidat prostředí pro **SHWEB EUS2**, vyberete jiný nasazení služby Azure App Service.
+19. Kliknutím na **kanálu** > **fáze** **+ přidat**, chcete-li přidat prostředí pro **SHWEB EUS2**. Výběrem jiné nasazení služby Azure App Service.
 
     ![Přidání prostředí](./media/contoso-migration-refactor-web-app-sql/pipeline17.png)
 
@@ -368,7 +369,7 @@ Správce společnosti Contoso teď nakonfigurovat VSTS k provedení sestavení a
 
     ![Uložení kanálu](./media/contoso-migration-refactor-web-app-sql/pipeline21.png)
 
-24. Správce společnosti Contoso postupovat podle sestavení a vydání proces kanálu z VSTS. Po dokončení sestavení, vydání se spustí.
+24. Správce společnosti Contoso postupovat podle sestavení a vydání proces kanálu z Azure DevOps. Po dokončení sestavení, vydání se spustí.
 
     ![Sestavení a vydání aplikace](./media/contoso-migration-refactor-web-app-sql/pipeline22.png)
 

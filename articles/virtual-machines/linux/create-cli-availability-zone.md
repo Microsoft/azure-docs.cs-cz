@@ -1,6 +1,6 @@
 ---
-title: Vytvoření zoned virtuálního počítače s Linuxem pomocí rozhraní příkazového řádku Azure | Microsoft Docs
-description: Vytvoření virtuálního počítače s Linuxem v zóně dostupnosti pomocí Azure CLI
+title: Vytvoření zóny virtuálního počítače s Linuxem pomocí Azure CLI | Dokumentace Microsoftu
+description: Vytvoření virtuálního počítače s Linuxem v zóně dostupnosti s využitím rozhraní příkazového řádku Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: dlepow
@@ -16,26 +16,26 @@ ms.workload: infrastructure
 ms.date: 04/05/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 512b6cde1a1de70f020a9af1254d2bc8e78f1b5f
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c202379f236bcd2fea05ad9d135096bc724898e7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30905512"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956417"
 ---
-# <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Vytvořit virtuální počítač s Linuxem v zóně dostupnosti pomocí Azure CLI
+# <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Vytvoření virtuálního počítače s Linuxem v zóně dostupnosti s využitím rozhraní příkazového řádku Azure
 
-Tento článek obsahuje kroky prostřednictvím rozhraní příkazového řádku Azure k vytvoření virtuálního počítače s Linuxem v zóně Azure dostupnosti. [Zóna dostupnosti](../../availability-zones/az-overview.md) je fyzicky oddělená zóna v oblasti Azure. Zóny dostupnosti se používají k ochraně aplikací a dat před málo pravděpodobným selháním nebo ztrátou celého datového centra.
+Tento článek prochází jednotlivé kroky k vytvoření virtuálního počítače s Linuxem v zóně dostupnosti Azure pomocí Azure CLI. [Zóna dostupnosti](../../availability-zones/az-overview.md) je fyzicky oddělená zóna v oblasti Azure. Zóny dostupnosti se používají k ochraně aplikací a dat před málo pravděpodobným selháním nebo ztrátou celého datového centra.
 
-Pokud chcete použít dostupnosti zóny, vytvoření virtuálního počítače v prostředí [podporované oblasti Azure](../../availability-zones/az-overview.md#regions-that-support-availability-zones).
+Pokud chcete využít zóny dostupnosti, vytvořte virtuální počítač v [podporované oblasti Azure](../../availability-zones/az-overview.md#regions-that-support-availability-zones).
 
-Ujistěte se, že jste nainstalovali nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) a přihlášený k účtu Azure s [az přihlášení](/cli/azure/reference-index#az_login).
+Ujistěte se, že máte nainstalovanou nejnovější verzi [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) a jste přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az_login).
 
 
 ## <a name="check-vm-sku-availability"></a>Kontrola dostupnosti skladových položek virtuálních počítačů
 Dostupnost velikostí virtuálních počítačů (neboli skladových položek) se může lišit podle oblasti a zóny. Jako pomůcku při plánování použití zón dostupnosti můžete zobrazit seznam dostupných SKU virtuálních počítačů podle zóny a oblasti Azure. Díky tomu se zajistí, že vyberete odpovídající velikost virtuálního počítače a získáte požadovanou odolnost napříč zónami. Další informace o různých velikostech a typech virtuálních počítačů najdete v [přehledu velikostí virtuálních počítačů](sizes.md).
 
-Můžete zobrazit dostupné edice virtuálních počítačů s [seznamu virtuálních počítačů az-SKU](/cli/azure/vm#az_vm_list_skus) příkaz. Následující příklad zobrazí seznam dostupných skladových položek virtuálních počítačů v oblasti *eastus2*:
+Můžete zobrazit dostupné skladové položky virtuálních počítačů s [az vm list-skus](/cli/azure/vm#az_vm_list_skus) příkazu. Následující příklad zobrazí seznam dostupných skladových položek virtuálních počítačů v oblasti *eastus2*:
 
 ```azurecli
 az vm list-skus --location eastus2 --output table
@@ -64,25 +64,25 @@ virtualMachines   eastus2    Standard_E4_v3              Standard   E4_v3    1,2
 
 Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create).  
 
-Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Skupina prostředků musí být vytvořená už před vytvořením virtuálního počítače. V tomto příkladu skupinu prostředků s názvem *myResourceGroupVM* je vytvořen v *eastus2* oblast. Východní USA 2 je jedním z oblasti Azure, které podporuje dostupnost zóny.
+Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Skupina prostředků musí být vytvořená už před vytvořením virtuálního počítače. V tomto příkladu skupina prostředků s názvem *myResourceGroupVM* se vytvoří v *eastus2* oblasti. Východní USA 2 je jednou z oblasti Azure, které podporují zóny dostupnosti.
 
 ```azurecli 
 az group create --name myResourceGroupVM --location eastus2
 ```
 
-Skupina prostředků je zadána při vytváření nebo úpravách virtuální počítač, který v tomto článku si můžete prohlédnout.
+Skupina prostředků je určena při vytváření nebo úpravách virtuálního počítače, což uvidíte dále v tomto článku.
 
 ## <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
 
 Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create). 
 
-Při vytváření virtuálního počítače je k dispozici několik možností, jako jsou image operačního systému, velikost disku a přihlašovací údaje pro správu. V tomto příkladu se vytvoří virtuální počítač s názvem *myVM*, na kterém poběží Ubuntu Server. Vytvoření virtuálního počítače v zóně dostupnosti *1*. Ve výchozím nastavení, je virtuální počítač vytvořený v *Standard_DS1_v2* velikost.
+Při vytváření virtuálního počítače je k dispozici několik možností, jako jsou image operačního systému, velikost disku a přihlašovací údaje pro správu. V tomto příkladu se vytvoří virtuální počítač s názvem *myVM*, na kterém poběží Ubuntu Server. Vytvoření virtuálního počítače v zóně dostupnosti *1*. Ve výchozím nastavení, se vytvoří virtuální počítač v *Standard_DS1_v2* velikost.
 
 ```azurecli-interactive 
 az vm create --resource-group myResourceGroupVM --name myVM --location eastus2 --image UbuntuLTS --generate-ssh-keys --zone 1
 ```
 
-Vytvoření virtuálního počítače může několik minut trvat. Po vytvoření virtuálního počítače o něm Azure CLI vypíše informace. Poznamenejte si `zones` hodnotu, která určuje dostupnosti zónu, ve kterém je virtuální počítač spuštěný. 
+Vytvoření virtuálního počítače může několik minut trvat. Po vytvoření virtuálního počítače o něm Azure CLI vypíše informace. Poznamenejte si `zones` hodnotu, která určuje zónu dostupnosti, ve kterém je virtuální počítač spuštěný. 
 
 ```azurecli 
 {
@@ -98,11 +98,11 @@ Vytvoření virtuálního počítače může několik minut trvat. Po vytvořen�
 }
 ```
 
-## <a name="confirm-zone-for-managed-disk-and-ip-address"></a>Potvrďte zónu pro spravovaných disků a IP adresy
+## <a name="confirm-zone-for-managed-disk-and-ip-address"></a>Potvrzení zóny pro spravovaný disk a IP adresa
 
-Po nasazení virtuálního počítače v zóně dostupnosti pro virtuální počítač se spravovaným diskem se vytvoří ve stejné zóně dostupnosti. Ve výchozím nastavení je veřejnou IP adresu vytvořen také v této zóně. Následující příklady získat informace o těchto prostředcích.
+Po nasazení virtuálního počítače v zóně dostupnosti spravovaného disku pro virtuální počítač se vytvoří ve stejné zóně dostupnosti. Ve výchozím nastavení je vytvořen v této oblasti také veřejnou IP adresu. Následující příklady získat informace o těchto prostředcích.
 
-K ověření, zda je disk spravované Virtuálního počítače v zóně dostupnosti, použijte [az virtuálních počítačů zobrazit](/cli/azure/vm#az_vm_show) příkaz vrátí id disku. V tomto příkladu je id disku uložené v proměnné, která se používá v pozdější fázi. 
+Chcete-li ověřit, že spravovaný disk Virtuálního počítače je v zóně dostupnosti, použijte [az vm show](/cli/azure/vm#az_vm_show) příkaz pro zjištění id disku. V tomto příkladu je id disku uložené v proměnné, která se používá v pozdější fázi. 
 
 ```azurecli-interactive
 osdiskname=$(az vm show -g myResourceGroupVM -n myVM --query "storageProfile.osDisk.name" -o tsv)
@@ -149,7 +149,7 @@ Výstup ukazuje, že spravovaný disk je ve stejné zóně dostupnosti jako virt
 }
 ```
 
-Použití [az virtuálních počítačů seznamu ip-addresses](/cli/azure/vm#az_vm_list_ip_addresses) příkaz vrátí název prostředek veřejné IP adresy v *Můjvp*. V tomto příkladu je název uložené v proměnné, která se používá v pozdější fázi.
+Použití [az vm list-ip-addresses](/cli/azure/vm#az_vm_list_ip_addresses) příkaz, který vrátí název prostředku veřejné IP adresy v *myVM*. V tomto příkladu je název uložen v proměnné, která se používá v pozdější fázi.
 
 ```azurecli
 ipaddressname=$(az vm list-ip-addresses -g myResourceGroupVM -n myVM --query "[].virtualMachine.network.publicIpAddresses[].name" -o tsv)
@@ -161,7 +161,7 @@ Teď můžete získat informace o IP adrese:
 az network public-ip show --resource-group myResourceGroupVM --name $ipaddressname
 ```
 
-Výstup ukazuje, že IP adresa je v zóně dostupnosti jako virtuální počítač:
+Výstup ukazuje, že IP adresa je ve stejné zóně dostupnosti jako virtuální počítač:
 
 ```azurecli
 {
@@ -198,7 +198,7 @@ Výstup ukazuje, že IP adresa je v zóně dostupnosti jako virtuální počíta
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku jste se naučili vytvoření virtuálního počítače v zóně dostupnosti. Přečtěte si další informace o [oblastech a dostupnosti](regions-and-availability.md) pro virtuální počítače Azure.
+V tomto článku jste zjistili, jak vytvořit virtuální počítač v zóně dostupnosti. Přečtěte si další informace o [oblastech a dostupnosti](regions-and-availability.md) pro virtuální počítače Azure.
 
 
 

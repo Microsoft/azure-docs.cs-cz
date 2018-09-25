@@ -3,19 +3,19 @@ title: Upgrade služby QnA Maker – QnA Maker
 titleSuffix: Azure Cognitive Services
 description: Můžete upgradovat po vytvoření počátečního jednotlivých komponent nástroje QnA Maker.
 services: cognitive-services
-author: nstulasi
+author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
-ms.author: saneppal
-ms.openlocfilehash: 6d8940389e72ee3924c036e8d4833a20464d628e
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.author: tulasim
+ms.openlocfilehash: 8542b1f6dfe031de58ea6eeb931027ee03bd81f2
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543271"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47030961"
 ---
 # <a name="upgrade-your-qna-maker-service"></a>Upgrade služby QnA Maker
 Můžete upgradovat po vytvoření počátečního jednotlivých komponent nástroje QnA Maker. Prohlédněte si podrobnosti o výběr SKU a závislé komponenty [tady](https://aka.ms/qnamaker-docs-capacity).

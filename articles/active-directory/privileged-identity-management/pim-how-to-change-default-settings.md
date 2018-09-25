@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: pim
-ms.date: 08/27/2018
+ms.date: 09/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 2d7226f18eb922eaba3c8184656560c33202ef56
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 77a57afda3859de4a246c15d3b5c0b4ba8e2a8c8
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665430"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038988"
 ---
 # <a name="configure-azure-ad-directory-role-settings-in-pim"></a>Konfigurace nastavení role adresáře Azure AD v PIM
 
@@ -63,24 +63,23 @@ Použití **ověřování službou Multi-Factor Authentication** přepínač k u
 * Uživatelé, kteří mají účty Microsoft pro jejich e-mailové adresy (obvykle @outlook.com, ale ne vždy) nejde zaregistrovat pro Azure MFA. Pokud chcete přiřazení rolí uživatelům s účty Microsoft, by měl daly trvalých správců nebo zakázání MFA pro danou roli.
 * Vícefaktorové ověřování pro vysoce privilegované role nelze zakázat pro službu Azure AD a Office 365. Toto je funkce bezpečný přístup z více, protože pracovníci v těchto rolích by měly být pečlivě chráněné:  
   
-  * Správce aplikace
-  * Správce serveru Proxy aplikací
-  * Správce fakturace  
-  * Správce dodržování předpisů  
+  * Správce fakturace
+  * Správce cloudové aplikace
+  * Správce dodržování předpisů
+  * Správce podmíněného přístupu
   * Správce služby CRM
-  * Schvalovatel přístupu Lockboxu zákazníka
-  * Zapisovač adresáře  
-  * Správce Exchange  
+  * Schvalovatel přístupu ke Customer LockBoxu
+  * Uživatelé s oprávněním k zápisu do adresářů
+  * Správce Exchange
   * Globální správce
+  * Správce Information Protection
   * Správce služby Intune
-  * Správce poštovní schránky  
-  * Partnerská podpora úrovně 1  
-  * Partnerská podpora úrovně 2  
-  * Správce privilegovaných rolí
-  * Správce zabezpečení  
-  * Správce SharePointu  
-  * Správce Skypu pro firmy  
-  * Správce uživatelských účtů  
+  * Správce služeb Power BI
+  * Správce privilegované role
+  * Správce zabezpečení
+  * Správce služby SharePoint
+  * Správce Skypu pro firmy
+  * Správce uživatelů
 
 Další informace najdete v tématu [vícefaktorové ověřování (MFA) a PIM](pim-how-to-require-mfa.md).
 

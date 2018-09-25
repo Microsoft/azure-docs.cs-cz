@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: 97836c4160349b8095ba2095176783ae17b46e82
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 9df587d92b9e35db496c787186ff2945db7965ce
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216195"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987811"
 ---
 # <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Začínáme s automatické škálování na vlastní metrika v Azure
 Tento článek popisuje, jak škálovat prostředek vlastní metriky na webu Azure portal.
 
-Azure Monitor automatické škálování se vztahuje pouze na virtuální počítač Škálovací sady (VMSS), cloud services, plánů služby app service a app service Environment. 
+Automatické škálování služby Azure Monitor se týká pouze [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service – Web Apps](https://azure.microsoft.com/services/app-service/web/), a [služby API Management](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
 
 # <a name="lets-get-started"></a>Umožňuje začít
 Tento článek předpokládá, že máte webové aplikace pomocí application insights, které jsou nakonfigurované. Pokud je nemáte, můžete si [nastavení Application Insights pro váš web ASP.NET][1]

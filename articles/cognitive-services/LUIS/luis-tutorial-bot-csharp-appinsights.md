@@ -1,24 +1,26 @@
 ---
-title: Přidat LUIS data do Application Insights pomocí jazyka C# | Dokumentace Microsoftu
-titleSuffix: Azure
+title: Data Application Insights pomocí jazyka C# služby luis
+titleSuffix: Azure Cognitive Services
 description: Vytvořte robota, integruje se službou LUIS aplikace a služby Application Insights pomocí jazyka C#.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: f1efe305f5659bfab50cee13ac30d56531cc6093
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 83ad70e1242af1e01af06206a3a141f455072a44
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237787"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038948"
 ---
-# <a name="add-luis-results-to-application-insights-from-a-web-app-bot"></a>Přidání služby LUIS výsledky do Application Insights z použijete web app bot
-V tomto kurzu přidá informace o odpovědi LUIS k [Application Insights](https://azure.microsoft.com/services/application-insights/) úložiště dat telemetrie. Až budete mít data, můžete ji dotazovat s Kusto jazyk nebo Power BI k analýze, agregovat a vytváření sestav o záměry a entity utterance v reálném čase. Tato analýza pomůže zároveň pomáhá určit, pokud by měl přidat nebo upravit záměry a entity aplikace LUIS.
+# <a name="add-luis-results-to-application-insights"></a>Přidání LUIS výsledky do Application Insights
+V tomto kurzu přidá informace o odpovědi LUIS k [Application Insights](https://azure.microsoft.com/services/application-insights/) úložiště dat telemetrie. Až budete mít data, můžete ji dotazovat s Kusto jazyk nebo Power BI k analýze, agregovat a vytváření sestav o záměry a entity utterance v reálném čase. Tato analýza pomůže zároveň pomáhá určit, pokud by měl přidat nebo upravit záměry a entity aplikace LUIS. 
+
+Robot využívá rozhraní Bot Framework 3.x a použijete Azure Web app bot.
 
 V tomto kurzu se naučíte:
 
@@ -231,7 +233,7 @@ Služba Application Insights poskytuje výkonné nástroje pro dotazování dat 
     ![Vlastní analytická sestava](./media/luis-tutorial-bot-csharp-appinsights/analytics-query-2.png)
 
 
-Další informace o [Kusto dotazovací jazyk](https://docs.loganalytics.io/docs/Learn/Getting-Started/Getting-started-with-queries) nebo [export dat do Power BI](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi). 
+Další informace o [Kusto dotazovací jazyk](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries) nebo [export dat do Power BI](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi). 
 
 
 ## <a name="learn-more-about-bot-framework"></a>Další informace o rozhraní Bot Framework

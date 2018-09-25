@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: d0720c23e0831b446a92855383fab06b0bfacbc7
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: e66d896a7df48645dad39b5b978c4f7c2f8d8cb9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525463"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954547"
 ---
 # <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Jak disenroll zařízení v Azure IoT Hub Device Provisioning Service
 
@@ -34,9 +34,12 @@ Dočasně blokovaných zakázáním jeho položky registrace zařízení:
 2. V seznamu prostředků vyberte, které chcete seznam zakázaných registraci zařízení ve službě zřizování.
 3. Ve vaší službě zřizování vyberte **Správa registrací**a pak vyberte **jednotlivé registrace** kartu.
 4. Vyberte položku registrace pro zařízení, které chcete seznam zakázaných. 
-5. Posuňte dolů a vyberte **zakázat** na **povolit položku** přepnout a pak vyberte **Uložit**.  
 
-   [![Zakázat položku jednotlivé registrace na portálu](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png#lightbox)  
+    ![Vyberte jednotlivé registrace](./media/how-to-revoke-device-access-portal/select-individual-enrollment.png)
+
+5. Na stránce registrace, posuňte se na dolů a vyberte **zakázat** pro **povolit položku** přepnout a pak vyberte **Uložit**.  
+
+   ![Zakázat položku jednotlivé registrace na portálu](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)
 
 Chcete-li trvale seznam zakázaných zařízení tak, že odstraníte jeho položky registrace:
 
@@ -47,7 +50,8 @@ Chcete-li trvale seznam zakázaných zařízení tak, že odstraníte jeho polo�
 5. Vyberte **odstranit** v horní části okna a pak vyberte **Ano** potvrďte, že chcete odebrat registraci. 
 
    ![Odstranit položku jednotlivé registrace na portálu](./media/how-to-revoke-device-access-portal/delete-individual-enrollment.png)
-    
+
+
 Po dokončení tohoto postup byste měli vidět vaší položky odebrat ze seznamu jednotlivé registrace.  
 
 ## <a name="blacklist-an-x509-intermediate-or-root-ca-certificate-by-using-an-enrollment-group"></a>Seznam zakázaných X.509 zprostředkující nebo kořenové Certifikační autority pomocí skupině pro registraci
@@ -91,14 +95,18 @@ Na seznam zakázaných jednotlivá zařízení ve skupině pro registraci, postu
 1. Přihlaste se k Azure portal a vyberte **všechny prostředky** v levé nabídce.
 2. V seznamu prostředků vyberte zřizovací služba, která obsahuje skupiny pro registraci zařízení, které chcete seznam zakázaných.
 3. Ve vaší službě zřizování vyberte **Správa registrací**a pak vyberte **jednotlivé registrace** kartu.
-4. Vyberte **přidat** tlačítko v horní části. 
-5. Vyberte **X.509** jako mechanismus ověřování pro zařízení a jak nahrát certifikát zařízení. Jedná se o certifikát podepsaný držitelem koncové entity na zařízení nainstalovaná. Zařízení se používá ke generování certifikátů pro ověřování.
-6. Pro **ID zařízení IoT Hubu**, zadejte ID zařízení. 
-7. Vyberte **zakázat** na **povolit položku** přepnout a pak vyberte **Uložit**. 
+4. Vyberte **přidat jednotlivou registraci** tlačítko v horní části. 
+5. Na **přidat registrace** stránce **X.509** jako potvrzení **mechanismus** pro zařízení.
+
+    Nahrát na server certifikát zařízení a zadejte ID zařízení zařízení má být na seznamu zakázaných adres. Pro certifikát použijte certifikát podepsaný držitelem koncové entity na zařízení nainstalovaná. Zařízení používá certifikát podepsaný držitelem koncové entity pro ověřování.
+
+    ![Nastavení vlastností zařízení jako zakázaný zařízení](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group-1.png)
+
+6. Přejděte do dolní části **přidat registrace** stránku a vybrat **zakázat** na **povolit položku** přepnout a pak vyberte **Uložit**. 
 
     [![Použití zakázané položky jednotlivé registrace zakázat zařízení ze skupiny registrace na portálu](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png#lightbox)
 
-Když úspěšně vytvoříte registraci, měli byste vidět vaše zařízení se zobrazí na **jednotlivé registrace** kartu.
+Když úspěšně vytvoříte registraci, měli byste vidět registraci zakázáno zařízení na **jednotlivé registrace** kartu. 
 
 ## <a name="next-steps"></a>Další postup
 

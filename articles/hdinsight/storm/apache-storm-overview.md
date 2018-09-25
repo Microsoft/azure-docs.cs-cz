@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: jasonh
-ms.openlocfilehash: 3446488a5dc2bdd1bb01b39bc25b60137fcbc331
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 353ab846c576a9b133cf640bbc856ec6eddf73f4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43040043"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982887"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Co je Apache Storm ve službě Azure HDInsight?
 
@@ -84,7 +84,7 @@ V HDInsight můžete vytvořit nový cluster Storm během několika minut. Dalš
 
   Další informace najdete v dokumentech [Správa služby HDInsight pomocí webového uživatelského rozhraní Ambari](../hdinsight-hadoop-manage-ambari.md) a [Monitorování a správa pomocí uživatelského rozhraní Storm](apache-storm-deploy-monitor-topology-linux.md#monitor-and-manage-storm-ui).
 
-* __Prostředí PowerShell a rozhraní příkazového řádku Azure:__ Prostředí PowerShell i rozhraní příkazového řádku Azure poskytují nástroje příkazového řádku, které můžete používat z klientského systému při práci se službou HDInsight a dalšími službami Azure.
+* __Azure PowerShell a rozhraní příkazového řádku Azure Classic__: prostředí PowerShell a rozhraní příkazového řádku classic i poskytují nástroje příkazového řádku, které můžete použít z klientského systému pro práci s HDInsight a dalšími službami Azure.
 
 * __Integrace se sadou Visual Studio:__ Nástroje Azure Data Lake pro Visual Studio obsahují šablony projektů pro vytváření topologií Storm v jazyce C# s použitím rozhraní SCP.Net. Nástroje Data Lake poskytují také nástroje pro nasazení, monitorování a správu řešení se Stormem v HDInsight.
 

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 68514f1bc569d876f4cf851f97a690ae84cf43a6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 8bebec23d7a0199d8efbc55b3cde50c628306f01
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970290"
+ms.locfileid: "47034364"
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Správa profilů verzí API ve službě Azure Stack
 
@@ -86,7 +86,7 @@ Profil je v sadě GO SDK kombinaci různých typů prostředků s různými verz
 - **Ruby**  
 Ruby SDK pro Azure Resource Manageru zásobníku poskytuje nástroje, které vám pomůžou vytvářet a spravovat infrastrukturu. Poskytovatelé prostředků v sadě SDK patří výpočetní prostředky, virtuální sítě a úložiště dat pomocí jazyka Ruby. Informace najdete v tématu [profilů verzí použití rozhraní API pomocí Ruby](azure-stack-version-profiles-ruby.md)
 - **Python**  
-- Python SDK podporuje profilů verzí API cílit na různé cloudové platformy, jako je Azure Stack a globální Azure. Pomocí profilů rozhraní API ve vytváření řešení pro hybridní cloud. Informace najdete v tématu [profilů verzí použití rozhraní API s využitím Pythonu](azure-stack-version-profiles-python.md)
+Python SDK podporuje profilů verzí API cílit na různé cloudové platformy, jako je Azure Stack a globální Azure. Pomocí profilů rozhraní API ve vytváření řešení pro hybridní cloud. Informace najdete v tématu [profilů verzí použití rozhraní API s využitím Pythonu](azure-stack-version-profiles-python.md)
 
 ## <a name="next-steps"></a>Další postup
 

@@ -1,6 +1,6 @@
 ---
-title: Zachycení image virtuálního počítače s Linuxem v Azure pomocí CLI 2.0 | Dokumentace Microsoftu
-description: Zachycení image virtuálního počítače Azure pro hromadné nasazení pomocí rozhraní příkazového řádku Azure CLI 2.0.
+title: Zachycení image virtuálního počítače s Linuxem v Azure pomocí rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+description: Zachycení image virtuálního počítače Azure pro hromadné nasazení pomocí rozhraní příkazového řádku Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: cynthn
-ms.openlocfilehash: ea202cad06130cfaaa134cad94ac08bede2f41a9
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 98d98c1337830ce54c7ff96c19812169be129584
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867697"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946812"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Jak vytvořit image virtuálního počítače nebo virtuálního pevného disku
 
@@ -38,7 +38,7 @@ Ujistěte se, že splňujete následující požadavky:
 
 * Je třeba virtuálního počítače Azure vytvořené v modelu nasazení Resource Manageru pomocí spravovaných disků. Pokud jste nevytvořili virtuální počítač s Linuxem, můžete použít [portál](quick-create-portal.md), [rozhraní příkazového řádku Azure](quick-create-cli.md), nebo [šablon Resource Manageru](create-ssh-secured-vm-from-template.md). Konfigurace virtuálního počítače podle potřeby. Například [datových disků](add-disk.md), aktualizace a instalovat aplikace. 
 
-* Je taky potřeba mít na nejnovější verzi [příkazového řádku Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalovaná a je zaznamenána účtu Azure pomocí [az login](/cli/azure/reference-index#az_login).
+* Je taky potřeba mít na nejnovější verzi [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) nainstalovaná a je zaznamenána účtu Azure pomocí [az login](/cli/azure/reference-index#az_login).
 
 ## <a name="quick-commands"></a>Rychlé příkazy
 
@@ -62,7 +62,7 @@ Je-li zrušit zřízení virtuálního počítače, pomocí agenta virtuálního
 4. Po dokončení příkazu zadejte **ukončit**. Tento krok se zavře klienta SSH.
 
 ## <a name="step-2-create-vm-image"></a>Krok 2: Vytvoření image virtuálního počítače
-Rozhraní příkazového řádku Azure CLI 2.0 můžete označit virtuální počítač za generalizovaný a zachycení bitové kopie. V následujících příkladech nahraďte ukázkové názvy parametrů s vlastními hodnotami. Zahrnout názvy parametrů příklad *myResourceGroup*, *myVnet*, a *myVM*.
+Pomocí Azure CLI označit virtuální počítač za generalizovaný a zachycení bitové kopie. V následujících příkladech nahraďte ukázkové názvy parametrů s vlastními hodnotami. Zahrnout názvy parametrů příklad *myResourceGroup*, *myVnet*, a *myVM*.
 
 1. Zrušit přidělení virtuálního počítače, zřízení s [az vm deallocate](/cli//azure/vm#deallocate). V následujícím příkladu se uvolní virtuální počítač s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*:
    
@@ -146,4 +146,4 @@ Vytvoření několika virtuálních počítačů z vaší zdrojové imagi virtu�
 - Postupujte podle kroků znovu pro zrušení zřízení, uvolnit, generalizace a vytvořit bitovou kopii.
 - Pomocí této nové image pro budoucí nasazení. V případě potřeby odstraňte původní bitové kopie.
 
-Další informace týkající se správy virtuálních počítačů pomocí rozhraní příkazového řádku najdete v tématu [příkazového řádku Azure CLI 2.0](/cli/azure).
+Další informace týkající se správy virtuálních počítačů pomocí rozhraní příkazového řádku najdete v tématu [rozhraní příkazového řádku Azure](/cli/azure).

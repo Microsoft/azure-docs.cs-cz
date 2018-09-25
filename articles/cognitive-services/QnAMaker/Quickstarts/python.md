@@ -10,12 +10,12 @@ ms.technology: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: diberry
-ms.openlocfilehash: 6e87268d5b26642f2ea6eedbfef096c3792bb715
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 5e95bf768cc00935067edd3365cc3d101be6a00a
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734843"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034737"
 ---
 # <a name="quickstart-for-microsoft-qna-maker-api-with-python"></a>Rychlý start pro nástroj QnA Maker Microsoft API s využitím Pythonu 
 <a name="HOLTop"></a>
@@ -36,6 +36,8 @@ V tomto článku se dozvíte, jak používat [API nástroje QnA Maker Microsoft]
 - [Znovu generujte klíče aktuální koncový bod.](#PutKeys)
 - [Získejte aktuální sadu změn aplikace word.](#GetAlterations)
 - [Nahraďte aktuální sadu změn aplikace word.](#PutAlterations)
+
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 

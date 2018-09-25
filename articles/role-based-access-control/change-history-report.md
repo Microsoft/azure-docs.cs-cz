@@ -15,12 +15,12 @@ ms.date: 05/23/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 10e0df78d75763dfcf8636983c9f9092b78b9c3b
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: d5a67cdcef7f39830b747dec5f2c980483e1ab91
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437644"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978331"
 ---
 # <a name="view-activity-logs-for-rbac-changes"></a>Zobrazení protokolů aktivit pro RBAC změny
 
@@ -35,7 +35,7 @@ Tady jsou operace související s RBAC, které se zaznamenávají v protokolu ak
 - Vytvořit nebo aktualizovat vlastní definici role
 - Odstranit definice rolí
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>portál Azure
 
 Chcete-li zobrazit protokoly aktivit pomocí webu Azure portal je nejjednodušší způsob, jak začít pracovat. Následující snímek obrazovky ukazuje příklad, který je filtrován. Chcete-li zobrazit přiřazení role a role definice operace protokol aktivit. Zahrnuje také odkaz ke stažení protokolů jako soubor CSV.
 
@@ -125,7 +125,7 @@ Tady jsou základní kroky, abyste mohli začít:
 
    ![Možnost log Analytics na portálu](./media/change-history-report/azure-log-analytics-option.png)
 
-1. Volitelně můžete použít [prohledávání protokolů](../log-analytics/log-analytics-log-search.md) stránky nebo [portálu pro pokročilou analýzu](https://docs.loganalytics.io/docs/Learn) pro dotazování a zobrazení protokolů. Další informace o těchto dvou možnostech naleznete v tématu [stránku prohledávání protokolů nebo portálu pro pokročilou analýzu](../log-analytics/log-analytics-log-search-portals.md).
+1. Volitelně můžete použít [prohledávání protokolů](../log-analytics/log-analytics-log-search.md) stránky nebo [portálu pro pokročilou analýzu](../log-analytics/query-language/get-started-analytics-portal.md) pro dotazování a zobrazení protokolů. Další informace o těchto dvou možnostech naleznete v tématu [stránku prohledávání protokolů nebo portálu pro pokročilou analýzu](../log-analytics/log-analytics-log-search-portals.md).
 
 Tady je dotaz, který vrátí uspořádané podle poskytovatele prostředků cílového nové přiřazení rolí:
 

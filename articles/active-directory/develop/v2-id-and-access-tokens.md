@@ -17,29 +17,30 @@ ms.date: 06/22/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 815311797e1897259b961debc8a0f81157495570
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 23d041311c33110bf11efc78d162243a4bb25778
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39596496"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997756"
 ---
 # <a name="azure-active-directory-v20-tokens-reference"></a>Azure Active Directory v2.0 tokeny reference
+
 Koncový bod Azure Active Directory (Azure AD) verze 2.0 vysílá několik typů tokeny zabezpečení v každém [tok ověřování](v2-app-types.md). Tento odkaz popisuje formátu, vlastnosti zabezpečení a obsah každého typu token.
 
 > [!NOTE]
 > Koncový bod v2.0 nepodporuje všechny scénáře Azure Active Directory a funkce. Pokud chcete zjistit, zda by měl použít koncový bod verze 2.0, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
->
->
 
 ## <a name="types-of-tokens"></a>Typy tokenů
+
 Koncový bod verze 2.0 podporuje [protokol autorizace OAuth 2.0](active-directory-v2-protocols.md), který používá přístupové tokeny a obnovovacích tokenů. Koncový bod verze 2.0 podporuje také ověřování a přihlásit se přes [OpenID Connect](active-directory-v2-protocols.md). Třetí typ tokenu, ID token OpenID Connect zavádí. Každý z těchto prvků je vyjádřena jako *nosiče* token.
 
 Nosný token je token zjednodušené zabezpečení, která uděluje přístup nosiče k chráněnému prostředku. Nositele je každá strana, která může představovat token. I když může strana musí ověřování pomocí Azure AD pro příjem nosný token, pokud nejsou kroky k zabezpečení během přenosu a uložení tokenu, můžete zachytit a používat nežádoucí osobou. Některé tokeny zabezpečení mají předdefinovaný mechanismus neoprávněnými osobami zabránit v jejich používání, ale nechcete nosné tokeny. Nosné tokeny musí přenášet v zabezpečený kanál, jako je zabezpečení transportní vrstvy (HTTPS). Pokud nosný token je přenesen bez tohoto typu zabezpečení, škodlivý stran použít "útok man-in-the-middle" získat token a používat ho pro neoprávněný přístup k chráněnému prostředku. Stejné zásady zabezpečení platí při ukládání nebo ukládání do mezipaměti nosné tokeny pro pozdější použití. Vždy zajistěte, aby aplikace bezpečně přenáší a ukládají nosné tokeny. Další informace o zabezpečení pro nosné tokeny, naleznete v tématu [5 část dokumentu RFC 6750](http://tools.ietf.org/html/rfc6750).
 
 Mnoho tokeny vystavené službou koncovým bodem v2.0 jsou implementovány jako webové tokeny JSON (Jwt). Token JWT je kompaktní a adresu URL bezpečné způsob přenosu informací mezi dvěma stranami. Informace v token JWT se volá *deklarace identity*. Je kontrolní výraz informací o nosiče a předmět tokenu. Deklarace identity v token JWT jsou objekty zápis JSON (JavaScript Object), které jsou zakódovány a serializovat pro přenos. Protože tokeny Jwt vydaného koncovým bodem v2.0 jsou podepsané, nikoli však šifrován, můžete snadno kontrolovat obsah token JWT pro účely ladění. Další informace o tokeny Jwt, najdete v článku [JWT specifikace](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html).
 
-### <a name="id-tokens"></a>Tokeny typu ID
+### <a name="id-tokens"></a>Tokeny ID
+
 ID tokenu je formulář tokenu zabezpečení přihlášení, který vaše aplikace obdrží při pomocí provádí ověřování [OpenID Connect](active-directory-v2-protocols.md). ID tokeny jsou reprezentovány ve formě [tokeny Jwt](#types-of-tokens), a které obsahují deklarace identity, které můžete použít k přihlášení uživatele do vaší aplikace. Můžete použít deklarace identity v tokenu ID různými způsoby. Správci obvykle používají tokeny typu ID, k zobrazení informací o účtu nebo je rozhodnutí o řízení přístupu v aplikaci. Koncový bod v2.0 vydá pouze jeden typ ID token, který je konzistentní sadu deklarací identity, bez ohledu na typ uživatele, který je přihlášen. Formát a obsah tokenů ID jsou stejné pro osobní uživatele účtu Microsoft a pracovní nebo školní účty.
 
 V současné době tokeny typu ID jsou podepsané, nikoli však šifrován. Když aplikace obdrží ID token, musíte [ověřit podpis](#validating-tokens) potvrzení pravosti tokenu a ověření několik deklarací identity v tokenu prokázat, že jeho platnost. Deklarace ověřené aplikací se liší v závislosti na požadavcích scénáře, ale vaše aplikace musí provést některé [běžné deklarace identity ověření](#validating-tokens) v každé situaci.
@@ -47,16 +48,16 @@ V současné době tokeny typu ID jsou podepsané, nikoli však šifrován. Kdy�
 Poskytujeme vám úplné podrobnosti o deklarace identity v tokenech ID v následujících částech, kromě ukázkový token ID. Všimněte si, že deklarace identity v tokenech ID nebudou zobrazeny v určitém pořadí. Navíc nových deklarací identity je možné vytvářet do ID tokenů v každém okamžiku. Vaše aplikace by neměl přerušit při zavedení nových deklarací identity. Následující seznam obsahuje deklarace, které vaše aplikace právě spolehlivě interpretovat. Můžete najít další podrobnosti najdete [OpenID Connect specifikace](http://openid.net/specs/openid-connect-core-1_0.html).
 
 #### <a name="sample-id-token"></a>Ukázkový token ID
+
 ```
 eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiI2NzMxZGU3Ni0xNGE2LTQ5YWUtOTdiYy02ZWJhNjkxNDM5MWUiLCJpc3MiOiJodHRwczovL2xvZ2luLm1pY3Jvc29mdG9ubGluZS5jb20vYjk0MTk4MTgtMDlhZi00OWMyLWIwYzMtNjUzYWRjMWYzNzZlL3YyLjAiLCJpYXQiOjE0NTIyODUzMzEsIm5iZiI6MTQ1MjI4NTMzMSwiZXhwIjoxNDUyMjg5MjMxLCJuYW1lIjoiQmFiZSBSdXRoIiwibm9uY2UiOiIxMjM0NSIsIm9pZCI6ImExZGJkZGU4LWU0ZjktNDU3MS1hZDkzLTMwNTllMzc1MGQyMyIsInByZWZlcnJlZF91c2VybmFtZSI6InRoZWdyZWF0YmFtYmlub0BueXkub25taWNyb3NvZnQuY29tIiwic3ViIjoiTUY0Zi1nZ1dNRWppMTJLeW5KVU5RWnBoYVVUdkxjUXVnNWpkRjJubDAxUSIsInRpZCI6ImI5NDE5ODE4LTA5YWYtNDljMi1iMGMzLTY1M2FkYzFmMzc2ZSIsInZlciI6IjIuMCJ9.p_rYdrtJ1oCmgDBggNHB9O38KTnLCMGbMDODdirdmZbmJcTHiZDdtTc-hguu3krhbtOsoYM2HJeZM3Wsbp_YcfSKDY--X_NobMNsxbT7bqZHxDnA2jTMyrmt5v2EKUnEeVtSiJXyO3JWUq9R0dO-m4o9_8jGP6zHtR62zLaotTBYHmgeKpZgTFB9WtUq8DVdyMn_HSvQEfz-LWqckbcTwM_9RNKoGRVk38KChVJo4z5LkksYRarDo8QgQ7xEKmYmPvRr_I7gvM2bmlZQds2OeqWLB1NSNbFZqyFOCgYn3bAQ-nEQSKwBaA36jYGPOVG2r2Qv1uKcpSOxzxaQybzYpQ
 ```
 
 > [!TIP]
 > Postupem je zkontrolovat deklarace identity v tokenu ID vzorku, vložte ukázkový token ID do [jwt.ms](http://jwt.ms/).
->
->
 
 #### <a name="claims-in-id-tokens"></a>Deklarace identity v tokenech ID
+
 | Název | Deklarovat | Příklad hodnoty | Popis |
 | --- | --- | --- | --- |
 | Cílová skupina |`aud` |`6731de76-14a6-49ae-97bc-6eba6914391e` |Identifikuje zamýšlený příjemce tokenu. V tokeny typu ID je cílová skupina ID vaší aplikace, přiřazené vaší aplikaci v portálu pro registraci aplikací společnosti Microsoft. Vaše aplikace by měl ověřit tuto hodnotu a odmítnout token, pokud hodnota se neshoduje. |
@@ -64,7 +65,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VL
 | Vystaveno |`iat` |`1452285331` |Čas, kdy byl vydán token, jsou reprezentovány v unixovém čase. |
 | Čas vypršení platnosti |`exp` |`1452289231` |Čas, kdy token, který se stane neplatným, reprezentovány v unixovém čase. Vaše aplikace by pomocí této deklarace identity k ověření platnosti dobu životnosti tokenu. |
 | Neplatný před |`nbf` |`1452285331` |Čas, kdy začne platit, token reprezentovány v unixovém čase. Je to obvykle stejné jako čas vystavení. Vaše aplikace by pomocí této deklarace identity k ověření platnosti dobu životnosti tokenu. |
-| Verze |`ver` |`2.0` |Verze token ID, jak jsou definovány službou Azure AD. Pro koncový bod verze 2.0, je hodnota `2.0`. |
+| verze |`ver` |`2.0` |Verze token ID, jak jsou definovány službou Azure AD. Pro koncový bod verze 2.0, je hodnota `2.0`. |
 | ID tenanta |`tid` |`b9419818-09af-49c2-b0c3-653adc1f376e` |Identifikátor GUID, který představuje jejímž je uživatel z tenanta Azure AD. Pro pracovní a školní účty je identifikátor GUID ID neměnné tenanta organizace, které tento uživatel patří do. Pro osobní účty, je hodnota `9188040d-6c67-4c5b-b112-36a304b66dad`. `profile` Oboru se vyžaduje aby bylo možné dostávat tato deklarace identity. |
 | Kód hash |`c_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |Hodnota hash kódu je součástí tokeny typu ID, pouze v případě, že je vydaný ID token s autorizačního kódu OAuth 2.0. Slouží k ověření pravosti autorizační kód. Podrobnosti o provedení tohoto ověření naleznete v tématu [OpenID Connect specifikace](http://openid.net/specs/openid-connect-core-1_0.html). |
 | Hodnota hash tokenu přístupu |`at_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |Přístup, který je zahrnuta hodnota hash tokenu v ID tokeny, pouze pokud ID token vydaný s přístupovým tokenem OAuth 2.0. Slouží k ověření pravosti tokenu přístupu. Podrobnosti o provedení tohoto ověření naleznete v tématu [OpenID Connect specifikace](http://openid.net/specs/openid-connect-core-1_0.html). |
@@ -82,22 +83,25 @@ Koncový bod verze 2.0 umožňuje aplikacím jiných výrobců, které jsou regi
 Když požádáte o přístupový token z koncového bodu v2.0, koncový bod v2.0 také vrátí metadata o přístupový token pro vaše aplikace bude moct používat. Tyto informace zahrnují čas vypršení platnosti přístupového tokenu a oborů, pro které je platný. Vaše aplikace používá tato metadata ukládání do mezipaměti inteligentních tokenů přístupu bez nutnosti parsovat otevřít přístupový token, samotného.
 
 ### <a name="refresh-tokens"></a>Obnovovacích tokenů
+
 Aktualizovat tokeny jsou tokeny zabezpečení, které vaše aplikace může použít k získání nových přístupových tokenů ve toku OAuth 2.0. Aplikace můžete použít obnovovací tokeny k dosažení dlouhodobé přístup k prostředkům jménem uživatele bez nutnosti interakci s uživatelem.
 
 Obnovovací tokeny jsou více prostředků. Pro přístupové tokeny pro úplně jiných prostředků je možné uplatnit obnovovací token přijatých během žádosti o token pro jeden prostředek.
 
 Pokud chcete dostávat aktualizace v odpovědi tokenu, vaše aplikace musí požádat o a udělit `offline_access` oboru. Další informace o `offline_access` oboru, najdete v článku [vyjádření souhlasu a obory](v2-permissions-and-consent.md) článku.
 
-Obnovovacích tokenů jsou a vždy budou, stane zcela neprůhledný do vaší aplikace. Se vydal koncového bodu Azure AD v2.0 a můžete být zkontroloval a interpretovat koncový bod verze 2.0. Jsou dlouhodobé, ale neměl by být zapsaný vaší aplikace můžete očekávat, že bude trvat obnovovací token pro libovolné časové období. Tokeny obnovení může být neplatné v daném okamžiku provádějí z různých důvodů – podrobnosti najdete v tématu [token zrušení](v1-id-and-access-tokens.md#token-revocation). Jedině pro vaši aplikaci vědět, jestli je platný token obnovení je pokus o uplatněte ho tak, že žádosti o token na koncový bod verze 2.0.
+Obnovovacích tokenů jsou a vždy budou, stane zcela neprůhledný do vaší aplikace. Se vydal koncového bodu Azure AD v2.0 a můžete být zkontroloval a interpretovat koncový bod verze 2.0. Jsou dlouhodobé, ale neměl by být zapsaný vaší aplikace můžete očekávat, že bude trvat obnovovací token pro libovolné časové období. Tokeny obnovení může být neplatné v daném okamžiku provádějí z různých důvodů – podrobnosti najdete v tématu [token zrušení](access-tokens.md#revocation). Jedině pro vaši aplikaci vědět, jestli je platný token obnovení je pokus o uplatněte ho tak, že žádosti o token na koncový bod verze 2.0.
 
 Když uplatníte obnovovací token pro nový přístupový token (a pokud vaše aplikace měla udělen `offline_access` obor), obdržíte nového tokenu obnovení v odpovědi tokenu. Uložte nově vydaný obnovovací token nahradit, který jste použili v požadavku. Zaručí se tak, že obnovovací tokeny jsou dál platné pro co nejdéle.
 
 ## <a name="validating-tokens"></a>Ověřování tokenů
+
 V současné době je ověřování pouze tokenů, které vaše aplikace by mělo stačit provést ověřování ID tokenů. Ověřit ID token, by měla vaše aplikace ověřit ID token podpisu a deklarace identity v tokenu ID.
 
 <!-- TODO: Link --> Společnost Microsoft poskytuje knihovny a ukázky kódu, které ukazují, jak snadno zpracovávat ověřování tokenů. V následujících částech popisujeme základního procesu. Několik open source knihoven třetích stran jsou také k dispozici pro ověřování tokenů JWT. Existuje nejméně jedna knihovna možnost pro téměř každou platformu a jazyk.
 
 ### <a name="validate-the-signature"></a>Ověření podpisu
+
 Token JWT obsahuje tři segmenty, které jsou odděleny `.` znak. První segment se označuje jako *záhlaví*, je druhý segment *tělo*, a třetí segment *podpis*. Segment podpis slouží k ověření pravosti tokenu ID tak, aby může být důvěřuje vaší aplikace.
 
 ID tokeny jsou podepsány pomocí asymetrického šifrování standardních algoritmů, například RSA 256. Záhlaví ID tokenu má informace o metodě a šifrovací klíče použitý k podpisu tokenu. Příklad:
@@ -131,6 +135,7 @@ Tento dokument metadat je objekt JSON, který má několik užitečné údaje, j
 Provádí se ověření podpisu je mimo rámec tohoto dokumentu. Mnoho knihoven open source jsou k dispozici vám s tím pomůžou.
 
 ### <a name="validate-the-claims"></a>Ověřit deklarace identity
+
 Když aplikace obdrží token ID při přihlášení uživatele, má také provést několik kontroly před deklarací identity v tokenu ID. Patří mezi ně jsou mimo jiné tyto:
 
 * **Cílová skupina** deklarace identity, chcete-li ověřit, že ID token měla předávat do aplikace
@@ -143,6 +148,7 @@ Když aplikace obdrží token ID při přihlášení uživatele, má také prov�
 Podrobnosti o očekávané hodnoty pro tyto deklarace jsou součástí [tokeny typu ID](# ID tokens) oddílu.
 
 ## <a name="token-lifetimes"></a>Životnost tokenů
+
 Nabízíme následující životností tokenů pouze pro vaši informaci. Informace vám může pomoct při vývoji a ladění aplikací. Můžete očekávat některé z těchto životnosti zůstal neměnný, neměl by být zapsaný vašich aplikací. Token doby života může a bude kdykoli změnit.
 
 | Podpisový | Doba života | Popis |

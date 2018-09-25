@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: jasonh
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 7d37a60ad3ae3bea8490006bdd35dc47d728b88e
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: bdf4c7527e2c0056b2de2321fbae280e9008cb1b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43103850"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990667"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Přidání dalších účtů úložiště pro HDInsight
 
@@ -58,7 +58,7 @@ __Požadavky na__:
 
 ## <a name="to-use-the-script"></a>Pomocí skriptu
 
-Tento skript je možné z webu Azure portal, prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure CLI 1.0. Další informace najdete v tématu [HDInsight založených na Linuxu přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster) dokumentu.
+Tento skript je možné z webu Azure portal, prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure Classic. Další informace najdete v tématu [HDInsight založených na Linuxu přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster) dokumentu.
 
 > [!IMPORTANT]
 > Při použití kroků uvedených v dokumentu přizpůsobení, chcete-li použít tento skript použijte následující informace:
@@ -71,7 +71,7 @@ Tento skript je možné z webu Azure portal, prostředí Azure PowerShell nebo r
 
 ### <a name="storage-accounts-not-displayed-in-azure-portal-or-tools"></a>Účty úložiště se nezobrazuje v portálu Azure portal nebo nástrojů
 
-Při prohlížení clusteru HDInsight na webu Azure Portal, vyberte __účty úložiště__ položku __vlastnosti__ nezobrazuje úložišti účty přidané prostřednictvím tuto akci se skripty. Azure PowerShell a rozhraní příkazového řádku Azure se nezobrazují dalšího účtu úložiště buď.
+Při prohlížení clusteru HDInsight na webu Azure Portal, vyberte __účty úložiště__ položku __vlastnosti__ nezobrazuje úložišti účty přidané prostřednictvím tuto akci se skripty. Azure PowerShell a rozhraní příkazového řádku Azure Classic se nezobrazují dalšího účtu úložiště buď.
 
 Informace o úložiště není zobrazit, protože skript upravuje pouze core-site.xml konfiguraci clusteru. Tyto informace nepoužívá k načítání informace o clusteru pomocí rozhraní API pro správu Azure.
 

@@ -13,14 +13,19 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: ef5f6f3dc7ae0c555b2afe000b54c443313800f1
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: e6af524d7f80104a34831f576a14d2dbf15e384f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35643396"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987199"
 ---
 # <a name="supported-inspectors-for-the-azure-machine-learning-data-preparation-preview"></a>Podporované kontroly pro náhled přípravu dat Azure Machine Learning
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 Tento dokument popisuje nastavení kontroly, které jsou k dispozici v této verzi preview.
 
 ## <a name="the-halo-effect"></a>Haló efekt 

@@ -6,25 +6,25 @@ author: rboucher
 ms.service: azure-monitor
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 06/20/2018
+ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: d9d61762a2e7956c95356cb4e884675e38deeb1b
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: a1f6aae69580f2afe5aceabd70cfe8e6fd3151b8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145379"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977940"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Azure Diagnostics 1.3 a novější schéma konfigurace
 > [!NOTE]
 > Rozšíření Azure Diagnostics se používá ke shromažďování čítačů výkonu a další statistiky z komponenty:
-> - Azure Virtual Machines 
+> - Azure Virtual Machines
 > - Virtual Machine Scale Sets
-> - Service Fabric 
-> - Cloud Services 
+> - Service Fabric
+> - Cloud Services
 > - Network Security Groups (Skupiny zabezpečení sítě)
-> 
+>
 > Tato stránka je pouze relevantní, pokud použijete jednu z těchto služeb.
 
 Tato stránka platí pro verze 1.3 a novější (Azure SDK 2.4 nebo novější). Novější konfigurační oddíly jsou pro zobrazení, v jaké verze byly přidány opatřený komentáři.  
@@ -53,7 +53,7 @@ Další informace o použití diagnostiky Azure najdete v tématu [rozšíření
     <WadCfg>  
       <DiagnosticMonitorConfiguration overallQuotaInMB="10000">  
 
-        <PerformanceCounters scheduledTransferPeriod="PT1M">  
+        <PerformanceCounters scheduledTransferPeriod="PT1M", sinks="AzureMonitorSink">  
           <PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT1M" unit="percent" />  
         </PerformanceCounters>  
 
@@ -105,13 +105,19 @@ Další informace o použití diagnostiky Azure najdete v tématu [rozšíření
           <CrashDumpConfiguration processName="badapp.exe"/>  
         </CrashDumps>  
 
-        <DockerSources> <!-- Added in 1.9 --> 
+        <DockerSources> <!-- Added in 1.9 -->
           <Stats enabled="true" sampleRate="PT1M" scheduledTransferPeriod="PT1M" />
         </DockerSources>
 
       </DiagnosticMonitorConfiguration>  
 
       <SinksConfig>   <!-- Added in 1.5 -->  
+        <Sink name="AzureMonitorSink">
+            <AzureMonitor> <!-- Added in 1.11 -->
+                <resourceId>{insert resourceId}</ResourceId> <!-- Parameter only needed for classic VMs and Classic Cloud Services, exclude VMSS and Resource Manager VMs-->
+                <Region>{insert Azure region of resource}</Region> <!-- Parameter only needed for classic VMs and Classic Cloud Services, exclude VMSS and Resource Manager VMs -->
+            </AzureMonitor>
+        </Sink>
         <Sink name="ApplicationInsights">   
           <ApplicationInsights>{Insert InstrumentationKey}</ApplicationInsights>   
           <Channels>   
@@ -139,11 +145,18 @@ Další informace o použití diagnostiky Azure najdete v tématu [rozšíření
   <PrivateConfig>  <!-- Added in 1.3 -->  
     <StorageAccount name="" key="" endpoint="" sasToken="{sas token}"  />  <!-- sasToken in Private config added in 1.8.1 -->  
     <EventHub Url="https://myeventhub-ns.servicebus.windows.net/diageventhub" SharedAccessKeyName="SendRule" SharedAccessKey="{base64 encoded key}" />
-   
+
+    <AzureMonitorAccount>
+        <ServicePrincipalMeta> <!-- Added in 1.11; only needed for classic VMs and Classic cloud services -->
+            <PrincipalId>{Insert service principal clientId}</PrincipalId>
+            <Secret>{Insert service principal client secret}</Secret>
+        </ServicePrincipalMeta>
+    </AzureMonitorAccount>
+
     <SecondaryStorageAccounts>
        <StorageAccount name="secondarydiagstorageaccount" key="{base64 encoded key}" endpoint="https://core.windows.net" sasToken="{sas token}" />
     </SecondaryStorageAccounts>
-   
+
     <SecondaryEventHubs>
        <EventHub Url="https://myeventhub-ns.servicebus.windows.net/secondarydiageventhub" SharedAccessKeyName="SendRule" SharedAccessKey="{base64 encoded key}" />
     </SecondaryEventHubs>
@@ -153,10 +166,14 @@ Další informace o použití diagnostiky Azure najdete v tématu [rozšíření
 </DiagnosticsConfiguration>  
 
 ```  
+> [!NOTE]
+> Veřejná konfigurace definice jímka Azure monitoru má dvě vlastnosti, resourceId a oblast. Jedná se pouze požadované pro klasické virtuální počítače a klasické cloudové služby. Tyto vlastnosti neměl by se používat pro správce prostředků virtuálních počítačů nebo škálovacích sad virtuálních počítačů.
+> Je také další prvek privátní konfigurace pro jímka Azure monitoru, která předá objekt Id a tajný klíč. Toto je pouze požadované pro klasické virtuální počítače a cloudové služby Classic. Pro virtuální počítače Resource Manageru a VMSS Azure Monitor můžete vyloučit definice v elementu privátní konfigurace.
+>
 
-JSON ekvivalentní předchozí konfiguračního souboru XML. 
+JSON ekvivalentní předchozí konfiguračního souboru XML.
 
-PublicConfig a PrivateConfig jsou oddělené, protože ve většině případů použití formátu json, jsou předány jako jiné proměnné. Tyto případy zahrnují šablony správce prostředků, Škálovací sady virtuálních počítačů prostředí PowerShell a sady Visual Studio. 
+PublicConfig a PrivateConfig jsou oddělené, protože ve většině případů použití formátu json, jsou předány jako jiné proměnné. Tyto případy zahrnují šablony správce prostředků, Škálovací sady virtuálních počítačů prostředí PowerShell a sady Visual Studio.
 
 ```json
 "PublicConfig" {
@@ -168,6 +185,7 @@ PublicConfig a PrivateConfig jsou oddělené, protože ve většině případů 
             },
             "PerformanceCounters": {
                 "scheduledTransferPeriod": "PT1M",
+                "sinks": "AzureMonitorSink",
                 "PerformanceCounterConfiguration": [
                     {
                         "counterSpecifier": "\\Processor(_Total)\\% Processor Time",
@@ -278,6 +296,14 @@ PublicConfig a PrivateConfig jsou oddělené, protože ve většině případů 
         "SinksConfig": {
             "Sink": [
                 {
+                    "name": "AzureMonitorSink",
+                    "AzureMonitor":
+                    {
+                        "ResourceId": "{insert resourceId if a classic VM or cloud service, else property not needed}",
+                        "Region": "{insert Azure region of resource if a classic VM or cloud service, else property not needed}"
+                    }
+                },
+                {
                     "name": "ApplicationInsights",
                     "ApplicationInsights": "{Insert InstrumentationKey}",
                     "Channels": {
@@ -324,6 +350,11 @@ PublicConfig a PrivateConfig jsou oddělené, protože ve většině případů 
 }
 ```
 
+> [!NOTE]
+> Veřejná konfigurace definice jímka Azure monitoru má dvě vlastnosti, resourceId a oblast. Jedná se pouze požadované pro klasické virtuální počítače a klasické cloudové služby.
+> Tyto vlastnosti neměl by se používat pro správce prostředků virtuálních počítačů nebo škálovacích sad virtuálních počítačů.
+>
+
 ```json
 "PrivateConfig" {
     "storageAccountName": "diagstorageaccount",
@@ -334,6 +365,12 @@ PublicConfig a PrivateConfig jsou oddělené, protože ve většině případů 
         "Url": "https://myeventhub-ns.servicebus.windows.net/diageventhub",
         "SharedAccessKeyName": "SendRule",
         "SharedAccessKey": "{base64 encoded key}"
+    },
+    "AzureMonitorAccount": {
+        "ServicePrincipalMeta": {
+            "PrincipalId": "{Insert service principal client Id}",
+            "Secret": "{Insert service principal client secret}"
+        }
     },
     "SecondaryStorageAccounts": {
         "StorageAccount": [
@@ -357,6 +394,11 @@ PublicConfig a PrivateConfig jsou oddělené, protože ve většině případů 
 }
 
 ```
+
+> [!NOTE]
+> Existuje další prvek privátní konfigurace pro jímka Azure monitoru, která předá objekt Id a tajný klíč. Toto je pouze požadované pro klasické virtuální počítače a cloudové služby Classic. Pro virtuální počítače Resource Manageru a VMSS Azure Monitor můžete vyloučit definice v elementu privátní konfigurace.
+>
+
 
 ## <a name="reading-this-page"></a>Čtení na této stránce  
  Následující značky jsou zhruba v pořadí uvedeném v předchozím příkladu.  Pokud se nezobrazí úplný popis kde očekáváte, hledání elementu nebo atributu.  
@@ -396,14 +438,14 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 ## <a name="wadcfg-element"></a>WadCFG Element  
  *Stromu: - DiagnosticsConfiguration - PublicConfig - WadCFG kořen*
- 
+
  Identifikuje a nakonfiguruje telemetrických dat, které se mají shromažďovat.  
 
 
-## <a name="diagnosticmonitorconfiguration-element"></a>DiagnosticMonitorConfiguration – Element 
+## <a name="diagnosticmonitorconfiguration-element"></a>DiagnosticMonitorConfiguration – Element
  *Stromové struktury: DiagnosticMonitorConfiguration PublicConfig - WadCFG - kořenové - DiagnosticsConfiguration –*
 
- Požaduje se 
+ Požaduje se
 
 |Atributy|Popis|  
 |----------------|-----------------|  
@@ -422,14 +464,14 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**EtwProviders**|Na této stránce najdete v popisu jinde.|  
 |**Metriky**|Na této stránce najdete v popisu jinde.|  
 |**Čítače výkonu**|Na této stránce najdete v popisu jinde.|  
-|**WindowsEventLog**|Na této stránce najdete v popisu jinde.| 
-|**DockerSources**|Na této stránce najdete v popisu jinde. | 
+|**WindowsEventLog**|Na této stránce najdete v popisu jinde.|
+|**DockerSources**|Na této stránce najdete v popisu jinde. |
 
 
 
 ## <a name="crashdumps-element"></a>Element havarijního výpisu  
  *Stromu: DiagnosticMonitorConfiguration PublicConfig - WadCFG - kořenové - DiagnosticsConfiguration – - havarijního výpisu*
- 
+
  Povolte shromažďování výpisy při selhání.  
 
 |Atributy|Popis|  
@@ -442,7 +484,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |--------------------|-----------------|  
 |**CrashDumpConfiguration**|Povinná hodnota. Definuje hodnoty konfigurace pro každý proces.<br /><br /> Také je vyžadován následující atribut:<br /><br /> **processName** -název procesu, kterou chcete diagnostiky Azure shromažďovat výpis stavu systému pro.|  
 
-## <a name="directories-element"></a>Prvek adresáře 
+## <a name="directories-element"></a>Prvek adresáře
  *Strom: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - adresáře*
 
  Povoluje shromažďování obsah do adresáře, žádosti o zobrazení protokolů služby IIS se nezdařilo a/nebo protokoly služby IIS.  
@@ -453,7 +495,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |--------------------|-----------------|  
 |**IISLogs**|Včetně tohoto elementu v konfiguraci povoluje shromažďování protokolů služby IIS:<br /><br /> **containerName** – název kontejneru objektů blob ve vašem účtu Azure Storage, který se má použít k ukládání protokolů služby IIS.|   
 |**FailedRequestLogs**|Včetně tohoto elementu v konfiguraci umožňuje shromažďování protokolů o neúspěšných požadavků na web služby IIS nebo aplikaci. Musíte také povolit trasování možností v části **systému. Webový server** v **Web.config**.|  
-|**Zdroje dat**|Seznam adresářů pro monitorování.| 
+|**Zdroje dat**|Seznam adresářů pro monitorování.|
 
 
 
@@ -541,14 +583,15 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Podřízený Element.|Popis|  
 |-------------------|-----------------|  
-|**PerformanceCounterConfiguration**|Vyžadují se následující atributy:<br /><br /> - **counterSpecifier** – název čítače výkonu. Například, `\Processor(_Total)\% Processor Time`. Pokud chcete získat seznam čítačů výkonu na hostiteli, spusťte příkaz `typeperf`.<br /><br /> - **sampleRate** – jak často se čítač vzorkování.<br /><br /> Volitelný atribut:<br /><br /> **jednotka** – jednotka měření čítače.|  
+|**PerformanceCounterConfiguration**|Vyžadují se následující atributy:<br /><br /> - **counterSpecifier** – název čítače výkonu. Například, `\Processor(_Total)\% Processor Time`. Pokud chcete získat seznam čítačů výkonu na hostiteli, spusťte příkaz `typeperf`.<br /><br /> - **sampleRate** – jak často se čítač vzorkování.<br /><br /> Volitelný atribut:<br /><br /> **jednotka** – jednotka měření čítače.|
+|**jímky** | Přidat do 1.5. Volitelné. Odkazuje na umístění jímky a také posílat diagnostická data. Například Azure Monitor nebo Event Hubs.|    
 
 
 
 
 ## <a name="windowseventlog-element"></a>WindowsEventLog – Element
  *Stromu: - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - WindowsEventLog kořen*
- 
+
  Povolí shromažďování protokolů událostí Windows.  
 
  Volitelné **hodnota scheduledTransferPeriod** atribut. Viz vysvětlení dříve.  
@@ -632,7 +675,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**Jméno**|**řetězec**|Jedinečný název kanálu pro odkazování na|  
 
 
-## <a name="privateconfig-element"></a>Elementu PrivateConfig 
+## <a name="privateconfig-element"></a>Elementu PrivateConfig
  *Stromové struktury: PrivateConfig Root - DiagnosticsConfiguration –*
 
  Byly přidány ve verzi 1.3.  

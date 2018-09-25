@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: b6e3311c378f648caeae72ff1f8aff123515226b
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: d91e148320c4c59bb888975499aa1de16ffbf134
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45637433"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46955057"
 ---
 # <a name="app-expression-in-log-analytics-query"></a>výraz App() použijte v dotazu Log Analytics
 
@@ -53,25 +53,25 @@ ms.locfileid: "45637433"
 
 ## <a name="examples"></a>Příklady
 
-```
+```Kusto
 app("fabrikamapp").requests | count
 ```
-```
+```Kusto
 app("AI-Prototype/Fabrikam/fabrikamapp").requests | count
 ```
-```
+```Kusto
 app("b438b4f6-912a-46d5-9cb1-b44069212ab4").requests | count
 ```
-```
+```Kusto
 app("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp").requests | count
 ```
-```
+```Kusto
 union 
 (workspace("myworkspace").Heartbeat | where Computer contains "Con"),
 (app("myapplication").requests | where cloud_RoleInstance contains "Con")
 | count  
 ```
-```
+```Kusto
 union 
 (workspace("myworkspace").Heartbeat), (app("myapplication").requests)
 | where TimeGenerated between(todatetime("2018-02-08 15:00:00") .. todatetime("2018-12-08 15:05:00"))

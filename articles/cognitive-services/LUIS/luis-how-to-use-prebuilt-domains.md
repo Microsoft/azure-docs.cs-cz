@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) poskytuje předem připravených domén, které jsou předem připravených sad záměry a entity, které vzájemně spolupracují domén nebo běžné kategorie klientské aplikace. Předem připravených domén předem školení a jsou připravené k přidání do aplikace LUIS.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 80a83fdb1e2b84ac03d0ae0cf969f1635f00cca0
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 1aa7e1bf9c1a584803a60a5061b4ae4cc8664ff4
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053719"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037367"
 ---
 # <a name="use-prebuilt-domains-in-luis-apps"></a>Použití předem připravených domén v aplikacích LUIS  
 
@@ -26,7 +26,7 @@ Přejděte **předem připravených domén** kartu pro zobrazení dalších pře
 > [!TIP]
 > Najdete úplný seznam předem připravených domén v [předem připravených domén odkaz](./luis-reference-prebuilt-domains.md).
 
-![Přidání předem připravených domény](./media/luis-how-to-prebuilt-domain-entities/add-prebuilt-domain.png)
+![Přidání předem připravené domény](./media/luis-how-to-prebuilt-domain-entities/add-prebuilt-domain.png)
 
 
 ## <a name="add-a-prebuilt-domain"></a>Přidání předem připravené domény

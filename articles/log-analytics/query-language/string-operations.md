@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 2acdc2cc7397e169a32a0257c0fc6020338c944f
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 6ac697fa12b56840e5dc361500f81e2b7e2ce11a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604480"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950246"
 ---
 # <a name="working-with-strings-in-log-analytics-queries"></a>Práce s řetězci v dotazech Log Analytics
 
@@ -38,13 +38,13 @@ Každý znak v řetězci má pořadové číslo, podle místa. První znak, kter
 ## <a name="strings-and-escaping-them"></a>Řetězce a uvození jejich
 Řetězcové hodnoty jsou zabaleny s buď pomocí jednoduchých nebo dvojitých uvozovek. Zpětné lomítko (\) slouží k řídicí znaky pro znak následující, jako je například \t pro kartu, \n pro nový řádek, a \" znak uvozovek, samotného.
 
-```KQL
+```Kusto
 print "this is a 'string' literal in double \" quotes"
 ```
 
 Aby se zabránilo "\\" z funguje jako řídicí znak, přidejte "@" jako předponu řetězec:
 
-```KQL
+```Kusto
 print @"C:\backslash\not\escaped\with @ prefix"
 ```
 
@@ -108,7 +108,7 @@ Počet případů, kdy se hledaný řetězec může být shoda v kontejneru. Pro
 
 #### <a name="plain-string-matches"></a>Prostý řetězec odpovídá
 
-```KQL
+```Kusto
 print countof("The cat sat on the mat", "at");  //result: 3
 print countof("aaa", "a");  //result: 3
 print countof("aaaa", "aa");  //result: 3 (not 2!)
@@ -118,7 +118,7 @@ print countof("ababa", "aba");  //result: 2
 
 #### <a name="regex-matches"></a>Regulárního výrazu shody
 
-```KQL
+```Kusto
 print countof("The cat sat on the mat", @"\b.at\b", "regex");  //result: 3
 print countof("ababa", "aba", "regex");  //result: 1
 print countof("abcabc", "a.c", "regex");  // result: 2
@@ -131,7 +131,7 @@ Získá odpovídající regulární výraz ze zadaného řetězce. Volitelně m�
 
 ### <a name="syntax"></a>Syntaxe
 
-```KQL
+```Kusto
 extract(regex, captureGroup, text [, typeLiteral])
 ```
 
@@ -149,7 +149,7 @@ Pokud není nalezena žádná shoda, nebo typ převodu nezdaří, vrátí hodnot
 ### <a name="examples"></a>Příklady
 
 Následující příklad získá poslední oktet *ComputerIP* ze záznamu prezenčního signálu:
-```KQL
+```Kusto
 Heartbeat
 | where ComputerIP != "" 
 | take 1
@@ -157,7 +157,7 @@ Heartbeat
 ```
 
 Následující příklad extrahuje poslední oktet, přetypování na *skutečné* zadejte (číslo) a vypočte hodnota dalšího IP
-```KQL
+```Kusto
 Heartbeat
 | where ComputerIP != "" 
 | take 1
@@ -167,7 +167,7 @@ Heartbeat
 ```
 
 V příkladu níže řetězec *trasování* prohledána definice "Trvání". Ke shodě přetypováno na *skutečné* a vynásobený časovou konstantou (1 s) *která přetypovává dobu trvání zadejte časový interval*.
-```KQL
+```Kusto
 let Trace="A=12, B=34, Duration=567, ...";
 print Duration = extract("Duration=([0-9.]+)", 1, Trace, typeof(real));  //result: 567
 print Duration_seconds =  extract("Duration=([0-9.]+)", 1, Trace, typeof(real)) * time(1s);  //result: 00:09:27
@@ -181,14 +181,14 @@ print Duration_seconds =  extract("Duration=([0-9.]+)", 1, Trace, typeof(real)) 
 
 ### <a name="syntax"></a>Syntaxe
 
-```
+```Kusto
 isempty(value)
 isnotempty(value)
 ```
 
 ### <a name="examples"></a>Příklady
 
-```KQL
+```Kusto
 print isempty("");  // result: true
 
 print isempty("0");  // result: false
@@ -213,7 +213,7 @@ parseurl(urlstring)
 
 ### <a name="examples"></a>Příklady
 
-```KQL
+```Kusto
 print parseurl("http://user:pass@contoso.com/icecream/buy.aspx?a=1&b=2#tag")
 ```
 
@@ -253,7 +253,7 @@ Text, který po vyhodnocení revize nahradit všechny shody regulárního výraz
 
 ### <a name="examples"></a>Příklady
 
-```KQL
+```Kusto
 SecurityEvent
 | take 1
 | project Activity 
@@ -284,7 +284,7 @@ split(source, delimiter [, requestedIndex])
 
 ### <a name="examples"></a>Příklady
 
-```KQL
+```Kusto
 print split("aaa_bbb_ccc", "_");    // result: ["aaa","bbb","ccc"]
 print split("aa_bb", "_");          // result: ["aa","bb"]
 print split("aaa_bbb_ccc", "_", 1); // result: ["bbb"]
@@ -303,7 +303,7 @@ strcat("string1", "string2", "string3")
 ```
 
 ### <a name="examples"></a>Příklady
-```KQL
+```Kusto
 print strcat("hello", " ", "world") // result: "hello world"
 ```
 
@@ -318,7 +318,7 @@ strlen("text_to_evaluate")
 ```
 
 ### <a name="examples"></a>Příklady
-```KQL
+```Kusto
 print strlen("hello")   // result: 5
 ```
 
@@ -339,7 +339,7 @@ substring(source, startingIndex [, length])
 - `length` -Volitelný parametr, který slouží k určení požadovaná délka vrácená podřetězec.
 
 ### <a name="examples"></a>Příklady
-```KQL
+```Kusto
 print substring("abcdefg", 1, 2);   // result: "bc"
 print substring("123456", 1);       // result: "23456"
 print substring("123456", 2, 2);    // result: "34"
@@ -358,7 +358,7 @@ toupper("value")
 ```
 
 ### <a name="examples"></a>Příklady
-```KQL
+```Kusto
 print tolower("HELLO"); // result: "hello"
 print toupper("hello"); // result: "HELLO"
 ```

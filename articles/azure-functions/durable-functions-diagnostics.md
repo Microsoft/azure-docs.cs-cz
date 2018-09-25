@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: azfuncdf
-ms.openlocfilehash: e1211241ec3a2b32647260d1a5c7dc561019cfdf
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 1ebca858632a64b5822658182a3b83c48f310164
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092237"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953023"
 ---
 # <a name="diagnostics-in-durable-functions-azure-functions"></a>Diagnostika v Durable Functions (Azure Functions)
 
@@ -80,7 +80,7 @@ Povolit generování události opakování podrobné Orchestrace, `LogReplayEven
 
 ### <a name="single-instance-query"></a>Jedna instance dotazu
 
-Následující dotaz zobrazí sledování historických dat pro jednu instanci [Hello pořadí](durable-functions-sequence.md) funkce Orchestrace. To je zapsáno s použitím [Application Insights dotazu jazyka (AIQL)](https://docs.loganalytics.io/docs/Language-Reference). Odfiltruje spuštění přehrání takže jen *logické* je zobrazena cesta provedení. Události lze provést řazení podle řazení podle `timestamp` a `sequenceNumber` jak je znázorněno v následujícím dotazu: 
+Následující dotaz zobrazí sledování historických dat pro jednu instanci [Hello pořadí](durable-functions-sequence.md) funkce Orchestrace. To je zapsáno s použitím [Application Insights dotazu jazyka (AIQL)](https://aka.ms/LogAnalyticsLanguageReference). Odfiltruje spuštění přehrání takže jen *logické* je zobrazena cesta provedení. Události lze provést řazení podle řazení podle `timestamp` a `sequenceNumber` jak je znázorněno v následujícím dotazu: 
 
 ```AIQL
 let targetInstanceId = "ddd1aaa685034059b545eb004b15d4eb";

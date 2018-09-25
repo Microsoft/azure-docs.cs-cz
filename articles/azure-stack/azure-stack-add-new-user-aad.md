@@ -12,40 +12,51 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2018
+ms.date: 09/17/2018
 ms.author: jeffgilb
 ms.reviewer: unknown
-ms.openlocfilehash: c312658750c1e9ef024a837ccc16e5cd5be8a5ef
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 9a4d7200a2bc2445fcdfefc0332d67a045b5a2e1
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35901126"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038013"
 ---
 # <a name="add-a-new-azure-stack-tenant-account-in-azure-active-directory"></a>Přidat nový účet tenanta služby Azure Stack v Azure Active Directory
+
 Po [nasazení Azure Stack Development Kit](azure-stack-run-powershell-script.md), uživatelský účet tenanta budete potřebovat, můžete zkoumat portál pro klienty a testování vaší nabídky a plány. Můžete vytvořit účet tenanta podle [pomocí webu Azure portal](#create-an-azure-stack-tenant-account-using-the-azure-portal) nebo [pomocí prostředí PowerShell](#create-an-azure-stack-tenant-account-using-powershell).
 
 ## <a name="create-an-azure-stack-tenant-account-using-the-azure-portal"></a>Vytvořit účet tenanta služby Azure Stack pomocí webu Azure portal
+
 Musíte mít předplatné Azure, pomocí webu Azure portal.
 
 1. Přihlaste se k [Azure](https://portal.azure.com).
-2. V levém navigačním panelu Microsoft Azure, klikněte na tlačítko **služby Active Directory**.
-3. V seznamu adresářů klikněte na adresář, který chcete použít pro službu Azure Stack nebo vytvořte novou.
-4. Na této stránce adresáře klikněte na tlačítko **uživatelé**.
-5. Klikněte na **Přidat uživatele**.
-6. V **přidat uživatele** průvodce **typ uživatele** klikněte na položku **nového uživatele ve vaší organizaci**.
-7. V **uživatelské jméno** zadejte název pro daného uživatele.
-8. V **@** vyberte příslušnou položku.
-9. Klikněte na šipku Další.
-10. V **profilu uživatele** stránku průvodce, zadejte **křestní jméno**, **příjmení**, a **zobrazovaný název**.
-11. V **Role** klikněte na položku **uživatele**.
-12. Klikněte na šipku Další.
-13. Na **získat dočasné heslo** klikněte na **vytvořit**.
-14. Kopírovat **nové heslo**.
-15. Přihlaste se k Microsoft Azure pomocí nového účtu. Změna hesla po zobrazení výzvy.
-16. Přihlaste se k `https://portal.local.azurestack.external` nový účet, chcete-li zobrazit portál pro klienty.
+2. V levém navigačním panelu vyberte **služby Active Directory** a přejděte do adresáře, který chcete použít pro službu Azure Stack, nebo vytvořte novou.
+3. Vyberte **Azure Active Directory** > **uživatelé** > **nového uživatele**.
+
+    ![Uživatelé – všichni uživatelé stránce zvýrazněnou nového uživatele](media/azure-stack-add-new-user-aad/new-user-all-users.png)
+
+4. Na **uživatele** stránce, vyplňte požadované informace.
+
+    ![Přidání nového uživatele, uživatel stránka s informace o uživateli](media/azure-stack-add-new-user-aad/new-user-user.png)
+
+    - **Název (povinné).** První a poslední název nového uživatele. Například Mary Parker.
+    - **Uživatelské jméno (povinné).** Uživatelské jméno nového uživatele. Například, mary@contoso.com.
+        Součást domény uživatelské jméno musí používat buď počáteční výchozí název domény, <_názevvašídomény_>. onmicrosoft.com, nebo vlastní název domény, třeba contoso.com. Další informace o tom, jak vytvořit vlastního názvu domény najdete v tématu [přidání vlastního názvu domény do Azure Active Directory](../active-directory/fundamentals/add-custom-domain.md).
+    - **Profil.** Volitelně můžete přidat další informace o uživateli. Později můžete také přidat informace o uživateli. Další informace o přidání informace o uživateli, naleznete v tématu [postup přidání nebo změně informací profilu uživatele](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md).
+    - **Role adresáře.**  Zvolte **uživatele**.
+
+5. Zkontrolujte **zobrazit heslo** a zkopírujte automaticky vytvořené heslo součástí **heslo** pole. Toto heslo budete potřebovat pro počáteční proces přihlašování.
+
+6. Vyberte **Vytvořit**.
+
+    Uživatel je vytvořen a přidán do vašeho tenanta Azure AD.
+
+7. Přihlaste se k portálu Microsoft Azure nový účet. Změna hesla po zobrazení výzvy.
+8. Přihlaste se k `https://portal.local.azurestack.external` nový účet, chcete-li zobrazit portál pro klienty.
 
 ## <a name="create-an-azure-stack-tenant-account-using-powershell"></a>Vytvořit účet tenanta služby Azure Stack pomocí Powershellu
+
 Pokud nemáte předplatné Azure, nemůžete použít na webu Azure portal k přidání uživatelského účtu tenanta. V takovém případě místo toho můžete Azure Active Directory modulu pro Windows PowerShell.
 
 > [!NOTE]

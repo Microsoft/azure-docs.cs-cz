@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: ec201f7f82aea97b9927b85a6b185fad51f6081d
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: c54bcc1239c2d8b8a88d5e30b06f8856b73b47ae
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412596"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46960681"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Funkce a rozšíření virtuálních počítačů Azure
 Rozšíření virtuálních počítačů (VM) Azure jsou malých aplikací, které poskytují konfiguraci a automatizaci úloh po nasazení na virtuálních počítačích Azure, můžete použít existující Image a pak si je přizpůsobit, jako součást nasazení, začít z firmy vlastní vytváření bitové kopie.
@@ -41,7 +41,7 @@ Rozšíření je možné seskupit s nasazením nového virtuálního počítače
 Můžete dostupná rozšíření zobrazit v okně virtuálního počítače na portálu v části rozšíření, to představuje jen malou, seznam, můžete používat nástroje rozhraní příkazového řádku, naleznete v tématu [zjišťování rozšíření virtuálních počítačů pro Linux](features-linux.md) a [ Zjišťování rozšíření virtuálních počítačů pro Windows](features-windows.md).
 
 ## <a name="how-can-i-install-an-extension"></a>Jak můžete nainstalovat rozšíření?
-Rozšíření virtuálního počítače Azure je možné spravovat pomocí rozhraní příkazového řádku Azure CLI 2.0, Azure Powershellu, šablon Azure Resource Manageru a webu Azure portal. Pokud chcete vyzkoušet rozšíření, můžete přejít na webu Azure portal vyberte rozšíření vlastních skriptů, potom předejte příkazu / skript a spustíte rozšíření.
+Rozšíření virtuálního počítače Azure je možné spravovat pomocí rozhraní příkazového řádku Azure, Azure Powershellu, šablon Azure Resource Manageru a webu Azure portal. Pokud chcete vyzkoušet rozšíření, můžete přejít na webu Azure portal vyberte rozšíření vlastních skriptů, potom předejte příkazu / skript a spustíte rozšíření.
 
 Pokud chcete do stejného rozšíření, které jste přidali na portálu pomocí šablony Resource Manageru nebo rozhraní příkazového řádku, najdete dokumentaci k jiné rozšíření, jako například [rozšíření vlastních skriptů Windows](custom-script-windows.md) a [rozšíření vlastních skriptů Linux](custom-script-linux.md).
 

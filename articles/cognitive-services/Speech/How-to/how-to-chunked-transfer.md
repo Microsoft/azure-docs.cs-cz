@@ -10,12 +10,13 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 1796a82b85182e6d231cb0bf1536cda2406e2c53
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ROBOTS: NOINDEX
+ms.openlocfilehash: cf21b11f76592f5df2d81e6bdc10413c79fe895e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364903"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46979222"
 ---
 # <a name="chunked-transfer-encoding"></a>Blokové kódování přenosu
 

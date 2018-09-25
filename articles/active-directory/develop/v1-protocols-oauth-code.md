@@ -16,14 +16,15 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 6dc156e94ee8b30bef8c25b3dcaa1d70f76e26e5
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: bd9d3a677d9fea54331200258d4b9b8e07a54312
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581271"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956893"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Autorizace přístupu k webovým aplikacím služby Azure Active Directory pomocí toku přidělení kódu OAuth 2.0
+
 Azure Active Directory (Azure AD) používá standard OAuth 2.0 k umožnění autorizace přístupu k webovým aplikacím a webovým rozhraním API ve vašem tenantovi Azure AD. Tato příručka je nezávislá na jazyce a popisuje, jak posílat a přijímat zprávy HTTP bez použití našich [knihovny open-source](active-directory-authentication-libraries.md).
 
 Tok autorizačního kódu OAuth 2.0 je popsaný v [části 4.1 specifikace OAuth 2.0](https://tools.ietf.org/html/rfc6749#section-4.1). Používá se k provedení ověřování a autorizace ve většině typů aplikací, včetně webových aplikací a nativně nainstalované aplikace.
@@ -31,11 +32,13 @@ Tok autorizačního kódu OAuth 2.0 je popsaný v [části 4.1 specifikace OAuth
 [!INCLUDE [active-directory-protocols-getting-started](../../../includes/active-directory-protocols-getting-started.md)]
 
 ## <a name="oauth-20-authorization-flow"></a>Tok ověřování OAuth 2.0
+
 Na vysoké úrovni tok celý autorizaci pro aplikace vypadá trochu takto:
 
 ![Tok kódu ověřování OAuth](./media/v1-protocols-oauth-code/active-directory-oauth-code-flow-native-app.png)
 
 ## <a name="request-an-authorization-code"></a>Žádost o autorizační kód
+
 Tok autorizačního kódu začíná klienta směruje uživatele `/authorize` koncového bodu. V této žádosti klient naznačuje oprávnění, která je potřeba získat od uživatele. Koncový bod autorizace OAuth 2.0 pro vašeho tenanta můžete získat tak, že vyberete **registrace aplikací > Koncové body** na webu Azure Portal.
 
 ```
@@ -56,15 +59,15 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | client_id |povinné |ID aplikace přiřazené vaší aplikaci, když je zaregistrován ve službě Azure AD. To můžete najít na webu Azure Portal. Klikněte na tlačítko **Azure Active Directory** na bočním panelu služby klikněte na tlačítko **registrace aplikací**a zvolte aplikaci. |
 | response_type |povinné |Musí zahrnovat `code` pro tok autorizačního kódu. |
 | redirect_uri |Doporučené |Redirect_uri vaší aplikace, kde můžete odesílat a přijímat aplikací pro žádosti o ověření. Musí odpovídat přesně jeden z redirect_uris, které jste zaregistrovali na portálu, s tím rozdílem, musí být kódování url. Pro nativní a mobilní aplikace, byste měli použít výchozí hodnotu `urn:ietf:wg:oauth:2.0:oob`. |
-| response_mode |Doporučené |Určuje metodu, která se má použít k odeslání výsledný token zpátky do vaší aplikace. Může být `query`, `fragment`, nebo `form_post`. `query` poskytuje kód jako parametru řetězce dotazu na váš identifikátor URI pro přesměrování. Pokud se požaduje token ID pomocí implicitního toku, nemůžete použít `query` podle [OpenID specifikace](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Pokud požadujete přesně takový kód, můžete použít `query`, `fragment`, nebo `form_post`. `form_post` provede příspěvek, který obsahuje kód, který váš identifikátor URI pro přesměrování. |
+| response_mode |nepovinné |Určuje metodu, která se má použít k odeslání výsledný token zpátky do vaší aplikace. Může být `query`, `fragment`, nebo `form_post`. `query` poskytuje kód jako parametru řetězce dotazu na váš identifikátor URI pro přesměrování. Pokud se požaduje token ID pomocí implicitního toku, nemůžete použít `query` podle [OpenID specifikace](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Pokud požadujete přesně takový kód, můžete použít `query`, `fragment`, nebo `form_post`. `form_post` provede příspěvek, který obsahuje kód, který váš identifikátor URI pro přesměrování. Výchozí hodnota je `query` pro tok kódu.  |
 | state |Doporučené |Hodnota v požadavku, který je také vrácen v odpovědi tokenu. Náhodně generované jedinečná hodnota se obvykle používá pro [prevence útoků proti padělání žádosti více webů](http://tools.ietf.org/html/rfc6749#section-10.12). Stav se také používá ke kódování informace o stavu uživatele v aplikaci předtím, než požadavek na ověření došlo k chybě, například stránky nebo zobrazení, které byly na. |
 | prostředek | Doporučené |Identifikátor URI ID aplikace cílového webového rozhraní API (zabezpečeným prostředkům). Identifikátor ID URI aplikace najdete na webu Azure Portal klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikací**, otevřete aplikaci **nastavení** stránce a potom klikněte na  **Vlastnosti**. Může být také externí prostředek jako `https://graph.microsoft.com`. Vyžaduje se v jednom autorizace nebo žádostí o token. K zajištění méně ověřování výzvy umístěte žádost o autorizaci, ujistěte se, že přijetí souhlasu uživatele. |
 | scope | **Ignorovat** | Pro aplikace Azure AD v1, musí být staticky nakonfigurován obory na webu Azure Portal v části aplikace **nastavení**, **požadovaná oprávnění**. |
 | řádek |nepovinné |Označuje typ interakce s uživatelem, který je požadován.<p> Platné hodnoty jsou: <p> *přihlášení*: uživatel by měl vyzván donutit k. <p> *select_account*: uživatel je vyzván k výběru účtu, přerušení na jednotné přihlašování. Uživatel může vybrat existující účet přihlášeného, zadejte své přihlašovací údaje pro účet zapamatovaných nebo můžete použít jiný účet úplně se vynechá. <p> *souhlas*: souhlas uživatele bylo uděleno, ale je potřeba aktualizovat. Uživatel by měl výzva k vyjádření souhlasu. <p> *admin_consent*: Správce by měl být vyzváni k udělit souhlas jménem všech uživatelů v organizaci |
 | login_hint |nepovinné |Umožňuje předem vyplnit pole uživatelské jméno nebo e-mailová adresa stránky přihlášení pro uživatele, pokud znáte svoje uživatelské jméno předem. Tento parametr použijte, často aplikace během opětovné ověření, uživatelské jméno s již extrahovat z předchozí přihlášení pomocí `preferred_username` deklarací identity. |
 | domain_hint |nepovinné |Poskytuje informace o tenantovi nebo doménu, kterou uživatel by měl používat k přihlášení. Hodnota domain_hint je registrované domény pro tenanta. Pokud tenanta je Federovaná do místního adresáře, AAD se přesměruje na federační server zadaného klienta. |
-| Metoda code_challenge_method | nepovinné    | Metoda použitá pro kódování `code_verifier` pro `code_challenge` parametru. Může být jedna z `plain` nebo `S256`. Pokud vyloučeny, `code_challenge` předpokládá, že je možné ve formátu prostého textu, pokud `code_challenge` je součástí. Azure AAD v1.0 podporuje obě `plain` a `S256`. Další informace najdete v tématu [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
-| code_challenge.        | nepovinné    | Používá k zabezpečení udělení autorizace kódu pomocí testování klíče pro výměnu kód (PKCE) od klienta nativní nebo veřejné. Požadováno pokud `code_challenge_method` je součástí. Další informace najdete v tématu [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
+| Metoda code_challenge_method | Doporučené    | Metoda použitá pro kódování `code_verifier` pro `code_challenge` parametru. Může být jedna z `plain` nebo `S256`. Pokud vyloučeny, `code_challenge` předpokládá, že je možné ve formátu prostého textu, pokud `code_challenge` je součástí. Azure AAD v1.0 podporuje obě `plain` a `S256`. Další informace najdete v tématu [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
+| code_challenge.        | Doporučené    | Používá k zabezpečení udělení autorizace kódu pomocí testování klíče pro výměnu kód (PKCE) od klienta nativní nebo veřejné. Požadováno pokud `code_challenge_method` je součástí. Další informace najdete v tématu [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
 
 > [!NOTE]
 > Pokud uživatel je součástí organizace, správce organizace souhlas nebo odmítnout jménem uživatele nebo povolit o souhlas. Uživatel dostane možnost pro vyjádření souhlasu jenom v případě, že to umožňuje správci.
@@ -149,7 +152,7 @@ grant_type=authorization_code
 Identifikátor ID URI aplikace najdete na webu Azure Portal klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikací**, otevřete aplikaci **nastavení** stránce a potom klikněte na  **Vlastnosti**.
 
 ### <a name="successful-response"></a>Úspěšné odpovědi
-Azure AD vrací přístupový token při úspěšné odpovědi. Chcete-li minimalizovat síťová volání z klientské aplikace a jejich přidružené latence, by měla klientská aplikace mezipaměti přístupové tokeny po celou dobu životnosti tokenu, který je zadán v odpovědi OAuth 2.0. Chcete-li určit dobu životnosti tokenu, použijte buď `expires_in` nebo `expires_on` hodnoty parametrů.
+Azure AD vrátí [přístupový token](access-tokens.md) po úspěšné odpovědi. Chcete-li minimalizovat síťová volání z klientské aplikace a jejich přidružené latence, by měla klientská aplikace mezipaměti přístupové tokeny po celou dobu životnosti tokenu, který je zadán v odpovědi OAuth 2.0. Chcete-li určit dobu životnosti tokenu, použijte buď `expires_in` nebo `expires_on` hodnoty parametrů.
 
 Pokud webové rozhraní API prostředku vrátí `invalid_token` kód chyby: to může znamenat, že prostředek bylo zjištěno, že platnost tokenu vypršela. Pokud klienta a prostředků hodiny doby jsou různé (označují se termínem "zkosení čas"), prostředek zvážit token, který má být vypršelo dřív, než se vymaže tokenu z mezipaměti klienta. Pokud k tomu dojde, zrušte tokenu z mezipaměti, i v případě, že je stále v rámci svého počítané životního cyklu.
 
@@ -171,59 +174,16 @@ Pokud webové rozhraní API prostředku vrátí `invalid_token` kód chyby: to m
 
 | Parametr | Popis |
 | --- | --- |
-| access_token |Požadovaný přístupový token jako podepsané JSON Web Token (JWT). Aplikace můžete používat tento token k ověření k zabezpečeným prostředkům, jako je například webové rozhraní API. |
+| access_token |Požadovaná [přístupový token](access-tokens.md) jako podepsané JSON Web Token (JWT). Aplikace můžete používat tento token k ověření k zabezpečeným prostředkům, jako je například webové rozhraní API. |
 | token_type |Určuje hodnotu pro typ tokenu. Jediný typ, který podporuje Azure AD je nosiče. Další informace o nosných tokenů najdete v tématu [Framework autorizace OAuth 2.0: použití nosného tokenu (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt) |
 | expires_in |Jak dlouho je přístupový token platný (v sekundách). |
 | expires_on |Čas, kdy vyprší platnost přístupového tokenu. Datum je vyjádřena jako počet sekund od 1970-01-01T0:0:0Z UTC až do okamžiku vypršení platnosti. Tato hodnota se používá k určení doby života tokenů v mezipaměti. |
 | prostředek |Identifikátor URI ID aplikace webového rozhraní API (zabezpečeným prostředkům). |
 | scope |Zosobnění oprávnění udělená do klientské aplikace. Výchozí oprávnění je `user_impersonation`. Vlastník prostředku zabezpečené můžete zaregistrovat další hodnoty ve službě Azure AD. |
 | refresh_token |Aktualizace tokenu OAuth 2.0. Aplikace můžete používat tento token se po vypršení platnosti přístupového tokenu aktuální získat dodatečné přístupové tokeny. Aktualizace jsou dlouhodobé tokeny a slouží k přístupu k prostředkům uchovávat po dlouhou dobu. |
-| id_token |Bez znaménka JSON Web Token (JWT). Base64Url aplikace může dekódovat segmenty tento token na žádost o informace o uživateli, který přihlášení. Aplikaci můžete ukládat do mezipaměti hodnoty a jejich zobrazení, ale na ně neměli spoléhat pro povolení nebo hranice zabezpečení. |
+| id_token |Bez znaménka představující JSON Web Token (JWT) [ID token](id-tokens.md). Base64Url aplikace může dekódovat segmenty tento token na žádost o informace o uživateli, který přihlášení. Aplikaci můžete ukládat do mezipaměti hodnoty a jejich zobrazení, ale na ně neměli spoléhat pro povolení nebo hranice zabezpečení. |
 
-### <a name="jwt-token-claims"></a>Deklarací identity tokenu JWT
-Token JWT v hodnotě `id_token` parametr může dekódovat do následující deklarace:
-
-```
-{
- "typ": "JWT",
- "alg": "none"
-}.
-{
- "aud": "2d4d11a2-f814-46a7-890a-274a72a7309e",
- "iss": "https://sts.windows.net/7fe81447-da57-4385-becb-6de57f21477e/",
- "iat": 1388440863,
- "nbf": 1388440863,
- "exp": 1388444763,
- "ver": "1.0",
- "tid": "7fe81447-da57-4385-becb-6de57f21477e",
- "oid": "68389ae2-62fa-4b18-91fe-53dd109d74f5",
- "upn": "frank@contoso.com",
- "unique_name": "frank@contoso.com",
- "sub": "JWvYdCWPhhlpS1Zsf7yYUxShUwtUm5yzPmw_-jX3fHY",
- "family_name": "Miller",
- "given_name": "Frank"
-}.
-```
-
-Další informace o webových tokenů JSON najdete v článku [specifikace konceptu JWT IETF](http://go.microsoft.com/fwlink/?LinkId=392344). Další informace o pro typy tokenů a deklarací identity najdete v článku [podporované Token a typy deklarací identity](v1-id-and-access-tokens.md)
-
-`id_token` Parametr obsahuje následující typy deklarací identity:
-
-| Typ deklarace identity | Popis |
-| --- | --- |
-| AUD |Cílová skupina tokenu. Při vystavení tokenu do klientské aplikace je cílová skupina `client_id` klienta. |
-| Exp |Čas vypršení platnosti. Čas, kdy vyprší platnost tokenu. Pro token platný, aktuální datum a čas musí být menší než nebo rovna hodnotě `exp` hodnotu. Čas je vyjádřen takto: počet sekund od 1. ledna 1970 (1970-01-01T0:0:0Z) UTC až do okamžiku vypršení platnosti tokenu.|
-| family_name |Uživatele příjmení. Aplikace může zobrazit tuto hodnotu. |
-| given_name |Křestní jméno uživatele. Aplikace může zobrazit tuto hodnotu. |
-| IAT |Vydáno v době. Čas, kdy byl vydán token JWT. Čas je vyjádřen takto: počet sekund od 1. ledna 1970 (1970-01-01T0:0:0Z) UTC až do doby byl token vydán. |
-| jednotky ISS – překročené |Identifikuje vydavatel tokenu |
-| nbf |Ne dříve než čas. Čas, kdy začne platit token. Pro token, který má být platná musí být aktuální datum a čas větší nebo rovna hodnotě Nbf. Čas je vyjádřen takto: počet sekund od 1. ledna 1970 (1970-01-01T0:0:0Z) UTC až do doby byl token vydán. |
-| identifikátor objektu |Identifikátor (ID) objektu uživatele v Azure AD |
-| Sub |Identifikátor token subjektu. Toto je trvalé a nezměnitelné identifikátor pro uživatele, který popisuje token. Použijte tuto hodnotu v ukládání do mezipaměti logiku. |
-| TID. |Identifikátor tenanta (ID) tenanta Azure AD, která token vydala. |
-| unique_name |Jedinečný identifikátor, který je možné zobrazit uživateli. To je obvykle hlavní název uživatele (UPN). |
-| hlavní název uživatele |Hlavní název uživatele uživatele. |
-| verze |Verze. Verze token JWT, obvykle 1.0. |
+Další informace o webových tokenů JSON najdete v článku [specifikace konceptu JWT IETF](http://go.microsoft.com/fwlink/?LinkId=392344).   Další informace o `id_tokens`, najdete v článku [v1.0 tok OpenID Connect](v1-protocols-openid-connect-code.md).
 
 ### <a name="error-response"></a>Odpověď na chybu
 Koncový bod chyby vystavování tokenů jsou kódy chyb protokolu HTTP, protože klient zavolá koncový bod vystavování tokenů přímo. Kromě stavový kód HTTP vrátí koncový bod vystavení tokenu Azure AD také dokument JSON s objekty, které popisují chybu.
@@ -313,6 +273,7 @@ Specifikaci RFC 6750 definuje následující chyby pro prostředky, které použ
 | 403 |insufficient_access |Předmět token, který nemá oprávnění požadovaná pro přístup k prostředku. |Vyzvat uživatele, použijte jiný účet nebo požádejte o oprávnění pro zadaný prostředek. |
 
 ## <a name="refreshing-the-access-tokens"></a>Aktualizaci přístupových tokenů
+
 Jsou krátkodobé přístupové tokeny a musí být aktualizovány po vypršení platnosti i nadále přístup k prostředkům. Můžete aktualizovat `access_token` odesláním jiného `POST` požádat o `/token` koncového bodu, ale tato doba poskytování `refresh_token` místo `code`.
 
 Aktualizovat tokeny nemají zadaný životnosti. Životní cyklus obnovovací tokeny jsou obvykle poměrně dlouho. Ale v některých případech tokeny obnovení vyprší, byly odvolány nebo nemají dostatečná oprávnění pro požadovanou akci. Vaše aplikace potřebuje očekávají a zpracování chyby vrácené systémem koncový bod vystavování tokenů správně.

@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 09/04/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 7fec050f43ed6facef548ea19d1d67030458fbb1
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: b4e1e01d54f6e0043709e0dadef41d7ea513a9b6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380246"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963283"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>Použití Visual Studio Code pro vývoj a ladění modulů jazyka C# pro Azure IoT Edge
 
@@ -48,7 +48,7 @@ K otestování modulu do zařízení, potřebujete aktivní služby IoT hub s al
 
 ## <a name="create-a-new-solution-with-c-module"></a>Vytvoření nového řešení pomocí modulu jazyka C#
 
-Podle následujících kroků vytvořte modul IoT Edge založené na rozhraní .NET Core 2.0 pomocí Visual Studio Code a rozšíření Azure IoT Edge. Nejprve vytvořte řešení a pak vytvořte první modulu v tomto řešení. Každé řešení může obsahovat více než jeden modul. 
+Podle následujících kroků vytvořte modul IoT Edge založené na rozhraní .NET Core 2.1 pomocí Visual Studio Code a rozšíření Azure IoT Edge. Nejprve vytvořte řešení a pak vytvořte první modulu v tomto řešení. Každé řešení může obsahovat více než jeden modul. 
 
 1. Ve Visual Studio Code, vyberte **zobrazení** > **integrovaný terminál**.
 3. Vyberte **zobrazení** > **příkaz palety**. 

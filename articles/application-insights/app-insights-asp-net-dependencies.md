@@ -1,5 +1,5 @@
 ---
-title: Závislost sledování ve službě Azure Application Insights | Microsoft Docs
+title: Závislost sledování ve službě Azure Application Insights | Dokumentace Microsoftu
 description: Analýza místního využití, dostupnosti a výkonu nebo webová aplikace Microsoft Azure s nástrojem Application Insights.
 services: application-insights
 documentationcenter: .net
@@ -13,129 +13,129 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: f2ebd2a021d3803b6e3f7d805b9253d181cb16c3
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: f1a1c0bd759a88b2e84584f1d52458ac6f56d97f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293635"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999685"
 ---
-# <a name="set-up-application-insights-dependency-tracking"></a>Nastavte Application Insights: sledování závislostí
-A *závislostí* je externí komponenta, která je volána aplikace. Obvykle se jedná o službu volat pomocí protokolu HTTP, nebo databázi nebo systému souborů. [Application Insights](app-insights-overview.md) měří, jak dlouho aplikace čeká závislosti a jak často závislostí volání selže. Můžete prozkoumat konkrétní volání a propojovat je na požadavky a výjimkami.
+# <a name="set-up-application-insights-dependency-tracking"></a>Nastavení Application Insights: sledování závislostí
+A *závislost* je externí komponenta, která volá vaši aplikaci. Obvykle se jedná o službu volána pomocí protokolu HTTP, nebo databázi nebo systému souborů. [Application Insights](app-insights-overview.md) měří jak dlouho aplikaci čeká závislosti a jak často závislosti volání selže. Můžete prozkoumat konkrétní volání a spojit je žádosti a výjimky.
 
 ![ukázkové grafy](./media/app-insights-asp-net-dependencies/10-intro.png)
 
-Toto monitorování závislostí na více systémů pole sestavy aktuálně volání na tyto typy závislosti:
+Toto monitorování závislostí out-of-the-box aktuálně hlásí volání pro tyto typy závislostí:
 
 * Server
   * Databáze SQL
-  * Technologie ASP.NET a služby WCF, které používají vazby založené na protokolu HTTP
-  * Místní nebo vzdálené volání protokolu HTTP
+  * Rozhraní ASP.NET web a služby WCF, které používají vazby založené na protokolu HTTP
+  * Místní nebo vzdálené volání HTTP
   * Azure Cosmos DB, table, úložiště objektů blob a fronty
 * Webové stránky
   * Volání AJAX
 
-Monitorování funguje pomocí [bajtů kód instrumentace](https://msdn.microsoft.com/library/z9z62c29.aspx) kolem vybrané metody. Nároky na výkon je minimální.
+Monitorování funguje pomocí [bajtů kód instrumentace](https://msdn.microsoft.com/library/z9z62c29.aspx) kolem vybrané metody. Je minimální nároky na výkon.
 
-Můžete taky napsat vlastní volání sady SDK k monitorování Další závislosti, oba seznamy v kód klienta a serveru pomocí [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency).
+Můžete je zapsat také vlastních volání sady SDK a monitorujte Další závislosti, v kódu klienta a serveru pomocí [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency).
 
 ## <a name="set-up-dependency-monitoring"></a>Nastavení monitorování závislostí
-Částečné závislostí informace jsou shromažďovány automaticky pomocí [Application Insights SDK](app-insights-asp-net.md). Chcete-li získat kompletní datový, nainstalujte příslušné agenta pro hostitelský server.
+Závislost částečné informace jsou shromažďovány automaticky [Application Insights SDK](app-insights-asp-net.md). Pokud chcete získat kompletní data, nainstalujte příslušného agenta pro hostitelský server.
 
 | Platforma | Instalace |
 | --- | --- |
-| Server služby IIS |Buď [nainstalujte monitorování stavu na serveru](app-insights-monitor-performance-live-website-now.md) nebo [upgradu vaší aplikace rozhraní .NET Framework 4.6 nebo novější](http://go.microsoft.com/fwlink/?LinkId=528259) a nainstalujte [Application Insights SDK](app-insights-asp-net.md) ve vaší aplikaci. |
-| Webové aplikace Azure |Ve webové aplikaci ovládacího panelu [otevřete okno Application Insights ve webové aplikaci ovládacího panelu](app-insights-azure-web-apps.md) a instalace zvolte, pokud se zobrazí výzva. |
-| Cloudové služby Azure |[Úloha spuštění použití](app-insights-cloudservices.md) nebo [nainstalovat rozhraní .NET framework 4.6 +](../cloud-services/cloud-services-dotnet-install-dotnet.md) |
+| Server služby IIS |Buď [nainstalujte na server monitorování stavu](app-insights-monitor-performance-live-website-now.md) nebo [Upgrade vaší aplikace na rozhraní .NET framework 4.6 nebo novější](http://go.microsoft.com/fwlink/?LinkId=528259) a nainstalujte [Application Insights SDK](app-insights-asp-net.md) ve vaší aplikaci. |
+| Webové aplikace Azure |V váš řídicí panel webové aplikace [otevřete okno Application Insights v ovládacím panelu webové aplikace](app-insights-azure-web-apps.md) a možnost instalace, pokud se zobrazí výzva. |
+| Cloudové služby Azure |[Úlohy po spuštění použijte](app-insights-cloudservices.md) nebo [nainstalovat rozhraní .NET framework 4.6 +](../cloud-services/cloud-services-dotnet-install-dotnet.md) |
 
 ## <a name="where-to-find-dependency-data"></a>Kde najít data závislostí
-* [Mapa aplikace](#application-map) vizualizuje závislosti mezi aplikací a sousedních součásti.
-* [Okna výkonu, prohlížeče a selhání](#performance-and-blades) zobrazit závislosti dat serveru.
+* [Mapa aplikace](#application-map) vizualizuje závislosti mezi vaší aplikací a sousední komponenty.
+* [Výkon, prohlížeče a selhání oken](#performance-and-blades) zobrazit závislosti dat serveru.
 * [Okno prohlížečů](#ajax-calls) ukazuje volání AJAX z prohlížečů uživatelů.
-* [Klikněte na položku přes pomalé nebo chybných požadavků](#diagnose-slow-requests) zkontrolujte jejich závislost volání.
-* [Analýza](#analytics) lze použít k dotazování na data závislostí.
+* [Kliknutím přejít z pomalý nebo neúspěšné požadavky](#diagnose-slow-requests) ke kontrole jejich závislosti volání.
+* [Analytics](#analytics) slouží k dotazování na data závislostí.
 
 ## <a name="application-map"></a>Mapa aplikace
-Mapa aplikace funguje jako vizuální pomůcka zjišťování závislostí mezi součástmi aplikace. Automaticky se generují z telemetrie z vaší aplikace. Tento příklad ukazuje volání AJAX z prohlížeče skriptů a volání REST z aplikace serveru dvě externích služeb.
+Mapa aplikace se chová jako vizuální pomůcky zjišťování závislosti mezi komponentami vaší aplikace. Je generována automaticky na základě telemetrie z vaší aplikace. Tento příklad ukazuje volání AJAX ze skriptů prohlížeče a volání REST z aplikace serveru dvě externí služby.
 
 ![Mapa aplikace](./media/app-insights-asp-net-dependencies/08.png)
 
-* **Přejděte z políčka** relevantní závislosti a jinými grafy.
-* **Připnout mapy** k [řídicí panel](app-insights-dashboards.md), kde budou plně funkční.
+* **Přejděte v polích** relevantní závislosti a další grafy.
+* **Připněte mapu** k [řídicí panel](app-insights-dashboards.md), kde bude plně funkční.
 
 [Další informace](app-insights-app-map.md).
 
-## <a name="performance-and-failure-blades"></a>Výkon a selhání oken
-Okno výkon zobrazuje dobu trvání závislosti volání aplikace serveru. Není souhrnné graf a tabulku oddělených volání.
+## <a name="performance-and-failure-blades"></a>Okna výkonu a selhání
+V okně výkonu se zobrazí dobu trvání volání závislostí prováděných aplikací serveru. Je souhrn graf a tabulku segmentované podle volání.
 
-![Grafy závislostí okno výkonu.](./media/app-insights-asp-net-dependencies/dependencies-in-performance-blade.png)
+![Grafy závislosti okně výkonu.](./media/app-insights-asp-net-dependencies/dependencies-in-performance-blade.png)
 
-Proklikejte se prostřednictvím souhrnné grafy nebo položky, které se mají hledat nezpracovaná výskyty těchto volání.
+Proklikejte se prostřednictvím souhrnné grafy nebo položky, které se mají hledat nezpracovaná výskytů těchto volání.
 
 ![Instance volání závislostí](./media/app-insights-asp-net-dependencies/dependency-call-instance.png)
 
-**Počet selhání** se zobrazují na **selhání** okno. Selhání je jakýkoli návratový kód, který není v rozsahu 200-399, nebo neznámý.
+**Počet selhání** jsou uvedeny na **selhání** okno. Selhání je jakýkoli návratový kód, který není v rozsahu 200-399 nebo neznámý.
 
 > [!NOTE]
-> **100 % selhání?** – Pravděpodobně to znamená, jsou jenom získávání dat částečné závislostí. Budete muset [nastavení monitorování závislostí vhodné pro vaši platformu](#set-up-dependency-monitoring).
+> **100 % selhání?** -Pravděpodobně označuje, že se zobrazuje jenom data částečné závislostí. Je potřeba [nastavení monitorování závislostí pro vaši platformu](#set-up-dependency-monitoring).
 >
 >
 
 ## <a name="ajax-calls"></a>Volání AJAX
-V okně prohlížeče zobrazuje míru doba trvání a selhání volání AJAX z [JavaScript na webových stránkách](app-insights-javascript.md). Zobrazí se jako závislosti.
+V okně prohlížeče zobrazuje dobu trvání a selhání míru volání AJAX z [JavaScript na webových stránkách](app-insights-javascript.md). Zobrazí se jako závislosti.
 
-## <a name="diagnosis"></a> Diagnostika pomalé požadavků
-Každá událost požadavku je přidružen volání závislostí, výjimek a další události, které jsou sledovány, zatímco aplikace je zpracování požadavku. Takže pokud chybně provedli některé požadavky, můžete zjistit ať to je z důvodu zpomalení odezvy ze závislost.
+## <a name="diagnosis"></a> Diagnostika pomalé žádosti
+Každý požadavek událost je přidružena volání závislostí, výjimek a dalších událostí, které jsou sledovány během zpracování požadavku aplikace. Takže pokud některé požadavky jsou nízkého výkonu, můžete zjistit, jestli je z důvodu zpomalení odezvy ze závislostí.
 
-Projděme příklad této.
+Projděme si příklad, který.
 
-### <a name="tracing-from-requests-to-dependencies"></a>Trasování z požadavky na závislosti
+### <a name="tracing-from-requests-to-dependencies"></a>Trasování požadavků závislostí
 Otevřete okno výkon a podívejte se na mřížky požadavků:
 
 ![Seznam požadavků s průměry a počty](./media/app-insights-asp-net-dependencies/02-reqs.png)
 
-Horní jeden trvá velmi dlouho. Podívejme se, pokud jsme můžete zjistit, kde čas strávený.
+Ten hlavní trvá velmi dlouho. Podívejme se, pokud jsme můžete zjistit, kde byl stráven čas.
 
-Klikněte na daném řádku zobrazíte události jednotlivých žádostí:
+Klikněte na tento řádek a zobrazte jednotlivé žádosti o události:
 
-![Seznam výskytů požadavku](./media/app-insights-asp-net-dependencies/03-instances.png)
+![Seznam opakování žádosti](./media/app-insights-asp-net-dependencies/03-instances.png)
 
-Kliknutím na jakoukoli instanci dlouho běžící další zkontrolovat a posuňte se dolů a volání vzdálené závislosti související s tuto žádost:
+Kliknutím na jakoukoli instanci dlouhotrvající kontrolovat další, a posuňte se dolů volání vzdálené závislosti týkající se této žádosti:
 
-![Najít volání vzdálené závislosti, identifikovat neobvyklé doba trvání](./media/app-insights-asp-net-dependencies/04-dependencies.png)
+![Volání vzdálených závislostí vyhledat, identifikovat neobvyklé doba trvání](./media/app-insights-asp-net-dependencies/04-dependencies.png)
 
-To vypadá většinu času údržby, které tento požadavek byl stráven v volání k místní službě.
+Vypadá jako většinu času údržby, které této žádosti se využilo na volání do místní služby.
 
-Vyberte tento řádek získat další informace:
+Vyberte tento řádek, chcete-li získat další informace:
 
-![Klikněte na tlačítko prostřednictvím tohoto vzdáleného závislostí pro identifikaci, který](./media/app-insights-asp-net-dependencies/05-detail.png)
+![Proklikejte se k identifikaci nadměrné spotřeby dané vzdálené závislosti](./media/app-insights-asp-net-dependencies/05-detail.png)
 
-Vypadá to jde, kde je problém. Jsme jste přesně vymezená problém, takže teď jsme právě měli zjistit, proč tento volání trvá tak dlouho.
+Vypadá to, čem problém spočívá. My jsme přesně vymezená problém, tak teď jsme právě potřebujete zjistit, proč toto volání je trvá tak dlouho.
 
-### <a name="request-timeline"></a>Časová osa požadavku
-V případě různých je volání žádné závislosti, které je zvláště dlouhý. Ale přepnutím na zobrazení časové osy, uvidíme, kde došlo k zpoždění v našem interní zpracování:
+### <a name="request-timeline"></a>Časová osa žádosti
+V případě různých neexistuje žádná volání závislosti, které je zvláště dlouhý. Ale přepnutím na zobrazení časové osy, můžeme vidět, kde došlo k zpoždění v našich interních zpracování:
 
-![Najít volání vzdálené závislosti, identifikovat neobvyklé doba trvání](./media/app-insights-asp-net-dependencies/04-1.png)
+![Volání vzdálených závislostí vyhledat, identifikovat neobvyklé doba trvání](./media/app-insights-asp-net-dependencies/04-1.png)
 
-Nejspíš velké mezery po volání první závislost, takže by měl podíváme na našem kódu, uvidíte, proč je.
+Zdá velké mezery po volání první závislostí, takže by měl podíváme na naše kódem, abyste viděli, proč je.
 
-### <a name="profile-your-live-site"></a>Profil živý web
+### <a name="profile-your-live-site"></a>Profil živého webu
 
-Žádné představu, kde přejde čas? [Application Insights profileru](app-insights-profiler.md) trasování HTTP volání živý web a ukazuje, které funkce ve vašem kódu trvalo nejdelší dobu.
+Představu kde čas prochází? [Application Insights profiler](app-insights-profiler.md) trasy HTTP zavolá na váš živý web a ukazuje, které funkce ve vašem kódu trvalo nejdelší dobu.
 
 ## <a name="failed-requests"></a>Neúspěšné požadavky
-Neúspěšné požadavky může být také přidružen selhání volání závislosti. Jsme znovu, klikněte prostřednictvím sledovat problém.
+Neúspěšné požadavky může být také přidružen neúspěšných volání závislostí. Opět jsme proklikat ke sledování problému.
 
-![Klikněte na graf neúspěšných požadavků](./media/app-insights-asp-net-dependencies/06-fail.png)
+![Klikněte na graf neúspěšných žádostí](./media/app-insights-asp-net-dependencies/06-fail.png)
 
-Proklikejte se k výskytu chybné žádosti a podívejte se na jeho přidružené události.
+Proklikejte se k výskytu neúspěšných požadavků a podívejte se na jeho související události.
 
-![Klikněte na typ požadavku, klikněte na instanci systému na získat do jiného zobrazení stejné instance, klikněte na něj získat podrobnosti o výjimce.](./media/app-insights-asp-net-dependencies/07-faildetail.png)
+![Klikněte na typ požadavku, klikněte na instance, kterou chcete získat do jiného zobrazení stejné instance, klikněte na něj zobrazíte podrobnosti o výjimce.](./media/app-insights-asp-net-dependencies/07-faildetail.png)
 
 ## <a name="analytics"></a>Analýzy
-Můžete sledovat v závislosti [analýzy protokolů dotazu jazyka](https://docs.loganalytics.io/). Zde je několik příkladů:
+Můžete sledovat v závislosti [dotazovací jazyk Log Analytics](https://aka.ms/LogAnalyticsLanguage). Zde je několik příkladů:
 
-* Najděte žádné volání se nezdařilo závislost:
+* Najdete všechna neúspěšná volání:
 
 ```
 
@@ -149,7 +149,7 @@ Můžete sledovat v závislosti [analýzy protokolů dotazu jazyka](https://docs
     dependencies | where client_Type == "Browser" | take 10
 ```
 
-* Najděte závislostí volání přidružené k žádosti:
+* Vyhledejte žádosti spotřebují volání závislostí:
 
 ```
 
@@ -160,7 +160,7 @@ Můžete sledovat v závislosti [analýzy protokolů dotazu jazyka](https://docs
 ```
 
 
-* Volání AJAX najít přidružené zobrazení stránky:
+* Najít volání AJAX přidružený k zobrazení stránek:
 
 ```
 
@@ -172,12 +172,12 @@ Můžete sledovat v závislosti [analýzy protokolů dotazu jazyka](https://docs
 
 
 
-## <a name="custom-dependency-tracking"></a>Vlastní závislost sledování
-Standardní modul sledování závislosti automaticky zjišťuje externí závislosti, jako jsou databáze a rozhraní REST API. Ale můžete chtít některé další součásti považován stejným způsobem.
+## <a name="custom-dependency-tracking"></a>Vlastní sledování závislostí
+Standardní modul sledování závislosti automaticky zjišťuje externí závislosti, jako jsou databáze a rozhraní REST API. Nicméně je možné pracovat stejně jako některé další komponenty.
 
-Můžete napsat kód, který odesílá informace o závislostech, používající stejný [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency) používané standardní moduly.
+Můžete napsat kód, který odesílá informace o závislostech, pomocí stejných [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency) , který se používá standardní moduly.
 
-Například pokud vytvoříte kódu se sestavením, které nebylo napsat sami, může čas všechna volání, a zjistěte, jaký příspěvek umožňuje na váš doby odezvy. Pokud chcete, aby tato data zobrazí v grafech závislosti ve službě Application Insights, odeslat pomocí `TrackDependency`.
+Například pokud vytváření kódu pomocí sestavení, které jste sami nenapsali může čas všechna volání, a zjistěte, jaké příspěvek, odešle vaše doby odezvy. Pokud chcete, aby tato data zobrazí v grafech závislostí ve službě Application Insights, odeslat ho pomocí `TrackDependency`.
 
 ```csharp
 
@@ -196,20 +196,20 @@ Například pokud vytvoříte kódu se sestavením, které nebylo napsat sami, m
             }
 ```
 
-Pokud chcete vypnout modul sledování standardní závislostí, odeberte odkaz na DependencyTrackingTelemetryModule v [souboru ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md).
+Pokud chcete vypnout sledování modulu standardních závislostí, odeberte odkaz na DependencyTrackingTelemetryModule v [soubor ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md).
 
 ## <a name="troubleshooting"></a>Řešení potíží
-*Závislost úspěch příznak vždycky zobrazí hodnotu PRAVDA nebo NEPRAVDA.*
+*Závislost úspěch příznak vždycky zobrazí hodnotu true nebo false.*
 
-*Úplné to není znázorněné dotazu SQL.*
+*Dotaz SQL není zobrazené v plném rozsahu.*
 
-Projděte si následující tabulky a zajistěte, že jste vybrali správnou konfiguraci chcete-li povolit monitorování závislostí pro vaši aplikaci.
+Naleznete v následující tabulce a zajistit, že jste zvolili správnou konfiguraci chcete povolit monitorování závislostí pro vaši aplikaci.
 
 | Platforma | Instalace |
 | --- | --- |
-| Server služby IIS |Buď [nainstalujte monitorování stavu na serveru](app-insights-monitor-performance-live-website-now.md). Nebo [upgradu vaší aplikace rozhraní .NET Framework 4.6 nebo novější](http://go.microsoft.com/fwlink/?LinkId=528259) a nainstalujte [Application Insights SDK](app-insights-asp-net.md) ve vaší aplikaci. |
-| Webové aplikace Azure |Ve webové aplikaci ovládacího panelu [otevřete okno Application Insights ve webové aplikaci ovládacího panelu](app-insights-azure-web-apps.md) a instalace zvolte, pokud se zobrazí výzva. |
-| Cloudové služby Azure |[Úloha spuštění použití](app-insights-cloudservices.md) nebo [nainstalovat rozhraní .NET framework 4.6 +](../cloud-services/cloud-services-dotnet-install-dotnet.md) |
+| Server služby IIS |Buď [nainstalujte na server monitorování stavu](app-insights-monitor-performance-live-website-now.md). Nebo [Upgrade vaší aplikace na rozhraní .NET framework 4.6 nebo novější](http://go.microsoft.com/fwlink/?LinkId=528259) a nainstalujte [Application Insights SDK](app-insights-asp-net.md) ve vaší aplikaci. |
+| Webové aplikace Azure |V váš řídicí panel webové aplikace [otevřete okno Application Insights v ovládacím panelu webové aplikace](app-insights-azure-web-apps.md) a možnost instalace, pokud se zobrazí výzva. |
+| Cloudové služby Azure |[Úlohy po spuštění použijte](app-insights-cloudservices.md) nebo [nainstalovat rozhraní .NET framework 4.6 +](../cloud-services/cloud-services-dotnet-install-dotnet.md) |
 
 ## <a name="video"></a>Video
 

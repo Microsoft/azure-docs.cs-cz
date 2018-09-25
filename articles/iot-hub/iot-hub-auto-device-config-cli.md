@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: chrisgre
-ms.openlocfilehash: f81ef3c231874f314d6fe023ba247a0bcff61e90
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 6535eee93b0fcaa2c0888fc6b647811c21e564d9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42054010"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971905"
 ---
 # <a name="configure-and-monitor-iot-devices-at-scale-using-the-azure-cli"></a>Konfigurovat a monitorovat zařízení IoT ve velkém měřítku pomocí Azure CLI
 
@@ -34,8 +34,8 @@ Konfigurace pracovních automatické aktualizace sadu dvojčata zařízení pomo
 ## <a name="cli-prerequisites"></a>Požadavky na rozhraní příkazového řádku
 
 * [Služby IoT hub](../iot-hub/iot-hub-create-using-cli.md) ve vašem předplatném Azure. 
-* [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) ve vašem prostředí. Vaše verze Azure CLI 2.0 musí být minimálně 2.0.24 nebo novější. Ke kontrole použijte příkaz `az –-version`. Tato verze podporuje příkazy rozšíření az a zavádí příkazové rozhraní Knack. 
-* [Rozšíření IoT pro Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension).
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) ve vašem prostředí. Minimálně musí být vaše Azure CLI verze 2.0.24 nebo novější. Ke kontrole použijte příkaz `az –-version`. Tato verze podporuje příkazy rozšíření az a zavádí příkazové rozhraní Knack. 
+* [Rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension).
 
 ## <a name="implement-device-twins-to-configure-devices"></a>Implementace dvojčata zařízení ke konfiguraci zařízení
 
@@ -56,7 +56,7 @@ Než budete moct vytvořit konfiguraci, je nutné zadat zařízení, která chce
 
 ## <a name="define-the-target-content-and-metrics"></a>Zadejte cíl obsahu a metriky
 
-Cíl obsahu a metriku dotazy jsou definované jako dokumenty JSON, které popisují zařízení dvojčete požadovaných vlastností tak, aby sada a ohlášené vlastnosti k měření.  Automatické konfiguraci pomocí Azure CLI 2.0 vytvoříte uložte cíl obsahu a metriky místně jako soubory s příponou .txt. Při spuštění příkazu použijte konfiguraci zařízení použijete v další části Další cesty k souborům. 
+Cíl obsahu a metriku dotazy jsou definované jako dokumenty JSON, které popisují zařízení dvojčete požadovaných vlastností tak, aby sada a ohlášené vlastnosti k měření.  Automatické konfiguraci pomocí Azure CLI vytvoříte uložte cíl obsahu a metriky místně jako soubory s příponou .txt. Cesty k souborům použije v pozdější sekci při spuštění příkazu k použití konfigurace k zařízení. 
 
 Tady je ukázka základní cíl obsahu:
 
@@ -176,7 +176,7 @@ az iot hub configuration update --config-id [configuration id] \
 
     * popisky 
 
-    * priorita
+    * Priorita
 
 ## <a name="delete-a-configuration"></a>Odstranění konfigurace
 

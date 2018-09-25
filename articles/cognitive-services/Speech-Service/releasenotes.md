@@ -4,20 +4,31 @@ description: Zpráva k vydání verze – co se změnilo v nejnovější vydané
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: wolfma61
-manager: onano
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 08/16/2018
+ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 5862b119ceee4ace0d51691851dc53a9729ac68e
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: cfc8f973ac9bced9396a081f7fb2ab6a4a1b2f7f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363390"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963079"
 ---
 # <a name="release-notes"></a>Poznámky k verzi
+
+## <a name="cognitive-services-speech-sdk-100-2018-september-release"></a>Cognitive Services sadou SDK pro řeč 1.0.0: 2018zářijová verze
+
+**Nové funkce**
+
+* Podpora pro Objective-C v iOS. Podívejte se na naše [rychlý start Objective-C pro iOS](quickstart-objectivec-ios.md).
+* Podpora jazyka JavaScript v prohlížeči. Podívejte se na naše [JavaScript quickstart](quickstart-js-browser.md).
+
+**Rozbíjející změny v**
+
+* V této verzi představeny počet nejnovější změny.
+  Zkontrolujte prosím [na této stránce](https://aka.ms/csspeech/breakingchanges_1_0_0) podrobnosti.
 
 ## <a name="cognitive-services-speech-sdk-060-2018-august-release"></a>Cognitive Services sadou SDK pro řeč 0.6.0: verze srpna 2018
 

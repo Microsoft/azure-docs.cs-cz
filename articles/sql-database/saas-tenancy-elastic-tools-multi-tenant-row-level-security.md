@@ -1,21 +1,23 @@
 ---
 title: Aplikace s více tenanty pomocí zabezpečení na úrovni řádků a nástrojů pro elastické databáze | Dokumentace Microsoftu
 description: Používejte nástroje elastické databáze pomocí zabezpečení na úrovní řádků k sestavení aplikace s vysoce škálovatelnou datovou vrstvou.
-metakeywords: azure sql database elastic tools multi tenant row level security rls
 services: sql-database
-manager: craigg
-author: tmullaney
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: tmullaney
 ms.author: thmullan
-ms.openlocfilehash: 96093ea65452693a999363f6bbad26a4a1904f60
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 94430d3b72bb5b8e8bde0e9e2e9fb2eb2b0c3632
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714933"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056280"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Aplikace s více tenanty s nástroji elastic database a zabezpečení na úrovní řádků
 

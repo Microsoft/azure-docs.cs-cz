@@ -8,12 +8,12 @@ ms.date: 6/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5ffb1b5c9889e2325eab32306b61899b37d22488
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: e9de037f886db7a48411959ef62e1e6687e54beb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187464"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46984292"
 ---
 # <a name="create-a-windows-iot-edge-device-that-acts-as-a-transparent-gateway"></a>Vytvoření zařízení Windows IoT Edge, který funguje jako transparentní brána
 
@@ -206,6 +206,8 @@ Modul runtime IoT Edge může směrovat zprávy odeslané ze zařízení příje
    ```
 
 Odkazovat [modulu složení článku] [ lnk-module-composition] podrobné informace o směrování zpráv.
+
+[!INCLUDE [](../../includes/iot-edge-extended-offline-preview.md)]
 
 ## <a name="next-steps"></a>Další postup
 [Pochopení požadavků a nástroje pro vývoj modulů IoT Edge][lnk-module-dev].

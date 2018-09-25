@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Podívejte se na LUIS osvědčené postupy pro dosažení nejlepších výsledků.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: a7791c468bebf2fd683f163f6b1ed532f7f027d6
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 511e6c732613cc577644365e38b271135659f2d3
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632071"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042240"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Osvědčené postupy pro vytváření aplikace language understanding pomocí služeb Cognitive Services
 Proces tvorby aplikace používejte k sestavení aplikace LUIS. 

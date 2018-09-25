@@ -19,7 +19,7 @@ Podle následujícího postupu nainstalujete a nakonfigurujete `kubectl` ve vaš
 > 
 
 ### <a name="install-kubectl"></a>Instalace kubectl
-Jedním ze způsobů, jak tento nástroj nainstalovat, je použít nástroj příkazového řádku Azure 2.0 `az acs kubernetes install-cli`. Pokud chcete spustit tento příkaz, ujistěte se, že jste [nainstalován](/cli/azure/install-az-cli2) nejnovější Azure CLI 2.0 a přihlášeného k účtu Azure (`az login`).
+Jedním ze způsobů, jak tento nástroj nainstalovat, je použít `az acs kubernetes install-cli` rozhraní příkazového řádku Azure. Pokud chcete spustit tento příkaz, ujistěte se, že můžete [nainstalované](/cli/azure/install-az-cli2) nejnovější verzi Azure CLI a přihlášení k účtu Azure (`az login`).
 
 ```azurecli
 # Linux or macOS

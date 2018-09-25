@@ -1,121 +1,122 @@
 ---
-title: Přehled automatického škálování virtuálních počítačů, cloudové služby a webové aplikace
-description: Škálování v Microsoft Azure. Platí pro virtuální počítače, virtuální počítač sadách škálování, cloudové služby a webové aplikace.
+title: Přehled automatického škálování virtuálních počítačů, cloudových služeb a webových aplikací
+description: Automatické škálování v Microsoft Azure. Platí pro virtuální počítače, Škálovací sady virtuálních počítačů, cloudových služeb a webových aplikací.
 author: rboucher
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 03/02/2016
+ms.date: 09/24/2018
 ms.author: robb
 ms.component: autoscale
-ms.openlocfilehash: 4eeca81e08a0ecae9ba41ccdd2bf8a2f395f579c
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: fe63ce931da9fbe94b47d00805820affddfb1bc1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264666"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946982"
 ---
-# <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Přehled automatického škálování ve virtuálních počítačích Microsoft Azure, cloudové služby a webové aplikace
-Tento článek popisuje, jaké škálování Microsoft Azure je, její výhody a jak začít používat.  
+# <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Přehled automatického škálování v Microsoft Azure Virtual Machines, Cloud Services a webových aplikací
+Tento článek popisuje, co Microsoft Azure při automatickém škálování je, jeho výhody a jak začít používat.  
 
-Azure monitorování škálování se vztahují pouze na [sady škálování virtuálního počítače](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [cloudové služby](https://azure.microsoft.com/services/cloud-services/), a [služby App Service – webové aplikace](https://azure.microsoft.com/services/app-service/web/).
+Automatické škálování služby Azure Monitor se týká pouze [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service – Web Apps](https://azure.microsoft.com/services/app-service/web/), a [služby API Management](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
 
 > [!NOTE]
-> Azure má dvě metody automatického škálování. Starší verze škálování platí pro virtuální počítače (skupiny dostupnosti). Tato funkce má omezenou podporu a doporučujeme migraci do sady škálování virtuálního počítače pro podporu automatického škálování rychlejší a spolehlivější. Odkaz na tom, jak pomocí technologie starší je obsažena v tomto článku.  
+> Azure nabízí dvě metody automatického škálování. Starší verzi automatického škálování se vztahuje na virtuální počítače (skupiny dostupnosti). Tato funkce má omezenou podporu a doporučujeme migrovat na škálovací sady virtuálních počítačů pro podporu automatického škálování rychlejší a spolehlivější. Odkaz na tom, jak používat starší technologie je zahrnuta v tomto článku.  
 >
 >
 
 ## <a name="what-is-autoscale"></a>Co je automatické škálování?
-Škálování umožňuje mít správného množství prostředků, které jsou spuštěné zvládání zatížení ve vaší aplikaci. Umožňuje přidat prostředky pro zpracování nárůst zatížení a také ušetřit peníze odebráním prostředky, které jsou uložený nečinnosti. Můžete zadat minimální a maximální počet instancí spustit a přidat nebo odebrat virtuální počítače automaticky na základě sady pravidel. S minimální díky, že aplikace je vždy spuštěna ani v žádné zatížení. S maximální omezuje vaše náklady možné každou hodinu. Automatické škálování mezi těmito dvěma hranicemi pomocí pravidel, které vytvoříte.
+Automatické škálování umožňuje mít správného množství prostředků systémem pro zpracování zátěže ve své aplikaci. Umožňuje přidat prostředky do zpracovat nárůst zatížení a také prostředky, které jsou sedí ušetříte peníze nečinnosti. Můžete zadat minimální a maximální počet instancí ke spuštění a přidat nebo odebrat virtuální počítače automaticky na základě sady pravidel. S minimální díky že vaše aplikace vždycky běží i bez zatížení. S maximální omezuje vaše možné celkové hodinové náklady. Automatické škálování mezi těmito dvěma extrémy pomocí pravidel, které vytvoříte.
 
- ![Škálování vysvětlené. Přidání a odebrání virtuálních počítačů](./media/monitoring-overview-autoscale/AutoscaleConcept.png)
+ ![Vysvětlení automatického škálování. Přidání a odebrání virtuálních počítačů](./media/monitoring-overview-autoscale/AutoscaleConcept.png)
 
-Pokud jsou splněny podmínky pravidla, vyvolají se jeden nebo víc akcí škálování. Můžete přidat a odebrat virtuální počítače nebo provádět další akce. Následující koncepční diagram znázorňuje tento proces.  
+Pokud se splní podmínky pravidel, se aktivují jednu nebo více akcí automatického škálování. Můžete přidat a odebrat virtuální počítače nebo provádět jiné akce. Následující koncepční diagram znázorňuje tento proces.  
 
- ![Vývojový Diagram škálování](./media/monitoring-overview-autoscale/Autoscale_Overview_v4.png)
+ ![Vývojový Diagram automatického škálování](./media/monitoring-overview-autoscale/Autoscale_Overview_v4.png)
 
-Vysvětlení níže se vztahuje na údaje předchozímu diagramu.   
+Vysvětlení níže se vztahuje na, které byly na předchozím obrázku.   
 
-## <a name="resource-metrics"></a>Metrika prostředků
-Emitování metriky prostředky, tyto metriky později zpracovává pravidla. Metriky pocházet pomocí různých metod.
-Sady škálování virtuálního počítače pomocí telemetrická data z Azure diagnostics agentů, zatímco telemetrie pro webové aplikace a cloudové služby pochází přímo z infrastruktury Azure. Běžně používané statistikami zahrnují využití procesoru, využití paměti, počet vláken, délka fronty a využití disku. Seznam co telemetrická data, můžete použít, naleznete v části [běžné metriky automatického škálování](insights-autoscale-common-metrics.md).
+## <a name="resource-metrics"></a>Metriky prostředků
+Prostředky generovat metriky, tyto metriky jsou zpracovány později pravidla. Metriky jsou prostřednictvím různých metod.
+Škálovací sady virtuálních počítačů použít telemetrická data diagnostiky Azure agenty, zatímco telemetrie pro webové aplikace a cloudové služby pochází přímo z infrastruktury Azure. Některé běžně používané statistiky zahrnovat využití CPU, využití paměti, počtu vláken, délka fronty a využití disku. Seznam jaké telemetrická data, můžete použít, najdete v části [běžné metriky automatického škálování](insights-autoscale-common-metrics.md).
 
 ## <a name="custom-metrics"></a>Vlastní metriky
-Můžete využít i vlastní vlastní metriky, které vaše aplikace může být generování. Pokud jste nakonfigurovali vaše aplikace k odeslání metriky do Application Insights můžete využít tyto metriky při rozhodování na tom, zda škálování nebo ne. 
+Můžete taky využít vlastní vlastní metriky, které vaše aplikace může výstupu. Pokud jste nakonfigurovali vaší aplikace k odeslání metrik do Application Insights můžete využít tyto metriky pro rozhodování na, jestli se má změnit velikost nebo ne.
 
 ## <a name="time"></a>Čas
-Pravidla na základě plánu jsou založené na UTC. Časové pásmo je nutné nastavit správně při nastavování pravidel.  
+Pravidla podle plánu jsou založeny na standardu UTC. Při nastavování pravidel musí správně nastavené časové pásmo.  
 
 ## <a name="rules"></a>Pravidla
-Diagram zobrazuje pouze jedno pravidlo automatického škálování, ale může mít mnoho z nich. Můžete vytvořit komplexní překrývající se pravidla, podle potřeby pro vaši situaci.  Zahrnout typy pravidel  
+Diagram znázorňuje pouze jedno pravidlo automatického škálování, ale může mít mnoho z nich. Můžete vytvořit komplexní překrývající se pravidla, podle potřeby pro konkrétní situaci.  Zahrnují typy pravidel  
 
-* **Na základě metrika** – například tuto akci proveďte, pokud využití CPU je vyšší než 50 %.
-* **Založené na čase** – například aktivační události webhooku každých 8: 00 na sobotu v daném časovém pásmu.
+* **Na základě metrik** – například tuto akci proveďte, pokud využití CPU je vyšší než 50 %.
+* **Podle času** – například aktivační událost webhooku každých 8: 00 v sobotu v daném časovém pásmu.
 
-Na základě metrika pravidla měření zatížení aplikace a přidat nebo odebrat podle tohoto zatížení virtuálních počítačů. Na základě plánu pravidla umožňují škálování při najdete v části vzory čas v zatížení a chcete škálovat před možné zatížení zvýšení nebo snížení.  
+Pravidla podle metriky měření zatížení aplikace a přidat nebo odebrat virtuálních počítačů založených na zátěž. Pravidla podle plánu bylo možné vertikálně až vidět času zatížení a chcete vertikálně navýšit před možné zatížení zvýšení nebo snížení dojde.  
 
 ## <a name="actions-and-automation"></a>Akce a automatizace
-Pravidla můžete aktivovat jeden nebo více typů akcí.
+Pravidla může aktivovat jeden nebo více typů akcí.
 
-* **Škálování** -škálování virtuálních počítačů příchozí nebo odchozí
-* **E-mailu** – poslat správci předplatného, spolusprávci nebo další e-mailovou adresu, zadáte e-mailu
-* **Automatizovat pomocí webhooků** -volání webhooků, které můžete aktivovat více komplexní akcí uvnitř nebo mimo Azure. Uvnitř Azure můžete spustit runbook automatizace Azure, funkce Azure nebo Azure Logic Apps. Příklad adresy URL třetích stran mimo Azure zahrnují služby, jako je Slacku a Twilio.
+* **Škálování** – škálování virtuálních počítačů, snížení nebo navýšení kapacity
+* **E-mailu** – poslat e-mail správci předplatného, spolusprávci a/nebo další e-mailovou adresu
+* **Automatizace prostřednictvím webhooků** -volání webhooků, které může aktivovat více akcí komplexní uvnitř nebo mimo Azure. V Azure můžete spustit runbook Azure Automation, funkce Azure Functions nebo aplikace logiky Azure. Příklad adresy URL třetích stran mimo Azure zahrnují služby, jako je Slack a Twilio.
 
 ## <a name="autoscale-settings"></a>Nastavení automatického škálování
-Škálování použijte následující terminologie a struktura.
+Automatické škálování použít následující terminologie a struktura.
 
-- **Nastavení automatického škálování** je pro čtení pomocí modulu škálování a určí, jestli se škálovat nahoru nebo dolů. Obsahuje jeden nebo více profilů, informace o cílový prostředek a nastavení oznámení.
+- **Nastavení automatického škálování** přečte modul automatického škálování k určení, jestli chcete vertikálně navýšit nebo snížit kapacitu. Obsahuje jeden nebo více profilů, informace o cílový prostředek a nastavení oznámení.
 
-    - **Škálování profil** je kombinací a:
+    - **Profil automatického škálování** je kombinací a:
 
         - **Nastavení kapacity**, která určuje minimální, maximální a výchozí hodnoty pro počet instancí.
-        - **Sada pravidel**, z nichž každý obsahuje aktivační událost (čas nebo metrika) a akce škálování (nahoru nebo dolů).
-        - **opakování**, což naznačuje, když put tento profil platit škálování.
+        - **Sada pravidel**, z nichž každý obsahuje aktivační událost (čas nebo metriky) a akce škálování (nahoru nebo dolů).
+        - **opakování**, což znamená, že při vložení tohoto profilu platit automatického škálování.
 
-        Může mít několik profilů, které umožňují postará o různé překrývající se požadavky. Různé škálování profilů pro různé časy den nebo dny v týdnu, může mít například.
+        Můžete mít více profilů, které umožňují postará o jinou překrývající se požadavky. Profily automatického škálování různých pro různou den nebo dny v týdnu, můžete mít třeba.
 
-    - A **nastavení oznámení** definuje, k jaké oznámení by mělo dojít, když dojde k události škálování podle které splňují kritéria jeden z profilů nastavení automatického škálování. Škálování můžete oznámit jeden nebo více e-mailové adresy nebo volat minimálně jeden webhook.
+    - A **nastavení oznámení** definuje, jaká oznámení se budou objevovat při výskytu události automatického škálování podle toho, které splňují kritéria jeden z profilů nastavení automatického škálování. Automatické škálování může upozornit jeden nebo více e-mailové adresy nebo volat minimálně jeden webhook.
 
 
-![Nastavení automatického škálování Azure, profil a strukturu pravidla](./media/monitoring-overview-autoscale/AzureResourceManagerRuleStructure3.png)
+![Zadané nastavení automatického škálování Azure, profil a pravidla struktury](./media/monitoring-overview-autoscale/AzureResourceManagerRuleStructure3.png)
 
-Úplný seznam konfigurovat polí a popisy je k dispozici v [škálování REST API](https://msdn.microsoft.com/library/dn931928.aspx).
+Úplný seznam konfigurovatelných pole a popisy je k dispozici v [rozhraní REST API pro automatické škálování](https://msdn.microsoft.com/library/dn931928.aspx).
 
-Příklady kódu najdete v tématu
+Příklady kódu naleznete v tématu
 
-* [Upřesňující konfigurace automatického škálování pro škálovatelné sady virtuálních počítačů pomocí šablony Resource Manageru](insights-advanced-autoscale-virtual-machine-scale-sets.md)  
-* [Škálování REST API](https://msdn.microsoft.com/library/dn931953.aspx)
+* [Pokročilá konfigurace automatického škálování pro Škálovací sady virtuálních počítačů pomocí šablon Resource Manageru](insights-advanced-autoscale-virtual-machine-scale-sets.md)  
+* [Rozhraní REST API pro automatické škálování](https://msdn.microsoft.com/library/dn931953.aspx)
 
-## <a name="horizontal-vs-vertical-scaling"></a>Svislé škálování vodorovné vs
-Škálování pouze škáluje vodorovně, což je zvýšení ("na") nebo zmenšit ("v") v počtu instancí virtuálních počítačů.  Vodorovný je flexibilnější v situaci, cloud jako umožňuje spustit potenciálně tisíce virtuálních počítačů pro zpracování zátěže.
+## <a name="horizontal-vs-vertical-scaling"></a>Vertikální škálování vodorovné vs
+Automatické škálování pouze škáluje vodorovně, což je zvýšení ("out") nebo snížení ("") v počtu instancí virtuálních počítačů.  Vodorovné je flexibilnější v situaci, cloud jako umožňuje potenciálně spouštíme tisíce virtuálních počítačů pro zpracování zátěže.
 
-Naproti tomu svislé škálování se liší. Zachová stejný počet virtuálních počítačů, ale další ("nahoru") nebo méně ("dolů") výkonné díky virtuálních počítačů. Výkon se měří v paměť, rychlost procesoru, místo na disku atd.  Svislé škálování má další omezení. Je závislá na dostupnosti větší hardware, který rychle dotkne horní limit a můžete se liší podle oblasti. Svislé škálování také obvykle vyžaduje virtuální počítač zastavit a restartovat.
+Naproti tomu vertikální škálování se liší. Udržuje stejný počet virtuálních počítačů, ale budou virtuální počítače ("nahoru") méně nebo více ("výpadek") výkonné. Měřený v paměti, rychlost procesoru, místo na disku atd.  Vertikální škálování má další omezení. Záleží na dostupnosti větší hardwaru, která rychle narazí na horní mez a jednotlivých oblastech můžou lišit. Vertikální škálování obvykle vyžaduje virtuální počítač zastavit a restartovat.
 
-Další informace najdete v tématu [svisle škálování virtuální počítač Azure s Azure Automation](../virtual-machines/linux/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Další informace najdete v tématu [vertikální škálování virtuálních počítačů Azure s využitím Azure Automation](../virtual-machines/linux/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="methods-of-access"></a>Metody přístupu
 Můžete nastavit automatické škálování prostřednictvím
 
 * [Azure Portal](insights-how-to-scale.md)
 * [PowerShell](insights-powershell-samples.md#create-and-manage-autoscale-settings)
-* [Napříč platformami rozhraní příkazového řádku (CLI)](insights-cli-samples.md#autoscale)
-* [Rozhraní API REST Azure monitorování](https://msdn.microsoft.com/library/azure/dn931953.aspx)
+* [Rozhraní příkazového řádku (CLI) pro různé platformy](insights-cli-samples.md#autoscale)
+* [Rozhraní REST API služby Azure Monitor](https://msdn.microsoft.com/library/azure/dn931953.aspx)
 
-## <a name="supported-services-for-autoscale"></a>Podporované služby pro škálování
-| Služba | Schéma & dokumentace |
+## <a name="supported-services-for-autoscale"></a>Podporované služby pro automatické škálování
+| Služba | Schéma a dokumentace |
 | --- | --- |
 | Web Apps |[Škálování webové aplikace](insights-how-to-scale.md) |
-| Cloud Services |[Škálování cloudové služby](../cloud-services/cloud-services-how-to-scale-portal.md) |
-| Virtuální počítače: Classic |[Škálování sady dostupnosti Classic virtuálního počítače](https://blogs.msdn.microsoft.com/kaevans/2015/02/20/autoscaling-azurevirtual-machines/) |
-| Virtuálních počítačů: Sady škálování Windows |[Škálování virtuálního počítače nastaví v systému Windows](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md) |
-| Virtuálních počítačů: Nastaví Linux škálování |[Škálování virtuálního počítače nastaví v systému Linux](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) |
-| Virtuálních počítačů: Příklad Windows |[Upřesňující konfigurace automatického škálování pro škálovatelné sady virtuálních počítačů pomocí šablony Resource Manageru](insights-advanced-autoscale-virtual-machine-scale-sets.md) |
+| Cloud Services |[Automatické škálování cloudové služby](../cloud-services/cloud-services-how-to-scale-portal.md) |
+| Virtual Machines: Classic |[Škálovací sady dostupnosti klasický virtuální počítač](https://blogs.msdn.microsoft.com/kaevans/2015/02/20/autoscaling-azurevirtual-machines/) |
+| Virtuálních počítačů: Škálovací sady Windows |[Škálování virtuálního počítače škálovací sady v Windows](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md) |
+| Virtuálních počítačů: Linux škálovacích sad |[Škálování virtuálního počítače škálovací sady v Linuxu](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) |
+| Virtual Machines: Příklad Windows |[Pokročilá konfigurace automatického škálování pro Škálovací sady virtuálních počítačů pomocí šablon Resource Manageru](insights-advanced-autoscale-virtual-machine-scale-sets.md) |
+| Služba API Management|[Automatické škálování instance služby Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-autoscale)
 
 ## <a name="next-steps"></a>Další postup
-Další informace o škálování, použijte postupy škálování uvedených výše nebo naleznete v následujících materiálech:
+Další informace o automatické škálování, použití automatického škálování návody výše uvedenými nebo odkazovat na následujících odkazech:
 
-* [Azure monitorování běžné metriky automatického škálování](insights-autoscale-common-metrics.md)
-* [Osvědčené postupy pro monitorování Azure škálování](insights-autoscale-best-practices.md)
-* [Akce škálování používat k odesílání e-mailu a webhooku oznámení výstrah](insights-autoscale-to-webhook-email.md)
-* [Škálování REST API](https://msdn.microsoft.com/library/dn931953.aspx)
-* [Řešení potíží škálování sady škálování virtuálního počítače](../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)
+* [Azure Monitor běžné metriky automatického škálování](insights-autoscale-common-metrics.md)
+* [Osvědčené postupy pro automatické škálování služby Azure Monitor](insights-autoscale-best-practices.md)
+* [Pomocí akcí automatického škálování můžete odeslat emailová a webhooková oznámení výstrah](insights-autoscale-to-webhook-email.md)
+* [Rozhraní REST API pro automatické škálování](https://msdn.microsoft.com/library/dn931953.aspx)
+* [Řešení potíží virtuální počítač automatické škálování Škálovací sady](../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)

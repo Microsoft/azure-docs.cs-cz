@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: marsma
-ms.openlocfilehash: 6ff83885ba80f0399f7b085970b1191e8e4cd999
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 4b29804690b951083810d4f75b68ff23fca44a44
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746504"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039611"
 ---
 # <a name="quickstart-send-container-registry-events-to-event-grid"></a>Rychlý start: Odeslání kontejneru událostí registru do služby Event Grid
 
@@ -141,20 +141,20 @@ Po dokončení předplatné by výstup podobný následujícímu:
 
 ## <a name="trigger-registry-events"></a>Aktivační události registru
 
-Teď, když je ukázková aplikace v provozu a spuštěný a vy jste odběru do vašeho registru pomocí služby Event Grid, jste připraveni vygenerovat některé události. V této části použijete k vytvoření a nahrání image kontejneru do registru ACR buildu. ACR buildu je funkce ve službě Azure Container Registry, která vám umožní vytvářet Image kontejneru v cloudu, bez nutnosti modul Docker v místním počítači byly nainstalovány.
+Teď, když je ukázková aplikace v provozu a spuštěný a vy jste odběru do vašeho registru pomocí služby Event Grid, jste připraveni vygenerovat některé události. V této části použijete sestavíte a odešlete image kontejneru do registru ACR úlohy. Úlohy služby ACR je funkce ve službě Azure Container Registry, která vám umožní vytvářet Image kontejneru v cloudu, bez nutnosti modul Docker v místním počítači byly nainstalovány.
 
 ### <a name="build-and-push-image"></a>Vytvoření a nahrání image
 
-Spusťte následující příkaz rozhraní příkazového řádku Azure k sestavení image kontejneru z obsahu úložiště GitHub. Ve výchozím nastavení, ACR buildu automaticky nasdílí úspěšně sestavenou image do vašeho registru, který generuje `ImagePushed` událostí.
+Spusťte následující příkaz rozhraní příkazového řádku Azure k sestavení image kontejneru z obsahu úložiště GitHub. Ve výchozím nastavení, ACR úlohy automaticky nasdílí úspěšně sestavenou image do vašeho registru, který generuje `ImagePushed` událostí.
 
 ```azurecli-interactive
-az acr build --registry $ACR_NAME --image myimage:v1 https://github.com/Azure-Samples/acr-build-helloworld-node.git
+az acr build --registry $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git
 ```
 
-Zatímco ACR buildu sestavení a předá image byste měli vidět výstup podobný následujícímu. Následující ukázkový výstup byl zkrácen pro zkrácení.
+Zatímco ACR úlohy sestavení a předá image byste měli vidět výstup podobný následujícímu. Následující ukázkový výstup byl zkrácen pro zkrácení.
 
 ```console
-$ az acr build -r $ACR_NAME --image myimage:v1 https://github.com/Azure-Samples/acr-build-helloworld-node.git
+$ az acr build -r $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git
 Sending build context to ACR...
 Queued a build with build ID: aa2
 Waiting for build agent...
@@ -227,10 +227,10 @@ Odkaz na schéma zprávu události Azure Container Registry najdete v dokumentac
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu nasazení registru kontejneru, vytvořená image s využitím ACR buildu, byl odstraněn a spotřebovaly vašeho registru události ze služby Event Grid s ukázkovou aplikací. V dalším kroku podívat na kurz ACR buildu Další informace o vytváření imagí kontejnerů v cloudu, včetně automatizované buildy při aktualizaci základní image:
+V tomto rychlém startu nasazení registru kontejneru, vytvořená image s úlohami služby ACR, byl odstraněn a spotřebovaly vašeho registru události ze služby Event Grid s ukázkovou aplikací. V dalším kroku podívat na kurz služby ACR úlohy Další informace o vytváření imagí kontejnerů v cloudu, včetně automatizované buildy při aktualizaci základní image:
 
 > [!div class="nextstepaction"]
-> [Sestavování imagí kontejneru v cloudu s využitím ACR buildu](container-registry-tutorial-quick-build.md)
+> [Sestavování imagí kontejneru v cloudu s využitím ACR úlohy](container-registry-tutorial-quick-task.md)
 
 <!-- IMAGES -->
 [sample-app-01]: ./media/container-registry-event-grid-quickstart/sample-app-01.png

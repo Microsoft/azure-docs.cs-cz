@@ -1,6 +1,6 @@
 ---
 title: Resetování přístupu k virtuálním počítači Azure s Linuxem | Dokumentace Microsoftu
-description: Jak spravovat administrativní uživatele a resetování přístupu na virtuální počítače s Linuxem pomocí rozšíření VMAccess a rozhraní příkazového řádku Azure CLI 2.0
+description: Jak spravovat administrativní uživatele a resetování přístupu na virtuální počítače s Linuxem pomocí rozšíření VMAccess a rozhraní příkazového řádku Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: zroiy
@@ -15,14 +15,14 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: roiyz
-ms.openlocfilehash: 51c203c746a5256924033ebe48d9ddfdc3823b16
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: e878f5c9f923b55a1eb94cefb1ecf021c81e884e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39415068"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998623"
 ---
-# <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-20"></a>Spravovat administrativní uživatelé, SSH a kontrola nebo opravte disky na virtuální počítače s Linuxem pomocí rozšíření VMAccess pomocí rozhraní příkazového řádku Azure CLI 2.0
+# <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>Spravovat administrativní uživatelé, SSH a kontrola nebo opravte disky na virtuální počítače s Linuxem pomocí rozšíření VMAccess pomocí Azure CLI
 ## <a name="overview"></a>Přehled
 Disk ve virtuálním počítačům s Linuxem se zobrazují se chyby. Nějakým způsobem resetování kořenového hesla pro virtuální počítač s Linuxem nebo odstranění privátního klíče SSH. V takovém případě zpět v dny v datovém centru musíte existuje a pak otevřete KVM získat z konzoly serveru. Rozšíření Azure VMAccess můžete představit jako tohoto KVM přepínače, který umožňuje přístup ke konzole obnovit přístup k Linuxu nebo provést údržbu na úrovni disku.
 
@@ -47,10 +47,10 @@ Rozšíření přístupu virtuálních počítačů můžete spustit proti těmt
 ## <a name="ways-to-use-the-vmaccess-extension"></a>Způsoby, jak použít rozšíření VMAccess
 Existují dva způsoby, můžete použít rozšíření VMAccess na vaše virtuální počítače s Linuxem:
 
-* Pomocí rozhraní příkazového řádku Azure CLI 2.0 a požadované parametry.
+* Pomocí Azure CLI a požadované parametry.
 * [Používat nezpracované soubory JSON, které zpracovávají rozšíření VMAccess](#use-json-files-and-the-vmaccess-extension) a pak na ně.
 
-Následující příklady používají [az vm uživatele](/cli/azure/vm/user) příkazy. Pokud chcete tento postup, musíte na nejnovější verzi [příkazového řádku Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az_login).
+Následující příklady používají [az vm uživatele](/cli/azure/vm/user) příkazy. Pokud chcete tento postup, musíte na nejnovější verzi [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az_login).
 
 ## <a name="update-ssh-key"></a>Aktualizovat klíč SSH
 Následující příklad aktualizuje klíč SSH pro uživatele `azureuser` na virtuálním počítači s názvem `myVM`:

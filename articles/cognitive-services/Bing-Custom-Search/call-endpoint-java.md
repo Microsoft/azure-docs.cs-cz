@@ -1,6 +1,6 @@
 ---
-title: Koncový bod volání pomocí Java - Bing vlastní vyhledávání - Microsoft kognitivní služby
-description: Tento rychlý start ukazuje, jak požádat výsledky hledání instance vlastní vyhledávání pomocí Java k vyvolání koncový bod služby Bing vlastní vyhledávání.
+title: Volání koncového bodu s využitím Javy – vlastní vyhledávání Bingu – Microsoft Cognitive Services
+description: Tento rychlý start ukazuje, jak si vyžádat výsledky hledání s použitím jazyka Java k volání koncového bodu pro vlastní vyhledávání Bingu z vaší instance vlastního hledání.
 services: cognitive-services
 author: brapel
 manager: ehansen
@@ -9,34 +9,34 @@ ms.component: bing-custom-search
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 03d622e3c7a3315238f2bceedae529bbe06af299
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7ef4de749d5b9152bbe043a26d3c60fe7f09f869
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35343817"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46951810"
 ---
-# <a name="call-bing-custom-search-endpoint-java"></a>Volání hledání vlastní Bing koncový bod (Java)
+# <a name="call-bing-custom-search-endpoint-java"></a>Volání koncového bodu pro vlastní vyhledávání Bingu (Java)
 
-Tento rychlý start ukazuje, jak požádat výsledky hledání instance vlastní vyhledávání pomocí Java k vyvolání koncový bod služby Bing vlastní vyhledávání. 
+Tento rychlý start ukazuje, jak si vyžádat výsledky hledání z vaší instance vlastního hledání pomocí Javy k volání koncového bodu pro vlastní vyhledávání Bingu. 
 
 ## <a name="prerequisites"></a>Požadavky
+
 K dokončení tohoto rychlého startu je potřeba:
-- Vlastní hledání instance. V tématu [vytvoření vaší první instance Bing vlastní vyhledávání](quick-start.md).
 
-- [Java](https://www.java.com) nainstalována.
-
-- A [kognitivní rozhraní API služby účet](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraní API pro Bing vyhledávání**. [Bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) stačí pro tento rychlý start. Je nutné přístupový klíč zadaný při aktivaci bezplatné zkušební verze, nebo může použít klíč placené předplatné z řídicího panelu Azure.
+- Instanci vlastního vyhledávání připravené k použití. Zobrazit [vytvořit první instanci vlastního vyhledávání Bingu](quick-start.md).
+- [Java](https://www.java.com) nainstalované.
+- Klíč předplatného. Klíč předplatného můžete získat, když aktivujete vaše [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search), nebo můžete použít klíč placené předplatné z řídicího panelu Azure (naleznete v tématu [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).    
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
-Volání hledání vlastní Bing koncový bod, postupujte takto:
+Chcete-li spustit tento příklad, postupujte podle těchto kroků:
 
-1. Pomocí vašeho Java IDE výběru vytvořit balíček.
-2. Vytvoření souboru CustomSrchJava.java a zkopírujte do ní následující kód.
-3. Nahraďte **YOUR-SUBSCRIPTION-KEY** a **YOUR-vlastní-CONFIG-ID** s vaším ID klíče a konfigurace.
-
-    ``` Java
+1. Pomocí své prostředí Java IDE podle výběru vytvořte balíček.  
+  
+2. Vytvořte soubor s názvem CustomSrchJava.java v balíčku a zkopírujte do něj následující kód. Nahraďte **YOUR-SUBSCRIPTION-KEY** a **YOUR-vlastní-CONFIG-ID** s klíč předplatného a konfigurací ID.  
+  
+    ```java
     import java.io.InputStream;
     import java.net.URL;
     import java.net.URLEncoder;
@@ -58,9 +58,9 @@ Volání hledání vlastní Bing koncový bod, postupujte takto:
         static String subscriptionKey = "YOUR-SUBSCRIPTION-KEY"; 
         static String customConfigId = "YOUR-CUSTOM-CONFIG-ID";  
     
-        static String searchTerm = "Microsoft";  // Replace with search term specific to your defined sources.
+        static String searchTerm = "Microsoft";  // Replace with search term specific to your search scenario.
     
-        public static SearchResults SearchImages (String searchQuery) throws Exception {
+        public static SearchResults SearchWeb (String searchQuery) throws Exception {
             // construct URL of search request (endpoint + query string)
             URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchTerm, "UTF-8") + "&CustomConfig=" + customConfigId);
             HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
@@ -96,15 +96,15 @@ Volání hledání vlastní Bing koncový bod, postupujte takto:
     
         public static void main (String[] args) {
             if (subscriptionKey.length() != 32) {
-                System.out.println("Invalid Bing Search API subscription key!");
+                System.out.println("Invalid Custom Search subscription key!");
                 System.out.println("Please paste yours into the source code.");
                 System.exit(1);
             }
     
             try {
-                System.out.println("Searching the Web for: " + searchTerm);
+                System.out.println("Searching your slice of the Web for: " + searchTerm);
     
-                SearchResults result = SearchImages(searchTerm);
+                SearchResults result = SearchWeb(searchTerm);
     
                 System.out.println("\nRelevant HTTP Headers:\n");
                 for (String header : result.relevantHeaders.keySet())
@@ -130,11 +130,11 @@ Volání hledání vlastní Bing koncový bod, postupujte takto:
         }
     
     }
-    
-    ```
+    ```  
+  
 4. Spusťte program.
     
 ## <a name="next-steps"></a>Další postup
-- [Konfigurace prostředí hostované uživatelského rozhraní](./hosted-ui.md)
-- [Použití decoration značky zvýraznění textu](./hit-highlighting.md)
+- [Konfigurace prostředí uživatelského rozhraní](./hosted-ui.md)
+- [Použití dekorace značek zvýraznění textu](./hit-highlighting.md)
 - [Stránka webové stránky](./page-webpages.md)

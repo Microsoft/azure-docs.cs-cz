@@ -16,14 +16,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: anta
-ms.openlocfilehash: 3f32c9048c4b2002e7672b46a4f39e86ffa7b98e
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 934d37783165c2e57dcabd0ff764747e1ab4b65e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35642899"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946851"
 ---
 # <a name="energy-demand-time-series-forecasting"></a>Prognózování energie vyžádání časové řady
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 
 Prognózy časových řad je úkol předpovídat budoucí hodnoty v časově řazenou posloupnost pozorování. Problém je běžný a má aplikace, které v řadě odvětví. Například maloobchodního prodeje společnosti potřebují o prognózu prodeje budoucích produktů, abyste mohli efektivně uspořádat jejich dodavatelské podle potřeby. Podobně společnosti doručování balíčků musí odhadnout požadavky na svých služeb můžete plánovat požadavky pracovní síly a doručovací trasy předem. V mnoha případech můžou být významné finančních rizik nepřesné předpovědí. Prognózování je proto často důležitých obchodních aktivit.
@@ -57,7 +62,7 @@ Tento scénář obsahuje podrobnosti o konstrukce strojového učení řešení 
 ## <a name="prerequisites"></a>Požadavky
 
 - [Účtu Azure](https://azure.microsoft.com/free/) (bezplatné zkušební verze jsou k dispozici).
-- Nainstalovaná kopie produktu [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) následující [Stručná Instalační příručka](../service/quickstart-installation.md) k instalaci a vytvoření pracovního prostoru.
+- Nainstalovaná kopie produktu [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) následující [Stručná Instalační příručka](quickstart-installation.md) k instalaci a vytvoření pracovního prostoru.
 - Tento příklad předpokládá, že používáte Azure ML Workbench ve Windows 10 s [modul Docker](https://www.docker.com/) místně nainstalovaný. Pokud používáte macOS, pokyny se z velké části stejný.
 - Azure Machine Learning Operacionalizace nainstalovaný v nastavení prostředí pro místní nasazení a účet správy modelů vytvořili, jak je popsáno v tomto [průvodce](./model-management-configuration.md).
 - Tato ukázka vyžaduje aktualizaci instalace Pandas verzi 0.20.3 nebo vyšší a nainstalujte balíček matplotlib. Klikněte na tlačítko *otevřít příkazový řádek* z *souboru* nabídky v aplikaci Workbench a spusťte následující příkazy pro instalaci těchto závislostí:

@@ -5,15 +5,15 @@ services: virtual-machines-linux
 author: dlepow
 ms.service: virtual-machines-linux
 ms.topic: include
-ms.date: 05/29/2018
+ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 1813367a2d143f75fb51a3160dd00219c709c57b
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: dc03f49a684bfeb43ffd8bac9f551a67f034a04f
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37935791"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042873"
 ---
 ## <a name="supported-distributions-and-drivers"></a>Podporované distribuce a ovladače
 
@@ -26,11 +26,11 @@ NVIDIA CUDA ovladače síťového adaptéru, NCv2, NCv3 a virtuální počítač
 
 | Distribuce | Ovladač |
 | --- | -- | 
-| Ubuntu 16.04 LTS<br/><br/> Red Hat Enterprise Linux 7.3 nebo 7.4<br/><br/> Založené na centOS 7.3 nebo 7.4, založené na CentOS 7.4 HPC | NVIDIA CUDA 9.1, větev ovladačů R390 |
+| Ubuntu 16.04 LTS<br/><br/> Red Hat Enterprise Linux 7.3 nebo 7.4<br/><br/> Založené na centOS 7.3 nebo 7.4, založené na CentOS 7.4 HPC | NVIDIA CUDA 10.0, větev ovladačů R410 |
 
 ### <a name="nvidia-grid-drivers"></a>Ovladače NVIDIA GRID
 
-Microsoft přerozděluje instalace ovladačů NVIDIA GRID pro virtuální počítače NV-series používá jako virtuálních pracovních stanic nebo pro virtuální aplikace. Instalovat jenom tyto ovladače mřížky na virtuálních počítačích Azure NV, pouze v distribucích uvedené v následující tabulce. Tyto ovladače obsahují licenci pro Software mřížky virtuální GPU v Azure.
+Microsoft přerozděluje instalace ovladačů NVIDIA GRID pro NV a virtuální počítače řady NVv2 použít jako virtuálních pracovních stanic nebo pro virtuální aplikace. Instalovat jenom tyto ovladače mřížky na virtuálních počítačích Azure NV, pouze v distribucích uvedené v následující tabulce. Tyto ovladače obsahují licenci pro Software mřížky virtuální GPU v Azure.
 
 | Distribuce | Ovladač |
 | --- | -- |

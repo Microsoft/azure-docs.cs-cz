@@ -10,12 +10,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: carlrab
-ms.openlocfilehash: 57e83376747b9a3e2d30dec37d4a378a167580e5
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 66ed36ea3d7b38166b9214e36289e32119659856
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733106"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965451"
 ---
 # <a name="choose-a-cloud-sql-server-option-azure-sql-paas-database-or-sql-server-on-azure-vms-iaas"></a>Volba cloudového řešení systému SQL Server: Azure SQL (PaaS) Database nebo SQL Server na virtuálních počítačích Azure (IaaS)
 
@@ -24,17 +24,15 @@ V Azure, můžete mít svoje úlohy systému SQL Server běží v prostředí in
 - [Azure SQL Database](https://azure.microsoft.com/services/sql-database/): databázový stroj A SQL, podle Enterprise edici systému SQL Server, který je optimalizovaný pro vývoj moderních aplikací. Azure SQL Database nabízí několik možností nasazení:
   - Můžete nasadit pro izolované databáze [logický server](sql-database-logical-servers.md).
   - Můžete nasadit do [elastického fondu](sql-database-elastic-pool.md) na [logický server](sql-database-logical-servers.md) ke sdílení prostředků a snížení nákladů. 
+  - Můžete nasadit [Azure SQL Database Managed instance](sql-database-managed-instance.md). 
+      
+   Následující obrázek ukazuje tyto možnosti nasazení:
 
-      > [!NOTE]
-      > Obsahující jednoho a ve fondu databází Azure SQL Database nabízí většinu funkcí s rozsahem databáze systému SQL Server.
+     ![možnosti nasazení](./media/sql-database-technical-overview/deployment-options.png) 
 
-      Následující obrázek ukazuje tyto možnosti nasazení:
+     > [!NOTE]
+     > Azure SQL Database pomocí všech třech verzích, přidá další funkce, které nejsou k dispozici v systému SQL Server, jako jsou integrované inteligentní funkce a správa. Logický server obsahující databáze ve fondu a jeden nabízí většinu funkcí s rozsahem databáze systému SQL Server. S Azure SQL Database Managed Instance Azure SQL Database nabízí sdílené prostředky pro databáze a další funkce s oborem instance. Azure SQL Database Managed Instance podporuje migraci databáze s minimálními změn databáze. 
 
-      ![možnosti nasazení](./media/sql-database-technical-overview/deployment-options.png) 
-  - Můžete nasadit [Azure SQL Database Managed instance (preview)](sql-database-managed-instance.md). 
-
-      > [!NOTE]
-      > Azure SQL Database se obě verze přidává další funkce, které nejsou k dispozici v systému SQL Server, jako jsou integrované inteligentní funkce a správa. První verze, s Azure SQL Database Managed Instance, Azure SQL Database nabízí sdílené prostředky pro databáze a další funkce s oborem instance. Azure SQL Database Managed Instance podporuje migraci databáze s minimálními změn databáze.
 - [SQL Server na virtuálních počítačích Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/): SQL Server nainstalovaný a hostovaný v cloudu systému Windows Server nebo Linux na virtuálních počítačích (VM) běžících v Azure, označované také jako infrastruktura jako služba (IaaS). SQL Server na virtuálních počítačích Azure je vhodný pro migraci místních databází SQL serveru a aplikace bez jakékoli změny databáze. Všechny nejnovější verze a edice systému SQL Server jsou dostupná k instalaci na virtuálním počítači IaaS. Nejdůležitější rozdíl mezi SQL Database je, že virtuální počítače SQL serveru umožňují plnou kontrolu nad databázovým strojem. Můžete zvolit při údržby nebo oprav se spustí, chcete-li změnit model obnovení simple nebo hromadně protokolované povolit rychlejší načítání méně protokolu, pozastavit nebo spustit modul, pokud je nepotřebujete, a můžete plně přizpůsobit databázovém stroji SQL serveru. Pro tento další ovládací prvek obsahuje přidané odpovědnost ke správě virtuálních počítačů.
 
 Zjistěte, jak jednotlivé možnosti nasazení zapadají do datové platformy Microsoftu a získejte pomoc se spárováním té správné volby s požadavky vaší společnosti. Ať už je pro vás určující úspora nákladů nebo minimální režie z hlediska správy (které pro vás mají vyšší prioritu než cokoli jiného), tento článek vám může pomoci rozhodnout, jaký přístup přinese vaší firmě nejlepší výsledky z hlediska požadavků, na jejichž splnění vám nejvíc záleží.
@@ -74,7 +72,7 @@ Následující tabulka shrnuje hlavní vlastnosti SQL Database a SQL Serveru na 
 | **Nejvhodnější pro:** |Nové aplikace navržené pro cloud, které chcete použít nejnovější stabilní systému SQL Server funkce andhave časová omezení z hlediska vývoje a marketingu. | Nové aplikace nebo stávající místní aplikace, které chcete použít nejnovější stabilní funkcí systému SQL Server a že se migrují do cloudu s minimálními změnami.  | Existující aplikace, které vyžadují rychlou migraci do cloudu s minimálními změnami nebo žádné změny. Scénáře rychlého vývoje a testování, když si nechcete koupit hardware pro místní neprodukční SQL Server. |
 |  | Týmy, které potřebují integrovanou vysokou dostupnost, možnost zotavení po havárii a možnost upgradu databáze. | Stejné jako databáze SQL. | Týmy, které můžete nakonfigurovat, správně vyladit, přizpůsobení a správa vysoké dostupnosti, zotavení po havárii a opravy pro SQL Server. Některé poskytované automatizované funkce to značně zjednodušují. | |
 |  | Týmy, které nechtějí spravovat příslušný operační systém a nastavení konfigurace. | Stejné jako databáze SQL. | Budete potřebovat přizpůsobené prostředí s úplnými právy. | |
-|  | Databáze velikosti až 4 TB nebo větší databází, které mohou být [horizontálně nebo vertikálně dělit](sql-database-elastic-scale-introduction.md#horizontal-and-vertical-scaling) pomocí vzoru pro horizontální navýšení kapacity. | Stejné jako databáze SQL. | Instance systému SQL Server s úložištěm o velikosti až 64 TB. Instance může podporovat tolik databází, kolik je potřeba. |
+|  | Databáze o velikosti až 100 TB. | Stejné jako databáze SQL. | Instance systému SQL Server s úložištěm o velikosti až 64 TB. Instance může podporovat tolik databází, kolik je potřeba. |
 | **Kompatibilita** | Podporuje většinu místních funkcí úrovni databáze. | Podporuje téměř všechny místní funkce na úrovni instance a databáze. | Podporuje všechny místních funkcí. |
 | **Zdroje a prostředky:** | Nechcete využívat prostředky IT ke konfiguraci a správě základní infrastruktury, ale chcete se soustředit na aplikační vrstvu. | Stejné jako databáze SQL. | Máte některé prostředky IT ke konfiguraci a správě. Některé poskytované automatizované funkce to značně zjednodušují. |
 | **Celkové náklady na vlastnictví:** | Eliminuje náklady na hardware a snižuje náklady na správu. | Stejné jako databáze SQL. | Eliminuje náklady na hardware. |
@@ -138,20 +136,6 @@ Pro **SQL Server běžící na virtuálních počítačích Azure** poskytuje Mi
 **SQL Database Managed Instance** výrazně zjednodušuje migraci stávajících aplikací do Azure SQL Database, můžete převést databázi do režimu migrované aplikace rychle uvedla na trh v Azure.
 
 **SQL Server běžící na virtuálních počítačích Azure** je ideálním řešením, pokud vaše existující nebo nové aplikace vyžadují velké databáze nebo přístup ke všem funkcím systému SQL Server nebo Windows/Linux a chcete se vyhnout na čas a náklady na získávání nových v místním hardwaru. Je také vhodné, pokud chcete provést migraci stávajících místních aplikací a databází do Azure jako-je – v případech, kde Azure SQL Database Managed Instance není vhodné. Vzhledem k tomu, že nemusíte měnit prezentační, aplikační ani datové vrstvy, ušetříte čas a finanční prostředky z rozpočtu, které byste jinak museli vynaložit na vytvoření nové architektury existujícího řešení. Místo toho se můžete soustředit na migraci všech svých řešení do Azure a provedení některých optimalizací výkonu, která mohou být platformou Azure vyžadována. Další informace najdete v tématu [Osvědčené postupy z hlediska výkonu pro SQL Server ve službě Azure Virtual Machines](../virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md).
-
-## <a name="summary"></a>Souhrn
-Tento článek se věnoval SQL Database a SQL Serveru na virtuálních počítačích Azure a běžným motivačním faktorům firem, které by mohly mít vliv na vaše rozhodnutí. Následuje souhrn návrhů, které doporučujeme zvážit:
-
-**Databázi SQL Azure** zvolte, pokud:
-
-* Sestavujete nové cloudové aplikace a chcete využít výhod cloudových služeb v podobě úspory nákladů a optimalizace výkonu. Tento přístup přináší výhody v podobě plně spravované cloudové služby, pomáhá zkrátit čas nutný k uvedení produktu na trh a může zajistit dlouhodobou optimalizaci nákladů.
-* Budete chtít, aby Microsoft prováděl běžné operace správy vašich databází a vyžadovat pro databáze smlouvy SLA s vyšší dostupností.
-* Když chcete migrovat existující aplikace jako – je do Azure SQL Database Managed Instance a využít výhod dalších parita s SQL Server a/nebo pokročilým zabezpečením a síťovými službami. Managed Instance je dobrou volbou pro nové i stávající aplikace.
-
-**SQL Server na virtuálních počítačích Azure** zvolte, pokud:
-
-* Máte stávající místní aplikace, které chcete migrovat nebo rozšířit do cloudu, nebo pokud chcete sestavovat podnikové aplikace větší než 4 TB. Tento přístup má výhodu pomocí SQL serveru verzi a edici vašeho výběru, velké kapacity databáze, plnou kontrolu nad SQL Server a Windows/Linux a zabezpečené tunelové propojení s místní. Tento přístup minimalizuje náklady na vývoj a úpravy stávajících aplikací.
-* Máte stávající prostředky IT a zvládnete zajistit použití dílčích oprav, zálohování a vysokou dostupnost databáze. Všimněte si, že některé automatizované funkce tyto operace značně zjednodušují. 
 
 ## <a name="next-steps"></a>Další postup
 

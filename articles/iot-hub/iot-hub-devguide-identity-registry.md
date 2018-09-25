@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: dobett
-ms.openlocfilehash: 78956c8e9d9248708ec326fc07d46f48e51e0f83
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 10c1749a3065d429944def28f912cc2197a294b1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43341256"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978779"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Vysvětlení registru identit ve službě IoT hub
 
@@ -266,7 +266,7 @@ Prozkoumat pomocí IoT Hub Device Provisioning Service umožňuje plně automati
 [lnk-getstarted-tutorial]: quickstart-send-telemetry-dotnet.md
 [lnk-dps]: https://azure.microsoft.com/documentation/services/iot-dps
 
-[lnk-AM]: ../monitoring-and-diagnostics/index.yml
+[lnk-AM]: ../azure-monitor/index.yml
 [lnk-ARH]: ../service-health/resource-health-overview.md
 [lnk-devguide-evgrid-evtype]: iot-hub-event-grid.md#event-types
 [lnk-howto-evgrid-connstate]: iot-hub-how-to-order-connection-state-events.md

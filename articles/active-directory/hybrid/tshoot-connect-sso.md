@@ -9,15 +9,15 @@ ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 09/04/2018
+ms.date: 09/24/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c2b6bd3b04dfbc7446e92dfcb16db64cc3c693c5
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: a020f0f22f16d8aaa959c41a912ca5839be05312
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46315263"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47055896"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Řešení potíží s Azure Active Directory bezproblémové jednotné přihlašování
 
@@ -36,7 +36,7 @@ Tento článek vám pomůže najít řešení potíží s informace o běžných
 - Pokud je uživatel součástí příliš mnoho skupin ve službě Active Directory, lístku Kerberos uživatele budou pravděpodobně příliš velký pro zpracování, a to způsobí, že bezproblémového jednotného přihlašování k selhání. Požadavky služby Azure AD HTTPS může obsahovat záhlaví a maximální velikost 50 KB; Lístky protokolu Kerberos musí být menší než toto omezení tak, aby vyhovovaly jiné artefakty Azure AD (obvykle 2 – 5 KB) jako jsou soubory cookie. Naše doporučení je omezit uživatele členství ve skupinách a zkuste to znovu.
 - Pokud se synchronizace 30 nebo více doménovými strukturami Active Directory, nelze povolit bezproblémového jednotného přihlašování pomocí služby Azure AD Connect. Jako alternativní řešení můžete [ručně povolit](#manual-reset-of-the-feature) funkci ve vašem tenantovi.
 - Přidat adresu URL služby Azure AD (https://autologon.microsoftazuread-sso.com) do zóny důvěryhodných serverů místo zóny místního intranetu *blokuje uživatele z přihlášení*.
-- Zákaz použití **RC4_HMAC_MD5** typ šifrování pro protokol Kerberos v nastavení služby Active Directory přeruší bezproblémového jednotného přihlašování. V nástroji Editor správy zásad skupiny Ujistěte se, že hodnota zásad pro **RC4_HMAC_MD5** pod **konfigurace počítače -> Nastavení Windows -> Nastavení zabezpečení -> Místní zásady -> Možnosti zabezpečení – > "Zabezpečení sítě: konfigurovat typy šifrování povolené pro protokol Kerberos"** je "povoleno".
+- Pomocí bezproblémového jednotného přihlašování **RC4_HMAC_MD5** typ šifrování pro protokol Kerberos. Zákaz použití **RC4_HMAC_MD5** typ šifrování v nastavení služby Active Directory přeruší bezproblémového jednotného přihlašování. V nástroji Editor správy zásad skupiny Ujistěte se, že hodnota zásad pro **RC4_HMAC_MD5** pod **konfigurace počítače -> Nastavení Windows -> Nastavení zabezpečení -> Místní zásady -> Možnosti zabezpečení – > "Zabezpečení sítě: konfigurovat typy šifrování povolené pro protokol Kerberos"** je **povolené**. Kromě toho nelze bezproblémového jednotného přihlašování používat jiné typy šifrování, zajistěte proto, že jsou **zakázané**.
 
 ## <a name="check-status-of-feature"></a>Zkontrolujte stav funkce
 

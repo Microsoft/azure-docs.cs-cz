@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/02/2018
 ms.author: ashish
-ms.openlocfilehash: d554cdf5e89898874811ea113985fac4b332fac6
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 93eb6fb0da86909dfc880db2a9bb2331abe4418a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109927"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948113"
 ---
 # <a name="scale-hdinsight-clusters"></a>Škálování clusterů HDInsight
 
@@ -28,11 +28,13 @@ Například pokud máte nějaké zpracování služby batch, který se stane jed
     Set-AzureRmHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <NewSize>
     ```
     
-* Škálování clusteru prostřednictvím [rozhraní příkazového řádku Azure](hdinsight-administer-use-command-line.md):
+* Škálování clusteru prostřednictvím [rozhraní příkazového řádku Azure Classic](hdinsight-administer-use-command-line.md):
 
     ```
     azure hdinsight cluster resize [options] <clusterName> <Target Instance Count>
     ```
+
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
     
 * Škálování clusteru prostřednictvím [webu Azure portal](https://portal.azure.com), otevřete podokno váš cluster HDInsight, vyberte **škálování clusteru** v nabídce vlevo a pak v podokně škálování clusteru, zadejte počet pracovních uzlů a Vyberte Uložit.
 

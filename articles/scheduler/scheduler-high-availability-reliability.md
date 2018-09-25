@@ -1,82 +1,78 @@
 ---
-title: Scheduler vysokou dostupnost a spolehlivost
-description: Scheduler vysokou dostupnost a spolehlivost
+title: Vysoká dostupnost a spolehlivost – Azure Scheduleru
+description: Další informace o vysokou dostupnost a spolehlivost ve službě Azure Scheduler
 services: scheduler
-documentationcenter: .NET
-author: derek1ee
-manager: kevinlam1
-editor: ''
-ms.assetid: 5ec78e60-a9b9-405a-91a8-f010f3872d50
 ms.service: scheduler
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
+author: derek1ee
+ms.author: deli
+ms.reviewer: klam
+ms.assetid: 5ec78e60-a9b9-405a-91a8-f010f3872d50
 ms.topic: article
 ms.date: 08/16/2016
-ms.author: deli
-ms.openlocfilehash: 7e7fe49de7814b6058468d630f8638720e5864f3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d647de379972bac317a213e2f8925c0ff8c3372c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23866090"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947920"
 ---
-# <a name="scheduler-high-availability-and-reliability"></a>Scheduler vysokou dostupnost a spolehlivost
-## <a name="azure-scheduler-high-availability"></a>Vysoká dostupnost Azure Scheduler
-Jako základní platformu Azure služby Azure Scheduler je vysoce dostupný a funkce nasazení geograficky redundantní služby a úlohy místní geografické replikace.
+# <a name="high-availability-and-reliability-for-azure-scheduler"></a>Vysoká dostupnost a spolehlivost Azure Scheduleru
+
+> [!IMPORTANT]
+> [Služba Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje Azure Scheduleru, která se vyřazuje. K plánování úloh, [místo toho vyzkoušet Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+
+Azure Scheduler poskytuje [vysoké dostupnosti](https://docs.microsoft.com/azure/architecture/guide/pillars#availability) a spolehlivost vašich úloh. Další informace najdete v tématu [smlouva SLA pro Scheduler](https://azure.microsoft.com/support/legal/sla/scheduler).
+
+## <a name="high-availability"></a>Vysoká dostupnost
+
+Azure Scheduler je [s vysokou dostupností] a používá nasazení služby geograficky redundantní a geograficky místní úlohy replikace.
 
 ### <a name="geo-redundant-service-deployment"></a>Nasazení služby geograficky redundantní
-Azure Scheduler je k dispozici prostřednictvím uživatelského rozhraní v téměř každé geografické oblasti, která je v Azure ještě dnes. Seznam oblastí, které jsou k dispozici ve službě Azure Scheduler je [tady](https://azure.microsoft.com/regions/#services). Pokud datového centra v hostované oblasti vykresleno není k dispozici, jsou možnosti převzetí služeb při selhání Azure Scheduler tak, že služba je k dispozici z jiného datového centra.
 
-### <a name="geo-regional-job-replication"></a>Geograficky místní úlohy replikace
-Ne jenom je Azure Scheduler front-end pro požadavky na správu, ale vlastní úlohu k dispozici je také geograficky replikované. Po výpadku v jedné oblasti Azure Scheduler převezme a zajistí, že se úlohu spustit z jiného datového centra ve spárované zeměpisné oblasti.
+Azure Scheduler je dostupný na webu Azure Portal napříč téměř [každé geografické oblasti nepodporuje v Azure ještě dnes](https://azure.microsoft.com/global-infrastructure/regions/#services). Aby, pokud datového centra Azure v prostředí oblast stane nedostupnou, můžete dál používat Azure Scheduleru, protože schopnosti převzetí služeb při selhání služby zpřístupnit plánovače z jiného datového centra.
 
-Například pokud jste vytvořili úlohu v jihu USA, Azure Scheduler automaticky replikuje této úlohy v Severní jihu USA. Když dojde k selhání v jihu USA, Azure Scheduler zajistí úlohy je z Sever střední USA. 
+### <a name="geo-regional-job-replication"></a>GEO místní úlohy replikace
 
-![][1]
+Vlastní úlohy ve službě Azure Scheduler se replikují napříč oblastmi Azure. Takže pokud jedna oblast má k výpadku, převezme služby při selhání Azure Scheduleru a zajišťuje, že vaši úlohu spouští z jiného datového centra ve spárovaném zeměpisné oblasti.
 
-V důsledku toho Azure Scheduler zajistí, že vaše data zůstává v rámci stejné zeměpisné oblasti širší v případě selhání Azure. V důsledku toho nemusí duplicitní úlohu jenom k přidání vysoká dostupnost – Azure Scheduler automaticky poskytuje vysokou dostupnost funkcí pro úlohy.
+Například pokud vytvoříte úlohu v střed USA – Jih, Azure Scheduleru automaticky replikuje tuto úlohu v střed USA – sever. Pokud dojde k selhání v střed USA – Jih, Azure Scheduleru spustí úlohu v střed USA – sever. 
 
-## <a name="azure-scheduler-reliability"></a>Spolehlivost Azure Scheduler
-Azure Scheduler zaručuje vlastní vysokou dostupnost a přistupují k úlohy vytvořené uživatelem. Například vaší práce může vyvolat koncový bod protokolu HTTP, který je k dispozici. Azure Scheduler přesto pokusí provést úlohu úspěšně, tím, že jste alternativní možnosti, jak nakládat s chybou. Azure Scheduler k tomu dvěma způsoby:
+![GEO místní úlohy replikace](./media/scheduler-high-availability-reliability/scheduler-high-availability-reliability-image1.png)
 
-### <a name="configurable-retry-policy-via-retrypolicy"></a>Konfigurovat zásady opakujte prostřednictvím "retryPolicy"
-Azure Scheduler umožňuje konfigurovat zásady opakování. Ve výchozím nastavení pokud úloha selže, Scheduler pokusí úlohu znovu čtyři vícekrát v intervalech 30 sekund. Můžete znovu nakonfigurovat tyto zásady opakování být agresivnější (například desetkrát, v intervalech 30 sekund) nebo volnější (například dvakrát, v denních intervalech.)
+Azure Scheduler také zajistí, že vaše data zůstanou v rámci stejné, ale nabízí širší geografické oblasti jen pro případ, dojde k selhání v Azure. Nemusíte tedy duplicitní úloh, chcete-li pouze vysokou dostupnost. Azure Scheduler automaticky poskytuje vysokou dostupnost pro vaše úlohy.
 
-Jako příklad když to může pomoct můžete vytvořit úlohu, která spouští jednou za týden a vyvolá koncový bod HTTP. Pokud koncový bod HTTP je vypnutý po několik hodin, když vaše úloha běží, nemusí chcete čekat jeden další týden pro úlohu znovu spustit, protože i výchozí zásady opakovaných pokusů se nezdaří. V takových případech může znovu nakonfigurovat zásady opakování standardní opakovat každé tři hodiny, (například) namísto každých 30 sekund.
+## <a name="reliability"></a>Spolehlivost
 
-Zjistěte, jak nakonfigurovat zásady opakovaných pokusů, najdete v tématu [retryPolicy](scheduler-concepts-terms.md#retrypolicy).
+Azure Scheduler zaručuje vlastní vysokou dostupnost, ale používá jiný přístup pro úlohy vytvořené uživatelem. Předpokládejme například, že vaše úloha vyvolá koncový bod HTTP, který je k dispozici. Azure Scheduler se stále pokusí spustit úlohu úspěšně tím, že alternativní způsoby pro zpracování chyb: 
 
-### <a name="alternate-endpoint-configurability-via-erroraction"></a>Alternativní koncový bod možnosti konfigurace: prostřednictvím "errorAction"
-Pokud cílový koncový bod pro úlohu Azure Scheduler zůstane nedostupný, Azure Scheduler spadne zpět na alternativní koncový bod zpracování chyb po následující jeho zásady opakování. Pokud je nakonfigurovaný koncový bod alternativní zpracování chyb, Azure Scheduler jej spustí. Alternativní koncový bod jsou vysoce dostupné při krátkodobém selhání vlastní úlohy.
+* Nastavte zásady opakování.
+* Nastavte alternativní koncové body.
 
-Jako příklad na obrázku níže Azure Scheduler odpovídá jeho zásady opakovaných pokusů a stiskněte tlačítko New Yorku webové služby. Po opakované pokusy selžou, zkontroluje, jestli je alternativním. Potom přejde dopředu a spustí zasílání požadavků na alternativní s stejné zásady opakování.
+<a name="retry-policies"></a>
 
-![][2]
+### <a name="retry-policies"></a>Zásady opakování
 
-Všimněte si, že platí stejné zásady opakovaných pokusů pro původní akce a akce alternativní chyby. Je také možné, že typ akce akce alternativní chyby se liší od hlavní akce typ akce. Například při hlavní akce může být vyvolání koncový bod protokolu HTTP, Chyba akce místo pravděpodobně fronty úložiště, fronty service bus nebo akce témata sběrnice služby, která provádí protokolování chyb.
+Azure Scheduler vám umožňuje nastavit zásady opakování. Pokud úloha selže, pak ve výchozím nastavení, Plánovač opakování úlohy čtyři víckrát v 30sekundovém intervalech. Můžete provádět takové zásady opakování agresivnější, jako například 10krát v 30sekundovém intervalech nebo méně agresivní, jako například dvakrát na denních intervalech.
 
-Naučte se konfigurovat alternativní koncový bod, najdete v tématu [errorAction](scheduler-concepts-terms.md#action-and-erroraction).
+Předpokládejme například, že vytvořte týdenní úlohu, která volá koncový bod HTTP. Pokud koncový bod HTTP k dispozici několik hodin, kdy se spouští vaše úloha, nebudete chtít čekat ještě jeden týden pro úlohu spustit znovu, který se stane, protože výchozí zásady opakování nebude fungovat v tomto případě. Ano můžete chtít změnit zásady opakovaných pokusů standard tak, aby opakované pokusy dojít například každé tři hodiny, spíše než každých 30 sekund. 
 
-## <a name="see-also"></a>Viz také
- [Co je Scheduler?](scheduler-intro.md)
+Zjistěte, jak nastavit zásady opakování, najdete v článku [retryPolicy](scheduler-concepts-terms.md#retrypolicy).
 
- [Koncepty, terminologie a hierarchie entit Azure Scheduleru](scheduler-concepts-terms.md)
+### <a name="alternate-endpoints"></a>Alternativní koncové body
 
- [Úvod do používání Scheduleru na portálu Azure Portal](scheduler-get-started-portal.md)
+Pokud vaše úloha Azure Scheduleru zavolá koncový bod, který nedostupný, dokonce i po provedení zásady opakování, Plánovač spadne zpět na alternativní koncový bod, který dokáže zpracovat takové chyby. Proto pokud nastavíte tento koncový bod, Plánovač volání tohoto koncového bodu, který provede vlastní úlohy s vysokou dostupností, když dochází k chybám.
 
- [Plány a fakturace v Azure Scheduleru](scheduler-plans-billing.md)
+Například tento diagram znázorňuje, jak Scheduler následuje zásady opakovaných pokusů při volání webové služby v New Yorku. Pokud selžou i opakované pokusy, Plánovač zkontroluje alternativní koncový bod. Pokud koncový bod existuje, Plánovač spustí odesílání požadavků na alternativní koncový bod. Stejné zásady opakování platí pro původní akce a alternativní akci.
 
- [Sestavení komplexních plánů a pokročilé opakování v Azure Scheduleru](scheduler-advanced-complexity.md)
+![Plánovač chování pomocí zásady opakovaných pokusů a alternativní koncový bod](./media/scheduler-high-availability-reliability/scheduler-high-availability-reliability-image2.png)
 
- [REST API Azure Scheduleru – referenční informace](https://msdn.microsoft.com/library/mt629143)
+Typ akce pro alternativní akci se může lišit od původního akce. Protokolujte například, i když původní akce zavolá koncový bod HTTP, alternativní akce může být chyby pomocí fronty úložiště, frontu služby Service Bus nebo akce témata služby Service Bus.
 
- [Rutiny PowerShellu pro Azure Scheduler – referenční informace](scheduler-powershell-reference.md)
+Zjistěte, jak nastavit alternativní koncový bod, najdete v článku [errorAction](scheduler-concepts-terms.md#error-action).
 
- [Omezení, výchozí hodnoty a chybové kódy Azure Scheduleru](scheduler-limits-defaults-errors.md)
+## <a name="see-also"></a>Další informace najdete v tématech
 
- [Odchozí ověření Azure Scheduleru](scheduler-outbound-authentication.md)
-
-[1]: ./media/scheduler-high-availability-reliability/scheduler-high-availability-reliability-image1.png
-
-[2]: ./media/scheduler-high-availability-reliability/scheduler-high-availability-reliability-image2.png
+* [Co je Azure Scheduler?](scheduler-intro.md)
+* [Koncepty, terminologie a hierarchie entit](scheduler-concepts-terms.md)
+* [Sestavení komplexních plánů a pokročilé opakování](scheduler-advanced-complexity.md)
+* [Limity, kvóty, výchozí hodnoty a kódy chyb](scheduler-limits-defaults-errors.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 2201455477af2bd871f8e8e401536d45af4a02f7
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 2ec712dcce1295a91f552176ddcf6572d3f23ecc
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294643"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993557"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlaste se k virtuální počítač s Linuxem v Azure pomocí ověřování Azure Active Directory (Preview)
 
@@ -59,7 +59,7 @@ Následující oblasti Azure jsou aktuálně podporované ve verzi preview tato 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, tento kurz vyžaduje použití Azure CLI verze 2.0.31 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, tento kurz vyžaduje použití Azure CLI verze 2.0.31 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-linux-virtual-machine"></a>Vytvoření virtuálního počítače s Linuxem
 
@@ -117,7 +117,7 @@ az role assignment create \
 > [!NOTE]
 > Pokud doména AAD a přihlašovací uživatelské jméno domény se neshodují, je nutné zadat ID objektu váš uživatelský účet s *– id objektu pověřené osoby*, ne jenom uživatelské jméno pro *– pověřené osoby*. Můžete získat ID objektu pro váš uživatelský účet s [seznamu uživatelů služby ad az](/cli/azure/ad/user#az-ad-user-list).
 
-Další informace o tom, jak používat ke správě přístupu k prostředkům předplatného Azure RBAC najdete v tématu pomocí [příkazového řádku Azure CLI 2.0](../../role-based-access-control/role-assignments-cli.md), [webu Azure portal](../../role-based-access-control/role-assignments-portal.md), nebo [prostředí Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
+Další informace o tom, jak používat ke správě přístupu k prostředkům předplatného Azure RBAC najdete v tématu pomocí [rozhraní příkazového řádku Azure](../../role-based-access-control/role-assignments-cli.md), [webu Azure portal](../../role-based-access-control/role-assignments-portal.md), nebo [prostředí Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
 
 Azure AD tak, aby vyžadovala vícefaktorové ověřování pro konkrétního uživatele pro přihlášení k virtuálním počítači s Linuxem můžete také nakonfigurovat. Další informace najdete v tématu [Začínáme s Azure Multi-Factor Authentication v cloudu](../../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md).
 

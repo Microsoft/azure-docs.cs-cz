@@ -13,14 +13,19 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: 2173ff15906940b8628aba3615f31e3f7137e3e2
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3e827c56caa787ae9fc33119810eea0f268f0120
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216493"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958405"
 ---
 # <a name="sample-of-destination-connections-python"></a>Ukázka připojení cíle (Python) 
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 Předtím, než se pustíte do čtení tohoto dodatku, přečtěte si [přehled rozšíření Python](data-prep-python-extensibility-overview.md).
 
 

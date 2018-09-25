@@ -8,12 +8,12 @@ ms.technology: Speech to Text
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: fcc57ea7729f8a907fd39fe346270cc52c148f07
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 860b58a18fbc14532a8591fc753453d60492d3c0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605574"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981368"
 ---
 # <a name="batch-transcription"></a>Dávkový přepis
 
@@ -100,7 +100,7 @@ Po obdržení tokenu, je nutné zadat identifikátor URI SAS odkazující na zvu
 ```cs
    static async Task TranscribeAsync()
         { 
-            private const string SubscriptionKey = "<your Speech[Preview] subscription key>";
+            private const string SubscriptionKey = "<your Speech subscription key>";
             private const string HostName = "westus.cris.ai";
             private const int Port = 443;
     
@@ -169,7 +169,7 @@ Po obdržení tokenu, je nutné zadat identifikátor URI SAS odkazující na zvu
 ```
 
 > [!NOTE]
-> V předchozím kódu je klíč předplatného z Speech(Preview) prostředku, kterou vytvoříte na webu Azure portal. Klíče získané z prostředku služby Custom Speech Service nefungují.
+> V předchozím kódu klíč předplatného se z prostředku řeči, kterou vytvoříte na webu Azure portal. Klíče získané z prostředku služby Custom Speech Service nefungují.
 
 Všimněte si, že asynchronní instalační program pro zvuk odesílání a příjem určené k transkripci stav. Vytvoření klienta je klienta .NET protokolu Http. Je `PostTranscriptions` metodu pro odesílání podrobnosti zvukový soubor a `GetTranscriptions` metoda na příjem výsledků. `PostTranscriptions` Vrátí popisovač, a `GetTranscriptions` tento popisovač používá k vytvoření popisovače k získání stavu určené k transkripci.
 

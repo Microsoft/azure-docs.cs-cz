@@ -1,10 +1,9 @@
-
 Další informace o discích najdete v tématu věnovaném [diskům a virtuálním pevným diskům pro virtuální počítače](../articles/virtual-machines/linux/about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 <a id="attachempty"></a>
 
 ## <a name="attach-an-empty-disk"></a>Připojení prázdného disku
-1. Otevřete Azure CLI 1.0 a [připojte se k předplatnému Azure](/cli/azure/authenticate-azure-cli). Zkontrolujte, že jste v režimu Azure Service Management (`azure config mode asm`).
+1. Otevření příkazového řádku Azure classic a [připojit ke svému předplatnému Azure](/cli/azure/authenticate-azure-cli). Zkontrolujte, že jste v režimu Azure Service Management (`azure config mode asm`).
 2. Zadáním příkazu `azure vm disk attach-new` vytvořte a připojte nový disk, jak ukazuje následující příklad. Místo *myVM* použijte názve vašeho linuxového virtuálního počítače a zadejte velikost v GB (v tomto příkladu je to *100 GB*):
 
     ```azurecli
@@ -37,7 +36,7 @@ Další informace o discích najdete v tématu věnovaném [diskům a virtuáln�
 ## <a name="attach-an-existing-disk"></a>Připojení stávajícího disku
 Připojení stávajícího disku vyžaduje, aby v účtu úložiště byl dostupný soubor .vhd.
 
-1. Otevřete Azure CLI 1.0 a [připojte se k předplatnému Azure](/cli/azure/authenticate-azure-cli). Zkontrolujte, že jste v režimu Azure Service Management (`azure config mode asm`).
+1. Otevření příkazového řádku Azure classic a [připojit ke svému předplatnému Azure](/cli/azure/authenticate-azure-cli). Zkontrolujte, že jste v režimu Azure Service Management (`azure config mode asm`).
 2. Zkontrolujte, jestli virtuální pevný disk, který chcete připojit, už je nahraný v předplatném Azure:
    
     ```azurecli

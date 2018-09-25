@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: b7e18d943bea179cb6163d7f91a0761311ecf38e
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 15cac40e743f44ea7e0954c94683674ad9372a7a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985239"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46962943"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Podporované metriky ve službě Azure Monitor
 Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, včetně grafů na portálu, přístup přes rozhraní REST API nebo dotazování je pomocí Powershellu nebo rozhraní příkazového řádku. Níže je úplný seznam všech metrik aktuálně k dispozici pro monitorování Azure metriky kanálu. Jiné metriky, může být k dispozici na portálu nebo pomocí starší verze rozhraní API. Tento seznam níže obsahuje pouze metriky, které jsou k dispozici prostřednictvím konsolidované kanálu metrik Azure monitoru. K vyhledání a přístup k těmto metrikám prosím použijte [2018-01-01 verze api-version](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
@@ -520,6 +520,24 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |WriteRequests|Požadavky na zápis|Počet|Celkem|Počet dat požadavky na zápis k účtu.|Žádné dimenze|
 |ReadRequests|Žádosti o čtení|Počet|Celkem|Počet dat, přečtěte si požadavky na účet.|Žádné dimenze|
 
+## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
+
+|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
+|---|---|---|---|---|---|
+|cpu_percent|Procento CPU|Procento|Průměr|Procento CPU|Žádné dimenze|
+|memory_percent|Paměť v procentech|Procento|Průměr|Paměť v procentech|Žádné dimenze|
+|io_consumption_percent|V/v úrovně procent|Procento|Průměr|V/v úrovně procent|Žádné dimenze|
+|storage_percent|Procento úložiště|Procento|Průměr|Procento úložiště|Žádné dimenze|
+|storage_used|Využité úložiště|B|Průměr|Využité úložiště|Žádné dimenze|
+|storage_limit|Limit úložiště.|B|Průměr|Limit úložiště.|Žádné dimenze|
+|serverlog_storage_percent|Procento úložiště protokolů serveru|Procento|Průměr|Procento úložiště protokolů serveru|Žádné dimenze|
+|serverlog_storage_usage|Využité úložiště protokolů serveru|B|Průměr|Využité úložiště protokolů serveru|Žádné dimenze|
+|serverlog_storage_limit|Limit úložiště protokolů serveru|B|Průměr|Limit úložiště protokolů serveru|Žádné dimenze|
+|active_connections|Aktivní připojení|Počet|Průměr|Aktivní připojení|Žádné dimenze|
+|connections_failed|Neúspěšná připojení|Počet|Celkem|Neúspěšná připojení|Žádné dimenze|
+|network_bytes_egress|Síťové výstupy|B|Celkem|Odchozí síťový provoz mezi aktivních připojení|Žádné dimenze|
+|network_bytes_ingress|Síťové vstupy|B|Celkem|Sítě v rámci aktivních připojení|Žádné dimenze|
+
 ## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
@@ -748,6 +766,41 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |ObservedCapacity|Zjištěná kapacita|Počet|Průměr|Kapacita ohlášená automatickému škálování při jeho spuštění|Žádné dimenze|
 |ScaleActionsInitiated|Zahájené akce škálování|Počet|Celkem|Směr operace škálování|ScaleDirection|
 
+## <a name="microsoftinsightscomponents"></a>Microsoft.Insights/Components
+(Public Preview)
+
+|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
+|---|---|---|---|---|---|
+|availabilityResults/doba trvání|Doba trvání testu|Milisekundy|Průměr|Doba trvání testu|availabilityResult/name, availabilityResult nebo umístění, availabilityResult/úspěch|
+|billingMeters/telemetryCount|Počet datových bodů|Počet|Celkem|Počet datových bodů poslaných do tohoto prostředku Application Insights. Tato metrika se zpracuje s latencí až dvou hodin.|fakturace/telemetryItemType, fakturace nebo telemetryItemSource|
+|billingMeters/telemetrySize|Objem datových bodů|B|Celkem|Objem dat odeslaných k tomuto prostředku Application Insights. Tato metrika se zpracuje s latencí až dvou hodin.|fakturace/telemetryItemType, fakturace nebo telemetryItemSource|
+|browserTimings/networkDuration|Čas síťového připojení při stahování stránky|Milisekundy|Průměr|Doba mezi uživatele požadavku a síťové připojení. Zahrnuje DNS vyhledávání a přenosové připojení.|Žádné dimenze|
+|browserTimings/processingDuration|Čas klientského zpracování|Milisekundy|Průměr|Doba mezi přijetím posledního bajtu dokumentu, dokud je načten v modelu DOM. Asynchronní žádosti se možná ještě zpracovávají.|Žádné dimenze|
+|browserTimings/receiveDuration|Čas přijetí odezvy|Milisekundy|Průměr|Doba mezi prvním a posledním bajtem nebo do odpojení|Žádné dimenze|
+|browserTimings/sendDuration|Čas odeslání žádosti|Milisekundy|Průměr|Doba mezi síťovým připojením a přijetím prvního bajtu|Žádné dimenze|
+|browserTimings/totalDuration|Čas načítání stránky prohlížeče|Milisekundy|Průměr|Doba od žádosti uživatele do načtení DOM, šablon stylů, skriptů a obrázků|Žádné dimenze|
+|závislosti nebo count|Volání závislostí|Počet|Počet|Počet volání prováděných aplikací vůči externím prostředkům|/ Typ závislosti, závislost nebo performanceBucket, závislost/úspěch, operace nebo syntetický, cloudu/instance role, cloudu/roleName|
+|závislosti a doba trvání|Doba trvání závislosti|Milisekundy|Průměr|Doba trvání volání prováděných aplikací vůči externím prostředkům|/ Typ závislosti, závislost nebo performanceBucket, závislost/úspěch, operace nebo syntetický, cloudu/instance role, cloudu/roleName|
+|/ Neúspěšné závislosti|Chyby závislostí|Počet|Počet|Počet neúspěšných volání závislostí prováděných aplikací vůči externím prostředkům|/ Typ závislosti, závislost nebo performanceBucket, operace nebo syntetický, cloudu/instance role, cloudu/roleName|
+|zobrazení stránky nebo count|Zobrazení stránek|Počet|Počet|Počet zobrazení stránky|operace/synthetic|
+|zobrazení stránky a doba trvání|Doba načtení zobrazení stránky|Milisekundy|Průměr|Doba načtení zobrazení stránky|operace/synthetic|
+|čítače výkonu nebo requestExecutionTime|Doba provádění požadavku HTTP|Milisekundy|Průměr|Doba provádění nejnovější žádosti|cloud nebo instance role|
+|čítače výkonu nebo requestsInQueue|Požadavky HTTP ve frontě aplikací|Počet|Průměr|Délka fronty žádostí na aplikace|cloud nebo instance role|
+|čítače výkonu nebo requestsPerSecond|Četnost požadavků HTTP|CountPerSecond|Průměr|Počet všech žádostí na aplikaci za sekundu z ASP.NET|cloud nebo instance role|
+|čítače výkonu nebo exceptionsPerSecond|Frekvence výjimek|CountPerSecond|Průměr|Počet zpracovaných a nezpracovaných výjimek hlášených systému Windows, včetně výjimek .NET a nespravovaných výjimek převedených na výjimky .NET|cloud nebo instance role|
+|čítače výkonu nebo processIOBytesPerSecond|Frekvence V/V procesu|BytesPerSecond|Průměr|Celkem bajtů čtených ze souborů, sítě a zařízení nebo do nich zapisovaných za sekundu|cloud nebo instance role|
+|čítače výkonu nebo processCpuPercentage|Proces – procesor|Procento|Průměr|Procento uplynulého času, že všechna vlákna procesu používala procesor pro spouštění instrukcí. To se může lišit od 0 do 100. Tato Metrika vyjadřuje výkon samotného procesu w3wp.|cloud nebo instance role|
+|čítače výkonu nebo processorCpuPercentage|Čas procesoru|Procento|Průměr|Procento času, které procesor stráví na nečinných vláknech|cloud nebo instance role|
+|čítače výkonu nebo memoryAvailableBytes|Dostupná paměť|B|Průměr|Okamžitě dostupná fyzická paměť pro přidělení procesu nebo pro systémové použití|cloud nebo instance role|
+|čítače výkonu nebo processPrivateBytes|Privátní bajty procesu|B|Průměr|Paměť exkluzivně přiřazená k procesům monitorované aplikace|cloud nebo instance role|
+|požadavky a doba trvání|Doba odezvy serveru|Milisekundy|Průměr|Doba mezi přijetím žádosti HTTP a dokončením odesílání odpovědi|žádost/performanceBucket, požadavek/kód výsledku, operace nebo syntetický, cloud nebo instance role, žádost o/úspěch, cloudu/roleName|
+|požadavky nebo count|Žádosti serveru|Počet|Počet|Počet dokončených žádostí HTTP|žádost/performanceBucket, požadavek/kód výsledku, operace nebo syntetický, cloud nebo instance role, žádost o/úspěch, cloudu/roleName|
+|/ Neúspěšné požadavky|Neúspěšné požadavky|Počet|Počet|Požadavky HTTP počet označen jako neúspěšný. Ve většině případů jde o žádosti s kódem odpovědi > = 400 a není rovno 401.|žádost/performanceBucket, požadavek/resultCode, operace nebo syntetický, cloudu/instance role, cloudu/roleName|
+|výjimky nebo count|Výjimky|Počet|Celkem|Kombinovaný počet všech nezachycených výjimek.|cloud/roleName, cloud nebo instance role, klient/typu|
+|výjimky a prohlížeče|Výjimky prohlížečů|Počet|Celkem|Počet nezachycených výjimek vyvolaných v prohlížeči|Žádné dimenze|
+|výjimky/server|Serverové výjimky|Počet|Celkem|Počet nezachycených výjimek vyvolaných v serverové aplikaci|cloud/roleName, cloud nebo instance role|
+|trasování nebo count|Počet trasování|Počet|Celkem|Počet dokumentů trasování|trasování/severityLevel, operace nebo syntetický, cloudu/roleName, cloud nebo instance role|
+
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
@@ -755,6 +808,20 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |ServiceApiHit|Celkem přístupů k rozhraní API služby|Počet|Počet|Celkový počet přístupů k rozhraní API služby|ActivityType, ActivityName|
 |ServiceApiLatency|Celková latence rozhraní API služby|Milisekundy|Průměr|Celková latence požadavků na rozhraní API služby|ActivityType, ActivityName, StatusCode|
 |ServiceApiResult|Celkem výsledků rozhraní API služby|Počet|Počet|Celkový počet výsledků rozhraní API služby|ActivityType, ActivityName, StatusCode|
+
+## <a name="microsoftkustoclusters"></a>Microsoft.Kusto/Clusters
+
+|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
+|---|---|---|---|---|---|
+|ClusterDataCapacityFactor|Využití mezipaměti|Procento|Průměr|Úroveň využití v rámci clusteru|Žádné dimenze|
+|QueryDuration|Doba trvání dotazu|Milisekundy|Průměr|Dotazy doba trvání v sekundách|QueryStatus|
+|IngestionsLoadFactor|Ingestování využití|Procento|Průměr|Poměr používané ingestování sloty v clusteru|Žádné dimenze|
+|IsEngineAnsweringQuery|Zachování|Počet|Průměr|Kontrola správnosti označuje respondes clusteru do dotazů|Žádné dimenze|
+|IngestCommandOriginalSizeInMb|Ingestování svazek (v MB)|Počet|Celkem|Celkový objem přijatých dat do clusteru (v MB)|Žádné dimenze|
+|EventAgeSeconds|Latence příjmu dat (v sekundách)|Sekundy|Průměr|Ingestování čas ze zdroje (například je zpráva EventHub) do clusteru během několika sekund|Žádné dimenze|
+|EventRecievedFromEventHub|Události byly zpracovány (pro službu Event Hubs)|Počet|Celkem|Počet události byly zpracovány v clusteru při ingestování z centra událostí|Žádné dimenze|
+|IngestionResult|Příjem výsledků|Počet|Počet|Počet operací příjmu|IngestionResultDetails|
+|EngineCPU|Procesor|Procento|Průměr|Úroveň využití procesoru|Žádné dimenze|
 
 ## <a name="microsoftlocationbasedservicesaccounts"></a>Microsoft.LocationBasedServices/accounts
 
@@ -963,6 +1030,19 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |ProbesFailedPercent|% Testů paměti se nezdařilo|Procento|Průměr|% testy monitorování připojení se nezdařilo|Žádné dimenze|
 |AverageRoundtripMs|Střední Doba odezvy (ms)|Milisekundy|Průměr|Průměrná síťové operace round-trip doba (ms) pro připojení k monitorování mezi zdrojem a cílem odeslané testy paměti|Žádné dimenze|
 
+## <a name="microsoftnetworkfrontdoors"></a>Microsoft.Network/frontdoors
+
+|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
+|---|---|---|---|---|---|
+|RequestCount|Počet požadavků|Počet|Celkem|Počet požadavků klientů obsluhuje proxy HTTP/S|Stav HTTP, ClientCountry HttpStatusGroup ClientRegion,|
+|RequestSize|Velikost požadavku|B|Celkem|Počet bajtů odeslaných na požadavky klientů na proxy server HTTP/S|Stav HTTP, ClientCountry HttpStatusGroup ClientRegion,|
+|ResponseSize|Velikost odpovědi|B|Celkem|Počet bajtů odeslaných jako odpovědi ze serveru proxy HTTP/S pro klienty|Stav HTTP, ClientCountry HttpStatusGroup ClientRegion,|
+|BackendRequestCount|Počet požadavků back-endu|Počet|Celkem|Počet požadavků odesílat back-endů proxy HTTP/S|Stav HTTP, HttpStatusGroup, back-endu|
+|BackendRequestLatency|Odezva back-endu požadavku|Milisekundy|Průměr|Čas počítají na základě když byla vyslána žádost proxy HTTP/S back-endu dokud proxy HTTP/S poslední bajt odpovědi přijaté z back-endu|Back-end|
+|TotalLatency|Celková latence|Milisekundy|Průměr|Čas počítají na základě když žádost klienta byla přijata službou proxy HTTP/S dokud klient potvrzení poslední bajt odpovědi z proxy serveru HTTP/S|Stav HTTP, ClientCountry HttpStatusGroup ClientRegion,|
+|BackendHealthPercentage|Procento stav back-endu|Procento|Průměr|Procento úspěšných stavů testy z proxy serveru HTTP/S na back-EndY|Back-endu, Bezproblémových|
+|WebApplicationFirewallRequestCount|Počet požadavků brány Firewall webových aplikací|Počet|Celkem|Počet žádostí klienta zpracovaných rozhraním firewallu webových aplikací|PolicyName, Název_pravidla, akce|
+
 ## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft.NotificationHubs/Namespaces/NotificationHubs
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
@@ -1031,72 +1111,80 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |Incoming.all.failedrequests|Všechny neúspěšné příchozí požadavky|Počet|Celkem|Celkový počet neúspěšných příchozích požadavků pro centrum oznámení|Žádné dimenze|
 
 ## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft.OperationalInsights/workspaces
-(Public Preview)
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-Average_ % volných uzlů Inode|% Volných uzlů Inode|Počet|Průměr|Average_ % volných uzlů Inode|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_ % volného místa|% Volného místa|Počet|Průměr|Average_ % volného místa|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_ % použitých uzlů Inode|% Použitých uzlů Inode|Počet|Průměr|Average_ % použitých uzlů Inode|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_ % využitého místa|% Využitého místa|Počet|Průměr|Average_ % využitého místa|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_Disk přečtené bajty/s|Bajty čtení z disku/s|Počet|Průměr|Average_Disk přečtené bajty/s|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_Disk přečtené strany/s|Čtení disku/s|Počet|Průměr|Average_Disk přečtené strany/s|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_Disk přenosy/s|Přenosy disku/s|Počet|Průměr|Average_Disk přenosy/s|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_Disk zapsané bajty/s|Bajty zapisování na disk/s|Počet|Průměr|Average_Disk zapsané bajty/s|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_Disk zapsané strany/s|Zápis disku/s|Počet|Průměr|Average_Disk zapsané strany/s|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_Free v megabajtech|Volné megabajty|Počet|Průměr|Average_Free v megabajtech|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_Logical bajtů disku/s|Bajtů logického disku/s|Počet|Průměr|Average_Logical bajtů disku/s|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Dostupná paměť v % Average_|Dostupná paměť v %|Počet|Průměr|Dostupná paměť v % Average_|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_ % dostupného odkládacího prostoru|% Dostupného odkládacího prostoru|Počet|Průměr|Average_ % dostupného odkládacího prostoru|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_ % využité paměti|% Využité paměti|Počet|Průměr|Average_ % využité paměti|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Využitý prostor záměny v Average_ %|Využitý prostor záměny v %|Počet|Průměr|Využitý prostor záměny v Average_ %|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_Available paměť v MB|Dostupná paměť v MB|Počet|Průměr|Average_Available paměť v MB|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_Available prostor záměny v MB|Dostupný prostor záměny v MB|Počet|Průměr|Average_Available prostor záměny v MB|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_Page přečtené strany/s|Čtení stránek/s|Počet|Průměr|Average_Page přečtené strany/s|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_Page zapsané strany/s|Zápisy stránek/s|Počet|Průměr|Average_Page zapsané strany/s|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_Pages za sekundu|Stránky/s|Počet|Průměr|Average_Pages za sekundu|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_Used prostor záměny v MB|Dostupná paměť v MB|Počet|Průměr|Average_Used prostor záměny v MB|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_Used paměť v MB|Dostupný prostor záměny v MB|Počet|Průměr|Average_Used paměť v MB|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Odeslané bajty Average_Total|Celkový počet bajtů přenesených|Počet|Průměr|Odeslané bajty Average_Total|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Přijaté bajty Average_Total|Celkový počet přijatých bajtů|Počet|Průměr|Přijaté bajty Average_Total|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_Total bajtů|Bajty celkem|Počet|Průměr|Average_Total bajtů|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_Total pakety odesílané informace|Celkový počet paketů odesílané informace|Počet|Průměr|Average_Total pakety odesílané informace|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_Total obdržených paketů|Celkový počet přijatých paketů|Počet|Průměr|Average_Total obdržených paketů|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Chyby příjmu Average_Total|Chyby celkem příjmu|Počet|Průměr|Chyby příjmu Average_Total|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Chyby odeslání Average_Total|Celkový počet odesílání chyb|Počet|Průměr|Chyby odeslání Average_Total|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_Total kolizí|Celkový počet kolizí|Počet|Průměr|Average_Total kolizí|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_Avg. Doba disku/čtení|Střední Doba disku/čtení|Počet|Průměr|Average_Avg. Doba disku/čtení|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_Avg. Doba disku/přenos|Střední Doba disku/přenos|Počet|Průměr|Average_Avg. Doba disku/přenos|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_Avg. Doby disku/zápis|Střední Doby disku/zápis|Počet|Průměr|Average_Avg. Doby disku/zápis|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_Physical bajtů disku/s|Bajtů fyzického disku/s|Počet|Průměr|Average_Physical bajtů disku/s|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_Pct privilegovaného času|Procento privilegovaného času|Počet|Průměr|Average_Pct privilegovaného času|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_Pct uživatelského času|Procento uživatelského času|Počet|Průměr|Average_Pct uživatelského času|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-KB paměti Average_Used|Využité paměti kB|Počet|Průměr|KB paměti Average_Used|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_Virtual sdílené paměti|Sdílené virtuální paměti|Počet|Průměr|Average_Virtual sdílené paměti|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-% Času DPC Average_|Čas DPC v %|Počet|Průměr|% Času DPC Average_|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_ čas nečinnosti v %|Čas nečinnosti v %|Počet|Průměr|Average_ čas nečinnosti v %|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-% Času přerušení Average_|Čas přerušení v %|Počet|Průměr|% Času přerušení Average_|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Doba čekání na vstupně-výstupních operací Average_ %|Doba čekání % vstupně-výstupních operací|Počet|Průměr|Doba čekání na vstupně-výstupních operací Average_ %|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_ dobrý čas v %|Dobrý čas v %|Počet|Průměr|Average_ dobrý čas v %|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_ % privilegovaného času|% Privilegovaného času|Počet|Průměr|Average_ % privilegovaného času|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_ % času procesoru|% Času procesoru|Počet|Průměr|Average_ % času procesoru|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_ % uživatelského času|Uživatelský čas v %|Počet|Průměr|Average_ % uživatelského času|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_Free fyzické paměti|Volná fyzická paměť|Počet|Průměr|Average_Free fyzické paměti|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_Free místo ve stránkovacích souborech|Volné místo ve stránkovacích souborech|Počet|Průměr|Average_Free místo ve stránkovacích souborech|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_Free virtuální paměti|Volná virtuální paměť|Počet|Průměr|Average_Free virtuální paměti|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_Processes|Procesy|Počet|Průměr|Average_Processes|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_Size uložená v stránkovacích souborech|Velikost uložená ve stránkovacích souborech|Počet|Průměr|Average_Size uložená v stránkovacích souborech|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_Uptime|Doba provozu|Počet|Průměr|Average_Uptime|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_Users|Uživatelé|Počet|Průměr|Average_Users|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Délka fronty disku Average_Current|Aktuální délka fronty disku|Počet|Průměr|Délka fronty disku Average_Current|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_Available paměť v megabajtech|Počet MB k dispozici|Počet|Průměr|Average_Available paměť v megabajtech|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_ % potvrzených bajtů|% Využití potvrzených bajtů|Počet|Průměr|Average_ % potvrzených bajtů|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Přijaté Average_Bytes/s|Přijaté bajty/s|Počet|Průměr|Přijaté Average_Bytes/s|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Odeslané Average_Bytes/s|Odeslané bajty/s|Počet|Průměr|Odeslané Average_Bytes/s|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Average_Bytes celkem/s|Bajty celkem/s|Počet|Průměr|Average_Bytes celkem/s|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
-Prezenční signál|Prezenční signál|Počet|Průměr|Prezenční signál|Počítače, OSType, verze, SourceComputerId|
-Aktualizace|Aktualizace|Počet|Průměr|Aktualizace|Počítače, produktů, klasifikace, UpdateState volitelné, schválené|
-Událost|Událost|Počet|Průměr|Událost|Zdroj protokolu událostí, počítače, EventCategory, EventLevel, EventLevelName, ID události|
+|Average_ % volných uzlů Inode|% Volných uzlů Inode|Počet|Průměr|Average_ % volných uzlů Inode|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_ % volného místa|% Volného místa|Počet|Průměr|Average_ % volného místa|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_ % použitých uzlů Inode|% Použitých uzlů Inode|Počet|Průměr|Average_ % použitých uzlů Inode|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_ % využitého místa|% Využitého místa|Počet|Průměr|Average_ % využitého místa|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Disk přečtené bajty/s|Bajty čtení z disku/s|Počet|Průměr|Average_Disk přečtené bajty/s|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Disk přečtené strany/s|Čtení disku/s|Počet|Průměr|Average_Disk přečtené strany/s|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Disk přenosy/s|Přenosy disku/s|Počet|Průměr|Average_Disk přenosy/s|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Disk zapsané bajty/s|Bajty zapisování na disk/s|Počet|Průměr|Average_Disk zapsané bajty/s|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Disk zapsané strany/s|Zápis disku/s|Počet|Průměr|Average_Disk zapsané strany/s|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Free v megabajtech|Volné megabajty|Počet|Průměr|Average_Free v megabajtech|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Logical bajtů disku/s|Bajtů logického disku/s|Počet|Průměr|Average_Logical bajtů disku/s|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Dostupná paměť v % Average_|Dostupná paměť v %|Počet|Průměr|Dostupná paměť v % Average_|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_ % dostupného odkládacího prostoru|% Dostupného odkládacího prostoru|Počet|Průměr|Average_ % dostupného odkládacího prostoru|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_ % využité paměti|% Využité paměti|Počet|Průměr|Average_ % využité paměti|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Využitý prostor záměny v Average_ %|Využitý prostor záměny v %|Počet|Průměr|Využitý prostor záměny v Average_ %|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Available paměť v MB|Dostupná paměť v MB|Počet|Průměr|Average_Available paměť v MB|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Available prostor záměny v MB|Dostupný prostor záměny v MB|Počet|Průměr|Average_Available prostor záměny v MB|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Page přečtené strany/s|Čtení stránek/s|Počet|Průměr|Average_Page přečtené strany/s|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Page zapsané strany/s|Zápisy stránek/s|Počet|Průměr|Average_Page zapsané strany/s|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Pages za sekundu|Stránky/s|Počet|Průměr|Average_Pages za sekundu|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Used prostor záměny v MB|Použitý odkládací prostor v MB místa|Počet|Průměr|Average_Used prostor záměny v MB|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Used paměť v MB|Použitá paměť v MB|Počet|Průměr|Average_Used paměť v MB|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Odeslané bajty Average_Total|Celkový počet bajtů přenesených|Počet|Průměr|Odeslané bajty Average_Total|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Přijaté bajty Average_Total|Celkový počet přijatých bajtů|Počet|Průměr|Přijaté bajty Average_Total|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Total bajtů|Bajty celkem|Počet|Průměr|Average_Total bajtů|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Total pakety odesílané informace|Celkový počet paketů odesílané informace|Počet|Průměr|Average_Total pakety odesílané informace|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Total obdržených paketů|Celkový počet přijatých paketů|Počet|Průměr|Average_Total obdržených paketů|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Chyby příjmu Average_Total|Chyby celkem příjmu|Počet|Průměr|Chyby příjmu Average_Total|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Chyby odeslání Average_Total|Celkový počet odesílání chyb|Počet|Průměr|Chyby odeslání Average_Total|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Total kolizí|Celkový počet kolizí|Počet|Průměr|Average_Total kolizí|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Avg. Doba disku/čtení|Střední Doba disku/čtení|Počet|Průměr|Average_Avg. Doba disku/čtení|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Avg. Doba disku/přenos|Střední Doba disku/přenos|Počet|Průměr|Average_Avg. Doba disku/přenos|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Avg. Doby disku/zápis|Střední Doby disku/zápis|Počet|Průměr|Average_Avg. Doby disku/zápis|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Physical bajtů disku/s|Bajtů fyzického disku/s|Počet|Průměr|Average_Physical bajtů disku/s|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Pct privilegovaného času|Procento privilegovaného času|Počet|Průměr|Average_Pct privilegovaného času|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Pct uživatelského času|Procento uživatelského času|Počet|Průměr|Average_Pct uživatelského času|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|KB paměti Average_Used|Využité paměti kB|Počet|Průměr|KB paměti Average_Used|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Virtual sdílené paměti|Sdílené virtuální paměti|Počet|Průměr|Average_Virtual sdílené paměti|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|% Času DPC Average_|Čas DPC v %|Počet|Průměr|% Času DPC Average_|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_ čas nečinnosti v %|Čas nečinnosti v %|Počet|Průměr|Average_ čas nečinnosti v %|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|% Času přerušení Average_|Čas přerušení v %|Počet|Průměr|% Času přerušení Average_|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Doba čekání na vstupně-výstupních operací Average_ %|Doba čekání % vstupně-výstupních operací|Počet|Průměr|Doba čekání na vstupně-výstupních operací Average_ %|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_ dobrý čas v %|Dobrý čas v %|Počet|Průměr|Average_ dobrý čas v %|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_ % privilegovaného času|% Privilegovaného času|Počet|Průměr|Average_ % privilegovaného času|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_ % času procesoru|% Času procesoru|Počet|Průměr|Average_ % času procesoru|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_ % uživatelského času|Uživatelský čas v %|Počet|Průměr|Average_ % uživatelského času|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Free fyzické paměti|Volná fyzická paměť|Počet|Průměr|Average_Free fyzické paměti|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Free místo ve stránkovacích souborech|Volné místo ve stránkovacích souborech|Počet|Průměr|Average_Free místo ve stránkovacích souborech|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Free virtuální paměti|Volná virtuální paměť|Počet|Průměr|Average_Free virtuální paměti|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Processes|Procesy|Počet|Průměr|Average_Processes|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Size uložená v stránkovacích souborech|Velikost uložená ve stránkovacích souborech|Počet|Průměr|Average_Size uložená v stránkovacích souborech|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Uptime|Doba provozu|Počet|Průměr|Average_Uptime|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Users|Uživatelé|Počet|Průměr|Average_Users|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Avg. Doba disku/čtení|Střední Doba disku/čtení|Počet|Průměr|Average_Avg. Doba disku/čtení|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Avg. Doby disku/zápis|Střední Doby disku/zápis|Počet|Průměr|Average_Avg. Doby disku/zápis|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Délka fronty disku Average_Current|Aktuální délka fronty disku|Počet|Průměr|Délka fronty disku Average_Current|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Disk přečtené strany/s|Čtení disku/s|Počet|Průměr|Average_Disk přečtené strany/s|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Disk přenosy/s|Přenosy disku/s|Počet|Průměr|Average_Disk přenosy/s|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Disk zapsané strany/s|Zápis disku/s|Počet|Průměr|Average_Disk zapsané strany/s|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Free v megabajtech|Volné megabajty|Počet|Průměr|Average_Free v megabajtech|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_ % volného místa|% Volného místa|Počet|Průměr|Average_ % volného místa|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Available paměť v megabajtech|Počet MB k dispozici|Počet|Průměr|Average_Available paměť v megabajtech|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_ % potvrzených bajtů|% Využití potvrzených bajtů|Počet|Průměr|Average_ % potvrzených bajtů|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Přijaté Average_Bytes/s|Přijaté bajty/s|Počet|Průměr|Přijaté Average_Bytes/s|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Odeslané Average_Bytes/s|Odeslané bajty/s|Počet|Průměr|Odeslané Average_Bytes/s|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_Bytes celkem/s|Bajty celkem/s|Počet|Průměr|Average_Bytes celkem/s|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Average_ % času procesoru|% Času procesoru|Počet|Průměr|Average_ % času procesoru|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Délka fronty Average_Processor|Délka fronty procesoru|Počet|Průměr|Délka fronty Average_Processor|Počítače, název_objektu, InstanceName, Cesta_k_čítači, SourceSystem|
+|Prezenční signál|Prezenční signál|Počet|Celkem|Prezenční signál|Počítače, OSType, verze, SourceComputerId|
+|Aktualizace|Aktualizace|Počet|Průměr|Aktualizace|Počítače, produktů, klasifikace, UpdateState volitelné, schválené|
+|Událost|Událost|Počet|Průměr|Událost|Zdroj protokolu událostí, počítače, EventCategory, EventLevel, EventLevelName, ID události|
 
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/capacities
@@ -1205,6 +1293,18 @@ Událost|Událost|Počet|Průměr|Událost|Zdroj protokolu událostí, počíta�
 |eDTU_used|použít eDTU|Počet|Průměr|použít eDTU|Žádné dimenze|
 |storage_used|Využité úložiště|B|Průměr|Využité úložiště|Žádné dimenze|
 |xtp_storage_percent|Procento úložiště OLTP v paměti|Procento|Průměr|Procento úložiště OLTP v paměti|Žádné dimenze|
+
+## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances
+
+|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
+|---|---|---|---|---|---|
+|virtual_core_count|Počet virtuálních jader|Počet|Průměr|Počet virtuálních jader|Žádné dimenze|
+|avg_cpu_percent|Průměrné procento CPU|Procento|Průměr|Průměrné procento CPU|Žádné dimenze|
+|reserved_storage_mb|Vyhrazený úložný prostor|Počet|Průměr|Vyhrazený úložný prostor|Žádné dimenze|
+|storage_space_used_mb|Prostor úložiště využitý|Počet|Průměr|Prostor úložiště využitý|Žádné dimenze|
+|io_requests|Počet žádostí v/v úrovně|Počet|Průměr|Počet žádostí v/v úrovně|Žádné dimenze|
+|io_bytes_read|Přečtené bajty vstupně-výstupních operací|B|Průměr|Přečtené bajty vstupně-výstupních operací|Žádné dimenze|
+|io_bytes_written|Zapsané bajty vstupně-výstupních operací|B|Průměr|Zapsané bajty vstupně-výstupních operací|Žádné dimenze|
 
 ## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
 

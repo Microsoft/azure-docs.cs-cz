@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
-ms.openlocfilehash: 5d2544ec9ef758cf34a846562fa659b28044c52d
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: b170a675482f69f8188894f8503703c235497503
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932683"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982609"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Řešení potíží s připojením SSH k virtuálnímu počítači Azure Linux, který selže, chyby, nebo bylo odmítnuto
 Existují různé důvody, že narazíte na chyby Secure Shell (SSH), selhání připojení SSH, nebo SSH byla odmítnuta, při pokusu o připojení pro virtuální počítač s Linuxem (VM). Tento článek pomůže najít a opravit problémy. Webu Azure portal, rozhraní příkazového řádku Azure, nebo rozšíření přístupu virtuálních počítačů pro Linux můžete odstraňovat potíže a řešit problémy s připojením.
@@ -50,7 +50,7 @@ Pokračujte ve čtení pro více podrobný postup řešení potíží a vysvětl
 Můžete resetovat přihlašovací údaje nebo konfigurace SSH pomocí jedné z následujících metod:
 
 * [Azure portal](#use-the-azure-portal) – oceníte, pokud potřebujete rychle resetovat konfiguraci SSH nebo klíč SSH a nemáte nainstalované Azure nástroje.
-* [Azure CLI 2.0](#use-the-azure-cli-20) – Pokud jste už na příkazovém řádku, rychle resetovat konfiguraci SSH nebo přihlašovací údaje. Můžete také použít [příkazového řádku Azure CLI 1.0](#use-the-azure-cli-10)
+* [Azure CLI](#use-the-azure-cli-20) – Pokud jste už na příkazovém řádku, rychle resetovat konfiguraci SSH nebo přihlašovací údaje. Můžete také použít [klasické rozhraní příkazového řádku Azure](#use-the-azure-cli-10)
 * [Azure rozšíření VMAccessForLinux](#use-the-vmaccess-extension) – vytvoření a opakovaně používat soubory definice json se resetovat přihlašovací údaje pro konfiguraci nebo uživatele SSH.
 
 Po provedení každého kroku Poradce při potížích zkuste se znovu připojit k virtuálnímu počítači. Pokud se pořád nemůžete připojit, vyzkoušejte další krok.
@@ -78,8 +78,8 @@ Použití [ověření toku protokolu IP](../../network-watcher/network-watcher-c
 
 Network Watcher můžete využít [směrování](../../network-watcher/network-watcher-check-next-hop-portal.md) schopnost potvrďte trasu nebrání provoz z směrovány do nebo z virtuálního počítače. Můžete také zkontrolovat efektivní trasy, pokud chcete zobrazit všechny efektivní trasy pro síťové rozhraní. Další informace najdete v tématu [provoz řešení potíží s virtuálního počítače pomocí efektivních tras](../../virtual-network/diagnose-network-routing-problem.md).
 
-## <a name="use-the-azure-cli-20"></a>Použití Azure CLI 2.0
-Pokud jste tak dosud neučinili, nainstalujte nejnovější [příkazového řádku Azure CLI 2.0](/cli/azure/install-az-cli2) a přihlaste se k Azure pomocí účtu [az login](/cli/azure/reference-index#az_login).
+## <a name="use-the-azure-cli"></a>Použití Azure CLI
+Pokud jste tak dosud neučinili, nainstalujte nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) a přihlaste se k Azure pomocí účtu [az login](/cli/azure/reference-index#az_login).
 
 Pokud jste vytvořili a nahrát vlastní image Linuxu disku, ujistěte se, že [Microsoft Azure Linux Agent](../extensions/agent-windows.md) verze 2.0.5 nebo novější nainstalován. Pro virtuální počítače vytvořené pomocí Image z Galerie tato rozšíření přístup k již nainstalován a nakonfigurován pro vás.
 
@@ -149,8 +149,8 @@ az vm extension set --resource-group philmea --vm-name Ubuntu \
     --name VMAccessForLinux --publisher Microsoft.OSTCExtensions --version 1.2 --settings settings.json
 ```
 
-## <a name="use-the-azure-cli-10"></a>Použití Azure CLI 1.0
-Pokud jste tak dosud neučinili, [nainstalovat rozhraní příkazového řádku Azure CLI 1.0 a připojit se ke svému předplatnému Azure](../../cli-install-nodejs.md). Ujistěte se, že se režimu Resource Manageru pomocí následujícím způsobem:
+## <a name="use-the-azure-classic-cli"></a>Použití Azure classic CLI
+Pokud jste tak dosud neučinili, [instalace Azure classic CLI a připojte se ke svému předplatnému Azure](../../cli-install-nodejs.md). Ujistěte se, že se režimu Resource Manageru pomocí následujícím způsobem:
 
 ```azurecli
 azure config mode arm
@@ -187,19 +187,19 @@ azure vm reset-access --resource-group myResourceGroup --name myVM \
 ## <a name="restart-a-vm"></a>Restartování virtuálního počítače
 Pokud máte resetovat přihlašovací údaje pro konfiguraci a uživatele SSH, nebo došlo k chybě při provádění, můžete zkusit restartování virtuálního počítače na základní výpočetní problémy adresu.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 Pokud chcete restartovat virtuální počítač pomocí webu Azure portal, vyberte svůj virtuální počítač a klikněte na tlačítko **restartovat** tlačítko jako v následujícím příkladu:
 
 ![Restartování virtuálního počítače na webu Azure Portal](./media/troubleshoot-ssh-connection/restart-vm-using-portal.png)
 
-### <a name="azure-cli-10"></a>Azure CLI 1.0
+### <a name="azure-classic-cli"></a>Klasické rozhraní příkazového řádku Azure
 Následující příklad restartuje virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`. Použijte vlastní hodnoty následujícím způsobem:
 
 ```azurecli
 azure vm restart --resource-group myResourceGroup --name myVM
 ```
 
-### <a name="azure-cli-20"></a>Azure CLI 2.0
+### <a name="azure-cli"></a>Azure CLI
 Následující příklad používá [az vm restart](/cli/azure/vm#az_vm_restart) restartovat virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`. Použijte vlastní hodnoty následujícím způsobem:
 
 ```azurecli
@@ -215,19 +215,19 @@ Můžete znovu nasadit virtuální počítač do jiného uzlu v rámci Azure, kt
 > 
 > 
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 Opětovné nasazení virtuálního počítače pomocí webu Azure portal, vyberte svůj virtuální počítač a přejděte dolů k položce **podpora a řešení potíží** oddílu. Klikněte na tlačítko **znovu nasadit** tlačítko jako v následujícím příkladu:
 
 ![Opětovné nasazení virtuálního počítače na webu Azure Portal](./media/troubleshoot-ssh-connection/redeploy-vm-using-portal.png)
 
-### <a name="azure-cli-10"></a>Azure CLI 1.0
+### <a name="azure-classic-cli"></a>Klasické rozhraní příkazového řádku Azure
 Následující příklad znovu nasadí virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`. Použijte vlastní hodnoty následujícím způsobem:
 
 ```azurecli
 azure vm redeploy --resource-group myResourceGroup --name myVM
 ```
 
-### <a name="azure-cli-20"></a>Azure CLI 2.0
+### <a name="azure-cli"></a>Azure CLI
 Následující příklad použití [opětovné nasazení virtuálního počítače v rámci az](/cli/azure/vm#az_vm_redeploy) znovu nasadit virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`. Použijte vlastní hodnoty následujícím způsobem:
 
 ```azurecli

@@ -13,12 +13,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: lizross
-ms.openlocfilehash: d4ebecd11f4ca3d12a55cf25db31e31d7f528db8
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: b6d548183cfa548f9ad35f06922752c929e318ac
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343725"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47041951"
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>Nastavit účtu pro dvoustupňové ověřování.
 Dvoustupňové ověření je krok dodatečné zabezpečení, která pomáhá chránit váš účet kvůli tomu je těžší jinými lidmi, kteří možnost proniknout. Pokud čtete tento článek, pravděpodobně máte e-mailu ze svého pracovního nebo školního správce o ověřování službou Multi-Factor Authentication. Nebo možná jste zkoušeli přihlásit a zpráva s výzvou k nastavení dalšího ověření zabezpečení. Pokud je to tento případ **nemůžete se přihlásit před dokončením procesu automatické registrace**.
@@ -47,6 +47,9 @@ Na první otázku v procesu registrace je, jak chcete, abychom vás kontaktovali
 
 ## <a name="use-a-mobile-app-as-the-contact-method"></a>Použití mobilní aplikace jako způsob kontaktu
 Pomocí této metody vyžaduje instalaci ověřovací aplikace na telefonu nebo tabletu. Kroky v tomto článku jsou založeny na aplikaci Microsoft Authenticator, která je k dispozici pro [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), a [iOS](http://go.microsoft.com/fwlink/?Linkid=825073).
+
+>[!NOTE]
+>Není nutné použít aplikaci Microsoft Authenticator. Pokud už používáte jinou ověřovací aplikaci, můžete nadále používat ho.
 
 1. Vyberte **mobilní aplikace** z rozevíracího seznamu.
 2. Vyberte buď **dostávat oznámení o ověření** nebo **použít ověřovací kód**a pak vyberte **nastavit**.

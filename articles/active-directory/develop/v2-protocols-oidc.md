@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2018
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4c7b46972a8c07675e1318a900c1f07043beb3de
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 51c7bacbfa30a74aef89abba133e48c483375032
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39591931"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971446"
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Azure Active Directory v2.0 a protokolu OpenID Connect
 
@@ -139,7 +139,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 
 | Parametr | Popis |
 | --- | --- |
-| id_token |ID tokenu požadovanou aplikaci. Můžete použít `id_token` parametr pro ověření identity uživatele a zahájit relaci s uživatelem. Další informace o tokeny typu ID a jejich obsah, najdete v článku [koncového bodu v2.0 tokeny odkaz](v2-id-and-access-tokens.md). |
+| id_token |ID tokenu požadovanou aplikaci. Můžete použít `id_token` parametr pro ověření identity uživatele a zahájit relaci s uživatelem. Další informace o tokeny typu ID a jejich obsah, najdete v článku [ `id_tokens` odkaz](id-tokens.md). |
 | state |Pokud `state` parametr je zahrnutý v požadavku, stejnou hodnotu by se měla zobrazit v odpovědi. Aplikace by měl ověřit, že jsou identické hodnoty stavu v požadavku a odpovědi. |
 
 ### <a name="error-response"></a>Odpověď na chybu
@@ -175,20 +175,18 @@ Následující tabulka popisuje chybové kódy, které mohou být vráceny v `er
 
 ## <a name="validate-the-id-token"></a>Ověřit ID token
 
-Přijetí tokenu ID není dostatečná k ověření uživatele. Musí také ověřit ID token podpisu a ověřte, deklarace identity v tokenu podle požadavků vaší aplikace. Koncový bod verze 2.0 používá [webové tokeny JSON (Jwt)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) a kryptografii využívající veřejného klíče pro podepisování tokenů a ověřte, že jsou platné.
+Pouhého získání tokentu id_token není dostatečná k ověření uživatele. je nutné ověřit podpis požadavku id_token a ověřte, deklarace identity v tokenu podle požadavků vaší aplikace. Koncový bod verze 2.0 používá [webové tokeny JSON (Jwt)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) a kryptografii využívající veřejného klíče pro podepisování tokenů a ověřte, že jsou platné.
 
-Můžete také ověřit token ID v kódu klienta, ale běžnou praxí je odeslat ID token back-end serverů a provést ověření existuje. Poté, co jste ověřili podpis tokenu ID, budete muset ověřit několik deklarací identity. Další informace, včetně informace o [ověřování tokenů](v2-id-and-access-tokens.md#validating-tokens) a [důležité informace o podepisování výměny klíčů](v2-id-and-access-tokens.md#validating-tokens), najdete v článku [v2.0 tokeny odkaz](v2-id-and-access-tokens.md). Doporučujeme, abyste k analýze a ověřovat tokeny pomocí knihovny. Je alespoň jedna z těchto knihoven k dispozici pro většinu jazyky a platformy.
+Můžete také ověřit `id_token` v klientovi kód, ale běžnou praxí je odeslat `id_token` back-end server a provést ověření existuje. Jakmile ověříte podpisu požadavku id_token, existují několik deklarací identity, které budete muset ověřit. Najdete v článku [ `id_token` odkaz](id-tokens.md) Další informace, včetně [ověřování tokenů](id-tokens.md#validating-idtokens) a [důležité informace o podpisový klíč výměny](active-directory-signing-key-rollover.md). Doporučujeme, abyste využívající knihovnu k analýze a ověřování tokenů: k dispozici aspoň jeden k dispozici pro většinu jazyky a platformy.
 <!--TODO: Improve the information on this-->
 
-Můžete také ověřit další deklarace identity, v závislosti na vašem scénáři. Některé běžné ověření patří:
+Také můžete chtít ověřit další deklarace identity v závislosti na vašem scénáři. Některé běžné ověření patří:
 
-* Ujistěte se, že na uživatele nebo organizaci zaregistroval k aplikaci.
-* Ujistěte se, že uživatel má požadované autorizace nebo oprávnění.
-* Ujistěte se, že sílu ověřování došlo, jako je ověřování službou Multi-Factor Authentication.
+* Zajištění uživatele nebo organizaci zaregistroval k aplikaci.
+* Zajistit, že uživatel má správnou autorizaci/oprávnění
+* Zajištění sílu ověřování došlo, jako je ověřování službou Multi-Factor Authentication.
 
-Další informace o deklarace identity v tokenu ID najdete v článku [koncového bodu v2.0 tokeny odkaz](v2-id-and-access-tokens.md).
-
-Po ověření tokenu ID můžete začít relaci s uživatelem. Chcete-li získat informace o uživateli ve vaší aplikaci použijte deklarace identity v tokenu ID. Tyto informace můžete použít pro zobrazení, záznamy, autorizace a tak dále.
+Jakmile ověříte zcela požadavku id_token, můžete zahájit relaci s uživatelem a používat deklarace identity v požadavku id_token k získání informací o uživateli ve vaší aplikaci. Tyto informace můžete použít pro zobrazení záznamů, přizpůsobení, atd.
 
 ## <a name="send-a-sign-out-request"></a>Odeslat žádost o odhlášení
 
@@ -257,7 +255,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAA
 
 | Parametr | Popis |
 | --- | --- |
-| id_token |ID tokenu požadovanou aplikaci. ID token můžete použít k ověření identity uživatele a zahájit relaci s uživatelem. Najdete další podrobnosti o tokeny typu ID a jejich obsah [koncového bodu v2.0 tokeny odkaz](v2-id-and-access-tokens.md). |
+| id_token |ID tokenu požadovanou aplikaci. ID token můžete použít k ověření identity uživatele a zahájit relaci s uživatelem. Najdete další podrobnosti o tokeny typu ID a jejich obsah [ `id_tokens` odkaz](id-tokens.md). |
 | kód |Autorizační kód požadovanou aplikaci. Aplikace může používat autorizační kód k vyžádání tokenu pro cílový prostředek. Je velmi krátkodobé a jednorázové autorizační kód. Obvykle autorizačního kódu vyprší během 10 minut. |
 | state |Pokud parametr stavu je zahrnutý v požadavku, by se zobrazit stejnou hodnotu v odpovědi. Aplikace by měl ověřit, že jsou identické hodnoty stavu v požadavku a odpovědi. |
 
@@ -280,4 +278,4 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 Popis možné kódy chyb a odpovědí doporučených klienta najdete v tématu [kódy chyb pro chyby koncový bod autorizace](#error-codes-for-authorization-endpoint-errors).
 
-Až budete mít autorizační kód a tokenu ID, můžete uživatele přihlásit a získat přístupové tokeny jejich jménem. Pro přihlášení uživatele, musíte ověřit ID token [přesně tak, jak je popsáno](#validate-the-id-token). Pokud chcete získat přístupové tokeny, postupujte podle kroků popsaných v [dokumentace k protokolu OAuth](v2-oauth2-auth-code-flow.md#request-an-access-token).
+Až budete mít autorizační kód a tokenu ID, můžete uživatele přihlásit a získat přístupové tokeny jejich jménem. Pro přihlášení uživatele, musíte ověřit ID token [přesně tak, jak je popsáno](id-tokens.md#validating-idtokens). Pokud chcete získat přístupové tokeny, postupujte podle kroků popsaných v [dokumentace ke službě flow OAuth kód](v2-oauth2-auth-code-flow.md#request-an-access-token).

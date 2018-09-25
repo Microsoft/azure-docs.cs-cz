@@ -1,6 +1,6 @@
 ---
-title: Přidat datový disk do virtuálního počítače s Linuxem pomocí rozhraní příkazového řádku Azure | Microsoft Docs
-description: Zjistěte, jak přidat trvalé datový disk k virtuálním počítačům s Linuxem pomocí Azure
+title: Přidání datového disku virtuálního počítače s Linuxem pomocí rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+description: Zjistěte, jak přidat trvalých datových disků virtuálního počítače s Linuxem pomocí Azure CLI
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,20 +15,20 @@ ms.devlang: azurecli
 ms.date: 06/13/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c41090943e4053ddf0ea46e9da1b3b5c7dbbf132
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 578488163482dd0b7b486ca152455ff9686f1a43
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36331219"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949209"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Přidání disku do virtuálního počítače s Linuxem
-Tento článek ukazuje, jak připojit trvalé disk k virtuálnímu počítači tak, aby můžete zachovat data - i v případě, že virtuální počítač je znovu poskytnuto z důvodu údržby nebo změnou velikosti. 
+V tomto článku se dozvíte, jak připojit trvalý disk k virtuálnímu počítači tak, aby můžete zachovat vaše data – i v případě, že váš virtuální počítač se znovu poskytne z důvodu údržby nebo změnou velikosti. 
 
 
 ## <a name="attach-a-new-disk-to-a-vm"></a>Připojit nový disk k virtuálnímu počítači
 
-Pokud chcete přidat nový, prázdný datový disk na vašem virtuálním počítači, použijte [připojit disk virtuálního počítače az](/cli/azure/vm/disk?view=azure-cli-latest#az_vm_disk_attach) s `--new` parametr. Pokud virtuální počítač je v zóně dostupnosti, disk je automaticky vytvořen ve stejné zóny jako virtuální počítač. Další informace najdete v tématu [přehled dostupnosti zón](../../availability-zones/az-overview.md). Následující příklad vytvoří disk s názvem *myDataDisk* tedy 50 Gb velikost:
+Pokud chcete přidat nový, prázdný datový disk na virtuálním počítači, použijte [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest#az_vm_disk_attach) příkazů `--new` parametru. Pokud je váš virtuální počítač v zóně dostupnosti, disk se automaticky vytvoří ve stejné zóně jako virtuální počítač. Další informace najdete v tématu [přehledu zón dostupnosti](../../availability-zones/az-overview.md). Následující příklad vytvoří disk s názvem *myDataDisk* , který je velikost 50 Gb:
 
 ```azurecli
 az vm disk attach \
@@ -41,7 +41,7 @@ az vm disk attach \
 
 ## <a name="attach-an-existing-disk"></a>Připojení stávajícího disku 
 
-Připojit stávající disk, vyhledejte ID disku a předejte ID, který má [připojit disk virtuálního počítače az](/cli/azure/vm/disk?view=azure-cli-latest#az_vm_disk_attach) příkaz. Následující příklad dotazy pro disk s názvem *myDataDisk* v *myResourceGroup*, připojí jej k virtuálnímu počítači s názvem *Můjvp*:
+Připojit stávající disk, najít ID disku a předat ID se má [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest#az_vm_disk_attach) příkazu. Následující příklady dotazů pro disk s názvem *myDataDisk* v *myResourceGroup*, připojí ho k virtuálnímu počítači s názvem *myVM*:
 
 ```azurecli
 diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
@@ -50,14 +50,14 @@ az vm disk attach -g myResourceGroup --vm-name myVM --disk $diskId
 ```
 
 
-## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>Připojit k virtuálnímu počítači Linux připojit nový disk
-K oddílu, formátování a připojte nový disk, virtuálním počítačům s Linuxem můžete použít ho SSH ke svému virtuálnímu počítači. Další informace najdete v tématu [Jak použít SSH s Linuxem v Azure](mac-create-ssh-keys.md). V následujícím příkladu se připojuje k virtuálnímu počítači pomocí veřejné položka DNS *mypublicdns.westus.cloudapp.azure.com* k uživatelskému jménu *azureuser*: 
+## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>Připojte se k počítači s Linuxem připojit nový disk
+Do oddílů, formátování a připojte nový disk, virtuální počítač s Linuxem můžete použít SSH k virtuálnímu počítači. Další informace najdete v tématu [Jak použít SSH s Linuxem v Azure](mac-create-ssh-keys.md). Následující příklad se připojí k virtuálnímu počítači s veřejný záznam DNS *mypublicdns.westus.cloudapp.azure.com* k uživatelskému jménu *azureuser*: 
 
 ```bash
 ssh azureuser@mypublicdns.westus.cloudapp.azure.com
 ```
 
-Po připojení k virtuálnímu počítači, jste připravení připojit disk. Nejdříve vyhledejte disk pomocí `dmesg` (metodu můžete použít ke zjištění nový disk se liší). Následující příklad používá k filtrování dmesg *SCSI* disky:
+Po připojení k vašemu virtuálnímu počítači, jste připraveni připojit disk. Nejdříve vyhledejte disk pomocí `dmesg` (metoda použijete ke zjištění nového disku může lišit). Následující příklad používá k filtrování dmesg *SCSI* disky:
 
 ```bash
 dmesg | grep SCSI
@@ -73,13 +73,13 @@ Výstup se podobá následujícímu příkladu:
 [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 ```
 
-Zde *sdc* je na disk, který má být. Rozdělit disk s `fdisk`proveďte primární disku v oddílu 1 a přijměte ostatní výchozí hodnoty. Následující příklad spustí `fdisk` zpracování na */dev/sdc*:
+Tady *sdc* je disk, který chceme. Rozdělit disk s `fdisk`, nastavte ji primárním disku v oddílu 1 a přijměte ostatní výchozí hodnoty. Následující příklad spustí `fdisk` zpracovat na */dev/sdc*:
 
 ```bash
 sudo fdisk /dev/sdc
 ```
 
-Použití `n` příkazu přidáte nový oddíl. V tomto příkladu jsme také zvolit `p` pro primárního oddílu a přijměte ostatní výchozí hodnoty. Výstup bude vypadat podobně jako v následujícím příkladu:
+Použití `n` příkaz pro přidání nového oddílu. V tomto příkladu jsme také zvolit `p` pro primární oddíl a přijměte ostatní výchozí hodnoty. Výstup bude podobný následujícím příkladu:
 
 ```bash
 Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
@@ -101,7 +101,7 @@ Last sector, +sectors or +size{K,M,G} (2048-10485759, default 10485759):
 Using default value 10485759
 ```
 
-Tisk v tabulce oddílu zadáním `p` a pak použijte `w` zápis tabulky na disku a ukončíte. Výstup by měl vypadat podobně jako v následujícím příkladu:
+Tisk v tabulce oddílu tak, že zadáte `p` a pak použijte `w` zápis tabulky na disku a ukončíte. Výstup by měl vypadat podobně jako v následujícím příkladu:
 
 ```bash
 Command (m for help): p
@@ -123,7 +123,7 @@ Calling ioctl() to re-read partition table.
 Syncing disks.
 ```
 
-Nyní, zápis systém souborů k oddílu s `mkfs` příkaz. Zadejte typ vašeho systému souborů a název zařízení. Následující příklad vytvoří *ext4* systému souborů na */dev/sdc1* oddílu, který byl vytvořen v předchozích krocích:
+Nyní, zapište systém souborů na oddíl s `mkfs` příkazu. Určuje typ systému souborů a název zařízení. Následující příklad vytvoří *ext4* systému souborů na */dev/sdc1* oddíl, který byl vytvořen v předchozích krocích:
 
 ```bash
 sudo mkfs -t ext4 /dev/sdc1
@@ -154,25 +154,25 @@ Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
 
-Teď vytvořte adresář, který chcete připojit, systém souborů pomocí `mkdir`. Následující příklad vytvoří adresář na */datadrive*:
+Teď vytvořte adresář pro připojení systému souborů pomocí `mkdir`. Následující příklad vytvoří adresář na */datadrive*:
 
 ```bash
 sudo mkdir /datadrive
 ```
 
-Použití `mount` pak připojit systém souborů. Následující příklad se připojí */dev/sdc1* oddílu na */datadrive* přípojného bodu:
+Použití `mount` pak připojte systém souborů. Následující příklad připojí */dev/sdc1* oddílu na */datadrive* přípojný bod:
 
 ```bash
 sudo mount /dev/sdc1 /datadrive
 ```
 
-Aby se zajistilo, že jednotka je znovu připojeny automaticky po restartování systému, je nutné přidat do */etc/fstab* souboru. Je také důrazně doporučujeme, aby identifikátor UUID (univerzálně jedinečný identifikátor) se používá v */etc/fstab* k odkazování na jednotku, nikoli jen název zařízení (jako je třeba */dev/sdc1*). Pokud operační systém zjistí chyba disku během spouštění, pomocí identifikátoru UUID zabraňuje nesprávnou disku montáže do daného umístění. Zbývající datových disků by pak přiřadit tyto stejné ID zařízení. Chcete-li najít identifikátor UUID nový disk, použijte `blkid` nástroj:
+Aby bylo zajištěno, že jednotka znovu připojí automaticky po restartování, je nutné přidat do */etc/fstab* souboru. Je také důrazně doporučujeme, aby UUID (univerzálně jedinečný identifikátor) se používá v */etc/fstab* k odkazování na jednotce, ne pouze název zařízení (jako jsou například */dev/sdc1*). Pokud operační systém zjistí chyba disku během spouštění, pomocí identifikátoru UUID předchází nesprávné disku, připojení, na dané místo. Zbývající datových disků by se mu přiřadit stejné ID zařízení. Chcete-li najít identifikátor UUID novou jednotku, použijte `blkid` nástroje:
 
 ```bash
 sudo -i blkid
 ```
 
-Výstup bude vypadat podobně jako v následujícím příkladu:
+Výstup vypadá podobně jako v následujícím příkladu:
 
 ```bash
 /dev/sda1: UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4"
@@ -181,36 +181,36 @@ Výstup bude vypadat podobně jako v následujícím příkladu:
 ```
 
 > [!NOTE]
-> Nesprávně úpravy **/etc/fstab** soubor může mít za následek nelze spustit systém. Pokud jistí, naleznete distribuční dokumentaci informace o tom, jak správně upravit tento soubor. Dále je doporučeno, jestli je vytvořená záloha souboru /etc/fstab před úpravou.
+> Nesprávně úpravy **/etc/fstab** souboru by mohlo způsobit systém nelze spustit. Pokud nejste jisti, najdete v dokumentaci vaší distribuce pro informace o tom, jak správně upravit tento soubor. Doporučujeme také, že je záloha souboru /etc/fstab vytvořená před úpravou.
 
-Dále otevřete */etc/fstab* soubor v textovém editoru následujícím způsobem:
+Dále otevřete */etc/fstab* souboru v textovém editoru následovně:
 
 ```bash
 sudo vi /etc/fstab
 ```
 
-V tomto příkladu použijte hodnotu identifikátoru UUID */dev/sdc1* zařízení, který byl vytvořen v předchozích krocích a přípojný bod systému */datadrive*. Přidejte následující řádek na konec */etc/fstab* souboru:
+V tomto příkladu použijte hodnotu identifikátoru UUID */dev/sdc1* zařízení, který byl vytvořen v předchozích krocích a přípojný bod z */datadrive*. Přidejte následující řádek na konec objektu */etc/fstab* souboru:
 
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
 ```
 
 > [!NOTE]
-> Později odstranění datový disk bez úprav fstab může způsobit selhání spuštění virtuálního počítače. Většina distribuce zadejte buď *nofail* nebo *nobootwait* fstab možnosti. Tyto možnosti umožňují spustit i v případě, že na disku se nepodaří připojit při spuštění systému. Další informace o těchto parametrů naleznete v dokumentaci vaší distribuce.
+> Později odebrání datového disku bez úprav fstab může způsobit selhání spuštění virtuálního počítače. Většině distribucí zadejte buď *nofail* a/nebo *nobootwait* možnosti fstab. Tyto možnosti umožňují spustit i v případě, že disk se nepodařilo připojit při spuštění systému. Další informace o těchto parametrech naleznete v dokumentaci vaší distribuce.
 > 
-> *Nofail* možnost zajistí, že virtuální počítač spustí i v případě, že systém souborů je poškozený nebo disk neexistuje při spuštění. Bez této možnosti se můžete setkat chování jak je popsáno v [nelze SSH pro virtuální počítač s Linuxem z důvodu chyb FSTAB](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/)
+> *Nofail* možnost zajišťuje, že virtuální počítač spustí i v případě systému souborů je poškozený nebo na disku v době spuštění neexistuje. Bez této možnosti může dojít chování, jak je popsáno v [nelze SSH k virtuálnímu počítači s Linuxem kvůli chybám FSTAB](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/)
 
-### <a name="trimunmap-support-for-linux-in-azure"></a>Podpora uvolnění dočasné paměti nebo UNMAP pro Linux v Azure
-Některé Linux jádra podporovat operace TRIM/UNMAP vyřadí nepoužívané bloky na disku. Tato funkce je užitečné hlavně v standardní úložiště k informování Azure, které odstraněné stránky již nejsou platné a může být vymazány a můžete ušetřit peníze, pokud chcete vytvořit velkých souborů a pak odstraňte je.
+### <a name="trimunmap-support-for-linux-in-azure"></a>Podpora uvolnění dočasné paměti/UNMAP pro Linux v Azure
+Některé Linuxových jádrech podporovat operace TRIM/UNMAP zahodíte nepoužívané bloky na disku. Tato funkce je užitečné hlavně ve standardním úložišti informovat Azure, které odstraní stránky již nejsou platným můžete zahodit a můžete ušetřit, pokud vytvoříte velkých souborů a potom je odstraňte.
 
-Existují dva způsoby, jak povolit TRIM podporují ve virtuálním počítačům s Linuxem. Obvyklým způsobem podívejte se distribuční o doporučený postup:
+Existují dva způsoby, jak povolit TRIM podpory v virtuálního počítače s Linuxem. Obvyklým způsobem vaše distribuce najdete doporučený postup:
 
 * Použití `discard` připojit možnost v */etc/fstab*, například:
 
     ```bash
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
     ```
-* V některých případech `discard` možnost může mít vliv na výkon. Alternativně můžete spustit `fstrim` ručně příkaz z příkazového řádku, nebo ho přidat do vaší crontab pravidelně spouštět:
+* V některých případech `discard` možnost může mít vliv na výkon. Alternativně můžete spustit `fstrim` příkaz ručně z příkazového řádku, nebo ho přidat do vaší crontab pravidelně spuštění:
   
     **Ubuntu**
   
@@ -230,6 +230,6 @@ Existují dva způsoby, jak povolit TRIM podporují ve virtuálním počítačů
 [!INCLUDE [virtual-machines-linux-lunzero](../../../includes/virtual-machines-linux-lunzero.md)]
 
 ## <a name="next-steps"></a>Další postup
-* Aby systém Linux virtuálního počítače je správně nakonfigurovaná, zkontrolujte [optimalizovat výkon počítače Linux](optimization.md) doporučení.
-* Rozbalte vaše kapacita úložiště přidáním dalších disků a [konfigurace RAID](configure-raid.md) další výkonu.
+* Chcete-li zajistit správnou konfiguraci virtuálního počítače s Linuxem, zkontrolovat [optimalizaci výkonu počítačů systému Linux](optimization.md) doporučení.
+* Rozšířit tak úložnou kapacitu přidáním dalších disků a [konfigurace RAID](configure-raid.md) další výkonu.
 

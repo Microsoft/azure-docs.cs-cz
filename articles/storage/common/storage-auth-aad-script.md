@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/14/2018
+ms.date: 09/20/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: e9e47214ffed94f45a1a44a19234484f13ba452e
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 984185febf770ae10a021d129b0ef6c43da4d0f1
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632190"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032763"
 ---
 # <a name="use-an-azure-ad-identity-to-access-azure-storage-with-cli-or-powershell-preview"></a>Pomocí identity Azure AD pro přístup k Azure Storage s využitím rozhraní příkazového řádku nebo Powershellu (Preview)
 
@@ -56,35 +56,45 @@ Přidružený k proměnné prostředí `--auth-mode` parametr `AZURE_STORAGE_AUT
 
 ## <a name="call-powershell-commands-with-an-azure-ad-identity"></a>Volat příkazy prostředí PowerShell s Azure AD identity
 
+Prostředí Azure PowerShell podporuje přihlášení pomocí identity Azure AD s jednou pouze následující moduly ve verzi preview: 
+
+- 4.4.0-Preview 
+- 4.4.1-Preview 
+
 Jak se přihlásit pomocí identity Azure AD pomocí Azure Powershellu:
 
-1. Ujistěte se, že máte nejnovější verzi modulu PowerShellGet nainstalovaný. Spusťte následující příkaz a nainstalujte tak nejnovější:
+1. Odinstalujte všechny předchozí instalace Azure Powershellu:
+
+    - Odebrat všechny předchozí instalace Azure Powershellu z Windows pomocí **aplikace a funkce** v nabídce **nastavení**.
+    - Odeberte všechny **Azure*** moduly z `%Program Files%\WindowsPowerShell\Modules`.
+
+1. Ujistěte se, že máte nejnovější verzi modulu PowerShellGet nainstalovaný. Otevřete okno Windows Powershellu a spusťte následující příkaz k instalaci nejnovější verze:
  
     ```powershell
     Install-Module PowerShellGet –Repository PSGallery –Force
     ```
+1. Zavřete a znovu otevřete okno Powershellu po instalaci Správce balíčků PowerShellGet. 
 
-2. Odinstalujte všechny předchozí instalace Azure Powershellu.
-3. Nainstalujte AzureRM:
+1. Nainstalujte AzureRM:
 
     ```powershell
     Install-Module AzureRM –Repository PSGallery –AllowClobber
     ```
 
-4. Nainstalujte modul ve verzi preview:
+1. Nainstalujte některou z moduly ve verzi preview:
 
     ```powershell
-    Install-Module -Name Azure.Storage -AllowPrerelease –AllowClobber -RequiredVersion "4.4.1-preview" 
+    Install-Module Azure.Storage –Repository PSGallery -RequiredVersion 4.4.1-preview  –AllowPrerelease –AllowClobber –Force 
     ```
+1. Zavřete a znovu otevřete okno Powershellu.
+1. Volání [New-AzureStorageContext](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontext) k vytvoření kontextu a zahrnout `-UseConnectedAccount` parametru. 
+1. Volání rutiny s identitou služby Azure AD, se rutině předejte kontext nově vytvořený.
 
-5. Volání [New-AzureStorageContext](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontext) k vytvoření kontextu a zahrnout `-UseConnectedAccount` parametru. 
-6. Volání rutiny s identitou služby Azure AD, se rutině předejte kontext.
-
-Následující příklad ukazuje, jak uvádět seznamy blobů v kontejneru v Azure Powershellu pomocí identity Azure AD: 
+Následující příklad ukazuje, jak uvádět seznamy blobů v kontejneru v Azure Powershellu pomocí identity Azure AD. Nezapomeňte nahradit zástupné názvy účet a kontejner s vlastními hodnotami: 
 
 ```powershell
-$ctx = New-AzureStorageContext -StorageAccountName $storageAccountName -UseConnectedAccount 
-Get-AzureStorageBlob -Container $sample-container -Context $ctx 
+$ctx = New-AzureStorageContext -StorageAccountName storagesamples -UseConnectedAccount 
+Get-AzureStorageBlob -Container sample-container -Context $ctx 
 ```
 
 ## <a name="next-steps"></a>Další postup

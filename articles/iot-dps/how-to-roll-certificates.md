@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: a8ba667e6af316620d7a8530f29a6640edada13d
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: a40f4489e63c30a101dd708b5a175c25788fb04b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42054638"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46976750"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>Jak chcete-li vrátit zařízení certifikáty X.509
 
@@ -41,7 +41,7 @@ Certifikáty do zařízení by měl vždy být uloženy na bezpečném místě, 
 
 Pokud jste se dostali certifikáty od třetí strany, musíte prozkoumat, jak vrátit změny své certifikáty. Proces může být součástí vaší uspořádání s nimi, nebo může být samostatná služba, které nabízejí. 
 
-Pokud spravujete vlastní certifikáty zařízení, budete muset vytvořit vlastní kanál pro aktualizace certifikátů. Ujistěte se, že původní a nové certifikáty listu mají stejný běžný název (CN). Tím, že stejné CN zařízení můžete znova nezajistíte samotný bez vytvoření duplicitní registrační záznam.
+Pokud spravujete vlastní certifikáty zařízení, budete muset vytvořit vlastní kanál pro aktualizace certifikátů. Ujistěte se, že původní a nové certifikáty listu mají stejný běžný název (CN). Tím, že stejné CN zařízení můžete znova nezajistíte samotný bez vytvoření duplicitní registrační záznam. 
 
 
 ## <a name="roll-the-certificate-in-the-iot-hub"></a>Vrátit certifikátu ve službě IoT hub
@@ -78,10 +78,13 @@ Pokud máte postupný certifikáty v reakci na porušení zabezpečení, měli b
 
     ![Spravovat jednotlivé registrace](./media/how-to-roll-certificates/manage-individual-enrollments-portal.png)
 
-3. Po ohrožení zabezpečení certifikátu je odebraná ze zřizovací služby, přejděte do služby IoT hub a odebrat registraci zařízení spojenou s certifikátem ohrožení zabezpečení.     
+3. Jakmile ohrožení zabezpečení certifikátu je odebraná ze služby zřizování, certifikát stále umožňuje připojovat zařízení do služby IoT hub jako registrace zařízení pro něj existuje. Můžete to vyřešit dvěma způsoby: 
+
+    První způsob je ručně přejděte do služby IoT hub a okamžitě odebrat registraci zařízení spojenou s certifikátem ohrožení zabezpečení. Potom když zařízení předpisy znovu s aktualizovaný certifikát, vytvoří se nové registrace zařízení.     
 
     ![Odebrání registrace zařízení služby IoT hub](./media/how-to-roll-certificates/remove-hub-device-registration.png)
 
+    Druhý způsob je použití neukončil podpory na bázi zařízení ke stejné službě IoT hub. Tento přístup můžete použít k nahrazení certifikátu pro registraci zařízení v IoT hubu. Další informace najdete v tématu [jak na bázi zařízení](how-to-reprovision.md).
 
 ## <a name="individual-enrollments-and-certificate-expiration"></a>Jednotlivé registrace a vypršení platnosti certifikátu
 
@@ -118,9 +121,14 @@ Pokud chcete aktualizovat skupinovou registraci v reakci na porušení zabezpeč
 
     ![Vyberte nový kořenový certifikát certifikační Autority](./media/how-to-roll-certificates/select-new-root-cert.png)
 
-6. Po ohrožení zabezpečení certifikátu je odebraná ze zřizovací služby, přejděte na propojené Centrum IoT, která obsahuje registrace ohroženého zařízení a odebrání registrace spojenou s certifikátem ohrožení zabezpečení.
+6. Jakmile ohrožení zabezpečení certifikátu je odebraná ze služby zřizování, certifikát stále umožňuje připojovat zařízení do služby IoT hub jako registrace zařízení pro něj existuje. Můžete to vyřešit dvěma způsoby: 
+
+    První způsob je ručně přejděte do služby IoT hub a okamžitě odebrat registraci zařízení spojenou s certifikátem ohrožení zabezpečení. Pak při zařízení znovu zřídit s aktualizované certifikáty, se vytvoří nová registrace zařízení pro každé z nich.     
 
     ![Odebrání registrace zařízení služby IoT hub](./media/how-to-roll-certificates/remove-hub-device-registration.png)
+
+    Druhý způsob je použití neukončil podpory na bázi zařízení ke stejné službě IoT hub. Tento přístup je možné nahradit certifikáty pro registraci zařízení v IoT hubu. Další informace najdete v tématu [jak na bázi zařízení](how-to-reprovision.md).
+
 
 
 #### <a name="update-compromised-intermediate-certificates"></a>Aktualizace dojde k ohrožení bezpečnosti zprostředkující certifikáty
@@ -134,9 +142,13 @@ Pokud chcete aktualizovat skupinovou registraci v reakci na porušení zabezpeč
     ![Spravovat jednotlivé registrace](./media/how-to-roll-certificates/enrollment-group-delete-intermediate-cert.png)
 
 
-3. Po ohrožení zabezpečení certifikátu je odebraná ze zřizovací služby, přejděte na propojené Centrum IoT, která obsahuje registrace zařízení a odebrat registraci spojenou s certifikátem ohrožení zabezpečení.
+3. Jakmile ohrožení zabezpečení certifikátu je odebraná ze služby zřizování, certifikát stále umožňuje připojovat zařízení do služby IoT hub jako registrace zařízení pro něj existuje. Můžete to vyřešit dvěma způsoby: 
+
+    První způsob je ručně přejděte do služby IoT hub a okamžitě odebrat registraci zařízení spojenou s certifikátem ohrožení zabezpečení. Pak při zařízení znovu zřídit s aktualizované certifikáty, se vytvoří nová registrace zařízení pro každé z nich.     
 
     ![Odebrání registrace zařízení služby IoT hub](./media/how-to-roll-certificates/remove-hub-device-registration.png)
+
+    Druhý způsob je použití neukončil podpory na bázi zařízení ke stejné službě IoT hub. Tento přístup je možné nahradit certifikáty pro registraci zařízení v IoT hubu. Další informace najdete v tématu [jak na bázi zařízení](how-to-reprovision.md).
 
 
 ## <a name="enrollment-groups-and-certificate-expiration"></a>Skupiny registrací a vypršení platnosti certifikátu

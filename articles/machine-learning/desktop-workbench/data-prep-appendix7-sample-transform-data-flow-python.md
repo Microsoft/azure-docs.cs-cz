@@ -13,14 +13,19 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: ca780b51973a960caec3b9b7a80c8ba5621b5a0b
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 82295e412c70065ff8ce3a686aec790614f39f2e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35643559"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947196"
 ---
 # <a name="sample-of-custom-data-flow-transforms-python"></a>Ukázka vlastních transformací toku dat (Python) 
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 Je název transformace v nabídce **Transform Dataflow (Script)**. Předtím, než se pustíte do čtení tohoto dodatku, přečtěte si [přehled rozšíření Python](data-prep-python-extensibility-overview.md).
 
 ## <a name="transform-frame"></a>Transformace rámce

@@ -1,6 +1,6 @@
 ---
-title: Pomocí OMS Log Analytics výstrahy REST API
-description: Log Analytics výstrahy REST API umožňuje vytvářet a spravovat výstrahy v analýzy protokolů, která je součástí služby Operations Management Suite (OMS).  Tento článek obsahuje podrobné informace o rozhraní API a několik příkladů pro provádění různých akcí.
+title: Pomocí rozhraní API REST upozornění OMS Log Analytics
+description: Log Analytics výstrah REST API můžete vytvářet a spravovat upozornění v Log Analytics, která je součástí sady Operations Management Suite (OMS).  Tento článek obsahuje podrobnosti o rozhraní API a několik příkladů k provádění různých operací.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -15,43 +15,43 @@ ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 9097ca13bf4f65db4b0924044a9c0f075e3703af
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 7f55b762bda5ff0c7bbedf414b18465656496cbb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128890"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46984581"
 ---
-# <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Vytvářet a spravovat pravidla výstrah v analýzy protokolů pomocí rozhraní REST API
-Log Analytics výstrahy REST API umožňuje vytvářet a spravovat výstrahy v Operations Management Suite (OMS).  Tento článek obsahuje podrobné informace o rozhraní API a několik příkladů pro provádění různých akcí.
+# <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Vytvářet a spravovat pravidla výstrah ve službě Log Analytics pomocí rozhraní REST API
+Log Analytics výstrah REST API můžete vytvářet a spravovat upozornění v Operations Management Suite (OMS).  Tento článek obsahuje podrobnosti o rozhraní API a několik příkladů k provádění různých operací.
 
-Rozhraní REST API Log Analytics Search je dosáhl standardu RESTful a je přístupný prostřednictvím rozhraní REST API Azure Resource Manager. V tomto dokumentu najdete příklady kterých je přístup k rozhraní API z příkazového řádku pomocí prostředí PowerShell [ARMClient](https://github.com/projectkudu/ARMClient), nástroje příkazového řádku open source, který zjednodušuje volání rozhraní API služby Azure Resource Manager. Použití ARMClient a prostředí PowerShell je jedním z mnoha možností pro přístup k rozhraní API pro vyhledávání Analytics protokolu. Pomocí těchto nástrojů můžete využít rozhraní RESTful API Správce prostředků Azure provádět volání do OMS pracovních prostorů a provádět příkazy vyhledávání v nich. Rozhraní API výstup výsledků vyhledávání do je ve formátu JSON, budete moci použít výsledky hledání v mnoha různými způsoby prostřednictvím kódu programu.
+REST API pro hledání Log Analytics je RESTful a je přístupný prostřednictvím rozhraní REST API Azure Resource Manageru. V tomto dokumentu najdete příklady kde je rozhraní API pro přístup z příkazového řádku pomocí prostředí PowerShell [ARMClient](https://github.com/projectkudu/ARMClient), nástroje příkazového řádku open source, který zjednodušuje volání rozhraní API Azure Resource Manageru. Použití ARMClient a prostředí PowerShell je jedním z mnoha možností pro přístup k rozhraní API pro hledání Log Analytics. Pomocí těchto nástrojů můžete využít rozhraní RESTful API Azure Resource Manageru provádět volání do pracovních prostorů OMS a provádět příkazy vyhledávání v nich. Rozhraní API bude vypsání výsledků vyhledávání vám ve formátu JSON, abyste mohli používat výsledky hledání prostřednictvím kódu programu mnoha různými způsoby.
 
 ## <a name="prerequisites"></a>Požadavky
-V současné době mohou výstrahy vytvořeny pouze s uloženého hledání v analýzy protokolů.  Můžete se podívat do [rozhraní API REST vyhledávání protokolu](log-analytics-log-search-api.md) Další informace.
+V současné době mohou výstrahy vytvořeny pouze se uložené výsledky hledání v Log Analytics.  Můžete se podívat do [protokolu REST API služby Search](log-analytics-log-search-api.md) Další informace.
 
 ## <a name="schedules"></a>Plány
-Uložené hledání může mít jeden nebo více plánů. Plán definuje, jak často hledání je spustit a časový interval, za které se identifikuje kritéria.
-Plány mít vlastnosti v následující tabulce.
+Uložené výsledky hledání můžete mít nejmíň jeden plán. Plán definuje, jak často se hledání spuštění a časový interval nad tím, které je identifikován kritéria.
+Plány mají vlastnosti v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Interval |Jak často je spustit hledání. Měří v minutách. |
-| QueryTimeSpan |Časový interval, za které se vyhodnotí kritéria. Musí být rovna nebo větší než Interval. Měří v minutách. |
+| Interval |Jak často se spustí vyhledávání. Měří během několika minut. |
+| QueryTimeSpan |Časový interval nad tím, které se vyhodnotí kritéria. Musí být roven nebo větší než Interval. Měří během několika minut. |
 | Verze |Verze rozhraní API používá.  V současné době to musí být vždy nastavená na hodnotu 1. |
 
-Představte si třeba dotazu událostí s Interval 15 minut a časový interval 30 minut. V takovém případě by se spustí dotaz každých 15 minut a výstraha by spustí, pokud kritéria dál odkazující na hodnotu true přes rozpětí 30 minut.
+Představte si třeba dotaz události s intervalem 15 minut a časový interval 30 minut. V tomto případě dotazu by spuštění každých 15 minut a by aktivuje upozornění, pokud kritéria nadále přeložit na hodnotu true přes víkend na 30minutové rozpětí.
 
-### <a name="retrieving-schedules"></a>Načítání plány
-Umožňuje načíst všechny plány uložených hledání metodu Get.
+### <a name="retrieving-schedules"></a>Načítají se plány
+Pomocí metody Get pro načtení všech plánů pro uložené výsledky hledání.
 
     armclient get /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search  ID}/schedules?api-version=2015-03-20
 
-Pomocí této metody Get s ID plánu načíst konkrétní plán uložených hledání.
+Pomocí této metody Get s ID plánu načíst konkrétní plán pro uložené výsledky hledání.
 
     armclient get /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}?api-version=2015-03-20
 
-Následuje ukázková odpověď pro plán.
+Následuje ukázka odezvy pro plán.
 
 ```json
 {
@@ -67,99 +67,99 @@ Následuje ukázková odpověď pro plán.
 ```
 
 ### <a name="creating-a-schedule"></a>Vytvoření plánu
-K vytvoření nového plánu použijte metodu Put s ID plánu jedinečný.  Všimněte si, že dvě plány nemůže mít stejné ID i v případě, že jsou spojeny s jinou uložená hledání.  Při vytváření plánu v konzole OMS, se vytvoří identifikátor GUID pro ID plánu.
+K vytvoření nového plánu pomocí ID jedinečná plánovací metody Put.  Všimněte si, že dva plány nemůže mít stejné ID i v případě, že jsou přidruženy k jiné uložená hledání.  Při vytváření plánu v konzole OMS se vytvoří identifikátor GUID pro ID plánu.
 
 > [!NOTE]
-> Název pro všechny uložená hledání, plány a akce, které jsou vytvořené pomocí rozhraní API Log Analytics musí být malými písmeny.
+> Název pro všechny uložené výsledky hledání, plány a akce, které jsou vytvořené pomocí rozhraní API pro analýzu protokolu musí být malými písmeny.
 
     $scheduleJson = "{'properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Active':'true' } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/mynewschedule?api-version=2015-03-20 $scheduleJson
 
 ### <a name="editing-a-schedule"></a>Úprava plánu
-K úpravě tento plán, použijte metodu Put s existující ID plánu pro stejné uloženého hledání.  Text žádosti musí obsahovat značku etag plánu.
+Použijte metodu Put se existující ID plánu pro stejný uložené výsledky hledání k úpravě tohoto plánu.  Text požadavku musí obsahovat etag plán.
 
       $scheduleJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A49.8074679Z'\""','properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Active':'true' } }"
       armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/mynewschedule?api-version=2015-03-20 $scheduleJson
 
 
-### <a name="deleting-schedules"></a>Odstraňování plány
-Chcete-li odstranit plán pomocí ID plánu metodu Delete.
+### <a name="deleting-schedules"></a>Odstraňuje se plány
+Použijte metodu Delete s ID plánu odstranění plánu.
 
     armclient delete /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}?api-version=2015-03-20
 
 
 ## <a name="actions"></a>Akce
-Plán může mít více akcí. Akce může definovat jeden nebo více procesy provést například odesílání e-mailu nebo spuštění sady runbook, nebo se může definovat prahové hodnoty, která určuje, kdy výsledky hledání kritériím některé.  Některé akce obě bude definovat, aby procesy provede, když je splněna prahovou hodnotu.
+Plán může mít více akcí. Akce může definovat jeden nebo více procesy provádět například poslání e-mailu nebo spuštění sady runbook nebo ji může definovat prahové hodnoty, která určuje, kdy výsledky hledání odpovídají kritérií.  Některé akce budou definovat i tak, aby procesy, které jsou prováděny při splnění prahovou hodnotu.
 
-Všechny akce mít vlastnosti v následující tabulce.  Různé typy výstrah mají různé další vlastnosti, které jsou popsány níže.
+Všechny akce mají vlastnosti v následující tabulce.  Různé typy výstrah mají různé další vlastnosti, které jsou popsané níže.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Typ |Typ akce.  Možné hodnoty jsou aktuálně upozornění a Webhooku. |
+| Typ |Typ akce.  Možné hodnoty jsou teď upozornění a Webhook. |
 | Název |Zobrazovaný název výstrahy. |
 | Verze |Verze rozhraní API používá.  V současné době to musí být vždy nastavená na hodnotu 1. |
 
-### <a name="retrieving-actions"></a>Načítání akce
+### <a name="retrieving-actions"></a>Načítají se akce
 
 > [!NOTE]
-> Od 14 může 2018, bude automaticky rozšířeno všechny výstrahy v pracovním prostoru do Azure. Uživatel může odpojit iniciovat rozšíření výstrahy do Azure před 14 může 2018. Další informace najdete v tématu [výstrahy rozšířit do Azure z OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Pro uživatele, které rozšiřují výstrahy do Azure jsou nyní akce řídí ve službě Azure akce skupiny. Při jeho výstrahy a pracovního prostoru jsou rozšířené a Azure, můžete načíst nebo přidání akcí pomocí [akce skupiny API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
+> Od 14. května 2018, se automaticky rozšíří všechna upozornění v instanci pracovního prostoru Log Analytics na veřejném cloudu Azure do Azure. Uživatel můžete odpojit zahájit rozšiřování upozornění do Azure před 14. května 2018. Další informace najdete v tématu [upozornění rozšířit do Azure od OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Pro uživatele, kteří rozšíření upozornění do Azure jsou teď akce provádí na skupiny akcí Azure. Jakmile pracovního prostoru a jeho výstrahy se rozšíří do Azure, můžete načíst nebo přidání akcí s použitím [akce skupiny API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
 
-Umožňuje načíst všechny akce pro plán metodu Get.
+Pomocí metody Get pro načtení všech akcí pro plán.
 
     armclient get /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search  ID}/schedules/{Schedule ID}/actions?api-version=2015-03-20
 
-Pomocí metody Get s ID akce pro načtení určité akce pro plán.
+Pomocí této metody Get s ID akce načtení konkrétní akci pro plán.
 
     armclient get /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}/actions/{Action ID}?api-version=2015-03-20
 
-### <a name="creating-or-editing-actions"></a>Vytvořením nebo úpravou akce
-Použijte metodu Put s ID akce, které jsou jedinečné pro plán pro vytvoření nové akce.  Když vytvoříte v konzole OMS akce, je identifikátor GUID pro ID akce.
+### <a name="creating-or-editing-actions"></a>Vytváření nebo úpravu akce
+Použijte metodu Put s ID akce, které jsou jedinečné pro plán pro vytvoření nové akce.  Při vytváření akce v konzole OMS je identifikátor GUID pro ID akce.
 
 > [!NOTE]
-> Název pro všechny uložená hledání, plány a akce, které jsou vytvořené pomocí rozhraní API Log Analytics musí být malými písmeny.
+> Název pro všechny uložené výsledky hledání, plány a akce, které jsou vytvořené pomocí rozhraní API pro analýzu protokolu musí být malými písmeny.
 
-K úpravě tento plán, použijte metodu Put s existující ID akce pro stejné uloženého hledání.  Text žádosti musí obsahovat značku etag plánu.
+Použijte metodu Put se existující ID akce pro stejný uložené výsledky hledání k úpravě tohoto plánu.  Text požadavku musí obsahovat etag plán.
 
-Formát požadavku pro vytvoření nové akce se liší podle typu akce, takže tyto příklady jsou uvedeny v následujících částech.
+Formát požadavku pro vytvoření nové akce se liší podle typu akce, takže tyto příklady jsou k dispozici v následujících částech.
 
-### <a name="deleting-actions"></a>Odstranění akcí
+### <a name="deleting-actions"></a>Odstraňuje se akce
 
 > [!NOTE]
-> Od 14 může 2018, bude automaticky rozšířeno všechny výstrahy v pracovním prostoru do Azure. Uživatel může odpojit iniciovat rozšíření výstrahy do Azure před 14 může 2018. Další informace najdete v tématu [výstrahy rozšířit do Azure z OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Pro uživatele, které rozšiřují výstrahy do Azure jsou nyní akce řídí ve službě Azure akce skupiny. Při jeho výstrahy a pracovního prostoru jsou rozšířené a Azure, můžete načíst nebo přidání akcí pomocí [akce skupiny API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
+> Od 14. května 2018, se automaticky rozšíří všechna upozornění v instanci pracovního prostoru Log Analytics na veřejném cloudu Azure do Azure. Uživatel můžete odpojit zahájit rozšiřování upozornění do Azure před 14. května 2018. Další informace najdete v tématu [upozornění rozšířit do Azure od OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Pro uživatele, kteří rozšíření upozornění do Azure jsou teď akce provádí na skupiny akcí Azure. Jakmile pracovního prostoru a jeho výstrahy se rozšíří do Azure, můžete načíst nebo přidání akcí s použitím [akce skupiny API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
 
-Použijte metodu Delete s ID akce k odstranění akce.
+Použijte metodu Delete s ID akce pro akci odstranit.
 
     armclient delete /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}/Actions/{Action ID}?api-version=2015-03-20
 
-### <a name="alert-actions"></a>Akce výstrah
-Plán by měl mít pouze jeden výstrahy akce.  Jeden nebo více oddílů v následující tabulce, které se mají výstrahy akce.  Každý je podrobně popsaná v další níže.
+### <a name="alert-actions"></a>Akce upozornění
+Plán by měl mít jeden a pouze jeden akce upozornění.  Akce upozornění mají jednu nebo více oddílů v následující tabulce.  Popsány podrobněji níže.
 
 | Sekce | Popis | Využití |
 |:--- |:--- |:--- |
-| Prahová hodnota |Kritéria pro spuštění akce.| Vyžaduje se pro každou výstrahu před nebo po jejich platnost do Azure. |
-| Severity |Popisek slouží ke klasifikaci výstrahu při aktivaci.| Vyžaduje se pro každou výstrahu před nebo po jejich platnost do Azure. |
-| Skupiny akcí |ID Azure ActionGroup tam, kde je zadán požadované akce, jako například – e-mailů, SMSs, hlasové hovory, Webhooky, runbooků služeb automatizace, ITSM konektory, atd.| Požadované po výstrahy jsou rozšířené a Azure|
-| Přizpůsobit akce|Upravit ve standardním výstupu pro akce vyberte z ActionGroup| Volitelné pro každou výstrahu lze po výstrahy jsou rozšířené do Azure. |
-| EmailNotification |Odesílat e-maily několika příjemcům. | Není vyžadována, pokud jsou rozšířené výstrahy do Azure|
-| Náprava |Spuštění sady runbook ve službě Azure Automation se pokuste odstranit zjištěný problém. |Není vyžadována, pokud jsou rozšířené výstrahy do Azure|
-| Akce Webhooku | Nabízet data z výstrahy, k požadované službě jako JSON |Není vyžadována, pokud jsou rozšířené výstrahy do Azure|
+| Prahová hodnota |Kritéria pro při spuštění akce.| Vyžaduje se pro každou výstrahu před nebo po se rozšíří do Azure. |
+| Severity |Popisek použitý ke klasifikaci, když se aktivuje upozornění.| Vyžaduje se pro každou výstrahu před nebo po se rozšíří do Azure. |
+| Skupiny akcí |ID skupina akcí Azure, ve kterém jsou zadané požadované akce, například - e-mailů, SMSs, hlasových hovorů, Webhooků, Runbooků služby Automation, konektorů ITSM atd.| Vyžaduje po výstrahy se rozšíří do Azure|
+| Přizpůsobit akce|Upravit ve standardním výstupu pro akce vyberte z skupina akcí| Volitelné pro každou výstrahu, je možné po výstrahy se rozšíří do Azure. |
+| EmailNotification |Odeslání e-mailu více příjemcům. | Není vyžadována, pokud se upozornění rozšíří do Azure|
+| Náprava |Spuštění runbooku ve službě Azure Automation se pokusit opravit zjištěné potíže. |Není vyžadována, pokud se upozornění rozšíří do Azure|
+| Akce Webhooku | Zápis dat z výstrah, k požadované službě jako JSON. |Není vyžadována, pokud se upozornění rozšíří do Azure|
 
 > [!NOTE]
-> Od 14 může 2018, bude automaticky rozšířeno všechny výstrahy v pracovním prostoru do Azure. Uživatel může odpojit iniciovat rozšíření výstrahy do Azure před 14 může 2018. Další informace najdete v tématu [výstrahy rozšířit do Azure z OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md).
+> Od 14. května 2018, se automaticky rozšíří všechna upozornění v instanci pracovního prostoru Log Analytics na veřejném cloudu Azure do Azure. Uživatel můžete odpojit zahájit rozšiřování upozornění do Azure před 14. května 2018. Další informace najdete v tématu [upozornění rozšířit do Azure od OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md).
 
 #### <a name="thresholds"></a>Mezní hodnoty
-Výstrahy akce by měl mít pouze jednu prahovou hodnotu.  Pokud výsledky uloženého hledání neodpovídají prahovou hodnotu v akci spojené s toto hledání, jsou spuštěny žádné další procesy, které jsou v této akce.  Akce může také obsahovat pouze prahovou hodnotu, aby se může použít s akcemi jiných typů, které neobsahují žádný prahové hodnoty.
+Akci upozornění by měl mít jeden a pouze jeden prahovou hodnotu.  Když výsledky uložené výsledky hledání odpovídají prahovou hodnotu v akce přidružené k danému hledání, jsou spuštěny žádné další procesy v této akci.  Akce může také obsahovat pouze mezní hodnotu tak, že je možné s akcemi jiných typů, které neobsahují slovo prahové hodnoty.
 
-Prahové hodnoty mít vlastnosti v následující tabulce.
+Prahové hodnoty mají vlastnosti v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Operátor |Operátor pro porovnání prahovou hodnotu. <br> gt = větší než <br> lt = menší než |
+| Operátor |Operátor porovnání prahové hodnoty. <br> gt = větší než <br> lt = menší než |
 | Hodnota |Hodnota pro mezní hodnotu. |
 
-Představte si třeba dotazu událostí se v intervalu 15 minut, časový interval 30 minut a prahové hodnoty větší než 10. V takovém případě by se spustí dotaz každých 15 minut a výstraha by spustí, pokud je vrácen 10 události, které byly vytvořeny během určitého 30 minut.
+Představte si třeba dotaz události s intervalem 15 minut, časový interval 30 minut a prahová hodnota větší než 10. V tomto případě dotazu by spuštění každých 15 minut a by aktivuje upozornění, pokud byl vrácen 10 události, které se vytvořily přes víkend na 30minutové rozpětí.
 
-Následuje ukázková odpověď pro akce s pouze prahovou hodnotu.  
+Tady je ukázková odpověď pro akce s pouze prahovou hodnotu.  
 
     "etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
     "properties": {
@@ -172,26 +172,26 @@ Následuje ukázková odpověď pro akce s pouze prahovou hodnotu.
         "Version": 1
     }
 
-Chcete-li vytvořit novou akci prahovou hodnotu pro harmonogram pomocí akce jedinečné ID metodu Put.  
+Pomocí metody Put s ID jedinečná akce můžete vytvořit novou akci prahové hodnoty pro plán.  
 
     $thresholdJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
 
-K úpravě akce prahové hodnoty pro plán, použijte metodu Put s existující ID akce.  Text žádosti musí obsahovat značku etag akce.
+Chcete-li změnit prahovou hodnotu akce pro plán pomocí stávající ID akce metodu Put.  Text požadavku musí obsahovat značku etag akce.
 
     $thresholdJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
 
 #### <a name="severity"></a>Severity
-Analýzy protokolů umožňuje klasifikovat upozornění do kategorií, umožňující snadnější správu a třídění. Závažnost výstrahy, které jsou definované je: informační, upozornění a kritickou. Tyto jsou namapované na škále normalizovaný závažnost výstrahy Azure jako:
+Log Analytics umožňuje klasifikovat vaše upozornění do kategorií, umožňující snadnější správu a třídění. Závažnost výstrahy, které jsou definovány je: informační, varovná a kritická. Tyto jsou mapovány na škálování normalizované závažnost výstrah Azure jako:
 
-|Úroveň závažnosti analýzy protokolů  |Úroveň závažnosti Azure výstrahy  |
+|Úroveň závažnosti log Analytics  |Úroveň závažnosti upozornění v Azure  |
 |---------|---------|
-|Kritické |Sev 0|
+|kritický |Sev 0|
 |upozornění |Sev 1|
 |Informační | Sev 2|
 
-Následuje ukázková odpověď pro akce s pouze prahovou hodnotu a závažnost. 
+Následuje ukázka odezvy pro akce s pouze prahovou hodnotu a závažnost. 
 
     "etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
     "properties": {
@@ -204,22 +204,22 @@ Následuje ukázková odpověď pro akce s pouze prahovou hodnotu a závažnost.
         "Severity": "critical",
         "Version": 1    }
 
-Chcete-li vytvořit novou akci pro plán se závažností pomocí akce jedinečné ID metodu Put.  
+Použijte metodu Put s ID jedinečná akce pro vytvoření nové akce pro plán se závažností.  
 
     $thresholdWithSevJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdWithSevJson
 
-K úpravě závažnost akce pro plán, použijte metodu Put s existující ID akce.  Text žádosti musí obsahovat značku etag akce.
+Použijte metodu Put se existující ID akce změnit závažnost akce pro plán.  Text požadavku musí obsahovat značku etag akce.
 
     $thresholdWithSevJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdWithSevJson
 
 #### <a name="action-groups"></a>Skupiny akcí
-Všechny výstrahy v Azure, použijte akci skupiny jako výchozího mechanismu pro zpracování akce. Akce skupin můžete zadat vaše akce jednou a potom přidružení skupiny akce k více výstrah – v Azure. Bez nutnosti opakovaně opakovaně deklarovat stejné akce. Akce skupiny podporují různé akce – včetně e-mailu, SMS, hlasový hovor, ITSM připojení, sady Automation Runbook, identifikátor URI Webhooku a dalších. 
+Všechna upozornění v Azure, použijte skupiny akcí jako výchozího mechanismu pro zpracování akce. Pomocí skupiny akcí můžete zadat vaše akce jednou a přidružte skupinu akcí více výstrah – napříč Azure. Bez nutnosti opakovaně opětovně deklarovat stejné akce. Skupiny akcí podporovat více akcí – včetně e-mailu, SMS, hlasovým hovorem, připojení ITSM, Runbook služby Automation, Webhooku URI a dalších. 
 
-Pro uživatele, kteří rozšířili výstrahy do Azure – nyní plánu měli mít akce skupiny podrobnosti předán společně s prahovou hodnotou, abyste mohli vytvořit výstrahu. Podrobnosti o e-mailu, adresy URL Webhooku, Runbook automatizace podrobnosti a další akce musí být definován na straně skupinu akcí nejdříve před vytvořením výstrahu; můžete vytvořit jeden [akce skupiny z Azure monitorování](../monitoring-and-diagnostics/monitoring-action-groups.md) v portálu nebo pomocí [akce skupiny API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
+Pro uživatele, kteří mají svá upozornění rozšíří do Azure – plánu teď měli mít podrobnosti skupiny akcí předána spolu s prahovou hodnotou, bude moct vytvořit výstrahu. Podrobnosti o e-mailu, adresy URL Webhooku, automatických postupů Runbook. Podrobnosti a další akce, musí být definován na straně nejdříve výstrahu; před vytvořením skupiny akcí můžete vytvořit jednu [skupiny akcí ze služby Azure Monitor](../monitoring-and-diagnostics/monitoring-action-groups.md) portálu nebo pomocí [akce skupiny API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
 
-Chcete-li přidat přidružení skupiny akce na výstrahu, zadejte jedinečné ID správce prostředků Azure skupiny akce v definici výstrahy. Obrázek ukázkové najdete níže:
+Přidat přidružení skupiny akcí na výstrahu, zadejte jedinečné ID Azure Resource Manageru skupiny akcí v definici upozornění. Obrázek ukázky jsou uvedeny níže:
 
      "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
       "properties": {
@@ -239,21 +239,21 @@ Chcete-li přidat přidružení skupiny akce na výstrahu, zadejte jedinečné I
         "Version": 1
       },
 
-Použijte metodu Put s akce jedinečné ID pro přidružení už existující skupiny akce pro plán.  Zde je ukázka obrázku využití.
+Pomocí metody Put s ID jedinečná akce můžete přidružit již existující skupiny akcí pro plán.  Následuje ukázkový obrázek využití.
 
     $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']} }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
-K úpravě skupinu akce přidružené pro plán, použijte metodu Put s existující ID akce.  Text žádosti musí obsahovat značku etag akce.
+Použijte metodu Put se existující ID akce Upravit skupinu akcí přidružené k plánu.  Text požadavku musí obsahovat značku etag akce.
 
     $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']} }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
 #### <a name="customize-actions"></a>Přizpůsobit akce
-Ve výchozím nastavení akce postupujte podle standardní šablona a formát pro oznámení. Ale uživatele můžete přizpůsobit některé akce, i když jsou řízeny skupiny akcí. V současné době je možné předmět e-mailu a datovou část Webhooku přizpůsobení.
+Výchozí akcí postupujte podle standardní šablony a formát pro oznámení. Ale může uživatel přizpůsobit některé akce, i když jsou ovládány skupin akcí. V současné době je možné, předmět e-mailu a datová část Webhooku vlastní nastavení.
 
-##### <a name="customize-e-mail-subject-for-action-group"></a>Přizpůsobení předmět e-mailu pro skupinu akce
-Ve výchozím nastavení, je předmět e-mailu pro výstrahy: oznámení výstrah <AlertName> pro <WorkspaceName>. Ale může být přizpůsobený, aby bylo možné určitá slova nebo značky – aby bylo možné snadno využívat pravidla filtru ve vaší doručené poště. Podrobnosti záhlaví přizpůsobit e-mailu je třeba odeslat spolu s ActionGroup podrobnosti, jako následující ukázka.
+##### <a name="customize-e-mail-subject-for-action-group"></a>Přizpůsobit předmět e-mailu pro skupinu akcí
+Ve výchozím nastavení, je předmět e-mailu pro výstrahy: oznámení výstrah <AlertName> pro <WorkspaceName>. Ale to je možné přizpůsobit, tak, aby bylo možné konkrétní slova nebo značky – aby bylo možné snadno využívat pravidla filtru v doručené poště. Podrobnosti o vlastní e-mailové hlavičky potřeba odeslat spolu s podrobnostmi skupina akcí, jako v následující ukázce.
 
      "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
       "properties": {
@@ -267,27 +267,27 @@ Ve výchozím nastavení, je předmět e-mailu pro výstrahy: oznámení výstra
         "AzNsNotification": {
           "GroupIds": [
             "/subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup"
-          ]
+          ],
           "CustomEmailSubject": "Azure Alert fired"
         },
         "Severity": "critical",
         "Version": 1
       },
 
-Použijte metodu Put s ID jedinečná akce přidružení už existující skupiny akce k přizpůsobení pro plán.  Zde je ukázka obrázku využití.
+Pomocí metody Put s ID jedinečná akce můžete přidružit vlastní nastavení pro plán již existující skupiny akcí.  Následuje ukázkový obrázek využití.
 
     $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'], 'CustomEmailSubject': 'Azure Alert fired'} }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
-K úpravě skupinu akce přidružené pro plán, použijte metodu Put s existující ID akce.  Text žádosti musí obsahovat značku etag akce.
+Použijte metodu Put se existující ID akce Upravit skupinu akcí přidružené k plánu.  Text požadavku musí obsahovat značku etag akce.
 
     $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']}, 'CustomEmailSubject': 'Azure Alert fired' }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
-##### <a name="customize-webhook-payload-for-action-group"></a>Upravit datovou část Webhooku pro skupinu akce
-Ve výchozím nastavení webhooku odeslána prostřednictvím akce skupiny pro analýzy protokolů má pevnou struktura. Ale datové části JSON jeden lze přizpůsobit pomocí konkrétní proměnné, které jsou podporované, aby splňoval požadavky webhooku koncového bodu. Další informace najdete v tématu [akce Webhooku pro pravidla výstrah protokolu](../monitoring-and-diagnostics/monitor-alerts-unified-log-webhook.md). 
+##### <a name="customize-webhook-payload-for-action-group"></a>Vlastní datová část Webhooku pro skupinu akcí
+Ve výchozím nastavení má webhooku odeslaná pomocí skupiny akcí pro log analytics pevnou strukturu. Ale jeden přizpůsobit datovou část JSON s použitím konkrétní proměnné, které jsou podporované pro splnění požadavků na koncový bod webhooku. Další informace najdete v tématu [akce Webhooku pro pravidla upozornění protokolů](../monitoring-and-diagnostics/monitor-alerts-unified-log-webhook.md). 
 
-Podrobnosti webhooku přizpůsobit muset odeslat spolu s ActionGroup podrobnosti a se použijí na všechny Webhooku URI zadat v rámci skupiny akce; stejně jako následující ukázka.
+Podrobnosti o vlastní webhooku nemusejí odeslat spolu s podrobnostmi skupina akcí a použít na všechny Webhooku URI zadat v rámci skupiny akcí; stejně jako v následující ukázce.
 
      "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
       "properties": {
@@ -301,7 +301,7 @@ Podrobnosti webhooku přizpůsobit muset odeslat spolu s ActionGroup podrobnosti
         "AzNsNotification": {
           "GroupIds": [
             "/subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup"
-          ]
+          ],
           "CustomWebhookPayload": "{\"field1\":\"value1\",\"field2\":\"value2\"}",
           "CustomEmailSubject": "Azure Alert fired"
         },
@@ -309,30 +309,30 @@ Podrobnosti webhooku přizpůsobit muset odeslat spolu s ActionGroup podrobnosti
         "Version": 1
       },
 
-Použijte metodu Put s ID jedinečná akce přidružení už existující skupiny akce k přizpůsobení pro plán.  Zde je ukázka obrázku využití.
+Pomocí metody Put s ID jedinečná akce můžete přidružit vlastní nastavení pro plán již existující skupiny akcí.  Následuje ukázkový obrázek využití.
 
     $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'], 'CustomEmailSubject': 'Azure Alert fired','CustomWebhookPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}'} }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
-K úpravě skupinu akce přidružené pro plán, použijte metodu Put s existující ID akce.  Text žádosti musí obsahovat značku etag akce.
+Použijte metodu Put se existující ID akce Upravit skupinu akcí přidružené k plánu.  Text požadavku musí obsahovat značku etag akce.
 
     $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']}, 'CustomEmailSubject': 'Azure Alert fired','CustomWebhookPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}' }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
 #### <a name="email-notification"></a>E-mailové oznámení
-E-mailová oznámení odesílat e-mailu na jeden nebo více příjemců.  Patří mezi ně vlastnosti v následující tabulce.
+E-mailová oznámení odeslat poštu na jeden nebo více příjemcům.  Patří mezi ně vlastnosti v následující tabulce.
 
 > [!NOTE]
-> Od 14 může 2018, bude automaticky rozšířeno všechny výstrahy v pracovním prostoru do Azure. Uživatel může odpojit iniciovat rozšíření výstrahy do Azure před 14 může 2018. Další informace najdete v tématu [výstrahy rozšířit do Azure z OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Pro uživatele, které rozšiřují výstrahy do Azure jsou řízeny v Azure akce skupiny teď akce jako e-mailové oznámení. Při jeho výstrahy a pracovního prostoru jsou rozšířené a Azure, můžete načíst nebo přidání akcí pomocí [akce skupiny API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
+> Od 14. května 2018, se automaticky rozšíří všechna upozornění v instanci pracovního prostoru Log Analytics na veřejném cloudu Azure do Azure. Uživatel můžete odpojit zahájit rozšiřování upozornění do Azure před 14. května 2018. Další informace najdete v tématu [upozornění rozšířit do Azure od OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Pro uživatele, kteří rozšíření upozornění do Azure jsou řízeny v skupiny akcí Azure nyní akce, jako je e-mailové oznámení. Jakmile pracovního prostoru a jeho výstrahy se rozšíří do Azure, můžete načíst nebo přidání akcí s použitím [akce skupiny API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
    
 
 | Vlastnost | Popis |
 |:--- |:--- |
 | Příjemci |Seznam adres e-mailu. |
 | Předmět |Předmět e-mailu. |
-| Příloha |Přílohy nejsou aktuálně podporovány, takže to bude mít vždy hodnotu "Žádný." |
+| Příloha |Přílohy se momentálně nepodporují, takže to bude mít vždy hodnotu "None". |
 
-Následuje ukázková odpověď pro akci oznámení e-mailu s prahovou hodnotou.  
+Následuje ukázka odezvy pro akci oznámení e-mailu s prahovou hodnotou.  
 
     "etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
     "properties": {
@@ -353,31 +353,31 @@ Následuje ukázková odpověď pro akci oznámení e-mailu s prahovou hodnotou.
         "Version": 1
     }
 
-Chcete-li vytvořit novou e-mailu akci pro plán pomocí akce jedinečné ID metodu Put.  Následující příklad vytvoří e-mailové oznámení s prahovou hodnotou, takže odešle e-mailu v případě, že výsledky uloženého hledání překročit prahovou hodnotu.
+Použijte metodu Put s ID jedinečná akce pro vytvoření nového e-mailové akce pro plán.  Následující příklad vytvoří e-mailové oznámení s prahovou hodnotou, e-mail se odešle, když výsledky uložené vyhledávání překročí prahovou hodnotu.
 
     $emailJson = "{'properties': { 'Name': 'MyEmailAction', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 }, 'EmailNotification': {'Recipients': ['recipient1@contoso.com', 'recipient2@contoso.com'], 'Subject':'This is the subject', 'Attachment':'None'} }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myemailaction?api-version=2015-03-20 $emailJson
 
-K úpravě akce e-mailu pro plán, použijte metodu Put s existující ID akce.  Text žádosti musí obsahovat značku etag akce.
+Použijte metodu Put se existující ID akce upravit e-mailové akce pro plán.  Text požadavku musí obsahovat značku etag akce.
 
     $emailJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'MyEmailAction', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 }, 'EmailNotification': {'Recipients': ['recipient1@contoso.com', 'recipient2@contoso.com'], 'Subject':'This is the subject', 'Attachment':'None'} }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myemailaction?api-version=2015-03-20 $emailJson
 
 #### <a name="remediation-actions"></a>Nápravné akce
-Nápravy spuštění sady runbook ve službě Azure Automation, který se pokouší odstranit problém identifikovaný výstrahy.  Musíte vytvořit webhooku pro sadu runbook použít v akci automatické nápravy a pak zadejte identifikátor URI ve vlastnosti WebhookUri.  Když vytvoříte tuto akci pomocí konzole OMS, se automaticky vytvoří nové webhooku pro sadu runbook.
+Nápravy spuštění runbooku ve službě Azure Automation, která se pokusí o odstranění problému identifikovaného výstrahou.  Musíte vytvořit webhook pro runbook používá v rámci nápravné akce a potom zadejte identifikátor URI ve vlastnosti WebhookUri.  Při vytváření této akce v konzole OMS se automaticky vytvoří nový webhook pro runbook.
 
 > [!NOTE]
-> Od 14 může 2018, bude automaticky rozšířeno všechny výstrahy v pracovním prostoru do Azure. Uživatel může odpojit iniciovat rozšíření výstrahy do Azure před 14 může 2018. Další informace najdete v tématu [výstrahy rozšířit do Azure z OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Pro uživatele, které rozšiřují výstrahy do Azure jsou ve skupinách Azure akce nyní ovládaná akce jako nápravy pomocí sady runbook. Při jeho výstrahy a pracovního prostoru jsou rozšířené a Azure, můžete načíst nebo přidání akcí pomocí [akce skupiny API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
+> Od 14. května 2018, se automaticky rozšíří všechna upozornění v instanci pracovního prostoru Log Analytics na veřejném cloudu Azure do Azure. Uživatel můžete odpojit zahájit rozšiřování upozornění do Azure před 14. května 2018. Další informace najdete v tématu [upozornění rozšířit do Azure od OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Pro uživatele, kteří rozšíření upozornění do Azure jsou nyní akce, jako je náprava runbooku provádí na skupiny akcí Azure. Jakmile pracovního prostoru a jeho výstrahy se rozšíří do Azure, můžete načíst nebo přidání akcí s použitím [akce skupiny API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
 
-Nápravami, které zahrnují vlastnosti v následující tabulce.
+Nápravy zahrnují vlastnosti v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| RunbookName |Název sady runbook. To se musí shodovat publikované sady runbook v účtu automation konfigurované v řešení služby Automation v pracovním prostoru OMS. |
-| WebhookUri |Identifikátor URI služby webhooku. |
-| Vypršení platnosti |Datum vypršení platnosti a čas webhooku.  Pokud webhooku nemá vypršení platnosti, může to být žádné platné budoucí datum. |
+| RunbookName |Název sady runbook. Musí se shodovat s publikované sady runbook v účtu automation, který je nakonfigurovaný v řešení služby Automation v pracovním prostoru OMS. |
+| WebhookUri |Identifikátor URI webhooku. |
+| Vypršení platnosti |Datum vypršení platnosti a čas webhooku.  Pokud se webhook nemá vypršení platnosti, to může být libovolný platný budoucí datum. |
 
-Následuje ukázková odpověď pro akci automatické nápravy s prahovou hodnotou.
+Tady je ukázková odpověď pro nápravné akce s prahovou hodnotou.
 
     "etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
     "properties": {
@@ -395,18 +395,18 @@ Následuje ukázková odpověď pro akci automatické nápravy s prahovou hodnot
         "Version": 1
     }
 
-Chcete-li vytvořit novou akci nápravy pro plán pomocí akce jedinečné ID metodu Put.  Následující příklad vytvoří nápravy s prahovou hodnotou, takže spuštění runbooku při výsledky uloženého hledání překročit prahovou hodnotu.
+Pomocí metody Put s ID jedinečná akce můžete vytvořit novou akci nápravy pro plán.  Následující příklad vytvoří nápravě s prahovou hodnotou, spuštění runbooku, když výsledky uložené vyhledávání překročí prahovou hodnotu.
 
     $remediateJson = "{'properties': { 'Type':'Alert', 'Name': 'My Remediation Action', 'Version':'1', 'Threshold': { 'Operator': 'gt', 'Value': 10 }, 'Remediation': {'RunbookName': 'My-Runbook', 'WebhookUri':'https://s1events.azure-automation.net/webhooks?token=4jCibOjO3w4W2Cfg%2b2NkjLYdafnusaG6i8tnP8h%2fNNg%3d', 'Expiry':'2018-02-25T18:27:20Z'} }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myremediationaction?api-version=2015-03-20 $remediateJson
 
-K úpravě akci automatické nápravy pro plán, použijte metodu Put s existující ID akce.  Text žádosti musí obsahovat značku etag akce.
+Použijte metodu Put se existující ID akce nápravnou akci pro plán.  Text požadavku musí obsahovat značku etag akce.
 
     $remediateJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Type':'Alert', 'Name': 'My Remediation Action', 'Version':'1', 'Threshold': { 'Operator': 'gt', 'Value': 10 }, 'Remediation': {'RunbookName': 'My-Runbook', 'WebhookUri':'https://s1events.azure-automation.net/webhooks?token=4jCibOjO3w4W2Cfg%2b2NkjLYdafnusaG6i8tnP8h%2fNNg%3d', 'Expiry':'2018-02-25T18:27:20Z'} }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myremediationaction?api-version=2015-03-20 $remediateJson
 
 #### <a name="example"></a>Příklad:
-Toto je kompletní příklad k vytvoření nové e-mailové výstrahy.  Tím se vytvoří nový plán spolu s akce obsahující prahovou hodnotu a e-mailu.
+Následuje Úplný příklad k vytvoření nového e-mailové upozornění.  Tím se vytvoří nový plán spolu s obsahující prahové hodnoty a e-mailovou akci.
 
     $subscriptionId = "3d56705e-5b26-5bcc-9368-dbc8d2fafbfc"
     $resourceGroup  = "MyResourceGroup"    
@@ -423,15 +423,15 @@ Toto je kompletní příklad k vytvoření nové e-mailové výstrahy.  Tím se 
     armclient put /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/$workspaceName/savedSearches/$searchId/schedules/$scheduleId/actions/$actionId/?api-version=2015-03-20 $emailJson
 
 #### <a name="webhook-actions"></a>Akce Webhooku
-Akce Webhooku spuštění procesu voláním adresu URL a volitelně poskytuje datové části k odeslání.  Jsou podobná nápravné akce s výjimkou jsou určené pro webhooků, který může vyvolat procesy než Azure Automation runbook.  Obsahují taky další možnost poskytnout datové části který bude doručen do vzdálený proces.
+Akce Webhooku spuštění procesu pomocí volání adresy URL a volitelně poskytuje datovou část, která je k odeslání.  Když se podobají nápravné akce, s výjimkou jsou určeny pro webhooky, které mohou vyvolat procesy než runbooky Azure Automation.  Obsahují taky další možnost poskytnout datovou část, která bude doručen do vzdáleného procesu.
 
 > [!NOTE]
-> Od 14 může 2018, bude automaticky rozšířeno všechny výstrahy v pracovním prostoru do Azure. Uživatel může odpojit iniciovat rozšíření výstrahy do Azure před 14 může 2018. Další informace najdete v tématu [výstrahy rozšířit do Azure z OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Pro uživatele, které rozšiřují výstrahy do Azure jsou nyní akce jako Webhooku řídí ve službě Azure akce skupiny. Při jeho výstrahy a pracovního prostoru jsou rozšířené a Azure, můžete načíst nebo přidání akcí pomocí [akce skupiny API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
+> Od 14. května 2018, se automaticky rozšíří všechna upozornění v instanci pracovního prostoru Log Analytics na veřejném cloudu Azure do Azure. Uživatel můžete odpojit zahájit rozšiřování upozornění do Azure před 14. května 2018. Další informace najdete v tématu [upozornění rozšířit do Azure od OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Pro uživatele, kteří rozšíření upozornění do Azure jsou akce, jako je Webhook teď provádí na skupiny akcí Azure. Jakmile pracovního prostoru a jeho výstrahy se rozšíří do Azure, můžete načíst nebo přidání akcí s použitím [akce skupiny API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
 
 
-Akce Webhooku nemáte prahovou hodnotu, ale místo toho musí být přidaní do plánu, který má výstrahy akce s prahovou hodnotou.  
+Akce Webhooku nemáte prahovou hodnotu, ale místo toho měla být přidána do plánu, který má akci upozornění s prahovou hodnotou.  
 
-Následuje ukázková odpověď pro akce webhooku a přidružené akce výstrah s prahovou hodnotou.
+Tady je ukázková odpověď pro akce webhooku a přidružené akce upozornění s prahovou hodnotou.
 
     {
         "__metadata": {},
@@ -464,7 +464,7 @@ Následuje ukázková odpověď pro akce webhooku a přidružené akce výstrah 
     }
 
 ##### <a name="create-or-edit-a-webhook-action"></a>Vytvořte nebo upravte akce webhooku
-K vytvoření nové akce webhooku pro plán použijte metodu Put s ID jedinečný akce.  Následující příklad vytvoří akce Webhooku a výstrah akce s prahovou hodnotu, aby webhooku se aktivuje, když výsledky uloženého hledání překročit prahovou hodnotu.
+Pomocí metody Put s ID jedinečná akce můžete vytvořit nové akce webhooku pro plán.  Následující příklad vytvoří výstrahu a akce Webhooku s prahovou hodnotu, aby webhook se aktivuje, když výsledky uložené vyhledávání překročí prahovou hodnotu.
 
     $thresholdAction = "{'properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdAction
@@ -472,13 +472,13 @@ K vytvoření nové akce webhooku pro plán použijte metodu Put s ID jedinečn�
     $webhookAction = "{'properties': {'Type': 'Webhook', 'Name': 'My Webhook", 'WebhookUri': 'https://oaaswebhookdf.cloudapp.net/webhooks?token=VrkYTKlhk%2fc%2bKBP', 'CustomPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}', 'Version': 1 }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mywebhookaction?api-version=2015-03-20 $webhookAction
 
-K úpravě akce webhooku pro plán, použijte metodu Put s existující ID akce.  Text žádosti musí obsahovat značku etag akce.
+Použijte metodu Put se existující ID akce k úpravě akce webhooku pro plán.  Text požadavku musí obsahovat značku etag akce.
 
     $webhookAction = "{'etag': 'W/\"datetime'2016-02-26T20%3A25%3A00.6862124Z'\"','properties': {'Type': 'Webhook', 'Name': 'My Webhook", 'WebhookUri': 'https://oaaswebhookdf.cloudapp.net/webhooks?token=VrkYTKlhk%2fc%2bKBP', 'CustomPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}', 'Version': 1 }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mywebhookaction?api-version=2015-03-20 $webhookAction
 
 
 ## <a name="next-steps"></a>Další postup
-* Použití [rozhraní API REST k vyhledávání protokolu](log-analytics-log-search-api.md) v analýzy protokolů.
-* Další informace o [protokolu výstrahy ve výstrahách azure](../monitoring-and-diagnostics/monitor-alerts-unified-log.md)
+* Použití [rozhraní REST API k provedení prohledávání protokolů](log-analytics-log-search-api.md) v Log Analytics.
+* Další informace o [upozornění protokolů ve výstrahách azure](../monitoring-and-diagnostics/monitor-alerts-unified-log.md)
 

@@ -10,12 +10,13 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: d62a1fd3a497ed87deb24fc053ec3315a7aba26b
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3b1e82d65a3eafb9e41277a18569270ef02cd8e5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367028"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989035"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-api-in-java-on-android"></a>Rychlý start: Použití rozpoznávání řeči Bingu rozhraní API v jazyce Java v Androidu
 

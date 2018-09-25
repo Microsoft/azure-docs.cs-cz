@@ -16,14 +16,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: daden
-ms.openlocfilehash: 7a13cafd3dcfb4637a5deae2c678c518019ad168
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ROBOTS: NOINDEX
+ms.openlocfilehash: 8f3bd4e62aa85c69a0bfafeacf13bc3e472136d5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39460244"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964697"
 ---
 # <a name="server-workload-forecasting-on-terabytes-of-data"></a>Prognózování úloh serveru s terabajty dat
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
 
 Tento článek popisuje, jak můžete použít Azure Machine Learning Workbench na vývoj řešení, které vyžadují použití velkých objemů dat odborníky přes data. Můžete spustit z ukázky velkých datových sad, iteraci v rámci přípravy dat, vytváření funkcí a strojové učení a potom rozšiřte proces velké celou datovou sadu. 
 
@@ -49,11 +52,11 @@ V tomto scénáři vám soustředit se na předpověď zatížení pro každý p
 Požadavky na spuštění v tomto příkladu jsou následující:
 
 * [Účtu Azure](https://azure.microsoft.com/free/) (bezplatné zkušební verze jsou k dispozici).
-* Nainstalovaná kopie produktu [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md). Instalace a vytvoření pracovního prostoru, najdete v článku [instalační příručky rychlý Start](../service/quickstart-installation.md). Pokud máte více předplatných, můžete si [nastavte požadované předplatné bude aktuální aktivní předplatné](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set).
+* Nainstalovaná kopie produktu [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md). Instalace a vytvoření pracovního prostoru, najdete v článku [instalační příručky rychlý Start](quickstart-installation.md). Pokud máte více předplatných, můžete si [nastavte požadované předplatné bude aktuální aktivní předplatné](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az_account_set).
 * Windows 10 (podle pokynů v tomto příkladu jsou obvykle stejné pro systémy macOS).
 * Data virtuálního počítače VĚDY pro Linux (Ubuntu), pokud možno v oblasti USA – východ, kde vyhledá data. DSVM Ubuntu můžete zřídit pomocí následujících [tyto pokyny](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Můžete také zobrazit [v tomto rychlém startu](https://ms.portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu). Doporučujeme použít virtuální počítač s alespoň s 8 jádry a 32 GB paměti. 
 
-Postupujte podle [instrukce](../service/known-issues-and-troubleshooting-guide.md#remove-vm-execution-error-no-tty-present) povolit přístup bez hesla sudoer na virtuálním počítači AML Workbench.  Můžete použít [ověřování pomocí klíče SSH pro vytváření a používání virtuálního počítače v aplikaci Workbench AML](experimentation-service-configuration.md#using-ssh-key-based-authentication-for-creating-and-using-compute-targets). V tomto příkladu používáme heslo pro přístup k virtuálnímu počítači.  Uložte následující tabulku s DSVM informace o dalších krocích:
+Postupujte podle [instrukce](../desktop-workbench/known-issues-and-troubleshooting-guide.md#remove-vm-execution-error-no-tty-present) povolit přístup bez hesla sudoer na virtuálním počítači AML Workbench.  Můžete použít [ověřování pomocí klíče SSH pro vytváření a používání virtuálního počítače v aplikaci Workbench AML](experimentation-service-configuration.md#using-ssh-key-based-authentication-for-creating-and-using-compute-targets). V tomto příkladu používáme heslo pro přístup k virtuálnímu počítači.  Uložte následující tabulku s DSVM informace o dalších krocích:
 
  Název pole| Hodnota |  
  |------------|------|

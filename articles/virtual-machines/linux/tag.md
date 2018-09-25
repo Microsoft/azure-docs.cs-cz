@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: memccror
-ms.openlocfilehash: c26019bad63a904f8ebd1241d2b58923d786e181
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 297d3bc201b4bc9d9db0b0bed7a364769fa72859
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38696748"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993047"
 ---
 # <a name="how-to-tag-a-linux-virtual-machine-in-azure"></a>Jak označit virtuální počítač s Linuxem v Azure
 Tento článek popisuje různé způsoby, jak označit virtuální počítač s Linuxem v Azure prostřednictvím modelu nasazení Resource Manager. Značky jsou páry klíč/hodnota definovaná uživatelem, které je možné použít přímo na prostředek nebo skupinu prostředků. Azure v současné době podporuje až 15 značek na prostředek a skupinu prostředků. Značky může být umístěné na zdroje v době vytvoření nebo přidat do existujícího prostředku. Mějte prosím na paměti, značky jsou podporované pro prostředky vytvořené prostřednictvím modelu nasazení Resource Manager pouze.
@@ -28,7 +28,8 @@ Tento článek popisuje různé způsoby, jak označit virtuální počítač s 
 [!INCLUDE [virtual-machines-common-tag](../../../includes/virtual-machines-common-tag.md)]
 
 ## <a name="tagging-with-azure-cli"></a>Označování pomocí Azure CLI
-Pokud chcete začít, je třeba nejnovější [příkazového řádku Azure CLI 2.0](/cli/azure/install-azure-cli) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az-login).
+
+Pokud chcete začít, je třeba nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az-login).
 
 Zobrazit všechny vlastnosti pro daný virtuální počítač, včetně značky, pomocí tohoto příkazu:
 

@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Služba LUIS aplikace vyžadují jednoho vlastníka a spolupracovníky volitelné.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 5573bd36761fb56f0731f886bd705327625f06fe
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 38fc33a6fb823e0435a9c96979c5a9a4539cd6ba
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734501"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038765"
 ---
 # <a name="collaborating"></a>Spolupráce
 

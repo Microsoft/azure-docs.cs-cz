@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 09/20/2018
 ms.author: jeedes
-ms.openlocfilehash: e7a4dd57c7da3350e610b5f005aa59ea9d51dd56
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: b825fb1d7f56aae923f6760c4fd6384e03274b7a
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45607784"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042053"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>Kurz: Integrace Azure Active Directory s jednotným Přihlašováním Rackspace
 
@@ -49,12 +49,14 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 - Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
+
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání jednotného přihlašování Rackspace z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-rackspace-sso-from-the-gallery"></a>Přidání jednotného přihlašování Rackspace z Galerie
+
 Konfigurace integrace Rackspace jednotné přihlašování do služby Azure AD, budete muset přidat Rackspace jednotného přihlašování na váš seznam spravovaných aplikací SaaS z galerie.
 
 **Chcete-li přidat Rackspace jednotné přihlašování z galerie, postupujte následovně:**
@@ -66,7 +68,7 @@ Konfigurace integrace Rackspace jednotné přihlašování do služby Azure AD, 
 2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
-    
+
 3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
@@ -100,7 +102,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
 2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
- 
+
     ![Jednotné přihlašování – dialogové okno](./media/rackspacesso-tutorial/tutorial_rackspacesso_samlbase.png)
 
 3. Na **Rackspace jednotného přihlašování k doméně a adresy URL** části, proveďte následující kroky:
@@ -111,7 +113,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
 4. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
-    ![Odkaz ke stažení certifikátu](./media/rackspacesso-tutorial/tutorial_rackspacesso_certificate.png) 
+    ![Odkaz ke stažení certifikátu](./media/rackspacesso-tutorial/tutorial_rackspacesso_certificate.png)
 
 5. Klikněte na tlačítko **Uložit** tlačítko.
 
@@ -150,16 +152,16 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
 
     d. Klikněte na možnost **Vytvořit**.
- 
+
 ### <a name="create-a-rackspace-sso-test-user"></a>Vytvoření zkušebního uživatele Rackspace jednotného přihlašování
 
-V této části vytvořte uživatele Britta Simon v Rackspace jednotného přihlašování. Práce s [tým podpory jednotného přihlašování Rackspace](https://support.rackspace.com/) přidat uživatele na platformě Rackspace jednotného přihlašování. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části budete pracovat s [tým podpory jednotného přihlašování Rackspace](https://support.rackspace.com/) pro připojení vašeho účtu na platformě Rackspace jednotného přihlašování.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
 V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k Rackspace jednotného přihlašování.
 
-![Přiřazení role uživatele][200] 
+![Přiřazení role uživatele][200]
 
 **Pokud chcete přiřadit Britta Simon Rackspace jednotného přihlašování, postupujte následovně:**
 
@@ -184,7 +186,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
-    
+
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
@@ -196,8 +198,6 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
-
-
 
 <!--Image references-->
 
@@ -212,4 +212,3 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 [201]: ./media/rackspacesso-tutorial/tutorial_general_201.png
 [202]: ./media/rackspacesso-tutorial/tutorial_general_202.png
 [203]: ./media/rackspacesso-tutorial/tutorial_general_203.png
-

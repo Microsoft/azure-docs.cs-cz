@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: 2b94496895c0ab06127b6c556b1240e3279e572f
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 40eb0e8133626e77a1f61ddfc5df69ecf1b958f2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504409"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950790"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain-using-a-resource-manager-template"></a>Připojte se k virtuálnímu počítači s Windows serverem do spravované domény pomocí šablony Resource Manageru
 V tomto článku se dozvíte, jak propojit virtuální počítače s Windows serverem do spravované domény služby Azure AD Domain Services pomocí šablon Resource Manageru.
@@ -39,7 +39,7 @@ K provádění úkolů uvedených v tomto článku, budete potřebovat:
 ## <a name="install-and-configure-required-tools"></a>Instalace a konfigurace požadované nástroje
 K provedení kroků uvedených v tomto dokumentu můžete použít kteroukoli z následujících možností:
 * **Prostředí Azure PowerShell**: [instalace a konfigurace](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)
-* **Rozhraní příkazového řádku Azure napříč platformami**: [instalace a konfigurace](https://azure.microsoft.com/documentation/articles/xplat-cli-install/)
+* **Azure CLI**: [instalace a konfigurace](https://azure.microsoft.com/documentation/articles/xplat-cli-install/)
 
 
 ## <a name="option-1-provision-a-new-windows-server-vm-and-join-it-to-a-managed-domain"></a>Možnost 1: Zřizování nového virtuálního počítače Windows Server a připojte ho ke spravované doméně

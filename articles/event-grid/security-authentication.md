@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: babanisa
-ms.openlocfilehash: ce0e766a07fd19f523f1f35b9a3cbc865cfb8c71
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 257f7cbd20d21903f4cf7daf68b5f185d0af10bc
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42054827"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965447"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid zabezpečení a ověřování 
 
@@ -39,7 +39,7 @@ Pokud používáte jiný typ koncového bodu, jako například aktivační udál
 
 2. **Metoda handshake ValidationURL (Ruční ověření typu handshake)**: V některých případech nemusí mít ovládací prvek koncového bodu, abyste mohli implementovat metodu handshake ValidationCode na základě zdrojového kódu. Například, pokud používáte službu třetí strany (například [Zapier](https://zapier.com) nebo [IFTTT](https://ifttt.com/)), nebudete moci programově odpoví, ověřovací kód. Proto od verze 2018-05-01-preview, EventGrid teď podporuje handshake ruční ověření. Pokud vytváříte odběr událostí pomocí sady SDK a nástrojů, které používají tento nový (2018-05-01-preview), verze rozhraní API obsahujícím EventGrid odešle `validationUrl` vlastnosti (kromě `validationCode` vlastnost) jako součást datovou část události ověření předplatného. Dokončete signalizace stačí GET požadavku na tuto adresu URL, buď pomocí klienta REST nebo pomocí webového prohlížeče. Adresa URL zadaná ověřování je platná pouze pro asi 10 minut. Během této doby je stav zřizování odběr události `AwaitingManualAction`. Pokud neprovedete ruční ověření během 10 minut, Stav zřizování nastavená na `Failed`. Budete muset znovu vytvoření odběru událostí, než se pokusíte provést ruční ověření znovu.
 
-Tento mechanismus ruční ověření je ve verzi preview. Pokud ji chcete používat, je nutné nainstalovat [rozšíření Event Grid](/cli/azure/azure-cli-extensions-list) pro [AZ CLI 2.0](/cli/azure/install-azure-cli). Můžete si je nainstalovat pomocí příkazu `az extension add --name eventgrid`. Pokud používáte rozhraní REST API, zkontrolujte, že používáte `api-version=2018-05-01-preview`.
+Tento mechanismus ruční ověření je ve verzi preview. Pokud ji chcete používat, je nutné nainstalovat [rozšíření Event Grid ](/cli/azure/azure-cli-extensions-list) pro [Azure CLI](/cli/azure/install-azure-cli). Můžete si je nainstalovat pomocí příkazu `az extension add --name eventgrid`. Pokud používáte rozhraní REST API, zkontrolujte, že používáte `api-version=2018-05-01-preview`.
 
 ### <a name="validation-details"></a>Podrobnosti ověřování
 

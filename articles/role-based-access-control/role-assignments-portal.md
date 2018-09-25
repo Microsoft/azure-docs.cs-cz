@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/05/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 14ac23e6b69302ac412aac3ecab06345e5d722fd
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 1cac4e4cee408e5208d2d5d84f81b8ad7a89f03b
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296342"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033987"
 ---
 # <a name="manage-access-using-rbac-and-the-azure-portal"></a>Správa přístupu pomocí RBAC a webu Azure Portal
 
@@ -207,7 +207,7 @@ Chcete-li uživatel správcem předplatného Azure, přiřaďte jim [vlastníka]
 
 1. V **Role** rozevíracího seznamu, vyberte roli, jako **správu skupiny přispěvatelů**.
 
-    Informace o podporovaných akcí pro různé role skupin pro správu najdete v tématu [uspořádání prostředků se skupinami pro správu Azure](../azure-resource-manager/management-groups-overview.md#management-group-access).
+    Informace o podporovaných akcí pro různé role skupin pro správu najdete v tématu [uspořádání prostředků se skupinami pro správu Azure](../governance/management-groups/index.md#management-group-access).
 
 1. V seznamu **Vybrat** vyberte uživatele, skupinu nebo aplikaci. Pokud se objekt zabezpečení v seznamu nezobrazí, pomocí pole **Vybrat** můžete v adresáři prohledat zobrazované názvy, e-mailové adresy a identifikátory objektů.
 

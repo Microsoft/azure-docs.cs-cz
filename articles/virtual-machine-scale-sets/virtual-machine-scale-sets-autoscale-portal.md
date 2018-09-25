@@ -15,21 +15,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: a93467404232b0fff51136cb7648d84a81165bdb
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 4ae9d8053f7463c069a7305bbd07a91a387e31d2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38697955"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972296"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Automatické škálování virtuálního počítače škálovací sady na webu Azure Portal
 Při vytváření škálovací sady definujete počet instancí virtuálních počítačů, které chcete spouštět. S měnícími se požadavky na aplikaci můžete počet instancí virtuálních počítačů automaticky zvyšovat nebo snižovat. Možnost automatického škálování umožňuje držet krok s požadavky zákazníků nebo reagovat na změny výkonu aplikace v průběhu jejího životního cyklu.
 
-Tento článek ukazuje, jak vytvořit pravidla automatického škálování na portálu Azure monitorovat výkon instancí virtuálních počítačů ve škálovací sadě. Tato pravidla automatického škálování zvýšit nebo snížit počet instancí virtuálních počítačů v reakci na tyto metriky výkonu. Můžete také dokončit tyto kroky [prostředí Azure PowerShell](tutorial-autoscale-powershell.md) nebo [příkazového řádku Azure CLI 2.0](tutorial-autoscale-cli.md).
+Tento článek ukazuje, jak vytvořit pravidla automatického škálování na portálu Azure monitorovat výkon instancí virtuálních počítačů ve škálovací sadě. Tato pravidla automatického škálování zvýšit nebo snížit počet instancí virtuálních počítačů v reakci na tyto metriky výkonu. Můžete také dokončit tyto kroky [prostředí Azure PowerShell](tutorial-autoscale-powershell.md) nebo [rozhraní příkazového řádku Azure](tutorial-autoscale-cli.md).
 
 
 ## <a name="prerequisites"></a>Požadavky
-K vytvoření pravidla automatického škálování, budete potřebovat existujícího virtuálního počítače škálovací sady. Můžete vytvořit škálovací sadu s [webu Azure portal](quick-create-portal.md), [prostředí Azure PowerShell](quick-create-powershell.md), nebo [příkazového řádku Azure CLI 2.0](quick-create-cli.md).
+K vytvoření pravidla automatického škálování, budete potřebovat existujícího virtuálního počítače škálovací sady. Můžete vytvořit škálovací sadu s [webu Azure portal](quick-create-portal.md), [prostředí Azure PowerShell](quick-create-powershell.md), nebo [rozhraní příkazového řádku Azure](quick-create-cli.md).
 
 
 ## <a name="create-a-rule-to-automatically-scale-out"></a>Vytvoření pravidla pro automatické horizontální navýšení kapacity
@@ -52,7 +52,7 @@ Pokud se požadavky na vaši aplikaci zvýší, zvýší se i zatížení instan
     | *Časová agregace*     | Definuje způsob agregace shromážděných metrik pro účely analýzy.                                                | Průměr        |
     | *Název metriky*          | Metrika výkonu, která se má monitorovat a na kterou se mají použít akce škálovací sady.                                                   | Procento CPU |
     | *Statistika agregačního intervalu* | Definuje způsob agregace shromážděných metrik v každé časový interval pro analýzu.                             | Průměr        |
-    | *– Operátor*             | Operátor sloužící k porovnání dat metriky s prahovou hodnotou.                                                     | Více než   |
+    | *– Operátor*             | Operátor sloužící k porovnání dat metriky s prahovou hodnotou.                                                     | Větší než   |
     | *Prahová hodnota*            | Procentuální hodnotu, která způsobí aktivaci akce pravidlem automatického škálování.                                                 | 70             |
     | *Doba trvání*             | Doba, která se monitoruje před porovnáním metrik a prahových hodnot.                                   | 10 minut     |
     | *Operace*            | Definuje, jestli se škálovací sada by se měly škálovat nahoru nebo dolů po použití pravidla kapacita a jaké přírůstku                        | Zvýšit procento o |

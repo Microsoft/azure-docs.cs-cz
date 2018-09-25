@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: jasonh
-ms.openlocfilehash: 9df3b20cd72236d7001aac94bae302b5a6f9eb8d
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 5e3194b856766502e4cc8c68ffa4bb936634adfa
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43110568"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983136"
 ---
 # <a name="install-custom-hadoop-applications-on-azure-hdinsight"></a>Instalace vlastních aplikací Hadoop v Azure HDInsight
 
@@ -66,7 +66,7 @@ Soubory potřebné pro nasazení této aplikace (Hue):
     Toto tlačítko otevře šablonu Resource Manageru na portálu Azure.  Šablony Resource Manageru se nachází na [ https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json ](https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json).  Další informace o zápisu této šablony Resource Manageru naleznete v části [MSDN: instalace aplikace HDInsight](https://msdn.microsoft.com/library/mt706515.aspx).
 2. Pro vytvoření clusteru a instalaci aplikace Hue postupujte podle pokynů. Další informace o vytváření clusterů HDInsight naleznete v tématu [Vytváření clusterů Hadoop založených na Linuxu v nástroji HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
-Kromě portálu Azure můžete pro volání šablon Resource Manageru použít také [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-using-powershell) a [Azure CLI](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-using-cli).
+Kromě webu Azure portal, můžete také použít [prostředí Azure PowerShell](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-using-powershell) a [rozhraní příkazového řádku Azure Classic](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-using-azure-cli) pro volání šablon Resource Manageru.
 
 ## <a name="validate-the-installation"></a>Ověření instalace
 Stav aplikace můžete zkontrolovat na portálu Azure a ověřit tak instalaci aplikace. Kromě toho můžete také ověřit, zda všechny koncové body HTTP vychází dle očekávání a webovou stránku, pokud existuje:
@@ -117,8 +117,8 @@ Z portálu můžete také odstranit cluster nebo odstranit skupinu prostředků,
 ### <a name="use-azure-powershell"></a>Použití Azure Powershell
 Pomocí Azure PowerShell můžete odstranit cluster nebo skupinu prostředků. Viz téma [Odstranění clusterů pomocí Azure PowerShell](hdinsight-administer-use-powershell.md#delete-clusters).
 
-### <a name="use-azure-cli"></a>Použití Azure CLI
-Pomocí Azure CLI můžete odstranit cluster nebo skupinu prostředků. Viz téma [Odstranění clusterů pomocí Azure CLI](hdinsight-administer-use-command-line.md#delete-clusters).
+### <a name="use-azure-classic-cli"></a>Použití Azure Classic CLI
+Pomocí rozhraní příkazového řádku Azure Classic, můžete odstranit cluster nebo odstranit skupinu prostředků. Zobrazit [odstranění clusterů pomocí rozhraní příkazového řádku Azure Classic](hdinsight-administer-use-command-line.md#delete-clusters).
 
 ## <a name="next-steps"></a>Další postup
 * [MSDN: Instalace aplikace HDInsight](https://msdn.microsoft.com/library/mt706515.aspx): další informace jak vyvíjet šablony Resource Manageru pro nasazení aplikací HDInsight.

@@ -12,14 +12,19 @@ ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 621601ad3576aad13f2f71062ee2351cf1a394c8
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: c952882a0a12e288eaf4f5f1074a9a2e876a21d6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35643206"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46986230"
 ---
 # <a name="combine-columns-by-example-transformation"></a>Sloučení sloupců podle příkladu transformace
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 Tato transformace umožňuje uživateli přidat nový sloupec kombinací hodnot z více sloupců. Uživatel může zadat oddělovač nebo obsahují příklady kombinovaná hodnoty k provedení této transformace. Když uživatel zadá příklady kombinaci, transformace je zpracována stejným **podle příkladu** modul, který je používán **odvodit sloupec podle příkladu** transformace.
 
 ## <a name="how-to-perform-this-transformation"></a>Jak provést tuto transformaci

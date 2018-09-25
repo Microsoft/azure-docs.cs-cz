@@ -1,6 +1,6 @@
 ---
-title: Sledování využití databáze se statistickými inteligentního – Azure SQL Database | Microsoft Docs
-description: Azure SQL Database inteligentního Insights používá vestavěné inteligentní neustále monitorovat využití databáze prostřednictvím umělé intelligence a zjišťování rušivý událostí, které způsobí snížení výkonu.
+title: Monitorovat využití databáze s Intelligent Insights – Azure SQL Database | Dokumentace Microsoftu
+description: Azure SQL Database Intelligent Insights využívá integrované inteligentní funkce neustále monitorovat využití databáze prostřednictvím umělé inteligence a zjišťovat rušivé události, které způsobují nízký výkon.
 services: sql-database
 author: danimir
 manager: craigg
@@ -8,170 +8,176 @@ ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 09/20/2018
 ms.author: v-daljep
-ms.openlocfilehash: a911ed9777e1a63e1fc1776fb6a8c1ab98bc6820
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: fe7e89f9b716bbc3269a912c3e8ac456a6340c36
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647499"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032015"
 ---
 # <a name="intelligent-insights"></a>Užitečné přehledy
 
-Azure SQL Database inteligentního Insights umožňuje vědět, co se děje s výkon databáze.
+Azure SQL Database Intelligent Insights vám umožňuje vědět, co se děje s výkonu vaší databáze SQL Database a Managed Instance.
 
-Inteligentní Insights používá vestavěné inteligentní neustále monitorovat využití databáze prostřednictvím umělé intelligence a zjišťování rušivý událostí, které způsobí snížení výkonu. Jakmile detekuje, se provádí podrobné analýzy, který generuje protokolu diagnostiky s inteligentního posouzení typu problému. Tato hodnocení se skládá z analýza hlavní příčiny problémy s výkonem databáze a, kde je to možné, doporučení pro zlepšení výkonu. 
+Intelligent Insights využívá integrované inteligentní funkce neustále monitorovat využití databáze prostřednictvím umělé inteligence a zjišťovat rušivé události, které způsobují nízký výkon. Jakmile detekuje, se provádí podrobné analýzy, která generuje protokol diagnostiky inteligentních hodnocení problému. Toto posouzení se skládá z analýzu původní příčiny potíží s výkonem databáze a kde je to možné, doporučení pro vylepšení výkonu. 
 
-## <a name="what-can-intelligent-insights-do-for-you"></a>Co dokáže inteligentního statistiky pro vás?
+## <a name="what-can-intelligent-insights-do-for-you"></a>Co můžete udělat Intelligent Insights pro vás?
 
-Inteligentní Insights je jedinečné funkce Azure vestavěné inteligentní, která poskytuje následující hodnotu:
+Intelligent Insights je jedinečné možnosti Azure integrované inteligentní funkce, která poskytuje následující hodnotu:
 
 - Proaktivní monitorování
-- Přehled o výkonu šité na míru
-- Časná zjišťování snížení výkonu databáze
-- Analyzovat problémy zjištěna příčina
-- Doporučení pro zlepšení výkonu
-- Horizontální navýšení kapacity možnost na stovky tisíc databáze
-- Kladný dopad na prostředky DevOps a celkové náklady na vlastnictví
+- Informace o výkonu pro míru
+- Včasnou detekci snížení výkonu databáze
+- Hlavní příčina analýzy nebyly zjištěny problémy
+- Doporučení pro vylepšení výkonu
+- Horizontální navýšení kapacity schopností na stovky tisíc databází
+- Pozitivní dopad prostředky DevOps a celkové náklady na vlastnictví
 
-## <a name="how-does-intelligent-insights-work"></a>Jak funguje inteligentního Insights?
+## <a name="how-does-intelligent-insights-work"></a>Jak inteligentní přehledy funguji?
 
-Inteligentní Statistika analyzuje výkonu SQL databáze tak, že porovnáte zatížení databáze z za poslední hodinu se zatížením, posledních sedmi dnů směrného plánu. Zatížení databáze se skládá z dotazy vyhodnocen jako nejvýznamnější výkon databáze, jako je například co opakovaný a největší dotazy. Protože každá databáze je jedinečný na základě jeho struktura, data, použití a aplikace, je každý směrný plán úlohy, aby se vygenerovala konkrétní a jedinečné pro jednotlivé instance. Inteligentní statistiky, nezávislé na standardních hodnot zatížení, také sleduje absolutní provozní prahové hodnoty a zjistí problémy s nadměrné čekací doby, kritické výjimky a problémy s parameterizations dotazu, které mohou ovlivnit výkon.
+Intelligent Insights analyzuje porovnáním databázové úlohy od poslední hodiny s úlohou posledních sedm dní standardních hodnot výkonu databáze. Databázové úlohy se skládá z dotazů, jestli se má být nejvýznamnější na výkon databází, jako jsou dotazy nejvíce opakovaných a největší. Protože každá databáze je jedinečný, na základě struktury, data, použití a aplikace, je každý směrný plán úloh, který je generován konkrétní a jedinečné pro jednotlivé instance. Intelligent Insights, nezávisle na základní úlohy také sleduje absolutní provozní prahové hodnoty a detekuje problémy s nadměrným čekací dobu, kritické výjimky a problémy s parameterizations dotazu, které může mít vliv na výkon.
 
-Po problémem snížení výkonu je zjišťován z více zjištěnou metriky pomocí umělé inteligence, provedení analýzy. Diagnostika protokolu je vytvořen s inteligentního přehledu na co se děje s vaší databáze. Inteligentní Statistika lze snadno sledovat problémy s výkonem databáze z její první vzhled až řešení. Každý zjistil, že problém je sledovat prostřednictvím životního cyklu od počáteční problém detekce a ověření výkonu v přírůstcích na její dokončení. Aktualizace jsou uvedeny v protokolu diagnostiky každých 15 minut. 
+Po snížení problému s výkonem se zjistí z několika zjištěnou metrik pomocí umělé inteligence, provedení analýzy. Diagnostický protokol je generována pomocí inteligentních přehledů na co se děje s vaší databáze. Intelligent Insights umožňuje snadno sledovat potíže s výkonem databáze z jeho první vzhled až do jejich vyřešení. Každé zjištěné potíže jsou sledovány prostřednictvím jejich životního cyklu od počátečního problém rozpoznávání a ověření zlepšení výkonu na jeho dokončení. Aktualizace jsou uvedeny v protokolu diagnostiky každých 15 minut. 
 
 ![Pracovní postup analýzy výkonu databáze](./media/sql-database-intelligent-insights/intelligent-insights-concept.png)
 
-Metriky lze měřit a zjistit problémy s výkonem databáze jsou založené na dotazu trvání, časový limit žádosti, dobu čekání nadměrné a chybných požadavků. Další informace o metrikách najdete v tématu [detekce metriky](sql-database-intelligent-insights.md#detection-metrics) část tohoto dokumentu.
+Metriky, používá k měření a zjištění problémů s výkonem databáze jsou založeny na doba trvání dotazu, časový limit žádosti, nadměrné čekací dobu a chybných žádostí. Další informace týkající se metrik najdete v tématu [detekce metriky](sql-database-intelligent-insights.md#detection-metrics) část tohoto dokumentu.
 
-Identifikovat SQL Database degradations výkonu se zaznamenávají v protokolu diagnostiky s inteligentního položky, které se skládají z následujících vlastností:
+Identifikuje SQL Database přehledu výkonu jsou zaznamenány v protokolu diagnostiky inteligentních záznamy, které se skládají z následujících vlastností:
 
 | Vlastnost             | Podrobnosti              |
 | :------------------- | ------------------- |
-| Informace o databázi | Metadata o databázi, na kterém byl zjištěn přehledu, jako je identifikátor URI prostředku. |
-| Sledovaného časového rozsahu | Počáteční a koncový čas dobu zjištěné přehledy. |
-| Ovlivněné metriky | Metriky, které způsobily vygenerování přehledu: <ul><li>Doba trvání zvýšit [sekund] dotaz.</li><li>Nadměrné čekání [sekund].</li><li>Vypršení časového limitu požadavků [procento].</li><li>Počet požadavků s chybou [procento].</li></ul>|
+| informace o databázi | Metadata o databázi, na kterém byl zjištěn přehledů, jako je identifikátor URI prostředku. |
+| Sledovaného časového rozsahu | Počáteční a koncový čas pro období zjištěné insight. |
+| Ovlivněné metriky | Metriky, který způsobil vygenerování přehledů: <ul><li>Doba trvání zvýšení [sekund] dotazu.</li><li>Nadměrné čekání [sekund].</li><li>Vypršel časový limit žádosti [procento].</li><li>Požadavky s chybou [procento].</li></ul>|
 | Hodnota dopad | Měří hodnota metriky. |
-| Ovlivněné dotazy a kódy chyb | Dotaz na hodnotu hash nebo chybový kód. Ty lze snadno korelovat ovlivněných dotazy. Metriky, které se skládají z dotazu zvyšte dobu trvání, doba čekání, počty vypršení časového limitu nebo kódy chyb jsou k dispozici. |
-| Zjištění | Detekce identifikovat v databázi v době události. Existují 15 detekce vzory. Další informace najdete v tématu [řešení potíží s výkonem databáze s inteligentního Insights](sql-database-intelligent-insights-troubleshoot-performance.md). |
-| Analýza hlavní příčiny | Příčina analýzu problém uvedený v čitelném formátu. Některé insights může obsahovat doporučení zlepšování výkonu, kde je to možné. |
+| Ovlivněné dotazy a kódy chyb | Dotaz na hodnotu hash nebo kód chyby. To umožňuje snadno porovnat pro ovlivněné dotazy. Metriky, které se skládají z zvýšení doby trvání dotazu, čekání, vypršení časového limitu počtu nebo kódy chyb jsou k dispozici. |
+| Nalezení | Detekce určí v databázi v době události. Existují 15 detekce vzory. Další informace najdete v tématu [databáze odstraňování problémů s výkonem Intelligent insights](sql-database-intelligent-insights-troubleshoot-performance.md). |
+| Analýza hlavní příčiny | Hlavní příčina analýzy problému zjištěného v lidsky čitelném formátu. Některé insights může obsahovat doporučení zlepšení výkonu, kde je to možné. |
 |||
 
-Problémy s výkonem, které se zaznamenávají v protokolu diagnostiky jsou označeny s jedním ze tří stavů životního cyklu k problému: "Aktivní", "Ověření" a "Dokončeno". Po výkonu se zjistí problém, a jak dlouho má považovala přítomný pomocí vestavěné inteligentní SQL Database, problém je označené jako "Aktivní". Pokud problém považuje za zmírnit, je ověřen a problém stav se změní na "Ověření". Po vestavěné inteligentní SQL Database za tento problém vyřešit, je stav problém označení "Dokončeno".
-
-## <a name="use-intelligent-insights"></a>Použití inteligentního statistiky
-
-Inteligentní Insights je inteligentní výkonu protokolu diagnostiky. Lze ji integrovat s dalšími produkty pro používání a konkrétní aplikace takové jsou analýzy protokolů Azure, Azure Event Hubs a Azure storage nebo třetích stran produkty. 
-
-Inteligentní Statistika společně s Azure Log Analytics se obvykle používá k zobrazení statistiky prostřednictvím webového prohlížeče a možná jedním z nejjednodušších způsobů, jak získat vypnout základů s použitím produktu. Inteligentní Statistika společně s Azure Event Hubs se obvykle používá ke konfiguraci vlastního monitorování a výstrah scénáře. Inteligentní Statistika společně s Azure storage se obvykle používá pro vývoj vlastních aplikací, například je například vytváření vlastních sestav, nebo možná data archivace a načtení.
-
-Integrace inteligentního Statistika s jinými produkty Azure Log Analytics centra událostí Azure, Azure storage nebo produkty třetích stran pro používání se provádí prostřednictvím první povolení inteligentního Statistika protokolu (SQLInsights) a potom nakonfigurovat Inteligentní Statistika protokolovat data tok dat do jednoho z těchto produktů. Další informace o povolení protokolování inteligentního přehledy a konfigurace dat protokolu odesílání náročné produktu najdete v tématu [Azure SQL Database metrik a protokolování diagnostiky](sql-database-metrics-diag-logging.md). 
-
-Praktické informace o použití inteligentního Statistika s Azure Log Analytics a příklady typických scénářů použití naleznete v tématu vložené video:
+Praktické přehled o používání Intelligent Insights s Azure SQL Analytics a typické scénáře využití najdete v části vložené video:
 
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player]
 >
 
-Inteligentní Statistika září v zjišťování a řešení potíží s výkonem databáze SQL. Abyste mohli používat inteligentní Insights řešení potíží s výkonem databáze SQL, najdete v části [problémy s výkonem řešení potíží s Azure SQL Database pomocí služby inteligentního Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
+Intelligent Insights oslní zjišťování a řešení potíží s výkonem SQL Database. Pokud chcete použít k SQL Database a spravované instanci databáze odstraňování problémů s výkonem Intelligent Insights, naleznete v tématu [Poradce při potížích s Azure SQL Database problémy s výkonem Intelligent insights](sql-database-intelligent-insights-troubleshoot-performance.md).
 
-## <a name="set-up-intelligent-insights-with-log-analytics"></a>Nastavení inteligentního Statistika s analýzy protokolů 
+## <a name="configure-intelligent-insights"></a>Konfigurace Intelligent Insights
 
-Přihlaste se analýza řešení poskytuje sestavy a výstrahy možnosti nad inteligentního Statistika protokolu diagnostiky data.
+Výstup Intelligent Insights je protokol diagnostiky inteligentních výkonu. Tento protokol mohou být spotřebovány v několika způsoby – streamování do Azure SQL Analytics, Azure Event Hubs a Azure storage nebo třetí strana produktu. 
 
-Pro použití inteligentního Statistika s analýzy protokolů, konfigurace dat protokolu inteligentního Statistika Streamovat k analýze protokolů, najdete v článku [Azure SQL Database metrik a protokolování diagnostiky](sql-database-metrics-diag-logging.md). 
+* Používání produktu s [Azure SQL Analytics](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-sql) zobrazíte insights prostřednictvím uživatelského rozhraní Azure porta. Toto je integrované řešení Azure a obvykle způsob, jak zobrazit přehledy.
+* Použití produktu pomocí Azure Event Hubs pro vývoj vlastní monitorování a upozorňování scénáře
+* Používání produktu pomocí úložiště Azure pro vývoj vlastních aplikací, jako jsou třeba vlastní data pro generování sestav, dlouhodobé archivace a tak dále.
 
-Následující příklad ukazuje zprávu o inteligentního statistiky v Azure SQL Analytics:
+Integrace inteligentní přehledy s jinými produkty pro Azure SQL Analytics, Azure Event Hubs, Azure storage nebo produkty třetích stran pro použití se provádí prostřednictvím první povolení Intelligent Insights protokolování (protokol "SQLInsights") v diagnostiky okno nastavení databáze a pak nakonfigurujete Intelligent Insights vytvářet protokoly dat Streamovat do jednoho z těchto produktů.
 
-![Inteligentní Statistika sestavy](./media/sql-database-intelligent-insights/intelligent-insights-azure-sql-analytics.png)
+Další informace o povolení protokolování Intelligent Insights a konfigurace dat protokolu Streamovat k používání produktu najdete v tématu [Azure SQL Database metrik a protokolování diagnostiky](sql-database-metrics-diag-logging.md). 
 
-Protokol diagnostiky inteligentního Statistika konfigurován tak, aby datový proud data analýzy SQL, můžete [monitorovat SQL database pomocí SQL Analytics](../log-analytics/log-analytics-azure-sql.md).
+### <a name="set-up-with-azure-sql-analytics"></a>S Azure SQL Analytics 
 
-## <a name="set-up-intelligent-insights-with-event-hubs"></a>Nastavení inteligentního Statistika službou Event Hubs
+Řešení Azure SQL Analytics poskytuje grafické uživatelské rozhraní, vytváření sestav a upozorňování na výkonu databáze, spolu s Intelligent Insights diagnostické protokoly data.
 
-Použití inteligentního Statistika službou Event Hubs, konfigurace dat protokolu inteligentního Statistika tok dat do centra událostí, najdete v článku [protokolů diagnostiky Azure datový proud do centra událostí](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md).
+> [!TIP]
+> Rychlé zahájení práce: nejjednodušší způsob, jak získat firmu s využitím inteligentních přehledů je použít společně s Azure SQL Analytics, která bude poskytovat grafické uživatelské rozhraní pro problémy s výkonem databáze. Přidat řešení Azure SQL Analytics z webu marketplace, vytvořit pracovní prostor uvnitř tohoto řešení a potom pro každou databázi, kterého chcete povolit inteligentní přehledy na, nakonfigurujte vysílání datového proudu protokolu "SQLInsights" v okně nastavení diagnostiky nové databáze pracovní prostor služby Azure SQL Analytics.
+>
 
-Nastavit vlastní monitorování a generování výstrah pomocí služby Event Hubs naleznete v části [co dělat s metriky a Diagnostika přihlásí Event Hubs](sql-database-metrics-diag-logging.md#what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs). 
+Před požadavkem je mít Azure SQL Analytics přidat na řídicí panel portálu Azure z webu marketplace a chcete vytvořit pracovní prostor, přečtěte si téma [konfigurovat Azure SQL Analytics](../log-analytics/log-analytics-azure-sql.md#configuration) 
 
-## <a name="set-up-intelligent-insights-with-storage"></a>Nastavení inteligentního Statistika s úložištěm
+Intelligent Insights s Azure SQL Analytics, nakonfigurovat data protokolu Intelligent Insights odesílání do pracovního prostoru Azure SQL Analytics, které jste vytvořili v předchozím kroku, naleznete v tématu [metriky Azure SQL Database a Diagnostika protokolování](sql-database-metrics-diag-logging.md). 
 
-Použití inteligentního Statistika s Storage, konfigurace dat protokolu inteligentního Statistika tok dat do úložiště, najdete v článku [datový proud do Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage).
+Následující příklad ukazuje, že Intelligent Insights zobrazit pomocí Azure SQL Analytics:
 
-## <a name="custom-integrations-of-intelligent-insights-log"></a>Vlastní integrace inteligentního Statistika protokolu
+![Intelligent Insights sestavy](./media/sql-database-intelligent-insights/intelligent-insights-azure-sql-analytics.png)
 
-Použití inteligentního Statistika s nástroji třetích stran nebo pro vlastní zobrazení výstrah a monitorování vývoj naleznete v části [použití protokolu diagnostiky výkonu databáze inteligentního Insights](sql-database-intelligent-insights-use-diagnostics-log.md).
+### <a name="set-up-with-event-hubs"></a>Nastavení se službou Event Hubs
+
+Intelligent Insights pomocí služby Event Hubs, konfigurace dat protokolu Intelligent Insights Streamovat do služby Event Hubs najdete v tématu [diagnostické protokoly Stream Azure do služby Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md).
+
+Nastavit vlastní monitorování a upozorňování pomocí služby Event Hubs naleznete v části [co dělat s Diagnostika a metriky protokolů ve službě Event Hubs](sql-database-metrics-diag-logging.md#what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs). 
+
+### <a name="set-up-with-azure-storage"></a>S Azure Storage
+
+Intelligent Insights s úložištěm, nakonfigurovat data protokolů Intelligent Insights Streamovat do úložiště, přečtěte si téma [Stream do služby Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage).
+
+### <a name="custom-integrations-of-intelligent-insights-log"></a>Vlastní integrace protokolu Intelligent Insights
+
+Intelligent Insights používat s nástroji třetích stran nebo vlastních výstrah a monitorování vývoj, naleznete v tématu [použití protokolování diagnostiky výkonu databáze Intelligent Insights](sql-database-intelligent-insights-use-diagnostics-log.md).
 
 ## <a name="detection-metrics"></a>Detekce metriky
 
-Metriky použít pro zjištění modely, které generovat inteligentního statistiky jsou založené na monitorování:
+Metriky pro zjišťování modely, které generují Intelligent Insights jsou založené na monitorování:
 
 - Doba trvání dotazu
 - Časový limit žádosti
 - Nadměrné čekací doba
-- Chyba se požadavky
+- Došlo k chybě žádosti
 
-Doba trvání a vypršení časového limitu požadavků na dotazy se používají jako primární modely v zjišťování problémů s výkonem zatížení databáze. Jejich použití protože přímo měření co se děje se zatížením. Ke zjištění všech možných případech zatížení výkonu snížení nadměrné čekací dobu a požadavky s chybou slouží jako další modely k příznakem potíží, které mají vliv na výkon úloh.
+Doba trvání a časový limit požadavků na dotazy se používají jako primární modely ke zjišťování problémů s výkonem úloh databáze. Vzhledem k tomu, že přímo měří, co se děje s úlohou slouží. Ke zjištění všech možných případů výkon úloh snížení nadměrné čekací dobu a s chybou požadavky se používají jako další modely označuje problémy, které mají vliv na výkon úloh.
 
-Je automaticky za změny zatížení a změny v počtu požadavků na dotazy dynamicky provedených v databázi k určení prahových hodnot výkonu databáze normální a na více systémů v běžných.
+Systém automaticky bere v úvahu změny na zatížení a změny počtu požadavků na dotazy dynamicky provedených v databázi k určení prahových hodnot výkonu databáze normální a mimo běžný.
 
-Metriky jsou společně zvažovány všechny v různých relacích prostřednictvím vědecky odvozené datového modelu, který rozděluje každém zjištěném problému výkonu. Obsahuje informace, které jsou poskytované prostřednictvím inteligentního přehledu:
+Některé metriky jsou považovány za společně v různých relacích prostřednictvím vědecky odvozené datový model, který slouží ke kategorizaci každý zjistil problémy s výkonem. Informací získaných prostřednictvím inteligentních přehledů zahrnuje:
 
 * Podrobnosti o zjištěném problému výkonu. 
-* Analýza hlavní příčiny problému zjištěna. 
-* Doporučení pro zlepšení výkonu monitorované databáze SQL, kde je to možné.
+* Analýza původní příčiny problému, zjistili. 
+* Doporučení pro zlepšení výkonu monitorované SQL database, kde je to možné.
 
 ## <a name="query-duration"></a>Doba trvání dotazu
 
-Model snížení doby trvání dotazu analyzuje jednotlivé dotazy a zjistí zvýšení v době potřebné ke kompilaci a provedení dotazu ve srovnání s základní úrovně výkonu.
+Model snížení doby trvání dotazu analyzuje jednotlivé dotazy a detekuje v čas potřebný ke kompilaci a spuštění dotazu porovnané se standardními hodnotami výkonu vyšší.
 
-Pokud databáze SQL vestavěné inteligentní zjistí významné zvýšení v kompilaci dotazu nebo doba provádění dotazu, který má vliv na výkon zatížení, tyto dotazy jsou označeny jako doba trvání dotazu snížení problémy s výkonem. 
+Pokud integrované inteligentní funkce SQL Database zjistí výrazné zvýšení v kompilaci dotazu nebo doba provádění dotazu, který má vliv na výkon úloh, tyto dotazy se označí jako doba trvání dotazu problémech se snižováním výkonu. 
 
-Protokol diagnostiky inteligentního Statistika výstupy hash dotazu snížení výkonnosti dotazu. Hash dotazu určuje, zda byl snížení výkonu související s kompilaci nebo doba provádění dotazu zvýšení, které zvýšily dotazu doba trvání.
+Protokol diagnostiky inteligentních přehledů uloží hodnota hash dotazu dotazu snížení výkonu. Hodnota hash dotazu určuje, zda byl snížení výkonu související s kompilace nebo spuštění dotazu zvýšení, která zvýšil doba trvání dotazu.
 
 ## <a name="timeout-requests"></a>Časový limit žádosti
 
-Časový limit žádosti o snížení modelu analyzuje jednotlivé dotazy a zjistí nějaké zvýšení časových limitů na úrovni spuštění dotazu a celkové limitů požadavek na úrovni databáze ve srovnání s obdobím standardních hodnot výkonu.
+Časový limit žádosti o snížení model analyzuje jednotlivé dotazy a detekuje nějaký nárůst v časové limity na úrovni spuštění dotazu a celkový časový limit požadavku na úrovni databáze, ve srovnání s obdobím standardních hodnot výkonu.
 
-Některé dotazy, ještě před nedostanou fázi provádění může vypršení časového limitu. Způsoby přerušených pracovníků oproti požadavkům vestavěné inteligentní SQL Database měří a analyzuje všechny dotazy, které dorazí databázi, jestli tu fázi provádění nebo ne. 
+Některé dotazy může být vypršení časového limitu ještě dřív, než dorazí fáze spuštění. Prostředky přerušené pracovních procesů a požadavky SQL Database integrované inteligentní funkce opatření a analyzuje všech dotazů, které bylo dosaženo databáze, jestli máte do fáze spuštění nebo ne. 
 
-Po počet časových limitů pro spuštění dotazy nebo Počet přerušených požadavek zaměstnanců, kteří protne prahovou hodnotu určí systém, se zobrazí v protokolu diagnostiky inteligentního statistiky.
+Po počet vypršení časového limitu pro spuštěné dotazy nebo počet pracovních procesů přerušené požadavku překročí prahovou hodnotu spravovaných system, diagnostický protokol se vyplní inteligentní přehledy.
 
-Statistika generované obsahovat počet požadavků, vypršení časového limitu a počet dotazů, vypršení časového limitu. Znamenat snížení výkonu související s zvýšení časového limitu ve fázi provádění nebo je k dispozici celkové úroveň databáze. Při zvýšení časových limitů považuje za důležité pro výkon databáze, tyto dotazy jsou označeny jako snížení problémy s výkonem časový limit. 
+Přehledy vytvořené obsahovat počet požadavků, vypršel časový limit a počet dotazů vypršel časový limit. Údaj o snížení výkonu má vztah k zvýšení časového limitu ve fázi provádění nebo je k dispozici celkovou úroveň databáze. Při zvýšení časových limitů je považován za důležité pro výkon databáze, tyto dotazy se označí jako problémech se snižováním výkonu vypršení časového limitu. 
 
-## <a name="excessive-wait-times"></a>Nadměrné čekací doby
+## <a name="excessive-wait-times"></a>Nadměrné čekací dobu
 
-Model časové nadměrné čekání monitoruje jednotlivé databázové dotazy. Zjistí neobvykle vysokého dotazu čekání statistiky, které překročí absolutní prahovou hodnotu spravované systému. Následující dotaz nadměrné doba čekání metriky jsou dodržovány pomocí nové funkce systému SQL Server, počkejte statistiky dotaz úložiště (sys.query_store_wait_stats):
+Model nadměrné čekací čas monitoruje jednotlivých databázových dotazů. Zjistí statistiky čekání neobvykle vysokého dotazu, které překročí prahové spravovaných system absolutní hodnoty. Následující dotaz nadměrné doba čekání metriky jsou dodržovány pomocí nové funkce systému SQL Server, počkejte statistiky Query Store (sys.query_store_wait_stats):
 
-- Rozsáhlejší limitů prostředků
-- Rozsáhlejší limitů elastického fondu prostředků
-- Nadměrný počet vláken worker nebo relace
-- Zamykání nadměrné databáze
+- Dosáhnout omezení prostředků
+- Rozsáhlejší limity elastického fondu prostředků
+- Nadměrný počet pracovních procesů nebo relace vláken
+- Uzamčení nadměrné databáze
 - Přetížení paměti
 - Další statistiky čekání
 
-Rozsáhlejší limitů prostředků nebo limitů elastického fondu prostředků označují, že spotřeba dostupné prostředky na předplatném nebo ve fondu elastické překročí absolutní prahové hodnoty. Tyto statistiky znamenat snížení výkonu zatížení. Vysoký počet vláken worker nebo relace označuje podmínku, ve kterém překročen počet pracovních vláken nebo relace iniciované absolutní prahové hodnoty. Tyto statistiky znamenat snížení výkonu zatížení.
+Dosáhnout omezení prostředků nebo prostředek limity elastického fondu označují, že spotřeby dostupných prostředků v rámci předplatného nebo do elastického fondu překročen absolutní prahové hodnoty. Na tyto statistiky znamenat snížení výkonu úloh. Nadměrný počet pracovních procesů nebo relace vláken označuje podmínku, ve kterém překročen počet pracovních vláken nebo relace iniciované absolutní prahové hodnoty. Na tyto statistiky znamenat snížení výkonu úloh.
 
-Zamykání nadměrné databáze označuje podmínku, ve kterém překročila počet zámky v databázi absolutní prahové hodnoty. Tato stat označuje snížení zatížení výkonu. Paměti, že zatížení je situace, ve kterém se uděluje počet vláken, které žádají o paměti překročí absolutní prahovou hodnotu. Tato stat označuje snížení zatížení výkonu.
+Uzamčení nadměrné databáze označuje podmínku, ve kterém má překročen počet zámků na databázi absolutní prahové hodnoty. Tento stat indikuje snížení výkonu úloh. Paměti, že je tlak podmínku, ve kterém se uděluje počet vláken, požadování paměti překročí absolutní prahovou hodnotu. Tento stat indikuje snížení výkonu úloh.
 
-Další statistiky detekce čekání označuje podmínku, ve kterém různé metrika měří prostřednictvím dotazu úložiště počkejte statistiky překročí absolutní prahovou hodnotu. Tyto statistiky znamenat snížení výkonu zatížení.
+Další zjišťování statistiky čekání označuje podmínku, ve kterém různé metriky měří prostřednictvím statistiky čekání se Query Store překročen absolutní prahovou hodnotu. Na tyto statistiky znamenat snížení výkonu úloh.
 
-Po zjištění nadměrného čekací doby, v závislosti na dostupná data, protokolu diagnostiky inteligentního Statistika hodnoty hash výstupy dotazů, které ovlivňují a ovlivněných snížení výkonu, podrobnosti o metriky, které způsobí dotazy čekání při provádění, a Doba čekání měřená.
+Po zjištění nadměrného čekací dobu, podle toho, aby byla data dostupná, protokolu diagnostiky inteligentních přehledů hodnoty hash výstupy dopad a ovlivněné dotazů snížení výkonu, podrobností, která způsobí dotazy čekat ve spuštění, a měřené čekací doba.
 
-## <a name="errored-requests"></a>Chyba požadavků
+## <a name="errored-requests"></a>Chybných žádostí
 
-Chyba požadavky snížení model monitorování jednotlivé dotazy a zjistí o zvýšení v počet dotazů, že chyba se porovná s obdobím směrného plánu. Tento model také monitoruje kritické výjimky, které překročí absolutní prahové hodnoty, které spravuje vestavěné inteligentní databáze SQL. Je automaticky za počet požadavků na dotazy provést s databází a účty pro všechny změny úlohy v monitorovaných období.
+Model snížení chybných žádostí v jednotlivých monitorování dotazů a zjistí nárůst počtu dotazů, že došlo k chybě ve srovnání s směrné období. Tento model také sleduje kritické výjimky, které překročí absolutní prahové hodnoty, které spravuje integrované inteligentní funkce SQL Database. Systém automaticky bere v úvahu počet požadavků na dotazy do databáze a účty pro všechny úlohy změny provedené v monitorovaných období.
 
-Když měřená nárůst chyba požadavky relativně k celkový počet zpracovaných požadavků považuje za důležité pro výkon zatížení, ovlivněných dotazy jsou označeny jako snížení problémy s výkonem chybných požadavků.
+Když měřené zvýšení chybných žádostí vzhledem k celkový počet zpracovaných požadavků je považován za důležité pro výkon úloh, ovlivněné dotazy se označí jako problémech se snižováním výkonu chybných žádostí.
 
-Protokol inteligentního Statistika výstupy počet chybných požadavků. Označuje, zda byl snížení výkonu související zvýšení chyba požadavky nebo při překročení prahové hodnoty monitorovaných kritické výjimky a měřené čas snížení výkonu. 
+Intelligent Insights protokolů výstupů počet chybných žádostí. Znamená to, jestli snížení výkonu byl související s prodloužením chybných žádostí nebo překračuje prahovou hodnotu monitorovaných kritické výjimky a měřitelných čas snížení výkonu. 
 
-Pokud monitorované kritické výjimky křížové absolutní prahové hodnoty spravuje systém, vygeneruje se inteligentní přehledu s podrobnostmi kritické výjimky.
+Pokud některý z monitorovaných kritické výjimky pro různé absolutní prahové hodnoty, které jsou spravované systémem, vygeneruje se s podrobnostmi o kritické výjimky inteligentních přehledů.
 
 ## <a name="next-steps"></a>Další postup
-* Zjistěte, jak [řešení potíží s výkonem databáze SQL pomocí služby inteligentního Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
-* Použití [inteligentního SQL Database Statistika výkonu diagnostiky protokolu](sql-database-intelligent-insights-use-diagnostics-log.md).
-* Zjistěte, jak [monitorovat SQL Database pomocí SQL Analytics](../log-analytics/log-analytics-azure-sql.md).
-* Zjistěte, jak [shromažďovat a využívat data protokolu z vašich prostředků Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
+* Zjistěte, jak [řešení problémů s výkonem SQL Database s Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
+* Použití [protokolování diagnostiky výkonu Intelligent Insights SQL Database](sql-database-intelligent-insights-use-diagnostics-log.md).
+* Zjistěte, jak [monitorování SQL Database s použitím SQL Analytics](../log-analytics/log-analytics-azure-sql.md).
+* Zjistěte, jak [shromažďovat a zpracovávat data protokolu z vašich prostředků Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
 
 

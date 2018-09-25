@@ -1,79 +1,60 @@
 ---
-title: Reference rutin Powershellu pro Scheduler
-description: Reference rutin Powershellu pro Scheduler
+title: Reference rutin prostředí PowerShell – Azure Scheduleru
+description: Další informace o rutinách prostředí PowerShell pro Azure Scheduler
 services: scheduler
-documentationcenter: .NET
-author: derek1ee
-manager: kevinlam1
-editor: ''
-ms.assetid: 9a26c457-d7a1-4e4a-bc79-f26592155218
 ms.service: scheduler
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
+author: derek1ee
+ms.author: deli
+ms.reviewer: klam
+ms.assetid: 9a26c457-d7a1-4e4a-bc79-f26592155218
 ms.topic: article
 ms.date: 08/18/2016
-ms.author: deli
-ms.openlocfilehash: 141919ab4506b3de4c4a69670dcf54c60ee6409c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a06439150ac255e7b436082ecc88702bf0c1dec1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23866048"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46991092"
 ---
-# <a name="scheduler-powershell-cmdlets-reference"></a>Reference rutin Powershellu pro Scheduler
-Následující tabulka popisuje a obsahuje odkazy na stránce odkaz každé hlavní rutiny ve službě Azure Scheduler.
+# <a name="powershell-cmdlets-reference-for-azure-scheduler"></a>Referenční informace k rutin Powershellu pro Azure Scheduler
 
-Chcete-li nainstalovat Azure PowerShell a přidružit ho ke svému předplatnému Azure, prohlédněte si téma [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview). 
+> [!IMPORTANT]
+> [Služba Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje Azure Scheduleru, která se vyřazuje. K plánování úloh, [místo toho vyzkoušet Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
 
-Další informace o [rutiny Azure Resource Manager](/powershell/azure/overview), najdete v části [použití Azure Powershellu s Azure Resource Manager](../powershell-azure-resource-manager.md).
+K vytváření skriptů pro vytváření a Správa úloh a kolekcí úloh Scheduleru, můžete použít rutiny prostředí PowerShell. Tento článek uvádí hlavní [rutiny Powershellu pro Azure Scheduler](/powershell/module/azurerm.scheduler) s odkazy na články odkaz. Instalace Azure Powershellu pro vaše předplatné Azure, najdete v článku [instalace a konfigurace Azure Powershellu](/powershell/azure/overview). Další informace o [rutiny Azure Resource Manageru](/powershell/azure/overview), naleznete v tématu [pomocí Azure Powershellu s Azure Resource Managerem](../powershell-azure-resource-manager.md).
 
-| Rutina | Popis rutiny |
-| --- | --- |
-| [Zakázat AzureRmSchedulerJobCollection](/powershell/module/azurerm.scheduler/disable-azurermschedulerjobcollection) |Zakáže kolekce úloh. |
-| [Povolit AzureRmSchedulerJobCollection](/powershell/module/azurerm.scheduler/enable-azurermschedulerjobcollection) |Umožňuje kolekce úloh. |
-| [Get-AzureRmSchedulerJob](/powershell/module/azurerm.scheduler/get-azurermschedulerjob) |Získá plánovače úloh. |
-| [Get-AzureRmSchedulerJobCollection](/powershell/module/azurerm.scheduler/get-azurermschedulerjobcollection) |Získá kolekce úloh. |
-| [Get-AzureRmSchedulerJobHistory](/powershell/module/azurerm.scheduler/get-azurermschedulerjobhistory) |Získá historie úlohy. |
-| [Nové AzureRmSchedulerHttpJob](/powershell/module/azurerm.scheduler/new-azurermschedulerhttpjob) |Vytvoří úlohu HTTP. |
+| Rutina | Popis |
+|--------|-------------|
+| [Zakázat AzureRmSchedulerJobCollection](/powershell/module/azurerm.scheduler/disable-azurermschedulerjobcollection) |Vypne kolekci úloh. |
+| [Povolit AzureRmSchedulerJobCollection](/powershell/module/azurerm.scheduler/enable-azurermschedulerjobcollection) |Umožňuje kolekci úloh. |
+| [Get-AzureRmSchedulerJob](/powershell/module/azurerm.scheduler/get-azurermschedulerjob) |Získá Plánovač úloh. |
+| [Get-AzureRmSchedulerJobCollection](/powershell/module/azurerm.scheduler/get-azurermschedulerjobcollection) |Získá kolekci úloh. |
+| [Get-AzureRmSchedulerJobHistory](/powershell/module/azurerm.scheduler/get-azurermschedulerjobhistory) |Načte historii úlohy. |
+| [Nové AzureRmSchedulerHttpJob](/powershell/module/azurerm.scheduler/new-azurermschedulerhttpjob) |Vytvoří úlohu služby HTTP. |
 | [Nové AzureRmSchedulerJobCollection](/powershell/module/azurerm.scheduler/new-azurermschedulerjobcollection) |Vytvoří kolekci úloh. |
-| [Nové AzureRmSchedulerServiceBusQueueJob](/powershell/module/azurerm.scheduler/new-azurermschedulerservicebusqueuejob) |Vytvoří úlohu fronty service bus. |
-| [Nové AzureRmSchedulerServiceBusTopicJob](/powershell/module/azurerm.scheduler/new-azurermschedulerservicebustopicjob) |Vytvoří úlohu tématu service bus. |
+| [Nové AzureRmSchedulerServiceBusQueueJob](/powershell/module/azurerm.scheduler/new-azurermschedulerservicebusqueuejob) | Vytvoří úlohu fronty služby Service Bus. |
+| [Nové AzureRmSchedulerServiceBusTopicJob](/powershell/module/azurerm.scheduler/new-azurermschedulerservicebustopicjob) |Vytvoří úlohu téma služby Service Bus. |
 | [Nové AzureRmSchedulerStorageQueueJob](/powershell/module/azurerm.scheduler/new-azurermschedulerstoragequeuejob) |Vytvoří úlohu fronty úložiště. |
-| [Odebrat AzureRmSchedulerJob](/powershell/module/azurerm.scheduler/remove-azurermschedulerjob) |Odebere plánovače úloh. |
-| [Odebrat AzureRmSchedulerJobCollection](/powershell/module/azurerm.scheduler/remove-azurermschedulerjobcollection) |Odebere kolekce úloh. |
-| [Set-AzureRmSchedulerHttpJob](/powershell/module/azurerm.scheduler/set-azurermschedulerhttpjob) |Upravuje HTTP plánovače úloh. |
-| [Set-AzureRmSchedulerJobCollection](/powershell/module/azurerm.scheduler/set-azurermschedulerjobcollection) |Upravuje kolekce úloh. |
-| [Set-AzureRmSchedulerServiceBusQueueJob](/powershell/module/azurerm.scheduler/set-azurermschedulerservicebusqueuejob) |Upravuje úlohy fronty sběrnice služby. |
-| [Set-AzureRmSchedulerServiceBusTopicJob](/powershell/module/azurerm.scheduler/set-azurermschedulerservicebustopicjob) |Upravuje úlohu tématu service bus. |
-| [Set-AzureRmSchedulerStorageQueueJob](/powershell/module/azurerm.scheduler/set-azurermschedulerstoragequeuejob) |Upravuje úlohy fronty úložiště. |
+| [Odebrat AzureRmSchedulerJob](/powershell/module/azurerm.scheduler/remove-azurermschedulerjob) |Odebere úlohy Scheduleru. |
+| [Odebrat AzureRmSchedulerJobCollection](/powershell/module/azurerm.scheduler/remove-azurermschedulerjobcollection) |Odstraní kolekci úloh. |
+| [Set-AzureRmSchedulerHttpJob](/powershell/module/azurerm.scheduler/set-azurermschedulerhttpjob) |Upraví HTTP Plánovač úloh. |
+| [Set-AzureRmSchedulerJobCollection](/powershell/module/azurerm.scheduler/set-azurermschedulerjobcollection) |Upraví kolekci úloh. |
+| [Set-AzureRmSchedulerServiceBusQueueJob](/powershell/module/azurerm.scheduler/set-azurermschedulerservicebusqueuejob) |Upraví úlohy fronty služby Service Bus. |
+| [Set-AzureRmSchedulerServiceBusTopicJob](/powershell/module/azurerm.scheduler/set-azurermschedulerservicebustopicjob) |Upraví úlohu téma služby Service Bus. |
+| [Set-AzureRmSchedulerStorageQueueJob](/powershell/module/azurerm.scheduler/set-azurermschedulerstoragequeuejob) |Upraví úlohy fronty úložiště. |
+||| 
 
-Podrobnější informace můžete spustit některý z následujících rutin: 
+Další podrobnosti můžete spustit některý z těchto rutin: 
 
 ```
 Get-Help <cmdlet name> -Detailed
-```
-```
 Get-Help <cmdlet name> -Examples
-```
-```
 Get-Help <cmdlet name> -Full
 ```
 
-## <a name="see-also"></a>Viz také
- [Co je Scheduler?](scheduler-intro.md)
+## <a name="see-also"></a>Další informace najdete v tématech
 
- [Koncepty, terminologie a hierarchie entit Azure Scheduleru](scheduler-concepts-terms.md)
-
- [Úvod do používání Scheduleru na portálu Azure Portal](scheduler-get-started-portal.md)
-
- [Plány a fakturace v Azure Scheduleru](scheduler-plans-billing.md)
-
- [REST API Azure Scheduleru – referenční informace](https://msdn.microsoft.com/library/mt629143)
-
- [Vysoká dostupnost a spolehlivost Azure Scheduleru](scheduler-high-availability-reliability.md)
-
- [Omezení, výchozí hodnoty a chybové kódy Azure Scheduleru](scheduler-limits-defaults-errors.md)
-
- [Odchozí ověření Azure Scheduleru](scheduler-outbound-authentication.md)
-
+* [Co je Azure Scheduler?](scheduler-intro.md)
+* [Koncepty, terminologie a hierarchie entit](scheduler-concepts-terms.md)
+* [Vytvoření a naplánování první úlohy – Azure portal](scheduler-get-started-portal.md)
+* [REST API Azure Scheduleru – referenční informace](https://msdn.microsoft.com/library/mt629143)

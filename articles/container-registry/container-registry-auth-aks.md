@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: marsma
-ms.openlocfilehash: d2f7769469c9f3ebdbef5fc6ee1f09b1acd573ef
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: c9ade4d61a1b95d5041a13f9436f0d02a7951758
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715825"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981645"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Ověřování pomocí Azure Container Registry ze služby Azure Kubernetes
 
@@ -21,7 +21,7 @@ Pokud používáte Azure Container Registry (ACR) s Azure Kubernetes Service (AK
 
 ## <a name="grant-aks-access-to-acr"></a>AKS udělit přístup do služby ACR
 
-Při vytváření clusteru AKS Azure také vytvoří službu objektu zabezpečení pro podporu funkčnost clusteru v jiných prostředcích Azure. Použít tento instanční objekt služby pro automaticky generované pro ověřování pomocí registru služby ACR. K tomu je potřeba vytvořit i službu Azure AD [přiřazení role](../role-based-access-control/overview.md#role-assignment) , který uděluje do registru kontejneru clusteru přístup k hlavní službě.
+Při vytváření clusteru AKS Azure také vytvoří službu objektu zabezpečení pro podporu funkčnost clusteru v jiných prostředcích Azure. Použít tento instanční objekt služby pro automaticky generované pro ověřování pomocí registru služby ACR. K tomu je potřeba vytvořit i službu Azure AD [přiřazení role](../role-based-access-control/overview.md#role-assignments) , který uděluje do registru kontejneru clusteru přístup k hlavní službě.
 
 Pomocí následujícího skriptu pro udělení přístupu instančního objektu služby AKS generované do služby Azure container registry. Upravit `AKS_*` a `ACR_*` proměnné pro vaše prostředí před spuštěním skriptu.
 

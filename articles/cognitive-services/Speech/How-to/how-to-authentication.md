@@ -10,12 +10,13 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 93171dba435172565215560e437dc56c9436baac
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4d4b9f43b6b3a4127d70989414d467f724f6ec28
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366450"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972789"
 ---
 # <a name="authenticate-to-the-speech-api"></a>Ověření rozhraním Speech API
 

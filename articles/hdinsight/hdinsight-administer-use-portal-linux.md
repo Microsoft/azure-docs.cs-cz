@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: jasonh
-ms.openlocfilehash: 0e584343e568c5cd0d91a1e6ff51dc899c5434d7
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: b00c88e526bf72f51df0d2a3d6a87fbd5bc1f991
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106525"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46991976"
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Správa clusterů Hadoop v HDInsight pomocí webu Azure portal
 
@@ -207,7 +207,7 @@ Existuje mnoho způsobů, které můžete naprogramovat procesu:
 
 * Uživatel Azure Data Factory. Zobrazit [vytvořit na vyžádání založené na Linuxu Hadoop clusterů v HDInsight pomocí Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) pro vytváření HDInsight na vyžádání propojené služby.
 * Použití Azure Powershellu.  Zobrazit [analyzovat zpoždění letů](hdinsight-analyze-flight-delay-data.md).
-* Pomocí Azure CLI. Zobrazit [HDInsight Správa clusterů pomocí rozhraní příkazového řádku Azure](hdinsight-administer-use-command-line.md).
+* Pomocí příkazového řádku Azure Classic. Zobrazit [HDInsight Správa clusterů pomocí rozhraní příkazového řádku Azure Classic](hdinsight-administer-use-command-line.md).
 * Použití sady HDInsight .NET SDK. Zobrazit [úlohy systému Hadoop odeslat](hadoop/submit-apache-hadoop-jobs-programmatically.md).
 
 Informace o cenách najdete v části [ceny HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/). Pokud chcete odstranit cluster z portálu, přečtěte si téma [odstranění clusterů](#delete-clusters)
@@ -291,7 +291,7 @@ Clustery HDInsight mají následující webové služby HTTP (mít všechny tyto
 * Oozie
 * Templeton
 
-Tyto služby jsou ve výchozím nastavení oprávnění pro přístup. Vám může k nim odvolat/udělení přístupu pomocí [rozhraní příkazového řádku Azure](hdinsight-administer-use-command-line.md#enabledisable-http-access-for-a-cluster) a [prostředí Azure PowerShell](hdinsight-administer-use-powershell.md#grantrevoke-access).
+Tyto služby jsou ve výchozím nastavení oprávnění pro přístup. Vám může k nim odvolat/udělení přístupu pomocí [rozhraní příkazového řádku Azure Classic](hdinsight-administer-use-command-line.md#enabledisable-http-access-for-a-cluster) a [prostředí Azure PowerShell](hdinsight-administer-use-powershell.md#grantrevoke-access).
 
 ## <a name="find-the-subscription-id"></a>Najít ID předplatného
 
@@ -363,7 +363,7 @@ Pomocí webu Azure portal, můžete procházet obsah výchozího kontejneru.
 V tomto článku jste se naučili některé základní funkce pro správu. Další informace naleznete v následujících článcích:
 
 * [Správa HDInsight pomocí Azure Powershellu](hdinsight-administer-use-powershell.md)
-* [Správa HDInsight pomocí Azure CLI](hdinsight-administer-use-command-line.md)
+* [Správa HDInsight pomocí příkazového řádku Azure Classic](hdinsight-administer-use-command-line.md)
 * [Vytvoření clusterů HDInsight](hdinsight-hadoop-provision-linux-clusters.md)
 * [Další informace o pomocí webového uživatelského rozhraní Ambari](hdinsight-hadoop-manage-ambari.md)
 * [Podrobnosti o použití rozhraní Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)

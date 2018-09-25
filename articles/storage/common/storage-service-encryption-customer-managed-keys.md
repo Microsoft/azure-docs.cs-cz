@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/01/2018
 ms.author: lakasa
 ms.component: common
-ms.openlocfilehash: f14ffc7bfbdabdd93e7743c7932dae1af7730e60
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 6b73a802b186e5fcf2380f5f4c80c1bb67d253fa
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43781560"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981861"
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Šifrování služby Storage pomocí klíčů spravovaných zákazníkem ve službě Azure Key Vault
 Microsoft Azure platí závazek pomáhá zabezpečit a chránit vaše data pro splnění vaší organizace na zabezpečení a závazky dodržování předpisů. Jedním ze způsobů, aby Platforma Azure úložiště chrání vaše data je pomocí šifrování služby Storage (SSE), která šifruje vaše data při zápisu do úložiště a dešifruje data při jeho načítání. Šifrování a dešifrování je automatické, transparentnost a používá oborového 256bitového [šifrování AES](https://wikipedia.org/wiki/Advanced_Encryption_Standard), jednu z nejsilnějších bloku šifer k dispozici.
@@ -31,7 +31,7 @@ Proč vytvářet vlastní klíče? Vlastní klíče získáte větší flexibili
 Používat klíče spravované zákazníkem SSE, můžete vytvořit nový trezor klíčů a klíč, nebo můžete použít existujícího trezoru klíčů a klíč. Účet úložiště a trezoru klíčů musí být ve stejné oblasti, ale mohou být v různých předplatných. 
 
 ### <a name="step-1-create-a-storage-account"></a>Krok 1: Vytvoření účtu úložiště
-Nejprve vytvořte účet úložiště, pokud již nemáte. Další informace najdete v tématu [vytvořit nový účet úložiště](storage-quickstart-create-account.md).
+Nejprve vytvořte účet úložiště, pokud již nemáte. Další informace najdete v tématu [vytvořit účet úložiště](storage-quickstart-create-account.md).
 
 ### <a name="step-2-enable-sse-for-blob-and-file-storage"></a>Krok 2: Povolení SSE pro úložiště objektů Blob a souborů
 Pokud chcete povolit SSE pomocí klíčů spravovaných zákazníkem, musí být dvě funkce ochrany klíčů obnovitelného odstranění a proveďte není vyprázdnit, povolená i ve službě Azure Key Vault. Tato nastavení Ujistěte se, že klíče nelze neúmyslně nebo úmyslně odstraněnými. Maximální doba uchování klíčů je nastavena na 90 dnů, ochraně uživatelů před útočníky nebo útoky ransomwaru.

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2018
 ms.author: jdial
-ms.openlocfilehash: 95fc257485aeea396185089b2b73a6e73ee2bfee
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: f25da8c1eedc31209a67ae05aef9dded45b706e0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42060080"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46962398"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Přehled služby Azure DDoS Protection Standard
 
@@ -28,10 +28,10 @@ Distribuované útoky na dostupnost služeb (DDoS) jsou některé z největšíc
 
 Azure DDoS protection v kombinaci s aplikací osvědčené postupy pro navrhování, poskytují ochranu před útoky DDoS. Azure DDoS protection nabízí následující úrovně služeb:
 
-- **Základní**: automaticky povolené v rámci platformy Azure, bez dalších poplatků. Monitorování neustále v provozu a v reálném čase ke zmírnění běžných útoků na úrovni sítě, poskytují stejné obranu využívaných online služeb Microsoftu. Celé škále globální sítě Azure slouží k distribuci a zmírnit útok provoz napříč oblastmi. Poskytuje ochranu pro protokoly IPv4 a IPv6 Azure [veřejné IP adresy](virtual-network-public-ip-address.md).
-- **Standardní**: úroveň služeb Basic, který je vyladěný speciálně pro prostředky Azure Virtual Network poskytuje funkce pro další zmírnění útoků. DDoS Protection Standard je snadno zajistit a nevyžaduje žádné změny aplikace. Zásady ochrany je vyladěná prostřednictvím monitorování vyhrazené provozu a algoritmů strojového učení. Zásady se použijí k veřejné IP adresy přidružené k prostředkům, které jsou nasazené ve virtuálních sítích, jako je například instancí nástroje pro vyrovnávání zatížení Azure, Azure Application Gateway a Azure Service Fabric. Telemetrická data v reálném čase je k dispozici prostřednictvím Azure Monitor zobrazení během útoku a historie. Ochrana vrstvy aplikace je možné přidat prostřednictvím [Firewall webových aplikací služby Azure Application Gateway](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Poskytuje ochranu pro IPv4 Azure [veřejné IP adresy](virtual-network-public-ip-address.md).
+- **Základní**: automaticky povolené v rámci platformy Azure. Monitorování neustále v provozu a v reálném čase ke zmírnění běžných útoků na úrovni sítě, poskytují stejné obranu využívaných online služeb Microsoftu. Celé škále globální sítě Azure slouží k distribuci a zmírnit útok provoz napříč oblastmi. Poskytuje ochranu pro protokoly IPv4 a IPv6 Azure [veřejné IP adresy](virtual-network-public-ip-address.md).
+- **Standardní**: úroveň služeb Basic, který je vyladěný speciálně pro prostředky Azure Virtual Network poskytuje funkce pro další zmírnění útoků. DDoS Protection Standard je snadno zajistit a nevyžaduje žádné změny aplikace. Zásady ochrany je vyladěná prostřednictvím monitorování vyhrazené provozu a algoritmů strojového učení. Zásady se použijí k veřejné IP adresy přidružené k prostředkům, které jsou nasazené ve virtuálních sítích, jako je například instancí nástroje pro vyrovnávání zatížení Azure, Azure Application Gateway a Azure Service Fabric. Telemetrická data v reálném čase je k dispozici prostřednictvím Azure Monitor zobrazení během útoku a historie. Bohaté útoku zmírnění analytics jsou k dispozici přes nastavení diagnostiky. Ochrana vrstvy aplikace je možné přidat prostřednictvím [Firewall webových aplikací služby Azure Application Gateway](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo po instalací 3. stran firewall z Azure Marketplace. Poskytuje ochranu pro IPv4 Azure [veřejné IP adresy](virtual-network-public-ip-address.md).
 
-![Azure DDoS Standard Protection](./media/ddos-protection-overview/ddospic.png)
+![Azure DDoS Protection základní vs. Standard](./media/ddos-protection-overview/ddoscomparison.png)
 
 ## <a name="types-of-ddos-attacks-that-ddos-protection-standard-mitigates"></a>Typy útoků DDoS, které před útoky DDoS Protection Standard omezuje
 
@@ -53,8 +53,9 @@ DDoS Protection standardní funkce patří:
 - **Ochrana na klíč:** zjednodušená konfigurace okamžitě chrání všechny prostředky ve virtuální síti jako standardní před útoky DDoS Protection je povolená. Vyžaduje se žádná definice zásahů nebo uživatele. Standardní před útoky DDoS Protection okamžitě a automaticky zmírní útok, jakmile se detekuje.
 - **Monitorování vždy provozu:** vzory provozu vaší aplikace jsou monitorovány 24 hodin denně, 7 dní v týdnu, hledá indikátory útoky DDoS. Omezení rizik provádí při překročení zásady ochrany.
 - **Adaptivní ladění:** provoz inteligentní profilace učí o provozu vaší aplikace v průběhu času a vybere a aktualizuje profil, který je nejvhodnější pro vaši službu. Profil, který upravuje provoz mění v průběhu času.
-- **Vrstvy 3 ochrany vrstvy 7:** poskytuje ochranu před útoky DDoS plnohodnotných, při použití s firewallem webových aplikací.
+- **Víceúrovňovou ochranu:** poskytuje ochranu před útoky DDoS plnohodnotných, při použití s firewallem webových aplikací.
 - **Škálování rozsáhlé omezení rizik:** přes 60 útoku různé typy můžete minimalizovat, globální kapacitou pro ochranu před největší známé útoky DDoS.
+- **Útokům analytics:** získat podrobné sestavy v přírůstcích po 5 minutách během útoku a úplný přehled po skončení útoku. Stream zmírnění protokolů toku pro offline bezpečnostní informace a události správu systému (SIEM) pro téměř v reálném čase monitorovat během útoku.
 - **Útokům metriky:** Summarized metriky z každého útoku jsou přístupné prostřednictvím služby Azure Monitor.
 - **Upozornění útoku:** oznámení se dají konfigurovat na spouštění a zastavování útoků a na dobu trvání útok, pomocí integrované útoku metrik. Upozornění integrovat do provozní softwaru, například Microsoft Azure Log Analytics, Splunk, Azure Storage, e-mailu a na webu Azure portal.
 - **Se zárukou nákladů:** přenosu dat a aplikací horizontální navýšení kapacity kredity pro dokument útoky DDoS.

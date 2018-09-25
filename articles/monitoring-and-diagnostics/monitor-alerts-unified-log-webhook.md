@@ -8,30 +8,30 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: f20e102ee1d100ea02da53fe460b56f8f8390418
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f5f8ed885791a648f30790434be56d966bbf2e47
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426689"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989290"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Akce Webhooku pro pravidla upozornění protokolů
-Při [v Azure se vytvoří výstraha ](monitor-alerts-unified-usage.md), máte možnost [konfigurace pomocí skupin akcí](monitoring-action-groups.md) provést jednu nebo více akcí.  Tento článek popisuje různé webhooku akce, které jsou k dispozici a podrobnosti o tom, jak nakonfigurovat vlastní webhooku založenými na JSON.
+Když [upozornění protokolu se vytvoří v Azure](alert-log.md), máte možnost [konfigurace pomocí skupin akcí](monitoring-action-groups.md) provést jednu nebo více akcí.  Tento článek popisuje různé webhooku akce, které jsou k dispozici a podrobnosti o tom, jak nakonfigurovat vlastní webhooku založenými na JSON.
 
 
 ## <a name="webhook-actions"></a>Akce Webhooku
 
-Akce Webhooku vám umožňují spuštění externího procesu prostřednictvím jednoho požadavku HTTP POST.  Volané služby by měl podpora webhooků a zjistit, jak pomocí jakékoli datové části přijme.   Příklady použití webhooku v reakci na oznámení se odesílá zprávu [Slack](http://slack.com) nebo vytváření incidentu v [PagerDuty](http://pagerduty.com/).  
+Akce Webhooku vám umožňují spuštění externího procesu prostřednictvím jednoho požadavku HTTP POST.  Volané služby by měl podpora webhooků a zjistit, jak pomocí jakékoli datové části přijme.    
 
 Akce Webhooku vyžadovat vlastnosti v následující tabulce:
 
 | Vlastnost | Popis |
 |:--- |:--- |
 | Adresa URL webhooku |Adresa URL webhooku. |
-| Vlastní datová část JSON |Vlastní datová část k odesílání pomocí webhooku, pokud tato možnost zvolená během vytváření výstrahy. Podrobnosti o adrese [spravovat upozornění pomocí Azure Alerts ](monitor-alerts-unified-usage.md) |
+| Vlastní datová část JSON |Vlastní datová část k odesílání pomocí webhooku, pokud tato možnost zvolená během vytváření výstrahy. Podrobnosti o adrese [Spravovat výstrahy protokolu](alert-log.md) |
 
 > [!NOTE]
-> Otestovat Webhook tlačítko vedle *zahrnout vlastní datovou část JSON pro webhook* možnost pro výstrahy protokolu, se aktivuje fiktivní volání otestovat adresu URL webhooku. Skutečná data a zástupce schématu JSON pro upozornění protokolu neobsahuje. 
+> Zobrazení – tlačítko Webhooku spolu s *zahrnout vlastní datovou část JSON pro webhook* možnost protokolu upozornění, zobrazí ukázkovou datovou část webhooku pro vlastní nastavení k dispozici. Skutečná data a zástupce schématu JSON pro upozornění protokolu neobsahuje. 
 
 Webhooky zahrnují adresu URL a datové části je ve formátu JSON, který se data odeslaná do externí služby.  Ve výchozím nastavení, datová část obsahuje hodnoty v následující tabulce: je možné nahradit tuto datovou část vlastní sadou vlastní.  V takovém případě můžete použít proměnné v tabulce pro každý z parametrů zahrnout vlastní datovou část jejich hodnoty.
 
@@ -54,7 +54,7 @@ Webhooky zahrnují adresu URL a datové části je ve formátu JSON, který se d
 | ID předplatného |#subscriptionid |ID vašeho předplatného Azure používat s Application Insights. 
 
 > [!NOTE]
-> LinkToSearchResults předá parametrů, jako je čas SearchQuery, StartTime Interval hledání & Konec intervalu vyhledávání v adrese URL na webu Azure portal pro zobrazení v části Analytics. Azure portal má omezení velikosti URI 2000 znaků. přibl a otevře se hodnoty parametrů překročení těchto omezení. Uživatele můžete ručně zadat podrobnosti a zobrazit výsledky analýzy portálu nebo pomocí [REST API pro Application Insights Analytics](https://dev.applicationinsights.io/documentation/Using-the-API) nebo [rozhraní API REST služby Log Analytics](https://dev.loganalytics.io/reference) k načtení výsledků prostřednictvím kódu programu 
+> LinkToSearchResults předá parametrů, jako je čas SearchQuery, StartTime Interval hledání & Konec intervalu vyhledávání v adrese URL na webu Azure portal pro zobrazení v části Analytics. Azure portal, má identifikátor URI upravit velikost limitu přibl 2000 znaků a bude *není* Otevřít odkaz podle výstrahy, pokud překročí uvedené mezní hodnoty parametrů. Uživatele můžete ručně zadat podrobnosti a zobrazit výsledky analýzy portálu nebo pomocí [REST API pro Application Insights Analytics](https://dev.applicationinsights.io/documentation/Using-the-API) nebo [rozhraní API REST služby Log Analytics](https://dev.loganalytics.io/reference) k načtení výsledků prostřednictvím kódu programu 
 
 Například můžete například zadat následující vlastní datovou část, která obsahuje jeden parametr s názvem *text*.  Služba, která volá tento webhook by byl očekáván tento parametr.
 
@@ -198,6 +198,7 @@ Následuje ukázkovou datovou část pro akce webhooku vlastní žádné upozorn
 
 ## <a name="next-steps"></a>Další postup
 - Další informace o [upozornění protokolů ve výstrahách Azure ](monitor-alerts-unified-log.md)
+- Vysvětlení [managaing protokolu upozornění v Azure](alert-log.md)
 - Vytvoření a správa [skupiny akcí v Azure](monitoring-action-groups.md)
 - Další informace o [Application Insights](../application-insights/app-insights-analytics.md)
 - Další informace o [Log Analytics](../log-analytics/log-analytics-overview.md). 

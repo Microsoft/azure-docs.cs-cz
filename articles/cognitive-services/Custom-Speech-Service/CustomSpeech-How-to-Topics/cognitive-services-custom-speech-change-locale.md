@@ -1,6 +1,6 @@
 ---
-title: Podporované jazyky a národní prostředí ve službě vlastní řeči na Azure | Microsoft Docs
-description: Přehled podporovaných jazyků vlastní řeči služby v kognitivní služby.
+title: Podporované jazyky a národní prostředí ve službě Custom Speech Service v Azure | Dokumentace Microsoftu
+description: Přehled podporovaných jazyků Custom Speech Service ve službě Cognitive Services.
 services: cognitive-services
 author: PanosPeriorellis
 manager: onano
@@ -9,26 +9,27 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ms.openlocfilehash: c378fd951f9cd04884f44fbec5accb5d9a886bfe
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 1f186681c7e46d2e47ed7eee55c8f61290c48fcb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342372"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987522"
 ---
-# <a name="supported-locales-in-custom-speech-service"></a>Podporovaných národních prostředí na vlastní řeči služby
-Vlastní rozpoznávání řeči služba aktuálně podporuje přizpůsobení modelů v následujících národních prostředí:
+# <a name="supported-locales-in-custom-speech-service"></a>Podporovaná národní prostředí ve službě Custom Speech Service
+Custom Speech Service aktuálně podporuje úpravy modelů v následujících národních prostředí:
 
-| Typ modelu | Jazyková podpora |
+| Typ modelu | Podpora jazyků |
 |----|-----|
-| Akustickými modely | Čeština (cs cz) |
-| Jazyk modely | Čeština (cs cz), čínština (zh-CN) |
+| Akustických modelů | Jazykovou verzi US English (en US) |
+| Jazykových modelů | Jazykovou verzi US English (en US), čínština (zh-CN) |
 
-I když přizpůsobení akustickými modelu je podporována pouze v angličtinu, import čínština akustickými dat je podporována pro účely testování offline přizpůsobené čínština jazyk modelů.
+I když přizpůsobení akustického modelu je podporovaná jenom v Americkou angličtinu, import čínský akustických dat je podporován pro účely testování offline čínský vlastní jazykové modely.
 
-Před provedením jakékoli akce je nutné vybrat odpovídající národní prostředí. Aktuální národní prostředí je uvedené v názvu tabulky na všechna data, model a nasazení stránky. Chcete-li změnit národní prostředí, klikněte na tlačítko "Změnit národního prostředí" přidávaném název tabulky. Tím přejdete na potvrzovací stránku národního prostředí. Klikněte na tlačítko "OK" se vrátíte do tabulky.
+Před provedením jakékoli akce je nutné vybrat odpovídající národní prostředí. Aktuální národní prostředí je uvedené v názvu tabulky na všech stránkách dat, modelu a nasazení. Chcete-li změnit národní prostředí, klikněte na tlačítko "Změnit národní prostředí" umístěné v části název tabulky. Tím se dostanete na stránku potvrzení národní prostředí. Kliknutím na OK se vraťte do tabulky.
 
-Měli následnou akci s další kroky
-* Další informace [jak vytvořit vlastní akustickými modelu](cognitive-services-custom-speech-create-acoustic-model.md) a zvyšte tak přesnost rozpoznávání
-* Další informace [jak vytvořit vlastní jazyk modelu](cognitive-services-custom-speech-create-language-model.md) ke zlepšení vaší rychlost rozpoznávání
-* Postupujte podle [přepis pokyny](cognitive-services-custom-speech-transcription-guidelines.md) pro přípravu dat
+By měli provést s dalšími kroky.
+* Přečtěte si [vytvoření vlastního akustického modelu](cognitive-services-custom-speech-create-acoustic-model.md) zlepšit přesnost rozpoznávání
+* Přečtěte si [vytvoření vlastního jazykového modelu](cognitive-services-custom-speech-create-language-model.md) zlepšit rychlost vašeho rozpoznávání
+* Postupujte podle [pokyny pro přepis](cognitive-services-custom-speech-transcription-guidelines.md) pro přípravu dat

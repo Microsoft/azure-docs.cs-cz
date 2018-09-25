@@ -17,12 +17,12 @@ ms.date: 02/08/2017
 ms.author: celested
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 8f7c6c2bef747d00188cac2c3601fdad739b92a8
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: eb43589b04be8b2b9c3be45d33c94592e97d308e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581242"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948260"
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>Služby volání mezi službami pomocí přihlašovacích údajů klienta (sdílený tajný klíč nebo certifikát)
 OAuth 2.0 klienta tok udělování přihlašovacích údajů umožňuje webové službě (*důvěrnému klientovi*) používat svoje vlastní přihlašovací údaje místo zosobňování uživatele, k ověření při volání jiné webové služby. V tomto scénáři klient je obvykle střední vrstvy webové služby, služba démona nebo webu. Pro vyšší úroveň záruky umožňuje Azure AD také volání služby k používání certifikátu (ne sdílený tajný klíč) jako pověření.
@@ -61,7 +61,7 @@ Pokud používáte sdílený tajný klíč, žádosti o token přístupu service
 | prostředek |povinné |Zadejte identifikátor URI ID aplikace přijímající webové služby. Chcete-li najít identifikátor ID URI aplikace na webu Azure Portal, klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikací**, klikněte na aplikaci služby a potom klikněte na tlačítko **nastavení** a  **Vlastnosti**. |
 
 #### <a name="example"></a>Příklad:
-Vyžádá přístupový token pro následující HTTP POST https://service.contoso.com/ webové služby. `client_id` Identifikuje webová služba, která požaduje přístupový token.
+Následující požadavky HTTP POST [přístupový token](access-tokens.md) pro https://service.contoso.com/ webové služby. `client_id` Identifikuje webová služba, která požaduje přístupový token.
 
 ```
 POST /contoso.com/oauth2/token HTTP/1.1

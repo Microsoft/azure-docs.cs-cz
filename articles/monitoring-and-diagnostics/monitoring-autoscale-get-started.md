@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: rajram
 ms.component: autoscale
-ms.openlocfilehash: b303632c236e492bbf57ee60d5e7b0cc7b2f9e5c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e96e3abc05353aa3ea134b7d11256a29fe64c300
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448964"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989222"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Začínáme s automatickým Škálováním v Azure
 Tento článek popisuje, jak vytvořit nastavení automatického škálování pro váš prostředek na portálu Microsoft Azure.
 
-Automatické škálování služby Azure Monitor platí pouze pro škálovací sady virtuálních počítačů, služby cloud services, plánů služby Azure App Service a služby App Service Environment. 
+Automatické škálování služby Azure Monitor se týká pouze [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service – Web Apps](https://azure.microsoft.com/services/app-service/web/), a [služby API Management](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
 
 ## <a name="discover-the-autoscale-settings-in-your-subscription"></a>Zjištění nastavení automatického škálování v rámci vašeho předplatného
 Je možné vyhledat všechny prostředky, pro které se vztahuje ve službě Azure Monitor automatického škálování. Pomocí následujícího postupu podrobný názorný postup:
@@ -47,8 +47,8 @@ Pojďme se teď projděte si jednoduchý podrobný postup k vytvoření vaší p
 1. Zadejte název pro nastavení škálování a potom klikněte na tlačítko **přidat pravidlo**. Všimněte si, že pravidla možností škálování, které se otevřou jako kontextovém podokně na pravé straně. Ve výchozím nastavení tím se nastaví možnost škálování vašeho počtu instancí o 1, pokud procento využití procesoru prostředku přesáhne 70 procent. Ponechte jejich výchozí hodnoty a klikněte na tlačítko **přidat**.
   ![Vytvoření nastavení škálování webové aplikace][6]
 1. Právě jste vytvořili první škálovací pravidla. Mějte na paměti, že uživatelského rozhraní doporučuje osvědčené postupy a uvádí, že "se doporučuje mít alespoň jeden škálování v pravidle." Postupujte následovně:
-  
-    a. Klikněte na tlačítko **přidat pravidlo**. 
+
+    a. Klikněte na tlačítko **přidat pravidlo**.
 
     b. Nastavte **operátor** k **menší než**.
 
@@ -62,7 +62,7 @@ Pojďme se teď projděte si jednoduchý podrobný postup k vytvoření vaší p
 
 Blahopřejeme! Právě jste úspěšně vytvořili první nastavení škálování pro automatické škálování webové aplikace podle využití procesoru.
 
-> [!NOTE] 
+> [!NOTE]
 > Stejný postup platí pro vám umožní začít škálovací sadu virtuálních počítačů nebo cloudových služeb role.
 
 ## <a name="other-considerations"></a>Další důležité informace
@@ -105,8 +105,8 @@ Může nastat situace, kdy chcete zakázat aktuální nastavení škálování a
 Klikněte na tlačítko **zakázat automatické škálování** tlačítko v horní části.
 ![Zakázat automatické škálování][13]
 
-> [!NOTE] 
-> Tato možnost zakáže vaší konfigurace. Však můžete vrátit k němu po znovu povolit automatické škálování. 
+> [!NOTE]
+> Tato možnost zakáže vaší konfigurace. Však můžete vrátit k němu po znovu povolit automatické škálování.
 
 Teď můžete nastavit počet instancí, které chcete škálovat ručně.
 
@@ -133,4 +133,3 @@ Můžete se kdykoli vrátit k automatickému škálování kliknutím **povolit 
 [12]: ./media/monitoring-autoscale-get-started/scale-definition-json.png
 [13]: ./media/monitoring-autoscale-get-started/disable-autoscale.png
 [14]: ./media/monitoring-autoscale-get-started/set-manualscale.png
-

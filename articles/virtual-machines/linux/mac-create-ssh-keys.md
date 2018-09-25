@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: cynthn
-ms.openlocfilehash: 4b86749f8a2e68dd5bae11ae440db4d6524e3a91
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 63a7602deee402bed056937c8465fd87c8256cd8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44713761"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46962841"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Rychlé kroky: vytvořit a používat pár veřejného a privátního klíče SSH pro virtuální počítače s Linuxem v Azure
 
@@ -45,7 +45,7 @@ Následující příkaz vytvoří pár klíčů SSH pomocí šifrování RSA a b
 ssh-keygen -t rsa -b 2048
 ```
 
-Pokud používáte [příkazového řádku Azure CLI 2.0](/cli/azure) k vytvoření virtuálního počítače s [az vm vytvořit](/cli/azure/vm#az-vm-create) příkaz, může volitelně generovat SSH soubory veřejného a privátního klíče pomocí `--generate-ssh-keys` možnost. Soubory klíče jsou uloženy v adresáři ~/.ssh, pokud není určeno jinak s `--ssh-dest-key-path` možnost. `--generate-ssh-keys` Možnost nepřepíše existující soubory klíčů, místo toho vrátí chybu. V následujícím příkazu nahraďte *VMname* a *RGname* vlastními hodnotami:
+Pokud používáte [rozhraní příkazového řádku Azure](/cli/azure) k vytvoření virtuálního počítače s [az vm vytvořit](/cli/azure/vm#az-vm-create) příkaz, může volitelně generovat SSH soubory veřejného a privátního klíče pomocí `--generate-ssh-keys` možnost. Soubory klíče jsou uloženy v adresáři ~/.ssh, pokud není určeno jinak s `--ssh-dest-key-path` možnost. `--generate-ssh-keys` Možnost nepřepíše existující soubory klíčů, místo toho vrátí chybu. V následujícím příkazu nahraďte *VMname* a *RGname* vlastními hodnotami:
 
 ```azurecli
 az vm create --name VMname --resource-group RGname --generate-ssh-keys 

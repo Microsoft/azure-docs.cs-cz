@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/25/2017
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: 05a7dda67ca9747c5d6205952bc9337af628de8f
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: ff382becb71f187ac38b0ef5d31c1b29c43f3fe7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296733"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972551"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace virtuálních sítí a bran firewall Azure Storage
 Azure Storage poskytuje vrstvený model zabezpečení umožňuje zabezpečit vaše účty úložiště s konkrétní sadou povolených sítí.  Když jsou nakonfigurovaná pravidla sítě, můžete pouze aplikace z povolených sítí přístup k účtu úložiště.  Při volání z povolené sítě, aplikace dál vyžadují správnou autorizaci (platný přístupový klíč nebo SAS token) pro přístup k účtu úložiště.
@@ -70,7 +70,7 @@ Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" 
 ```    
 
 #### <a name="cliv2"></a>CLIv2
-1. [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli) a [přihlášení](/cli/azure/authenticate-azure-cli).
+1. [Instalace Azure CLI](/cli/azure/install-azure-cli) a [přihlášení](/cli/azure/authenticate-azure-cli).
 2. Zobrazí stav výchozí pravidlo pro účet úložiště.
 ```azurecli
 az storage account show --resource-group "myresourcegroup" --name "mystorageaccount" --query networkRuleSet.defaultAction
@@ -152,7 +152,7 @@ Remove-AzureRmStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Na
 >
 
 #### <a name="cliv2"></a>CLIv2
-1. [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli) a [přihlášení](/cli/azure/authenticate-azure-cli).
+1. [Instalace Azure CLI](/cli/azure/install-azure-cli) a [přihlášení](/cli/azure/authenticate-azure-cli).
 2. Seznam pravidel virtuální sítě
 ```azurecli
 az storage account network-rule list --resource-group "myresourcegroup" --account-name "mystorageaccount" --query virtualNetworkRules
@@ -243,7 +243,7 @@ Remove-AzureRMStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Ac
 >
 
 #### <a name="cliv2"></a>CLIv2
-1. [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli) a [přihlášení](/cli/azure/authenticate-azure-cli).
+1. [Instalace Azure CLI](/cli/azure/install-azure-cli) a [přihlášení](/cli/azure/authenticate-azure-cli).
 2. Seznam pravidel sítě IP
 ```azurecli
 az storage account network-rule list --resource-group "myresourcegroup" --account-name "mystorageaccount" --query ipRules
@@ -290,7 +290,9 @@ Když je povolená výjimka "Důvěryhodné služby Microsoftu", jsou tyto služ
 |Azure Event Grid|Microsoft.EventGrid|Povolte publikování událostí v úložišti objektů Blob.  [Další informace](https://docs.microsoft.com/azure/event-grid/overview).|
 |Azure Event Hubs|Microsoft.EventHub|Archivace dat s Event Hubs Capture.  [Další informace](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview).|
 |Sítě Azure|Microsoft.Networking|Store a analyzovat protokoly přenosů sítě.  [Další informace](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview).|
-||||
+|Azure Monitor|Microsoft.Insights| Umožňuje zápis dat do účtu zabezpečené storaage monitorování [Další](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security#monitoring-and-secured-Azure-storage-and-networks).|
+|
+
 
 ### <a name="storage-analytics-data-access"></a>Přístup k datům Storage analytics
 V některých případech je zapotřebí ve směru z mimo hranice sítě přístup ke čtení diagnostické protokoly a metriky.  Výjimky z pravidel sítě lze udělit práva povolit přístup pro čtení na úložiště účtu soubory protokolů, metriky tabulek nebo obojí. [Další informace o práci s analytika úložiště.](/azure/storage/storage-analytics)
@@ -327,7 +329,7 @@ Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" 
 >
 
 #### <a name="cliv2"></a>CLIv2
-1. [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli) a [přihlášení](/cli/azure/authenticate-azure-cli).
+1. [Instalace Azure CLI](/cli/azure/install-azure-cli) a [přihlášení](/cli/azure/authenticate-azure-cli).
 2. Zobrazte výjimky pravidel sítě účtu úložiště.
 ```azurecli
 az storage account show --resource-group "myresourcegroup" --name "mystorageaccount" --query networkRuleSet.bypass

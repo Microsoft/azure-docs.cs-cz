@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: jasonh
-ms.openlocfilehash: 7e8f4900143372f9030e157cfd71dd7d84eabd80
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: db2c4281f23685c00e63058a5cfd8caaf663b0fb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093837"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948736"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Nainstalovat a používat rozhraní Hue v clusterech HDInsight Hadoop
 
@@ -48,7 +48,7 @@ Skript pro instalaci aplikace Hue do clusteru HDInsight se systémem Linux je k 
 Tato část obsahuje informace o tom, jak pomocí skriptu při zřizování clusteru pomocí webu Azure portal.
 
 > [!NOTE]
-> Prostředí Azure PowerShell, rozhraní příkazového řádku Azure, sady HDInsight .NET SDK nebo šablony Azure Resource Manageru je také možné použití akce skriptu. Akce se skripty můžete také použít k už běží clustery. Další informace najdete v tématu [HDInsight přizpůsobit clustery pomocí skriptových akcí](hdinsight-hadoop-customize-cluster-linux.md).
+> Prostředí Azure PowerShell, rozhraní příkazového řádku Azure Classic, sady HDInsight .NET SDK nebo šablony Azure Resource Manageru je také možné použití akce skriptu. Akce se skripty můžete také použít k už běží clustery. Další informace najdete v tématu [HDInsight přizpůsobit clustery pomocí skriptových akcí](hdinsight-hadoop-customize-cluster-linux.md).
 >
 >
 

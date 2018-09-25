@@ -11,14 +11,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/29/2017
-ms.openlocfilehash: 883e3d2c5945a38c8fbca5c9f0f5e8a1e4093be1
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 6660657141cc5aac532d121b61c7c8db6a24ccda
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35643568"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46968709"
 ---
 # <a name="model-management-setup"></a>Nastavení správy modelů
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 ## <a name="overview"></a>Přehled
 Tento dokument vám pomůže začít s pomocí správy modelů ve službě Azure ML k nasazení a správě vašich modelů jako webové služby machine learning. 

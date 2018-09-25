@@ -11,14 +11,14 @@ ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 07/23/2018
+ms.date: 09/22/2018
 ms.author: bsiva
-ms.openlocfilehash: 6e5946f3f9dcf1c7d941054c844adcf683b485ab
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: d15a5b62a148e971c0740f01744fce308e502340
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308639"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056032"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Migrace serverů s Windows serverem 2008 do Azure
 
@@ -59,14 +59,11 @@ Zbývající části tohoto kurzu se dozvíte, jak můžete migrovat virtuální
 
 ## <a name="limitations-and-known-issues"></a>Omezení a známé problémy
 
-- Konfigurace serveru, dalších procesových serverů a služba mobility se používá k migraci serverů Windows Server 2008 SP2 by měl běžet 9.18.0.1 verzi softwaru Azure Site Recovery. Sjednocené instalace pro verzi 9.18.0.1 konfigurační Server a procesový server si můžete stáhnout z [ https://aka.ms/asr-w2k8-migration-setup ](https://aka.ms/asr-w2k8-migration-setup).
-
-- K existující konfigurační Server nebo procesový server nelze použít k migraci serverů se systémem Windows Server 2008 SP2. Nová konfigurační Server by mělo proběhnout zřízení 9.18.0.1 verze softwaru Azure Site Recovery. Tato konfigurační Server by měla sloužit pouze k migraci serverů Windows do Azure.
+- Konfigurace serveru, dalších procesových serverů a služba mobility se používá k migraci serverů Windows Server 2008 SP2 by měl být spuštěn verze 9.19.0.0 nebo novější softwaru Azure Site Recovery.
 
 - Body obnovení konzistentní vzhledem k aplikaci a funkci konzistence více virtuálních počítačů nejsou podporovány pro replikaci serverů se systémem Windows Server 2008 SP2. Servery Windows Server 2008 SP2, by se měly migrovat do bodu obnovení s konzistentní při selhání. Body obnovení konzistentní vzhledem k selhání jsou ve výchozím nastavení generovány každých 5 minut. Použití zásady replikace s frekvencí snímek konzistentní vzhledem k nakonfigurované aplikaci způsobí, že stav replikace, chcete-li důležité z důvodu nedostatku body obnovení konzistentní vzhledem k aplikaci. Abyste zabránili falešně pozitivních výsledků, nastavte frekvenci snímků konzistentních s aplikací v zásadách replikace na "Off".
 
 - Migrované servery by měl mít rozhraní .NET Framework 3.5 Service Pack 1 u služby mobility pro práci.
-
 
 - Pokud váš server má dynamické disky, může dojít při některých konfiguracích, které tyto disky na se selhání serveru jsou označeny v režimu offline nebo zobrazena jako cizí disky. Můžete také všimnout, zrcadlené nastavit stav pro zrcadlených svazků dynamických disků je označen "Se nezdařilo redundance". Tento problém z diskmgmt.msc můžete vyřešit ručním importu těchto disků a opětovná aktivace je.
 
@@ -109,48 +106,8 @@ Nový trezor se přidá do oblasti **Řídicí panel** v části **Všechny pro
 
 ## <a name="prepare-your-on-premises-environment-for-migration"></a>Příprava místní prostředí pro migraci
 
-- Stažení instalačního programu konfiguračního serveru (sjednocené instalace) z [https://aka.ms/asr-w2k8-migration-setup](https://aka.ms/asr-w2k8-migration-setup)
-- Postupujte podle kroků uvedených níže pro nastavení zdrojového prostředí pomocí instalačního souboru si stáhli v předchozím kroku.
-
-> [!IMPORTANT]
-> - Ujistěte se, že pomocí souboru instalačního programu si stáhli v prvním kroku požadavků instalace a registrace konfiguračního serveru. Nestahovat instalační soubor na webu Azure Portal. K dispozici na instalační soubor [ https://aka.ms/asr-w2k8-migration-setup ](https://aka.ms/asr-w2k8-migration-setup) je jedinou verzí, který podporuje migraci Windows serveru 2008.
->
-> - Existující konfigurační Server nemůžete použít k migraci počítačů s Windows serverem 2008. Budete muset nastavit nové konfigurační Server pomocí výše uvedeného odkazu.
->
-> - Postupujte podle kroků níže uvedené instalaci konfiguračního serveru. Nepokoušejte se použít postup instalace grafického uživatelského rozhraní na základě jednotný instalační program aplikace přímo. To způsobí pokus o instalaci, selháním kvůli nesprávné chybová zpráva, že neexistuje žádné připojení k Internetu.
-
- 
-1) Stažení souboru s přihlašovacími údaji z portálu: na webu Azure portal, vyberte trezor služby Recovery Services vytvořené v předchozím kroku. V nabídce na stránce úložiště vyberte **infrastruktura Site Recovery** > **konfigurační servery**. Pak klikněte na tlačítko **+ Server**. Vyberte *konfigurační Server pro fyzický počítač* z rozevírací nabídky formuláře na stránce, které se otevře. Klikněte na tlačítko Stáhnout v kroku 4 ke stažení souboru s přihlašovacími údaji.
-
- ![Stáhněte si registrační klíč trezoru](media/migrate-tutorial-windows-server-2008/download-vault-credentials.png) 
-
-2) Kopírování souboru s přihlašovacími údaji si stáhli v předchozím kroku a soubor sjednocené instalace předtím stáhli na ploše počítače konfiguračního serveru (Windows Server 2012 R2 nebo Windows Server 2016 počítače, na kterém chcete nainstalovat Konfigurace serverového softwaru.)
-
-3) Ujistěte se, že konfigurační Server má připojení k Internetu a zda jsou správně nakonfigurovány systémových hodin a nastavení časového pásma v počítači. Stáhněte si [MySQL 5.7](https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi) instalačního programu a umístěte ho na *C:\Temp\ASRSetup* (pokud neexistuje, vytvořte adresář.) 
-
-4) Vytvořte soubor s přihlašovacími údaji MySQL s následujícími řádky a umístěte ho na ploše na **C:\Users\Administrator\MySQLCreds.txt** . Nahraďte "heslo ~ 1" pod vhodné a silné heslo:
-
-```
-[MySQLCredentials]
-MySQLRootPassword = "Password~1"
-MySQLUserPassword = "Password~1"
-```
-
-5) Extrahujte obsah stažený jednotný instalační soubor na plochu spuštěním následujícího příkazu:
-
-```
-cd C:\Users\Administrator\Desktop
-
-MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Users\Administrator\Desktop\9.18
-```
-  
-6) Instalace serverového softwaru konfigurace pomocí extrahované obsah spuštěním následujících příkazů:
-
-```
-cd C:\Users\Administrator\Desktop\9.18.1
-
-UnifiedSetup.exe /AcceptThirdpartyEULA /ServerMode CS /InstallLocation "C:\Program Files (x86)\Microsoft Azure Site Recovery" /MySQLCredsFilePath "C:\Users\Administrator\Desktop\MySQLCreds.txt" /VaultCredsFilePath <vault credentials file path> /EnvType VMWare /SkipSpaceCheck
-```
+- Pro migraci systému Windows Server 2008 virtuálních počítačů spuštěných ve VMware, [nastavit místní konfigurační Server na VMware](vmware-azure-tutorial.md#set-up-the-source-environment).
+- Pokud konfigurační Server není možné instalaci jako virtuální počítač VMware, [nastavit konfigurační Server na místní fyzický server nebo virtuální počítač](physical-azure-disaster-recovery.md#set-up-the-source-environment).
 
 ## <a name="set-up-the-target-environment"></a>Nastavení cílového prostředí
 

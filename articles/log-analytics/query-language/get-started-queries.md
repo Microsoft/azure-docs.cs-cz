@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 548c94ce502da8c6a8d208daafb5b0fb624de1e1
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: b56a75074af239f60b82edbe1d074c6384c4aef1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603925"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982972"
 ---
 # <a name="get-started-with-queries-in-log-analytics"></a>Začínáme s dotazy v Log Analytics
 
@@ -50,7 +50,7 @@ Dotazy můžete spustit buď pomocí názvu tabulky nebo *hledání* příkazu. 
 ### <a name="table-based-queries"></a>Dotazy založené na tabulku
 Azure Log Analytics slouží k uspořádání dat v tabulkách, každá skládá z více sloupců. Všechny tabulky a sloupce se zobrazí v podokně schématu portálu Analytics. Identifikujte tabulku zajímá a potom se podívejte na části dat:
 
-```KQL
+```Kusto
 SecurityEvent
 | take 10
 ```
@@ -66,7 +66,7 @@ Ve skutečnosti spouštět dotaz i bez přidání `| take 10` –, který by st�
 ### <a name="search-queries"></a>Vyhledávací dotazy
 Vyhledávací dotazy jsou menší strukturované a obecně více vhodných pro hledání záznamů, které zahrnují určité hodnoty v některém ze svých sloupců:
 
-```KQL
+```Kusto
 search in (SecurityEvent) "Cryptographic"
 | take 10
 ```
@@ -79,7 +79,7 @@ Tento dotaz vyhledá *SecurityEvent* tabulky pro záznamy obsahující frázi "K
 ## <a name="sort-and-top"></a>Řazení a nahoře
 Zatímco **trvat** je užitečné získat o pár záznamů, výsledky jsou vybrané a zobrazí bez určitého pořadí. Získat seřazený zobrazení, může **řazení** podle preferované sloupce:
 
-```
+```Kusto
 SecurityEvent   
 | sort by TimeGenerated desc
 ```
@@ -88,7 +88,7 @@ Který může vrátit ale příliš mnoho výsledků a může trvat nějakou dob
 
 Nejlepší způsob, jak získat jenom nejnovější 10 záznamů, je použití **horní**, který seřadí celou tabulku na straně serveru a pak vrátí prvních záznamů:
 
-```KQL
+```Kusto
 SecurityEvent
 | top 10 by TimeGenerated
 ```
@@ -103,7 +103,7 @@ Filtry, jak je uvedeno podle názvu, filtrovat data podle určité podmínky. To
 
 Přidání filtru do dotazu, použijte **kde** operátor za nímž následuje jedna nebo více podmínek. Například následující dotaz vrátí pouze *SecurityEvent* záznamy, jejichž _úroveň_ rovná _8_:
 
-```KQL
+```Kusto
 SecurityEvent
 | where Level == 8
 ```
@@ -119,14 +119,14 @@ Při psaní podmínky filtru, můžete použít následující výrazy:
 
 Chcete-li filtrovat podle několika podmínek, můžete použít **a**:
 
-```KQL
+```Kusto
 SecurityEvent
 | where Level == 8 and EventID == 4672
 ```
 
 nebo kanálu více **kde** prvky jednu po druhé:
 
-```KQL
+```Kusto
 SecurityEvent
 | where Level == 8 
 | where EventID == 4672
@@ -146,7 +146,7 @@ Výběr času je v levém horním rohu, což znamená, že jsme se dotazuje pouz
 ### <a name="time-filter-in-query"></a>Filtr času v dotazu
 Můžete také definovat vlastní časový rozsah tak, že přidáte filtr času v dotazu. Doporučujeme umístit filtr času bezprostředně za název tabulky: 
 
-```KQL
+```Kusto
 SecurityEvent
 | where TimeGenerated > ago(30m) 
 | where toint(Level) >= 10
@@ -158,7 +158,7 @@ Ve výše uvedené filtr času `ago(30m)` znamená "30 minutami", takže tento d
 ## <a name="project-and-extend-select-and-compute-columns"></a>Projekt a rozšířit: vyberte a výpočetní sloupce
 Použití **projektu** vybrat konkrétní sloupce se mají zahrnout do výsledků:
 
-```KQL
+```Kusto
 SecurityEvent 
 | top 10 by TimeGenerated 
 | project TimeGenerated, Computer, Activity
@@ -175,7 +175,7 @@ Můžete také použít **projektu** přejmenování sloupců a definovat nové 
 * Vytvoří nový sloupec s názvem *EventCode*. **Substring()** funkce se používá ke stahování jenom první čtyři znaky z pole aktivity.
 
 
-```KQL
+```Kusto
 SecurityEvent
 | top 10 by TimeGenerated 
 | project Computer, TimeGenerated, EventDetails=Activity, EventCode=substring(Activity, 0, 4)
@@ -183,7 +183,7 @@ SecurityEvent
 
 **rozšíření** uchovává všechny původní sloupce sady výsledků dotazu a definuje další značky. Následující dotaz používá **rozšířit** přidáte *localtime* sloupec, který obsahuje lokalizované hodnoty TimeGenerated.
 
-```KQL
+```Kusto
 SecurityEvent
 | top 10 by TimeGenerated
 | extend localtime = TimeGenerated-8h
@@ -193,7 +193,7 @@ SecurityEvent
 Použití **shrnout** identifikovat skupinami záznamů, podle jednoho nebo více sloupců, a na ně vztahují agregace. Nejběžnější použití operačního systému **shrnout** je *počet*, který vrátí počet výsledků v každé skupině.
 
 Následující dotaz kontroluje všechny *výkonu* záznamy od poslední hodiny skupin je podle *ObjectName*a vrátí počet záznamů v každé skupině: 
-```KQL
+```Kusto
 Perf
 | where TimeGenerated > ago(1h)
 | summarize count() by ObjectName
@@ -201,7 +201,7 @@ Perf
 
 Někdy je vhodné definovat skupiny tak, že více dimenzí. Každá jedinečná kombinace těchto hodnot definuje samostatnou skupinu:
 
-```KQL
+```Kusto
 Perf
 | where TimeGenerated > ago(1h)
 | summarize count() by ObjectName, CounterName
@@ -209,7 +209,7 @@ Perf
 
 Dalším běžným způsobem použití je provést matematické a statistické výpočty s každou skupinu. Například následující vypočítá průměr *CounterValue* pro jednotlivé počítače:
 
-```KQL
+```Kusto
 Perf
 | where TimeGenerated > ago(1h)
 | summarize avg(CounterValue) by Computer
@@ -217,7 +217,7 @@ Perf
 
 Bohužel nemají smysl výsledky tohoto dotazu, protože jsme kombinovat společně různých čítačů výkonu. Chcete-li to lépe vystihuje, byste měli vypočítat průměr odděleně pro každou kombinaci *CounterName* a *počítače*:
 
-```KQL
+```Kusto
 Perf
 | where TimeGenerated > ago(1h)
 | summarize avg(CounterValue) by Computer, CounterName
@@ -228,7 +228,7 @@ Seskupování výsledků můžete také založené na sloupec času nebo jinou h
 
 Chcete-li vytvořit skupiny založené na průběžné hodnoty, je nejlepší přerušit jednotkami pomocí rozsahu **bin**. Následující dotaz analyzuje *výkonu* záznamy, které měří volná paměť (*počet MB k dispozici*) v určitém počítači. Vypočítá průměrnou hodnotu pro každé období, pokud 1 hodina, posledních 2 dnech:
 
-```KQL
+```Kusto
 Perf 
 | where TimeGenerated > ago(2d)
 | where Computer == "ContosoAzADDS2" 

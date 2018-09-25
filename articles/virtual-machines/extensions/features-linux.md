@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: e172b9d6a59f14f741a09450d31602b0d2d9ee5a
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 66c3da4f14141bdb5c357dbabfaec5dabf0ab521
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412623"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971374"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Rozšíření virtuálních počítačů a funkce pro Linux
 
@@ -83,7 +83,7 @@ Rozšíření Azure VM spustit na stávajících virtuálních počítačů, co�
 
 Následující metody můžete použít ke spuštění rozšíření existujícího virtuálního počítače.
 
-### <a name="azure-cli-20"></a>Azure CLI 2.0
+### <a name="azure-cli"></a>Azure CLI
 
 Rozšíření virtuálního počítače Azure dají spustit pro existující virtuální počítač s [sada rozšíření az vm](/cli/azure/vm/extension#az-vm-extension-set) příkazu. Následující příklad spustí rozšíření vlastních skriptů na virtuálním počítači s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*:
 

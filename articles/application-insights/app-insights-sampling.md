@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 03/24/2017
 ms.reviewer: vitalyg
 ms.author: mbullwin
-ms.openlocfilehash: b1dd37c07f3c887005d87e3231f62a4bca2f4a3d
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 893495a5c37495438d9620595719ca6e733df012
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093111"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958114"
 ---
 # <a name="sampling-in-application-insights"></a>Vzorkování ve službě Application Insights
 
@@ -35,7 +35,7 @@ Vzorkování snižuje náklady na provoz a data a pomůže vám vyhnout se omeze
 * Můžete také nastavit ručně vzorkování, buď v portálu využití a odhadované náklady na stránku. nebo v sadě SDK technologie ASP.NET v souboru .config. nebo v jazyce Java SDK v souboru ApplicationInsights.xml také omezit přenos v síti.
 * Pokud záznam vlastních událostí a chcete, abyste měli jistotu, že sadu událostí je buď uchovávají nebo zrušených společně, ujistěte se, že mají stejnou hodnotu ID operace.
 * Dělitel vzorkování *n* se použije v hlášení všechny záznamy ve vlastnosti `itemCount`, která v hledání se zobrazí pod popisným názvem "počet požadavků" nebo "počet událostí". Při vzorkování se nenachází v operaci, `itemCount==1`.
-* Pokud jste psaní analytických dotazů, měli byste [vzít v úvahu vzorkování](app-insights-analytics-tour.md#counting-sampled-data). Konkrétně se místo jednoduše počítání záznamy, měli byste použít `summarize sum(itemCount)`.
+* Pokud jste psaní analytických dotazů, měli byste [vzít v úvahu vzorkování](../log-analytics/query-language/aggregations.md). Konkrétně se místo jednoduše počítání záznamy, měli byste použít `summarize sum(itemCount)`.
 
 ## <a name="types-of-sampling"></a>Typy vzorkování
 Existují tři metody alternativní vzorkování:

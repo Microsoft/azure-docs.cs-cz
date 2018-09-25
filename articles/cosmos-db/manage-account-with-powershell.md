@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/21/2017
 ms.author: dimakwan
-ms.openlocfilehash: 90de671d8e57244765f1da439649e57485814533
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 60b13c8284708ce46d62b6659b2631a4f551c2ab
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051659"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983105"
 ---
 # <a name="create-an-azure-cosmos-db-account-using-powershell"></a>Vytvoření účtu služby Azure Cosmos DB pomocí Powershellu
 
-Následující průvodci popisuje příkazy, které automatizují správu účtů databáze Azure Cosmos DB pomocí Azure Powershellu. Zahrnuje také příkazy pro správu klíčů účtu a priority převzetí služeb při selhání v [účty databáze ve více oblastech][scaling-globally]. Aktualizace vašeho účtu databáze můžete upravit zásady konzistence a přidat/odebrat oblasti. Pro různé platformy správy účtu služby Azure Cosmos DB, můžete použít buď [rozhraní příkazového řádku Azure](cli-samples.md), [rozhraní REST API poskytovatele prostředků][rp-rest-api], nebo [webu Azure portal ](create-sql-api-dotnet.md#create-account).
+Následující průvodci popisuje příkazy, které automatizují správu účtů databáze Azure Cosmos DB pomocí Azure Powershellu. Zahrnuje také příkazy pro správu klíčů účtu a priority převzetí služeb při selhání v [účty databáze ve více oblastech] [distribuovat data-globally.md]. Aktualizace vašeho účtu databáze můžete upravit zásady konzistence a přidat/odebrat oblasti. Pro různé platformy správy účtu služby Azure Cosmos DB, můžete použít buď [rozhraní příkazového řádku Azure](cli-samples.md), [rozhraní REST API poskytovatele prostředků][rp-rest-api], nebo [webu Azure portal ](create-sql-api-dotnet.md#create-account).
 
 ## <a name="getting-started"></a>Začínáme
 
@@ -33,7 +33,7 @@ Postupujte podle pokynů v [instalace a konfigurace Azure Powershellu] [ powersh
 
 ## <a id="create-documentdb-account-powershell"></a> Vytvoření účtu služby Azure Cosmos DB
 
-Tento příkaz umožňuje vytvoření účtu databáze Azure Cosmos DB. Konfigurace nového účtu databáze jako buď jedné oblasti nebo [ve více oblastech] [ scaling-globally] s určitým [zásady konzistence](consistency-levels.md).
+Tento příkaz umožňuje vytvoření účtu databáze Azure Cosmos DB. Konfigurace nového účtu databáze jako jedné oblasti nebo [více oblastí] [distribuovat data-globally.md] s určitým [zásady konzistence](consistency-levels.md).
 
     $locations = @(@{"locationName"="<write-region-location>"; "failoverPriority"=0}, @{"locationName"="<read-region-location>"; "failoverPriority"=1})
     $iprangefilter = "<ip-range-filter>"
@@ -60,7 +60,7 @@ Příklad:
     New-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Location "West US" -Name "docdb-test" -Properties $CosmosDBProperties
 
 ### <a name="notes"></a>Poznámky
-* V předchozím příkladu vytvoří databázový účet se dvěma oblastmi. Je také možné vytvořit účet databáze s využitím jedné oblasti (která je určena jako oblast zápisu a mít hodnotu priority převzetí služeb při selhání 0) nebo více než dvou oblastech. Další informace najdete v tématu [účty databáze ve více oblastech][scaling-globally].
+* V předchozím příkladu vytvoří databázový účet se dvěma oblastmi. Je také možné vytvořit účet databáze s využitím jedné oblasti (která je určena jako oblast zápisu a mít hodnotu priority převzetí služeb při selhání 0) nebo více než dvou oblastech. Další informace najdete v tématu [účty databáze ve více oblastech] [distribuovat data-globally.md].
 * Umístění musí být oblasti služby Azure Cosmos DB je obecně dostupná. Aktuální seznam oblastí je k dispozici na [oblastí Azure stránky](https://azure.microsoft.com/regions/#services).
 
 ## <a id="update-documentdb-account-powershell"></a> Aktualizace účtu databáze Azure Cosmos DB

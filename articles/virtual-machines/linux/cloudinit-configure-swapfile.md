@@ -1,6 +1,6 @@
 ---
 title: Použití cloud-init pro konfigurace stránkovacího souboru na virtuálním počítači s Linuxem | Dokumentace Microsoftu
-description: Použití cloud-init k konfigurace stránkovacího souboru v virtuálního počítače s Linuxem během vytváření pomocí rozhraní příkazového řádku Azure CLI 2.0
+description: Použití cloud-init k konfigurace stránkovacího souboru v virtuálního počítače s Linuxem během vytváření pomocí Azure CLI
 services: virtual-machines-linux
 documentationcenter: ''
 author: rickstercdn
@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: d58795182e432ef75604e4db18d05e8d2231e215
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 2a5a878b7c8c3b6126d90b978241fbcb237d8db7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35755814"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946302"
 ---
 # <a name="use-cloud-init-to-configure-a-swapfile-on-a-linux-vm"></a>Konfigurace stránkovacího souboru na virtuálním počítači s Linuxem pomocí cloud-init
 V tomto článku se dozvíte, jak používat [cloud-init](https://cloudinit.readthedocs.io) konfigurace stránkovacího souboru v různých distribucích systému Linux. Stránkovacího souboru byla nakonfigurována tradičně podle Linuxu agenta (WALA) podle distribuce, kterou vyžaduje jeden.  Tento dokument se popisují proces sestavení stránkovacího souboru na vyžádání během zřizování doby použití cloud-init.  Další informace o tom, jak funguje cloud-init nativně v Azure a podporovaných distribucích systému Linux, najdete v části [přehled cloud-init](using-cloud-init.md)

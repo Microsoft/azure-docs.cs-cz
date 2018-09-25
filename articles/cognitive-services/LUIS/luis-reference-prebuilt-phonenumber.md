@@ -4,18 +4,18 @@ titleSuffix: Azure
 description: Tento článek obsahuje informace telefonním čísle předem připravených entit v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: diberry
-ms.openlocfilehash: 1ae14f72f0dc610b9399e675f49ef5fff51a6965
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: bacb09b50c4b1d82daa6be1ef4fc79c88269cf7a
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238987"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035449"
 ---
 # <a name="phonenumber-entity"></a>Entita Phonenumber
 `phonenumber` Entity extrahuje širokou škálu telefonní čísla, včetně směrové číslo země. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy do aplikace. `phonenumber` Entity se podporuje v `en-us` pouze jazykovou verzi. 

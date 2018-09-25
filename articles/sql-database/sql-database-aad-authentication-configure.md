@@ -2,21 +2,22 @@
 title: Konfigurovat ověřování Azure Active Directory - SQL | Dokumentace Microsoftu
 description: Zjistěte, jak se připojit k SQL Database Managed Instance a SQL Data Warehouse pomocí ověřování Azure Active Directory – po dokončení konfigurace služby Azure AD.
 services: sql-database
-author: GithubMirek
-manager: craigg
 ms.service: sql-database
-ms.prod_service: sql-database, sql-data-warehouse
-ms.custom: security
+ms.subservice: security
+ms.custom: data warehouse
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 03/07/2018
+author: GithubMirek
 ms.author: mireks
-ms.reviewer: vanto
-ms.openlocfilehash: f04846275fbad1673a00d820e8b44adc402b0242
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.reviewer: vanto, carlrab
+manager: craigg
+ms.date: 09/20/2018
+ms.openlocfilehash: efec5b3d8ac2ec3f757d06e88df65fe5f50aae17
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294199"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064301"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql-database-managed-instance-or-sql-data-warehouse"></a>Konfigurace a Správa ověřování služby Azure Active Directory s SQL Database, mi nebo SQL Data Warehouse
 
@@ -195,10 +196,10 @@ Správce Azure Active Directory můžete také vytvářet pomocí rozhraní REST
 Správce Azure AD můžou zřizovat také voláním následující příkazy rozhraní příkazového řádku:
 | Příkaz | Popis |
 | --- | --- |
-|[vytvoření ad správce az sql server](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_create) |Zřídí správce Azure Active Directory pro server Azure SQL nebo Azure SQL Data Warehouse. (Musí být z aktuálního předplatného.) |
-|[AZ sql server ad admin delete](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_delete) |Odebere správce Azure Active Directory pro server Azure SQL nebo Azure SQL Data Warehouse. |
-|[AZ sql server správce ad seznamu](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_list) |Vrátí informace o aktuálně nakonfigurovaný pro server Azure SQL nebo Azure SQL Data Warehouse správce Azure Active Directory. |
-|[aktualizace Správce služby ad az sql server](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_update) |Aktualizace správce Active Directory pro server Azure SQL nebo Azure SQL Data Warehouse. |
+|[vytvoření ad správce az sql server](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) |Zřídí správce Azure Active Directory pro server Azure SQL nebo Azure SQL Data Warehouse. (Musí být z aktuálního předplatného.) |
+|[AZ sql server ad admin delete](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) |Odebere správce Azure Active Directory pro server Azure SQL nebo Azure SQL Data Warehouse. |
+|[AZ sql server správce ad seznamu](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) |Vrátí informace o aktuálně nakonfigurovaný pro server Azure SQL nebo Azure SQL Data Warehouse správce Azure Active Directory. |
+|[aktualizace Správce služby ad az sql server](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-update) |Aktualizace správce Active Directory pro server Azure SQL nebo Azure SQL Data Warehouse. |
 
 Další informace o příkazech rozhraní příkazového řádku najdete v tématu [SQL – az sql](https://docs.microsoft.com/cli/azure/sql/server).  
 

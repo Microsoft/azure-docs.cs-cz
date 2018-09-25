@@ -7,19 +7,19 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: conceptual
-ms.date: 09/18/2018
+ms.date: 09/20/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: c2caa9ebbc3a4e6b9180466950775524986fd244
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: dfcd61abd9f995a9bb848c23143adb99b0620956
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364563"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042155"
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>Konfigurace virtuální sítě pro spravovanou instanci Azure SQL Database
 
-Azure SQL Database Managed Instance (preview) musí být nasazen v rámci Azure [virtuální síť (VNet)](../virtual-network/virtual-networks-overview.md). Toto nasazení umožňuje následující scénáře: 
+Azure SQL Database Managed Instance musí být nasazen v rámci Azure [virtuální síť (VNet)](../virtual-network/virtual-networks-overview.md). Toto nasazení umožňuje následující scénáře: 
 - Připojení k Managed Instance přímo z místní sítě 
 - Připojení Managed Instance pro odkazovaný server nebo další místní úložiště dat 
 - Připojování k prostředkům Azure Managed Instance  
@@ -34,7 +34,7 @@ Naplánujte, jak nasadit spravované Instance ve virtuální síti pomocí odpov
 
    Pokud plánujete použití existující virtuální sítě, budete muset upravit tuto konfiguraci sítě tak, aby vyhovovaly Managed Instance. Další informace najdete v tématu [upravit existující virtuální sítě pro Managed Instance](#modify-an-existing-virtual-network-for-managed-instances). 
 
-   Pokud budete chtít vytvořit novou virtuální síť, přečtěte si téma [vytvořit novou virtuální síť pro Managed Instance](#create-a-new-virtual-network-for-managed-instances).
+   Pokud budete chtít vytvořit novou virtuální síť, přečtěte si téma [vytvořit novou virtuální síť pro Managed Instance](#create-a-new-virtual-network-for-a-managed-instance).
 
 ## <a name="requirements"></a>Požadavky
 
@@ -84,7 +84,7 @@ Pokud budete chtít nasadit víc instancí v podsíti spravované a třeba optim
 > [!IMPORTANT]
 > Výpočet zobrazený nad bude stát zastaralým další vylepšení. 
 
-## <a name="create-a-new-virtual-network-for-managed-instance-using-azure-resource-manager-deployment"></a>Vytvoření nové virtuální sítě pro Managed Instance pomocí modelu nasazení Azure Resource Manageru
+## <a name="create-a-new-virtual-network-for-a-managed-instance"></a>Vytvoření nové virtuální sítě pro Managed Instance
 
 Nejjednodušší způsob, jak vytvořit a konfigurovat virtuální sítě je použití šablony nasazení Azure Resource Manageru.
 
@@ -143,8 +143,6 @@ Příprava podsítě se provádí ve třech jednoduchých krocích:
 **Máte vlastní server DNS nakonfigurovaný?** 
 
 Pokud ano, přečtěte si téma [konfigurace vlastního DNS](sql-database-managed-instance-custom-dns.md). 
-
-- Vytvořit požadované směrovací tabulku a přidružíte ho: viz [vytvoříte požadovaný směrovací tabulku a přidružíte ho](#create-the-required-route-table-and-associate-it)
 
 ## <a name="next-steps"></a>Další postup
 

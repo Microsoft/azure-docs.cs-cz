@@ -1,6 +1,6 @@
 ---
-title: Spuštění skriptu bash ve virtuální počítač s Linuxem v Azure pomocí cloudu init | Microsoft Docs
-description: Postup použití cloudu init pro spuštění skriptu bash ve virtuální počítač s Linuxem během vytváření pomocí Azure CLI 2.0
+title: Použití cloud-init pro spuštění skriptu bash v virtuálního počítače s Linuxem v Azure | Dokumentace Microsoftu
+description: Jak používat cloud-init pro spuštění skriptu bash v virtuálního počítače s Linuxem během vytváření pomocí Azure CLI
 services: virtual-machines-linux
 documentationcenter: ''
 author: rickstercdn
@@ -14,35 +14,35 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 471749563fae5b5de6e98e22ebf2ec5cc9365368
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 8e8950cbd7927cb6b0543866ab976b550c9ec043
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29123714"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46959542"
 ---
-# <a name="use-cloud-init-to-run-a-bash-script-in-a-linux-vm-in-azure"></a>Spuštění skriptu bash ve virtuální počítač s Linuxem v Azure pomocí init cloudu
-V tomto článku se dozvíte, jak používat [cloudu init](https://cloudinit.readthedocs.io) existující bash ke spuštění skriptu ve virtuálním počítači (VM) Linux nebo sadách škálování virtuálních počítačů (VMSS) na zřizování čas v Azure. Tyto skripty cloudu init spustit při prvním spuštění počítače po prostředky se zřizují Azure. Další informace o cloudu init fungování nativně ve službě Azure a podporovaných distribucích systému Linux najdete v tématu [init cloudu – přehled](using-cloud-init.md)
+# <a name="use-cloud-init-to-run-a-bash-script-in-a-linux-vm-in-azure"></a>Použití cloud-init pro spuštění skriptu bash v virtuálního počítače s Linuxem v Azure
+V tomto článku se dozvíte, jak používat [cloud-init](https://cloudinit.readthedocs.io) ke spuštění existujícího skriptu bash na virtuální počítač s Linuxem (VM) nebo škálovacích sad virtuálních počítačů (VMSS) při zřizování času v Azure. Tyto skripty cloud-init spustit při prvním spuštění, jakmile se zřizují prostředky Azure. Další informace o tom, jak funguje cloud-init nativně v Azure a podporovaných distribucích systému Linux, najdete v části [přehled cloud-init](using-cloud-init.md)
 
-## <a name="run-a-bash-script-with-cloud-init"></a>Spusťte skript bash s inicializací cloudu
-S cloudu inicializací není potřeba převést stávající skripty cloudu config přijme cloudu init více vstupních typů, z nichž jeden je skript bash.
+## <a name="run-a-bash-script-with-cloud-init"></a>Spuštění skriptu bash pomocí cloud-init
+Pomocí cloud-init, není potřeba převést stávající skripty konfigurace cloudu cloud-init akceptuje více vstupních typů, z nichž jeden je skriptu bash.
 
-Pokud používáte rozšíření Azure Linux vlastních skriptů spouštět skripty, můžete migrovat, aby uživatelé používali init cloudu. Ale rozšíření Azure mají integrované zprávy upozornění na selhání skriptu, nasazení bitové kopie init cloudu se není nezdaří, pokud skript selže.
+Pokud používáte rozšíření Linux vlastních skriptů Azure ke spouštění vašich skriptů, můžete je používat cloud-init migrovat. Ale rozšíření Azure jste integrovali odesílajících sestavy do upozornění na selhání skriptu, nasazení bitové kopie cloud-init nejsou při selhání Pokud skript selže.
 
-Pokud chcete zobrazit tuto funkci v akci, vytvořte skript jednoduché bash pro testování. Init – cloudu, jako `#cloud-config` souboru skriptu musí být místní vůči kde bude spuštěna AzureCLI příkazy ke zřízení virtuálního počítače.  V tomto příkladu vytvoření souboru v prostředí cloudu není na místním počítači. Můžete použít libovolný editor, které chcete. Zadáním příkazu `sensible-editor simple_bash.sh` soubor vytvořte a zobrazte seznam editorů k dispozici. Zvolte #1 používat **nano** editor. Ujistěte se, že je soubor celou cloudu init zkopírován správně, obzvláště první řádek.  
+Pokud chcete zobrazit tuto funkci v akci, vytvořte skript jednoduché bash pro testování. Cloud-init, jako jsou `#cloud-config` soubor, tento skript musí být místní vůči kde bude běžet AzureCLI příkazy ke zřízení virtuálního počítače.  V tomto příkladu vytvoření souboru ve službě Cloud Shell není na místním počítači. Můžete použít libovolný editor podle svojí volby. Zadáním příkazu `sensible-editor simple_bash.sh` soubor vytvořte a zobrazte seznam editorů k dispozici. Zvolte #1 použít **nano** editoru. Ujistěte se, že se soubor celý cloud-init zkopíroval správně, zejména první řádek.  
 
 ```bash
 #!/bin/sh
 echo "this has been written via cloud-init" + $(date) >> /tmp/myScript.txt
 ```
 
-Než nasadíte tuto bitovou kopii, je nutné vytvořit skupinu prostředků s [vytvořit skupinu az](/cli/azure/group#az_group_create) příkaz. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*.
+Před nasazením této bitové kopie, je potřeba vytvořit skupinu prostředků pomocí [vytvořit skupiny az](/cli/azure/group#az_group_create) příkazu. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-Teď vytvořte virtuální počítač s [vytvořit virtuální počítač az](/cli/azure/vm#az_vm_create) a určete soubor skriptu bash s `--custom-data simple_bash.sh` následujícím způsobem:
+Teď vytvořte virtuální počítač s [az vm vytvořit](/cli/azure/vm#az_vm_create) a zadat soubor skriptu bash s `--custom-data simple_bash.sh` následujícím způsobem:
 
 ```azurecli-interactive 
 az vm create \
@@ -52,23 +52,23 @@ az vm create \
   --custom-data simple_bash.sh \
   --generate-ssh-keys 
 ```
-## <a name="verify-bash-script-has-run"></a>Ověření skriptu bash spustila
-SSH na veřejnou IP adresu vašeho virtuálního počítače zobrazené ve výstupu z předchozí příkaz. Zadejte vlastní **publicIpAddress** následujícím způsobem:
+## <a name="verify-bash-script-has-run"></a>Ověřte spuštění skriptu bash
+Připojte přes SSH k veřejné IP adresu vašeho virtuálního počítače uvedené ve výstupu předchozího příkazu. Zadejte vlastní **publicIpAddress** následujícím způsobem:
 
 ```bash
 ssh <publicIpAddress>
 ```
 
-Změnit na **tmp** adresář a ověřte, že myScript.txt soubor existuje a má odpovídající text uvnitř této.  Pokud není, můžete zkontrolovat **/var/log/cloud-init.log** další podrobnosti.  Vyhledejte následující položky:
+Přejděte **tmp** adresář a ověřte, že myScript.txt soubor existuje a má odpovídající text uvnitř této.  Pokud tomu tak není, můžete zkontrolovat **/var/log/cloud-init.log** další podrobnosti.  Vyhledejte následující položky:
 
 ```bash
 Running config-scripts-user using lock Running command ['/var/lib/cloud/instance/scripts/part-001']
 ```
 
 ## <a name="next-steps"></a>Další postup
-Mezi další cloudu init změny konfigurace naleznete v následujících tématech:
+Příklady cloud-init další změny konfigurace najdete tady:
  
-- [Přidání další uživatele Linux do virtuálního počítače](cloudinit-add-user.md)
-- [Spusťte Správce balíčků aktualizovat existující balíčky na při prvním spuštění](cloudinit-update-vm.md)
-- [Změňte název místního hostitele virtuálního počítače](cloudinit-update-vm-hostname.md) 
-- [Instalace balíčku aplikace, aktualizace konfigurační soubory a vložit klíče](tutorial-automate-vm-deployment.md)
+- [Přidání dalších uživatelů Linuxu na virtuální počítač](cloudinit-add-user.md)
+- [Spusťte Správce balíčků aktualizovat existující balíčky při prvním spuštění](cloudinit-update-vm.md)
+- [Změnit místní název hostitele virtuálního počítače](cloudinit-update-vm-hostname.md) 
+- [Instalace balíčku aplikace, aktualizovat konfigurační soubory a klíče pro vložení](tutorial-automate-vm-deployment.md)

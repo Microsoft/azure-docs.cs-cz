@@ -8,19 +8,20 @@ ms.topic: include
 ms.date: 04/09/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f64645db782b055e1c544f257149411f29fc99d7
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 2ab2ac1e98e25da4065611d32fb50aa8ce809361
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "34806311"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060321"
 ---
 ## <a name="about-vhds"></a>Virtuální pevné disky
+
 Virtuální pevné disky používané v Azure jsou soubory .vhd uložené jako objekty blob stránky v účtu úložiště úrovně Standard nebo Premium v Azure. Podrobnosti o objektech blob stránky najdete v tématu [Vysvětlení objektů blob bloku a objektů blob stránky](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs/). Podrobnosti o službě Premium Storage najdete v článku [Vysoce výkonné úložiště úrovně Premium a virtuální počítače Azure](../articles/virtual-machines/windows/premium-storage.md).
 
-Azure podporuje virtuální pevné disky s pevným formátem. Pevný formát logický disk lineárně rozvrhne v rámci souboru, takže posun disku o X je uložen na pozici objektu blob s posunem o X. Malé zápatí na konci objektu blob popisuje vlastnosti virtuálního pevného disku. Formát odpady místo často, protože většina disky mají velké nepoužívané oblasti v nich. Azure však ukládá soubory .vhd ve zhuštěném formátu, takže současně můžete těžit z výhod pevných i dynamických disků. Další informace najdete v tématu [Začínáme s virtuálními pevnými disky](https://technet.microsoft.com/library/dd979539.aspx).
+Azure podporuje virtuální pevné disky s pevným formátem. Pevný formát logický disk lineárně rozvrhne v rámci souboru, takže posun disku o X je uložen na pozici objektu blob s posunem o X. Malé zápatí na konci objektu blob popisuje vlastnosti virtuálního pevného disku. Odpad pevného formátu místo často, protože většina disků obsahuje velké nevyužité oblasti v nich. Azure však ukládá soubory .vhd ve zhuštěném formátu, takže současně můžete těžit z výhod pevných i dynamických disků. Další informace najdete v tématu [Začínáme s virtuálními pevnými disky](https://technet.microsoft.com/library/dd979539.aspx).
 
-Všechny soubory virtuálního pevného disku v Azure, který chcete použít jako zdroj pro vytvoření disky nebo bitové kopie jsou jen pro čtení, s výjimkou souborů VHD nahrál nebo zkopírovat do úložiště Azure (může to být buď pro čtení a zápis, nebo jen pro čtení) uživatelem. Při vytváření disku nebo bitové kopie, Azure vytváří kopie zdrojové soubory VHD. Tyto kopie můžou být jen pro čtení nebo pro čtení a zápis, podle toho, jak virtuální pevný disk používáte.
+Všechny soubory virtuálního pevného disku v Azure, který chcete použít jako zdroj pro vytvoření disků nebo imagí jsou jen pro čtení, s výjimkou souborů .vhd nahraje nebo zkopírovat do úložiště Azure podle uživatele (která může být čtení a zápis nebo jen pro čtení). Při vytváření disku nebo image Azure vytváří kopie zdrojové soubory .vhd. Tyto kopie můžou být jen pro čtení nebo pro čtení a zápis, podle toho, jak virtuální pevný disk používáte.
 
 Při vytváření virtuálního počítače z image Azure vytvoří pro virtuální počítač disk, který je kopií zdrojového souboru .vhd. Z důvodu ochrany před náhodným odstraněním Azure označí jako zapůjčený každý zdrojový soubor .vhd, který se používá k vytváření image, disku operačního systému nebo datového disku.
 
@@ -29,40 +30,47 @@ Před odstraněním zdrojového souboru .vhd bude nutné toto označení odebrat
 > [!WARNING]
 > Pokud odstraníte zdrojový soubor .vhd z úložiště nebo pokud odstraníte účet úložiště, Microsoft pro vás tato data nebude moct obnovit.
 
-## <a name="types-of-disks"></a>Typy disků 
-Disky Azure jsou navržené pro 99,999% dostupnost. Disky systému Azure konzistentně mít doručit odolnost podnikové úrovni s špičkový NULOVÉ % Annualized míra selhání.
+## <a name="types-of-disks"></a>Typy disků
 
-Existují tři úrovně výkonu pro úložiště, ze kterých si můžete vybrat při vytváření vaše disky – prémiové disky SSD, standardní SSD (Preview) a standardní HDD úložiště. Navíc existují dva typy disků – nespravované a spravované.
+Disky Azure jsou navržené pro 99,999% dostupnost. Disky Azure konzistentně dodá odolnost na podnikové úrovni, se špičkovou NULOVOU % Annualized chybovost.
 
-### <a name="standard-hdd-disks"></a>Standardní HDD disky
-Standardní HDD disky jsou zajišťované pevné disky a poskytování nákladově efektivní úložiště. Standardní HDD úložiště je možné replikovat místně v datacentru jednu, nebo být geograficky redundantní s primární a sekundární datových centrech. Další informace o replikaci úložiště najdete v tématu [replikace Azure Storage](../articles/storage/common/storage-redundancy.md). 
+Existují tři úrovní výkonu úložiště, ze kterých si můžete vybrat při vytváření disků – Premium SSD disky SSD na úrovni Standard (Preview) a úložiště úrovně Standard pevný disk. Navíc existují dva typy disků – nespravované a spravované.
 
-Další informace o používání standardní HDD disků najdete v tématu [standardní úložiště a disky](../articles/virtual-machines/windows/standard-storage.md).
+### <a name="standard-hdd-disks"></a>Disky Standard pevný disk
 
-### <a name="standard-ssd-disks-preview"></a>Standardní disky SSD (preview)
-Standardní disky SSD jsou navrženy pro stejný druh úloh jako standardní HDD disky adresa, ale nabízejí konzistentní výkon a spolehlivost než pevný disk. Standardní disky SSD zkombinovat elementy Premium SSD disků a standardní HDD disky na formulář nejlepší nákladově efektivní řešení, které jsou vhodné pro aplikace, jako jsou webové servery, které nepotřebují vysokou IOPS na discích. Pokud je k dispozici standardní SSD disky jsou doporučené nasazení možnost pro většinu úloh. Standardní disky SSD jsou dostupné jen jako spravované disky a při ve verzi preview jsou k dispozici pouze v [vyberte oblasti](../articles/virtual-machines/windows/faq-for-disks.md) a s typem odolnosti místně redundantní úložiště (LRS).
+Standardní HDD disky jsou založená na jednotkách HDD a poskytování nákladově efektivních úložišť. Storage úrovně Standard pevný disk je možné místně replikovat v jednom datacentru, nebo být geograficky redundantní pomocí primárních a sekundárních datových center. Další informace o replikaci úložiště najdete v tématu [replikace Azure Storage](../articles/storage/common/storage-redundancy.md). 
 
-### <a name="premium-ssd-disks"></a>Pro prémiové disky SSD 
-Disky SSD Premium jsou zajišťované disky SSD a nabízí podporu vysoce výkonné, nízkou latencí disků pro virtuální počítače spuštěné úlohy I náročnými. Obvykle můžete Premium SSD disky s velikostí, které zahrnují "s" v názvu řady. Například je Dv3-Series a Dsv3-series, Dsv3-series lze použít s Premium SSD disky.  Další informace najdete v článku [Premium Storage](../articles/virtual-machines/windows/premium-storage.md).
+Další informace o použití standardních pevných disků, naleznete v tématu [Storage úrovně Standard a disky](../articles/virtual-machines/windows/standard-storage.md).
+
+### <a name="standard-ssd-disks"></a>Standardní disky SSD
+
+Standardní disky SSD jsou navrženy pro adresu stejný druh úlohy jako standardní HDD disky, ale nabízejí konzistentní výkon a spolehlivost než pevný disk. Standardní disky SSD kombinovat elementy disky Premium SSD a HDD standardní disky do formuláře nejlepší nákladově efektivní řešení vhodné pro aplikace, jako jsou webové servery, které nevyžadují vysoký počet IOPS na disky. Pokud je k dispozici, jsou disky SSD na úrovni Standard možnost doporučujeme pro většinu úloh. Standardní disky SSD jsou k dispozici jako Managed Disks ve všech oblastech, ale jsou aktuálně k dispozici pouze s typem odolnosti proti chybám místně redundantní úložiště (LRS).
+
+### <a name="premium-ssd-disks"></a>SSD disky úrovně Premium
+
+SSD disky Premium jsou založená na jednotkách SSD a poskytuje podporu vysoce výkonných disků s nízkou latencí pro virtuální počítače, které můžu intenzivních vstupně-výstupních operací. Můžete obvykle použít disky Premium SSD s velikostí, mezi které patří "s" v názvu řady. Například je Dv3-Series a řady Dsv3-series, Dsv3-series je možné s disky Premium SSD.  Další informace najdete v článku [Premium Storage](../articles/virtual-machines/windows/premium-storage.md).
 
 ### <a name="unmanaged-disks"></a>Nespravované disky
-Nespravované disky jsou tradičním typem disků, jaké používají virtuální počítače. S těmito disky vytvoření účtu úložiště a zadejte tento účet úložiště při vytváření disku. Ujistěte se, neuvádějte příliš mnoho disků ve stejném účtu úložiště, protože může být vyšší než [cíle škálovatelnosti](../articles/storage/common/storage-scalability-targets.md) účtu úložiště (20 000 IOPS, např.), což ve virtuálních počítačích omezené. U nespravovaných disků musíte zjistit, jak maximalizovat využití jednoho nebo více účtů úložiště a získat tak ze svých virtuálních počítačů nejlepší výkon.
 
-### <a name="managed-disks"></a>Managed Disks 
-Služba Managed Disks se na pozadí stará o vytvoření a správu účtu úložiště za vás a zajišťuje, že si nemusíte dělat starosti s omezením škálovatelnosti účtu úložiště. Jednoduše zadáte velikost disku a úroveň výkonu (Standard nebo Premium) a Azure za vás disk vytvoří a postará se o jeho správu. S využitím úložiště si nemusíte dělat starosti ani v případě, že přidáváte disky nebo vertikálně navyšujete a snižujete kapacitu virtuálního počítače. 
+Nespravované disky jsou tradičním typem disků, jaké používají virtuální počítače. S těmito disky vytvořte si vlastní účet úložiště a zadat Tento účet úložiště při vytváření disku. Ujistěte se, neumisťujte příliš mnoho disků ve stejném účtu úložiště, protože by mohla překročit [cíle škálovatelnosti](../articles/storage/common/storage-scalability-targets.md) účtu služby storage (20 000 IOPS, například), výsledkem je omezení ze strany virtuálních počítačů. U nespravovaných disků musíte zjistit, jak maximalizovat využití jednoho nebo více účtů úložiště a získat tak ze svých virtuálních počítačů nejlepší výkon.
+
+### <a name="managed-disks"></a>Managed Disks
+
+Služba Managed Disks se na pozadí stará o vytvoření a správu účtu úložiště za vás a zajišťuje, že si nemusíte dělat starosti s omezením škálovatelnosti účtu úložiště. Jednoduše zadáte velikost disku a úroveň výkonu (Standard nebo Premium) a Azure za vás disk vytvoří a postará se o jeho správu. S využitím úložiště si nemusíte dělat starosti ani v případě, že přidáváte disky nebo vertikálně navyšujete a snižujete kapacitu virtuálního počítače.
 
 V jednom účtu úložiště na oblast Azure můžete také spravovat vlastní image a vytvářet pomocí nich stovky virtuálních počítačů v rámci stejného předplatného. Další informace o spravovaných discích najdete v tématu [Přehled služby Managed Disks](../articles/virtual-machines/windows/managed-disks-overview.md).
 
 Doporučujeme pro nové virtuální počítače používat službu Azure Manager Disks, a abyste převedli výše uvedené nespravované disky na spravované disky a plně tak využili množství funkcí dostupných ve službě Managed Disks.
 
 ### <a name="disk-comparison"></a>Porovnání disků
-Následující tabulka obsahuje porovnání standardní HDD, standardní SSD a Premium SSD disků a nespravované, které vám pomůžou rozhodnout se, jak používat.
 
-|    | Disk Azure typu Premium |Azure SSD disků na úrovni Standard (preview)| Disk Azure standardní pevný disk 
-|--- | ------------------ | ------------------------------- | ----------------------- 
+Následující tabulka obsahuje porovnání standardní HDD, SSD na úrovni Standard a Premium SSD pro spravované a nespravované disky vám pomůže rozhodnout co použít. Velikosti označený hvězdičkou jsou aktuálně ve verzi preview.
+
+|    | Disk Azure typu Premium |Disk Azure SSD na úrovni Standard | Azure Standard pevného disku
+|--- | ------------------ | ------------------------------- | -----------------------
 | Typ disku | SSD | SSD | HDD  
-| Přehled  | Založený na jednotkách SSD; poskytuje podporu vysoce výkonných disků s nízkou latencí pro virtuální počítače, na kterých se spouští náročné vstupně-výstupní úlohy nebo které hostují kriticky důležité produkční prostředí. |Více konzistentní výkon a spolehlivost než pevný disk. Optimalizovaná pro malou IOPS úlohy| Na základě HDD nákladově efektivní disku pro nepravidelným přístup
-| Scénář  | Úlohy v produkčním prostředí a úlohy, u kterých záleží na výkonu |Webové servery, lehce použité podnikové aplikace a vývoje/testování| Zálohování, kritické, nepravidelným přístup 
-| Kapacita disku | P4: 32 GiB (pouze spravované disků)<br>P6: 64 GiB (pouze spravované disků)<br>P10: 128 GiB<br>P15: 256 GiB (pouze spravované disků)<br>P20: 512 GiB<br>P30: GiB 1024<br>P40: GiB 2048<br>P50: GiB 4095 |Jenom spravované disky:<br>E10: 128 GiB<br>E15: 256 GiB<br>E20: 512 GiB<br>E30: GiB 1024<br>E40: GiB 2048<br>E50: GiB 4095 | Nespravované disky: GiB 1 – 4 TiB (4095 GiB) <br><br>Managed Disks:<br> S4: 32 GiB <br>S6: 64 GiB <br>S10: 128 GiB <br>S.15: 256 GiB <br>S20: 512 GiB <br>Úrovně S30: GiB 1024 <br>S40: GiB 2048<br>S50: GiB 4095
-| Maximální propustnost na disk | 250 MiB/s | Až 60 MiB/s | Až 60 MiB/s 
-| Maximum vstupně-výstupních operací za sekundu (IOPS) na disk | 7500 IOPS | Až 500 IOPS | Až 500 IOPS 
+| Přehled  | Založený na jednotkách SSD; poskytuje podporu vysoce výkonných disků s nízkou latencí pro virtuální počítače, na kterých se spouští náročné vstupně-výstupní úlohy nebo které hostují kriticky důležité produkční prostředí. |Konzistentní výkon a spolehlivost než pevný disk. Optimalizované pro úlohy s nízkou – IOPS| Nákladově efektivní disku založeného na pevný disk pro úlohy s řídkým přístupem
+| Scénář  | Úlohy v produkčním prostředí a úlohy, u kterých záleží na výkonu |Webové servery, málo používaná podnikové aplikace a pro vývoj/testování| Zálohování, Nekritická, úlohy s Řídkým přístupem
+| Velikost disku | P4: 32 GiB (pouze spravované disky)<br>P6: 64 GiB (pouze spravované disky)<br>P10: 128 GB<br>P15: 256 GB (pouze spravované disky)<br>P20: 512 GB<br>P30: 1024 GB<br>P40: 2048 GiB<br>P50: 4095 GiB<br>P60: 8 192 GiB * (8 TB)<br>P70: 16 384 GB * (16 TB)<br>P80: 32 767 GiB * (32 TB) |Jenom spravované disky:<br>E10: 128 GB<br>E15: 256 GB<br>E20: 512 GB<br>E30: 1024 GB<br>E40: 2048 GiB<br>E50: 4095 GiB<br>E60: 8 192 GiB * (8 TB)<br>E70: 16 384 GB * (16 TB)<br> E80: 32 767 GiB * (32 TB) | Nespravované disky: 1 GiB – 4 TB (4095 GiB) <br><br>Managed Disks:<br> S4: 32 GiB <br>S6: 64 GiB <br>S10: 128 GB <br>S.15: 256 GB <br>S20: 512 GB <br>S30: 1024 GB <br>S40: 2048 GiB<br>S50: 4095 GiB<br>S60: 8 192 GiB * (8 TB)<br>S70: 16 384 GiB * (16 TB)<br>S80: 32,384 GiB * (32 TB)
+| Maximální propustnost na disk | P4: 25 MiB/s<br> P6: 50 MiB/s<br> P10: 100 MiB/s<br> P15: 200 MiB/s<br> P20: 150 MiB/s<br> P30: 200 MiB/s<br> P40 P50: 250 MiB/s<br> P60: 480 MiB/s<br> P70 P80: 750 MiB/s | E10 E50: až 60 MiB/s<br> E60: až 300 MiB/s *<br> E70 E80: 500 MiB/s *| S4 - S50: Upt o 60 MiB/s<br> S60: až 300 MiB/s *<br> S70 S80: až 500 MiB/s *
+| Maximum vstupně-výstupních operací za sekundu (IOPS) na disk | P4: 120 VSTUPNĚ-VÝSTUPNÍCH OPERACÍ<br> P6: 240 VSTUPNĚ-VÝSTUPNÍCH OPERACÍ<br> P10: 500 IOPS<br> P15: IOPS 1100<br> P20: IOPS 2300<br> P30: 500 IOPS<br> P40 P50: 7500 VSTUPNĚ-VÝSTUPNÍCH OPERACÍ<br> P60: 12 500 IOPS *<br> P70: 15 000 VSTUPNĚ-VÝSTUPNÍCH OPERACÍ *<br> P80: 20 000 IOPS * | E10 E50: až 500 IOPS<br> E60: až 1300 vstupně-výstupních operací *<br> E70 E80: až 2000 vstupně-výstupních operací * | S4 S50: až 500 IOPS<br> S60: až 1300 vstupně-výstupních operací *<br> S70 S80: až 2000 vstupně-výstupních operací *

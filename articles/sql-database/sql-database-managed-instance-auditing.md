@@ -8,14 +8,14 @@ ms.reviewer: vanto
 ms.service: sql-database
 ms.custom: security
 ms.topic: conceptual
-ms.date: 08/28/2018
+ms.date: 09/20/2018
 ms.author: giladm
-ms.openlocfilehash: 7671b49921799e63b01d0eb85e90a8b75b2d5a48
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 3971d6966088ccb19a35ab938408a1c9dc835d3b
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45544290"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031811"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Začínáme s Azure auditem SQL Database Managed Instance
 
@@ -104,7 +104,7 @@ Následující část popisuje konfiguraci auditování pro Managed Instance.
     Pokud není zadán, `RETENTION_DAYS` výchozí hodnota je 0 (neomezenou dobu).
 
     Další informace:
-    - [Auditování rozdíly mezi Managed Instance, Azure SQL DB a systému SQL Server](#subheading-3)
+    - [Auditování rozdíly mezi Managed Instance, Azure SQL DB a systému SQL Server](#auditing-differences-between-managed-instance-azure-sql-database-and-sql-server)
     - [VYTVOŘIT SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
     - [PŘÍKAZ ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 

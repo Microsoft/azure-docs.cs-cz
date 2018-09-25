@@ -11,14 +11,18 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/10/2017
-ms.openlocfilehash: 5a772f8792c02139e45977e207b5be4bebc63a9c
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4a2dff4dd57bdb0b010bbb4568d796f1e197a728
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37908235"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971497"
 ---
 # <a name="persisting-changes-and-working-with-large-files"></a>Uložením změn prostředků a práci s velkými soubory
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
 Pomocí služby experimentování ve službě Azure Machine Learning můžete nakonfigurovat různé cíle spuštění. Některé cíle jsou místní, jako je například v místním počítači nebo kontejneru Docker v místním počítači. Ostatní jsou vzdálené, jako je například kontejneru Docker ve vzdáleném počítači nebo clusteru služby HDInsight. Další informace najdete v tématu [přehled Azure Machine Learning vyzkoušet spuštění služby](experimentation-service-configuration.md). 
 
 Předtím, než můžete spustit na cíli, je třeba zkopírovat složku projektu do cílového výpočetního prostředí. Je potřeba udělat, tak i s místní spuštění, který používá místní dočasnou složku pro tento účel. 
@@ -48,6 +52,9 @@ Běžné případy použití jsou:
 * Trénování modelu
 * Vytvoření datové sady
 * Vykreslení grafu jako soubor obrázku jako součást provádění trénování modelu 
+
+>[!Note]
+> Maximální velikost sledované souboru ve složce výstupy po spuštění je 512 MB. To znamená, že pokud váš skript vytvoří soubor, který je větší než 512 MB ve složce výstupy, nejsou shromažďovány existuje. 
 
 Kromě toho chcete porovnat výstupy během spuštění, vyberte výstupního souboru (například model), který byl vytvořen předchozí spustit a použít jej pro následující úlohy (například vyhodnocování).
 

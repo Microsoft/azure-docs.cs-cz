@@ -1,5 +1,5 @@
 ---
-title: 'Bing vlastní vyhledávání: Vlastní zobrazení hledání | Microsoft Docs'
+title: 'Vlastní vyhledávání Bingu: Hledat vlastní zobrazení | Dokumentace Microsoftu'
 description: Popisuje, jak hledat vlastní zobrazení webu
 services: cognitive-services
 author: brapel
@@ -9,38 +9,51 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 09/28/2017
 ms.author: v-brapel
-ms.openlocfilehash: 75f6c8d299c7eed901dda0631fca74b040f72e30
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 7a2db7881dfe7efedb1a83637a6281f786652958
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342854"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964883"
 ---
-# <a name="call-your-custom-search"></a>Volání vlastní hledání
-Před provedením první volání rozhraní API pro vyhledávání vlastní získat výsledky hledání instance, které je potřeba získat předplatné klíč kognitivní služby. Získat klíč rozhraní API pro vyhledávání vlastní, najdete v části [zkuste kognitivní služby](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search).
+# <a name="call-your-custom-search"></a>Volání vlastního vyhledávání
 
-> [!NOTE]
-> Existující Bing vlastní vyhledávání zákazníci, kteří mají klíč preview zřízený, nebo před 15 říjen 2017 bude moci používat jejich klíče, dokud 2017 30. listopadu, nebo dokud budou mít vyčerpá maximální počet dotazů, které jsou povoleny. Pak se musí migrovat na verzi všeobecně dostupná v Azure.
+Před vytvořením první volání do rozhraní API pro vlastní vyhledávání zobrazíte výsledky hledání pro vaši instanci, potřebujete získat klíč předplatného služeb Cognitive Services. Chcete-li získat klíč pro vlastní rozhraní API pro vyhledávání, naleznete v tématu [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search).
+
 
 ## <a name="try-it-out"></a>Vyzkoušet
-Po dokončení konfigurace prostředí vlastní vyhledávání, můžete otestovat konfiguraci z portálu pro vlastní vyhledávání. Přihlaste se k [vlastní vyhledávání](https://customsearch.ai)vlastní hledání instance a klikněte **produkční** kartě. **Koncové body** se zobrazí karta. Vaše předplatné určí, které koncové body jsou k dispozici akci, najdete v článku [ceny stránky](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/). Chcete-li otestovat koncový bod, vyberte z rozevíracího seznamu a nastavte související možnosti konfigurace. 
 
-Dále jsou dostupné možnosti.
+Po dokončení konfigurace prostředí pro vlastní vyhledávání, můžete otestovat konfiguraci z portálu pro vlastní vyhledávání. 
 
-- **Dotaz**: hledaný termín pro vyhledávání. K dispozici je pouze pro webové, Image a automatických návrhů koncové body.
-- **Vlastní konfigurace ID**: ID konfigurace zvolené instance vlastní vyhledávání. Toto pole je jen pro čtení.
-- **Trhu**: na trhu, odkud pocházejí výsledky. K dispozici je pouze pro webové, Image a hostované uživatelského rozhraní koncové body.
-- **Klíč předplatného**: klíč předplatného se otestovat s. Může z rozevíracího seznamu vyberte klíč, nebo ji zadat ručně.
-- **Bezpečné vyhledávání**: filtr použít k filtrování webových stránek pro obsah pro dospělé. K dispozici je pouze pro webové, Image a hostované uživatelského rozhraní koncové body.
-- **Počet**: počet výsledků vyhledávání do v odpovědi vrátit. K dispozici je pouze pro webové a bitové kopie koncové body.
-- **Posun**: počet výsledků vyhledávání do v odpovědi vrátit. K dispozici je pouze pro webové a bitové kopie koncové body.
+1. Přihlaste se do [vlastní vyhledávání](https://customsearch.ai).
+2. Klikněte na instanci vlastního vyhledávání ze svého seznamu instancí.
+3. Klikněte na tlačítko **produkční** kartu. 
+4. V části **koncové body** kartu, vyberte koncový bod (například webové rozhraní API). Předplatné Určuje, jaké koncové body jsou (naleznete v tématu [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/) možnosti předplatného). 
+5. Zadejte hodnoty parametrů. 
 
-Po zadání všech požadovaných možností pro webové, Image nebo automatických návrhů, klikněte na tlačítko **volání** zobrazíte odpověď JSON v pravém podokně. 
+    Toto jsou možné můžete nastavit parametry (skutečný seznam závisí na vybraný koncový bod). Další informace o těchto parametrech naleznete v tématu [rozhraní API pro vlastní vyhledávání](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters) odkaz.
 
-Pokud vyberete koncový bod hostované uživatelského rozhraní, můžete otestovat možnosti vyhledávání v pravém podokně.
+    - **Dotaz**: hledaný termín, který chcete vyhledat. Dostupné jenom pro Web, Image, Video a pro automatické návrhy koncových bodů.
+    - **Vlastní ID konfigurace**: ID konfigurace vybrané instance vlastního vyhledávání. Toto pole je jen pro čtení.
+    - **Na trhu**: na trhu, odkud pochází výsledky. Dostupné jenom pro koncové body Web, Image, Video a hostované uživatelského rozhraní.
+    - **Klíč předplatného**: klíč předplatného pro testování. Může z rozevíracího seznamu vyberte klíč, nebo ji zadat ručně.  
+      
+    Kliknutím na **další parametry** odhalí následující parametry:  
+      
+    - **Bezpečné vyhledávání**: Filtr slouží k filtrování webových stránek pro obsah pro dospělé. K dispozici pouze pro koncové body Web, Image, Video a hostované uživatelského rozhraní.
+    - **Jazyk uživatelského rozhraní**: jazyk používaný pro uživatelské rozhraní řetězce. Pokud povolíte obrázky a videa v uživatelském rozhraní hostovaná, například **Image** a **Video** karet použít zadaný jazyk.
+    - **Počet**: počet výsledků hledání vrátit v odpovědi. K dispozici pouze pro koncové body Web, Image a videa.
+    - **Posun**: počet výsledků hledání pro přeskočení před vrácením výsledky. K dispozici pouze pro koncové body Web, Image a videa.
+
+6. Po zadání všechny nezbytné možnosti, klikněte na tlačítko **volání** zobrazíte odpověď JSON v pravém podokně. 
+
+Pokud vyberete hostované uživatelského rozhraní koncového bodu, můžete otestovat vyhledávání v dolním podokně.
 
 ## <a name="next-steps"></a>Další postup
-- [Volání vlastní zobrazení pomocí C#](./call-endpoint-csharp.md)
-- [Volání vlastní zobrazení s Javou](./call-endpoint-java.md)
-- [Vaše vlastní zobrazení s NodeJs volání](./call-endpoint-nodejs.md)
-- [Volání vlastní zobrazení s Pythonem](./call-endpoint-python.md)
+
+- [Volání vlastního zobrazení pomocí jazyka C#](./call-endpoint-csharp.md)
+- [Volání vlastního zobrazení pomocí Javy](./call-endpoint-java.md)
+- [Volání vlastního zobrazení s NodeJs](./call-endpoint-nodejs.md)
+- [Volání vlastního zobrazení pomocí Pythonu](./call-endpoint-python.md)
+
+- [Volání vlastního zobrazení pomocí sady SDK jazyka C#](./sdk-csharp-quick-start.md)

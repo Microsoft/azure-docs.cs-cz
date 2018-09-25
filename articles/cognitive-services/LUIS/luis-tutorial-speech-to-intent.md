@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Služba Speech umožňuje používat jeden požadavek přijímat zvuk a vrátit LUIS předpovědi objekty JSON. V tomto článku stažení a použití projektu v jazyce C# v sadě Visual Studio mluvit utterance do mikrofon a přijímat informace predikcí služby LUIS. Projekt používá balíček NuGet řeči, již zahrnut jako odkaz.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 8eff6ff3d0263708158f2fea82380e88ba4638ad
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 14956fd716a6939d5e7dd9d670cc78b58adf7f45
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45633623"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042070"
 ---
 # <a name="integrate-speech-service"></a>Integrace Speech service
 [Speech service](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) umožňuje použití jednoho požadavku a přijímat zvuk vrátit LUIS předpovědi objekty JSON. V tomto článku stažení a použití projektu v jazyce C# v sadě Visual Studio mluvit utterance do mikrofon a přijímat informace predikcí služby LUIS. Projekt používá Řeč [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) balíčku již zahrnut jako odkaz. 

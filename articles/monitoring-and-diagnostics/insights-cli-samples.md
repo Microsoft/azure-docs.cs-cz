@@ -1,6 +1,6 @@
 ---
 title: Úvodní ukázky v Azure Monitor, rozhraní příkazového řádku
-description: Ukázkové příkazy CLI 2.0 pro funkce Azure monitoru. Azure Monitor je služba Microsoft Azure, který umožňuje odeslat oznámení o výstrahách, volání webové adresy URL na základě hodnot nakonfigurované telemetrických dat a automatické škálování cloudových služeb, virtuálních počítačů a webových aplikací.
+description: Ukázkové příkazy rozhraní příkazového řádku pro funkce Azure monitoru. Azure Monitor je služba Microsoft Azure, který umožňuje odeslat oznámení o výstrahách, volání webové adresy URL na základě hodnot nakonfigurované telemetrických dat a automatické škálování cloudových služeb, virtuálních počítačů a webových aplikací.
 author: rboucher
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: robb
 ms.component: ''
-ms.openlocfilehash: dfc9a65325d25889c9d8d3c10aa0dcda2b5a9980
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 1728511402d48904fa968790f790314fdf57767c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213202"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961514"
 ---
-# <a name="azure-monitor-cli-20-quick-start-samples"></a>Úvodní ukázky v Azure CLI 2.0 monitorování
+# <a name="azure-monitor-cli-quick-start-samples"></a>Úvodní ukázky v Azure Monitor, rozhraní příkazového řádku
 V tomto článku se dozvíte, ukázky, že příkazy rozhraní příkazového řádku (CLI), umožňují přístup k funkcím Azure Monitor. Azure Monitor vám umožní automatické škálování cloudové služby, virtuální počítače a webové aplikace a odesílat oznámení o výstrahách nebo volání webových adres URL na základě hodnot nakonfigurované telemetrická data.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud jste ještě nenainstalovali Azure CLI, postupujte podle pokynů pro [nainstalovat rozhraní příkazového řádku Azure CLI 2.0](/cli/azure/install-azure-cli). Můžete také použít [Azure Cloud Shell](/azure/cloud-shell) spuštění rozhraní příkazového řádku jako interaktivní prostředí v prohlížeči. Viz úplný přehled všech dostupných příkazů v [referenční informace k Azure CLI monitorování](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest). 
+Pokud jste ještě nenainstalovali Azure CLI, postupujte podle pokynů pro [instalace rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli). Můžete také použít [Azure Cloud Shell](/azure/cloud-shell) spuštění rozhraní příkazového řádku jako interaktivní prostředí v prohlížeči. Viz úplný přehled všech dostupných příkazů k dispozici v [referenční informace k Azure CLI monitorování](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest). 
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
 Prvním krokem je přihlašovací jméno ke svému účtu Azure.

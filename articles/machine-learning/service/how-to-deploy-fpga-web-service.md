@@ -1,6 +1,6 @@
 ---
-title: Jak nasadit model jako webovou službu na FPGA pomocí Azure Machine Learning
-description: Informace o nasazení webové služby s modelem systémem FPGA pomocí Azure Machine Learning.
+title: Nasazení modelu jako webové služby na FPGA službou Azure Machine Learning
+description: Zjistěte, jak nasadit webovou službu pomocí modelu běží na FPGA službou Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -8,166 +8,212 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: tedway
 author: tedway
-ms.date: 05/07/2018
-ms.openlocfilehash: f3237980a1ad1969b5cf8d42d547ddf96608dd97
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 09/24/2018
+ms.openlocfilehash: ee67585a523ab96b1442d9eee3e9dfd55a758d32
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33789394"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971480"
 ---
-# <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning"></a>Nasadit model jako webovou službu na FPGA pomocí Azure Machine Learning
+# <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning"></a>Nasazení modelu jako webové služby na FPGA službou Azure Machine Learning
 
-V tomto dokumentu, zjistíte, jak nastavit prostředí pracovní stanice a nasadit model jako webovou službu na [pole programovatelný brány pole (FPGA)](concept-accelerate-with-fpgas.md). Webová služba používá ke spuštění modelu v FPGA Brainwave projektu.
+Nasazení modelu jako webové služby na [pole programmable gate Array (FPGA)](concept-accelerate-with-fpgas.md).  Použití FPGA poskytuje mimořádně nízkou latenci odvozování, dokonce i s velikostí jedné dávce.   
 
-Pomocí FPGAs poskytuje inferencing s velmi nízkou latencí, i když jedné dávkové velikost.
+## <a name="prerequisites"></a>Požadavky
 
-## <a name="create-an-azure-machine-learning-model-management-account"></a>Vytvoření účtu Azure Machine Learning Model správy
+- Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-1. Přejděte na stránku vytvoření modelu správy účtu [portálu Azure](https://aka.ms/aml-create-mma).
+- Pracovní prostor služby Azure Machine Learning a Azure Machine Learning SDK for nainstalovaný Python. Další informace o získání těchto nezbytných podmínkách používání [jak nakonfigurovat prostředí pro vývoj](how-to-configure-environment.md) dokumentu.
+ 
+  - Musí být v pracovním prostoru *USA – východ 2* oblasti.
 
-2. Na portálu, vytvořte účet Model správy v nástroji **východní USA 2** oblast.
+  - Instalace funkce contrib:
 
-   ![Obrázek obrazovce vytvořit účet pro správu modelu](media/how-to-deploy-fpga-web-service/azure-portal-create-mma.PNG)
+    ```shell
+    pip install --upgrade azureml-sdk[contrib]
+    ```  
 
-3. Zadejte název účtu Model správy, zvolte předplatné a zvolte skupinu prostředků.
+## <a name="create-and-deploy-your-model"></a>Vytvoření a nasazení modelu
+Vytvoření kanálu pro předzpracování vstupního obrázku vytrénovaných pomocí modelem ResNet 50 na FPGA a pak spusťte funkce prostřednictvím classifer školení na datové sadě ImageNet.
 
-   >[!IMPORTANT]
-   >Pro umístění, je nutné vybrat **východní USA 2** jako oblast.  Žádné jiné oblasti jsou aktuálně k dispozici.
+Postupujte podle pokynů:
 
-4. Zvolte cenovou úroveň (S1 bude stačit, ale je možné použít S2 a S3).  DevTest úroveň se nepodporuje.  
-
-5. Klikněte na tlačítko **vyberte** potvrďte cenovou úroveň.
-
-6. Klikněte na tlačítko **vytvořit** Management modelu ML na levé straně.
-
-## <a name="get-model-management-account-information"></a>Získat informace o účtu Model správy
-
-Chcete-li získat informace o účtu správy modelu (MMA), klikněte na tlačítko __účet pro správu modelu__ na portálu Azure.
-
-Zkopírujte hodnoty z následujících položek:
-
-+ Název modelu účet pro správu (v v levém horním rohu)
-+ Název skupiny prostředků
-+ ID předplatného
-+ Umístění (použijte "eastus2")
-
-![Informace o modelu správy účtu](media/how-to-deploy-fpga-web-service/azure-portal-mma-info.PNG)
-
-## <a name="set-up-your-machine"></a>Nastavit svůj počítač
-
-Nastavit pracovní stanice pro FPGA nasazení, použijte tyto kroky:
-
-1. Stáhněte a nainstalujte nejnovější verzi [Git](https://git-scm.com/downloads).
-
-2. Nainstalujte [Anaconda (Python 3.6)](https://conda.io/miniconda.html).
-
-3. Pokud chcete stáhnout Anaconda prostředí, použijte následující příkaz z řádku Git:
-
-    ```
-    git clone https://aka.ms/aml-real-time-ai
-    ```
-
-4. Chcete-li vytvořit prostředí, otevřete **Anaconda řádku** (ne Azure Machine Learning Workbench řádku) a spusťte následující příkaz:
-
-    > [!IMPORTANT]
-    > `environment.yml` Soubor je v úložišti git klonovat v předchozím kroku. Změňte cestu podle potřeby tak, aby odkazoval na pracovní stanici do souboru.
-
-    ```
-    conda env create -f environment.yml
-    ```
-
-5. Pokud chcete aktivovat prostředí, použijte následující příkaz:
-
-    ```
-    conda activate amlrealtimeai
-    ```
-
-6. Start pro server Poznámkový blok Jupyter, použijte následující příkaz:
-
-    ```
-    jupyter notebook
-    ```
-
-    Výstup tohoto příkazu je podobná následující text:
-
-    ```text
-    Copy/paste this URL into your browser when you connect for the first time, to login with a token:
-        http://localhost:8888/?token=bb2ce89cc8ae931f5df50f96e3a6badfc826ff4100e78075
-    ```
-
-    > [!TIP]
-    > Zobrazí se různé token pokaždé, když spustíte příkaz.
-
-    Pokud váš prohlížeč do poznámkového bloku Jupyter nespustí automaticky, použijte adresu URL protokolu HTTP, který je vrácen předchozím příkazem otevřete stránku.
-
-    ![Obrázek webové stránky poznámkového bloku Jupyter](./media/how-to-deploy-fpga-web-service/jupyter-notebook.png)
-
-## <a name="deploy-your-model"></a>Nasazení modelu
-
-Pomocí poznámkového bloku Jupyter, otevřete `00_QuickStart.ipynb` poznámkového bloku z `notebooks/resnet50` adresáře. Postupujte podle pokynů v poznámkovém bloku na:
-
-* Zadejte službu
+* Definovat modelu kanálu
 * Nasazení modelu
-* Využívat nasazené modelu
+* Používání nasazeného modelu
 * Odstranění nasazené služby
 
 > [!IMPORTANT]
-> K optimalizaci latence a propustnosti, pracovní stanice by měl být ve stejné oblasti Azure jako koncový bod.  Rozhraní API jsou aktuálně vytvořené v oblasti Azure USA – východ.
+> Pokud chcete optimalizovat latenci a propustnost, musí být váš klient ve stejné oblasti Azure jako koncový bod.  Rozhraní API jsou aktuálně vytvořené v oblasti Azure USA – východ.
 
-## <a name="ssltls-and-authentication"></a>Ověřování a SSL/TLS
+### <a name="get-the-notebook"></a>Získání poznámkového bloku
 
-Azure Machine Learning nabízí podporu protokolu SSL a ověřování na základě klíčů. To umožňuje omezit přístup k vaší služby a zabezpečená data odeslaná klienty.
+Pro usnadnění je k dispozici jako poznámkový blok Jupyter v tomto kurzu. Použít žádnou z těchto metod ke spuštění `project-brainwave/project-brainwave-quickstart.ipynb` Poznámkový blok:
 
-> [!NOTE]
-> Postup v této části se uplatní jenom na Azure Machine Learning hardwaru Accelerated modelů. Standardní služby Azure Machine Learning, najdete v článku [postup nastavení protokolu SSL na Azure Machine Learning výpočetní](https://docs.microsoft.com/azure/machine-learning/preview/how-to-setup-ssl-on-mlc) dokumentu.
+[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
+
+### <a name="preprocess-image"></a>Předběžné zpracování obrazu
+První fáze kanálu je předběžné zpracování imagí.
+
+```python
+import os
+import tensorflow as tf
+
+# Input images as a two-dimensional tensor containing an arbitrary number of images represented a strings
+import azureml.contrib.brainwave.models.utils as utils
+in_images = tf.placeholder(tf.string)
+image_tensors = utils.preprocess_array(in_images)
+print(image_tensors.shape)
+```
+### <a name="add-featurizer"></a>Přidat Featurizer
+Inicializovat model a stáhněte si kontrolní bod TensorFlow kvantizované verze ResNet50 má být použit jako featurizer.
+
+```python
+from azureml.contrib.brainwave.models import QuantizedResnet50, Resnet50
+model_path = os.path.expanduser('~/models')
+model = QuantizedResnet50(model_path, is_frozen = True)
+feature_tensor = model.import_graph_def(image_tensors)
+print(model.version)
+print(feature_tensor.name)
+print(feature_tensor.shape)
+```
+
+### <a name="add-classifier"></a>Přidat třídění
+Na datové sadě ImageNet byla vyškolila tento třídění.
+
+```python
+classifier_input, classifier_output = Resnet50.get_default_classifier(feature_tensor, model_path)
+```
+
+### <a name="create-service-definition"></a>Vytvoření definice služby
+Teď, když máte definované předběžného zpracování obrazu, featurizer a třídění, na kterém běží ve službě, můžete vytvořit definice služby. Definice služby je sada soubory vygenerované z modelu, který je nasazený do FPGA služby. Definice služby se skládá z kanálu. Kanál je několika fází, které jsou spouštěny v pořadí.  Fáze TensorFlow, Keras fáze a fáze BrainWave jsou podporovány.  Fáze jsou spuštěny v pořadí na službu s výstupem každé fáze vstup do další fáze.
+
+Chcete-li vytvořit fázi TensorFlow, zadejte relaci obsahující grafu (v tomto případě se používá výchozí graf) a vstupní a výstupní tensors do této fáze.  Tyto informace slouží k uložení grafu tak, aby ji můžete spustit ve službě.
+
+```python
+from azureml.contrib.brainwave.pipeline import ModelDefinition, TensorflowStage, BrainWaveStage
+
+save_path = os.path.expanduser('~/models/save')
+model_def_path = os.path.join(save_path, 'service_def.zip')
+
+model_def = ModelDefinition()
+with tf.Session() as sess:
+    model_def.pipeline.append(TensorflowStage(sess, in_images, image_tensors))
+    model_def.pipeline.append(BrainWaveStage(sess, model))
+    model_def.pipeline.append(TensorflowStage(sess, classifier_input, classifier_output))
+    model_def.save(model_def_path)
+    print(model_def_path)
+```
+
+### <a name="deploy-model"></a>Nasazení modelu
+Vytvoření služby z definice služby.  Váš pracovní prostor musí být v umístění východní USA 2.
+
+```python
+from azureml.core import Workspace
+
+ws = Workspace.from_config()
+print(ws.name, ws.resource_group, ws.location, ws.subscription_id, sep = '\n')
+
+from azureml.core.model import Model
+model_name = "resnet-50-rtai"
+registered_model = Model.register(ws, model_def_path, model_name)
+
+from azureml.core.webservice import Webservice
+from azureml.exceptions import WebserviceException
+from azureml.contrib.brainwave import BrainwaveWebservice, BrainwaveImage
+service_name = "imagenet-infer"
+service = None
+try:
+    service = Webservice(ws, service_name)
+except WebserviceException:
+    image_config = BrainwaveImage.image_configuration()
+    deployment_config = BrainwaveWebservice.deploy_configuration()
+    service = Webservice.deploy_from_model(ws, service_name, [registered_model], image_config, deployment_config)
+    service.wait_for_deployment(true)
+```
+
+### <a name="test-the-service"></a>Pokud chcete službu otestovat
+Odeslat image do rozhraní API a otestovat odpovědi, přidejte mapování z výstupu ID třídy ImageNet název třídy.
+
+```python
+import requests
+classes_entries = requests.get("https://raw.githubusercontent.com/Lasagne/Recipes/master/examples/resnet50/imagenet_classes.txt").text.splitlines()
+```
+
+Volají službu a název souboru "your image.jpg" níže nahraďte obrázek z vašeho počítače. 
+
+```python
+with open('your-image.jpg') as f:
+    results = service.run(f)
+# map results [class_id] => [confidence]
+results = enumerate(results)
+# sort results by confidence
+sorted_results = sorted(results, key=lambda x: x[1], reverse=True)
+# print top 5 results
+for top in sorted_results[:5]:
+    print(classes_entries[top[0]], 'confidence:', top[1])
+``` 
+
+### <a name="clean-up-service"></a>Vyčištění služby
+Odstraňte službu.
+
+```python
+service.delete()
+    
+registered_model.delete()
+```
+
+## <a name="secure-fpga-web-services"></a>Zabezpečení webových služeb, FPGA
+
+Modely Azure Machine Learning, běží na FPGA poskytovat podpora protokolu SSL a ověřování na základě klíče. To umožňuje omezit přístup k vaší služby a zabezpečit data odeslaná klienty.
 
 > [!IMPORTANT]
-> Ověřování je povoleno pouze pro služby, které poskytovaly služby certifikát SSL a klíč. 
+> Ověřování je povoleno pouze pro služby, které jste zadali certifikát SSL a klíče. 
 >
-> Pokud nepovolíte SSL, bude moct provádět volání do služby všechny uživatele na Internetu.
+> Pokud nepovolíte SSL, bude moct provádět volání do služby kdokoli na Internetu.
 >
 > Pokud povolíte protokol SSL a ověřovací klíč je požadován při přístupu ke službě.
 
-SSL šifruje data odesílaná mezi klientem a služby. Je také používají klienta k ověření identity serveru.
+SSL šifruje data odesílaná mezi klientem a službou. Je také používá klient ověřit identitu serveru.
 
-Můžete nasadit službu pomocí protokolu SSL povoleno, nebo aktualizovat již nasazenou službu povolit. Kroky jsou stejné:
+Můžete nasadit službu s protokol SSL povolený nebo aktualizovat už nasazenou službu, aby je. Postup je stejný:
 
-1. Získejte název domény.
+1. Získání názvu domény.
 
 2. Získejte certifikát SSL.
 
-3. Nasaďte, nebo aktualizace služby pomocí protokolu SSL povolen.
+3. Nasazení nebo službu aktualizujte protokol SSL povolený.
 
-4. Aktualizujte DNS tak, aby odkazoval na službu.
+4. Aktualizujte svoji službu DNS tak, aby odkazovala na službu.
 
-### <a name="acquire-a-domain-name"></a>Získat název domény
+### <a name="acquire-a-domain-name"></a>Získání názvu domény
 
-Pokud již nevlastníte název domény, si můžete zakoupit z __registrátorem názvu domény__. Proces se liší mezi registrátorů, jak to dělá náklady. Registrátora také poskytuje nástroje pro správu názvu domény. Tyto nástroje se používají k mapování plně kvalifikovaný název domény (např. www.contoso.com) na IP adresu, který je hostitelem služby.
+Pokud jste již nevlastní název domény, můžete si zakoupit jeden z __registrátora názvu domény__. Proces se liší mezi registrátorů, stejně jako náklady. Doménový Registrátor také poskytuje nástroje pro správu název domény. Tyto nástroje se používají k mapování plně kvalifikovaný název domény (například www.contoso.com) na IP adresu, která je hostitelem služby.
 
-### <a name="acquire-an-ssl-certificate"></a>Získání certifikátu protokolu SSL
+### <a name="acquire-an-ssl-certificate"></a>Získat certifikát SSL
 
-Existuje mnoho způsobů, jak získat certifikát SSL. Nejběžnější je zakoupit u __certifikační autority__ (CA). Bez ohledu na to, kde získat certifikát potřebujete následující soubory:
+Existuje mnoho způsobů, jak získat certifikát SSL. Nejběžnější je to k nákupu z __certifikační autority__ (CA). Bez ohledu na to, kde můžete získat certifikát budete potřebovat následující soubory:
 
-* A __certifikát__. Certifikát musí obsahovat řetěz certifikátů úplné a musí být kódovaný PEM.
+* A __certifikát__. Certifikát musí obsahovat řetězce úplný certifikát a musí být kódovaný PEM.
 * A __klíč__. Klíč musí být kódovaný PEM.
 
 > [!TIP]
-> Pokud certifikační autorita nelze zadat certifikát a klíč jako soubory s kódováním PEM, můžete použít nástroj, jako [OpenSSL](https://www.openssl.org/) pro formátování.
+> Pokud certifikační autorita nemůže poskytnout certifikát a klíč jako kódovaný PEM soubory, můžete použít nástroj, jako [OpenSSL](https://www.openssl.org/) změny formátu.
 
 > [!IMPORTANT]
-> Certifikáty podepsané svým držitelem by měl použít pouze pro vývoj. Není vhodné používat v produkčním prostředí.
+> Certifikáty podepsané svým držitelem by měla sloužit pouze pro vývoj. Není vhodné používat v produkčním prostředí.
 >
-> Pokud používáte certifikát podepsaný svým držitelem, najdete v článku [využívání služeb s certifikáty podepsané svým držitelem](#self-signed) části konkrétní pokyny.
+> Pokud používáte certifikát podepsaný svým držitelem, přečtěte si [využívání služeb pomocí certifikátů podepsaných svým držitelem](#self-signed) části konkrétní pokyny.
 
 > [!WARNING]
-> Při žádosti o certifikát, je nutné zadat název plně kvalifikované domény (FQDN) adresy, ke které máte v úmyslu použít pro službu. Například www.contoso.com. Při ověření identity služby jsou porovnávány adresy razítkem do certifikátu a adresy používané klienty.
+> Při žádosti o certifikát, musíte plně kvalifikovaný název domény (FQDN) adresy, které chcete použít pro službu. Příklad: www.contoso.com. Porovnání adres razítkem do certifikát a adresu použitou klienty při ověřování identity služby.
 >
-> Pokud adresy se neshodují, klienti dojde k chybě. 
+> Pokud adresy se neshodují, klienti obdrží chybu. 
 
-### <a name="deploy-or-update-the-service-with-ssl-enabled"></a>Nasazení nebo aktualizace služby pomocí protokolu SSL povoleno
+### <a name="deploy-or-update-the-service-with-ssl-enabled"></a>Nasazením nebo aktualizací služby s protokolem SSL povoleno
 
-Chcete-li nasadit službu pomocí protokolu SSL povoleno, nastavte `ssl_enabled` parametru `True`. Nastavte `ssl_certificate` parametr na hodnotu __certifikát__ souboru a `ssl_key` na hodnotu __klíč__ souboru. Následující příklad ukazuje, nasazení služby pomocí protokolu SSL povoleno:
+Chcete-li nasadit službu s protokolem SSL povoleno, nastavte `ssl_enabled` parametr `True`. Nastavte `ssl_certificate` parametr na hodnotu __certifikát__ souboru a `ssl_key` na hodnotu __klíč__ souboru. Následující příklad ukazuje nasazení služby s protokolem SSL povoleno:
 
 ```python
 from amlrealtimeai import DeploymentClient
@@ -191,21 +237,21 @@ with open('cert.pem','r') as cert_file:
 
 Odpověď `create_service` operace obsahuje IP adresu služby. IP adresa se používá při mapování názvu DNS na IP adresu služby.
 
-Odpověď obsahuje také __primární klíč__ a __sekundární klíč__ používané využívat službu.
+Také obsahuje odpovědi __primární klíč__ a __sekundární klíč__ , která se používají k používání této služby.
 
-### <a name="update-your-dns-to-point-to-the-service"></a>Aktualizovat DNS tak, aby odkazoval na službu
+### <a name="update-your-dns-to-point-to-the-service"></a>Aktualizujte svoji službu DNS tak, aby odkazovala na službu
 
-Použijte nástroje poskytované subsystémem vaším registrátorem názvu domény k aktualizaci záznamu DNS pro název domény. Záznam musí odkazovat na IP adresu služby.
-
-> [!NOTE]
-> V závislosti na registrátora a čas live (TTL) nakonfigurovaný pro název domény, může trvat několik minut na několik hodin, než klienti mohou překlad názvu domény.
-
-### <a name="consuming-authenticated-services"></a>Využívání služeb ověřený
-
-Následující příklady ukazují, jak používat služby ověřené pomocí Pythonu a C#:
+Použijte nástroje poskytované systémem registrátora názvu domény aktualizovat záznam DNS pro název domény. Záznam musí odkazovat na IP adresu služby.
 
 > [!NOTE]
-> Nahraďte `authkey` s primární nebo sekundární klíč Vrácená při vytváření služby.
+> V závislosti na doménový Registrátor a čas live (TTL) nakonfigurovaný pro název domény, může trvat několik minut až několik hodin, než klienti mohli přeložit název domény.
+
+### <a name="consume-authenticated-services"></a>Využívání služeb ověřený
+
+Následující příklady ukazují, jak využívat služby ověřené pomocí jazyka Python a C#:
+
+> [!NOTE]
+> Nahraďte `authkey` s primárním nebo sekundárním klíčem Vrácená při vytváření služby.
 
 ```python
 from amlrealtimeai import PredictionClient
@@ -224,9 +270,9 @@ using (var content = File.OpenRead(image))
     }
 ```
 
-Ostatní klienty gRPC ověřit pomocí nastavení autorizační hlavičky žádosti. Je obecný přístup k vytvoření `ChannelCredentials` objekt, který kombinuje `SslCredentials` s `CallCredentials`. Tím se přidá k hlavičce autorizace požadavku. Další informace o implementaci podpory pro vaše konkrétní hlavičky najdete v tématu [ https://grpc.io/docs/guides/auth.html ](https://grpc.io/docs/guides/auth.html).
+Další gRPC klienti můžou ověřovat požadavky nastavením se autorizační hlavička. Obecný postup je vytvořit `ChannelCredentials` objekt, který kombinuje `SslCredentials` s `CallCredentials`. Tím se přidá do hlavičky autorizace žádosti. Další informace o implementaci podpory pro konkrétní hlavičky najdete v tématu [ https://grpc.io/docs/guides/auth.html ](https://grpc.io/docs/guides/auth.html).
 
-Následující příklady ukazují, jak nastavit hlavičky v C# a přejděte:
+Následující příklady ukazují, jak nastavit hlavičky v C# a Go:
 
 ```csharp
 creds = ChannelCredentials.Create(baseCreds, CallCredentials.FromInterceptor(
@@ -259,15 +305,15 @@ func (c *authCreds) RequireTransportSecurity() bool {
 }
 ```
 
-### <a id="self-signed"></a>Využívání služeb s certifikáty podepsané svým držitelem
+### <a id="self-signed"></a>Využívání služeb pomocí certifikátů podepsaných svým držitelem
 
-Existují dva způsoby, jak povolit klientovi ověřit na serveru zabezpečen certifikát podepsaný svým držitelem:
+Existují dva způsoby pro umožnění spolupráce klienta k ověření serveru zabezpečený pomocí certifikátu podepsaného svým držitelem:
 
-* V klientském systému, nastavte `GRPC_DEFAULT_SSL_ROOTS_FILE_PATH` proměnné prostředí v klientském systému tak, aby odkazoval na soubor certifikátu.
+* V klientském systému, nastavte `GRPC_DEFAULT_SSL_ROOTS_FILE_PATH` proměnnou prostředí v klientském systému tak, aby odkazoval na soubor certifikátu.
 
-* Při vytváření `SslCredentials` objektu, předejte obsah souboru certifikátu do konstruktoru.
+* Při vytváření `SslCredentials` objektu, předat konstruktoru obsah souboru certifikátu.
 
-Pomocí těchto metod způsobí, že gRPC na použití certifikátu jako kořenový certifikát.
+Pomocí některé z metod způsobí, že gRPC pro použití certifikátu jako kořenového certifikátu.
 
 > [!IMPORTANT]
-> gRPC nebude přijetí nedůvěryhodných certifikátů. Používá nedůvěryhodný certifikát se nezdaří s `Unavailable` stavový kód. Podrobnosti o tomto selhání obsahovat `Connection Failed`.
+> gRPC nepřijímá nedůvěryhodné certifikáty. Pomocí nedůvěryhodného certifikátu se nezdaří pomocí `Unavailable` stavový kód. Podrobnosti o tomto selhání obsahovat `Connection Failed`.

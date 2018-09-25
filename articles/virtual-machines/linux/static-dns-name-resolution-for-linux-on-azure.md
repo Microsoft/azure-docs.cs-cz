@@ -1,6 +1,6 @@
 ---
-title: Použít interní DNS pro překlad názvů virtuálních počítačů s 2.0 rozhraní příkazového řádku Azure | Microsoft Docs
-description: Jak vytvořit virtuální síťové adaptéry a používat interní DNS pro překlad názvů virtuálních počítačů v Azure pomocí Azure CLI 2.0
+title: Použití interního serveru DNS pro překlad adres virtuálních počítačů pomocí Azure CLI | Dokumentace Microsoftu
+description: Jak vytvořit virtuální síťové karty a použití interního serveru DNS pro překlad adres virtuálních počítačů v Azure pomocí Azure CLI
 services: virtual-machines-linux
 documentationcenter: ''
 author: vlivech
@@ -15,15 +15,16 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: v-livech
-ms.openlocfilehash: c1ca250d7255877cc811bf7c03034ecbb8f1f372
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: acfdd9070b49805c20b8ef921b5387c151448aa1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36936900"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961497"
 ---
-# <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>Vytvořit virtuální síťové karty a používat interní DNS pro překlad názvů virtuálních počítačů v Azure
-Tento článek ukazuje, jak nastavit statické interní názvy DNS pro virtuální počítače s Linuxem pomocí Azure CLI 2.0 virtuální síťové karty (vNics) a štítek názvy DNS. Statické názvy DNS jsou použity pro trvalé infrastruktury služby jako server volaných sestavení, který se používá k tomuto dokumentu nebo Git serveru.
+# <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>Vytvořit virtuální síťové karty a použití interního serveru DNS pro překlad adres virtuálních počítačů v Azure
+
+V tomto článku se dozvíte, jak nastavit statickou interní názvy DNS pro virtuální počítače s Linuxem pomocí virtuální síťové karty (Vnic) a názvy popisků DNS pomocí Azure CLI. Statické názvy DNS jsou použity pro trvalé infrastruktury služeb, jako je server sestavení Jenkinse, který se používá pro tento dokument nebo serveru Git.
 
 Požadavky:
 
@@ -31,12 +32,12 @@ Požadavky:
 * [Soubory veřejného a privátního klíče SSH](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="quick-commands"></a>Rychlé příkazy
-Pokud budete potřebovat rychle dosáhnout, v následující části jsou příkazy potřebné. Podrobnější informace a kontext pro každý krok naleznete ve zbývající části dokumentu [od zde](#detailed-walkthrough). K provedení těchto kroků, budete potřebovat nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalován a přihlášení k účtu Azure pomocí [az přihlášení](/cli/azure/reference-index#az_login).
+Pokud je potřeba rychle provést úlohu, následující část obsahuje podrobný příkazy potřebné. Podrobnější informace a kontext pro každý krok najdete ve zbývající části dokumentu [od tady](#detailed-walkthrough). Pokud chcete tento postup, musíte na nejnovější verzi [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az_login).
 
-Předběžných požadavků: Skupinu prostředků, virtuální síť a podsíť, skupinu zabezpečení sítě pomocí protokolu SSH příchozí.
+Předběžné požadavky: Skupina prostředků, virtuální síť a podsíť, skupiny zabezpečení sítě pomocí protokolu SSH příchozí.
 
-### <a name="create-a-virtual-network-interface-card-with-a-static-internal-dns-name"></a>Vytvořit virtuální síťový adaptér se statickou interní název DNS
-Vytvoření vNic s [vytvořit síťových adaptérů sítě az](/cli/azure/network/nic#az_network_nic_create). `--internal-dns-name` Příznak rozhraní příkazového řádku je k nastavení DNS popisku, který poskytuje statické název DNS pro virtuální síťové karty (vNic). Následující příklad vytvoří adaptéru vNic s názvem `myNic`, připojí se k `myVnet` virtuální síti a vytvoří interní záznam název DNS názvem `jenkins`:
+### <a name="create-a-virtual-network-interface-card-with-a-static-internal-dns-name"></a>Vytvoření virtuální síťové karty s statické interní název DNS
+Vytvořit virtuální síťový adaptér s [az network nic vytvořit](/cli/azure/network/nic#az_network_nic_create). `--internal-dns-name` Příznak CLI je k nastavení názvu DNS, který poskytuje statické název DNS pro virtuální síťový adaptér (vNic). Následující příklad vytvoří virtuální síťový adaptér s názvem `myNic`, připojí se k `myVnet` virtuální sítě a vytvoří záznam interní název DNS názvem `jenkins`:
 
 ```azurecli
 az network nic create \
@@ -47,8 +48,8 @@ az network nic create \
     --internal-dns-name jenkins
 ```
 
-### <a name="deploy-a-vm-and-connect-the-vnic"></a>Nasadit virtuální počítač a připojte se adaptéru vNic
-Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create). `--nics` Příznak během nasazení do Azure adaptér vNic připojuje k virtuálnímu počítači. Následující příklad vytvoří virtuální počítač s názvem `myVM` s Azure spravované disky a připojí adaptér vNic s názvem `myNic` z předchozího kroku:
+### <a name="deploy-a-vm-and-connect-the-vnic"></a>Nasazení virtuálního počítače a připojení virtuálního síťového adaptéru
+Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create). `--nics` Příznak připojí virtuálního síťového adaptéru k virtuálnímu počítači při nasazování do Azure. Následující příklad vytvoří virtuální počítač s názvem `myVM` s Azure Managed Disks a bude k obrazci virtuálního síťového adaptéru s názvem `myNic` z předchozího kroku:
 
 ```azurecli
 az vm create \
@@ -62,14 +63,14 @@ az vm create \
 
 ## <a name="detailed-walkthrough"></a>Podrobný postup
 
-Úplné průběžnou integraci a průběžné nasazování (CiCd) vyžaduje určitých serverech být statické nebo dlohotrvající servery infrastruktury v Azure. Doporučujeme, aby Azure prostředky jako virtuální sítě a skupiny zabezpečení sítě jsou statické a dlouhodobě prostředky, které jsou nasazeny zřídka. Po nasazený virtuální síť, můžete použít znovu nová nasazení bez žádné negativní ovlivňuje infrastruktury. Později můžete přidat server úložiště Git nebo automatizační server volaných přináší CiCd do této virtuální sítě pro vývoj nebo testovací prostředí.  
+Úplné průběžné integrace a průběžného nasazování (CiCd) infrastrukturu v Azure vyžaduje některé servery být statické nebo dlouhodobé servery. Doporučuje se, že Azure prostředky, jako jsou virtual networks a skupin zabezpečení sítě jsou statické a dlouhodobě zřídka nasazovaných prostředků. Po nasazení virtuální sítě, můžete použít opakovaně nová nasazení bez jakékoli negativní vliv infrastruktury. Později přidáte server úložiště Git nebo automatizační server Jenkins poskytuje CiCd do této virtuální sítě pro vaše vývojové nebo testovací prostředí.  
 
-Interní názvy DNS jsou pouze přeložit uvnitř virtuální sítě Azure. Protože se jedná o interní názvy DNS, nejsou přeložit na mimo Internetu, poskytuje dodatečné zabezpečení infrastruktury.
+Interní názvy DNS jsou pouze Přeložitelné uvnitř virtuální sítě Azure. Protože se jedná o interní názvy DNS, nejsou přeložit na vnější internet, poskytuje dodatečné zabezpečení pro infrastrukturu.
 
-V následujících příkladech nahraďte názvy parametrů příklad vlastní hodnoty. Zahrnout názvy parametrů příklad `myResourceGroup`, `myNic`, a `myVM`.
+V následujících příkladech nahraďte ukázkové názvy parametrů s vlastními hodnotami. Zahrnout názvy parametrů příklad `myResourceGroup`, `myNic`, a `myVM`.
 
 ## <a name="create-the-resource-group"></a>Vytvoření skupiny prostředků
-Nejprve vytvořte skupinu prostředků s [vytvořit skupinu az](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků s názvem `myResourceGroup` v `westus` umístění:
+Nejprve vytvořte skupinu prostředků s [vytvořit skupiny az](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků s názvem `myResourceGroup` v `westus` umístění:
 
 ```azurecli
 az group create --name myResourceGroup --location westus
@@ -77,9 +78,9 @@ az group create --name myResourceGroup --location westus
 
 ## <a name="create-the-virtual-network"></a>Vytvoření virtuální sítě
 
-Dalším krokem je vytvoření virtuální sítě pro spuštění virtuálních počítačů do. Virtuální síť obsahuje jednu podsíť pro účely tohoto postupu. Další informace o virtuálních sítí Azure najdete v tématu [vytvořit virtuální síť](../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network). 
+Dalším krokem je vytvoření virtuální sítě pro spuštění virtuálních počítačů do. Virtuální síť obsahuje jednu podsíť v tomto návodu. Další informace o virtuálních sítích Azure najdete v tématu [vytvoření virtuální sítě](../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network). 
 
-Vytvoření virtuální sítě s [vytvoření sítě vnet az](/cli/azure/network/vnet#az_network_vnet_create). Následující příklad vytvoří virtuální síť s názvem `myVnet` a podsíť s názvem `mySubnet`:
+Vytvoření virtuální sítě s [az network vnet vytvořit](/cli/azure/network/vnet#az_network_vnet_create). Následující příklad vytvoří virtuální síť s názvem `myVnet` a podsíť s názvem `mySubnet`:
 
 ```azurecli
 az network vnet create \
@@ -91,9 +92,9 @@ az network vnet create \
 ```
 
 ## <a name="create-the-network-security-group"></a>Vytvořit skupinu zabezpečení sítě
-Skupiny zabezpečení Azure sítě jsou ekvivalentní brány firewall síťové vrstvy. Další informace o skupinách zabezpečení sítě najdete v tématu [vytvoření skupin Nsg v Azure CLI](../../virtual-network/tutorial-filter-network-traffic-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+Azure skupiny zabezpečení sítě jsou ekvivalentní do brány firewall na síťové vrstvě. Další informace o skupinách zabezpečení sítě najdete v tématu [jak vytvořit skupiny Nsg v Azure CLI](../../virtual-network/tutorial-filter-network-traffic-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 
-Vytvořit skupinu zabezpečení sítě s [vytvořit az sítě nsg](/cli/azure/network/nsg#az_network_nsg_create). Následující příklad vytvoří skupinu zabezpečení sítě s názvem `myNetworkSecurityGroup`:
+Vytvořit skupinu zabezpečení sítě s [az network nsg vytvořit](/cli/azure/network/nsg#az_network_nsg_create). Následující příklad vytvoří skupinu zabezpečení sítě s názvem `myNetworkSecurityGroup`:
 
 ```azurecli
 az network nsg create \
@@ -101,8 +102,8 @@ az network nsg create \
     --name myNetworkSecurityGroup
 ```
 
-## <a name="add-an-inbound-rule-to-allow-ssh"></a>Přidat příchozí pravidlo umožňující SSH
-Přidat příchozí pravidlo pro skupinu zabezpečení sítě s [vytvořit pravidla nsg sítě az](/cli/azure/network/nsg/rule#az_network_nsg_rule_create). Následující příklad vytvoří pravidlo s názvem `myRuleAllowSSH`:
+## <a name="add-an-inbound-rule-to-allow-ssh"></a>Přidat pravidlo pro příchozí spojení umožňující SSH
+Přidat příchozí pravidlo pro skupinu zabezpečení sítě s [az network nsg pravidlo vytvořte](/cli/azure/network/nsg/rule#az_network_nsg_rule_create). Následující příklad vytvoří pravidlo `myRuleAllowSSH`:
 
 ```azurecli
 az network nsg rule create \
@@ -119,8 +120,8 @@ az network nsg rule create \
     --access allow
 ```
 
-## <a name="associate-the-subnet-with-the-network-security-group"></a>Podsíť přidružit skupinu zabezpečení sítě
-Chcete-li přidružit podsítě skupinu zabezpečení sítě, použijte [aktualizace az sítě vnet podsíť](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update). Následující příklad přiřadí název podsítě `mySubnet` ke skupině zabezpečení sítě s názvem `myNetworkSecurityGroup`:
+## <a name="associate-the-subnet-with-the-network-security-group"></a>Přidružte skupinu zabezpečení sítě podsíť
+Chcete-li přidružit podsíť skupinu zabezpečení sítě, použijte [az network vnet podsíť aktualizace](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update). Následující příklad přiřadí název podsítě `mySubnet` se skupinou zabezpečení sítě s názvem `myNetworkSecurityGroup`:
 
 ```azurecli
 az network vnet subnet update \
@@ -131,10 +132,10 @@ az network vnet subnet update \
 ```
 
 
-## <a name="create-the-virtual-network-interface-card-and-static-dns-names"></a>Vytvořit virtuální síťovou kartu a statické názvy DNS
-Azure je velmi flexibilní, ale pokud chcete použít názvy DNS pro rozlišení názvu virtuálního počítače, budete muset vytvořit virtuální síťové adaptéry (vNics), které obsahují název DNS. vNics jsou důležité, protože můžete znovu použít, je jejich připojením do různých virtuálních počítačů přes životního cyklu infrastruktury. Tento přístup zajišťuje vNic jako statické prostředek při virtuálních počítačů může být dočasné. Pomocí DNS označování na kartě vNic jsou povolit jednoduchý překladu názvů z jiných virtuálních počítačů ve virtuální síti. Použití přeložit názvy umožňuje ostatním virtuálním počítačům přístup k serveru automatizace podle názvu DNS `Jenkins` nebo server Git jako `gitrepo`.  
+## <a name="create-the-virtual-network-interface-card-and-static-dns-names"></a>Vytvořte virtuální síťové karty a statické názvy DNS
+Azure je velmi flexibilní, ale použít názvy DNS pro překlad adres virtuálních počítačů, je potřeba vytvořit virtuální síťové adaptéry (Vnic), zahrnující názvu DNS. virtuální síťové adaptéry jsou důležité, protože můžete znovu použít, je jejich připojením do různých virtuálních počítačů přes životní cyklus infrastruktury. Tento přístup zajišťuje virtuálního síťového adaptéru jako statických prostředků, virtuální počítače mohou být dočasné. Pomocí označování na virtuálního síťového adaptéru DNS jsou možnost povolit jednoduchý název řešení z jiných virtuálních počítačů ve virtuální síti. Použití přeložit názvy umožňuje ostatním virtuálním počítačům přístup k serveru automatizace podle názvu DNS `Jenkins` nebo serveru Git jako `gitrepo`.  
 
-Vytvoření vNic s [vytvořit síťových adaptérů sítě az](/cli/azure/network/nic#az_network_nic_create). Následující příklad vytvoří adaptéru vNic s názvem `myNic`, připojí se k `myVnet` virtuální síť s názvem `myVnet`a vytvoří interní záznam název DNS názvem `jenkins`:
+Vytvořit virtuální síťový adaptér s [az network nic vytvořit](/cli/azure/network/nic#az_network_nic_create). Následující příklad vytvoří virtuální síťový adaptér s názvem `myNic`, připojí se k `myVnet` virtuální síť s názvem `myVnet`a vytvoří záznam interní název DNS názvem `jenkins`:
 
 ```azurecli
 az network nic create \
@@ -145,10 +146,10 @@ az network nic create \
     --internal-dns-name jenkins
 ```
 
-## <a name="deploy-the-vm-into-the-virtual-network-infrastructure"></a>Virtuální počítač nasaďte do infrastruktury virtuální sítě
-Máme teď virtuální síť a podsíť, skupinu zabezpečení sítě funguje jako brána firewall blokuje veškerý příchozí provoz, s výjimkou port 22 pro SSH a adaptéru vNic chránit naše podsítě. Teď můžete nasadit virtuální počítač uvnitř této stávající síťové infrastruktuře.
+## <a name="deploy-the-vm-into-the-virtual-network-infrastructure"></a>Nasazení virtuálního počítače do infrastruktury virtuální sítě
+Teď máme virtuální síť a podsíť, skupiny zabezpečení sítě funguje jako brána firewall k ochraně našich podsítě zákonné zodpovědnosti organizací blokováním veškerý příchozí provoz, s výjimkou port 22 pro SSH a virtuální síťový adaptér. Teď můžete nasadit virtuální počítač se tento stávající síťové infrastruktuře.
 
-Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create). Následující příklad vytvoří virtuální počítač s názvem `myVM` s Azure spravované disky a připojí adaptér vNic s názvem `myNic` z předchozího kroku:
+Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create). Následující příklad vytvoří virtuální počítač s názvem `myVM` s Azure Managed Disks a bude k obrazci virtuálního síťového adaptéru s názvem `myNic` z předchozího kroku:
 
 ```azurecli
 az vm create \
@@ -160,7 +161,7 @@ az vm create \
     --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-Pomocí rozhraní příkazového řádku příznaky vyvolávající existující prostředky jsme vyzvat Azure k nasazení virtuálních počítačů uvnitř existující síť. Chcete-li zopakovat, jakmile nasazených virtuálních sítí a podsítí, může být ponecháno jako statické nebo trvalé prostředky uvnitř vaší oblasti Azure.  
+Pomocí příznaků příkazového řádku a volejte stávající prostředky, můžeme dát pokyn Azure k nasazení virtuálních počítačů uvnitř stávající sítě. Zdůrazňujeme, jakmile jsou nasazené virtuální síť a podsíť, může být ponecháno jako statické nebo trvalý prostředků ve vaší oblasti Azure.  
 
 ## <a name="next-steps"></a>Další postup
 * [Přímé vytvoření vlastního prostředí pro virtuální počítač s Linuxem pomocí rozhraní příkazového řádku Azure CLI](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

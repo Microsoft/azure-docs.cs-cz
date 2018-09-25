@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2017
+ms.date: 09/20/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 2c2dd2208cf910456fa8f94ca739b7ef8875d475
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: df32ed7a6d3bc0c9e349f576f5f48832bf9906dd
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356455"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47041917"
 ---
 # <a name="wrong-set-of-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Zřizuje se špatná sada uživatelů k aplikaci Galerie Azure AD
 
@@ -109,7 +109,7 @@ Pokud zřizování je nakonfigurována a spuštěna pro aplikace, noví uživate
 >
 >
 
-Pokud je zapnutá zřizování skupin, nezapomeňte zkontrolovat mapování atributů k zajištění, že se že příslušné pole se používá pro "Odpovídající ID". To může být zobrazovaný název ani e-mailu, jak skupině a jejích členů nesmí být zřízené, pokud je odpovídající vlastnost prázdná, nebo ne naplnit pro skupinu ve službě Azure AD.
+Pokud je zapnutá zřizování skupin, nezapomeňte zkontrolovat mapování atributů k zajištění, že se že příslušné pole se používá pro "Odpovídající ID". Toto odpovídající ID může být zobrazovaný název nebo e-mailu alias. Skupiny a její členy nebyly zřízeny, pokud je odpovídající vlastnost prázdná nebo není vyplněný pro skupinu ve službě Azure AD.
 
 ## <a name="next-steps"></a>Další postup
 [Automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](user-provisioning.md)

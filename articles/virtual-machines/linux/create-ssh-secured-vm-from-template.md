@@ -16,16 +16,19 @@ ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3e6b431ee55ee73b4f5a69471cca3cc16270198c
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 33b0b2b4148a8cfbe97413bf3cdec23d375206bb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930235"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983884"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>Jak vytvořit virtuální počítač s Linuxem pomocí šablony Azure Resource Manageru
-V tomto článku se dozvíte, jak rychle nasadit virtuální počítač (VM) s Linuxem pomocí šablony Azure Resource Manageru a Azure CLI. 
 
+V tomto článku se dozvíte, jak rychle nasadit virtuální počítač (VM) s Linuxem pomocí šablony Azure Resource Manageru a Azure CLI. Můžete také provádět tyto kroky [klasické rozhraní příkazového řádku Azure](create-ssh-secured-vm-from-template-nodejs.md).
+
+
+V tomto článku se dozvíte, jak rychle nasadit virtuální počítač (VM) s Linuxem pomocí šablony Azure Resource Manageru a Azure CLI. 
 
 ## <a name="templates-overview"></a>Přehled šablon
 Šablony Azure Resource Manageru jsou soubory JSON, které definují infrastrukturu a konfiguraci vašeho řešení Azure. Pomocí šablony můžete řešení opakovaně nasadit v průběhu životního cyklu a mít přitom jistotu, že se prostředky nasadí konzistentně. Další informace o formátu šablony a způsobu jejího sestavení najdete v tématu [vytvoření první šablony Azure Resource Manageru](../../azure-resource-manager/resource-manager-create-first-template.md). Syntaxi JSON pro typy prostředků najdete v tématu [Definování prostředků v šablonách Azure Resource Manageru](/azure/templates/).

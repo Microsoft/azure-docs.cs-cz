@@ -1,6 +1,6 @@
 ---
-title: Vytvoření služby Azure Application Gateway – Azure CLI 1.0 | Dokumentace Microsoftu
-description: Informace o vytvoření služby Application Gateway s využitím rozhraní příkazového řádku Azure CLI 1.0 v Resource Manageru
+title: Vytvoření služby Azure Application Gateway – klasické rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+description: Informace o vytvoření služby Application Gateway pomocí Azure classic CLI v Resource Manageru
 services: application-gateway
 documentationcenter: na
 author: vhorne
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: victorh
-ms.openlocfilehash: 29eec4ad1883db9d824b416bdfc7e984a5af4fbe
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: e834b1633f17ecec74ae17e962de445ad8d6dccd
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35643274"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974421"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Vytvoření služby application gateway pomocí Azure CLI
 
@@ -29,8 +29,8 @@ ms.locfileid: "35643274"
 > * [Azure Resource Manager PowerShell](application-gateway-create-gateway-arm.md)
 > * [Azure Classic PowerShell](application-gateway-create-gateway.md)
 > * [Šablona Azure Resource Manageru](application-gateway-create-gateway-arm-template.md)
-> * [Azure CLI 1.0](application-gateway-create-gateway-cli.md)
-> * [Azure CLI 2.0](application-gateway-create-gateway-cli.md)
+> * [Klasické rozhraní příkazového řádku Azure](application-gateway-create-gateway-cli.md)
+> * [Azure CLI](application-gateway-create-gateway-cli.md)
 > 
 > 
 
@@ -38,7 +38,7 @@ Služba Azure Application Gateway je nástroj pro vyrovnávání zatížení vrs
 
 ## <a name="prerequisite-install-the-azure-cli"></a>Předpoklad: Instalace Azure CLI
 
-K provedení kroků v tomto článku, budete muset [instalace rozhraní příkazového řádku Azure pro Mac, Linux a Windows (Azure CLI)](../xplat-cli-install.md) a budete muset [Přihlaste se k Azure](/cli/azure/authenticate-azure-cli). 
+K provedení kroků v tomto článku, budete muset [instalace rozhraní příkazového řádku Azure](../xplat-cli-install.md) a budete muset [Přihlaste se k Azure](/cli/azure/authenticate-azure-cli). 
 
 > [!NOTE]
 > Pokud nemáte účet Azure, budete potřebovat. Zde si můžete zaregistrovat [bezplatnou zkušební verzi](../active-directory/fundamentals/sign-up-organization.md).

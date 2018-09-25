@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.openlocfilehash: bf2ba6d31c170715a52b84439276c45665293c35
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 893b0ee70f577d9240d577e76062eea36b704058
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42054466"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989868"
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Příručka k vytvoření image virtuálního počítače pro Azure Marketplace
 Tento článek **kroku 2**, vás provede přípravou virtuálních pevných disků (VHD), které nasadíte do Azure Marketplace. Virtuální pevné disky jsou základem pro vaši skladovou jednotku. Proces se liší v závislosti na tom, jestli poskytujete skladovou jednotku založených na Linuxu nebo Windows. Tento článek popisuje oba scénáře. Tento proces se dá provádět zároveň s [vytváření účtů a registraci][link-acct-creation].
@@ -189,9 +189,9 @@ Další informace o imagích virtuálních počítačů, najdete v těchto blogo
 * [Jak prostředí PowerShell Image virtuálního počítače](https://azure.microsoft.com/blog/vm-image-powershell-how-to-blog-post/)
 * [O imagích virtuálních počítačů v Azure](https://msdn.microsoft.com/library/azure/dn790290.aspx)
 
-### <a name="set-up-the-necessary-tools-powershell-and-azure-cli"></a>Nastavit potřebné nástroje, prostředí PowerShell a rozhraní příkazového řádku Azure
+### <a name="set-up-the-necessary-tools-powershell-and-azure-classic-cli"></a>Nastavit potřebné nástroje, Powershellu a příkazového řádku Azure classic
 * [Jak nastavit prostředí PowerShell](/powershell/azure/overview)
-* [Postup instalace Azure CLI](../cli-install-nodejs.md)
+* [Postup instalace Azure classic CLI](../cli-install-nodejs.md)
 
 ### <a name="41-create-a-user-vm-image"></a>4.1 Vytvoření uživatelské image virtuálního počítače
 #### <a name="capture-vm"></a>Zachycení virtuálního počítače
@@ -427,11 +427,13 @@ Tady je postup pro vytvoření adresy URL SAS pomocí Průzkumníka služby Micr
 
 11. Tyto kroky zopakujte pro každý virtuální pevný disk ve skladové jednotce.
 
-**Rozhraní příkazového řádku Azure (doporučeno pro mimo Windows a průběžné integrace)**
+**Klasické rozhraní příkazového řádku Azure (doporučeno pro průběžné integrace a Non-Windows)**
 
-Toto jsou kroky pro vygenerování adresy URL SAS pomocí příkazového řádku Azure
+Toto jsou kroky pro vygenerování adresy URL SAS pomocí příkazového řádku Azure classic
 
-1.  Stáhněte si Microsoft Azure CLI z [tady](https://azure.microsoft.com/en-in/documentation/articles/xplat-cli-install/). Můžete také vyhledat odkazy na různé **[Windows](http://aka.ms/webpi-azure-cli)** a  **[MAC OS](http://aka.ms/mac-azure-cli)**.
+[!INCLUDE [outdated-cli-content](../../includes/contains-classic-cli-content.md)]
+
+1.  Stáhnout Azure CLI classic z [tady](https://azure.microsoft.com/en-in/documentation/articles/xplat-cli-install/). Můžete také vyhledat odkazy na různé **[Windows](http://aka.ms/webpi-azure-cli)** a  **[MAC OS](http://aka.ms/mac-azure-cli)**.
 
 2.  Po stažení, nainstalujte
 
@@ -447,9 +449,9 @@ Toto jsou kroky pro vygenerování adresy URL SAS pomocí příkazového řádku
 
     b. **`<Storage Account Key>`**: Zadejte klíč účtu úložiště
 
-    c. **`<Permission Start Date>`**: Pokud chcete ochranu pro čas UTC, vyberte den před aktuálním datem. Například pokud je aktuální datum 26. říjnu 2016, pak hodnota by měla být 10/25/2016. Pokud používáte Azure CLI 2.0 (příkaz az), zadejte datum a čas v počáteční a koncové datum, například: 10-25-2016T00:00:00Z.
+    c. **`<Permission Start Date>`**: Pokud chcete ochranu pro čas UTC, vyberte den před aktuálním datem. Například pokud je aktuální datum 26. říjnu 2016, pak hodnota by měla být 10/25/2016. Pokud používáte Azure CLI verze 2.0 nebo vyšší, zadejte datum a čas v počáteční a koncové datum, například: 10-25-2016T00:00:00Z.
 
-    d. **`<Permission End Date>`**: Vyberte datum, které je nejméně 3 týdny po **datum zahájení**. Hodnota by měla být **11/02/2016**. Pokud používáte Azure CLI 2.0 (příkaz az), zadejte datum a čas v počáteční a koncové datum, například: 11-02-2016T00:00:00Z.
+    d. **`<Permission End Date>`**: Vyberte datum, které je nejméně 3 týdny po **datum zahájení**. Hodnota by měla být **11/02/2016**. Pokud používáte Azure CLI verze 2.0 nebo vyšší, zadejte datum a čas v počáteční a koncové datum, například: 11-02-2016T00:00:00Z.
 
     Tady je příklad kódu po aktualizaci správné parametry
 
@@ -520,7 +522,7 @@ Jakmile vytvoříte svoji nabídku a skladovou Položku, měli byste zadat podro
 |Chyba při kopírování imagí – "sp = rl" není v adrese url SAS|Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout objekt blob pomocí zadaný identifikátor Uri SAS|Aktualizace adres Url SAS pomocí oprávnění nastavená jako "Čtení" a "List|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 |Chyba při kopírování imagí – adresa url SAS mít prázdné znaky v názvu virtuálního pevného disku|Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout objekt blob pomocí zadaný identifikátor Uri SAS.|Aktualizace adres Url SAS bez mezer|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 |Chyba při kopírování imagí – chyby autorizace adres Url SAS|Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout objekt blob z důvodu chyby autorizace|Znovu vygenerovat adresu SAS Url|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Chyba při kopírování imagí – adresa Url SAS "st" a "se" parametry nemají specifikace úplné datum a čas|Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout objekt blob z důvodu nesprávné adresy Url SAS |Parametry spuštění adresy Url SAS a koncové datum ("st", "se") musí mít specifikaci úplné datum a čas, jako je například 11-02-2017T00:00:00Z a ne pouze datum nebo zkrácené verze po dobu. Je možné se setkat se tento scénář s využitím Azure CLI 2.0 (příkaz az). Ujistěte se, k poskytování specifikaci úplné datum a čas a znovu vygenerovat adresu SAS Url.|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Chyba při kopírování imagí – adresa Url SAS "st" a "se" parametry nemají specifikace úplné datum a čas|Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout objekt blob z důvodu nesprávné adresy Url SAS |Parametry spuštění adresy Url SAS a koncové datum ("st", "se") musí mít specifikaci úplné datum a čas, jako je například 11-02-2017T00:00:00Z a ne pouze datum nebo zkrácené verze po dobu. Je možné se setkat se tento scénář s využitím Azure CLI verze 2.0 nebo vyšší. Ujistěte se, k poskytování specifikaci úplné datum a čas a znovu vygenerovat adresu SAS Url.|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 
 ## <a name="next-step"></a>Další krok
 Jakmile budete hotovi s podrobné údaje SKU, můžete se posunout dál a [marketingového obsahu Průvodce Azure Marketplace][link-pushstaging]. V tomto kroku procesu publikování zadáte marketingový obsah, ceny a jiné informace potřebné před **krok 3: testování vašeho virtuálního počítače v testovacím prostředí nabízejí**, kde můžete testovat různé scénáře použití před nasazením nabídky Azure Marketplace pro veřejné viditelnost a nákup.  

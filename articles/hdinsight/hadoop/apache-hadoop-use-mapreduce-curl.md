@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: jasonh
-ms.openlocfilehash: f497184b05432d6e32883bb3470f7e4da5fe550f
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 9941f442ad546155f58967fb3414eb2e7b7c3647
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047181"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46973707"
 ---
 # <a name="run-mapreduce-jobs-with-hadoop-on-hdinsight-using-rest"></a>Spuštění úloh MapReduce s Hadoop v HDInsight pomocí rozhraní REST
 
@@ -141,7 +141,7 @@ Zjistěte, jak spouštět úlohy mapreduce je možné v systému Hadoop v cluste
 
 6. Když má stav úlohy změní na `SUCCEEDED`, můžete načíst výsledky úlohy z úložiště objektů Blob v Azure. `statusdir` Parametr, který je předán s dotazem obsahuje umístění výstupního souboru. V tomto příkladu je umístění `/example/curl`. Tuto adresu ukládá výstup úlohy do clusterů výchozí úložiště na `/example/curl`.
 
-Můžete seznam a stáhnout tyto soubory [příkazového řádku Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli). Další informace o práci s objekty BLOB z příkazového řádku Azure, najdete v článku [pomocí rozhraní příkazového řádku Azure CLI 2.0 pomocí služby Azure Storage](../../storage/common/storage-azure-cli.md#create-and-manage-blobs) dokumentu.
+Můžete seznam a stáhnout tyto soubory [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). Další informace o práci s objekty BLOB z příkazového řádku Azure, najdete v článku [pomocí Azure CLI s Azure Storage](../../storage/common/storage-azure-cli.md#create-and-manage-blobs) dokumentu.
 
 ## <a id="nextsteps"></a>Další kroky
 

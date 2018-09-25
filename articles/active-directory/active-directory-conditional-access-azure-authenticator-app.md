@@ -8,7 +8,7 @@ manager: swadhwa
 editor: ''
 ms.assetid: b7ceca0d-5c9d-45c4-942c-b3a9b6bad36c
 ms.service: active-directory
-ms.component: protection
+ms.component: user-help
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: femila
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: fbd728ec8cd2c8c4cd7ca74ecd84fd4d0d41cbd0
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 0e7965ddf7be78f8683bd27e28c57eb4373891b5
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42054434"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063434"
 ---
 # <a name="azure-authenticator-for-android"></a>Azure Authenticator pro Android
 Váš správce IT možná doporučil použití Microsoft Azure Authenticator pro přihlášení pro přístup k prostředkům na pracovišti. Tato aplikace poskytuje tyto dvě možnosti, přihlášení:

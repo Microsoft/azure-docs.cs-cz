@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: jasonh
-ms.openlocfilehash: cb2ca9ac3be0034f5a90add58249a2c2043975d0
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: ee97d2005752c9e0cd40de238d1f4a946bb9ee3d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43094080"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948413"
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Migrace z clusteru HDInsight se systémem Windows do clusteru se systémem Linux
 
@@ -97,7 +97,7 @@ Alternativně můžete chtít použít `Start-AzureStorageBlobCopy` rutiny Azure
 
 ## <a name="client-side-technologies"></a>Technologie na straně klienta
 
-Klientské technologie, jako [rutin prostředí Azure PowerShell](/powershell/azureps-cmdlets-docs), [rozhraní příkazového řádku Azure](../cli-install-nodejs.md), nebo [sady .NET SDK pro Hadoop](https://hadoopsdk.codeplex.com/) pokračovat v práci clusterů se systémem Linux. Tyto technologie závisí na rozhraní REST API, která jsou stejné ve oba typy clusterů operačního systému.
+Klientské technologie, jako [rutin prostředí Azure PowerShell](/powershell/azureps-cmdlets-docs), [rozhraní příkazového řádku Azure Classic](../cli-install-nodejs.md), nebo [sady .NET SDK pro Hadoop](https://hadoopsdk.codeplex.com/) pokračovat v práci clusterů se systémem Linux. Tyto technologie závisí na rozhraní REST API, která jsou stejné ve oba typy clusterů operačního systému.
 
 ## <a name="server-side-technologies"></a>Technologie na straně serveru
 
@@ -106,7 +106,7 @@ Následující tabulka obsahuje pokyny k migraci komponenty na straně serveru, 
 | Pokud použijete tuto technologii... | Tuto akci neprovede... |
 | --- | --- |
 | **Prostředí PowerShell** (skripty na straně serveru, včetně akce se skripty používají při vytváření clusteru) |Přepsat jako skripty Bash. Akce skriptů, najdete v části [přizpůsobit Linuxovým systémem HDInsight pomocí skriptových akcí](hdinsight-hadoop-customize-cluster-linux.md) a [vývoj akcí pro HDInsight se systémem Linux skriptů](hdinsight-hadoop-script-actions-linux.md). |
-| **Azure CLI** (skripty na straně serveru) |I když rozhraní příkazového řádku Azure v Linuxu k dispozici, nepochází předem nainstalované na hlavním uzlům clusteru HDInsight. Další informace o instalaci rozhraní příkazového řádku Azure najdete v tématu [Začínáme s Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli). |
+| **Azure Classic CLI** (skripty na straně serveru) |I když klasické rozhraní příkazového řádku Azure v Linuxu k dispozici, nepochází předem nainstalované na hlavním uzlům clusteru HDInsight. Další informace o instalaci rozhraní příkazového řádku Azure Classic najdete v tématu [Začínáme s Azure Classic CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli). |
 | **Součásti rozhraní .NET** |.NET je podporována v systémem Linux HDInsight prostřednictvím [Mono](https://mono-project.com). Další informace najdete v tématu [řešení migrace .NET k Linuxovým systémem HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md). |
 | **Součásti systému Win32 nebo jiné technologie jen pro Windows** |Pokyny k závisí na součásti nebo technologii. Je možné najít verzi, která je kompatibilní s Linuxem. Pokud ne, musíte najít alternativní řešení nebo přepsání této součásti. |
 

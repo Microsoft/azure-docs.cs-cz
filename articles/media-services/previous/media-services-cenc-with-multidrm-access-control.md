@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2018
 ms.author: willzhan;kilroyh;yanmf;juliako
-ms.openlocfilehash: c125d5a741331d5c9476da23766057ac0c42cdbf
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: ffd8a82fb03c23a661223e16e75d2964249d2b96
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493723"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965819"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Návrh systému ochrany obsahu pomocí řízení přístupu pomocí Azure Media Services
 
@@ -312,9 +312,9 @@ Co když výměny klíčů se stane po Azure AD vygeneruje token JWT, ale před 
 Protože klíč můžete provádět jednotlivě v daném okamžiku provádějí, je vždy k dispozici v dokumentu federačních metadat více než jeden platný veřejný klíč. Doručování licencí Media Services můžete použít některý z klíče specifikované v dokumentu. Protože jeden z nich může být vrácena brzy, jiné můžou být jejím nahrazení a tak dále.
 
 ### <a name="where-is-the-access-token"></a>Kde je přístupový token?
-Pokud se podíváte na jak webová aplikace volá aplikaci API v rámci [identitu aplikace pomocí udělení přihlašovacích údajů klienta OAuth 2.0](../../active-directory/develop/authentication-scenarios.md#web-application-to-web-api), tok ověřování vypadá takto:
+Pokud se podíváte na jak webová aplikace volá aplikaci API v rámci [identitu aplikace pomocí udělení přihlašovacích údajů klienta OAuth 2.0](../../active-directory/develop/web-api.md), tok ověřování vypadá takto:
 
-* Uživatel přihlásí ke službě Azure AD ve webové aplikaci. Další informace najdete v tématu [webového prohlížeče a webové aplikace](../../active-directory/develop/authentication-scenarios.md#web-browser-to-web-application).
+* Uživatel přihlásí ke službě Azure AD ve webové aplikaci. Další informace najdete v tématu [webového prohlížeče a webové aplikace](../../active-directory/develop/web-app.md).
 * Koncový bod autorizace Azure AD přesměruje uživatelského agenta zpět do klientské aplikace s autorizační kód. Uživatelský agent vrátí autorizační kód identifikátor URI přesměrování klienta aplikace.
 * Webová aplikace musí získat přístupový token, takže ho můžete ověřit do webového rozhraní API a získat požadovaný prostředek. Učiní žádost vůči koncovému bodu tokenu Azure AD a poskytuje přihlašovací údaje, ID klienta a identifikátor URI ID aplikace webového rozhraní API. Představuje autorizační kód k prokázání, že uživatel odsouhlasený.
 * Azure AD ověřuje aplikace a vrátí přístupový token JWT, který se používá k volání webového rozhraní API.

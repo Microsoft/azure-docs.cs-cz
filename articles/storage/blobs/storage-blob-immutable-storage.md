@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: mihauss
 ms.component: blobs
-ms.openlocfilehash: e6b016d437011f8e9ebe3e2d3a6f3c9f737f6ecc
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 14b5dfb0a12df6c5251ee9f9e6b35a7ce527a1d3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129569"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961973"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>Store důležitých podnikových dat ve službě Azure Blob storage
 
@@ -95,7 +95,7 @@ Neexistuje žádné další poplatky za použití této funkce. Stejným způsob
 
 ## <a name="getting-started"></a>Začínáme
 
-Nejnovější verze [webu Azure portal](http://portal.azure.com) a [příkazového řádku Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) a také ve verzi preview [prostředí Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/Azure.Storage.v4.4.0-preview-May2018) podporují neměnné úložiště pro úložiště objektů Blob v Azure.
+Nejnovější verze [webu Azure portal](http://portal.azure.com) a [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) a také ve verzi preview [prostředí Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/Azure.Storage.v4.4.0-preview-May2018) podporují neměnné úložiště pro úložiště objektů Blob v Azure.
 
 ### <a name="azure-portal"></a>portál Azure
 
@@ -131,7 +131,7 @@ Nejnovější verze [webu Azure portal](http://portal.azure.com) a [příkazové
 
 8. Vymazat blokování z právních důvodů, jednoduše odeberte značku.
 
-### <a name="azure-cli-20"></a>Azure CLI 2.0
+### <a name="azure-cli"></a>Azure CLI
 
 Tato funkce je součástí skupiny následující příkaz: `az storage container immutability-policy` a `az storage container legal-hold`. Spustit `-h` na ně podívat na příkazy.
 

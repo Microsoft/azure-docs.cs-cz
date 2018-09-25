@@ -11,16 +11,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/25/2017
-ms.openlocfilehash: 101c47f4916ca3fab56800eaf012c55150769302
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 7084251102984445e7c2341b78b44f85811ebea7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35644421"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958216"
 ---
 # <a name="logging-api-reference"></a>Protokolování reference k rozhraní API
 
-Knihovna protokolování Azure ML umožňuje programu generovat metriky a soubory, které jsou sledovány objektem služby historie pro pozdější analýzu. V současné době podporuje několik základní typy metrik a soubory, a sadu podporovaných typů se zvýší s budoucími verzemi balíčku Python.
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+Knihovna protokolování Azure ML umožňuje programu generovat metriky a soubory, které jsou sledovány objektem služby historie pro pozdější analýzu. 
 
 ## <a name="uploading-metrics"></a>Nahrává se metrik
 

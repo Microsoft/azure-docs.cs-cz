@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7b39724c3d382637a048dc4fb9a3436ac1dbeae8
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 130f684b69a9cfa1936c2a9aa5175f3d5a7631ac
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108020"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46970273"
 ---
 # <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Správa clusterů Hadoop využívající systém Windows v HDInsight pomocí webu Azure portal
 
@@ -207,7 +207,7 @@ Existuje mnoho způsobů, které můžete naprogramovat procesu:
 
 * Uživatel Azure Data Factory. Zobrazit [propojená služba Azure HDInsight](../data-factory/compute-linked-services.md) a [transformace a analýzy s využitím Azure Data Factory](../data-factory/transform-data.md) HDInsight na vyžádání a místním definovaná propojené služby.
 * Použití Azure Powershellu.  Zobrazit [analyzovat zpoždění letů](hdinsight-analyze-flight-delay-data.md).
-* Pomocí Azure CLI. Zobrazit [HDInsight Správa clusterů pomocí rozhraní příkazového řádku Azure](hdinsight-administer-use-command-line.md).
+* Pomocí příkazového řádku Azure Classic. Zobrazit [HDInsight Správa clusterů pomocí rozhraní příkazového řádku Azure Classic](hdinsight-administer-use-command-line.md).
 * Použití sady HDInsight .NET SDK. Zobrazit [úlohy systému Hadoop odeslat](hadoop/submit-apache-hadoop-jobs-programmatically.md).
 
 Informace o cenách najdete v části [ceny HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/). Pokud chcete odstranit cluster z portálu, přečtěte si téma [odstranění clusterů](#delete-clusters)
@@ -364,7 +364,7 @@ Na předchozím snímku obrazovky má název složky vložené číslo verze sys
 V tomto článku jste se naučili vytvořit HDInsight cluster pomocí portálu a otevřete nástroj příkazového řádku Hadoopu. Další informace naleznete v následujících článcích:
 
 * [Správa HDInsight pomocí Azure Powershellu](hdinsight-administer-use-powershell.md)
-* [Správa HDInsight pomocí Azure CLI](hdinsight-administer-use-command-line.md)
+* [Správa HDInsight pomocí příkazového řádku Azure Classic](hdinsight-administer-use-command-line.md)
 * [Vytvoření clusterů HDInsight](hdinsight-hadoop-provision-linux-clusters.md)
 * [Odesílání úloh Hadoop prostřednictvím kódu programu](hadoop/submit-apache-hadoop-jobs-programmatically.md)
 * [Začínáme s Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)

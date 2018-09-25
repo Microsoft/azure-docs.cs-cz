@@ -11,23 +11,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/12/2018
+ms.date: 09/14/2018
 ms.author: bwren
-ms.openlocfilehash: 97cf5c06372d416037b875078809aebb7e633456
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: f40c8ed7eb6bfae958b3b57c4b7d525963ab9741
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542833"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46955239"
 ---
 # <a name="data-ingestion-time-in-log-analytics"></a>Doba příjem dat v Log Analytics
-Azure Log Analytics je služba data velkém měřítku, která slouží tisíce zákazníků odesílání terabajty dat měsíčně rostoucí tempem. Jsou často dotazy týkající se čas potřebný pro data k dispozici ve službě Log Analytics po shromáždění zpracovat. Tento článek vysvětluje různé faktory ovlivňující tuto latenci.
+Azure Log Analytics je vysoce škálované datové služby ve službě Azure Monitor, která slouží tisíce zákazníků odesílání terabajty dat měsíčně rostoucí tempem. Jsou často dotazy týkající se čas potřebný pro data k dispozici ve službě Log Analytics po shromáždění zpracovat. Tento článek vysvětluje různé faktory ovlivňující tuto latenci.
 
 ## <a name="typical-latency"></a>Typické latence
 Latence odkazuje na čas, který data se vytvoří v monitorovaném systému a čas, který je k dispozici pro analýzy ve službě Log Analytics. Typické latenci ingestovat data do Log Analytics je mezi 2 až 5 minut. Konkrétní latence pro všechna data, zejména se liší v závislosti na řadě faktorů, které je popsáno níže.
 
-## <a name="sla-for-log-analytics"></a>Smlouva SLA pro službu Log Analytics
-[Log Analytics Service smlouva o úrovni (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1/) je smlouva právní vazby, který definuje, kdy Microsoft náhrad zákazníkům Pokud služba nesplňuje svých cílů. To není založena na typické výkonu systému, ale jeho nejhorším případě účty pro potenciální katastrofické situacích.
 
 ## <a name="factors-affecting-latency"></a>Faktory ovlivňující latence
 Ingestování celkový čas pro konkrétní sadu data dají rozdělit do následujících oblastech vyšší úrovně. 

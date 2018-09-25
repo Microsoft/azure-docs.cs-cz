@@ -1,31 +1,33 @@
 ---
-title: Spravovat rozpočty ve službě Azure Cost Management | Dokumentace Microsoftu
-description: Tento článek pomáhá vytvářet a spravovat rozpočty ve službě Cost Management.
+title: Spravovat rozpočty Cloudyn v Azure | Dokumentace Microsoftu
+description: Tento článek pomáhá vytvářet a spravovat rozpočty ve službě Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/25/2018
+ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 106e8f082d148ed9a8c58313177be81ee074a2c3
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: bbd232c819a11de691c4d3c3209273b064eddf62
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578459"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963424"
 ---
 # <a name="manage-budgets"></a>Správa rozpočtů
 
-Nastavení rozpočtů a na základě rozpočtu výstrahy zobrazíte nápovědu, jak zlepšit cloudu zásad správného řízení a zodpovědnost. Tento článek pomáhá rychle vytvářet rozpočtů a zahájení správy ve službě Cost Management.
+Nastavení rozpočtů a na základě rozpočtu výstrahy zobrazíte nápovědu, jak zlepšit cloudu zásad správného řízení a zodpovědnost. Tento článek vám pomůže rychle vytvořit rozpočtů a zahájení správy ve službě Cloudyn.
 
 Když máte účet organizace nebo MSP, můžete přiřadit různé organizační jednotky, oddělení nebo jiná entita náklady na měsíční kvóty rozpočtu struktury entity hierarchické náklady. Pokud máte účet Premium, můžete použít funkce správy rozpočtu, který se následně použije na vaše cloudové výdaje. Jsou všechny rozpočty přiřadit ručně.
 
 Založené na přiřazené rozpočty, můžete nastavit prahové hodnoty výstrahy podle procenta z rozpočtu, který je zpracován a definovat závažnost jednotlivých prahovou hodnotu.
 
 Rozpočet sestavy zobrazit přiřazené rozpočtu. Uživatelé můžou zobrazit po jejich útraty přes, v části nebo nominální s jejich využití v čase. Když vyberete **zobrazit/skrýt pole** v horní části stránky sestavy rozpočtu, můžete zobrazit náklady, rozpočet, celkové náklady nebo celkový rozpočet.
+
+Azure Cost Management nabízí podobné funkce do Cloudyn. Azure Cost Management je řešení správy nákladů na nativní Azure. Pomůže vám analýzu nákladů, vytvořit a spravovat rozpočty, exportovat data a zkontrolujte a reagovat na doporučení pro optimalizaci ještě ušetříte peníze. Další informace o rozpočtech ve službě Cost Management najdete v tématu [vytvořit a spravovat rozpočty](tutorial-acm-create-budgets.md).
 
 ## <a name="create-budgets"></a>Vytvoření rozpočtů
 
@@ -83,5 +85,5 @@ V sadě Visual Studio náklady. Rozpočet přes čas sestavy, klikněte na tlač
 
 ## <a name="next-steps"></a>Další postup
 
-- Pokud jste ještě nedokončili první kurz služby Cost Management, přečtěte si ho na [kontrola využití a nákladů](https://docs.microsoft.com/azure/cost-management/tutorial-review-usage).
-- Další informace o [sestavy jsou k dispozici ve službě Cost Management](use-reports.md).
+- Pokud jste ještě nedokončili první kurz pro Cloudyn, přečtěte si ho na [kontrola využití a nákladů](tutorial-review-usage.md).
+- Další informace o [sestavy jsou k dispozici ve službě Cloudyn](use-reports.md).

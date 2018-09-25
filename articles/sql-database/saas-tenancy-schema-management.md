@@ -1,22 +1,23 @@
 ---
 title: Správa schématu Azure SQL Database v aplikaci s jedním tenantem | Dokumentace Microsoftu
 description: Správa schématu pro více tenantů v aplikace s jedním tenantem, která používá Azure SQL Database
-keywords: kurz k sql database
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/19/2018
+author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
-ms.openlocfilehash: 6a37bdd6e8b7893da5df1113f5f3f153148cb1b0
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+manager: craigg
+ms.date: 09/19/2018
+ms.openlocfilehash: 2f747eb09fd13647c4b6764ce3cc4fe72c00bcf0
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498075"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47054842"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>Správa schématu v SaaS aplikaci pomocí vzoru databáze na tenanta s Azure SQL Database
  

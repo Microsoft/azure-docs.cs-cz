@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/5/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 31bfe954a58d232408fd66a1f98911e079824fb0
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 3e9907450680d6984a644b43014ba90b1a9d987e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44715206"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46991925"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Záznam hlasu ukázky vytvořte vlastní hlasové
 
@@ -106,10 +106,10 @@ Naštěstí je možné zcela se těmto problémům. Existuje mnoho zdrojů text,
 |Zdrojový text|Popis|
 |-|-|
 |[CMU Arctic souhrnu](http://festvox.org/cmu_arctic/)|Vybrat z předem copyright funguje speciálně pro použití v projektech syntézu řeči asi 1100 věty. Vynikající výchozí bod.|
-|Už funguje<br>v části autorských práv|Obvykle funguje publikované před 1923. Pro angličtinu [projektu Gutenberg](https://www.gutenberg.org/) nabízí desítky tisíc tyto práce. Můžete chtít zaměřit na novější funguje, protože jazyk bude blíže na moderní angličtinu.|
-|Government&nbsp;funguje|Funguje, které jsou vytvořené ze státní správy USA nejsou autorským právům ve Spojených státech amerických, i když vláda se mohou prohlásit copyright v dalších zemích.|
-|Veřejné domény.|Funguje pro které copyright byl výslovně odmítnuté nebo mít byl vyhrazen pro veřejné domény. (Nemusí být možné vzdát copyright zcela v některé jurisdikce.)|
-|Permissively licenci funguje|Funguje distribuované v rámci licence, jako je například licence Creative Commons nebo GNU licenci pro bezplatnou dokumentaci (GFDL). Wikipedia používá GFDL. Některé licence, ale může být omezení výkonu licencovaný obsah, který může mít vliv na vytváření modelu vlastní hlasové tak pečlivě si přečtěte licenční.|
+|Už funguje<br>v části autorských práv|Funguje se obvykle vydávané před 1923. Pro angličtinu [projektu Gutenberg](https://www.gutenberg.org/) nabízí desítky tisíc tyto práce. Můžete chtít zaměřit na novější funguje jako jazyk bude blíže na moderní angličtinu.|
+|Government&nbsp;funguje|Funguje vytvořené ze státní správy USA nejsou autorským právům ve Spojených státech amerických, i když vláda se mohou prohlásit copyright v dalších zemích.|
+|Veřejné domény.|Funguje pro které copyright byl výslovně odmítnuté nebo mít byl vyhrazen pro veřejné domény. (To nemusí být možné zrušíme copyright zcela v některé jurisdikce.)|
+|Permissively licenci funguje|Distribuováno za licenci funguje jako licence Creative Commons nebo GNU licenci pro bezplatnou dokumentaci (GFDL). Wikipedia používá GFDL. Některé licence, však může omezení výkonu licencovaný obsah, který může mít vliv na vytváření modelu vlastní hlasové, proto licence si pozorně přečtěte.|
 
 ## <a name="recording-your-script"></a>Záznam skriptu
 
@@ -150,7 +150,7 @@ Tady se používá většina rozsah (výška), ale nejvyšší špičky signál:
 
 Záznam přímo do počítače s využitím vysoce kvalitní zvukového rozhraní nebo USB port, v závislosti na mikrofon používáte. Pro obdobu jmenovek, zjednodušení zvuku řetězce: povinná kontrola úrovně důvěryhodnosti, preamp, zvukové rozhraní, počítač. Můžete i licence [Avid profesionálních nástrojů](http://www.avid.com/en/pro-tools) a [Adobe Audition](https://www.adobe.com/products/audition.html) měsíční za rozumnou cenu. Pokud váš rozpočet je velmi vysoké, zkuste bezplatnou [Audacity](https://www.audacityteam.org/).
 
-Záznam na 44.1-KHz 16bitové monophonic (CD kvality) nebo vyšší. Aktuální stav techniky je 48 – KHz 24 bitů, pokud je vaše zařízení podporuje. Budete převzorkovat zvuku na 16. KHz 16 bitů než ji odešlete k portálu vlastní hlasové. Stále platí mít vysoce kvalitní původního záznamu v případě, že změny jsou potřeba.
+Záznam na 44,1 kHz 16bitové monophonic (CD kvality) nebo vyšší. Aktuální stav systému – moderní je 48 kHz 24-bit, pokud je vaše zařízení podporuje. Můžete se dolů – ukázka zvuku na 16 kHz 16 bitů než ji odešlete k portálu vlastní hlasové. Stále platí mít vysoce kvalitní původního záznamu v případě, že změny jsou potřeba.
 
 V ideálním případě mají různí lidé slouží v rolích ředitel, inženýr a talentu. Nepokoušejte se to udělat všechny sami. V prstů může být jedna osoba, ředitel a technik.
 
@@ -198,7 +198,7 @@ Bere regulární konce a poskytne můžete dát chvilku pauzu pomáhají vašeho
 
 ### <a name="after-the-session"></a>Po relaci
 
-Moderní záznam aplikace spustit na počítačích. Na konci relace obdržíte jednu nebo více zvukové soubory, ne na pásku. Tyto soubory budou pravděpodobně být ve formátu WAV nebo AIFF CD kvality (44,1 KHz 16 bitů) nebo novějším. 48 kHz 24 bitů je běžné a žádoucí. Vyšší míra vzorkování, jako je například 96 KHz, obvykle nejsou potřeba.
+Moderní záznam aplikace spustit na počítačích. Na konci relace obdržíte jednu nebo více zvukové soubory, ne na pásku. Tyto soubory budou pravděpodobně být ve formátu WAV nebo AIFF CD kvality (44,1 kHz 16-bit) nebo novějším. 48 kHz 24 bitů je běžné a žádoucí. Vyšší míra vzorkování, jako je například 96 kHz, obvykle nejsou potřeba.
 
 Vlastní hlasové portál vyžaduje každý zadaný utterance ve vlastním souboru. Zvukové soubory, od sady studio obsahuje několik projevy. Proto je primární úloha postprodukční Rozdělit záznamy a jejich přípravě k odeslání. Inženýr záznam mohl umístěny značky v souboru (nebo samostatné startovacího seznamu k dispozici) k označení, kde začíná každý utterance.
 
@@ -208,7 +208,7 @@ Ponechte pouze o 0,2 sekundách nečinnosti na začátku a konce každého klipu
 
 Každý soubor poslouchejte pečlivě. V této fázi můžete upravit malé nežádoucí zvuky, které jste zmeškali během nahrávání jako lehká lip smack před řádku, ale dejte pozor, abyste odebrat všechny skutečné řeči. Pokud soubor nejde odstranit, odeberte jej z datové sady a mějte na paměti, že jste tak učinili.
 
-Každý soubor převeďte na 16 bitů a vzorkovací frekvence 16 kHz, předtím, než ji uložíte a, pokud jste si poznamenali studio chatter odebrat druhý kanál. Uložte každý soubor ve formátu WAV a pojmenujte soubory zahrnutím utterance číslo od vašeho skriptu.
+Převést každý soubor na 16 bitů a vzorkovací frekvence 16 kHz před uložením a pokud jste si poznamenali studio chatter, odeberte druhý kanál. Každý soubor uložte ve formátu WAV pojmenování souborů s číslem utterance z vašeho skriptu.
 
 Nakonec vytvořte *přepisu* , která přidruží jednotlivých souborů WAV textovou verzi toho odpovídající utterance. [Vytvoření vlastního hlasového písma](how-to-customize-voice-font.md) obsahuje podrobnosti o požadovaném formátu. Zkopírujte text přímo z vašeho skriptu. Vytvořte soubor Zip souborů WAV a text přepisu.
 

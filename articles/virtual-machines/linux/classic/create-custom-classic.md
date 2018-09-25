@@ -1,6 +1,6 @@
 ---
-title: Vytvoření klasického virtuálního počítače s Linuxem pomocí rozhraní příkazového řádku Azure CLI 1.0 | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit virtuální počítač s Linuxem pomocí Azure CLI 1.0 pomocí modelu nasazení Classic
+title: Vytvoření klasického virtuálního počítače s Linuxem pomocí Azure classic CLI | Dokumentace Microsoftu
+description: Zjistěte, jak vytvořit virtuální počítač s Linuxem pomocí Azure CLI classic pomocí modelu nasazení Classic
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -16,18 +16,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: cynthn
-ms.openlocfilehash: 13d0ef93c3828c514e46e37494a66f7003eac827
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 507d9e12a37d7bf187a3e56b04cb47ac0104773d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931610"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982020"
 ---
-# <a name="how-to-create-a-classic-linux-vm-with-the-azure-cli-10"></a>Vytvoření klasického virtuálního počítače s Linuxem pomocí Azure CLI 1.0
+# <a name="how-to-create-a-classic-linux-vm-with-the-azure-classic-cli"></a>Vytvoření klasického virtuálního počítače s Linuxem pomocí Azure classic CLI
 > [!IMPORTANT] 
 > Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a Classic](../../../resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Classic. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Resource Manager, najdete v článku [tady](../create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Toto téma popisuje, jak vytvořit virtuální počítač s Linuxem (VM) pomocí Azure CLI 1.0 pomocí modelu nasazení Classic. Používáme image systému Linux z dostupných **IMAGÍ** v Azure. Příkazy příkazového řádku Azure CLI 1.0 nabízejí následující možnosti konfigurace, mimo jiné:
+Toto téma popisuje, jak vytvořit virtuální počítač s Linuxem (VM) pomocí Azure CLI classic pomocí modelu nasazení Classic. Používáme image systému Linux z dostupných **IMAGÍ** v Azure. Příkazy rozhraní příkazového řádku Azure classic nabízejí následující možnosti konfigurace, mimo jiné:
 
 * Připojení virtuálního počítače k virtuální síti
 * Přidání virtuálního počítače do existující cloudové služby

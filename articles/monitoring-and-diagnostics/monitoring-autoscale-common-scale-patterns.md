@@ -1,6 +1,6 @@
 ---
-title: Přehled běžných vzorů škálování
-description: Další některých běžných vzorů na automatické škálování prostředku v Azure.
+title: Přehled obecné vzory automatického škálování
+description: Seznamte se s některými běžných vzorů pro automatické škálování prostředku v Azure.
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,57 +8,57 @@ ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: 84727ec3694f64d40ad002a248a255df9074d7f4
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: c7084a10aceafcdd1039893b810fcbd8b74b874b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263255"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967400"
 ---
-# <a name="overview-of-common-autoscale-patterns"></a>Přehled běžných vzorů škálování
-Tento článek popisuje některé z běžných vzorů škálování prostředku v Azure.
+# <a name="overview-of-common-autoscale-patterns"></a>Přehled obecné vzory automatického škálování
+Tento článek popisuje některé běžné vzory škálování prostředku v Azure.
 
-Azure monitorování automatického škálování se vztahuje pouze na virtuální počítač škálování sady (VMSS), cloudové služby, plány služby app a prostředí app service. 
+Automatické škálování služby Azure Monitor se týká pouze [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service – Web Apps](https://azure.microsoft.com/services/app-service/web/), a [služby API Management](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
 
-# <a name="lets-get-started"></a>Umožňuje Začínáme
+# <a name="lets-get-started"></a>Umožňuje začít
 
-Tento článek předpokládá, že jste obeznámeni s automatické škálování. Můžete [Začněte zde škálování prostředku][1]. Toto jsou některé obecné vzory škálování.
+Tento článek předpokládá, že máte zkušenosti s automatické škálování. Je možné [začněte tady škálovat prostředek][1]. Následují některé běžné vzory škálování.
 
 ## <a name="scale-based-on-cpu"></a>Škálování podle využití procesoru
 
-Máte webovou aplikaci (/ VMSS/cloudové služby role) a 
+Můžete mít třeba webovou aplikaci (/ VMSS/role cloudové služby) a
 
-- Chcete Škálováním na více systémů nebo měřítka ve na základě využití procesoru.
-- Kromě toho chcete zajistit, že je minimální počet instancí. 
-- Navíc chcete zajistit nastavit maximální limit pro počet instancí, které je možné škálovat na.
+- Chcete škálování na více instancí a škálování v závislosti na využití procesoru.
+- Kromě toho budete chtít zajistit, že je minimální počet instancí.
+- Chcete také, ujistěte se, že nastavíte maximální limit počtu instancí, které je možné škálovat na.
 
 ![Škálování podle využití procesoru][2]
 
-## <a name="scale-differently-on-weekdays-vs-weekends"></a>Škálování jinak o víkendech vs dny v týdnu
+## <a name="scale-differently-on-weekdays-vs-weekends"></a>Jinak škálování o víkendech vs dny v týdnu
 
-Máte webovou aplikaci (/ VMSS/cloudové služby role) a
+Můžete mít třeba webovou aplikaci (/ VMSS/role cloudové služby) a
 
-- Chcete 3 instance ve výchozím nastavení (ve všední dny)
-- O víkendech nepředpokládáte přenosy a proto chcete škálovat dolů 1 instance o víkendech.
+- Ve výchozím nastavení chcete 3 instance (ve všední dny)
+- Provoz nečekáte o víkendech, a proto chcete škálovat dolů 1 instance o víkendech.
 
-![Škálování jinak o víkendech vs dny v týdnu][3]
+![Jinak škálování o víkendech vs dny v týdnu][3]
 
-## <a name="scale-differently-during-holidays"></a>Jinak škálování během svátků
+## <a name="scale-differently-during-holidays"></a>Škálovat jinak během svátků
 
-Máte webovou aplikaci (/ VMSS/cloudové služby role) a 
+Můžete mít třeba webovou aplikaci (/ VMSS/role cloudové služby) a
 
-- Chcete škálovat nahoru/dolů podle využití procesoru ve výchozím nastavení
-- Však během sváteční sezóny (nebo konkrétní dny, které jsou důležité pro vaši firmu) chcete přepsat výchozí hodnoty a mít k dispozici větší kapacitu.
+- Chcete škálovat směrem nahoru nebo dolů podle využití procesoru ve výchozím nastavení
+- Nicméně během sváteční období (nebo konkrétní dny, které jsou důležité pro vaši společnost) chcete přepsat výchozí hodnoty a mít k dispozici větší kapacitu.
 
 ![Jinak na svátků škálování][4]
 
-## <a name="scale-based-on-custom-metric"></a>Škálování podle vlastní metriku
+## <a name="scale-based-on-custom-metric"></a>Škálování na základě vlastní metriky
 
-Máte front-end webové a vrstvu rozhraní API, který komunikuje s back-end. 
+Máte webového front-endu a vrstvu rozhraní API, která komunikuje s back-endu.
 
-- Chcete-li škálovat vrstvu rozhraní API na základě vlastních událostí v části front end (Příklad: Chcete škálovat procesu odbavení na základě počtu položek v nákupní košík)
+- Chcete-li škálovat vrstvu rozhraní API na základě vlastních událostí v části front end (Příklad: Chcete škálovat váš proces platby u pokladny na základě počtu položek v nákupním košíku)
 
-![Škálování podle vlastní metriku][5]
+![Škálování na základě vlastní metriky][5]
 
 <!--Reference-->
 [1]: ./monitoring-autoscale-get-started.md

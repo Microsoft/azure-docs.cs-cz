@@ -8,12 +8,12 @@ ms.date: 02/15/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9064e0da6dde6c4b30235adf771f06a4f25d709a
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 76b0bab0f2eb34d7283d38eb0442f4f2f2083db3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42055233"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995366"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Vysvětlení modulů Azure IoT Edge
 
@@ -67,7 +67,7 @@ Twin twin = await client.GetTwinAsync();
 
 ## <a name="offline-capabilities"></a>Možnosti offline
 
-Azure IoT Edge podporuje offline operace s vašimi zařízeními IoT Edge. Tyto možnosti jsou teď omezená a vyvíjejí se další scénáře. 
+Azure IoT Edge podporuje offline operace s vašimi zařízeními IoT Edge. Tyto možnosti jsou teď omezená. 
 
 Moduly IoT Edge může být offline delší dobu, za předpokladu splnění následujících požadavků: 
 
@@ -75,6 +75,8 @@ Moduly IoT Edge může být offline delší dobu, za předpokladu splnění nás
 * **Moduly není nutné donutit s centrem IoT Edge v režimu offline**. Moduly lze pouze ověření s centry Edge, které mají aktivní připojení k službě IoT hub. Moduly se muset znovu ověřovat, pokud se restartují z jakéhokoli důvodu. Moduly může i dál posílat zprávy do centra Edge po vypršení platnosti tokenu SAS. Po obnovení připojení Centrum Edge vyžádá nový token z modulu a ověřuje prostřednictvím služby IoT hub. V případě úspěchu se že Centrum Edge předává zprávy modulu, které jsou uloženy, dokonce i zprávy, které byly odeslány, zatímco byl vypršela platnost tokenu modulu. 
 * **Modul, který odeslané zprávy při offline je stále funkční po obnovení připojení**. Při opětovném připojení ke službě IoT Hub, je potřeba ověřit nový token modulu (Pokud předchozí platnost) předtím, než nebude moct přesměrovávat zprávy modulu Centrum Edge. Pokud modul není k dispozici nový token, Centrum Edge nemůže reagovat na zprávy uložené modulu. 
 * **Centrum Edge se místo na disku pro uložení zpráv**. Ve výchozím nastavení zprávy jsou uloženy v systému souborů kontejneru Edge hub. Neexistuje parametr konfigurace pro specifikování připojený svazek pro uložení zpráv místo. V obou případech musí být místa pro ukládání zpráv pro odložené doručování do služby IoT Hub.  
+
+Další možnosti offline jsou dostupné ve verzi public preview. Další informace najdete v tématu [porozumění rozšířené offline možnosti pro IoT Edge, zařízení, moduly a podřízená zařízení](offline-capabilities.md).
 
 ## <a name="next-steps"></a>Další postup
  - [Pochopení runtime Azure IoT Edge a jeho architektura][lnk-runtime]

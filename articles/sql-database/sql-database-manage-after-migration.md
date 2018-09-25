@@ -12,12 +12,12 @@ ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: data-movement
-ms.openlocfilehash: 7cad09a3fc02d0c25f164f7e45974019ff9bbb71
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: b34aca8d8aaf9e2c7dbdd092e14a1ebe1e04963d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367912"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985807"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nové DBA v cloudu – Správa vaší databáze ve službě Azure SQL Database
 
@@ -170,7 +170,7 @@ Expressroute vám také umožní burst až 2 x limit šířky pásma, kterou si 
 - [Pracovní postupy](../expressroute/expressroute-workflows.md)
 
 ### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>SQL Database je splňovat zákonné požadavky a jak, který pomáhá s vlastní organizace dodržování předpisů?
-SQL Database je kompatibilní s celou řadou dodržování legislativních předpisů. Pokud chcete zobrazit nejnovější sadu dodržování předpisů, které byly splněny, přejděte [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/compliance/complianceofferings) a přechod na dodržování předpisů, které jsou důležité pro vaši organizaci, pokud chcete zobrazit, pokud je zahrnují využijí služby Azure SQL Database. Je důležité si uvědomit, že i když SQL Database může musí být certifikovaná jako kompatibilní služby, pomáhá v dodržování předpisů služby vaší organizace ale nezaručuje automaticky ji.
+SQL Database je kompatibilní s celou řadou dodržování legislativních předpisů. Pokud chcete zobrazit nejnovější sadu dodržování předpisů, které byly splněny, přejděte [Microsoft Trust Center](https://microsoft.com/trustcenter/compliance/complianceofferings) a přechod na dodržování předpisů, které jsou důležité pro vaši organizaci, pokud chcete zobrazit, pokud je zahrnují využijí služby Azure SQL Database. Je důležité si uvědomit, že i když SQL Database může musí být certifikovaná jako kompatibilní služby, pomáhá v dodržování předpisů služby vaší organizace ale nezaručuje automaticky ji.
 
 ## <a name="intelligent-database-monitoring-and-maintenance-after-migration"></a>Inteligentní databázové monitorování a údržba po migraci
 

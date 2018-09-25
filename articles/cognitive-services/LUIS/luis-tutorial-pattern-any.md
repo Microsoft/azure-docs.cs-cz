@@ -4,20 +4,20 @@ titleSuffix: Azure Cognitive Services
 description: Použijte pattern.any entity extrahovat data z projevy, kde je správně naformátovaný projevy a kde konec dat může snadno zaměnitelná s zbývající slova utterance.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: language-understanding
 ms.topic: article
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: dce75710137f4d4160cb2f55f856066c7c93ac78
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: a5b964877f1c089015812abdf365b22c57267bb0
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45628977"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031352"
 ---
-# <a name="tutorial-5-extract-free-form-data"></a>Kurz: 5. Extrahovat data volného tvaru
+# <a name="tutorial-5-extract-free-form-data"></a>Kurz: 5. Extrakce dat volného tvaru
 
 V tomto kurzu použijte pattern.any entity extrahovat data z projevy, kde jsou správně naformátovaný projevy a kde konec dat může snadno zaměnitelná s zbývající slova utterance. 
 

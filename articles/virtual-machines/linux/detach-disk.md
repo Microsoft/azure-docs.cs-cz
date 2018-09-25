@@ -1,6 +1,6 @@
 ---
 title: Odpojení datového disku z virtuálního počítače s Linuxem – Azure | Dokumentace Microsoftu
-description: Zjistěte, jak odpojit datový disk od virtuálního počítače v Azure pomocí CLI 2.0 nebo na webu Azure portal.
+description: Zjistěte, jak odpojit datový disk od virtuálního počítače v Azure pomocí webu Azure portal nebo rozhraní příkazového řádku Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/18/2018
 ms.author: cynthn
-ms.openlocfilehash: 0225c6605109489c4b9b599918dc09983ae25ac8
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: b087040e5d219941ec0b2ee0f58dfe0058a1ad04
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144070"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46968339"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Jak odpojit datový disk od virtuálního počítače s Linuxem
 
@@ -99,7 +99,7 @@ sudo umount /dev/sdc1 /datadrive
 ```
 
 
-## <a name="detach-a-data-disk-using-cli-20"></a>Odpojení datového disku pomocí CLI 2.0
+## <a name="detach-a-data-disk-using-azure-cli"></a>Odpojení datového disku pomocí rozhraní příkazového řádku Azure 
 
 Tento příklad odpojí *myDataDisk* disk od virtuálního počítače s názvem *myVM* v *myResourceGroup*.
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: yuemlu
 ms.custom: include file
-ms.openlocfilehash: ab085d6a5cb38c46cf46a51da6d294732e2fd879
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: e3d904358282f303a2d1ab35cf4fdc8026d7db55
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45979256"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060873"
 ---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>Nákladově efektivní úložiště úrovně Standard a spravované a nespravované disky virtuálních počítačů Azure
 
@@ -25,7 +25,7 @@ Tento článek se týká použití standardní disky SSD a HDD. Další informac
 
 Existují dva způsoby, jak vytvořit standardní disky pro virtuální počítače Azure:
 
-**Nespravované disky**: Tento typ disku je původní metody, kde budete spravovat účty úložiště používané pro uložení souborů virtuálního pevného disku, které odpovídají na disky virtuálního počítače. Soubory virtuálního pevného disku se ukládají jako objekty BLOB stránky v účtech úložiště. Nespravované disky můžete připojit k libovolné velikosti virtuálního počítače Azure, včetně virtuálních počítačů, které se primárně používají službu Premium Storage, jako je řada DSv2 a GS. Virtuální počítače Azure podporují připojení několik standardních disků, což až 256 TB úložiště na každý virtuální počítač.
+**Nespravované disky**: Tento typ disku je původní metody, kde budete spravovat účty úložiště používané pro uložení souborů virtuálního pevného disku, které odpovídají na disky virtuálního počítače. Soubory virtuálního pevného disku se ukládají jako objekty BLOB stránky v účtech úložiště. Nespravované disky můžete připojit k libovolné velikosti virtuálního počítače Azure, včetně virtuálních počítačů, které se primárně používají službu Premium Storage, jako je řada DSv2 a GS. Virtuální počítače Azure podporují připojení několik standardních disků, což až 256 PiB úložiště na každý virtuální počítač. Pokud používáte velikosti disků ve verzi preview, můžete mít až přibližně 2 PiB úložiště na každý virtuální počítač. 
 
 [**Služba Azure Managed Disks**](../articles/virtual-machines/windows/managed-disks-overview.md): Tato funkce spravuje účty úložiště používané pro disky virtuálních počítačů za vás. Zadejte typ (Premium SSD, SSD na úrovni Standard nebo standardní HDD) a velikost disku je nutné, a Azure vytvoří a spravuje disk za vás. Není nutné se starat o umisťováním disků ve více účtech úložiště, aby se vejdete do limitů škálovatelnosti pro účty úložiště – se postará Azure, který pro vás.
 
@@ -36,15 +36,15 @@ Začínáme s Azure Standard Storage, najdete v tématu [začít zdarma](https:/
 Informace o tom, jak vytvořit virtuální počítač se spravovanými disky najdete v jednom z následujících článků.
 
 * [Vytvoření virtuálního počítače pomocí Resource Manageru a PowerShellu](../articles/virtual-machines/windows/quick-create-powershell.md)
-* [Vytvoření virtuálního počítače s Linuxem pomocí rozhraní příkazového řádku Azure CLI 2.0](../articles/virtual-machines/linux/quick-create-cli.md)
+* [Vytvoření virtuálního počítače s Linuxem pomocí rozhraní příkazového řádku Azure CLI](../articles/virtual-machines/linux/quick-create-cli.md)
 
-## <a name="standard-storage-features"></a>Funkce úložiště úrovně Standard 
+## <a name="standard-storage-features"></a>Funkce úložiště úrovně Standard
 
 Pojďme se podívat na některé z funkcí úložiště úrovně Standard. Další podrobnosti najdete v tématu [Úvod do služby Azure Storage](../articles/storage/common/storage-introduction.md).
 
 **Storage úrovně standard**: úložiště Azure úrovně Standard podporuje disky Azure, Azure Blobs, soubory Azure, tabulky Azure a fronty Azure. Použití služby Storage úrovně Standard, začněte s [vytvoření účtu služby Azure Storage](../articles/storage/common/storage-quickstart-create-account.md).
 
-**Standardní disky SSD:** disků SSD na úrovni Standard nabízí spolehlivější výkon než standardní HDD disky a jsou aktuálně k dispozici ve verzi preview. Další informace o dostupnosti oblast disků SSD na úrovni Standard najdete v tématu [regionální dostupnost disků SSD na úrovni Standard (Preview)](../articles/virtual-machines/windows/faq-for-disks.md#standard-ssds-azure-regions).
+**Standardní disky SSD:** disků SSD na úrovni Standard nabízí spolehlivější výkon než standardní HDD disky a jsou aktuálně k dispozici. Další informace o dostupnosti oblast disků SSD na úrovni Standard najdete v tématu [regionální dostupnost disků SSD na úrovni Standard](../articles/virtual-machines/windows/faq-for-disks.md#standard-ssds-azure-regions).
 
 **Disky Standard HDD:** standardní HDD disků je možné připojit ke všem virtuálním počítačům Azure včetně velikost series virtuálních počítačů použít díky službě Premium Storage, jako je řada DSv2 a GS. Standardní pevného disku lze připojit pouze k jednomu virtuálnímu počítači. Ale můžete připojit jeden nebo více z těchto disků k virtuálnímu počítači, až do maximální disku počet definovaný pro velikost tohoto virtuálního počítače. V následující části na Standard Storage škálovatelnost a výkonnostní cíle popisujeme specifikace podrobněji.
 
@@ -81,11 +81,11 @@ Na rozdíl od prémiové disky nebyly zřízeny vstupně výstupní operace za s
 
 | **Úroveň virtuálního počítače**            | **Virtuální počítač na základní úrovni** | **Standardní úroveň virtuálního počítače** |
 |------------------------|-------------------|----------------------|
-| Velikost disku Max          | 4095 GB           | 4095 GB              |
-| Maximálně 8 KB IOPS na disk | Až 300         | Až 500            |
-| Maximální šířka pásma na disku | Až 60 MB/s     | Až 60 MB/s        |
+| Velikost disku Max          | 32 767 giB           | 32 767 giB        |
+| Maximálně 8 KB IOPS na disk | Až 2 000         | Až 2 000        |
+| Maximální šířka pásma na disku | Až 500 MB/s     | Až 500 MB/s      |
 
-Pokud vaše úloha vyžaduje podporu vysoce výkonných disků s nízkou latencí, zvažte použití služby Premium Storage. Už víte, další výhody služby Premium Storage, najdete v tématu [vysoce výkonné úložiště úrovně Premium a disky virtuálních počítačů Azure](../articles/virtual-machines/windows/premium-storage.md). 
+Pokud vaše úloha vyžaduje podporu vysoce výkonných disků s nízkou latencí, zvažte použití služby Premium Storage. Už víte, další výhody služby Premium Storage, najdete v tématu [vysoce výkonné úložiště úrovně Premium a disky virtuálních počítačů Azure](../articles/virtual-machines/windows/premium-storage.md).
 
 ## <a name="snapshots-and-copy-blob"></a>Snímků a kopírování objektů blob
 
@@ -121,9 +121,9 @@ Pokud používáte Storage úrovně Standard, platí následující aspekty fakt
 
 **Spravované disky:** fakturace za spravované disky úrovně standard závisí na velikosti zřízeného disku. Zřízená velikost (zaokrouhluje nahoru) Azure mapuje na nejbližší možnost Managed Disks uvedená v následujících tabulkách. Každý spravovaný disk mapuje na jednu z podporovaných velikostí zřízené a účtuje se odpovídajícím způsobem. Například pokud vytvoříte standardní spravovaný disk a zadejte zřízená velikost 200 GB, účtuje se vám ceníku typ s.15 disku.
 
-| **Standardní HDD spravované <br>typ disku** | **S4** | **S6** | **S10** | **S.15** | **S20** | **S30** | **S40** | **S50** |
-|------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------| 
-| Velikost disku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 giB (1 TB) | 2048 giB (2 TB) | 4095 GiB (4 TiB) | 
+| **Standardní HDD spravované <br>typ disku** | **S4** | **S6** | **S10** | **S.15** | **S20** | **S30** | **S40** | **S50** | **S60** | **S70** | **S80** |
+|------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
+| Velikost disku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1 024 giB (1 TB) | 2 048 giB (2 TB) | 4095 giB (4 TB) | 8192 giB (8 TB) | 16,385 giB (16 TB) | 32 767 giB (32 TB) |
 
 
 **Snímky**: snímky disků standard se účtují další zvýšení kapacity používané snímky. Informace o snímků, najdete v části [vytvoření snímku objektu Blob](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob).
@@ -138,7 +138,7 @@ Podrobné informace o cenách pro úložiště úrovně Standard Virtual Machine
 * [Ceny Virtual Machines](https://azure.microsoft.com/pricing/details/virtual-machines/)
 * [Ceny služby Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks)
 
-## <a name="azure-backup-service-support"></a>Podpora služby Azure Backup 
+## <a name="azure-backup-service-support"></a>Podpora služby Azure Backup
 
 Virtuální počítače s nespravovanými disky můžete zálohovat pomocí služby Azure Backup. [Další podrobnosti](../articles/backup/backup-azure-vms-first-look-arm.md).
 
@@ -154,4 +154,4 @@ Také vám pomůže služba Azure Backup se službou Managed Disks vytváření 
 
 * [Vytvoření virtuálního počítače pomocí Resource Manageru a PowerShellu](../articles/virtual-machines/windows/quick-create-powershell.md)
 
-* [Vytvoření virtuálního počítače s Linuxem pomocí rozhraní příkazového řádku Azure CLI 2.0](../articles/virtual-machines/linux/quick-create-cli.md)
+* [Vytvoření virtuálního počítače s Linuxem pomocí rozhraní příkazového řádku Azure CLI](../articles/virtual-machines/linux/quick-create-cli.md)

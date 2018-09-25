@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f4f6a40fde23ee70391c5057762f17ce1eb44123
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 0ffcf483b2852ec87c263573a97b4508d5b5d39c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38561124"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997467"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Konfigurace privátních IP adres pro virtuální počítač pomocí Azure CLI
 
@@ -42,13 +42,13 @@ Tento článek se týká modelu nasazení Resource Manager. Můžete také [spra
 
 Vytvoření virtuálního počítače s názvem *DNS01* v *front-endu* podsíti virtuální sítě s názvem *TestVNet* se statickou privátní IP adresou z *192.168.1.101*, dokončení Následující kroky:
 
-1. Pokud nebyly dosud, nainstalovat a nakonfigurovat na nejnovější verzi [příkazového řádku Azure CLI 2.0](/cli/azure/install-az-cli2) a přihlaste se k Azure pomocí účtu [az login](/cli/azure/reference-index#az_login). 
+1. Pokud nebyly dosud, nainstalovat a nakonfigurovat na nejnovější verzi [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) a přihlaste se k Azure pomocí účtu [az login](/cli/azure/reference-index#az_login).
 
 2. Vytvoření veřejné IP adresy pro virtuální počítač s [az network public-ip vytvořit](/cli/azure/network/public-ip#az_network_public_ip_create) příkazu. Seznam uvedený za výstupem vysvětluje použité parametry.
 
     > [!NOTE]
     > Možná chcete nebo muset použít jiné hodnoty pro vaše argumenty v tomto a dalších krocích, v závislosti na vašem prostředí.
-   
+
     ```azurecli
     az network public-ip create \
     --name TestPIP \
@@ -58,7 +58,7 @@ Vytvoření virtuálního počítače s názvem *DNS01* v *front-endu* podsíti 
     ```
 
     Očekávaný výstup:
-   
+
    ```json
    {
         "publicIp": {

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: jasonh
-ms.openlocfilehash: 9a48b3ff9769e2757ac7930feb14d6537d96fae3
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 4cf516550e9f9852ec50981932c2df8f236d0358
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109234"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961310"
 ---
 # <a name="create-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Vytvoření clusterů Hadoop v HDInsight pomocí šablon Resource Manageru
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -27,7 +27,7 @@ V tomto článku se dozvíte několik způsobů, jak vytvářet clustery Azure H
 Postupujte podle pokynů v tomto článku, budete potřebovat:
 
 * [Předplatného Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* Prostředí Azure PowerShell a/nebo Azure CLI.
+* Prostředí Azure PowerShell a/nebo Azure CLI Classic.
 
 ### <a name="resource-manager-templates"></a>Šablony Resource Manageru
 Šablony Resource Manageru umožňuje snadno vytvořit následující resoruces pro vaši aplikaci v rámci jediné koordinované operace:
@@ -49,7 +49,7 @@ Resource Manager vám umožňuje exportovat šablonu Resource Manageru z existuj
 
 - Azure portal: viz [Export šablony Azure Resource Manageru z existujících prostředků](../azure-resource-manager/resource-manager-export-template.md).
 - Azure PowerShell: Viz [šablon exportovat Azure Resource Manageru pomocí Powershellu](../azure-resource-manager/resource-manager-export-template-powershell.md).
-- Azure CLI: Viz [šablon exportovat Azure Resource Manageru pomocí rozhraní příkazového řádku Azure](../azure-resource-manager/resource-manager-export-template-cli.md).
+- Rozhraní příkazového řádku Azure Classic: Viz [šablon exportovat Azure Resource Manageru pomocí rozhraní příkazového řádku Azure Classic](../azure-resource-manager/resource-manager-export-template-cli.md).
 
 
 ## <a name="deploy-using-the-portal"></a>Nasazení pomocí portálu
@@ -60,9 +60,9 @@ Můžete nasadit šablonu Resource Manageru pomocí webu Azure portal. Další i
 
 Můžete nasadit šablonu Resource Manageru pomocí prostředí Azure PowerShell. Další informace najdete v tématu [nasazení prostředků pomocí šablon Resource Manageru a prostředí Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md) a [nasazení privátní šablony Resource Manageru s tokenem SAS a prostředí Azure PowerShell](../azure-resource-manager/resource-manager-powershell-sas-token.md).
 
-## <a name="deploy-using-cli"></a>Nasazení pomocí rozhraní příkazového řádku
+## <a name="deploy-using-azure-cli"></a>Nasazení pomocí rozhraní příkazového řádku Azure
 
-Můžete nasadit šablonu Resource Manageru pomocí rozhraní příkazového řádku Azure. Další informace najdete v tématu [nasazení prostředků pomocí šablon Resource Manageru a Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) a [nasazení privátní šablony Resource Manageru s tokenem SAS a rozhraní příkazového řádku Azure](../azure-resource-manager/resource-manager-cli-sas-token.md).
+Můžete nasadit šablonu Resource Manageru pomocí rozhraní příkazového řádku classic. Další informace najdete v tématu [nasazení prostředků pomocí šablon Resource Manageru a Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) a [nasazení privátní šablony Resource Manageru s tokenem SAS a rozhraní příkazového řádku Azure](../azure-resource-manager/resource-manager-cli-sas-token.md).
 
 ## <a name="deploy-using-the-rest-api"></a>Nasazení pomocí rozhraní REST API
 Můžete nasadit šablonu Resource Manageru pomocí rozhraní REST API. Další informace najdete v tématu [nasazení prostředků pomocí šablon Resource Manageru a rozhraní REST API Resource Manageru](../azure-resource-manager/resource-group-template-deploy-rest.md).

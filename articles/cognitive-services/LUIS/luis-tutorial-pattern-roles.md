@@ -4,20 +4,20 @@ titleSuffix: Azure Cognitive Services
 description: Extrahovat data z utterance správně naformátovaný šablony pomocí vzoru. Šablona utterance používá jednoduché entity a role extrahovat související data, jako je původní umístění a cílové umístění.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: language-understanding
 ms.topic: article
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: f3ddbad350ed42823ca95136ae2a507c46c3c763
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 07fc753f7f60b51fc6b27e43ffb8c181c570bb5a
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634536"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032507"
 ---
-# <a name="tutorial-4-extract-contextually-related-patterns"></a>Kurz: 4. Extrahovat kontextově související vzory
+# <a name="tutorial-4-extract-contextually-related-patterns"></a>Kurz: 4. Extrakce vzorů souvisejících s kontextem
 
 V tomto kurzu pomocí vzoru extrahovat data z utterance správně naformátovaný šablony. Šablona utterance používá jednoduché entity a role extrahovat související data, jako je původní umístění a cílové umístění.  Při použití vzorů, jsou potřeba méně projevy příklad záměr.
 

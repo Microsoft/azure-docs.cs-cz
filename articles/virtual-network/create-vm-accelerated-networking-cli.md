@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/02/2018
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 5863160632e544ca542debcf74971e90ea452939
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: b6aaf98ca3b5581691b6c70783be5250b506056c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716668"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990956"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>Vytvoření virtuálního počítače s Linuxem s Akcelerovanými síťovými službami
 
@@ -75,7 +75,7 @@ Přestože tento článek popisuje kroky k vytvoření virtuálního počítače
 
 ### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-Nainstalujte nejnovější [příkazového řádku Azure CLI 2.0](/cli/azure/install-az-cli2) a přihlaste se k Azure pomocí účtu [az login](/cli/azure/reference-index#az_login). V následujících příkladech nahraďte ukázkové názvy parametrů s vlastními hodnotami. Ukázkové názvy parametrů zahrnutých *myResourceGroup*, *myNic*, a *myVm*.
+Nainstalujte nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) a přihlaste se k Azure pomocí účtu [az login](/cli/azure/reference-index#az_login). V následujících příkladech nahraďte ukázkové názvy parametrů s vlastními hodnotami. Ukázkové názvy parametrů zahrnutých *myResourceGroup*, *myNic*, a *myVm*.
 
 Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v *centralus* umístění:
 

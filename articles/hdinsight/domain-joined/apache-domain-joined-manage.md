@@ -1,23 +1,23 @@
 ---
-title: Správa clusterů HDInsight připojených k doméně – Azure
-description: Další informace o správě clusterů HDInsight připojených k doméně
+title: Správa clusterů HDInsight s Enterprise Security Enterprise – Azure
+description: Další informace o správě clusterů HDInsight s balíčkem Enterprise Security Package.
 services: hdinsight
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/17/2018
-ms.openlocfilehash: 494049cffe77e23c33528747e04bf96065fac2e2
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 08/24/2018
+ms.openlocfilehash: 02a77ef9589a42a6f33087ba7e22efc3144a8f2c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051600"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46973554"
 ---
-# <a name="manage-domain-joined-hdinsight-clusters"></a>Správa clusterů HDInsight připojených k doméně
-Další uživatelé a role v HDInsight připojených k doméně a jak spravovat clustery HDInsight připojené k doméně.
+# <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Správa clusterů HDInsight s balíčkem Enterprise Security Package
+Další uživatelé a role v HDInsight Enterprise Security Package (ESP) a jak spravovat clustery ESP.
 
 ## <a name="use-vscode-to-link-to-domain-joined-cluster"></a>Propojení s clusterem připojeným k doméně pomocí VSCode
 
@@ -140,12 +140,12 @@ Najít plně kvalifikovaný název domény hlavního uzlu, použijte informace v
 
 
 
-## <a name="users-of-domain-joined-hdinsight-clusters"></a>Uživatelé clusterů HDInsight připojených k doméně
-Cluster HDInsight, který není připojený k doméně má dva uživatelské účty, které jsou vytvořeny během vytváření clusteru:
+## <a name="users-of-hdinsight-clusters-with-esp"></a>Uživatelé clusterů HDInsight s ESP
+Cluster HDInsight ESP má dva uživatelské účty, které jsou vytvořeny během vytváření clusteru:
 
 * **Správce Ambari**: Tento účet se taky říká *uživatele Hadoopu* nebo *uživatele HTTP*. Tento účet slouží pro přihlášení k Ambari na https://&lt;Název_clusteru >. azurehdinsight.net. To také umožňuje spouštět dotazy na zobrazení Ambari, spouštění úloh prostřednictvím externích nástrojů (například prostředí PowerShell, Templeton, Visual Studio) a ověřování pomocí ovladače Hive ODBC a nástrojů BI (například Excel, Power BI nebo Tableau).
 
-Cluster HDInsight připojený k doméně má tři nové uživatele kromě správce Ambari.
+Cluster HDInsight s ESP má tři nové uživatele kromě správce Ambari.
 
 * **Správce ranger**: Tento účet je účet místního správce Apache Ranger. Není uživatele domény služby active directory. Tento účet slouží k nastavení zásad a nastavte další uživatele správci nebo delegovaní správci (tak, aby tito uživatelé mohou spravovat zásady). Ve výchozím nastavení, uživatelské jméno je *správce* a heslo je stejná jako heslo správce Ambari. Heslo je aktualizovat ze stránky nastavení v Ranger.
 * **Uživatel domény s rolí Správce clusteru**: Tento účet je určen jako správce clusteru Hadoop, včetně Ambari a Ranger uživatele domény služby active directory. Při vytváření clusteru je nutné zadat přihlašovací údaje tohoto uživatele. Tento uživatel má následující oprávnění:
@@ -159,8 +159,8 @@ Cluster HDInsight připojený k doméně má tři nové uživatele kromě správ
     Existují některé koncové body v rámci clusteru (například Templeton), které nejsou spravovány nástrojem Ranger a proto nejsou zabezpečené. Tyto koncové body jsou uzamčené pro všechny uživatele kromě domény uživatele s rolí Správce clusteru.
 * **Pravidelné**: při vytváření clusteru, můžete zadat více skupin služby active directory. Uživatelé z těchto skupin se synchronizují do Ranger a Ambari. Tito uživatelé jsou uživatelé domény a mají přístup pouze spravovaná Ranger koncových bodů (například Hiveserver2). Všechny zásady RBAC a auditování se vztahuje na tyto uživatele.
 
-## <a name="roles-of-domain-joined-hdinsight-clusters"></a>Role clusterů HDInsight připojených k doméně
-HDInsight připojený k doméně mají následující role:
+## <a name="roles-of-hdinsight-clusters-with-esp"></a>Role clusterů HDInsight s ESP
+HDInsight Enterprise Security Package má následující role:
 
 * Správce clusteru
 * Operátor clusteru
@@ -174,7 +174,7 @@ HDInsight připojený k doméně mají následující role:
 2. V levé nabídce klikněte na tlačítko **role**.
 3. Klikněte na modrý otazník zobrazíte oprávnění:
 
-    ![Připojené k doméně oprávnění role HDInsight](./media/apache-domain-joined-manage/hdinsight-domain-joined-roles-permissions.png)
+    ![Oprávnění role ESP HDInsight](./media/apache-domain-joined-manage/hdinsight-domain-joined-roles-permissions.png)
 
 ## <a name="open-the-ambari-management-ui"></a>Otevřete uživatelské rozhraní pro správu Ambari
 
@@ -184,43 +184,43 @@ HDInsight připojený k doméně mají následující role:
 4. Přihlaste se na používání clusteru správce domény uživatelské jméno a heslo Ambari.
 5. Klikněte na tlačítko **správce** rozevírací nabídky v pravém horním rohu klikněte pravým tlačítkem myši a klikněte na **spravovat Ambari**.
 
-    ![HDInsight připojený k doméně spravovat Ambari](./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)
+    ![ESP HDInsight spravovat Ambari](./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)
 
     Uživatelské rozhraní bude vypadat jako:
 
-    ![Správa HDInsight Ambari připojených k doméně uživatelského rozhraní](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui.png)
+    ![Uživatelské rozhraní ESP HDInsight Ambari pro správu](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui.png)
 
 ## <a name="list-the-domain-users-synchronized-from-your-active-directory"></a>Zobrazit seznam uživatelů domény synchronizované z Active Directory
 1. Otevřete uživatelské rozhraní pro správu Ambari.  Zobrazit [otevřete uživatelské rozhraní pro správu Ambari](#open-the-ambari-management-ui).
 2. V levé nabídce klikněte na tlačítko **uživatelé**. Zobrazí všechny uživatele, které jsou synchronizované z Active Directory do clusteru HDInsight.
 
-    ![Připojené k doméně HDInsight Ambari správu uživatelské rozhraní zobrazit seznam uživatelů](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-users.png)
+    ![ESP HDInsight Ambari správu uživatelské rozhraní zobrazit seznam uživatelů](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-users.png)
 
 ## <a name="list-the-domain-groups-synchronized-from-your-active-directory"></a>Seznam skupiny domény, které jsou synchronizované z Active Directory
 1. Otevřete uživatelské rozhraní pro správu Ambari.  Zobrazit [otevřete uživatelské rozhraní pro správu Ambari](#open-the-ambari-management-ui).
 2. V levé nabídce klikněte na tlačítko **skupiny**. Zobrazí všechny skupiny synchronizované z Active Directory do clusteru HDInsight.
 
-    ![Připojené k doméně seznam skupin pro HDInsight Ambari správu uživatelského rozhraní](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-groups.png)
+    ![ESP HDInsight Ambari správu uživatelského rozhraní seznamu skupin](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-groups.png)
 
 ## <a name="configure-hive-views-permissions"></a>Konfigurace oprávnění zobrazení Hive
 1. Otevřete uživatelské rozhraní pro správu Ambari.  Zobrazit [otevřete uživatelské rozhraní pro správu Ambari](#open-the-ambari-management-ui).
 2. V levé nabídce klikněte na tlačítko **zobrazení**.
 3. Klikněte na tlačítko **HIVE** zobrazte podrobnosti.
 
-    ![Připojené k doméně správy HDInsight Ambari Hive zobrazení uživatelského rozhraní](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views.png)
+    ![Správa ESP HDInsight Ambari Hive zobrazení uživatelského rozhraní](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views.png)
 4. Klikněte na tlačítko **zobrazení Hive** odkaz pro konfiguraci zobrazení Hive.
 5. Přejděte dolů k položce **oprávnění** oddílu.
 
-    ![Připojené k doméně správy HDInsight Ambari Hive zobrazení uživatelského rozhraní nakonfigurovat oprávnění](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views-permissions.png)
+    ![Zobrazení Hive uživatelského rozhraní ESP HDInsight Ambari správy nakonfigurovat oprávnění](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views-permissions.png)
 6. Klikněte na tlačítko **přidat uživatele** nebo **přidat skupinu**a pak zadejte uživatele nebo skupiny, které můžete použít zobrazení Hive.
 
 ## <a name="configure-users-for-the-roles"></a>Konfigurace pro role uživatelů
- Seznam rolí a jejich oprávnění najdete v tématu [clusterů HDInsight připojených k doméně role](#roles-of-domain---joined-hdinsight-clusters).
+ Seznam rolí a jejich oprávnění najdete v tématu [role HDInsight clustery s ESP](#roles-of-domain---joined-hdinsight-clusters).
 
 1. Otevřete uživatelské rozhraní pro správu Ambari.  Zobrazit [otevřete uživatelské rozhraní pro správu Ambari](#open-the-ambari-management-ui).
 2. V levé nabídce klikněte na tlačítko **role**.
 3. Klikněte na tlačítko **přidat uživatele** nebo **přidat skupinu** přiřazení uživatelů a skupin pro různé role.
 
 ## <a name="next-steps"></a>Další postup
-* Pokud chcete konfigurovat cluster HDInsight připojený k doméně, přečtěte si téma [Konfigurace clusterů HDInsight připojených k doméně](apache-domain-joined-configure.md).
-* Pokud chcete konfigurovat zásady Hivu a spouštět dotazy Hivu, přečtěte si téma [Konfigurace zásad Hivu pro clustery HDInsight připojené k doméně](apache-domain-joined-run-hive.md).
+* Konfigurace clusteru HDInsight s balíčkem Enterprise Security Package, naleznete v tématu [konfigurace HDInsight clustery s ESP](apache-domain-joined-configure.md).
+* Konfigurovat zásady Hivu a spouštět dotazy Hivu, naleznete v tématu [konfigurace zásad Hivu pro HDInsight clustery s ESP](apache-domain-joined-run-hive.md).

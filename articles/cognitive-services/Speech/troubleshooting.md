@@ -10,12 +10,13 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 6a204d32c30c0419a90801a5a9411b0f357ef883
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ROBOTS: NOINDEX
+ms.openlocfilehash: 532916106f62e0236b8dd53cf7988a648355aef4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365029"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46991857"
 ---
 # <a name="troubleshooting-bing-speech"></a>Řešení potíží pro zpracování řeči Bingu
 

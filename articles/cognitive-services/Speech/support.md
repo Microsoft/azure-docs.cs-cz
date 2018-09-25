@@ -10,12 +10,13 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/08/2018
 ms.author: zhouwang
-ms.openlocfilehash: fa2f2fd41ce4b8367455d997c6faf35e4292a3ae
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ROBOTS: NOINDEX
+ms.openlocfilehash: cbeaa8f1c0a950bf3941de775a2d62584e5f5dfa
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364044"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46986400"
 ---
 # <a name="support"></a>Podpora
 

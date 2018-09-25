@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz;cynthn
-ms.openlocfilehash: f11d08e56fe1970aa7a0d82f368eb73589ece2fe
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 08fcb244ada319dccf62c134a0155dd117e79184
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412295"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977028"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>K omezení instalace rozšíření na virtuální počítače s Linuxem pomocí služby Azure Policy
 
 Pokud chcete zabránit použití nebo instalace některých rozšíření virtuálních počítačů s Linuxem, můžete vytvořit zásady služby Azure pomocí rozhraní příkazového řádku k omezení rozšíření pro virtuální počítače v rámci skupiny prostředků. 
 
-Tento kurz používá rozhraní příkazového řádku ve službě Azure Cloud Shell, která se neustále aktualizuje na nejnovější verzi. Pokud chcete použít Azure CLI místně, musíte nainstalovat verzi 2.0.26 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Tento kurz používá rozhraní příkazového řádku ve službě Azure Cloud Shell, která se neustále aktualizuje na nejnovější verzi. Pokud chcete použít Azure CLI místně, musíte nainstalovat verzi 2.0.26 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
 
 ## <a name="create-a-rules-file"></a>Vytvoření souboru pravidel
 

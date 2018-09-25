@@ -5,26 +5,26 @@ services: storage
 author: ramankumarlive
 ms.service: storage
 ms.topic: include
-ms.date: 06/05/2018
+ms.date: 09/24/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: e6a2493b0bc9e2b4c9695e29ae0c175dac9814fe
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: ea312002a9a1a39505cd4748864ca9dfc1da43dd
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40238551"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47061071"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Vysoce výkonné úložiště úrovně Premium a spravovaným diskům pro virtuální počítače
+
 Azure Premium Storage poskytuje podporu vysoce výkonných disků s nízkou latencí pro virtuální počítače (VM) s vstupní a výstupní (I/O)-náročné úlohy. Disky virtuálních počítačů, které používají službu Premium Storage ukládat data na jednotky SSD (Solid-State Drive). Pokud chcete využít výhod rychlost a výkon disků premium storage, můžete migrovat existující disky virtuálních počítačů na Premium Storage.
 
-V Azure můžete připojit několik disků premium storage k virtuálnímu počítači. Použití více disků poskytuje vaše aplikace až 256 TB úložiště na každý virtuální počítač. Díky službě Premium Storage vaše aplikace může dosáhnout 80 000 vstupně-výstupních operací za sekundu (IOPS) na virtuální počítač a propustnost disku až 2 000 MB za sekundu (MB/s) na virtuální počítač. Operace čtení získáte velmi nízkou latencí.
+V Azure můžete připojit několik disků premium storage k virtuálnímu počítači. Použití více disků poskytuje vaše aplikace až 256 TB úložiště na každý virtuální počítač, pokud používáte velikosti náhled vaší aplikace mohou být dlouhé až přibližně 2 PiB úložiště na každý virtuální počítač. Díky službě Premium Storage vaše aplikace může dosáhnout 80 000 vstupně-výstupních operací za sekundu (IOPS) na virtuální počítač a propustnost disku až 2 000 MB za sekundu (MB/s) na virtuální počítač. Operace čtení získáte velmi nízkou latencí.
 
 Díky službě Premium Storage Azure nabízí možnost skutečně lift and shift náročné podnikové aplikace jako je Dynamics AX, Dynamics CRM, Exchange Server, SAP Business Suite a SharePoint farmy do cloudu. Můžete spouštět úlohy náročné na výkon databáze v aplikacích, například systému SQL Server, Oracle, MongoDB, MySQL a Redis, které vyžadují konzistentní vysoký výkon a nízkou latencí.
 
 > [!NOTE]
 > Pro zajištění nejlepšího výkonu pro vaši aplikaci doporučujeme migraci všech disků virtuálního počítače, které vyžaduje vysoké vstupně-výstupních operací na Premium Storage. Pokud na disku nevyžaduje vysoké IOPS, pomáhají omezit náklady udržováním ve standardním úložišti Azure. Ve standardním úložišti datového disku virtuálního počítače ukládána na pevných disků (HDD) namísto na jednotkách SSD.
-> 
 
 Azure nabízí dva způsoby, jak vytvořit disky storage úrovně premium pro virtuální počítače:
 
@@ -44,7 +44,6 @@ Informace o migraci stávajících virtuálních počítačů služby Premium St
 
 > [!NOTE]
 > Premium Storage je dostupné ve většině oblastí. Seznam dostupných oblastí naleznete v řádku pro **diskové úložiště** v [dostupné produkty Azure podle oblasti](https://azure.microsoft.com/regions/#services).
-> 
 
 ## <a name="features"></a>Funkce
 
@@ -52,7 +51,7 @@ Tady jsou některé z funkcí úložiště Premium Storage:
 
 * **Disky storage úrovně Premium**
 
-    Premium Storage podporuje disky virtuálních počítačů, které můžou být připojené k virtuálním počítačům konkrétní velikost series. Premium Storage podporuje širokou škálu virtuálních počítačů Azure. Máte možnost volby sedm velikosti disků: P4 (32 GB), P6 (64 GB), P10 (128 GB), P15 (256 GB), P20 (512 GB), P30 (1 024 GB), P40 (2 048 GB), P50 (4 095 GB). P4 a velikosti disků P6 se ještě podporují jenom pro Managed Disks. Velikost každého disku má svůj vlastní specifikace výkonu. V závislosti na požadavcích vaší aplikace můžete připojit jeden nebo víc disků k virtuálnímu počítači. Specifikace podrobněji popisujeme [škálovatelnost a výkonnostní cíle Storage úrovně Premium](#scalability-and-performance-targets).
+    Premium Storage podporuje disky virtuálních počítačů, které můžou být připojené k virtuálním počítačům konkrétní velikost series. Premium Storage podporuje širokou škálu virtuálních počítačů Azure. Máte možnost volby osm velikostí disku GA: P4 (32 GB), P6 (64 GiB) P10 (128 GB), P15 (256 GB), P20 (512 GB), P30 (1 024 GB), P40 (2 048 GB), P50 (4 095 GB). Stejně jako tři velikosti disků ve verzi preview: P60 8192 GiB (8 TB) P70 16,348 GiB (16 TB), 32 767 GiB P80 (32 TB). Velikosti disků P4 P6, P60, P70 a P80 jsou aktuálně podporuje jenom pro službu Managed Disks. Velikost každého disku má svůj vlastní specifikace výkonu. V závislosti na požadavcích vaší aplikace můžete připojit jeden nebo víc disků k virtuálnímu počítači. Specifikace podrobněji popisujeme [škálovatelnost a výkonnostní cíle Storage úrovně Premium](#scalability-and-performance-targets).
 
 * **Objekty BLOB stránky úrovně Premium**
 
@@ -152,16 +151,11 @@ Pokud používáte účty služby premium storage pro nespravované disky a vaš
 ### <a name="premium-storage-disk-limits"></a>Limity disk Storage úrovně Premium
 Když si zřídíte disk úložiště úrovně premium, velikost disku určuje maximální IOPS a propustnost (šířka pásma). Azure nabízí osm typů disky storage úrovně premium: P4 (spravované jen disky), P6 (spravované jen disky), P10, P15, P20, P30, P40 nebo P50. Každý typ disku služby premium storage má omezení IOPS a propustnost. Limity pro typy disků jsou popsány v následující tabulce:
 
-| Typ disky Premium  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | 
-|---------------------|-------|-------|-------|-------|-------|-------|-------|-------|
-| Velikost disku           | 32 GB| 64 GB| 128 GB| 256 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
-| Vstupně-výstupní operace za sekundu / disk       | 120   | 240   | 500   | 1100   | 2300              | 5000              | 7500              | 7500              | 
-| Propustnost / disk | 25 MB za sekundu  | 50 MB za sekundu  | 100 MB za sekundu | 125 MB za sekundu | 150 MB za sekundu | 200 MB za sekundu | 250 MB za sekundu | 250 MB za sekundu | 
+| Disků typu Premium | P4 | P6 | P10 | P15 | P20 | P30 | P40 | P50 | P60 | P70 | P80 | |---|---|---|---|---|---|---|---|---|| -------|| -------|| -------| | Velikost disku | 32 giB | 64 giB | 128 GB | 256 GB | 512 GB | 1024 giB (1 TB) | 2048 giB (2 TB) | 4095 giB (4 TB) | 8192 giB (8 TB) | 16384 giB (16 TB) | 32 767 giB (32 TiB) || IOPS na disk | 120 | 240 | 500 | 1100 | 2300 | 5000 | 7500 | 7500 | 12 500 | 15 000 | 20 000 || Propustnost na disk | 25 MB za sekundu | 50 MB za sekundu | 100 MB za sekundu | 125 MB za sekundu | 150 MB za sekundu | 200 MB za sekundu | 250 MB za sekundu | 250 MB za sekundu | 480 MB za sekundu | 750 MB za sekundu | 750 MB za sekundu |
 
 > [!NOTE]
 > Zkontrolujte, zda je k dispozici na na jednotce diskové přenosy virtuálního počítače dostatečnou šířku pásma, jak je popsáno v [virtuálních počítačů služby Premium Storage podporuje](#premium-storage-supported-vms). V opačném případě propustnost disku a vstupně-výstupních operací je omezen na nižší hodnoty. Maximální propustnost a vstupně-výstupních operací jsou založeny na omezení virtuálního počítače, ne na disku omezení jsou popsané v předchozí tabulce.  
-> 
-> 
+> Azure je navržená tak, platforma Premium Storage bude masivně paralelní. Návrh aplikace jako vícevláknového vám pomůže zajistit vysoký výkon cíl nabízíme na větší velikosti disku.
 
 Zde jsou některé důležité kroky vědět o škálovatelnost a výkonnostní cíle služby Premium Storage:
 
@@ -172,11 +166,10 @@ Zde jsou některé důležité kroky vědět o škálovatelnost a výkonnostní 
 * **Velikost disku**
 
     Velikost disku (zaokrouhluje nahoru) Azure mapuje na nejbližší premium storage disku možnost, jak je uvedeno v tabulce v předchozí části. Například velikost 100 GB disku je klasifikován tak možnost P10. Může provádět maximálně 500 IOPS, s maximálně 100 MB za sekundu propustnosti. Obdobně disku velikost 400 GB je klasifikován tak P20. Můžete provádět až 2,300 vstupně-výstupních operací, s propustností 150 MB/s.
-    
+
     > [!NOTE]
     > Můžete snadno zvýšit velikost stávajících disků. Například můžete chtít zvětšit velikost 30 GB disk, až 128 GB, nebo dokonce 1 TB. Nebo můžete chtít převést P20 disk na P30 disk, protože budete potřebovat větší kapacitu nebo Další vstupně-výstupních operací a propustnosti. 
-    > 
- 
+
 * **Velikost vstupně-výstupních operací**
 
     Velikost vstup nebo výstup je 256 KB. Pokud přenosu dat je menší než 256 KB, bude považován za 1 jednotkovou vstupně-výstupních operací. Větší velikosti vstupně-výstupní operace se počítají jako více vstupně-výstupních operací velikost 256 KB. Například 1100 KB vstupně-výstupní operace se počítá jako 5 jednotky vstupně-výstupních operací.
@@ -193,9 +186,10 @@ Zde jsou některé důležité kroky vědět o škálovatelnost a výkonnostní 
 
 * **Přístupy do mezipaměti**
 
-    Přístupy do mezipaměti nejsou omezeny přidělené vstupně-výstupních operací a propustnosti disku. Například při použití datový disk se **jen pro čtení** nastavení mezipaměti na virtuálním počítači, který podporuje Storage úrovně Premium, čtení, které jsou obsluhovány z mezipaměti se nevztahují na vstupně-výstupních operací a propustnosti caps disku. Pokud převážně je zatížení disku načte, můžou získat velmi vysokou propustností. Mezipaměť je v souladu s samostatné IOPS a propustnost limity na virtuální počítač úrovně, na základě velikosti virtuálního počítače. Virtuální počítače řady DS-series mají přibližně 4 000 IOPS a propustnost 33 MB/s podle počtu jader pro mezipaměť a místní SSD vstupně-výstupních operací. Virtuální počítače řady GS-series mají maximálně 5 000 IOPS a propustnost 50 MB/s podle počtu jader pro mezipaměť a místní SSD vstupně-výstupních operací. 
+    Přístupy do mezipaměti nejsou omezeny přidělené vstupně-výstupních operací a propustnosti disku. Například při použití datový disk se **jen pro čtení** nastavení mezipaměti na virtuálním počítači, který podporuje Storage úrovně Premium, čtení, které jsou obsluhovány z mezipaměti se nevztahují na vstupně-výstupních operací a propustnosti caps disku. Pokud převážně je zatížení disku načte, můžou získat velmi vysokou propustností. Mezipaměť je v souladu s samostatné IOPS a propustnost limity na virtuální počítač úrovně, na základě velikosti virtuálního počítače. Virtuální počítače řady DS-series mají přibližně 4 000 IOPS a propustnost 33 MB/s podle počtu jader pro mezipaměť a místní SSD vstupně-výstupních operací. Virtuální počítače řady GS-series mají maximálně 5 000 IOPS a propustnost 50 MB/s podle počtu jader pro mezipaměť a místní SSD vstupně-výstupních operací.
 
 ## <a name="throttling"></a>Throttling
+
 Omezení využití sítě může dojít, pokud vaše aplikace vstupně-výstupních operací nebo propustnost překročí přidělené limity pro disk úložiště úrovně premium. Omezení také může dojít, pokud vaše celkové diskové přenosy přes všechny disky na virtuálním počítači překračuje limit na disku šířka pásma dostupná pro virtuální počítač. Abyste předešli omezování, doporučujeme omezit počet čekajících požadavků na vstupně-výstupní operace disku. Pomocí omezení na základě disku, kterou jste zřídili škálovatelnost a výkonnostní cíle a týkající se šířky pásma disku k virtuálnímu počítači k dispozici.  
 
 Vaše aplikace může dosáhnout nejnižší latenci při je navržená tak, aby omezení šířky pásma. Ale pokud počet čekajících požadavků na vstupně-výstupních operací disku je příliš malá, vaše aplikace nelze využít výhod maximální IOPS a propustnosti, které jsou k dispozici na disk.
@@ -203,17 +197,19 @@ Vaše aplikace může dosáhnout nejnižší latenci při je navržená tak, aby
 Následující příklady ukazují, jak vypočítat omezení úrovní. Všechny výpočty jsou založeny na jednotku velikost 256 KB vstupně-výstupních operací.
 
 ### <a name="example-1"></a>Příklad 1
+
 Vaše aplikace má v jedné sekundy na disku P10 zpracovat 495 vstupně-výstupní jednotky o velikosti 16 KB. Jednotky vstupně-výstupní operace se počítají jako 495 vstupně-výstupních operací. Pokud se pokusíte 2 MB vstupně-výstupních operací ve stejném za druhé, celkový počet vstupně-výstupní jednotky je rovna 495 + 8 vstupně-výstupních operací. Důvodem je, že vstupně-výstupních operací 2 MB = 2 048 KB a 256 KB = 8 vstupně-výstupních jednotek, když velikost jednotky vstupně-výstupních operací je 256 KB. Protože součet 495 + 8 přesahuje limit 500 vstupně-výstupních operací disku, omezování vyvolá.
 
 ### <a name="example-2"></a>Příklad 2
+
 Vaše aplikace zpracovala 400 jednotek velikost 256 KB na disku P10 vstupně-výstupních operací. Celkový počet využité šířky pásma je (400 &#215; 256) / 1 024 KB = 100 MB/s. Disku P10 má limit propustnosti 100 MB/s. Pokud se aplikace pokusí provést další vstupně-výstupní operace v této druhé, bude omezený, protože překračuje limit přidělená.
 
 ### <a name="example-3"></a>Příklad 3
+
 Máte DS4 virtuální počítač se dvěma disky P30 připojen. Všechny disky P30 je propustnost 200 MB/s. DS4 virtuální počítač má ale celková disková kapacita šířky pásma 256 MB/s. Obě připojené disky s maximální propustností nelze jednotky na tomto virtuálním počítači DS4 ve stejnou dobu. Chcete-li tento problém vyřešit, může tolerovat provoz 200 MB za sekundu na jeden disk a 56 MB/s na jiném disku. Pokud součet diskové přenosy prochází přes 256 MB/s, je omezen provoz disku.
 
 > [!NOTE]
 > Pokud diskové přenosy většinou obsahuje malé velikosti vstupně-výstupních operací, bude vaše aplikace pravděpodobně dosáhl limitu vstupně-výstupních operací než limit propustnosti. Ale pokud diskové přenosy se skládá převážně velikostí velkých vstupně-výstupních operací, aplikace pravděpodobně bude čeho limit propustnosti, namísto limit vstupně-výstupních operací. Vstupně-výstupních operací vaší aplikace a kapacitou propustnosti můžete maximalizovat pomocí optimální velikosti vstupně-výstupních operací. Navíc můžete omezit počet čekajících požadavků vstupně-výstupní operace disku.
-> 
 
 Další informace o návrh pro vysoký výkon pomocí služby Premium Storage najdete v tématu [návrh pro výkon s Premium Storage](../articles/virtual-machines/windows/premium-storage-performance.md).
 
@@ -312,11 +308,12 @@ Podrobné informace o cenách pro Premium Storage, služby Premium Storage podpo
 * [Ceny Virtual Machines](https://azure.microsoft.com/pricing/details/virtual-machines/)
 * [Ceny služby Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/)
 
-## <a name="azure-backup-support"></a>Podpora Azure Backup 
+## <a name="azure-backup-support"></a>Podpora Azure Backup
 
 Místní zotavení po havárii, je nutné zálohovat disky virtuálních počítačů v jiné oblasti pomocí [Azure Backup](../articles/backup/backup-introduction-to-azure-backup.md) a účtu úložiště GRS jako trezor záloh.
 
 Chcete-li vytvořit úlohu zálohování s časovou synchronizací zálohy, snadné obnovení virtuálního počítače a zásady uchovávání záloh, použijte Azure Backup. Můžete použít zálohování i s spravované a nespravované disky. Další informace najdete v tématu [Azure Backup pro virtuální počítače s nespravovanými disky](../articles/backup/backup-azure-vms-first-look-arm.md) a [Azure Backup pro virtuální počítače se spravovanými disky](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup). 
 
 ## <a name="next-steps"></a>Další postup
+
 Další informace o službě Premium Storage naleznete v následujících článcích.

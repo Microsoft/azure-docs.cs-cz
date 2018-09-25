@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 92ebd399cea88440e0f76ee1f34cb5930d3121d9
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: c4e237af7e85223839b3f26bcc33007f8abb9d0a
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578680"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034225"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatizace prostředky v datovém centru nebo v cloudu s využitím procesu Hybrid Runbook Worker
 
@@ -26,11 +26,11 @@ Následující obrázek ukazuje tuto funkci:
 
 Každá funkce Hybrid Runbook Worker je členem skupiny Hybrid Runbook Worker, který zadáváte při instalaci agenta. Skupina může obsahovat jeden agent, ale můžete nainstalovat více agentů ve skupině pro zajištění vysoké dostupnosti.
 
-Při spuštění sady runbook v procesu Hybrid Runbook Worker, určete skupinu, která se spouští. Každému pracovnímu procesu ve skupině se dotazuje služby Azure Automation, jestli jsou k dispozici žádné úlohy. Pokud úloha je k dispozici, má první pracovního procesu k dosažení ho. Nelze zadat konkrétní pracovního procesu.
+Při spuštění sady runbook v procesu Hybrid Runbook Worker, určete skupinu, která se spouští. Každému pracovnímu procesu ve skupině se dotazuje služby Azure Automation, jestli jsou k dispozici žádné úlohy. Pokud úloha je k dispozici, má první pracovního procesu k dosažení ho. Nelze zadat konkrétní pracovního procesu. Úloha [omezení](../azure-subscription-service-limits.md#automation-limits) platí pro Azure karantény a procesy Hybrid Runbook Worker.
 
 ## <a name="install-a-hybrid-runbook-worker"></a>Instalace procesu Hybrid Runbook Worker
 
-Proces instalace procesu Hybrid Runbook Worker závisí na operační systém. Následující tabulka obsahuje odkazy na metody, které můžete použít k instalaci. 
+Proces instalace procesu Hybrid Runbook Worker závisí na operační systém. Následující tabulka obsahuje odkazy na metody, které můžete použít k instalaci.
 
 Instalace a konfigurace Windows Hybrid Runbook Worker, můžete použít dvě metody. Doporučený postup je použít runbook služby Automation zcela automatizovat proces konfigurace počítače Windows. Druhá metoda sleduje podrobný postup, jak ručně nainstalovat a nakonfigurovat role. Pro počítače s Linuxem spustili skript Pythonu pro instalaci agenta na počítači.
 

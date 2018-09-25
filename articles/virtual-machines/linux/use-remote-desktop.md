@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 5e79cfa2c428323d8531bec7eab875a2dace4ff2
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: aa1891ecec139746d6051dcabdb3c9db4f6062c6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37934749"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996345"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Instalace a konfigurace vzdálené plochy pro připojení k virtuálnímu počítači s Linuxem v Azure
 Virtuální počítače s Linuxem (VM) v Azure jsou obvykle spravovat z příkazového řádku pomocí připojení (SSH secure shell). Při nové po Linux, nebo pro rychlé řešení problémů s scénáře, využívání vzdálené plochy může být jednodušší. Tento článek podrobně popisuje, jak nainstalovat a nakonfigurovat desktopové prostředí ([xfce](https://www.xfce.org)) a vzdálené plochy ([xrdp](http://www.xrdp.org)) pro virtuální počítač s Linuxem pomocí modelu nasazení Resource Manager.
@@ -28,7 +28,7 @@ Virtuální počítače s Linuxem (VM) v Azure jsou obvykle spravovat z příkaz
 ## <a name="prerequisites"></a>Požadavky
 Tento článek vyžaduje existující Ubuntu 16.04 LTS virtuální počítač v Azure. Pokud potřebujete vytvořit virtuální počítač, použijte jednu z následujících metod:
 
-- [Azure CLI 2.0](quick-create-cli.md)
+- [Rozhraní příkazového řádku Azure](quick-create-cli.md)
 - [Azure Portal](quick-create-portal.md)
 
 
@@ -86,7 +86,7 @@ sudo passwd azureuser
 ## <a name="create-a-network-security-group-rule-for-remote-desktop-traffic"></a>Vytvoření pravidla skupiny zabezpečení sítě pro provoz vzdálené plochy
 Pro povolení provozu vzdálené plochy k dosažení virtuálního počítače s Linuxem, zabezpečení sítě skupiny pravidlo musí být vytvořen, který umožňuje TCP na portu 3389 pro přístup k virtuálnímu počítači. Další informace o pravidlech skupiny zabezpečení sítě najdete v tématu [co je skupina zabezpečení sítě?](../../virtual-network/security-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Můžete také [pomocí webu Azure portal k vytvoření pravidla skupiny zabezpečení sítě](../windows/nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Následující příklad vytvoří pravidlo skupiny zabezpečení sítě s [az vm open-port](/cli/azure/vm#az-vm-open-port) na portu *3389*. Pomocí Azure CLI 2.0 ne relaci SSH k virtuálnímu počítači, otevřete následující pravidlo skupiny zabezpečení sítě:
+Následující příklad vytvoří pravidlo skupiny zabezpečení sítě s [az vm open-port](/cli/azure/vm#az-vm-open-port) na portu *3389*. Z příkazového řádku Azure ne relaci SSH k virtuálnímu počítači, otevřete následující pravidlo skupiny zabezpečení sítě:
 
 ```azurecli
 az vm open-port --resource-group myResourceGroup --name myVM --port 3389

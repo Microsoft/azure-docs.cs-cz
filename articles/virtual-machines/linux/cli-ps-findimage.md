@@ -16,19 +16,19 @@ ms.workload: infrastructure
 ms.date: 02/28/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f1091b9d252f32086c237e7c62f11c166eb558a6
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 33ffb9d1685f3d76e884ae0d90545f659b5ec87c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345153"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953341"
 ---
 # <a name="how-to-find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Postup vyhledání imagí virtuálních počítačů s Linuxem na webu Azure Marketplace pomocí Azure CLI
-Toto téma popisuje, jak používat rozhraní příkazového řádku Azure CLI 2.0 k vyhledání imagí virtuálních počítačů na webu Azure Marketplace. Tyto informace slouží k určení Marketplace image, pokud vytvoříte virtuální počítač programově pomocí rozhraní příkazového řádku, šablon Resource Manageru nebo jiných nástrojů.
+Toto téma popisuje, jak používat rozhraní příkazového řádku Azure k vyhledání imagí virtuálních počítačů na webu Azure Marketplace. Tyto informace slouží k určení Marketplace image, pokud vytvoříte virtuální počítač programově pomocí rozhraní příkazového řádku, šablon Resource Manageru nebo jiných nástrojů.
 
 Také procházet dostupné Image a pomocí nabídky [Azure Marketplace](https://azuremarketplace.microsoft.com/) výkladní skříň, [webu Azure portal](https://portal.azure.com), nebo [prostředí Azure PowerShell](../windows/cli-ps-findimage.md). 
 
-Ujistěte se, že jste nainstalovali nejnovější [příkazového řádku Azure CLI 2.0](/cli/azure/install-az-cli2) a přihlášení k účtu Azure (`az login`).
+Ujistěte se, že jste nainstalovali nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) a přihlášení k účtu Azure (`az login`).
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: f18e667e86c310e4d2950ba195911307aec5426d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6c9e980e4f448f705743b2e6dce268c671ffe9b6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047021"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950707"
 ---
 # <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>Řešení potíží s pomalým clusterem HDInsight nebo jeho selháním
 
@@ -57,12 +57,13 @@ Na webu Azure portal může poskytnout tyto informace:
 
 ![Portál HDInsight Azure informace](./media/hdinsight-troubleshoot-failed-cluster/portal.png)
 
-Můžete také použít rozhraní příkazového řádku Azure:
+Můžete také použít rozhraní příkazového řádku Azure Classic:
 
 ```
     azure hdinsight cluster list
     azure hdinsight cluster show <ClusterName>
 ```
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 Další možností je pomocí Powershellu. Další informace najdete v tématu [spravovat Hadoop clusterů v HDInsight pomocí Azure Powershellu](hdinsight-administer-use-powershell.md).
 
@@ -100,7 +101,7 @@ Porovnejte s nejnovější verzí HDInsight verze clusteru. Jednotlivých verzí
 
 #### <a name="restart-your-cluster-services"></a>Restartujte služby clusteru
 
-Pokud máte ve vašem clusteru zpomalení, zvažte restartování služby prostřednictvím uživatelského rozhraní Ambari nebo rozhraní příkazového řádku Azure. Cluster může docházet k přechodným chybám a restartování je nejrychlejší způsob, jak stabilizaci prostředí a potenciálně tak vylepšit výkon.
+Pokud máte ve vašem clusteru zpomalení, zvažte restartování služby prostřednictvím uživatelského rozhraní Ambari nebo rozhraní příkazového řádku Azure Classic. Cluster může docházet k přechodným chybám a restartování je nejrychlejší způsob, jak stabilizaci prostředí a potenciálně tak vylepšit výkon.
 
 ## <a name="step-3-view-your-clusters-health"></a>Krok 3: Zobrazení stavu vašeho clusteru
 

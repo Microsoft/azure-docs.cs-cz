@@ -10,14 +10,17 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 05/22/2018
-ms.openlocfilehash: 5475ce3be24321b15ab78a078b758c25843f0ed3
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ROBOTS: NOINDEX
+ms.openlocfilehash: 7daa3bdf9fb51fee6b0e190625f07e0d14c3d1f4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38724019"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995138"
 ---
 # <a name="export-or-delete-your-experimentation-or-model-management-data-in-machine-learning"></a>Export nebo odstranění služby experimentování ve službě nebo data správy modelů ve službě Machine Learning
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
 
 Ve službě Azure Machine Learning můžete exportovat nebo odstranit účet data související se správou služby experimentování ve službě nebo model s ověřeným rozhraní REST API. Tento článek vysvětluje, jak.
 

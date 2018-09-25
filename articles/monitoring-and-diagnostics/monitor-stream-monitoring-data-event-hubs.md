@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 8/21/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: e4bbf86c6cb7e827672fe279e86c8d3fd76e8e8b
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 18c0f8176a85eef79000fff8ed717ad7e57f20d8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049120"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954836"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Pomocí externího nástroje pro monitorování data do centra událostí pro používání Azure Stream
 
@@ -76,7 +76,7 @@ Prostředky Azure generují data monitorování dva typy:
 Oba typy dat se posílají do centra událostí pomocí nastavení diagnostiky prostředku. [Tento návod](./monitoring-stream-diagnostic-logs-to-event-hubs.md) nastavit nastavení diagnostiky prostředků u určitého prostředku. Nastaví nastavení diagnostiky prostředků u jednotlivých prostředků, ze kterého chcete shromažďovat protokoly.
 
 > [!TIP]
-> Azure Policy můžete použít k zajištění, že každý prostředek v rámci určitého oboru vždy nastavit pomocí nastavení diagnostiky [pomocí DeployIfNotExists efekt v pravidlu zásad](../azure-policy/policy-definition.md#policy-rule). Dnes DeployIfNotExists je podporována pouze na předdefinovaných zásadách.
+> Azure Policy můžete použít k zajištění, že každý prostředek v rámci určitého oboru vždy nastavit pomocí nastavení diagnostiky [pomocí DeployIfNotExists efekt v pravidlu zásad](../governance/policy/concepts/definition-structure.md#policy-rule).
 
 ## <a name="guest-os-data"></a>Data hostovaného operačního systému
 

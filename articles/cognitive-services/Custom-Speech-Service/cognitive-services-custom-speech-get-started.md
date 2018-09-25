@@ -1,6 +1,6 @@
 ---
-title: Začínáme se službou vlastní řeči v Azure | Microsoft Docs
-description: Objednat předplatné služby vlastní řeči a propojit aktivity služby předplatného Azure k natrénování modelu a provést nasazení.
+title: Začínáme s Custom Speech Service v Azure | Dokumentace Microsoftu
+description: K odběru služby Custom Speech a aktivity služby propojit s předplatným Azure pro trénování modelu a nasazení.
 services: cognitive-services
 author: PanosPeriorellis
 manager: onano
@@ -9,55 +9,56 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ms.openlocfilehash: fe7a140f5ba2d712014f03663a88d516958d188e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: bf674261a58aab4fee37920d12ce6a2ac54b58b8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342485"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46975779"
 ---
-# <a name="get-started-with-custom-speech-service"></a>Začínáme se službou vlastní řeči
+# <a name="get-started-with-custom-speech-service"></a>Začínáme s Custom Speech Service
 
-Prozkoumejte hlavní funkce služby řeči vlastní a zjistěte, jak vytvořit, nasadit a používat modely acoustic a jazyk pro potřebám vaší aplikace. Rozsáhlejší dokumentaci a podrobné pokyny najdete po přihlášení na portálu služby řeči vlastní.
+Prozkoumejte hlavní funkce služby Custom Speech Service a zjistěte, jak vytvořit, nasadit a používat akustických a jazykových modelů pro potřeby vaší aplikace. Více si rozsáhlou dokumentaci k a podrobné pokyny najdete po přihlášení na portálu pro vlastní hlasové služby.
 
 ## <a name="samples"></a>Ukázky  
-Je dobrý vzorku, který jsme poskytnout k získání můžete přejít, které můžete najít [zde](https://github.com/Microsoft/Cognitive-Custom-Speech-Service).
+Nachází dobrý příklad, který nabízíme vám pomůže se zorientovat, které můžete vyhledat [tady](https://github.com/Microsoft/Cognitive-Custom-Speech-Service).
 
 ## <a name="prerequisites"></a>Požadavky  
 
-### <a name="subscribe-to-custom-speech-service-and-get-a-subscription-key"></a>Přihlášení k odběru do vlastní řeči služby a získat klíč předplatného
-Před přehrávání pomocí výše uvedeného příkladu musíte přihlášení k odběru do vlastní řeči služby a získat předplatné klíče najdete v tématu [odběry](https://portal.azure.com/#create/Microsoft.CognitiveServices/apitype/CustomSpeech) nebo postupujte podle vysvětlení [zde](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-subscribe.md). Jak primární a sekundární klíč lze použít v tomto kurzu. Dodržujte doporučené postupy pro zachování váš tajný klíč klíče rozhraní API a zabezpečení.
+### <a name="subscribe-to-custom-speech-service-and-get-a-subscription-key"></a>Přihlášení služby Custom Speech Service a získejte klíč předplatného
+Před zobrazením pomocí výše uvedeného příkladu musíte předplatit Custom Speech Service a získat předplatné klíče najdete v tématu [předplatná](https://portal.azure.com/#create/Microsoft.CognitiveServices/apitype/CustomSpeech) nebo postupujte podle vysvětlení [tady](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-subscribe.md). V tomto kurzu můžete použít jak primární a sekundární klíč. Ujistěte se, že dodržujte doporučené postupy zabezpečení pro zachování vašich tajný kód klíče rozhraní API a zabezpečení.
 
-### <a name="get-the-client-library-and-example"></a>Nainstalujte klienta knihovny a příklad
-Můžete ho stáhnout klientské knihovny a příklad prostřednictvím [SDK](https://www.microsoft.com/cognitive-services/en-us/SDK-Sample?api=bing%20speech&category=sdk). Musí být extrahovány do složky podle svého výběru souboru zip staženého, mnoho uživatelů vyberte složku, Visual Studio 2015.
+### <a name="get-the-client-library-and-example"></a>Získat klienta knihovny a příklad
+Si můžete stáhnout klientské knihovny a příklad prostřednictvím [SDK](https://www.microsoft.com/cognitive-services/en-us/SDK-Sample?api=bing%20speech&category=sdk). Stažený soubor zip je třeba extrahovat do složky podle vašeho výběru, mnoho uživatelů vyberte složku, Visual Studio 2015.
 
-## <a name="creating-a-custom-acoustic-model"></a>Vytvoření vlastní akustickými modelu
-Přizpůsobit akustickými modelu pro konkrétní domény, kolekce řečových dat je potřeba. Tato kolekce se skládá z sadu zvukových souborů řeči dat a soubor text transcriptions zvukové soubory. Zvuk data by měla vystihovat scénáře, ve kterém byste chtěli použít nástroj rozpoznávání rukopisu
+## <a name="creating-a-custom-acoustic-model"></a>Vytvoření vlastního akustického modelu
+Chcete-li upravit akustický model k určité doméně, je potřeba kolekce dat řeči. Tato kolekce zahrnuje sadu zvukových souborů s hlasovými daty a textový soubor s přepisy všech zvukových souborů. Zvuková data by měla vystihovat scénáře, ve kterém byste chtěli použít nástroj pro rozpoznávání
 
-Například: Pokud chcete lépe rozpoznávat řeč v prostředí aktivní výrobce, zvukových souborů by měla obsahovat osoby hovořícího v objekt aktivní.
-Pokud vás zajímá optimalizace výkonu pro jeden mluvčího, například chcete transcribe všechny na FDR Fireside konverzace a potom zvukových souborů by měla obsahovat mnoho příkladů tohoto mluvčího jenom.
+Příklad: Pokud chcete lépe rozpoznávat řeč v prostředí hlučného objekt pro vytváření, zvukové soubory by měla sestávat z lidí mluvčí hlučného tovární nastavení.
+Pokud vás zajímají optimalizace výkonu pro jeden mluvčího, například chcete přepisy všechny konverzace Fireside díky technologii FDR společnosti a potom zvukové soubory by měla obsahovat mnoho příkladů pouze tohoto mluvčího.
 
-Podrobný popis můžete najít na tom, jak vytvořit vlastní akustickými model [zde](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-acoustic-model.md).
+Najdete podrobný popis postupu vytvoření vlastního akustického modelu [tady](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-acoustic-model.md).
 
-## <a name="creating-a-custom-language-model"></a>Vytvoření vlastní jazyk modelu
-Postup pro vytvoření modelu vlastní jazyk je podobná vytvoření akustickými modelu, s výjimkou neexistuje žádná zvuková data pouze text. Text by měla obsahovat mnoho příkladů dotazů nebo utterances budou uživatelé k vyslovení nebo přihlášení uživatelé oznámením (nebo zadáním) ve vaší aplikaci.
+## <a name="creating-a-custom-language-model"></a>Vytvoření vlastního jazykového modelu
+Postup pro vytvoření vlastního jazykového modelu je podobné jako vytvoření akustický model s tím rozdílem, neexistuje žádná zvuková data pouze text. Mnoho příkladů dotazů by měla obsahovat text nebo projevy očekáváte, že uživatelům Řekněme, že nebo přihlášení uživatelé říká (nebo zadáním) ve vaší aplikaci.
 
-Podrobný popis můžete najít na tom, jak vytvořit vlastní jazyk model [zde](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-language-model.md).
+Najdete podrobný popis postupu vytvoření vlastního jazykového modelu [tady](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-language-model.md).
 
-## <a name="creating-a-custom-speech-to-text-endpoint"></a>Vytváření vlastní koncový bod řeči na text
-Pokud jste vytvořili vlastní akustickými modely nebo jazyk modely, můžete nasadit v koncový bod vlastní řeči na text. Pokud chcete vytvořit nový vlastní koncový bod, v nabídce "CRIS" horní části stránky klikněte na "Nasazení". Tím přejdete na tabulce s názvem "Nasazení" aktuální vlastní koncové body. Pokud jste ještě nevytvořili žádné koncové body, v tabulce bude prázdný. Aktuální národní prostředí se projeví v názvu tabulky. Pokud chcete vytvořit nasazení pro jiný jazyk, klikněte na "Změnu národního prostředí". Další informace o podporovaných jazyků najdete v části na změnu národního prostředí.
+## <a name="creating-a-custom-speech-to-text-endpoint"></a>Vytvoření vlastního koncového bodu převodu řeči na text
+Po vytvoření vlastních akustických modelů a/nebo jazykové modely, je možné nasadit vlastní koncový bod speech to text. Chcete-li vytvořit nové vlastní koncový bod, v nabídce "CRIS" horní části stránky klikněte na "Nasazení". Tím přejdete do tabulky nazvané "Nasazení" aktuální vlastní koncové body. Pokud jste ještě nevytvořili žádné koncové body, bude tabulka prázdná. Aktuální národní prostředí se odráží v názvu tabulky. Pokud chcete vytvořit nasazení pro jiný jazyk, klikněte na "Změnu národního prostředí". Další informace o podporovaných jazyků najdete v části o změnu národního prostředí.
 
-Podrobný popis můžete najít na tom, jak vytvořit koncový bod vlastní text řeči [zde](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-endpoint.md).
+Podrobný popis najdete na tom, jak vytvořit koncový bod vlastní převod řeči na text [tady](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-endpoint.md).
 
-## <a name="using-a-custom-speech-endpoint"></a>Pomocí koncový bod vlastní řeči
-Požadavky můžete odeslat do koncového bodu CRIS řeči na text velmi podobným způsobem jako výchozí koncový bod řeči kognitivní služby společnosti Microsoft. Všimněte si, že fungují stejně jako jsou výchozí koncové body rozhraní API pro rozpoznávání řeči těchto koncových bodů. Stejné funkce, která je k dispozici prostřednictvím klientské knihovny nebo REST API pro rozpoznávání řeči rozhraní API je proto také k dispozici pro svůj vlastní koncový bod.
+## <a name="using-a-custom-speech-endpoint"></a>Pomocí koncového bodu vlastní převod řeči
+Požadavky je odeslat do koncového bodu převodu řeči na text CRIS velmi podobným způsobem jako výchozí koncový bod služby Microsoft Cognitive Services řeči. Všimněte si, že tyto koncové body jsou funkčně stejný jako výchozí koncové body rozhraní API pro rozpoznávání řeči. Stejné funkce, které jsou k dispozici prostřednictvím klientskou knihovnu nebo rozhraní REST API pro rozhraní API pro rozpoznávání řeči je tedy také k dispozici pro váš vlastní koncový bod.
 
-Podrobný popis můžete najít na použití vlastní koncový bod řeči na text [zde](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-use-endpoint.md).
+Podrobný popis najdete na použití vlastního koncového bodu převodu řeči na text [tady](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-use-endpoint.md).
 
 
-Upozorňujeme, že koncové body vytvořené prostřednictvím CRIS může zpracovat různý počet souběžných požadavků v závislosti na vrstvě, že je přidružen k odběru. Pokud jsou požadovány další uznání než, vrátí kód chyby 429 (příliš mnoho požadavků). Další informace naleznete [informace o cenách](https://www.microsoft.com/cognitive-services/en-us/pricing). Kromě toho je měsíční kvóta požadavků pro úroveň free. V případech přistupujete váš koncový bod v úrovni free výše vaší měsíční kvóta službu vrátí kód chyby 403 Zakázáno.
+Všimněte si, že koncové body vytvořené prostřednictvím CRIS může zpracovat různý počet souběžných požadavků v závislosti na úrovni předplatného se prosím k. Pokud jsou požadovány další rozpoznávání než, vrátí kód chyby 429 (příliš mnoho požadavků). Další informace najdete [informace o cenách](https://www.microsoft.com/cognitive-services/en-us/pricing). Kromě toho se kvóta měsíčního počtu požadavků na úrovni free. V případech přistupujete koncový bod služby na úrovni free nad vaší měsíční kvóty služby vrátí kód chyby 403 Zakázáno.
 
-Služba předpokládá, že zvuk se přenášejí v reálném čase. Pokud je odeslat rychleji, požadavek bude považovat za spuštění, dokud jeho trvání v reálném čase byla úspěšná.
+Služba předpokládá, že zvuk se přenášejí v reálném čase. Pokud je odeslána rychleji, požadavek se budou považovat za spuštění, dokud jeho délky v reálném čase.
 
 * [Přehled](cognitive-services-custom-speech-home.md)
 * [Nejčastější dotazy](cognitive-services-custom-speech-faq.md)

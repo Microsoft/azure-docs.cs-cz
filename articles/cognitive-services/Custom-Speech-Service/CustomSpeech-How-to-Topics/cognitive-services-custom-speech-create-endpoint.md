@@ -1,6 +1,6 @@
 ---
-title: Vytvořte vlastní řeči koncový bod s vlastní službou řeči v Azure | Microsoft Docs
-description: Naučte se vytvořit koncový bod vlastní řeči na text službou vlastní řeči v kognitivní služby.
+title: Vytvoření koncového bodu vlastní převod řeči s Custom Speech Service v Azure | Dokumentace Microsoftu
+description: Zjistěte, jak vytvořit vlastního koncového bodu převodu řeči na text pomocí Custom Speech Service ve službě Cognitive Services.
 services: cognitive-services
 author: PanosPeriorellis
 manager: onano
@@ -9,28 +9,29 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: panosper
-ms.openlocfilehash: 99bc275db1f0c1b45b3db440d2e03d0db9ab5cf6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: ed93afa8e10fdfbb0d45f4500b4a648716e25e00
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342448"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952218"
 ---
-# <a name="create-a-custom-speech-to-text-endpoint"></a>Vytvořte vlastní koncový bod řeči na text
-Jakmile vytvoříte vlastní akustickými modely nebo jazyk modely, kterou můžete nasadit v koncový bod vlastní řeči na text. 
+# <a name="create-a-custom-speech-to-text-endpoint"></a>Vytvoření vlastního koncového bodu pro převod řeči na text
+Po vytvoření vlastních akustických modelů nebo jazykové modely, je můžete nasadit do vlastního koncového bodu převodu řeči na text. 
 
 ## <a name="create-an-endpoint"></a>Vytvoření koncového bodu
-Chcete-li vytvořit nové vlastní koncový bod, vyberte **nasazení** na **vlastní řeči** nabídce v horní části stránky. Tato akce trvá, abyste **nasazení** stránky, který obsahuje tabulku aktuální vlastní koncové body. Pokud jste ještě nevytvořili žádné koncové body, je tabulka prázdná. Aktuální národní prostředí se projeví v názvu tabulky. 
+Chcete-li vytvořit nové vlastní koncový bod, vyberte **nasazení** na **Custom Speech** nabídce v horní části stránky. Tím přejdete do **nasazení** stránku, která obsahuje tabulku aktuální vlastní koncové body. Pokud jste ještě nevytvořili žádné koncové body, je tabulka prázdná. Aktuální národní prostředí se odráží v názvu tabulky. 
 
-Chcete-li vytvořit nasazení pro jiný jazyk, vyberte **změnu národního prostředí**. Další informace o podporovaných jazyků najdete v tématu [podporované národní prostředí ve službě vlastní řeči](cognitive-services-custom-speech-change-locale.md).
+Chcete-li vytvořit nasazení pro jiný jazyk, vyberte **změnu národního prostředí**. Další informace o podporovaných jazyků najdete v tématu [podporované národní prostředí ve službě Custom Speech Service](cognitive-services-custom-speech-change-locale.md).
 
-Chcete-li vytvořit nový koncový bod, vyberte **vytvořit nový**. V **vytvořit nasazení** podokně, zadejte informace do **název** a **popis** polí vlastní nasazení.
+Chcete-li vytvořit nový koncový bod, vyberte **vytvořit nový**. V **vytvořit nasazení** podokně zadejte informace **název** a **popis** pole vlastního nasazení.
 
-V **předplatné** pole se seznamem, vyberte odběr, který chcete použít. Pokud je předplatné S2, můžete vybrat jednotek škálování a obsahu protokolování. Další informace o protokolování a jednotek škálování najdete v tématu [vlastní řeči služby měřidla a kvóty](../cognitive-services-custom-speech-meters.md).
+V **předplatné** – pole se seznamem, vyberte předplatné, pro kterou chcete použít. Pokud je předplatné S2, můžete vybrat jednotek škálování a protokolování obsahu. Další informace o jednotek škálování a protokolování, najdete v části [měřiče služby Custom Speech Service a kvóty](../cognitive-services-custom-speech-meters.md).
 
-Následující tabulka ukazuje, jak mapování jednotek škálování na k dispozici souběžných požadavků:
+Následující tabulka ukazuje, jak se jednotky škálování mapují na dostupné souběžných požadavků:
 
-| Jednotky škálování | Počet souběžných požadavků |
+| Jednotka škálování | Počet souběžných požadavků |
 | ------ | ----- |
 | 0 | 1 |
 | 1 | 5 |
@@ -38,38 +39,38 @@ Následující tabulka ukazuje, jak mapování jednotek škálování na k dispo
 | 3 | 15 |
 | n | 5 * n |
 
-Můžete také vybrat, zda obsahu protokolování je přepnuta zapnout nebo vypnout. Vybíráte to znamená, zda je uložený provoz koncový bod pro interní použití společností Microsoft. Pokud není zaškrtnuto, ukládání přenosy dat budou potlačeny. Potlačení obsahu protokolování má za následek další náklady. Obrátit [informace o stránce s cenami](https://azure.microsoft.com/pricing/details/cognitive-services/custom-speech-service/) podrobnosti.
+Můžete také vybrat, zda protokolování obsahu je přepnuta zapnutí nebo vypnutí. To znamená, že vybíráte, jestli provoz koncového bodu je uloženo pro interní použití společnosti Microsoft. Pokud není zaškrtnuto, ukládání provoz závažné, budou potlačeny. Potlačení protokolování obsahu má za následek další poplatky. Poraďte [informace o stránce s cenami](https://azure.microsoft.com/pricing/details/cognitive-services/custom-speech-service/) podrobnosti.
 
 > [!NOTE]
-> Obsahu protokolování se nazývá "Ne Trace" na stránce s cenami.
+> Protokolování obsahu se nazývá "No trasování" na stránce s cenami.
 >
 
 
-Kromě toho společnost Microsoft poskytuje odhad náklady tak, že jste si vědomi dopad na náklady na jednotek škálování a obsahu protokolování. Tento odhad je odhad a může lišit od skutečné náklady.
+Kromě toho společnost Microsoft poskytuje hrubý odhad nákladů tak, aby měli přehled o dopadu na náklady na jednotek škálování a protokolování obsahu. Tento odhad představuje přibližný odhad a mohou lišit od skutečné náklady.
 
 > [!NOTE]
-> Tato nastavení nejsou k dispozici s odběry F0 (úroveň free).
+> Tato nastavení nejsou k dispozici s předplatnými F0 (úrovně free).
 >
 
-V **akustickými modelu** vyberte akustickými model, který chcete, a v **jazykový Model** vyberte model jazyk, který chcete. Možnosti pro modely acoustic a jazyk, vždy zahrňte základní modely společnosti Microsoft. Výběr základní modelu omezuje kombinace. Nelze kombinovat s search konverzačního základní modely a stanovují základní modelů.
+V **akustický Model** vyberte akustický model, který chcete, a **jazykový Model** vyberte jazykový model, který chcete. Možnosti pro akustických a jazykových modelů vždy zahrnovat základní model Microsoft. Výběr základní model omezuje kombinace. Nelze kombinovat konverzační základní modely pomocí služby search a určovat základní modely.
 
-![Stránka vytvořit nasazení](../../../media/cognitive-services/custom-speech-service/custom-speech-deployment-create2.png)
+![Na stránce vytvořit nasazení](../../../media/cognitive-services/custom-speech-service/custom-speech-deployment-create2.png)
 
 > [!NOTE]
-> Je nutné přijmout podmínky použití a informace o cenách tak, že vyberete zaškrtnutím políčka.
+> Ujistěte se, přijměte podmínky použití a informace o cenách výběrem zaškrtávacího políčka.
 >
 
-Po výběru modely acoustic a jazyk, vyberte **vytvořit**. Tato akce vrátí, abyste **nasazení** stránky. Nyní zahrnuje položku, která odpovídá vaší nový koncový bod. Stav pro koncový bod odráží aktuální stav je při vytváření. To může trvat až 30 minut pro vytvoření instance nového koncového bodu se vaše vlastní modely. Pokud je stav nasazení *Complete*, koncový bod je připraven k použití.
+Po výběru akustických a jazykových modelů, vyberte **vytvořit**. Tím se vrátíte na **nasazení** stránky. Tabulka teď obsahuje položku, která odpovídá nový koncový bod. Stav koncového bodu odráží její aktuální stav je při vytváření. Může trvat až 30 minut pro vytvoření instance nového koncového bodu pomocí vlastních modelů. Pokud je stav nasazení *Complete*, koncový bod je připraven k použití.
 
-![Stránka nasazení](../../../media/cognitive-services/custom-speech-service/custom-speech-deployment-ready.png)
+![Na stránce Deployments](../../../media/cognitive-services/custom-speech-service/custom-speech-deployment-ready.png)
 
-Při nasazení je připraven, název nasazení se změní na odkaz. Výběr odkaz zobrazí **informace o nasazení** stránku, která zobrazuje svůj vlastní koncový bod adresy URL pro použití s buď požadavku HTTP nebo Microsoft kognitivní služby řeči klientské knihovny, který používá webové sokety.
+Při nasazení je připraveno, bude název nasazení odkaz. Výběrem odkazu se zobrazí **informace o nasazení** stránku, která zobrazuje váš vlastní koncový bod adresy URL pro použití s buď požadavku HTTP nebo Microsoft Cognitive Services knihovny řečového klienta, který používá webové sokety.
 
-![Stránka informace o nasazení](../../../media/cognitive-services/custom-speech-service/custom-speech-deployment-info2.png)
+![Na stránce informace o nasazení](../../../media/cognitive-services/custom-speech-service/custom-speech-deployment-info2.png)
 
 ## <a name="next-steps"></a>Další postup
 
-Další kurzy najdete v tématu:
-* [Použít vlastní koncový bod řeči na text](cognitive-services-custom-speech-use-endpoint.md)
-* [Vytvoření vlastní akustickými modelu](cognitive-services-custom-speech-create-acoustic-model.md)
-* [Vytvoření vlastní jazyk modelu](cognitive-services-custom-speech-create-language-model.md)
+Další kurzy najdete na stránce:
+* [Použití vlastního koncového bodu převodu řeči na text](cognitive-services-custom-speech-use-endpoint.md)
+* [Vytvoření vlastního akustického modelu](cognitive-services-custom-speech-create-acoustic-model.md)
+* [Vytvoření vlastního jazykového modelu](cognitive-services-custom-speech-create-language-model.md)

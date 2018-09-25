@@ -1,6 +1,6 @@
 ---
 title: Šifrování disků na virtuální počítač s Linuxem v Azure | Dokumentace Microsoftu
-description: Postup zašifrování virtuální disky na virtuální počítač s Linuxem pomocí rozhraní příkazového řádku Azure CLI 2.0 nabízí vyšší zabezpečení
+description: Postup zašifrování virtuální disky na virtuální počítač s Linuxem pro zvýšení zabezpečení pomocí Azure CLI
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,19 +15,20 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: 75ec087536d6f833a9a2106b1fdf4ed1fd73ef8e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 044486424f8bcc9d66998f775154eff9c52e7d1b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38634616"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981225"
 ---
 # <a name="how-to-encrypt-a-linux-virtual-machine-in-azure"></a>Jak šifrování virtuálního počítače s Linuxem v Azure
-Vylepšené virtuálních počítačů (VM) zabezpečení a dodržování předpisů můžete šifrovat virtuální disky a virtuální počítač. Virtuální počítače jsou šifrované pomocí kryptografických klíčů, které jsou zabezpečené v Azure Key Vault. Řízení těchto kryptografických klíčů a auditovat jejich použití. Tento článek podrobně popisuje, jak šifrování virtuálních disků na virtuální počítač s Linuxem pomocí rozhraní příkazového řádku Azure CLI 2.0. 
+
+Vylepšené virtuálních počítačů (VM) zabezpečení a dodržování předpisů můžete šifrovat virtuální disky a virtuální počítač. Virtuální počítače jsou šifrované pomocí kryptografických klíčů, které jsou zabezpečené v Azure Key Vault. Řízení těchto kryptografických klíčů a auditovat jejich použití. Tento článek podrobně popisuje, jak šifrování virtuálních disků na virtuální počítač s Linuxem pomocí Azure CLI. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, tento článek vyžaduje použití Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, tento článek vyžaduje použití Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="overview-of-disk-encryption"></a>Přehled šifrování disku
 Virtuální disky na virtuální počítače s Linuxem jsou zašifrovaná pomocí rest [dm-crypt](https://wikipedia.org/wiki/Dm-crypt). Neplatí žádné poplatky pro šifrování virtuálních disků v Azure. Kryptografické klíče jsou uložené ve službě Azure Key Vault software ochrany, nebo můžete importovat nebo generovat klíče v modulech hardwarového zabezpečení (HSM) certifikovaných podle standardů FIPS 140-2 úrovně 2 standardů. Uchování kontroly nad těmito kryptografické klíče a můžete kontrolovat jejich použití. Tyto klíče se používají k šifrování a dešifrování virtuální disky připojené k virtuálnímu počítači. Instančního objektu služby Azure Active Directory poskytuje zabezpečené mechanismus pro vydávání těchto kryptografických klíčů, jako jsou virtuální počítače využívající zapnout a vypnout.

@@ -4,7 +4,7 @@ description: Zjistěte, jak vyvíjet a ladit kanály Data Factory zavádět post
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.date: 05/14/2018
+ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: data-factory
 services: data-factory
@@ -12,12 +12,12 @@ documentationcenter: ''
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.openlocfilehash: a4d3f991dbba8a686c7242aabff11d9228300777
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: ca1ca616fdd097811b3f02285706b3ae8977d737
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865161"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034125"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Iterativní vývoj a ladění pomocí služby Azure Data Factory
 
@@ -40,13 +40,21 @@ Po úspěšném spuštění testu do kanálu přidat další aktivity a pokračo
 
 ![Zrušit spuštění testu](media/iterative-development-debugging/iterative-development-image3.png)
 
-Když testovacích běhů, není nutné publikovat provedené změny do služby data factory, před výběrem **ladění**. To je užitečné v situacích, ve které chcete Ujistěte se, že změny fungovat podle očekávání, před aktualizací pracovního postupu data factory.
+Když testovacích běhů, není nutné publikovat provedené změny do služby data factory, před výběrem **ladění**. Tato funkce je užitečná ve scénářích, kde chcete Ujistěte se, že změny fungovat podle očekávání, před aktualizací pracovního postupu data factory.
 
 ## <a name="more-info-about-debugging"></a>Další informace o ladění
 
 1. Zahájilo se spuštění testu **ladění** funkce nejsou k dispozici v seznamu **monitorování** kartu. Je možné jenom viz spustí aktivovaných pomocí **aktivovat**, **plán**, nebo **Přeskakujícího okna** aktivuje v **monitorování** kartu. Zobrazí poslední testovací běh spuštěné s **ladění** možnosti **výstup** okno na plátně kanálu.
 
 2. Výběr **ladění** ve skutečnosti spouští kanál. Tak například pokud kanál obsahuje aktivitu kopírování, testovací běh kopíruje data ze zdroje do cíle. V důsledku toho doporučujeme použít složky testu v vaše aktivity kopírování a dalšími aktivitami při ladění. Poté, co jste ladit kanálu, přepněte do skutečných složek, které chcete použít v běžném provozu.
+
+## <a name="visualizing-debug-runs"></a>Detekční spuštění ladění
+
+Můžete vizualizovat všechna spuštění ladění, které jsou v průběhu pro svou datovou továrnu na jednom místě. Vyberte **zobrazení ladění spustí** v pravém horním rohu stránky. Tato funkce je užitečná v situacích, kdy máte hlavní kanály rutinního spuštění ladění pro podřízené kanály a má jedno zobrazení pro všechny aktivní ladicí běhy.
+
+![Vyberte ikonu zobrazení aktivní ladicí spuštění](media/iterative-development-debugging/view-debug-runs-image1.png)
+
+![Seznam ukázek aktivní ladicí spuštění](media/iterative-development-debugging/view-debug-runs-image2.png)
 
 ## <a name="setting-breakpoints-for-debugging"></a>Nastavení zarážky pro ladění
 

@@ -5,22 +5,21 @@ services: active-directory
 keywords: ''
 author: CelesteDG
 manager: mtillman
-editor: PatAltimore
 ms.author: celested
 ms.reviewer: dadobali
-ms.date: 07/19/2017
+ms.date: 09/24/2018
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.openlocfilehash: ab6936d62aac5502d70239bacfbfd15bd6b793ab
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 229f74367262e07128fa9ea6c895d448b854ae0a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42057519"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958250"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Informace pro vývojáře pro podmíněný přístup Azure Active Directory
 
@@ -40,9 +39,9 @@ Znalost [jeden](quickstart-v1-integrate-apps-with-azure-ad.md) a [víceklientsk�
 
 ### <a name="app-types-impacted"></a>Ovlivněné typy aplikací
 
-Podmíněný přístup v nejběžnějších případech nezmění chování vaší aplikace nebo vyžaduje změny od vývojáře. Pouze v určitých případech při aplikaci nepřímo nebo v tichém režimu žádá token pro služby, aplikace vyžaduje změny kódu pro zpracování podmíněného přístupu "výzvy". Může být stejně jednoduché jako požadavek interaktivní přihlášení. 
+Podmíněný přístup v nejběžnějších případech nezmění chování vaší aplikace nebo vyžaduje změny od vývojáře. Pouze v určitých případech při aplikaci nepřímo nebo v tichém režimu žádá token pro služby, aplikace vyžaduje změny kódu pro zpracování podmíněného přístupu "výzvy". Může být stejně jednoduché jako požadavek interaktivní přihlášení.
 
-Konkrétně následující scénáře vyžadují kód pro zpracování podmíněného přístupu "výzvy": 
+Konkrétně následující scénáře vyžadují kód pro zpracování podmíněného přístupu "výzvy":
 
 * Aplikace přístup k Microsoft Graphu
 * Aplikace provádí tok on-behalf-of
@@ -147,7 +146,7 @@ Ukázky kódu, které ukazují, jak zpracovat před obrovskou výzvou – deklar
 
 ## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>Scénář: Aplikace provádí tok on-behalf-of
 
-V tomto scénáři provedeme tento případ, ve kterém nativní aplikace volá webové služby nebo rozhraní API. Pak tato služba nemá [toku "on-behalf-of"](authentication-scenarios.md#application-types-and-scenarios) volat podřízené služby. V našem případě jsme použili naše zásady podmíněného přístupu u podřízené služby (webové rozhraní API 2) a používají nativní aplikace namísto aplikace typu server/démon. 
+V tomto scénáři provedeme tento případ, ve kterém nativní aplikace volá webové služby nebo rozhraní API. Pak tato služba nemá [he "on-behalf-of" toku k volání příjem dat služby. V našem případě jsme použili naše zásady podmíněného přístupu u podřízené služby (webové rozhraní API 2) a používají nativní aplikace namísto aplikace typu server/démon. 
 
 ![Aplikace provádí vývojový diagram on-behalf-of](./media/conditional-access-dev-guide/app-performing-on-behalf-of-scenario.png)
 
@@ -190,7 +189,7 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 Pokud aplikace používá knihovnu ADAL, nepovedlo se získat token je vždy opakovat interaktivně. Pokud dojde k této interaktivní žádosti, koncový uživatel má příležitost k zajištění souladu s podmíněným přístupem. To platí, pokud je žádost `AcquireTokenSilentAsync` nebo `PromptBehavior.Never` v takovém případě musí aplikace provádět interaktivní ```AcquireToken``` požadavku poskytnout příležitosti k zajištění souladu se zásadami koncového užívání. 
 
-## <a name="scenario-single-page-app-spa-using-adaljs"></a>Scénář: Jednu stránku aplikace (SPA) pomocí ADAL.js
+## <a name="scenario-single-page-app-spa-using-adaljs"></a>Scénář: Jednostránkové aplikace (SPA) pomocí ADAL.js
 
 V tomto scénáři provedeme tak když máme jednostránkové aplikace (SPA) pomocí ADAL.js podmíněného přístupu, které jsou chráněné webové rozhraní API volat. Toto je jednoduchá architektura, ale má nějaké drobné rozdíly, které je potřeba vzít v úvahu při vývoji týkající se podmíněného přístupu.
 

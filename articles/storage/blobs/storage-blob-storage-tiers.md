@@ -1,6 +1,6 @@
 ---
-title: Horké, studené a archivní úložiště Azure pro objekty blob | Dokumentace Microsoftu
-description: Horké, studené a archivní úložiště pro účty úložiště Azure.
+title: Úrovně Premium, horké, studené a archivní úložiště pro objekty BLOB – Azure Storage
+description: Premium, horká, studená a archivní úložiště pro účty úložiště Azure.
 services: storage
 author: kuhussai
 ms.service: storage
@@ -8,28 +8,64 @@ ms.topic: article
 ms.date: 09/11/2018
 ms.author: kuhussai
 ms.component: blobs
-ms.openlocfilehash: 66c47a97eee6759eb963db43d5c573fb6612bde6
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 6acea70ca929310fe37f36fe98698e6adb76101b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735914"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997824"
 ---
-# <a name="azure-blob-storage-hot-cool-and-archive-storage-tiers"></a>Azure Blob Storage: Horká, studená a archivní úroveň úložiště
+# <a name="azure-blob-storage-premium-preview-hot-cool-and-archive-storage-tiers"></a>Azure Blob storage: úrovně Premium (preview), horká, studená a archivní úroveň úložiště
 
 ## <a name="overview"></a>Přehled
 
-Úložiště Azure nabízí tři úrovně úložiště pro ukládání objektů blob, abyste mohli data ukládat co nejhospodárněji – to znamená podle toho, jak je používáte. **Úroveň horkého úložiště** Azure je optimalizovaná pro ukládání dat, která se využívají často. **Studená úroveň úložiště** Azure je optimalizovaná pro ukládání dat, která se nevyužívají často a ukládají se nejméně na 30 dnů. **Archivní úroveň úložiště** Azure je optimalizovaná pro ukládání zřídka používaných dat, která se ukládají nejméně na 180 dnů a vyžadují flexibilní latenci (v řádu hodin). Úroveň úložiště Archive je k dispozici jenom na úrovni objektů blob, a ne na úrovni účtu úložiště. U dat ve studeném úložišti se toleruje horší dostupnost, ale přesto se u nich vyžaduje vysoká odolnost a podobná přístupová a přenosová rychlost jako u horkých dat. U studených dat jsou poplatky za uložení ve srovnání s horkými daty levnější, ovšem za cenu mírně horší dostupnosti a vyšších nákladů na přístup. Úložiště archivu je offline a nabízí nejnižší náklady na úložiště, ale také nejvyšší náklady na přístup. Na úrovni účtu se dá nastavit jen horká a studená úroveň úložiště (ne archiv). Všechny tři úrovně můžete nastavit na úrovni objektu.
+Azure storage nabízí úrovně jiného úložiště, které vám umožňují ukládat data objektu Blob cenově nejvýhodnější způsobem. Dostupné úrovně zahrnují:
 
-Data uložená v cloudu dnes narůstají exponenciální rychlostí. Pokud chcete náklady na rozšiřující se úložiště udržet pod kontrolou, je pro optimalizaci nákladů vhodné uspořádat data podle vlastností, jako je četnost přístupu a plánovaná doba uchování. Data uložená v cloudu se liší tím, jak se generují, zpracovávají a jak se k nim přistupuje po celou dobu jejich životnosti. Některá data se během svojí existence využívají nebo mění často. Některá data se používají často v rané fázi svého životního cyklu, ale s tím jak stárnou, přístup k nim výrazně klesá. Některá data se po uložení v cloudu využívají zřídka, pokud vůbec někdy.
+- **Storage úrovně Premium (preview)** poskytuje vysoký výkon hardwaru pro data, která se využívají často.
+ 
+- **Horké úložiště**: je optimalizovaná pro ukládání dat, která se využívají často. 
+
+- **Studené úložiště** je optimalizovaná pro ukládání dat, která se nevyužívají často a ukládají nejméně na 30 dnů.
+ 
+- **Úložiště archivu** je optimalizovaná pro ukládání dat, která je jen zřídka často a ukládají nejméně na 180 dnů vyžadují flexibilní latenci (v řádu hodin).
+
+Následující aspekty doprovázet úrovně jiného úložiště:
+
+- Úroveň úložiště Archive je k dispozici jenom na úrovni objektů blob, a ne na úrovni účtu úložiště.
+ 
+- U dat ve studeném úložišti se toleruje horší dostupnost, ale přesto se u nich vyžaduje vysoká odolnost a podobná přístupová a přenosová rychlost jako u horkých dat. U studených dat jsou poplatky za uložení ve srovnání s horkými daty levnější, ovšem za cenu mírně horší dostupnosti a vyšších nákladů na přístup.
+
+- Úložiště archivu je offline a nabízí nejnižší náklady na úložiště, ale také nejvyšší náklady na přístup.
+ 
+- Na úrovni účtu se dá nastavit jen horká a studená úroveň úložiště (ne archiv).
+ 
+- Všechny úrovně můžete nastavit na úrovni objektu.
+
+Data uložená v cloudu roste exponenciální rychlostí. Pokud chcete náklady na rozšiřující se úložiště udržet pod kontrolou, je pro optimalizaci nákladů vhodné uspořádat data podle vlastností, jako je četnost přístupu a plánovaná doba uchování. Data uložená v cloudu se liší tím, jak se generují, zpracovávají a jak se k nim přistupuje po celou dobu jejich životnosti. Některá data se během svojí existence využívají nebo mění často. Některá data se používají často v rané fázi svého životního cyklu, ale s tím jak stárnou, přístup k nim výrazně klesá. Některá data se po uložení v cloudu využívají zřídka, pokud vůbec někdy.
 
 Pro každý z těchto scénářů přístupu k datům je vhodná jiná vrstva úložiště, která je optimalizovaná pro určitý vzor přístupu. Se zavedením horké, studené a archivní vrstvy úložiště služba Azure Blob Storage vychází vstříc potřebě různých úrovní úložiště s odlišnými cenovými modely.
 
 ## <a name="storage-accounts-that-support-tiering"></a>Účty úložiště, které podporují vrstvení
 
-Data v úložišti objektů je možné vrstvit na horkou, studenou nebo archivní úroveň pouze v účtech Blob Storage nebo účtech pro obecné účely v2 (GPv2). Účty pro obecné účely v1 (GPv1) vrstvení nepodporují. Zákazníci však můžou snadno převést své stávající účty GPv1 nebo Blob Storage na účty GPv2 prostřednictvím prostého kliknutí na webu Azure Portal. Účty GPv2 poskytují novou cenovou strukturu pro objekty blob, soubory a fronty a také přístup k různým dalším novým funkcím úložiště. Kromě toho se postupně budou některé nové funkce a snížení cen nabízet pouze v účtech GPv2. Zákazníci by proto měli vyhodnotit používání účtů GPv2, ale začít je používat až po kontrole cen za všechny služby, protože některé úlohy můžou být v účtech GPv2 dražší než v účtech GPv1. Další informace najdete v tématu [přehled účtu Azure storage](../common/storage-account-overview.md).
+Data v úložišti objektů je možné vrstvit na horkou, studenou nebo archivní úroveň pouze v účtech Blob Storage nebo účtech pro obecné účely v2 (GPv2). Účty pro obecné účely v1 (GPv1) vrstvení nepodporují. Zákazníci však můžou snadno převést své stávající účty GPv1 nebo Blob Storage na účty GPv2 prostřednictvím prostého kliknutí na webu Azure Portal. Účty GPv2 poskytují novou cenovou strukturu pro objekty blob, soubory a fronty a také přístup k různým dalším novým funkcím úložiště. Kromě toho se postupně budou některé nové funkce a snížení cen nabízet pouze v účtech GPv2. Zákazníci by proto měli vyhodnotit používání účtů GPv2, ale začít je používat až po kontrole cen za všechny služby, protože některé úlohy můžou být v účtech GPv2 dražší než v účtech GPv1. Další informace najdete v tématu [Přehled účtu Azure Storage](../common/storage-account-overview.md).
 
 Účty Blob Storage a GPv2 zpřístupňují atribut **Access Tier** na úrovni účtu, který vám umožňuje určit výchozí úroveň úložiště jako horkou nebo studenou pro všechny objekty blob v účtu úložiště, které nemají nastavenou úroveň na úrovni objektu. Na objekty s nastavenou úrovní na úrovni objektu se úroveň účtu nebude vztahovat. Archivní úroveň je možné použít pouze na úrovni objektu. Mezi těmito úrovněmi úložiště můžete kdykoli přepínat.
+
+## <a name="premium-access-tier"></a>Přístup na úrovni Premium
+
+Díky kterému budou často používaná data k dispozici prostřednictvím vysoce výkonnému hardwaru přístup úrovně Premium je dostupná ve verzi preview. Data uložená na této úrovni se ukládají na jednotky SSD, které jsou optimalizovány pro nižší latenci a vyšší transakční míru ve srovnání s tradičními pevné disky. Přístup k úrovni Premium je k dispozici prostřednictvím pouze typ účtu úložiště objektů Blob bloku.
+
+Tato úroveň je ideální pro úlohy vyžadující rychlé a konzistentní odezvy. Data, která zahrnuje koncovým uživatelům, jako jsou úpravy, statický webový obsah, online transakce a podobně jsou vhodnými kandidáty pro úroveň Premium přístupu interaktivní videa. Tato úroveň je vytvořený na míru pro úlohy, které provádějí velký počet malých transakcí, jako je zachytávání telemetrická data, zasílání zpráv a transformace dat.
+
+Pokud chcete použít tuto úroveň, zřiďte nový účet úložiště objektů Blob bloku a začněte vytvářet kontejnerům a objektům BLOB pomocí [rozhraní REST API služby Blob](/rest/api/storageservices/blob-service-rest-api), [AzCopy](/azure/storage/common/storage-use-azcopy), nebo [Průzkumníka služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/).
+
+Ve verzi preview, na úrovni Premium přístupu:
+
+- Je k dispozici jako místně redundantní úložiště (LRS)
+- Je dostupná jenom v těchto oblastech: USA – východ 2, USA – střed a USA – západ
+- Nepodporuje automatické vrstvení a správu životního cyklu dat.
+
+Zjistěte, jak zaregistrovat verzi preview přístup úrovně Premium, najdete v článku [Úvod do Azure Blob Storage úrovně Premium](http://aka.ms/premiumblob).
 
 ## <a name="hot-access-tier"></a>Horká vrstva přístupu
 
@@ -73,6 +109,8 @@ V rámci jednoho účtu mohou současně existovat objekty blob ve všech třech
 
 > [!NOTE]
 > Úložiště archivu a ovládání datových vrstev na úrovni objektů blob podporují jenom objekty blob bloku. Nejde také změnit úroveň objektu blob bloku, který má snímky.
+
+Data uložená na úrovni Premium přístupu nemůže být rozvrstvena na horkou, studenou nebo archivní pomocí [Set Blob Tier](/rest/api/storageservices/set-blob-tier) nebo pomocí správy životního cyklu úložiště objektů Blob v Azure. Pro přesun dat, je nutné synchronně zkopírovat objekty BLOB ze Premium přístup k výměně pomocí [Vložit blok z adresy URL rozhraní API](/rest/api/storageservices/put-block-from-url) nebo verzi AzCopy, který podporuje toto rozhraní API. *Vložit blok z adresy URL* rozhraní API synchronně zkopíruje data na serveru, což znamená dokončení volání pouze jednou všechna data se přesunou z původního umístění serveru do cílového umístění.
 
 ### <a name="blob-lifecycle-management"></a>Správa životního cyklu objektu BLOB
 Správa životního cyklu úložiště objektů BLOB (Preview) nabízí bohatě vybaveným a podle pravidel zásad, který vám pomůže se převést vaše data, aby nejlepší úroveň přístupu a vypršení platnosti dat na konci svého životního cyklu. Zobrazit [Správa životního cyklu úložiště objektů Blob v Azure](https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts) Další informace.  
@@ -153,7 +191,7 @@ Všechny účty úložiště používají cenový model pro úložiště objekt�
 
 Pro účely vrstvení doporučujeme místo účtů Blob Storage používat účty GPv2. Účty GPv2 podporují všechny funkce jako účty Blob Storage a navíc řadu dalších. Ceny účtů Blob Storage a GPv2 jsou téměř identické, ale některé nové funkce a snížení cen budou k dispozici pouze v účtech GPv2. Účty GPv1 vrstvení nepodporují.
 
-Cenová struktura se u účtů GPv1 a GPv2 liší a zákazníci by před volbou účtů GPv2 měli pečlivě vyhodnotit obě možnosti. Stávající účet Blob Storage nebo GPv1 můžete snadno převést na účet GPv2 jedním kliknutím. Další informace najdete v tématu [přehled účtu Azure storage](../common/storage-account-overview.md).
+Cenová struktura se u účtů GPv1 a GPv2 liší a zákazníci by před volbou účtů GPv2 měli pečlivě vyhodnotit obě možnosti. Stávající účet Blob Storage nebo GPv1 můžete snadno převést na účet GPv2 jedním kliknutím. Další informace najdete v tématu [Přehled účtu Azure Storage](../common/storage-account-overview.md).
 
 **Můžu v rámci jednoho účtu ukládat objekty ve všech třech (horká, studená a archivní) úrovních úložiště?**
 

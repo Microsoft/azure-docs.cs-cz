@@ -8,7 +8,6 @@ ms.author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
-ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.component: core
 ms.workload: data-services
@@ -16,17 +15,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
-ms.openlocfilehash: 05cb2a62cf0f001012f5faa022de233d7cbdce97
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2fd0fe55b975010a1eaafeb455d61a6cb3ebff77
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42058082"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46970919"
 ---
 # <a name="structure-projects-with-the-team-data-science-process-template"></a>Strukturování projektů s šablonou vědecké zpracování týmových dat
 
-Tento dokument obsahuje pokyny o tom, jak vytvořit projekty datových věd s využitím šablon vědecké zpracování týmových dat (TDSP) ve službě Azure Machine Learning. Tyto šablony přispívají k strukturování projektů pro dosahování úrovně spolupráce a reprodukovatelnost. 
+Tento dokument obsahuje pokyny o tom, jak vytvořit projekty datových věd v dřívější verzi služby Azure Machine Learning pomocí šablony vědecké zpracování týmových dat (TDSP). Tyto šablony přispívají k strukturování projektů pro dosahování úrovně spolupráce a reprodukovatelnost. 
 
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
 
 ## <a name="what-is-the-team-data-science-process"></a>Co je vědecké zpracování týmových dat?
 TDSP je proces agile, iterativní, datové vědy pro provádění a doručování Pokročilá analytická řešení. Je určený ke zlepšení spolupráce a efektivitu datové vědy týmy v podnikových organizacích. Podporuje tyto cíle s čtyř klíčových komponent:
@@ -52,7 +53,7 @@ Zkontrolujte následující položky *před* vytvoření nového projektu:
 * Projděte si TDSP Machine Learning [šablony](https://aka.ms/tdspamlgithubrepo).
 * Obsah (jiné než co je již k dispozici ve složce "dokumenty") se musí být kratší než 25 MB. Přečtěte si poznámku, která následuje tohoto seznamu.
 * Ukázka\_složka dat je pouze pro malé datové soubory (méně než 5 MB), se kterými můžete testovat kód nebo spustit raného vývoje.
-* Ukládání souborů, jako je Word a PowerPoint soubory, zvýšit velikost složky "docs" podstatně. Doporučujeme, který chcete najít spolupráci Wiki [SharePoint](https://products.office.com/en-us/sharepoint/collaboration), nebo jiný spolupracující prostředek k ukládání těchto souborů.
+* Ukládání souborů, jako je Word a PowerPoint soubory, zvýšit velikost složky "docs" podstatně. Doporučujeme, který chcete najít spolupráci Wiki [SharePoint](https://products.office.com/sharepoint/collaboration), nebo jiný spolupracující prostředek k ukládání těchto souborů.
 * Další způsob zpracování velkých souborů a výstupy ve službě Machine Learning, [uložením změn a práci s velkými soubory](http://aka.ms/aml-largefiles).
 
 > [!NOTE]

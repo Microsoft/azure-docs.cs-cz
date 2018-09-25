@@ -11,12 +11,13 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/29/2017
-ms.openlocfilehash: d2fe951a97b18c95e647b45d799843a982100367
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 094fd6d8c6c6d647533cf5409d1a85283c71c80e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35901790"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953238"
 ---
 # <a name="find-runs-with-the-best-accuracy-and-lowest-duration"></a>Najít spuštění s největší přesností a nejkratší dobou trvání
 Zadaný více spuštění, případem použití je najít spuštění s největší přesností. Jedním z přístupů je použít rozhraní příkazového řádku (CLI) s [JMESPath](http://jmespath.org/) dotazu. Další informace o tom, jak používat JMESPath v Azure CLI najdete v tématu [dotazů JMESPath pomocí Azure CLI](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest). V následujícím příkladu jsou vytvořeny čtyři spuštění s přesnost hodnoty 0, 0,98, 1 a 1. Spustí se filtrují v případě, že jsou v rozsahu `[MaxAccuracy-Threshold, MaxAccuracy]` kde `Threshold = .03`.

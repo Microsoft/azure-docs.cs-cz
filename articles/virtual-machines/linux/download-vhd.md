@@ -1,6 +1,6 @@
 ---
-title: Stáhnout Linux virtuální pevný disk z Azure | Microsoft Docs
-description: Stáhněte si Linux virtuální pevný disk pomocí rozhraní příkazového řádku Azure a webu Azure portal.
+title: Stáhněte si VHD s Linuxem v Azure | Dokumentace Microsoftu
+description: Stáhněte si VHD s Linuxem pomocí Azure CLI a webu Azure portal.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -15,26 +15,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 1c6751d980a7bb28e58a3aa00514411959f515d7
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 5f269f074236beef3e213c888e540bcf18238be1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725862"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953697"
 ---
-# <a name="download-a-linux-vhd-from-azure"></a>Stáhnout Linux virtuální pevný disk z Azure
+# <a name="download-a-linux-vhd-from-azure"></a>Stáhněte si VHD s Linuxem z Azure
 
-V tomto článku se dozvíte, jak stáhnout [Linux virtuální pevný disk (VHD)](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) soubor z Azure pomocí rozhraní příkazového řádku Azure a portálu Azure. 
+V tomto článku se dozvíte, jak stáhnout [Linux virtuálního pevného disku (VHD)](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) souborů z Azure pomocí Azure CLI a webu Azure portal. 
 
-Pokud jste tak již neučinili, nainstalujte [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2).
+Pokud jste tak již neučinili, nainstalujte [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-az-cli2).
 
 ## <a name="stop-the-vm"></a>Zastavení virtuálního počítače
 
-Virtuální pevný disk nelze stáhnout ze služby Azure, pokud je připojen k spuštění virtuálního počítače. Budete muset zastavit virtuální počítač ke stažení virtuální pevný disk. Pokud chcete použít jako virtuální pevný disk [image](tutorial-custom-images.md) vytvoření dalších virtuálních počítačů pomocí nové disky, budete muset zrušit jejich zřízení a zobecní operační systém obsažený v souboru a zastavte virtuální počítač. Pokud chcete použít virtuální pevný disk jako disk pro novou instanci třídy na existující virtuální počítač nebo datový disk, stačí k zastavení a zrušit přidělení virtuálního počítače.
+Virtuální pevný disk nejde stáhnout z Azure, pokud je připojen k spuštěného virtuálního počítače. Budete muset zastavit virtuální počítač ke stažení virtuálního pevného disku. Pokud chcete použít jako virtuální pevný disk [image](tutorial-custom-images.md) k vytvoření dalších virtuálních počítačů pomocí nové disky, budete muset zrušit zřízení a generalizace operační systém obsažený v souboru a zastavte virtuální počítač. Použití virtuálního pevného disku jako disku pro nové instance existujícího virtuálního počítače nebo datový disk, potřebujete jenom zastavit a zrušit přidělení virtuálního počítače.
 
-Chcete-li použít virtuální pevný disk jako bitovou kopii k vytvoření dalších virtuálních počítačů, proveďte tyto kroky:
+Chcete-li použít virtuální pevný disk jako image k vytvoření dalších virtuálních počítačů, postupujte takto:
 
-1. Použijte k připojení k němu a zrušit jejich zřízení se SSH, název účtu a veřejnou IP adresu virtuálního počítače. Můžete najít veřejnou IP adresu s [az sítě veřejné ip zobrazit](https://docs.microsoft.com/cli/azure/network/public-ip#az-network-public-ip-show). + Uživatele parametr také odebere poslední účet zřízení uživatele. Pokud jsou pečení přihlašovací údaje k virtuálnímu počítači, nechte si to + parametr uživatele. Následující příklad odebere poslední účet zřízení uživatele:
+1. Pomocí SSH, název účtu a veřejnou IP adresu virtuálního počítače se připojte k němu a zrušení jeho zřízení. Můžete najít veřejnou IP adresu pomocí [az network public-ip show](https://docs.microsoft.com/cli/azure/network/public-ip#az-network-public-ip-show). + Parametr uživatele také odebere posledního zřízeného uživatelského účtu. Pokud jsou pečení přihlašovací údaje k virtuálnímu počítači, nechte si to + parametr uživatele. Následující příklad odebere posledního zřízeného uživatelského účtu:
 
     ```bash
     ssh azureuser@<publicIpAddress>
@@ -42,50 +42,50 @@ Chcete-li použít virtuální pevný disk jako bitovou kopii k vytvoření dal�
     exit 
     ```
 
-2. Přihlaste se k účtu Azure s [az přihlášení](https://docs.microsoft.com/cli/azure/reference-index#az_login).
-3. Zastavte a zrušit přidělení virtuálního počítače.
+2. Přihlaste se ke svému účtu Azure pomocí [az login](https://docs.microsoft.com/cli/azure/reference-index#az_login).
+3. Zastavit a zrušit přidělení virtuálního počítače.
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
-4. Generalize virtuálního počítače. 
+4. Generalizace virtuálního počítače. 
 
     ```azurecli
     az vm generalize --resource-group myResourceGroup --name myVM
     ``` 
 
-Pokud chcete použít virtuální pevný disk jako disk pro novou instanci třídy na existující virtuální počítač nebo datový disk, proveďte tyto kroky:
+Použití virtuálního pevného disku jako disku pro nové instance existujícího virtuálního počítače nebo datový disk, proveďte tyto kroky:
 
 1.  Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2.  V nabídce centra klikněte na **Virtuální počítače**.
 3.  Vyberte virtuální počítač ze seznamu.
 4.  V okně pro virtuální počítač, klikněte na **Zastavit**.
 
-    ![Zastavit virtuální počítač](./media/download-vhd/export-stop.png)
+    ![Zastavení virtuálního počítače](./media/download-vhd/export-stop.png)
 
-## <a name="generate-sas-url"></a>Generování adresy URL SAS
+## <a name="generate-sas-url"></a>Vygenerovat adresu SAS URL
 
-Ke stažení souboru virtuálního pevného disku, je nutné generovat [sdílený přístupový podpis (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) adresy URL. Generování adresy URL čas vypršení platnosti je přiřazena k adrese URL.
+Stáhněte soubor virtuálního pevného disku, budete muset vygenerovat [sdílený přístupový podpis (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) adresy URL. Při generování adresy URL, čas vypršení platnosti je přiřazena k adrese URL.
 
 1.  V nabídce v okně pro virtuální počítač, klikněte na tlačítko **disky**.
-2.  Vyberte disk operačního systému pro virtuální počítač a pak klikněte na tlačítko **exportovat**.
+2.  Vyberte disk s operačním systémem virtuálního počítače a potom klikněte na tlačítko **exportovat**.
 3.  Klikněte na tlačítko **generování adresy URL**.
 
     ![Generování adresy URL](./media/download-vhd/export-generate.png)
 
-## <a name="download-vhd"></a>Stáhnout virtuálního pevného disku
+## <a name="download-vhd"></a>Stažení virtuálního pevného disku
 
-1.  V části Adresa URL, která byla vygenerována klikněte na tlačítko Stáhnout soubor VHD.
+1.  V části Adresa URL, která byla vygenerována klikněte na stáhnout soubor VHD.
 
-    ![Stáhnout virtuálního pevného disku](./media/download-vhd/export-download.png)
+    ![Stažení virtuálního pevného disku](./media/download-vhd/export-download.png)
 
-2.  Je třeba kliknout na **Uložit** v prohlížeči zahájíte stahování. Výchozí název souboru virtuálního pevného disku je *abcd*.
+2.  Budete muset kliknout na **Uložit** v prohlížeči a spusťte soubor ke stažení. Výchozí název pro soubor virtuálního pevného disku je *abcd*.
 
-    ![Kliknutím na Uložit v prohlížeči](./media/download-vhd/export-save.png)
+    ![Klikněte na Uložit v prohlížeči](./media/download-vhd/export-save.png)
 
 ## <a name="next-steps"></a>Další postup
 
-- Zjistěte, jak [odesílání a vytvoření virtuálního počítače s Linuxem z vlastní disk s Azure CLI 2.0](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
-- [Správa Azure disků Azure CLI](tutorial-manage-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+- Zjistěte, jak [nahrání a vytvoření virtuálního počítače s Linuxem z vlastního disku pomocí rozhraní příkazového řádku Azure](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+- [Správa disků v Azure Azure CLI](tutorial-manage-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 

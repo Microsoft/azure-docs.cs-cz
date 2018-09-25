@@ -13,12 +13,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: cynthn
-ms.openlocfilehash: 224f017decc3f48a23cb3fbf14f9a4e744bfaded
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 9fbbbb4f73b5295b648008878c8145fe926fbaad
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007001"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974387"
 ---
 # <a name="create-a-snapshot"></a>Vytvoření snímku 
 
@@ -26,7 +26,7 @@ Pořízení snímku disk s operačním systémem nebo datovými zálohování ne
 
 ## <a name="use-azure-cli"></a>Použití Azure CLI 
 
-V následujícím příkladu vyžaduje použití [Cloud Shell](https://shell.azure.com/bash) nebo máte nainstalované Azure CLI 2.0. Verzi zjistíte spuštěním příkazu **az --version**. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli). 
+V následujícím příkladu vyžaduje použití [Cloud Shell](https://shell.azure.com/bash) nebo máte nainstalované Azure CLI.
 
 Následující kroky ukazují, jak využít snímek pomocí **vytvoření snímku az** příkazů **– zdrojový disk** parametru. V následujícím příkladu se předpokládá, že je virtuální počítač volá *myVM* v *myResourceGroup* skupinu prostředků.
 

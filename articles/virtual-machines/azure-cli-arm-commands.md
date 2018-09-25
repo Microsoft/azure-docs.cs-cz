@@ -1,5 +1,5 @@
 ---
-title: Azure CLI příkazy v režimu Resource Manager | Microsoft Docs
+title: Příkazy Azure CLI v režimu Resource Manager | Dokumentace Microsoftu
 description: Příkazy rozhraní příkazového řádku Azure (CLI) ke správě prostředků v modelu nasazení Resource Manager
 services: virtual-machines-linux,virtual-machines-windows,virtual-network,mobile-services,cloud-services
 documentationcenter: ''
@@ -15,51 +15,51 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: danlep
-ms.openlocfilehash: 8a2bae12fae6a1bf8f5ecbdb2ae01dea5260f3cb
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5aecb218b66c06c87446e35e5c7c9ca8108b956c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30839140"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995546"
 ---
-# <a name="azure-cli-commands-in-resource-manager-mode"></a>Azure CLI příkazy v režimu Resource Manager
-Tento článek obsahuje syntaxi a možnosti pro příkazy rozhraní příkazového řádku Azure (CLI), které by běžně používat k vytváření a správě prostředků Azure v modelu nasazení Azure Resource Manager. Tyto příkazy přistupujete pomocí rozhraní příkazového řádku v režimu Resource Manager (arm). Toto není odkazem na dokončení a CLI verze může zobrazovat mírně odlišné příkazy nebo parametry. Obecné přehled prostředků Azure a skupiny prostředků, najdete v tématu [přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md).  
+# <a name="azure-cli-commands-in-resource-manager-mode"></a>Příkazy Azure CLI v režimu Resource Manageru
+Tento článek obsahuje syntaxi a možnosti pro příkazy rozhraní příkazového řádku Azure (CLI), které by se běžně používají k vytváření a správě prostředků Azure v modelu nasazení Azure Resource Manageru. Tyto příkazy přistupujete pomocí rozhraní příkazového řádku v režimu Resource Manageru (arm). Nejedná se o úplný odkaz a verzi CLI může zobrazit mírně odlišné příkazy nebo parametry. Obecný přehled prostředků a skupin prostředků Azure, najdete v části [přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md).  
 
 > [!NOTE]
-> Tento článek ukazuje Resource Manager režimu příkazy v Azure CLI, se někdy označuje Azure CLI 1.0. Pro práci v modelu Resource Manager, můžete také zkusit [Azure CLI 2.0](/cli/azure/install-az-cli2), naše další generace víceplatformové rozhraní příkazového řádku.
->Další informace o [starý a nový Azure CLIs](/cli/azure/old-and-new-clis).
+> Tento článek popisuje Resource Manageru režimu příkazy v rozhraní příkazového řádku Azure, se někdy označuje jako klasické rozhraní příkazového řádku Azure. Pokud chcete pracovat v modelu Resource Manager, můžete také zkusit [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2), naše další generace multiplatformní rozhraní příkazového řádku.
+>Další informace o [staré a nové Azure Experimentuje](/cli/azure/old-and-new-clis).
 >
 
-Abyste mohli začít, nejprve [nainstalovat Azure CLI](../cli-install-nodejs.md) a [připojení k předplatnému Azure](/cli/azure/authenticate-azure-cli).
+Abyste mohli začít, nejdříve [instalace rozhraní příkazového řádku Azure](../cli-install-nodejs.md) a [připojit ke svému předplatnému Azure](/cli/azure/authenticate-azure-cli).
 
-Pro aktuální příkaz syntaxe a parametry na příkazovém řádku v režimu Resource Manager, zadejte `azure help` nebo, pokud chcete zobrazit nápovědu pro konkrétní příkaz `azure help [command]`. Také najděte rozhraní příkazového řádku příklady v dokumentaci k vytváření a správě konkrétní služby Azure.
+Pro aktuální syntaxi příkazu a možnosti příkazového řádku v režimu Resource Manageru, zadejte `azure help` nebo, pokud chcete zobrazit nápovědu ke konkrétnímu příkazu `azure help [command]`. Také příklady rozhraní příkazového řádku najdete v dokumentaci pro vytváření a správu konkrétních služeb Azure.
 
-Volitelné parametry jsou zobrazeny v hranatých závorkách (například `[parameter]`). Všechny ostatní parametry jsou povinné.
+Volitelné parametry jsou uvedeny v hranatých závorkách (například `[parameter]`). Všechny ostatní parametry jsou povinné.
 
-Kromě volitelné parametry specifické pro příkaz tady popisujeme jsou tři volitelné parametry, které lze použít k zobrazení podrobné výstupu, jako jsou žádosti o možnosti a stavové kódy. `-v` Parametr poskytuje podrobný výstup a `-vv` parametr poskytuje i podrobnější podrobný výstup. `--json` Možnost výstupy výsledek ve formátu raw json.
+Kromě volitelné parametry příslušnou zdokumentované tady jsou tři volitelné parametry, které je možné zobrazit podrobný výstup, jako jsou možnosti žádosti a stavový kód. `-v` Parametr poskytuje podrobný výstup a `-vv` parametr poskytuje ještě podrobnější podrobný výstup. `--json` Možnost výstupy výsledek ve formátu raw json.
 
-## <a name="setting-the-resource-manager-mode"></a>Nastavení režimu Resource Manager
-Chcete-li povolit příkazy v režimu správce prostředků Azure CLI použijte následující příkaz.
+## <a name="setting-the-resource-manager-mode"></a>Nastavení režimu Resource Manageru
+Použijte následující příkaz k povolení režimu příkazy Azure CLI Resource Manageru.
 
     azure config mode arm
 
 > [!NOTE]
-> Rozhraní příkazového řádku Azure Resource Manager režim a režim Azure Service Management se vzájemně vylučují. To znamená nelze spravovat prostředky vytvořené v jednom režimu z jiných režimu.
+> Rozhraní příkazového řádku Azure Resource Manageru a Azure Service Management režimu se vzájemně vylučují. Prostředky vytvořené v rámci jeden režim, to znamená, nejde spravovat z jiných režimu.
 > 
 > 
 
-## <a name="azure-account-manage-your-account-information"></a>účet Azure: Správa informací o vašem účtu
-Informace o vašem předplatném Azure se používá nástrojem pro připojení k vašemu účtu.
+## <a name="azure-account-manage-your-account-information"></a>účet Azure: Správa informace o vašem účtu
+Informace o vašem předplatném Azure se používá nástroj pro připojení k vašemu účtu.
 
-**Seznam importovaných odběrů**
+**Seznam importovaných předplatných**
 
     account list [options]
 
-**Zobrazit podrobnosti o odběru**  
+**Zobrazit podrobnosti o předplatném**  
 
     account show [options] [subscriptionNameOrId]
 
-**Nastavení aktuálního předplatného**
+**Nastavit aktuální předplatné**
 
     account set [options] <subscriptionNameOrId>
 
@@ -67,7 +67,7 @@ Informace o vašem předplatném Azure se používá nástrojem pro připojení 
 
     account clear [options]
 
-**Příkazy ke správě prostředí účtu**  
+**Příkazy pro správu prostředí vašeho účtu**  
 
     account env list [options]
     account env show [options] [environment]
@@ -76,55 +76,55 @@ Informace o vašem předplatném Azure se používá nástrojem pro připojení 
     account env delete [options] [environment]
 
 ## <a name="azure-ad-commands-to-display-active-directory-objects"></a>Azure ad: příkazy pro zobrazení objektů služby Active Directory
-**Příkazy zobrazí aplikace, služby active directory**
+**Příkazy pro zobrazení aplikace active directory**
 
     ad app create [options]
     ad app delete [options] <object-id>
 
-**Příkazy pro zobrazení skupin služby active directory**
+**Příkazy pro zobrazení skupiny služby active directory**
 
     ad group list [options]
     ad group show [options]
 
-**Zadejte informace active directory dílčí skupiny nebo člen příkazy**
+**Příkazy k poskytování informací active directory dílčí skupinu nebo člena**
 
     ad group member list [options] [objectId]
 
-**Příkazy zobrazíte objekty služby active directory**
+**Příkazy pro zobrazení objektů služby active directory**
 
     ad sp list [options]
     ad sp show [options]
     ad sp create [options] <application-id>
     ad sp delete [options] <object-id>
 
-**Příkazy pro zobrazení uživatelů služby active directory**
+**Příkazy k zobrazení uživatelů služby active directory**
 
     ad user list [options]
     ad user show [options]
 
-## <a name="azure-availset-commands-to-manage-your-availability-sets"></a>Azure availset: příkazy ke správě vaší skupiny dostupnosti
-**Vytvoří sadu ve skupině prostředků dostupnosti**
+## <a name="azure-availset-commands-to-manage-your-availability-sets"></a>Azure availset: příkazy pro správu vaší skupiny dostupnosti
+**Vytvoří dostupnosti v rámci skupiny prostředků**
 
     availset create [options] <resource-group> <name> <location> [tags]
 
-**Obsahuje seznam sad dostupnosti ve skupině prostředků**
+**Zobrazí seznam skupin dostupnosti v rámci skupiny prostředků**
 
     availset list [options] <resource-group>
 
-**Získá jeden dostupnosti ve skupině prostředků**
+**Získá jedna skupina dostupnosti v rámci skupiny prostředků**
 
     availset show [options] <resource-group> <name>
 
-**Odstraní jeden dostupnosti ve skupině prostředků**
+**Odstraní jeden dostupnosti v rámci skupiny prostředků**
 
     availset delete [options] <resource-group> <name>
 
-## <a name="azure-config-commands-to-manage-your-local-settings"></a>Azure config: příkazy pro správu místní nastavení
+## <a name="azure-config-commands-to-manage-your-local-settings"></a>Azure config: příkazy pro správu vaší místní nastavení
 **Seznam nastavení konfigurace rozhraní příkazového řádku Azure**
 
     config list [options]
 
-**Odstraňte konfigurační nastavení**
+**Odstranění nastavení konfigurace**
 
     config delete [options] <name>
 
@@ -132,50 +132,50 @@ Informace o vašem předplatném Azure se používá nástrojem pro připojení 
 
     config set <name> <value>
 
-**Nastaví pracovní režim rozhraní příkazového řádku Azure k buď `arm` nebo `asm`**
+**Nastaví pracovní režim rozhraní příkazového řádku Azure buď `arm` nebo `asm`**
 
     config mode [options] <modename>
 
 
-## <a name="azure-feature-commands-to-manage-account-features"></a>Funkce Azure: příkazy ke správě funkcí účtu
-**Zobrazí seznam všech funkcí, které jsou k dispozici pro vaše předplatné**
+## <a name="azure-feature-commands-to-manage-account-features"></a>Funkce Azure: příkazy pro správu účtu funkce
+**Seznam všech funkcí dostupných pro vaše předplatné**
 
     feature list [options]
 
-**Zobrazuje funkce**
+**Ukazuje funkce**
 
     feature show [options] <providerName> <featureName>
 
-**Zaregistruje náhled funkce zprostředkovatele prostředků**
+**Zaregistruje zobrazená v náhledu funkce poskytovatele prostředků**
 
     feature register [options] <providerName> <featureName>
 
-## <a name="azure-group-commands-to-manage-your-resource-groups"></a>skupiny Azure: příkazy ke správě vaší skupiny prostředků
-**Vytvoří skupinu prostředků.**
+## <a name="azure-group-commands-to-manage-your-resource-groups"></a>Skupina Azure: příkazy pro správu vaší skupiny prostředků
+**Vytvoří skupinu prostředků**
 
     group create [options] <name> <location>
 
-**Nastavte značky na skupinu prostředků.**
+**Nastavit značky do skupiny prostředků**
 
     group set [options] <name> <tags>
 
-**Odstraní skupinu prostředků.**
+**Odstraní skupinu prostředků**
 
     group delete [options] <name>
 
-**Vypíše skupinu prostředků pro vaše předplatné**
+**Seznamy skupin prostředků ke správě předplatného**
 
     group list [options]
 
-**Zobrazuje skupinu prostředků pro vaše předplatné**
+**Ukazuje skupinu prostředků pro vaše předplatné**
 
     group show [options] <name>
 
-**Příkazy pro správu protokolů skupiny prostředků**
+**Příkazy pro správu protokolů skupin prostředků**
 
     group log show [options] [name]
 
-**Příkazy ke správě nasazení ve skupině prostředků**
+**Příkazy pro správu vašeho nasazení do skupiny prostředků**
 
     group deployment create [options] [resource-group] [name]
     group deployment list [options] <resource-group> [state]
@@ -190,22 +190,22 @@ Informace o vašem předplatném Azure se používá nástrojem pro připojení 
     group template validate [options] <resource-group>
 
 ## <a name="azure-hdinsight-commands-to-manage-your-hdinsight-clusters"></a>Azure hdinsight: příkazy pro správu clusterů HDInsight
-**Příkazy k vytvoření nebo přidejte do konfiguračního souboru clusteru**
+**Příkazy, které vytvoříte nebo přidáte do souboru konfigurace clusteru**
 
     hdinsight config create [options] <configFilePath> <overwrite>
     hdinsight config add-config-values [options] <configFilePath>
     hdinsight config add-script-action [options] <configFilePath>
 
-Příklad: Vytvořte konfigurační soubor, který obsahuje akce skriptu ke spuštění při vytvoření clusteru.
+Příklad: Vytvořte konfigurační soubor, který obsahuje akce skriptu ke spuštění při vytváření clusteru.
 
     hdinsight config create "C:\myFiles\configFile.config"
     hdinsight config add-script-action --configFilePath "C:\myFiles\configFile.config" --nodeType HeadNode --uri <scriptActionURI> --name myScriptAction --parameters "-param value"
 
-**Příkaz pro vytvoření clusteru s podporou ve skupině prostředků**
+**Příkaz k vytvoření clusteru ve skupině prostředků**
 
     hdinsight cluster create [options] <clusterName>
 
-Příklad: Vytvoření Storm v clusteru systému Linux
+Příklad: Vytvořit Storm na clusteru s Linuxem
 
     azure hdinsight cluster create -g myarmgroup -l westus -y Linux --clusterType Storm --version 3.2 --defaultStorageAccountName mystorageaccount --defaultStorageAccountKey <defaultStorageAccountKey> --defaultStorageContainer mycontainer --userName admin --password <clusterPassword> --sshUserName sshuser --sshPassword <sshPassword> --workerNodeCount 1 myNewCluster01
 
@@ -279,49 +279,49 @@ Parametr možnosti:
 
     hdinsight cluster delete [options] <clusterName>
 
-**Příkaz Zobrazit podrobnosti o clusteru**
+**Příkazu můžete zobrazit podrobnosti o clusteru**
 
     hdinsight cluster show [options] <clusterName>
 
-**Příkaz k zobrazení seznamu všech clusterech (v konkrétní skupinu prostředků, pokud zadaná)**
+**Zobrazte seznam všech clusterů (v konkrétní skupině prostředků, pokud je k dispozici)**
 
     hdinsight cluster list [options]
 
-**Příkaz ke změně velikosti clusteru**
+**Příkaz pro změnu velikosti clusteru**
 
     hdinsight cluster resize [options] <clusterName> <targetInstanceCount>
 
-**Příkaz, který povolí přístup protokolu HTTP pro cluster**
+**Příkaz, který umožní přístup protokolu HTTP pro cluster**
 
     hdinsight cluster enable-http-access [options] <clusterName> <userName> <password>
 
-**Zakažte přístup protokolu HTTP pro cluster**
+**Příkaz můžete zakázat přístup protokolu HTTP pro cluster**
 
     hdinsight cluster disable-http-access [options] <clusterName>
 
-**Příkaz pro povolení přístupu protokolu RDP pro cluster**
+**Příkaz, který umožní přístup protokolu RDP pro cluster**
 
     hdinsight cluster enable-rdp-access [options] <clusterName> <rdpUserName> <rdpPassword> <rdpExpiryDate>
 
-**Zakažte přístup protokolu HTTP pro cluster**
+**Příkaz můžete zakázat přístup protokolu HTTP pro cluster**
 
     hdinsight cluster disable-rdp-access [options] <clusterName>
 
-## <a name="azure-insights-commands-related-to-monitoring-insights-events-alert-rules-autoscale-settings-metrics"></a>statistiky Azure: příkazy související s monitorování statistiky (události, pravidla výstrah, nastavení automatického škálování, metriky)
-**Načtení protokoly operací pro předplatné, correlationId, skupinu prostředků, prostředků nebo poskytovatele prostředků**
+## <a name="azure-insights-commands-related-to-monitoring-insights-events-alert-rules-autoscale-settings-metrics"></a>Azure insights: příkazy související s monitorování Insights (události, pravidel upozornění, nastavení automatického škálování, metriky)
+**Načíst protokoly operací pro předplatné, ID korelace, skupinu prostředků, prostředků nebo poskytovatele prostředků**
 
     insights logs list [options]
 
-## <a name="azure-location-commands-to-get-the-available-locations-for-all-resource-types"></a>umístění Azure: příkazy a získat umístění dostupné pro všechny typy prostředků
+## <a name="azure-location-commands-to-get-the-available-locations-for-all-resource-types"></a>umístění Azure: příkazy k získání umístění k dispozici pro všechny typy prostředků
 **Seznam dostupných umístění**
 
     location list [options]
 
-## <a name="azure-network-commands-to-manage-network-resources"></a>síť Azure: příkazy ke správě síťových prostředků
+## <a name="azure-network-commands-to-manage-network-resources"></a>síť Azure: příkazy pro správu síťových prostředků
 **Příkazy pro správu virtuálních sítí**
 
     network vnet create [options] <resource-group> <name> <location>
-Vytvoří virtuální síť. V následujícím příkladu vytvoříme virtuální síť s názvem newvnet pro myresourcegroup skupiny prostředků v oblasti západní USA.
+Vytvoří virtuální síť. V následujícím příkladu vytvoříme virtuální síť s názvem newvnet pro skupiny prostředků myresourcegroup v oblasti západní USA.
 
     azure network vnet create myresourcegroup newvnet "west us"
     info:    Executing command network vnet create
@@ -364,7 +364,7 @@ Parametr možnosti:
 
     network vnet set [options] <resource-group> <name>
 
-Aktualizace konfigurace virtuální sítě ve skupině prostředků.
+Aktualizuje konfiguraci virtuální sítě v rámci skupiny prostředků.
 
     azure network vnet set myresourcegroup newvnet
 
@@ -437,7 +437,7 @@ Parametr možnosti:
 <BR>
 
     network vnet show [options] <resource-group> <name>
-Příkaz se zobrazují vlastnosti virtuální sítě ve skupině prostředků.
+Příkaz zobrazuje vlastnosti virtuální sítě ve skupině prostředků.
 
     azure network vnet show -g myresourcegroup -n newvnet
 
@@ -479,11 +479,11 @@ Parametr možnosti:
      -s, --subscription <subscription>      the subscription identifier
 
 
-**Příkazy ke správě virtuální sítě, podsítě**
+**Příkazy pro správu virtuální sítě podsítě**
 
     network vnet subnet create [options] <resource-group> <vnet-name> <name>
 
-Přidá jinou podsítí existující virtuální síť.
+Přidá další podsítě do existující virtuální sítě.
 
     azure network vnet subnet create -g myresourcegroup --vnet-name newvnet -n subnet --address-prefix 10.0.1.0/24
 
@@ -516,7 +516,7 @@ Parametr možnosti:
 
     network vnet subnet set [options] <resource-group> <vnet-name> <name>
 
-Nastaví podsíť konkrétní virtuální sítě ve skupině prostředků.
+Nastaví konkrétní virtuální síť podsíť v rámci skupiny prostředků.
 
     C:\>azure network vnet subnet set -g myresourcegroup --vnet-name newvnet -n subnet1
 
@@ -534,7 +534,7 @@ Nastaví podsíť konkrétní virtuální sítě ve skupině prostředků.
 
     network vnet subnet list [options] <resource-group> <vnet-name>
 
-Zobrazí seznam všech podsítí virtuální sítě pro konkrétní virtuální síť ve skupině prostředků.
+Zobrazí seznam všech podsítí virtuální sítě pro konkrétní virtuální sítě v rámci skupiny prostředků.
 
     azure network vnet subnet set -g myresourcegroup --vnet-name newvnet -n subnet1
 
@@ -577,7 +577,7 @@ Parametr možnosti:
 <BR>
 
     network vnet subnet delete [options] <resource-group> <vnet-name> <subnet-name>
-Odebere existující virtuální síť podsíť.
+Odebere z existující virtuální síť podsíť.
 
     azure network vnet subnet delete -g myresourcegroup --vnet-name newvnet -n subnet1
 
@@ -631,7 +631,7 @@ Parametr možnosti:
 <BR>
 
     network lb list [options] <resource-group>
-Seznam prostředků nástroje pro vyrovnávání zatížení v rámci skupiny prostředků.
+Zobrazí seznam prostředků nástroje pro vyrovnávání zatížení v rámci skupiny prostředků.
 
     azure network lb list myresourcegroup
 
@@ -653,7 +653,7 @@ Parametr možnosti:
 
     network lb show [options] <resource-group> <name>
 
-Zobrazí načíst informace o službě Vyrovnávání služby Vyrovnávání konkrétní zatížení v rámci skupiny prostředků
+Zobrazí načíst informace o službě Vyrovnávání nástroje pro vyrovnávání zatížení pro konkrétní v rámci skupiny prostředků
 
     azure network lb show myresourcegroup mylb -v
 
@@ -679,7 +679,7 @@ Parametr možnosti:
 
     network lb delete [options] <resource-group> <name>
 
-Odstraňte prostředky nástroje pro vyrovnávání zatížení.
+Odstranění prostředků nástroje pro vyrovnávání zatížení.
 
     azure network lb delete  myresourcegroup mylb
 
@@ -703,7 +703,7 @@ Parametr možnosti:
 
     network lb probe create [options] <resource-group> <lb-name> <name>
 
-Vytvoření konfigurace testu pro stav nástroji pro vyrovnávání zatížení. Mějte na paměti ke spuštění tohoto příkazu, nástroj pro vyrovnávání zatížení vyžaduje prostředek ip front-endu (podívejte se na příkaz "azure network ip front-endu" přiřadit ip adresu ke službě Vyrovnávání zatížení).
+Vytvořte v nástroji pro vyrovnávání zatížení konfiguraci sondy pro stav. Mějte na paměti ke spuštění tohoto příkazu, nástroj pro vyrovnávání zatížení vyžaduje front-endová ip prostředek (prohlédněte si příkaz "azure network frontend-ip" pro přiřazení ip adresy na nástroj pro vyrovnávání zatížení).
 
     azure network lb probe create -g myresourcegroup --lb-name mylb -n mylbprobe --protocol tcp --port 80 -i 300
 
@@ -731,7 +731,7 @@ Parametr možnosti:
 
     network lb probe set [options] <resource-group> <lb-name> <name>
 
-Aktualizace existující sondu nástroje pro vyrovnávání zatížení s novými hodnotami pro ni.
+Aktualizuje existující test paměti nástroje pro vyrovnávání zatížení s novými hodnotami pro něj.
 
     azure network lb probe set -g myresourcegroup -l mylb -n mylbprobe -p mylbprobe1 -p TCP -o 443 -i 300
 
@@ -759,7 +759,7 @@ Parametr možností
 
     network lb probe list [options] <resource-group> <lb-name>
 
-Seznam vlastností testu pro skupinu pro vyrovnávání zatížení.
+Seznam vlastností testu pro sadu Nástroje pro vyrovnávání zatížení.
 
     C:\>azure network lb probe list -g myresourcegroup -l mylb
 
@@ -781,7 +781,7 @@ Parametr možnosti:
 
 
     network lb probe delete [options] <resource-group> <lb-name> <name>
-Odebere testu vytvořit nástroj pro vyrovnávání zatížení.
+Odebere testu, vytvoří nástroj pro vyrovnávání zatížení.
 
     azure network lb probe delete -g myresourcegroup -l mylb -n mylbprobe
 
@@ -791,10 +791,10 @@ Odebere testu vytvořit nástroj pro vyrovnávání zatížení.
     + Updating load balancer "mylb"
     info:    network lb probe delete command OK
 
-**Příkazy pro správu front-endové konfigurace protokolu ip nástroje pro vyrovnávání zatížení**
+**Příkazy pro správu konfigurací protokolu ip front-endu nástroje pro vyrovnávání zatížení**
 
     network lb frontend-ip create [options] <resource-group> <lb-name> <name>
-Vytvoří konfigurace IP front-endu do existující sady Nástroje pro vyrovnávání zatížení.
+Vytvoří konfiguraci protokolu IP front-endu do existující sady Nástroje pro vyrovnávání zatížení.
 
     azure network lb frontend-ip create -g myresourcegroup --lb-name mylb -n myfrontendip -o Dynamic -e subnet -m newvnet
 
@@ -822,7 +822,7 @@ Vytvoří konfigurace IP front-endu do existující sady Nástroje pro vyrovnáv
 
     network lb frontend-ip set [options] <resource-group> <lb-name> <name>
 
-Aktualizuje existující konfigurace IP front-endu. Následující příkaz přidá názvem mypubip5 na existující zatížení vyrovnávání front-end IP adresy s názvem myfrontendip veřejnou IP adresu.
+Aktualizuje existující konfigurace IP adresy front-endu. Následující příkaz přidá volá mypubip5 do stávající zatížení vyrovnávání front-endové IP adresy s názvem myfrontendip veřejnou IP adresu.
 
     azure network lb frontend-ip set -g myresourcegroup --lb-name mylb -n myfrontendip -i mypubip5
 
@@ -872,7 +872,7 @@ Parametr možnosti:
 
     network lb frontend-ip list [options] <resource-group> <lb-name>
 
-Vypíše seznam všech prostředků front-endovou IP, která je nakonfigurována pro vyrovnávání zatížení.
+Vypíše seznam všech prostředků front-endová IP, která je nakonfigurovaná pro nástroj pro vyrovnávání zatížení.
 
     azure network lb frontend-ip list -g myresourcegroup -l mylb
 
@@ -894,7 +894,7 @@ Parametr možnosti:
 <BR>
 
     network lb frontend-ip delete [options] <resource-group> <lb-name> <name>
-Odstraní objekt IP front-endu přidružené ke službě Vyrovnávání zatížení
+Odstraní objekt IP adresy front-endu přidružené ke službě Vyrovnávání zatížení
 
     network lb frontend-ip delete -g myresourcegroup -l mylb -n myfrontendip
     info:    Executing command network lb frontend-ip delete
@@ -913,11 +913,11 @@ Parametr možnosti:
     -q, --quiet                            quiet mode, do not ask for delete confirmation
     -s, --subscription <subscription>      the subscription identifier
 
-**Příkazy pro správu back-endové fondy adres služby Vyrovnávání zatížení**
+**Příkazy pro správu back-endové fondy adres nástroje pro vyrovnávání zatížení**
 
     network lb address-pool create [options] <resource-group> <lb-name> <name>
 
-Vytvořte fond adres back-end pro vyrovnávání zatížení.
+Vytvoření back-endový fond adres nástroje pro vyrovnávání zatížení.
 
     azure network lb address-pool create -g myresourcegroup --lb-name mylb -n myaddresspool
 
@@ -948,7 +948,7 @@ Parametr možnosti:
 
     network lb address-pool list [options] <resource-group> <lb-name>
 
-Seznam rozsahu fondu IP adres back-end pro určité skupiny zdrojů
+Seznam rozsahu fondu IP adres back-endu pro konkrétní skupině prostředků
 
     azure network lb address-pool list -g myresourcegroup -l mylb
 
@@ -969,9 +969,9 @@ Parametr možnosti:
      -s, --subscription <subscription>      the subscription identifier
 
 <BR>
-    Odstranit fond adres vyrovnáváním zatížení sítě [možnosti] < resource-group >< lb-name > <name>
+    Network lb-fondu adres odstranit [parametry] < resource-group >< lb-name > <name>
 
-Odebere prostředku rozsah fondu back-end IP z nástroje pro vyrovnávání zatížení.
+Odstraní prostředky rozsah fondu back-end IP z nástroje pro vyrovnávání zatížení.
 
     azure network lb address-pool delete -g myresourcegroup -l mylb -n mybackendpool
 
@@ -992,14 +992,14 @@ Parametr možnosti:
     -q, --quiet                            quiet mode, do not ask for delete confirmation
     -s, --subscription <subscription>      the subscription identifier
 
-**Pravidla pro vyrovnávání zatížení příkazy pro správu**
+**Příkazy pro správu pravidla služby load balancer**
 
     network lb rule create [options] <resource-group> <lb-name> <name>
-Vytvořte pravidla nástroje pro vyrovnávání zatížení.
+Vytvoření pravidla nástroje pro vyrovnávání zatížení.
 
-Můžete vytvořit pravidlo služby load balancer konfigurace koncového bodu front-end pro vyrovnávání zatížení a rozsah adres fondu back-end přijímat příchozí síťový provoz. Nastavení zahrnuje také porty pro koncový bod IP adresy front-endu a porty pro rozsah adres fondu back-end.
+Můžete vytvořit pravidlo služby load balancer konfigurace koncového bodu front-endu nástroje pro vyrovnávání zatížení a rozsah adres fondu back-endu pro příjem příchozího síťového provozu. Nastavení zahrnují také porty pro koncový bod IP adresy front-endu a porty pro rozsah fondu adres back-endu.
 
-Následující příklad ukazuje, jak vytvořit pravidlo Vyrovnávání zatížení, koncový bod front-endu naslouchá na portu 80 TCP a načíst Vyrovnávání zatížení sítě, odesílání na portu 8080 pro rozsah adres fondu back-end.
+Následující příklad ukazuje, jak vytvořit pravidlo nástroje pro vyrovnávání zatížení, koncového bodu front-end naslouchání na portu 80 TCP a načíst Vyrovnávání zatížení sítě odesílá na port 8080 pro rozsah fondu adres back-endu.
 
     azure network lb rule create -g myresourcegroup -l mylb -n mylbrule -p tcp -f 80 -b 8080 -i 10
 
@@ -1027,7 +1027,7 @@ Následující příklad ukazuje, jak vytvořit pravidlo Vyrovnávání zatíže
 
     network lb rule set [options] <resource-group> <lb-name> <name>
 
-Aktualizuje existující pravidlo Vyrovnávání zatížení nastavena v určité skupiny zdrojů. V následujícím příkladu jsme změnili název pravidla z mylbrule k mynewlbrule.
+Aktualizuje existující pravidlo nástroje pro vyrovnávání zatížení nastavena v konkrétní skupině prostředků. V následujícím příkladu jsme název změnili na pravidlo z mylbrule mynewlbrule.
 
     azure network lb rule set -g myresourcegroup -l mylb -n mylbrule -r mynewlbrule -p tcp -f 80 -b 8080 -i 10 -t myfrontendip -o mybackendpool
 
@@ -1072,7 +1072,7 @@ Parametr možnosti:
 
     network lb rule list [options] <resource-group> <lb-name>
 
-Zobrazí všechny načíst pravidla nástroje pro vyrovnávání nakonfigurované pro nástroj pro vyrovnávání zatížení v určité skupiny zdrojů.
+Zobrazí seznam všech pravidla služby load balancer nakonfigurovaná pro nástroj pro vyrovnávání zatížení v konkrétní skupině prostředků.
 
     azure network lb rule list -g myresourcegroup -l mylb
 
@@ -1094,7 +1094,7 @@ Parametr možnosti:
 
     network lb rule delete [options] <resource-group> <lb-name> <name>
 
-Odstraní pravidlo Vyrovnávání zatížení.
+Odstraní pravidlo služby load balancer.
 
     azure network lb rule delete -g myresourcegroup -l mylb -n mynewlbrule
 
@@ -1120,7 +1120,7 @@ Parametr možnosti:
     network lb inbound-nat-rule create [options] <resource-group> <lb-name> <name>
 Vytvoří příchozí pravidlo NAT nástroje pro vyrovnávání zatížení.
 
-V následujícím příkladu jsme vytvořili pravidlo NAT z IP adresy front-endu (který byl předtím definovaný pomocí příkazu "azure network ip front-endu") s naslouchající port příchozí a odchozí port, který používá nástroj pro vyrovnávání zatížení k posílání síťového provozu.
+V následujícím příkladu jsme vytvořili pravidlo NAT z IP adresy front-endu (který byl předtím definovaný pomocí příkazu "azure network frontend-ip") s port pro naslouchání příchozí a odchozí port, který používá nástroj pro vyrovnávání zatížení ke směrování síťového provozu.
 
     azure network lb inbound-nat-rule create -g myresourcegroup -l mylb -n myinboundnat -p tcp -f 80 -b 8080 -i myfrontendip
 
@@ -1162,7 +1162,7 @@ Parametr možnosti:
 <BR>
 
     network lb inbound-nat-rule set [options] <resource-group> <lb-name> <name>
-Aktualizuje existující pravidlo příchozí nat. V následujícím příkladu jsme změnili příchozí port naslouchání z 80 k 81.
+Aktualizuje existující pravidlo příchozího překladu adres. V následujícím příkladu jsme změnili příchozí port pro naslouchání z 80 k 81.
 
     azure network lb inbound-nat-rule set -g group-1 -l mylb -n myinboundnat -p tcp -f 81 -b 8080 -i myfrontendip
 
@@ -1230,7 +1230,7 @@ Parametr možnosti:
 
     network lb inbound-nat-rule delete [options] <resource-group> <lb-name> <name>
 
-Odstraní pravidlo NAT nástroje pro vyrovnávání zatížení v určité skupiny zdrojů.
+Odstraní pravidlo NAT nástroje pro vyrovnávání zatížení v konkrétní skupině prostředků.
 
     azure network lb inbound-nat-rule delete -g myresourcegroup -l mylb -n myinboundnat
 
@@ -1254,7 +1254,7 @@ Parametr možnosti:
 **Příkazy pro správu veřejné ip adresy**
 
     network public-ip create [options] <resource-group> <name> <location>
-Vytvoří prostředek veřejné IP adresy. Vytvoříte prostředek veřejné IP adresy a přidružit ji k názvu domény.
+Vytvoří prostředek veřejné IP adresy. Vytvoříte prostředek veřejné IP adresy a přidružte k názvu domény.
 
     azure network public-ip create -g myresourcegroup -n mytestpublicip1 -l eastus -d azureclitest -a "Dynamic"
     info:    Executing command network public-ip create
@@ -1294,7 +1294,7 @@ Parametr možnosti:
 <br>
 
     network public-ip set [options] <resource-group> <name>
-Aktualizuje vlastnosti existující prostředek veřejné IP adresy. V následujícím příkladu jsme změnili veřejnou IP adresu z dynamického statický.
+Aktualizuje vlastnosti existujícího prostředku veřejné IP adresy. V následujícím příkladu jsme změnili veřejnou IP adresu z dynamické na statickou.
 
     azure network public-ip set -g group-1 -n mytestpublicip1 -d azureclitest -a "Static"
     info:    Executing command network public-ip set
@@ -1333,7 +1333,7 @@ Parametr možnosti:
     -s, --subscription <subscription>            the subscription identifier
 
 <br>
-    seznam sítí veřejné ip [možnosti] < resource-group > uvádí všechny prostředky veřejné IP adresy v rámci skupiny prostředků.
+    Network public-ip list [parametry] < resource-group > Vypíše seznam všechny prostředky veřejné IP adresy v rámci skupiny prostředků.
 
     azure network public-ip list -g myresourcegroup
 
@@ -1354,7 +1354,7 @@ Parametr možnosti:
     -g, --resource-group <resource-group>  the name of the resource group
     -s, --subscription <subscription>      the subscription identifier
 <BR>
-    veřejné ip sítě zobrazit [možnosti] < resource-group > <name>
+    Network public-ip show [parametry] < resource-group > <name>
 
 Zobrazí vlastnosti veřejné IP adresy pro prostředek veřejné IP adresy v rámci skupiny prostředků.
 
@@ -1406,10 +1406,10 @@ Parametr možnosti:
     -s, --subscription <subscription>      the subscription identifier
 
 
-**Příkazy ke správě síťových rozhraní**
+**Příkazy pro správu síťových rozhraní**
 
     network nic create [options] <resource-group> <name> <location>
-Vytvoří prostředek s názvem síťového rozhraní (NIC), který lze použít pro vyrovnávání zatížení nebo přidružit k virtuálnímu počítači.
+Vytvoří prostředek s názvem síťové rozhraní (NIC), které lze použít pro nástroje pro vyrovnávání zatížení nebo přidružit k virtuálnímu počítači.
 
     azure network nic create -g myresourcegroup -l eastus -n testnic1 --subnet-name subnet-1 --subnet-vnet-name myvnet
 
@@ -1469,7 +1469,7 @@ Parametr možnosti:
     network nic show [options] <resource-group> <name>
     network nic delete [options] <resource-group> <name>
 
-**Příkazy pro správu skupin zabezpečení sítě**
+**Příkazy pro správu skupiny zabezpečení sítě**
 
     network nsg create [options] <resource-group> <name> <location>
     network nsg set [options] <resource-group> <name>
@@ -1477,7 +1477,7 @@ Parametr možnosti:
     network nsg show [options] <resource-group> <name>
     network nsg delete [options] <resource-group> <name>
 
-**Příkazy pro správu sítě pravidel skupiny zabezpečení**
+**Příkazy pro správu pravidel skupiny zabezpečení sítě**
 
     network nsg rule create [options] <resource-group> <nsg-name> <name>
     network nsg rule set [options] <resource-group> <nsg-name> <name>
@@ -1485,7 +1485,7 @@ Parametr možnosti:
     network nsg rule show [options] <resource-group> <nsg-name> <name>
     network nsg rule delete [options] <resource-group> <nsg-name> <name>
 
-**Příkazy pro správu profil správce provozu**
+**Příkazy pro správu profil služby traffic manager**
 
     network traffic-manager profile create [options] <resource-group> <name>
     network traffic-manager profile set [options] <resource-group> <name>
@@ -1494,43 +1494,43 @@ Parametr možnosti:
     network traffic-manager profile delete [options] <resource-group> <name>
     network traffic-manager profile is-dns-available [options] <resource-group> <relative-dns-name>
 
-**Příkazy, které umožňuje spravovat koncové body správce provozu**
+**Příkazy pro správu koncové body služby traffic manager**
 
     network traffic-manager profile endpoint create [options] <resource-group> <profile-name> <name> <endpoint-location>
     network traffic-manager profile endpoint set [options] <resource-group> <profile-name> <name>
     network traffic-manager profile endpoint delete [options] <resource-group> <profile-name> <name>
 
-**Příkazy ke správě virtuálních brány sítě**
+**Příkazy pro správu virtuální síťové brány**
 
     network gateway list [options] <resource-group>
 
-## <a name="azure-provider-commands-to-manage-resource-provider-registrations"></a>Zprostředkovatel Azure: příkazy ke správě registrace poskytovatele prostředků
-**Zobrazit seznam poskytovatelů aktuálně registrovaný ve službě Správce prostředků**
+## <a name="azure-provider-commands-to-manage-resource-provider-registrations"></a>Zprostředkovatel Azure: příkazy pro správu registrace poskytovatele prostředků
+**Seznam aktuálně registrovaných zprostředkovatelů v Resource Manageru**
 
     provider list [options]
 
-**Zobrazit podrobnosti o obor názvů požadovaný zprostředkovatele**
+**Zobrazit podrobnosti o oborech názvů poskytovatele požadovaný**
 
     provider show [options] <namespace>
 
-**Zprostředkovatel registrace k odběru**
+**Registrace poskytovatele s předplatným**
 
     provider register [options] <namespace>
 
-**Zrušte registraci poskytovatele k odběru**
+**Zrušení registrace zprostředkovatele s předplatným**
 
     provider unregister [options] <namespace>
 
-## <a name="azure-resource-commands-to-manage-your-resources"></a>prostředek Azure: příkazy ke správě prostředků
+## <a name="azure-resource-commands-to-manage-your-resources"></a>Azure resource: příkazy ke správě prostředků
 **Vytvoří prostředek ve skupině prostředků**
 
     resource create [options] <resource-group> <name> <resource-type> <location> <api-version>
 
-**Aktualizace prostředků ve skupině prostředků, aniž by šablony nebo parametry**
+**Aktualizuje prostředek ve skupině prostředků bez parametrů šablony**
 
     resource set [options] <resource-group> <name> <resource-type> <properties> <api-version>
 
-**Zobrazí seznam prostředků**
+**Seznamy prostředků**
 
     resource list [options] [resource-group]
 
@@ -1543,21 +1543,21 @@ Parametr možnosti:
     resource delete [options] <resource-group> <name> <resource-type> <api-version>
 
 ## <a name="azure-role-commands-to-manage-your-azure-roles"></a>Azure role: příkazy pro správu Azure role
-**Získání všech definic rolí k dispozici**
+**Získat všechny dostupné role definice**
 
     role list [options]
 
-**Získat definici dostupné role**
+**Získat definici role k dispozici**
 
     role show [options] [name]
 
-**Příkazy pro správu přiřazení role**
+**Příkazy pro správu vaše přiřazení role**
 
     role assignment create [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
     role assignment list [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
     role assignment delete [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
 
-## <a name="azure-storage-commands-to-manage-your-storage-objects"></a>úložiště Azure: příkazy ke správě vašich objektů úložiště
+## <a name="azure-storage-commands-to-manage-your-storage-objects"></a>Azure storage: příkazy pro správu vašich objektů úložiště
 **Příkazy pro správu účtů úložiště**
 
     storage account list [options]
@@ -1566,16 +1566,16 @@ Parametr možnosti:
     storage account set [options] <name>
     storage account delete [options] <name>
 
-**Příkazy ke správě vašeho klíče účtu úložiště**
+**Příkazy pro správu klíčů účtu úložiště**
 
     storage account keys list [options] <name>
     storage account keys renew [options] <name>
 
-**Příkazy zobrazíte připojovacího řetězce úložiště**
+**Příkazy, které zobrazí připojovací řetězec úložiště**
 
     storage account connectionstring show [options] <name>
 
-**Příkazy pro správu úložných kontejnerů**
+**Příkazy pro správu úložiště kontejnerů**
 
     storage container list [options] [prefix]
     storage container show [options] [container]
@@ -1583,11 +1583,11 @@ Parametr možnosti:
     storage container delete [options] [container]
     storage container set [options] [container]
 
-**Příkazy ke správě sdílený přístup podpisy vašeho kontejneru úložiště**
+**Příkazy pro správu sdílené přístupové podpisy vašeho kontejneru úložiště**
 
     storage container sas create [options] [container] [permissions] [expiry]
 
-**Příkazy ke správě uložené přístup zásady vašeho kontejneru úložiště**
+**Příkazy pro správu uložené získat přístup k zásadám vašeho kontejneru úložiště**
 
     storage container policy create [options] [container] [name]
     storage container policy show [options] [container] [name]
@@ -1603,17 +1603,17 @@ Parametr možnosti:
     storage blob upload [options] [file] [container] [blob]
     storage blob download [options] [container] [blob] [destination]
 
-**Příkazy pro správu objektu blob služby operace kopírování**
+**Operace kopírování příkazy pro správu vašich objektů blob**
 
     storage blob copy start [options] [sourceUri] [destContainer]
     storage blob copy show [options] [container] [blob]
     storage blob copy stop [options] [container] [blob] [copyid]
 
-**Příkazy pro správu sdílený přístup k podpisu objektu blob služby úložiště**
+**Příkazy pro správu sdílený přístup k podpisu objektu blob služby Storage**
 
     storage blob sas create [options] [container] [blob] [permissions] [expiry]
 
-**Příkazy ke správě vašeho úložiště sdílené složky**
+**Příkazy pro správu sdílené složky úložiště**
 
     storage share create [options] [share]
     storage share show [options] [share]
@@ -1627,23 +1627,23 @@ Parametr možnosti:
     storage file upload [options] [source] [share] [path]
     storage file download [options] [share] [path] [destination]
 
-**Příkazy ke správě adresáře úložiště souborů**
+**Příkazy pro správu adresáře úložiště souborů**
 
     storage directory create [options] [share] [path]
     storage directory delete [options] [share] [path]
 
-**Příkazy pro správu vašeho úložiště fronty**
+**Příkazy pro správu vašich front služby Storage**
 
     storage queue create [options] [queue]
     storage queue list [options] [prefix]
     storage queue show [options] [queue]
     storage queue delete [options] [queue]
 
-**Příkazy ke správě sdílený přístup podpisy fronty úložiště**
+**Příkazy pro správu sdílené přístupové podpisy vaší fronty úložiště**
 
     storage queue sas create [options] [queue] [permissions] [expiry]
 
-**Příkazy ke správě uložené přístup zásady fronty úložiště**
+**Příkazy pro správu uložené přístup zásady vaší frontě úložiště**
 
     storage queue policy create [options] [queue] [name]
     storage queue policy show [options] [queue] [name]
@@ -1651,28 +1651,28 @@ Parametr možnosti:
     storage queue policy set [options] [queue] [name]
     storage queue policy delete [options] [queue] [name]
 
-**Příkazy ke správě vašeho úložiště vlastnosti protokolování**
+**Příkazy pro správu vašeho úložiště vlastnosti protokolování**
 
     storage logging show [options]
     storage logging set [options]
 
-**Příkazy pro správu vašeho úložiště metriky vlastnosti**
+**Příkazy pro správu vašich metrik vlastnosti úložiště**
 
     storage metrics show [options]
     storage metrics set [options]
 
-**Příkazy pro správu vašeho úložiště tabulek**
+**Příkazy pro správu úložiště tabulek**
 
     storage table create [options] [table]
     storage table list [options] [prefix]
     storage table show [options] [table]
     storage table delete [options] [table]
 
-**Příkazy ke správě sdílený přístup podpisy tabulku úložiště**
+**Příkazy pro správu sdílené přístupové podpisy úložiště tabulky**
 
     storage table sas create [options] [table] [permissions] [expiry]
 
-**Příkazy ke správě uložené přístup zásady tabulku úložiště**
+**Příkazy pro správu uložené zásady tabulky úložiště přístupu**
 
     storage table policy create [options] [table] [name]
     storage table policy show [options] [table] [name]
@@ -1680,16 +1680,16 @@ Parametr možnosti:
     storage table policy set [options] [table] [name]
     storage table policy delete [options] [table] [name]
 
-## <a name="azure-tag-commands-to-manage-your-resource-manager-tag"></a>Azure značky: příkazy ke správě vašeho značky správce prostředků
-**Přidání značky**
+## <a name="azure-tag-commands-to-manage-your-resource-manager-tag"></a>Azure značky: příkazy pro správu vaší značky správce prostředků
+**Přidat značku**
 
     tag create [options] <name> <value>
 
-**Odeberte celý značka nebo hodnota značky**
+**Odebrat značku celý nebo hodnotu značky**
 
     tag delete [options] <name> <value>
 
-**Zobrazí informace o značkách**
+**Obsahuje informace, značky**
 
     tag list [options]
 
@@ -1697,17 +1697,17 @@ Parametr možnosti:
 
     tag show [options] [name]
 
-## <a name="azure-vm-commands-to-manage-your-azure-virtual-machines"></a>virtuální počítač Azure: příkazy ke správě virtuálních počítačů Azure
+## <a name="azure-vm-commands-to-manage-your-azure-virtual-machines"></a>virtuální počítač Azure: příkazy pro správu vašich Azure Virtual Machines
 **Vytvoření virtuálního počítače**
 
     vm create [options] <resource-group> <name> <location> <os-type>
 
-**Vytvoření virtuálního počítače s výchozími prostředky**
+**Vytvoření Virtuálního počítače s výchozí prostředky**
 
     vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password
 
 > [!TIP]
-> Počínaje CLI verze 0.10, můžete zadat krátký alias, například "UbuntuLTS" nebo "Win2012R2Datacenter" jako `image-urn` pro některé obrázky, oblíbených Marketplace. Spustit `azure help vm quick-create` možnosti. Kromě toho od verze 0.10, `azure vm quick-create` ve výchozím nastavení používá úložiště úrovně premium, pokud je k dispozici ve vybrané oblasti.
+> Od verze CLI verze 0.10, můžete zadat krátký alias, jako je například "UbuntuLTS" nebo "Win2012R2Datacenter" jako `image-urn` pro několik oblíbených imagí Marketplace. Spustit `azure help vm quick-create` možnosti. Kromě toho od verze 0.10, `azure vm quick-create` ve výchozím nastavení používá úložiště úrovně premium, pokud je k dispozici ve vybrané oblasti.
 > 
 > 
 
@@ -1719,19 +1719,19 @@ Parametr možnosti:
 
     vm show [options] <resource-group> <name>
 
-**Odstranění jednoho virtuálního počítače ve skupině prostředků**
+**Odstranit jeden virtuální počítač v rámci skupiny prostředků**
 
     vm delete [options] <resource-group> <name>
 
-**Vypnutí jednoho virtuálního počítače ve skupině prostředků**
+**Vypnutí jednoho virtuálního počítače v rámci skupiny prostředků**
 
     vm stop [options] <resource-group> <name>
 
-**Restartování jednoho virtuálního počítače ve skupině prostředků**
+**Restartovat jeden virtuální počítač v rámci skupiny prostředků**
 
     vm restart [options] <resource-group> <name>
 
-**Spusťte jeden virtuální počítač v rámci skupiny prostředků**
+**Spustit jeden virtuální počítač v rámci skupiny prostředků**
 
     vm start [options] <resource-group> <name>
 
@@ -1743,7 +1743,7 @@ Parametr možnosti:
 
     vm sizes [options]
 
-**Zachycení virtuálního počítače jako bitovou kopii operačního systému nebo Image virtuálního počítače**
+**Zachycení virtuálního počítače jako Image virtuálního počítače nebo Image operačního systému**
 
     vm capture [options] <resource-group> <name> <vhd-name-prefix>
 
@@ -1755,15 +1755,15 @@ Parametr možnosti:
 
     vm get-instance-view [options] <resource-group> <name>
 
-**Umožňují obnovit přístup ke vzdálené ploše nebo SSH nastavení na virtuálním počítači a obnovit heslo pro účet, který má správce nebo sudo autority**
+**Umožňují obnovit přístup ke vzdálené ploše nebo SSH nastavení na virtuálním počítači a obnovit heslo pro účet, který má správce nebo autority sudo**
 
     vm reset-access [options] <resource-group> <name>
 
-**Aktualizace virtuálního počítače s nová data**
+**Aktualizace virtuálního počítače s novými daty**
 
     vm set [options] <resource-group> <name>
 
-**Příkazy pro správu dat disky virtuálního počítače**
+**Příkazy pro správu datových disků virtuálního počítače**
 
     vm disk attach-new [options] <resource-group> <vm-name> <size-in-gb> [vhd-name]
     vm disk detach [options] <resource-group> <vm-name> <lun>
@@ -1774,11 +1774,11 @@ Parametr možnosti:
     vm extension set [options] <resource-group> <vm-name> <name> <publisher-name> <version>
     vm extension get [options] <resource-group> <vm-name>
 
-**Příkazy ke správě virtuální počítač Docker**
+**Příkazy pro správu virtuální počítač Docker**
 
     vm docker create [options] <resource-group> <name> <location> <os-type>
 
-**Příkazy ke správě bitových kopií virtuálního počítače**
+**Příkazy ke správě imagí virtuálních počítačů**
 
     vm image list-publishers [options] <location>
     vm image list-offers [options] <location> <publisher>

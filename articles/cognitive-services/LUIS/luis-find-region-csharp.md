@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Prostřednictvím kódu programu publikovat najít oblast s klíče koncového bodu a aplikace ID LUIS.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 7af58f141730557f103c61a6c591908cc7ec69d0
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 53c3d1abb24ae0d5b33a2a100dda07fd20ae92d1
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057351"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039628"
 ---
 # <a name="find-endpoint-region-with-c"></a>Najít oblast koncový bod pomocí jazyka C# 
 Pokud máte LUIS ID aplikace a služby LUIS ID předplatného, můžete najít jaké oblasti se má použít pro koncový bod dotazy.

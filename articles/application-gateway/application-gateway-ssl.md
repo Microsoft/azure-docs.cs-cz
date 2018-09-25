@@ -1,6 +1,6 @@
 ---
-title: Konfigurace protokolu SSL snižování zátěže - Azure Application Gateway - PowerShell classic | Microsoft Docs
-description: Tento článek poskytuje pokyny pro vytvoření služby application gateway pomocí protokolu SSL, přesměrování zpracování úloh pomocí modelu nasazení Azure classic
+title: Konfigurace SSL snižování zátěže - Azure Application Gateway – PowerShell classic | Dokumentace Microsoftu
+description: Tento článek poskytuje pokyny k vytvoření služby application gateway s protokolem SSL snižování zátěže pomocí modelu nasazení Azure classic
 documentationcenter: na
 services: application-gateway
 author: vhorne
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: victorh
-ms.openlocfilehash: e620730b86d648c1ac9db7a9e6faa7a2d206b46e
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 782e5c4b33cc62ab5af80e823dc63b3e79a707b3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33205376"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46980521"
 ---
 # <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-classic-deployment-model"></a>Konfigurace aplikační brány pro přesměrování zpracování SSL pomocí modelu nasazení classic
 
@@ -27,7 +27,7 @@ ms.locfileid: "33205376"
 > * [Azure Portal](application-gateway-ssl-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-ssl-arm.md)
 > * [Azure classic PowerShell](application-gateway-ssl.md)
-> * [Azure CLI 2.0](application-gateway-ssl-cli.md)
+> * [Azure CLI](application-gateway-ssl-cli.md)
 
 Služba Azure Application Gateway se dá nakonfigurovat k ukončení relace Secure Sockets Layer (SSL) v bráně, vyhnete se tak nákladným úlohám dešifrování SSL na webové serverové farmě. Přesměrování zpracování SSL zjednodušuje i nastavení a správu front-end serverů webových aplikací.
 
@@ -35,9 +35,9 @@ Služba Azure Application Gateway se dá nakonfigurovat k ukončení relace Secu
 
 1. Nainstalujte nejnovější verzi rutin prostředí Azure PowerShell pomocí instalační služby webové platformy. Nejnovější verzi můžete stáhnout a nainstalovat v části **Windows PowerShell** na stránce [Položky ke stažení](https://azure.microsoft.com/downloads/).
 2. Ověřte, že máte funkční virtuální síť s platnou podsítí. Ujistěte se, že žádné virtuální počítače nebo cloudová nasazení nepoužívají podsíť. Služba Application Gateway musí být sama o sobě v podsíti virtuální sítě.
-3. Servery, které nakonfigurujete pro použití služby application gateway musí existovat nebo musí mít své koncové body, které jsou vytvořené ve virtuální síti nebo s veřejnou IP adresu nebo virtuální adresy IP (VIP) přiřazené.
+3. Servery, které nakonfigurujete pro použití služby application gateway musí existovat nebo mít své koncové body vytvořené buď ve virtuální síti nebo veřejné IP adresy nebo virtuální IP adresa (VIP) přiřazen.
 
-Pokud chcete konfigurovat přesměrování zpracování SSL na aplikační brány, proveďte následující kroky v uvedeném pořadí:
+Pokud chcete konfigurovat přesměrování zpracování SSL ve službě application gateway, proveďte následující kroky v uvedeném pořadí:
 
 1. [Vytvoření služby application gateway](#create-an-application-gateway)
 2. [Nahrát certifikáty SSL](#upload-ssl-certificates)
@@ -54,9 +54,9 @@ Chcete-li vytvořit bránu, zadejte `New-AzureApplicationGateway` rutinu a nahra
 New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subnet-1")
 ```
 
-Chcete-li ověřit, že vytvoření brány, můžete zadat `Get-AzureApplicationGateway` rutiny.
+Chcete ověřit vytvoření brány, můžete zadat `Get-AzureApplicationGateway` rutiny.
 
-V ukázce **popis**, **InstanceCount**, a **GatewaySize** jsou volitelné parametry. Výchozí hodnota pro **InstanceCount** je **2**, s maximální hodnotou **10**. Výchozí hodnota pro **GatewaySize** je **střední**. Malých a velkých jsou ostatní dostupné hodnoty. **Rezervovaná** a **DnsName** se zobrazují jako prázdné, protože brána se ještě nespustilo. Tyto hodnoty jsou vytvořeny po brána je v běžícím stavu.
+V ukázce **popis**, **InstanceCount**, a **GatewaySize** jsou volitelné parametry. Výchozí hodnota pro **InstanceCount** je **2**, s maximální hodnotou **10**. Výchozí hodnota pro **GatewaySize** je **střední**. Malé a velké jsou další dostupné hodnoty. **Rezervovaná** a **DnsName** se zobrazují jako prázdné, protože brána ještě nespustila. Tyto hodnoty se vytvoří, jakmile je brána v běžícím stavu.
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest
@@ -64,15 +64,15 @@ Get-AzureApplicationGateway AppGwTest
 
 ## <a name="upload-ssl-certificates"></a>Nahrát certifikáty SSL
 
-Zadejte `Add-AzureApplicationGatewaySslCertificate` nahrát certifikát serveru ve formátu PFX aplikační brány. Název certifikátu je název vybrané uživatelem a musí být jedinečný v rámci služby application gateway. Tento certifikát se označuje s tímto názvem v všechny operace správy certifikátů ve službě application gateway.
+Zadejte `Add-AzureApplicationGatewaySslCertificate` nahrát certifikát serveru ve formátu PFX ke službě application gateway. Název certifikátu je zvolené uživatelské jméno a musí být jedinečné v rámci application gateway. Tento certifikát se označuje s tímto názvem v všechny operace správy certifikátů ve službě application gateway.
 
-Následující příklad ukazuje rutinu. Nahraďte vlastními hodnotami v ukázce.
+Následující příklad ukazuje rutinu. Nahraďte hodnotami v ukázce vlastní.
 
 ```powershell
 Add-AzureApplicationGatewaySslCertificate  -Name AppGwTest -CertificateName GWCert -Password <password> -CertificateFile <full path to pfx file>
 ```
 
-Dále ověřte nahrávání certifikátu. Zadejte `Get-AzureApplicationGatewayCertificate` rutiny.
+V dalším kroku ověřte nahrání certifikátu. Zadejte `Get-AzureApplicationGatewayCertificate` rutiny.
 
 Následující příklad ukazuje rutinu na prvním řádku, následovanou výstupem:
 
@@ -91,28 +91,28 @@ State..........: Provisioned
 ```
 
 > [!NOTE]
-> Heslo certifikátu musí být mezi 4 až 12 znaků skládá z písmen nebo číslic. Speciální znaky nejsou přijata.
+> Heslo certifikátu musí být mezi 4 až 12 znaků z písmen nebo číslic. Speciálních znaků se nepřijímají.
 
 ## <a name="configure-the-gateway"></a>Konfigurace brány
 
-Konfigurace brány aplikace se skládá z více hodnot. Může být vázáno hodnoty společně k vytvoření konfigurace.
+Konfigurace aplikační brány se skládá z více hodnot. Hodnotami může být vázán společně k vytvoření konfigurace.
 
 Hodnoty jsou:
 
-* **Fond back-end serverů**: seznam IP adres back-end serverů. Uvedené IP adresy by měly patřit do podsítě virtuální sítě nebo by měla být veřejnou adresu IP nebo virtuální IP adresy.
-* **Nastavení fondu back-end serverů**: každý fond má nastavení, jako je port, protokol a spřažení na základě souboru cookie. Tato nastavení se vážou na fond a používají se na všechny servery v rámci fondu.
-* **Front-end port**: Tento port je veřejný port, který se otevírá ve službě application gateway. Když datový přenos dorazí na tento port, přesměruje se na některý back-end server.
+* **Fond back-end serverů**: seznam IP adres back-end serverů. Uvedené IP adresy by měly patřit do podsítě virtuální sítě nebo by měla být veřejná adresa IP nebo virtuální IP adresy.
+* **Nastavení fondu back endového serveru**: každý fond má nastavení, jako je port, protokol a spřažení na základě souborů cookie. Tato nastavení se vážou na fond a používají se na všechny servery v rámci fondu.
+* **Front-endový port**: Toto je veřejný port, který se otevírá ve službě application gateway. Když datový přenos dorazí na tento port, přesměruje se na některý back-end server.
 * **Naslouchací proces**: naslouchací proces má front-end port, protokol (Http nebo Https; tyto hodnoty jsou malá a velká písmena) a název certifikátu SSL (Pokud je konfigurace přesměrování zpracování SSL).
-* **Pravidlo**: pravidlo váže naslouchací proces a fond back-end serverů a definuje, kterému fondu back-end serverů směrovat provoz při volání příslušného naslouchacího procesu. V tuhle chvíli se podporuje jenom *základní* pravidlo. *Základní* pravidlo je distribuce zatížení pomocí kruhového dotazování.
+* **Pravidlo**: pravidlo váže naslouchací proces a fond back-end serverů a definuje, kterému fondu back endového serveru pro směrování provozu do při volání příslušného naslouchacího procesu. V tuhle chvíli se podporuje jenom *základní* pravidlo. *Základní* pravidlo je distribuce zatížení pomocí kruhového dotazování.
 
 **Další poznámky ke konfiguraci**
 
-Pro konfiguraci certifikátů SSL by se měl změnit protokol v **HttpListener** na **Https** (rozlišování velkých a malých písmen). Přidat **SslCert** element **HttpListener** hodnota nastavena na stejný název používaný v [certifikáty SSL nahrát](#upload-ssl-certificates) části. Front-end port se musí aktualizovat na **443**.
+Pro konfiguraci certifikátů SSL by se měl změnit protokol v **HttpListener** na **Https** (rozlišování velkých a malých písmen). Přidat **SslCert** elementu **HttpListener** s hodnotou nastavenou na stejný název používá v [certifikáty SSL nahrát](#upload-ssl-certificates) oddílu. Front-end port se musí aktualizovat na **443**.
 
-**Chcete-li povolit spřažení na základě souborů cookie**: můžete nakonfigurovat služby application gateway zajistit, že žádost od klientské relace vždy směrovala na stejný virtuální počítač ve webové farmě. K tomu, vložte soubor cookie relace, který umožňuje bráně řízení provozu odpovídajícím způsobem. Když chcete povolit spřažení na základě souboru cookie, nastavte **CookieBasedAffinity** na **Povoleno** v elementu **BackendHttpSettings**.
+**Chcete povolit spřažení na základě souborů cookie**: můžete nakonfigurovat službu application gateway k zajištění, že žádost od klientské relace vždy směrovala na stejný virtuální počítač ve webové farmě. Chcete-li to provést, vložte souboru cookie relace, který umožňuje bráně řízení provozu odpovídajícím způsobem. Když chcete povolit spřažení na základě souboru cookie, nastavte **CookieBasedAffinity** na **Povoleno** v elementu **BackendHttpSettings**.
 
-Konfiguraci můžete vytvořit buď pomocí vytvoření objektu konfigurace, nebo pomocí konfiguračního souboru XML.
-Chcete-li vytvořit konfiguraci pomocí konfiguračního souboru XML, zadejte následující ukázka:
+Konfiguraci lze vytvořit buď tím, že vytvoříte objekt konfigurace, nebo pomocí konfiguračního souboru XML.
+Vytvořit konfiguraci pomocí konfiguračního souboru XML, zadejte následující ukázce:
 
 
 ```xml
@@ -164,7 +164,7 @@ Chcete-li vytvořit konfiguraci pomocí konfiguračního souboru XML, zadejte n�
 
 ## <a name="set-the-gateway-configuration"></a>Nastavení konfigurace brány
 
-Dále nastavte aplikační bránu. Můžete zadat `Set-AzureApplicationGatewayConfig` rutiny s objekt konfigurace nebo konfigurační soubor XML.
+Dále nastavte aplikační bránu. Můžete zadat `Set-AzureApplicationGatewayConfig` rutinu s konfiguračním souborem XML nebo objekt konfigurace.
 
 ```powershell
 Set-AzureApplicationGatewayConfig -Name AppGwTest -ConfigFile D:\config.xml
@@ -172,10 +172,10 @@ Set-AzureApplicationGatewayConfig -Name AppGwTest -ConfigFile D:\config.xml
 
 ## <a name="start-the-gateway"></a>Spusťte bránu
 
-Když brána je nakonfigurovaná, zadejte `Start-AzureApplicationGateway` rutinu spustit bránu. Fakturace aplikační brány se spustí až po úspěšném spuštění brány.
+Po dokončení konfigurace brány, zadejte `Start-AzureApplicationGateway` ke spuštění brány. Fakturace aplikační brány se spustí až po úspěšném spuštění brány.
 
 > [!NOTE]
-> `Start-AzureApplicationGateway` Rutiny může trvat 15-20 minut na dokončení.
+> `Start-AzureApplicationGateway` Rutiny může trvat 15 až 20 minut na dokončení.
 >
 >
 
@@ -185,9 +185,9 @@ Start-AzureApplicationGateway AppGwTest
 
 ## <a name="verify-the-gateway-status"></a>Ověřte stav brány.
 
-Zadejte `Get-AzureApplicationGateway` rutiny a zkontrolujte stav brány. Pokud `Start-AzureApplicationGateway` úspěšné v předchozím kroku, **stavu** by měla být **systémem**a **rezervovaná** a **DnsName** by měl obsahovat platné položky.
+Zadejte `Get-AzureApplicationGateway` rutiny a zkontrolujte stav brány. Pokud `Start-AzureApplicationGateway` v předchozím kroku podařilo úspěšně **stavu** by měl být **systémem**a **rezervovaná** a **DnsName** by měl obsahovat platné položky.
 
-Tento příklad ukazuje aplikační bránu, která je v provozu, spuštěná a připravená přijmout provoz:
+Tento příklad ukazuje aplikační bránu, která je v provozu, spuštěný a připravená přijmout provoz:
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest
@@ -207,7 +207,7 @@ DnsName       : appgw-4c960426-d1e6-4aae-8670-81fd7a519a43.cloudapp.net
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o službě Vyrovnávání zatížení možnosti obecně naleznete v tématu:
+Další informace o službě Vyrovnávání zatížení možnosti naleznete v tématu:
 
 * [Nástroj pro vyrovnávání zatížení Azure](https://azure.microsoft.com/documentation/services/load-balancer/)
 * [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)

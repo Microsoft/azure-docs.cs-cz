@@ -13,14 +13,17 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: c0f51e47038737d6aa743be718ad6b28c161c766
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 07f8a31244acca48a0bbae8ad26b0c5b509f0c0a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35643411"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46959576"
 ---
 # <a name="azure-machine-learning-model-management-account-api-reference"></a>Referenční informace k Azure Machine Learning Model správy účtu API
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
 
 Informace o nastavení prostředí nasazení najdete v tématu [nastavení účtu správy modelů](deployment-setup-configuration.md).
 
@@ -34,7 +37,7 @@ Azure Machine Learning Model správy účtu API implementuje následující oper
 Tato image můžete vytvořit webovou službu místně nebo na vzdálený cluster Azure Container Service nebo jiné prostředí podle vašeho výběru s podporou Dockeru.
 
 ## <a name="prerequisites"></a>Požadavky
-Ujistěte se, že jste prošli kroky instalace v [instalace a vytvoření rychlý Start](../service/quickstart-installation.md) dokumentu.
+Ujistěte se, že jste prošli kroky instalace v [instalace a vytvoření rychlý Start](quickstart-installation.md) dokumentu.
 
 Následující jsou požadovány, než budete pokračovat:
 1. Zřizování účtu správy modelů
@@ -248,10 +251,10 @@ Vytvoří bitovou kopii jako image Dockeru ve službě Azure Container Registry.
 | název účtu | path | Název účtu správy modelů. | Ano | řetězec |
 | verze API-version | query | Verze poskytovatele prostředků Microsoft.Machine.Learning rozhraní API pro použití. | Ano | řetězec |
 | Autorizace | záhlaví | Autorizační token. Ji by měl vypadat "Nosiče XXXXXX." | Ano | řetězec |
-| imageRequest | hlavní část | Datová část, která se používá k vytvoření image. | Ano | [ImageRequest](#imagerequest) |
+| imageRequest | hlavní část | Datová část, která se používá k vytvoření image. | Ano | [imageRequest](#imagerequest) |
 
 ### <a name="responses"></a>Odezvy
-| Kód | Popis | Záhlaví | Schéma |
+| Kód | Popis | Hlavičky | Schéma |
 |--------------------|--------------------|--------------------|--------------------|
 | 202 | Adresa URL umístění asynchronní operace. Volání GET se zobrazí stav úlohy vytvoření bitové kopie. | Operace umístění |
 | default | Chybová odpověď, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse) |
@@ -333,7 +336,7 @@ Vytvoří službu z image.
 | serviceRequest | hlavní část | Datová část, která se používá k vytvoření služby. | Ano | [ServiceCreateRequest](#servicecreaterequest) |
 
 ### <a name="responses"></a>Odezvy
-| Kód | Popis | Záhlaví | Schéma |
+| Kód | Popis | Hlavičky | Schéma |
 |--------------------|--------------------|--------------------|--------------------|
 | 202 | Adresa URL umístění asynchronní operace. Volání GET se zobrazí stav úlohy vytváření služby. | Operace umístění |
 | 409 | Služba se zadaným názvem už existuje. |
@@ -421,7 +424,7 @@ Aktualizuje existující služby.
 | serviceUpdateRequest | hlavní část | Datová část, která se používá k aktualizaci existující služby. | Ano |  [ServiceUpdateRequest](#serviceupdaterequest) |
 
 ### <a name="responses"></a>Odezvy
-| Kód | Popis | Záhlaví | Schéma |
+| Kód | Popis | Hlavičky | Schéma |
 |--------------------|--------------------|--------------------|--------------------|
 | 202 | Adresa URL umístění asynchronní operace. Volání GET se zobrazí stav úlohy aktualizace služby. | Operace umístění |
 | 404 | Služba se zadaným ID neexistuje. |
@@ -863,7 +866,7 @@ Požadavek na vytvoření služby.
 |---|---|---|
 |**appInsightsEnabled**  <br>*Volitelné*|Povolte application insights pro služby.|Boolean|
 |**autoScaler**  <br>*Volitelné*||[Automatického škálování](#autoscaler)|
-|**computeResource**  <br>*Vyžaduje*||[ComputeResource](#computeresource)|
+|**computeResource**  <br>*Vyžaduje*||[computeResource](#computeresource)|
 |**containerResourceReservation**  <br>*Volitelné*||[ContainerResourceReservation](#containerresourcereservation)|
 |**dataCollection**  <br>*Volitelné*||[ModelDataCollection](#modeldatacollection)|
 |**imageId**  <br>*Vyžaduje*|Image vytvořte službu.|řetězec|
@@ -900,7 +903,7 @@ Podrobný stav služby.
 |**updatedAt**  <br>*Volitelné*|Čas poslední aktualizace (UTC).|řetězec (datum a čas)|
 |**appInsightsEnabled**  <br>*Volitelné*|Povolte application insights pro služby.|Boolean|
 |**autoScaler**  <br>*Volitelné*||[Automatického škálování](#autoscaler)|
-|**computeResource**  <br>*Vyžaduje*||[ComputeResource](#computeresource)|
+|**computeResource**  <br>*Vyžaduje*||[computeResource](#computeresource)|
 |**containerResourceReservation**  <br>*Volitelné*||[ContainerResourceReservation](#containerresourcereservation)|
 |**dataCollection**  <br>*Volitelné*||[ModelDataCollection](#modeldatacollection)|
 |**maxConcurrentRequestsPerContainer**  <br>*Volitelné*|Maximální počet souběžných požadavků.  <br>**Minimální hodnota**: `1`|integer|

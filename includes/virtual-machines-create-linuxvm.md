@@ -1,5 +1,5 @@
 
-1. Přihlaste se k předplatnému Azure, pomocí kroků uvedených v tématu věnovaném [připojení k Azure z rozhraní příkazového řádku Azure CLI 1.0](/cli/azure/authenticate-azure-cli).
+1. Přihlaste se ke svému předplatnému Azure pomocí kroků uvedených v [připojení k Azure z rozhraní Azure CLI classic](/cli/azure/authenticate-azure-cli).
 
 2. Pomocí následujícího postupu zkontrolujte, že používáte režim nasazení Classic:
 
@@ -52,5 +52,5 @@
     ```
 
 ## <a name="next-steps"></a>Další postup
-Podrobné informace o všech těchto příkazech rozhraní příkazového řádku Azure CLI 1.0 pro virtuální počítače najdete v tématu věnovaném [použití rozhraní příkazového řádku Azure CLI 1.0 s rozhraním API nasazení Classic](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
+Podrobnosti o všech těchto classic příkazy Azure CLI virtuálního počítače, přečtěte si [pomocí Azure classic CLI s rozhraním API nasazení Classic](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
 

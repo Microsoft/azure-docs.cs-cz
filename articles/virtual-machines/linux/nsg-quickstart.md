@@ -1,6 +1,6 @@
 ---
-title: Otevření portů k virtuálnímu počítači s Linuxem pomocí Azure CLI 2.0 | Dokumentace Microsoftu
-description: Zjistěte, jak otevřít port / vytvořit koncový bod virtuálního počítače s Linuxem pomocí modelu nasazení Azure resource manager a rozhraní příkazového řádku Azure CLI 2.0
+title: Otevření portů k virtuálnímu počítači s Linuxem pomocí rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+description: Zjistěte, jak otevřít port / vytvořit koncový bod virtuálního počítače s Linuxem pomocí modelu nasazení Azure resource manager a Azure CLI
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -14,17 +14,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: 7125523b051441a2547560ff3af650ccd91f07a0
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 4244520fa30fece53e1d01e50044cfeca496066c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928885"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46973333"
 ---
 # <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Otevření portů a koncových bodů pro virtuální počítač s Linuxem pomocí Azure CLI
-Otevření portu nebo vytvoření koncového bodu, virtuálního počítače (VM) v Azure vytvořte filtr sítě pro podsíť nebo síťové rozhraní virtuálního počítače. Tyto filtry, které řídí příchozí a odchozí přenosy dat, umístíte na skupinu zabezpečení sítě, který je připojen k prostředku, který přijímá provoz. Použijeme běžným Příkladem webového provozu na portu 80. Tento článek popisuje postup otevření portů k virtuálnímu počítači pomocí rozhraní příkazového řádku Azure CLI 2.0. 
 
-Chcete-li vytvořit skupinu zabezpečení sítě a pravidel, je třeba nejnovější [příkazového řádku Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az_login).
+Otevření portu nebo vytvoření koncového bodu, virtuálního počítače (VM) v Azure vytvořte filtr sítě pro podsíť nebo síťové rozhraní virtuálního počítače. Tyto filtry, které řídí příchozí a odchozí přenosy dat, umístíte na skupinu zabezpečení sítě, který je připojen k prostředku, který přijímá provoz. Použijeme běžným Příkladem webového provozu na portu 80. Tento článek popisuje postup otevření portů k virtuálnímu počítači pomocí rozhraní příkazového řádku Azure. 
+
+
+Chcete-li vytvořit skupinu zabezpečení sítě a pravidel, je třeba nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az_login).
 
 V následujících příkladech nahraďte ukázkové názvy parametrů s vlastními hodnotami. Zahrnout názvy parametrů příklad *myResourceGroup*, *myNetworkSecurityGroup*, a *myVnet*.
 

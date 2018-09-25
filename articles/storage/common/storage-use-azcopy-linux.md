@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/26/2018
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: d674b0a6a16e22ed06577f7306ed6f4b9755dd0e
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: d441176c55ceb75c3f44df90224647ded802aeb6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42060534"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46986627"
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>Přenos dat pomocí AzCopy v Linuxu
 
@@ -706,7 +706,7 @@ Další informace o službě Azure Storage a AzCopy najdete v následujících z
 * [Seznámení se službou Azure Storage](../storage-introduction.md)
 * [vytvořit účet úložiště](../storage-create-storage-account.md)
 * [Správa objektů blob pomocí Průzkumníka služby Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs)
-* [Použití Azure CLI 2.0 s Azure Storage](../storage-azure-cli.md)
+* [Použití Azure CLI s Azure Storage](../storage-azure-cli.md)
 * [Používání úložiště Blob z jazyka C++](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
 * [Používání úložiště Blob z Javy](../blobs/storage-java-how-to-use-blob-storage.md)
 * [Používání úložiště Blob z Node.js](../blobs/storage-nodejs-how-to-use-blob-storage.md)

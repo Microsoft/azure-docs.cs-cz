@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s připojení s sledovací proces sítě Azure – prostředí PowerShell | Microsoft Docs
-description: Naučte se používat připojení k řešení potíží s schopností sledovací proces sítě Azure pomocí prostředí PowerShell.
+title: Řešení potíží s připojením pomocí služby Azure Network Watcher – PowerShell | Dokumentace Microsoftu
+description: Další informace o použití připojení k řešení potíží s funkce služby Azure Network Watcher pomocí Powershellu.
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -13,34 +13,34 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
-ms.openlocfilehash: 7e8c04fd2284a3a00d4847f39fd34982a543cc29
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: aac23f616cb9d7c3fb29e516cfa2daa47c00e8e2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32181857"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989256"
 ---
-# <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>Poradce při potížích připojení s sledovací proces sítě Azure pomocí prostředí PowerShell
+# <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>Řešení potíží s připojením pomocí služby Azure Network Watcher pomocí Powershellu
 
 > [!div class="op_single_selector"]
 > - [Azure Portal](network-watcher-connectivity-portal.md)
 > - [PowerShell](network-watcher-connectivity-powershell.md)
-> - [CLI 2.0](network-watcher-connectivity-cli.md)
-> - [Rozhraní API Azure REST](network-watcher-connectivity-rest.md)
+> - [Azure CLI](network-watcher-connectivity-cli.md)
+> - [Rozhraní Azure REST API](network-watcher-connectivity-rest.md)
 
-Další informace o použití připojení řešení Chcete-li ověřit, zda lze vytvořit přímé připojení TCP z virtuálního počítače do daného koncového bodu.
+Zjistěte, jak používat připojení řešení Chcete-li ověřit, zda lze navázat přímé připojení TCP z virtuálního počítače do daného koncového bodu.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-* Instance sledovací proces sítě v oblasti, kterou chcete vyřešte potíže připojením.
-* Virtuální počítače potíží s připojením s.
+* Instance služby Network Watcher v oblasti, kterou chcete k řešení potíží s připojení.
+* Virtuální počítače k řešení problémů s připojením s.
 
 > [!IMPORTANT]
-> Řešení potíží s připojení vyžaduje, aby řešení z virtuálního počítače `AzureNetworkWatcherExtension` nainstalovat rozšíření virtuálního počítače. Instalaci rozšíření na virtuální počítač s Windows najdete v článku [rozšíření virtuálního počítače Azure sítě sledovacích procesů agenta pro Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) a u virtuálního počítače s Linuxem, navštivte [rozšíření virtuálního počítače Azure sítě sledovacích procesů agenta pro Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Na cílovém koncový bod není vyžadován rozšíření.
+> Řešení potíží s připojením vyžaduje, aby měl řešit z virtuálního počítače `AzureNetworkWatcherExtension` nainstalované rozšíření virtuálního počítače. Instalaci rozšíření na virtuálním počítači s Windows najdete [rozšíření virtuálního počítače Azure Network Watcher Agent pro Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) a pro virtuální počítač s Linuxem, navštivte [rozšíření virtuálního počítače Azure Network Watcher Agent pro Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Na cílový koncový bod není vyžadován rozšíření.
 
 ## <a name="check-connectivity-to-a-virtual-machine"></a>Zkontrolujte připojení k virtuálnímu počítači
 
-Tento příklad zkontroluje připojení k cílovému virtuálnímu počítači přes port 80. Tento příklad vyžaduje, abyste měli sledovací proces sítě povolené v oblasti obsahující zdrojového virtuálního počítače.  
+Tento příklad kontroluje připojení k cílovému virtuálnímu počítači přes port 80. Tento příklad vyžaduje, abyste měli povolený v oblasti obsahující zdrojového virtuálního počítače Network Watcher.  
 
 ### <a name="example"></a>Příklad:
 
@@ -62,7 +62,7 @@ Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId
 
 ### <a name="response"></a>Odpověď
 
-Následující odpověď je z předchozího příkladu.  V této odpovědi `ConnectionStatus` je **Unreachable**. Uvidíte, že všechny sondy neodesílají se nezdařilo. Připojení se nezdařilo u virtuálního zařízení z důvodu nakonfigurován uživatel `NetworkSecurityRule` s názvem **UserRule_Port80**, nakonfigurovaná tak, aby blokovala příchozí přenosy na portu 80. Tyto informace můžete použít pro zkoumání problémů s připojením.
+Následující odpověď je z předchozího příkladu.  V této odpovědi `ConnectionStatus` je **Unreachable**. Uvidíte, že všechny testy odeslání se nezdařilo. Připojení se nezdařilo u tohoto virtuálního zařízení kvůli uživatelem nakonfigurované `NetworkSecurityRule` s názvem **UserRule_Port80**, je nakonfigurovaná tak, aby blokovat příchozí provoz na portu 80. Tyto informace můžete použít pro zkoumání problémů s připojením.
 
 ```
 ConnectionStatus : Unreachable
@@ -133,9 +133,9 @@ Hops             : [
                    ]
 ```
 
-## <a name="validate-routing-issues"></a>Ověření směrování problémy
+## <a name="validate-routing-issues"></a>Ověření problémů se směrováním
 
-Tento příklad zkontroluje připojení mezi virtuálním počítačem a vzdálený koncový bod. Tento příklad vyžaduje, abyste měli sledovací proces sítě povolené v oblasti obsahující zdrojového virtuálního počítače.  
+Tento příklad kontroluje připojení mezi virtuálním počítačem a vzdáleného koncového bodu. Tento příklad vyžaduje, abyste měli povolený v oblasti obsahující zdrojového virtuálního počítače Network Watcher.  
 
 ### <a name="example"></a>Příklad:
 
@@ -154,7 +154,7 @@ Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId
 
 ### <a name="response"></a>Odpověď
 
-V následujícím příkladu `ConnectionStatus` se zobrazí jako **Unreachable**. V `Hops` podrobnosti, můžete zobrazit v části `Issues` blokovaného provoz z důvodu `UserDefinedRoute`. 
+V následujícím příkladu `ConnectionStatus` se zobrazuje jako **Unreachable**. V `Hops` podrobnosti, můžete zobrazit v části `Issues` , který provoz se zablokoval kvůli `UserDefinedRoute`. 
 
 ```
 ConnectionStatus : Unreachable
@@ -197,9 +197,9 @@ Hops             : [
                    ]
 ```
 
-## <a name="check-website-latency"></a>Zkontrolujte latence webu
+## <a name="check-website-latency"></a>Zkontrolujte latenci webu
 
-Následující příklad zkontroluje připojení k webu. Tento příklad vyžaduje, abyste měli sledovací proces sítě povolené v oblasti obsahující zdrojového virtuálního počítače.  
+Následující příklad zkontroluje připojení k webu. Tento příklad vyžaduje, abyste měli povolený v oblasti obsahující zdrojového virtuálního počítače Network Watcher.  
 
 ### <a name="example"></a>Příklad:
 
@@ -219,7 +219,7 @@ Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId
 
 ### <a name="response"></a>Odpověď
 
-V následující odpověď, se zobrazí `ConnectionStatus` zobrazuje jako **dostupné**. Pokud je připojení úspěšné, jsou uvedeny hodnoty latence.
+V následující odpověď, uvidíte `ConnectionStatus` ukazovat **dostupné**. Pokud je připojení úspěšné, jsou k dispozici hodnoty latence.
 
 ```
 ConnectionStatus : Reachable
@@ -252,7 +252,7 @@ Hops             : [
 
 ## <a name="check-connectivity-to-a-storage-endpoint"></a>Zkontrolujte připojení ke koncovému bodu úložiště
 
-Následující příklad ověří připojení z virtuálního počítače k účtu úložiště blogu. Tento příklad vyžaduje, abyste měli sledovací proces sítě povolené v oblasti obsahující zdrojového virtuálního počítače.  
+Následující příklad ověří připojení z virtuálního počítače do účtu úložiště blogu. Tento příklad vyžaduje, abyste měli povolený v oblasti obsahující zdrojového virtuálního počítače Network Watcher.  
 
 ### <a name="example"></a>Příklad:
 
@@ -272,7 +272,7 @@ Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId
 
 ### <a name="response"></a>Odpověď
 
-Následujícím kódu json je spustit rutinu předchozí příklad odpověď. Jako cílové místo je dostupná, `ConnectionStatus` vlastnost zobrazuje jako **dostupné**.  Jsou k dispozici podrobnosti týkající se počet skoků potřebná k získání přístupu objektu blob storage a latenci.
+Následující kód json je příklad odpovědi z spuštění předchozí rutiny. Jako cíl je dostupný, `ConnectionStatus` vlastnost ukazovat **dostupné**.  Jsou k dispozici podrobné informace o počet skoků potřebné k dosažení objektem blob storage a latenci.
 
 ```json
 ConnectionStatus : Reachable
@@ -305,6 +305,6 @@ Hops             : [
 
 ## <a name="next-steps"></a>Další postup
 
-Zjistit, zda některé provoz může do nebo z virtuálního počítače navštivte stránky [zkontrolujte IP tok ověření](diagnose-vm-network-traffic-filtering-problem.md).
+Určení, zda některé je povolený provoz do nebo ze svého virtuálního počítače návštěvou [ověření toku protokolu IP zkontrolujte](diagnose-vm-network-traffic-filtering-problem.md).
 
-Pokud je blokován provoz a neměl by být, najdete v části [spravovat skupiny zabezpečení sítě](../virtual-network/manage-network-security-group.md) sledovat pravidla zabezpečení sítě skupiny a zabezpečení, které jsou definovány.
+Pokud je blokován provoz a neměl by být, přečtěte si téma [spravovat skupiny zabezpečení sítě](../virtual-network/manage-network-security-group.md) vysledovat pravidla zabezpečení sítě skupiny a zabezpečení, které jsou definovány.

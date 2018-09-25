@@ -1,22 +1,23 @@
 ---
 title: Víceklientské vzory SaaS – Azure SQL Database | Dokumentace Microsoftu
 description: Další informace o požadavky a data služby common vzorech architektury víceklientský software jako služba (SaaS) aplikací databáze, které běží v prostředí cloudu Azure.
-keywords: kurz k sql database
 services: sql-database
-author: billgib
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
+author: MightyPen
+ms.author: genemi
+ms.reviewer: billgib, sstein
+manager: craigg
 ms.date: 09/14/2018
-ms.reviewer: genemi
-ms.author: billgib
-ms.openlocfilehash: 5b50ba11f2af19d81d9dea2f28295e34a6a5ecb9
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: b9009452ada6ebfb7626532b1fac406563704ef3
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985020"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056673"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Vzory víceklientské SaaS databáze tenantů
 

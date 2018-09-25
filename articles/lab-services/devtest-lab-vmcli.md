@@ -1,6 +1,6 @@
 ---
 title: Vytvoření a správa virtuálních počítačů ve službě DevTest Labs pomocí rozhraní příkazového řádku Azure | Dokumentace Microsoftu
-description: Zjistěte, jak pomocí Azure DevTest Labs k vytváření a správě virtuálních počítačů pomocí Azure CLI 2.0
+description: Zjistěte, jak pomocí Azure DevTest Labs k vytváření a správě virtuálních počítačů pomocí Azure CLI
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 5e50bc3c6804a6f3d3dafd07b2918605c4cbc6ab
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ccf9b08856fcc652e3ad4b2b31587d43d7ef9cca
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434675"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995943"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Vytvoření a správa virtuálních počítačů s DevTest Labs pomocí Azure CLI
 Tento rychlý start vás provede vytvořením, spuštění, připojení, aktualizace a čištění vývojového počítače ve vaší laboratoři. 
@@ -27,7 +27,7 @@ Než začnete:
 
 * Pokud ještě nebyl vytvořen testovacího prostředí, najdete pokyny [tady](devtest-lab-create-lab.md).
 
-* [Instalace CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli). Pokud chcete začít, spusťte az login vytvořit připojení k Azure. 
+* [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). Pokud chcete začít, spusťte az login vytvořit připojení k Azure. 
 
 ## <a name="create-and-verify-the-virtual-machine"></a>Vytvořit a ověřit virtuální počítač 
 Vytvoření virtuálního počítače z image marketplace pomocí ssh ověřování.

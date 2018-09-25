@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 5e4d96df7d6a43418aad92fdf6509a5ca7ec623a
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 4eaf615de712715d35021aa2ba9eba4141d41e51
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734654"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952490"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Připojit vaši aplikaci ke spravované instanci Azure SQL Database
 
@@ -22,7 +22,7 @@ Už dnes máte více možností při rozhodování o tom, jak a kde hostujete va
  
 Můžete se rozhodnout pro hostování aplikace v cloudu pomocí služby Azure App Service nebo některé z možností Azure pro virtuální síť (VNet) integrovaná jako je Azure App Service Environment, virtuální počítač, Virtual Machine Scale Sets. Může také využít hybridní cloudový přístup a ponechat přitom vašich aplikací v místním prostředí. 
  
-Jakékoli volby provedené, můžete ho připojíte k Managed Instance (preview).  
+Jakékoli volby provedené, můžete ho připojit do spravované Instance.  
 
 ![Vysoká dostupnost](./media/sql-database-managed-instance/application-deployment-topologies.png)  
 ## <a name="connect-an-application-inside-the-same-vnet"></a>Připojení aplikace uvnitř stejné virtuální síti 
@@ -136,7 +136,7 @@ Následující minimální verze nástrojů a ovladačů se doporučuje, pokud s
 |Ovladač JDBC    | 6.4.0 |
 |Ovladač Node.js | 2.1.1 |
 |Ovladač OLEDB   | 18.0.2.0 |
-|SSMS   | 17.8.1 nebo [vyšší](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) |
+|SSMS   | 17.8.1 nebo [vyšší](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) |
 
 ## <a name="next-steps"></a>Další postup
 

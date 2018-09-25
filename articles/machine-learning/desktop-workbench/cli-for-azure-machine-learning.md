@@ -11,16 +11,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/10/2018
-ms.openlocfilehash: 0e37e1839d2248507a30de08e2ac4c975bd3b859
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 06e85845d41b240638a5b5b4d75d64fd460a99bf
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35643066"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953323"
 ---
 # <a name="install-and-use-the-machine-learning-cli-for-top-tasks-in-azure-machine-learning"></a>Instalace a používání strojového učení rozhraní příkazového řádku pro nejdůležitější úkoly v Azure Machine Learning
 
-Služby Azure Machine Learning se začátku do konce, integrované datové vědy a pokročilé řešení pro analýzu. Profesionální datové vědce slouží k přípravě dat, vývoji experimentů a nasazování modelů na úrovni cloudu služby Azure Machine Learning. 
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
+Služba Azure Machine Learning je začátku do konce, integrované datové vědy a pokročilé řešení pro analýzu. Profesionální datové vědce, můžete použít službu Azure Machine Learning k přípravě dat, vývoji experimentů a nasazování modelů na úrovni cloudu. 
 
 Azure Machine Learning nabízí rozhraní příkazového řádku (CLI), pomocí kterých lze:
 + Správa pracovních prostorů a projektů
@@ -39,7 +42,7 @@ Tento článek představuje několik nejužitečnější příkazů rozhraní p�
 Potřebujete přístup přispěvatele k předplatnému Azure nebo skupinu prostředků, kde můžete nasadit modely. Potřebujete také nainstalovat aplikaci Azure Machine Learning Workbench, aby spusťte rozhraní příkazového řádku. 
 
 >[!IMPORTANT]
->Rozhraní příkazového řádku dodávají s Azure Machine Learning services se liší od [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), který se používá pro správu prostředků Azure.
+>Rozhraní příkazového řádku se dodávají s se liší od služby Azure Machine Learning [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), který se používá pro správu prostředků Azure.
 
 ## <a name="get-and-start-cli"></a>Získání a spuštění rozhraní příkazového řádku
 
@@ -201,7 +204,7 @@ az ml env set -n <environment name> -g <resource group name>
 ## <a name="next-steps"></a>Další postup
 
 Začněte s některou z těchto článků: 
-+ [Nainstalovat a začít používat Azure Machine Learning](../service/quickstart-installation.md)
++ [Nainstalovat a začít používat Azure Machine Learning](quickstart-installation.md)
 + [Kurz klasifikace Iris dat: Část 1](tutorial-classifying-iris-part-1.md)
 
 Podívejte se podrobněji s jedním z těchto článků:

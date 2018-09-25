@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: ashishth
-ms.openlocfilehash: aab5be7f98f5fdf6e7304485c3d1fc5ddb7afdba
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 339d5d39c637369420e197acf65df802cefd5cb9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106913"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46988480"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Správa protokolů pro cluster HDInsight
 
@@ -43,12 +43,13 @@ Následující podrobnosti o clusteru jsou užitečné při shromažďování in
 * Stav clusteru, včetně podrobností o poslední změny stavu
 * Typ a počet instancí HDInsight zadaný pro hlavní, core a úlohy uzly
 
-Můžete získat většinu těchto nejvyšší úrovně informací pomocí webu Azure portal.  Alternativně můžete použít rozhraní příkazového řádku Azure k získání informací o vašich clusterů HDInsight:
+Můžete získat většinu těchto nejvyšší úrovně informací pomocí webu Azure portal.  Alternativně můžete použít rozhraní příkazového řádku Azure Classic k získání informací o vašich clusterů HDInsight:
 
 ```
     azure hdinsight cluster list
     azure hdinsight cluster show <ClusterName>
 ```
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 Chcete-li zobrazit tyto informace můžete také použít prostředí PowerShell.  Další informace najdete v tématu [spravovat Hadoop clusterů v HDInsight pomocí Azure Powershellu](hdinsight-administer-use-powershell.md).
 

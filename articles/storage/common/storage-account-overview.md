@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: c0d028b2e6f5e759b46293bc3e1cbef6902ea8ea
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: b942b85c954bb765833426f3f9a010a66f016a90
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45740849"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972313"
 ---
 # <a name="azure-storage-account-overview"></a>Přehled účtu Azure storage
 
@@ -94,8 +94,8 @@ Při pojmenování účtu úložiště mějte na paměti tato pravidla:
 
 Účty úložiště pro obecné účely lze nakonfigurovat pro některý z následujících úrovní výkonu:
 
-* Úroveň výkonu standardního úložiště pro ukládání objektů BLOB, soubory, tabulky, fronty a disky virtuálních počítačů Azure.
-* Úroveň výkonu prémiového úložiště pro ukládání jenom disky virtuálních počítačů Azure. Podrobný popis služby Premium Storage najdete v článku [Úložiště Premium: vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../../virtual-machines/windows/premium-storage.md).
+* Úroveň výkonu standard pro ukládání objektů BLOB, soubory, tabulky, fronty a disky virtuálních počítačů Azure.
+* Úroveň výkonu premium pro ukládání jenom disky virtuálních počítačů Azure. Podrobný popis služby Premium Storage najdete v článku [Úložiště Premium: vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../../virtual-machines/windows/premium-storage.md).
 
 ## <a name="access-tiers-for-block-blob-data"></a>Úrovně přístupu pro data objektů blob bloku
 
@@ -107,12 +107,15 @@ K dispozici přístup úrovně jsou:
 * **Cool** úrovně přístupu, která je optimalizovaná pro ukládání velkých objemů dat, která se nevyužívají často a ukládají nejméně na 30 dnů. Ukládání dat do studené vrstvy začne být cenově výhodnější, ale přístup k těmto datům může být trochu nákladnější než přístup k datům v horké úrovni.
 * **Archivu** úroveň, která je dostupná jenom pro objekty BLOB bloku jednotlivé. Archivní úroveň je optimalizovaná pro data, která se toleruje latence načtení několik hodin a zůstanou v archivní úrovni po dobu nejméně na 180 dnů. Archivní úroveň je cenově nejvýhodnější možnost pro ukládání dat, ale přístup k těmto datům je nákladnější než přístup k datům v horké nebo studené úrovni služeb. 
 
+> [!NOTE]
+> [Přístup na úrovni Premium](../blobs/storage-blob-storage-tiers.md#premium-access-tier) je k dispozici ve verzi limited preview jako účet místně redundantního úložiště (LRS) v oblastech severní Evropa, USA – východ 2, USA – střed a USA – západ. Zjistěte, jak zaregistrovat verzi preview, najdete v článku [Úvod do Azure Blob Storage úrovně Premium](http://aka.ms/premiumblob).
+
 Pokud dojde ke změně vzoru využití vašich dat, můžete přepínat mezi úrovněmi přístupu kdykoli. 
 
 > [!IMPORTANT]
 > Změna úrovně přístupu pro existující účet úložiště nebo objekt blob může mít za následek další poplatky.
 
-Další informace o úrovních přístupu najdete v části [Azure Blob storage: horká, studená a archivní úroveň úložiště](../blobs/storage-blob-storage-tiers.md).
+Další informace o úrovních přístupu najdete v části [Azure Blob storage: úrovně Premium (preview), horká, studená a archivní úroveň úložiště](../blobs/storage-blob-storage-tiers.md).
 
 ## <a name="replication"></a>Replikace
 

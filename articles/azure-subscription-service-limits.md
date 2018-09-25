@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: byvinyal
-ms.openlocfilehash: a24fc56bf455fbc487cb6f93e06678d52e5b1c0b
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: c67cc5cb13e2c1112c4752660c82c3ab18360b00
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295753"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056620"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 Tento dokument uvádí některé nejčastějšími omezeními Microsoft Azure, které se taky říká se jim kvóty. Tento dokument nepopisuje aktuálně všech služeb Azure. V průběhu času v seznamu rozbalit a doplněn o popis další platformy.
@@ -71,6 +71,7 @@ V následující omezení se přidala nová tabulka tak, aby odrážel případn
 * [DNS](#dns-limits)
 * [Event Hubs](#event-hubs-limits)
 * [Brány Firewall na Azure](#azure-firewall-limits)
+* [Přední dveře](#azure-front-door-service-limits)
 * [IoT Hub](#iot-hub-limits)
 * [Služba IoT Hub Device Provisioning](#iot-hub-device-provisioning-service-limits)
 * [Key Vault](#key-vault-limits)
@@ -88,6 +89,7 @@ V následující omezení se přidala nová tabulka tak, aby odrážel případn
 * [Scheduler](#scheduler-limits)
 * [Search](#search-limits)
 * [Service Bus](#service-bus-limits)
+* [Služby SignalR](#signalr-service-limits)
 * [Site Recovery](#site-recovery-limits)
 * [SQL Database](#sql-database-limits)
 * [SQL Data Warehouse](#sql-data-warehouse-limits)
@@ -156,6 +158,9 @@ Následující tabulka obsahuje podrobnosti o funkcích a omezení Basic, Standa
 
 #### <a name="azure-firewall-limits"></a>Omezení brány Firewall pro Azure
 [!INCLUDE [azure-firewall-limits](../includes/firewall-limits.md)]
+
+#### <a name="azure-front-door-service-limits"></a>Omezení služby Azure branou
+[!INCLUDE [azure-front-door-service-limits](../includes/front-door-limits.md)]
 
 ### <a name="storage-limits"></a>Omezení úložiště
 <!--like # storage accts -->
@@ -232,9 +237,6 @@ Azure Database for MySQL – omezení, najdete v části [omezení ve službě A
 
 ### <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL
 Azure Database for postgresql – omezení, najdete v části [omezení ve službě Azure Database for PostgreSQL](postgresql/concepts-limits.md).
-
-### <a name="mobile-engagement-limits"></a>Omezení Mobile Engagement
-[!INCLUDE [azure-mobile-engagement-limits](../includes/azure-mobile-engagement-limits.md)]
 
 ### <a name="search-limits"></a>Omezení vyhledávání
 Cenové úrovně určit kapacitu a limity služby search. Vrstvy patří:
@@ -315,6 +317,9 @@ Další informace o omezeních na podrobnější úrovni, jako je například ve
 
 ### <a name="backup-limits"></a>Omezení zálohování
 [!INCLUDE [azure-backup-limits](../includes/azure-backup-limits.md)]
+
+### <a name="signalr-service-limits"></a>Limity pro služby SignalR
+[!INCLUDE [signalr-service-limits](../includes/signalr-service-limits.md)]
 
 ### <a name="site-recovery-limits"></a>Omezení Site Recovery
 [!INCLUDE [site-recovery-limits](../includes/site-recovery-limits.md)]

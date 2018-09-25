@@ -1,89 +1,93 @@
 ---
-title: Vysvětlení, zasílání zpráv typu zařízení cloud Azure IoT Hub | Dokumentace Microsoftu
-description: Průvodce pro vývojáře – jak používat zasílání zpráv typu zařízení cloud pomocí služby IoT Hub. Obsahuje informace o odesílání telemetrických dat a jiných telemtry dat a doručování s využitím směrování zpráv.
-author: dominicbetts
-manager: timlt
+title: Vysvětlení směrování zpráv služby Azure IoT Hub | Dokumentace Microsoftu
+description: Průvodce pro vývojáře – jak používat směrování zpráv k odesílání zpráv typu zařízení cloud. Obsahuje informace o odesílání telemetrických dat a jiných telemtry data.
+author: ash2017
+manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/18/2018
-ms.author: dobett
-ms.openlocfilehash: be87b00f27f0d0b25cd77a0634ab1c653a85e5ac
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.date: 08/13/2018
+ms.author: asrastog
+ms.openlocfilehash: 7c36ab2f0d4d3e5c772f8ef62c13161a2649362f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126438"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966737"
 ---
-# <a name="send-device-to-cloud-messages-to-iot-hub"></a>Odesílání zpráv typu zařízení cloud do služby IoT Hub
+# <a name="use-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Odesílání zpráv typu zařízení cloud do různých koncových bodů pomocí směrování zpráv
 
-K odesílání telemetrických dat časových řad a výstrahy z vašich zařízení k back-endem řešení, odesílání zpráv typu zařízení cloud ze zařízení do služby IoT hub. Informace o dalších typu zařízení cloud možností podporovaných službou IoT Hub, najdete v článku [doprovodných materiálech ke komunikaci typu zařízení cloud][lnk-d2c-guidance].
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-Odesílání zpráv typu zařízení cloud prostřednictvím koncového bodu připojeného k zařízení (**/devices/ {deviceId} / zpráv/události**). Pravidla směrování a směrování zpráv do jeden z koncových bodů určených pro služby ve službě IoT hub. Pravidla směrování použijte k určení, kam chcete směrovat je hlavičky a tělo zprávy typu zařízení cloud. Ve výchozím nastavení, zprávy jsou směrovány na integrovaný koncový bod služby přístupem (**zpráv/události**), která je kompatibilní s [Event Hubs][lnk-event-hubs]. Proto můžete použít standardní [integraci služby Event Hubs a sady SDK] [ lnk-compatible-endpoint] pro příjem zpráv typu zařízení cloud v back-endem řešení.
+Směrování zpráv umožňuje odesílání zpráv z vašich zařízení ke cloudovým službám automatizované, škálovatelných a spolehlivých způsobem. Směrování zpráv je možné pro: 
 
-IoT Hub implementuje zasílání zpráv typu zařízení cloud, pomocí vzoru streamování přenosu zpráv. Zprávy typu zařízení cloud služby IoT Hub se totiž podobá spíš [Event Hubs] [ lnk-event-hubs] *události* než [služby Service Bus] [ lnk-servicebus] *zprávy* v tom, že je k velkému počtu událostí předávání přes službu, kterou si můžete přečíst více čtenářům.
+* **Odesílání telemetrie messsages zařízení, stejně jako události** konkrétně události životního cyklu zařízení a do koncových bodů integrované-endpoint a vlastní události změn dvojčete zařízení. Další informace o [směrování koncových bodů](##routing-endpoints).
 
-Zařízení cloud zasílání zpráv pomocí služby IoT Hub má následující vlastnosti:
+* **Filtrování dat před směrování do různých koncových bodů** použitím bohaté dotazy. Směrování zpráv umožňuje dotazování na vlastnosti zprávy a tělo zprávy stejně jako značky dvojčat zařízení a vlastnosti dvojčete zařízení. Další informace o používání [dotazy v směrování zpráv](../iot-hub/iot-hub-devguide-routing-query-syntax.md).
 
-* Zprávy typu zařízení cloud jsou trvalé a zachované ve výchozím nastavení služby IoT hub **zpráv/události** koncový bod po dobu až sedmi dnů.
-* Zprávy typu zařízení cloud může obsahovat nejvýše 256 KB a mohou být seskupeny do dávek pro optimalizaci odešle. Dávky může obsahovat nejvýše 256 KB.
-* Jak je vysvětleno v [řízení přístupu ke službě IoT Hub] [ lnk-devguide-security] oddíl služby IoT Hub umožňuje řízení přístupu a ověřování podle zařízení.
-* IoT Hub umožňuje vytvořit až 10 vlastních koncových bodů. Zprávy se doručí do koncových bodů podle trasy nakonfigurované ve službě IoT hub. Další informace najdete v tématu [pravidla směrování](iot-hub-devguide-query-language.md#device-to-cloud-message-routes-query-expressions).
-* IoT Hub umožňuje pomocí miliony současně připojených zařízení (viz [kvóty a omezování][lnk-quotas]).
-* IoT Hub neumožňuje libovolného dělení. Zprávy typu zařízení cloud jsou rozdělené na základě jejich zdrojového **deviceId**.
+IoT Hub potřebuje oprávnění k zápisu do těchto koncových bodů služby pro směrování zpráv do práce. Při konfiguraci vašich koncových bodů na webu Azure portal, potřebná oprávnění jsou přidány automaticky. Ujistěte se, že konfigurace služeb pro podporu očekávané propustnosti. Při první konfiguraci řešení IoT, budete muset monitorovat další koncové body a proveďte všechny nezbytné úpravy podle skutečné zátěže.
 
-Další informace o rozdílech mezi službou IoT Hub a Event Hubs najdete v tématu [porovnání služeb Azure IoT Hub a Azure Event Hubs][lnk-comparison].
+Definuje služby IoT Hub [běžný formát](../iot-hub/iot-hub-devguide-messages-construct.md) pro všechna zařízení cloud zasílání zpráv pro interoperatbility přes protokoly. Pokud zpráva odpovídá několik tras, které odkazují na stejný koncový bod, IoT Hub doručí zprávu do tohoto koncového bodu pouze jednou. Proto není nutné konfigurace odstranění duplicitních dat na frontu služby Service Bus nebo téma. V dělené fronty oddílu spřažení záruky pořadí zpráv. Pomocí tohoto kurzu se naučíte [Konfigurace směrování zpráv] (https://docs.microsoft.com/azure/iot-hub/tutorial-routing).
 
-## <a name="send-non-telemetry-traffic"></a>Posílání provozu bez telemetrie
+## <a name="routing-endpoints"></a>Směrování koncových bodů
 
-Často kromě telemetrická data, zařízení odesílají zprávy a požadavky, které vyžadují samostatné spuštění a zpracování v back-endu řešení. Například kritické výstrahy, které musí spustit konkrétní akci v back-endu. Můžete napsat [pravidlo směrování] [ lnk-devguide-custom] odesílat tyto typy zpráv pro koncový bod vyhrazený pro jejich zpracování na základě záhlaví ve zprávě nebo hodnotu v textu zprávy.
+Služby IoT hub má integrované-v – koncový bod (**zpráv/události**), která je kompatibilní s Event Hubs. Můžete vytvořit [vlastní koncové body](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-endpoints#custom-endpoints) pro směrování zpráv propojením dalších služeb v rámci vašeho předplatného do služby IoT Hub. Tyto služby IoT Hub aktuálně podporuje jako vlastní koncové body:
 
-Další informace o nejlepší způsob, jak zpracovat tento druh zpráv, najdete v článku [kurz: postupy zpracování zpráv typu zařízení cloud služby IoT Hub] [ lnk-d2c-tutorial] kurzu.
+### <a name="built-in-endpoint"></a>Integrovaný koncový bod
+Můžete použít standardní [integraci služby Event Hubs a sady SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin) pro příjem zpráv typu zařízení cloud z integrovaného koncového bodu (**zpráv/události**). Všimněte si, že po vytvoření trasy data přestanou přicházet do integrované-v-koncového bodu, pokud není vytvořené trasy do tohoto koncového bodu.
 
-## <a name="route-device-to-cloud-messages"></a>Směrování zpráv typu zařízení cloud
+### <a name="azure-blob-storage"></a>Azure Blob Storage
+IoT Hub podporuje pouze zápis dat do Azure Blob Storage v [Apache Avro](http://avro.apache.org/) formátu. IoT Hub dávek zpráv a zapisuje data do objektu blob pokaždé, když se dosáhne určité velikosti dávky nebo uplynutí určité doby.
 
-Máte dvě možnosti pro směrování zpráv typu zařízení cloud do back endové aplikace:
-
-* Použít integrovaný [koncový bod kompatibilní s centrem událostí] [ lnk-compatible-endpoint] umožňující back endové aplikace umožní číst zprávy typu zařízení cloud přijaté službou. Další informace o integrovaný koncový bod kompatibilní s centrem událostí, naleznete v tématu [čtení zpráv typu zařízení cloud z integrovaného koncového bodu][lnk-devguide-builtin].
-* Použijte pravidla směrování pro odesílání zpráv do vlastní koncové body služby IoT hub. Vlastní koncové body umožňují vaší back endové aplikace umožní číst zprávy typu zařízení cloud pomocí služby Event Hubs, fronty Service Bus nebo témat sběrnice Service Bus. Další informace o směrování a vlastní koncové body, naleznete v tématu [použití vlastních koncových bodů a pravidel směrování pro zprávy typu zařízení cloud][lnk-devguide-custom].
-
-## <a name="anti-spoofing-properties"></a>Vlastnosti ochranu proti falšování identity
-
-Chcete-li vyhnout falšování identity v zpráv typu zařízení cloud, IoT Hub zařízení razítka všechny zprávy s následujícími vlastnostmi:
-
-* **ConnectionDeviceId**
-* **ConnectionDeviceGenerationId**
-* **ConnectionAuthMethod**
-
-První dva obsahují **deviceId** a **generationId** původní zařízení, jak je uvedeno [vlastnosti identity zařízení][lnk-device-properties].
-
-**ConnectionAuthMethod** vlastnost obsahuje objekt serializován do formátu JSON, s následujícími vlastnostmi:
-
-```json
-{
-  "scope": "{ hub | device }",
-  "type": "{ symkey | sas | x509 }",
-  "issuer": "iothub"
-}
+Výchozí nastavení služby IoT Hub následujícími zásadami vytváření názvů souborů:
+```
+{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}
 ```
 
+Můžete použít libovolné zásady vytváření názvů souborů, ale musí využívat všechny uvedené tokeny. IoT Hub bude zapisovat do prázdný objekt blob, pokud neexistuje žádná data k zápisu.
+
+### <a name="service-bus-queues-and-service-bus-topics"></a>Fronty služby Service Bus a témat Service Bus
+Fronty služby Service Bus a témat použít jako nesmí obsahovat koncové body IoT Hubu **relace** nebo **duplicit** povolena. Pokud některý z těchto možností jsou povolené, koncový bod se zobrazí jako **Unreachable** na webu Azure Portal.
+
+### <a name="event-hubs"></a>Event Hubs
+Kromě integrované Event Hubs kompatibilní koncový bod můžete také směrovat data do vlastní koncové body typu Event Hubs. 
+
+Při použití směrování a vlastní koncové body zprávy pouze doručovaly do integrovaného koncového bodu pokud neodpovídají žádná pravidla. Doručení zprávy na integrovaný koncový bod a vlastní koncové body, přidejte trasu, která odesílá zprávy do koncového bodu events.
+
+## <a name="reading-data-that-has-been-routed"></a>Čtení dat, který prochází
+Můžete nakonfigurovat trasu pomocí této [kurzu](https://docs.microsoft.com/azure/iot-hub/tutorial-routing).
+
+Použijte v následujících kurzech se naučíte číst zprávy z koncového bodu.
+
+* Čtení z [integrované-endpoint](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-node)
+* Čtení z [úložiště objektů Blob](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart)
+* Čtení z [služby Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send)
+* Čtení z [fronty služby Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-dotnet-get-started-with-queues)
+* Čtení z [témata služby Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions)
+
+## <a name="fallback-route"></a>Náhradní trasa
+Náhradní trasa odešle všechny zprávy, které není splňují podmínky dotazu na žádné existující trasy pro integrované Event Hubs (**zpráv/události**), která je kompatibilní s [Event Hubs](https://docs.microsoft.com/azure/event-hubs/). Pokud je zapnutá směrování zpráv, můžete povolit funkci náhradní trasa. Všimněte si, že po vytvoření trasy data přestanou přicházet do integrované-v-koncového bodu, pokud není vytvořené trasy do tohoto koncového bodu. Pokud nejsou žádné trasy na integrované-v – koncový bod a je povolen záložní trasu, pošle jenom zprávy, které neodpovídají žádné podmínky dotazu na trasách integrované-v – koncový bod. Také se odstraní všechny existující trasy, musí být záložní trasy povoleno přijímat všechna data na integrované-v – koncový bod. 
+
+Můžete povolit nebo zakázat záložní trasy v Azure Portal -> směrování zpráv okna. Můžete použít také Azure Resource Manageru pro [FallbackRouteProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) použít vlastní koncový bod pro použití náhradní lokality trasu.
+
+## <a name="non-telemetry-events"></a>Bez telemetrie událostí
+Kromě telemetrie zařízení směrování zpráv umožňuje odesílání události změn dvojčete zařízení a události životního cyklu zařízení. Například, pokud se vytvoří trasu se zdrojem dat nastaveno **události změn dvojčete zařízení**, IoT Hub odesílá zprávy do koncového bodu, který obsahuje změny ve dvojčeti zařízení. Podobně pokud se vytvoří trasu se zdrojem dat nastaveno **události životního cyklu zařízení**, Centrum IoT pošle zpráva označující, zda byla odstraněna nebo vytvoření zařízení. 
+[IoT Hub se také integruje s Azure Event Grid](iot-hub-event-grid.md) publikovat události zařízení na podporu integrace v reálném čase a automatizace pracovních postupů na základě těchto událostí. Klíč [rozdíly mezi směrování zpráv a služby Event Grid](iot-hub-event-grid-routing-comparison.md) informace, které pro váš scénář nejvhodnější.
+
+## <a name="testing-routes"></a>Testování trasy
+Když vytvoříte novou trasu nebo upravíte existující trasy, měli byste otestovat trasu dotaz s ukázkovou zprávu. Můžete testovat jednotlivé trasy nebo otestujte všechny trasy najednou a žádné zprávy jsou směrovány na koncové body během testu. Azure Portal, Azure Resource Manageru, Azure Powershellu a rozhraní příkazového řádku Azure můžete použít pro testování. Výsledky pomoct zjistit, jestli ukázková zpráva odpovídá dotazu, zpráva se neshodoval dotazu nebo test nejde spustit, protože ukázková zpráva nebo dotazu syntaxe jsou nesprávné. Další informace najdete v tématu [trasy testu](https://docs.microsoft.com/rest/api/iothub/iothubresource/testroute) a [otestovat všechny trasy](https://docs.microsoft.com/rest/api/iothub/iothubresource/testallroutes).
+
+## <a name="latency"></a>Latence
+Při směrování zpráv telemetrická data typu zařízení cloud pomocí integrovaných koncových bodech, je po vytvoření prvního postupu mírné zvýšení-celkovou latenci.
+
+Ve většině případů je průměrná zvýšení latence kratší než 500ms. Můžete monitorovat pomocí latence **směrování: zpráva latence pro zprávy/události** nebo **d2c.endpoints.latency.builtIn.events** metriky služby IoT Hub. Vytvoření nebo odstranění žádné trasy po první z nich nemá žádný vliv na celkovou latenci.
+
+## <a name="monitoring-and-troubleshooting"></a>Monitorování a řešení potíží
+Poskytuje službě IoT Hub, několik směrování a koncový bod související metriky, které vám poskytnou přehled o stavu centra a odeslaných zpráv. Můžete kombinovat informace z několika metrik a identifikovat hlavní příčinu problémů. Například použijte metriku **směrování: počet ztracených zpráv telemetrie** nebo **d2c.telemetry.egress.dropped** identifikovat počet zpráv, které byly při neodpovídají dotazy na žádném z trasy a náhradní trasa byla zakázána. [Metriky služby IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics) uvádí všechny metriky, které jsou ve výchozím nastavení povolená pro službu IoT Hub.
+
+Použití **trasy** diagnostické protokoly ve službě Azure Monitor [nastavení diagnostiky](https://docs.microsoft.com/azure/iot-hub/iot-hub-monitor-resource-health), můžete sledují chyby, ke kterým dochází při vyhodnocování směrování dotazů a koncový bod stavu vnímanou ve službě IoT Hub, například Pokud koncový bod je neaktivní. Tyto diagnostické protokoly je odeslat do Log Analytics a Event Hubs, Azure Storage pro vlastní zpracování.
+
 ## <a name="next-steps"></a>Další postup
-
-Informace o sadách SDK můžete použít k odesílání zpráv typu zařízení cloud, najdete v části [sad SDK Azure IoT][lnk-sdks].
-
-[Rychlých startů] [ lnk-get-started] ukazují, jak odesílat zprávy typu zařízení cloud ze simulovaných zařízení. Další podrobnosti najdete [zpráv typu zařízení cloud procesu IoT Hubu pomocí tras] [ lnk-d2c-tutorial] kurzu.
-
-[lnk-devguide-builtin]: iot-hub-devguide-messages-read-builtin.md
-[lnk-devguide-custom]: iot-hub-devguide-messages-read-custom.md
-[lnk-comparison]: iot-hub-compare-event-hubs.md
-[lnk-d2c-guidance]: iot-hub-devguide-d2c-guidance.md
-[lnk-get-started]: quickstart-send-telemetry-node.md
-
-[lnk-event-hubs]: http://azure.microsoft.com/documentation/services/event-hubs/
-[lnk-servicebus]: http://azure.microsoft.com/documentation/services/service-bus/
-[lnk-quotas]: iot-hub-devguide-quotas-throttling.md
-[lnk-sdks]: iot-hub-devguide-sdks.md
-[lnk-compatible-endpoint]: iot-hub-devguide-messages-read-builtin.md
-[lnk-device-properties]: iot-hub-devguide-identity-registry.md#device-identity-properties
-[lnk-devguide-security]: iot-hub-devguide-security.md
-[lnk-d2c-tutorial]: tutorial-routing.md
+* Zjistěte, jak vytvořit trasy zpráv, najdete v článku [zpráv typu zařízení cloud procesu IoT Hubu pomocí tras](../iot-hub/tutorial-routing.md) kurzu.
+* [Rychlých startů](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-node) ukazují, jak odesílat zprávy typu zařízení cloud ze simulovaných zařízení.
+* Informace o sadách SDK můžete použít k odesílání zpráv typu zařízení cloud, najdete v části [sad SDK Azure IoT](../iot-hub/iot-hub-devguide-sdks.md).

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 7fe4fdbf6c6b3cbbd6d01ef5309699c3d3991d53
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 3a74450ca8025f07b00dc18c9b81b147afa7439c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003810"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46975294"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Přidání, změna nebo odebrání IP adres pro rozhraní sítě Azure
 
@@ -35,7 +35,7 @@ Před dokončením kroků v jakékoli části tohoto článku, proveďte násled
 - Pokud ještě nemáte účet Azure, zaregistrujte si [Bezplatný zkušební účet](https://azure.microsoft.com/free).
 - Pokud používáte portál, otevřete https://portal.azure.coma přihlaste se pomocí svého účtu Azure.
 - Pokud používáte příkazy prostředí PowerShell k dokončení úkolů v tomto článku, buď spusťte příkazy [Azure Cloud Shell](https://shell.azure.com/powershell), nebo pomocí prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje modul Azure PowerShell verze 5.7.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzureRmAccount` pro vytvoření připojení k Azure.
-- Pokud k dokončení úkolů v tomto článku pomocí příkazů rozhraní příkazového řádku Azure (CLI), buď spusťte příkazy [Azure Cloud Shell](https://shell.azure.com/bash), nebo pomocí rozhraní příkazového řádku z vašeho počítače. Tento kurz vyžaduje použití Azure CLI verze 2.0.31 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte také spustit `az login` vytvořit připojení k Azure.
+- Pokud k dokončení úkolů v tomto článku pomocí příkazů rozhraní příkazového řádku Azure (CLI), buď spusťte příkazy [Azure Cloud Shell](https://shell.azure.com/bash), nebo pomocí rozhraní příkazového řádku z vašeho počítače. Tento kurz vyžaduje použití Azure CLI verze 2.0.31 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte také spustit `az login` vytvořit připojení k Azure.
 
 Účet přihlásit nebo připojit k Azure, musíte být přiřazeni k [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolí nebo [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) přiřazené příslušné akce uvedené v [sítě rozhraní oprávnění](virtual-network-network-interface.md#permissions).
 
@@ -92,7 +92,7 @@ Můžete odebrat [privátní](#private) a [veřejné](#public) IP adresy k síť
 1. Do pole, které obsahuje text *vyhledat prostředky* v horní části stránky na webu Azure portal, zadejte *síťová rozhraní*. Když **síťová rozhraní** nezobrazí ve výsledcích hledání, vyberte ji.
 2. Vyberte síťové rozhraní, které chcete odebrat ze seznamu IP adres.
 3. V části **nastavení**vyberte **konfigurací protokolu IP**.
-4. Stisknutém pravém tlačítku vyberte [sekundární](#secondary) konfigurace IP adresy (nejde odstranit [primární](#primary) konfigurace), který chcete odstranit, vyberte **odstranit**a pak vyberte ** Ano**, potvrďte odstranění. Pokud prostředek veřejné IP adresy přidružené k jeho konfiguraci, prostředek je oddělen od konfigurace protokolu IP, ale neodstraní prostředek.
+4. Stisknutém pravém tlačítku vyberte [sekundární](#secondary) konfigurace IP adresy (nejde odstranit [primární](#primary) konfigurace), který chcete odstranit, vyberte **odstranit**a pak vyberte  **Ano**, potvrďte odstranění. Pokud prostředek veřejné IP adresy přidružené k jeho konfiguraci, prostředek je oddělen od konfigurace protokolu IP, ale neodstraní prostředek.
 
 **Příkazy**
 
@@ -188,7 +188,7 @@ Každé síťové rozhraní musí mít jeden [primární](#primary) konfigurace 
 Můžete přiřadit žádnou nebo jednu privátní [IPv6](#ipv6) adres na jednu sekundární konfigurace IP adresy síťového rozhraní. Síťové rozhraní nemůže mít žádné stávající sekundární konfigurace IP. Nelze přidat konfiguraci IP adresou IPv6 pomocí portálu. Přidat konfiguraci IP s privátní IPv6 adresou do existující rozhraní sítě pomocí Powershellu nebo rozhraní příkazového řádku. Síťové rozhraní nelze připojit k existujícímu virtuálnímu počítači.
 
 > [!NOTE]
-> I když můžete vytvořit síťové rozhraní s adresou IPv6 pomocí portálu, nelze přidat stávající síťové rozhraní do nového nebo existujícího virtuálního počítače, na portálu. Vytvořte síťové rozhraní s privátní IPv6 adresou pomocí Powershellu nebo rozhraní příkazového řádku Azure CLI 2.0 a potom připojit síťové rozhraní při vytváření virtuálního počítače. Nelze připojit síťové rozhraní s privátní adresou IPv6 přiřazená k existujícímu virtuálnímu počítači. Privátní IPv6 adresou nelze přidat do konfigurace IP pro každé síťové rozhraní připojené k virtuálnímu počítači pomocí všech nástrojů (portal, Powershellu nebo rozhraní příkazového řádku).
+> I když můžete vytvořit síťové rozhraní s adresou IPv6 pomocí portálu, nelze přidat stávající síťové rozhraní do nového nebo existujícího virtuálního počítače, na portálu. Vytvořte síťové rozhraní s privátní IPv6 adresou pomocí Powershellu nebo rozhraní příkazového řádku Azure a pak připojit síťové rozhraní při vytváření virtuálního počítače. Nelze připojit síťové rozhraní s privátní adresou IPv6 přiřazená k existujícímu virtuálnímu počítači. Privátní IPv6 adresou nelze přidat do konfigurace IP pro každé síťové rozhraní připojené k virtuálnímu počítači pomocí všech nástrojů (portal, Powershellu nebo rozhraní příkazového řádku).
 
 Nelze přiřadit veřejnou IPv6 adresu ke primární nebo sekundární konfiguraci IP adresy.
 

@@ -1,8 +1,7 @@
 ---
-title: Jak zvolit algoritmy strojového učení | Microsoft Docs
-description: Jak zvolit algoritmy pro učení se supervizí a bez s Azure Machine Learning v clustering, klasifikační nebo regresní experimenty.
+title: Jak zvolit algoritmy strojového učení | Dokumentace Microsoftu
+description: Jak zvolit algoritmy Azure Machine Learning Studio u dozorovaných, tak i u nedozorovaných učení v clustering, klasifikační nebo regresní experimentů.
 services: machine-learning
-documentationcenter: ''
 author: pakalra
 ms.author: pakalra
 manager: cgronlun
@@ -11,230 +10,247 @@ tags: ''
 ms.assetid: a3b23d7f-f083-49c4-b6b1-3911cd69f1b4
 ms.service: machine-learning
 ms.component: studio
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
 ms.date: 12/18/2017
-ms.openlocfilehash: 79b2cc3951fa8a48282f42f7180ec831050508f8
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 92db2a86f5f698945cd2252476e951d658dc75ac
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834378"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46959202"
 ---
-# <a name="how-to-choose-algorithms-for-microsoft-azure-machine-learning"></a>Jak vybrat algoritmy pro službu Microsoft Azure Machine Learning
-Odpověď na otázku "Co algoritmus strojového učení mám použít?" je vždy "Závisí." To závisí na velikosti, kvality a povaha data. To závisí na co chcete udělat s odpověď. To závisí na tom, jak byl výpočty algoritmu přeložit na pokyny k počítači, který používáte. A závisí na tom, jak dlouho je k dispozici. I nejvíce zkušeného datových vědců nelze zjistit, který algoritmus provede než to zkusíte je nejvhodnější.
+# <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>Jak zvolit algoritmy pro Azure Machine Learning Studio
 
-## <a name="the-machine-learning-algorithm-cheat-sheet"></a>Algoritmus Machine Learning Tahák
-**Microsoft Azure Machine Learning algoritmus cheaty list** pomáhá zvolíte právo počítač algoritmus učení pro vaše řešení prediktivní analýzy v knihovně Microsoft Azure Machine Learning algoritmů.
-Tento článek vás provede způsobu jeho použití.
+Odpověď na otázku "Co algoritmu strojového učení, mám použít?" je vždy "Záleží." To závisí na velikosti, kvality a povaze data. To závisí na co chcete udělat s odpovědí. To závisí na jak matematické algoritmus byl přeložen do pokyny, jak na počítači, který používáte. A závisí na tom, kolik času je k dispozici. Dokonce i nejzkušenějších odborníci přes data nelze zjistit, který algoritmus provede nejlepší před pokusem o nich.
+
+## <a name="the-machine-learning-algorithm-cheat-sheet"></a>Tahák algoritmus Machine Learning
+
+**Microsoft Azure Machine Learning algoritmus Ošidit list** pomáhá výběru správné strojové učení algoritmu pro vaše řešení prediktivní analýzy Azure Machine Learning Studio knihovnou algoritmů.
+Tento článek vás provede jeho použití.
 
 > [!NOTE]
-> Ke stažení tahák a postupovat, přejděte na [strojového učení rychlý přehled algoritmů pro Microsoft Azure Machine Learning Studio](algorithm-cheat-sheet.md).
+> Ke stažení tahák a postupovat podle tohoto článku, přejděte na [služby Machine learning tahák pro Microsoft Azure Machine Learning Studio](algorithm-cheat-sheet.md).
 > 
 > 
 
-Tato tahák má velmi určitou cílovou skupinu v paměti: začátku dat vědecký pracovník s úrovni škole machine learning, která pokusu vybrat algoritmus začínat v Azure Machine Learning Studio. To znamená, že umožňuje některé Generalizace a oversimplifications, ale jeho bodů bezpečné směrem. Taky to znamená, že jsou velké množství algoritmy, které zde nejsou uvedeny. S růstem Azure Machine Learning zahrnuje více kompletní sadu dostupných metod přidáme je.
+Tento tahák obsahuje velmi určitou cílovou skupinu na paměti: začátek specializují na data vysokoškoláka úroveň machine Learning, chcete-li vybrat algoritmus začít s v nástroji Azure Machine Learning Studio. To znamená, že provede některé Generalizace a oversimplifications, ale můžete odkazuje ve směru bezpečné. Také znamená, že existuje mnoho algoritmů, které tu nejsou uvedené. S růstem Azure Machine Learning zahrnuje úplnější sadu metod, přidáme je.
 
-Tato doporučení jsou kompilované zpětné vazby a od mnoha datových vědců a odborníky machine learning. Všechno, co jsme nebyla souhlas, ale I jste se pokusili sladit naše názory do hrubý konsenzu. Většinu příkazů neshody začínat řetězcem "Závisí..."
+Tato doporučení jsou kompilované zpětnou vazbu a tipy od mnoha odborníci přes data a machine learning odborníky. Všechno, co jsme Nesouhlasili, ale jste se pokusili k harmonizaci naše názory do hrubý shody. Většina příkazů neshody začínají řetězcem "Závisí..."
 
-### <a name="how-to-use-the-cheat-sheet"></a>Postup použití tahák
-Číst cestu a algoritmus popisky v grafu jako "pro  *&lt;popisek cesty&gt;*, použijte  *&lt;algoritmus&gt;*." Například "pro *rychlost*, použijte *dvě třídy logistic regression*." Vztahuje se někdy více než jeden větev.
-Někdy žádný z nich jsou vzájemně přizpůsobit. Jste má být pravidlo jezdec doporučení, proto nemusíte si dělat starosti o něm se přesný.
-Několik datových vědců, které I jsme se věnovali měla s uvedené které pouze zda způsob, jak najít algoritmus velmi nejlepší je vyzkoušet všechny z nich.
+### <a name="how-to-use-the-cheat-sheet"></a>Jak používat tahák
 
-Tady je příklad z [Azure AI Galerie](http://gallery.cortanaintelligence.com/) experimentu několik algoritmů proti stejná data se pokusí a porovná výsledky: [porovnat více třída třídění: písmeno rozpoznávání](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92).
+Čtení cesty a algoritmus popisků v grafu jako "pro  *&lt;popisek cesty&gt;*, použijte  *&lt;algoritmus&gt;*." Například "pro *rychlost*, použijte *dvě třídy logistické regrese*." Platí se někdy více než jedna větev.
+Žádná z nich jsou někdy dokonale vyhovovat. Jejich smyslem je bude pravidlo thumb doporučení, tak Nestarejte se o to je přesné.
+Několik odborníci přes data, které jsem už mluvili s uvedené, které pouze že způsob, jak najít ten nejlepší algoritmus je vyzkoušet všechno, co je.
+
+Tady je příklad z [galerii Azure AI](http://gallery.cortanaintelligence.com/) experimentu, který se pokusí několik algoritmů na stejná data a porovnává výsledky: [porovnání třídění roc: písmeno rozpoznávání](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92).
 
 > [!TIP]
 > Pokud si chcete stáhnout a vytisknout diagram s přehledem funkcí nástroje Machine Learning Studio, nahlédněte do tématu [Diagram s přehledem možností nástroje Machine Learning Studio](studio-overview-diagram.md).
 > 
 > 
 
-## <a name="flavors-of-machine-learning"></a>Charakteristikami machine learning
-### <a name="supervised"></a>Pod dohledem.
-Algoritmy pod dohledem učení provádět předpovědi na základě sady příklady. Například historických uložených ceny slouží k nebezpečí pokusů v budoucnu ceny. Každý příklad používá pro školení s názvem bez přípony s hodnotou zájmu – v tomto případě uložených cena. Algoritmus pod dohledem učení Hledat v těchto hodnota popisky. Může použít všechny informace, které by mohly být důležité – dne v týdnu, sezóny, finanční data společnosti, průmyslových, přítomnost rušivý geopolitické události – a jednotlivých algoritmů vypadá pro různé typy schémat. Jakmile algoritmus nejlepší vzorek najde ho můžete, použije tento vzor aby předpovědi bez popisku testovacích dat – budoucí ceny.
+## <a name="flavors-of-machine-learning"></a>Typy služby machine learning
 
-Pod dohledem learning je Oblíbené a užitečné typ strojové učení. S jednou výjimkou všechny moduly v Azure Machine Learning jsou pod dohledem učení algoritmy. Existuje několik typů konkrétní pod dohledem učení, které představuje v rámci Azure Machine Learning: detekce anomálií, klasifikace a regrese.
+### <a name="supervised"></a>Pod dohledem
 
-* **Klasifikace**. Pokud data se používají k předvídání kategorii, pod dohledem učení se také nazývá klasifikace. To je případ, kdy přiřazení bitovou kopii jako obrázek 'cat' nebo 'PSA. Pokud jsou dostupné pouze dvě možnosti, se nazývá **two-class** nebo **binomický klasifikace**. Když existují další kategorie, jako, předpověď Vítěz turnaj Madness března NCAA, potíže se označuje jako **více třída klasifikace**.
-* **Regrese**. Pokud hodnota je právě předpovědět, stejně jako u uložených ceny, se nazývá pod dohledem learning regrese.
-* **Detekce anomálií**. Cílem je někdy k identifikaci datové body, které jsou jednoduše neobvyklé. Při zjišťování podvodů například všechny vzorky útraty hodně neobvyklý platební karty se podezřelá. Je možné variace tak mnoho a vypadá tak několik, že není možné zjistěte, jaké podvodné aktivity školení příklady. Přístup, který přebírá detekce anomálií je jednoduše zjistěte, jaké normální aktivity bude vypadat takto (pomocí-podvodné transakce historie) a identifikovat všechno, co se výrazně liší.
+Učení algoritmy predikci založené na sadě příklady. Například historické ceny akcií slouží k nebezpečí pokusů na budoucí ceny. Každý příklad používá pro vzdělávání je označené hodnotou zájmu – v tomto případě minimální cenu akcie. Algoritmus učení hledá vzory v tyto hodnoty popisků. Může využívat veškeré informace, které můžou být relevantní – den v týdnu, období, finanční data vaší společnosti, typ oboru, přítomnost geopolitických rušivé události, a vypadá každý algoritmus pro různé typy schémat. Po algoritmu našla nejlepší model může, využívá tento vzor k následné predikci pro bez popisku testovacích dat – zítřejší ceny.
 
-### <a name="unsupervised"></a>Bez dohledu
-V bez dohledu learning datové body mají žádné popisky s nimi spojených. Cílem algoritmus učení bez dohledu místo toho je k uspořádání dat nějakým způsobem nebo k popisu jeho struktury. To může znamenat seskupení do clusterů nebo při hledání různé způsoby prohlížení komplexní data tak, aby se jednodušší nebo více uspořádány.
+Učení je Oblíbené a vhodné typ služby machine learning. S jednou výjimkou všech modulech ve službě Azure Machine Learning jsou pod dohledem učení se supervizí. Existuje několik konkrétních typů učení, které jsou reprezentovány v rámci Azure Machine Learning: klasifikace, regrese a detekce anomálií.
 
-### <a name="reinforcement-learning"></a>Posílení učení
-V posílení učení získá algoritmus vybrat akci v reakci na každý datový bod. Algoritmus učení dále přijímá signál potřebu po krátkou dobu později, znamenající, jak dobrý byla rozhodnutí.
-Na základě algoritmus upravuje jeho strategie pro dosažení nejvyšší potřebu. Aktuálně neexistují žádné posílení učení algoritmu modulů v Azure Machine Learning. Posílení learning je běžné v robotics, kde sada odečty snímačů v jednom bodě v čase je hodnota datového bodu, a algoritmus musíte zvolit další akce robot. Je také, že přírodní vhodné pro Internet věcí aplikace.
+* **Klasifikace**. Když data jsou používány k předpovědi kategorii, učení se také nazývá klasifikace. Při přiřazování bitovou kopii jako obrázek "cat" nebo "pes tomu tak. Pokud existují pouze dvě možnosti, se nazývá **dvěma třídami** nebo **binomický klasifikace**. Pokud je více kategorií, jako při predikci vítěze turnaje NCAA March Madness, tento problém se označuje jako **roc klasifikace**.
+* **Regrese**. Je-li hodnotu se očekává se, jak s cenami akcií, nazývá učení regrese.
+* **Detekce anomálií**. Cílem je někdy k identifikaci datové body, které se jednoduše neobvyklé. Při zjišťování podvodů například všechny velmi neobvyklému platební karty útraty vzorky se stavem suspect. Je proto celá řada možných odchylky a tedy několik, není možné získat co podvodných aktivit školení příklady vypadá. Přístup, který přijímá detekce anomálií je jednoduše zjistěte, jaké běžné úrovně aktivity vypadá jako (s použitím jiných podvodné transakce historie) a identifikovat cokoli, co se značně liší.
 
-## <a name="considerations-when-choosing-an-algorithm"></a>Důležité informace k výběru algoritmus
+### <a name="unsupervised"></a>Nastavenou možnost bez dohledu
+
+Datové body mají ve službě learning bez dohledu, se k nim má přiřazené žádné popisky. Místo toho je cílem algoritmus učení bez dohledu uspořádání dat nějakým způsobem nebo k popisu struktury. To může znamenat seskupení do clusterů nebo vyhledání různé způsoby prohlížení komplexní data, aby se zobrazovala jednodušší nebo organizovanější.
+
+### <a name="reinforcement-learning"></a>Zpětnovazebnému učení
+
+V zpětnovazební učení získá algoritmu a vybrat akci v reakci na každý datový bod. Algoritmus učení také obdrží signál reward krátkou dobu později, určující, jak kvalitní byl rozhodnutí.
+Na základě toho algoritmus změní svoji strategii, abyste dosáhli nejvyšší potřebu. Aktuálně nejsou žádné zpětnovazební učení algoritmu moduly ve službě Azure Machine Learning. Zpětnovazebnému učení je běžné v robotika, kde je sada údajů snímačů přes v jednom bodě v čase na datový bod a algoritmus musíte zvolit robot další akci. Také je, že přírodní přizpůsobit pro Internet věcí, které aplikace.
+
+## <a name="considerations-when-choosing-an-algorithm"></a>Aspekty při výběru algoritmus
+
 ### <a name="accuracy"></a>Přesnost
-Získávání nejpřesnější odpovědí možná není vždy nutné.
-Někdy je dostačující, v závislosti na tom, co chcete použít pro sblížení. Pokud je to tento případ, bude pravděpodobně možné vyjmout doby zpracování výrazně podle provedením vykrvovacího vpichu s další přibližnou metody. Další výhodou další přibližnou metody je, že se přirozeně mívají předejdete [overfitting](https://youtu.be/DQWI1kvmwRg).
+
+Získání co nejvíce zpřesnili odpovědí je to možné není vždy nutné.
+Někdy je odpovídající, v závislosti na tom, co chcete použít pro přibližný. Pokud je to tento případ, je možné výrazně snížili čas zpracování nastolit s další přibližné metody. Další výhodou další přibližné metody je, že bývají přirozeně vyhnout [overfitting](https://youtu.be/DQWI1kvmwRg).
 
 ### <a name="training-time"></a>Čas školení
-Počet minut nebo hodin, které jsou nezbytné pro trénování modelu značnou část liší algoritmy. Cvičení čas často úzce souvisí přesnost – jeden na druhý obvykle doprovází. Kromě toho některé algoritmy jsou citlivější na počet datových bodů než jiné.
-Po omezenou dobu je jednotka vybrat algoritmus, zejména v případě, že je velké datové sady.
+
+Počet minut nebo hodin, které jsou nezbytné k natrénování modelu zajistí liší algoritmy. Školení čas je často úzce vázané na přesnost – jeden druhý obvykle doprovází. Kromě toho některé algoritmy jsou citlivější na počet datových bodů než jiné.
+Po omezenou dobu můžete přimět vybrat algoritmus, zejména v případě, že datová sada je velká.
 
 ### <a name="linearity"></a>Linearity
-Ujistěte se, velké množství algoritmy strojového učení použít linearity. Lineární klasifikace algoritmy předpokládá, že třídy je možné oddělit přímku (nebo její vyšší dimenzí analogovým). Patří logistic regression a podporují vektoru počítače (jak je implementované v Azure Machine Learning).
-Lineární regrese algoritmy předpokládají, podívejte se na data trendy přímce. Tyto předpoklady nejsou chybný pro některé problémy, ale na jiných přinášejí přesnost.
 
-![Hranice non lineární – třída][1]
+Ujistěte se, velké množství algoritmů strojového učení pomocí linearity. Lineární klasifikace algoritmy předpokládají, že třídy je možné oddělit rovné čáry (nebo jeho vyšší trojrozměrné analogovým). Patří logistické regrese a podporují vektoru počítače (jak je implementován ve službě Azure Machine Learning).
+Lineární regrese, algoritmy předpokládají, že trendy v datech podle rovné čáry. Tyto předpoklady nejsou vhodná pro některé problémy, ale na ostatní přinášejí přesnost.
 
-***Lineární bez třída hranic*** *-spoléhat na lineární klasifikační algoritmus by mělo za následek nízkou přesnost*
+![Hranice lineární mimo třídu][1]
 
-![Data s nelineární trendu][2]
+***Lineární bez třídy hranice*** *-spoléhat na lineární klasifikační algoritmus by mělo za následek nízké přesnost*
 
-***Data s nelineární trend*** *-pomocí jiné metody lineární regrese by vygeneroval mnohem větší chyby, než je nutné*
+![Data s nelineárních trendů][2]
 
-Bez ohledu na jejich nebezpečích lineární algoritmy jsou velmi oblíbených jako první řádek útoku. Že jsou obvykle algorithmically jednoduchým a rychlým ke cvičení.
+***Data s nelineárních trendů*** *-metodou lineární regrese vygeneruje mnohem větší chyb, než je nutné*
+
+Bez ohledu na jejich nebezpečí lineární algoritmy jsou velmi populární jako první řádek útoku. Bývají algorithmically snadné a rychlé školení.
 
 ### <a name="number-of-parameters"></a>Počet parametrů
-Parametry jsou knoflíky, který získá vědecký pracovník dat. Chcete-li při nastavování algoritmu. Jsou čísla, která ovlivňují chování algoritmus, například tolerance chyb nebo počet iterací nebo možnosti mezi varianty chování algoritmus. Přesnost algoritmu a čas školení může být někdy velmi citlivé na získávání právě správné nastavení. Algoritmy s parametry velké počty obvykle vyžadují většina chyba zkušební verze a najít dobrou kombinaci.
 
-Případně, není [parametr (vymetání) komínů](algorithm-parameters-optimize.md) bloku modulu v Azure Machine Learning, která automaticky se pokusí všechny kombinace parametrů v jakémkoli členitosti zvolíte. Přestože se skvělý způsob, jak Ujistěte se, že jste předané parametr místa, zvyšuje čas potřebný k natrénování modelu exponenciálnímu s počtem parametrů.
+Parametry jsou knoflíky, chcete-li při nastavování algoritmus získá mezi odborníky přes data. Jsou čísla, která ovlivňují chování algoritmus, například toleranci chyb nebo počet iterací nebo možnosti mezi varianty chování algoritmu. Čas na školení a nemusí být algoritmus může být někdy docela citlivé na získání správné nastavení. Obvykle vyžadují algoritmů pomocí parametrů velké počty na většině omyl a najít dobrá kombinace.
 
-Vzhůru je, že má mnoho parametrů obvykle znamená, že algoritmus má větší flexibilitu. Často může dosáhnout velmi dobré přesnost. Pokud že najdete tu správnou kombinaci nastavení parametrů.
+Další možností je [parametr sweeping](algorithm-parameters-optimize.md) bloku modulu ve službě Azure Machine Learning, automaticky se pokusí všechny kombinace parametrů v libovolné členitosti zvolíte. Když je skvělý způsob, jak Ujistěte se, že jste předané parametru místa, čas potřebný k natrénování modelu se exponenciálně zvyšuje s počtem parametrů.
 
-### <a name="number-of-features"></a>Počet funkcí
-Pro některé typy dat, řadu funkcí, může být velmi velké ve srovnání s počet datových bodů. To je často případ s genetika nebo textová data. Hodně funkcí můžete bog dolů některé learning algoritmy, provedení školení čas unfeasibly dlouho. Podpora vektoru počítače jsou zvláště skvěle hodí pro tento případ (viz níže).
+Vzhůru je, že máte velký počet parametrů obvykle znamená, že algoritmus má větší flexibilitu. Často dosáhnout velmi dobré přesnost. Za předpokladu, že můžete najít správné kombinace nastavení parametrů.
+
+### <a name="number-of-features"></a>Mnoho funkcí
+
+U určitých typů dat, mnoho funkcí může být velmi velké ve srovnání s počet datových bodů. To je často případ se genetika nebo textová data. Velké množství funkcí může zpomalit některé studijní algoritmy, provádění školení unfeasibly dlouhý čas. Podpora vektoru počítače jsou zvlášť vhodná pro tento případ (viz níže).
 
 ### <a name="special-cases"></a>Zvláštní případy
-Některé algoritmy učení zkontrolujte určité předpoklady o struktuře data nebo požadovaných výsledků. Pokud můžete najít ten, který vyhovuje vašim potřebám, se vám může poskytnout užitečnější výsledky, přesnější předpovědi nebo školení rychlejší.
+
+Některé studijní algoritmy určité domněnky o struktuře dat nebo požadovaných výsledků. Pokud nemůžete najít takový, který nejlépe vyhovuje vašim potřebám, poskytuje další užitečné výsledky, přesnějších predikcí nebo kratší časy školení.
 
 | **Algoritmus** | **Přesnost** | **Čas školení** | **Linearity** | **Parametry** | **Poznámky** |
 | --- |:---:|:---:|:---:|:---:| --- |
-| **Klasifikace dva – třída** | | | | | |
-| [Logistic regression](https://msdn.microsoft.com/library/azure/dn905994.aspx) | |● |● |5 | |
-| [rozhodnutí doménové struktury](https://msdn.microsoft.com/library/azure/dn906008.aspx) |● |○ | |6 | |
-| [rozhodovací Džungle](https://msdn.microsoft.com/library/azure/dn905976.aspx) |● |○ | |6 |Nároky nedostatku paměti |
-| [Vylepšené rozhodovací strom](https://msdn.microsoft.com/library/azure/dn906025.aspx) |● |○ | |6 |Nároky velké paměti |
-| [neuronové sítě](https://msdn.microsoft.com/library/azure/dn905947.aspx) |● | | |9 |[Je možné další přizpůsobení](http://go.microsoft.com/fwlink/?LinkId=402867) |
-| [zprůměrovanou perceptron](https://msdn.microsoft.com/library/azure/dn906036.aspx) |○ |○ |● |4 | |
-| [Support vector machine](https://msdn.microsoft.com/library/azure/dn905835.aspx) | |○ |● |5 |Dobré pro velké funkce sady |
-| [počítač vektoru místně přímé podpory](https://msdn.microsoft.com/library/azure/dn913070.aspx) |○ | | |8 |Dobré pro velké funkce sady |
+| **Klasifikace dvěma třídami** | | | | | |
+| [Logistické regrese](https://msdn.microsoft.com/library/azure/dn905994.aspx) | |● |● |5 | |
+| [rozhodovací les](https://msdn.microsoft.com/library/azure/dn906008.aspx) |● |○ | |6 | |
+| [rozhodovací Džungle](https://msdn.microsoft.com/library/azure/dn905976.aspx) |● |○ | |6 |Nedostatek paměti nároky na místo |
+| [Posílený rozhodovací strom](https://msdn.microsoft.com/library/azure/dn906025.aspx) |● |○ | |6 |Velké paměťové nároky |
+| [neurálních sítí](https://msdn.microsoft.com/library/azure/dn905947.aspx) |● | | |9 |[Další přizpůsobení je možné](http://go.microsoft.com/fwlink/?LinkId=402867) |
+| [průměrné perceptron](https://msdn.microsoft.com/library/azure/dn906036.aspx) |○ |○ |● |4 | |
+| [počítač vektorové podpory](https://msdn.microsoft.com/library/azure/dn905835.aspx) | |○ |● |5 |Vhodné pro velké funkce sad |
+| [místně důkladné podpoře vector machine](https://msdn.microsoft.com/library/azure/dn913070.aspx) |○ | | |8 |Vhodné pro velké funkce sad |
 | [Počítač bodu Bayes.](https://msdn.microsoft.com/library/azure/dn905930.aspx) | |○ |● |3 | |
-| **Klasifikace více – třída** | | | | | |
-| [Logistic regression](https://msdn.microsoft.com/library/azure/dn905853.aspx) | |● |● |5 | |
-| [rozhodnutí doménové struktury](https://msdn.microsoft.com/library/azure/dn906015.aspx) |● |○ | |6 | |
-| [rozhodovací Džungle ](https://msdn.microsoft.com/library/azure/dn905963.aspx) |● |○ | |6 |Nároky nedostatku paměti |
-| [neuronové sítě](https://msdn.microsoft.com/library/azure/dn906030.aspx) |● | | |9 |[Je možné další přizpůsobení](http://go.microsoft.com/fwlink/?LinkId=402867) |
-| [one-v-all](https://msdn.microsoft.com/library/azure/dn905887.aspx) |- |- |- |- |Informace naleznete ve vlastnostech vybrané metody dva – třída |
+| **Klasifikace víc tříd** | | | | | |
+| [Logistické regrese](https://msdn.microsoft.com/library/azure/dn905853.aspx) | |● |● |5 | |
+| [rozhodovací les](https://msdn.microsoft.com/library/azure/dn906015.aspx) |● |○ | |6 | |
+| [rozhodovací Džungle ](https://msdn.microsoft.com/library/azure/dn905963.aspx) |● |○ | |6 |Nedostatek paměti nároky na místo |
+| [neurálních sítí](https://msdn.microsoft.com/library/azure/dn906030.aspx) |● | | |9 |[Další přizpůsobení je možné](http://go.microsoft.com/fwlink/?LinkId=402867) |
+| [one-v-all](https://msdn.microsoft.com/library/azure/dn905887.aspx) |- |- |- |- |Zobrazit vlastnosti vybrané metody dvěma třídami |
 | **Regrese** | | | | | |
-| [lineární](https://msdn.microsoft.com/library/azure/dn905978.aspx) | |● |● |4 | |
+| [Lineární](https://msdn.microsoft.com/library/azure/dn905978.aspx) | |● |● |4 | |
 | [Bayesova lineární](https://msdn.microsoft.com/library/azure/dn906022.aspx) | |○ |● |2 | |
-| [rozhodnutí doménové struktury](https://msdn.microsoft.com/library/azure/dn905862.aspx) |● |○ | |6 | |
-| [Vylepšené rozhodovací strom](https://msdn.microsoft.com/library/azure/dn905801.aspx) |● |○ | |5 |Nároky velké paměti |
-| [quantile rychlé doménové struktury](https://msdn.microsoft.com/library/azure/dn913093.aspx) |● |○ | |9 |Distribuce spíše než předpovědi bodu |
-| [neuronové sítě](https://msdn.microsoft.com/library/azure/dn905924.aspx) |● | | |9 |[Je možné další přizpůsobení](http://go.microsoft.com/fwlink/?LinkId=402867) |
-| [Poissonovo rozdělení](https://msdn.microsoft.com/library/azure/dn905988.aspx) | | |● |5 |Technicky protokolu – lineární. Pro predikci počty |
-| [pořadí](https://msdn.microsoft.com/library/azure/dn906029.aspx) | | | |0 |Pro predikci pořadí řazení |
+| [rozhodovací les](https://msdn.microsoft.com/library/azure/dn905862.aspx) |● |○ | |6 | |
+| [Posílený rozhodovací strom](https://msdn.microsoft.com/library/azure/dn905801.aspx) |● |○ | |5 |Velké paměťové nároky |
+| [quantile rychlé doménové struktury](https://msdn.microsoft.com/library/azure/dn913093.aspx) |● |○ | |9 |Distribuce spíše než bodu predikcí |
+| [neurálních sítí](https://msdn.microsoft.com/library/azure/dn905924.aspx) |● | | |9 |[Další přizpůsobení je možné](http://go.microsoft.com/fwlink/?LinkId=402867) |
+| [Poissonovo](https://msdn.microsoft.com/library/azure/dn905988.aspx) | | |● |5 |Technicky protokolu lineární. Pro odhad počtu |
+| [Pořadí](https://msdn.microsoft.com/library/azure/dn906029.aspx) | | | |0 |Pro predikci, pořadí řazení |
 | **Detekce anomálií** | | | | | |
-| [Support vector machine](https://msdn.microsoft.com/library/azure/dn913103.aspx) |○ |○ | |2 |Zvlášť vhodné pro velké funkce sady |
-| [Detekce anomálií založený na PCA](https://msdn.microsoft.com/library/azure/dn913102.aspx) | |○ |● |3 | |
-| [K-means](https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/) | |○ |● |4 |Clustering algoritmus |
+| [počítač vektorové podpory](https://msdn.microsoft.com/library/azure/dn913103.aspx) |○ |○ | |2 |Zvlášť vhodná pro velké funkce sad |
+| [Detekce anomálií založená na PCA](https://msdn.microsoft.com/library/azure/dn913102.aspx) | |○ |● |3 | |
+| [K-means](https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/) | |○ |● |4 |Algoritmu clusteringu |
 
-**Vlastnosti algoritmu:**
+**Algoritmus vlastnosti:**
 
-**●** -zobrazuje vynikající přesnost, časy rychlé školení a použití linearity
+**●** – zobrazuje vynikající přesnost, časy rychlé školení a použití linearity
 
-**○** -ukazuje dobrý přesnost a časy, střední školení
+**○** -ukazuje dobré přesnost a střední vzdělání časy
 
 ## <a name="algorithm-notes"></a>Algoritmus poznámky
+
 ### <a name="linear-regression"></a>Lineární regrese
-Jak je uvedeno nahoře, [lineární regrese](https://msdn.microsoft.com/library/azure/dn905978.aspx) zapadá řádek (nebo rovině nebo hyperplane) a datové sady. Je centrem, jednoduchým a rychlým, ale může být příliš zneužívající vlastností prohlížeče pro některé problémy.
-Zde můžete zkontrolovat [lineární regrese kurzu](linear-regression-in-azure.md).
+
+Jak už bylo zmíněno dříve, [lineární regrese](https://msdn.microsoft.com/library/azure/dn905978.aspx) přizpůsobí datové sadě řádku (nebo rovině a hyperplane). Je centrem, snadné a rychlé, ale může být příliš zjednodušenou pro některé problémy.
+Tady můžete [lineární regrese kurzu](linear-regression-in-azure.md).
 
 ![Data s lineární trend][3]
 
 ***Data s lineární trend***
 
-### <a name="logistic-regression"></a>Logistic regression
-I když confusingly obsahuje "regrese" v názvu se logistic regression je ve skutečnosti výkonný nástroj pro [two-class](https://msdn.microsoft.com/library/azure/dn905994.aspx) a [multiclass](https://msdn.microsoft.com/library/azure/dn905853.aspx) klasifikace. Je rychlé a jednoduché. Fakt, který používá k na '-tvarované křivky místo přímku umožňuje přirozené přizpůsobit pro dělení dat do skupin. Hranice lineární třída poskytuje logistic regression, tak při použití, ujistěte se, že lineární aproximace je něco, co můžete za provozu s.
+### <a name="logistic-regression"></a>Logistické regrese
 
-![Logistic regression k datům dvě třídy s jedním funkcí][4]
+Přestože confusingly zahrnuje: regrese"v názvu, logistické regrese je skutečně výkonný nástroj pro [dvěma třídami](https://msdn.microsoft.com/library/azure/dn905994.aspx) a [multiclass](https://msdn.microsoft.com/library/azure/dn905853.aspx) klasifikace. To je rychlé a jednoduché. Skutečnost, že se používá s "-tvaru křivky ne jako přímá čára je přirozeně vhodná pro dělení dat do skupin. Hranice lineární třída poskytuje logistické regrese, takže při použití, ujistěte se, že lineární aproximace je něco, co může existovat s.
 
-***Logistic regression k datům dvě třídy s jedním funkcí*** *-bod, ve kterém logistic křivka je právě co nejblíže obě třídy je hranicí – třída*
+![Logistické regrese s daty dvěma třídami se pouze pro jednu funkci][4]
+
+***Logistické regrese s daty dvěma třídami se pouze pro jednu funkci*** *-hranice třídy je bod, ve kterém logistické křivky jen co nejblíže obě třídy*
 
 ### <a name="trees-forests-and-jungles"></a>Džungle, stromy a doménové struktury
-Decision doménovými strukturami ([regrese](https://msdn.microsoft.com/library/azure/dn905862.aspx), [two-class](https://msdn.microsoft.com/library/azure/dn906008.aspx), a [multiclass](https://msdn.microsoft.com/library/azure/dn906015.aspx)), decision Džungle ([two-class](https://msdn.microsoft.com/library/azure/dn905976.aspx) a [ multiclass](https://msdn.microsoft.com/library/azure/dn905963.aspx)) a boosted decision trees ([regrese](https://msdn.microsoft.com/library/azure/dn905801.aspx) a [two-class](https://msdn.microsoft.com/library/azure/dn906025.aspx)) jsou všechny na základě rozhodovacích stromů, základní strojového učení koncept. Existuje mnoho variant rozhodovací stromy, ale všechny stejnou věc udělat – místo funkce rozdělte oblasti s většinou stejný popisek. To mohou být oblasti konzistentní kategorie nebo konstantní hodnoty, v závislosti na tom, jestli dělají klasifikační nebo regresní.
+
+Rozhodnutí doménovými strukturami ([regrese](https://msdn.microsoft.com/library/azure/dn905862.aspx), [dvěma třídami](https://msdn.microsoft.com/library/azure/dn906008.aspx), a [multiclass](https://msdn.microsoft.com/library/azure/dn906015.aspx)), decision Džungle ([dvěma třídami](https://msdn.microsoft.com/library/azure/dn905976.aspx) a [ multiclass](https://msdn.microsoft.com/library/azure/dn905963.aspx)) a vylepšené rozhodovací stromy ([regrese](https://msdn.microsoft.com/library/azure/dn905801.aspx) a [dvěma třídami](https://msdn.microsoft.com/library/azure/dn906025.aspx)) jsou všechny na základě rozhodovacích stromů, základní služby machine learning koncept. Existuje mnoho variant rozhodovacích stromů, ale všechny to samé udělá – místo funkce rozdělte oblasti s většinou stejný popisek. Mohou to být oblasti konzistentní kategorie nebo konstantní hodnoty, v závislosti na tom, jestli provádíte klasifikační nebo regresní.
 
 ![Rozhodovací strom rozděluje prostor funkce][5]
 
-***Rozhodovací strom rozděluje prostor funkce do oblasti hodnot zhruba uniform***
+***Rozhodovací strom rozděluje do oblasti hodnot zhruba jednotné místo funkce***
 
-Protože funkce místa lze rozdělit na nahodile malé oblasti, je snadné Představte si dělení dostatečně podrobně tak, aby měl jeden datový bod každou oblast. Toto je příklad extrémně overfitting. Chcete-li předejít, jsou velké sady stromy zkonstruovat s zvláštní pozornost matematickém prováděné, že nejsou korelační stromy. Průměr této "rozhodnutí doménové struktury" je stromové struktury, která zabraňuje overfitting. Rozhodnutí doménové struktury mohou pomocí velké množství paměti. Rozhodovací Džungle jsou hodnotu typu variant, která využívá méně paměti za cenu mírně delší dobu školení.
+Protože funkce místo dají rozdělit na libovolně malou oblasti, je snadné imagine dělení dostatečně jemně mít jeden datový bod v jedné oblasti. Toto je příkladem overfitting extreme. U velkého souboru stromové struktury jsou k tomu můžete předejít, zkonstruován pomocí zvláštní pozornost matematické přijata, že nejsou korelační stromy. Průměr tento "rozhodovací les" je strom, který zabraňuje overfitting. Rozhodnutí doménové struktury mohou pomocí velké množství paměti. Rozhodovací Džungle jsou hodnotu typu variant, která využívá méně paměti za cenu mírně delší dobu školení.
 
-Vylepšené rozhodovací stromy vyhnout overfitting omezením kolikrát se můžete rozdělit a jak několik datových bodů jsou povoleny v každé oblasti. Algoritmus vytvoří posloupnost stromy, z nichž každý se učí kompenzovat chyby zanechaný stromu před. Výsledkem je velmi přesná student, která se obvykle používají velké množství paměti. Úplná technická popis, podívejte se na [původního dokumentu na Friedman](http://www-stat.stanford.edu/~jhf/ftp/trebst.pdf).
+Posílený rozhodovací stromy vyhnout overfitting tím, že omezíte počet opakování můžete rozdělit a jak datové body jsou povolené v jednotlivých oblastech. Algoritmus vytvoří posloupnost stromové struktury, z nichž každý se učí kompenzovat chyby zanechaný stromové struktuře před. Výsledkem je velmi přesné student, který obvykle použít velké množství paměti. Pro plnou technickou popis, projděte si [původní dokument společnosti Friedman](http://www-stat.stanford.edu/~jhf/ftp/trebst.pdf).
 
-[Rychlý doménové struktury quantile regrese](https://msdn.microsoft.com/library/azure/dn913093.aspx) se odlišuje od rozhodovací stromy pro zvláštní případ, kam chcete vědět, ne jenom typické (střední) hodnotu dat v rámci oblasti, ale také jeho distribuci ve formě quantiles.
+[Rychlé doménové struktury quantile regrese](https://msdn.microsoft.com/library/azure/dn913093.aspx) varianta rozhodovacích stromů pro zvláštní případ, ve které chcete vědět, nejen typické (střední) hodnotu data v rámci oblasti, ale také ve formě quantiles jeho distribuci.
 
 ### <a name="neural-networks-and-perceptrons"></a>Neuronové sítě a perceptrons
-Neuronové sítě jsou mozku inspirovaných učení algoritmy pokrývajících [multiclass](https://msdn.microsoft.com/library/azure/dn906030.aspx), [two-class](https://msdn.microsoft.com/library/azure/dn905947.aspx), a [regrese](https://msdn.microsoft.com/library/azure/dn905924.aspx) problémy. Se mohou nekonečné různé, ale neuronové sítě v rámci Azure Machine Learning jsou všechny formu směrovanou necyklické grafy. Která znamená, že vstupní funkce jsou předány dál (nikdy zpátky) prostřednictvím pořadí vrstev před se převedena na výstupy. V každé vrstvě jsou vstupy vážené v různých kombinacích, sčítají a k předání další vrstva. Tato kombinace jednoduché výpočty výsledkem možnost zdánlivě další sofistikované třída hranice a data trendy ve magic. Vrstvený mnoho sítí toto řazení provést "hloubkové studiu" paliva mnoho reporting technické a vědecké účely fiction.
 
-Tento vysoký výkon nepřejde do stavu zdarma, ale. Neuronové sítě může trvat dlouhou dobu cvičení, hlavně pro velké sady dat s mnoha funkcí. Mají také další parametry než většina algoritmů, které znamená parametr (vymetání) komínů značnou část rozšíří čas školení.
-A pro tyto overachievers, kteří chtějí [zadat své vlastní struktury sítě](http://go.microsoft.com/fwlink/?LinkId=402867), možnosti jsou inexhaustible.
+Neuronové sítě jsou brain INSPIROVANÉ učení se supervizí pokrývající [multiclass](https://msdn.microsoft.com/library/azure/dn906030.aspx), [dvěma třídami](https://msdn.microsoft.com/library/azure/dn905947.aspx), a [regrese](https://msdn.microsoft.com/library/azure/dn905924.aspx) problémy. Přišli v nekonečné řadě, ale neuronových sítí v Azure Machine Learning jsou všechny formuláře orientované Acyklické grafy. Která znamená, že vstupní funkce jsou předány vpřed (nikdy zpět) prostřednictvím pořadí vrstev před zapnutí do výstupů. V každé vrstvě jsou vstupy váha v různých kombinacích, sčítat a předávají do další vrstva. Tato kombinace jednoduché výpočty výsledkem schopnost další sofistikované třídy hranice a data trendy zdánlivě magic. N vrstvami sítí toto řazení provést "obsáhlého learningu", který zaznamenává díky tolik Odborný generování sestav a Sci-fi.
 
-![Hranice poznat neuronové sítě][6]
-***hranice poznat neuronové sítě může být složité a nestandardní***
+Tento vysoký výkon nepřejde do stavu zdarma, ale. Neuronové sítě může trvat dlouhou dobu pro trénování, zejména u velkých datových sad s velkým množstvím funkcí. Mají také další parametry, než většina algoritmy, které znamená, že parametr sweeping zajistí rozšíří doba školení.
+A pro tyto overachievers, kteří chtějí [zadat své vlastní struktury sítě](http://go.microsoft.com/fwlink/?LinkId=402867), možností je inexhaustible.
 
-[Two-class průměrem perceptron](https://msdn.microsoft.com/library/azure/dn906036.aspx) je neuronové sítě odpovědí skyrocketing časy školení. Využívá strukturu sítě, která poskytuje lineární třída hranice. Je téměř primitivní standardy dnešní, ale má dlouhou práce robustní a je dostatečně malé, aby další rychle.
+![Hranice zjistili neuronových sítí][6]
+***hranice zjistili neuronových sítí může být složité a nestandardní***
+
+[Dvěma třídami zprůměrované perceptron](https://msdn.microsoft.com/library/azure/dn906036.aspx) je neuronových sítí odpověď na časy školení prudce nahoru. Používá strukturu sítě, která poskytuje hranice lineární třídy. Je téměř primitivní standardy dnešní, ale má dlouholeté práce robustní a je dostatečně malá, aby se rychle naučit.
 
 ### <a name="svms"></a>SVMs
-Podpora vektoru počítače (SVMs) najít hranice, která odděluje třídy podle jako celý okraj nejblíže. Při dvou tříd nelze jasně oddělené, algoritmy najít nejlepší hranice, na které může provádět tyto akce. Zapsaný v Azure Machine Learning [two-class SVM](https://msdn.microsoft.com/library/azure/dn905835.aspx) tomu s pouze přímce. (V řeči SVM použije lineární jádra.) Vzhledem k tomu, že umožňuje tento lineární aproximace, je možné velmi rychlé. Kde je skutečně září je s daty bohaté funkce, jako text nebo genomických. V těchto případech SVMs dokážou k oddělení tříd rychleji a s menší overfitting než většinu dalších algoritmů, kromě nutnosti pouze mírné množství paměti.
 
-![Hranice podpory vector machine – třída][7]
+Support vector počítače (SVMs) najít hranice, který odděluje třídy podle jako široký na okraj co nejvíc. Pokud dvě třídy nemohou být odděleny jasně, algoritmy najít nejlepší hranic, které mohou. Jak je uvedená ve službě Azure Machine Learning [dvěma třídami SVM](https://msdn.microsoft.com/library/azure/dn905835.aspx) to dělá s rovné čáry. (V termínech SVM používá lineární jádra.) Protože to ztěžuje této lineární aproximace, je možné poměrně rychle spouštět. Kde to skutečně vynikne, je s náročnými funkci data, jako text nebo genomický. V těchto případech dokáží SVMs oddělení tříd rychleji a s menším overfitting než většina jiné algoritmy, kromě nutnosti zvýšení množství paměti.
 
-***Okraj oddělujících dvě třídy maximalizuje hranici typické podporu počítač vector – třída***
+![Hranice třídy počítače vektorové podpory][7]
 
-Jiného produktu Microsoft Research [two-class místně hloubkové SVM](https://msdn.microsoft.com/library/azure/dn913070.aspx) je – lineární varianta SVM, který bude mít většinu rychlost a paměť efektivitu lineární verze. Je ideální pro případy, kdy lineární přístup nedává dostatečně přesné odpovědi. Vývojáři je udržováno rychlého rozdělením problém do spoustu malé lineární SVM potíže. Pro čtení [úplný popis](http://proceedings.mlr.press/v28/jose13.html) podrobnosti o tom, jak se vyžádat vypnout platí to.
+***Třída hranice typické podporu vektoru počítače maximalizuje okraj oddělujících dvě třídy***
 
-Pomocí inteligentní rozšíření nelineární SVMs [SVM jedna třída](https://msdn.microsoft.com/library/azure/dn913103.aspx) nevykresluje hranici, která úzce popisuje celé datové sady. Je užitečné pro zjišťování anomálií. Všechny nové datové body, které daleko spadal mimo tuto hranici neobvyklá dostatečně být pozoruhodné.
+Jiný produkt Microsoft Research [místně hloubkové SVM dvěma třídami](https://msdn.microsoft.com/library/azure/dn913070.aspx) je nelineárních varianta SVM, který bude mít maximálně rychlost a paměti efektivitu lineární verze. Je ideální pro případy, kdy lineární přístup nedává dostatečně správné odpovědi. Vývojáři uchovává ho rychle rozdělení problém na spoustu menších lineární SVM problémů. Přečtěte si [úplný popis](http://proceedings.mlr.press/v28/jose13.html) podrobnosti o jak jejich dali vypnout platí to.
+
+Pomocí dokonalá rozšíření nelineárních SVMs [jedna třída SVM](https://msdn.microsoft.com/library/azure/dn913103.aspx) nakreslí hranici, která úzce popisuje celou datovou sadu. To je užitečné pro detekci anomálií. Jsou dost neobvyklé bude zajímavosti všechny datové body, které spadají úplně mimo tuto hranici.
 
 ### <a name="bayesian-methods"></a>Bayesova metody
-Metody Bayesova mají vysokou žádoucí kvality: vyhnou overfitting. Je to tím, že některé předpoklady předem o pravděpodobně distribuci odpovědi. Jiné byproduct tohoto přístupu je, ke kterým mají velmi málo parametrů. Azure Machine Learning má i Bayesova algoritmy pro obě klasifikaci ([Two-class Bayes point machine](https://msdn.microsoft.com/library/azure/dn905930.aspx)) a regrese ([lineární regrese Bayesova](https://msdn.microsoft.com/library/azure/dn906022.aspx)).
-Všimněte si, že tyto předpokládá, že můžete data rozdělení nebo přizpůsobit s přímce.
 
-Na historické Poznámka byly počítače bodu se Bayes vyvinuté v Microsoft Research. Mají některé výjimečně Krásný teoretické pracovní za ně. Dotčené student se přesměruje [původní článek v JMLR](http://jmlr.org/papers/volume1/herbrich01a/herbrich01a.pdf) a [pronikavého blog podle Jan Bishop](http://blogs.technet.com/b/machinelearning/archive/2014/10/30/embracing-uncertainty-probabilistic-inference.aspx).
+Bayesova metody mají žádoucí, vysoce kvalitní: vyhnou overfitting. Je to tím, že některé předpoklady předem o pravděpodobně rozdělení odpovědi. Jiné byproduct tohoto přístupu je, že mají velmi malý počet parametrů. Azure Machine Learning má algoritmy Bayesova pro obě klasifikaci ([Two-class Bayes point machine](https://msdn.microsoft.com/library/azure/dn905930.aspx)) a regrese ([lineární regrese Bayesova](https://msdn.microsoft.com/library/azure/dn906022.aspx)).
+Všimněte si, že tyto předpokládat, že můžete data rozdělit nebo přizpůsobit přímou čárou.
+
+Na historické Poznámka Bayes' point počítače byly vyvinuty v Microsoft Research. Mají některé výjimečně krásné teoretické práce za nimi stojí. Zúčastněné student směřuje na [původní článek v JMLR](http://jmlr.org/papers/volume1/herbrich01a/herbrich01a.pdf) a [přehledné blogu podle Chris Bishop](http://blogs.technet.com/b/machinelearning/archive/2014/10/30/embracing-uncertainty-probabilistic-inference.aspx).
 
 ### <a name="specialized-algorithms"></a>Specializované algoritmy
-Pokud máte velmi konkrétní cílem může být jednoduché. V kolekci Azure Machine Learning jsou algoritmy, které se specializují na:
+Pokud máte velmi specifické cílem může být jednoduché. V rámci kolekce Azure Machine Learning jsou algoritmy, které se specializují na:
 
-- RANK předpovědi ([pořadí regrese](https://msdn.microsoft.com/library/azure/dn906029.aspx)),
-- počet předpovědi ([Poissonovo rozdělení regrese](https://msdn.microsoft.com/library/azure/dn905988.aspx)),
-- detekce anomálií (jeden na základě [hlavní součásti analysis](https://msdn.microsoft.com/library/azure/dn913102.aspx) a jeden na základě [support vector machine](https://msdn.microsoft.com/library/azure/dn913103.aspx)s)
+- RANK – predikce ([ordinální regrese](https://msdn.microsoft.com/library/azure/dn906029.aspx)),
+- počet predikcí ([Poissonovo regrese](https://msdn.microsoft.com/library/azure/dn905988.aspx)),
+- detekce anomálií (jeden na základě [analýzy hlavní komponenty](https://msdn.microsoft.com/library/azure/dn913102.aspx) a druhý na základě [podporují vektoru počítače](https://msdn.microsoft.com/library/azure/dn913103.aspx))
 - Clustering ([K-means](https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/))
 
-![Detekce anomálií založený na PCA][8]
+![Detekce anomálií založená na PCA][8]
 
-***Detekce anomálií založený na PCA*** *-velká většina dat, které patří do stereotypical distribuční; výrazně odchylují od tohoto distribuční body jsou podezřelé*
+***Detekce anomálií založená na PCA*** *-většinu dat spadá do stereotypical distribuce; výrazně odchylují od této distribuční body jsou podezřelé*
 
-![Datové sady, které jsou seskupeny pomocí K-means][9]
+![Seskupené pomocí K-means datové sady][9]
 
 ***Datové sady jsou rozděleny do pěti clustery pomocí K-means***
 
-Je také kompletu [více třídami třídění one-v-all](https://msdn.microsoft.com/library/azure/dn905887.aspx), která dělí klasifikace problému N třída do N-1 two-class klasifikaci problémy. Přesnost, čas školení a linearity vlastnosti jsou určeny two-class třídění použít.
+K dispozici je také kompletu [víc tříd třídění one-v-all](https://msdn.microsoft.com/library/azure/dn905887.aspx), které rozdělí problém klasifikace N-třídy do N-1 dvěma třídami klasifikaci problémy. Přesnost, čas školení a linearity vlastnosti jsou určeny třídění dvěma třídami použít.
 
-![Dvě třídy třídění spolu tvoří tři třídy třídění][10]
+![Třídění dvěma třídami utváří klasifikátor tři – třída][10]
 
-***Pár two-class třídění se kombinují k formuláři třídění tři – třída***
+***Dvojice třídění dvěma třídami se dá tvoří tři třídy třídění***
 
-Azure Machine Learning obsahuje také přístup k rozhraní výkonné strojové učení pod názvem [Vowpal k dispozici](https://msdn.microsoft.com/library/azure/8383eb49-c0a3-45db-95c8-eb56a1fef5bf).
-Zobrazit prosíme, abyste kategorizaci tady, protože další klasifikace a regrese problémy a i další z částečně bez popisku data. Můžete nakonfigurovat na používání některého počtu učení algoritmy, ztrátě funkce a algoritmy optimalizace. Byl navržen od základů si být efektivní, paralelní a velmi rychlé. Zpracovává ridiculously velké funkce sady s malým množstvím zřejmá úsilí.
-Spuštění a vedla podle Microsoft Research na vlastní Jan Langford, je zobrazit vzorec jednu položku v poli stock car algoritmů. Ne každý problém vyhovuje zobrazit, ale bezdrátové sítě může být vhodné vaší dobu vylézt křivku na jeho rozhraní. Je také k dispozici jako [samostatné otevřít zdrojový kód](https://github.com/JohnLangford/vowpal_wabbit) v několika jazycích.
+Služba Azure Machine Learning zahrnuje také přístup k rozhraní efektivní strojové učení pod názvem [Vowpal Wabbit](https://msdn.microsoft.com/library/azure/8383eb49-c0a3-45db-95c8-eb56a1fef5bf).
+Zobrazit prosíme, abyste kategorizace tady, protože další klasifikačních a regresních problémy a dokonce i další z částečně bez popisku dat. Můžete nakonfigurovat tak, použijte některou z několika algoritmů, ztráta funkce a algoritmy pro optimalizaci. Byla navržena od základu nahoru efektivní, paralelní a velmi rychlá. Zpracovává sady absurdně vysoké funkcí s malou zřejmý úsilí.
+Spuštění a vedou od Microsoft Research vlastní Jan Langford, je zobrazit vzorce jedna položka v poli akcie car algoritmů. Ne každá problém vyhovuje zobrazit, ale pokud je ta vaše, může být vhodné vaše chvíli stoupání křivku postupu zdokonalování v rozhraní. Je také k dispozici jako [samostatné open source kódem](https://github.com/JohnLangford/vowpal_wabbit) v několika jazycích.
 
-## <a name="more-help-with-algorithms"></a>Další pomoc s algoritmy
-* Infografice ke stažení, který popisuje algoritmy a obsahuje příklady, najdete v části [ke stažení Infografice: strojového učení základy s příklady algoritmus](basics-infographic-with-algorithm-examples.md).
-* Seznam podle kategorie všechny algoritmy strojového učení dostupné v Azure Machine Learning Studio najdete v tématu [inicializovat Model] [ initialize-model] v Machine Learning Studio algoritmus a pomáhají modulu.
-* Dokončení abecední seznam algoritmů a modulů v Azure Machine Learning Studio najdete v tématu [seznam A-Z modulů Machine Learning Studio] [ a-z-list] v Machine Learning Studio algoritmus a pomoci modulu.
-* Stáhnout a vytisknout diagram, který poskytne přehled funkcí Azure Machine Learning Studio najdete v tématu [diagram s přehledem funkcí Azure Machine Learning Studio](studio-overview-diagram.md).
+## <a name="next-steps"></a>Další kroky
 
+* Infografika ke stažení, která popisuje algoritmy a poskytuje příklady, naleznete v tématu [Infografika ke stažení: Základy s příklady algoritmů služby Machine learning](basics-infographic-with-algorithm-examples.md).
 
-<!-- Reference links -->
-[initialize-model]: https://msdn.microsoft.com/library/azure/dn905812.aspx
-[a-z-list]: https://msdn.microsoft.com/library/azure/dn906033.aspx
+* Seznam podle kategorie všechny dostupných algoritmů strojového učení v nástroji Machine Learning Studio najdete v tématu [inicializovat Model](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/machine-learning-initialize-model) Machine Learning Studio algoritmus a pomůže modulu.
+
+* Úplný abecední seznam algoritmů a modulů v Machine Learning Studio najdete v tématu [seznam A-Z modulů Machine Learning Studio](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/a-z-module-list) Studio algoritmu strojového učení a pomůže modulu.
+
+* Pokud si chcete stáhnout a vytisknout diagram s přehledem funkcí nástroje Machine Learning Studio, nahlédněte do tématu [Diagram s přehledem možností nástroje Machine Learning Studio](studio-overview-diagram.md).
 
 <!-- Media -->
 

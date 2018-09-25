@@ -4,19 +4,19 @@ description: Přihlásit k odběru události změny stavu úlohy Media Services 
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 09/20/2018
 ms.author: juliako
-ms.openlocfilehash: e9df0cd24ef890765b78c25a073d671889be10a7
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e7268a066acf41c454de0c66aa21603199d85a60
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38724061"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034837"
 ---
 # <a name="route-azure-media-services-events-to-a-custom-web-endpoint-using-cli"></a>Směrování událostí služby Azure Media Services do vlastního webového koncového bodu pomocí rozhraní příkazového řádku
 
@@ -26,17 +26,14 @@ Obvykle odesíláte události do koncového bodu, který na událost reaguje nap
 
 Po dokončení kroků popsaných v tomto článku uvidíte, že se data událostí odeslala do koncového bodu.
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
+## <a name="prerequisites"></a>Požadavky
 
-Přihlaste se k webu [Azure Portal](http://portal.azure.com) a spusťte **CloudShell**, abyste mohli provést příkazy CLI, jak můžete vidět v dalších krocích.
+- Máte aktivní předplatné Azure.
+- [Vytvoření účtu Media Services](create-account-cli-how-to.md).
 
-[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
+    Ujistěte se, že hodnoty, které jste použili pro název skupiny prostředků a název účtu Media Services mějte na paměti.
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli). 
-
-[!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
-
-Je nutné pamatovat si hodnoty, které jste použili pro název účtu Media Services, úložiště, název a název prostředku.
+- Nainstalujte [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Tento článek vyžaduje použití Azure CLI verze 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Můžete také použít [Azure Cloud Shell](https://shell.azure.com/bash).
 
 ## <a name="enable-event-grid-resource-provider"></a>Povolit poskytovatele prostředků služby Event Grid
 
@@ -132,7 +129,7 @@ Stisknutím klávesy **uložte a spusťte** v horní části okna.
 
 Se přihlásíte k odběru článku zjistit služby Event Grid, které události chcete sledovat. Následující příklad se přihlásí k účtu Media Services, které jste vytvořili a předá adresu URL z funkce Azure Functions webhook, který jste vytvořili jako koncový bod pro oznámení události. 
 
-Nahraďte `<event_subscription_name>` s jedinečným názvem vašeho odběru událostí. Místo `<resource_group_name>` a `<ams_account_name>` použijte hodnoty názvu skupiny prostředků a názvu účtu úložiště, které jste vytvořili dříve.  Pro `<endpoint_URL>` vložte adresu URL koncového bodu. Odebrat *& clientID = default* z adresy URL. Díky zadání koncového bodu při přihlašování k odběru bude služba Event Grid zpracovávat směrování událostí do tohoto koncového bodu. 
+Nahraďte `<event_subscription_name>` s jedinečným názvem vašeho odběru událostí. Pro `<resource_group_name>` a `<ams_account_name>`, použijte hodnoty, které jste použili při vytváření účtu Media Services. Pro `<endpoint_URL>` vložte adresu URL koncového bodu. Odebrat *& clientID = default* z adresy URL. Díky zadání koncového bodu při přihlašování k odběru bude služba Event Grid zpracovávat směrování událostí do tohoto koncového bodu. 
 
 ```cli
 amsResourceId=$(az ams account show --name <ams_account_name> --resource-group <resource_group_name> --query id --output tsv)
@@ -145,7 +142,9 @@ az eventgrid event-subscription create \
 
 Hodnota id prostředku účtu Media Services bude vypadat nějak takto:
 
+```
 /subscriptions/81212121-2f4f-4b5d-a3dc-ba0015515f7b/resourceGroups/amsResourceGroup/providers/Microsoft.Media/mediaservices/amstestaccount
+```
 
 ## <a name="test-the-events"></a>Test události
 
@@ -153,7 +152,7 @@ Spustíte úlohu kódování. Příklad, jak je popsáno v [Stream videosoubory]
 
 Právě jste aktivovali událost a služba Event Grid odeslala zprávu do koncového bodu, který jste nakonfigurovali při přihlášení k odběru. Přejděte k webhooku, který jste vytvořili dříve. Klikněte na tlačítko **monitorování** a **aktualizovat**. Zobrazí stav úlohy změní události: "Ve frontě", "Plánovanou", "Zpracování", "Dokončení", "Chyba", "zrušeno", "Zrušení".  Další informace najdete v tématu [schémata událostí služby Media Services](media-services-event-schemas.md).
 
-Příklad:
+Následující příklad ukazuje schématu JobStateChange události:
 
 ```json
 [{
@@ -172,16 +171,6 @@ Příklad:
 ```
 
 ![Test události](./media/job-state-events-cli-how-to/test_events.png)
-
-## <a name="clean-up-resources"></a>Vyčištění prostředků
-
-Pokud chcete pokračovat v práci s tímto účtem úložiště a odběru událostí, nevyčišťujte prostředky vytvořené v rámci tohoto článku. Pokud pokračovat nechcete, pomocí následujícího příkazu odstraňte prostředky, které jste v rámci tohoto článku vytvořili.
-
-Nahraďte `<resource_group_name>` názvem skupiny prostředků, kterou jste vytvořili výše.
-
-```azurecli-interactive
-az group delete --name <resource_group_name>
-```
 
 ## <a name="next-steps"></a>Další postup
 

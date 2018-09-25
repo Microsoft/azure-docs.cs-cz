@@ -10,12 +10,12 @@ ms.service: mysql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 07/18/2018
-ms.openlocfilehash: 61fee0771d6847a0ec56de656057409bbcdcba16
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b45975bc019da2859da87a40e46970d849312e38
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433737"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46957053"
 ---
 # <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>Přizpůsobení parametrů konfigurace serveru pomocí příkazového řádku Azure
 Seznam, zobrazit a aktualizovat parametry konfigurace pro serveru Azure Database for MySQL pomocí Azure CLI, nástroj příkazového řádku Azure. Podmnožina stroj konfigurace je zveřejněný na úrovni serveru a je možné upravit. 
@@ -23,7 +23,7 @@ Seznam, zobrazit a aktualizovat parametry konfigurace pro serveru Azure Database
 ## <a name="prerequisites"></a>Požadavky
 Pro jednotlivé kroky v této příručce s postupy, musíte:
 - [Azure Database for MySQL serveru](quickstart-create-mysql-server-database-using-azure-cli.md)
-- [Azure CLI 2.0](/cli/azure/install-azure-cli) nástroj příkazového řádku nebo pomocí Azure Cloud Shell v prohlížeči.
+- [Azure CLI](/cli/azure/install-azure-cli) nástroj příkazového řádku nebo pomocí Azure Cloud Shell v prohlížeči.
 
 ## <a name="list-server-configuration-parameters-for-azure-database-for-mysql-server"></a>Seznam parametrů konfigurace serveru pro službu Azure Database pro MySQL server
 Seznam všech parametrů upravitelná v serveru a jejich hodnoty, spusťte [az mysql server configuration list](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-list) příkazu.

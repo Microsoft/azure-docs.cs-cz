@@ -15,12 +15,12 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 85a7b133655a3b1e4ca60c28e695e3057b293fdc
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 91f75fdbe7bc7c66bbe581e9d4b295467acd4cd5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504511"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989664"
 ---
 # <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>Jak povolit nativní klientské aplikace pro interakci s proxy aplikací
 
@@ -30,7 +30,7 @@ Proxy aplikací podporuje nativní klientské aplikace přijímá Azure AD vydan
 
 ![Vztah mezi koncovým uživatelům, Azure Active Directory a publikované aplikace](./media/application-proxy-configure-native-client-application/richclientflow.png)
 
-Pomocí knihovny ověřování AD Azure, která se postará o ověřování a podporuje mnoho prostředí klienta, publikovat nativních aplikací. Proxy aplikací zapadá do [nativní aplikace pro webové rozhraní API scénář](../develop/authentication-scenarios.md#native-application-to-web-api). 
+Pomocí knihovny ověřování AD Azure, která se postará o ověřování a podporuje mnoho prostředí klienta, publikovat nativních aplikací. Proxy aplikací zapadá do [nativní aplikace pro webové rozhraní API scénář](../develop/native-app.md). 
 
 Tento článek vás provede čtyři kroky k publikování nativní aplikace s Proxy aplikace a knihovny pro ověřování Azure AD. 
 
@@ -96,6 +96,6 @@ Po ADAL je upravit s použitím těchto parametrů, uživatelé by mělo být sc
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o toku nativní aplikace, najdete v části [nativní aplikace pro webové rozhraní API](../develop/authentication-scenarios.md#native-application-to-web-api)
+Další informace o toku nativní aplikace, najdete v části [nativní aplikace pro webové rozhraní API](../develop/native-app.md)
 
 Další informace o nastavení [jednotného přihlašování pro Proxy aplikací](application-proxy-single-sign-on.md)

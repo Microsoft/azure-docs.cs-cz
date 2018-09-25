@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: jasonh
-ms.openlocfilehash: c10ff022d54510c4fb81bf1f922aeaaf4e9036bb
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 33458794ad74b367f1278364d7b4ace30f7d13a8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104850"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953579"
 ---
 # <a name="availability-and-reliability-of-hadoop-clusters-in-hdinsight"></a>Dostupnost a spolehlivost clusterů Hadoop ve službě HDInsight
 
@@ -208,13 +208,13 @@ Webové uživatelské rozhraní Ambari vyberte službu, kterou chcete zobrazit p
 
 Velikost uzlu lze vybrat pouze při vytváření clusteru. Pro HDInsight na najdete seznam různých velikostí virtuálních počítačů dostupných [HDInsight stránce s cenami](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-Při vytváření clusteru, můžete zadat velikost uzlů. Následující informace poskytují pokyny o tom, jak zadat velikost pomocí [webu Azure portal][preview-portal], [prostředí Azure PowerShell][azure-powershell]a [Rozhraní příkazového řádku azure][azure-cli]:
+Při vytváření clusteru, můžete zadat velikost uzlů. Následující informace poskytují pokyny o tom, jak zadat velikost pomocí [webu Azure portal][preview-portal], [prostředí Azure PowerShell][azure-powershell]a [Klasické rozhraní příkazového řádku azure][azure-cli]:
 
 * **Azure portal**: při vytváření clusteru, můžete nastavit velikost uzlů cluster používat:
 
     ![Obrázek průvodce vytvořením clusteru s výběr velikost uzlu](./media/hdinsight-high-availability-linux/headnodesize.png)
 
-* **Azure CLI**: při použití `azure hdinsight cluster create` příkazu, můžete nastavit velikost head, pracovních procesů a uzly ZooKeeper s použitím `--headNodeSize`, `--workerNodeSize`, a `--zookeeperNodeSize` parametry.
+* **Azure Classic CLI**: při použití `azure hdinsight cluster create` příkazu, můžete nastavit velikost head, pracovních procesů a uzly ZooKeeper s použitím `--headNodeSize`, `--workerNodeSize`, a `--zookeeperNodeSize` parametry.
 
 * **Prostředí Azure PowerShell**: při použití `New-AzureRmHDInsightCluster` rutiny, můžete nastavit velikost head, pracovních procesů a uzly ZooKeeper s použitím `-HeadNodeVMSize`, `-WorkerNodeSize`, a `-ZookeeperNodeSize` parametry.
 
@@ -223,7 +223,7 @@ Při vytváření clusteru, můžete zadat velikost uzlů. Následující inform
 Další informace o možnosti uvedené v tomto dokumentu pomocí následujících odkazů.
 
 * [Reference k rozhraní Ambari REST](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
-* [Instalace a konfigurace rozhraní příkazového řádku Azure](../cli-install-nodejs.md)
+* [Instalace a konfigurace rozhraní příkazového řádku Azure Classic](../cli-install-nodejs.md)
 * [Nainstalujte a nakonfigurujte Azure PowerShell.](/powershell/azure/overview)
 * [Správa HDInsight pomocí Ambari](hdinsight-hadoop-manage-ambari.md)
 * [Zřizování clusterů HDInsight se systémem Linux](hdinsight-hadoop-provision-linux-clusters.md)

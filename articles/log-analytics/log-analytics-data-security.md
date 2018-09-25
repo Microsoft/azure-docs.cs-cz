@@ -15,15 +15,15 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 42b157a63b76474f6c9482da75072878fe9291e0
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: b91b906db1307343a50ffc3be07d562091f2e335
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465992"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978778"
 ---
 # <a name="log-analytics-data-security"></a>Zabezpečení dat analýzy protokolů
-Účelem tohoto dokumentu je poskytnout konkrétní informace o Azure Log Analytics k doplnění informací na [Centrum zabezpečení Azure](../security/security-microsoft-trust-center.md).  
+Účelem tohoto dokumentu je poskytnout konkrétní informace ke službě Log Analytics, což je funkce služby Azure Monitor k doplnění informací na [Centrum zabezpečení Azure](../security/security-microsoft-trust-center.md).  
 
 Tento článek vysvětluje, jak shromažďovat, zpracování a zabezpečené službou Log Analytics. Agenty můžete použít pro připojení k webové službě, pomocí System Center Operations Manager ke shromažďování provozních dat nebo načíst data z diagnostiky Azure pro použití službou Log Analytics. 
 

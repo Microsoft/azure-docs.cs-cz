@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: b262f42fffdbfd00f0c57c987e36346957f0f25c
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: e62910cc760a200abba6d56e4fa1eb87973285ec
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35643220"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963590"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Glosář Microsoft Azure: slovník terminologie cloudu na platformě Azure
 
@@ -47,7 +47,7 @@ Zobrazit [Správa dostupnosti virtuálních počítačů Windows](virtual-machin
 Jeden ze dvou [modely nasazení](resource-manager-deployment-model.md) použít k nasazení prostředků v Azure (Azure Resource Manageru je nový model). Některé služby Azure podporují jenom modelu nasazení Resource Manager, některé podporují pouze v modelu nasazení classic a některé podporovat. V dokumentaci pro jednotlivé služby Azure určuje modely podporují.
 
 ## <a name="cli"></a>Rozhraní příkazového řádku Azure (CLI)
-Rozhraní příkazového řádku, který slouží ke správě služeb Azure z Windows, macOS a Linuxu.  Některé služby nebo funkce služby je možné spravovat jenom prostřednictvím Powershellu nebo rozhraní příkazového řádku. Zobrazit [Azure CLI 2.0](/cli/azure)
+Rozhraní příkazového řádku, který slouží ke správě služeb Azure z Windows, macOS a Linuxu.  Některé služby nebo funkce služby je možné spravovat jenom prostřednictvím Powershellu nebo rozhraní příkazového řádku. Zobrazit [rozhraní příkazového řádku Azure](/cli/azure)
 
 ## <a name="powershell"></a>Prostředí Azure PowerShell
 Rozhraní příkazového řádku ke správě služeb Azure přes příkazový řádek z počítačů s Windows. Některé služby nebo funkce služby je možné spravovat jenom prostřednictvím Powershellu nebo rozhraní příkazového řádku.
@@ -106,7 +106,7 @@ Zobrazit [přehled Azure Resource Manageru](azure-resource-manager/resource-grou
 Soubor JSON, který deklarativně definuje jeden nebo více prostředků Azure a, který definuje závislosti mezi nasazenými prostředky. Šablony lze použít k nasazení prostředků konzistentně a opakovaně.  
 Zobrazit [šablon pro vytváření Azure Resource Manageru](resource-group-authoring-templates.md)
 
-## <a name="resource-provider"></a>poskytovatel prostředků
+## <a name="resource-provider"></a>Poskytovatel prostředků
 Služba poskytující prostředky, které můžete nasadit a spravovat prostřednictvím Resource Manageru. Každý poskytovatel prostředků nabízí operace pro práci s nasazenými prostředky. Poskytovatelé prostředků je možný prostřednictvím webu Azure portal, prostředí Azure PowerShell a několik programovacích sad SDK.  
 Zobrazit [přehled Azure Resource Manageru](azure-resource-manager/resource-group-overview.md)
 
@@ -129,7 +129,7 @@ Zobrazit [účty Azure storage](storage/common/storage-create-storage-account.md
 Na základě smlouvy se společností Microsoft, který umožňuje získat služeb Azure. Ceník předplatného a jejími podmínkami se řídí nabídky vybrána pro předplatné.
 Zobrazit [Microsoft Online Subscription Agreement](https://azure.microsoft.com/support/legal/subscription-agreement/) a [předplatné Azure propojeno se službou Azure Active Directory](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
-## <a name="tag"></a>značka
+## <a name="tag"></a>Značka
 Indexování termín, který umožňuje kategorizovat prostředky podle požadavků na správu nebo fakturaci. Když máte komplexní kolekci prostředků, můžete použít značky ve způsobu, jakým je nejvhodnější tyto assety vizualizovat. Můžete například označit prostředky, které mají v rámci organizace podobnou roli nebo které patří do stejného oddělení.  
 Zobrazit [použití značek k uspořádání prostředků Azure](resource-group-using-tags.md)
 

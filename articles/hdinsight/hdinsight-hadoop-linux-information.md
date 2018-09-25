@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/09/2018
-ms.openlocfilehash: 0b22e51814f79b00257433a7e601349ad25cd2b7
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: d725bbe31de0f93d1b741ffd008bf39086904b61
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104296"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997501"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informace o používání HDInsightu v Linuxu
 
@@ -29,7 +29,7 @@ Celá řada kroků v tomto dokumentu pomocí následujících nástrojů, které
 
 * [cURL](https://curl.haxx.se/) – slouží ke komunikaci s webové služby
 * [jq](https://stedolan.github.io/jq/) – slouží k analýze dokumentů JSON
-* [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) – používá se ke vzdálené správě služeb Azure
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2) – používá se ke vzdálené správě služeb Azure
 
 ## <a name="users"></a>Uživatelé
 
@@ -66,14 +66,14 @@ Tento příkaz vrátí dokument JSON popisující službu a pak jq si vyžádá 
     >
     > Pokud chcete používat všechny funkce webové uživatelské rozhraní Ambari, použijte tunelového propojení SSH pro proxy webový provoz k hlavnímu uzlu clusteru. Zobrazit [používání tunelového propojení SSH pro přístup k webové uživatelské rozhraní Ambari, ResourceManager, JobHistory, NameNode, Oozie a dalším webovým uživatelským rozhraním](hdinsight-linux-ambari-ssh-tunnel.md)
 
-* **Ambari (REST)** -https://&lt;Název_clusteru >.azurehdinsight.net/ambari
+* **Ambari (REST)** - https://&lt;Název_clusteru >.azurehdinsight.net/ambari
 
     > [!NOTE]
     > Ověřování pomocí Správce clusteru a heslo.
     >
     > Ověřování je ve formátu prostého textu – používejte vždy HTTPS, abyste zajistili, že připojení je zabezpečené.
 
-* **WebHCat (Templeton)** -https://&lt;Název_clusteru >.azurehdinsight.net/templeton
+* **WebHCat (Templeton)** - https://&lt;Název_clusteru >.azurehdinsight.net/templeton
 
     > [!NOTE]
     > Ověřování pomocí Správce clusteru a heslo.
@@ -176,7 +176,7 @@ Existují různé způsoby, jak získat přístup k datům z mimo HDInsight clus
 
 Pokud používáte __služby Azure Storage__, naleznete v tématu Možnosti, můžete přistupovat k datům prostřednictvím následujících odkazů:
 
-* [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2): příkazy rozhraní příkazového řádku pro práci s Azure. Po instalaci, použijte `az storage` příkaz nápovědu k používání úložiště, nebo `az storage blob` pro konkrétní objekt blob příkazy.
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2): příkazy rozhraní příkazového řádku pro práci s Azure. Po instalaci, použijte `az storage` příkaz nápovědu k používání úložiště, nebo `az storage blob` pro konkrétní objekt blob příkazy.
 * [blobxfer.PY](https://github.com/Azure/azure-batch-samples/tree/master/Python/Storage): skript python pro práci s objekty BLOB ve službě Azure Storage.
 * Různých sadách SDK:
 
@@ -192,7 +192,7 @@ Pokud používáte __Azure Data Lake Store__, naleznete v tématu Možnosti, mů
 
 * [Webový prohlížeč](../data-lake-store/data-lake-store-get-started-portal.md)
 * [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)
-* [Azure CLI 2.0](../data-lake-store/data-lake-store-get-started-cli-2.0.md)
+* [Azure CLI](../data-lake-store/data-lake-store-get-started-cli-2.0.md)
 * [WebHDFS REST API](../data-lake-store/data-lake-store-get-started-rest-api.md)
 * [Data Lake Tools pro Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504)
 * [.NET](../data-lake-store/data-lake-store-get-started-net-sdk.md)

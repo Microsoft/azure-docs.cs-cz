@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/29/2018
+ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0abf0a5971435fc3842a93e79d39468cba5c74da
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: fb0fb4e0f23413cb56b1bb5ec419c44dfc52e7b6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445207"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996838"
 ---
 # <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>Zvýšení úrovně přístupu pro globálního správce ve službě Azure Active Directory
 
@@ -37,7 +37,9 @@ Toto zvýšení úrovně oprávnění by měl být dočasné a pouze v případ�
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-## <a name="elevate-access-for-a-global-administrator-using-the-azure-portal"></a>Zvýšení úrovně přístupu pro globálního správce pomocí webu Azure portal
+## <a name="azure-portal"></a>portál Azure
+
+Použijte následující postup zvýšení úrovně přístupu pro globálního správce pomocí webu Azure portal.
 
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com) nebo [centra pro správu Azure Active Directory](https://aad.portal.azure.com).
 
@@ -59,7 +61,9 @@ Toto zvýšení úrovně oprávnění by měl být dočasné a pouze v případ�
 
 1. Provádění úloh, které je třeba provést na přístup se zvýšeným oprávněním. Jakmile budete hotovi, nastavte přepínač zpět **ne**.
 
-## <a name="list-role-assignment-at-the-root-scope--using-powershell"></a>Seznam přiřazení role v kořenovém oboru (/) pomocí Powershellu
+## <a name="azure-powershell"></a>Azure PowerShell
+
+### <a name="list-role-assignment-at-the-root-scope-"></a>Seznam přiřazení role v kořenovém oboru (/)
 
 Seznam přiřazení role správce přístupu uživatelů pro uživatele v kořenovém oboru (`/`), použijte [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment) příkazu.
 
@@ -79,7 +83,7 @@ ObjectId           : d65fd0e9-c185-472c-8f26-1dafa01f72cc
 ObjectType         : User
 ```
 
-## <a name="remove-a-role-assignment-at-the-root-scope--using-powershell"></a>Odebrání přiřazení role v kořenovém oboru (/) pomocí Powershellu
+### <a name="remove-a-role-assignment-at-the-root-scope-"></a>Odebrání přiřazení role v kořenovém oboru (/)
 
 Chcete-li odebrat přiřazení role správce přístupu uživatelů pro uživatele v kořenovém oboru (`/`), použijte [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment) příkazu.
 
@@ -88,7 +92,9 @@ Remove-AzureRmRoleAssignment -SignInName <username@example.com> `
   -RoleDefinitionName "User Access Administrator" -Scope "/"
 ```
 
-## <a name="elevate-access-for-a-global-administrator-using-the-rest-api"></a>Zvýšení úrovně přístupu pro globálního správce služby pomocí rozhraní REST API
+## <a name="rest-api"></a>REST API
+
+### <a name="elevate-access-for-a-global-administrator"></a>Zvýšení úrovně přístupu pro globální správce
 
 Použijte následující základní kroky pro zvýšení úrovně přístupu pro globálního správce služby pomocí rozhraní REST API.
 
@@ -117,7 +123,7 @@ Použijte následující základní kroky pro zvýšení úrovně přístupu pro
 
 1. Váš správce uživatelských přístupů oprávnění odeberte, dokud je budete potřebovat znovu.
 
-## <a name="list-role-assignments-at-the-root-scope--using-the-rest-api"></a>Seznam přiřazení rolí v kořenovém oboru (/) pomocí rozhraní REST API
+### <a name="list-role-assignments-at-the-root-scope-"></a>Seznam přiřazení rolí v kořenovém oboru (/)
 
 Můžete vytvořit seznam všechna přiřazení rolí pro uživatele v kořenovém oboru (`/`).
 
@@ -127,7 +133,17 @@ Můžete vytvořit seznam všechna přiřazení rolí pro uživatele v kořenov�
    GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=principalId+eq+'{objectIdOfUser}'
    ```
 
-## <a name="remove-elevated-access-using-the-rest-api"></a>Odebrat přístup se zvýšeným oprávněním pomocí rozhraní REST API
+### <a name="list-deny-assignments-at-the-root-scope-"></a>Seznam zamítnout přiřazení v kořenovém oboru (/)
+
+Můžete vyvolat seznam všech přiřazení odepřít pro uživatele v kořenovém oboru (`/`).
+
+- Volejte GET denyAssignments kde `{objectIdOfUser}` je ID objektu uživatele, jehož zamítnout přiřazení, které chcete načíst.
+
+   ```http
+   GET https://management.azure.com/providers/Microsoft.Authorization/denyAssignments?api-version=2018-07-01-preview&$filter=gdprExportPrincipalId+eq+'{objectIdOfUser}'
+   ```
+
+### <a name="remove-elevated-access"></a>Odebrat přístup se zvýšeným oprávněním
 
 Při volání `elevateAccess`, vytvořit přiřazení role pro sebe, takže se odvolat těchto oprávnění budete muset odebrat přiřazení.
 

@@ -1,133 +1,134 @@
 ---
-title: Obnovení databáze Azure SQL v víceklientské aplikace SaaS | Microsoft Docs
-description: Postup obnovení databáze SQL jednoho klienta po omylem odstraňování dat
-keywords: kurz k sql database
+title: Obnovení Azure SQL database ve víceklientské aplikace SaaS | Dokumentace Microsoftu
+description: Zjistěte, jak obnovení jednoho tenanta SQL database po nechtěného odstranění dat
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
-ms.openlocfilehash: 319195ceb98b5b760d4d92055faa6e09c8fb0e3d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 228f5135165cbf8806516e5e932f210586013402
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644344"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056739"
 ---
-# <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>Obnovení jednoho klienta s aplikací SaaS databáze za klienta
+# <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>Obnovení jednoho tenanta u SaaS aplikace databází na tenanta
 
-Model databáze za klienta snadno obnovit jednoho klienta do předchozího bodu v čase bez ovlivnění jiných klientů.
+Model databáze na tenanta usnadňuje obnovení jednoho tenanta do předchozího bodu v čase, aniž by to ovlivnilo ostatní tenanty.
 
-V tomto kurzu zjistíte, dva vzory obnovení dat:
+V tomto kurzu se dozvíte, dva způsoby zotavení dat:
 
 > [!div class="checklist"]
 
 > * Obnovení databáze do paralelní databáze (vedle sebe).
-> * Obnovení databáze na místě, nahraďte existující databáze.
+> * Obnovení databáze na místě a nahraďte existující databázi.
 
 
 |||
 |:--|:--|
-| Obnovit do paralelní databáze | Tento vzor slouží pro úlohy, jako je kontrola, auditování a dodržování předpisů umožňující klienta ke kontrole svá data z dřívějšího bodu. Aktuální databáze klienta zůstane online a beze změny. |
-| Obnovit na místě | Tento vzor se obvykle používá k obnovení klienta do dřívějšího bodu, poté, co klient omylem odstraní nebo poškození dat. Původní databáze je provést v režimu offline a nahradí obnovenou databázi. |
+| Obnovit do paralelní databáze | Tento vzor lze použít pro úlohy, jako je kontrola, auditování a dodržování předpisů umožňující tenanta ke kontrole jejich data z dřívějšího bodu. Aktuální databáze tenanta zůstává online a beze změny. |
+| Obnovit na místě | Tento model se obvykle používá k obnovení tenanta k dřívějšímu bodu, poté, co tenanta neúmyslně odstraní nebo poškození dat. Původní databáze je provést offline a nahradit obnovenou databází. |
 |||
 
 Předpokladem dokončení tohoto kurzu je splnění následujících požadavků:
 
-* Adresář Wingtip SaaS aplikace je nasazená. Nasazení za méně než pět minut najdete v tématu [nasazení a seznamte se s aplikací Wingtip SaaS](saas-dbpertenant-get-started-deploy.md).
-* Je nainstalované prostředí Azure PowerShell. Podrobnosti najdete v tématu [Začínáme s Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+* Nasazení SaaS aplikace Wingtip. Nasazení za méně než pět minut najdete v tématu [nasazení a zkoumání SaaS aplikace Wingtip aplikace](saas-dbpertenant-get-started-deploy.md).
+* Je nainstalované prostředí Azure PowerShell. Podrobnosti najdete v tématu [Začínáme s Azure Powershellem](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
-## <a name="introduction-to-the-saas-tenant-restore-patterns"></a>Úvod do vzory obnovení klienta SaaS
+## <a name="introduction-to-the-saas-tenant-restore-patterns"></a>Úvod do principu obnovení tenanta SaaS
 
-Existují dva jednoduché vzory pro obnovení dat jednoho klienta. Protože jsou od sebe navzájem oddělené klienta databáze, obnovení jednoho klienta nemá žádný vliv na data žádným jiným klientem na. Funkci Azure SQL Database bodu v době obnovení (Možnosti PITR) se používá v obou vzory. Možnosti PITR vždycky vytvoří novou databázi.   
+Existují dva jednoduché způsoby pro obnovení dat jednotlivých tenantů. Protože jsou od sebe navzájem izolované databáze tenantů, obnovení jednoho tenanta nemá žádný vliv na data žádným jiným tenantem společnosti. Funkce (PITR) bod v čase obnovení Azure SQL Database se používá v oba vzorky. PITR vždy vytvoří novou databázi.   
 
-* **Obnovení paralelně**: V prvním vzoru, je vytvořena nová databáze paralelní spolu s aktuální databáze klienta. Klient je pak poskytnut přístup jen pro čtení k obnovené databáze. Obnovená data můžete zkontrolovat a potenciálně používá k přepsání aktuálních hodnot data. Je to na návrháře aplikace k určení, jak klient přistupuje k obnovené databáze a jaké možnosti pro obnovení jsou k dispozici. Jednoduše klientovi zkontrolujte svá data v dřívějšího bodu umožňuje může být všechno, co je potřeba v některých scénářích. 
+* **Obnovit paralelně**: V první vzor je vytvořena nová databáze paralelní spolu s aktuální databáze tenanta. Tenant je pak udělen přístup jen pro čtení k obnovené databázi. Obnovená data můžete zkontrolovat a potenciálně použita přepsat aktuální hodnoty data. Záleží jen na návrháře aplikací určíte, jak klient přistupuje k obnovené databázi a jaké možnosti pro obnovení jsou k dispozici. Klientovi zkontrolujte svá data na dřívějšího bodu umožňuje jednoduše může být vše, co se v některých scénářích vyžaduje. 
 
-* **Obnovit na místě**: vzoru druhý je užitečné, pokud byl ztrátě nebo poškození dat, a chce vrátit do dřívějšího bodu klienta. Klient se pořídí režimu offline za běhu byla databáze obnovena. Původní databáze, se odstraní a obnovené databáze je přejmenována. Řetěz záloh původní databáze zůstane přístupná po odstranění, abyste mohli obnovit databázi do dřívějšího bodu v čase, v případě potřeby.
+* **Obnovit na místě**: druhý vzor je užitečné, pokud byl při ztrátě nebo poškození dat, a klienta chce obnovit k dřívějšímu bodu. Tenant se používá offline při obnovení databáze. Odstraní původní databáze a přejmenování obnovené databáze. Řetězce zálohy je původní databáze zůstala přístupná po odstranění, takže můžete obnovit databázi k dřívějšímu bodu v čase, v případě potřeby.
 
-Pokud se databáze používá [geografická replikace](sql-database-geo-replication-overview.md) a obnovují souběžně, doporučujeme, zkopírujte všechna požadovaná data z obnovené zkopírujte do původní databáze. Pokud je původní databáze nahradit obnovenou databázi, budete muset překonfigurovat a poté opakujte synchronizaci geografická replikace.
+Pokud databáze používá [geografickou replikaci](sql-database-geo-replication-overview.md) a obnovení paralelně, doporučujeme vám zkopírovat všechna požadovaná data z obnovené kopie do původní databáze. Pokud je původní databázi nahradit obnovenou databází, musíte znovu nakonfigurovat a provést opakovanou synchronizaci geografickou replikaci.
 
-## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Získat skripty databáze za klienta aplikace SaaS Wingtip lístky
+## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Získání skriptů aplikace databáze na tenanta SaaS aplikace Wingtip Tickets
 
-Adresář Wingtip lístky SaaS víceklientské databázové skripty a zdrojový kód aplikace, které jsou k dispozici v [WingtipTicketsSaaS DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) úložiště GitHub. Pokyny ke stažení a odblokování skripty Wingtip lístky SaaS, najdete v části [obecné pokyny](saas-tenancy-wingtip-app-guidance-tips.md).
+Wingtip Tickets SaaS Multitenant databázové skripty a zdrojový kód aplikace, které jsou k dispozici v [WingtipTicketsSaaS DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) úložiště GitHub. Pokyny ke stažení a odblokování SaaS aplikace Wingtip Tickets skriptů, najdete v článku [obecné pokyny](saas-tenancy-wingtip-app-guidance-tips.md).
 
 ## <a name="before-you-start"></a>Než začnete
 
-Vytvoření databáze, může trvat 10 až 15 minut, než je k dispozici pro obnovení z první úplné zálohování. Pokud jste právě nainstalovali aplikaci, možná budete muset Počkejte několik minut, než se pokusíte tento scénář.
+Když se vytvoří databáze, může trvat 10 až 15 minut, než je k dispozici pro obnovení z první úplná záloha. Pokud jste právě nainstalovali aplikaci, můžete potřebovat Počkejte několik minut, než se pokusíte tento scénář.
 
-## <a name="simulate-a-tenant-accidentally-deleting-data"></a>Simulovat klienta omylem odstraňování dat
+## <a name="simulate-a-tenant-accidentally-deleting-data"></a>Simulovat tenanta nechtěného odstranění dat
 
-K předvedení tyto scénáře obnovení, nejprve "omylem" odstraníte události v jedné z databází klienta. 
+Abychom si předvedli tyto scénáře obnovení, nejprve "nechtěného" odstraňte událost v jedné z databází tenantů. 
 
 ### <a name="open-the-events-app-to-review-the-current-events"></a>Otevřete aplikaci události ke kontrole aktuální události
 
-1. Otevřete Centrum událostí (http://events.wtp.&lt; uživatele&gt;. trafficmanager.net) a vyberte **Contoso vzájemné součinnosti Hall**.
+1. Otevřete Centrum událostí (http://events.wtp.&lt; uživatel&gt;. trafficmanager.net) a vyberte **Contoso koncertní Hall**.
 
-   ![Centra událostí](media/saas-dbpertenant-restore-single-tenant/events-hub.png)
+   ![Centrum akcí](media/saas-dbpertenant-restore-single-tenant/events-hub.png)
 
-2. Posuňte se seznam událostí a poznamenejte si poslední událost v seznamu.
+2. Posuňte se seznam událostí a poznamenejte si poslední události v seznamu.
 
-   ![Zobrazí se poslední událost](media/saas-dbpertenant-restore-single-tenant/last-event.png)
+   ![Zobrazí se poslední události](media/saas-dbpertenant-restore-single-tenant/last-event.png)
 
 
-### <a name="accidentally-delete-the-last-event"></a>"Omylem" odstranit poslední události
+### <a name="accidentally-delete-the-last-event"></a>"Nechtěného" odstranit poslední události
 
-1. V prostředí PowerShell ISE otevřete... \\Learning moduly\\kontinuity podnikových procesů a zotavení po havárii\\RestoreTenant\\*ukázku RestoreTenant.ps1*a nastavte následující hodnotu:
+1. V prostředí PowerShell ISE otevřete... \\Learning Modules\\provozní kontinuitu a zotavení po havárii\\RestoreTenant\\*Demo-RestoreTenant.ps1*a nastavte následující hodnotu:
 
-   * **$DemoScenario** = **1**, *odstranit poslední událost (s žádné prodeje lístků)*.
-2. Stisknutím klávesy F5 spusťte skript a odstranit poslední událost. Zobrazí se následující potvrzující zpráva:
+   * **$DemoScenario** = **1**, *odstranit poslední události (s žádné prodej lístků)*.
+2. Stisknutím klávesy F5 spusťte skript a odstranit poslední události. Zobrazí se následující potvrzující zpráva:
 
    ```Console
    Deleting last unsold event from Contoso Concert Hall ...
    Deleted event 'Seriously Strauss' from Contoso Concert Hall venue.
    ```
 
-3. Otevře se stránka události Contoso. Přejděte dolů a ověřte, zda je událost pryč. Pokud tato událost je stále v seznamu, vyberte **aktualizovat** a ověřte, že přešel.
+3. Otevře se stránka Contoso události. Posuňte se dolů a ověřte, že událost je pryč. Pokud události je stále v seznamu, vyberte **aktualizovat** a ověřte, že zmizí.
 
-   ![Odebrat poslední událost](media/saas-dbpertenant-restore-single-tenant/last-event-deleted.png)
-
-
-## <a name="restore-a-tenant-database-in-parallel-with-the-production-database"></a>Obnovení databáze klienta paralelně s provozní databáze
-
-Toto cvičení obnoví databázi Hall vzájemné součinnosti Contoso do bodu v čase před událost byla odstraněna. Tento scénář předpokládá, že chcete zkontrolovat odstraněná data v databázi paralelní.
-
- *Obnovení TenantInParallel.ps1* skript vytvoří paralelní klienta databáze s názvem *ContosoConcertHall\_staré*, s položkou paralelní katalogu. Tento vzor obnovení je nejvhodnější pro obnovení před ztrátou dat menší. Také můžete použít tento vzor Pokud potřebujete posoudit data pro dodržování předpisů nebo auditování. Je doporučeným přístupem, když používáte [geografická replikace](sql-database-geo-replication-overview.md).
-
-1. Dokončení [simulovat klienta omylem odstraní data](#simulate-a-tenant-accidentally-deleting-data) části.
-2. V prostředí PowerShell ISE otevřete... \\Učení moduly\\kontinuity podnikových procesů a zotavení po havárii\\RestoreTenant\\_ukázku RestoreTenant.ps1_.
-3. Nastavit **$DemoScenario** = **2**, *obnovení klienta paralelně*.
-4. Pokud chcete spustit skript, stisknutím klávesy F5.
-
-Skript obnoví databázi klienta k bodu v čase před odstranit událost. Obnovení databáze pro novou databázi s názvem _ContosoConcertHall\_staré_. Je Odstraněná katalogu metadata, která existuje v této obnovené databáze a pak je databáze přidaných do katalogu pomocí klíče zkonstruován z *ContosoConcertHall\_staré* název.
-
-Ukázkový skript se otevře stránka události pro tuto novou databázi klienta v prohlížeči. Poznámka: z adresy URL ```http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall_old``` této stránce se zobrazují data z obnovené databáze kde *_old* se přidá k názvu.
-
-Posuňte se události uvedené v prohlížeči potvrďte, že byla obnovena události odstranit v předchozí části.
-
-Vystavení obnovené klienta jako další klienta, s vlastní aplikace události je nepravděpodobné, že se, jak poskytnout přístup klientů k obnovená data. Slouží k objasnění vzoru obnovení. Obvykle poskytnout přístup jen pro čtení k původní data a zachovat obnovenou databázi za definované období. V ukázce můžete odstranit položku obnovené klienta po dokončíte spuštěním _odebrat obnovit klienta_ scénář.
-
-1. Nastavit **$DemoScenario** = **4**, *odebrat obnovit klienta*.
-2. Pokud chcete spustit skript, stisknutím klávesy F5.
-3. *ContosoConcertHall\_staré* položka je nyní odstraněny z katalogu. Zavřete stránku události pro tohoto klienta v prohlížeči.
+   ![Odebrat poslední události](media/saas-dbpertenant-restore-single-tenant/last-event-deleted.png)
 
 
-## <a name="restore-a-tenant-in-place-replacing-the-existing-tenant-database"></a>Obnovení klienta v místě, nahraďte existující databáze klienta
+## <a name="restore-a-tenant-database-in-parallel-with-the-production-database"></a>Obnovení databáze tenanta paralelně s produkční databází
 
-Toto cvičení obnoví Contoso vzájemné součinnosti Hall klienta k bodu před událost byla odstraněna. *Obnovení TenantInPlace* skriptu obnoví databázi klienta pro novou databázi a odstraní původní. Tento vzor obnovení je nejvhodnější pro obnovení z vážné poškození dat. a aby dokázala pojmout větší ztrátě dat. může mít klienta.
+V tomto cvičení obnoví databázi Contoso koncertní Hall do bodu v čase před odstraněním události. Tento scénář předpokládá, že chcete zkontrolovat odstraněná data v databázi paralelní.
 
-1. V prostředí PowerShell ISE, otevřete **ukázku RestoreTenant.ps1** souboru.
-2. Nastavit **$DemoScenario** = **5**, *obnovení klienta na místě*.
-3. Pokud chcete spustit skript, stisknutím klávesy F5.
+ *Obnovení TenantInParallel.ps1* skript vytvoří paralelní tenanta databázi s názvem *ContosoConcertHall\_staré*, s položkou paralelní katalogu. Tento model obnovení je nejvhodnější pro obnovení z menších únikem. Také můžete použít tento model Pokud je potřeba zkontrolovat data auditování účely nebo dodržování předpisů. Je doporučený postup při použití [geografickou replikaci](sql-database-geo-replication-overview.md).
 
-Skript obnoví databázi klienta k bodu před událost byla odstraněna. Nejprve trvá klientovi Contoso vzájemné součinnosti Hall režimu offline. aby se zabránilo dalším aktualizace. Paralelní databáze je pak vytvořena obnovení z bodu obnovení. Obnovenou databázi jmenuje s časovým razítkem a ujistěte se, že název databáze není v konfliktu s existující databáze název klienta. V dalším kroku staré databáze klienta se odstraní a obnovené databáze je přejmenována na původní název databáze. Nakonec Contoso vzájemné součinnosti Hall je uvést do režimu online pro povolení přístupu aplikace k obnovené databáze.
+1. Dokončení [simulovat tenanta nechtěného odstranění dat](#simulate-a-tenant-accidentally-deleting-data) oddílu.
+2. V prostředí PowerShell ISE otevřete... \\Learning Modules\\provozní kontinuitu a zotavení po havárii\\RestoreTenant\\_Demo-RestoreTenant.ps1_.
+3. Nastavte **$DemoScenario** = **2**, *obnovení tenanta paralelně*.
+4. Stisknutím klávesy F5 spusťte skript.
 
-Úspěšně jste obnovili databázi do bodu v čase před událost byla odstraněna. Když **události** otevře se stránka, zkontrolujte, zda byla obnovena poslední události.
+Skript obnoví databáze tenantů do bodu v čase před odstraněním události. Obnovení databáze do nové databáze s názvem _ContosoConcertHall\_staré_. Odstranit katalog metadat, která existuje v obnovené databázi a pak je databáze přidaných do katalogu pomocí klíče se vytvářejí na základě *ContosoConcertHall\_staré* název.
 
-Po obnovení databáze trvá jiné 10 až 15 minut, než je k dispozici pro obnovení z znovu první úplné zálohování. 
+Ukázkový skript v prohlížeči otevře stránku události pro tuto novou databázi tenanta. Poznámka: z adresy URL ```http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall_old``` , že tato stránka zobrazuje data z obnovené databáze kde *_old* se přidá k názvu.
+
+Posuňte se události uvedené v prohlížeči k potvrzení, že se obnovila události odstraní v předchozí části.
+
+Vystavení obnovené tenanta jako další tenant, s vlastní události aplikace, je pravděpodobné, aby, jak poskytnout přístup klienta k obnovená data. Slouží k objasnění model obnovení. Obvykle poskytují přístup jen pro čtení k původní data a zachovat obnovené databáze za definované období. Ve vzorku, můžete odstranit položku obnovené tenanta, až dokončíte spuštěním _odebrat obnovit tenanta_ scénář.
+
+1. Nastavte **$DemoScenario** = **4**, *odebrat obnovit tenanta*.
+2. Stisknutím klávesy F5 spusťte skript.
+3. *ContosoConcertHall\_staré* položku je nyní odstranit z katalogu. Zavřete stránku události pro tohoto tenanta v prohlížeči.
+
+
+## <a name="restore-a-tenant-in-place-replacing-the-existing-tenant-database"></a>Obnovení tenanta na místě a nahraďte existující databáze tenantů
+
+V tomto cvičení obnoví Contoso koncertní Hall tenanta do bodu před odstraněním události. *Obnovení TenantInPlace* obnoví databáze tenantů do nové databáze skriptu a odstraní původní. Tento model obnovení je nejvhodnější pro obnovení z závažné poškození a tenanta může být nutné přizpůsobit významné datové ztráty.
+
+1. V prostředí PowerShell ISE, otevřete **Demo-RestoreTenant.ps1** souboru.
+2. Nastavte **$DemoScenario** = **5**, *obnovení tenanta na místě*.
+3. Stisknutím klávesy F5 spusťte skript.
+
+Skript obnoví databáze tenantů do bodu před odstraněním události. Nejprve trvá tenanta organizace Contoso koncertní offline aby se zabránilo dalším aktualizace. Paralelní databáze se vytvoří pomocí obnovení z bodu obnovení. S časovým razítkem název obnovené databáze zajistit, aby že název databáze není v konfliktu s existující název databáze tenanta. V dalším kroku se odstraní staré databáze tenanta a přejmenování obnovené databáze na původní název databáze. Nakonec Hall Contoso spolupracuje se znovu přepne online pro povolení přístupu aplikace k obnovené databázi.
+
+Úspěšně jste obnovili databáze do bodu v čase před odstraněním události. Když **události** otevře se stránka, zkontrolujte, zda byla obnovena poslední události.
+
+Po obnovení databáze trvá jiného 10 až 15 minut, než se bude první úplná záloha je k dispozici pro obnovení z znovu. 
 
 ## <a name="next-steps"></a>Další postup
 
@@ -138,10 +139,10 @@ V tomto kurzu jste se naučili:
 > * Obnovení databáze do paralelní databáze (vedle sebe).
 > * Obnovení databáze na místě.
 
-Zkuste [schéma databáze klienta spravovat](saas-tenancy-schema-management.md) kurzu.
+Zkuste [schéma databáze tenanta spravovat](saas-tenancy-schema-management.md) kurzu.
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Další kurzy, které staví na adresář Wingtip SaaS aplikace](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
-* [Přehled kontinuity podnikových procesů s Azure SQL Database](sql-database-business-continuity.md)
-* [Další informace o zálohování databáze SQL](sql-database-automated-backups.md)
+* [Další kurzy, které staví na aplikace SaaS aplikace Wingtip](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
+* [Přehled kontinuity se službou Azure SQL Database](sql-database-business-continuity.md)
+* [Další informace o zálohování SQL Database](sql-database-automated-backups.md)

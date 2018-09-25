@@ -1,6 +1,6 @@
 ---
 title: Autorizace uživatelů pro zobrazení Ambari – Azure HDInsight
-description: Jak spravovat Ambari oprávnění uživatelů a skupin pro clustery HDInsight připojené k doméně.
+description: Správa oprávnění uživatelů a skupin Ambari pro HDInsight clustery s ESP povolena.
 services: hdinsight
 author: maxluk
 ms.reviewer: jasonh
@@ -9,23 +9,23 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: f1aa80ec9df8faee4cf5ea98910e28cfc11a7920
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 4e05d4ff9c090fac0242921e15ef16439d3ed27f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782123"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954445"
 ---
 # <a name="authorize-users-for-ambari-views"></a>Autorizace uživatelů pro zobrazení Ambari
 
-[Clustery HDInsight připojené k doméně](./domain-joined/apache-domain-joined-introduction.md) poskytuje funkce na podnikové úrovni, včetně ověřování pomocí Azure Active Directory. Je možné [synchronizovat noví uživatelé](hdinsight-sync-aad-users-to-cluster.md) přidán do skupiny Azure AD, které byly zadány přístup ke clusteru, tyto konkrétní uživatelé můžou k provedení určité akce. Práce s uživatele, skupiny a oprávnění v Ambari je podporován pro cluster HDInsight připojený k doméně a cluster HDInsight úrovně standard.
+[Enterprise Security Package (ESP) povolena clustery HDInsight](./domain-joined/apache-domain-joined-introduction.md) poskytuje funkce na podnikové úrovni, včetně ověřování pomocí Azure Active Directory. Je možné [synchronizovat noví uživatelé](hdinsight-sync-aad-users-to-cluster.md) přidán do skupiny Azure AD, které byly zadány přístup ke clusteru, tyto konkrétní uživatelé můžou k provedení určité akce. Práce s uživatele, skupiny a oprávnění v Ambari je podporován pro clustery HDInsight ESP i standardní clustery HDInsight.
 
 Uživatelé služby Active Directory může přihlásit k uzlům clusteru pomocí svých přihlašovacích údajů domény. Přihlašovacích údajů domény může také používat k ověření clusteru interakce s dalších schválených koncových bodech, jako jsou Hue, zobrazení Ambari, rozhraní ODBC, JDBC, PowerShell a rozhraní REST API.
 
 > [!WARNING]
 > Neměňte heslo Ambari sledovacích (hdinsightwatchdog) ve vašem clusteru HDInsight se systémem Linux. Změna hesla dělí schopnost pomocí skriptových akcí nebo provádění operací škálování s vaším clusterem.
 
-Pokud jste tak již neučinili, postupujte podle [tyto pokyny](./domain-joined/apache-domain-joined-configure.md) zřídit nový cluster připojený k doméně.
+Pokud jste tak již neučinili, postupujte podle [tyto pokyny](./domain-joined/apache-domain-joined-configure.md) zřizovat ESP nového clusteru.
 
 ## <a name="access-the-ambari-management-page"></a>Přístup ke stránce správy Ambari
 
@@ -116,7 +116,7 @@ Zobrazení seznamu poskytuje funkce pro rychlé úpravy do dvou kategorií: uži
 
     ![Role zobrazení seznamu – Uživatelé](./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png)
 
-* Skupiny kategorií v zobrazení seznamu zobrazuje všechny skupiny a role přiřazených ke každé skupině. V našem příkladu seznam skupin se synchronizují ze služby Azure AD skupiny zadané v **přístupová skupina uživatelů** vlastnost nastavení domény clusteru. Zobrazit [vytvořit cluster HDInsight připojený k doméně](./domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-domain-joined-hdinsight-cluster).
+*  Skupiny kategorií v zobrazení seznamu zobrazuje všechny skupiny a role přiřazených ke každé skupině. V našem příkladu seznam skupin se synchronizují ze služby Azure AD skupiny zadané v **přístupová skupina uživatelů** vlastnost nastavení domény clusteru. Zobrazit [vytvořit HDInsight cluster s ESP povolené](./domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp).
 
     ![Role zobrazení seznamu – skupiny](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
 
@@ -136,7 +136,7 @@ Jsme naše uživatele domény Azure AD "hiveuser2" přiřadili *uživatele clust
 
 ## <a name="next-steps"></a>Další postup
 
-* [Konfigurace zásad Hivu ve HDInsight připojených k doméně](./domain-joined/apache-domain-joined-run-hive.md)
-* [Správa clusterů HDInsight připojených k doméně](./domain-joined/apache-domain-joined-manage.md)
+* [Konfigurace zásad Hivu ve HDInsight s ESP](./domain-joined/apache-domain-joined-run-hive.md)
+* [Správa clusterů HDInsight ESP](./domain-joined/apache-domain-joined-manage.md)
 * [Použití zobrazení Hivu s Hadoopem v HDInsight](hadoop/apache-hadoop-use-hive-ambari-view.md)
 * [Synchronizace uživatelů Azure AD do clusteru](hdinsight-sync-aad-users-to-cluster.md)

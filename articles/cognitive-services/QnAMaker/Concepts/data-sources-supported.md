@@ -3,19 +3,19 @@ title: Zdroje dat podporované – QnA Maker
 titleSuffix: Azure Cognitive Services
 description: Nástroj QnA Maker můžete automaticky extrahovat páry otázka – odpověď z běžných semistrukturovaná obsahu formátů, jako jsou nejčastější dotazy a produktových příruček. Obsah lze také přidat do znalostní báze z strukturované soubory.
 services: cognitive-services
-author: nstulasi
+author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
-ms.author: saneppal
-ms.openlocfilehash: 0436d5015ee4b369aeead7691f87ef313259d391
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.date: 09/24/2018
+ms.author: tulasim
+ms.openlocfilehash: b9214d44061edad967212a1f904c2cdb6687dba2
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543992"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039050"
 ---
 # <a name="data-sources"></a>Zdroje dat 
 Nástroj QnA Maker můžete automaticky extrahovat páry otázka – odpověď z běžných semistrukturovaná obsahu formátů, jako jsou nejčastější dotazy a produktových příruček. Obsah lze také přidat do znalostní báze z strukturované soubory.
@@ -71,8 +71,8 @@ Pokud nemáte existující obsah k vyplnění znalostní báze, můžete také p
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Nastavení služby QnA Maker](../How-To/set-up-qnamaker-service-azure.md)
+> [Přidat posouzení vašich osobnostních odpovědi s chit chat osoby](../How-To/chit-chat-knowledge-base.md)
 
 ## <a name="see-also"></a>Další informace najdete v tématech 
 
-[Přehled nástroje QnA Maker](../Overview/overview.md)
+[Přehled služby QnA Maker](../Overview/overview.md)

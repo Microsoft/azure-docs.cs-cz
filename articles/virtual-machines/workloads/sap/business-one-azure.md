@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: msjuergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ca089672cf645af58952205dada66aa96ba0b65d
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: e8bd5ddab4553807f59b7afdf32fbfc1703e3d75
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578239"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949521"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business jeden na Azure Virtual Machines
 Tento dokument obsahuje pokyny pro nasazení SAP Business One ve službě Azure Virtual Machines. V dokumentaci k není náhradou za dokumentaci k instalaci podnikání, jeden pro SAP. Základní pokyny pro plánování a nasazení pro infrastrukturu Azure a spustit jednu obchodní aplikace v by měly pokrývat v dokumentaci.
@@ -39,7 +39,7 @@ K použití tohoto průvodce potřebujete základní znalosti o následující k
 - [Virtuální počítače Azure v Linuxu](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
 - [Azure, sítě a virtuální sítí správa pomocí Powershellu](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-virtual-network)
 - [Sítě Azure a virtuální sítě pomocí rozhraní příkazového řádku ](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
-- [Správa disků v Azure pomocí rozhraní příkazového řádku Azure CLI 2.0](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-disks)
+- [Správa disků v Azure pomocí Azure CLI](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-disks)
 
 I v případě, že máte zájem business jeden pouze, dokument [Azure Virtual Machines plánování a implementace SAP Netweaveru](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) může být dobrým zdrojem informací.
 

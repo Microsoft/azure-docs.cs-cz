@@ -1,6 +1,6 @@
 ---
-title: Vytvoření clusterů Hadoop pomocí příkazového řádku – Azure HDInsight
-description: Zjistěte, jak vytvářet clustery HDInsight pomocí Azure CLI 1.0 napříč platformami.
+title: Vytvoření clusterů Hadoop pomocí Azure CLI classic – Azure HDInsight
+description: Zjistěte, jak vytvářet clustery HDInsight pomocí multiplatformní rozhraní CLI Azure classic.
 services: hdinsight
 author: jasonwhowell
 ms.reviewer: jasonh
@@ -9,23 +9,20 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: jasonh
-ms.openlocfilehash: 523c2a85929d8474c283055a8ae38d489cbd4b12
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 84b352fea0c5b9c98cd3b4e814e448cf8b706402
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43090970"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46992809"
 ---
-# <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Vytvoření clusterů HDInsight pomocí rozhraní příkazového řádku Azure
+# <a name="create-hdinsight-clusters-using-the-azure-classic-cli"></a>Vytvoření clusterů HDInsight pomocí rozhraní příkazového řádku Azure Classic
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Kroky v tomto názorném postupu dokumentu, vytvoření clusteru HDInsight 3.5 pomocí rozhraní příkazového řádku Azure CLI 1.0.
+Kroky v tomto názorném postupu dokumentu, vytvoření clusteru HDInsight 3.5 pomocí rozhraní příkazového řádku Azure Classic.
 
-> [!IMPORTANT]
-> Toto téma popisuje, jak vytvořit HDInsight cluster pomocí rozhraní příkazového řádku Azure CLI 1.0. Tato verze rozhraní příkazového řádku je zastaralá a podpora pro vytváření clusterů HDInsight nebyl přidán do příkazového řádku Azure CLI 2.0.
->
-> Prostředí Azure PowerShell můžete použít také k vytváření a správě clusterů HDInsight. Další informace najdete v tématu [HDInsight vytvářet clustery pomocí prostředí Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) dokumentu.
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -33,14 +30,11 @@ Kroky v tomto názorném postupu dokumentu, vytvoření clusteru HDInsight 3.5 p
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
-* **Azure CLI**. Kroky v tomto dokumentu poslední byly testovány s Azure CLI verze 0.10.14.
-
-    > [!IMPORTANT]
-    > Azure CLI 1.0 je zastaralý a podpora pro vytváření clusterů HDInsight nebyl přidán do příkazového řádku Azure CLI 2.0.
+* **Azure Classic CLI**. Kroky v tomto dokumentu poslední byly testovány s klasické rozhraní příkazového řádku Azure verze 0.10.14.
 
 ## <a name="log-in-to-your-azure-subscription"></a>Přihlášení k předplatnému Azure
 
-Postupujte podle kroků popsaných v tématu [Připojení k předplatnému Azure z rozhraní příkazového řádku Azure](/cli/azure/authenticate-azure-cli) a připojte se k předplatnému pomocí metody **přihlášení**.
+Postupujte podle kroků popsaných v [připojení k předplatnému Azure z rozhraní příkazového řádku Azure](/cli/azure/authenticate-azure-cli) a připojte se k předplatnému pomocí **přihlášení** metody.
 
 ## <a name="create-a-cluster"></a>Vytvoření clusteru
 
@@ -50,7 +44,7 @@ Následující kroky je třeba provést z příkazového řádku, jako je PowerS
 
         azure login
 
-    Zobrazí se výzva k zadání jména a hesla. Pokud máte více předplatných Azure, použijte `azure account set <subscriptionname>` nastavit předplatné, které pomocí příkazů rozhraní příkazového řádku Azure.
+    Zobrazí se výzva k zadání jména a hesla. Pokud máte více předplatných Azure, použijte `azure account set <subscriptionname>` nastavit předplatné, které pomocí příkazů rozhraní příkazového řádku classic.
 
 2. Přepněte do režimu Azure Resource Manager pomocí následujícího příkazu:
 
@@ -124,7 +118,7 @@ Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se 
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když úspěšně vytvoříte clusteru služby HDInsight pomocí Azure CLI, použijte následující postup, jak pracovat s vaším clusterem:
+Teď, když úspěšně vytvoříte clusteru služby HDInsight pomocí rozhraní příkazového řádku classic, použijte následující postup, jak pracovat s vaším clusterem:
 
 ### <a name="hadoop-clusters"></a>Clustery Hadoop
 

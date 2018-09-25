@@ -10,12 +10,13 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 42b59aa9af99fd4647ccd63ed5dbd1e7d3db2864
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ROBOTS: NOINDEX
+ms.openlocfilehash: c1051ebec815a2bcb2832f7dd2fcb570b8c53223
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366780"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46968073"
 ---
 # <a name="supported-languages"></a>Podporované jazyky
 

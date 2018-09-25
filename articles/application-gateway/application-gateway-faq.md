@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 9/6/2018
 ms.author: victorh
-ms.openlocfilehash: e180f0912bdb9145f3d36492fb9bcdcb551037f0
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 56c66418b9f47e0ae0d345cd6e8a7d3ef2914b82
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022912"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46986672"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Nejčastější dotazy k Application Gateway
 
@@ -360,6 +360,12 @@ Protokoly auditu jsou k dispozici pro službu Application Gateway. Na portálu k
 **Q. Můžete nastavit výstrahy se službou Application Gateway?**
 
 Ano, služba Application Gateway podporuje výstrahy, se konfigurují mimo metriky. Application Gateway aktuálně poskytuje metriky "propustnosti", kterého lze nakonfigurovat na upozornění. Další informace o výstrahách, najdete v tématu [doručování oznámení o upozorněních](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
+
+**Q. Jak analyzovat statistiku provozu pro službu Application Gateway?**
+
+Můžete zobrazit a analyzovat protokoly přístupu přes celou řadou mechanismy, jako je Azure Log Analytics, Excel, Power BI atd.
+
+Také jsme publikovali šablony Resource Manageru, který nainstaluje a spustí Oblíbené [GoAccess](https://goaccess.io/) protokolu analyzátoru protokolů Application Gateway přístup. GoAccess poskytuje cenné statistiku provozu HTTP jako je například jedinečných návštěvníků, vyžádané soubory, hostitele, operační systémy, prohlížeče, stavové kódy HTTP a další. Další podrobnosti najdete [souboru Readme do složky šablony Resource Manageru v Githubu](https://aka.ms/appgwgoaccessreadme).
 
 **Q. Stav back-endu vrátí stav neznámý, co by mohlo být příčinou tohoto stavu?**
 

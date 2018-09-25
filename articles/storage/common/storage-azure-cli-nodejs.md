@@ -1,6 +1,6 @@
 ---
-title: S Azure Storage pomocí Azure CLI 1.0 | Dokumentace Microsoftu
-description: Další informace o použití rozhraní příkazového řádku Azure (CLI) Azure 1.0 se službou Azure Storage, vytvářet a spravovat účty úložiště a pracovat s objekty BLOB Azure a soubory. Azure CLI je nástroj pro různé platformy
+title: Použití Azure classic CLI s Azure Storage | Dokumentace Microsoftu
+description: Další informace o použití Azure classic rozhraní příkazového řádku (CLI) pomocí služby Azure Storage k vytváření a Správa účtů úložiště a pracovat s objekty BLOB Azure a soubory.
 services: storage
 author: seguler
 ms.service: storage
@@ -8,31 +8,31 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: f406f12b3313670e8e2d89296f7c24478bb58c6c
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: e563c7000b600bed917f42d8ffb87df883564ef8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521502"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46979324"
 ---
-# <a name="using-the-azure-cli-10-with-azure-storage"></a>Použití Azure CLI 1.0 s Azure Storage
+# <a name="using-the-azure-classic-cli-with-azure-storage"></a>Použití Azure classic CLI s Azure Storage
 
 ## <a name="overview"></a>Přehled
 
-Rozhraní příkazového řádku Azure nabízí sadu open source příkazů pro různé platformy pro práci s platformou Azure. Poskytuje většinu stejné funkce, které jsou součástí [webu Azure portal](https://portal.azure.com) jako stejně velké množství dat a přístup k funkcím.
+Azure classic CLI poskytuje sadu jako software open source příkazů pro různé platformy pro práci s platformou Azure. Poskytuje většinu stejné funkce, které jsou součástí [webu Azure portal](https://portal.azure.com) jako stejně velké množství dat a přístup k funkcím.
 
-V této příručce se podíváme, jak používat [rozhraní příkazového řádku Azure (Azure CLI)](../../cli-install-nodejs.md) provádět různé úlohy vývoje a správy pomocí služby Azure Storage. Doporučujeme stáhnout a nainstalovat nebo upgradovat na nejnovější rozhraní příkazového řádku Azure před použitím tohoto průvodce.
+V této příručce se podíváme, jak používat [klasické rozhraní příkazového řádku Azure](../../cli-install-nodejs.md) provádět různé úlohy vývoje a správy pomocí služby Azure Storage. Doporučujeme stáhnout a instalaci nebo upgradu nejnovější rozhraní příkazového řádku classic před použitím tohoto průvodce.
 
-Tento průvodce to předpokládá, že chápete základní koncepty služby Azure Storage. Průvodce poskytuje řadu skripty, které ukazují použití Azure CLI s Azure Storage. Nezapomeňte aktualizovat proměnné skript na základě vaší konfigurace před spuštěním každého skriptu.
+Tento průvodce to předpokládá, že chápete základní koncepty služby Azure Storage. Průvodce poskytuje řadu skripty, které ukazují použití klasického rozhraní příkazového řádku pomocí služby Azure Storage. Nezapomeňte aktualizovat proměnné skript na základě vaší konfigurace před spuštěním každého skriptu.
 
 > [!NOTE]
-> Průvodce poskytuje příklady příkazu a skriptu rozhraní příkazového řádku Azure pro účty úložiště classic. Zobrazit [pomocí Azure CLI pro Mac, Linux a Windows s Azure Resource Manageru](../../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects) pro příkazy Azure CLI pro účty úložiště Resource Manageru.
+> Průvodce poskytuje Azure classic rozhraní příkazového řádku příkaz a skript příklady pro účty úložiště classic. Zobrazit [pomocí Azure CLI pro Mac, Linux a Windows s Azure Resource Manageru](../../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects) pro Azure classic příkazy rozhraní příkazového řádku pro účty úložiště Resource Manageru.
 >
 >
 
 [!INCLUDE [storage-cli-versions](../../../includes/storage-cli-versions.md)]
 
-## <a name="get-started-with-azure-storage-and-the-azure-cli-in-5-minutes"></a>Začínáme s Azure Storage a rozhraní příkazového řádku Azure během 5 minut.
+## <a name="get-started-with-azure-storage-and-the-azure-classic-cli-in-5-minutes"></a>Začínáme s Azure Storage a Azure classic CLI během 5 minut
 Tato příručka používá Ubuntu příklady, ale jiné platformy operačního systému by měl provádět podobně.
 
 **Zatím Azure:** získat předplatné Microsoft Azure a účet Microsoft spojený s tímto předplatným. Informace o možnostech nákupu Azure najdete v tématu [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/), [možnostmi nákupu](https://azure.microsoft.com/pricing/purchase-options/), a [nabídky pro členy](https://azure.microsoft.com/pricing/member-offers/) (pro členy programu MSDN, Microsoft Partner Network a BizSpark, a Další programy společnosti Microsoft).
@@ -41,12 +41,12 @@ Zobrazit [přiřazení rolí správce v Azure Active Directory (Azure AD)](https
 
 **Po vytvoření předplatného Microsoft Azure a účet:**
 
-1. Stáhněte a nainstalujte Azure CLI, postupujte podle pokynů uvedených v [instalace rozhraní příkazového řádku Azure](../../cli-install-nodejs.md).
-2. Po instalaci rozhraní příkazového řádku Azure, budete moct používat příkaz azure z rozhraní příkazového řádku (Bash, terminálu, příkazový řádek) pro přístup k příkazům rozhraní příkazového řádku Azure. Typ _azure_ příkazu by se měla zobrazit následující výstup.
+1. Stáhněte a nainstalujte Azure CLI classic podle pokynů uvedených v [instalace Azure classic CLI](../../cli-install-nodejs.md).
+2. Po instalaci rozhraní příkazového řádku classic budete moct používat příkaz azure z rozhraní příkazového řádku (Bash, terminálu, příkazový řádek) pro přístup k classic příkazy rozhraní příkazového řádku. Typ _azure_ příkazu by se měla zobrazit následující výstup.
 
     ![Výstup příkazu Azure](./media/storage-azure-cli/azure_command.png)   
-3. V rozhraní příkazového řádku zadejte `azure storage` obsahuje seznam všech příkazů služby azure storage a získat první dojem funkcí rozhraní příkazového řádku Azure. Můžete zadat název příkazu s **-h** parametrů (například `azure storage share create -h`) zobrazíte podrobnosti o syntaxi příkazu.
-4. Nyní dáme vám jednoduchý skript, který zobrazuje základní příkazy rozhraní příkazového řádku Azure pro přístup k úložišti Azure. Skript nejprve vás vyzve k nastavení dvou proměnných pro účet úložiště a klíč. Skript potom vytvoříte nový kontejner v rámci tohoto nového účtu úložiště a nahrajte existující soubor bitové kopie (blob) do tohoto kontejneru. Jakmile skript vypíše všechny objekty BLOB v tomto kontejneru, stáhne soubor bitové kopie do cílového adresáře, který existuje v místním počítači.
+3. V rozhraní příkazového řádku zadejte `azure storage` seznam všech příkazů služby azure storage a získat první dojem funkcí rozhraní příkazového řádku classic poskytuje. Můžete zadat název příkazu s **-h** parametrů (například `azure storage share create -h`) zobrazíte podrobnosti o syntaxi příkazu.
+4. Nyní dáme vám jednoduchý skript, který zobrazuje základní příkazy rozhraní příkazového řádku classic pro přístup k úložišti Azure. Skript nejprve vás vyzve k nastavení dvou proměnných pro účet úložiště a klíč. Skript potom vytvoříte nový kontejner v rámci tohoto nového účtu úložiště a nahrajte existující soubor bitové kopie (blob) do tohoto kontejneru. Jakmile skript vypíše všechny objekty BLOB v tomto kontejneru, stáhne soubor bitové kopie do cílového adresáře, který existuje v místním počítači.
 
     ```azurecli
     #!/bin/bash
@@ -88,9 +88,9 @@ Zobrazit [přiřazení rolí správce v Azure Active Directory (Azure AD)](https
 
 Po spuštění skriptu, měli byste mít místní cílovou složku, která obsahuje soubor stažený obraz.
 
-## <a name="manage-storage-accounts-with-the-azure-cli"></a>Správa účtů úložiště pomocí Azure CLI
+## <a name="manage-storage-accounts-with-the-azure-classic-cli"></a>Správa účtů úložiště pomocí Azure classic CLI
 ### <a name="connect-to-your-azure-subscription"></a>Připojení k předplatnému služby Azure
-Zatímco většina příkazů úložiště bude fungovat bez předplatného Azure, doporučujeme vám umožní připojit se ke svému předplatnému z příkazového řádku Azure. Konfigurace Azure CLI pro práci s vaším předplatným, postupujte podle kroků v [připojení k předplatnému Azure z příkazového řádku Azure](/cli/azure/authenticate-azure-cli).
+Zatímco většina příkazů úložiště bude fungovat bez předplatného Azure, doporučujeme vám umožní připojit se ke svému předplatnému z klasického příkazového řádku.
 
 ### <a name="create-a-new-storage-account"></a>Vytvoření nového účtu úložiště
 Pokud chcete používat Azure storage, budete potřebovat účet úložiště. Po konfiguraci počítače pro připojení k vašemu předplatnému, můžete vytvořit nový účet úložiště Azure.
@@ -102,7 +102,7 @@ azure storage account create <account_name>
 Název účtu úložiště musí být dlouhý 3 až 24 znaků a použít pouze číslice a malá písmena.
 
 ### <a name="set-a-default-azure-storage-account-in-environment-variables"></a>Nastavit výchozí účet úložiště Azure v proměnných prostředí
-V rámci vašeho předplatného může mít více účtů úložiště. Můžete zvolit jeden z nich a nastavit v proměnné prostředí pro všechny příkazy úložiště ve stejné relaci. To umožňuje spouštět příkazy rozhraní příkazového řádku Azure storage bez zadání účtu úložiště a klíč explicitně.
+V rámci vašeho předplatného může mít více účtů úložiště. Můžete zvolit jeden z nich a nastavit v proměnné prostředí pro všechny příkazy úložiště ve stejné relaci. To umožňuje spustit klasického úložiště příkazy rozhraní příkazového řádku bez zadání účtu úložiště a klíč explicitně.
 
 ```azurecli
 export AZURE_STORAGE_ACCOUNT=<account_name>
@@ -177,7 +177,7 @@ azure storage blob delete mycontainer myBlockBlob2
 ```
 
 ## <a name="create-and-manage-file-shares"></a>Vytvoření a správě sdílených složek
-Služba soubory Azure nabízí sdílené úložiště pro aplikace používající standardní protokol SMB. Virtuální počítače Microsoft Azure a cloudových služeb, jakož i místní aplikace můžou sdílet souborová data přes sdílené složky. Můžete spravovat sdílené složky a data souborů přes rozhraní příkazového řádku Azure. Další informace o službě soubory Azure najdete v tématu [Úvod do služby soubory Azure](../files/storage-files-introduction.md).
+Služba soubory Azure nabízí sdílené úložiště pro aplikace používající standardní protokol SMB. Virtuální počítače Microsoft Azure a cloudových služeb, jakož i místní aplikace můžou sdílet souborová data přes sdílené složky. Můžete spravovat sdílené složky a data souborů přes rozhraní příkazového řádku classic. Další informace o službě soubory Azure najdete v tématu [Úvod do služby soubory Azure](../files/storage-files-introduction.md).
 
 ### <a name="create-a-file-share"></a>Vytvoření sdílené složky
 Sdílené složky Azure je sdílené složky protokolu SMB v Azure. Všechny adresáře a soubory musí být vytvořeny ve sdílené složce. Účet může obsahovat neomezený počet sdílených složek a sdílené složky můžete ukládat neomezený počet souborů až do omezení kapacity účtu úložiště. Následující příklad vytvoří sdílenou **myshare**.
@@ -214,7 +214,7 @@ azure storage file list myshare myDir
 Všimněte si, že název adresáře je nepovinné pro operace výpisu. Pokud tento parametr vynechán, příkaz vypíše obsah kořenovém adresáři sdílené složky.
 
 ### <a name="copy-files"></a>Kopírování souborů
-Od verze 0.9.8 rozhraní příkazového řádku Azure, můžete zkopírovat soubor do jiného souboru, soubor do objektu blob nebo objekt blob do souboru. Dole ukážeme, jak provádět operace kopírovaní pomocí příkazů rozhraní příkazového řádku. Zkopírujte soubor do nového adresáře:
+Od verze 0.9.8 rozhraní příkazového řádku classic, můžete zkopírovat soubor do jiného souboru, soubor do objektu blob nebo objekt blob do souboru. Dole ukážeme, jak provádět operace kopírovaní pomocí příkazů rozhraní příkazového řádku. Zkopírujte soubor do nového adresáře:
 
 ```azurecli
 azure storage file copy start --source-share srcshare --source-path srcdir/hello.txt --dest-share destshare
@@ -230,9 +230,9 @@ azure storage file copy start --source-container srcctn --source-blob hello2.txt
 
 ## <a name="next-steps"></a>Další kroky
 
-Pro práci s prostředky úložiště tady najdete informace o příkazech Azure CLI 1.0:
+Azure classic informace o příkazech rozhraní příkazového řádku můžete najít pro práci s prostředky úložiště tady:
 
-* [Příkazy Azure CLI v režimu Resource Manageru](../../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects)
-* [Příkazy Azure CLI v režimu Azure Service Management](../../cli-install-nodejs.md)
+* [Azure classic příkazy rozhraní příkazového řádku v režimu Resource Manageru](../../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects)
+* [Azure classic příkazy rozhraní příkazového řádku v režimu Azure Service Management](../../cli-install-nodejs.md)
 
-Může také jako vyzkoušet [příkazového řádku Azure CLI 2.0](../storage-azure-cli.md), naše rozhraní příkazového řádku příští generace napsané v Pythonu, pro použití s modelem nasazení Resource Manager.
+Může také jako vyzkoušet nejnovější verzi [rozhraní příkazového řádku Azure](../storage-azure-cli.md), pro použití s modelem nasazení Resource Manager.

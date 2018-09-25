@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/13/2018
 ms.author: magattus
-ms.openlocfilehash: c3a20bd4fa1cccdca7cba0de52620f09fe01abc5
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 2468462170f970cd597dd1296417d5b93a88c2ec
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42054630"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997265"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Vylepšení výkonu prostřednictvím komprimace souborů v Azure CDN
 Komprese souborů je jednoduchou a efektivní způsob zlepšit rychlost přenosu souborů a zvýšení výkonu načítání stránek díky snížení velikosti souboru před odesláním ze serveru. Komprese můžete snížit náklady na šířku pásma a poskytnout pohotovější prostředí pro vaše uživatele.
@@ -102,13 +102,14 @@ CDN úrovně standard a premium poskytují stejné funkce kompresi, ale uživate
 
 ### <a name="azure-cdn-standard-from-microsoft-profiles"></a>Azure CDN Standard od společnosti Microsoft profily
 
-Pro **Azure CDN Standard od společnosti Microsoft** profily, všechny soubory jsou způsobilé pro kompresi. Však musí být soubor typu MIME, která byla [nakonfigurované pro kompresi](#enabling-compression).
+Pro **Azure CDN Standard od společnosti Microsoft** profilů, pouze vhodné soubory jsou komprimované. Způsobilé pro kompresi, musíte soubor: – být typu MIME, která byla [nakonfigurované pro kompresi](#enabling-compression).
+-Být větší než 1 KB-být menší než 8 MB
 
 Tyto profily podporují následující kódování komprese:
 - GZIP (GNU zip)
 - brotli 
  
-Pokud požadavek podporuje více než jeden typ komprese, tyto typy komprese přednost před brotli komprese.
+Pokud požadavek podporuje více než jeden typ komprese, komprese brotli přednost.
 
 Když žádost pro určitý prostředek určuje kompresi gzip a výsledky požadavku v neúspěšnému přístupu do mezipaměti, Azure CDN provádí kompresi gzip majetku přímo na serveru POP. Následně komprimovaný soubor se načítají z mezipaměti.
 

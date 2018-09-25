@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ce2c92f984f835c8e8f49ec94d65a9f3390812f9
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 013fd019771fb9994c87e363c78eae36431f91de
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493118"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953221"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Použijte rozhraní Azure AD Graph API
 
@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD) B2C tenanti jsou často na velmi velké. To zn
 Tenanti B2C existují dva primární režimy komunikaci s rozhraním Graph API.
 
 * Pro interaktivní, jedno spuštění úlohy by měl fungovat jako účet správce v tenantovi B2C při provádění úlohy. Tento režim vyžaduje správce přihlásit pomocí přihlašovacích údajů, aby mohli provádět jakékoli volání rozhraní Graph API.
-* Pro automatizované, nepřetržité úlohy měli byste použít nějaký typ účtu služby poskytnout potřebná oprávnění k provádění úloh správy. Ve službě Azure AD můžete to provedete tak, že registrace aplikace a ověřování do služby Azure AD. To se provádí pomocí **ID aplikace** , která používá [udělení přihlašovacích údajů klienta OAuth 2.0](../active-directory/develop/authentication-scenarios.md#daemon-or-server-application-to-web-api). V tomto případě aplikace slouží jako samostatně, nikoli jako uživatel, pro volání rozhraní Graph API.
+* Pro automatizované, nepřetržité úlohy měli byste použít nějaký typ účtu služby poskytnout potřebná oprávnění k provádění úloh správy. Ve službě Azure AD můžete to provedete tak, že registrace aplikace a ověřování do služby Azure AD. To se provádí pomocí **ID aplikace** , která používá [udělení přihlašovacích údajů klienta OAuth 2.0](../active-directory/develop/service-to-service.md). V tomto případě aplikace slouží jako samostatně, nikoli jako uživatel, pro volání rozhraní Graph API.
 
 V tomto článku se dozvíte, jak k provádění případ automatické použití. Vytvoříte .NET 4.5 `B2CGraphClient` , který provede uživatele vytvoření, čtení, aktualizace a odstranění (CRUD) operací. Klient bude mít Windows rozhraní příkazového řádku (CLI), který umožňuje volat různé metody. Kód se však zapíše neinteraktivní, automatizované způsobem chovat.
 

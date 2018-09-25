@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 13bf79c919eff220c1b6fbbc7247a44b2c424466
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 70ee244599f926f4d6c4a36f6065a1f743de2466
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45637524"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971820"
 ---
 # <a name="workspace-expression-in-log-analytics-query"></a>výraz Workspace() v dotazu Log Analytics
 
@@ -50,22 +50,22 @@ ms.locfileid: "45637524"
 
 ## <a name="examples"></a>Příklady
 
-```
+```Kusto
 workspace("contosoretail").Update | count
 ```
-```
+```Kusto
 workspace("b438b4f6-912a-46d5-9cb1-b44069212ab4").Update | count
 ```
-```
+```Kusto
 workspace("/subscriptions/e427267-5645-4c4e-9c67-3b84b59a6982/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail").Event | count
 ```
-```
+```Kusto
 union 
 (workspace("myworkspace").Heartbeat | where Computer contains "Con"),
 (app("myapplication").requests | where cloud_RoleInstance contains "Con")
 | count  
 ```
-```
+```Kusto
 union 
 (workspace("myworkspace").Heartbeat), (app("myapplication").requests)
 | where TimeGenerated between(todatetime("2018-02-08 15:00:00") .. todatetime("2018-12-08 15:05:00"))

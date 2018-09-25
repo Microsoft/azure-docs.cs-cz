@@ -1,6 +1,6 @@
 ---
-title: Azure správy zařízení IoT s využitím rozšíření IoT pro Azure CLI 2.0 | Dokumentace Microsoftu
-description: Použití rozšíření IoT pro nástroj příkazového řádku Azure CLI 2.0 pro správu zařízení Azure IoT Hub, poskytuje funkci přímých metod a možnosti správy požadované vlastnosti Dvojčete společnosti.
+title: Azure správy zařízení IoT s využitím rozšíření IoT pro rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+description: Použití rozšíření IoT pro nástroj příkazového řádku Azure pro správu zařízení Azure IoT Hub, poskytuje funkci přímých metod a možnosti správy požadované vlastnosti Dvojčete společnosti.
 author: chrissie926
 manager: ''
 keywords: Správa zařízení Azure iot, správou zařízení azure iot hub, iot správy zařízení, správy zařízení služby iot hub
@@ -10,20 +10,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: dc96e70a031d6080217e71b829ec5de3c64e4cf7
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: e36b8a680f0dc5bf6b438ab00620d4f2a5b9770c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971750"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46980589"
 ---
-# <a name="use-the-iot-extension-for-azure-cli-20-for-azure-iot-hub-device-management"></a>Použití rozšíření IoT pro Azure CLI 2.0 pro správu zařízení Azure IoT Hub
+# <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>Použití rozšíření IoT pro Azure CLI pro správu zařízení Azure IoT Hub
 
 ![Diagram začátku do konce](media/iot-hub-get-started-e2e-diagram/2.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-[Rozšíření IoT pro Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension) je nové open source rozšíření IoT, který přidá možnosti [příkazového řádku Azure CLI 2.0](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest). Azure CLI 2.0 obsahuje příkazy pro komunikaci s koncovými body Azure resource Manageru a správy. Například můžete použít Azure CLI 2.0 k vytvoření virtuálního počítače Azure nebo centra IoT. Rozšíření rozhraní příkazového řádku povolí službu pro rozšíření rozhraní příkazového řádku Azure poskytuje přístup k další funkce specifické pro služby Azure. Rozšíření IoT poskytuje vývojářům IoT příkazového řádku přístup k funkcím IoT Hub, IoT Edge a IoT Hub Device Provisioning Service.
+[Rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension) je nové open source rozšíření IoT, která přidává do funkce [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest). Azure CLI zahrnuje příkazy pro komunikaci s Azure resource Manageru a koncových bodů správy. Například můžete použít rozhraní příkazového řádku Azure k vytvoření virtuálního počítače Azure nebo centra IoT. Rozšíření rozhraní příkazového řádku povolí službu pro rozšíření rozhraní příkazového řádku Azure poskytuje přístup k další funkce specifické pro služby Azure. Rozšíření IoT poskytuje vývojářům IoT příkazového řádku přístup k funkcím IoT Hub, IoT Edge a IoT Hub Device Provisioning Service.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -41,11 +41,11 @@ Dvojčata zařízení jsou dokumenty JSON, které obsahují informace o stavu za
 
 ## <a name="what-you-learn"></a>Co se naučíte
 
-Zjistíte pomocí rozšíření IoT pro Azure CLI 2.0 pomocí různých možností správy na svém vývojovém počítači.
+Zjistíte pomocí rozšíření IoT pro Azure CLI různé možnosti správy na svém vývojovém počítači.
 
 ## <a name="what-you-do"></a>Co můžete dělat
 
-Spuštění příkazového řádku Azure CLI 2.0 a rozšíření IoT pro Azure CLI 2.0 pomocí různé možnosti správy.
+Spuštění rozhraní příkazového řádku Azure a rozšíření IoT pro Azure CLI s různými možnostmi správy.
 
 ## <a name="what-you-need"></a>Co potřebujete
 
@@ -57,9 +57,7 @@ Spuštění příkazového řádku Azure CLI 2.0 a rozšíření IoT pro Azure C
 - Zajistěte, aby že na zařízení běží v klientské aplikaci během tohoto kurzu.
 
 - [Python 2.7x nebo Python 3.x](https://www.python.org/downloads/)
-
-- Instalace Azure CLI 2.0. Ve Windows můžete instalaci jednoduše provést stažením a instalací [MSI](https://aka.ms/InstallAzureCliWindows). Můžete také postupujte podle pokynů k instalaci na [Microsoft Docs](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) nastavení příkazového řádku Azure CLI 2.0 ve vašem prostředí. Vaše verze Azure CLI 2.0 musí být minimálně 2.0.24 nebo novější. Ke kontrole použijte příkaz `az –version`. 
-
+- Azure CLI. Pokud potřebujete nainstalovat, přečtěte si téma [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Minimálně musí být vaše Azure CLI verze 2.0.24 nebo novější. Ke kontrole použijte příkaz `az –version`. 
 - Instalace rozšíření IoT. Nejjednodušším způsobem je spustit příkaz `az extension add --name azure-cli-iot-ext`. Soubor [Readme rozšíření IoT](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) obsahuje popis několika způsobů instalace rozšíření.
 
 

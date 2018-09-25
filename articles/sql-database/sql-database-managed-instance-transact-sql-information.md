@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: 73e046c153af5c69ab343a90d1f9027b84b4deb1
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: c23fbf0af7d1a15b0efee8af123150feb42c708e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498449"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966881"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Rozdíly ve službě Azure SQL Database Managed Instance T-SQL z SQL serveru 
 
-Azure SQL Database Managed Instance (preview) poskytuje vysokou kompatibilitu díky místní SQL Server Database Engine. Většina funkcí databázový stroj SQL Server jsou podporovány ve spravované instanci. Protože stále existují určité rozdíly v syntaxi a chování, tento článek shrnuje a popisuje tyto rozdíly.
+Azure SQL Database Managed Instance poskytuje vysokou kompatibilitu díky místní SQL Server Database Engine. Většina funkcí databázový stroj SQL Server jsou podporovány ve spravované instanci. Protože stále existují určité rozdíly v syntaxi a chování, tento článek shrnuje a popisuje tyto rozdíly.
  - [Rozdíly v jazyce T-SQL a nepodporované funkce](#Differences)
  - [Funkce, které mají různé chování v Managed Instance](#Changes)
  - [Dočasná omezení a známé problémy](#Issues)
@@ -415,15 +415,58 @@ Ujistěte se, že odeberete úvodní `?` z klíč SAS vygenerovaný pomocí webu
 
 SQL Server Management Studio a SQL Server Data Tools může mít některé problémy při přístupu k Managed Instance. Budou všechny nástroje problémy řešeny před obecnou dostupností.
 
-### <a name="incorrect-database-names"></a>Názvy nesprávné databází
+### <a name="incorrect-database-names-in-some-views-logs-and-messages"></a>Názvy nesprávné databází v některých zobrazeních, protokoly a zpráv
 
-Managed Instance se můžou zobrazovat hodnota identifikátoru guid místo názvu databáze během obnovení nebo v některé chybové zprávy. Tyto problémy se opraví, před obecnou dostupností.
+Několik zobrazení systému, čítače výkonu, chybové zprávy, XEvents a záznamů v protokolu chyb se zobrazí identifikátory GUID databáze namísto názvů skutečné databáze. Nespoléhejte na tyto identifikátory GUID vzhledem k tomu, že by měl být nahrazen názvy skutečné databáze v budoucnu.
 
 ### <a name="database-mail-profile"></a>Profil databázového e-mailu
 Může existovat pouze jedna databáze profil e-mailu a musí být volána `AzureManagedInstance_dbmail_profile`. Jedná se o dočasné omezení, která bude brzy odebráno.
+
+### <a name="error-logs-are-not-persisted"></a>Protokoly chyb jsou trvalé not
+Protokoly chyb, které jsou k dispozici ve spravované instanci nejsou trvalé a jejich velikost není součástí limit maximální velikosti úložiště. Protokoly chyb, může v případě převzetí služeb při selhání automaticky vymaže.
+
+### <a name="error-logs-are-verbose"></a>Jsou podrobné protokoly chyb
+Spravovaná Instance umístí podrobné informace v protokolech chyb a mnoho z nich nejsou relevantní. V budoucnu bude možné snížit množství informací v protokolech chyb.
+
+**Alternativní řešení**: použijte vlastní postup pro čtení protokoly chyb, které filtr na více instancí některých – příslušné položky. Podrobnosti najdete v tématu [Azure SQL DB mi – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
+
+### <a name="transaction-scope-on-two-databases-within-the-same-instance-is-not-supported"></a>Obor transakce ve dvou databázích v rámci stejné instance se nepodporuje.
+`TransactionScope` třídy v rozhraní .net nefunguje, pokud dva dotazy se odesílají do dvou databází v rámci stejné instance v rámci stejného oboru transakce:
+
+```C#
+using (var scope = new TransactionScope())
+{
+    using (var conn1 = new SqlConnection("Server=quickstartbmi.neu15011648751ff.database.windows.net;Database=b;User ID=myuser;Password=mypassword;Encrypt=true"))
+    {
+        conn1.Open();
+        SqlCommand cmd1 = conn1.CreateCommand();
+        cmd1.CommandText = string.Format("insert into T1 values(1)");
+        cmd1.ExecuteNonQuery();
+    }
+
+    using (var conn2 = new SqlConnection("Server=quickstartbmi.neu15011648751ff.database.windows.net;Database=b;User ID=myuser;Password=mypassword;Encrypt=true"))
+    {
+        conn2.Open();
+        var cmd2 = conn2.CreateCommand();
+        cmd2.CommandText = string.Format("insert into b.dbo.T2 values(2)");        cmd2.ExecuteNonQuery();
+    }
+
+    scope.Complete();
+}
+
+```
+
+Přestože tento kód pracuje s daty v rámci stejné instance nezbytné MSDTC.
+
+**Alternativní řešení**: použijte [SqlConnection.ChangeDatabase(String)](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) použití jiné databáze v kontextu připojení místo použití dvě připojení.
+
+### <a name="clr-modules-and-linked-servers-sometime-cannot-reference-local-ip-address"></a>Moduly CLR a nějakou dobu propojené servery nemůže odkazovat na místní IP adresa
+Moduly CLR umístí do Managed Instance a propojené servery pro/distribuované dotazy, které se odkazuje na aktuální instanci nějakou dobu nelze přeložit IP místní instance. Toto je přechodná chyba.
+
+**Alternativní řešení**: Pokud je to možné použít připojení kontextu v modulu CLR.
 
 ## <a name="next-steps"></a>Další postup
 
 - Podrobnosti o Managed Instance najdete v tématu [co je Managed Instance?](sql-database-managed-instance.md)
 - Pro funkce a seznam porovnání, naleznete v tématu [běžné funkce SQL](sql-database-features.md).
-- Kurz ukazuje, jak vytvořit nový Managed Instance, najdete v tématu [vytvoření Managed Instance](sql-database-managed-instance-get-started.md).
+- Rychlý start ukazuje, jak vytvořit nový Managed Instance, naleznete v tématu [vytvoření Managed Instance](sql-database-managed-instance-get-started.md).

@@ -12,14 +12,18 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 01/24/2018
-ms.openlocfilehash: 982a6807ccaf393c3aea42f39f7e60bb7e0d3ac3
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2a7733468ec082c8954f623f3ebe2cea1fbad561
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35643330"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46976216"
 ---
 # <a name="enable-ssl-on-an-azure-machine-learning-compute-mlc-cluster"></a>Povolení protokolu SSL v clusteru služby Azure Machine Learning Compute (MLC) 
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
 
 Tyto pokyny vám umožňují nastavení protokolu SSL pro vyhodnocení volání na Machine Learning Compute (MLC) clusteru. 
 
@@ -51,7 +55,7 @@ az ml env create -c -g <resource group name> -n <cluster name> --cert-cname <CNA
 
 Pokud cílíte na cluster, který byl vytvořen bez SSL, můžete přidat certifikát pomocí rutin prostředí Azure PowerShell.
 
-Je třeba zadat klíč a certifikát v nezpracovaném formátu PEM. Dají se číst do proměnné prostředí PowerShell:
+Musíte zadat klíč a certifikát v nezpracovaném formátu PEM. Dají se číst do proměnné prostředí PowerShell:
 
 ```
 $keyValueInPemFormat = [IO.File]::ReadAllText('<path to key.pem file>')
@@ -65,7 +69,7 @@ Set-AzureRmMlOpCluster -ResourceGroupName my-rg -Name my-cluster -SslStatus Enab
 
 ## <a name="map-the-cname-and-the-ip-address"></a>Mapování záznamu CNAME a IP adresu
 
-Vytvořte mapování mezi záznam CNAME, který jste vybrali v rámci požadavků a IP adresa v reálném čase front-endu (FE). Když Pokud chcete zjistit IP adresu FE, spusťte následující příkaz. Ve výstupu nezobrazí pole s názvem "publicIpAddress", který obsahuje IP adresu front-endu v reálném čase clusteru. Použijte pokyny svého poskytovatele DNS nastavit záznam ze plně kvalifikovaný název domény používané CNAME veřejné IP adresy.
+Vytvořte mapování mezi záznam CNAME, který jste vybrali v rámci požadavků a IP adresa v reálném čase front-endu (FE). Když Pokud chcete zjistit IP adresu FE, spusťte následující příkaz. Ve výstupu nezobrazí pole s názvem "publicIpAddress", který obsahuje IP adresu front-endu clusteru v reálném čase. Použijte pokyny svého poskytovatele DNS nastavit záznam ze plně kvalifikovaný název domény používané CNAME veřejné IP adresy.
 
 
 

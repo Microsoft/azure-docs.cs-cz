@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: dde8881fc446eef0dd6ca0735e5e23a5a19328fa
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 19f066bea9de580cf1245aec74fbe563bf8ba449
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578346"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996549"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Diagnostické protokoly Azure Stream do centra událostí
-**[Diagnostické protokoly Azure](monitoring-overview-of-diagnostic-logs.md)**  můžete streamování v reálném čase pro libovolné aplikace na portálu nebo tím, že ID pravidla autorizace centra událostí v nastavení diagnostiky Azure pomocí integrovaných možností "Export do služby Event Hubs" Rutiny Powershellu nebo Azure CLI 2.0.
+**[Diagnostické protokoly Azure](monitoring-overview-of-diagnostic-logs.md)**  můžete streamování v reálném čase pro libovolné aplikace na portálu nebo tím, že ID pravidla autorizace centra událostí v nastavení diagnostiky Azure pomocí integrovaných možností "Export do služby Event Hubs" Rutiny Powershellu nebo Azure CLI.
 
 ## <a name="what-you-can-do-with-diagnostics-logs-and-event-hubs"></a>Co můžete dělat s Event Hubs a protokoly diagnostiky
 Můžete například použít funkci streamování pro diagnostické protokoly několika způsoby:
@@ -91,9 +91,9 @@ Set-AzureRmDiagnosticSetting -ResourceId [your resource ID] -EventHubAuthorizati
 
 ID pravidla autorizace centra událostí je řetězec v tomto formátu: `{Event Hub namespace resource ID}/authorizationrules/{key name}`, například `/subscriptions/{subscription ID}/resourceGroups/{resource group}/providers/Microsoft.EventHub/namespaces/{Event Hub namespace}/authorizationrules/RootManageSharedAccessKey`. Nelze aktuálně vyberte název určité události centra pomocí Powershellu.
 
-### <a name="via-azure-cli-20"></a>Via Azure CLI 2.0
+### <a name="via-azure-cli"></a>Prostřednictvím rozhraní příkazového řádku Azure
 
-Pokud chcete povolit streamování prostřednictvím [příkazového řádku Azure CLI 2.0](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest), můžete použít [az monitor diagnostiky – nastavení vytváření](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) příkazu.
+Pokud chcete povolit streamování prostřednictvím [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest), můžete použít [az monitor diagnostiky – nastavení vytváření](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) příkazu.
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \

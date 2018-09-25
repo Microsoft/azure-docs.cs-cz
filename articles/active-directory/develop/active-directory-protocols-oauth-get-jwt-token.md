@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: routlaw
 ms.custom: aaddev
-ms.openlocfilehash: eb26101229ad60abae7a8a84f8dfa496488e84ba
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: d77af898d5baef4fa7970132b0eb8deddb8f68cb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578999"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981793"
 ---
 # <a name="request-an-access-token-using-oauth-20-to-access-web-apis-and-applications-secured-by-azure-active-directory"></a>Žádost o přístupový token pomocí OAuth 2.0 pro přístup k webovým rozhraním API a aplikace zabezpečené pomocí Azure Active Directory
 
@@ -75,12 +75,12 @@ Vyžadují se následující hlavičky:
 ```
 | Parametr     | Popis                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| access_token  | Požadovaný přístupový token. Aplikace můžete používat tento token k ověření k zabezpečeným prostředkům, jako je například webové rozhraní API.                                                                                                                                                                                                                                                                                                                                    |
+| access_token  | Požadovaná [přístupový token](access-tokens.md). Aplikace můžete používat tento token k ověření k zabezpečeným prostředkům, jako je například webové rozhraní API.                                                                                                                                                                                                                                                                                                                                    |
 | token_type    | Určuje hodnotu pro typ tokenu. Nosiče je jediným typem, který podporuje Azure AD                                                                                                                                                                                                                                                                                                                                                                           |
 | expires_in    | Jak dlouho je přístupový token platný (v sekundách).                                                                                                                                                                                                                                                                                                                                                                                                       |
 | scope         | Obory, které je platný pro access_token.                                                                                                                                                                                                                                                                                                                                                                                                         |
-| refresh_token | Aktualizace tokenu OAuth 2.0. Aplikace můžete používat tento token získat dodatečné přístupové tokeny, až vyprší platnost aktuálního tokenu přístupu. Refresh_tokens jsou dlouhodobé a slouží k přístupu k prostředkům uchovávat po dlouhou dobu. Další podrobnosti najdete [odkaz tokenu v2.0](v2-id-and-access-tokens.md). <br> **Poznámka:** pouze zadaný if `offline_access` byl vyžádán oboru.                                               |
-| id_token      | Bez znaménka JSON Web Token (JWT). Aplikace může dekódovat segmenty tento token na žádost o informace o uživateli, který přihlášení. Aplikaci můžete ukládat do mezipaměti hodnoty a jejich zobrazení, ale na ně neměli spoléhat pro povolení nebo hranice zabezpečení. Další informace o id_tokens, najdete v článku [token reference koncového bodu v2.0](v2-id-and-access-tokens.md). <br> **Poznámka:** pouze zadaný if `openid` byl vyžádán oboru. |
+| refresh_token | Aktualizace tokenu OAuth 2.0. Aplikace můžete používat tento token získat dodatečné přístupové tokeny, až vyprší platnost aktuálního tokenu přístupu. Refresh_tokens jsou dlouhodobé a slouží k přístupu k prostředkům uchovávat po dlouhou dobu. Další podrobnosti najdete [kódu v2.0 udělit odkaz](v2-oauth2-auth-code-flow.md#refresh-the-access-token). <br> **Poznámka:** pouze zadaný if `offline_access` byl vyžádán oboru.                                               |
+| id_token      | Bez znaménka JSON Web Token (JWT). Aplikace může dekódovat segmenty tento token na žádost o informace o uživateli, který přihlášení. Aplikaci můžete ukládat do mezipaměti hodnoty a jejich zobrazení, ale na ně neměli spoléhat pro povolení nebo hranice zabezpečení. Další informace o id_tokens, najdete v článku [ `id_token reference` ](id-tokens.md). <br> **Poznámka:** pouze zadaný if `openid` byl vyžádán oboru. |
 
 
 

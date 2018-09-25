@@ -5,15 +5,15 @@ services: iot-central
 author: viv-liu
 ms.author: viviali
 ms.date: 09/18/2018
-ms.topic: article
-ms.service: azure-iot-central
+ms.topic: conceptual
+ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 9d8a5dfa452c0cf8f6e8fdb372e508d1d9ba25b6
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 7a52ee11e52367755d2a241a0bea2cfc053cff3d
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465635"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039934"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Vytváření pracovních postupů s IoT Central konektorem v Microsoft Flow
 

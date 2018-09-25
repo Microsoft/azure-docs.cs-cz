@@ -9,45 +9,43 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 88bf82805ba46abf79b7899e0428a83485062302
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 3666e92372e9bed80e5c0c7991dcac730cebb588
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504963"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967587"
 ---
 # <a name="call-bing-custom-search-endpoint-python"></a>Volání koncového bodu pro vlastní vyhledávání Bingu (Python)
 
-Tento rychlý start ukazuje, jak si vyžádat výsledky hledání s použitím jazyka Python k volání koncového bodu pro vlastní vyhledávání Bingu z vaší instance vlastního hledání. 
+Tento rychlý start ukazuje, jak si vyžádat výsledky hledání z vaší instance vlastního hledání použití Pythonu k volání koncového bodu pro vlastní vyhledávání Bingu. 
 
 ## <a name="prerequisites"></a>Požadavky
+
 K dokončení tohoto rychlého startu je potřeba:
 
-- Instanci vlastního vyhledávání. Zobrazit [vytvořit první instanci vlastního vyhledávání Bingu](quick-start.md).
+- Instanci vlastního vyhledávání připravené k použití. Zobrazit [vytvořit první instanci vlastního vyhledávání Bingu](quick-start.md).
+- [Python](https://www.python.org/) nainstalované.
+- Klíč předplatného. Klíč předplatného můžete získat, když aktivujete vaše [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search), nebo můžete použít klíč placené předplatné z řídicího panelu Azure (naleznete v tématu [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).    
 
--  [Python](https://www.python.org/) nainstalované.
-
-- A [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraní API Bingu pro vyhledávání**. [Bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) stačí pro účely tohoto rychlého startu. Budete potřebovat přístupový klíč získáte při aktivaci vaší bezplatné zkušební verze, nebo můžete použít klíč placené předplatné z řídicího panelu Azure. 
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
-K volání koncového bodu vlastní vyhledávání Bingu, postupujte podle těchto kroků:
+Chcete-li spustit tento příklad, postupujte podle těchto kroků:
 
-1. Vytvořte složku pro váš kód.
-
-2. Z příkazového řádku správce nebo terminálu přejděte do složky, kterou jste právě vytvořili.
-
-3. Nainstalujte **požadavky** modul pythonu:
-
+1. Vytvořte složku pro váš kód.  
+  
+2. Z příkazového řádku správce nebo terminálu přejděte do složky, kterou jste právě vytvořili.  
+  
+3. Nainstalujte **požadavky** modul pythonu:  
+  
     <pre>
     pip install pipenv
     pipenv install requests
-    </pre>
-    
-7. Vytvořte soubor BingCustomSearch.py a zkopírujte do něj následující kód.
-
-8. Nahraďte **YOUR-SUBSCRIPTION-KEY** a **YOUR-vlastní-CONFIG-ID** identifikátorem klíče a konfigurace (viz krok 1).
-
+    </pre>  
+      
+4. Vytvořte soubor s názvem BingCustomSearch.py ve složce, kterou jste vytvořili a zkopírujte do něj následující kód. Nahraďte **YOUR-SUBSCRIPTION-KEY** a **YOUR-vlastní-CONFIG-ID** s subscriptioin klíč a konfigurací ID.  
+  
     ``` Python
     import json
     import requests
@@ -59,8 +57,10 @@ K volání koncového bodu vlastní vyhledávání Bingu, postupujte podle těch
     url = 'https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?q=' + searchTerm + '&customconfig=' + customConfigId
     r = requests.get(url, headers={'Ocp-Apim-Subscription-Key': subscriptionKey})
     print(r.text)
-    ```
-9. Spuštění kódu pomocí následujícího příkazu.
+    ```  
+  
+7. Spuštění kódu pomocí následujícího příkazu.  
+  
     ```
     python BingCustomSearch.py
     ```

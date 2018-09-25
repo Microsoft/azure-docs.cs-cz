@@ -1,4 +1,4 @@
 ## <a name="publish-or-revert"></a>Publikování nebo vrátit zpět
-Jsou provedeny změny, které provedete vlastní hledání instance v **konfigurace** kartě, abyste mohli ověřit změny. Po provedení změny a připravena k publikování hotovi, klikněte na tlačítko **publikovat**. Změny se neprojeví produkční koncové body, dokud publikování.
+Probíhají změny, které provedete na instanci vlastního vyhledávání v **konfigurace** kartu mohli ověřit změny. Jakmile budete hotovi, provedete změny a jste připraveni publikovat, klikněte na tlačítko **publikovat**. Změny se neprojeví koncové body produkčního prostředí až po publikování.
 
-Před publikováním, pokud se rozhodnete, že nechcete, aby chcete zachovat změny jste udělali, klikněte na tlačítko **vrátit**. Když vrátit změny zpět, konfigurace stavu za provozu je beze změny a na kartě Konfigurace je vrácen tak, aby odpovídaly stav za provozu.
+Před publikováním, pokud se rozhodnete, že nechcete zachovat změny provedené, klikněte na tlačítko **vrácení**. Po obnovení změny konfigurace stavu za provozu je beze změny a **konfigurace** kartu se vrátí zpět tak, aby odpovídaly živé stavu.

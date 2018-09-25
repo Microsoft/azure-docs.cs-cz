@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: b97a32e2e859a5bb370873bfbdc5c6b4dffa1ac1
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 3d7cf50bd2c845764aa2c3ac3b3db6891ff5c8d8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237838"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993846"
 ---
 # <a name="performance-monitoring-with-log-analytics"></a>Sledování výkonu pomocí Log Analytics
 
@@ -30,7 +30,7 @@ Tento článek popisuje kroky pro přidání agenta Log Analytics, jak škálova
 
 ## <a name="add-the-agent-extension-via-azure-cli"></a>Přidat rozšíření agenta pomocí příkazového řádku Azure
 
-Nejlepší způsob, jak přidat agenta Log Analytics ke svému clusteru je prostřednictvím škálování virtuálního počítače nastavte API pomocí Azure CLI. Pokud nemáte ještě nastavení rozhraní příkazového řádku Azure, jděte na webu Azure portal a otevřete [Cloud Shell](../cloud-shell/overview.md) instanci, nebo [instalace Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Nejlepší způsob, jak přidat agenta Log Analytics ke svému clusteru je prostřednictvím škálování virtuálního počítače nastavte API pomocí Azure CLI. Pokud nemáte ještě nastavení rozhraní příkazového řádku Azure, jděte na webu Azure portal a otevřete [Cloud Shell](../cloud-shell/overview.md) instanci, nebo [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 1. Jakmile vaší služby Cloud Shell je požadováno, ujistěte se, že pracujete ve stejném předplatném jako prostředek. Zkontrolujte to s `az account show` a ujistěte se, že hodnota "name" odpovídá předplatné vašeho clusteru.
 

@@ -10,12 +10,13 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 29000e67109a49991f8c5488843b2b379f689633
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ROBOTS: NOINDEX
+ms.openlocfilehash: 75166fcf42943e6c411acb2092272982e2dd1033
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367674"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963136"
 ---
 # <a name="bing-speech-client-samples"></a>Ukázky klienta pro zpracování řeči Bingu
 

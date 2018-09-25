@@ -1,6 +1,6 @@
 ---
-title: Pokročilé škálování virtuálních počítačích Azure
-description: Používá správce prostředků a škálovatelné sady virtuálních počítačů s více pravidel a profily, které odeslání e-mailu a volání adresy URL webhooku s akcí škálování.
+title: Pokročilé automatické škálování pomocí Azure Virtual Machines
+description: Použití Resource Manageru a VM Scale Sets s více pravidly a profily, které odeslání e-mailu a volání adresy URL webhooku se akce škálování.
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,60 +8,59 @@ ms.topic: conceptual
 ms.date: 02/22/2016
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: 9ff8c28a139d9a16d31a61b560ef7f5759d0a3f5
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 78e3bec0d00336ce7cedc1434bf6ad7c65435969
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267726"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978178"
 ---
-# <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Pokročilé škálování konfigurace pomocí šablony Resource Manageru pro škálovatelné sady virtuálních počítačů
-Můžete v škálování a horizontální sady škálování virtuálního počítače na základě výkonu metriky prahových hodnot, podle plánu opakování, nebo podle konkrétní data. Můžete také nakonfigurovat e-mailu a webhooku oznámení pro akce škálování. Tento návod ukazuje příklad konfigurace všechny tyto objekty ve Škálovací sadě virtuálních počítačů pomocí šablony Resource Manageru.
+# <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Rozšířená konfigurace škálování pro Škálovací sady virtuálních počítačů pomocí šablon Resource Manageru
+Můžete škálování na méně instancí a škálování Škálovací sady virtuálních počítačů na základě výkonu metriky prahových hodnot, podle opakovaného plánu nebo podle konkrétního data. Můžete také nakonfigurovat emailová a webhooková oznámení pro akce škálování. Tento návod ukazuje příklad konfigurace všechny tyto objekty pomocí šablony Resource Manageru v sadě škálování virtuálního počítače.
 
 > [!NOTE]
-> Když tento postup vysvětluje kroky pro škálovatelné sady virtuálních počítačů, stejné informace platí pro automatické škálování [cloudové služby](https://azure.microsoft.com/services/cloud-services/), a [služby App Service – webové aplikace](https://azure.microsoft.com/services/app-service/web/).
-> Jednoduché škálování vstupně -výstupnímu nastavení ve Škálovací sadě virtuálních počítačů podle metriky výkonu jednoduché například CPU, naleznete na [Linux](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) a [Windows](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md) dokumenty
+> Přestože tento návod popisuje kroky pro Škálovací sady virtuálních počítačů, stejné informace se vztahují k automatickému škálování [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service – Web Apps](https://azure.microsoft.com/services/app-service/web/), a [služby API Management](https://docs.microsoft.com/azure/api-management/api-management-key-concepts) Jednoduché škálování vstup a výstup nastavení v sadě škálování virtuálního počítače založeného na jednoduché výkonu metriky, například CPU, odkazovat [Linux](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) a [Windows](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md) dokumentů
 >
 >
 
 ## <a name="walkthrough"></a>Názorný postup
-V tomto návodu použijeme [Průzkumníka prostředků Azure](https://resources.azure.com/) ke konfiguraci a nastavení automatického škálování pro sadu škálování aktualizovat. Azure Průzkumníka prostředků je snadný způsob, jak spravovat prostředky Azure pomocí šablony Resource Manageru. Pokud jste nový nástroj Průzkumníka prostředků Azure, přečtěte si [tento ÚVOD](https://azure.microsoft.com/blog/azure-resource-explorer-a-new-tool-to-discover-the-azure-api/).
+V tomto názorném postupu používáme [Azure Resource Exploreru](https://resources.azure.com/) ke konfiguraci a aktualizovat nastavení automatického škálování pro škálovací sady. Průzkumník prostředků Azure je snadný způsob, jak spravovat prostředky Azure pomocí šablon Resource Manageru. Pokud jste ještě nástroje Azure Resource Exploreru, přečtěte si [tohoto úvodu](https://azure.microsoft.com/blog/azure-resource-explorer-a-new-tool-to-discover-the-azure-api/).
 
-1. Nasaďte nové škálování nastavit s nastavením základní škálování. Tento článek používá jeden z Galerie pro rychlý start Azure, který má Windows pomocí šablony základní škálování sady škálování. Sady škálování Linux fungovat stejným způsobem.
-2. Jakmile se vytvoří sada škálování, přejděte do prostředků sady škálování z Průzkumníka prostředků Azure. Zobrazí následující uzlu Microsoft.Insights.
+1. Nasazení nové škálovací sady s automatickým Škálováním základní nastavení. Tento článek používá jeden z Galerie Azure rychlý start, která má Windows škálovací sadu pomocí šablony základní automatického škálování. Stejným způsobem fungovat Linux škálovací sady.
+2. Po vytvoření škálovací sady přejděte k prostředku škálovací sady z Průzkumníku prostředků Azure. Zobrazí se následující pod uzlem Microsoft.Insights.
 
-    ![Průzkumník Azure](./media/insights-advanced-autoscale-vmss/azure_explorer_navigate.png)
+    ![Průzkumník služby Azure](./media/insights-advanced-autoscale-vmss/azure_explorer_navigate.png)
 
-    Provádění šablony vytvořil výchozí nastavení automatického škálování s názvem **'autoscalewad'**. Na pravé straně můžete zobrazit úplnou definici tohoto nastavení automatického škálování. V takovém případě výchozí nastavení automatického škálování se dodává s pravidlo Škálováním na více systémů a škálování v % na základě využití procesoru.  
+    Zpracování šablony byla vytvořena ve výchozím nastavení automatického škálování s názvem **"autoscalewad"**. Na pravé straně se zobrazí úplné definice tohoto nastavení automatického škálování. V tomto případě obsahuje výchozí nastavení automatického škálování pravidlo horizontální navýšení kapacity a škálování na méně instancí % na základě procesoru.  
 
-3. Nyní můžete přidat další profily a pravidla podle plánu nebo konkrétní požadavky. Nastavení automatického škálování se nám vytvořit pomocí tří profilů. Abyste pochopili, profily a pravidla v škálování, zkontrolujte [škálování osvědčené postupy](insights-autoscale-best-practices.md).  
+3. Nyní můžete přidat další profily a pravidla podle plánu nebo konkrétní požadavky. Nastavení automatického škálování se nám vytvořit pomocí tří profilů. Informace o tom profily a pravidla automatického škálování, zkontrolujte [osvědčené postupy automatického škálování](insights-autoscale-best-practices.md).  
 
     | Profily & pravidla | Popis |
     |--- | --- |
-    | **Profil** |**Na základě výkonu nebo metrika** |
-    | Pravidlo |Počet zpráv fronty Service Bus > x |
-    | Pravidlo |Počet zpráv fronty Service Bus < y |
+    | **Profil** |**Na základě výkonu a metriky** |
+    | Pravidlo |Počet zpráv fronty služby Service Bus > x |
+    | Pravidlo |Počet zpráv fronty služby Service Bus < y |
     | Pravidlo |Využití procesoru % > n |
-    | Pravidlo |% Využití procesoru < p |
+    | Pravidlo |Využití procesoru % < p |
     | **Profil** |**Den v týdnu hodin ráno (žádná pravidla)** |
-    | **Profil** |**Den spuštění produktu (žádná pravidla)** |
+    | **Profil** |**Den uvedení produktu (žádná pravidla)** |
 
-4. Zde je hypotetický škálování scénář, který používáme pro tento návod.
+4. Tady je hypotetický škálování scénář, který jsme použili pro tento návod.
 
-    * **Zatížení na základě** -nastavit jako škálování nebo v závislosti na zatížení na Moje aplikace hostované na Moje set.* škálování
-    * **Velikost fronty zpráv** -použít frontu sběrnice pro příchozí zprávy pro Moje aplikace. I pomocí fronty počtu zpráv a % využití procesoru a nakonfigurovat výchozí profil spustíte akci škálování, pokud některý z počtu zpráv nebo procesor přístupy threshold.*
-    * **Čas týden a den** – chci, aby týdenní opakovaného 'čas dne, na základě profilu volat 'Hodiny ráno den v týdnu'. Na základě historických dat, lze zjistit, že je lepší určitého počtu instancí virtuálních počítačů pro zpracování během této time.* zatížení Moje aplikace
-    * **Speciální datum** – po přidání profil produktu spusťte den. I připravte se na konkrétní kalendářní data tak, aby Moje aplikace připravené pro zpracování zátěže z důvodu marketing oznámení a application.* jsme chápat nového produktu
-    * *Poslední dva profily může mít jiné metriky na základě pravidel výkonu v nich. V takovém případě rozhodla, že nemají jeden a místo toho spoléhají na výchozí metriku výkonu na základě pravidla. Pravidla jsou volitelné pro profily opakování a na základě data.*
+    * **Zatížení na základě** – chci horizontální navýšení kapacity nebo v podle zatížení ve své aplikaci hostované na můj set.* škálování
+    * **Velikost fronty zprávy** – použití fronty Service Bus pro příchozí zprávy pro mojí aplikaci. Můžu používat počet zpráv do fronty a % procesoru a nakonfigurovat výchozí profil aktivovat akci škálování, pokud buď počet zpráv nebo procesoru narazí threshold.*
+    * **Čas týden a den** – chci, aby týdenní opakované "čas" na základě profilu nazývá 'Hodiny ráno den v týdnu'. Na základě historických dat o vím, že je lepší mít určitý počet instancí virtuálních počítačů pro zpracování zátěže vaší aplikace během této time.*
+    * **Speciální datum** – po přidání profilu produktu spuštění den. Můžu Plánujte dopředu a připravte konkrétní data, aplikace je připravená pro zpracování zátěže z důvodu marketingové oznámení a máme nového produktu v aplikaci.*
+    * *Poslední dva profily může mít také další metriky na základě pravidel výkonu v nich. V tomto případě jsem se rozhodla nechcete mít jeden a místo toho přináší setrvávání u výchozí metriku výkonu na základě pravidel. Pravidla jsou volitelné pro profily opakované a na základě data.*
 
-    Stanovení priorit škálování modul profily a pravidel, je také zachycené v [osvědčené postupy automatické škálování](insights-autoscale-best-practices.md) článku.
-    Seznam běžných metriky pro škálování, najdete v části [běžné metriky pro škálování](insights-autoscale-common-metrics.md)
+    Stanovení priorit modul automatického škálování profilů a pravidla i zaznamenány [osvědčené postupy automatického škálování](insights-autoscale-best-practices.md) článku.
+    Seznam běžné metriky pro automatické škálování, najdete v části [běžné metriky pro automatické škálování](insights-autoscale-common-metrics.md)
 
-5. Ujistěte se, že jste na **pro čtení a zápis** režimu v Průzkumníku prostředků
+5. Ujistěte se, že jste na **r/w** režimu v Průzkumníku prostředků
 
-    ![Autoscalewad škálování výchozí nastavení](./media/insights-advanced-autoscale-vmss/autoscalewad.png)
+    ![Autoscalewad, výchozí nastavení automatického škálování](./media/insights-advanced-autoscale-vmss/autoscalewad.png)
 
-6. Klikněte na tlačítko Upravit. **Nahraďte** 'profily' element v nastavení automatického škálování s následující konfigurací:
+6. Klikněte na Upravit. **Nahraďte** 'profily' element v zadaném nastavení automatického škálování s následující konfigurací:
 
     ![Profily](./media/insights-advanced-autoscale-vmss/profiles.png)
 
@@ -195,14 +194,14 @@ V tomto návodu použijeme [Průzkumníka prostředků Azure](https://resources.
             }
           }
     ```
-    Podporované pole a jejich hodnoty, najdete v tématu [dokumentace k REST API škálování](https://msdn.microsoft.com/library/azure/dn931928.aspx). Vaše nastavení automatického škálování nyní obsahuje tři profily vysvětlené dřív.
+    Podporované pole a jejich hodnoty, najdete v části [dokumentace k rozhraní REST API pro automatické škálování](https://msdn.microsoft.com/library/azure/dn931928.aspx). Nastavení automatického škálování teď obsahuje tři profily, které bylo popsáno dříve.
 
-7. Nakonec, podívejte se na škálování **oznámení** části. Oznámení o automatickém škálování umožňují provádějí tři věci, pokud škálování nebo v akci je úspěšně spuštěné.
-   - Oznámit správce a spolusprávci předplatného
-   - E-mailu sadu uživatelů
-   - Aktivovat webhooku volání. Při vyvolání, odešle tento webhook metadata o automatické škálování podmínku a měřítka nastavení prostředku. Další informace o datové části webhooku škálování najdete v tématu [konfigurace Webhooku & e-mailová oznámení pro škálování](insights-autoscale-to-webhook-email.md).
+7. Nakonec se podíváme na automatického škálování **oznámení** oddílu. Oznámení o automatickém škálování umožňují provést tři věci, když horizontální navýšení kapacity nebo v akci se úspěšně aktivuje.
+   - Upozornit správce a spolusprávci předplatného
+   - E-mailem sady uživatelů
+   - Aktivujte volání webhooku. Při vyvolání, odešle tento webhook metadata o podmínce automatické škálování a škálovací sady prostředků. Další informace o datová část webhooku automatického škálování najdete v tématu [konfigurace Webhooků a e-mailová oznámení pro automatické škálování](insights-autoscale-to-webhook-email.md).
 
-   Přidejte následující nahrazení nastavení automatického škálování vašeho **oznámení** element, jehož hodnota je null.
+   Přidejte následující k nahrazení nastavení automatického škálování vašeho **oznámení** element, jehož hodnota je null
 
    ```
    "notifications": [
@@ -230,21 +229,21 @@ V tomto návodu použijeme [Průzkumníka prostředků Azure](https://resources.
 
    ```
 
-   Stiskněte tlačítko **Put** tlačítko v Průzkumníku prostředků se aktualizovat nastavení automatického škálování.
+   Spuštění **umístit** tlačítko v Průzkumníku prostředků se aktualizovat nastavení automatického škálování.
 
-Jste aktualizovali nastavení automatického škálování na škálování virtuálního počítače nastavit zahrnují několik profilů škálování a škálovat oznámení.
+Nastavení automatického škálování na Škálovací sady obsahovat několik profilů škálování a škálovat oznámení virtuálních počítačů aktualizována.
 
 ## <a name="next-steps"></a>Další kroky
-Pomocí těchto odkazů můžete získat další informace o automatické škálování.
+Další informace o automatické škálování pomocí těchto odkazů.
 
-[Řešení potíží s škálování s sady škálování virtuálního počítače](../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)
+[Řešení potíží s automatickým Škálováním se Škálovacími sadami virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)
 
-[Běžné metriky pro škálování](insights-autoscale-common-metrics.md)
+[Běžné metriky pro automatické škálování](insights-autoscale-common-metrics.md)
 
-[Osvědčené postupy pro Azure škálování](insights-autoscale-best-practices.md)
+[Osvědčené postupy pro automatické škálování v Azure](insights-autoscale-best-practices.md)
 
-[Spravovat škálování pomocí prostředí PowerShell](insights-powershell-samples.md#create-and-manage-autoscale-settings)
+[Správa automatické škálování s použitím prostředí PowerShell](insights-powershell-samples.md#create-and-manage-autoscale-settings)
 
-[Spravovat škálování pomocí rozhraní příkazového řádku](insights-cli-samples.md#autoscale)
+[Správa automatické škálování s použitím rozhraní příkazového řádku](insights-cli-samples.md#autoscale)
 
-[Nakonfigurovat Webhooku & e-mailová oznámení pro škálování](insights-autoscale-to-webhook-email.md)
+[Konfigurace Webhooků a e-mailová oznámení pro automatické škálování](insights-autoscale-to-webhook-email.md)

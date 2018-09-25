@@ -11,14 +11,17 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/12/2018
-ms.openlocfilehash: 654b2559518cd52978153310fbb1e89a91838a8a
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 6167e10219791466ca275ff02cc051e3227634e8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35643419"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46980031"
 ---
 # <a name="how-to-use-microsoft-machine-learning-library-for-apache-spark"></a>Jak používat knihovna Microsoft Machine Learning pro Apache Spark
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
 
 ## <a name="introduction"></a>Úvod
 
@@ -30,7 +33,7 @@ ms.locfileid: "35643419"
 ## <a name="prerequisites"></a>Požadavky
 
 Pro jednotlivé kroky v této příručce s postupy, musíte:
-- [Instalace aplikace Azure Machine Learning Workbench](../service/quickstart-installation.md)
+- [Instalace aplikace Azure Machine Learning Workbench](quickstart-installation.md)
 - [Nastavení clusteru Azure HDInsight Spark](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-jupyter-spark-sql)
 
 ## <a name="run-your-experiment-in-docker-container"></a>Spusťte Experiment v kontejneru Dockeru

@@ -5,23 +5,29 @@ services: functions
 author: ggailey777
 ms.service: functions
 ms.topic: include
-ms.date: 04/06/2018
+ms.date: 09/21/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: d166a77a0636efea3b63660fde2187e3f2ec15c0
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f1b53c53b1e5fb089eb9b8a9b816b11a1eea126d
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38944424"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47044505"
 ---
-Při vývoji funkcí místně, můžete nainstalovat rozšíření, která je třeba pomocí nástrojů Azure Functions Core z terminálu nebo z příkazového řádku. 
+Při vývoji funkcí místně, můžete nainstalovat rozšíření, která je třeba pomocí nástrojů Azure Functions Core z terminálu nebo z příkazového řádku.
 
-Po aktualizaci vašich *function.json* soubor zahrnout všechny vazby, které potřebuje, vaše funkce běží `func extensions install` příkazu ve složce projektu. Tento příkaz načte *function.json* soubor. zobrazí balíčky, které potřebujete a nainstaluje je.
+Po aktualizaci vašich *function.json* soubor zahrnout všechny vazby, které vaše funkce vyžaduje, spusťte následující příkaz ve složce projektu.
+
+```bash
+func extensions install
+```
+
+Tento příkaz načte *function.json* souboru a zjistěte jaké balíčky, které potřebujete, nainstaluje je a znovu sestaví projekt rozšíření. Přidá všechny nové vazby na aktuální verzi, ale neaktualizuje existující vazby. Použití `--force` možnost aktualizovat existující vazby na nejnovější verzi při instalaci nové značky.
 
 Pokud chcete nainstalovat konkrétní verzi balíčku, nebo chcete provést instalaci balíčků před úpravou *function.json* souboru, použijte `func extensions install` příkaz s názvem balíčku, jak je znázorněno v následujícím příkladu:
 
-```
+```bash
 func extensions install --package Microsoft.Azure.WebJobs.ServiceBus --version <target_version>
 ```
 

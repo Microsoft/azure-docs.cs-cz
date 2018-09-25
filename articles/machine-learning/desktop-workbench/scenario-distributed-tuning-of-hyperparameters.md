@@ -11,14 +11,19 @@ ms.author: dmpechyo
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.date: 09/20/2017
-ms.openlocfilehash: 920b019640df9d2da174101e2b1b90dfd4da6f56
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ROBOTS: NOINDEX
+ms.openlocfilehash: f74889cdf727bc132723d16df295849769001ce9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578731"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46951963"
 ---
 # <a name="distributed-tuning-of-hyperparameters-using-azure-machine-learning-workbench"></a>Distribuované ladění hyperparametrů pomocí Azure Machine Learning Workbench
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Tento scénář popisuje, jak používat Azure Machine Learning Workbench pro horizontální navýšení kapacity ladění hyperparametrů algoritmů strojového učení, které implementují scikit-další rozhraní API. Vám ukážeme, jak nakonfigurovat a použít vzdáleném kontejneru Dockeru a Spark cluster jako back-endu spuštění pro ladění hyperparameters.
 
@@ -38,7 +43,7 @@ Mřížka hledání s využitím křížového ověření může být časově n
 ## <a name="prerequisites"></a>Požadavky
 
 * [Účtu Azure](https://azure.microsoft.com/free/) (bezplatné zkušební verze jsou k dispozici).
-* Nainstalovaná kopie produktu [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) následující [instalace a vytvoření rychlý Start](../service/quickstart-installation.md) aplikaci Workbench můžete nainstalovat a vytvořte účty.
+* Nainstalovaná kopie produktu [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) následující [instalace a vytvoření rychlý Start](quickstart-installation.md) aplikaci Workbench můžete nainstalovat a vytvořte účty.
 * Tento scénář předpokládá, že spustíte aplikaci Azure ML Workbench ve Windows 10 nebo MacOS s místně nainstalovaný modul Docker. 
 * Chcete-li spustit scénář s vzdáleném kontejneru Dockeru, zřiďte Ubuntu dat virtuálního počítače VĚDY podle [pokyny](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-provision-vm). Doporučujeme použít virtuální počítač s alespoň s 8 jádry a 28 Gb paměti. D4 instance virtuálních počítačů mají takové kapacity. 
 * Pokud chcete spustit tento scénář s clusterem Spark, zřízení clusteru HDInsight Spark pomocí těchto [pokyny](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters). Doporučujeme vám, máte v záhlaví a pracovní uzly clusteru s použitím následující konfigurace:

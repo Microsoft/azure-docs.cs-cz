@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 51cc4c37ba661feb63880c138e98200c981f6054
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 5288dc508c35c72f3c1996ce665ccf83a84a4ea3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918477"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948953"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Monitorování aktivit předplatného s protokolem aktivit Azure
 
@@ -43,11 +43,12 @@ Zobrazte následující video Úvod do protokolu aktivit.
 Protokol aktivit obsahuje několik kategorií data. Úplné podrobnosti o schémat z těchto kategorií [najdete v článku](monitoring-activity-log-schema.md). Mezi ně patří:
 * **Pro správu** – Tato kategorie obsahuje záznam všech vytvoření, aktualizace, odstranění a akce operace provést prostřednictvím Resource Manageru. Typy událostí, zobrazí se v této kategorii příklady "vytvořit virtuální počítač" a "odstranit skupinu zabezpečení sítě" každé akce, které uživatele nebo aplikace pomocí Resource Manageru je modelovaná jako operace na konkrétní typ prostředku. Pokud je typ operace zápisu, Delete nebo akce, záznamy o zahájení a úspěchu nebo selhání této operace se zaznamenávají do administrativní kategorie. Administrativní kategorie také zahrnuje všechny změny na řízení přístupu na základě rolí v rámci předplatného.
 * **Stav služby** – Tato kategorie obsahuje záznam všechny incidenty health service, ke kterým došlo v Azure. Je například typ události, kterou byste viděli v této kategorii "SQL Azure v oblasti východní USA má výpadek." Události služby Service health se dělí na pět typy: požaduje se akce, obnovení s asistencí, Incident, údržby, informace nebo zabezpečení a zobrazí pouze v případě, že máte prostředek v rámci předplatného, který bude mít vliv na událost.
+* **Služba Resource Health** – Tato kategorie obsahuje záznam všechny události stavu prostředků, ke kterým došlo u vašich prostředků Azure. Je například typ události, kterou byste viděli v této kategorii "Virtuální počítač stav změní na není k dispozici." Události stavu prostředků může představovat jeden z čtyř stavů stav: k dispozici, není k dispozici, snížený nebo neznámý. Kromě toho události stavu prostředků můžete zařadit iniciovanou platformy nebo uživatele.
 * **Upozornění** – Tato kategorie obsahuje záznam všech aktivací upozornění v Azure. Je například typ události, kterou byste viděli v této kategorii "% využití procesoru na myVM je už více než 80 posledních 5 minut." Výstrahy koncept mají různé systémy pro Azure – můžete definovat pravidla s nějakým a když podmínky odpovídají tímto pravidlem, dostanete oznámení. Pokaždé, když typ podporovaných Azure výstrahy "aktivuje," nebo ke generování oznámení o splnění podmínek, záznamy o aktivaci se nasdílejí také do této kategorie protokolu aktivit.
-* **Automatické škálování** – Tato kategorie obsahuje záznam žádné události vztahující se k operaci modul automatického škálování na základě jakékoli nastavení automatického škálování jste definovali v rámci vašeho předplatného. properties.eventProperties properties.eventCategory Pokud jsou splněny podmínky škálování směrem nahoru nebo dolů, spuštění a úspěšné nebo neúspěšné událostí se zaznamenávají v této kategorii.
+* **Automatické škálování** – Tato kategorie obsahuje záznam žádné události vztahující se k operaci modul automatického škálování na základě jakékoli nastavení automatického škálování jste definovali v rámci vašeho předplatného. Je například typ události, kterou byste viděli v této kategorii "Automatického vertikálního navýšení kapacity akce se nezdařila." Použití automatického škálování, můžete automaticky škálovat na více systémů nebo škálování počtu instancí v podporovaných prostředků typu na základě času dne a/nebo zatížení (metriky) dat s využitím nastavení automatického škálování. Pokud jsou splněny podmínky škálování směrem nahoru nebo dolů, spuštění a úspěšné nebo neúspěšné událostí se zaznamenávají v této kategorii.
 * **Doporučení** – Tato kategorie obsahuje události doporučení Azure advisoru.
 * **Zabezpečení** – Tato kategorie obsahuje záznam všech výstrah generovaných v Azure Security Center. Je například typ události, kterou byste viděli v této kategorii "podezřelou dvojitou příponou souboru provést."
-* **Zásady a stav prostředku** – tyto kategorie neobsahují žádné události, jsou vyhrazené pro budoucí použití.
+* **Zásady** – Tato kategorie neobsahuje žádné události; je vyhrazená pro budoucí použití. 
 
 ## <a name="event-schema-per-category"></a>Schéma událostí podle jednotlivých kategorií
 [Najdete v článku o schéma událostí protokolu aktivit podle jednotlivých kategorií.](monitoring-activity-log-schema.md)
@@ -106,7 +107,7 @@ Můžete použít úložiště účtu nebo událostí centra oboru názvů, kter
 >  Momentálně nelze archivovat data do úložiště účtu, který za zabezpečené virtuální síti.
 
 > [!WARNING]
-> Formát dat protokolů v účtu úložiště se změní na řádky JSON na 1. listopadu 2018. [Najdete v článku popis dopad a postup aktualizace nástrojů pro zpracování na nový formát.](./monitor-diagnostic-logs-append-blobs.md) 
+> 1. listopadu 2018 se formát dat protokolů v účtu úložiště změní na řádky JSON. [Informace o dopadu a postup pro aktualizaci nástrojů, aby si s novým formátem poradily, najdete v tomto článku](./monitor-diagnostic-logs-append-blobs.md). 
 >
 > 
 
@@ -158,7 +159,7 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 Remove-AzureRmLogProfile -name my_log_profile
 ```
 
-### <a name="configure-log-profiles-using-the-azure-cli-20"></a>Konfigurovat profily protokolů pomocí Azure CLI 2.0
+### <a name="configure-log-profiles-using-the-azure-cli"></a>Konfigurovat profily protokolů pomocí Azure CLI
 
 #### <a name="get-existing-log-profile"></a>Získat stávající profilu protokolu
 

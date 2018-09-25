@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: jasonh
-ms.openlocfilehash: 1569b5931a24048fa7a88c4a546bbf88547208d1
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: b9ac9c49e633906e47244eedcb18a4cda4a6228d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109612"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978945"
 ---
 # <a name="install-and-use-presto-on-hdinsight-hadoop-clusters"></a>Nainstalovat a používat Presto na clusterech HDInsight Hadoop
 
@@ -61,7 +61,7 @@ Tato část obsahuje informace o tom, jak pomocí vzorového skriptu při vytvá
 4. Pokračovat zřizování clusteru, jak je popsáno v [clustery HDInsight se systémem Linux](hdinsight-hadoop-create-linux-clusters-portal.md).
 
     > [!NOTE]
-    > Prostředí Azure PowerShell, rozhraní příkazového řádku Azure, sady HDInsight .NET SDK nebo šablony Azure Resource Manageru je také možné použití akce skriptu. Akce se skripty můžete také použít k už běží clustery. Další informace najdete v tématu [HDInsight přizpůsobit clustery pomocí skriptových akcí](hdinsight-hadoop-customize-cluster-linux.md).
+    > Prostředí Azure PowerShell, rozhraní příkazového řádku Azure Classic, sady HDInsight .NET SDK nebo šablony Azure Resource Manageru je také možné použití akce skriptu. Akce se skripty můžete také použít k už běží clustery. Další informace najdete v tématu [HDInsight přizpůsobit clustery pomocí skriptových akcí](hdinsight-hadoop-customize-cluster-linux.md).
     > 
     > 
 

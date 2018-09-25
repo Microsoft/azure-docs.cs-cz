@@ -7,14 +7,14 @@ author: v-jerkin
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/08/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 2bcba37d5bf0e508c1f9aa1ad30ab1c039cff83f
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 776b8496ea3f46287e2eeec7c150b8d60ca3e553
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46497752"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964100"
 ---
 # <a name="use-text-to-speech-in-speech-service"></a>Použití "Převod textu na řeč" v Speech service
 
@@ -47,12 +47,12 @@ Zobrazit [převod textu na řeč hlasy](supported-languages.md#text-to-speech) s
 Záhlaví|Hodnoty|Komentáře
 -|-|-
 |`Content-Type` | `application/ssml+xml` | Formát vstupního textu.
-|`X-Microsoft-OutputFormat`|     `raw-16khz-16bit-mono-pcm`<br>`audio-16khz-16kbps-mono-siren`<br>`riff-16khz-16kbps-mono-siren`<br>`riff-16khz-16bit-mono-pcm`<br>`audio-16khz-128kbitrate-mono-mp3`<br>`audio-16khz-64kbitrate-mono-mp3`<br>`audio-16khz-32kbitrate-mono-mp3`<br>`raw-24khz-16bit-mono-pcm`<br>`riff-24khz-16bit-mono-pcm`<br>`audio-24khz-160kbitrate-mono-mp3`<br>`audio-24khz-96kbitrate-mono-mp3`<br>`audio-24khz-48kbitrate-mono-mp3` | Zvukový formát výstupu.
+|`X-Microsoft-OutputFormat`|     `raw-16khz-16bit-mono-pcm`<br>`riff-16khz-16bit-mono-pcm`<br>`raw-8khz-8bit-mono-mulaw`<br>`riff-8khz-8bit-mono-mulaw`<br>`audio-16khz-128kbitrate-mono-mp3`<br>`audio-16khz-64kbitrate-mono-mp3`<br>`audio-16khz-32kbitrate-mono-mp3`<br>`raw-24khz-16bit-mono-pcm`<br>`riff-24khz-16bit-mono-pcm`<br>`audio-24khz-160kbitrate-mono-mp3`<br>`audio-24khz-96kbitrate-mono-mp3`<br>`audio-24khz-48kbitrate-mono-mp3` | Zvukový formát výstupu.
 |`User-Agent`   |Název aplikace | Název aplikace je povinné a musí být kratší než 255 znaků.
 | `Authorization`   | Autorizační token získaný tím, že předloží váš klíč předplatného pro službu tokenů. Každý token je platný 10 minut. Zobrazit [rozhraní REST API: ověřování](rest-apis.md#authentication).
 
 > [!NOTE]
-> Pokud vybraný hlasový a výstupní formát různé přenosové rychlosti, zvuku poklesu podle potřeby. hlasy 24khz nepodporují `audio-16khz-16kbps-mono-siren` a `riff-16khz-16kbps-mono-siren` formáty výstupu. 
+> Pokud vybraný hlasový a výstupní formát různé přenosové rychlosti, zvuku poklesu podle potřeby.
 
 Ukázka požadavku je uveden níže.
 
@@ -87,7 +87,8 @@ Pokud dojde k chybě, se používají stavové kódy níže. Text odpovědi chyb
 |-|-|-|
 400 |Chybný požadavek |Povinný parametr nebyl nalezen, prázdný nebo null. Nebo hodnota předaná buď povinný nebo volitelný parametr není platný. Běžné potíže se hlavičku, která je příliš dlouhý.
 401|Neautorizováno |Požadavek není autorizovaný. Ověřte váš klíč předplatného nebo je token platný.
-413|Příliš velká entita požadavku|Vstup SSML je delší než 1024 znaků.
+413|Příliš velká entita požadavku|Vstupní SSML je příliš dlouhý nebo obsahuje více než 3 `<voice>` elementy.
+429|Příliš mnoho žádostí|Překročili jste kvótu nebo počet požadavků pro vaše předplatné povolená.
 |502|Chybná brána    | Problém sítě nebo na straně serveru. Může také znamenat neplatné záhlaví.
 
 Další informace o textu k rozhraní REST API pro rozpoznávání řeči, naleznete v tématu [rozhraní REST API](rest-apis.md#text-to-speech).

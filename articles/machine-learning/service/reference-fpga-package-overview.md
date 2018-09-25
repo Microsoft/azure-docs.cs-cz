@@ -1,21 +1,26 @@
 ---
 title: Balíček FPGA pro hardwarovou akceleraci pro Azure Machine Learning
 description: Další informace o balíčcích pythonu, který je k dispozici pro uživatele Azure Machine Learning.
+services: machine-learning
 ms.service: machine-learning
 ms.component: core
-ms.topic: conceptual
+ms.topic: reference
 ms.reviewer: jmartens
 ms.author: tedway
 author: tedway
 ms.date: 05/07/2018
-ms.openlocfilehash: a81f5f811058f3c7940da79419b9801225716e6b
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4f23e8987a3abd9cdace85b0a3dc52ca464245df
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42055282"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995427"
 ---
 # <a name="azure-machine-learning-hardware-acceleration-package"></a>Azure Machine Learning hardwarovou akceleraci balíčku
+
+>[!Note]
+>**Tento článek je zastaralý.** Tento balíček FPGA byla zrušena. Přidala se podpora pro tuto funkci na sadu SDK Azure ML. Podpora pro tento balíček končí postupně. [Zobrazení časové osy podpory](overview-what-happened-to-workbench.md#timeline). Další informace o aktualizaci [podporu FPGA](concept-accelerate-with-fpgas.md).
 
 Balíček Azure Machine Learning hardwarovou akceleraci je Python pip instalovat rozšíření pro službu Azure Machine Learning, která umožňuje odborníkům přes data a vývojářům AI rychle:
 
@@ -29,7 +34,7 @@ Balíček Azure Machine Learning hardwarovou akceleraci je Python pip instalovat
 
 1. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-1. Musíte vytvořit účet správy modelů Azure Machine Learning. Další informace o vytvoření účtu najdete v tématu [Quickstart pro Azure Machine Learning a Workbench instalace](../service/quickstart-installation.md) dokumentu. 
+1. Musíte vytvořit účet správy modelů Azure Machine Learning. Další informace o vytvoření účtu najdete v tématu [Quickstart pro Azure Machine Learning a Workbench instalace](../desktop-workbench/quickstart-installation.md) dokumentu. 
 
 1. Balíček se musí nainstalovat. 
 

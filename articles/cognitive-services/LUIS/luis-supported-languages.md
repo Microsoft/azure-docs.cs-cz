@@ -3,18 +3,18 @@ title: Podpora lokalizace – Language Understanding (LUIS) – Azure Cognitive 
 description: Služba LUIS má celou řadu funkcí v rámci služby. Ne všechny funkce jsou na stejné paritu jazyka. Ujistěte se, že funkce, které vás zajímají jsou podporované v jazykové verzi jazyka, který cílíte. Aplikace LUIS je specifické pro jazykovou verzi a nedá se změnit, jakmile je nastavena.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: diberry
-ms.openlocfilehash: 4fa58843f7e888a8fc1cfbbf76a8131bba6c488a
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 9e9c8c9052567ec77c6c7bca8c72d6dfa073cb78
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41988766"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031338"
 ---
 # <a name="culture-specific-understanding-in-luis-apps"></a>Pochopení specifické pro jazykovou verzi aplikace LUIS
 

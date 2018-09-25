@@ -15,18 +15,18 @@ ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: e39a492b466581cd52df3084faebfc3976307c61
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 716f96b7723a947c35eb54acd67f13261363fd38
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603341"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972874"
 ---
 # <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Provedení prohledávání protokolů napříč prostředky ve službě Log Analytics  
 
 Dříve pomocí Azure Log Analytics, jste mohli analyzovat data pouze z v rámci aktuálního pracovního prostoru a omezený možnost dotazování napříč několika pracovními prostory definovanými v rámci vašeho předplatného.  Kromě toho může hledat pouze položky telemetrická data shromážděná z vaší webové aplikace pomocí Application Insights přímo ve službě Application Insights nebo ze sady Visual Studio.  Kvůli tomu také bylo obtížné analyzovat nativně provozní a data aplikací společně.   
 
-Nyní se můžete dotazovat nejen napříč několika pracovních prostorů Log Analytics, ale také data z konkrétní aplikace Application Insights ve stejné skupině prostředků, jiné skupiny prostředků nebo jiného předplatného. To vám poskytne systémová přehled o datech.  Tyto typy dotazů v lze provést pouze [stránce Log Analytics](log-analytics-log-search-portals.md#log-analytics-page), ne na webu Azure portal. Počet prostředků (pracovních prostorů Log Analytics a Application Insights aplikaci), které mohou obsahovat v jediném dotazu je omezený na 100. 
+Nyní se můžete dotazovat nejen napříč několika pracovních prostorů Log Analytics, ale také data z konkrétní aplikace Application Insights ve stejné skupině prostředků, jiné skupiny prostředků nebo jiného předplatného. To vám poskytne systémová přehled o datech.  Lze provést pouze tyto typy dotazů v [Log Analytics](log-analytics-log-search-portals.md#log-analytics-page). Počet prostředků (pracovních prostorů Log Analytics a Application Insights aplikaci), které mohou obsahovat v jediném dotazu je omezený na 100. 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>Dotazování napříč pracovních prostorů Log Analytics a ze služby Application Insights
 Chcete-li odkazovat na jiný pracovní prostor v dotazu, použijte [ *pracovní prostor* ](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/workspace()) identifikátor a pro aplikace ze služby Application Insights, použijte [ *aplikace* ](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/app())identifikátor.  

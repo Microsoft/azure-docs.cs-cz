@@ -17,12 +17,12 @@ ms.topic: conceptual
 ms.date: 08/30/2018
 ms.author: aliceku
 monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: b4ed1c8b5079ad0984879db6f84138bfdb579d49
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: d87747e60c375f844681ed6cfd40dba84f46a9b2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542595"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963607"
 ---
 # <a name="transparent-data-encryption-with-bring-your-own-key-support-for-azure-sql-database-and-data-warehouse"></a>Transparentní šifrování dat s podporou vlastního klíče pro Azure SQL Database a Data Warehouse
 
@@ -57,17 +57,17 @@ Transparentní šifrování dat, je nejprve konfigurován pro použití ochrana 
 
 ### <a name="general-guidelines"></a>Obecné pokyny
 - Ujistěte se služby Azure Key Vault a Azure SQL Database budou ve stejném tenantovi.  Klíče trezoru a server interakce mezi tenanty **nepodporují**.
-- Rozhodněte, které odběry se bude používat pro požadované prostředky – přesun serveru mezi předplatnými později vyžaduje nové nastavení transparentní šifrování dat s BYOKs. Další informace o [přesouvání prostředků](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-move-resources)
-- Při konfiguraci transparentní šifrování dat s BYOK, je důležité vzít v úvahu zatížení, které vyvíjejí pro trezor klíčů pomocí opakovaných zabalit nebo rozbalit operací. Například protože všechny databáze, které jsou přidružené k logickému serveru použít stejný ochrana TDE, převzetí služeb při selhání ze serveru se spustit, protože mnoho klíčové operace proti trezor existuje jako jsou databáze na serveru. Podle našich zkušeností a uvádí [klíče omezení služby úložiště](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-service-limits), doporučujeme přidružení maximálně 500 Standard / obecné účely nebo 200 úrovně Premium / databáze pro důležité obchodní informace s jeden Azure Key Vault v rámci jednoho předplatného k zajištění konzistentně vysokou dostupnost, když přistupoval k ochrana TDE v trezoru. 
-- Doporučeno: Ponechte si kopii ochrana TDE v místním prostředí.  To vyžaduje k modulu hardwarového zabezpečení zařízení a vytvořit ochrana TDE místně a klíčů v úschově systému umožňuje ukládat místní kopii ochrana TDE.  Přečtěte si [jak pro přenos klíče z místního modulu HSM do služby Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-hsm-protected-keys).
+- Rozhodněte, které odběry se bude používat pro požadované prostředky – přesun serveru mezi předplatnými později vyžaduje nové nastavení transparentní šifrování dat s BYOKs. Další informace o [přesouvání prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
+- Při konfiguraci transparentní šifrování dat s BYOK, je důležité vzít v úvahu zatížení, které vyvíjejí pro trezor klíčů pomocí opakovaných zabalit nebo rozbalit operací. Například protože všechny databáze, které jsou přidružené k logickému serveru použít stejný ochrana TDE, převzetí služeb při selhání ze serveru se spustit, protože mnoho klíčové operace proti trezor existuje jako jsou databáze na serveru. Podle našich zkušeností a uvádí [klíče omezení služby úložiště](https://docs.microsoft.com/azure/key-vault/key-vault-service-limits), doporučujeme přidružení maximálně 500 Standard / obecné účely nebo 200 úrovně Premium / databáze pro důležité obchodní informace s jeden Azure Key Vault v rámci jednoho předplatného k zajištění konzistentně vysokou dostupnost, když přistupoval k ochrana TDE v trezoru. 
+- Doporučeno: Ponechte si kopii ochrana TDE v místním prostředí.  To vyžaduje k modulu hardwarového zabezpečení zařízení a vytvořit ochrana TDE místně a klíčů v úschově systému umožňuje ukládat místní kopii ochrana TDE.  Přečtěte si [jak pro přenos klíče z místního modulu HSM do služby Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys).
 
 
 ### <a name="guidelines-for-configuring-azure-key-vault"></a>Pokyny ke konfiguraci služby Azure Key Vault
 
-- Vytvoření služby key vault pomocí [obnovitelného odstranění](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) chránit před ztrátou v případě náhodného klíče – nebo služby key vault – odstranění dat povolené.  Je nutné použít [Powershellu povolit vlastnost "obnovitelného odstranění"](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-soft-delete-powershell) pro trezor klíčů (Tato možnost není dostupná z portálu, službou AZURE ještě – ale vyžadují SQL):  
+- Vytvoření služby key vault pomocí [obnovitelného odstranění](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) chránit před ztrátou v případě náhodného klíče – nebo služby key vault – odstranění dat povolené.  Je nutné použít [Powershellu povolit vlastnost "obnovitelného odstranění"](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell) pro trezor klíčů (Tato možnost není dostupná z portálu, službou AZURE ještě – ale vyžadují SQL):  
   - Obnovitelně odstraněný prostředky se uchovávají nastavte časový úsek, 90 dnů Pokud jsou obnovit nebo odstraněna.
   - **Obnovit** a **vyprázdnit** akce mají své vlastní oprávnění přidružené zásady přístupu trezoru klíčů. 
-- Nastavte zámek prostředku pro trezor klíčů pro ovládací prvek, který může odstranit tento prostředek kritické a pomoci zabránit neoprávněné nebo nechtěné odstranění.  [Další informace o zámky prostředků](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-lock-resources)
+- Nastavte zámek prostředku pro trezor klíčů pro ovládací prvek, který může odstranit tento prostředek kritické a pomoci zabránit neoprávněné nebo nechtěné odstranění.  [Další informace o zámky prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)
 
 - Udělte přístup k trezoru klíčů pomocí Azure Active Directory (Azure AD) Identity logického serveru.  Při použití uživatelského rozhraní portálu, se automaticky vytvoří identity Azure AD a serveru jsou udělena oprávnění k přístupu trezoru klíčů.  Pomocí Powershellu nakonfigurovat transparentní šifrování dat s BYOK, je nutné vytvořit identitu služby Azure AD a dokončení by se měly ověřit. Zobrazit [nakonfigurovat transparentní šifrování dat s BYOK](transparent-data-encryption-byok-azure-sql-configure.md) podrobné pokyny krok za krokem při používání prostředí PowerShell.
 
@@ -93,11 +93,11 @@ Transparentní šifrování dat, je nejprve konfigurován pro použití ochrana 
     
 - Použijte klíč bez nutnosti datum vypršení platnosti – a nikdy nastavte datum vypršení platnosti klíče již používán: **po vypršení platnosti tohoto klíče, šifrovaným databázím ztratíte přístup k jejich ochrana TDE a zařazují do 24 hodin**.
 - Zkontrolujte klíč zapnutá a nemá oprávnění k provedení *získat*, *zabalit klíč*, a *rozbalit klíč* operace.
-- Před použitím klíč ve službě Azure Key Vault prvním vytvoření zálohy klíče Azure Key Vault. Další informace o [Backup-AzureKeyVaultKey](https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1) příkazu.
+- Před použitím klíč ve službě Azure Key Vault prvním vytvoření zálohy klíče Azure Key Vault. Další informace o [Backup-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1) příkazu.
 - Vytvořit novou zálohu pokaždé, když se všechny změny provedené klíč (třeba přidání seznamy ACL, přidání značek, přidání klíčových atributů).
 - **Zachovat předchozí verze** klíče v trezoru klíčů při obměně klíčů, můžete obnovit tak starší zálohy databáze. Při změně ochrana TDE pro databázi, starší zálohy databáze **se neaktualizují** použít nejnovější ochrana TDE.  Každá záloha musí ochrana TDE byl vytvořen v době obnovení. Střídání klíčů lze provést podle pokynů [otočit transparentní ochrana šifrování dat pomocí Powershellu](transparent-data-encryption-byok-azure-sql-key-rotation.md).
 - Po změně klíče spravované zákazníkem služby zachovat všechny dříve použitých klíče ve službě Azure Key Vault.  Tím se zajistí, že zálohování databáze je možné obnovit pomocí ochrany transparentní šifrování dat uložených ve službě Azure Key Vault.  Transparentní šifrování dat ochrany vytvořené pomocí Azure Key Vault musí být zachovány, dokud všechny uložené zálohy byly vytvořeny s použitím klíčů spravovaných služeb.  
-- Vytvořte obnovitelné kopie tyto klíče pomocí [Backup-AzureKeyVaultKey](https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1).
+- Vytvořte obnovitelné kopie tyto klíče pomocí [Backup-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1).
 - Odebrání potenciálně ohrožený klíč během incidentu zabezpečení bez rizika ztráty dat, postupujte podle kroků uvedených v [odebrání potenciálně ohrožený klíč](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md).
 
 
@@ -123,14 +123,14 @@ Následující části se přenášejí prostřednictvím kroky instalace a konf
 
 ### <a name="azure-key-vault-configuration-steps"></a>Postup konfigurace služby Azure Key Vault
 
-- Nainstalujte [prostředí PowerShell](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0) 
-- Vytvoření dvou Azure Key Vault ve dvou různých oblastech pomocí [Powershellu povolit vlastnost "obnovitelného odstranění"](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-soft-delete-powershell) v trezorech klíčů (Tato možnost není dostupná z portálu, službou AZURE ještě – ale vyžadují SQL).
-- Jak Azure Key Vault se musí nacházet ve dvou oblastech, které jsou k dispozici ve stejné zeměpisné oblasti Azure v pořadí pro zálohování a obnovování klíčů pro práci.  Pokud budete potřebovat dva trezorům klíčů umístěné v různých zeměpisných oblastech k požadavkům SQL Geo-DR, postupujte [BYOK procesu](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-hsm-protected-keys) klíče nelze importovat z místního modulu hardwarového zabezpečení, který umožňuje.
+- Nainstalujte [prostředí PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0) 
+- Vytvoření dvou Azure Key Vault ve dvou různých oblastech pomocí [Powershellu povolit vlastnost "obnovitelného odstranění"](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell) v trezorech klíčů (Tato možnost není dostupná z portálu, službou AZURE ještě – ale vyžadují SQL).
+- Jak Azure Key Vault se musí nacházet ve dvou oblastech, které jsou k dispozici ve stejné zeměpisné oblasti Azure v pořadí pro zálohování a obnovování klíčů pro práci.  Pokud budete potřebovat dva trezorům klíčů umístěné v různých zeměpisných oblastech k požadavkům SQL Geo-DR, postupujte [BYOK procesu](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys) klíče nelze importovat z místního modulu hardwarového zabezpečení, který umožňuje.
 - Vytvořte nový klíč v první služby key vault:  
   - Klíč RSA/RSA-HSA 2048 
   - Žádná data vypršení platnosti 
   - Klíč je povolená a má oprávnění k provedení get, zabalit klíč a rozbalit klíčové operace 
-- Zálohování primárního klíče a obnovení klíče na druhý trezoru klíčů.  Zobrazit [BackupAzureKeyVaultKey](https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1) a [Restore-AzureKeyVaultKey](https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-5.5.0). 
+- Zálohování primárního klíče a obnovení klíče na druhý trezoru klíčů.  Zobrazit [BackupAzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1) a [Restore-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-5.5.0). 
 
 ### <a name="azure-sql-database-configuration-steps"></a>Postup konfigurace Azure SQL Database
 
@@ -141,9 +141,9 @@ Postup pro nové nasazení:
 - Vyberte v podokně TDE logický server a pro každý logický SQL server:  
    - Vyberte službou AZURE ve stejné oblasti 
    - Vyberte klíč pro použití jako ochrana TDE – každý server bude používat místní kopii ochrana TDE. 
-   - To na portálu se vytvoří [AppID](https://docs.microsoft.com/en-us/azure/active-directory/managed-service-identity/overview) pro logický SQL server, který slouží k přiřazení logického serveru SQL Server oprávnění pro přístup k trezoru klíčů – neodstraňujte tuto identitu. Místo toho odebráním oprávnění ve službě Azure Key Vault pro logický SQL server, který slouží k přiřazení logického serveru SQL Server oprávnění pro přístup k trezoru klíčů můžete odvolat přístup.
+   - To na portálu se vytvoří [AppID](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) pro logický SQL server, který slouží k přiřazení logického serveru SQL Server oprávnění pro přístup k trezoru klíčů – neodstraňujte tuto identitu. Místo toho odebráním oprávnění ve službě Azure Key Vault pro logický SQL server, který slouží k přiřazení logického serveru SQL Server oprávnění pro přístup k trezoru klíčů můžete odvolat přístup.
 - Vytvořte primární databáze. 
-- Postupujte podle [aktivní geografickou replikaci pokyny](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-geo-replication-overview) k dokončení tohoto scénáře, tento krok vytvoří sekundární databáze.
+- Postupujte podle [aktivní geografickou replikaci pokyny](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) k dokončení tohoto scénáře, tento krok vytvoří sekundární databáze.
 
 ![Skupiny převzetí služeb při selhání a geo-dr](./media/transparent-data-encryption-byok-azure-sql/Geo_DR_Config.PNG)
 

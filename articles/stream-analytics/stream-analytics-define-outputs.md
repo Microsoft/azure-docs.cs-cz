@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: d717737bc2b15e57ae32faffaece96f78a7cc013
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: d75a91ea0925ef0860b8e6dee310156bef21a1ba
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45577816"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056817"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Vysvětlení vytvořené jako výstupy z Azure Stream Analytics
 Tento článek popisuje různé typy výstupy, které jsou k dispozici pro úlohy Azure Stream Analytics. Výstupy umožňují ukládat a uložit výsledky úlohy Stream Analytics. Pomocí výstupní data, můžete provést další obchodní analýzy a skladování dat vaše data. 
@@ -63,7 +63,7 @@ Chcete obnovit autorizaci, **Zastavit** úlohy > přejděte na výstup do Data L
 ![Povolit Data Lake Store](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)  
 
 ## <a name="sql-database"></a>SQL Database
-[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) může sloužit jako výstup pro data, která jsou svou povahou relační, nebo pro aplikace, které závisí na obsahu hostovaném v relační databázi. Úlohy Stream Analytics zapisovat do existující tabulky ve službě Azure SQL Database.  Schéma tabulky musí přesně odpovídat pole a jejich typy se výstup z vaší úlohy. [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) je taky možné specifikovat jako výstup prostřednictvím také možnost výstupu SQL Database. Následující tabulka uvádí názvy vlastností a jejich popis vytvářejícím výstupem SQL Database.
+[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) může sloužit jako výstup pro data, která jsou svou povahou relační, nebo pro aplikace, které závisí na obsahu hostovaném v relační databázi. Úlohy Stream Analytics zapisovat do existující tabulky ve službě Azure SQL Database.  Schéma tabulky musí přesně odpovídat pole a jejich typy se výstup z vaší úlohy. [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) je taky možné specifikovat jako výstup prostřednictvím také možnost výstupu SQL Database. Další informace o způsobech, jak zlepšit propustnost zápisu, naleznete [Stream Analytics pomocí služby Azure SQL DB jako výstup](stream-analytics-sql-output-perf.md) článku. Následující tabulka uvádí názvy vlastností a jejich popis vytvářejícím výstupem SQL Database.
 
 | Název vlastnosti | Popis |
 | --- | --- |
@@ -297,7 +297,7 @@ Následující tabulka shrnuje podporu oddílu a počet modulů pro zápis výst
 | Typ výstupu | Dělení podpory | Klíč oddílu  | Počet modulů pro zápis výstupu | 
 | --- | --- | --- | --- |
 | Azure Data Lake Store | Ano | Použijte {date} a {time} tokeny v vzor předpony cesty. Vyberte formát data, jako je rrrr/MM/DD, DD/MM/RRRR MM-DD-RRRR. HH se používá pro formát času. | Následuje vstupní dělení pro [plně paralelizovat dotazy](stream-analytics-scale-jobs.md). | 
-| Azure SQL Database | Ne | Žádný | Není k dispozici. | 
+| Azure SQL Database | Ano | Podle v klauzuli PARTITION BY v dotazu | Následuje vstupní dělení pro [plně paralelizovat dotazy](stream-analytics-scale-jobs.md). | 
 | Azure Blob Storage | Ano | Použijte {date} a {time} tokeny z polí událostí v vzor cesty. Vyberte formát data, jako je rrrr/MM/DD, DD/MM/RRRR MM-DD-RRRR. HH se používá pro formát času. Jako součást [ve verzi preview](https://aka.ms/ASAPreview), můžete rozdělit na oddíly výstupního objektu blob atributem jednu vlastní událost {pole fieldname} nebo {data a času:\<specifikátor >}. | Následuje vstupní dělení pro [plně paralelizovat dotazy](stream-analytics-scale-jobs.md). | 
 | Centrum událostí Azure | Ano | Ano | Se liší v závislosti na zarovnání oddílu.</br> Výstupem, který klíč oddílu je stejně v souladu s nadřazeného (předchozí) kroku dotazu, počet zapisovače centra událostí je stejný počet výstupu oddílů centra událostí. Každý writer používá pro EventHub [EventHubSender třídy](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) k odesílání událostí do konkrétních oddílů. </br> Pokud výstup Eventhub klíč oddílu není zarovnána s nadřazeného (předchozí) kroku dotazu, počet modulů pro zápis je stejný jako počet oddílů v tomto dřívějším kroku. Každý writer používá EventHubClient [SendBatchAsync třídy](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) k odesílání událostí do všech oddílů výstup. |
 | Power BI | Ne | Žádný | Není k dispozici. | 

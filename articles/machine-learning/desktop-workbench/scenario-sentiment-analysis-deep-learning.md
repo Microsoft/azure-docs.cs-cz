@@ -16,14 +16,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/20/2018
 ms.author: miprasad
-ms.openlocfilehash: 97e3a621e291935db2e0c70eb2b596e77c7bffb7
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: e2fbb0b7b0dede198be0e57ffcd2b58a7da7fce7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35644479"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947767"
 ---
 # <a name="sentiment-analysis-using-deep-learning-with-azure-machine-learning"></a>Analýza mínění s využitím obsáhlého learningu pomocí služby Azure Machine Learning
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Analýza subjektivního hodnocení je dobře známé úlohy v souvislosti se zpracováním přirozeného jazyka. Vzhledem k sadě textů, cílem je zjistit mínění textu. Cílem tohoto řešení je pomocí hloubkového učení pro predikci mínění v recenze filmů.
 
@@ -45,7 +50,7 @@ K získání hodnoty z analýzu mínění, firmám musí mít možnost dolovat r
 
 * [Účtu Azure](https://azure.microsoft.com/free/) (bezplatné zkušební verze jsou k dispozici).
 
-* Nainstalovaná kopie produktu [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) následující [Stručná Instalační příručka](../service/quickstart-installation.md) k instalaci a vytvoření pracovního prostoru.
+* Nainstalovaná kopie produktu [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) následující [Stručná Instalační příručka](quickstart-installation.md) k instalaci a vytvoření pracovního prostoru.
 
 * Operacionalizace je nejvhodnější v případě, že máte nainstalovaný a místně spuštěný modul Docker. Pokud ne, můžete použít možnost clusteru. Spuštění Azure Container Service (ACS) však může být nákladné.
 

@@ -1,6 +1,6 @@
 ---
-title: Vytvoření virtuálního počítače s Linuxem pomocí Azure CLI 1.0 | Dokumentace Microsoftu
-description: Vytvoření virtuálního počítače s Linuxem v Azure pomocí Azure CLI 1.0
+title: Vytvoření virtuálního počítače s Linuxem pomocí Azure classic CLI | Dokumentace Microsoftu
+description: Vytvoření virtuálního počítače s Linuxem v Azure pomocí Azure classic CLI
 services: virtual-machines-linux
 documentationcenter: ''
 author: vlivech
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2016
 ms.author: v-livech
-ms.openlocfilehash: ea9eab1a02a29005917848ed54ab8ba160b89b63
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 94362256dfb5b8deff233f7c575d0720f29eec5c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30901805"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987846"
 ---
-# <a name="create-a-linux-vm-using-the-azure-cli-10"></a>Vytvoření virtuálního počítače s Linuxem pomocí Azure CLI 1.0
+# <a name="create-a-linux-vm-using-the-azure-classic-cli"></a>Vytvoření virtuálního počítače s Linuxem pomocí Azure classic CLI
 
 Tento článek ukazuje, jak rychle nasadit virtuální počítač s Linuxem na platformě Azure pomocí příkazu `azure vm quick-create` v rozhraní příkazového řádku (CLI) Azure. Příkaz `quick-create` nasadí virtuální počítač se základní zabezpečenou infrastrukturou, který můžete použít k rychlému vytvoření prototypu nebo otestování konceptu.
 
 > [!NOTE]
-Informace o vytvoření virtuálního počítače pomocí Azure CLI 2.0 najdete v tématu [Vytvoření virtuálního počítače pomocí Azure CLI](../windows/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Vytvoření virtuálního počítače pomocí Azure CLI najdete v tématu [vytvoření virtuálního počítače pomocí Azure CLI](../windows/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 Virtuální počítač s Linuxem můžete rychle nasadit také pomocí webu [Azure Portal](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Článek vyžaduje [SSH soubory veřejného a privátního klíče](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Tento článek vyžaduje [soubory veřejného a privátního klíče SSH](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

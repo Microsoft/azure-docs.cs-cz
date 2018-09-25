@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: juliako
-ms.openlocfilehash: 08b7f50c3051c174158cff0b4c591a2b22fb4ab4
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: d6fe69588c44e489f37ad0908df569c2b5a4b96c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502698"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967808"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Přístup k rozhraní API Azure Media Services pomocí ověřování Azure AD
  
@@ -146,7 +146,7 @@ Výjimka: "vzdálený server vrátil chybu: (401) Neoprávněno."
 
 Následující články jsou přehledy konceptů ověřování Azure AD: 
 
-- [Scénáře ověřování zákazníky a vyřešené ve službě Azure AD](../../active-directory/develop/authentication-scenarios.md#basics-of-authentication-in-azure-ad)
+- [Scénáře ověřování zákazníky a vyřešené ve službě Azure AD](../../active-directory/develop/authentication-scenarios.md)
 - [Přidání, aktualizace nebo odebrání aplikace ve službě Azure AD](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)
 - [Konfigurace a správa řízení přístupu na základě Role pomocí prostředí PowerShell](../../role-based-access-control/role-assignments-powershell.md)
 

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/13/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 2e23a15a6bff81f0b48b703e516de8a1a1820972
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 02b36d8f8c8c9be2532b440bd9858766e8b524ca
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46293701"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060366"
 ---
 ## <a name="set-up-your-project"></a>Nastavení projektu
 
@@ -47,7 +47,7 @@ Chcete místo toho stáhněte si tento ukázkový projekt Android Studio? [Stáh
 <!--start-collapse-->
 ### <a name="about-this-package"></a>O tomto balíčku
 
-Knihovna Microsoft Authentication Library se nainstaluje balíček v předchozím kódu. Knihovna MSAL zpracovává všechny token operace, včetně získání, ukládání do mezipaměti, aktualizace a odstranění.  Tokeny jsou potřeba pro přístup k rozhraní API služby chráněný platformou identit společnosti Microsoft.
+Knihovna Microsoft Authentication Library se nainstaluje balíček v předchozím kódu. Knihovna MSAL zpracovává všechny token operace, včetně získání, ukládání do mezipaměti, aktualizace a odstranění.  Tokeny jsou potřeba pro přístup k rozhraní API chráněné službou Microsoft identity platform.
 <!--end-collapse-->
 
 ## <a name="create-the-apps-ui"></a>Vytvoření uživatelského rozhraní aplikace

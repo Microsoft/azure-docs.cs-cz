@@ -2,22 +2,21 @@
 title: 'Azure Cosmos DB: SQL Node.js API, SDK & zdroje | Dokumentace Microsoftu'
 description: Další informace o SQL Node.js API a sady SDK, včetně data vydání, vyřazení dat a změny provedené mezi každou verzi sady Azure Cosmos DB Node.js SDK.
 services: cosmos-db
-author: rnagpal
-manager: kfile
+author: deborahc
 editor: cgronlun
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: reference
-ms.date: 5/3/2018
+ms.date: 09/24/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e19c1cb7b297d2537e969e0dd632dae3e1c3d211
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: b6983b49135b5a8adbef1d0cfc5a407cb7b0c7ac
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39594347"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46960545"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK pro rozhraní SQL API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -40,12 +39,16 @@ ms.locfileid: "39594347"
 |Dokumentace API  |  [Referenční dokumentace jazyka JavaScript SDK](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
 |Pokyny k instalaci sady SDK  |  [Pokyny k instalaci](https://github.com/Azure/azure-cosmos-js#installation)
 |Přispívat k sadě SDK | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
-| Ukázky | [Ukázky kódu Node.js](sql-api-nodejs-samples-preview.md)
-| Kurz Začínáme | [Začínáme se sadou SDK jazyka JavaScript](sql-api-nodejs-get-started-preview.md)
-| Kurz vývoje webové aplikace | [Vytvoření webové aplikace Node.js využívající službu Azure Cosmos DB](sql-api-nodejs-application-preview.md)
+| Ukázky | [Ukázky kódu Node.js](sql-api-nodejs-samples.md)
+| Kurz Začínáme | [Začínáme se sadou SDK jazyka JavaScript](sql-api-nodejs-get-started.md)
+| Kurz vývoje webové aplikace | [Vytvoření webové aplikace Node.js využívající službu Azure Cosmos DB](sql-api-nodejs-application.md)
 | Aktuální podporovanou platformu | [Node.js verze 6.x](https://nodejs.org/en/blog/release/v6.10.3/) – povinný argument pro sadu SDK verze 2.0.0 a vyšší.<br/>[Node.js v4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)<br/> [Node.js v0.12](https://nodejs.org/en/blog/release/v0.12.0/)<br/> [Node.js v0.10](https://nodejs.org/en/blog/release/v0.10.0/) 
 
 ## <a name="release-notes"></a>Poznámky k verzi
+
+### <a name="2.0.0"/>2.0.0</a>
+* Obecná dostupnost sady JavaScript SDK verze 2.0.0
+* Přidání podpory pro více oblastí zápisu.
 
 ### <a name="2.0.0-3"/>2.0.0-3</a>
 * RC1 JavaScript SDK verze 2.0.0 ve veřejné verzi preview.

@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: d97766b0a8c0df3b414d78f563406530f67c313b
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 38d73f38a5e04a42ee15c9206ce760936e3e10c9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125367"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46980300"
 ---
 # <a name="azure-functions-developers-guide"></a>Příručka pro vývojáře Azure Functions
 Ve službě Azure Functions konkrétní funkce sdílet několik klíčových technických konceptech a komponenty, bez ohledu na jazyk nebo vazby, kterou používáte. Před přechodem do učení podrobnosti specifické pro daný jazyk nebo vazby, ujistěte se, že jste si tento přehled, který se vztahuje na všechny z nich.
@@ -55,12 +55,15 @@ Nastavte `disabled` vlastnost `true` zabránit při provádění funkce.
 | `name` |řetězec |Název, který se používá k vázaným datům ve funkci. Pro jazyk C# Toto je název argumentu; pro jazyk JavaScript je klíč v seznamu klíč/hodnota. |
 
 ## <a name="function-app"></a>Function App
-Aplikace function app se skládá z jednoho nebo více jednotlivých funkcí, které se spravují společně ve službě Azure App Service. Všechny funkce v aplikaci function app sdílejí stejné cenový plán, průběžného nasazování a verze modulu runtime. Všechny funkce, které jsou napsané v různých jazycích můžou sdílet stejné aplikace function app. Aplikace function app můžete představit jako způsob, jak uspořádat a kolektivně spravovat vaše funkce. 
+Aplikace function app poskytuje kontext spuštění v Azure, ve kterém funkce spuštěné. Aplikace function app se skládá z jednoho nebo více jednotlivých funkcí, které se spravují společně ve službě Azure App Service. Všechny funkce v aplikaci function app sdílejí stejné cenový plán, průběžného nasazování a verze modulu runtime. Aplikace function app můžete představit jako způsob, jak uspořádat a kolektivně spravovat vaše funkce. 
 
-## <a name="runtime-script-host-and-web-host"></a>Modul runtime (hostitel skriptu a webového hostitele)
-Modul runtime nebo hostitel skriptu, je základní sada WebJobs SDK hostitele, který naslouchá událostem, shromažďuje a odesílá data a nakonec spustí váš kód. 
+> [!NOTE]
+> Počínaje [verze 2.x](functions-versions.md) modulu runtime Azure Functions, musí být všechny funkce v aplikaci function app vytvořené ve stejném jazyce.
 
-Pro usnadnění triggerů HTTP, je zde také webového hostitele, který je navržený tak před hostitel skriptu v produkčních scénářích. S dvěma hostiteli pomáhá izolovat hostitel skriptu z přední ukončit provoz spravuje webového hostitele.
+## <a name="runtime"></a>Modul runtime
+Modul runtime služby Azure Functions nebo hostitel skriptu je základního hostitele, který naslouchá událostem, shromažďuje a odesílá data a nakonec spustí váš kód. Sada WebJobs SDK se používá tento stejného hostitele.
+
+Je také webového hostitele, který zpracovává požadavky triggerů HTTP pro modul runtime. S dvěma hostiteli pomáhá izolovat modulu runtime z přední ukončit provoz spravuje webového hostitele.
 
 ## <a name="folder-structure"></a>struktura složek
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
@@ -75,21 +78,12 @@ Funkce v editoru kódu postaveném na web Azure Portal umožňuje aktualizovat *
 
 Aplikace Function App jsou postavené na službě App Service, takže všechno [dostupným možnostem nasazení do standardních webových aplikací](../app-service/app-service-deploy-local-git.md) jsou také k dispozici pro aplikace function App. Tady jsou některé metody, které můžete použít k nahrání nebo aktualizace souborů aplikace funkce. 
 
-#### <a name="to-use-app-service-editor"></a>Použití App Service Editor
-1. Na portálu Azure Functions, klikněte na tlačítko **funkce platformy**.
-2. V **nástroje pro vývoj** klikněte na tlačítko **App Service Editor**.   
-   Po načtení App Service Editor, zobrazí se vám *host.json* složky souboru a funkce v rámci *wwwroot*. 
-5. Otevírání souborů a upravovat, a přetáhněte ho z vývojového počítače chcete nahrát soubory.
-
-#### <a name="to-use-the-function-apps-scm-kudu-endpoint"></a>Použít koncový bod aplikace function app SCM (Kudu)
-1. Přejděte do: `https://<function_app_name>.scm.azurewebsites.net`.
-2. Klikněte na tlačítko **konzole ladění > CMD**.
-3. Přejděte do `D:\home\site\wwwroot\` aktualizovat *host.json* nebo `D:\home\site\wwwroot\<function_name>` k aktualizaci souborů funkce.
-4. Přetažením souboru, který chcete nahrát do příslušné složky v mřížce souboru. V mřížce souboru, kde lze přetáhnout do souboru existují dvě oblasti. Pro *ZIP* soubory, zobrazí se pole s popiskem "Přetáhněte sem k nahrání a rozbalte ho." U ostatních typů souborů vyřaďte v mřížce soubor, ale mimo pole "rozbalte".
+#### <a name="use-local-tools-and-publishing"></a>Použití nástrojů pro místní a publikování
+Aplikace Function App můžete vytvořili a publikovali pomocí různých nástrojů, včetně [sady Visual Studio](./functions-develop-vs.md), [Visual Studio Code](functions-create-first-function-vs-code.md), [IntelliJ](./functions-create-maven-intellij.md), [Eclipse](./functions-create-maven-eclipse.md)a [nástroje Azure Functions Core](./functions-develop-local.md). Další informace najdete v tématu [kódu a testování Azure Functions místně](./functions-develop-local.md).
 
 <!--NOTE: I've removed documentation on FTP, because it does not sync triggers on the consumption plan --glenga -->
 
-#### <a name="to-use-continuous-deployment"></a>Použití průběžného nasazování
+#### <a name="continuous-deployment"></a>Průběžné nasazování
 Postupujte podle pokynů v tématu [průběžné nasazování pro službu Azure Functions](functions-continuous-deployment.md).
 
 ## <a name="parallel-execution"></a>Paralelní provádění
@@ -97,7 +91,7 @@ Dojde-li více spouštěcí události rychleji, než dokáže zpracovat s jední
 
 ## <a name="functions-runtime-versioning"></a>Správa verzí modulu runtime functions
 
-Můžete nakonfigurovat pomocí funkce modulu runtime verze `FUNCTIONS_EXTENSION_VERSION` nastavení aplikace. Například hodnota "~ 1" označuje, že vaši aplikaci Function App se používat 1 jako jeho hlavní verze. Aplikace Function App jsou upgradovány na každý nový dílčí verze při jejich vydání. Další informace, včetně zobrazování přesnou verzi vaší aplikace function App najdete v části [způsobu cílení verze modulu runtime Azure Functions](set-runtime-version.md).
+Můžete nakonfigurovat pomocí funkce modulu runtime verze `FUNCTIONS_EXTENSION_VERSION` nastavení aplikace. Například hodnota "~ 2" označuje, že vaši aplikaci Function App se používat 2.x jako jeho hlavní verze. Aplikace Function App jsou upgradovány na každý nový dílčí verze při jejich vydání. Další informace, včetně zobrazování přesnou verzi vaší aplikace function App najdete v části [způsobu cílení verze modulu runtime Azure Functions](set-runtime-version.md).
 
 ## <a name="repositories"></a>Úložiště
 Kód pro službu Azure Functions je typu open source a uložená v úložištích GitHub:

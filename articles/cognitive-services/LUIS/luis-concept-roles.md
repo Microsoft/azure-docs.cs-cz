@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Role jsou pojmenované, kontextové podtypy entity použít jenom ve vzorcích. Například v utterance nákup lístků z New Yorku do Londýna Praha i Brno měst jsou ale každý má jiný význam ve větě. New York city původu a Londýn je město cílové.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: aabd3a22498e0e33993d715e7a5882dde7aacf37
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 033e5e5e054b0a29961ad60e72b1466b51d1df0c
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632479"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035194"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>Entita role ve vzorech jsou kontextové subtypes
 Role jsou pojmenované, kontextové podtypy entity používá pouze v [vzory](luis-concept-patterns.md).

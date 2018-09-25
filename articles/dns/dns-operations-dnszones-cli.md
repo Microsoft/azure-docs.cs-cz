@@ -1,6 +1,6 @@
 ---
-title: Správa zón DNS v DNS Azure – Azure CLI 2.0 | Dokumentace Microsoftu
-description: Můžete spravovat zóny DNS pomocí Azure CLI 2.0. Tento článek ukazuje, jak aktualizovat, odstranit a vytvářet zóny DNS v Azure DNS.
+title: Správa zón DNS v DNS Azure – rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+description: Můžete spravovat zóny DNS pomocí Azure CLI. Tento článek ukazuje, jak aktualizovat, odstranit a vytvářet zóny DNS v Azure DNS.
 services: dns
 documentationcenter: na
 author: vhorne
@@ -13,30 +13,30 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: victorh
-ms.openlocfilehash: c81d8add7ae37e03a98da0ad86deaa1d9d7ec8e0
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 7f132c513354a87b4f1bd37db4c6c6ed8e0fd041
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172615"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949957"
 ---
-# <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli-20"></a>Správa zón DNS v DNS Azure pomocí rozhraní příkazového řádku Azure CLI 2.0
+# <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>Správa zón DNS v DNS Azure pomocí Azure CLI
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](dns-operations-dnszones-portal.md)
 > * [PowerShell](dns-operations-dnszones.md)
-> * [Azure CLI 2.0](dns-operations-dnszones-cli.md)
+> * [Azure CLI](dns-operations-dnszones-cli.md)
 
 
 Tato příručka ukazuje, jak spravovat zóny DNS pomocí Azure CLI pro různé platformy, které je dostupné pro Windows, Mac a Linux. Můžete také spravovat zóny DNS pomocí [prostředí Azure PowerShell](dns-operations-dnszones.md) nebo na webu Azure portal.
 
-Tato příručka konkrétně zabývá veřejných zón DNS. Informace o použití Azure CLI pro správu v Azure DNS Private Zones najdete v tématu [Začínáme s Azure DNS Private Zones pomocí Azure CLI 2.0](private-dns-getstarted-cli.md).
+Tato příručka konkrétně zabývá veřejných zón DNS. Informace o použití Azure CLI pro správu v Azure DNS Private Zones najdete v tématu [Začínáme s Azure DNS Private Zones pomocí Azure CLI](private-dns-getstarted-cli.md).
 
 ## <a name="introduction"></a>Úvod
 
 [!INCLUDE [dns-create-zone-about](../../includes/dns-create-zone-about-include.md)]
 
-## <a name="set-up-azure-cli-20-for-azure-dns"></a>Nastavení Azure CLI 2.0 pro Azure DNS
+## <a name="set-up-azure-cli-for-azure-dns"></a>Nastavení rozhraní příkazového řádku Azure pro Azure DNS
 
 ### <a name="before-you-begin"></a>Než začnete
 
@@ -44,7 +44,7 @@ Před zahájením konfigurace ověřte, zda máte následující.
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, můžete si aktivovat [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
-* Nainstalujte nejnovější verzi Azure CLI 2.0, k dispozici pro Windows, Linux nebo MAC. Další informace najdete v tématu [Instalace rozhraní příkazového řádku Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2).
+* Nainstalujte nejnovější verzi rozhraní příkazového řádku Azure, která je dostupná pro Windows, Linux a Mac. Další informace najdete v tématu [Instalace rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2).
 
 ### <a name="sign-in-to-your-azure-account"></a>Přihlášení k účtu Azure
 
@@ -86,7 +86,7 @@ az group create --name myresourcegroup --location "West US"
 
 ## <a name="getting-help"></a>Získání nápovědy
 
-Všechny příkazy CLI 2.0 týkající se Azure DNS začínat `az network dns`. Není k dispozici pro každý příkaz pomocí Nápověda `--help` možnost (krátký tvar `-h`).  Příklad:
+Všechny příkazy rozhraní příkazového řádku Azure pro Azure DNS začínat `az network dns`. Není k dispozici pro každý příkaz pomocí Nápověda `--help` možnost (krátký tvar `-h`).  Příklad:
 
 ```azurecli
 az network dns --help

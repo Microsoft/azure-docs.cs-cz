@@ -7,14 +7,14 @@ author: v-jerkin
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 04/28/2018
+ms.date: 09/08/2018
 ms.author: v-jerkin
-ms.openlocfilehash: a4307ee0ff210dafee5afe51bd9cb90db9be22e5
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: d28c67b1c7039f6e139a897196d88464b3bcf977
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295424"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064335"
 ---
 # <a name="supported-languages-for-speech-service"></a>Podporované jazyky pro Speech service
 
@@ -22,29 +22,41 @@ Různé jazyky jsou podporovány pro různé funkce služby řeči. Následujíc
 
 ## <a name="speech-to-text"></a>Převod řeči na text
 
-Rozpoznávání řeči Microsoft rozhraní API podporuje následující jazyky. 
+Rozpoznávání řeči Microsoft rozhraní API podporuje následující jazyky. Různé úrovně vlastního nastavení jsou k dispozici pro jednotlivé jazyky.  
 
-  Kód | Jazyk | Akustické přizpůsobení | Přizpůsobení jazyka | Výslovnost přizpůsobení
+  Kód | Jazyk | [Akustické přizpůsobení](how-to-customize-acoustic-models.md) | [Přizpůsobení jazyka](how-to-customize-language-model.md) | [Výslovnost přizpůsobení](how-to-customize-pronunciation.md)
  ------|----------|---------------------|---------------------|-------------------------
  ar – například | Arabština (Egypt), moderní standard | Ne | Ano | Ne
- IT-IT | Italština (Itálie) | Ne | Ano | Ne 
- de-DE | Němčina (Německo) | Ne | Ano | Ano
- fr-FR | Francouzština (Francie) | Ne | Ano | Ne
+ ES certifikační autority | katalánština (Španělsko) | Ne | Ne | Ne
+ da-DK | Dánština (Dánsko) | Ne | Ne | Ne
+ de-DE | Němčina (Německo) | Ano | Ano | Ne
+ cs AU | angličtina (Austrálie) | Ano | Ano | Ano
+ cs CA | angličtina (Kanada) | Ano | Ano | Ano
+ en-GB | Angličtina (Spojené království) | Ano | Ano | Ano
+ en-IN | English (India) | Ne | Ano | Ano
+ cs NZ | angličtina (Nový Zéland) | Ano | Ano | Ano  
  cs-CZ | Angličtina (Spojené státy) | Ano | Ano | Ano
- en-GB | Angličtina (Britské) | Ne | Ano | Ne
- cs CA | Angličtina (Kanada) | Ne | Ano | Ne
- cs AU | Angličtina (Austrálie) | Ne | Ano | Ne
- es-ES | Španělština (Španělsko) | Ne | Ano | Ne
- NL-NL | Nizozemština (Nizozemsko) | Ne | Ano | Ne
- pt-PT | Portoguese (Portogal) | Ne | Ano | Ne
- tr-TR | Turečtina (Turecko) | Ne | Ano | Ne
- pt-BR | Portugalština (Brazílie) | Ne | Ano | Ne
- ru-RU | Ruština (Rusko) | Ne | Ano | Ne
- zh-CN | Čínština (Mandarínština, zjednodušená čínština) | Ne | Ano | Ne
- zh-HK | Čínština (Mandarínština, tradiční) | Ne | Ano | Ne
- zh-TW | Čínština (Tchaj-wanská Mandarínština) | Ne | Ano | Ne
+ es-ES | Španělština (Španělsko) | Ano | Ano | Ne
+ es-MX | Španělština (Mexiko) | Ano | Ano | Ne 
+ fi-FI | Finština (Finsko) | Ne | Ne | Ne 
+ fr-CA | Francouzština (Kanada) | Ano | Ano | Ne 
+ fr-FR | Francouzština (Francie) | Ano | Ano | Ne
+ Dobrý den – v | hindština (Indie) | Ne | Ano | Ne 
+ IT-IT | Italština (Itálie) | Ano | Ano | Ne
  ja-JP | Japonština (Japonsko) | Ne | Ano | Ne
  ko-KR | Korejština (Jižní Korea) | Ne | Ano | Ne
+ nb-NO | Norština (Bokmal) (Norsko) | Ne | Ne | Ne 
+ NL-NL | Nizozemština (Nizozemsko) | Ne | Ano | Ne
+ pl-PL | Polština (Polsko) | Ne | Ne | Ne
+ pt-BR | Portugalština (Brazílie) | Ne | Ano | Ne
+ pt-PT | Portugalština (Portugalsko) | Ne | Ano | Ne
+ ru-RU | Ruština (Rusko) | Ne | Ano | Ne
+ sv-SE | Švédština (Švédsko) | Ne | Ne | Ne 
+ zh-CN | Čínština (Mandarínština, zjednodušená čínština) | Ano | Ano | Ne
+ zh-HK | Čínština (Mandarínština, tradiční) | Ne | Ano | Ne
+ zh-TW | Čínština (Tchaj-wanská Mandarínština) | Ne | Ano | Ne
+ th TH | thajština (Thajsko) | Ne | Ne | Ne
+
 
 ## <a name="text-to-speech"></a>Převod textu na řeč
 
@@ -52,11 +64,12 @@ Rozhraní API syntézu řeči nabízí následující hlasů, z nichž každý p
 
 Národní prostředí | Jazyk | Pohlaví | Název mapování služby
 -------|----------|---------|--------------------
-ar – třeba * | arabština (Egypt) | Žena | "Microsoft Server řeči Text na řeč hlas (ar např Hoda)"
+ar – například\* | arabština (Egypt) | Žena | "Microsoft Server řeči Text na řeč hlas (ar např Hoda)"
 ar-SA | Arabština (Saúdská Arábie) | Muž | "Microsoft serveru řeči Text na řeč hlas (ar-SA, Naayf)"
 bg-BG | Bulharština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (bg – BG, Ivan)"
 ES certifikační autority | katalánština (Španělsko) | Žena | "Microsoft Server řeči převod textu na řeč hlasové (ca-ES, HerenaRUS)"
 cs-CZ | Čeština | Muž | "Microsoft Server řeči Text na řeč hlas (cs-CZ, Jakub)"
+cs-CZ | Čeština | Muž | "Microsoft Server řeči Text na řeč hlas (cs-CZ, Vit)"
 da-DK | dánština | Žena | "Microsoft serveru řeči Text na řeč hlas (da-DK HelleRUS)"
 de-AT | němčina (Rakousko) | Muž | "Microsoft Server řeči Text na řeč hlas (de-AT, musí Michael)"
 de-CH | němčina (Švýcarsko) | Muž | "Microsoft serveru řeči Text na řeč hlas (de-CH, Karsten)"
@@ -72,6 +85,7 @@ en-GB | English (UK) | Žena | "Microsoft serveru řeči Text na řeč hlas (en-
 | | |Žena | "Microsoft serveru řeči Text na řeč hlas (en-GB, HazelRUS)"
 | | |Muž | "Microsoft serveru řeči Text na řeč hlas (en-GB, George, Apollo)"
 cs IE | angličtina (Irsko) |Muž | "Microsoft serveru řeči Text na řeč hlas (en-IE, Sean)"
+cs IE | angličtina (Irsko) |Muž | "Microsoft serveru řeči Text na řeč hlas (en-IE, Shaun)"
 en-IN | English (India) | Žena | "Microsoft serveru řeči Text na řeč hlas (en-IN, Heera, Apollo)"
 | | |Žena | "Microsoft serveru řeči Text na řeč hlas (en-IN, PriyaRUS)"
 | | |Muž | "Microsoft serveru řeči Text na řeč hlas (en-IN, Ravi, Apollo)"
@@ -116,13 +130,14 @@ ro RO | Rumunština | Muž | "Microsoft serveru řeči Text na řeč hlas (ro-RO
 ru-RU |ruština| Žena | "Microsoft Server řeči převod textu na řeč hlasové (ru-RU, Irina, Apollo)"
 | | |Muž | "Microsoft Server řeči převod textu na řeč hlasové (ru-RU, Pavel, Apollo)"
 | | |Žena | "Microsoft Server řeči převod textu na řeč hlasové (ru-RU, EkaterinaRUS)"
-sk-SK | Slovenština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (sk-SK, Filip)"
-sl SI | Slovinština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (sl Incidentech Lado)"
-sv-SE | švédština | Žena | "Microsoft serveru řeči Text na řeč hlas (sv-SE, HedvigRUS)"
-ta v | tamilština (Indie) | Muž | "Microsoft serveru řeči Text na řeč hlas, (ta v, Valluvar)"
-th TH | Thajština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (th TÝ, Pattara)"
-tr-TR |turečtina | Žena | "Microsoft Server řeči převod textu na řeč hlasové (tr-TR, SedaRUS)"
-vi-VN | Vietnamština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (vi VN)"
+sk-SK | Slovenština|Muž | "Microsoft Server řeči převod textu na řeč hlasové (sk-SK, Filip)"
+sl SI | Slovinština|Muž | "Microsoft Server řeči převod textu na řeč hlasové (sl Incidentech Lado)"
+sv-SE | švédština|Žena | "Microsoft serveru řeči Text na řeč hlas (sv-SE, HedvigRUS)"
+ta v | tamilština (Indie) |Muž | "Microsoft serveru řeči Text na řeč hlas, (ta v, Valluvar)"
+te v | telugština (Indie) |Žena | "Microsoft serveru řeči Text na řeč hlas (te v, Chitra)"
+th TH | Thajština|Muž | "Microsoft Server řeči převod textu na řeč hlasové (th TÝ, Pattara)"
+tr-TR |turečtina| Žena | "Microsoft Server řeči převod textu na řeč hlasové (tr-TR, SedaRUS)"
+vi-VN | Vietnamština|Muž | "Microsoft Server řeči převod textu na řeč hlasové (vi VN)"
 zh-CN | Čínština (Španělsko)|Žena | "Microsoft serveru řeči Text na řeč hlas (zh-CN, HuihuiRUS)"
 | | |Žena | "Microsoft serveru řeči Text na řeč hlas (zh-CN, Yaoyao, Apollo)"
 | | |Muž | "Microsoft serveru řeči Text na řeč hlas (zh-CN, Kangkang, Apollo)"

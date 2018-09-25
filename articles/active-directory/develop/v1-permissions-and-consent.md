@@ -12,27 +12,32 @@ ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 08/27/2018
+ms.topic: conceptual
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 735c5a3645f5e2e0f31bac4d4b2f61d73dfe069e
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 93bc3db2b7cf3002efc93f1e8006c5362eddab9f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128775"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46959967"
 ---
-# <a name="permissions-in-azure-active-directory"></a>Oprávnění v Azure Active Directory
+# <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Oprávnění a souhlas v koncovém bodu Azure Active Directory verze 1.0
 
-Azure Active Directory (Azure AD) ve velké míře využívá oprávnění v tocích OAuth i OpenID Connect (OIDC). Když vaše aplikace obdrží přístupový token ze služby Azure AD, bude tento přístupový token obsahovat deklarace identity popisující oprávnění vaší aplikace ve vztahu ke konkrétnímu prostředku. Oprávnění, označovaná také jako obory, usnadňují autorizaci prostředku, protože prostředku stačí pouze zkontrolovat, jestli token obsahuje odpovídající oprávnění pro aplikací volané rozhraní API. 
+[!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
+
+Azure Active Directory (Azure AD) ve velké míře využívá oprávnění v tocích OAuth i OpenID Connect (OIDC). Když vaše aplikace obdrží přístupový token ze služby Azure AD, bude tento přístupový token obsahovat deklarace identity popisující oprávnění vaší aplikace ve vztahu ke konkrétnímu prostředku.
+
+*Oprávnění*, označované také jako *obory*, usnadňují autorizace pro prostředek vzhledem k tomu, že prostředek pouze musí zkontrolovat, že token obsahuje příslušná oprávnění pro jakékoli rozhraní API je volání aplikace.
 
 ## <a name="types-of-permissions"></a>Typy oprávnění
 
-Azure AD definuje dva typy oprávnění: 
-* **Delegovaná oprávnění** – Používají je aplikace, ve kterých je přihlášený uživatel. V případě těchto aplikací uživatel nebo správce udělí souhlas s oprávněními, která aplikace požaduje, a aplikaci se deleguje oprávnění k tomu, aby při volání rozhraní API fungovala jako přihlášený uživatel. V závislosti na rozhraní API uživatel možná nebude moct udělit souhlas s rozhraním API přímo a místo toho bude muset [požádat správce o poskytnutí souhlasu správce](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent).
-* **Oprávnění aplikací** – Používají je aplikace spuštěné bez přihlášeného uživatele, například aplikace spuštěné jako služby na pozadí nebo procesy démon. Oprávnění aplikací může [odsouhlasit pouze správce](/azure/active-directory/develop/active-directory-v2-scopes#requesting-consent-for-an-entire-tenant), protože jsou obvykle mocná a umožňují přístup k datům různých uživatelů nebo datům, ke kterým by jinak měl přístup pouze správce. 
+Azure AD definuje dva typy oprávnění:
+
+* **Delegovaná oprávnění** – Používají je aplikace, ve kterých je přihlášený uživatel. V případě těchto aplikací uživatel nebo správce udělí souhlas s oprávněními, která aplikace požaduje, a aplikaci se deleguje oprávnění k tomu, aby při volání rozhraní API fungovala jako přihlášený uživatel. V závislosti na rozhraní API, uživatel nebude možné souhlas přímo do rozhraní API a místo toho by [vyžadují správce poskytnout "souhlas správce"](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent).
+* **Oprávnění aplikací** – Používají je aplikace spuštěné bez přihlášeného uživatele, například aplikace spuštěné jako služby na pozadí nebo procesy démon. Oprávnění aplikací může [odsouhlasit pouze správce](/azure/active-directory/develop/active-directory-v2-scopes#requesting-consent-for-an-entire-tenant), protože jsou obvykle mocná a umožňují přístup k datům různých uživatelů nebo datům, ke kterým by jinak měl přístup pouze správce.
 
 Efektivní oprávnění jsou oprávnění, která bude mít vaše aplikace při posílání požadavků do rozhraní API. 
 

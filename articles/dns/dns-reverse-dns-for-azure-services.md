@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: victorh
-ms.openlocfilehash: 0ff14ec2100d47e0edc5288f1c46f4fdd63fa683
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: cbd1a7a3a797cc20be92583bbb5ac163333729fc
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171523"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46969797"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Konfigurace reverzních záznamů DNS pro služby hostované v Azure
 
@@ -51,7 +51,7 @@ Stejné omezení platí pro zpětné vyhledávání DNS pro cloudové služby.
 
 ## <a name="reverse-dns-for-publicipaddress-resources"></a>Zpětné vyhledávání DNS pro adresu PublicIpAddress prostředky
 
-Tato část obsahuje podrobné pokyny, jak nakonfigurovat reverzních záznamů DNS pro adresu PublicIpAddress prostředky v modelu nasazení Resource Manager pomocí Azure Powershellu, příkazového řádku Azure CLI 1.0 nebo Azure CLI 2.0. Konfigurace reverzních záznamů DNS pro adresu PublicIpAddress prostředky se aktuálně nepodporuje prostřednictvím webu Azure portal.
+Tato část obsahuje podrobné pokyny, jak nakonfigurovat reverzních záznamů DNS pro adresu PublicIpAddress prostředky v modelu nasazení Resource Manager pomocí Azure Powershellu, příkazového řádku Azure classic nebo Azure CLI. Konfigurace reverzních záznamů DNS pro adresu PublicIpAddress prostředky se aktuálně nepodporuje prostřednictvím webu Azure portal.
 
 Azure nyní podporují zpětné vyhledávání DNS jenom za prostředky PublicIpAddress protokolu IPv4. Není podporováno pro protokol IPv6.
 
@@ -77,7 +77,7 @@ $pip.DnsSettings.ReverseFqdn = "contosoapp1.westus.cloudapp.azure.com."
 Set-AzureRmPublicIpAddress -PublicIpAddress $pip
 ```
 
-#### <a name="azure-cli-10"></a>Azure CLI 1.0
+#### <a name="azure-classic-cli"></a>Klasické rozhraní příkazového řádku Azure
 
 Chcete-li přidat do existující adresu PublicIpAddress reverzních záznamů DNS:
 
@@ -91,7 +91,7 @@ Chcete-li přidat reverzních záznamů DNS pro existující adresu PublicIpAddr
 azure network public-ip set -n PublicIp -g MyResourceGroup -d contosoapp1 -f contosoapp1.westus.cloudapp.azure.com.
 ```
 
-#### <a name="azure-cli-20"></a>Azure CLI 2.0
+#### <a name="azure-cli"></a>Azure CLI
 
 Chcete-li přidat do existující adresu PublicIpAddress reverzních záznamů DNS:
 
@@ -115,13 +115,13 @@ Vytvoření nové PublicIpAddress s vlastnost reverzní DNS už zadali:
 New-AzureRmPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup" -Location "WestUS" -AllocationMethod Dynamic -DomainNameLabel "contosoapp2" -ReverseFqdn "contosoapp2.westus.cloudapp.azure.com."
 ```
 
-#### <a name="azure-cli-10"></a>Azure CLI 1.0
+#### <a name="azure-classic-cli"></a>Klasické rozhraní příkazového řádku Azure
 
 ```azurecli
 azure network public-ip create -n PublicIp -g MyResourceGroup -l westus -d contosoapp3 -f contosoapp3.westus.cloudapp.azure.com.
 ```
 
-#### <a name="azure-cli-20"></a>Azure CLI 2.0
+#### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
 az network public-ip create --name PublicIp --resource-group MyResourceGroup --location westcentralus --dns-name contosoapp1 --reverse-fqdn contosoapp1.westcentralus.cloudapp.azure.com
@@ -137,13 +137,13 @@ Chcete-li zobrazit použije se konfigurovaná hodnota pro existující adresu Pu
 Get-AzureRmPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
 ```
 
-#### <a name="azure-cli-10"></a>Azure CLI 1.0
+#### <a name="azure-classic-cli"></a>Klasické rozhraní příkazového řádku Azure
 
 ```azurecli
 azure network public-ip show -n PublicIp -g MyResourceGroup
 ```
 
-#### <a name="azure-cli-20"></a>Azure CLI 2.0
+#### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
 az network public-ip show --name PublicIp --resource-group MyResourceGroup
@@ -161,13 +161,13 @@ $pip.DnsSettings.ReverseFqdn = ""
 Set-AzureRmPublicIpAddress -PublicIpAddress $pip
 ```
 
-#### <a name="azure-cli-10"></a>Azure CLI 1.0
+#### <a name="azure-classic-cli"></a>Klasické rozhraní příkazového řádku Azure
 
 ```azurecli
 azure network public-ip set -n PublicIp -g MyResourceGroup –f ""
 ```
 
-#### <a name="azure-cli-20"></a>Azure CLI 2.0
+#### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
 az network public-ip update --resource-group MyResourceGroup --name PublicIp --reverse-fqdn ""
@@ -176,7 +176,7 @@ az network public-ip update --resource-group MyResourceGroup --name PublicIp --r
 
 ## <a name="configure-reverse-dns-for-cloud-services"></a>Konfigurace reverzních záznamů DNS pro Cloud Services
 
-Tato část obsahuje podrobné pokyny, jak nakonfigurovat reverzních záznamů DNS pro cloudové služby v modelu nasazení Classic pomocí prostředí Azure PowerShell. Konfigurace reverzních záznamů DNS pro cloudové služby není podporována prostřednictvím webu Azure portal, Azure CLI 1.0 nebo Azure CLI 2.0.
+Tato část obsahuje podrobné pokyny, jak nakonfigurovat reverzních záznamů DNS pro cloudové služby v modelu nasazení Classic pomocí prostředí Azure PowerShell. Konfigurace reverzních záznamů DNS pro cloudové služby není podporována prostřednictvím webu Azure portal, Azure classic CLI nebo Azure CLI.
 
 ### <a name="add-reverse-dns-to-existing-cloud-services"></a>Přidat do existujících cloudových služeb reverzních záznamů DNS
 

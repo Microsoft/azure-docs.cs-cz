@@ -1,6 +1,6 @@
 ---
-title: Uložit nebo zkopírovat vlastní virtuální počítač s Linuxem pomocí Azure CLI 2.0 | Dokumentace Microsoftu
-description: Uložit nebo zkopírovat vlastní virtuální počítač pomocí modelu nasazení Resource Manageru a rozhraní příkazového řádku Azure CLI 2.0
+title: Odeslání nebo zkopírovat vlastní virtuální počítač s Linuxem pomocí rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+description: Uložit nebo zkopírovat vlastní virtuální počítač pomocí modelu nasazení Resource Manageru a Azure CLI
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,14 +15,14 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: cynthn
-ms.openlocfilehash: 3fb6957cf6af5c09a355b61c7c2440a929d1b837
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: b5df02c9f07549aec406cf449bb0ae49ee9e280a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736663"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46957427"
 ---
-# <a name="create-a-linux-vm-from-custom-disk-with-the-azure-cli-20"></a>Vytvoření virtuálního počítače s Linuxem z vlastního disku pomocí rozhraní příkazového řádku Azure CLI 2.0
+# <a name="create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Vytvoření virtuálního počítače s Linuxem z vlastního disku pomocí rozhraní příkazového řádku Azure
 
 <!-- rename to create-vm-specialized -->
 
@@ -57,7 +57,7 @@ K dokončení následujících kroků, potřebujete:
 > 
 
 
-* Ujistěte se, že máte nejnovější [příkazového řádku Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az_login).
+* Ujistěte se, že máte nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az_login).
 
 V následujících příkladech nahraďte ukázkové názvy parametrů s vlastními hodnotami. Ukázkové názvy parametrů zahrnutých *myResourceGroup*, *mystorageaccount*, a *mydisks*.
 

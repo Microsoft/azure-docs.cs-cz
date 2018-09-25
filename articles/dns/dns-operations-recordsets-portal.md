@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: victorh
-ms.openlocfilehash: b95ec9b4b5077b236c5f3a7183820552b7ccac49
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 1f7991ff1b0c5a29b002818bc4dc5d9106ba5bfa
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39174427"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974761"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Ke správě DNS záznamů a sad záznamů pomocí webu Azure portal
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](dns-operations-recordsets-portal.md)
-> * [Azure CLI 1.0](dns-operations-recordsets-cli-nodejs.md)
-> * [Azure CLI 2.0](dns-operations-recordsets-cli.md)
+> * [Klasické rozhraní příkazového řádku Azure](dns-operations-recordsets-cli-nodejs.md)
+> * [Azure CLI](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
 V tomto článku se dozvíte, jak spravovat sady záznamů a záznamů zóny DNS pomocí webu Azure portal.

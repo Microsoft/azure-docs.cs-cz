@@ -13,14 +13,19 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: 9f15f949ba76240da2788c1a01e7086ba3b42fd1
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5280ed4143ef2ee980300cebe234de7f2020a14f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35643259"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46968097"
 ---
 # <a name="execute-data-sources-and-data-preparations-packages-from-python"></a>Spouštění balíčků zdroje dat a příprava dat z Pythonu
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Použití zdroje dat Machine Learning Azure nebo Azure Machine Learning Data přípravy balíček v Pythonu:
 

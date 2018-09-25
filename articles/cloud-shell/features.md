@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: juluk
-ms.openlocfilehash: 1321645d97e7f6ff2faed1e61ddb608afcb7b413
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 5087b8a1d675fb6fb2bbfb2b46a09c215bf5e9ae
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42056790"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998759"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Funkce a nástroje pro Azure Cloud Shell
 
@@ -31,7 +31,7 @@ Azure Cloud Shell spouští na `Ubuntu 16.04 LTS`.
 
 ### <a name="secure-automatic-authentication"></a>Automatické ověřování zabezpečení
 
-Cloud Shell bezpečně a automaticky ověří přístup k účtu pro Azure CLI 2.0 a Azure Powershellu.
+Cloud Shell bezpečně a automaticky ověří přístup k účtu pro rozhraní příkazového řádku Azure a Azure Powershellu.
 
 ### <a name="home-persistence-across-sessions"></a>Trvalost $Home napříč relacemi
 
@@ -60,7 +60,7 @@ Cloud Shell zahrnuje předem nakonfigurované ověřování pro open source nás
 |Kategorie   |Název   |
 |---|---|
 |Nástroje pro Linux            |Bash<br> zsh<br> TV<br> tmux<br> Ponořte se<br>               |
-|Nástroje Azure            |[Azure CLI 2.0](https://github.com/Azure/azure-cli) a [1.0](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) |
+|Nástroje Azure            |[Azure CLI](https://github.com/Azure/azure-cli) a [klasické rozhraní příkazového řádku Azure](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) |
 |Textových editorů           |VIM<br> nano<br> (emacs)       |
 |Správy zdrojového kódu         |git                    |
 |Nástroje sestavení            |Ujistěte se<br> Maven<br> npm<br> PIP         |
@@ -82,5 +82,5 @@ Cloud Shell zahrnuje předem nakonfigurované ověřování pro open source nás
 ## <a name="next-steps"></a>Další postup
 [Bash v Cloud Shellu Quickstart](quickstart.md) <br>
 [Prostředí PowerShell v Cloud Shellu (Preview) Quickstart](quickstart-powershell.md) <br>
-[Další informace o Azure CLI 2.0](https://docs.microsoft.com/cli/azure/) <br>
+[Další informace o rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/) <br>
 [Další informace o Azure Powershellu](https://docs.microsoft.com/powershell/azure/) <br>

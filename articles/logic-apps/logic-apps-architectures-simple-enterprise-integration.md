@@ -9,12 +9,12 @@ ms.author: mattfarm
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/15/2018
-ms.openlocfilehash: 7081c9e4f6e6deee196255f04180a8f2cc792876
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 5ed6fa9f514bae3ea651edba6702714e2680091f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122491"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46955941"
 ---
 # <a name="simple-enterprise-integration-architecture"></a>Jednoduché podnikové integrace architektury
 
@@ -162,7 +162,7 @@ API Management spravuje tajných kódů pomocí objektů nazývaných *pojmenova
 
 ## <a name="diagnostics-and-monitoring"></a>Diagnostika a monitorování
 
-Můžete použít [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md) pro provozní monitorování v obou [API Management](../api-management/api-management-howto-use-azure-monitor.md) a [Logic Apps](../logic-apps/logic-apps-monitor-your-logic-apps.md). Azure Monitor poskytuje informace na základě metrik pro každou službu nakonfigurovat a je ve výchozím nastavení povolené.
+Můžete použít [Azure Monitor](../azure-monitor/overview.md) pro provozní monitorování v obou [API Management](../api-management/api-management-howto-use-azure-monitor.md) a [Logic Apps](../logic-apps/logic-apps-monitor-your-logic-apps.md). Azure Monitor poskytuje informace na základě metrik pro každou službu nakonfigurovat a je ve výchozím nastavení povolené.
 
 Každá služba má také tyto možnosti:
 

@@ -3,19 +3,19 @@ title: Podporované jazyky – QnA Maker
 titlesuffix: Azure Cognitive Services
 description: Jazyk znalostní báze ovlivňuje QnA Maker umožňuje automaticky extrahovat otázky a odpovědi ze zdrojů, jakož i relevance výsledků, které poskytuje nástroj QnA Maker v odpovědi na dotazy uživatelů.
 services: cognitive-services
-author: nstulasi
+author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
-ms.author: saneppal
-ms.openlocfilehash: ee04733064ec4e3d131b800fe1f18b27e5127fe8
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.author: tulasim
+ms.openlocfilehash: f690a620988135fe1347934a2b394021aa0bd334
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45572936"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035993"
 ---
 # <a name="supported-languages"></a>Podporované jazyky
 

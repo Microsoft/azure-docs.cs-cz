@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 7297633b5a8954eb39e0a40bfd45b02d3838a734
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 18d9a2dade271e61fa3db423da610a7f982aa47b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42054834"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949668"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Vytvoření škálovací sady virtuálního počítače, který používá zóny dostupnosti
 
@@ -65,7 +65,7 @@ Při vytváření škálovací sady v jedné oblasti, můžete ovládací prvek 
 K používání zón dostupnosti, musí být vytvořené škálovací sady v [podporované oblasti Azure](../availability-zones/az-overview.md#regions-that-support-availability-zones). Můžete vytvořit škálovací sadu, která používá zón dostupnosti s jedním z následujících metod:
 
 - [Azure Portal](#use-the-azure-portal)
-- [Azure CLI 2.0](#use-the-azure-cli-20)
+- [Azure CLI](#use-the-azure-cli-20)
 - [Azure PowerShell](#use-azure-powershell)
 - [Šablony Azure Resource Manageru](#use-azure-resource-manager-templates)
 
@@ -77,7 +77,7 @@ Proces vytvoření škálovací sady, který využívá zónu dostupnosti je ste
 
 Škálovací sady a podpůrné prostředky, jako je například nástroj pro vyrovnávání zatížení Azure a veřejnou IP adresu, se vytvoří v jedné oblasti, který zadáte.
 
-## <a name="use-the-azure-cli-20"></a>Použití Azure CLI 2.0
+## <a name="use-the-azure-cli"></a>Použití Azure CLI
 
 Proces vytvoření škálovací sady, který využívá zónu dostupnosti je stejný jako podrobné v [Začínáme článku](quick-create-cli.md). K používání zón dostupnosti, musíte vytvořit svou škálovací sadu v podporované oblasti Azure.
 

@@ -1,6 +1,6 @@
 ---
-title: Ukázek Azure CLI Redis cache | Microsoft Docs
-description: Ukázek Azure CLI pro Azure Redis Cache.
+title: Ukázky mezipaměti Azure redis Cache pomocí rozhraní příkazového řádku | Dokumentace Microsoftu
+description: Ukázky Azure CLI pro službu Azure Redis Cache.
 services: redis-cache
 documentationcenter: ''
 author: wesmc7777
@@ -14,28 +14,28 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: wesmc
-ms.openlocfilehash: 4450a8f7f16e3503626c9ee0ca125fc2b1ed9052
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 01773e1ec24e6ab7d1899df6774230b7ce5b5676
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27909835"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46957893"
 ---
-# <a name="azure-cli-samples-for-azure-redis-cache"></a>Ukázky rozhraní příkazového řádku Azure pro Azure Redis Cache
+# <a name="azure-cli-samples-for-azure-redis-cache"></a>Ukázky Azure CLI pro službu Azure Redis Cache
 
-Následující tabulka obsahuje odkazy na bash skripty, které jsou vytvořené pomocí rozhraní příkazového řádku Azure.
+Následující tabulka obsahuje odkazy na skripty Bash vytvořené pomocí Azure CLI.
 
 | | |
 |---|---|
 |**Vytvoření mezipaměti**||
-| [Vytvoření mezipaměti](./scripts/create-cache.md) | Vytvoří skupinu prostředků a základní úroveň Azure Redis Cache. |
-| [Vytvoření mezipaměti premium s clusteringem](./scripts/create-premium-cache-cluster.md) | Vytvoří skupinu prostředků a mezipaměti úroveň premium s povoleným clusteringem.|
-| [Získat podrobnosti o mezipaměti](./scripts/show-cache.md) | Získá podrobnosti o instanci služby Azure Redis Cache, včetně Stav zřizování. |
-| [Získat název hostitele, porty a klíčů](./scripts/cache-keys-ports.md) | Získá název hostitele, porty a klíče pro instanci služby Azure Redis Cache. |
-|**Webové aplikace a mezipaměti**||
-| [Připojení webové aplikace do mezipaměti redis](./../app-service/scripts/app-service-cli-app-service-redis.md) | Vytvoří webové aplikace Azure a mezipaměti redis a potom přidá podrobnosti připojení redis nastavení aplikace. |
-|**Odstranit mezipaměť**||
-| [Odstranit mezipaměť](./scripts/delete-cache.md) | Odstraní instanci služby Azure Redis Cache  |
+| [Vytvoření mezipaměti](./scripts/create-cache.md) | Vytvoří skupinu prostředků a na úrovni basic služby Azure Redis Cache. |
+| [Vytvořit mezipaměť premium s clusteringem](./scripts/create-premium-cache-cluster.md) | Vytvoří skupinu prostředků a mezipaměti úrovně premium s aktivovaným clusteringem.|
+| [Získat podrobnosti o redis cache](./scripts/show-cache.md) | Získá podrobnosti o instanci služby Azure Redis Cache, včetně Stav zřizování. |
+| [Získání názvu hostitele, porty a klíče](./scripts/cache-keys-ports.md) | Získá název hostitele, porty a klíče pro instanci služby Azure Redis Cache. |
+|**Webovou aplikaci a mezipaměť**||
+| [Připojení webové aplikace k mezipaměti redis](./../app-service/scripts/app-service-cli-app-service-redis.md) | Vytvoří webovou aplikaci Azure a redis cache a pak přidá do nastavení aplikace podrobnosti připojení redis. |
+|**Odstranění mezipaměti**||
+| [Odstranění mezipaměti](./scripts/delete-cache.md) | Odstraní instanci služby Azure Redis Cache  |
 | | |
 
-Další informace o Azure CLI 2.0, naleznete v části [nainstalovat Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) a [Začínáme s Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).
+Další informace o rozhraní příkazového řádku Azure najdete v tématu [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) a [Začínáme s Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).

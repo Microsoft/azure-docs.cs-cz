@@ -1,6 +1,6 @@
 ---
-title: Vytvoření linuxového prostředí pomocí Azure CLI 2.0 | Dokumentace Microsoftu
-description: Vytvoření úložiště, virtuální počítač s Linuxem, virtuální sítě a podsítě, nástroj pro vyrovnávání zatížení, síťové rozhraní, veřejné IP adresy a skupinu zabezpečení sítě, vše od základů pomocí rozhraní příkazového řádku Azure CLI 2.0.
+title: Vytvoření linuxového prostředí pomocí Azure CLI | Dokumentace Microsoftu
+description: Vytvořte úložiště, virtuální počítač s Linuxem, virtuální síť a podsíť, nástroj pro vyrovnávání zatížení, síťové rozhraní, veřejnou IP adresu a skupinu zabezpečení sítě, vše od základů pomocí rozhraní příkazového řádku Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: c566c747d393dbfa3225faf6f8ad78fa8abfa3ac
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: e618bce78a3a3ce080b6c24cc34a27c2f5fb39e9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929701"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977549"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Vytvoření kompletní Linuxový virtuální počítač pomocí Azure CLI
 Rychle vytvořit virtuální počítač (VM) v Azure, můžete jediným příkazem Azure CLI, který používá výchozí hodnoty pro vytvoření jakékoli požadované podpůrné prostředky. Prostředky, jako jsou virtuální síť, veřejnou IP adresu a pravidla skupiny zabezpečení sítě se vytvoří automaticky. Pro další kontrolu nad vaším prostředím v produkčním prostředí používat, můžete vytvořit tyto prostředky předem domluvili a pak do nich přidejte virtuální počítače. Tento článek vás provede postupy vytvoření virtuálního počítače a všechny podpůrné prostředky jeden po druhém.
 
-Ujistěte se, že máte nainstalovanou nejnovější verzi [příkazového řádku Azure CLI 2.0](/cli/azure/install-az-cli2) a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az_login).
+Ujistěte se, že máte nainstalovanou nejnovější verzi [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az_login).
 
 V následujících příkladech nahraďte ukázkové názvy parametrů s vlastními hodnotami. Zahrnout názvy parametrů příklad *myResourceGroup*, *myVnet*, a *myVM*.
 

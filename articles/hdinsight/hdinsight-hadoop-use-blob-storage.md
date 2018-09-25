@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: 027204065429a9eebd2e8121cbac8bc18b9d9ce6
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 91be34468dae0fb1c24080fbe53c3c8056e8c1a3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43091431"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967842"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Použití úložiště Azure s clustery Azure HDInsight
 
@@ -133,11 +133,11 @@ Pokud jste [nainstalovali a nakonfigurovali Azure PowerShell][powershell-install
     $destContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey  
     New-AzureStorageContainer -Name $containerName -Context $destContext
 
-### <a name="use-azure-cli"></a>Použití Azure CLI
+### <a name="use-azure-classic-cli"></a>Použití Azure Classic CLI
 
-[!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
-Pokud máte [nainstalováno a nakonfigurováno rozhraní příkazového řádku Azure CLI](../cli-install-nodejs.md), následující příkaz lze použít k účtu úložiště a kontejneru.
+Pokud máte [instalaci a konfiguraci Azure Classic CLI](../cli-install-nodejs.md), slouží následující příkaz k účtu úložiště a kontejner.
 
     azure storage account create <storageaccountname> --type LRS
 
@@ -264,24 +264,24 @@ $clusterName = “<HDInsightClusterName>“
 
     Invoke-AzureRmHDInsightHiveJob -Defines $defines -Query "dfs -ls wasb://$undefinedContainer@$undefinedStorageAccount.blob.core.windows.net/;"
 
-### <a name="use-azure-cli"></a>Použití Azure CLI
+### <a name="use-azure-classic-cli"></a>Použití Azure Classic CLI
 Pomocí následujícího příkazu můžete zobrazit seznam příkazů týkajících se objektu blob:
 
     azure storage blob
 
-**Příklad použití Azure CLI pro nahrání souboru**
+**Příklad použití rozhraní příkazového řádku Azure Classic k nahrání souboru**
 
     azure storage blob upload <sourcefilename> <containername> <blobname> --account-name <storageaccountname> --account-key <storageaccountkey>
 
-**Příklad použití Azure CLI pro stažení souboru**
+**Příklad použití rozhraní příkazového řádku Azure Classic pro stažení souboru**
 
     azure storage blob download <containername> <blobname> <destinationfilename> --account-name <storageaccountname> --account-key <storageaccountkey>
 
-**Příklad použití Azure CLI pro odstranění souboru**
+**Příklad použití rozhraní příkazového řádku Azure Classic k odstranění souboru**
 
     azure storage blob delete <containername> <blobname> --account-name <storageaccountname> --account-key <storageaccountkey>
 
-**Příklad použití Azure CLI pro vytvoření seznamu souborů**
+**Příklad použití rozhraní příkazového řádku Azure Classic pro vytvoření seznamu souborů**
 
     azure storage blob list <containername> <blobname|prefix> --account-name <storageaccountname> --account-key <storageaccountkey>
 

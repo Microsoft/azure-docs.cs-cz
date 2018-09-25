@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: mbullwin
-ms.openlocfilehash: 73bb1e3d06066c422614bc9d6d3431b49be9c6de
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 86c0343a3492bf91eedda9303e3c6ac9cf86c4c3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991152"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947315"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Nastavení Application Insights pro web ASP.NET
 
@@ -105,7 +105,7 @@ Po kliknutí na kteroukoli dlaždici nebo graf se zobrazí podrobnější údaje
 ## <a name="step-4-publish-your-app"></a>Krok 4: Publikování aplikace
 Publikování aplikace na serveru služby IIS nebo do Azure. Sledujte [Živé vysílání metrik](app-insights-metrics-explorer.md#live-metrics-stream) a ověřte, zda vše běží hladce.
 
-Telemetrie vzniká na portálu Application Insights, kde můžete monitorovat metriky, vyhledávat telemetrii a nastavovat [řídicí panely](app-insights-dashboards.md). Můžete také použít výkonný [dotazovací jazyk Log Analytics](https://docs.loganalytics.io/) k analýze využití a výkonu nebo k hledání konkrétních událostí.
+Telemetrie vzniká na portálu Application Insights, kde můžete monitorovat metriky, vyhledávat telemetrii a nastavovat [řídicí panely](app-insights-dashboards.md). Můžete také použít výkonný [dotazovací jazyk Log Analytics](https://aka.ms/LogAnalyticsLanguage) k analýze využití a výkonu nebo k hledání konkrétních událostí.
 
 Můžete také dále analyzovat telemetrii v sadě [Visual Studio](app-insights-visual-studio.md) pomocí nástrojů jako vyhledávání diagnostiky a [Trendy](app-insights-visual-studio-trends.md).
 

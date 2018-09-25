@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: a74d91ad986b606a36a8040ac849e7fcbec03f16
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 18b9e4eac6b183cd02ad2bb93463b4cc043f303a
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093188"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040331"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak používat Azure API Management s virtuálními sítěmi
 Virtuální sítě Azure (Vnet) umožňuje umístit některé z vašich prostředků Azure, které řídí přístup k síti možnosti směrování Internetu jiných. Potom se dá propojit tyto sítí k místním sítím pomocí různých technologií VPN. Další informace o Azure Virtual Networks začínat tyto informace tady: [Přehled služby Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -109,7 +109,7 @@ Když jsou instance služby API Management je hostované ve virtuální síti, s
 | Zdrojové a cílové porty | Směr | Přenosový protokol | Zdroj a cíl | Účel (*) | Typ virtuální sítě |
 | --- | --- | --- | --- | --- | --- |
 | * / 80, 443 |Příchozí |TCP |INTERNET / VIRTUAL_NETWORK|Komunikace klienta do API managementu|Externí |
-| * / 3443 |Příchozí |TCP |INTERNET / VIRTUAL_NETWORK|Koncový bod správy pro Azure portal a Powershellu |Externí a interní |
+| * / 3443 |Příchozí |TCP |APIMANAGEMENT / VIRTUAL_NETWORK|Koncový bod správy pro Azure portal a Powershellu |Externí a interní |
 | * / 80, 443 |Odchozí |TCP |VIRTUAL_NETWORK / INTERNET|**Závislost na Azure Storage**, Azure Service Bus a Azure Active Directory (v případě potřeby).|Externí a interní |
 | * / 1433 |Odchozí |TCP |VIRTUAL_NETWORK / SQL|**Přístup ke koncovým bodům Azure SQL** |Externí a interní |
 | * / 5672 |Odchozí |TCP |VIRTUAL_NETWORK / INTERNET|Závislost pro protokol do zásady centra událostí a agenta monitorování |Externí a interní |
@@ -158,8 +158,6 @@ Když jsou instance služby API Management je hostované ve virtuální síti, s
 * **Přírůstkové aktualizace**: při provádění změn k síti, najdete [NetworkStatus API](https://docs.microsoft.com/rest/api/apimanagement/networkstatus), chcete-li ověřit, že služba API Management ještě ztratili přístup k důležitým prostředkům, které závisí na. Stav připojení by měl být aktualizováno každých 15 minut.
 
 * **Navigačních odkazů prostředku**: Při nasazování do podsítě virtuální sítě Resource Manageru styl, API Management rezervuje podsítě, tak, že vytvoříte prostředek navigačního odkazu. Pokud podsíť již obsahuje prostředek od jiného výrobce, nasazení bude **selhání**. Podobně když změníte umístění služby API Management k jiné podsíti nebo ho odstranit, odebíráme této navigační odkaz prostředku.
-
-* **Testování rozhraní API z portálu Azure portal**: při testování rozhraní API z portálu Azure a vaší instance služby API Management je integrovaný s interní virtuální síti, serverům DNS nakonfigurovaným na virtuální síť se použije pro překlad názvů. Pokud se zobrazí kód 404 při testování z portálu Azure portal, ujistěte se, že servery DNS pro virtuální síť můžete správně přeložit název hostitele vaší instance služby API Management. 
 
 ## <a name="subnet-size"> </a> Požadavek na velikost podsítě
 Některé IP adresy v rámci každé podsítě vyhrazuje Azure a tyto adresy nelze použít. První a poslední IP adresy podsítí jsou vyhrazené pro udržování souladu s protokoly, spolu s tři další adresy používané pro služby Azure. Další informace najdete v tématu [existují nějaká omezení týkající se použití IP adresy v rámci těchto podsítí?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)

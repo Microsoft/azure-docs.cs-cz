@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 274f9d89113f583cc7b65ae01f3132d35b82b920
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 6257f1f9c237422174d695489b8ed39c7c37ebe2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380416"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46969151"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines, plánování a implementace SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -823,9 +823,9 @@ Rozhraní příkazového řádku Azure nabízí sadu open source příkazů pro 
 
 Informace o instalaci, konfiguraci a jak používat rozhraní příkazového řádku najdete v tématu příkazy provádět úkoly v Azure
 
-* [Instalace Azure CLI][xplat-cli]
+* [Instalace Azure classic CLI][xplat-cli]
 * [Nasadit a spravovat virtuální počítače pomocí šablony Azure Resource Manager a rozhraní příkazového řádku Azure] [../../linux/create-ssh-secured-vm-from-template.md]
-* [Použití Azure CLI pro Mac, Linux a Windows pomocí Azure Resource Manageru][xplat-cli-azure-resource-manager]
+* [Použití Azure classic CLI pro Mac, Linux a Windows pomocí Azure Resource Manageru][xplat-cli-azure-resource-manager]
 
 Také přečíst kapitolu [rozhraní příkazového řádku Azure pro virtuální počítače s Linuxem] [ deployment-guide-4.5.2] v [Průvodce nasazením] [ planning-guide] o tom, jak pomocí Azure CLI k nasazení, monitorování Azure Rozšíření pro SAP.
 
@@ -959,7 +959,7 @@ V tomto případě chceme nahrání virtuálního pevného disku, s nebo bez ope
 * Vytvořit nový virtuální počítač z konfigurace virtuálního počítače s *New-AzureRmVM* -naleznete v tématu <https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvm>
 * Přidání datového disku k novému virtuálnímu počítači přes *Add-AzureRmVMDataDisk* -naleznete v tématu <https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvmdatadisk>
 
-**Azure CLI 2.0**
+**Azure CLI**
 
 * Přihlaste se k předplatnému pomocí *az login*
 * Vyberte své předplatné s *set účet az--předplatného `<subscription name or id`>*
@@ -987,7 +987,7 @@ K nahrání virtuálního pevného disku nebo existujícího virtuálního poč�
   * Spravované Image disku *Set-AzureRmVMSourceImage* -naleznete v tématu <https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmsourceimage>
 * Vytvořit nový virtuální počítač z konfigurace virtuálního počítače s *New-AzureRmVM* -naleznete v tématu <https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvm>
 
-**Azure CLI 2.0**
+**Azure CLI**
 
 * Použití *sysprep* na Windows nebo *waagent-zrušení zřízení* v Linuxu generalizace virtuálního počítače – viz [technické informace o nástroji Sysprep](https://technet.microsoft.com/library/cc766049.aspx) pro Windows nebo [zachycení Virtuální počítač Linux použít jako šablonu Resource Manageru] [ capture-image-linux-step-2-create-vm-image] pro Linux
 * Přihlaste se k předplatnému pomocí *az login*
@@ -1036,7 +1036,7 @@ Během doby stahování nemůže být aktivních virtuálních pevných disků n
 
   Další podrobnosti o rutina Save-AzureRmVhd tady <https://docs.microsoft.com/powershell/module/azurerm.compute/save-azurermvhd>.
 
-#### <a name="cli-20"></a>CLI 2.0
+#### <a name="azure-cli"></a>Azure CLI
   * Stahování spravovaného disku  
   Nejdřív je potřeba získat přístup k podkladové blob spravovaného disku. Pak můžete zkopírovat základní objekt blob na nový účet úložiště a stáhnout objekt blob z tohoto účtu úložiště.
   ```
@@ -1074,7 +1074,7 @@ $config = New-AzureRmDiskConfig -CreateOption Copy -SourceUri "/subscriptions/<s
 New-AzureRmDisk -ResourceGroupName <resource group name> -DiskName <disk name> -Disk $config
 ```
 
-##### <a name="cli-20"></a>CLI 2.0
+##### <a name="azure-cli"></a>Azure CLI
 Rozhraní příkazového řádku Azure můžete použít ke zkopírování virtuálního pevného disku, jak je znázorněno v [v tomto článku][storage-azure-cli-copy-blobs]. Chcete-li vytvořit nového spravovaného disku, použijte *az disk vytvořit* jak je znázorněno v následujícím příkladu.
 
 ```
@@ -1115,7 +1115,7 @@ $disk = New-AzureRmDisk -DiskName <disk name> -Disk $diskConfig -ResourceGroupNa
 $vm = Add-AzureRmVMDataDisk -VM $vm -Caching <caching option> -Lun <lun, for example 0> -CreateOption attach -ManagedDiskId $disk.Id
 $vm | Update-AzureRmVM
 ```
-##### <a name="cli-20"></a>CLI 2.0
+##### <a name="azure-cli"></a>Azure CLI
 ```
 
 # attach a vhd to a vm
@@ -1158,7 +1158,7 @@ Get-AzureStorageBlobCopyState -Blob <target blob name> -Container <target contai
 
 Příklady naleznete v části [v tomto článku][storage-powershell-guide-full-copy-vhd].
 
-##### <a name="cli-20"></a>CLI 2.0
+##### <a name="azure-cli"></a>Azure CLI
 * Začít kopírovat s
 
 ```

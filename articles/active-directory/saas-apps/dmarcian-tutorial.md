@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/14/2018
+ms.date: 09/21/2018
 ms.author: jeedes
-ms.openlocfilehash: 677c40932a557b8a15a51b947794b4281801f65a
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 0f8878505280371bf6046c1d1f0d7fc1275dd496
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45637650"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039883"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dmarcian"></a>Kurz: Integrace Azure Active Directory se službou dmarcian
 
@@ -111,15 +111,15 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     | |
     | -- |
     | `https://us.dmarcian.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
-    | `https://dmarcian.com-eu/sso/saml/<ACCOUNT_ID>/sp.xml ` |
-    | `https://dmarcian.com-ap/sso/saml/<ACCOUNT_ID>/sp.xml` |
+    | `https://dmarcian-eu.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
+    | `https://dmarcian-ap.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
 
     b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru:
     | |
     |--|
     | `https://us.dmarcian.com/login/<ACCOUNT_ID>/handle/` |
-    | `https://dmarcian.com-eu/login/<ACCOUNT_ID>/handle/ `|
-    | `https://dmarcian.com-ap/login/<ACCOUNT_ID>/handle/`|
+    | `https://dmarcian-eu.com/login/<ACCOUNT_ID>/handle/` |
+    | `https://dmarcian-ap.com/login/<ACCOUNT_ID>/handle/` |
 
 4. Zkontrolujte **zobrazit pokročilé nastavení URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
@@ -129,8 +129,8 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     | |
     |--|
     | `https://us.dmarcian.com/login/<ACCOUNT_ID>` |
-    | `https://dmarcian.com-eu/login/<ACCOUNT_ID>` |
-    | `https://dmarcian.com-ap/login/<ACCOUNT_ID>` |
+    | `https://dmarcian-eu.com/login/<ACCOUNT_ID>` |
+    | `https://dmarciam-ap.com/login/<ACCOUNT_ID>` |
      
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizuje o skutečné identifikátor, adresa URL odpovědi a přihlašovací adresa URL, která je vysvětlen později v tomto kurzu. 

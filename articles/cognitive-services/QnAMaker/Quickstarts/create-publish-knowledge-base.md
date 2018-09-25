@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 09/12/2018
 ms.author: diberry
 ms.openlocfilehash: f7af86687a8a61fb7aed028d2868752faaa8045a
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44715089"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47030250"
 ---
 # <a name="create-train-and-publish-your-knowledge-base"></a>Vytváření, trénování a publikování znalostní báze
 

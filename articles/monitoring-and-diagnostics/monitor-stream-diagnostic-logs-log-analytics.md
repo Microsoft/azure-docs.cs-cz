@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 134c33ac28c6a094bdc50deb7206db95bf4436fc
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: c419a3c44a38f72d56f2b7b362c62e683fc20c7f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574526"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993013"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>Stream diagnostické protokoly Azure do Log Analytics
 
-**[Diagnostické protokoly Azure](monitoring-overview-of-diagnostic-logs.md)**  můžete streamování v reálném čase do služby Azure Log Analytics pomocí portálu, rutin prostředí PowerShell nebo příkazového řádku Azure CLI 2.0.
+**[Diagnostické protokoly Azure](monitoring-overview-of-diagnostic-logs.md)**  můžete streamování v reálném čase do služby Azure Log Analytics pomocí portálu, rutin prostředí PowerShell nebo rozhraní příkazového řádku Azure.
 
 ## <a name="what-you-can-do-with-diagnostics-logs-in-log-analytics"></a>Co můžete dělat s diagnostikou protokolů v Log Analytics
 
@@ -73,9 +73,9 @@ Set-AzureRmDiagnosticSetting -ResourceId [your resource ID] -WorkspaceID [resour
 
 Všimněte si, že vlastnost ID pracovního prostoru trvá úplné Azure resource ID pracovního prostoru, není pracovní prostor ID a klíč uvedené na portálu Log Analytics.
 
-### <a name="via-azure-cli-20"></a>Via Azure CLI 2.0
+### <a name="via-azure-cli"></a>Prostřednictvím rozhraní příkazového řádku Azure
 
-Pokud chcete povolit streamování prostřednictvím [příkazového řádku Azure CLI 2.0](insights-cli-samples.md), můžete použít [az monitor diagnostiky – nastavení vytváření](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) příkazu.
+Pokud chcete povolit streamování prostřednictvím [rozhraní příkazového řádku Azure](insights-cli-samples.md), můžete použít [az monitor diagnostiky – nastavení vytváření](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) příkazu.
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \

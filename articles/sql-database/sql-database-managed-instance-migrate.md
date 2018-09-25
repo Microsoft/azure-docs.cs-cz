@@ -9,28 +9,28 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: conceptual
-ms.date: 07/24/2018
+ms.date: 09/20/2018
 ms.author: bonova
-ms.openlocfilehash: cf3f7e131b177634318a6114b4f1efefcb9a9cec
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 5aad6060691c796906232d9625ff00b748616a77
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985656"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038984"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migrace instance SQL serveru do Azure SQL Database Managed Instance
 
-V tomto článku se dozvíte o metodách migrace systému SQL Server 2005 nebo novější verze instance [Azure SQL Database Managed Instance](sql-database-managed-instance.md) (preview).
+V tomto článku se dozvíte o metodách migrace systému SQL Server 2005 nebo novější verze instance [Azure SQL Database Managed Instance](sql-database-managed-instance.md).
 
 Na vysoké úrovni procesu migrace databáze vypadá takto:
 
 ![Proces migrace](./media/sql-database-managed-instance-migration/migration-process.png)
 
-- [Vyhodnocení kompatibility Managed Instance](sql-database-managed-instance-migrate.md#assess-managed-instance-compatibility)
-- [Možnost připojení k aplikaci](sql-database-managed-instance-migrate.md#choose-app-connectivity-option)
-- [Nasazení do optimální velikosti spravované Instance](sql-database-managed-instance-migrate.md#deploy-to-an-optimally-sized-managed-instance)
-- [Vyberte metodu migrace a migrace](sql-database-managed-instance-migrate.md#select-migration-method-and-migrate)
-- [Monitorování aplikací](sql-database-managed-instance-migrate.md#monitor-applications)
+- [Vyhodnocení kompatibility Managed Instance](#assess-managed-instance-compatibility)
+- [Možnost připojení k aplikaci](sql-database-managed-instance-connect-app.md)
+- [Nasazení do optimální velikosti spravované Instance](#deploy-to-an-optimally-sized-managed-instance)
+- [Vyberte metodu migrace a migrace](#select-migration-method-and-migrate)
+- [Monitorování aplikací](#monitor-applications)
 
 > [!NOTE]
 > Pokud chcete migrovat do izolované databáze nebo elastického fondu izolované databáze, najdete v článku [migrace databáze SQL serveru do služby Azure SQL Database](sql-database-cloud-migrate.md).
@@ -41,7 +41,7 @@ Nejdřív zjistěte, jestli je kompatibilní s požadavky na databázi aplikace 
 
 Použití [Data Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) kompatibility detekovat potenciální problémy s ovlivňuje funkčnost databází na Azure SQL Database. DMA zatím nepodporuje Managed Instance jako cíl migrace, ale doporučuje se spustit posouzení na databázi SQL Azure a pečlivě projděte si seznam paritu funkcí ohlášené a problémy s kompatibilitou proti dokumentaci k produktu. Zobrazit [funkce služby Azure SQL Database](sql-database-features.md) ke kontrole existují některé nahlášené blokující problémy, že není blockers ve spravované instanci, protože většina blokující problémy brání migrace do Azure SQL Database byly odebrány s spravované Instance. Pro instanci, funkce, jako jsou dotazy napříč databázemi, mezidatabázové transakce v rámci stejné instance propojený server do jiných zdrojů, CLR, globální dočasné tabulky SQL, jsou k dispozici ve spravovaných instancí úrovně zobrazení instance, služba Service Broker a podobně. 
 
-Pokud jsou některé hlášené omezujícím problémům, které se neodeberou ve spravované instanci SQL Azure, můžete zvážit alternativní možnosti, jako například potřebovat [systému SQL Server na virtuálních počítačích v Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). Zde je několik příkladů:
+Pokud jsou některé hlášené omezujícím problémům, které se neodeberou v Azure SQL Database Managed Instance, můžete zvážit alternativní možnosti, jako například potřebovat [systému SQL Server na virtuálních počítačích v Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). Zde je několik příkladů:
 
 - Pokud budete vyžadovat přímý přístup k operačnímu systému nebo systému souborů, například instalace třetích stran nebo vlastních agentů na stejný virtuální počítač s SQL serverem.
 - Pokud máte striktní závislost na funkcích, které se ještě nepodporují, jako je například FileStream a FileTable, PolyBase a transakce mezi instance.
@@ -81,7 +81,7 @@ Spravovaná Instance podporuje následující možnosti migrace databáze (aktu�
 
 [Azure Database Migration Service (DMS)](../dms/dms-overview.md) je plně spravovaná služba, která umožňují bezproblémovou migraci z několika databázových zdrojů na platformu Azure Data s minimálními výpadky. Tato služba zjednodušuje úlohy potřebné k migraci existujícího třetích stran a databáze SQL serveru do Azure. Možnosti nasazení ve verzi Public Preview zahrnují Azure SQL Database Managed Instance a SQL Server ve virtuálním počítači Azure. DMS je doporučená metoda migrace pro podnikové procesy. 
 
-Pokud používáte SQL Server Integration Services (SSIS) na serveru SQL Server v místním prostředí, DMS zatím nepodporuje migrace katalogu služby SSIS (SSISDB), která ukládá balíčků služby SSIS, ale můžete zřídit prostředí Azure-SSIS Integration Runtime (IR) v Azure Data Factory (ADF), který se bude Vytvoření nové databáze SSISDB ve službě Azure SQL Database/spravované Instance a potom můžete znovu nasaďte své balíčky do ní, přečtěte si [vytvořit prostředí Azure-SSIS IR ve službě ADF](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime).
+Pokud používáte SQL Server Integration Services (SSIS) na serveru SQL Server v místním prostředí, DMS zatím nepodporuje migrace katalogu služby SSIS (SSISDB), která ukládá balíčků služby SSIS, ale můžete zřídit prostředí Azure-SSIS Integration Runtime (IR) v Azure Data Factory (ADF), který se bude Vytvoření nové databáze SSISDB ve službě Azure SQL Database/spravované Instance a potom můžete znovu nasaďte své balíčky do ní, přečtěte si [vytvořit prostředí Azure-SSIS IR ve službě ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
 
 Další informace o krocích, které tento scénář a konfiguraci pro systém DMS, najdete v tématu [migrovat místní databázi do Managed Instance pomocí DMS](../dms/tutorial-sql-server-to-managed-instance.md).  
 
@@ -103,7 +103,7 @@ Následující tabulka obsahuje další informace týkající se metod, které m
 |Obnovení z Azure Storage do spravované Instance|[OBNOVENÍ z adresy URL pomocí pověření SAS](sql-database-managed-instance-get-started-restore.md)|
 
 > [!IMPORTANT]
-> - Při migraci databáze chráněné [transparentním šifrováním dat](transparent-data-encryption-azure-sql.md) (TDE) do spravované instance Azure SQL pomocí nativní možnosti obnovení je třeba před obnovením databáze migrovat odpovídající certifikát z místního nebo IaaS systému SQL Server. Podrobné pokyny najdete v článku [cert TDE migrovat do Managed Instance](sql-database-managed-instance-migrate-tde-certificate.md)
+> - Při migraci databáze chráněn [transparentního šifrování dat](transparent-data-encryption-azure-sql.md) do Azure SQL Database Managed Instance pomocí možnosti nativní obnovení, je třeba migrovat odpovídající certifikát z místní nebo IaaS SQL Server před obnovení databáze. Podrobné pokyny najdete v článku [cert TDE migrovat do Managed Instance](sql-database-managed-instance-migrate-tde-certificate.md)
 > - Obnovení databází systému se nepodporuje. Pokud chcete migrovat objekty na úrovni instance (uložené v databázi master a databázi msdb databáze), doporučujeme je skriptování a spouštění skriptů T-SQL v cílové instanci.
 
 Rychlý start ukazuje, jak obnovit zálohu databáze do Managed Instance pomocí pověření SAS, naleznete v tématu [obnovit ze zálohy do spravované Instance](sql-database-managed-instance-get-started-restore.md).

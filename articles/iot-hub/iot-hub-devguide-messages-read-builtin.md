@@ -1,6 +1,6 @@
 ---
 title: Vysvětlení integrovaný koncový bod Azure IoT Hub | Dokumentace Microsoftu
-description: Příručka pro vývojáře – popisuje, jak používat integrované prečíst typu zařízení cloud zprávy koncový bod kompatibilní s centrem událostí.
+description: Příručka pro vývojáře – popisuje, jak použít předdefinované koncový bod kompatibilní s centrem událostí ke čtení zpráv typu zařízení cloud.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 767c91e4926e553b63b8331ac99edcd7823d2c13
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 02624b4f3b0fceb1816f4f43b1f435356f8d5235
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055011"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46984037"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Čtení zpráv ze zařízení do cloudu z integrovaného koncového bodu
 
@@ -26,7 +26,7 @@ Ve výchozím nastavení, zprávy jsou směrovány na integrovaný koncový bod 
 
 IoT Hub můžete také spravovat skupiny uživatelů na integrovaných zařízení cloud přijímat koncový bod.
 
-Ve výchozím nastavení jsou všechny zprávy, které se neshodují s explicitně pravidel směrování zpráv zapisují na integrovaný koncový bod. Pokud zakážete tuto trasu pro použití náhradní lokality, se zahodí zprávy, které explicitně neodpovídají žádná pravidla směrování zpráv.
+Pokud používáte [směrování zpráv](iot-hub-devguide-messages-d2c.md) a [trasy pro použití náhradní lokality](iot-hub-devguide-messages-d2c.md#fallback-route) je povoleno, všechny zprávy, které neodpovídají dotaz na všechny trasy se zapisují do integrovaného koncového bodu. Pokud zakážete tuto trasu pro použití náhradní lokality, se zahodí zprávy, které se neshodují s dotazy.
 
 Můžete upravit dobu uchování buď prostřednictvím kódu programu pomocí [poskytovatele prostředků služby IoT Hub rozhraní REST API][lnk-resource-provider-apis], nebo se [webu Azure portal] [ lnk-management-portal].
 
@@ -39,9 +39,8 @@ Při použití [Azure Service Bus SDK for .NET] [ lnk-servicebus-sdk] nebo [Even
 Při použití sady SDK (nebo Integrace produktu), které jsou vědět o službě IoT Hub, musíte načíst koncový bod kompatibilní s centrem událostí a název kompatibilní s centrem událostí služby:
 
 1. Přihlaste se k [webu Azure portal] [ lnk-management-portal] a přejděte do služby IoT hub.
-1. Klikněte na **Koncové body**.
-1. V **integrovaných koncových bodech** klikněte na tlačítko **události**. 
-1. Otevře se stránka Vlastnosti, která obsahuje následující hodnoty: **koncový bod kompatibilní s centrem událostí**, **název kompatibilní s centrem událostí**, **oddíly**,  **Doba uchovávání**, a **skupiny příjemců**.
+1. Klikněte na tlačítko **integrovaných koncových bodech**.
+1. **Události** oddíl obsahuje následující hodnoty: **koncový bod kompatibilní s centrem událostí**, **název kompatibilní s centrem událostí**, **oddíly**, **Doba uchovávání**, a **skupiny příjemců**.
 
     ![Nastavení zařízení-cloud][img-eventhubcompatible]
 
@@ -63,11 +62,9 @@ Sady SDK a integrace, které můžete použít s koncové body kompatibilní s c
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o koncových bodech služby IoT Hub najdete v tématu [koncové body IoT Hubu][lnk-endpoints].
-
-[Rychlých startů] [ lnk-get-started] ukazují, jak odesílat zprávy typu zařízení cloud ze simulovaných zařízení a čtení zpráv z integrovaného koncového bodu. Další podrobnosti najdete [zpráv typu zařízení cloud procesu IoT Hubu pomocí tras] [ lnk-d2c-tutorial] kurzu.
-
-Pokud chcete směrovat zprávy typu zařízení cloud do vlastní koncové body, přečtěte si téma [trasy zpráv a vlastní koncové body používat pro zprávy typu zařízení cloud][lnk-custom].
+* Další informace o koncových bodech služby IoT Hub najdete v tématu [koncové body IoT Hubu][lnk-endpoints].
+* [Rychlých startů] [ lnk-get-started] ukazují, jak odesílat zprávy typu zařízení cloud ze simulovaných zařízení a čtení zpráv z integrovaného koncového bodu. Další podrobnosti najdete [zpráv typu zařízení cloud procesu IoT Hubu pomocí tras] [ lnk-d2c-tutorial] kurzu.
+* Pokud chcete směrovat zprávy typu zařízení cloud do vlastní koncové body, přečtěte si téma [trasy zpráv a vlastní koncové body používat pro zprávy typu zařízení cloud][lnk-custom].
 
 [img-eventhubcompatible]: ./media/iot-hub-devguide-messages-read-builtin/eventhubcompatible.png
 

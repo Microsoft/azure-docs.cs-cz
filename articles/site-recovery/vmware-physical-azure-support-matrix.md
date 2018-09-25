@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: raynew
-ms.openlocfilehash: 8c50930404b12f37c709af87ff7def99dcd5100d
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 0878bdd435b6ec9efccca2cc825242a65bd79909
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378869"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042223"
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>Matice podpory pro VMware a replikací fyzických serverů do Azure
 
@@ -64,7 +64,7 @@ Site Recovery podporuje jakoukoli úlohu spuštěnou na podporovaném počítač
 --- | ---
 Nastavení počítače | Počítače, které se replikují do Azure, musí splňovat [požadavky služby Azure](#azure-vm-requirements).
 Operační systém Windows | 64bitová verze Windows serveru 2016 (jádro serveru, Server s desktopovým prostředím), Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 s na minimálně SP1. </br></br>  [Windows Server 2008 s na minimálně SP2 – 32bitové a 64bitové](migrate-tutorial-windows-server-2008.md) (pouze migrace). </br></br> Windows 2016 Nano Server není podporován.
-Operační systém platformy Linux | Red Hat Enterprise Linux: 5.2 na 5,11<b>\*\*</b>, 6.1 k 6.10<b>\*\*</b>, 7.0 pro 7.5 <br/><br/>CentOS: 5.2 na 5,11<b>\*\*</b>, 6.1 k 6.10<b>\*\*</b>, 7.0 pro 7.5 <br/><br/>Server se systémem Ubuntu 14.04 LTS[ (podporované verze jádra)](#ubuntu-kernel-versions)<br/><br/>Server se systémem Ubuntu 16.04 LTS[ (podporované verze jádra)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (podporované verze jádra)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1, SP2 SP3 [ (podporované verze jádra)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b>, operačním systémem SUSE Linux Enterprise Server 11 SP4 * </br></br>Oracle Enterprise Linux 6.4, 6.5 kompatibilní jádra Red Hat nebo nedělitelné Enterprise jádra verze 3 (UEK3) <br/><br/></br>* *Upgrade replikované počítače z operačního systému SUSE Linux Enterprise Server 11 SP3 SP4 není podporován. Pokud chcete upgradovat, zakažte replikaci a povolte znovu po dokončení upgradu.*</br></br><b>\*\*</b> *Odkazovat na [podporu pro virtuální počítače s Linuxem v Azure](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) o podpoře pro Linux a opensourcové technologie v Azure. Azure Site Recovery umožňuje převzetí služeb při selhání a spouštění servery s Linuxem v Azure, ale dodavatelů Linux může omezit podporu jenom tyto verze jejich distribuce, které nebylo dosaženo konce jejich životnosti.*
+Operační systém platformy Linux | Red Hat Enterprise Linux: 5.2 na 5,11<b>\*\*</b>, 6.1 k 6.10<b>\*\*</b>, 7.0 pro 7.5 <br/><br/>CentOS: 5.2 na 5,11<b>\*\*</b>, 6.1 k 6.10<b>\*\*</b>, 7.0 pro 7.5 <br/><br/>Server se systémem Ubuntu 14.04 LTS[ (podporované verze jádra)](#ubuntu-kernel-versions)<br/><br/>Server se systémem Ubuntu 16.04 LTS[ (podporované verze jádra)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (podporované verze jádra)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1, SP2 SP3 [ (podporované verze jádra)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b>, operačním systémem SUSE Linux Enterprise Server 11 SP4 * </br></br>Oracle Enterprise Linux 6.4, 6.5, 6.6, 6.7 kompatibilní jádra Red Hat nebo nedělitelné Enterprise jádra verze 3 (UEK3) <br/><br/></br>* *Upgrade replikované počítače z operačního systému SUSE Linux Enterprise Server 11 SP3 SP4 není podporován. Pokud chcete upgradovat, zakažte replikaci a povolte znovu po dokončení upgradu.*</br></br><b>\*\*</b> *Odkazovat na [podporu pro virtuální počítače s Linuxem v Azure](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) o podpoře pro Linux a opensourcové technologie v Azure. Azure Site Recovery umožňuje převzetí služeb při selhání a spouštění servery s Linuxem v Azure, ale dodavatelů Linux může omezit podporu jenom tyto verze jejich distribuce, které nebylo dosaženo konce jejich životnosti.*
 
 
 >[!NOTE]
@@ -73,7 +73,7 @@ Operační systém platformy Linux | Red Hat Enterprise Linux: 5.2 na 5,11<b>\*\
 >
 > - Mezi hlavní Linux není podporována verze distribuční upgrade chráněných počítačů. K upgradu, zakažte replikaci, upgradovat operační systém a pak replikaci zase povolte.
 >
-> - Serverů se systémem Red Hat Enterprise Linux 5.2 5,11 nebo CentOS 5.2 5,11 by měl mít Linux Integration Services(LIS) součásti nainstalované v pořadí počítačů pro spuštění v Azure.
+> - Servery se systémem Red Hat Enterprise Linux 5.2 5,11 nebo CentOS 5.2 na 5,11 by měly mít [součásti systému Linux Integration Services(LIS)](https://www.microsoft.com/en-us/download/details.aspx?id=55106) nainstalováno počítačů pro spuštění v Azure.
 
 ### <a name="ubuntu-kernel-versions"></a>Ubuntu verze jádra
 
@@ -150,7 +150,7 @@ Několik síťových adaptérů sítě hosta/server | Ano.
 **Komponenta** | **Podporuje se**
 --- | ---
 Azure ExpressRoute | Ano
-Interní nástroj pro vyrovnávání zatížení | Ano
+ILB | Ano
 ELB | Ano
 Azure Traffic Manager | Ano
 S více síťovými Kartami | Ano

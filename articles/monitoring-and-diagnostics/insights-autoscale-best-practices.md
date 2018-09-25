@@ -1,6 +1,6 @@
 ---
 title: Osvědčené postupy pro automatické škálování
-description: Vzory škálování v Azure Web Apps, sady škálování virtuálního počítače a cloudové služby
+description: Vzory automatického škálování v Azure Web Apps, Virtual Machine Scale sets a cloudové služby
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,145 +8,145 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: e9fc5a4c5d2e23750493cc320dffa380724347fb
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 30210d15950302ead0a2406ffb59a61a28d4e54e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35262439"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997305"
 ---
 # <a name="best-practices-for-autoscale"></a>Osvědčené postupy pro automatické škálování
-V tomto článku se dozvíte, jaké osvědčené postupy pro škálování v Azure. Azure monitorování škálování se vztahují pouze na [sady škálování virtuálního počítače](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [cloudové služby](https://azure.microsoft.com/services/cloud-services/), a [služby App Service – webové aplikace](https://azure.microsoft.com/services/app-service/web/). Jinými službami Azure použít různé metody škálování.
+Automatické škálování služby Azure Monitor se týká pouze [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service – Web Apps](https://azure.microsoft.com/services/app-service/web/), a [služby API Management](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
 
-## <a name="autoscale-concepts"></a>Koncepty škálování
+## <a name="autoscale-concepts"></a>Koncepty automatického škálování
 * Prostředek může mít pouze *jeden* nastavení automatického škálování
-* Nastavení automatického škálování může mít jeden nebo více profilů a každý profil může mít jeden nebo více pravidel škálování.
-* Nastavení automatického škálování škáluje instance vodorovně, což je *out* zvýšením instance a *v* snížením počtu instancí.
+* Nastavení automatického škálování může mít jednu nebo více profilů a každý profil může mít jeden nebo více pravidel automatického škálování.
+* Nastavení automatického škálování se škáluje instance vodorovně, což je *si* zvýšením počtu instancí a *v* snížením počtu instancí.
   Nastavení automatického škálování má maximální, minimální a výchozí hodnota instancí.
-* Úloha automatického škálování vždy přečte přidružené metriky škálování, kontrole, jestli se překročila nakonfigurovanou prahovou hodnotu pro škálování nebo škálování. Můžete zobrazit seznam metrik této škálování můžete škálovat podle na [běžné metriky automatického škálování Azure monitorování](insights-autoscale-common-metrics.md).
-* Všechny prahové hodnoty jsou vypočítávány na úrovni instance. Například "škálování odhlašování 1 instancí při průměrná procesoru > 80 %, pokud je počet instancí 2", znamená Škálováním na více systémů, když průměrné využití procesoru ve všech instancích je větší než 80 %.
-* Všechny chyby při škálování jsou zaznamenány do protokolu aktivit. Potom můžete nakonfigurovat [výstraha aktivity protokolu](./monitoring-activity-log-alerts.md) tak, aby vám může informování prostřednictvím e-mailu, SMS, webhooku atd., vždy, když dojde selhání škálování.
-* Všechny akce úspěšné škálování podobně jsou odeslány do protokolu činnosti. Potom můžete nakonfigurovat výstrahu protokolu aktivitu tak, aby můžete být upozorněni prostřednictvím e-mailu, SMS, webhooků, atd. pokaždé, když je akce škálování úspěšné. Můžete také nakonfigurovat oznámení e-mailu nebo webhooku chcete dostat upozornění pro akce úspěšné škálování prostřednictvím karty oznámení v nastavení automatického škálování.
+* Úloha automatického škálování vždy přečte související metriky pro škálování, kontrole, jestli se má, kterou překřížilo nakonfigurovanou prahovou hodnotu pro horizontální navýšení kapacity nebo škálování na méně instancí. Můžete zobrazit seznam metrik tohoto automatického škálování můžete škálovat na [běžné metriky automatického škálování Azure monitoru](insights-autoscale-common-metrics.md).
+* Všechny prahové hodnoty se vypočítávají na úrovni instance. Například "horizontální navýšení kapacity o jednu instanci když průměrné využití procesoru > 80 % když je počet instancí 2", znamená to horizontální navýšení kapacity, když průměrné využití procesoru napříč všemi instancemi je větší než 80 %.
+* Všechny chyby automatického škálování jsou protokolovány do protokolu aktivit. Potom můžete nakonfigurovat [upozornění protokolu aktivit](./monitoring-activity-log-alerts.md) tak, aby můžete být upozorněni prostřednictvím e-mailu, SMS nebo webhook pokaždé, když dojde chybě automatického škálování.
+* Všechny akce úspěšné škálování podobně, jsou odeslány do protokolu aktivit. Upozornění protokolu aktivit se potom můžete nakonfigurovat tak, aby můžete být upozorněni prostřednictvím e-mailu, SMS nebo webhook vždycky, když je akce úspěšná automatického škálování. Můžete také nakonfigurovat e-mailu nebo webhooková oznámení v oznámení pro akce úspěšné škálování prostřednictvím karty oznámení v nastavení automatického škálování.
 
-## <a name="autoscale-best-practices"></a>Osvědčené postupy škálování
-Použijte následující osvědčené postupy při používání automatického škálování.
+## <a name="autoscale-best-practices"></a>Osvědčené postupy automatického škálování
+Použijte následující osvědčené postupy při použití automatického škálování.
 
-### <a name="ensure-the-maximum-and-minimum-values-are-different-and-have-an-adequate-margin-between-them"></a>Ujistěte se, maximální a minimální hodnoty se liší a mít odpovídající okraje mezi nimi
-Pokud máte nastavení, která má minimální = 2, maximální = 2 a aktuální počet instancí je 2, můžete dojít k žádné akci škálování. Zachovat odpovídající okraje mezi počty maximální a minimální instance, které jsou inkluzivní. Škálování vždy škáluje mezi tyto limity.
+### <a name="ensure-the-maximum-and-minimum-values-are-different-and-have-an-adequate-margin-between-them"></a>Zajištění maximální a minimální hodnoty se liší a mít odpovídající okraje mezi nimi
+Pokud máte nastavení, které má minimálně = 2, maximální = 2 a aktuální počet instancí je 2, můžete dojít k žádné akci škálování. Zachovejte adekvátní okraje mezi počty maximální a minimální instance, které jsou (včetně). Automatické škálování vždy mezi tyto limity škálování.
 
-### <a name="manual-scaling-is-reset-by-autoscale-min-and-max"></a>Ruční škálování při obnovení škálování min a max
-Pokud je ručně aktualizovat na hodnotu vyšší nebo nižší než maximální počet instancí, modul škálování automaticky přizpůsobí zpět na minimální (Pokud se níže) nebo maximální (Pokud je vyšší než). Například můžete nastavit rozsah 3 až 6. Pokud máte jeden spuštěnou instanci, modul škálování škáluje na 3 instance při příštím spuštění. Podobně pokud ručně nastavit stupnici na 8 instance, při příštím spuštění automatického škálování se bude škálovat ji zpět 6 instance při příštím spuštění.  Ruční škálování je velmi dočasný, pokud resetujete také pravidel škálování.
+### <a name="manual-scaling-is-reset-by-autoscale-min-and-max"></a>Ruční škálování je resetovat pomocí automatického škálování min a max
+Pokud je ručně aktualizovat na hodnotu nad nebo pod maximální počet instancí, modul automatického škálování se automaticky škáluje zpět do (Pokud se níže) minimální nebo maximální počet (Pokud je vyšší než). Například nastavte rozsah dlouhý 3 až 6. Pokud máte jednu běžící instanci, modul automatického škálování se škáluje na tři instance při příštím spuštění. Podobně pokud ručně nastavíte škálování na osmi instancí, při dalším spuštění automatického škálování se bude škálovat ji zpět do šesti instance při příštím spuštění.  Ruční škálování je dočasný, není-li obnovit také pravidla automatického škálování.
 
-### <a name="always-use-a-scale-out-and-scale-in-rule-combination-that-performs-an-increase-and-decrease"></a>Vždy používejte kombinaci Škálováním na více systémů a škálování pravidla, která provádí zvýšení a snížení
-Pokud používáte pouze jednou ze součástí sady kombinace, automatické škálování škálování in, který jednotné nebo ve, dokud maximální nebo minimální, je dosaženo.
+### <a name="always-use-a-scale-out-and-scale-in-rule-combination-that-performs-an-increase-and-decrease"></a>Vždy používejte kombinaci pravidlo pro horizontální navýšení kapacity a škálování na méně instancí, který provádí zvýšení a snížení
+Pokud používáte pouze jednu část kombinace, automatické škálování pouze provést akci v jednom směru (scale out nebo in), dokud nedosáhne maximální nebo minimální OST počtů definovány v profilu. Tento způsob není ideální, ideálně chcete vertikálně navýšit kapacitu v časech vysokého využití, aby se zajistila dostupnost prostředku. Podobně čas od času nízké využití chcete, aby váš prostředek můžete vertikálně snížit kapacitu, takže byste mohli realizovat úspory nákladů.
 
-### <a name="choose-the-appropriate-statistic-for-your-diagnostics-metric"></a>Zvolte odpovídající statistiky pro vaše metrika diagnostiky
-Diagnostika metriky, můžete vybrat mezi *průměrná*, *minimální*, *maximální* a *celkový* jako škálovat podle metriky. Nejběžnější Statistika je *průměrná*.
+### <a name="choose-the-appropriate-statistic-for-your-diagnostics-metric"></a>Zvolte odpovídající Statistika metriky diagnostiky
+Diagnostických metrik, můžete vybrat mezi *průměrné*, *minimální*, *maximální* a *celkový* jako ke škálování podle metriky. Je nejběžnější statistiky *průměrné*.
 
-### <a name="choose-the-thresholds-carefully-for-all-metric-types"></a>Zvolte prahové hodnoty pro všechny typy metriky pečlivě
-Doporučujeme pečlivě výběr různé prahové hodnoty pro Škálováním na více systémů a škálování in podle praktické situacích.
+### <a name="choose-the-thresholds-carefully-for-all-metric-types"></a>Zvolte prahové hodnoty pečlivě pro všechny typy metriky
+Doporučujeme pečlivou volbou různé prahové hodnoty pro horizontální navýšení kapacity a škálování na méně instancí podle praktické situacích.
 
-Jsme *nedoporučujeme* nastavení automatického škálování jako příklady níže s stejné nebo velmi podobné prahové hodnoty pro odhlásit a v podmínkách:
+Jsme *není vhodné řešit podobné* nastavení automatického škálování, jako jsou v příkladech níže se stejnou nebo velice podobných prahové hodnoty pro navýšení nebo snížení podmínky:
 
-* Zvýšit instancí 1 počet při počtu vláken < = 600
-* Snižte instancí 1 počet při počtu vláken > = 600
+* Instance se tak zvýší o 1 při počítat počet vláken < = 600
+* Snížit instancí o 1 při počítat počet vláken > = 600
 
-Podívejme se na příklad co může vést k chování, které se může zdát matoucí. Vezměte v úvahu následující pořadí.
+Pojďme se podívat na příklad toho, co může vést k chování, které možná připadat složité. Vezměte v úvahu následující posloupnosti.
 
-1. Předpokládejme, existují 2 instance na začátku a pak průměrný počet vláken na instanci zvětšuje, aby 625.
-2. Škálování horizontálně navýší kapacitu, přidání 3. instance.
-3. V dalším kroku předpokládá, že počet průměrná vláken v instanci spadá do 575.
-4. Před škálování směrem dolů, bude škálování pokusí odhadnout, jaké konečného stavu, pokud škálovat v. Například 575 x 3 (aktuální počet instancí) = 1,725 nebo 2 (konečný počet instancí při zmenšování) = 862.5 vláken. To znamená, že se okamžitě Škálováním na více systémů znovu i po škálovat, pokud počet průměrná vláken zůstává stejná nebo i spadá pouze malé množství škálování. Ale pokud ji škálovat znovu celý proces by opakujte, vedlo k nekonečné smyčce.
-5. Abyste předešli této situaci (dále jen "flapping"), škálování není snižovat vůbec. Místo toho přeskočí a reevaluates podmínku znovu při příštím provede úlohu služby. Protože škálování nezobrazilo fungovat, když byl vlákno průměrný počet 575 to může matou mnoho uživatelů.
+1. Předpokládejme, existují dvě instance na začátku a pak se 625 zvětšuje průměrný počet vláken na instanci.
+2. Automatické škálování se škálovat přidáním třetí instance.
+3. V dalším kroku se předpokládá, že počet průměrné vláken v instanci spadá do 575.
+4. Před škálování, automatické škálování se pokusí odhadnout, co koncový stav bude, pokud ji škálovat v. Například 575 x 3 (aktuální počet instancí) = 1,725 / 2 (konečný počet instancí, když kapacitu vertikálně snížit) = 862.5 vlákna. To znamená, že automatické škálování byste museli okamžitě horizontální navýšení kapacity znovu i po škálovat, pokud počet vláken průměrné zůstává stejná nebo i spadá pouze malé množství. Ale pokud vertikálně navýšit znovu, celý proces by opakovat, což vede k nekonečné smyčce.
+5. Abyste předešli této situaci (dále jen "flapping"), automatického škálování není snižovat vůbec. Místo toho přeskočí a přehodnotí podmínka znovu při příštím provádí úlohy služby. Protože automatické škálování se nezobrazilo fungovat, když počet průměrné vláken byl 575 to můžete zaměnit mnoho lidí.
 
-Odhad během škálování in slouží ke vyhnout "netřepotá" situace, kdy akce škálování in a škálování průběžně přejděte a zpět. Toto chování ponechat v paměti, když zvolíte stejné prahové hodnoty pro Škálováním na více systémů a.
+Odhad při škálování na slouží vyhnout "netřepotá" situacích, kdy akce škálování na méně instancí a horizontální navýšení kapacity průběžně přejít vpřed a zpět. Toto chování zachovejte v paměti, když zvolíte stejný prahové hodnoty pro horizontální navýšení kapacity a.
 
-Doporučujeme vybrat odpovídající okraje mezi horizontální a prahové hodnoty. Jako příklad zvažte následující kombinace lepší pravidlo.
+Doporučujeme, abyste zvolíte odpovídající okraj, mezi úpravy rozsahu a prahové hodnoty. Jako příklad zvažte následující kombinace lepší pravidlo.
 
-* Zvýšit instancí 1 počet při využití procesoru % > = 80
-* Snižte instancí 1 počet při % využití procesoru < = 60
+* Instance se tak zvýší o 1 počítat při využití procesoru % > = 80
+* Snížit instancí o 1 počítat při využití procesoru % < = 60
 
-V takovém případě  
+V tomto případě  
 
-1. Předpokládejme, že se začínat 2 instance.
-2. Pokud průměrné využití procesoru % napříč instancemi přejde do 80, automatické škálování horizontálně navýší kapacitu, přidání třetí instance.
+1. Předpokládejme, že existují začít s 2 instance.
+2. Pokud průměrné využití procesoru % napříč instancemi přejde na 80, automatického škálování horizontálně navýší kapacitu, přidání třetí instance.
 3. Nyní předpokládejme, že v čase využití procesoru % spadá do 60.
-4. Škálování na škálování v pravidlo odhadne konečného stavu by měla pro škálování v. Například 60 x 3 (aktuální počet instancí) = 180 nebo 2 (konečný počet instancí při zmenšování) = 90. Proto škálování není škálování – v vzhledem k tomu, že by musel Škálováním na více systémů ihned. Místo toho přeskočí škálování směrem dolů.
-5. Kontroluje, další škálování čas procesoru pokračuje tak, aby spadal do 50. Odhadne znovu - instance 50 x 3 = 150 / 2 instance = 75, což je pod prahovou hodnotou škálování 80, takže se sníží kapacitu, poklesne úspěšně na 2 instance.
+4. Pravidlo automatického škálování pro škálování na méně instancí odhady koncový stav, kdyby se škálování na méně instancí. Třeba 60 x 3 (aktuální počet instancí) = 180 / 2 (konečný počet instancí, když kapacitu vertikálně snížit) = 90. Takže automatického škálování není škálování na méně instancí vzhledem k tomu, že by musel horizontální navýšení kapacity ihned. Místo toho přeskočí škálování.
+5. Kontroly, automatického škálování další čas procesoru i nadále spadají do 50. Odhadne znovu – instance 50 x 3 = 150 / 2 instancí = 75, což nedosahuje prahové hodnoty 80, horizontální navýšení kapacity, provede se škálování v úspěšně 2 instance.
 
-### <a name="considerations-for-scaling-threshold-values-for-special-metrics"></a>Důležité informace pro škálování prahové hodnoty pro speciální metriky
- Prahová hodnota speciální metrik, jako je délka metrika úložiště nebo frontou Service Bus, je průměrný počet zpráv, které jsou k dispozici na aktuální počet instancí. Pečlivě zvolte prahová hodnota pro tuto metriku.
+### <a name="considerations-for-scaling-threshold-values-for-special-metrics"></a>Důležité informace pro změnu velikosti prahové hodnoty pro speciální metriky
+ Prahová hodnota pro speciální metriky, jako je délka metrika úložiště nebo fronty Service Bus, je průměrný počet zpráv, které jsou k dispozici na aktuální počet instancí. Pečlivě určit prahovou hodnotu pro tuto metriku.
 
-Pojďme doložit jej příklad zajistit, že rozumíte lepší chování.
+Pojďme ho ilustrují příklad k zajištění, že rozumíte lepší chování.
 
-* Zvýšit instancí podle počtu 1, když počet zprávy fronty úložiště > = 50
-* Snižte instancí 1 počet při fronty úložiště zpráv počet < = 10
+* Instance zvýšit počet 1 při počet zpráv fronty úložiště > = 50
+* Když počet zpráv fronty úložiště snížit instancí podle počtu 1 < = 10
 
-Vezměte v úvahu následující sekvenci:
+Vezměte v úvahu následující posloupnost:
 
-1. Existují 2 instance fronty úložiště.
-2. Zachovat zprávy přicházející a při kontrole fronty úložiště, celkový počet přečte 50. Může předpokládat, že tento škálování by se měl spustit akci škálování. Ale Všimněte si, že je stále 50/2 = 25 zprávy na jednu instanci. Škálováním na více systémů, takže nedojde. První Škálováním na více systémů provést celkový počet zpráv ve frontě úložiště by měl být 100.
-3. V dalším kroku předpokládá, že celkový počet zpráv dosáhne 100.
-4. 3. instance fronty úložiště se přidá kvůli akce škálování.  Další akce Škálováním na více systémů se neprovede, dokud celkový počet zpráv ve frontě nedosáhne 150, protože 150/3 = 50.
-5. Nyní získá menší počet zpráv ve frontě. S 3 instancí, je první škálování akcí se stane, když celkový počet zpráv ve všech frontách přidat až 30, protože 30/3 = 10 zprávy každou instanci, která je prahová hodnota měřítka v.
+1. Existují dvě instance fronty úložiště.
+2. Zachovat přicházející zprávy a při kontrole fronty úložiště, celkový počet přečte 50. Můžete předpokládat, že tohoto automatického škálování by měl spustit akci škálování na víc systémů. Mějte však na paměti, že je stále 50/2 = 25 zpráv na instanci. Horizontální navýšení kapacity, takže nebude fungovat. Pro první Škálováním nestane celkový počet zpráv ve frontě úložiště by měl být 100.
+3. V dalším kroku se předpokládá, že celkový počet zpráv dosáhne 100.
+4. 3. instanci fronty úložiště se přidá z důvodu akce škálování na víc systémů.  Další akce škálování se neprovede, dokud celkový počet zpráv ve frontě dosáhne 150, protože 150/3 = 50.
+5. Nyní získá menší počet zpráv ve frontě. Tři instancemi první akci škálování na méně instancí se stane, když celkový počet zpráv ve všech frontách přidat až pro 30, protože 30/3 = 10 zpráv na instanci, která je prahová hodnota škálování na méně instancí.
 
-### <a name="considerations-for-scaling-when-multiple-profiles-are-configured-in-an-autoscale-setting"></a>Důležité informace pro škálování při více profilů konfigurované v nastavení automatického škálování
-V nastavení automatického škálování, můžete výchozí profil, který se použije vždy bez závislost na plán nebo čas, nebo můžete opakovaně profil nebo po stanovenou dobu s rozsahem datum a čas.
+### <a name="considerations-for-scaling-when-multiple-profiles-are-configured-in-an-autoscale-setting"></a>Důležité informace pro změnu velikosti při více profilů jsou nakonfigurované v nastavení automatického škálování
+V nastavení automatického škálování, můžete použít výchozí profil, který se použije vždy bez závislost na plán nebo času, nebo můžete zvolit opakované profil nebo na pevné období s rozsahem data a času.
 
-Při škálování služby je zpracuje, vždy kontroluje v následujícím pořadí:
+Když automatické škálování služby zpracovává jejich, vždy kontroluje v následujícím pořadí:
 
-1. Opravené datum profilu
+1. Pevné datum profilu
 2. Opakované profilu
-3. Výchozí profil ("vždy")
+3. Výchozí profil ("Always")
 
-Pokud je splněna podmínka profilu, nekontroluje škálování další podmínky profil pod ním. Škálování zpracovává jenom jeden profil najednou. To znamená, že pokud chcete, aby zahrnovala podmínku zpracování z profilu nižší úrovně, je nutné zahrnout tato pravidla také aktuální profil.
+Pokud je splněna podmínka profilu, automatické škálování neprovede kontrolu další podmínky profilu pod ní. Automatické škálování zpracovává současně pouze jeden profil. To znamená, že pokud chcete také zahrnout podmínku zpracování z profilu nižší úroveň, je nutné zahrnout pravidla i v aktuální profil.
 
-Pojďme si to pomocí příklad:
+Pojďme se podívat na to využitím příkladu:
 
-Následující obrázek ukazuje na nastavení automatického škálování s minimální instancí výchozí profil = 2 a maximální instancí = 10. V tomto příkladu pravidla jsou nakonfigurovány pro škálované při počet zpráv ve frontě je větší než 10 škálování in a když počet zpráv ve frontě je menší než 3. Prostředek, takže teď můžete škálovat mezi instancemi 2 až 10.
+Následující obrázek ukazuje nastavení automatického škálování pomocí výchozího profilu minimálního instancí = 2 a maximální instance = 10. V tomto příkladu pravidla jsou nakonfigurovány pro horizontální navýšení kapacity při počet zpráv ve frontě je větší než 10 a škálování na méně instancí když počet zpráv ve frontě je menší než 3. Takže teď můžete škálovat prostředek mezi 2 až 10 instancí.
 
-Kromě toho je profil opakovaně nastavit pro pondělí. Nastavení pro minimální instance = 3 a maximální instancí = 10. To znamená v pondělí, první čas škálování kontroluje pro tuto podmínku, pokud je počet instancí 2, lze škálovat na nové minimálně 3. Tak dlouho, dokud škálování nadále najít tuto podmínku profil shodná (pondělí), pouze zpracovává bázi procesoru Škálováním na více systémů nebo v nakonfigurovaná pravidla pro tento profil. V tomto okamžiku nekontroluje se pro délku fronty. Ale pokud také chcete podmínku délka fronty, která má být zaškrtnuto, by měla obsahovat tato pravidla z výchozí profil také váš profil pondělí.
+Kromě toho je opakované profil nastavený pro pondělí. Nastavení pro minimální instance = 3 a maximální instance = 10. To znamená, že v pondělí, automatického škálování první kontroluje tuto podmínku, pokud je počet instancí dvě, provede se škálování nové minimálně tři. Za předpokladu, automatického škálování i nadále najít tento profil stav vyhovuje (pondělí), zpracují jen bázi procesoru scale-out/v nakonfigurovaná pravidla pro tento profil. V tuto chvíli jej nekontroluje délka fronty. Ale pokud chcete také podmínku délka fronty ke kontrole, měli byste zahrnout pravidla z výchozí profil také v profilu Monday.
 
-Podobně když škálování přepne zpět na výchozí profil, nejdřív zkontroluje, pokud jsou splněny podmínky minimální a maximální. Pokud se počet instancí v době 12, přizpůsobí se v 10, maximum povolené pro výchozí profil.
+Podobně když automatické škálování přepne zpět na výchozí profil, ji nejprve zkontroluje, pokud jsou splněny podmínky minimální a maximální. Pokud je počet instancí v době 12, provede se škálování v 10, maximální hodnotu povolenou pro výchozí profil.
 
-![nastavení automatického škálování](./media/insights-autoscale-best-practices/insights-autoscale-best-practices-2.png)
+![Nastavení automatického škálování](./media/insights-autoscale-best-practices/insights-autoscale-best-practices-2.png)
 
-### <a name="considerations-for-scaling-when-multiple-rules-are-configured-in-a-profile"></a>Důležité informace pro škálování při nastavení víc pravidel v profilu
-Existují případy, kdy budete muset nastavit více pravidel v profilu. Služby používají používá následující sadu pravidel škálování více pravidel jsou nastavena.
+### <a name="considerations-for-scaling-when-multiple-rules-are-configured-in-a-profile"></a>Důležité informace pro změnu velikosti při více pravidel jsou nakonfigurované v profilu
+Existují případy, kdy budete muset nastavit víc pravidel v profilu. Následující sadu pravidel automatického škálování při pomocí služby jsou nastaveny více pravidel.
 
-Na *škálovat*, škálování spustí, pokud je splněna žádné pravidlo.
-Na *škálování v*, automatické škálování vyžadují všechna pravidla, které musí být splněné.
+Na *horizontální navýšení kapacity*, automatické škálování se spustí při splnění libovolného pravidla.
+Na *škálování na méně instancí*, automatické škálování vyžaduje všechna pravidla splnit.
 
-Pro ilustraci, Předpokládejme, že máte následující pravidla 4 škálování:
+Pro ilustraci, se předpokládá, že máte následující čtyři pravidla automatického škálování:
 
-* Pokud procesoru < 30 % škálování v 1
-* Pokud škálování v 1 paměti < 50 %
-* Pokud > 75 % využití procesoru, horizontální o 1
-* Pokud paměti > 75 %, horizontální o 1
+* Pokud využití procesoru < 30 %, škálování na méně instancí o 1
+* Pokud paměti < 50 %, škálování na méně instancí o 1
+* Pokud využití procesoru > 75 %, horizontální navýšení kapacity o 1
+* Pokud paměti > 75 %, horizontální navýšení kapacity o 1
 
-Potom se provede těchto kroků:
+Potom se provede následující:
 
-* Pokud je 76 % procesoru a paměti je 50 %, jsme Škálováním na více systémů.
-* Pokud je 50 % využití procesoru a paměti je % 76 jsme Škálováním na více systémů.
+* Pokud je 76 % procesoru a paměti je 50 %, jsme horizontální navýšení kapacity.
+* Pokud je 50 % využití procesoru a paměti je 76 % jsme horizontální navýšení kapacity.
 
-Na druhé straně, pokud využití procesoru činí 25 % a paměti je 51 % automatického škálování nemá **není** škálování v. Za účelem škálování v, využití procesoru musí být 29 % a paměť 49 %.
+Na druhé straně, pokud využití procesoru činí 25 % a paměť je 51 % automatického škálování nemá **není** škálování na méně instancí. Za účelem škálování na méně instancí, využití procesoru musí být 29 % a paměti 49 %.
 
-### <a name="always-select-a-safe-default-instance-count"></a>Vždy vybrat bezpečné výchozí počet instancí
-Výchozí počet instancí je důležité automatické škálování škáluje služby do tohoto počtu metriky nejsou k dispozici. Proto vyberte výchozí počet instancí, který je bezpečný pro úlohy.
+### <a name="always-select-a-safe-default-instance-count"></a>Vždy vyberete možnost bezpečného výchozí počet instancí
+Výchozí počet instancí je důležité, že automatické škálování dá škálovat služby na tento počet při metriky nejsou k dispozici. Proto vyberte výchozí počet instancí, který je bezpečný pro vaše úlohy.
 
-### <a name="configure-autoscale-notifications"></a>Konfigurace automatického škálování oznámení
-Škálování bude odeslána do protokolu činnosti, pokud dojde k některé z následujících podmínek:
+### <a name="configure-autoscale-notifications"></a>Konfigurace oznámení o automatickém škálování
+Automatické škálování se příspěvek do protokolu aktivit, pokud kterákoli z následujících podmínek:
 
-* Škálování vydává operace škálování
-* Škálování služby úspěšném dokončení akce škálování
-* Škálování služby se nepodaří akci škálování.
-* Metriky nejsou k dispozici pro škálování služby k provedení rozhodnutí škálování.
-* Metriky jsou k dispozici (obnovení) znovu k provedení rozhodnutí škálování.
+* Automatické škálování vydává operace škálování
+* Automatické škálování služby úspěšně dokončil akci škálování
+* Automatické škálování služby se nedaří provést akci škálování.
+* Metriky nejsou k dispozici pro službu automatického škálování pro rozhodnutí škálování.
+* Metriky jsou k dispozici (obnovení) znovu, aby rozhodnutí o škálování.
 
-Můžete taky výstrahu protokolu aktivit k monitorování stavu modulu škálování. Zde jsou příklady [vytvořit aktivity protokolu výstrahy monitorovat všechny operace škálování modul vaše předplatné](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert) nebo [vytvořit aktivity protokolu výstrahy monitorovat všechny neúspěšné automatické škálování měřítka ve / škálovat operací na vaše předplatné](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert).
+Upozornění protokolu aktivit můžete použít také k monitorování stavu modul automatického škálování. Tady jsou příklady, které [vytvořit aktivitu protokolu výstrahy monitorovat všechny operace modul automatického škálování v rámci předplatného](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert) nebo [vytvořit aktivitu protokolu výstrahy pro monitorování všech neúspěšných automaticky škálovat škálovací v / horizontální navýšení kapacity operací na vaše předplatné](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert).
 
-Kromě použití aktivity protokolu výstrahy, můžete také nakonfigurovat oznámení e-mailu nebo webhooku chcete dostat upozornění pro akce úspěšné škálování prostřednictvím karty oznámení v nastavení automatického škálování.
+Kromě použití upozornění protokolu aktivit, můžete také nakonfigurovat e-mailu nebo webhooková oznámení v oznámení pro akce úspěšné škálování prostřednictvím karty oznámení v nastavení automatického škálování.
 
 ## <a name="next-steps"></a>Další kroky
-- [Vytvoření aktivity protokolu výstrahy monitorovat všechny operace škálování modul vaše předplatné.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
-- [Vytvoření aktivity protokolu výstrahy monitorovat všechny neúspěšné automatické škálování měřítka ve / škálovat operací na vaše předplatné](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
+- [Vytvoření aktivitu protokolu výstrahy monitorovat všechny operace modul automatického škálování v rámci předplatného.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
+- [Vytvoření aktivitu protokolu výstrahy pro monitorování všech neúspěšných automaticky škálovat škálovací v / horizontální navýšení kapacity operace v rámci předplatného](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)

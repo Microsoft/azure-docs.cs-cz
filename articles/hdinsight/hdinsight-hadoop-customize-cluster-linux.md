@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: jasonh
-ms.openlocfilehash: e12379dbb63e57ee12e1cebb1761f0b103d50ef1
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: e9662a0a0def91fa2cace1eb47dceffed5ff1ae6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43110523"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978025"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>Přizpůsobení clusterů HDInsight se systémem Linux pomocí akcí skriptů
 
@@ -89,7 +89,7 @@ Akce skriptu je Bash skript, který používá na uzlech v clusteru HDInsight. N
 
 * Spustit s **kořenové úrovně oprávnění** na uzlech clusteru.
 
-* Umožňuje použít **webu Azure portal**, **prostředí Azure PowerShell**, **verze Azure CLI 1.0**, nebo **sady HDInsight .NET SDK**
+* Umožňuje použít **webu Azure portal**, **prostředí Azure PowerShell**, **rozhraní příkazového řádku Azure Classic**, nebo **sady HDInsight .NET SDK**
 
 Cluster uchovává historii všechny skripty, které mají byly spuštěny. Historie je užitečné, když potřebujete vyhledat ID skript pro povýšení nebo degradace operace.
 
@@ -147,7 +147,7 @@ Skripty akce skriptu umožňuje použít následující nástroje:
 
 * portál Azure
 * Azure PowerShell
-* Verze Azure CLI 1.0
+* Klasické rozhraní příkazového řádku Azure
 * Sada HDInsight .NET SDK
 
 HDInsight poskytuje skriptů v clusterech HDInsight nainstalovat následující komponenty:
@@ -292,10 +292,9 @@ Po dokončení této operace zobrazí informace podobné následujícímu textu:
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-the-azure-cli"></a>Použít akci skriptu pro spuštěný cluster z příkazového řádku Azure
 
-Než budete pokračovat, ujistěte se, že máte nainstalované a nakonfigurované rozhraní Azure CLI. Další informace najdete v tématu [nainstalovat rozhraní příkazového řádku Azure CLI 1.0](../cli-install-nodejs.md).
+Než budete pokračovat, ujistěte se, že máte nainstalované a nakonfigurované rozhraní Azure CLI. Další informace najdete v tématu [instalace rozhraní příkazového řádku Azure Classic](../cli-install-nodejs.md).
 
-> [!IMPORTANT]
-> HDInsight vyžaduje Azure CLI 1.0. Azure CLI 2.0 aktuálně neposkytuje příkazy pro práci s HDInsight.
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 1. Pokud chcete přepnout do režimu Azure Resource Manageru, použijte následující příkaz na příkazovém řádku:
 
@@ -380,7 +379,7 @@ Následující ukázkový skript ukazuje pomocí rutin pro podporu a pak sníži
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/use-script-action/use-script-action.ps1?range=123-140)]
 
-### <a name="using-the-azure-cli"></a>Použití Azure CLI
+### <a name="using-the-azure-classic-cli"></a>Použití Azure Classic CLI
 
 | Použijte tento příkaz... | Chcete... |
 | --- | --- |

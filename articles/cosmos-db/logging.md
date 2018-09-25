@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/07/2018
 ms.author: sngun
-ms.openlocfilehash: acc327bd9fa6828a65243b6d0ad0c6da4b98f48d
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 68eb567235897641d5d4027160f62c5aa6e7e4f9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857095"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963385"
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Protokolování diagnostiky služby Azure Cosmos DB
 
@@ -29,9 +29,9 @@ Následující obrázek ukazuje různé druhy protokoly Azure, které jsou k dis
 
 ![Různé druhy protokoly Azure](./media/logging/azurelogging.png)
 
-Na obrázku **výpočetní prostředky** představují prostředky Azure, pro které můžete přístup k Microsoft hostovaného operačního systému. Například virtuální počítače Azure, virtuálního počítače škálovací sady, Azure Container Service a atd., jsou považovány za výpočetní prostředky. Výpočetní prostředky generovat protokoly aktivit, diagnostické protokoly a protokoly aplikací. Další informace najdete [monitorování Azure: výpočetní prostředky](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md#azure-monitor-sources---compute-subset) článku.
+Na obrázku **výpočetní prostředky** představují prostředky Azure, pro které můžete přístup k Microsoft hostovaného operačního systému. Například virtuální počítače Azure, virtuálního počítače škálovací sady, Azure Container Service a atd., jsou považovány za výpočetní prostředky. Výpočetní prostředky generovat protokoly aktivit, diagnostické protokoly a protokoly aplikací. Další informace najdete [zdroje dat v Azure monitorování](../monitoring/monitoring-data-sources.md#) článku.
 
-**Non-výpočetní prostředky** prostředků, ve kterých nelze přístup k podkladovému operačnímu systému a pracovat přímo s prostředkem. Například skupiny zabezpečení sítě, Logic Apps a tak dále. Azure Cosmos DB je prostředek rozsáhlých výpočetních prostředků. Můžete zobrazit protokoly pro prostředky rozsáhlých výpočetních prostředků v protokolu aktivit nebo povolit možnost diagnostické protokoly na portálu. Další informace najdete [monitorování Azure: nevýpočetními prostředky](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md#azure-monitor-sources---everything-else) článku.
+**Non-výpočetní prostředky** prostředků, ve kterých nelze přístup k podkladovému operačnímu systému a pracovat přímo s prostředkem. Například skupiny zabezpečení sítě, Logic Apps a tak dále. Azure Cosmos DB je prostředek rozsáhlých výpočetních prostředků. Můžete zobrazit protokoly pro prostředky rozsáhlých výpočetních prostředků v protokolu aktivit nebo povolit možnost diagnostické protokoly na portálu. Další informace najdete [zdroje dat ve službě Azure Monitor](../monitoring/monitoring-data-sources.md) článku.
 
 Protokol aktivit zaznamenává operace na úrovni předplatného pro službu Azure Cosmos DB. Operace jako klíče Listkey, zápis DatabaseAccounts a další jsou protokolovány. Diagnostické protokoly poskytují podrobnější protokolování a umožňují DataPlaneRequests (vytvoření, čtení, dotazování a tak dále) a MongoRequests protokolu.
 

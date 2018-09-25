@@ -1,6 +1,6 @@
 ---
-title: Vytvoření kompletního linuxového prostředí pomocí rozhraní příkazového řádku Azure CLI 1.0 | Dokumentace Microsoftu
-description: Vytvoření úložiště, virtuální počítač s Linuxem, virtuální sítě a podsítě, nástroj pro vyrovnávání zatížení, síťové rozhraní, veřejné IP adresy a skupinu zabezpečení sítě, vše od základů pomocí rozhraní příkazového řádku Azure CLI 1.0.
+title: Vytvoření kompletního linuxového prostředí pomocí rozhraní příkazového řádku Azure Classic | Dokumentace Microsoftu
+description: Vytvořte úložiště, virtuální počítač s Linuxem, virtuální síť a podsíť, nástroj pro vyrovnávání zatížení, síťové rozhraní, veřejnou IP adresu a skupinu zabezpečení sítě, vše od základů pomocí rozhraní příkazového řádku Azure Classic.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: cynthn
-ms.openlocfilehash: 1fb5542af77fbb584effca24a74b9e233359cf0e
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 560d1c55b159ed817c0b080171862c28ebe73f3e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932324"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952796"
 ---
-# <a name="create-a-complete-linux-environment-with-the-azure-cli-10"></a>Vytvoření kompletního linuxového prostředí pomocí rozhraní příkazového řádku Azure CLI 1.0
+# <a name="create-a-complete-linux-environment-with-the-azure-classic-cli"></a>Vytvoření kompletního linuxového prostředí pomocí rozhraní příkazového řádku Azure Classic
 V tomto článku jsme integrovali jednoduchá síť s nástroji pro vyrovnávání zatížení a dvojice virtuálních počítačů, které jsou užitečné pro vývoj a jednoduché výpočetního prostředí. Provedeme procesem příkazu command, dokud nebudete mít dvě funkční, zabezpečené virtuální počítače s Linuxem ke kterým se můžete připojit z kdekoliv na Internetu. Potom můžete přesunout složitější sítě a prostředí.
 
 Cestou se dozvíte o hierarchii závislostí, že modelu nasazení Resource Manager nabízí, a o tom, kolik energie se poskytuje. Jakmile se zobrazí, jak se sestaví systém, můžete znovu sestavit ji mnohem rychleji s využitím [šablon Azure Resource Manageru](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Také Jakmile se dozvíte, jak jsou součástí vašeho prostředí navzájem propojené, vytváření šablony k automatizaci jejich je jednodušší.
@@ -33,20 +33,20 @@ Prostředí obsahuje:
 * Nástroj pro vyrovnávání zatížení s pravidlem Vyrovnávání zatížení na portu 80.
 * Pravidla skupiny zabezpečení (NSG) k ochraně vašeho virtuálního počítače z nevyžádaný provoz v síti.
 
-Pokud chcete vytvořit vlastní prostředí, budete potřebovat nejnovější [příkazového řádku Azure CLI 1.0](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) v režimu Resource Manageru (`azure config mode arm`). Musíte také nástroj pro analýzu JSON. Tento příklad používá [jq](https://stedolan.github.io/jq/).
+Pokud chcete vytvořit vlastní prostředí, budete potřebovat nejnovější [rozhraní příkazového řádku Azure Classic](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) v režimu Resource Manageru (`azure config mode arm`). Musíte také nástroj pro analýzu JSON. Tento příklad používá [jq](https://stedolan.github.io/jq/).
 
 
 ## <a name="cli-versions-to-complete-the-task"></a>Verze rozhraní příkazového řádku pro dokončení úlohy
 K dokončení úlohy můžete využít jednu z následujících verzí rozhraní příkazového řádku:
 
-- [Azure CLI 1.0](#quick-commands) – naše rozhraní příkazového řádku pro classic a resource management modelech nasazení (Tento článek)
-- [Azure CLI 2.0](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) – naše rozhraní příkazového řádku nové generace pro model nasazení správy prostředků
+- [Azure Classic CLI](#quick-commands) – naše rozhraní příkazového řádku pro classic a resource management modelech nasazení (Tento článek)
+- [Azure CLI](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) – naše nová generace rozhraní příkazového řádku pro model nasazení správy prostředků
 
 
 ## <a name="quick-commands"></a>Rychlé příkazy
 Pokud je potřeba rychle provést úlohu, následující část podrobně popisuje základní příkazy k odesílání virtuálního počítače do Azure. Podrobnější informace a kontext pro každý krok najdete ve zbývající části dokumentu, od [tady](#detailed-walkthrough).
 
-Ujistěte se, že máte [rozhraní příkazového řádku Azure CLI 1.0](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) přihlášení a v režimu Resource Manageru:
+Ujistěte se, že máte [rozhraní příkazového řádku Azure Classic](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) přihlášení a v režimu Resource Manageru:
 
 ```azurecli
 azure config mode arm
@@ -270,7 +270,7 @@ azure group export myResourceGroup
 ## <a name="detailed-walkthrough"></a>Podrobný postup
 Podrobné kroky, které následují vysvětlete, co každý příkaz dělá, když sestavujete vašeho prostředí. Tyto koncepty jsou užitečné při vytváření vlastního prostředí pro vývojové nebo produkční prostředí.
 
-Ujistěte se, že máte [rozhraní příkazového řádku Azure CLI 1.0](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) přihlášení a v režimu Resource Manageru:
+Ujistěte se, že máte [rozhraní příkazového řádku Azure Classic](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) přihlášení a v režimu Resource Manageru:
 
 ```azurecli
 azure config mode arm

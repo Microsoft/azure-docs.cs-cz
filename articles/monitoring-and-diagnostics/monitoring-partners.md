@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 8/08/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: b21afecc27f1550cf557305ef069278ed66acaf0
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 3a15cfeb39cea31a24d27fd8b350d7e8a6696f31
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005313"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46955363"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Integrace partnerů Azure Monitor
 | Partneři |  |  |
@@ -21,8 +21,8 @@ ms.locfileid: "40005313"
 | [**AlertLogic**<br/>![partnerské Logo][alertlogic-logo]][alertlogic-anchor] | [**AppDynamics**<br/>![partnerské Logo][appdynamics-logo]][appdynamics-anchor]  | [**Od společnosti Atlassian**<br/>![partnerské Logo][atlassian-logo]][atlassian-anchor] 
 | [**Botmetric**][botmetric-anchor] | [**Circonus**<br/>![partnerské Logo][circonus-logo]][circonus-anchor]  | [**CloudHealth**<br/>![partnerské Logo][cloudhealth-logo]][cloudhealth-anchor] 
 | [**CloudMonix** <br/> ![partnerské Logo][cloudmonix-logo]][cloudmonix-anchor] | [**Cloudyn**<br/>![partnerské Logo][cloudyn-logo]][cloudyn-anchor] | [**Služby Datadog**<br/>![partnerské Logo][datadog-logo]][datadog-anchor] 
-| [**Dynatrace** <br/> ![partnerské Logo][dynatrace-logo]][dynatrace-anchor] | [**Grafana**<br/>![partnerské Logo][grafana-logo]][grafana-anchor] | [**Monitorování Logic**<br/>![partnerské Logo][logicmonitor-logo]][logicmonitor-anchor] 
-| [**Moogsoft**<br/>![partnerské Logo][moogsoft-logo]][moogsoft-anchor] | [**NewRelic**<br/>![partnerské Logo][newrelic-logo]][newrelic-anchor] | [**Použitím OpsGenie**<br/>![partnerské Logo][opsgenie-logo]][opsgenie-anchor] 
+| [**Dynatrace** <br/> ![partnerské Logo][dynatrace-logo]][dynatrace-anchor] | [**Grafana**<br/>![partnerské Logo][grafana-logo]][grafana-anchor] | [**Influxdata**<br/>![partnerské Logo][influxdata-logo]][influxdata-anchor]
+| [**Monitorování Logic**<br/>![partnerské Logo][logicmonitor-logo]][logicmonitor-anchor] | [**Moogsoft**<br/>![partnerské Logo][moogsoft-logo]][moogsoft-anchor] | [**NewRelic**<br/>![partnerské Logo][newrelic-logo]][newrelic-anchor] | [**Použitím OpsGenie**<br/>![partnerské Logo][opsgenie-logo]][opsgenie-anchor] 
 | [**PagerDuty**<br/>![partnerské Logo][pagerduty-logo]][pagerduty-anchor] | [**QRadar**<br/>![partnerské Logo][qradar-logo]][qradar-anchor] | [**ScienceLogic**<br/>![partnerské Logo][sciencelogic-logo]][sciencelogic-anchor] 
 | [**SignalFx**<br/>![partnerské Logo][signalfx-logo]<br/>][signalfx-anchor] | [**SIGNL4**<br/>![partnerské Logo][signl4-logo]][signl4-anchor] | [**SolarWinds**][solarwinds-anchor] 
 | [**Splunk** <br/> ![partnerské Logo][splunk-logo]][splunk-anchor] | [**Logika sumo**<br/>![partnerské Logo][sumologic-logo]][sumologic-anchor] | [**Turbonomic**<br/>![partnerské Logo][turbonomic-logo]][turbonomic-anchor] 
@@ -82,6 +82,12 @@ Grafana je open source aplikace, která umožňuje vizualizovat metriky dat čas
 
 [Přejděte k dokumentaci.][grafana-doc]
 
+## <a name="influxdata"></a>InfluxData
+InfluxData, creator InfluxDB, přináší moderní otevřenou platformu zdroje od základu navržená pro analýzu metrik a událostí (data časových řad) pro DevOps a IoT aplikací. Zda data pocházejí z lidí, senzorů nebo počítačů, InfluxData umožňuje vývojářům sestavení generace monitorování, analýzy a IoT aplikace rychleji, snáze a škálovat doručování rychle poskytnout skutečnou obchodní hodnotu. V kalifornském San Franciscu, InfluxData na základě více než 420 mezi zákazníky patří Cisco, eBay, IBM a Siemens.
+
+[Přejděte k dokumentaci.][influxdata-doc]
+
+
 ## <a name="logic-monitor"></a>Monitorování Logic
 LogicMonitor® je přední založené na SaaS, sledování výkonu platformy pro složitou infrastrukturu IT. Pokrytí pro tisíce technologie LogicMonitor nabízí detailní přehled o výkon infrastruktury a aplikací. LM cloudu komplexní monitorování Azure umožňuje uživatelům ke korelaci výkon cloudu Azure, místní a hybridní cloudové prostředky – vše z jedné platformy. Zjišťování automatizované prostředků, integrované monitorování šablon, předkonfigurované prahových hodnot výstrah a přizpůsobitelné řídicí panely se dá udělit IT rychlost, flexibilitu a viditelnost vyžaduje úspěšné.
 
@@ -94,7 +100,10 @@ Nástroje Microsoft Azure Automation and Control poskytuje v reálném čase okn
 
 Moogsoft AIOps automatizuje událost k pracovnímu postupu nápravy beze změny stávajících procesů a organizační struktury. 
 
-Moogsoft běží v vaše Azure využil její plochu naplno díky integraci do nástroje pro monitorování a automatizaci napříč hybridní infrastruktury. Aktivně dříve zjistí aplikace ovlivňuje incidenty, dynamicky orchestruje příslušných prostředků, aby se daly situace vědět a snižuje průměrný čas potřebný k nápravě a negativní vliv na prostředí pro zákazníky. 
+Moogsoft běží v vaše Azure využil její plochu naplno díky integraci do nástroje pro monitorování a automatizaci napříč hybridní infrastruktury. Moogsoft 
+ - aktivně dříve zjistí aplikace ovlivňuje incidenty 
+ - dynamicky orchestruje příslušných prostředků, aby se daly situace vědět 
+ - snižuje průměrný čas potřebný k nápravě a negativní vliv na prostředí pro zákazníky. 
 
 [Přejděte k dokumentaci.][moogsoft-doc]
 
@@ -107,7 +116,7 @@ Použitím OpsGenie funguje jako dispečer výstrah generovaných v Azure. Použ
 [Přejděte k dokumentaci.][opsgenie-doc]
 
 ## <a name="pagerduty"></a>PagerDuty
-PagerDuty, špičkové řešení pro správu incidentů, poskytuje prvotřídní podporu pro Azure výstrahy týkající se metrik. PagerDuty podporuje upozornění na výstrahy monitorování Azure, oznámení o automatickém škálování, události protokolu auditu a metriky na úrovni platformy pro služby Azure. Tato vylepšení umožňují zvýšení viditelnosti zaměříte na základní platformě Azure. Může trvat plně využívá funkce správy incidentů v PagerDuty pro odpověď v reálném čase. Rozšířené integrace s Azure je možné prostřednictvím webhooků. Webhooky umožňují instalaci a nastavení řešení rychle a snadno.
+PagerDuty, špičkové řešení pro správu incidentů, poskytuje prvotřídní podporu pro Azure výstrahy týkající se metrik. PagerDuty podporuje oznámení Azure Monitor výstrahy, oznámení o automatickém škálování, události protokolu aktivit a metriky na úrovni platformy pro služby Azure. Tato vylepšení umožňují zvýšení viditelnosti zaměříte na základní platformě Azure. Může trvat plně využívá funkce správy incidentů v PagerDuty pro odpověď v reálném čase. Rozšířené integrace s Azure je možné prostřednictvím webhooků. Webhooky umožňují instalaci a nastavení řešení rychle a snadno.
 
 [Přejděte k dokumentaci.][pagerduty-doc]
 
@@ -144,7 +153,7 @@ Sumo logiky je služba analýzy dat zabezpečení, nativní pro cloud, počíta�
 [Víc se uč.][sumologic-doc]
 
 ## <a name="turbonomic"></a>Turbonomic
-Turbonomic zajišťuje automatizaci úloh pro hybridní cloudy a současně optimalizuje výkon, náklady a dodržování předpisů v reálném čase. Turbonomic pomáhá organizacím se elastické v jejich Azure místo průběžně optimalizací systém Ujistěte se, že aplikace neustále získat potřebné prostředky, které potřebují k poskytování své smlouvy SLA a nic víc napříč výpočetní prostředky, úložiště a sítě pro IaaS a PaaS vrstva. Organizace můžete simulovat migrace, správně škálovat úlohy a vyřadit prostředky datových center zodpovědně migrace do Azure v čase, v rámci rozpočtu, současným zajištěním výkonu i dodržování předpisů. Turbonomic je založený na rozhraní API a běží jako virtuální počítač bez agentů v Azure i v místním prostředí.
+Turbonomic zajišťuje automatizaci úloh pro hybridní cloudy a současně optimalizuje výkon, náklady a dodržování předpisů v reálném čase. Turbonomic pomáhá organizacím se elastické v jejich Azure místo průběžně optimalizací systém Ujistěte se, že aplikace neustále získat potřebné prostředky, které potřebují k poskytování své smlouvy SLA a žádné další výpočetní prostředky, úložiště a sítě pro IaaS a PaaS vrstva. Organizace můžete simulovat migrace, správně škálovat úlohy a vyřadit prostředky datových center zodpovědně migrace do Azure v čase, v rámci rozpočtu, současným zajištěním výkonu i dodržování předpisů. Turbonomic je založený na rozhraní API a běží jako virtuální počítač bez agentů v Azure i v místním prostředí.
 
 [Víc se uč.][turbonomic-doc]
 
@@ -168,6 +177,7 @@ Turbonomic zajišťuje automatizaci úloh pro hybridní cloudy a současně opti
 [dynatrace-anchor]: #dynatrace "Dynatrace"
 [newrelic-anchor]: #newrelic "NewRelic"
 [grafana-anchor]: #grafana "Grafana"
+[influxdata-anchor]: #Influxdata "Influxdata"
 [logicmonitor-anchor]: #logic-monitor "Monitorování Logic"
 [moogsoft-anchor]: #moogsoft "Moogsoft"
 [opsgenie-anchor]: #opsgenie "OpsGenie"
@@ -193,6 +203,7 @@ Turbonomic zajišťuje automatizaci úloh pro hybridní cloudy a současně opti
 [dynatrace-logo]: ./media/partner-logos/dynatrace.png
 [newrelic-logo]: ./media/partner-logos/newrelic.png
 [grafana-logo]: ./media/partner-logos/grafana.png
+[influxdata-logo]: ./media/partner-logos/influxdata.png
 [logicmonitor-logo]: ./media/partner-logos/logicmonitor.png
 [moogsoft-logo]: ./media/partner-logos/moogsoft.png
 [opsgenie-logo]: ./media/partner-logos/opsgenie.png
@@ -217,6 +228,7 @@ Turbonomic zajišťuje automatizaci úloh pro hybridní cloudy a současně opti
 [datadog-doc]: http://docs.datadoghq.com/integrations/azure/ "Dokumentace služby Datadog."
 [dynatrace-doc]: https://help.dynatrace.com/infrastructure-monitoring/paas/how-do-i-monitor-microsoft-azure-web-apps/ "Dynatrace dokumentaci."
 [grafana-doc]: ./monitor-send-to-grafana.md "Integrace se službou Azure Monitor Grafana."
+[influxdata-doc]: ./metrics-store-custom-linux-telegraf.md "Integrace se službou Azure Monitor Influxdata Telegraf."
 [logicmonitor-doc]: https://www.logicmonitor.com/lmcloud-azure/ "Dokumentace ke službě Logic monitorování."
 [moogsoft-doc]: https://www.moogsoft.com/partners/microsoft-azure "Dokumentace ke službě Moogsoft."
 [newrelic-doc]: https://newrelic.com/azure "Dokumentace ke službě NewRelic."

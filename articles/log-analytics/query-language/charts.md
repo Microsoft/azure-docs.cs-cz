@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: acf51056a084abc08bda2d7f73b561f442f57784
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: e63345c0265d52fdd80fe4542efb7f13324926cf
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605520"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989614"
 ---
 # <a name="creating-charts-and-diagrams-from-log-analytics-queries"></a>Vytváření grafů a diagramů z dotazy Log Analytics
 
@@ -34,7 +34,7 @@ Tento článek popisuje různé vizualizace ve službě Azure Log Analytics k zo
 ## <a name="charting-the-results"></a>Vytvoření grafu výsledků
 Nejdřív si prostudujte kolika počítačích během poslední hodiny na operační systém, jsou:
 
-```KQL
+```Kusto
 Heartbeat
 | where TimeGenerated > ago(1h)
 | summarize count(Computer) by OSType  
@@ -52,7 +52,7 @@ Chcete-li získat lepší zobrazení, vyberte **grafu**a zvolte **výsečový** 
 ## <a name="timecharts"></a>Timecharts
 Zobrazit průměr, 50. a 95. percentily čas procesoru v přihrádky 1 hodina. Vygeneruje více řad dotaz a pak vyberete, které řady znázornit v grafu čas:
 
-```KQL
+```Kusto
 Perf
 | where TimeGenerated > ago(1d) 
 | where CounterName == "% Processor Time" 
@@ -67,7 +67,7 @@ Vyberte **řádku** graf možnosti zobrazení:
 
 Referenční čáry můžete snáze identifikovat metriku překročení konkrétních mezních hodnot. Přidání řádku do grafu, rozšiřte datovou sadu s konstantní sloupce:
 
-```KQL
+```Kusto
 Perf
 | where TimeGenerated > ago(1d) 
 | where CounterName == "% Processor Time" 
@@ -80,7 +80,7 @@ Perf
 ## <a name="multiple-dimensions"></a>Více dimenzí
 Více výrazů v `by` klauzuli `summarize` vytvořit více řádků ve výsledcích, jeden pro každou kombinaci hodnot.
 
-```KQL
+```Kusto
 SecurityEvent
 | where TimeGenerated > ago(1d)
 | summarize count() by tostring(EventID), AccountType, bin(TimeGenerated, 1h)

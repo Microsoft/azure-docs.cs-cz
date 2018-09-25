@@ -3,7 +3,7 @@ title: Osvědčené postupy provozní zabezpečení Azure | Dokumentace Microsof
 description: Tento článek poskytuje sadu osvědčených postupů pro provozní zabezpečení Azure.
 services: security
 documentationcenter: na
-author: unifycloud
+author: TerryLanfear
 manager: mbaldwin
 editor: tomsh
 ms.assetid: ''
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
-ms.author: tomsh
-ms.openlocfilehash: d8f6ad48c62ff2021c91e593cee44dd6f5551247
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 09/20/2018
+ms.author: terrylan
+ms.openlocfilehash: d005dd01de0dff0136c0a4e9775001dbe018228f
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297904"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035279"
 ---
 # <a name="azure-operational-security-best-practices"></a>Osvědčené postupy Azure provozní zabezpečení
-Azure Operational Security odkazuje na služby, ovládací prvky a funkce, které jsou dostupné pro uživatele k ochraně svých dat, aplikací a dalších prostředků ve službě Microsoft Azure. Provozní zabezpečení Azure je založen na rozhraní, která zahrnuje poznatky získané při různé schopnosti, které jsou jedinečné pro Microsoftu, mezi které patří Microsoft Security Development Lifecycle (SDL), programu Microsoft Security Response Center a deep povědomí o zabezpečení.
+Azure operational security odkazuje na služby, ovládací prvky a funkce, které jsou dostupné pro uživatele k ochraně svých dat, aplikací a dalších prostředků v Azure. Provozní zabezpečení Azure je založen na rozhraní, která zahrnuje poznatky získané díky funkcím, které jsou jedinečné pro Microsoft, včetně [Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl), [Microsoft Security Response Center](https://www.microsoft.com/msrc?rtc=1) programu a hloubkové povědomí o zabezpečení.
 
-V tomto článku se podíváme na kolekci osvědčené postupy zabezpečení Azure database. Tyto osvědčené postupy jsou odvozeny z našich zkušeností s zabezpečení služby Azure database a prostředí zákazníků, jako je sami.
+V tomto článku se podíváme na kolekci osvědčené postupy zabezpečení. Tyto osvědčené postupy jsou odvozeny z našich zkušeností s zabezpečení služby Azure database a prostředí zákazníků, jako je sami.
 
 Pro každý osvědčeným postupem je vám vysvětlíme:
 -   Jaký je doporučený postup
@@ -34,146 +34,99 @@ Pro každý osvědčeným postupem je vám vysvětlíme:
 
 Tento článek osvědčené postupy provozní zabezpečení Azure je založen na stanovisko shody a možnostech platformy Azure a sady funkcí, protože existují v okamžiku, kdy byla zapsána v tomto článku. Názory a technologie v průběhu času měnit a tento článek bude aktualizován v pravidelných intervalech, aby tyto změny projevily.
 
-Provozní zabezpečení Azure, které zahrnují osvědčené postupy popsané v tomto článku:
+## <a name="monitor-storage-services-for-unexpected-changes-in-behavior"></a>Monitorování služby storage pro neočekávaným změnám v chování
+Diagnostika a řešení potíží v distribuované aplikaci hostované v cloudovém prostředí můžou být složitější než v tradičních prostředí. Aplikace můžete nasadit v infrastruktuře PaaS nebo IaaS v místním prostředí, na mobilním zařízení, nebo určitou kombinaci těchto prostředích. Síťový provoz vaší aplikace můžou procházet veřejný a privátní sítě a vaše aplikace může používat více technologií úložišť.
 
--   Monitorování, Správa a ochrana cloudové infrastruktury
--   Správa identit a provádět jednotné přihlašování (SSO)
--   Trasování požadavků, analýze trendů využití a Diagnostika problémů
--   Monitorování služeb s řešením centralizované monitorování
--   Hrozbami, detekci a reakce na hrozby
--   Monitorování sítě založené na scénářích začátku do konce
--   Zabezpečení nasazení pomocí prověřené nástroje DevOps
+Nepřetržitě, měli byste sledovat služby úložiště, které vaše aplikace používá pro všechny neočekávaným změnám v chování (například pomalejší doby odezvy). Použití protokolování shromažďovat detailní data a k analýze problému do hloubky. Diagnostické informace, které můžete získat z monitorování a protokolování vám umožní zjistit původní příčinu problému, který vaše aplikace zjistila. Potom můžete tento problém vyřešit a určit příslušné kroky k jeho řešení.
 
-## <a name="monitor-manage-and-protect-cloud-infrastructure"></a>Monitorování, Správa a ochrana cloudové infrastruktury
-Provoz IT zodpovídá za správu infrastruktury datového centra, aplikace a data, včetně stabilitu a zabezpečení těchto systémů. Získávání informací o zabezpečení napříč často zvýšení komplexní IT prostředí však vyžaduje organizacím cobble dohromady data z několika systémů zabezpečení a správu.
-
-[Microsoft Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) je společnosti Microsoft cloudové řešení pro správu IT, která pomáhá spravovat a chránit místní a cloudovou infrastrukturu.
-
-[Řešení OMS Security and Audit](https://docs.microsoft.com/azure/operations-management-suite/oms-security-monitoring-resources) umožňují IT aktivně monitorovat všechny prostředky, které může pomoci minimalizovat dopad incidentů zabezpečení. OMS Security and Audit mít domény zabezpečení, které lze použít pro monitorování prostředků.
-
-Další informace o OMS najdete v článku [Operations Management Suite](https://technet.microsoft.com/library/mt484091.aspx).
-
-Abychom vám hrozbami, detekci a reakce na hrozby, [řešení Operations Management Suite (OMS) zabezpečení a Audit](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) shromažďuje a zpracovává data o vašich prostředků, která zahrnuje:
-
--   Protokol událostí zabezpečení
--   Události Trasování událostí pro Windows
--   Události auditování AppLocker
--   Protokol brány Windows Firewall
--   Události Rozšířené analýzy hrozeb
--   Výsledky základního vyhodnocování
--   Výsledky antimalwarového vyhodnocování
--   Výsledky vyhodnocování aktualizací a oprav
--   Datové proudy Syslog explicitně povolené v agentovi
-
-
-## <a name="manage-identity-and-implement-single-sign-on"></a>Správa identit a implementaci jednotného přihlašování
-[Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) Microsoftu pro více tenantů cloudový adresář a služba pro správu identit.
-
-[Azure AD](https://azure.microsoft.com/services/active-directory/) zahrnuje také plnohodnotné sadě [správy identit](https://docs.microsoft.com/azure/security/security-identity-management-overview) možnosti, jako je [ověřování službou Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication), Správa hesla pomocí samoobslužné služby, registrace zařízení Samoobslužná správa skupin, správu privilegovaných účtů, řízení přístupu na základě rolí, využití aplikací, sledování, formátováním auditování a monitorování a výstrah zabezpečení.
-
-Tyto možnosti můžete pomůže zabezpečených cloudových aplikací, zjednodušit IT procesy, snížit náklady a ujistěte se, že dodržování podnikových předpisů cíle jsou splněny:
-
--   Správa identit a přístupu do cloudu
--   Zjednodušení přístupu uživatelů do cloudových aplikací
--   Ochrana citlivých dat a aplikací
--   Zajistěte pro svoje zaměstnance samoobslužné možnosti.
--   Integrace se službou Azure Active Directory
-
-### <a name="identity-and-access-management-for-the-cloud"></a>Správa identit a přístupu do cloudu
-Azure Active Directory (Azure AD) je komplexní [cloudové řešení správy identit a přístupu](https://www.microsoft.com/cloud-platform/identity-management), které poskytuje robustní sadu funkcí pro správu uživatelů a skupin. Pomáhá zabezpečit přístup k místním i cloudovým aplikacím, včetně webových služeb Microsoftu jako Office 365 a mnoho jiných společností než Microsoft software jako služba (SaaS) aplikací.
-Zjistíte, jak povolit identity protection ve službě Azure AD, najdete v článku [povolení Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-enable).
-
-### <a name="simplify-user-access-to-any-cloud-app"></a>Zjednodušení přístupu uživatelů do cloudových aplikací
-[Povolit jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/active-directory-sso-integrate-saas-apps) pro zjednodušení přístupu uživatelů k tisícům cloudových aplikací ze zařízení s Windows, Mac OS, Android a iOS. Uživatelé můžou spouštět aplikace z panelu individuální přístupu na základě webové nebo mobilní aplikace pomocí svých přihlašovacích údajů společnosti. Můžete jít za hranice aplikací SaaS a publikovat místní webové aplikace a zajistit vysoce zabezpečený vzdálený přístup a jednotné přihlašování pomocí modulu Azure AD Application Proxy.
-
-### <a name="protect-sensitive-data-and-applications"></a>Ochrana citlivých dat a aplikací
-Povolit [ověřování Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication) zabránit neoprávněnému přístupu k místním a cloudovým aplikacím pomocí víceúrovňového ověřování. Chraňte svoji firmu a reagujte na potenciální hrozby sledováním výstrah zabezpečení a sestav založených na strojovém učení, které rozpoznávají nekonzistentní vzorce přístupu.
-
-### <a name="enable-self-service-for-your-employees"></a>Zajistěte pro svoje zaměstnance samoobslužné možnosti.
-Delegujte důležité úkoly, jako je resetování hesel nebo vytváření a správa skupin, na svoje zaměstnance. [Povolit změnu hesla pomocí samoobslužné služby](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-update-your-own-password), resetování nebo samoobslužné skupiny správy s využitím Azure AD.
-
-### <a name="integrate-with-azure-active-directory"></a>Integrace se službou Azure Active Directory
-Rozšíření [služby Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-to-integrate) a další místní adresáře do služby Azure AD umožňuje jednotné přihlašování pro všechny cloudové aplikace. Atributy uživatelů se budou automaticky synchronizovat s vaší cloudovou adresářovou službou. 
-
-Další informace o integraci služby Azure Active Directory a jak se dá povolit, najdete v článku [integrace místních adresářů se službou Azure Active Directory](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect).
-
-## <a name="trace-requests-analyze-usage-trends-and-diagnose-issues"></a>Trasování požadavků, analýze trendů využití a Diagnostika problémů
-[Azure Storage Analytics](https://docs.microsoft.com/azure/storage/storage-analytics) provádí protokolování a poskytuje data metriky pro účet úložiště. Tato data můžete použít k trasování požadavků, analýze trendů použití a diagnostice problémů s účtem úložiště.
-
-Ve výchozím nastavení pro nové účty úložiště jsou povolené metrikách Storage Analytics. Můžete povolit protokolování a nakonfigurovat metrik a protokolování na portálu Azure Portal; Podrobnosti najdete v tématu [monitorování účtu úložiště na webu Azure Portal](https://docs.microsoft.com/azure/storage/storage-monitor-storage-account). Můžete také povolit Storage Analytics prostřednictvím kódu programu přes rozhraní REST API nebo knihovny klienta. Pomocí operace nastavit vlastnosti služby můžete povolit Storage Analytics jednotlivě pro každou službu.
-
-Podrobný průvodce k identifikaci, diagnostice a řešit problémy související s Azure Storage pomocí Storage Analytics a další nástroje, najdete v části [monitorování, Diagnostika a řešení problémů s Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting).
-
-Další informace o integraci služby Azure Active Directory a jak se dá povolit, najdete v článku [povolení a konfigurace úložiště analýzy](https://docs.microsoft.com/rest/api/storageservices/Enabling-and-Configuring-Storage-Analytics?redirectedfrom=MSDN).
-
-## <a name="monitoring-services"></a>Monitorování služby
-Cloudové aplikace jsou složité s řadu pohyblivých částí. Monitorování poskytuje data k zajištění, že systém zůstane vaší aplikace v provozu a spuštěná v dobrém stavu. Také pomáhá stave vypnout potenciální problémy a řešení potíží s poslední těch, které jsou. Kromě toho můžete data monitorování získat podrobný přehled o vaší aplikaci. Dané znalosti můžete dozvíte, jak zlepšit výkon aplikace nebo udržovatelnosti nebo automatizaci akcí, které by jinak vyžadují ruční zásah.
-
-### <a name="monitor-azure-resources"></a>Monitorování prostředků Azure
-[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-get-started) je služba platformy, která poskytuje jeden zdroj pro monitorování prostředků Azure. Prostřednictvím služby Azure Monitor můžete vizualizovat metriky a protokoly pocházející z prostředků v Azure, zadávat na ně dotazy, směrovat je, archivovat je a provádět s nimi příslušné akce. S těmito daty můžete pracovat prostřednictvím okna portálu Monitor, [rutin prostředí PowerShell pro monitorování](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-powershell-samples), [rozhraní příkazového řádku pro různé platformy](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-cli-samples) nebo [rozhraní API REST služby Azure Monitor](https://msdn.microsoft.com/library/dn931943.aspx).
-
-### <a name="enable-autoscale-with-azure-monitor"></a>Povolit automatické škálování pomocí Azure monitoru
-Povolit [automatické škálování služby Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-autoscale-get-started) platí pouze pro škálovací sady virtuálních počítačů (VMSS), cloud services, plánů služby app service a app service Environment.
-
-### <a name="manage-roles-permissions-and-security"></a>Spravovat role oprávnění a zabezpečení
-Mnoho týmů potřebuje pro výhradně [regulovat přístup k monitorování](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security) data a nastavení. Například pokud jste členy týmu, kteří pracují výhradně na monitorování (techniky podpory, technikům devops) nebo pokud používáte poskytovatel spravované služby, můžete jim udělit přístup k datům monitorování pouze při omezení jejich schopnost vytvářet, upravovat, nebo Odstraňte prostředky.
-
-To ukazuje, jak rychle použít předdefinované role RBAC monitorování na uživatele v Azure nebo vytvářet vlastní vlastní role pro uživatele, který potřebuje monitorování omezená oprávnění. Pak popisuje aspekty zabezpečení pro vaše prostředky související s Azure Monitor a jak můžete omezit přístup k datům, které obsahují.
+[Azure Storage Analytics](../storage/storage-analytics.md) provádí protokolování a poskytuje data metriky pro účet úložiště Azure. Doporučujeme, abyste tato data použít k trasování požadavků, analýze trendů použití a diagnostikovat problémy s vaším účtem úložiště.
 
 ## <a name="prevent-detect-and-respond-to-threats"></a>Hrozbami, detekci a reakce na hrozby
-Detekce hrozeb služby Security Center funguje tak, že se automaticky shromažďují informace o zabezpečení z prostředků Azure, sítě a připojených partnerských řešení. Analyzuje se tyto informace, často přitom koreluje data z více zdrojů, a identifikovat hrozby. U výstrah zabezpečení se ve službě Security Center stanoví priority spolu s doporučením, jak danou hrozbu vyřešit.
+[Azure Security Center](../security-center/security-center-intro.md) pomáhá zabránit, detekci a reakce na ně prostřednictvím zvýšené viditelnosti (a kontrolu nad) zabezpečení vašich prostředků Azure. Poskytuje integrované bezpečnostní sledování a správu zásad ve vašich předplatných Azure, pomáhá zjišťovat hrozby, které jinak nevšimli a spolupracuje s různá řešení zabezpečení.
 
--   [Konfigurace zásad zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-policies) pro vaše předplatné Azure.
--   Použití [doporučení ve službě Security Center](https://docs.microsoft.com/azure/security-center/security-center-recommendations) k ochraně vašich prostředků Azure.
--   Prohlížet a spravovat vaše aktuální [výstrahy zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts).
+Bezplatná úroveň Security Center nabízí omezené zabezpečení vašich prostředků Azure pouze. Úroveň Standard tyto možnosti rozšiřuje do místní i v jiných cloudech. Security Center úrovně Standard pomáhá vyhledávat a opravovat ohrožení zabezpečení, blokovat škodlivou aktivitu pomocí ovládacích prvků přístupu a aplikací, detekovat hrozby s využitím analýz a inteligentních funkcí a rychle reagovat v případě útoku. Službu Security Center v cenové úrovni Standard si můžete zdarma vyzkoušet na 60 dní. Doporučujeme vám [připojení předplatného Azure na Security Center úrovně Standard](../security-center/security-center-get-started.md).
 
-[Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) pomáhá předcházet hrozbám, rozpoznávat je a reagovat na ně a nabízí lepší přehled o zabezpečení prostředků Azure a kontrolu nad nimi. Poskytuje integrované bezpečnostní sledování a správu zásad ve vašich předplatných Azure, pomáhá zjišťovat hrozby, kterých byste si jinak nevšimli, a spolupracuje s řadou řešení zabezpečení.
+Použití služby Security Center k získání přehledu o stavu zabezpečení všech vašich prostředků Azure. Na první pohled ověřte, zda kontrolních mechanismů zabezpečení jsou na místě a správně nakonfigurován a rychle identifikovat všechny prostředky, které vyžadují pozornost.
 
-Security Center nabízí snadno použitelné a efektivní funkce prevence, zjišťování a reakce na ohrožení, které jsou integrované v Azure. Klíčové funkce:
+## <a name="monitor-end-to-end-scenario-based-network-monitoring"></a>Sledování monitorování sítě založené na scénářích začátku do konce
+Můžou zákazníci sestavovat síť začátku do konce v Azure díky kombinaci síťovým prostředkům, jako jsou virtuální síť, ExpressRoute, Application Gateway a nástroje pro vyrovnávání zatížení. Monitorování je k dispozici na všech síťových prostředků.
 
--   Vysvětlení stavu cloudového zabezpečení
--   Převzetí kontroly nad zabezpečením cloudu
--   Snadné nasazení integrovaných řešení cloudového zabezpečení
--   Rozpoznání hrozeb a rychlá reakce
+[Azure Network Watcher](../network-watcher/network-watcher-monitoring-overview.md) je místní služba. Použijte jeho diagnostické a vizualizační nástroje můžete monitorovat a diagnostikovat podmínky na úrovni síťového scénáře v, do a z Azure.
 
-### <a name="understand-cloud-security-state"></a>Vysvětlení stavu cloudového zabezpečení
-Díky službě Azure Security Center získáte přehled o stavu zabezpečení všech vašich prostředků Azure. Na první pohled ověřte, že jsou splněné kontrolních mechanismů zabezpečení a správně nakonfigurovaný a rychle identifikovat všechny prostředky, které vyžadují pozornost.
+Níže jsou osvědčené postupy pro monitorování a k dispozici nástroje sítě.
 
-### <a name="take-control-of-cloud-security"></a>Převzetí kontroly nad zabezpečením cloudu
-Definování [zásady zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-policies) pro předplatná Azure podle potřeb zabezpečení vaší společnosti cloudu, přizpůsobené podle typu aplikací nebo citlivosti dat v každém předplatném. K tomu, abyste vlastníky prostředků provedli procesem implementace požadovaných kontrolních mechanismů, použijte doporučení na základě zásad – zabezpečení cloudu se tak provede najisto.
+**Osvědčený postup**: automatizace monitorování vzdálené sítě pomocí zachytávání paketů.   
+**Podrobnosti o**: monitorování a diagnostice síťových potíží není nutné se připojit k vašim virtuálním počítačům pomocí Network Watcher. Aktivační událost [zachytávání paketů](../network-watcher/network-watcher-alert-triggered-packet-capture.md) tím, že nastavení výstrah a získat přístup k informacím o výkonu v reálném čase na úrovni paketů. Když narazíte na problém, můžete ho prozkoumat podrobněji a lépe diagnostikovat.
 
-### <a name="easily-deploy-integrated-cloud-security-solutions"></a>Snadné nasazení integrovaných řešení cloudového zabezpečení
-[Povolit řešení zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-partner-integration) od Microsoftu a jeho partnerů, včetně špičkové firewallů a antimalwaru. Používá se zjednodušené zřizování, které umožňuje nasazovat řešení zabezpečení – dokonce i změny v nastavení sítě se nakonfigurují automaticky. Události zabezpečení z partnerských řešení se automaticky shromažďují, aby je bylo možné analyzovat a generovat z nich upozornění.
+**Osvědčený postup**: získat přehled o provozu vaší sítě pomocí protokolů toků.   
+**Podrobnosti o**: vytvářet lepší představu o vaší síti vzory provozu s využitím [protokoly toků skupin zabezpečení sítě](../network-watcher/network-watcher-nsg-flow-logging-overview.md). Informace v protokolech toku umožňuje shromažďovat data pro dodržování předpisů, auditování a monitorování profilu síťového zabezpečení.
 
-### <a name="detect-threats-and-respond-fast"></a>Rozpoznání hrozeb a rychlá reakce
-Udržování náskoku před aktuálními a nově vznikajícími cloudovými hrozbami vyžaduje integrovaný analytický přístup. Díky spojení globálních Microsoft [hrozeb](https://docs.microsoft.com/azure/security-center/security-center-detection-capabilities) a zkušenosti, díky přehledu o cloudových událostech týkajících se zabezpečení celého nasazení Azure, Security Center pomáhá včas zjišťovat skutečné hrozby a snížil počet falešných poplachů. Výstrahy cloudového zabezpečení poskytují podrobné informace o kampaních obsahujících útoky, včetně souvisejících událostí a ovlivněných prostředků a navrhují možnosti, jak tyto problémy vyřešit a rychle obnovit provoz.
+**Osvědčený postup**: problémy s připojením VPN diagnostikovat.   
+**Podrobnosti o**: Network Watcher, aby [diagnostikovat nejběžnější problémy brány VPN a připojení](../network-watcher/network-watcher-diagnose-on-premises-connectivity.md). Můžete nejenom identifikovat problém, ale také použít podrobné protokoly k hlubšímu prošetření.
 
-## <a name="end-to-end-scenario-based-network-monitoring"></a>Monitorování sítě založené na scénářích začátku do konce
-Zákazníků, kteří vytvářejí síť začátku do konce v Azure pomocí Orchestrace a sestavování různých jednotlivým síťovým prostředkům, například virtuální síť, ExpressRoute, služba Application Gateway, nástroje pro vyrovnávání zatížení a další. Monitorování je k dispozici na všech síťových prostředků.
+## <a name="secure-deployment-by-using-proven-devops-tools"></a>Zabezpečení nasazení s použitím prověřené nástroje DevOps
+K zajištění, že vaše organizace a týmy produktivnějších a efektivnějších použijte následující osvědčené postupy DevOps.
 
-[Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) je místní služba, která umožňuje monitorovat a diagnostikovat podmínky na scénář sítě úrovně, do a z Azure. Pro diagnostiku sítě a vizualizačních nástrojů, které jsou k dispozici pomocí služby Network Watcher pomáhají porozumět, diagnostice a získání přehledu o vaší síti v Azure.
+**Osvědčený postup**: automatizace sestavení a nasazení služeb.   
+**Podrobnosti o**: [infrastruktura jako kód](https://en.wikipedia.org/wiki/Infrastructure_as_Code) představují sadu technik a postupů, které pomáhají odborníkům v odebrání si museli dělat starosti každodenní sestavení a správu modulární infrastruktury. Umožňuje odborníkům na IT vytvářet a spravovat jejich prostředí moderních serverových způsobem, který je třeba jak vývojářům softwaru vytvářet a spravovat kód aplikace.
 
-### <a name="automate-remote-network-monitoring-with-packet-capture"></a>Automatizace monitorování vzdálené sítě pomocí zachytávání paketů
-Při monitorování a diagnostice síťových potíží není nutné se připojit k virtuálním počítačům pomocí Network Watcheru. Aktivační událost [zachytávání paketů](https://docs.microsoft.com/azure/network-watcher/network-watcher-alert-triggered-packet-capture) tím, že nastavení výstrah a získat přístup k informacím o výkonu v reálném čase na úrovni paketů. Když narazíte na problém, můžete ho prozkoumat podrobněji a lépe diagnostikovat.
+Můžete použít [Azure Resource Manageru](https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/) zřizovat aplikace pomocí deklarativní šablony. S jednou šablonou můžete nasadit několik služeb společně s jejich závislostmi. Použít stejnou šablonu k opakovanému nasazení aplikace v každé fázi životního cyklu aplikací.
 
-### <a name="gain-insight-into-your-network-traffic-using-flow-logs"></a>Získejte přehled o provozu sítě pomocí protokolů toků
-Získáte lepší přehled pomocí vzoru provoz sítě [protokoly toků skupin zabezpečení sítě](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview). Informace, které protokoly toků poskytují umožňuje shromažďovat data pro dodržování předpisů, auditování a monitorování profilu síťového zabezpečení.
+**Osvědčený postup**: automaticky sestavit a nasadit do webové aplikace Azure nebo cloudových služeb.   
+**Podrobnosti o**: můžete vytvořit týmové projekty Visual Studio Team Services (VSTS) do [automaticky vytvářet a nasazovat](https://www.visualstudio.com/docs/build/overview) do Azure web apps nebo cloud services. VSTS automaticky nasadí binární soubory po provedení po každé kód vrácení se změnami sestavení do Azure. Proces sestavení balíčku je ekvivalentní příkazu balíčku v sadě Visual Studio a postup publikování je ekvivalentní příkazu Publikovat v sadě Visual Studio.
 
-### <a name="diagnose-vpn-connectivity-issues"></a>Diagnostika potíží s připojením VPN
-Network Watcher dává možnost [diagnostikovat nejběžnější potíže připojeními a branami VPN](https://docs.microsoft.com/azure/network-watcher/network-watcher-diagnose-on-premises-connectivity). Umožňují nejenom identifikovat problém, ale také na základě podrobných protokolů vytvořili za účelem dále zkoumat.
+**Osvědčený postup**: automatizace release management.   
+**Podrobnosti o**: Visual Studio [Release Management](https://msdn.microsoft.com/library/vs/alm/release/overview) je řešení pro automatizaci nasazení více fázi procesu vydávání verzí. Vytvoření spravovaných postupů plynulého nasazování kanálů k uvolnění rychlé, snadné a časté. Pomocí řešení Release Management můžete automatizovat proces vydávání verzí a může mít předdefinované schvalovacích pracovních postupů. Nasazení v místním prostředí a do cloudu, rozšíření a přizpůsobení podle potřeby.
 
-Další informace o tom, jak konfigurace Network watcheru a jak se dá povolit, najdete v článku [konfigurace Network watcheru](https://docs.microsoft.com/azure/network-watcher/network-watcher-create).
+**Osvědčený postup**: Zkontrolujte výkon vaší aplikace předtím, než ji spustit nebo nasadit aktualizace do produkčního prostředí.   
+**Podrobnosti o**: spuštění založené na cloudu [zátěžové testy](https://www.visualstudio.com/docs/test/performance-testing/getting-started/getting-started-with-performance-testing) pomocí VSTS pro:
 
-## <a name="secure-deployment-using-proven-devops-tools"></a>Zabezpečení nasazení pomocí prověřené nástroje DevOps
-Toto jsou některé seznamu o Azure DevOps postupy v tomto prostoru cloudu společnosti Microsoft, který umožňuje podnikům a týmům produktivnějších a efektivnějších.
+- Zjišťování problémů s výkonem ve vaší aplikaci.
+- Zlepšení kvality nasazení.
+- Ujistěte se, že vaše aplikace je vždy k dispozici.
+- Ujistěte se, že vaše aplikace dokáže zpracovat provoz pro další spuštění nebo marketingové kampani.
 
--   **Infrastruktura jako kód (IaC):** infrastruktura jako kód je sada technik a postupů, které pomáhají odborníkům v odebrání režie související se správou infrastruktury modulární a každodenní sestavení. To umožňuje odborníkům na IT vytvářet a spravovat jejich prostředí moderních serverových způsobem, který je třeba jak vývojářům softwaru vytvářet a spravovat kód aplikace. Pro Azure, máme [Azure Resource Manageru]( https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/) umožňuje zřizovat aplikace pomocí deklarativní šablony. S jednou šablonou můžete nasadit několik služeb společně s jejich závislostmi. Stejnou šablonu můžete použít k opakovanému nasazení aplikace během každé fáze životního cyklu této aplikace.
--   **Průběžná integrace a nasazování:** projektů Azure DevOps můžete nakonfigurovat [automaticky vytvářet a nasazovat](https://www.visualstudio.com/docs/build/overview) do Azure web apps nebo cloud services. Azure DevOps automaticky nasadí binární soubory po provedení po každé kód vrácení se změnami sestavení do Azure. Proces sestavení balíčku je zde popsáno, je ekvivalentní příkazu balíčku v sadě Visual Studio a postup publikování je ekvivalentní příkazu Publikovat v sadě Visual Studio.
--   **Release Management:** sady Visual Studio [Release Management](https://msdn.microsoft.com/library/vs/alm/release/overview) je skvělým řešením pro automatizaci nasazení více fázi procesu vydávání verzí. Vytvoření spravovaných postupů plynulého nasazování kanálů k uvolnění rychlé, snadné a časté. Pomocí řešení Release Management mnohem dokážeme automatizovat náš proces vydávání verzí a budeme mít v předdefinované schvalovacích pracovních postupů. Nasazení v místním prostředí a do cloudu, rozšíření a přizpůsobení podle potřeby.
--   **Monitorování výkonu aplikace:** zjistit potíže, vyřešit problémy a neustále vylepšovat vaše aplikace. Rychle diagnostikuje problémy uvedené ve vaší živé aplikaci. Pochopte, co s ní vaši uživatelé dělají. Konfigurace se snadno přidáte kód JS a webconfig záznam a zobrazit výsledky v rámci minut na portálu najdete všechny podrobnosti. [App insights](https://azure.microsoft.com/documentation/articles/app-insights-start-monitoring-app-health-usage/) pomáhá podnikům pro rychlejší zjišťování problémů s & nápravy problému.
--   **Načíst testování a automatické škálování:** vyskytly problémy s výkonem v aplikaci a zlepšovat kvalitu nasazení a a ujistěte se, že naše aplikace je vždy nahoru nebo budou k dispozici pro obchodní potřeby. Ujistěte se, že vaše aplikace dokáže zpracovat provoz pro další spuštění nebo marketingové kampani. Začněte spouštět cloudové [zátěžové testy](https://www.visualstudio.com/docs/test/performance-testing/getting-started/getting-started-with-performance-testing) raz téměř s Azure DevOps.
+**Osvědčený postup**: monitorování výkonu aplikací.   
+**Podrobnosti o**: [Azure Application Insights](../application-insights/app-insights-overview.md) je služby extensible application performance management (APM) pro webovým vývojářům na více platforem. Monitorování živé webové aplikace pomocí Application Insights. Automaticky zjišťuje anomálie výkonu. Zahrnuje analytické nástroje, které vám pomohou diagnostikovat problémy a pochopit, co uživatelé dělají s vaší aplikací. Je navržena tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití.
+
+## <a name="mitigate-and-protect-against-ddos"></a>Omezení rizik a chránit proti před útoky DDoS
+Distribuované s cílem odepření služeb (DDoS) je typ útoku, který se pokouší vyčerpání prostředků aplikace. Cílem je mít vliv na dostupnost vaší aplikace a její schopnost zpracovávat oprávněné požadavky. Tyto útoky se stávají propracované a větší velikost a dopad. Můžete ji cílit na libovolný koncový bod, který je veřejně dostupný prostřednictvím Internetu.
+
+Návrh a vývoj aplikací pro odolnost proti chybám před útoky DDoS vyžaduje plánování a návrh pro různé režimy selhání.
+
+Toto jsou osvědčené postupy pro vytváření před útoky DDoS odolných služeb v Azure.
+
+**Osvědčený postup**: Ujistěte se, že zabezpečení priority v průběhu celého životního cyklu aplikace, od návrhu a implementace až po nasazení a provoz. Aplikace může mít chyby, které umožňují relativně nízký objem požadavků na použití velké množství prostředků, což vede k výpadku služeb.    
+**Podrobnosti o**: K ochraně služby spuštěné v Microsoft Azure, musí mít dostatečné povědomí o vaší aplikace architektury a zaměřit [pět pilířů kvality softwaru](https://docs.microsoft.com/azure/architecture/guide/pillars). Typické provozem, měli byste vědět model připojení mezi aplikací a další aplikace a koncové body služby, které jsou vystaveny do veřejného Internetu.
+
+Zajištění, že aplikace je dostatečně odolné pro zpracování odepření služby, který je zaměřený na vlastní aplikace je nejdůležitější. Zabezpečení a ochrana osobních údajů jsou integrované do platformy Azure počínaje [Security Development Lifecycle (SDL)](https://www.microsoft.com/en-us/sdl). Do procesu SDL zajišťuje zabezpečení ve všech fázích vývoje a zajišťuje, že Azure se průběžně aktualizuje, aby byl ještě větší zabezpečení.
+
+**Osvědčený postup**: navrhnout aplikace tak [škálovat horizontálně](https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out) podle potřeby zesilovací zatížení, konkrétně v případě útoku DDoS. Pokud je aplikace závislá na jednu instanci služby, vzniká jediný bod selhání. Zřízení více instancí je váš systém větší škálovatelnost a odolnost.   
+**Podrobnosti o**: pro [služby Azure App Service](../app-service/app-service-value-prop-what-is.md)vyberte [plán služby App Service](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) , který nabízí více instancí.
+
+Pro Azure Cloud Services, nakonfigurovat všechny své role používat [více instancí](../cloud-services/cloud-services-choose-me.md).
+
+Pro [Azure Virtual Machines](../virtual-machines/windows/overview.md), ujistěte se, že vaše Architektura virtuálního počítače obsahuje více než jeden virtuální počítač a že každý virtuální počítač je součástí [dostupnosti](../virtual-machines/virtual-machines-windows-manage-availability.md). Doporučujeme, abyste pomocí virtuálního počítače škálovací sady pro možnosti automatického škálování.
+
+**Osvědčený postup**: vrstvení obrana zabezpečení v aplikaci snižuje pravděpodobnost úspěšného útoku. Zabezpečené vzory pro vaše aplikace implementovat pomocí integrované funkce platformy Azure.   
+**Podrobnosti o**: hodnota se zvyšuje riziko útoku s velikost (styčné plochy) aplikace. Můžete snížit styčné plochy pomocí přidávání na seznam povolených uzavřeny vystavené adresní prostor IP adres a naslouchání porty, které nejsou potřebné v nástrojích pro vyrovnávání zatížení ([Azure Load Balancer](../load-balancer/load-balancer-get-started-internet-portal.md) a [Azure Application Gateway](../application-gateway/application-gateway-create-probe-portal.md)).
+
+[Skupiny zabezpečení sítě](../virtual-network/security-overview.md) představují jiný způsob omezení možností útoku. Můžete použít [značky služeb](../virtual-network/security-overview.md#service-tags) a [skupiny zabezpečení aplikací](../virtual-network/security-overview.md#application-security-groups) minimalizovat složitost vytváření pravidla zabezpečení a konfigurace zabezpečení sítě jako přirozené rozšíření struktury aplikace.
+
+Měli byste nasadit služby Azure v [virtuální sítě](../virtual-network/virtual-networks-overview.md) kdykoli je to možné. Tento postup umožňuje prostředky služby pro komunikaci prostřednictvím privátních IP adres. Provoz služeb Azure z virtuální sítě jako zdrojové IP adresy používá veřejné IP adresy ve výchozím nastavení.
+
+Pomocí [koncové body služby](../virtual-network/virtual-network-service-endpoints-overview.md) služby přepne provoz na používání privátních adres virtuální sítě jako zdrojové IP adresy, když přistupuje služby Azure z virtuální sítě.
+
+Vidíme často zákazníků s místními prostředky získávání napadených spolu s jejich prostředky v Azure. Pokud se připojujete do místního prostředí do Azure, omezit vystavení místních prostředků do veřejného Internetu.
+
+Azure má dva DDoS [nabídek služeb](../virtual-network/ddos-protection-overview.md) , které poskytují ochranu před útoky ze sítě:
+
+- Basic protection je integrovaná do Azure ve výchozím nastavení bez dalších poplatků. Škálování a kapacitu sítě globálně nasazených Azure poskytuje ochranu před běžnými útoky síťové vrstvě prostřednictvím monitorování a v reálném čase zmírnění neustále v provozu. Basic vyžaduje žádné změny v konfiguraci nebo aplikace uživatele a pomáhá chránit všechny služby Azure, včetně služeb PaaS, jako je Azure DNS.
+- Standard protection nabízí pokročilé funkce pro zmírnění útoků DDoS proti síťovým útokům. Toto pravidlo je vyladěný automaticky k ochraně vašich konkrétních prostředků Azure. Ochrana je snadno zajistit při vytváření virtuální sítě. Je možné provést po vytvoření a nevyžaduje žádné změny aplikace nebo prostředku.
 
 ## <a name="next-steps"></a>Další postup
-- Další informace o [provozní zabezpečení Azure](https://docs.microsoft.com/azure/security/azure-operational-security).
-- Další informace [Operations Management Suite | Security & Compliance](https://www.microsoft.com/cloud-platform/security-and-compliance).
-- [Začínáme se službou Operations Management Suite Security a řešení auditu](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started).
+Zobrazit [osvědčené postupy zabezpečení Azure a vzory](security-best-practices-and-patterns.md) pro další doporučené postupy zabezpečení, mají použít, když jste návrhu, nasazení a správa cloudových řešení pomocí služby Azure.
+
+Jsou následující prostředky vám poskytnou další obecné informace o zabezpečení Azure a související služby Microsoftu:
+* [Blog týmu Azure zabezpečení](https://blogs.msdn.microsoft.com/azuresecurity/) – aktuální informace o nejnovější vydání v Azure Security
+* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) – tam, kde mohou být hlášeny chyby zabezpečení společnosti Microsoft, včetně problémů s Azure, nebo prostřednictvím e-mailu secure@microsoft.com

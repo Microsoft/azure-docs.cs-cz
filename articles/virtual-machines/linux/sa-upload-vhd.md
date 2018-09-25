@@ -1,6 +1,6 @@
 ---
-title: Nahrání vlastního disku Linux pomocí příkazového řádku Azure CLI 2.0 | Dokumentace Microsoftu
-description: Vytvoření a nahrání virtuálního pevného disku (VHD) do Azure s využitím modelu nasazení Resource Manager a rozhraní příkazového řádku Azure CLI 2.0
+title: Nahrání vlastního disku Linux pomocí příkazového řádku Azure | Dokumentace Microsoftu
+description: Vytvoření a nahrání virtuálního pevného disku (VHD) do Azure s využitím modelu nasazení Resource Manager a Azure CLI
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,22 +15,23 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: 4b05c4c7db1e1c1953af2466d2c6a277baa07082
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 1926f0bcf7efca786e97bd973601888e5a8d4463
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737341"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966499"
 ---
-# <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli-20"></a>Nahrání a vytvoření virtuálního počítače s Linuxem z vlastního disku pomocí rozhraní příkazového řádku Azure CLI 2.0
-Tento článek popisuje, jak vytvořit virtuální počítače s Linuxem z vlastního disku a nahrání virtuálního pevného disku (VHD) do účtu služby Azure storage pomocí rozhraní příkazového řádku Azure CLI 2.0. Tato funkce umožňuje instalovat a konfigurovat distribuce Linuxu svých požadavků a pak použít tento virtuální pevný disk můžete rychle vytvořit virtuální počítače Azure (VM).
+# <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Nahrání a vytvoření virtuálního počítače s Linuxem z vlastního disku pomocí rozhraní příkazového řádku Azure
+
+Tento článek popisuje, jak vytvořit virtuální počítače s Linuxem z vlastního disku a nahrání virtuálního pevného disku (VHD) do účtu služby Azure storage pomocí Azure CLI. Tato funkce umožňuje instalovat a konfigurovat distribuce Linuxu svých požadavků a pak použít tento virtuální pevný disk můžete rychle vytvořit virtuální počítače Azure (VM).
 
 Toto téma používá účty úložiště pro poslední virtuální pevné disky, ale můžete také provést tento postup pomocí [spravované disky](upload-vhd.md). 
 
 ## <a name="quick-commands"></a>Rychlé příkazy
 Pokud je potřeba rychle provést úlohu, následující část podrobně popisuje základní příkazy pro nahrání virtuálního pevného disku do Azure. Podrobnější informace a kontext pro každý krok najdete zbývající části dokumentu, [od tady](#requirements).
 
-Ujistěte se, že máte nejnovější [příkazového řádku Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az_login).
+Ujistěte se, že máte nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az_login).
 
 V následujících příkladech nahraďte ukázkové názvy parametrů s vlastními hodnotami. Ukázkové názvy parametrů zahrnutých `myResourceGroup`, `mystorageaccount`, a `mydisks`.
 
@@ -96,7 +97,7 @@ K dokončení následujících kroků, potřebujete:
   * Vytvoření účtu úložiště a kontejner pro uložení vlastního disku a vytvořené virtuální počítače
   * Po vytvoření všech virtuálních počítačů můžete bezpečně odstranit disk
 
-Ujistěte se, že máte nejnovější [příkazového řádku Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az_login).
+Ujistěte se, že máte nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az_login).
 
 V následujících příkladech nahraďte ukázkové názvy parametrů s vlastními hodnotami. Ukázkové názvy parametrů zahrnutých `myResourceGroup`, `mystorageaccount`, a `mydisks`.
 

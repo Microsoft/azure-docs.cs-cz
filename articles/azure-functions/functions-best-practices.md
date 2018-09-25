@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9fe8b2cc09c7a08ab6d897a0fe1f1204d1903eca
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: dbb21e63a25d6e357287f2f91181f2326850a898
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44090859"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952847"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimalizace výkonu a spolehlivosti Azure Functions
 
@@ -73,6 +73,10 @@ Využijte výhod obranné opatření již komponenty, které používáte na pla
 ## <a name="scalability-best-practices"></a>Osvědčené postupy škálovatelnost
 
 Existuje mnoho faktorů, které ovlivnit, jak škálovat instance vaší aplikace function App. Podrobnosti jsou uvedeny v dokumentaci pro [funkce škálování](functions-scale.md).  Tady jsou některé osvědčené postupy k zajištění optimální škálovatelnost aplikaci function app.
+
+### <a name="share-and-manage-connections"></a>Sdílení a Správa připojení
+
+Opakované použití připojení k externím prostředkům, kdykoli je to možné.  Zobrazit [Správa připojení v Azure Functions](./manage-connections.md).
 
 ### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Nekombinujte testovací a produkční kód ve stejné aplikaci function app
 

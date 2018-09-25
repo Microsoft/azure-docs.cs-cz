@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: juluk
-ms.openlocfilehash: 639eff5806ef84c526ae8d0d0ed55ca790bdac08
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 67624e7ad21e6c3526b3ca47ff4b8e2df3b6ae54
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498024"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46962251"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Přehled služby Azure Cloud Shell
 Azure Cloud Shell je interaktivní, prohlížeč přístupné prostředí pro správu prostředků Azure.
@@ -48,7 +48,7 @@ Uživatelé Linuxu můžete použít Bash ve službě Cloud Shell, zatímco uži
 ![PowerShell ve službě Cloud Shell (Preview)](media/overview/overview-ps-pic.png)
 
 ### <a name="authenticated-and-configured-azure-workstation"></a>Ověřený a nakonfigurovanou Azure pracovní stanice
-Cloud Shell se spravuje přes Microsoft proto jde o s oblíbenými nástroji příkazového řádku a podpora jazyků. Cloud Shell také bezpečně ověří automaticky pro okamžitý přístup k prostředkům pomocí rutin Azure PowerShell nebo příkazového řádku Azure CLI 2.0.
+Cloud Shell se spravuje přes Microsoft proto jde o s oblíbenými nástroji příkazového řádku a podpora jazyků. Cloud Shell také bezpečně ověří automaticky pro okamžitý přístup k vašim prostředkům prostřednictvím rutin prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure.
 
 Projděte si kompletní [seznam nástrojů, které jsou nainstalované ve službě Cloud Shell.](features.md#tools)
 
@@ -61,7 +61,7 @@ Cloud Shell nabízí integrované grafické text editor založený na editoru Mo
 Cloud Shell je flexibilní nástroj, který je možné z:
 * [portal.azure.com](https://portal.azure.com)
 * [shell.azure.com](https://shell.azure.com)
-* [Dokumentace k webu "Vyzkoušejte si to" Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)
+* [Rozhraní příkazového řádku "Vyzkoušejte si to" dokumentace ke službě Azure](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)
 * [Mobilní aplikace Azure](https://azure.microsoft.com/features/azure-portal/mobile-app/)
 * [Rozšíření Azure Account kódu VS](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 

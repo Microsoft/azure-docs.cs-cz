@@ -11,20 +11,24 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/16/2017
-ms.openlocfilehash: 0abc5e34d2bfa1cf2a9fc0569831e21ed295891c
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ROBOTS: NOINDEX
+ms.openlocfilehash: 07a9d46dff17b43d01a6b411292cf240c32476f3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296495"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983714"
 ---
 # <a name="roaming-and-collaboration-in-azure-machine-learning-workbench"></a>Roaming a spolupráce v Azure Machine Learning Workbench
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
 Tento článek popisuje, jak můžete aplikaci Azure Machine Learning Workbench k nastavení projektů pro roaming mezi počítači a Spolupracujte s členy týmu. 
 
 Když vytvoříte projekt Azure Machine Learning, která má vzdálený odkaz Git úložišti (úložišti), metadata projektu a snímky se ukládají v cloudu. Odkaz na cloud můžete použít pro přístup k projektu z jiného počítače (roaming). Spolupracujte s členy týmu můžete také tak, že jim udělíte přístup k projektu. 
 
 ## <a name="prerequisites"></a>Požadavky
-1. Instalace Machine Learning Workbench aplikace. Ujistěte se, že máte přístup k účtu experimentování ve službě Azure Machine Learning. Další informace najdete v tématu [Průvodce instalací](../service/quickstart-installation.md).
+1. Instalace Machine Learning Workbench aplikace. Ujistěte se, že máte přístup k účtu experimentování ve službě Azure Machine Learning. Další informace najdete v tématu [Průvodce instalací](quickstart-installation.md).
 
 2. Přístup [Azure DevOps](https://www.visualstudio.com) a pak vytvořte úložiště k propojení vašeho projektu. Další informace najdete v tématu [pomocí úložiště Git s projektem aplikace Machine Learning Workbench](using-git-ml-project.md).
 

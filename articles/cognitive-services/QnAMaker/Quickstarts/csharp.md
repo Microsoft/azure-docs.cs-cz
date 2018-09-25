@@ -10,12 +10,12 @@ ms.technology: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: diberry
-ms.openlocfilehash: eba6b82d9378d3dd9713a8d17284b5ceac0d1cde
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 7c79a5c1b65391be1a100efa9e0dcf4e4a0d12ae
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717773"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040275"
 ---
 # <a name="quickstart-for-microsoft-qna-maker-api-with-c"></a>Rychlý start pro rozhraní API pomocí jazyka C# Microsoft QnA Maker 
 <a name="HOLTop"></a>
@@ -37,22 +37,24 @@ V tomto článku se dozvíte, jak používat [API nástroje QnA Maker Microsoft]
 - [Získejte aktuální sadu změn aplikace word.](#GetAlterations)
 - [Nahraďte aktuální sadu změn aplikace word.](#PutAlterations)
 
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-csharp-repo-note.md)]
+
 ## <a name="prerequisites"></a>Požadavky
 
 Budete potřebovat [Visual Studio 2017](https://www.visualstudio.com/downloads/) tento kód spustit na Windows. (Bude stačit bezplatná verze Community Edition.)
 
-Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **API nástroje QnA Maker Microsoft**. Budete potřebovat placené předplatné klíče z vašeho [řídicí panel Azure](https://portal.azure.com/#create/Microsoft.CognitiveServices).
+Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraním API služby Microsoft QnA Maker**. Budete potřebovat placené klíče předplatného ze svého [řídicího panelu Azure](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 
 <a name="Create"></a>
 
 ## <a name="create-knowledge-base"></a>Vytvoření znalostní báze
 
-Následující kód vytvoří základ, pomocí nových poznatků [vytvořit](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) metody.
+Následující kód vytvoří novou znalostní bázi pomocí metody [Create](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff).
 
-1. Vytvořte nový projekt C# v oblíbeném prostředí IDE.
+1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt C#.
 2. Přidejte níže uvedený kód.
-3. Nahraďte `key` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Spuštění programu.
+3. Hodnotu `key` nahraďte přístupovým klíčem platným pro vaše předplatné.
+4. Spusťte program.
 
 ```csharp
 using System;
@@ -244,12 +246,12 @@ namespace QnAMaker
 
 ## <a name="update-knowledge-base"></a>Aktualizace znalostní báze
 
-Následující kód aktualizuje existující základnu, s využitím znalostní báze [aktualizace](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) metody.
+Následující kód aktualizuje existující znalostní báze pomocí metody [Update](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600).
 
-1. Vytvořte nový projekt C# v oblíbeném prostředí IDE.
+1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt C#.
 2. Přidejte níže uvedený kód.
-3. Nahraďte `key` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Spuštění programu.
+3. Hodnotu `key` nahraďte přístupovým klíčem platným pro vaše předplatné.
+4. Spusťte program.
 
 ```csharp
 using System;
@@ -436,9 +438,9 @@ Press any key to continue.
 
 <a name="Status"></a>
 
-## <a name="get-request-status"></a>Získat stav žádosti
+## <a name="get-request-status"></a>Stav žádosti Get
 
-Můžete volat [operace](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) metodu ke kontrole stavu žádosti o vytvoření nebo aktualizace znalostní báze. Pokud chcete zobrazit, jak tato metoda se používá, najdete vzorový kód pro [vytvořit](#Create) nebo [aktualizace](#Update) metoda.
+Metodu [Operation](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) můžete volat za účelem kontroly stavu žádosti o vytvoření nebo aktualizaci znalostní báze. Pokud chcete zjistit, jak se tato metoda používá, podívejte se na vzorový kód pro metodu [Create](#Create) nebo [Update](#Update).
 
 [Zpět na začátek](#HOLTop)
 
@@ -446,12 +448,12 @@ Můžete volat [operace](https://westus.dev.cognitive.microsoft.com/docs/service
 
 ## <a name="publish-knowledge-base"></a>Publikování znalostní báze
 
-Publikuje existující znalostní bázi, pomocí následujícího kódu [publikovat](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) metody.
+Následující kód publikuje existující znalostní bázi pomocí metody [Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe).
 
-1. Vytvořte nový projekt C# v oblíbeném prostředí IDE.
+1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt C#.
 2. Přidejte níže uvedený kód.
-3. Nahraďte `key` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Spuštění programu.
+3. Hodnotu `key` nahraďte přístupovým klíčem platným pro vaše předplatné.
+4. Spusťte program.
 
 ```csharp
 using System;
@@ -543,10 +545,10 @@ namespace QnAMaker
 
 Nahradí obsah zadané znalostní bázi, pomocí následujícího kódu [nahradit](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_publish) metody.
 
-1. Vytvořte nový projekt C# v oblíbeném prostředí IDE.
+1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt C#.
 2. Přidejte níže uvedený kód.
-3. Nahraďte `key` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Spuštění programu.
+3. Hodnotu `key` nahraďte přístupovým klíčem platným pro vaše předplatné.
+4. Spusťte program.
 
 ```csharp
 using System;
@@ -660,10 +662,10 @@ namespace QnAMaker
 
 Následující kód stáhne obsah zadaného znalostní bázi, pomocí [stáhnout znalostní báze](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_download) metody.
 
-1. Vytvořte nový projekt C# v oblíbeném prostředí IDE.
+1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt C#.
 2. Přidejte níže uvedený kód.
-3. Nahraďte `key` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Spuštění programu.
+3. Hodnotu `key` nahraďte přístupovým klíčem platným pro vaše předplatné.
+4. Spusťte program.
 
 ```csharp
 using System;
@@ -777,12 +779,12 @@ namespace QnAMaker
 
 Získá odpovědi na dotaz pomocí zadaného znalostní báze, pomocí následujícího kódu **generování odpovědi** metody.
 
-1. Vytvořte nový projekt C# v oblíbeném prostředí IDE.
+1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt C#.
 1. Přidejte níže uvedený kód.
 1. Nahraďte `host` hodnotu s názvem webu pro vaše předplatné nástroje QnA Maker. Další informace najdete v části [vytvořit službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md).
 1. Nahraďte `endpoint_key` hodnotu s klíčem platný koncový bod pro vaše předplatné. Všimněte si, že to není stejné jako váš klíč předplatného. Můžete získat pomocí klíče koncového bodu [získat klíče koncového bodu](#GetKeys) metody.
 1. Nahraďte `kb` hodnotu s ID znalostní báze, který chcete zadat dotaz pro odpovědi. Mějte na paměti tato znalostní báze musí již byly publikovány pomocí [publikovat](#Publish) metody.
-1. Spuštění programu.
+1. Spusťte program.
 
 ```csharp
 using System;
@@ -880,10 +882,10 @@ namespace QnAMaker
 
 Následující kód načte informace o zadané znalostní báze základní použití [získat tak podrobné údaje znalostní báze](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) metody.
 
-1. Vytvořte nový projekt C# v oblíbeném prostředí IDE.
+1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt C#.
 2. Přidejte níže uvedený kód.
-3. Nahraďte `key` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Spuštění programu.
+3. Hodnotu `key` nahraďte přístupovým klíčem platným pro vaše předplatné.
+4. Spusťte program.
 
 ```csharp
 using System;
@@ -980,10 +982,10 @@ namespace QnAMaker
 
 Následující kód načte informace o všech znalostních bází pro zadaného uživatele pomocí [získat znalostních bází pro uživatele](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasesforuser) metody.
 
-1. Vytvořte nový projekt C# v oblíbeném prostředí IDE.
+1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt C#.
 2. Přidejte níže uvedený kód.
-3. Nahraďte `key` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Spuštění programu.
+3. Hodnotu `key` nahraďte přístupovým klíčem platným pro vaše předplatné.
+4. Spusťte program.
 
 ```csharp
 using System;
@@ -1093,10 +1095,10 @@ Press any key to continue.
 
 Odstraní zadaný znalostní bázi, pomocí následujícího kódu [odstranit znalostní báze](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_delete) metody.
 
-1. Vytvořte nový projekt C# v oblíbeném prostředí IDE.
+1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt C#.
 2. Přidejte níže uvedený kód.
-3. Nahraďte `key` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Spuštění programu.
+3. Hodnotu `key` nahraďte přístupovým klíčem platným pro vaše předplatné.
+4. Spusťte program.
 
 ```csharp
 using System;
@@ -1187,10 +1189,10 @@ namespace QnAMaker
 
 Následující kód načte aktuální klíče koncového bodu pomocí [získat klíče koncového bodu](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys) metody.
 
-1. Vytvořte nový projekt C# v oblíbeném prostředí IDE.
+1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt C#.
 2. Přidejte níže uvedený kód.
-3. Nahraďte `key` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Spuštění programu.
+3. Hodnotu `key` nahraďte přístupovým klíčem platným pro vaše předplatné.
+4. Spusťte program.
 
 ```csharp
 using System;
@@ -1272,10 +1274,10 @@ namespace QnAMaker
 
 Obnoví aktuální klíče koncového bodu pomocí následujícího kódu [aktualizovat klíče koncového bodu](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_refreshendpointkeys) metody.
 
-1. Vytvořte nový projekt C# v oblíbeném prostředí IDE.
+1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt C#.
 2. Přidejte níže uvedený kód.
-3. Nahraďte `key` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Spuštění programu.
+3. Hodnotu `key` nahraďte přístupovým klíčem platným pro vaše předplatné.
+4. Spusťte program.
 
 ```csharp
 using System;
@@ -1360,10 +1362,10 @@ namespace QnAMaker
 
 Následující kód načte aktuální změny slovo pomocí [Stáhnout změny](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc) metody.
 
-1. Vytvořte nový projekt C# v oblíbeném prostředí IDE.
+1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt C#.
 2. Přidejte níže uvedený kód.
-3. Nahraďte `key` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Spuštění programu.
+3. Hodnotu `key` nahraďte přístupovým klíčem platným pro vaše předplatné.
+4. Spusťte program.
 
 ```csharp
 using System;
@@ -1451,10 +1453,10 @@ namespace QnAMaker
 
 Následující kód nahradí aktuální změny slovo pomocí [nahraďte změny](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) metody.
 
-1. Vytvořte nový projekt C# v oblíbeném prostředí IDE.
+1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt C#.
 2. Přidejte níže uvedený kód.
-3. Nahraďte `key` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Spuštění programu.
+3. Hodnotu `key` nahraďte přístupovým klíčem platným pro vaše předplatné.
+4. Spusťte program.
 
 ```csharp
 using System;
@@ -1565,8 +1567,8 @@ namespace QnAMaker
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Reference k REST API služby QnA Maker (V4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [Reference k rozhraní REST API služby QnA Maker (V4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
 
 ## <a name="see-also"></a>Další informace najdete v tématech 
 
-[Přehled nástroje QnA Maker](../Overview/overview.md)
+[Přehled služby QnA Maker](../Overview/overview.md)

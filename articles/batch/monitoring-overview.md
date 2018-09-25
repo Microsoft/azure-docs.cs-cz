@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: 5a321ef7dca86993a913a283fe7b9b076c127d94
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 885deca5efbd72b3d641c8c94837851340d752b9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171251"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46957825"
 ---
 # <a name="monitor-batch-solutions"></a>Monitorování řešení Batch
 
@@ -34,7 +34,7 @@ Jedním ze způsobů k načtení událostí z protokolu aktivit je použití web
 
 ## <a name="batch-account-level-monitoring"></a>Monitorování úroveň účtu batch
 
-Sledování každého účtu Batch pomocí funkce [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md). Azure Monitor provádí sběr [metriky](../monitoring-and-diagnostics/monitoring-overview-metrics.md) a volitelně [diagnostické protokoly](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) pro prostředky v oboru na úrovni účtu Batch, jako jsou fondy, úlohy a úkoly. Shromažďování a tato data využívat ručně nebo prostřednictvím kódu programu k monitorování aktivit v účtu Batch a k diagnostice problémů. Podrobnosti najdete v tématu [Batch metriky, výstrahy a protokoly pro diagnostické hodnocení a monitorování](batch-diagnostics.md).
+Sledování každého účtu Batch pomocí funkce [Azure Monitor](../azure-monitor/overview.md). Azure Monitor provádí sběr [metriky](../monitoring/monitoring-data-collection.md#metrics) a volitelně [diagnostické protokoly](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) pro prostředky v oboru na úrovni účtu Batch, jako jsou fondy, úlohy a úkoly. Shromažďování a tato data využívat ručně nebo prostřednictvím kódu programu k monitorování aktivit v účtu Batch a k diagnostice problémů. Podrobnosti najdete v tématu [Batch metriky, výstrahy a protokoly pro diagnostické hodnocení a monitorování](batch-diagnostics.md).
  
 > [!NOTE]
 > Metriky jsou k dispozici ve výchozím nastavení v účtu Batch bez další konfigurace a znají historii posledních 30 dní. Je nutné povolit protokolování diagnostiky pro účet Batch a může způsobit dodatečné náklady na uložení nebo zpracování dat diagnostický protokol. 

@@ -1,0 +1,273 @@
+---
+title: Podpora jazyka Java pro službu Azure App Service v Linuxu | Dokumentace Microsoftu
+description: Příručka pro vývojáře k nasazení aplikací v Javě pomocí služby Azure App Service v Linuxu.
+keywords: služby Azure app service, web Apps, linux, oss, java
+services: app-service
+author: rloutlaw
+manager: angerobe
+ms.service: app-service
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: java
+ms.topic: article
+ms.date: 08/29/2018
+ms.author: routlaw
+ms.openlocfilehash: 2b2256ef5802160dbaa66e2a098a798fcdc653d2
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47065104"
+---
+# <a name="java-developers-guide-for-app-service-on-linux"></a>Příručka pro vývojáře Java pro službu App Service v Linuxu
+
+Azure App Service v Linuxu umožňuje vývojářům rychle sestavit, nasadit a škálovat své Tomcat v jazyce Java nebo Java Standard Edition (SE) zabalené webové aplikace na plně spravované služby založené na Linuxu. Nasazujte aplikace s moduly plug-in Maven z příkazového řádku nebo v editoru, jako je IntelliJ, Eclipse nebo Visual Studio Code.
+
+Tato příručka obsahuje klíčové koncepty a pokyny pro vývojáře v Javě pomocí ve službě App Service pro Linux. Pokud jste nikdy použili službu Azure App Service pro Linux, přečtěte si [Java quickstart](quickstart-java.md) první. Obecné dotazy ohledně používání služby App Service pro Linux, které nejsou specifické pro Java development v odpovědi [nejčastější dotazy týkající se App Service Linux](app-service-linux-faq.md).
+
+## <a name="logging-and-debugging-apps"></a>Protokolování a ladění aplikací
+
+Sestavy o výkonu, provoz vizualizace a kontroly stavu jsou k dispozici pro aplikaci eeach prostřednictvím webu Azure portal. Zobrazit [Přehled diagnostiky služby Azure App Service](/azure/app-service/app-service-diagnostics) Další informace o tom, jak přistupovat a používat tyto diagnostické nástroje.
+
+### <a name="ssh-console-access"></a>Přístup ke konzole SSH 
+
+Připojení SSH k prostředí Linuxu spuštění vaší aplikace je k dispozici. Zobrazit [podpora SSH pro Azure App Service v Linuxu](/azure/app-service/containers/app-service-linux-ssh-support) úplné pokyny pro připojení k systému Linux přes webový prohlížeč nebo místním terminálu.
+
+### <a name="streaming-logs"></a>Protokoly streamování
+
+Pro rychlé ladění a řešení problémů, můžete streamování protokolů do konzoly pomocí Azure CLI. Konfigurace rozhraní příkazového řádku s `az webapp log config` povolení protokolování:
+
+```azurecli-interactive
+az webapp log config --name ${WEBAPP_NAME} \
+ --resource-group ${RESOURCEGROUP_NAME} \
+ --web-server-logging filesystem
+```
+
+Potom streamování protokolů k pomocí konzoly `az webapp log tail`:
+
+```azurecli-interactive
+az webapp log tail --name webappname --resource-group myResourceGroup
+```
+
+Další informace najdete v tématu [streamování protokolů pomocí Azure CLI](/azure/app-service/web-sites-enable-diagnostic-log#streaming-with-azure-command-line-interface).
+
+### <a name="app-logging"></a>Protokolování aplikace
+
+Povolit [protokolování aplikací](/azure/app-service/web-sites-enable-diagnostic-log#enablediag) prostřednictvím webu Azure portal nebo [rozhraní příkazového řádku Azure](/cli/azure/webapp/log#az-webapp-log-config) ke konfiguraci služby App Service, zaznamená se do místní výstup standardní konzole vaší aplikace a datových proudů chyba standardní konzole systém souborů nebo úložiště objektů Blob v Azure. Instance je zakázaná 12 hodin po dokončení konfigurace protokolování do místního systému souborů služby App Service. Pokud budete potřebovat delší dobu uchování, nakonfigurujte aplikaci zapisovat výstup do kontejneru úložiště objektů Blob.
+
+Pokud vaše aplikace používá [Logback](https://logback.qos.ch/) nebo [Log4j](https://logging.apache.org/log4j) pro trasování, můžete předat dál trasování ke kontrole do služby Azure Application Insights pomocí pokyny ke konfiguraci protokolování framework v [Protokoly trasování prozkoumejte Java ve službě Application Insights](/azure/application-insights/app-insights-java-trace-logs). 
+
+## <a name="customization-and-tuning"></a>Přizpůsobení a optimalizace
+
+Azure App Service pro Linux podporuje pole vyladění a přizpůsobení prostřednictvím webu Azure Portal a rozhraní příkazového řádku. Projděte si následující články konfigurace bez Java konkrétní webové aplikace:
+
+- [Konfigurace nastavení služby App Service](/azure/app-service/web-sites-configure?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [Nastavení vlastní domény](/azure/app-service/app-service-web-tutorial-custom-domain?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [Povolení protokolu SSL](/azure/app-service/app-service-web-tutorial-custom-ssl?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [Přidání sítě CDN](/azure/cdn/cdn-add-to-web-app?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+
+### <a name="set-java-runtime-options"></a>Nastavte možnosti modulu runtime Java
+
+V prostředí Tomcat i Java SE nastavit přidělené paměti nebo jiné možnosti modulu runtime JVM, nastavte JAVA_OPTS, jak je znázorněno níže jako [nastavení aplikace](/azure/app-service/web-sites-configure#app-settings). App Service Linux předá toto nastavení jako proměnnou prostředí Java runtime při spuštění.
+
+Na webu Azure Portal v části **nastavení aplikace** pro webovou aplikaci, vytvořte nové nastavení aplikace s názvem `JAVA_OPTS` , který obsahuje další nastavení, jako například `$JAVA_OPTS -Xms512m -Xmx1204m`.
+
+Pokud chcete nakonfigurovat nastavení aplikace, které z modulu plug-in Azure App Service Linux Maven, add v sekci modul plug-in Azure nastavení/hodnota značek. Následující příklad nastaví konkrétní minimální a maximální heapsize Java:
+
+```xml
+<appSettings> 
+    <property> 
+        <name>JAVA_OPTS</name> 
+        <value>$JAVA_OPTS -Xms512m -Xmx1204m</value> 
+    </property> 
+</appSettings> 
+```
+
+S jednou aplikací jeden nasazovací slot v jejich plán služby App Service mohou vývojáři tyto možnosti:
+
+- Instance B1 a S1:-Xms1024m-Xmx1024m
+- Instance B2 a S2:-Xms3072m-Xmx3072m
+- Instance B3 a S3:-Xms6144m-Xmx6144m
+
+
+Při nastavení haldy ladění aplikace, projděte si podrobnosti vašeho plánu služby App Service a vezměte v úvahu více aplikací a slot nasazení je potřeba najít optimální přidělení paměti.
+
+### <a name="turn-on-web-sockets"></a>Zapnout webové sokety
+
+Zapněte podporu pro webové sokety na webu Azure Portal v **nastavení aplikace** pro aplikaci. Budete muset restartovat aplikaci pro nastavení projevilo.
+
+Zapnutí podpory webových soketů pomocí Azure CLI pomocí následujícího příkazu:
+
+```azurecli-interactive
+az webapp config set -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME} --web-sockets-enabled true 
+```
+
+Potom restartujte aplikaci:
+
+```azurecli-interactive
+az webapp stop -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME} 
+az webapp start -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME}  
+```
+
+### <a name="set-default-character-encoding"></a>Nastavit výchozí kódování znaků 
+
+Na webu Azure Portal v části **nastavení aplikace** pro webovou aplikaci, vytvořte nové nastavení aplikace s názvem `JAVA_OPTS` s hodnotou `$JAVA_OPTS -Dfile.encoding=UTF-8`.
+
+Alternativně můžete nakonfigurovat nastavení aplikace pomocí modulu plug-in App Service Maven. Přidáte nastavení názvu a hodnoty značek v konfiguraci modulu plug-in: 
+
+```xml
+<appSettings> 
+    <property> 
+        <name>JAVA_OPTS</name> 
+        <value>$JAVA_OPTS -Dfile.encoding=UTF-8</value> 
+    </property> 
+</appSettings> 
+```
+
+## <a name="secure-application"></a>Zabezpečení aplikace
+
+Aplikace Java spuštěná ve službě App Service pro Linux mají stejnou sadu [osvědčené postupy zabezpečení](/azure/security/security-paas-applications-using-app-services) jako ostatní aplikace. 
+
+### <a name="authenticate-users"></a>Ověřování uživatelů
+
+Nastavení ověřování aplikace na webu Azure Portal s **ověřování a autorizace** možnost. Odtud můžete povolit ověřování pomocí Azure Active Directory nebo přihlašování přes sociální sítě jako je Facebook, Google nebo GitHub. Konfigurace Azure portal funguje pouze v případě konfigurace ověřování jednotným poskytovatele.  Další informace najdete v tématu [konfigurace aplikace App Service pro použití přihlášení Azure Active Directory](/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication) a související články pro jiné zprostředkovatele identity.
+
+Pokud je potřeba povolit více poskytovatelů přihlásit, postupujte podle pokynů [přizpůsobit ověřování pomocí služby App Service](https://docs.microsoft.com/azure/app-service/app-service-authentication-how-to) článku.
+
+ Aplikace Spring Boot vývojáři mohou použít [Azure Active Directory Spring Boot starter](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory?view=azure-java-stable) k zabezpečení aplikace pomocí známých poznámky k zabezpečení Spring a rozhraní API.
+
+### <a name="configure-tlsssl"></a>Konfigurace TLS/SSL
+
+Postupujte podle pokynů [vytvoření vazby existujícího vlastního certifikátu SSL](/azure/app-service/app-service-web-tutorial-custom-ssl) nahrát stávající certifikát SSL a navázat jej na název domény vaší aplikace. Ve výchozím nastavení vaše aplikace stále umožňuje HTTP připojení – postupujte podle konkrétních kroků v kurzu k vynucení šifrování protokolu SSL a TLS.
+
+## <a name="tomcat"></a>Tomcat 
+
+### <a name="connecting-to-data-sources"></a>Připojení ke zdrojům dat
+
+>[!NOTE]
+> Pokud vaše aplikace používá Spring Framework nebo Spring Boot, můžete nastavit informace o připojení databáze pro Spring Data JPA jako proměnné prostředí [ve vlastnosti souboru aplikace]. Pak pomocí [nastavení aplikace](/azure/app-service/web-sites-configure#app-settings) definovat tyto hodnoty pro vaši aplikaci v portálu Azure portal nebo rozhraní příkazového řádku.
+
+Pokud chcete nakonfigurovat Tomcat spravovaného připojení k databázím pomocí aplikace Java databáze připojení (JDBC) nebo rozhraní API trvalost Java (JPA), nejprve přizpůsobte proměnnou prostředí CATALINA_OPTS Tomcat během spouštění číst v. Nastavte tyto hodnoty pomocí nastavení aplikace v modulu plug-in App Service Maven:
+
+```xml
+<appSettings> 
+    <property> 
+        <name>CATALINA_OPTS</name> 
+        <value>"$CATALINA_OPTS -Dmysqluser=${mysqluser} -Dmysqlpass=${mysqlpass} -DmysqlURL=${mysqlURL}"</value> 
+    </property> 
+</appSettings> 
+```
+
+Nebo nastavení ekvivalentní služby App Service na webu Azure Portal.
+
+Dále určete, pokud zdroj dat musí být k dispozici pouze pro jednu aplikaci nebo pro všechny aplikace spuštěné na plán služby App Service.
+
+U zdrojů dat na úrovni aplikace: 
+
+1. Přidat `context.xml` souboru, pokud není k dispozici pro webové aplikace a přidejte ho `META-INF` adresáři svůj soubor WAR při sestavení projektu.
+
+2. V tomto souboru, přidejte `Context` položka cesty zdroje dat odkaz na adresu JNDI. Na
+
+    ```xml
+    <Context>
+        <Resource
+            name="jdbc/mysqldb" type="javax.sql.DataSource"
+            url="${mysqlURL}"
+            driverClassName="com.mysql.jdbc.Driver"
+            username="${mysqluser}" password="${mysqlpass}"
+        />
+    </Context>
+    ```
+
+3. Aktualizace vaší aplikace `web.xml` budou používat zdroj dat ve vaší aplikaci.
+
+    ```xml
+    <resource-env-ref>
+        <resource-env-ref-name>jdbc/mysqldb</resource-env-ref-name>
+        <resource-env-ref-type>javax.sql.DataSource</resource-env-ref-type>
+    </resource-env-ref>
+    ```
+
+Sdílené prostředky na úrovni serveru:
+
+1. Zkopírujte obsah `/usr/local/tomcat/conf` do `/home/tomcat` ve vaší App Service pro Linux instance pomocí protokolu SSH, pokud konfigurace existuje ještě nemáte.
+
+2. Přidat kontext, který má vaše `server.xml`
+
+    ```xml
+    <Context>
+        <Resource
+            name="jdbc/mysqldb" type="javax.sql.DataSource"
+            url="${mysqlURL}"
+            driverClassName="com.mysql.jdbc.Driver"
+            username="${mysqluser}" password="${mysqlpass}"
+        />
+    </Context>
+    ```
+
+3. Aktualizace vaší aplikace `web.xml` budou používat zdroj dat ve vaší aplikaci.
+
+    ```xml
+    <resource-env-ref>
+        <resource-env-ref-name>jdbc/mysqldb</resource-env-ref-name>
+        <resource-env-ref-type>javax.sql.DataSource</resource-env-ref-type>
+    </resource-env-ref>
+    ```
+
+4. Zajistěte, aby byly soubory ovladačů JDBC k dispozici pro Tomcat classloader tak, že je `/home/tomcat/lib` adresáře. Pokud chcete nahrát tyto soubory k vaší instanci služby App Service, postupujte následovně:  
+    1. Instalace rozšíření webpp služby Azure App Service:
+      ```azurecli-interactive
+      az extension add –name webapp
+      ```
+    2. Spusťte následující příkaz rozhraní příkazového řádku a vytvořte tunel SSH z místního systému do služby App Service:
+      ```azurecli-interactive
+      az webapp remote-connection create –g [resource group] -n [app name] -p [local port to open]
+      ```
+    3. Připojení na místní port tunelového propojení s vašeho klienta protokolu SFTP a odesílání souborů do `/home/tomcat/lib`.
+
+5. Restartování aplikace App Service pro Linux. Tomcat resetuje `CATALINA_HOME` k `/home/tomcat` a použít aktualizovanou konfiguraci a třídy.
+
+## <a name="docker-containers"></a>Kontejnery Dockeru
+
+Pokud chcete používat ve službě App Service v kontejnerech JDK Zulu podporovaných systémem Azure, ujistěte se, že vaše aplikace `Dockerfile` používá Image z [úložiště image Dockeru služby aplikace Java](https://github.com/Azure-App-Service/java).
+
+## <a name="runtime-availability-and-statement-of-support"></a>Dostupnost a modulu runtime prohlášení k podpoře
+
+App Service pro Linux podporuje dva moduly runtime pro spravované hostování webových aplikací v Javě:
+
+- [Servletový kontejner Tomcat](http://tomcat.apache.org/) ke spuštění zabalené aplikace jako webové souborech archivu (WAR). Podporované verze jsou 8.5 a 9.0.
+- Běhové prostředí Java SE pro provoz aplikací s podobu Java archivní soubory (JAR). Jedinou podporovanou hlavní verzí je Java 8.
+
+## <a name="java-runtime-statement-of-support"></a>Java runtime prohlášení k podpoře 
+
+### <a name="jdk-versions-and-maintenance"></a>JDK verze a údržba
+
+Azure podporovaná Java Development Kit (JDK) je [Zulu](https://www.azul.com/products/zulu-and-zulu-enterprise/) zajišťována [Azul Systems](https://www.azul.com/).
+
+Hlavní verze aktualizace bude poskytovat prostřednictvím nové možnosti modulu runtime ve službě Azure App Service pro Linux. Zákazníci, aktualizujte na tyto novější verze Javy podle konfigurace nasazení služby App Service a jsou zodpovědné za testování a zajištění hlavní aktualizace vyhovují jejich potřebám.
+
+Podporované JDK jsou automaticky opravit čtvrtletně v lednu, dubnu, červenci a říjnu každý rok.
+
+### <a name="security-updates"></a>Aktualizace zabezpečení
+
+Opravy chyb a opravy pro chyby zabezpečení hlavní vydá Jakmile budou k dispozici od Azul Systems. "Hlavní" ohrožení zabezpečení je definována základní skóre 9.0 nebo vyšší na [NIST běžné ohrožení zabezpečení hodnocení systému, verze 2](https://nvd.nist.gov/cvss.cfm).
+
+### <a name="deprecation-and-retirement"></a>Vyřazení a vyřazení z provozu
+
+Pokud podporovaného modulu runtime Java se vyřadí z provozu, vývojáře v Azure pomocí ovlivněné runtime dostanou oznámení o zastarání aspoň šest měsíců před modul runtime byl vyřazen z provozu.
+
+### <a name="local-development"></a>Místní vývoj
+
+Vývojáři mohou stáhnout produkční verzi z Azul Zulu Enterprise sadu JDK pro místní vývoj z [serveru pro stahování společnosti Azul](https://www.azul.com/downloads/zulu/).
+
+### <a name="development-support"></a>Podpora vývoje
+
+Při vývoji pro Azure je dostupná prostřednictvím podpory produktu pro sadu JDK Azul Zulu Enterprise nebo [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) s [kvalifikovaný plán podpory Azure](https://azure.microsoft.com/support/plans/).
+
+### <a name="runtime-support"></a>Podpora modulu CLR
+
+Mohou vývojáři [otevřete problém](/azure/azure-supportability/how-to-create-azure-support-request) s App Service Linux Java runtime prostřednictvím podpory Azure, pokud mají [plán podpory kvalifikovaný](https://azure.microsoft.com/support/plans/).
+
+## <a name="next-steps"></a>Další postup
+
+Přejděte [Azure pro vývojáře v Javě](/java/azure/) centra a najít rychlí průvodci Azure, kurzy a referenční dokumentace jazyka Java.

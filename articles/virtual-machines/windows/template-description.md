@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: cynthn
-ms.openlocfilehash: 18a9709893533c2c0b606077a126437282f9195e
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: eb88501c5daf0b79d22f4407a372c4606a173db1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42054015"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987692"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuální počítače v šabloně Azure Resource Manageru
 
@@ -164,7 +164,7 @@ Použijte tyto příležitosti, jak získat nejnovější verze rozhraní API:
 
 - Rozhraní REST API – [seznamu všechny poskytovatele prostředků](https://docs.microsoft.com/rest/api/resources/providers#Providers_List)
 - PowerShell – [Get-AzureRmResourceProvider](/powershell/module/azurerm.resources/get-azurermresourceprovider)
-- Azure CLI 2.0 – [az provider show](https://docs.microsoft.com/cli/azure/provider#az_provider_show)
+- Azure CLI – [az provider show](https://docs.microsoft.com/cli/azure/provider#az_provider_show)
 
 ## <a name="parameters-and-variables"></a>Parametry a proměnné
 
@@ -442,7 +442,7 @@ Můžete zobrazit stav nainstalovaná rozšíření z rozšíření nastavení n
 
 ![Načíst stav rozšíření](./media/template-description/virtual-machines-show-extensions.png)
 
-Můžete také získat informace o rozšíření pomocí **Get-AzureRmVMExtension** příkazu Powershellu **get rozšíření virtuálního počítače** příkazového řádku Azure CLI 2.0 nebo **získat informace o rozšíření** ROZHRANÍ REST API.
+Můžete také získat informace o rozšíření pomocí **Get-AzureRmVMExtension** příkazu Powershellu **get rozšíření virtuálního počítače** rozhraní příkazového řádku Azure, nebo **získat informace o rozšíření**Rozhraní REST API.
 
 ## <a name="deployments"></a>Nasazení
 

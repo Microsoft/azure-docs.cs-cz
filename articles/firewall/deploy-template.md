@@ -8,24 +8,20 @@ ms.service: firewall
 ms.topic: article
 ms.date: 7/11/2018
 ms.author: victorh
-ms.openlocfilehash: 1a732e22d72c36afe11030e42bae529baa35df1a
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: d32e6e29c287d140c28206743e36dc025b26158b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991188"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46991330"
 ---
 # <a name="deploy-azure-firewall-using-a-template"></a>Brána Firewall služby Azure pomocí šablony nasazení
 
-[!INCLUDE [firewall-preview-notice](../../includes/firewall-preview-notice.md)]
+Tato šablona vytvoří bránu firewall a testovací síťové prostředí. Síť má jednu virtuální síť se třemi podsítěmi: *AzureFirewallSubnet*, *ServersSubnet*a *JumpboxSubnet*. Podsítě ServersSubnet a JumpboxSubnet mají každá jeden dvoujádrový Windows Server.
 
-V příkladech v článcích Brána Firewall služby Azure se předpokládá, které jste povolili verze preview pro veřejnost Brána Firewall služby Azure. Další informace najdete v tématu [povolení verze preview pro veřejnost Brána Firewall služby Azure](public-preview.md).
+Brána firewall je v podsíti AzureFirewallSubnet a je nakonfigurovaná kolekcí pravidel aplikace s jediným pravidlem, které umožňuje přístup k www.microsoft.com.
 
-Tato šablona vytvoří bránu firewall a testovací síťové prostředí. Síť má jednu virtuální síť se třemi podsítěmi: *AzureFirewallSubnet*, *ServersSubnet*a *JumpboxSubnet*. ServersSubnet a JumpboxSubnet mít jeden Server systému Windows 2 jádry v nich.
-
-Brána firewall je ve AzureFirewallSubnet a je nakonfigurován s kolekcí pravidel aplikace s jedním pravidlem, které umožňuje přístup k www.microsoft.com.
-
-Uživatelem definovaná trasa se vytvoří, který odkazuje síťový provoz z ServersSubnet přes bránu firewall, ve kterém jsou použita pravidla brány firewall.
+Vytvoří se trasa definovaná uživatelem, která odkazuje síťový provoz z podsítě ServersSubnet přes bránu firewall, kde se používají její pravidla.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -48,5 +44,5 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 Dále můžete monitorovat protokoly brány Firewall Azure:
 
-- [Kurz: Brána Firewall služby Azure Monitor protokoly](./tutorial-diagnostics.md)
+- [Kurz: Monitorování protokolů brány Azure Firewall](./tutorial-diagnostics.md)
 

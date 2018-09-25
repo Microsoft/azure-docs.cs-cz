@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: e83d51a18c7ab5861699114e4622bda167dab41d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: a90ec3102f3ce821193d58b6d14ca119f6d7e916
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042093"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46959678"
 ---
 # <a name="use-interactive-query-with-hdinsight"></a>Pomocí HDInsight Interactive Query
 Interactive Query (také nazývané Hive LLAP nebo [s nízkou latencí analytické zpracování](https://cwiki.apache.org/confluence/display/Hive/LLAP)) Azure HDInsight je [typ clusteru](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types). Interactive Query podporuje ukládání do mezipaměti v paměti, takže se dotazy Hive mnohem více interaktivní a rychlejší.
@@ -24,7 +24,7 @@ Interactive Query (také nazývané Hive LLAP nebo [s nízkou latencí analytick
 Se liší od Hadoop cluster cluster Interactive Query. Obsahuje jedinou službou Hive. 
 
 > [!NOTE]
-> Můžete přístup ke službě Hive v clusteru Interactive Query pouze prostřednictvím zobrazení Ambari Hive, Beeline a ovladače Microsoft Hive Open Database Connectivity (rozhraní ODBC Hive). Nelze k němu přístup přes konzolu Hive, Templeton, nástroji příkazového řádku Azure (Azure CLI) nebo Azure Powershellu. 
+> Můžete přístup ke službě Hive v clusteru Interactive Query pouze prostřednictvím zobrazení Ambari Hive, Beeline a ovladače Microsoft Hive Open Database Connectivity (rozhraní ODBC Hive). Nelze k němu přístup přes konzolu Hive, Templeton, rozhraní příkazového řádku Azure Classic nebo Azure Powershellu. 
 > 
 > 
 

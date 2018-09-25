@@ -1,26 +1,26 @@
 ---
-title: Konfigurace zásad Hivu ve HDInsight připojených k doméně – Azure
-description: Zjistěte, jak nakonfigurovat zásady Apache Rangeru pro Hive ve službě Azure HDInsight připojené k doméně.
+title: Konfigurace zásad Hivu ve s balíčkem Enterprise Security Package – Azure HDInsight
+description: Zjistěte, jak nakonfigurovat zásady Apache Rangeru pro Hive ve službě Azure HDInsight s balíčkem Enterprise Security Package.
 services: hdinsight
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/17/2018
-ms.openlocfilehash: 55abb5331da24c3914075c21579e5082853b3c1f
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 09/24/2018
+ms.openlocfilehash: bdad0bac0d320b641359df4093ae10c9505b7de2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042076"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993421"
 ---
-# <a name="configure-hive-policies-in-domain-joined-hdinsight"></a>Konfigurace zásad Hivu ve HDInsight připojených k doméně
+# <a name="configure-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Konfigurace zásad Hivu ve HDInsight s balíčkem Enterprise Security Package
 Zjistěte, jak nakonfigurovat zásady Apache Rangeru pro Hive. V tomto článku vytvoříte dvě zásady Ranger pro omezení přístupu k hivesampletable. Hivesampletable je součástí clusterů HDInsight. Po nakonfigurování zásad použijete Excel nebo ovladač ODBC a připojíte se k tabulkám Hivu ve službě HDInsight.
 
 ## <a name="prerequisites"></a>Požadavky
-* Cluster HDInsight připojený k doméně. Viz [Konfigurace clusterů HDInsight připojených k doméně](apache-domain-joined-configure.md).
+* Cluster HDInsight s balíčkem Enterprise Security Package. Zobrazit [konfigurace HDInsight clustery s ESP](apache-domain-joined-configure.md).
 * Pracovní stanice s Office 2016, Office 2013 Professional Plus, Office 365 Pro Plus, Excel 2013 Standalone nebo Office 2010 Professional Plus.
 
 ## <a name="connect-to-apache-ranger-admin-ui"></a>Připojení k uživatelskému rozhraní správce Apache Ranger
@@ -34,15 +34,15 @@ Zjistěte, jak nakonfigurovat zásady Apache Rangeru pro Hive. V tomto článku 
    >
 2. Přihlaste se pomocí doménového uživatelského jména a hesla správce clusteru:
 
-    ![Domovská stránka Ranger služby HDInsight připojené k doméně](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-ranger-home-page.png)
+    ![Domovská stránka HDInsight ESP Ranger](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-ranger-home-page.png)
 
     V současné době Ranger funguje pouze s Yarn a Hivem.
 
 ## <a name="create-domain-users"></a>Vytvoření uživatelů domén
-Zobrazit [vytvořit cluster HDInsight připojený k doméně](apache-domain-joined-configure-using-azure-adds.md#create-a-domain-joined-hdinsight-cluster), informace o tom, jak vytvořit uživatele hiveuser1 a hiveuser2. V tomto kurzu použijete dva uživatelské účty.
+Zobrazit [vytvořit HDInsight cluster s ESP](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp), informace o tom, jak vytvořit uživatele hiveuser1 a hiveuser2. V tomto kurzu použijete dva uživatelské účty.
 
 ## <a name="create-ranger-policies"></a>Vytvoření zásad Ranger
-V této části vytvoříte dvě zásady Ranger pro přistupování k hivesampletable. Udělíte oprávnění Vybrat na různé sady sloupců. Oba uživatelé byli vytvořeni pomocí [vytvořit cluster HDInsight připojený k doméně](apache-domain-joined-configure-using-azure-adds.md#create-a-domain-joined-hdinsight-cluster). V další části tyto dvě zásady otestujete v Excelu.
+V této části vytvoříte dvě zásady Ranger pro přistupování k hivesampletable. Udělíte oprávnění Vybrat na různé sady sloupců. Oba uživatelé byli vytvořeni pomocí [vytvořit HDInsight cluster s ESP](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp). V další části tyto dvě zásady otestujete v Excelu.
 
 **Vytvoření zásad Ranger**
 
@@ -57,7 +57,7 @@ V této části vytvoříte dvě zásady Ranger pro přistupování k hivesample
    * Select User (Vybrat uživatele): hiveuser1
    * Permissions (Oprávnění): select (vybrat)
 
-     ![Konfigurace zásady Hivu v Ranger služby HDInsight připojené k doméně](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
+     ![Konfigurace zásady Hivu v Ranger HDInsight ESP](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
 
      > [!NOTE]
      > Pokud uživatel domény v části Select User (Vybrat uživatele) není k dispozici, chvíli počkejte, než se Ranger synchronizuje s AAD.
@@ -131,9 +131,9 @@ Testování druhé zásady (read-hivesampletable-devicemake), který jste vytvo�
     Po dokončení importu byste měli vidět naimportované dva sloupce dat.
 
 ## <a name="next-steps"></a>Další postup
-* Pokud chcete konfigurovat cluster HDInsight připojený k doméně, přečtěte si téma [Konfigurace clusterů HDInsight připojených k doméně](apache-domain-joined-configure.md).
-* Cluster HDInsight připojený k doméně, přečtěte si téma [clusterů HDInsight připojených k doméně spravovat](apache-domain-joined-manage.md).
-* Spouštění dotazů Hive pomocí SSH na clusterech HDInsight připojených k doméně, najdete v části [použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
+* Konfigurace clusteru HDInsight s balíčkem Enterprise Security Package, naleznete v tématu [konfigurace HDInsight clustery s ESP](apache-domain-joined-configure.md).
+* Cluster HDInsight s ESP, přečtěte si téma [spravovat HDInsight clustery s ESP](apache-domain-joined-manage.md).
+* Spouštění dotazů Hive pomocí SSH na clusterech HDInsight s ESP, naleznete v tématu [použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
 * Pokud se chcete připojit k Hivu pomocí Hive JDBC, přečtěte si téma [Připojení k Hivu ve službě Azure HDInsight pomocí ovladače Hive JDBC](../hadoop/apache-hadoop-connect-hive-jdbc-driver.md).
 * Pokud chcete připojit Excel k systému Hadoop pomocí rozhraní Hive ODBC, přečtěte si téma [Připojení Excelu k systému Hadoop pomocí ovladače Microsoft Hive ODBC](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
 * Pokud chcete připojit Excel k systému Hadoop pomocí doplňku Power Query, přečtěte si téma [Připojení Excelu k systému Hadoop pomocí doplňku Power Query](../hadoop/apache-hadoop-connect-excel-power-query.md).

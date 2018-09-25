@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: b61b6b730d645e2ffd518628abe2a121f119fd09
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 9ec049ebbfaa8e6ee5dbf585488d5c2e8ff25802
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715059"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949702"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure virtual machine scale sets s nejčastější dotazy
 
@@ -49,7 +49,7 @@ Získejte odpovědi na nejčastější dotazy ohledně škálovacích sad virtu�
 
 **Otázka:** Jak se vytváří škálovací sada s použitím vlastní image?
 
-**Odpověď:** Vytvoření a zachycení image virtuálního počítače a pak použít jako zdroj pro svou škálovací sadu. Kurz o tom, jak vytvořit a používat vlastní image virtuálního počítače, můžete použít [příkazového řádku Azure CLI 2.0](tutorial-use-custom-image-cli.md) nebo [prostředí Azure PowerShell](tutorial-use-custom-image-powershell.md)
+**Odpověď:** Vytvoření a zachycení image virtuálního počítače a pak použít jako zdroj pro svou škálovací sadu. Kurz o tom, jak vytvořit a používat vlastní image virtuálního počítače, můžete použít [rozhraní příkazového řádku Azure](tutorial-use-custom-image-cli.md) nebo [prostředí Azure PowerShell](tutorial-use-custom-image-powershell.md)
 
 **Otázka:** Pokud snížím kapacitu škálovací sady z 20 na 15, které virtuální počítače budou odebrány?
 
@@ -129,7 +129,7 @@ Jako metriku k nastavení pro upozornění můžete všechny čítače výkonu v
 
 ### <a name="how-do-i-set-up-autoscale-on-a-virtual-machine-scale-set-by-using-powershell"></a>Jak můžu nastavit automatické škálování na škálovací sadu virtuálních počítačů, nastavit pomocí Powershellu?
 
-Nastavení automatického škálování na škálovací sadu virtuálních počítačů pomocí prostředí PowerShell nastavte, naleznete v tématu [automaticky škálovat škálovací sadu virtuálních počítačů](tutorial-autoscale-powershell.md). Můžete také nakonfigurovat automatické škálování s [příkazového řádku Azure CLI 2.0](tutorial-autoscale-cli.md) a [šablony Azure](tutorial-autoscale-template.md)
+Nastavení automatického škálování na škálovací sadu virtuálních počítačů pomocí prostředí PowerShell nastavte, naleznete v tématu [automaticky škálovat škálovací sadu virtuálních počítačů](tutorial-autoscale-powershell.md). Můžete také nakonfigurovat automatické škálování s [rozhraní příkazového řádku Azure](tutorial-autoscale-cli.md) a [šablony Azure](tutorial-autoscale-template.md)
 
 
 ### <a name="if-i-have-stopped-deallocated-a-vm-is-that-vm-started-as-part-of-an-autoscale-operation"></a>Pokud můžu mít zastaveno (přidělení zrušeno) virtuálního počítače, je tento virtuální počítač spuštěn jako součást operace automatického škálování?

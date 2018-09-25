@@ -8,19 +8,19 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: f6959e0fec77ff046e4db86bad30502259775a49
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 2e4b356fec642e06e3223700967eeacd19f1c49c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022835"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952473"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Dotazovací jazyk služby IoT Hub pro dvojčata zařízení a modul, úlohy a směrování zpráv
 
 Centrum IoT poskytuje výkonné jazyce podobném SQL k načtení informací o [dvojčata zařízení] [ lnk-twins] a [úlohy][lnk-jobs]a [směrování zpráv][lnk-devguide-messaging-routes]. Tento článek představuje:
 
 * Úvod do hlavní funkce dotazovací jazyk služby IoT Hub, a
-* Podrobný popis jazyka.
+* Podrobný popis jazyka. Podrobnosti o dotazovací jazyk pro směrování zpráv, najdete v části [dotazy v směrování zpráv](../iot-hub/iot-hub-devguide-routing-query-syntax.md).
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
@@ -305,126 +305,6 @@ V současné době se dotazuje na **devices.jobs** nepodporují:
 * Podmínky, které odkazují na dvojče zařízení kromě vlastnosti úlohy (viz předchozí část).
 * Provádění agregací, jako je například počet, průměr, Seskupit podle.
 
-## <a name="device-to-cloud-message-routes-query-expressions"></a>Směrování zpráv typu zařízení cloud výrazech dotazů
-
-Pomocí [trasy typu zařízení cloud][lnk-devguide-messaging-routes], můžete nakonfigurovat službu IoT Hub odesílat zprávy typu zařízení cloud do různých koncových bodů. Odesílání podle výrazů vyhodnocovaných proti jednotlivé zprávy.
-
-Trasa [podmínku] [ lnk-query-expressions] používá syntaxe jazyka dotazů služby IoT Hub jako podmínky v dotazy dvojčete a úlohy, ale pouze podmnožinu funkcí jsou k dispozici. Trasy podmínky se vyhodnocují v záhlaví zpráv a text. Směrování výrazu dotazu může zahrnovat pouze hlavičky zpráv, pouze text zprávy, nebo obě zprávy hlavičky a tělo zprávy. IoT Hub předpokládá určité schéma pro hlavičky a tělo zprávy směrování zpráv a následující části popisují, co je potřeba pro službu IoT Hub správně směrovat.
-
-### <a name="routing-on-message-headers"></a>Směrování na záhlaví zpráv
-
-IoT Hub se předpokládá následující reprezentaci JSON záhlaví zpráv pro směrování zpráv:
-
-```json
-{
-  "message": {
-    "systemProperties": {
-      "contentType": "application/json",
-      "contentEncoding": "utf-8",
-      "iothub-message-source": "deviceMessages",
-      "iothub-enqueuedtime": "2017-05-08T18:55:31.8514657Z"
-    },
-    "appProperties": {
-      "processingPath": "<optional>",
-      "verbose": "<optional>",
-      "severity": "<optional>",
-      "testDevice": "<optional>"
-    },
-    "body": "{\"Weather\":{\"Temperature\":50}}"
-  }
-}
-```
-
-Vlastnosti zprávy systému začínají `'$'` symbol.
-Vlastnosti uživatele se vždy přistupuje včetně jejich jména. Pokud název vlastnosti uživatele shoduje s vlastností systému (například `$contentType`), vlastnost uživatele získáte pomocí `$contentType` výrazu.
-Vždy přístup k vlastnosti systému pomocí ostrých závorek `{}`: můžete například použít výraz `{$contentType}` pro přístup k vlastnosti systému `contentType`. Názvy vlastností závorkách vždy načíst odpovídající vlastnost systému.
-
-Mějte na paměti, že v názvech vlastností se malá a velká písmena.
-
-> [!NOTE]
-> Všechny vlastnosti zprávy jsou řetězce. Vlastnosti systému, jak je popsáno v [– Příručka pro vývojáře][lnk-devguide-messaging-format], aktuálně nejsou k dispozici pro použití v dotazech.
->
-
-Například, pokud použijete `messageType` vlastnosti, můžete chtít směrovat všechny telemetrie na jeden koncový bod a všechny výstrahy do jiného koncového bodu. Můžete napsat následující výraz směrovat telemetrická data:
-
-```sql
-messageType = 'telemetry'
-```
-
-A následující výraz pro směrování zpráv s výstrahou:
-
-```sql
-messageType = 'alert'
-```
-
-Logické výrazy a funkce jsou také podporovány. Tato funkce umožňuje rozlišovat mezi úroveň závažnosti, například:
-
-```sql
-messageType = 'alerts' AND as_number(severity) <= 2
-```
-
-Odkazovat [výraz a podmínky] [ lnk-query-expressions] najdete úplný seznam podporovaných operátory a funkce.
-
-### <a name="routing-on-message-bodies"></a>Směrování zpráv
-
-IoT Hub můžete pouze směrování podle textu zprávy obsah, pokud text zprávy je správně vytvořený JSON zakódován do kódování UTF-8, UTF-16 nebo UTF-32. Nastavit typ obsahu zprávy, která se `application/json`. Nastavte na jednu z podporovaných kódování UTF v hlavičkách zpráv kódování obsahu. Pokud není zadán buď z hlaviček, IoT Hub nebude pokoušet o vyhodnocení libovolný výraz dotazu zahrnující orgánu proti zprávě. Pokud zpráva není JSON zpráva nebo zpráva neurčuje typu obsahu a kódování obsahu, stále můžete směrování zpráv pro směrování zpráv založené na hlavičkách zpráv.
-
-Následující příklad ukazuje, jak vytvořit zprávu s správně formát a je kódovaný text JSON:
-
-```csharp
-string messageBody = @"{ 
-                            ""Weather"":{ 
-                                ""Temperature"":50, 
-                                ""Time"":""2017-03-09T00:00:00.000Z"", 
-                                ""PrevTemperatures"":[ 
-                                    20, 
-                                    30, 
-                                    40 
-                                ], 
-                                ""IsEnabled"":true, 
-                                ""Location"":{ 
-                                    ""Street"":""One Microsoft Way"", 
-                                    ""City"":""Redmond"", 
-                                    ""State"":""WA"" 
-                                }, 
-                                ""HistoricalData"":[ 
-                                    { 
-                                    ""Month"":""Feb"", 
-                                    ""Temperature"":40 
-                                    }, 
-                                    { 
-                                    ""Month"":""Jan"", 
-                                    ""Temperature"":30 
-                                    } 
-                                ] 
-                            } 
-                        }"; 
- 
-// Encode message body using UTF-8 
-byte[] messageBytes = Encoding.UTF8.GetBytes(messageBody); 
- 
-using (var message = new Message(messageBytes)) 
-{ 
-    // Set message body type and content encoding. 
-    message.ContentEncoding = "utf-8"; 
-    message.ContentType = "application/json"; 
- 
-    // Add other custom application properties.  
-    message.Properties["Status"] = "Active";    
- 
-    await deviceClient.SendEventAsync(message); 
-}
-```
-
-Můžete použít `$body` ve výrazu dotazu pro odesílání zpráv. Jednoduchý text odkazu, odkaz na pole text nebo více odkazů textu můžete použít ve výrazu dotazu. Výraz dotazu můžete také kombinovat odkaz text s odkazem záhlaví zprávy. Následující příklad, jsou všechny výrazy platný dotaz:
-
-```sql
-$body.Weather.HistoricalData[0].Month = 'Feb'
-$body.Weather.Temperature = 50 AND $body.Weather.IsEnabled
-length($body.Weather.Location.State) = 2
-$body.Weather.Temperature = 50 AND Status = 'Active'
-```
-
 ## <a name="basics-of-an-iot-hub-query"></a>Základní informace o službě IoT Hub dotazu
 Každý dotaz služby IoT Hub se skládá, vyberte a z klauzule volitelné místo, kde a klauzule GROUP BY. Každý dotaz se spouští v kolekci dokumentů JSON, například dvojčata zařízení. Klauzule FROM označuje provést iteraci v kolekci dokumentů (**zařízení** nebo **devices.jobs**). Poté je použit filtr v klauzuli WHERE. Pomocí agregace, jsou výsledky tohoto kroku seskupené podle zadání v klauzuli Group by. Pro každou skupinu, je vygenerována řádku zadané v klauzuli SELECT.
 
@@ -614,8 +494,7 @@ Zjistěte, jak provádět dotazy ve svých aplikacích pomocí [sad SDK Azure Io
 [lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md
 [lnk-devguide-quotas]: iot-hub-devguide-quotas-throttling.md
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
-[lnk-devguide-messaging-routes]: iot-hub-devguide-messages-read-custom.md
+[lnk-devguide-messaging-routes]: iot-hub-devguide-messages-d2c.md
 [lnk-devguide-messaging-format]: iot-hub-devguide-messages-construct.md
-[lnk-devguide-messaging-routes]: ./iot-hub-devguide-messages-read-custom.md
 
 [lnk-hub-sdks]: iot-hub-devguide-sdks.md

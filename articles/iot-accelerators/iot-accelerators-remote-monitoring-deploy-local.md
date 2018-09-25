@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 09/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: 966af342937a36adc5932a7a4c92ee127723b4a0
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 5853730a5e3408e33deb483f6ce6652c1c22efab
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295729"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034973"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally"></a>Nasazení akcelerátoru řešení vzdáleného monitorování místně
 
@@ -39,58 +39,47 @@ K dokončení místní nasazení, budete potřebovat následující nástroje na
 
 Vzdálené monitorování úložiště zdrojového kódu GitHub zahrnuje Docker konfigurační soubory, které potřebujete ke stažení, konfiguraci a spuštění imagí Dockeru, které obsahují mikroslužby. Klonovat a vytvořte místní verzi úložiště, použijte prostředí příkazového řádku přejděte do vhodný složky na místním počítači a poté spustíte jeden z následujících příkazů:
 
-Nainstalovat Java implementace mikroslužby, spusťte:
+Pokud chcete stáhnout nejnovější verzi implementace mikroslužeb Java, spusťte:
 
 ```cmd/sh
 git clone --recurse-submodules https://github.com/Azure/azure-iot-pcs-remote-monitoring-java.git
+cd azure-iot-pcs-remote-monitoring-java
+git submodule foreach git pull origin master
 ```
 
-Pokud chcete nainstalovat implementace .net mikroslužeb, spusťte:
+Pokud chcete stáhnout nejnovější verzi implementace mikroslužby .NET, spusťte:
 
 ```cmd\sh
 git clone --recurse-submodules https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet.git
+cd azure-iot-pcs-remote-monitoring-dotnet
+git submodule foreach git pull origin master
 ```
 
 > [!NOTE]
-> Tyto příkazy stáhnout zdrojový kód pro všechny mikroslužby. I když není nutné zdrojový kód pro spuštění mikroslužby v Dockeru, zdrojový kód je užitečné, pokud budete později chtít upravit akcelerátor řešení a místní test provedených změn.
+> Tyto příkazy stáhnout zdrojový kód pro všechny mikroslužby kromě skripty, které používáte ke spouštění mikroslužby lokálně. I když není nutné zdrojový kód pro spuštění mikroslužby v Dockeru, zdrojový kód je užitečné, pokud budete později chtít upravit akcelerátor řešení a místní test provedených změn.
 
 ## <a name="deploy-the-azure-services"></a>Nasazení služby Azure
 
-I když v tomto článku se dozvíte, jak spouštět mikroslužby lokálně, jsou závislé na spouštění v cloudu služby Azure. Tyto služby Azure můžete nasadit [ručně na webu Azure portal](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Manual-steps-to-create-azure-resources-for-local-setup), nebo pomocí dodávaného skriptu. Následující příklady skriptu se předpokládá, že používáte úložiště .NET na počítači s Windows. Pokud pracujete s jiným prostředím, cesty, přípony souboru a oddělovače cest odpovídajícím způsobem nastavte. Použití poskytnutých skriptů:
+I když v tomto článku se dozvíte, jak spouštět mikroslužby lokálně, jsou závislé na spouštění v cloudu služby Azure. Tyto služby Azure můžete nasadit [ručně na webu Azure portal](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Manual-steps-to-create-azure-resources-for-local-setup), nebo pomocí dodávaného skriptu. Následující příklady skriptu se předpokládá, že používáte úložiště .NET na počítači s Windows. Pokud pracujete s jiným prostředím, cesty, přípony souboru a oddělovače cest odpovídajícím způsobem nastavte. Použití zadané skripty na:
 
 ### <a name="create-new-azure-resources"></a>Vytvářet nové prostředky Azure
 
-Pokud jste ještě nevytvořili požadované prostředky Azure, postupujte podle těchto kroků:
+Pokud jste dosud vytvořili požadované prostředky Azure, postupujte podle těchto kroků:
 
 1. Ve vašem prostředí příkazového řádku, přejděte **azure-iot-pcs-remote-monitoring-dotnet\services\scripts\local\launch** složky v klonovaném kopii úložiště.
 
-2. Spustit **start.cmd** skriptu a postupujte podle zobrazených výzev. Skript vyzve k zadání následujících informací:
+2. Spustit **start.cmd** skriptu a postupujte podle zobrazených výzev. Skript vyzve k přihlášení ke svému účtu Azure a znovu spusťte skript. Skript potom vás vyzve k zadání následujících informací:
     * Název řešení.
     * Předplatné Azure, které se má použít.
     * Umístění datového centra Azure používat.
 
     Tento skript vytvoří skupinu prostředků v Azure s názvem řešení. Tato skupina prostředků obsahuje prostředky Azure, které používá akcelerátor řešení.
 
-3. Ve vašem prostředí příkazového řádku, přejděte **azure-iot-pcs-remote-monitoring-dotnet\services\scripts\local\launch\os\win** složky v klonovaném kopii úložiště.
-
-4. Spustit **set-env uri.cmd** skriptu.
-
-5. Váš dílčí moduly gitu k Ujistěte se, že máte nejnovější verze aktualizace: `cd <repo-name>` a pak spusťte následující příkaz `git submodule foreach git pull origin master`
-
-> [!NOTE]
-> Pokud jste naklonovali úložiště azure-iot-pcs-remote-monitoring-dotnet, složka skripty je k dispozici v rámci služby dílčího modulu (složka). Tento skript může vyžadovat oprávnění správce nebo oprávnění sudo, při pokusu o instalaci [počítače rozhraní příkazového řádku](https://github.com/Azure/pcs-cli).
+3. Po dokončení skriptu, zobrazí se seznam proměnných prostředí. Postupujte podle pokynů k uložení těchto proměnných **azure-iot-pcs-remote-monitoring-dotnet\services\scripts\local\.env** souboru.
 
 ### <a name="use-existing-azure-resources"></a>Použít existující prostředky Azure
 
-Pokud jste již vytvořili požadované prostředky Azure a stačí, když je aktualizovat, proveďte pouze **jeden** z následujících akcí:
-
-* Globální nastavení proměnných prostředí na svém počítači.
-* **VS Code:** úpravou nastavení proměnných prostředí v konfiguraci spuštění **launch.json** souboru.
-* **Visual Studio:** nastavit proměnné prostředí pro webovou službu projekt mikroslužby tak, že ji přidáte **vlastnosti > ladění > proměnné prostředí**.
-
-Nakonec aktualizujte váš dílčí moduly gitu k Ujistěte se, že máte nejnovější verze: `cd <repo-name>` a pak spusťte následující příkaz `git submodule foreach git pull origin master`.
-
-Však není doporučena, proměnné prostředí můžete také nastavit v souboru appsettings.ini nachází ve složce webové služby pro jednotlivých mikroslužeb.
+Pokud jste již vytvořili požadované prostředky Azure upravovat definice proměnné prostředí v **azure-iot-pcs-remote-monitoring-dotnet\services\scripts\local\.env** soubor s požadovanými hodnotami. **.Env** soubor obsahuje podrobné informace o tom, kde najít požadované hodnoty.
 
 ## <a name="run-the-microservices-in-docker"></a>Spuštění mikroslužby v Dockeru
 

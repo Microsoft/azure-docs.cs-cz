@@ -9,12 +9,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: carlrab
-ms.openlocfilehash: ca6d36a4f06865b630e869623752bc5d488b6251
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 46789f5f3449baead12133522997936c8a992d3b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732936"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964765"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Založený na virtuálních jádrech zakoupení modelu omezení pro jednu databázi Azure SQL Database
 
@@ -84,7 +84,7 @@ Pro izolované databáze následující tabulky ukazují prostředky dostupné p
 |Generování H/W|4|4|4|4|4|4|
 |Virtuální jádra|1|2|4|8|16|24|
 |Paměť (GB)|7|14|28|56|112|168|
-|Podpora Columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
+|Podpora Columnstore|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Úložiště OLTP v paměti (GB)|1|2|4|8|20|36|
 |Typ úložiště|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|
 |Maximální velikost dat (GB)|1024|1024|1024|1024|1024|1024|
@@ -122,8 +122,52 @@ Pro izolované databáze následující tabulky ukazují prostředky dostupné p
 |Zahrnuté úložiště zálohování|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|
 |||
 
+### <a name="hyperscale-service-tier-preview"></a>Úroveň služeb Hyperškálovatelného (preview)
+
+#### <a name="generation-4-compute-platform"></a>Výpočetní platforma běžící generace 4
+|Úroveň výkonu|HS_Gen4_1|HS_Gen4_2|HS_Gen4_4|HS_Gen4_8|HS_Gen4_16|HS_Gen4_24|
+|:--- | --: |--: |--: |--: |--: |--: |--: |
+|Generování H/W|4|4|4|4|4|4|
+|Virtuální jádra|1|2|4|8|16|24|
+|Paměť (GB)|7|14|28|56|112|168|
+|Podpora Columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
+|Úložiště OLTP v paměti (GB)|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
+|Typ úložiště|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|
+|Maximální velikost dat (TB)|100 |100 |100 |100 |100 |100 |
+|Maximální velikost protokolu (TB)|1 |1 |1 |1 |1 |1 |
+|Velikost databáze TempDB (GB)|32|64|128|256|384|384|
+|Cíl vstupně-výstupních operací (64 KB)|Chcete-li určit|Chcete-li určit|Chcete-li určit|Chcete-li určit|Chcete-li určit|Chcete-li určit|
+|Vstupně-výstupní latence (přibližné)|Chcete-li určit|Chcete-li určit|Chcete-li určit|Chcete-li určit|Chcete-li určit|Chcete-li určit|
+|Maximální počet souběžných pracovních procesů (požadavků)|200|400|800|1600|3200|4800|
+|Maximální povolené relace|30000|30000|30000|30000|30000|30000|
+|Počet replik|2|2|2|2|2|2|
+|Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
+|Přečtěte si horizontální navýšení kapacity|Ano|Ano|Ano|Ano|Ano|Ano|
+|Zahrnuté úložiště zálohování|7|7|7|7|7|7|
+|||
+### <a name="generation-5-compute-platform"></a>Výpočetní platforma běžící generace 5
+|Úroveň výkonu|HS_Gen5_2|HS_Gen5_4|HS_Gen5_8|HS_Gen5_16|HS_Gen5_24|HS_Gen5_32|HS_Gen5_40|HS_Gen5_80|
+|:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |--: |
+|Generování H/W|5|5|5|5|5|5|5|5|
+|Virtuální jádra|2|4|8|16|24|32|40|80|
+|Paměť (GB)|11|22|44|88|132|176|220|440|
+|Podpora Columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
+|Úložiště OLTP v paměti (GB)|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
+|Typ úložiště|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|
+|Maximální velikost dat (TB)|100 |100 |100 |100 |100 |100 |100 |100 |
+|Maximální velikost protokolu (TB)|1 |1 |1 |1 |1 |1 |1 |1 |
+|Velikost databáze TempDB (GB)|64|128|256|384|384|384|384|384|
+|Cíl vstupně-výstupních operací (64 KB)|Chcete-li určit|Chcete-li určit|Chcete-li určit|Chcete-li určit|Chcete-li určit|Chcete-li určit|Chcete-li určit|Chcete-li určit|
+|Vstupně-výstupní latence (přibližné)|Chcete-li určit|Chcete-li určit|Chcete-li určit|Chcete-li určit|Chcete-li určit|Chcete-li určit|Chcete-li určit|Chcete-li určit|
+|Maximální počet souběžných pracovních procesů (požadavků)|200|400|800|1600|2400|3200|4000|8000|
+|Maximální povolené relace|30000|30000|30000|30000|30000|30000|30000|30000|
+|Počet replik|2|2|2|2|2|2|2|2|
+|Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
+|Přečtěte si horizontální navýšení kapacity|Ano|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
+|Zahrnuté úložiště zálohování (omezeno na verzi preview)|7|7|7|7|7|7|7|7|
+|||
+
 ## <a name="next-steps"></a>Další postup
 
 - Zobrazit [nejčastější dotazy k SQL Database](sql-database-faq.md) odpovědi na nejčastější dotazy.
-- Zobrazit [limity prostředků přehled Azure SQL Database](sql-database-resource-limits.md) informace o omezeních na úrovni serveru a předplatné.
 - Informace o obecných omezeních Azure najdete v tématu [předplatného Azure a limity, kvóty a omezení](../azure-subscription-service-limits.md).

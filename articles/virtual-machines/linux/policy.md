@@ -1,6 +1,6 @@
 ---
-title: Vynutit zabezpečení se zásadami na virtuální počítače s Linuxem v Azure | Microsoft Docs
-description: Tom, jak používat zásady pro správce prostředků Linux virtuální počítač Azure
+title: Vynucení zabezpečení pomocí zásad na virtuální počítače s Linuxem v Azure | Dokumentace Microsoftu
+description: Tom, jak aplikovat zásady pro Azure Resource Manageru virtuálního počítače s Linuxem
 services: virtual-machines-linux
 documentationcenter: ''
 author: singhkays
@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: singhkay
-ms.openlocfilehash: fa6c95c3986a398bdb4593235116b305a80616fb
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 04a172c40c24e4e0daaf17b495d2320f3a897a47
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34653789"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46975250"
 ---
-# <a name="apply-policies-to-linux-vms-with-azure-resource-manager"></a>Zásady použít pro virtuální počítače s Linuxem pomocí Azure Resource Manageru
-Pomocí zásad můžete vynutit organizaci různé konvence a pravidla v rámci podniku. Vynucení požadované chování může pomoci zmírnit rizika při přispívání do úspěch organizace. V tomto článku jsme popisují, jak lze pomocí Azure Resource Manager zásad můžete určit požadované chování pro virtuální počítače vaší organizace.
+# <a name="apply-policies-to-linux-vms-with-azure-resource-manager"></a>Použít zásady pro virtuální počítače s Linuxem pomocí Azure Resource Manageru
+Pomocí zásad můžete vynutit organizace různých konvencí a pravidla v rámci podniku. Vynucení požadované chování může pomoci zmírnit rizika při podílení se na úspěch organizace. V tomto článku popisujeme, jak můžete zásady Azure Resource Manageru pro definování požadované chování pro virtuální počítače vaší organizace.
 
-Úvod do zásady, najdete v části [co je Azure zásad?](../../azure-policy/azure-policy-introduction.md).
+Úvod do zásad najdete v tématu [co je Azure Policy?](../../azure-policy/azure-policy-introduction.md).
 
 ## <a name="permitted-virtual-machines"></a>Povolené virtuální počítače
-Zajistit, že virtuální počítače ve vaší organizaci, jsou kompatibilní s aplikací, můžete omezit povolených operační systémy. V následujícím příkladu zásady Povolit pouze Ubuntu 14.04.2-LTS virtuální počítače, který se má vytvořit.
+K zajištění, že jsou kompatibilní s aplikací virtuálních počítačů ve vaší organizaci, můžete omezit povolené operačních systémů. V následujícím příkladu zásady je povoleno pouze 14.04.2-LTS virtuálních počítačů s Ubuntu má být vytvořen.
 
 ```json
 {
@@ -80,7 +80,7 @@ Zajistit, že virtuální počítače ve vaší organizaci, jsou kompatibilní s
 }
 ```
 
-K úpravě předchozí zásada umožnit žádný obrázek Ubuntu LTS použijte zástupný znak: 
+Zástupný znak použijte k úpravě předchozí zásady a umožní žádné image Ubuntu LTS: 
 
 ```json
 {
@@ -89,11 +89,11 @@ K úpravě předchozí zásada umožnit žádný obrázek Ubuntu LTS použijte z
 }
 ```
 
-Informace o polí zásad najdete v tématu [zásad aliasy](../../azure-policy/policy-definition.md#aliases).
+Informace o polí zásad najdete v tématu [zásad aliasy](../../governance/policy/concepts/definition-structure.md#aliases).
 
 ## <a name="managed-disks"></a>Managed Disks
 
-Pokud chcete vyžadovat použití spravovaných disků, použijte tyto zásady:
+Vyžadovat použití spravovaných disků, použijte následující zásady:
 
 ```json
 {
@@ -139,11 +139,11 @@ Pokud chcete vyžadovat použití spravovaných disků, použijte tyto zásady:
 }
 ```
 
-## <a name="images-for-virtual-machines"></a>Bitové kopie u virtuálních počítačů
+## <a name="images-for-virtual-machines"></a>Image virtuálních počítačů
 
-Z bezpečnostních důvodů se může vyžadovat, aby byly nasazené schválené vlastní Image ve vašem prostředí. Můžete zadat buď skupinu prostředků, která obsahuje Image schválené nebo konkrétní schválených bitové kopie.
+Z bezpečnostních důvodů můžete vyžadovat, že schválené vlastních imagí nasazených ve vašem prostředí. Můžete zadat buď skupinu prostředků, který obsahuje Image schválené nebo konkrétní schválení bitové kopie.
 
-Následující příklad vyžaduje bitové kopie z skupiny schválené prostředků:
+V následujícím příkladu vyžaduje bitové kopie ze schválených prostředek skupiny:
 
 ```json
 {
@@ -170,7 +170,7 @@ Následující příklad vyžaduje bitové kopie z skupiny schválené prostřed
 } 
 ```
 
-Následující příklad určuje ID schválené bitové kopie:
+Následující příklad určuje ID schválené imagi:
 
 ```json
 {
@@ -179,9 +179,9 @@ Následující příklad určuje ID schválené bitové kopie:
 }
 ```
 
-## <a name="virtual-machine-extensions"></a>Rozšíření virtuálního počítače
+## <a name="virtual-machine-extensions"></a>Rozšíření virtuálních počítačů
 
-Můžete chtít nezakazuje využití určitých typů rozšíření. Například rozšíření pravděpodobně není kompatibilní s obrázky určité vlastního virtuálního počítače. Následující příklad ukazuje, jak chcete blokovat konkrétní rozšíření. Pomocí vydavatele a typ určit, které rozšíření, které chcete blokovat.
+Můžete chtít zakázat použití určitých typů rozšíření. Například rozšíření nemusí být kompatibilní s určitým vlastní Image virtuálních počítačů. Následující příklad ukazuje, jak blokovat konkrétní rozšíření. Vydavatele a typ používá k určení, které rozšíření blokování.
 
 ```json
 {
@@ -210,6 +210,6 @@ Můžete chtít nezakazuje využití určitých typů rozšíření. Například
 
 
 ## <a name="next-steps"></a>Další postup
-* Po definování zásad pravidlo (jak je znázorněno v předchozích ukázkách), musíte k vytvoření definice zásady a přiřadit obor. Obor může být předplatné, skupinu prostředků nebo prostředek. K přiřazení zásady, najdete v části [portálu Azure použijte přiřadit a spravovat zásady prostředků](../../azure-policy/assign-policy-definition.md), [prostředí PowerShell použít k přiřazení zásad](../../azure-policy/assign-policy-definition-ps.md), nebo [použití Azure CLI k přiřazení zásad](../../azure-policy/assign-policy-definition-cli.md).
-* Úvod do zásad prostředků, najdete v části [co je Azure zásad?](../../azure-policy/azure-policy-introduction.md).
+* Po definování pravidla zásad (jak je znázorněno v předchozím příkladu), budete muset vytvořit definici zásady a přiřadit obor. Rozsah může být předplatné, skupinu prostředků nebo prostředek. Přiřazení zásad, najdete v článku [použijte Azure portal a přiřazení a Správa zásad prostředků](../../azure-policy/assign-policy-definition.md), [použití Powershellu k přiřazení zásady](../../azure-policy/assign-policy-definition-ps.md), nebo [pomocí Azure CLI pro přiřazení zásad](../../azure-policy/assign-policy-definition-cli.md).
+* Úvod do zásad prostředků najdete v tématu [co je Azure Policy?](../../azure-policy/azure-policy-introduction.md).
 * Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](/azure/architecture/cloud-adoption-guide/subscription-governance).

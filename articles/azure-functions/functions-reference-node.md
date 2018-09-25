@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 03/04/2018
 ms.author: glenga
-ms.openlocfilehash: 72b93de029af750f55bf53fcc82e22ad91b45f69
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 24f7faa0fb111e4e537a7db3f5e1eea709d1ca59
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296341"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46957725"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Příručka pro vývojáře Azure Functions JavaScript
 Tato příručka obsahuje informace o složitými rozhraními vytváření Azure Functions s použitím jazyka JavaScript.
@@ -67,13 +67,12 @@ module.exports = function(context, myTrigger, myInput, myOtherInput) {
     context.done();
 };
 // You can also use 'arguments' to dynamically handle inputs
-module.exports = function(context) {
+module.exports = async function(context) {
     context.log('Number of inputs: ' + arguments.length);
     // Iterates through trigger and input binding data
     for (i = 1; i < arguments.length; i++){
         context.log(arguments[i]);
     }
-    context.done();
 };
 ```
 

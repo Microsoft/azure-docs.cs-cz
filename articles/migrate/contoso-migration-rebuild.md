@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 09/20/2018
 ms.author: raynew
-ms.openlocfilehash: 58ea0859af42f7614e69d1693bbd9f8e3a17ccb8
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: f0dc199f8a91ac06993f4ccbc9dff7dfad9f8a19
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300541"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042478"
 ---
 # <a name="contoso-migration-rebuild-an-on-premises-app-to-azure"></a>Migrace Contoso: znovu sestavte místní aplikaci do Azure
 
@@ -55,7 +55,7 @@ Tým cloudových Contoso má připnutou požadavky aplikace pro tuto migraci. Ty
  - Aplikace by neměly používat komponenty IaaS. Všechno, co by měly být sestaveny pro použití PaaS nebo služeb bez serveru.
  - Sestavení aplikace by měly být spuštěny cloudové služby a kontejnery by měl být uložený v registru kontejneru soukromého podnikové úrovni v cloudu.
  - Služba rozhraní API používaná pro domácí mazlíčky fotografie by měl být přesným a spolehlivým z okolního světa, protože rozhodnutí aplikace musí být zachované jejich hotels. Žádné domácí mazlíček udělil přístup může zůstat na hotely.
- - Abyste splnili požadavky pro kanál DevOps, Contoso použije Visual Studio Team Services (VSTS) pro zdrojový kód Management (SCM), s úložišti Git.  Automatizované buildy a vydání se použije k sestavení kódu a nasazení do Azure Web Apps, Azure Functions a AKS.
+ - Abyste splnili požadavky pro kanál DevOps, Contoso použije Azure DevOps pro zdrojový kód Management (SCM), s úložišti Git.  Automatizované buildy a vydání se použije k sestavení kódu a nasazení do Azure Web Apps, Azure Functions a AKS.
  - Různé kanály CI/CD jsou potřeba pro mikroslužby na back-endu a webového serveru na front-endu.
  - Back-endové služby mají různé verze cyklu z front-endové webové aplikace.  Tento požadavek splnit, nasadí dvě různé kanály DevOps.
  - Contoso potřebuje schválení správy všech front-endu pro vývoj pro web a to musí poskytnout kanálu CI/CD.
@@ -81,7 +81,7 @@ Po Připnutí dolů cíle a požadavky, Contoso navrhuje, zkontrolujte nasazení
 - Funkci domácí mazlíčky fotografii využívá Vision API služeb Cognitive Services a služby cosmos DB.
 - Back-end serveru je sestavena pomocí mikroslužeb. Ty se nasadí do kontejnerů využívá Azure Kubernetes service (AKS).
 - Kontejnery se vytvořené pomocí Azure DevOps a vloženy do Azure Container Registry (ACR).
-- Prozatím Contoso ručně nasadit webové aplikace a funkce kódu pomocí sady Visual Studio.
+- Prozatím Contoso ručně nasadit webové aplikace a funkce kódu pomocí sady Visual Studio
 - Mikroslužby se nasadí pomocí Powershellového skriptu, který volá nástroje příkazového řádku Kubernetes.
 
     ![Architektura scénáře](./media/contoso-migration-rebuild/architecture.png) 
@@ -224,15 +224,15 @@ Contoso vytvoří projekt Azure DevOps a nakonfiguruje sestavení CI k vytvořen
     ![Azure DevOps](./media/contoso-migration-rebuild/vsts1.png) 
 
 
-3. Naimportují úložiště GitHub.
+3. Importují [úložiště GitHub se vzorovými](https://github.com/Microsoft/SmartHotel360-Azure-backend.git).
 
     ![Azure DevOps](./media/contoso-migration-rebuild/vsts2.png)
     
-4. V **sestavení a vydání**, vytvoří nový kanál pomocí Azure úložiště Git jako zdroj, od importované **smarthotel** úložiště. 
+4. V **kanály**, kliknou **sestavení**a vytvořit nový kanál pomocí Azure úložiště Git jako zdroje z úložiště. 
 
     ![Azure DevOps](./media/contoso-migration-rebuild/vsts3.png)
 
-6. Výběru se spustí s prázdném kanálu.
+6. Výběru se spustí s prázdnou úlohu.
 
     ![Azure DevOps](./media/contoso-migration-rebuild/vsts4.png)  
 
@@ -252,7 +252,7 @@ Contoso vytvoří projekt Azure DevOps a nakonfiguruje sestavení CI k vytvořen
 
     ![Azure DevOps](./media/contoso-migration-rebuild/vsts8.png)
 
-9. Určí cestu **č. j. compose.yaml** souboru **src** složce úložiště. Výběrem imagí služby sestavení a zahrnout nejnovější značky. Při změně akci k **sestavování imagí služby**, název úlohy Azure DevOps se změní na **automaticky sestavovacích služeb**
+9. Zadejte cestu **docker compose.yaml** souboru **src** složce úložiště. Výběrem imagí služby sestavení a zahrnout nejnovější značky. Při změně akci k **sestavování imagí služby**, název úlohy Azure DevOps se změní na **automaticky sestavovacích služeb**
 
     ![Azure DevOps](./media/contoso-migration-rebuild/vsts9.png)
 
@@ -303,7 +303,7 @@ Správce společnosti Contoso, postupujte takto:
 
 - Nasaďte NGINX kontroler příchozího přenosu dat a povolení příchozí komunikace služeb.
 - Mikroslužby nasaďte do clusteru AKS.
-- Jako první krok, aktualizujte připojovací řetězce pro mikroslužby pomocí VSTS. Nakonfigurujte nový kanál VSTS vydání k nasazení mikroslužeb.
+- Jako první krok, aktualizujte připojovací řetězce pro mikroslužby pomocí Azure DevOps. Nakonfigurujte nový kanál pro Azure DevOps vydání k nasazení mikroslužeb.
 - Pokyny v této části používají [SmartHotel360-Azure-Backend](https://github.com/Microsoft/SmartHotel360-Azure-backend) úložiště.
 - Všimněte si, že některá nastavení konfigurace (třeba Active Directory B2C) nejsou pokryté v tomto článku. Přečtěte si další informace o těchto nastaveních v úložišti.
 
@@ -313,17 +313,14 @@ Vytváření kanálu:
 
     ![Připojení databáze](./media/contoso-migration-rebuild/back-pipe1.png)
 
-2. Otevřete VSTS a v SmartHotel360 projektu v **verze**, kliknou **+ nový kanál**.
+2. Otevřete Azure DevOps a v SmartHotel360 projektu v **verze**, kliknou **+ nový kanál**.
 
     ![Nový kanál](./media/contoso-migration-rebuild/back-pipe2.png)
 
 3. Kliknutím na **prázdný úlohy** spuštění kanálu bez šablony.
+4. Poskytují názvy fáze a kanálu.
 
-    ![Prázdný úlohy](./media/contoso-migration-rebuild/back-pipe3.png)
-
-4. Poskytuje název prostředí a kanálu.
-
-      ![Název prostředí](./media/contoso-migration-rebuild/back-pipe4.png)
+      ![Název fáze](./media/contoso-migration-rebuild/back-pipe4.png)
 
       ![Název kanálu](./media/contoso-migration-rebuild/back-pipe5.png)
 
@@ -455,7 +452,7 @@ Správce společnosti Contoso na webu Azure Portal zřídit aplikace Function Ap
 
 2. Poskytuje název aplikace (**smarthotelpetchecker**). Tyto aplikace umístit v provozní skupině prostředků **ContosoRG**. Nastavují hostování místem, kde **plánu Consumption**a umístěte ji v oblasti východní USA 2. Je vytvořen nový účet úložiště spolu s instanci Application Insights pro monitorování.
 
-    ![Nastavení Function App](./media/contoso-migration-rebuild/function-app2.png)
+    ![Nastavení aplikace funkcí](./media/contoso-migration-rebuild/function-app2.png)
 
 
 3. Po nasazení aplikace, přejděte na adresu aplikace chcete zkontrolovat, že je úspěšně vytvořen.
@@ -465,18 +462,18 @@ Správce společnosti Contoso na webu Azure Portal zřídit aplikace Function Ap
 
 Správce společnosti Contoso vytvořit dva různé projekty pro front-end webový server. 
 
-1. Ve VSTS, vytvářejí projekt **SmartHotelFrontend**.
+1. V Azure DevOps, vytvořte projekt **SmartHotelFrontend**.
 
     ![Front-endového projektu](./media/contoso-migration-rebuild/function-app1.png)
 
 2. Importují [SmartHotel360 front-endu](https://github.com/Microsoft/SmartHotel360-public-web.git) úložiště Git do nového projektu.
-3. Pro aplikace Function App, vytvořte nový projekt VSTS (SmartHotelPetChecker) a importujte [PetChecker](https://github.com/Microsoft/SmartHotel360-PetCheckerFunction ) úložiště Git do tohoto projektu.
+3. Pro aplikace Function App, vytvořte nový projekt Azure DevOps (SmartHotelPetChecker) a importujte [PetChecker](https://github.com/Microsoft/SmartHotel360-PetCheckerFunction ) úložiště Git do tohoto projektu.
 
 ### <a name="configure-the-web-app"></a>Konfigurace webové aplikace
 
 Teď nakonfigurovat správce společnosti Contoso ve webové aplikaci využívat prostředky společnosti Contoso.
 
-1. Připojte se k projektu VSTS a naklonujte úložiště místně do vývojového počítače.
+1. Připojení k Azure DevOps project a naklonujte úložiště místně do vývojového počítače.
 2. V sadě Visual Studio, otevřete složku, kterou chcete zobrazit všechny soubory v úložišti.
 
     ![Úložiště souborů](./media/contoso-migration-rebuild/configure-webapp1.png)
@@ -513,52 +510,45 @@ Teď nakonfigurovat správce společnosti Contoso ve webové aplikaci využívat
 Správce společnosti Contoso teď můžete publikovat na webu.
 
 
-1. Otevření VSTS a **SmartHotelFrontend** projektu v **Buildy a vydání**, kliknou **+ nový kanál**.
-2. Vyberou **VSTS Git** jako zdroj.
-
-    ![Nový kanál](./media/contoso-migration-rebuild/vsts-publishfront1.png)
-
+1. Otevření Azure DevOps a **SmartHotelFrontend** projektu v **Buildy a vydání**, kliknou **+ nový kanál**.
+2. Vyberou **Azure DevOps Git** jako zdroj.
 3. Vyberou **ASP.NET Core** šablony.
 4. Zkontrolujte kanálu a zkontrolujte, že **publikování webových projektů** a **Zip publikovat projekty** jsou vybrány.
 
     ![Nastavení kanálu](./media/contoso-migration-rebuild/vsts-publishfront2.png)
 
-5. V **triggery**, povolte průběžnou integraci a přidejte hlavní větve. Tím se zajistí, že každý tim řešení má nový kód potvrzení do hlavní větve, kanál sestavení spustí.
+5. V **triggery**, povolte průběžnou integraci a přidejte hlavní větve. Tím se zajistí, že pokaždé, když řešení obsahuje nový kód potvrzení do hlavní větve kanálu sestavení spustí.
 
-    ![Průběžná integrace](./media/contoso-migration-rebuild/vsts-publishfront3.png)
+    ![Nepřetržitá integrace](./media/contoso-migration-rebuild/vsts-publishfront3.png)
 
 6. Kliknutím na **Uložit & frontu** ke spuštění sestavení.
 7. Po dokončení sestavení, konfiguraci kanálu pro vydávání pomocí **nasazení služby Azure App Service**.
-8. Zadejte název prostředí **pracovní**.
+8. Název fáze poskytují **pracovní**.
 
     ![Název prostředí](./media/contoso-migration-rebuild/vsts-publishfront4.png)
 
-9. Přidání artefaktu a vyberte sestavení, které jsou právě nakonfigurovali.
+9. Přidejte artefakt a vyberte sestavení, které jsou právě nakonfigurovali.
 
      ![Přidání artefaktu](./media/contoso-migration-rebuild/vsts-publishfront5.png)
 
-6. Klikněte na ikonu blesku na artifcat a umožnit průběžné nasazování.
+10. Klikněte na ikonu blesku v artefaktu a umožnit průběžné nasazování.
 
     ![Průběžné nasazování](./media/contoso-migration-rebuild/vsts-publishfront6.png)
-
-7. V **prostředí**, kliknou **fáze 1, 1 úloha** pod **pracovní**.
-8. Po výběru předplatného a název aplikace se otevřou **nasazení služby Azure App Service** úloh. Nasazení je nakonfigurován pro použití **pracovní** slot pro nasazení. To se automaticky vytvoří kód ke kontrole a schválení na této pozici.
+11. V **prostředí**, kliknou **úlohy 1, 1 úloha** pod **pracovní**.
+12. Po výběru předplatného a název aplikace se otevřou **nasazení služby Azure App Service** úloh. Nasazení je nakonfigurován pro použití **pracovní** slot pro nasazení. To se automaticky vytvoří kód ke kontrole a schválení na této pozici.
 
      ![Slot](./media/contoso-migration-rebuild/vsts-publishfront7.png)
 
-9. V **nový kanál verze**, si přidají do nového prostředí.
+13. V **kanálu**, přidávají nové fázi.
 
     ![Nové prostředí](./media/contoso-migration-rebuild/vsts-publishfront8.png)
 
-10. Vyberou **nasazení služby Azure App Service se slotem**a pojmenujte prostředí **Prod**.
-
-    ![Název prostředí](./media/contoso-migration-rebuild/vsts-publishfront9.png)
-
-11. Kliknutí na **fáze 1, 2 úlohy**a vyberte předplatné, název služby app service, a **pracovní** slot.
+14. Vyberou **nasazení služby Azure App Service se slotem**a pojmenujte prostředí **Prod**.
+15. Kliknutí na **úlohy 1, 2 úlohy**a vyberte předplatné, název služby app service a **pracovní** slot.
 
     ![Název prostředí](./media/contoso-migration-rebuild/vsts-publishfront10.png)
 
-12. Odstraňují **nasazení služby Azure App Service do slotu** z kanálu. Existuje byl umístěn v předchozích krocích.
+16. Odstraňují **nasazení služby Azure App Service do slotu** z kanálu. Existuje byl umístěn v předchozích krocích.
 
     ![Odebrat z kanálu](./media/contoso-migration-rebuild/vsts-publishfront11.png)
 
@@ -571,8 +561,8 @@ Správce společnosti Contoso teď můžete publikovat na webu.
     ![Po nasazení schválení](./media/contoso-migration-rebuild/vsts-publishfront13.png)
 
 15. V kanálu sestavení jejich ručně aktivovat sestavení. Tím se aktivuje nový kanál pro vydávání verzí, které nasadí do přípravného slotu webu. Pro společnost Contoso, je adresa URL pro slot **https://smarthotelcontoso-staging.azurewebsites.net/**.
-16. Po dokončení sestavení a vydání nasadí do přihrádky, VSTS, e-mailem vedoucí vývoje pro schválení.
-17. Kliknutí vedoucí vývoje **zobrazení schválení**a můžete schválit nebo odmítnout žádost na portálu pro VSTS.
+16. Po dokončení sestavení a vydání nasadí do přihrádky, Azure DevOps e-mailem vedoucí vývoje pro schválení.
+17. Kliknutí vedoucí vývoje **zobrazení schválení**a můžete schválit nebo odmítnout žádost na portálu Azure DevOps.
 
     ![E-mail pro schválení](./media/contoso-migration-rebuild/vsts-publishfront14.png)
 
@@ -591,19 +581,19 @@ Správce společnosti Contoso teď můžete publikovat na webu.
 
 Správce společnosti Contoso následujícím způsobem nasazení aplikace.
 
-1. Jejich naklonujte úložiště lokálně na vývojovém počítači pomocí připojení k projektu VSTS.
+1. Pomocí připojení k Azure DevOps project, naklonujte úložiště lokálně na vývojovém počítači.
 2. V sadě Visual Studio, otevřete složku, kterou chcete zobrazit všechny soubory v úložišti.
 3. Otevřou **src/PetCheckerFunction/local.settings.json** soubor a přidat nastavení aplikace pro rozhraní API pro počítačové zpracování obrazu, úložiště a databáze Cosmos.
 
     ![Nasazení funkce](./media/contoso-migration-rebuild/function5.png)
 
-4. Potvrdit kód a synchronizovat ji zpět do VSTS doručením (push) změny.
-5. Přidejte nový kanál sestavení a vyberte **VSTS Git** zdroje.
+4. Potvrdit kód a synchronizovat ji zpět do Azure DevOps doručením (push) změny.
+5. Přidejte nový kanál sestavení a vyberte **Azure DevOps Git** zdroje.
 6. Vyberou **ASP.NET Core (.NET Framework)** šablony.
 7. Přijměte výchozí hodnoty pro šablonu.
 8. V **triggery**a pak vyberte k **aktivovat nepřetržitou integraci**a klikněte na tlačítko **Uložit & frontu** ke spuštění sestavení.
 9. Po úspěšném sestavení vytváří kanál pro vydávání verzí, přidání **nasazení služby Azure App Service se slotem**.
-10. Jejich název prostředí **Prod**a vyberte předplatné. Nastavují **typ aplikace** k **Asie a Tichomoří – funkce**a název služby app service jako **smarthotelpetchecker**.
+10. Jejich název prostředí **Prod**a vyberte předplatné. Nastavují **typ aplikace** k **aplikace Function App**a název služby app service jako **smarthotelpetchecker**.
 
     ![Function App](./media/contoso-migration-rebuild/petchecker2.png)
 

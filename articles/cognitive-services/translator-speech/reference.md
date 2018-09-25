@@ -10,12 +10,13 @@ ms.component: translator-speech
 ms.topic: reference
 ms.date: 05/18/2018
 ms.author: v-jansko
-ms.openlocfilehash: e4b95822141193739fccea999e9ce3d730c112a4
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ROBOTS: NOINDEX
+ms.openlocfilehash: 46aeab52014a28d1a962195de802d0e000b62509
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983276"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978705"
 ---
 # <a name="translator-speech-api"></a>Translator Speech API
 

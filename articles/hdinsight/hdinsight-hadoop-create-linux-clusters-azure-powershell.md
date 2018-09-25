@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: jasonh
-ms.openlocfilehash: f788660c0652a70cdc1065dfbef1eefd3c8a9022
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: ed9c486dfa548e86e558c093113011cabfd3d63c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43107544"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997416"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>Vytvoření clusterů se systémem Linux v HDInsight pomocí Azure Powershellu
 
@@ -23,7 +23,7 @@ ms.locfileid: "43107544"
 Prostředí Azure PowerShell je výkonný skriptovací prostředí, které můžete použít k řízení a automatizaci nasazení a správu vašich úloh v Microsoft Azure. Tento dokument obsahuje informace o tom, jak vytvořit cluster HDInsight se systémem Linux pomocí Azure Powershellu. Také obsahuje ukázkový skript.
 
 > [!NOTE]
-> Prostředí Azure PowerShell je dostupná pouze na klienty Windows. Pokud používáte klienta systému Linux, Unix nebo Mac OS X, přečtěte si téma [vytvořit cluster HDInsight se systémem Linux pomocí příkazového řádku Azure](hdinsight-hadoop-create-linux-clusters-azure-cli.md) informace o použití Azure CLI vytvořit cluster.
+> Prostředí Azure PowerShell je dostupná pouze na klienty Windows. Pokud používáte klienta systému Linux, Unix nebo Mac OS X, přečtěte si téma [vytvořit cluster HDInsight se systémem Linux pomocí rozhraní příkazového řádku Azure Classic](hdinsight-hadoop-create-linux-clusters-azure-cli.md) informace o použití rozhraní příkazového řádku classic k vytvoření clusteru.
 
 ## <a name="prerequisites"></a>Požadavky
 Musíte mít následující před zahájením tohoto postupu:

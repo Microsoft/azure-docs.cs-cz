@@ -1,22 +1,22 @@
 ---
-title: Apache Hadoop Oozie pracovních postupů v clusterech Azure HDInsight připojené k doméně
-description: Použití Hadoop Oozie v HDInsight se systémem Linux připojených k doméně Enterprise Security Package. Zjistěte, jak definovat pracovní postup Oozie a odešlete úlohu Oozie.
+title: Apache Hadoop Oozie pracovních postupů v clusterech Azure HDInsight s balíčkem Enterprise Security Package
+description: Použití Hadoop Oozie v Linuxovým systémem HDInsight Enterprise Security Package. Zjistěte, jak definovat pracovní postup Oozie a odešlete úlohu Oozie.
 services: hdinsight
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/26/2018
-ms.openlocfilehash: 69bf885ad5d6244997c7ce9cf61bdee9e05c1826
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 09/24/2018
+ms.openlocfilehash: 563a4c14d78b7edd228c998817f44c6b3f14efe7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048970"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947484"
 ---
-# <a name="run-apache-oozie-in-domain-joined-hdinsight-hadoop-clusters"></a>Spustit Apache Oozie v doméně HDInsight Hadoop clusterů
+# <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Spustit Apache Oozie v HDInsight Hadoop clusterů s balíčkem Enterprise Security Package
 Oozie je pracovní postup a koordinaci systém, který spravuje úlohy platformy Hadoop. Oozie integrován do zásobníku Hadoop a podporuje následující úlohy:
 - Apache MapReduce
 - Apache Pig
@@ -26,12 +26,12 @@ Oozie je pracovní postup a koordinaci systém, který spravuje úlohy platformy
 Oozie můžete také použít k plánování úloh, které jsou specifické pro systém, jako jsou programy v jazyce Java nebo skripty prostředí.
 
 ## <a name="prerequisite"></a>Požadavek
-- Cluster Azure HDInsight Hadoop připojených k doméně. Zobrazit [konfigurace clusterů HDInsight připojených k doméně](./apache-domain-joined-configure-using-azure-adds.md).
+- Cluster Azure HDInsight Hadoop s Enterprise Security Package (ESP). Zobrazit [konfigurace HDInsight clustery s ESP](./apache-domain-joined-configure-using-azure-adds.md).
 
     > [!NOTE]
-    > Podrobné pokyny pro použití Oozie na clustery připojené k jiné nedoménové najdete v tématu [pracovních postupů pomocí Hadoop Oozie v Azure HDInsight založených na Linuxu](../hdinsight-use-oozie-linux-mac.md).
+    > Podrobné pokyny týkající se použití Oozie v clusterech bez ESP, naleznete v tématu [pracovních postupů pomocí Hadoop Oozie v Azure HDInsight založených na Linuxu](../hdinsight-use-oozie-linux-mac.md).
 
-## <a name="connect-to-a-domain-joined-cluster"></a>Připojení ke clusteru připojeném k doméně
+## <a name="connect-to-an-esp-cluster"></a>Připojení ke clusteru ESP
 
 Další informace o Secure Shell (SSH) najdete v tématu [připojení k HDInsight (Hadoop) pomocí protokolu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -262,7 +262,7 @@ Můžete vytvořit dvě skriptů Hive pro Hive server 1 a Hive server 2, jak je 
     ```
 
 ## <a name="submit-oozie-jobs"></a>Odesílání úloh Oozie
-Odesílání úlohy Oozie pro clustery připojené k doméně je například odesílání úloh Oozie v clustery připojené k jiné nedoménové.
+Odesílání úloh Oozie pro clustery ESP je jako odesílání Oozie úloh v clusterech bez ESP.
 
 Další informace najdete v tématu [použití Oozie se systémem Hadoop k definování a spuštění workflowu v Azure HDInsight založených na Linuxu](../hdinsight-use-oozie-linux-mac.md).
 
@@ -311,7 +311,7 @@ Další informace najdete v tématu [Oozie instalace a konfigurace](https://oozi
 Pro komponenty, jako jsou serveru Hive 1, kdy modul plug-in Ranger není k dispozici nebo se nepodporuje je možné pouze hrubých HDFS autorizace. Detailní autorizace je k dispozici pouze prostřednictvím Ranger moduly plug-in.
 
 ## <a name="get-the-oozie-web-ui"></a>Získat Oozie webového uživatelského rozhraní
-Webové uživatelské rozhraní Oozie poskytuje webové zobrazení stavu úlohy Oozie v clusteru. Pokud chcete získat ve webovém uživatelském rozhraní, proveďte následující kroky v prostředí clusterů připojených k doméně:
+Webové uživatelské rozhraní Oozie poskytuje webové zobrazení stavu úlohy Oozie v clusteru. Pokud chcete získat ve webovém uživatelském rozhraní, proveďte následující kroky v clusterech ESP:
 
 1. Přidat [hraniční uzel](../hdinsight-apps-use-edge-node.md) a povolit [SSH ověřování pomocí protokolu Kerberos](../hdinsight-hadoop-linux-use-ssh-unix.md).
 

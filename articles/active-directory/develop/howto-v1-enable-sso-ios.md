@@ -1,6 +1,6 @@
 ---
 title: Postup povolení jednotného přihlašování napříč aplikacemi pro iOS pomocí knihovny ADAL | Dokumentace Microsoftu
-description: 'Jak používat funkce knihovny ADAL sady SDK k povolení jednotného přihlašování napříč aplikacemi. '
+description: Jak používat funkce knihovny ADAL sady SDK k povolení jednotného přihlašování napříč aplikacemi.
 services: active-directory
 author: CelesteDG
 manager: mtillman
@@ -11,47 +11,52 @@ ms.workload: identity
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 04/07/2017
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 203cb4f57cfa50a17b66a9b70a44568e57ec4835
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: e9598cb464360e35a86b6fe35d8c965a5e7fb51d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39601973"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963028"
 ---
-# <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Postup povolení jednotného přihlašování napříč aplikacemi pro iOS pomocí knihovny ADAL
+# <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Postupy: povolení jednotného přihlašování napříč aplikacemi pro iOS pomocí knihovny ADAL
 
-Poskytující jednotné přihlašování (SSO), aby uživatelé pouze zadat své přihlašovací údaje jednou a automaticky mají tyto přihlašovací údaje pracovat napříč aplikace nyní očekávání zákazníků. Potíže při zadávání uživatelského jména a hesla na malé obrazovce, často časy v kombinaci s další faktor (2FA) jako telefonního hovoru nebo chvíle kód, výsledky v rychlé nespokojenost, pokud uživatel má k tomu víc než jednou pro váš produkt.
+[!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
-Navíc pokud použijete platformu identit, která může používat další aplikace, jako je například Accounts Microsoft nebo pracovní účet z Office 365, zákazníci očekávají, že tyto přihlašovací údaje být k dispozici pro použití ve všech svých aplikacích bez ohledu na dodavatele.
+Jednotné přihlašování (SSO) umožňuje uživatelům pouze zadat své přihlašovací údaje jednou a mít těchto přihlašovacích údajů napříč aplikacemi a na různých platformách, které mohou používat další aplikace (například Accounts Microsoft nebo pracovní účet z Microsoft 365) mělo automaticky fungovat bez důležitá vydavatele.
 
-Microsoft Identity platform, spolu s naše sady SDK Microsoft Identity tento těžkou práci udělá za vás a dává vám možnost potěšte své zákazníky s jednotným Přihlašováním, buď v rámci vlastní sadu aplikací nebo, stejně jako u naši schopnost zprostředkovatele a Authenticator aplikacemi, v rámci celého zařízení.
+Platforma identit společnosti Microsoft, spolu se sadami SDK usnadňuje povolení jednotného přihlašování v rámci vlastní sadu aplikací, nebo zprostředkovatel funkce a aplikace Authenticator napříč celé zařízení.
 
-Tento názorný postup zjistíte, jak nakonfigurovat naší sady SDK v rámci vaší aplikace k vašim zákazníkům poskytovat tuto výhodu.
+V tomto návodu budete zjistěte, jak nakonfigurovat sady SDK v rámci vaší aplikace k vašim zákazníkům poskytovat jednotné přihlašování.
 
-Tento názorný postup platí pro:
+Tento postup platí pro:
 
-* Azure Active Directory
+* Azure Active Directory (Azure Active Directory)
 * Azure Active Directory B2C
 * Azure Active Directory s B2B
 * Podmíněný přístup k Azure Active Directory
 
-Předchozí dokument předpokládá, že víte, jak [zřídit aplikace na starší verzi portálu pro Azure Active Directory](active-directory-how-to-integrate.md) a integrované aplikace s [sada SDK pro iOS Microsoft Identity](https://github.com/AzureAD/azure-activedirectory-library-for-objc).
+## <a name="prerequisites"></a>Požadavky
 
-## <a name="sso-concepts-in-the-microsoft-identity-platform"></a>Jednotné přihlašování koncepty v Microsoft Identity Platform
+Tento návod předpokládá, že víte, jak:
 
-### <a name="microsoft-identity-brokers"></a>Zprostředkovatelé identit Microsoft
+* Zřídíte aplikace pomocí starší verze portálu pro Azure AD. Další informace najdete v tématu [registrace aplikace ke koncovému bodu Azure AD verze 1.0](quickstart-v1-add-azure-ad-app.md)
+* Integrace aplikace pomocí [sada SDK služby Azure AD pro iOS](https://github.com/AzureAD/azure-activedirectory-library-for-objc).
 
-Microsoft poskytuje pro každou mobilní platformu aplikace, které umožňují přemostění přihlašovacích údajů napříč aplikacemi od různých dodavatelů a umožňuje speciálních rozšířených funkcí, které vyžadují jedno zabezpečené místo, odkud se ověřují přihlašovací údaje. Označujeme **zprostředkovatelů**. V Iosu a Androidu tyto poskytují zprostředkovatele aplikace ke stažení, že zákazníci nainstalovat nezávisle na sobě, nebo můžete přidat do zařízení ve společnosti, který spravuje některá nebo všechna zařízení pro svoje zaměstnance. Správa zabezpečení zprostředkovatele podporují jenom pro některé aplikace nebo celé zařízení podle potřeby co správce IT. Ve Windows tato funkce poskytuje výběru účtu vestavěné do operačního systému, technicky označuje jako zprostředkovatel webového ověření.
+## <a name="single-sign-on-concepts"></a>Koncepty jednotné přihlašování
 
-Přečtěte si další informace o jak používáme zprostředkovatele a jak vaši zákazníci se mohou zobrazit je v jejich přihlašovacího procesu pro Microsoft Identity platform.
+### <a name="identity-brokers"></a>Zprostředkovatelé identity
+
+Společnost Microsoft poskytuje pro každou mobilní platformu aplikace, které umožňují přemostění přihlašovacích údajů napříč aplikacemi od různých dodavatelů a vylepšené funkce, které vyžadují jedno zabezpečené místo, odkud se ověřují přihlašovací údaje. Toto nastavení se nazývá **zprostředkovatelů**.
+
+V Iosu a Androidu poskytují zprostředkovatele aplikace ke stažení, že zákazníci nainstalovat nezávisle na sobě, nebo přidat do zařízení ve společnosti, který spravuje některé nebo všechny, zařízení pro své zaměstnance. Správa zabezpečení můžou být zprostředkovatelé podporují jenom pro některé aplikace nebo celé zařízení v závislosti na konfiguraci správce IT. Ve Windows tato funkce poskytuje výběru účtu vestavěné do operačního systému, technicky označuje jako zprostředkovatel webového ověření.
 
 ### <a name="patterns-for-logging-in-on-mobile-devices"></a>Vzory pro přihlášení na mobilních zařízeních
 
-Přístup k přihlašovacím údajům na zařízení podle dva základní způsoby pro platformu Microsoft Identity:
+Přístup k přihlašovacím údajům na zařízení podle dva základní způsoby:
 
 * Přihlášení s asistencí bez zprostředkovatele
 * Zprostředkovatel přihlášení s asistencí
@@ -68,11 +73,11 @@ Tyto přihlašovací údaje nabízí tyto výhody:
 
 Tyto přihlašovací údaje mají následující nevýhody:
 
-* Uživatele nelze prostředí jednotného přihlašování napříč všemi aplikacemi, které používají Microsoft Identity pouze v rámci Identities Microsoftu, které vaše aplikace je nakonfigurovaná.
+* Uživatele nelze prostředí jednotného přihlašování v mezi všemi aplikacemi, které používají Microsoft identity jenom napříč identitami Microsoftu, které vaše aplikace je nakonfigurovaná.
 * Aplikaci nelze použít s obchodní funkce, jako je například podmíněný přístup nebo používají sadu Intune produktů.
 * Aplikace nepodporuje ověřování pomocí certifikátů pro podnikové uživatele.
 
-Je zde reprezentace práci se sadami SDK Microsoft Identity se sdíleným úložištěm aplikací k povolení jednotného přihlašování:
+Je zde reprezentace práci se sadami SDK se sdíleným úložištěm aplikací k povolení jednotného přihlašování:
 
 ```
 +------------+ +------------+  +-------------+
@@ -81,7 +86,7 @@ Je zde reprezentace práci se sadami SDK Microsoft Identity se sdíleným úlož
 |            | |            |  |             |
 |            | |            |  |             |
 +------------+ +------------+  +-------------+
-| ADAL SDK  |  |  ADAL SDK  |  |  ADAK SDK   |
+| ADAL SDK  |  |  ADAL SDK  |  |  ADAL SDK   |
 +------------+-+------------+--+-------------+
 |                                            |
 |            App Shared Storage              |
@@ -90,22 +95,23 @@ Je zde reprezentace práci se sadami SDK Microsoft Identity se sdíleným úlož
 
 #### <a name="broker-assisted-logins"></a>Zprostředkovatel přihlášení s asistencí
 
-S pomocí zprostředkovatele přihlášení jsou přihlašovací prostředí, ke kterým dojde v aplikaci zprostředkovatele, které používají úložiště a zabezpečení zprostředkovatele sdílet přihlašovací údaje na všechny aplikace na zařízení, které se vztahují platformě Microsoft Identity. To znamená, že vaše aplikace využívají Service broker k přihlášení uživatelů. V Iosu a Androidu tyto poskytují zprostředkovatele aplikace ke stažení, že zákazníci nainstalovat nezávisle na sobě, nebo přidat do zařízení ve společnosti, který spravuje zařízení pro svoje uživatele. Příkladem takové aplikace je aplikace Microsoft Authenticator v Iosu. Ve Windows je tato funkce poskytuje výběru účtu vestavěné do operačního systému, technicky označuje jako zprostředkovatel webového ověření.
-Prostředí se liší podle platformy a může být někdy rušivá pro uživatele, pokud nebude správně spravovat. Jste pravděpodobně nejvíce obeznámeni s tímto modelem stačí Pokud máte nainstalovanou aplikací služby Facebook a použijete připojení k Facebooku z jiné aplikace. Platforma Microsoft Identity používá stejný vzor.
+S pomocí zprostředkovatele přihlášení jsou přihlašovací prostředí, ke kterým dojde v aplikaci zprostředkovatele, které používají úložiště a zabezpečení zprostředkovatele sdílet přihlašovací údaje na všechny aplikace na zařízení, které se vztahují platforma identit. To znamená, že vaše aplikace využívají Service broker k přihlášení uživatelů. V Iosu a Androidu tyto poskytují zprostředkovatele aplikace ke stažení, že zákazníci nainstalovat nezávisle na sobě, nebo přidat do zařízení ve společnosti, který spravuje zařízení pro svoje uživatele. Příkladem takové aplikace je aplikace Microsoft Authenticator v Iosu. Ve Windows je tato funkce poskytuje výběru účtu vestavěné do operačního systému, technicky označuje jako zprostředkovatel webového ověření.
 
-Animace odešle aplikace na pozadí při aplikace Microsoft Authenticator pro iOS, které to vede k "přechodu" obsahuje aktivní. k výběru účtu, který se chcete přihlásit s uživatelem. 
+Prostředí se liší podle platformy a může být někdy rušivá pro uživatele, pokud nebude správně spravovat. Jste pravděpodobně nejvíce obeznámeni s tímto modelem stačí Pokud máte nainstalovanou aplikací služby Facebook a použijete připojení k Facebooku z jiné aplikace. Platforma identit používá stejný vzor.
+
+Animace odešle aplikace na pozadí při aplikace Microsoft Authenticator pro iOS, které to vede k "přechodu" obsahuje aktivní. k výběru účtu, který se chcete přihlásit s uživatelem.
 
 Pro Android a Windows výběr účtu se zobrazí nad vaší aplikace, což je méně rušivá pro uživatele.
 
 #### <a name="how-the-broker-gets-invoked"></a>Jak se zprostředkovatel volán
 
-Pokud kompatibilní Service broker je nainstalovaný na zařízeních, jako je aplikace Microsoft Authenticator se sadami SDK Microsoft Identity automaticky provede práci při volání zprostředkovatele pro vás, když uživatel označuje, že se chcete přihlásit pomocí libovolného účtu od Microsoftu Platforma identit. Tento účet může být osobní Account Microsoft, pracovní nebo školní účet nebo účet, který zadáte a hostovat v Azure pomocí našich produktů B2C a B2B.
+Pokud kompatibilní zprostředkovatele je nainstalovaný na zařízeních, jako je aplikace Microsoft Authenticator, sady SDK automaticky provede práci při volání zprostředkovatele pro vás, když uživatel označuje, že se chcete přihlásit pomocí libovolného účtu z platforma identit. Tento účet může být osobní Account Microsoft, pracovní nebo školní účet nebo účet, který zadáte a hostovat v Azure pomocí našich produktů B2C a B2B.
 
 #### <a name="how-we-ensure-the-application-is-valid"></a>Jak zajišťujeme aplikace je platný
- 
- Je potřeba zajistit identity aplikace volání zprostředkovatele je velmi důležité pro zabezpečení, kterou poskytujeme ve Service broker s asistencí přihlášení. IOS ani Android vynucuje jedinečné identifikátory, které jsou platné pouze pro danou aplikaci, aby škodlivé aplikace může "zfalšovat" identifikátor oprávněné aplikace a přijímat tokeny určená pro oprávněné aplikace. K zajištění, že jsme vždy komunikují správné aplikace za běhu, můžeme požádat vývojáři poskytnout vlastní redirectURI, při registraci své aplikace s Microsoftem. **Jak by měly vývojářů si vytvořte tento identifikátor URI pro přesměrování je podrobněji popsána níže.** Tato vlastní identifikátor URI pro přesměrování obsahuje ID sady prostředků aplikace a je zajištěno bude jedinečný pro aplikaci App Store společnosti Apple. Když aplikace volá zprostředkovatele, zprostředkovatel se vás zeptá verzi operačního systému iOS poskytnout ID sady prostředků, který volá zprostředkovatele. Zprostředkovatel poskytuje toto ID sady prostředků společnosti Microsoft ve volání náš systém identit. Pokud ID sady prostředků aplikace se neshoduje s ID sady prostředků, které nám poskytnete vývojářem během registrace, jsme odmítne žádá o přístup k tokeny pro prostředek aplikace. Tato kontrola se zajistí, že pouze registrovaný vývojář aplikace obdrží tokeny.
 
-**Vývojář má možnost, pokud sada SDK Microsoft Identity volá zprostředkovatele nebo používá flow s asistencí bez zprostředkovatele.** Nicméně pokud vývojář rozhodne nepoužívat flow s asistencí zprostředkovatele mohly být ztraceny výhodou použití jednotného přihlašování přihlašovací údaje, že uživatel může na zařízení už přidali a zabrání jejich aplikaci z používán pomocí funkce pro společnost Microsoft poskytuje jeho Zákazníci, jako je například podmíněný přístup, funkce pro správu Intune a ověřování pomocí certifikátů.
+Je potřeba zajistit identity aplikace volání zprostředkovatele je velmi důležité pro zabezpečení, kterou poskytujeme ve Service broker s asistencí přihlášení. IOS ani Android vynucuje jedinečné identifikátory, které jsou platné pouze pro danou aplikaci, aby škodlivé aplikace může "zfalšovat" identifikátor oprávněné aplikace a přijímat tokeny určená pro oprávněné aplikace. K zajištění, že jsme vždy komunikují správné aplikace za běhu, můžeme požádat vývojáři poskytnout vlastní redirectURI, při registraci své aplikace s Microsoftem. Jak by měly vývojářů si vytvořte tento identifikátor URI pro přesměrování je podrobněji popsána níže. Tato vlastní identifikátor URI pro přesměrování obsahuje ID sady prostředků aplikace a je zajištěno bude jedinečný pro aplikaci App Store společnosti Apple. Když aplikace volá zprostředkovatele, zprostředkovatel se vás zeptá verzi operačního systému iOS poskytnout ID sady prostředků, který volá zprostředkovatele. Zprostředkovatel poskytuje toto ID sady prostředků společnosti Microsoft ve volání náš systém identit. Pokud ID sady prostředků aplikace se neshoduje s ID sady prostředků, které nám poskytnete vývojářem během registrace, jsme odmítne žádá o přístup k tokeny pro prostředek aplikace. Tato kontrola se zajistí, že pouze registrovaný vývojář aplikace obdrží tokeny.
+
+**Vývojář má volba, jestli SDK volá zprostředkovatele nebo používá flow s asistencí bez zprostředkovatele.** Nicméně pokud vývojář rozhodne nepoužívat flow s asistencí zprostředkovatele mohly být ztraceny výhodou použití jednotného přihlašování přihlašovací údaje, že uživatel může na zařízení už přidali a zabrání jejich aplikaci z používán pomocí funkce pro společnost Microsoft poskytuje jeho Zákazníci, jako je například podmíněný přístup, možnosti správy Intune a ověřování pomocí certifikátů.
 
 Tyto přihlašovací údaje nabízí tyto výhody:
 
@@ -119,7 +125,7 @@ Tyto přihlašovací údaje mají následující nevýhody:
 * V Iosu videoobsahem uživatele mimo prostředí vaší aplikace, zatímco je možné zvolit přihlašovací údaje.
 * Ke ztrátě schopnosti spravovat přihlašovací prostředí pro zákazníky v rámci vaší aplikace.
 
-Je zde reprezentace způsob práce se sadami SDK Microsoft Identity s zprostředkovatele aplikace, které chcete povolit jednotné přihlašování:
+Je zde reprezentace způsob práce se sadami SDK s zprostředkovatele aplikace, které chcete povolit jednotné přihlašování:
 
 ```
 +------------+ +------------+   +-------------+
@@ -145,8 +151,6 @@ Je zde reprezentace způsob práce se sadami SDK Microsoft Identity s zprostřed
               +-------------+
 ```
 
-Ozbrojené pomocí těchto informací na pozadí, musí být schopen lépe pochopit a implementovat jednotného přihlašování v rámci vaší aplikace pomocí Microsoft Identity platform a sady SDK.
-
 ## <a name="enabling-cross-app-sso-using-adal"></a>Povolení jednotného přihlašování napříč aplikacemi pomocí ADAL
 
 Používá ADAL pro iOS SDK pro:
@@ -156,20 +160,20 @@ Používá ADAL pro iOS SDK pro:
 
 ### <a name="turning-on-sso-for-non-broker-assisted-sso"></a>Zapnutí jednotného přihlašování pro bez zprostředkovatele s asistencí jednotného přihlašování
 
-Pro jiné zprostředkovatele s asistencí jednotné přihlašování napříč aplikacemi se sadami SDK Microsoft Identity spravovat mnoho složitostí jednotného přihlašování za vás. To zahrnuje správné uživatelské hledání v mezipaměti a udržovat seznam přihlášeným uživatelům umožní dotazovat.
+Pro jiné zprostředkovatele s asistencí jednotné přihlašování napříč aplikacemi spravovat sady SDK pro mnoho složitostí jednotného přihlašování za vás. To zahrnuje správné uživatelské hledání v mezipaměti a udržovat seznam přihlášeným uživatelům umožní dotazovat.
 
 Pokud chcete povolit jednotné přihlašování napříč aplikacemi, které vlastníte, že budete muset provést následující:
 
 1. Zajistěte, aby všechny uživatelské aplikace stejné ID klienta nebo ID aplikace.
-2. Ujistěte se, že všechny vaše aplikace sdílet stejný podpisový certifikát od společnosti Apple tak, aby vám sdílení řetězce klíčů
+2. Ujistěte se, že všechny vaše aplikace sdílet stejný podpisový certifikát od společnosti Apple tak, aby vám sdílení řetězce klíčů.
 3. Požádat o stejné nároků řetězce klíčů pro každou z vašich aplikací.
-4. Řekněte se sadami SDK Microsoft Identity o sdíleném řetězci klíčů, že je vhodné, abyste mohli používat.
+4. Řekněte sady SDK o sdíleném řetězci klíčů, že je vhodné, abyste mohli používat.
 
 #### <a name="using-the-same-client-id--application-id-for-all-the-applications-in-your-suite-of-apps"></a>Pomocí stejné ID klienta nebo ID aplikace pro všechny aplikace ve vaší sadě aplikací
 
-Aby Microsoft Identity platform vědět, že má povolené sdílet tokeny mezi aplikacemi každý z vašich aplikací bude nutné sdílejí stejné ID klienta nebo ID aplikace. Toto je jedinečný identifikátor, který jste obdrželi při registraci vaší první aplikace na portálu.
+Platforma identit vědět, že má povolené sdílet tokeny mezi aplikacemi, každý z vašich aplikací bude nutné sdílet stejné ID klienta nebo ID aplikace. Toto je jedinečný identifikátor, který jste obdrželi při registraci vaší první aplikace na portálu.
 
-Vás může zajímat, jak bude identifikovat různé aplikace ke službě Microsoft Identity, pokud se používá stejné ID aplikace. Odpověď je **identifikátory URI přesměrování**. Každá aplikace může obsahovat více identifikátory URI přesměrování registrovaný na portálu registrace. Každá aplikace ve vaší sadě bude mít na jiný identifikátor URI přesměrování. Níže je příklad toho, jak to vypadat:
+Identifikátory URI pro přesměrování umožňují určit různé aplikace ke službě Microsoft identity, jestli používá stejné ID aplikace. Každá aplikace může obsahovat více identifikátory URI přesměrování registrovaný na portálu registrace. Každá aplikace ve vaší sadě bude mít na jiný identifikátor URI přesměrování. Níže je příklad toho, jak to vypadat:
 
 Počítač app1 identifikátor URI pro přesměrování: `x-msauth-mytestiosapp://com.myapp.mytestapp`
 
@@ -204,8 +208,7 @@ Tyto jsou vnořené pod stejné ID klienta nebo ID aplikace a vyhledávat podle 
 
 ```
 
-
-*Všimněte si, že formát tyto identifikátory URI přesměrování je popsán níže. Můžete použít libovolný identifikátor URI pro přesměrování Pokud si přejete podporovat broker, v takovém případě se musí vypadat podobně jako výše*
+Formát tyto přesměrování identifikátory URI je popsán níže. Můžete použít libovolný identifikátor URI pro přesměrování Pokud si přejete podporovat broker, v takovém případě se musí vypadat podobně jako výše *
 
 #### <a name="create-keychain-sharing-between-applications"></a>Vytvořit sdílení mezi aplikacemi řetězce klíčů
 
@@ -227,16 +230,16 @@ Až budete mít oprávnění nastavit správně jste měli vidět soubor v adres
 </plist>
 ```
 
-Jakmile budete mít přístupové oprávnění povolená v každé z vašich aplikací a jste připraveni používat jednotné přihlašování, říct sadě SDK Microsoft Identity klíčenky pomocí následující nastavení v vaše `ADAuthenticationSettings` s následujícím nastavením:
+Jakmile budete mít přístupové oprávnění povolená v každé z vašich aplikací a jste připraveni používat jednotné přihlašování, popište odentity SDK klíčenky pomocí následujících nastavení ve vašich `ADAuthenticationSettings` s následujícím nastavením:
 
 ```
 defaultKeychainSharingGroup=@"com.myapp.mycache";
 ```
 
 > [!WARNING]
-> Při sdílení řetězce klíčů mezi aplikacemi jakékoli aplikace můžete odstranit uživatele nebo horší odstranit všechny tokeny ve vaší aplikaci. To je zvláště katastrofální důsledky, pokud máte aplikace, které spoléhají na tokeny na pozadí pracovní. Sdílení řetězce klíčů odebrat prostředky, musí být velmi opatrní při všechny operace, ať už se sadami SDK Microsoft Identity.
+> Při sdílení řetězce klíčů mezi aplikacemi jakékoli aplikace můžete odstranit uživatele nebo horší odstranit všechny tokeny ve vaší aplikaci. To je zvláště katastrofální důsledky, pokud máte aplikace, které spoléhají na tokeny na pozadí pracovní. Sdílení řetězce klíčů odebrat prostředky, musí být velmi opatrní při všechny operace, ať už identita sady SDK.
 
-A to je vše! Sada SDK Microsoft Identity teď bude sdílet přihlašovací údaje mezi všemi aplikacemi. Seznam uživatelů se také sdílet mezi instancemi aplikace.
+A to je vše! Sada SDK se nyní sdílet přihlašovací údaje mezi všemi aplikacemi. Seznam uživatelů se také sdílet mezi instancemi aplikace.
 
 ### <a name="turning-on-sso-for-broker-assisted-sso"></a>Zapnutí jednotného přihlašování pro zprostředkovatele s asistencí jednotného přihlašování
 
@@ -257,16 +260,14 @@ Možnost pro aplikace pomocí zprostředkovatele zapnutý, při vytváření "ko
 /*! See the ADCredentialsType enumeration definition for details */
 @propertyADCredentialsType credentialsType;
 ```
-`AD_CREDENTIALS_AUTO` Nastavení vám umožní Microsoft Identity SDK se pokouší vyžadují ke zprostředkovateli, `AD_CREDENTIALS_EMBEDDED` Microsoft Identity SDK zabrání volání do zprostředkovatele.
+`AD_CREDENTIALS_AUTO` Nastavení vám umožní sadě SDK se pokouší vyžadují ke zprostředkovateli, `AD_CREDENTIALS_EMBEDDED` SDK zabrání volání do zprostředkovatele.
 
 #### <a name="step-2-registering-a-url-scheme"></a>Krok 2: Registrace schéma adresy URL
 
-Platforma Microsoft Identity používá adresy URL pro vyvolání zprostředkovatele a potom vrátit řízení zpět do aplikace. K dokončení této odezvy je třeba schéma adresy URL pro vaše aplikace, která bude znát platformě Microsoft Identity. To může být kromě jiná aplikace schémata, kterou jste pravděpodobně dříve zaregistrovali s vaší aplikací.
+Platforma identit používá adresy URL pro vyvolání zprostředkovatele a potom vrátit řízení zpět do aplikace. K dokončení této odezvy je třeba schéma adresy URL zaregistrované pro vaše aplikace, která bude znát platforma identit. To může být kromě jiná aplikace schémata, kterou jste pravděpodobně dříve zaregistrovali s vaší aplikací.
 
 > [!WARNING]
 > Doporučujeme, aby schéma adresy URL poměrně jedinečné, chcete-li minimalizovat pravděpodobnost jiné aplikace s použitím stejné schéma adresy URL. Apple nevynucuje jedinečnost schémata URL, která jsou zaregistrována v app storu.
-> 
-> 
 
 Níže je příklad toho, jak to se zobrazuje v konfiguraci projektu. Také to lze provést i v prostředí XCode také:
 
@@ -296,7 +297,7 @@ Váš identifikátor URI pro přesměrování musí být ve správné formu:
 
 Příklad: *x-msauth mytestiosapp://com.myapp.mytestapp*
 
-Tento identifikátor URI pro přesměrování musí být zadaná pomocí registrace aplikace [webu Azure portal](https://portal.azure.com/). Další informace o registraci aplikace Azure AD najdete v tématu [integraci se službou Azure Active Directory](active-directory-how-to-integrate.md).
+Toto přesměrování identifikátor URI musí být zadaná pomocí registrace aplikace [webu Azure portal](https://portal.azure.com/). Další informace o registraci aplikace Azure AD najdete v tématu [integraci se službou Azure Active Directory](active-directory-how-to-integrate.md).
 
 ##### <a name="step-3a-add-a-redirect-uri-in-your-app-and-dev-portal-to-support-certificate-based-authentication"></a>Krok 3a: Přidat identifikátor URI přesměrování vaší aplikace a vývojářského portálu pro podporu ověřování pomocí certifikátů
 
@@ -310,8 +311,14 @@ Příklad: *msauth://code/x-msauth-mytestiosapp%3A%2F%2Fcom.myapp.mytestapp*
 
 ADAL využívá – canOpenURL: Zkontrolujte, jestli je na zařízení nainstalovaný zprostředkovatel. V Iosu 9 Apple uzamčené co schémata aplikaci dotázat. Budete muset přidat "msauth" LSApplicationQueriesSchemes část vašeho `info.plist file`.
 
-<key>LSApplicationQueriesSchemes</key> <array> <string>msauth</string></array>
+```
+<key>LSApplicationQueriesSchemes</key> <array><string>msauth</string></array>
+```
 
 ### <a name="youve-configured-sso"></a>Dokončení konfigurace jednotného přihlašování!
 
-Nyní sada SDK Microsoft Identity bude automaticky přihlašovací údaje sdílené složky mezi aplikacemi i zprostředkovatel vyvolat, pokud je k dispozici na svém zařízení.
+Nyní identita sady SDK bude automaticky sdílet přihlašovací údaje v rámci vašich aplikací i vyvolat zprostředkovatele, pokud je k dispozici na svém zařízení.
+
+## <a name="next-steps"></a>Další postup
+
+* Další informace o [jednotné přihlašování – protokol SAML](single-sign-on-saml-protocol.md)

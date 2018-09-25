@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/14/2017
 ms.author: hermannd
-ms.openlocfilehash: cc4438a770a8092275373ccf8da9cc9951a1f906
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 8a16fa9f639a6a4a17d6904d6bc9a0e31f774e0c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37858608"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950042"
 ---
 # <a name="running-sap-netweaver-on-microsoft-azure-suse-linux-vms"></a>Provoz SAP NetWeaveru na virtuálních počítačích Microsoft Azure se SUSE Linuxem
 Tento článek popisuje různé věci k uvážení při používáte SAP NetWeaver na virtuálních počítačích Microsoft Azure s operačním systémem SUSE Linuxem (VM). Od 19. května 2016 se oficiálně podporuje SAP NetWeaver na virtuálních počítačích s operačním systémem SUSE Linux v Azure. Všechny podrobnosti týkající se verze Linuxu, verze jádra SAP a další požadavky najdete v SAP 1928533 poznámka "aplikace SAP v Azure: podporované produkty a typy virtuálních počítačů Azure".
@@ -70,7 +70,7 @@ I když je stále možné použít standardní imagí SLES pro SAP instalace, do
 ## <a name="installing-walinuxagent-in-a-suse-vm"></a>Instalace WALinuxAgent virtuálního počítače s operačním systémem SUSE
 Agentovi nazvaném WALinuxAgent je součástí SLES imagí v Tržišti Azure Marketplace. Informace o instalaci ručně (například při nahrávání operačním systémem SLES virtuální pevný disk (VHD) z místních) najdete tady:
 
-* [OpenSUSE](http://software.opensuse.org/package/WALinuxAgent)
+* [openSUSE](http://software.opensuse.org/package/WALinuxAgent)
 * [Azure](../../linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [SUSE](https://www.suse.com/communities/blog/suse-linux-enterprise-server-configuration-for-windows-azure/)
 
@@ -119,7 +119,7 @@ Třeba vytvořit nové virtuální počítače SUSE pomocí souborů šablon JSO
    ```
 Další informace o souborech šablon JSON najdete v tématu [šablon pro vytváření Azure Resource Manageru](../../../resource-group-authoring-templates.md) a [šablony rychlý start Azure](https://azure.microsoft.com/documentation/templates/).
 
-Další informace o rozhraní příkazového řádku a Azure Resource Manageru najdete v tématu [pomocí Azure CLI pro Mac, Linux a Windows pomocí Azure Resource Manageru](../../../xplat-cli-azure-resource-manager.md).
+Další informace o Azure classic CLI a Azure Resource Manageru najdete v tématu [pomocí Azure classic CLI pro Mac, Linux a Windows pomocí Azure Resource Manageru](../../../xplat-cli-azure-resource-manager.md).
 
 ## <a name="sap-license-and-hardware-key"></a>Klíč licence a hardware a SAP
 Oficiální certifikaci SAP Azure byla zavedena nový mechanismus pro výpočet SAP hardwarový klíč, který se používá pro licence SAP. Jádra SAP musel být upraveny, aby využívání nový algoritmus. Dřívější verze SAP jádra pro Linux neobsahuje tuto změnu kódu. Proto v určitých situacích (třeba virtuální počítač Azure změnou velikosti), změnit hardwarový klíč SAP a se už nebude platná licence SAP. Řešení je součástí novější SAP Linuxových jádrech.  Podrobné jádra opravy SAP jsou popsány v Poznámka SAP 1928533.

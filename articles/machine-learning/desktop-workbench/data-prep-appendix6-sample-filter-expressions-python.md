@@ -13,14 +13,19 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: a960197c89e1d051de0e9b8b73cbab231982cf52
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ROBOTS: NOINDEX
+ms.openlocfilehash: a389007dea344de461b23b96f2942686005aa119
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216489"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982388"
 ---
 # <a name="sample-of-filter-expressions-python"></a>Ukázka výrazu filtru (Python) 
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 Předtím, než se pustíte do čtení tohoto dodatku, přečtěte si [přehled rozšíření Python](data-prep-python-extensibility-overview.md).
 
 ## <a name="filter-with-equivalence-test"></a>Filtr s srovnávací test
