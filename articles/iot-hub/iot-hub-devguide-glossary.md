@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 1a5df1081edeb8b8e7520064a71534f70a9a9d33
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 575326ee3bd2cb64b2cb65168f23f7fe97dad029
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344296"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954394"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Glosář termínů služby IoT Hub
 Tento článek uvádí některé běžné pojmy používané v článcích služby IoT Hub.
@@ -27,11 +27,11 @@ Automatická správa zařízení ve službě Azure IoT Hub umožňuje automatizo
 ## <a name="automatic-device-configuration"></a>Konfigurace automatického zařízení
 Back-endem řešení můžete použít [automatické konfigurace](iot-hub-auto-device-config.md) přiřadit sadu požadovaných vlastností [dvojčata zařízení](#device-twin) a hlášení stavu pomocí systémové metriky a vlastní metriky. 
 
-## <a name="azure-cli"></a>Azure CLI
-[Rozhraní příkazového řádku Azure](../cli-install-nodejs.md) je nástroj pro různé platformy, open source, na základě prostředí, příkaz k vytváření a správě prostředků v Microsoft Azure. Tato verze rozhraní příkazového řádku je implementováno pomocí Node.js.
+## <a name="azure-classic-cli"></a>Klasické rozhraní příkazového řádku Azure
+[Klasické rozhraní příkazového řádku Azure](../cli-install-nodejs.md) je nástroj pro různé platformy, open source, na základě prostředí, příkaz k vytváření a správě prostředků v Microsoft Azure. Tato verze rozhraní příkazového řádku by měla sloužit pro pouze nasazení classic.
 
-## <a name="azure-cli-20"></a>Azure CLI 2.0
-[Příkazového řádku Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) je nástroj pro různé platformy, open source, na základě prostředí, příkaz k vytváření a správě prostředků v Microsoft Azure. Tato verze preview rozhraní příkazového řádku se implementuje pomocí Pythonu.
+## <a name="azure-cli"></a>Azure CLI
+[Rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-az-cli2) je nástroj pro různé platformy, open source, na základě prostředí, příkaz k vytváření a správě prostředků v Microsoft Azure.
 
 
 ## <a name="azure-iot-device-sdks"></a>Azure IoT SDK pro zařízení
@@ -185,8 +185,8 @@ Můžete použít [rozhraní REST API služby IoT Hub prostředků](https://docs
 ## <a name="iot-solution-accelerators"></a>Akcelerátory řešení IoT
 Akcelerátory řešení Azure IoT zabalit společně několik služeb Azure do řešení. Tato řešení umožňují rychle začít s implementací začátku do konce běžné scénáře IoT. Další informace najdete v tématu [co jsou akcelerátory řešení Azure IoT?](../iot-accelerators/about-iot-accelerators.md)
 
-## <a name="the-iot-extension-for-azure-cli-20"></a>Rozšíření IoT pro Azure CLI 2.0
-[Rozšíření IoT pro Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension) je nástroj pro různé platformy, příkazového řádku. Nástroj umožňuje spravovat vaše zařízení [registr identit](#identity-registry), odesílání a příjem zpráv a souborů ze zařízení a monitorovat vaše operace centra IoT.
+## <a name="the-iot-extension-for-azure-cli"></a>Rozšíření IoT pro Azure CLI 
+[Rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension) je nástroj pro různé platformy, příkazového řádku. Nástroj umožňuje spravovat vaše zařízení [registr identit](#identity-registry), odesílání a příjem zpráv a souborů ze zařízení a monitorovat vaše operace centra IoT.
 
 ## <a name="job"></a>Úloha
 Back-endem řešení můžete použít [úlohy](iot-hub-devguide-jobs.md) k plánování a sledování aktivit na sadu zařízení registrovaná ve službě IoT hub. Aktivity zahrnout aktualizace dvojčete zařízení [požadované vlastnosti](#desired-properties), aktualizace dvojčete zařízení [značky](#tags)a vyvolání [přímé metody](#direct-method). [IoT Hub](#iot-hub) používá také k [importovat a exportovat](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) z [registr identit](#identity-registry).

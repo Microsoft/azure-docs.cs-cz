@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: dfcb5c7c0b487b8379d89a9b285bae1ca1a9c774
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: e2e76e3cd058e5798b0159923118b050f38d077e
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634519"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034633"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na SUSE Linux Enterprise Server
 
@@ -68,6 +68,7 @@ Přečtěte si následující poznámky SAP a Paper nejprve:
 * Poznámka SAP [1984787] obsahuje obecné informace o operačním systémem SUSE Linux Enterprise Server 12.
 * Poznámka SAP [1999351] obsahuje další informace o odstraňování potíží pro rozšířené monitorování rozšíření Azure pro SAP.
 * [WIKI komunity SAP](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) má všechny požadované poznámky SAP pro Linux.
+* [SAP HANA s certifikací platformy IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
 * [Azure Virtual Machines, plánování a implementace SAP na platformě Linux] [ planning-guide] průvodce.
 * [Nasazení virtuálních počítačů Azure pro SAP na platformě Linux] [ deployment-guide] (Tento článek).
 * [Nasazení Azure Virtual Machines DBMS pro SAP na platformě Linux] [ dbms-guide] průvodce.
@@ -114,6 +115,10 @@ Pokud chcete nasadit šablonu, postupujte podle těchto kroků:
 
 ### <a name="manual-deployment"></a>Ruční nasazení
 
+> [!IMPORTANT]
+> Ujistěte se, že je operační systém, vyberete na konkrétní typy virtuálních počítačů, které používáte pro SAP HANA s certifikací SAP. Seznam SAP HANA certified typy virtuálních počítačů a operační systém verze pro ty lze vyhledávat [platformách IaaS certifikací SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Ujistěte se, že klikněte na tlačítko na podrobné informace o typu virtuálního počítače uvedené zobrazíte úplný seznam SAP HANA nepodporuje verzí operačního systému pro konkrétní typ virtuálního počítače
+>  
+
 1. Vytvořte skupinu prostředků.
 1. Vytvořte virtuální síť.
 1. Vytvoření skupiny dostupnosti.
@@ -121,12 +126,10 @@ Pokud chcete nasadit šablonu, postupujte podle těchto kroků:
 1. Vytvořte nástroj pro vyrovnávání zatížení (interní).
    - Vyberte virtuální síť vytvořili v kroku 2.
 1. Vytvoření virtuálního počítače 1.
-   - Použít minimálně SLES4SAP 12 SP1. Tento příklad používá image SLES4SAP 12 SP2 https://ms.portal.azure.com/#create/SUSE.SUSELinuxEnterpriseServerforSAPApplications12SP2PremiumImage-ARM.
-   - Použít SLES pro SAP 12 SP2 (Premium).
+   - Použití SLES4SAP image v galerii Azure, která je podporována pro SAP HANA v typu virtuálního počítače, které jste vybrali.
    - Vyberte skupinu dostupnosti, které jsou vytvořené v kroku 3.
 1. Vytvoření virtuálního počítače 2.
-   - Použít minimálně SLES4SAP 12 SP1. Tento příklad používá image SLES4SAP 12 SP1 BYOS https://ms.portal.azure.com/#create/SUSE.SUSELinuxEnterpriseServerforSAPApplications12SP2PremiumImage-ARM.
-   - Použít SLES pro SAP 12 SP2 (Premium).
+   - Použití SLES4SAP image v galerii Azure, která je podporována pro SAP HANA v typu virtuálního počítače, které jste vybrali.
    - Vyberte skupinu dostupnosti, které jsou vytvořené v kroku 3. 
 1. Použití datových disků.
 1. Konfigurace nástroje pro vyrovnávání zatížení. Nejprve vytvořte front-endový fond IP:
@@ -315,14 +318,14 @@ Instalace systémové replikace SAP HANA, postupujte podle kapitoly 4 [Průvodce
    * Vyberte další součásti k instalaci: Zadejte **1**.
    * Zadejte instalační cesta [/ hana/sdílené]: Vyberte Enter.
    * Zadejte název místního hostitele [hodnota]: Vyberte Enter.
-   * Opravdu chcete přidat další hostitele do systému? (Ano/Ne) [n]: Zadejte vyberte.
+   * Opravdu chcete přidat další hostitele do systému? (Ano/Ne) [[n]: Zadejte vyberte.
    * Zadejte ID systému SAP HANA: Zadejte SID HANA, například: **HN1**.
    * Zadejte číslo Instance [00]: Zadejte číslo HANA Instance. Zadejte **03** -li použít šablony Azure nebo následován ručního nasazení části tohoto článku.
    * Vyberte režim databáze / zadejte Index [1]: Zadejte vyberte.
    * Využití systému vyberte / zadejte Index [4]: vyberte hodnotu využití systému.
    * Zadejte umístění datové svazky [/ hana/data/HN1]: Vyberte Enter.
    * Zadejte umístění svazky s protokoly [/ hana/log/HN1]: Vyberte Enter.
-   * Omezit maximální přidělení paměti? [n]: Zadejte vyberte.
+   * Omezit maximální přidělení paměti? [[n]: Zadejte vyberte.
    * Zadejte název hostitele certifikátu pro hostitele '...' [...]: Zadejte vyberte.
    * Zadejte SAP hostitele agenta uživatele (sapadm) heslo: Zadejte heslo uživatele agenta hostitele.
    * Potvrďte uživatel agenta hostitele systému SAP (sapadm) heslo: Zadejte heslo uživatele agenta hostitele znovu pro potvrzení.
@@ -334,7 +337,7 @@ Instalace systémové replikace SAP HANA, postupujte podle kapitoly 4 [Průvodce
    * Zadejte ID ze skupiny uživatelů (sapsys) [79]: Vyberte Enter.
    * Zadejte heslo uživatele databáze (systém): Zadejte heslo uživatele databáze.
    * Potvrzení hesla uživatele databáze (systém): Zadejte heslo uživatele databáze znovu pro potvrzení.
-   * Restartování systému po restartování počítače? [n]: Zadejte vyberte.
+   * Restartování systému po restartování počítače? [[n]: Zadejte vyberte.
    * Chcete pokračovat? (Ano/Ne): Souhrn ověření. Zadejte **y** pokračujte.
 
 1. **[A]**  Upgrade agenta hostitele SAP.
@@ -676,6 +679,9 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
 </code></pre>
 
 ### <a name="suse-tests"></a>Testy SUSE
+
+> [!IMPORTANT]
+> Ujistěte se, že je operační systém, vyberete na konkrétní typy virtuálních počítačů, které používáte pro SAP HANA s certifikací SAP. Seznam SAP HANA certified typy virtuálních počítačů a operační systém verze pro ty lze vyhledávat [platformách IaaS certifikací SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Ujistěte se, že klikněte na tlačítko na podrobné informace o typu virtuálního počítače uvedené zobrazíte úplný seznam SAP HANA nepodporuje verzí operačního systému pro konkrétní typ virtuálního počítače
 
 Spouští všechny testovací případy, které jsou uvedeny v Průvodci SAP HANA SR výkonu optimalizované scénář nebo SAP HANA SR náklady optimalizované scénáře, v závislosti na vašemu případu použití. Postupy najdete v [SLES pro SAP osvědčené postupy pro stránku][sles-for-sap-bp].
 
