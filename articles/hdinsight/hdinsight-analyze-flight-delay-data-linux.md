@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: jasonh
 ms.custom: H1Hack27Feb2017,hdinsightactive,mvc
-ms.openlocfilehash: 4502be9e8891ac7bc39d8ce909e4662f19677bbc
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 9ea9fbdbe07013131f35a7a0c3d6ab4af19f7056
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109474"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990939"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-apache-hive-on-azure-hdinsight"></a>Kurz: Extrakce, transformace a načítání dat pomocí Apache Hivu ve službě Azure HDInsight
 
@@ -45,7 +45,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 * **Azure SQL Database**. Databázi SQL Azure použijete jako cílové úložiště dat. Pokud databázi SQL nemáte, přečtěte si téma [Vytvoření databáze SQL Azure na webu Azure Portal](../sql-database/sql-database-get-started.md).
 
-* **Azure CLI 2.0**. Pokud ještě nemáte nainstalované Azure CLI, přečtěte si téma [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), kde najdete další postup.
+* **Azure CLI**. Pokud ještě nemáte nainstalované Azure CLI, přečtěte si téma [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), kde najdete další postup.
 
 * **Klient SSH**. Další informace najdete v tématu [Připojení ke službě HDInsight (Hadoop) pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 

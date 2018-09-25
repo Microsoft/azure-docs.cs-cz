@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/12/2018
 ms.author: sngun
 ms.custom: devcenter
-ms.openlocfilehash: d433eeb7d63282868b8919ee8c53283080bf8b59
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 421be020ae0fb7cf9f3dc4ee02be9dd65dea8b16
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701054"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982507"
 ---
 # <a name="azure-cosmos-db-getting-started-with-the-sql-api-and-net-core"></a>Azure Cosmos DB: Začínáme s rozhraním SQL API a .NET Core
 
@@ -27,7 +27,6 @@ ms.locfileid: "43701054"
 > * [Java](sql-api-java-get-started.md)
 > * [Async Java](sql-api-async-java-get-started.md)
 > * [Node.js](sql-api-nodejs-get-started.md)
-> * [Node.js – v2](sql-api-nodejs-get-started-preview.md) 
 > 
 
 Vítá vás úvodní kurz rozhraní SQL API pro Azure DB Cosmos s .NET Core! Až projdete tímto kurzem, budete mít konzolovou aplikaci, která vytváří prostředky Azure Cosmos DB a dotazuje se na ně.
