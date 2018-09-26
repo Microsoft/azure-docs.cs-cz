@@ -2,19 +2,22 @@
 title: Migrace databáze SQL Serveru do služby Azure SQL Database pomocí DMA | Microsoft Docs
 description: Zjistěte, jak migrovat databázi SQL Serveru do služby Azure SQL Database pomocí DMA.
 services: sql-database
-author: sachinpMSFT
-manager: craigg
 ms.service: sql-database
-ms.custom: mvc,migrate
-ms.topic: tutorial
-ms.date: 07/02/2018
-ms.author: carlrab
-ms.openlocfilehash: 1d8ec772293354c059f21aaae8006f5c40540058
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
-ms.translationtype: HT
+ms.subservice: data-movement
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: sachinpMSFT
+ms.author: sachinp
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 58016636dad24b9b7d5278ce89643e6cd8d5be9e
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050200"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162850"
 ---
 # <a name="migrate-your-sql-server-database-to-azure-sql-database-using-dma"></a>Migrace databáze SQL Serveru do služby Azure SQL Database pomocí DMA
 
@@ -246,11 +249,11 @@ Pomocí aplikace [SQL Server Management Studio](https://docs.microsoft.com/sql/s
 
 ## <a name="change-database-properties"></a>Změna vlastností databáze
 
-Pomocí aplikace SQL Server Management Studio můžete změnit úroveň služby, úroveň výkonu a úroveň kompatibility. Během fáze importu doporučujeme pro zajištění nejlepšího výkonu importovat do databáze na vyšší úrovni výkonu, ale po dokončení importu vertikálně snížit kapacitu, abyste ušetřili, dokud nebudete připraveni importovanou databázi aktivně používat. Změna úrovně kompatibility může přinést lepší výkon a přístup k nejnovějším možnostem služby Azure SQL Database. Při migraci starší databáze zůstane její úroveň kompatibility zachována na nejnižší podporované úrovni, která je kompatibilní s importovanou databází. Další informace najdete v tématu [Zvýšení výkonu dotazů s úrovní kompatibility 130 ve službě Azure SQL Database](sql-database-compatibility-level-query-performance-130.md).
+Můžete změnit úroveň služby, můžete vypočítat velikost a úroveň kompatibility pomocí aplikace SQL Server Management Studio. Během fáze importu doporučujeme importovat na vyšší úroveň služby nebo vypočítat velikost pro zajištění nejlepšího výkonu, ale po dokončení importu ušetříte peníze, dokud nebudete připraveni importovanou databázi aktivně používat vertikálně snížit kapacitu. Změna úrovně kompatibility může přinést lepší výkon a přístup k nejnovějším možnostem služby Azure SQL Database. Při migraci starší databáze zůstane její úroveň kompatibility zachována na nejnižší podporované úrovni, která je kompatibilní s importovanou databází. Další informace najdete v tématu [Zvýšení výkonu dotazů s úrovní kompatibility 130 ve službě Azure SQL Database](sql-database-compatibility-level-query-performance-130.md).
 
 1. V Průzkumníku objektů klikněte pravým tlačítkem na **mySampleDatabase** a pak klikněte na **Nový dotaz**. Otevře se okno dotazu připojené k vaší databázi.
 
-2. Provedením následujícího příkazu nastavte úroveň služby na **Standard** a úroveň výkonu na **S1**.
+2. Spusťte následující příkaz pro nastavení na úrovni služby **standardní** a velikost výpočetního k **S1**.
 
     ```sql
     ALTER DATABASE mySampleDatabase 
@@ -262,7 +265,7 @@ Pomocí aplikace SQL Server Management Studio můžete změnit úroveň služby,
     );
     ```
 
-## <a name="next-steps"></a>Další kroky 
+## <a name="next-steps"></a>Další postup 
 V tomto kurzu jste se naučili:
 
 > * Vytvořit na webu Azure Portal prázdnou databázi SQL Azure 

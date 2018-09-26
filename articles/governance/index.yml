@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: b2ee21b77fc3bb26a1ca449ede198f8873a090c0
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: ecf300b4095b4b6c928f4caddf9ee51423f6e1cc
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036843"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163643"
 documentType: LandingData
 title: Správa Azure – zásady správného řízení
 metadata:
@@ -69,11 +69,3 @@ sections:
     - href: /azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=/azure/governance/toc.json
       html: <p>Umožňuje správcům zajistit, že úlohy splňují minimální požadavky zásad správného řízení organizace, aniž by to obchodním skupinám a vývojářům bránilo v rychlém plnění jejich vlastních cílů.<br /><br /></p>
       title: Vygenerované podnikové uživatelské prostředí
-- title: Referenční informace
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: Zásada
-      html: <p>Příkazový řádek<ul><li><a href="/cli/azure/policy">Azure CLI</a></li></ul></p><p>PowerShell<ul><li><a href="/powershell/module/azurerm.resources/#policies">Azure PowerShell</a></li></ul></p><p>REST API<ul><li><a href="/rest/api/policy-insights/policyevents">Události</a></li><li><a href="/rest/api/policy-insights/policystates">Stavy</a></li><li><a href="/rest/api/resources/policyassignments">Přiřazení</a></li><li><a href="/rest/api/resources/policydefinitions">Definice zásad</a></li><li><a href="/rest/api/resources/policysetdefinitions">Definice iniciativ</a></li></ul></p>

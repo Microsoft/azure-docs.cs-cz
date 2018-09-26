@@ -1,26 +1,27 @@
 ---
 title: Migrace certifikátu TDE do spravované instance Azure SQL Database | Microsoft Docs
-description: Přečtěte si, jak migrovat certifikát obsahující šifrovací klíč databáze chráněné transparentním šifrováním dat (TDE) do spravované instance Azure SQL
-keywords: sql database tutorial, sql database managed instance, migrate TDE certificate
+description: Migrace certifikátů chrání šifrovací klíč databáze databáze pomocí transparentního šifrování dat do Azure SQL Database Managed Instance
 services: sql-database
-author: MladjoA
-ms.reviewer: carlrab, jovanpop
 ms.service: sql-database
-ms.custom: managed instance
-ms.topic: tutorial
-ms.date: 08/09/2018
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: MladjoA
 ms.author: mlandzic
+ms.reviewer: carlrab, jovanpop
 manager: craigg
-ms.openlocfilehash: 73990d6feeed56114bc3c66164bbb53c093bbe21
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
-ms.translationtype: HT
+ms.date: 08/09/2018
+ms.openlocfilehash: 078a64bf625fad15b66a3c4e6e31e798f675fc33
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050607"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161773"
 ---
-# <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-managed-instance"></a>Migrace certifikátu databáze s ochranou TDE do spravované instance Azure SQL
+# <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>Migrace certifikátů transparentní šifrování dat chráněné databáze do Azure SQL Database Managed Instance
 
-Při migraci databáze chráněné [transparentním šifrováním dat](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE) do spravované instance Azure SQL pomocí nativní možnosti obnovení je třeba před obnovením databáze migrovat odpovídající certifikát z místního nebo IaaS systému SQL Server. Tento článek vás provede ručním procesem migrace certifikátu do spravované instance Azure SQL Database:
+Při migraci databáze chráněn [transparentního šifrování dat](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) do Azure SQL Database Managed Instance pomocí možnosti nativní obnovení, je třeba migrovat odpovídající certifikát z místní nebo IaaS SQL Server před obnovení databáze. Tento článek vás provede ručním procesem migrace certifikátu do spravované instance Azure SQL Database:
 
 > [!div class="checklist"]
 > * Export certifikátu do souboru Personal Information Exchange (.pfx)
@@ -30,7 +31,7 @@ Při migraci databáze chráněné [transparentním šifrováním dat](https://d
 Alternativní možnost migrace databáze s ochranou TDE i odpovídajícího certifikátu pomocí plně spravované služby najdete v článku [Jak migrovat místní databázi do spravované instance pomocí služby Azure Database Migration Service](../dms/tutorial-sql-server-to-managed-instance.md).
 
 > [!IMPORTANT]
-> Transparentní šifrování dat funguje ve spravované instanci SQL Azure v režimu spravovaném službou. Migrovaný certifikát se použije pouze k obnovení databáze chráněné transparentním šifrováním dat. Brzy po dokončení obnovení se migrovaný certifikát nahradí jiným certifikátem spravovaným systémem.
+> Transparentní šifrování dat pro Azure SQL Database Managed Instance pracuje v režimu spravovaný službou. Migrovaný certifikát se použije pouze k obnovení databáze chráněné transparentním šifrováním dat. Brzy po dokončení obnovení se migrovaný certifikát nahradí jiným certifikátem spravovaným systémem.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -109,7 +110,7 @@ Pokud je certifikát v úložišti certifikátů místního počítače systému
 
 4. Postupujte podle pokynů průvodce exportem certifikátu a privátní klíč exportujte do formátu Personal Information Exchange
 
-## <a name="upload-certificate-to-azure-sql-managed-instance-using-azure-powershell-cmdlet"></a>Nahrání certifikátu do spravované instance Azure SQL pomocí rutiny Azure PowerShellu
+## <a name="upload-certificate-to-azure-sql-database-managed-instance-using-azure-powershell-cmdlet"></a>Nahrání certifikátu do Azure SQL Database Managed Instance pomocí rutiny prostředí Azure PowerShell
 
 1. Začněte s přípravnými kroky v prostředí PowerShell:
 
@@ -137,8 +138,8 @@ Pokud je certifikát v úložišti certifikátů místního počítače systému
 
 Certifikát je nyní k dispozici pro zadanou spravovanou instanci a bude v ní možné obnovit zálohu databáze chráněné transparentním šifrováním dat.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-V tomto článku jste zjistili, jak migrovat certifikát s šifrovacím klíčem databáze chráněné transparentním šifrováním dat z místních nebo IaaS systémů SQL Server do spravované instance Azure SQL.
+V tomto článku jste zjistili, jak migrovat certifikát chrání šifrovací klíč databáze pomocí transparentního šifrování dat z místních nebo IaaS SQL serveru do Azure SQL Database Managed Instance.
 
 V kurzu [Obnovení zálohy databáze do spravované instance Azure SQL Database](sql-database-managed-instance-get-started-restore.md) se naučíte, jak obnovit zálohu databáze do spravované instance Azure SQL Database.

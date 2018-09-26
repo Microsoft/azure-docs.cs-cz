@@ -1,20 +1,24 @@
 ---
-title: Co je služba Azure SQL Database? | Microsoft Docs
+title: Co je služba Azure SQL Database? | Dokumenty Microsoft
 description: Přečtěte si základní informace o službě SQL Database – technické podrobnosti a možností cloudového systému pro správu relačních databází (RDBMS) společnosti Microsoft.
 keywords: představení sql,úvod do sql,co je sql database
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.topic: overview
-ms.date: 09/07/2018
+ms.subservice: ''
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: CarlRabeler
 ms.author: carlrab
-ms.openlocfilehash: 6e793c0227300b836c0a14b4252eeaf63c1bc949
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
-ms.translationtype: HT
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 21350fe9a44ad801204b8288f3c49eda82ca6343
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054576"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163162"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Co je služba Azure SQL Database? 
 
@@ -23,7 +27,7 @@ SQL Database je spravovaná služba relačních databází pro obecné účely v
 Azure SQL Database poskytuje následující možnosti nasazení databáze SQL Azure:
 - Jako jednoúčelová databáze s vlastní sadou prostředků spravovaných přes logický server. 
 - Jako databáze v [elastickém fondu](sql-database-elastic-pool.md) se sdílenou sadou prostředků spravovaných přes logický server.
-- Jako součást kolekce databází označované jako [spravovaná instance](sql-database-managed-instance.md) (ve verzi Public Preview), která obsahuje systémové a uživatelské databáze a sdílí sadu prostředků.
+- V rámci kolekce databází říká [spravovanou instanci](sql-database-managed-instance.md) , který obsahuje systémové a uživatelské databáze a sadu prostředků pro sdílení obsahu
 
 Následující obrázek ukazuje tyto možnosti nasazení:
 
@@ -37,29 +41,27 @@ SQL Database sdílí základ kódu s [databázovým strojem Microsoft SQL Server
 > [!IMPORTANT]
 > Rozdíly mezi funkcemi služeb SQL Database a SQL Server jsou popsané v článku o [funkcích SQL](sql-database-features.md). 
 
-SQL Database nabízí předvídatelný výkon na několika úrovních služeb, které poskytují dynamickou škálovatelnost bez přerušení provozu, integrovanou inteligentní optimalizaci, globální škálovatelnost a dostupnost a pokročilé možnosti zabezpečení – to vše téměř bez nutnosti jakékoli správy. Díky těmto možnostem se můžete zaměřit na rychlý vývoj aplikací a zkrácení doby dodání produktu na trh, namísto vynakládání prostředků a drahocenného času na správu virtuálních počítačů a infrastruktury. SQL Database je aktuálně v 38 datových centrech po celém světě a další datová centra se pravidelně přidávají, což vám umožňuje provozovat databázi v datovém centru ve vaší blízkosti.
-
-> [!NOTE]
-> SQL Database Managed Instance je aktuálně ve verzi Preview a je k dispozici pouze na jedné úrovni služby. Další informace najdete v tématu [SQL Database Managed Instance](sql-database-managed-instance.md).
->
+SQL Database nabízí předvídatelný výkon s více typů prostředků, úrovní služeb a velikostí výpočetních, které poskytují dynamickou škálovatelnost bez výpadků, integrovanou inteligentní optimalizaci, globální škálovatelnost a dostupnost a pokročilé zabezpečení Možnosti – vše s téměř bez nutnosti jakékoli správy. Díky těmto možnostem se můžete zaměřit na rychlý vývoj aplikací a zkrácení doby dodání produktu na trh, namísto vynakládání prostředků a drahocenného času na správu virtuálních počítačů a infrastruktury. SQL Database je aktuálně v 38 datových centrech po celém světě a další datová centra se pravidelně přidávají, což vám umožňuje provozovat databázi v datovém centru ve vaší blízkosti.
 
 ## <a name="scalable-performance-and-pools"></a>Škálovatelnost výkonu a fondy
 
-Ve službě SQL Database je každá databáze izolovaná od všech ostatních, je přenosná a má vlastní úroveň služeb v rámci [nákupního modelu založeného na DTU](sql-database-service-tiers-dtu.md) nebo [nákupního modelu založeného na virtuálních jádrech](sql-database-service-tiers-vcore.md) s garantovanou úrovní výkonu. SQL Database nabízí různé úrovně výkonu pro různé potřeby a umožňuje spojení databází do fondu pro maximalizaci využití prostředků a snížení nákladů.
+S využitím SQL Database je každá databáze izolovaná od všech ostatních a, každá má svou vlastní úroveň služby v rámci [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) nebo [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md) a garantovanou výpočty velikosti. SQL Database poskytuje různých velikostech výpočetních prostředků pro různé potřeby a umožňuje spojení databází do fondu pro maximalizaci využití prostředků a ušetřit peníze.
 
-V případě SQL Database Managed Instance jsou jednotlivé instance navzájem izolované a mají garantované prostředky. Další informace najdete v tématu [SQL Database Managed Instance](sql-database-managed-instance.md). 
+- S [SQL Database Managed Instance](sql-database-managed-instance.md), každá instance je izolovaný od ostatních instancí mají garantované prostředky. Další informace najdete v tématu [SQL Database Managed Instance](sql-database-managed-instance.md).
+- S [úroveň služby Hyperškálovatelného](sql-database-hyperscale.md) (preview) ve virtuálních jader, model nákupu, můžete škálovat až 100 TB s rychlé zálohování a obnovení funkce.
 
 ### <a name="adjust-performance-and-scale-without-downtime"></a>Úprava výkonu a škálování bez výpadků
 
 SQL Database nabízí [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) nebo [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md). 
-- Nákupní model založený na DTU nabízí pro zajištění podpory databázových úloh od zcela nenáročných až po velmi náročné kombinaci výpočetních, paměťových a vstupně-výstupních prostředků na třech úrovních služby: Basic, Standard a Premium. Úrovně výkonu na jednotlivých úrovních poskytují různou kombinaci těchto prostředků, ke kterým můžete přidat další prostředky úložiště.
+- Nákupní model založený na DTU nabízí pro zajištění podpory databázových úloh od zcela nenáročných až po velmi náročné kombinaci výpočetních, paměťových a vstupně-výstupních prostředků na třech úrovních služby: Basic, Standard a Premium. Výpočetní velikosti na jednotlivých úrovních poskytují různou kombinaci těchto prostředků, na které můžete přidat další prostředky úložiště.
 - Nákupní model založený na virtuálních jádrech umožňuje výběr počtu virtuálních jader, velikosti paměti a velikosti a rychlosti úložiště.
 
-S nízkými měsíčními náklady můžete sestavit svou první aplikaci s malou izolovanou databází a později ručně nebo programově změnit úroveň služby, aby splňovala požadavky vašeho řešení. Můžete upravit úroveň výkonu bez přerušení provozu aplikace a bez dopadu na vaše zákazníky. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky a vy díky tomu platíte pouze za prostředky, které potřebujete, když je potřebujete.
+Můžete sestavit svoji první aplikaci na malou izolovanou databází s nízkými náklady za měsíc v rámci úrovně služeb pro obecné účely a potom změnit úroveň služby ručně nebo prostřednictvím kódu programu kdykoli na vrstvu služby kritické obchodní podle potřeb vašeho řešení. Můžete upravit úroveň výkonu bez přerušení provozu aplikace a bez dopadu na vaše zákazníky. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky a vy díky tomu platíte pouze za prostředky, které potřebujete, když je potřebujete.
+
+> [!IMPORTANT]
+> Už nebude možné škálovat od obecné účely nebo pro důležité obchodní informace vrstvy služby k zajištění [úroveň služby Hyperškálovatelného](sql-database-hyperscale.md). Můžete však měnit úrovně výkonu v rámci úrovně služeb hyperškálovatelný systém.
 
 Dynamická škálovatelnost se liší od automatického škálování. K automatickému škálování dochází, když se služba škáluje automaticky na základě kritérií, zatímco dynamická škálovatelnost umožňuje ruční škálování bez prostojů. Izolovaná databáze Azure SQL Database podporuje ruční dynamickou škálovatelnost, nikoli automatické škálování. Pokud chcete *automatizovanější* prostředí, zvažte použití elastických fondů, které databázím umožňují sdílet prostředky ve fondu na základě potřeb jednotlivých databází. Existují ale skripty, které mohou automatickou škálovatelnost pro izolovanou databázi Azure SQL Database usnadnit. Příklad najdete v tématu [Monitorování a škálování izolované databáze SQL pomocí PowerShellu](scripts/sql-database-monitor-and-scale-database-powershell.md). 
-
-SQL Database Managed Instance je ve verzi Preview a nabízí jedinou úroveň služby. Další informace najdete v tématu [SQL Database Managed Instance](sql-database-managed-instance.md).
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Elastické fondy pro maximalizaci využití prostředků
 
@@ -86,13 +88,13 @@ Kromě toho může SQL Database [generovat metriky a diagnostické protokoly](sq
 
 - **Azure Storage:** Pro archivaci obrovských objemů telemetrických dat za nízkou cenu.
 - **Centrum událostí Azure:** Pro integraci telemetrických dat služby SQL Database s vlastními řešeními monitorování nebo aktivními kanály.
-- **Azure Log Analytics:** Pro integrované řešení monitorování s možnostmi generování sestav, upozorňování a omezování rizik. Tato funkce je součástí [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md).
+- **Azure Log Analytics:** Pro integrované řešení monitorování s možnostmi generování sestav, upozorňování a omezování rizik. Azure Log Analytics je funkce [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md)
 
     ![Architektura](./media/sql-database-metrics-diag-logging/architecture.png)
 
 ## <a name="availability-capabilities"></a>Možnosti dostupnosti
 
-Dostupnost služby Azure se smlouvou o úrovní služeb [(SLA)](http://azure.microsoft.com/support/legal/sla/) dosahuje špičkové hodnoty 99,99 %, protože staví na globální síti Microsoftem spravovaných datových center. Může tedy udržet vaše aplikace v nepřetržitém provozu každý den po celý rok. Platforma Azure plně spravuje všechny služby Azure SQL Database a zajišťuje nulovou ztrátu dat a vysokou procentní dostupnost dat. Azure automaticky zpracovává opravy, zálohování, replikaci, detekci selhání, potenciální selhání základního hardwaru, softwaru nebo sítě, nasazování oprav chyb, převzetí služeb při selhání, upgrady databází a další úlohy údržby. Dostupnosti úrovně Standard se dosahuje oddělením výpočetní a úložné vrstvy. Dostupnosti úrovně Premium se dosahuje integrací výpočetního prostředí a úložiště na jednom uzlu za účelem zajištění výkonu a implementací skupin dostupnosti AlwaysOn na pozadí. Úplný popis možností zajištění vysoké dostupnosti v Azure SQL Database najdete v tématu [Dostupnost služby SQL Database](sql-database-high-availability.md). Kromě toho SQL Database nabízí integrované funkce pro [provozní kontinuitu a globální škálovatelnost](sql-database-business-continuity.md), mezi které patří:
+Dostupnost služby Azure se smlouvou o úrovní služeb [(SLA)](http://azure.microsoft.com/support/legal/sla/) dosahuje špičkové hodnoty 99,99 %, protože staví na globální síti Microsoftem spravovaných datových center. Může tedy udržet vaše aplikace v nepřetržitém provozu každý den po celý rok. Platforma Azure plně spravuje všechny služby Azure SQL Database a zajišťuje nulovou ztrátu dat a vysokou procentní dostupnost dat. Azure automaticky zpracovává opravy, zálohování, replikaci, detekci selhání, potenciální selhání základního hardwaru, softwaru nebo sítě, nasazování oprav chyb, převzetí služeb při selhání, upgrady databází a další úlohy údržby. Dostupnosti úrovně Standard se dosahuje oddělením výpočetní a úložné vrstvy. Dostupnosti úrovně Premium se dosahuje integrací výpočetního prostředí a úložiště na jednom uzlu za účelem zajištění výkonu a implementací skupin dostupnosti AlwaysOn na pozadí. Úplnou diskusi o možnosti vysoké dostupnosti služby Azure SQL Database, najdete v části [dostupnost SQL Database](sql-database-high-availability.md). Kromě toho SQL Database nabízí integrované funkce pro [provozní kontinuitu a globální škálovatelnost](sql-database-business-continuity.md), mezi které patří:
 
 - **[Automatické zálohování:](sql-database-automated-backups.md)** SQL Database automaticky provádí úplné a rozdílové zálohování a zálohování protokolů transakcí.
 - **[Obnovení k určitému bodu v čase:](sql-database-recovery-using-backups.md)** SQL Database podporuje obnovení k libovolnému bodu v čase v rámci doby uchování automatických záloh.
@@ -170,15 +172,15 @@ SQL Database podporuje vytváření aplikací pomocí Pythonu, Javy, Node.js, PH
 - [Feedback](http://aka.ms/sqlfeedback): Hlášení chyb a žádosti o funkce
 - [Reddit](https://www.reddit.com/r/SQLServer/): Diskuze o SQL Serveru
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Na [stránce s cenami](https://azure.microsoft.com/pricing/details/sql-database/) najdete cenové kalkulačky a srovnání cen izolovaných databází a elastických fondů.
 
 - Tyto rychlé starty vám pomůžou začít:
 
   - [Vytvoření databáze SQL na webu Azure Portal](sql-database-get-started-portal.md)  
-  - [Vytvoření databáze SQL pomocí Azure CLI](sql-database-cli-samples.md)
-  - [Vytvoření databáze SQL pomocí PowerShellu](sql-database-powershell-samples.md)
+  - [Vytvoření databáze SQL pomocí Azure CLI](sql-database-get-started-cli.md)
+  - [Vytvoření databáze SQL pomocí PowerShellu](sql-database-get-started-powershell.md)
 
 - Řadu ukázek v Azure CLI a PowerShellu najdete tady:
   - [Ukázky v Azure CLI pro službu SQL Database](sql-database-cli-samples.md)
