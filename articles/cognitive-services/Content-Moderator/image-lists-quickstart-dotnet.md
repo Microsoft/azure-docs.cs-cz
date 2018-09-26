@@ -9,12 +9,12 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 09/14/2018
 ms.author: sajagtap
-ms.openlocfilehash: 11c24a395a7a37132d89a2215c3a6a882f4e6acf
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 855d89af70e080e2837fe2c0b66ea66c188dbd61
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720272"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182684"
 ---
 # <a name="moderate-with-custom-image-lists-in-net"></a>Střední s vlastním seznamem obrázků v .NET
 
@@ -115,7 +115,7 @@ Přidejte následující kód k vytvoření klienta Content Moderator pro vaše 
             // Create and initialize an instance of the Content Moderator API wrapper.
             ContentModeratorClient client = new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey));
 
-            client.BaseUrl = AzureBaseURL;
+            client.Endpoint = AzureBaseURL;
             return client;
         }
     }
@@ -133,7 +133,7 @@ Přidejte následující třídy a statická pole na **Program** třída v soubo
 
     /// <summary>
     /// The number of minutes to delay after updating the search index before
-    /// performing image match operations against a the list.
+    /// performing image match operations against the list.
     /// </summary>
     private const double latencyDelay = 0.5;
 
@@ -228,7 +228,7 @@ Přidejte následující třídy a statická pole na **Program** třída v soubo
     /// <summary>
     /// The name of the file to contain the output from the list management operations.
     /// </summary>
-    /// <remarks>Relative paths are ralative the execution directory.</remarks>
+    /// <remarks>Relative paths are relative to the execution directory.</remarks>
     private static string OutputFile = "ListOutput.log";
 
     /// <summary>

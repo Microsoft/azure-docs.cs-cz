@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 8bebec23d7a0199d8efbc55b3cde50c628306f01
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 1b63a75a2505ecbd82896932018ef4f0936b9b37
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034364"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182888"
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Správa profilů verzí API ve službě Azure Stack
 
@@ -77,6 +77,7 @@ Jako vývojář můžou soustředit na psaní vašeho řešení. Místo prozkoum
 
 Můžete najít ukázky kódu pro usnadnění integrace vašich řešení s upřednostňovaného jazyka pomocí služby Azure Stack s použitím profilů. V současné době můžete najít pokyny a ukázky pro následující jazyky:
 
+- **.NET** profilu rozhraní .NET API můžete použít k získání nejnovější, většina stabilní verzi každého typu prostředku v balíčku poskytovatele prostředků. Další informace najdete v tématu [profilů verzí použití rozhraní API s využitím .NET v Azure stacku](azure-stack-version-profiles-net.md).
 - **PowerShell**  
 Můžete použít **AzureRM.Bootstrapper** modulu, které jsou dostupné v galerii prostředí PowerShell zobrazíte rutiny prostředí PowerShell, který je vyžadována pro práci pomocí profilů verzí API. Informace najdete v tématu [profilů verzí API pomocí prostředí PowerShell pro](azure-stack-version-profiles-powershell.md).
 - **Azure CLI**  

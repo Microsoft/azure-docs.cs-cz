@@ -9,12 +9,12 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: 32e18273ad92f6b415b2a0219fd8b0520fe707f3
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: c5f301e7ed15100c39f0af77942147275b966ed9
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716141"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47180769"
 ---
 # <a name="create-reviews-using-net"></a>Vytvoření kontroly pomocí .NET
 
@@ -118,7 +118,7 @@ Přidejte následující kód k vytvoření klienta Content Moderator pro vaše 
             // Create and initialize an instance of the Content Moderator API wrapper.
             ContentModeratorClient client = new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey));
 
-            client.BaseUrl = AzureBaseURL;
+            client.Endpoint = AzureBaseURL;
             return client;
         }
     }
@@ -179,7 +179,7 @@ Tato třída slouží k přidružení ID revize interní ID obsahu pro položku.
     /// <summary>
     /// The name of the log file to create.
     /// </summary>
-    /// <remarks>Relative paths are ralative the execution directory.</remarks>
+    /// <remarks>Relative paths are relative to the execution directory.</remarks>
     private const string OutputFile = "OutputLog.txt";
 
 #### <a name="add-the-following-constants-and-static-fields-to-the-program-class-in-programcs"></a>Přidejte následující konstanty a statická pole na **Program** třída v souboru Program.cs.
@@ -196,7 +196,7 @@ Aktualizujte tyto hodnoty tak, aby obsahovala informace specifické pro vaše p�
     /// </summary>
     /// <remarks>This must be the team name you used to create your 
     /// Content Moderator account. You can retrieve your team name from
-    /// the Conent Moderator web site. Your team name is the Id associated 
+    /// the Content Moderator web site. Your team name is the Id associated 
     /// with your subscription.</remarks>
     private const string TeamName = "YOUR REVIEW TEAM ID";
 
@@ -208,7 +208,7 @@ Aktualizujte tyto hodnoty tak, aby obsahovala informace specifické pro vaše p�
     /// <summary>
     /// The callback endpoint for completed reviews.
     /// </summary>
-    /// <remarks>Revies show up for reviewers on your team. 
+    /// <remarks>Reviews show up for reviewers on your team. 
     /// As reviewers complete reviews, results are sent to the
     /// callback endpoint using an HTTP POST request.</remarks>
     private const string CallbackEndpoint = "YOUR API ENDPOINT";

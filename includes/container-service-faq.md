@@ -32,13 +32,13 @@ Další podrobnosti najdete v našich [zásadách podpory pro kontejnery](https:
 
 Můžete použít standardní nástroje vašeho operačního systému a vytvořit pro cluster pár veřejného a privátního klíče SSH RSA pro ověřování u virtuálních počítačů. Pokyny najdete v doprovodných materiálech k [OS X a Linuxu](../articles/virtual-machines/linux/mac-create-ssh-keys.md) nebo [Windows](../articles/virtual-machines/linux/ssh-from-windows.md). 
 
-Pokud k nasazení clusteru služby Container Service použijete [příkazy rozhraní příkazového řádku Azure 2.0 ](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md), je možné klíče SSH pro cluster vygenerovat automaticky.
+Pokud k nasazení clusteru služby kontejneru použijete [příkazy rozhraní příkazového řádku Azure](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md), je možné klíče SSH pro cluster vygenerovat automaticky.
 
 ### <a name="how-do-i-create-a-service-principal-for-my-kubernetes-cluster"></a>Jak vytvořím instanční objekt pro cluster Kubernetes?
 
 K vytvoření clusteru Kubernetes ve službě Azure Container Service je potřeba také ID a heslo instančního objektu služby Azure Active Directory. Další informace najdete v tématu [O instančním objektu pro cluster Kubernetes](../articles/container-service/kubernetes/container-service-kubernetes-service-principal.md).
 
-Pokud k nasazení clusteru Kubernetes použijete [příkazy rozhraní příkazového řádku Azure 2.0 ](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md), je možné přihlašovací údaje instančního objektu pro cluster vygenerovat automaticky.
+Pokud k nasazení clusteru Kubernetes použijete [příkazy rozhraní příkazového řádku Azure](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md), je možné přihlašovací údaje instančního objektu pro cluster vygenerovat automaticky.
 
 ### <a name="how-large-a-cluster-can-i-create"></a>Jak velký cluster můžu vytvořit?
 Můžete vytvořit cluster s 1, 3 nebo 5 řídicími uzly. Můžete vybrat až 100 uzlů agentů.
@@ -105,4 +105,4 @@ Ve Windows existuje několik známých problémů s DNS, které se postupně st�
 ## <a name="next-steps"></a>Další kroky
 
 * [Další informace](../articles/container-service/kubernetes/container-service-intro-kubernetes.md) o službě Azure Container Service.
-* Nasazení clusteru služby Container Service pomocí [portálu](../articles/container-service/dcos-swarm/container-service-deployment.md) nebo [Azure CLI 2.0 ](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md).
+* Nasazení clusteru služby kontejneru pomocí [portálu](../articles/container-service/dcos-swarm/container-service-deployment.md) nebo [Azure CLI](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md)
