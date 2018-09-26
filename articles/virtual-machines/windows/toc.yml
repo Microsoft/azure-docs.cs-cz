@@ -233,6 +233,14 @@ items:
       href: reserved-vm-instance-size-flexibility.md
   - name: Použití imagí
     items:
+    - name: Sdílené image (Preview)
+      items:
+      - name: Přehled
+        href: shared-image-galleries.md
+      - name: Vytváření sdílených imagí s využitím CLI
+        href: ../linux/shared-images.md
+      - name: Řešení potíží se sdílenými imagemi
+        href: troubleshooting-shared-images.md
     - name: Vyhledání a použití imagí
       href: cli-ps-findimage.md
     - name: Příprava virtuálního počítače pro nahrání
@@ -502,9 +510,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
   - name: Nejčastější dotazy
     href: faq.md
-ms.openlocfilehash: b992a12ffd232e886638091b84915d146d9e22d8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 84b76400e029c835f3a070fa7bdc80afe3f147d1
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982239"
+ms.locfileid: "47035891"

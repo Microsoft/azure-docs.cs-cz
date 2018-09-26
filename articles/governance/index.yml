@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 1c25ae1acb112221047876ea6dd360c6d3bb2817
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b2ee21b77fc3bb26a1ca449ede198f8873a090c0
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946234"
+ms.locfileid: "47036843"
 documentType: LandingData
 title: Správa Azure – zásady správného řízení
 metadata:
@@ -19,6 +19,15 @@ metadata:
   ms.author: dacoulte
 abstract:
   description: Zásady správného řízení Azure je kolekce konceptů a služeb, které umožňují správu různých prostředků Azure ver velkém měřítku. Tyto služby poskytují možnost logicky uspořádat a strukturovat vaše předplatná, vytvářet a nasazovat opakovaně použitelné balíčky prostředků nativní pro Azure, definovat, audit a opravovat vaše prostředky a nejenom to. Na této stránce se dozvíte víc o těchto konceptech a službách a také o tom, jak je povolit a využít ve vašem prostředí.
+  aside:
+    image:
+      alt: 
+      height: 225
+      src: ./media/video.png
+      width: 250
+    title: Azure Governance vám poskytne rychlost a kontrolu nad prostředky (1:47)
+    href: https://www.youtube.com/watch?v=MhGbKjlmuRs
+    width: 250
 sections:
 - title: Komponenty a služby
 - items:

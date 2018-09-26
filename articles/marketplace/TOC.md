@@ -7,6 +7,7 @@
 #### [Registrace na webu Dev Center](./register-dev-center.md) 
 #### [Možnosti fakturace pro Azure Marketplace](./billing-options-azure-marketplace.md)  
 #### [Přisuzování využití ze strany zákazníků partnerům Azure](./azure-partner-customer-usage-attribution.md)
+#### [Správa potenciálních zákazníků pro cloudový marketplace](./lead-management-for-cloud-marketplace.md)
 
 ### [Prodejní místa](./comparing-appsource-azure-marketplace.md)  
 

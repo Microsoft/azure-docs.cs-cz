@@ -18,26 +18,34 @@ items:
   items:
   - name: Jak zabránit neočekávaným nákladům
     href: billing-getting-started.md
-  - name: Nastavení upozornění fakturace
-    href: billing-set-up-alerts.md
-  - name: Výpočet cen
-    href: https://azure.microsoft.com/pricing/calculator/
   - name: Použití značek prostředků
     href: ../azure-resource-manager/resource-group-using-tags.md?toc=/azure/billing/TOC.json
+  - name: Začínáme s analýzou nákladů – jenom EA
+    href: ../cost-management/quick-acm-cost-analysis.md?toc=/azure/billing/TOC.json
+  - name: Vytváření a správa rozpočtů – jenom EA
+    href: ../cost-management/tutorial-acm-create-budgets.md?toc=/azure/billing/TOC.json
+  - name: Optimalizace doporučení – jenom EA
+    href: ../cost-management/tutorial-acm-opt-recommendations.md?toc=/azure/billing/TOC.json
+  - name: Výpočet cen
+    href: https://azure.microsoft.com/pricing/calculator/
   - name: Vysvětlení limitu útraty
     href: billing-spending-limit.md
+  - name: Nastavení upozornění fakturace
+    href: billing-set-up-alerts.md
   - name: Úspory s využitím rezervací Azure
     items:
     - name: Co jsou rezervace Azure?
       href: billing-save-compute-costs-reservations.md
     - name: Nákup rezervace
       items:
-      - name: Virtuální počítač
-        href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
+      - name: Databáze Cosmos
+        href: ../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/billing/TOC.json
       - name: SQL Database
         href: ../sql-database/sql-database-reserved-capacity.md?toc=/azure/billing/TOC.json
       - name: Software SUSE Linux
         href: ../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/billing/TOC.json
+      - name: Virtuální počítač
+        href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
     - name: Postup při využití slev
       items:
       - name: Rezervované instance virtuálních počítačů
@@ -172,9 +180,9 @@ items:
     items:
     - name: Rozhraní REST API služby Enterprise Reporting
       href: https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary
-ms.openlocfilehash: 2ef6d1445b444b7816a7a652f052c169cf0d78ec
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0090b62d3738804877687e2071d96b13f7c9dd13
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969559"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063553"

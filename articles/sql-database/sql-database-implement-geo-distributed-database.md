@@ -2,19 +2,22 @@
 title: Implementace řešení geograficky distribuované služby Azure SQL Database | Microsoft Docs
 description: Zjistěte, jak u své služby Azure SQL Database a aplikace nakonfigurovat převzetí služeb při selhání do replikované databáze a otestovat ho.
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: mvc,business continuity
-ms.topic: tutorial
-ms.date: 04/01/2018
-ms.author: carlrab
-ms.openlocfilehash: fbd239c3c8c11b1907a6d28eb95d2c0ad26cfe61
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: HT
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: anosov1960
+ms.author: sashan
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/07/2018
+ms.openlocfilehash: 65cf954f5d91176715181620671f620264069bdc
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31416615"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166244"
 ---
 # <a name="implement-a-geo-distributed-database"></a>Implementace geograficky distribuované databáze
 
@@ -38,8 +41,8 @@ Předpokladem dokončení tohoto kurzu je splnění následujících požadavků
 - Máte nainstalovanou databázi SQL Azure. V tomto kurzu se používá ukázková databáze AdventureWorksLT s názvem **mySampleDatabase** z jednoho z těchto rychlých startů:
 
    - [Vytvoření databáze – portál](sql-database-get-started-portal.md)
-   - [Vytvoření databáze – rozhraní příkazového řádku](sql-database-get-started-cli.md)
-   - [Vytvoření databáze – PowerShell](sql-database-get-started-powershell.md)
+   - [Vytvoření databáze – rozhraní příkazového řádku](sql-database-cli-samples.md)
+   - [Vytvoření databáze – PowerShell](sql-database-powershell-samples.md)
 
 - Identifikovali jste metodu provádění skriptů SQL proti databázi. Můžete použít některý z následujících nástrojů pro dotazování:
    - Editor dotazů na webu [Azure Portal](https://portal.azure.com). Další informace o používání editoru dotazů na webu Azure Portal najdete v tématu popisujícím [připojení a dotazování pomocí Editoru dotazů](sql-database-get-started-portal.md#query-the-sql-database).
@@ -54,7 +57,7 @@ Připojte se ke své databázi a vytvořte uživatelské účty pomocí někter�
 - SQL Server Management Studio
 - Visual Studio Code
 
-Tyto uživatelské účty se automaticky replikují na váš sekundární server (a udržují se synchronizované). Pokud chcete použít aplikaci SQL Server Management Studio nebo Visual Studio Code, možná budete muset nakonfigurovat pravidlo brány firewall, pokud se připojujete z klienta na IP adrese, pro kterou jste ještě nenakonfigurovali bránu firewall. Podrobný postup najdete v tématu popisujícím [vytvoření pravidla brány firewall na úrovni serveru](sql-database-get-started-portal.md#create-a-server-level-firewall-rule).
+Tyto uživatelské účty se automaticky replikují na váš sekundární server (a udržují se synchronizované). Pokud chcete použít aplikaci SQL Server Management Studio nebo Visual Studio Code, možná budete muset nakonfigurovat pravidlo brány firewall, pokud se připojujete z klienta na IP adrese, pro kterou jste ještě nenakonfigurovali bránu firewall. Podrobný postup najdete v tématu popisujícím [vytvoření pravidla brány firewall na úrovni serveru](sql-database-get-started-portal-firewall.md).
 
 - Spuštěním následujícího dotazu v okně dotazu vytvořte ve své databázi dva uživatelské účty. Tento skript udělí uživateli **db_owner** oprávnění k účtu **app_admin** a účtu **app_user** udělí oprávnění **SELECT** a **UPDATE**. 
 
@@ -70,7 +73,7 @@ Tyto uživatelské účty se automaticky replikují na váš sekundární server
 
 ## <a name="create-database-level-firewall"></a>Vytvoření brány firewall na úrovni databáze
 
-Vytvořte pro svou databázi [pravidlo brány firewall na úrovni databáze](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database). Toto pravidlo brány firewall na úrovni databáze se automaticky replikuje na sekundární server, který v tomto kurzu vytvoříte. Pro zjednodušení (v tomto kurzu) použijte veřejnou IP adresu počítače, na kterém provádíte kroky v tomto kurzu. Pokud chcete zjistit IP adresu použitou pro pravidlo brány firewall na úrovni serveru pro váš aktuální počítač, přečtěte si téma popisující [vytvoření brány firewall na úrovni serveru](sql-database-get-started-portal.md#create-a-server-level-firewall-rule).  
+Vytvořte pro svou databázi [pravidlo brány firewall na úrovni databáze](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database). Toto pravidlo brány firewall na úrovni databáze se automaticky replikuje na sekundární server, který v tomto kurzu vytvoříte. Pro zjednodušení (v tomto kurzu) použijte veřejnou IP adresu počítače, na kterém provádíte kroky v tomto kurzu. Pokud chcete zjistit IP adresu použitou pro pravidlo brány firewall na úrovni serveru pro váš aktuální počítač, přečtěte si téma popisující [vytvoření brány firewall na úrovni serveru](sql-database-get-started-portal-firewall.md).  
 
 - V otevřeném okně dotazu nahraďte předchozí dotaz následujícím dotazem, ve kterém nahraďte IP adresy odpovídajícími IP adresami pro vaše prostředí.  
 
@@ -379,7 +382,7 @@ Nainstalujte [Maven](https://maven.apache.org/download.cgi) pomocí oficiální 
    $fileovergroup.ReplicationRole
    ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili nakonfigurovat u databáze SQL Azure a aplikace převzetí služeb při selhání do vzdálené oblasti a potom svůj plán převzetí služeb při selhání otestovat.  Naučili jste se tyto postupy: 
 
@@ -390,8 +393,8 @@ V tomto kurzu jste se naučili nakonfigurovat u databáze SQL Azure a aplikace p
 > * Vytvoření a kompilace aplikace v Javě pro dotazování databáze SQL Azure
 > * Provedení postupu zotavení po havárii
 
-V dalším kurzu se dozvíte, jak vytvořit spravovanou instanci.
+Přejděte k dalšímu kurzu, kde migrace SQL serveru do Azure SQL Database Managed Instance pomocí DMS.
 
 > [!div class="nextstepaction"]
->[Vytvoření spravované instance](sql-database-managed-instance-create-tutorial-portal.md)
+>[Migrace SQL Serveru do Azure SQL Database Managed Instance pomocí DMS](../dms/tutorial-sql-server-to-managed-instance.md)
 

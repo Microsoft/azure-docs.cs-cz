@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: ca2cba56bd84b1e1b5056e3308410ced3b620193
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063621"
 documentType: LandingData
 title: Azure Kubernetes Service (AKS)
 metadata:
@@ -14,12 +20,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 07-21-2017
   ms.author: carolz
-  ms.openlocfilehash: 081e54a6ed04fa74f96b327b2c9e9e63c9fc01cb
-  ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
-  ms.translationtype: HT
-  ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/29/2018
-  ms.locfileid: "37132530"
 abstract:
   description: Azure Kubernetes Service (AKS) spravuje hostované prostředí Kubernetes a umožňuje tak rychle a snadno nasazovat a spravovat kontejnerizované aplikace bez znalosti orchestrace kontejnerů. Zároveň eliminuje režii spojenou s probíhajícími operacemi a údržbou díky zřizování, upgradování a škálování prostředků na vyžádání bez nutnosti odpojovat aplikace.
 sections:
@@ -52,6 +52,29 @@ sections:
     - html: <a href="/azure/aks/tutorial-kubernetes-scale">Škálování aplikace a infrastruktury Kubernetes</a>
     - html: <a href="/azure/aks/tutorial-kubernetes-app-update">Aktualizace aplikace běžící v Kubernetes</a>
     - html: <a href="/azure/aks/tutorial-kubernetes-upgrade-cluster">Upgrade clusteru AKS</a>
+- title: Získávání dovedností pomocí Microsoft Learn
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: Seznámení s kontejnery v Azure
+      href: /learn/modules/intro-to-containers/
+      image:
+        src: /learn/achievements/intro-to-containers.svg
+        href: /learn/modules/intro-to-containers/
+    - title: Spouštění kontejnerů Dockeru s využitím služby Azure Container Instances
+      href: /learn/modules/run-docker-with-azure-container-instances/
+      image:
+        src: /learn/achievements/run-docker-with-azure-container-instances.svg
+        href: /learn/modules/run-docker-with-azure-container-instances/
+    - title: Sestavení a uložení imagí kontejnerů s využitím služby Azure Container Registry
+      href: /learn/modules/build-and-store-container-images/
+      image:
+        src: /learn/achievements/build-and-store-container-images.svg
+        href: /learn/modules/build-and-store-container-images/
+  - type: paragraph
+    text: <a href="/learn/browse/?products=azure-container-registry%2Cazure-container-instances">Další interaktivní výuka...</a>
 - title: Referenční informace
   items:
   - type: list

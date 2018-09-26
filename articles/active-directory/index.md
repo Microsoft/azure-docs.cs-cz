@@ -11,14 +11,14 @@ ms.service: active-directory
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 09/14/2018
+ms.date: 09/20/2018
 ms.author: mtillman
-ms.openlocfilehash: 2d7288356834f4c57465c0043835edc3da86311f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8b28ca8d0aef745600539ab2785e67e3d67e95f9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962442"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063808"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -63,7 +63,6 @@ ms.locfileid: "46962442"
                                                     </div>
                                                 </a>
                                             </li>
-<!--This is the learning section 
                                             <li>
                                                 <a href="">
                                                     <div class="cardSize">
@@ -71,14 +70,14 @@ ms.locfileid: "46962442"
                                                             <div class="card">
                                                                 <div class="cardImageOuter">
                                                                     <div class="cardImage">
-                                                                        <img alt="" src="https://docs.microsoft.com/media/common/i_learn-about.svg" data-linktype="external">
+                                                                        <img alt="" src="/learn/achievements/secure-azure-resources-with-conditional-access.svg" data-linktype="external">
                                                                     </div>
                                                                 </div>
                                                                 <div class="cardText" style="padding-left: 0px">
-                                                                    <h3><a href="">Build your skills with Microsoft Learn</a></h3> 
+                                                                    <h3><a href="">Získávání dovedností pomocí Microsoft Learn</a></h3> 
                                                                     <p>
-                                                                        <a href="https://docs.microsoft.com/learn/modules/secure-azure-resources-with-conditional-access">Secure your Azure resources with conditional access</a><br>
-                                                                        <a href="">More interactive learning ...</a><br>
+                                                                        <a href="/learn/modules/secure-azure-resources-with-conditional-access/">Zabezpečení vašich prostředků Azure pomocí podmíněného přístupu</a><br>
+                                                                        <a href="/learn/browse/?products=azure-active-directory">Další interaktivní výuka...</a><br>
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -86,7 +85,6 @@ ms.locfileid: "46962442"
                                                     </div>
                                                 </a>
                                             </li>
- End of the learning section -->
                                         </ul>
                                     </li>
                                     <li>
@@ -101,7 +99,7 @@ ms.locfileid: "46962442"
                                                             <a href="manage-apps/application-proxy.md">Proxy aplikací pro místní aplikace</a><br>
                                                         </p>
                                                         <br><br>
-                                                        <h3><a href="authentication/index.yml">Metody ověřování</a></h3>
+                                                        <h3><a href="authentication/index.yml">Ověřování</a></h3>
                                                         <p>
                                                             <a href="authentication/tutorial-mfa-applications.md">Povolení MFA pro Azure Portal</a><br>
                                                             <a href="authentication/quickstart-sspr.md">Povolení samoobslužného resetování hesla</a><br>
@@ -122,11 +120,11 @@ ms.locfileid: "46962442"
                                                             <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-api">Udělení přístupu k webovému rozhraní API ASP.NET</a>
                                                         </p>
                                                         <br><br>
-                                                        <h3><a href="governance/access-reviews-overview.md">Kontroly přístupu</a></h3>
+                                                        <h3><a href="conditional-access/index.yml">Podmíněný přístup</a></h3>
                                                         <p>
-                                                            <a href="governance/create-access-review.md">Vytvoření kontroly přístupu</a><br>
-                                                            <a href="governance/perform-access-review.md">Provádění kontroly přístupu</a><br>
-                                                            <a href="governance/active-directory-tou.md">Podmínky použití</a>
+                                                            <a href="conditional-access/app-based-mfa.md">Vyžadování MFA pro specifické aplikace</a><br>
+                                                            <a href="conditional-access/require-tou.md">Vyžadování přijetí podmínek použití</a><br>
+                                                            <a href="conditional-access/app-sign-in-risk.md">Blokování přístupu, pokud se zjistí riziko relace</a>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -138,18 +136,11 @@ ms.locfileid: "46962442"
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3><a href="conditional-access/index.yml">Podmíněný přístup</a></h3>
-                                                        <p>
-                                                            <a href="conditional-access/app-based-mfa.md">Vyžadování MFA pro specifické aplikace</a><br>
-                                                            <a href="conditional-access/require-tou.md">Vyžadování přijetí podmínek použití</a><br>
-                                                            <a href="conditional-access/app-sign-in-risk.md">Blokování přístupu, pokud se zjistí riziko relace</a>
-                                                        </p>
-                                                        <br><br>
                                                         <h3><a href="develop/index.yml">Vývojáři</a></h3>
                                                         <p>
                                                             <a href="develop/about-microsoft-identity-platform.md">O platformě Microsoft Identity Platform</a><br>
-                                                            <a href="develop/azure-ad-developers-guide.md">v1.0</a><br>
-                                                            <a href="develop/v2-overview.md">v2.0</a>
+                                                            <a href="develop/azure-ad-developers-guide.md">Platforma v1.0</a><br>
+                                                            <a href="develop/v2-overview.md">Platforma v2.0</a>
                                                         </p>
                                                         <br><br>
                                                         <h3><a href="devices/index.yml">Správa zařízení</a></h3>
@@ -161,9 +152,9 @@ ms.locfileid: "46962442"
                                                         <br><br>
                                                         <h3><a href="/azure/active-directory-domain-services/index">Domain Services</a></h3>
                                                         <p>
-                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-getting-started.md">Povolení služby Azure AD Domain Services</a><br>
-                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal.md">Připojení virtuálního počítače s Windows Serverem ke spravované doméně</a><br>
-                                                            <a href="/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md">Konfigurace protokolu Secure LDAP</a>
+                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-getting-started">Povolení služby Azure AD Domain Services</a><br>
+                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal">Připojení virtuálního počítače s Windows Serverem ke spravované doméně</a><br>
+                                                            <a href="/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap">Konfigurace protokolu Secure LDAP</a>
                                                         </p>
                                                         <br><br>
                                                         <h3><a href="users-groups-roles/index.yml">Podnikoví uživatelé</a></h3>
@@ -171,6 +162,13 @@ ms.locfileid: "46962442"
                                                             <a href="users-groups-roles/directory-assign-admin-roles.md">Přiřazení rolí správce</a><br>
                                                             <a href="users-groups-roles/licensing-groups-assign.md">Přiřazení licencí ke skupinám</a><br>
                                                             <a href="users-groups-roles/groups-create-rule.md">Vytvoření dynamické skupiny</a>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="hybrid/index.yml">Hybridní identita</a></h3>
+                                                        <p>
+                                                            <a href="hybrid/how-to-connect-install-roadmap.md">Instalace služby Azure AD Connect</a><br>
+                                                            <a href="hybrid/how-to-connect-sso.md">Jednotné přihlašování s využitím služby Azure AD Connect</a><br>
+                                                            <a href="hybrid/how-to-connect-fed-whatis.md">Azure AD Connect a federace</a>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -182,11 +180,11 @@ ms.locfileid: "46962442"
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3><a href="hybrid/index.yml">Hybridní identita</a></h3>
+                                                        <h3><a href="governance/access-reviews-overview.md">Kontroly přístupu</a></h3>
                                                         <p>
-                                                            <a href="hybrid/tutorial-password-hash-sync.md">Azure AD Connect</a><br>
-                                                            <a href="hybrid/tutorial-passthrough-authentication.md">Integrace doménové struktury AD do cloudu</a><br>
-                                                            <a href="hybrid/tutorial-federation.md">Federace doménové struktury AD do cloudu</a>
+                                                            <a href="governance/create-access-review.md">Vytvoření kontroly přístupu</a><br>
+                                                            <a href="governance/perform-access-review.md">Provádění kontroly přístupu</a><br>
+                                                            <a href="governance/active-directory-tou.md">Podmínky použití</a><br>
                                                         </p>
                                                         <br><br>
                                                         <h3><a href="identity-protection/index.yml">Ochrana identit</a></h3>
@@ -203,14 +201,14 @@ ms.locfileid: "46962442"
                                                             <a href="managed-identities-azure-resources/services-support-msi.md">Služby, které podporují spravované identity</a>
                                                         </p>
                                                         <br><br>
-                                                        <h3><a href="privileged-identity-management/index.yml">PIM</a></h3>
+                                                        <h3><a href="privileged-identity-management/index.yml">Privileged Identity Management (PIM)</a></h3>
                                                         <p>
                                                             <a href="privileged-identity-management/pim-getting-started.md">Zahájení práce s PIM</a><br>
                                                             <a href="privileged-identity-management/pim-how-to-activate-role.md">Aktivace mých rolí adresáře</a><br>
                                                             <a href="privileged-identity-management/pim-how-to-add-role-to-user.md">Přiřazení rolí adresáře</a>
                                                         </p>
                                                         <br><br>
-                                                        <h3><a href="reports-monitoring/index.yml">Sledování a vytváření sestav</a></h3>
+                                                        <h3><a href="reports-monitoring/index.yml">Sestavy a sledování</a></h3>
                                                         <p>
                                                             <a href="reports-monitoring/howto-find-activity-reports.md">Vyhledávání sestav aktivit</a><br>
                                                             <a href="reports-monitoring/concept-activity-logs-in-azure-monitor.md">Použití protokolů Azure AD v Azure Monitoru</a><br>

@@ -1,73 +1,81 @@
+items:
 - name: Dokumentace k virtuálním počítačům pro datové vědy
   href: index.yml
-  items: null
 - name: Přehled
-  expanded: true
   items:
-    - name: Co je virtuální počítač pro datové vědy?
-      href: overview.md
-    - name: Co je virtuální počítač pro hloubkové učení?
-      href: deep-learning-dsvm-overview.md
-    - name: Co je virtuální počítač s geografickou umělou inteligencí pro datové vědy?
-      href: geo-ai-dsvm-overview.md
+  - name: Co je virtuální počítač pro datové vědy?
+    href: overview.md
+  - name: Co je virtuální počítač pro hloubkové učení?
+    href: deep-learning-dsvm-overview.md
+  - name: Co je virtuální počítač s geografickou umělou inteligencí pro datové vědy?
+    href: geo-ai-dsvm-overview.md
+  expanded: true
 - name: Začínáme
   items:
-    - name: Vytvoření virtuálního počítače s Windows pro datové vědy
-      href: provision-vm.md
-    - name: Vytvoření virtuálního počítače s Ubuntu pro datové vědy
-      href: dsvm-ubuntu-intro.md
-    - name: Vytvoření virtuálního počítače s CentOS pro datové vědy
-      href: linux-dsvm-intro.md
-    - name: Vytvoření virtuálního počítače pro hloubkové učení
-      href: provision-deep-learning-dsvm.md
-    - name: Vytvoření virtuálního počítače s geografickou umělou inteligencí pro datové vědy
-      href: provision-geo-ai-dsvm.md
+  - name: Vytvoření virtuálního počítače s Windows pro datové vědy
+    href: provision-vm.md
+  - name: Vytvoření virtuálního počítače s Ubuntu pro datové vědy
+    href: dsvm-ubuntu-intro.md
+  - name: Vytvoření virtuálního počítače s CentOS pro datové vědy
+    href: linux-dsvm-intro.md
+  - name: Vytvoření virtuálního počítače pro hloubkové učení
+    href: provision-deep-learning-dsvm.md
+  - name: Vytvoření virtuálního počítače s geografickou umělou inteligencí pro datové vědy
+    href: provision-geo-ai-dsvm.md
 - name: Postup
   items:
-    - name: Použití virtuálního počítače s Windows pro datové vědy
-      href: vm-do-ten-things.md
-    - name: Použití virtuálního počítače s Linuxem pro datové vědy
-      href: linux-dsvm-walkthrough.md
-    - name: Použití virtuálního počítače pro hloubkové učení
-      href: use-deep-learning-dsvm.md
-    - name: Použití virtuálního počítače s geografickou umělou inteligencí pro datové vědy
-      href: use-geo-ai-dsvm.md
+  - name: Použití virtuálního počítače s Windows pro datové vědy
+    href: vm-do-ten-things.md
+  - name: Použití virtuálního počítače s Linuxem pro datové vědy
+    href: linux-dsvm-walkthrough.md
+  - name: Použití virtuálního počítače pro hloubkové učení
+    href: use-deep-learning-dsvm.md
+  - name: Použití virtuálního počítače s geografickou umělou inteligencí pro datové vědy
+    href: use-geo-ai-dsvm.md
 - name: Pokyny Enterprise
   items:
-    - name: Přehled
-      href: dsvm-enterprise-overview.md
-    - name: Škálování
-      href: dsvm-pools.md
-    - name: Integrace Active Directory
-      href: dsvm-common-identity.md
-    - name: Přihlašovací údaje pro zabezpečený přístup k prostředkům
-      href: dsvm-secure-access-keys.md
+  - name: Přehled
+    href: dsvm-enterprise-overview.md
+  - name: Škálování
+    href: dsvm-pools.md
+  - name: Integrace Active Directory
+    href: dsvm-common-identity.md
+  - name: Přihlašovací údaje pro zabezpečený přístup k prostředkům
+    href: dsvm-secure-access-keys.md
 - name: Referenční informace
-  expanded: true
   items:
-    - name: Seznámení s virtuálním počítačem pro datové vědy
-      href: dsvm-tools-overview.md
-    - name: Architektura AI a hloubkového učení
-      href: dsvm-deep-learning-ai-frameworks.md
-    - name: Nástroje pro datové vědy a ML
-      href: dsvm-ml-data-science-tools.md
-    - name: Jazyky
-      href: dsvm-languages.md
-    - name: Vývojářské nástroje
-      href: dsvm-tools-development.md
-    - name: Nástroje pro ingestování dat
-      href: dsvm-tools-ingestion.md
-    - name: Nástroje pro zkoumání a vizualizaci dat
-      href: dsvm-tools-explore-and-visualize.md
-    - name: Datové platformy
-      href: dsvm-data-platforms.md
-    - name: Ukázky a názorné postupy
-      href: dsvm-samples-and-walkthroughs.md
+  - name: Seznámení s virtuálním počítačem pro datové vědy
+    href: dsvm-tools-overview.md
+  - name: Architektura AI a hloubkového učení
+    href: dsvm-deep-learning-ai-frameworks.md
+  - name: Nástroje pro datové vědy a ML
+    href: dsvm-ml-data-science-tools.md
+  - name: Jazyky
+    href: dsvm-languages.md
+  - name: Vývojářské nástroje
+    href: dsvm-tools-development.md
+  - name: Nástroje pro ingestování dat
+    href: dsvm-tools-ingestion.md
+  - name: Nástroje pro zkoumání a vizualizaci dat
+    href: dsvm-tools-explore-and-visualize.md
+  - name: Datové platformy
+    href: dsvm-data-platforms.md
+  - name: Ukázky a názorné postupy
+    href: dsvm-samples-and-walkthroughs.md
+  expanded: true
 - name: Zdroje a prostředky
   items:
-    - name: Blog
-      href: 'https://blogs.technet.microsoft.com/machinelearning/tag/dsvm/'
-    - name: Fórum MSDN
-      href: 'https://social.microsoft.com/Forums/en-US/home?forum=dsvm'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/search?q=dsvm'
+  - name: Příručka pro vývojáře v R
+    href: ../r-developers-guide.md
+  - name: Blog
+    href: https://blogs.technet.microsoft.com/machinelearning/tag/dsvm/
+  - name: Fórum MSDN
+    href: https://social.microsoft.com/Forums/en-US/home?forum=dsvm
+  - name: Stack Overflow
+    href: https://stackoverflow.com/search?q=dsvm
+ms.openlocfilehash: e1617f3f5c36a5b006003e2f375dfac4143af7cd
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032560"

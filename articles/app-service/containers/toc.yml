@@ -1,233 +1,242 @@
+items:
 - name: Dokumentace k App Service v Linuxu
   href: index.yml
 - name: Přehled
   items:
-    - name: Informace o funkci Web Apps
-      href: ../app-service-web-overview.md
-    - name: Informace o App Service v Linuxu
-      href: app-service-linux-intro.md
-    - name: Porovnání možností hostování
-      href: ../choose-web-site-cloud-service-vm.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+  - name: Informace o funkci Web Apps
+    href: ../app-service-web-overview.md
+  - name: Informace o App Service v Linuxu
+    href: app-service-linux-intro.md
+  - name: Porovnání možností hostování
+    href: ../choose-web-site-cloud-service-vm.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
 - name: Šablony Rychlý start
-  expanded: true
   items:
-    - name: Vytvoření aplikace v .NET Core
-      href: quickstart-dotnetcore.md
-    - name: Vytvoření aplikace v PHP
-      href: quickstart-php.md
-    - name: Vytvoření aplikace v Node.js
-      href: quickstart-nodejs.md
-    - name: Vytvoření aplikace v Javě
-      href: quickstart-java.md
-    - name: Vytvoření aplikace v Pythonu
-      href: quickstart-python.md
-    - name: Vytvoření aplikace v Ruby
-      href: quickstart-ruby.md
-    - name: Vytvoření aplikace v Dockeru/Go
-      href: quickstart-docker-go.md
-    - name: Vytvoření vícekontejnerové aplikace
-      href: quickstart-multi-container.md
+  - name: Vytvoření aplikace v .NET Core
+    href: quickstart-dotnetcore.md
+  - name: Vytvoření aplikace v PHP
+    href: quickstart-php.md
+  - name: Vytvoření aplikace v Node.js
+    href: quickstart-nodejs.md
+  - name: Vytvoření aplikace v Javě
+    href: quickstart-java.md
+  - name: Vytvoření aplikace v Pythonu
+    href: quickstart-python.md
+  - name: Vytvoření aplikace v Ruby
+    href: quickstart-ruby.md
+  - name: Vytvoření aplikace v Dockeru/Go
+    href: quickstart-docker-go.md
+  - name: Vytvoření vícekontejnerové aplikace
+    href: quickstart-multi-container.md
+  expanded: true
 - name: Kurzy
   items:
-    - name: Aplikace s DB
-      items:
-        - name: .NET Core s SQL DB
-          href: tutorial-dotnetcore-sqldb-app.md
-        - name: Ruby s Postgresem
-          href: tutorial-ruby-postgres-app.md
-        - name: PHP s MySQL
-          href: tutorial-php-mysql-app.md
-        - name: Node.js s MongoDB
-          href: tutorial-nodejs-mongodb-app.md
-        - name: Vlastní kontejner Pythonu s Postgresem
-          href: tutorial-docker-python-postgresql-app.md
-    - name: Vícekontejnerová aplikace
-      href: tutorial-multi-container-app.md
-    - name: Vlastní image Dockeru
-      href: tutorial-custom-docker-image.md
-    - name: Mapování vlastní domény
-      href: ../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Vytvoření vazby certifikátu SSL
-      href: ../app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Přidání sítě CDN
-      href: ../../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Ověřování uživatelů
-      href: tutorial-auth-aad.md
+  - name: Aplikace s DB
+    items:
+    - name: .NET Core s SQL DB
+      href: tutorial-dotnetcore-sqldb-app.md
+    - name: Ruby s Postgresem
+      href: tutorial-ruby-postgres-app.md
+    - name: PHP s MySQL
+      href: tutorial-php-mysql-app.md
+    - name: Node.js s MongoDB
+      href: tutorial-nodejs-mongodb-app.md
+    - name: Vlastní kontejner Pythonu s Postgresem
+      href: tutorial-docker-python-postgresql-app.md
+  - name: Vícekontejnerová aplikace
+    href: tutorial-multi-container-app.md
+  - name: Vlastní image Dockeru
+    href: tutorial-custom-docker-image.md
+  - name: Mapování vlastní domény
+    href: ../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+  - name: Vytvoření vazby certifikátu SSL
+    href: ../app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+  - name: Přidání sítě CDN
+    href: ../../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+  - name: Ověřování uživatelů
+    href: tutorial-auth-aad.md
 - name: Ukázky
   items:
-    - name: Azure CLI
-      href: ../app-service-cli-samples.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Azure PowerShell
-      href: ../app-service-powershell-samples.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+  - name: Azure CLI
+    href: ../app-service-cli-samples.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+  - name: Azure PowerShell
+    href: ../app-service-powershell-samples.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
 - name: Koncepty
   items:
-    - name: Jak funguje App Service
-      href: ../app-service-how-works-readme.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Plány služby App Service
-      href: ../azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: App Service Environment
-      href: ../environment/intro.md
-    - name: Příchozí a odchozí IP adresy
-      href: ../app-service-ip-addresses.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Ověřování a autorizace
-      href: ../app-service-authentication-overview.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Volba typu nasazení
-      href: choose-deployment-type.md
-    - name: Diagnostika
-      href: ../app-service-diagnostics.md
+  - name: Jak funguje App Service
+    href: ../app-service-how-works-readme.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+  - name: Plány služby App Service
+    href: ../azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+  - name: App Service Environment
+    href: ../environment/intro.md
+  - name: Příručka pro vývojáře v Javě
+    href: app-service-linux-java.md
+  - name: Příchozí a odchozí IP adresy
+    href: ../app-service-ip-addresses.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+  - name: Ověřování a autorizace
+    href: ../app-service-authentication-overview.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+  - name: Volba typu nasazení
+    href: choose-deployment-type.md
+  - name: Diagnostika
+    href: ../app-service-diagnostics.md
 - name: Návody
   items:
-    - name: Konfigurace aplikace
+  - name: Konfigurace aplikace
+    items:
+    - name: Použití nastavení aplikace
+      href: ../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+  - name: Nasazení do Azure
+    items:
+    - name: Nasazení aplikace
       items:
-        - name: Použití nastavení aplikace
-          href: ../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Nasazení do Azure
+      - name: Nasazení prostřednictvím FTP
+        href: ../app-service-deploy-ftp.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      - name: Nasazení prostřednictvím cloudové synchronizace
+        href: ../app-service-deploy-content-sync.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      - name: Průběžné nasazování
+        href: ../containers/app-service-linux-ci-cd.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      - name: Nasazení z místního Gitu
+        href: ../app-service-deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      - name: Nasazení pomocí šablony
+        href: ../app-service-deploy-complex-application-predictably.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Nastavení přihlašovacích údajů nasazení
+      href: ../app-service-deployment-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Vytvoření přípravných prostředí
+      href: ../web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+  - name: Mapování vlastní domény
+    items:
+    - name: Zakoupení domény
+      href: ../custom-dns-web-site-buydomains-web-app.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Mapování domén s Traffic Managerem
+      href: ../web-sites-traffic-manager-custom-domain-name.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Migrace aktivní domény
+      href: ../app-service-custom-domain-name-migrate.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+  - name: Zabezpečená aplikace
+    items:
+    - name: Zakoupení certifikátů SSL
+      href: ../web-sites-purchase-ssl-web-site.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Ověřování uživatelů
       items:
-        - name: Nasazení aplikace
-          items:
-            - name: Nasazení prostřednictvím FTP
-              href: ../app-service-deploy-ftp.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-            - name: Nasazení prostřednictvím cloudové synchronizace
-              href: ../app-service-deploy-content-sync.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-            - name: Průběžné nasazování
-              href: ../containers/app-service-linux-ci-cd.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-            - name: Nasazení z místního Gitu
-              href: ../app-service-deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-            - name: Nasazení pomocí šablony
-              href: ../app-service-deploy-complex-application-predictably.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-        - name: Nastavení přihlašovacích údajů nasazení
-          href: ../app-service-deployment-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-        - name: Vytvoření přípravných prostředí
-          href: ../web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Mapování vlastní domény
-      items:
-        - name: Zakoupení domény
-          href: ../custom-dns-web-site-buydomains-web-app.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-        - name: Mapování domén s Traffic Managerem
-          href: ../web-sites-traffic-manager-custom-domain-name.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-        - name: Migrace aktivní domény
-          href: ../app-service-custom-domain-name-migrate.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Zabezpečená aplikace
-      items:
-        - name: Zakoupení certifikátů SSL
-          href: ../web-sites-purchase-ssl-web-site.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-        - name: Ověřování uživatelů
-          items:
-            - name: Ověřování pomocí Azure AD
-              href: ../app-service-mobile-how-to-configure-active-directory-authentication.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-            - name: Ověřování pomocí Facebooku
-              href: ../app-service-mobile-how-to-configure-facebook-authentication.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-            - name: Ověřování pomocí Googlu
-              href: ../app-service-mobile-how-to-configure-google-authentication.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-            - name: Ověřování pomocí účtu Microsoft
-              href: ../app-service-mobile-how-to-configure-microsoft-authentication.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-            - name: Ověřování pomocí Twitteru
-              href: ../app-service-mobile-how-to-configure-twitter-authentication.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-        - name: Přizpůsobení ověřování
-          href: ../app-service-authentication-how-to.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-        - name: Konfigurace vzájemného ověřování TLS
-          href: ../app-service-web-configure-tls-mutual-auth.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Škálování aplikace
-      items:
-        - name: Vertikální navýšení kapacity serveru
-          href: ../web-sites-scale.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-        - name: Horizontální navýšení kapacity na několik instancí
-          href: ../../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-        - name: Hostování s vysokou hustotou
-          href: ../app-service-high-density-hosting.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Monitorování aplikace
-      items:
-        - name: Připojení k aplikaci přes SSH
-          href: app-service-linux-ssh-support.md
-        - name: Kvóty a výstrahy
-          href: ../web-sites-monitor.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-        - name: Povolení protokolů
-          href: ../web-sites-enable-diagnostic-log.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Správa aplikace
-      items:
-        - name: Zálohování aplikace
-          href: ../web-sites-backup.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-        - name: Obnovení zálohy
-          href: ../web-sites-restore.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-        - name: Klonování aplikace
-          href: ../app-service-web-app-cloning.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-        - name: Přesunutí prostředků
-          href: '../../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-service-limitations'
+      - name: Ověřování pomocí Azure AD
+        href: ../app-service-mobile-how-to-configure-active-directory-authentication.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      - name: Ověřování pomocí Facebooku
+        href: ../app-service-mobile-how-to-configure-facebook-authentication.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      - name: Ověřování pomocí Googlu
+        href: ../app-service-mobile-how-to-configure-google-authentication.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      - name: Ověřování pomocí účtu Microsoft
+        href: ../app-service-mobile-how-to-configure-microsoft-authentication.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      - name: Ověřování pomocí Twitteru
+        href: ../app-service-mobile-how-to-configure-twitter-authentication.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Přizpůsobení ověřování
+      href: ../app-service-authentication-how-to.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Konfigurace vzájemného ověřování TLS
+      href: ../app-service-web-configure-tls-mutual-auth.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+  - name: Škálování aplikace
+    items:
+    - name: Vertikální navýšení kapacity serveru
+      href: ../web-sites-scale.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Horizontální navýšení kapacity na několik instancí
+      href: ../../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Hostování s vysokou hustotou
+      href: ../app-service-high-density-hosting.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+  - name: Monitorování aplikace
+    items:
+    - name: Připojení k aplikaci přes SSH
+      href: app-service-linux-ssh-support.md
+    - name: Kvóty a výstrahy
+      href: ../web-sites-monitor.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Povolení protokolů
+      href: ../web-sites-enable-diagnostic-log.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+  - name: Správa aplikace
+    items:
+    - name: Zálohování aplikace
+      href: ../web-sites-backup.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Obnovení zálohy
+      href: ../web-sites-restore.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Klonování aplikace
+      href: ../app-service-web-app-cloning.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Přesunutí prostředků
+      href: ../../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-service-limitations
 - name: Referenční informace
   items:
-    - name: Azure CLI
-      href: /cli/azure/appservice
-    - name: Azure PowerShell
-      href: /powershell
-    - name: REST API
-      href: /rest/api/appservice/
+  - name: Azure CLI
+    href: /cli/azure/appservice
+  - name: Azure PowerShell
+    href: /powershell
+  - name: REST API
+    href: /rest/api/appservice/
 - name: Zdroje a prostředky
   items:
-    - name: Nejčastější dotazy k App Service v Linuxu
-      href: app-service-linux-faq.md
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/app-service/'
-    - name: Informace o kvótách
-      href: '../../azure-subscription-service-limits.md#app-service-limits'
-    - name: Aktualizace služeb a poznámky k verzi
+  - name: Nejčastější dotazy k App Service v Linuxu
+    href: app-service-linux-faq.md
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/app-service/
+  - name: Informace o kvótách
+    href: ../../azure-subscription-service-limits.md#app-service-limits
+  - name: Aktualizace služeb a poznámky k verzi
+    items:
+    - name: Aktualizace Azure
+      href: https://azure.microsoft.com/updates/?product=app-service
+    - name: Azure SDK pro .NET 3.0
+      href: ../azure-sdk-dotnet-release-notes-3-0.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Azure SDK pro .NET 2.9
+      href: ../azure-sdk-dotnet-release-notes-2-9.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Azure SDK pro .NET 2.8
+      href: ../azure-sdk-dotnet-release-notes-2-8.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Azure SDK pro .NET 2.7
+      href: ../azure-sdk-dotnet-release-notes-2-7.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Azure SDK pro .NET 2.6
+      href: ../azure-sdk-dotnet-release-notes-2-6.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Azure SDK pro .NET 2.5.1
+      href: ../app-service-release-notes.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Azure SDK pro .NET 2.5
+      href: https://msdn.microsoft.com/library/azure/dn873976.aspx
+    - name: Azure SDK pro .NET 2.4
+      href: https://msdn.microsoft.com/library/azure/dn794167.aspx
+    - name: Azure SDK pro .NET 2.3
+      href: https://msdn.microsoft.com/library/azure/dn655054.aspx
+    - name: Azure SDK pro .NET 2.2
+      href: https://msdn.microsoft.com/library/azure/dn459835.aspx
+    - name: Azure SDK pro .NET 2.1
+      href: https://msdn.microsoft.com/library/azure/dn407359.aspx
+    - name: Azure SDK pro .NET 2.0
+      href: https://msdn.microsoft.com/library/azure/dn169556.aspx
+  - name: Osvědčené postupy
+    href: ../app-service-best-practices.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+  - name: Ukázky
+    href: https://azure.microsoft.com/resources/samples/?service=app-service
+  - name: Videa
+    href: https://azure.microsoft.com/resources/videos/index/?services=app-service
+  - name: Podrobné návody
+    items:
+    - name: Referenční architektury
+      href: /azure/architecture/reference-architectures/app-service-web-app/
+    - name: Skripty nasazení
+      href: https://azure.microsoft.com/documentation/scripts/
+  - name: Řešení potíží
+    items:
+    - name: Řešení potíží se sadou Visual Studio
+      href: ../web-sites-dotnet-troubleshoot-visual-studio.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Řešení potíží s aplikací v Node.js
+      href: ../app-service-web-nodejs-best-practices-and-troubleshoot-guide.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Řešení chyb HTTP 502 a 503
+      href: ../app-service-web-troubleshoot-http-502-http-503.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Řešení potíží s výkonem
+      href: ../app-service-web-troubleshoot-performance-degradation.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Nejčastější dotazy
       items:
-        - name: Aktualizace Azure
-          href: 'https://azure.microsoft.com/updates/?product=app-service'
-        - name: Azure SDK pro .NET 3.0
-          href: ../azure-sdk-dotnet-release-notes-3-0.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-        - name: Azure SDK pro .NET 2.9
-          href: ../azure-sdk-dotnet-release-notes-2-9.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-        - name: Azure SDK pro .NET 2.8
-          href: ../azure-sdk-dotnet-release-notes-2-8.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-        - name: Azure SDK pro .NET 2.7
-          href: ../azure-sdk-dotnet-release-notes-2-7.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-        - name: Azure SDK pro .NET 2.6
-          href: ../azure-sdk-dotnet-release-notes-2-6.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-        - name: Azure SDK pro .NET 2.5.1
-          href: ../app-service-release-notes.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-        - name: Azure SDK pro .NET 2.5
-          href: 'https://msdn.microsoft.com/library/azure/dn873976.aspx'
-        - name: Azure SDK pro .NET 2.4
-          href: 'https://msdn.microsoft.com/library/azure/dn794167.aspx'
-        - name: Azure SDK pro .NET 2.3
-          href: 'https://msdn.microsoft.com/library/azure/dn655054.aspx'
-        - name: Azure SDK pro .NET 2.2
-          href: 'https://msdn.microsoft.com/library/azure/dn459835.aspx'
-        - name: Azure SDK pro .NET 2.1
-          href: 'https://msdn.microsoft.com/library/azure/dn407359.aspx'
-        - name: Azure SDK pro .NET 2.0
-          href: 'https://msdn.microsoft.com/library/azure/dn169556.aspx'
-    - name: Osvědčené postupy
-      href: ../app-service-best-practices.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Ukázky
-      href: 'https://azure.microsoft.com/resources/samples/?service=app-service'
-    - name: Videa
-      href: 'https://azure.microsoft.com/resources/videos/index/?services=app-service'
-    - name: Podrobné návody
-      items:
-        - name: Referenční architektury
-          href: /azure/architecture/reference-architectures/app-service-web-app/
-        - name: Skripty nasazení
-          href: 'https://azure.microsoft.com/documentation/scripts/'
-    - name: Řešení potíží
-      items:
-        - name: Řešení potíží se sadou Visual Studio
-          href: ../web-sites-dotnet-troubleshoot-visual-studio.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-        - name: Řešení potíží s aplikací v Node.js
-          href: ../app-service-web-nodejs-best-practices-and-troubleshoot-guide.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-        - name: Řešení chyb HTTP 502 a 503
-          href: ../app-service-web-troubleshoot-http-502-http-503.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-        - name: Řešení potíží s výkonem
-          href: ../app-service-web-troubleshoot-performance-degradation.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-        - name: Nejčastější dotazy
-          items:
-            - name: 'Nejčastější dotazy k dostupnosti, výkonu a aplikacím'
-              href: ../app-service-web-availability-performance-application-issues-faq.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-            - name: Nejčastější dotazy k nasazení
-              href: ../app-service-web-deployment-faq.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-            - name: Nejčastější dotazy k opensourcovým technologiím
-              href: ../app-service-web-open-source-technologies-faq.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-            - name: Nejčastější dotazy ke konfiguraci a správě
-              href: ../app-service-web-configuration-and-management-faq.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      - name: Nejčastější dotazy k dostupnosti, výkonu a aplikacím
+        href: ../app-service-web-availability-performance-application-issues-faq.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      - name: Nejčastější dotazy k nasazení
+        href: ../app-service-web-deployment-faq.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      - name: Nejčastější dotazy k opensourcovým technologiím
+        href: ../app-service-web-open-source-technologies-faq.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      - name: Nejčastější dotazy ke konfiguraci a správě
+        href: ../app-service-web-configuration-and-management-faq.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+ms.openlocfilehash: 91086dcfd6f786fd49fc5f8864da292831999286
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063978"

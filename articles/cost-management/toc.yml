@@ -17,7 +17,7 @@ items:
       href: tutorial-acm-create-budgets.md
     - name: 2. Export dat
       href: tutorial-export-acm-data.md
-    - name: 3. Doporučení pro optimalizaci
+    - name: 3. Využití doporučení
       href: tutorial-acm-opt-recommendations.md
   - name: Koncepty
     items:
@@ -25,13 +25,8 @@ items:
       href: cost-mgt-best-practices.md
   - name: Referenční informace
     items:
-    - name: Přehled rozhraní API služby Azure Consumption
-      href: ../billing/billing-consumption-api-overview.md
-      items:
-      - name: Rozhraní REST API služby Azure Consumption
-        href: https://docs.microsoft.com/rest/api/consumption
-    - name: Plány Azure do budoucna
-      href: https://azure.microsoft.com/roadmap/
+    - name: Rozhraní REST API služby Azure Consumption
+      href: https://docs.microsoft.com/rest/api/consumption
   - name: Zdroje a prostředky
     items:
     - name: Získávání dovedností pomocí Microsoft Learn
@@ -104,9 +99,9 @@ items:
         href: cost-mgt-faq.md
       - name: Obraťte se na podporu Cloudyn
         href: support-request-cost-management.md
-ms.openlocfilehash: 8bce54dbde8acd8fb8d03479036c934242d434cf
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1701682e32a7db08a257ef3b0d26c9f88b8f1d03
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972449"
+ms.locfileid: "47033375"

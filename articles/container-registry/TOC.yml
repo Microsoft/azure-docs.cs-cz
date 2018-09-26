@@ -18,21 +18,15 @@ items:
   expanded: true
 - name: Kurzy
   items:
-  - name: Azure Container Instances
-    href: ../container-instances/container-instances-tutorial-prepare-app.md
-  - name: Azure Kubernetes Service (AKS)
-    href: ../aks/tutorial-kubernetes-prepare-app.md
-  - name: Service Fabric
-    href: ../service-fabric/service-fabric-tutorial-create-container-images.md
-  - name: Sestavování imagí kontejneru (Preview)
+  - name: Sestavování imagí kontejneru
     items:
     - name: 1. Sestavení imagí v Azure
-      href: container-registry-tutorial-quick-build.md
+      href: container-registry-tutorial-quick-task.md
     - name: 2. Automatizace sestavování imagí
       href: container-registry-tutorial-build-task.md
     - name: 3. Sestavení aktualizací základních imagí
       href: container-registry-tutorial-base-image-update.md
-  - name: Geografická replikace
+  - name: Geografická replikace registru
     items:
     - name: 1. Příprava registru kontejneru
       href: container-registry-tutorial-prepare-registry.md
@@ -46,26 +40,28 @@ items:
     href: container-registry-skus.md
   - name: Úložiště obrázků
     href: container-registry-storage.md
-  - name: Sestavení a opravy s využitím ACR Buildu
-    href: container-registry-build-overview.md
   - name: Geografická replikace
     href: container-registry-geo-replication.md
   - name: Osvědčené postupy registru
     href: container-registry-best-practices.md
 - name: Návody
   items:
-  - name: Nabízená a vyžádaná instalace image
-    href: container-registry-get-started-docker-cli.md
-  - name: Zobrazení úložišť
-    href: container-registry-repositories.md
-  - name: Odstranění imagí kontejneru
-    href: container-registry-delete.md
-  - name: Důvěryhodnost obsahu (Preview)
-    href: container-registry-content-trust.md
-  - name: Upgrade registru Classic
-    href: container-registry-upgrade.md
-  - name: Použití webhooků ACR
-    href: container-registry-webhook.md
+  - name: Operace registru
+    items:
+    - name: Nabízená a vyžádaná instalace image
+      href: container-registry-get-started-docker-cli.md
+    - name: Zobrazení úložišť
+      href: container-registry-repositories.md
+    - name: Odstranění imagí kontejneru
+      href: container-registry-delete.md
+    - name: Důvěryhodnost obsahu (Preview)
+      href: container-registry-content-trust.md
+    - name: Upgrade registru Classic
+      href: container-registry-upgrade.md
+    - name: Použití webhooků ACR
+      href: container-registry-webhook.md
+    - name: Úložiště grafů Helmu (Preview)
+      href: container-registry-helm-repos.md
   - name: Authentication
     items:
     - name: Přehled ověřování
@@ -76,6 +72,22 @@ items:
       href: container-registry-auth-aci.md
     - name: Azure Kubernetes Service (AKS)
       href: container-registry-auth-aks.md
+  - name: Sestavení a opravy
+    items:
+    - name: Úlohy ACR
+      href: container-registry-tasks-overview.md
+    - name: Úlohy s více kroky (Preview)
+      href: container-registry-tasks-multi-step.md
+    - name: Reference k úlohám s více kroky (Preview)
+      href: container-registry-tasks-reference-yaml.md
+  - name: Registry a další služby Azure
+    items:
+    - name: Azure Container Instances
+      href: ../container-instances/container-instances-tutorial-prepare-app.md
+    - name: Azure Kubernetes Service (AKS)
+      href: ../aks/tutorial-kubernetes-prepare-app.md
+    - name: Service Fabric
+      href: ../service-fabric/service-fabric-tutorial-create-container-images.md
 - name: Referenční informace
   items:
   - name: Azure CLI
@@ -115,9 +127,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-container-registry
   - name: Videa
     href: https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest
-ms.openlocfilehash: 979c2864481b25df6534d9f5858d65d02fe498f0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6ea059f7c534b760b0db0c406edb7c34ac73c0dc
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957729"
+ms.locfileid: "47031165"

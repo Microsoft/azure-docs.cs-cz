@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 05/24/2018
 ms.author: cwatson
-ms.openlocfilehash: 40070acab5f656cab7f3034e3b35c113c0ff6051
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: e06ee851209d48185b3b20cd6f1169af81b58013
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43300807"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034820"
 ---
 # <a name="azure-billing-and-cost-management-documentation"></a>Dokumentace ke správě nákladů a fakturaci Azure
 
@@ -52,9 +52,10 @@ Seznamte se s principy fakturace Azure a naučte se monitorovat využití a nák
                         <h3>Správa nákladů</h3>
                         <p>
                         <a href="/azure/billing/billing-getting-started">Jak zabránit neočekávaným nákladům</a><br/>
-                        <a href="/azure/billing/billing-set-up-alerts">Nastavení upozornění fakturace</a><br/>
-                        <a href="https://azure.microsoft.com/pricing/calculator/">Výpočet cen</a><br/>
-                        <a href="/azure/azure-resource-manager/resource-group-using-tags?toc=/azure/billing/TOC.json">Použití značek prostředků</a>
+                        <a href="/azure/azure-resource-manager/resource-group-using-tags?toc=/azure/billing/TOC.json">Použití značek prostředků</a><br/>
+                        <a href="/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json">Začínáme s analýzou nákladů – jenom EA</a><br/>
+                        <a href="/azure/cost-management/tutorial-acm-create-budgets?toc=/azure/billing/TOC.json">Vytváření a správa rozpočtů – jenom EA</a><br/>
+                        <a href="/azure/cost-management/tutorial-acm-opt-recommendations?toc=/azure/billing/TOC.json">Optimalizace doporučení – jenom EA</a>
                         </p>
                     </div>
                 </div>

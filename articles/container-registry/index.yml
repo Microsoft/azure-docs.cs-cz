@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 02c604489d8db48a50598f99f6722d555e357f67
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f18334996e82d83046fa663af08d69dee21a3127
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46951062"
+ms.locfileid: "47039594"
 documentType: LandingData
 title: Dokumentace k Azure Container Registry
 metadata:
@@ -49,7 +49,7 @@ sections:
     style: unordered
     className: spaced noBullet
     items:
-    - html: <a href="/azure/container-registry/container-registry-tutorial-quick-build">Sestavování imagí kontejneru s využitím ACR Buildu (Preview)</a>
+    - html: <a href="/azure/container-registry/container-registry-tutorial-quick-build">Sestavování imagí kontejneru s využitím úloh ACR</a>
     - html: <a href="/azure/container-registry/container-registry-tutorial-prepare-registry">Geografická replikace služby Container Registry</a>
     - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">Container Registry se službou Azure Container Instances</a>
     - html: <a href="/azure/aks/tutorial-kubernetes-prepare-app">Container Registry se službou Azure Kubernetes Service (AKS)</a>

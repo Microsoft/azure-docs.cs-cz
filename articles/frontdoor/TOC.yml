@@ -13,6 +13,8 @@ items:
   items:
   - name: Přidání vlastní domény do služby Front Door
     href: front-door-custom-domain.md
+  - name: Povolení HTTPS pro vlastní doménu
+    href: front-door-custom-domain-https.md
 - name: Ukázky
   items:
   - name: Šablony Resource Manageru
@@ -21,8 +23,8 @@ items:
   items:
   - name: Back-endy a back-endové fondy
     href: front-door-backend-pool.md
-  - name: Ochrana před útoky DDoS a zabezpečení aplikační vrstvy
-    href: front-door-ddos-security.md
+  - name: Zabezpečení aplikační vrstvy
+    href: front-door-application-security.md
   - name: Vyrovnávání zatížení s využitím sady pro doručování aplikací Azure
     href: front-door-lb-with-azure-app-delivery-suite.md
   - name: Architektura směrování
@@ -43,6 +45,20 @@ items:
     href: front-door-http-headers-protocol.md
   - name: Monitorování
     href: front-door-diagnostics.md
+- name: Návody
+  items:
+  - name: Řešení potíží
+    items:
+    - name: Řešení potíží se směrováním
+      href: front-door-troubleshoot-routing.md
+    - name: Povolené certifikační autority
+      href: front-door-troubleshoot-allowed-ca.md
+- name: Referenční informace
+  items:
+  - name: Azure PowerShell
+    href: front-door-powershell-reference.md
+  - name: REST API
+    href: front-door-rest-api.md
 - name: Zdroje a prostředky
   items:
   - name: Plány Azure do budoucna
@@ -53,9 +69,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: Aktualizace služeb
     href: https://azure.microsoft.com/updates/?product=frontdoor
-ms.openlocfilehash: e44b12e49ea03cb344288367f1f9a97e195f39a4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ef2336af29de4fd7f707041d2b730b40cc7536fe
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949124"
+ms.locfileid: "47037758"
