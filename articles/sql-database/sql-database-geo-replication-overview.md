@@ -2,20 +2,22 @@
 title: Převzetí služeb při selhání skupiny a aktivní geografická replikace – Azure SQL Database | Dokumentace Microsoftu
 description: Použití skupin – automatické převzetí služeb při selhání pomocí aktivní geografické replikace a povolení autoomatic převzetí služeb při selhání v případě výpadku.
 services: sql-database
-author: anosov1960
-manager: craigg
 ms.service: sql-database
-ms.custom: business continuity
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/14/2018
+author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 2e052c34834ae2ebe99b3329d312f03846e9beb0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: e3296430cd58c8ba33f7cc9acd4cded2925b5be9
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977753"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166278"
 ---
 # <a name="overview-active-geo-replication-and-auto-failover-groups"></a>Přehled: Aktivní geografickou replikaci a automatické převzetí služeb při selhání skupiny
 

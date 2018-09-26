@@ -2,20 +2,22 @@
 title: Řešení problémů s výkonem Azure SQL Database s Intelligent Insights | Dokumentace Microsoftu
 description: Intelligent Insights pomáhá řešit problémy s výkonem Azure SQL Database.
 services: sql-database
-author: danimir
-manager: craigg
-ms.reviewer: carlrab
 ms.service: sql-database
-ms.custom: monitor & tune
+ms.subservice: performance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/20/2018
+author: danimir
 ms.author: v-daljep
-ms.openlocfilehash: b6e619f75ebf6ee58f3c259b665cd38c3546d2ff
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/20/2018
+ms.openlocfilehash: 311d1e1fc048e65182fbcbc8ca4b6f8c338da0de
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040631"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163864"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Řešení problémů s výkonem Azure SQL Database s Intelligent Insights
 

@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
 ms.date: 8/6/2018
-ms.openlocfilehash: 7796accffb7041e567c5e18857d09e105b5268ce
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 87b3bc4128d800e4f76d71dc5f9d081dffa0e3a7
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961565"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163439"
 ---
 # <a name="how-to-configure-a-development-environment-for-the-azure-machine-learning-service"></a>Jak nakonfigurovat prostředí pro vývoj pro službu Azure Machine Learning
 
@@ -39,17 +39,31 @@ Doporučuje se použít Continuum Anaconda [virtuální prostředí conda](https
 
 Konfigurační soubor pracovního prostoru se sada SDK používá ke komunikaci s pracovním prostorem služby Azure Machine Learning.  Chcete-li získat tento soubor dvěma způsoby:
 
-* Po dokončení [rychlý Start](quickstart-get-started.md), soubor `config.json` se vytvoří v Azure poznámkových bloků.  Tento soubor obsahuje informace o konfiguraci pro váš pracovní prostor.  Stáhněte si ji do stejného adresáře jako skripty nebo poznámkových bloků, které na něj odkazovat.
+* Dokončení [rychlý Start](quickstart-get-started.md) k vytvoření pracovního prostoru a konfiguračnímu souboru. Soubor `config.json` se vytvoří v Azure poznámkových bloků.  Tento soubor obsahuje informace o konfiguraci pro váš pracovní prostor.  Stáhněte nebo zkopírujte je do stejného adresáře jako skripty nebo poznámkových bloků, které na něj odkazovat.
+
 
 * Vytvořte konfigurační soubor sami pomocí následujících kroků:
 
     1. Otevření pracovního prostoru v [webu Azure portal](https://portal.azure.com). Kopírovat __název pracovního prostoru__, __skupiny prostředků__, a __ID předplatného__. Tyto hodnoty slouží k vytvoření konfiguračního souboru.
 
-       Řídicí panel pracovního prostoru na portálu se podporuje jenom prohlížeče Edge, Chrome a Firefox.
-    
         ![portál Azure](./media/how-to-configure-environment/configure.png) 
     
-    3. V textovém editoru vytvořte soubor s názvem **config.json**.  Přidejte následující obsah do tohoto souboru, vkládání hodnoty z portálu:
+    1. Vytvořte soubor s tímto kódem Python. Spuštění kódu ve stejném adresáři jako skripty nebo poznámkových bloků, které odkazují na pracovním prostoru:
+        ```
+        from azureml.core import Workspace
+
+        subscription_id ='<subscription-id>'
+        resource_group ='<resource-group>'
+        workspace_name = '<workspace-name>'
+        
+        try:
+           ws = Workspace(subscription_id = subscription_id, resource_group = resource_group, workspace_name = workspace_name)
+           ws.write_config()
+           print('Library configuration succeeded')
+        except:
+           print('Workspace not found')
+        ```
+        Tím se zapíše následující `aml_config/config.json` souboru: 
     
         ```json
         {
@@ -58,12 +72,11 @@ Konfigurační soubor pracovního prostoru se sada SDK používá ke komunikaci 
         "workspace_name": "<workspace-name>"
         }
         ```
-    
-        >[!NOTE] 
-        >Později v kódu přečtěte si tento soubor:  `ws = Workspace.from_config()`
-    
-    4. Nezapomeňte uložit **config.json** do stejného adresáře jako skripty nebo poznámkových bloků, které na něj odkazovat.
-    
+        Můžete zkopírovat `aml_config` adresář nebo právě `config.json` souboru do jiného adresáře, který odkazuje na pracovním prostoru.
+
+>[!NOTE] 
+>Jiné skripty a poznámkovými bloky ve stejném adresáři, nebo níže se načte pracovní prostor s `ws=Workspace.from_config()`
+
 ## <a name="azure-notebooks-and-data-science-virtual-machine"></a>Azure poznámkových bloků a virtuální počítač pro datové vědy
 
 Azure poznámkových bloků a Azure Data virtuálních počítačů VĚDY jsou nakonfigurovaná tak, aby fungovaly se službou Azure Machine Learning. Požadované součásti, jako jsou sady SDK Azure Machine Learning jsou předem nainstalované v těchto prostředích.
@@ -98,7 +111,7 @@ Příklad použití poznámkových bloků Azure ve službě Azure Machine Learni
 3. K instalaci sady SDK Azure Machine Learning pomocí poznámkového bloku funkce můžete použijte následující příkaz:
 
      ```shell
-    pip install --upgrade azureml-sdk[notebooks,automl,contrib]
+    pip install --upgrade azureml-sdk[notebooks,automl]
     ```
 
     Může trvat několik minut, než k instalaci sady SDK.
@@ -155,7 +168,7 @@ Příklad použití poznámkových bloků Azure ve službě Azure Machine Learni
 2. Pokud chcete nainstalovat sadu SDK Azure Machine Learning, použijte následující příkaz:
  
     ```shell
-    pip install --upgrade azureml-sdk[automl,contrib]
+    pip install --upgrade azureml-sdk[automl]
     ```
 
 4. Instalace sady Visual Studio code Tools pro AI, naleznete v příspěvku sady Visual Studio marketplace pro [Tools pro AI](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai). 

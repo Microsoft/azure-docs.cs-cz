@@ -2,19 +2,22 @@
 title: Úrovně služby Azure SQL Database – DTU | Dokumentace Microsoftu
 description: Další informace o úrovních služeb pro zadání jedné a databází fond poskytnout velikostí výpočetních a velikosti úložiště.
 services: sql-database
-author: sachinpMSFT
 ms.service: sql-database
-ms.custom: DBs & servers
+ms.subservice: ''
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/14/2018
+author: sachinpMSFT
+ms.author: sachinp
+ms.reviewer: carlrab
 manager: craigg
-ms.author: carlrab
-ms.openlocfilehash: 27e6e12efc28bb8ee1cdaa9ec62d7ca8c4c68f38
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.date: 09/14/2018
+ms.openlocfilehash: 2f9362a6d771df3cdb11855844025bc8d9ea732e
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729735"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162368"
 ---
 # <a name="choosing-a-dtu-based-service-tier-compute-size-and-storage-resources"></a>Výběr úrovně služeb na základě DTU, výpočetních, velikost a prostředků úložiště 
 

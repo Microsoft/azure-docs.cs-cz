@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2017
 ms.openlocfilehash: 6e1febfff211dd92f8990d1880562e64382de5f0
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35643368"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47095442"
 ---
 # <a name="manage-an-azure-machine-learning-workspace"></a>Správa pracovního prostoru Azure Machine Learning
 

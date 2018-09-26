@@ -2,19 +2,22 @@
 title: Limity založený na virtuálních jádrech prostředků Azure SQL Database – elastických fondů | Dokumentace Microsoftu
 description: Tato stránka popisuje některé běžné prostředek založený na virtuálních jádrech limity pro elastické fondy Azure SQL Database.
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: DBs & servers
+ms.subservice: elastic-pool
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
+author: oslake
+ms.author: moslake
+ms.reviewer: carlrab
+manager: craigg
 ms.date: 09/14/2018
-ms.author: carlrab
-ms.openlocfilehash: 19693e394b0bd3a589ead25e2ddfa2fa88e92bad
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 3c85398f140ccd61202c066f4394fa54358e0a1e
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730375"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161562"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-elastic-pools"></a>Založený na virtuálních jádrech zakoupení modelu limity pro elastické fondy Azure SQL Database
 

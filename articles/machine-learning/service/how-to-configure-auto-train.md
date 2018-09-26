@@ -9,31 +9,31 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: f4a8ff272e498871f4a31ce76487509673f48328
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: cbd475ae4ce944db3ebf57b415b60e7abdd52677
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034242"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163847"
 ---
 # <a name="configure-your-automated-machine-learning-experiment"></a>Konfigurovat vaše automatizované experimentu strojového učení
 
-Automatizované machine learning vybere algoritmus pro vás a generuje modelu připravené na nasazení. Model si můžete stáhnout i dál přizpůsobit. Existuje několik možností, které můžete použít ke konfiguraci automatické se strojovým učením. V této příručce se dozvíte, jak definovat různá nastavení konfigurace.
+Automatizované machine learning (automatizované ML) vybere algoritmus a hyperparameters za vás a generuje modelu připravené na nasazení. Model si můžete stáhnout i dál přizpůsobit. Existuje několik možností, které můžete použít ke konfiguraci automatické ML experimentů. V této příručce se dozvíte, jak definovat různá nastavení konfigurace.
 
-Chcete-li zobrazit příklady automatizované strojového učení, naleznete v tématu [kurz: automaticky trénování modelů klasifikace](tutorial-auto-train-models.md) nebo [trénování modelů v cloudu automaticky](how-to-auto-train-remote.md).
+Chcete-li zobrazit příklady automatizované ML, naleznete v tématu [kurz: Vyškolíme model klasifikace pomocí automatizovaných strojového učení](tutorial-auto-train-models.md) nebo [trénování modelů pomocí automatizovaných strojového učení v cloudu](how-to-auto-train-remote.md).
 
 Možnosti konfigurace je k dispozici ve službě automatizované machine learning:
 
 * Vyberte typ testu, například klasifikace, regrese 
 * Zdroj dat, formát a načítat data
 * Vyberte vaše cílové výpočetní prostředí (místní nebo vzdálené)
-* `AutoML` nastavení testu
-* Spustit `AutoML` experimentování
+* Automatické nastavení experimentu ML
+* Spustit automatizované experimentu ML
 * Zkoumání metrik model
 * Registrace a nasazení modelu
 
 ## <a name="select-your-experiment-type"></a>Vyberte typ testu
-Než začnete experimentu, byste měli určit druh machine learning problému jsou řešení. Automatizované machine learning podporuje dvě kategorie učení: klasifikačních a regresních. Automatizované machine learning podporuje tyto algoritmy během automatizace a ladění procesu. Jako uživatel není nutné lze určit algoritmus.
+Než začnete experimentu, byste měli určit druh machine learning problému jsou řešení. Automatizované ML podporuje dvě kategorie učení: klasifikačních a regresních. Automatizované ML podporuje tyto algoritmy během automatizace a ladění procesu. Jako uživatel není nutné lze určit algoritmus.
 Klasifikace | Regrese
 --|--
 sklearn.linear_model. LogisticRegression | sklearn.linear_model. ElasticNet
@@ -51,8 +51,8 @@ sklearn.ensemble.GradientBoostingClassifier |
 lightgbm. LGBMClassifier |
 
 
-## <a name="data-source-and-format-for-automl-experiment"></a>Zdroj dat a formát `AutoML` experimentování
-`AutoML` podporuje data, která se nachází v místním počítači nebo v cloudu v Azure Blob Storage. Data lze načíst do scikit-informace podporovaných datových formátů. Může číst data do polí Numpy 1) X (funkce) a y (Cílová proměnná nebo také popis) nebo 2) Pandas dataframe. 
+## <a name="data-source-and-format"></a>Zdroj dat a formát
+Automatizované ML podporuje data, která se nachází v místním počítači nebo v cloudu v Azure Blob Storage. Data lze načíst do scikit-informace podporovaných datových formátů. Může číst data do polí Numpy 1) X (funkce) a y (Cílová proměnná nebo také popis) nebo 2) Pandas dataframe. 
 
 Příklady:
 
@@ -79,9 +79,9 @@ Příklady:
 
 ## <a name="fetch-data-for-running-experiment-on-remote-compute"></a>Načíst data pro spouštění experimentů na vzdálený výpočetní
 
-Pokud používáte vzdálený výpočetní ke spuštění experimentu AutoML, načítání dat musí být zabalené v skript pythonu samostatné `GetData()`. Tento skript je spuštěn na vzdálený výpočetní, kde spuštění experimentu AutoML. `GetData` eliminuje nutnost načíst data při přenosu pro každou iteraci. Bez `GetData`, experimentu selže, když jste spustili vzdálený výpočetní prostředky.
+Pokud používáte vzdálený výpočetní ke spuštění experimentu, načítání dat musí být zabalené v skript pythonu samostatné `get_data()`. Tento skript je spuštěn na vzdálený výpočetní, ve kterém se spouští automatizované experimentu ML. `get_data` eliminuje nutnost načíst data při přenosu pro každou iteraci. Bez `get_data`, experimentu selže, když jste spustili vzdálený výpočetní prostředky.
 
-Tady je příklad `GetData`:
+Tady je příklad `get_data`:
 
 ```python
 %%writefile $project_folder/get_data.py 
@@ -100,13 +100,13 @@ def get_data(): # Burning man 2016 data
     return { "X" : df, "y" : y }
 ```
 
-Ve vaší `AutoMLConfig` objektu, můžete zadat `data_script` parametr a zadejte cestu k `GetData` souboru skriptu, podobně jako následující:
+Ve vaší `AutoMLConfig` objektu, můžete zadat `data_script` parametr a zadejte cestu k `get_data` souboru skriptu, podobně jako následující:
 
 ```python
-automl_config = AutoMLConfig(****, data_script=project_folder + "./get_data.py", **** )
+automl_config = AutoMLConfig(****, data_script=project_folder + "/get_data.py", **** )
 ```
 
-`GetData` skript může vrátit následující:
+`get_data` skript může vrátit následující:
 Klíč | Typ |    Vzájemně se vylučuje s | Popis
 ---|---|---|---
 X | Pandas Dataframe nebo Numpy pole | data_train, popisek, sloupce |  Všechny funkce k trénování s
@@ -140,17 +140,17 @@ Použít datovou sadu vlastní ověřování, pokud náhodného dělení není p
 
 ## <a name="compute-to-run-experiment"></a>Výpočetní prostředky pro spuštění experimentu
 
-Dále určete, kde bude Trénink modelu. Automatické experimentu strojového učení a trénování běží na cílové výpočetní prostředí, které jste sami vlastnili a spravovali. 
+Dále určete, kde bude Trénink modelu. Automatizované výukového experimentu ML běží na cílové výpočetní prostředí, které jste sami vlastnili a spravovali. 
 
 Výpočetní možnosti podporované jsou následující:
 1.  Místní počítač například místní pracovní plocha nebo přenosný počítač – obecně Pokud máte malé datové sady a jsou stále ve fázi průzkumu.
 2.  Vzdálený počítač v cloudu – [virtuální počítač Azure datové vědy](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/) s Linuxem – máte velkou datovou sadu a chcete vertikálně navýšit kapacitu na velké počítač, který je k dispozici v cloudu Azure. 
-3.  Cluster Azure Batch AI – A spravovat cluster, který můžete nastavit škálování mimo a spuštění iterace AutoML paralelně. 
+3.  Cluster Azure Batch AI – A spravovat cluster, který můžete nastavit pro horizontální navýšení kapacity a automatizovaných ML iterací běží paralelně. 
 
 
 ## <a name="configure-your-experiment-settings"></a>Konfigurovat nastavení testu
 
-Existuje několik knoflíky, které můžete použít ke konfiguraci AutoML experimentu. Tyto parametry jsou nastavené po vytvoření instance `AutoMLConfig` objektu.
+Existuje několik knoflíky, které můžete použít ke konfiguraci automatické experimentu ML. Tyto parametry jsou nastavené po vytvoření instance `AutoMLConfig` objektu.
 
 Možné příklady:
 
@@ -205,7 +205,7 @@ Vlastnost |  Popis | Výchozí hodnota
 `data_script`  |    Cesta k souboru, který obsahuje metodu get_data.  Vyžaduje se pro vzdálené spuštění.   |Žádný
 
 
-## <a name="run-automl-experiment"></a>Spustit `AutoML` experimentování
+## <a name="run-experiment"></a>Spusťte experiment
 
 Dále jsme můžete spustit experiment ke spuštění a generovat model pro nás. Předání `AutoMLConfig` k `submit` metoda ke generování modelu.
 
@@ -219,7 +219,7 @@ run = experiment.submit(automl_config, show_output=True)
 
 
 ## <a name="explore-model-metrics"></a>Zkoumání metrik model
-Ve widgetu nebo vložené můžete zobrazit výsledky, pokud jste v poznámkovém bloku. Zobrazte podrobnosti "Sledovat a vyhodnocení modelů". (ujistěte se, že obsah AML obsahuje důležité informace ke AutoML)
+Ve widgetu nebo vložené můžete zobrazit výsledky, pokud jste v poznámkovém bloku. Zobrazte podrobnosti "Sledovat a vyhodnocení modelů". (ujistěte se, že obsah AML obsahuje důležité informace pro automatizované ML)
 
 Tyto metriky jsou uloženy v každé iteraci
 * AUC_macro
@@ -247,3 +247,5 @@ Tyto metriky jsou uloženy v každé iteraci
 ## <a name="next-steps"></a>Další postup
 
 Další informace o [jak a kde nasadit model](how-to-deploy-and-where.md).
+
+Další informace o [jak vyškolíme model klasifikace pomocí automatizované ML](tutorial-auto-train-models.md) nebo [trénování pomocí automatizované ML vzdáleného prostředku](how-to-auto-train-remote.md). 

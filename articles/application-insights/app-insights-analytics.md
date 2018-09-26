@@ -1,5 +1,5 @@
 ---
-title: Analýza - výkonné vyhledávání a nástroj pro dotazování služby Azure Application Insights | Microsoft Docs
+title: Analytics – výkonné hledání a dotazovací nástroj založený na služby Azure Application Insights | Dokumentace Microsoftu
 description: 'Přehled analýzy, nástroj výkonné diagnostické vyhledávání služby Application Insights. '
 services: application-insights
 documentationcenter: ''
@@ -13,26 +13,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: 170cd76c72e8aeb5de48c711ae4637a0244742fb
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 6db98332fc7d896613a3318421e9a96bbb50cd15
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294196"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159138"
 ---
-# <a name="analytics-in-application-insights"></a>Analýza ve službě Application Insights
-Analytics je výkonný nástroj vyhledávání a dotaz z [Application Insights](app-insights-overview.md). Analytics je nástroj pro webové, takže není zapotřebí žádné nastavení. Pokud jste již nakonfigurovali Application Insights pro některé z aplikací, pak můžete analyzovat data této aplikaci otevřením Analytics z vaší aplikace [okno Přehled](app-insights-dashboards.md).
+# <a name="analytics-in-application-insights"></a>Analýzy ve službě Application Insights
+Analýza je výkonný nástroj hledání a dotaz z [Application Insights](app-insights-overview.md). Analytics je webový nástroj, takže není zapotřebí žádné nastavení. Pokud jste již nakonfigurovali Application Insights pro některé z aplikací, můžete analyzovat data vaší aplikace tak, že otevřete Analytics z vaší aplikace [okno přehledu](app-insights-dashboards.md).
 
-![Otevřete portal.azure.com otevřete prostředek Application Insights a klikněte na Analytics.](./media/app-insights-analytics/001.png)
+![Otevřené stránce portal.azure.com otevřete prostředek Application Insights a klikněte na tlačítko Analytics.](./media/app-insights-analytics/001.png)
 
-Můžete také [Analytics playground](https://go.microsoft.com/fwlink/?linkid=859557) tedy volné ukázkové prostředí s velkým množstvím ukázková data.
+Můžete také použít [Analytics playground](https://go.microsoft.com/fwlink/?linkid=859557) což je bezplatná ukázkovém prostředí s velkým množstvím ukázková data.
 <br>
 <br>
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/123/player] 
 
-## <a name="query-data-in-analytics"></a>Dotaz na data v Analytics
-Typické dotazu začíná název tabulky, za nímž následuje řadu *operátory* oddělených `|`.
-Například umožňuje zjistit, kolik požadavků vaší aplikace, obdržel z různých zemí během posledních 3 hodiny:
+## <a name="query-data-in-analytics"></a>Dotazování dat v Analytics
+Typický dotaz začíná název tabulky, za nímž následuje řadu *operátory* oddělené `|`.
+Například můžeme zjistit, kolik požadavků naši aplikaci přijatých z různých zemí, během posledních 3 hodiny:
 ```AIQL
 requests
 | where timestamp > ago(3h)
@@ -40,25 +40,25 @@ requests
 | render piechart
 ```
 
-Začneme s názvem tabulky *požadavky* a podle potřeby přidejte vytvoření kanálu elementy.  Nejprve jsme definovali filtr času ke kontrole pouze záznamy z poslední 3 hodiny.
-Jsme pak určený počet záznamů za zemi (aby dat je nalezen ve sloupci *client_CountryOrRegion*). Nakonec jsme vykreslovat výsledky výsečového grafu.
+Začínáme s názvem tabulky *požadavky* a podle potřeby přidejte potrubím elementy.  Nejprve definujeme filtr času ke kontrole pouze záznamy z poslední 3 hodiny.
+Počítáme počet záznamů za země (, že se data nachází ve sloupci *client_CountryOrRegion*). Nakonec jsme vykreslovat výsledky v grafu.
 <br>
 
 ![Výsledky dotazu](./media/app-insights-analytics/030.png)
 
-Jazyk obsahuje mnoho atraktivní funkcí:
+Jazyk má mnoho atraktivní funkce:
 
-* [Filtr](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator) telemetrie nezpracovaná aplikace podle všechna pole, včetně vlastní vlastnosti a metriky.
-* [Připojení k](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/join-operator) více tabulek – korelace požadavky s zobrazení stránky, volání závislostí, výjimek a protokolu trasování.
-* Efektivní statistické [agregace](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions).
-* Okamžité a výkonné vizualizace.
-* [Rozhraní REST API](https://dev.applicationinsights.io/) používané ke spouštění dotazů prostřednictvím kódu programu, například z prostředí PowerShell.
+* [Filtr](/azure/kusto/query/whereoperator) telemetrie vaší aplikace nezpracovaná tak všechna pole, včetně vaší vlastní vlastnosti a metriky.
+* [Připojte se k](/azure/kusto/query/joinoperator) více tabulek – korelaci požadavků s zobrazení stránek, volání závislostí, výjimek a trasování protokolu.
+* Výkonný statistický [agregace](/azure/kusto/query/summarizeoperator).
+* Okamžité a výkonnou vizualizací.
+* [Rozhraní REST API](https://dev.applicationinsights.io/) , můžete použít ke spouštění dotazů prostřednictvím kódu programu, například z Powershellu.
 
-[Úplné referenční informace k jazyku](https://go.microsoft.com/fwlink/?linkid=856079) údaje každý příkaz podporován a pravidelně aktualizuje.
+[Úplné referenční informace k jazyku](https://go.microsoft.com/fwlink/?linkid=856079) podrobnosti každý příkaz podporovány a pravidelně aktualizuje.
 
 ## <a name="next-steps"></a>Další postup
-* Začínáme s [portálu analýza](https://go.microsoft.com/fwlink/?linkid=856587)
+* Začínáme s [portál Analytics](https://go.microsoft.com/fwlink/?linkid=856587)
 * Začínáme [zápis dotazů](https://go.microsoft.com/fwlink/?linkid=856078)
-* Zkontrolujte [SQL-uživatelů tahák](https://aka.ms/sql-analytics) pro překlady nejběžnější idioms.
-* Vyzkoušejte Analytics na našem [playground](https://analytics.applicationinsights.io/demo) Pokud aplikace není odesílání dat do služby Application Insights ještě.
-* Sledování [úvodní video](https://applicationanalytics-media.azureedge.net/home_page_video.mp4).
+* Zkontrolujte [SQL-uživatelů tahák](https://aka.ms/sql-analytics) pro překlady nejběžnější idiomy.
+* Vyzkoušejte si analýzy na naše [playground](https://analytics.applicationinsights.io/demo) Pokud vaše aplikace neodesílá data do Application Insights ještě.
+* Podívejte [úvodní video](https://applicationanalytics-media.azureedge.net/home_page_video.mp4).

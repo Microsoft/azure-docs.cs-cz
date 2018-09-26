@@ -10,14 +10,14 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 9e5eb4b8d1b6408779f09a148d1e91f9111a9561
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: e5155caa26669cd98b679eec611334ee5c048fca
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47041740"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162533"
 ---
-# <a name="tutorial--2-batch-test-data-sets"></a>Kurz: č. 2. Batch testovací datové sady
+# <a name="tutorial-2-batch-test-data-sets"></a>Tutoriál 2: Dávkové testovací datové sady
 
 Tento kurz ukazuje, jak pomocí služby batch testu najít utterance předpovědi problémy ve vaší aplikaci a opravte je.  
 

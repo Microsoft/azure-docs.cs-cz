@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2017
 ms.author: daveba
-ms.openlocfilehash: 77953884253002c6da7b0151151d97bb65a6c659
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: b73a79676be559ad491bd7bb16691369dd8fa271
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377084"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47158627"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-vm-using-the-azure-portal"></a>Konfigurace spravovaných identit pro prostředky Azure na virtuální počítač pomocí webu Azure portal
 
@@ -46,10 +46,15 @@ V této části se dozvíte, jak povolit a zakázat identitu spravované systém
 
 ### <a name="enable-system-assigned-managed-identity-during-creation-of-a-vm"></a>Povolit systém přiřadil spravovanou identitu při vytváření virtuálního počítače
 
-Na webu Azure portal v současné době nepodporuje, povoluje se identita systém přiřadil během vytváření virtuálního počítače. Místo toho odkazovat na jeden z následujících článků rychlý start vytvoření virtuálního počítače k vytvoření virtuálního počítače a pak pokračujte k další části Podrobnosti o povolení systém přiřadil identity ve virtuálním počítači:
+Povolit systém přiřadil spravovanou identitu při vytváření virtuálního počítače, v části **správu** kartu **Identity** části, přepněte **se identita spravované služby** k  **Na**.  
 
-- [Vytvoření virtuálního počítače Windows pomocí webu Azure portal](../../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
-- [Vytvoření virtuálního počítače s Linuxem pomocí webu Azure portal](../../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)  
+![Povolit systém přiřadil identitu během vytváření virtuálních počítačů](./media/msi-qs-configure-portal-windows-vm/enable-system-assigned-identity-vm-creation.png)
+
+Najdete v následujících šablon rychlý start k vytvoření virtuálního počítače: 
+
+- [Vytvoření virtuálního počítače Windows pomocí webu Azure portal](../../virtual-machines/windows/quick-create-portal.md#create-virtual-machine) 
+- [Vytvoření virtuálního počítače s Linuxem pomocí webu Azure portal](../../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)
+
 
 ### <a name="enable-system-assigned-managed-identity-on-an-existing-vm"></a>Povolit systém přiřadil spravovaná identita na existující virtuální počítač
 

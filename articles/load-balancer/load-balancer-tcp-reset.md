@@ -1,5 +1,5 @@
 ---
-title: Načíst resetování protokolu TCP nástroje pro vyrovnávání na časový limit nečinnosti | Dokumentace Microsoftu
+title: Načíst obnovení protokolu TCP nástroje pro vyrovnávání na nečinnosti | Dokumentace Microsoftu
 description: Nástroj pro vyrovnávání zatížení s obousměrný TCP RVNÍ paketů na časový limit nečinnosti
 services: load-balancer
 documentationcenter: na
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/21/2018
+ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: b33c701bde082404ea86c9882dcb7bf50d1f1df9
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 212212d4650fe25b4ced591d4d4f1ee184e3fc44
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036169"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163320"
 ---
-# <a name="load-balancer-with-tcp-reset-on-idle-timeout-public-preview"></a>Load Balancer s vynulováním TCP na časový limit nečinnosti (Public Preview)
+# <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>Nástroj pro vyrovnávání zatížení s TCP Nulováním nečinnosti (Public Preview)
 
 Můžete použít [Load balanceru úrovně Standard](load-balancer-standard-overview.md) vytvoření předvídatelnějšího chování aplikace pro vaše scénáře s obousměrný TCP resetuje (TCP RVNÍ paket) pro každé konfigurovatelné nečinnosti časový limit.  Výchozí chování pro vyrovnávání zatížení je tiše síťový toky, když je dosaženo časového limitu nečinnosti toku.
 
@@ -75,6 +75,7 @@ Tento parametr je aktuálně efektivní v následujících oblastech.  V oblasti
 
 | Oblast |
 |---|
+| Jihovýchodní Asie |
 | USA – východ 2 |
 | USA – sever |
 | USA – západ |
@@ -89,4 +90,4 @@ Tato tabulka bude aktualizovat, protože ve verzi preview je rozšířena do jin
 ## <a name="next-steps"></a>Další postup
 
 - Další informace o [Load balanceru úrovně Standard](load-balancer-standard-overview.md).
-- Další informace o [odchozí pravidla](https://aka.ms/lboutboundrules).
+- Další informace o [odchozí pravidla](load-balancer-outbound-rules-overview.md).

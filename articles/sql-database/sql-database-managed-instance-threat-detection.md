@@ -2,20 +2,22 @@
 title: Detekce hrozeb – Azure SQL Database Managed Instance | Dokumentace Microsoftu
 description: Detekce hrozeb detekuje neobvyklé databázové aktivity značící potenciální ohrožení zabezpečení databáze ve spravované instanci.
 services: sql-database
-author: rmatchoro
-manager: craigg
 ms.service: sql-database
-ms.custom: security, managed instance
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/19/2018
+author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
-ms.openlocfilehash: 28676d0e027b73281fcb9874669aa6447ec622ff
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+manager: craigg
+ms.date: 09/19/2018
+ms.openlocfilehash: 7f05bd6c96a8e22b1e039c3edcec491b7c079d54
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964254"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162405"
 ---
 # <a name="azure-sql-database-managed-instance-threat-detection"></a>Azure SQL Database Managed Instance detekce hrozeb
 

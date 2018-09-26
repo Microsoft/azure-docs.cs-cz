@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: tomfitz
 ms.openlocfilehash: dd111c33cbd348a05ed0f0c04f7325347612e54d
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259809"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47106780"
 ---
 # <a name="use-the-azure-cli-to-manage-azure-resources-and-resource-groups"></a>Pomocí Azure CLI ke správě prostředků a skupin prostředků Azure
 

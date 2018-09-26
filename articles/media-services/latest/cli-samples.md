@@ -13,11 +13,11 @@ ms.custom: ''
 ms.date: 04/15/2018
 ms.author: juliako
 ms.openlocfilehash: 3328403f5366f168f979a14951da938f26e1aee9
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35899158"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47093855"
 ---
 # <a name="azure-cli-examples-for-azure-media-services"></a>Příklady Azure CLI pro službu Azure Media Services
 

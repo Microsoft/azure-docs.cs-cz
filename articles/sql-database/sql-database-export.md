@@ -2,19 +2,22 @@
 title: Exportovat do souboru BACPAC s Azure SQL database | Dokumentace Microsoftu
 description: Exportovat databázi Azure SQL do souboru BACPAC s použitím webu Azure portal
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: load & move data
-ms.date: 09/14/2018
-ms.author: carlrab
+ms.subservice: data-movement
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.openlocfilehash: c117b3d56e6b032bff5983a707621d649e608d98
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+author: CarlRabeler
+ms.author: carlrab
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: a867a57e54efae6d735a9918a637fa3b4f9e37bc
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732155"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47160284"
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Exportovat databázi Azure SQL do souboru BACPAC
 

@@ -2,19 +2,22 @@
 title: Řešení potíží s synchronizace dat Azure SQL | Dokumentace Microsoftu
 description: Zjistěte, jak řešit běžné problémy se synchronizací dat SQL Azure.
 services: sql-database
-ms.date: 07/16/2018
-ms.topic: conceptual
 ms.service: sql-database
+ms.subservice: data-movement
+ms.custom: data sync
+ms.devlang: ''
+ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
+ms.reviewer: douglasl
 manager: craigg
-ms.custom: data-sync
-ms.openlocfilehash: 8ba4b32f45dd978439b08650e498c3030c618aab
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.date: 07/16/2018
+ms.openlocfilehash: 0f836a857d6f9748416fda1526a1957af4fc51e4
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618705"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163592"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Řešení potíží se synchronizací dat SQL
 
@@ -245,7 +248,7 @@ Pokud místní koncový bod (to znamená, že databáze), který je registrovan�
     b. Ve výsledcích hledání poklikejte na **služby**.  
   1. Zastavit **synchronizace dat SQL** služby.
   1. Restartujte **synchronizace dat SQL** služby.  
-  1. Znovu otevřete aplikaci.
+  1. Znovu tuto aplikaci otevřít.
 
 ## <a name="setup-and-maintenance-issues"></a>Problémy s instalací a údržba
 

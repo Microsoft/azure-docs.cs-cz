@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: mbullwin
 ms.openlocfilehash: 41e972145d2404e46b62521c7d40d997be74a7f9
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35643217"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47093838"
 ---
 # <a name="degradation-in-trace-severity-ratio-preview"></a>Snížení výkonnosti v poměru závažnost trasování (preview)
 

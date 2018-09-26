@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/25/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 69bf788ef30a18bbe70e251fdd6a814d0f528f55
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e0a96d947bce579d2c1d7d31de83c7ef53eabd3a
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994560"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47165802"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Přidat Kubernetes na webu Marketplace služby Azure Stack
 
@@ -127,14 +127,20 @@ Při aktualizaci položky Kubernetes, musíte odebrat položku, která je na web
 
 Odebrat položku Kubernetes:
 
-1. Poznamenejte si název aktuální položky, jako například `Microsoft.AzureStackKubernetesCluster.0.2.0`
+1. Připojení ke službě Azure Stack pomocí prostředí PowerShell jako operátor. Pokyny naleznete v tématu [připojit ke službě Azure Stack pomocí prostředí PowerShell jako operátor](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-configure-admin).
 
-1. Připojení k Azure Stack pomocí Powershellu.
-
-1. Použijte následující rutiny Powershellu pro odebrání položky:
+2. Aktuální položka clusteru Kubernetes najdete v galerii.
 
     ```PowerShell  
-    $Itemname="Microsoft.AzureStackKubernetesCluster.0.2.0"
+    Get-AzsGalleryItem | Select Name
+    ```
+    
+3. Poznamenejte si název aktuální položky, jako například `Microsoft.AzureStackKubernetesCluster.0.2.0`
+
+4. Použijte následující rutiny Powershellu pro odebrání položky:
+
+    ```PowerShell  
+    $Itemname="Microsoft.AzureStackKubernetesCluster.0.3.0"
 
     Remove-AzsGalleryItem -Name $Itemname
     ```

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: c2ef24692f9166fdca7eb19f648aee9ed3b0514f
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: c3b9422ebdb0a5d93f92644d9fea5d9c5ba9fa29
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40025916"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47186341"
 ---
 Paměťově optimalizované velikosti nabídky virtuálních počítačů vysoký poměr paměti procesoru, které jsou velmi vhodné pro servery relačních databází, střední a velké mezipaměti a analýzu v paměti. Tento článek obsahuje informace o počtu virtuálních procesorů, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro jednotlivé velikosti v této skupině. 
 
@@ -26,7 +26,7 @@ Paměťově optimalizované velikosti nabídky virtuálních počítačů vysok�
 
 * Ev3-series funkce E5-2673 v4 (Broadwell) 2,3 GHz procesor konfigurace technologie hyper-threaded, poskytuje lepší návrh hodnoty pro většinu obecných úloh účel a přináší Ev3 soulad s virtuálními počítači pro obecné účely většina jiných cloudech.  Paměti došlo k rozbalení (ze 7 GiB/virtuální procesor do 8 GiB/virtuálních procesorů) zatímco disku a sítě limity byly upraveny na základě vázané na jádro, aby bylo v souladu s přechodem na hyperthreadingem.  Ev3 je dále až vysoký poměr paměti velikosti virtuálních počítačů řady D/Dv2.
 
-* Azure Compute nabízí velikosti virtuálních počítačů, které jsou izolované na konkrétní hardware typ a vyhrazený pro jediného zákazníka.  Tyto velikosti virtuálních počítačů se nejlíp hodí pro úlohy, které vyžadují vysoký stupeň oddělení od ostatních zákazníků pro úlohy zahrnující prvky, jako je dodržování předpisů a zákonné požadavky.  Zákazníci můžou dál rozdělit prostředky těchto virtuálních počítačů izolované pomocí vybrat [podpora Azure pro vnořených virtuálních počítačích](https://azure.microsoft.com/en-us/blog/nested-virtualization-in-azure/).  Projděte si tabulky virtuálních počítačů řady níže pro izolované možnosti virtuálního počítače.
+* Azure Compute nabízí velikosti virtuálních počítačů, které jsou izolované na konkrétní typ hardwaru a vyhrazené pro jednoho zákazníka.  Tyto velikosti virtuálních počítačů jsou nejvhodnější pro úlohy, které vyžadují vysoký stupeň izolace od ostatních zákazníků a kterých se týkají například požadavky na dodržování předpisů a zákonné požadavky.  Zákazníci můžou dál rozdělit prostředky těchto virtuálních počítačů izolované pomocí vybrat [podpora Azure pro vnořených virtuálních počítačích](https://azure.microsoft.com/en-us/blog/nested-virtualization-in-azure/).  Projděte si tabulky virtuálních počítačů řady níže pro izolované možnosti virtuálního počítače.
 
 ## <a name="esv3-series"></a>Esv3-series 
 
@@ -45,6 +45,7 @@ Instance ESv3-series jsou založené na procesorech 2,3 GHz Intel XEON® E5-267
 | Standard_E4s_v3&nbsp;<sup>2</sup> | 4      | 32          | 64             | 8              | 8 000 / 64 (100)                                                      | 6 400 / 96                                | 2 / 2,000                                   |
 | Standard_E8s_v3&nbsp;<sup>2</sup> | 8      | 64          | 128            | 16             | 16 000 / 128 (200)                                                    | 12 800 / 192                              | 4 / 4,000                                       |
 | Standard_E16s_v3&nbsp;<sup>2</sup> | 16     | 128         | 256            | 32             | 32 000 / 256 (400)                                                    | 25 600 / 384                              | 8 / 8,000                                       |
+| Standard_E20s_v3&nbsp;<sup>2</sup> | 20     | 160         | 320            | 32             | 40 000 / 320 (400)                                                    | 32 000 / 480                              | 8 / 10 000                                       |
 | Standard_E32s_v3&nbsp;<sup>2</sup> | 32     | 256         | 512            | 32             | 64 000 / 512 (800)                                                    | 51 200 / 768                              | 8 / 16,000                             |
 | Standard_E64s_v3&nbsp;<sup>2</sup> | 64     | 432         | 864            | 32             | 128 000 / 1 024 (1 600)                                                   | 80 000 / 1 200                             | 8 / 30,000                             |
 | Standard_E64is_v3&nbsp;<sup>3</sup> | 64     | 432         | 864            | 32             | 128 000 / 1 024 (1 600)                                                   | 80 000 / 1 200                             | 8 / 30,000                             |
@@ -76,6 +77,7 @@ Instance Ev3-series jsou založené na procesorech 2,3 GHz Intel XEON® E5-2673
 | Standard_E4_v3  | 4         | 32          | 100            | 8              | 6 000 / 93 / 46                                               | 2 / 2,000                 |
 | Standard_E8_v3  | 8         | 64          | 200            | 16             | 12 000 / 187 / 93                                             | 4 / 4,000                     |
 | Standard_E16_v3 | 16        | 128         | 400            | 32             | 24 000 / 375 / 187                                            | 8 / 8,000                     |
+| Standard_E20_v3 | 20        | 160         | 500            | 32             | 30000/469/234                                            | 8 / 10 000                     |
 | Standard_E32_v3 | 32        | 256         | 800            | 32             | 48 000 / 750 / 375                                            | 8 / 16,000                 |
 | Standard_E64_v3 | 64        | 432         | 1600           | 32             | 96 000 / 1 000 / 500                                           | 8 / 30,000           |
 | Typu Standard_E64i_v3&nbsp;<sup>2,&nbsp;3</sup> | 64        | 432         | 1600           | 32             | 96 000 / 1 000 / 500                                           | 8 / 30,000           |

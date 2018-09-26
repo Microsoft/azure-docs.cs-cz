@@ -9,12 +9,12 @@ ms.author: tedway
 author: tedway
 ms.reviewer: jmartens
 ms.date: 9/24/2018
-ms.openlocfilehash: fa6ff90c3a573285ec8d6cc6f2e97bf3c75a1e8e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: adcd812bc63f98e4cbde949946bf32a037c6d704
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993270"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47158681"
 ---
 # <a name="what-is-fpga-and-project-brainwave"></a>Co je FPGA a Project Brainwave?
 
@@ -28,7 +28,7 @@ FPGA obsahovat pole programovatelný logiky bloků a hierarchii znovupoužiteln�
 
 |Procesor||Popis|
 |---|:-------:|------|
-|Specifické pro aplikaci integrovaného okruhy|ASICs|Vlastní okruhů, jako je Google TensorFlow procesoru jednotek (TPU) jsou nepřizpůsobitelným ale zadat maximální efektivitou.|
+|Specifické pro aplikaci integrovaného okruhy|ASICs|Vlastní okruhů, jako je Google TensorFlow procesoru jednotek (TPU) zadejte maximální efektivitou. Nedá se změnit podle vašich aktuálních potřeb.|
 |Pole programmable gate Array|FPGA|FPGA, jako jsou dostupné v Azure, poskytují výkon blízko ASICs, ale jsou flexibilní a znovupoužitelných časem implementovat nové logiku.|
 |Grafické procesory|Grafické procesory|Oblíbené volba pro výpočty AI nabízí možnosti paralelního zpracování díky tomu je rychlejší při vykreslování obrázků než procesory.|
 |Jednotky zpracování – střed|Procesory|Pro obecné účely procesory, jehož výkon není ideální pro grafiku a zpracování videa.|
@@ -37,17 +37,15 @@ FPGA obsahovat pole programovatelný logiky bloků a hierarchii znovupoužiteln�
 
 [Project Brainwave](https://www.microsoft.com/research/project/project-brainwave/) je úsporné hardwarovou architekturou společnosti Microsoft, založené na zařízení společnosti Intel FPGA, že datových vědců a vývojářů, použijte k urychlení výpočtů v reálném čase AI.  Tato architektura povolené FPGA nabízí **výkonu**, **flexibilitu**, a **škálování** a je k dispozici v Azure.
 
-FPGA umožňují dosáhnout nízké latence pro požadavky v reálném čase odvozování. Dávkování znamená, že shromažďování velkých objemů dat a jí předáte do zpracovatele zlepšovat využití hardwaru. Dávkové zpracování může způsobit latence, protože je potřeba zpracovat víc dat, ale může se zvýšit propustnost. Project Brainwave implementace neuronových sítí zpracování jednotek nevyžadují dávkování; latence může být proto v mnoha případech nižší ve srovnání s konkrétním procesoru a GPU.
+**FPGA umožňují dosáhnout nízké latence pro požadavky v reálném čase odvozování.** Dávkování znamená, že shromažďování velkých objemů dat a jí předáte do zpracovatele zlepšovat využití hardwaru. Dávkové zpracování může způsobit latence, protože je potřeba zpracovat víc dat, ale může se zvýšit propustnost. Project Brainwave implementace neuronových sítí zpracování jednotek nevyžadují dávkování; latence může být proto v mnoha případech nižší ve srovnání s konkrétním procesoru a GPU.
 
 ### <a name="reconfigurable-power"></a>Znovupoužitelných napájení
-Můžete třeba překonfigurovat FPGA pro různé typy modelů strojového učení. Díky této flexibilitě usnadňuje zrychlení aplikací založených na nejvíce optimální číselná přesnost a používá model paměti.
+**Můžete třeba překonfigurovat FPGA pro různé typy modelů strojového učení.** Díky této flexibilitě usnadňuje zrychlení aplikací založených na nejvíce optimální číselná přesnost a používá model paměti.
 
 Nové techniky machine learning jsou vytvářena v pravidelných intervalech a návrh hardwaru Project Brainwave se také rychle vyvíjejí. Protože jsou znovupoužitelných FPGA, je možné aktuální požadavky na rychle se měnící algoritmů AI.
 
 ### <a name="whats-supported-on-azure"></a>Co je podporováno v Azure
-Microsoft Azure je na světě největší cloudové investice do FPGA. Project Brainwave můžete spustit na škálování infrastruktury Azure.
-
-Pomocí této architektury hardware podporující FPGA trénovaného neuronové sítě spusťte rychle a s nižší latencí. Project Brainwave můžete paralelizovat předem vytrénovaných hloubkových neuronových sítí (DNN) napříč FPGA horizontálně navýšit kapacitu vaší služby. Dopředné můžete předem školení, jako hloubkové featurizer pro přenos učení a doladíte s aktualizovanou váhy.
+**Microsoft Azure je na světě největší cloudové investice do FPGA.** Project Brainwave můžete spustit na škálování infrastruktury Azure.
 
 V současné době podporuje Project Brainwave:
 + Scénáře klasifikace a rozpoznávání obrázků
@@ -55,7 +53,9 @@ V současné době podporuje Project Brainwave:
 + Dopředné: Modelem ResNet 50, modelem ResNet 152, VGG-16, SSD VGG a DenseNet 121
 + Hardware Intel FPGA 
 
-## <a name="scenarios-and-applications"></a>Scénáře a aplikace
+Pomocí této architektury hardware podporující FPGA trénovaného neuronové sítě spusťte rychle a s nižší latencí. Project Brainwave můžete paralelizovat předem vytrénovaných hloubkových neuronových sítí (DNN) napříč FPGA horizontálně navýšit kapacitu vaší služby. Dopředné můžete předem školení, jako hloubkové featurizer pro přenos učení a doladíte s aktualizovanou váhy.
+
+### <a name="scenarios-and-applications"></a>Scénáře a aplikace
 
 Project Brainwave je integrovaná s Azure Machine Learning. Použití Microsoft FPGA DNN hodnocení, pořadí vyhledávání Bingu a softwaru definované sítě (SDN) akcelerace snížit latenci při uvolnění procesorů pro jiné úlohy.
 

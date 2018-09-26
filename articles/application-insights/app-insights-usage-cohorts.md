@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/10/2018
 ms.reviewer: daviste
 ms.author: mbullwin
-ms.openlocfilehash: 2157af8d6c3b8eea372c060a70c78559d8ffe6ad
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 30ef00fa1bfd2933df5e5c966cb8266d7c598a47
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35642779"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162164"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights kohorty
 
@@ -110,7 +110,7 @@ Předchozí dva kohorty byly definovány pomocí rozevíracího seznamu polí. A
 
     * Oddíl dotazu Tady můžete definovat kohortu pomocí dotazu analytics.
 
-    V části dotazu je [napsat dotaz analytics](https://docs.loganalytics.io/index). Dotaz vybere určité sady řádků, které popisují, které chcete definovat kohortu. Nástroji kohorty implicitně přidá "| vytvořit souhrn podle user_Id"klauzule dotazu. Tato data je zobrazen pod dotaz v tabulce, abyste měli jistotu, že dotaz vrací výsledky.
+    V části dotazu je [napsat dotaz analytics](/azure/kusto/query). Dotaz vybere určité sady řádků, které popisují, které chcete definovat kohortu. Nástroji kohorty implicitně přidá "| vytvořit souhrn podle user_Id"klauzule dotazu. Tato data je zobrazen pod dotaz v tabulce, abyste měli jistotu, že dotaz vrací výsledky.
 
     > [!NOTE]
     > Pokud se dotaz, zkuste změnit velikost oddílu, který má byl vyšší a zobrazit dotaz. Animovaný obrázek GIF na začátku této části ukazuje chování změny velikosti.

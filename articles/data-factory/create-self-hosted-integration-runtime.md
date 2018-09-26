@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 7cd5fc965a57052323d4b916f0f2b7dbc0feb7b3
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: e22d26850114162c6dbd38797071120d388ac6b0
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44715410"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162266"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Jak vytvořit a nakonfigurovat modul Integration Runtime
 Integration Runtime (IR) je výpočetní infrastruktura, službou Azure Data Factory používá k poskytování možnosti integrace dat v různých síťových prostředích. Podrobnosti o prostředí IR najdete v tématu [přehled modulu Runtime integrace](concepts-integration-runtime.md).
@@ -187,18 +187,20 @@ Ve službě Data Factory, ke kterému byla udělena oprávnění,
 
 1. Výchozí počet propojených reakcí na Incidenty, které je možné vytvořit v rámci jedné místní prostředí IR je **20**. Pokud potřebujete více pak kontaktujte podporu. 
 
-2. Data factory, ve kterém se má vytvořit propojené prostředí IR musí být soubor MSI ([se identita spravované služby](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)). Ve výchozím nastavení vytvoření datové továrny v portálu Ibiza nebo rutiny prostředí PowerShell bude mít MSI vytvářejí implicitně. Nicméně v některých případech při vytvoření datové továrny pomocí šablony správce prostředků různého Azure nebo SDK "**Identity**" **musí být nastavena vlastnost** explicitně zajistit správce prostředků různého Azure vytvoří objekt pro vytváření dat obsahující soubor MSI. 
+2. Data factory, ve kterém se má vytvořit propojené prostředí IR musí být soubor MSI ([se identita spravované služby](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)). Ve výchozím nastavení objekty pro vytváření dat vytvořen na webu Azure portal nebo rutiny prostředí PowerShell bude mít MSI vytvářejí implicitně. Nicméně v některých případech při vytvoření datové továrny pomocí šablony správce prostředků různého Azure nebo SDK "**Identity**" **musí být nastavena vlastnost** explicitně zajistit správce prostředků různého Azure vytvoří objekt pro vytváření dat obsahující soubor MSI. 
 
 3. Verze v místním prostředí IR musí být roven nebo větší než 3.8.xxxx.xx. Prosím [stáhnout nejnovější verzi](https://www.microsoft.com/download/details.aspx?id=39717) v místním prostředí IR
 
-4. Data factory, ve kterém se má vytvořit propojené prostředí IR musí být soubor MSI ([se identita spravované služby](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)). Ve výchozím nastavení, bude mít datových továren v portálu Ibiza nebo rutiny prostředí PowerShell vytvoří MSI ([se identita spravované služby](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)).
-vytvářejí implicitně, ale objekty pro vytváření dat vytvořen pomocí šablony Azure Resource Manageru (ARM) nebo sady SDK vyžaduje nastavení vlastnosti "Identity" k zajištění, že se vytvoří soubor MSI.
+4. Data factory, ve kterém se má vytvořit propojené prostředí IR musí být soubor MSI ([se identita spravované služby](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)). Ve výchozím nastavení, bude mít datových továren v portálu Azure portal nebo rutiny prostředí PowerShell vytvoří MSI ([se identita spravované služby](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)).
+  vytvářejí implicitně, ale objekty pro vytváření dat vytvořen pomocí šablony Azure Resource Manageru nebo sady SDK vyžaduje "**Identity**" nastavení vlastnosti zajistit MSI se vytvoří.
 
 5. Sady ADF .net SDK, které podporují tuto funkci je verze > = 1.1.0
 
 6. Prostředí Azure PowerShell, které podporují tuto funkci je verze > = 6.6.0 (AzureRM.DataFactoryV2 > = 0.5.7)
 
-7. Udělení oprávnění, uživatel bude vyžadovat "Vlastník" nebo zděděná "vlastník" role ve službě Data Factory, kde existuje IR sdílené. 
+7. Udělení oprávnění, bude vyžadovat uživatel "**vlastníka**" role nebo zděděné "**vlastníka**" role ve službě Data Factory, kde existuje IR sdílené. 
+
+8. Pro Active Directory  **[uživatele typu Host](https://docs.microsoft.com/azure/active-directory/governance/manage-guest-access-with-access-reviews)**, funkce vyhledávání (výpisu všech datových továren pomocí hledaná klíčová slova) v uživatelském rozhraní [nefunguje](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#SearchLimits). Ale dokud uživatel typu host "**vlastníka**"služby Data Factory můžou sdílet IR bez funkce vyhledávání přímo zadáním identita spravované služby objektu pro vytváření dat, se kterým potřeba sdílet v prostředí IR"**Přiřadit Pemission**"textového pole a výběrem možnosti"**přidat**"v uživatelském rozhraní ADF. 
 
   > [!NOTE]
   > Tato funkce je dostupná pouze ve službě Azure Data Factory verze 2 

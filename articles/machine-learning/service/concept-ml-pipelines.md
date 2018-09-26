@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: sanpil
 author: sanpil
 ms.date: 09/24/2018
-ms.openlocfilehash: d9f34345275efbb8aec422e5fa14234c7d6a61a5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e1181d07ed51b1edf5da68d759d871703bd1540f
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997841"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162776"
 ---
 # <a name="pipelines-and-azure-machine-learning"></a>Kanály a Azure Machine Learning
 
@@ -34,7 +34,7 @@ Následující diagram znázorňuje kanál příkladu:
 
 ## <a name="why-build-pipelines-with-azure-machine-learning"></a>Proč vytvářet kanály pomocí služby Azure Machine Learning?
 
-Sady SDK Azure Machine Learning pro Python slouží k vytvoření kanálů ML a jde o odesílání a sledování spuštění jednotlivých kanálu.
+[Azure Machine Learning SDK pro Python](#the-python-sdk-for-pipelines) lze použít k vytvoření kanálů ML a jde o odesílání a sledování spuštění jednotlivých kanálu.
 
 S kanály můžete optimalizovat pracovní postup s jednoduchost, rychlost, přenositelnost a opakované použití. Při sestavování kanálů v Azure Machine learningu, můžete se soustředit na co znáte nejlepší &mdash; strojového učení &mdash; místo infrastruktury.
 
@@ -63,7 +63,7 @@ Použití závislostí deklarativní data, můžete optimalizovat vaše úkoly. 
 
 Kanály můžou být uložena jako šablony a mohou být nasazeny na koncový bod REST, můžete plánovat úlohy dávkové bodování nebo přeučení.
 
-Podívejte se [Python SDK referenční dokumenty pro kanály](http://aka.ms/aml-sdk).
+Podívejte se [Python SDK referenční dokumenty pro kanály](http://aka.ms/aml-sdk) a Poznámkový blok v další části se dozvíte, jak vytvářet vlastní.
 
 ## <a name="example-notebooks"></a>Příklad poznámkové bloky
  

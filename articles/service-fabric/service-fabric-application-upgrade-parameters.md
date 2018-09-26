@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/17/2018
 ms.author: subramar
-ms.openlocfilehash: f3f381fddee9c1830202854f02556f73b5aeed23
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 3f321775ba112471760e627e6b43ed17ff8c5b6b
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055573"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182871"
 ---
 # <a name="application-upgrade-parameters"></a>Parametry upgradu aplikace
 Tento článek popisuje různé parametry, které se použijí při upgradu aplikace Azure Service Fabric. Parametry upgradu aplikace řídit vypršení časových limitů a kontroly stavu, které se použijí při upgradu a určují zásady, které se musí použít při upgradu se nezdaří.
@@ -42,7 +42,7 @@ Visual Studio Service Fabric application upgradu parametry jsou nastavené přes
 | --- | --- | --- |
 ApplicationName |PS| Název aplikace, která se upgraduje. Příklady: fabric: / VisualObjects fabric: / ClusterMonitor. |
 ApplicationTypeVersion|PS|Typ verze aplikace, aby upgradu cíle. |
-FailureAction |PS VS|Povolené hodnoty jsou **neplatný**, **vrácení zpět**, a **ruční**. Akce provedená Service Fabric v případě upgrade selže. Aplikace může být vrácena zpět před aktualizací verze (vrácení zpět), nebo upgradu může být zastaven na aktuální upgradovací doméně. V takovém případě se režim upgradu také změní na **ruční**.|
+FailureAction |PS VS|Povolené hodnoty jsou **vrácení zpět**, **ruční**, a **neplatný**. Kompenzační akce, která má provést při *monitorované* upgradu zjistí monitorování zásad nebo stavu porušení zásad. <br>**Vrácení zpět** Určuje, že upgrade bude automaticky vrátit k verzi před upgradem. <br>**Ruční** označuje, že upgrade přepne *UnmonitoredManual* režim upgradu. <br>**Neplatný** označuje, že selhání akce je neplatná.|
 Monitorováno |PS|Určuje, zda je monitorovaný režim upgradu. Až rutina dokončí upgrade upgradovací doméně, pokud stav upgradu domény a clusteru splňují zásady stavu, které definujete, Service Fabric upgraduje další upgradovací doméně. Pokud doména upgradu nebo clusteru nesplňuje zásady stavu, aktualizace se nezdaří a Service Fabric vrátí zpět upgrade upgradovací domény, nebo se vrátí do režimu ručního za určené zásady. Toto je doporučený režim pro upgrady aplikací v produkčním prostředí. |
 UpgradeMode | VS | Povolené hodnoty jsou **monitorované** (výchozí), **UnmonitoredAuto**, nebo **UnmonitoredManual**. Zobrazit parametry prostředí PowerShell pro oba režimy v tomto článku najdete podrobnosti. |
 UnmonitoredAuto | PS | Označuje, že je režim upgradu nemonitorované automaticky. Po Service Fabric se upgraduje jednu upgradovací doménu, Service Fabric se upgraduje další upgradovací doméně bez ohledu na stav aplikace. Tento režim se nedoporučuje pro produkční prostředí a je užitečná pouze během vývoje aplikace. |

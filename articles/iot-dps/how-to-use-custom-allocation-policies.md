@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 503a8026fe11d1cdb3d0fc0c2680d8d545a1c992
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 89cb44366d4752052d990a1506482c9108cde103
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46955235"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161695"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Použití vlastní přidělení zásad
 
 
-Vlastní přidělení zásad vám dává větší kontrolu nad způsob přiřazování zařízení do služby IoT hub. Toho lze dosáhnout pomocí vlastního kódu v [funkce Azure Functions](../azure-functions/functions-overview.md) přiřazení zařízení do služby IoT hub. Službou device provisioning volá váš kód funkce Azure Functions poskytuje skupiny centra IoT. Váš kód funkce vrátí informace o IoT hub pro zřizování zařízení.
+Vlastní přidělení zásad vám dává větší kontrolu nad způsob přiřazování zařízení do služby IoT hub. Toho lze dosáhnout pomocí vlastního kódu v [funkce Azure Functions](../azure-functions/functions-overview.md) přiřazení zařízení do služby IoT hub. Službou device provisioning volá kód vaší funkce Azure poskytuje všechny relevantní informace o zařízení a registraci. Kód vaší funkce se spustí a vrátí informace o Centru IoT pro zřizování zařízení.
 
 Pomocí zásad vlastní přidělení definovat vlastní zásady přidělování Pokud zásady, které poskytuje služba Device Provisioning nesplňuje požadavky na váš scénář.
 
@@ -107,7 +107,9 @@ V této části vytvoříte novou skupinu registrace, který používá vlastní
     ![Přidat vlastní přidělení skupinu registrací pro ověření identity symetrického klíče](./media/how-to-use-custom-allocation-policies/create-custom-allocation-enrollment.png)
 
 
-4. Na **přidat skupinu registrací**, klikněte na tlačítko **propojit novou službu IoT hub** propojení i nový intranetový centra IoT.
+4. Na **přidat skupinu registrací**, klikněte na tlačítko **propojit novou službu IoT hub** propojení i nový intranetový centra IoT. 
+
+    Tento krok je třeba spustit pro obě oddělení centra IoT hub.
 
     **Předplatné**: Pokud máte více předplatných, vyberte předplatné, ve které jste vytvořili oddělení centra IoT hub.
 
@@ -278,9 +280,9 @@ V této části vytvoříte novou skupinu registrace, který používá vlastní
 
 V této části vytvoříte dva jedinečné klíče. Jeden z nich se použije pro zařízení s Simulovaná toaster. Další klíč se použije pro zařízení s Simulovaná heat čerpadla.
 
-Chcete-li vygenerovat klíč zařízení, použijte **primární klíč** jste si předtím poznamenali vypočítat [HMAC SHA256](https://wikipedia.org/wiki/HMAC) ID registrace zařízení pro každé zařízení a převodu výsledků do formátu Base64.
+Vygenerujte klíč zařízení, kterou použijete **primární klíč** jste si předtím poznamenali vypočítat [HMAC SHA256](https://wikipedia.org/wiki/HMAC) ID registrace zařízení pro každé zařízení a převodu výsledků do formátu Base64. Další informace o vytváření klíčů odvozené zařízení s skupin pro registraci, najdete v části registrace skupiny [symetrického klíče ověření](concepts-symmetric-key-attestation.md).
 
-Použít následující dva drs ID a klíč zařízení pro oba zařízení – compute úrovně. Mají obě ID registrace platnou příponu pro práci s ukázkový kód pro vlastní přidělení zásad:
+Například v tomto článku použijte následující dvě drs ID a výpočetní klíč zařízení i zařízení. Mají obě ID registrace platnou příponu pro práci s ukázkový kód pro vlastní přidělení zásad:
 
 - **breakroom499 contoso tstrsd 007**
 - **mainbuilding167 contoso hpsd 088**
@@ -289,53 +291,53 @@ Použít následující dva drs ID a klíč zařízení pro oba zařízení – 
 
 Pokud používáte pracovní stanici systému Linux, vám pomůže openssl generujte svoje klíče odvozené zařízení, jak je znázorněno v následujícím příkladu.
 
-Nahraďte hodnotu **klíč** s **primární klíč** jste si předtím poznamenali.
+1. Nahraďte hodnotu **klíč** s **primární klíč** jste si předtím poznamenali.
 
-```bash
-KEY=oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA==
+    ```bash
+    KEY=oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA==
 
-REG_ID1=breakroom499-contoso-tstrsd-007
-REG_ID2=mainbuilding167-contoso-hpsd-088
+    REG_ID1=breakroom499-contoso-tstrsd-007
+    REG_ID2=mainbuilding167-contoso-hpsd-088
 
-keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
-devkey1=$(echo -n $REG_ID1 | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64)
-devkey2=$(echo -n $REG_ID2 | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64)
+    keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
+    devkey1=$(echo -n $REG_ID1 | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64)
+    devkey2=$(echo -n $REG_ID2 | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64)
 
-echo -e $"\n\n$REG_ID1 : $devkey1\n$REG_ID2 : $devkey2\n\n"
-```
+    echo -e $"\n\n$REG_ID1 : $devkey1\n$REG_ID2 : $devkey2\n\n"
+    ```
 
-```bash
-breakroom499-contoso-tstrsd-007 : JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=
-mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
-```
+    ```bash
+    breakroom499-contoso-tstrsd-007 : JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=
+    mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
+    ```
 
 
 #### <a name="windows-based-workstations"></a>Pracovní stanice se systémem Windows
 
 Pokud používáte pracovní stanici se systémem Windows, můžete použít PowerShell k vygenerování klíče odvozené zařízení jak je znázorněno v následujícím příkladu.
 
-Nahraďte hodnotu **klíč** s **primární klíč** jste si předtím poznamenali.
+1. Nahraďte hodnotu **klíč** s **primární klíč** jste si předtím poznamenali.
 
-```PowerShell
-$KEY='oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA=='
+    ```PowerShell
+    $KEY='oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA=='
 
-$REG_ID1='breakroom499-contoso-tstrsd-007'
-$REG_ID2='mainbuilding167-contoso-hpsd-088'
+    $REG_ID1='breakroom499-contoso-tstrsd-007'
+    $REG_ID2='mainbuilding167-contoso-hpsd-088'
 
-$hmacsha256 = New-Object System.Security.Cryptography.HMACSHA256
-$hmacsha256.key = [Convert]::FromBase64String($key)
-$sig1 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID1))
-$sig2 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID2))
-$derivedkey1 = [Convert]::ToBase64String($sig1)
-$derivedkey2 = [Convert]::ToBase64String($sig2)
+    $hmacsha256 = New-Object System.Security.Cryptography.HMACSHA256
+    $hmacsha256.key = [Convert]::FromBase64String($key)
+    $sig1 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID1))
+    $sig2 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID2))
+    $derivedkey1 = [Convert]::ToBase64String($sig1)
+    $derivedkey2 = [Convert]::ToBase64String($sig2)
 
-echo "`n`n$REG_ID1 : $derivedkey1`n$REG_ID2 : $derivedkey2`n`n"
-```
+    echo "`n`n$REG_ID1 : $derivedkey1`n$REG_ID2 : $derivedkey2`n`n"
+    ```
 
-```PowerShell
-breakroom499-contoso-tstrsd-007 : JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=
-mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
-```
+    ```PowerShell
+    breakroom499-contoso-tstrsd-007 : JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=
+    mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
+    ```
 
 
 Simulovaná zařízení bude používat klíče odvozené zařízení s každou ID registrace k provedení ověření identity symetrického klíče.

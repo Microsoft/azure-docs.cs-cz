@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 08/06/2018
 ms.author: bahariri
-ms.openlocfilehash: 7c09656f62f3a8a2efd889cf28f12bd5a42e309a
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 063f8bc050064d191dd502b74156be85df4f0031
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745492"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182197"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Datové proudy Akka pomocí služby Event Hubs pro Apache Kafka
 V tomto kurzu se dozvíte, jak připojit Akka datové proudy Kafka povolené event hubs, aniž by změna vašim klientům protokolu nebo spuštění vlastní clustery. Podporuje Azure Event Hubs pro Kafka [Apache Kafka verze 1.0.](https://kafka.apache.org/10/documentation.html)
@@ -27,14 +27,14 @@ V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Vytvoření oboru názvů služby Event Hubs
 > * Klonování projektu z příkladu
-> * Spustit Flink výrobce 
-> * Spusťte Flink příjemce
+> * Spustit Akka datové proudy 
+> * Spusťte datové proudy Akka příjemce
 
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu, nezapomeňte, že jsou splněné následující požadavky:
 
-* Přečtěte si [Event Hubs pro Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) článku. 
+* Přečtěte si článek [Event Hubs pro Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md). 
 * Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * [Java Development Kit (JDK) 1.8 +](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
     * Na Ubuntu nainstalujte sadu JDK spuštěním příkazu `apt-get install default-jdk`.
@@ -142,8 +142,8 @@ V tomto kurzu jste zjistili, jak připojit Akka datové proudy Kafka povolené e
 > [!div class="checklist"]
 > * Vytvoření oboru názvů služby Event Hubs
 > * Klonování projektu z příkladu
-> * Spustit Flink výrobce 
-> * Spusťte Flink příjemce
+> * Spustit Akka datové proudy 
+> * Spusťte datové proudy Akka příjemce
 
 Další informace o Event Hubs a centra událostí pro systém Kafka, naleznete v následujícím tématu:  
 

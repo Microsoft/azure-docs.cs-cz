@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: aad6aa788e9d7c7ca2c438bdeb63e77e91e4791a
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 496f411224a8d7424f85fed6e5eb105369863791
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714464"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161246"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>O technické profily v Azure Active Directory B2C vlastních zásad
 
@@ -55,12 +55,10 @@ Všechny typy technické profily sdílet stejný koncept. Odeslání vstupních 
     - Při odesílání parametry jako InputClaims a získávání informací zpět jako OutputClaims volání rozhraní REST API.
     - Vytvořit nebo aktualizovat uživatelský účet.
     - Odešle a ověří textovou zprávu vícefaktorové ověřování.
-4. **ValidationTechnicalProfiles** – [držitelem s prohlašovanou technický profil](self-asserted-technical-profile.md), můžete volat vstup [technický profil ověření](validation-technical-profile.md). Technický profil ověření ověří data zadaná uživatelem a vrátí chybovou zprávu nebo Ok, s nebo bez něj výstupní deklarace identit. Například předtím, než Azure AD B2C vytvoří nový účet, zkontroluje, zda uživatel již existuje v adresářové služby. Můžete volat rozhraní REST API technický profil přidat vlastní obchodní logikou.
-5. **OutputClaims** – deklarace identity jsou retuned zpět do kontejneru deklarací identity. Můžete použít tyto deklarace identit v dalších krocích Orchestrace nebo výstupní deklarace identity transformace.
-6. **OutputClaimsTransformations** – vstupní deklarace identity transformace deklarací identity každou výstupní byly vybrány z kontejneru deklarací identity. Výstupní deklarace identit technického profilu z předchozího kroku, a také výstupní deklarace identit transformací vstupních deklarací identity z prvního kroku může být vstupní deklarace identity transformace deklarací identity výstup. Po spuštění jsou v kontejneru a deklarace identity vrátit výstupní deklarace identit. Výstupní deklarace identity transformace deklarací identity výstup může být také vstupními deklaracemi identity transformace deklarací identity následující výstup.
-7. **ValidationTechnicalProfiles** – [samopopisné technický profil](self-asserted-technical-profile.md), můžete volat vstup [technický profil ověření](validation-technical-profile.md). Technický profil ověření ověřuje data profilované uživatelem a vrátí chybovou zprávu nebo Ok, s nebo bez něj výstupní deklarace identit. Například předtím, než Azure AD B2C vytvoří nový účet, zkontroluje, zda uživatel již existuje v adresářové služby. Můžete volat rozhraní REST API technický profil přidat vlastní obchodní logikou.
-8. **OutputClaims** – deklarace identity jsou retuned zpět do kontejneru deklarací identity. Můžete použít tyto deklarace identit v dalším kroku Orchestrace nebo výstup transformace deklarací identity.
-9. **OutputClaimsTransformations** – vstupní deklarace identity každý výstupu [transformace deklarací identity](claimstransformations.md) byly vybrány z kontejneru deklarací identity. Výstupní deklarace identit technického profilu z předchozích kroků může být vstupní deklarace identity transformace deklarací identity výstup. Po spuštění jsou v kontejneru a deklarace identity vrátit výstupní deklarace identit. Výstupní deklarace identity transformace deklarací identity výstup může být také vstupními deklaracemi identity transformace deklarací identity následující výstup.
+4. **ValidationTechnicalProfiles** – [samopopisné technický profil](self-asserted-technical-profile.md), můžete volat vstup [technický profil ověření](validation-technical-profile.md). Technický profil ověření ověřuje data profilované uživatelem a vrátí chybovou zprávu nebo Ok, s nebo bez něj výstupní deklarace identit. Například předtím, než Azure AD B2C vytvoří nový účet, zkontroluje, zda uživatel již existuje v adresářové služby. Můžete volat rozhraní REST API technický profil přidat vlastní obchodní logikou.<p>Rozsah výstupní deklarace identit technického profilu ověření je omezen na technický profil, který volá technický profil ověření a další technické profily ověřování v rámci stejné technický profil. Pokud chcete použít výstupní deklarace identit v dalším kroku Orchestrace, budete muset přidat výstupní deklarace identit technický profil, který vyvolá technický profil ověření.
+5. **OutputClaims** – deklarace identity jsou retuned zpět do kontejneru deklarací identity. Můžete použít tyto deklarace identit v dalším kroku Orchestrace nebo výstup transformace deklarací identity.
+6. **OutputClaimsTransformations** – vstupní deklarace identity každý výstupu [transformace deklarací identity](claimstransformations.md) byly vybrány z kontejneru deklarací identity. Výstupní deklarace identit technického profilu z předchozích kroků může být vstupní deklarace identity transformace deklarací identity výstup. Po spuštění jsou v kontejneru a deklarace identity vrátit výstupní deklarace identit. Výstupní deklarace identity transformace deklarací identity výstup může být také vstupními deklaracemi identity transformace deklarací identity následující výstup.
+7. **Jednotné přihlašování (SSO) Správa relací** - [Správa relací jednotného přihlašování](active-directory-b2c-reference-sso-custom.md) ovládací prvky interakce s uživatelem, až uživatel už provedl ověření. Správce může například řídit, určuje, zda je zobrazena škály zprostředkovatelů identity, nebo zda místní účet podrobnosti nutné znovu zadat.
 
 Technický profil může dědit z jiné technického profilu nastavení změnit nebo přidat nové funkce.  **IncludeTechnicalProfile** element je odkaz na základní technický profil, ze kterého je odvozen technický profil.  
 

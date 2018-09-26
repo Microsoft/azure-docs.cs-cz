@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 6a9ecbcc5161f47a192d5bf3a893a42b3ee9ce2f
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 10e6c440fe669f4bc8a18eb0a7a0f833675ab923
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379498"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182196"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Vazby pro Durable Functions (Azure Functions)
 
@@ -143,7 +143,7 @@ Interně tato vazba aktivační událost dotazuje fronty ve výchozí účet úl
 Tady jsou některé poznámky o aktivační událost aktivity:
 
 * **Práce s vlákny** – na rozdíl od trigger Orchestrace aktivit triggery nemají žádné omezení týkající se práce s vlákny nebo vstupně-výstupních operací. Má zato, že může být jako běžné funkce.
-* **Zpracování zpráv poising** – neexistuje žádná podpora nezpracovatelná zpráva byla v aktivačních událostech aktivity.
+* **Zpracování zpráv Poison** – neexistuje žádná podpora nezpracovatelná zpráva byla v aktivačních událostech aktivity.
 * **Zpráva viditelnost** -vyřazených z fronty a udržovat neviditelné konfigurovatelné doby trvání aktivity aktivační událost zpráv. Zda se tyto zprávy se obnovuje automaticky, pokud jsou aplikace function app běží a je v pořádku.
 * **Návratové hodnoty** – návratové hodnoty jsou serializovat do formátu JSON a ukládají do tabulky historie Orchestrace ve službě Azure Table storage.
 

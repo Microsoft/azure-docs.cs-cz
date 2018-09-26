@@ -2,19 +2,22 @@
 title: Použití dávkování pro zvýšení výkonu aplikací Azure SQL Database
 description: Téma poskytuje důkazy této dávkování databázové operace značně imroves rychlost a škálovatelnost aplikací Azure SQL Database. I když tyto dávkování techniky fungují pro libovolnou databázi systému SQL Server, zaměřuje článku se na Azure.
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: develop apps
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/20/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 92640eeb068b8e9a95dbe1209b2c8834e5f29da8
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.reviewer: genemi
+manager: craigg
+ms.date: 09/20/2018
+ms.openlocfilehash: 21dc28658f7f6f31bc7536df739a70238a3bcb8f
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036095"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47160804"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Použití dávkování pro zvýšení výkonu aplikací SQL Database
 Dávkování operací do služby Azure SQL Database výrazně zlepšuje výkon a škálovatelnost aplikací. Chcete-li pochopit výhody, první část tohoto článku popisuje některé výsledky testů ukázky, které porovnávají sekvenční a dávkové žádosti do služby SQL Database. Zbytek tohoto článku ukazuje techniky, scénáře a aspekty, které umožňují použití dávkování úspěšně v aplikacích Azure.

@@ -15,11 +15,11 @@ ms.date: 06/12/2018
 ms.author: v-deasim
 ms.custom: mvc
 ms.openlocfilehash: 16a939c69d9ed9be597306765f316ffe32db6665
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35643425"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47094032"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>Vytvoření koncového bodu Azure CDN
 Tento článek popisuje všechna nastavení pro vytvoření [Azure Content Delivery Network (CDN)](cdn-overview.md) koncový bod v existující profil CDN. Po vytvoření profilu a koncového bodu, můžete začít doručovat obsah svým zákazníkům. Rychlý start k vytvoření profilu a koncového bodu, najdete v části [rychlý start: vytvoření koncového bodu a profilu Azure CDN](cdn-create-new-endpoint.md).

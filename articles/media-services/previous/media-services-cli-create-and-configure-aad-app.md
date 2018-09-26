@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 06/17/2017
 ms.author: juliako
 ms.openlocfilehash: fcd0ea10bd39f9e7252e114e8d6401a4fe0ecadb
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35897285"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47096544"
 ---
 # <a name="use-azure-cli-to-create-an-aad-app-and-configure-it-to-access-azure-media-services-api"></a>Pomocí Azure CLI vytvořit aplikaci AAD a nakonfigurujte ho pro přístup k rozhraní API služby Azure Media Services
 

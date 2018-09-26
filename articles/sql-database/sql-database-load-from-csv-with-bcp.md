@@ -1,27 +1,30 @@
 ---
-title: Načtení dat ze souboru CSV do Azure SQL Database (bcp) | Microsoft Docs
+title: Načtení dat ze souboru CSV do Azure SQL Database (bcp) | Dokumentace Microsoftu
 description: Pro malá množství dat se k importu dat do databáze SQL Azure používá bcp.
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: load & move data
+ms.subservice: data-movement
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: CarlRabeler
 ms.author: carlrab
-ms.openlocfilehash: de25b3318a91a5dbf99a5a9c26af209224177f0f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: b5039fc7cb6b9751bea9a88400c8a64308d447d6
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649845"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162895"
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-flat-files"></a>Načtení dat ze souboru CSV do Azure SQL Database (ploché soubory)
 Nástroj příkazového řádku bcp můžete použít k importu dat ze souboru CSV do databáze Azure SQL Database.
 
 ## <a name="before-you-begin"></a>Než začnete
 ### <a name="prerequisites"></a>Požadavky
-Chcete-li provést kroky v tomto článku, je třeba:
+K dokončení kroků v tomto článku, budete potřebovat:
 
 * Logický server a databáze Azure SQL Database
 * Nainstalovaný nástroj příkazového řádku bcp

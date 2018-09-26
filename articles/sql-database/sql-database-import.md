@@ -2,19 +2,22 @@
 title: Import souboru BACPAC k vytvoření databáze Azure SQL | Dokumentace Microsoftu
 description: Vytvoření databáze SQL newAzure importem souboru BACPAC.
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: load & move data
-ms.date: 09/14/2018
-ms.author: carlrab
+ms.subservice: data-movement
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.openlocfilehash: eefffdc425a300a8a4caa358494fbdc4fd84e356
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+author: CarlRabeler
+ms.author: carlrab
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 9de7fe9972f1ae0fca1c4e527f718b31fddf4294
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983980"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161515"
 ---
 # <a name="import-a-bacpac-file-to-a-new-azure-sql-database"></a>Import souboru BACPAC do nové databáze SQL Azure
 

@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/21/2018
+ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: 0732fe06db77ab96c909c5f84f69825036fedf4e
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 63c193b4757c28f809a33b917058df36467d4db4
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031590"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163014"
 ---
 # <a name="load-balancer-outbound-rules"></a>Odchozí pravidla nástroje pro vyrovnávání zatížení
 
-Azure Load Balancer poskytuje odchozí připojení z virtuální sítě navíc příchozí.  Odchozí pravidla se dají jednoduše nakonfigurovat veřejný [Load balanceru úrovně Standard](load-balancer-standard-overview.md)pro odchozí síťové překlad adres (NAT).  Budete mít úplný deklarativní kontrolu nad odchozí připojení ke škálování a optimalizaci tato možnost vašim konkrétním potřebám.
+Azure Load Balancer poskytuje odchozí připojení z virtuální sítě navíc příchozí.  Odchozí pravidla se dají jednoduše nakonfigurovat veřejný [Load balanceru úrovně Standard](load-balancer-standard-overview.md)na odchozí překladu adres.  Budete mít úplný deklarativní kontrolu nad odchozí připojení ke škálování a optimalizaci tato možnost vašim konkrétním potřebám.
 
 ![Odchozí pravidla nástroje pro vyrovnávání zatížení](media/load-balancer-outbound-rules-overview/load-balancer-outbound-rules.png)
 
@@ -213,4 +213,5 @@ Při použití interní Load balanceru úrovně Standard, odchozí NAT není k d
 
 - Další informace o použití [nástroje pro vyrovnávání zatížení pro odchozí připojení](load-balancer-outbound-connections.md).
 - Další informace o [Load balanceru úrovně Standard](load-balancer-standard-overview.md).
-- Další informace o [obousměrné TCP Reset na časový limit nečinnosti](https://aka.ms/lbtcpreset).
+- Další informace o [obousměrné TCP Reset na časový limit nečinnosti](load-balancer-tcp-reset.md).
+- [Nakonfigurujte odchozí pravidla pomocí Azure CLI 2.0](configure-load-balancer-outbound-cli.md).

@@ -1,5 +1,5 @@
 ---
-title: Prostředí PowerShell v rámci rychlého startu Azure Cloud Shell (Preview) | Dokumentace Microsoftu
+title: Prostředí PowerShell v rámci rychlého startu Azure Cloud Shell | Dokumentace Microsoftu
 description: Rychlý start pro PowerShell ve službě Cloud Shell
 services: Azure
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2018
 ms.author: damaerte
-ms.openlocfilehash: cb4b7f8851c6c891ca43f6c215ba812a0c784d28
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 83fb07d718681a9d14176868d11b45a199f60543
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108134"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166184"
 ---
-# <a name="quickstart-for-powershell-in-azure-cloud-shell-preview"></a>Rychlý start pro PowerShell ve službě Azure Cloud Shell (Preview)
+# <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Rychlý start pro PowerShell ve službě Azure Cloud Shell
 
-Tento dokument podrobně popisuje, jak pomocí prostředí PowerShell ve službě Cloud Shell v [webu Azure portal](https://aka.ms/PSCloudPreview).
+Tento dokument podrobně popisuje, jak pomocí prostředí PowerShell ve službě Cloud Shell v [webu Azure portal](https://portal.azure.com/).
 
 > [!NOTE]
 > A [Bash ve službě Azure Cloud Shell](quickstart.md) rychlý start je také k dispozici.

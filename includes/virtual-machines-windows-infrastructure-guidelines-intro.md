@@ -1,2 +1,2 @@
-Tento článek je součástí série širší, abyste měli aspekty návrhu a pokyny při sestavování na infrastruktuře aplikace v Azure. Můžete [zobrazit další témata v této sérii](#next-steps). Přestože můžete rychle vytvořit prostředí pro vývoj/testování v Azure, jsou další aspekty při implementaci produkční prostředí, vysoce dostupný a v zabezpečeném prostředí.
+Tento článek je součástí širší série, kde přinášejí důležité informace o návrhu a pokyny při sestavování infrastruktury aplikace v Azure. Je možné [zobrazit další témata v této sérii](#next-steps). I když můžete rychle vytvářet prostředí pro vývoj/testování v Azure, existují další aspekty při implementaci připravené pro produkční prostředí, vysoce dostupné a zabezpečené prostředí.
 

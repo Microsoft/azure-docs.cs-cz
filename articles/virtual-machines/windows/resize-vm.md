@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
 ms.openlocfilehash: 6bd41115f586bf2969dacb772f097d84654f0306
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35643595"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47092590"
 ---
 # <a name="resize-a-windows-vm"></a>Změna velikosti virtuálního počítače Windows
 

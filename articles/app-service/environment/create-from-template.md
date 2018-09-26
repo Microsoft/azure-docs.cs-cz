@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.openlocfilehash: 92422a254bcfd5b31731dda6d1790cc85f467860
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35643504"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47094976"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Vytvoření služby ASE s použitím šablony Azure Resource Manageru
 

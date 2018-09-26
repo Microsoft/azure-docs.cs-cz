@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6dcc1abdf06df2de951bb851c8b1abe93b71a69e
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 301ae251413cc174f115479e9ebef2310aa83ba7
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381160"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162438"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Technický profil SAML definování ve vlastních zásadách pro Azure Active Directory B2C
 
@@ -106,7 +106,6 @@ Při vytváření zprostředkovatele identity spuštění toku vezměte v úvahu
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
 | PartnerEntity | Ano | Adresa URL metadat SAML zprostředkovatele identity. Zkopírujte metadat zprostředkovatele identity a přidejte do elementu CDATA `<![CDATA[Your IDP metadata]]>` |
-| IssuerUri | Ne | Určuje hodnotu **entityID** z **EntityDescriptor** element v metadatech technický profil Azure AD B2C. **EntityID** atribut je jedinečným identifikátorem poskytovatele služeb, v tomto případě technický profil Azure AD B2C. Výchozí hodnota **entityID** je `https://login.microsoftonline.com/te/your-tenant.onmicrosoft.com/your-base-policy-name` |
 | WantsSignedRequests | Ne | Určuje, zda technický profil vyžaduje všechny odchozí žádosti o ověření podepsat. Možné hodnoty: `true` nebo `false`. Výchozí hodnota je `true`. Pokud je hodnota nastavená na `true`, **SamlMessageSigning** kryptografický klíč se musí zadat a všechny odchozí žádosti o ověření přihlášení. Pokud je hodnota nastavena na `false`, **SigAlg** a **podpis** parametry (řetězec dotazu nebo odeslat parametr) jsou vynechány z požadavku. Tato metadata řídí také metadata **AuthnRequestsSigned** atribut, který je výstup v metadatech technický profil Azure AD B2C, jež jsou sdílena s tímto poskytovatelem identity. |
 | XmlSignatureAlgorithm | Ne | Metoda, která používá Azure AD B2C k podpisu požadavku SAML. Tato metadata řídí hodnota **SigAlg** parametr (řetězec dotazu nebo odeslat parametr) v požadavku SAML. Možné hodnoty: `Sha256`, `Sha384`, `Sha512`, nebo `Sha1`. Ujistěte se, že nakonfigurujete algoritmus podpisu na obou stranách se stejnou hodnotou. Použijte pouze algoritmus, který podporuje váš certifikát. | 
 | WantsSignedAssertions | Ne | Určuje, zda technický profil vyžaduje všechny příchozí kontrolní výrazy byly podepsané. Možné hodnoty: `true` nebo `false`. Výchozí hodnota je `true`. Pokud je hodnota nastavena na `true`, všechny části kontrolní výrazy `saml:Assertion` odeslané podle identity musí být podepsané zprostředkovatele na Azure AD B2C. Pokud je hodnota nastavena na `false`, zprostředkovatel identity neměli podepisovat kontrolní výrazy, ale i v případě, že dělá, Azure AD B2C se ověřit podpis. Tato metadata řídí také příznak metadata **WantsAssertionsSigned**, což je výstup v metadatech technický profil Azure AD B2C, jež jsou sdílena s tímto poskytovatelem identity. Pokud zakážete ověření kontrolních výrazů, můžete také chtít zakázat ověřování podpisu odpovědi (Další informace najdete v tématu **ResponsesSigned**). |

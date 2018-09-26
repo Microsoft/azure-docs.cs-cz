@@ -2,21 +2,22 @@
 title: Prostředí PowerShell pro koncové body služeb virtuální sítě a pravidla v Azure SQL | Dokumentace Microsoftu
 description: Poskytuje skripty prostředí PowerShell k vytváření a správě koncových bodů služby virtuální pro Azure SQL Database a SQL Data Warehouse.
 services: sql-database
-author: DhruvMsft
-manager: craigg
 ms.service: sql-database
-ms.prod_service: sql-database, sql-data-warehouse
-ms.custom: VNet Service endpoints
+ms.subservice: development
+ms.custom: ''
+ms.devlang: PowerShell
 ms.topic: conceptual
-ms.date: 06/14/2018
-ms.reviewer: genemi, vanto
+author: DhruvMsft
 ms.author: dmalik
-ms.openlocfilehash: d40f471ec3f7aa1646fd4b9b19395be87cb5935a
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.reviewer: genemi, vanto
+manager: craigg
+ms.date: 06/14/2018
+ms.openlocfilehash: 50e88dd11b8a883a4d2999ad2d0419cbf7176078
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714543"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161144"
 ---
 # <a name="use-powershell-to-create-a-virtual-service-endpoint-and-rule-for-azure-sql-database-and-sql-data-warehouse"></a>Použití Powershellu k vytvoření koncového bodu služby virtuální a pravidla pro Azure SQL Database a SQL Data Warehouse
 

@@ -9,18 +9,18 @@ ms.topic: article
 ms.component: speech-service
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 6e5f3128a6a62ef27bdc0d24ddda0afc54d78b03
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9a56b50e8bd01c8eab9e8935b0d250f1b0da59bc
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994747"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47181840"
 ---
 # <a name="microsoft-software-license-termsbrmicrosoft-cognitive-services-speech-sdk"></a>LICENČNÍ PODMÍNKY PRO SOFTWARE SPOLEČNOSTI MICROSOFT<br>SADOU SDK PRO ŘEČ MICROSOFT COGNITIVE SERVICES
 
 **POKUD ŽIJETE V (NEBO JSOU FIRMA S VAŠÍ HLAVNÍ SÍDLO PODNIKÁNÍ V) OBLAST SPOJENÉ STÁTY, PŘEČTĚTE SI NÁSLEDUJÍCÍ ČÁSTI "VAZBY USTANOVENÍ O ROZHODČÍM ŘÍZENÍ A ZŘEKNUTÍ SE HROMADNÉ ŽALOBY". TO MÁ VLIV NA ZPŮSOB ŘEŠENÍ SPORŮ.**
 
-Tyto licenční podmínky představují smlouvu mezi vámi a společností Microsoft Corporation (nebo některou z jejích afilací). Vztahují se na výše uvedený software ve verzi preview a všechny aktualizace služeb nebo software Microsoftu (s výjimkou v rozsahu takové služby nebo aktualizace doprovázeny novými nebo doplňujícími podmínkami, v takovém případě tyto odlišné podmínky použití výhledově a nemění vaše nebo Práv společnosti Microsoft týkající se před aktualizací softwaru nebo služby). POKUD BUDETE JEDNAT V SOULADU S TĚMITO LICENČNÍMI PODMÍNKAMI, MÁTE NÁSLEDUJÍCÍ PRÁVA. POUŽITÍM TOHOTO SOFTWARU VYJADŘUJETE SOUHLAS S TĚMITO PODMÍNKAMI.
+Tyto licenční podmínky představují smlouvu mezi vámi a společností Microsoft Corporation (nebo některou z jejích afilací). Vztahují se na výše uvedený software a všechny aktualizace služeb nebo software Microsoftu (s výjimkou v rozsahu takové služby nebo aktualizace doprovázeny novými nebo doplňujícími podmínkami, v takovém případě tyto odlišné podmínky použití výhledově a nemění vaše nebo Práv společnosti Microsoft týkající se před aktualizací softwaru nebo služby). POKUD BUDETE JEDNAT V SOULADU S TĚMITO LICENČNÍMI PODMÍNKAMI, MÁTE NÁSLEDUJÍCÍ PRÁVA.  POUŽITÍM TOHOTO SOFTWARU VYJADŘUJETE SOUHLAS S TĚMITO PODMÍNKAMI.
 
 ## <a name="1-installation-and-use-rights"></a>1. PRÁVA NA INSTALACI A POUŽITÍ
 

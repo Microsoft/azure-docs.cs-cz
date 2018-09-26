@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 54812ed8b53143d8fa156149bfb2c7adff7da98d
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: b731b280b3e97076014f609571766a07a3dde1ea
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381213"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159886"
 ---
 # <a name="string-claims-transformations"></a>Řetězec deklarace identity transformace
 
@@ -150,7 +150,7 @@ Použití, které tato deklarace identity transformace, která nastavit řetěze
 
 ## <a name="compareclaims"></a>CompareClaims
 
-Určení, jestli jedna deklarace řetězec je roven jinému. Výsledkem je nová logická hodnota boolean typu deklarace identity s hodnotou `true` nebo `false`.
+Určení, jestli jedna deklarace řetězec je roven jinému. Výsledkem je nový logický typ ClaimType s hodnotou `true` nebo `false`.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |

@@ -8,52 +8,49 @@ ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 3600fc47a0fb318a49c1b37722cb7fffa51ec6f2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ab759d731f8bac674435e48b0f7af67331ce03d2
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46951946"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47160447"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Principy Azure Graph prostředků dotazovací jazyk
 
-Dotazovací jazyk pro graf prostředků Azure podporuje řadu operátorů a funkcí. Každá práce a pracovat podobně jako na dotaz jazyka Kusto (KQL). Ale je důležité si uvědomit, že prostředek grafu dotazovací jazyk je podobná [KQL](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators), nejsou stejné.
+Dotazovací jazyk pro graf prostředků Azure podporuje řadu operátorů a funkcí. Každá práci a pracují na základě [Průzkumník dat Azure](../../../data-explorer/data-explorer-overview.md).
 
-> [!NOTE]
-> Odkazy na dokumentaci KQL může vyžadovat ověření.
-
-Nejlepší způsob, jak Seznamte se s jazykem dotazů grafem prostředků je začít s dokumentací pro KQL vám pomůžou pochopit, o jak strukturovaná jazyk a jak různých podporovány operátory a funkce pracují společně.
+Nejlepší způsob, jak Seznamte se s jazykem dotazů grafem prostředků je začít s dokumentací pro Průzkumník dat Azure [dotazovací jazyk](/azure/kusto/query/index). Získáte představu o strukturování jazyk a jak různých podporovány operátory a funkce pracují společně.
 
 ## <a name="supported-tabular-operators"></a>Nepodporuje tabulkové operátory
 
 Tady je seznam podporovaných tabulkové operátorů v grafu prostředků:
 
-- [DISTINCT](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/distinct-operator)
-- [Rozšíření](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/extend-operator)
-- [Limit](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/limit-operator)
-- [Řadit podle](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/order-operator)
-- [Projekt](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/project-operator)
-- [tokeny pro projekt](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/project-away-operator)
-- [Ukázka](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/sample-operator)
-- [distinct – ukázka](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/sample-distinct-operator)
-- [Seřadit podle:](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/sort-operator)
-- [shrnutí](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator)
-- [Take](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/take-operator)
-- [nahoru](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/top-operator)
-- [vnořené nahoru](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/top-nested-operator)
-- [TOP-hitters](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/top-hitters-operator)
-- [kde](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator)
+- [Počet](/azure/kusto/query/countoperator)
+- [DISTINCT](/azure/kusto/query/distinctoperator)
+- [Rozšíření](/azure/kusto/query/extendoperator)
+- [Limit](/azure/kusto/query/limitoperator)
+- [Řadit podle](/azure/kusto/query/orderoperator)
+- [Projekt](/azure/kusto/query/projectoperator)
+- [tokeny pro projekt](/azure/kusto/query/projectawayoperator)
+- [Ukázka](/azure/kusto/query/sampleoperator)
+- [distinct – ukázka](/azure/kusto/query/sampledistinctoperator)
+- [Seřadit podle:](/azure/kusto/query/sortoperator)
+- [shrnutí](/azure/kusto/query/summerizeoperator)
+- [Take](/azure/kusto/query/takeoperator)
+- [nahoru](/azure/kusto/query/topoperator)
+- [vnořené nahoru](/azure/kusto/query/topnestedoperator)
+- [TOP-hitters](/azure/kusto/query/tophittersoperator)
+- [kde](/azure/kusto/query/whereoperator)
 
 ## <a name="supported-functions"></a>Podporované funkce
 
 Tady je seznam podporovaných funkcí v grafu prostředků:
 
-- [ago()](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/ago%28%29)
-- [buldschema()](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions/buildschema%28%29)
-- [Count()](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions/count%28%29)
-- [strcat()](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/strcat%28%29)
-- [isnotempty()](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/isnotempty%28%29_-notempty%28%29)
-- [ToString()](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/tostring%28%29)
+- [ago()](/azure/kusto/query/agofunction)
+- [buildschema()](/azure/kusto/query/buildschema-aggfunction)
+- [strcat()](/azure/kusto/query/strcatfunction)
+- [isnotempty()](/azure/kusto/query/isnotemptyfunction)
+- [ToString()](/azure/kusto/query/tostringfunction)
 
 ## <a name="next-steps"></a>Další postup
 

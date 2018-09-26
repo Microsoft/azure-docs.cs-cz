@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: 587540430dc4089973186c2862f402ccde73df65
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: f79be44d33a327f3ead8d950885cb5d47ce3a015
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047348"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163798"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Diagnostika výkonu pro virtuální počítače Azure
 
@@ -35,15 +35,15 @@ Windows 10, Windows 8, Windows 8 Enterprise, Windows 8 Pro, Windows 8.1, Windows
 
 ## <a name="install-and-run-performance-diagnostics-on-your-vm"></a>Nainstalujte a spusťte na svém virtuálním počítači Diagnostika výkonu
 Diagnostika výkonu nainstaluje rozšíření virtuálního počítače, na kterém běží nástroj diagnostiku, s názvem [PerfInsights](https://aka.ms/perfinsights). Jak nainstalovat a spustit diagnostiku výkonu, postupujte podle těchto kroků:
-1)  V levém sloupci příkazů vyberte **virtuálních počítačů**.
-2)  Ze seznamu názvy virtuálních počítačů vyberte virtuální počítač, který chcete spustit diagnostiku.
-3)  V pravém sloupci příkazy, vyberte **Diagnostika výkonu**.
+1.  V levém sloupci příkazů vyberte **virtuálních počítačů**.
+1.  Ze seznamu názvy virtuálních počítačů vyberte virtuální počítač, který chcete spustit diagnostiku.
+1.  V pravém sloupci příkazy, vyberte **Diagnostika výkonu**.
 
     ![Snímek obrazovky Azure Portalu, se zvýrazněným tlačítkem Diagnostika výkonu instalace](media/performance-diagnostics/performance-diagnostics-install.png)
 
     > [!NOTE]
     > Na tomto snímku obrazovky je skrytá okna názvy virtuálních počítačů.
-4) Vyberte účet úložiště (volitelné)
+1. Vyberte účet úložiště (volitelné)
 
     Pokud chcete použít jeden účet úložiště pro ukládání výsledků diagnostiky výkonu pro několik virtuálních počítačů, můžete vybrat účet úložiště kliknutím **nastavení** tlačítko na panelu nástrojů. Klikněte na tlačítko **OK** tlačítko po výběru účtu úložiště.
 
@@ -53,8 +53,8 @@ Diagnostika výkonu nainstaluje rozšíření virtuálního počítače, na kter
 
     ![Snímek obrazovky výběru účtu úložiště v okně nastavení diagnostiky výkonu](media/performance-diagnostics/select-storage-account.png)
 
-5) Vyberte **nainstalovat Diagnostika výkonu** tlačítko.
-6) Vyberte **spustit diagnostiku** zaškrtávací políčko, pokud chcete spustit diagnostiku po dokončení instalace. Pokud provedete výběr, budete moct zvolit scénáře pro analýzu výkonu a související možnosti jsou.
+1. Vyberte **nainstalovat Diagnostika výkonu** tlačítko.
+1. Vyberte **spustit diagnostiku** zaškrtávací políčko, pokud chcete spustit diagnostiku po dokončení instalace. Pokud provedete výběr, budete moct zvolit scénáře pro analýzu výkonu a související možnosti jsou.
 
     ![Tlačítko Instalovat Diagnostika výkonu snímek obrazovky](media/performance-diagnostics/install-diagnostics-button.png)
 
@@ -148,13 +148,13 @@ Když otevřete lístek podpory s Microsoftem, je potřeba sdílet sestavu Diagn
 
 **Možnost 2:** vygenerovat sdílený přístupový podpis pro komprimovaný soubor sestavy diagnostiky  
 Může sdílet odkaz na komprimovaný soubor sestavy s použitím sdílených přístupových podpisů. Postupujte přitom takto: 
-1)  Na webu Azure Portal přejděte do účtu úložiště, ve kterém je uložený diagnostická data.
-2)  Vyberte **objekty BLOB** pod **službu Blob service** oddílu. 
-3)  Vyberte **azdiagextnresults** kontejneru.
-4)  Vyberte možnost výkonu diagnostiky výstup komprimovaný soubor, který chcete sdílet.
-5)  Na **generovat SAS** kartu, vyberte kritéria pro sdílení. 
-6)  Klikněte na tlačítko **vygenerujte token SAS objektů blob a adresa URL**.
-7)  Kopírovat **SAS URL objektu Blob**a sdílet je s pracovníkem technické podpory. 
+1.  Na webu Azure Portal přejděte do účtu úložiště, ve kterém je uložený diagnostická data.
+1.  Vyberte **objekty BLOB** pod **službu Blob service** oddílu. 
+1.  Vyberte **azdiagextnresults** kontejneru.
+1.  Vyberte možnost výkonu diagnostiky výstup komprimovaný soubor, který chcete sdílet.
+1.  Na **generovat SAS** kartu, vyberte kritéria pro sdílení. 
+1.  Klikněte na tlačítko **vygenerujte token SAS objektů blob a adresa URL**.
+1.  Kopírovat **SAS URL objektu Blob**a sdílet je s pracovníkem technické podpory. 
 
 **Možnost 3:** stáhnout sestavu z účtu úložiště
 
@@ -162,8 +162,8 @@ Diagnostika komprimovaného souboru obsahujícímu sestavu výkonu můžete tak�
 
 ### <a name="how-do-i-capture-the-diagnostics-data-at-the-correct-time"></a>Jak zachytit diagnostická data ve správný čas?
 Každý Diagnostika výkonu spuštění má dvě fáze: 
-1)  Instalace nebo aktualizace Diagnostika výkonu rozšíření virtuálního počítače.
-2)  Diagnostika během určené doby.
+1.  Instalace nebo aktualizace Diagnostika výkonu rozšíření virtuálního počítače.
+1.  Diagnostika během určené doby.
 
 Současné době neexistuje jednoduchý způsob, jak přesně zjistit, kdy nainstalovat rozšíření virtuálního počítače je dokončena. Obvykle trvá přibližně 45 sekund až 1 minuty se nainstalovat rozšíření virtuálního počítače. Po dokončení instalace rozšíření virtuálního počítače můžete spustit kroky pro reprodukci mít Diagnostika výkonu zachycení správné sady dat pro řešení potíží. 
 

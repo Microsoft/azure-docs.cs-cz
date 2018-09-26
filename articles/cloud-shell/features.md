@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: juluk
-ms.openlocfilehash: 5087b8a1d675fb6fb2bbfb2b46a09c215bf5e9ae
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2184d006bb99d57f50e71c0096d68b7a0b69a219
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998759"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162283"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Funkce a nástroje pro Azure Cloud Shell
 
@@ -44,7 +44,7 @@ Souborů mimo `$Home` a stav počítače nejsou trvalé napříč relacemi. Pou�
 
 ### <a name="azure-drive-azure"></a>Jednotka Azure (Azure:)
 
-PowerShell ve službě Cloud Shell (Preview) se spustí můžete v Azure disk (`Azure:`).
+PowerShell ve službě Cloud Shell se spustí můžete v Azure disk (`Azure:`).
 Jednotka Azure umožňuje snadné zjišťování a navigace Azure prostředky, jako jsou výpočetní prostředky, sítě, úložiště atd podobný navigace systému souborů.
 Můžete dál používat známá [rutin prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure) spravovat tyto prostředky bez ohledu na jednotce v.
 Všechny změny provedené u prostředků Azure, buď přímo na webu Azure portal nebo prostřednictvím rutin Powershellu pro Azure, se projeví v jednotce Azure.  Můžete spustit `dir -Force` aktualizovat vaše prostředky.
@@ -81,6 +81,6 @@ Cloud Shell zahrnuje předem nakonfigurované ověřování pro open source nás
 
 ## <a name="next-steps"></a>Další postup
 [Bash v Cloud Shellu Quickstart](quickstart.md) <br>
-[Prostředí PowerShell v Cloud Shellu (Preview) Quickstart](quickstart-powershell.md) <br>
-[Další informace o rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/) <br>
+[Prostředí PowerShell ve službě Cloud Shell Quickstart](quickstart-powershell.md) <br>
+[Další informace o Azure CLI 2.0](https://docs.microsoft.com/cli/azure/) <br>
 [Další informace o Azure Powershellu](https://docs.microsoft.com/powershell/azure/) <br>

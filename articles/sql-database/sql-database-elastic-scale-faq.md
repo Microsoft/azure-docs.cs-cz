@@ -1,49 +1,51 @@
 ---
-title: Elastické škálování Azure SQL – nejčastější dotazy | Microsoft Docs
-description: Časté otázky k Azure SQL Database elastické škálování.
+title: Pružné škálování Azure SQL – nejčastější dotazy | Dokumentace Microsoftu
+description: Nejčastější dotazy ohledně pružné škálování Azure SQL Database.
 services: sql-database
-documentationcenter: ''
-manager: craigg
-author: stevestein
 ms.service: sql-database
-ms.custom: scale out apps
+subservice: elastic-scale
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 94ae9549bb5e09c80703a7db316675bff1272372
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: afa442897637e6c7255335798dc45b48aedb2b2a
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647472"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47158577"
 ---
-# <a name="elastic-database-tools-faq"></a>Nástroje elastické databáze – nejčastější dotazy
-#### <a name="if-i-have-a-single-tenant-per-shard-and-no-sharding-key-how-do-i-populate-the-sharding-key-for-the-schema-info"></a>Jak se pokud je nutné klienta jednou za horizontálního oddílu a žádný klíč horizontálního dělení, naplnit horizontálního dělení klíč pro informací o schématu?
-Objekt informace o schématu slouží pouze k rozdělení sloučení scénáře. Pokud aplikace je ze své podstaty jednoho klienta, nevyžaduje Nástroj sloučení rozdělení a proto není nutné k naplnění objektu informace o schématu.
+# <a name="elastic-database-tools-faq"></a>Nejčastější dotazy týkající se nástrojů pro elastické databáze
+#### <a name="if-i-have-a-single-tenant-per-shard-and-no-sharding-key-how-do-i-populate-the-sharding-key-for-the-schema-info"></a>Jak se mám jedním tenantem každý horizontální oddíl a žádný klíč horizontálního dělení, naplnění klíč horizontálního dělení informace schématu?
+Informace o objektu schématu slouží pouze k rozdělení sloučení scénáře. Pokud aplikace je ze své podstaty jednoho tenanta, nevyžaduje nástroji sloučení rozdělení a proto není nutné k naplnění objektu informací o schématu.
 
-#### <a name="ive-provisioned-a-database-and-i-already-have-a-shard-map-manager-how-do-i-register-this-new-database-as-a-shard"></a>Jste vybaveny databáze a už mám manažera mapování horizontálních, jak zaregistrovat novou databázi jako horizontálního oddílu?
-Najdete v tématu  **[přidání do aplikace pomocí klientské knihovny elastické databáze ID horizontálního oddílu](sql-database-elastic-scale-add-a-shard.md)**. 
+#### <a name="ive-provisioned-a-database-and-i-already-have-a-shard-map-manager-how-do-i-register-this-new-database-as-a-shard"></a>Vybaveny databázi a už mám správce mapování horizontálních oddílů, jak se dá zaregistrovat novou databázi jako horizontální oddíl?
+Podrobnosti najdete na  **[přidání horizontální oddíl do aplikace pomocí Klientská knihovna elastic database](sql-database-elastic-scale-add-a-shard.md)**. 
 
-#### <a name="how-much-do-elastic-database-tools-cost"></a>Kolik nástroje elastické databáze stojí?
-Pomocí klientské knihovny elastické databáze není nesnižuje veškeré náklady. Pouze pro databáze Azure SQL, které používáte pro horizontálních oddílů a správce mapy horizontálního oddílu, stejně jako role web nebo worker, které zřídíte pro nástroj sloučení rozdělení naběhnou první náklady.
+#### <a name="how-much-do-elastic-database-tools-cost"></a>Kolik nástrojů elastic database stát?
+Klientská knihovna elastic database pomocí nejsou spojené žádné náklady. Náklady se účtují jenom za databází Azure SQL, které používáte pro horizontálních oddílů a správce mapování horizontálních oddílů, jakož i webové nebo pracovní role, které zřídíte pro nástroj Split sloučení.
 
-#### <a name="why-are-my-credentials-not-working-when-i-add-a-shard-from-a-different-server"></a>Proč po přidání horizontálního oddílu z jiného serveru nejsou k práci pomocí pověření?
-Nepoužívejte přihlašovací údaje ve tvaru "ID uživatele =username@servername", jednoduše použijte "ID uživatele = uživatelské jméno".  Být také, zda přihlášení "username" má oprávnění na horizontálního oddílu.
+#### <a name="why-are-my-credentials-not-working-when-i-add-a-shard-from-a-different-server"></a>Proč nejsou přihlašovací údaje pracovat, když je možné přidat horizontálních oddílů z jiného serveru?
+Nepoužívejte přihlašovací údaje ve formě "ID uživatele =username@servername", jednoduše použijte "ID uživatele = username".  Taky se ujistěte, že přihlášení "username" má oprávnění pro horizontálního oddílu.
 
-#### <a name="do-i-need-to-create-a-shard-map-manager-and-populate-shards-every-time-i-start-my-applications"></a>Je třeba vytvořit správce mapy horizontálního oddílu a naplnit horizontálních oddílů při každém spuštění aplikace?
-Ne – vytvoření mapy správce horizontálního oddílu (například  **[ShardMapManagerFactory.CreateSqlShardMapManager](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager.aspx)**) se o jednorázovou operaci.  Vaše aplikace by měla používat volání **[ShardMapManagerFactory.TryGetSqlShardMapManager()](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx)** v době spuštění aplikace.  Existuje má pouze jedno takové volání za domény aplikace.
+#### <a name="do-i-need-to-create-a-shard-map-manager-and-populate-shards-every-time-i-start-my-applications"></a>Je nutné vytvořit správce mapování horizontálních oddílů a naplňte jimi horizontálních oddílů pokaždé, když začnu v mé aplikace?
+Ne – vytvoření správce mapování horizontálních oddílů (například  **[ShardMapManagerFactory.CreateSqlShardMapManager](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager.aspx)**) se o jednorázovou operaci.  Aby aplikace používala volání **[ShardMapManagerFactory.TryGetSqlShardMapManager()](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx)** v době spuštění aplikace.  By měla pouze jedno takové volání pro doménu aplikace.
 
-#### <a name="i-have-questions-about-using-elastic-database-tools-how-do-i-get-them-answered"></a>Otázky týkající se používání nástroje elastické databáze je nutné, jak je odpovědi získat?
-Kontaktujte nás na [fórum Azure SQL Database](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted).
+#### <a name="i-have-questions-about-using-elastic-database-tools-how-do-i-get-them-answered"></a>Mám otázky týkající se používání nástrojů elastic database, jak je odpovědi získat?
+Kontaktujte nás na [fórum pro Azure SQL Database](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted).
 
-#### <a name="when-i-get-a-database-connection-using-a-sharding-key-i-can-still-query-data-for-other-sharding-keys-on-the-same-shard--is-this-by-design"></a>Při připojení k databázi pomocí klíče horizontálního dělení doručení, I můžete stále dotaz na data pro další horizontálního dělení klíče na stejné ID horizontálního oddílu.  Je to záměrné?
-Rozhraní API elastické škálování získáte připojení ke správné databázi pro klíč horizontálního dělení, ale neposkytuje klíče filtrování horizontálního dělení.  Přidat **kde** klauzule do dotazu omezit obor na horizontálního dělení zadaný klíč, v případě potřeby.
+#### <a name="when-i-get-a-database-connection-using-a-sharding-key-i-can-still-query-data-for-other-sharding-keys-on-the-same-shard--is-this-by-design"></a>Když obdržím připojení k databázi pomocí klíče horizontálního dělení, můžu dál dotazy na data pro další klíče horizontálního dělení ve stejném horizontálním oddílu.  Toto chování je záměrné?
+Rozhraní API pružné škálování umožňují připojení ke správné databázi pro klíč horizontálního dělení, ale neposkytuje filtrování klíče horizontálního dělení.  Přidat **kde** klauzule dotazu v případě potřeby omezit obor ke klíči poskytnutý horizontálního dělení.
 
-#### <a name="can-i-use-a-different-azure-database-edition-for-each-shard-in-my-shard-set"></a>Lze použít na jinou edici databáze Azure pro každý horizontálního oddílu v sadě horizontálního oddílu?
-Ano, horizontálního oddílu je jednotlivé databáze a jeden horizontálních proto může být na edici Premium, zatímco jiné se edice Standard. Edice horizontálního oddílu můžete navíc škálovat nahoru nebo dolů vícekrát po dobu platnosti horizontálního oddílu.
+#### <a name="can-i-use-a-different-azure-database-edition-for-each-shard-in-my-shard-set"></a>Můžu použít jinou edici databáze Azure pro každý horizontální oddíl v sadě horizontálních oddílů?
+Ano, horizontální oddíl představuje jednotlivé databáze, a proto jeden horizontální oddíl může být Premium edition, zatímco jiné se Standard edition. Edice horizontálního oddílu dál, můžete škálovat směrem nahoru nebo dolů více než jednou po dobu životnosti horizontálního oddílu.
 
-#### <a name="does-the-split-merge-tool-provision-or-delete-a-database-during-a-split-or-merge-operation"></a>Ukládá zřídit nástroj sloučení rozdělení (nebo odstranit) databáze během operace rozdělení nebo sloučení?
-Ne. Pro **rozdělení** operace, je cílová databáze musí existovat pomocí příslušného schématu a zaregistrovat u správce mapy horizontálního oddílu.  Pro **sloučení** operace, je potřeba odstranit horizontálního oddílu ze správce mapy horizontálního oddílu a potom odstraňte tuto databázi.
+#### <a name="does-the-split-merge-tool-provision-or-delete-a-database-during-a-split-or-merge-operation"></a>Provede nástroj zřízení dělení slučování (nebo odstranění) databáze během operace dělené tunelové propojení nebo sloučení?
+Ne. Pro **rozdělit** operace, cílová databáze pomocí příslušného schématu, musí existovat a být registrována pomocí Správce mapování horizontálních oddílů.  Pro **sloučení** operace, je potřeba odstranit horizontální oddíl od správce mapování horizontálních oddílů a odstraňte databázi.
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

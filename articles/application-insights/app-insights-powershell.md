@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: mbullwin
-ms.openlocfilehash: cfed1636bf27279b8a391559d3e88b823036f703
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 932e7447c59c7e9d8322a0e85b0843b0e836b840
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35643073"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47095503"
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>Vytváření prostředků Application Insights v prostředí PowerShell
 Tento článek ukazuje, jak automatizovat vytváření a aktualizaci [Application Insights](app-insights-overview.md) prostředky automaticky pomocí Azure Resource Manageru. Například provádět jako součást procesu sestavení. Spolu s základní prostředek Application Insights, můžete vytvořit [testy dostupnosti webu](app-insights-monitor-web-app-availability.md), nastavit [výstrahy](app-insights-alerts.md), nastavte [cenové schéma](app-insights-pricing.md)a vytvořit další prostředky Azure .
@@ -152,7 +152,7 @@ Vytvořte nový soubor .json – ho budeme nazývat `template1.json` v tomto př
 
 
 
-## <a name="create-application-insights-resources"></a>Vytváření prostředků Application Insights
+## <a name="create-application-insights-resources"></a>Vytvoření prostředků Application Insights
 1. V prostředí PowerShell Přihlaste se k Azure:
    
     `Connect-AzureRmAccount`

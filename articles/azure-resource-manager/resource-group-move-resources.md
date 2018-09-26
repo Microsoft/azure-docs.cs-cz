@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/07/2018
+ms.date: 09/25/2018
 ms.author: tomfitz
-ms.openlocfilehash: e79419c764229e7dc52a32389b8b1116668dddfc
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 0970f5d4e61a40df7454cc850e59d86708d4aa1c
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039731"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159091"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -220,14 +220,14 @@ Následující seznam obsahuje obecný přehled služby Azure, které lze přesu
 * Service Bus
 * Service Fabric
 * Service Fabric sítě
-* Služby SignalR
+* Služba SignalR
 * Úložiště – účty úložiště v různých oblastech se nedají přesouvat v rámci jedné operace. Místo toho použijte samostatné operace pro každou oblast.
 * Úložiště (classic) – viz [omezení klasického nasazení](#classic-deployment-limitations)
 * Stream Analytics – Stream Analytics úlohy nelze přesunout, při spuštění ve stavu.
 * Server služby SQL Database – databáze a serveru se musí nacházet ve stejné skupině prostředků. Přesunete-li SQL server, přesunou také všechny jeho databáze. Toto chování platí pro databáze Azure SQL Database a Azure SQL Data Warehouse.
 * Time Series Insights
 * Traffic Manager
-* Virtual Machines – virtuální počítače se spravovanými disky nejde přesunout. Zobrazit [omezení virtuálních počítačů](#virtual-machines-limitations)
+* Virtual Machines – pro virtuální počítače pomocí spravované disky, najdete v článku [omezení virtuálních počítačů](#virtual-machines-limitations)
 * Virtuální počítače (classic) – viz [omezení klasického nasazení](#classic-deployment-limitations)
 * Škálovací sady virtuálních počítačů – viz [omezení virtuálních počítačů](#virtual-machines-limitations)
 * Virtuální sítě – viz [omezení virtuální sítě](#virtual-networks-limitations)
@@ -267,28 +267,30 @@ Následující seznam obsahuje obecný přehled služby Azure, které nelze pře
 
 ## <a name="virtual-machines-limitations"></a>Omezení virtuálních počítačů
 
-Spravované disky se podporují pro přesunutí od 24. září 2018. Budete muset zaregistrovat k povolení této funkce
+Spravované disky se podporují pro přesunutí od 24. září 2018. Budete muset zaregistrovat tuto funkci povolil.
 
-#### <a name="powershell"></a>PowerShell
-`Register-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute`
-#### <a name="cli"></a>Rozhraní příkazového řádku
-`az feature register Microsoft.Compute ManagedResourcesMove`
+```azurepowershell-interactive
+Register-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute
+```
 
+```azurecli-interactive
+az feature register Microsoft.Compute ManagedResourcesMove
+```
 
-To znamená, že můžete také přesunout:
+Tato podpora znamená, že můžete také přesunout:
 
 * Virtuální počítače se spravovanými disky
 * Spravovaná Image
 * Spravované snímky
 * Skupiny dostupnosti s virtuálními počítači se spravovanými disky
 
-Tady jsou omezení, které se zatím nepodporují
+Tady jsou omezení, které se zatím nepodporují:
 
 * Virtuální počítače pomocí certifikátu uloženého ve službě Key Vault můžete přesunout do nové skupiny prostředků ve stejném předplatném, ale ne napříč předplatnými.
 * Virtuální počítače nakonfigurované s Azure Backup. Používá následující alternativní řešení Chcete-li přesunout tyto virtuální počítače
   * Vyhledejte umístění virtuálního počítače.
-  * Vyhledejte skupinu prostředků pomocí následující vzor pro pojmenování: "AzureBackupRG_<location of your VM>_1" například AzureBackupRG_westus2_1
-  * Pokud na webu Azure Portal, pak zaškrtněte "Zobrazit skryté typy"
+  * Vyhledejte skupinu prostředků pomocí následující vzor pro pojmenování: `AzureBackupRG_<location of your VM>_1` třeba AzureBackupRG_westus2_1
+  * Pokud na webu Azure portal, pak zaškrtněte "Zobrazit skryté typy"
   * Pokud v prostředí PowerShell, použijte `Get-AzureRmResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` rutiny
   * Pokud v rozhraní příkazového řádku, použijte `az resource list -g AzureBackupRG_<location of your VM>_1`
   * Nyní s typem najděte prostředek `Microsoft.Compute/restorePointCollections` , který má vzor pro pojmenování `AzureBackup_<name of your VM that you're trying to move>_###########`

@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: haining
 author: haining
 ms.date: 09/24/2018
-ms.openlocfilehash: 2182a39836f02596d22168722e6ece7a2872dccc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0c5cfcee65b176147125dd2edbff2497b1eee70b
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969475"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47158560"
 ---
 # <a name="migrate-to-the-latest-version-of-azure-machine-learning-service"></a>Migrace na nejnovější verzi služby Azure Machine Learning 
 
@@ -54,13 +54,13 @@ Prostředí nejde migrovat na nejnovější verzi služby Azure Machine Learning
 
 Začínáme s nejnovější verzí tím, že vytvoříte pracovnímu prostoru Azure Machine Learning v [webu Azure portal](quickstart-get-started.md). Řídicí panel pracovního prostoru na portálu se podporuje jenom prohlížeče Edge, Chrome a Firefox.
 
-Tento pracovní prostor je prostředek nejvyšší úrovně služby a umožňuje využívat všechny nejnovější funkce služby Azure Machine Learning. [Další informace o tomto pracovním prostoru a architektura](concept-azure-machine-learning-architecture.md).
+Tento pracovní prostor je prostředek nejvyšší úrovně služby a umožňuje využívat všechny nejnovější funkce služby Azure Machine Learning. Další informace o tomto [pracovní prostor a architektura](concept-azure-machine-learning-architecture.md).
 
 <a name="projects"></a>
 
 ## <a name="projects"></a>Projekty
 
-Namísto toho, aby vaše projekty v pracovním prostoru v cloudu, projekty jsou nyní adresáře na místním počítači v nejnovější verzi. [Zobrazit diagram architektury nejnovější](concept-azure-machine-learning-architecture.md). 
+Namísto toho, aby vaše projekty v pracovním prostoru v cloudu, projekty jsou nyní adresáře na místním počítači v nejnovější verzi. Zobrazit diagram [nejnovější architektura](concept-azure-machine-learning-architecture.md). 
 
 Dál používat místní adresář obsahující soubory a skripty, zadejte název adresáře ["experiment.submit"](http://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) Python příkaz nebo pomocí příkazu az ml projektu připojení rozhraní příkazového řádku.
 

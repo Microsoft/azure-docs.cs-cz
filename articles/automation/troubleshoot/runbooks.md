@@ -8,12 +8,12 @@ ms.date: 07/13/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 1954393c9fe544c33919c8f9fb8ee04e430e7639
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: b02f1b04756f1e3f01426e58c5f8c625cb746f05
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542561"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163898"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Řešení potíží s runbooky
 
@@ -93,11 +93,18 @@ K této chybě dochází, pokud název předplatného není platný nebo pokud u
 
 Aby bylo možné určit, pokud byly správně ověřeny pro Azure a přístup k předplatnému, které se pokoušíte vyberte, proveďte následující kroky:  
 
-1. Ujistěte se, že spouštíte **Add-AzureAccount** dřív, než spustíte **Select-AzureSubscription** rutiny.  
-2. Pokud se stále zobrazí tato chybová zpráva, upravte kód tak, že přidáte **Get-AzureSubscription** následující rutina **Add-AzureAccount** rutiny a pak spusťte kód. Teď ověřte, zda výstup Get-AzureSubscription obsahuje podrobnosti o předplatném.  
+1. Ujistěte se, že spouštíte **Add-AzureAccount** dřív, než spustíte rutiny **Select-AzureSubscription** rutiny.  
+2. Pokud se stále zobrazí tato chybová zpráva, upravte kód tak, že přidáte **- AzureRmContext** následující parametr **Add-AzureAccount** rutiny a pak spusťte kód.
 
-   * Pokud nevidíte žádné předplatné podrobnosti ve výstupu, to znamená, že předplatné ještě není inicializován.  
-   * Pokud se zobrazí podrobnosti o předplatném na výstupu, potvrďte, že používáte správné předplatné název nebo ID s **Select-AzureSubscription** rutiny.
+   ```powershell
+   $Conn = Get-AutomationConnection -Name AzureRunAsConnection
+   Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID `
+-ApplicationID $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+
+   $context = Get-AzureRmContext
+
+   Get-AzureRmVM -ResourceGroupName myResourceGroup -AzureRmContext $context
+   ```
 
 ### <a name="auth-failed-mfa"></a>Scénář: Ověřování do Azure se nezdařila, protože je povolené ověřování službou Multi-Factor Authentication
 
@@ -151,7 +158,7 @@ Podřízeného runbooku nepoužívá správný kontext při spuštění.
 
 #### <a name="resolution"></a>Řešení
 
-Práce s několika předplatnými kontext předplatného může dojít ke ztrátě při vyvolání podřízené runbooky. Chcete-li mít jistotu, že kontext předplatného je předán do podřízené runbooky, přidejte `DefaultProfile` parametr rutiny a předání kontextu do něj.
+Práce s několika předplatnými kontext předplatného může dojít ke ztrátě při vyvolání podřízené runbooky. Chcete-li mít jistotu, že kontext předplatného je předán do podřízené runbooky, přidejte `AzureRmContext` parametr rutiny a předání kontextu do něj.
 
 ```azurepowershell-interactive
 # Connect to Azure with RunAs account
@@ -171,7 +178,7 @@ Start-AzureRmAutomationRunbook `
     –AutomationAccountName 'MyAutomationAccount' `
     –Name 'Test-ChildRunbook' `
     -ResourceGroupName 'LabRG' `
-    -DefaultProfile $AzureContext `
+    -AzureRmContext $AzureContext `
     –Parameters $params –wait
 ```
 

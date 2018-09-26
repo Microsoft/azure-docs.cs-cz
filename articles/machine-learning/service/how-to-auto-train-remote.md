@@ -10,26 +10,26 @@ ms.component: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 80a227b57c8df157890337f0e207519c71ae5bd6
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 2ec0dea7e50747f8af337874c8f12463cecb8df7
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034616"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163473"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Trénování modelů pomocí automatizovaných strojového učení v cloudu
 
-Ve službě Azure Machine Learning můžete trénování modelu s různými typy výpočetní prostředky, které spravujete. Cílové výpočetní prostředí může být místní počítač nebo počítač v cloudu. 
+Ve službě Azure Machine Learning můžete trénování modelu s různými typy výpočetní prostředky, které spravujete. Cílové výpočetní prostředí může být místní počítač nebo počítač v cloudu.
 
 Můžete snadno vertikálně navýšit kapacitu nebo horizontální navýšení kapacity experimentu s Machine learningem tak, že přidáte další výpočetní cíle, jako je založený na Ubuntu dat virtuálního počítače VĚDY nebo Azure Batch AI. Datové VĚDY je přizpůsobená image virtuálního počítače v cloudu Azure Microsoftu vytvořená speciálně pro datových věd. Obsahuje mnoho oblíbených datové vědy a dalších nástrojů, funkcí a je předem nakonfigurované.  
 
-V tomto článku se naučíte sestavit model využívající automatizované ML na datové VĚDY.  
+V tomto článku se naučíte sestavit model využívající automatizované ML na datové VĚDY. Můžete najít příklady použití Azure Batch AI v [tyto ukázkové poznámkové bloky v Githubu](https://aka.ms/aml-notebooks).  
 
 ## <a name="how-does-remote-differ-from-local"></a>Jak se liší vzdálené a místní?
 
-Tento kurz "[Vyškolíme model klasifikace pomocí automatizované ML](tutorial-auto-train-models.md)" vás naučí, jak použijete k natrénování modelu ml automatizované místního počítače.  Pracovní postup, když místně školení platí také pro i vzdálených cílů. Pomocí vzdálené výpočetní iterací experimentů v ML automatizované provedl asynchronně. Díky tomu, že zrušíte konkrétní iteraci, podívejte se na stav provádění, pokračovat v práci na ostatní buňky v poznámkovém bloku Jupyter. Tak moct trénovat vzdáleně, je nejprve vytvořte vzdálené výpočetní cíl například DSVM Azure, nakonfigurovat a odeslání kódu existuje.
+Tento kurz "[Vyškolíme model klasifikace pomocí automatizovaných strojového učení](tutorial-auto-train-models.md)" vás naučí, jak použijete k natrénování modelu pomocí automatizovaných ML místního počítače.  Pracovní postup, když místně školení platí také pro i vzdálených cílů. Však s vzdálený výpočetní automatizované iterací experimentů v ML jsou spouštěny asynchronně. To umožňuje zrušit konkrétní iteraci, podívejte se na stav provádění nebo pokračovat v práci na ostatní buňky v poznámkovém bloku Jupyter. K trénování vzdáleně, je nejprve vytvořit cílové vzdálené výpočetní prostředí jako je například DSVM Azure.  Potom nakonfigurujte vzdáleného prostředku a odeslání kódu existuje.
 
-Tento článek ukazuje, že dodatečné kroky potřebné ke spuštění automatizovaných ML experimentovat na vzdálené DSVM.  Objekt workspace `ws`, v tomto kurzu se používá v rámci sem kód.
+Tento článek popisuje další kroky potřebné ke spuštění na vzdáleném DSVM automatizované experimentu ML.  Objekt workspace `ws`, v tomto kurzu se používá v rámci sem kód.
 
 ```python
 ws = Workspace.from_config()
@@ -50,6 +50,7 @@ try:
     print('found existing dsvm.')
 except:
     print('creating new dsvm.')
+    # Below is using a VM of SKU Standard_D2_v2 which is 2 core machine. You can check Azure virtual machines documentation for additional SKUs of VMs.
     dsvm_config = DsvmCompute.provisioning_configuration(vm_size = "Standard_D2_v2")
     dsvm_compute = DsvmCompute.create(ws, name = dsvm_name, provisioning_configuration = dsvm_config)
     dsvm_compute.wait_for_completion(show_output = True)
@@ -69,10 +70,12 @@ Omezení přístupu názvem DSVM patří:
 >    1. Ukončíte bez vytvoření virtuálního počítače
 >    1. Znovu spustit kód pro vytváření.
 
+Tento kód nevytváří uživatelské jméno nebo heslo pro datové VĚDY, pro kterého je zřízené. Pokud se chcete připojit přímo k virtuálnímu počítači, přejděte [webu Azure portal](https://portal.azure.com) k poskytování pověření.  
 
-## <a name="access-data-using-get-data-file"></a>Přístup k datům pomocí získat Data souboru
 
-Poskytnutí přístupu vzdálený prostředek na trénovací data. Pro automatizované ML experimenty, běží na vzdálené výpočetní prostředky, data, musí být načtena pomocí `get_data()` funkce.  
+## <a name="access-data-using-getdata-file"></a>Přístup k datům pomocí souboru get_data
+
+Poskytnutí přístupu vzdálený prostředek na trénovací data. Pro automatizované strojovým učením běžící na vzdálené výpočetní prostředky, data, musí být načtena pomocí `get_data()` funkce.  
 
 Pokud chcete poskytnout přístup, musíte mít:
 + Vytvořit soubor obsahující get_data.py `get_data()` – funkce 
@@ -81,7 +84,7 @@ Pokud chcete poskytnout přístup, musíte mít:
 Kód pro čtení dat z úložiště objektů blob nebo místní disk v souboru get_data.py může zapouzdřit. V následující ukázce kódu data pocházejí z balíčku skriptu sklearn.
 
 >[!Warning]
->Pokud používáte vzdálený výpočetní, pak je nutné použít `get_data()` k provádění transformací vaše data.
+>Pokud používáte vzdálený výpočetní, pak je nutné použít `get_data()` kde se provádí transformaci dat. Pokud je potřeba nainstalovat další knihovny pro transformace dat v rámci get_data(), existují další kroky, kterými se můžete řídit. Odkazovat [auto-ml přípravy ukázkový poznámkový blok](https://aka.ms/aml-auto-ml-data-prep ) podrobnosti.
 
 
 ```python
@@ -105,7 +108,7 @@ def get_data():
     return { "X" : X_digits, "y" : y_digits }
 ```
 
-## <a name="configure-automated-machine-learning-experiment"></a>Konfigurace automatizovaného experimentu strojového učení
+## <a name="configure-experiment"></a>Konfigurace testu
 
 Zadejte nastavení pro `AutoMLConfig`.  (Viz [úplný seznam parametrů]() a jejich možných hodnot.)
 
@@ -136,7 +139,7 @@ automl_config = AutoMLConfig(task='classification',
                             )
 ```
 
-## <a name="submit-automated-machine-learning-training-experiment"></a>Odesílání automatizovaných experimentu strojového učení a školení
+## <a name="submit-training-experiment"></a>Odeslat výukového experimentu
 
 Teď odešlete konfigurace k automatickému výběru algoritmus, hyper parametry a trénování modelu. (Další [Další informace o nastavení]() pro `submit` metoda.)
 

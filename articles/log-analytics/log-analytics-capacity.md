@@ -1,6 +1,6 @@
 ---
-title: Kapacitu a výkon řešení v Azure Log Analytics | Microsoft Docs
-description: Použijte řešení kapacitu a výkon v analýzy protokolů vám pomohou pochopit kapacitu serverů Hyper-V.
+title: Kapacitu a výkon řešení v Azure Log Analytics | Dokumentace Microsoftu
+description: Pomocí řešení kapacitu a výkon v Log Analytics vám objasní, kapacita serverech technologie Hyper-V.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -14,34 +14,34 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: e9163b3c29fd304c80eff46426a30c4fa0ce3b15
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: 0244673d50e22124e8a0678e202004f06b0bca00
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130339"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182616"
 ---
-# <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>Plánování kapacity virtuálního počítače technologie Hyper-V s řešením kapacitu a výkon (Preview)
+# <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>Plánování kapacity virtuálních počítačů Hyper-V s řešením kapacitu a výkon (Preview)
 
 ![Symbol kapacitu a výkon](./media/log-analytics-capacity/capacity-solution.png)
 
 > [!NOTE]
-> Řešení kapacitu a výkon je zastaralá.  Zákazníci, kteří již nainstalovali řešení můžete nadále používat ji, ale kapacitu a výkon nelze přidat do žádné nové pracovní prostory.
+> Kapacitu a výkon řešení je zastaralá.  Zákazníci, kteří už jste nainstalovali řešení můžete ho nadále používat, ale kapacitu a výkon nelze přidat do jakékoli nové pracovní prostory.
 
-Řešení kapacitu a výkon v analýzy protokolů můžete použít vám pomohou pochopit kapacitu serverů Hyper-V. Řešení poskytuje přehledy o prostředí Hyper-V ukazuje celkové využití (procesoru, paměti a disku) hostitelů a virtuálních počítačů spuštěných na těchto hostitelích Hyper-V. Metriky se shromažďují pro procesoru, paměti a disky mezi všechny hostitele a virtuální počítače spuštěné na ně.
+Můžete použít řešení kapacitu a výkon v Log Analytics vám objasní, kapacita serverech technologie Hyper-V. Řešení poskytuje přehled o prostředí Hyper-V tím, že zobrazuje celkové využití (využití procesoru, paměti a disku) hostitelů a virtuálních počítačů spuštěných na těchto hostitelích Hyper-V. Shromažďování metrik pro využití procesoru, paměti a disků napříč virtuálními počítači na nich spuštěné a všichni hostitelé.
 
 Řešení:
 
--   Zobrazí hostitelů s nejnižší a nejvyšší využití procesoru a paměti
+-   Hostitelé s nejvyšším a nejnižším využití procesoru a paměti
 -   Zobrazuje virtuální počítače s nejnižší a nejvyšší využití procesoru a paměti
--   Zobrazuje virtuální počítače s nejnižší a nejvyšší využití IOPS a propustnosti
--   Zobrazuje, které běží na které hostitele virtuálních počítačů
--   Zobrazuje nejvyšší disky s vysokou propustnost, IOPS a latence ve sdílených svazků clusteru
-- Umožňuje přizpůsobit a filtrovat podle skupiny
+-   Zobrazuje virtuální počítače s nejnižší a nejvyšší využití vstupně-výstupních operací a propustnosti
+-   Zobrazuje, které virtuální počítače jsou spuštěné na hostitelích, které
+-   Zobrazuje hlavní disky s vysokou propustností, vstupně-výstupních operací a latence ve sdílených svazků clusteru
+- Umožňuje přizpůsobení a filtrovat podle skupin
 
 > [!NOTE]
-> V předchozí verzi kapacitu a výkon řešení správy kapacity volá vyžaduje System Center Operations Manager a System Center Virtual Machine Manager. Toto řešení aktualizované nemá těchto závislostí.
+> Předchozí verze kapacitu a výkon řešení správy kapacity vyžaduje System Center Operations Manager a System Center Virtual Machine Manager. Toto řešení aktualizované nemá těchto závislostí.
 
 
 ## <a name="connected-sources"></a>Připojené zdroje
@@ -50,92 +50,92 @@ Následující tabulka popisuje připojené zdroje, které toto řešení podpor
 
 | Připojený zdroj | Podpora | Popis |
 |---|---|---|
-| [Agenti systému Windows](log-analytics-windows-agent.md) | Ano | Řešení shromažďuje informace kapacitu a výkon data z agentů v systému Windows. |
-| [Agenti systému Linux](log-analytics-linux-agents.md) | Ne    | Řešení neshromažďuje data informace kapacitu a výkon od agentů přímé Linux.|
-| [Skupiny správy nástroje SCOM](log-analytics-om-agents.md) | Ano |Řešení shromažďuje údaje o kapacitu a výkon od agentů v připojené skupině pro správu SCOM. Přímé připojení z agenta nástroje SCOM k analýze protokolů se nevyžaduje.|
-| [Účet služby Azure Storage](log-analytics-azure-storage.md) | Ne | Úložiště Azure nezahrnuje data kapacitu a výkon.|
+| [Agenti systému Windows](log-analytics-windows-agent.md) | Ano | Řešení shromažďuje informace o datech kapacitu a výkon z agentů Windows. |
+| [Agenti systému Linux](log-analytics-linux-agents.md) | Ne    | Řešení neshromažďuje informace o datech kapacitu a výkon z přímí agenti systému Linux.|
+| [Skupiny pro správu SCOM](log-analytics-om-agents.md) | Ano |Řešení shromažďuje data kapacity a výkonu z agentů v připojené skupině pro správu nástroje SCOM. Přímé připojení z agenta nástroje SCOM k Log Analytics se nevyžaduje.|
+| [Účet služby Azure Storage](log-analytics-azure-storage.md) | Ne | Úložiště Azure neobsahuje data kapacitu a výkon.|
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Windows nebo agenty nástroje Operations Manager musí být nainstalován na Windows Server 2012 nebo vyšší hostitelů Hyper-V, není virtuálních počítačů.
+- V systému Windows Server 2012 nebo vyšší hostitele Hyper-V, ne virtuální počítače je nutné nainstalovat Windows nebo agenty nástroje Operations Manager.
 
 
 ## <a name="configuration"></a>Konfigurace
 
 Proveďte následující krok a přidejte kapacitu a výkon řešení do pracovního prostoru.
 
-- Přidat kapacitu a výkon řešení do pracovního prostoru analýzy protokolů pomocí procesu popsaného v tématu [řešení přidat analýzy protokolů z Galerie řešení](log-analytics-add-solutions.md).
+- Přidat kapacitu a výkon řešení do pracovního prostoru Log Analytics pomocí postupu popsaného v [přidání řešení Log Analytics z Galerie řešení](log-analytics-add-solutions.md).
 
 ## <a name="management-packs"></a>Sady Management Pack
 
-Pokud skupinu správy nástroje SCOM je připojen do pracovního prostoru analýzy protokolů, pak následující sady management Pack bude nainstalována v aplikaci SCOM při přidání tohoto řešení. Není potřeba žádná konfigurace ani údržba těchto sad Management Pack.
+Pokud vaši skupinu pro správu nástroje SCOM je připojený k pracovnímu prostoru Log Analytics, pak tyto sady management Pack se nainstalují v aplikaci SCOM při přidání tohoto řešení. Není potřeba žádná konfigurace ani údržba těchto sad Management Pack.
 
 - Microsoft.IntelligencePacks.CapacityPerformance
 
-Podobná událost 1201:
+Událost 1201 vypadá podobně jako:
 
 
 ```
 New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", version:"1.10.3190.0" received.
 ```
 
-Při aktualizaci řešení kapacitu a výkon, změní se číslo verze.
+Při aktualizaci řešení kapacitu a výkon, číslo verze se změní.
 
 Další informace o způsobu, jakým se aktualizují sady pro správu řešení, najdete v tématu [Připojení Operations Manageru ke službě Log Analytics](log-analytics-om-agents.md).
 
 ## <a name="using-the-solution"></a>Použití řešení
 
-Když přidáte kapacitu a výkon řešení do pracovního prostoru, kapacitu a výkon, se přidá na řídicí panel Přehled. Tuto dlaždici zobrazí počet aktuálně aktivních hostitelů Hyper-V a vybrán počet aktivních virtuálních počítačů, které byly monitorovány pro toto časové období.
+Když přidáte kapacitu a výkon řešení do pracovního prostoru, kapacitu a výkon se přidá do řídicího panelu s přehledem. Tuto dlaždici se zobrazuje počet aktuálně aktivních hostitelů Hyper-V a vybrat počet aktivních virtuálních počítačů, které byly sledovány pro toto časové období.
 
 ![Dlaždice kapacitu a výkon](./media/log-analytics-capacity/capacity-tile.png)
 
 
 ### <a name="review-utilization"></a>Zkontrolujte využití
 
-Klikněte na dlaždici kapacitu a výkon Otevřete řídící panel kapacitu a výkon. Řídicí panel obsahuje sloupce v následující tabulce. Každý sloupec uvádí až deset položek odpovídajících kritériím tohoto sloupce pro zadaný obor a časový rozsah. Kliknutím na **Zobrazit vše** v dolní části sloupce nebo na záhlaví sloupce můžete spustit hledání v protokolu, které vrátí všechny záznamy.
+Kliknutím na dlaždici kapacitu a výkon otevřete řídicí panel kapacitu a výkon. Řídicí panel obsahuje sloupce v následující tabulce. Každý sloupec uvádí až deset položek odpovídajících kritériím tohoto sloupce pro zadaný obor a časový rozsah. Kliknutím na **Zobrazit vše** v dolní části sloupce nebo na záhlaví sloupce můžete spustit hledání v protokolu, které vrátí všechny záznamy.
 
 - **Hostitelé**
-    - **Využití procesoru hostitele** zobrazuje grafické zobrazení trendu využití procesoru hostitele počítače a seznamu hostitelů, v závislosti na zvolené časové období. Podržte ukazatel nad spojnicový graf, chcete-li zobrazit podrobnosti pro určitý bod v čase. Klikněte na graf a zobrazit další podrobnosti v protokolu vyhledávání. Klikněte na libovolný název hostitele a otevřete hledání protokolů a zobrazit podrobnosti čítače procesoru pro hostované virtuální počítače.
-    - **Hostování využití paměti** zobrazuje grafické zobrazení trendu využití paměti v hostitelských počítačích a seznamu hostitelů, v závislosti na zvolené časové období. Podržte ukazatel nad spojnicový graf, chcete-li zobrazit podrobnosti pro určitý bod v čase. Klikněte na graf a zobrazit další podrobnosti v protokolu vyhledávání. Klikněte na libovolný název hostitele a otevřete hledání protokolů a zobrazit podrobnosti čítače paměti pro hostované virtuální počítače.
+    - **Využití procesoru hostitele** zobrazí grafické zobrazení trendu využití výkonu procesoru hostitelských počítačů a seznam hostitelů, v závislosti na vybraném časovém období. Najeďte myší spojnicový graf, chcete-li zobrazit podrobnosti pro konkrétní bod v čase. Klepněte na graf, chcete-li zobrazit více podrobností v prohledávání protokolu. Klikněte na libovolný název hostitele a otevřete prohledávání protokolů a zobrazte podrobnosti čítače CPU pro hostované virtuální počítače.
+    - **Hostování využití paměti v aplikaci** zobrazí grafické zobrazení trendu využití paměti v aplikaci hostitelských počítačích a seznam hostitelů, v závislosti na vybraném časovém období. Najeďte myší spojnicový graf, chcete-li zobrazit podrobnosti pro konkrétní bod v čase. Klepněte na graf, chcete-li zobrazit více podrobností v prohledávání protokolu. Klikněte na libovolný název hostitele a otevřete prohledávání protokolů a zobrazte podrobnosti čítače paměti pro hostované virtuální počítače.
 - **Virtual Machines**
-    - **Využití procesoru virtuálního počítače** zobrazuje grafické zobrazení trendu využití procesoru virtuálního počítače a seznam virtuálních počítačů, v závislosti na zvolené časové období. Podržte ukazatel nad spojnicový graf zobrazit podrobnosti pro určitý bod v čase pro hlavní 3 virtuální počítače. Klikněte na graf a zobrazit další podrobnosti v protokolu vyhledávání. Klikněte na libovolný název virtuálního počítače a otevřete protokolu vyhledávání a zobrazení agregovat podrobnosti čítače procesoru pro virtuální počítač.
-    - **Využití paměti virtuálního počítače** zobrazuje grafické zobrazení trendu využití paměti v aplikaci virtuální počítače a seznam virtuálních počítačů, v závislosti na zvolené časové období. Podržte ukazatel nad spojnicový graf zobrazit podrobnosti pro určitý bod v čase pro hlavní 3 virtuální počítače. Klikněte na graf a zobrazit další podrobnosti v protokolu vyhledávání. Klikněte na libovolný název virtuálního počítače a otevřete hledání protokolů a zobrazit podrobnosti čítače agregované paměti pro virtuální počítač.
-    - **Celkový počet IOPS disku virtuálního počítače** zobrazuje grafické zobrazení trendu disku celkový počet IOPS pro virtuální počítače a seznam virtuálních počítačů s IOPS pro každou, podle zvolené časové období. Podržte ukazatel nad spojnicový graf zobrazit podrobnosti pro určitý bod v čase pro hlavní 3 virtuální počítače. Klikněte na graf a zobrazit další podrobnosti v protokolu vyhledávání. Klikněte na libovolný název virtuálního počítače a otevřete protokolu vyhledávání a zobrazení agregované disku IOPS čítač podrobnosti pro virtuální počítač.
-    - **Celková propustnost disku virtuálního počítače** zobrazuje grafické zobrazení trendu propustnosti celkový disku pro virtuální počítače a seznam virtuálních počítačů s propustností celkový disku, podle zvolené časové období. Podržte ukazatel nad spojnicový graf zobrazit podrobnosti pro určitý bod v čase pro hlavní 3 virtuální počítače. Klikněte na graf a zobrazit další podrobnosti v protokolu vyhledávání. Klikněte na libovolný název virtuálního počítače a otevřete hledání protokolů a zobrazit podrobnosti čítače propustnost agregované celkový disku pro virtuální počítač.
+    - **Využití procesoru virtuálního počítače** zobrazí grafické zobrazení trendu využití výkonu procesoru virtuálních počítačů a seznam virtuálních počítačů, na základě vybraného časového období. Najeďte myší spojnicový graf, chcete-li zobrazit podrobnosti pro konkrétní bod v čase pro hlavní 3 virtuální počítače. Klepněte na graf, chcete-li zobrazit více podrobností v prohledávání protokolu. Klikněte na libovolný název virtuálního počítače a otevřete prohledávání protokolů a zobrazte podrobnosti agregované čítače CPU pro virtuální počítač.
+    - **Využití paměti virtuálního počítače** zobrazí grafické zobrazení trendu využití paměti virtuálních počítačů a seznam virtuálních počítačů, na základě vybraného časového období. Najeďte myší spojnicový graf, chcete-li zobrazit podrobnosti pro konkrétní bod v čase pro hlavní 3 virtuální počítače. Klepněte na graf, chcete-li zobrazit více podrobností v prohledávání protokolu. Klikněte na libovolný název virtuálního počítače a otevřete prohledávání protokolů a zobrazte podrobnosti čítače agregované paměti pro virtuální počítač.
+    - **Celkový počet IOPS disku virtuálního počítače** zobrazí seznam virtuálních počítačů s vstupně-výstupních operací a grafické zobrazení trendu celkový počet vstupně-výstupních diskových pro virtuální počítače založené na vybrané časové období. Najeďte myší spojnicový graf, chcete-li zobrazit podrobnosti pro konkrétní bod v čase pro hlavní 3 virtuální počítače. Klepněte na graf, chcete-li zobrazit více podrobností v prohledávání protokolu. Klikněte na libovolný název virtuálního počítače a otevřete prohledávání protokolů a zobrazení agregované vstupně-výstupních diskových čítač podrobnosti pro virtuální počítač.
+    - **Celková propustnost disku virtuálního počítače** zobrazuje grafické zobrazení trendu celková propustnost disku pro virtuální počítače a seznam virtuálních počítačů s propustností celkový počet disků, na základě vybraného časového období. Najeďte myší spojnicový graf, chcete-li zobrazit podrobnosti pro konkrétní bod v čase pro hlavní 3 virtuální počítače. Klepněte na graf, chcete-li zobrazit více podrobností v prohledávání protokolu. Klikněte na libovolný název virtuálního počítače a otevřete prohledávání protokolů a zobrazte podrobnosti čítače propustnost agregované celkový počet disků pro virtuální počítač.
 - **Sdílené svazky clusteru**
-    - **Celková propustnost** zobrazí součet obou čte a zapisuje na sdílené svazky clusteru.
-    - **Celkový počet IOPS** zobrazí součet vstupně-výstupních operací za sekundu na sdílené svazky clusteru.
-    - **Celková latence** zobrazuje nízkou celkovou latenci na sdílené svazky clusteru.
-- **Hostování hustotu** dlaždici nejvyšší zobrazuje celkový počet hostitelů a virtuálních počítačů, které jsou k dispozici pro řešení. Kliknutím na horní dlaždici zobrazit další podrobnosti v protokolu vyhledávání. Také uvádí všechny hostitele a počet virtuálních počítačů, které jsou hostovány. Klikněte na tlačítko pro hostitele a přejít k podrobnostem výsledků virtuálních počítačů do protokolu hledání.
+    - **Celková propustnost** zobrazí součet obou čte a zapisuje na sdílený svazek clusteru.
+    - **Celkový počet vstupně-výstupních operací** zobrazovat součet vstupně výstupní operace za sekundu na sdílený svazek clusteru.
+    - **Celková latence** ukazuje celkovou latenci na sdílený svazek clusteru.
+- **Hustota hostitele** nejvyšší dlaždice ukazuje celkový počet hostitelů a virtuálních počítačů, které jsou k dispozici pro řešení. Klepněte na horní dlaždice k zobrazení dalších podrobností v prohledávání protokolu. Obsahuje také seznam všechny hostitele a počet virtuálních počítačů, které jsou hostované. Klikněte na hostitele, chcete-li zobrazit podrobnosti výsledků virtuálního počítače v prohledávání protokolu.
 
 
-![okno hostitele řídicí panel](./media/log-analytics-capacity/dashboard-hosts.png)
+![řídicí panel hostitele okno](./media/log-analytics-capacity/dashboard-hosts.png)
 
-![okno řídicího panelu virtuální počítače](./media/log-analytics-capacity/dashboard-vms.png)
+![řídicí panel okno virtual machines](./media/log-analytics-capacity/dashboard-vms.png)
 
 
 ### <a name="evaluate-performance"></a>Vyhodnocení výkonu
 
-Provozní výpočetní prostředí se liší výrazně z jedné organizace. Navíc může kapacitu a výkon úloh závisí na tom, jak vaše virtuální počítače jsou spuštěné, a co byste zvážit normální. Konkrétní postupy vám pomohou měr výkonu by pravděpodobně nebude použitelná pro prostředí. Tak více zobecněn závazné pokyny je vhodnější pomohou. Společnost Microsoft publikuje celou řadu doporučený postup články, které umožňují měřit výkon.
+Produkční výpočetního prostředí liší výrazně z jedné organizace. Kromě toho může kapacitu a výkon úloh závisí na jak běží vaše virtuální počítače, a co byste zvážit normální. Konkrétní postupy, které vám pomůže měřit výkon by pravděpodobně nelze použít pro vaše prostředí. Takže více zobecnit doporučené pokyny je vhodnější pomoct. Microsoft zveřejňuje řadu doporučený články, které umožňují měřit výkon.
 
-To Shrneme, shromažďuje řešení kapacitu a výkon data z různých zdrojů včetně čítače výkonu. Použít kapacitu a výkon data, která se zobrazí v různých ploch v řešení a porovnejte výsledky na ty, na [měření výkonu u Hyper-V](https://msdn.microsoft.com/library/cc768535.aspx) článku. I když článek byl publikován dřívějška, metriky, důležité informace a pokyny jsou stále platné. Článek obsahuje odkazy na další užitečné zdroje.
+Souhrnně řečeno, řešení shromažďuje kapacitu a výkon data z nejrůznějších zdrojů, včetně čítačů výkonu. Použít kapacitu a výkon data, která se zobrazí v různých ploch v řešení a porovnat výsledky těm na [měření výkonu v technologii Hyper-V](https://msdn.microsoft.com/library/cc768535.aspx) článku. I když se článek byl publikován dřívějška, metriky, důležité informace a pokyny jsou stále platné. Tento článek obsahuje odkazy na další užitečné zdroje informací.
 
 
 ## <a name="sample-log-searches"></a>Ukázky hledání v protokolech
 
-Následující tabulka obsahuje ukázkový protokol hledání pro kapacitu a výkon data shromážděna a vypočítána toto řešení.
+Následující tabulka obsahuje ukázky hledání v protokolech pro kapacitu a výkon data shromážděná a počítá tímto řešením.
 
 
 | Dotaz | Popis |
 |:--- |:--- |
-| Všechny konfigurace paměti hostitele | Výkonu &#124; kde ObjectName == "Kapacitu a výkon" a název_čítače == "Hostitele přiřazené MB paměti" &#124; shrnout MB = avg(CounterValue) podle InstanceName |
-| Všechny konfigurace paměti virtuálního počítače | Výkonu &#124; kde ObjectName == "Kapacitu a výkon" a název_čítače == "Virtuální počítač přiřazen MB paměti" &#124; shrnout MB = avg(CounterValue) podle InstanceName |
-| Rozdělení celkový počet IOPS Disk napříč všechny virtuální počítače | Výkonu &#124; kde ObjectName == "Kapacitu a výkon" a (název_čítače == "Čtení virtuálního pevného disku/s" nebo název_čítače == "Zápisy virtuálního pevného disku/s") &#124; shrnout AggregatedValue = avg(CounterValue) podle bin (TimeGenerated, 1 hod), název_čítače, InstanceName |
-| Rozdělení celková propustnost disku napříč všechny virtuální počítače | Výkonu &#124; kde ObjectName == "Kapacitu a výkon" a (název_čítače == "Pro čtení virtuálního pevného disku MB/s" nebo název_čítače == "VHD zápisu MB/s") &#124; shrnout AggregatedValue = avg(CounterValue) podle bin (TimeGenerated, 1 hod), název_čítače, InstanceName |
-| Rozdělení celkový počet IOPS napříč všechny sdílené svazky clusteru | Výkonu &#124; kde ObjectName == "Kapacitu a výkon" a (název_čítače == "Čtení sdíleného svazku clusteru nebo s" nebo název_čítače == "CSV zápisy nebo s") &#124; shrnout AggregatedValue = avg(CounterValue) podle bin (TimeGenerated, 1 hod), název_čítače, InstanceName |
-| Rozdělení celková propustnost mezi všechny sdílené svazky clusteru | Výkonu &#124; kde ObjectName == "Kapacitu a výkon" a (název_čítače == "Čtení sdíleného svazku clusteru nebo s" nebo název_čítače == "CSV zápisy nebo s") &#124; shrnout AggregatedValue = avg(CounterValue) podle bin (TimeGenerated, 1 hod), název_čítače, InstanceName |
-| Rozdělení nízkou celkovou latenci mezi všechny sdílené svazky clusteru | Výkonu &#124; kde ObjectName == "Kapacitu a výkon" a (název_čítače == "Latenci pro čtení sdíleného svazku clusteru" nebo název_čítače == "CSV zápisu latence") &#124; shrnout AggregatedValue = avg(CounterValue) podle bin (TimeGenerated, 1 hod), název_čítače, InstanceName |
+| Všechny konfigurace paměti hostitele | Perf &#124; kde ObjectName == "Kapacity a výkonu" a hodnota CounterName == "Hostitele přiřadit MB paměti" &#124; shrnout MB = avg(CounterValue) podle InstanceName |
+| Všechny konfigurace paměti virtuálního počítače | Perf &#124; kde ObjectName == "Kapacity a výkonu" a hodnota CounterName == "Virtuální počítač přiřazen MB paměti" &#124; shrnout MB = avg(CounterValue) podle InstanceName |
+| Rozpis celkový počet IOPS na disku ve všech virtuálních počítačích | Perf &#124; kde ObjectName == "Kapacity a výkonu" a (hodnota CounterName == "virtuálního pevného disku čtení/s, nebo hodnota CounterName =="Zápisy virtuálního pevného disku/s") &#124; summarize AggregatedValue = avg(CounterValue) podle bin (TimeGenerated, 1 hodina), CounterName, InstanceName |
+| Rozpis celkové propustnosti disků ve všech virtuálních počítačích | Perf &#124; kde ObjectName == "Kapacity a výkonu" a (hodnota CounterName == "virtuálního pevného disku pro čtení MB/s, nebo hodnota CounterName =="Virtuálního pevného disku zápis MB/s") &#124; summarize AggregatedValue = avg(CounterValue) podle bin (TimeGenerated, 1 hodina), CounterName, InstanceName |
+| Rozpis celkový počet IOPS na všech sdílených svazcích clusteru | Perf &#124; kde ObjectName == "Kapacity a výkonu" a (hodnota CounterName == "sdíleného svazku clusteru čtení/s, nebo hodnota CounterName =="Sdíleného svazku clusteru zápisů za sekundu") &#124; summarize AggregatedValue = avg(CounterValue) podle bin (TimeGenerated, 1 hodina), CounterName, InstanceName |
+| Rozpis celkové propustnosti ve všech sdílených svazcích clusteru | Perf &#124; kde ObjectName == "Kapacity a výkonu" a (hodnota CounterName == "sdíleného svazku clusteru čtení/s, nebo hodnota CounterName =="Sdíleného svazku clusteru zápisů za sekundu") &#124; summarize AggregatedValue = avg(CounterValue) podle bin (TimeGenerated, 1 hodina), CounterName, InstanceName |
+| Rozpis celkové latence ve všech sdílených svazcích clusteru | Perf &#124; kde ObjectName == "Kapacity a výkonu" a (hodnota CounterName == "Latence pro čtení sdíleného svazku clusteru" nebo hodnota CounterName == "Latence zápisu sdíleného svazku clusteru") &#124; summarize AggregatedValue = avg(CounterValue) podle bin (TimeGenerated, 1 hodina), CounterName, InstanceName |
 
 
 ## <a name="next-steps"></a>Další postup
-* Použití [hledání přihlásit analýzy protokolů](log-analytics-log-search.md) na podrobnější data kapacitu a výkon.
+* Použití [prohledávání protokolů v Log Analytics](log-analytics-log-search.md) k zobrazení podrobných dat o kapacitě a výkonu.

@@ -2,19 +2,22 @@
 title: Služba Azure SQL Database – vCore | Dokumentace Microsoftu
 description: Nákupní model založený na virtuálních jádrech umožňuje nezávisle na sobě škálovat výpočetní prostředky a prostředky úložiště, odpovídají zajištění místního výkonu a optimalizovat cena.
 services: sql-database
-author: CarlRabeler
 ms.service: sql-database
-ms.custom: DBs & servers
+ms.subservice: ''
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/14/2018
-manager: craigg
+author: CarlRabeler
 ms.author: carlrab
-ms.openlocfilehash: 6c8790110b0ecb8ea7d38756661774b3526f7a7c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.reviewer: sashan, moslake
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 8947a34f43f09281712c0e211c3dc6b8db9da6b3
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983391"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47160668"
 ---
 # <a name="choosing-a-vcore-service-tier-compute-memory-storage-and-io-resources"></a>Výběr úrovně služeb vCore, výpočty, paměť, úložiště a vstupně-VÝSTUPNÍCH prostředků
 

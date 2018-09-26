@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: af02f7185ddaec55047397ca1c8684f962112d61
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 8f56f287fde9e17d2a17298ca04eda63b69e3636
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381171"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159920"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -96,7 +96,7 @@ Volitelný **RelyingParty** prvek obsahuje následující prvky:
 
 ```XML
 <UserJourneys>
-  <UserJourney Id="SignOrSignIn">
+  <UserJourney Id="SignUpOrSignIn">
   ...
 ```
 

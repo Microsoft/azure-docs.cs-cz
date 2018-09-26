@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: e38ea8ed5c37896e863c013ced87951fdbe62028
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 6ee2f879a401167958d6b2d4ae6d81cf140b5474
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35642743"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47094511"
 ---
 # <a name="sdk-release-notes---application-insights"></a>Poznámky k verzi sady SDK – Application Insights
 Tady jsou podrobná zpráva k vydání a aktualizace pokyny, jak naše sady SDK:

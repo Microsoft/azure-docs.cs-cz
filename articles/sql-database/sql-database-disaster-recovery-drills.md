@@ -1,62 +1,64 @@
 ---
-title: Cvičení obnovení po havárii databáze SQL | Microsoft Docs
-description: Další pokyny a osvědčené postupy pro používání Azure SQL Database k provedení projde obnovení po havárii.
+title: SQL Database zotavení po havárii | Dokumentace Microsoftu
+description: Přečtěte si pokyny a osvědčené postupy při používání Azure SQL Database provést zotavení po havárii.
 services: sql-database
-author: anosov1960
-manager: craigg
 ms.service: sql-database
-ms.custom: business continuity
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 52973758404faa4158afe81a92079c1acdb4cfd7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: c861163670b05b01c9c6d64b81f6e83c979a2af8
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645459"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163031"
 ---
-# <a name="performing-disaster-recovery-drill"></a>Provedením postupu zotavení po havárii
-Doporučujeme, aby se pravidelně provádí ověřování připravenosti aplikace pro pracovní postup obnovení. Ověření chování aplikace a dopad ztráty dat nebo přerušení zahrnuje tento převzetí služeb při selhání je dobrým zvykem engineering. Je také požadavek ve většině oborové standardy jako součást Certifikační kontinuity firmy.
+# <a name="performing-disaster-recovery-drill"></a>Provedení postupu zotavení po havárii
+Doporučuje se, že se pravidelně provádí ověření připravenosti aplikace pro pracovní postup obnovení. Ověřuje se chování aplikace a důsledky ztrátě dat a/nebo narušení zahrnuje tohoto převzetí služeb při selhání je osvědčené technické praxe. Je také požadavek většina oborových standardů jako součást Certifikační obchodní kontinuity podnikových procesů.
 
-Provádění postupu zotavení po havárii zahrnuje:
+Provedení postupu zotavení po havárii zahrnuje:
 
-* Simulace výpadku datové vrstvy
+* Simulaci výpadku úroveň dat
 * Obnovení
-* Ověření obnovení post integritu aplikací
+* Ověření obnovení příspěvek integrity aplikace
 
-V závislosti na tom, jak můžete [určená aplikace pro kontinuitu podnikových procesů](sql-database-business-continuity.md), pracovní postup spuštění podrobné se může lišit. Tento článek popisuje osvědčené postupy pro provádění postupu zotavení po havárii v kontextu databáze SQL Azure.
+V závislosti na tom, jak můžete [určená aplikace pro zajištění kontinuity](sql-database-business-continuity.md), pracovní postup ke spuštění na postup zotavení se může lišit. Tento článek popisuje osvědčené postupy pro provádění zotavení po havárii v rámci služby Azure SQL Database.
 
 ## <a name="geo-restore"></a>Geografické obnovení
-Aby se zabránilo potenciální ztrátě dat při provádění postupu zotavení po havárii, proveďte procházení testovacím prostředí pomocí vytvořit kopii produkčního prostředí a používat jej ověření pracovní postup převzetí služeb při selhání aplikace.
+Aby se zabránilo ztrátě dat při provedení postupu zotavení po havárii, proveďte přejít pomocí testovacího prostředí vytvořit kopii produkčního prostředí a pomocí ověření pracovního postupu převzetí služeb při selhání aplikace.
 
-#### <a name="outage-simulation"></a>Simulace výpadku
-Pro simulaci se výpadek, můžete přejmenovat zdrojové databáze. To způsobí selhání připojení aplikace.
+#### <a name="outage-simulation"></a>Simulaci výpadku
+Pro simulaci výpadek, můžete přejmenovat zdrojové databáze. To způsobí selhání připojení k aplikaci.
 
 #### <a name="recovery"></a>Obnovení
-* Provést geografické obnovení databáze do jiného serveru, jak se popisuje [zde](sql-database-disaster-recovery.md).
-* Změna konfigurace aplikace pro připojení k obnovené databáze a postupujte podle [nakonfigurovat databázi po obnovení](sql-database-disaster-recovery.md) průvodce dokončí obnovení.
+* Provést geografické obnovení databáze do jiného serveru, jak je popsáno [tady](sql-database-disaster-recovery.md).
+* Změna konfigurace aplikace pro připojení k obnovené databázi a postupujte podle [nakonfigurovat databázi po obnovení](sql-database-disaster-recovery.md) příručka k dokončení obnovení.
 
 #### <a name="validation"></a>Ověření
-* Dokončete podrobné sestavy pomocí ověření obnovení post integrity aplikace (včetně připojovací řetězce, přihlášení, základní funkce testování nebo jinou ověření část postupy signoffs standardní aplikace).
+* Dokončení přejít pomocí ověření obnovení příspěvek integrity aplikace (včetně připojovacích řetězců, přihlášení, základní funkce testování nebo druhé ověření postupů signoffs standardní aplikace).
 
 ## <a name="failover-groups"></a>Skupiny převzetí služeb při selhání
-Pro databáze, který je chráněný pomocí skupin převzetí služeb při selhání zahrnuje cvičení procházení plánované převzetí služeb při selhání na sekundární server. Plánované převzetí služeb při selhání zaručuje, že primární a sekundární databází ve skupině pro převzetí služeb při selhání zachovány synchronizované při přepínání role. Na rozdíl od neplánované převzetí služeb při selhání tato operace není způsobit ztrátu dat, takže podrobné sestavy lze provést v provozním prostředí.
+Pro databáze, který je chráněný pomocí skupin převzetí služeb při selhání zahrnuje podrobné cvičení plánované převzetí služeb při selhání na sekundární server. Plánované převzetí služeb při selhání zajistí, že primární a sekundární databází ve skupině převzetí služeb při selhání zůstávají synchronizované při přepínání role. Na rozdíl od neplánované převzetí služeb při selhání tato operace nemá za následek ztrátu dat, tak na postup zotavení lze provádět v produkčním prostředí.
 
-#### <a name="outage-simulation"></a>Simulace výpadku
-Pro simulaci se výpadek, můžete zakázat webové aplikace nebo virtuální počítač připojen k databázi. Pro klienty webového výsledkem chyby připojení.
+#### <a name="outage-simulation"></a>Simulaci výpadku
+Pro simulaci výpadek, můžete zakázat webové aplikace nebo virtuálního počítače připojené k databázi. Výsledkem je selhání připojení pro klienty webového.
 
 #### <a name="recovery"></a>Obnovení
-* Zkontrolujte konfiguraci aplikace v bodech oblast zotavení po Havárii na dřívějším sekundární, který se stane plně dostupný nový primární.
-* Zahájit [plánované převzetí služeb při selhání](scripts/sql-database-setup-geodr-and-failover-database-powershell.md) převzetí služeb při selhání skupiny ze sekundárního serveru.
-* Postupujte podle [nakonfigurovat databázi po obnovení](sql-database-disaster-recovery.md) průvodce dokončí obnovení.
+* Ujistěte se, že konfigurace aplikace v oblasti bodů zotavení po Havárii do sekundární, Bývalé, který bude plně přístupné nový primární.
+* Zahájit [plánované převzetí služeb při selhání](scripts/sql-database-setup-geodr-and-failover-database-powershell.md) skupiny převzetí služeb při selhání ze sekundárního serveru.
+* Postupujte podle [nakonfigurovat databázi po obnovení](sql-database-disaster-recovery.md) příručka k dokončení obnovení.
 
 #### <a name="validation"></a>Ověření
-Dokončete podrobné sestavy pomocí ověření obnovení post integrity aplikace (včetně připojení, testování základní funkce nebo další ověření požadované pro procházení signoffs).
+Dokončení přejít pomocí ověření obnovení příspěvek integrity aplikace (včetně připojení, základní funkce testování nebo další ověření vyžaduje pro přechod signoffs).
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o obchodních scénářů kontinuity najdete v tématu [kontinuity scénáře](sql-database-business-continuity.md).
-* Další informace o Azure SQL Database automatizované zálohování najdete v tématu [automatizované zálohování SQL Database](sql-database-automated-backups.md)
-* Další informace o použití automatizované zálohování pro obnovení, najdete v části [obnovit databázi ze zálohy spouštěná služba](sql-database-recovery-using-backups.md).
+* Další informace o scénářích obchodní kontinuity podnikových procesů najdete v tématu [scénáře kontinuitu podnikových procesů](sql-database-business-continuity.md).
+* Další informace o Azure SQL Database, automatické zálohování, naleznete v tématu [automatické zálohování SQL Database](sql-database-automated-backups.md)
+* Další informace o obnovení pomocí automatizovaného zálohování, naleznete v tématu [obnovení databáze ze záloh spouštěných službou](sql-database-recovery-using-backups.md).
 * Další informace o možnosti rychlejší obnovení najdete v tématu [aktivní geografickou replikaci a převzetí služeb při selhání skupiny](sql-database-geo-replication-overview.md).  

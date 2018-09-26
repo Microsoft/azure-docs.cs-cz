@@ -1,27 +1,27 @@
-Postupujte podle těchto kroků k instalaci a spuštění MongoDB ve virtuálním počítači s Windows serverem.
+Postupujte podle těchto kroků nainstalujte a spusťte MongoDB na virtuálním počítači s Windows serverem.
 
 > [!IMPORTANT]
-> Funkce zabezpečení MongoDB, jako je ověřování a vazbu IP adresy, nejsou povolené ve výchozím nastavení. Před nasazením MongoDB v produkčním prostředí by měl povolit funkce zabezpečení.  Další informace najdete v tématu [zabezpečení a ověřování](http://www.mongodb.org/display/DOCS/Security+and+Authentication).
+> MongoDB funkce zabezpečení, jako je například ověřování a vazbu adresy IP, nejsou povolené ve výchozím nastavení. Funkce zabezpečení musí být aktivována před nasazením do produkčního prostředí MongoDB.  Další informace najdete v tématu [zabezpečení a ověřování](http://www.mongodb.org/display/DOCS/Security+and+Authentication).
 >
 >
 
-1. Po připojení k virtuálnímu počítači pomocí vzdálené plochy, otevřete Internet Explorer z **spustit** nabídky na virtuálním počítači.
-2. Vyberte **nástroje** tlačítko v pravém horním rohu.  V **Možnosti Internetu**, vyberte **zabezpečení** a potom vyberte **Důvěryhodné servery** ikonu a nakonec klikněte **lokality** tlačítko. Přidat *https://\*. mongodb.org* do seznamu důvěryhodných serverů.
+1. Po připojení k virtuálnímu počítači pomocí vzdálené plochy, spusťte aplikaci Internet Explorer z **Start** nabídky na virtuálním počítači.
+2. Vyberte **nástroje** tlačítko v pravém horním rohu.  V **Možnosti Internetu**, vyberte **zabezpečení** kartu a potom vyberte **Důvěryhodné servery** ikony a nakonec klikněte **lokality** tlačítko. Přidat *https://\*. mongodb.org* do seznamu důvěryhodných webů.
 3. Přejděte na [stáhne - MongoDB](https://www.mongodb.com/download-center#community).
-4. Najít **aktuální stabilní verzi** z **komunity serveru**, vyberte nejnovější **64-bit** verze ve sloupci systému Windows. Stáhněte a spusťte instalační program MSI.
-5. MongoDB je obvykle nainstalován v C:\Program Files\MongoDB. Vyhledejte proměnné prostředí na ploše a přidat cestu binární soubory MongoDB do proměnné PATH. Například může najít binární soubory na C:\Program Files\MongoDB\Server\3.4\bin na váš počítač.
-6. Vytváření adresářů MongoDB protokolu a data na disku data (například disk **F:**) jste vytvořili v předchozích krocích. Z **spustit**, vyberte **příkazového řádku** otevřete okno příkazového řádku.  Zadejte:
+4. Najít **aktuální stabilní verzi** z **Community Server**, vyberete možnost nejnovější **64-bit** verze ve sloupci Windows. Stáhněte a spusťte instalační program MSI.
+5. MongoDB je obvykle nainstalován v C:\Program Files\MongoDB. Hledat proměnné prostředí v klientských počítačích a přidat cestu binární soubory MongoDB do proměnné PATH. Například může vyhledat binární soubory na C:\Program Files\MongoDB\Server\3.4\bin na svém počítači.
+6. Vytvoření adresářů protokolu a data MongoDB v datového disku (například disk **F:**) jste vytvořili v předchozích krocích. Z **Start**vyberte **příkazového řádku** otevřete okno příkazového řádku.  Zadejte:
 
         C:\> F:
         F:\> mkdir \MongoData
         F:\> mkdir \MongoLogs
-7. Chcete-li spustit databázi, spusťte:
+7. Ke spuštění databáze, spusťte:
 
         F:\> C:
         C:\> mongod --dbpath F:\MongoData\ --logpath F:\MongoLogs\mongolog.log
 
-    Všechny zprávy protokolu jsou směrované *F:\MongoLogs\mongolog.log* souborů jako mongod.exe server spustí a preallocates soubory deníku. To může trvat několik minut, než MongoDB předběžné přidělení soubory deníku a zahájit naslouchání pro připojení. Do příkazového řádku zůstává zaměřují se na tato úloha je spuštěna MongoDB instance.
-8. Pokud chcete spustit prostředí pro správu MongoDB, otevřete další okno příkaz z **spustit** a zadejte následující příkazy:
+    Všechny zprávy protokolu jsou směrované na *F:\MongoLogs\mongolog.log* souborům mongod.exe server spustí a preallocates soubory deníku. Může trvat několik minut, než MongoDB předběžné přidělení soubory deníku a zahájit naslouchání pro připojení. Příkazový řádek zůstává zaměřují se na tato úloha je spuštěna MongoDB instance.
+8. Spustit MongoDB shell pro správu, otevřete další okno příkazu z **Start** a zadejte následující příkazy:
 
         C:\> cd \my_mongo_dir\bin  
         C:\my_mongo_dir\bin> mongo  
@@ -36,22 +36,22 @@ Postupujte podle těchto kroků k instalaci a spuštění MongoDB ve virtuální
         ...  
         > help  
 
-    Databáze je vytvořená úlohy insert.
+    Databáze se vytvoří pomocí insert.
 9. Alternativně můžete nainstalovat mongod.exe jako služba:
 
         C:\> mongod --dbpath F:\MongoData\ --logpath F:\MongoLogs\mongolog.log --logappend  --install
 
-    Je nainstalována služba s názvem MongoDB s popisem "Mongo DB". `--logpath` Možnost se musí použít k určení souboru protokolu, vzhledem k tomu, že běžící služba nemá okno příkazového řádku k zobrazení výstupu.  `--logappend` Možnost určuje, že restartování služby způsobí, že výstupní má být připojen ke stávajícímu souboru protokolu.  `--dbpath` Možnost určuje umístění do adresáře dat. Další související se službou možnosti příkazového řádku najdete v tématu [související se službou možnosti příkazového řádku][MongoWindowsSvcOptions].
+    Je nainstalována služba s názvem MongoDB s popisem "Mongo DB". `--logpath` Parametr musí být použit k určení souboru protokolu, protože nemá spuštěnou službu příkazové okno k zobrazení výstupu.  `--logappend` Možnost určuje, že restartování služby způsobí, že výstupní má připojit k existujícímu souboru protokolu.  `--dbpath` Určuje umístění adresáře data. Informace týkající se služeb možnosti příkazového řádku najdete v tématu [související se službou možnosti příkazového řádku][MongoWindowsSvcOptions].
 
     Chcete-li spustit službu, spusťte tento příkaz:
 
         C:\> net start MongoDB
-10. Teď, když MongoDB je nainstalován a spuštěn, budete muset otevřít port v bráně Windows Firewall, abyste mohli vzdáleně připojte k MongoDB.  Z **spustit** nabídce vyberte možnost **nástroje pro správu** a potom **brány Windows Firewall s pokročilým zabezpečením**.
-11. (a) v levém podokně vyberte **příchozí pravidla**.  V **akce** podokně na pravé straně vyberte **nové pravidlo...** .
+10. Teď, když MongoDB je nainstalovaná a spuštěná, musíte otevřít port v bráně Windows Firewall, abyste se mohli vzdáleně připojit k MongoDB.  Z **Start** nabídce vyberte možnost **nástroje pro správu** a potom **brány Windows Firewall s pokročilým zabezpečením**.
+11. ) v levém podokně vyberte **příchozí pravidla**.  V **akce** podokno na pravé, vyberte **nové pravidlo...** .
 
     ![Brána Windows Firewall][Image1]
 
-    b) v **pravidla Průvodce vytvořením nového příchozího**, vyberte **Port** a pak klikněte na **Další**.
+    (b) v **pravidla Průvodce vytvořením nového příchozího**vyberte **Port** a potom klikněte na tlačítko **Další**.
 
     ![Brána Windows Firewall][Image2]
 
@@ -63,7 +63,7 @@ Postupujte podle těchto kroků k instalaci a spuštění MongoDB ve virtuální
 
     ![Brána Windows Firewall][Image4]
 
-    e) klikněte na tlačítko **Další** znovu.
+    (e) klikněte na **Další** znovu.
 
     ![Brána Windows Firewall][Image5]
 
@@ -71,20 +71,20 @@ Postupujte podle těchto kroků k instalaci a spuštění MongoDB ve virtuální
 
     ![Brána Windows Firewall][Image6]
 
-12. Pokud koncový bod nebylo nakonfigurovat pro MongoDB, když vytvoříte virtuální počítač, můžete provést nyní. Potřebujete pravidlo brány firewall a aby mohli vzdáleně připojit k MongoDB.
+12. Koncový bod nebyl konfiguraci pro MongoDB, při vytváření virtuálního počítače, proveďte to nyní. Potřebujete pravidlo brány firewall a endpoint umožnit vzdálené připojení k MongoDB.
 
-  Na portálu Azure klikněte na tlačítko **virtuálních počítačů (klasické)**, klikněte na název nového virtuálního počítače a pak klikněte na tlačítko **koncové body**.
+  Na webu Azure Portal, klikněte na tlačítko **virtuální počítače (classic)**, klikněte na název nového virtuálního počítače a potom klikněte na tlačítko **koncové body**.
 
     ![Koncové body][Image7]
 
 13. Klikněte na tlačítko **Add** (Přidat).
 
-14. Přidat koncový bod s názvem "Mongo", protokol **TCP**a obě **veřejné** a **privátní** porty nastavena na "27017". MongoDB vzdálený přístup k otevření tohoto portu umožňuje.
+14. Přidat koncový bod s názvem "Mongo", protokol **TCP**a obě **veřejné** a **privátní** porty nastavena na "27017". Otevřít tento port umožňuje MongoDB jde přistupovat vzdáleně.
 
     ![Koncové body][Image9]
 
 > [!NOTE]
-> Port 27017 je výchozí port je používán MongoDB. Tento výchozí port můžete změnit zadáním `--port` parametr při spuštění serveru mongod.exe. Zajistěte, aby dát stejné číslo portu v bráně firewall a endpoint "Mongo" v předchozích pokynů.
+> Port 27017 je výchozí port je používán MongoDB. Tento výchozí port můžete změnit zadáním `--port` parametr při spuštění serveru mongod.exe. Ujistěte se, že poskytují stejné číslo portu v bráně firewall a endpoint "Mongo" v předchozích pokynech.
 >
 >
 

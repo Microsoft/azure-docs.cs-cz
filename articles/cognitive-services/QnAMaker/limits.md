@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Úplný seznam omezení napříč QnA Maker.
 services: cognitive-services
 author: tulasim88
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: c48a460e180d6c493083624236fd39f6324c5f12
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: efdcf57fb0f175be51e6b9f8e72e4a02fcbeb5f3
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46995614"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162317"
 ---
 # <a name="qna-maker-limits"></a>Omezení nástroje QnA Maker
 Úplný seznam omezení napříč QnA Maker.

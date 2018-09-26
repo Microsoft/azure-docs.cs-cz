@@ -1,22 +1,23 @@
 ---
 title: Správa několika databázemi SQL elastické fondy – Azure | Dokumentace Microsoftu
 description: Spravovat a škálovat několika databázemi SQL - stovkami a tisíci - využívajících elastické fondy. Jednu cenu za prostředky, které můžete distribuovat místech.
-keywords: více databází, prostředky databáze, výkon databáze
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.subservice: elastic-pool
-ms.custom: DBs & servers
-ms.date: 09/14/2018
-ms.author: ninarn
+subservice: elastic-pool
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.openlocfilehash: 39c127569ea3ea5339c90554e1e899212f1b3f6a
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+author: oslake
+ms.author: moslake
+ms.reviewer: ninarn, carlrab
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 71269b4888d1b5c9724248ac91f0818d7f8f5bf5
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735508"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162351"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastické fondy umožňují spravovat a škálovat několika databázemi Azure SQL
 

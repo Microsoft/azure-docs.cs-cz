@@ -4,14 +4,14 @@ description: Popisuje, jak vytvořit posouzení závislostí počítačů pomoc�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 09/21/2018
 ms.author: raynew
-ms.openlocfilehash: 31cbec8eab499fac116eac6fa2addac4ec2a340b
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: ac1cf5a30dee29f2737a05133aed774e86f78932
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737088"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163422"
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>Seskupení počítačů s využitím mapování závislostí počítačů
 
@@ -55,6 +55,7 @@ Instalace agenta na počítači s Windows:
 4. V **možnosti instalace agenta**vyberte **Azure Log Analytics** > **Další**.
 5. Klikněte na tlačítko **přidat** přidáte nový pracovní prostor Log Analytics. Vložte ID pracovního prostoru a klíč, který jste zkopírovali z portálu. Klikněte na **Další**.
 
+[Další informace](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems) o seznam operačních systémů Windows nepodporuje agenta MMA.
 
 Instalace agenta na počítači s Linuxem:
 
@@ -63,6 +64,7 @@ Instalace agenta na počítači s Linuxem:
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
+[Další informace](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems) o seznam operačních systémů Linux nepodporuje agenta MMA.
 
 ### <a name="install-the-dependency-agent"></a>Instalace agenta závislostí
 1. Instalace agenta závislostí na počítači s Windows, klikněte dvakrát na instalační soubor a postupujte podle pokynů průvodce.
@@ -102,5 +104,6 @@ Jakmile se vytvoří skupina, se doporučuje nainstalovat agenty na všech poč�
 
 ## <a name="next-steps"></a>Další postup
 
-- [Zjistěte, jak](how-to-create-group-dependencies.md) pro upřesnění skupiny pomocí vizualizace skupinových závislostí
+- [Další informace](https://docs.microsoft.com/azure/migrate/resources-faq#dependency-visualization) o nejčastějších dotazech na vizualizaci závislostí.
+- [Zjistěte, jak](how-to-create-group-dependencies.md) pro upřesnění skupiny pomocí vizualizace závislostí skupin.
 - [Přečtěte si další informace](concepts-assessment-calculation.md) o tom, jak se v rámci posouzení počítají náklady.

@@ -2,19 +2,22 @@
 title: Průvodce laděním výkonu Azure SQL Database | Dokumentace Microsoftu
 description: Další informace o použití doporučení k vylepšení výkonu dotazů Azure SQL Database.
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: monitor & tune
+ms.subservice: performance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/14/2018
+author: CarlRabeler
 ms.author: carlrab
-ms.openlocfilehash: 791fb4ba2f16a48441d489a888360912afa8fa11
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 283d27e330b7e1defb34196279693b5b5a7221df
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983210"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47160583"
 ---
 # <a name="tuning-performance-in-azure-sql-database"></a>Optimalizace výkonu ve službě Azure SQL Database
 

@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 9aa61e95eb808c38646fa9b8cefd4004f5477ee6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2b6dfe7c8f8ac8d7207659b848abecd04f56c232
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974659"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47181438"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-edge-jobs-preview"></a>Vývoj .NET Standard uživatelsky definovaných funkcí pro úlohy Azure Stream Analytics Edge (Preview)
 
@@ -31,7 +31,7 @@ Existují tři způsoby, jak implementovat uživatelem definovanými funkcemi:
 
 ## <a name="package-path"></a>Cesta k balíčku
 
-Formát libovolný balíček UDF má cestu `/UserCustomCode/CLR/*`. Dynamické knihovny (DLL) a prostředky jsou zkopírovány v části `/UserCustomCode/CLR/*` složku, která pomáhá izolovat uživatele knihoven DLL ze systému a knihovny DLL Azure Stream Analytics.
+Formát libovolný balíček UDF má cestu `/UserCustomCode/CLR/*`. Dynamické knihovny (DLL) a prostředky jsou zkopírovány v části `/UserCustomCode/CLR/*` složku, která pomáhá izolovat uživatele knihoven DLL ze systému a knihovny DLL Azure Stream Analytics. Tato cesta balíčku se používá pro všechny funkce bez ohledu na to metoda použitá jim využívat.
 
 ## <a name="supported-types-and-mapping"></a>Podporované typy a mapování
 
@@ -59,10 +59,10 @@ Chcete-li odkazovat místní projekt:
 
 1. Vytvořte novou knihovnu tříd ve vašem řešení.
 2. Psát kód ve své třídě. Mějte na paměti, že třídy musí být definován jako *veřejné* a objekty musí být definován jako *statické veřejné*. 
-3. Sestavte projekt.
+3. Sestavte projekt. Nástroje se balíček všechny artefakty do složky bin do souboru zip a nahrajte soubor zip do účtu úložiště. Pro externí odkazy použijte odkaz na sestavení namísto balíčku NuGet.
 4. Odkaz na novou třídu v projektu Azure Stream Analytics.
 5. Přidáte nové funkce v projektu Azure Stream Analytics.
-6. Konfigurovat cestu sestavení v konfiguračním souboru úlohy `EdgeJobConfig.json`.
+6. Konfigurovat cestu sestavení v konfiguračním souboru úlohy `JobConfig.json`. Nastavte cestu sestavení **odkazu na místní projekt nebo CodeBehind**.
 7. Znovu sestavte projekt functions a Azure Stream Analytics projektu.  
 
 ### <a name="example"></a>Příklad:
@@ -109,19 +109,19 @@ Můžete vytvářet .NET Standard uživatelem definovanými funkcemi v jakémkol
 
 Po sestavení balíčků zip nahrané do účtu úložiště Azure, můžete použít funkce v Azure Stream Analytics dotazů. Všechno, co musíte udělat, je zahrnout informace o úložiště konfigurace úlohy Stream Analytics Edge. Funkci místně s touto možností nelze otestovat, protože balíček nebude stahovat nástrojů sady Visual Studio. Cesta k balíčku je analyzován přímo ke službě. 
 
-Abyste nakonfigurovali cestu sestavení v konfiguračním souboru projektu "EdgeJobConfig.json":
+Abyste nakonfigurovali cestu sestavení v konfiguračním souboru úlohy `JobConfig.json`:
 
 Rozbalte **konfiguraci kódu uživatelsky definovaná** části a vyplňte konfigurace následující navrhované hodnoty:
 
  |**Nastavení**  |**Navrhovaná hodnota**  |
  |---------|---------|
- |Zdroj sestavení  |  Odkaz na místní projekt nebo CodeBehind   |
+ |Zdroj sestavení  | Existující balíčky sestavení z cloudu    |
  |Prostředek  |  Vyberte data z aktuálního účtu   |
  |Předplatné  |  Zvolte vaše předplatné.   |
  |Účet úložiště  |  Vyberte svůj účet úložiště   |
  |Kontejner  |  Vyberte kontejner, který jste vytvořili v účtu úložiště.   |
 
-    ![Azure Stream Analytics Edge job configuration in Visual Studio](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-job-config.png)
+![Konfigurace úlohy Azure Stream Analytics Edge v sadě Visual Studio](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-job-config.png)
 
 ## <a name="limitations"></a>Omezení
 Ve verzi preview UDF aktuálně má následující omezení:

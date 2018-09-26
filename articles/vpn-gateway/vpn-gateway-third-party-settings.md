@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 06/15/2018
 ms.author: delhan
 ms.openlocfilehash: 77b1de3a9def525fbffb2a0ae49bbcbaea835c58
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35899380"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47093872"
 ---
 # <a name="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway"></a>Navrhované komunitou třetích stran VPN nastavení brány firewall nebo zařízení pro službu Azure VPN gateway
 

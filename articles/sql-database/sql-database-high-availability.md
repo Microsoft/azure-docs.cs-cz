@@ -2,19 +2,22 @@
 title: Vysoká dostupnost – služba Azure SQL Database | Dokumentace Microsoftu
 description: Další informace o možnosti vysoké dostupnosti služby Azure SQL Database a funkcí
 services: sql-database
-author: jovanpop-msft
-manager: craigg
 ms.service: sql-database
+ms.subservice: ''
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/14/2018
+author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, sashan
-ms.openlocfilehash: b35eafd8c154b6550104a87bfadce6ec528e911a
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 9c06a028df098874a1ec12d83a362e01a5f4a711
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732512"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161892"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Vysoká dostupnost a Azure SQL Database
 

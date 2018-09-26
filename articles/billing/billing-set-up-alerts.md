@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: adpick
 ms.openlocfilehash: 094bfe041ae04e52b6d998ccfd1d964abf192d6a
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35904051"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47095095"
 ---
 # <a name="set-up-billing-or-credit-alerts-for-your-microsoft-azure-subscriptions"></a>Nastavení upozornění fakturace nebo kredit pro předplatné Microsoft Azure
 Pokud jste správcem účtu pro předplatné Azure, služba upozornění fakturace Azure můžete vytvářet přizpůsobená upozornění fakturace, která vám pomůžou sledovat a řídit fakturaci účtů Azure.

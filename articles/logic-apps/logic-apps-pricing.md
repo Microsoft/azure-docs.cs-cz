@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: b75fba2ba0e9fa922b1252378e0bab326cada7d2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5f9147035c07bbe4fb3f38b74025015e70dd87b3
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974302"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159551"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Cenový model pro Azure Logic Apps
 
@@ -54,7 +54,7 @@ Spuštění aktivační události najdete v podokně s přehledem vaší aplikac
 
 ## <a name="actions"></a>Akce
 
-Integrované akce, jako je například akce, které volání HTTP, Azure Functions nebo API Management a také řídit tok kroků se měří jako nativní akce, které mají jejich příslušného typu. Akce, které volají [konektory](https://docs.microsoft.com/connectors) typu "ApiConnection". Tyto konektory jsou klasifikovány jako standard nebo enterprise konektory, které se měří na jejich základě [ceny][pricing]. 
+Integrované akce, jako je například akce, které volání HTTP, Azure Functions nebo API Management a také řídit tok kroků se měří jako nativní akce, které mají jejich příslušného typu. Akce, které volají [konektory](https://docs.microsoft.com/connectors) typu "ApiConnection". Tyto konektory jsou klasifikovány jako standard nebo enterprise konektory, které se měří na jejich základě [ceny][pricing]. Podnikové konektory v *ve verzi Preview* se účtují jako konektory úrovně standard.
 
 Všechny akce úspěšně a neúspěšně spuštění se počítá a měří jako spuštění akcí. Akce, které jsou vynechány, z důvodu nesplnění podmínky nebo akce, které nelze spustit, protože aplikace logiky byla ukončena před dokončením, ale nepočítají jako spuštění akcí. Zakázané logic apps nejde vytvořit instanci nové instance, takže se nebudou fakturované jsou zakázané.
 

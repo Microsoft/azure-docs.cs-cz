@@ -2,19 +2,22 @@
 title: Porovnání funkcí služby Azure SQL Database | Dokumentace Microsoftu
 description: Tento článek porovnává funkce serveru SQL Server, které jsou k dispozici v různých verzí Azure SQL Database.
 services: sql-database
-author: jovanpop-msft
-ms.reviewer: bonova, carlrab
 ms.service: sql-database
+ms.subservice: ''
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/23/2018
+author: jovanpop-msft
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: 48be49a18d41286bc60efc3a5a046f23ea178dd8
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.reviewer: bonova, carlrab
+ms.date: 09/23/2018
+ms.openlocfilehash: ff062d02dfdf1df84ce2b87496ef0da8b8b22116
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042342"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161205"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Porovnání funkcí: Azure SQL Database a SQL Server 
 

@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
 ms.date: 09/24/2018
-ms.openlocfilehash: 7e430d1b590413f497c851b687abcaa98e04d0e4
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: f8dae6de835173181430a98c19c7dd1fb3ebaa9f
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47053857"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47158899"
 ---
 # <a name="what-is-the-azure-machine-learning-cli"></a>Co je rozhraní příkazového řádku Azure Machine Learning?
 
@@ -56,6 +56,8 @@ Příklady obsahují:
 Odborníci přes data jsou vhodné pro použití sady SDK Azure ML.
 
 ## <a name="common-machine-learning-cli-commands"></a>Běžné strojového učení příkazy rozhraní příkazového řádku
+> [!NOTE]
+> Ukázkové soubory, které vám umožní byl úspěšně spuštěn následujících příkazů můžete najít [tady.](https://github.com/Azure/MachineLearningNotebooks/tree/cli/cli)
 
 Využijte bohatou sadu `az ml` příkazy pracovat služby v jakémkoli příkazového řádku prostředí, včetně portálu Azure cloud shellu.
 
@@ -73,7 +75,7 @@ Tady je ukázka běžné příkazy:
    az configure --defaults aml_workspace=myworkspace group=myresourcegroup
    ```
 
-+ Vytvoření DSVM (datové vědy virtuálního počítače) pro trénování modelů. Můžete také vytvořit BatchAI clustery pro distribuované trénování.
++ Vytvoření DSVM (datové vědy virtuálního počítače). Můžete také vytvořit BatchAI clustery pro distribuované trénování nebo nasazení clusterů AKS.
   ```AzureCLI
   az ml computetarget setup dsvm -n mydsvm
   ```
@@ -84,7 +86,7 @@ Tady je ukázka běžné příkazy:
   az ml project attach --experiment-name myhistory
   ```
 
-+ Odeslání experimentu na službu Azure Machine Learning na cílové výpočetní prostředí podle vašeho výběru. V tomto příkladu se provádí proti místní výpočetním prostředí. Můžete najít ukázkového skriptu train.py [tady](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/train.py).
++ Odeslání experimentu na službu Azure Machine Learning na cílové výpočetní prostředí podle vašeho výběru. V tomto příkladu se spustí před místním výpočetním prostředí. Ujistěte se, že váš soubor prostředí conda zachycuje závislosti pythonu.
 
   ```AzureCLI
   az ml run submit -c local train.py
@@ -99,17 +101,17 @@ az ml history list
 
 + Zaregistrujte model Azure Machine Learning.
   ```AzureCLI
-  az ml model register -n mymodel -m mymodel.pkl  -w myworkspace -g myresourcegroup
+  az ml model register -n mymodel -m sklearn_regression_model.pkl
   ```
 
 + Vytvoření image tak, aby obsahovala vašeho modelu strojového učení a závislosti. 
   ```AzureCLI
-  az ml image create -n myimage -r python -m mymodel.pkl -f score.py -c myenv.yml
+  az ml image create container -n myimage -r python -m mymodel:1 -f score.py -c myenv.yml
   ```
 
 + Nasazení modelu zabalené do cíle, včetně ACI a AKS.
   ```AzureCLI
-  az ml service create aci -n myaciservice -i myimage:1
+  az ml service create aci -n myaciservice --image-id myimage:1
   ```
     
 ## <a name="full-command-list"></a>Celý příkaz seznamu

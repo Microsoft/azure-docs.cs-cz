@@ -7,34 +7,59 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 06/19/2018
+ms.date: 09/25/2018
 ms.author: heidist
-ms.openlocfilehash: 140daf4903c64d734182545cd4dc58db60274852
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: d86fc1930f1d7b29dc3ce57e9b4d28e053bb44a0
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576116"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47181885"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Zvolte cenovou úroveň pro službu Azure Search
 
-Ve službě Azure Search [je služba zřízena za](search-create-service-portal.md) na konkrétní cenové úrovně nebo SKU. Mezi možnosti patří **Free**, **základní**, nebo **standardní**, kde **standardní** je k dispozici v několika konfiguracích a kapacity. 
+Ve službě Azure Search [je služba zřízena za](search-create-service-portal.md) na pevnou cenové úrovně nebo SKU: **Free**, **základní**, nebo **standardní**, kde  **Standardní** je k dispozici v několika konfiguracích a kapacity. Většina zákazníků začíná **Free** vrstvy pro vyhodnocení a potom jim dodejte **standardní** pro vývoj. Můžete na dokončení všech rychlých startů a kurzů **Free** úrovně, včetně těch, které pro náročné kognitivního vyhledávání. 
 
-Cílem tohoto článku je vám pomůže vybrat do vrstvy. Doplňuje [stránce s cenami](https://azure.microsoft.com/pricing/details/search/) a [omezení služby](search-limits-quotas-capacity.md) stránka s hodnotou hash fakturační koncepty a vzory využití související s různými úrovněmi. Také doporučuje iteračního postupu pochopit, jaké úroveň nejlepší bude vyhovovat vašim potřebám. 
+Úrovně určit kapacitu, není funkce bez rozdílů mezi:
 
-Úrovně určit kapacitu, není funkce. Pokud kapacita na úrovni se ukázalo příliš nízké, budete muset zřizovat nové služby vyšší úrovně a poté [znovu načíst indexů](search-howto-reindex.md). Neexistuje žádné místní upgrade stejné služby z jedné skladové položky do jiného.
++ Počet indexů, které lze vytvořit
++ Velikost a rychlost oddílů (fyzické úložiště)
 
-Dostupnost funkcí není potřeba primární úrovně. U všech úrovní, včetně **Free** vrstvy, nabízí paritu funkcí s výjimkou podpora indexeru pro S3HD. Ale omezení indexování a prostředků efektivně můžete omezit rozsah používání funkcí. Například [kognitivního vyhledávání](cognitive-search-concept-intro.md) indexování má dlouhotrvající dovednosti tento časový limit na bezplatné služby není-li být velmi malé datové sady se stane s.
+Přestože všechny úrovně, včetně **Free** vrstvy, obecně nabízí paritu funkcí, větší úlohy může diktovat požadavky pro vyšší úrovně. Například [kognitivního vyhledávání](cognitive-search-concept-intro.md) indexování má dlouhotrvající dovednosti tento časový limit na bezplatné služby není-li být velmi malé datové sady se stane s.
 
-> [!TIP]
-> Většina zákazníků začíná **Free** vrstvy pro vyhodnocení a potom jim dodejte **standardní** pro vývoj. Po zvolení vrstvu a [při zřizování vyhledávací služby](search-create-service-portal.md), můžete [zvýšit počet replik a oddílu](search-capacity-planning.md) pro optimalizaci výkonu. Další informace o kdy a proč by upravit kapacitu, najdete v části [aspekty týkající se výkonu a optimalizace](search-performance-optimization.md).
+> [!NOTE] 
+> Parita funkcí existuje v rámci úrovně s výjimkou [indexery](search-indexer-overview.md), která není k dispozici na S3HD.
 >
 
-## <a name="billing-concepts"></a>Koncepty fakturace
+V rámci úrovně, je možné [upravit repliky a oddílu prostředků](search-capacity-planning.md) pro optimalizaci výkonu. Vzhledem k tomu může začínat dva nebo tři jednotlivých, může dočasně zvýšit úroveň prostředku pro náročné úlohy indexování. Schopnost optimalizovat úrovně prostředků v rámci úrovně zvyšuje flexibilitu, ale také mírně komplikuje analýzy. Budete muset experimentovat, uvidíte, jestli nižší úrovně s vyšší prostředky/replik nabízí lepší výkon než vyšší úroveň s nižší prostředky a hodnotu. Další informace o kdy a proč by upravit kapacitu, najdete v článku [aspekty týkající se výkonu a optimalizace](search-performance-optimization.md).
 
-Koncepty, kterým je třeba porozumět pro výběr úrovně zahrnují definice kapacity, limity pro služby a služby jednotky. 
+> [!Important] 
+> I když odhad budoucích potřeb pro indexy a úložiště může být třeba izolovat, je vhodné to. Pokud kapacita na úrovni se ukázalo příliš nízké, budete muset zřizovat nové služby vyšší úrovně a poté [znovu načíst indexů](search-howto-reindex.md). Neexistuje žádné místní upgrade stejné služby z jedné skladové položky do jiného.
+>
 
-### <a name="capacity"></a>Kapacita
+<!---
+The purpose of this article is to help you choose a tier. It supplements the [pricing page](https://azure.microsoft.com/pricing/details/search/) and [Service Limits](search-limits-quotas-capacity.md) page with a digest of billing concepts and consumption patterns associated with various tiers. It also recommends an iterative approach for understanding which tier best meets your needs. 
+--->
+
+## <a name="how-billing-works"></a>Jak funguje fakturace
+
+Ve službě Azure Search je nejdůležitější fakturační koncept pochopit *jednotka služby search* (SU). Protože Azure Search závisí na repliky a oddíly na funkci, nemá smysl pro fakturaci podle právě jeden z nich. Místo toho fakturace vychází složeného obou. 
+
+Formulaically, SU je produkt *repliky* a *oddíly* používané službou: **`(R X P = SU)`**
+
+Minimálně každá služba začíná 1 SU (jednu repliku a jeden oddíl), ale pro větší zatížení realističtější model ještě nemusí být repliky 3, 3 oddíly služby účtovat jako 9 su. 
+
+Fakturační sazba je **po hodinách za SU**, kde každá úroveň s postupně vyšší sazba. Vyšší úrovně součástí větší a zrychlit oddíly přispívající k celkové vyšší hodinové sazby za tuto úroveň. Sazby za pro každou vrstvu můžete najít na [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/search/). 
+
+I když každá úroveň nabízí postupně vyšší kapacitu, můžete zahrnout *část* online, celkové kapacity uchovávající zbývající ve fondu. Z hlediska fakturace, je počet oddílů a replik uvést online, vypočítané pomocí vzorce SU, která určuje, co skutečně platíte.
+
+### <a name="tips-for-lowering-the-bill"></a>Tipy pro snížení faktury
+
+Nelze vypnout službu na nižší faktury. Vyhrazené prostředky oddílů a replik jsou provozní 24-7, uchovávat v datovém typu rezerva pro vaše výhradní použití po dobu životnosti vaší služby. Jediný způsob, jak snížit účet je pro snížení repliky a oddíly, které na nejnižší úrovni, která stále poskytuje přijatelný výkon. 
+
+Další úroveň je výběr úrovně s nižší hodinové sazby. S1 hodinové sazby jsou nižší než S2 nebo S3 hodinové sazby. Můžete zřídit službu na konci nižší vaše projekce a pak pokud velký růst, vytvořte druhý větší služby vrstvený, opětovné sestavení indexů na této druhé službě a pak odstranit první z nich.
+
+### <a name="capacity-drill-down"></a>Kapacita procházení
 
 Kapacita má strukturu *repliky* a *oddíly*. 
 
@@ -45,15 +70,7 @@ Kapacita má strukturu *repliky* a *oddíly*.
 > [!NOTE]
 > Všechny **standardní** úrovní podpory [flexibilní kombinace repliky a oddíly](search-capacity-planning.md#chart) , abyste mohli [váha systému rychlost ani prostředky úložiště](search-performance-optimization.md) změnou zůstatek na účtu. **Základní** nabízí tři repliky vysokou dostupnost, ale má pouze jeden oddíl. **Bezplatné** úrovně se neposkytuje vyhrazené prostředky: výpočetní prostředky, které jsou sdíleny více bezplatných služeb.
 
-### <a name="search-units"></a>Jednotky vyhledávání
-
-Nejdůležitější fakturační koncept pochopit je *jednotka služby search* (SU), což je fakturační jednotka pro službu Azure Search. Protože Azure Search závisí na repliky a oddíly na funkci, nemá smysl pro fakturaci podle jedné nebo druhé. Místo toho fakturace vychází složeného obou. Formulaically, SU je produkt repliky a oddíly, které jsou používané službou: (R X P = SU). Minimálně každá služba začíná 1 SU (jednu repliku a jeden oddíl), ale realističtější model ještě nemusí být repliky 3, 3 oddíly služby účtovat jako 9 su. 
-
-I když každá úroveň nabízí postupně vyšší kapacitu, můžete použít část celkové kapacity online, uchovávající zbývající ve fondu. Z hlediska fakturace, je počet oddílů a replik uvést online, vypočítané pomocí vzorce SU, která určuje, co skutečně platíte.
-
-Fakturační sazby je za SU, kde každá úroveň má jiné míry po hodinách. Sazby za pro každou vrstvu můžete najít na [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/search/).
-
-### <a name="limits"></a>Omezení
+### <a name="more-about-service-limits"></a>Další informace o omezení služby
 
 Služby prostředky hostitele, jako jsou indexy, indexery a tak dále. Každá úroveň má [omezení služby](search-limits-quotas-capacity.md) na množství prostředků můžete vytvořit. Limit počtu indexy (a dalších objektů) v důsledku toho je druhá odlišující funkce napříč úrovněmi. Při kontrole jednotlivé možnosti na portálu, mějte na paměti omezený počet indexů. Jiné prostředky, jako jsou indexování zdrojů dat a dovednosti, je propojen s limity indexu.
 

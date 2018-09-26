@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 8fd8bf6128d09d6431a8542206430b9bb6df095d
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 09/25/2018
+ms.openlocfilehash: 5c6ebfcb7eae52915af24fc67e9b3c774656149d
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063723"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47181137"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>Další informace o automatických zálohách databáze SQL
 
@@ -83,6 +83,10 @@ Další informace najdete v tématu [dlouhodobého uchovávání záloh](sql-dat
 ## <a name="are-backups-encrypted"></a>Jsou šifrované zálohování
 
 Pokud vaše databáze je zašifrovaný pomocí šifrování TDE, záloh se šifrují automaticky v klidovém stavu, včetně záloh zleva doprava. Pokud pro službu Azure SQL database je povoleno TDE, je také šifrovaný zálohy. Všechny nové databáze Azure SQL jsou konfigurované tak transparentní šifrování dat ve výchozím nastavení povolená. Další informace o transparentní šifrování dat, naleznete v tématu [transparentního šifrování dat s využitím Azure SQL Database](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
+
+## <a name="how-does-microsoft-ensure-backup-integrity"></a>Jak Microsoft zajišťují integritu zálohy
+
+Průběžně technický tým Azure SQL Database automaticky ověřuje obnovení automatizovaných záloh databází ve službě. Při obnovení databáze také přijímat kontroly integrity pomocí příkazu DBCC CHECKDB. Žádné problémů zjištěných během kontroly integrity způsobí výstrahy technickému týmu. Další informace o integritě dat ve službě Azure SQL Database najdete v tématu [integritu dat ve službě Azure SQL Database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/).
 
 ## <a name="how-do-automated-backups-impact-my-compliance"></a>Vliv automatizovaných záloh Moje dodržování předpisů
 

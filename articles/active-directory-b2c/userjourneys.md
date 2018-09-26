@@ -10,14 +10,14 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c49ebcf31df950920574af05a9411e463b908bad
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 65b34a49006e6a2f9be003414498d9a8fc9955ae
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381142"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161811"
 ---
-# <a name="userjourneys"></a>Userjourney
+# <a name="userjourneys"></a>UserJourneys
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -173,8 +173,8 @@ Na krok Orchestrace typu `ClaimsProviderSelection` nebo `CombinedSignInAndSignUp
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| TargetClaimsExchangeId | Ne | Identifikátor výměna deklarací identit, který je proveden v dalším kroku Orchestrace výběru zprostředkovatele deklarací identity. Tento atribut ValidationClaimsExchangeId atributu musí být zadán. | 
-| ValidationClaimsExchangeId | Ne | Identifikátor výměna deklarací identit, který je proveden v aktuální krok Orchestrace ověření výběru zprostředkovatele deklarací identity. Tento atribut TargetClaimsExchangeId atributu musí být zadán. |
+| TargetClaimsExchangeId | Ne | Identifikátor výměna deklarací identit, který je proveden v dalším kroku Orchestrace výběru zprostředkovatele deklarací identity. Atribut ValidationClaimsExchangeId nebo tento atribut musí být zadaný, ale ne obojí. | 
+| ValidationClaimsExchangeId | Ne | Identifikátor výměna deklarací identit, který je proveden v aktuální krok Orchestrace ověření výběru zprostředkovatele deklarací identity. Atribut TargetClaimsExchangeId nebo tento atribut musí být zadaný, ale ne obojí. |
 
 ### <a name="claimsproviderselection-example"></a>Příklad ClaimsProviderSelection.
 

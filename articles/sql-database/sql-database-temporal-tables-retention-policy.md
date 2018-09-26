@@ -1,43 +1,46 @@
 ---
-title: Správa historických dat v dočasných tabulek se zásady uchovávání informací | Microsoft Docs
-description: Další informace o použití zásad dočasné uchovávání informací pro historických dat pod kontrolou.
+title: Správa historických dat v dočasných tabulek se zásady uchovávání informací | Dokumentace Microsoftu
+description: Další informace o použití zásad pro dočasné uchovávání informací pro historických dat ve vaší kontrole.
 services: sql-database
-author: bonova
-manager: craigg
 ms.service: sql-database
-ms.custom: develop databases
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: bonova
 ms.author: bonova
-ms.openlocfilehash: f65f7ec44ccbeb6f64d43d20b1bd7a77329fa97f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: f339cadc63d5e5cd934d07e7b0fffc6342ca04c7
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649019"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159090"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>Správa historických dat v dočasných tabulek se zásady uchovávání informací
-Dočasné tabulky může zvýšit velikost databáze více než regulérních tabulkách, zejména v případě, že zachováte historických dat pro delší časové období. Proto zásady uchovávání historických dat je důležitým aspektem plánování a správu životního cyklu každých dočasnou tabulku. Dočasné tabulky v databázi SQL Azure se dodávají s snadno použitelné uchování mechanismus, který umožňuje provedení této úlohy.
+Dočasné tabulky může zvýšit velikost databáze více než regulární tabulek, zejména v případě, že uchovávání historických dat po dobu delší časové období. Zásady uchovávání informací pro historických dat, proto je důležitou součástí plánování a správu životního cyklu každý dočasnou tabulku. Dočasné tabulky ve službě Azure SQL Database jsou dostupné snadným ovládáním uchování mechanismus, který umožňuje provést tuto úlohu.
 
-Uchování dočasné historie může být nakonfigurována na úrovni jednotlivých tabulce, což umožňuje uživatelům vytvářet flexibilní stárnutí zásady. Použití dočasné uchování je jednoduchý: vyžaduje jenom jeden parametr nastavit během změny schématu nebo vytvoření tabulky.
+Uchování dočasné historie může být nakonfigurována na úrovni jednotlivé tabulky, který umožňuje uživatelům vytvářet flexibilní stárnoucích zásady. Použití dočasné uchování je jednoduchý: vyžaduje jenom jeden parametr, chcete-li nastavit během vytváření nebo schématu změny tabulky.
 
-Po definování zásad uchovávání informací, Azure SQL Database spustí pravidelně kontroluje, zda existují historických řádků, které jsou způsobilé pro automatické čištění. Identifikace odpovídající řádky a jejich odebrání z tabulky historie dojít transparentně, v pozadí úloha, která je naplánována a spustit v systému. Stáří podmínku pro řádky tabulky historie je zaškrtnuta možnost podle sloupce představující konec období SYSTEM_TIME. Pokud doba uchování, například je nastavené na šest měsíců, řádky tabulky, které jsou vhodné pro čištění splňovat následující podmínky:
+Po definování zásady uchovávání informací Azure SQL Database začne pravidelně kontroluje, jestli nejsou historických řádky, které jsou vhodné pro automatické čištění. Identifikace odpovídajících řádků a jejich odebrání z tabulky historie probíhá transparentně, úlohy na pozadí, který je naplánován a spustit v systému. Stáří podmínku pro řádky tabulky historie je zaškrtnuté políčko podle sloupce představující konec období SYSTEM_TIME. Pokud doba uchování, je třeba nastavit na šest měsíců, tabulka řádků způsobilých k vyčištění splňovat následující podmínky:
 
 ````
 ValidTo < DATEADD (MONTH, -6, SYSUTCDATETIME())
 ````
 
-V předchozím příkladu jsme předpokládá **ValidTo** sloupec odpovídá na konci období SYSTEM_TIME.
+V předchozím příkladu jsme předpokládá se, že **ValidTo** sloupec odpovídá konci období SYSTEM_TIME.
 
-## <a name="how-to-configure-retention-policy"></a>Postup konfigurace zásad uchovávání informací?
-Než začnete konfigurovat zásady uchovávání informací pro dočasnou tabulku, proveďte nejprve kontrolu zda je povoleno dočasné uchovávání historických *na úrovni databáze*.
+## <a name="how-to-configure-retention-policy"></a>Jak nakonfigurovat zásady uchovávání informací?
+Než začnete konfigurovat zásady uchovávání informací pro dočasnou tabulku, proveďte nejprve kontrolu, jestli je povolené dočasné uchovávání historických *na úrovni databáze*.
 
 ````
 SELECT is_temporal_history_retention_enabled, name
 FROM sys.databases
 ````
 
-Databáze příznak **is_temporal_history_retention_enabled** je nastaven na hodnotu ON ve výchozím nastavení, ale uživatelé mohou změnit pomocí příkazu ALTER DATABASE. Je také automaticky nastaví na hodnotu OFF po [obnovení bodu v čase](sql-database-recovery-using-backups.md) operaci. Pokud chcete povolit dočasné uchování vyčištění pro vaši databázi, spusťte následující příkaz:
+Databáze příznak **is_temporal_history_retention_enabled** nastavená na ON ve výchozím nastavení, ale uživatelé mohou změnit pomocí příkazu ALTER DATABASE. Je také automaticky nastaven na hodnotu OFF po [obnovení bodu v čase](sql-database-recovery-using-backups.md) operace. Pokud chcete povolit vyčištění uchování dočasné historie pro vaši databázi, spusťte následující příkaz:
 
 ````
 ALTER DATABASE <myDB>
@@ -45,11 +48,11 @@ SET TEMPORAL_HISTORY_RETENTION  ON
 ````
 
 > [!IMPORTANT]
-> Uchování pro dočasné tabulky, i když můžete nakonfigurovat **is_temporal_history_retention_enabled** je VYPNUTÝ, ale není v takovém případě aktivuje automatické čištění zastaralá řádků.
+> Nakonfigurujete uchovávání dat pro dočasné tabulky i v případě **is_temporal_history_retention_enabled** je VYPNUTÝ, ale není v takovém případě aktivuje automatické vyčištění starých řádků.
 > 
 > 
 
-Zásady uchovávání informací je nakonfigurované během vytváření tabulky zadáním hodnoty pro parametr HISTORY_RETENTION_PERIOD:
+Při vytváření tabulky tak, že zadáte hodnotu pro parametr HISTORY_RETENTION_PERIOD jsou nakonfigurované zásady uchovávání informací:
 
 ````
 CREATE TABLE dbo.WebsiteUserInfo
@@ -71,9 +74,9 @@ CREATE TABLE dbo.WebsiteUserInfo
  );
 ````
 
-Databáze SQL Azure umožňuje určit dobu uchování pomocí různých časových jednotek: počet dnů, týdnů, měsíců a let. Pokud je vynechán HISTORY_RETENTION_PERIOD, se předpokládá NEKONEČNÉ uchování. Můžete taky NEKONEČNÉ – klíčové slovo explicitně.
+Azure SQL Database umožňuje zadat období uchovávání dat s použitím různých časových jednotek: dnů, týdnů, měsíců a ROKŮ. HISTORY_RETENTION_PERIOD je vynechána, předpokládá se NEKONEČNÉ uchování. NEKONEČNÉ – klíčové slovo můžete použít také explicitně.
 
-V některých případech můžete chtít nakonfigurovat uchování po vytvoření tabulky nebo ke změně nakonfigurovaná hodnota. V takovém případě použijte příkaz ALTER TABLE:
+V některých případech můžete chtít konfigurovat uchovávání po vytvoření tabulky nebo chcete-li změnit dříve konfigurovaná hodnota. V takovém případě použijte příkaz ALTER TABLE:
 
 ````
 ALTER TABLE dbo.WebsiteUserInfo
@@ -81,11 +84,11 @@ SET (SYSTEM_VERSIONING = ON (HISTORY_RETENTION_PERIOD = 9 MONTHS));
 ````
 
 > [!IMPORTANT]
-> Nastavení možnosti SYSTEM_VERSIONING na hodnotu OFF *nezachovává* hodnotu doby uchování. Nastavení možnosti SYSTEM_VERSIONING na ON bez HISTORY_RETENTION_PERIOD zadaného explicitně výsledky v NEKONEČNOU dobu uchování.
+> Nastavení možnosti SYSTEM_VERSIONING na hodnotu OFF *nezachová* hodnota období uchování. Nastavení možnosti SYSTEM_VERSIONING na ON bez HISTORY_RETENTION_PERIOD explicitně výsledkem zadané NEKONEČNOU dobu uchování.
 > 
 > 
 
-Pokud chcete zkontrolovat aktuální stav zásady uchovávání informací, použijte následující dotaz, který spojuje příznak povolení dočasné uchovávání dat na úrovni databáze s dob uchování u jednotlivých tabulek:
+Pokud chcete zkontrolovat aktuální stav zásad uchovávání informací, použijte následující dotaz, který spojuje příznak povolení dočasné uchovávání informací na úrovni databáze se doby uchování pro jednotlivé tabulky:
 
 ````
 SELECT DB.is_temporal_history_retention_enabled,
@@ -101,28 +104,28 @@ ON T1.history_table_id = T2.object_id WHERE T1.temporal_type = 2
 ````
 
 
-## <a name="how-sql-database-deletes-aged-rows"></a>Jak SQL Database odstraní stará řádky?
-Proces vyčištění závisí na rozložení indexu tabulky historie. Je důležité si všimněte si, že *pouze tabulky historie clusterovaný index (B-stromu nebo columnstore) může mít omezený uchování zásady nakonfigurované*. Úlohy na pozadí se vytvoří pro Vyčistit stará data pro všechny dočasné tabulky s dobou uchování omezené.
-Vyčištění logiku pro clusterovaný index rowstore (B-stromu) odstraňuje zastaralá řádek v menší bloky dat (až 10 kB) minimalizovat tlak na protokol databáze a subsystému vstupně-výstupní operace. I když čištění logiku využívá požadovaným indexem B-stromu, pořadí odstranění starší než doba uchování dat se nedá zaručit pevně řádků. Proto *nepřebírají žádné závislostí v pořadí čištění ve svých aplikacích*.
+## <a name="how-sql-database-deletes-aged-rows"></a>Jak SQL Database odstraňuje zastaralá řádky?
+Proces vyčištění závisí na index rozložení tabulky historie. Je důležité si všimněte si, že *tabulky historie clusterovaný index, (B-stromu nebo columnstore) můžou mít omezené období uchování zásady nakonfigurované pouze*. Úlohy na pozadí se vytvoří, vyčistěte zastaralá data pro všechny dočasné tabulky s omezeného období uchování.
+Vyčištění logiku pro clusterovaný index rowstore (B-stromu) odstraní zastaralá řádek menších částech (až 10 tisíc) minimalizovat tlak na protokol databáze a vstupně-výstupního subsystému. Přestože vyčištění logiky využívá nezbytné indexu B-stromu, pořadí odstranění starší než doba uchování nelze zaručit pevně řádků. Proto *nepřebírají žádné závislosti na vyčištění pořadí, ve svých aplikacích*.
 
-Úloha vyčištění pro Clusterované columnstore odebere celý [řádek skupiny](https://msdn.microsoft.com/library/gg492088.aspx) najednou (obvykle obsahují 1 milionu řádků každý), což je velmi efektivní, zejména v případě, že historická data se generuje vysoký tempem.
+Odebere celou úlohu čištění pro Clusterované columnstore [řádek skupiny](https://msdn.microsoft.com/library/gg492088.aspx) najednou (obvykle obsahovat 1 milion řádků každý), což je velmi efektivní, zejména v případě, že se vygeneruje historická data při vysoké tempo.
 
-![Clusterované columnstore uchování](./media/sql-database-temporal-tables-retention-policy/cciretention.png)
+![Uchování Clusterované columnstore](./media/sql-database-temporal-tables-retention-policy/cciretention.png)
 
-Komprese dat vynikající a efektivní uchování čištění díky clusterovaný columnstore index ideální volbou pro scénáře, když vaše úlohy generují rychle vysoký objem historická data. Tento vzor je typické pro náročné na prostředky [úlohy zpracování transakcí, které používají dočasné tabulky](https://msdn.microsoft.com/library/mt631669.aspx) pro sledování změn a auditování, analýza trendu nebo přijímání dat IoT.
+Komprese vynikající dat a provede vyčištění efektivní uchovávání clusterovaný columnstore index ideální volbou pro scénáře, když vaše úlohy generují rychle vysoké množství historických dat. Tento vzor je typické pro náročné na prostředky [úloh zpracování transakcí, které používají dočasné tabulky](https://msdn.microsoft.com/library/mt631669.aspx) pro řešení change tracking a auditování, analýze trendů nebo zpracování dat IoT.
 
-## <a name="index-considerations"></a>Aspekty indexu
-Úloha vyčištění tabulky s clusterovaný index rowstore vyžaduje index začínat sloupec odpovídající konci období SYSTEM_TIME. Pokud takový indexu neexistuje, nelze nakonfigurovat doby uchování konečné:
+## <a name="index-considerations"></a>Důležité informace o index
+Úloha vyčištění pro tabulky pomocí clusterovaného indexu rowstore vyžaduje index začít s sloupce odpovídající konci období SYSTEM_TIME. Pokud takové indexu neexistuje, nelze nakonfigurovat omezené období uchování:
 
-*Msg 13765, Level 16, State 1 <br> </br> nastavení konečné uchovávají se na dočasné tabulce se systémovou správou verzí temporalstagetestdb.dbo.WebsiteUserInfo, protože tabulka historie. temporalstagetestdb.dbo.WebsiteUserInfoHistory' neobsahuje požadované clusterovaný index. Zvažte vytvoření clusteru columnstore nebo B-stromu index začínající sloupec, který odpovídá konec SYSTEM_TIME period v tabulce historie.*
+*Msg – 13765, Level 16, State 1 <br> </br> nastavení omezeného období uchování pro dočasnou tabulku systémovou temporalstagetestdb.dbo.WebsiteUserInfo selhala, protože tabulka historie. temporalstagetestdb.dbo.WebsiteUserInfoHistory' neobsahuje požadovaný clusterovaný index. Zvažte vytvoření clusterovaného indexu columnstore nebo indexu B-stromu počínaje sloupcem, který odpovídá konci SYSTEM_TIME period, tabulku historie.*
 
-Je důležité si všimněte si, že v tabulce historie výchozí vytvořené databáze SQL Azure již má clusterovaný index, který je kompatibilní s pro zásady uchovávání informací. Pokud se pokusíte odebrat tohoto indexu v tabulce s dobou uchování omezené, operace selže s následující chybou:
+Je důležité si všimněte, že výchozí tabulku historie již vytvořené službou Azure SQL Database má clusterovaný index, který je kompatibilní pro zásady uchovávání informací. Pokud se pokusíte odebrat indexu u tabulky se omezeného období uchování, operace se nezdaří s následující chybou:
 
-*Msg 13766, Level 16, State 1 <br> </br> nelze vyřadit clusterovaný index 'WebsiteUserInfoHistory.IX_WebsiteUserInfoHistory', protože je používán pro automatické čištění zastaralá data. Zvažte nastavení HISTORY_RETENTION_PERIOD k NEKONEČNÉ na odpovídající systémovou správou verzí dočasnou tabulku, pokud je třeba vyřadit tohoto indexu.*
+*Msg – 13766, Level 16, State 1 <br> </br> clusterovaný index 'WebsiteUserInfoHistory.IX_WebsiteUserInfoHistory' nelze vyřadit, protože se používá k automatickému čištění zastaralá data. Vezměte v úvahu history_retention_period na INFINITE odpovídající-systémovou dočasnou tabulku. Pokud potřebujete tento index.*
 
-Čištění na clusterovaný index columnstore funguje optimálně vložit historických řádků ve vzestupném pořadí (na konci období sloupec), tomu je vždy, když v tabulce historie je naplněn výhradně SYSTEM_VERSIONIOING mechanismus. Pokud nejsou řádky v tabulce historie seřazené podle konec sloupec období (který může být případ, pokud jste migrovali existující historická data), je třeba znovu vytvořit clusterovaný index columnstore nad B-stromu vytvořit index, který je správně seřadit, abyste dosáhli optimálního výkon.
+Čištění na clusterovaný index columnstore funguje optimálně vložili historických řádků ve vzestupném pořadí podle (řazení na konci období sloupec), je vždy případ, kdy v tabulce historie je vyplněn výhradně SYSTEM_VERSIONIOING mechanismus. Pokud je řádků v tabulce historie nejsou seřazené podle konec období sloupce (která může dojít, pokud jste migrovali stávající historická data), je třeba znovu vytvořit clusterovaný index columnstore nad B-stromu můžete vytvořit index rowstore, že je správně uspořádány, abyste dosáhli optimálního výkon.
 
-Vyhněte se znovu sestavit clusterovaný index columnstore v tabulce historie s dobou uchování omezené, protože může změnit, řazení do skupin řádků přirozeně vyvolané operace systémové správy verzí. Pokud potřebujete znovu sestavit clusterovaný index columnstore v tabulce historie, učiňte tak, že ho znovu vytvoříte nad kompatibilní index B-stromu, zachování pořadí v rowgroups potřebné pro čištění regulární dat. Pokud vytvoříte dočasnou tabulku s stávající tabulka historie, který obsahuje clusterovaný index sloupce bez pořadí zaručenou dat by měla být provedena ve stejný přístup:
+Vyhněte se znovu sestavit clusterovaný index columnstore v tabulce historie s dobou omezené období uchování, protože mohou změnit pořadí ve skupinách řádků přirozeně stanovené operace systému správy verzí. Pokud je potřeba znovu sestavit clusterovaný index columnstore v tabulce historie, to udělejte tak, že znovu vytvoříte nad kompatibilní indexu B-stromu, zachování pořadí v rowgroups nezbytné pro pravidelné čištění. Stejným způsobem se má vzít-li vytvořit dočasnou tabulku s existující tabulku historie, která má clusterovaný index sloupce bez data zaručené pořadí:
 
 ````
 /*Create B-tree ordered by the end of period column*/
@@ -134,18 +137,18 @@ CREATE CLUSTERED COLUMNSTORE INDEX IX_WebsiteUserInfoHistory ON WebsiteUserInfoH
 WITH (DROP_EXISTING = ON);
 ````
 
-Pokud dobu uchování konečné je nakonfigurována pro tabulku historie s clusterovaný index columnstore, nelze vytvořit další neclusterovaných indexů B-stromu v této tabulce:
+Pokud omezeného období uchování je nakonfigurovaná pro tabulku historie pomocí clusterovaného indexu columnstore, nelze vytvořit další neclusterovaných indexů B-stromu pro danou tabulku:
 
 ````
 CREATE NONCLUSTERED INDEX IX_WebHistNCI ON WebsiteUserInfoHistory ([UserName])
 ````
 
-Pokus o provedení výše příkaz selže s následující chybou:
+Pokus o spuštění výše příkaz selže s následující chybou:
 
-*Msg 13772, Level 16, State 1 <br> </br> nelze vytvořit neclusterovaný index na dočasnou tabulku historie 'WebsiteUserInfoHistory, protože má doba uchovávání omezené a clusterovaný index columnstore definované.*
+*Msg – 13772, Level 16, State 1 <br> </br> nelze vytvořit neclusterovaný index pro dočasnou tabulku historie 'WebsiteUserInfoHistory' protože má omezené období uchování a definovaný clusterovaný index columnstore.*
 
 ## <a name="querying-tables-with-retention-policy"></a>Dotazy na tabulky s zásady uchovávání informací
-Všechny dotazy na dočasnou tabulku automaticky vyfiltrovat historických řádky odpovídající zásady uchovávání informací omezené, aby se zabránilo nepředvídatelným a konzistentní výsledky, protože zastaralá řádky může odstranit úlohu čištění *v libovolném bodě v čase a v libovolné pořadí*.
+Všechny dotazy na dočasnou tabulku automaticky vyfiltrovat historických řádky odpovídající zásady omezené období uchování, aby se zabránilo neočekávaným a konzistentní výsledky, protože stará řádků může odstranit úlohu čištění *v libovolném bodě v čase a v libovolné pořadí*.
 
 Následující obrázek znázorňuje plán dotazu pro jednoduchý dotaz:
 
@@ -153,22 +156,22 @@ Následující obrázek znázorňuje plán dotazu pro jednoduchý dotaz:
 SELECT * FROM dbo.WebsiteUserInfo FOR SYSTEM_TIME ALL;
 ````
 
-Plán dotazu obsahuje další filtr použít na konci období sloupce (ValidTo) v operátoru kontrolovat clusterovaný Index pro tabulku historie (zvýrazněné). Tento příklad předpokládá u tabulky WebsiteUserInfo se nastavil této doby uchování jeden měsíc.
+Plán dotazu obsahuje další filtr použít na konci období ve sloupci (ValidTo) v operátoru kontrola Clusterovaného indexu pro tabulku historie (zvýrazněno). Tento příklad předpokládá tohoto MĚSÍČNÍHO období uchovávání dat byla nastavena na WebsiteUserInfo tabulky.
 
-![Filtr dotazu uchování](./media/sql-database-temporal-tables-retention-policy/queryexecplanwithretention.png)
+![Filtr dotazu pro uchovávání dat](./media/sql-database-temporal-tables-retention-policy/queryexecplanwithretention.png)
 
-Pokud dotaz Tabulka historie přímo, však může zobrazit řádky, které jsou starší než uchovávání období, ale bez jakékoli záruky na výsledky dotazu opakovatelných. Následující obrázek znázorňuje provedení plán dotazu pro dotaz v tabulce historie bez další filtry použít:
+Ale když odešlete dotaz přímo tabulku historie, může se zobrazit řádky, které jsou starší než zadaná doba uchovávání období, ale bez jakékoli záruky pro výsledky dotazu opakovatelné. Následující obrázek znázorňuje plán provádění dotazu pro dotaz na tabulku historie bez další použité filtry:
 
-![Dotazování historie bez uchování filtru](./media/sql-database-temporal-tables-retention-policy/queryexecplanhistorytable.png)
+![Dotazování na historii bez filtru uchovávání informací](./media/sql-database-temporal-tables-retention-policy/queryexecplanhistorytable.png)
 
-Nespoléhejte obchodní logiky na čtení tabulky historie mimo dobu uchování, jak můžete obdržet nekonzistentní nebo neočekávané výsledky. Doporučujeme použít dočasné dotazy s klauzulí FOR SYSTEM_TIME pro analýzu dat v dočasných tabulek.
+Nespoléhejte obchodní logiky na čtení tabulky historie mimo dobu uchování až získáte nekonzistentní nebo neočekávané výsledky. Doporučujeme používat dočasné dotazy s klauzulí FOR SYSTEM_TIME pro analýzu dat v dočasných tabulek.
 
-## <a name="point-in-time-restore-considerations"></a>Přejděte v aspekty čas obnovení
-Když vytvoříte novou databázi pomocí [obnovení existující databázi k určitému bodu v čase](sql-database-recovery-using-backups.md), má dočasné uchování zakázáno na úrovni databáze. (**is_temporal_history_retention_enabled** příznak nastaven na hodnotu OFF). Tato funkce umožňuje zkontrolovat všechny řádky historických při obnovení, aniž byste museli, že jsou zastaralá řádky odebrat předtím, než dojde k dotazování je. Můžete jej do *zkontrolovat historická data i po uplynutí doby uchování nakonfigurované*.
+## <a name="point-in-time-restore-considerations"></a>Důležité informace o čase obnovení k časovému okamžiku
+Když vytvoříte novou databázi pomocí [existující databázi obnovení k určitému bodu v čase](sql-database-recovery-using-backups.md), má dočasné uchování zakázány na úrovni databáze. (**is_temporal_history_retention_enabled** příznak nastaven na hodnotu OFF). Tato funkce umožňuje prozkoumat všechny historické řádků při obnovení, ale nemusíme se starat, zastaralá řádky jsou odebrány, než se ponoříte k jejich dotazování. Můžete použít k *kontrolovat historická data nad rámec nastavené doby uchování*.
 
-Řekněme, že dočasná tabulka má období uchování jeden měsíc. Pokud vaše databáze byla vytvořena v rámci úrovně služby Premium, bude moci vytvořit kopii databáze se stav databáze až 35 dnů zpět v minulosti. Které efektivně by umožňují analýza historických řádků, které jsou až 65 dny v tabulce historie přímým dotazováním.
+Řekněme, že dočasná tabulka má období uchování jeden měsíc. Pokud vaše databáze byla vytvořena v úrovni Premium služby, by mohli vytvořit kopii databáze s daným stavem databáze až 35 dnů zpět v minulosti. Který efektivně umožní k analýze historických řádky, které jsou až 65 dny dotazováním tabulku historie.
 
-Pokud chcete aktivovat čištění dočasné uchování, spusťte následující příkaz Transact-SQL za bod v době obnovení:
+Pokud chcete aktivovat čištění dočasné uchovávání, spusťte následující příkaz jazyka Transact-SQL po bodu v čase:
 
 ````
 ALTER DATABASE <myDB>
@@ -176,9 +179,9 @@ SET TEMPORAL_HISTORY_RETENTION  ON
 ````
 
 ## <a name="next-steps"></a>Další postup
-Další informace o použití dočasných tabulek v aplikacích, projděte si [Začínáme s dočasné tabulky v databázi SQL Azure](sql-database-temporal-tables.md).
+Další informace o použití dočasných tabulek se ve svých aplikacích, projděte si [Začínáme s dočasnými tabulkami ve službě Azure SQL Database](sql-database-temporal-tables.md).
 
-Navštivte Channel 9 a poslechnout [scénáře úspěchu dočasné implementace skutečné zákazníka](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) a sledujte [live dočasné ukázkový](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016).
+Navštivte web Channel 9 a poslechněte si [skutečné dočasné implementace úspěch příběh a zjistěte](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) a sledujte [live dočasné ukázku](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016).
 
-Podrobné informace o dočasné tabulky, zkontrolujte [dokumentace MSDN](https://msdn.microsoft.com/library/dn935015.aspx).
+Podrobné informace o dočasných tabulek, najdete v tématu [dokumentaci MSDN](https://msdn.microsoft.com/library/dn935015.aspx).
 

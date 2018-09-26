@@ -14,11 +14,11 @@ ms.date: 01/11/2018
 ms.author: lizross
 ms.custom: end-user
 ms.openlocfilehash: 05a4961938f8a4f7d14c9dbf5041a2d02257b476
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345867"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47106820"
 ---
 # <a name="reset-your-work-or-school-password"></a>Resetovat heslo pracovního nebo školního
 

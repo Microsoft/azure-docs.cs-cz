@@ -9,12 +9,12 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: d111f4eeea6a7cd630e550b0f57ad1617eb2bcd0
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 55233198c4553f9838036e4eb91cff380af1988d
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719337"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182293"
 ---
 # <a name="moderate-with-custom-term-lists-in-net"></a>Střední se seznamy vlastní termín v .NET
 
@@ -116,7 +116,7 @@ Přidejte následující kód k vytvoření klienta Content Moderator pro vaše 
             // Create and initialize an instance of the Content Moderator API wrapper.
             ContentModeratorClient client = new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey));
 
-            client.BaseUrl = AzureBaseURL;
+            client.Endpoint = AzureBaseURL;
             return client;
         }
     }
@@ -138,7 +138,7 @@ Přidejte následující soukromé vlastnosti do oboru názvů TermLists, tříd
 
     /// <summary>
     /// The number of minutes to delay after updating the search index before
-    /// performing image match operations against a the list.
+    /// performing image match operations against the list.
     /// </summary>
     private const double latencyDelay = 0.5;
 

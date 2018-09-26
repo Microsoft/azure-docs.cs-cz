@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 08/01/2016
 ms.author: tomfitz
 ms.openlocfilehash: c07a9d92cac13d6325e66f44426f1a64e8ac53cb
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35899282"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47096196"
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>Sdílení řídicích panelů Azure prostřednictvím řízení přístupu na základě Role
 Po dokončení konfigurace řídicího panelu, můžete ji publikovat a sdílet s ostatními uživateli ve vaší organizaci. Povolit ostatním Chcete-li zobrazit řídicí panel s použitím Azure [řízení přístupu na základě Role](../role-based-access-control/role-assignments-portal.md). Přiřadíte roli uživatele nebo skupiny uživatelů a tuto roli definuje, jestli uživatelé, můžete zobrazit nebo upravit publikovaný řídicí panel. 
