@@ -5,7 +5,7 @@
 # Koncepty
 ## [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
 ## [Klávesové zkratky](azure-portal-keyboard-shortcuts.md)
-## [Podporované prohlížeče a zařízení](../azure-preview-portal-supported-browsers-devices.md)
+## [Podporované prohlížeče a zařízení](azure-portal-supported-browsers-devices.md)
 ## [Struktura řídicích panelů Azure](azure-portal-dashboards-structure.md)
 # Návody
 ## Nasazení

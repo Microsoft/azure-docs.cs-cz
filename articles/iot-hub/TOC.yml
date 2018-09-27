@@ -276,24 +276,14 @@ items:
     - name: Použití fyzického zařízení
       href: iot-hub-get-started-physical.md
       items:
-      - name: Raspberry Pi s Pythonem
-        href: iot-hub-raspberry-pi-kit-python-get-started.md
       - name: Raspberry Pi s Node.js
         href: iot-hub-raspberry-pi-kit-node-get-started.md
       - name: Raspberry Pi s C
         href: iot-hub-raspberry-pi-kit-c-get-started.md
       - name: MXChip IoT DevKit s Arduinem
         href: iot-hub-arduino-iot-devkit-az3166-get-started.md
-      - name: Intel Edison s Node.js
-        href: iot-hub-intel-edison-kit-node-get-started.md
-      - name: Intel Edison s C
-        href: iot-hub-intel-edison-kit-c-get-started.md
       - name: Adafruit Feather HUZZAH ESP8266 s Arduinem
         href: iot-hub-arduino-huzzah-esp8266-get-started.md
-      - name: Sparkfun ESP8266 Thing Dev s Arduinem
-        href: iot-hub-sparkfun-esp8266-thing-dev-get-started.md
-      - name: Adafruit Feather M0 s Arduinem
-        href: iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md
     - name: Použití MXChip IoT DevKit
       items:
       - name: Překlad hlasové zprávy s využitím Azure Cognitive Services
@@ -420,9 +410,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: 57ffc64e9c644e27f24ada67366f820708860660
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 584ef2dd30e8107fd1675a5376707fe10d40f4a1
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064122"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395419"
