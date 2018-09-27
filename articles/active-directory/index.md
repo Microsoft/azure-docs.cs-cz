@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 09/20/2018
 ms.author: mtillman
-ms.openlocfilehash: 8b28ca8d0aef745600539ab2785e67e3d67e95f9
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: bf72b8fbe437971e6d621208c93c239c3c557f55
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063808"
+ms.locfileid: "47165054"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -180,10 +180,10 @@ ms.locfileid: "47063808"
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3><a href="governance/access-reviews-overview.md">Kontroly přístupu</a></h3>
+                                                        <h3><a href="governance/index.yml">Zásady správného řízení identit</a></h3>
                                                         <p>
-                                                            <a href="governance/create-access-review.md">Vytvoření kontroly přístupu</a><br>
-                                                            <a href="governance/perform-access-review.md">Provádění kontroly přístupu</a><br>
+                                                            <a href="governance/manage-user-access-with-access-reviews.md">Správa uživatelského přístupu</a><br>
+                                                            <a href="governance/manage-guest-access-with-access-reviews.md">Správa přístupu hostů</a><br>
                                                             <a href="governance/active-directory-tou.md">Podmínky použití</a><br>
                                                         </p>
                                                         <br><br>

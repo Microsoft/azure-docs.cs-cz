@@ -45,8 +45,9 @@
 ### [Přehled dostupnosti SAP HANA v Azure](sap-hana-availability-overview.md)
 ### [Dostupnost SAP HANA v Azure v rámci jedné oblasti Azure](sap-hana-availability-one-region.md)
 ### [Dostupnost SAP HANA v Azure napříč oblastmi Azure](sap-hana-availability-across-regions.md)
-## [Nastavení systémové replikace SAP HANA na SLES](sap-hana-high-availability.md)
-## [Nastavení systémové replikace SAP HANA na RHEL](sap-hana-high-availability-rhel.md)
+### [Nastavení systémové replikace SAP HANA na SLES](sap-hana-high-availability.md)
+### [Nastavení systémové replikace SAP HANA na RHEL](sap-hana-high-availability-rhel.md)
+### [Řešení potíží se škálováním na více instancí SAP HANA a Pacemaker na SLES](hana-vm-troubleshoot-scale-out-ha-on-sles.md)
 ## [Přehled zálohování SAP HANA](sap-hana-backup-guide.md)
 ## [Zálohování SAP HANA na úrovni souborů](sap-hana-backup-file-level.md)
 ## [Zálohy snímků úložiště SAP HANA](sap-hana-backup-storage-snapshots.md)
@@ -107,3 +108,4 @@
 ## [Azure Data Factory nabízí integraci dat pro SAP HANA a Business Warehouse](https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration)
 # Zdroje a prostředky
 ## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/)
+

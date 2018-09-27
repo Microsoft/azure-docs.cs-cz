@@ -6,12 +6,12 @@ description: Naučte se vytvářet a spravovat výkonné aplikace pomocí cloudo
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 9a1d5378ea5717514a2b247afad2db7d88986fb0
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: ace2178ac4e1d76d561800d94b07780c3579f1f4
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033766"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166975"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -1107,7 +1107,7 @@ Automatizace úloh Azure pomocí skriptů s využitím PowerShellu </a>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/databox/">
+                                            <a href="/azure/databox-family/">
                                                 <img src="media/index/Service-icon.png" alt="" />
                                                 <p>Data Box</p>
                                             </a>
@@ -2487,7 +2487,7 @@ Automatizace úloh Azure pomocí skriptů s využitím PowerShellu </a>
                                 </a>
                             </li>
                             <li>
-                                <a href="/en-us/azure/databox/" data-linktype="absolute-path">
+                                <a href="/en-us/azure/databox-family/" data-linktype="absolute-path">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -2497,8 +2497,8 @@ Automatizace úloh Azure pomocí skriptů s využitím PowerShellu </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Data Box</h3>
-                                                    <p>Zabezpečený přenos velkých objemů dat s nízkými náklady v případě omezené síťové dostupnosti</p>
+                                                    <h3>Řada služeb Data Box</h3>
+                                                    <p>Řada úložných zařízení, která umožňují offline přenos dat nebo přenos dat založený na síti</p>
                                                 </div>
                                             </div>
                                         </div>

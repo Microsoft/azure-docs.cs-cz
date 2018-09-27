@@ -177,6 +177,8 @@ items:
     href: ./concepts/definition-structure.md
   - name: Vysvětlení efektu služby Policy
     href: ./concepts/effects.md
+  - name: Auditování virtuálních počítačů s konfigurací hosta
+    href: ./concepts/guest-configuration.md
 - name: Návody
   items:
   - name: Programové vytváření zásad
@@ -217,9 +219,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: UserVoice
     href: https://feedback.azure.com/forums/915958-azure-governance
-ms.openlocfilehash: edae8729cc6089c61261b1e388512d5cbd856574
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: b4d5a8249eaa49629f75649513932203fda7d4d5
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054706"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161654"

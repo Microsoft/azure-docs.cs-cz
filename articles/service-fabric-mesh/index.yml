@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 3425a7b65ce81ca3d45a0ccdfe613ffdfef4f90f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 14938e25cc41ea11baef94b6a9e01e070ffac654
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953609"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47158186"
 documentType: LandingData
 title: Dokumentace ke službě Azure Service Fabric Mesh
 metadata:
@@ -40,11 +40,12 @@ sections:
 - title: Podrobné kurzy
   items:
   - type: paragraph
-    text: Zjistěte, jak vytvořit a nasadit aplikaci Mesh pomocí sady Visual Studio.
+    text: Zjistěte, jak vytvořit a nasadit aplikaci Mesh pomocí sady Visual Studio nebo Azure CLI.
   - type: list
     style: unordered
     items:
-    - html: <a href="/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore">Vytvoření, ladění, nasazení a upgrade webové aplikace s více službami ve službě Service Fabric Mesh</a>
+    - html: <a href="/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore">Vytvoření, ladění, nasazení a upgrade aplikace s více službami ve službě Service Fabric Mesh pomocí sady Visual Studio</a>
+    - html: <a href="/azure/service-fabric-mesh/service-fabric-mesh-tutorial-template-deploy-app">Nasazení, škálování a upgrade aplikace Service Fabric Mesh pomocí šablony</a>
 - title: Referenční informace
   items:
   - type: list

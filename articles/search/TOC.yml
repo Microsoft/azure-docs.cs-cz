@@ -174,7 +174,7 @@ items:
         href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
       - name: Mapování polí
         href: search-indexer-field-mappings.md
-  - name: Prohledávání dat
+  - name: Dotazování dat
     items:
     - name: Sestavení a typy dotazů
       href: search-query-overview.md
@@ -182,7 +182,7 @@ items:
       href: search-explorer.md
     - name: Příklady jednoduché syntaxe
       href: search-query-simple-examples.md
-    - name: Příklady kompletní syntaxe
+    - name: Příklady syntaxe Lucene
       href: search-query-lucene-examples.md
     - name: Referenční materiály k dotazům
       items:
@@ -279,9 +279,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=search
   - name: Videa
     href: https://azure.microsoft.com/resources/videos/index/?services=search
-ms.openlocfilehash: 59409b9a3658d1bb3b36e938d83e4a2b880a7a6d
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 556a7651fc59c33a032a1e98e7bf123fe433889f
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "41927915"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182755"

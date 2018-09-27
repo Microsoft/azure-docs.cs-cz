@@ -19,12 +19,14 @@
 #### [Aplikace Azure: spravované aplikace](./marketplace-managed-apps.md)
 #### [Aplikace SaaS](./marketplace-saas-applications-technical-publishing-guide.md) 
 #### [Containers](./marketplace-containers.md)
+#### [Moduly IoT Edge](./iot-edge-module.md) 
 #### [Konzultační služba](./consulting-services.md)  
 #### [Průvodce publikováním pro Office 365, Dynamics 365 a Power BI](./appsource-offer-publishing-guide.md)
 #### [Povolení uvedení na Microsoft AppSource a Azure Marketplace s využitím Azure Active Directory](./enable-appsource-marketplace-using-azure-ad.md)
 
 ### [Rozvoj vašeho podnikání prostřednictvím marketplace](./grow-your-business-with-azure-marketplace.md)  
 #### [Upřednostňovaná řešení](./preferred-solutions.md) 
+#### [Ověření obsahu na Marketplace](./marketplace-criteria-content-validation.md)
 
 ### [Podpora pro Azure Marketplace a AppSource](./support-azure-marketplace.md)  
 
