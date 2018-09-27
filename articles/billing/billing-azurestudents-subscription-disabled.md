@@ -1,6 +1,6 @@
 ---
-title: Opětovné aktivace zakázána pro studenty předplatné Azure | Microsoft Docs
-description: Vysvětluje, proč je zakázána vaší Azure pro studenty předplatné a jak ji znovu aktivovat.
+title: Nová aktivace deaktivovaného Azure pro studenty předplatné | Dokumentace Microsoftu
+description: Vysvětluje, proč je vaše předplatné Azure for Students neaktivní a jak ho znovu.
 services: ''
 documentationcenter: ''
 author: amberbhargava
@@ -13,50 +13,50 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/01/2018
-ms.author: amberb
+ms.author: cwatson
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7fe3573dcf3f057d843547b9e4114f3b74c6ab59
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: d7bf1d06c598dd7e548c109f68d0996c0be2b6b8
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33203591"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47391364"
 ---
-# <a name="why-is-my-azure-for-students-subscription-disabled-and-how-do-i-reactivate-it"></a>Proč je můj Azure pro zakázané předplatné studenty a jak ji aktivovat?
+# <a name="why-is-my-azure-for-students-subscription-disabled-and-how-do-i-reactivate-it"></a>Proč se Moje předplatné Azure for Students zakázána a jak ho znovu?
 
-Vaše Azure pro studenty předplatné může získat zakázán, protože jste použili všechny kreditu, kreditu vypršela nebo jste zrušili omylem vašeho předplatného. Zobrazit jaký problém pro vás platí a zjistěte, jak můžete získat předplatné znovu aktivovat.
+Vaše předplatné Azure for Students může získat zakázaná, protože jste už použili všechny svoje kredity, váš kredit vypršel nebo omylem jste zrušili vaše předplatné. Podívejte se, jaký problém se vás týká a přečtěte si, jak můžete získat předplatné znovu aktivovat.
 
-## <a name="you-have-used-all-of-your-credit"></a>Použili jste všechny kreditu
+## <a name="you-have-used-all-of-your-credit"></a>Použili jste všechny vašeho kreditu
 
-Azure pro účet studenti, kteří vám poskytuje 100 USD platební a omezená počtu bezplatné služby po dobu 12 měsíců. Jakékoli použití nad rámec bezplatné služby a počty je odečtena od kreditu. Jakmile vyprší kreditu Azure zakáže služby a předplatného. Chcete-li pokračovat v používání služby Azure, musíte upgradovat předplatné na předplatné s průběžnými platbami kontaktováním [podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a poskytování informací o vaší kreditní karty. Po upgradu, vaše předplatné má stále přístup k bezplatné služby po dobu 12 měsíců od vaší registrační data. Vám pouze získat účtovat využití kromě bezplatné služby a počty.
+Účet Azure for Students vám poskytuje 100 USD kreditu a omezené množství bezplatných služeb po dobu 12 měsíců. Jakékoli využití nad rámec bezplatných služeb a množství se odečte od vašeho kreditu. Jakmile skončí vašeho kreditu Azure zakáže vaše předplatné a služby. Chcete-li pokračovat v používání služby Azure, musí vaše předplatné upgradovat na předplatné s průběžnými platbami kontaktováním [podpory Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a poskytuje informace o platební kartě. Po upgradu, vaše předplatné má stále přístup k bezplatné služby po dobu 12 měsíců od registrace data. Účtovat, jenom za využití nad rámec bezplatných služeb a množství.
 
-Váš zbývající kredit můžete zkontrolovat na [portálu Microsoft Azure Sponsorships](https://www.microsoftazuresponsorships.com/balance)
+Můžete zkontrolovat svůj zbývající kredit [Microsoft Azure Sponsorships portal](https://www.microsoftazuresponsorships.com/balance)
 
-1. Přihlaste se pomocí vaší Azure pro studenty přihlašovací údaje účtu.
-2. Stránka vyrovnávání poskytuje informace o používaných a zbývající kredit. Datum vypršení platnosti vaší platební najdete pod grafem kreditu.  
+1. Přihlaste se pomocí Azure pro studenty přihlašovací údaje účtu.
+2. Na stránce zůstatek poskytuje informace o používaných a zbývající kredit. Datum vypršení platnosti vašeho kreditu najdete pod grafem kredit.  
    
-    ![Snímek obrazovky, který obsahuje informace o platební pro Azure pro studenty předplatné](./media/billing-azurestudents-subscription-disabled/azurestudents-credit-balance.png)
+    ![Snímek obrazovky, která zobrazuje informace o kredit Azure pro studenty předplatné](./media/billing-azurestudents-subscription-disabled/azurestudents-credit-balance.png)
 
-3. Pokud chcete zkontrolovat využití služeb, které spotřebovávají kreditu Azure, vyberte **využití** levé navigaci pak vyberte vaše Azure pro studenty předplatné.
+3. Pokud chcete zkontrolovat využití služeb, které spotřebovávají kredit Azure, vyberte **využití** v levém navigačním panelu potom vyberte vaše předplatné Azure for Students.
 
-    ![Snímek obrazovky, který obsahuje informace o využití pro Azure pro studenty kreditu](./media/billing-azurestudents-subscription-disabled/azurestudents-credit-usage.png)
+    ![Snímek obrazovky, který obsahuje informace o využití pro Azure pro studenty kredit](./media/billing-azurestudents-subscription-disabled/azurestudents-credit-usage.png)
 
 Tabulka obsahuje následující sloupce:
 
-* **Název služby:** služba, která využívá Azure kreditu.
-* **Prostředek služby:** jednotky měření pro službu spotřebovávanou.
-* **Tráví:** kreditu v USD($) strávená ve službě.
+* **Název služby:** služba, která spotřebovává kreditu Azure.
+* **Prostředek služby:** měrnou jednotku spotřebovávaného služby.
+* **Výdajů:** výši kreditu v USD($) věnovaný službě.
 
 
-## <a name="your-credit-has-expired"></a>Vypršela platnost kreditu
+## <a name="your-credit-has-expired"></a>Váš kredit vypršel
 
-Vaše Azure pro studenty platební vyprší na konci dobu 12 měsíců. Jakmile vyprší platnost kreditu, zakáže Azure vašeho předplatného. Chcete-li pokračovat v používání služby Azure, musíte upgradovat předplatné na předplatné s průběžnými platbami kontaktováním [podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a poskytování informací o vaší kreditní karty. Po upgradu, Azure účtuje můžete průběžnými platbami sazby za služby, který používáte.
+Na konci 12 měsíců vyprší platnost vašeho kreditu Azure for Students. Po vypršení platnosti vašeho kreditu Azure zakáže vašeho předplatného. Chcete-li pokračovat v používání služby Azure, musí vaše předplatné upgradovat na předplatné s průběžnými platbami kontaktováním [podpory Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a poskytuje informace o platební kartě. Po upgradu se poplatky za Azure vám průběžných plateb za služby, které používáte.
 
 
-## <a name="you-have-accidentally-canceled-your-subscription"></a>Omylem jste zrušili předplatné
+## <a name="you-have-accidentally-canceled-your-subscription"></a>Omylem jste zrušili vaše předplatné
 
-Pokud jste zrušili omylem vaší Azure pro studenty předplatné, můžete ji aktivovat kontaktováním [podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Až budete znovu aktivovat, budete mít stále přístup k zbývající kredit a bezplatné služby po dobu 12 měsíců od vaší registrační data.
+Pokud se omylem jste zrušili vaše předplatné Azure for Students, můžete je aktivovat kontaktováním [podpory Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Jakmile aktivujete, máte stále přístup k zbývající kredit a bezplatné služby po dobu 12 měsíců od registrace data.
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktování podpory
 
-Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychle vyřešit problém.
+Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: a2bab2ebd6af5d69e233ff52cf3a472d1eaea504
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 1719da96a849bb5390745ec3df3ed11374bb8700
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714509"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47180491"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení s účtem LinkedIn pomocí Azure Active Directory B2C
 
@@ -33,10 +33,7 @@ Použít účet LinkedIn jako zprostředkovatele identity v Azure Active Directo
 ## <a name="configure-a-linkedin-account-as-an-identity-provider"></a>Nakonfigurujte účet LinkedIn jako zprostředkovatele identity
 
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) jako globální správce tenanta Azure AD B2C.
-2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant. 
-
-    ![Přepnutí na tenanta Azure AD B2C](./media/active-directory-b2c-setup-li-app/switch-directories.png)
-
+2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
 3. Zvolte **Všechny služby** v levém horním rohu portálu Azure Portal a vyhledejte a vyberte **Azure AD B2C**.
 4. Vyberte **zprostředkovatelé Identity**a pak vyberte **přidat**.
 5. Zadejte **název**. Zadejte například *LinkedIn*.

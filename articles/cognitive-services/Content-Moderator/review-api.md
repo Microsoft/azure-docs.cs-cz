@@ -1,48 +1,49 @@
 ---
-title: Azure obsahu moderátora - přerušování úlohy a lidské v the smyčky recenze | Microsoft Docs
-description: Lidské dohledu se vztahují na počítače asistované přerušování pro dosažení co nejlepších výsledků.
+title: Moderování úloh a kontrol lidských v the smyčky – Content Moderator
+titlesuffix: Azure Cognitive Services
+description: Jistotu lidské platí pro moderování s podporou počítače pro dosažení co nejlepších výsledků.
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 1/21/2018
 ms.author: sajagtap
-ms.openlocfilehash: 35b3cdaa410712c3fd08d3df4ebe4c83e3955d50
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b4a2f62b1c9cefb716cb217baf7389c3e7c790b8
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342493"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223249"
 ---
-# <a name="moderation-jobs-and-reviews"></a>Přerušování úlohy a recenze
+# <a name="moderation-jobs-and-reviews"></a>Moderování úloh a kontrol
 
-Kombinace s asistencí počítač přerušování s možnostmi lidské v the smyčky pomocí obsahu moderátora Azure [zkontrolujte API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) k dosažení nejlepších výsledků pro vaši organizaci.
+Kombinace moderování s podporou počítače s možnostmi lidských v the smyčky pomocí Azure Content Moderator [revizi rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) k dosažení nejlepších výsledků pro vaši firmu.
 
-Kontrola rozhraní API nabízí tyto způsoby do procesu obsahu přerušování zahrnout lidského dohledu:
+Rozhraní API pro kontrolu nabízí tyto způsoby zahrnutí jistotu lidské do procesu moderování obsahu:
 
-* `Job` operace se používá ke spuštění přerušování s asistencí počítače a vytváření lidského kontrolní jako jeden krok.
-* `Review` operace se používají pro vytvoření lidského zkontrolujte mimo přerušování krok.
-* `Workflow` operace se používají ke správě pracovních postupů, které automatizují kontrolu s prahovými hodnotami pro vytvoření zkontrolujte.
+* `Job` operace se používá ke spuštění jako jeden krok moderování s podporou počítače a vytvoření recenze prováděné lidmi.
+* `Review` operace se používají pro vytvoření recenze prováděné lidmi mimo krok moderování.
+* `Workflow` operace se používají ke správě pracovní postupy automatizující prohledávání pomocí prahové hodnoty pro vytvoření revize.
 
-`Job` a `Review` operations přijmout zpětného volání koncových bodů pro příjem stavu a výsledky.
+`Job` a `Review` přijmout zpětného volání koncových bodů pro příjem stavu a výsledky operace.
 
-Tento článek se zabývá `Job` a `Review` operace. Pro čtení [přehled pracovních](workflow-api.md) informace o tom, jak vytvořit, upravit a získat definice pracovního postupu.
+Tento článek se týká `Job` a `Review` operace. Přečtěte si [přehledu pracovních postupů](workflow-api.md) informace o tom, jak vytvořit, upravit a získat definice pracovního postupu.
 
 ## <a name="job-operations"></a>Operace úlohy
 
-### <a name="start-a-job"></a>Spustit úlohu
-Použití `Job.Create` operaci pro spuštění přerušování a lidské zkontrolujte vytvoření úlohy. Obsahu moderátora kontroly obsahu a vyhodnotí určené pracovního postupu. Na základě výsledků pracovního postupu je buď vytvoří recenze nebo přeskočí krok. Odesílá také po přerušování a po zkontrolujte značek k váš koncový bod zpětného volání.
+### <a name="start-a-job"></a>Spuštění úlohy
+Použití `Job.Create` operaci pro spuštění moderování a úloha vytvoření recenze prováděné lidmi. Content Moderator prohledává obsah a vyhodnotí určené pracovního postupu. Na základě výsledků pracovních postupů se vytvoří revize nebo přeskočí krok. Odesílá také značky po moderování a po přezkoumání do zpětného volání koncového bodu.
 
-Vstupní hodnoty zahrnují následující informace:
+Vstupy uveďte následující informace:
 
 - ID revize týmu.
-- Chcete-li být moderovaná obsah.
-- Název pracovního postupu. (Výchozí hodnota je "Výchozí" pracovní postup.)
-- Vaše zpětné volání rozhraní API bod pro oznámení.
+- Možné Moderovat obsah.
+- Název pracovního postupu. (Výchozí hodnota je "Výchozí" pracovní postup).
+- Zpětné volání rozhraní API bod pro oznámení.
  
-Následující odpověď zobrazuje identifikátor úlohu, která byla spuštěna. Identifikátor úlohy slouží k získání stavu úlohy a získat podrobné informace.
+Následující odpověď zobrazuje identifikátor úlohy, která byla spuštěna. Identifikátor úlohy můžete získat stav úlohy a získat podrobné informace.
 
     {
         "JobId": "2018014caceddebfe9446fab29056fd8d31ffe"
@@ -50,16 +51,16 @@ Následující odpověď zobrazuje identifikátor úlohu, která byla spuštěna
 
 ### <a name="get-job-status"></a>Získat stav úlohy
 
-Použití `Job.Get` operace a identifikátor úlohy pro získání podrobností o spuštěné nebo dokončené úlohy. Operaci vrátí okamžitě, zatímco úloha přerušování běží asynchronně. Výsledky jsou vráceny prostřednictvím koncového bodu zpětného volání.
+Použití `Job.Get` operace a identifikátor úlohy pro získání podrobností o spuštěné nebo dokončené úlohy. Operace vrátí hned, zatímco moderování úloha spouští asynchronně. Výsledky jsou vráceny prostřednictvím koncového bodu zpětného volání.
 
-Vstupy zahrňte následující informace:
+Zadání uveďte následující informace:
 
-- ID revize týmu: identifikátor úlohy vrácený předchozí operace
+- ID revize týmu: identifikátor úlohy vrácené z předchozí operace
 
 Odpověď obsahuje následující informace:
 
-- Identifikátor zkontrolujte vytvořili. (Toto ID použít k získání výsledků poslední kontrolní.)
-- Stav úlohy (dokončené nebo probíhající): přiřazené přerušování značky (páry klíč hodnota).
+- Identifikátor revize vytvořili. (Toto ID použít k získání požadovaných výsledků konečnou kontrolu.)
+- Stav úlohy (dokončení nebo probíhající): moderování přiřazené značky (páry klíč hodnota).
 - Sestava spuštění úlohy.
  
  
@@ -109,20 +110,20 @@ Odpověď obsahuje následující informace:
             ]
         }
  
-![Zkontrolujte bitové kopie pro lidské moderátorů](images/ocr-sample-image.PNG)
+![Obrázek kontroly pro lidských moderátorů](images/ocr-sample-image.PNG)
 
-## <a name="review-operations"></a>Zkontrolujte operací
+## <a name="review-operations"></a>Operace kontroly
 
-### <a name="create-reviews"></a>Vytvoření recenze
+### <a name="create-reviews"></a>Vytvoření kontroly
 
-Použití `Review.Create` operaci vytvoření lidského recenze. Střední je jinam nebo po přiřazení značek přerušování pomocí vlastní logiky.
+Použití `Review.Create` operaci vytvoření recenze prováděné lidmi. Jinde je střední nebo po pomocí vlastní logiky můžete přiřadit značky moderování.
 
-Vstupy pro tuto operaci patří:
+Zadání této operace patří:
 
-- Obsah, který mají být zkontrolovány.
-- Přiřazené značky (párů klíčových hodnot) ke kontrole podle lidského moderátorů.
+- Obsah musí zkontrolovat.
+- Přiřazené značky (páry klíč-hodnota) ke kontrole lidské moderátory.
 
-Následující odpověď zobrazuje identifikátor zkontrolujte:
+Následující odpověď zobrazuje identifikátor revize:
 
     [
         "201712i46950138c61a4740b118a43cac33f434",
@@ -130,25 +131,25 @@ Následující odpověď zobrazuje identifikátor zkontrolujte:
 
 
 ### <a name="get-review-status"></a>Získat stav kontroly
-Použití `Review.Get` operace k získání výsledků po dokončení kontrolu lidského moderované bitové kopie. Zobrazí se upozornění přes koncový bod zadané zpětné volání. 
+Použití `Review.Get` operace k získání požadovaných výsledků po dokončení recenze moderování obrázků. Dostanete se přes váš koncový bod zpětné volání. 
 
-Operaci vrátí dvě sady značek: 
+Operace vrátí dvě sady značek: 
 
-* Značky přiřazené službou přerušování
-* Značky po lidského kontrola byla dokončena.
+* Značky přiřazené službou moderování
+* Značky po dokončení lidskou kontrolu
 
-Vstupy patří minimálně:
+Vstupy zahrnují minimálně:
 
 - Zkontrolujte název týmu
-- Identifikátor zkontrolujte vrácený předchozí operace
+- Zkontrolujte identifikátor vrácený z předchozí operace
 
 Odpověď obsahuje následující informace:
 
-- Zkontrolujte stav
-- Značky (páry klíč hodnota) potvrdit lidského kontrolora
-- Značky (páry klíč hodnota) přiřazené službou přerušování
+- Stav kontroly
+- Potvrdit lidské kontrolor značky (páry klíč hodnota)
+- Značky (páry klíč hodnota) přidělené službou moderování
 
-Zobrazí obě značky přiřazené kontrolor (**reviewerResultTags**) a počáteční značky (**metadata**) v následující ukázková odpověď:
+Zobrazit obě značky přiřazeny revidujícího (**reviewerResultTags**) a počáteční značky (**metadat**) v odpovědi na následující ukázka:
 
     {
         "reviewId": "201712i46950138c61a4740b118a43cac33f434",
@@ -183,6 +184,6 @@ Zobrazí obě značky přiřazené kontrolor (**reviewerResultTags**) a počáte
 
 ## <a name="next-steps"></a>Další postup
 
-* Vyzkoušejte [rozhraní API pro úlohu konzoly](try-review-api-job.md)a použijte ukázky kódu rozhraní REST API. Pokud jste obeznámeni s Visual Studio a C#, taky podívejte se na [rychlé spuštění úlohy .NET](moderation-jobs-quickstart-dotnet.md). 
-* Pro recenze, začít pracovat s [zkontrolujte API konzoly](try-review-api-review.md)a použijte ukázky kódu rozhraní REST API. Pak najdete v článku [rychlý start recenze .NET](moderation-reviews-quickstart-dotnet.md).
-* Video recenze, použijte [rychlý start zkontrolujte Video](video-reviews-quickstart-dotnet.md)a zjistěte, jak [přidat přepisy ke kontrole video](video-transcript-reviews-quickstart-dotnet.md).
+* Testovací verze [rozhraní API pro úlohu konzoly](try-review-api-job.md)a používat rozhraní REST API ukázky kódu. Pokud jste obeznámeni s Visual Studio a C#, podívejte [rychlý úvod k .NET úlohy](moderation-jobs-quickstart-dotnet.md). 
+* U revizí, vám umožní začít [revizi rozhraní API konzoly](try-review-api-review.md)a používat rozhraní REST API ukázky kódu. Potom se podívejte [rychlý úvod k .NET revize](moderation-reviews-quickstart-dotnet.md).
+* Video revize používat [rychlého startu zkontrolujte Video](video-reviews-quickstart-dotnet.md)a zjistěte, jak [přidat záznamy o studiu videa kontrolou](video-transcript-reviews-quickstart-dotnet.md).

@@ -10,12 +10,12 @@ ms.devlang: spark-scala
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ankhanol
-ms.openlocfilehash: b7a6d449e7b8d0f3980a38767147e6b3a37f8e0f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f2f5aebf32cf5860ca8fc32ab741177c6df15c60
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46995992"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227193"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Připojení ke službě Azure Cosmos DB Cassandra API z aplikace Spark
 
@@ -27,9 +27,9 @@ Tento článek je jedním z řady článků o integraci Azure Cosmos DB Cassandr
 * Zřízení podle vašeho výběru prostředí Spark [[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) | [Azure HDInsight – Spark](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql) | Další].
 
 ## <a name="dependencies-for-connectivity"></a>Závislosti pro připojení
-* **Konektor Datastax Spark pro Cassandra:** konektor Datastax Spark se používá pro připojení k rozhraní Cassandra API služby Azure Cosmos DB.  Identifikovat a používat verzi konektoru v [Maven centrální]( https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) , který je kompatibilní s verzemi Spark a Scala prostředí Spark.
+* **Konektor Spark pro Cassandra:** konektor Spark se používá pro připojení k rozhraní Cassandra API služby Azure Cosmos DB.  Identifikovat a používat verzi konektoru v [Maven centrální]( https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) , který je kompatibilní s verzemi Spark a Scala prostředí Spark.
 
-* **Azure Cosmos DB pomocné knihovny pro Apache Cassandra API:** kromě Datastax konektor, budete potřebovat další knihovnu s názvem [azure-cosmos-cassandra-spark – pomocné rutiny]( https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) ze služby Azure Cosmos DB. Tato knihovna obsahuje objekt pro vytváření připojení a třídy zásad vlastní opakování.
+* **Azure Cosmos DB pomocné knihovny pro Apache Cassandra API:** kromě konektor Spark, budete potřebovat další knihovnu s názvem [azure-cosmos-cassandra-spark – pomocné rutiny]( https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) ze služby Azure Cosmos DB. Tato knihovna obsahuje objekt pro vytváření připojení a třídy zásad vlastní opakování.
 
   Zásady opakování ve službě Azure Cosmos DB je nakonfigurovaný pro zpracování protokolu HTTP stavový kód 429 ("požadavek velké míry") výjimky. Azure Cosmos DB Cassandra API přeloží tyto výjimky na přetížené chyby na nativní protokolu Cassandra a můžete opakovat s back konfigurace. Vzhledem k tomu Azure Cosmos DB používá model zřízená propustnost, žádost o rychlost limitující dojít k výjimkám zvýšení tarifů příchozí a odchozí transakce. Zásady opakování chrání úlohy spark proti provozní špičky data, která momentálně překročí propustnost přidělené vaší kolekce.
 
@@ -40,7 +40,7 @@ Tento článek je jedním z řady článků o integraci Azure Cosmos DB Cassandr
     
 ## <a name="spark-connector-throughput-configuration-parameters"></a>Parametry konfigurace propustnost konektoru Spark
 
-Následující tabulka obsahuje parametry konfigurace specifické pro službu Azure Cosmos DB Cassandra API propustnost poskytnuté konektoru. Podrobný seznam všech parametrů konfigurace najdete v tématu [referenční informace o konfiguraci](https://github.com/datastax/spark-cassandra-connector/blob/master/doc/reference.md) stránku úložiště DataStax Spark Cassandra konektor GitHub.
+Následující tabulka obsahuje parametry konfigurace specifické pro službu Azure Cosmos DB Cassandra API propustnost poskytnuté konektoru. Podrobný seznam všech parametrů konfigurace najdete v tématu [referenční informace o konfiguraci](https://github.com/datastax/spark-cassandra-connector/blob/master/doc/reference.md) stránka úložiště GitHub konektoru Spark Cassandra.
 
 | **Název vlastnosti** | **Výchozí hodnota** | **Popis** |
 |---------|---------|---------|
@@ -80,14 +80,14 @@ Kdy výše uvedené části byly specifické pro služby PaaS založené na Spar
 
 #### <a name="connector-dependencies"></a>Konektor závislosti:
 
-1. Souřadnice maven pro přidání [Datastax Cassandra konektor pro Spark](cassandra-spark-generic.md#dependencies-for-connectivity)
+1. Přidat souřadnice maven zobrazíte [Cassandra konektor pro Spark](cassandra-spark-generic.md#dependencies-for-connectivity)
 2. Souřadnice maven pro přidání [pomocné knihovny služby Azure Cosmos DB](cassandra-spark-generic.md#dependencies-for-connectivity) pro Apache Cassandra API
 
 #### <a name="imports"></a>Importy:
 
 ```scala
 import org.apache.spark.sql.cassandra._
-//datastax Spark connector
+//Spark connector
 import com.datastax.spark.connector._
 import com.datastax.spark.connector.cql.CassandraConnector
 

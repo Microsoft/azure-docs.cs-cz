@@ -2,21 +2,22 @@
 title: Multi-Factor authentication – Azure SQL | Dokumentace Microsoftu
 description: Azure SQL Database a Azure SQL Data Warehouse podporují připojení ze serveru SQL Server Management Studio (SSMS) pomocí univerzálního ověřování Active Directory.
 services: sql-database
-documentationcenter: ''
-author: GithubMirek
-manager: craigg
 ms.service: sql-database
-ms.custom: security
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.openlocfilehash: e1755ec0db998f1f9303d3baceb3b40f079945fe
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 90d4756c251103275fe0a37b0c36562b69a0e035
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542376"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166652"
 ---
 # <a name="universal-authentication-with-sql-database-and-sql-data-warehouse-ssms-support-for-mfa"></a>Univerzální ověřování pomocí SQL Database a SQL Data Warehouse (podpora SSMS pro vícefaktorové ověřování)
 Azure SQL Database a Azure SQL Data Warehouse připojení pomocí SQL Server Management Studio (SSMS) podporují *univerzálního ověřování Active Directory*. 

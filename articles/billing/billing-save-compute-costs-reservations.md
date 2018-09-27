@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
-ms.author: yashar
-ms.openlocfilehash: 9ca31a09cd14a8b05e6f98d05f552e202ca4a9fd
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.author: cwatson
+ms.openlocfilehash: 86723afa86d7801dfe55be9d7dd521178dec146e
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391857"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47390401"
 ---
 # <a name="what-are-azure-reservations"></a>Co jsou rezervace Azure?
 

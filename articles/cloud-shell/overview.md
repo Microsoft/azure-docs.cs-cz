@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: juluk
-ms.openlocfilehash: 67624e7ad21e6c3526b3ca47ff4b8e2df3b6ae54
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ea7393584e77b51073ca8938ec03e9d6f6ad6fc0
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962251"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166669"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Přehled služby Azure Cloud Shell
 Azure Cloud Shell je interaktivní, prohlížeč přístupné prostředí pro správu prostředků Azure.
@@ -41,11 +41,11 @@ Cloud Shell umožňuje přístup k založené na prohlížeči prostředí pří
 Využijte Cloud Shell pro práci untethered z místního počítače způsobem pouze cloud může poskytovat.
 
 ### <a name="choice-of-preferred-shell-experience"></a>Volba preferovaného prostředí
-Uživatelé Linuxu můžete použít Bash ve službě Cloud Shell, zatímco uživatelé Windows můžete použít PowerShell ve službě Cloud Shell (Preview) z rozevíracího seznamu prostředí.
+Z rozevíracího seznamu prostředí moci uživatelé zvolit mezi Bashe nebo Powershellu.
 
 ![Bash ve službě Cloud Shell](media/overview/overview-bash-pic.png)
 
-![PowerShell ve službě Cloud Shell (Preview)](media/overview/overview-ps-pic.png)
+![PowerShell ve službě Cloud Shell](media/overview/overview-ps-pic.png)
 
 ### <a name="authenticated-and-configured-azure-workstation"></a>Ověřený a nakonfigurovanou Azure pracovní stanice
 Cloud Shell se spravuje přes Microsoft proto jde o s oblíbenými nástroji příkazového řádku a podpora jazyků. Cloud Shell také bezpečně ověří automaticky pro okamžitý přístup k vašim prostředkům prostřednictvím rutin prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure.
@@ -68,7 +68,7 @@ Cloud Shell je flexibilní nástroj, který je možné z:
 ### <a name="connect-your-microsoft-azure-files-storage"></a>Připojte své úložiště Microsoft Azure Files
 Cloudové prostředí počítače jsou dočasné a vyžadují nové nebo existující soubory Azure sdílenou složku a připojit jako `clouddrive` pro uchovávání souborů.
 
-Při prvním spuštění Cloud Shell zobrazí výzvu k vytvoření prostředku skupiny, účet úložiště a službou soubory Azure sdílet vaším jménem. Toto je jednorázová kroku a automaticky připojí na všechny relace. Sdílení souborů lze mapovat a použije Bash i PowerShell ve službě Cloud Shell (Preview).
+Při prvním spuštění Cloud Shell zobrazí výzvu k vytvoření prostředku skupiny, účet úložiště a službou soubory Azure sdílet vaším jménem. Toto je jednorázová kroku a automaticky připojí na všechny relace. Sdílení souborů lze mapovat a použije Bash i PowerShell ve službě Cloud Shell.
 
 Přečtěte si další informace o připojení [účtu úložiště nové nebo existující](persisting-shell-storage.md).
 
@@ -81,11 +81,11 @@ Přečtěte si další informace o připojení [účtu úložiště nové nebo e
 * Cloud Shell nevyřeší $Home pomocí 5 GB image uložené ve sdílené složce
 * Oprávnění jsou nastavena jako běžný uživatel Linuxu v prostředí Bash
 
-Další informace o funkcích v [Bash ve službě Cloud Shell](features.md) a [prostředí PowerShell ve službě Cloud Shell (Preview)](features-powershell.md).
+Další informace o funkcích v [Bash ve službě Cloud Shell](features.md) a [prostředí PowerShell ve službě Cloud Shell](features-powershell.md).
 
 ## <a name="pricing"></a>Ceny
 Počítače hostujícího Cloud Shell je bezplatné, s předpokladem připojené sdílené složky Azure Files. Náklady na úložiště regulární použít.
 
 ## <a name="next-steps"></a>Další postup
 [Bash ve službě Cloud Shell rychlý start](quickstart.md) <br>
-[Prostředí PowerShell v Cloud Shellu (Preview) quickstart](quickstart-powershell.md)
+[PowerShell ve službě Cloud Shell rychlý start](quickstart-powershell.md)

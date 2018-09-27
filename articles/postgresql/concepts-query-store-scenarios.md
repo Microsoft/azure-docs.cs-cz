@@ -6,20 +6,20 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 5da10faca653d0eddb50568165eb9d7ad1f877e4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 09/26/2018
+ms.openlocfilehash: 3cd3ebf86221db1531bd19e94bb072b4559d07d6
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950416"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395589"
 ---
 # <a name="usage-scenarios-for-query-store"></a>Mezi scénáře použití pro Query Store
 
 **Platí pro:** Azure Database for PostgreSQL 9.6 a 10
 
 > [!IMPORTANT]
-> Funkce Query Store je ve verzi Public Preview.
+> Funkce Query Store je ve verzi Public Preview v omezeném počtu oblastí.
 
 Query Store v širokou škálu scénářů, ve kterých je nejdůležitější výkon sledování a údržba předvídatelné zatížení můžete použít. Vezměte v úvahu následující příklady: 
 - Identifikace a optimalizace nákladné nejčastější dotazy 

@@ -1,21 +1,22 @@
 ---
-title: Získání klíčů předplatného pro Custom Speech Service v Azure | Dokumentace Microsoftu
-description: Další informace o získání klíčů předplatného pro volání služby Custom Speech Service ve službě Cognitive Services.
+title: Získání klíčů předplatného – Custom Speech Service
+titlesuffix: Azure Cognitive Services
+description: Další informace o získání klíčů předplatného pro volání služby Custom Speech Service.
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: panosper
 ROBOTS: NOINDEX
-ms.openlocfilehash: e5cac34a9aead209bec90cfd5f89e94a005a1995
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e4694928baf98bdb0d6aacead8dffec6bb73d6f7
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980351"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224754"
 ---
 # <a name="obtain-subscription-keys"></a>Získání klíčů předplatného
 Abyste mohli začít používat Azure Custom Speech Service, musíte nejprve propojí váš účet uživatele k předplatnému Azure. Předplatná na bezplatné a placené úrovně jsou k dispozici. Informace o úrovních najdete v tématu [stránce s cenami](https://www.microsoft.com/cognitive-services/en-us/pricing).

@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/17/2018
+ms.date: 09/25/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: d82fda2928ea8c1e3e60006d3fbe8d53f3d12a9c
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: d1ad629ff5c6909256baa94573d045a8c2c09fb5
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182327"
+ms.locfileid: "47223827"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Běžné otázky týkající se přechodu z portálu OMS na webu Azure portal pro uživatele Log Analytics
 Vlastní portál, volá se na portálu OMS log Analytics původně použitý ke správě své konfiguraci a analýzy shromážděných dat.  Všechny funkce z tohoto portálu byl přesunut na webu Azure portal ve kterém bude pokračovat na vývoj.
@@ -83,7 +83,7 @@ Spravovat většinu nastavení připojené zdroje v **upřesňující nastavení
 | Azure Storage     | **Upřesňující nastavení** nabídce pracovního prostoru. |
 | System Center     | **Upřesňující nastavení** nabídce pracovního prostoru. |
 | Office 365        | Zobrazit [dokumentaci k řešení pro správu Office 365](../operations-management-suite/oms-solution-office-365.md) podrobnosti o konfiguraci. |
-| Telemetrie Windows | Zatím není k dispozici na webu Azure portal. |
+| Telemetrie Windows | Nabídka nastavení řešení. Zobrazit [Windows Analytics na portálu Azure portal](/windows/deployment/update/windows-analytics-azure-portal) podrobnosti o konfiguraci. |
 | Konektor ITSM    | Zobrazit [připojení ITSM produktů a služeb. s IT Service Management Connector](../log-analytics/log-analytics-itsmc-connections.md) pokyny týkající se připojení ITSM služby s využitím Log Analytics. |
 
 ### <a name="data"></a>Data

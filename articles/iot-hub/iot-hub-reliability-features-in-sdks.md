@@ -12,12 +12,12 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: f6cfb7bb988b080189da444cb77e0c258417b1ac
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 9a07fa2010eef22c4d1477641d07dee70ab5a9cb
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574704"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227426"
 ---
 # <a name="how-to-manage-connectivity-and-reliable-messaging-using-azure-iot-hub-device-sdks"></a>Správa připojení a spolehlivé zasílání zpráv pomocí sady SDK pro zařízení Azure IoT Hub
 
@@ -54,7 +54,7 @@ Chyby připojení může dojít v mnoha úrovních:
 - Chyby na úrovni protokolu HTTP, AMQP a protokolu MQTT přenosu, jako jsou odkazy odpojit nebo vypršela platnost relace
 - Chyby na úrovni aplikace, které vyplývají z buď místní chyby, jako je neplatným přihlašovacím údajům nebo služeb chování jako překročení kvóty nebo omezení šířky pásma
 
-Sady SDK pro zařízení zjistit chyby ve všech třech úrovních.  Chyby související s operačním systémem a hardwarových chyb nejsou zjištěny a zpracovány sad SDK pro zařízení.  Návrh vychází [The přechodné selhání zpracování pokyny](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) z Azure Architecture Center.
+Sady SDK pro zařízení zjistit chyby ve všech třech úrovních.  Chyby související s operačním systémem a hardwarových chyb nejsou zjištěny a zpracovány sad SDK pro zařízení.  Návrh vychází [The přechodné selhání zpracování pokyny](/azure/architecture/best-practices/transient-faults#general-guidelines) z Azure Architecture Center.
 
 ### <a name="retry-patterns"></a>Zkuste vzory
 

@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: b9009452ada6ebfb7626532b1fac406563704ef3
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: eff6859dda771bfc2ca2e709578983b6113c6057
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056673"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227482"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Vzory víceklientské SaaS databáze tenantů
 
@@ -138,7 +138,7 @@ Dvě varianty databázi s více tenanty modelu jsou popsány v následující, s
 
 ## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>F. Aplikace s více tenanty pomocí jedné databázi s více tenanty
 
-Nejjednodušším vzorem databázi s více tenanty používá jeden izolované databáze k hostování dat pro všechny tenanty.  Při přidání více tenanty, databáze škálovat s více prostředky úložiště a výpočetního výkonu.  Toto vertikálního navýšení může být vše, co je potřeba, i když je vždy omezený ultimate škálování.  Dlouho před dosažení tohoto limitu databáze však nepraktický ke správě.
+Nejjednodušším vzorem databázi s více tenanty izolované databáze k hostování dat používá pro všechny tenanty.  Při přidání více tenanty, databáze škálovat s více prostředky úložiště a výpočetního výkonu.  Toto vertikálního navýšení může být vše, co je potřeba, i když je vždy omezený ultimate škálování.  Dlouho před dosažení tohoto limitu databáze však nepraktický ke správě.
 
 Operace správy, které jsou zaměřené na jednotlivých tenantů jsou mnohem složitější a implementovat v databázi s více tenanty.  A ve velkém měřítku může být příliš pomalé těchto operací.  Jedním z příkladů je obnovení bodu v čase data pro právě jednoho tenanta.
 

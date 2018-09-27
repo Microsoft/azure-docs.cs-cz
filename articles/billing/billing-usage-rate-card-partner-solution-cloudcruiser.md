@@ -1,6 +1,6 @@
 ---
-title: Cloud Cruiser a fakturace integrace rozhraní API Microsoft Azure | Microsoft Docs
-description: Poskytuje jedinečný perspektivy z Microsoft Azure Billing partnera Cruiser cloudu v jejich prostředí integrace rozhraní API Azure fakturace do svých produktech.  To je obzvláště užitečné pro Azure a cloudu Cruiser zákazníky, kteří se chtějí pomocí nebo pokusu o Cruiser cloudu pro Microsoft Azure Pack.
+title: Cloud Cruiser a fakturaci integrace rozhraní API Microsoft Azure | Dokumentace Microsoftu
+description: Poskytuje jedinečnou perspektivou z Microsoft Azure Billing partner Cloud Cruiser na své prostředí integrace API pro fakturaci Azure do svého produktu.  To je užitečné pro zákazníky Azure a Cloud Cruiser, které zajímá použití/zkusit Cloud Cruiser pro Microsoft Azure Pack.
 services: ''
 documentationcenter: ''
 author: tonguyen
@@ -14,21 +14,21 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 10/09/2017
-ms.author: mobandyo
-ms.openlocfilehash: 487636ffb0efc35c282e14d835c6669ed9d47315
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.author: erikre
+ms.openlocfilehash: 95d90e898ddc8766cf96a5a72c315407cd596393
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32771493"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393855"
 ---
-# <a name="cloud-cruiser-and-microsoft-azure-billing-api-integration"></a>Cloud Cruiser a fakturace integrace rozhraní API Microsoft Azure
-Tento článek popisuje, jak můžete používat informace shromážděné z nové rozhraní Microsoft Azure Billing API v cloudu Cruiser pro simulaci náklady pracovního postupu a analýzu.
+# <a name="cloud-cruiser-and-microsoft-azure-billing-api-integration"></a>Cloud Cruiser a fakturaci integrace rozhraní API Microsoft Azure
+Tento článek popisuje, jak můžete použít informace shromážděné z rozhraní nového Microsoft Azure API pro fakturaci v Cloud Cruiser pro pracovní postup náklady simulaci a analýzu.
 
-## <a name="azure-ratecard-api"></a>Rozhraní API Azure RateCard
-Rozhraní API RateCard poskytuje míra informace z Azure. Po ověření se správnými přihlašovacími údaji, můžete dát dotaz na rozhraní API ke shromažďování metadat o službách, které jsou k dispozici v Azure, společně s sazby související s vaší nabízejí ID.
+## <a name="azure-ratecard-api"></a>Azure RateCard API
+RateCard API poskytuje informace o kurzu z Azure. Po ověření se správnými přihlašovacími údaji, můžete dát dotaz na rozhraní API se získat metadata o službách, které jsou k dispozici v Azure, spolu s sazby související s vaší nabídky ID.
 
-Následující ukázková odpověď je z rozhraní API, zobrazuje tyto ceny pro A0 (Windows) instance:
+Následující ukázkové odpovědi je z rozhraní API s ceny A0 instance (Windows):
 
     {
         "MeterId": "0e59ad56-03e5-4c3d-90d4-6670874d7e29",
@@ -45,105 +45,105 @@ Následující ukázková odpověď je z rozhraní API, zobrazuje tyto ceny pro 
         "MeterStatus": "Active"
     },
 
-### <a name="cloud-cruisers-interface-to-azure-ratecard-api"></a>Cloud je Cruiser rozhraní Azure RateCard rozhraní API
-Cloud Cruiser můžete použít informace o rozhraní API RateCard různými způsoby. V tomto článku ukážeme, jak je možné použít k IaaS zatížení náklady simulace a analýzy.
+### <a name="cloud-cruisers-interface-to-azure-ratecard-api"></a>Cloud Cruiser pro rozhraní Azure RateCard API
+Cloud Cruiser můžete použít informace RateCard API různými způsoby. Pro účely tohoto článku vám ukážeme, jak to lze provést IaaS úloh, náklady, simulaci a analýzu.
 
-K předvedení tento případ použití, představte si zatížení několik instancí spuštěných na Microsoft Azure Pack (WAP). Cílem je pro simulaci tento stejné zatížení v Azure a odhad nákladů na provádění takových migrace. Chcete-li vytvořit tuto simulace, existují dvě hlavní úlohy provést:
+Abychom si předvedli tento případ použití, představte si úlohu několik instancí spuštěných v Microsoft Azure Pack (WAP). Cílem je simulovat tento stejná úloha v Azure a odhad nákladů na provedení migrace. Chcete-li vytvořit tento simulace, existují dvě hlavní úlohy, která se má provést:
 
-1. **Importovat a zpracovat shromážděná z rozhraní API RateCard informace o služby.** Tato úloha provádí také na sešity, kde je extract z rozhraní API RateCard transformovat a publikované na nový plán rychlost. Tento nový plán míry se používá na simulace k zjištění přibližné hodnoty Azure ceny.
-2. **Normalizuje WAP služby a služby Azure IaaS.** Ve výchozím nastavení, jsou na základě služby WAP u jednotlivých prostředků (procesoru, velikosti paměti, velikost disku atd.) při Azure jsou služby založené na velikost instance (A0, A1, A2 atd.). Tato první úloha můžete provést pomocí modulu ETL Cruiser cloudu, názvem sešity, kde je možné seskupit tyto prostředky na instanci velikostí, která je obdobou Azure instance služby.
+1. **Import a proces shromažďují informace o službě z RateCard API.** To se také provádí v sešitech, kde je extrakce z RateCard API transformovat a publikují do nového plánu sazeb. Tento nový plán frekvence se používá na simulace pro odhad ceny Azure.
+2. **Normalizujte WAP služby a služby Azure IaaS.** Ve výchozím nastavení, jsou WAP službám v závislosti na jednotlivých prostředků (procesoru, velikosti paměti, velikost disku atd.), kdy Azure services jsou založeny na velikost instance (A0, A1, A2, atd.). Tato první úloha můžete provést pomocí modulu ETL Cloud Cruiser, volá sešity, pokud tyto prostředky je možné seskupit na velikosti instance, obdobná Azure instance služby.
 
-### <a name="import-data-from-the-ratecard-api"></a>Umožňuje importovat data z rozhraní API RateCard
-Sešity Cruiser cloudu poskytují automatizovaný způsob, jak ke sběru a zpracování informací z rozhraní API RateCard.  Sešity ETL (extrakce zatížení transformace) umožňují konfigurovat kolekce, transformaci a publikování dat do databáze Cruiser cloudu.
+### <a name="import-data-from-the-ratecard-api"></a>Umožňuje importovat data z RateCard API
+Cloud Cruiser sešity poskytují automatizovaný způsob, jak ke shromáždění a zpracování informací z RateCard API.  Sešity ETL (extract-transform-load) umožňují konfigurovat shromažďování, transformace a publikování dat do databáze Cloud Cruiser.
 
-Každý sešit může mít jeden nebo více kolekcí, což umožňuje korelovat informace z různých zdrojů doplňují nebo posílení dat o využití. Následující dva snímky obrazovky ukazují, jak vytvořit nový *kolekce* v existující sešit a import informací do *kolekce* z rozhraní API RateCard:
+Každý sešit může mít jednu nebo více kolekcí, umožňuje korelovat informace z různých zdrojů a doplňují nebo upravte dat o využití. Na následujících dvou snímcích obrazovky ukazují, jak vytvořit novou *kolekce* v existující sešit a import informací do *kolekce* z RateCard API:
 
 ![Obrázek 1 – Vytvoření nové kolekce][1]
 
-![Obrázek 2 – importovat data z nové kolekce][2]
+![Obrázek 2 – Import dat z nové kolekce][2]
 
-Po importu dat do sešitu, je možné vytvořit několika kroky a procesy transformace, a upravit data modelu. V tomto příkladu vzhledem k tomu, že jsme zajímá jenom infrastruktura jako služba (IaaS) používáme transformace kroky k odebrání nepotřebných řádků nebo záznamy, týkající se služby než IaaS.
+Po importu dat do sešitu, je možné vytvořit více kroky a postupy transformace, upravovat a modelovat data. V tomto příkladu od nás zajímá jenom infrastruktura as-a-Service (IaaS), můžeme použít kroky transformace odebrat nepotřebné řádků nebo záznamy, související s jinými službami než IaaS.
 
-Následující snímek obrazovky ukazuje postup transformace používá ke zpracování data shromážděná z rozhraní API RateCard:
+Následující snímek obrazovky ukazuje kroky transformace umožňuje zpracovávat data shromážděná z RateCard API:
 
-![Obrázek 3 – postup transformace zpracovat shromážděná data z rozhraní API RateCard][3]
+![Obrázek 3 – kroky transformace zpracovat shromážděná data z RateCard API][3]
 
-### <a name="defining-new-services-and-rate-plans"></a>Definování nových služeb a rychlost plány
-Určit služeb v cloudu Cruiser různými způsoby. Jednu z možností je importovat služby z dat o využití. Tato metoda se běžně používá při práci s veřejné cloudy, kde jsou již definováni služby zprostředkovatelem.
+### <a name="defining-new-services-and-rate-plans"></a>Definice nové služby a rychlost plány
+Chcete-li definovat služeb na Cloud Cruiser různými způsoby. Jednu z možností je import z dat o využití služeb. Tato metoda se obvykle používá při práci s veřejnými cloudy, kde jsou již definovány služeb zprostředkovatelem.
 
-Míra plánování je sada sazby nebo ceny, které lze použít pro různé služby, na základě daty platnosti nebo skupinu zákazníků, mezi další možnosti. Míra plány můžete použít taky u cloudu Cruiser k vytvoření simulace nebo "Citlivostních" scénářů, pochopit vliv celkové náklady na zatížení změny ve službě.
+Sazba plánu je sada sazby nebo ceny, které lze použít u různých služeb na základě data platnosti, nebo skupinu zákazníků, mezi další možnosti. Plány sazeb lze také na Cloud Cruiser vytvořit simulace nebo scénáře "Co kdyby", abyste pochopili vliv celkové náklady na úlohu změnám ve službách.
 
-V tomto příkladu používáme k definování nových služeb v cloudu Cruiser informace služby z rozhraní API RateCard. Stejným způsobem používáme k sazby související službám vytvořit nový plán míra na Cruiser cloudu.
+V tomto příkladu používáme k definování nových služeb v Cloud Cruiser informace o službě z RateCard API. Stejným způsobem používáme k sazby související ke službám na Cloud Cruiser vytvořit nový plán frekvence.
 
-Na konci procesu transformace je možné vytvořit nový krok a publikovat data z rozhraní API RateCard jako nové služby a sazby.
+Na konci procesu transformace je možné vytvořit nový krok a publikovat data z RateCard API jako nové služby a kurzy.
 
-![Obrázek 4 – publikování dat z rozhraní API RateCard jako nové služby a sazby][4]
+![Obrázek 4 – publikování dat z RateCard API jako nové služby a kurzy][4]
 
-### <a name="verify-azure-services-and-rates"></a>Ověření služby Azure a sazby
-Po publikování služby a sazby, můžete ověřit seznam importovaných služeb v cloudu Cruiser *služby* karty:
+### <a name="verify-azure-services-and-rates"></a>Ověření služby Azure a kurzy
+Po publikování služby a sazby, můžete ověřit seznam importovaných služeb v Cloud Cruiser *služby* kartu:
 
 ![Obrázek 5 – ověření nových služeb][5]
 
-Na *plány míra* kartě, můžete zkontrolovat nové míra plán nazvaný "AzureSimulation" se kurzy importovat z rozhraní API RateCard.
+Na *míra plány* kartu, můžete zkontrolovat nové míry plán nazvaný "AzureSimulation" jako importován z RateCard API.
 
-![Obrázek 6 – ověření nový plán rychlost a přidružené sazby][6]
+![Obrázek 6 – ověření nový plán frekvence a související kurzy][6]
 
-### <a name="normalize-wap-and-azure-services"></a>Normalizuje WAP a službami Azure
-Ve výchozím nastavení WAP poskytuje informace o využití, které jsou založeny na použití výpočetní, paměti a síťovým prostředkům. V cloudu Cruiser, můžete definovat vašich služeb na základě přímo na přidělení nebo Měřené využití těchto prostředků. Můžete například nastavit základní kurz pro každou hodinu využití procesoru nebo účtují GB paměť přidělená pro instanci.
+### <a name="normalize-wap-and-azure-services"></a>Normalizovat WAP a službami Azure
+Ve výchozím nastavení poskytuje WAP využití informace v závislosti na využívání výpočetních, paměťových a síťové prostředky. V Cloud Cruiser, můžete definovat vašich služeb na základě přímo na přidělení nebo účtované podle objemu dat využití těchto prostředků. Můžete například nastavit základní sazba za každou hodinu využití procesoru nebo účtovat GB přidělené paměti na instanci.
 
-Například pokud chcete porovnat náklady mezi WAP a Azure, je třeba k agregaci využití prostředků na WAP do sad, které lze mapovat ke službám Azure. Tato transformace můžou snadno implementovat v sešitů:
+Pro tento příklad aby bylo možné porovnávat náklady mezi WAP a Azure, potřebujeme agregace využití prostředků na WAP do sad, které lze mapovat na služby Azure. V sešitech lze snadno implementovat této transformace:
 
-![Obrázek 7: transformace dat WAP k normalizaci služby][7]
+![Obrázek 7: transformace dat WAP normalizace služby][7]
 
-Posledním krokem v sešitu je publikovat data do databáze Cruiser cloudu. Během tohoto kroku je dat o využití teď seskupeny do služby (které jsou mapovány na Azure Services) a vázaný na výchozí sazby vytvořit poplatků.
+K publikování dat do databáze Cloud Cruiser je posledním krokem v sešitu. Během tohoto kroku je dat o využití teď seskupeny do služeb, (, které se mapují do služeb Azure) a vázané na výchozí sazby vytvoření poplatky.
 
-Po dokončení sešit, je možné automatizovat zpracování dat, přidáním úlohu na Plánovač a zadáte četnost a čas pro sešit ke spuštění.
+Po dokončení sešitu, můžete automatizovat zpracování dat, tak přidání úkolu v plánovači a zadáte četnost a čas pro sešit, který chcete spustit.
 
 ![Obrázek 8 - sešitu plánování][8]
 
-### <a name="create-reports-for-workload-cost-simulation-analysis"></a>Vytváření sestav pro analýzu náklady simulace pracovního vytížení
-Až se shromáždí využití a poplatky jsou načtena do cloudu Cruiser databáze, jsme můžete použít k vytvoření úlohy náklady simulace, který jsme požadavky modulu Statistika Cruiser cloudu.
+### <a name="create-reports-for-workload-cost-simulation-analysis"></a>Vytváření sestav pro úlohy analýzy nákladů simulace
+Po použití jsou shromažďovány, včetně poplatky se načtou do databáze Cloud Cruiser, jsme modul Cloud Cruiser Insights můžete použít k vytvoření úlohy nákladů simulace, která chceme.
 
-K prokázání tohoto scénáře, jsme vytvořili následující sestavy:
+Aby bylo možné předvést tento scénář, jsme vytvořili na následující sestavu:
 
-![Cenově porovnání][9]
+![Porovnání nákladů][9]
 
-Horní graf zobrazuje porovnání náklady službami porovnání ceny spuštěných úloh pro každou konkrétní službu mezi WAP (tmavý modrá) a Azure (světla modrá).
+Začátek graf ukazuje porovnání nákladů službami porovnání ceny spuštěná úloha pro každou konkrétní službu WAP (tmavě modrá) od Azure (světle modrá).
 
-Dolní graf zobrazuje stejná data, ale rozděleno podle oddělení. Náklady pro každé oddělení ke spuštění jejich pracovního vytížení na WAP a Azure, společně s rozdíl mezi nimi se zobrazí na panelu úspory (zelený).
+Dolní části grafu zobrazí stejná data, ale rozděleno podle oddělení. Náklady pro každé oddělení pro svoje úlohy WAP i Azure, spolu s rozdíl mezi nimi se zobrazí na panelu úspory (zelená).
 
-## <a name="azure-usage-api"></a>Rozhraní API Azure využití
+## <a name="azure-usage-api"></a>Rozhraní API využití Azure
 ### <a name="introduction"></a>Úvod
-Microsoft nedávno zavedl využití rozhraní API služby Azure, umožňuje odběratelům prostřednictvím kódu programu stáhnout data o využití a získáte přehled o jejich používání. Cloud Cruiser zákazníci mohou využít výhod bohatší datová sada k dispozici prostřednictvím tohoto rozhraní API.
+Společnost Microsoft nedávno zavedla rozhraní API pro využití Azure umožňuje odběratelům prostřednictvím kódu programu o přijetí změn v datech využití a získejte přehled o jejich využití. Cloud Cruiser zákazníci můžou využít výhod bohatší datové sady k dispozici prostřednictvím tohoto rozhraní API.
 
-Cruiser cloudu pomocí integrace s rozhraním API pro využití několika způsoby. Členitost (každou hodinu informace o využití) a informace metadat prostředků, které jsou k dispozici prostřednictvím rozhraní API poskytuje nezbytné datovou sadu pro podporu flexibilní modely kompletní přehled nákladů nebo vrácení peněz. 
+Cloud Cruiser pomocí integrace rozhraní API pro využití několika způsoby. Členitost (každou hodinu informace o použití) a resource metadata informací dostupných prostřednictvím rozhraní API poskytuje nezbytné datovou sadu pro podporu flexibilní modely sestav metod Showback a Chargeback. 
 
-V tomto kurzu jsme k dispozici jeden příklad, jak cloudové Cruiser využívat informace o využití rozhraní API. Přesněji řečeno jsme se vytvoření skupiny prostředků v Azure, přiřadit značky pro strukturu účtu a pak popisují proces stahování a zpracování informací značka do cloudu Cruiser.
+V tomto kurzu jsme k dispozici jeden příklad, jak Cloud Cruiser využívat informace o využití rozhraní API. Přesněji řečeno jsme se vytvořit skupinu prostředků v Azure, přiřadit značky pro strukturu účtu a popisují proces stahování a zpracování informací značky do Cloud Cruiser.
 
-Konečné cílem je možnost vytváření sestav, jako je ta následující, a bude schopen analyzovat náklady a spotřeba podle struktura účtu naplněn značek.
+Poslední cílem je umožnit vytváření sestav, jako je následující a mít k analýze nákladů a využití na základě struktury účtu vyplněn značky.
 
-![Obrázek 10 - sestava s členění pomocí značek][10]
+![Obrázek 10 - sestavy s použitím rozdělení pomocí značek][10]
 
 ### <a name="microsoft-azure-tags"></a>Značky Microsoft Azure
-K dispozici prostřednictvím rozhraní API pro využití služby Azure data zahrnují pouze informace o spotřebě, ale také metadata prostředků, včetně všechny značky, které s ním spojená. Značky poskytují snadný způsob k uspořádání prostředků, ale aby efektivní, je třeba zajistit, aby:
+K dispozici prostřednictvím Azure Usage API data obsahují pouze informace o spotřebě, ale také resource metadata, včetně všechny značky, které s ním spojená. Značky poskytují jednoduchý způsob k uspořádání prostředků, ale aby bylo možné platit, je třeba Ujistěte se, že:
 
-* Značky správně použijí k prostředkům během zřizování
-* Značky jsou správně použít v procesu kompletní přehled nákladů/vracení peněz ke svázání využití pro strukturu účtu organizace.
+* Značky jsou správně použity k prostředkům v době poskytování
+* Značky jsou správně použít v procesu sestav metod Showback a Chargeback a jejich zapojení využití a struktura účtu organizace.
 
-Oba tyto požadavky může být náročné, zejména v případě, že je ruční proces na poskytování nebo poplatků straně. Chybným, nesprávná nebo chybějící i značek jsou častých stížností od zákazníků, když pomocí značek a tyto chyby mohou ztížit životnosti na plnících straně.
+Oba tyto požadavky může být náročné, zejména v případě, že je ruční proces na poskytování nebo účtování straně. Chybným, nesprávná nebo dokonce i chybějící značky jsou častých stížností od zákazníků, když pomocí značek a k těmto chybám může ztěžovat života na straně poplatků.
 
-S novou využití rozhraní API služby Azure můžete cloudové Cruiser označování informace o prostředcích pro vyžádání obsahu a prostřednictvím sofistikované ETL nástroj nazvaný sešity, opravte tyto chyby běžné označování. Prostřednictvím transformaci pomocí regulárních výrazů a korelace data můžete cloudové Cruiser identifikovat nesprávně s příznakem prostředky a použít správné značky, zajistíte správné přidružení prostředky k příjemce.
+S novou Azure Usage API můžete Cloud Cruiser aktivního získávání informací označování prostředků a prostřednictvím sofistikované ETL nástroj zvaný sešity, opravte tyto chyby běžných označení. Díky transformaci pomocí regulárních výrazů a korelace dat můžete Cloud Cruiser identifikovat nesprávně označené prostředky a použít správné značky, zajistit správné přidružení prostředky k příjemci.
 
-Na straně plnících cloudu Cruiser automatizuje proces kompletní přehled nákladů/vracení peněz a značky informace můžete použít ke svázání využití odpovídající příjemci (oddělení, dělení, projektu atd.). Tato automatizace poskytuje obrovské zlepšování a zajistit konzistentní a kontrolovatelný plnících procesu.
+Na straně zpoplatnění Cloud Cruiser automatizuje proces sestav metod Showback a Chargeback a můžete použít informace o značkách a jejich zapojení využití odpovídající příjemci (oddělení, divize, Project, atd.). Tato automatizace poskytuje obrovskou zlepšování a může zajistit konzistentní a auditovatelných zpoplatnění proces.
 
-### <a name="creating-a-resource-group-with-tags-on-microsoft-azure"></a>Vytvoření skupiny prostředků pomocí značek v Microsoft Azure
-Prvním krokem v tomto kurzu je vytvořte skupinu prostředků na portálu Azure, pak vytvořte nové značky pro přidružení k prostředkům. V tomto příkladu jsme vytvářet těmito značkami: oddělení, prostředí, vlastník projektu.
+### <a name="creating-a-resource-group-with-tags-on-microsoft-azure"></a>Vytváří se skupina prostředků pomocí značek v Microsoft Azure
+Prvním krokem v tomto kurzu je vytvořte skupinu prostředků na webu Azure Portal, pak vytvořte nové značky pro přidružení k prostředkům. V tomto příkladu budeme vytvářet následující značky: oddělení, prostředí, vlastník projektu.
 
-Následující snímek obrazovky ukazuje ukázku skupinu prostředků s přidružených značek.
+Následující snímek obrazovky ukazuje příklad skupinu prostředků s přidružených značek.
 
-![Obrázek 11 – skupina prostředků se přidružených značek na portálu Azure][11]
+![Obrázek 11 – skupina prostředků se přidružených značek na portálu Azure portal][11]
 
-Dalším krokem je načítat informace z rozhraní API využití do cloudu Cruiser. Využití rozhraní API aktuálně poskytuje odpovědi ve formátu JSON. Zde je ukázka data načtená:
+Dalším krokem je která informace přenese do Cloud Cruiser z rozhraní API využití. Rozhraní API využití aktuálně poskytuje odpovědi ve formátu JSON. Tady je ukázka načtených dat:
 
     {
       "id": "/subscriptions/bb678b04-0e48-4b44-XXXX-XXXXXXX/providers/Microsoft.Commerce/UsageAggregates/Daily_BRSDT_20150623_0000",
@@ -168,59 +168,59 @@ Dalším krokem je načítat informace z rozhraní API využití do cloudu Cruis
     },
 
 
-### <a name="import-data-from-the-usage-api-into-cloud-cruiser"></a>Importovat data z rozhraní API využití do cloudu Cruiser
-Sešity Cruiser cloudu poskytují automatizovaný způsob, jak ke sběru a zpracování informací z rozhraní API využití. Sešit aplikace ETL (extrakce zatížení transformace) umožňuje nakonfigurovat kolekce, transformaci a publikování dat do databáze Cruiser cloudu.
+### <a name="import-data-from-the-usage-api-into-cloud-cruiser"></a>Import dat z rozhraní API využití do Cloud Cruiser
+Cloud Cruiser sešity poskytují automatizovaný způsob, jak ke shromáždění a zpracování informací z rozhraní API využití. Sešit ETL (extract-transform-load) umožňuje nakonfigurovat kolekci, transformace a publikování dat do databáze Cloud Cruiser.
 
-Každý sešit může mít jednu nebo více kolekcí. Tato funkce umožňuje korelovat informace z různých zdrojů doplňují nebo posílení dat o využití. V tomto příkladu vytvoříme nový list v sešitu šablony Azure (*UsageAPI)* a nastavte novou *kolekce* pro import informací z rozhraní API využití.
+Každý sešit může mít jednu nebo více kolekcí. To umožňuje korelovat informace z různých zdrojů a doplňují nebo upravte dat o využití. V tomto příkladu vytvoříme nový list do sešitu šablony Azure (*UsageAPI)* a nastavit nové *kolekce* pro import informací z rozhraní API využití.
 
-![Obrázek 3 - list UsageAPI importovat data o využití rozhraní API][12]
+![Obrázek 3 – importovat do listu UsageAPI data o využití rozhraní API][12]
 
-Všimněte si, že tento sešit již má jiné listy import služeb z Azure (*ImportServices*) a zpracování informací o spotřebě z rozhraní API fakturace (*PublishData*).
+Všimněte si, že tento sešit už obsahuje další seznamy vlastností služby Import z Azure (*ImportServices*) a informace o spotřebě z rozhraní API pro fakturaci zpracování (*PublishData*).
 
-V dalším kroku používáme využití rozhraní API k naplnění *UsageAPI* list a korelovat informace s datům o spotřebě z rozhraní API fakturace na *PublishData* listu.
+V dalším kroku použijeme využití rozhraní API k naplnění *UsageAPI* list a korelovat informací data o spotřebě z rozhraní API pro fakturaci na *PublishData* list.
 
-### <a name="processing-the-tag-information-from-the-usage-api"></a>Zpracování značky informací z rozhraní API využití
-Po importu dat do sešitu, vytvoříme transformace kroky *UsageAPI* listu, aby bylo možné zpracovat informace z rozhraní API. Prvním krokem je použití procesor "JSON rozdělení" extrahovat značek z jediné pole a pak vytvořit pole pro každou z nich (oddělení, projektů, vlastníka a prostředí).
+### <a name="processing-the-tag-information-from-the-usage-api"></a>Zpracování informací značky z rozhraní API využití
+Po importu dat do sešitu, vytvoříme kroky transformace v *UsageAPI* list, aby bylo možné zpracovat informace z rozhraní API. Prvním krokem je použití procesor "JSON rozdělit" značky extrahovat z jednoho pole a pak vytvořte pole pro každou z nich (oddělení, projektů, vlastníka a prostředí).
 
-![Obrázek 4 – vytvoření nové pole značky informace][13]
+![Obrázek 4 – vytvořit nové pole značky informace][13]
 
-Všimněte si "Síť" služby chybí značka informace (žlutý pole), ale nemůžeme můžete ověřit, že je součástí stejné skupiny prostředků prohlížením *ResourceGroupName* pole. Vzhledem k tomu, že máme značky pro další prostředky z této skupiny prostředků, můžete tyto informace používáme k nastavení platnosti chybějící značky pro tento prostředek později v tomto procesu.
+Všimněte si, že služby "Síť" chybí informace o značkách (žlutým rámečkem), ale abychom mohli ověřit, že je součástí stejné skupiny prostředků podle *ResourceGroupName* pole. Vzhledem k tomu, že máme značky pro ostatní prostředky v této skupině prostředků, můžete tyto informace používáme k použít chybějící značky k tomuto prostředku později v tomto postupu.
 
-Dalším krokem je vytvoření vyhledávací tabulky přidružení informace z značek k *ResourceGroupName*. Tento vyhledávací tabulky se používá na další krok k rozšíření dat spotřeby s informacemi o značky.
+Dalším krokem je vytvoření vyhledávací tabulky přidružení informace ze značek, aby se *ResourceGroupName*. Vyhledávací tabulka slouží v dalším kroku k obohacení data o spotřebě s informacemi o značku.
 
-### <a name="adding-the-tag-information-to-the-consumption-data"></a>Přidání značka informací k datům o spotřebě
-Nyní jsme přejít na *PublishData* seznamu, která zpracovává informací o spotřebě z rozhraní API fakturace a přidat pole extrahovat z uvedených značek. Tento proces se provádí prohlížením vyhledávací tabulky vytvořili v předchozím kroku, pomocí *ResourceGroupName* jako klíč k vyhledávání na.
+### <a name="adding-the-tag-information-to-the-consumption-data"></a>Přidání značky informací k datům o spotřebě
+Teď můžeme přejít na *PublishData* listu, která zpracovává informace o spotřebě z rozhraní API pro fakturaci a přidávání polí extrahovaná ze značek. Tento proces se provádí ve vyhledávací tabulce vytvořili v předchozím kroku, pomocí *ResourceGroupName* jako klíč pro vyhledávání.
 
-![Obrázek 5 – naplnění strukturu účet s informacemi z hledání][14]
+![Obrázek 5 – sestavování struktura účtu pomocí informací z vyhledávání][14]
 
-Všimněte si, že byly použity struktura pole odpovídající účet pro službu "Síť", opravit problém s chybějící značky. Také jsme naplněno pole struktura účtu pro prostředky než naše cíle skupinu prostředků s "Ostatní", aby je bylo možné odlišit na sestavy.
+Všimněte si, že byly použity pole struktury příslušný účet pro službu "Síť", problém vyřešíte pomocí chybějící značek. Také naplnili jsme pole struktury účtu pro prostředky než naše cílové skupiny prostředků s "Jiné", aby bylo možné odlišit v sestavách.
 
-Nyní potřebujeme přidejte krok k publikování dat o využití. V tomto kroku odpovídající sazby u každé služby definované v našich míra plánování použijí na údaje o využití, s výsledné zdarma do databáze.
+Teď potřebujeme přidat krok pro publikování dat o využití. Během tohoto kroku příslušnými sazbami za u každé služby definované v našeho plánu míry použít informace o využití, výsledný poplatků načtena do databáze.
 
-Nejlepší je, že máte jenom jednou projít tento proces. Po dokončení sešit, stačí přidat do Plánovač a běží hodinové nebo denní v naplánovaném čase. Potom ji stačí vytvoření nové sestavy, nebo přizpůsobení existujících, aby bylo možné analyzovat data a získat smysluplné přehledy z použití cloudové.
+Nejlepší je, že máte jenom jednou projít tento proces. Po dokončení sešitu, stačí ho přidat do plánovače a spouští každou hodinu nebo každý den v naplánovaném čase. Pak je jenom na vás vytváření nových sestav nebo přizpůsobení existující aplikace, aby bylo možné analyzovat data a získat smysluplné přehledy z využití cloudu.
 
 ### <a name="next-steps"></a>Další kroky
-* Podrobné pokyny pro vytvoření cloudu Cruiser sešitů a sestav, naleznete v cloudu Cruiser online [dokumentace](http://docs.cloudcruiser.com/) (vyžaduje se platné přihlášení).  Obraťte se na další informace o cloudu Cruiser [ info@cloudcruiser.com ](mailto:info@cloudcruiser.com).
-* V tématu [proniknout do vaší spotřeby prostředků Microsoft Azure](billing-usage-rate-card-overview.md) přehled informací o rozhraní API RateCard a využití prostředků Azure.
-* Podívejte se [referenční dokumentace rozhraní API Azure fakturace REST](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c) Další informace o obou rozhraní API, které jsou součástí sadu rozhraní API zadaná pomocí Správce prostředků Azure.
-* Pokud chcete pusťte do ukázkový kód, podívejte se na naše Microsoft Azure Billing API ukázky kódu na [ukázky kódu Azure](https://azure.microsoft.com/documentation/samples/?term=billing).
+* Podrobné pokyny k vytvoření Cloud Cruiser sešitů a sestav, najdete v tématu Cloud Cruiser online [dokumentaci](http://docs.cloudcruiser.com/) (vyžaduje se platné přihlášení).  Obraťte se na další informace o Cloud Cruiser [ info@cloudcruiser.com ](mailto:info@cloudcruiser.com).
+* Zobrazit [získání přehledů o spotřebě prostředků Microsoft Azure](billing-usage-rate-card-overview.md) přehledné informace o využití prostředků Azure a RateCard API.
+* Podívejte se [Azure Billing Reference k REST API](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c) Další informace o obou rozhraní API, které jsou součástí sady rozhraní API poskytovaných službou Azure Resource Manageru.
+* Pokud chcete rovnou do ukázkového kódu, prohlédněte si naše Microsoft Azure Billing ukázky kódu rozhraní API na [vzorových kódů Azure](https://azure.microsoft.com/documentation/samples/?term=billing).
 
 ### <a name="learn-more"></a>Další informace
-* Další informace o Azure Resource Manager, najdete v článku [přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md) článku.
+* Další informace o Azure Resource Manageru, najdete v článku [přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md) článku.
 
 <!--Image references-->
 
 [1]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Create-New-Workbook-Collection.png "Obrázek 1 – Vytvoření nové kolekce"
-[2]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Import-Data-From-RateCard.png "Obrázek 2 – importovat data z nové kolekce"
-[3]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Transformation-Steps-Process-RateCard-Data.png "Obrázek 3 – postup transformace zpracovat shromážděná data z rozhraní API RateCard"
-[4]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Publish-RateCard-Data-New-Services-Rates.png "Obrázek 4 – publikování dat z rozhraní API RateCard jako nové služby a sazby"
+[2]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Import-Data-From-RateCard.png "Obrázek 2 – Import dat z nové kolekce"
+[3]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Transformation-Steps-Process-RateCard-Data.png "Obrázek 3 – kroky transformace zpracovat shromážděná data z RateCard API"
+[4]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Publish-RateCard-Data-New-Services-Rates.png "Obrázek 4 – publikování dat z RateCard API jako nové služby a kurzy"
 [5]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Verify-Azure-Services-And-Pricing1.png "Obrázek 5 – ověření nových služeb"
-[6]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Verify-Azure-Services-And-Pricing2.png "Obrázek 6 – ověření nový plán rychlost a přidružené sazby"
-[7]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Transforming-WAP-Normalize-Services.png "Obrázek 7: transformace dat WAP k normalizaci služby"
+[6]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Verify-Azure-Services-And-Pricing2.png "Obrázek 6 – ověření nový plán frekvence a související kurzy"
+[7]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Transforming-WAP-Normalize-Services.png "Obrázek 7: transformace dat WAP normalizace služby"
 [8]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Workbook-Scheduling.png "Obrázek 8 - sešitu plánování"
-[9]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Workload-Cost-Simulation-Report.png "Obrázek 9 – ukázková sestava pro scénář porovnání náklady pracovního vytížení"
-[10]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/1_ReportWithTags.png "Obrázek 10 - sestava s členění pomocí značek"
-[11]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/2_ResourceGroupsWithTags.png "Obrázek 11 – skupina prostředků se přidružených značek na portálu Azure"
-[12]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/3_ImportIntoUsageAPISheet.png "Obrázek 12 - list UsageAPI importovat data o využití rozhraní API"
-[13]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/4_NewTagField.png "Obrázek 13 – vytvořit nové pole informace značky"
-[14]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/5_PopulateAccountStructure.png "Obrázek 14 - naplnění strukturu účet s informacemi z hledání"
+[9]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Workload-Cost-Simulation-Report.png "Obrázek 9 - ukázkové sestavě pro scénář porovnání nákladů pracovního vytížení"
+[10]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/1_ReportWithTags.png "Obrázek 10 - sestavy s použitím rozdělení pomocí značek"
+[11]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/2_ResourceGroupsWithTags.png "Obrázek 11 – skupina prostředků se přidružených značek na portálu Azure portal"
+[12]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/3_ImportIntoUsageAPISheet.png "Obrázek 12 - naimportovány do listu UsageAPI data o využití rozhraní API"
+[13]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/4_NewTagField.png "Obrázek 13 - vytvořit nové pole značky informace"
+[14]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/5_PopulateAccountStructure.png "Obrázek 14 - naplnění struktura účtu pomocí informací z vyhledávání"

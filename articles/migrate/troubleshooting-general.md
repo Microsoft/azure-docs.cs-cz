@@ -4,14 +4,14 @@ description: Poskytuje základní informace o známých problémech ve službě 
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 08/25/2018
+ms.date: 09/24/2018
 ms.author: raynew
-ms.openlocfilehash: ca34f27e1d22c6235ec0d6b965d49ec5266f17f6
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: ca0931810fd78ce4cc684ad307efeb866cee3353
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126357"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47165293"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Řešení problémů s Azure Migrate
 
@@ -34,6 +34,12 @@ Pokud chcete povolit shromažďování dat o výkonu disku a sítě, změňte ú
 ### <a name="i-installed-agents-and-used-the-dependency-visualization-to-create-groups-now-post-failover-the-machines-show-install-agent-action-instead-of-view-dependencies"></a>Můžu nainstalovat agenty a použít vizualizaci závislostí k vytvoření skupiny. Teď publikovat převzetí služeb při selhání, počítače zobrazit akci "Instalace agenta" místo "Zobrazit závislosti"
 * Příspěvek plánované nebo neplánované převzetí služeb při selhání, místní počítače jsou vypnuté a ekvivalentní počítače jsou spuštěné v Azure. Tyto počítače získat jinou adresu MAC. Získají může jinou IP adresu na základě na, jestli se uživatel rozhodl zachovat místní IP adresu, nebo ne. Pokud se systémem MAC a IP adresy liší, Azure Migrate nepřiřadí místních počítačů s daty závislostí Service Map a vyzve uživatele k instalaci agentů místo zobrazení závislostí.
 * Odeslat testovací převzetí služeb při selhání na místních počítačích zůstaly zapnuté podle očekávání. Ekvivalentní počítače spuštěné v Azure získat jinou adresu MAC a mohou získat jinou IP adresu. Pokud uživatel blokuje odchozí provoz Log Analytics z těchto počítačů, Azure Migrate nepřiřadí místních počítačů s daty závislostí Service Map a vyzve uživatele k instalaci agentů místo zobrazení závislostí.
+
+### <a name="i-specified-an-azure-geography-while-creating-a-migration-project-how-do-i-find-out-the-exact-azure-region-where-the-discovered-metadata-would-be-stored"></a>Zeměpisná oblast Azure, zadané při vytváření projektu migrace, jak zjistím přesné oblast Azure, kde budou uloženy zjištěná metadata?
+
+Můžete přejít na **Essentials** tématu **přehled** stránce projektu k identifikaci přesné umístění, kde je uložena metadata. Umístění je zvolena náhodně na území službou Azure Migrate a nelze jej upravovat. Pokud chcete vytvořit projekt v konkrétní oblasti, můžete vytvořit projekt migrace a předat požadované oblasti rozhraní REST API.
+
+   ![Umístění projektu](./media/troubleshooting-general/geography-location.png)
 
 ## <a name="collector-errors"></a>Chyby kolektoru
 
@@ -102,6 +108,37 @@ Pokud problém pořád probíhá na nejnovější verzi, je možné, protože po
 2. Pokud krok 1 selže, zkuste se k serveru vCenter připojit přes IP adresu.
 3. Zjistěte správné číslo portu pro připojení k serveru vCenter.
 4. Nakonec zkontrolujte, jestli server vCenter je spuštěný.
+
+## <a name="troubleshoot-dependency-visualization-issues"></a>Řešení potíží s vizualizace závislostí
+
+### <a name="i-installed-the-microsoft-monitoring-agent-mma-and-the-dependency-agent-on-my-on-premises-vms-but-the-dependencies-are-now-showing-up-in-the-azure-migrate-portal"></a>Nainstalovat Microsoft Monitoring Agent (MMA) a agenta závislostí na místních virtuálních počítačů, ale závislosti se teď zobrazují na portálu Azure Migrate.
+
+Po instalaci agentů Azure Migrate obvykle trvá 15 – 30 minut. Chcete-li zobrazit závislosti na portálu. Pokud máte počkat déle než 30 minut, ujistěte se, že agenta MMA mohl komunikovat s pracovním prostorem OMS pomocí následujícího následujících kroků:
+
+Pro virtuální počítač Windows:
+1. Přejděte na **ovládací panely** a spusťte **agenta Microsoft Monitoring Agent**
+2. Přejděte **Azure Log Analytics (OMS)** kartu v místní vlastnosti agenta MMA
+3. Ujistěte se, že **stav** pro pracovní prostor je zeleně.
+4. Pokud stav není v zelené, zkuste odebrat pracovní prostor a přidat ho znovu agenta MMA.
+        ![Stav agenta MMA](./media/troubleshooting-general/mma-status.png)
+
+Pro virtuální počítač s Linuxem Ujistěte se, že příkazy pro instalaci agenta MMA a závislostí se dokončila.
+
+### <a name="what-are-the-operating-systems-supported-by-mma"></a>Co jsou operačních systémech podporovaných produktem MMA?
+
+Seznam operačních systémů Windows nepodporuje agenta MMA [tady](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems).
+Seznam operačních systémů Linux podporuje MMA [tady](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems).
+
+### <a name="what-are-the-operating-systems-supported-by-dependency-agent"></a>Co jsou operačních systémech podporovaných produktem agenta závislostí?
+
+Seznam operačních systémů Windows nepodporuje agenta závislostí je [tady](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-windows-operating-systems).
+Seznam operačních systémů Linux podporuje agenta závislostí je [tady](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems).
+
+### <a name="i-am-unable-to-visualize-dependencies-in-azure-migrate-for-more-than-one-hour-duration"></a>Nejde mi vizualizace závislostí ve službě Azure Migrate déle než hodinu?
+Azure Migrate vám umožňuje vizualizovat závislosti pro dobu trvání až jednu hodinu. I když Azure Migrate můžete přejít zpět na konkrétní datum v historii pro až za poslední měsíc, je maximální doba trvání, pro kterou můžete vizualizovat závislosti až 1 hodinu. Například můžete použít funkci doba trvání na mapě závislostí, chcete-li zobrazit závislosti včerejška ale jenom ji mohou zobrazit okna jednu hodinu.
+
+### <a name="i-am-unable-to-visualize-dependencies-for-groups-with-more-than-10-vms"></a>Nejde mi vizualizace závislostí u skupin s více než 10 virtuálních počítačů?
+Je možné [vizualizace závislostí u skupin](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) , že mají až na 10 virtuálních počítačů, pokud máte skupinu s více než 10 virtuálních počítačů, doporučujeme rozdělit skupiny v menším skupinám a vizualizace závislostí.
 
 ## <a name="troubleshoot-readiness-issues"></a>Řešení potíží s problémy připravenosti
 

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 09/26/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 53f01ad6e8a801c69ea93c54e805807cb8eed34d
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 951c012dd22cf83741211b9601a5e7502de33be6
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127818"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393022"
 ---
 # <a name="azure-stack-1807-update"></a>Aktualizace služby Azure Stack 1807
 
@@ -168,6 +168,8 @@ Po instalaci této aktualizace nainstalujte všechny příslušné opravy hotfix
 Toto jsou známé problémy této verze sestavení po instalaci.
 
 ### <a name="portal"></a>Portál
+
+- Technická dokumentace služby Azure Stack se zaměřuje na nejnovější verzi. Z důvodu portálu změn mezi verzemi co se zobrazí při použití na portálech Azure Stack se může lišit od naleznete v dokumentaci. 
 
 - Schopnost [otevřete novou žádost o podporu z rozevíracího seznamu](azure-stack-manage-portals.md#quick-access-to-help-and-support) v rámci správce portálu není k dispozici. Pro službu Azure Stack integrované systémy, použijte následující odkaz: [ https://aka.ms/newsupportrequest ](https://aka.ms/newsupportrequest).
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.date: 09/12/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 16c4ab4601dbe57e014bfcb06ff9b35d02c60cfa
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 7600fc81d0d3e3607f2185ad2c793255a0c68634
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721904"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227295"
 ---
 # <a name="common-questions---hyper-v-to-azure-replication"></a>Časté otázky – Hyper-V do Azure replikace
 
@@ -104,7 +104,7 @@ Můžete replikovat jakoukoli aplikaci nebo úlohy spuštění virtuálního po�
 
 ### <a name="whats-the-replication-process"></a>Co je proces replikace?
 
-1. Při aktivaci počáteční replikace se pořídí snímek snímku virtuálního počítače Hyper-V.
+1. Při aktivaci počáteční replikace se pořídí snímek virtuálního počítače Hyper-V.
 2. Virtuální pevné disky na virtuálním počítači se replikují jeden po druhém, dokud se všechny nezkopírují do Azure. To může chvíli trvat, v závislosti na velikosti virtuálního počítače a šířka pásma sítě. Zjistěte, jak zvětšit šířku pásma sítě.
 3. Pokud dojde ke změnám na disku, kdy probíhá počáteční replikace, Hyper-V Replica Replication Tracker zaznamenává změny zaznamená jako protokoly replikace technologie Hyper-V (.hrl). Tyto protokolové soubory jsou umístěny ve stejné složce jako disky. Každý disk má přidružený soubor .hrl, který se odešle do sekundárního úložiště. Soubory snímků a protokolů spotřebovávají prostředky disku v době, kdy probíhá počáteční replikace.
 4. Po dokončení počáteční replikace se snímek virtuálního počítače odstraní.

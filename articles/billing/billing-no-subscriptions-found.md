@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2018
-ms.author: genli
-ms.openlocfilehash: b5fd1db06d13ce0c12a80752e64a6f5c64867761
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.author: cwatson
+ms.openlocfilehash: a1e90f946508f1ffc0a1ee812dde46ee733d715a
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298246"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392430"
 ---
 # <a name="no-subscriptions-found-error-in-azure-portal-or-azure-account-center"></a>Žádné předplatné Nenalezeno chyby v portálu Azure portal nebo v centru účtů Azure
 

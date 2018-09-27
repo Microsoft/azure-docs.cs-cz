@@ -1,22 +1,22 @@
 ---
-title: Změní velikost a oříznout Bing miniatur | Microsoft Docs
-description: Ukazuje, jak změnit velikost a oříznout miniatur, které jsou zahrnuty v odpovědi Bing.
+title: Změna velikosti a oříznout miniatury Bingu – vyhledávání videí Bingu
+titlesuffix: Azure Cognitive Services
+description: Ukazuje, jak změnit velikost a oříznout miniatury, které jsou zahrnuty v odpovědi Bingu.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: 1BA175EC-65B4-43FD-9E4E-D7DA07FD8670
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: c1b9104a87805a0632538f326a99931a1730fc48
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 3ab6b0d8b84ad7b023fe48526e028346f286b0b2
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342351"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223385"
 ---
-# <a name="resizing-and-cropping-thumbnail-images"></a>Změna velikosti a oříznutí obrázky miniatur
+# <a name="resizing-and-cropping-thumbnail-images"></a>Změna velikosti a oříznutí obrázků miniatur
 
 [!INCLUDE [cognitive-services-bing-resize-crop-thumbnails](../../../includes/cognitive-services-bing-resize-crop-thumbnails.md)]

@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2f5d2f3634545001dc6dc1419530223b5a1a85a3
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 8f3185a2c7633ba0cb5a9b266bcddf023d3c36e1
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435787"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166448"
 ---
 # <a name="my-first-powershell-runbook"></a>Můj první powershellový runbook
 
@@ -83,7 +83,17 @@ Vytvořený runbook je stále v režimu konceptu. Je potřeba publikovat před s
 12. Na tuto úlohu můžete kliknout a otevřít podokno Úloha, které jste zobrazili při spuštění runbooku. Pomocí této možnosti se můžete vrátit v čase a zobrazit si podrobnosti libovolné úlohy, která byla pro konkrétní runbook vytvořena.
 
 ## <a name="step-5---add-authentication-to-manage-azure-resources"></a>Krok 5 – přidání ověřování ke správě prostředků Azure
-Runbook jste otestovali a publikovali, ale zatím nedělá nic užitečného. Chcete po něm, aby spravoval prostředky Azure. Není možné provést, ale pokud nemáte ověření pomocí přihlašovacích údajů, které jsou uvedené v [požadavky](#prerequisites). Můžete to udělat pomocí **Connect-AzureRmAccount** rutiny.
+Runbook jste otestovali a publikovali, ale zatím nedělá nic užitečného. Chcete po něm, aby spravoval prostředky Azure. Není možné provést, ale pokud nemáte ověření pomocí přihlašovacích údajů, které jsou uvedené v [požadavky](#prerequisites). Můžete to udělat pomocí **Connect-AzureRmAccount** rutiny. Pokud spravujete prostředků napříč několika předplatnými, budete muset použít **- AzureRmContext** parametr spolu s [Get-AzureRmContext](/powershell/module/azurerm.profile/get-azurermcontext).
+
+   ```powershell
+   $Conn = Get-AutomationConnection -Name AzureRunAsConnection
+   Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID `
+-ApplicationID $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+
+   $AzureContext = Select-AzureRmSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID
+
+   Get-AzureRmVM -ResourceGroupName myResourceGroup -AzureRmContext $AzureContext
+   ```
 
 1. Kliknutím otevřete textový editor **upravit** na stránce MyFirstRunbook-PowerShell.
 2. není nutné **Write-Output** řádek už, neváhejte a sami ho odstranit.

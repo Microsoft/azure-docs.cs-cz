@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: prasantp
 author: prasanthpul
 ms.date: 09/24/2018
-ms.openlocfilehash: cc259e89bf6e4bcde5635d13951eaedb6f7b8849
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: acd5c1e1ae4aefa94ca4d1f6ef510ab1b028c3dd
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035007"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47164892"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX a Azure Machine Learning: vytvoření a nasazení interoperabilní modely AI
 
@@ -48,17 +48,15 @@ Využijte modely ONNX můžete vytvořit několika způsoby:
 ## <a name="exportconvert-your-models-to-onnx"></a>Export/převést vaše modely ONNX
 
 Můžete také převést vaše stávající modely ONNX.
-+ Pro **PyTorch** modely, vyzkoušejte si [tento poznámkový blok Jupyter](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb)
 
-+ Pro **Microsoft Cognitive Toolkit (CNTK)** modely, vyzkoušejte si [tento poznámkový blok Jupyter](https://github.com/onnx/tutorials/blob/master/tutorials/CntkOnnxExport.ipynb)
-
-+ Pro **Chainer** modely, vyzkoušejte si [tento poznámkový blok Jupyter](https://github.com/onnx/tutorials/blob/master/tutorials/ChainerOnnxExport.ipynb)
-
-+ Pro **MXNet** modely, vyzkoušejte si [tento poznámkový blok Jupyter](https://github.com/onnx/tutorials/blob/master/tutorials/MXNetONNXExport.ipynb)
-
-+ Pro **TensorFlow** modely, používají [tensorflow onnx převaděč](https://github.com/onnx/tensorflow-onnx).
-
-+ Pro **Keras**, **další ScitKit**, **CoreML**, **XGBoost**, a **libSVM** převést modely ONNX použití [WinMLTools](https://docs.microsoft.com/windows/ai/convert-model-winmltools) balíčku.
+|Architektura pro model|Například převod nebo nástroj|
+|-----|-------|
+|PyTorch|[Poznámkový blok Jupyter](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb)|
+|Microsoft&nbsp;Cognitive&nbsp;Toolkit&nbsp;(CNTK)|[Poznámkový blok Jupyter](https://github.com/onnx/tutorials/blob/master/tutorials/CntkOnnxExport.ipynb)|
+|TensorFlow|[Převaděč tensorflow onnx](https://github.com/onnx/tensorflow-onnx)|
+|Chainer|[Poznámkový blok Jupyter](https://github.com/onnx/tutorials/blob/master/tutorials/ChainerOnnxExport.ipynb)|
+|MXNet|[Poznámkový blok Jupyter](https://github.com/onnx/tutorials/blob/master/tutorials/MXNetONNXExport.ipynb)|
+|Keras další ScitKit CoreML<br/>XGBoost a libSVM|[WinMLTools](https://docs.microsoft.com/windows/ai/convert-model-winmltools)|
 
 Můžete vyhledat nejnovější seznam podporovaných platforem a převaděče na [ONNX kurzy lokality](https://github.com/onnx/tutorials).
 

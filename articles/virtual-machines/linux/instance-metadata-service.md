@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: f2b6ba4b7faaeb7092c24d964d32c69946264906
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 229f3dd11a90c4f6d65c9cae2a5dd3447eedf83e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023289"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225255"
 ---
 # <a name="azure-instance-metadata-service"></a>Služby Azure Instance Metadata
 
@@ -382,7 +382,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 
 ### <a name="getting-azure-environment-where-the-vm-is-running"></a>Získávání prostředí Azure, ve kterém je virtuální počítač spuštěný. 
 
-Azure má různé soverign cloudů, jako je [Azure Government](https://azure.microsoft.com/overview/clouds/government/) , někdy potřebujete do prostředí Azure pro některé rozhodování modulu runtime. Následující příklad zobrazí, jak toho dosáhnout
+Azure má různé suverénních cloudech, jako je [Azure Government](https://azure.microsoft.com/overview/clouds/government/). Někdy potřebujete prostředí Azure tak, aby některé rozhodování modulu runtime. Podle následující ukázky vám ukáže, jak toho dosáhnout.
 
 **Požadavek**
 
@@ -445,7 +445,7 @@ Puppet | https://github.com/keirans/azuremetadata
    * Ano je dostupná pro nastavení instance Škálovací metadat služby. 
 8. Jak získat podporu pro službu?
    * Jak získat podporu pro službu, vytvořte problém podpory na webu Azure portal pro virtuální počítač, pokud nejste schopni získat odpověď metadat za dlouhá opakování 
-9. Můžu získat žádosti vypršel časový limit pro moje volání službu?
+9. Získat žádosti vypršel časový limit pro moje volání služby?
    * Volání metadata se musí provádět z primární IP adresy přiřazené síťové karty virtuálního počítače, kromě toho v případě, že jste změnili trasy existuje musí být trasu pro adresu 169.254.0.0/16 mimo síťovou kartou.
 10. Můžu aktualizovat Mé značky v sadě škálování virtuálních počítačů ale nejsou zobrazeny v instancích na rozdíl od virtuálních počítačů?
    * Aktuálně pro ScaleSets značky zobrazit pouze k virtuálnímu počítači na restartování nebo obnovení z Image/nebo změnit disk na instanci. 

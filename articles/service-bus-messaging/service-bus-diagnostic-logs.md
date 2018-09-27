@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 02/05/2018
+ms.date: 09/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 3c2528634dea5c75e4a0e35b7e1a6a30de8d96c1
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 85bbd59cb921e5f20feb7b1cf1073fd7b695864f
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696152"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393566"
 ---
 # <a name="service-bus-diagnostic-logs"></a>Diagnostické protokoly služby Service Bus
 

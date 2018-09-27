@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: tamram
-ms.openlocfilehash: 8a0b823a12178df56417b05de28c2125ec155829
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 6e77c4836531a7efd0b52b9a411ac40ff6a613fa
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45740814"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224490"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Upgradovat na účet úložiště pro obecné účely verze 2
 
@@ -77,7 +77,7 @@ Při rozhodování o nejlepší úroveň přístupu pro vaše potřeby, může b
 
 Pokud chcete shromažďovat data o využití pro váš účet úložiště, před migrací, můžete sledovat, účtu úložiště pomocí [Azure Monitor](../../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md). Azure Monitor provádí protokolování a poskytuje data metriky pro služby Azure, včetně služby Azure Storage. 
 
-Pokud chcete monitorovat spotřebu dat pro objekty BLOB v účtu úložiště, povolte kapacitní metriky ve službě Azure Monitor. Kapacitní metriky zaznamenat data o tom, jak velké úložiště na každý den používají objekty BLOB ve vašem účtu. Kapacitní metriky je možné pro odhad nákladů na ukládání dat v účtu úložiště. Informace o tom, jaké je kapacita úložiště objektů Blob ceny pro každý typ účtu, najdete v článku [ceny za objekty blob bloku](https://azure.microsoft.com/pricing/details/storage/blobs/).
+Pokud chcete monitorovat spotřebu dat pro objekty BLOB v účtu úložiště, povolte kapacitní metriky ve službě Azure Monitor. Kapacitní metriky zaznamenat data o tom, jak velké úložiště na každý den používají objekty BLOB ve vašem účtu. Kapacitní metriky je možné pro odhad nákladů na ukládání dat v účtu úložiště. Informace o tom, jak kapacita služby Blob storage vychází z pro každý typ účtu, najdete v článku [ceny za objekty blob bloku](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 Pokud chcete monitorovat vzory přístupu k datům pro úložiště objektů Blob, povolte metriku transakcí ve službě Azure Monitor. Můžete filtrovat podle různých operací služby Azure Storage odhadnout, jak často se nazývá každý. Další informace naleznete v tématu jak různé typy transakcí se počítají pro bloku a doplňovacích objektů blob pro každý typ účtu, [ceny za objekty blob bloku](https://azure.microsoft.com/pricing/details/storage/blobs/).  
 

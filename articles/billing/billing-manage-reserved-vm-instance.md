@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
-ms.author: yashesvi
-ms.openlocfilehash: 3e5316ac0ca20c58a0960818d3151c238927df0d
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.author: cwatson
+ms.openlocfilehash: ca880ea273552198b4bc84cbe594489ef0adf5e0
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054593"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393192"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Správa rezervací pro prostředky Azure
 

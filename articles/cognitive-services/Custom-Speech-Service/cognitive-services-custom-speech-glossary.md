@@ -1,21 +1,22 @@
 ---
-title: Slovník pojmů pro Custom Speech Service v Azure | Dokumentace Microsoftu
+title: Glosář termínů – Custom Speech Service
+titlesuffix: Azure Cognitive Services
 description: Terminologii používané v Glosář definuje podmínky, které se můžete setkat při práci s Custom Speech Service.
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: panosper
 ROBOTS: NOINDEX
-ms.openlocfilehash: f57809fee463213cbb427146325666656b022e41
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6922244fa9a5d053e506120112759d29bc74a8af
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956740"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222790"
 ---
 # <a name="glossary"></a>Glosář
 

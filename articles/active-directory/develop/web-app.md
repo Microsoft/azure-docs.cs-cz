@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: c67efa84df2e5eb336d2702fc9c32ffae890d64d
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 0eec1100c5246bb9f5c281971453ac60abc0339f
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034650"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225013"
 ---
 # <a name="web-apps"></a>Webové aplikace
 
@@ -44,7 +44,7 @@ Zobrazit ukázky kódu pro webový prohlížeč na web scénářích aplikací. 
 
 ## <a name="app-registration"></a>Registrace aplikace
 
-Zaregistrovat webovou aplikaci, najdete v tématu naleznete v tématu [registrace aplikace ke koncovému bodu Azure AD v1.0](quickstart-v1-add-azure-ad-app.md).
+Chcete-li zaregistrovat webovou aplikaci, přečtěte si téma [registrace aplikace ke koncovému bodu Azure AD v1.0](quickstart-v1-add-azure-ad-app.md).
 
 * Jednoho tenanta – Pokud vytváříte aplikaci pouze pro vaši organizaci, je nutné jej zaregistrovat v adresáři vaší firmy s využitím webu Azure portal.
 * Multi-tenan – Pokud vytváříte aplikaci, která je možné uživatele mimo vaši organizaci, musí být zaregistrovaný v adresáři vaší společnosti, ale také musí být zaregistrovaný v adresáři každé organizace, který bude používat aplikace. K zajištění dostupnosti v jejich adresáři aplikace, můžete zahrnout procesu registrace pro vaše zákazníky, díky kterým souhlas s vaší aplikací. Při registraci pro vaši aplikaci, se zobrazí se dialogové okno zobrazující oprávnění, která aplikace požaduje instalaci a pak možnost vyjádřit souhlas. V závislosti na požadovaných oprávnění může být správcem v druhé organizaci nutné vyjádřit souhlas. Když uživatel nebo správce souhlasí, aplikace je zaregistrovaný v jejich adresáře.

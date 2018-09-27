@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/06/2018
 ms.author: dobett
-ms.openlocfilehash: eb7b4c4c6228818f78e002f4a06a000e9aa34a3a
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 0e0c398311c5826f8b6c72bf0f39ad2bfde306b2
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109633"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223039"
 ---
 # <a name="schedule-and-broadcast-jobs-netnet"></a>Úlohy vysílání a plánování (.NET/.NET)
 
@@ -140,7 +140,7 @@ V této části vytvoříte konzolovou aplikaci .NET, která bude reagovat pří
 9. Uložte si práci a sestavení vašeho řešení.         
 
 > [!NOTE]
-> Za účelem zjednodušení tento kurz neimplementuje žádné zásady opakování. V produkčním kódu by měly implementovat zásady opakování (například připojení opakování), jak je navrženo v článku na webu MSDN [zpracování přechodných chyb](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults).
+> Za účelem zjednodušení tento kurz neimplementuje žádné zásady opakování. V produkčním kódu by měly implementovat zásady opakování (například připojení opakování), jak je navrženo v článku [zpracování přechodných chyb](/azure/architecture/best-practices/transient-faults).
 > 
 
 ## <a name="schedule-jobs-for-calling-a-direct-method-and-sending-device-twin-updates"></a>Plánování úloh pro volání přímé metody a odesílání, aktualizace dvojčete zařízení

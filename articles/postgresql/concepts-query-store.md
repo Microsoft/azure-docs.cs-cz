@@ -6,20 +6,20 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 149840157c5e9bb47be70f669b2078585fe4b56c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 09/26/2018
+ms.openlocfilehash: 03f22a7975e8f331efa9dcc30fd088f32bee1649
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953019"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393483"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Sledování výkonu s Query Store
 
 **Platí pro:** Azure Database for PostgreSQL 9.6 a 10
 
 > [!IMPORTANT]
-> Funkce Query Store je ve verzi Public Preview.
+> Funkce Query Store je ve verzi Public Preview v omezeném počtu oblastí.
 
 
 Funkce Query Store ve službě Azure Database for PostgreSQL poskytuje způsob, jak sledovat výkon dotazu v čase. Store zjednodušuje tím, že vám pomáhá rychle problémů s výkonem dotazů najít dotazy nejdéle probíhající a nejvíce náročné. Query Store automaticky zaznamenává historii dotazů a statistické údaje a uchovávají je po dobu zkontrolovali. Rozděluje data podle časových oken, kde můžete zobrazit způsobů využití databází. Data pro všechny uživatele, databází a dotazů se ukládají v databázi s názvem **azure_sys** ve službě Azure Database for postgresql – instance.
@@ -117,7 +117,7 @@ Toto zobrazení vrátí všechna data v dotazu Store. Existuje jeden řádek pro
 |query_id   |bigint  || Interní hodnota hash, vypočítá ze strom analýzy – příkaz|
 |query_sql_text |Varchar(10000)  || Text reprezentativní příkazu. Různé dotazy s stejné struktury jsou Clusterované společně; Tento text je text pro první dotazů v clusteru.|
 |hodnotou plan_id    |bigint |   |ID plánu ještě odpovídající tento dotaz není k dispozici|
-|start_time |časové razítko  ||  Dotazy jsou agregované podle časovým intervalům - časový rozsah interval je 15 minut, ve výchozím nastavení ale konfigurovatelné. Toto je počáteční čas odpovídající časovém intervalu pro tuto položku.|
+|start_time |časové razítko  ||  Dotazy jsou agregované podle časovým intervalům - časový rozsah interval je 15 minut, ve výchozím nastavení. Toto je počáteční čas odpovídající časovém intervalu pro tuto položku.|
 |end_time   |časové razítko  ||  Koncový čas odpovídající časovém intervalu pro tuto položku.|
 |volání  |bigint  || Počet, kolikrát dotaz proveden|
 |TOTAL_TIME |dvojitou přesností   ||  Celkový počet dotazů doby spuštění, v milisekundách|
@@ -168,6 +168,10 @@ Vrací hodnotu void Query_store.qs_reset()
 Vrací hodnotu void Query_store.staging_data_reset()
 
 `staging_data_reset` zahodí všechny statistiky Query Store (tedy data v paměti, která byla vyprázdněna nebyl dosud k databázi) shromážděné v paměti. Tato funkce může provádět jenom role správce serveru.
+
+## <a name="limitations-and-known-issues"></a>Omezení a známé problémy
+- Pokud je na serveru PostgreSQL default_transaction_read_only parametr, Query Store nelze zachytit data.
+- Query Store funkce můžete přerušit, pokud nalezne dlouhé dotazy kódování Unicode (> = 6000 bajtů).
 
 
 ## <a name="next-steps"></a>Další postup

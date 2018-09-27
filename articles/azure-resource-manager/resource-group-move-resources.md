@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0970f5d4e61a40df7454cc850e59d86708d4aa1c
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: cf7d3df6d2e419a700b0be74da3fe2edc5ac24e1
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159091"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393277"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -274,7 +274,29 @@ Register-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNames
 ```
 
 ```azurecli-interactive
-az feature register Microsoft.Compute ManagedResourcesMove
+az feature register --namespace Microsoft.Compute --name ManagedResourcesMove
+```
+
+Žádost o registraci zpočátku vrátí stav `Registering`. Můžete zkontrolovat aktuální stav pomocí:
+
+```azurepowershell-interactive
+Get-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute
+```
+
+```azurecli-interactive
+az feature show --namespace Microsoft.Compute --name ManagedResourcesMove
+```
+
+Počkejte několik minut, než se stav změní na `Registered`.
+
+Po registraci funkci registrace `Microsoft.Compute` poskytovatele prostředků. Tento krok proveďte i v případě poskytovatele prostředků byl dříve zaregistrován.
+
+```azurepowershell-interactive
+Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
+```
+
+```azurecli-interactive
+az provider register --namespace Microsoft.Compute
 ```
 
 Tato podpora znamená, že můžete také přesunout:
@@ -289,7 +311,7 @@ Tady jsou omezení, které se zatím nepodporují:
 * Virtuální počítače pomocí certifikátu uloženého ve službě Key Vault můžete přesunout do nové skupiny prostředků ve stejném předplatném, ale ne napříč předplatnými.
 * Virtuální počítače nakonfigurované s Azure Backup. Používá následující alternativní řešení Chcete-li přesunout tyto virtuální počítače
   * Vyhledejte umístění virtuálního počítače.
-  * Vyhledejte skupinu prostředků pomocí následující vzor pro pojmenování: `AzureBackupRG_<location of your VM>_1` třeba AzureBackupRG_westus2_1
+  * Vyhledejte skupinu prostředků pomocí následující vzor pro pojmenování: `AzureBackupRG_<location of your VM>_1` například AzureBackupRG_westus2_1
   * Pokud na webu Azure portal, pak zaškrtněte "Zobrazit skryté typy"
   * Pokud v prostředí PowerShell, použijte `Get-AzureRmResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` rutiny
   * Pokud v rozhraní příkazového řádku, použijte `az resource list -g AzureBackupRG_<location of your VM>_1`

@@ -9,19 +9,19 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: b738cc2fc7db6987b8f4ad54a2c53cc9e69989b3
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: e0c28645de8c45aaf89afb6b5116aa9a3cb04768
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181470"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227499"
 ---
 # <a name="unity-sample-walkthrough"></a>Ukázkový názorný postup Unity
 Jedná se názorného Průvodce ukázkou Akustika projektu. Další informace o jaké Akustika projektu je, přečtěte si [Úvod do projektu Akustika](what-is-acoustics.md). Pomoc při přidání balíčku projektu Akustika do již existující Unity projektu, použijte [příručce Začínáme](getting-started.md).
 
 ## <a name="requirements-for-running-the-sample-project"></a>Požadavky na spuštění ukázkového projektu
 * Unity 2018.2 + pomocí skriptování verze modulu runtime .NET 4.x
-* Windows 64-bit Unity editoru
+* 64bitová verze editoru Unity pro Windows
 * Ukázka podporuje Windows desktop, UPW a cílech Android, včetně hlavu zobrazí (HMDs)
 * Předplatné Azure Batch potřeba která má označení vytvoření procesu
 
@@ -43,7 +43,7 @@ Ukázka obsahuje nastavení pro spuštění na ploše Windows, UPW, smíšené R
 ![Povolit VR](media/VRSupport.png)  
 
 Sluchátka s mikrofonem VR připojí k vašemu počítači. Přejděte na **soubor > Nastavení sestavení**a klikněte na tlačítko **sestavíte a spustíte** nasazení ukázky do vaší sluchátka s mikrofonem VR. Procházet scény pomocí řadiče pohybu pro vaše sluchátka s mikrofonem, případně zkuste použít S W, A, D na klávesnici.    
-Chcete-li cílit na zařízení s Androidem a Oculus Go, zvolte Android z **nastavení sestavení** nabídky. Klikněte na tlačítko **přepněte cílový**, pak **sestavíte a spustíte**. Ukázková Scéna to bude nasadit do připojených zařízení s Androidem. Informace o vývoji pro Unity pro Android, naleznete v tématu [dokumentace k Unity](https://docs.unity3d.com/Manual/android-GettingStarted.html).
+Chcete-li cílit na zařízení s Androidem a Oculus Go, zvolte Android z **nastavení sestavení** nabídky. Klikněte na tlačítko **přepněte cílový**, pak **sestavíte a spustíte**. Ukázková Scéna to bude nasadit do připojených zařízení s Androidem. Informace o vývoji pro Unity pro Android najdete v tématu [dokumentace k Unity](https://docs.unity3d.com/Manual/android-GettingStarted.html).
 
 ![Cíl Android](media/TargetAndroid.png)  
 

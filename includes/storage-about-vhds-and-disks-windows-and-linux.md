@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/09/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 2ab2ac1e98e25da4065611d32fb50aa8ce809361
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 26c3e8a096a3ee7bc5146759f8de62e5c1c7fed1
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47060321"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47389874"
 ---
 ## <a name="about-vhds"></a>Virtuální pevné disky
 
@@ -73,4 +73,4 @@ Následující tabulka obsahuje porovnání standardní HDD, SSD na úrovni Stan
 | Scénář  | Úlohy v produkčním prostředí a úlohy, u kterých záleží na výkonu |Webové servery, málo používaná podnikové aplikace a pro vývoj/testování| Zálohování, Nekritická, úlohy s Řídkým přístupem
 | Velikost disku | P4: 32 GiB (pouze spravované disky)<br>P6: 64 GiB (pouze spravované disky)<br>P10: 128 GB<br>P15: 256 GB (pouze spravované disky)<br>P20: 512 GB<br>P30: 1024 GB<br>P40: 2048 GiB<br>P50: 4095 GiB<br>P60: 8 192 GiB * (8 TB)<br>P70: 16 384 GB * (16 TB)<br>P80: 32 767 GiB * (32 TB) |Jenom spravované disky:<br>E10: 128 GB<br>E15: 256 GB<br>E20: 512 GB<br>E30: 1024 GB<br>E40: 2048 GiB<br>E50: 4095 GiB<br>E60: 8 192 GiB * (8 TB)<br>E70: 16 384 GB * (16 TB)<br> E80: 32 767 GiB * (32 TB) | Nespravované disky: 1 GiB – 4 TB (4095 GiB) <br><br>Managed Disks:<br> S4: 32 GiB <br>S6: 64 GiB <br>S10: 128 GB <br>S.15: 256 GB <br>S20: 512 GB <br>S30: 1024 GB <br>S40: 2048 GiB<br>S50: 4095 GiB<br>S60: 8 192 GiB * (8 TB)<br>S70: 16 384 GiB * (16 TB)<br>S80: 32,384 GiB * (32 TB)
 | Maximální propustnost na disk | P4: 25 MiB/s<br> P6: 50 MiB/s<br> P10: 100 MiB/s<br> P15: 200 MiB/s<br> P20: 150 MiB/s<br> P30: 200 MiB/s<br> P40 P50: 250 MiB/s<br> P60: 480 MiB/s<br> P70 P80: 750 MiB/s | E10 E50: až 60 MiB/s<br> E60: až 300 MiB/s *<br> E70 E80: 500 MiB/s *| S4 - S50: Upt o 60 MiB/s<br> S60: až 300 MiB/s *<br> S70 S80: až 500 MiB/s *
-| Maximum vstupně-výstupních operací za sekundu (IOPS) na disk | P4: 120 VSTUPNĚ-VÝSTUPNÍCH OPERACÍ<br> P6: 240 VSTUPNĚ-VÝSTUPNÍCH OPERACÍ<br> P10: 500 IOPS<br> P15: IOPS 1100<br> P20: IOPS 2300<br> P30: 500 IOPS<br> P40 P50: 7500 VSTUPNĚ-VÝSTUPNÍCH OPERACÍ<br> P60: 12 500 IOPS *<br> P70: 15 000 VSTUPNĚ-VÝSTUPNÍCH OPERACÍ *<br> P80: 20 000 IOPS * | E10 E50: až 500 IOPS<br> E60: až 1300 vstupně-výstupních operací *<br> E70 E80: až 2000 vstupně-výstupních operací * | S4 S50: až 500 IOPS<br> S60: až 1300 vstupně-výstupních operací *<br> S70 S80: až 2000 vstupně-výstupních operací *
+| Maximum vstupně-výstupních operací za sekundu (IOPS) na disk | P4: 120 VSTUPNĚ-VÝSTUPNÍCH OPERACÍ<br> P6: 240 VSTUPNĚ-VÝSTUPNÍCH OPERACÍ<br> P10: 500 IOPS<br> P15: IOPS 1100<br> P20: IOPS 2300<br> P30: 5000 VSTUPNĚ-VÝSTUPNÍCH OPERACÍ<br> P40 P50: 7500 VSTUPNĚ-VÝSTUPNÍCH OPERACÍ<br> P60: 12 500 IOPS *<br> P70: 15 000 VSTUPNĚ-VÝSTUPNÍCH OPERACÍ *<br> P80: 20 000 IOPS * | E10 E50: až 500 IOPS<br> E60: až 1300 vstupně-výstupních operací *<br> E70 E80: až 2000 vstupně-výstupních operací * | S4 S50: až 500 IOPS<br> S60: až 1300 vstupně-výstupních operací *<br> S70 S80: až 2000 vstupně-výstupních operací *

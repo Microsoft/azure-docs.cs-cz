@@ -11,23 +11,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/19/2018
+ms.date: 09/26/2018
 ms.author: shlo
-ms.openlocfilehash: 5bb1099dee919de50d2c2fc110f3a204e580b66c
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 8132f89423883422d70981edd3ddaf86147830e2
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465975"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394414"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Vizuální vytváření obsahu v Azure Data Factory
 Azure Data Factory uživatelské rozhraní rozhraní (UX) umožňuje vizuálně vytvoříte a nasadíte prostředky pro službu data factory bez nutnosti psát jakýkoli kód. Můžete přetáhnout aktivity na plátno kanálu, provádějte testovací běhy, využívejte iterativní ladění a nasadit a monitorovat spuštění kanálů. Existují dvě metody pro provádění vizuálního vytváření pomocí uživatelského rozhraní:
 
 - Autor přímo ve službě Data Factory.
-- Autor s integrací Git pomocí úložiště Azure pro spolupráci, správy zdrojového kódu nebo Správa verzí.
+- Autor s integrací Azure úložišť Git spolupráci, správu zdrojového kódu a správy verzí.
 
 ## <a name="author-directly-with-the-data-factory-service"></a>Autor přímo ve službě Data Factory
-Vizuální vytváření obsahu pomocí služby Data Factory se liší od vizuálním vytváření s Azure DevOps služby dvěma způsoby:
+Vizuální vytváření obsahu pomocí služby Data Factory se liší od vizuálním vytváření s integrace Gitu dvěma způsoby:
 
 - Služba Data Factory neobsahuje úložiště pro ukládání entity JSON pro vaše změny.
 - Služba Data Factory není optimalizovaná pro spolupráci a správu verzí.
@@ -38,8 +38,8 @@ Při použití uživatelského rozhraní **plátno pro vytváření obsahu** vyt
 
 ![Režim publikování](media/author-visually/data-factory-publish.png)
 
-## <a name="author-with-git-integration-with-azure-repos"></a>Autor pomocí Git integrace s úložišti Azure
-Pro práci na vaše kanály data factory vizuálním vytváření s Git integrace s úložišti Azure podporuje správu zdrojového kódu a spolupráci. Datové továrny můžete přidružit úložiště Git v úložišti Azure organizace správu zdrojového kódu, spolupráci, správu verzí a tak dále. Jedna organizace úložiště Git v Azure může mít více úložišť, ale může být přidružený pouze jeden objekt pro vytváření dat úložiště Git v úložišti Azure. Pokud nemáte Azure úložiště organizace nebo úložiště, postupujte podle [tyto pokyny](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student) k vytvoření vašich prostředků.
+## <a name="author-with-azure-repos-git-integration"></a>Autor s integrací Azure úložišť Git
+Vizuálním vytváření s integrace Gitu úložiště Azure podporuje správu zdrojového kódu a spolupráci pro práci na vaše kanály data factory. Datové továrny můžete přidružit úložiště Git v úložišti Azure organizace správu zdrojového kódu, spolupráci, správu verzí a tak dále. Jedna organizace úložiště Git v Azure může mít více úložišť, ale může být přidružený pouze jeden objekt pro vytváření dat úložiště Git v úložišti Azure. Pokud nemáte Azure úložiště organizace nebo úložiště, postupujte podle [tyto pokyny](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student) k vytvoření vašich prostředků.
 
 > [!NOTE]
 > Skript a datových souborů můžete uložit v úložišti Git v úložišti Azure. Ale budete muset ručně nahrání souborů do služby Azure Storage. Kanál služby Data Factory není automaticky odeslat soubory skriptu nebo data uložená v úložišti Git v úložišti Azure do služby Azure Storage.
@@ -61,7 +61,7 @@ V podokně se zobrazí následující kód úložišť Azure nastavení úloži�
 
 | Nastavení | Popis | Hodnota |
 |:--- |:--- |:--- |
-| **Typ úložiště** | Typ úložiště kódu úložiště Azure.<br/>**Poznámka:**: GitHub v tuto chvíli nepodporuje. | Azure Dev Ops Git |
+| **Typ úložiště** | Typ úložiště kódu úložiště Azure.<br/>**Poznámka:**: GitHub v tuto chvíli nepodporuje. | Azure úložišť Git |
 | **Azure Active Directory** | Název tenanta Azure AD. | <your tenant name> |
 | **Organizace úložiště Azure** | Název organizace vašich úložišť Azure. Můžete vyhledat název organizace vašich úložišť Azure na `https://{organization name}.visualstudio.com`. Je možné [Přihlaste se k vaší organizaci Azure úložišť](https://www.visualstudio.com/team-services/git/) pro přístup k profilu Visual Studio a zobrazit projekty a úložiště. | <your organization name> |
 | **ProjectName** | Název projektu úložiště Azure. Můžete vyhledat název projektu úložiště Azure na `https://{organization name}.visualstudio.com/{project name}`. | <your Azure Repos project name> |
@@ -70,7 +70,7 @@ V podokně se zobrazí následující kód úložišť Azure nastavení úloži�
 | **Kořenová složka** | Kořenové složky ve vaší větvi spolupráci úložiště Azure. | <your root folder name> |
 | **Importovat do úložiště stávající prostředky Data Factory** | Určuje, jestli se má naimportovat stávající prostředky data factory z uživatelského rozhraní **plátno pro vytváření obsahu** do úložiště Git v úložišti Azure. Vyberte pole pro import prostředky data factory do přidružené úložiště Git ve formátu JSON. Tato akce exportuje každého prostředku zvlášť (to znamená, propojené služby a datové sady se exportují do samostatných JSONs). Když toto políčko není zaškrtnuto, nenaimportují se existující prostředky. | Vybrané (výchozí) |
 
-#### <a name="configuration-method-2--azure-repos-git-repo-ux-authoring-canvas"></a>Metoda konfigurace 2 (úložiště Git v úložišti Azure): UX plátno pro vytváření obsahu
+#### <a name="configuration-method-2-azure-repos-git-repo-ux-authoring-canvas"></a>Metoda konfigurace 2 (úložiště Git v úložišti Azure): UX plátno pro vytváření obsahu
 V uživatelském prostředí Azure Data Factory **plátno pro vytváření obsahu**, vyhledejte svou datovou továrnu. Vyberte **služby Data Factory** rozevírací nabídky a pak vyberte **konfigurace úložiště kódu**.
 
 Otevře se podokno konfigurace. Podrobnosti o nastavení konfigurace najdete v popisech v <a href="#method1">metody konfigurace 1</a>.

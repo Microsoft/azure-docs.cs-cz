@@ -9,12 +9,12 @@ ms.service: automation
 ms.component: process-automation
 ms.topic: conceptual
 ms.date: 03/19/2017
-ms.openlocfilehash: 022fca09b9e748c030df6b5fc944f7930942a6f7
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: ef21060e98972dd7bc561f9a4311fa0c4bdec3b4
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302404"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227057"
 ---
 # <a name="azure-automation-scenario---automation-source-control-integration-with-azure-devops"></a>Scénář Azure Automation – automatizace integraci správy zdrojových kódů s Azure DevOps
 
@@ -47,7 +47,7 @@ Vytvoření [zabezpečenou proměnnou](automation-variables.md) ve vašem účtu
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSTokenVariable.png)
 
-Naimportujte sadu runbook, která se synchronizuje vaše runbooky a konfigurace do účtu automation. Můžete použít [ukázkové sady runbook Azure DevOps](https://www.powershellgallery.com/packages/Sync-VSTS/1.0/DisplayScript) nebo [Azure DevOps s využitím Gitu ukázkové sady runbook](https://www.powershellgallery.com/packages/Sync-VSTSGit/1.0/DisplayScript) z PowerShellGallery.com podle toho, pokud používáte Azure DevOps správy zdrojového kódu nebo Azure DevOps s úložištěm Git a nasazení do vašeho účtu automation.
+Naimportujte sadu runbook, která se synchronizuje vaše runbooky a konfigurace do účtu automation. Můžete použít [ukázkové sady runbook Azure DevOps](https://www.powershellgallery.com/packages/Sync-VSTS) nebo [Azure DevOps s využitím Gitu ukázkové sady runbook](https://www.powershellgallery.com/packages/Sync-VSTSGit) z [Galerie prostředí PowerShell](https://www.powershellgallery.com) podle toho, pokud používáte zdroj Azure DevOps ovládací prvek nebo Azure DevOps s úložištěm Git a nasazení do vašeho účtu automation.
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSPowerShellGallery.png)
 

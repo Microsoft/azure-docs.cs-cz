@@ -15,20 +15,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2017
-ms.author: jlian
+ms.author: cwatson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 089bb6f3fd187a56495dfd353ee89086e6bea120
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 7cb9d8e0f03dc5cb81d68d51be018e79074a32c2
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39124979"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47391295"
 ---
 # <a name="upgrade-your-free-trial-or-microsoft-imagine-azure-subscription-to-pay-as-you-go"></a>Upgradujte svoje předplatné bezplatné zkušební verze nebo Microsoft Imagine Azure na průběžné platby
 
 Upgrade vašeho [bezplatnou zkušební verzi](https://azure.microsoft.com/free/) nebo [Microsoft Imagine](https://azure.microsoft.com/offers/ms-azr-0144p/) předplatné [s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0003p/) v centru účtů Azure.
 
-1. Přihlaste se k [centra účtů Azure](https://account.windowsazure.com/subscriptions).
+1. Přihlaste se do [Centra účtů Azure](https://account.windowsazure.com/subscriptions).
 2. V části stav předplatného vyberte **upgradovat** banner.
    
     ![Snímek obrazovky, který ukazuje, kde klikněte na tlačítko Upgradovat z bezplatné zkušební verze na průběžné platby](./media/billing-upgrade-azure-subscription/billpage.png)

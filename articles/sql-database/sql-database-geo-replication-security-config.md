@@ -2,19 +2,22 @@
 title: Konfigurace zabezpečení databáze SQL Azure pro zotavení po havárii | Dokumentace Microsoftu
 description: Další informace o zabezpečení pro konfiguraci a správu zabezpečení po obnovení databáze nebo převzetí služeb při selhání na sekundární server.
 services: sql-database
-author: anosov1960
-manager: craigg
 ms.service: sql-database
-ms.custom: business continuity
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: anosov1960
 ms.author: sashan
-ms.openlocfilehash: 03bb4e2e8d202e13edf41c925b9341436515d8a8
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 2f5a455cecfbf4b40b1a410a756117d70c4a4b69
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465618"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166822"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Konfigurace a Správa zabezpečení služby Azure SQL Database pro geografické obnovení nebo převzetí služeb při selhání 
 

@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 311d1e1fc048e65182fbcbc8ca4b6f8c338da0de
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 49d5e307c51a6527ade63bac0276fa141ecb5c24
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163864"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222450"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Řešení problémů s výkonem Azure SQL Database s Intelligent Insights
 
@@ -41,7 +41,7 @@ Problémy s výkonem Intelligent Insights automaticky rozpozná s databází SQL
 | [Pagelatch kolizí](sql-database-intelligent-insights-troubleshoot-performance.md#pagelatch-contention) | Více vláken jsou současně pokouší o přístup stejné vyrovnávací paměti stránky dat v paměti výsledkem je zvýšená čekací dobu a způsobí pagelatch kolize. To ovlivňuje výkon databáze SQL. | Více vláken jsou současně pokouší o přístup stejné vyrovnávací paměti stránky dat v paměti výsledkem je zvýšená čekací dobu a způsobí pagelatch kolize. To ovlivňuje výkon databáze. |
 | [Chybějící Index](sql-database-intelligent-insights-troubleshoot-performance.md#missing-index) | Chybějící index byl zjištěn by to mělo dopad výkon SQL database. | Chybějící index byl zjištěn by to mělo dopad výkon databáze. |
 | [Nový dotaz](sql-database-intelligent-insights-troubleshoot-performance.md#new-query) | Nový dotaz byl zjištěn by to mělo dopad na celkový výkon SQL Database. | Nový dotaz byl zjištěn by to mělo dopad na celkový výkon databáze. |
-| [Statistiky neobvyklé čekání](sql-database-intelligent-insights-troubleshoot-performance.md#unusual-wait-statistic) | Neobvyklé databáze čekací dobu byly zjištěny by to mělo dopad výkon SQL database. | Neobvyklé databáze čekací dobu byly zjištěny by to mělo dopad výkon databáze. |
+| [Statistiky zvýšení čekání](sql-database-intelligent-insights-troubleshoot-performance.md#increased-wait-statistic) | Zvýšenou databázovou čekací dobu byly zjištěny by to mělo dopad výkon SQL database. | Zvýšenou databázovou čekací dobu byly zjištěny by to mělo dopad výkon databáze. |
 | [Databáze TempDB kolizí](sql-database-intelligent-insights-troubleshoot-performance.md#tempdb-contention) | Více vláken se pokoušíte získat přístup stejné databáze TempDB prostředek, který způsobuje kritický bod. To ovlivňuje výkon databáze SQL. | Více vláken se pokoušíte získat přístup stejné databáze TempDB prostředek, který způsobuje kritický bod. To ovlivňuje výkon databáze. |
 | [Nedostatek DTU elastického fondu](sql-database-intelligent-insights-troubleshoot-performance.md#elastic-pool-dtu-shortage) | Nedostatek dostupné Edtu v elastickém fondu ovlivňuje výkon databáze SQL. | Není k dispozici pro Managed Instance používá modelu virt. jader. |
 | [Regrese plán](sql-database-intelligent-insights-troubleshoot-performance.md#plan-regression) | Byl zjištěn nový plán nebo ke změně v úloze existující plán. To ovlivňuje výkon databáze SQL. | Byl zjištěn nový plán nebo ke změně v úloze existující plán. To ovlivňuje výkon databáze. |
@@ -203,17 +203,17 @@ Diagnostika protokolování informací výstupy až dvě nové většina využí
 
 Zvažte použití [Azure SQL Database Query Performance Insight](sql-database-query-performance.md).
 
-## <a name="unusual-wait-statistic"></a>Statistiky neobvyklé čekání
+## <a name="increased-wait-statistic"></a>Statistiky zvýšení čekání
 
 ### <a name="what-is-happening"></a>Co se děje
 
 Tento model zjistitelná výkonu indikuje snížení výkonu zatížení ve které jsou označeny špatné provádění dotazů ve srovnání s posledních sedm dní úlohy standardních hodnot.
 
-V takovém případě systém nelze klasifikovat špatné provádění dotazů v ostatních kategoriích zjistitelná výkonu, ale zjistila za regresi čekání statistiky. Proto je vyhodnotí jako dotazů s *neobvyklé čekání statistiky*, kde je zodpovědná za regresi neobvyklé čekání statistiky také přístupný. 
+V takovém případě systém nelze klasifikovat špatné provádění dotazů v ostatních kategoriích zjistitelná výkonu, ale zjistila za regresi čekání statistiky. Proto je vyhodnotí jako dotazů s *zvýšit statistiky čekání*, kde je zodpovědná za regresi čekání statistiky také přístupný. 
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
-Diagnostický protokol Vypíše informace o podrobnosti čekání neobvyklé času, hodnoty hash dotazu ovlivněné dotazy a dobu čekání.
+Diagnostika protokolování informací výstupů na zvýšené čekací čas podrobnosti a hodnoty hash dotazu ovlivněné dotazů.
 
 Protože systém nemohl úspěšně zjistit původní příčinu špatné provádění dotazů, diagnostických informací je dobrým výchozím bodem pro řešení potíží s ruční. Můžete optimalizovat výkon těchto dotazů. Dobrým postupem je načíst pouze data, která je nutné použít a zjednodušit a rozdělit do menších složitým dotazům. 
 

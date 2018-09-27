@@ -6,14 +6,14 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 4101f6819dff81376dcab47adb57e4b8ef35e094
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: fc26e1d32332bb0ed9624b7442e38ea79b7bfb1d
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40034726"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393549"
 ---
-# <a name="rendering-using-azure"></a>Vykreslování pomocí Azure
+# <a name="rendering-using-azure"></a>Vykreslování s využitím Azure
 
 Vykreslování je proces trvá 3D modely a převod na 2D imagí. 3D Scéna soubory jsou vytvořeny v aplikací, jako jsou Autodesk 3ds Max, Autodesk Maya a Blender.  Vykreslování aplikací, jako jsou Autodesk Maya, Autodesk Arnold, Chaos Group V-Ray a cykly blenderu pro vytváření 2D imagí.  Vytváření imagí někdy jeden ze souborů scény. Je však společné pro modelování a vykreslení více bitových kopií a pak je zkombinovat animace.
 
@@ -69,7 +69,7 @@ Služba Azure Batch se používá pro mnoho úloh, ale jsou dostupné následuj�
   * Jsou dostupné Image Azure Marketplace virtuálních počítačů, které obsahují oblíbených grafické a vykreslovací aplikace, takže není nutné instalovat aplikace, nebo vytvořit vlastní Image s aplikacemi nainstalovat. 
 * Platba za použití licencování pro aplikace vykreslování:
   * Můžete platit pro aplikace se po minutách, kromě placení za výpočetní virtuální počítače, který zabraňuje by bylo nutné koupit licence a potenciálně nakonfigurujte licenční server v aplikacích.  Platíte za použití také znamená, že je možné, aby vyhovovaly pro různé a neočekávané zatížení, protože není pevný počet licencí.
-  * Je také možné použít předem nainstalované aplikace s vlastní licencí a nepoužívat platbami za použití licencování.
+  * Je také možné použít předem nainstalované aplikace s vlastní licencí a nepoužívat platbami za použití licencování. K tomu obvykle instalujete na místním nebo založené na Azure licenci serveru a použít pro připojení fondu pro vykreslování k licenčnímu serveru služby Azure virtual network.
 * Moduly plug-in pro klienta návrh a modelování aplikace:
   * Povolit moduly plug-in koncovým uživatelům využívat služby Azure Batch přímo z klientské aplikace, jako jsou Autodesk Maya, což jim umožňuje vytvářet fondy, úlohy a ujistěte se, použít větší výpočetní kapacitu provádět rychlejší vykreslení.
 * Vykreslení integrace správce:

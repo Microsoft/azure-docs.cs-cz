@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/21/2018
+ms.date: 09/24/2018
 ms.author: sethm
 ms.reviewer: jeffgo
-ms.openlocfilehash: 8e0a73f800a2b56577b5684762e125d0a67b188d
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: bb4a34e7036c532ca1800c70347a4f2c55a33da2
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032287"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221719"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Položky Azure Marketplace k dispozici pro službu Azure Stack
 
@@ -230,6 +230,8 @@ Microsoft Azure Stack podporuje následující virtuální počítače Azure Mar
 | ![Barracuda aplikace zabezpečení Control Center](media/azure-stack-marketplace-azure-items/barracuda.png) | [Barracuda aplikace zabezpečení Control Center](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.barracuda-app-sec-control-center) | Centrálně spravujte webových více Barracuda brány firewall aplikací (WAF). | Barracuda Networks, Inc. |
 | ![Brány barracuda e-mailu zabezpečení](media/azure-stack-marketplace-azure-items/barracuda.png) | [Brány barracuda e-mailu zabezpečení](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.barracuda-email-security-gateway) | E-mailová brána zabezpečení pro ochranu před hrozbami příchozích e-mailu nést. | Barracuda Networks, Inc. |
 | ![Barracuda firewallu webových aplikací (WAF)](media/azure-stack-marketplace-azure-items/barracuda.png) | [Barracuda firewallu webových aplikací (WAF)](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.waf) | Zabezpečení a ochrana před útoky DDoS automatizované & cílené útoky. | Barracuda Networks, Inc. |
+| ![Barracuda CloudGen brány Firewall Control Center](media/azure-stack-marketplace-azure-items/barracuda.png) | [Barracuda CloudGen brány Firewall Control Center](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.barracuda-ng-cc) | Centrálně spravujte stovky brány firewall Barracuda CloudGen bez ohledu na jejich umístění a provedení. | Barracuda Networks, Inc. |
+| ![Barracuda CloudGen brány Firewall pro Azure](media/azure-stack-marketplace-azure-items/barracuda.png) | [Barracuda CloudGen brány Firewall pro Azure](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.barracuda-ng-firewall) | Poskytuje ochranu pomocí brány firewall kde data a aplikace jsou umístěny, nikoli výhradně, kde končí připojení. | Barracuda Networks, Inc. |
 | ![Check Point vSEC Správa zabezpečení](media/azure-stack-marketplace-azure-items/checkpoint.png) | [Check Point vSEC Správa zabezpečení](https://azuremarketplace.microsoft.com/marketplace/apps/checkpoint.vsec) | VSEC Check Point poskytuje pokročilé, propracovat vícevrstvý ohrožení ochrany před únikem informací k ochraně před malwarem a důmyslné hrozby zákazníka prostředky v Azure. **Stažení položek z marketplace bodu vSEC obě kontroly.** | Check Point |
 | ![Chef Automate](media/azure-stack-marketplace-azure-items/chefautomate.png) | [Chef Automate](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) | Vytvořit, nasadit a spravovat pomocí Chef Automate, průběžné platforma pro automatizaci. **Stažení položek z marketplace obou Chef** | Chef softwaru, Inc. |
 | ![CloudLink SecureVM](media/azure-stack-marketplace-azure-items/cloudlink.png) | [CloudLink SecureVM](https://azuremarketplace.microsoft.com/marketplace/apps/cloudlink.cloudlink-securevm)  | Ovládací prvek, monitorovat a šifrování virtuálních počítačů snadno a s jistotou. **Stáhnete všechny položky CloudLink SecureVM.** | Dell EMC |

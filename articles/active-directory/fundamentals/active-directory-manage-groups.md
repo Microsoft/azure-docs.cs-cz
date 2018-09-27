@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/28/2017
 ms.author: lizross
 ms.reviewer: piotrci
-ms.openlocfilehash: 3ec8472285ecc7512e2eedc8b9ac850ef8e9cf87
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 69be2cb8b57b34502d5a5688ac163d7451abe48e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46298016"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223968"
 ---
 # <a name="learn-about-access-management-using-azure-active-directory-groups"></a>Další informace o správě přístupu pomocí skupin Azure Active Directory
 Azure Active Directory (Azure AD) umožňuje spravovat vaše cloudové aplikace, místním aplikacím a prostředkům pomocí skupin vaší organizace. Vaše prostředky můžou být součástí adresáře, jako je například oprávnění ke správě objektů pomocí rolí v adresáři, nebo externí vzhledem k adresáři, jako jsou pro Software jako služba (SaaS) aplikací Azure services, Sharepointové weby a místním prostředkům.
@@ -34,7 +34,7 @@ Existují čtyři způsoby, jak přiřadit přístupová práva uživatelům pro
 
 - **Přímého přiřazení.** Vlastník prostředku přiřadí uživatele přímo k prostředku.
 
-- **Skupina přiřazení.** Vlastník prostředku přiřadí k prostředku, který automaticky poskytuje všechny členy skupiny umožňuje přístup k prostředku skupiny Azure AD. Jak spravuje členství ve skupině vlastník skupiny a vlastníka prostředku, takže buď vlastník, přidat nebo odebrat členy ze skupiny. Další informace o přidávání nebo odebírání členství ve skupinách najdete v tématu [postupy: Přidat nebo odebrat skupiny z jiné skupiny pomocí portálu Azure Active Directory](active-directory-groups-membership-azure-portal.md). 
+- **Skupina přiřazení.** Vlastník prostředku přiřadí k prostředku, který automaticky poskytuje všechny členy skupiny umožňuje přístup k prostředku skupiny Azure AD. Členství ve skupině spravuje vlastník skupiny a vlastníka prostředku, takže buď vlastník, přidat nebo odebrat členy ze skupiny. Další informace o přidávání nebo odebírání členství ve skupinách najdete v tématu [postupy: Přidat nebo odebrat skupiny z jiné skupiny pomocí portálu Azure Active Directory](active-directory-groups-membership-azure-portal.md). 
 
 - **Přiřazování na základě pravidel.** Vlastník prostředku vytvoří skupinu a pravidlo používá k definování, kteří uživatelé jsou přiřazení ke konkrétnímu prostředku. Toto pravidlo je na základě atributů, které jsou přiřazeny k jednotlivým uživatelům. Vlastník prostředku spravuje pravidla určující, které atributy a hodnoty jsou požadovány pro povolení přístupu prostředku. Další informace najdete v tématu [vytvoření dynamické skupiny a zkontrolovat stav](../users-groups-roles/groups-create-rule.md).
 
