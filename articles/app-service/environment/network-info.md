@@ -1,5 +1,5 @@
 ---
-title: Důležité informace o sítích pomocí služby Azure App Service environment
+title: Důležité informace o sítích pomocí služby Azure App Service Environment
 description: Vysvětluje síťový provoz služby ASE a jak nastavit skupiny zabezpečení sítě a trasy definované uživatelem s vaší služby ASE
 services: app-service
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/29/2018
+ms.date: 08/29/2018
 ms.author: ccompy
-ms.openlocfilehash: ef2288e2f756db6529f1ec5f7b3a49067b2998aa
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: b9897fd0030c2b6efed0fefc47dd6720a61978cd
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35643251"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47165138"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Důležité informace o sítích pro službu App Service Environment #
 
@@ -67,6 +67,8 @@ Když škálujete směrem nahoru nebo dolů, se přidají nové role odpovídaj�
 
 ## <a name="ase-dependencies"></a>Závislostí služby ASE ##
 
+### <a name="ase-inbound-dependencies"></a>Služba ASE příchozí závislosti ###
+
 Služba ASE příchozí přístup, který se závislosti:
 
 | Použití | Od | Akce |
@@ -84,26 +86,23 @@ Minimální porty, které musí být otevřené pro komunikaci mezi Azure load b
 
 Pokud používáte aplikace přiřazené IP adresy, budete muset povolit přenosy z IP adres přiřazených k vašim aplikacím k podsíti služby ASE.
 
-Pro odchozí přístup k službě ASE závisí na více externích systémů. Tyto systémové závislosti jsou definovány s názvy DNS a nejsou mapovány na pevnou sadu IP adres. Služba ASE vyžaduje, aby odchozí přístup z podsítě služby ASE pro všechny externí IP adresy na různých portů. Služba ASE má následující odchozí závislosti:
+Provoz TCP, který je k dispozici ve na portech 454 a 455 musí vracet ze stejné virtuální IP adresy nebo je nutné kvůli problému asymetrického směrování. 
 
-| Použití | Od | Akce |
-|-----|------|----|
-| Azure Storage | Podsíti služby ASE | Table.Core.Windows.NET blob.core.windows.net, queue.core.windows.net, file.core.windows.net: 80, 443, 445 (445 je potřeba jenom pro ASEv1.) |
-| Azure SQL Database | Podsíti služby ASE | Database.Windows.NET: 1433 |
-| Správa Azure | Podsíti služby ASE | Management.Core.Windows.NET, management.azure.com, admin.core.windows.net: 443 |
-| Ověření certifikátů SSL |  Podsíti služby ASE            |  OCSP.msocsp.com, mscrl.microsoft.com, crl.microsoft.com: 443 |
-| Azure Active Directory        | Podsíti služby ASE            |  Login.Windows.NET: 443 |
-| Správa služby App Service        | Podsíti služby ASE            |  GR-prod -<regionspecific>. cloudapp.net a az prod.metrics.nsatc .net: 443 |
-| Azure DNS                     | Podsíti služby ASE            |  Internet: 53 |
-| Interní komunikace služby ASE    | Podsíti služby ASE: všechny porty |  Podsíti služby ASE: všechny porty |
+### <a name="ase-outbound-dependencies"></a>Odchozí závislostí služby ASE ###
 
-Pokud službu ASE ztratí přístup do těchto závislostí, přestane fungovat. Pokud k tomu dojde dostatečně dlouho, služba ASE je pozastaveno.
+Pro odchozí přístup k službě ASE závisí na více externích systémů. Mnohé z těchto systémové závislosti jsou definovány s názvy DNS a nejsou mapovány na pevnou sadu IP adres. Služba ASE vyžaduje, aby odchozí přístup z podsítě služby ASE pro všechny externí IP adresy na různých portů. 
+
+Úplný seznam odchozí závislosti jsou uvedené v tomto dokumentu, který popisuje [omezovat se jenom odchozí provoz služby App Service Environment](./firewall-integration.md). Pokud službu ASE ztratí přístup k jeho závislostí, přestane fungovat. Pokud k tomu dojde dostatečně dlouho, služba ASE je pozastaveno. 
 
 ### <a name="customer-dns"></a>Zákazník DNS ###
 
 Pokud virtuální síť nakonfigurována se serverem DNS definované zákazníkem, úlohy klientů použít. Služba ASE se stále potřebuje ke komunikaci s Azure DNS pro účely správy. 
 
 Pokud zákazník DNS na druhé straně VPN nakonfigurované virtuální sítě, DNS server musí být dostupný z podsítě, která obsahuje službu ASE.
+
+Pro testování řešení z vaší webové aplikace můžete použít příkaz konzoly *nameresolver*. Přejděte na okno ladění na vašem webu scm pro vaši aplikaci nebo přejít do aplikace na portálu a vyberte konzoly. Z příkazového řádku prostředí můžete vydat příkaz *nameresolver* spolu s adresu, kterou chcete vyhledat. Které získáte zpět výsledek je stejný jako co by vaše aplikace získá při nastavování stejné vyhledávání. Pokud používáte nslookup provedete vyhledávání pomocí služby Azure DNS místo toho.
+
+Pokud změníte nastavení serveru DNS virtuální sítě, vaše služba ASE je v, musíte restartovat službu ASE. Abyste se vyhnuli restartování vaší služby ASE, důrazně doporučujeme konfigurovat nastavení DNS pro vaši virtuální síť, před vytvořením služby ASE.  
 
 <a name="portaldep"></a>
 
@@ -205,9 +204,6 @@ Ruční vytvoření tras, postupujte podle těchto kroků:
 ## <a name="service-endpoints"></a>Koncové body služeb ##
 
 Koncové body služby umožňují omezit přístup k víceklientským službám na sadu virtuálních sítí a podsítí Azure. Další informace o koncových bodech služby najdete v dokumentaci pro [koncové body služby virtuální sítě][serviceendpoints]. 
-
-   > [!NOTE]
-   > Koncové body služby s SQL nefungují se službou ASE v oblastech US Government. Tyto informace jsou platné pouze v oblastech Azure.
 
 Když pro prostředek povolíte koncové body služby, vytvoří se trasy s vyšší prioritou než všechny ostatní trasy. Pokud použijete koncové body služby se službou ASE s vynuceným tunelováním, nebude se vynucovat tunelování provozu správy SQL Azure a služby Azure Storage. 
 

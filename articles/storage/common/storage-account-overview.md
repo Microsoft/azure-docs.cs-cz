@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: b942b85c954bb765833426f3f9a010a66f016a90
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7b2d51f356538724d567654c0de3decbf19c838c
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972313"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222093"
 ---
 # <a name="azure-storage-account-overview"></a>Přehled účtu Azure storage
 
@@ -57,7 +57,7 @@ Následující tabulka popisuje typy účtů úložiště a jejich funkce:
 
 Microsoft doporučuje používat účet úložiště pro obecné účely verze 2 pro většinu scénářů. Pro obecné účely v1 nebo účtu služby Blob storage můžete snadno upgradovat na účet pro obecné účely v2 se žádný výpadek ani aplikace přepisů a bez nutnosti kopírovat data. Další informace o upgradu na účet pro obecné účely v2 najdete v tématu [upgradovat na účet úložiště pro obecné účely v2](storage-account-upgrade.md). 
 
-Účty úložiště pro obecné účely verze 2 nabízí několik úrovní přístupu pro ukládání dat na základě vaší způsobů využití. Další informace najdete v tématu [přístup úrovně pro data objektů blob](#access-tiers-for-blob-data).
+Účty úložiště pro obecné účely verze 2 nabízí několik úrovní přístupu pro ukládání dat na základě vaší způsobů využití. Další informace najdete v tématu [data v objektech blob úrovně přístupu pro blok](#access-tiers-for-block-blob-data).
 
 ### <a name="general-purpose-v1-accounts"></a>Účty pro obecné účely verze 1
 
@@ -81,7 +81,7 @@ Ve většině případů se doporučuje účty pro obecné účely v2, účty pr
 
 Účet Blob storage je specializovaný účet úložiště pro ukládání nestrukturovaných dat objektů jako objekty BLOB bloku. Účty BLOB storage poskytuje stejnou odolnost, dostupnost, škálovatelnost a funkce výkonu, které jsou k dispozici s účty úložiště pro obecné účely v2. Účty úložiště BLOB podporují ukládání objektů BLOB bloku a doplňovací objekty BLOB, ale ne objekty BLOB stránky.
 
-Účty BLOB storage nabízí několik úrovní přístupu pro ukládání dat na základě vaší způsobů využití. Další informace najdete v tématu [přístup úrovně pro data objektů blob](#access-tiers-for-blob-data).
+Účty BLOB storage nabízí několik úrovní přístupu pro ukládání dat na základě vaší způsobů využití. Další informace najdete v tématu [data v objektech blob úrovně přístupu pro blok](#access-tiers-for-block-blob-data).
 
 ## <a name="naming-storage-accounts"></a>Pojmenování účtů úložiště
 

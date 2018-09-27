@@ -1,6 +1,6 @@
 ---
-title: Průběžná integrace a nasazování ve službě Azure Data Factory | Dokumentace Microsoftu
-description: Další informace o použití průběžnou integraci a nasazování kanálů Data Factory přesunout z jednoho prostředí (vývojové, testovací, produkční) do jiného.
+title: Průběžná integrace a doručování ve službě Azure Data Factory | Dokumentace Microsoftu
+description: Další informace o použití průběžnou integraci a doručování kanálů Data Factory přesunout z jednoho prostředí (vývojové, testovací, produkční) do jiného.
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -10,20 +10,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/18/2018
+ms.date: 09/26/2018
 ms.author: douglasl
-ms.openlocfilehash: 94c4a3fbd1c854401c42af5787c22db0e5dd6083
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 587c4c0804de809431bf9e731e7533f0d75770d9
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364973"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392611"
 ---
-# <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Průběžná integrace a nasazování ve službě Azure Data Factory
+# <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Průběžná integrace a doručování (CI/CD) v Azure Data Factory
 
-Průběžná integrace spočívá v testování každé změny udělat, aby vašeho základu kódu automaticky a co nejdříve. Průběžné nasazování se řídí testování, který se stane během průběžnou integraci a nasdílí změny do pracovní nebo produkční systém.
+Průběžná integrace spočívá v testování každé změny udělat, aby vašeho základu kódu automaticky a co nejdříve. Průběžné doručování se řídí testování, který se stane během průběžnou integraci a nasdílí změny do pracovní nebo produkční systém.
 
-Pro službu Azure Data Factory průběžné integrace a nasazování znamená přesun kanálů Data Factory z jednoho prostředí (vývojové, testovací, produkční) do jiného. Průběžná integrace a nasazení provedete můžete integrace uživatelské rozhraní služby Data Factory pomocí šablony Azure Resource Manageru. Uživatelské rozhraní služby Data Factory můžete vygenerovat šablonu Resource Manageru, když vyberete **šablony ARM** možnosti. Když vyberete **šablony ARM exportovat**, portálu vygeneruje šablony Resource Manageru pro vytváření dat a konfigurační soubor, který zahrnuje všechny řetězce připojení a další parametry. Pak budete muset vytvořit jeden konfigurační soubor pro každé prostředí (vývojové, testovací, produkčním prostředí). Hlavní soubor šablony Resource Manageru zůstává stejná pro všechna prostředí.
+Pro službu Azure Data Factory průběžná integrace a doručování znamená přesun kanálů Data Factory z jednoho prostředí (vývojové, testovací, produkční) do jiného. Průběžná integrace a doručování proveďte můžete integrace uživatelské rozhraní služby Data Factory pomocí šablony Azure Resource Manageru. Uživatelské rozhraní služby Data Factory můžete vygenerovat šablonu Resource Manageru, když vyberete **šablony ARM** možnosti. Když vyberete **šablony ARM exportovat**, portálu vygeneruje šablony Resource Manageru pro vytváření dat a konfigurační soubor, který zahrnuje všechny řetězce připojení a další parametry. Pak budete muset vytvořit jeden konfigurační soubor pro každé prostředí (vývojové, testovací, produkčním prostředí). Hlavní soubor šablony Resource Manageru zůstává stejná pro všechna prostředí.
 
 Pro zavedení devět po minutách a ukázku této funkce z následujícího videa:
 
@@ -53,9 +53,9 @@ Vyberte **načíst soubor** vyberte vyexportované šablony Resource Manageru a 
 ![Otevřete zobrazení kódu zobrazíte připojovací řetězec](media/continuous-integration-deployment/continuous-integration-codeview.png)
 
 ## <a name="continuous-integration-lifecycle"></a>Životní cyklus kontinuální integrace
-Tady je celý životní cyklus pro průběžnou integraci a nasazení, které můžete použít po povolení integrace Azure DevOps služby GIT v Uživatelském rozhraní služby Data Factory:
+Tady je celý životní cyklus pro průběžnou integraci a doručování, které můžete použít po povolení integrace Azure úložiště Git v Uživatelském rozhraní služby Data Factory:
 
-1.  Nastavení datové továrny vývoj pomocí služeb Azure DevOps, ve kterém všichni vývojáři mohou vytvářet prostředky Data Factory jako kanály, datové sady a tak dále.
+1.  Nastavte si vývojové datové továrny pomocí úložiště Azure, ve kterém všichni vývojáři mohou vytvářet prostředky Data Factory jako kanály, datové sady a tak dále.
 
 1.  Vývojáři pak lze změnit prostředky, například kanály. Jak získávají své změny, můžete vybrat **ladění** na tom, jak se kanál poběží s nejnovější změny.
 
@@ -67,23 +67,23 @@ Tady je celý životní cyklus pro průběžnou integraci a nasazení, které m�
 
 1.  Exportovaná šablona Resource Manageru můžete nasadit s různými soubory parametrů pro objekt pro vytváření testovací a produkční objekt pro vytváření.
 
-## <a name="automate-continuous-integration-with-azure-devops-services-releases"></a>Automatizovat průběžné integrace s verzemi služby Azure DevOps
+## <a name="automate-continuous-integration-with-azure-pipelines-releases"></a>Automatizovat průběžné integrace s Azure kanály vydané verze
 
-Tady je postup nastavení o verzi služby Azure DevOps, abyste mohli automatizovat nasazení služby data factory do různých prostředí.
+Tady je postup nastavení vydání verze Azure kanály, abyste mohli automatizovat nasazení služby data factory do různých prostředí.
 
-![Diagram průběžné integrace se službami Azure DevOps](media/continuous-integration-deployment/continuous-integration-image12.png)
+![Diagram průběžnou integraci s kanály Azure](media/continuous-integration-deployment/continuous-integration-image12.png)
 
 ### <a name="requirements"></a>Požadavky
 
--   Předplatné Azure propojené s Team Foundation Server nebo služby Azure DevOps pomocí [ *koncový bod služby Azure Resource Manageru*](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).
+-   Předplatné Azure propojené s Team Foundation Server nebo úložiště Azure pomocí [ *koncový bod služby Azure Resource Manageru*](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).
 
--   Objekt pro vytváření dat s Azure DevOps služby Git nakonfigurované.
+-   Objekt pro vytváření dat s nakonfigurovanou integraci s Azure úložiště Git.
 
 -   [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) obsahující tajné klíče.
 
-### <a name="set-up-an-azure-devops-services-release"></a>Nastavit o verzi služby Azure DevOps
+### <a name="set-up-an-azure-pipelines-release"></a>Nastavte si o Azure kanály verzi
 
-1.  Přejděte na stránku služby Azure DevOps ve stejném projektu, jako je nakonfigurovaný pomocí služby Data Factory.
+1.  Přejděte na stránku úložiště Azure ve stejném projektu, jako je nakonfigurovaný pomocí služby Data Factory.
 
 1.  Klikněte na tlačítko v horní nabídce **kanály Azure** &gt; **verze** &gt; **definice vydané verze vytvořit**.
 
@@ -121,7 +121,7 @@ Tady je postup nastavení o verzi služby Azure DevOps, abyste mohli automatizov
 
 ### <a name="optional---get-the-secrets-from-azure-key-vault"></a>Volitelné – získání tajné klíče z Azure Key Vault
 
-Pokud máte tajných kódů a zajistěte tak předání šablony Azure Resource Manageru, doporučujeme používat Azure Key Vault s verzí služby Azure DevOps.
+Pokud máte tajných kódů a zajistěte tak předání šablony Azure Resource Manageru, doporučujeme používat Azure Key Vault s verzí Azure kanály.
 
 Existují dva způsoby, jak zpracovat tajné klíče:
 
@@ -156,13 +156,13 @@ Existují dva způsoby, jak zpracovat tajné klíče:
 
     ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
-### <a name="grant-permissions-to-the-azure-devops-services-agent"></a>Udělení oprávnění pro agenta služeb Azure DevOps
-Úloha služby Azure Key Vault může selhat při prvním s chybou přístup byl odepřen. Stažení protokolů pro vydání a vyhledejte `.ps1` soubor pomocí příkazu udělit oprávnění pro agenta služeb Azure DevOps. Příkaz můžete spustit přímo, nebo můžete zkopírovat ID objektu zabezpečení ze souboru a ručně přidat zásady přístupu na webu Azure Portal. (*Získat* a *seznamu* je minimálním předpokladem).
+### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Udělit oprávnění k agentovi Azure kanály
+Úloha služby Azure Key Vault může selhat při prvním s chybou přístup byl odepřen. Stažení protokolů pro vydání a vyhledejte `.ps1` soubor pomocí příkazu udělit oprávnění k agentovi Azure kanály. Příkaz můžete spustit přímo, nebo můžete zkopírovat ID objektu zabezpečení ze souboru a ručně přidat zásady přístupu na webu Azure Portal. (*Získat* a *seznamu* je minimálním předpokladem).
 
 ### <a name="update-active-triggers"></a>Aktualizace active aktivační události
 Nasazení může selhat, pokud se pokusíte aktualizovat active aktivační události. K aktualizaci aktivního aktivačních událostí, budete muset ručně zastavit a spustit po nasazení. K tomuto účelu můžete přidat úkol prostředí Azure Powershell, jak je znázorněno v následujícím příkladu:
 
-1.  Na kartě úlohy verze služby Azure DevOps, vyhledejte **prostředí Azure Powershell** a přidejte ji.
+1.  Na kartě úlohy vydané verze, vyhledejte **prostředí Azure Powershell** a přidejte ji.
 
 1.  Zvolte **Azure Resource Manageru** jako připojení zadejte a vyberte své předplatné.
 
@@ -180,7 +180,7 @@ Můžete podobným způsobem a použijte podobně jako kód (s `Start-AzureRmDat
 
 ## <a name="sample-deployment-template"></a>Ukázková šablona nasazení
 
-Tady je ukázka šablony nasazení, který můžete naimportovat do služby Azure DevOps.
+Tady je ukázka šablony nasazení, který můžete importovat v kanálech Azure.
 
 ```json
 {

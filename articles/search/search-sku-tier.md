@@ -9,18 +9,18 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: heidist
-ms.openlocfilehash: d86fc1930f1d7b29dc3ce57e9b4d28e053bb44a0
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: ddb60631f54e1b635ae5ec036b7d35d47ca0a519
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181885"
+ms.locfileid: "47221754"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Zvolte cenovou úroveň pro službu Azure Search
 
-Ve službě Azure Search [je služba zřízena za](search-create-service-portal.md) na pevnou cenové úrovně nebo SKU: **Free**, **základní**, nebo **standardní**, kde  **Standardní** je k dispozici v několika konfiguracích a kapacity. Většina zákazníků začíná **Free** vrstvy pro vyhodnocení a potom jim dodejte **standardní** pro vývoj. Můžete na dokončení všech rychlých startů a kurzů **Free** úrovně, včetně těch, které pro náročné kognitivního vyhledávání. 
+Ve službě Azure Search [je služba zřízena za](search-create-service-portal.md) na cenové úrovně nebo SKU, který je pevně po dobu životnosti služby. Dostupné úrovně **Free**, **základní**, nebo **standardní**, kde **standardní** je k dispozici v několika konfiguracích a kapacity. Většina zákazníků začíná **Free** vrstvy pro vyhodnocení a potom jim dodejte **standardní** vývojovou a provozní nasazení. Můžete na dokončení všech rychlých startů a kurzů **Free** úrovně, včetně těch, které pro náročné kognitivního vyhledávání. 
 
-Úrovně určit kapacitu, není funkce bez rozdílů mezi:
+Úrovně určit kapacitu, není funkce a jsou rozlišené pomocí:
 
 + Počet indexů, které lze vytvořit
 + Velikost a rychlost oddílů (fyzické úložiště)
@@ -28,14 +28,10 @@ Ve službě Azure Search [je služba zřízena za](search-create-service-portal.
 Přestože všechny úrovně, včetně **Free** vrstvy, obecně nabízí paritu funkcí, větší úlohy může diktovat požadavky pro vyšší úrovně. Například [kognitivního vyhledávání](cognitive-search-concept-intro.md) indexování má dlouhotrvající dovednosti tento časový limit na bezplatné služby není-li být velmi malé datové sady se stane s.
 
 > [!NOTE] 
-> Parita funkcí existuje v rámci úrovně s výjimkou [indexery](search-indexer-overview.md), která není k dispozici na S3HD.
+> Výjimka, která má paritu funkcí je [indexery](search-indexer-overview.md), které nejsou k dispozici na S3HD.
 >
 
-V rámci úrovně, je možné [upravit repliky a oddílu prostředků](search-capacity-planning.md) pro optimalizaci výkonu. Vzhledem k tomu může začínat dva nebo tři jednotlivých, může dočasně zvýšit úroveň prostředku pro náročné úlohy indexování. Schopnost optimalizovat úrovně prostředků v rámci úrovně zvyšuje flexibilitu, ale také mírně komplikuje analýzy. Budete muset experimentovat, uvidíte, jestli nižší úrovně s vyšší prostředky/replik nabízí lepší výkon než vyšší úroveň s nižší prostředky a hodnotu. Další informace o kdy a proč by upravit kapacitu, najdete v článku [aspekty týkající se výkonu a optimalizace](search-performance-optimization.md).
-
-> [!Important] 
-> I když odhad budoucích potřeb pro indexy a úložiště může být třeba izolovat, je vhodné to. Pokud kapacita na úrovni se ukázalo příliš nízké, budete muset zřizovat nové služby vyšší úrovně a poté [znovu načíst indexů](search-howto-reindex.md). Neexistuje žádné místní upgrade stejné služby z jedné skladové položky do jiného.
->
+V rámci úrovně, je možné [upravit repliky a oddílu prostředků](search-capacity-planning.md) pro optimalizaci výkonu. Vzhledem k tomu může začínat dva nebo tři jednotlivých, může dočasně zvýšit váš výpočetní výkon pro náročné úlohy indexování. Schopnost optimalizovat úrovně prostředků v rámci úrovně zvyšuje flexibilitu, ale také mírně komplikuje analýzy. Budete muset experimentovat, uvidíte, jestli nižší úrovně s vyšší prostředky/replik nabízí lepší výkon než vyšší úroveň s nižší prostředky a hodnotu. Další informace o kdy a proč by upravit kapacitu, najdete v článku [aspekty týkající se výkonu a optimalizace](search-performance-optimization.md).
 
 <!---
 The purpose of this article is to help you choose a tier. It supplements the [pricing page](https://azure.microsoft.com/pricing/details/search/) and [Service Limits](search-limits-quotas-capacity.md) page with a digest of billing concepts and consumption patterns associated with various tiers. It also recommends an iterative approach for understanding which tier best meets your needs. 
@@ -53,15 +49,15 @@ Fakturační sazba je **po hodinách za SU**, kde každá úroveň s postupně v
 
 I když každá úroveň nabízí postupně vyšší kapacitu, můžete zahrnout *část* online, celkové kapacity uchovávající zbývající ve fondu. Z hlediska fakturace, je počet oddílů a replik uvést online, vypočítané pomocí vzorce SU, která určuje, co skutečně platíte.
 
-### <a name="tips-for-lowering-the-bill"></a>Tipy pro snížení faktury
+### <a name="tips-for-reducing-costs"></a>Tipy pro snížení nákladů
 
-Nelze vypnout službu na nižší faktury. Vyhrazené prostředky oddílů a replik jsou provozní 24-7, uchovávat v datovém typu rezerva pro vaše výhradní použití po dobu životnosti vaší služby. Jediný způsob, jak snížit účet je pro snížení repliky a oddíly, které na nejnižší úrovni, která stále poskytuje přijatelný výkon. 
+Nelze vypnout službu na nižší faktury. Vyhrazené prostředky oddílů a replik jsou provozní 24 7 přidělené pro vaše výhradní použití po dobu životnosti vaší služby. Jediný způsob, jak snížit účet se snížením repliky a oddíly, které na nízké úrovni, která stále poskytuje přijatelný výkon a [dodržování předpisů SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/). 
 
-Další úroveň je výběr úrovně s nižší hodinové sazby. S1 hodinové sazby jsou nižší než S2 nebo S3 hodinové sazby. Můžete zřídit službu na konci nižší vaše projekce a pak pokud velký růst, vytvořte druhý větší služby vrstvený, opětovné sestavení indexů na této druhé službě a pak odstranit první z nich.
+Pro snížení nákladů na jinou úroveň je výběr úrovně s nižší hodinové sazby. S1 hodinové sazby jsou nižší než S2 nebo S3. Může si zřídíte službu zaměřené na dolní hranice vaší zatížení projekce. Pokud jste velký růst službu, vytvořte druhý větší vrstvené službu, opětovné sestavení indexů na druhý služby a odstraňte první z nich. Pro na místních serverech je běžné "koupit" tak, aby bylo možné zpracovat očekávané růstu. S cloudovou službou, můžete pokračovat úspory nákladů, ale většina agresivní, vědomím, že budete moct přepnout kdykoli službě vyšší vrstvenou pokud tu není dostatečná.
 
 ### <a name="capacity-drill-down"></a>Kapacita procházení
 
-Kapacita má strukturu *repliky* a *oddíly*. 
+Ve službě Azure Search má strukturu kapacity *repliky* a *oddíly*. 
 
 + Repliky jsou instancemi služby vyhledávání, ve kterém každá replika hostuje jednu kopii tohoto indexu s vyrovnáváním zatížení. Služba s 6 replik má například 6 kopií každý index načíst služby. 
 
@@ -105,7 +101,11 @@ Kapacitu a náklady na provoz služby přejděte ručně v rukou. Úrovně uplat
 
 Obchodní požadavky stanovují obvykle počet indexů, které budete potřebovat. Například globální index pro velké úložiště dokumentů nebo možná více indexů, podle oblasti, aplikace nebo volné místo na firmy.
 
-Chcete-li určit velikost indexu, budete muset [vytvořit takovou](search-create-index-portal.md). Struktura dat ve službě Azure Search je primárně [obrácený index](https://en.wikipedia.org/wiki/Inverted_index), který má jiné vlastnosti než zdrojová data. Pro obrácenou index velikost a složitost jsou určeny obsah, nemusí nutně jít množství dat, která kanál do něj. Zdroj velkých objemů dat s masivní redundance by mohlo způsobit index na menší než menší datové sady s velmi proměnlivá obsahem.  V důsledku toho je zřídka možné odvodit velikost indexu na základě velikosti původní datové sady.
+Chcete-li určit velikost indexu, budete muset [vytvořit takovou](search-create-index-portal.md). Struktura dat ve službě Azure Search je primárně [obrácený index](https://en.wikipedia.org/wiki/Inverted_index), který má jiné vlastnosti než zdrojová data. Pro obrácenou index velikost a složitost jsou určeny obsah, nemusí nutně jít množství dat, která kanál do něj. Zdroj velkých objemů dat s masivní redundance by mohlo způsobit index na menší než menší datové sady s velmi proměnlivá obsahem. V důsledku toho je zřídka možné odvodit velikost indexu na základě velikosti původní datové sady.
+
+> [!NOTE] 
+> I když odhad budoucích potřeb pro indexy a úložiště může být třeba izolovat, je vhodné to. Pokud kapacita na úrovni se ukázalo příliš nízké, budete muset zřizovat nové služby vyšší úrovně a poté [znovu načíst indexů](search-howto-reindex.md). Neexistuje žádné místní upgrade stejné služby z jedné skladové položky do jiného.
+>
 
 ### <a name="step-1-develop-rough-estimates-using-the-free-tier"></a>Krok 1: Vývoj hrubé odhady pomocí na úrovni Free
 

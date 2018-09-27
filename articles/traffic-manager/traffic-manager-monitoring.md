@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/22/2017
 ms.author: kumud
-ms.openlocfilehash: c28b0ccfb565cb6bd4809a321d5e57f04475dceb
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 64f3595206c580d0d177622d23aa49753100d3c0
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123883"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221090"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Monitorování koncových bodů Traffic Manageru
 
@@ -32,7 +32,7 @@ Pokud chcete nakonfigurovat monitorování koncových bodů, je nutné zadat ná
 * **Protokol**. Zvolte možnost protokolu HTTP, HTTPS nebo TCP jako protokol pro Traffic Manager používá při zjišťování váš koncový bod zkontrolovat její stav. Monitorování protokolu HTTPS neověřuje, že zda váš certifikát SSL není platný – pouze zkontroluje, že certifikát je k dispozici.
 * **Port**. Zvolte port používaný pro daný požadavek.
 * **Cesta**. Toto nastavení konfigurace je platná pouze pro protokoly HTTP a HTTPS, u které určení cesty je požadované nastavení. Poskytuje toto nastavení pro protokol TCP monitorování protokolu dojde k chybě. Pro protokol HTTP a HTTPS zadejte relativní cestu a název webové stránky nebo soubor, který přistupuje k monitorování. Lomítkem (/) je platná položka pro relativní cestu. Tato hodnota znamená, že se soubor nachází v kořenovém adresáři (výchozí).
-* **Nastavení vlastních hlaviček** tato nastavení vám pomůžou přidat přidejte konkrétní hlavičky protokolu HTTP pro stav kontroluje, že Traffic Manager odešle do koncových bodů v rámci profilu. Vlastní hlavičky se dá nastavit na úrovni profilu použitelný pro všechny koncové body v profilu and / or úrovni koncového bodu lze použít pouze na tento koncový bod. Můžete použít vlastní záhlaví pro kontroly stavu koncových bodů v prostředí s více tenanty správně směroval do své cíle zadáním hlavičku hostitele s. Toto nastavení lze také použít přidáním jedinečný hlavičky, které lze použít k identifikaci Traffic Manageru pochází požadavky HTTP (S) a zpracuje je jinak.
+* **Nastavení vlastních hlaviček** tuto konfiguraci nastavení konkrétní hlavičky protokolu HTTP umožňuje přidat stav kontroluje, že Traffic Manager odešle do koncových bodů v rámci profilu. Vlastní hlavičky se dá nastavit na úrovni profilu použitelný pro všechny koncové body v profilu and / or úrovni koncového bodu lze použít pouze na tento koncový bod. Můžete použít vlastní záhlaví pro kontroly stavu koncových bodů v prostředí s více tenanty správně směroval do své cíle zadáním hlavičku hostitele s. Toto nastavení lze také použít přidáním jedinečný hlavičky, které lze použít k identifikaci Traffic Manageru pochází požadavky HTTP (S) a zpracuje je jinak.
 * **Byl očekáván stavový kód rozsahy** toto nastavení umožňuje určit více rozsahů úspěchu kód ve formátu 200 299, 301 301. Pokud tyto stavové kódy jsou přijata jako odpověď od koncového bodu, když je zahájeno kontrolou stavu, Traffic Manager označí těchto koncových bodů, jako v pořádku. Můžete zadat maximálně 8 rozsah kódu stavu. Toto nastavení platí jenom pro protokol HTTP a HTTPS a pro všechny koncové body. Toto nastavení je na úrovni profilu Traffic Manageru a ve výchozím nastavení je hodnota 200 definována jako stavový kód úspěchu.
 * **Interval testování**. Tato hodnota určuje, jak často se kontroluje jeho stav od agenta testování Traffic Manager koncový bod. Můžete zadat dvě hodnoty tady: 30 sekund (běžné zjišťování) a 10 sekund (rychlé zjišťování). Pokud se nezadají žádné hodnoty, profil, který nastaví na výchozí hodnota je 30 sekund. Přejděte [ceny za Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager) stránku a další informace o cenách rychlé zjišťování.
 * **Tolerovaný počet selhání**. Tato hodnota určuje, kolik chyb agenta testování Traffic Manageru toleruje před označením tohoto koncového bodu jako není v pořádku. Jeho hodnota musí být mezi 0 a 9 rozsahu. Hodnota 0 znamená, že tento koncový bod se označí jako špatný může způsobit selhání jednoho monitorování. Pokud není zadána žádná hodnota, použije výchozí hodnotu 3.

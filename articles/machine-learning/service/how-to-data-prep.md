@@ -10,22 +10,26 @@ author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: c357026e20ff402dd7236bd8db7fe2abe488bc39
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 673b8ddf3ed07507cbce4b54e9b8a488cb3ac689
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954241"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166601"
 ---
-# <a name="prepare-data-with-the-azure-machine-learning-data-prep-sdk-for-python"></a>Příprava dat pomocí Azure Machine Learning Data Prep SDK pro Python
+# <a name="prepare-data-for-modeling-with-azure-machine-learning"></a>Příprava dat pro modelování s Azure Machine Learning
  
-Příprava dat je důležitou součástí pracovního postupu machine learning. Modely budou přesné a efektivní, pokud mají přístup k vyčištění dat ve formátu, který usnadňuje využívání. Můžete použít [sady SDK služby Azure Machine Learning Data Prep](https://docs.microsoft.com/python/api/overview/azure/dataprep?view=azure-dataprep-py) k načtení dat z různých formátů, aby byla lépe použitelná transformaci a zápisu dat do umístění pro vlastní modely a přístup k. 
+Příprava dat je důležitou součástí pracovního postupu machine learning. Modely budou přesné a efektivní, pokud mají přístup k vyčištění dat ve formátu, který usnadňuje využívání. 
 
+Můžete připravit vaše data v Pythonu pomocí [sady SDK služby Azure Machine Learning Data Prep](https://docs.microsoft.com/python/api/overview/azure/dataprep?view=azure-dataprep-py). 
 
-## <a name="steps-for-data-preparation-with-azure-machine-learning"></a>Kroky pro přípravu dat pomocí služby Azure Machine Learning 
-1. [Načtení dat](how-to-load-data.md )
-2. [Transformace dat](how-to-transform-data.md )
-3. [Zápis dat](how-to-write-data.md )
+## <a name="data-preparation-pipeline"></a>Kanál pro přípravu dat
+
+Přípravné kroky hlavní data jsou:
+
+1. [Načtení dat](how-to-load-data.md), což může být v různých formátech
+2. [Transformace](how-to-transform-data.md) ho do použitelnější struktury
+3. [Zápis](how-to-write-data.md) tato data do umístění dostupného vašich modelů
 
 ![Proces přípravy dat.](./media/concept-data-preparation/data-prep-process.png)
 

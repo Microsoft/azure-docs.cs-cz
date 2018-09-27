@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: c16d584f17aa2c209c9c0ec94d35f6fe78ba1907
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: b8a6d58ad79b591548542d69e69b71ec61af79af
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494073"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220121"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Nasazení prostředků pomocí šablon Resource Manageru a portálu Azure Portal
 
@@ -137,4 +137,4 @@ Na portálu můžete uložit šablonu ke svému účtu Azure a později znovu na
 * Protokoly auditu najdete v tématu [Audit operací pomocí Resource Manageru](resource-group-audit.md).
 * Řešení chyb nasazení, najdete v článku [zobrazení operací nasazení](resource-manager-deployment-operations.md).
 * Načíst šablonu z nasazení nebo skupinu prostředků, najdete v článku [šablony exportovat Azure Resource Manageru z existujících prostředků](resource-manager-export-template.md).
-* Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](/azure/architecture/cloud-adoption-guide/subscription-governance).
+* Bezpečně zavedení služby napříč několika oblastmi, najdete v článku [Azure Deployment Manager](deployment-manager-overview.md).

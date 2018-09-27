@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: rajraj
-ms.openlocfilehash: 4d3af3b7c7084c3c410bc936356d9caff643b805
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 1ca0ec7185707d9b9f9712c2ace8dacb361f7b5b
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182123"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394365"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatické upgrady bitové kopie operačního systému sady škálování virtuálních počítačů Azure
 
@@ -38,17 +38,15 @@ Automatický upgrade operačního systému má následující vlastnosti:
 
 ## <a name="how-does-automatic-os-image-upgrade-work"></a>Jak funguje automatické operačního systému image upgradu práce?
 
-Upgrade funguje tak, že nahradíte novým vytvořené pomocí nejnovější verze image disku s operačním systémem virtuálního počítače. Žádné nakonfigurované rozšíření a vlastních dat skripty se spouštějí při trvalých dat, které disky jsou zachovány. Aby se minimalizovaly výpadky aplikací, upgrady probíhat v dávkách počítačů s více než 20 % škálovací sady, upgrade kdykoli. Máte také možnost integrovat sondu stavu aplikací Azure Load Balancer. To je důrazně doporučujeme začlenit prezenčního signálu aplikaci a ověřit upgrade byl úspěšný pro jednotlivé dávky v procesu upgradu.
+Upgrade funguje tak, že nahradíte novým vytvořené pomocí nejnovější verze image disku s operačním systémem virtuálního počítače. Žádné nakonfigurované rozšíření a vlastních dat skripty se spouštějí při trvalých dat, které disky jsou zachovány. Aby se minimalizovaly výpadky aplikací, upgrady probíhat v dávkách počítačů s více než 20 % škálovací sady, upgrade kdykoli. Máte také možnost integrovat sondu stavu aplikací Azure Load Balancer. Důrazně doporučujeme začlenit prezenčního signálu aplikaci a ověřit upgrade byl úspěšný pro jednotlivé dávky v procesu upgradu. Postup spuštění je: 
 
-Jedná se o provádění kroky: 
-
-1. Před zahájením procesu upgradu, ujistěte se, že více než 20 % instancí nejsou v pořádku. 
+1. Před zahájením procesu upgradu, orchestrator zajistí, že více než 20 % instancí nejsou v pořádku. 
 2. Identifikujte batch instancí virtuálních počítačů, které chcete provést upgrade, službou batch s maximálně 20 % počet celkový počet instancí.
 3. Aktualizace image operačního systému tuto dávku instancí virtuálních počítačů.
-4. Pokud zákazník má nakonfigurovanou sondy stavu aplikace, upgrade čeká, až 5 minut, než se testy se obnoví dobrý stav, bude okamžitě pokračovat na další dávku. 
+4. Pokud zákazník má nakonfigurovanou sond stavu aplikace, upgrade čeká, až 5 minut, než se testy se obnoví dobrý stav, než budete pokračovat k upgradu další dávku. 
 5. Pokud nezbývají instance, které chcete upgradovat, goto krok 1) pro další dávku; v opačném případě nebude dokončen upgrade.
 
-Škálovací sada operační systém upgradovat modul kontroluje celkový stav instance virtuálních počítačů před upgradem každou dávku. Při upgradu dávky, může být jiné souběžné plánovaná nebo neplánovaná Údržba děje v datových centrech Azure, které můžou ovlivnit dostupnost vašich virtuálních počítačů. Proto je možné, že dočasně více než 20 % instancí může být mimo provoz. V takovém případě škálovací sady na konci aktuální dávky upgradu zastaví.
+Škálovací sada operačního systému upgradu nástroje orchestrator kontroluje celkový stav instance virtuálních počítačů před upgradem každou dávku. Při upgradu dávky, může být jiné souběžné plánovaná nebo neplánovaná Údržba děje v datových centrech Azure, které můžou ovlivnit dostupnost vašich virtuálních počítačů. Proto je možné, že dočasně více než 20 % instancí může být mimo provoz. V takovém případě škálovací sady na konci aktuální dávky upgradu zastaví.
 
 ## <a name="supported-os-images"></a>Podporované Image operačního systému
 Aktuálně jsou podporovány pouze určité Image platformy operačního systému. Nelze použít aktuálně vlastních imagí, abyste měli jste sami vytvořili. 
@@ -72,7 +70,8 @@ Aktuálně jsou podporovány následující skladové jednotky (přibudou dalš�
 
 - *Verze* vlastnost image platformy musí být nastavena na *nejnovější*.
 - Pomocí sond stavu aplikace bez Service Fabric škálovacích sad.
-- Ujistěte se, že prostředky, že modelu škálovací sady odkazující na je k dispozici a pořád aktuální. Identifikátor URI Exa.SAS samozaváděcí datové části ve vlastnostech rozšíření virtuálního počítače, datová část v účtu úložiště, odkazují na k tajným kódům v modelu. 
+- Ujistěte se, že prostředky, že modelu škálovací sady odkazující na je k dispozici a pořád aktuální. 
+  Identifikátor URI Exa.SAS samozaváděcí datové části ve vlastnostech rozšíření virtuálního počítače, datová část v účtu úložiště, odkazují na k tajným kódům v modelu. 
 
 ## <a name="configure-automatic-os-image-upgrade"></a>Konfigurovat automatický upgrade bitové kopie operačního systému
 Chcete-li konfigurovat automatický upgrade operačního systému image, ověřte, zda *automaticOSUpgradePolicy.enableAutomaticOSUpgrade* je nastavena na *true* v škálovací sady definice modelu. 
@@ -117,7 +116,7 @@ Test paměti nástroje pro vyrovnávání zatížení můžete odkazovat *polož
   ...
 ```
 > [!NOTE]
-> Tato část platí jenom pro škálovací sady bez Service Fabric. Service Fabric má svůj vlastní pojem stavu aplikace. Pokud používáte automatické upgrady operačního systému s využitím Service Fabric, image nového operačního systému nasazení aktualizační doména podle aktualizačních domén udržet vysokou dostupnost služby spuštěné v Service Fabric. Další informace o odolnosti charakteristiky clustery Service Fabric najdete v tématu [této dokumentace](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster).
+> Pokud používáte automatické upgrady operačního systému s využitím Service Fabric, image nového operačního systému nasazení aktualizační doména podle aktualizačních domén udržet vysokou dostupnost služby spuštěné v Service Fabric. Další informace o odolnosti charakteristiky clustery Service Fabric najdete v tématu [této dokumentace](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster).
 
 ### <a name="keep-credentials-up-to-date"></a>Aktualizovat přihlašovací údaje
 Pokud vaše škálovací sada používá žádné přihlašovací údaje pro přístup k externím prostředkům, například pokud je nakonfigurovaná rozšíření virtuálního počítače využívající SAS token pro účet úložiště, musíte zajistit, aby že přihlašovací údaje jsou tak pořád aktuální. Pokud žádné přihlašovací údaje, včetně certifikátů a tokeny mají platnost, se upgrade nezdaří a první dávku virtuálních počítačů zůstanou ve stavu selhání.
@@ -130,7 +129,7 @@ Doporučené kroky pro obnovení virtuálních počítačů a znovu povolte auto
 * Nasazení aktualizované škálovací sady, která aktualizuje všechny instance virtuálních počítačů, včetně neúspěšných. 
 
 ## <a name="get-the-history-of-automatic-os-image-upgrades"></a>Zobrazit historii automatické upgrady bitové kopie operačního systému 
-Můžete zkontrolovat historii nejnovější upgrade operačního systému provést ve škálovací sadě pomocí Azure Powershellu, příkazového řádku Azure CLI 2.0 nebo rozhraní REST API. Zobrazit historii posledních 5 pokusů upgradu operačního systému v posledních 2 měsíce.
+Můžete zkontrolovat historii nejnovější upgrade operačního systému provést ve škálovací sadě pomocí Azure Powershellu, příkazového řádku Azure CLI 2.0 nebo rozhraní REST API. Zobrazit historii posledních pěti pokusů upgradu operačního systému v posledních dvou měsíců.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 Následující příklad používá prostředí Azure PowerShell a zkontrolujte stav pro škálovací sadu s názvem *myVMSS* ve skupině prostředků s názvem *myResourceGroup*:

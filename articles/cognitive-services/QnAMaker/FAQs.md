@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Seznam nejčastějších dotazů týkajících se služba QnA Maker
 services: cognitive-services
 author: tulasim88
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: be1621bb461d491d4304474034a39a83c5293570
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: efefd595c43d7f46ff1ead91577d070cf8fb90e4
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972628"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47164612"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
 

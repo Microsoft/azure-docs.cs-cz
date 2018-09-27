@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: cfc71f34f4b1d8027714c9fb610beebf8cd3be47
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 51f5f3b9742de45b1b72104c8cf08079d0719763
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978535"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224372"
 ---
 # <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>Nastavení replikace clusteru HBase ve virtuálních sítích Azure
 
@@ -109,6 +109,7 @@ K instalaci vazby yon muset zjistit veřejnou IP adresu dva virtuální počíta
 2. Spusťte virtuální počítač DNS tak, že vyberete **skupiny prostředků > [název skupiny prostředků] > [vnet1DNS]**.  Název skupiny prostředků je ten, který vytvoříte v posledním postupu. Výchozí názvy DNS virtuálního počítače jsou *vnet1DNS* a *vnet2NDS*.
 3. Vyberte **vlastnosti** otevřete stránku vlastnosti ve virtuální síti.
 4. Zapište **veřejnou IP adresu**a taky ověřit **privátní IP adresa**.  Privátní IP adresa musí být **10.1.0.4** pro vnet1DNS a **10.2.0.4** pro vnet2DNS.  
+5. Změníte na servery DNS pro obě virtuální sítě pomocí serverů DNS výchozí (poskytováno Azure) příchozí a odchozí přístup ke stažení balíčků pro instalaci vazby v následujících krocích.
 
 K instalaci vazby, použijte následující postup:
 
@@ -217,7 +218,7 @@ K instalaci vazby, použijte následující postup:
 
     ```bash
     sudo apt install dnsutils
-    nslookup vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net 10.2.0.4
+    nslookup vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net
     ```
 
     > [!IMPORTANT]

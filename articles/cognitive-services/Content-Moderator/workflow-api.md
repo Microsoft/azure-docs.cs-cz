@@ -1,59 +1,60 @@
 ---
-title: Azure obsahu moderátora - přerušování pracovních | Microsoft Docs
-description: Použití pracovních postupů s obsahu přerušování.
+title: Pracovní postupy moderování – Content Moderator
+titlesuffix: Azure Cognitive Services
+description: Pracovní postupy pomocí moderování obsahu.
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/04/2018
 ms.author: sajagtap
-ms.openlocfilehash: 079fcd119f1536f9e76ca57fccc76538b3c3ed78
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 3de45c62eb208671cc2d1d4de5309d2f9d75adc9
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342525"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226870"
 ---
-# <a name="moderation-workflows"></a>Přerušování pracovních postupů
+# <a name="moderation-workflows"></a>Moderování pracovních postupů
 
-Obsahu moderátora obsahuje nástroje a rozhraní API pro správu pracovních postupů. Použití pracovních postupů s [operace úlohy zkontrolujte API](review-api.md) k automatizaci vytváření zkontrolujte lidské v the smyčky na základě vašeho obsahu zásady a prahové hodnoty.
+Content Moderator zahrnuje nástroje a rozhraní API pro správu pracovních postupů. Využijte pracovní postupy s [operace úlohy zkontrolujte API](review-api.md) k automatizaci vytváření lidských v the smyčky revizi na základě prahových hodnot a obsahu zásad.
 
-Kontrola rozhraní API nabízí tyto způsoby do procesu obsahu přerušování zahrnout lidského dohledu:
+Rozhraní API pro kontrolu nabízí tyto způsoby zahrnutí jistotu lidské do procesu moderování obsahu:
 
-1. **Úlohy** operací pro spouštění počítače asistované přerušování a lidské zkontrolujte vytvoření jako jeden krok.
-1. **Zkontrolujte** operací pro lidské zkontrolujte vytvoření mimo přerušování krok.
-1. **Pracovního postupu** zkontrolujte operací pro správu pracovních postupů, které automatizují kontrolu s prahovými hodnotami pro vytvoření.
+1. **Úlohy** operace pro spuštění moderování s podporou počítače i lidsky zkontrolujte vytvoření jako jeden krok.
+1. **Zkontrolujte** operace pro lidské zkontrolujte vytvoření mimo krok moderování.
+1. **Pracovního postupu** operace pro pracovní postupy automatizující prohledávání pomocí prahové hodnoty pro správu zkontrolujte vytvoření.
 
-Tento článek se zabývá **pracovního postupu** operace. Pro čtení [úlohy a zkontroluje](review-api.md) přehled Další informace o obsahu přerušování úlohy a zkontroluje.
+Tento článek se týká **pracovního postupu** operace. Čtení [úloh a kontrol](review-api.md) přehled a další informace o moderování obsahu úloh a kontrol.
 
-Rezervování **výchozí** pracovní postup je nejlepší způsob, jak začít pracovat na pochopení pracovních postupů v obsahu moderátora.
+Rezervuje **výchozí** pracovního postupu je nejlepší způsob, jak začít používat Principy pracovních postupů v Content Moderatoru.
 
-## <a name="your-first-workflow"></a>První pracovního postupu
+## <a name="your-first-workflow"></a>Svůj první pracovní postup
 
-Vaše první pracovní postup obsahuje také program s vaší [Zkontrolujte nástroj team](https://contentmoderator.cognitive.microsoft.com/). Pokud jste tak již neučinili, zaregistrujte si.
+Svůj první pracovní postup se dodává jako součást balíčku s vaší [Zkontrolujte nástroj team](https://contentmoderator.cognitive.microsoft.com/). Zaregistrujte, pokud jste tak již neučinili.
 
-Přejděte na [zkontrolujte pracovní postupy nástroje pro](Review-Tool-User-Guide/Workflows.md) obrazovky na kartě nastavení. Zobrazí **výchozí** pracovní postup, jak je znázorněno na následujícím obrázku:
+Přejděte [zkontrolujte pracovní postupy nástroje](Review-Tool-User-Guide/Workflows.md) obrazovky na kartě nastavení. Zobrazí **výchozí** pracovní postup, jak je znázorněno na následujícím obrázku:
 
-![Obsahu moderátora pracovních postupů](Review-Tool-User-Guide/images/2-workflows-1.png)
+![Content Moderator pracovních postupů](Review-Tool-User-Guide/images/2-workflows-1.png)
 
-### <a name="open-the-default-workflow"></a>Otevřete výchozí pracovní postup
+### <a name="open-the-default-workflow"></a>Otevřít výchozí pracovní postup
 
-Použití **upravit** možnost otevření pracovního postupu, úprava stránky, jak je znázorněno na následujícím obrázku: ![obsahu moderátora výchozí pracovní postup](images/default-workflow-listed.PNG)
+Použití **upravit** možnost otevření pracovního postupu Úprava stránky, jak je znázorněno na následujícím obrázku: ![Content Moderator výchozí pracovní postup](images/default-workflow-listed.PNG)
 
-### <a name="the-designer-view"></a>Návrhář zobrazení
+### <a name="the-designer-view"></a>Zobrazení návrháře
 
-Zobrazí **Návrhář** kartě pro pracovní postup. Návrhář zobrazení se zobrazuje následující kroky:
+Zobrazí **návrháře** kartu pro pracovní postup. Návrhář zobrazení se zobrazuje následující kroky:
 
-1. **Podmínku** pro pracovní postup k vyhodnocení. V takovém případě pracovního postupu volání obsahu moderátora na obrázku rozhraní API a kontroly jestli `isAdult` výstup rovná `true`.
-1. **Akce** provést, pokud je splněna podmínka. V takovém případě vytvoří pracovní postup kontrolu v nástroji zkontrolujte Pokud `isAdult` výstup je `true`.
+1. **Podmínku** pro pracovní postup, který se má vyhodnotit. V takovém případě pracovní postup volání rozhraní Content Moderator vaší image rozhraní API a kontroly, jestli `isAdult` výstup rovná `true`.
+1. **Akce** má být provedena, pokud je splněna podmínka. V takovém případě vytvoří pracovní postup přezkoumání v nástroj pro recenze Pokud `isAdult` výstup je `true`.
 
-![Obsahu moderátora výchozí pracovní postup - návrháře](images/default-workflow-designer.png)
+![Content Moderator výchozí pracovní postup - návrháře](images/default-workflow-designer.png)
 
 ### <a name="the-json-view"></a>Zobrazení JSON
 
-Vyberte **JSON** karty zobrazíte JSON definice pracovního postupu.
+Vyberte **JSON** kartu pro zobrazení definice JSON pracovního postupu.
 
     {
         "Type": "Logic",
@@ -78,25 +79,25 @@ Vyberte **JSON** karty zobrazíte JSON definice pracovního postupu.
 
 ### <a name="key-learning"></a>Klíče učení
 
-Pracovní postupy v obsahu moderátora jsou snadno konfiguruje a flexibilní. Pokud integrované návrháře nesplňuje vaše požadavky, zapisovat definice pracovního postupu v **JSON** formátu. Pak použijte definici JSON s [pracovního postupu API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59) k vytváření a správě pracovního postupu z vaší aplikace.
+Pracovní postupy v Content Moderatoru se snadno konfigurovatelné a flexibilní. Pokud integrované návrháře nesplňuje vaše požadavky, zapsat definice pracovního postupu **JSON** formátu. Pak pomocí definice JSON s [pracovního postupu API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59) k vytváření a správě pracovního postupu z vaší aplikace.
 
 ## <a name="define-a-custom-workflow"></a>Definovat vlastní pracovní postup
 
-Možnosti pracovní postup obsahu moderátora povolit definování a používání vlastních pracovních postupů. Použití [zkontrolujte postupy pracovní postupy nástroje](Review-Tool-User-Guide/Workflows.md) článek k definování vlastní pracovní postup. Tento pracovní postup používá funkce rozpoznávání znaků obsahu moderátora k rozbalte text z ukázkového obrázku. V nástroji zkontrolujte poté vytvoří kontrolu.
+Content Moderator pracovního postupu možností povolit definice a používání vlastních pracovních postupů. Použití [zkontrolujte pracovní postupy nástroje s postupy](Review-Tool-User-Guide/Workflows.md) článku definovat vlastní pracovní postup. Tento pracovní postup používá funkci OCR Content Moderator k extrakci textu z Ukázkový obrázek. Potom vytvoří kontrolu v nástroji pro kontrolu.
 
-### <a name="the-sample-image"></a>Ukázka bitové kopie
+### <a name="the-sample-image"></a>Ukázkový obrázek
 
-Uložit [Ukázkový obrázek](https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png) na místní jednotku. Je nutné tuto bitovou kopii pro vaše cvičení.
+Uložit [Ukázkový obrázek](https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png) na váš místní disk. Musíte tuto bitovou kopii pro vaše cvičení.
 
-### <a name="the-designer-view"></a>Návrhář zobrazení
+### <a name="the-designer-view"></a>Zobrazení návrháře
 
-Vyberte **Návrhář** kartě a [kurz vytvoření pracovního postupu](Review-Tool-User-Guide/Workflows.md) k definování vlastní pracovní postup. Následující obrázek ukazuje nástroje designer **podmínku** zobrazení. Naleznete v kurzu, který najdete v části Další kroky.
+Vyberte **návrháře** kartu a [kurz vytvoření pracovního postupu](Review-Tool-User-Guide/Workflows.md) definovat vlastní pracovní postup. Následující obrázek ukazuje návrháře **podmínku** zobrazení. Využijte kurz zobrazíte zbytek postupu.
 
-![Obsahu moderátora - podmínku pracovního postupu](Review-Tool-User-Guide/images/ocr-workflow-step-2-condition.PNG)
+![Content Moderator – stav pracovního postupu](Review-Tool-User-Guide/images/ocr-workflow-step-2-condition.PNG)
 
 ### <a name="the-json-view"></a>Zobrazení JSON
 
-Vyberte **JSON** karty zobrazíte následující definici JSON vlastní pracovního postupu. Všimněte si jak **Pokud potom** příkazy v definici JSON odpovídají kroky definované pomocí návrháře zobrazení.
+Vyberte **JSON** kartu zobrazíte následující definici JSON váš vlastní pracovní postup. Všimněte si, že jak **If-Then** příkazy v definici JSON odpovídají kroky definován pomocí návrháře zobrazení.
 
     {
         "Type": "Logic",
@@ -132,29 +133,29 @@ Vyberte **JSON** karty zobrazíte následující definici JSON vlastní pracovn�
 
 ### <a name="workflow-result"></a>Výsledek pracovního postupu
 
-Po dokončení testu pracovního postupu z obrazovky pracovních postupů, se vytvoří následující revize. Přejděte na **Image** v části **zkontrolujte** zobrazíte zkontrolovali.
-Pracovní postup vytvořit, že kontrola protože testována primární podmínky kladné přítomnost text. Zkontrolujte také zvýrazněných **`a`** značku zkontrolujte bitové kopie.
+Po otestování pracovního postupu na obrazovce pracovních postupů se vytvoří následující kontroly. Přejděte **Image** kartu **zkontrolujte** zobrazíte zkontrolovali.
+Pracovní postup vytvořit, že revize protože primární podmínky testování kladné přítomnost text. Zkontrolujte také zvýrazněna **`a`** značky při kontrole bitové kopie.
 
-![Obsahu moderátora – výstup jednoduché pracovního postupu](images/ocr-sample-image-workflow1.PNG)
+![Content Moderator – výstupní jednoduchý pracovní postup](images/ocr-sample-image-workflow1.PNG)
 
 
-## <a name="advanced-workflow-with-combination"></a>Pokročilé pracovního postupu s kombinací
+## <a name="advanced-workflow-with-combination"></a>Pomocí kombinace rozšířených pracovních postupů
 
-### <a name="the-sample-image"></a>Ukázka bitové kopie
+### <a name="the-sample-image"></a>Ukázkový obrázek
 
-Použijte stejný [Ukázkový obrázek](https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png) , který se používá v předchozí části.
+Použijte stejný [Ukázkový obrázek](https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png) , která byla použita v předchozí části.
 
-Tento čas přibližně však změňte vaší primární podmínky do kombinací dvou kontroly. Kromě kontroly textu, zkontrolujte, zda text má všechny vulgárnost. Pracovní postup vytvoří kontrolu, pokud najde text **a** zjistí vulgárnost v ní.
+Tomto okamžiku přibližně však změňte primární podmínky do kombinace dvou kontroly. Kromě kontroly toho pro text, zkontrolujte, zda text obsahuje všechny vulgárních výrazů. Pracovní postup vytvoří kontrolu, pokud najde text **a** zjistí vulgárních výrazů v ní.
 
-### <a name="the-designer-view"></a>Návrhář zobrazení
+### <a name="the-designer-view"></a>Zobrazení návrháře
 
-Chcete-li změnit **podmínku** k **kombinace**, upravit pracovní postup. Následující obrázek znázorňuje nové zobrazení, které se zobrazí v návrháři.
+Chcete-li změnit **podmínku** k **kombinaci**, upravte pracovní postup. Následující obrázek ukazuje nové zobrazení, které se zobrazí v návrháři.
 
-![Obsahu moderátora - podmínku upravené pracovního postupu](images/ocr-workflow-2-designer.PNG)
+![Content Moderator – podmínky změny pracovního postupu](images/ocr-workflow-2-designer.PNG)
 
 ### <a name="the-json-view"></a>Zobrazení JSON
 
-Vyberte **JSON** karty zobrazíte následující definici JSON upravený vlastní pracovního postupu. Všimněte si jak **Pokud potom** příkazy v definici JSON odpovídají nové kroky, které jste přidali do pracovního postupu.
+Vyberte **JSON** kartu zobrazíte následující definici JSON upravený vlastní pracovní postup. Všimněte si, že jak **If-Then** příkazy v definici JSON odpovídají nové kroky, které jste přidali do pracovního postupu.
 
     {
         "Type": "Logic",
@@ -203,43 +204,43 @@ Vyberte **JSON** karty zobrazíte následující definici JSON upravený vlastn�
     
 ### <a name="workflow-result"></a>Výsledek pracovního postupu
 
-Po dokončení testu pracovního postupu zjistíte, jestli je vytvořená žádná kontrola. Potvrdit absenci všechny kontrolní, přejděte na **Image** v části **zkontrolujte**.
-Pracovní postup nevytvořila kontrola, protože se nepodařilo zjistit vulgárnost v extrahované textu.
+Po otestování pracovního postupu, zjistíte, že žádná kontrola se vytvořil. Potvrďte neexistence žádné kontroly, přejděte na **Image** kartu **zkontrolujte**.
+Pracovní postup kontroly nevytvořil, protože se nepovedlo rozpoznat vulgárních výrazů v byl extrahován text.
 
-![Obsahu moderátora – výstup upravené pracovního postupu](images/ocr-workflow-2-result.PNG)
+![Content Moderator – výstup změny pracovního postupu](images/ocr-workflow-2-result.PNG)
 
 
 ## <a name="the-workflow-api"></a>Pracovní postup rozhraní API
 
-[Operace pracovního postupu](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59) nabízí programovací rozhraní k funkcím pracovního postupu. Vytvořit pracovní postupy, získat podrobnosti pracovního postupu a aktualizovat definice pracovního postupu pomocí rozhraní API služby pracovního postupu.
+[Operace pracovního postupu](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59) poskytuje programovací rozhraní pro funkce pracovního postupu. Získat podrobnosti pracovního postupu vytváření pracovních postupů a aktualizovat definice pracovního postupu pomocí rozhraní API pracovního postupu.
 
-### <a name="get-all-workflow-details"></a>Podrobnosti o pracovní postup GET [All]
+### <a name="get-all-workflow-details"></a>Podrobnosti o pracovním postupu GET [All]
 
-**Pracovní postup Get** operace přijímá následující zadání:
+**Pracovní postup Get** operace přijímá následující vstupy:
 
-- **tým**: ID týmu, který jste vytvořili při nastavování vaší [Zkontrolujte nástroj účet](https://contentmoderator.cognitive.microsoft.com/). 
-- **workflowname**: název pracovního postupu. Použití `default` na začátku.
-- **OCP-Apim-Subscription-Key**: nachází na **nastavení** kartě. Další informace najdete v tématu [přehled](overview.md).
+- **tým**: ID týmu, který jste vytvořili při nastavování vašeho [Zkontrolujte nástroj účet](https://contentmoderator.cognitive.microsoft.com/). 
+- **workflowname**: název pracovního postupu. Použití `default` začínat.
+- **OCP-Apim-Subscription-Key**: na **nastavení** kartu. Další informace najdete v tématu [přehled](overview.md).
 
-Pokud je operace úspěšná, **stav odpovědi** je `200 OK` a **obsah odpovědi** pole zobrazuje definice pracovního postupu ve formátu JSON.
-Další informace, přečtěte si [rychlé spuštění pracovního postupu API konzoly](try-review-api-job.md).
+Pokud je operace úspěšná, **stav odpovědi** je `200 OK` a **obsah odpovědi** zobrazí definice pracovního postupu ve formátu JSON.
+Další informace najdete v článku [pracovního postupu rozhraní API konzoly rychlého startu](try-review-api-job.md).
 
-### <a name="create-or-update-workflow"></a>Vytvořit nebo aktualizovat pracovního postupu
+### <a name="create-or-update-workflow"></a>Vytvořit nebo aktualizovat pracovní postup
 
-Operace vytvoření a aktualizace umožňuje vytváření pracovního postupu z rozhraní API.
+Operace vytvoření a aktualizace je umožněno vytvoření pracovního postupu z rozhraní API.
 
-**Pracovní postup vytvoření nebo aktualizace** operace přijímá následující zadání:
+**Pracovní postup vytvoření nebo aktualizace** operace přijímá následující vstupy:
 
-- **tým**: ID týmu, který jste vytvořili při nastavování vaší [Zkontrolujte nástroj účet](https://contentmoderator.cognitive.microsoft.com/). 
-- **workflowname**: název pracovního postupu. Použití `default` na začátku.
-- **OCP-Apim-Subscription-Key**: nachází na **nastavení** kartě. Další informace najdete v tématu [přehled](overview.md).
+- **tým**: ID týmu, který jste vytvořili při nastavování vašeho [Zkontrolujte nástroj účet](https://contentmoderator.cognitive.microsoft.com/). 
+- **workflowname**: název pracovního postupu. Použití `default` začínat.
+- **OCP-Apim-Subscription-Key**: na **nastavení** kartu. Další informace najdete v tématu [přehled](overview.md).
 
-Pokud je operace úspěšná, **stav odpovědi** je `200 OK` a **obsah odpovědi** pole zobrazí `true`. Další informace, [vyzkoušejte `Create` operaci](try-review-api-job.md).
+Pokud je operace úspěšná, **stav odpovědi** je `200 OK` a **obsah odpovědi** zobrazí `true`. Další informace, [testovací verze `Create` operace](try-review-api-job.md).
 
 ## <a name="next-steps"></a>Další postup
 
-Naučte se vytvářet vlastní pracovní postupy, podívejte se [zkontrolujte kurzu pracovního postupu pro nástroj](Review-Tool-User-Guide/Workflows.md). 
+Zjistěte, jak vytvářet vlastní pracovní postupy, přečtěte si [přečtěte si kurz pracovního postupu nástroje](Review-Tool-User-Guide/Workflows.md). 
 
-Vyzkoušejte [pracovního postupu API konzoly](try-review-api-job.md) a používat ukázky kódu rozhraní REST API. 
+Testovací verze [pracovního postupu rozhraní API konzoly](try-review-api-job.md) a používat rozhraní REST API ukázky kódu. 
 
-Nakonec použijte vaše vlastní pracovní postupy s **úlohy** operace jako shon v [rozhraní API pro úlohu konzoly](try-review-api-job.md) a [rychlé spuštění úlohy .NET](moderation-jobs-quickstart-dotnet.md).
+Nakonec použijte váš vlastní pracovní postupy s **úlohy** operace jako shon v [rozhraní API pro úlohu konzoly](try-review-api-job.md) a [rychlý úvod k .NET úlohy](moderation-jobs-quickstart-dotnet.md).

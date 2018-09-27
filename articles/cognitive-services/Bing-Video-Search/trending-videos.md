@@ -1,25 +1,25 @@
 ---
-title: Vyhledávání na webu trendů videa | Microsoft Docs
-description: Ukazuje, jak používat rozhraní API služby Bing Video Search vyhledávání na webu pro trendů videa.
+title: Hledat na webu pro populárních videí – Video Bingu pro vyhledávání
+titlesuffix: Azure Cognitive Services
+description: Ukazuje, jak použít API pro vyhledávání videí Bingu pro vyhledávání na webu populárních videí.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: 897A28A3-0980-484E-814F-FFE1D5C885E6
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 8db7fcf77042631260b4b165bd3d44053827f3ce
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8a6ccc9ea8cf9468d7638360c9db8131bc6dc5be
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342376"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222036"
 ---
-# <a name="get-trending-videos"></a>Získat trendů videa  
+# <a name="get-trending-videos"></a>Získání videí, která jsou v kurzu  
 
-Potřebujete dnešní trendů videa, pošlete následující požadavek GET:  
+Chcete-li získat dnešní populárních videí, poslat následující požadavek GET:  
   
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/trending?mkt=en-us HTTP/1.1
@@ -31,24 +31,24 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```
 
-Následující trhy podporovat trendů videa.  
+Následujících zemích podporují populárních videí.  
  
--   en-AU (angličtina, Austrálie)  
--   en-CA (angličtina, Kanada)  
+-   cs Austrálie (angličtina, Austrálie)  
+-   cs CA (angličtina, Kanada)  
 -   en-GB (angličtina, Velká Británie)  
--   en-ID (angličtina, Indonésie)  
--   en-IE (angličtina, Irsku)  
--   en-IN (angličtina, Indie)  
--   en-NZ (angličtina, Nový Zéland)  
--   en parametr (angličtina, Filipíny)  
--   en-SG (angličtina, Singapur)  
+-   cs ID (angličtina, Indonésie)  
+-   cs IE (angličtina, Irsko)  
+-   cs Indie (angličtina, Indie)  
+-   cs NZ (angličtina, Nový Zéland)  
+-   cs PH (angličtina, Filipíny)  
+-   cs SG (angličtina, Singapur)  
 -   en US (angličtina, USA)  
--   en TT (angličtina, Worldwide agregovat kódu)  
--   en-ZA (angličtina, Jihoafrická republika)  
+-   cs TT (angličtina, celosvětové agregovat kódu)  
+-   cs ZA (angličtina, Jižní Afrika)  
 -   zh-CN (čínština, Čína)
 
   
-Následující příklad ukazuje odpověď obsahující trendů videa.  
+Následující příklad ukazuje odpověď obsahující populárních videí.  
 
 ```  
 {  
@@ -113,7 +113,7 @@ Následující příklad ukazuje odpověď obsahující trendů videa.
 }  
   
 ```  
-Odpověď obsahuje seznam videa podle kategorie a podkategorie. Například pokud seznam kategorií obsažené kategorii Hudba, videa a jeden z jeho podkategorie byl Top, můžete vytvořit kategorii horní Hudba videa v činnost koncového uživatele. Poté můžete použít `thumbnailUrl`, `displayText`, a `webSearchUrl` pole pro vytvoření prokliknutelný dlaždice v rámci každé kategorie (například horní Hudba videa). Když uživatel klikne na dlaždici, budou se potřebný k Bing na video prohlížeče kde přehrát video.
+Odpověď obsahuje seznam videí podle kategorie a podkategorie. Například pokud byl jeden ze své podkategorie horní seznam kategorií obsažených kategorie Hudba, videa, můžete vytvořit kategorii horní Hudba videa ve vašem prostředí uživatele. Můžete pak použít `thumbnailUrl`, `displayText`, a `webSearchUrl` pole k vytvoření kliknout, čímž dlaždice podle jednotlivých kategorií (například horní Hudba videa). Po kliknutí na dlaždici, přejdete do prohlížeče video Bingu kde je video přehrát.
 
-Odpověď obsahuje také hlavičku videa, které jsou nejčastěji používané trendů videa. Hlavička videa mohou pocházet z jednoho nebo více kategorií.  
+Odpověď obsahuje také nápis videa, které jsou nejoblíbenější populárních videí. Banner videa, která mohou pocházet z jedné nebo více kategorií.  
   

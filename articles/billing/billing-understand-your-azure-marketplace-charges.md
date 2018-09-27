@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.author: adpick
+ms.author: cwatson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bd99cf7b57cd004eb5ab2b62fd4c56e129583c8c
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 6ee11b7b565e669f61f6ba77e02139f071c452f4
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42623284"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392206"
 ---
 # <a name="understand-your-azure-billing-for-external-service-charges"></a>Porozumět fakturaci Azure pro poplatků za externí služby
 Externí služby se publikují dodavateli softwaru třetích stran na Azure Marketplace. Například SendGrid je externích služeb, které si můžete koupit v Azure, ale nebyl vydán microsoftem.

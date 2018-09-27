@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2018
 ms.author: cephalin
-ms.openlocfilehash: 04996e772c2989be89ce551bfa45c57154de7b2d
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 59e5825554843ef7265cbccdd9a63db0426891fa
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39307785"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226305"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Konfigurace úrovně PremiumV2 pro službu Azure App Service
 
@@ -55,7 +55,7 @@ Vyberte **produkční**a pak vyberte **P1V2**, **P2V2**, nebo **P3V2**, pak klik
 ![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 > [!IMPORTANT] 
-> Pokud nevidíte **P1V2**, **P2V2**, a **P3V2** jako možnosti, nebo pokud jsou zobrazena šedě možnosti out pak **PremiumV2** pravděpodobně není k dispozici v Základní nasazení služby App Service, která obsahuje plán služby App Service. V tématu naleznete v tématu [vertikálně navýšit kapacitu z nepodporované prostředek skupiny a oblasti kombinaci](#unsupported) další podrobnosti.
+> Pokud nevidíte **P1V2**, **P2V2**, a **P3V2** jako možnosti, nebo pokud jsou zobrazena šedě možnosti out pak **PremiumV2** pravděpodobně není k dispozici v Základní nasazení služby App Service, která obsahuje plán služby App Service. Zobrazit [vertikálně navýšit kapacitu z nepodporované prostředek skupiny a oblasti kombinaci](#unsupported) další podrobnosti.
 
 ## <a name="scale-up-an-existing-app-to-premiumv2-tier"></a>Vertikálně navýšit kapacitu stávající aplikace pro úrovně PremiumV2
 

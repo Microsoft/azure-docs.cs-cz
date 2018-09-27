@@ -13,14 +13,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/04/2017
+ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: ce73d1ef5425ee2fe66655571a6d6bbbff372af5
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: faabdb4c2d2e434863a6bed0b2cd85a05c94eab1
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502807"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395725"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Deset věcí, které vám pomůžou na Windows virtuální počítač pro datové vědy
 
@@ -47,7 +47,7 @@ V tomto článku se dozvíte, jak používat vaše DSVM k provádění různých
 **Požadavky**
 
 * Budete potřebovat předplatné Azure. Můžete se zaregistrovat k bezplatné zkušební verzi [tady](https://azure.microsoft.com/free/).
-* Pokyny pro zřízení virtuálního počítače datové vědy na portálu Azure portal najdete na adrese [vytvoření virtuálního počítače](https://portal.azure.com/#create/microsoft-ads.standard-data-science-vmstandard-data-science-vm).
+* Pokyny pro zřízení virtuálního počítače datové vědy na portálu Azure portal najdete na adrese [vytvoření virtuálního počítače](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016).
 
 ## <a name="1-explore-data-and-develop-models-using-microsoft-ml-server-or-python"></a>1. Zkoumání dat a vyvíjet modely s využitím Microsoft ML Server nebo Pythonu
 Jazyky, jako je R a Pythonu můžete provádět datové VĚDY vaší analýzy dat přímo.
@@ -56,7 +56,7 @@ Pro jazyk R můžete použít integrované vývojové prostředí jako RStudio, 
 
 Pro Python můžete použít integrované vývojové prostředí jako je Visual Studio Community Edition, který obsahuje nástroje Python Tools pro předem nainstalované rozšíření Visual Studio (PTVS). Ve výchozím nastavení pouze Python 3.6, prostředí conda kořenové nakonfigurované na PTVS. Chcete-li povolit Anaconda Python 2.7, je třeba provést následující kroky:
 
-* Vytvoření vlastního prostředí pro každou verzi tak, že přejdete do **nástroje** -> **nástroje Python Tools** -> **prostředí Pythonu** a pak levým na " **+ Vlastní**"v aplikaci Visual Studio 2015 Community Edition
+* Vytvoření vlastního prostředí pro každou verzi tak, že přejdete do **nástroje** -> **nástroje Python Tools** -> **prostředí Pythonu** a pak levým na " **+ Vlastní**"v sadě Visual Studio Community Edition
 * Zadejte popis a nastavte prostředí předponovou cestu jako *c:\anaconda\envs\python2* pro Anaconda Python 2.7
 * Klikněte na tlačítko **automaticky rozpoznat** a potom **použít** uložit prostředí.
 
@@ -66,7 +66,7 @@ Tady je vypadá vlastní prostředí v sadě Visual Studio.
 
 Zobrazit [dokumentace k PTVS](http://aka.ms/ptvsdocs) najdete další podrobnosti o tom, jak vytvořit prostředí Pythonu.
 
-Nyní jsou nastavení k vytvoření nového projektu Pythonu. Přejděte do **souboru** -> **nový** -> **projektu** -> **Python** a vyberte typ Aplikace v Pythonu, který vytváříte. Prostředí Pythonu pro aktuální projekt můžete nastavit na požadovanou verzi (Anaconda 2.7 nebo 3.6) kliknutím pravým tlačítkem **prostředí Pythonu**, kde vyberou **přidat nebo odebrat prostředí Pythonu**a pak výběr na požadované prostředí. Další informace o práci s nástroji PTVS v produktu [dokumentaci](http://aka.ms/ptvsdocs).
+Nyní jsou nastavení k vytvoření nového projektu Pythonu. Přejděte do **souboru** -> **nový** -> **projektu** -> **Python** a vyberte typ Aplikace v Pythonu, který vytváříte. Prostředí Pythonu pro aktuální projekt můžete nastavit na požadovanou verzi (Python 2.7 nebo 3.6) kliknutím pravým tlačítkem **prostředí Pythonu**, kde vyberou **přidat nebo odebrat prostředí Pythonu**a pak výběr na požadované prostředí. Další informace o práci s nástroji PTVS v produktu [dokumentaci](http://aka.ms/ptvsdocs).
 
 ## <a name="2-using-a-jupyter-notebook-to-explore-and-model-your-data-with-python-or-r"></a>2. Pomocí poznámkového bloku Jupyter pro zkoumání a modelování dat v Pythonu nebo r.
 Poznámkový blok Jupyter je výkonné prostředí, která poskytuje pro zkoumání a modelování dat založené na prohlížeči "integrované vývojové prostředí". V poznámkovém bloku Jupyter, můžete použít Python 2, Python 3 nebo R (Open Source a Microsoft R serveru).

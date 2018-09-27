@@ -1,5 +1,5 @@
 ---
-title: Pochopení faktury Azure | Microsoft Docs
+title: Vysvětlení faktuře Azure | Dokumentace Microsoftu
 description: Zjistěte, jak číst informace o využití a vyúčtování předplatného Azure a jak je chápat
 services: ''
 documentationcenter: ''
@@ -13,106 +13,106 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
-ms.author: tonguyen
-ms.openlocfilehash: 6601ade7db52043de8150a3fca671591b9b469fd
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.author: cwatson
+ms.openlocfilehash: 4bfaaa51e39a7db297626a8009306eef9e3efa80
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063455"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393777"
 ---
-# <a name="understand-terms-on-your-microsoft-azure-invoice"></a>Pochopit podmínky na vaší faktuře Microsoft Azure
+# <a name="understand-terms-on-your-microsoft-azure-invoice"></a>Vysvětlení podmínek na faktuře Microsoft Azure
 
-Faktury poskytuje souhrn vaše poplatky a poskytuje pokyny pro platbu. Je k dispozici ke stažení ve Portable Document Format (PDF) z [portál Azure](https://portal.azure.com/) nebo lze odeslat e-mailem. Další informace najdete v tématu [jak získat vaše Azure fakturace faktury a denní data o využití](billing-download-azure-invoice-daily-usage-date.md).
+Faktury poskytuje přehled poplatky a poskytuje pokyny pro platbu. Je k dispozici ke stažení v Portable Document Format (PDF) z [webu Azure portal](https://portal.azure.com/) nebo je lze odeslat e-mailem. Další informace najdete v tématu [jak získat Azure billing invoice a denní data o využití](billing-download-azure-invoice-daily-usage-date.md).
 
-Všimněte si, několik akcí:
+Mějte na paměti několik věcí:
 
--   Pokud používáte bezplatné předplatné zkušební verze, můžete získat vaše podrobné informace o použití portálu Azure, ale nemáte faktury.
+-   Pokud používáte bezplatné předplatné zkušební verze, vaše podrobné informace o použití můžete získat z webu Azure portal, ale nemáte k dispozici fakturu.
 
--   Až 24 hodin využití na konci fakturačního období předchozí může zobrazí v aktuální faktury.
+-   Až 24 hodin využití na konci předchozího fakturačního období může zobrazit na aktuální faktuře.
 
--   Poplatky uvedené v příkazech fakturace pro mezinárodní zákazníci jsou odhad pouze pro účely. Bankami může mít různé náklady na převod sazby.
+-   Poplatky uvedené na výpisy pro mezinárodní zákazníky, kteří jsou odhadu pouze pro účely. Bank mohou mít různé náklady pro míry úspěšnosti.
 
 >[!VIDEO https://www.youtube.com/embed/jWG1lyJe3Mg]
 
-## <a name="detailed-terms-and-descriptions-of-your-invoice"></a>Podrobné podmínky a popisy faktury
-Následující části uvádějí důležité termíny, které se zobrazí na vaší faktuře a popisy ke každému termínu.
+## <a name="detailed-terms-and-descriptions-of-your-invoice"></a>Podrobné podmínky a popisy faktuře
+V následujících částech jsou důležité termíny, které se zobrazují na faktuře a popisy pro každé období.
 
 ### <a name="account-information"></a>Informace o účtu
 
-Části informace o účtu faktury je nahoře na první stránce a zobrazí se informace o váš profil a předplatné.
+Části informace o účtu faktury se nahoře na první stránce a zobrazuje informace o profilu a předplatné.
 
-![Části informace o účtu faktury](./media/billing-understand-your-invoice/1.png)
+![Informace o účtu část faktury](./media/billing-understand-your-invoice/1.png)
 
 | Označení | Popis |
 | --- | --- |
-| SP číslo. |Číslo objednávky volitelné nákupu přiřadila pro sledování |
-| Faktura č. |Jedinečné, Microsoft generované faktury číslo používané pro účely sledování |
-| Fakturační cyklus |Rozsah dat, které pokrývá tato faktury |
-| Datum faktury |Datum, faktury byla vygenerována, obvykle denně po skončení cyklu fakturace |
+| Číslo objednávky zákazníka. |Číslo volitelné nákupní objednávky, přiřadil ke sledování |
+| Faktura č. |Jedinečné, číslo faktury vygenerované Microsoft používá pro účely sledování |
+| Fakturační cyklus |Rozsah dat, která zahrnuje toto faktury |
+| Datum faktury |Datum faktury vygenerovaný, obvykle za den za koncem fakturační cyklus |
 | Způsob platby |Typ platby používaný u účtu (faktura nebo kreditní karta) |
-| Příjemce faktury |Fakturační adresu, která je uvedena pro účet |
-| Předplatné nabízejí (dále jen "průběžné platby") |Typ nabídky odběr, který byl zakoupen (průběžné platby, BizSpark Plus, Azure Pass, atd.). Další informace najdete v tématu [nabídka Azure typy](https://azure.microsoft.com/support/legal/offer-details/). |
-| E-mail vlastníka účtu | E-mailová adresa účtu, pod kterou je účet Microsoft Azure registrovaný. <br /><br />Chcete-li změnit e-mailovou adresu, [jak změnit informace o profilu účtu Azure, jako je například kontaktní e-mailová adresa a telefonní číslo](billing-how-to-change-azure-account-profile.md). |
+| Příjemce faktury |Fakturační adresa, která je uvedená pro účet |
+| Předplatné nabízejí ("průběžné platby") |Typ nabídky předplatného, který byl zakoupen (průběžné platby, BizSpark Plus, Azure Pass atd.). Další informace najdete v tématu [typy nabídek Azure](https://azure.microsoft.com/support/legal/offer-details/). |
+| E-mail vlastníka účtu | E-mailová adresa účtu, pod kterou je účet Microsoft Azure registrovaný. <br /><br />Chcete-li změnit e-mailovou adresu, [jak ke změně informací profilu účtu Azure, jako je například kontaktní e-mailovou adresu a telefonní číslo](billing-how-to-change-azure-account-profile.md). |
 
 ### <a name="understand-the-invoice-summary"></a>Vysvětlení souhrnu faktury
-**Faktury Souhrn** části faktury je uveden seznam objemy celkový počet transakcí od vaší poslední fakturační období a aktuální poplatky za používání.
+**Souhrnu faktury** části faktury jsou uvedeny částky celková transakce od vaší poslední fakturačního období a vaše aktální poplatky za používání.
 
-![Souhrn části faktury](./media/billing-understand-your-invoice/2.png)
+![Oddíl Souhrn faktury](./media/billing-understand-your-invoice/2.png)
 
-Název odběru ("produkční úložiště") je název odběru pro tuto fakturu.
+Název předplatného ("produkční úložiště") je název předplatného pro tuto fakturu.
 
-#### <a name="understand-the-previous-charges"></a>Pochopení předchozí poplatky
-Předchozí zůstatek, platby a zůstatek části faktury shrnuje transakce od vaší poslední fakturačního období.
+#### <a name="understand-the-previous-charges"></a>Vysvětlení předchozí poplatků za
+Předchozí zůstatek, platbami a nevyrovnaným zůstatkem části faktury shrnuje transakce od vaší poslední fakturačního období.
 
 | Označení | Popis |
 | --- | --- |
-| Předchozí zůstatek |Celkový počet částka z důvodu z vaší poslední fakturační období. |
-| Platby |Celkový počet platby a kredity u vaší poslední fakturační období |
-| Nevyrovnaný zůstatek (z předchozího fakturačního cyklu) |Všechny kredity nebo je zůstatek ve vašem účtu od vaší poslední fakturační období |
+| Předchozí zůstatek |Celková dlužná částka z poslední fakturačního období |
+| Platby |Celkové platby a kredity u vaší poslední fakturačního období |
+| Nevyrovnaný zůstatek (z předchozího fakturačního cyklu) |Všechny zbývající zůstatek na účtu od vaší poslední fakturačního období nebo kredity |
 
 #### <a name="understand-the-current-charges"></a>Vysvětlení aktuálních poplatků
-V části aktuální poplatky faktury obsahuje podrobnosti o měsíční poplatky pro aktuální fakturační období.
+Aktuální poplatky části faktury zobrazuje podrobnosti o měsíčních poplatcích pro aktuální fakturační období.
 
 | Označení | Popis |
 | --- | --- |
-| Poplatky za používání |Poplatky za používání jsou celkové měsíční náklady na předplatné pro aktuální fakturační období|
-| Slevy |Použít pro vaše aktuální fakturační období slevy služby|
-| Úpravy |Různé kredity (volné využití, kredity atd.) nebo nezaplacených poplatků použít pro vaše aktuální fakturačního období.<br/><br/>Například pokud máte Visual Studio Enterprise s nabídkou MSDN, uvidíte měsíční kredit. Pokud zrušíte předplatné, zobrazí se všechny měsíční poplatky za používání, které překročí měsíční kredit, kterou můžete získat nabídnout předplatné. Poplatků zpoplatněná na začátku vaše aktuální fakturační období až datum zrušení předplatného. |
+| Poplatky za používání |Poplatky za využívání jsou celkové měsíční poplatky za odběr pro aktuální fakturační období|
+| Slevy |U aktuálního fakturačního období slevy|
+| Úpravy |Různé kredity (bezplatné využití, kredity atd.) nebo nezaplacené poplatky na aktuální fakturační období.<br/><br/>Například pokud máte Visual Studio Enterprise v rámci nabídky MSDN, uvidíte měsíční kredit. Pokud svoje předplatné zrušíte, zobrazí se veškeré měsíční poplatky využití přesahující měsíční kredit, který získáte v rámci vaší nabídky předplatného. Poplatky se vám účtovat na začátku aktuálního fakturačního období až do data zrušení odběru. |
 
-#### <a name="sold-to-and-payment-instructions"></a>Prodávané a pokyny pro platbu
+#### <a name="sold-to-and-payment-instructions"></a>Kupující a pokyny pro platbu
 
-Následující tabulka popisuje prodané k a pokyny pro platbu zobrazený na stránce druhé části faktury.
+Následující tabulka popisuje prodávané na a pokyny pro platbu na druhé stránce faktuře.
 
 | Označení |Popis |
 | --- | --- |
-| Kupující |Profil adresu, která je v účtu. <br/><br/>Pokud potřebujete změnit adresu, přečtěte si [jak změnit informace o profilu účtu Azure, jako je například kontaktní e-mailová adresa a telefonní číslo](billing-how-to-change-azure-account-profile.md).|
-| Pokyny pro platbu |Pokyny, jak platit v závislosti na způsobu platby (například jako pomocí úvěrového karty nebo faktury). |
+| Kupující |Adresa profilu, který je v účtu. <br/><br/>Pokud potřebujete změnit adresu, přečtěte si [jak ke změně informací profilu účtu Azure, jako je například kontaktní e-mailovou adresu a telefonní číslo](billing-how-to-change-azure-account-profile.md).|
+| Pokyny pro platbu |Návod, jak platit v závislosti na způsobu platby (například jako autor kredit ve výši karty nebo na fakturu). |
 
 #### <a name="usage-charges"></a>Poplatky za využívání
 
-V části poplatky za využití faktury zobrazí měření úrovně informace o vaše poplatky.
+V části poplatky za využívání, faktury zobrazí úrovni informace měření v poplatky.
 
-![Oddíl poplatky za využití](./media/billing-understand-your-invoice/3.png)
+![Části poplatky za využívání](./media/billing-understand-your-invoice/3.png)
 
-Následující tabulka popisuje záhlaví sloupců poplatky za využití zobrazený na faktury.
+Následující tabulka popisuje záhlaví sloupců poplatky za využití uvedené na vaší faktuře.
 
 | Označení |Popis |
 | --- | --- |
-| Název |Identifikuje nejvyšší úrovně služby využití |
-| Typ |Definuje typ služby Azure, který může mít vliv na rychlost |
-| Prostředek |Identifikuje pro měření spotřebovávanou měrné jednotky |
-| Oblast |Určuje umístění datového centra pro určité služby, které jsou za cenu na základě umístění datového centra |
-| Spotřebované |Množství měření používá během fakturačního období |
-| Zahrnuje |Množství monitorování, která je zahrnutá ve vaší aktuální fakturační období bez poplatku |
-| Fakturovatelné |Ukazuje rozdíl mezi množství spotřebované a množství zahrnuty. Fakturuje se toto množství. Průběžné platby nabídky se žádné zahrnuté s nabídkou množství Tato celková hodnota je stejná jako objemu spotřebovaného |
-| Sazba |Rychlost, kterou jste se vám účtovat na jednotku fakturovatelného času |
-| Hodnota |Zobrazuje výsledek násobení sloupci Nadlimitní množství podle sloupce míry. Pokud množství spotřebované není překročit množství zahrnuty, je bezplatná v tomto sloupci. |
-| Dílčí celkem |Součet všech vaše poplatky za předběžné daň pro toto fakturační období |
-| Celkový součet |Součet všech poplatků po zdanění pro toto fakturační období |
+| Název |Identifikuje službu nejvyšší úrovně za využití |
+| Typ |Definuje typ služeb Azure, který může mít vliv na sazbu |
+| Prostředek |Určuje měrnou jednotku pro měření spotřebovávanou |
+| Oblast |Určuje polohu datacentra pro určité služby, které se počítají na základě umístění datového centra |
+| Spotřebované |Množství měřiče použít během fakturačního období |
+| Zahrnuje |Množství měřiče, které je zdarma v aktuálním fakturačním období |
+| Fakturovatelné |Ukazuje rozdíl mezi spotřebované množství a zahrnuté množství. Tuto částku vám budeme fakturovat. U nabídek s průběžnými platbami se nabídka nezahrnuje žádné množství je tento součet stejný jako spotřebované množství |
+| Sazba |Sazba se účtuje za fakturovatelnou jednotku |
+| Hodnota |Zobrazuje výsledek součinu sloupce Nadlimitní množství sloupcem sazba. Pokud spotřebované množství nepřekročí zahrnuté množství, neplatí žádné poplatky v tomto sloupci. |
+| Dílčí součet |Součet všech vaše náklady před zdaněním za tento fakturační období |
+| Celkový součet |Součet všech poplatků po zdanění za tento fakturační období |
 
-## <a name="how-do-i-make-sure-that-the-charges-in-my-invoice-are-correct"></a>Jak se ujistěte se, zda jsou informace správné poplatky v fakturou?
-Pokud je na vaší faktuře, která chcete podrobnosti na zpoplatněny, najdete v části [porozumět vaší faktuře pro Microsoft Azure.](billing-understand-your-bill.md)
+## <a name="how-do-i-make-sure-that-the-charges-in-my-invoice-are-correct"></a>Jak můžu se ujistit, že jsou správné poplatky na mé faktuře?
+Pokud na vaší faktuře, kterou byste uvítali další podrobnosti se účtuje poplatek, přečtěte si téma [vysvětlení vašeho vyúčtování služeb Microsoft Azure.](billing-understand-your-bill.md)
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
-Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychle vyřešit problém.
+Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.

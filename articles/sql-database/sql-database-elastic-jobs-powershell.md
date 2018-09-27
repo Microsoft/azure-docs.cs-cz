@@ -2,19 +2,22 @@
 title: Vytvoření a správa elastických úloh pomocí Powershellu | Dokumentace Microsoftu
 description: Prostředí PowerShell použít ke správě fondů Azure SQL Database
 services: sql-database
-manager: craigg
-author: stevestein
 ms.service: sql-database
-ms.custom: scale out apps
+subservice: operations
+ms.custom: ''
+ms.devlang: pwershell
 ms.topic: conceptual
-ms.date: 06/14/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 3efee2f9a4b205b87a65eb473271b0ab5e58046d
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.reviewer: ''
+manager: craigg
+ms.date: 06/14/2018
+ms.openlocfilehash: e5e519cad6c3944e5ebf9936970e8ede1509cf95
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498415"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166958"
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>Vytvoření a správa elastických úloh SQL Database pomocí Powershellu (preview)
 

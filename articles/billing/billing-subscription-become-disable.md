@@ -1,7 +1,7 @@
 ---
-title: Provedení příkazu opětovně aktivovat zakázané předplatné Azure | Microsoft Docs
-description: Popisuje když můžete mít předplatné Azure, zakázat a znovu aktivovat.
-keywords: zakázané předplatné Azure
+title: Nová aktivace deaktivovaného předplatného Azure | Dokumentace Microsoftu
+description: Popisuje, kdy může mít předplatné Azure, zakázán a jak ho znovu.
+keywords: Azure se zakázalo předplatné
 services: ''
 documentationcenter: ''
 author: genlin
@@ -15,52 +15,52 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
-ms.author: genli
-ms.openlocfilehash: d76d02ba326cf93582c03937b3ab54d806acaff1
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.author: cwatson
+ms.openlocfilehash: 81f4830691f423e51d6c1f0b71a8fc62160ea92e
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34067601"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393005"
 ---
-# <a name="why-is-my-azure-subscription-disabled-and-how-do-i-reactivate-it"></a>Proč vypnutá předplatného Azure a jak ji aktivovat?
+# <a name="why-is-my-azure-subscription-disabled-and-how-do-i-reactivate-it"></a>Proč zakázána svoje předplatné Azure a jak ho znovu?
 
-Můžete mít předplatné Azure, zakázána, protože vypršela platnost kreditu, dosáhla svého limitu útraty, mají zpožděná faktury, dosáhl svého limitu platební karty, nebo protože předplatné bylo zrušeno správcem účtu. Zobrazit jaký problém pro vás platí a postupujte podle kroků v tomto článku se získat předplatné znovu aktivovat.
+Vaše předplatné Azure může být zakázané, protože vám vypršela platnost kreditu, dosáhli jste limitu útraty, máte nesplacený účet, dosáhli jste limitu na kreditní kartě nebo správce účtu dané předplatné zrušil. Podívejte se, jaký problém se vás týká a postupujte podle kroků v tomto článku se získat předplatné znovu aktivovat.
 
-## <a name="your-credit-is-expired"></a>Vypršela platnost kreditu
+## <a name="your-credit-is-expired"></a>Váš kredit vypršel
 
-Při registraci v Azure bezplatný účet můžete získat bezplatnou zkušební verzi, z něhož 200 USD kredit Azure v 30 dnů a 12 měsíců od bezplatné služby. Na konci 30 dní zakáže Azure vašeho předplatného. Vaše předplatné je zakázané chránit před omylem nabíhání poplatků za využití kromě platební a bezplatné služby, které jsou součástí vašeho předplatného. Chcete-li pokračovat v používání služby Azure, je potřeba [upgradovat předplatné na předplatné s průběžnými platbami](billing-upgrade-azure-subscription.md). Po upgradu, vaše předplatné má stále přístup k bezplatné služby po dobu 12 měsíců. Vám pouze získat účtovat využití kromě bezplatné služby a počty.
+Když zaregistrujete bezplatný účet Azure, získáte bezplatné zkušební předplatné, která umožňuje 200 USD v kreditech Azure na 30 dnů a 12 měsíců bezplatných služeb. Na konci 30 dnů zakáže Azure vašeho předplatného. Vaše předplatné je zakázané, aby neúmyslně nechcete poplatky za využití nad rámec kredit a bezplatnými službami, které jsou součástí vašeho předplatného. Chcete-li pokračovat v používání služby Azure, je třeba [své předplatné upgradovat na předplatné s průběžnými platbami](billing-upgrade-azure-subscription.md). Po upgradu, vaše předplatné má stále přístup k bezplatné služby po dobu 12 měsíců. Účtovat, jenom za využití nad rámec bezplatných služeb a množství.
 
-## <a name="you-reached-your-spending-limit"></a>Dosáhla svého limitu útraty
+## <a name="you-reached-your-spending-limit"></a>Dosáhli jste svého limitu útraty
 
-Předplatná Azure kredit například bezplatná zkušební verze a Visual Studio Enterprise mít limitech útraty na ně. To znamená, že lze použít pouze služby, až se kredit zahrnutý. Pokud vaše využití dosáhne limitu útraty, zakáže Azure vaše předplatné pro zbytek této fakturačního období. Vaše předplatné je zakázané chránit před omylem nabíhání poplatků za využití nad rámec platební součástí vašeho předplatného. Limit útraty odebrat, najdete v tématu [odeberte limit útraty v centru účtů](billing-spending-limit.md#remove).
+Předplatná Azure s kreditem například bezplatnou zkušební verzi a Visual Studio Enterprise mají limitech útraty na ně. To znamená, že smíte používat jenom služby až po zahrnuté kredit. Pokud vaše využití dosáhne limitu útraty, Azure zakáže vaše předplatné pro zbývající daném fakturačním období. Vaše předplatné je zakázané, aby neúmyslně nechcete poplatky za využití nad rámec kredit součástí vašeho předplatného. Pokud chcete odebrat limit útraty, naleznete v tématu [odebrat limit útraty v centru účtů](billing-spending-limit.md#remove).
 
 > [!NOTE] 
-> Pokud máte bezplatnou zkušební verzi a odeberte limit útraty, vaše předplatné převede na průběžné platby na konci bezplatné zkušební verze. Ponechat váš zbývající kredit úplné 30 dní, po vytvoření odběru. Máte také přístup k bezplatné služby po dobu 12 měsíců.
+> Pokud máte bezplatnou zkušební verzi předplatného a odebrat limit útraty, vaše předplatné převede na průběžné platby na konci této bezplatné zkušební verze. Zbývající kredit si zachováte plnou 30 dnů po vytvoření předplatného. Máte také přístup k bezplatné služby po dobu 12 měsíců.
 
-Ke sledování a správě fakturace aktivity pro Azure, najdete v části [zabránit neočekávané náklady s Azure fakturace a náklady na správu](billing-getting-started.md) a [nastavit výstrahy pro vaše předplatné Microsoft Azure billing](billing-set-up-alerts.md).
+Monitorovat a řídit fakturaci pro Azure najdete v tématu [jak zabránit neočekávaným nákladům se správou nákladů a fakturací Azure](billing-getting-started.md) a [nastavení upozornění pro předplatná Microsoft Azure fakturace](billing-set-up-alerts.md).
 
 
-## <a name="your-bill-is-past-due"></a>Vaše faktura je po splatnosti
+## <a name="your-bill-is-past-due"></a>Vaše faktura je po datu splatnosti
 
-Chcete-li vyřešit po splatnosti vyvážit najdete v tématu [vyřešit po splatnosti vyrovnání pro vaše předplatné Azure po získání e-mailu z Azure](billing-azure-subscription-past-due-balance.md).
+Chcete-li vyřešit po datu splatnosti zůstatek, naleznete v tématu [vyřešit po datu splatnosti zůstatek vašeho předplatného Azure po získání e-mailu od Azure](billing-azure-subscription-past-due-balance.md).
 
-## <a name="the-bill-exceeds-your-credit-card-limit"></a>Kusovníku překračuje limit platební karty
+## <a name="the-bill-exceeds-your-credit-card-limit"></a>Na faktuře překračuje limit vaší platební karty
 
-Chcete-li vyřešit tento problém [přepnout na jinou platební kartu](billing-how-to-change-credit-card.md). Nebo pokud jste představující firma, můžete [přepínač tak, aby platit podle faktury](billing-how-to-pay-by-invoice.md).
+Chcete-li vyřešit tento problém [přepnout na jiné platební karty](billing-how-to-change-credit-card.md). Nebo pokud jste představující obchodní, můžete si [přepínač o platby fakturami](billing-how-to-pay-by-invoice.md).
 
-## <a name="the-subscription-was-accidentally-canceled-and-you-want-to-reactivate"></a>Předplatné omylem zrušila a vy chcete znovu aktivovat
+## <a name="the-subscription-was-accidentally-canceled-and-you-want-to-reactivate"></a>Předplatné bylo omylem zrušeno a chcete znovu aktivovat
 
-Pokud jste správce účtu a omylem zrušit předplatné průběžnými platbami, můžete ji znovu aktivovat v centru účtů.
+Pokud jste správce účtu a omylem zrušeno předplatné s průběžnými platbami, můžete je aktivovat v centru účtů.
 
-1. Přihlaste se k [centra účtů](https://account.windowsazure.com/Subscriptions).
-1. Vyberte zrušené předplatné.
+1. Přihlaste se k [centra pro účty](https://account.windowsazure.com/Subscriptions).
+1. Vyberte zrušeného předplatného.
 1. Klikněte na tlačítko **znovu aktivovat**.
 
     ![Snímek obrazovky zobrazující znovu aktivovat odkazy v pravém podokně](./media/billing-how-to-cancel-azure-subscription/reactivate-sub.png)
 
-Pro ostatní typy předplatného se [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) vaše předplatné znovu aktivovat.
+U jiných typů předplatného [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) mít vaše předplatné znovu aktivovat.
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktování podpory
 
-Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychle vyřešit problém.
+Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.

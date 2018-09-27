@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 9/20/2018
 ms.author: rkarlin
-ms.openlocfilehash: 6328f4f2a3b9d657cef537ed9da339f2b9b8a6e8
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 4664a9f84a92b7a223409d764971fda81317bbf0
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46131228"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222246"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Automatizace registrace služby Azure Security Center pomocí Powershellu
 
@@ -98,7 +98,7 @@ Tyto kroky musí provést předtím, než spustíte rutiny Security Center:
 
 Jste teď úspěšně zprovoznění Azure Security Center pomocí Powershellu.
 
-Nyní můžete tyto rutiny prostředí PowerShell se skripty pro automatizaci pro iteraci prostřednictvím kódu programu napříč předplatným a prostředkům. To šetří čas a sníží pravděpodobnost, že lidské chyby. To může být použito [ukázkový skript](https://github.com/Microsoft/Azure-Security-Center/blob/master/quickstarts/ASC-Samples.ps1) jako odkaz.
+Nyní můžete tyto rutiny prostředí PowerShell se skripty pro automatizaci pro iteraci prostřednictvím kódu programu napříč předplatným a prostředkům. To šetří čas a snižuje pravděpodobnost lidské chyby. To může být použito [ukázkový skript](https://github.com/Microsoft/Azure-Security-Center/blob/master/quickstarts/ASC-Samples.ps1) jako odkaz.
 
 
 

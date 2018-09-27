@@ -10,19 +10,19 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/14/2018
+ms.topic: conceptual
+ms.date: 09/26/2018
 ms.author: bwren
-ms.openlocfilehash: 97cc6d6e922ab0bedd729eddca754ae016f041bf
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0413357b6e17bf66b0ae9b504bc23b9702d03c91
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958012"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220971"
 ---
 # <a name="azure-monitor-overview"></a>Přehled služby Azure Monitor
 
-Azure Monitor maximalizuje dostupnost a výkon vašich aplikací, zajišťuje komplexní řešení pro shromažďování, analýzu a funguje na telemetrická data z vašeho cloudu a místních prostředích. Vám pomůže pochopit, jaký výkon vašich aplikací a proaktivně identifikuje problémy neovlivňují je a prostředky, které jsou závislé.
+Azure Monitor maximalizuje dostupnost a výkon vašich aplikací, zajišťuje komplexní řešení pro shromažďování, analýzu a funguje na telemetrická data z vašeho cloudu a místních prostředích. Pomůže vám při zjišťování stavu vašich aplikací a proaktivně identifikuje problémy, které je ovlivňují, a prostředky, na kterých jsou závislé.
 
 > [!VIDEO https://www.youtube.com/embed/_hGff5bVtkM]
 
@@ -47,7 +47,7 @@ Dotazovací jazyk Log Analytics je vhodný pro jednoduchá protokolu dotazy, ale
 ![Logs](media/overview/logs.png)
 
 ## <a name="what-data-does-azure-monitor-collect"></a>Jaká data shromažďuje nástroj Azure Monitor?
-Log Analytics může shromažďovat data z různých zdrojů. Můžete si představit sledování dat pro vaše aplikace na úrovních, od aplikace, libovolný operační a služeb, které spoléhá na, na platformě, jako takové. Azure Monitor provádí sběr dat ze všech následujících úrovních:
+Azure Monitor může shromažďovat data z různých zdrojů. Můžete si představit sledování dat pro vaše aplikace na úrovních, od aplikace, libovolný operační a služeb, které spoléhá na, na platformě, jako takové. Azure Monitor provádí sběr dat ze všech následujících úrovních:
 
 - **Monitorování dat aplikací**: Data o výkonu a funkce kódu jste napsali, bez ohledu na jeho platformu.
 - **Data monitorování hostovaného operačního systému**: Data o operačním systému, na kterém je aplikace spuštěna. To může být spuštěn v Azure, jiného cloudu nebo místně. 
@@ -145,9 +145,6 @@ Několik rozhraní API jsou dostupná pro čtení a zápis metriky a protokoly z
 ## <a name="next-steps"></a>Další postup
 Další informace:
 
-* [Azure Monitor](https://azure.microsoft.com/services/monitor/) – pokud začínáte s metrikami a upozorněními pro základní monitorování
-* [Application Insights](https://azure.microsoft.com/documentation/services/application-insights/) – pokud se pokoušíte diagnostikovat problémy ve webové aplikaci App Service
-* [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) – pro analýzu shromážděných protokolů a dat monitorování
-
-
-
+* [Metriky a protokoly](../monitoring/monitoring-data-collection.md) pro data shromážděná službou Azure Monitor.
+* [Zdroje dat](../monitoring/monitoring-data-sources.md) pro jak různých komponent vaší aplikace odesílat telemetrická data.
+* [Log Analytics](../log-analytics/log-analytics-queries.md) analyzovat shromážděná data.

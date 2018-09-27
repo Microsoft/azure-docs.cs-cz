@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/5/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 3e9907450680d6984a644b43014ba90b1a9d987e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b1bab65b68c5f37165fbc8414ac4300c924e53b9
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991925"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47165172"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Záznam hlasu ukázky vytvořte vlastní hlasové
 
@@ -38,7 +38,7 @@ Záznam inženýr  |Dohlíží technické aspekty záznam a funguje záznam zař
 Ředitel            |Připraví skript a coaches talentu hlasové výkonu.
 Editor              |Dokončí zvukové soubory a připravit je pro nahrání na portál vlastní hlasové.
 
-Jednotlivec může vyplnit více než jednu roli. Tento průvodce to předpokládá, že budete primárně vyplnění roli ředitel a nabírat hlasové talentů a pracovníkem záznam. Pokud chcete, aby se záznamy sami, nejsou některé dostupné informace o role softwarového inženýra záznam.
+Jednotlivec může vyplnit více než jednu roli. Tento průvodce to předpokládá, že budete primárně vyplnění roli ředitel a nabírat hlasové talentů a pracovníkem záznam. Pokud chcete, aby se záznamy sami pro sebe, tento článek obsahuje nějaké informace týkající role softwarového inženýra záznam. Rolí editor, není nutná až po relaci, tak může provádět inženýr ředitel záznam.
 
 ## <a name="choose-your-voice-talent"></a>Zvolte vašeho talentu hlasu
 
@@ -68,13 +68,13 @@ Výchozí bod všechny vlastní hlasový záznam relace je skript, který obsahu
 
 Projevy ve skriptu můžou pocházet z libovolného místa: fiction, bez fiction, záznamy o studiu projevů, zprávy a něco jinak k dispozici v tisk formuláře. Pokud chcete zajistit, aby že vašeho hlasu, jak se i na konkrétní druhy slova (jako jsou lékařské terminologie nebo programovací žargonu), můžete chtít zahrnout vět z umožňuje zrychlit Odborný Paper nebo technické dokumentace. Stručný popis toho potenciální právních problémech najdete v článku ["Legalities"](#legalities) oddílu. Můžete taky psát vlastní text.
 
-Vaše projevy není musí pocházet ze stejného zdroje nebo stejný druh zdroje. Ještě není potřeba nic provádět mezi sebou. Pokud ale budete pomocí nastavená fráze (například "úspěšně přihlásíte") ve vaší aplikaci řeči, nezapomeňte zahrnout je do vašeho skriptu. To vám poskytne vlastní hlasové větší šanci dobře vyslovení tyto věty. A pokud by se rozhodnete použít záznam místo řečového, budete již mít ho ve stejné hlasu.
+Vaše projevy nemusí pocházet ze stejného zdroje nebo stejný druh zdroje. Ještě není potřeba nic provádět mezi sebou. Pokud ale budete pomocí nastavená fráze (například "úspěšně přihlásíte") ve vaší aplikaci řeči, nezapomeňte zahrnout je do vašeho skriptu. To vám poskytne vlastní hlasové větší šanci dobře vyslovení tyto věty. A pokud by se rozhodnete použít záznam místo řečového, budete již mít ho ve stejné hlasu.
 
 Konzistence je klíč při výběru hlasové talentu, je různých hallmark dobré skriptu. Váš skript by měl obsahovat mnoho různých slov a vět s řadou věty délky, struktury a náladu. Každý zvuk v jazyce by měl být reprezentována více doby a v mnoha kontextech (volá *zapsané ve fonetické pokrytí*). 
 
 Navíc text by měl obsahovat všechny způsoby, jakými mohou být zastoupeny v psaní konkrétní zvuk a umístit každý zvuk na různých místech v těchto větách. Deklarativní vět a otázek by měl zahrnuté a číst pomocí odpovídající intonací.
 
-Je obtížné je napsat skript, který poskytuje *právě dostatek* data, aby mohly portál Custom Speech vytvářet vhodné hlasový vstup. V praxi je nejjednodušší způsob, jak vytvořit skript, který dosahuje robustní zapsané ve fonetické pokrytí velký počet vzorků, které patří. Standardní hlasů, které společnost Microsoft používá byly vytvořeny z desítek tisíců projevy. Byste měli být připraveni zaznamenat pár několik tisíc projevy minimálně vytvářet vlastní hlasové produkční kvality.
+Je obtížné je napsat skript, který poskytuje *právě dostatek* data, aby mohly portál Custom Speech vytvářet vhodné hlasový vstup. V praxi je nejjednodušší způsob, jak vytvořit skript, který dosahuje robustní zapsané ve fonetické pokrytí velký počet vzorků, které patří. Standardní hlasů, které společnost Microsoft poskytuje byly vytvořeny z desítek tisíců projevy. Byste měli být připraveni zaznamenat pár několik tisíc projevy minimálně vytvářet vlastní hlasové produkční kvality.
 
 Zkontrolujte pečlivě pro chyby skriptu. Pokud je to možné máte někdo jiný zkontrolujte příliš. Když spouštíte prostřednictvím skriptu pomocí vašeho talentu, budete pravděpodobně catch několik více chyb.
 
@@ -108,7 +108,7 @@ Naštěstí je možné zcela se těmto problémům. Existuje mnoho zdrojů text,
 |[CMU Arctic souhrnu](http://festvox.org/cmu_arctic/)|Vybrat z předem copyright funguje speciálně pro použití v projektech syntézu řeči asi 1100 věty. Vynikající výchozí bod.|
 |Už funguje<br>v části autorských práv|Funguje se obvykle vydávané před 1923. Pro angličtinu [projektu Gutenberg](https://www.gutenberg.org/) nabízí desítky tisíc tyto práce. Můžete chtít zaměřit na novější funguje jako jazyk bude blíže na moderní angličtinu.|
 |Government&nbsp;funguje|Funguje vytvořené ze státní správy USA nejsou autorským právům ve Spojených státech amerických, i když vláda se mohou prohlásit copyright v dalších zemích.|
-|Veřejné domény.|Funguje pro které copyright byl výslovně odmítnuté nebo mít byl vyhrazen pro veřejné domény. (To nemusí být možné zrušíme copyright zcela v některé jurisdikce.)|
+|Veřejné domény.|Funguje pro které copyright byl výslovně odmítnuté nebo mít byl vyhrazen pro veřejné domény. Nemusí být možné zrušíme copyright zcela v některé jurisdikce.|
 |Permissively licenci funguje|Distribuováno za licenci funguje jako licence Creative Commons nebo GNU licenci pro bezplatnou dokumentaci (GFDL). Wikipedia používá GFDL. Některé licence, však může omezení výkonu licencovaný obsah, který může mít vliv na vytváření modelu vlastní hlasové, proto licence si pozorně přečtěte.|
 
 ## <a name="recording-your-script"></a>Záznam skriptu
@@ -127,7 +127,7 @@ Použijte studio vysoce kvalitní mikrofon kondenzátoru ("Code" zkráceně) ur�
 
 Můžete také použít analogové mikrofon. Obsahuje mnoho pronájem nabízejí "ročníku" mikrofonů uznávané jejich hlasové znaku. Všimněte si, že používá profesionální analogové ozubeného kola balanced XLR konektory, nikoli 1/4 palce moduly, který se používá v zařízeních uživatelů. Budete-li analogové, budete také potřebovat preamp a zvukové rozhraní počítače pomocí těchto konektorů.
 
-Nainstalujte mikrofon samostatné nebo Vida a pop filtru mikrofon k odstranění šumu z "plosive" výslovnost "p" a "b". Některé mikrofony součástí pozastavení připojení, který izoluje je od vibrace ve stojan, což je užitečné.
+Nainstalujte mikrofon samostatné nebo Vida a pop filtru mikrofon k odstranění šumu z "plosive" souhláskami jako "p" a "b". Některé mikrofony součástí pozastavení připojení, který izoluje je od vibrace ve stojan, což je užitečné.
 
 Talentu hlasu musí zůstat na konzistentní vzdálenost od mikrofon. Použití pásky k označení, kde by měl uživatel stojí na dolní mez. Pokud se vám sedět dává přednost talentu, věnujte zvláštní pozornost monitorování vzdálenost povinná kontrola úrovně důvěryhodnosti a vyhnutí se zbytečnému vytváření řetězce.
 
@@ -137,7 +137,7 @@ Osoba, provozní záznamové – inženýr – by měla být v místnosti odděl
 
 Záznam by měl obsahovat jako malé šum, jako je to možné, s cílem poměru signálu šumu 80-db nebo vyšší.
 
-Úzce poslouchejte záznam nečinnosti v vaší "z mýtných bran," zjistit, kde pochází z jakékoli šum a odstranění příčiny. Běžné zdroje šumu jsou air otvory, fluorescenční světla předřadníky, provoz v blízkosti silnicích zakázána a fanoušky zařízení (i přenosné počítače pravděpodobně ventilátorů). Mikrofon a kabely můžete vyzvednutí elektrické zbytečných dat blízké AC zapojení, obvykle šum nebo žhavých novinek.
+Úzce poslouchejte záznam nečinnosti v vaší "z mýtných bran," zjistit, kde pochází z jakékoli šum a odstranění příčiny. Běžné zdroje šumu jsou air otvory, fluorescenční světla předřadníky, provoz v blízkosti silnicích zakázána a fanoušky zařízení (i přenosné počítače pravděpodobně ventilátorů). Mikrofon a kabely můžete vyzvednutí elektrické zbytečných dat blízké AC zapojení, obvykle šum nebo žhavých novinek. To, co mohou být způsobeny také *základu smyčky*, což je způsobeno tím, že zařízení zapojí se do více než jeden elektrický obvod.
 
 > [!TIP]
 > V některých případech je možné použít ekvalizér nebo softwaru snížení šumu modulu plug-in k odstranění šumu z vašich nahrávek, i když je vždy vhodné ho zastavit v jejich zdroji.
@@ -148,7 +148,7 @@ Nastavit úrovně tak, že většina dostupné dynamických rozsahů digitální
 
 Tady se používá většina rozsah (výška), ale nejvyšší špičky signál: nebylo dosaženo horní nebo dolní části okna. Zjistíte také, že blíží nečinnosti v záznamu tenká vodorovná čára označující floor nízké šumu. Tento záznam má přijatelné dynamickým a poměr signálu šumu.
 
-Záznam přímo do počítače s využitím vysoce kvalitní zvukového rozhraní nebo USB port, v závislosti na mikrofon používáte. Pro obdobu jmenovek, zjednodušení zvuku řetězce: povinná kontrola úrovně důvěryhodnosti, preamp, zvukové rozhraní, počítač. Můžete i licence [Avid profesionálních nástrojů](http://www.avid.com/en/pro-tools) a [Adobe Audition](https://www.adobe.com/products/audition.html) měsíční za rozumnou cenu. Pokud váš rozpočet je velmi vysoké, zkuste bezplatnou [Audacity](https://www.audacityteam.org/).
+Záznam přímo k počítači přes zvukové rozhraní vysoce kvalitní nebo port USB, v závislosti na mic, které používáte. Pro obdobu jmenovek, zjednodušení zvuku řetězce: povinná kontrola úrovně důvěryhodnosti, preamp, zvukové rozhraní, počítač. Můžete i licence [Avid profesionálních nástrojů](http://www.avid.com/en/pro-tools) a [Adobe Audition](https://www.adobe.com/products/audition.html) měsíční za rozumnou cenu. Pokud váš rozpočet je velmi vysoké, zkuste bezplatnou [Audacity](https://www.audacityteam.org/).
 
 Záznam na 44,1 kHz 16bitové monophonic (CD kvality) nebo vyšší. Aktuální stav systému – moderní je 48 kHz 24-bit, pokud je vaše zařízení podporuje. Můžete se dolů – ukázka zvuku na 16 kHz 16 bitů než ji odešlete k portálu vlastní hlasové. Stále platí mít vysoce kvalitní původního záznamu v případě, že změny jsou potřeba.
 
@@ -178,14 +178,14 @@ By měl talentu *není* přidat různé pozastaví mezi slovy. Věty by stále t
 
 Vytvořit odkaz na záznam, nebo *shoda souboru* z typických utterance na začátku relace. Požádejte talentu zopakovat tento řádek každé stránky nebo tak. Pokaždé, když, porovnejte má nový záznam odkaz. Tento postup pomáhá talentu zůstávají konzistentní vzhledem k aplikacím ve svazku, tempo, rozteč a intonací. Mezitím můžete inženýr použít soubor shoda jako odkaz pro úrovně a celkovou konzistenci zvuku.
 
-Soubor porovnání je obzvláště důležité při obnovení nahrávání po přerušení, nebo na jiný den. Budete chtít přehrát jej několikrát pro talentů a potom kliknul zopakovat to pokaždé, když dokud je odpovídajících dobře.
+Soubor porovnání je obzvláště důležité při obnovení nahrávání po přerušení nebo na jiný den. Budete chtít přehrát jej několikrát pro talentů a potom kliknul zopakovat to pokaždé, když dokud je odpovídajících dobře.
 
 Coach vašeho talentu hloubkové dech a pozastavení na chvíli před každou utterance. Zaznamenejte na několik sekund mezi projevy nečinnosti. Slova musí projevit stejným způsobem jako pokaždé, když se zobrazí, vzhledem k tomu kontextu. Například "někam" sloveso je jinak vyslovováno "záznam" jako podstatné jméno.
 
 Zaznamenejte dobré pěti sekund od nečinnosti před první záznam pro zachycení "místnosti tónu." Tento postup pomáhá portálu vlastní hlasové kompenzovat všechny zbývající šumu v záznamu.
 
 > [!TIP]
-> Vše, co skutečně potřebujete je hlas talentu, abyste měli monophonic nahrávání (single kanál) nebo pouze jejich řádky. Pokud je záznam v stereo, ale můžete použít druhý kanál pro záznam chatter v řídicí místnosti k zachycení diskuzi o konkrétní řádky nebo trvá. Odeberte toto sledování z verze, která nahrávají na portál vlastní hlasové.
+> Vše, co skutečně potřebujete zachytit je hlas talentu, abyste měli monophonic nahrávání (single kanál) nebo pouze jejich řádky. Pokud je záznam v stereo, ale můžete použít druhý kanál pro záznam chatter v řídicí místnosti k zachycení diskuzi o konkrétní řádky nebo trvá. Odeberte toto sledování z verze, která nahrávají na portál vlastní hlasové.
 
 Naslouchání úzce, použít sluchátka, talentů hlasové výkonu. Hledáte dobrá, ale přirozené diction, správnou výslovnost a nedostatečná nežádoucí zvuky. Neváhejte a požádejte vašeho talentu znovu zaznamenat utterance, která nesplňuje těchto standardů. 
 
@@ -200,11 +200,11 @@ Bere regulární konce a poskytne můžete dát chvilku pauzu pomáhají vašeho
 
 Moderní záznam aplikace spustit na počítačích. Na konci relace obdržíte jednu nebo více zvukové soubory, ne na pásku. Tyto soubory budou pravděpodobně být ve formátu WAV nebo AIFF CD kvality (44,1 kHz 16-bit) nebo novějším. 48 kHz 24 bitů je běžné a žádoucí. Vyšší míra vzorkování, jako je například 96 kHz, obvykle nejsou potřeba.
 
-Vlastní hlasové portál vyžaduje každý zadaný utterance ve vlastním souboru. Zvukové soubory, od sady studio obsahuje několik projevy. Proto je primární úloha postprodukční Rozdělit záznamy a jejich přípravě k odeslání. Inženýr záznam mohl umístěny značky v souboru (nebo samostatné startovacího seznamu k dispozici) k označení, kde začíná každý utterance.
+Vlastní hlasové portál vyžaduje každý zadaný utterance ve vlastním souboru. Zvukové soubory, od sady studio obsahuje několik projevy. Proto je primární úloha postprodukční Rozdělit záznamy a jejich přípravě k odeslání. Inženýr záznam mohl umístěny značky v souboru (nebo zadané startovací samostatný list) k označení, kde začíná každý utterance.
 
 Použití poznámek k nalezení přesně přejdete a pak pomocí zvuk úpravy nástroje, jako například [Avid profesionálních nástrojů](http://www.avid.com/en/pro-tools), [Adobe Audition](https://www.adobe.com/products/audition.html), nebo bezplatnou [Audacity](https://www.audacityteam.org/), kopírování utterance do nového souboru.
 
-Ponechte pouze o 0,2 sekundách nečinnosti na začátku a konce každého klipu, s výjimkou prvního. Tento soubor by měl začínat plně pěti sekundách nečinnosti. Nepoužívejte zvuku editor "Vynulovat" tiché části souboru. Vlastní hlasové algoritmy kompenzovat všechny šum na pozadí plyne ze zbytkových pomůže včetně tón"místo".
+Ponechte pouze o 0,2 sekundách nečinnosti na začátku a konce každého klipu, s výjimkou prvního. Tento soubor by měl začínat plně pěti sekundách nečinnosti. Nepoužívejte zvuku editoru "Vynulovat" tiché části souboru. Vlastní hlasové algoritmy kompenzovat všechny šum na pozadí plyne ze zbytkových pomůže včetně tón"místo".
 
 Každý soubor poslouchejte pečlivě. V této fázi můžete upravit malé nežádoucí zvuky, které jste zmeškali během nahrávání jako lehká lip smack před řádku, ale dejte pozor, abyste odebrat všechny skutečné řeči. Pokud soubor nejde odstranit, odeberte jej z datové sady a mějte na paměti, že jste tak učinili.
 

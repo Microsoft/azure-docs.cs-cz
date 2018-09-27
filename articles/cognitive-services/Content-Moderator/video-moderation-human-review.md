@@ -1,22 +1,23 @@
 ---
-title: Azure Content Moderator – moderování videa | Dokumentace Microsoftu
+title: Moderování videa s lidskou kontrolu - Content Moderatoru
+titlesuffix: Azure Cognitive Services
 description: Použít s podporou počítače moderování videa a nástroje pro recenze prováděné lidmi, obscénnost nevhodný obsah
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/20/2018
 ms.author: sajagtap
-ms.openlocfilehash: d9c01d4c2590535a4106e8e4ee79a12bdc60d956
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 33956e1986265b36f6df9a2d19909cb974bd3197
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714492"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222076"
 ---
-# <a name="video-moderation"></a>Moderování videa
+# <a name="video-moderation-with-human-review"></a>Moderování videa s recenze prováděné lidmi
 
 Použití Content Moderator s podporou počítače [moderování videa](video-moderation-api.md) a [nástroj pro recenze prováděné lidmi](Review-Tool-User-Guide/human-in-the-loop.md) moderování videa a záznamy o studiu pro dospělé (explicitně) a pikantní obsah (sugestivní) k dosažení nejlepších výsledků pro vaši firmu.
 

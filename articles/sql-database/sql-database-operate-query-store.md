@@ -2,19 +2,22 @@
 title: Provozní Query Store ve službě Azure SQL Database
 description: Zjistěte, jak provozovat Query Store ve službě Azure SQL Database
 services: sql-database
-author: bonova
-manager: craigg
 ms.service: sql-database
-ms.custom: monitor & tune
+ms.subservice: performance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: bonova
 ms.author: bonova
-ms.openlocfilehash: 37cb77b6738ba1354034dcf77d22a19b96c4ef23
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 8795930c6b676e7e710f112e8d9eedd6ab9084b5
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903094"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47164561"
 ---
 # <a name="operating-the-query-store-in-azure-sql-database"></a>Provozování Query Store ve službě Azure SQL Database
 Query Store v Azure je plně spravované databázové funkce, která průběžně shromažďuje a uvede podrobné historické údaje o všech dotazech. Query Store se dá chápat jako podobný zapisovač letových údajů letadlo, který výrazně zjednodušuje výkon dotazů, řešení potíží pro cloudové a místní zákazníci. Tento článek popisuje konkrétní aspekty provozování Query Store v Azure. Na základě těchto dat předem shromážděná dotazu můžete rychle diagnostikovat a vyřešit problémy s výkonem a tedy věnovat víc času, zaměřuje se na svoje podnikání. 
@@ -54,6 +57,6 @@ Pro další kontrolu informace v následujících článcích:
 
 * [Zapisovač letových údajů pro vaši databázi](https://azure.microsoft.com/blog/query-store-a-flight-data-recorder-for-your-database) 
 * [Monitorování výkonu pomocí Query Store](https://msdn.microsoft.com/library/dn817826.aspx)
-* [Scénáře použití Query Store](https://msdn.microsoft.com/library/mt614796.aspx)
+* [Scénáře použití úložiště dotazů](https://msdn.microsoft.com/library/mt614796.aspx)
  
 

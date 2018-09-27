@@ -10,14 +10,14 @@ ms.technology: language-understanding
 ms.topic: article
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: ec006d8941d8832d139a09b1e8af13000ff5a43e
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: f4b267dda3c05d490d91fe02fbcfde4e49674603
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040699"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166397"
 ---
-# <a name="tutorial-3-add-common-utterance-formats"></a>Kurz: 3. Přidání běžných formátů promluv
+# <a name="tutorial-3-add-common-utterance-formats"></a>Kurz 3: Přidání běžných formátů utterance
 
 V tomto kurzu použijte ke zvýšení záměr a entity předpovědi současně méně projevy příklad vzory. Vzor je k dispozici prostřednictvím utterance příkladu šablony, zahrnující syntaxi k identifikaci entity a textového ignorable. Vzorek je kombinací odpovídající výraz a strojové učení.  Příklad utterance šablony, spolu s záměr projevů poskytnout LUIS lepší představu, z jaké projevy přizpůsobit záměr. 
 

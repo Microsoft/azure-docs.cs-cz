@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 2126875a18d4a6581629ea1c8362236242a666a8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4984332e1a149ae838bc76a24abec90364f5699e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961021"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221974"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Nejčastější dotazy pro Cloudyn
 
@@ -145,7 +145,7 @@ Sestavy nákladů můžete zobrazit náklady kolísání pokaždé, když se akt
 
 V průběhu měsíce jsou všechny fakturační soubory odeslané poskytovatele cloudových služeb odhad denních nákladů. Někdy se často aktualizuje data – čas od času víc než jednou za den. Aktualizace jsou častější od AWS do Azure. Nákladů celkový počet položek by měla zůstat po dokončení výpočet fakturace za předchozí měsíc a po přijetí poslední fakturace souboru. Obvykle pomocí 10 měsíce.
 
-Když dostanete úpravy náklady od poskytovatele cloudových služeb dojde ke změnám. Příjem kredity je jedním z příkladů. Změny můžou nastat měsíců po byla uzavřena v příslušném měsíci. Změny jsou zobrazeny pokaždé, když je přepočet provedené poskytovatele cloudových služeb. Cloudyn aktualizuje její historická data, abyste měli jistotu, že všechny úpravy přepočítána. Také ověří, že přesně zobrazených náklady v sestavy.
+Když dostanete úpravy náklady od poskytovatele cloudových služeb dojde ke změnám. Příjem kredity je jedním z příkladů. Změny můžou nastat měsíců po byla uzavřena v příslušném měsíci. Změny jsou zobrazeny pokaždé, když je přepočet provedené poskytovatele cloudových služeb. Cloudyn aktualizuje její historická data, abyste měli jistotu, že všechny úpravy přepočítána. Také ověřuje, že náklady jsou zobrazeny přesně v oznámí.
 
 ## <a name="how-can-a-direct-csp-configure-cloudyn-access-for-indirect-csp-customers-or-partners"></a>Jak můžete s přímým přístupem CSP konfigurovat Cloudyn přístup pro nepřímé zákazníky nebo partnery CSP?
 

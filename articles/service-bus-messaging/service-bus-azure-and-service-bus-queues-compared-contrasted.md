@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 06/05/2018
+ms.date: 09/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 49694780f4fe32f8068c1d7c4cc87cfb88f77fe5
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: f48e9a5600dca1e13d6ee94a675d5bc824915118
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700976"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393957"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Fronty služby Storage a fronty služby Service Bus – porovnání a rozdíly
 Tento článek analyzuje rozdíly a podobnosti mezi dvěma typy front, které nabízí Microsoft Azure ještě dnes: fronty služby Storage a fronty služby Service Bus. Tyto informace můžete použít ke srovnání příslušných technologií a pomůžou vám kvalifikovaněji se rozhodnout, které řešení nejlíp vyhovuje vašim potřebám.
@@ -65,7 +65,7 @@ Tabulky v následujících částech poskytují možnost logického seskupován�
 ## <a name="foundational-capabilities"></a>Základní možnosti
 Tato část porovnává některých základních funkcí front zpráv poskytuje fronty úložiště a front služby Service Bus.
 
-| Porovnání kritérií | Fronty úložiště | Fronty Service Bus |
+| Porovnání kritérií | Fronty úložiště | Fronty služby Service Bus |
 | --- | --- | --- |
 | Řazení se zárukou |**Ne** <br/><br>Další informace najdete v tématu první poznámky v části "Další informace".</br> |**Ano - First-In-First-Out (FIFO)**<br/><br>(pomocí zasílání zpráv relací) |
 | Garance doručení |**Na alespoň jedno** |**Na alespoň jedno**<br/><br/>**Jednou na většinu** |
@@ -97,7 +97,7 @@ Tato část porovnává některých základních funkcí front zpráv poskytuje 
 ## <a name="advanced-capabilities"></a>Pokročilé funkce
 Tato část porovnává pokročilé funkce, která poskytuje fronty úložiště a front služby Service Bus.
 
-| Porovnání kritérií | Fronty úložiště | Fronty Service Bus |
+| Porovnání kritérií | Fronty úložiště | Fronty služby Service Bus |
 | --- | --- | --- |
 | Naplánované doručení |**Ano** |**Ano** |
 | Automatické nedoručení |**Ne** |**Ano** |
@@ -128,7 +128,7 @@ Tato část porovnává pokročilé funkce, která poskytuje fronty úložiště
 ## <a name="capacity-and-quotas"></a>Kapacity a kvót
 Tato část porovnává fronty služby Storage a fronty služby Service Bus z hlediska [kapacity a kvót](service-bus-quotas.md) , který může použít.
 
-| Porovnání kritérií | Fronty úložiště | Fronty Service Bus |
+| Porovnání kritérií | Fronty úložiště | Fronty služby Service Bus |
 | --- | --- | --- |
 | Maximální velikost fronty |**500 TB**<br/><br/>(omezeno na [jednotné kapacitě účtu úložiště](../storage/common/storage-introduction.md#queue-storage)) |**1 GB až 80 GB**<br/><br/>(definované při vytvoření fronty a [povolení dělení](service-bus-partitioning.md) – naleznete v části "Další informace") |
 | Maximální velikost zprávy |**64 KB**<br/><br/>(48 KB při použití **Base64** kódování)<br/><br/>Azure podporuje velké zprávy kombinací fronty a objekty BLOB – v tomto okamžiku je možné zařadit do fronty až 200 GB pro jednu položku. |**256 KB** nebo **1 MB**<br/><br/>(včetně záhlaví a text záhlaví maximální velikost: 64 KB).<br/><br/>Závisí [úroveň služby](service-bus-premium-messaging.md). |
@@ -147,7 +147,7 @@ Tato část porovnává fronty služby Storage a fronty služby Service Bus z hl
 ## <a name="management-and-operations"></a>Operace a Správa
 Tato část obsahuje porovnání funkcí správy, poskytuje fronty úložiště a front služby Service Bus.
 
-| Porovnání kritérií | Fronty úložiště | Fronty Service Bus |
+| Porovnání kritérií | Fronty úložiště | Fronty služby Service Bus |
 | --- | --- | --- |
 | Protokol pro správu |**Rozhraní REST přes protokol HTTP/HTTPS** |**Rozhraní REST přes protokol HTTPS** |
 | Modul runtime protokolu |**Rozhraní REST přes protokol HTTP/HTTPS** |**Rozhraní REST přes protokol HTTPS**<br/><br/>**AMQP 1.0 Standard (TCP s TLS)** |
@@ -171,7 +171,7 @@ Tato část obsahuje porovnání funkcí správy, poskytuje fronty úložiště 
 ## <a name="authentication-and-authorization"></a>Ověřování a autorizace
 Tento oddíl popisuje funkce ověřování a autorizaci podporovaných front služby Storage a fronty služby Service Bus.
 
-| Porovnání kritérií | Fronty úložiště | Fronty Service Bus |
+| Porovnání kritérií | Fronty úložiště | Fronty služby Service Bus |
 | --- | --- | --- |
 | Authentication |**Symetrický klíč** |**Symetrický klíč** |
 | Model zabezpečení |Delegovaný přístup prostřednictvím tokeny SAS. |SAS |

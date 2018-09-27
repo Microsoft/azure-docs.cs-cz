@@ -14,19 +14,19 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 5/10/2018
-ms.author: mobandyo
-ms.openlocfilehash: 650fac6208adf8f904384454b2e66e26e45893f1
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.author: erikre
+ms.openlocfilehash: 79cc543e2a106fa8cbff31bdd0e6bb35afe68e4b
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918848"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392036"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Pomocí Azure API pro fakturaci prostřednictvím kódu programu získáte přehled o využívání služeb Azure
-Pomocí Azure API pro fakturaci. data o využití a prostředků o přijetí změn do nástroje pro vaše preferované datové analýzy. Využití prostředků Azure a RateCard API můžete přesně předpovídat a spravovat svoje náklady. Rozhraní API se implementují jako poskytovatele prostředků a součástí rodiny API pomocí Azure Resource Manageru.  
+Pomocí Azure API pro fakturaci. data o využití a prostředků o přijetí změn do nástroje pro vaše preferované datové analýzy. Rozhraní API využití a ceníku prostředků Azure vám pomohou přesně odhadnout a spravovat vaše náklady. Rozhraní API se implementují jako poskytovatele prostředků a součástí rodiny API pomocí Azure Resource Manageru.  
 
 > [!div class="nextstepaction"]
-> [Pomozte nám vylepšit Azure fakturační dokumentace](https://go.microsoft.com/fwlink/p/?linkid=2010091)
+> [Pomozte vylepšit dokumentaci k fakturaci Azure](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="azure-invoice-download-api-preview"></a>Rozhraní API pro stažení faktury Azure (Preview)
 Jednou [vyjádřit výslovný souhlas se kompletní](billing-manage-access.md#opt-in), stahování faktur ve verzi preview [faktury API](/rest/api/billing). Mezi funkce patří:
@@ -65,7 +65,7 @@ Tady jsou některé scénáře, které jsou možné kombinací využití a RateC
   * Můžete také určit, pokud jiný typ nabídky Azure poskytuje lepší rychlost v prostředku Azure.
   
 ## <a name="partner-solutions"></a>Partnerská řešení
-[Cloud Cruiser a fakturace integrace rozhraní API služby Microsoft Azure](billing-usage-rate-card-partner-solution-cloudcruiser.md) popisuje, jak [Cloud Cruiser Express for Azure Pack](http://www.cloudcruiser.com/partners/microsoft/) pracuje přímo z portálu Windows Azure Pack (WAP). Bezproblémově můžete spravovat provozními a finančními aspekty hostovaných nebo privátních veřejném cloudu Microsoft Azure z jednoho uživatelského rozhraní.   
+[Integrace rozhraní API pro fakturaci Microsoft Azure a řešení Cloud Cruiseru](billing-usage-rate-card-partner-solution-cloudcruiser.md) popisuje, jak [sada Express for Azure od Cloud Cruiseru](http://www.cloudcruiser.com/partners/microsoft/) pracuje přímo z portálu Windows Azure Pack (WAP). Provozní i finanční aspekty privátního nebo hostovaného veřejného cloudu Microsoft Azure můžete bez problémů spravovat pomocí jednoho uživatelského rozhraní.   
 
 ## <a name="next-steps"></a>Další postup
 * Prohlédněte si ukázky kódu na Githubu:

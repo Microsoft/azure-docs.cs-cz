@@ -4,14 +4,14 @@ description: Poskytuje přehled o vyhodnocení výpočtů ve službě Azure Migr
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/17/2018
+ms.date: 09/25/2018
 ms.author: raynew
-ms.openlocfilehash: 84ce20186b882bf07177305291a6f7512ed9ac62
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 923a2a137bb4510e9490ce4077f744a43619a2c6
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732019"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47165020"
 ---
 # <a name="dependency-visualization"></a>Vizualizace závislostí
 
@@ -32,7 +32,7 @@ Azure Migrate používá [Service Map](../operations-management-suite/operations
     ![Přiřadit pracovní prostor Log Analytics](./media/concepts-dependency-visualization/associate-workspace.png)
 
 - Když vytvoříte nový pracovní prostor, musíte zadat název pracovního prostoru. Pracovní prostor se pak vytvoří v oblasti, ve stejném [zeměpisná oblast Azure](https://azure.microsoft.com/global-infrastructure/geographies/) jako projekt migrace.
-- Přidružené pracovní prostor je označen jako klíč **projekt migrace**a hodnota ** název projektu, který můžete použít pro vyhledávání na webu Azure Portal.
+- Přidružené pracovní prostor je označen jako klíč **projekt migrace**a hodnota **název projektu**, který můžete použít pro vyhledávání na webu Azure Portal.
 - Pokud chcete přejít na pracovní prostor přidružený k projektu, můžete přejít na **Essentials** části projektu **přehled** stránce a přístup k pracovnímu prostoru
 
     ![Přejděte v pracovním prostoru Log Analytics](./media/concepts-dependency-visualization/oms-workspace.png)
@@ -62,5 +62,5 @@ Můžete použít pracovní prostor Log Analytics mimo službu Azure Migrate. Ne
 Neodstraňovat pracovní prostor vytvořený službou Azure Migrate, není-li odstranit projekt migrace. Pokud tak učiníte, funkce vizualizace závislostí nebude fungovat podle očekávání.
 
 ## <a name="next-steps"></a>Další postup
-
-[Seskupení počítačů s využitím závislostí počítačů](how-to-create-group-machine-dependencies.md)
+- [Seskupení počítačů s využitím závislostí počítačů](how-to-create-group-machine-dependencies.md)
+- [Další informace](https://docs.microsoft.com/azure/migrate/resources-faq#dependency-visualization) o nejčastějších dotazech na vizualizaci závislostí.

@@ -12,12 +12,12 @@ ms.author: giladm
 ms.reviewer: vanto
 manager: craigg
 ms.date: 09/10/2018
-ms.openlocfilehash: dd1672c0cdae243bf6ff19efa22df66239611b44
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 8ba07b22d247cb9263890a747bd166d63af27e3b
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064166"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395743"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditem databáze SQL
 Auditování Azure SQL database sleduje události databáze a zapisuje je do auditu protokolu ve vašem účtu úložiště Azure. Také auditování:
@@ -109,7 +109,7 @@ Pokud jste zvolili pro zápis protokolů auditu do Log Analytics:
 
     ![Otevřít v OMS](./media/sql-database-auditing-get-started/auditing_open_in_oms.png)
 
-- Alternativně můžete také přistupovat protokolů auditu v okně Log Analytics. Otevření pracovního prostoru Log Analytics a v části **Obecné** klikněte na tlačítko **protokoly**. Můžete začít s jednoduchého dotazu, jako například: vyhledávání *"SQLSecurityAuditEvents"* zobrazíte auditování protokoluje.
+- Alternativně můžete také přistupovat protokolů auditu v okně Log Analytics. Otevření pracovního prostoru Log Analytics a v části **Obecné** klikněte na tlačítko **protokoly**. Můžete začít s jednoduchého dotazu, jako například: *hledání "SQLSecurityAuditEvents"* zobrazíte auditování protokoluje.
     Z tohoto místa můžete také použít [Operations Management Suite (OMS) Log Analytics](../log-analytics/log-analytics-log-search.md) ke spuštění rozšířené hledání na data protokolů auditu. Log Analytics nabízí provozní informace v reálném čase pomocí integrovaného vyhledávání a vlastních řídicích panelů, díky kterým můžete analyzovat miliony záznamů napříč vašimi úlohami a servery. Další užitečné informace o vyhledávací jazyk OMS Log Analytics a příkazy najdete v tématu [referenční příručce k vyhledávání Log Analytics](../log-analytics/log-analytics-log-search.md).
 
 Pokud jste zvolili pro zápis protokolů auditu do centra událostí:

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e9472f0fb6ca7c9924df57bb61a3f234bc7d4b13
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 262c4e622d7ef915e59f29c8f4272e488acaeccf
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381136"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166907"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování profilu s vlastním potvrzením technické ve vlastních zásadách pro Azure Active Directory B2C
 
@@ -135,6 +135,7 @@ Můžete také volat rozhraní REST API technický profil s obchodní logikou, p
 | ContentDefinitionReferenceId | Ano | Identifikátor [obsahu definice](contentdefinitions.md) přidružené k této technický profil. |
 | EnforceEmailVerification | Ne | Pro zápis nebo úpravy profilu, vynucuje ověření e-mailu. Možné hodnoty: `true` (výchozí), nebo `false`. | 
 | setting.showSignupLink | Ne | Zobrazí tlačítko pro zápis. Možné hodnoty: `true` (výchozí), nebo `false` |
+| setting.retryLimit | Ne | Určuje, kolikrát uživatel mohli zkusit poskytnout data, která bude zkontrolován, technický profil ověření. Například uživatel pokusí zaregistrovat pomocí účtu, který již existuje a udržuje zkusit až do dosažení limitu.
 | SignUpTarget | Ne | Identifikátor cílové exchange registrace. Když uživatel klikne na tlačítko zaregistrovat, Azure AD B2C spustí zadaný exchange identifikátor. |
 
 ## <a name="cryptographic-keys"></a>Kryptografické klíče

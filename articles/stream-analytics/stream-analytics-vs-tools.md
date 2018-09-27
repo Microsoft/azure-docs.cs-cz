@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
-ms.openlocfilehash: dba0474e83c886edcad1101083e45ff39ee222dd
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: f9bc9bf540f7f44e07bc4bb0ae8ef6910ae78476
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300219"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222382"
 ---
 # <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>Chcete-li zobrazit úlohy Azure Stream Analytics pomocí sady Visual Studio
 
@@ -53,7 +53,7 @@ Zobrazení úloh můžete použít k interakci s úlohy Azure Stream Analytics z
 
 ## <a name="check-job-results"></a>Zkontrolujte výsledky úlohy
 
-Stream Analytics tools for Visual Studio teď podporuje výstup ve verzi preview pro úložiště Azure Data Lake Storage a blob storage. Chcete-li zobrazit výsledek, jednoduše dvakrát klikněte na uzel výstup z diagram úloh v **zobrazení úloh** a zadejte příslušné přihlašovací údaje.
+Stream Analytics tools for Visual Studio teď podporuje výstup ve verzi preview pro Azure Data Lake Storage a blob storage. Chcete-li zobrazit výsledek, jednoduše dvakrát klikněte na uzel výstup z diagram úloh v **zobrazení úloh** a zadejte příslušné přihlašovací údaje.
 
    ![Výstup blob úlohy Stream Analytics](./media/stream-analytics-vs-tools/stream-analytics-blob-preview.png)
 

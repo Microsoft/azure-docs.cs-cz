@@ -11,12 +11,12 @@ ms.topic: article
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 manager: douge
-ms.openlocfilehash: c6ca3003c1338f3e057c76d9e04d8b0cbd2210c7
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 91bec065b2c83eac6b646ae6a55bc1ae0aae01db
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721190"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226887"
 ---
 # <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
@@ -28,11 +28,11 @@ Aby bylo možné řešení problémů s efektivněji, může být užitečné vy
 
 Pro rozšíření sady Visual Studio, nastavte `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` proměnné prostředí na hodnotu 1. Je potřeba restartovat Visual Studio pro proměnné prostředí se projeví. Po povolení podrobných protokolů se zapíšou do vaší `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` adresáře.
 
-V rozhraní příkazového řádku, můžete pomocí výstupní informace během provádění příkazu `--verbose` přepnout.
+V rozhraní příkazového řádku, můžete pomocí výstupní informace během provádění příkazu `--verbose` přepnout. Můžete také procházet podrobnější protokoly v `%TEMP%\Azure Dev Spaces`. Na počítači Mac, můžete najít svého adresáře TEMP spuštěním `echo $TMPDIR` z okna terminálu. Na počítači s Linuxem adresář TEMP je obvykle `/tmp`.
 
 ## <a name="debugging-services-with-multiple-instances"></a>Ladění služeb s více instancemi
 
-V současné době podporuje Azure Dev prostory ladění pouze na jednu instanci (pod). Soubor azds.yaml obsahuje nastavení, replicaCount, která určuje počet instancí, které se spustí pro vaši službu. Pokud změníte replicaCount nakonfigurovat svoji aplikaci spouštět více instancí pro určitou službu, nemusí být chování ladicí program podle očekávání.
+V tuto chvíli Azure Dev prostory funguje nejlépe, když ladění jediné instance (pod). Soubor azds.yaml obsahuje nastavení, replicaCount, která určuje počet podů, které se spustí pro vaši službu. Pokud změníte replicaCount nakonfigurovat svoji aplikaci spouštět několik podů se pro dané služby, ladicí program připojí k první pod (v případě, abecední pořadí). Pokud tohoto podu recykluje z jakéhokoli důvodu, ladicí program se připojit k jiné pod, což může způsobit neočekávané chování.
 
 ## <a name="error-failed-to-create-azure-dev-spaces-controller"></a>Chyba "nepovedlo se vytvořit Azure Dev prostory kontroleru.
 

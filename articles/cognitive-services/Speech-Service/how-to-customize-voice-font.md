@@ -7,12 +7,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: nolach
-ms.openlocfilehash: 042216d03749273c590ce5ba812f7a6d609f8e83
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4219878673bbb3560ca13f09eb0fde940b2b17e3
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987898"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222756"
 ---
 # <a name="creating-custom-voice-fonts"></a>Vytvoření vlastního hlasového písma
 
@@ -25,9 +25,7 @@ Můžete začít s menším objemem dat pro testování konceptu. Ale čím víc
 
 ## <a name="prerequisites"></a>Požadavky
 
-**Převod textu na řeč** hlasová přizpůsobení funkce je aktuálně ve verzi private preview. [Vyplňte formulář přihlášky](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0N8Vcdi8MZBllkZb70o6KdURjRaUzhBVkhUNklCUEMxU0tQMEFPMjVHVi4u) považovat pro přístup.
-
-Potřebujete účet Azure a předplatné služby řeči. [Vytvořte si ho](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started) Pokud jste tak již neučinili. Vaše předplatné připojení k portálu vlastní hlasové následujícím způsobem.
+Budete potřebovat účet Azure a předplatné služby řeči. [Vytvořte si ho](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started) Pokud jste tak již neučinili. Vaše předplatné připojení k portálu vlastní hlasové následujícím způsobem.
 
 1. Přihlaste se k [vlastní hlasové portál](https://customvoice.ai) pomocí stejného účtu Microsoft, používá k aplikování pro přístup.
 
@@ -35,16 +33,13 @@ Potřebujete účet Azure a předplatné služby řeči. [Vytvořte si ho](https
 
     ![Předplatná](media/custom-voice/subscriptions.png)
 
-3. Na stránce "Předplatné" zvolte připojit existující předplatné.
+3. Na stránce "Předplatné" zvolte připojit existující předplatné. Všimněte si, že hlasové služby podpory různých oblastech. Zkontrolujte oblast, ve kterém byla vytvořena váš klíč předplatného a ujistěte se, že připojit svůj klíč k portálu správné dílčí.  
 
 4. Vložte váš klíč předplatného do tabulky, jak je znázorněno níže. Každé předplatné má dva klíče a můžete použít některou z nich.
 
      ![Přidat předplatné](media/custom-voice/add-subscription.png)
 
 Jste připraveni začít!
-
-> [!IMPORTANT]
-> Během fáze ve verzi private preview odběry musí být povolené použití vlastní hlasové funkce. Postupujte podle pokynů na stránce získat vaše předplatné povolený.
 
 ## <a name="prepare-recordings-and-transcripts"></a>Příprava záznamy a přepisy
 
@@ -232,4 +227,4 @@ Přizpůsobení hlasu je k dispozici pro Americkou angličtinu (en US), Španěl
 ## <a name="next-steps"></a>Další postup
 
 - [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
-- [Rozpoznávání řeči v jazyce C#](quickstart-csharp-dotnet-windows.md)
+- [Záznam vašich ukázek hlasu](record-custom-voice-samples.md)

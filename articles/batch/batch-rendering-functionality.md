@@ -1,17 +1,17 @@
 ---
-title: Možnosti vykreslování služby batch
+title: Možnosti vykreslování služby Batch
 description: Možnosti vykreslování konkrétní ve službě Azure Batch
 services: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 3f2fa055af63ab3920fec79ad93c25b8ea7e5ed9
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 6d79cdf279022320f654fbbeadb870f82db88cab
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42054621"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392773"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Možnosti vykreslování Azure Batch
 
@@ -50,9 +50,12 @@ Aplikace, které se použije a máte licenční poplatek je potřeba zadat v kon
 * Zadejte `applicationLicenses` vlastnost při [vytváření fondu](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body).  Tyto hodnoty se dá nastavit jako pole řetězců - "vray", "arnold", "3dsmax", "maya".
 * Pokud chcete zadat jednu nebo více aplikací, náklady na tyto aplikace se přidá do náklady na virtuální počítače.  Aplikace ceny jsou uvedené na [stránce s cenami služby Azure Batch](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering).
 
+> [!NOTE]
+> Pokud místo toho připojit k licenčnímu serveru používat aplikace vykreslování, nezadávejte `applicationLicenses` vlastnost.
+
 Vyberte aplikace, a zobrazit ceny aplikace můžete použít Průzkumníka služby Batch na webu Azure portal.
 
-Pokud je proveden pokus o použití aplikace, ale nebyl zadán v aplikaci `applicationLicenses` vlastnost konfigurace fondu, a pak je spuštění aplikace nezdaří a zobrazí se chyba licencování a nenulový ukončovací kód.
+Pokud je proveden pokus o použití aplikace, ale nebyl zadán v aplikaci `applicationLicenses` vlastnost konfigurace fondu nebo nemá není dosah licenčního serveru a pak je spuštění aplikace nezdaří a zobrazí se chyba licencování a nenulový ukončovací kód.
 
 ### <a name="environment-variables-for-pre-installed-applications"></a>Proměnné prostředí pro předem nainstalované aplikace
 

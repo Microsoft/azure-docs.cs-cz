@@ -1,63 +1,64 @@
 ---
-title: Střední text pomocí rozhraní API přerušování textu v obsahu moderátora Azure | Microsoft Docs
-description: Test-Drive přerušování text pomocí rozhraní API přerušování Text v konzole online.
+title: Moderování textu s použitím API pro moderování textu – Content Moderator
+titlesuffix: Azure Cognitive Services
+description: Vyzkoušejte si moderování textu s použitím rozhraní API pro moderování textu v konzole online.
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/05/2017
 ms.author: sajagtap
-ms.openlocfilehash: ed696c31a886626819414c45eb7995edaf161fff
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 95fd5507287a9294f4fca6af9cc5f01f0ea9fe1c
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342811"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219783"
 ---
-# <a name="moderate-text-from-the-api-console"></a>Střední text z konzoly pro rozhraní API
+# <a name="moderate-text-from-the-api-console"></a>Moderování textu z konzoly pro rozhraní API
 
-Použití [Text přerušování API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f) v Azure obsah moderátora ke kontrole textového obsahu. Operace kontroly obsahu testujeme a porovná obsah proti sdílené a vlastní rozhraní API.
+Použití [rozhraní API pro moderování textu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f) v Azure Content Moderator kontrolovat textový obsah. Operace prohledá obsah pro vulgárních výrazů a porovnává obsah proti vlastní a sdílené seznamů zakázaných položek.
 
 
-## <a name="get-your-api-key"></a>Získat klíč rozhraní API
-Než můžete test-drive rozhraní API v konzole online, musíte svůj klíč předplatného. To se nachází na **nastavení** ve **Ocp-Apim-Subscription-Key** pole. Další informace najdete v tématu [přehled](overview.md).
+## <a name="get-your-api-key"></a>Získejte klíč k rozhraní API
+Předtím, než můžete vyzkoušet rozhraní API v konzole online, budete potřebovat klíč předplatného. To je umístěn na **nastavení** kartě **Ocp-Apim-Subscription-Key** pole. Další informace najdete v tématu [přehled](overview.md).
 
-## <a name="navigate-to-the-api-reference"></a>Přejděte na referenční dokumentace rozhraní API
-Přejděte na [referenční dokumentace rozhraní API přerušování Text](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f). 
+## <a name="navigate-to-the-api-reference"></a>Přejděte na reference k rozhraní API
+Přejděte [reference k rozhraní API pro moderování textu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f). 
 
   **Text – obrazovky** otevře se stránka.
 
 ## <a name="open-the-api-console"></a>Otevřete konzolu pro rozhraní API
-Pro **testování konzoly otevřené rozhraní API**, vyberte oblast, která nejlépe popisuje vaši polohu. 
+Pro **testovací konzoly Open API**, vyberte oblast, která nejlépe popisuje vaši polohu. 
 
-  ![Text – výběr oblast stránky obrazovky](images/test-drive-region.png)
+  ![Text – výběr oblasti obrazovky stránky](images/test-drive-region.png)
 
   **Text – obrazovky** otevře se konzola rozhraní API.
 
-## <a name="select-the-inputs"></a>Vyberte vstupní hodnoty
+## <a name="select-the-inputs"></a>Vyberte vstupy
 
 ### <a name="parameters"></a>Parametry
-Vyberte parametry dotazu, které chcete použít na vaší obrazovce text. V tomto příkladu použijte výchozí hodnotu pro **jazyk**. Můžete také necháte prázdné protože operaci automaticky zjistí pravděpodobně jazyk v rámci jeho spuštění.
+Vyberte parametry dotazu, které chcete použít na obrazovce text. V tomto příkladu použijte výchozí hodnotu pro **jazyka**. Můžete také necháte prázdné vzhledem k tomu, že operace bude automaticky rozpoznávat pravděpodobně jazyka jako součást jeho spuštění.
 
 > [!NOTE]
-> Pro **jazyk** parametr přiřadit `eng` nebo hodnotu nevyplňujte najdete v části asistované počítač **klasifikace** odpovědi (funkce ve verzi preview). **Tato funkce podporuje pouze Angličtina**.
+> Pro **jazyk** parametr, přiřaďte `eng` nebo toto podokno nechat prázdné najdete v článku s počítače **klasifikace** odpovědí (funkce preview). **Tato funkce podporuje pouze angličtinu**.
 >
-> Pro **vulgárnost podmínky** detekce, použijte [kód ISO 639 3](http://www-01.sil.org/iso639-3/codes.asp) z podporovaných jazyků uvedených v tomto článku, nebo hodnotu nevyplňujte.
+> Pro **vulgárních výrazů podmínek** detekce, použijte [kód ISO 639-3](http://www-01.sil.org/iso639-3/codes.asp) podporovaných jazyků uvedených v tomto článku, nebo nechte prázdné.
 
-Pro **automatické opravy**, **PII**, a **klasifikovat (preview)**, vyberte **true**. Ponechte **ListId** pole prázdná.
+Pro **automatických oprav**, **identifikovatelné osobní údaje**, a **klasifikaci (preview)** vyberte **true**. Nechte **ListId** prázdné pole.
 
-  ![Text – parametry dotazu konzoly obrazovky](images/text-api-console-inputs.PNG)
+  ![Text – parametry dotazu obrazovky konzoly](images/text-api-console-inputs.PNG)
 
 ### <a name="content-type"></a>Typ obsahu
-Pro **Content-Type**, vyberte typ obsahu, které chcete obrazovky. V tomto příkladu použijte výchozí **text/plain** typ obsahu. V **Ocp-Apim-Subscription-Key** zadejte svůj klíč předplatného.
+Pro **Content-Type**, vyberte typ obsahu, které chcete na obrazovku. V tomto příkladu použijte výchozí **text/plain** typ obsahu. V **Ocp-Apim-Subscription-Key** zadejte váš klíč předplatného.
 
-### <a name="sample-text-to-scan"></a>Ukázkový text ke kontrole
-V **text žádosti** zadejte nějaký text. Následující příklad ukazuje úmyslné máte překlep v textu.
+### <a name="sample-text-to-scan"></a>Ukázkový text vyhledávání
+V **text žádosti** zadejte nějaký text. Následující příklad ukazuje úmyslné překlep v textu.
 
 > [!NOTE]
-> Neplatné číslo sociálního pojištění v následující ukázkový text je úmyslné. Účelem je nesou ukázka vstupní a výstupní formát.
+> Neplatné číslo sociálního pojištění v následující ukázkový text je úmyslné. Slouží k předání ukázkové vstupní a výstupní formát.
 
 ```
     Is this a grabage or crap email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.
@@ -65,23 +66,23 @@ V **text žádosti** zadejte nějaký text. Následující příklad ukazuje úm
     Also, 999-99-9999 looks like a social security number (SSN).
 ```
 
-### <a name="text-classification-feature"></a>Funkce textových klasifikace
+### <a name="text-classification-feature"></a>Funkce klasifikace textu
 
-V následujícím příkladu se zobrazí odpověď klasifikace obsahu moderátora s asistencí počítač text. Pomáhá rozpoznání potenciálně nežádoucí obsahu. Označení obsahu mohou být považovány za jako nevhodný v závislosti na kontextu. Kromě zdůraznění pravděpodobnost každou kategorii, může doporučit kontrolu lidského obsahu. Funkce modulu trained model používá k identifikaci možných urážlivé, derogační nebo diskriminační jazyk. To zahrnuje slang, zkrácené slova, urážlivé a záměrně překlepu slova ke kontrole. 
+V následujícím příkladu se zobrazí odpověď klasifikace Content Moderator text s podporou počítače. To pomáhá detekovat potenciálně nežádoucí obsah. Označené příznakem obsah lze považovat za nevhodné v závislosti na kontextu. Kromě takzvané pravděpodobnost, že každá kategorie, může doporučit lidskou kontrolu obsahu. Funkce používá k identifikaci možných urážlivý nebo uráží diskriminační jazyk trénovaného modelu. To zahrnuje slang, zkrácený slova, urážlivé a záměrně chybně napsaná slova ke kontrole. 
 
 #### <a name="explanation"></a>Vysvětlení
 
-- `Category1` představuje potenciální přítomnost jazyk, který může být považováno za zřejmý explicitní nebo pro dospělé v určitých situacích.
-- `Category2` představuje potenciální přítomnost jazyk, který může být považováno za zřejmý sugestivní nebo vyspělá v určitých situacích.
-- `Category3` představuje potenciální přítomnost jazyk, který může být považováno za urážlivé v určitých situacích.
-- `Score` je mezi 0 a 1. Čím více bodů, tím vyšší modelu je predikci, můžou být příslušné kategorii. Tato verze preview spoléhá na statistické model, místo ručně programové výstupy. Doporučujeme, abyste testování s vlastním obsahem určit, jakým způsobem bude každou kategorii zarovnán vašim požadavkům.
-- `ReviewRecommended` je PRAVDA nebo NEPRAVDA v závislosti na interní skóre prahové hodnoty. Zákazníci by měli zhodnotit, jestli se má použít tuto hodnotu nebo rozhodněte o vlastní prahové hodnoty na základě jejich obsahu zásad.
+- `Category1` představuje potenciální přítomnost jazyk, který se dá považovat za sexuálně explicitní nebo pro dospělé v určitých situacích.
+- `Category2` představuje potenciální přítomnost jazyk, který se dá považovat za sexuálně sugestivní nebo až po zralé v určitých situacích.
+- `Category3` představuje potenciální přítomnost jazyk, který se dá považovat za urážlivé v určitých situacích.
+- `Score` je mezi 0 a 1. Čím více bodů vyšší model je predikce kategorii lze použít. V této verzi preview spoléhá na statistických modelů a nikoli ručně kódovaný výsledků. Doporučujeme ve Visual Basicu s vlastní obsah k určení, jak každou kategorii odpovídá vašim požadavkům.
+- `ReviewRecommended` je PRAVDA nebo NEPRAVDA v závislosti na interní skóre prahové hodnoty. Zákazníci by měli zhodnotit, zda chcete použít tuto hodnotu nebo při rozhodování o vlastní prahové hodnoty na základě jejich obsahu zásad.
 
 ### <a name="analyze-the-response"></a>Analyzovat odpověď
-Následující odpověď ukazuje různé přehledy z rozhraní API. Obsahuje potenciální vulgárnost, PII, klasifikace (preview) a verzi vyřešen automaticky.
+Následující odpověď obsahuje různé přehledy z rozhraní API. Obsahuje vulgární, identifikovatelné osobní údaje, klasifikace (preview) a verze automaticky opravit.
 
 > [!NOTE]
-> "Třídění" funkce s asistencí počítač je ve verzi preview a podporuje pouze angličtina.
+> "Klasifikaci" funkcí s asistencí počítače je ve verzi preview a podporuje pouze angličtinu.
 
 ```
 {
@@ -161,8 +162,8 @@ Následující odpověď ukazuje různé přehledy z rozhraní API. Obsahuje pot
 }
 ```
 
-Podrobné vysvětlení všech oddílů v odpovědi JSON, najdete v části [text přerušování API přehled](text-moderation-api.md).
+Podrobné vysvětlení všech oddílů v odpovědi JSON, najdete [přehled rozhraní API pro moderování textu](text-moderation-api.md).
 
 ## <a name="next-steps"></a>Další postup
 
-Použít rozhraní API REST v kódu ani začínat [text přerušování .NET rychlý Start](text-moderation-quickstart-dotnet.md) integrovat s vaší aplikací.
+Použití rozhraní REST API ve vašem kódu nebo začínat [rychlý úvod k .NET pro moderování textu](text-moderation-quickstart-dotnet.md) integrovat s vaší aplikací.

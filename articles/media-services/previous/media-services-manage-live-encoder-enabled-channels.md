@@ -4,7 +4,7 @@ description: 'Toto téma popisuje, jak vytvořit kanál, který přijímá datov
 services: media-services
 documentationcenter: ''
 author: anilmur
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 30ce6556-b0ff-46d8-a15d-5f10e4c360e2
 ms.service: media-services
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: 008fac84eedfd58cbcfe563504a50bc19d519382
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: ada5f55cf356ca79efb7cb45c76a4812804400c5
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42055280"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222059"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Živé streamování využívající službu Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi
 
@@ -166,7 +166,7 @@ Kanál obsahuje vstupní koncový bod (adresa URL ingestu) určit v live encoder
 
 Po vytvoření kanálu můžete získat adresy URL ingestování. Pokud chcete získat tyto adresy URL, nemá kanál v **systémem** stavu. Když jste připravení začít zapisovat data do kanálu, musí být v **systémem** stavu. Jakmile se kanál spustí ingestovat data, můžete zobrazit náhled datového proudu prostřednictvím adresy URL ve verzi preview.
 
-Máte možnost ingestovat fragmentovaný soubor MP4 živý stream (technologie Smooth Streaming) připojení přes protokol SSL. K ingestování přes protokol SSL, nezapomeňte aktualizovat adresu URL ingestování na protokol HTTPS. Všimněte si, že v současné době AMS nepodporuje SSL s použitím vlastních domén.  
+Máte možnost ingestovat fragmentovaný soubor MP4 živý stream (technologie Smooth Streaming) připojení přes protokol SSL. K ingestování přes protokol SSL, nezapomeňte aktualizovat adresu URL ingestování na protokol HTTPS. V současné době nepodporuje AMS SSL s použitím vlastních domén.  
 
 ### <a name="allowed-ip-addresses"></a>Povolené IP adresy
 Můžete definovat IP adresy, které je povoleno publikování videa do tohoto kanálu. Povolené IP adresy můžete zadat jako jednu IP adresu (například '10.0.0.1'), rozsah IP adres pomocí IP adresy a masky podsítě CIDR (například ' 10.0.0.1/22') nebo IP adresy v rozsahu (například pomocí IP adresy a masky podsítě s tečkou , "10.0.0.1(255.255.252.0)').

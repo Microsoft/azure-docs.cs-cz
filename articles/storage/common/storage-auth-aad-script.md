@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/20/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 984185febf770ae10a021d129b0ef6c43da4d0f1
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 6354d89ff5a23ccb51b85737b3a842c08534683e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032763"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223606"
 ---
 # <a name="use-an-azure-ad-identity-to-access-azure-storage-with-cli-or-powershell-preview"></a>Pomocí identity Azure AD pro přístup k Azure Storage s využitím rozhraní příkazového řádku nebo Powershellu (Preview)
 
@@ -75,13 +75,13 @@ Jak se přihlásit pomocí identity Azure AD pomocí Azure Powershellu:
     ```
 1. Zavřete a znovu otevřete okno Powershellu po instalaci Správce balíčků PowerShellGet. 
 
-1. Nainstalujte AzureRM:
+1. Nainstalujte nejnovější verzi Azure Powershellu:
 
     ```powershell
     Install-Module AzureRM –Repository PSGallery –AllowClobber
     ```
 
-1. Nainstalujte některou z moduly ve verzi preview:
+1. Nainstalujte některou z moduly ve verzi preview služby Azure Storage, které podporuje Azure AD:
 
     ```powershell
     Install-Module Azure.Storage –Repository PSGallery -RequiredVersion 4.4.1-preview  –AllowPrerelease –AllowClobber –Force 

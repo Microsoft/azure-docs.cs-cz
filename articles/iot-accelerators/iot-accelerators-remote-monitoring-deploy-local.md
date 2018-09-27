@@ -6,18 +6,18 @@ manager: timlt
 ms.author: asdonald
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 09/17/2018
+ms.date: 09/26/2018
 ms.topic: conceptual
-ms.openlocfilehash: 5853730a5e3408e33deb483f6ce6652c1c22efab
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 477ef11a02f67e511396c3efc8f2b331c976c801
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034973"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219970"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally"></a>Nasazení akcelerátoru řešení vzdáleného monitorování místně
 
-Tento článek ukazuje, jak nasazení akcelerátoru řešení vzdáleného monitorování do místního počítače pro vývoj a testování. Tento přístup nasazuje mikroslužby do místní kontejner Dockeru a v cloudu pomocí služby IoT Hub, Cosmos DB a Azure Time Series Insights.
+Tento článek ukazuje, jak nasazení akcelerátoru řešení vzdáleného monitorování do místního počítače pro vývoj a testování. Postup popsaný v tomto článku nasazuje mikroslužby do místní kontejner Dockeru a v cloudu pomocí služby IoT Hub, Cosmos DB a Azure Time Series Insights. Zjistěte, jak spustit akcelerátor řešení vzdálené monitorování v rozhraní IDE v místním počítači, naleznete v tématu [Mikroslužeb spuštění v místním prostředí](https://github.com/Azure/remote-monitoring-services-java/blob/master/docs/LOCAL_DEPLOYMENT.md) na Githubu.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -75,13 +75,19 @@ Pokud jste dosud vytvořili požadované prostředky Azure, postupujte podle tě
 
     Tento skript vytvoří skupinu prostředků v Azure s názvem řešení. Tato skupina prostředků obsahuje prostředky Azure, které používá akcelerátor řešení.
 
-3. Po dokončení skriptu, zobrazí se seznam proměnných prostředí. Postupujte podle pokynů k uložení těchto proměnných **azure-iot-pcs-remote-monitoring-dotnet\services\scripts\local\.env** souboru.
+3. Po dokončení skriptu, zobrazí se seznam proměnných prostředí. Postupujte podle pokynů ve výstupu z příkazu k uložení těchto proměnných **azure-iot-pcs-remote-monitoring-dotnet\\služby\\skripty\\místní\\.env** souboru.
 
 ### <a name="use-existing-azure-resources"></a>Použít existující prostředky Azure
 
-Pokud jste již vytvořili požadované prostředky Azure upravovat definice proměnné prostředí v **azure-iot-pcs-remote-monitoring-dotnet\services\scripts\local\.env** soubor s požadovanými hodnotami. **.Env** soubor obsahuje podrobné informace o tom, kde najít požadované hodnoty.
+Pokud jste již vytvořili požadované prostředky Azure upravovat definice proměnné prostředí v **azure-iot-pcs-remote-monitoring-dotnet\\služby\\skripty\\místní\\.env**  soubor s požadovanými hodnotami. **.Env** soubor obsahuje podrobné informace o tom, kde najít požadované hodnoty.
 
 ## <a name="run-the-microservices-in-docker"></a>Spuštění mikroslužby v Dockeru
+
+Mikroslužeb spouštěných v kontejnerech Dockeru místní potřebovat přístup ke službám v Azure. Můžete otestovat připojení k Internetu z prostředí Docker pomocí následujícího příkazu, který spustí kontejner malé a pokusí se příkaz ping Internetová adresa:
+
+```cmd/sh
+docker run --rm -ti library/alpine ping google.com
+```
 
 Ke spuštění akcelerátor řešení, přejděte na **azure-iot-pcs-remote-monitoring-dotnet\services\scripts\local** složku v prostředí příkazového řádku a spusťte následující příkaz:
 
@@ -97,7 +103,7 @@ Chcete-li získat přístup k řídicím panelu řešení vzdáleného monitorov
 
 ## <a name="clean-up"></a>Vyčištění
 
-Chcete-li po dokončení testování se vyhnout zbytečným poplatkům, odeberte cloudových služeb z vašeho předplatného Azure. Nejjednodušší způsob, jak odebrat služby je přejděte [webu Azure portal](https://ms.portal.azure.com) a odstraňte skupinu prostředků, který byl vytvořen při spuštění **start.cmd** skriptu.
+Aby se zabránilo zbytečným poplatky, po dokončení testování odebrat cloudovým službám z vašeho předplatného Azure. Nejjednodušší způsob, jak odebrat služby je přejděte [webu Azure portal](https://ms.portal.azure.com) a odstraňte skupinu prostředků, který byl vytvořen při spuštění **start.cmd** skriptu.
 
 Použití `docker-compose down --rmi all` příkazu odeberte Image Dockeru a uvolněte místo na místním počítači. Můžete také odstranit místní kopie úložiště vzdálené monitorování vytvoří, když jste naklonovali zdrojový kód z Githubu.
 

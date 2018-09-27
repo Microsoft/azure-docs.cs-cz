@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/14/2018
-ms.author: tonguyen
-ms.openlocfilehash: c782cadadb0250e6c3ca4912dbf8f81e19cb88c5
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.author: cwatson
+ms.openlocfilehash: f7ec113a7fa51fc6d3684c2e7ee9379bd1534e30
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42919050"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392403"
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>Vysvětlení vašeho vyúčtování služeb Microsoft Azure
 Chcete-li vysvětlení vašeho vyúčtování služeb Azure, porovnejte faktuře se podrobný soubor denní využití a sestav služby cost management na webu Azure Portal.
@@ -35,7 +35,7 @@ Podrobné podmínky a popis faktury a podrobný soubor denní využití najdete 
 Podrobnosti o sestav služby cost management, najdete v části [Správa nákladů na webu Azure portal](https://docs.microsoft.com/azure/billing/billing-getting-started).
 
 > [!div class="nextstepaction"]
-> [Pomozte nám vylepšit Azure fakturační dokumentace](https://go.microsoft.com/fwlink/p/?linkid=2010091)
+> [Pomozte vylepšit dokumentaci k fakturaci Azure](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="charges"></a>Jak můžu se ujistit, že jsou správné poplatky na mé faktuře?
 

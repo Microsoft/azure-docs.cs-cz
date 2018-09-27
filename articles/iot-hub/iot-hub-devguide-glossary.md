@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 575326ee3bd2cb64b2cb65168f23f7fe97dad029
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 52aabcfd908afeea3bb9bf36eefad706b74d8ba9
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954394"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227142"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Glosář termínů služby IoT Hub
 Tento článek uvádí některé běžné pojmy používané v článcích služby IoT Hub.
@@ -27,7 +27,7 @@ Automatická správa zařízení ve službě Azure IoT Hub umožňuje automatizo
 ## <a name="automatic-device-configuration"></a>Konfigurace automatického zařízení
 Back-endem řešení můžete použít [automatické konfigurace](iot-hub-auto-device-config.md) přiřadit sadu požadovaných vlastností [dvojčata zařízení](#device-twin) a hlášení stavu pomocí systémové metriky a vlastní metriky. 
 
-## <a name="azure-classic-cli"></a>Klasické rozhraní příkazového řádku Azure
+## <a name="azure-classic-cli"></a>Azure Classic CLI
 [Klasické rozhraní příkazového řádku Azure](../cli-install-nodejs.md) je nástroj pro různé platformy, open source, na základě prostředí, příkaz k vytváření a správě prostředků v Microsoft Azure. Tato verze rozhraní příkazového řádku by měla sloužit pro pouze nasazení classic.
 
 ## <a name="azure-cli"></a>Azure CLI
@@ -136,7 +136,7 @@ A [dvojče zařízení](iot-hub-devguide-device-twins.md) je dokument JSON, kter
 Podobně jako u dvojče zařízení, dvojče modulu je dokument JSON, který ukládá informace o stavu modulu například metadata, konfigurace a podmínky. IoT Hub udržuje takové dvojče modulu pro každou identitu modulu, který zřídíte s identitou zařízení služby IoT hub. Dvojčaty modulů umožňují synchronizovat modul ujednání a konfigurací modulu a back-endu řešení. Můžete zadávat dotazy dvojčaty modulů k vyhledání konkrétních modulů a zjistit stav dlouhotrvající operace.
 
 ## <a name="twin-queries"></a>Dotazy dvojčete
-[Dotazů na dvojčata zařízení a modul](iot-hub-devguide-query-language.md) použijte dotazovací jazyk služby IoT Hub podobném SQL načtěte informace z dvojčat zařízení nebo dvojčaty modulů. Stejné dotazovací jazyk služby IoT Hub můžete použít k načtení informací o [ ](#job) spuštěná ve službě IoT hub.
+[Dotazů na dvojčata zařízení a modul](iot-hub-devguide-query-language.md) použijte dotazovací jazyk služby IoT Hub podobném SQL načtěte informace z dvojčat zařízení nebo dvojčaty modulů. Stejné dotazovací jazyk služby IoT Hub můžete použít k načtení informací o [](#job) spuštěná ve službě IoT hub.
 
 ## <a name="twin-synchronization"></a>Dvojče synchronizace
 Dvojče používá synchronizaci [požadované vlastnosti](#desired-properties) dvojčat zařízení nebo dvojčaty modulů ke konfiguraci zařízení nebo moduly a načíst [ohlášené vlastnosti](#reported-properties) z nich k uložení ve dvojčeti.
@@ -177,7 +177,7 @@ IoT Hub je plně spravovaná služba Azure, která umožňuje spolehlivou a zabe
 [Metriky služby IoT Hub](iot-hub-metrics.md) poskytují data o stavu centra IoT hub ve vašich [předplatného Azure](#subscription). Metriky služby IoT Hub umožňují posouzení celkového stavu služby a zařízení k němu připojená. Metriky služby IoT Hub můžete vidět, co se děje ve vašem Centru IoT a zkoumání příčin problémů bez nutnosti kontaktovat podporu Azure.
 
 ## <a name="iot-hub-query-language"></a>Dotazovací jazyk služby IoT Hub
-[Dotazovací jazyk služby IoT Hub](iot-hub-devguide-query-language.md) je jazyce podobném jazyku SQL, která vám umožní dotazu vaše [ ](#job) a dvojčata zařízení.
+[Dotazovací jazyk služby IoT Hub](iot-hub-devguide-query-language.md) je jazyce podobném jazyku SQL, která vám umožní dotazu vaše [](#job) a dvojčata zařízení.
 
 ## <a name="iot-hub-resource-rest-api"></a>Zdroj rozhraní REST API služby IoT Hub
 Můžete použít [rozhraní REST API služby IoT Hub prostředků](https://docs.microsoft.com/rest/api/iothub/iothubresource) ke správě centra IoT hub ve vaší [předplatného Azure](#subscription) provádění operací, jako je vytváření, aktualizaci a odstraňování rozbočovače.
@@ -219,7 +219,7 @@ V kontextu [dvojče zařízení](iot-hub-devguide-device-twins.md), oznámila vl
 [Azure Resource Manageru](#azure-resource-manager) k seskupení souvisejících prostředků používá skupiny prostředků. Skupinu prostředků můžete použít k provádění operací na všechny prostředky ve skupině současně.
 
 ## <a name="retry-policy"></a>Zásady opakování
-Použijte zásady opakování pro zpracování [přechodné chyby](https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx) při připojení ke cloudové službě.
+Použijte zásady opakování pro zpracování [přechodné chyby](/azure/architecture/best-practices/transient-faults) při připojení ke cloudové službě.
 
 ## <a name="routing-rules"></a>Pravidla směrování
 Nakonfigurujete [pravidla směrování](iot-hub-devguide-messages-read-custom.md) pro směrování zpráv typu zařízení cloud do služby IoT hub [integrovaný koncový bod](#built-in-endpoints) nebo [vlastní koncové body](#custom-endpoints) pro zpracování v back-endem řešení .

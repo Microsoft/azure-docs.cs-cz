@@ -9,12 +9,12 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: chlandsi
-ms.openlocfilehash: e21348ccd694baf6b7eccf2787ec0a9f21a73b11
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e343c24a5ef223e1fd6dc618f41d4acf89fc2f5d
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46985629"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226020"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-cognitive-services-speech-sdk"></a>Rychlý start: Rozpoznávat řeč v Objective-C v iOS pomocí Cognitive Services SDK řeči
 
@@ -46,7 +46,7 @@ V dialogových oknech, která řídí, proveďte následující výběr:
 
 1. Dialogové okno Možnosti projektu
     1. Zadejte například název aplikace rychlý Start `helloworld`.
-    1. Zadejte název organizace, jako například `TestOrg`a identifikátor organizace, jako `testorg`.
+    1. Zadejte název příslušné organizace a identifikátor organizace, pokud už máte účet pro vývojáře Apple. Pro účely testování můžete stačí vybrat libovolný název, jako je `testorg`. Aby bylo možné podepsat aplikaci, budete také potřebovat správné zřizovacího profilu moc. Najdete [webu Apple developer](https://developer.apple.com/) podrobnosti.
     1. Zajistěte, aby že Objective-C je vybrán jako jazyk pro projekt.
     1. Zakážete všechna zaškrtávací políčka pro testy a základních dat.
     ![Nastavení projektu](media/sdk/qs-objectivec-project-settings.png)
@@ -54,13 +54,11 @@ V dialogových oknech, která řídí, proveďte následující výběr:
     1. Zvolte umístění projektu do domovského adresáře. Tím se vytvoří `helloworld` adresáře ve svém domovském adresáři, který obsahuje všechny soubory projektu Xcode.
     1. Zakážete vytvoření úložiště Git pro tento příklad projektu.
     1. Nastavení cesty k sadě SDK v *nastavení projektu*.
-        1. V **Obecné** kartu **propojené architektury a knihovny** záhlaví, přidání sady SDK knihovny jako rozhraní: **přidat framework** > **přidat Další...**  > Přejít na domovský adresář a vyberte soubor `MicrosoftCognitiveServicesSpeech.framework`.
+        1. V **Obecné** kartu **vložených binárních souborů** záhlaví, přidání sady SDK knihovny jako rozhraní: **přidat vložených binárních souborů** > **přidat další ...**  > Přejít na domovský adresář a vyberte soubor `MicrosoftCognitiveServicesSpeech.framework`. Knihovna SDK se také automaticky přidá do hlavičky **propojené rozhraní a knihovny**.
         ![Přidání rozhraní Framework](media/sdk/qs-objectivec-framework.png)
         1. Přejděte **nastavení sestavení** kartu a aktivovat **všechny** nastavení.
         1. Přidejte adresář `$(SRCROOT)/..` k *cesty pro hledání rozhraní* pod **cesty pro hledání** záhlaví.
         ![Nastavení cesty pro hledání rámce](media/sdk/qs-objectivec-framework-search-paths.png)
-        1. Přidejte adresář `$(SRCROOT)/..` k *cesty pro hledání Runpath* pod **propojování** záhlaví.
-        ![Nastavení cesty pro hledání Runpath](media/sdk/qs-objectivec-runpaths.png)
 
 
 ## <a name="set-up-the-ui"></a>Nastavení uživatelského rozhraní
@@ -79,16 +77,21 @@ Klikněte na tlačítko **Dokončit** v následujícím dialogovém beze změny 
 1. Nahraďte jeho obsah automaticky generované `ViewController.m` souboru podle:
 
    [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-ios/helloworld/helloworld/ViewController.m#code)]
-1. Nahraďte řetězec `YourSubscriptionKey` s klíči předplatného.
+1. Přidáte žádost o přístup k mikrofonu. Klikněte pravým tlačítkem myši klikněte na položku info.plist stromu projektu a vyberte **otevřít jako...**   >  **Zdrojový kód**. Přidejte následující řádky do `<dict>` části a pak soubor uložte.
+    ```xml
+    <key>NSMicrophoneUsageDescription</key>
 
+    <string>Need microphone access for speech recognition from microphone.</string>
+    ```
+1. Nahraďte řetězec `YourSubscriptionKey` s klíči předplatného.
 1. Nahraďte řetězec `YourServiceRegion` s [oblasti](regions.md) přidružených k vašemu předplatnému (například `westus` pro bezplatnou zkušební verzi předplatného).
 
 
 ## <a name="building-and-running-the-sample"></a>Vytváření a spouštění vzorku
 
 1. Zviditelnit výstupu ladění (**zobrazení** > **ladění oblasti** > **aktivovat konzoly**).
-1. Sestavit a spustit ukázkový kód v simulátoru iOS tak, že vyberete **produktu** -> **spustit** z nabídky nebo kliknutím **Přehrát** tlačítko.
-1. Po kliknutí na "Rozpoznávat!" tlačítko v aplikaci, by se měla zobrazit obsah zvukového souboru "Jak se počasí, třeba?" ve spodní části obrazovky s Simulovaná.
+1. Sestavit a spustit ukázkový kód v simulátoru iOS tak, že vyberete **produktu** -> **spustit** z nabídky nebo kliknutím **Přehrát** tlačítko. Pro spuštění na zařízení s Iosem, připojení zařízení do svého vývojového počítače a vyberte zařízení, jako cíl spuštěné. Sadou SDK pro řeč aktuálně podporuje pouze 64-bit platformu iOS.
+1. Po kliknutí na "Rozpoznávat!" tlačítko v aplikaci, by se měla zobrazit obsah zvukového souboru "Jak se počasí, třeba?" ve spodní části obrazovky.
 
  ![Simulované aplikace pro iOS](media/sdk/qs-objectivec-simulated-app.png)
 

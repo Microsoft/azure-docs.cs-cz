@@ -1,22 +1,23 @@
 ---
 title: Azure SQL Database a datovým skladem vykazovaných pravidla brány firewall | Dokumentace Microsoftu
 description: Zjistěte, jak nakonfigurovat pravidla brány firewall na úrovni serveru pro správu přístupu a konfigurace pravidel brány firewall na úrovni databáze SQL Database SQL database a SQL Data Warehouse brány firewall.
-keywords: brány firewall databázového serveru
 services: sql-database
-author: VanMSFT
-manager: craigg
 ms.service: sql-database
-ms.prod_service: sql-database, sql-data-warehouse
-ms.custom: security
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/20/2018
+author: VanMSFT
 ms.author: vanto
-ms.openlocfilehash: 698014c24d6a3af3fb79980a07e25483554b1007
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/20/2018
+ms.openlocfilehash: bc246031e57fd8e28cddf9f4e6e170b0695d7579
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042427"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166746"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-firewall-rules"></a>Azure SQL Database a SQL Data Warehouse pravidla brány firewall 
 

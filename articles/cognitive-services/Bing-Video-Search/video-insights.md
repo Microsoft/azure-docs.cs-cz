@@ -1,27 +1,27 @@
 ---
-title: Video přehledné | Microsoft Docs
-description: Ukazuje, jak získat další informace o video pomocí rozhraní API služby Bing Video vyhledávání.
+title: Získejte nové poznatky z videí - Bingu pro vyhledávání videí
+titlesuffix: Azure Cognitive Services
+description: Ukazuje, jak můžete získat další informace o videu Video API Bingu pro vyhledávání.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: 30ECF4E2-E4F0-491B-9FA8-971BC96AB7B6
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 4e804f168307ca8f206152b11e59652497678e42
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: af6056507cb70ab33bee5955ddf7bd0f77fd04eb
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343405"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219987"
 ---
-# <a name="get-insights-about-a-video"></a>Získejte přehledy o video
+# <a name="get-insights-about-a-video"></a>Získejte přehled o videa
 
-Každý video obsahuje ID videa, která vám pomůže získat další informace o videa, například související videa.  
+Každé video obsahuje ID videa, která vám umožní získat další informace o videa, například související videa.  
   
-Pokud chcete získat přehled o video, zaznamenat jeho [videoId](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#video-videoid) tokenu v odpovědi. 
+Pokud chcete získat přehled o videa, zachycení jeho [videoId](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#video-videoid) tokenu v odpovědi. 
 
 ```json
     "value" : [
@@ -36,7 +36,7 @@ Pokud chcete získat přehled o video, zaznamenat jeho [videoId](https://docs.mi
     ],
 ```
 
-Odešlete následující požadavek GET na koncový bod Video podrobnosti. Nastavte [id](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#id) parametr k dotazu `videoId` tokenu. Chcete-li zadat přehledy, které chcete získat, nastavte [moduly](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#modulesrequested) parametr dotazu. Chcete-li přehledné, nastavte `modules` pro všechny. Odpověď obsahuje všechny přehledy, které jste požádali, pokud je k dispozici.
+V dalším kroku odesílejte následující požadavek GET na koncový bod podrobnosti videa. Nastavte [id](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#id) parametr k dotazu `videoId` token. K určení přehledy, které chcete načíst, nastavit [moduly](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#modulesrequested) parametr dotazu. Chcete-li získat všechny přehledy, nastavte `modules` ke všem. Odpověď obsahuje všechny přehledy, které jste požádali, pokud je k dispozici.
 
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/details?q=sailiing+dinghies&id=6DB795E11A6E3CBAAD636DB795E11A6E3CBAAD63&modules=All&mkt=en-us HTTP/1.1  
@@ -48,7 +48,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ``` 
 
-## <a name="getting-related-videos-insights"></a>Analyzovat související videa  
+## <a name="getting-related-videos-insights"></a>Získávají se přehledy související videa  
 
 Chcete-li získat videa, která se vztahují k zadané video, nastavte [moduly](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#modulesrequested) parametr k RelatedVideos dotazu.
   
@@ -62,7 +62,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
   
-Toto je odpověď na předchozí požadavek. Objekt nejvyšší úrovně [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videodetails) objektu místo [videa](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos) objektu.  
+Tady je odpověď na předchozí požadavek. Je objekt nejvyšší úrovně [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videodetails) místo objektu [videa](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos) objektu.  
   
 ```  
 {

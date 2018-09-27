@@ -1,6 +1,6 @@
 ---
-title: Po splatnosti e-mail o zůstatku z Azure | Microsoft Docs
-description: Popisuje, jak provést platbu Pokud vašeho předplatného Azure minulosti kvůli vyrovnávání
+title: Z Azure e-mail o zůstatku po splatnosti | Dokumentace Microsoftu
+description: Popisuje, jak provést platbu Pokud vaše předplatné Azure má minulé vypršení platnosti zůstatek
 services: ''
 documentationcenter: ''
 author: genlin
@@ -14,40 +14,40 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
-ms.author: genli
-ms.openlocfilehash: 5e5d8849e59d95640b490d29bf1233135980486c
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.author: cwatson
+ms.openlocfilehash: fbc1f906812c0fb40a173fd90eac315753c893ef
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34159216"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393227"
 ---
-# <a name="resolve-past-due-balance-for-your-azure-subscription-after-getting-an-email-from-azure"></a>Po termínu splnění vyřešit zůstatek vašeho předplatného Azure po získání e-mailu z Azure
+# <a name="resolve-past-due-balance-for-your-azure-subscription-after-getting-an-email-from-azure"></a>Vyřešit po datu splatnosti zůstatek vašeho předplatného Azure po získání e-mailu od Azure
 
-Pokud vaše platebních neobdrží nebo pokud nelze zpracovat platby, může získat e-mailu nebo upozornění v centru účtů nebo Azure na portálu. Zpráva může být třeba:
+Pokud neobdrží vaši platbu nebo nelze zpracovat vaše platba, může získat e-mailu nebo se zobrazí oznámení v centru účtů nebo Azure portal. Zprávy mohou být jako:
 
-**Nemůžeme se nepodařilo kreditní karty naúčtuje pro vaše předplatné. Pokud chcete zabránit výpadek služby, aktualizujte prosím vašich platebních informací.**
+**Nelze platby prostřednictvím platební karty pro vaše předplatné. Pokud chcete zabránit případná přerušení služeb, aktualizujte platební údaje.**
 
-Postupujte podle kroků v článku řešení minulosti kvůli vyrovnávání.
+Postupujte podle kroků v článku řešení minulosti termínem rovnováhu.
 
-## <a name="resolve-the-past-due-balance"></a>Vyřešte minulosti kvůli vyrovnávání
+## <a name="resolve-the-past-due-balance"></a>Vyřešit minulosti termínem rovnováhu
 
-* Pokud je platební karty v záznamech odmítl nebo vypršela platnost, [změnit z platební karty použít k platbě za předplatné](billing-how-to-change-credit-card.md) nebo se obraťte na vašeho bank k vyřešení problému. Při aktualizaci platby Azure okamžitě zpracuje platbu všechny nezaplacených poplatků. Platba je také zpracovat pro jiné služby Microsoft kde máte nezaplacených poplatků.
+* Pokud je vaší platební karty strženy odmítl nebo vypršela jeho platnost, [změně platební karty použité k úhradě předplatného](billing-how-to-change-credit-card.md) nebo se obraťte na vaše bankovní řešení tohoto problému. Při aktualizaci platby za Azure okamžitě zpracuje platbu pro všechny nezaplacené poplatky. Platba se také zpracovává k dalším službám Microsoftu ve kterých máte nezaplacené poplatky.
 
-* Pokud jste v režimu faktury platby, poslat vaši platbu příjemci uvedenému ve spodní části faktury. Pokud potřebujete pomoc, obraťte se na [podporu Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+* Pokud používáte platbu pomocí faktur, odeslat vaše platba do umístění uvedených v dolní části faktury. Pokud potřebujete pomoc, obraťte se na [podpory Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-* Pokud nebylo najdete v části faktury, protože správce účtu opustil společnost nebo změněné role, obraťte se na [podporu Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) k vyřešení problému.
+* Pokud se vám nezobrazila faktury, protože správce účtu už společnosti nebo jinou funkci, obraťte se na [podpory Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) k vyřešení daného problému.
 
-* Pokud znáte zpracovala platby, ale stále je předplatné deaktivované, obraťte se na [podporu Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+* Pokud znáte zpracování platby, ale vaše předplatné je stále aktivní, obraťte se na [podpory Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-## <a name="not-getting-billing-email-notifications"></a>Není získávání fakturace e-mailová oznámení?
+## <a name="not-getting-billing-email-notifications"></a>Nedokáže získat fakturační e-mailová oznámení?
 
-Pokud jste správce účtu [zkontrolujte, jaké e-mailová adresa se používá pro oznámení](billing-how-to-change-azure-account-profile.md). Doporučujeme vám, že používáte e-mailovou adresu, která pravidelně kontrolovat. Pokud e-mailu, je správné, zkontrolujte složky nevyžádané pošty.
+Pokud jste správce účtu [zkontrolujte, jaké e-mailová adresa se používá pro oznámení](billing-how-to-change-azure-account-profile.md). Doporučujeme použít e-mailovou adresu, která pravidelně kontrolovat. Pokud v e-mailu je nejvhodnější, zkontrolujte složku s nevyžádanou poštou.
 
-## <a name="if-i-forget-to-pay-what-happens"></a>Pokud zapomenete I platit, co se stane?
+## <a name="if-i-forget-to-pay-what-happens"></a>Co se stane, pokud zapomenu platit?
 
-Zrušení služby a prostředky již nejsou k dispozici. Azure data se odstraní 90 dnů po ukončení služby. Další informace najdete v tématu [Microsoft Trust Center – jak jsme spravovat vaše data](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409).
+Službu se zrušila a už nejsou k dispozici vaše prostředky. Vaše data Azure se odstraní 90 dnů po ukončení služby. Další informace najdete v tématu [Microsoft Trust Center - jak spravuje vaše data](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409).
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
 
-Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychle vyřešit problém.
+Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.

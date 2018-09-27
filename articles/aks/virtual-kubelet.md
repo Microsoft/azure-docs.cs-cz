@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/14/2018
 ms.author: iainfou
-ms.openlocfilehash: 6ff28443dda65e91fa69fececaff95aa8e872603
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: f613fb9bd3e9cf6d070b34403bab617e23261c56
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604233"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226436"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Virtual Kubelet pomocí služby Azure Kubernetes Service (AKS)
 
@@ -36,7 +36,7 @@ Chcete-li nainstalovat Virtual Kubelet [Helm](https://docs.helm.sh/using_helm/#i
 
 ### <a name="for-rbac-enabled-clusters"></a>Pro clustery s podporou RBAC
 
-Pokud váš cluster AKS je povoleno RBAC, musíte vytvořit účet služby a role vazby pro použití s Tiller. Další informace najdete v tématu [řízení přístupu na základě rolí Helm][helm-rbac]. Pokud chcete vytvořit účet služby a role vazby, vytvořte soubor s názvem *rbac virtualkubelet.yaml* a vložte následující definice:
+Pokud váš cluster AKS je povoleno RBAC, musíte vytvořit účet služby a role vazby pro použití s Tiller. Další informace najdete v tématu [řízení přístupu na základě rolí Helm][helm-rbac]. Pokud chcete vytvořit účet služby a role vazby, vytvořte soubor s názvem *rbac virtuální kubelet.yaml* a vložte následující definice:
 
 ```yaml
 apiVersion: v1
@@ -59,7 +59,7 @@ subjects:
     namespace: kube-system
 ```
 
-Použít účet služby a vazbu s [použití kubectl] [ kubectl-apply] a určete vaše *rbac virtualkubelet.yaml* souboru, jak je znázorněno v následujícím příkladu:
+Použít účet služby a vazbu s [použití kubectl] [ kubectl-apply] a určete vaše *rbac virtuální kubelet.yaml* souboru, jak je znázorněno v následujícím příkladu:
 
 ```
 $ kubectl apply -f rbac-virtual-kubelet.yaml
@@ -182,7 +182,9 @@ spec:
       nodeSelector:
         kubernetes.io/hostname: virtual-kubelet-virtual-kubelet-win
       tolerations:
-      - key: azure.com/aci
+      - key: virtual-kubelet.io/provider
+        operator: Equal
+        value: azure
         effect: NoSchedule
 ```
 

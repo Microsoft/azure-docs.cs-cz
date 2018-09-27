@@ -1,21 +1,21 @@
 ---
-title: Pomocí přehledů token API pro vizuální vyhledávání Bingu | Dokumentace Microsoftu
-titleSuffix: Bing Web Search APIs - Cognitive Services
-description: Ukazuje, jak používat obrazu insight tokenu s využitím rozhraní API pro vizuální vyhledávání získat přehled o bitovou kopii.
+title: Pomocí tokenu insights - pro vizuální vyhledávání Bingu
+titleSuffix: Azure Cognitive Services
+description: Ukazuje, jak používat obrazu insight tokenu s využitím Visual API pro vyhledávání Bingu k získání přehledů o bitovou kopii.
 services: cognitive-services
 author: swhite-msft
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: bing-visual-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: 569ae89a712d14fb36989e756f99725dce398c0a
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: e853545e07709d82fa1e3b1143392e6d6012f6f6
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126554"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227584"
 ---
 # <a name="using-an-insights-token-to-get-insights-about-an-image"></a>Chcete-li získat přehled o bitovou kopii pomocí tokenu insights
 
@@ -68,7 +68,7 @@ Příklady, které používají insights token najdete v tématu [jazyka C#](#us
 
 ### <a name="prerequisites"></a>Požadavky
 
-Budete potřebovat [Visual Studio 2017](https://www.visualstudio.com/downloads/) Chcete-li získat tento kód běžící na Windows. (Bezplatná edice Community bude fungovat.)
+Budete potřebovat [Visual Studio 2017](https://www.visualstudio.com/downloads/) Chcete-li získat tento kód běžící na Windows. (Bude stačit bezplatná verze Community Edition.)
 
 Pro účely tohoto rychlého startu, můžete zadat [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) klíč předplatného, nebo klíč do placené předplatné.
 
@@ -80,7 +80,7 @@ Ke spuštění této aplikace, postupujte podle těchto kroků:
 1. Nahraďte obsah `Program.cs` kódem zobrazeným v tomto rychlém startu.
 2. Nahraďte `accessKey` hodnotu s klíči předplatného.
 2. Nahraďte `insightsToken` hodnotu s tokenem přehledy z odpovědi hledání/imagí /.
-3. Spuštění programu.
+3. Spusťte program.
 
 ```csharp
 using System;
@@ -244,7 +244,7 @@ namespace VisualSearchInsightsToken
 
 ### <a name="prerequisites"></a>Požadavky
 
-Budete potřebovat [JDK 7 nebo 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) kompilace a spuštění tohoto kódu. Pokud máte Oblíbené, ale bude stačit textový editor, můžete použít prostředí Java IDE.
+Pro kompilaci a spuštění tohoto kódu budete potřebovat [JDK 7 nebo 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). Pokud máte Oblíbené, ale bude stačit textový editor, můžete použít prostředí Java IDE.
 
 Pro účely tohoto rychlého startu, můžete zadat [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) klíč předplatného, nebo klíč do placené předplatné.
 
@@ -256,7 +256,7 @@ Ke spuštění této aplikace, postupujte podle těchto kroků:
 2. Vytvoření nového projektu Java v Oblíbené prostředí IDE nebo editoru.
 3. Přidejte poskytnutý kód do souboru s názvem `VisualSearch.java`.
 4. Nahraďte `subscriptionKey` hodnotu s klíči předplatného.
-5. Spuštění programu.
+5. Spusťte program.
 
 ```java
 package insightstoken;
@@ -382,7 +382,7 @@ Ke spuštění této aplikace, postupujte podle těchto kroků:
   ```  
 4. Vytvořte soubor s názvem GetVisualInsights.js a přidejte do ní následující kód.
 5. Nahraďte `subscriptionKey` hodnotu s klíči předplatného.
-7. Spuštění programu.  
+7. Spusťte program.  
   ```
   node GetVisualInsights.js
   ```
@@ -441,7 +441,7 @@ Ke spuštění této aplikace, postupujte podle těchto kroků:
 1. Vytvoření nového projektu Pythonu v Oblíbené prostředí IDE nebo editoru.
 2. Vytvořte soubor s názvem visualsearch.py a přidejte kódu zobrazeného v rámci tohoto rychlého startu.
 3. Nahraďte `SUBSCRIPTION_KEY` hodnotu s klíči předplatného.
-4. Spuštění programu.
+4. Spusťte program.
 
 
 ```python

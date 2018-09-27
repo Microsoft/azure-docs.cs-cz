@@ -7,19 +7,16 @@ ms.service: firewall
 ms.topic: article
 ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: 536c0915cae17aa6f4201c62eae5f5b077805274
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6dc7d20d31d9399355b2b3de90ea90f2f3e07af5
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999473"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224643"
 ---
 # <a name="fqdn-tags-overview"></a>Přehled značek plně kvalifikovaný název domény
 
 Plně kvalifikovaný název domény značka představuje skupinu plně kvalifikované názvy domény (FQDN) přidružené k dobře známým službám Microsoft. Značka plně kvalifikovaný název domény můžete použít v pravidlech aplikace Pokud chcete povolit požadované odchozí síťové přenosy přes bránu firewall.
-
->[!NOTE]
->Funkce značky plně kvalifikovaný název domény je pouze aktuálně dostupné v Azure Powershellu a REST.
 
 Například pokud chcete ručně povolit aktualizace Windows síťové přenosy přes bránu firewall, musíte vytvořit víc pravidel aplikace za dokumentaci společnosti Microsoft. Pomocí značek plně kvalifikovaný název domény, můžete vytvořit pravidlo aplikace, zahrňte **aktualizací Windows** označit a nyní síťového provozu do koncových bodů může probíhat přes bránu firewall Microsoft Windows Update.
 
@@ -36,6 +33,9 @@ V následující tabulce jsou uvedeny aktuální značky plně kvalifikovaný n�
 |Microsoft Active Protection Service (MAPS)|Povolí odchozí přístup k [MAPY](https://cloudblogs.microsoft.com/enterprisemobility/2016/05/31/important-changes-to-microsoft-active-protection-service-maps-endpoint/).|
 |App Service Environment (ASE)|Povolí odchozí přístup k platformě provoz služby ASE. Tato značka nezahrnuje zákaznické úložiště a SQL koncové body vytvořené ve službě ASE. Ty by měla být povolená přes [koncové body služby](../virtual-network/tutorial-restrict-network-access-to-resources.md) nebo přidat ručně.|
 |Azure Backup|Povolí odchozí přístup ke službám Azure Backup.
+
+> [!NOTE]
+> Při výběru značek plně kvalifikovaný název domény v pravidle aplikace, portu protokolu: pole musí být nastavené na **https**.
 
 ## <a name="next-steps"></a>Další postup
 

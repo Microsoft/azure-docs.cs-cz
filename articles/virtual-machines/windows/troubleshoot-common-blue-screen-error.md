@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 00/19/2018
 ms.author: genli
-ms.openlocfilehash: 6525067ec7a7a3154d1439f15736a1038ab0408c
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 4a029e331129d40b0380fc142d858aa299b7751b
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47167884"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225442"
 ---
 # <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>Windows se zobrazuje chyba modrá obrazovka při dalším spuštění virtuálního počítače Azure
 Tento článek popisuje modrá obrazovka chyby, které můžete narazit při spuštění Windows virtuální počítač (VM) v Microsoft Azure. Poskytuje kroky při shromažďování dat pro lístek podpory. 
@@ -43,7 +43,7 @@ Může dojít z několika příčin jako proč získali byste chybu stop. Nejča
 - Poškozená systémový soubor nebo paměti
 - Zakázané sektoru paměti přistupuje k aplikaci
 
-## <a name="solution"></a>Řešení
+## <a name="collect-memory-dump-file"></a>Shromažďovat výpis stavu paměti
 
 Chcete-li tento problém vyřešit, je třeba prvními, kdo se shromažďování výpisu stavu systému souboru při chybě a obraťte se na podporu pomocí souboru s výpisem paměti. Shromažďování výpisu stavu systému souborů, postupujte podle těchto kroků:
 
@@ -53,7 +53,7 @@ Chcete-li tento problém vyřešit, je třeba prvními, kdo se shromažďování
 2. [Připojte disk s operačním systémem pro virtuální počítač pro obnovení](troubleshoot-recovery-disks-portal.md). 
 3. K obnovení virtuálního počítače pomocí vzdálené plochy.
 
-### <a name="collect-dump-file-and-submit-a-support-ticket"></a>Shromažďování výpisu stavu systému souborů a vyplňte lístek podpory
+### <a name="locate-dump-file-and-submit-a-support-ticket"></a>Vyhledejte soubor s výpisem paměti a vyplňte lístek podpory
 
 1. Na virtuální počítač pro obnovení přejděte do složky systému windows v připojeném disku s operačním systémem. Pokud písmeno jednotky, která je přiřazena připojeném disku s operačním systémem je F, budete muset přejít do F:\Windows.
 2. Vyhledejte soubor memory.dmp th a potom [vyplňte lístek podpory](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pomocí souboru s výpisem paměti. 

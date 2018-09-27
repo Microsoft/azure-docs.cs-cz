@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 36058ad69ea670998b50cf9038741c294a5b79ab
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: afaa4c090508ee5a2306c2be1515076e6bd4f100
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38688724"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225721"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>Použití služby Správce zařízení StorSimple pro správu přihlašovacích údajů účtu úložiště
 
@@ -143,7 +143,7 @@ Při vytváření účtu úložiště vygeneruje Microsoft Azure dva 512bitové 
 
 Obvykle aplikace použít pouze jeden z klíčů pro přístup k datům. Po určité době času můžete mít vaše aplikace přepnout na druhý klíč. Poté, co jste přešli svoje aplikace na sekundární klíč, můžete vyřadit první klíč a potom vygenerujte nový klíč. Vaše aplikace přístup k datům pomocí dvou klíčů tímto způsobem umožňuje nenastane přitom žádný výpadek.
 
-Klíče účtu úložiště jsou vždy uloženy ve službě v šifrovaném tvaru. Však toto nastavení lze změnit prostřednictvím služby Správce zařízení StorSimple. Službu můžete získat primární klíč a sekundární klíč pro všechny účty úložiště ve stejném předplatném, včetně účty vytvořené ve službě Storage i výchozí účty úložiště generovány, pokud byla služba služby Správce zařízení StorSimple prvním vytvoření. Služba Správce zařízení StorSimple bude vždy získat tyto klíče z portálu Azure classic a uložit je do zašifrované.
+Klíče účtu úložiště jsou vždy uloženy ve službě v šifrovaném tvaru. Však toto nastavení lze změnit prostřednictvím služby Správce zařízení StorSimple. Službu můžete získat primární klíč a sekundární klíč pro všechny účty úložiště ve stejném předplatném, včetně účty vytvořené ve službě Storage i výchozí účty úložiště vygeneruje, když se první služby Správce zařízení StorSimple vytvořit. Služba Správce zařízení StorSimple bude vždy získat tyto klíče z portálu Azure classic a uložit je do zašifrované.
 
 ## <a name="rotation-workflow"></a>Střídání pracovních postupů
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: fboylu
-ms.openlocfilehash: 816ba560ccb9b06414dff8ffaea054e88d216b10
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 7802aa8ea9798b18d5424c2342ba63c01406b25a
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972379"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221702"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Průvodce Azure AI pro řešení prediktivní údržby
 
@@ -426,19 +426,19 @@ Poslední části této příručky obsahuje seznam šablon řešení PdM, kurzy
 
 ## <a name="training-resources-for-predictive-maintenance"></a>Studijní materiály pro prediktivní údržbu
 
-[Azure AI naučná stezka: prediktivní údržba](https://github.com/Azure/AI-PredictiveMaintenance/blob/master/docs/azure-ai-learning-path-for-predictive-maintenance.md) poskytuje školicí materiály pro lepší představu o konceptech a matematika za algoritmy a postupy používané PdM problémy. 
-
-Microsoft Azure nabízí bezplatné obsah a školení na získání všeobecného přehledu AI a cvičení.
+Microsoft Azure nabízí postupy výuky pro základní principy PdM techniky, kromě obsah a školení na obecné koncepty AI a cvičení.
 
 | Školení prostředků  | Dostupnost |
 |:-------------------|--------------|
+| [Postup výuky pro PdM pomocí stromy a doménové struktury Random](https://aischool.microsoft.com/learning-paths/1H5vH5wAYcAy88CoQWQcA8) | Public | 
+| [Postup výuky pro PdM využívající hloubkové učení](https://aischool.microsoft.com/learning-paths/FSIXxYkOGcauo0eUO8qAS) | Public |
 | [Vývojář AI v Azure](http://azure.microsoft.com/training/learning-paths/azure-ai-developer) | Public |
 | [Školní Microsoft AI](http://aischool.microsoft.com/learning-paths) | Public |
 | [Azure AI učení z Githubu](https://github.com/Azure/connectthedots/blob/master/readme.md) | Public |
 | [LinkedIn Learning](http://www.linkedin.com/learning) | Public |
 | [Webináře Microsoft AI Youtube](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Public |
 | [Zobrazit Microsoft AI](http://channel9.msdn.com/Shows/AI-Show) | Public |
-| [LearnAI@MS](http://learnanalytics.microsoft.com) | Pro partnery společnosti Microsoft |
-| [Microsoft Partner Network](http://learningportal.microsoft.com) | Pro partnery společnosti Microsoft |
+| [LearnAI@MS](http://learnanalytics.microsoft.com) | Partneři |
+| [Microsoft Partner Network](http://learningportal.microsoft.com) | Partneři |
 
 Navíc jsou zdarma MOOCS (massive open online kurzy) na AI online nabízené, akademické instituce jako informačních technologií a MIT a další vzdělávací společnosti.

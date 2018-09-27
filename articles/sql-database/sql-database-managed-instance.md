@@ -2,21 +2,22 @@
 title: Azure SQL Database Managed Instance přehled | Dokumentace Microsoftu
 description: Toto téma popisuje Azure SQL Database Managed Instance a vysvětluje, jak to funguje a jak se liší od izolované databáze ve službě Azure SQL Database.
 services: sql-database
-author: bonova
-ms.reviewer: carlrab
-manager: craigg
 ms.service: sql-database
 ms.subservice: managed-instance
-ms.custom: DBs & servers
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/14/2018
+author: bonova
 ms.author: bonova
-ms.openlocfilehash: 711a076409ed1d90c197bbf97a6e15144c0a4d38
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/26/2018
+ms.openlocfilehash: 626dd362248027831c78d1505662ca12d2ff334d
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956621"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392818"
 ---
 # <a name="what-is-a-managed-instance"></a>Co je Managed Instance?
 
@@ -205,7 +206,10 @@ Spravovaná Instance cíle uživatelských scénářů s migrací velkokapacitn�
 Postup migrace využívá zálohování SQL na úložiště objektů blob v Azure. Zálohy uložené v Azure storage blob je možné obnovit přímo do Managed Instance pomocí [příkaz T-SQL RESTORE](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current). 
   - Rychlý start ukazuje, jak obnovit Wide World Importers – Standard záložního souboru, naleznete v tématu [obnovení zálohy do spravované Instance](sql-database-managed-instance-get-started-restore.md). Tento rychlý start ukazuje, jak nahrát soubor zálohy úložištěm objektů BLOB Azure a zabezpečené ho pomocí sdíleného přístupového podpisu (SAS) klíče.
   - Informace o obnovení z adresy URL, najdete v části [nativní obnovit z adresy URL](sql-database-managed-instance-migrate.md#native-restore-from-url).
-  
+
+> [!IMPORTANT]
+> Zálohování z Managed Instance dají obnovit jen do jiného Managed Instance. Nelze obnovit na místní SQL Server nebo do databáze jedné, nebo součástí fondu logického serveru Azure SQL Database.
+
 ### <a name="data-migration-service"></a>Data Migration Service
 
 Azure Database Migration Service je plně spravovaná služba, která umožňují bezproblémovou migraci z několika databázových zdrojů na platformu Azure Data s minimálními výpadky. Tato služba zjednodušuje úlohy potřebné k migraci existujícího třetích stran a databáze SQL serveru do Azure. Možnosti nasazení patří Azure SQL Database Managed Instance a SQL Server na virtuálním počítači Azure ve verzi Public Preview. Zobrazit [jak migrovat místní databázi do Managed Instance pomocí DMS](https://aka.ms/migratetoMIusingDMS).
@@ -233,7 +237,7 @@ Managed Instance výhody z se vždycky nahoru – k datu v cloudu, což znamená
 
 ### <a name="managed-instance-administration-features"></a>Funkce správy spravované Instance  
 
-Managed Instance povolení správce systému a zaměřte se na to, co je nejdůležitější pro firmy. Řada aktivit Správce/DBA systému nejsou vyžadovány, nebo se dají snadno. Například operačního systému nebo RDBMS instalace a používání dílčích oprav, dynamické instanci změny velikosti a konfigurace, zálohování, replikace databáze (včetně systémové databáze), konfigurace vysoké dostupnosti a konfiguraci stavu a výkonu monitorování dat datové proudy. 
+Managed Instance povolení správce systému a zaměřte se na to, co je nejdůležitější pro firmy. Řada aktivit Správce/DBA systému nejsou vyžadovány, nebo se dají snadno. Například operačního systému nebo RDBMS instalace a používání dílčích oprav, dynamické instanci změny velikosti a konfiguraci, zálohování, [replikace databáze](replication-with-sql-database-managed-instance.md) (včetně systémové databáze), konfigurace vysoké dostupnosti a konfigurace stavu a datové proudy pro monitorování výkonu. 
 
 > [!IMPORTANT]
 > Seznam podporovaných, částečně podporované a nepodporované funkce najdete v tématu [funkcí služby SQL Database](sql-database-features.md). Seznam rozdílů jazyka T-SQL ve spravovaných instancí oproti serveru SQL Server najdete v tématu [Managed Instance T-SQL rozdíl oproti serveru SQL Server](sql-database-managed-instance-transact-sql-information.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager funkce šablon - logické | Microsoft Docs
-description: Popisuje funkce pro použití v šablonu Azure Resource Manager k určení logické hodnoty.
+title: Azure Resource Manageru šablony funkce – logické | Dokumentace Microsoftu
+description: Popisuje funkce pro použití v šabloně Azure Resource Manageru k určení logické hodnoty.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -12,44 +12,44 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/05/2017
+ms.date: 09/24/2018
 ms.author: tomfitz
-ms.openlocfilehash: d8a7ae412fc80dff7bd91c1cdc5d4fcd985e07f4
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 8745519f1a0fdda7a5feb6ffb3f61e5250bb260a
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359063"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47164783"
 ---
-# <a name="logical-functions-for-azure-resource-manager-templates"></a>Logické funkce pro šablony Azure Resource Manager
+# <a name="logical-functions-for-azure-resource-manager-templates"></a>Logické funkce pro šablony Azure Resource Manageru
 
-Resource Manager poskytuje několik funkcí pro porovnání ve vašich šablon.
+Resource Manager poskytuje několik funkcí pro provádění porovnání v šablonách.
 
-* [A](#and)
+* [a](#and)
 * [BOOL](#bool)
 * [if](#if)
-* [není](#not)
+* [Not](#not)
 * [Nebo](#or)
 
 ## <a name="and"></a>a
 `and(arg1, arg2)`
 
-Kontroluje, zda jsou true obě hodnoty parametru.
+Kontroluje, zda jsou splněny obě hodnoty parametru.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |Boolean |První hodnota ke kontrole zda hodnotu true. |
-| arg2 |Ano |Boolean |Druhá hodnota, která má zkontrolujte, zda je true. |
+| arg1 |Ano |Boolean |První hodnota ke kontrole, jestli má hodnotu true. |
+| arg2 |Ano |Boolean |Druhá hodnota ke kontrole, jestli má hodnotu true. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Vrátí **True** Pokud jsou obě hodnoty true; v opačném **False**.
+Vrátí **True** Pokud jsou obě hodnoty true; v opačném případě **False**.
 
 ### <a name="examples"></a>Příklady
 
-Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) ukazuje způsob použití logických funkcí.
+Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) ukazuje, jak pomocí logické funkce.
 
 ```json
 {
@@ -81,13 +81,13 @@ Výstup z předchozího příkladu je:
 | orExampleOutput | BOOL | True |
 | notExampleOutput | BOOL | False |
 
-Chcete-li nasadit tento příklad šablony pomocí rozhraní příkazového řádku Azure, použijte:
+Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
 ```
 
-Chcete-li nasadit tento příklad šablony v prostředí PowerShell, použijte:
+Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
@@ -96,20 +96,20 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="bool"></a>BOOL
 `bool(arg1)`
 
-Parametr převede na booleovskou hodnotu.
+Převede parametr na logickou hodnotu.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |řetězec nebo celá čísla |Hodnota převést na logickou hodnotu. |
+| arg1 |Ano |řetězec nebo int |Hodnota pro převod na logickou hodnotu. |
 
 ### <a name="return-value"></a>Návratová hodnota
 Logická hodnota převedená hodnota.
 
 ### <a name="examples"></a>Příklady
 
-Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/bool.json) ukazuje, jak používat bool s řetězec nebo celé číslo.
+Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/bool.json) ukazuje, jak pomocí řetězce nebo celočíselná bool.
 
 ```json
 {
@@ -146,38 +146,38 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | trueInt | BOOL | True |
 | falseInt | BOOL | False |
 
-Chcete-li nasadit tento příklad šablony pomocí rozhraní příkazového řádku Azure, použijte:
+Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/bool.json
 ```
 
-Chcete-li nasadit tento příklad šablony v prostředí PowerShell, použijte:
+Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/bool.json
 ```
 
-## <a name="if"></a>Pokud
+## <a name="if"></a>If
 `if(condition, trueValue, falseValue)`
 
-Vrátí hodnotu, podle toho, zda je podmínka true nebo false.
+Vrátí hodnotu podle toho, jestli je podmínka true nebo false.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| podmínka |Ano |Boolean |Hodnota, zkontrolujte, zda se jedná o hodnotu true. |
-| trueValue |Ano | řetězec, int, objekt nebo pole |Hodnota vrácené v případě, že je podmínka vyhodnocena jako true. |
-| falseValue |Ano | řetězec, int, objekt nebo pole |Hodnota vrácené v případě, že je podmínka vyhodnocena jako false. |
+| condition |Ano |Boolean |Hodnota ke kontrole, jestli je hodnota true. |
+| trueValue |Ano | řetězec, int, objekt nebo pole |Hodnota má vrátit, pokud je podmínka pravdivá. |
+| falseValue |Ano | řetězec, int, objekt nebo pole |Hodnota má vrátit, pokud podmínka není splněna. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Vrátí druhý parametr, pokud je první parametr **True**, jinak vrátí třetí parametr.
+Vrátí druhý parametr, pokud je první parametr **True**; v opačném případě vrátí třetí parametr.
 
 ### <a name="remarks"></a>Poznámky
 
-Tato funkce slouží k podmíněně nastavení vlastnosti prostředku. V následujícím příkladu není kompletní šablonu, ale zobrazuje části relevantní pro podmíněně nastavení skupiny dostupnosti.
+Tato funkce slouží k podmíněně nastavit vlastnost prostředku. V následujícím příkladu není kompletní šablonu, ale ukazuje příslušné části pro podmíněně nastavení dostupnosti.
 
 ```json
 {
@@ -223,7 +223,7 @@ Tato funkce slouží k podmíněně nastavení vlastnosti prostředku. V násled
 
 ### <a name="examples"></a>Příklady
 
-Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/if.json) ukazuje způsob použití `if` funkce.
+Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/if.json) ukazuje způsob použití `if` funkce.
 
 ```json
 {
@@ -239,6 +239,10 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
         "noOutput": {
             "type": "string",
             "value": "[if(equals('a', 'b'), 'yes', 'no')]"
+        },
+        "objectOutput": {
+            "type": "object",
+            "value": "[if(equals('a', 'a'), json('{\"test\": \"value1\"}'), json('null'))]"
         }
     }
 }
@@ -250,14 +254,15 @@ Výstup z předchozího příkladu je:
 | ---- | ---- | ----- |
 | yesOutput | Řetězec | ano |
 | noOutput | Řetězec | ne |
+| objectOutput | Objekt | {"test": "hodnota1"} |
 
-Chcete-li nasadit tento příklad šablony pomocí rozhraní příkazového řádku Azure, použijte:
+Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/if.json
 ```
 
-Chcete-li nasadit tento příklad šablony v prostředí PowerShell, použijte:
+Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/if.json
@@ -266,7 +271,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="not"></a>ne
 `not(arg1)`
 
-Převede logickou hodnotu na opačnou hodnotu.
+Logická hodnota se převede na opačnou hodnotu.
 
 ### <a name="parameters"></a>Parametry
 
@@ -276,11 +281,11 @@ Převede logickou hodnotu na opačnou hodnotu.
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Vrátí **True** po parametr **False**. Vrátí **False** po parametr **True**.
+Vrátí **True** po parametru **False**. Vrátí **False** po parametru **True**.
 
 ### <a name="examples"></a>Příklady
 
-Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) ukazuje způsob použití logických funkcí.
+Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) ukazuje, jak pomocí logické funkce.
 
 ```json
 {
@@ -312,19 +317,19 @@ Výstup z předchozího příkladu je:
 | orExampleOutput | BOOL | True |
 | notExampleOutput | BOOL | False |
 
-Chcete-li nasadit tento příklad šablony pomocí rozhraní příkazového řádku Azure, použijte:
+Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
 ```
 
-Chcete-li nasadit tento příklad šablony v prostředí PowerShell, použijte:
+Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
 ```
 
-Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) používá **není** s [rovná](resource-group-template-functions-comparison.md#equals).
+Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) používá **není** s [rovná](resource-group-template-functions-comparison.md#equals).
 
 ```json
 {
@@ -346,13 +351,13 @@ Výstup z předchozího příkladu je:
 | ---- | ---- | ----- |
 | checkNotEquals | BOOL | True |
 
-Chcete-li nasadit tento příklad šablony pomocí rozhraní příkazového řádku Azure, použijte:
+Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json
 ```
 
-Chcete-li nasadit tento příklad šablony v prostředí PowerShell, použijte:
+Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json
@@ -361,22 +366,22 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="or"></a>nebo
 `or(arg1, arg2)`
 
-Zkontroluje, zda je buď parametr hodnotu true.
+Kontroluje, zda je buď parametr hodnotu true.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |Boolean |První hodnota ke kontrole zda hodnotu true. |
-| arg2 |Ano |Boolean |Druhá hodnota, která má zkontrolujte, zda je true. |
+| arg1 |Ano |Boolean |První hodnota ke kontrole, jestli má hodnotu true. |
+| arg2 |Ano |Boolean |Druhá hodnota ke kontrole, jestli má hodnotu true. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Vrátí **True** Pokud buď hodnota je true; v opačném **False**.
+Vrátí **True** Pokud buď hodnotu true; v opačném případě **False**.
 
 ### <a name="examples"></a>Příklady
 
-Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) ukazuje způsob použití logických funkcí.
+Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) ukazuje, jak pomocí logické funkce.
 
 ```json
 {
@@ -408,21 +413,21 @@ Výstup z předchozího příkladu je:
 | orExampleOutput | BOOL | True |
 | notExampleOutput | BOOL | False |
 
-Chcete-li nasadit tento příklad šablony pomocí rozhraní příkazového řádku Azure, použijte:
+Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
 ```
 
-Chcete-li nasadit tento příklad šablony v prostředí PowerShell, použijte:
+Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
 ```
 
 ## <a name="next-steps"></a>Další postup
-* Popis v částech šablonu Azure Resource Manager naleznete v tématu [šablon pro tvorbu Azure Resource Manageru](resource-group-authoring-templates.md).
-* Sloučit několik šablon, najdete v části [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md).
-* K iteraci v zadaného počtu opakování při vytváření typu prostředku, najdete v části [vytvořit více instancí prostředků ve službě Správce prostředků Azure](resource-group-create-multiple.md).
+* Popis části šablony Azure Resource Manageru najdete v tématu [šablon pro vytváření Azure Resource Manageru](resource-group-authoring-templates.md).
+* Chcete-li sloučit několik šablon, přečtěte si téma [použití propojených šablon s Azure Resource Managerem](resource-group-linked-templates.md).
+* K iteraci zadaného počtu opakování při vytváření konkrétní typ prostředku, naleznete v tématu [vytvořit více instancí prostředku v Azure Resource Manageru](resource-group-create-multiple.md).
 * Postup nasazení šablony, které jste vytvořili, najdete v sekci [nasazení aplikace pomocí šablony Azure Resource Manageru](resource-group-template-deploy.md).
 

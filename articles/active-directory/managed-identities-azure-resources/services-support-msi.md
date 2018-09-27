@@ -10,11 +10,11 @@ ms.service: active-directory
 ms.component: msi
 manager: mtillman
 ms.openlocfilehash: f09704a5befedb99625595e50587fa6bbd704899
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304148"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47106787"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Služby, které podporují spravované identity pro prostředky Azure
 

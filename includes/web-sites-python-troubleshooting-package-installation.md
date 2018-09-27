@@ -5,18 +5,18 @@ V této části najdete popis způsobů řešení tohoto problému.
 ### <a name="request-wheels"></a>Vyžádání souborů wheel
 Pokud instalace balíčku vyžaduje kompilátor, pokuste se kontaktovat vlastníka balíčku a požádejte ho o zpřístupnění souborů wheel balíčku.
 
-S nedávno vydanému [Microsoft Visual C++ Compiler for Python 2.7][Microsoft Visual C++ Compiler for Python 2.7], je nyní snazší sestavovat balíčky, které mají nativní kód pro Python 2.7.
+Díky nedávno vydanému z [Microsoft Visual C++ Compiler for Python 2.7][Microsoft Visual C++ Compiler for Python 2.7], je teď snazší sestavovat balíčky, které mají nativní kód pro Python 2.7.
 
 ### <a name="build-wheels-requires-windows"></a>Sestavení souborů wheel (vyžaduje Windows)
 Poznámka: Při použití této možnosti je nutné balíček zkompilovat pomocí prostředí Python, které odpovídá platformě, architektuře a verzi použité ve webové aplikaci ve službě Azure App Service (Windows/32-bit/2.7 nebo 3.4).
 
 Pokud se balíček nenainstaluje, protože vyžaduje kompilátor, můžete kompilátor nainstalovat na místním počítači a sestavit pro balíček soubor wheel, který potom zahrnete do úložiště.
 
-Uživatelé Mac/Linux: Pokud nemáte přístup k počítači s Windows, přečtěte si téma [vytvoření virtuálního počítače s Windows] [ Create a Virtual Machine Running Windows] pro vytvoření virtuálního počítače na platformě Azure.  Můžete ho použít k vytvoření souborů wheel, přidat je do úložiště a virtuální počítač zahodit. 
+Uživatelé systémů Mac a Linux: Pokud nemáte přístup k počítači s Windows, přečtěte si téma [vytvořit virtuální počítač spuštěný Windows] [ Create a Virtual Machine Running Windows] pro vytvoření virtuálního počítače v Azure.  Můžete ho použít k vytvoření souborů wheel, přidat je do úložiště a virtuální počítač zahodit. 
 
-Python 2.7 můžete nainstalovat [Microsoft Visual C++ Compiler for Python 2.7][Microsoft Visual C++ Compiler for Python 2.7].
+V případě Pythonu 2.7 můžete nainstalovat [Microsoft Visual C++ Compiler for Python 2.7][Microsoft Visual C++ Compiler for Python 2.7].
 
-Pro Python 3.4 můžete nainstalovat [Microsoft Visual C++ 2010 Express][Microsoft Visual C++ 2010 Express].
+V případě Pythonu 3.4 můžete nainstalovat [Microsoft Visual C++ 2010 Express][Microsoft Visual C++ 2010 Express].
 
 K sestavení souborů wheel budete potřebovat balíček wheel:
 

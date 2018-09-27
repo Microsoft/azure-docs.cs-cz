@@ -2,29 +2,22 @@
 title: PowerShell – ochrana otočit TDE – Azure SQL Database | Dokumentace Microsoftu
 description: Zjistěte, jak otočit ochrana transparentní šifrování dat (TDE) pro server Azure SQL.
 services: sql-database
-keywords: ''
-documentationcenter: ''
-author: becczhang
-manager: jhubbard
-editor: ''
-ms.prod: ''
-ms.reviewer: vanto
-ms.suite: sql
-ms.prod_service: sql-database, sql-data-warehouse
 ms.service: sql-database
+ms.subservice: security
 ms.custom: ''
-ms.tgt_pltfrm: ''
-ms.devlang: na
-ms.topic: article
-ms.date: 08/07/2017
+ms.devlang: ''
+ms.topic: conceptual
+author: becczhang
 ms.author: ryzhang26
-monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: ad4202ffed38438cb2e330d813521bbf4d50d5c5
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.reviewer: vanto
+manager: jhubbard
+ms.date: 08/07/2017
+ms.openlocfilehash: 365cb020bb6b2786a89a98e008d1b62c23c1c0e7
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542015"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166581"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector-using-powershell"></a>Otočit ochrana transparentní šifrování dat (TDE) pomocí Powershellu 
 

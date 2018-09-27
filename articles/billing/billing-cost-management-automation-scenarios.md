@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 6/13/2018
 ms.author: erikre
-ms.openlocfilehash: c5445eb5e936fe73d51a41936b052f6495b1bcc6
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 97f6339e5c9532250245a97a81dade12db139e98
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39634242"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227363"
 ---
 # <a name="billing-and-cost-management-automation-scenarios"></a>Scénáře automatizace správy fakturace a nákladů
 
@@ -95,7 +95,7 @@ Můžete použít fakturace a Správa nákladů rozhraní API v různých scén�
 ### <a name="what-is-the-difference-between-the-enterprise-reporting-apis-and-the-consumption-apis-when-should-i-use-each"></a>Jaký je rozdíl mezi využití rozhraní API a rozhraní API Enterprise Reporting? Při každé mám použít?
 Tato rozhraní API mají podobnou sadu funkcí a můžou odpovídat stejné široké škály dotazy v oboru správy fakturace a nákladů. Každé rozhraní API, zaměřuje na různé skupiny uživatelů: 
 
-- **API Enterprise Reporting**: Tato rozhraní API jsou dostupná pro zákazníky, kteří si zaregistrovali smlouvu Enterprise s Microsoftem, která jim uděluje přístup k vyjednávaný peněžní závazky a získání vlastních cen. Rozhraní API vyžadují klíč použít, který můžete získat prostřednictvím [Enterprise Portal](https://ea.azure.com). Popis těchto rozhraní API, naleznete v tématu [přehled generování sestav rozhraní API pro podnikové zákazníky](billing-enterprise-api.md).
+- **API Enterprise Reporting**: Tato rozhraní API jsou dostupná pro zákazníky, kteří si zaregistrovali smlouvu Enterprise s Microsoftem, která jim uděluje přístup k vyjednávaný peněžní závazky a získání vlastních cen. Rozhraní API vyžadují klíč použít, který můžete získat prostřednictvím [Enterprise Portal](https://ea.azure.com). Popis těchto rozhraní API najdete v tématu [přehled generování sestav rozhraní API pro podnikové zákazníky](billing-enterprise-api.md).
 
 - **Využití rozhraní API**: Tato rozhraní API jsou dostupná pro všechny zákazníky s několika výjimkami. Další informace najdete v tématu [přehled rozhraní API konektoru Azure consumption](billing-consumption-api-overview.md) a [reference k rozhraní Azure Consumption API](https://docs.microsoft.com/rest/api/consumption/). Zadané rozhraní API jsou doporučené řešení pro nejnovější vývojové scénáře. 
 

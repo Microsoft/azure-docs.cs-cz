@@ -2,19 +2,22 @@
 title: Přehled služby Azure SQL Database elastic query | Dokumentace Microsoftu
 description: Elastický dotaz můžete spustit dotaz jazyka Transact-SQL, která zahrnuje více databází.
 services: sql-database
-manager: craigg
-author: MladjoA
 ms.service: sql-database
-ms.custom: scale out apps
+subservice: elastic-scale
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/14/2018
+author: MladjoA
 ms.author: mlandzic
-ms.openlocfilehash: a57e354651255e2d3ff723e978222d1a5a9fa002
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 8a7962866b70ae0ec99b8425a365575fbd4e5913
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733342"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47164363"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Přehled služby Azure SQL Database elastic query (preview)
 

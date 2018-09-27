@@ -1,72 +1,73 @@
 ---
-title: Spuštění úloh obsahu přerušování v Azure obsah moderátora | Microsoft Docs
-description: Zjistěte, jak spouštět úlohy obsahu přerušování v konzole rozhraní API.
+title: Spouštění úloh moderování obsahu s konzolou rozhraní API – Content Moderator
+titlesuffix: Azure Cognitive Services
+description: Zjistěte, jak spouštět úlohy moderování obsahu v konzole pro rozhraní API.
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/03/2017
 ms.author: sajagtap
-ms.openlocfilehash: 6f741be1001ae70d5fdbf6f374204aaad1601abe
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 240b26cd86a6985825e3145c5bc43ef31524d7b7
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342434"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227097"
 ---
-# <a name="start-a-moderation-job-from-the-api-console"></a>Spustit úlohu přerušování z konzoly pro rozhraní API
+# <a name="start-a-moderation-job-from-the-api-console"></a>Spustit úlohu moderování z konzoly pro rozhraní API
 
-Použít rozhraní API zkontrolujte [úlohy operations](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) zahájíte obsahu přerušování začátku do konce úlohy pro obrázek nebo textový obsah v Azure moderátora obsah. 
+Použití rozhraní API revize [úlohy operace](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) iniciovat úlohy začátku do konce pro moderování obsahu pro obsah image nebo text v Azure Content Moderator. 
 
-Úloha přerušování kontroluje svůj obsah pomocí rozhraní API přerušování obsah moderátora bitovou kopii nebo Text přerušování API. Potom úlohu přerušování používá pracovní postupy (definovanou v nástroji zkontrolujte) ke generování recenze v nástroji zkontrolujte. 
+Moderování úlohy kontroluje váš obsah s použitím rozhraní API pro moderování obsahu moderátor obrázků nebo rozhraní API pro moderování textu. Potom úlohu moderování použije pracovní postupy (definované v nástroj pro recenze) ke generování kontroly v nástroj pro recenze. 
 
-Jakmile lidského moderátor zkontroluje automaticky přiřazená značky a předpovědi data a odešle přerušování konečné rozhodnutí, odešle rozhraní API zkontrolujte všechny informace, které váš koncový bod rozhraní API.
+Poté, co lidské moderátory kontroly automaticky přiřazená značky a data předpovědí a odešle moderování konečné rozhodnutí, odešle rozhraní API pro kontrolu všechny informace do vašeho koncového bodu rozhraní API.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Přejděte na [Zkontrolujte nástroj](https://contentmoderator.cognitive.microsoft.com/). Pokud jste tak ještě neučinili, zaregistrujte si. V rámci nástroje zkontrolujte [definovat vlastní pracovní postup](Review-Tool-User-Guide/Workflows.md) používat v tomto `Job` operaci.
+Přejděte [nástroji pro kontrolu](https://contentmoderator.cognitive.microsoft.com/). Pokud jste tak ještě neučinili, přihlaste. V rámci nástroje pro recenze [definovat vlastní pracovní postup](Review-Tool-User-Guide/Workflows.md) používat v tomto `Job` operace.
 
 ## <a name="use-the-api-console"></a>Pomocí rozhraní API konzoly
-Chcete-li test-drive rozhraní API pomocí konzoly služby online, je třeba několik hodnot k zadání do konzoly:
+Mohli vyzkoušet rozhraní API pomocí konzole online, budete potřebovat několik hodnot, zadejte do konzoly:
     
-- `teamName`: Pomocí `Id` pole z obrazovky vaše nástroje zkontrolujte přihlašovací údaje. 
-- `ContentId`: Tento řetězec je předán do rozhraní API a vráceny prostřednictvím zpětné volání. **ContentId** je užitečné pro přidružení k výsledky úlohy přerušování. interní identifikátory nebo metadata- `Workflowname`: název [pracovního postupu, který jste vytvořili](Review-Tool-User-Guide/Workflows.md) v předchozí části.
-- `Ocp-Apim-Subscription-Key`: Nachází na **nastavení** kartě. Další informace najdete v tématu [přehled](overview.md).
+- `teamName`: Použijte v případě `Id` pole z obrazovky nástroj zkontrolujte přihlašovací údaje. 
+- `ContentId`: Tento řetězec je předán rozhraní API a vrátí přes zpětného volání. **ContentId** je užitečná pro interní identifikátory nebo metadata přidružení výsledky úlohy moderování.- `Workflowname`: název [pracovního postupu, který jste vytvořili](Review-Tool-User-Guide/Workflows.md) v předchozí části.
+- `Ocp-Apim-Subscription-Key`: Umístěn na **nastavení** kartu. Další informace najdete v tématu [přehled](overview.md).
 
-Přístup k rozhraní API konzoly je z **pověření** okno.
+Přístup k rozhraní API konzoly je z **pověření** okna.
 
-### <a name="navigate-to-the-api-reference"></a>Přejděte na referenční dokumentace rozhraní API
-V **pověření** vyberte [referenční dokumentace rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5).
+### <a name="navigate-to-the-api-reference"></a>Přejděte na reference k rozhraní API
+V **pověření** okně [reference k rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5).
 
   `Job.Create` Otevře se stránka.
 
 ### <a name="select-your-region"></a>Vyberte oblast
-Pro **testování konzoly otevřené rozhraní API**, vyberte oblast, která nejlépe popisuje vaši polohu.
-  ![Úloha – vytvoření výběr oblast stránky](images/test-drive-job-1.png)
+Pro **testovací konzoly Open API**, vyberte oblast, která nejlépe popisuje vaši polohu.
+  ![Úloha: vytvoření stránky oblast výběru](images/test-drive-job-1.png)
 
   `Job.Create` Otevře se konzola rozhraní API. 
 
 ### <a name="enter-parameters"></a>Zadání parametrů
 
-Zadejte hodnoty pro požadované parametry dotazu a svůj klíč předplatného. V **text žádosti** zadejte umístění informace, které chcete kontrolovat. V tomto příkladu použijeme to [Ukázkový obrázek](https://moderatorsampleimages.blob.core.windows.net/samples/sample6.png).
+Zadejte hodnoty pro požadované parametry dotazu a váš klíč předplatného. V **text žádosti** zadejte umístění informace, které chcete zkontrolovat. V tomto příkladu použijeme to [Ukázkový obrázek](https://moderatorsampleimages.blob.core.windows.net/samples/sample6.png).
 
-  ![Úloha – vytvoření parametry dotazu konzoly, hlavičky a pole textu požadavku](images/job-api-console-inputs.PNG)
+  ![Úlohy – vytvoření parametry dotazu konzoly, záhlaví a pole textu požadavku](images/job-api-console-inputs.PNG)
 
-### <a name="submit-your-request"></a>Odešlete žádost
-Vyberte **Poslat**. ID úlohy je vytvořen. Zkopírujte tento používat v dalších krocích.
+### <a name="submit-your-request"></a>Odeslání žádosti
+Vyberte **Poslat**. ID úlohy se vytvoří. Zkopírujte tuto hodnotu na použití v dalších krocích.
 
   `"JobId": "2018014caceddebfe9446fab29056fd8d31ffe"`
 
-### <a name="open-the-get-job-details-page"></a>Otevřete stránku Podrobnosti o získání úlohy
-Vyberte **získat**a pak otevřete rozhraní API výběrem tlačítka, který odpovídá vaší oblasti.
+### <a name="open-the-get-job-details-page"></a>Otevřete stránku podrobností získat úlohu
+Vyberte **získat**a pak otevřete rozhraní API tak, že vyberete tlačítko, které odpovídá vaší oblasti.
 
-  ![Úloha - vytvořit konzoly Get výsledky](images/test-drive-job-4.png)
+  ![Vytvoření úlohy – konzoly získat výsledky](images/test-drive-job-4.png)
 
-### <a name="review-the-response"></a>Přečtěte si odpovědi
+### <a name="review-the-response"></a>Zkontrolovat odpovědi
 
-Zadejte hodnoty pro **teamName** a **JobID**. Zadejte svůj klíč předplatného a potom vyberte **odeslat**. Následující odpověď se zobrazuje stav ukázkové úlohy a podrobnosti.
+Zadejte hodnoty pro **teamName** a **JobID**. Zadejte klíč předplatného a pak vyberte **odeslat**. Následující odpověď ukazuje stav ukázkové úlohy a podrobnosti.
 
 ```
     {
@@ -96,11 +97,11 @@ Zadejte hodnoty pro **teamName** a **JobID**. Zadejte svůj klíč předplatnéh
     }
 ```
 
-## <a name="navigate-to-the-review-tool"></a>Přejděte k nástroji Kontrola
-Na řídicím panelu obsahu moderátora vyberte **zkontrolujte** > **Image**. Zobrazí se bitovou kopii, která můžete zkontrolovat, připraveni k lidské zkontrolujte.
+## <a name="navigate-to-the-review-tool"></a>Přejděte na nástroje pro recenze
+Na řídicím panelu Content Moderator, vyberte **revize** > **Image**. Obrázek, který jste se zobrazí, připravena pro recenze prováděné lidmi.
 
   ![Zkontrolujte nástroj obrázek tři cyklisty](images/ocr-sample-image.PNG)
 
 ## <a name="next-steps"></a>Další postup
 
-Použít rozhraní API REST v kódu ani začínat [rychlé spuštění úlohy .NET](moderation-jobs-quickstart-dotnet.md) integrovat s vaší aplikací.
+Použití rozhraní REST API ve vašem kódu nebo začínat [rychlý úvod k .NET úlohy](moderation-jobs-quickstart-dotnet.md) integrovat s vaší aplikací.

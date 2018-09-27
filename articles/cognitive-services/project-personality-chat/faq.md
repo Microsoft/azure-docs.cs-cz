@@ -1,35 +1,37 @@
 ---
-title: Nejčastější dotazy na charakteru Chat - kognitivní služby Azure | Microsoft Docs
-description: Nejčastější dotazy na charakteru chatu
+title: Časté otázky – posouzení vašich osobnostních chatu
+titlesuffix: Azure Cognitive Services
+description: Nejčastější dotazy na posouzení vašich osobnostních chatu
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
+ms.component: personality-chat
 ms.topic: faq
 ms.date: 05/07/2018
 ms.author: nolachar
 comment: As a bot developer, I want my bot to be able to handle small talk in a consistent tone so that my bot appears more complete and conversational.
-ms.openlocfilehash: 5304b25672f9951e004876dfd19af75ea7d86502
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 274b232f321b3ad739d18a8580b4a178dbde633e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343779"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219817"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-## <a name="why-doesnt-this-answer-every-question-i-ask-it-like-other-chat-bots"></a>Proč není to odpovídat na všechny otázky, které mohu požádat, jako ostatní robotů chatu?
+## <a name="why-doesnt-this-answer-every-question-i-ask-it-like-other-chat-bots"></a>Proč není to odpovídat na všechny otázky, které můžu pokládat ve, stejně jako ostatní chatovací roboty?
 
-Konverzace charakteru projektu, může zvýšit robota s běžné talk malá, která umožňující prezentovat charakteru a vytvoří obsáhlejší činnost koncového uživatele. Je není určený pro přenos na dlouhé konverzace o tématech, které nejsou relevantní pro primární funkce robota. Když ho může reagovat na všech konverzací, má omezená – ve verzi beta – doménám malá talk běžné.
+Projekt posouzení vašich osobnostních konverzace se zlepšila robotů s common Přednáška (krátkodobé používání), která prezentuje posouzení vašich osobnostních a vytvoří kompletní uživatelské prostředí. Neumožňuje provádět na dlouhé konverzací o tématech, které nejsou relevantní pro primární funkci bodu robotů také. Zatímco může reagovat na všechny konverzace, má omezená ve verzi beta, běžné malá komunikovat s ním domén.
 
-## <a name="how-can-i-customize-the-personality-to-suit-my-brand"></a>Jak můžete přizpůsobit tak, aby vyhovovala Moje brand charakteru?
+## <a name="how-can-i-customize-the-personality-to-suit-my-brand"></a>Jak můžete přizpůsobit vzhled tak, aby odpovídala Mé značky?
 
-Vyberte nejbližší osobě dostupná výchozí osoby. V současné době můžete provést redakční knihovny a upravit odpovědi tak, aby lépe vyhovoval vaší značkou. V budoucnu můžete odeslat ukázkové sady utterances z vaší zvolené charakteru a najít jeho nejbližší ID verze osobě. Existují také způsoby přeučování a přizpůsobení modelu.
+Vyberte nejbližší modelové osoby k dispozici výchozí osoby. V současné době můžete využít redakční knihovny a upravit odpovědi, aby lépe vyhovovala vaší značky. V budoucnu můžete nahrát sadu ukázkových projevy ze zvolené charakterové a vyhledání jeho nejbližší ID verze modelové osoby. Existují také způsoby, jak přetrénujete a přizpůsobení modelu.
 
-## <a name="is-this-service-powering-existing-intelligent-agents-such-as-zo"></a>Je tato služba pohánějící existující inteligentní prostředky, jako je například Zo?
+## <a name="is-this-service-powering-existing-intelligent-agents-such-as-zo"></a>Je tato služba pohánějící existující inteligentní agentů, jako je například Zo?
 
-Služba pohánějící Zo, Cortana a projekt charakteru Chat sdílet některé podobné techniky, ale jsou různé zásobníky. Ji doplnil learnings z zkušeností s Zo a Cortana.
+Služby běží na ní takové Zo, Cortana a projekt posouzení vašich osobnostních Chat sdílet některé podobné techniky, ale jsou různé balíky. Doplnil poznatky o prostředí s Zo a Cortany.
 
-## <a name="can-this-service-lead-to-bad-customer-experiences"></a>Tuto službu, může dojít k chybné zákazníka prostředí?
+## <a name="can-this-service-lead-to-bad-customer-experiences"></a>Tuto službu, může vést k už neodnášejí nepříjemné zkušenosti?
 
-K poskytování a pestřejší prostředí, můžete charakteru Chat vygenerování odpovědí nad rámec těch v redakční datovou sadu a pokusí se interpretovat všechny vstup uživatele. Ano je možné, že odpověď nebude pravděpodobně vpravo v kontextu. Některé ovládací prvky byly uvedeny do k prevenci nepříznivý odpovědi, vychází ze znalostní báze od inteligentního agentů jako Zo. Ve výchozím projektu charakteru Chat nastavena reagovat výhradně na záměry rozpoznaný uživatel. Chcete otestovat, zda Chat charakteru projektu je vhodný pro vaše okolností. Vaše zpětná vazba je úvodní, pokud se zobrazí všechny položky, které potřebuje další školení. Pokud použijete tuto službu s vašimi zákazníky v budoucnu, doporučujeme že zvážit anonymizovaná protokolování, který vám pomůže identifikovat problémy s interakcí za provozu.
+K poskytování pohodlnější a pestřejší prostředí, můžete chatovat posouzení vašich osobnostních vygenerování odpovědí nad rámec těch v datové sadě redakční a pokusí se interpretovat všechny uživatelský vstup. Ano je možné, že odpověď nebude zdá se, že v kontextu vpravo. Místo aby se zabránilo nepříznivý odpovědi, stavíme na znalosti z inteligentního agentů jako Zo mají byla pozastavena celé řady kontrolních mechanismů. Ve výchozím nastavení konverzace posouzení vašich osobnostních projektu nastavena výhradně na záměry rozpoznaný uživatel. Můžete chtít otestovat, zda projekt posouzení vašich osobnostních Chat je vhodný pro vaše okolností. Vaše zpětná vazba je úvodní, pokud se zobrazí cokoli, co potřebuje další školicí materiály. Pokud použijete tuto službu s vašimi zákazníky v budoucnu, doporučujeme, abyste že měli zvážit anonymizované protokolování, abyste mohli snadno identifikovat problémy s interakcí za uživatele.

@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 63213e38dab5ef2edd5150fe0adb620fecb2041c
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 63a2d5a62cf2cdfa2a1a08c56ef5a87aaaa13529
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714441"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395539"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Vývoj Azure Functions pomocí sady Visual Studio  
 
@@ -171,7 +171,9 @@ Pokud chcete funkci otestovat, stiskněte F5. Po výzvě přijměte požadavek z
 
 Spuštění k projektu můžete otestovat kód, jako byste testovali nasazenou funkci. Další informace najdete v tématu [strategie pro testování kódu ve službě Azure Functions](functions-test-a-function.md). Při spuštění v režimu ladění, zarážky v sadě Visual Studio podle očekávání. 
 
-Příklad toho, jak testovat funkce aktivované frontou, najdete v článku [rychlý úvodní kurz funkce aktivované frontou](functions-create-storage-queue-triggered-function.md#test-the-function).  
+<!---
+For an example of how to test a queue triggered function, see the [queue triggered function quickstart tutorial](functions-create-storage-queue-triggered-function.md#test-the-function).  
+-->
 
 Další informace o používání nástrojů Azure Functions Core najdete v tématu [kódu a testování Azure functions místně](functions-run-local.md).
 
@@ -179,7 +181,7 @@ Další informace o používání nástrojů Azure Functions Core najdete v tém
 
 [!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
 
-## <a name="function-app-settings"></a>Nastavení Function App
+## <a name="function-app-settings"></a>Nastavení aplikace funkcí
 
 Všechna nastavení, které jste přidali v kroku local.settings.json musí být rovněž přidán do aplikace function app v Azure. Tato nastavení nejsou automaticky nahraje při publikování tohoto projektu.
 

@@ -1,6 +1,6 @@
 ---
-title: Porozumět Azure podrobné používání | Microsoft Docs
-description: Zjistěte, jak ke čtení a pochopení v částech vaší podrobné informace o použití sdíleného svazku clusteru pro vaše předplatné Azure
+title: Pochopení vašeho využití Azure podrobné | Dokumentace Microsoftu
+description: Zjistěte, jak si a porozuměli jim části Podrobné využití sdíleného svazku clusteru u předplatného Azure
 services: ''
 documentationcenter: ''
 author: tonguyen10
@@ -13,80 +13,80 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
-ms.author: tonguyen
-ms.openlocfilehash: 723e42d2bb2af09eb2236c3cbefeee33987ea45b
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.author: cwatson
+ms.openlocfilehash: a037f4837be65eb7eac76977a3728c7357e09463
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37060796"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394423"
 ---
-# <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>Pochopit podmínky na vaše poplatky Azure podrobné informace o použití Microsoftu 
+# <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>Vysvětlení podmínek vašeho Microsoft Azure podrobných poplatků za využití 
 
-Soubor CSV poplatky podrobné informace o použití obsahuje denně a měření poplatky za používání úrovně pro aktuální fakturační období. 
+Podrobné informace o použití poplatky sdíleného svazku clusteru obsahuje poplatky za využívání úrovně denně a měřiče pro aktuální fakturační období. 
 
-Chcete-li získat podrobné informace o použití souboru, přečtěte si téma [jak získat vaše Azure fakturace faktury a denní data o využití](billing-download-azure-invoice-daily-usage-date.md).
-Je k dispozici ve formátu souboru hodnot oddělených čárkami (.csv), který můžete otevřít v aplikaci tabulky. Pokud se zobrazují dvě verze, které jsou k dispozici, stáhněte si verze 2. Který je formátem aktuálního souboru.
+Chcete-li získat podrobné informace o použití souboru, naleznete v tématu [jak získat Azure billing invoice a denní data o využití](billing-download-azure-invoice-daily-usage-date.md).
+Je k dispozici ve formátu souboru hodnot oddělených čárkami (CSV), které můžete otevřít v aplikaci tabulky. Pokud se zobrazí dvě dostupné verze, stáhněte si verzi 2. To je aktuální formát souboru.
 
-Poplatky za používání jsou celkový počet **měsíční** poplatky na předplatném. Poplatky za používání nemáte vzít v úvahu žádné kredity ani slevy.
+Poplatky za využívání jsou celkové **měsíční** poplatky za využívání předplatného. Poplatky za využívání není vezměte v úvahu všechny kredity a slevy.
 
 >[!VIDEO https://www.youtube.com/embed/p13S350M2Vk]
 
-## <a name="detailed-terms-and-descriptions-of-your-detailed-usage-file"></a>Podrobné podmínky a popisy podrobné informace o použití souboru
+## <a name="detailed-terms-and-descriptions-of-your-detailed-usage-file"></a>Podrobné podmínky a popisy podrobné informace o využití souboru
 
-Následující části popisují důležité termíny ukazuje verze 2 podrobné informace o použití souboru.
+Následující části popisují důležité podmínky uvedené ve verzi 2 podrobné informace o použití souboru.
 
 ### <a name="statement"></a>Výraz
 
-V horní části ze souboru CSV podrobné informace o použití zobrazí služby, které jste použili při v měsíci fakturačního období. V následující tabulce jsou uvedeny podmínky a popisy uvedené v této sekci.
+V horní části souboru CSV podrobné informace o využití obsahuje seznam služeb, které jste použili během fakturačního období v měsíci. V následující tabulce jsou uvedeny podmínky a popisy, které jsou uvedené v této části.
 
 | Označení | Popis |
 | --- | --- |
-|Fakturační období |Fakturační období, kdy byly použity měřidla |
-|Kategorie měření |Identifikuje nejvyšší úrovně služby využití |
-|Podkategorie měření |Definuje typ služba Azure, která může mít vliv na rychlost |
-|Název měření |Identifikuje pro měření spotřebovávanou měrné jednotky |
-|Oblast měření |Určuje umístění datového centra pro určité služby, které jsou za cenu na základě umístění datového centra |
-|Skladová jednotka (SKU) |Určuje identifikátor jedinečný systému pro každou Azure měření |
-|Jednotka |Určuje jednotky, ve kterých se služba účtuje. Například GB, hodin, 10 000 s. |
-|Spotřebované množství |Množství měření používá během fakturačního období |
-|Zahrnuté množství |Množství monitorování, která je zahrnutá ve vaší aktuální fakturační období bez poplatku |
-|Překročené množství |Ukazuje rozdíl mezi množství spotřebované a množství zahrnuty. Fakturuje se toto množství. Průběžné platby nabídky se žádné zahrnuté množství s nabídkou tato hodnota je stejný jako objemu spotřebovaného. |
-|V rámci závazku |Zobrazuje měření poplatky, které jsou odečten od vaší závazků částky přidružené vaši nabídku 6 nebo 12 měsíců. Měřicí poplatky jsou odčítat v chronologickém pořadí. |
-|Měna |Měny používanou ve vaší aktuální fakturační období |
-|Překročení |Zobrazuje měření poplatky, které překračují velikost vašeho závazků přidružené vaši nabídku 6 nebo 12 měsíců |
-|Sazba závazku |Zobrazuje míru závazků založenou na velikosti celkový závazků přidružené vaši nabídku 6 nebo 12 měsíců |
-|Sazba |Rychlost, kterou jste se vám účtovat na jednotku fakturovatelného času |
-|Hodnota |Zobrazuje výsledek násobení sloupci Nadlimitní množství podle sloupce míry. Pokud množství spotřebované není překročit množství zahrnuty, je bezplatná v tomto sloupci. |
+|Fakturační období |Fakturační období, kdy byly použity měřiče |
+|Kategorie měření |Identifikuje službu nejvyšší úrovně za využití |
+|Podkategorie měření |Definuje typ služeb Azure, který může mít vliv na sazbu |
+|Název měření |Určuje měrnou jednotku pro měření spotřebovávanou |
+|Oblast měření |Určuje polohu datacentra pro určité služby, které se počítají na základě umístění datového centra |
+|Skladová jednotka (SKU) |Určuje jedinečný identifikátor systému pro každou měřičů Azure |
+|Jednotka |Určuje jednotky, ve kterých se služba účtuje. Například GB, hodiny, 10 000 operací s. |
+|Spotřebované množství |Množství měřiče použít během fakturačního období |
+|Zahrnuté množství |Množství měřiče, které je zdarma v aktuálním fakturačním období |
+|Překročené množství |Ukazuje rozdíl mezi spotřebované množství a zahrnuté množství. Tuto částku vám budeme fakturovat. U nabídek s průběžnými platbami se žádné zahrnuté množství s nabídkou je tento součet stejný jako spotřebované množství. |
+|V rámci závazku |Ukazuje náklady měřiče, které jsou odečtena od výše závazku spojeného s nabídkou na 6 nebo 12 měsíců. Poplatky za měřiče odečtení v chronologickém pořadí. |
+|Měna |Měna použitá v aktuálním fakturačním období |
+|Překročení |Zobrazuje poplatky za měřiče, které překračují výši závazku spojeného s nabídkou na 6 nebo 12 měsíců |
+|Sazba závazku |Ukazuje sazbu závazku založenou na celkové výši závazku spojeného s nabídkou na 6 nebo 12 měsíců |
+|Sazba |Sazba se účtuje za fakturovatelnou jednotku |
+|Hodnota |Zobrazuje výsledek součinu sloupce Nadlimitní množství sloupcem sazba. Pokud spotřebované množství nepřekročí zahrnuté množství, neplatí žádné poplatky v tomto sloupci. |
 
 ### <a name="daily-usage"></a>Denní využívání
 
-Denní využití části ze souboru CSV se zobrazují podrobnosti o použití, které ovlivňují fakturační sazby. V následující tabulce jsou uvedeny podmínky a popisy uvedené v této sekci.
+V části denní využívání ze souboru CSV se zobrazí podrobnosti o použití, které ovlivňují fakturační sazby. V následující tabulce jsou uvedeny podmínky a popisy, které jsou uvedené v této části.
 
 | Označení | Popis |
 | --- | --- |
-|Datum využití |Datum, kdy byl použit měřidla |
-|Kategorie měření |Identifikuje nejvyšší úrovně služby, pro kterou toto použití patří |
-|ID měření |Identifikátor fakturovaná měření, který se používá k cena fakturace využití |
-|Podkategorie měření |Definuje typ služby Azure, který může mít vliv na rychlost |
-|Název měření |Identifikuje pro měření spotřebovávanou měrné jednotky |
-|Oblast měření |Určuje umístění datového centra pro určité služby, které jsou za cenu na základě umístění datového centra |
-|Jednotka |Identifikuje jednotka, ve které je účtován měřidla v. Například GB, hodin, 10 000 s. |
-|Spotřebované množství |Množství monitorování, které bylo spotřebováno pro daný den |
-|Umístění prostředku |Identifikuje datacenter, kde je spuštěna měřidla |
-|Spotřebovaná služba |Služba Azure platform, který jste použili |
-|Skupina prostředků |Skupinu prostředků, ve které je nasazený měření spuštěný v. <br/><br/>Další informace naleznete v tématu [Přehled Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). |
-|ID instance | Identifikátor pro měřidla. <br/><br/> Identifikátor obsahuje název, který jste zadali pro měřidla v okamžiku vytvoření. Je buď v názvu prostředku nebo plně kvalifikovaný ID prostředku. Další informace najdete v tématu [rozhraní API služby Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/resources). |
-|Značky | Značky, který přiřadíte měřidla. Použití značek k seskupení záznamů fakturace.<br/><br/>Můžete například značky k distribuci náklady oddělení, který používá měřidla. Služby, které podporují generování značek jsou virtuální počítače, úložiště a síťové služby, které jsou zajišťované pomocí [rozhraní API služby Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/resources). Další informace najdete v tématu [uspořádání prostředků Azure pomocí značek](http://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/). |
-|Další informace |Metadata specifická pro služby. Například bitové kopie typ pro virtuální počítač. |
-|Informace o službě 1 |Název projektu, který služba patří vaše předplatné |
-|Informace o službě 2 |Starší verze pole, které jsou zaznamenány volitelná metadata specifickou pro službu |
+|Datum využití |Datum, kdy byl použit měřič |
+|Kategorie měření |Identifikuje službu nejvyšší úrovně, pro které se využití týká. |
+|ID měření |Identifikátor fakturovaného měření, který slouží k určení ceny fakturovaného využití |
+|Podkategorie měření |Definuje typ služeb Azure, který může mít vliv na sazbu |
+|Název měření |Určuje měrnou jednotku pro měření spotřebovávanou |
+|Oblast měření |Určuje polohu datacentra pro určité služby, které se počítají na základě umístění datového centra |
+|Jednotka |Určuje jednotky, ve kterých měřič účtuje. Například GB, hodiny, 10 000 operací s. |
+|Spotřebované množství |Množství měřič spotřebované za příslušný den |
+|Umístění prostředku |Určuje datové centrum, ve kterém běží měřič |
+|Spotřebovaná služba |Služby platformy Azure, který jste použili |
+|Skupina prostředků |Skupina prostředků, ve kterém je spuštěn měřič nasazené v. <br/><br/>Další informace naleznete v tématu [Přehled Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). |
+|ID instance | Identifikátor pro měřidla. <br/><br/> Identifikátor obsahuje název, který zadáte pro měřidla při vytvoření rovnou uložil. Je název prostředku, nebo plně kvalifikované ID prostředku. Další informace najdete v tématu [API Azure Resource Manageru](https://docs.microsoft.com/rest/api/resources/resources). |
+|Značky | Značka, která přiřadíte k měřidla. Použití značek k seskupení záznamů fakturace.<br/><br/>Například můžete použít značky distribuovat náklady podle oddělení, které používá měřidla. Jsou služby generování značek podporují virtuální počítače, úložiště a síťové služby zřízené pomocí [API Azure Resource Manageru](https://docs.microsoft.com/rest/api/resources/resources). Další informace najdete v tématu [uspořádání prostředků Azure pomocí značek](http://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/). |
+|Další informace |Metadata konkrétních služeb. Například typ image u virtuálního počítače. |
+|Informace o službě 1 |Název projektu, který služba patří v rámci předplatného |
+|Informace o službě 2 |Starší verze pole, které zachycuje volitelná metadata konkrétních služeb |
 
-## <a name="how-do-i-make-sure-that-the-charges-in-my-detailed-usage-file-are-correct"></a>Jak mohu učinit se, že poplatky v mé podrobné informace o použití souboru jsou správné?
-Pokud je v souboru podrobné informace o použití, která chcete podrobnosti na zpoplatněny, přečtěte si téma [porozumět vaší faktuře pro Microsoft Azure.](./billing-understand-your-bill.md)
+## <a name="how-do-i-make-sure-that-the-charges-in-my-detailed-usage-file-are-correct"></a>Jak jsem se ujistit, že poplatky v podrobné informace o použití souboru jsou správné?
+Pokud v souboru podrobné informace o využití, která chcete podrobnosti na poplatek, přečtěte si téma [vysvětlení vašeho vyúčtování služeb Microsoft Azure.](./billing-understand-your-bill.md)
 
-## <a name="external"></a>Co externí poplatky za služby?
-Externích služeb (také označované jako Marketplace objednávky) jsou k dispozici nezávislé služby dodavatelé a se účtují samostatně. Poplatků nezobrazovat Azure faktury. Další informace najdete v tématu [pochopit Azure externí poplatky za](billing-understand-your-azure-marketplace-charges.md).
+## <a name="external"></a>A co poplatků za externí služby?
+Externí služby (označované také jako Marketplace objednávky) jsou k dispozici služba nezávislá dodavatelé a služby se účtují zvlášť. Poplatky se nezobrazují na faktuře Azure. Další informace najdete v tématu [vysvětlení Azure poplatků za externí služby](billing-understand-your-azure-marketplace-charges.md).
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
-Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?) získat rychle vyřešit problém.
+Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?) pro rychlé vyřešení problému.

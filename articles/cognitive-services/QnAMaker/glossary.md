@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Glosář
 services: cognitive-services
 author: tulasim88
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 65f2aea6ca7b92a1f7d58c607138bbd3388ad30a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b22ec27b2999d322945e37c5a38d2b1d1532e7e3
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954564"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166040"
 ---
 # <a name="glossary"></a>Glosář
 

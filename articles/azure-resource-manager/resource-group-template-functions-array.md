@@ -12,27 +12,27 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/05/2017
+ms.date: 09/24/2018
 ms.author: tomfitz
-ms.openlocfilehash: cdc8222675a9f0099edccb24310bcea03bf963f4
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: e0269e17a419c6b611d72a7d00668fe9c9519894
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929668"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166177"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Pole a objektu funkce pro šablony Azure Resource Manageru 
 
 Resource Manager poskytuje několik funkcí pro práci s poli a objekty.
 
-* [pole](#array)
+* [Pole](#array)
 * [sloučení](#coalesce)
 * [concat](#concat)
-* [obsahuje](#contains)
+* [Obsahuje](#contains)
 * [createArray](#createarray)
 * [prázdný](#empty)
 * [první](#first)
-* [průnik](#intersection)
+* [Průnik](#intersection)
 * [json](#json)
 * [poslední](#last)
 * [Délka](#length)
@@ -645,7 +645,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 <a id="intersection" />
 
-## <a name="intersection"></a>průnik
+## <a name="intersection"></a>Průnik
 `intersection(arg1, arg2, arg3, ...)`
 
 Vrátí jedno pole nebo objekt s společné prvky z parametrů.
@@ -738,6 +738,10 @@ Vrátí objekt JSON.
 
 Objekt JSON z zadaný řetězec nebo prázdný objekt při **null** je zadán.
 
+### <a name="remarks"></a>Poznámky
+
+Pokud je potřeba zahrnout parametr nebo proměnná v objektu JSON, použijte [concat](resource-group-template-functions-string.md#concat) funkci, která vytvoří řetězec, který můžete předat do funkce.
+
 ### <a name="example"></a>Příklad:
 
 Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/json.json) ukazuje, jak pomocí pole a objekty funkce json:
@@ -746,6 +750,12 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
+    "parameters": {
+        "testValue": {
+            "type": "string",
+            "defaultValue": "demo value"
+        }
+    },
     "resources": [
     ],
     "outputs": {
@@ -756,6 +766,10 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
         "nullOutput": {
             "type": "bool",
             "value": "[empty(json('null'))]"
+        },
+        "paramOutput": {
+            "type": "object",
+            "value": "[json(concat('{\"a\": \"', parameters('testValue'), '\"}'))]"
         }
     }
 }
@@ -767,6 +781,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | ---- | ---- | ----- |
 | jsonOutput | Objekt | {"a": "b"} |
 | nullOutput | Logická hodnota | True |
+| paramOutput | Objekt | {"a": "ukázka hodnotu"}
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 

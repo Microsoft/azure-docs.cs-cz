@@ -15,12 +15,12 @@ ms.topic: conceptal
 ms.date: 08/23/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: bdf1d1a62bd8e2e1d0a0a8ad30f2d4c4833be0e4
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: a52654ab620908b9c8c07edf3fcdfbf70068528d
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125089"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220784"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>Vytvoření pracovního prostoru Log Analytics na portálu Azure portal
 Na webu Azure Portal, které můžete nastavit pracovní prostor Log Analytics, které je jedinečné prostředí Log Analytics s vlastním úložištěm dat, zdroje dat a řešení.  Podle kroků popsaných v tomto článku jsou požadovány, pokud máte v úmyslu na shromažďování dat z těchto zdrojů:
@@ -28,7 +28,7 @@ Na webu Azure Portal, které můžete nastavit pracovní prostor Log Analytics, 
 * Prostředky ve vašem předplatném Azure
 * Místní služba System Center Operations Manager monitorovat počítače
 * Kolekce zařízení ze System Center Configuration Manager 
-* Diagnostika nebo protokolování dat z úložiště Azure
+* Diagnostika nebo protokolování dat ze služby Azure storage
 
 U jiných zdrojů, jako jsou virtuální počítače Azure a Windows nebo virtuální počítače s Linuxem ve vašem prostředí naleznete v následujících tématech:
 
@@ -48,7 +48,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
   
 2. Klikněte na **Vytvořit** a podle potřeby změňte hodnoty následujících položek:
 
-  * Zadejte název nového **pracovního prostoru OMS**, například *DefaultLAWorkspace*. 
+  * Zadejte název pro nový **pracovní prostor Log Analytics**, jako například *DefaultLAWorkspace*. 
   * Vyberte **předplatné**, které má být cílem propojení, výběrem z rozevíracího seznamu, pokud výchozí vybrané předplatné není vhodné.
   * Pro **skupiny prostředků**, zvolte možnost používat existující prostředek již skupinu nastavení nebo vytvořte novou.  
   * Vyberte dostupný **umístění**.  Další informace najdete v tématu který [Log Analytics je dostupná v oblastech](https://azure.microsoft.com/regions/services/).
@@ -56,7 +56,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
         ![Create Log Analytics resource blade](media/log-analytics-quick-collect-azurevm/create-loganalytics-workspace-02.png)  
 
-3. Po zadání požadovaných informací v podokně **Pracovní prostor OMS** klikněte na **OK**.  
+3. Po zadání požadovaných informací v **pracovní prostor Log Analytics** podokně klikněte na tlačítko **OK**.  
 
 Během ověřování informací a vytváření pracovního prostoru můžete průběh zpracování sledovat prostřednictvím položky nabídky **Oznámení**. 
 
@@ -66,4 +66,4 @@ Teď, když máte k dispozici pracovní prostor, konfigurace shromažďování d
 * Pokud chcete povolit shromažďování dat z prostředků Azure pomocí diagnostiky Azure nebo do úložiště Azure, najdete v článku [metriky pro použití v Log Analytics a Azure shromažďovat protokoly služby](log-analytics-azure-storage.md).  
 * [Přidat System Center Operations Manager jako zdroj dat](log-analytics-om-agents.md) shromažďovat data z agenty posílající sestavy skupině pro správu nástroje Operations Manager a uloží je v pracovním prostoru Log Analytics. 
 * Připojit [nástroje Configuration Manager](log-analytics-sccm.md) importovat počítače, které jsou členy kolekce v hierarchii.  
-* Zkontrolujte [řešení pro správu](log-analytics-add-solutions.md) k dispozici a jak přidat nebo odebrat některé řešení z pracovního prostoru.
+* Zkontrolujte [řešení pro správu](https://docs.microsoft.com/azure/monitoring/monitoring-solutions-inventory?toc=%2fazure%2flog-analytics%2ftoc.json) k dispozici a jak přidat nebo odebrat některé řešení z pracovního prostoru.

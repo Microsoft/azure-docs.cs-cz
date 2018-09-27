@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 7/30/2018
 ms.author: ccompy
-ms.openlocfilehash: fb26d91ae772c4da1055da80366d6e8c6b80a6ac
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 9ffeb01a46b62202292f6e1ea91f47cd87954387
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364304"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219124"
 ---
 # <a name="azure-app-service-static-ip-restrictions"></a>Omezení statickou IP adresu služby Azure App Service #
 
@@ -29,7 +29,7 @@ Funkce omezení podle IP funguje se všemi úlohami, které zahrnují; hostovan�
 
 Po odeslání žádosti do vaší aplikace z IP adres je porovnán seznamu omezení IP adres. Pokud adresa nemá povolený přístup na základě pravidel v seznamu, odpoví odpovědí služby s [HTTP 403](https://en.wikipedia.org/wiki/HTTP_403) stavový kód.
 
-Funkce omezení podle IP je implementována v role front-endu služby App Service, které jsou upstream hostitelů pracovního procesu, ve kterém běží váš kód. Omezení IP adres jsou pro ně efektivně seznamy ACL sítě.  
+Funkce omezení podle IP je implementována v role front-endu služby App Service, které jsou upstream hostitelů pracovního procesu, ve kterém běží váš kód. Omezení IP adres se proto prakticky seznamy ACL sítě.  
 
 ![Omezení podle IP toku](media/app-service-ip-restrictions/ip-restrictions-flow.png)
 

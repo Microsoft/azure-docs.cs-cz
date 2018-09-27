@@ -1,21 +1,23 @@
 ---
 title: Správa databází s horizontálním navýšením kapacity | Dokumentace Microsoftu
 description: Úlohy služby elastic database použijte ke spuštění skriptu v rámci skupiny databází.
-metakeywords: azure sql database elastic databases
 services: sql-database
-manager: craigg
-author: stevestein
 ms.service: sql-database
-ms.custom: scale out apps
+subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 06/14/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 21cd1b171f25d5abdaa89f631ac5bab8e4a351af
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.reviewer: ''
+manager: craigg
+ms.date: 06/14/2018
+ms.openlocfilehash: 649a76fad8f54339a6b1e429b3966945410573f7
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968865"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166788"
 ---
 # <a name="managing-scaled-out-cloud-databases"></a>Správa databází s horizontálním navýšením kapacity
 

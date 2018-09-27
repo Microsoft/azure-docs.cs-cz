@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/18/2018
 ms.author: genli
 ms.openlocfilehash: 48f6a650fab9ad11607834f2dfe3de873c519786
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45544077"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223623"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>Nainstalujte agenta virtuálního počítače Azure v režimu offline 
 

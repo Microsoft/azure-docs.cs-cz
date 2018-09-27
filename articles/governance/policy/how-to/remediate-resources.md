@@ -4,16 +4,16 @@ description: Tento návod vás provede nápravné prostředky, které jsou nekom
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 09/25/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 747650bc47644cdca07f705f42d063c995ebe9bf
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: adba2322bce5f0884cba51078e65feeaeaf193d9
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980249"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392685"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Opravit nekompatibilní prostředky službou Azure Policy
 
@@ -27,7 +27,7 @@ Zásady spravované identity pro každé přiřazení pro vás vytvoří, ale mu
 ![Spravovaná identita - chybějící role](../media/remediate-resources/missing-role.png)
 
 > [!IMPORTANT]
-> Pokud se prostředek změnil **deployIfNotExists** je mimo rozsah přiřazení zásad, spravovanou identitu tohoto přiřazení musí být programově udělen přístup nebo nápravy nasazení se nezdaří.
+> Pokud se prostředek změnil **deployIfNotExists** je mimo rozsah přiřazení zásady nebo šabloně přistupuje k vlastnosti s prostředky mimo obor přiřazení zásady, spravovanou identitu tohoto přiřazení musí být [ručně udělen přístup](#manually-configure-the-managed-identity) nebo nápravy nasazení se nezdaří.
 
 ## <a name="configure-policy-definition"></a>Nakonfigurovat definici zásad
 
@@ -53,6 +53,79 @@ az role definition list --name 'Contributor'
 ```azurepowershell-interactive
 Get-AzureRmRoleDefinition -Name 'Contributor'
 ```
+
+## <a name="manually-configure-the-managed-identity"></a>Ručně nakonfigurovat spravované identity
+
+Při vytváření přiřazení pomocí portálu, zásady vygeneruje spravovanou identitu i mu udělí role definované v **roleDefinitionIds**. Za těchto podmínek je nutné kroky pro vytvoření spravované identity a přiřadit oprávnění provést ručně:
+
+- Při používání sady SDK (jako je Azure PowerShell)
+- Když se upraví prostředek mimo rozsah přiřazení pomocí šablony
+- Pokud je prostředek mimo rozsah přiřazení čteného šablonou
+
+> [!NOTE]
+> Azure PowerShell a rozhraní .NET jsou pouze sady SDK, které aktuálně podporují tuto funkci.
+
+### <a name="create-managed-identity-with-powershell"></a>Vytvořte spravovanou identitu pomocí Powershellu
+
+Chcete-li vytvořit spravovanou identitu při přiřazování zásady, **umístění** musí být definován a **AssignIdentity** použít. Následující příklad získá definic předdefinovaných zásad **nasadit SQL DB transparentní šifrování dat**, nastaví cílová skupina prostředků a pak vytvoří přiřazení.
+
+```azurepowershell-interactive
+# Login first with Connect-AzureRmAccount if not using Cloud Shell
+
+# Get the built-in "Deploy SQL DB transparent data encryption" policy definition
+$policyDef = Get-AzureRmPolicyDefinition -Id '/providers/Microsoft.Authorization/policyDefinitions/86a912f6-9a06-4e26-b447-11b16ba8659f'
+
+# Get the reference to the resource group
+$resourceGroup = Get-AzureRmResourceGroup -Name 'MyResourceGroup'
+
+# Create the assignment using the -Location and -AssignIdentity properties
+$assignment = New-AzureRmPolicyAssignment -Name 'sqlDbTDE' -DisplayName 'Deploy SQL DB transparent data encryption' -Scope $resourceGroup.ResourceId -PolicyDefinition $policyDef -Location 'westus' -AssignIdentity
+```
+
+`$assignment` Proměnná nyní obsahuje ID objektu zabezpečení spravovanou identitu spolu se standardní hodnoty vrácená při vytváření přiřazení zásad. Je přístupný prostřednictvím `$assignment.Identity.PrincipalId`.
+
+### <a name="grant-defined-roles-with-powershell"></a>Udělení definované role pomocí prostředí PowerShell
+
+Nové spravovanou identitu, musíte dokončit replikace prostřednictvím Azure Active Directory lze udělit potřebná role. Po dokončení replikace následující příklad iteruje v definici zásad `$policyDef` pro **roleDefinitionIds** a používá [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) udělit nové spravované identity rolí.
+
+```azurepowershell-interactive
+# Use the $policyDef to get to the roleDefinitionIds array
+$roleDefinitionIds = $policyDef.Properties.policyRule.then.details.roleDefinitionIds
+
+if ($roleDefinitionIds.Count -gt 0)
+{
+    $roleDefinitionIds | ForEach-Object {
+        $roleDefId = $_.Split("/") | Select-Object -Last 1
+        New-AzureRmRoleAssignment -Scope $resourceGroup.ResourceId -ObjectId $assignment.Identity.PrincipalId -RoleDefinitionId $roleDefId
+    }
+}
+```
+
+### <a name="grant-defined-roles-through-portal"></a>Udělení definované role prostřednictvím portálu
+
+Existují dva způsoby, jak udělit definované role pomocí portálu, pomocí spravované identity přiřazení **řízení přístupu (IAM)** nebo úpravou přiřazení zásady nebo iniciativa a kliknutím na **Uložit**.
+
+Přidání role pro toto přiřazení spravovanou identitu, postupujte podle těchto kroků:
+
+1. Spusťte službu Azure Policy na webu Azure Portal tak, že kliknete na **Všechny služby** a pak vyhledáte a vyberete **Zásady**.
+
+1. Na levé straně stránky služby Azure Policy vyberte **Přiřazení**.
+
+1. Vyhledejte přiřazení, která má spravovanou identitu a klikněte na název.
+
+1. Najít **ID přiřazení** vlastnost na stránky pro úpravu. ID přiřazení bude vypadat:
+
+   ```
+   /subscriptions/{subscriptionId}/resourceGroups/PolicyTarget/providers/Microsoft.Authorization/policyAssignments/2802056bfc094dfb95d4d7a5
+   ```
+
+   Název spravované identity je poslední část přiřazení ID prostředku, který je `2802056bfc094dfb95d4d7a5` v tomto příkladu. Zkopírujte tuto část ID přiřazení prostředku.
+
+1. Přejděte na prostředek nebo prostředky nadřazeného kontejneru (skupinu prostředků, předplatné, skupina pro správu), který se musí ručně přidat definice role.
+
+1. Klikněte na tlačítko **řízení přístupu (IAM)** odkaz na stránce prostředků a klikněte na tlačítko **+ přidat** v horní části stránku řízení přístupu.
+
+1. Vyberte vhodnou roli, která odpovídá **roleDefinitionIds** z definice zásady. Ponechte **přiřadit přístup k** nastavenou na výchozí hodnotu "Azure AD uživatele, skupiny nebo aplikace". V **vyberte** pole, vložte nebo napište část ID prostředku přiřazení dříve nachází. Po dokončení hledání, klikněte na objekt se stejným názvem vyberte id a klikněte na **Uložit**.
 
 ## <a name="create-a-remediation-task"></a>Vytvořte úlohu nápravy
 

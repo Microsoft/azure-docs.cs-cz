@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2018
 ms.author: barclayn
-ms.openlocfilehash: 00d79462fcaad785820e3879079414c88c958a89
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ba39ba2d4206fa86ed32bddf0538a2e997a79339
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961480"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220563"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Správa služby Key Vault pomocí rozhraní příkazového řádku Azure 
 
-Tento článek popisuje, jak začít pracovat s Azure Key Vault pomocí rozhraní příkazového řádku Azure.  Můžete zobrazit informace na:
+Tento článek popisuje, jak začít pracovat se službou Azure Key Vault pomocí rozhraní příkazového řádku Azure.  Můžete zobrazit informace na:
 
 - Jak v Azure vytvořit zesílený kontejner (trezor)
 - Přidání klíče, tajné nebo certifikát do služby key vault

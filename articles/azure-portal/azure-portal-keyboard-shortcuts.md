@@ -1,6 +1,6 @@
 ---
-title: Portál Azure klávesové zkratky | Microsoft Docs
-description: Další informace o klávesové zkratky, které fungují na portálu Azure.
+title: Azure portal klávesové zkratky | Dokumentace Microsoftu
+description: Další informace o klávesových zkratek, které fungují na webu Azure Portal.
 services: azure-portal
 documentationcenter: ''
 author: adamabmsft
@@ -13,36 +13,36 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/24/2017
-ms.author: adamab
+ms.author: cwatson
 ms.custom: accessibility
-ms.openlocfilehash: 4744a752230cfd1f6012d9fe0a502b2653ef8061
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: de79e1ea91b7d30eb550cb078bbb257e2f924dfb
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295223"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393821"
 ---
-# <a name="keyboard-shortcuts-in-the-azure-portal"></a>Klávesové zkratky v portálu Azure
-Tento článek ukazuje klávesové zkratky, které fungují v celém webu Azure portal. Jednotlivé služby může mít vlastní klávesové zkratky.
+# <a name="keyboard-shortcuts-in-the-azure-portal"></a>Klávesové zkratky na webu Azure Portal
+Tento článek popisuje klávesové zkratky, které fungují v rámci webu Azure portal. Jednotlivé služby může mít své vlastní klávesové zkratky.
 
 ## <a name="actions"></a>Akce
-|Uděláte to tak |Stisknutím klávesy |
+|Provedete to tak |Stisknutím klávesy |
 | --- | --- |
 |Vytvořit nový prostředek|G + N|
-|Otevřete podokno, všechny služby.|G+B|
+|Otevření podokna "všechny služby.|G+B|
 |Prohledávat prostředky|G+/| 
-|Položky nabídky vyhledávání prostředků|CTRL +/ |
-|Přesunout vybrané levém podokně položku nahoru |ALT + Shift + šipka nahoru|
-|Přesunout vybrané levém podokně položku dolů |ALT + Shift + šipka dolů|
+|Hledání položek nabídky prostředků|CTRL +/ |
+|Levé podokno vybrané položky nahoru |ALT + Shift + šipka nahoru|
+|Levé podokno vybrané položky dolů |ALT + Shift + šipka dolů|
 
 ## <a name="navigation"></a>Navigace
-|Uděláte to tak |Stisknutím klávesy |
+|Provedete to tak |Stisknutím klávesy |
 | --- | --- |
 |Přesunout fokus na panel příkazů |G+, |
 |Přepnout fokus mezi horním a postranním panelem | G+. |
 
 ## <a name="go-to"></a>Přejít na
-|Uděláte to tak |Stisknutím klávesy |
+|Provedete to tak |Stisknutím klávesy |
 | --- | --- |
 |Přejít na řídicí panel |G + D |
 |Přejít na všechny prostředky|G+A |
