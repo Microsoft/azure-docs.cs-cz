@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.date: 09/05/2018
 ms.author: sethm
 ms.reviewer: kivenkat
-ms.openlocfilehash: 143e6c2856485e33022254abfcf0cf3806b30cef
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: a0d75b13369cff4e99bef6f57a3b01f3d8eee6e4
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025769"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227159"
 ---
 # <a name="introduction-to-azure-stack-virtual-machines"></a>Úvod do virtuálních počítačů Azure Stack
 
@@ -99,7 +99,7 @@ Prostředky v následující tabulce se používají ve virtuálním počítači
 |Prostředek|Požaduje se|Popis|
 |---------|---------|---------|
 |Skupina prostředků|Ano|Virtuální počítač musí být součástí skupiny prostředků.|
-|Účet úložiště|Ne|Virtuální počítač nemá nutné účet úložiště k ukládání svých virtuálních pevných disků, pokud využití služby Managed Disks. <br>Virtuální počítač potřebuje účet úložiště k ukládání svých virtuálních pevných disků, pokud používáte nespravované disky.|
+|Účet úložiště|Ne|Virtuální počítač nemusí účet úložiště k ukládání svých virtuálních pevných disků, pokud využití služby Managed Disks. <br>Virtuální počítač potřebuje účet úložiště k ukládání svých virtuálních pevných disků, pokud používáte nespravované disky.|
 |Virtuální síť|Ano|Virtuální počítač musí být členem virtuální sítě.|
 |Veřejná IP adresa|Ne|Virtuální počítač může mít přiřazenou veřejnou IP adresu pro umožnění vzdáleného přístupu.|
 |Síťové rozhraní|Ano|Virtuální počítač potřebuje síťové rozhraní ke komunikaci v síti.|
