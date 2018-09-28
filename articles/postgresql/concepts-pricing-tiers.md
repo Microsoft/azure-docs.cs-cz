@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 07/21/2018
-ms.openlocfilehash: 18f6647a8412477384a48aa777461f99b2fbcb0a
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.date: 09/27/2018
+ms.openlocfilehash: 696932135cdd3850e04d25370867c0273b99b3bf
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379534"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423540"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL cenové úrovně
 
@@ -74,6 +74,11 @@ Výpočetní prostředky jsou k dispozici jako virtuální jádra, která předs
 | Japonsko – západ | X | X |
 | Jižní Korea – střed |  | X |
 | Jižní Korea – jih |  | X |
+| Německo – střed |  | X |
+| US DoD – střed  | X |  |
+| US DoD – východ  | X |  |
+| USA (Gov) – Arizona |  | X |
+| USA (Gov) – Texas |  | X |
 
 ## <a name="storage"></a>Úložiště
 
@@ -120,4 +125,4 @@ Nejnovější informace o cenách najdete v článku Služba [stránce s cenami]
 
 - Zjistěte, jak [vytvoříte PostgreSQL server na portálu](tutorial-design-database-using-azure-portal.md).
 - Zjistěte, jak [monitorování a škálování serveru Azure Database for PostgreSQL pomocí Azure CLI](scripts/sample-scale-server-up-or-down.md).
-- Další informace o [služby omezení](concepts-limits.md).
+- Další informace o [služby omezení](concepts-limits.md). 

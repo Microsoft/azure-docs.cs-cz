@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/11/2018
+ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: db0d796a407c8e33501b0a312c78e8508f17297d
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 3cefecdf0f87483a1fb544d1eb4e3e514e388259
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39075976"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406910"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Nasazení SQL serveru Azure Virtual Machines DBMS pro SAP NetWeaver
 
@@ -381,8 +381,10 @@ SQL Server 2014 a novějších verzích open možnost k ukládání databázový
 
 * Účet úložiště používá musí být ve stejné oblasti Azure, protože ten, který se používá k nasazení virtuálního počítače SQL Server běží v.
 * Důležité informace týkající se distribuce virtuální pevné disky výše uvedených přes různé účty úložiště Azure použít pro tuto metodu i nasazení. Znamená, že počet vstupně-výstupní operace proti limity účtu úložiště Azure.
-* Místo účetní proti podíl vstupně-výstupní operace úložiště Virtuálního počítače, provoz proti představující systému SQL Server soubory protokolu a data objektů BLOB služby storage se s tím při výběru do šířky pásma sítě Virtuálního počítače z konkrétní typ virtuálního počítače. Šířka pásma sítě určitého typu virtuálních počítačů, projděte si článek [velikosti pro Windows virtual machines v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).
+* Místo účetní proti podíl vstupně-výstupní operace úložiště Virtuálního počítače, provoz proti představující systému SQL Server soubory protokolu a data objektů BLOB služby storage se s tím při výběru do šířky pásma sítě Virtuálního počítače z konkrétní typ virtuálního počítače. Síť a úložiště šířky pásma určitého typu virtuálních počítačů, projděte si článek [velikosti pro Windows virtual machines v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).
+* V důsledku doručením (push) vstup a výstup souborů přes kvótu sítě, jsou většinou ztroskotání kvóta úložiště a s ním používat celkovou šířku pásma virtuálního počítače pouze částečně.
 * Vstupně-výstupních operací a vstupně-výstupní propustnost výkonnostní cíle, které Azure Premium Storage nabízí pro jiný disk velikosti už neplatí. I když jsou objekty BLOB, který jste vytvořili jsou uložená na Azure Premium Storage. Cíle, které jsou popsané v článku [vysoce výkonné úložiště úrovně Premium a spravovaným diskům pro virtuální počítače](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage#scalability-and-performance-targets). V důsledku umístění datové soubory SQL serveru a souborů protokolu přímo na objektech BLOB, které jsou uložené na Azure Premium Storage, výkonové charakteristiky se může lišit v porovnání s virtuální pevné disky na Azure Premium Storage.
+* Na základě použití mezipaměti u hostitele jako k dispozici pro disky Azure Premium Storage není k dispozici, při umísťování datové soubory SQL serveru přímo na objektech BLOB Azure.
 * Na virtuální počítače řady M-Series nelze použít akcelerátor zápisu Azure pro podporu hranicí milisekund zápisů ve službě soubor protokolu transakcí serveru SQL Server. 
 
 Podrobnosti o této funkci najdete v článku [datové soubory SQL serveru v Microsoft Azure](https://docs.microsoft.com/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-2017)

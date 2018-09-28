@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/26/2018
+ms.date: 09/27/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a4bb5f59e7aa99a676145ba7a6dbd1883cb860cf
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: e164488a1bf176d5b6c0e28a84cd1ec22cae4cce
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394305"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423574"
 ---
 # <a name="import-a-power-bi-desktop-file"></a>Import souboru Power BI Desktopu
 
@@ -22,13 +22,14 @@ Datový model v souboru Power BI Desktopu (pbix) můžete importovat do služby 
 **Omezení**   
 
 - Import ze souboru pbix na portálu, který se používá funkce webový Návrhář **ve verzi preview**. Funkce je omezena. Pro pokročilejší model vývoje a testování je nejvhodnější použít Visual Studio (SSDT) a SQL Server Management Studio (SSMS).
-- Pokud se zobrazí následující chyba, při importu, soubor pbix je povolena funkce ve verzi preview, které se zatím nepodporují ve službě Azure Analysis Services.
+- Pokud je datový model vytvořený v Power BI Desktopu (2.60.5169.3201) aktualizace z července 2018 nebo později, ujistěte se, že jsou povolené žádné funkce ve verzi preview. Funkce ve verzi Preview nejsou ještě podporované ve službě Azure Analysis Services.  
+Pokud se zobrazí následující chyba, při importu, soubor pbix je povolena funkce ve verzi preview, které se zatím nepodporují ve službě Azure Analysis Services.
 
-    ![Upozornění úrovně kompatibility](./media/analysis-services-import-pbix/aas-import-pbix-cl-warning.png)
+    ![Upozornění úrovně kompatibility](./media/analysis-services-import-pbix/aas-import-pbix-cl-warning.png)   
 - Musí mít oprávnění správce serveru pro import ze souboru pbix.
 - Soubor pbix modelu může připojit k **Azure SQL Database** a **Azure SQL Data Warehouse** pouze zdroje dat.
 - Soubor pbix model nemůže mít živé připojení nebo připojení DirectQuery. 
-- Import se nemusí podařit, pokud soubor pbix datového modelu obsahuje metadata nejsou podporovány ve službě Analysis Services.
+
 
 ## <a name="to-import-from-pbix"></a>Chcete-li importovat z pbix
 

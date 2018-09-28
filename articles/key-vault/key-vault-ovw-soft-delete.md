@@ -7,12 +7,12 @@ author: bryanla
 ms.author: bryanla
 manager: mbaldwin
 ms.date: 09/25/2017
-ms.openlocfilehash: 776d5957ee2c11354c350523cbc8fde12fbcafaf
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: ac34f03c896e9e2180b653c41faa7f7525a40e33
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498177"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407871"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Přehled obnovitelného odstranění služby Azure Key Vault
 
@@ -41,12 +41,22 @@ Operace odstranění objektů služby key vault nebo služby key vault s touto f
 
 Volitelné chování služby Key Vault se obnovitelného odstranění a je **není povolená ve výchozím nastavení** v této verzi. 
 
-### <a name="do-not-purge-flag"></a>Nelze vymazat příznak
-Uživatel, který chce Vynutit odstranění trezoru nebo objekt trezoru můžete udělat. To je, pokud uživatel, který má oprávnění k odstranění, trezor nebo objekt v rámci trezoru můžete vynutit vyprázdnění i v případě, že je zapnutá funkce obnovitelného odstranění pro tento trezor. Ale pokud chce uživatel chránit Vynutit odstranění trezoru nebo objekt trezoru mohou nastavit--enable--ochrany příznak na hodnotu true. Při vytváření trezoru můžete povolit příznak tímto způsobem. Předpokladem pro zapnutí ochrany se musí mít zapnuté obnovitelné odstranění. To je v Azure CLI 2 pomocí příkazu
+### <a name="purge-protection--flag"></a>Vymazat příznak ochrany
+Vyprázdnit ochrany (**--enable--ochrany** v Azure CLI) příznak je vypnuto ve výchozím nastavení. Když tento příznak zapnutý, trezor nebo objektu ve stavu odstraněno nelze vyprázdnit až do uplynutí uchovávají 90 dnů. Takové trezor nebo objektu je stále možné obnovit. Tento příznak dává zákazníkům jistotu, že trezor nebo objekt může nikdy být trvale odstraněn až do uplynutí doby uchování. Můžete zapnout příznak vyprázdnění ochranu pouze v případě, že je zapnutý příznak obnovitelného odstranění, nebo při vytváření trezoru zapnout v obou obnovitelného odstranění a mazání ochrany.
+
+[!NOTE] Předpokladem pro zapnutí ochrany se musí mít zapnuté obnovitelné odstranění. To je v Azure CLI 2 pomocí příkazu
 
 ```
 az keyvault create --name "VaultName" --resource-group "ResourceGroupName" --location westus --enable-soft-delete true --enable-purge-protection true
 ```
+
+### <a name="permitted-purge"></a>Povolené vyprázdnění
+
+Trvale odstranit, odstranění, trezor klíčů je možné prostřednictvím operace POST na prostředku proxy serveru a vyžaduje speciální oprávnění. Obecně platí pouze vlastník předplatného budete moct odstranit trezor klíčů. Operace POST aktivuje okamžitý a nezotavitelnou odstranění tohoto trezoru. 
+
+Výjimkou jsou
+- případech, kdy předplatné Azure bylo označeno jako *neodstranitelný*. V tomto případě pouze služba potom může provést skutečné odstranění a provádí jako proces naplánované. 
+- Když – zapnutý příznak povolení vyprázdnění ochranu na samotný trezor. Key Vault v tomto případě bude čekat 90 dní od při původní objekt tajného kódu byla označená k odstranění se trvale odstranit objekt.
 
 ### <a name="key-vault-recovery"></a>Obnovení služby Key vault
 
@@ -70,12 +80,6 @@ Obnovitelně odstraněný prostředky se uchovávají nastavte časový úsek, 9
 - Pouze konkrétně privilegovaných uživatelů může vynuceně trezoru klíčů nebo odstranit objekt služby key vault vydání příkazu delete na odpovídající prostředek proxy serveru.
 
 Pokud obnovení služby key vault nebo objekt trezoru klíčů, provádí služba na konci interval uchovávání informací vymazat obnovitelně odstraněný trezor klíčů nebo objektu služby key vault a její obsah. Nelze ho přeplánovat odstranění prostředku.
-
-### <a name="permitted-purge"></a>Povolené vyprázdnění
-
-Trvale odstranit, odstranění, trezor klíčů je možné prostřednictvím operace POST na prostředku proxy serveru a vyžaduje speciální oprávnění. Obecně platí pouze vlastník předplatného budete moct odstranit trezor klíčů. Operace POST aktivuje okamžitý a nezotavitelnou odstranění tohoto trezoru. 
-
-Výjimkou je případ, kdy předplatné Azure bylo označeno jako *neodstranitelný*. V tomto případě pouze služba potom může provést skutečné odstranění a provádí jako proces naplánované. 
 
 ### <a name="billing-implications"></a>Vliv na fakturaci
 

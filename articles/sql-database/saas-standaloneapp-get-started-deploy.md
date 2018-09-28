@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: 28f572ee61271c4c81319f7c263172012788765a
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 1e74a0c915471fecb3b8e0662559eb5bfe189b3d
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055539"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423013"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Nasazení a zkoumání samostatné aplikace jednoho tenanta, který používá Azure SQL Database
 
@@ -27,7 +27,7 @@ Samostatná aplikace nebo aplikace na tenanta vzor nasadí instance aplikace pro
 
 V tomto kurzu se naučíte se nasadit tři samostatné aplikace pro tři tenanty do vašeho předplatného Azure.  Máte plný přístup k prozkoumání a pracovat jednotlivé součásti aplikace.
 
-Zdrojový kód a správu skriptů aplikace jsou k dispozici v [WingtipTicketsSaaS StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp) úložiště GitHub.
+Zdrojový kód a správu skriptů aplikace jsou k dispozici v [WingtipTicketsSaaS StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp) úložiště GitHub. Aplikace byla vytvořena pomocí sady Visual Studio 2015 a není úspěšně otevřete a kompilace v sadě Visual Studio 2017 bez aktualizace.
 
 
 V tomto kurzu se dozvíte:

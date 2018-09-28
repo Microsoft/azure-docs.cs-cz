@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 08/10/2018
 ms.author: spelluru
-ms.openlocfilehash: 7370de72c0015314fb083b6705d5275f0acc4fc4
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 2bde0661f57acc9507b1f26f6ceb442cefee7947
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698195"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406477"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-ruby"></a>Jak používat témata a odběry Service Bus pomocí Ruby
  
@@ -34,7 +34,7 @@ Tento článek popisuje, jak používat témata služby Service Bus a odběrů z
 [!INCLUDE [service-bus-ruby-setup](../../includes/service-bus-ruby-setup.md)]
 
 ## <a name="create-a-topic"></a>Vytvoření tématu
-**Azure::ServiceBusService** objektu umožňuje pracovat s tématy. Následující kód vytvoří **Azure::ServiceBusService** objektu. Pokud chcete vytvořit téma, použijte `create_topic()` metody. Následující příklad vytvoří téma nebo vytiskne chyby, pokud tam nějaké jsou.
+**Azure::ServiceBusService** objektu umožňuje pracovat s tématy. Následující kód vytvoří **Azure::ServiceBusService** objektu. Pokud chcete vytvořit téma, použijte `create_topic()` metody. Následující příklad vytvoří téma nebo vytiskne všechny chyby.
 
 ```ruby
 azure_service_bus_service = Azure::ServiceBus::ServiceBusService.new(sb_host, { signer: signer})
@@ -58,10 +58,10 @@ topic = azure_service_bus_service.create_topic(topic)
 ## <a name="create-subscriptions"></a>Vytvořit odběry
 Odběry témat taky jsou vytvořeny pomocí **Azure::ServiceBusService** objektu. Odběry mají názvy a můžou mít volitelné filtry, který omezuje sadu doručování zpráv do virtuální fronty odběru.
 
-Předplatná jsou trvalé a bude pokračovat až do obou nebo téma, které jsou přidružené, se odstraní. Pokud vaše aplikace obsahuje logiku pro vytvoření odběru, měli by nejdřív zkontrolovat, pokud předplatné už existuje. pomocí metody metody getsubscription technologie.
+Předplatná jsou trvalé. Nadále existovat až do obou, a téma, které jsou přidružené, se odstraní. Pokud vaše aplikace obsahuje logiku pro vytvoření odběru, měli by nejdřív zkontrolovat, pokud předplatné už existuje. pomocí metody metody getsubscription technologie.
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Vytvoření odběru s výchozím filtrem (MatchAll).
-Filtr **MatchAll** je výchozí filtr, který se použije v případě, že při vytváření nového odběru nezadáte žádný filtr. Když **MatchAll** se používá filtr, všechny zprávy publikované do tématu se umístí do virtuální fronty odběru. Následující příklad vytvoří odběr s názvem "všechny zprávy" a používá výchozí **MatchAll** filtru.
+Pokud není zadán žádný filtr, když se vytvoří nový odběr, **MatchAll** použít filtr (výchozí). Když **MatchAll** se používá filtr, všechny zprávy publikované do tématu se umístí do virtuální fronty odběru. Následující příklad vytvoří odběr s názvem "všechny zprávy" a používá výchozí **MatchAll** filtru.
 
 ```ruby
 subscription = azure_service_bus_service.create_subscription("test-topic", "all-messages")
@@ -107,9 +107,9 @@ rule = azure_service_bus_service.create_rule(rule)
 Když je teď odeslána zpráva `test-topic`, je vždy doručena příjemcům `all-messages` odběru tématu a selektivně příjemcům `high-messages` a `low-messages` odběry tématu (v závislosti na obsah zprávy).
 
 ## <a name="send-messages-to-a-topic"></a>Odeslání zprávy do tématu
-Odeslat zprávu do tématu služby Service Bus, vaše aplikace musí používat `send_topic_message()` metodu **Azure::ServiceBusService** objektu. Zprávy odeslané do témat Service Bus jsou instance **Azure::ServiceBus::BrokeredMessage** objekty. **Azure::ServiceBus::BrokeredMessage** objekty mají sadu standardních vlastností (jako například `label` a `time_to_live`), slovník používaný pro udržení vlastních vlastností specifické pro aplikace a tělo s daty řetězec. Aplikace může tělo zprávy nastavit předáním řetězcové hodnoty `send_topic_message()` metoda a jakékoliv nezbytné vlastnosti standardní vyplněn prostředkem výchozí hodnoty.
+Odeslat zprávu do tématu služby Service Bus, vaše aplikace musí používat `send_topic_message()` metodu **Azure::ServiceBusService** objektu. Zprávy odeslané do témat Service Bus jsou instance **Azure::ServiceBus::BrokeredMessage** objekty. **Azure::ServiceBus::BrokeredMessage** objekty mají sadu standardních vlastností (jako například `label` a `time_to_live`), slovník používaný pro udržení vlastních vlastností specifické pro aplikace a tělo s daty řetězec. Aplikace může tělo zprávy nastavit předáním řetězcové hodnoty `send_topic_message()` metoda a jakékoliv nezbytné standardní vlastnosti jsou vyplněn výchozí hodnoty.
 
-Následující příklad ukazuje, jak odeslat pět zkušebních zpráv do `test-topic`. Všimněte si, `message_number` hodnotu vlastní vlastnosti každé zprávy se liší v iteraci smyčky (to určuje, jaké předplatné obdrží):
+Následující příklad ukazuje, jak odeslat pět zkušebních zpráv do `test-topic`. `message_number` Hodnotu vlastní vlastnosti každé zprávy se liší v iteraci smyčky (to určuje, jaké předplatné obdrží):
 
 ```ruby
 5.times do |i|
@@ -124,9 +124,9 @@ Témata Service Bus podporují maximální velikost zprávy 256 KB [na úrovni S
 ## <a name="receive-messages-from-a-subscription"></a>Příjem zpráv z odběru
 Přijme zprávy z odběru pomocí `receive_subscription_message()` metodu **Azure::ServiceBusService** objektu. Ve výchozím nastavení zprávy jsou read(peak) a uzamčen, aniž by byl z předplatného. Může číst a odstranit zprávu z předplatného tak, že nastavíte `peek_lock` umožňuje **false**.
 
-Výchozí chování umožňuje čtení a odstranění dvoufázová operaci, která také umožňuje podporu aplikací, které nemůžou tolerovat vynechání zpráv. Když Service Bus přijme požadavek, najde zprávu, která je na řadě ke spotřebování, uzamkne ji proti spotřebování jinými spotřebiteli a vrátí ji do aplikace. Poté, co aplikace dokončí zpracování zprávy (nebo spolehlivě uloží pro pozdější zpracování), dokončení druhé fáze přijetí voláním `delete_subscription_message()` metoda a poskytující zprávu, která se má odstranit jako parametr. `delete_subscription_message()` Metoda se označí zprávu jako spotřebovávanou a odeberte z předplatného.
+Výchozí chování umožňuje čtení a odstranění dvoufázová operaci, která také umožňuje podporu aplikací, které nemůžou tolerovat vynechání zpráv. Když Service Bus přijme požadavek, najde zprávu, která je na řadě ke spotřebování, uzamkne ji proti spotřebování jinými spotřebiteli a vrátí ji do aplikace. Poté, co aplikace dokončí zpracování zprávy (nebo spolehlivě uloží pro pozdější zpracování), dokončení druhé fáze přijetí voláním `delete_subscription_message()` metoda a poskytující zprávu, která se má odstranit jako parametr. `delete_subscription_message()` Metoda označí zprávu jako spotřebovávanou a odeberte z předplatného.
 
-Pokud `:peek_lock` parametr je nastaven na **false**, čtení a odstranění stane nejjednodušší model a funguje nejlépe pro scénáře, ve kterých aplikace může tolerovat možnost, zprávy v případě selhání. Pro lepší vysvětlení si představte scénář, ve kterém spotřebitel vyšle požadavek na přijetí, ale než ji může zpracovat, dojde v něm k chybě a ukončí se. Vzhledem k tomu, že Service Bus se už ale zprávu označila jako spotřebovávanou, pak když aplikace znovu spustí a začne znovu přijímat zprávy, ji budou pravděpodobně nenalezlo zprávu, která se spotřebovala před pádem vynechá.
+Pokud `:peek_lock` parametr je nastaven na **false**, čtení a odstranění stane nejjednodušší model a funguje nejlépe pro scénáře, ve kterých aplikace může tolerovat možnost, není zpracování zprávy, když dojde k chybě. Vezměte v úvahu scénář, ve kterém spotřebitel požadavek na přijetí a poté dojde k chybě před její zpracování. Vzhledem k tomu, že Service Bus označil zprávu jako spotřebovávanou, pak když aplikace znovu spustí a začne znovu přijímat zprávy, byl vynechán zprávu, která se spotřebovala před pádem vynechá.
 
 Následující příklad ukazuje, jak lze přijímat zprávy a zpracovaná pomocí `receive_subscription_message()`. V příkladu nejdřív přijme a odstraní zprávu z `low-messages` předplatné s použitím `:peek_lock` nastavena na **false**, pak obdrží jinou zprávu od `high-messages` a odstraní zprávu pomocí `delete_subscription_message()`:
 
@@ -139,11 +139,11 @@ azure_service_bus_service.delete_subscription_message(message)
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Zpracování pádů aplikace a nečitelných zpráv
-Service Bus poskytuje funkce, které vám pomůžou se elegantně zotavit z chyb v aplikaci nebo vyřešit potíže se zpracováním zprávy. Pokud přijímající aplikace nedokáže zpracovat zprávu z nějakého důvodu, pak může volat `unlock_subscription_message()` metodu **Azure::ServiceBusService** objektu. To způsobí, že Service Bus zprávu odemkne v odběru a zpřístupní ji pro další přijetí, buďto stejnou spotřebitelskou aplikací nebo jinou spotřebitelskou aplikací.
+Service Bus poskytuje funkce, které vám pomůžou se elegantně zotavit z chyb v aplikaci nebo vyřešit potíže se zpracováním zprávy. Pokud přijímající aplikace nedokáže zpracovat zprávu z nějakého důvodu, pak může volat `unlock_subscription_message()` metodu **Azure::ServiceBusService** objektu. Způsobí, že služba Service Bus zprávu odemkne v odběru a zpřístupní ji pro další přijetí, stejnou spotřebitelskou aplikací nebo jinou spotřebitelskou aplikací.
 
-K dispozici je také vypršení časového limitu zpráva uzamčená v odběru, a pokud aplikace zprávu nezpracuje zámku vyprší časový limit (například pokud aplikace spadne), pak odemkne služby Service Bus zprávu automaticky a zpřístupní ji pro přijetí.
+K dispozici je také vypršení časového limitu zpráva uzamčená v odběru a pokud se aplikaci nepodaří zprávu zpracovat před zámku vyprší časový limit (například pokud aplikace spadne), pak služby Service Bus zprávu automaticky odemkne a zpřístupnit přijetí.
 
-V případě, že aplikace spadne po zpracování zprávy, ale předtím, než `delete_subscription_message()` metoda je volána, pak je víckrát do aplikace při restartování. To se často nazývá *zpracování nejméně jednou*; to znamená, že každá zpráva se zpracuje alespoň jednou, ale v některých situacích může doručit víckrát. Pokud daný scénář nemůže tolerovat zpracování víc než jednou, vývojáři aplikace by měli přidat další logiku navíc pro zpracování víckrát doručené zprávy. Tato logika se často opírá `message_id` vlastnosti zprávy, která zůstanou konstantní pokusu o doručení.
+V případě, že aplikace spadne po zpracování zprávy, ale předtím, než `delete_subscription_message()` metoda je volána, pak je víckrát do aplikace při restartování. To se často nazývá *alespoň jedno zpracování*; to znamená, že každá zpráva se zpracuje alespoň jednou, ale v některých situacích může doručit víckrát. Pokud daný scénář nemůže tolerovat zpracování víc než jednou, vývojáři aplikace by měli přidat další logiku navíc pro zpracování víckrát doručené zprávy. Tato logika se často opírá `message_id` vlastnosti zprávy, která zůstává konstantní pokusu o doručení.
 
 ## <a name="delete-topics-and-subscriptions"></a>Odstranění témat a odběrů
 Témata a odběry jsou trvalé a musí být explicitně odstranit prostřednictvím [webu Azure portal] [ Azure portal] nebo prostřednictvím kódu programu. Následující příklad ukazuje, jak odstranit téma s názvem `test-topic`.

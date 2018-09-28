@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 09/26/2018
 ms.topic: conceptual
-ms.openlocfilehash: 477ef11a02f67e511396c3efc8f2b331c976c801
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 7007b1406dbcfab3af4700418ac2ce07b9e521c0
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219970"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407429"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally"></a>Nasazení akcelerátoru řešení vzdáleného monitorování místně
 
@@ -42,17 +42,13 @@ Vzdálené monitorování úložiště zdrojového kódu GitHub zahrnuje Docker 
 Pokud chcete stáhnout nejnovější verzi implementace mikroslužeb Java, spusťte:
 
 ```cmd/sh
-git clone --recurse-submodules https://github.com/Azure/azure-iot-pcs-remote-monitoring-java.git
-cd azure-iot-pcs-remote-monitoring-java
-git submodule foreach git pull origin master
+git clone https://github.com/Azure/remote-monitoring-services-java.git
 ```
 
 Pokud chcete stáhnout nejnovější verzi implementace mikroslužby .NET, spusťte:
 
 ```cmd\sh
-git clone --recurse-submodules https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet.git
-cd azure-iot-pcs-remote-monitoring-dotnet
-git submodule foreach git pull origin master
+git clone https://github.com/Azure/remote-monitoring-services-dotnet.git
 ```
 
 > [!NOTE]
@@ -66,7 +62,7 @@ I když v tomto článku se dozvíte, jak spouštět mikroslužby lokálně, jso
 
 Pokud jste dosud vytvořili požadované prostředky Azure, postupujte podle těchto kroků:
 
-1. Ve vašem prostředí příkazového řádku, přejděte **azure-iot-pcs-remote-monitoring-dotnet\services\scripts\local\launch** složky v klonovaném kopii úložiště.
+1. Ve vašem prostředí příkazového řádku, přejděte **remote-monitoring služby dotnet\scripts\local\launch** složky v klonovaném kopii úložiště.
 
 2. Spustit **start.cmd** skriptu a postupujte podle zobrazených výzev. Skript vyzve k přihlášení ke svému účtu Azure a znovu spusťte skript. Skript potom vás vyzve k zadání následujících informací:
     * Název řešení.
@@ -75,11 +71,11 @@ Pokud jste dosud vytvořili požadované prostředky Azure, postupujte podle tě
 
     Tento skript vytvoří skupinu prostředků v Azure s názvem řešení. Tato skupina prostředků obsahuje prostředky Azure, které používá akcelerátor řešení.
 
-3. Po dokončení skriptu, zobrazí se seznam proměnných prostředí. Postupujte podle pokynů ve výstupu z příkazu k uložení těchto proměnných **azure-iot-pcs-remote-monitoring-dotnet\\služby\\skripty\\místní\\.env** souboru.
+3. Po dokončení skriptu, zobrazí se seznam proměnných prostředí. Postupujte podle pokynů ve výstupu z příkazu k uložení těchto proměnných **vzdálené – monitorování services-dotnet\\skripty\\místní\\.env** souboru.
 
 ### <a name="use-existing-azure-resources"></a>Použít existující prostředky Azure
 
-Pokud jste již vytvořili požadované prostředky Azure upravovat definice proměnné prostředí v **azure-iot-pcs-remote-monitoring-dotnet\\služby\\skripty\\místní\\.env**  soubor s požadovanými hodnotami. **.Env** soubor obsahuje podrobné informace o tom, kde najít požadované hodnoty.
+Pokud jste již vytvořili požadované prostředky Azure upravovat definice proměnné prostředí v **vzdálené – monitorování services-dotnet\\skripty\\místní\\.env** souboru požadované hodnoty. **.Env** soubor obsahuje podrobné informace o tom, kde najít požadované hodnoty.
 
 ## <a name="run-the-microservices-in-docker"></a>Spuštění mikroslužby v Dockeru
 
@@ -89,7 +85,7 @@ Mikroslužeb spouštěných v kontejnerech Dockeru místní potřebovat přístu
 docker run --rm -ti library/alpine ping google.com
 ```
 
-Ke spuštění akcelerátor řešení, přejděte na **azure-iot-pcs-remote-monitoring-dotnet\services\scripts\local** složku v prostředí příkazového řádku a spusťte následující příkaz:
+Ke spuštění akcelerátor řešení, přejděte na **vzdálené – monitorování services-dotnet\\skripty\\místní** složku v prostředí příkazového řádku a spusťte následující příkaz:
 
 ```cmd\sh
 docker-compose up

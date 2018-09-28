@@ -2,18 +2,18 @@
 title: Požadavky na Azure Data Catalog
 description: Informace o požadavcích, že které potřebujete, abyste mohli začít s Azure Data Catalog.
 services: data-catalog
-author: steelanddata
-ms.author: maroche
+author: markingmyname
+ms.author: maghan
 ms.assetid: ef497a54-dc4d-4820-b5bf-c361b64b964d
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 168083ed6226d8e1d55e116297dde5884875945b
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 5d05371d9b948dc2f7d6f834eb9431af80fc6365
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041298"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406868"
 ---
 # <a name="azure-data-catalog-prerequisites"></a>Požadavky na Azure Data Catalog
 

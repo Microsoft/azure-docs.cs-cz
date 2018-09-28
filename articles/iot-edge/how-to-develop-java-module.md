@@ -6,19 +6,19 @@ keywords: ''
 author: shizn
 manager: timlt
 ms.author: xshi
-ms.date: 09/04/2018
+ms.date: 09/21/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 6e3bbe996a2f0c37905aa990b39d324fd540952b
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: a5e86b7c93344a6c61fecaa41b98bc1daa20f36f
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057022"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423217"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-java-modules-for-azure-iot-edge"></a>Použití Visual Studio Code pro vývoj a ladění modulů Java pro Azure IoT Edge
 
-Odešlete vaši obchodní logiku pro provoz na hraničních zařízeních to zapnutím moduly pro Azure IoT Edge. Tento článek obsahuje podrobné pokyny k používání Visual Studio Code (VS Code) jako hlavní vývojový nástroj pro vývoj modulů Java.
+Odešlete vaši obchodní logiku pro provoz na hraničních zařízeních to zapnutím moduly pro Azure IoT Edge. Tento článek obsahuje podrobné pokyny k používání Visual Studio Code (VS Code) jako hlavní vývojový nástroj k vývoji a ladění modulů Java.
 
 ## <a name="prerequisites"></a>Požadavky
 Tento článek předpokládá, že používáte počítač nebo virtuální počítač se systémem Windows, macOS nebo Linux jako vývojovém počítači. Zařízení IoT Edge může být jiné fyzické zařízení.
@@ -33,7 +33,7 @@ Jelikož tento článek používá Visual Studio Code jako hlavní vývojový n�
 * [Rozšíření docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
 
 Jak vytvořit modul, potřebujete, Javy a Mavenu sestavte a spusťte kód modulu Dockeru k vytvoření bitové kopie modulu a container registry k uložení bitové kopie modulu:
-* [Java SE Development Kit 10](http://www.oracle.com/technetwork/java/javase/downloads/index.html), a [nastavit `JAVA_HOME` proměnnou prostředí](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) tak, aby odkazovala na instalaci sady JDK.
+* [Java SE Development Kit 10](http://www.oracle.com/technetwork/java/javase/downloads/index.html) s [nastavením proměnné prostředí `JAVA_HOME`](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) tak, aby odkazovala na vaši instalaci JDK
 * [Maven](https://maven.apache.org/)
 * [Docker](https://docs.docker.com/engine/installation/)
 * [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) nebo [Docker Hubu](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)

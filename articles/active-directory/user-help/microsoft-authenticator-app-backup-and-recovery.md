@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: 39ec7c979294860967deb3307f5d87112b762257
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: b019523227bcd45e502ec84055cfb09025918331
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47106810"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406120"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Zálohování a obnovení přihlašovacích údajů účtu v aplikaci Microsoft Authenticator
 
@@ -78,12 +78,12 @@ Pro osobní účty Microsoft můžete prokázat vaši identitu zadáním hesla s
 
     ![Microsoft aplikace Authenticator s účty k dispozici s jejich přidružených šipky rozevíracího seznamu](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-additonal-accts.png)
 
-2.  Vyberte **kontrolovat QR kód pro obnovení**a potom naskenujte kód QR poskytl správce.
+2.  Vyberte **kontrolovat QR kód pro obnovení**a potom naskenovat kód QR.
 
     ![Aplikace Microsoft Authenticator, abyste mohli naskenovat QR kód](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-scan-qr-code.png)
 
     >[!NOTE]
-    >Další informace o tom, jak získat kód QR, najdete v článku [přidání účtů část Get začít aplikaci Microsoft Authenticator](https://docs.microsoft.com/azure/active-directory/user-help/microsoft-authenticator-app-how-to#add-accounts-to-the-app) článku.
+    >Další informace o tom, jak získat kód QR, naleznete v tématu [Začínáme s aplikací Microsoft Authenticator](https://docs.microsoft.com/azure/active-directory/user-help/microsoft-authenticator-app-how-to#add-accounts-to-the-app) nebo [nastavení bezpečnostní údaje pro použití ověřovací aplikaci](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app#to-use-the-microsoft-authenticator-app)závislosti na tom, zda váš správce aktivoval na bezpečnostní údaje.
 
 ## <a name="troubleshooting-backup-and-recovery-problems"></a>Řešení potíží se zálohování a obnovení
 Existuje několik důvodů, proč vaše záloha nemusí být k dispozici:

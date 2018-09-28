@@ -3,7 +3,7 @@ title: Porovnání koncového bodu Azure AD v2.0 s koncovým bodem v1.0 | Dokume
 description: Znát rozdíly mezi koncového bodu Azure AD v2.0 a koncový bod verze 1.0
 services: active-directory
 documentationcenter: ''
-author: andretms
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 5060da46-b091-4e25-9fa8-af4ae4359b6c
@@ -13,23 +13,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/21/2018
+ms.date: 09/27/2018
 ms.author: andret
-ms.reviewer: hirsin, celested
+ms.reviewer: hirsin, andret
 ms.custom: aaddev
-ms.openlocfilehash: 02c7edc84d2ac3a91c33d8f266d022db5cd5cb40
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b75b31ddfc77be5ed651e7b8484e41a4ae73d8d8
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948949"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406528"
 ---
-# <a name="comparing-the-azure-ad-v20-endpoint-with-v10-endpoint"></a>Porovnání koncového bodu Azure AD v2.0 s koncovým bodem v1.0
+# <a name="comparing-the-azure-ad-v20-endpoint-with-the-v10-endpoint"></a>Porovnání koncového bodu Azure AD v2.0 s koncovým bodem v1.0
 
 Při vývoji nových aplikací, je důležité znát rozdíly mezi koncové body v1.0 a v2.0. V následující tabulce jsou hlavní rozdíly, jakož i některé stávající omezení pro koncový bod verze 2.0.
 
 > [!NOTE]
-> Ne všechny funkce a scénáře služby Azure AD podporuje koncový bod verze 2.0. Pokud chcete zjistit, pokud je vhodné použít koncový bod verze 2.0, přečtěte si informace o [v2.0 omezení](#limitations).
+> Ne všechny scénáře Azure Active Directory (Azure AD) a funkce jsou podporovány bodem v2.0. Pokud chcete zjistit, pokud je vhodné použít koncový bod verze 2.0, přečtěte si informace o [v2.0 omezení](#limitations).
 
 ## <a name="who-can-sign-in"></a>Kdo se může přihlásit
 
@@ -37,7 +37,7 @@ Při vývoji nových aplikací, je důležité znát rozdíly mezi koncové body
 
 * Koncový bod v1.0 umožňuje jenom pracovní a školní účty pro přihlášení k aplikaci (Azure AD)
 
-* Koncový bod verze 2.0 umožňuje pracovní a školní účty z Azure Active Directory a osobní účty (MSA) (hotmail.com, outlook.com, msn.com) pro přihlášení.
+* Koncový bod verze 2.0 umožňuje pracovní a školní účty z Azure AD a osobní účty (MSA) (hotmail.com, outlook.com, msn.com) pro přihlášení.
 
 * Koncové body v1.0 a v2.0 také přijímat přihlášení z *[uživatele typu Host](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* adresáře Azure AD pro aplikace, konfigurované jako *[jednoho tenanta](single-and-multi-tenant-apps.md)* nebo *víceklientské* aplikace, konfigurované tak, aby odkazoval na koncový bod specifickým pro tenanta (`https://login.microsoftonline.com/{TenantId_or_Name}`).
 
@@ -119,7 +119,7 @@ Informace, které `openid` oboru nabízí vaše aplikace je přístup k s omezen
 
 Díky tomu můžete kód vaší aplikace v podobě minimální zpřístupnění – požádáte uživatele, můžete pouze pro konkrétní sadu informací, že vaše aplikace vyžaduje, aby fungovala správně. Další informace o těchto oborů, naleznete v tématu [odkaz oboru v2.0](v2-permissions-and-consent.md).
 
-## <a name="token-claims"></a>Deklarace identity tokenu
+## <a name="token-claims"></a>Token deklarací identity
 
 Deklarace identity v tokeny vystavené službou koncovým bodem v2.0 nesmí být shodný s tokeny vystavené službou obecně k dispozici koncové body služby Azure AD. Migrace na novou službu aplikace by neměl Předpokládejme, že konkrétní deklarace identity budou existovat v id_tokens nebo access_tokens. Další podrobnosti o různých typů tokeny použité v koncovým bodem v2.0 jsou k dispozici v [přístupový token](access-tokens.md) odkaz a [ `id_token` odkaz](id-tokens.md)
 
@@ -214,15 +214,13 @@ Podpora knihovny pro koncový bod verze 2.0 je aktuálně omezená. Pokud chcete
 
 Koncový bod v2.0 nepodporuje SAML nebo WS-Federation; podporuje pouze Open ID Connect a OAuth 2.0. Ne všechny funkce a možnosti protokoly OAuth byly zahrnuty do koncového bodu v2.0.
 
-Následující protokol funkce a možnosti v současné době jsou *není k dispozici* koncový bod verze 2.0:
+Následující protokol funkce a možnosti v současné době jsou *není k dispozici* nebo *nepodporuje* koncový bod verze 2.0:
 
-* V současné době `email` deklarace identity se vrátí pouze pokud je nakonfigurovaná volitelnou deklaraci a obor je rozsah = e-mailu byla zadaná v žádosti. Toto chování však změní jako koncový bod v2.0 se aktualizuje a další v souladu se standardy Open ID Connect a OAuth 2.0.
+* `email` Deklarace identity se vrátí pouze pokud je nakonfigurovaná volitelnou deklaraci a obor je rozsah = e-mailu byla zadaná v žádosti. Ale očekávat, že toto chování změnit, protože koncový bod v2.0 se aktualizuje a další v souladu se standardy Open ID Connect a OAuth 2.0.
 
 * Koncový bod verze 2.0 nepodporuje vydávající roli nebo skupinu deklarací identity v tokenech ID.
 
-* [Udělení přihlašovacích údajů heslo vlastníka prostředku OAuth 2.0](https://tools.ietf.org/html/rfc6749#section-4.3) není podporované koncovým bodem v2.0.
-
-Koncový bod v2.0 nepodporuje žádnou formu protokoly SAML nebo WS-Federation.
+* Koncový bod verze 2.0 nepodporuje [udělení přihlašovacích údajů heslo vlastníka prostředku OAuth 2.0](https://tools.ietf.org/html/rfc6749#section-4.3).
 
 Chcete-li lépe pochopit tak rozsah protokolu funkcí podporovaných koncový bod verze 2.0, přečtěte si naše [referenční informace o protokolu OpenID Connect a OAuth 2.0](active-directory-v2-protocols.md).
 

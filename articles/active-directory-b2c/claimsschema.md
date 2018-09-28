@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 76fdf532a35cbe16543bc49b5c02fad5d86690d5
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 364600d4c1c53f4e5fe726d443287bf1a5f2d4ec
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718982"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419164"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -268,7 +268,7 @@ Azure AD B2C podporuje různé typy vstupu uživatele, jako je textové pole, he
 
 ### <a name="datetimedropdown"></a>DateTimeDropdown
 
-**DateTimeDropdown** typ vstupu uživatele, používá k poskytování sadu z rozevírací nabídky vyberte den, měsíc a rok.
+**DateTimeDropdown** typ vstupu uživatele, používá k poskytování sadu z rozevírací nabídky vyberte den, měsíc a rok. Predikáty a PredicateValidations prvky můžete řídit data minimální a maximální hodnoty. Další informace najdete v tématu **nakonfigurovat konkrétní období** část [predikáty a PredicateValidations](predicates.md).
 
 ![Typ s datetimedropdown pomocí deklarace.](./media/claimsschema/datetimedropdown.png)
 

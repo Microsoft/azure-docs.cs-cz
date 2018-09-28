@@ -1,4 +1,4 @@
-Následující problémy mohou pomoci vyřešit problém. Pokud chcete spustit Poradce při potížích, projděte si tyto kroky:
+Následující problémy mohou pomoci vyřešit vaše potíže. Proces řešení potíží, projděte si tyto kroky:
 
-- [Cluster nemůže podporovat požadovaná velikost virtuálního počítače](../articles/virtual-machines/linux/troubleshoot-deploy-vm.md#the-cluster-cannot-support-the-requested-vm-size)
-- [Cluster nemá uvolnění prostředků](../articles/virtual-machines/linux/troubleshoot-deploy-vm.md#the-cluster-does-not-have-free-resources)
+- [Cluster nepodporuje požadovanou velikost virtuálního počítače](../articles/virtual-machines/troubleshooting/troubleshoot-deploy-vm-linux.md#the-cluster-cannot-support-the-requested-vm-size)
+- [Cluster nemá žádné volné prostředky](../articles/virtual-machines/troubleshooting/troubleshoot-deploy-vm-linux.md#the-cluster-does-not-have-free-resources)

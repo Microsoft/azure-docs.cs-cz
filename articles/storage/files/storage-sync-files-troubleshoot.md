@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 88c73b3c9fd3ffc0c323b9971e245e6f6d9695a0
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: cbfe3022c4ffd03e4ab93682eb14a5a588aa0013
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095534"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409469"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -236,14 +236,13 @@ Pokud chcete zobrazit tyto chyby, spusťte **FileSyncErrorsReport.ps1** skript p
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Nějaký soubor se během synchronizace změnil, takže je nutné ho synchronizovat znovu. | Není vyžadována žádná akce. |
 
 #### <a name="handling-unsupported-characters"></a>Zpracování nepodporované znaky.
-Pokud **FileSyncErrorsReport.ps1** skript prostředí PowerShell ukazuje selhání kvůli nepodporované znaky (kódy chyb 0x7b a 0x8007007b), odstranit nebo přejmenovat znaky na selhání z příslušných souborů. Prostředí PowerShell pravděpodobně vytiskne tyto znaky jako otazník nebo prázdný obdélníky, protože většina z těchto znaků mít žádné standardní vizuálního kódování.
+Pokud **FileSyncErrorsReport.ps1** skript prostředí PowerShell ukazuje selhání kvůli nepodporované znaky (kódy chyb 0x7b a 0x8007007b), odstranit nebo přejmenovat znaky na selhání z příslušných souborů. Prostředí PowerShell pravděpodobně vytiskne tyto znaky jako otazník nebo prázdný obdélníky, protože většina z těchto znaků mít žádné standardní vizuálního kódování. [Evalation nástroj](storage-sync-files-planning.md#evaluation-tool) slouží k identifikaci znaky, které nejsou podporovány.
 
 Následující tabulka obsahuje všechny znaky unicode, které Azure File Sync zatím nepodporuje.
 
 | Znaková sada | Počet znaků |
 |---------------|-----------------|
 | <ul><li>0x0000009D (příkaz osc operačního systému)</li><li>0x00000090 (řetězec řízení zařízení řadiče domény)</li><li>0x0000008F (jeden shift ss3 tři)</li><li>0x00000081 (vysoká octet předvolbu)</li><li>0x0000007F (odstraňte del)</li><li>0x0000008D (ri reverzní řádek kanál)</li></ul> | 6 |
-| <ul><li>0x0000200F (Značka zprava doleva)</li><li>0x0000200E (značka zleva doprava)</li><li>0x0000202E (přepsání zprava doleva)</li><li>0x0000202D (přepsání zleva doprava)</li><li>0x0000202C (pop směrové formátování)</li><li>0x0000202B (vkládání zprava doleva)</li><li>0x0000202A (zleva doprava vložení)</li></ul> | 7 |
 | 0x0000FDD0 - 0x0000FDEF (arabštiny forms-a) | 32 |
 | 0x0000FFF0 - 0x0000FFFF (nabídky) | 16 |
 | <ul><li>0x0001FFFE - 0x0001FFFF = 2 (neznakové)</li><li>0x0002FFFE - 0x0002FFFF = 2 (neznakové)</li><li>0x0003FFFE - 0x0003FFFF = 2 (neznakové)</li><li>0x0004FFFE - 0x0004FFFF = 2 (neznakové)</li><li>0x0005FFFE - 0x0005FFFF = 2 (neznakové)</li><li>0x0006FFFE - 0x0006FFFF = 2 (neznakové)</li><li>0x0007FFFE - 0x0007FFFF = 2 (neznakové)</li><li>0x0008FFFE - 0x0008FFFF = 2 (neznakové)</li><li>0x0009FFFE - 0x0009FFFF = 2 (neznakové)</li><li>0x000AFFFE - 0x000AFFFF = 2 (neznakové)</li><li>0x000BFFFE - 0x000BFFFF = 2 (neznakové)</li><li>0x000CFFFE - 0x000CFFFF = 2 (neznakové)</li><li>0x000DFFFE - 0x000DFFFF = 2 (neznakové)</li><li>0x000EFFFE - 0x000EFFFF = 2 (Nedefinováno)</li><li>0x000FFFFE - 0x000FFFFF = 2 (doplňující soukromé použití oblast)</li></ul> | 30 |

@@ -17,12 +17,12 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: cwatson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 20da1eb7b71c625dc83c52b30020f38992819e95
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 7e9b5d1a84417cf6e6264211ea6e542ab712f9fe
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395351"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422593"
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Přenos vlastnictví předplatného Azure na jiný účet
 
@@ -82,7 +82,6 @@ Podnikový správce může převést vlastnictví předplatného v rámci regist
    1. Certifikáty pro správu, které uživateli udělit oprávnění správce pro prostředky předplatného. Další informace najdete v tématu [vytvoření a nahrání certifikátu pro správu pro Azure](../cloud-services/cloud-services-certs-create.md)
    1. Přístupové klíče pro služby, jako jsou úložiště. Další informace najdete v tématu [účty Azure storage](../storage/common/storage-create-storage-account.md)
    1. Pověření vzdáleného přístupu pro služby, jako jsou Azure Virtual Machines. 
-1. [Aktualizovat upozornění fakturace pro toto předplatné](billing-set-up-alerts.md) na [centra účtů Azure](https://account.windowsazure.com/Subscriptions). 
 1. Pokud pracujete s partnerem, zvažte aktualizaci ID partnera v tomto předplatném. Můžete aktualizovat ID partnera v [webu Azure portal](https://portal.azure.com).
 
 <a id="supported"></a>

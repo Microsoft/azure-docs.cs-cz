@@ -11,19 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/27/2018
 ms.author: jeffgilb
-ms.reviewer: jeffgo
-ms.openlocfilehash: aacf99afef344564d028e78892091c6618c7d495
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.reviewer: quying
+ms.openlocfilehash: b11ce8bbbf4b270f7a3b9689f95b0cbfca3b14c9
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44026685"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408874"
 ---
 # <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>Přidání hostitelské servery pro poskytovatele prostředků MySQL
 
 Můžete hostovat na instanci MySQL na virtuálním počítači (VM) v [Azure Stack](azure-stack-poc.md), nebo mimo prostředí Azure Stack, dokud poskytovatele prostředků MySQL můžete připojit k instanci virtuálního počítače.
+
+> [!NOTE]
+> Databáze MySQL by měl být vytvořit na serveru pro poskytovatele prostředků MySQL. Poskytovatele prostředků MySQL mají být vytvořeny v výchozí předplatné poskytovatele, zatímco hostitelské servery MySQL by měl být vytvořen v fakturovatelná, předplatné uživatele. Server zprostředkovatele prostředků není vhodné používat pro hostování databází uživatelů.
 
 Verze MySQL 5.6, 5.7 a 8.0, lze pro hostitelské servery. Poskytovatele prostředků MySQL nepodporuje ověřování caching_sha2_password; který bude přidán v další vydané verzi. Servery MySQL 8.0 musí být nakonfigurovány pro použití mysql_native_password. MariaDB je také podporována.
 

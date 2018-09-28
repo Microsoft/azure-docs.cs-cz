@@ -14,18 +14,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: cwatson
-ms.openlocfilehash: 20b664e8a194c394f90b1d060dbd081fc1507528
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 614102d65407485d31963afa9185400938a7d95b
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395606"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423081"
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Vysvětlení limitu útraty Azure a jeho odstranění
 
 Aby se zabránilo za požadovaná částka v Azure limit útraty existuje. Všem novým zákazníkům, kteří se zaregistrují k vyzkoušení nebo nabídky, které zahrnují kredit na několik měsíců mají limit útraty ve výchozím nastavení zapnutá. Limit útraty je hodnotou 0 USD. Nelze změnit. Tento limit útraty není dostupný pro typy předplatného, jako jsou předplatná s průběžnými platbami a plány závazků. Zobrazit [úplný seznam nabídek Azure a dostupnost limitu útraty](https://azure.microsoft.com/support/legal/offer-details/).
-
-**Hledáte upozornění fakturace?** Zobrazit [nastavení upozornění fakturace ani kredit nad rámec pro předplatná Azure](billing-set-up-alerts.md).
 
 ## <a name="what-happens-when-i-reach-the-spending-limit"></a>Co se stane, když se dosáhne limitu útraty?
 
@@ -78,7 +76,7 @@ Tato funkce je dostupná pouze v případě, že byla odebrána limit útraty ne
 
 ### <a name="how-do-i-set-a-custom-spending-limit"></a>Jak nastavit vlastní limitu útraty?
 
-Nemáme vlastní omezení výdajů ještě dnes. Však mohou přihlásit a [používat upozornění fakturace na ovládací prvek vaše věnovat](billing-set-up-alerts.md).
+Vlastní limity útraty nejsou k dispozici.
 
 ### <a name="does-the-spending-limit-prevent-all-charges-from-azure"></a>Nebrání limit útraty všechny poplatky z Azure?
 

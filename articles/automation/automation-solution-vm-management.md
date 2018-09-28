@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 08/1/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 99329dd812ad47cf98845ba794bc108d26d85352
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 2f990f22d762c5f95d3274b740caf30691ded90e
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543691"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409840"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Spuštění/zastavení virtuálních počítačů v době mimo špičku řešení ve službě Azure Automation
 
@@ -31,6 +31,9 @@ Toto jsou omezení do aktuálního řešení:
 - Toto řešení spravuje virtuální počítače v libovolné oblasti, ale jde použít jenom ve stejném předplatném jako účet Azure Automation.
 - Toto řešení je k dispozici v Azure a AzureGov do libovolné oblasti, která podporuje výstrahy, účet Azure Automation a pracovního prostoru Log Analytics. Oblasti AzureGov aktuálně nepodporují e-mailové funkce.
 
+> [!NOTE]
+> Pokud používáte řešení pro klasické virtuální počítače, pak všechny virtuální počítače se budou zpracovávat postupně na jednu cloudovou službu. Zpracování paralelních úloh je stále podporována napříč různými cloudovými službami.
+
 ## <a name="prerequisites"></a>Požadavky
 
 Sady runbook pro toto řešení pracovat [účet Spustit jako pro Azure](automation-create-runas-account.md). Účet Spustit jako je upřednostňovanou metodou ověřování, protože používá ověřování certifikátem místo hesla, která může být vypršení platnosti nebo se často měnit.
@@ -45,28 +48,28 @@ Proveďte následující kroky pro přidání spouštění/zastavování virtuá
 
    > [!NOTE]
    > Můžete ji vytvořit také z libovolného místa na webu Azure Portal, klikněte na **vytvořit prostředek**. Na stránce Marketplace zadejte klíčové slovo **Start** nebo **operací Spustit/Zastavit**. Seznam se průběžně filtruje podle zadávaného textu. Alternativně můžete zadejte jeden nebo více klíčových slov z celý název řešení a stiskněte klávesu Enter. Vyberte **spuštění/zastavení virtuálních počítačů mimo špičku** ve výsledcích hledání.
-1. V **spuštění/zastavení virtuálních počítačů mimo špičku** stránky pro vybrané řešení zkontrolujte souhrnné informace a klikněte na **vytvořit**.
+2. V **spuštění/zastavení virtuálních počítačů mimo špičku** stránky pro vybrané řešení zkontrolujte souhrnné informace a klikněte na **vytvořit**.
 
    ![portál Azure](media/automation-solution-vm-management/azure-portal-01.png)
 
-1. **Přidat řešení** se zobrazí stránka. Zobrazí se výzva ke konfigurování řešení, než je můžete naimportovat do svého předplatného služby Automation.
+3. **Přidat řešení** se zobrazí stránka. Zobrazí se výzva ke konfigurování řešení, než je můžete naimportovat do svého předplatného služby Automation.
 
    ![Stránka Přidat řešení správy virtuálních počítačů](media/automation-solution-vm-management/azure-portal-add-solution-01.png)
 
-1. Na **přidat řešení** stránce **pracovní prostor**. Vyberte pracovní prostor Log Analytics, který je propojený s předplatným Azure, který obsahuje příslušný účet Automation. Pokud nemáte pracovní prostor, vyberte **vytvořit nový pracovní prostor**. Na **pracovní prostor Log Analytics** stránce, proveďte následující kroky:
+4. Na **přidat řešení** stránce **pracovní prostor**. Vyberte pracovní prostor Log Analytics, který je propojený s předplatným Azure, který obsahuje příslušný účet Automation. Pokud nemáte pracovní prostor, vyberte **vytvořit nový pracovní prostor**. Na **pracovní prostor Log Analytics** stránce, proveďte následující kroky:
    - Zadejte název pro nový **pracovní prostor Log Analytics**.
    - Vyberte **předplatné** k propojení, výběrem z rozevíracího seznamu, pokud výchozí vybrané není vhodné.
    - Pro **skupiny prostředků**, můžete vytvořit novou skupinu prostředků nebo vyberte existující.
    - Vyberte **Umístění**. V současné době jsou k dispozici pouze umístění **Austrálie – jihovýchod**, **Kanada – střed**, **střed Indie**, **USA – východ**, **Japonsko – východ**, **jihovýchodní Asie**, **Velká Británie – jih**, a **západní Evropa**.
    - Vyberte možnost u položky **Cenová úroveň**. Zvolte **Per GB (Standalone)** možnost. Log Analytics se aktualizovala [ceny](https://azure.microsoft.com/pricing/details/log-analytics/) a úroveň Per GB je jedinou možností.
 
-1. Po zadání požadovaných informací v **pracovní prostor Log Analytics** klikněte na **vytvořit**. Můžete sledovat jeho průběh **oznámení** z nabídky, která se vrátíte na **přidat řešení** stránce až budete hotovi.
-1. Na **přidat řešení** stránce **účtu Automation**. Pokud vytváříte nový pracovní prostor Log Analytics, můžete vytvořit nový účet Automation, který se má přidružit ho nebo vyberte existující účet Automation, který není již propojený s pracovním prostorem Log analýza. Vyberte existující účet Automation, nebo klikněte na tlačítko **vytvořit účet Automation**a na **přidat účet Automation** stránky, zadejte následující informace:
+5. Po zadání požadovaných informací v **pracovní prostor Log Analytics** klikněte na **vytvořit**. Můžete sledovat jeho průběh **oznámení** z nabídky, která se vrátíte na **přidat řešení** stránce až budete hotovi.
+6. Na **přidat řešení** stránce **účtu Automation**. Pokud vytváříte nový pracovní prostor Log Analytics, můžete vytvořit nový účet Automation, který se má přidružit ho nebo vyberte existující účet Automation, který není již propojený s pracovním prostorem Log analýza. Vyberte existující účet Automation, nebo klikněte na tlačítko **vytvořit účet Automation**a na **přidat účet Automation** stránky, zadejte následující informace:
    - Do pole **Název** zadejte název účtu služby Automation.
 
     Všechny ostatní možnosti se vyplní automaticky podle vybrané pracovní prostor Log Analytics. Tyto možnosti nelze upravovat. Účet Spustit v Azure jako představuje výchozí metodu ověřování pro runbooky obsažené v tomto řešení. Po kliknutí na **OK**, se ověří možnosti konfigurace a vytvoření účtu Automation. Průběh zpracování můžete sledovat prostřednictvím možnosti nabídky **Oznámení**.
 
-1. Nakonec v **přidat řešení** stránce **konfigurace**. **Parametry** se zobrazí stránka.
+7. Nakonec v **přidat řešení** stránce **konfigurace**. **Parametry** se zobrazí stránka.
 
    ![Stránka parametry pro řešení](media/automation-solution-vm-management/azure-portal-add-solution-02.png)
 
@@ -83,7 +86,7 @@ Proveďte následující kroky pro přidání spouštění/zastavování virtuá
      > [!IMPORTANT]
      > Výchozí hodnota pro **názvy cílové skupiny prostředků** je **&ast;**. To cílí na všechny virtuální počítače v rámci předplatného. Pokud nechcete, aby řešení cílit na všechny virtuální počítače v rámci vašeho předplatného, tato hodnota se musí aktualizovat tak, aby seznam názvy skupin prostředků před povolením plány.
 
-1. Po dokončení konfigurace počátečních nastavení vyžadovaných pro příslušné řešení, klikněte na tlačítko **OK** zavřete **parametry** stránku a vybrat **vytvořit**. Po všechna nastavení se ověří, toto řešení nasadí do vašeho předplatného. Tento proces může trvat několik sekund na dokončení, a můžete sledovat jeho průběh **oznámení** z nabídky.
+8. Po dokončení konfigurace počátečních nastavení vyžadovaných pro příslušné řešení, klikněte na tlačítko **OK** zavřete **parametry** stránku a vybrat **vytvořit**. Po všechna nastavení se ověří, toto řešení nasadí do vašeho předplatného. Tento proces může trvat několik sekund na dokončení, a můžete sledovat jeho průběh **oznámení** z nabídky.
 
 ## <a name="scenarios"></a>Scénáře
 

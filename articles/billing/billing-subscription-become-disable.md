@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: cwatson
-ms.openlocfilehash: 81f4830691f423e51d6c1f0b71a8fc62160ea92e
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 3fc7e316289201f5a800b56a7dc63f559c1f90a2
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393005"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422656"
 ---
 # <a name="why-is-my-azure-subscription-disabled-and-how-do-i-reactivate-it"></a>Proč zakázána svoje předplatné Azure a jak ho znovu?
 
@@ -38,7 +38,7 @@ Předplatná Azure s kreditem například bezplatnou zkušební verzi a Visual S
 > [!NOTE] 
 > Pokud máte bezplatnou zkušební verzi předplatného a odebrat limit útraty, vaše předplatné převede na průběžné platby na konci této bezplatné zkušební verze. Zbývající kredit si zachováte plnou 30 dnů po vytvoření předplatného. Máte také přístup k bezplatné služby po dobu 12 měsíců.
 
-Monitorovat a řídit fakturaci pro Azure najdete v tématu [jak zabránit neočekávaným nákladům se správou nákladů a fakturací Azure](billing-getting-started.md) a [nastavení upozornění pro předplatná Microsoft Azure fakturace](billing-set-up-alerts.md).
+Monitorovat a řídit fakturaci pro Azure najdete v tématu [jak zabránit neočekávaným nákladům se správou nákladů a fakturací Azure](billing-getting-started.md).
 
 
 ## <a name="your-bill-is-past-due"></a>Vaše faktura je po datu splatnosti

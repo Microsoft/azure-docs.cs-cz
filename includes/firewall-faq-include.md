@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 9/14/2018
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 4c6aaea836302732b1af3d22923c965575cfc9d2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1242cf80ffd283471eb507612949a81d4b3fd594
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47020468"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47401531"
 ---
 ### <a name="what-is-azure-firewall"></a>Co je brána Azure Firewall?
 
@@ -24,7 +24,7 @@ Azure Firewall je spravovaná cloudová služba síťového zabezpečení, kter�
 * Stavová brána firewall jako služba
 * Integrovaná vysoká dostupnost s neomezenou škálovatelností cloudu
 * Filtrování FQDN
-* Plně kvalifikovaný název domény značky
+* Značky plně kvalifikovaných názvů domén
 * Pravidla filtrování síťového provozu
 * Podpora pro odchozí SNAT
 * Příchozí DNAT podpory
@@ -101,6 +101,9 @@ $publicip = Get-AzureRmPublicIpAddress -Name "Public IP Name" -ResourceGroupName
 $azfw.Allocate($vnet,$publicip)
 Set-AzureRmFirewall -AzureFirewall $azfw
 ```
+
+> [!NOTE]
+> Brány firewall a veřejná IP adresa musí znovu přidělte do původní skupiny prostředků a předplatném.
 
 ### <a name="what-are-the-known-service-limits"></a>Jaká jsou omezení služeb?
 

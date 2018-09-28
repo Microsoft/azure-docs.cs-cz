@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 205a4d454be02d64058e3d0fcffda35df5b831a5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b6370fd9125c5b14df781b27e028c139175b7589
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971667"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405797"
 ---
 # <a name="tune-hyperparameters-for-your-model"></a>Optimalizovat pro váš model hyperparameters
 
@@ -240,7 +240,7 @@ max_concurrent_runs=4
 Tím se nakonfiguruje hyperparameter optimalizace pro experiment použít maximálně 20 celkový počet běhů s 4 konfigurace současně.
 
 ## <a name="configure-your-hyperparameter-tuning-experiment"></a>Konfigurace vašeho hyperparameter ladění experimentu
-Můžete nakonfigurovat váš hyperparameter ladění experimentu s využitím definované hyperpameter prostoru pro hledání, předčasné ukončení zásad, primární metriky a přidělení prostředků z výše uvedených částech. Kromě toho budete muset zadat `estimator` vzorky hyperparameters, která bude volána. `estimator` Popisuje cvičný skript spustíte, zdroje na jednu úlohu (jeden nebo více grafickými procesory) a cílové výpočetní prostředí používat. Od souběžnosti pro vaše hyperparameter ladění experiment jsou závislé na prostředcích, které jsou k dispozici, budete muset zajistit, že vaše cílové výpočetní prostředí podle `estimator` má dostatek prostředků pro požadovanou souběžnosti. (Viz [odkaz](/how-to-train-ml-models.md) Další informace o odhady).
+Můžete nakonfigurovat váš hyperparameter ladění experimentu s využitím definované hyperpameter prostoru pro hledání, předčasné ukončení zásad, primární metriky a přidělení prostředků z výše uvedených částech. Kromě toho budete muset zadat `estimator` vzorky hyperparameters, která bude volána. `estimator` Popisuje cvičný skript spustíte, zdroje na jednu úlohu (jeden nebo více grafickými procesory) a cílové výpočetní prostředí používat. Od souběžnosti pro vaše hyperparameter ladění experiment jsou závislé na prostředcích, které jsou k dispozici, budete muset zajistit, že vaše cílové výpočetní prostředí podle `estimator` má dostatek prostředků pro požadovanou souběžnosti. (Viz [trénování modelů](how-to-train-ml-models.md) Další informace o odhady).
 
 Tady je příklad konfigurace ladění experimentu hyperparameter-
 
@@ -314,5 +314,5 @@ Získáte tento poznámkový blok:
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>Další postup
-* [Sledovat experimentu](/how-to-track-experiments.md)
-* [Nasazení trénovaného modelu](/how-to-deploy-and-where.md)
+* [Sledovat experimentu](how-to-track-experiments.md)
+* [Nasazení trénovaného modelu](how-to-deploy-and-where.md)

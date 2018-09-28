@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 09/26/2018
 ms.author: sethm
-ms.reviewer: JeffGoldner
-ms.openlocfilehash: 65e9b4371eab4e4e4978e91184ab9712b9ecc9eb
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.reviewer: ''
+ms.openlocfilehash: be4d9b3ea7e5715d7c3a4df11b7e8bab4d1d4ca5
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45629359"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405593"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Hostované operační systémy podporované ve službě Azure Stack
 
@@ -40,11 +40,12 @@ Azure Stack podporuje Windows hostovaných operačních systémů uvedených v n
 | Windows Server 2008 SP2 | 64 bitů |  Používání vlastní image |
 | Windows 10 *(viz poznámka 1)* | 64-bit, Pro a Enterprise | Používání vlastní image |
 
-***Poznámka 1:*** *k nasazení Windows 10 klientské operační systémy ve službě Azure Stack, musíte mít [Windows licence vázané na uživatele](https://www.microsoft.com/en-us/Licensing/product-licensing/windows10.aspx) nebo zakoupit prostřednictvím kvalifikovaný hostitel Multitenant ([QMTH](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)).*
+> [!NOTE]
+> Chcete-li nasazovat operační systémy klienta Windows 10 ve službě Azure Stack, musíte mít [Windows licence vázané na uživatele](https://www.microsoft.com/en-us/Licensing/product-licensing/windows10.aspx) nebo zakoupit prostřednictvím kvalifikovaný hostitel Multitenant ([QMTH](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)).
 
 Image z Marketplace jsou k dispozici pro placené jako využití nebo licencování BYOL (EA/SPLA). Použití na jednu instanci služby Azure Stack není podporováno. Během nasazování služby Azure Stack vkládá vhodnou verzi agenta hosta do bitové kopie.
 
- Edice Datacenter jsou dostupné na webu Marketplace pro stahování. Zákazníci můžou začít přenášet své vlastní Image serveru, včetně jiných edicích. Imagí klienta Windows nejsou k dispozici na webu Marketplace.
+Edice Datacenter jsou dostupné na webu Marketplace pro stahování. Zákazníci můžou začít přenášet své vlastní Image serveru, včetně jiných edicích. Imagí klienta Windows nejsou k dispozici na webu Marketplace.
 
 ## <a name="linux"></a>Linux
 
@@ -70,6 +71,11 @@ Linuxové distribuce, které jsou uvedené jako dostupné na webu Marketplace za
 | Ubuntu 16.04-LTS | 64 bitů | Canonical | Ano |
 | Ubuntu 18.04-LTS | 64 bitů | Canonical | Ano |
 
-Ostatní Linuxové distribuce může podporovat v budoucnu.
-
 Informace o podpoře Red Hat Enterprise Linux, najdete [Red Hat a Azure Stackem: Nejčastější dotazy](https://access.redhat.com/articles/3413531).
+
+## <a name="next-steps"></a>Další postup
+
+Další informace o Azure Marketplace zásobníku najdete v následujících článcích:
+
+[Stažení položek z Marketplace](azure-stack-download-azure-marketplace-item.md)  
+[Vytvoření a publikování položky Marketplace](azure-stack-create-and-publish-marketplace-item.md)

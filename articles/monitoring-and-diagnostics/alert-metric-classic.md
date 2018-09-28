@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: e325335d43ef31c44ac812aca66309132f5372a3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e0c9cc342bb4b06053f53abc891ee1c415327998
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46951606"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409996"
 ---
-# <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Vytvořit, zobrazit a spravovat pomocí Azure monitoru upozornění metriky
+# <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Vytvořit, zobrazit a spravovat klasické metriky upozornění pomocí Azure monitoru
 
 Klasického upozornění metrik ve službě Azure Monitor poskytují způsob, jak chcete dostávat oznámení, když jeden metriky překročí prahovou hodnotu. Klasické metriky upozornění je starší funkce, které umožňuje upozorňování pouze na jiné jednodimenzionální metriky. Není existující novější funkce volána upozornění na metriku má vylepšené funkce prostřednictvím klasického upozornění metrik. Další informace o nových funkcích upozornění metrik v [přehled výstrah metrika](alert-metric-overview.md). V tomto článku jsme popisuje, jak vytvořit, zobrazit a spravovat klasické pravidla upozornění na metriky prostřednictvím webu Azure portal, Powershell a rozhraní příkazového řádku Azure.
 
-## <a name="create-a-classic-metric-alert-rule-using-azure-portal"></a>Vytvoření klasické metriky upozornění pravidla pomocí webu Azure portal
+## <a name="with-azure-portal"></a>Pomocí webu Azure portal
 
 1. V [portál](https://portal.azure.com/), najděte prostředek, který chcete monitorovat a vyberte ji.
 
@@ -46,15 +46,13 @@ Klasického upozornění metrik ve službě Azure Monitor poskytují způsob, ja
 
 Během několika minut upozornění je aktivní a aktivuje jak bylo popsáno dříve.
 
-## <a name="manage-your-classic-metric-alert-rules-using-azure-portal"></a>Spravovat klasické metriky upozornění pravidla pomocí webu Azure portal
-
 Po vytvoření výstrahy, můžete ho vyberte a proveďte jednu z následujících úloh:
 
 * Zobrazení grafu, který zobrazuje mezní hodnota metriky a skutečnými hodnotami z předchozího dne.
 * Upravit nebo odstranit.
 * **Zakázat** nebo **povolit** ji, pokud chcete dočasně zastavit nebo obnovit příjem oznámení pro toto upozornění.
 
-## <a name="creating-and-managing-classic-metric-alert-rule-using-azure-cli"></a>Vytváření a správu klasické metriky pravidlo upozornění pomocí rozhraní příkazového řádku Azure
+## <a name="with-azure-cli"></a>S využitím rozhraní příkazového řádku Azure
 
 V předchozích částech popsané, jak vytvořit, zobrazit a spravovat pravidla upozornění na metriky pomocí webu Azure portal. Tato část popisuje, jak provádět to stejné napříč platformami pomocí [rozhraní příkazového řádku Azure](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest). Nejrychlejší způsob, abyste mohli začít používat Azure CLI je prostřednictvím [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview?view=azure-cli-latest).
 
@@ -86,7 +84,7 @@ az monitor alert create --name <alert name> --resource-group <group name> \
 az monitor alert delete --name <alert name> --resource-group <group name>
 ```
 
-### <a name="create-view-and-manage-classic-metric-alerts-using-powershell"></a>Vytvoření, zobrazení a správa pomocí Powershellu klasického upozornění metrik
+## <a name="with-powershell"></a>S využitím PowerShellu
 
 Tato část ukazuje, jak pomocí prostředí PowerShell příkazů vytvořit, zobrazit a spravovat klasické metriky upozornění. V příkladech v tomto článku ukazují, jak můžete použít rutiny Azure Monitor pro klasické metriky upozornění.
 

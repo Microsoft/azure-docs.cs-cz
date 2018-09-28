@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 1426bddb6e9e3e110fe5a86ed451ec40c2677e78
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 71dee9f36a3e8e11cc23f966c9157f6409a3b5e0
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957494"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405729"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Vytvoření, změna nebo odstranění předponu veřejné IP adresy
 
@@ -78,7 +78,6 @@ Jakmile vytvoříte předponu, je nutné vytvořit statické IP adresy z předpo
     |Název|Ano|Název veřejné IP adresy musí být jedinečný v rámci skupiny prostředků, kterou vyberete.|
    |Časový limit nečinnosti (minuty)|Ne|Kolik minut nechat připojení TCP nebo HTTP otevřené bez nutnosti spoléhat se na klientských počítačích k odesílání zpráv keep-alive. |
    |Popisek názvu DNS|Ne|Musí být jedinečný v rámci oblasti Azure vytvořit název v (v rámci všech předplatných a všechny zákazníky). Azure automaticky zaregistruje názvem a IP adresou ve své službě DNS, abyste se mohli připojit k prostředku s názvem. Azure připojí, jako výchozí podsíť *location.cloudapp.azure.com* (Pokud je umístění je vyberete) k názvu zadáte, chcete-li vytvořit plně kvalifikovaný název DNS. Další informace najdete v tématu [použití Azure DNS pomocí Azure veřejnou IP adresu](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address).|
-   |Zóna dostupnosti|  Ne | Toto nastavení se zobrazí pouze v případě, že vybíráte podporovanou oblast. Seznam podporovaných umístění najdete v tématu [Přehled zón dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Zónově redundantní se vybere automaticky za vás a vaše cesta k datům díky odolné vůči selhání zóny. Pokud chcete zaručit konkrétní zóně, což není odolné vůči selhání zóny, můžete vybrat konkrétní zónu.
 
 ## <a name="view-or-delete-a-prefix"></a>Zobrazit nebo odstranit předponu
 

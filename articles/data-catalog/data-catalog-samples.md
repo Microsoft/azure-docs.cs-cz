@@ -2,18 +2,18 @@
 title: Ukázky pro vývojáře v Azure Data Catalog
 description: Tento článek obsahuje přehled ukázky k dispozici pro vývojáře pro REST API služby Data Catalog.
 services: data-catalog
-author: spelluru
-ms.author: spelluru
+author: markingmyname
+ms.author: maghan
 ms.assetid: 0dc23edd-04d8-49fc-841e-d132fb109ce7
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 98d17e5fc8b2348887d6a9e361a455474d666db4
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: a4f88b63fa91dcec52b86be568ef4c98ee82c277
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43053520"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47404321"
 ---
 # <a name="data-catalog-developer-samples"></a>Ukázky pro vývojáře katalogu dat
 Začněte s vývojem aplikací katalogu Data Catalog pomocí REST API služby Data Catalog. REST API služby Data Catalog je rozhraní API založených na REST, které poskytuje programový přístup k prostředkům služby Data Catalog pro registraci, anotaci a vyhledávání datových prostředků prostřednictvím kódu programu.

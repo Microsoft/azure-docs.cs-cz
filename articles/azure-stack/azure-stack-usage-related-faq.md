@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 09/27/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: ffe3dbf975984eb8df341728075e628d14080ada
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: e4bb17bd068076a9ffa9bcab5826f0efa84a19d7
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380229"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406001"
 ---
 # <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>Nejčastější dotazy v rozhraní API pro využití služby Azure Stack
 
@@ -321,10 +321,10 @@ Využití hlášené pro následující poskytovatele prostředků:
 **Poznámky k**: Celkový počet příchozího požadavku bajty odpovědi a celkový počet odchozího požadavku bajtů + FTP celkový počet příchozích žádostí bajty odpovědi a celkový počet příchozích webové nasazení bajty odpovědi na žádost.  
   
 
-## <a name="how-do-the-azure-stack-usage-apis-compare-to-the-azure-usage-apihttpsmsdnmicrosoftcomlibraryazure1ea5b323-54bb-423d-916f-190de96c6a3c-currently-in-public-preview"></a>Jak Azure Stack využití rozhraní API pro porovnání [využití rozhraní API Azure](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c) (aktuálně ve verzi public preview)?
+## <a name="how-do-the-azure-stack-usage-apis-compare-to-the-azure-usage-apihttpsdocsmicrosoftcomazurebillingbilling-usage-rate-card-overviewazure-resource-usage-api-preview-currently-in-public-preview"></a>Jak Azure Stack využití rozhraní API pro porovnání [využití rozhraní API Azure](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview#azure-resource-usage-api-preview) (aktuálně ve verzi public preview)?
 * Rozhraní API využití Tenanta je konzistentní s Azure API s jednou výjimkou: *showDetails* příznak není aktuálně podporován ve službě Azure Stack.
 * Rozhraní API využití zprostředkovatele platí jenom pro Azure Stack.
-* V současné době [RateCard API](https://msdn.microsoft.com/library/azure/mt219004.aspx) , který je k dispozici v Azure, která není k dispozici ve službě Azure Stack.
+* V současné době [RateCard API](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview#azure-resource-ratecard-api-preview) , který je k dispozici v Azure, která není k dispozici ve službě Azure Stack.
 
 ## <a name="what-is-the-difference-between-usage-time-and-reported-time"></a>Jaký je rozdíl mezi časem využití a ohlášených?
 Sestavy využití dat mají dva hlavní časové hodnoty:

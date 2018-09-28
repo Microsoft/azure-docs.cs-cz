@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: c99186d73886041d92bea38b0dd4dc17f55001e4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1a42c13bc0b441074829b1753c1d3cab8fbfaccf
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977855"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407565"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Začínáme s rolemi, oprávnění a zabezpečení prostřednictvím služby Azure Monitor
 Mnoho týmů potřebuje pro výhradně regulovat přístup k monitorování data a nastavení. Například pokud jste členy týmu, kteří pracují výhradně na monitorování (techniky podpory, technikům devops) nebo pokud používáte poskytovatel spravované služby, můžete jim udělit přístup k datům monitorování pouze při omezení jejich schopnost vytvářet, upravovat, nebo Odstraňte prostředky. Tento článek ukazuje, jak rychle použít předdefinované role RBAC monitorování na uživatele v Azure nebo vytvářet vlastní vlastní role pro uživatele, který potřebuje monitorování omezená oprávnění. Pak popisuje aspekty zabezpečení pro vaše prostředky související s Azure Monitor a jak můžete omezit přístup k datům, které obsahují.
@@ -181,14 +181,8 @@ Azure Monitor potřebuje přístup k prostředkům Azure k poskytování služeb
 Sledování dat je často zapsána do účtu úložiště. Můžete chtít Ujistěte se, že data kopírovaná do účtu úložiště nemůže být přístup neoprávnění uživatelé. Za účelem zvýšení zabezpečení můžete omezit jenom přístup k síti a Povolit jenom autorizovaným prostředkům a důvěryhodné služby Microsoftu přístup k účtu úložiště tak, že omezíte účet úložiště, který chcete použít "vybraných sítí".
 ![Dialogové okno nastavení služby Azure Storage](./media/monitoring-roles-permissions-security/secured-storage-example.png) Azure Monitor se považuje za jednu z těchto "důvěryhodné služby Microsoftu" Pokud povolit důvěryhodným službám Microsoftu přístup k zabezpečené úložiště, Azure monitor budou mít přístup k zabezpečené účet úložiště, povolením zápis do účtu úložiště za těchto podmínek chráněné diagnostické protokoly Azure monitoru, protokolu aktivit a metrik. Díky tomu také Log Analytics pro čtení protokolů ze zabezpečeného úložiště.   
 
+
 Další informace najdete v tématu [Network security a Azure Storage](../storage/common/storage-network-security.md)
- 
-### <a name="secured-virtual-networks-with-service-endpoints"></a>Zabezpečené pomocí koncových bodů služby virtuální sítě 
-
-Virtuální sítě (Vnet) umožňuje omezit přenosy pro povolení pouze zadaný provozu ke komunikaci s prostředky Azure. Můžete zadat koncové body služby pro rozšíření vaší virtuální sítě Azure Monitor; zahrnout To vám umožní vašich prostředků, aby conitinue zabezpečeně odesílat informace o protokolování a metrik do Azure monitoru z virtuální sítě.  
-
-Další informace najdete v tématu [koncové body služby virtuální sítě](../virtual-network/virtual-network-service-endpoints-overview.md). 
-
 
 ## <a name="next-steps"></a>Další postup
 * [Přečtěte si informace o RBAC a oprávnění v Resource Manageru](../role-based-access-control/overview.md)

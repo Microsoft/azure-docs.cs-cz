@@ -16,12 +16,12 @@ ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: cwatson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4f17a65befc1abbe2a2405e8470f61068ac34f8b
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 622a8777f5ed329636c7023bb52790756f8d7206
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394807"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422622"
 ---
 # <a name="change-your-azure-account-profile-information-such-as-contact-email-address-and-phone-number"></a>Změnit informace z vašeho profilu účtu Azure například kontaktní e-mailovou adresu a telefonní číslo
 
@@ -55,10 +55,6 @@ Zjistěte, jak aktualizovat vaše fakturační údaje, najdete v článku [změn
 ### <a name="why-cant-i-update-the-country"></a>Proč nelze aktualizovat zemi?
 
 Z důvodu technická omezení nemůžeme změnit zemi pro existující účet. Můžete však vytvořit účet v požadovanou zemi a obraťte se na podporu Azure o migraci vašich služeb k tomuto účtu.
-
-### <a name="what-email-address-does-the-azure-billing-alerts-preview-feature-use"></a>Jaké e-mailová adresa nemá upozornění fakturace Azure ve verzi preview použití funkce?
-
-Obdržíte oznámení o výstrahách v e-mailovou adresu, že přidáte při registraci k výstrahám. E-mailovou adresu pro oznámení je oddělené od e-mailovou adresu účtu správce. Další informace najdete v tématu [nastavení upozornění pro předplatná Microsoft Azure fakturace](billing-set-up-alerts.md).
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
 

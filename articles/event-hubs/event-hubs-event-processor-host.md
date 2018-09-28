@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 672e31109b71a8a4238a05851a58a7c83e275b19
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 14db9ec9e4cd90d0c2d224bd944e2bc5b591a53b
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576305"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405899"
 ---
 # <a name="azure-event-hubs-event-processor-host-overview"></a>Přehled služby Azure Event Hubs Event Processor Host
 
@@ -88,7 +88,8 @@ V dalším kroku vytvoření instance [EventProcessorHost](/dotnet/api/microsoft
 - **eventHubConnectionString:** připojovací řetězec do centra událostí, která se dá načíst z portálu Azure portal. Tento připojovací řetězec by měl mít **naslouchání** oprávnění v Centru událostí.
 - **storageConnectionString:** účet úložiště používané pro správu vnitřních prostředků.
 
-Nakonec příjemci zaregistrovat [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) instance se službou Event Hubs. Registrace služby Event Hubs můžete očekávat, že příjemce aplikace využívá službu události z některé z jejích oddílů a který má být vyvolán nastaví [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) implementace kódu pokaždé, když se toho odesílá události využívat.
+Nakonec příjemci zaregistrovat [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) instance se službou Event Hubs. Registrace procesoru třídě události s instancí třídy EventProcessorHost spustí zpracování událostí. Registrace služby Event Hubs můžete očekávat, že příjemce aplikace využívá službu události z některé z jejích oddílů a který má být vyvolán nastaví [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) implementace kódu pokaždé, když se toho odesílá události využívat. 
+
 
 ### <a name="example"></a>Příklad:
 
@@ -123,7 +124,7 @@ Každý hostitel, získá vlastnictví oddílu určitou dobu (doba trvání zap�
 
 Každé volání [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) nabízí kolekci událostí. Je vaší odpovědností, abyste zpracování těchto událostí. Doporučujeme, abyste udělali poměrně rychle; co potřebujete To znamená proveďte jako zpracování co nejvíc. Místo toho použijte skupiny příjemců. Pokud potřebujete k zápisu do úložiště a provést některé směrování, je obecně vhodnější použít dvě skupiny uživatelů a mít dvě [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) implementace, které spustit samostatně.
 
-V určitém okamžiku během zpracování můžete sledovat, co jste přečetli a dokončit. Sledování je velmi důležité, pokud je nutné restartovat čtení, takže se nemusíte vrátit k začátku datového proudu. [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) zjednodušuje tento sledování pomocí *kontrolní body*. Kontrolní bod je umístění, nebo posunutí pro daný oddíl, v rámci konkrétní skupiny příjemců, v tom okamžiku se ujistí, že mají zpracovat zprávy. Označení kontrolní bod v **EventProcessorHost** provádí volání [CheckpointAsync](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync) metodu [PartitionContext](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext) objektu. Tuto operaci obecně provádí v rámci [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) metody, ale je možné provést [CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync).
+V určitém okamžiku během zpracování můžete sledovat, co jste přečetli a dokončit. Sledování je velmi důležité, pokud je nutné restartovat čtení, takže se nemusíte vrátit k začátku datového proudu. [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) zjednodušuje tento sledování pomocí *kontrolní body*. Kontrolní bod je umístění, nebo posunutí pro daný oddíl, v rámci konkrétní skupiny příjemců, v tom okamžiku se ujistí, že mají zpracovat zprávy. Označení kontrolní bod v **EventProcessorHost** provádí volání [CheckpointAsync](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync) metodu [PartitionContext](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext) objektu. Tato operace se provádí v rámci [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) metody, ale je možné provést [CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync).
 
 ## <a name="checkpointing"></a>Vytváření kontrolních bodů
 
@@ -140,6 +141,7 @@ Ve výchozím nastavení [EventProcessorHost](/dotnet/api/microsoft.azure.eventh
 Nakonec [EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) umožňuje čistého vypnutí všech oddílů čtenářů a by měla být volána vždy při vypínání instance [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost). Pokud tak neučiníte, může vést k prodlevám při spuštění další výskyty **EventProcessorHost** kvůli vypršení platnosti zapůjčení a epocha konflikty. Unixový správy je podrobně popsána v to [blogový příspěvek](https://blogs.msdn.microsoft.com/gyan/2014/09/02/event-hubs-receiver-epoch/)
 
 ## <a name="lease-management"></a>Řízení pronájmu
+Registrace procesoru třídě události s instancí třídy EventProcessorHost spustí zpracování událostí. Instance hostitele získává zapůjčení u některých oddílů centra událostí, případně kliknete na některé z dalších hostitelské instance, tak, aby sladila na rozdělení oddílů napříč všemi instancemi hostitele. Pro každý oddíl pronajatých instance hostitele vytvoří instanci třídy procesoru zadané události, pak přijímá události z tohoto oddílu a předává je do instance procesoru událostí. Nechejte se přidat více instancí a jsou obstaral větší počet zapůjčení, EventProcessorHost nakonec vyrovnává zatížení mezi všechny uživatele.
 
 Jak jsme vysvětlili dříve, tabulky sledování výrazně zjednodušuje automatického škálování povaze [EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync). Jako instanci **EventProcessorHost** spustí, získá zapůjčení tolik nejrychleji a zahájí čtení událostí. Jako zapůjčení brzký konec platnosti **EventProcessorHost** pokusí obnovit tak, že rezervaci. Pokud je k dispozici pro obnovení zapůjčení, procesor bude pokračovat ve čtení, ale pokud není, zavření čtečky a [CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync) je volána. **CloseAsync** je vhodná doba provést libovolné finální čištění pro tento oddíl.
 

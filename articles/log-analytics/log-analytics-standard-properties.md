@@ -11,29 +11,58 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/11/2018
+ms.date: 09/27/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 663f0b04c528c180e4130c1c157441cbc0ceb98b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7282734b3524d7dfa80c54d074aac2268e38c5ab
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46955863"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419385"
 ---
 # <a name="standard-properties-in-log-analytics-records"></a>Standardní vlastnosti v záznamech Log Analytics
 Data v [Log Analytics](../log-analytics/log-analytics-queries.md) se ukládá jako sady záznamů, každý s konkrétním datovým typem, který má jedinečnou sadu vlastností. Mnoho datových typů, bude mít standardní vlastnosti, které jsou společné pro více typů. Tento článek popisuje tyto vlastnosti a poskytuje příklady, jak je použít v dotazech.
 
 Některé z těchto vlastností jsou stále probíhá proces jeho implementování, takže je mohou zobrazit v některé typy dat, ale ještě není v jiných.
 
+## <a name="timegenerated"></a>TimeGenerated
+**TimeGenerated** vlastnost obsahuje datum a čas, který byl vytvořen záznam. Poskytuje běžné vlastnosti, které chcete použít pro filtrování nebo sumarizace podle času. Vyberte časový rozsah pro zobrazení nebo řídicím panelu na webu Azure Portal, použije k filtrování výsledků TimeGenerated.
+
+### <a name="examples"></a>Příklady
+
+Následující dotaz vrátí počet chyb, vytvoří se události za každý den předchozího týdne.
+
+```Kusto
+Event
+| where EventLevelName == "Error" 
+| where TimeGenerated between(startofweek(ago(7days))..endofweek(ago(7days))) 
+| summarize count() by bin(TimeGenerated, 1day) 
+| sort by TimeGenerated asc 
+```
+
+## <a name="type"></a>Typ
+**Typ** vlastnost obsahuje název tabulky, ze kterého byla načtena záznam můžete také představit jako typ záznamu. Tato vlastnost je užitečná v dotazech, které kombinují záznamů z několika tabulek, jako jsou ty, které používají `search` operátor k rozlišení mezi záznamy různých typů. **$table** lze použít místo **typ** na některých místech.
+
+### <a name="examples"></a>Příklady
+Následující dotaz vrátí počet záznamů podle typu shromážděné za poslední hodinu.
+
+```Kusto
+search * 
+| where TimeGenerated > ago(1h) 
+| summarize count() by Type 
+```
 
 ## <a name="resourceid"></a>_ResourceId
 **_ResourceId** vlastnost obsahuje jedinečný identifikátor pro prostředek, který je přidružený záznam. To vám dává standardní vlastnosti, které chcete použít k určení oboru dotazu pouze záznamy z konkrétního prostředku nebo k související data z více tabulek.
 
-Pro prostředky Azure, hodnota **_ResourceId** je [ID URL prostředku Azure](../azure-resource-manager/resource-group-template-functions-resource.md). Vlastnost je aktuálně omezená na prostředky Azure, ale bude možné rozšířit na prostředky mimo Azure, jako jsou místní počítače. 
+Pro prostředky Azure, hodnota **_ResourceId** je [ID URL prostředku Azure](../azure-resource-manager/resource-group-template-functions-resource.md). Vlastnost je aktuálně omezená na prostředky Azure, ale bude možné rozšířit na prostředky mimo Azure, jako jsou místní počítače.
+
+> [!NOTE]
+> Některé typy dat již obsahuje pole, která obsahují ID prostředku Azure nebo alespoň části jeho jako ID předplatného. Zatímco tato pole se neodstraní z důvodu zpětné kompatibility se doporučuje použít _ResourceId provést křížové korelace, protože je konzistentnější.
 
 ### <a name="examples"></a>Příklady
-Následující příklad ukazuje dotaz, který spojuje výkon a data události pro každý počítač. Zobrazí všechny události s ID _101_ a využití procesoru nad 50 %.
+Následující dotaz spojí data o výkonu a události pro každý počítač. Zobrazí všechny události s ID _101_ a využití procesoru nad 50 %.
 
 ```Kusto
 Perf 
@@ -44,7 +73,7 @@ Perf
 ) on _ResourceId
 ```
 
-Následující příklad ukazuje dotaz, který spojuje _AzureActivity_ záznamy s _SecurityEvent_ záznamy. Zobrazuje všechny operace aktivity pomocí uživatele, kteří se přihlásí do těchto počítačů.
+Následující dotaz spojení _AzureActivity_ záznamy s _SecurityEvent_ záznamy. Zobrazuje všechny operace aktivity pomocí uživatele, kteří se přihlásí do těchto počítačů.
 
 ```Kusto
 AzureActivity 

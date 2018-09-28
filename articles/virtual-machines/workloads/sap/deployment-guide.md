@@ -14,14 +14,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/08/2016
+ms.date: 09/26/2018
 ms.author: sedusch
-ms.openlocfilehash: c6d7b4515546ea51264b094316c5da52dbb321c2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9208f2cb207daff2b122550fede48a8dda11d1db
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957019"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407922"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Nasazení virtuálních počítačů pro SAP NetWeaver v Azure
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -1000,6 +1000,10 @@ Tato kontrola zajišťuje, že všechny metriky výkonu, které se zobrazí uvni
 
 Pokud Azure Enhanced Monitoring rozšíření není nainstalované nebo AzureEnhancedMonitoring služba není spuštěná, rozšíření nebyla nakonfigurována správně. Podrobné informace o tom, jak nasadit rozšíření najdete v tématu [Poradce při potížích Azure monitorování infrastruktury SAP][deployment-guide-5.3].
 
+> [!NOTE]
+> Azperflib.exe je komponenta, která nelze použít pro vlastní účely. Je komponenta, která poskytuje data související s virtuální počítač SAP hostitele agenta pro monitorování Azure.
+> 
+
 ##### <a name="check-the-output-of-azperflibexe"></a>Zkontrolujte výstup azperflib.exe
 Azperflib.exe výstup ukazuje, že vyplní všechny čítače výkonu Azure pro SAP. V dolní části Seznam shromážděných čítačů výkonu summary a stavu ukazatele zobrazit stav monitorování Azure.
 
@@ -1093,6 +1097,10 @@ Když některé z monitorování data se doručí správně, je určeno test pop
 
 Zajistěte, aby byl každý výsledek kontroly stavu **OK**. Pokud se nezobrazují některé kontroly **OK**, spusťte rutinu aktualizace, jak je popsáno v [konfigurovat rozšířené monitorování rozšíření Azure pro SAP][deployment-guide-4.5]. Počkejte 15 minut a opakujte kontroly podle [kontroly připravenosti pro Azure Enhanced Monitoring for SAP] [ deployment-guide-5.1] a [Kontrola stavu pro monitorování infrastruktury konfigurace Azure] [deployment-guide-5.2]. Pokud kontroly stále indikovat problém s některé nebo všechny čítače, přečtěte si téma [Poradce při potížích Azure monitorování infrastruktury SAP][deployment-guide-5.3].
 
+> [!Note]
+> Upozornění v případech, kdy používat spravované disky Azure úrovně Standard může docházet. Upozornění se zobrazí místo testy, vrácení "OK". To je normální a určené v případě typu disku. Viz také najdete [řešení potíží s Azure monitorování infrastruktury pro SAP][deployment-guide-5.3]
+> 
+
 ### <a name="fe25a7da-4e4e-4388-8907-8abc2d33cfd8"></a>Řešení potíží s Azure monitorování infrastruktury pro SAP
 
 #### <a name="windowslogowindows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Čítače výkonu Azure nezobrazí vůbec
@@ -1144,6 +1152,23 @@ Adresář \\var\\lib\\waagent\\ nemá podadresář pro rozšíření Azure Enhan
 
 ###### <a name="solution"></a>Řešení
 Rozšíření není nainstalována. Určení, zda se jedná problém s proxy (jak je popsáno dříve). Možná budete muset restartovat počítač a/nebo znovu spustit `Set-AzureRmVMAEMExtension` konfigurační skript.
+
+##### <a name="the-execution-of-set-azurermvmaemextension-and-test-azurermvmaemextension-show-warning-messages-stating-that-standard-managed-disks-are-not-supported"></a>Provedení příkazu Set-AzureRmVMAEMExtension a Test-AzureRmVMAEMExtension zobrazit varovné zprávy s oznámením, že se nepodporují Standard Managed Disks
+
+###### <a name="issue"></a>Problém
+Když jsou uvedeny provádění Set-AzureRmVMAEMExtension a Test-AzureRmVMAEMExtension zpráv, jako jsou tyto:
+
+<pre><code>
+WARNING: [WARN] Standard Managed Disks are not supported. Extension will be installed but no disk metrics will be available.
+WARNING: [WARN] Standard Managed Disks are not supported. Extension will be installed but no disk metrics will be available.
+WARNING: [WARN] Standard Managed Disks are not supported. Extension will be installed but no disk metrics will be available.
+</code></pre>
+
+Provádění azperfli.exe, jak je popsáno výše můžete získat výsledek, který je určující stav není v pořádku. 
+
+###### <a name="solution"></a>Řešení
+Zprávy jsou způsobeny skutečnost, že Standard Managed Disks se poskytuje rozhraní API používaná v rozšíření monitorování ke kontrole statistik standardní účty úložiště Azure. To není problém z hlediska. Důvod Úvod do monitorování pro účty úložiště úrovně Standard disku byla omezování vstupně-výstupních operací, které často došlo k chybě. Spravované disky se vyhnete takové omezení šířky pásma tím, že omezíte počet disků v účtu úložiště. Proto nemá daný typ dat monitorování není důležité.
+
 
 #### <a name="linuxlogolinux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] Chybí některé čítače výkonu Azure
 Metriky výkonu v Azure byly shromážděny sadou démona, která načte data z různých zdrojů. Některé konfigurační data se shromažďují místně a některé metriky výkonu se načítají z Azure Diagnostics. Čítače úložiště pocházejí z protokolů ve vašem předplatném úložiště.

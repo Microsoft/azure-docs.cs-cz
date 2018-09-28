@@ -7,15 +7,15 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 08/22/2018
+ms.date: 09/27/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: a36609ae63351070bb28469d9ccf1f3deb7bc6ff
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 5a9621ef9a8d6c545617e5bf3ef6f4197b70be88
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616945"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419595"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure Stack diagnostické nástroje
 
@@ -124,7 +124,7 @@ if($s)
  |ACSFabric|DatacenterIntegration|KeyVaultControlPlane|SeedRingServices|
  |ACSFrontEnd|DeploymentMachine|KeyVaultDataPlane|SLB|
  |ACSMetrics|DiskRP|KeyVaultInternalControlPlane|SlbVips|
- |ACSMigrationService|Doména|KeyVaultInternalDataPlane|SQL|
+ |ACSMigrationService|Domain (Doména)|KeyVaultInternalDataPlane|SQL|
  |ACSMonitoringService|OSN|KeyVaultNamingService|SRP|
  |ACSSettingsService|EventAdminRP|MDM|Úložiště|
  |ACSTableMaster|EventRP|MetricsAdminRP|StorageAccounts|
@@ -143,14 +143,6 @@ if($s)
  |Cloud|identityProvider|OnboardRP|     |   
  |Cluster|IDN|POMOCÍ TECHNOLOGIE PXE|     |
  |   |   |   |    |
-
-
-### <a name="bkmk_gui"></a>Shromažďování protokolů pomocí grafického uživatelského rozhraní
-Místo poskytování požadované parametry pro Get-AzureStackLog rutina pro načtení protokolů služby Azure Stack, můžete dál využít k dispozici open source nástrojů Azure Stack v hlavní služby Azure Stack nástroje nástroje úložišti GitHub na http://aka.ms/AzureStackTools.
-
-**ERCS_AzureStackLogs.ps1** skript prostředí PowerShell je uložen v úložišti GitHub nástroje a aktualizována v pravidelných intervalech. K zajištění, že máte nejnovější dostupná verze, které byste si měli stáhnout přímo z http://aka.ms/ERCS. Skript spustili z relaci prostředí PowerShell pro správu, připojí k privileged koncového bodu a spustí Get-AzureStackLog pomocí zadaných parametrů. Pokud jsou zadány žádné parametry, výchozí skript vás vyzve k zadání parametrů přes grafické uživatelské rozhraní.
-
-Další informace o ERCS_AzureStackLogs.ps1 Powershellový skript, můžete sledovat [krátké video](https://www.youtube.com/watch?v=Utt7pLsXEBc) nebo zobrazení vašeho skriptu [souboru readme](https://github.com/Azure/AzureStack-Tools/blob/master/Support/ERCS_Logs/ReadMe.md) umístěný v úložišti GitHub nástroje služby Azure Stack. 
 
 ### <a name="additional-considerations"></a>Další aspekty
 

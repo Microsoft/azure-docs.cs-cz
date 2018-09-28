@@ -1,71 +1,71 @@
 ---
-title: Koncepty serveru v databázi Azure pro PostgreSQL
+title: Koncepty serveru ve službě Azure Database for PostgreSQL
 description: Tento článek obsahuje důležité informace a pokyny pro konfiguraci a správu databáze Azure pro servery PostgreSQL.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 05/22/2018
-ms.openlocfilehash: f877f6df51cd7aed29260331d27d5c96f0584afc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 09/27/2018
+ms.openlocfilehash: 8fcb5e8371d6c813eb7f0ab4d23a5aac5c41fb3b
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640009"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47404635"
 ---
 # <a name="azure-database-for-postgresql-servers"></a>Servery Azure Database for PostgreSQL
-Tento článek obsahuje důležité informace a pokyny pro práci s databází Azure pro servery PostgreSQL.
+Tento článek obsahuje důležité informace a pokyny pro pracovat se službou Azure Database for PostgreSQL servery.
 
-## <a name="what-is-an-azure-database-for-postgresql-server"></a>Co je Azure databáze PostgreSQL serveru?
-Databázi Azure pro PostgreSQL server je centrální administrativní bod pro více databází. Je stejné konstrukce serveru PostgreSQL, který může na světě místní být obeznámeni s. Konkrétně službu PostgreSQL je spravovaný, poskytuje záruku výkonu, zpřístupní přístup a funkce na úrovni serveru.
+## <a name="what-is-an-azure-database-for-postgresql-server"></a>Co je serveru Azure Database for PostgreSQL?
+Serveru Azure Database for PostgreSQL je centrální administrativní bod pro více databází. Je to stejné konstrukci server PostgreSQL, která je pravděpodobně znáte místního prostředí. Konkrétně služba PostgreSQL je spravovaná, poskytuje záruky týkající se výkonu, poskytují přístup a funkce na úrovni serveru.
 
-Databázi Azure pro PostgreSQL server:
+Azure Database for PostgreSQL server:
 
 - Je vytvořen v rámci předplatného Azure.
-- Je nadřazený prostředek pro databáze.
+- Je nadřazeným prostředkem pro databáze.
 - Poskytuje obor názvů pro databáze.
-- Je kontejner s silné životnost sémantiku - odstranění serveru a odstraní databázích s omezením.
-- Collocates prostředky v oblasti.
-- Poskytuje koncového bodu připojení pro přístup k serveru a databází (. postgresql.database.azure.com).
-- Poskytuje oboru pro zásady správy, které se vztahují k jeho databázím: přihlášení, brána firewall, uživatelů, rolí, konfigurace atd.
-- Je k dispozici v několika verzích. Další informace najdete v tématu [podporované verze databáze PostgreSQL](concepts-supported-versions.md).
-- Je rozšiřitelný uživatelé. Další informace najdete v tématu [PostgreSQL rozšíření](concepts-extensions.md).
+- Je kontejner se silnou sémantikou životního cyklu – odstraníte server a odstraní databáze s omezením.
+- Uspořádává prostředky v oblasti.
+- Poskytuje koncový bod připojení pro přístup k serveru a databáze (. postgresql.database.azure.com).
+- Poskytuje obor pro zásady správy, které se vztahují na jeho databáze: přihlášení, brána firewall, uživatelů, rolí, konfigurace atd.
+- Je k dispozici ve více verzích. Další informace najdete v tématu [podporované verze databáze PostgreSQL](concepts-supported-versions.md).
+- Je možné rozšířit uživateli. Další informace najdete v tématu [rozšíření PostgreSQL](concepts-extensions.md).
 
-V rámci Azure Database pro PostgreSQL server můžete vytvořit jeden nebo více databází. Můžete se rozhodnout vytvořit jednu databázi na server pro využití všech prostředků nebo vytvořit několik databází, které budou prostředky sdílet. Cenách je strukturovaných jednotlivých serverů, na základě konfigurace cenová úroveň, vCores a úložiště (GB). Další informace najdete v tématu [cenové úrovně](./concepts-pricing-tiers.md).
+V rámci serveru Azure Database for PostgreSQL můžete vytvořit jednu nebo několik databází. Můžete se rozhodnout vytvořit jednu databázi na server pro využití všech prostředků nebo vytvořit několik databází, které budou prostředky sdílet. Ceny se strukturovaných jednotlivých serverů, na základě konfigurace cenová úroveň, virtuálních jader a úložiště (GB). Další informace najdete v tématu [cenové úrovně](./concepts-pricing-tiers.md).
 
-## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-postgresql-server"></a>Jak připojit a ověřit k databázi Azure pro PostgreSQL server?
-Tyto prvky pomoct zajistit bezpečný přístup k vaší databázi:
+## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-postgresql-server"></a>Jak se připojit a ověřit na serveru Azure Database for PostgreSQL?
+Tyto prvky zajistit bezpečný přístup k databázi:
 
 |||
 |:--|:--|
-| **Ověřování a autorizace** | Azure databázi PostgreSQL serveru podporuje nativní PostgreSQL ověřování. Můžete se připojit a ověření serveru s přihlašovací jméno správce serveru. |
-| **Protokol** | Služba podporuje protokol na základě zpráv používá PostgreSQL. |
-| **TCP/IP** | Protokol je podporována přes TCP/IP a přes sockets Unix domény. |
-| **Brána firewall** | Chrání vaše data, pravidlo brány firewall zabrání veškerý přístup k serveru a k jeho databázím, dokud nezadáte, které počítače mají oprávnění. V tématu [databáze Azure pro pravidla brány firewall serveru PostgreSQL](concepts-firewall-rules.md). |
+| **Ověřování a autorizace** | Azure Database for PostgreSQL server podporuje nativní PostgreSQL ověřování. Můžete se připojit a ověřit na serveru s přihlašovací jméno správce serveru. |
+| **Protokol** | Tato služba podporuje založenou na zprávách protokol používaný PostgreSQL. |
+| **TCP/IP** | Protokol se podporuje přes TCP/IP a prostřednictvím soketů systému Unix domény. |
+| **Brána firewall** | Pomáhá chránit vaše data, pravidlo brány firewall brání veškerému přístupu k vašemu serveru a jeho databázím, dokud neurčíte, které počítače mají oprávnění. Zobrazit [– Azure Database for PostgreSQL Server pravidla brány firewall](concepts-firewall-rules.md). |
 
 ## <a name="managing-your-server"></a>Správa serveru
-Databáze Azure pro servery PostgreSQL můžete spravovat pomocí [portál Azure](https://portal.azure.com) nebo [rozhraní příkazového řádku Azure](/cli/azure/postgres).
+Správě Azure Database for PostgreSQL serverů s použitím [webu Azure portal](https://portal.azure.com) nebo [rozhraní příkazového řádku Azure](/cli/azure/postgres).
 
-Při vytváření serveru, můžete nastavit přihlašovací údaje uživatele správce. Uživatel s oprávněními správce je nejvyšší uživatel oprávnění, které máte na serveru. Patří do role azure_pg_admin. Tato role nemá oprávnění Úplné superuživatel. 
+Při vytváření serveru, můžete nastavit přihlašovací údaje pro vaše uživatele s rolí správce. Uživatel s rolí správce je nejvyšší privilegovaným uživatelem, které máte na serveru. Patří do role azure_pg_admin. Tato role nemá oprávnění Úplné superuživatele. 
 
-Atribut superuživatel PostgreSQL je přiřazený k azure_superuser, který patří k spravované služby. Nemáte přístup k této roli.
+Atribut PostgreSQL superuživatele se přiřadí azure_superuser, který patří do spravované služby. Nemáte přístup k této roli.
 
-Databázi PostgreSQL serveru služby Azure má dva výchozí databází: 
-- **postgres** -výchozí databázi můžete připojit k jednou serveru se vytvoří.
-- **azure_maintenance** – tato databáze slouží k oddělení procesů, které poskytují spravované služby z akce uživatele. Nemáte přístup k této databázi.
+Azure Database for PostgreSQL server má dvě výchozí databáze: 
+- **postgres** -vytvoří i výchozí databáze můžete připojit k jednou serveru se vytvoří.
+- **azure_maintenance** – tato databáze slouží k oddělení procesy, které poskytují spravované služby z akce uživatele. Nemáte přístup k této databázi.
+- **azure_sys** – databáze pro Query Store. Tato databáze není shromažďování dat, když Query Store je vypnuté; Toto je výchozí nastavení. Další informace najdete v tématu [Query Store přehled](concepts-query-store.md).
 
 
 ## <a name="server-parameters"></a>Parametry serveru
-Parametry serveru PostgreSQL zjistit konfiguraci serveru. V databázi Azure pro PostgreSQL seznam parametrů lze zobrazit a upravit pomocí portálu Azure nebo Azure CLI. 
+Parametry serveru PostgreSQL určit konfiguraci serveru. Ve službě Azure Database for PostgreSQL seznam parametrů lze prohlížet a upravovat pomocí webu Azure portal nebo rozhraní příkazového řádku Azure. 
 
-Konfigurovat parametry v databáze Azure pro PostgreSQL jako spravované služby pro Postgres, jsou podmnožinou parametrů v místní instanci Postgres (Další informace o parametrech Postgres najdete v tématu [PostgreSQL dokumentace](https://www.postgresql.org/docs/9.6/static/runtime-config.html)). Vaše databáze Azure pro PostgreSQL serveru je povolená s výchozí hodnoty pro každý parametr při vytváření. Některé parametry, které by vyžadovaly server restartovat nebo superuživatel přístup pro změny se projeví nelze konfigurovat uživatelem.
+Spravovaná služba pro Postgres, konfigurovatelné parametry ve službě Azure Database for PostgreSQL jsou podmnožinou parametry v místní instanci Postgres (Další informace o parametrech Postgres, najdete v článku [PostgreSQL dokumentaci](https://www.postgresql.org/docs/9.6/static/runtime-config.html)). Váš server Azure Database for PostgreSQL je povolená s výchozí hodnoty pro každý parametr při vytvoření. Některé parametry, které by vyžadovaly serveru restartujte nebo přístup superuživatele pro změny se projeví nelze nakonfigurovaná uživatelem.
 
 
 ## <a name="next-steps"></a>Další postup
-- Přehled služby najdete v tématu [databáze Azure pro přehled PostgreSQL](overview.md).
-- Informace o konkrétní prostředek kvóty a omezení na základě vaší **vrstvy služby**, najdete v části [úrovních služeb](concepts-pricing-tiers.md).
-- Informace o připojení ke službě najdete v tématu [knihovny připojení pro databázi Azure pro PostgreSQL](concepts-connection-libraries.md).
-- Zobrazit a upravit parametry serveru prostřednictvím [portál Azure](howto-configure-server-parameters-using-portal.md) nebo [rozhraní příkazového řádku Azure](howto-configure-server-parameters-using-cli.md).
+- Přehled služby najdete v tématu [– Azure Database for postgresql – přehled](overview.md).
+- Informace o konkrétní prostředek kvóty a omezení na základě vašich **úroveň služby**, naleznete v tématu [úrovně služeb](concepts-pricing-tiers.md).
+- Informace o připojení ke službě naleznete v tématu [připojení knihoven pro službu Azure Database for PostgreSQL](concepts-connection-libraries.md).
+- Zobrazit a upravit parametry serveru prostřednictvím [webu Azure portal](howto-configure-server-parameters-using-portal.md) nebo [rozhraní příkazového řádku Azure](howto-configure-server-parameters-using-cli.md).

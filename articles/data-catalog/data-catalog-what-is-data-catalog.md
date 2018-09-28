@@ -2,18 +2,18 @@
 title: Úvod do služby Azure Data Catalog
 description: Tento článek obsahuje přehled služby Microsoft Azure Data Catalog, a to včetně jejích funkcí a potíží, na které se zaměřuje. Data Catalog umožňuje všem uživatelům registrovat, objevovat, pochopit a využívat zdroje dat.
 services: data-catalog
-author: steelanddata
-ms.author: maroche
+author: markingmyname
+ms.author: maghan
 ms.assetid: cc733907-17ec-4153-9f0c-5b3754b2db19
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: ba9cce1c63145bea25e657cb690287e1cbf5a4e4
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 3da12ae290730869026de24761b28f332927f01e
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43053445"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408449"
 ---
 # <a name="what-is-azure-data-catalog"></a>Co je Azure Data Catalog?
 Azure Data Catalog je plně spravovaná cloudová služba, jejíž uživatelé mohou objevovat zdroje dat, které potřebují, a nalezené zdroje dat pochopit. Zároveň Data Catalog pomáhá organizacím vytěžit více z jejich stávajících investic. 

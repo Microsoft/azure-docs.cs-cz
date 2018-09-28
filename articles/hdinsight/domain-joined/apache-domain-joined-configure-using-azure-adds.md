@@ -8,12 +8,12 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 2e4aab68dba02eb5df16aa316f867697680b8977
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: eb24aa0471604696de99f4878baef764cfef0a8b
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181681"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408350"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurace clusteru HDInsight s balíčkem Enterprise Security Package pomocí Azure Active Directory Domain Services
 
@@ -27,6 +27,10 @@ V tomto článku se dozvíte, jak konfigurace clusteru HDInsight s ESP pomocí A
 ## <a name="enable-azure-ad-ds"></a>Povolení služby Azure AD DS
 
 Povolení služby Azure AD – DS je předpokladem předtím, než vytvoříte HDInsight cluster s ESP. Další informace najdete v tématu [povolit Azure Active Directory Domain Services pomocí webu Azure portal](../../active-directory-domain-services/active-directory-ds-getting-started.md). 
+
+Pokud Azure AD – DS je povolena, všichni uživatelé a objekty zahájením z Azure Active Directory (AAD) do Azure AD – DS ve výchozím nastavení. Operace synchronizace závisí na počtu objektů v adresáři AAD. Synchronizace může trvat několik dní pro stovky tisíc objektů. 
+
+Zákazníci si mohou vybrat synchronizaci pouze skupiny, které potřebují pracovat s clustery HDInsight. Tato možnost synchronizaci pouze určité skupiny se nazývá *obor synchronizace*. Zobrazit [konfigurace s rozsahem synchronizace ze služby Azure AD do spravované domény](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-scoped-synchronization) pokyny.
 
 > [!NOTE]
 > Pouze správci tenanta máte oprávnění k vytvoření instance služby Azure AD – DS. Ověřování službou Multi-Factor Authentication je potřeba zakázat pouze pro uživatele, kteří se přístup ke clusteru.

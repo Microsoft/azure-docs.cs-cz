@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: b8d5208992e8f12fae3c010748b2c494e0d50ee8
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: b6e6e8eeea7ee442ccdbb0524cafb2f51ff30268
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465653"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409605"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Migrace vaší databáze PostgreSQL pomocí výpisu a obnovení.
 Můžete použít [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) extrahovat databázi PostgreSQL do souboru s výpisem paměti a [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) obnovit ze souboru archivu vytvořené pg_dump databázi PostgreSQL.
@@ -36,9 +36,6 @@ Například, pokud máte místní server a databázi s názvem **testdb** v ní
 pg_dump -Fc -v --host=localhost --username=masterlogin --dbname=testdb > testdb.dump
 ```
 
-> [!IMPORTANT]
-> Zkopírujte záložní soubory do Azure blob a úložiště a provést obnovení z něj, které by měly být mnohem rychlejší než provádění obnovení na Internetu.
-> 
 
 ## <a name="restore-the-data-into-the-target-azure-database-for-postrgesql-using-pgrestore"></a>Obnovení dat do cílové databáze Azure pro použití pg_restore PostrgeSQL
 Po vytvoření cílové databázi, můžete použít příkaz pg_restore a -d, parametr--dbname k obnovení dat do cílové databáze ze souboru s výpisem paměti.
@@ -74,7 +71,7 @@ Jeden způsob, jak migrovat existující databázi PostgreSQL do služby Azure D
     ```
 
 ### <a name="for-the-restore"></a>Pro obnovení
-- Zkopírujte záložní soubory do Azure blob a úložiště a proveďte obnovení z něj. Měla by být rychlejší než provádění obnovení na Internetu. 
+- Doporučujeme přesunout záložní soubor do virtuálního počítače Azure ve stejné oblasti jako serveru Azure Database for PostgreSQL migrují na a proveďte pg_restore z tohoto virtuálního počítače chcete snížit latenci sítě. Doporučujeme také, že virtuální počítač se vytvoří s [akcelerovanými síťovými službami](..\virtual-network\create-vm-accelerated-networking-powershell.md) povolena.
 - By mělo být provedeno již ve výchozím nastavení, ale otevřete soubor s výpisem paměti a ověřte, že příkazy create index se po vložení dat. Pokud není tento případ, přesuňte po vložení dat příkazy create index.
 - Obnovit pomocí přepínače -Fc a -j *#* pro paralelní zpracování obnovení. *#* je počet jader na cílovém serveru. Můžete také zkusit s *#* nastavte zobrazení dopadů na dvojnásobný počet jader na cílový server. Příklad:
 

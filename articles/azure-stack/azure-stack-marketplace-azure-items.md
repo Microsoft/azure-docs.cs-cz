@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 09/27/2018
 ms.author: sethm
-ms.reviewer: jeffgo
-ms.openlocfilehash: bb4a34e7036c532ca1800c70347a4f2c55a33da2
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.reviewer: ''
+ms.openlocfilehash: 8e9d40451cd0d9c3a6505ee24ca02852d9d4c527
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221719"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423470"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Položky Azure Marketplace k dispozici pro službu Azure Stack
 
@@ -143,6 +143,7 @@ Microsoft Azure Stack podporuje následující virtuální počítače Azure Mar
 | ![Kafka](media/azure-stack-marketplace-azure-items/kafka.png) | [Kafka](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.kafka) | Efektivní distribuované publikování a odběru systému zasílání zpráv. | Bitnami |
 | ![Clusteru Kafka](media/azure-stack-marketplace-azure-items/kafka.png) | [Clusteru Kafka](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.kafka-cluster) | Apache Kafka je publikování a odběru rethought protokolu distribuovaného potvrzení pro zasílání zpráv. Toto řešení zvyšuje spolehlivost clusteru Kafka zřízením několika zprostředkovatelům systému Kafka a instance Zookeeper. **Tato šablona řešení také vyžaduje Debian 8 a vlastní skript pro Linuxové rozšíření 2.0.** | Bitnami |
 | ![Kaspersky](media/azure-stack-marketplace-azure-items/kaspersky.png) | [Zabezpečení v Kaspersky hybridním cloudu](https://azuremarketplace.microsoft.com/marketplace/apps/kaspersky_lab.kaspersky_hybrid_cloud_security?tab=Overview) | Kaspersky hybridní Cloud Security umožňuje bez problémů orchestrovaný a adaptivní příkazu o kyberbezpečnosti ekosystém. | Kaspersky testovacího prostředí |
+| ![Kubernetes](media/azure-stack-marketplace-azure-items/kubernetes.png) | [Kubernetes](azure-stack-solution-template-kubernetes-cluster-add.md) | Toto řešení nasadí cluster Kubernetes spuštěný jako samostatný cluster s šablonami vygenerované pomocí služby ACS-Engine.<br>**Tato šablona řešení také vyžaduje Ubuntu Server 16.04 LTS a vlastních skriptů pro Linux 2.0.**| Microsoft |
 | ![LAMP](media/azure-stack-marketplace-azure-items/lamp.png) | [LAMP](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.lampstack) | Plně integrované a připravené ke spuštění vývojového prostředí. | Bitnami |
 | ![LAPP](media/azure-stack-marketplace-azure-items/lapp.png) | [LAPP](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.lappstack) | Dokončení PHP, PostgreSQL a Apache vývojové prostředí. | Bitnami |
 | ![Pojďme si popovídat](media/azure-stack-marketplace-azure-items/letschat.png) | [Pojďme si popovídat](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.letschat) | Open source trvalé aplikace pro zasílání zpráv. | Bitnami |
@@ -207,6 +208,7 @@ Microsoft Azure Stack podporuje následující virtuální počítače Azure Mar
 | ![ResourceSpace](media/azure-stack-marketplace-azure-items/resourcespace.png) | [ResourceSpace](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.resourcespace) | Systém pro správu digitálních aktiv pro lepší spolupráci. | Bitnami |
 | ![Roundcube](media/azure-stack-marketplace-azure-items/roundcube.png) | [Roundcube](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.roundcube) | Založené na prohlížeči klienta IMAP s funkcemi, jako je například podpora MIME. | Bitnami |
 | ![Ruby](media/azure-stack-marketplace-azure-items/ruby.png) | [Ruby](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.rubystack) | Snadno použitelné vývojové prostředí pro aplikace Ruby on Rails. | Bitnami |
+| ![Cluster Service Fabric](media/azure-stack-marketplace-azure-items/servicefrabric.png) | [Service Fabric Cluster](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceFabricCluster?tab=Overview) | Toto řešení nasadí spuštěna jako samostatného clusteru ve Škálovací sadě virtuálních počítačů Service Fabric. <br>**Tato šablona řešení vyžaduje, abyste si také stáhnout Windows Server 2016 Datacenter**| Microsoft |
 | ![Panel Optimalizace pro vyhledávací weby](media/azure-stack-marketplace-azure-items/seopanel.png) | [Panel Optimalizace pro vyhledávací weby](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.seopanel) | Open source aplikace management SEO pro sledování více webů. | Bitnami |
 | ![Shopware](media/azure-stack-marketplace-azure-items/shopware.png) | [Shopware](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.shopware) | Elektronické obchodování Open source platforma. | Bitnami |
 | ![Fórum pro jednoduché počítače](media/azure-stack-marketplace-azure-items/simplemachinesforum.png) | [Fórum pro jednoduché počítače](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.simplemachinesforum) | Jednoduché fórum softwaru vytvářet vlastní online komunita. | Bitnami |
@@ -241,6 +243,7 @@ Microsoft Azure Stack podporuje následující virtuální počítače Azure Mar
 | ![KEMP LoadMaster zatížení vyrovnávání ADC obsah přepínače](media/azure-stack-marketplace-azure-items/kemp.png) | [KEMP LoadMaster zatížení vyrovnávání ADC obsah přepínače](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure) | Vrstvy 4 – 7 Application Delivery Controller (ADC) nástroj pro vyrovnávání zatížení, obsahu přepínače a Traffic Manageru. | KEMP Technologies Inc. |
 | ![Webu NRI mPLAT Suite - Multicloudové Conductor](media/azure-stack-marketplace-azure-items/nri.png) | [mPLAT Suite - Multicloudové Conductor](https://azuremarketplace.microsoft.com/marketplace/apps/nri.mplatmc2018-vm) | Jediné podokno skla chcete monitorovat, konfigurovat, zřízení, automatizovat a řídí jakékoli úlohy nebo cloudu. | WEBU NRI |
 | ![Kompatibilní NooBaa hybridní AWS S3 – Community Edition](media/azure-stack-marketplace-azure-items/noobaa.png) | [Compatibe NooBaa hybridní AWS S3 – Community Edition](https://azuremarketplace.microsoft.com/marketplace/apps/noobaa.noobaa-hybrid-s3-archive-05) | Služba úložiště kompatibilního se S3, která překlenuje veřejné a místní prostředky kapacity. | NooBaa |
+| ![NetFoundry Brána pro systém Multipoint, nula důvěřuje připojením Azure Stack](media/azure-stack-marketplace-azure-items/netfoundry.png) | [NetFoundry Brána pro systém Multipoint, nula důvěřuje připojením Azure Stack](https://azuremarketplace.microsoft.com/marketplace/apps/tata_communications.netfoundry_cloud_gateway) | Jen pro software, více bodu připojení mezi Azure Stack a kamkoli prostřednictvím jakéhokoli síťového připojení s odvětví úvodní nula důvěryhodné zabezpečení, 5 x propustnosti sítě VPN a neomezený počet souběžných uživatelů. | NetFoundry |
 | ![Palo Alto řadu virtuálních počítačů brány Firewall příští generace](media/azure-stack-marketplace-azure-items/paloalto.png) | [Palo Alto řadu virtuálních počítačů brány Firewall příští generace](https://azuremarketplace.microsoft.com/marketplace/apps/paloaltonetworks.vmseries-ngfw) | Brána firewall příští generace virtuálních počítačů řady umožňuje zákazníkům bezpečně migrovat svoje aplikace a data do služby Azure Stack je chrání před známými i neznámými hrozbami pomocí zásad ochrany před únikem informací hrozeb a přidávání na seznam povolených aplikací. **Tento obrázek vyžaduje šablonu nasazení; najdete v tomto [článku](https://www.paloaltonetworks.com/documentation/81/virtualization/virtualization/set-up-the-vm-series-firewall-on-azure/deploy-the-vm-series-firewalls-on-azure-stack) důležité informace.**| Palo Alto Networks, Inc. |
 | ![PT Application firewallu](media/azure-stack-marketplace-azure-items/pt.png) | [PT Application firewallu](https://azuremarketplace.microsoft.com/marketplace/apps/ptsecurity.ptaf) | PT Application firewallu detekuje známé & Neznámý ohrožení zabezpečení a zabraňuje útokům ve službě web apps. **Stažení položek z obou PT Marketplace.** | Pozitivní technologie |
 | ![Puppet Enterprise](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | Puppet Enterprise umožňuje automatizovat celý životní cyklus vaší infrastruktury Azure stacku. **Stažení položek z obou Puppet Marketplace.** | Puppet |

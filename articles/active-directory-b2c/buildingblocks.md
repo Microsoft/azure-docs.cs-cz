@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2582284f56da1dd1c49c4183ba07a4f60d4f6061
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 85fbbc4e489c7b48f7dc95de1738636b7383de16
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381138"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419402"
 ---
 # <a name="buildingblocks"></a>BuildingBlocks
 
@@ -37,15 +37,15 @@ ms.locfileid: "44381138"
     <ClaimsSchema>
       ...
     </ClaimsSchema>
-    <ClaimsTransformations>
-      ...
-    </ClaimsTransformations>
     <Predicates>
     ...
     </Predicates>
     <PredicateValidations>
     ...
     </PredicateValidations>
+    <ClaimsTransformations>
+      ...
+    </ClaimsTransformations>
     <ContentDefinitions>
       ...
     </ContentDefinitions>
@@ -55,9 +55,11 @@ ms.locfileid: "44381138"
  </BuildingBlocks>
 ```
 
-**BuildingBlocks** prvek obsahuje následující prvky:
+**BuildingBlocks** prvek obsahuje následující prvky, které musí být zadán v pořadí určeném:
 
 - [ClaimsSchema](claimsschema.md) – definuje typy deklarací identity, které může být odkazováno jako součást této zásady. Schéma deklarací identity je místo, kde deklarace typů deklarací identity. Typ deklarace identity se podobně jako na proměnnou v řadě jazyků prostřednictvím kódu programu. Můžete použít typ deklarace identity pro shromažďování dat od uživatele vaší aplikace, přijímat deklarace identity od zprostředkovatelů sociálních identit, odesílat a přijímat data z vlastního rozhraní API REST nebo ukládání interních datových používat vaše vlastní zásada vypadat. 
+
+- [Predikáty a PredicateValidationsInput](predicates.md) – umožňuje provádět ověření procesu k zajištění, že se zadá jenom správně vytvořená data do deklarace identity.
  
 - [ClaimsTransformations](claimstransformations.md) -obsahuje seznam transformace deklarací, které lze použít ve svojí zásadě.  Transformace deklarací identity převede jednu deklaraci identity do jiné. V transformaci deklarací identity jako například zadáte metodu transformace: 
     - Změna velikosti písmen deklarace řetězec k zadanému. Například změna řetězec z malých na velká písmena.
@@ -70,4 +72,4 @@ ms.locfileid: "44381138"
 
 - [Lokalizace](localization.md) – umožňuje zajistit podporu více jazyků. Podpora lokalizace v zásadách umožňuje nastavit seznam podporovaných jazyků v zásadách a vyberte výchozí jazyk. Jazykově specifické řetězce a kolekce jsou také podporovány.
 
-- [Predikáty a PredicateValidationsInput](predicates.md) – umožňuje provádět ověření procesu k zajištění, že se zadá jenom správně vytvořená data do deklarace identity.
+

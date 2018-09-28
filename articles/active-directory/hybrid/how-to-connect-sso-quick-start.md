@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 532a37c5de7b69c44f0f8502613ac534f57c8ef9
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: d7906323da8e9ee1571efe908084ae1433884e61
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312337"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405984"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory bezproblémové jednotné přihlašování: rychlý start
 
@@ -124,9 +124,9 @@ Existují dva způsoby, jak upravit nastavení zóny Intranet uživatele:
 
     Výsledek vypadá takto:
 
-    Hodnota: https://autologon.microsoftazuread-sso.com
+    Název hodnoty: https://autologon.microsoftazuread-sso.com
   
-    Data: 1
+    (Hodnota): 1
 
    >[!NOTE]
    > Pokud chcete zakázat některé uživatele pomocí bezproblémového jednotného přihlašování (například pokud tito uživatelé přihlásit na sdílené veřejné terminály), nastavte předchozí hodnoty na **4**. Tato akce přidá adresu URL služby Azure AD k zóně s omezeným přístupem a neustále se nezdaří bezproblémového jednotného přihlašování.

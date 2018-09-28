@@ -11,19 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/27/2018
 ms.author: jeffgilb
-ms.reviewer: jeffgo
-ms.openlocfilehash: c33d1fe1385619420215ec0f0fa3b0a2f90dddc0
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.reviewer: quying
+ms.openlocfilehash: 8fc24e58af51a249e3305dbe1496c499387be6b1
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299453"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407903"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Přidání hostitelské servery pro poskytovatele prostředků SQL
 
 Instance SQL na virtuálním počítači (VM), můžete hostovat v [Azure Stack](azure-stack-poc.md), nebo mimo prostředí Azure Stack, dokud poskytovatele prostředků SQL se může připojit k instanci virtuálního počítače.
+
+> [!NOTE]
+> SQL Database by měl být vytvořit na poskytovatele prostředků SQL serveru. Poskytovatele prostředků SQL musí být vytvořené v výchozí předplatné poskytovatele při hostitelské servery SQL by měl být vytvořen v fakturovatelná, předplatné uživatele. Server zprostředkovatele prostředků není vhodné používat pro hostování databází uživatelů.
 
 ## <a name="overview"></a>Přehled
 

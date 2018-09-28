@@ -2,18 +2,18 @@
 title: Jak nastavit obchodní Glosář řízená přidáváním značek ve službě Azure Data Catalog
 description: Článek zvýraznění obchodní Glosář ve službě Azure Data Catalog pro definování a použití společný obchodní slovník ke značce registrovaných datových prostředků.
 services: data-catalog
-author: steelanddata
-ms.author: maroche
+author: markingmyname
+ms.author: maghan
 ms.assetid: b3d63dbe-1ae7-499f-bc46-42124e950cd6
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: b4586133a6d3b7514d6b47e2e0c93b0e79988f09
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 9c5d7ac792f2a68d6187c7c2831b1e7404f41f30
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43053565"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409418"
 ---
 # <a name="set-up-the-business-glossary-for-governed-tagging"></a>Nastavit obchodní Glosář pro řídí označování
 ## <a name="introduction"></a>Úvod

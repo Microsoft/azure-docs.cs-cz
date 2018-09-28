@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: mjbrown
-ms.openlocfilehash: fef4d14e6f5a9dcba1f7e111f9a54c3e1a9fbfa9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 227c243d82665dc533e3bfa6a1fe3e9bb775a262
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959848"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408891"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db"></a>Distribuce globálních dat pomocí služby Azure Cosmos DB
 
@@ -24,7 +24,7 @@ Azure je všudypřítomná – to globální stopu napříč více než 50 geogr
 
 ## <a name="global-distribution-with-multi-master"></a>Globální distribuce s několika hlavními uzly
 
-Jako nativně narození v cloudové službě službu Azure Cosmos DB je pečlivě navržena od základů až s využitím více tenantů, globální distribuci a více hlavních databází pro dokument, klíč hodnota, graf a sloupcových dat. modely.
+Jako cloudová služba Azure Cosmos DB pečlivě navržené pro podporu více tenantů, globální distribuci a více hlavních databází pro dokument, klíč hodnota, graf a sloupcových dat. modely.
 
 ![Kontejner Azure Cosmos DB rozdělit na oddíly a distribuovat ve třech oblastech](./media/distribute-data-globally/global-apps.png)
 

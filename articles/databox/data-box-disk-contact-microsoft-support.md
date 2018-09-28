@@ -5,19 +5,19 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.topic: article
-ms.date: 08/28/2018
+ms.date: 09/27/2018
 ms.author: alkohli;
 ms.component: ''
-ms.openlocfilehash: afb7de78a30367b0cc12e621019f1e8be975e63f
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 9bab8a55301a5eb40b38bec984205fff2a52559e
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43191642"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422809"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Vytvořit lístek podpory Azure Data Box 
 
-Pokud narazíte na případné problémy s vaší službou Azure Data Box, můžete vytvořit žádost o službu pro technickou podporu. Tento článek vás provede:
+Tento článek se týká k Azure Data Box a disku Azure Data Box, které jsou spravované službou Azure Data Box. Pokud narazíte na případné problémy s vaší službou Azure Data Box, můžete vytvořit žádost o službu pro technickou podporu. Tento článek vás provede:
 
 * Jak vytvořit žádost o podporu.
 * Jak spravovat životní cyklus žádost o podporu z v rámci portálu.

@@ -7,20 +7,20 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 479fd902ef68bf24306bcd699da0be08415592a0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6ac31818a68aa2b4624410b423b7559b84275777
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956985"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409367"
 ---
-# <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Vytvořit, zobrazit a spravovat pomocí Azure monitoru upozornění metriky
+# <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Vytvořit, zobrazit a spravovat upozornění na metriku pomocí Azure monitoru
 
 Upozornění metrik ve službě Azure Monitor poskytují způsob, jak chcete dostávat oznámení, když jeden metriky překročí prahovou hodnotu. Upozornění na metriku pracovat na celou řadu multidimenzionální platformy metriky, vlastní metriky, Application Insights standardní a vlastní metriky. V tomto článku jsme popisuje, jak vytvořit, zobrazit a spravovat pravidla upozornění na metriky prostřednictvím webu Azure portal a rozhraní příkazového řádku Azure. Můžete také vytvořit pravidla upozornění na metriky pomocí šablon Azure Resource Manageru, která je popsána v [věnovaný samostatný článek](monitoring-enable-alerts-using-template.md).
 
 Přečtěte si víc o tom, jak metriky upozornění fungují z [přehled výstrah metrika](alert-metric-overview.md).
 
-## <a name="create-a-metric-alert-rule-using-azure-portal"></a>Vytvořit metriku pravidlo výstrah pomocí webu Azure portal
+## <a name="create-with-azure-portal"></a>Vytvořit pomocí webu Azure portal
 
 Následující postup popisuje, jak vytvořit pravidlo upozornění metriky na webu Azure portal:
 
@@ -58,7 +58,7 @@ Následující postup popisuje, jak vytvořit pravidlo upozornění metriky na w
 > [!NOTE]
 > Upozornění na metriku pravidel vytvořených prostřednictvím portálu se vytvoří ve stejné skupině prostředků jako cílový prostředek.
 
-## <a name="view-and-manage-metric-alert-rules-using-azure-portal"></a>Umožňuje zobrazit a spravovat pravidla upozornění na metriky pomocí webu Azure portal
+## <a name="view-and-manage-with-azure-portal"></a>Umožňuje zobrazit a spravovat pomocí webu Azure portal
 
 Můžete zobrazit a spravovat pravidla upozornění na metriky pomocí okna Spravovat pravidla v upozornění. Následující postup ukazuje, jak zobrazit pravidla upozornění metrik a upravit jeden z nich.
 
@@ -80,7 +80,7 @@ Můžete zobrazit a spravovat pravidla upozornění na metriky pomocí okna Spra
 
 6. Klikněte na tlačítko **provádí** uložit provedené úpravy.
 
-## <a name="create-view-and-manage-metric-alert-rules-using-azure-cli"></a>Vytvořit, zobrazit a spravovat pravidla upozornění na metriky pomocí Azure CLI
+## <a name="with-azure-cli"></a>S využitím rozhraní příkazového řádku Azure
 
 V předchozích částech popsané, jak vytvořit, zobrazit a spravovat pravidla upozornění na metriky pomocí webu Azure portal. Tato část popisuje, jak provádět to stejné napříč platformami pomocí [rozhraní příkazového řádku Azure](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest). Nejrychlejší způsob, abyste mohli začít používat Azure CLI je prostřednictvím [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview?view=azure-cli-latest). Pro účely tohoto článku budeme používat Cloud shell.
 

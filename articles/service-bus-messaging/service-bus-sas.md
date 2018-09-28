@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/14/2018
+ms.date: 09/14/2018
 ms.author: spelluru
-ms.openlocfilehash: 2905bff56c5ab49c91f85e0816b84018b27bbb57
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: d75f8654a33d670f107508b9e91661b1a7719755
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700235"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408545"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Řízení přístupu služby Service Bus se sdílenými přístupovými podpisy
 
@@ -294,7 +294,7 @@ V následující tabulce jsou uvedeny přístupová práva potřebná pro různ�
 | Nastavit stav přidružený k tématu relace |Naslouchat |.. /myTopic/Subscriptions/mySubscription |
 | **pravidla** | | |
 | Vytvoření pravidla |Spravovat |.. /myTopic/Subscriptions/mySubscription |
-| Odstranit pravidlo |Spravovat |.. /myTopic/Subscriptions/mySubscription |
+| Odstranění pravidla |Spravovat |.. /myTopic/Subscriptions/mySubscription |
 | Zobrazení výčtu pravidel |Spravovat nebo naslouchání |.. /myTopic/Subscriptions/mySubscription/Rules 
 
 ## <a name="next-steps"></a>Další postup

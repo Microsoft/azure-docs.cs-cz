@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/14/2017
 ms.author: echuvyrov
-ms.openlocfilehash: 28d0d333266cc74890c5d27888bf74f6dc89ddcf
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: cf0fad78613d063a0f1270597cf67eadd996124a
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392750"
+ms.locfileid: "47406903"
 ---
 # <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Vytvoření kompletní infrastrukturu virtuálních počítačů Linux v Azure s využitím Terraformu
 
@@ -245,10 +245,6 @@ resource "azurerm_virtual_machine" "myterraformvm" {
 Všechny tyto části pohromadě a prohlédněte si Terraformu v akci, vytvořte soubor s názvem *terraform_azure.tf* a vložte následující obsah:
 
 ```tf
-variable "resourcename" {
-  default = "myResourceGroup"
-}
-
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
     subscription_id = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 9/10/2018
 ms.author: markgal
-ms.openlocfilehash: 80987408e65785afba1df2d2f6b6fc9981fd2dbf
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 00432e1b5a181c57e4901b684d0a86c1cc843037
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542816"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408976"
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Příprava prostředí pro zálohování virtuálních počítačů s nasazením Resource Manageru
 
@@ -47,7 +47,7 @@ Pokud tyto podmínky se již existují ve vašem prostředí, pokračujte [zálo
 Předtím, než je připravit vaše prostředí, nezapomeňte seznámit s těmito omezeními:
 
 * Zálohování virtuálních počítačů s SSD na úrovni Standard se momentálně nepodporuje.
-* Zálohování virtuálních počítačů s více než 16 datových disků se nepodporuje.
+* Zálohování virtuálních počítačů s více než 32 datových disků se nepodporuje.
 * Zálohování virtuálních počítačů s vyhrazenou IP adresu a není definovaný koncový bod se nepodporuje.
 * Zálohování virtuálních počítačů s Linuxem zašifrovaná pomocí šifrování na Linuxu Unified klíč instalační program (LUKS) se nepodporuje.
 * Nedoporučujeme zálohování virtuálních počítačů, které obsahují konfiguraci sdílené svazky clusteru (CSV) nebo souborového serveru se Škálováním. Pokud budete hotovi, očekává se selhání zapisovačů sdíleného svazku clusteru. Vyžadují zahrnující všechny virtuální počítače, které jsou součástí konfigurace clusteru během úlohu snímku. Azure Backup nepodporuje konzistence více virtuálních počítačů. 

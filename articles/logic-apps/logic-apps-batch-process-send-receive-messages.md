@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: estfan, jonfan, LADocs
 ms.topic: article
 ms.date: 08/19/2018
-ms.openlocfilehash: ee1df77dc18350a64082cb62c297a53700cad223
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: bd31de8f60fff5630141f708714083fe76220d11
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128741"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47410149"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Odesílání, příjem a dávkové zpracování zpráv v Azure Logic Apps
 
@@ -60,7 +60,7 @@ Před odesláním zprávy do dávky této služby batch musí nejprve existovat 
    |----------|-------------|
    | **Režim dávky** | - **Vložené**: pro definování kritéria uvolnění uvnitř triggeru batch <br>- **Účet pro integraci**: pro definování více konfigurací kritéria uvolnění prostřednictvím [účtu pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md). Pomocí účtu pro integraci díky čemuž můžete udržovat tyto konfigurace vše na jednom místě, nikoli v samostatných logic apps. | 
    | **Název dávky** | Název služby batch, je "TestBatch" v tomto příkladu, který se týká pouze **vložené** režimu služby batch |  
-   | **Kritéria uvolnění** | Platí jenom pro **vložené** režimu služby batch a určuje kritéria pro splnění před zpracováním jednotlivých dávek: <p>- **Zprávy podle počtu**: počet zpráv ve službě batch, například shromažďování 10 zpráv <br>- **Velikost na základě**: maximální velikost dávky v bajtech, například 100 MB <br>- **Podle plánu**: interval a frekvenci mezi batch vyjde nová verze, například 10 minut. Můžete také zadat počáteční datum a čas. <br>- **Vybrat vše**: použít všechna zadaná kritéria. | 
+   | **Kritéria uvolnění** | Platí jenom pro **vložené** dávkové režimu a vybere kritéria pro splnění před zpracováním jednotlivých dávek: <p>- **Zprávy podle počtu**: počet zpráv ve službě batch, například shromažďování 10 zpráv <br>- **Velikost na základě**: maximální velikost dávky v bajtech, například 100 MB <br>- **Podle plánu**: interval a frekvenci mezi batch vyjde nová verze, například 10 minut. Minimální opakování je 60 sekund nebo 1 minuta. Desetinné hodnoty minut se efektivně zaokrouhluje nahoru na 1 minutu. Chcete-li zadat počáteční datum a čas, zvolte **zobrazit pokročilé možnosti**. <br>- **Vybrat vše**: použít všechna zadaná kritéria. | 
    ||| 
    
    Tento příklad vybere všechna kritéria:
@@ -107,9 +107,7 @@ Před odesláním zprávy do dávky této služby batch musí nejprve existovat 
 
    * V **tělo** pole, když se zobrazí v seznamu dynamického obsahu, vyberte **Id zprávy** pole. 
 
-     Návrhář pro Logic Apps automaticky přidá smyčku "For each" kolem akce Odeslat e-mail, protože tato akce přijímá pole jako vstup. 
-     Tato smyčka odešle e-mailu pro každou zprávu v dávce. 
-     Takže pokud triggeru batch nastaven na 10 zpráv, získáte čas 10 e-maily se trigger aktivuje.
+     Návrhář pro Logic Apps automaticky přidá smyčku "For each" kolem akce Odeslat e-mail, protože tato akce zpracovává výstup z předchozí akce jako kolekci, nikoli dávky. 
 
      !["Text" Vyberte "Id zprávy"](./media/logic-apps-batch-process-send-receive-messages/send-email-action-details-for-each.png)
 
@@ -216,6 +214,7 @@ Svou aplikaci logiky odesílatele batch spustí každou minutu, generuje náhodn
 
 ## <a name="next-steps"></a>Další postup
 
+* [Dávky a odesílání zpráv EDI](../logic-apps/logic-apps-scenario-edi-send-batch-messages.md)
 * [Vytváření definic aplikací logiky s použitím souboru JSON](../logic-apps/logic-apps-author-definitions.md)
 * [Sestavení aplikace bez serveru v sadě Visual Studio s Azure Logic Apps a Functions](../logic-apps/logic-apps-serverless-get-started-vs.md)
 * [Zpracování výjimek a protokolování chyb pro logic apps](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)

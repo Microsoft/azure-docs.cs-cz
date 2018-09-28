@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 28eeae8906480a5a160bfe11386da96b646f7427
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: c10e071100410f6d5d995d88657bdd85c08a9715
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296852"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423489"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Začínáme pro operátory Azure IT
 
@@ -228,10 +228,6 @@ Další informace najdete v tématu [získání přehledů o spotřebě prostře
 ### <a name="forecast-cost-with-the-pricing-calculator"></a>Prognózy náklady pomocí cenové kalkulačky
 
 Ceny pro každou službu v Azure se liší. Mnoho služeb Azure nabízí úrovní Basic, Standard a Premium. Každá úroveň má obvykle několik úrovní cenou a výkonem. S použitím [online cenová Kalkulačka](http://azure.microsoft.com/pricing/calculator), odhady cen je možné vytvořit. Kalkulačce zahrnuje flexibilitu pro odhad nákladů na jeden prostředek nebo skupinu prostředků.
-
-### <a name="set-up-billing-alerts"></a>Nastavení upozornění fakturace
-
-Po nasazení aplikace nebo řešení v Azure můžete vytvořit výstrahy, které odesílání že e-mailu při přístupu limitech útraty stanovenými výstrahu. Další informace najdete v tématu [nastavení upozornění pro předplatná Microsoft Azure fakturace](../../billing/billing-set-up-alerts.md).
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 

@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 04/11/2018
+ms.date: 09/11/2018
 ms.author: spelluru
-ms.openlocfilehash: dd0ef94c7efb27641d5f0bf50d87bf852bcd1e9a
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 7774d67d02b2b0f0080cbff2ffc3606b99450f26
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696332"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47404957"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>Vytvoření oboru názvů služby Service Bus s tématem, předplatné a pravidla pomocí šablony Azure Resource Manageru
 
@@ -43,7 +43,7 @@ Další informace o postupy a vzory na zásady vytváření názvů prostředků
 > 
 > 
 
-## <a name="what-will-you-deploy"></a>Co budete nasazovat?
+## <a name="what-do-you-deploy"></a>Co nasadit?
 
 Pomocí této šablony nasadíte obor názvů Service Bus s tématem, předplatné a pravidlo (filtr).
 
@@ -51,7 +51,7 @@ Pomocí této šablony nasadíte obor názvů Service Bus s tématem, předplatn
 
 ## <a name="what-are-rules-filters"></a>Co jsou pravidla (filtry)?
 
-V mnoha případech je nutné zpracovat zprávy, které mají určité charakteristiky různými způsoby. Pokud chcete povolit vlastní zpracování, můžete nakonfigurovat odběry najít zprávy, které mají specifické vlastnosti a pak proveďte změny k těmto vlastnostem. I když se předplatné služby Service Bus zobrazit všechny zprávy odeslané do tématu, kopírovat můžete pouze podmnožinu těchto zpráv do fronty virtuální odběru. Využívá se při něm filtry předplatných. Další informace o pravidlech (filtry) najdete v tématu [pravidla a akce](service-bus-queues-topics-subscriptions.md#rules-and-actions).
+V mnoha případech je nutné zpracovat zprávy, které mají určité charakteristiky různými způsoby. Pokud chcete povolit vlastní zpracování, můžete nakonfigurovat odběry najít zprávy, které mají specifické vlastnosti a pak proveďte změny k těmto vlastnostem. I když se předplatné služby Service Bus zobrazit všechny zprávy odeslané do tématu, kopírovat můžete pouze podmnožinu těchto zpráv do fronty virtuální odběru. To se provádí pomocí filtry předplatných. Další informace o pravidlech (filtry) najdete v tématu [pravidla a akce](service-bus-queues-topics-subscriptions.md#rules-and-actions).
 
 Pokud chcete nasazení spustit automaticky, klikněte na následující tlačítko:
 
@@ -59,7 +59,7 @@ Pokud chcete nasazení spustit automaticky, klikněte na následující tlačít
 
 ## <a name="parameters"></a>Parametry
 
-S Azure Resource Manageru byste měli definovat parametry pro hodnoty, které chcete zadat při nasazení šablony. Šablona obsahuje část `Parameters`, která obsahuje všechny hodnoty parametrů. Parametr byste měli definovat pro hodnoty, které se mění v závislosti na nasazovaném projektu nebo prostředí, do kterého nasazujete. Nedefinujte parametry pro hodnoty, které jsou vždy stejné. Každá hodnota parametru se v šabloně použije k definování nasazovaných prostředků.
+S Azure Resource Manageru, definujte parametry pro hodnoty, které chcete zadat při nasazení šablony. Šablona obsahuje část `Parameters`, která obsahuje všechny hodnoty parametrů. Definování parametru pro tyto hodnoty, které se liší podle projektu, které nasazujete nebo podle prostředí, které nasazujete. Nedefinujte parametry pro hodnoty, které jsou vždy stejné. Každá hodnota parametru se v šabloně použije k definování nasazovaných prostředků.
 
 Šablona definuje následující parametry:
 
@@ -180,7 +180,7 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 Teď, když jste vytvořili a nasadili prostředky pomocí Azure Resource Manageru, zjistěte, jak tyto zdroje spravovat pomocí těchto článků:
 
 * [Správa služby Azure Service Bus](service-bus-management-libraries.md)
-* [Správa služby Service Bus pomocí Powershellu](service-bus-manage-with-ps.md)
+* [Správa služby Service Bus pomocí PowerShellu](service-bus-manage-with-ps.md)
 * [Správa prostředků Service Bus pomocí Průzkumníka Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md

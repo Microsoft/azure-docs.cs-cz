@@ -5,15 +5,15 @@ services: container-registry
 author: mmacy
 manager: jeconnoc
 ms.service: container-registry
-ms.topic: quickstart
-ms.date: 04/10/2018
+ms.topic: article
+ms.date: 09/27/2018
 ms.author: marsma
-ms.openlocfilehash: a3932ff621782b8ab97f27ef052aeee8e1d2a3ac
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: HT
+ms.openlocfilehash: 9bb1f7682338f1d9e591ed1350e1940d85462bd1
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423500"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409333"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Osvědčené postupy pro službu Azure Container Registry
 
@@ -66,33 +66,27 @@ Podrobné informace o ověřování ve službě Azure Container Registry najdete
 
 Omezení úložiště pro jednotlivé [skladové položky registru kontejneru][container-registry-skus] by měla odpovídat obvyklému scénáři: **Basic** pro začátek, **Standard** pro většinu produkčních aplikací a **Premium** pro zajištění vysoce škálovatelného výkonu a [geografické replikace][container-registry-geo-replication]. Po celou dobu životnosti vašeho registru byste měli spravovat jeho velikost pravidelným odstraňováním nevyužívaného obsahu.
 
-Aktuální využití registru najdete na stránce **Přehled** daného registru kontejnerů na webu Azure Portal:
+Pomocí příkazu Azure CLI [az acr show-usage] [ az-acr-show-usage] zobrazíte aktuální velikost svého registru:
+
+```console
+$ az acr show-usage --resource-group myResourceGroup --name myregistry --output table
+NAME      LIMIT         CURRENT VALUE    UNIT
+--------  ------------  ---------------  ------
+Size      536870912000  185444288        Bytes
+Webhooks  100                            Count
+```
+
+Můžete také vyhledat aktuální úložiště využívané ve **přehled** vašeho registru na webu Azure Portal:
 
 ![Informace o využití registru na webu Azure Portal][registry-overview-quotas]
 
-Velikost svého registru můžete spravovat pomocí [Azure CLI][azure-cli][ nebo webu Azure Portal][azure-portal]. Odstraňování úložišť a imagí podporují pouze spravované skladové položky (Basic, Standard, Premium) – v registru úrovně Classic nemůžete odstraňovat úložiště, image ani značky.
+### <a name="delete-image-data"></a>Odstranit data bitové kopie
 
-### <a name="delete-in-azure-cli"></a>Odstranění v Azure CLI
+Služba Azure Container Registry podporuje několik metod pro odstranění dat image z registru kontejneru. Odstranit Image podle klíčových slov nebo manifest hodnotou hash nebo odstranit celého úložiště.
 
-Pomocí příkazu [az acr repository delete][az-acr-repository-delete] můžete odstranit úložiště nebo obsah v úložišti.
+Podrobnosti o odstranění dat image z registru, včetně bez příznaku (označovaného také jako "nepropojená" nebo "osamocené") Image, najdete v článku [odstranit Image kontejnerů ve službě Azure Container Registry](container-registry-delete.md).
 
-Pokud chcete odstranit úložiště, včetně všech značek a dat na úrovni image v rámci tohoto úložiště, při spouštění příkazu [az acr repository delete][az-acr-repository-delete] zadejte pouze název úložiště. V následujícím příkladu odstraníme úložiště *myapplication* i všechny značky a data na úrovni image v rámci tohoto úložiště:
-
-```azurecli
-az acr repository delete --name myregistry --repository myapplication
-```
-
-Data imagí můžete z úložiště odstranit také pomocí argumentů `--tag` a `--manifest`. Podrobnosti o těchto argumentech najdete v [referenčních informacích k příkazu az acr repository delete][az-acr-repository-delete].
-
-### <a name="delete-in-azure-portal"></a>Odstranění na webu Azure Portal
-
-Pokud chcete z registru odstranit úložiště na webu Azure Portal, nejprve přejděte do vašeho registru kontejneru. Pak v části **SLUŽBY** vyberte **Úložiště** a klikněte pravým tlačítkem na úložiště, které chcete odstranit. Vyberte **Odstranit** a odstraňte úložiště i image Dockeru, které obsahuje.
-
-![Odstranění úložiště na webu Azure Portal][delete-repository-portal]
-
-Podobným způsobem můžete z úložiště odstranit také značky. Přejděte do úložiště, v části **ZNAČKY** klikněte pravým tlačítkem na značku, kterou chcete odstranit, a vyberte **Odstranit**.
-
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Služba Azure Container Registry je dostupná v několika úrovních, označovaných jako skladové položky, každá z nichž poskytuje různé možnosti. Podrobnosti o dostupných skladových položkách najdete v tématu [Skladové položky služby Azure Container Registry](container-registry-skus.md).
 
@@ -102,6 +96,7 @@ Služba Azure Container Registry je dostupná v několika úrovních, označovan
 
 <!-- LINKS - Internal -->
 [az-acr-repository-delete]: /cli/azure/acr/repository#az-acr-repository-delete
+[az-acr-show-usage]: /cli/azure/acr#az-acr-show-usage
 [azure-cli]: /cli/azure
 [azure-portal]: https://portal.azure.com
 [container-registry-geo-replication]: container-registry-geo-replication.md

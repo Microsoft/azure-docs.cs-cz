@@ -12,60 +12,64 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/14/2017
+ms.date: 9/26/2018
 ms.author: sethm
-ms.reviewer: jeffgo
-ms.openlocfilehash: 0ade78dd992e8d1d2eda2cf27d44e52c4030563f
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.reviewer: ''
+ms.openlocfilehash: 518384776f777c3ea7cbd636dd2a48d919952f28
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630917"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409112"
 ---
 #  <a name="add-marketplace-items-using-publishing-tool"></a>Přidat pomocí nástroje pro publikování položky marketplace
-Přidání obsahu [Azure Stack Marketplace](azure-stack-marketplace.md) zpřístupní řešení pro vás a vašich klientů pro nasazení.  Sada nástrojů Marketplace vytvoří soubory balíčků Azure Marketplace (.azpkg) na základě šablony správce prostředků Azure IaaS nebo rozšíření virtuálních počítačů.  Marketplace Toolkit můžete také použít k publikování .azpkg soubory vytvořené pomocí nástroje nebo pomocí [ruční](azure-stack-create-and-publish-marketplace-item.md) kroky.  Toto téma vás provede stažením nástroj, vytvoření položky marketplace na základě šablony virtuálního počítače a pak tuto aplikaci publikovat tuto položku na Azure Marketplace zásobníku.     
 
+Přidání obsahu [Azure Stack Marketplace](azure-stack-marketplace.md) zpřístupní řešení pro vás a vašich klientů pro nasazení. Sada nástrojů Marketplace vytvoří soubory balíčku (.azpkg) Azure Marketplace na základě šablony správce prostředků Azure IaaS nebo rozšíření virtuálních počítačů. Marketplace toolkit můžete také použít k publikování .azpkg soubory vytvořené pomocí nástroje nebo pomocí [ruční](azure-stack-create-and-publish-marketplace-item.md) kroky. Toto téma popisuje stažení nástroje, vytvoření položky marketplace na základě šablony virtuálního počítače a pak tuto aplikaci publikovat tuto položku na Azure Marketplace zásobníku.     
 
 ## <a name="prerequisites"></a>Požadavky
- - Musíte spustit sadu nástrojů na hostiteli služby Azure Stack nebo mít [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) připojení z počítače, ve kterém jste spustili nástroj.
+
+ - Musíte spustit sadu nástrojů na hostiteli služby Azure Stack nebo mít [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) připojení z počítače, na kterém jste nástroj spustili.
 
  - Stáhněte si [šabloně QuickStart pro Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates/archive/master.zip) a extrahovat.
 
  - Stáhněte si [nástroje balení Galerie Azure](http://aka.ms/azurestackmarketplaceitem) (AzureGalleryPackage.exe). 
 
- - Publikování na webu Marketplace vyžaduje ikony a souboru s miniaturami.  Můžete použít vlastní nebo Uložit [ukázka](azure-stack-marketplace-publisher.md#support-files) soubory místně pro účely tohoto příkladu.
+ - Publikování na webu Marketplace vyžaduje ikony a souboru s miniaturami. Můžete použít vlastní nebo Uložit [ukázka](azure-stack-marketplace-publisher.md#support-files) soubory místně pro účely tohoto příkladu.
 
 ## <a name="download-the-tool"></a>Stáhněte si nástroj
-Může být Marketplace Toolkit [stáhnout z úložiště Azure Stack nástroje](azure-stack-powershell-download.md).
 
+Sada nástrojů Marketplace si můžete stáhnout [z úložiště Azure Stack nástroje](azure-stack-powershell-download.md).
 
 ##  <a name="create-marketplace-items"></a>Vytvoření položky marketplace
-V této části použijete k vytvoření balíčku pro položku marketplace ve formátu .azpkg Marketplace Toolkit.  
+
+V této části použijete k vytvoření balíčku pro položku marketplace ve formátu .azpkg Marketplace toolkit.  
 
 ### <a name="provide-marketplace-information-with-wizard"></a>Zadejte informace z marketplace pomocí Průvodce
-1. Spuštění nástrojů Marketplace z relace prostředí PowerShell:
-```PowerShell
-    .\MarketplaceToolkit.ps1
-```
 
-2. Klikněte na tlačítko **řešení** kartu.  Tato obrazovka přijímá informace o vaší položce marketplace. Zadejte informace o vaší položce, jak chcete, aby se zobrazí na webu Marketplace.  Můžete také určit [soubor parametrů](azure-stack-marketplace-publisher.md#use-a-parameters-file) předem formuláře.  
+1. Spuštění nástrojů Marketplace z relace prostředí PowerShell:
+   ```PowerShell
+   .\MarketplaceToolkit.ps1
+   ```
+
+2. Klikněte na tlačítko **řešení** kartu. Tato obrazovka přijímá informace o vaší položce marketplace. Zadejte informace o vaší položce, jak chcete, aby se zobrazí na webu Marketplace. Můžete také určit [soubor parametrů](azure-stack-marketplace-publisher.md#use-a-parameters-file) předem formuláře.  
     
     ![snímek obrazovky s první obrazovka Marketplace Toolkit](./media/azure-stack-marketplace-publisher/image7.png)
-3. Klikněte na tlačítko **Procházet** a vyberte soubor obrázku pro každé pole, ikona a snímku obrazovky.  Můžete použít vlastní ikony nebo ikony ukázka v [podpůrných souborů](azure-stack-marketplace-publisher.md#support-files) oddílu.
-4. Po zaplnění všech polí, vyberte "Ve verzi Preview řešení" pro verzi preview řešení na webu Marketplace.  Můžete zkontrolovat a upravit text, obrázky a snímku obrazovky před kliknutím na tlačítko **Další**.  
+3. Klikněte na tlačítko **Procházet** a vyberte soubor obrázku pro každé pole, ikona a snímku obrazovky. Můžete použít vlastní ikony nebo ikony ukázka v [podpůrných souborů](azure-stack-marketplace-publisher.md#support-files) oddílu.
+4. Po zaplnění všech polí, vyberte "Ve verzi Preview řešení" pro verzi preview řešení na webu Marketplace. Můžete zkontrolovat a upravit text, obrázky a snímku obrazovky před kliknutím na tlačítko **Další**.  
 
 ### <a name="import-template-and-create-package"></a>Import šablony a vytvoření balíčku
+
 V této části importovat šablonu a pracovat se vstupem pro vaše řešení.
 
 1.  Klikněte na tlačítko **Procházet** a vyberte *azuredeploy.json* ze složky 101-Simple-Windows-VM v stažené šablony.
 
     ![snímek obrazovky s druhou obrazovku Marketplace Toolkit](./media/azure-stack-marketplace-publisher/image8.png)
-2.  Průvodce nasazením se vyplní *základní* krok a vstupní položky pro každý parametr v šabloně zadané.  Můžete přidat další kroky a přesuňte vstupy mezi kroky.  Například můžete chtít "Konfigurace front-endový" a "Konfigurace Back-End" kroky pro vaše řešení.
+2.  Průvodce nasazením se vyplní *základní* krok a vstupní položky pro každý parametr v šabloně zadané. Můžete přidat další kroky a přesuňte vstupy mezi kroky. Například můžete chtít "Konfigurace front-endový" a "Konfigurace Back-End" kroky pro vaše řešení.
 3.  Zadejte cestu k AzureGalleryPackager.exe.  
-4.  Klikněte na tlačítko **vytvořit** a Marketplace Toolkit balíčky do souboru .azpkg vašeho řešení.  Po dokončení Průvodce zobrazí cestu k souboru řešení a poskytnout možnost pokračovat v publikování balíčku do služby Azure Stack.
-
+4.  Klikněte na možnost **Vytvořit**. Marketplace toolkit balíčky do souboru .azpkg vašeho řešení. Po dokončení Průvodce zobrazí cestu k souboru řešení a poskytnout možnost pokračovat v publikování balíčku do služby Azure Stack.
 
 ## <a name="publish-marketplace-items"></a>Publikování položky marketplace
+
 V této části publikování položky marketplace na Azure Marketplace zásobníku.
 
 ![snímek obrazovky s první obrazovka Marketplace Toolkit](./media/azure-stack-marketplace-publisher/image9.png)
@@ -74,20 +78,20 @@ V této části publikování položky marketplace na Azure Marketplace zásobn�
     
     |Pole|Popis|
     |-----|-----|
-    | Jméno správce služby | Účet správce služeb.  Příklad:  ServiceAdmin@mydomain.onmicrosoft.com |
+    | Jméno správce služby | Účet správce služeb.  Příklad: ServiceAdmin@mydomain.onmicrosoft.com |
     | Heslo | Heslo pro účet správce služeb. |
-    | Koncový bod rozhraní API | Koncový bod Azure stacku Azure Resource Manageru.  Příklad: management.local.azurestack.external |
+    | Koncový bod rozhraní API | Koncový bod Azure stacku Azure Resource Manageru. Příklad: management.local.azurestack.external |
 2.  Klikněte na tlačítko **publikovat** a protokolu publikování se zobrazí.
 3.  Teď mají možnost nasadit položky publikované prostřednictvím portálu Azure Stack.
 
-
 ## <a name="use-a-parameters-file"></a>Použít soubor parametrů
+
 K dokončení informací položky marketplace můžete také použít soubor parametrů.  
 
 Zahrnuje sadu nástrojů Marketplace *solution.parameters.ps1* můžete použít k vytvoření souboru parametrů.
 
-
 ## <a name="support-files"></a>Soubory podpory
+
 | Popis | Ukázka |
 | ----- | ----- |
 | Ikona ve formátu PNG 40 x 40 | ![](./media/azure-stack-marketplace-publisher/image1.png) |
@@ -96,4 +100,7 @@ Zahrnuje sadu nástrojů Marketplace *solution.parameters.ps1* můžete použít
 | Ikona 255 x 115 PNG | ![](./media/azure-stack-marketplace-publisher/image4.png) |
 | Miniatura 533 x 324 PNG | ![](./media/azure-stack-marketplace-publisher/image5.png) |
 
+## <a name="next-steps"></a>Další postup
 
+[Stažení položek z Marketplace](azure-stack-download-azure-marketplace-item.md)  
+[Vytvoření a publikování položky Marketplace](azure-stack-create-and-publish-marketplace-item.md)

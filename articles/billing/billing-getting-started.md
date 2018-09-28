@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: cwatson
-ms.openlocfilehash: d17215fe05a4795bd539759d98695ec2f6b0df3d
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 6b497fd9f4280c36adcbeb4d94e469525c9dad6e
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393487"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422996"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Vám nenaúčtovaly neočekávané poplatky se správou nákladů a fakturací Azure
 
@@ -54,17 +54,6 @@ Další informace o cenách najdete v tomto [nejčastější dotazy k](https://a
 Obvykle po přidání služby na webu Azure Portal je zobrazení, které obsahuje podobné odhadované náklady za měsíc. Například při výběru velikosti virtuálního počítače Windows se zobrazí odhadované měsíční náklady pro výpočetní hodiny:
 
 ![Příklad: Virtuálním počítači Windows A1 odhadem nákladů 66.96 USD za měsíc](./media/billing-getting-started/vm-size-cost.PNG)
-
-### <a name="set-up-billing-alerts"></a>Nastavení upozornění fakturace
-
-Nastavení upozornění fakturace k odeslání e-mailů, když vaše náklady na využití přesáhnout částku, kterou zadáte. Pokud máte zdarma měsíční kredit, nastavení upozornění pro po spotřebování zadanou velikost. Další informace najdete v tématu [nastavení upozornění pro předplatná Microsoft Azure fakturace](billing-set-up-alerts.md).
-
-![Snímek obrazovky s fakturační upozornění e-mailu](./media/billing-getting-started/billing-alert.png)
-
-> [!NOTE]
-> Tato funkce je stále ve verzi preview, abyste měli pravidelně kontrolovat využití.
-
-Můžete chtít použít odhadu nákladů z cenovou kalkulačku jako vodítko pro první výstraha.
 
 ### <a name="spending-limit"></a> Zaškrtněte, pokud máte nastavený limit útraty
 
@@ -166,7 +155,7 @@ Zobrazení nákladů Enterprise jsou aktuálně ve verzi Public Preview. Položk
     - Jste správcem oddělení a registraci správce zakázal "DA zobrazení poplatky" nastavení.  Obraťte se na správce registrace k získání přístupu. 
     - Azure zakoupené prostřednictvím partnera kanálu a partnera nevydala informace o cenách.  
 - Při aktualizaci nastavení související s náklady na přístup na webu Enterprise portal, je trvat několik minut, než se změny projeví na webu Azure Portal.
-- Limit útraty, upozornění fakturace a pokyny k faktuře se netýkají předplatných EA.
+- Limit útraty a pokyny k faktuře se nevztahují na předplatné EA.
 
 ### <a name="check-your-subscription-and-access"></a>Zkontrolujte předplatné a přístup
 

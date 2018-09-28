@@ -7,17 +7,17 @@ manager: carmonm
 editor: tysonn
 ms.service: monitoring
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/11/2018
+ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: d71dc77eac89fef3ae7f8aeb69a05197456ac865
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 19a611ca88310f06503bea2b8606699fe3e1c709
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962926"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406036"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Sledování dat shromážděných službou Azure Monitor
 [Azure Monitor](../azure-monitor/overview.md) je služba, která vám pomůže sledovat vaše aplikace a prostředky, které spoléhají na to. Centrální pro tuto funkci je úložiště dat a další data z monitorovaných prostředků. Tento článek poskytuje úplný popis toho, jak tato data se ukládají a používat Azure Monitor.
@@ -155,7 +155,7 @@ Log Analytics může shromažďovat data z široké škály zdrojů i v rámci A
 Úlohy, které můžete provést pomocí protokolů zahrnují následující:
 
 - Použití [stránce Log Analytics](../log-analytics/query-language/get-started-analytics-portal.md) na webu Azure Portal psát dotazy, analýza dat protokolu.  Připnout výsledky se vykresluje jako tabulky nebo grafy [řídicí panel Azure](../azure-portal/azure-portal-dashboards.md).
-- Konfigurace [pravidel upozornění protokolů](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) , který odešle oznámení, nebo má [automatizované akce](../monitoring-and-diagnostics/monitoring-action-groups.md) při výsledky dotazu splňují konkrétní výsledek.
+- Konfigurace [pravidel upozornění protokolů](../monitoring-and-diagnostics/alert-log.md) , který odešle oznámení, nebo má [automatizované akce](../monitoring-and-diagnostics/monitoring-action-groups.md) při výsledky dotazu splňují konkrétní výsledek.
 - Vytvořit pracovní postup na základě dat v Log Analytics pomocí [Logic Apps]().
 - Export výsledků dotazu na [Power BI](../log-analytics/log-analytics-powerbi.md) a použít různé vizualizace a sdílet s uživateli mimo Azure.
 - Přístup k hodnoty metrik z příkazového řádku nebo vlastní aplikace s využitím [rutin prostředí PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/?view=azurermps-6.8.1) nebo [rozhraní REST API](https://dev.loganalytics.io/).
@@ -175,7 +175,7 @@ Pokyny pro shromažďování metrik z prostředků v Azure můžete získat [met
 ### <a name="logs-to-metrics"></a>Protokoly a metriky
 Jak je popsáno výše, jsou responzivní více než tento počet protokolů, metrik, takže můžete vytvářet upozornění s nižší latencí a s nižšími náklady. Log Analytics shromažďuje značné množství číselná data, která je vhodná pro metriky, ale není uložený v úložišti Azure metriky.  Běžným příkladem jsou data o výkonu shromážděná z agentů a řešení pro správu. Některé z těchto hodnot je možné zkopírovat do úložiště metrik, kde jsou k dispozici pro výstrahy a analýzy s Průzkumníkem metrik.
 
-Vysvětlení této funkce je k dispozici na [rychleji metrika výstrahy pro protokoly teď v omezené verzi public preview](https://azure.microsoft.com/blog/faster-metric-alerts-for-logs-now-in-limited-public-preview/). Seznam hodnot podpora je k dispozici na [podporované metody metrik a vytváření nových metrik výstrah](../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md).
+Vysvětlení této funkce je k dispozici na [vytvořit upozornění metriky pro protokoly ve službě Azure Monitor](../monitoring-and-diagnostics/monitoring-metric-alerts-logs.md). Seznam hodnot podpora je k dispozici na [podporované metriky ve službě Azure Monitor](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces).
 
 ## <a name="stream-data-to-external-systems"></a>Datový Stream k externím systémům
 Kromě použití nástroje pro analýzu dat monitorování v Azure, můžete mít povinnost předat externího nástroje, jako jsou informace o zabezpečení a událostí produktů pro správu (SIEM). Toto přesměrování se obvykle provádí přímo z monitorovaných prostředků prostřednictvím [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/). 

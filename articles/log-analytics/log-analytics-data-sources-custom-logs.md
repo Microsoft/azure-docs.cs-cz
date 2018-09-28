@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/27/2018
+ms.date: 09/27/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 831b52a27a1ccfc349b9b54f8c3d874e41ddc322
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.component: ''
+ms.openlocfilehash: 5eab8e4bf6b1aa90a9eef3e26dfc3020e3e3179b
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39363139"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423506"
 ---
 # <a name="custom-logs-in-log-analytics"></a>Vlastní protokolů v Log Analytics
 Zdroj dat vlastních protokolů v Log Analytics umožňuje shromažďovat události z textových souborů v počítačích se systémy Windows a Linux. Mnoho aplikací protokolovat informace k textovým souborům místo standardní protokolování služby, jako je protokol událostí Windows nebo protokolu Syslog.  Po shromáždění, můžete analyzovat každý záznam v přihlášení u jednotlivých polí pomocí [vlastní pole](log-analytics-custom-fields.md) funkce Log Analytics.
@@ -40,6 +40,10 @@ Soubory protokolů, které se mají shromažďovat musí odpovídat následujíc
 >Pokud existují duplicitní položky v souboru protokolu, Log Analytics je shromažďovat.  Ale výsledky hledání budou nekonzistentní kde vyfiltrovali výsledky zobrazit více událostí, než počet výsledků.  Je důležité, abyste ověřili protokol, který chcete zjistit, zda je aplikace, která ji vytvoří, příčinou tohoto chování a pokud je to možné jej vyřešit před vytvořením definice kolekce vlastní protokol.  
 >
   
+>[!NOTE]
+> Pokud vaše aplikace vytvoří nový soubor protokolu, každý den nebo když dosáhne určité velikosti, agenta Log Analytics pro Linux nevyhledává až po restartování. Je to proto, že agent pouze vytvoří výčet a zahájí monitorování pro vzory pomocí zadaného protokolů při spuštění a z tohoto důvodu je potřeba naplánovat automatickou restartování agenta.  Toto omezení neexistuje pomocí agenta Log Analytics pro Windows.  
+>
+
 ## <a name="defining-a-custom-log"></a>Definování vlastního protokolu
 Následující postup použijte k definování vlastního souboru protokolu.  Přejděte na konci tohoto článku návod vzorku přidání vlastního protokolu.
 
@@ -66,9 +70,13 @@ Pokud se používá oddělovač časové razítko, pak vlastnost TimeGenerated k
 5. Klikněte na **Další**.
 
 ### <a name="step-3-add-log-collection-paths"></a>Krok 3. Přidat cesty ke kolekcím protokolů
-Na agentovi, kde najdou vlastního protokolu je nutné zadat jednu nebo více cest.  Můžete buď zadat konkrétní cestu a název souboru protokolu, nebo se zástupnými znaky pro název můžete zadat cestu.  To podporuje aplikace, které každý den nebo když jeden soubor dosáhne určité velikosti, vytvořte nový soubor.  Můžete také zadat více cest pro jeden soubor protokolu.
+Na agentovi, kde najdou vlastního protokolu je nutné zadat jednu nebo více cest.  Můžete buď zadat konkrétní cestu a název souboru protokolu, nebo se zástupnými znaky pro název můžete zadat cestu. To podporuje aplikace, které každý den nebo když jeden soubor dosáhne určité velikosti, vytvořte nový soubor. Můžete také zadat více cest pro jeden soubor protokolu.
 
 Například aplikace může vytvořit soubor protokolu každý den s datem zahrnuté v názvu jako log20100316.txt. Vzor pro tyto protokoly mohou být *protokolu\*.txt* názvů které bude platit pro jakéhokoli souboru protokolu po aplikaci prvku schéma.
+
+>[!NOTE]
+> Pokud vaše aplikace vytvoří nový soubor protokolu, každý den nebo když dosáhne určité velikosti, agenta Log Analytics pro Linux nevyhledává až po restartování. Je to proto, že agent pouze vytvoří výčet a zahájí monitorování pro vzory pomocí zadaného protokolů při spuštění a z tohoto důvodu je potřeba naplánovat automatickou restartování agenta.  Toto omezení neexistuje pomocí agenta Log Analytics pro Windows.  
+>
 
 Následující tabulka obsahuje příklady platných vzorů k určení různých protokolových souborech.
 

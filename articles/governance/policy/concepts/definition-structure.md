@@ -8,12 +8,12 @@ ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 7a1b7b7f970aff620ce01e340c5e56326f4a4a35
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 329bba11c95056b038fdab5041637cbb6a0feb6a
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055080"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407259"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -81,6 +81,10 @@ Doporučujeme vám, že jste nastavili **režimu** k `all` ve většině přípa
 
 Parametry pomáhají zjednodušit správu zásad snížením počtu definic zásad. Představte si, že parametrů, jako je pole ve formuláři – `name`, `address`, `city`, `state`. Tyto parametry vždy stejné, ale změnit jejich hodnoty podle jednotlivých vyplňování formuláře.
 Parametry fungovat stejným způsobem jako při vytváření zásad. Včetně parametrů v definici zásad, můžete využít této zásadě pro různé scénáře pomocí různých hodnot.
+
+> [!NOTE]
+> Definice parametry pro zásadu nebo definice iniciativy můžete nakonfigurovat jenom během počátečního vytváření zásady nebo iniciativa. Parametry definici není možné později změnit.
+> To zabrání existující přiřazení zásady nebo iniciativa nepřímo prováděné neplatný.
 
 Můžete třeba definovat zásady pro vlastnost prostředku možné omezit místa, kde můžete nasadit prostředky. Při vytváření zásady, v takovém případě by deklarovat následující parametry:
 

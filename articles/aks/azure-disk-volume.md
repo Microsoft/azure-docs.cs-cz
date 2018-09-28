@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 68a7883e7f8b3fb62265375208f66b761d43d82e
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 20c7d20399392e653668953029bcb81886863ce4
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391205"
+ms.locfileid: "47404615"
 ---
 # <a name="manually-create-and-use-kubernetes-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Ruční vytváření a používání Kubernetes svazku s disky Azure ve službě Azure Kubernetes Service (AKS)
 
@@ -24,7 +24,7 @@ Další informace o Kubernetes svazky, naleznete v tématu [Kubernetes svazky][k
 
 Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete AKS cluster, najdete v tomto rychlém startu AKS [pomocí Azure CLI] [ aks-quickstart-cli] nebo [pomocí webu Azure portal][aks-quickstart-portal].
 
-Také nutné mít Azure CLI verze 2.0.46 nebo později nainstalované a nakonfigurované. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI] [install-azure-cli].
+Také nutné mít Azure CLI verze 2.0.46 nebo později nainstalované a nakonfigurované. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
 ## <a name="create-an-azure-disk"></a>Vytvořte disk s Azure
 
@@ -91,7 +91,7 @@ Teď máte spuštěné pod s připojený k disku Azure `/mnt/azure`. Můžete po
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o službě AKS clustery interakci s disky Azure, najdete v článku [Kubernetes modul plug-in pro disky Azure][kubernetes-disks]
+Další informace o službě AKS clustery interakci s disky Azure, najdete v článku [modul plug-in Kubernetes pro Azure Disks][kubernetes-disks].
 
 <!-- LINKS - external -->
 [kubernetes-disks]: https://github.com/kubernetes/examples/blob/master/staging/volumes/azure_disk/README.md
@@ -106,3 +106,4 @@ Další informace o službě AKS clustery interakci s disky Azure, najdete v čl
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [az-aks-show]: /cli/azure/aks#az-aks-show
+[install-azure-cli]: /cli/azure/install-azure-cli
