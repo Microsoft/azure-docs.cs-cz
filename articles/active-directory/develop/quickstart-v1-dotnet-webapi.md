@@ -1,6 +1,6 @@
 ---
-title: Azure AD webového rozhraní API .NET Začínáme | Dokumentace Microsoftu
-description: Postup pro sestavení .NET MVC webového rozhraní API, která se integruje s Azure AD pro ověřování a autorizaci.
+title: Vytvoření webového rozhraní API .NET, které se integruje s Azure AD pro ověřování a autorizaci | Microsoft Docs
+description: Zjistěte, jak vytvořit webové rozhraní API .NET MVC, které se integruje s Azure AD pro ověřování a autorizaci.
 services: active-directory
 documentationcenter: .net
 author: CelesteDG
@@ -12,70 +12,73 @@ ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: article
-ms.date: 01/23/2017
+ms.topic: quickstart
+ms.date: 09/24/2018
 ms.author: celested
-ms.reviewer: hirsin, dastrock
+ms.reviewer: jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: ca506d821fe3534468c0d370dd51464e5df90f79
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
-ms.translationtype: MT
+ms.openlocfilehash: 239c0d0adbe89dd3d1d7bc7244a52ab079a36ad4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581295"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952541"
 ---
-# <a name="azure-ad-net-web-api-getting-started"></a>Azure AD webového rozhraní API .NET Začínáme
-[!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
+# <a name="quickstart-build-a-net-web-api-that-integrates-with-azure-ad-for-authentication-and-authorization"></a>Rychlý start: Vytvoření webového rozhraní API .NET MVC, které se integruje s Azure AD pro ověřování a autorizaci
 
-Pokud vytváříte aplikaci, která poskytuje přístup k chráněným prostředkům, musíte vědět, jak zabránit neoprávněné přístupu k těmto prostředkům.
-Díky Azure Active Directory (Azure AD) je jednoduché a nekomplikované k ochraně webového rozhraní API s využitím přístupu nosiče OAuth 2.0 tokeny pomocí jenom pár řádků kódu.
+[!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
 
-Ve webové aplikace v ASP.NET lze provádět tuto ochranu pomocí implementace společnosti Microsoft zahrnuté v rozhraní .NET Framework 4.5 komunitní middlewaru OWIN. Zde použijeme OWIN pro sestavení webového rozhraní API "Seznam úkolů", který:
+Pokud vytváříte aplikaci, která poskytuje přístup k chráněným prostředkům, musíte vědět, jak zabránit neoprávněnému přístupu k těmto prostředkům. Azure Active Directory (Azure AD) snadno a jasně pomáhá chránit webové rozhraní API s využitím nosných přístupových tokenů OAuth 2.0 s jen pár řádky kódu.
 
-* Určuje, které rozhraní API jsou chráněny.
-* Ověřuje, že volání webového rozhraní API obsahují platným přístupovým tokenem.
+Ve webových aplikacích ASP.NET můžete této ochrany dosáhnout pomocí implementace komunitního middlewaru OWIN, který je součástí rozhraní .NET Framework 4.5. Tady OWIN využijete k vytvoření webového rozhraní API „To Do List“ (Seznam úkolů), které:
 
-Pro sestavení do proveďte seznamu rozhraní API, nejprve potřebujete:
+* Určuje, která rozhraní API jsou chráněná
+* Ověřuje, že volání webového rozhraní API obsahují platný přístupový token
+
+V tomto rychlém startu vytvoříte rozhraní API To Do List a naučíte se:
 
 1. Zaregistrovat aplikaci s Azure AD.
-2. Nastavení aplikace pro použití ověřovacího kanálu OWIN.
-3. Konfigurovat klientskou aplikaci pro volání webového rozhraní API.
+2. Nastavit, aby aplikace používala ověřovací kanál OWIN
+3. Nakonfigurovat klientskou aplikaci, aby volala webové rozhraní API
 
-Abyste mohli začít, [stáhnout kostru aplikace](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/skeleton.zip) nebo [stáhnout úplnou vzorovou](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip). Každá je řešení sady Visual Studio 2013. Budete také potřebovat tenanta služby Azure AD, ve kterém chcete zaregistrovat aplikaci. Pokud je nemáte, [zjistěte, jak získat](quickstart-create-new-tenant.md).
+## <a name="prerequisites"></a>Požadavky
 
-## <a name="step-1-register-an-application-with-azure-ad"></a>Krok 1: Registrace aplikace v Azure AD
-Pomáhají zabezpečit vaše aplikace, musíte nejprve vytvořit aplikaci ve vašem tenantovi a poskytnout pár klíčových informací o službě Azure AD.
+Abyste mohli začít, potřebujete:
+
+* Stáhnout si [kostru aplikace](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/skeleton.zip) nebo [úplnou ukázku](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip). Obě jsou řešeními sady Visual Studio 2013.
+* Mít tenanta Azure AD, ve kterém chcete aplikaci zaregistrovat. Pokud ho ještě nemáte, [zjistěte, jak ho získat](quickstart-create-new-tenant.md).
+
+## <a name="step-1-register-an-application-with-azure-ad"></a>Krok 1: Zaregistrování aplikace v Azure AD
+
+Abyste pomohli aplikaci zabezpečit, musíte nejdříve aplikaci vytvořit ve vašem tenantovi a službě Azure AD poskytnout pár klíčových informací.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+2. Zvolte svého tenanta Azure AD tak, že vyberete svůj účet v pravém horním rohu stránky, vyberete **Přepnout adresář** a pak vyberete příslušného tenanta.
+    * Tento krok přeskočte, pokud v rámci účtu máte jenom jednoho tenanta Azure AD nebo pokud jste už odpovídajícího tenanta Azure AD vybrali.
 
-2. Kliknutím na váš účet v pravém horním rohu stránky, a potom kliknutím na zvolte tenanta Azure AD **přepnout adresář** navigace a pak vyberte příslušný tenant.
- * Tento krok přeskočte, pokud jste v rámci vašeho účtu jenom k jednomu tenantovi Azure AD nebo pokud jste již vybrali odpovídající tenanta Azure AD.
+3. V levém navigačním podokně vyberte **Azure Active Directory**.
+4. Vyberte **Registrace aplikací** a pak vyberte **Přidat**.
+5. Postupujte podle zobrazených výzev a vytvořte novou **Webovou aplikaci / webové rozhraní API**:
+    * **Název** popisuje aplikaci uživatelům. Zadejte **To Do List Service**.
+    * **Identifikátor URI pro přesměrování** je schéma a kombinace řetězců, které Azure AD používá k vrácení tokenů, o které vaše aplikace požádala. Pro tuto hodnotu zadejte `https://localhost:44321/`.
 
-3. V levém navigačním podokně klikněte na **Azure Active Directory**.
+6. Ze stránky **Nastavení > Vlastnosti** pro vaši aplikaci aktualizujte identifikátor URI ID aplikace. Zadejte identifikátor specifický pro tenanta. Zadejte například `https://contoso.onmicrosoft.com/TodoListService`.
+7. Konfiguraci uložte. Nechte portál otevřený, protože brzy budete muset zaregistrovat klientskou aplikaci.
 
-4. Klikněte na tlačítko **registrace aplikací**a pak vyberte **přidat**.
+## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>Krok 2: Nastavení, aby aplikace používala ověřovací kanál OWIN
 
-5. Postupujte podle zobrazených výzev a vytvořte nový **webovou aplikaci nebo webové rozhraní API**.
-  * **Název** popíše aplikaci uživatelům. Zadejte **seznam úkolů služby**.
-  * **Identifikátor Uri pro přesměrování** je kombinace schématu a řetězec, který používá Azure AD k vrátí všechny tokeny, které vaše aplikace vyžaduje. Zadejte `https://localhost:44321/` pro tuto hodnotu.
+K ověření příchozích požadavků a tokenů musíte nastavit, aby aplikace komunikovala s Azure AD.
 
-6. Z **nastavení** -> **vlastnosti** stránce pro vaši aplikaci, aktualizujte identifikátor URI ID aplikace. Zadejte identifikátor specifickým pro tenanta. Zadejte například `https://contoso.onmicrosoft.com/TodoListService`.
-
-7. Uložte konfiguraci. Opustit portál otevřít, protože je potřeba také zaregistrovat klientské aplikace za chvíli.
-
-## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>Krok 2: Nastavení aplikace pro použití ověřovacího kanálu OWIN
-K ověření příchozích požadavků a tokeny, musíte nastavit aplikaci komunikovat s Azure AD.
-
-1. Pokud chcete začít, otevřete řešení a přidání balíčků NuGet middleware OWIN TodoListService projektu pomocí konzoly Správce balíčků.
+1. Začněte tak, že otevřete řešení a přidáte balíčky NuGet middlewaru OWIN do projektu TodoListService pomocí konzoly Správce balíčků.
 
     ```
     PM> Install-Package Microsoft.Owin.Security.ActiveDirectory -ProjectName TodoListService
     PM> Install-Package Microsoft.Owin.Host.SystemWeb -ProjectName TodoListService
     ```
 
-2. Přidat třídu OWIN Startup TodoListService projekt s názvem `Startup.cs`.  Klikněte pravým tlačítkem na projekt, vyberte **přidat** > **nová položka**a poté vyhledejte **OWIN**. Middleware OWIN při spuštění vaší aplikace vyvolá metodu `Configuration(…)`.
+2. Do projektu TodoListService přidejte třídu Startup pro spuštění OWIN s názvem `Startup.cs`.  Pravým tlačítkem myši klikněte na projekt, vyberte **Přidat > Nová položka** a pak vyhledejte **OWIN**. Middleware OWIN při spuštění vaší aplikace vyvolá metodu `Configuration(…)`.
 
-3. Změňte deklaraci třídy na `public partial class Startup`. Už jsme implementovali část této třídy za vás do jiného souboru. V `Configuration(…)` metodu, nastavení volání `ConfgureAuth(…)` nastavení ověřování pro vaši webovou aplikaci.
+3. Změňte deklaraci třídy na `public partial class Startup`. Část této třídy už jsme pro vás implementovali do jiného souboru. V metodě `Configuration(…)` proveďte volání do `ConfgureAuth(…)`, abyste nastavili ověřování pro vaši webovou aplikaci.
 
     ```csharp
     public partial class Startup
@@ -87,7 +90,7 @@ K ověření příchozích požadavků a tokeny, musíte nastavit aplikaci komun
     }
     ```
 
-4. Otevřete soubor `App_Start\Startup.Auth.cs` a implementovat `ConfigureAuth(…)` metody. Parametry, které jste zadali v `WindowsAzureActiveDirectoryBearerAuthenticationOptions` bude sloužit jako souřadnice pro vaši aplikaci ke komunikaci s Azure AD.
+4. Otevřete soubor `App_Start\Startup.Auth.cs` a implementujte metodu `ConfigureAuth(…)`. Parametry, které zadáte v `WindowsAzureActiveDirectoryBearerAuthenticationOptions`, budou sloužit jako souřadnice pro vaši aplikaci ke komunikaci s Azure AD.
 
     ```csharp
     public void ConfigureAuth(IAppBuilder app)
@@ -101,7 +104,7 @@ K ověření příchozích požadavků a tokeny, musíte nastavit aplikaci komun
     }
     ```
 
-5. Nyní můžete pomocí `[Authorize]` atributy k ochraně vašich kontrolerech a akcích se ověřování nosných tokenů JSON Web Token (JWT). Uspořádání `Controllers\TodoListController.cs` třída s atributem značku authorize. Tato akce vynutí uživateli umožní přihlásit se před přístupem k této stránce.
+5. Použijte atributy `[Authorize]` k ochraně vašich kontrolerů a akcí pomocí ověřování nosných tokenů JSON Web Token (JWT). Přidejte k třídě `Controllers\TodoListController.cs` značku Authorize, která uživatele donutí, aby se před přístupem k této stránce přihlásil.
 
     ```csharp
     [Authorize]
@@ -109,9 +112,9 @@ K ověření příchozích požadavků a tokeny, musíte nastavit aplikaci komun
     {
     ```
 
-    Když oprávnění volající úspěšně vyvolá jednu z `TodoListController` rozhraní API, tato akce může být nutné přístup k informacím o volajícím. OWIN poskytuje přístup k deklarace uvnitř tokenu nosiče prostřednictvím `ClaimsPrincpal` objektu.  
+    Když oprávněný volající úspěšně vyvolá některé z rozhraní API `TodoListController`, může akce potřebovat přístup k informacím o volajícím. OWIN poskytuje přístup k deklaraci identity uvnitř nosného tokenu prostřednictvím objektu `ClaimsPrincpal`.  
 
-6. Běžné požadavky pro webová rozhraní API jsou ověření „oborů“ v tokenu. Tím se zajistí, že uživatel souhlasil s oprávněními požadovanými pro přístup k To udělat seznamu Service.
+6. Běžným požadavkem pro webová rozhraní API je ověření „oborů“ přítomných v tokenu, aby se zajistilo, že uživatel souhlasil s oprávněními požadovanými pro přístup k To Do List Service.
 
     ```csharp
     public IEnumerable<TodoItem> Get()
@@ -128,32 +131,31 @@ K ověření příchozích požadavků a tokeny, musíte nastavit aplikaci komun
     }
     ```
 
-7. Otevřít `web.config` souboru v kořenovém adresáři projektu TodoListService a zadejte hodnoty konfigurace v `<appSettings>` oddílu.
-  * `ida:Tenant` je název vašeho tenanta Azure AD – například contoso.onmicrosoft.com.
-  * `ida:Audience` je identifikátor URI ID aplikace, aplikace, která jste zadali na webu Azure Portal.
+7. V kořenovém adresáři projektu TodoListService otevřete soubor `web.config` a v oddílu `<appSettings>` zadejte hodnoty konfigurace.
+    * `ida:Tenant` je název vašeho tenanta Azure AD – například contoso.onmicrosoft.com.
+    * `ida:Audience` je identifikátor URI ID aplikace, který jste zadali na portálu Azure Portal.
 
-## <a name="step-3-configure-a-client-application-and-run-the-service"></a>Krok 3: Konfigurace klientské aplikace a spustit službu
-Předtím, než je vidět To udělat seznamu Service v akci, budete muset nakonfigurovat klientovi seznam úkolů tak, aby se daly tokenů z Azure AD a provádět volání do služby.
+## <a name="step-3-configure-a-client-application-and-run-the-service"></a>Krok 3: Konfigurace klientské aplikace a spuštění služby
 
-1. Přejděte zpět [webu Azure portal](https://portal.azure.com).
+Než uvidíte To Do List Service v akci, musíte nakonfigurovat klienta To Do List, aby mohl získávat tokeny z Azure AD a provádět volání do služby.
 
-2. Vytvoření nové aplikace ve vašem tenantovi Azure AD a vyberte **nativní klientská aplikace** výsledný příkazovém řádku.
-  * **Název** popíše aplikaci uživatelům.
-  * Zadejte `http://TodoListClient/` pro **identifikátor Uri pro přesměrování** hodnotu.
+1. Vraťte se na portál [Azure Portal](https://portal.azure.com).
+1. Vytvořte novou aplikaci v tenantovi Azure AD a ve výsledné nabídce vyberte **Nativní klientská aplikace**.
+    * **Název** popisuje aplikaci uživatelům.
+    * Jako hodnotu pro **Identifikátor URI pro přesměrování** zadejte `http://TodoListClient/`.
 
-3. Po dokončení registrace Azure AD a jedinečné ID přiřadí vaší aplikace. Tuto hodnotu budete potřebovat v dalších krocích, takže zkopírujte ho ze stránky aplikace.
+1. Po dokončení registrace přiřadí Azure AD aplikaci jedinečné ID aplikace. Tuto hodnotu budete potřebovat v následujících krocích, proto si ji ze stránky aplikace zkopírujte.
+1. Na stránce **Nastavení** vyberte **Požadovaná oprávnění** a pak vyberte **Přidat**. Najděte a vyberte To Do List Service, přidejte oprávnění **Přístup k TodoListService** v rámci **Delegovaných oprávnění** a pak vyberte **Hotovo**.
+1. V sadě Visual Studio otevřete `App.config` v projektu TodoListClient a pak zadejte hodnoty konfigurace v oddílu `<appSettings>`.
 
-4. Z **nastavení** stránce **požadovaná oprávnění**a pak vyberte **přidat**. Vyhledejte a vyberte k proveďte seznamu službu, přidejte **přístup TodoListService** oprávnění v rámci **delegovaná oprávnění**a potom klikněte na tlačítko **provádí**.
+    * `ida:Tenant` je název vašeho tenanta Azure AD, například contoso.onmicrosoft.com.
+    * `ida:ClientId` je ID aplikace, které jste zkopírovali z portálu Azure Portal.
+    * `todo:TodoListResourceId` je identifikátor URI ID aplikace To Do List Service, který jste zadali na portálu Azure Portal.
 
-5. V sadě Visual Studio, otevřete `App.config` v TodoListClient projektu a poté zadejte hodnoty konfigurace v `<appSettings>` oddílu.
+1. Vyčistěte, sestavte a spusťte každý projekt.
+1. Pokud jste to ještě neudělali, vytvořte ve vašem tenantovi nového uživatele s doménou *. onmicrosoft.com.
+1. Pomocí tohoto uživatele se přihlaste ke klientovi To Do List a přidejte nějaké úkoly do seznamu úkolů uživatele.
 
-  * `ida:Tenant` je název vašeho tenanta Azure AD – například contoso.onmicrosoft.com.
-  * `ida:ClientId` je ID aplikace, který jste zkopírovali z portálu Azure portal.
-  * `todo:TodoListResourceId` je identifikátor ID URI aplikace aplikace do služby provést seznam, který jste zadali na webu Azure Portal.
+## <a name="next-steps"></a>Další kroky
 
-## <a name="next-steps"></a>Další postup
-A konečně vyčistit, sestavte a spusťte každý projekt. Pokud jste tak dosud neučinili, nyní je čas při vytváření nového uživatele ve vašem tenantovi s *. onmicrosoft.com domény. Přihlaste se ke klientovi seznam úkolů s tímto uživatelem a přidá úkoly do seznamu úkolů uživatele.
-
-Pro srovnání je hotová ukázka (bez vašich hodnot nastavení) je k dispozici v [Githubu](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip). Nyní se můžete přesunout další scénářů identity.
-
-[!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
+* Pro srovnání si můžete stáhnout hotovou ukázku (bez vašich hodnot) z [GitHubu](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip). Teď můžete přejít k dalším scénářům identity.

@@ -2,18 +2,18 @@
 title: Jak pracovat s daty profilování zdroje dat ve službě Azure Data Catalog
 description: Článek zvýraznění zahrnují profily úrovni tabulky a sloupce dat, při registraci zdroje dat ve službě Azure Data Catalog a porozumět zdrojům dat pomocí data profilů.
 services: data-catalog
-author: spelluru
-ms.author: spelluru
+author: markingmyname
+ms.author: maghan
 ms.assetid: 94a8274b-5c9c-4962-a4b1-2fed38a3d919
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 2f628367e2e5b0e6a4481a6212ff201b11a7105a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: b40bbe7d1eb89f934d6ae07688e698f1949f8e76
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43053422"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47410234"
 ---
 # <a name="data-profile-data-sources"></a>Zdroje dat profilů dat
 ## <a name="introduction"></a>Úvod

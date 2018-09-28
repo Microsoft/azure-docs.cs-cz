@@ -1,6 +1,6 @@
 ---
-title: Začínáme se službou Azure AD AngularJS | Dokumentace Microsoftu
-description: Postup pro sestavení jednostránková aplikace AngularJS, která se integruje s Azure AD pro přihlášení a volá rozhraní API Azure AD chráněné pomocí OAuth.
+title: Vytvoření jednostránková aplikace AngularJS pro přihlašování a odhlašování pomocí Azure Active Directory | Microsoft Docs
+description: Zjistěte, jak vytvořit jednostránkovou aplikaci AngularJS, která se integruje s Azure AD pro přihlašování a s využitím OAuth volá rozhraní API chráněná pomocí Azure AD.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -12,65 +12,80 @@ ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
-ms.topic: article
-ms.date: 11/30/2017
+ms.topic: quickstart
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 0c7f6a0e447e3b48cdd1df684dc105ece1e98f66
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
-ms.translationtype: MT
+ms.openlocfilehash: 23912f9d004d051c422f93e8b10f1aa6cb8b2626
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581267"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46959491"
 ---
-# <a name="azure-ad-angularjs-getting-started"></a>Začínáme se službou Azure AD AngularJS
+# <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>Rychlý start: Vytvoření jednostránková aplikace AngularJS pro přihlašování a odhlašování pomocí Azure Active Directory
 
-[!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
+[!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
-Azure Active Directory (Azure AD) umožňuje jednoduché a nekomplikované pro přidání OAuth pro přihlášení, odhlášení a zabezpečená rozhraní API volá do jednostránkové aplikace. To umožňuje aplikacím provádět ověřování uživatelů pomocí jejich účtů systému Windows Server Active Directory a využívat všechny webové rozhraní API, které Azure AD k ochraně, jako je například rozhraní API Office 365 nebo rozhraní API služby Azure.
+Azure Active Directory (Azure AD) vám umožňuje snadno a jasně přidat do jednostránkových aplikací volání API pro přihlášení, odhlášení a zabezpečené OAuth. Umožňuje aplikacím ověřovat uživatele pomocí jejich účtů Windows Server Active Directory a využívat všechna webová rozhraní API, která Azure AD pomáhá chránit, například rozhraní API Office 365 nebo rozhraní API Azure.
 
-Pro jazyk JavaScript aplikace spuštěné v prohlížeči Azure AD poskytuje Active Directory Authentication Library (ADAL), nebo adal.js. Jediným účelem adal.js je k tomu, aby pro vaši aplikaci k získání přístupových tokenů. Abychom si předvedli, jak snadné je, tady vytvoříme aplikace AngularJS seznam úkolů, které:
+Pro javascriptové aplikace spuštěné v prohlížeči Azure AD poskytuje Active Directory Authentication Library (ADAL) neboli adal.js. Jediným účelem adal.js je usnadnit aplikaci získání přístupových tokenů.
 
-* Přihlášení uživatele k aplikaci pomocí Azure AD jako zprostředkovatele identity.
+V tomto rychlém startu se naučíte vytvořit aplikaci AngularJS pro seznam úkolů, která:
 
+* Přihlásí uživatele k aplikaci pomocí Azure AD jako zprostředkovatel identity.
 * Zobrazí některé informace o uživateli.
-* Bezpečně volá aplikace chcete provést seznamu rozhraní API pomocí nosných tokenů z Azure AD.
-* Uživatel z aplikace odhlásí.
+* Bezpečně volá API seznamu úkolů aplikace pomocí nosných tokenů z Azure AD.
+* Odhlásí uživatele z aplikace.
 
-Pokud chcete vytvořit kompletní, funkční aplikaci, budete muset:
+Pokud chcete sestavit úplnou funkční aplikaci, budete k tomu potřebovat:
 
-1. Registrace aplikace v Azure AD.
-2. ADAL instalace a konfigurace jednostránkové aplikace.
-3. Zabezpečené stránky v jednostránkové aplikace pomocí knihovny ADAL.
+1. Zaregistrovat aplikaci v Azure AD
+2. Nainstalovat ADAL a konfigurovat jednostránkovou aplikaci
+3. Použít ADAL k zabezpečení stránek v jednostránkové aplikaci
 
-Abyste mohli začít, [stáhnout kostru aplikace](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/skeleton.zip) nebo [stáhnout úplnou vzorovou](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/complete.zip). Budete také potřebovat tenanta služby Azure AD, ve kterém můžete vytvářet uživatele a zaregistrovat aplikaci. Pokud ještě nemáte tenanta, [zjistěte, jak získat](quickstart-create-new-tenant.md).
+## <a name="prerequisites"></a>Požadavky
+
+Abyste mohli začít, potřebujete:
+
+* Stáhnout si [kostru aplikace](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/skeleton.zip) nebo [úplnou ukázku](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/complete.zip).
+* Tenanta služby Azure AD, ve kterém můžete vytvářet uživatele a zaregistrovat aplikaci. Pokud ještě tenanta nemáte, [zjistěte, jako ho získat](quickstart-create-new-tenant.md).
 
 ## <a name="step-1-register-the-directorysearcher-application"></a>Krok 1: Registrace aplikace DirectorySearcher
-Pokud chcete povolit své aplikace ověřovat uživatele a získat tokeny, musíte nejprve zaregistrovat ve vašem tenantovi Azure AD:
+
+Pokud chcete aplikaci umožnit ověřování uživatelů a získání tokenů, musíte ji nejdřív zaregistrovat ve vašem tenantovi Azure AD:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Pokud jste přihlášeni k více adresářů, budete muset zajistit, aby že se vám zobrazuje na správný adresář. Provedete to tak, že na horním panelu klikněte na svůj účet. V části **Directory** , zvolte tenanta Azure AD, ve které chcete zaregistrovat aplikaci.
-3. Klikněte na tlačítko **všechny služby** v levém podokně a pak vyberte **Azure Active Directory**.
-4. Klikněte na tlačítko **registrace aplikací**a pak vyberte **přidat**.
-5. Postupujte podle zobrazených výzev a vytvořte novou webovou aplikaci nebo webové rozhraní API:
-  * **Název** popíše aplikaci uživatelům.
-  * **Adresa URL přihlašování** je umístění, na který Azure AD vrátí tokeny. Výchozí umístění pro tuto ukázku je `https://localhost:44326/`.
-6. Po dokončení registrace Azure AD a jedinečné ID přiřadí vaší aplikace. Tuto hodnotu budete potřebovat v následujících částech, proto zkopírujte ho na kartě aplikace.
-7. Implicitní tok OAuth Adal.js používá ke komunikaci s Azure AD. Je nutné povolit implicitní tok pro vaši aplikaci:
-  1. Klikněte na aplikaci a vyberte **Manifest** otevřete editor manifestu vložené.
-  2. Vyhledejte `oauth2AllowImplicitFlow` vlastnost. Nastavte jej na hodnotu `true`.
-  3. Klikněte na tlačítko **Uložit** uložit manifest.
-8. Udělení oprávnění napříč vašeho tenanta pro vaši aplikaci. Přejděte na **nastavení** > **požadovaná oprávnění**a klikněte na tlačítko **udělit oprávnění** tlačítko na horním panelu. Pro potvrzení klikněte na tlačítko **Ano**.
+1. Pokud jste přihlášení k více adresářům, měli byste zajistit, že máte zobrazený správný adresář. Provedete to tak, že na horním panelu kliknete na svůj účet. Ze seznamu **Adresář** vyberte tenanta Azure AD, do kterého chcete aplikaci zaregistrovat.
+1. V levém podokně klikněte na **Všechny služby** a pak vyberte **Azure Active Directory**.
+1. Klikněte na **Registrace aplikací** a pak vyberte **Přidat**.
+1. Postupujte podle zobrazených výzev a vytvořte novou webovou aplikaci nebo webové rozhraní API:
 
-## <a name="step-2-install-adal-and-configure-the-single-page-app"></a>Krok 2: Instalace ADAL a konfigurace jednostránkové aplikace
-Teď, když máte aplikaci ve službě Azure AD, můžete nainstalovat adal.js a napsat kód souvisejícím s identitou.
+    * **Název** popisuje aplikaci uživatelům.
+    * **Přihlašovací adresa URL** je umístění, kam bude Azure AD vracet tokeny. Výchozí umístění pro tuto ukázku je `https://localhost:44326/`.
 
-### <a name="configure-the-javascript-client"></a>Konfigurace klienta jazyka JavaScript
-Začněte tím, že přidání adal.js TodoSPA projektu pomocí konzole Správce balíčků:
-  1. Stáhněte si [adal.js](https://raw.githubusercontent.com/AzureAD/azure-activedirectory-library-for-js/master/lib/adal.js) a přidejte ji tak `App/Scripts/` adresář projektu.
-  2. Stáhnout [adal angular.js](https://raw.githubusercontent.com/AzureAD/azure-activedirectory-library-for-js/master/lib/adal-angular.js) a přidejte ji tak `App/Scripts/` adresář projektu.
-  3. Načíst každý skript do konce `</body>` v `index.html`:
+1. Po dokončení registrace přiřadí Azure AD aplikaci jedinečné ID aplikace. Tuto hodnotu budete potřebovat v následujících částech, proto si ji z karty aplikace zkopírujte.
+1. Adal.js používá implicitní tok OAuth ke komunikaci s Azure AD. Implicitní tok musíte pro vaši aplikaci aktivovat:
+
+    1. Klikněte na aplikaci a vyberte **Manifest**. Tím otevřete vložený editor manifestu.
+    1. Najděte vlastnost `oauth2AllowImplicitFlow`. Nastavte její hodnotu na `true`.
+    1. Kliknutím na **Uložit** uložte manifest.
+
+1. Udělte oprávnění pro aplikaci napříč vaším tenantem. Přejděte na **Nastavení > Požadovaná oprávnění** a na horním panelu vyberte tlačítko **Udělit oprávnění**.
+1. Výběrem **Ano** potvrďte.
+
+## <a name="step-2-install-adal-and-configure-the-single-page-app"></a>Krok 2: Instalace ADALu a konfigurace jednostránkové aplikace
+
+Když už máte v Azure AD aplikaci, můžete nainstalovat knihovnu adal.js a zapsat svůj kód související s identitou.
+
+### <a name="configure-the-javascript-client"></a>Konfigurace javascriptového klienta
+
+Začněte tím, že přidáte adal.js do projektu TodoSPA pomocí konzoly Správce balíčků:
+
+1. Stáhněte si [adal.js](https://raw.githubusercontent.com/AzureAD/azure-activedirectory-library-for-js/master/lib/adal.js) a přidejte ho do adresáře projektu `App/Scripts/`.
+2. Stáhněte si [adal-angular.js](https://raw.githubusercontent.com/AzureAD/azure-activedirectory-library-for-js/master/lib/adal-angular.js) a přidejte ho do adresáře projektu `App/Scripts/`.
+3. Načtěte každý skript před konec `</body>` v `index.html`:
 
     ```js
     ...
@@ -79,15 +94,18 @@ Začněte tím, že přidání adal.js TodoSPA projektu pomocí konzole Správce
     ...
     ```
 
-### <a name="configure-the-back-end-server"></a>Konfigurace back-end serveru
-Back-endu pro jednostránkové aplikace back-end na proveďte seznamu rozhraní API přijímat tokeny z prohlížeče, musí Konfigurace informací o registraci aplikace. Otevřete v projektu TodoSPA `web.config`. Nahraďte hodnoty prvků v `<appSettings>` části tak, aby odrážely hodnoty, které jste použili na webu Azure Portal. Váš kód bude odkazovat na tyto hodnoty pokaždé, když se používá ADAL.
-  * `ida:Tenant` je doména tenanta Azure AD – například contoso.onmicrosoft.com.
-  * `ida:Audience` je ID klienta aplikace, které jste zkopírovali z portálu.
+### <a name="configure-the-back-end-server"></a>Konfigurace back-endového serveru
 
-## <a name="step-3-use-adal-to-help-secure-pages-in-the-single-page-app"></a>Krok 3: Použití knihovny ADAL na zabezpečené stránky v jednostránkové aplikaci nápovědy
-Adal.js integruje s AngularJS trasy a zprostředkovatele protokolu HTTP, mohli pomoct zabezpečení jednotlivých zobrazení v jednostránkové aplikace.
+Aby API seznamu úkolů back-endu jednostránkové aplikace přijímalo tokeny z prohlížeče, potřebuje back-end konfigurační informace o registraci aplikace. V projektu TodoSPA otevřete `web.config`. Nahraďte hodnoty prvků v části `<appSettings>` tak, aby odrážely hodnoty, které jste použili na portálu Azure Portal. Váš kód bude tyto hodnoty využívat vždy, když bude používat ADAL.
 
-1. V `App/Scripts/app.js`, načtení modulu adal.js:
+   * `ida:Tenant` je doména tenanta Azure AD – například contoso.onmicrosoft.com.
+   * `ida:Audience` je ID klienta vaší aplikace, které jste zkopírovali z portálu.
+
+## <a name="step-3-use-adal-to-help-secure-pages-in-the-single-page-app"></a>Krok 3: Použití ADALu k zabezpečení stránek v jednostránkové aplikaci
+
+Adal.js se integruje s trasou AngularJS a zprostředkovateli protokolu HTTP, abyste mohli pomáhat zabezpečit jednotlivá zobrazení v jednostránkové aplikaci.
+
+1. V `App/Scripts/app.js` zaveďte modul adal.js:
 
     ```js
     angular.module('todoApp', ['ngRoute','AdalAngular'])
@@ -95,7 +113,7 @@ Adal.js integruje s AngularJS trasy a zprostředkovatele protokolu HTTP, mohli p
      function ($routeProvider, $httpProvider, adalProvider) {
     ...
     ```
-2. Inicializovat `adalProvider` také pomocí hodnoty konfigurace vaší registrace aplikace v `App/Scripts/app.js`:
+2. V `App/Scripts/app.js` také inicializujte `adalProvider` pomocí konfiguračních hodnot vaší registrace aplikace:
 
     ```js
     adalProvider.init(
@@ -109,7 +127,7 @@ Adal.js integruje s AngularJS trasy a zprostředkovatele protokolu HTTP, mohli p
       $httpProvider
     );
     ```
-3. Pomoc se zabezpečením `TodoList` zobrazení v aplikaci s použitím pouze jeden řádek kódu: `requireADLogin`.
+3. Pomozte zabezpečit zobrazení `TodoList` v aplikaci pomocí jenom jednoho řádku kódu: `requireADLogin`.
 
     ```js
     ...
@@ -121,11 +139,12 @@ Adal.js integruje s AngularJS trasy a zprostředkovatele protokolu HTTP, mohli p
     ```
 
 ## <a name="summary"></a>Souhrn
-Teď máte zabezpečené jednostránkovou aplikaci, která může přihlašování uživatelů a zasílání požadavků na chráněný token nosiče k jeho back endového rozhraní API. Když uživatel klikne **TodoList** odkaz, adal.js automaticky přesměruje do služby Azure AD pro přihlášení v případě potřeby. Kromě toho adal.js automaticky připojí přístupového tokenu do všech Ajax požadavků, které se odesílají do back-endu aplikace. 
 
-V předchozích krocích jsou úplné minimum nutné pro sestavení jednostránkové aplikace s použitím adal.js. Ale několik dalších funkcí jsou užitečné pro jednostránkovou aplikaci:
+Teď máte zabezpečenou jednostránkovou aplikaci, která může přihlašovat uživatele a vydávat požadavky chráněné nosnými tokeny pro své back-endové rozhraní API. Když uživatel klikne na odkaz **TodoList**, adal.js se v případě potřeby automaticky přesměruje do Azure AD pro přihlášení. Kromě toho adal.js automaticky připojí přístupový token ke vše požadavkům Ajax, které se odesílají do back-endu aplikace.
 
-* Pokud chcete explicitně zasílání požadavků na přihlášení a odhlášení, můžete definovat funkce ve vašich kontrolerech, které vyvolají adal.js. V `App/Scripts/homeCtrl.js`:
+Předchozí kroky jsou naprostým minimem nutným pro vytvoření jednostránkové aplikace pomocí adal.js. V jednostránkové aplikaci se ale hodí několik dalších funkcí:
+
+* Pokud chcete explicitně vydávat požadavky na přihlášení a odhlášení, můžete definovat funkce ve vašich kontrolerech, které vyvolají adal.js. V `App/Scripts/homeCtrl.js`:
 
     ```js
     ...
@@ -137,7 +156,7 @@ V předchozích krocích jsou úplné minimum nutné pro sestavení jednostránk
     };
     ...
     ```
-* Můžete chtít zobrazit informace o uživateli v Uživatelském rozhraní aplikace. ADAL služby již byla přidána do `userDataCtrl` kontroleru, aby měli přístup k `userInfo` objektu v přidružené zobrazení `App/Views/UserData.html`:
+* Možná budete chtít zobrazit informace o uživateli v uživatelském rozhraní aplikace. Služba ADAL už je přidaná do kontroleru `userDataCtrl`, takže máte přístup k objektu `userInfo` v přidruženém zobrazení `App/Views/UserData.html`:
 
     ```js
     <p>{{userInfo.userName}}</p>
@@ -146,20 +165,22 @@ V předchozích krocích jsou úplné minimum nutné pro sestavení jednostránk
     ...
     ```
 
-* Existuje mnoho scénářů, ve kterých budete chtít vědět, pokud je uživatel přihlášený, nebo ne. Můžete také použít `userInfo` objekt ke shromažďování těchto informací. Například v `index.html`, můžete zobrazit buď **přihlášení** nebo **odhlášení** tlačítko na základě ověřování stavu:
+* Existuje mnoho scénářů, ve kterých budete chtít vědět, jestli je uživatel přihlášený, nebo ne. Tyto informace můžete získat také pomocí objektu `userInfo`. Například v `index.html` můžete zobrazit buď tlačítko **Přihlásit se** nebo **Odhlásit se** na základě stavu ověření:
 
     ```js
     <li><a class="btn btn-link" ng-show="userInfo.isAuthenticated" ng-click="logout()">Logout</a></li>
     <li><a class="btn btn-link" ng-hide=" userInfo.isAuthenticated" ng-click="login()">Login</a></li>
     ```
 
-Jednostránkové aplikace Azure integrované s Active Directory můžete ověřovat uživatele, bezpečně volat back-endu pomocí standardu OAuth 2.0 a získat základní informace o uživateli. Pokud jste tak dosud neučinili, teď je čas k naplnění vašeho tenanta s některými uživateli. Spuštění jednostránkové aplikace seznam úkolů a přihlaste se pomocí jedné z těchto uživatelů. Přidání úkolů do seznamu úkolů uživatele odhlásit a zase přihlásit.
+Jednostránková aplikace integrovaná s Azure AD může ověřovat uživatele, bezpečně volat svůj back-end pomocí OAuth 2.0 a získat základní informace o uživateli. Pokud jste to ještě neudělali, je teď čas naplnit tenanta několika uživateli. Spusťte jednostránkovou aplikaci seznamu úkolů a přihlaste se pomocí jednoho z těchto uživatelů. Přidejte úkoly do uživatelova seznamu úkolů, odhlaste se a zase se přihlaste.
 
-Adal.js umožňuje snadno začlenit do aplikace běžné funkce identity. Ho za vás postará o všechnu práci čistý: Správa mezipaměti, podporu protokolu OAuth, nabízí ten samý uživatel s přihlašovací uživatelské rozhraní, aktualizace vypršení platnosti tokenů a další.
+Adal.js zahrnutí běžných funkcí identity do aplikace usnadňuje. Udělá za vás všechnu tu náročnou práci, jako je správa mezipaměti, podpora protokolu OAuth, zobrazení uživatelského rozhraní pro přihlášení, aktualizace tokenů s vypršenou platností a další úkony.
 
-Pro srovnání je hotová ukázka (bez vašich hodnot nastavení) je k dispozici v [Githubu](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/complete.zip).
+Pro srovnání je hotová ukázka (bez vašich hodnot nastavení) k dispozici na [GitHubu](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/complete.zip).
 
-## <a name="next-steps"></a>Další postup
-Se teď můžete přejít k další scénáře. Můžete zkusit: [volání CORS webového rozhraní API z jednostránkové aplikace](https://github.com/AzureAdSamples/SinglePageApp-WebAPI-AngularJS-DotNet).
+## <a name="next-steps"></a>Další kroky
 
-[!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
+Můžete teď přejít na další scénáře.
+
+> [!div class="nextstepaction"]
+> [Volání webového rozhraní API CORS z jednostránkové aplikace](https://github.com/AzureAdSamples/SinglePageApp-WebAPI-AngularJS-DotNet)

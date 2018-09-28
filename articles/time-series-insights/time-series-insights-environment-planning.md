@@ -11,12 +11,12 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
-ms.openlocfilehash: 90a01e1b6741d0668a71e612d9c0cf90871b67da
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: fa178efadf001b70501b132ede67686ae5c06363
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366314"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422554"
 ---
 # <a name="plan-your-azure-time-series-insights-environment"></a>Plánování prostředí Azure Time Series Insights
 
@@ -72,7 +72,7 @@ Následující tabulka shrnuje kapacita příchozího přenosu dat pro každý S
 |S1     |   30 milionů     |  30 GB     |  720    |  720 KB   |
 |S2     |   300 milionů    |   300 GB   | až 7 200   | 7200 KB  |
 
-Můžete zvýšit kapacitu S1 nebo S2 SKU na 10 jednotek v jednom prostředí. Nelze migrovat z prostředí S1 na S2 nebo z prostředí S2 S1. 
+Můžete zvýšit kapacitu S1 nebo S2 SKU na 10 jednotek v jednom prostředí. Nelze migrovat z prostředí S1 na S2 nebo z prostředí S2 S1.
 
 Za příchozí přenos dat kapacitu nejdřív byste měli zjistit celkový příchozí přenos dat podle vašich požadavků na základě za měsíc. V dalším kroku zjistěte, jaká vaše minutách potřeby jsou, protože se jedná, kde omezení šířky pásma a čekací doba hrají roli.
 
@@ -90,32 +90,36 @@ Nemusí vědět předem kolik dat očekáváte, push. V takovém případě mů�
  
 ### <a name="mitigate-throttling-and-latency"></a>Zmírnění omezování a latence
 
-Informace o tom, aby se zabránilo omezení šířky pásma a čekací doba najdete v tématu [snížit latenci a omezování](time-series-insights-environment-mitigate-latency.md). 
+Informace o tom, aby se zabránilo omezení šířky pásma a čekací doba najdete v tématu [snížit latenci a omezování](time-series-insights-environment-mitigate-latency.md).
 
 ## <a name="shaping-your-events"></a>Strukturování události
-Je důležité pro zaručení způsob odesílání událostí do služby TSI podporuje velikost prostředí, které zřizujete (a naopak, můžete namapovat velikost prostředí tak, aby počet událostí TSI přečte a velikost každé události).  Podobně je důležité zvážit atributy, které můžete chtít rozdělit a filtrovat podle při zadávání dotazů na data.  S myslete na to, doporučujeme revize JSON tvarování část naší *odesílání událostí* dokumentace [dokumentace] (https://docs.microsoft.com/azure/time-series-insights/time-series-insights-send-events).  Je směrem k dolní části stránky.  
+Je důležité pro zaručení způsob odesílání událostí do služby TSI podporuje velikost prostředí, které zřizujete (a naopak, můžete namapovat velikost prostředí tak, aby počet událostí TSI přečte a velikost každé události).  Podobně je důležité zvážit atributy, které můžete chtít rozdělit a filtrovat podle při zadávání dotazů na data.  S myslete na to, doporučujeme revize JSON tvarování část naší [odesílání událostí dokumentaci](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-send-events).  Je směrem k dolní části stránky.  
 
 ## <a name="ensuring-you-have-reference-data-in-place"></a>Ověříte, že máte referenční data na místě
 Referenční sady dat je kolekce položek, které rozšiřují události ze zdroje událostí. Modul příchozího přenosu dat čas Series Insights spojí každé události ze zdroje událostí s odpovídající řádek dat v referenční sadě dat. Tato rozšířená událost je pak k dispozici pro dotaz. Toto připojení je založené na sloupců primárního klíče, které jsou definované v referenční sadě dat.
 
 Mějte na paměti, referenčních dat není připojený zpětně. To znamená, že pouze aktuální a budoucí příchozího přenosu dat je odpovídající a připojený k sady referenční data, jakmile byl nakonfigurován a nahráli.  Pokud budete chtít poslat TSI velké množství historických dat a není nahrát nebo vytvořit referenční data ve službě TSI nejprve, pak bude pravděpodobně nutné znovu provedení práce (pomocného parametru, ne fun).  
 
-Další informace o tom, jak vytvořit, odesílat a spravovat vaše referenčních dat ve službě TSI, přejděte na naše *odkazují na data* dokumentaci [dokumentaci](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set).
+Další informace o tom, jak vytvořit, odesílat a spravovat vaše referenčních dat ve službě TSI, přejděte na naše [referenční dokumentace sady dat](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set).
 
 ## <a name="business-disaster-recovery"></a>Zotavení po havárii firmy
-Jako službu Azure Time Series Insights poskytuje vysokou dostupnost (HA) pomocí redundance na úrovni oblasti Azure, bez jakékoli další práce požadováno řešením. Platforma Microsoft Azure také zahrnuje funkce, které vám pomůžou vytvářet řešení s možností zotavení po havárii nebo dostupnosti mezi oblastmi. Pokud chcete zadat globální, mezi různými oblastmi vysoká dostupnost pro zařízení nebo uživatele, využijte tyto funkce zotavení po Havárii Azure. Tento článek [Azure obchodní kontinuity podnikových procesů technickou pomoc](../resiliency/resiliency-technical-guidance.md) popisuje předdefinované funkce v Azure pro provozní kontinuitu a zotavení po Havárii. [Zotavení po havárii a vysoká dostupnost pro aplikace Azure] [https://docs.microsoft.com/en-us/azure/architecture/resiliency/index] dokument obsahuje pokyny k architektuře strategie pro aplikace v Azure zajistit vysokou dostupnost a zotavení po Havárii.
+Jako službu Azure Time Series Insights poskytuje vysokou dostupnost (HA) pomocí redundance na úrovni oblasti Azure, bez jakékoli další práce požadováno řešením. Platforma Microsoft Azure také zahrnuje funkce, které vám pomůžou vytvářet řešení s možností zotavení po havárii nebo dostupnosti mezi oblastmi. Pokud chcete zadat globální, mezi různými oblastmi vysoká dostupnost pro zařízení nebo uživatele, využijte tyto funkce zotavení po Havárii Azure. Tento článek [Azure obchodní kontinuity podnikových procesů technickou pomoc](../resiliency/resiliency-technical-guidance.md) popisuje předdefinované funkce v Azure pro provozní kontinuitu a zotavení po Havárii. [Zotavení po havárii a vysoká dostupnost pro aplikace Azure](https://docs.microsoft.com/azure/architecture/resiliency/index) dokument obsahuje pokyny k architektuře strategie pro aplikace v Azure zajistit vysokou dostupnost a zotavení po Havárii.
 
-Azure Time Series Insights nemá integrované zotavení po havárii (BCDR). Zákazníci, kteří vyžadují BCDR stále můžete implementovat strategii zotavení následujícím způsobem: 
+Azure Time Series Insights nemá integrované zotavení po havárii (BCDR).
+Ve výchozím nastavení mají obnovení vytvořené Azure IoT Hub a Event Hubs.
 
-Vytvoření druhého prostředí Time Series Insights v oblasti zálohování Azure a odesílá je do této sekundární prostředí ze zdroje primární události, využívat druhou vyhrazenou skupinu spotřebitelů a pokyny pro tento zdroj události BCDR.  
+Další informace o službě IoT Hub BCDR zásady, head [tady](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr).  
+
+Další informace o zásadách BCDR centra událostí, head [tady](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr).
+
+Zákazníci, kteří vyžadují BCDR však stále implementovat strategii zotavení pomocí následující metody.
+Můžete vytvořit druhý prostředí Time Series Insights v zálohování Azure oblasti a odesílání událostí do tohoto sekundárního prostředí z zdroj primární události, využívat druhý vyhrazenou skupinu spotřebitelů a pokyny pro tento zdroj události BCDR.  
 
 1.  Vytvořte prostředí v druhé oblasti.  Další informace o vytvoření prostředí Time Series Insights [tady](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started).
 2.  Vytvoření druhého vyhrazenou skupinu spotřebitelů pro váš zdroj událostí a připojení tohoto zdroje událostí do nového prostředí.  Nezapomeňte určit druhé, vyhrazená skupina příjemců.  Další informace o tomto podle buď [dokumentace ke službě IoT Hub](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub) nebo [dokumentace k centrům událostí](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-data-access).
 3.  Pokud primární oblast, přestanou fungovat během události po havárii, přepněte operací zálohování prostředí Time Series Insights.  
 
-Ve výchozím nastavení mají obnovení integrované služby Azure Iot Hub a Event Hubs. Další informace o službě IoT Hub BCDR zásady, head [tady](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr).  Další informace o zásadách BCDR centra událostí, head [tady](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr).  
-
-Je **důležité si uvědomit** během jakýkoli scénář převzetí služeb při selhání může docházet k prodlevám před TSI znovu spusťte zpracování zpráv. To může způsobit prudký nárůst v prosím zkuste pro další informace o zpracování zpráv podívat [čas Series Insights spravovat omezení](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-environment-mitigate-latency)
+Je **důležité si uvědomit** během jakýkoli scénář převzetí služeb při selhání může docházet k prodlevám před TSI znovu spusťte zpracování zpráv: to může způsobit Špička při zpracování zpráv. Další informace prosím podívejte se na [tento dokument](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency)
 
 ## <a name="next-steps"></a>Další postup
 - [Přidání zdroje událostí centra událostí](time-series-insights-how-to-add-an-event-source-eventhub.md)

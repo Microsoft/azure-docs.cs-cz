@@ -1,44 +1,57 @@
 ---
-title: Přehled služby Azure Video Indexer | Microsoft Docs
+title: Co je Video Indexer?
+titlesuffix: Azure Cognitive Services
 description: Toto téma nabízí přehled služby Azure Video Indexer.
 services: cognitive services
-documentationcenter: ''
 author: juliako
-manager: erikre
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: video-indexer
 ms.topic: overview
-ms.date: 07/25/2018
+ms.date: 09/15/2018
 ms.author: nolachar
-ms.openlocfilehash: f52c4af29d0c7de8b5edbe869640ffc5dddb5c5e
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: fd92e91989bd1a37626227b327d644c9d704ab6c
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397887"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983010"
 ---
-# <a name="what-is-video-indexer-preview"></a>Co je Video Indexer? (Preview)
+# <a name="what-is-video-indexer"></a>Co je Video Indexer?
 
-Video Indexer je cloudová aplikace sestavená s využitím služeb Azure Media Analytics, Cognitive Services (jako jsou rozhraní API pro rozpoznávání tváře, Microsoft Translator, rozhraní API pro počítačové zpracování obrazu a služba Custom Speech) a Azure Search. Pomocí technologií umělé inteligence umožňuje extrahovat z videí následující přehledy:
-
-- **Automatická detekce jazyka:** Video Indexer dokáže automaticky rozpoznat jazyk videa. Automatické rozpoznávání jazyka v současné době podporuje angličtinu, španělštinu, francouzštinu, němčinu, italštinu, čínštinu (zjednodušenou), japonštinu a ruštinu. Pokud jazyk nejde rozpoznat, přejde se zpátky k angličtině.
-- **Přepis zvuku:** Video Indexer má funkce pro převod řeči na text, které zákazníkům umožňují získat přepis mluveného slova. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, čínština (zjednodušená), portugalština (Brazílie), japonština a ruština (a v budoucnu se chystá řada dalších jazyků). 
-- **Identifikace a sledování tváří:** Technologie rozpoznávání tváře umožňují detekovat tváře ve videu. Detekované tváře se porovnávají s databází celebrit a zjišťuje se, které celebrity se ve videu vyskytují. Zákazníci také mohou označit tváře, které se neodpovídají celebritám. Video Indexer na základě těchto označení sestaví model tváří a dokáže tyto tváře rozpoznávat ve videích nahraných v budoucnu.
-- **Indexování mluvčích:** Video Indexer má schopnost mapovat a pochopit, který mluvčí pronesl která slova a kdy.
-- **Vizuální rozpoznávání textu:** Pomocí této technologie služba Video Indexer extrahuje text, který se zobrazuje ve videích.  
-- **Detekce hlasových aktivit:** Tato detekce umožňuje Video Indexeru oddělit šum na pozadí od hlasových aktivit. 
-- **Rozpoznávání scén:** Video Indexer má schopnost provádět vizuální analýzu k toho, kdy se ve videu změní scéna.
-- **Extrakce klíčových snímků:** Video Indexer ve videu automaticky rozpozná klíčové snímky. 
-- **Analýza mínění:** Video Indexer provádí analýzu mínění pro text extrahovaný pomocí převodu řeči na text a optického rozpoznávání znaků a poskytuje informace ve formě kladného, záporného nebo neutrálního mínění spolu s časovými kódy.
-- **Překlad:** Video Indexer dokáže přeložit přepis zvukového záznamu z jednoho jazyka do druhého. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, zjednodušená čínština, brazilská portugalština, japonština a ruština. Po překladu uživatel může dokonce získat titulky ve videopřehrávači v jiných jazycích.
-- **Moderování vizuálního obsahu:** Tato technologie umožňuje ve videích detekovat obsah pro dospělé nebo nevhodný obsah a dá se využít k filtrování obsahu. 
-- **Extrakce klíčových slov:** Video Indexer extrahuje klíčová slova na základě přepisu mluveného slova a textu rozpoznaného pomocí modulu pro rozpoznání vizuálního textu.
-- **Označení:** Video Indexer poskytuje označení pro vizuální objekty, jako je kočka, pes, tabulka nebo auto, a také pro akce, jako stojící, běžící nebo letící.
-- **Značky:** Video Indexer extrahuje obchodní značky na základě přepisu mluveného slova a textu rozpoznaného pomocí modulu pro rozpoznání vizuálního textu.
+Azure Video Indexer je cloudová aplikace sestavená s využitím služeb Azure Media Analytics, Azure Search, Cognitive Services (jako jsou rozhraní API pro rozpoznávání tváře, Microsoft Translator, rozhraní API pro počítačové zpracování obrazu a služba Custom Speech). Umožňuje extrahovat přehledy z videí pomocí modelů Video Indexeru popsaných níže:
+ 
+- **Automatické rozpoznávání jazyka**: Automaticky identifikuje převládající mluvený jazyk. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, zjednodušená čínština, japonština, ruština a brazilská portugalština. Pokud jazyk nejde rozpoznat, přejde se zpátky k angličtině.
+- **Přepis zvuku**: Převede řeč na text v 10 jazycích a umožňuje rozšíření. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, zjednodušená čínština, japonština, arabština, ruština a brazilská portugalština.
+- **Tvorba titulků**: Vytvoří titulky ve třech formátech: VTT, TTML, SRT.
+- **Dvoukanálové zpracování**: Pomocí automatické detekce oddělí přepis a sloučí vše do jediné časové osy.
+- **Snížení šumu**: Vyčistí telefonní zvuk nebo záznamy s velkým šumem (pomocí filtrů Skypu).
+- **Přizpůsobení přepisu (CRIS)**: Trénuje a spouští rozšířené vlastní modely převodu řeči na text k vytváření přepisů specifických pro dané odvětví.
+- **Výčet mluvčích**: Mapuje a poznává, který mluvčí řekl která slova a kdy.
+- **Statistiky mluvčích**: Poskytuje statistiky o poměru řeči jednotlivých mluvčích.
+- **Vizuální rozpoznávání znaků (OCR)**: Extrahuje text, který je vizuálně zobrazený ve videu.
+- **Extrakce klíčových snímků**: Zjistí stabilní klíčové snímky ve videu.
+- **Analýza citového zabarvení**: Identifikuje kladná, záporná a neutrální zabarvení řeči a vizuálního textu.
+- **Zmírnění vizuálního obsahu**: Detekuje vizuální obsah jen pro dospělé nebo nevhodný obsah.
+- **Extrakce klíčových slov**: Extrahuje klíčová slova z řeči a vizuálního textu.
+- **Identifikace popisků**: Identifikuje vizuální objekty a zobrazené akce.
+- **Extrakce značek**: Extrahuje značky z řeči a vizuálního textu.
+- **Detekce tváří**: Detekuje a seskupí tváře, které jsou ve videu zobrazené.
+- **Extrakce miniatur tváří („nejlepší tvář“)**: Automaticky identifikuje nejvhodnější zachycenou tvář v každé skupině tváří (podle kvality, velikosti a čelní polohy) a extrahuje ji jako obrázek.
+- **Identifikace celebrit**: Rozpozná celebrity ve videu podle databáze 1 milionu celebrit. Zdroje pochází z IMDb, Wikipedie a nejvlivnějších osob z LinkedIn.
+- **Vlastní identifikace tváří**: Rozpozná tváře na videu podle vlastního modelu vytrénovaného pro konkrétní účet.
+- **Zmírnění textového obsahu**: Detekuje explicitní text v přepisu zvuku.
+- **Detekce záběrů**: Zjistí, kdy se ve videu změnila scéna.
+- **Detekce černých snímků**: Identifikuje černé snímky ve videu.
+- **Zvukové efekty**: Identifikuje zvukové efekty, jako je tleskání, řeč a ticho.
+- **Dedukce témat**: Dedukuje hlavní témata z přepisů. Zahrnuje taxonomii [IPTC](https://iptc.org/standards/media-topics/) 1. úrovně.
+- **Rozpoznávání emocí**: Identifikuje emoce podle náznaků v řeči a zvuku. Rozpozná tyto emoce: radost, smutek, hněv nebo strach.
+- **Artefakty**: Extrahuje bohatou sadu artefaktů s „další úrovní podrobností“ pro každý z modelů.
+- **Překlad**: Vytvoří překlady přepisu zvuku do 54 různých jazyků.
 
 Jakmile Video Indexer dokončí zpracování a analýzu, můžete přehledné informace o videích revidovat, kurátorovat, prohledávat a publikovat.
 
-Služba Video Indexer dokáže splnit vaše požadavky, ať už jste vývojář, nebo správce obsahu. Správci obsahu mohou využívat webový portál služby Video Indexer k využití této služby, aniž by museli napsat jediný řádek kódu. Další informace najdete v tématu věnovaném [zahájení práce s portálem služby Video Indexer](video-indexer-get-started.md). Vývojáři mohou využít rozhraní API ke zpracování obsahu ve velkém měřítku, viz téma věnované [použití rozhraní REST API služby Video Indexer](video-indexer-use-apis.md). Tato služba také zákazníkům umožňuje používat widgety k publikování datových proudů videa a extrahovaných přehledů ve vlastních aplikacích. Další informace najdete v tématu [Vložení vizuálních widgetů do vaší aplikace](video-indexer-embed-widgets.md).
+Služba Video Indexer dokáže splnit vaše požadavky, ať už jste vývojář, nebo správce obsahu. Správci obsahu můžou pomocí webového portálu Video Indexer tuto službu využívat, aniž by museli napsat jediný řádek kódu. Další informace najdete v článku [Začínáme s webem Video Indexer](video-indexer-get-started.md). Vývojáři mohou využít rozhraní API ke zpracování obsahu ve velkém měřítku, viz téma věnované [použití rozhraní REST API služby Video Indexer](video-indexer-use-apis.md). Tato služba také zákazníkům umožňuje používat widgety k publikování datových proudů videa a extrahovaných přehledů ve vlastních aplikacích. Další informace najdete v tématu [Vložení vizuálních widgetů do vaší aplikace](video-indexer-embed-widgets.md).
 
 K registraci této služby můžete využít existující účet služeb AAD, LinkedIn, Facebook, Google nebo MSA. Další informace najdete v tématu [Začínáme](video-indexer-get-started.md).
 
@@ -58,6 +71,6 @@ Další informace najdete na tomto [blogu](http://aka.ms/videoindexerblog).
 
 Jste připraveni začít pracovat s Video Indexerem. Další informace najdete v následujících článcích:
 
-- [Začínáme s portálem služby Video Indexer](video-indexer-get-started.md)
+- [Začínáme s webem Video Indexer](video-indexer-get-started.md)
 - [Zpracování obsahu pomocí rozhraní REST API služby Video Indexer](video-indexer-use-apis.md)
 - [Vložení vizuálních widgetů do vaší aplikace](video-indexer-embed-widgets.md)

@@ -1,111 +1,112 @@
 ---
-title: Použití Azure rozhraní Video Indexer API | Dokumentace Microsoftu
-description: Tento článek ukazuje, jak začít používat rozhraní Video Indexer API.
+title: 'Kurz: Používání rozhraní API Video Indexeru'
+titlesuffix: Azure Cognitive Services
+description: Tento článek ukazuje, jak začít používat rozhraní API Video Indexeru.
 services: cognitive services
-documentationcenter: ''
 author: juliako
-manager: erikre
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: video-indexer
+ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: juliako
-ms.openlocfilehash: bd0f9e01257bec2d39ef0c8e13b68c4a7a13637d
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
-ms.translationtype: MT
+ms.openlocfilehash: 7bd7ed1b2d2f437ef57598c42ca12ce8bfb174a1
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542917"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985561"
 ---
-# <a name="use-azure-video-indexer-api"></a>Použití Azure rozhraní Video Indexer API
+# <a name="tutorial-use-the-video-indexer-api"></a>Kurz: Používání rozhraní API Video Indexeru
 
 > [!Note]
-> 1. srpna 2018 se přestala nabízet Video Indexer V1 API. Byste teď měli použít rozhraní Video Indexer API v2. <br/>Vývoj pomocí rozhraní API pro Video Indexer v2, najdete pokyny, nalezeno [tady](https://api-portal.videoindexer.ai/). 
+> API Video Indexeru ve verzi 1 se přestalo používat 1. srpna 2018. Teď byste měli používat rozhraní API Video Indexeru ve verzi 2. <br/>Pokyny k vývoji pomocí rozhraní API Video Indexeru ve verzi 2 najdete [tady](https://api-portal.videoindexer.ai/). 
 
-Video Indexer konsoliduje různých technologií audio a video umělé inteligence (AI) nabízené microsoftem v jedné integrované služby, což usnadňuje vývoj. Rozhraní API slouží k povolení, který vývojářům zaměřit se na používání technologie AI média bez starostí o škálování, globální přístup, dostupnost a spolehlivost cloudovou platformu. Rozhraní API můžete nahrát soubory, dostávat podrobné poznatky z videí, získání adres URL insight a player widgetů k vložení do vaší aplikace a další úlohy.
+Video Indexer slučuje různé technologie umělé inteligence (AI) pro zvuk a video nabízené Microsoftem do jedné integrované služby a tím usnadňuje vývoj. Rozhraní API umožňují vývojářům zaměřit se na používání technologií AI pro média, aniž by se museli starat o škálování, globální dosah, dostupnost a spolehlivost cloudové platformy. Rozhraní API můžete využívat k nahrávání souborů, získání podrobných přehledů z videí, získání adres URL widgetů přehledů a přehrávače k vložení do vaší aplikace i k dalším úlohám.
 
-Při vytváření účtu Video Indexer, můžete vybrat účet bezplatné zkušební verze (ve kterém získáte určitý počet minut zdarma indexování) nebo placenou variantu (Pokud nejste omezení kvóty). S bezplatnou zkušební verzi Video Indexer poskytuje až 600 minut zdarma indexování uživatelům webu a až 2 400 minut zdarma indexování uživatelům rozhraní API. S placenou variantu, vytvoříte účet služby Video Indexer, který je [připojené k vašemu předplatnému Azure a účet služby Azure Media Services](connect-to-azure.md). Platíte za minut indexované stejně jako související poplatky za účet Azure Media Services. 
+Při vytváření účtu Video Indexeru můžete zvolit účet bezplatné zkušební verze (ve kterém získáte určitý počet minut indexování zdarma) nebo placenou variantu (ve které nejste omezení kvótou). V bezplatné zkušební verzi Video Indexer poskytuje až 600 minut bezplatného indexování pro uživatele webu a až 2400 minut bezplatného indexování pro uživatele rozhraní API. S placenou variantou vytvoříte účet Video Indexeru, který je [spojený s vaším předplatným Azure a účtem Azure Media Services](connect-to-azure.md). Platíte za indexované minuty a také poplatky související s účtem Azure Media Services. 
 
-Tento článek popisuje, jak vývojáři mohou využít výhod [Video Indexer API](https://api-portal.videoindexer.ai/).
+Tento článek popisuje, jak můžou vývojáři využít výhod rozhraní [API Video Indexeru](https://api-portal.videoindexer.ai/).
 
-## <a name="subscribe-to-the-api"></a>Přihlaste se k rozhraní API odběru
+## <a name="subscribe-to-the-api"></a>Přihlášení k odběru rozhraní API
 
-1. Přihlaste se k [portál pro vývojáře Video Indexer](https://api-portal.videoindexer.ai/).
+1. Přihlaste se k portálu [Video Indexer Developer Portal](https://api-portal.videoindexer.ai/).
     
     ![Přihlášení](./media/video-indexer-use-apis/video-indexer-api01.png)
 
     > [!Important]
-    > * Je nutné použít stejný zprostředkovatel, který jste použili při registraci pro Video Indexer.
-    > * Osobní Google a Microsoft (outlook nebo živé) účty jde použít jenom pro účty. Účty připojené k Azure vyžadují služby Azure AD.
-    > * Může existovat pouze jeden aktivní účet na e-mailu. Pokud se uživatel pokusí přihlásit pomocí user@gmail.com pro LinkedIn a potom s user@gmail.com pro Google pozdější zobrazí chybovou stránku, informacemi o tom uživatel již existuje.
+    > * Musíte použít stejného zprostředkovatele, jakého jste použili při registraci k Video Indexeru.
+    > * Osobní účty Google a Microsoft (Outlook nebo Live) jde použít jenom pro zkušební verze účtu. Účty připojené k Azure vyžadují Azure AD.
+    > * Pro každý e-mail může existovat jenom jeden aktivní účet. Pokud se uživatel pokusí přihlásit pomocí adresy user@gmail.com pro LinkedIn a pak pomocí adresy user@gmail.com pro Google, ve druhém případě se zobrazí chybová stránka s informací, že uživatel už existuje.
 
-2. Přihlásit k odběru.
+2. Přihlaste se k odběru.
 
-    Vyberte [produkty](https://api-portal.videoindexer.ai/products) kartu. Potom vyberte autorizace a odběru. 
+    Vyberte kartu [Products](https://api-portal.videoindexer.ai/products) (Produkty). Pak vyberte Authorization (Autorizace) a Subscribe (Přihlásit se k odběru). 
     
     ![Registrace](./media/video-indexer-use-apis/video-indexer-api02.png)
 
     > [!NOTE]
-    > Noví uživatelé automaticky přihlášeni k autorizaci.
+    > Noví uživatelé jsou k odběru API Authorization automaticky přihlášení.
     
-    Po přihlášení k odběru, budete moct zobrazit vaše předplatné a primárním a sekundárním klíčem. Klíče by měly být chráněné. Klíče by měly být používány pouze váš kód serveru. Jejich by neměl být k dispozici na na straně klienta (.js, HTML atd.).
+    Po přihlášení k odběru budete moct zobrazit svůj odběr a primární a sekundární klíč. Klíče by měly být chráněné. Klíče by měl používat jenom kód vašeho serveru. Neměly by být k dispozici na straně klienta (.js, html apod.).
 
     ![Registrace](./media/video-indexer-use-apis/video-indexer-api03.png)
 
-## <a name="obtain-access-token-using-the-authorization-api"></a>Získání přístupového tokenu pomocí rozhraní API pro autorizaci
+## <a name="obtain-access-token-using-the-authorization-api"></a>Získání přístupového tokenu pomocí rozhraní API Authorization
 
-Jakmile odebíráte autorizace rozhraní API, bude moct získat přístupové tokeny. Tyto tokeny přístupu se používají k ověřování s využitím rozhraní API operace. 
+Po přihlášení k odběru API Authorization budete moct získat přístupové tokeny. Tyto přístupové tokeny se používají k ověřování v API Operations. 
 
-Každé volání rozhraní API operace by měly být přidruženy s přístupovým tokenem, odpovídající rozsah autorizace volání.
+Každé volání do API Operations by mělo být přidružené k přístupovému tokenu s odpovídajícím oborem autorizace volání.
 
-- Uživatelů level – tokeny uživatele úroveň přístupu vám umožní provádět operace na **uživatele** úroveň. Třeba získáte přidružené účty.
-- Úroveň účtu – tokenů úroveň přístupu účtu vám umožní provádět operace na **účet** úroveň nebo **videa** úroveň. Například nahrání videa, vypsat všechna videa, můžete získat nové poznatky z videí, atd.
-- Video úroveň – tokeny přístupu na úrovni videa umožňují provádět operace s konkrétní **videa**. Třeba získat nové poznatky z videí, stáhněte si titulky a získejte widgetů, atd. 
+- Úroveň uživatele – přístupové tokeny na úrovni uživatele vám umožní provádět operace na úrovni **uživatele**. Třeba získat přidružené účty.
+- Úroveň účtu – přístupové tokeny na úrovni účtu vám umožní provádět operace na úrovni **účtu** nebo na úrovni **videa**. Například nahrát video, vypsat všechna videa, získat přehledy z videa apod.
+- Úroveň videa – přístupové tokeny na úrovni videa vám umožní provádět operace s konkrétním **videem**. Třeba získat nové přehledy z videa, stáhnout titulky, získat widgety apod. 
 
-Můžete řídit, jestli tyto tokeny jsou jen pro čtení nebo povolit úpravy zadáním **allowEdit = true/false**.
+Zadáním **allowEdit=true/false** můžete řídit, jestli jsou tyto tokeny jen pro čtení, nebo povolují úpravy.
 
-Pro většinu scénářů na serveru, budete pravděpodobně používat stejné **účet** token zahrnuje obě **účet** operací a **videa** operace. Ale pokud máte v úmyslu provést na straně klienta volání do modulu Video Indexer (například z JavaScriptu), je vhodné používat **videa** přístupový token, čímž zabráníte klientům přístup k na celý účet. Který je také důvodem, že vložení VideoIndexer klientský kód do vašeho klienta (například pomocí **získat přehledy widgetu** nebo **získat widgetu Player**) je nutné zadat **video**přístupový token.
+Pro většinu scénářů mezi servery budete pravděpodobně používat stejný token **účtu**, protože zahrnuje operace **účtu** i **videa**. Pokud ale máte v úmyslu provádět volání do Video Indexeru na straně klienta (třeba z JavaScriptu), je vhodné používat přístupový token **videa**, abyste klientům zabránili v přístupu k celému účtu. To je také důvodem, proč při vkládání klientského kódu Video Indexeru do vašeho klienta (třeba pomocí API **Get Insights Widget** nebo **Get Player Widget**) musíte poskytnout přístupový token **videa**.
 
-Zájmu usnadnění můžete použít **autorizace** rozhraní API > **GetAccounts** k získání tokenu nejprve vašich účtů bez získání uživatele. Můžete také požádat účet s platným tokeny, můžete přeskočit další volání pro získání tokenu účtu.
+Kvůli usnadnění můžete pomocí **Autorization** API > **GetAccounts** získat účty bez předchozího získání tokenu uživatele. Můžete také požádat o získání účtů s platnými tokeny. To vám umožní přeskočit další volání pro získání tokenu účtu.
 
-Přístupové tokeny vyprší za 1 hodinu. Ujistěte se, že váš přístupový token je platný před použitím operace rozhraní API. Pokud vyprší platnost, volání rozhraní API autorizace znovu k získání nového tokenu přístupu.
+Platnost přístupových tokenů vyprší za 1 hodinu. Před použitím API Operations se ujistěte, že je váš přístupový token platný. Pokud platnost vyprší, znovu volejte API Authorization, abyste získali nový přístupový token.
  
-Jste připraveni pustit do integrace s rozhraním API. Najít [podrobný popis každé Video Indexer REST API](http://api-portal.videoindexer.ai/).
+Jste připraveni pustit se do integrace pomocí rozhraní API. Najděte si [podrobný popis každého REST API Video Indexeru](http://api-portal.videoindexer.ai/).
 
 ## <a name="location"></a>Umístění
 
-Všechny operace rozhraní API vyžaduje parametr umístění, která označuje oblast, na který by měl směrovat volání a který účet vytvořil.
+Všechna API operací vyžadují parametr Location (Poloha), který označuje oblast, do které by se mělo volání směrovat a ve kterém byl vytvořen účet.
 
-Použít s hodnotami popsanými v následující tabulce. **Param value** je hodnota, pokud předáte pomocí rozhraní API.
+Používají se hodnoty popsané v následující tabulce. **Hodnota parametru** je hodnota, kterou předáte při použití rozhraní API.
 
 |**Název**|**Hodnota parametru**|**Popis**|
 |---|---|---|
-|Zkušební verze|Zkušební verze|Používá pro účty.|
+|Zkušební verze|trial|Používá se pro zkušební účty.|
 |USA – západ|westus2|Používá se pro oblasti Azure USA – západ 2.|
-|Severní Evropa |northeurope|Používá se pro oblast Evropa – sever Azure.|
-|Východní Asie|eastasia|Používá se pro oblast Azure východní Asie.|
+|Severní Evropa |northeurope|Používá se pro oblasti Azure Severní Evropa.|
+|Východní Asie|eastasia|Používá se pro oblasti Azure Východní Asie.|
 
-## <a name="account-id"></a>ID účtu 
+## <a name="account-id"></a>Account ID 
 
-Parametr ID účtu se vyžaduje u všech provozních volání rozhraní API. ID účtu je identifikátor GUID, který lze získat v jednom z následujících způsobů:
+Parametr Account ID (ID účtu) se vyžaduje u všech volání API operací. ID účtu je globálně jedinečný identifikátor, který se dá získat jedním z těchto způsobů:
 
-* Použití **Video Indexer webu** k získání ID účtu:
+* K získání ID účtu použijte **web Video Indexer**:
 
-    1. Přejděte [Video Indexer](https://www.videoindexer.ai/) web a přihlaste se.
-    2. Přejděte **nastavení** stránky.
+    1. Přejděte na web [Video Indexer](https://www.videoindexer.ai/) a přihlaste se.
+    2. Přejděte na stránku **Settings** (Nastavení).
     3. Zkopírujte ID účtu.
 
-        ![ID účtu](./media/video-indexer-use-apis/account-id.png)
+        ![Account ID](./media/video-indexer-use-apis/account-id.png)
 
-* Použití **portál pro vývojáře Video Indexer** prostřednictvím kódu programu získat ID účtu.
+* K získání ID účtu prostřednictvím programu použijte **Video Indexer Developer Portal**.
 
-    Použití [získat účty](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Accounts?) rozhraní API.
+    Použijte API [Get Accounts](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Accounts?) (Získat účty).
     
     > [!TIP]
-    > Můžete generovat přístupové tokeny pro účty tak, že definujete `generateAccessTokens=true`.
+    > Přístupové tokeny pro účty můžete vygenerovat tak, že definujete `generateAccessTokens=true`.
     
-* Získejte ID účtu z adresy URL pro přehrávač stránky ve vašem účtu.
+* Získejte ID účtu z adresy URL stránky přehrávače ve vašem účtu.
 
-    Při sledování videa ID se zobrazí po `accounts` oddílu a před `videos` oddílu.
+    Při sledování videa se ID zobrazuje za částí `accounts` a před částí `videos`.
 
     ```
     https://www.videoindexer.ai/accounts/00000000-f324-4385-b142-f77dacb0a368/videos/d45bf160b5/
@@ -113,17 +114,17 @@ Parametr ID účtu se vyžaduje u všech provozních volání rozhraní API. ID 
 
 ## <a name="recommendations"></a>Doporučení
 
-Tato část uvádí několik doporučení, při použití rozhraní Video Indexer API.
+Tato část uvádí několik doporučení pro používání rozhraní API Video Indexeru.
 
-- Pokud se chystáte nahrát video, doporučujeme umístit soubor do umístění veřejné síti (třeba Onedrivu). Získejte odkaz na video a zadejte adresu URL jako param nahrávání souboru. 
+- Pokud se chystáte nahrát video na server, doporučujeme umístit soubor do veřejného síťového umístění (jako je OneDrive). Získejte odkaz na video a zadejte adresu URL jako parametr souboru k nahrání. 
 
-    Adresy URL poskytnuté do modulu Video Indexer musí odkazovat na soubor média (zvuku nebo videa). Některé z odkazů generovaných OneDrive jsou určené pro stránku HTML, který obsahuje soubor. Jednoduché ověřování pro adresu URL může být vložením do prohlížeče – Pokud se tento soubor spustí stahování, je pravděpodobně dobrý adresy URL. Pokud v prohlížeči je vykreslování některé vizualizace, není pravděpodobně odkaz na soubor, ale stránku HTML.
+    Adresa URL poskytnutá Video Indexeru musí odkazovat na soubor média (zvukový nebo video). Některé z odkazů vygenerovaných OneDrivem vedou na pro stránku HTML, která soubor obsahuje. Adresu URL můžete jednoduše ověřit vložením do prohlížeče – pokud se soubor začne stahovat, je adresa URL pravděpodobně správná. Pokud prohlížeč zobrazuje vizuální obsah, pravděpodobně se nejedná o odkaz na soubor, ale stránku HTML.
     
-- Při volání rozhraní API, která získá nové poznatky z videí pro zadaný videu získáte podrobný výstup JSON jako obsah odpovědi. [Zobrazit podrobnosti o vrácený JSON v tomto tématu](video-indexer-output-json.md).
+- Při volání rozhraní API, které získává přehledy ze zadaného videa získáte jako obsah odpovědi podrobný výstup JSON. [Podrobnosti o vráceném JSON najdete v tomto tématu](video-indexer-output-json.md).
 
 ## <a name="code-sample"></a>Ukázka kódu
 
-Následující fragment kódu jazyka C# ukazuje využití všechna rozhraní Video Indexer API společně.
+Následující fragment kódu v jazyce C# předvádí společné použití všech rozhraní API Video Indexeru.
 
 ```csharp
 var apiUrl = "https://api.videoindexer.ai";
@@ -219,8 +220,8 @@ Debug.WriteLine(playerWidgetLink);
 
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Zkontrolujte podrobnosti ve výstupu JSON](video-indexer-output-json.md).
+[Prozkoumejte podrobnosti výstupního JSON](video-indexer-output-json.md).
 
-[Video Indexer s přehledem](video-indexer-overview.md)
+[Přehled Video Indexeru](video-indexer-overview.md)

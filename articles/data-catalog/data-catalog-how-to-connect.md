@@ -2,18 +2,18 @@
 title: Jak se připojit ke zdrojům dat ve službě Azure Data Catalog
 description: Článek zvýraznění jak se připojit ke zdrojům dat zjištěným pomocí služby Azure Data Catalog.
 services: data-catalog
-author: steelanddata
-ms.author: maroche
+author: markingmyname
+ms.author: maghan
 ms.assetid: 4e6b27a5-cf75-4012-b88c-333c1fe638e8
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 759758c9f3d0f1dadf2048e8ef15eeab8a77ef07
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 973077b56f1a777d917a94f9c1470e6f8c15a489
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43053465"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405050"
 ---
 # <a name="how-to-connect-to-data-sources"></a>Jak se připojit ke zdrojům dat
 ## <a name="introduction"></a>Úvod

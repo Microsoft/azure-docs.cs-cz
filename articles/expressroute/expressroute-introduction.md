@@ -1,25 +1,18 @@
 ---
 title: 'Přehled ExpressRoute: Rozšiřte svoji místní síť do Azure pomocí soukromého připojení | Dokumentace Microsoftu'
-description: Tento technický přehled ExpressRoute vysvětluje, jak funguje připojení ExpressRoute a jak můžete svoji místní síť rozšířit do Azure pomocí soukromého připojení.
-documentationcenter: na
+description: Technický přehled ExpressRoute vysvětluje, jak funguje připojení ExpressRoute a jak můžete svoji místní síť rozšířit do Azure pomocí soukromého připojení.
 services: expressroute
 author: cherylmc
-manager: timlt
-editor: ''
-ms.assetid: fd95dcd5-df1d-41d6-85dd-e91d0091af05
 ms.service: expressroute
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/12/2018
+ms.topic: overview
+ms.date: 09/19/2018
 ms.author: cherylmc
-ms.openlocfilehash: 75d69669945d31fbc9876d0c1e709b37f96aee6d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f1bc447f73912ccf04f0c0cf7d6460d472bace4c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29940157"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961899"
 ---
 # <a name="expressroute-overview"></a>Přehled ExpressRoute
 Microsoft Azure ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes soukromé připojení zajišťované poskytovatelem připojení. Pomocí ExpressRoute může vytvořit připojení ke cloudovým službám Microsoftu, jako je například Microsoft Azure, Office 365 nebo Dynamics 365.
@@ -70,11 +63,29 @@ Pokud jste například připojení k Microsoftu prostřednictvím ExpressRoute v
 ### <a name="global-connectivity-with-expressroute-premium-add-on"></a>Globální připojení s doplňkem ExpressRoute Premium
 Můžete povolit funkci doplňku ExpressRoute Premium, abyste rozšířili připojení přes geopolitické hranice. Pokud jste například připojení k Microsoftu prostřednictvím ExpressRoute v Amsterdamu, budete mít přístup ke všem cloudovým službám Microsoftu hostovaným ve všech oblastech po celém světě (národní cloudy jsou vyloučeny). Můžete přistupovat ke službám nasazeným v oblastech Jižní Amerika nebo Austrálie stejným způsobem, jakým přistupujete k oblastem Severní Evropa a Západní Evropa.
 
+### <a name="across-on-premises-connectivity-with-expressroute-global-reach"></a>Propojení místních lokalit pomocí ExpressRoute Global Reach
+
+Můžete povolit ExpressRoute Global Reach pro výměnu dat mezi vzdálenými lokalitami díky propojení více okruhů ExpressRoute. Pokud třeba máte soukromé datacentrum v Kalifornii připojené k ExpressRoute v Silicon Valley a jiné soukromé datacentrum v Texasu připojené k ExpressRoute v Dallasu, pomocí ExpressRoute Global Reach můžete svá soukromá datacentra propojit prostřednictvím dvou okruhů ExpressRoute. Provoz mezi datacentry bude procházet přes síť Microsoftu.
+
+Další informace najdete v článku [ExpressRoute Global Reach](expressroute-global-reach.md).
+
 ### <a name="rich-connectivity-partner-ecosystem"></a>Bohatý ekosystém partnerů připojení
 ExpressRoute má stále rostoucí ekosystém poskytovatelů připojení a partnerů SI. Nejnovější informace najdete v článku [Poskytovatelé a umístění služby ExpressRoute](expressroute-locations.md).
 
 ### <a name="connectivity-to-national-clouds"></a>Připojení k národním cloudům
 Microsoft provozuje izolovaná cloudová prostředí pro speciální geopolitické oblasti a segmenty zákazníků. Seznam národních cloudů a poskytovatelů najdete na stránce [Poskytovatelé a umístění služby ExpressRoute](expressroute-locations.md).
+
+### <a name="expressroute-direct"></a>ExpressRoute Direct
+
+ExpressRoute Direct poskytuje zákazníkům možnost připojit se přímo ke globální síti Microsoftu v místech partnerských uzlů strategicky rozmístěných po celém světě. ExpressRoute Direct poskytuje duální připojení 100 Gb/s, které podporuje připojení typu aktivní/aktivní ve velkém měřítku. 
+
+Ke klíčovým funkcím, které ExpressRoute Direct poskytuje, patří mimo jiné:
+
+* Masivní příjem dat do služeb jako Storage a Cosmos DB 
+* Fyzická izolace pro odvětví, která jsou regulovaná a vyžadují vyhrazené a izolované připojení, například: bankovnictví, státní správa a maloobchodní prodej 
+* Podrobné řízení distribuce okruhů podle organizační jednotky
+
+Další informace najdete v článku o [ExpressRoute Direct](https://go.microsoft.com/fwlink/?linkid=2022973).
 
 ### <a name="bandwidth-options"></a>Možnosti šířky pásma
 Okruhy ExpressRoute můžete zakoupit pro širokou škálu šířek pásma. Seznam podporovaných šířek pásma je uvedený dál. U svého poskytovatele připojení zkontrolujte, které z podporovaných šířek pásma poskytuje.
