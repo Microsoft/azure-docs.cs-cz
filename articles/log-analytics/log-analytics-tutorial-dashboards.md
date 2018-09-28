@@ -16,12 +16,12 @@ ms.date: 09/14/2017
 ms.author: magoedte
 ms.custom: mvc
 ms.component: na
-ms.openlocfilehash: a4b1e59ff9ac4d7f455c87e821fb014ba238d3c9
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 2c7c1e71830eb3fe4f7240195dac828ac9dfed3a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37127471"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46951557"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Vytváření a sdílená řídicích panelů s daty Log Analytics
 
@@ -56,7 +56,7 @@ Zobrazí se výzva k výběru předplatného a skupiny prostředků, do kterých
 
 Na webu Azure Portal můžete vytvářet základní dotazy na jeden řádek z portálu pro prohledávání protokolů. Portál pro prohledávání protokolů můžete použít, aniž byste otevírali externí portál, a můžete pomocí něj provádět řadu funkcí s prohledáváními protokolů, včetně vytváření pravidel upozornění, vytváření skupin počítačů a exportování výsledků dotazu. 
 
-[Portál pro pokročilou analýzu](https://docs.loganalytics.io/docs/Learn/Getting-Started/Getting-started-with-the-Analytics-portal) je vyhrazený portál poskytující pokročilé funkce, které na portálu pro prohledávání protokolů nejsou k dispozici. Mezi tyto funkce patří možnost upravovat dotazy na několik řádků, selektivní spouštění kódu, funkce IntelliSense závislá na kontextu a inteligentní analýzy. Na portálu pro pokročilou analýzu vytvoříte zobrazení výkonu v grafické podobě, uložíte ho pro budoucí hledání a připnete ho na sdílený řídicí panel vytvořený dříve.   
+[Portál pro Log Analytics](../log-analytics/query-language/get-started-analytics-portal.md) je vyhrazený portál poskytující pokročilé funkce, které na portálu pro prohledávání protokolů nejsou k dispozici. Mezi tyto funkce patří možnost upravovat dotazy na několik řádků, selektivní spouštění kódu, funkce IntelliSense závislá na kontextu a inteligentní analýzy. Na portálu pro pokročilou analýzu vytvoříte zobrazení výkonu v grafické podobě, uložíte ho pro budoucí hledání a připnete ho na sdílený řídicí panel vytvořený dříve.   
 
 Portál pro pokročilou analýzu otevřete přes odkaz na portálu pro prohledávání protokolů.<br> ![Otevření portálu pro pokročilou analýzu](media/log-analytics-tutorial-dashboards/log-analytics-advancedportal-01.png)
 

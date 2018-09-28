@@ -1,6 +1,6 @@
 ---
-title: Získání klienta Azure AD | Dokumentace Microsoftu
-description: Získání klienta Azure Active Directory pro registraci a vytváření aplikací.
+title: Vytvoření tenanta Azure Active Directory | Microsoft Docs
+description: Zjistěte, jak vytvořit tenanta Azure AD pro použití při registraci a vytváření aplikací.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -12,34 +12,67 @@ ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/23/2018
+ms.topic: quickstart
+ms.date: 09/24/2018
 ms.author: celested
+ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 1f866d3ee56b0c9a1e7a986d3ac951764b6a1cae
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
-ms.translationtype: MT
+ms.openlocfilehash: 731b68e3f7dbb46f2fa51a18cb5b3da6b4626fa6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39506504"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963930"
 ---
-# <a name="how-to-get-an-azure-active-directory-tenant"></a>Získání klienta Azure Active Directory
+# <a name="quickstart-set-up-a-dev-environment"></a>Rychlý start: Nastavení vývojového prostředí
 
-V Azure Active Directory (Azure AD) představuje [klient](https://msdn.microsoft.com/library/azure/jj573650.aspx#Anchor_0) zástupce organizace. Je to vyhrazená instance služby Azure AD, kterou organizace obdrží a vlastní, když vytvoří partnerství se společností Microsoft – například tím, že se zaregistruje ke cloudové službě společnosti Microsoft, jako je třeba Azure, Microsoft Intune nebo Office 365. Každý klient Azure AD se odlišuje a je oddělený od ostatních klientů Azure AD. 
+Microsoft Identity Platform umožňuje vývojářům vytvářet aplikace určené pro širokou škálu vlastních prostředí a identit Microsoft 365. Abyste mohli začít používat platformu Microsoft Identity Platform, získáte přístup k prostředí, označovanému také jako tenant Azure AD, které může registrovat a spravovat aplikace, získat přístup k datům Microsoft 365 a nasazovat vlastní omezení podmíněného přístupu a tenanta. 
 
-V tenantovi se nachází uživatelé ve společnosti a informace o nich – hesla, data uživatelského profilu, oprávnění atd. Obsahuje také skupiny, aplikace a další informace týkající se organizace a jejího zabezpečení.
+Tenant je reprezentace organizace. Jedná se o vyhrazenou instanci Azure AD, kterou organizace nebo vývojář aplikací obdrží při vytvoření partnerství s Microsoftem, například registrací do Azure, Microsoft Intune nebo Microsoft 365. 
 
-Pokud chcete uživatelům Azure AD povolit přihlášení do aplikace, je třeba aplikaci zaregistrovat do vašeho klienta. Vytvoření tenanta Azure AD a publikování aplikace v tomto tenantovi je **zcela bezplatné**, můžete se však rozhodnout platit ve vašem tenantovi za prémiové funkce. Ve skutečnosti si mnoho vývojářů vytváří několik tenantů a aplikací pro účely experimentování, vývoje, přípravy a testování.
+Každý tenant Azure AD je odlišný a oddělený od ostatních tenantů Azure AD a používá vlastní reprezentaci pracovních a školních identit, identit zákazníků (pokud se jedná o tenanta Azure AD B2C) a registrací aplikací. Registrace aplikace uvnitř vašeho tenanta může umožňovat ověřování z účtů pouze v rámci vašeho tenanta nebo ve všech tenantech. 
 
-## <a name="use-an-existing-azure-ad-tenant"></a>Použití existujícího tenanta Azure AD
+## <a name="determining-environment-type"></a>Určení typu prostředí
 
-Mnoho vývojářů už má tenanty prostřednictvím služeb nebo předplatných spojených s tenanty Azure AD, jako jsou například předplatná Office 365 nebo Azure. Pokud si chcete ověřit, jestli už tenanta máte, přihlaste se na portál [Azure Portal](https://portal.azure.com) pomocí účtu, který chcete použít ke správě vaší aplikace, a podívejte se do pravého horního rohu, kde jsou zobrazeny informace o vašem účtu. Pokud tenanta máte, budete k němu automaticky přihlášeni a název tenanta se zobrazí přímo pod názvem vašeho účtu. Pokud najedete myší na název vašeho účtu v pravém horním rohu webu Azure Portal, zobrazí se vaše jméno, e-mail, ID adresáře a tenanta (GUID) a vaše doména. Pokud je k vašemu účtu přidruženo více tenantů, můžete výběrem názvu vašeho účtu otevřít nabídku, ve které můžete mezi jednotlivými tenanty přepínat. Každý tenant má vlastní ID tenanta.
+Existují dva typy prostředí, které můžete vytvořit. Určení potřebného typu prostředí vychází pouze z typu uživatelů, které bude vaše aplikace ověřovat.
+
+* Pracovní a školní účty (účty Azure AD) nebo účty Microsoft (například outlook.com a live.com)
+* Účty na sociálních sítích a místní účty (Azure AD B2C)
+
+Tento rychlý start je rozdělený na dva scénáře v závislosti na typu aplikace, kterou chcete vytvořit. Pokud potřebujete další pomoc s určením typu identity, přečtěte si [informace o platformě Microsoft Identity Platform](about-microsoft-identity-platform.md).
+
+## <a name="work-and-school-accounts-or-personal-microsoft-accounts"></a>Pracovní a školní účty nebo účty Microsoft
+
+### <a name="use-an-existing-tenant"></a>Použití existujícího tenanta
+
+Řada vývojářů už má tenanty vytvořené prostřednictvím služeb nebo předplatných vázaných na tenanty Azure AD, jako jsou předplatná Microsoft 365 nebo Azure.
+
+1. Pokud chcete zkontrolovat, jestli máte tenanta, přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí účtu, který chcete použít ke správě vaší aplikace.
+1. Zkontrolujte pravý horní roh. Pokud tenanta máte, budete k němu automaticky přihlášeni a název tenanta se zobrazí přímo pod názvem vašeho účtu.
+   * Najeďte myší na název vašeho účtu v pravém horním rohu webu Azure Portal, zobrazí se vaše jméno, e-mail, ID adresáře nebo tenanta (GUID) a vaše doména.
+   * Pokud je k vašemu účtu přidruženo více tenantů, můžete výběrem názvu vašeho účtu otevřít nabídku, ve které můžete mezi jednotlivými tenanty přepínat. Každý tenant má vlastní ID tenanta.
 
 > [!TIP]
-> Pokud potřebujete zjistit ID tenanta, můžete tuto informaci získat několika způsoby. ID tenanta můžete získat najetím myší na název vašeho účtu nebo výběrem **Azure Active Directory > Vlastnosti > ID adresáře** na webu Azure Portal.
+> Pokud potřebujete zjistit ID tenanta, můžete to provést následovně:
+* Najeďte myší na název vašeho účtu, aby se zobrazilo ID adresáře nebo tenanta.
+* Nebo na webu Azure Portal vyberte **Azure Active Directory > Vlastnosti > ID adresáře**.
 
-Pokud existujícího tenanta přidruženého k účtu nemáte, zobrazí se pod názvem vašeho účtu GUID a než si [vytvoříte nového tenanta](#create-a-new-azure-ad-tenant), nebudete moct provádět akce, jako jsou třeba registrace aplikací.
+Pokud existujícího tenanta přidruženého k účtu nemáte, zobrazí se pod názvem vašeho účtu GUID a než dokončíte postup v následující části, nebudete moct provádět akce, jako jsou třeba registrace aplikací.
 
-## <a name="create-a-new-azure-ad-tenant"></a>Vytvoření nového tenanta Azure AD
+### <a name="create-a-new-azure-ad-tenant"></a>Vytvoření nového tenanta Azure AD
 
-Pokud ještě tenanta Azure AD nemáte nebo chcete vytvořit nového, můžete to udělat pomocí [prostředí pro vytváření adresářů](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory) na portálu [Azure Portal](https://portal.azure.com). Tento proces trvá přibližně minutu a na konci se zobrazí výzva, abyste přešli do nově vytvořeného tenanta.
+Pokud ještě tenanta Azure AD nemáte nebo chcete pro účely vývoje vytvořit nového, postupujte podle [prostředí pro vytváření adresářů](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory). Při vytváření nového tenanta budete muset zadat následující informace:
+
+- **Název organizace**
+- **Počáteční doména** – bude to část domény *.onmicrosoft.com. Doménu můžete dále přizpůsobit později. 
+- **Země nebo oblast**
+
+## <a name="social-and-local-accounts"></a>Účty na sociálních sítích a místní účty
+
+Pokud chcete začít vytvářet aplikace s přihlašováním účtů na sociálních sítích a místních účtů, budete muset vytvořit tenanta Azure AD B2C. Pokud chcete začít, postupujte podle pokynů k [vytvoření tenanta Azure AD B2C](../../active-directory-b2c/tutorial-create-tenant.md). 
+
+## <a name="next-steps"></a>Další kroky
+
+* Vyzkoušejte rychlý start zaměřený na psaní kódu a začněte s ověřováním uživatelů. 
+* Podrobnější vzorové kódy najdete v dokumentaci v části **Kurzy**.
+* Chcete svou aplikaci nasadit do cloudu? Přečtěte si o [nasazování kontejnerů do Azure](https://docs.microsoft.com/azure/index#pivot=products&panel=containers). 

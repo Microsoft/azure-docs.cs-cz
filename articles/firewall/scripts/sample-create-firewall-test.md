@@ -8,18 +8,14 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 8/13/2018
 ms.author: victorh
-ms.openlocfilehash: b65a5dec63bdc625dda64e101620f56cd6dd7308
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 23f10280cd34927e2e74cb7c5001850bedc6dd35
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "41919894"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967536"
 ---
 # <a name="create-an-azure-firewall-test-environment"></a>Vytvoření testovacího prostředí brány Azure Firewall
-
-[!INCLUDE [firewall-preview-notice](../../../includes/firewall-preview-notice.md)]
-
-Příklady v článcích o bráně Azure Firewall předpokládají, že už máte veřejnou verzi Preview brány Azure Firewall zapnutou. Další informace najdete v tématu o [povolení veřejné verze Preview brány Azure Firewall](../public-preview.md).
 
 Tento ukázkový skript vytvoří bránu firewall a testovací síťové prostředí. Tato síť má jednu virtuální síť se třemi podsítěmi: *AzureFirewallSubnet*, *ServersSubnet* a *JumpboxSubnet*. Podsítě ServersSubnet a JumpboxSubnet mají každá jeden dvoujádrový Windows Server.
 
@@ -29,7 +25,7 @@ Vytvoří se trasa definovaná uživatelem, která odkazuje síťový provoz z p
 
 Skript můžete spustit ve službě Azure [Cloud Shell](https://shell.azure.com/powershell) nebo v místně nainstalovaném PowerShellu. 
 
-Pokud používáte PowerShell místně, musíte použít modul AzureRM PowerShell verze 6.4.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. 
+Pokud používáte PowerShell místně, musíte použít nejnovější verzi modulu AzureRM PowerShell. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. 
 
 Pokud potřebujete PowerShell upgradovat můžete použít modul `PowerShellGet`, který je integrovaný ve Windows 10 a Windows Serveru 2016.
 
@@ -39,12 +35,6 @@ Pokud potřebujete PowerShell upgradovat můžete použít modul `PowerShellGet`
 Další informace najdete v tématu [Instalace Azure PowerShell ve Windows pomocí PowerShellGet](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-6.4.0).
 
 Každá přítomná instalace prostředí Azure PowerShell provedená instalačním programem webové platformy způsobí konflikt s instalací modulu PowerShellGet, takže ji musíte odstranit.
-
-Kromě toho musíte nainstalovat modul AzureRM.Network ve verzi Preview (verze 6.4.0). Pokud máte starší modul, odeberte ho spuštěním příkazu `Uninstall-Module AzureRM.Network -Force`. Potom následujícím příkazem:
-
- `Install-Module -Name AzureRM.Network -Repository PSGallery -RequiredVersion 6.4.0-preview -AllowPrerelease -Force`
-
-nainstalujte verzi 6.4.0.
 
 Pokud používáte PowerShell místně, nezapomeňte spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
 

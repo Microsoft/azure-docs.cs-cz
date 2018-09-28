@@ -10,30 +10,37 @@ ms.assetid: 72f4e464-1352-4a49-a18f-c37f58e7d5c4
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/27/2017
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: 92990a71a0b138f08c515450ecd71692fa57f297
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 6edcd5b3df7c3c58c6568434f82fbc52cb9e28df
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "43185416"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958862"
 ---
 # <a name="branding-guidelines-for-applications"></a>Pokyny pro branding aplikací
 
-Tento článek popisuje pokyny pro branding, kterými byste se měli řídit při vývoji aplikací s využitím Azure Active Directory (Azure AD). Tyto pokyny pomůžou s vedením uživatelů v případě, že se pomocí svého pracovního nebo školního účtu spravovaného v Azure AD nebo osobního účtu budou chtít zaregistrovat nebo přihlásit k vaší aplikaci.
+Při nasazování aplikací s Azure Active Directory (Azure AD) budete muset vést vaše zákazníky v případě, že se pomocí svého pracovního nebo školního účtu (spravovaného v Azure AD) nebo osobního účtu budou chtít zaregistrovat nebo přihlásit k vaší aplikaci.
+
+V tomto článku provedete následující:
+
+- Dozvíte se další informace o těchto dvou typech uživatelských účtů spravovaných Microsoftem a tom, jak odkazovat na účty Azure AD v aplikaci.
+- Zjistíte, co je potřeba udělat, abyste přidali logo Microsoftu pro použití ve vaší aplikaci.
+- Stáhnete si oficiální obrázky **Přihlásit se** nebo **Přihlásit se účtem Microsoft** pro použití ve vaší aplikaci.
+- Seznámíte se s tím, co lze a nelze dělat při brandingu a navigaci.
 
 ## <a name="personal-accounts-vs-work-or-school-accounts-from-microsoft"></a>Osobní účty vs. pracovní nebo školní účty od Microsoftu
 
 Microsoft spravuje dva druhy uživatelských účtů:
 
-* **Osobní účty** (dříve označované jako Windows Live ID). Tyto účty představují vztah mezi *jednotlivými* uživateli a Microsoftem a používají se k přístupu k uživatelským zařízením a službám od Microsoftu. Tyto účty jsou určené k osobnímu použití.
-* **Pracovní nebo školní účty**. Tyto účty spravuje Microsoft jménem organizace využívající Azure Active Directory. Tyto účty se používají k přihlašování k Office 365 a dalším obchodním službám Microsoftu.
+- **Osobní účty** (dříve označované jako Windows Live ID). Tyto účty představují vztah mezi *jednotlivými* uživateli a Microsoftem a používají se k přístupu k uživatelským zařízením a službám od Microsoftu. Tyto účty jsou určené k osobnímu použití.
+- **Pracovní nebo školní účty**. Tyto účty spravuje Microsoft jménem organizace využívající Azure Active Directory. Tyto účty se používají k přihlašování k Office 365 a dalším obchodním službám Microsoftu.
 
 Pracovní nebo školní účty Microsoft obvykle přiřazují koncovým uživatelům (zaměstnanci, studenti, federální zaměstnanci) jejich organizace (společnost, škola, orgán státní správy). Tyto účty se spravují přímo v cloudu (na platformě Azure AD) nebo se synchronizují do Azure AD z místního adresáře, jako je například Windows Server Active Directory. Microsoft je *správcem* pracovních nebo školních účtů, ale organizace tyto účty vlastní a řídí.
 
@@ -41,8 +48,8 @@ Pracovní nebo školní účty Microsoft obvykle přiřazují koncovým uživate
 
 Microsoft nevystavuje koncové uživatele názvům značek Azure ani Active Directory a vy byste to také neměli dělat.
 
-* Jakmile se uživatelé přihlásí, snažte se co nejvíce používat název a logo organizace. Je to lepší než používat obecné termíny jako „vaše organizace“.
-* Když vaši uživatelé nejsou přihlášeni, odkazujte na jejich účty jako na „pracovní nebo školní účty“ a použitím loga Microsoftu dejte najevo, že tyto účty spravuje Microsoft. Nepoužívejte termíny jako „podnikový účet“, „obchodní účet“ nebo „firemní účet“ – pro uživatele jsou matoucí.
+- Jakmile se uživatelé přihlásí, snažte se co nejvíce používat název a logo organizace. Je to lepší než používat obecné termíny jako „vaše organizace“.
+- Když vaši uživatelé nejsou přihlášeni, odkazujte na jejich účty jako na „pracovní nebo školní účty“ a použitím loga Microsoftu dejte najevo, že tyto účty spravuje Microsoft. Nepoužívejte termíny jako „podnikový účet“, „obchodní účet“ nebo „firemní účet“ – pro uživatele jsou matoucí.
 
 ## <a name="user-account-pictogram"></a>Piktogram uživatelského účtu
 
@@ -94,7 +101,6 @@ Pokud si pro použití ve vaší aplikaci chcete stáhnout oficiální obrázky,
 | Přihlásit se účtem Microsoft (světlý motiv) | ![Tlačítko Přihlásit se (světlý motiv, PNG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.png) | ![Tlačítko Přihlásit se účtem Microsoft (světlý motiv, SVG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.svg) |
 | Přihlásit se (tmavý motiv)                 | ![Krátké tlačítko Přihlásit se (tmavý motiv, PNG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.png) | ![Krátké tlačítko Přihlásit se (tmavý motiv, SVG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.svg) |
 | Přihlásit se (světlý motiv)                | ![Krátké tlačítko Přihlásit se (světlý motiv, PNG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.png) | ![Krátké tlačítko Přihlásit se (světlý motiv, SVG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.svg) |
-
 
 ## <a name="branding-dos-and-donts"></a>Branding – Co dělat a nedělat
 

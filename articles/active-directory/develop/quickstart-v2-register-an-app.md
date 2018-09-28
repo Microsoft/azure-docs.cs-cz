@@ -1,6 +1,6 @@
 ---
-title: Registrace aplikace s koncovým bodem v2.0 Azure AD pomocí portálu | Dokumentace Microsoftu
-description: Postup registrace aplikace v Microsoft pro povolení přihlášení a přístup ke službám Microsoftu pomocí koncového bodu v2.0
+title: Registrace aplikace s koncovým bodem Azure AD verze 2.0 | Microsoft Docs
+description: Zde se dozvíte, jak registrovat aplikaci u Microsoftu, aby bylo povolené přihlášení a přístup ke službám Microsoftu pomocí koncového bodu Azure AD verze 2.0.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -12,47 +12,50 @@ ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 04/18/2018
+ms.topic: quickstart
+ms.date: 09/24/2018
 ms.author: celested
+ms.reviewer: lenalepa
 ms.custom: aaddev
-ms.openlocfilehash: 8ab4e6b5b2813a216b6dd6f0fc108a09239ca9a6
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
-ms.translationtype: MT
+ms.openlocfilehash: b2dea11b6573be8f574bd18fa69ee76658d6d698
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39506546"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46975806"
 ---
-# <a name="how-to-register-an-app-with-the-v20-endpoint"></a>Postup registrace aplikace s koncovým bodem v2.0
-Vytvořit aplikaci, která přijímá i osobní účet Microsoft (MSA) a pracovní nebo školní přihlašovací účet (Azure AD), budete nejdřív muset registrace aplikace v Microsoft. V tuto chvíli není možné používat všechny existující aplikace, které máte uzavřeny s Azure AD nebo MSA -, je potřeba vytvořit úplně novou.
+# <a name="quickstart-register-an-app-with-the-azure-active-directory-v20-endpoint"></a>Rychlý start: Registrace aplikace pomocí koncového bodu Azure Active Directory verze 2.0
+
+[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
+
+Pokud budete chtít sestavit aplikaci, která přijímá přihlášení přes osobní účet Microsoft (MSA) i pracovní nebo školní účet (Azure AD), budete muset zaregistrovat aplikaci pomocí koncového bodu Azure Active Directory (Azure AD) verze 2.0. V tuto chvíli není možné používat žádné existující aplikace, které případně máte, s Azure AD nebo MSA – bude potřeba vytvořit úplně novou.
 
 > [!NOTE]
-> Ne všechny scénáře Azure Active Directory a funkce jsou podporovány bodem v2.0. Pokud chcete zjistit, pokud je vhodné použít koncový bod verze 2.0, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
+> Ne všechny funkce a scénáře služby Azure AD jsou podporovány koncovým bodem verze 2.0. Pokud chcete zjistit, jestli máte použít koncový bod verze 2.0, přečtěte si informace o [omezeních verze 2.0](active-directory-v2-limitations.md).
 
+## <a name="step-1-sign-in-to-the-microsoft-application-registration-portal"></a>1. krok: Přihlaste se k portálu pro registraci aplikací Microsoftu
 
-## <a name="visit-the-microsoft-app-registration-portal"></a>Přejděte na portál pro registraci aplikace Microsoft
-Nejprve přejděte do portálu pro registraci aplikací Microsoftu na [ https://apps.dev.microsoft.com/ ](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList). 
+1. Přejděte na portál pro registraci aplikací Microsoftu na [https://apps.dev.microsoft.com/](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList).
+1. Přihlaste se pomocí osobního nebo pracovního nebo školního účtu Microsoft. Pokud ani jeden nemáte, zaregistrujte si nový osobní účet.
+1. Hotovo? Měli byste teď vidět seznam aplikací Microsoftu, který je pravděpodobně prázdný. To teď změníme.
 
-Přihlaste se pomocí buď osobní nebo pracovního nebo školního účtu Microsoft. Pokud nemáte buď, zaregistrujte si nový osobní účet.
+## <a name="step-2-register-an-app"></a>2. krok: Zaregistrujte aplikaci
 
-Hotovo? Můžete by měla hledat v seznamu aplikací Microsoftu, což je pravděpodobně prázdná. Teď Změníme.
-
-Klikněte na tlačítko **přidat aplikaci**a pojmenujte ho. Na portálu, přiřadí se vaše aplikace globálně jedinečné ID aplikace, které použijete později ve vašem kódu. Pokud vaše aplikace obsahuje komponentu na straně serveru, který potřebuje přístupové tokeny pro volání rozhraní API (myslíte: Office, Azure nebo vašeho vlastního webového rozhraní API), budete chtít vytvořit **tajný klíč aplikace** i zde.
-
-V dalším kroku přidejte **platformy** , která vaše aplikace bude používat.
-
-* Pro webové aplikace, zadejte **identifikátor URI pro přesměrování** odešle zprávy přihlášení.
-* Pro mobilní aplikace poznamenejte výchozí přesměrování, které pro vás automaticky vytvořit identifikátor URI.
-* Pro webová rozhraní API se pro vás automaticky vytvoří výchozí obor pro přístup k webovému rozhraní API. Můžete také přidat další obory pomocí **přidání oboru** tlačítko. Můžete také přidat všechny aplikace, které obsahují předem oprávnění k používání vašeho webového rozhraní API pomocí **předem autorizované aplikace** formuláře. 
-
-Volitelně můžete přizpůsobit vzhled a chování stránky přihlášení v **profilu** oddílu. Ujistěte se, že klikněte na tlačítko **Uložit** než budete pokračovat.
+1. Vyberte **Přidat aplikaci** a pojmenujte ji.
+    Portál přiřadí vaší aplikaci globálně jedinečné ID aplikace, které použijete později ve vašem kódu. Pokud vaše aplikace obsahuje komponentu na straně serveru, která potřebuje přístupové tokeny pro volání rozhraní API (třeba Office, Azure nebo vaše vlastní webové rozhraní API), bude tady vhodné vytvořit i **Tajný kód aplikace**.
+1. Dále přidejte **Platformy**, které vaše aplikace bude používat.
+    * Pro webové aplikace zadejte **Identifikátor URI pro přesměrování**, kam se můžou posílat zprávy přihlášení.
+    * U mobilních aplikací si poznamenejte výchozí identifikátor URI pro přesměrování, který se automaticky vytvořil.
+    * Pro webová rozhraní API se pro vás automaticky vytvoří výchozí obor pro přístup k webovému rozhraní API.
+        Můžete přidat další obory pomocí tlačítka **Přidat obor**. Můžete také pomocí formuláře **Předběžně autorizované aplikace** přidat jakékoliv aplikace předběžně autorizované k používání vašeho webového rozhraní API.
+1. Volitelně můžete přizpůsobit vzhled a chování stránky přihlášení v oddílu **Profil**. 
+1. **Uložte** změny, než budete pokračovat.
 
 > [!NOTE]
-> Při vytváření aplikace s využitím [ https://apps.dev.microsoft.com/ ](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), aplikace se zaregistruje v domovském tenantovi účet, který používáte k přihlášení na portál. To znamená, že nelze zaregistrovat aplikaci ve vašem tenantovi Azure AD pomocí osobního účtu Microsoft. Pokud chcete explicitně registrace aplikace v konkrétní tenanta, přihlaste se pomocí účtu původně vytvořil v tomto tenantovi.
+> Když zaregistrujete aplikaci pomocí [https://apps.dev.microsoft.com/](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), aplikace se zaregistruje v domovském tenantovi účtu, který používáte k přihlášení na portál. To znamená, že nelze zaregistrovat aplikaci ve vašem tenantovi Azure AD pomocí osobního účtu Microsoft. Pokud si výslovně přejete registrovat aplikaci v konkrétním tenantovi, přihlaste se pomocí účtu původně vytvořeného v tomto tenantovi.
 
+## <a name="next-steps"></a>Další kroky
 
-## <a name="build-a-quickstart-app"></a>Sestavení aplikace rychlý start
-Teď, když máte aplikaci Microsoft, můžete dokončit jeden v2.0 kurzy rychlý start. Zde je několik doporučení:
+Teď, když máte aplikaci Microsoft, můžete provést jeden rychlý start (quickstart2) verze 2.0. Zde je několik doporučení:
 
 [!INCLUDE [active-directory-v2-quickstart-table](../../../includes/active-directory-v2-quickstart-table.md)]
-

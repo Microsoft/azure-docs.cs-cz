@@ -1,27 +1,22 @@
 ---
-title: 'Kurz: Monitorování protokolů brány Azure Firewall'
-description: V tomto kurzu se dozvíte, jak povolit a spravovat protokoly brány Azure Firewall.
+title: Kurz – Monitorování protokolů a metrik brány Azure Firewall
+description: V tomto kurzu se dozvíte, jak povolit a spravovat protokoly a metriky brány Azure Firewall.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.workload: infrastructure-services
-ms.date: 7/11/2018
+ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: a4922fda80b957138a9929090f9d3c349348185d
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 1940fb210481dc75fe48d110776185e90cb3e42f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991862"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46991041"
 ---
-# <a name="tutorial-monitor-azure-firewall-logs"></a>Kurz: Monitorování protokolů brány Azure Firewall
+# <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>Kurz: Monitorování protokolů a metrik brány Azure Firewall
 
-[!INCLUDE [firewall-preview-notice](../../includes/firewall-preview-notice.md)]
-
-Příklady v článcích o bráně Azure Firewall předpokládají, že už máte veřejnou verzi Preview brány Azure Firewall zapnutou. Další informace najdete v tématu o [povolení veřejné verze Preview brány Azure Firewall](public-preview.md).
-
-Bránu Azure Firewall můžete monitorovat pomocí protokolů brány firewall. K auditu operací na prostředcích brány Azure Firewall můžete také použít protokoly aktivit.
+Bránu Azure Firewall můžete monitorovat pomocí protokolů brány firewall. K auditu operací na prostředcích brány Azure Firewall můžete také použít protokoly aktivit. Pomocí metrik můžete zobrazit čítače výkonu na portálu. 
 
 Některé z těchto protokolů jsou přístupné z webu Azure Portal. Protokoly můžete odeslat do služeb [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md), Storage a Event Hubs a analyzovat je můžete ve službě Log Analytics nebo jinými nástroji, jako je Excel nebo Power BI.
 
@@ -31,70 +26,13 @@ V tomto kurzu se naučíte:
 > * Povolit protokolování prostřednictvím webu Azure Portal
 > * Povolit protokolování prostřednictvím PowerShellu
 > * Zobrazit a analyzovat protokol aktivit
-> * Zobrazit a analyzovat protokoly pravidel sítě a aplikace
+> * Zobrazení a analyzování protokolů pravidel sítě a aplikace
+> * Zobrazit metriky
 
-## <a name="diagnostic-logs"></a>Diagnostické protokoly
+## <a name="prerequisites"></a>Požadavky
 
- Pro bránu Azure Firewall jsou k dispozici následující diagnostické protokoly:
+Před zahájením tohoto kurzu si v tématu o [protokolech a metrikách brány Firewall Azure](logs-and-metrics.md) přečtěte přehledné informace o diagnostických protokolech a metrikách, které jsou k dispozici pro bránu Azure Firewall.
 
-* **Protokol pravidel aplikace**
-
-   Protokol pravidel aplikace se ukládá do účtu úložiště, streamuje do služby Event Hubs a/nebo odesílá do služby Log Analytics, pouze pokud jste to povolili v bráně Azure Firewall. Každé nové připojení, které odpovídá jednomu z vašich nakonfigurovaných pravidel aplikace, vytvoří pro dané přijaté nebo odepřené připojení protokol. Jak je vidět v následujícím příkladu, data se protokolují ve formátu JSON:
-
-   ```
-   Category: access logs are either application or network rule logs.
-   Time: log timestamp.
-   Properties: currently contains the full message. 
-   note: this field will be parsed to specific fields in the future, while maintaining backward compatibility with the existing properties field.
-   ```
-
-   ```json
-   {
-    "category": "AzureFirewallApplicationRule",
-    "time": "2018-04-16T23:45:04.8295030Z",
-    "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/AZUREFIREWALLS/{resourceName}",
-    "operationName": "AzureFirewallApplicationRuleLog",
-    "properties": {
-        "msg": "HTTPS request from 10.1.0.5:55640 to mydestination.com:443. Action: Allow. Rule Collection: collection1000. Rule: rule1002"
-    }
-   }
-   ```
-
-* **Protokol pravidel sítě**
-
-   Protokol pravidel sítě se ukládá do účtu úložiště, streamuje do služby Event Hubs a/nebo odesílá do služby Log Analytics, pouze pokud jste to povolili v bráně Azure Firewall. Každé nové připojení, které odpovídá jednomu z vašich nakonfigurovaných pravidel aplikace, vytvoří pro dané přijaté nebo odepřené připojení protokol. Jak je vidět v následujícím příkladu, data se protokolují ve formátu JSON:
-
-   ```
-   Category: access logs are either application or network rule logs.
-   Time: log timestamp.
-   Properties: currently contains the full message. 
-   note: this field will be parsed to specific fields in the future, while maintaining backward compatibility with the existing properties field.
-   ```
-
-   ```json
-  {
-    "category": "AzureFirewallNetworkRule",
-    "time": "2018-06-14T23:44:11.0590400Z",
-    "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/AZUREFIREWALLS/{resourceName}",
-    "operationName": "AzureFirewallNetworkRuleLog",
-    "properties": {
-        "msg": "TCP request from 111.35.136.173:12518 to 13.78.143.217:2323. Action: Deny"
-    }
-   }
-
-   ```
-
-Protokoly můžete ukládat třemi způsoby:
-
-* **Učet úložiště**: Účty úložiště jsou nejvhodnější pro ukládání protokolů na delší dobu, které budete kontrolovat pouze v případě potřeby.
-* **Centra událostí**: Centra událostí jsou skvělou volbou pro integrování protokolů s jinými nástroji správy akcí a informací o zabezpečení (SEIM), abyste o svých prostředcích získávali upozornění.
-* **Log Analytics**: Tato služba je nejvhodnější pro obecné monitorování aplikací v reálném čase nebo sledování trendů.
-
-## <a name="activity-logs"></a>Protokoly aktivit
-
-   Položky protokolu aktivit se ve výchozím nastavení shromažďují a můžete si je zobrazit na webu Azure Portal.
-
-   Všechny operace odeslané do předplatného Azure si můžete zobrazit v [protokolech aktivit Azure](../azure-resource-manager/resource-group-audit.md) (dříve operační protokoly a protokoly auditu).
 
 ## <a name="enable-diagnostic-logging-through-the-azure-portal"></a>Povolení diagnostického protokolování prostřednictvím webu Azure Portal
 
@@ -105,8 +43,8 @@ Než se data v protokolech po dokončení tohoto procesu zapnutí protokolován�
 
    Pro bránu Azure Firewall jsou k dispozici dva protokoly pro konkrétní služby:
 
-   * Protokol pravidel aplikace
-   * Protokol pravidel sítě
+   * AzureFirewallApplicationRule
+   * AzureFirewallNetworkRule
 
 3. Pokud chcete začít shromažďovat data, klikněte na **Zapnout diagnostiku**.
 4. Stránka **Nastavení diagnostiky** obsahuje nastavení diagnostických protokolů. 
@@ -163,6 +101,8 @@ Můžete se také připojit k účtu úložiště a načíst položky protokolu 
 > [!TIP]
 > Pokud znáte Visual Studio a máte představu, jak u konstant a proměnných v jazyce C# měnit hodnoty, můžete použít [nástroje pro převedení protokolů](https://github.com/Azure-Samples/networking-dotnet-log-converter), které jsou k dispozici na GitHubu.
 
+## <a name="view-metrics"></a>Zobrazit metriky
+Přejděte k bráně Azure Firewall a v části **Sledování** klikněte na **Metriky**. Chcete-li zobrazit dostupné hodnoty, vyberte rozevírací seznam **METRIKA**.
 
 ## <a name="next-steps"></a>Další kroky
 

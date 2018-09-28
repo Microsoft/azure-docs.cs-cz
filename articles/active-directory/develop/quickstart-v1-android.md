@@ -1,6 +1,6 @@
 ---
-title: Začínáme se službou Azure AD Android | Dokumentace Microsoftu
-description: Jak vytvářet aplikace pro Android, která se integruje s Azure AD pro přihlášení a volání služby Azure AD chráněné rozhraní API pomocí OAuth 2.0.
+title: Přihlášení uživatelů a zavolání rozhraní API pro Microsoft Graph z aplikace pro Android | Microsoft Docs
+description: Zjistěte, jak přihlásit uživatele a zavolat rozhraní API pro Microsoft Graph z aplikace pro Android.
 services: active-directory
 documentationcenter: android
 author: CelesteDG
@@ -12,41 +12,46 @@ ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
-ms.topic: article
-ms.date: 04/30/2018
+ms.topic: quickstart
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: c548f9287ce1326de3322950f297176b67ae61c6
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
-ms.translationtype: MT
+ms.openlocfilehash: c3ab241e42c431ae4e95e8154343a949bb9e596e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600240"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46970163"
 ---
-# <a name="azure-ad-android-getting-started"></a>Začínáme se službou Azure AD Android
-[!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
+# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rychlý start: Přihlášení uživatelů a zavolání rozhraní API pro Microsoft Graph z aplikace pro Android
 
-Pokud vyvíjíte aplikace pro Android, Microsoft umožňuje jednoduché a nekomplikované k přihlášení uživatelů Azure Active Directory (Azure AD). Azure AD umožňuje vaší aplikaci přístup k datům uživatele prostřednictvím Microsoft Graphu nebo vlastní chráněné webové rozhraní API. 
+[!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
-Knihovna pro Android Azure AD Authentication Library (ADAL) dává aplikaci možnost začít používat [cloudu Microsoft Azure](https://cloud.microsoft.com) & [Microsoft Graph API](https://graph.microsoft.io) díky podpoře [ Účty Microsoft Azure Active Directory](https://azure.microsoft.com/services/active-directory/) pomocí standardní OAuth2 nebo OpenID Connect. V této ukázce normální životních, které vaše aplikace by měla prostředí, včetně:
+Pokud vyvíjíte aplikaci pro Android, Microsoft vám usnadní práci s přihlášením uživatelů do Azure Active Directory (Azure AD). Azure AD umožňuje vaší aplikaci získat přístup k datům uživatelů prostřednictvím Microsoft Graphu nebo vlastního chráněného webového rozhraní API.
 
-* Získání tokenu pro Microsoft Graph
+Knihovna Azure Active Directory Authentication Library (ADAL) pro Android umožňuje vaší aplikaci začít používat [cloud Microsoft Azure](https://cloud.microsoft.com) a [rozhraní API pro Microsoft Graph](https://graph.microsoft.io), protože používá standardní oborové protokoly OAuth 2.0 a OpenID Connect a podporuje [účty Microsoft Azure Active Directory](https://azure.microsoft.com/services/active-directory/).
+
+V tomto rychlém startu se naučíte:
+
+* Získat token pro Microsoft Graph
 * Aktualizovat token
-* Volání Microsoft Graphu
-* Neodhlásí uživatele
+* Zavolat Microsoft Graph
+* Odhlásit uživatele
 
-Abyste mohli začít, budete potřebovat tenanta služby Azure AD, kde můžete vytvářet uživatele a zaregistrovat aplikaci. Pokud ještě nemáte tenanta, [zjistěte, jak získat](quickstart-create-new-tenant.md).
+## <a name="prerequisites"></a>Požadavky
+
+Abyste mohli začít, budete potřebovat tenanta služby Azure AD, ve kterém můžete vytvářet uživatele a zaregistrovat aplikaci. Pokud ještě tenanta nemáte, [zjistěte, jak ho získat](quickstart-create-new-tenant.md).
 
 ## <a name="scenario-sign-in-users-and-call-the-microsoft-graph"></a>Scénář: Přihlášení uživatelů a volání Microsoft Graphu
 
 ![Topologie](./media/quickstart-v1-android/active-directory-android-topology.png)
 
-Tato aplikace je možné pro všechny účty služby Azure AD. Podporuje scénáře jednu i více organizace (viz popis v krocích). Ukazuje, jak může vývojář vytvářet aplikace a spojení s podnikovými uživateli přístup k jejich Azure + O365 dat prostřednictvím Microsoft Graphu. Během ověřování toku koncoví uživatelé budou muset přihlásit a vyjadřujete souhlas s oprávnění aplikace a v některých případech může vyžadovat souhlas pro aplikaci správce. Většina logiku v této ukázce ukazuje, jak do ověřování koncového uživatele a změňte základní volat u Microsoft Graphu.
+Tuto aplikaci můžete použít pro všechny účty Azure AD. Podporuje jak scénáře s jedním tenantem, tak i scénáře s více tenanty (popsáno v postupech). Ukazuje, jak můžete sestavit aplikace pro připojení podnikových uživatelů a získání přístupu prostřednictvím Microsoft Graphu k jejich datům Azure a O365. Během autorizačního toku se budou muset koncoví uživatelé přihlásit a vyjádřit souhlas s oprávněními aplikace a v některých případech se může v aplikaci vyžadovat i vyjádření souhlasu správce. Většina logiky v tomto příkladu ukazuje, jak ověřit uživatele a provést základní volání Microsoft Graphu.
 
-## <a name="example-code"></a>Příklad kódu
+## <a name="sample-code"></a>Ukázka kódu
 
-Úplnou ukázku kódu lze najít [na Githubu](https://github.com/Azure-Samples/active-directory-android). 
+Kompletní ukázkový kód najdete [na GitHubu](https://github.com/Azure-Samples/active-directory-android).
 
 ```Java
 // Initialize your app with MSAL
@@ -71,66 +76,65 @@ mAuthContext.acquireToken(
 mAuthResult.getAccessToken()
 ```
 
-## <a name="steps-to-run"></a>Postup spuštění
+## <a name="step-1-register-and-configure-your-app"></a>Krok 1: Registrace a konfigurace aplikace
 
-### <a name="register-and-configure-your-app"></a>Registrace a konfigurace aplikace 
-Budete muset mít nativní klientské aplikace zaregistrované pomocí Microsoft [webu Azure portal](https://portal.azure.com). 
+Budete potřebovat nativní klientskou aplikaci zaregistrovanou u Microsoftu prostřednictvím webu [Azure Portal](https://portal.azure.com).
 
-1. Abyste se registrace aplikace
-    - Přejděte na [Azure Portal](https://aad.portal.azure.com). 
-    - Vyberte ***Azure Active Directory*** > ***registrace aplikací***. 
+1. Získání zaregistrované aplikace
+    - Přejděte na [Azure Portal](https://aad.portal.azure.com).
+    - Vyberte ***Azure Active Directory*** > ***Registrace aplikací***.
 
 2. Vytvoření aplikace
-    - Vyberte **Registrace nové aplikace**. 
-    - Zadejte název aplikace v **název** pole. 
-    - V **typ aplikace** vyberte **nativní**. 
-    - V **identifikátor URI pro přesměrování**, zadejte `http://localhost`. 
+    - Vyberte **Registrace nové aplikace**.
+    - Do pole **Název** zadejte název aplikace.
+    - V části **Typ aplikace** vyberte **Nativní**.
+    - U možnosti **Identifikátor URI pro přesměrování** zadejte `http://localhost`.
 
 3. Konfigurace Microsoft Graphu
-    - Vyberte **Nastavení > požadovaná oprávnění**.
-    - Vyberte **přidat**uvnitř **vyberte rozhraní API** vyberte ***Microsoft Graphu***. 
-    - Vyberte oprávnění **přihlášení a čtení profilu uživatele**, pak klikněte na tlačítko **vyberte** uložte. 
-        - Toto oprávnění se mapuje `User.Read` oboru. 
-    - Volitelné: Vnitřní **požadovaná oprávnění > Windows Azure Active Directory**, odeberte vybrané oprávnění **přihlášení a čtení profilu uživatele**. Tím se vyhnete stránka pro odsouhlasení podmínek uživatele výpis oprávnění dvakrát. 
+    - Vyberte **Nastavení > Požadovaná oprávnění**.
+    - Vyberte **Přidat** a uvnitř možnosti **Vyberte rozhraní API** vyberte ***Microsoft Graph***.
+    - Vyberte oprávnění **Přihlášení a čtení uživatelského profilu** a stisknutím **Vybrat** vše uložte.
+        - Toto oprávnění se mapuje do oboru `User.Read`.
+    - Volitelné: V části **Požadovaná oprávnění > Windows Azure Active Directory** vybrané oprávnění **Přihlášení a čtení uživatelského profilu** odeberte. Stránka se souhlasem uživatele pak nebude uvádět oprávnění dvakrát.
 
-4. Blahopřejeme! Vaše aplikace je úspěšně nakonfigurovaný. V další části budete potřebovat:
+4. Blahopřejeme! Aplikace se úspěšně nakonfigurovala. V další části budete potřebovat:
     - `Application ID`
     - `Redirect URI`
 
-### <a name="get-the-sample-code"></a>Získání ukázkového kódu
+## <a name="step-2-get-the-sample-code"></a>Krok 2: Získání ukázkového kódu
 
-1. Klonování kódu.
+1. Naklonujte kód.
     ```
     git clone https://github.com/Azure-Samples/active-directory-android
     ```
-2. Otevřete ukázku v nástroji Android Studio.
-    - Vyberte **otevřete existující projekt Android Studio**.
+2. Otevřete ukázku v Android Studiu.
+    - Vyberte **Open an existing Android Studio project** (Otevřít existující projekt Android Studia).
 
-### <a name="configure-your-code"></a>Konfigurace kódu
+## <a name="step-3-configure-your-code"></a>Krok 3: Konfigurace kódu
 
-Můžete najít všechny konfigurace pro tento vzorový kód ***src/main/java/com/azuresamples/azuresampleapp/MainActivity.java*** souboru. 
+Veškerou konfiguraci tohoto ukázkového kódu najdete v souboru ***src/main/java/com/azuresamples/azuresampleapp/MainActivity.java***.
 
-1. Nahraďte konstanty `CLIENT_ID` s `ApplicationID`.
-2. Nahraďte konstanty `REDIRECT URI` s `Redirect URI` jste nakonfigurovali dříve (`http://localhost`). 
+1. Konstantu `CLIENT_ID` nahraďte položkou `ApplicationID`.
+2. Konstantu `REDIRECT URI` nahraďte identifikátorem URI pro přesměrování, který jste nakonfigurovali dříve (`http://localhost`).
 
-### <a name="run-the-sample"></a>Spuštění ukázky
+## <a name="step-4-run-the-sample"></a>Krok 4: Spuštění ukázky
 
-1. Vyberte **sestavení > Vyčistit projekt**. 
-2. Vyberte **spuštění > spustit aplikaci**. 
-3. Aplikace by měla sestavení a ukazují některé základní uživatelské prostředí Když kliknete `Call Graph API` tlačítko, bude výzva pro přihlášení v a pak tiše volání rozhraní Microsoft Graph API s nový token. 
+1. Vyberte **Build > Clean Project** (Sestavit > Čistý projekt).
+2. Vyberte **Run > Run app** (Spustit > Spustit aplikaci).
+3. Aplikace by se měla sestavit a zobrazit základní uživatelské prostředí. Když kliknete na tlačítko `Call Graph API`, zobrazí se výzva k přihlášení a potom se pomocí nového tokenu tiše zavolá rozhraní API pro Microsoft Graph.
 
-## <a name="important-info"></a>Důležité informace
+## <a name="next-steps"></a>Další kroky
 
-1. Rezervace [ADAL Android Wiki](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki) pro další informace o mechanismu knihovny a postupu při konfiguraci nové scénáře a funkce. 
-2. V nativním scénáře aplikace bude používat vložené Webview a neopustí aplikace. `Redirect URI` Může být libovolná. 
-3. Najít všechny problémy nebo mají požadavky? Můžete vytvořit problém nebo odeslat na Stackoverflow se značkou `azure-active-directory`. 
+1. Pokud chcete získat další informace o mechanismech knihovny a způsobu konfigurace nových scénářů a funkcí, projděte si [stránku Wiki knihovny ADAL pro Android](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki).
+2. V nativních scénářích bude aplikace používat vložené webové zobrazení Webview a neopustí aplikaci. Identifikátor URI pro přesměrování může být libovolný.
+3. Došlo k problémům nebo máte nějaký požadavek? Můžete buď vytvořit problém, nebo vytvořit příspěvek na Stack Overflow se značkou `azure-active-directory`.
 
 ### <a name="cross-app-sso"></a>Jednotné přihlašování napříč aplikacemi
-Přečtěte si [postup povolení jednotného přihlašování napříč aplikacemi v Androidu pomocí knihovny ADAL](howto-v1-enable-sso-android.md). 
 
-### <a name="auth-telemetry"></a>Telemetrii ověřování
-Knihovna ADAL zpřístupňuje telemetrii ověřování pomáhá vývojářům aplikací pochopit, jak se chová svoje aplikace a začít vytvářet lepší prostředí. To umožňuje zachytit přihlášení úspěšné, aktivních uživatelů a několik dalších zajímavé informace. Použití telemetrii ověřování vyžadovat vývojáři aplikací k navázání telemetrické službě můžete agregovat a uložení událostí.
+Zjistěte, [jak na Androidu pomocí knihovny ADAL povolit jednotné přihlašování napříč aplikacemi](howto-v1-enable-sso-android.md).
 
-Další informace o telemetrii ověřování checkout [ADAL Android telemetrii ověřování](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki/Telemetry). 
+### <a name="auth-telemetry"></a>Telemetrie ověřování
 
-[!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
+Knihovna ADAL zveřejňuje telemetrii ověřování, aby vývojáři aplikací pochopili, jak se aplikace chovají, a mohli vytvořit lepší prostředí. Díky tomu můžete zachytit úspěšné přihlášení, aktivní uživatele a několik dalších zajímavých přehledů. K použití telemetrie ověřování musí vývojáři aplikací službu telemetrie nastavit, aby události agregovala a ukládala.
+
+Další informace o telemetrii ověřování získáte v tématu o [telemetrii ověřování knihovny ADAL pro Android](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki/Telemetry).

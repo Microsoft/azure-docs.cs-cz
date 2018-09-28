@@ -7,16 +7,16 @@ ms.component: change-inventory-management
 keywords: change, tracking, automation
 author: jennyhunter-msft
 ms.author: jehunte
-ms.date: 08/27/2018
+ms.date: 09/12/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: fd94fd234067f63eab424c7f757d4adf842e7b46
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 16d5a025f0c0ff571298e0f528fb9119e37950f3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43120581"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995246"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>Řešení potíží se změnami ve vašem prostředí
 
@@ -32,6 +32,7 @@ V tomto kurzu se naučíte:
 > * Povolení připojení protokolu aktivit
 > * Aktivace události
 > * Zobrazení změn
+> * Konfigurace upozornění
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,7 +42,7 @@ Pro absolvování tohoto kurzu potřebujete:
 * [Účet Automation](automation-offering-get-started.md), který bude obsahovat sledovací proces, runbooky akcí a úlohu sledovacího procesu.
 * [Virtuální počítač](../virtual-machines/windows/quick-create-portal.md) pro připojení.
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 
@@ -66,20 +67,22 @@ Zpřístupnění dat pro analýzu může trvat 30 minut až 6 hodin.
 
 ## <a name="using-change-tracking-in-log-analytics"></a>Použití řešení Change Tracking v Log Analytics
 
-Řešení Change Tracking generuje data protokolu, která se odesílají do Log Analytics. Pokud chcete v protokolech hledat spouštěním dotazů, v horní části okna **Change Tracking** vyberte **Log Analytics**.
-Data řešení Change Tracking se ukládají jako typ **ConfigurationChange** (Změna konfigurace). Následující ukázka dotazu Log Analytics vrátí všechny zastavené služby systému Windows.
+Řešení Change Tracking generuje data protokolu, která se odesílají do Log Analytics.
+Pokud chcete v protokolech hledat spouštěním dotazů, v horní části okna **Change Tracking** vyberte **Log Analytics**.
+Data řešení Change Tracking se ukládají jako typ **ConfigurationChange** (Změna konfigurace).
+Následující ukázka dotazu Log Analytics vrátí všechny zastavené služby systému Windows.
 
 ```
 ConfigurationChange
 | where ConfigChangeType == "WindowsServices" and SvcState == "Stopped"
 ```
 
-Další informace o provozu a prohledávání souborů protokolů v Log Analytics najdete na stránce [Azure Log Analytics](https://docs.loganalytics.io/index).
+Další informace o provozu a prohledávání souborů protokolů v Log Analytics najdete na stránce [Azure Log Analytics](../log-analytics/log-analytics-queries.md).
 
 ## <a name="configure-change-tracking"></a>Konfigurace řešení Change Tracking
 
 Change Tracking poskytuje možnost sledovat změny konfigurace na vašem virtuálním počítači. Následující kroky ukazují, jak nakonfigurovat sledování klíčů registru a souborů.
- 
+
 Pokud chcete zvolit, jaké soubory a klíče registru se mají shromažďovat a sledovat, vyberte **Upravit nastavení** v horní části stránky **Change Tracking**.
 
 > [!NOTE]
@@ -92,7 +95,7 @@ V okně **Konfigurace pracovního prostoru** přidejte klíče registru systému
 1. Na kartě **Registr systému Windows** vyberte **Přidat**.
     Otevře se okno **Přidat registr systému Windows pro řešení Change Tracking**.
 
-3. V okně **Přidat registr systému Windows pro řešení Change Tracking** zadejte informace o klíči, který se má sledovat, a klikněte na **Uložit**.
+1. V okně **Přidat registr systému Windows pro řešení Change Tracking** zadejte informace o klíči, který se má sledovat, a klikněte na **Uložit**.
 
 |Vlastnost  |Popis  |
 |---------|---------|
@@ -168,6 +171,49 @@ Vyberte nějakou změnu **WindowsServices** (Služby pro Windows), tím se otev�
 
 ![Zobrazení podrobnosti o změnách na portálu](./media/automation-tutorial-troubleshoot-changes/change-details.png)
 
+## <a name="configure-alerts"></a>Konfigurace upozornění
+
+Zobrazení změn na webu Azure Portal může být užitečné, ale užitečnější je možnost dostávat upozornění, když dojde ke změně, jako je například zastavení služby.
+
+Pokud chcete přidat upozornění na zastavení služby, přejděte na webu Azure Portal do části **Monitorování**. Pak v části **Sdílené služby** vyberte **Upozornění** a klikněte na **+ Nové pravidlo upozornění**.
+
+V části **1. Definujte podmínku upozornění** a klikněte na **+ Vybrat cíl**. V části **Filtrovat podle typu prostředku** vyberte **Log Analytics**. Vyberte váš pracovní prostor Log Analytics a pak vyberte **Hotovo**.
+
+![Výběr prostředku](./media/automation-tutorial-troubleshoot-changes/select-a-resource.png)
+
+Vyberte **+ Přidat kritéria**.
+V části **Konfigurovat logiku signálů** vyberte v tabulce **Vlastní prohledávání protokolu**. Do textového pole Vyhledávací dotaz zadejte následující dotaz:
+
+```loganalytics
+ConfigurationChange | where ConfigChangeType == "WindowsServices" and SvcName == "W3SVC" and SvcState == "Stopped" | summarize by Computer
+```
+
+Tento dotaz vrátí počítače, na kterých se v zadaném období zastavila služba W3SVC.
+
+V části **Logika upozornění** jako **Prahová hodnota** zadejte **0**. Jakmile budete hotovi, vyberte **Hotovo**.
+
+![Konfigurace logiky signálů](./media/automation-tutorial-troubleshoot-changes/configure-signal-logic.png)
+
+V části **2. Definujte podrobnosti upozornění** zadejte název a popis upozornění. Nastavte **Závažnost** na **Informativní (záv. 2)**, **Upozornění (záv. 1)** nebo **Kritické (záv. 0)**.
+
+![Definice podrobností o upozornění](./media/automation-tutorial-troubleshoot-changes/define-alert-details.png)
+
+V části **3. Definujte skupinu akcí** vyberte **Nová skupina akcí**. Skupina akcí se skládá z akcí, které můžete použít ve více upozorněních. Mezi akce můžou patřit mimo jiné e-mailová oznámení, runbooky, webhooky a řada dalších. Další informace o skupinách akcí najdete v tématu [Vytváření a správa skupin akcí](../monitoring-and-diagnostics/monitoring-action-groups.md).
+
+Do pole **Název skupiny akcí** zadejte název a krátký název upozornění. Krátký název se použije místo úplného názvu skupiny akcí při odesílání oznámení pomocí této skupiny.
+
+V části **Akce** zadejte název akce, například **Odeslání e-mailu správcům**. V části **TYP AKCE** vyberte **E-mailové/SMS/nabízené/hlasové oznámení**. V části **PODROBNOSTI** vyberte **Upravit podrobnosti**.
+
+![Přidání skupiny akcí](./media/automation-tutorial-troubleshoot-changes/add-action-group.png)
+
+V podokně **E-mailové/SMS/nabízené/hlasové oznámení** zadejte název. Zaškrtněte políčko **E-mail** a zadejte platnou e-mailovou adresu. Klikněte na **OK** na stránce **E-mailové/SMS/nabízené/hlasové oznámení** a pak klikněte na **OK** na stránce **Přidat skupinu akcí**.
+
+Pokud chcete upravit předmět e-mailového upozornění, na stránce **Vytvořit pravidlo** v části **Přizpůsobit akce** vyberte **Předmět e-mailu**. Jakmile budete hotovi, vyberte **Vytvořit pravidlo upozornění**. Pravidlo vás upozorní na úspěšné nasazení aktualizací a poskytne informace o tom, které počítače byly součástí dané hromadné postupné aktualizace.
+
+Následující obrázek ukazuje příklad e-mailu přijatého po zastavení služby W3SVC.
+
+![e-mail](./media/automation-tutorial-troubleshoot-changes/email.png)
+
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
@@ -179,6 +225,7 @@ V tomto kurzu jste se naučili:
 > * Povolení připojení protokolu aktivit
 > * Aktivace události
 > * Zobrazení změn
+> * Konfigurace upozornění
 
 Další informace najdete v přehledu řešení Change Tracking a Inventory.
 

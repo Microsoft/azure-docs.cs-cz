@@ -6,15 +6,15 @@ author: vhorne
 manager: jpconnock
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 7/11/2018
+ms.date: 09/24/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 05959143431a2cc11d79a4012f45eb565c1c91f2
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 727d38cae6c2f98d2922d5760f116ab85d75b8ac
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575985"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983510"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Kurz: Nasazení a konfigurace brány Azure Firewall pomocí webu Azure Portal
 
@@ -31,7 +31,9 @@ Síťový provoz podléhá nakonfigurovaným pravidlům brány firewall, když h
 
 Aplikace a síťová pravidla se ukládají do *kolekcí pravidel*. Kolekce pravidel je seznam pravidel, které sdílí stejnou akci a prioritu.  Kolekce pravidel sítě je seznam pravidel sítě a kolekce pravidel aplikace je seznam pravidel aplikace.
 
-Kolekce pravidel sítě se zpracovávají vždy před kolekcemi pravidel aplikace. Všechna pravidla jsou ukončující, takže když se najde shoda v kolekci pravidel sítě, následující kolekce pravidel aplikace se v dané relaci už nezpracují.
+Azure Firewall nezná koncept příchozích a odchozích pravidel. Na veškerý provoz přicházející do brány firewall se uplatňují pravidla aplikace a pravidla sítě. Nejprve se použijí pravidla sítě, pak pravidla aplikace a tato pravidla jsou ukončující.
+
+Pokud se například najde shoda s pravidlem sítě, příslušný paket se nevyhodnotí podle pravidel aplikace. Pokud se nenajde shoda s žádným pravidlem sítě a protokol paketu je HTTP nebo HTTPS, paket se vyhodnotí podle pravidel aplikace. Pokud se stále nenajde žádná shoda, paket se vyhodnotí podle kolekce pravidel infrastruktury. Pokud se stále nenajde žádná shoda, ve výchozím nastavení se paket odepře.
 
 V tomto kurzu se naučíte:
 
@@ -46,10 +48,6 @@ V tomto kurzu se naučíte:
 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
-
-[!INCLUDE [firewall-preview-notice](../../includes/firewall-preview-notice.md)]
-
-Příklady v článcích o bráně Azure Firewall předpokládají, že už máte veřejnou verzi Preview brány Azure Firewall zapnutou. Další informace najdete v tématu o [povolení veřejné verze Preview brány Azure Firewall](public-preview.md).
 
 Pro účely tohoto kurzu vytvořte jednu virtuální síť se třemi podsítěmi:
 - **FW-SN** – v této podsíti bude brána firewall.
@@ -83,9 +81,7 @@ Nejprve vytvořte skupinu prostředků obsahující prostředky potřebné k nas
 7. V části **Předplatné** vyberte své předplatné.
 8. V části **Skupina prostředků** vyberte **Použít existující** a potom vyberte **Test-FW-RG**.
 9. V části **Umístění** vyberte dříve použité umístění.
-10. V části **Podsíť** jako **Název** zadejte **AzureFirewallSubnet**.
-
-    Brána firewall bude v této podsíti a název podsítě **musí** být AzureFirewallSubnet.
+10. V části **Podsíť** jako **Název** zadejte **AzureFirewallSubnet**. Brána firewall bude v této podsíti a název podsítě **musí** být AzureFirewallSubnet.
 11. V části **Rozsah adres** zadejte **10.0.1.0/24**.
 12. Ostatní výchozí nastavení ponechte a potom klikněte na **Vytvořit**.
 
@@ -207,25 +203,21 @@ U podsítě **Workload-SN** nakonfigurujete výchozí trasu v odchozím směru, 
 
 
 1. Otevřete skupinu prostředků **Test-FW-RG** a klikněte na bránu firewall **Test-FW01**.
-1. Na stránce **Test-FW01** v části **Nastavení** klikněte na **Pravidla**.
-2. Klikněte na **Přidat kolekci pravidel aplikace**.
-3. Jako **Název** zadejte **App-Coll01**.
-1. V části **Priorita** zadejte **200**.
-2. V části **Akce** vyberte **Povolit**.
+2. Na stránce **Test-FW01** v části **Nastavení** klikněte na **Pravidla**.
+3. Klikněte na **Přidat kolekci pravidel aplikace**.
+4. Jako **Název** zadejte **App-Coll01**.
+5. V části **Priorita** zadejte **200**.
+6. V části **Akce** vyberte **Povolit**.
+7. V části **Pravidla** jako **Název** zadejte **AllowGH**.
+8. V části **Zdrojové adresy** zadejte **10.0.2.0/24**.
+9. V části **Protokol:Port** zadejte **http, https**. 
+10. V části **Cílové plně kvalifikované názvy domén** zadejte **github.com**.
+11. Klikněte na tlačítko **Add** (Přidat).
 
-6. V části **Pravidla** jako **Název** zadejte **AllowGH**.
-7. V části **Zdrojové adresy** zadejte **10.0.2.0/24**.
-8. V části **Protokol:Port** zadejte **http, https**. 
-9. V části **Cílové plně kvalifikované názvy domén** zadejte **github.com**.
-10. Klikněte na tlačítko **Add** (Přidat).
+Brána Azure Firewall obsahuje předdefinovanou kolekci pravidel pro infrastrukturu plně kvalifikovaných názvů domén, které jsou ve výchozím nastavení povolené. Tyto plně kvalifikované názvy domén jsou specifické pro tuto platformu a pro jiné účely je nelze použít. Další informace najdete v tématu [Plně kvalifikované názvy domén infrastruktury](infrastructure-fqdns.md).
 
-> [!NOTE]
-> Brána Azure Firewall obsahuje předdefinovanou kolekci pravidel pro infrastrukturu plně kvalifikovaných názvů domén, které jsou ve výchozím nastavení povolené. Tyto plně kvalifikované názvy domén jsou specifické pro tuto platformu a pro jiné účely je nelze použít. Infrastruktura povolených plně kvalifikovaných názvů domén zahrnuje:
->- Výpočetní přístup k úložišti PIR (Platform Image Repository)
->- Přístup k úložišti se stavem spravovaných disků
->- Program Diagnostika
->
-> Tuto předdefinovanou kolekci pravidel infrastruktury můžete přepsat vytvořením kolekce pravidel aplikace *deny all*, která se zpracuje jako poslední. Vždy se zpracuje před kolekcí pravidel infrastruktury. Vše mimo kolekci pravidel infrastruktury je ve výchozím nastavení zakázané.
+> [!Note]
+> Značky plně kvalifikovaných názvů domén je v současné době možné konfigurovat pouze pomocí Azure PowerShellu a rozhraní REST. Další informace získáte po kliknutí [sem](https://aka.ms/firewallapplicationrule). 
 
 ## <a name="configure-network-rules"></a>Konfigurace pravidel sítě
 
