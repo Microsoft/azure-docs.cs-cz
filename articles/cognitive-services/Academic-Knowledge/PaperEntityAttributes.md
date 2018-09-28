@@ -25,7 +25,7 @@ Název    |Popis                                        |Typ       | Operace
 ------- | ------------------------------------------------- | --------- | ----------------------------
 ID      |ID entity                                          |Int64      |Rovná se
 Čas      |Název dokumentu                                        |Řetězec     |Je rovno<br/>StartsWith
-L       |Dokument jazyka kódu odděleny pomocí "\@@@"            |Řetězec     |Rovná se
+L       |Dokument jazyka kódu odděleny pomocí "\@@@\"            |Řetězec     |Rovná se
 Ano       |Rok papíru                                         |Datový typ Int32      |Je rovno<br/>IsBetween
 D       |Datum papíru                                         |Datum       |Je rovno<br/>IsBetween
 Kopie      |Počet citace                                     |Datový typ Int32      |žádný  
