@@ -6,23 +6,22 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: b0e694e4-3575-424c-afda-7d48c2025a62
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 05/10/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: cdfdaf9195f14e3cbe3db2a4507bd91a3133a26e
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: d979692ba32c596058d28c88f32e7e5872ab7ef9
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39071381"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452322"
 ---
-# <a name="manage-storage-capacity-for-azure-stack"></a>Správa kapacity úložiště pro službu Azure Stack
+# <a name="manage-storage-capacity-for-azure-stack"></a>Správa kapacity úložiště pro službu Azure Stack 
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
@@ -86,10 +85,15 @@ Jako operátor cloudu, můžete sledovat kapacitu úložiště sdílené složky
 - **Kapacita využitá** je množství dat v bajtech, která se používá všechny rozsahy ze souborů, které ukládají data tenanta a přidružená metadata.
 
 ### <a name="use-the-administrator-portal"></a>Použití portálu správce
-Jako operátor cloudu můžete na portálu pro správu k zobrazení všech sdílených složek kapacitu úložiště. **Přejděte do úložiště** > **sdílené složky** otevřete seznam souborů sdílené složky, kde můžete zobrazit informace o využití.
-![Příklad: Úložiště sdílené složky](media/azure-stack-manage-storage-shares/storage-file-shares.png)
-- **Celkový počet** je místo na celkový počet bajtů, které jsou k dispozici na sdílené složce. Zde se používá pro data a metadata, která se spravuje pomocí služby úložiště.
-- **POUŽÍT** je množství dat v bajtech, která se používá všechny rozsahy ze souborů, které ukládají data tenanta a přidružená metadata.
+Jako operátor cloudu můžete na portálu pro správu k zobrazení všech sdílených složek kapacitu úložiště.
+
+1. Přihlaste se k [portál pro správu](https://adminportal.local.azurestack.external).
+2. Vyberte **všechny služby** > **úložiště** otevřete seznam souborů sdílené složky, kde můžete zobrazit informace o využití. 
+
+  ![Příklad: Úložiště sdílené složky](media/azure-stack-manage-storage-shares/storage-file-shares.png)
+
+  - **Celkový počet** je místo na celkový počet bajtů, které jsou k dispozici na sdílené složce. Zde se používá pro data a metadata, která se spravuje pomocí služby úložiště.
+  - **POUŽÍT** je množství dat v bajtech, která se používá všechny rozsahy ze souborů, které ukládají data tenanta a přidružená metadata.
 
 ### <a name="storage-space-alerts"></a>Upozornění prostor úložiště
 Při použití portálu pro správu se zobrazí oznámení o sdílených složkách, které je nedostatek volného místa.

@@ -1,6 +1,6 @@
 ---
-title: Spravovat kapacita fyzické paměti pro zásobník Azure | Microsoft Docs
-description: Monitorovat a spravovat adresní prostor úložiště k dispozici pro Azure zásobníku.
+title: Správa kapacity fyzické paměti pro službu Azure Stack | Dokumentace Microsoftu
+description: Monitorovat a spravovat adresní prostor úložiště k dispozici pro službu Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,44 +12,43 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/08/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: Thomas.Roettinger
-ms.openlocfilehash: dc572353c2e27ddfbae2398f1aece56586955e26
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: a914d20f61b5b632e792ca29f6c201964db4a203
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34074853"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452135"
 ---
-<!---Loc Comment: Please, check the comment in coversation section---> 
-# <a name="manage-physical-memory-capacity-for-azure-stack"></a>Spravovat kapacita fyzické paměti pro Azure zásobníku
+# <a name="manage-physical-memory-capacity-for-azure-stack"></a>Správa kapacity fyzické paměti pro službu Azure Stack
 
-*Platí pro: Azure zásobníku integrované systémy*
+*Platí pro: integrované systémy Azure Stack*
 
-Pokud chcete zvýšit kapacitu celkově dostupné paměti zásobník Azure, můžete přidat další paměť. V zásobníku Azure fyzický server se také označuje jako *uzlu jednotky škálování*. Všechny uzly jednotek škálování, které jsou členy jednotky škálování jednoho musí mít stejné množství paměti.
+Ke zvýšení kapacity celkově dostupné paměti pro službu Azure Stack, můžete přidat další paměť. Ve službě Azure Stack fyzický server se také označuje jako *uzel jednotek škálování*. Všechny uzly škálovací jednotky, které jsou členy jedné škálovací jednotky musí mít stejné množství paměti.
 
 > [!note]  
-> Než budete pokračovat, dokumentaci od výrobce hardwaru a zjistěte, zda výrobce podporuje upgrade fyzické paměti. Smlouva OEM dodavatele hardwaru podpory může vyžadovat, že dodavatele provádět umístění rack fyzického serveru a aktualizaci firmwaru zařízení.
+> Než budete pokračovat, v dokumentaci od výrobce hardwaru a zjistěte, jestli výrobce vašeho podporuje upgrade fyzické paměti. Vaše smlouva podporu dodavatele hardwaru OEM může vyžadovat, že se na dodavatele provádět umístění fyzického serveru do racku a aktualizaci firmwaru zařízení.
 
-Následující vývojový diagram znázorňuje obecný postup pro přidání paměti do každého uzlu jednotky škálování.
+Následující vývojový diagram ukazuje obecné postup přidávání paměti na každý uzel jednotek škálování.
 
 ![Přidejte do každého uzlu jednotky škálování paměti](media\azure-stack-manage-storage-physical-capacity\process-to-add-memory-to-scale-unit.png)
 
-## <a name="add-memory-to-an-existing-node"></a>Přidejte do stávající uzel paměti
-V následujících krocích najdete přehled procesu přidání paměti. 
+## <a name="add-memory-to-an-existing-node"></a>Přidejte do existující uzel paměť
+Následující kroky obsahují podrobný přehled procesu přidávání paměti. 
 
 > [!Warning]  
-Nepostupujte podle těchto kroků bez odkazující na dokumentaci poskytnutou výrobcem OEM.
+Nepostupujte podle těchto kroků bez ohledu na dokumentaci k poskytnutou výrobcem OEM.
 
 > [!Warning]  
-Jednotka škálování celý musí být vypnuté postupného upgradu paměti nepodporuje.
+Celá jednotka škálování musí být vypnut, protože paměti se zajištěním provozu není podporováno.
 
-1. Zastavit pomocí kroků popsaných v zásobníku Azure [zahájení a ukončení zásobník Azure](azure-stack-start-and-stop.md) článku.
-2. Upgradujte paměť na každý fyzický počítač pomocí dokumentaci od výrobce hardwaru.
-3. Spustit pomocí kroků v zásobníku Azure [zahájení a ukončení zásobník Azure](azure-stack-start-and-stop.md) článku.
+1. Zastavit pomocí kroků popsaných v Azure Stack [spouštění a zastavování služby Azure Stack](azure-stack-start-and-stop.md) článku.
+2. Upgrade paměti na každý fyzický počítač s použitím dokumentace od výrobce hardwaru.
+3. Spuštění pomocí postupu ve službě Azure Stack [spouštění a zastavování služby Azure Stack](azure-stack-start-and-stop.md) článku.
 
 ## <a name="next-steps"></a>Další postup
 
- - Informace o tom, které chcete spravovat účty úložiště v Azure zásobníku najít, obnovit a opětovné využití kapacity úložiště na základě obchodních potřeb, najdete v části [spravovat účty úložiště v Azure zásobníku](azure-stack-manage-storage-accounts.md).
- - Další operátor cloudu Azure zásobníku monitoruje a spravuje úložnou kapacitu jejich nasazení zásobník Azure najdete v tématu [spravovat kapacita úložiště pro Azure zásobníku](azure-stack-manage-storage-shares.md). 
+ - Zjistěte, jak spravovat účty úložiště ve službě Azure Stack najít, obnovit a získat zpět na základě obchodních potřeb kapacity úložiště, najdete v článku [spravovat účty úložiště ve službě Azure Stack](azure-stack-manage-storage-accounts.md).
+ - Další operátor cloudu Azure Stack, monitoruje a spravuje je kapacita jejich nasazení Azure Stack, najdete v článku [spravovat kapacitu úložiště pro službu Azure Stack](azure-stack-manage-storage-shares.md). 

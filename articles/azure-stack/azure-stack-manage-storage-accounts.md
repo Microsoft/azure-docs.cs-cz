@@ -6,21 +6,20 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 627d355b-4812-45cb-bc1e-ce62476dab34
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 05/10/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 8914391a586bb508192200beaba7f591649a1e99
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 35c15613192ac12a7d4c64cbe28f62200724d311
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42139375"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452271"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Správa účtů úložiště ve službě Azure Stack
 Zjistěte, jak spravovat účty úložiště ve službě Azure Stack najít, obnovit a získat kapacity úložiště na základě obchodních potřeb.
@@ -28,19 +27,19 @@ Zjistěte, jak spravovat účty úložiště ve službě Azure Stack najít, obn
 ## <a name="find"></a>Najít účet úložiště
 Seznam účtů úložiště v oblasti lze zobrazit ve službě Azure Stack podle:
 
-1. V internetovém prohlížeči přejděte na https://adminportal.local.azurestack.external.
-2. Přihlaste se k portálu pro správu služby Azure Stack jako operátor cloudu (pomocí přihlašovacích údajů, které jste zadali při nasazení)
-3. Na výchozí řídicí panel – najděte **Správa oblastí** seznam a vyberte oblast, kterou chcete prozkoumat, například **(místní**).
+1. Přihlaste se k [portál pro správu](https://adminportal.local.azurestack.external).
+
+2. Vyberte **všechny služby** > **Správa oblastí** pod **správu**.
+
+3. Vyberte **úložiště** z **poskytovatelů prostředků** seznamu.
    
-   ![](media/azure-stack-manage-storage-accounts/image1.png)
-4. Vyberte **úložiště** z **poskytovatelů prostředků** seznamu.
+   ![Zprostředkovatel prostředku úložiště](media/azure-stack-manage-storage-accounts/image1.png)
+
+5. Vyberte **účty úložiště** v **úložiště**.
    
    ![](media/azure-stack-manage-storage-accounts/image2.png)
-5. Nyní, v podokně Správce poskytovatele prostředků úložiště – přejděte dolů k položce **účty úložiště** kartě a vyberte ji.
    
-   ![](media/azure-stack-manage-storage-accounts/image3.png)
-   
-   Výsledný stránka představuje seznam účtů úložiště v dané oblasti.
+   V okně zobrazí seznam účtů úložiště v dané oblasti.
    
    ![](media/azure-stack-manage-storage-accounts/image4.png)
 
@@ -76,12 +75,12 @@ Je možné v situaci, kdy potřebujete k obnovení odstraněného účtu.
 
 Ve službě Azure Stack je jednoduchý způsob, jak to udělat:
 
-1. Přejděte do seznamu účtů úložiště. Zobrazit [Najít účet úložiště](#find) v tomto tématu pro další informace.
+1. Přejděte do seznamu účtů úložiště. Zobrazit [Najít účet úložiště](#find) v tomto článku pro další informace.
 2. V seznamu vyhledejte konkrétního účtu. Budete muset filtrovat.
 3. Zkontrolujte, *stavu* účtu. By mělo být uvedeno **odstraněné**.
 4. Vyberte účet, který se otevře podokno Podrobnosti účtu.
 5. Na tomto podokně vyhledejte **obnovit** tlačítko a vyberte ji.
-6. Vyberte **Ano** potvrďte.
+6. Výběrem **Ano** potvrďte.
    
    ![](media/azure-stack-manage-storage-accounts/image8.png)
 7. Obnovení je teď v *proces... Počkejte* pro indikaci, že byla úspěšná.
@@ -97,19 +96,18 @@ Ve službě Azure Stack je jednoduchý způsob, jak to udělat:
   Mimo uchování znamená, že odstraněného účtu byla překročena doba uchování a nemusí nepůjde obnovit.
 * Odstraněný účet není uveden v seznamu účtů.
   
-  Účet se nemusí zobrazit v seznamu účtů, když odstraněný účet již byl uvolněn z paměti. V tomto případě nelze obnovit. Zobrazit [uvolnit kapacity](#reclaim) v tomto tématu.
+  Účet se nemusí zobrazit v seznamu účtů, když odstraněný účet již byl uvolněn z paměti. V tomto případě nelze obnovit. Zobrazit [uvolnit kapacity](#reclaim) v tomto článku.
 
 ## <a name="set-the-retention-period"></a>Nastavit dobu uchování.
 Nastavení doby uchování umožňuje operátor cloudu k zadejte časové období ve dnech (0 až 9 999 dnů) během které je potenciálně obnovit všechny odstraněné účty. Výchozí dobu uchování je nastavena na 0 dnů. Nastavením této hodnoty na "0" znamená, že všechny odstraněný účet je okamžitě mimo uchovávání informací se označen pro pravidelné uvolňování paměti.
 
 **Chcete-li změnit dobu uchování:**
 
-1. V internetovém prohlížeči přejděte na https://adminportal.local.azurestack.external.
-2. Přihlaste se k portálu pro správu služby Azure Stack jako operátor cloudu (pomocí přihlašovacích údajů, které jste zadali při nasazení)
-3. Na výchozí řídicí panel – najděte **Správa oblastí** seznam a vyberte oblast, kterou chcete prozkoumat – například **(místní**).
-4. Vyberte **úložiště** z **poskytovatelů prostředků** seznamu.
-5. Vyberte **nastavení** v horní části stránky a otevřete tak podokno nastavení.
-6. Vyberte **konfigurace** pak upravte hodnotu doby uchování.
+1. Přihlaste se k [portál pro správu](https://adminportal.local.azurestack.external).
+2. Vyberte **všechny služby** > **Správa oblastí** pod **správu**.
+3. Vyberte **úložiště** z **poskytovatelů prostředků** seznamu.
+4. Vyberte **nastavení** v horní části stránky a otevřete tak podokno nastavení.
+5. Vyberte **konfigurace** pak upravte hodnotu doby uchování.
 
    Nastavte počet dní a pak ho uložte.
    
@@ -142,7 +140,7 @@ Můžete také pomocí prostředí PowerShell explicitně přepsat doby uchován
    Další informace o rutiny Azure Resource Manageru najdete v tématu [pomocí Azure Powershellu s Azure Resource Manageru](http://go.microsoft.com/fwlink/?LinkId=394767)
 2. Spuštěním následující rutiny:
 
-> [!NOTE]
+> [!NOTE]  
 > Pokud spustíte tyto rutiny, trvale odstraníte účet a její obsah. Se nedá vrátit zpátky. Toto používejte obezřetně.
 
 ```PowerShell  
