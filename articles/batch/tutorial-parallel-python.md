@@ -7,15 +7,15 @@ manager: jeconnoc
 ms.service: batch
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 01/23/2018
+ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 916cedfb91f0711f136ff8ad679be94c68964619
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 6bbaa9693bb8d8e54e78f1e83617449cd013ad48
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38301049"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47158730"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Kurz: Spuštění paralelní úlohy pomocí služby Azure Batch s využitím rozhraní Python API
 
@@ -127,8 +127,8 @@ K práci s účtem úložiště aplikace používá balíček [azure-storage-blo
 
 ```python
 blob_client = azureblob.BlockBlobService(
-    account_name=STORAGE_ACCOUNT_NAME,
-    account_key=STORAGE_ACCOUNT_KEY)
+    account_name=_STORAGE_ACCOUNT_NAME,
+    account_key=_STORAGE_ACCOUNT_KEY)
 ```
 
 K vytváření a správě fondů, úloh a úkolů ve službě Batch aplikace vytvoří objekt [BatchServiceClient](/python/api/azure.batch.batchserviceclient). Klient služby Batch v ukázce používá ověření pomocí sdíleného klíče. Pro účely ověřování jednotlivých uživatelů nebo bezobslužných aplikací služba Batch podporuje také ověřování prostřednictvím [Azure Active Directory](batch-aad-auth.md).
@@ -151,7 +151,7 @@ blob_client.create_container(input_container_name, fail_on_exist=False)
 blob_client.create_container(output_container_name, fail_on_exist=False)
 input_file_paths = []
     
-for folder, subs, files in os.walk('./InputFiles/'):
+for folder, subs, files in os.walk(os.path.join(sys.path[0],'./InputFiles/')):
     for filename in files:
         if filename.endswith(".mp4"):
             input_file_paths.append(os.path.abspath(os.path.join(folder, filename)))
@@ -204,8 +204,8 @@ batch_service_client.pool.add(new_pool)
 
 ```python
 job = batch.models.JobAddParameter(
-    job_id,
-    batch.models.PoolInformation(pool_id=pool_id))
+    id=job_id,
+    pool_info=batch.models.PoolInformation(pool_id=pool_id))
 
 batch_service_client.job.add(job)
 ```
@@ -229,13 +229,15 @@ for idx, input_file in enumerate(input_files):
         id='Task{}'.format(idx),
         command_line=command,
         resource_files=[input_file],
-        output_files=[batchmodels.OutputFile(output_file_path,
-              destination=batchmodels.OutputFileDestination(
-                container=batchmodels.OutputFileBlobContainerDestination(output_container_sas_url)),
-              upload_options=batchmodels.OutputFileUploadOptions(
-                batchmodels.OutputFileUploadCondition.task_success))]
-            )
-     )
+        output_files=[batchmodels.OutputFile(
+            file_pattern=output_file_path,
+            destination=batchmodels.OutputFileDestination(
+                container=batchmodels.OutputFileBlobContainerDestination(
+                    container_url=output_container_sas_url)),
+            upload_options=batchmodels.OutputFileUploadOptions(
+                upload_condition=batchmodels.OutputFileUploadCondition.task_success))]
+        )
+    )
 batch_service_client.task.add_collection(job_id, tasks)
 ```    
 
@@ -251,7 +253,7 @@ while datetime.datetime.now() < timeout_expiration:
     sys.stdout.flush()
     tasks = batch_service_client.task.list(job_id)
 
-     incomplete_tasks = [task for task in tasks if
+    incomplete_tasks = [task for task in tasks if
                          task.state != batchmodels.TaskState.completed]
     if not incomplete_tasks:
         print()

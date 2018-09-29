@@ -2,21 +2,22 @@
 title: Použití sady Visual Studio a .NET k dotazování služby Azure SQL Database | Dokumentace Microsoftu
 description: Toto téma vám ukáže, jak pomocí sady Visual Studio vytvořit program, který se připojí ke službě Azure SQL Database a bude ji dotazovat s použitím příkazů jazyka Transact-SQL.
 services: sql-database
-ms.workload: azure-vs
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: devcenter, vs-azure
+ms.subservice: development
+ms.custom: ''
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 04/01/2018
+author: CarlRabeler
 ms.author: carlrab
-ms.openlocfilehash: da2bd556567882d2620e9bc8b1f58923010eeaa4
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: e6eaaa67914579edd5c3b53362835aa1ad168eca
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050013"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064029"
 ---
 # <a name="use-net-c-with-visual-studio-to-connect-and-query-an-azure-sql-database"></a>Použití .NET (jazyk C#) a sady Visual Studio k připojení k databázi SQL Azure a jejímu dotazování
 

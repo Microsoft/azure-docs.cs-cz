@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b6a00719fea78d5872dc00a874951c4760d9207f
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: d712286cb4ea5e67474ec11d56d99eaf2cabec3e
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381206"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433068"
 ---
 # <a name="json-claims-transformations"></a>JSON deklarace identity transformace
 
@@ -75,7 +75,7 @@ Získání seznamu sad zadané elementy z dat Json.
 V následujícím příkladu transformace deklarací identity extrahuje následující deklarace: e-mailu (řetězec), displayName (řetězec), membershipNum (int), aktivní (logická hodnota) a datum narození (datetime) z dat JSON.
 
 ```JSON
-[{"key":"email","value":"someone@example.com"}, "key":"displayName","value":"Someone"}, {"key":"membershipNum","value":6353399}, {"key":"active","value":true}, {"key":"birthdate","value":"1980-09-23T00:00:00Z"}]
+[{"key":"email","value":"someone@example.com"}, {"key":"displayName","value":"Someone"}, {"key":"membershipNum","value":6353399}, {"key":"active","value":true}, {"key":"birthdate","value":"1980-09-23T00:00:00Z"}]
 ```
 
 ```XML
@@ -86,7 +86,7 @@ V následujícím příkladu transformace deklarací identity extrahuje následu
   <InputParameters>
     <InputParameter Id="errorOnMissingClaims" DataType="boolean" Value="false" />
     <InputParameter Id="includeEmptyClaims" DataType="boolean" Value="false" />
-    <InputParameter Id="jsonSourceKeyName" DataType="string" Value="type" />
+    <InputParameter Id="jsonSourceKeyName" DataType="string" Value="key" />
     <InputParameter Id="jsonSourceValueName" DataType="string" Value="value" />
   </InputParameters>
   <OutputClaims>
@@ -100,7 +100,7 @@ V následujícím příkladu transformace deklarací identity extrahuje následu
 ```    
 
 - Vstupní deklarace identity:
-    - **jsonSourceClaim**: [{"klíče": "email", "value": "someone@example.com"}, "klíče": "displayName", "value": "Uživatel"}, {"klíče": "membershipNum", "value": 6353399}, {"klíče": "aktivní", "value": true}, {"klíče": "datum narození", "value": "1980-09-23T00:00:00Z"}]
+    - **jsonSourceClaim**: [{"klíče": "email", "value": "someone@example.com"}, {"klíče": "displayName", "value": "Uživatel"}, {"klíče": "membershipNum", "value": 6353399}, {"klíče": "aktivní", "value": true}, {"klíče": "datum narození", "value": "1980-09-23T00:00:00Z"}]
 - Vstupní parametry:
     - **errorOnMissingClaims**: false
     - **includeEmptyClaims**: false
@@ -221,11 +221,9 @@ Výstupní deklarací:
 
 ```JSON
 {
-  {
-    "user": {
-      "name":"Someone",
-      "email":"someone@example.com"
-    }
+  "user": {
+    "name":"Someone",
+    "email":"someone@example.com"
   }
 }
 ```

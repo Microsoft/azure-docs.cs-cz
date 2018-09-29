@@ -9,12 +9,12 @@ ms.date: 2/14/2018
 ms.topic: tutorial
 ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: 4fb8d45c285ee3c1651039619808b8964c5313cd
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: dfe561e7a7231c8e7f9465819a01cd4b0a35f47c
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983076"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434532"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Zálohování několika virtuálních počítačů pomocí webu Azure Portal
 
@@ -42,7 +42,7 @@ Trezor služby Recovery Services obsahuje zálohovaná data a zásadu zálohová
 
     ![Otevření nabídky trezoru](./media/tutorial-backup-vm-at-scale/provide-vault-detail-2.png)
 
-3. V nabídce Trezor služby Recovery Services: 
+3. V nabídce Trezor služby Recovery Services:
 
     - Jako **Název** zadejte *myRecoveryServicesVault*.
     - V části **Předplatné** se zobrazí ID aktuálního předplatného. Pokud máte další předplatná, můžete pro nový trezor zvolit jiné předplatné.
@@ -76,7 +76,7 @@ Po vytvoření trezoru služby Recovery Services je dalším krokem konfigurace 
 
     ![Výběr úlohy](./media/tutorial-backup-vm-at-scale/create-new-policy.png)
 
-5. V nabídce **Zásady zálohování** jako **Název zásady** zadejte *Finance*. Proveďte následující změny zásady zálohování: 
+5. V nabídce **Zásady zálohování** jako **Název zásady** zadejte *Finance*. Proveďte následující změny zásady zálohování:
     - V části **Frekvence zálohování** nastavte časové pásmo na *Střed*. Vzhledem k tomu, že se sportovní komplex nachází v Texasu, vlastník chce používat místní čas. Frekvenci zálohování ponechte nastavenou na Denní v 3:30.
     - V části **Uchování denního bodu zálohy** nastavte období na 90 dnů.
     - V části **Uchování týdenního bodu zálohy** použijte bod obnovení z *Pondělí* a nastavte dobu uchování na 52 týdnů.
@@ -84,21 +84,21 @@ Po vytvoření trezoru služby Recovery Services je dalším krokem konfigurace 
     - Zrušte výběr možnosti **Uchování ročního bodu zálohy**. Vedoucí finančního oddělení nechce uchovávat data déle než 36 měsíců.
     - Kliknutím na **OK** vytvořte zásadu zálohování.
 
-    ![Výběr úlohy](./media/tutorial-backup-vm-at-scale/set-new-policy.png) 
+    ![Výběr úlohy](./media/tutorial-backup-vm-at-scale/set-new-policy.png)
 
     Po vytvoření zásady zálohování tuto zásadu přidružte k virtuálním počítačům.
 
-6. V dialogovém okně **Výběr virtuálních počítačů** vyberte *myVM* a kliknutím na **OK** nasaďte zásadu zálohování do virtuálních počítačů. 
+6. V dialogovém okně **Výběr virtuálních počítačů** vyberte *myVM* a kliknutím na **OK** nasaďte zásadu zálohování do virtuálních počítačů.
 
     Zobrazí se všechny virtuální počítače ve stejném umístění, které ještě nemají přidruženou žádnou zásadu zálohování. Pro přidružení k zásadě *Finance* jsou vybrané virtuální počítače *myVMH1* a *myVMR1*.
 
-    ![Výběr úlohy](./media/tutorial-backup-vm-at-scale/choose-vm-to-protect.png) 
+    ![Výběr úlohy](./media/tutorial-backup-vm-at-scale/choose-vm-to-protect.png)
 
     Po dokončení nasazení se zobrazí oznámení o úspěšném dokončení nasazení.
 
 ## <a name="initial-backup"></a>Prvotní zálohování
 
-Povolili jste zálohování pro trezory služby Recovery Services, ale ještě se nevytvořila prvotní záloha. Osvědčeným postupem pro zotavení po havárii je aktivovat první zálohování, aby se zajistila ochrana vašich dat. 
+Povolili jste zálohování pro trezory služby Recovery Services, ale ještě se nevytvořila prvotní záloha. Osvědčeným postupem pro zotavení po havárii je aktivovat první zálohování, aby se zajistila ochrana vašich dat.
 
 Spuštění úlohy zálohování na vyžádání:
 
@@ -130,10 +130,10 @@ Spuštění úlohy zálohování na vyžádání:
 
     Oznámení nasazení vás budou informovat o aktivaci úlohy zálohování a možnosti sledovat průběh úlohy na stránce Úlohy zálohování. V závislosti na velikosti virtuálního počítače může vytváření prvotní zálohy chvíli trvat.
 
-    Po dokončení úlohy prvotního zálohování se její stav zobrazí v nabídce úlohy zálohování. Úloha zálohování na vyžádání vytvořila prvotní bod obnovení pro virtuální počítač *myVM*. Pokud chcete zálohovat další virtuální počítače, zopakujte tento postup pro každý z nich. 
+    Po dokončení úlohy prvotního zálohování se její stav zobrazí v nabídce úlohy zálohování. Úloha zálohování na vyžádání vytvořila prvotní bod obnovení pro virtuální počítač *myVM*. Pokud chcete zálohovat další virtuální počítače, zopakujte tento postup pro každý z nich.
 
     ![Dlaždice Úlohy zálohování](./media/tutorial-backup-vm-at-scale/initial-backup-complete.png)
-  
+
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Pokud chcete pokračovat v práci s dalšími kurzy, neprovádějte čištění prostředků vytvořených v rámci tohoto kurzu. Pokud pokračovat nechcete, pomocí následujících kroků odstraňte všechny prostředky vytvořené v rámci tohoto kurzu na webu Azure Portal.
@@ -153,15 +153,15 @@ Pokud chcete pokračovat v práci s dalšími kurzy, neprovádějte čištění 
 
     ![Ikona nastavení](./media/tutorial-backup-vm-at-scale/context-menu-to-delete-vm.png)
 
-4. V místní nabídce vyberte **Zastavit zálohování** a otevřete nabídku Zastavit zálohování. 
+4. V místní nabídce vyberte **Zastavit zálohování** a otevřete nabídku Zastavit zálohování.
 
     ![Ikona nastavení](./media/tutorial-backup-vm-at-scale/context-menu-for-delete.png)
 
 5. V nabídce **Zastavit zálohování** vyberte horní rozevírací nabídku a zvolte **Odstranit zálohovaná data**.
 
 6. V dialogovém okně **Zadejte název zálohované položky** zadejte *myVM*.
- 
-7. Po ověření zálohované položky (zobrazí se značka zaškrtnutí) bude povolené tlačítko **Zastavit zálohování**. Kliknutím na **Zastavit zálohování** zastavte zásadu a odstraňte body obnovení. 
+
+7. Po ověření zálohované položky (zobrazí se značka zaškrtnutí) bude povolené tlačítko **Zastavit zálohování**. Kliknutím na **Zastavit zálohování** zastavte zásadu a odstraňte body obnovení.
 
     ![kliknutí na Zastavit zálohování a odstranění trezoru](./media/tutorial-backup-vm-at-scale/provide-reason-for-delete.png)
 
@@ -183,7 +183,7 @@ V tomto kurzu jste pomocí webu Azure Portal provedli následující kroky:
 > * Přiřazení zásady za účelem ochrany několika virtuálních počítačů
 > * Aktivace zálohování virtuálních počítačů na vyžádání
 
-Přejděte k dalšímu kurzu, kde obnovíte virtuální počítač Azure z disku. 
+Přejděte k dalšímu kurzu, kde obnovíte virtuální počítač Azure z disku.
 
 > [!div class="nextstepaction"]
 > [Obnovení virtuálních počítačů pomocí rozhraní příkazového řádku](./tutorial-restore-disk.md)

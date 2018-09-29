@@ -8,12 +8,12 @@ ms.service: app-service
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: 0d4121bd68611c1f3c6a8c89a0d60251401d670a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 50e6b714bc28ce383f06580d0e35b0b0e4066835
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301289"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432219"
 ---
 # <a name="app-service-documentation"></a>Dokumentace ke službě App Service
 Azure App Service umožňuje vytvářet a hostovat webové aplikace v programovacím jazyce podle vašeho výběru, aniž by bylo potřeba zabývat se správou infrastruktury, jazykem nebo modulem runtime webové architektury. Nabízí automatické škálování a vysokou dostupnost, podporuje systémy Windows a Linux a umožňuje automatizované nasazení z Githubu, Azure DevOps Services nebo libovolného úložiště Git. Naučte se používat službu Azure App Service prostřednictvím našich šablon Rychlý start, kurzů a ukázek.
@@ -40,7 +40,7 @@ Zjistěte, jak nasadit, spravovat a monitorovat zabezpečené webové aplikace v
   - [.NET s Azure SQL DB](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase)
   - [Node.js s databází MongoDB](/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app)
   - [Java s MySQL](/app-service/app-service-web-tutorial-java-mysql)
-  - [Python sh PostgreSQL](/app-service/containers/tutorial-docker-python-postgresql-app)
+  - [Python sh PostgreSQL](/app-service/containers/tutorial-python-postgresql-app)
 - [Mapování existující vlastní domény na aplikaci](/azure/app-service/app-service-web-tutorial-custom-domain)
 - [Vytvoření vazby stávajícího certifikátu SSL na vaši aplikaci](/azure/app-service/app-service-web-tutorial-custom-SSL)
 

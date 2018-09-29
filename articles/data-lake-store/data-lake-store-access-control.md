@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 335c3fe4e27ce6025ad889cc7958a32223dc85f8
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: fce96cf5be9e70863fd75e5d4b3045bc49f638cf
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45629919"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432617"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Řízení přístupu v Azure Data Lake Storage Gen1
 
@@ -109,11 +109,6 @@ Superuživatel má většina oprávnění ze všech uživatelů v účtu Data La
 * Může měnit vlastnícího uživatele nebo vlastnící skupinu pro kterýkoli soubor nebo složku.
 
 Všechny uživatele, kteří jsou součástí **vlastníky** roli pro účet Data Lake Storage Gen1 jsou automaticky superuživatel.
-
-Pokud chcete vytvořit vlastní roli řízení přístupu na základě role (RBAC) s oprávněními superuživatele, musí zahrnovat následující oprávnění:
-- Microsoft.DataLakeStore/accounts/Superuser/action
-- Microsoft.Authorization/roleAssignments/write
-
 
 ### <a name="the-owning-user"></a>Vlastnící uživatel
 

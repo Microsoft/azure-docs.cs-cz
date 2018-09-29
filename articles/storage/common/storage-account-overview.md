@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 7b2d51f356538724d567654c0de3decbf19c838c
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 0b2bf8cdb1af85e5ddbd3b18dd6dfa47bcb835b4
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222093"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432881"
 ---
 # <a name="azure-storage-account-overview"></a>Přehled účtu Azure storage
 
@@ -39,7 +39,7 @@ Následující tabulka popisuje typy účtů úložiště a jejich funkce:
 
 <sup>1</sup>doporučuje se použít model nasazení Azure Resource Manageru. Účty úložiště pomocí modelu nasazení classic je možné vytvořit i nadále v některých umístěních, a nadále podporovat existující klasické účty. Další informace najdete v tématu [Azure Resource Manageru a klasického nasazení: vysvětlení modelů nasazení a stavu prostředků](../../azure-resource-manager/resource-manager-deployment-model.md).
 
-<sup>2</sup>všechny účty úložiště jsou šifrování pro neaktivní uložená data pomocí šifrování služby Storage (SSE). Další informace najdete v tématu [šifrování služby Azure Storage pro neaktivní uložená Data](storage-service-encryption.md).
+<sup>2</sup>všechny účty úložiště jsou šifrované pomocí šifrování služby Storage (SSE) pro neaktivní uložená data. Další informace najdete v tématu [šifrování služby Azure Storage pro neaktivní uložená Data](storage-service-encryption.md).
 
 <sup>3</sup>archivní úroveň je dostupná na úrovni pouze jednotlivých objektů blob není na úrovni účtu úložiště. Pouze objekty BLOB bloku a doplňovacích objektů blob je možné archivovat. Další informace najdete v tématu [Azure Blob storage: horká, studená a archivní úroveň úložiště](../blobs/storage-blob-storage-tiers.md).
 

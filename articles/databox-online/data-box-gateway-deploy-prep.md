@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/24/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: f4c3cf5329c10cda3691370e946b8397662a8d66
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4c21245e05625f65b6b5dcf5f7081f5f5d1abb52
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953408"
+ms.locfileid: "47030593"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway-preview"></a>Kurz: Příprava k nasazení služby Azure Data Box Gateway (Preview)
 
@@ -89,7 +89,7 @@ Než začnete, ujistěte se, že:
 
 ## <a name="create-a-new-resource"></a>Vytvoření nového prostředku
 
-Jedna instance prostředku Data Box Gateway může spravovat několik virtuálních zařízení Data Box Gateway. Pomocí následujícího postupu vytvořte nový prostředek Data Box Gateway. 
+Pomocí následujícího postupu vytvořte nový prostředek Data Box Gateway. 
 
 Pokud už pro správu vašich virtuálních zařízení máte existující prostředek Data Box Gateway, přeskočte tento krok a přejděte k části [Získání aktivačního klíče](#get-the-activation-key).
 

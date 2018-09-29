@@ -13,12 +13,12 @@ ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 manager: douge
-ms.openlocfilehash: 97b052833946b373e2333491c4b516b3a088130b
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 2a04b80e728ecf0af39cb46041a005a86ea1abec
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158462"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406103"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Týmový vývoj se službou Azure Dev Spaces
 
@@ -163,6 +163,23 @@ Pokud chcete otestovat novou verzi `mywebapi` ve spojení s projektem `webfronte
 
 Teď k adrese URL přidejte „scott.s.“. Adresa URL tedy bude vypadat nějak podobně jako http://scott.s.webfrontend.123456abcdef.eastus.aksapp.io. Aktualizujte stránku v prohlížeči. Mělo by dojít k zastavení na zarážce, kterou jste nastavili v projektu `mywebapi`. Pokračujte kliknutím na F5. V prohlížeči by se teď měla zobrazit nová zpráva „Hello from webfrontend and mywebapi now says something new.“ Důvodem je skutečnost, že v prostoru `default/scott` je spuštěná cesta k aktualizovanému kódu v `mywebapi`.
 
-[!INCLUDE [](includes/well-done.md)]
+### <a name="well-done"></a>Hotovo!
+Dokončili jste úvodní příručku! Naučili jste se tyto postupy:
 
-[!INCLUDE [](includes/clean-up.md)]
+> [!div class="checklist"]
+> * Nastavit Azure Dev Spaces se spravovaným clusterem Kubernetes v Azure
+> * Iterativně vyvíjet kód v kontejnerech
+> * Vyvíjet nezávisle dvě samostatné služby a pomocí zjišťování služby DNS v Kubernetes volat jinou službu
+> * Produktivně vyvíjet a testovat kód v týmovém prostředí
+
+Teď když jste prozkoumali Azure Dev Spaces, [podělte se o svůj vývojářský prostor se členy týmu](how-to/share-dev-spaces.md) a ukažte jim, jak snadná je vzájemná spolupráce.
+
+## <a name="clean-up"></a>Vyčištění
+Pokud chcete z clusteru úplně odstranit instanci Azure Dev Spaces včetně všech vývojových prostorů a služeb v nich spuštěných, použijte příkaz `az aks remove-dev-spaces`. Mějte na paměti, že tato akce je nevratná. Do clusteru můžete znovu přidat podporu Azure Dev Spaces, ale bude to, jako byste začínali znovu. Vaše staré služby a prostory se neobnoví.
+
+Následující příklad vypíše kontrolery Azure Dev Spaces v aktivním předplatném a pak odstraní kontroler Azure Dev Spaces přidružený ke clusteru AKS myaks ve skupině prostředků myaks-rg.
+
+```cmd
+    azds controller list
+    az aks remove-dev-spaces --name myaks --resource-group myaks-rg
+```

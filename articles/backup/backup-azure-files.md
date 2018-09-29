@@ -8,12 +8,12 @@ ms.date: 3/23/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: d21a235602c425cef77b26d8c60f1e3562411095
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 09bddd1c1d9589dbba0acf319ba43ea54c0c737b
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36961668"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221448"
 ---
 # <a name="back-up-azure-file-shares"></a>Zálohování sdílených složek Azure
 Tento článek vysvětluje, jak pomocí webu Azure Portal zálohovat a obnovovat [sdílené složky Azure](../storage/files/storage-files-introduction.md).
@@ -195,3 +195,5 @@ Následující postup předpokládá, že se úloha zálohování virtuálního 
 Další informace o sdílených složkách Azure najdete tady:
 - [Nejčastější dotazy k zálohování sdílených složek Azure](backup-azure-files-faq.md)
 - [Řešení potíží se zálohováním sdílených složek Azure](troubleshoot-azure-files.md)
+ 
+

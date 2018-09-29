@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: aa14563966e028716d8e18c3228f026af983561f
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 56df09f461458071093088159d3b468755b0e4ad
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024105"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434938"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Povolení služby Enterprise State Roaming v Azure Active Directory
 Enterprise State Roaming je k dispozici pro všechny organizace s Azure AD Premium nebo Enterprise Mobility + Security (EMS) licence. Další informace o tom, jak získat předplatné Azure AD, najdete v článku [stránce produktu Azure AD](https://azure.microsoft.com/services/active-directory).
@@ -45,9 +45,9 @@ Enterprise State Roaming dat je hostovaná v jednom nebo více [oblastí Azure](
 
 Země/oblast hodnoty | má konání svá data
 ---------------------|-------------------------
-EMEA země, třeba "France" nebo "Zambie" | jeden nebo oblastí Azure v Evropě 
-Severní Ameriky země, třeba "USA" nebo "Kanada" | jeden nebo více oblastí Azure v rámci USA
-APAC země, jako je například "Austrálie" nebo "Nový Zéland" | jeden nebo více oblastí Azure v rámci Asie
+EMEA země, třeba (Francie) nebo Zambie | Jeden nebo více oblastí Azure v Evropě 
+Severní Ameriky země, jako jsou USA nebo Kanadě | jeden nebo více oblastí Azure v rámci USA
+APAC země, třeba Austrálie a Nového Zélandu | jeden nebo více oblastí Azure v rámci Asie
 Jižní Ameriky a Antarktida oblastí | jeden nebo více oblastí Azure v rámci USA
 
 Země/oblast hodnota je nastavena jako součást procesu vytvoření adresáře Azure AD a následně nelze upravit. Pokud potřebujete další podrobnosti na vaše umístění úložiště dat, vytvořte lístek [podpory Azure](https://azure.microsoft.com/support/options/).
