@@ -9,18 +9,18 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 3b35f78d66a6ae66b0a56818f5d4be455ce00de5
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 8f594be67c4677fae00cb01598d3899e30dae1e8
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181510"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433220"
 ---
 # <a name="design-process-overview"></a>Přehled procesu návrhu
-Máte v úmyslu návrhu můžete vyjádřit ve všech třech fázích Akustika projektu pracovního postupu: předběžné vytvoření návrhu, zvukové zdrojové umístění a po která má označení vytvoření návrhu. Proces vyžaduje méně značek přidružené k uvedení dozvuku svazky při zachování návrháře kontrolu nad jak zvuky scény.
+Máte v úmyslu návrhu můžete vyjádřit ve všech třech fázích Akustika projektu pracovního postupu: předem zanést scény nastavení, zvukové zdrojové umístění a která má označení po vytvoření návrhu. Proces vyžaduje méně značek přidružené k uvedení dozvuku svazky při zachování návrháře kontrolu nad jak zvuky scény.
 
 ## <a name="pre-bake-design"></a>Předběžné vytvoření návrhu
-Proces návrhu předběžné která má označení vytvoření vytváří scény a metadata, která se používají pro simulaci wave zvuk, která zahrnuje vybrat, které prvky scény se účastní simulace a poskytuje occlusions, odrazů a reverberation. Metadata pro scénu je výběr akustický materiálů pro každý prvek scény. Akustický materiály řízení velikosti šířky zvukové energie projeví zpět z každé povrchu.
+Proces instalace předběžné která má označení vytvoření scény vytváří scény a metadata, která se používají pro simulaci wave zvuk, která zahrnuje vybrat, které prvky scény se účastní simulace a poskytuje occlusions, odrazů a reverberation. Metadata pro scénu je výběr akustický materiálů pro každý prvek scény. Akustický materiály řízení velikosti šířky zvukové energie projeví zpět z každé povrchu.
 
 Pohltivosti výchozí pro všechny plochy je 0.04, což je vysoce odrazivý. Účinky aesthetic a hraní her můžete dosáhnout optimalizace koeficienty absorpční z různých materiálů v rámci scény, které vynikají zejména pro posluchače při jejich slyšet přechody z jedné oblasti od scény do jiného. Například přechod z tmavě reverberant místnosti k jasně,-reverberant venkovní scény vylepšuje dopad na přechod. Tohoto efektu dosáhnete tak, vylaďte koeficienty absorpční na vyšší venkovní scény materiály.
 

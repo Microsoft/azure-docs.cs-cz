@@ -3,7 +3,7 @@ title: Rozšíření virtuálního počítače Azure Log Analytics pro Linux | D
 description: Nasaďte agenta Log Analytics na virtuální počítač s Linuxem pomocí rozšíření virtuálního počítače.
 services: virtual-machines-linux
 documentationcenter: ''
-author: zroiy
+author: roiyz-msft
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: roiyz
-ms.openlocfilehash: e0a954d28735b42c2170f0db2be2dde24131deb5
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: b8a946588d09eb05e1609344318c91f76c7ee106
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039714"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452118"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Log Analytics rozšíření virtuálního počítače pro Linux
 

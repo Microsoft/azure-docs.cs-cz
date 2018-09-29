@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: v-deken
-ms.openlocfilehash: af88063a68cef4953da8357596ce64e4510e8d36
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 4cbc8ebcdd19aa65a37ffe0f82019a7681f1c6c5
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985442"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434870"
 ---
 # <a name="extracting-text-with-ocr"></a>Extrahování textu pomocí technologie OCR
 
@@ -32,7 +32,7 @@ V případě potřeby řeší OCR otočení rozpoznaný text ve stupních okolo 
 Počítačové zpracování obrazu může extrahovat text pomocí technologie OCR z imagí, které splňují následující požadavky:
 
 * Obrázek musí být ve formátu JPEG, PNG, GIF nebo BMP.
-* Velikost vstupního obrázku musí být až 40 x 40 3200 x 3200 pixelů
+* Velikost vstupního obrázku musí být až 50 × 50 pixelů 4200 x 4200
 * Na obrázku nesmí být větší než 10 megapixely k
 
 Vstupního obrázku můžete otočit o žádné nadbytečné 90 stupňů plus malé úhel až 40 stupňů.

@@ -9,26 +9,26 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 7e27b5117f5f0ea98916ecfefcbb0dac9323e1d9
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: a71e867bd23cf64b2ac7fc8cd1c54c55d92ce924
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181496"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47431784"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-## <a name="what-is-project-acoustics"></a>Co je Akustika projektu?
+## <a name="what-is-project-acoustics"></a>Co je Project Acoustics?
 
-Modul plug-in Akustika Unity projektu je Akustika systém, který vypočítá zvuk wave chování před runtime podobají statické osvětlení. Cloud nemá rutinní wave fyzika v době návrhu, tedy nízké náklady na modul runtime procesoru.  
+Modul plug-in Akustika Unity projektu je Akustika systém, který vypočítá zvuk wave chování před runtime podobají statické osvětlení. Cloud nemá rutinní wave fyzika výpočtů, tedy nízké náklady na modul runtime procesoru.  
 
 ## <a name="where-can-i-download-the-plugin"></a>Kde lze stáhnout modul plug-in?
 
-Pokud vás zajímá vyhodnocení modulu plug-in Akustika, zaregistrujte [tady](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u) získat verzi Preview návrháře.
+Pokud si chcete vyzkoušet akustický modul plug-in, [tady](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u) se můžete zaregistrovat k verzi Designer Preview.
 
 ## <a name="is-azure-used-at-runtime"></a>Azure používá za běhu?
 
-Ne, cloudovou integraci se používá pouze ve fázi precompute v době návrhu.
+Ne, cloudovou integraci se používá pouze během fáze precompute jako součást instalace scény.
  
 ## <a name="what-is-simulation-input"></a>Co je simulace vstup? 
 

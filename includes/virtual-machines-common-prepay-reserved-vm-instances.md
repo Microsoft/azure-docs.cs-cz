@@ -4,12 +4,12 @@ ms.author: yashar
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 09-05-2018
-ms.openlocfilehash: 75e493f6b2e47bf3323df9e52ad3a933a6efbead
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 065ac0855fc47b23b434287f9f4406bd641f01ae
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44058554"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47454574"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Předplatit si virtuální počítače se službou Azure Reserved VM Instances
 
@@ -19,21 +19,22 @@ Můžete si koupit rezervované Instance virtuálního počítače [webu Azure p
 
 - Musí být v roli vlastník pro alespoň jeden Enterprise nebo předplatné s průběžnými platbami.
 - Předplatné Enterprise, musí být v povoleno nákup rezervace [portál EA](https://ea.azure.com).
-- Programu Cloud Solution Provider (CSP) můžou nakupovat jenom správce agentů nebo obchodní zástupci rezervace.
+- Do programu Cloud Solution Provider (CSP) pouze správce agentů nebo obchodní zástupci koupit rezervace.
 
-## <a name="determine-the-right-vm-size-before-purchase"></a>Určení správné velikosti virtuálního počítače před nákupem
+## <a name="determine-the-right-vm-size-before-you-buy"></a>Určení správné velikosti virtuálního počítače před zakoupením
 
-Pole podkategorie měřiče a produktu v datech využití nerozlišuje velikosti virtuálních počítačů, které používají službu premium storage z velikostí virtuálních počítačů, které nechcete používat premium storage, pomocí těchto pole k určení virtuální počítač velikost pro nákup rezervace může způsobit nesprávné rezervace zakoupit a nevztahuje Smlouva slevy na rezervaci. Použijte jednu z následujících metod k určení správné velikosti virtuálního počítače pro nákup rezervace.
+Pole podkategorie měřiče a produktu v datech využití není rozlišovat mezi velikosti virtuálních počítačů, které používají službu premium storage z virtuálních počítačů, které ji nemají. Používáte-li tato pole k určení velikosti virtuálního počítače pro rezervaci, mohou koupit nesprávnou velikost a nebude získat slevu na rezervaci, které očekáváte. K určení správné velikosti virtuálního počítače při nákupu rezervace použijte jednu z následujících metod:
 
-- Odkazujte na pole AdditionalInfo v souboru využití nebo rozhraní API využití k určení správné velikosti virtuálního počítače pro nákup rezervace. Nepoužívejte hodnoty z pole podkategorie měřiče nebo produktu, protože tato pole nerozlišují mezi verzí S a Non-S virtuálního počítače.
-- Můžete také získat přesné informace o velikosti virtuálních počítačů pomocí Powershellu, Azure Resource Manageru, nebo z virtuálního počítače podrobnosti na webu Azure Portal.
+- Odkazujte na pole AdditionalInfo v souboru využití nebo rozhraní API využití k určení správné velikosti virtuálních počítačů. Nepoužívejte hodnoty z polí podkategorie měřiče nebo produktu. Tato pole není rozdíl mezi verzí S a Non-S virtuálního počítače.
+- Získat přesné informace o velikosti virtuálních počítačů pomocí Powershellu, Azure Resource Manageru, nebo z virtuálního počítače podrobnosti na webu Azure Portal.
 
 Rezervované instance virtuálních počítačů jsou dostupné pro většinu velikostí virtuálních počítačů s několika výjimkami:
 
-- Klasické virtuální počítače a Cloud services Nezískávat sleva za rezervaci.
-- Potlačené základní virtuální počítače není získejte slevy na rezervaci.
-- Následující virtuální počítač řady Nezískávat slevy na rezervaci: řady A-series, Av2-series a G-series.
-- Virtuální počítače ve verzi Preview: nejsou k dispozici pro nákup rezervace všechny řady virtuálních počítačů nebo velikost, která je ve verzi preview.
+- Sleva za rezervaci neplatí pro následující virtuální počítače:
+  - Klasické virtuální počítače a cloudové služby
+  - Virtuální procesory s omezením velikosti
+  - Řadu virtuálních počítačů: Řady A-series Av2-series a G-series
+  - Virtuální počítače ve verzi Preview: všechny řady virtuálních počítačů nebo velikost, která je ve verzi preview
 - Cloudy: Rezervace nejsou dostupné ke koupi v oblastech Azure US Government, Německo nebo Čína.
 - Nedostatečná kvóta: rezervace, který je v oboru pro jedno předplatné musí mít kvóty virtuálních procesorů dostupných v předplatném pro nové rezervovaných Instancí. Například pokud cílové předplatné má kvótu virtuálních procesorů 10 pro řady D-Series, pak nelze koupíte rezervace pro 11 Standard_D1 instancí. Kontrola kvóty pro rezervace zahrnují virtuální počítače už nasazená v předplatném. Například pokud předplatné má kvótu virtuálních procesorů 10 pro řady D-Series a má dvě instance standard_D1 nasazený, pak můžete koupit rezervaci pro 10 standard_D1 instancí v tomto předplatném. 
 - Omezení kapacity: ve výjimečných případech, omezeních nákup rezervace nový dílčí velikostí virtuálních počítačů z důvodu nízká kapacita v oblasti Azure.

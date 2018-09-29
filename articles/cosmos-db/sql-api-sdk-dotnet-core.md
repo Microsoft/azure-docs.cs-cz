@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 03/22/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 01857eb28f63eb1f60e8ca84bd6ce5e6c3c67446
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 7000fc13a792f4f6def592e78dc759c8cf165881
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392448"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451914"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK pro rozhraní SQL API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -52,6 +52,10 @@ ms.locfileid: "47392448"
 ## <a name="release-notes"></a>Poznámky k verzi
 
 Azure Cosmos DB .NET Core SDK má paritu funkcí s nejnovější verzí [.NET SDK služby Azure Cosmos DB](sql-api-sdk-dotnet.md).
+
+### <a name="a-name211211"></a><a name="2.1.1"/>2.1.1
+
+* Přidat další odolnost vůči přechodným selháním žádosti více oblastí.
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 
@@ -200,6 +204,7 @@ Pokud máte dotazy související s touto sadou SDK, zveřejněte ji do [StackOve
 
 | Verze | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
+| [2.1.1](#2.1.1) |27. září 2018 |--- |
 | [2.1.0](#2.1.0) |21. září 2018 |--- |
 | [2.0.0](#2.0.0) |07. září 2018 |--- |
 | [1.9.1](#1.9.1) |09. března 2018 |--- |

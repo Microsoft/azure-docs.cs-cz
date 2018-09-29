@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/03/2018
 ms.author: genli
-ms.openlocfilehash: cb8ba5169a6ebfbb11ba0acfa9b9f463b7cdf6a1
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 7d8325ce04a9fa7853fb622062022a6938375f96
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39520798"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47430977"
 ---
 # <a name="instance-level-public-ip-classic-overview"></a>Instance přehled úrovně veřejných IP adres (Classic)
 Instance úrovně veřejné IP (ILPIP) je veřejnou IP adresu můžete přiřadit přímo k instanci role virtuálního počítače nebo cloudové služby, nikoli do cloudové služby, který váš virtuální počítač nebo instanci role jsou umístěny v. ILPIP nepřijímá místo z virtuální IP (VIP), který je přiřazen ke cloudové službě. Místo toho je další IP adresu, můžete použít pro připojení přímo k vaší instanci virtuálního počítače nebo role.
@@ -31,10 +31,13 @@ Instance úrovně veřejné IP (ILPIP) je veřejnou IP adresu můžete přiřadi
 
 Jak je znázorněno na obrázku 1, cloudovou službu se přistupuje pomocí virtuální IP adresy, zatímco jednotlivé virtuální počítače jsou obvykle přístupné pomocí virtuální IP adresy:&lt;číslo portu&gt;. Po přiřazení ILPIP konkrétnímu virtuálnímu počítači, tento virtuální počítač je přístupný přímo pomocí této IP adresy.
 
-Při vytváření cloudové služby v Azure odpovídající záznamy DNS automaticky vytvoří pro povolení přístupu k této služby prostřednictvím plně kvalifikovaný název domény (FQDN), namísto použití skutečné virtuální IP adresy. Pro ILPIP umožňuje přístup k instanci role nebo virtuálního počítače podle plně kvalifikovaného názvu domény namísto ILPIP se stane stejného procesu. Například pokud vytvořit cloudovou službu s názvem *contosoadservice*, a nakonfigurovat webovou roli s názvem *contosoweb* se dvěma instancemi Azure zaregistruje následující záznamy pro instance:
+Při vytváření cloudové služby v Azure odpovídající záznamy DNS automaticky vytvoří pro povolení přístupu k této služby prostřednictvím plně kvalifikovaný název domény (FQDN), namísto použití skutečné virtuální IP adresy. Pro ILPIP umožňuje přístup k instanci role nebo virtuálního počítače podle plně kvalifikovaného názvu domény namísto ILPIP se stane stejného procesu. Například pokud vytvořit cloudovou službu s názvem *contosoadservice*, a nakonfigurovat webovou roli s názvem *contosoweb* se dvěma případy a v souboru .cscfg `domainNameLabel` je nastavena na  *WebPublicIP*Azure registrů následující A záznamy pro instance:
 
-* contosoweb\_IN_0.contosoadservice.cloudapp.net
-* contosoweb\_IN_1.contosoadservice.cloudapp.net 
+
+* WebPublicIP.0.contosoadservice.cloudapp.net
+* WebPublicIP.1.contosoadservice.cloudapp.net
+* ...
+
 
 > [!NOTE]
 > Můžete přiřadit pouze jeden ILPIP pro každý virtuální počítač nebo instanci role. Můžete použít až pro 5 ILPIPs na jedno předplatné. ILPIPs nejsou podporovány pro virtuální počítače s několika síťovými Kartami.
@@ -152,7 +155,7 @@ Pokud chcete přidat ILPIP instance role Cloud Services, proveďte následujíc�
         <AddressAssignments>
           <InstanceAddress roleName="WebRole1">
         <PublicIPs>
-          <PublicIP name="MyPublicIP" domainNameLabel="MyPublicIP" />
+          <PublicIP name="MyPublicIP" domainNameLabel="WebPublicIP" />
             </PublicIPs>
           </InstanceAddress>
         </AddressAssignments>
@@ -162,14 +165,22 @@ Pokud chcete přidat ILPIP instance role Cloud Services, proveďte následujíc�
 3. Nahrát pomocí kroků v souboru .cscfg pro cloudovou službu [jak konfigurovat Cloud Services](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg) článku.
 
 ### <a name="how-to-retrieve-ilpip-information-for-a-cloud-service"></a>Jak načíst informace ILPIP pro Cloudovou službu
-Chcete-li zobrazit informace ILPIP za role instance, spusťte následující příkaz prostředí PowerShell a sledovat hodnoty pro *PublicIPAddress* a *PublicIPName*:
+Chcete-li zobrazit informace ILPIP za role instance, spusťte následující příkaz prostředí PowerShell a sledovat hodnoty pro *PublicIPAddress*, *PublicIPName*, *PublicIPDomainNameLabel* a *PublicIPFqdns*:
 
 ```powershell
-$roles = Get-AzureRole -ServiceName PaaSFTPService -Slot Production -RoleName WorkerRole1 -InstanceDetails
+Add-AzureAccount
+
+$roles = Get-AzureRole -ServiceName <Cloud Service Name> -Slot Production -RoleName WebRole1 -InstanceDetails
 
 $roles[0].PublicIPAddress
 $roles[1].PublicIPAddress
 ```
+
+Můžete také použít `nslookup` k dotazování domény sub je záznam:
+
+```batch
+nslookup WebPublicIP.0.<Cloud Service Name>.cloudapp.net
+``` 
 
 ## <a name="next-steps"></a>Další postup
 * Pochopit, jak [přidělování IP adres](virtual-network-ip-addresses-overview-classic.md) funguje v modelu nasazení classic.

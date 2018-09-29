@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/27/2018
+ms.date: 09/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 0e31f311c123fa8ace523cfde21ebdf2f707fce5
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 1af54e3b0237d1d62ae7fb47939e7786fa1219b8
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46303872"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434666"
 ---
 # <a name="getting-started-with-azure-ad-connect-using-express-settings"></a>Začínáme se službou Azure AD Connect s použitím expresního nastavení
 **Expresní nastavení** Azure AD Connect se používá, pokud máte jednoduchou doménovou strukturu a [synchronizaci hodnot hash hesel](how-to-connect-password-hash-synchronization.md) pro ověřování. **Expresní nastavení** je výchozí možnost a používá se u scénáře, který je nasazován nejčastěji. Stačí jen několik kliknutí a budete moci svůj místní adresář rozšířit do cloudu.
@@ -46,7 +46,7 @@ Praktickou ukázku těchto kroků si můžete prohlédnout v sekci [videí](#vid
    Pokud se vám zobrazí tato stránka, zkontrolujte všechny domény označené jako **Nepřidáno** a **Neověřeno**. Ujistěte se, že domény, které používáte, byly ověřeny v Azure AD. Po ověření domén klikněte na symbol obnovení.
 8. Na obrazovce Připraveno ke konfiguraci klikněte na **Instalovat**.
    * Volitelně můžete na stránce Připraveno ke konfiguraci zrušit zaškrtnutí políčka **Po dokončení konfigurace spustit proces synchronizace**. Zaškrtnutí tohoto políčka zrušte, pokud chcete provést nějakou další konfiguraci, například [filtrování](how-to-connect-sync-configure-filtering.md). Pokud u této možnosti zrušíte zaškrtnutí, průvodce instalací provede konfiguraci synchronizace, ale plánovač ponechá vypnutý. Plánovač se nespustí, dokud jej ručně nezapnete tím, že [znovu spustíte průvodce instalací](how-to-connect-installation-wizard.md).
-   * Pokud necháte políčko **Po dokončení konfigurace spustit proces synchronizace** zaškrtnuté, spustí se okamžitě úplná synchronizace všech uživatelů, skupin a kontaktů do Azure AD. 
+   * Pokud necháte políčko **Po dokončení konfigurace spustit proces synchronizace** zaškrtnuté, spustí se okamžitě úplná synchronizace všech uživatelů, skupin a kontaktů do Azure AD.
    * Pokud máte Exchange ve své místní službě Active Directory, pak máte také možnost povolit [**Hybridní nasazení systému Exchange**](https://technet.microsoft.com/library/jj200581.aspx). Tuto možnost povolte, pokud chcete mít poštovní schránky systému Exchange zároveň v místním nasazení i v cloudu.
      ![Připraveno ke konfiguraci služby Azure AD Connect](./media/how-to-connect-install-express/readytoconfigure.png)
 9. Až instalace skončí, klikněte na **Konec**.

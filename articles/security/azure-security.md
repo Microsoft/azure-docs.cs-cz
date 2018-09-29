@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a1cd2ecc738434fc8d5de03ef538be3ea896fa2b
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 81eb23a0955bbc6a5f9dcd95c6874f0c5a8c286c
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971002"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434026"
 ---
 # <a name="introduction-to-azure-security"></a>Úvod do zabezpečení Azure
 ## <a name="overview"></a>Přehled
@@ -100,7 +100,7 @@ Pokud existují, chyb, chyby nebo problémy s výkonem, můžete prohledat data 
 Log Analytics může být užitečný nástroj v analýze forenzní a další bezpečnostní nástroj umožňuje rychle prohledávat velké množství souvisejících se zabezpečením položky s přístupem, flexibilní dotazování. Kromě toho místní [protokoly brány firewall a proxy serveru můžete exportovat do Azure a k dispozici pro analýzu pomocí Log Analytics.](https://docs.microsoft.com/azure/log-analytics/log-analytics-proxy-firewall)
 
 ### <a name="azure-advisor"></a>Azure Advisor
-[Azure Advisor](https://docs.microsoft.com/azure/advisor/) je individuální cloudový konzultant, který vám umožní optimalizovat nasazení Azure. Analyzuje telemetrii využití a konfiguraci prostředků. Doporučuje řešení, které jí pomohou zlepšit [výkonu](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations), [zabezpečení](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations), a [vysoké dostupnosti](https://docs.microsoft.com/azure/advisor/advisor-high-availability-recommendations) prostředků při hledání příležitostí k [snížit celkový Azure věnovat](https://docs.microsoft.com/azure/advisor/advisor-cost-recommendations). Azure Advisor poskytuje doporučení pro zabezpečení, které může výrazné zlepšení celkového stavu zabezpečení pro řešení, která můžete nasadit v Azure. Tato doporučení jsou vykreslovány pomocí provádí analýzy zabezpečení [Azure Security Center.](https://docs.microsoft.com/azure/security-center/security-center-intro)
+[Azure Advisor](https://docs.microsoft.com/azure/advisor/) je individuální cloudový konzultant, který vám umožní optimalizovat nasazení Azure. Analyzuje telemetrii využití a konfiguraci prostředků. Doporučuje řešení, které jí pomohou zlepšit [výkonu](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations), [zabezpečení](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations), a [vysoké dostupnosti](https://docs.microsoft.com/azure/advisor/advisor-high-availability-recommendations) prostředků při hledání příležitostí k [snížit celkový Azure věnovat](https://docs.microsoft.com/azure/advisor/advisor-cost-recommendations). Azure Advisor poskytuje doporučení zabezpečení. to může výrazně zlepšit vaše celkové postavení zabezpečení pro řešení, která můžete nasadit v Azure. Tato doporučení jsou vykreslovány pomocí provádí analýzy zabezpečení [Azure Security Center.](https://docs.microsoft.com/azure/security-center/security-center-intro)
 
 ### <a name="azure-security-center"></a>Azure Security Center
 [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) pomáhá předcházet hrozbám, rozpoznávat je a reagovat na ně a nabízí lepší přehled o zabezpečení prostředků Azure a kontrolu nad nimi. Poskytuje integrované bezpečnostní sledování a správu zásad ve vašich předplatných Azure, pomáhá zjišťovat hrozby, kterých byste si jinak nevšimli, a spolupracuje s řadou řešení zabezpečení.
@@ -272,7 +272,7 @@ Centralizovaný firewall webových aplikací, který chrání před webovými ú
 ### <a name="traffic-manager"></a>Traffic Manager
 Microsoft [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview) umožňuje řídit distribuci uživatelského provozu do koncových bodů služby v různých datových střediscích. Koncové body služby, které Traffic Manager podporuje zahrnují virtuální počítače Azure, webové aplikace a cloudové služby. Službu Traffic Manager můžete používat také s externími koncovými body mimo Azure. Traffic Manager používá v systému DNS (Domain Name) přesměrovává klientské žádosti na nejvhodnější koncové body na základě [metody směrování provozu](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods) a stavu koncových bodů.
 
-Traffic Manager poskytuje řadu metod směrování provozu tak, aby vyhovoval potřebám různé aplikace, koncový bod stavu [monitorování](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring)a automatické převzetí služeb při selhání. Traffic Manager je odolné vůči selhání, včetně selhání celé oblasti Azure.
+Traffic Manager poskytuje řadu metod směrování provozu tak, aby vyhovoval potřebám různé aplikace, koncový bod stavu [monitorování](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring)a automatické převzetí služeb při selhání. Služba Traffic Manager je odolná vůči selhání, a to i selhání celé oblasti Azure.
 ### <a name="azure-load-balancer"></a>Nástroj pro vyrovnávání zatížení Azure
 [Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) zajišťuje vysokou dostupnost a výkon sítě pro vaše aplikace. Je Vyrovnávání zatížení vrstvy 4 (TCP, UDP), který distribuuje příchozí provoz mezi v pořádku instance služby definované v sadě s vyrovnáváním zatížení. Nástroj Azure Load Balancer můžete nakonfigurovat na:
 
@@ -364,7 +364,7 @@ Společnost Microsoft používá více postupy zabezpečení a technologie ve sv
 -   [Integrovaná správa identity (hybridní identita)](https://azure.microsoft.com/documentation/articles/active-directory-hybrid-identity-design-considerations-overview/) umožňuje udržet kontrolu nad přístup uživatelů napříč interní datacentra a cloudové platformy, vytváření identity jednoho uživatele pro ověřování a autorizaci ke všem prostředkům.
 
 ### <a name="secure-apps-and-data"></a>Zabezpečení aplikací a dat
-[Azure Active Directory](https://azure.microsoft.com/services/active-directory/), komplexní identit a přístupu cloudové řešení pro správu, pomáhá zabezpečit přístup k datům v aplikacích na webu a v cloudu a zjednodušuje správu uživatelů a skupin. Kombinuje základních adresářových služeb, rozšířené správy identit, zabezpečení a správy přístupu k aplikacím a usnadňuje vývojářům umožní tvořit správu identit podle zásad do svých aplikací. Pro zvýšení vaší služby Azure Active Directory, můžete přidat placené možnosti použití edice Azure Active Directory Basic, Premium P1 a Premium P2.
+[Azure Active Directory](https://azure.microsoft.com/services/active-directory/), komplexní identit a přístupu cloudové řešení pro správu, pomáhá zabezpečit přístup k datům v aplikacích na webu a v cloudu a zjednodušuje správu uživatelů a skupin. Kombinuje základních adresářových služeb, rozšířené správy identit, zabezpečení a správy přístupu k aplikacím a usnadňuje vývojářům umožní tvořit správu identit podle zásad do svých aplikací. Pokud chcete zvýšit úroveň Azure Active Directory, můžete přidat placené funkce prostřednictvím edic Azure Active Directory Basic, Premium P1 a Premium P2.
 
 | Free / společné funkce     | Základní funkce    |Funkce úrovně Premium P1 |Funkce úrovně Premium P2 | Azure Active Directory Join – pouze související funkce Windows 10|
 | :------------- | :------------- |:------------- |:------------- |:------------- |

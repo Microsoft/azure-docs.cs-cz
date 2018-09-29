@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: c3321fb64c423b1b3c80f48fb97a70cc7dbc83f9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: aab0ac2dfba47741eaf5a75ef46d9ca5f8873d50
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433560"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434241"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Zálohování databází systému SQL Server do Azure
 
@@ -823,6 +823,10 @@ Aktivujte úplné zálohování. Protokol zálohování začne podle očekáván
 ### <a name="can-i-protect-sql-always-on-availability-groups-where-the-primary-replica-is-on-premises"></a>Může chránit SQL skupin dostupnosti Always On se primární repliky v místním prostředí
 
 Ne. Azure Backup chrání servery SQL v Azure. Pokud se skupina dostupnosti (AG) se pak rozdělí mezi Azure a v místním počítači, skupinu dostupnosti se dají chránit jenom v případě, že primární replikou je spuštěná v Azure. Kromě toho Azure Backup chrání pouze uzly spuštěnými ve stejné oblasti Azure jako trezor služby Recovery Services.
+
+### <a name="can-i-protect-sql-always-on-availability-groups-which-are-spread-across-azure-regions"></a>Může chránit SQL skupin dostupnosti Always On, které jsou rozděleny mezi oblastmi Azure
+Azure Backup trezoru Recovery Services můžete zjišťovat a chránit všechny uzly, které jsou ve stejné oblasti jako trezor služby Recovery Services. Pokud máte vždy ve skupině dostupnosti SQL pokrývající víc oblastí Azure, musíte nakonfigurovat zálohování z oblasti, která má primárního uzlu. Azure Backup bude moct zjišťuje a chrání všechny databáze ve skupině dostupnosti podle preference zálohování. Pokud není splněná předvolby zálohování, zálohování se nezdaří a zobrazí se výstrahy týkající se selhání.
+
 
 ## <a name="next-steps"></a>Další postup
 

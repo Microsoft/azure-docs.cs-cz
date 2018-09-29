@@ -3,7 +3,7 @@ title: Nainstalujte Trend Micro Deep Security na virtuálním počítači | Doku
 description: Tento článek popisuje, jak nainstalovat a nakonfigurovat Trend Micro security na virtuálním počítači vytvořeném pomocí modelu nasazení Classic do Azure.
 services: virtual-machines-windows
 documentationcenter: ''
-author: zroiy
+author: roiyz-msft
 manager: jeconnoc
 editor: ''
 tags: azure-service-management
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: roiyz
-ms.openlocfilehash: 7cddbce56dc136b706bc55c19e3ad700ef13073f
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 134105ee2446f3c7bf0f19e2f9611597ee9bedfe
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413737"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451948"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Jak nainstalovat a nakonfigurovat Trend Micro Deep Security na virtuálním počítači s Windows jako službu
 [!INCLUDE [virtual-machines-extensions-deprecation-statement](../../../includes/virtual-machines-extensions-deprecation-statement.md)]

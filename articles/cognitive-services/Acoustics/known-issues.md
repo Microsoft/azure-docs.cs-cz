@@ -9,12 +9,12 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kylestorck
-ms.openlocfilehash: b0dd5e0c365c65fc7b29752f7885acb71bdb3df8
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: c19b19cab33ae868f11ded0b7ce87dac99269596
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181511"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47431972"
 ---
 # <a name="known-issues"></a>Známé problémy
 Při použití návrháře ve verzi Preview pro projekt Akustika se můžete setkat s následující známé problémy.
@@ -27,7 +27,7 @@ Pokud přejmenujete scény, akustický parametry, které patří do tohoto scén
 
 To by ve výchozím nastavení relativní cestu k usnadnění sdílení projektů mezi spolupracovníky. Jako alternativní řešení změníte cestu relativní vzhledem k adresáři projektu.
 
-## <a name="runtime-voxels-are-a-different-size-than-design-time-voxels"></a>Modul runtime voxels jsou jinou velikost než voxels návrhu
+## <a name="runtime-voxels-are-a-different-size-than-scene-preview-voxels"></a>Modul runtime voxels jsou jinou velikost než voxels scény ve verzi preview
 
 Pokud to uděláte **Calculate** na **sondy** karty a zobrazení voxels, proveďte která má označení vytvoření a zobrazení voxels za běhu pro stejnou scénu, voxels jsou různých velikostí. Voxels zobrazí před která má označení vytvoření jsou voxels používaných pro simulaci. Voxels, zobrazuje se v modulu runtime se používají pro interpolaci mezi body testu. To může způsobit nekonzistenci umístění portály open za běhu, které nejsou ve skutečnosti otevřít.
 
@@ -51,5 +51,5 @@ Zkontrolujte verze modulu Runtime skriptování v nastavení Player je nastaven�
 Zkontrolujte používáte správné přihlašovací údaje k účtu Azure, že váš účet podporuje typ uzlu, která má označení vytvoření požadované a že systémové hodiny je přesné.
 
 ## <a name="next-steps"></a>Další postup
-* Začínáme [integrace Akustika ve vašem Unity projektu](getting-started.md)
+* Začínáme s [integrací akustiky do projektu Unity](getting-started.md)
 

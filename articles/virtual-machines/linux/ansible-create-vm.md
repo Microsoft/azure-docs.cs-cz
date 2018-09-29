@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 08/22/2018
-ms.openlocfilehash: bf2116d7fc143e66309e3bbbdefc50bfa33f1521
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a5b9d711b1d53d56f31a8b32e6d86722ac02c905
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974557"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393532"
 ---
 # <a name="use-ansible-to-create-a-linux-virtual-machine-in-azure"></a>Použití Ansible k vytvoření virtuálního počítače s Linuxem v Azure
 Ansible umožňuje pomocí deklarativního jazyka automatizovat vytváření, konfiguraci a nasazování prostředků Azure prostřednictvím *playbooků* Ansible. Jednotlivé části tohoto článku ukazují, jak můžou vypadat jednotlivé části playbooku Ansible pro vytváření a konfiguraci různých aspektů virtuálního počítače s Linuxem. [Kompletní playbook Ansible](#complete-sample-ansible-playbook) je uvedený na konci tohoto článku.
@@ -29,9 +29,9 @@ Ansible potřebuje skupinu prostředků, ve které jsou nasazené vaše prostře
 
 ```yaml
 - name: Create resource group
-    azure_rm_resourcegroup:
-      name: myResourceGroup
-      location: eastus
+  azure_rm_resourcegroup:
+    name: myResourceGroup
+    location: eastus
 ```
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě

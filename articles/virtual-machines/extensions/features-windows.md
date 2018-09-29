@@ -3,7 +3,7 @@ title: Rozšíření virtuálních počítačů a funkce pro Windows Azure | Dok
 description: Zjistěte, jaká rozšíření jsou dostupná pro Azure virtual machines, seskupené podle co, zadejte nebo zvýšit.
 services: virtual-machines-windows
 documentationcenter: ''
-author: zroiy
+author: roiyz-msft
 manager: jeconnoc
 editor: ''
 tags: azure-service-management,azure-resource-manager
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4fd6175f68f98cce726e70e76b0b884a7a31fbda
-ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
+ms.openlocfilehash: d7b183a5b87d5777609deac02e4424d9451e9643
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44325324"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452492"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Rozšíření virtuálních počítačů a funkce pro Windows
 

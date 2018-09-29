@@ -9,14 +9,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/18/2018
+ms.date: 09/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 4ec09f5ed57dca89934efa750eed05e1ebcb1216
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 5bb820d816115dccf470b6c32d080862495e8310
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46298281"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434972"
 ---
 # <a name="move-operation-support-for-resources"></a>Přesunout operace podporu pro prostředky
 
@@ -190,6 +190,7 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 | Registry | Ano | Ano |
 | Registry/buildtasks | Ano | Ano |
 | Registry/replikace | Ne | Ne |
+| Registry nebo úloh | Ano | Ano |
 | Registry a webhooky | Ano | Ano |
 
 ## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
@@ -197,6 +198,7 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 | ------------- | -------------- | ------------ |
 | containerservices | Ne | Ne |
 | managedclusters | Ne | Ne |
+| openshiftmanagedclusters | Ne | Ne |
 
 ## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -276,6 +278,15 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 | ------------- | -------------- | ------------ |
 | servergroups | Ne | Ne |
 | serverů | Ano | Ano |
+
+## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
+| Typ prostředku | Skupina prostředků | Předplatné |
+| ------------- | -------------- | ------------ |
+| artifactsources | Ne | Ne |
+| Uvedení | Ne | Ne |
+| servicetopologies | Ne | Ne |
+| servicetopologies nebo služeb Team Foundation | Ne | Ne |
+| servicetopologies/services/serviceunits | Ne | Ne |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -417,6 +428,11 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 | ------------- | -------------- | ------------ |
 | accounts | Ano | Ano |
 
+## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
+| Typ prostředku | Skupina prostředků | Předplatné |
+| ------------- | -------------- | ------------ |
+| pracovní prostory | Ano | Ano |
+
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
@@ -449,15 +465,22 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 | ------------- | -------------- | ------------ |
 | applicationgateways | Ne | Ne |
 | jenom | Ano | Ano |
+| azurefirewalls | Ano | Ano |
 | připojení | Ano | Ano |
 | ddosprotectionplans | Ne | Ne |
 | dnszones | Ano | Ano |
 | expressroutecircuits | Ne | Ne |
+| expressroutecrossconnections | Ne | Ne |
+| expressroutegateways | Ne | Ne |
 | expressrouteports | Ne | Ne |
+| frontdoors | Ano | Ano |
+| frontdoorwebapplicationfirewallpolicies | Ano | Ano |
+| interfaceendpoints | Ne | Ne |
 | Load balancerech | Ano | Ano |
 | localnetworkgateways | Ano | Ano |
 | networkintentpolicies | Ano | Ano |
 | Síťová | Ano | Ano |
+| networkprofiles | Ne | Ne |
 | networksecuritygroups | Ano | Ano |
 | networkwatchers | Ano | Ano |
 | networkwatchers/connectionmonitors | Ano | Ano |
@@ -467,9 +490,16 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 | publicipprefixes | Ano | Ano |
 | routefilters | Ne | Ne |
 | routetables | Ano | Ano |
+| serviceendpointpolicies | Ano | Ano |
 | trafficmanagerprofiles | Ano | Ano |
+| virtualhubs | Ano | Ano |
 | virtualnetworkgateways | Ano | Ano |
 | virtualnetworks | Ano | Ano |
+| virtualnetworktaps | Ne | Ne |
+| virtualwans | Ano | Ano |
+| vpngateways | Ano | Ano |
+| vpnsites | Ano | Ano |
+| webapplicationfirewallpolicies | Ano | Ano |
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -568,6 +598,8 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 ## <a name="microsoftsql"></a>Microsoft.Sql
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
+| managedinstances | Ano | Ano |
+| managedinstances/databáze | Ano | Ano |
 | serverů | Ano | Ano |
 | servery pro/databáze | Ano | Ano |
 | servery pro/elasticpools | Ano | Ano |

@@ -1,33 +1,41 @@
 ---
 title: Připojení k úložišti objektů blob v Azure – Azure Logic Apps | Dokumentace Microsoftu
 description: Vytvoření a Správa objektů BLOB v Azure storage s Azure Logic Apps
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 05/21/2018
-ms.topic: article
-ms.service: logic-apps
 services: logic-apps
-ms.reviewer: klam, LADocs
+ms.service: logic-apps
 ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.topic: article
+ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: 49d08135dee4568d1a9d65ec2d22d17ee3bda2ea
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: d8658740772ed4a11fdfd70a0c925ac1b597dd69
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "35294675"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452016"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Vytvoření a Správa objektů BLOB v Azure blob storage s využitím Azure Logic Apps
 
 Tento článek popisuje, jak můžete používat a spravovat soubory uložené jako objekty BLOB v účtu služby Azure storage z uvnitř aplikace logiky pomocí konektoru služby Azure Blob Storage. Tímto způsobem můžete vytvořit aplikace logiky pro automatizaci úloh a pracovních postupů pro správu vašich souborů. Například můžete vytvářet aplikace logiky, které vytvořit, získat, aktualizovat a odstraňovat soubory v účtu úložiště.
 
-Předpokládejme, že máte nástroj, který se aktualizuje na webu Azure. který funguje jako trigger pro vaši aplikaci logiky. Pokud k této události dojde, můžete mít aplikace logiky aktualizovat některý soubor do kontejneru úložiště objektů blob, který je akce ve vaší aplikaci logiky. 
+Předpokládejme, že máte nástroj, který se aktualizuje na web Azure. který funguje jako trigger pro vaši aplikaci logiky. Pokud k této události dojde, můžete mít aplikace logiky aktualizovat některý soubor do kontejneru úložiště objektů blob, který je akce ve vaší aplikaci logiky. 
 
-Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý start: vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+> [!NOTE]
+> Logic Apps nepodporuje přímého připojení k účtům úložiště Azure přes brány firewall. Pro přístup k tyto účty úložiště, použijte jednu z možností tady: 
+>
+> * Vytvoření [prostředí integrační služby](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), který umožňuje připojení k prostředkům ve virtuální síti Azure. 
+> 
+> * Pokud už používáte API Management, můžete tuto službu pro tento scénář. Další informace najdete v tématu [jednoduché podnikové integrace architektury](http://aka.ms/aisarch).
+
+Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý start: vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 Technické informace specifické pro konektor najdete v tématu <a href="https://docs.microsoft.com/connectors/azureblobconnector/" target="blank">referenční informace ke konektorům Azure Blob Storage</a>.
 
 ## <a name="prerequisites"></a>Požadavky
+
+* Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. 
 
 * [Účtu služby Azure storage a kontejner úložiště](../storage/blobs/storage-quickstart-blobs-portal.md)
 
@@ -94,7 +102,7 @@ V Azure Logic Apps [akce](../logic-apps/logic-apps-overview.md#logic-app-concept
   
       ![Vybrat složku](./media/connectors-create-api-azureblobstorage/action-select-folder.png)
 
-   2. Vyhledejte a vyberte soubor, který má na jeho základě **Id** číslo. Tuto možnost najdete **Id** v objektu blob metadat, který je vrácen aktivační událost výše popsaný blob storage.
+   2. Vyhledejte a vyberte soubor, který má na jeho základě **Id** číslo. Tuto možnost najdete **Id** v objektu blob metadat, který je vrácen aktivační událost výše popsaným blob storage.
 
 5. Jakmile budete hotovi, na panelu nástrojů návrháře zvolte **Uložit**.
 Otestovat svou aplikaci logiky, ujistěte se, že do vybrané složky obsahuje objekt blob.

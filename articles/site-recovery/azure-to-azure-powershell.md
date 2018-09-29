@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: bsiva
-ms.openlocfilehash: dbc092a9a6984a74cb59f287f12b06892c68fe4a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 1bf2fe84f9695993dacb6d197d75c18e5db86c4e
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296885"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433425"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Nastavení zotavení po havárii pro virtuální počítače Azure pomocí Azure Powershellu
 
@@ -34,7 +34,6 @@ Získáte informace o těchto tématech:
 
 > [!NOTE]
 > Ne všechny scénáře možnosti jsou dostupné na portálu může být k dispozici prostřednictvím Azure Powershellu. Zde jsou některé možnosti scénář není aktuálně podporováno prostřednictvím Azure Powershellu:
-> - Možnost replikace virtuálních počítačů s Azure, které používají spravované disky.
 > - Možnost určit, že všechny disky na virtuálním počítači by měla být replikována bez nutnosti explicitně určovat jednotlivých disků virtuálního počítače.  
 
 ## <a name="prerequisites"></a>Požadavky

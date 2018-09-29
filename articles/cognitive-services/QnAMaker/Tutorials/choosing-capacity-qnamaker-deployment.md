@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 3acf7ccd9d8a4091dba8ff0ff8ef53369ea9402d
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 01548cf2de8db8f4dc9984598a5e5544bf97fd49
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47041968"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432643"
 ---
 # <a name="choosing-capacity-for-your-qna-maker-deployment"></a>Výběr kapacitu pro vaše nasazení nástroje QnA Maker
 
@@ -38,7 +38,7 @@ V následující tabulce jsou uvedené některé podrobné pokyny.
 |                        | Správa nástroje QnA Maker | App Service | Azure Search | Omezení                      |
 | ---------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
 | Experimentování        | SKU zdarma             | Úroveň Free   | Úroveň Free    | Publikování až 2 znalostní báze, velikost 50 MB  |
-| Prostředí pro vývoj/testování   | Standardní SKU         | Shared      | Basic        | Publikování až 4 kB, velikosti 2 GB    |
+| Prostředí pro vývoj/testování   | Standardní SKU         | Shared      | Basic        | Publikování až 14 znalostní báze, velikosti 2 GB    |
 | Produkční prostředí | Standardní SKU         | Basic       | Standard     | Publikovat do 49 znalostní báze, velikost 25 GB |
 
 Upgrade nástroje QnA Maker technologie, naleznete v tématu [upgradovat vaše služba QnA Maker](../How-To/upgrade-qnamaker-service.md).

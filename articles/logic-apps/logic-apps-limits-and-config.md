@@ -3,19 +3,18 @@ title: Omezení a konfigurace – Azure Logic Apps | Dokumentace Microsoftu
 description: Omezení služby a konfigurační hodnoty pro Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
-ms.topic: article
-ms.date: 08/10/2018
 ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 49b8efe6b5d56c3edaf8b311ff3c6667a8952536
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.topic: article
+ms.date: 09/26/2018
+ms.openlocfilehash: c557c3e34fc4588b8bf13d69159a144d059b039e
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42058343"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452444"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a konfigurační informace pro Azure Logic Apps
 
@@ -76,7 +75,7 @@ Chcete-li změnit výchozí limit 7 dní až 90 dnů, postupujte podle těchto k
 
 Pokud zakážete, aplikace logiky, žádná nová spuštění jsou vytvořena instance. Všechny probíhající a nevyřízených spuštění bude pokračovat, dokud jejich dokončení, což může chvíli trvat.
 
-Při odstranění aplikace logiky jsou vytvořena žádná nová spuštění. Zrušení všech probíhajících a čeká se na spuštění. Pokud máte tisíce spuštění, zrušení, může trvat spoustu času k dokončení.
+Pokud odstraníte aplikaci logiky, nebudou se vytvářet žádné nové instance spuštění. Všechna probíhající a čekající spuštění se zruší. Pokud máte tisíce spuštění, jejich zrušení může trvat značnou dobu.
 
 <a name="looping-debatching-limits"></a>
 
@@ -305,8 +304,13 @@ Všechny aplikace logiky v oblasti používat stejné rozsahy IP adres. Pro podp
 Pro podporu volání, která [konektory](../connectors/apis-list.md) zkontrolujte nastavení konfigurace brány firewall, zahrnují tyto odchozí IP adresy, podle oblasti, kde existují logic apps.
 
 > [!IMPORTANT]
->
 > Pokud máte existující konfigurace, aktualizujte je **co nejdříve před 1. září 2018** tak zahrnout a shodují s IP adresou v tomto seznamu pro oblasti, kde existují logic apps. 
+> 
+> Logic Apps nepodporuje přímého připojení k účtům úložiště Azure přes brány firewall. Pro přístup k tyto účty úložiště, použijte jednu z možností tady: 
+>
+> * Vytvoření [prostředí integrační služby](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), který umožňuje připojení k prostředkům ve virtuální síti Azure. 
+> 
+> * Pokud už používáte API Management, můžete tuto službu pro tento scénář. Další informace najdete v tématu [jednoduché podnikové integrace architektury](http://aka.ms/aisarch).
 
 | Oblasti aplikace logiky | Odchozí IP | 
 |-------------------|-------------|  

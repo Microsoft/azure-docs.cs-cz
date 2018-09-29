@@ -1,6 +1,6 @@
 ---
-title: Monitorování Log Analytics a Kusto jazyk rozdíly ve službě Azure | Dokumentace Microsoftu
-description: Popisuje rozdíly mezi dotazy Log Analytics a základní jazyk Kusto.
+title: Referenční informace k jazyk Azure Log Analytics monitorování | Dokumentace Microsoftu
+description: Referenční informace pro Kusto jazyk používaný službou Log Analytics. Zahrnuje další elementy, které jsou specifické pro Log Analytics a prvky není podporována v dotazech Log Analytics.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -15,25 +15,27 @@ ms.topic: article
 ms.date: 09/25/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 109ffa6abb34dad6a00210a5c2c726bdfdde094f
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 5173790436a29fa9947346d711da1a2ddb32bf62
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47184757"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451064"
 ---
-# <a name="log-analytics-and-kusto-language-differences"></a>Rozdíly v jazyce log Analytics a Kusto
-[Protokolovat analytických dotazů](../log-analytics-queries.md) jsou vytvářeny s použitím [Kusto jazyka](/azure/kusto/query). I když, jak je popsáno v tomto článku jsou určité rozdíly ze standardní jazyk a implementaci Log Analytics.
+# <a name="log-analytics-query-language-reference"></a>Protokolovat referenční dokumentace jazyka dotazu Analytics
+[Protokolovat analytických dotazů](../log-analytics-queries.md) použít stejné dotazovací jazyk a modul používaný [Průzkumník dat Azure](/azure/data-explorer/). Referenční dokumentace jazyka a další podrobnosti o jazyku můžete přistupovat z následujícího umístění: [referenční informace k jazyku Kusto](/azure/kusto/query)
 
 
-## <a name="statements-not-supported-in-log-analytics"></a>Příkazy nejsou podporovány v Log Analytics
-Následující příkazy nejsou podporovány v Log Analytics.
+
+## <a name="kusto-elements-not-support-in-log-analytics"></a>Prvky Kusto nepodporuje v Log Analytics
+Zatímco dotazy Log Analytics se používají provádění Kusto, existují některé prvky Kusto, který nepodporuje jak je popsáno v následujících částech.
+
+### <a name="statements-not-supported-in-log-analytics"></a>Příkazy nejsou podporovány v Log Analytics
 
 * [Alias](/kusto/query/aliasstatement)
 * [Parametry dotazu.](/azure/kusto/query/queryparametersstatement)
 
-## <a name="functions-not-supported-in-log-analytics"></a>Funkce není podporována v Log Analytics
-Následující funkce nejsou podporované ve službě Log Analytics.
+### <a name="functions-not-supported-in-log-analytics"></a>Funkce není podporována v Log Analytics
 
 * [cluster()](/azure/kusto/query/clusterfunction)
 * [cursor_after()](/azure/kusto/query/cursorafterfunction)
@@ -44,18 +46,19 @@ Následující funkce nejsou podporované ve službě Log Analytics.
 * [extent_id()](/azure/kusto/query/extentidfunction)
 * [extent_tags()](/azure/kusto/query/extenttagsfunction)
 
-## <a name="operators-not-supported-in-log-analytics"></a>Operátory nejsou podporovány v Log Analytics
-Následující operátory nejsou podporovány v Log Analytics.
+### <a name="operators-not-supported-in-log-analytics"></a>Operátory nejsou podporovány v Log Analytics
 
 * [Spojení mezi clusterem](/azure/kusto/query/joincrosscluster)
 * [externaldata – operátor](/azure/kusto/query/externaldata-operator)
 
-## <a name="plugins-not-supported-in-log-analytics"></a>Moduly plug-in není podporován v Log Analytics
-Následující moduly plug-in nejsou podporovány v Log Analytics.
+### <a name="plugins-not-supported-in-log-analytics"></a>Moduly plug-in není podporován v Log Analytics
+
 * [modul plug-in sql_request](/azure/kusto/query/sqlrequestplugin)
 
 
-## <a name="log-analytics-specific-operators"></a>Operátory konkrétní log Analytics
+## <a name="additional-operators-in-log-analytics"></a>Další operátory ve službě Log Analytics
+Aby bylo možné podporoval konkrétní funkce Log Analytics, následující další Kusto operátory jsou k dispozici, které nejsou k dispozici mimo službu Log Analytics. 
+
 * [App() použijte](app-expression.md)
 * [Workspace()](workspace-expression.md)
 

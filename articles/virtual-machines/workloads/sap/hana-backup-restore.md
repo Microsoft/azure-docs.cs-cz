@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/17/2018
+ms.date: 09/28/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cca9a12b0512ca502d143f4a88c959e1bfc4f90e
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 2a72fade57b070ac2ac1aea28cbec92700c3797f
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985877"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452543"
 ---
 # <a name="backup-and-restore"></a>Zálohování a obnovení
 
@@ -68,7 +68,7 @@ Můžete provádět úložiště snímků, které cílí na tři třídy svazků
 - Samostatný snímek přes/hana/logbackups.
 - Oddíl s operačním systémem.
 
-Získat nejnovější snímek skripty a dokumentaci k [Githubu](https://github.com/Azure/hana-large-instances-self-service-scripts). 
+Získat nejnovější snímek skripty a dokumentaci k [Githubu](https://github.com/Azure/hana-large-instances-self-service-scripts). Při stahování balíčku skriptu snímků z [Githubu](https://github.com/Azure/hana-large-instances-self-service-scripts), získáte v dokumentaci PDF pro skripty jako součást balíčku skriptu. Každý balíček skriptu má svou vlastní dokumentaci PDF.
 
 ## <a name="storage-snapshot-considerations"></a>Aspekty volby úložiště snímku
 
@@ -114,7 +114,7 @@ Nastavení úložiště snímků s velkých instancích HANA, postupujte podle t
 1. Skripty a konfigurační soubor z [Githubu](https://github.com/Azure/hana-large-instances-self-service-scripts) umístění **hdbsql** instalace SAP HANA.
 1. Upravit *HANABackupDetails.txt* souboru podle potřeby pro specifikace příslušného zákazníka.
 
-Získat nejnovější snímek skripty a dokumentaci k [Githubu](https://github.com/Azure/hana-large-instances-self-service-scripts). 
+Získat nejnovější snímek skripty a dokumentaci k [Githubu](https://github.com/Azure/hana-large-instances-self-service-scripts). Při stahování balíčku skriptu snímků z [Githubu](https://github.com/Azure/hana-large-instances-self-service-scripts), získáte v dokumentaci PDF pro skripty jako součást balíčku skriptu. Každý balíček skriptu má svou vlastní dokumentaci PDF.
 
 ### <a name="consideration-for-mcod-scenarios"></a>Pečlivě zvážit u MCOD scénáře
 Pokud používáte [MCOD scénář](https://launchpad.support.sap.com/#/notes/1681092) s více instancí SAP HANA na jednu jednotku velká Instance HANA, budete mít různé svazky, které jsou zřízené pro jednotlivé instance SAP HANA. V aktuální verzi snímku samoobslužné služby automation nemůžete zahájit samostatnou snímků na všechny systémy instance HANA ID (SID). Funkce přináší kontroly pro registrované instance SAP HANA serveru v konfiguračním souboru (viz dále v tomto článku) a spouští souběžné snímků svazků všechny instance zaregistrované na jednotce.

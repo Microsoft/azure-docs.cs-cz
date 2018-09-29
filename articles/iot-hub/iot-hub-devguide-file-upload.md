@@ -1,6 +1,6 @@
 ---
-title: Pochopení nahrávání souborů Azure IoT Hub | Microsoft Docs
-description: Příručka vývojáře - použijte funkci nahrávání souboru IoT Hub pro správu nahrávání souborů ze zařízení do kontejner objektu blob úložiště Azure.
+title: Vysvětlení nahrávání souborů Azure IoT Hub | Dokumentace Microsoftu
+description: Příručka pro vývojáře – použijte funkci odesílání souborů služby IoT Hub ke správě nahrávání souborů ze zařízení do kontejneru objektů blob v Azure storage.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
@@ -8,39 +8,39 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: e16d32bdba1374540c03d1034a94192a54e6a109
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8fee8dd727623e81140656a070e6855547693154
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34634892"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451150"
 ---
-# <a name="upload-files-with-iot-hub"></a>Nahrání souborů s centrem IoT
+# <a name="upload-files-with-iot-hub"></a>Nahrávání souborů pomocí služby IoT Hub
 
-Podle popisu v [koncové body centra IoT] [ lnk-endpoints] článku zařízení můžete iniciovat načtení souboru odesílání oznámení prostřednictvím koncového bodu směřujících zařízení (**/devices/ {deviceId} / soubory**). Když zařízení oznámí IoT Hub, nahrávaný je dokončena, IoT Hub odešle zprávu souboru odesílání oznámení prostřednictvím **/messages/servicebound/filenotifications** koncový bod služby přístupem.
+Jak [koncové body IoT Hubu](iot-hub-devguide-endpoints.md) článku, zařízení můžete iniciovat načtení souboru odesílání oznámení prostřednictvím koncového bodu připojeného k zařízení (**/devices/ {deviceId} / soubory**). Když zařízení oznámí služby IoT Hub, nahrání je dokončena, IoT Hub odešle zprávu s oznámením nahrávání souboru prostřednictvím **/messages/servicebound/filenotifications** koncového bodu připojeného k služby.
 
-Místo zprostředkovatelské zprávy prostřednictvím služby IoT Hub, samotné místo toho IoT Hub funguje jako dispečera do přidruženého účtu úložiště Azure. Zařízení požadavků úložiště token ze služby IoT Hub, která je specifická pro soubor, který zařízení, které chcete nahrát. Zařízení používá identifikátor URI SAS nahrát soubor do úložiště a po dokončení nahrávání zařízení odesílá do služby IoT Hub oznámení o dokončení. IoT Hub zkontroluje nahrávání souborů je a pak přidá soubor odesílání oznámení do koncového bodu služby směřujících soubor oznámení.
+Místo zprostředkovatelské zpráv prostřednictvím služby IoT Hub, samotné služby IoT Hub místo funguje jako dispečer do přidruženého účtu Azure Storage. Zařízení vyžaduje úložiště token ze služby IoT Hub, která je specifická pro soubor, který chce zařízení nahrát. Zařízení využívá identifikátor URI SAS pro nahrání souboru do úložiště, a po dokončení nahrávání zařízení odešle oznámení o dokončení do služby IoT Hub. IoT Hub zkontroluje samotné nahrávání souborů je a pak přidá zprávu s oznámením nahrání souboru do koncového bodu služby připojeného souboru oznámení.
 
-Nahrát soubor do služby IoT Hub ze zařízení, musíte nakonfigurovat pomocí vašeho centra [přidružení Azure Storage] [ lnk-associate-storage] účet k němu.
+Nahrát soubor do služby IoT Hub ze zařízení, musíte nakonfigurovat centrem podle [přidružení služby Azure Storage](iot-hub-devguide-file-upload.md#associate-an-azure-storage-account-with-iot-hub) účtu k němu.
 
-Pak můžete zařízení [inicializovat nahrávaný] [ lnk-initialize] a potom [upozornění služby IoT hub] [ lnk-notify] po dokončení nahrávání. Volitelně, když zařízení oznámí IoT Hub, nahrávání je dokončena, služba může generovat [oznámení][lnk-service-notification].
+Zařízení lze následně [inicializovat nahrání](iot-hub-devguide-file-upload.md#initialize-a-file-upload) a pak [upozornění služby IoT hub](iot-hub-devguide-file-upload.md#notify-iot-hub-of-a-completed-file-upload) až se nahrávání dokončí. Volitelně, když se zařízení upozornění služby IoT Hub, že se nahrávání dokončí, službu můžete generovat [oznámení](iot-hub-devguide-file-upload.md#file-upload-notifications).
 
 ### <a name="when-to-use"></a>Kdy je použít
 
-Nahrávání souborů použijte k odesílání souborů médií a velké telemetrie dávek odeslaný občas připojená zařízení nebo Komprimovat pro snížení šířky pásma.
+Nahrávání souborů použijte k odesílání mediálních souborů a velkých telemetrie dávky odeslaný přerušovaně připojeným zařízením nebo Komprimovat pro snížení šířky pásma.
 
-Odkazovat na [pokyny komunikace zařízení cloud] [ lnk-d2c-guidance] Pokud máte pochybnosti mezi použitím hlášen vlastnostech, zpráv typu zařízení cloud nebo nahrávání souborů.
+Odkazovat na [pokyny komunikace typu zařízení cloud](iot-hub-devguide-d2c-guidance.md) Pokud máte pochybnosti mezi pomocí ohlášených vlastností zprávy typu zařízení cloud a nahrání souboru.
 
-## <a name="associate-an-azure-storage-account-with-iot-hub"></a>Přidružit účet úložiště Azure IoT Hub
+## <a name="associate-an-azure-storage-account-with-iot-hub"></a>Přidružení účtu služby Azure Storage pomocí služby IoT Hub
 
-Pokud chcete používat funkci nahrávání souboru, je nutné nejprve propojit účet úložiště Azure do služby IoT Hub. Můžete tuto úlohu dokončit buď prostřednictvím [portál Azure][lnk-management-portal], nebo programově pomocí [zprostředkovatele prostředků služby IoT Hub rozhraní REST API][lnk-resource-provider-apis]. Po přidružený účet úložiště Azure IoT Hub, službu vrátí identifikátor URI pro SAS na zařízení, pokud zařízení zahájí žádost o odeslání souboru.
+Pokud chcete používat funkce odesílání souborů, je třeba nejprve propojit účet služby Azure Storage do služby IoT Hub. Můžete tento úkol můžete udělat buď prostřednictvím [webu Azure portal](https://portal.azure.com), nebo prostřednictvím kódu programu přes [poskytovatele prostředků služby IoT Hub rozhraní REST API](/rest/api/iothub/iothubresource). Až účtu služby Azure Storage pomocí služby IoT Hub, tato služba vrátí identifikátor URI SAS zařízení v případě zařízení zahájí žádost o nahrání souboru.
 
 > [!NOTE]
-> [SDK služby Azure IoT] [ lnk-sdks] automaticky zpracování načítání identifikátor URI SAS, nahrávání souboru a oznamování IoT Hub dokončená nahrávání.
+> [Sad SDK Azure IoT](iot-hub-devguide-sdks.md) automaticky zpracovává načítání identifikátor URI SAS, nahrání souboru a oznamování IoT Hub dokončená nahrávání.
 
 
-## <a name="initialize-a-file-upload"></a>Inicializace nahrávání souborů
-IoT Hub má koncový bod speciálně pro zařízení do požadavku URI SAS pro úložiště pro nahrání souboru. K zahájení procesu nahrávání souborů, zařízení, odešle požadavek POST do `{iot hub}.azure-devices.net/devices/{deviceId}/files` spolu s následujícím textem JSON:
+## <a name="initialize-a-file-upload"></a>Inicializace odesílání souborů
+IoT Hub má koncový bod speciálně pro zařízení, která žádost o identifikátor URI SAS pro úložiště pro nahrání souboru. K zahájení procesu nahrávání souborů, zařízení se odešle požadavek POST do `{iot hub}.azure-devices.net/devices/{deviceId}/files` spolu s následujícím textem JSON:
 
 ```json
 {
@@ -48,7 +48,7 @@ IoT Hub má koncový bod speciálně pro zařízení do požadavku URI SAS pro �
 }
 ```
 
-IoT Hub vrací následující data, která zařízení používá k odeslání souboru:
+IoT Hub vrací následující údaje, které zařízení použije k nahrání souboru:
 
 ```json
 {
@@ -60,19 +60,20 @@ IoT Hub vrací následující data, která zařízení používá k odeslání s
 }
 ```
 
-### <a name="deprecated-initialize-a-file-upload-with-a-get"></a>Zastaralé: Inicializace nahrání souboru s GET
+### <a name="deprecated-initialize-a-file-upload-with-a-get"></a>Zastaralé: Inicializace odesílání souborů s GET
 
 > [!NOTE]
-> Tato část popisuje, jak získat identifikátor URI SAS ze služby IoT Hub zastaralé funkce. Použijte metodu POST popsané.
+> Tato část popisuje, jak získat identifikátor URI SAS ze služby IoT Hub zastaralé funkce. Použijte metodu POST je popsáno výše.
 
-IoT Hub má dva koncové body REST pro podporu nahrávání souborů, jednu pro získat identifikátor URI SAS pro úložiště a další služby IoT hub dokončené odeslání oznámení. Zařízení iniciuje procesu nahrávání souboru zasláním GET do služby IoT hub v `{iot hub}.azure-devices.net/devices/{deviceId}/files/{filename}`. Služba IoT hub vrací:
+IoT Hub má dva koncové body REST pro podporu nahrávání souborů, z nich se má získat identifikátor URI SAS pro úložiště a druhou Oznámit dokončení odeslání služby IoT hub. Zařízení zahájí proces nahrávání souboru odesláním GET do služby IoT hub na `{iot hub}.azure-devices.net/devices/{deviceId}/files/{filename}`. Vrátí služby IoT hub:
 
-* URI specifické pro soubor SAS k odeslání.
-* ID korelace, který se má použít po dokončení nahrávání.
+* Identifikátor URI SAS specifické pro soubor k nahrání.
 
-## <a name="notify-iot-hub-of-a-completed-file-upload"></a>Oznámit IoT Hub odeslání dokončené souboru
+* ID korelace, který se má použít, až se nahrávání dokončí.
 
-Zařízení je zodpovědná za nahrát soubor do úložiště pomocí sady SDK úložiště Azure. Po dokončení nahrávání zařízení odešle požadavek POST do `{iot hub}.azure-devices.net/devices/{deviceId}/files/notifications` spolu s následujícím textem JSON:
+## <a name="notify-iot-hub-of-a-completed-file-upload"></a>Oznámení služby IoT Hub z dokončené nahrávání
+
+Zařízení je zodpovědná za nahrání souboru do úložiště pomocí sad Azure Storage SDK. Po dokončení nahrávání se zařízení odešle požadavek POST do `{iot hub}.azure-devices.net/devices/{deviceId}/files/notifications` spolu s následujícím textem JSON:
 
 ```json
 {
@@ -83,28 +84,28 @@ Zařízení je zodpovědná za nahrát soubor do úložiště pomocí sady SDK �
 }
 ```
 
-Hodnota `isSuccess` je logická hodnota udávající, zda má soubor byl úspěšně odeslán. Stavový kód pro `statusCode` je stav pro nahrávání souborů do úložiště a `statusDescription` odpovídá `statusCode`.
+Hodnota `isSuccess` je logické udávající, zda má tento soubor byl úspěšně odeslán. Stavový kód pro `statusCode` je stav pro nahrání souboru do úložiště a `statusDescription` odpovídá `statusCode`.
 
-## <a name="reference-topics"></a>Témata odkazů:
+## <a name="reference-topics"></a>Referenční témata:
 
-Následující referenční témata poskytují další informace o nahrávání souborů ze zařízení.
+V následujících tématech vám poskytnout další informace o nahrávání souborů ze zařízení.
 
-## <a name="file-upload-notifications"></a>Oznámení o odeslání souboru
+## <a name="file-upload-notifications"></a>Oznámení o nahrávání souborů
 
-Volitelně můžete při zařízení oznámí IoT Hub, nahrávaný je dokončena, IoT Hub vygeneruje zprávu oznámení, která obsahuje umístění a jeho název souboru.
+Volitelně když zařízení oznámí služby IoT Hub, nahrání je dokončena, IoT Hub vygeneruje zprávu oznámení, která obsahuje název a úložiště umístění souboru.
 
-Jak je popsáno v [koncové body][lnk-endpoints], IoT Hub zajišťuje oznámení o odeslání souboru prostřednictvím koncového bodu služby přístupem (**/messages/servicebound/fileuploadnotifications**) jako zprávy. Sémantika receive pro oznámení o odeslání souboru je stejný jako u zprávy typu cloud zařízení a mít stejný [životní cyklus zpráv][lnk-lifecycle]. Každou zprávu, získán z koncového bodu oznámení nahrávání souboru je záznam JSON s následujícími vlastnostmi:
+Jak je vysvětleno v [koncové body](iot-hub-devguide-endpoints.md), IoT Hub doručí oznámení o nahrávání souborů prostřednictvím koncového bodu připojeného k služby (**/messages/servicebound/fileuploadnotifications**) jako zprávy. Sémantika příjmu pro oznámení o nahrávání souborů je stejný jako u zprávy typu cloud zařízení a mají stejné [životní cyklus zpráv](iot-hub-devguide-messages-c2d.md#the-cloud-to-device-message-lifecycle). Každou zprávu načíst z koncového bodu oznámení nahrávání souborů je záznam JSON s následujícími vlastnostmi:
 
 | Vlastnost | Popis |
 | --- | --- |
-| EnqueuedTimeUtc |Časové razítko označující vytvoření oznámení. |
-| DeviceId |**DeviceId** zařízení, která nahrát soubor. |
-| BlobUri |Identifikátor URI nahrávaný soubor. |
+| EnqueuedTimeUtc |Časové razítko určující, kdy byla vytvořena oznámení. |
+| DeviceId |**ID zařízení** zařízení, která nahrání souboru. |
+| BlobUri |Identifikátor URI uloženého souboru. |
 | BlobName |Název uloženého souboru. |
 | LastUpdatedTime |Časové razítko označující poslední aktualizace souboru. |
-| BlobSizeInBytes |Velikost nahrávaný soubor. |
+| BlobSizeInBytes |Velikost uloženého souboru. |
 
-**Příklad**. Tento příklad ukazuje, text soubor odeslat zprávu oznámení.
+**Příklad**. Tento příklad ukazuje obsah souboru odeslat zprávu oznámení.
 
 ```json
 {
@@ -117,58 +118,45 @@ Jak je popsáno v [koncové body][lnk-endpoints], IoT Hub zajišťuje oznámení
 }
 ```
 
-## <a name="file-upload-notification-configuration-options"></a>Možnosti konfigurace oznámení nahrávání souborů
+## <a name="file-upload-notification-configuration-options"></a>Možnosti konfigurace oznámení nahrání souboru
 
-Každý IoT hub zpřístupní následující možnosti konfigurace pro oznámení o odeslání souboru:
+Každé centrum IoT zpřístupňuje následující možnosti konfigurace pro oznámení o nahrávání souborů:
 
 | Vlastnost | Popis | Rozsah a výchozí |
 | --- | --- | --- |
-| **enableFileUploadNotifications** |Určuje, zda jsou oznámení o odeslání souboru zapisovány do koncového bodu oznámení souboru. |Logická hodnota. Výchozí: True. |
-| **fileNotifications.ttlAsIso8601** |Výchozí hodnota TTL pro oznámení o odeslání souboru. |ISO_8601 interval až 48 H (minimální 1 minutu). Výchozí hodnota: 1 hodina. |
-| **fileNotifications.lockDuration** |Doba trvání uzamčení pro frontu oznámení nahrávání souboru. |5 do 300 sekund (minimální 5 sekund). Výchozí: 60 sekund. |
-| **fileNotifications.maxDeliveryCount** |Počet maximální doručení pro soubor nahrát fronta oznámení. |1 až 100. Výchozí: 100. |
+| **enableFileUploadNotifications** |Určuje, zda oznámení o nahrávání souborů se zapisují do koncového bodu oznámení souboru. |Logická hodnota. Výchozí: True. |
+| **fileNotifications.ttlAsIso8601** |Výchozí hodnota TTL pro oznámení o nahrávání souborů. |ISO_8601 interval až 48 H (minimální 1 minuta). Výchozí hodnota: 1 hodina. |
+| **fileNotifications.lockDuration** |Doba trvání uzamknutí pro frontu oznámení nahrávání souboru. |5 do 300 sekund (minimální 5 sekund). Výchozí: 60 sekund. |
+| **fileNotifications.maxDeliveryCount** |Maximální počet doručení pro tento soubor nahrajte frontě oznámení. |1 až 100. Výchozí: 100. |
 
-## <a name="additional-reference-material"></a>Odkaz na další materiály
+## <a name="additional-reference-material"></a>Další referenční materiál
 
-Další témata referenční příručka vývojáře IoT Hub patří:
+Další referenční témata v příručce pro vývojáře IoT Hub patří:
 
-* [Koncové body centra IoT] [ lnk-endpoints] popisuje různé koncových bodů, které každý IoT hub zpřístupní pro spuštění a management operace.
-* [Omezování a kvóty] [ lnk-quotas] popisuje kvóty a omezení chování, které se vztahují ke službě IoT Hub.
-* [Azure IoT zařízení a služby sady SDK] [ lnk-sdks] uvádí různé jazykové sady SDK můžete použít při vývoji aplikace zařízení a služby, které interakci s centrem IoT.
-* [IoT Hub dotazovací jazyk] [ lnk-query] popisuje dotazovací jazyk, můžete použít k načtení informací ze služby IoT Hub o úlohách a dvojčata zařízení.
-* [Podpora IoT Hub MQTT] [ lnk-devguide-mqtt] poskytuje další informace o podpoře služby IoT Hub pro protokol MQTT.
+* [Koncové body IoT Hubu](iot-hub-devguide-endpoints.md) popisuje různé koncové body, které každý IoT hub zpřístupní pro operace za běhu a správy.
+
+* [Omezování a kvótách](iot-hub-devguide-quotas-throttling.md) popisuje kvóty a omezování chování, které se vztahují ke službě IoT Hub.
+
+* [Azure IoT zařízení a služby sady SDK](iot-hub-devguide-sdks.md) uvádí různé jazykové sady SDK můžete použít při vývoji aplikace s zařízení i služby, které pracují s centrem IoT.
+
+* [Dotazovací jazyk služby IoT Hub](iot-hub-devguide-query-language.md) popisuje dotazovací jazyk, slouží k načtení informací ze služby IoT Hub o dvojčata zařízení a úlohy.
+
+* [Podpora IoT Hub MQTT](iot-hub-mqtt-support.md) poskytuje další informace o podpoře služby IoT Hub pro protokolu MQTT.
 
 ## <a name="next-steps"></a>Další postup
 
-Nyní jste se naučili Postup nahrání souborů ze zařízení pomocí služby IoT Hub, může zajímat v následujících tématech Příručka vývojáře IoT Hub:
+Nyní jste se naučili, jak nahrání souborů ze zařízení pomocí služby IoT Hub, vás může zajímat v následujících tématech příručky pro vývojáře IoT Hub:
 
-* [Správa identit zařízení IoT hub][lnk-devguide-identities]
-* [Řízení přístupu ke službě IoT Hub][lnk-devguide-security]
-* [Pomocí dvojčata zařízení synchronizovat stavu a konfigurace][lnk-devguide-device-twins]
-* [Volání metody přímé na zařízení][lnk-devguide-directmethods]
-* [Plánování úloh na několika zařízeních][lnk-devguide-jobs]
+* [Správa identit zařízení ve službě IoT Hub](iot-hub-devguide-identity-registry.md)
 
-Můžete vyzkoušet na některé z konceptů popsaných v tomto článku, najdete v následujícím kurzu IoT Hub:
+* [Řízení přístupu k IoT Hubu](iot-hub-devguide-security.md)
 
-* [Postup nahrání souborů ze zařízení do cloudu s centrem IoT][lnk-fileupload-tutorial]
+* [Použití dvojčat zařízení k synchronizaci stavu a konfigurace](iot-hub-devguide-device-twins.md)
 
-[lnk-resource-provider-apis]: https://docs.microsoft.com/rest/api/iothub/iothubresource
-[lnk-endpoints]: iot-hub-devguide-endpoints.md
-[lnk-quotas]: iot-hub-devguide-quotas-throttling.md
-[lnk-sdks]: iot-hub-devguide-sdks.md
-[lnk-query]: iot-hub-devguide-query-language.md
-[lnk-devguide-mqtt]: iot-hub-mqtt-support.md
-[lnk-management-portal]: https://portal.azure.com
-[lnk-fileupload-tutorial]: iot-hub-csharp-csharp-file-upload.md
-[lnk-associate-storage]: iot-hub-devguide-file-upload.md#associate-an-azure-storage-account-with-iot-hub
-[lnk-initialize]: iot-hub-devguide-file-upload.md#initialize-a-file-upload
-[lnk-notify]: iot-hub-devguide-file-upload.md#notify-iot-hub-of-a-completed-file-upload
-[lnk-service-notification]: iot-hub-devguide-file-upload.md#file-upload-notifications
-[lnk-lifecycle]: iot-hub-devguide-messages-c2d.md#the-cloud-to-device-message-lifecycle
-[lnk-d2c-guidance]: iot-hub-devguide-d2c-guidance.md
+* [Vyvolání přímé metody v zařízení](iot-hub-devguide-direct-methods.md)
 
-[lnk-devguide-identities]: iot-hub-devguide-identity-registry.md
-[lnk-devguide-security]: iot-hub-devguide-security.md
-[lnk-devguide-device-twins]: iot-hub-devguide-device-twins.md
-[lnk-devguide-directmethods]: iot-hub-devguide-direct-methods.md
-[lnk-devguide-jobs]: iot-hub-devguide-jobs.md
+* [Plánování úloh na několika zařízeních](iot-hub-devguide-jobs.md)
+
+Vyzkoušet si některé koncepty popsané v tomto článku, najdete v následujícím kurzu služby IoT Hub:
+
+* [Postup nahrání souborů ze zařízení do cloudu pomocí služby IoT Hub](iot-hub-csharp-csharp-file-upload.md)

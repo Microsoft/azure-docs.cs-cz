@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 364600d4c1c53f4e5fe726d443287bf1a5f2d4ec
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: 6c41890922e2235190d8844a573522846b42c779
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419164"
+ms.locfileid: "47434496"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -113,7 +113,7 @@ Naleznete příklad konfiguruje **PhoneNumber** deklarace identity s `Simple` ma
 
 ```XML
 <ClaimType Id="PhoneNumber">
-  <DisplayName>Phone</DisplayName>
+  <DisplayName>Phone Number</DisplayName>
   <DataType>string</DataType>
   <Mask Type="Simple">XXX-XXX-</Mask>  
   <UserHelpText>Your telephone number.</UserHelpText>

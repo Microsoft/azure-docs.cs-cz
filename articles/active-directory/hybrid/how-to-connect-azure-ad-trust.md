@@ -17,12 +17,12 @@ ms.date: 07/28/2018
 ms.author: billmath
 author: billmath
 ms.custom: ''
-ms.openlocfilehash: 4eeb716e4eeae8dc560f9588c6c3ce252daf741e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 5ac69c53a6b6c1e4695b88e5806f8e883cd52c66
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314661"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432048"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>Správa vztah důvěryhodnosti služby AD FS pomocí Azure AD pomocí služby Azure AD Connect
 
@@ -41,7 +41,7 @@ Azure AD Connect spravuje **pouze** související nastavení se vztah důvěryho
 | Nastavení | Popis |
 | :--- | :--- |
 | Podpisový certifikát tokenu | Azure AD Connect je možné obnovit a znovu vytvořit vztah důvěryhodnosti s Azure AD. Azure AD Connect provede jednorázovou okamžité výměny podpisové certifikáty tokenů pro službu AD FS a aktualizuje nastavení federace domény Azure AD.|
-| Token podpisový algoritmus | Microsoft doporučuje používat jako token podpisový algoritmus SHA-256. Azure AD Connect může zjistit, pokud token podpisový algoritmus je nastavený na hodnotu méně bezpečné než algoritmus SHA-256. V další operaci možné konfigurace ji bude aktualizujte nastavení na SHA-256. |
+| Token podpisový algoritmus | Microsoft doporučuje používat jako token podpisový algoritmus SHA-256. Azure AD Connect může zjistit, pokud token podpisový algoritmus je nastavený na hodnotu méně bezpečné než algoritmus SHA-256. V další operaci možné konfigurace ji bude aktualizujte nastavení na SHA-256. Použít nový podpisový certifikát tokenu musí aktualizovat ostatní vztah důvěryhodnosti předávající strany. |
 | Identifikátor vztahu důvěryhodnosti Azure AD | Azure AD Connect nastaví hodnotu správný identifikátor pro vztah důvěryhodnosti Azure AD. Služba AD FS jednoznačně identifikuje vztah důvěryhodnosti Azure AD pomocí hodnota identifikátoru. |
 | Koncové body Azure AD | Azure AD Connect zajišťuje, že koncové body konfigurované pro vztah důvěryhodnosti Azure AD jsou vždy podle doporučené hodnoty pro výkon a odolnost proti chybám. |
 | Pravidla transformace vystavení | Počet pravidel deklarací identity, které jsou potřeba pro zajištění optimálního výkonu funkce služby Azure AD ve federované nastavení nejsou k dispozici. Azure AD Connect zajišťuje, že vztah důvěryhodnosti Azure AD je vždy nakonfigurovanou správnou sadu pravidel deklarací identity doporučené. |

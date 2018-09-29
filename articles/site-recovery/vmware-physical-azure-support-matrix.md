@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: raynew
-ms.openlocfilehash: 0878bdd435b6ec9efccca2cc825242a65bd79909
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 25db7d1f0a546cb5c6071ec4d625a7a52867053a
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042223"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433919"
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>Matice podpory pro VMware a replikací fyzických serverů do Azure
 
@@ -107,6 +107,7 @@ Debian 8 | 9.16 | 3.16.0-4-amd64 k 3.16.0-5-amd64 4.9.0-0.bpo.4-amd64 k 4.9.0-0.
 
 **Vydání verze** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
+SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.19 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.96-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.85-default</br></br>SP3 4.4.73-5-default k 4.4.140-94.42-default |
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.18 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.96-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.85-default</br></br>SP3 4.4.73-5-default k 4.4.138-94.39-default |
 
 ## <a name="linux-file-systemsguest-storage"></a>Úložiště systémů/hostů soubor Linuxu
@@ -150,7 +151,7 @@ Několik síťových adaptérů sítě hosta/server | Ano.
 **Komponenta** | **Podporuje se**
 --- | ---
 Azure ExpressRoute | Ano
-ILB | Ano
+Interní nástroj pro vyrovnávání zatížení | Ano
 ELB | Ano
 Azure Traffic Manager | Ano
 S více síťovými Kartami | Ano

@@ -8,12 +8,12 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: d896cb01c7dc2cd4ed028db418f838809c7ce25c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b9808233e08e545c31e171afe104173dccc6abed
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986995"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434921"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Odeslání metrik hosta operačního systému do Azure monitoru metriky úložiště pro škálovací sadu virtuálních počítačů s Windows pomocí šablony Resource Manageru
 
@@ -83,7 +83,7 @@ Ve virtuálním počítači škálovací sady prostředků, vyhledejte **virtual
 
 V **extensionProfile**, přidat nové rozšíření do šablony, jak je uvedeno **příponu VMSS WAD části**.  Tato část se rozšíření Identity spravované služby (MSI), které zajistí, že probíhá emitovány metriky jsou přijaty Azure Monitor. **Název** pole může obsahovat libovolný název. 
 
-Níže uvedený kód níže rozšíření MSI také přidá rozšíření diagnostiky a konfiguraci jako prostředek rozšíření do prostředku virtuálního počítače škálovací sady. Můžete přidat nebo odebrat čítače výkonu podle potřeby. 
+Níže uvedený kód z rozšíření MSI také přidá rozšíření diagnostiky a konfiguraci jako prostředek rozšíření do prostředku virtuálního počítače škálovací sady. Můžete přidat nebo odebrat čítače výkonu podle potřeby. 
 
 ```json
           "extensionProfile": { 

@@ -9,18 +9,18 @@ ms.author: gwallace
 ms.date: 09/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 32a7b7026df1522abe2ca3dc7b212b06e08ff905
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: a8821b2e1be10cddafba04109041e76ef65f6a6a
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45544273"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433697"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Správa účtů služby Automation spustit jako pro Azure
 
 Účty spustit jako ve službě Azure Automation se používají k zajištění ověřování pro správu prostředků v Azure pomocí rutin Azure.
 
-Když vytvoříte účet Spustit jako, vytvoří nový uživatel instančního objektu služby v Azure Active Directory a přiřadí roli přispěvatele k tomuto uživateli na úrovni předplatného.
+Když vytvoříte účet Spustit jako, vytvoří nový uživatel instančního objektu služby v Azure Active Directory a přiřadí roli přispěvatele k tomuto uživateli na úrovni předplatného. Pro sady runbook, který používat Hybrid Runbook Worker na virtuálních počítačích Azure, můžete použít [spravovaných identit pro prostředky Azure](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) místo účtů spustit jako k ověření vašich prostředků Azure.
 
 Existují dva typy účtů spustit jako:
 

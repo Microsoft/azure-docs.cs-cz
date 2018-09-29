@@ -3,7 +3,7 @@ title: Resetování přístupu k virtuálním počítači Azure s Linuxem | Doku
 description: Jak spravovat administrativní uživatele a resetování přístupu na virtuální počítače s Linuxem pomocí rozšíření VMAccess a rozhraní příkazového řádku Azure
 services: virtual-machines-linux
 documentationcenter: ''
-author: zroiy
+author: roiyz-msft
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -15,18 +15,21 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: roiyz
-ms.openlocfilehash: e878f5c9f923b55a1eb94cefb1ecf021c81e884e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 638ca5d1b1b68896ff5dcad70fedf27261ae96cb
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998623"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452050"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>Spravovat administrativní uživatelé, SSH a kontrola nebo opravte disky na virtuální počítače s Linuxem pomocí rozšíření VMAccess pomocí Azure CLI
 ## <a name="overview"></a>Přehled
 Disk ve virtuálním počítačům s Linuxem se zobrazují se chyby. Nějakým způsobem resetování kořenového hesla pro virtuální počítač s Linuxem nebo odstranění privátního klíče SSH. V takovém případě zpět v dny v datovém centru musíte existuje a pak otevřete KVM získat z konzoly serveru. Rozšíření Azure VMAccess můžete představit jako tohoto KVM přepínače, který umožňuje přístup ke konzole obnovit přístup k Linuxu nebo provést údržbu na úrovni disku.
 
 V tomto článku se dozvíte, jak pomocí rozšíření Azure VMAccess zkontrolovat nebo opravě disku, obnovit přístup uživatelů, spravovat účty administrativních uživatelů nebo aktualizovat konfiguraci SSH v Linuxu, když jsou spuštěné jako virtuální počítače Azure Resource Manageru. Pokud potřebujete ke správě virtuálních počítačů modelu Classic - můžete postupujte podle pokynů uvedených v [classic dokumentaci k virtuálním počítačům](../linux/classic/reset-access-classic.md). 
+ 
+> [!NOTE]
+> Pokud používáte rozšíření VMAccess resetovat heslo k vašemu virtuálnímu počítači po instalaci rozšíření AAD přihlášení, budete muset znovu spustit rozšíření přihlašovacích AAD opětovné povolení AAD přihlášení pro váš počítač.
 
 ## <a name="prerequisites"></a>Požadavky
 ### <a name="operating-system"></a>Operační systém

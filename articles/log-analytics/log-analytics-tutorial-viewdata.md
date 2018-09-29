@@ -15,12 +15,12 @@ ms.date: 07/31/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: na
-ms.openlocfilehash: 31e9e6b173a578b09f656850271ed5a8f0f2baa8
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: b5d7b71b76eebc0c14fe1403791c3d4b6cefd7f4
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391327"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161034"
 ---
 # <a name="view-or-analyze-data-collected-with-log-analytics-log-search"></a>Zobrazení nebo analýza shromážděných dat pomocí prohledávání protokolů v Log Analytics
 
@@ -85,7 +85,7 @@ Stejný filtr můžete nastavit výběrem možnosti **Filtrovat** v nabídce vla
 
 Možnost **Filtrovat** se zobrazí pouze po najetí myši na vlastnosti, jejichž název je modře.  To jsou *prohledávatelná* pole, která se indexují pro vyhledávací podmínky.  Pole zobrazená šedě jsou pole *vhodná pro volnotextové prohledávání*, u kterých je dostupná pouze možnost **Zobrazit odkazy**.  Tato možnost vrátí záznamy obsahující danou hodnotu v jakékoli vlastnosti.
 
-Výsledky můžete seskupit podle jedné vlastnosti výběrem možnosti **Seskupit podle** v nabídce záznamu.  Tím se do vašeho dotazu přidá operátor [summarize](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator), který zobrazí výsledky v grafu.  Seskupení můžete provést podle více než jedné vlastnosti, museli byste však upravit dotaz přímo.  Vyberte nabídku záznamu vedle vlastnosti **Computer** (Počítač) a vyberte **Seskupit podle Computer**.  
+Výsledky můžete seskupit podle jedné vlastnosti výběrem možnosti **Seskupit podle** v nabídce záznamu.  Tím se do vašeho dotazu přidá operátor [summarize](/azure/kusto/query/summarizeoperator), který zobrazí výsledky v grafu.  Seskupení můžete provést podle více než jedné vlastnosti, museli byste však upravit dotaz přímo.  Vyberte nabídku záznamu vedle vlastnosti **Computer** (Počítač) a vyberte **Seskupit podle Computer**.  
 
 ![Seskupení podle počítače](media/log-analytics-tutorial-viewdata/log-analytics-portal-eventlist-04.png)
 
@@ -130,7 +130,7 @@ Perf | where ObjectName == "Processor"  | where CounterName == "% Processor Time
 
 ![Využití procesoru](media/log-analytics-tutorial-viewdata/log-analytics-portal-perfsearch-02.png)
 
-Tím se data omezí na konkrétní čítač, ale stále se nezobrazují v užitečném formátu.  Data můžete zobrazit ve spojnicovém grafu, ale nejprve je potřeba je seskupit podle polí Computer (Počítač) a TimeGenerated (Čas vygenerování).  Abyste mohli data seskupit podle více polí, musíte dotaz upravit přímo, takže ho upravte na následující dotaz.  Tento dotaz používá funkci [avg](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions/avg()) s vlastností **CounterValue** (Hodnota čítače) k výpočtu průměrných hodinových hodnot.
+Tím se data omezí na konkrétní čítač, ale stále se nezobrazují v užitečném formátu.  Data můžete zobrazit ve spojnicovém grafu, ale nejprve je potřeba je seskupit podle polí Computer (Počítač) a TimeGenerated (Čas vygenerování).  Abyste mohli data seskupit podle více polí, musíte dotaz upravit přímo, takže ho upravte na následující dotaz.  Tento dotaz používá funkci [avg](/azure/kusto/query/avg-aggfunction) s vlastností **CounterValue** (Hodnota čítače) k výpočtu průměrných hodinových hodnot.
 
 ```
 Perf  
@@ -140,7 +140,7 @@ Perf
 
 ![Graf dat výkonu](media/log-analytics-tutorial-viewdata/log-analytics-portal-perfsearch-03.png)
 
-Když jsou teď data vhodně seskupená, můžete je zobrazit ve vizuálním grafu přidáním operátoru [render](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/render-operator).  
+Když jsou teď data vhodně seskupená, můžete je zobrazit ve vizuálním grafu přidáním operátoru [render](/azure/kusto/query/renderoperator).  
 
 ```
 Perf  

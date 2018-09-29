@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: ca35e13c502efadad07ef78077271923951ae4b1
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: f927e5b7ff65b82aef9d4224d22296e0fa48ad59
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038217"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451880"
 ---
 # <a name="edit-a-knowledge-base"></a>Úprava znalostní báze
 
@@ -30,8 +30,24 @@ Nástroj QnA Maker umožňuje spravovat obsah znalostní báze tím, že poskytu
     ![Moje znalostních bází](../media/qnamaker-how-to-edit-kb/my-kbs.png)
 
 2. Vyberte konkrétní znalostní bázi, provádět úpravy.
+ 
+3. Klikněte na **Nastavení**.
 
-3. Po dokončení změn ve znalostní bázi, klikněte na **uložit a jejich trénování** v pravém horním rohu stránky zachová tak změny.    
+   Tady můžete upravit povinného pole název služby.
+  
+   Můžete přidat nové adresy URL k přidání nové nejčastější dotazy k obsahu na webech kliknutím **webech spravovat -> ' + přidat adresu URL'** odkaz.
+   
+   Existující adresy URL můžete odstranit kliknutím na **ikona odstranění**.
+   
+   Pokud chcete webech k procházení nejnovější obsah stávající adresy URL, zaškrtněte políčko název **'Aktualizovat'**, tím se aktualizuje webech s nejnovější obsah adresy URL.
+   
+Můžete přidat soubor s podporovaným dokument jako součást webech, kliknutím na **webech spravovat -> ' + přidat soubor '**
+
+Můžete také importovat všechny existující webech kliknutím **"Ímport webech** tlačítko. 
+   
+Aktualizace webech závisí na **cenovou úroveň účtu správy** používá při vytváření přidružené k vaší knowledgbase služba QnA Maker. V případě potřeby můžete také aktualizovat úroveň správy z webu Azure portal.
+
+4. Po dokončení změn ve znalostní bázi, klikněte na **uložit a jejich trénování** v pravém horním rohu stránky zachová tak změny.    
 
     ![Uložit a jejich trénování](../media/qnamaker-how-to-edit-kb/save-and-train.png)
 

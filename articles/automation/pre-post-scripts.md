@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bb6f593e091f792a0a7d911729de9d7cbe12511f
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: c906a771a63b3d8320eab1d2d57e8c34916e1d39
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46499220"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433188"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>Spravovat skripty před a po (Preview)
 
@@ -125,55 +125,54 @@ Nebo můžete vyhledat je podle názvu skriptu jak je znázorněno v následují
 Ukázky jsou založeny na základní šablony, která je definována v následujícím příkladu. Tato šablona slouží k vytvoření vlastní sady runbook pomocí skriptů před a po. Nezbytnou logiku pro ověřování s Azure, stejně jako zpracování `SoftwareUpdateConfigurationRunContext` parametru jsou zahrnuty.
 
 ```powershell
-<#
-.SYNOPSIS
- Barebones script for Update Management Pre/Post
-
-.DESCRIPTION
-  This script is intended to be run as a part of Update Management Pre/Post scripts.
-  It requires a RunAs account.
-
-.PARAMETER SoftwareUpdateConfigurationRunContext
-  This is a system variable which is automatically passed in by Update Management during a deployment.
-#>
-
-param(
-    [string]$SoftwareUpdateConfigurationRunContext
-)
-#region BoilerplateAuthentication
-#This requires a RunAs account
-$ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
-
-Add-AzureRmAccount `
-    -ServicePrincipal `
-    -TenantId $ServicePrincipalConnection.TenantId `
-    -ApplicationId $ServicePrincipalConnection.ApplicationId `
-    -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint
-
-$AzureContext = Select-AzureRmSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID
-#endregion BoilerplateAuthentication
-
-#If you wish to use the run context, it must be converted from JSON
-
-$context = ConvertFrom-Json  $SoftwareUpdateConfigurationRunContext
-#Access the properties of the SoftwareUpdateConfigurationRunContext
-$vmIds = $context.SoftwareUpdateConfigurationSettings.AzureVirtualMachines
-$runId = $context.SoftwareUpdateConfigurationRunId
-
-Write-Output $context
-
-#Example: How to create and write to a variable using the pre-script:
-<#
-#Create variable named after this run so it can be retrieved
-New-AzureRmAutomationVariable -ResourceGroupName $ResourceGroup –AutomationAccountName $AutomationAccount –Name $runId -Value "" –Encrypted $false
-#Set value of variable
-Set-AutomationVariable –Name $runId -Value $vmIds
-#>
-
-#Example: How to retrieve information from a variable set during the pre-script
-<#
-$variable = Get-AutomationVariable -Name $runId
-#>
+<# 
+.SYNOPSIS 
+ Barebones script for Update Management Pre/Post 
+ 
+.DESCRIPTION 
+  This script is intended to be run as a part of Update Management Pre/Post scripts.  
+  It requires a RunAs account. 
+ 
+.PARAMETER SoftwareUpdateConfigurationRunContext 
+  This is a system variable which is automatically passed in by Update Management during a deployment. 
+#> 
+ 
+param( 
+    [string]$SoftwareUpdateConfigurationRunContext 
+) 
+#region BoilerplateAuthentication 
+#This requires a RunAs account 
+$ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection' 
+ 
+Add-AzureRmAccount ` 
+    -ServicePrincipal ` 
+    -TenantId $ServicePrincipalConnection.TenantId ` 
+    -ApplicationId $ServicePrincipalConnection.ApplicationId ` 
+    -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint 
+ 
+$AzureContext = Select-AzureRmSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID 
+#endregion BoilerplateAuthentication 
+ 
+#If you wish to use the run context, it must be converted from JSON 
+$context = ConvertFrom-Json  $SoftwareUpdateConfigurationRunContext 
+#Access the properties of the SoftwareUpdateConfigurationRunContext 
+$vmIds = $context.SoftwareUpdateConfigurationSettings.AzureVirtualMachines 
+$runId = $context.SoftwareUpdateConfigurationRunId 
+ 
+Write-Output $context 
+ 
+#Example: How to create and write to a variable using the pre-script: 
+<# 
+#Create variable named after this run so it can be retrieved 
+New-AzureRmAutomationVariable -ResourceGroupName $ResourceGroup –AutomationAccountName $AutomationAccount –Name $runId -Value "" –Encrypted $false 
+#Set value of variable  
+Set-AutomationVariable –Name $runId -Value $vmIds 
+#> 
+ 
+#Example: How to retrieve information from a variable set during the pre-script 
+<# 
+$variable = Get-AutomationVariable -Name $runId 
+#>      
 ```
 
 ## <a name="interacting-with-non-azure-machines"></a>Interakce s počítače mimo Azure

@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: heidist
-ms.openlocfilehash: ddb60631f54e1b635ae5ec036b7d35d47ca0a519
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: d28b9177684cf7b9a3ddc83107806aaa6afde477
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221754"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434022"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Zvolte cenovou úroveň pro službu Azure Search
 
@@ -64,7 +64,7 @@ Ve službě Azure Search má strukturu kapacity *repliky* a *oddíly*.
 + Oddíly ukládat indexy a automaticky rozdělí prohledávatelná data: dva oddíly rozdělit třetiny indexu v polovině, tři oddíly a tak dále. Z hlediska kapacity *oddílu velikost* je primární odlišující funkce napříč úrovněmi.
 
 > [!NOTE]
-> Všechny **standardní** úrovní podpory [flexibilní kombinace repliky a oddíly](search-capacity-planning.md#chart) , abyste mohli [váha systému rychlost ani prostředky úložiště](search-performance-optimization.md) změnou zůstatek na účtu. **Základní** nabízí tři repliky vysokou dostupnost, ale má pouze jeden oddíl. **Bezplatné** úrovně se neposkytuje vyhrazené prostředky: výpočetní prostředky, které jsou sdíleny více bezplatných služeb.
+> Všechny **standardní** úrovní podpory [flexibilní kombinace repliky a oddíly](search-capacity-planning.md#chart) , abyste mohli [váha systému rychlost ani prostředky úložiště](search-performance-optimization.md) změnou zůstatek na účtu. **Základní** nabízí tři repliky vysokou dostupnost, ale má pouze jeden oddíl. **Bezplatné** úrovně se neposkytuje vyhrazené prostředky: výpočetní prostředky se sdílí několik předplatitelů.
 
 ### <a name="more-about-service-limits"></a>Další informace o omezení služby
 

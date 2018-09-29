@@ -1,5 +1,5 @@
 ---
-title: Přehled služby Azure Media Services | Microsoft Docs
+title: Přehled služby Azure Media Services | Dokumentace Microsoftu
 description: Toto téma nabízí přehled Azure Media Services.
 services: media-services
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 10/24/2017
+ms.date: 09/24/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: d79a8937c0190246218153e42ead74ada619b121
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 65f38ca477cf1a861c1285e6195598be705005d7
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33940859"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163745"
 ---
 # <a name="azure-media-services-overview"></a>Přehled služby Azure Media Services 
 
@@ -29,15 +29,7 @@ ms.locfileid: "33940859"
 
 Microsoft Azure Media Services (AMS) je rozšiřitelná cloudová platforma, která vývojářům umožňuje vytvářet škálovatelné aplikace pro správu a doručování médií. Služba Media Services využívá rozhraní REST API, které vám umožní bezpečně nahrávat, ukládat, kódovat a balit obsah (video nebo zvuk) doručovaný na vyžádání i v živě streamovaný různým klientům (například do televizí, počítačů a mobilních zařízení).
 
-Pomocí Media Services můžete vytvářet pracovní postupy od začátku až do konce. V některých částech pracovního postupu můžete použít komponenty třetích stran. Můžete například kódovat pomocí kodéru třetí strany. Potom obsah nahrajete, zabezpečíte, zabalíte a doručíte pomocí služby Media Services.
-
-Svůj obsah můžete streamovat živě nebo doručovat na vyžádání. Téma obsahuje i odkazy na další související témata.
-
-## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
-Mapu kurzů k AMS můžete zobrazit tady:
-
-* [Pracovní postup živého streamování AMS](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-* [Pracovní postup streamování AMS na vyžádání](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+Pomocí Media Services můžete vytvářet pracovní postupy od začátku až do konce. V některých částech pracovního postupu můžete použít komponenty třetích stran. Můžete například kódovat pomocí kodéru třetí strany. Potom obsah nahrajete, zabezpečíte, zabalíte a doručíte pomocí služby Media Services. Svůj obsah můžete streamovat živě nebo doručovat na vyžádání. 
 
 ## <a name="prerequisites"></a>Požadavky
 

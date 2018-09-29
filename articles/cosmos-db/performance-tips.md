@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: 47896b681c2ba43d4ca41682ec51e0dfd167c9d5
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: a805294ecb416d18f3ce13981d26a7d25cd5a204
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700952"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432847"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tipy ke zvýšení výkonu pro službu Azure Cosmos DB a .NET
 
@@ -42,7 +42,7 @@ Takže pokud máte s dotazem "Jak můžu vylepšit výkon Moje databáze?" Zvaž
 
    * Přímý režim
 
-     Přímý režim podporuje připojení přes protokoly TCP a HTTPS. V současné době přímé je podporován v rozhraní .NET Standard 2.0 pro pouze platformy Windows. Když používáte přímý režim, nejsou k dispozici dvě možnosti protokolu:
+     Přímý režim podporuje připojení přes protokoly TCP a HTTPS. V současné době se podporuje přímý v .NET Standard 2.0. Když používáte přímý režim, nejsou k dispozici dvě možnosti protokolu:
 
     * TCP
     * HTTPS

@@ -1,9 +1,9 @@
 ---
-title: OpenShift Azure po nasazení úloh | Microsoft Docs
-description: Další úlohy při po clusteru služby OpenShift byly nasazeny.
+title: OpenShift v Azure po nasazení úloh | Dokumentace Microsoftu
+description: Další úkoly pro za OpenShift cluster byla nasazena.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: haroldw
+author: haroldwongms
 manager: najoshi
 editor: ''
 tags: azure-resource-manager
@@ -15,42 +15,42 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: bdfd075b9438ee12e940f3ec4fddebf467c93ca8
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d400512c2e96e0e24bbf965b2e201adf92ccbb0f
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31796155"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434887"
 ---
 # <a name="post-deployment-tasks"></a>Úlohy po nasazení
 
-Po nasazení clusteru služby OpenShift, můžete nakonfigurovat další položky. Tento článek obsahuje následující:
+Po nasazení clusteru služby OpenShift, můžete nakonfigurovat další položky. V tomto článku najdete následující:
 
-- Jak nakonfigurovat jednotné přihlašování pomocí služby Azure Active Directory (Azure AD)
-- Postup konfigurace analýzy protokolů pro monitorování OpenShift
-- Postup konfigurace metrik a protokolování
+- Jak nakonfigurovat jednotné přihlašování pomocí Azure Active Directory (Azure AD)
+- Postup konfigurace Log Analytics k monitorování Openshiftu
+- Konfigurace metrik a protokolování
 
-## <a name="configure-single-sign-on-by-using-azure-active-directory"></a>Konfigurovat jednotné přihlašování pomocí služby Azure Active Directory
+## <a name="configure-single-sign-on-by-using-azure-active-directory"></a>Konfigurace jednotného přihlašování pomocí Azure Active Directory
 
-Pokud chcete použít pro ověřování Azure Active Directory, musíte vytvořit registrační aplikace služby Azure AD. Tento proces zahrnuje dva kroky: vytváření registrace aplikací a konfigurace oprávnění.
+Pro účely ověření služby Azure Active Directory, je třeba nejprve vytvořit registrace aplikace Azure AD. Tento proces zahrnuje dva kroky: registrace aplikace pro vytváření a konfigurace oprávnění.
 
-### <a name="create-an-app-registration"></a>Vytvořit registraci aplikace
+### <a name="create-an-app-registration"></a>Vytvoření registrace aplikace
 
-Tyto kroky používají rozhraní příkazového řádku Azure k vytvoření registrace aplikací a grafickým uživatelským rozhraním (portál) Chcete-li nastavit oprávnění. Chcete-li vytvořit registrace aplikace, je třeba pět následující informace:
+Tyto kroky používají Azure CLI k vytvoření registrace aplikace a grafickým uživatelským rozhraním (portál) k nastavení oprávnění. K vytvoření registrace aplikace, budete potřebovat následující pět druhy údajů:
 
-- Zobrazovaný název: název registraci aplikace (například OCPAzureAD)
-- Domovská stránka: OpenShift konzole adresy URL (například) https://masterdns343khhde.westus.cloudapp.azure.com:8443/console)
+- Zobrazovaný název: název registrace aplikace (například OCPAzureAD)
+- Domovská stránka: OpenShift konzoly adresy URL (například https://masterdns343khhde.westus.cloudapp.azure.com:8443/console)
 - Identifikátor URI: Adresa URL konzoly OpenShift (např. https://masterdns343khhde.westus.cloudapp.azure.com:8443/console)
-- Adresa URL odpovědi: Hlavní veřejnou adresu URL a název registraci aplikace (například) https://masterdns343khhde.westus.cloudapp.azure.com:8443/oauth2callback/OCPAzureAD)
+- Adresa URL odpovědi: Hlavní veřejnou adresu URL a název registrace aplikace (například) https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD)
 - Heslo: Zabezpečené heslo (použijte silné heslo)
 
-Následující příklad vytvoří registraci aplikací s použitím předchozích informací:
+Následující příklad vytvoří registrace aplikace pomocí výše uvedených informací:
 
 ```azurecli
-az ad app create --display-name OCPAzureAD --homepage https://masterdns343khhde.westus.cloudapp.azure.com:8443/console --reply-urls https://masterdns343khhde.westus.cloudapp.azure.com:8443/oauth2callback/hwocpadint --identifier-uris https://masterdns343khhde.westus.cloudapp.azure.com:8443/console --password {Strong Password}
+az ad app create --display-name OCPAzureAD --homepage https://masterdns343khhde.westus.cloudapp.azure.com:8443/console --reply-urls https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD --identifier-uris https://masterdns343khhde.westus.cloudapp.azure.com:8443/console --password {Strong Password}
 ```
 
-Pokud je příkaz úspěšný, získáte výstup JSON podobně jako:
+Pokud příkaz je úspěšné, získáte výstup JSON podobný:
 
 ```json
 {
@@ -65,44 +65,44 @@ Pokud je příkaz úspěšný, získáte výstup JSON podobně jako:
   "objectId": "62cd74c9-42bb-4b9f-b2b5-b6ee88991c80",
   "objectType": "Application",
   "replyUrls": [
-    "https://masterdns343khhde.westus.cloudapp.azure.com:8443/oauth2callback/OCPAzureAD"
+    "https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD"
   ]
 }
 ```
 
-Poznamenejte si vlastnost appId vrácená z příkazu pro později.
+Poznamenejte si vlastnost appId vrácenou příkazem pro později.
 
 Na webu Azure Portal:
 
-1.  Vyberte **Azure Active Directory** > **registrace aplikací**.
-2.  Vyhledávání pro registraci vaší aplikace (například OCPAzureAD).
-3.  Ve výsledcích klikněte na možnost registrace aplikací.
-4.  V části **nastavení**, vyberte **požadovaná oprávnění**.
-5.  V části **požadovaných oprávnění**, vyberte **přidat**.
+1.  Vyberte **Azure Active Directory** > **registrace aplikace**.
+2.  Hledání registrace vaší aplikace (například OCPAzureAD).
+3.  Ve výsledcích klikněte na registraci aplikace.
+4.  V části **nastavení**vyberte **požadovaná oprávnění**.
+5.  V části **požadovaná oprávnění**vyberte **přidat**.
 
-  ![Registrace aplikací](media/openshift-post-deployment/app-registration.png)
+  ![Registrace aplikace](media/openshift-post-deployment/app-registration.png)
 
 6.  Klikněte na krok 1: Vyberte rozhraní API a pak klikněte na tlačítko **Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)**. Klikněte na tlačítko **vyberte** v dolní části.
 
-  ![Registrace aplikací vybrané rozhraní API](media/openshift-post-deployment/app-registration-select-api.png)
+  ![Vyberte rozhraní API registrace aplikace](media/openshift-post-deployment/app-registration-select-api.png)
 
-7.  Na krok 2: Vyberte oprávnění, vyberte **přihlášení a čtení profilu uživatele** pod **delegovaná oprávnění**a potom klikněte na **vyberte**.
+7.  V kroku 2: Vyberte oprávnění, vyberte **přihlášení a čtení profilu uživatele** pod **delegovaná oprávnění**a potom klikněte na tlačítko **vyberte**.
 
   ![Registrace aplikace Access](media/openshift-post-deployment/app-registration-access.png)
 
-8.  Vyberte **provádí**.
+8.  Vyberte **Done** (Hotovo).
 
 ### <a name="configure-openshift-for-azure-ad-authentication"></a>Konfigurace OpenShift pro ověřování Azure AD
 
-Ke konfiguraci OpenShift používat Azure AD jako zprostředkovatele ověřování, je nutné upravit soubor /etc/origin/master/master-config.yaml na všech uzlech, hlavní.
+Ke konfiguraci OpenShift používání Azure AD jako zprostředkovatele ověřování, je nutné upravit soubor /etc/origin/master/master-config.yaml na všechny hlavní uzly.
 
-Najít ID klienta pomocí rozhraní příkazového řádku následující příkaz:
+Najdete ID tenanta pomocí následujícího příkazu rozhraní příkazového řádku:
 
 ```azurecli
 az account show
 ```
 
-V souboru yaml najdete následující řádky:
+V souboru yaml vyhledejte následující řádky:
 
 ```yaml
 oauthConfig:
@@ -120,7 +120,7 @@ oauthConfig:
       kind: HTPasswdPasswordIdentityProvider
 ```
 
-Vložte následující řádky ihned po předchozí řádky:
+Ihned po předchozím řádků vložte následující řádky:
 
 ```yaml
   - name: <App Registration Name>
@@ -146,9 +146,9 @@ Vložte následující řádky ihned po předchozí řádky:
         token: https://login.microsoftonline.com/<tenant Id>/oauth2/token
 ```
 
-Najít ID klienta pomocí rozhraní příkazového řádku následující příkaz: ```az account show```
+Najdete ID tenanta pomocí následujícího příkazu rozhraní příkazového řádku: ```az account show```
 
-Restartujte služby hlavní OpenShift na všech uzlech, hlavní:
+Restartujte hlavní služby OpenShift na všechny hlavní uzly:
 
 **OpenShift Origin**
 
@@ -157,26 +157,26 @@ sudo systemctl restart origin-master-api
 sudo systemctl restart origin-master-controllers
 ```
 
-**OpenShift kontejneru platformy (OCP) s více hlavních serverů**
+**OpenShift Container Platform (OCP) s více hlavních serverů**
 
 ```bash
 sudo systemctl restart atomic-openshift-master-api
 sudo systemctl restart atomic-openshift-master-controllers
 ```
 
-**Platforma kontejneru OpenShift jeden hlavní server**
+**OpenShift Container Platform se na jediném masteru**
 
 ```bash
 sudo systemctl restart atomic-openshift-master
 ```
 
-V konzole OpenShift uvidíte teď dvě možnosti pro ověřování: htpasswd_auth a [registrace aplikací].
+V konzole nástroje OpenShift, uvidíte teď dvě možnosti pro ověřování: htpasswd_auth a [registrace aplikace].
 
-## <a name="monitor-openshift-with-log-analytics"></a>Monitorování OpenShift s analýzy protokolů
+## <a name="monitor-openshift-with-log-analytics"></a>OpenShift monitorování pomocí Log Analytics
 
-Pokud chcete monitorovat OpenShift s analýzy protokolů, můžete použít jednu ze dvou možností: Instalace agenta OMS na hostiteli virtuálního počítače nebo kontejner OMS. Tento článek obsahuje pokyny pro nasazení kontejneru OMS.
+Pokud chcete monitorovat OpenShift službou Log Analytics, můžete použít jednu ze dvou možností: Instalace agenta OMS na hostitele virtuálního počítače nebo kontejnerů OMS. Tento článek obsahuje pokyny pro nasazení kontejnerů OMS.
 
-## <a name="create-an-openshift-project-for-log-analytics-and-set-user-access"></a>Vytvoření projektu OpenShift pro analýzy protokolů a nastavení přístupu uživatele
+## <a name="create-an-openshift-project-for-log-analytics-and-set-user-access"></a>Vytvoření projektu aplikace OpenShift ke službě Log Analytics a nastavení přístupu uživatelů
 
 ```bash
 oadm new-project omslogging --node-selector='zone=default'
@@ -186,7 +186,7 @@ oadm policy add-cluster-role-to-user cluster-reader system:serviceaccount:omslog
 oadm policy add-scc-to-user privileged system:serviceaccount:omslogging:omsagent
 ```
 
-## <a name="create-a-daemon-set-yaml-file"></a>Vytvořte soubor démon sadu yaml
+## <a name="create-a-daemon-set-yaml-file"></a>Vytvořte soubor yaml démon set
 
 Vytvořte soubor s názvem ocp-omsagent.yml:
 
@@ -243,9 +243,9 @@ spec:
          secretName: omsagent-secret
 ````
 
-## <a name="create-a-secret-yaml-file"></a>Vytvořte soubor tajný yaml
+## <a name="create-a-secret-yaml-file"></a>Vytvořte soubor yaml tajného kódu
 
-K vytvoření souboru tajný yaml, budete potřebovat dva kusy informací: ID pracovního prostoru analýzy protokolů a protokolu sdílený klíč pracovního prostoru analýzy. 
+Chcete-li vytvořit soubor yaml tajných kódů, budete potřebovat dva druhy údajů: ID pracovního prostoru Log Analytics a Log Analytics pracovní prostor sdíleného klíče. 
 
 Následuje ukázkový soubor ocp-secret.yml: 
 
@@ -259,7 +259,7 @@ data:
   KEY: key_data
 ```
 
-Nahraďte wsid_data s Base64, pomocí kódování ID pracovní prostor Log Analytics. Potom můžete nahraďte key_data s kódováním base64, pomocí protokolu Analytics prostoru sdílený klíč.
+Nahradit wsid_data s Base64 kódované ID pracovního prostoru Log Analytics. Potom nahraďte key_data s kódováním Base64 Log Analytics pracovní prostor sdílené klíče.
 
 ```bash
 wsid_data='11111111-abcd-1111-abcd-111111111111'
@@ -268,9 +268,9 @@ echo $wsid_data | base64 | tr -d '\n'
 echo $key_data | base64 | tr -d '\n'
 ```
 
-## <a name="create-the-secret-and-daemon-set"></a>Vytvořit sadu tajný klíč a démon
+## <a name="create-the-secret-and-daemon-set"></a>Vytvoření tajného kódu a démona
 
-Nasazení tajný souboru:
+Nasaďte soubor tajného kódu:
 
 ```bash
 oc create -f ocp-secret.yml
@@ -282,15 +282,15 @@ Nasazení sady démon agenta OMS:
 oc create -f ocp-omsagent.yml
 ```
 
-## <a name="configure-metrics-and-logging"></a>Konfigurace protokolování a metriky
+## <a name="configure-metrics-and-logging"></a>Konfigurace metrik a protokolování
 
-Šablony Azure Resource Manageru pro platformu kontejneru OpenShift poskytuje vstupní parametry pro povolení metrik a protokolování. Nabídku Marketplace platformy OpenShift kontejneru a šablony Resource Manageru OpenShift počátek nepodporují.
+Šablony Azure Resource Manageru pro OpenShift Container Platform obsahuje vstupní parametry pro zapnutí metrik a protokolování. OpenShift Container Platform Marketplace nabídku a šablony OpenShift Origin Resource Manageru nepodporují.
 
-Pokud jste použili šablony Resource Manageru OCP a metriky a protokolování nebyly povoleny v průběhu instalace nebo pokud jste použili nabídku OCP Marketplace, můžete být snadno povolte tyto ve skutečnosti. Pokud používáte šablony Resource Manageru OpenShift původu, některé předběžné pracovní není potřeba.
+Pokud jste použili šablony Resource Manageru OCP a metriky a protokolování nebyly povoleny v době instalace nebo pokud jste použili nabídky OCP Marketplace, lze snadno povolte tyto po jejich výskytu. Pokud používáte šablony OpenShift Origin Resource Manageru, některé předběžné práce je nutná.
 
-### <a name="openshift-origin-template-pre-work"></a>Předběžné pracovní šablony OpenShift původu
+### <a name="openshift-origin-template-pre-work"></a>Před pracovní šablony OpenShift Origin
 
-1. SSH na první hlavní uzel pomocí portu 2200.
+1. Připojte přes SSH k hlavnímu uzlu první pomocí portu 2200.
 
    Příklad:
 
@@ -298,7 +298,7 @@ Pokud jste použili šablony Resource Manageru OCP a metriky a protokolování n
    ssh -p 2200 clusteradmin@masterdnsixpdkehd3h.eastus.cloudapp.azure.com 
    ```
 
-2. Upravte soubor /etc/ansible/hosts a přidejte následující řádky po části zprostředkovatele Identity (# Povolit HTPasswdPasswordIdentityProvider):
+2. Upravte soubor /etc/ansible/hosts a přidejte následující řádky za část zprostředkovatele Identity (# Povolit HTPasswdPasswordIdentityProvider):
 
    ```yaml
    # Setup metrics
@@ -322,9 +322,9 @@ Pokud jste použili šablony Resource Manageru OCP a metriky a protokolování n
 
 3. Nahraďte řetězec použitý pro možnost openshift_master_default_subdomain ve stejném souboru /etc/ansible/hosts $ROUTING.
 
-### <a name="azure-cloud-provider-in-use"></a>Zprostředkovatel Azure Cloud používá
+### <a name="azure-cloud-provider-in-use"></a>Poskytovatel cloudu Azure používá
 
-První hlavní uzel (původ) nebo bastionu uzlu (OCP), SSH pomocí přihlašovacích údajů během nasazení zadána. Vydejte následující příkaz:
+První hlavní uzel (původní) nebo bastionu uzlů (OCP), SSH s použitím přihlašovacích údajů zadali při nasazení. Vydejte následující příkaz:
 
 ```bash
 ansible-playbook $HOME/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
@@ -336,9 +336,9 @@ ansible-playbook $HOME/openshift-ansible/playbooks/byo/openshift-cluster/openshi
 -e openshift_hosted_logging_storage_kind=dynamic
 ```
 
-### <a name="azure-cloud-provider-not-in-use"></a>Zprostředkovatel Azure Cloud není používán
+### <a name="azure-cloud-provider-not-in-use"></a>Nepoužíváte Azure poskytovatel cloudu
 
-První hlavní uzel (původ) nebo bastionu uzlu (OCP), SSH pomocí přihlašovacích údajů během nasazení zadána. Vydejte následující příkaz:
+První hlavní uzel (původní) nebo bastionu uzlů (OCP), SSH s použitím přihlašovacích údajů zadali při nasazení. Vydejte následující příkaz:
 
 ```bash
 ansible-playbook $HOME/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
@@ -350,5 +350,5 @@ ansible-playbook $HOME/openshift-ansible/playbooks/byo/openshift-cluster/openshi
 
 ## <a name="next-steps"></a>Další postup
 
-- [Začínáme s platformou OpenShift kontejneru](https://docs.openshift.com/container-platform/3.6/getting_started/index.html)
+- [Začínáme s OpenShift Container Platform](https://docs.openshift.com/container-platform/3.6/getting_started/index.html)
 - [Začínáme s OpenShiftem Origin](https://docs.openshift.org/latest/getting_started/index.html)

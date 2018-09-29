@@ -3,7 +3,7 @@ title: Rozšíření virtuálního počítače Azure Log Analytics pro Windows |
 description: Nasaďte agenta Log Analytics na virtuálním počítači Windows pomocí rozšíření virtuálního počítače.
 services: virtual-machines-windows
 documentationcenter: ''
-author: zroiy
+author: roiyz-msft
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: roiyz
-ms.openlocfilehash: 94e45462a676f6a03e838f63ad37dfbf68839eb4
-ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
+ms.openlocfilehash: 02fa19cad56f1a31ad60c597df1b004710cb5b50
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44325069"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452084"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Log Analytics rozšíření virtuálního počítače pro Windows
 

@@ -2,20 +2,22 @@
 title: Použití PHP k dotazování služby Azure SQL Database | Dokumentace Microsoftu
 description: Toto téma vám ukáže, jak pomocí PHP vytvořit program, který se připojí ke službě Azure SQL Database a bude ji dotazovat s použitím příkazů jazyka Transact-SQL.
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: mvc,develop apps
+ms.subservice: development
+ms.custom: ''
 ms.devlang: php
 ms.topic: quickstart
-ms.date: 04/01/2018
+author: CarlRabeler
 ms.author: carlrab
-ms.openlocfilehash: 19ffb1043317cf7e7ce4c00fd85d21274dab7c0a
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 2fc7b961df003fe05bc4ad4e49b9debb74c952fd
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055518"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063230"
 ---
 # <a name="use-php-to-query-an-azure-sql-database"></a>Použití PHP k dotazování databáze SQL Azure
 

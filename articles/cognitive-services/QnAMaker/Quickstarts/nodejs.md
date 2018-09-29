@@ -10,12 +10,12 @@ ms.technology: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: diberry
-ms.openlocfilehash: 45deea452b9afc5426e6318ae4f8e64f7dab5b63
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 05a15ddf8d7668896052c38afc549bc7b3cb056a
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47037071"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434326"
 ---
 # <a name="quickstart-for-microsoft-qna-maker-api-with-nodejs"></a>Rychlý start pro nástroj QnA Maker Microsoft API s využitím Node.js 
 <a name="HOLTop"></a>
@@ -109,7 +109,7 @@ let post = function (path, content, callback) {
         path : path,
         headers : {
             'Content-Type' : 'application/json',
-            'Content-Length' : content.length,
+            'Content-Length' : Buffer.byteLength(content),
             'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }
     };
@@ -308,7 +308,7 @@ let patch = function (path, content, callback) {
         path : path,
         headers : {
             'Content-Type' : 'application/json',
-            'Content-Length' : content.length,
+            'Content-Length' : Buffer.byteLength(content),
             'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }
     };
@@ -509,7 +509,7 @@ let post = function (path, content, callback) {
         path : path,
         headers : {
             'Content-Type' : 'application/json',
-            'Content-Length' : content.length,
+            'Content-Length' : Buffer.byteLength(content),
             'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }
     };
@@ -621,7 +621,7 @@ let put = function (path, content, callback) {
         path : path,
         headers : {
             'Content-Type' : 'application/json',
-            'Content-Length' : content.length,
+            'Content-Length' : Buffer.byteLength(content),
             'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }
     };
@@ -897,7 +897,7 @@ let post = function (path, content, callback) {
         path : path,
         headers : {
             'Content-Type' : 'application/json',
-            'Content-Length' : content.length,
+            'Content-Length' : Buffer.byteLength(content),
             'Authorization' : 'EndpointKey ' + endpoint_key,
         }
     };
@@ -1259,7 +1259,7 @@ let http_delete = function (path, content, callback) {
         path : path,
         headers : {
             'Content-Type' : 'application/json',
-            'Content-Length' : content.length,
+            'Content-Length' : Buffer.byteLength(content),
             'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }
     };
@@ -1472,7 +1472,7 @@ let patch = function (path, content, callback) {
         path : path,
         headers : {
             'Content-Type' : 'application/json',
-            'Content-Length' : content.length,
+            'Content-Length' : Buffer.byteLength(content),
             'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }
     };
@@ -1702,7 +1702,7 @@ let put = function (path, content, callback) {
         path : path,
         headers : {
             'Content-Type' : 'application/json',
-            'Content-Length' : content.length,
+            'Content-Length' : Buffer.byteLength(content),
             'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }
     };

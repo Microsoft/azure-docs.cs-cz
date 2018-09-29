@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 09/14/2018
+ms.date: 09/28/2018
 ms.author: sutalasi
-ms.openlocfilehash: 828e75a61b7f5d6d747b13069d25503b43b65222
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: d276098c951cb26a97906e6ac7e23c0ab2e4d137
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311931"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432575"
 ---
 # <a name="replicate-azure-disk-encryption-ade-enabled-virtual-machines-to-another-azure-region"></a>Azure disk encryption (ADE) povolena virtuální počítače replikovat do jiné oblasti Azure
 
@@ -122,6 +122,15 @@ Můžete upravit výchozí nastavení cíle používané pro Site Recovery.
 >Během počáteční replikace stavu může trvat nějakou dobu aktualizovat, aniž by průběh. Klikněte na tlačítko **aktualizovat** tlačítko, chcete-li získat nejnovější stav.
 >
 
-# <a name="next-steps"></a>Další postup
+## <a name="update-target-vm-encryption-settings"></a>Aktualizace nastavení šifrování cílového virtuálního počítače
+V následující scénáře, budete muset aktualizovat nastavení šifrování cílového virtuálního počítače.
+  - Povolená replikace služby Site recovery na virtuálním počítači a povolit Azure Disk Encryption (ADE) na zdrojovém virtuálním počítači později
+  - Povolena replikace služby Site recovery na virtuálním počítači a později změnit šifrovací klíč disku a/nebo šifrovací klíč klíče zdrojového virtuálního počítače
+
+Můžete použít [skript](#copy-ade-keys-to-dr-region-using-powerShell-script) zkopírujte šifrovací klíče do cílové oblasti a pak aktualizujte nastavení šifrování cíle v **-> trezor služby Recovery services se replikovaná položka -> Vlastnosti -> výpočty a síť.**
+
+![nastavení aktualizace ade](./media/azure-to-azure-how-to-enable-replication-ade-vms/update-ade-settings.png)
+
+## <a name="next-steps"></a>Další postup
 
 [Další informace](site-recovery-test-failover-to-azure.md) o spuštění testovací převzetí služeb při selhání.

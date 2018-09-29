@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: sngun
-ms.openlocfilehash: 63ea7e384f9bc5713a41f6c5537ec5548810e5d9
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: b5b3a96991a2150e553af01e3fda73e04116d7fb
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42058659"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452407"
 ---
 # <a name="power-bi-tutorial-for-azure-cosmos-db-visualize-data-using-the-power-bi-connector"></a>Power BI kurz pro Azure Cosmos DB: vizualizovat data pomocí konektoru Power BI
 [PowerBI.com](https://powerbi.microsoft.com/) je online služba, kde můžete vytvářet a sdílet řídicí panely a sestavy s daty, která je pro vás a vaši organizaci důležité.  Power BI Desktopu je vyhrazené sestava vývojového nástroje, který umožňuje načtení dat z různých zdrojů dat, sloučit a transformovat data, vytvářet výkonné sestavy a vizualizace a publikovat sestavy Power BI.  V nejnovější verzi Power BI Desktopu je můžete připojit ke svému účtu Azure Cosmos DB pomocí konektoru služby Azure Cosmos DB pro Power BI.   
@@ -34,7 +34,7 @@ Po dokončení tohoto kurzu Power BI, budete moci odpovědět na následující 
 > Konektor Power BI pro službu Azure Cosmos DB se připojuje k Power BI Desktopu pro extrakci a transformovat data. Sestavy vytvořené v Power BI Desktopu pak lze publikovat na webu PowerBI.com. Na webu PowerBI.com nelze provést extrakci s přímým přístupem a transformaci dat Azure Cosmos DB. 
 
 > [!NOTE]
-> Připojení ke službě Azure Cosmos DB pomocí konektoru Power BI je aktuálně podporované pro Azure Cosmos DB SQL a pouze účty rozhraní API MongoDB. Pro připojení k Power BI pomocí rozhraní MongoDB API služby Azure Cosmos DB, je nutné použít [ovladač ODBC MongoDB Simba](http://www.simba.com/drivers/mongodb-odbc-jdbc/).
+> Připojení ke službě Azure Cosmos DB pomocí konektoru Power BI je aktuálně podporované pro rozhraní SQL API služby Azure Cosmos DB a pouze účty rozhraní Gremlin API.
 
 ## <a name="prerequisites"></a>Požadavky
 Než budete postupovat podle pokynů v tomto kurzu Power BI, ujistěte se, že máte přístup k následujícím prostředkům:

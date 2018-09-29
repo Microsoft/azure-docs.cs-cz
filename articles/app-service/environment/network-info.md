@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
-ms.openlocfilehash: b9897fd0030c2b6efed0fefc47dd6720a61978cd
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 6d4f7fab0c36095d96cec0038a39744102e8972b
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165138"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433748"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Důležité informace o sítích pro službu App Service Environment #
 

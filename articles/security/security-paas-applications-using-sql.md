@@ -1,6 +1,6 @@
 ---
 title: Zabezpečení databáze PaaS v Azure | Dokumentace Microsoftu
-description: " Další informace o zabezpečení Azure SQL Database a SQL Data Warehouse osvědčené postupy pro zabezpečení vašich webových a mobilních aplikací PaaS. "
+description: 'Další informace o zabezpečení Azure SQL Database a SQL Data Warehouse osvědčené postupy pro zabezpečení vašich webových a mobilních aplikací PaaS. '
 services: security
 documentationcenter: na
 author: techlake
@@ -12,30 +12,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 09/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 00b2b249f5889888f34d57fd1577ccfea776d00c
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 72d5ec09becc1f1d9e23e284e18bcc037ccb3072
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347966"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452475"
 ---
-# <a name="securing-paas-databases-in-azure"></a>Zabezpečení databáze PaaS v Azure
+# <a name="best-practices-for-securing-paas-databases-in-azure"></a>Osvědčené postupy pro zabezpečení databáze PaaS v Azure
 
-V tomto článku se podíváme na kolekci [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) a [SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/) osvědčené postupy zabezpečení pro zabezpečení vašich webových a mobilních aplikací PaaS. Tyto osvědčené postupy jsou odvozeny z našich zkušenostech s Azure a prostředí zákazníků, jako sami.
+V tomto článku se podíváme na kolekci [Azure SQL Database](../sql-database/sql-database-technical-overview.md) a [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) osvědčené postupy zabezpečení pro zabezpečení platform-as-a-service (PaaS), webových a mobilních aplikací. Tyto osvědčené postupy jsou odvozeny z našich zkušenostech s Azure a prostředí zákazníků, jako sami.
 
-## <a name="azure-sql-database-and-sql-data-warehouse"></a>Azure SQL Database a SQL Data Warehouse
-[Azure SQL Database](../sql-database/sql-database-technical-overview.md) a [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) poskytuje relační databázovou službu pro aplikace založené na Internetu. Podívejme se na služby, které pomáhají chránit vaše aplikace a data při použití Azure SQL Database a SQL Data Warehouse v PaaS nasazení:
+Azure SQL Database a SQL Data Warehouse poskytuje relační databázovou službu pro aplikace založené na Internetu. Podívejme se na služby, které pomáhají chránit vaše aplikace a data při použití Azure SQL Database a SQL Data Warehouse v PaaS nasazení:
 
 - Ověřování pomocí Azure Active Directory (místo ověřování systému SQL Server)
 - Brána firewall služby Azure SQL
 - Transparentní šifrování dat (TDE)
 
-## <a name="best-practices"></a>Osvědčené postupy
-
-### <a name="use-a-centralized-identity-repository-for-authentication-and-authorization"></a>Použití úložiště centralizovaných identit pro ověřování a autorizace
-
+## <a name="use-a-centralized-identity-repository"></a>Použít centralizované identity úložiště
 Azure SQL Database můžete nakonfigurovat použít jeden ze dvou typů ověřování:
 
 - **Ověřování SQL** používá uživatelské jméno a heslo. Když jste vytvářeli logický server databáze, zadali jste uživatelské jméno a heslo účtu „server admin“. Pomocí těchto přihlašovacích údajů, můžete ověřovat k jakékoli databázi na daném serveru jako vlastník databáze.
@@ -44,42 +40,41 @@ Azure SQL Database můžete nakonfigurovat použít jeden ze dvou typů ověřov
 
 [Ověřování pomocí Azure Active Directory](../active-directory/develop/authentication-scenarios.md) virtuálních sítí je mechanismus připojení k Azure SQL Database a SQL Data Warehouse s využitím identit v Azure Active Directory (AD). Azure AD poskytuje alternativu k ověřování serveru SQL Server, můžete zastavit růst počtu identit uživatelů více databázových serverů. Ověřování Azure AD umožňuje centrálně spravovat identity uživatelů databáze a další služby Microsoftu v jednom centrálním místě. Centrální správa ID zajišťuje centrální místo pro správu uživatelů databáze a zjednodušuje správu oprávnění.  
 
-Výhody používání ověřování Azure AD namísto ověřování SQL patří:
-
+### <a name="benefits-of-using-azure-ad-instead-of-sql-authentication"></a>Výhody používání služby Azure AD namísto ověřování SQL
 - Umožňuje rotace hesla na jednom místě.
 - Spravuje oprávnění k databázi pomocí Azure externí skupiny AD.
 - Eliminuje ukládat tím, že integrované ověřování Windows a další formy ověřování podporovaných službou Azure AD.
 - Uživatelé databáze k ověření identity na úrovni databáze s omezením použití.
 - Podporuje ověřování založené na tokenech pro aplikace, připojení k SQL Database.
-- Podporuje místní služby Azure AD bez synchronizace domény služby AD FS (federation domény) nebo ověřování nativní uživatele a hesla.
-- Podporuje připojení z SQL Server Management Studio, které pomocí univerzálního ověřování Active Directory, která zahrnuje [Multi-Factor Authentication (MFA)](../active-directory/authentication/multi-factor-authentication.md). Vícefaktorové ověřování zahrnuje silné ověřování s řadou jednoduchých možností – telefonní hovor, textová zpráva, čipové karty s PIN kódu nebo oznámení přes mobilní aplikaci. Další informace najdete v tématu [podpora nástroje SSMS pro ověřování Azure AD MFA s SQL Database a SQL Data Warehouse](../sql-database/sql-database-ssms-mfa-authentication.md).
+- Podporuje federaci domény s Active Directory Federation Services (ADFS) nebo ověřování nativní uživatele a hesla pro místní služby Azure AD bez synchronizace domény.
+- Podporuje připojení z SQL Server Management Studio, které pomocí univerzálního ověřování Active Directory, která zahrnuje [Multi-Factor Authentication (MFA)](../active-directory/authentication/multi-factor-authentication.md). Vícefaktorové ověřování zahrnuje silné ověřování s řadou jednoduchých možností – telefonní hovor, textová zpráva, čipové karty s PIN kódu nebo oznámení přes mobilní aplikaci. Další informace najdete v tématu [univerzální ověřování pomocí SQL Database a SQL Data Warehouse](../sql-database/sql-database-ssms-mfa-authentication.md).
 
 Další informace o ověřování Azure AD, najdete v tématech:
 
-- [Připojení k SQL Database nebo SQL Data Warehouse pomocí ověřování Azure Active Directory](../sql-database/sql-database-aad-authentication.md)
+- [Pomocí ověřování Azure Active Directory pro ověřování pomocí SQL Database, mi nebo SQL Data Warehouse](../sql-database/sql-database-aad-authentication.md)
 - [Ověřování do Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-authentication.md)
-- [Podpora ověřování na základě token pro službu Azure SQL DB pomocí ověřování Azure AD](https://blogs.msdn.microsoft.com/sqlsecurity/2016/02/09/token-based-authentication-support-for-azure-sql-db-using-azure-ad-auth/)
+- [Podpora ověřování na základě token pro službu Azure SQL DB pomocí ověřování Azure AD](../sql-database/sql-database-aad-authentication.md)
 
 > [!NOTE]
-> Ujistěte se, že Azure Active Directory je vhodné pro vaše prostředí, najdete v článku [funkcí Azure AD a omezení](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations), konkrétně další aspekty.
+> Ujistěte se, že Azure Active Directory je vhodné pro vaše prostředí, najdete v článku [funkcí Azure AD a omezení](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations).
 >
 >
 
-### <a name="restrict-access-based-on-ip-address"></a>Omezení přístupu na základě IP adresy
+## <a name="restrict-access-based-on-ip-address"></a>Omezení přístupu na základě IP adresy
 Můžete vytvořit pravidla brány firewall určující rozsahy přípustných IP adres. Tato pravidla lze zacílit na úrovni serveru a databáze. Doporučujeme používat pravidla brány firewall na úrovni databáze kdykoli je to možné, pro zvýšení zabezpečení a přenositelnosti databáze. Pravidla brány firewall na úrovni serveru jsou nejvhodnější pro správce a pokud máte mnoho databází se stejnými požadavky na přístup, ale nechcete ztrácet čas konfigurací jednotlivých databází.
 
-Omezení IP adres v databázi SQL výchozí zdroj povolit přístup z jakékoli Azure adresy (včetně jiných předplatných a tenantů). Můžete omezit tím povolíte jenom IP adres pro přístup k instanci. I přes brány SQL firewall a omezení podle IP adresy je stále potřeba silné ověřování. Zobrazte doporučení výše v tomto článku.
+Omezení IP adres v databázi SQL výchozí zdroj povolit přístup z jakékoli Azure adresy, včetně dalších předplatných a tenantů. Můžete omezit tím povolíte jenom IP adres pro přístup k instanci. I přes brány SQL firewall a omezení podle IP adresy je stále potřeba silné ověřování. Zobrazte doporučení výše v tomto článku.
 
 Další informace o omezení brány Firewall SQL Azure a IP, naleznete v tématu:
 
-- [Řízení přístupu služby Azure SQL Database](../sql-database/sql-database-control-access.md)
-- [Konfigurace pravidel brány firewall Azure SQL Database – přehled](../sql-database/sql-database-firewall-configure.md)
-- [Konfigurace pravidla brány firewall na úrovni serveru Azure SQL Database pomocí webu Azure portal](../sql-database/sql-database-configure-firewall-settings.md)
+- [Řízení přístupu k Azure SQL Database a SQL Data Warehouse](../sql-database/sql-database-control-access.md)
+- [Azure SQL Database a SQL Data Warehouse pravidla brány firewall](../sql-database/sql-database-firewall-configure.md)
 
-### <a name="encryption-of-data-at-rest"></a>Šifrování neaktivních uložených dat
-[Transparentní šifrování dat (TDE)](https://msdn.microsoft.com/library/azure/bb934049) je ve výchozím nastavení povolené. Transparentní šifrování dat transparentně šifruje systému SQL Server, Azure SQL Database a Azure SQL Data Warehouse dat a souborů protokolu. Transparentní šifrování dat chrání proti ohrožení zabezpečení přímý přístup k souborům a jejich zálohování. To umožňuje šifrování neaktivních uložených dat bez změny konfigurace existujících aplikací. Transparentní šifrování dat by mělo zůstat vždy povolena, to ale nezpůsobí ukončení útočník pomocí cesty normální přístup. Transparentní šifrování dat umožňuje v souladu s mnoha zákonům, předpisům a pokyny uvedenými v různých oborech.
 
-Azure SQL pro transparentní šifrování dat spravuje klíče související problémy. Jak se TDE, místní speciální musí být dbát na možnosti obnovení a při přesunu databází. Ve složitějších scénářích klíče můžete explicitně spravovat ve službě Azure Key Vault pomocí rozšiřitelná Správa klíčů (viz [povolení šifrování TDE u SQL serveru pomocí EKM](/sql/relational-databases/security/encryption/enable-tde-on-sql-server-using-ekm)). Také díky tomu pro používání Your Own Key (BYOK) přes funkci BYOK služby Azure Key trezory.
+## <a name="encrypt-data-at-rest"></a>Šifrování neaktivních uložených dat
+[Transparentní šifrování dat (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) je ve výchozím nastavení povolené. Transparentní šifrování dat transparentně šifruje systému SQL Server, Azure SQL Database a Azure SQL Data Warehouse dat a souborů protokolu. Transparentní šifrování dat chrání proti ohrožení zabezpečení přímý přístup k souborům a jejich zálohování. To umožňuje šifrování neaktivních uložených dat bez změny konfigurace existujících aplikací. Transparentní šifrování dat by mělo zůstat vždy povolena, to ale nezpůsobí ukončení útočník pomocí cesty normální přístup. Transparentní šifrování dat umožňuje v souladu s mnoha zákonům, předpisům a pokyny uvedenými v různých oborech.
+
+Azure SQL pro transparentní šifrování dat spravuje klíče související problémy. Jak se TDE, místní speciální musí být dbát na možnosti obnovení a při přesunu databází. Ve složitějších scénářích klíče je možné explicitně spravovat ve službě Azure Key Vault prostřednictvím rozšiřitelná Správa klíčů. Zobrazit [povolit transparentní šifrování dat na SQL serveru pomocí EKM](/sql/relational-databases/security/encryption/enable-tde-on-sql-server-using-ekm). Také díky tomu pro používání Your Own Key (BYOK) přes funkci BYOK služby Azure Key trezory.
 
 Azure SQL, zajišťuje šifrování pro sloupce prostřednictvím [s funkcí Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine). To umožňuje jenom autorizované aplikace přístup k citlivým sloupce. Pomocí tohoto typu šifrování omezuje dotazy SQL pro šifrované sloupce na základě rovnosti hodnot.
 

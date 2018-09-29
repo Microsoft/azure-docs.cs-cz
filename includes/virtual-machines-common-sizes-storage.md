@@ -8,18 +8,21 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: e8d12320eea1d0fa2dad7fffb8d29ae8b53cee14
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 961f82cd4970abfdd11a30b2847a14f8ff1880b0
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44369439"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47454410"
 ---
 Úložiště optimalizované velikosti virtuálních počítačů nabízejí Vysoká propustnost disku a vstupně-výstupní operace a jsou ideální pro velké objemy dat, SQL a NoSQL databáze. Tento článek obsahuje informace o počtu virtuálních procesorů, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro jednotlivé velikosti v této skupině. 
 
 Řada Ls-series nabízí až 32 virtuálních procesorů a využívá [řadu procesorů Intel® Xeon® E5 v3](http://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html). Řada Ls-series má stejný výkon procesoru jako řady G/GS-series a 8 GiB paměti na virtuální procesor.  Virtuální počítače řady ls-series jsou ideální pro aplikace vyžadující nízkou latenci, vysokou propustnost a velké místní úložiště na disku. 
 
 Vzorové případy použití zahrnují databáze NoSQL, jako jsou Cassandra, MongoDB, Cloudera a Redis, datových skladů a velké transakční databáze.
+
+> [!NOTE]
+> Řada Ls-series je optimalizována pro použití dočasného disku připojené k virtuálnímu počítači počítače nikoli použitím trvalých datových disků. Vysoká propustnost a IOPS dočasný disk je řada Ls-series ideální pro úložišť typu NoSQL, jako je například Apache Cassandra a MongoDB, které replikujte data napříč několika virtuálních počítačů k přetrvávání v případě selhání jednoho virtuálního počítače. Řada Ls-series nepodporuje vytváření z místní mezipaměti a zvyšuje dosažitelné vstupně-výstupních operací trvalých datových disků.
 
 ## <a name="ls-series"></a>Řada Ls
 

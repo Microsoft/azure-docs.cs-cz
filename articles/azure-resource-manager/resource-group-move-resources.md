@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: tomfitz
-ms.openlocfilehash: cf7d3df6d2e419a700b0be74da3fe2edc5ac24e1
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 33d5560f2bfef04678cf7a2236fd920385d68aac
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393277"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452152"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -196,6 +196,7 @@ Následující seznam obsahuje obecný přehled služby Azure, které lze přesu
 * DNS
 * Event Grid
 * Event Hubs
+* Přední dveře
 * Clustery HDInsight – viz [omezení HDInsight](#hdinsight-limitations)
 * Iot Central
 * IoT Huby
@@ -207,7 +208,6 @@ Následující seznam obsahuje obecný přehled služby Azure, které lze přesu
 * Managed Disks – viz [omezení virtuálních počítačů pro omezení](#virtual-machines-limitations)
 * Spravovaná identita - přiřazená uživatelem
 * Media Services
-* Mobile Engagement
 * Notification Hubs
 * Operational Insights
 * Správa operací
@@ -267,37 +267,39 @@ Následující seznam obsahuje obecný přehled služby Azure, které nelze pře
 
 ## <a name="virtual-machines-limitations"></a>Omezení virtuálních počítačů
 
-Spravované disky se podporují pro přesunutí od 24. září 2018. Budete muset zaregistrovat tuto funkci povolil.
+Spravované disky se podporují pro přesunutí od 24. září 2018. 
 
-```azurepowershell-interactive
-Register-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute
-```
+1. Budete muset zaregistrovat tuto funkci povolil.
 
-```azurecli-interactive
-az feature register --namespace Microsoft.Compute --name ManagedResourcesMove
-```
+  ```azurepowershell-interactive
+  Register-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute
+  ```
 
-Žádost o registraci zpočátku vrátí stav `Registering`. Můžete zkontrolovat aktuální stav pomocí:
+  ```azurecli-interactive
+  az feature register --namespace Microsoft.Compute --name ManagedResourcesMove
+  ```
 
-```azurepowershell-interactive
-Get-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute
-```
+1. Žádost o registraci zpočátku vrátí stav `Registering`. Můžete zkontrolovat aktuální stav pomocí:
 
-```azurecli-interactive
-az feature show --namespace Microsoft.Compute --name ManagedResourcesMove
-```
+  ```azurepowershell-interactive
+  Get-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute
+  ```
 
-Počkejte několik minut, než se stav změní na `Registered`.
+  ```azurecli-interactive
+  az feature show --namespace Microsoft.Compute --name ManagedResourcesMove
+  ```
 
-Po registraci funkci registrace `Microsoft.Compute` poskytovatele prostředků. Tento krok proveďte i v případě poskytovatele prostředků byl dříve zaregistrován.
+1. Počkejte několik minut, než se stav změní na `Registered`.
 
-```azurepowershell-interactive
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
-```
+1. Po registraci funkci registrace `Microsoft.Compute` poskytovatele prostředků. Tento krok proveďte i v případě poskytovatele prostředků byl dříve zaregistrován.
 
-```azurecli-interactive
-az provider register --namespace Microsoft.Compute
-```
+  ```azurepowershell-interactive
+  Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
+  ```
+
+  ```azurecli-interactive
+  az provider register --namespace Microsoft.Compute
+  ```
 
 Tato podpora znamená, že můžete také přesunout:
 

@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 03/09/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8ba241ccfdaed8694d3dfb9513e56975e39cdb1c
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: b7de476c6b96856e9b783ed8182985846bb39cfa
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395776"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452390"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK pro rozhraní SQL API: Stáhněte si a poznámky k verzi
 > [!div class="op_single_selector"]
@@ -50,6 +50,10 @@ ms.locfileid: "47395776"
 </table></br>
 
 ## <a name="release-notes"></a>Poznámky k verzi
+### <a name="a-name211211"></a><a name="2.1.1"/>2.1.1
+
+* Přidat další odolnost vůči přechodným selháním žádosti více oblastí.
+
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 
 * Přidání více oblastí zápisu podpory.
@@ -323,6 +327,7 @@ Služba odmítne všechny žádosti do služby Azure Cosmos DB pomocí vyřazeno
 
 | Verze | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
+| [2.1.1](#2.1.1) |27. září 2018 |--- |
 | [2.1.0](#2.1.0) |21. září 2018 |--- |
 | [2.0.0](#2.0.0) |07. září 2018 |--- |
 | [1.22.0](#1.22.0) |19. dubna 2018 |--- |

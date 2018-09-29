@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: e22d26850114162c6dbd38797071120d388ac6b0
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 379dd0efb0c40cbab6e356f011938d3e6116117e
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162266"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434190"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Jak vytvořit a nakonfigurovat modul Integration Runtime
 Integration Runtime (IR) je výpočetní infrastruktura, službou Azure Data Factory používá k poskytování možnosti integrace dat v různých síťových prostředích. Podrobnosti o prostředí IR najdete v tématu [přehled modulu Runtime integrace](concepts-integration-runtime.md).
@@ -32,7 +32,7 @@ Toto téma představuje, jak můžete vytvořit a nakonfigurovat místním IR.
     ```powershell
     Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
     ```
-2. Stáhněte a nainstalujte místní prostředí integration runtime (v místním počítači).
+2. [Stáhněte si](https://www.microsoft.com/download/details.aspx?id=39717) a nainstalovat místní prostředí integration runtime (v místním počítači).
 3. Načíst ověřovací klíč a registrace místního prostředí integration runtime s klíčem. Tady je příklad Powershellu:
 
     ```powershell
@@ -95,7 +95,7 @@ Místní prostředí integration runtime může být instalován stahování bal
 9. Získání klíče ověřování pomocí Azure Powershellu. Příklad Powershellu pro načtení ověřovací klíč:
 
     ```powershell
-    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime
+    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime
     ```
 11. Na **registrace prostředí Integration Runtime (v místním prostředí)** stránky Microsoft Integration Runtime Configuration Manageru spuštěn v počítači, proveďte následující kroky:
     1. Vložit **ověřovací klíč** v části textu.

@@ -1,6 +1,6 @@
 ---
-title: Koncové body vyhledávání zprávy Bing | Microsoft Docs
-description: Shrnutí koncový bod rozhraní API vyhledávání zprávy.
+title: Hledat koncové body zprávy Bing | Dokumentace Microsoftu
+description: Přehled koncového bodu rozhraní API hledání zpráv.
 services: cognitive-services
 author: mikedodaro
 manager: rosh
@@ -9,39 +9,39 @@ ms.component: bing-news-search
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: v-gedod
-ms.openlocfilehash: b8ae99698926a818bf22b0b4027af8610413aaa6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ab892e947566adf025499382b213a52ed3e96e35
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342407"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433680"
 ---
-# <a name="news-search-endpoints"></a>Koncové body vyhledávání zprávy
-**Rozhraní API pro vyhledávání zprávy** vrátí zprávy články, webové stránky, obrázky, videa, a [entity](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web). Entity obsahovat souhrnné informace o osoby, místní nebo téma. 
+# <a name="news-search-endpoints"></a>Koncové body vyhledávání zpráv
+**Rozhraní API pro vyhledávání zpráv** vrátí články, webových stránek, obrázků, videa, zprávy a [entity](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web). Entity obsahují souhrnné informace o osobě, místě nebo téma.
 ## <a name="endpoints"></a>Koncové body
-Chcete-li získat výsledky hledání zprávy pomocí rozhraní API služby Bing, odešlete `GET` požadavek na jednu z následujících koncových bodů. Specifikace definovat další hlaviček a parametrů adresy URL.
+Chcete-li získat výsledky hledání zpráv pomocí rozhraní API Bingu pro odesílání `GET` požadavek na jednu z následujících koncových bodů. Specifikace definovat další hlaviček a parametrů adresy URL.
 
-**Koncový bod 1:** vrátí položky zpráv podle uživatele vyhledávací dotaz. Pokud vyhledávací dotaz je prázdný, vrátí volání nejvyšší články. Dotaz `?q=""` možnost lze použít také s `/news` adresy URL. Dostupnost, najdete v části [podporovaných zemích a trhů](supported-countries-markets.md#supported-markets-for-news-search-endpoint).
+**Koncový bod 1:** příspěvků podle uživatele vyhledávací dotaz vrátí. Pokud vyhledávacímu dotazu je prázdný, vrátí volání hlavní vybrané články. Dotaz `?q=""` možnost můžete použít také s `/news` adresy URL. Dostupnost, naleznete v tématu [podporované země a trhy](language-support.md#supported-markets-for-news-search-endpoint).
 ```
-GET https://api.cognitive.microsoft.com/bing/v7.0/news/search 
-``` 
+GET https://api.cognitive.microsoft.com/bing/v7.0/news/search
+```
 
-**Koncový bod 2:** vrátí nejnovější položky podle kategorie. Můžete konkrétně vyžádat hlavní obchodní, sportu nebo Zábava článků pomocí `category=business`, `category=sports`, nebo `category=entertainment`.  `category` Parametr lze použít pouze s `/news` adresy URL. Existují některé formální požadavky pro zadání kategorií; odkazovat na `category` v [parametr dotazu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query-parameters) dokumentaci. Dostupnost, najdete v části [podporovaných zemích a trhů](supported-countries-markets.md#supported-markets-for-news-endpoint). 
+**Koncový bod 2:** vrátí hlavní příspěvky podle kategorie. Konkrétně žádosti špičková obchodní, sportu nebo Zábava článků pomocí `category=business`, `category=sports`, nebo `category=entertainment`.  `category` Parametr jde použít jenom s `/news` adresy URL. Existují některé formální požadavky pro určení kategorií; odkazovat na `category` v [parametr dotazu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query-parameters) dokumentaci. Dostupnost, naleznete v tématu [podporované země a trhy](language-support.md#supported-markets-for-news-endpoint).
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/news  
 ```
 
-**Koncový bod 3:** témata vrátí zprávy, které jsou aktuálně trendů v sociálních sítích. Když `/trendingtopics` je zadán parametr, Bing vyhledávání ignoruje několik dalších parametrů, jako například `freshness` a `?q=""`. Dostupnost, najdete v části [podporovaných zemích a trhů](supported-countries-markets.md#supported-markets-for-news-trending-endpoint).
+**Koncový bod 3:** vrátí témata zpráv, které jsou aktuálně trendů v sociálních sítích. Když `/trendingtopics` je zadán parametr, vyhledávání Bingu ignoruje několik dalších parametrů, jako například `freshness` a `?q=""`. Dostupnost, naleznete v tématu [podporované země a trhy](language-support.md#supported-markets-for-news-trending-endpoint).
 ```
-GET https://api.cognitive.microsoft.com/bing/v7.0/news/trendingtopics 
-``` 
+GET https://api.cognitive.microsoft.com/bing/v7.0/news/trendingtopics
+```
 
-Podrobnosti o hlavičky, parametry, trhu kódy, objekty odpovědi, chyb atd., najdete [vyhledávání zprávy Bing v7 rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) odkaz.
+Podrobnosti o záhlaví, parametry, kódy na trhu, objekty odpovědi, chyby dále, viz [vyhledávání zpráv Bingu, rozhraní API v7 nabízí](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) odkaz.
 ## <a name="response-json"></a>Odpověď JSON
-Odpověď na žádost o vyhledávání zprávy zahrne výsledky jako objekty JSON. Analýza výsledků vyžaduje postupy, které zpracovávají elementy každého typu. Najdete v článku [kurzu](https://docs.microsoft.com/azure/cognitive-services/bing-news-search/tutorial-bing-news-search-single-page-app) a [zdrojový kód](https://docs.microsoft.com/azure/cognitive-services/bing-news-search/tutorial-bing-news-search-single-page-app-source) příklady.
+Odpověď na žádost o vyhledávání zpráv obsahuje výsledky jako objekty JSON. Parsování výsledků vyžaduje postupy, které zpracovávají prvky každého typu. Zobrazit [kurzu](https://docs.microsoft.com/azure/cognitive-services/bing-news-search/tutorial-bing-news-search-single-page-app) a [zdrojový kód](https://docs.microsoft.com/azure/cognitive-services/bing-news-search/tutorial-bing-news-search-single-page-app-source) příklady.
 
 ## <a name="next-steps"></a>Další postup
-**Bing** rozhraní API pro podporu vyhledávání akcí, které vracejí výsledky podle jejich typu. Všechny koncové body vyhledávání vrátí výsledky jako objekty JSON odpovědi.  Všechny koncové body podporu dotazů, které vracejí konkrétní jazyk nebo umístění zeměpisné délky, zeměpisnou šířku a hledání radius.
+**Bingu** rozhraní API podporují akce hledání, které vracejí výsledky podle jejich typu. Všechny koncové body hledání vrátí výsledky jako objekty JSON odpovědi.  Všechny koncové body podporují dotazy využívající vrátit konkrétní jazyk a/nebo umístění longitude, latitude a vyhledávání protokolu radius.
 
-Úplné informace o parametrech nepodporuje každý koncový bod najdete na stránkách odkaz pro každý typ.
-Příklady základní požadavků pomocí vyhledávání zprávy rozhraní API najdete v tématu [vyhledávání zprávy Bing rychlé spustí](https://docs.microsoft.com/azure/cognitive-services/bing-news-search).
+Podrobnější informace o parametrech podporuje každý koncový bod najdete v referenčních stránkách pro jednotlivé typy.
+Příklady základní požadavky pomocí rozhraní API pro vyhledávání zpráv, najdete v článku [rychlé zprovoznění Bingu pro vyhledávání zpráv](https://docs.microsoft.com/azure/cognitive-services/bing-news-search).

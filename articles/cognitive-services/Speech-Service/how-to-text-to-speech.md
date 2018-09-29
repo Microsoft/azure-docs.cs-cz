@@ -9,18 +9,18 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 09/08/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 776b8496ea3f46287e2eeec7c150b8d60ca3e553
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5822c313cf0fb5848726cf85c46cda2a3a408264
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964100"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434615"
 ---
 # <a name="use-text-to-speech-in-speech-service"></a>Použití "Převod textu na řeč" v Speech service
 
 Speech service poskytuje funkce pro převod textu na řeč prostřednictvím jednoduché požadavku HTTP. Můžete `POST` text, který se budou na příslušný koncový bod, a vrátí zvukový soubor (`.wav`) obsahující syntetizovat řeči. Aplikace může potom použít zvuková jako vlastní stavový objekt.
 
-Text příspěvku požadavku pro převod textu na řeč, může být prostý text (ASCII nebo UTF8) nebo [SSML](speech-synthesis-markup.md) dokumentu. Prostého textu žádosti se používá s hlasem výchozí. Ve většině případů budete chtít používat SSML text. Musí zahrnovat požadavek HTTP [autorizace](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#authentication) token. 
+Text příspěvku požadavku pro převod textu na řeč, může být prostý text (ASCII nebo UTF8) nebo [SSML](speech-synthesis-markup.md) dokumentu. Prostého textu žádosti se používá s hlasem výchozí. Ve většině případů budete chtít používat SSML text. Musí zahrnovat požadavek HTTP [autorizace](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#authentication) token.
 
 Koncové body regionální převod textu na řeč se tady zobrazí. Použijte mechanismem vhodným pro vaše předplatné.
 
@@ -38,11 +38,11 @@ Pokud chcete nastavit hlas, použijte `<voice>` [SSML](speech-synthesis-markup.m
 </speak>
 ```
 
-Zobrazit [převod textu na řeč hlasy](supported-languages.md#text-to-speech) seznam dostupných hlasů a jejich názvy.
+Zobrazit [převod textu na řeč hlasy](language-support.md#text-to-speech) seznam dostupných hlasů a jejich názvy.
 
 ## <a name="make-a-request"></a>Vytvoření požadavku
 
-Žádost o převod textu na řeč HTTP se provádí v režimu POST s textem, budou v textu požadavku. Maximální délka obsahu žádosti HTTP je 1024 znaků. Žádost musí mít následující hlavičky: 
+Žádost o převod textu na řeč HTTP se provádí v režimu POST s textem, budou v textu požadavku. Maximální délka obsahu žádosti HTTP je 1024 znaků. Žádost musí mít následující hlavičky:
 
 Záhlaví|Hodnoty|Komentáře
 -|-|-

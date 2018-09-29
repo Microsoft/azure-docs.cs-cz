@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: 4af2e570b498e496e80b6aeee2b8aeae23c582cc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e5b44ed2435986ffd500cade1f7c8ff8047d353d
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952405"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452294"
 ---
 # <a name="select-and-use-a-compute-target-to-train-your-model"></a>Vyberte a použijte cílové výpočetní prostředí k natrénování modelu
 
@@ -23,7 +23,7 @@ Se službou Azure Machine Learning můžete trénování modelu v několika růz
 
 Cílové výpočetní prostředí je prostředek, který spouští cvičný skript nebo hostitele vašeho modelu při nasazení jako webové služby. Jsou možné vytvářet a spravovat pomocí Azure Machine Learning SDK nebo rozhraní příkazového řádku. Pokud máte cílových výpočetních prostředí, které byly vytvořeny jiným procesem (například webu Azure portal nebo rozhraní příkazového řádku Azure), můžete jejich připojením k pracovnímu prostoru Azure Machine Learning service.
 
-Můžete začít s místní spuštění na vašem počítači a potom škálování i horizontální navyšování kapacity do jiných prostředí, jako je virtuálním počítačům pro datové vědy s GPU nebo Azure Batch AI. 
+Můžete začít s místní spuštění v počítači a potom vertikálně nebo do jiných prostředí, jako je virtuálním počítačům pro datové vědy s GPU nebo Azure Batch AI. 
 
 ## <a name="supported-compute-targets"></a>Cílových podporovaných výpočetních prostředí
 
@@ -90,6 +90,8 @@ run_config_user_managed.environment.python.user_managed_dependencies = True
 # You can choose a specific Python environment by pointing to a Python path 
 #run_config.environment.python.interpreter_path = '/home/ninghai/miniconda3/envs/sdk2/bin/python'
 ```
+
+Poznámkový blok Jupyter, který ukazuje školení v prostředí spravovaného uživatele, najdete v části [ https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/02.train-on-local.ipynb ](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/02.train-on-local.ipynb).
   
 ### <a name="system-managed-environment"></a>Systém spravované prostředí
 
@@ -110,6 +112,9 @@ run_config_system_managed.prepare_environment = True
 
 run_config_system_managed.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['scikit-learn'])
 ```
+
+Poznámkový blok Jupyter, který ukazuje školení v systému spravovat prostředí, najdete v části [ https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/02.train-on-local.ipynb ](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/02.train-on-local.ipynb).
+
 ## <a id="dsvm"></a>Virtuální počítač pro datové vědy
 
 Místní počítač nemusí mít výpočetní prostředky ani prostředky GPU prostředků potřebných pro trénování modelu. V takovém případě můžete vertikálně navýšit kapacitu nebo horizontální navýšení kapacity procesu trénování, tak, že přidáte další výpočetní cíle jako je například na Data virtuálních počítačů VĚDY.
@@ -190,6 +195,8 @@ Následující kroky konfigurace Data virtuálního počítače VĚDY jako cíl 
     dsvm_compute.delete()
     ```
 
+Poznámkový blok Jupyter, který ukazuje, školení na virtuální počítač pro datové vědy, naleznete v tématu [ https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/04.train-on-remote-vm/04.train-on-remote-vm.ipynb ](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/04.train-on-remote-vm/04.train-on-remote-vm.ipynb).
+
 ## <a id="batch"></a>Azure Batch AI
 
 Pokud trvá dlouhou dobu k natrénování modelu, můžete distribuovat napříč clusterem výpočetní prostředky v cloudu se školení Azure Batch AI. Batch AI může také potřeba povolit prostředek GPU.
@@ -232,14 +239,14 @@ if not found:
     print(compute_target.status.serialize())
 ```
 
-Připojit existující cluster Batch AI jako cílové výpočetní prostředí, je nutné zadat id prostředku Azure. Chcete-li získat id prostředku na webu Azure Portal, budete muset:
+Připojit existující cluster Batch AI jako cílové výpočetní prostředí, je nutné zadat ID prostředku Azure. Chcete-li získat ID prostředku na webu Azure Portal, postupujte následovně:
 1. Vyhledejte `Batch AI` služby pod **všechny služby**
 1. Klikněte na název pracovního prostoru, do které cluster patří
 1. Vyberte cluster
 1. Klikněte na **vlastnosti**
-1. Kopírovat **Id**
+1. Kopírovat **ID**
 
-Následující příklad používá sadu SDK připojit cluster do pracovního prostoru. V tomto příkladu nahraďte `<name>` s názvem pro výpočetní prostředky. To nemusí odpovídat názvu clusteru. Nahraďte `<resource-id>` s id prostředku Azure, které jsou podrobně popsané výše:
+Následující příklad používá sadu SDK připojit cluster do pracovního prostoru. V tomto příkladu nahraďte `<name>` s názvem pro výpočetní prostředky. Název nemusí odpovídat názvu clusteru. Nahraďte `<resource-id>` s prostředky Azure ID výše popsané:
 
 ```python
 from azureml.core.compute import BatchAiCompute
@@ -253,7 +260,9 @@ Můžete také zkontrolovat clusteru a úlohy stavu služby Batch AI pomocí ná
 - Kontrola stavu clusteru. Můžete zobrazit, kolik uzly jsou spuštěné s použitím `az batchai cluster list`.
 - Zkontrolujte stav úlohy. Můžete zobrazit, kolik úlohy běží s použitím `az batchai job list`.
 
-Trvá přibližně 5 minut a vytvořte cluster Batch AI
+Vytvořte cluster Batch AI trvá přibližně 5 minut.
+
+Poznámkový blok Jupyter, který ukazuje školení v clusteru Batch AI, naleznete v tématu [ https://github.com/Azure/MachineLearningNotebooks/blob/master/training/03.train-hyperparameter-tune-deploy-with-tensorflow/03.train-hyperparameter-tune-deploy-with-tensorflow.ipynb ](https://github.com/Azure/MachineLearningNotebooks/blob/master/training/03.train-hyperparameter-tune-deploy-with-tensorflow/03.train-hyperparameter-tune-deploy-with-tensorflow.ipynb).
 
 ## <a name='aci'></a>Instance kontejneru Azure (ACI)
 
@@ -296,6 +305,8 @@ run_config.environment.python.conda_dependencies = CondaDependencies.create(cond
 ```
 
 Může trvat několik sekund až několik minut vytvořte cílové výpočetní prostředí ACI.
+
+Poznámkový blok Jupyter, který ukazuje, školení na instanci kontejneru Azure, najdete v části [ https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/03.train-on-aci/03.train-on-aci.ipynb ](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/03.train-on-aci/03.train-on-aci.ipynb).
 
 ## <a id="hdinsight"></a>Připojit cluster služby HDInsight 
 
@@ -352,6 +363,8 @@ run = exp.submit(src)
 run.wait_for_completion(show_output = True)
 ```
 
+Poznámkový blok Jupyter, který ukazuje trénováním Spark v HDInsight, naleznete v tématu [ https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/05.train-in-spark/05.train-in-spark.ipynb ](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/05.train-in-spark/05.train-in-spark.ipynb).
+
 ## <a name="view-and-set-up-compute-using-the-azure-portal"></a>Zobrazení a nastavte výpočetní pomocí webu Azure portal
 
 Můžete zobrazit, co výpočetní cíle jsou spojeny s váš pracovní prostor z webu Azure portal. Pokud chcete vrátit do seznamu, použijte následující postup:
@@ -403,6 +416,7 @@ Postupujte podle výše uvedené kroky, chcete-li zobrazit seznam cílových vý
 Tyto poznámkové bloky předvedení konceptů v tomto článku:
 * `01.getting-started/02.train-on-local/02.train-on-local.ipynb`
 * `01.getting-started/04.train-on-remote-vm/04.train-on-remote-vm.ipynb`
+* `01.getting-started/03.train-on-aci/03.train-on-aci.ipynb`
 * `01.getting-started/05.train-in-spark/05.train-in-spark.ipynb`
 * `01.getting-started/07.hyperdrive-with-sklearn/07.hyperdrive-with-sklearn.ipynb`
 

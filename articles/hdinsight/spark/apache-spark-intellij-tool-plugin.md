@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/25/2017
 ms.author: maxluk
-ms.openlocfilehash: ed0118584d51f08d64a88dc1e7e6e2ba5f95cb0a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 07c2b506007daccd53a8b06a43064e6e274ac43b
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042587"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433354"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>Vytvoření aplikací Spark pro cluster služby HDInsight pomocí sady Azure Toolkit pro IntelliJ
 
@@ -181,8 +181,12 @@ Normální clusteru HDInsight můžete propojit pomocí Ambari, spravovat uživa
 
         ![Vyberte hlavní třídy dialogových oken](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-3.png)
 
-      * Protože kód aplikace v tomto příkladu nevyžaduje argumenty příkazového řádku nebo odkazovat na soubory nebo kromě souborů JAR, můžete nechat zbývající pole prázdné. Po zadání všech informací dialogové okno by měl vypadat podobně jako na následujícím obrázku.
+      * Můžete zadat požadované informace. O **úlohy konfigurace**, budeme mít výchozí hodnotu. A můžete se podívat do [Apache Livy REST API](http://livy.incubator.apache.org./docs/latest/rest-api.html) Další informace o klíčích. **Argumenty příkazového řádku**, **odkazuje JARs** a **odkazované soubory** by měl vypadat jako obrázku níže. Můžete se podívat do [konfigurace Spark](https://spark.apache.org/docs/latest/configuration.html#runtime-environment) Další informace o **odkazuje JARs** a **odkazované soubory**. Chcete-li **odkazuje JARs** a **odkazované soubory** fungovat dobře, byste měli nahrávat prostředky do clusteru nejdřív odešlete. Odkazovat na [jak nahrát prostředky do clusteru](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer). Dialogové okno Odeslat by měla vypadat podobně jako na následujícím obrázku.
         
+        ![Význam Spark odeslání dialogové okno pole úlohy konfigurace](./media/apache-spark-intellij-tool-plugin/submit-job-configurations.png)
+
+        ![To znamená soubory jar pole Spark odeslání dialogového okna](./media/apache-spark-intellij-tool-plugin/jar-files-meaning.png)
+
         ![Dialogové okno odeslání Spark](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-2.png)
 
    c. **Spark odeslání** karta v dolní části okna by se měl spustit zobrazení průběhu. Můžete také zastavit aplikaci tak, že vyberete červené tlačítko v **Spark odeslání** okna.

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 161207b96deb2f7bd605d845a9207393f9f59c23
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 517926a3c78e9c95a9ecef9ae058c33e47566adb
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444738"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432603"
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>Použití vlastní image Dockeru pro službu Web App for Containers
 
@@ -559,4 +559,4 @@ Příkaz zobrazí výstup podobný následujícímu řetězci JSON, který znač
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytvoření webové aplikace Docker Python využívající databázi PostgreSQL v Azure](tutorial-docker-python-postgresql-app.md)
+> [Vytvoření webové aplikace Docker Python využívající databázi PostgreSQL v Azure](tutorial-python-postgresql-app.md)

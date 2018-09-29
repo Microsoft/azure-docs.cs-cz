@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 7282734b3524d7dfa80c54d074aac2268e38c5ab
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: bcc5f23c163a391639d916b8a50c2c05d228ee91
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419385"
+ms.locfileid: "47432082"
 ---
 # <a name="standard-properties-in-log-analytics-records"></a>Standardní vlastnosti v záznamech Log Analytics
 Data v [Log Analytics](../log-analytics/log-analytics-queries.md) se ukládá jako sady záznamů, každý s konkrétním datovým typem, který má jedinečnou sadu vlastností. Mnoho datových typů, bude mít standardní vlastnosti, které jsou společné pro více typů. Tento článek popisuje tyto vlastnosti a poskytuje příklady, jak je použít v dotazech.
@@ -53,8 +53,8 @@ search *
 | summarize count() by Type 
 ```
 
-## <a name="resourceid"></a>_ResourceId
-**_ResourceId** vlastnost obsahuje jedinečný identifikátor pro prostředek, který je přidružený záznam. To vám dává standardní vlastnosti, které chcete použít k určení oboru dotazu pouze záznamy z konkrétního prostředku nebo k související data z více tabulek.
+## <a name="resourceid"></a>\_ID prostředku
+**\_ResourceId** vlastnost obsahuje jedinečný identifikátor pro prostředek, který je přidružený záznam. To vám dává standardní vlastnosti, které chcete použít k určení oboru dotazu pouze záznamy z konkrétního prostředku nebo k související data z více tabulek.
 
 Pro prostředky Azure, hodnota **_ResourceId** je [ID URL prostředku Azure](../azure-resource-manager/resource-group-template-functions-resource.md). Vlastnost je aktuálně omezená na prostředky Azure, ale bude možné rozšířit na prostředky mimo Azure, jako jsou místní počítače.
 

@@ -8,18 +8,18 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 6945e31825af46628c0945cdf579382b20bdcd68
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: da29c6bd8ddc1e2f62a78fb683df5e1784141722
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47413359"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452560"
 ---
 # <a name="custom-datetime-path-patterns-for-azure-stream-analytics-blob-storage-output-preview"></a>Vlastní data a času vzorů cest pro Azure Stream Analytics služby blob storage výstup (Preview)
 
 Azure Stream Analytics podporuje vlastní datum a čas specifikátory formátu v cestě k souboru pro výstupy úložiště objektů blob. Vlastní data a času vzorů cest vám umožňují určit výstupní formát, který souladu s konvencemi Hive streamování, že umožňuje posílat data do Azure HDInsight a Azure Databricks pro směru server-klient zpracování Azure Stream Analytics. Vlastní data a času vzorů cest se snadno implementují pomocí `datetime` – klíčové slovo v poli Předpona cesty objektu výstup, spolu s specifikátor formátu. Například, `{datetime:yyyy}`.
 
-Pomocí tohoto odkazu pro [webu Azure Portal](https://ms.portal.azure.com/?Microsoft_Azure_StreamAnalytics_bloboutputcustomdatetimeformats=true) Chcete-li přepnout příznak funkce, který umožňuje vlastní vzorů cest datum a čas pro náhled výstupu úložiště objektů blob. Tato funkce bude brzy povolená hlavní portálu.
+Pomocí tohoto odkazu pro [webu Azure Portal](https://portal.azure.com/?Microsoft_Azure_StreamAnalytics_bloboutputcustomdatetimeformats=true) Chcete-li přepnout příznak funkce, který umožňuje vlastní vzorů cest datum a čas pro náhled výstupu úložiště objektů blob. Tato funkce bude brzy povolená hlavní portálu.
 
 ## <a name="supported-tokens"></a>Podporované tokeny
 

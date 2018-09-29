@@ -15,20 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: victorh
-ms.openlocfilehash: 1f7991ff1b0c5a29b002818bc4dc5d9106ba5bfa
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e24aa8d0fb72147b0ac30e7c495b598d6e9ea96f
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974761"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451388"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Ke správě DNS záznamů a sad záznamů pomocí webu Azure portal
-
-> [!div class="op_single_selector"]
-> * [Azure Portal](dns-operations-recordsets-portal.md)
-> * [Klasické rozhraní příkazového řádku Azure](dns-operations-recordsets-cli-nodejs.md)
-> * [Azure CLI](dns-operations-recordsets-cli.md)
-> * [PowerShell](dns-operations-recordsets.md)
 
 V tomto článku se dozvíte, jak spravovat sady záznamů a záznamů zóny DNS pomocí webu Azure portal.
 
@@ -95,7 +89,7 @@ Můžete na webu Azure portal odebrat záznamy ze sady záznamů. Všimněte si,
 
 1. Na **vlastnosti sady záznamů** okno pro sadu záznamů, klikněte na tlačítko **odstranit**.
 
-    ![Odstranit záznamovou sadu](./media/dns-operations-recordsets-portal/deleterecordset500.png)
+    ![Odstranit záznamovou sadu](./media/dns-operations-recordsets-portal/deleterecordset500.PNG)
 
 2. Zobrazí se zpráva s dotazem, pokud chcete odstranit záznamovou sadu.
 3. Zkontrolujte, zda odpovídá názvu sady záznamů, které chcete odstranit a potom klikněte na tlačítko **Ano**.

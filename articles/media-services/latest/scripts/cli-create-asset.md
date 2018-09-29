@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 04/15/2018
 ms.author: juliako
 ms.openlocfilehash: 89120daf971586e8c2e360e9b6b064b10b14f707
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723047"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47093142"
 ---
 # <a name="cli-example-create-an-azure-media-services-account"></a>Ukázka CLI: Vytvoření účtu Azure Media Services
 

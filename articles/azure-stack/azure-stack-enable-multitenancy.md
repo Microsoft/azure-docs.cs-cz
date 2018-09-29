@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: patricka
-ms.openlocfilehash: 0a10662e359379356ecc8d82af1b7d6331c41a65
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 0c49a895a3cd214bb6f9c88b5365cf980c60bf0a
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720051"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451767"
 ---
 # <a name="multi-tenancy-in-azure-stack"></a>Víceklientská architektura v Azure stacku
 
@@ -101,7 +101,8 @@ Register-AzSWithMyDirectoryTenant `
 > Pokud správce služby Azure Stack v budoucnu nainstaluje nové služby nebo aktualizace, budete muset znovu spusťte tento skript.
 >
 > Tento skript spusťte znovu kdykoli zkontrolovat stav služby Azure Stack aplikace ve vašem adresáři.
-
+> 
+> Pokud jste si všimli problémy s vytvářením virtuálních počítačů ve službě Managed Disks (zaveden v aktualizaci. 1808), nový **poskytovatele prostředků disku** se přidal, tento skript spustit znovu.
 
 ### <a name="activate-the-administrator-and-tenant-portals"></a>Aktivace portálů správce a tenanta
 Po nasazení, které používají službu Azure AD je nutné aktivovat i Azure Stack správce a tenanta portály. Tato aktivace vyjádří souhlas poskytuje správná oprávnění (uvedené na stránce souhlas) pro všechny uživatele adresáře portálu Azure Stack a Azure Resource Manageru.

@@ -3,7 +3,7 @@ title: Rozšíření vlastních skriptů na virtuálním počítači s Windows |
 description: Automatizaci úloh konfigurace virtuálního počítače Azure s využitím rozšíření vlastních skriptů ke spouštění skriptů prostředí PowerShell na vzdáleném virtuálním počítači s Windows
 services: virtual-machines-windows
 documentationcenter: ''
-author: zroiy
+author: roiyz-msft
 manager: jeconnoc
 editor: ''
 tags: azure-service-management
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/17/2017
 ms.author: roiyz
-ms.openlocfilehash: 1331eb311ca629253b4c4c28c9326e290887a752
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 8eb7822962988b02f09c2a2ea31b745ef01d5533
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42057163"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451846"
 ---
 # <a name="custom-script-extension-for-windows-using-the-classic-deployment-model"></a>Vlastní skript rozšíření pro Windows pomocí modelu nasazení classic
 

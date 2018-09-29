@@ -7,15 +7,15 @@ manager: jeconnoc
 ms.service: batch
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 01/19/2018
+ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 85be7763535b8b067c5a52729fb2be855ffa4b77
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 69d31caf161e63233cee10e4820ea5150c6f9b61
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608453"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159326"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Rychlý start: Spuštění první úlohy služby Batch pomocí rozhraní Python API
 
@@ -128,9 +128,10 @@ blob_client = azureblob.BlockBlobService(
 Odkaz `blob_client` slouží aplikaci k vytvoření kontejneru v účtu úložiště a k nahrání datových souborů do tohoto kontejneru. Soubory v úložišti jsou definované jako objekty [ResourceFile](/python/api/azure.batch.models.resourcefile) služby Batch, které může služba Batch později stáhnout do výpočetních uzlů.
 
 ```python
-input_file_paths = [os.path.realpath('./data/taskdata0.txt'),
-                    os.path.realpath('./data/taskdata1.txt'),
-                    os.path.realpath('./data/taskdata2.txt')]
+input_file_paths =  [os.path.join(sys.path[0], 'taskdata0.txt'),
+                     os.path.join(sys.path[0], 'taskdata1.txt'),
+                     os.path.join(sys.path[0], 'taskdata2.txt')]
+
 input_files = [
     upload_file_to_container(blob_client, input_container_name, file_path)
     for file_path in input_file_paths]
@@ -139,8 +140,8 @@ input_files = [
 K vytváření a správě fondů, úloh a úkolů ve službě Batch aplikace vytvoří objekt [BatchServiceClient](/python/api/azure.batch.batchserviceclient). Klient služby Batch v ukázce používá ověření pomocí sdíleného klíče. Batch podporuje také ověřování pomocí Azure Active Directory.
 
 ```python
-credentials = batchauth.SharedKeyCredentials(_BATCH_ACCOUNT_NAME,
-    BATCH_ACCOUNT_KEY)
+credentials = batch_auth.SharedKeyCredentials(_BATCH_ACCOUNT_NAME,
+    _BATCH_ACCOUNT_KEY)
 
 batch_client = batch.BatchServiceClient(
     credentials,
@@ -179,8 +180,8 @@ batch_service_client.pool.add(new_pool)
 
 ```python
 job = batch.models.JobAddParameter(
-    job_id,
-    batch.models.PoolInformation(pool_id=pool_id))
+    id=job_id,
+    pool_info=batch.models.PoolInformation(pool_id=pool_id))
 batch_service_client.job.add(job)
 ```
 

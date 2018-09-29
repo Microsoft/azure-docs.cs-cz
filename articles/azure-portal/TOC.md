@@ -1,7 +1,5 @@
 # Přehled
 ## [Informace o webu Azure Portal](../azure-portal-overview.md)
-# Kurzy
-## [DevOps pomocí webu Azure Portal](tutorial-azureportal-devops.md)
 # Koncepty
 ## [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
 ## [Klávesové zkratky](azure-portal-keyboard-shortcuts.md)

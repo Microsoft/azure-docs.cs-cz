@@ -10,23 +10,23 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 4e14c666401d5e494d924889a8bba957be232c12
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: a741cb1c2643e48080018e5c9f4ada7038bce29e
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036826"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434802"
 ---
 # <a name="glossary"></a>Glosář
 Language Understanding (LUIS) Glosář vysvětluje podmínky, které můžete narazit při práci se službou LUIS rozhraní API.
 
 ## <a name="active-version"></a>Aktivní verze
 
-Aktivní LUIS verze je verze, která bude přijímat všechny změny modelu. V [LUIS](luis-reference-regions.md) webu, pokud chcete změnit verzi, která není aktivní verze, musíte nejdřív nastavit tuto verzi jako aktivní. 
+Aktivní LUIS verze je verze, která bude přijímat všechny změny modelu. V [LUIS](luis-reference-regions.md) webu, pokud chcete změnit verzi, která není aktivní verze, musíte nejdřív nastavit tuto verzi jako aktivní.
 
 ## <a name="authoring"></a>Pro tvorbu
 
-Vytváření obsahu je schopnost vytvářet, spravovat a nasazovat [aplikace LUIS](#luis-app), buď pomocí [LUIS](luis-reference-regions.md) webu nebo [rozhraní API pro vytváření](https://aka.ms/luis-authoring-api). 
+Vytváření obsahu je schopnost vytvářet, spravovat a nasazovat [aplikace LUIS](#luis-app), buď pomocí [LUIS](luis-reference-regions.md) webu nebo [rozhraní API pro vytváření](https://aka.ms/luis-authoring-api).
 
 ## <a name="authoring-key"></a>Klíč pro tvorbu
 
@@ -70,7 +70,7 @@ Stejné jako [aktivní verze](#active-version)
 
 ## <a name="domain"></a>Domény
 
-V rámci služby LUIS **domény** je oblast znalostní báze. Vaše doména je specifické pro oblast znalostní báze vaší aplikace. To může být obecné oblasti, jako je například agenta cestovní aplikace. Agent cestovní aplikace mohou být také specifické pro právě oblasti informace vaší společnosti, jako je například konkrétní zeměpisné umístění, jazyků a služeb. 
+V rámci služby LUIS **domény** je oblast znalostní báze. Vaše doména je specifické pro oblast znalostní báze vaší aplikace. To může být obecné oblasti, jako je například agenta cestovní aplikace. Agent cestovní aplikace mohou být také specifické pro právě oblasti informace vaší společnosti, jako je například konkrétní zeměpisné umístění, jazyků a služeb.
 
 ## <a name="endpoint"></a>Koncový bod
 
@@ -90,7 +90,7 @@ Příkladem koncového bodu vypadá takto:
 
 ## <a name="entity"></a>Entity
 
-[Entity](luis-concept-entity-types.md) jsou důležité slova v [projevy](luis-concept-utterance.md) , které popisují informace relevantní pro [záměr](luis-concept-intent.md), a někdy jsou nezbytné k němu. Entita je v podstatě datový typ v LUIS. 
+[Entity](luis-concept-entity-types.md) jsou důležité slova v [projevy](luis-concept-utterance.md) , které popisují informace relevantní pro [záměr](luis-concept-intent.md), a někdy jsou nezbytné k němu. Entita je v podstatě datový typ v LUIS.
 
 ## <a name="f-measure"></a>F – – Měrná jednotka
 
@@ -114,7 +114,7 @@ Ve službě machine learning [funkce](luis-concept-feature.md) rozlišovací vla
 
 ## <a name="labeling"></a>Používání popisků
 
-Používání popisků je proces přiřazení slova nebo fráze ve záměru [utterance](#utterance) s [entity](#entity) (datový typ). 
+Používání popisků je proces přiřazení slova nebo fráze ve záměru [utterance](#utterance) s [entity](#entity) (datový typ).
 
 ## <a name="luis-app"></a>Aplikace LUIS
 
@@ -125,26 +125,26 @@ Aplikace LUIS je trénovaného datový model pro zpracování přirozeného jazy
 Každá aplikace má jednoho vlastníka, který je osoba, která vytvořili aplikaci. Můžete přidat vlastníka [spolupracovníci](#collaborator).
 
 ## <a name="pattern"></a>Vzory
-Nahradí předchozí funkce vzor [vzory](luis-concept-patterns.md). Použití vzorů zvyšte přesnost předpovědi tím, že poskytuje příklady méně školení. 
+Nahradí předchozí funkce vzor [vzory](luis-concept-patterns.md). Použití vzorů zvyšte přesnost předpovědi tím, že poskytuje příklady méně školení.
 
 ## <a name="phrase-list"></a>Seznam frází
 
-A [seznam frází](luis-concept-feature.md#what-is-a-phrase-list-feature) obsahuje skupinu hodnot (slova nebo fráze), která patří do stejné třídy a musí být zacházeno podobně (například názvy města nebo produkty). Zaměňovat seznam se považuje synonym. 
+A [seznam frází](luis-concept-feature.md#what-is-a-phrase-list-feature) obsahuje skupinu hodnot (slova nebo fráze), která patří do stejné třídy a musí být zacházeno podobně (například názvy města nebo produkty). Zaměňovat seznam se považuje synonym.
 
 ## <a name="prebuilt-domains"></a>Předem připravená doména
 
-A [předem připravených domény](luis-how-to-use-prebuilt-domains.md) je aplikace LUIS nakonfigurované pro konkrétní doménu třeba domácí automatizace (HomeAutomation) nebo rezervace restaurace (RestaurantReservation). Záměrů, projevy a entity jsou nakonfigurované pro tuto doménu. 
+A [předem připravených domény](luis-how-to-use-prebuilt-domains.md) je aplikace LUIS nakonfigurované pro konkrétní doménu třeba domácí automatizace (HomeAutomation) nebo rezervace restaurace (RestaurantReservation). Záměrů, projevy a entity jsou nakonfigurované pro tuto doménu.
 
 ## <a name="prebuilt-entity"></a>Předem připravených entit
 
-A [předem připravených entit](luis-prebuilt-entities.md) je entita LUIS poskytuje pro běžné typy informace, jako je číslo, adresy URL a e-mailu. Můžete přidat do svojí aplikace předem připravených entit. 
+A [předem připravených entit](luis-prebuilt-entities.md) je entita LUIS poskytuje pro běžné typy informace, jako je číslo, adresy URL a e-mailu. Můžete přidat do svojí aplikace předem připravených entit.
 
 ## <a name="precision"></a>Přesnost
 V [batch testování](luis-interactive-test.md#batch-testing), přesnost (také nazývané kladného prediktivní) je část relevantní projevy mezi načtený projevy.
 
 ## <a name="programmatic-key"></a>Klíče prostřednictvím kódu programu
 
-Přejmenováno na [vytváření klíč](#authoring-key). 
+Přejmenováno na [vytváření klíč](#authoring-key).
 
 ## <a name="publish"></a>Publikování
 
@@ -152,24 +152,24 @@ Publikování znamená přijetí LUIS [aktivní verze](#active-version) k dispoz
 
 ## <a name="quota"></a>Kvóta
 
-Služba LUIS kvóta je omezení [úroveň předplatného Azure](https://aka.ms/luis-price-tier). Služba LUIS kvóty může omezit pomocí obou požadavků za sekundu (HTTP 429 stav) a celkový počet požadavků za měsíc (HTTP 403 stav). 
+Služba LUIS kvóta je omezení [úroveň předplatného Azure](https://aka.ms/luis-price-tier). Služba LUIS kvóty může omezit pomocí obou požadavků za sekundu (HTTP 429 stav) a celkový počet požadavků za měsíc (HTTP 403 stav).
 
 ## <a name="recall"></a>Odvolání
-V [batch testování](luis-interactive-test.md#batch-testing), si možná Vzpomínáte (označovaný také jako citlivosti), je schopnost LUIS k zobecnění. 
+V [batch testování](luis-interactive-test.md#batch-testing), si možná Vzpomínáte (označovaný také jako citlivosti), je schopnost LUIS k zobecnění.
 
 ## <a name="semantic-dictionary"></a>Sémantické slovník
 Sémantické slovník je k dispozici na stránce seznamu entity, jakož i stránka seznamu frázi. Sémantické slovníku nabízí návrhy slov na základě aktuálního oboru.
 
 ## <a name="sentiment-analysis"></a>Analýza subjektivního hodnocení
-Analýza subjektivního hodnocení poskytuje kladné nebo záporné hodnoty projevy poskytované [rozhraní Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/). 
+Analýza subjektivního hodnocení poskytuje kladné nebo záporné hodnoty projevy poskytované [rozhraní Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/).
 
 ## <a name="speech-priming"></a>Dočištění řeči
 
-Dočištění řeči umožňuje službě řeči se naplní LUIS model. 
+Dočištění řeči umožňuje službě řeči se naplní LUIS model.
 
 ## <a name="spelling-correction"></a>Opravy pravopisu
 
-Povolte kontrolu pravopisu Bingu k opravovat slova s překlepem v projevy před předpovědi. 
+Povolte kontrolu pravopisu Bingu k opravovat slova s překlepem v projevy před předpovědi.
 
 ## <a name="starter-key"></a>Klíč Starter
 
@@ -177,7 +177,7 @@ Stejné jako [programový klíč](#programmatic-key), přejmenováno na klíč p
 
 ## <a name="subscription-key"></a>Klíč předplatného
 
-Klíč předplatného je **koncový bod** klíč související se službou LUIS [jste vytvořili v Azure](luis-how-to-azure-subscription.md). Tento klíč není [vytváření klíč](#programmatic-key). Pokud máte klíč koncového bodu, by měla použít pro libovolný koncový bod požadavky na místo vytváření klíče. Zobrazí aktuální klíč koncového bodu uvnitř adresu URL koncového bodu v dolní části [ **klíče a koncových bodů** stránky](luis-how-to-manage-keys.md) v [LUIS](luis-reference-regions.md) webu. Je hodnota **klíč předplatného** dvojici název/hodnota. 
+Klíč předplatného je **koncový bod** klíč související se službou LUIS [jste vytvořili v Azure](luis-how-to-azure-subscription.md). Tento klíč není [vytváření klíč](#programmatic-key). Pokud máte klíč koncového bodu, by měla použít pro libovolný koncový bod požadavky na místo vytváření klíče. Zobrazí aktuální klíč koncového bodu uvnitř adresu URL koncového bodu v dolní části [ **klíče a koncových bodů** stránky](luis-how-to-manage-keys.md) v [LUIS](luis-reference-regions.md) webu. Je hodnota **klíč předplatného** dvojici název/hodnota.
 
 ## <a name="test"></a>Test
 
@@ -185,12 +185,12 @@ Klíč předplatného je **koncový bod** klíč související se službou LUIS 
 
 ## <a name="timezoneoffset"></a>Posun časového pásma
 
-Koncový bod zahrnuje timezoneOffset. Toto je počet v minutách, které chcete přidat nebo odebrat z datetimeV2 předem připravených entit. Například pokud je utterance "jaké čas je nyní?".", datetimeV2 vrátil je aktuální čas požadavku klienta. Pokud vaše žádost klienta pochází z robota nebo jiné aplikace, který není stejný jako uživatel svého robota, je třeba předat ve posun mezi robota a uživatelem. 
+Koncový bod zahrnuje timezoneOffset. Toto je počet v minutách, které chcete přidat nebo odebrat z datetimeV2 předem připravených entit. Například pokud je utterance "jaké čas je nyní?".", datetimeV2 vrátil je aktuální čas požadavku klienta. Pokud vaše žádost klienta pochází z robota nebo jiné aplikace, který není stejný jako uživatel svého robota, je třeba předat ve posun mezi robota a uživatelem.
 
 Zobrazit [změnit časové pásmo datetimeV2 předem připravených entit](luis-concept-data-alteration.md?#change-time-zone-of-prebuilt-datetimev2-entity).
 
 ## <a name="token"></a>Token
-Token je nejmenší jednotka, která mohou být označeny v entitě. Tokenizace vychází z vaší aplikace [jazykovou verzi](luis-supported-languages.md#tokenization).
+Token je nejmenší jednotka, která mohou být označeny v entitě. Tokenizace vychází z vaší aplikace [jazykovou verzi](luis-language-support.md#tokenization).
 
 ## <a name="train"></a>Trénování
 
@@ -206,7 +206,7 @@ V [batch testování](luis-interactive-test.md#batch-testing), datových bodů p
 
 ## <a name="utterance"></a>Utterance
 
-Utterance je přirozený jazyk frázi, jako je například "book 2 lístky pro Seattle další úterý". Příklad projevů budou přidány do záměr. 
+Utterance je přirozený jazyk frázi, jako je například "book 2 lístky pro Seattle další úterý". Příklad projevů budou přidány do záměr.
 
 ## <a name="version"></a>Verze
 

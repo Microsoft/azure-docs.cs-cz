@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 3559a25f3073f88e99379e98bc4562209b0c0825
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: f80c0f3cdc114b53c002266820e8d9b8773acc5d
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42108440"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432185"
 ---
 # <a name="about-the-speech-translation-api"></a>O rozhraní API pro překlad řeči
 
@@ -30,9 +30,9 @@ Rozhraní API pro překlad řeči využívá stejné technologie, které stojí 
 
 ## <a name="about-the-technology"></a>O technologii
 
-Základní modul překlad společnosti Microsoft jsou dva různé přístupy: statistické strojový překlad (SMT) a strojovému překladu neuronových (sítí NMT). Druhá možnost, umělou inteligenci přístup využívající neuronové sítě, je více moderní přístup pro strojový překlad. Poskytuje lepší překlady NMT – ne jenom přesnější, ale také více fluent a přirozené. Klíče důvod pro tento plynulost je, že NMT používá úplný kontext větu překládat slova.
+Základní modul překlad společnosti Microsoft jsou dva různé přístupy: statistické strojový překlad (SMT) a strojovému překladu neuronových (sítí NMT). Druhá možnost, umělou inteligenci přístup využívající neuronové sítě, je více moderní přístup pro strojový překlad. Poskytuje lepší překlady NMT – ne jenom přesnější, ale také více fluent a přirozené. Hlavním důvodem této plynulosti je, že NMT při překladu slov využívá úplný kontext věty.
 
-V současné době Microsoft migroval do NMT pro Nejoblíbenější jazyky, když SMT pouze pro jazyky méně používaná. Všechny [jazyky dostupné pro překlad řeči speech](supported-languages.md#speech-translation) NMT využívají. Překlad řeči na text pomocí SMT nebo NMT v závislosti na pár jazyka. Pokud cílový jazyk je podporovaná NMT, úplný překlad je s využitím NMT. Pokud cílový jazyk není podporován NMT, překlad je v hybridní kombinaci NMT a SMT, pomocí angličtina jako "kontingenční tabulku" mezi dva jazyků.
+V současné době Microsoft migroval do NMT pro Nejoblíbenější jazyky, když SMT pouze pro jazyky méně používaná. Všechny [jazyky dostupné pro překlad řeči speech](language-support.md#speech-translation) NMT využívají. Překlad řeči na text pomocí SMT nebo NMT v závislosti na pár jazyka. Pokud cílový jazyk je podporovaná NMT, úplný překlad je s využitím NMT. Pokud cílový jazyk není podporován NMT, překlad je v hybridní kombinaci NMT a SMT, pomocí angličtina jako "kontingenční tabulku" mezi dva jazyků.
 
 Rozdíly mezi modely jsou interní překlad modulu. Koncoví uživatelé oznámení pouze kvalitu překladu vylepšené, zejména pro arabština, čínština a japonština.
 

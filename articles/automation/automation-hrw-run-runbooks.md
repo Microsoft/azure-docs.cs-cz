@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 07/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8f21457a63470b88e93ead97454f996cea38073a
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a0b5188605874a04f0341cde1a68487c8a50df84
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43103764"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47431810"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Spouštění runbooků v procesu Hybrid Runbook Worker
 
@@ -39,7 +39,8 @@ Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" �
 
 ## <a name="runbook-permissions"></a>Oprávnění sady Runbook
 
-Runbooky, které běží v procesu Hybrid Runbook Worker nelze použít stejnou metodu, která se obvykle používá pro runbooky ověřované pro prostředky Azure, protože přistupují prostředky mimo Azure. Sada runbook může poskytnout vlastní ověřování k místním prostředkům, nebo můžete zadat účet Spustit jako pro poskytnutí kontextu uživatele pro všechny sady runbook.
+Runbooky, které běží v procesu Hybrid Runbook Worker nelze použít stejnou metodu, která se obvykle používá pro runbooky ověřované pro prostředky Azure, protože přistupují prostředky mimo Azure. Sada runbook může poskytnout vlastní ověřování k místním prostředkům, nebo můžete nakonfigurovat ověřování pomocí [spravovaných identit pro prostředky Azure](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager
+), nebo můžete zadat účet Spustit jako pro poskytnutí kontextu uživatele pro všechny sady runbook.
 
 ### <a name="runbook-authentication"></a>Ověřování Runbooků
 
@@ -74,6 +75,32 @@ Následující postup použijte k určení účtu RunAs pro skupinu hybridních 
 4. Vyberte **všechna nastavení** a potom **nastavení skupiny hybridních pracovních procesů**.
 5. Změna **spustit jako** z **výchozí** k **vlastní**.
 6. Vyberte přihlašovací údaje a klikněte na tlačítko **Uložit**.
+
+### <a name="managed-identities-for-azure-resources"></a>Spravované identity pro prostředky Azure
+
+Hybridní pracovní procesy Runbook Worker běžící na virtuálních počítačích Azure umožňuje spravovaným identitám pro prostředky Azure mohli ověřovat prostředky Azure. Existuje mnoho výhod pomocí spravované identity pro prostředky Azure prostřednictvím účty spustit jako.
+
+* Není nutné spustit jako certifikát exportovat a importovat ho do procesu Hybrid Runbook Worker
+* Není nutné obnovovat certifikát používaný účet Spustit jako
+* Není potřeba zpracovat objekt připojení spustit jako ve vašem kódu sady runbook
+
+Použití spravované identity pro prostředky Azure v procesu Hybrid Runbook worker musíte provést následující kroky:
+
+1. Vytvoření virtuálního počítače Azure
+2. [Konfigurace spravovaných identit pro prostředky Azure na svém virtuálním počítači](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm)
+3. [Udělení přístupu vašich virtuálních počítačů do skupiny prostředků v Resource Manageru](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager)
+4. [Získat přístupový token pomocí spravované identity systém přiřadil Virtuálního počítače] (.. / active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-resource-manager)
+5. [Instalace procesu Hybrid Runbook Worker Windows](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) na virtuálním počítači.
+
+Po dokončení předchozích kroků můžete použít `Connect-AzureRmAccount -Identity` v runbooku mohli ověřovat prostředky Azure. To snižuje nutnost využít účet Spustit jako a správa certifikátů pro účet Spustit jako.
+
+```powershell
+# Connect to Azure using the Managed identities for Azure resources identity configured on the Azure VM that is hosting the hybrid runbook worker
+Connect-AzureRmAccount -Identity
+
+# Get all VM names from the subscription
+Get-AzureRmVm | Select Name
+```
 
 ### <a name="automation-run-as-account"></a>Účet Spustit jako služby Automation
 

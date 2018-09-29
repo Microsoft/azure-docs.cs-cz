@@ -10,15 +10,15 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: diberry
-ms.openlocfilehash: 4141c5aea93b308a7149b91001fbf1c88d629d79
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 4133b7c7c3fabbe92a3208c567d7b4c6c2c27283
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47037979"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434394"
 ---
 # <a name="keyphrase-entity"></a>Entita klíčové fráze
-keyPhrase extrahuje celou řadu klíčových frází z utterance. Nemusíte přidání projevů příklad obsahující keyPhrase do aplikace. keyPhrase entity se podporuje v [mnoha jazykových verzí](luis-supported-languages.md#languages-supported) jako součást [rozhraní text analytics](../text-analytics/overview.md) funkce. 
+keyPhrase extrahuje celou řadu klíčových frází z utterance. Nemusíte přidání projevů příklad obsahující keyPhrase do aplikace. keyPhrase entity se podporuje v [mnoha jazykových verzí](luis-language-support.md#languages-supported) jako součást [rozhraní text analytics](../text-analytics/overview.md) funkce. 
 
 ## <a name="resolution-for-prebuilt-keyphrase-entity"></a>Řešení pro keyPhrase předem připravených entit
 Následující příklad ukazuje rozlišení **builtin.keyPhrase** entity.
@@ -49,4 +49,4 @@ Následující příklad ukazuje rozlišení **builtin.keyPhrase** entity.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o [procento](luis-reference-prebuilt-percentage.md), [číslo](luis-reference-prebuilt-number.md), a [stáří](luis-reference-prebuilt-age.md) entity. 
+Další informace o [procento](luis-reference-prebuilt-percentage.md), [číslo](luis-reference-prebuilt-number.md), a [stáří](luis-reference-prebuilt-age.md) entity.

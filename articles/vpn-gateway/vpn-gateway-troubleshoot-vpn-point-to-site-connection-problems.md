@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: cd89c41b43be1da339ca7dcc64110e7145a93903
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 72cf094dc6206fcb156a3e4dae6e89662e2085d8
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857326"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434853"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Poradce při potížích: Problémy s připojením Azure point-to-site
 
@@ -51,7 +51,7 @@ Chcete-li tento problém vyřešit, postupujte podle těchto kroků:
     | Azuregateway-*GUID*.cloudapp.net  | Aktuální User\Trusted kořenové certifikační autority|
     | AzureGateway-*GUID*.cloudapp.net, AzureRoot.cer    | Místní počítač\Důvěryhodné kořenové certifikační autority|
 
-3. Přejděte na uživatelé\<uživatelské jméno > \AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID >, je nutné ručně nainstalovat certifikát (soubor *.cer) v úložišti počítače a uživatele.
+3. Přejděte na C:\Users\<uživatelské jméno > \AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID >, je nutné ručně nainstalovat certifikát (soubor *.cer) v úložišti počítače a uživatele.
 
 Další informace o postupu při instalaci klientského certifikátu naleznete v tématu [generování a export certifikátů pro připojení point-to-site](vpn-gateway-certificates-point-to-site.md).
 
@@ -276,7 +276,7 @@ Odebrat připojení VPN typu point-to-site a opětovnou instalací klienta VPN. 
 
 ### <a name="solution"></a>Řešení
 
-Chcete-li vyřešit tento problém, odstranit staré soubory konfigurace klienta VPN z **C:\users\username\AppData\Microsoft\Network\Connections\<VirtualNetworkId >**, a poté znovu spusťte instalační program klienta VPN.
+Chcete-li vyřešit tento problém, odstranit staré soubory konfigurace klienta VPN z **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections\<VirtualNetworkId >**, a poté znovu spusťte instalační program klienta VPN .
 
 ## <a name="point-to-site-vpn-client-cannot-resolve-the-fqdn-of-the-resources-in-the-local-domain"></a>Klient VPN Point-to-site nelze přeložit plně kvalifikovaný název domény zdroje v místní doméně
 
@@ -361,7 +361,7 @@ Tento problém může být způsobeno předchozí instalace klienta VPN.
 
 ### <a name="solution"></a>Řešení
 
-Odstranit staré soubory konfigurace klienta VPN z **C:\users\username\AppData\Microsoft\Network\Connections\<VirtualNetworkId >** a znovu spusťte instalační program klienta VPN. 
+Odstranit staré soubory konfigurace klienta VPN z **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections\<VirtualNetworkId >** a znovu spusťte instalační program klienta VPN. 
 
 ## <a name="the-vpn-client-hibernates-or-sleep-after-some-time"></a>Klient VPN přejde do režimu spánku nebo režimu spánku po nějaké době
 

@@ -3,7 +3,7 @@ title: Spuštění vlastních skriptů na virtuální počítače s Linuxem v Az
 description: Automatizaci úloh konfigurace virtuálního počítače s Linuxem pomocí rozšíření vlastních skriptů v2
 services: virtual-machines-linux
 documentationcenter: ''
-author: zroiy
+author: roiyz-msft
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: roiyz
-ms.openlocfilehash: e3f4268a3bde9cd7eddb96fbc2e6ec3bca77501b
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: c0d9494d24feaee80a9be92f047ca1d91d42c82c
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391279"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452220"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Virtuální počítače s Linuxem pomocí Azure Custom Script rozšíření verze 2
 Verze 2 pro rozšíření vlastního skriptu stahuje a spouští skripty na virtuálních počítačích Azure. Toto rozšíření je užitečné pro konfiguraci po nasazení, instalace softwaru nebo jakoukoliv jinou úlohu konfigurace a správy. Skripty si můžete stáhnout z Azure Storage nebo jiné dostupné umístění v Internetu, nebo je lze zadat rozšíření modulu runtime. 

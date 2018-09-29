@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/06/2018
+ms.date: 09/27/2018
 ms.author: msjuergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0a6c9d4ad27eb6dc6b0aba24f32a4a0dfde3c784
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: db2d7fbe395a6d7e332d79183a331b45f7767f51
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44163308"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434054"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Konfigurace infrastruktury SAP HANA a operací v Azure
 Tento dokument obsahuje pokyny pro konfiguraci infrastruktury Azure a operační systémy SAP HANA, které jsou nasazené na nativních virtuálních počítačích Azure (VM). Dokument obsahuje také informace o konfiguraci pro SAP HANA Škálováním pro skladovou Položku virtuálního počítače M128s. Tento dokument není určena k nahrazení standardní dokumentaci k SAPU, který obsahuje následující obsah:
@@ -168,6 +168,8 @@ Disky, doporučuje se pro typy menších virtuálních počítačů s 3 x P20 ov
 Zkontrolujte, jestli bude vyhovovat propustnost úložiště pro různé svazky navrhované na zatížení, které chcete spustit. Pokud úloha vyžaduje větší svazky pro **/hana/data** a **/hana/log**, je potřeba zvýšit počet virtuálních pevných disků Storage úrovně Premium pro Azure. Pro změnu velikosti svazku s více virtuálními pevnými disky než uvedené zvýší propustnost vstupně-výstupních operací a vstupně-výstupní operace v rámci omezení typu virtuálního počítače Azure. 
 
 
+
+
 #### <a name="storage-solution-with-azure-write-accelerator-for-azure-m-series-virtual-machines"></a>Řešení úložiště pomocí Azure Write Accelerator pro virtuální počítače Azure řady M-Series
 Akcelerátor zápisu Azure je funkce, které je Začínáme zavádět pro virtuální počítače řady M-Series výhradně. Jak uvádí název účelem funkce je zlepšit latenci vstupu/výstupu zápisů ve službě Azure Storage úrovně Premium. Pro SAP HANA, by měla použít u akcelerátorem zápisu **/hana/log** pouze svazku. Konfigurace zobrazí, pokud je proto potřeba změnit. Hlavní změny je rozložení mezi **/hana/data** a **/hana/log** Chcete-li použít akcelerátor zápisu Azure proti **/hana/log** pouze svazku. 
 
@@ -203,7 +205,9 @@ Podrobnější pokyny o tom, jak povolit akcelerátor zápisu Azure najdete v č
 
 Podrobnosti a omezení pro akcelerátor zápisu Azure najdete v dokumentaci stejné.
 
-
+> [!NOTE]
+> Doporučené konfigurace disku uvedeno cílíte minimální požadavky, které SAP vyjadřuje směrem k příslušné infrastrukturu poskytovatele. V nasazení skutečných zákazníků a scénáře úloh situacích došlo k kde tato doporučení stále neposkytl dostatečná možnosti. Toto může nastat situace, kdy zákazník vyžaduje rychlejší opětovné načtení dat po restartu HANA nebo kde zálohování konfigurace vyžaduje větší šířku pásma pro úložiště. Jindy zahrnuté **/hana/log** kde 5000 vstupně-výstupních operací nebyl dostatečný pro konkrétní úlohu. Proto Využijte tato doporučení jako počáteční bod a přizpůsobení podle požadavků zatížení.
+>  
 
 ### <a name="set-up-azure-virtual-networks"></a>Nastavení virtuální sítě Azure
 Pokud máte připojení site-to-site do Azure přes VPN nebo ExpressRoute, musíte mít aspoň jednu virtuální síť Azure, který je připojený prostřednictvím virtuální brány k okruhu ExpressRoute nebo VPN. V jednoduchých nasazení je možné nasadit virtuální brány v podsítě virtuální sítě Azure (VNet), který je hostitelem instance systému SAP HANA i. Instalace SAP HANA, vytvořte dva další podsítě v rámci virtuální sítě Azure. Jednu podsíť hostuje virtuální počítače ke spuštění instance systému SAP HANA. Další podsítě spustí Jumpbox nebo virtuální počítače pro správu, k hostování SAP HANA Studio, další software pro správu nebo aplikační software.
@@ -359,7 +363,7 @@ Následující rutina tento instalační program škálovatelných konfigurací,
 
 ## <a name="sap-hana-dynamic-tiering-20-for-azure-virtual-machines"></a>SAP HANA dynamické ovládání datových vrstev na 2.0 pro virtuální počítače Azure
 
-Kromě certifikací SAP HANA na virtuálních počítačích Azure řady M-series, SAP HANA dynamické ovládání datových vrstev na 2.0 také podporuje v Microsoft Azure (viz linsk SAP HANA dynamické ovládání datových vrstev na dokumentaci níže). Neplatí žádné rozdíly v instalaci nebo ji operační, například přes SAP HANA řídicí panel ve virtuálním počítači Azure, existuje pár důležitých položek, které jsou povinné pro oficiální podporu k Azure. Tyto klíčové body jsou popsané níže. V celém článku – zkratka "DT 2.0" se použijí místo celé jméno dynamické ovládání datových vrstev na 2.0.
+Kromě certifikací SAP HANA na virtuálních počítačích Azure řady M-series, SAP HANA dynamické ovládání datových vrstev na 2.0 také podporuje v Microsoft Azure (viz dokumentace k SAP HANA dynamické ovládání datových vrstev na odkazy níže). Neplatí žádné rozdíly v instalaci nebo ji operační, například přes SAP HANA řídicí panel ve virtuálním počítači Azure, existuje pár důležitých položek, které jsou povinné pro oficiální podporu k Azure. Tyto klíčové body jsou popsané níže. V celém článku – zkratka "DT 2.0" se použijí místo celé jméno dynamické ovládání datových vrstev na 2.0.
 
 SAP HANA dynamické ovládání datových vrstev na 2.0 nepodporuje SAP BW nebo S4HANA. Případy použití hlavní teď jsou nativní aplikace HANA.
 
@@ -490,4 +494,4 @@ Nezapomeňte nainstalovat SAProuter na samostatném virtuálním počítači a n
 Další informace o tom, jak nastavit a spravovat připojení vzdálenou podporu prostřednictvím SAProuter najdete v tématu [dokumentaci k SAPU](https://support.sap.com/en/tools/connectivity-tools/remote-support.html).
 
 ### <a name="high-availability-with-sap-hana-on-azure-native-vms"></a>Vysoká dostupnost se SAP HANA na nativních virtuálních počítačích Azure
-Pokud používáte systém SUSE Linux 12 SP1 nebo novější, můžete vytvořit Pacemaker cluster s využitím techniky STONITH zařízení. Zařízení můžete použít k nastavení konfigurace služby SAP HANA, která používá synchronní replikace s systémové replikace HANA a automatické převzetí služeb při selhání. Další informace o postupu instalace najdete v tématu [Příručka pro vysokou dostupnost SAP HANA pro Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview).
+Pokud používáte systém SUSE Linux Enterprise Server pro SAP aplikace 12 SP1 nebo novější, můžete vytvořit Pacemaker cluster s využitím techniky STONITH zařízení. Zařízení můžete použít k nastavení konfigurace služby SAP HANA, která používá synchronní replikace s systémové replikace HANA a automatické převzetí služeb při selhání. Další informace o postupu instalace najdete v tématu [Příručka pro vysokou dostupnost SAP HANA pro Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview).

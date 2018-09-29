@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b731b280b3e97076014f609571766a07a3dde1ea
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: ce2ad3e699b930f801ad47083d6cfcf6a7937a5c
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159886"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433442"
 ---
 # <a name="string-claims-transformations"></a>Řetězec deklarace identity transformace
 
@@ -156,7 +156,7 @@ Určení, jestli jedna deklarace řetězec je roven jinému. Výsledkem je nový
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim1 | řetězec | První deklarace typu, který je k porovnání. |
 | InputClaim | inputClaim2 | řetězec | Za druhé deklarace typu, který má být porovnána. |
-| InputParameter | – Operátor | řetězec | Možné hodnoty: `Equal` nebo `Not Equal`. |
+| InputParameter | – Operátor | řetězec | Možné hodnoty: `EQUAL` nebo `NOT EQUAL`. |
 | InputParameter | IgnoreCase | Boolean | Určuje, zda toto porovnání by měl ignorovat velikost písmen řetězců, který se porovnává. |
 | outputClaim | outputClaim | Boolean | Zavolání typu deklarace identity, který je vytvořen po to transformace deklarací identity. |
 
@@ -196,7 +196,7 @@ Určuje, zda je hodnota deklarace identity rovná hodnotě vstupního parametru.
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim1 | řetězec | Typ deklarace identity, který je k porovnání. |
-| InputParameter | – Operátor | řetězec | Možné hodnoty: `Equal` nebo `Not Equal`. |
+| InputParameter | – Operátor | řetězec | Možné hodnoty: `EQUAL` nebo `NOT EQUAL`. |
 | InputParameter | Metoda compareTo | řetězec | řetězec porovnání, použijte některou z hodnot: řadová, OrdinalIgnoreCase. |
 | InputParameter | IgnoreCase | Boolean | Určuje, zda toto porovnání by měl ignorovat velikost písmen řetězců, který se porovnává. |
 | outputClaim | outputClaim | Boolean | Zavolání typu deklarace identity, který je vytvořen po to transformace deklarací identity. |
@@ -235,11 +235,11 @@ Vytvoří náhodný řetězec za použití generátor náhodných čísel. Pokud
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputParameter | randomGeneratorType | řetězec | Určuje náhodnou hodnotu chcete vygenerovat, `GUID` (globální jedinečné ID) nebo `integer` (číslo). |
+| InputParameter | randomGeneratorType | řetězec | Určuje náhodnou hodnotu chcete vygenerovat, `GUID` (globální jedinečné ID) nebo `INTEGER` (číslo). |
 | InputParameter | stringFormat | řetězec | [Volitelné] Formátování náhodnou hodnotu. |
 | InputParameter | ve formátu Base64 | Boolean | [Volitelné] Převeďte náhodnou hodnotu ve formátu Base64. Pokud je použit formát řetězce, hodnota po formát řetězce je zakódovaný ve formátu Base64. |
-| InputParameter | maximumNumber | int | [Volitelné] Pro `Integer` randomGeneratorType pouze. Zadejte číslo maximute. |
-| InputParameter | Počáteční hodnota  | int | [Volitelné] Pro `Integer` randomGeneratorType pouze. Zadejte počáteční hodnotu pro náhodnou hodnotu. Poznámka: stejné počáteční hodnoty vrací stejnou posloupnost náhodných čísel. |
+| InputParameter | maximumNumber | int | [Volitelné] Pro `INTEGER` randomGeneratorType pouze. Zadejte číslo maximute. |
+| InputParameter | Počáteční hodnota  | int | [Volitelné] Pro `INTEGER` randomGeneratorType pouze. Zadejte počáteční hodnotu pro náhodnou hodnotu. Poznámka: stejné počáteční hodnoty vrací stejnou posloupnost náhodných čísel. |
 | outputClaim | outputClaim | řetězec | Zavolání ClaimTypes, který bude vytvořen poté, co to transformace deklarací identity. Náhodná hodnota. |
 
 Následující příklad generuje globální jedinečné ID. Tato deklarace identity transformace se používá k vytvoření náhodného UPN (hlavní název uživatele).
@@ -266,7 +266,7 @@ Následující příklad generuje náhodné celočíselnou hodnotu od 0 do 1000.
 ```XML
 <ClaimsTransformation Id="SetRandomNumber" TransformationMethod="CreateRandomString">
   <InputParameters>
-    <InputParameter Id="randomGeneratorType" DataType="string" Value="integer" />
+    <InputParameter Id="randomGeneratorType" DataType="string" Value="INTEGER" />
     <InputParameter Id="maximumNumber" DataType="int" Value="1000" />
     <InputParameter Id="stringFormat" DataType="string" Value="OTP_{0}" />
     <InputParameter Id="base64" DataType="boolean" Value="false" />

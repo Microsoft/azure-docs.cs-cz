@@ -9,12 +9,12 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: e0c28645de8c45aaf89afb6b5116aa9a3cb04768
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: eaf7ff9f7f791fd6d04e6b76d256b4987c50cd13
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227499"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434088"
 ---
 # <a name="unity-sample-walkthrough"></a>Ukázkový názorný postup Unity
 Jedná se názorného Průvodce ukázkou Akustika projektu. Další informace o jaké Akustika projektu je, přečtěte si [Úvod do projektu Akustika](what-is-acoustics.md). Pomoc při přidání balíčku projektu Akustika do již existující Unity projektu, použijte [příručce Začínáme](getting-started.md).
@@ -29,13 +29,13 @@ Jedná se názorného Průvodce ukázkou Akustika projektu. Další informace o 
 Stáhnout a naimportovat **MicrosoftAcoustics.Sample.unitypackage**. Při importu nastavení včetně projektu **Spatializer** a **skriptování verze modulu Runtime** se aktualizují, aby modul plug-in požadavkům. Po jejím dokončení, zobrazí se vám Chyba v Unity konzole z **AcousticsGeometry.cs** o změně verze modulu Runtime skriptování pro **.NET 4.x ekvivalent**. Změna tohoto nastavení se provádí jako součást importu balíčku naimportovány, ale vyžaduje restartování Unity se projeví. Restartujte Unity.
 
 ## <a name="running-the-sample"></a>Spuštění ukázky
-Ukázka zahrnuje Scéna ukázka **Assets/AcousticsDemo/ProjectAcousticsDemo.unity**. Tato scéna má jeden spatialized zvuku zdroj přehrávání z datové krychle s plovoucí desetinnou čárkou (s názvem **AudioHolder** v **hierarchie**). Abyste se mohli navigace obecného skriptu, fotoaparátu/kamery hlavní je podřízený objekt CameraHolder. 
+Ukázka zahrnuje Scéna ukázka **Assets/AcousticsDemo/ProjectAcousticsDemo.unity**. Tato scéna má tři zvukové zdroje. Ve výchozím nastavení přehrávání zvuku jenom jeden zdroj a další dvě jako jsou pozastavena. Tyto jsou umístěné v části **zdroje zvuku** v **hierarchie**. Abyste se mohli navigace obecného skriptu, fotoaparátu/kamery hlavní je podřízený objekt CameraHolder. 
 
 ![Hierarchické zobrazení](media/SampleHierarchyView.png)
 
 Scény již byla vloženými a soubor s příponou ACE přidružené **MicrosoftAcoustics** prefab v **hierarchie**. 
 
-Naslouchání jak scéně podle názvu dalo čekat po kliknutí na tlačítko Přehrát v Unity editoru. Použití W, A S, D a myš uspořádat jinak. Chcete-li porovnat, jak scéně podle názvu dalo čekat a nemusíte Akustika, klepněte na tlačítko primární kontroler nebo levé tlačítko myši. Budete cyklicky procházet různé zdroje zvuku, klikněte pravým tlačítkem myši nebo na tlačítko Zpět na vašem řadiči.
+Naslouchání jak scéně podle názvu dalo čekat po kliknutí na tlačítko Přehrát v Unity editoru. Ve stolním počítači, použijte W, A, S, D a myší uspořádat jinak. Chcete-li porovnat, jak na scéně podle názvu dalo čekat a nemusíte Akustika, stiskněte **R** dokud překrytí text zčervená a uvádí, že tlačítko "Akustika: zakázáno." Chcete-li zobrazit klávesové zkratky pro větší počet kontrolních mechanismů, stiskněte **F1**. Všechny ovládací prvky jsou také nedodržíte kliknutím pravým tlačítkem a vyberte akci chcete provést, pak levým na zbývající k provedení akce.
 
 ## <a name="targeting-other-platforms"></a>Cílení na jiných platformách
 Ukázka obsahuje nastavení pro spuštění na ploše Windows, UPW, smíšené Reality ve Windows, Android a Oculus Go. Projekt je ve výchozím nastavení nakonfigurován for Windows Desktop. Pro platformu VR, přejděte na nastavení player (**Upravit > Nastavení projektu > Player**), najdete **XR nastavení**a zkontrolujte **podporované virtuální realitu** zaškrtávací políčko.

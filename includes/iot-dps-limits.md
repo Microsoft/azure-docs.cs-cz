@@ -16,7 +16,8 @@ Následující tabulka uvádí omezení, které se vztahují k prostředkům IoT
 
 Služby Device Provisioning omezuje žádosti při překročení následujících kvót:
 
-| Omezení | Hodnotu za služby |
+| Omezení | Hodnota na jednotku |
 | --- | --- |
-| Operace | 100/min |
-| Registrace zařízení | 100/min |
+| Operace | 200/min/služby |
+| Registrace zařízení | 200/min/služby |
+| Operace dotazování zařízení | 5/10 sekund/zařízení |

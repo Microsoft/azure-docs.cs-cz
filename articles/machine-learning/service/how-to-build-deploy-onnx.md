@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: prasantp
 author: prasanthpul
 ms.date: 09/24/2018
-ms.openlocfilehash: acd5c1e1ae4aefa94ca4d1f6ef510ab1b028c3dd
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: d4ce2dc67b0d9229ac2605ab317594ea345c19b2
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47164892"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434068"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX a Azure Machine Learning: vytvoření a nasazení interoperabilní modely AI
 
@@ -68,7 +68,7 @@ Pomocí služby Azure Machine Learning můžete nasadit, spravovat a monitorovat
 
 ### <a name="install-and-configure-the-onnx-runtime"></a>Instalace a konfigurace modulu Runtime ONNX
 
-Modul Runtime ONNX je modul pro vysoce výkonné odvození pro modely ONNX. Součástí rozhraní Python API a poskytuje hardwarovou akceleraci CPU a GPU. Aktuálně podporuje modely ONNX 1.2 a běží na systému Linux Ubuntu 16.04.
+Modul Runtime ONNX je modul pro vysoce výkonné odvození pro modely ONNX. Součástí rozhraní Python API a poskytuje hardwarovou akceleraci CPU a GPU. Aktuálně podporuje modely ONNX 1.2 a běží na systému Linux Ubuntu 16.04. Obě [procesoru](https://pypi.org/project/onnxruntime) a [GPU](https://pypi.org/project/onnxruntime-gpu) balíčky jsou k dispozici na [PyPi.org](https://pypi.org).
 
 Pokud chcete nainstalovat modul Runtime ONNX, použijte:
 ```python
@@ -95,7 +95,7 @@ results = session.run(["output1", "output2"], {"input1": indata1, "input2": inda
 results = session.run([], {"input1": indata1, "input2": indata2})
 ```
 
-Úplné referenční rozhraní API najdete v článku [ONNX runtime referenční dokumenty](https://aka.ms/onnxruntime-python).
+Úplné referenční rozhraní API najdete v článku [ONNX Runtime referenční dokumenty](https://aka.ms/onnxruntime-python).
 
 ### <a name="example-deployment-steps"></a>Příklady kroků nasazení
 
@@ -173,13 +173,14 @@ Tady je příklad pro nasazení modelu ONNX:
    Soubor `myenv.yml` popisuje závislosti potřebné pro bitovou kopii. Najdete v tomto [kurzu](tutorial-deploy-models-with-aml.md#create-environment-file) pokyny o tom, jak vytvořit soubor prostředí, jako je například tento ukázkový soubor:
 
    ```
-   name: myenv
-   channels:
-     - defaults
-   dependencies:
-     - pip:
-       - onnxruntime
-       - azureml-core
+   from azureml.core.conda_dependencies import CondaDependencies 
+
+   myenv = CondaDependencies()
+   myenv.add_pip_package("azureml-core")
+   myenv.add_pip_package("onnxruntime")
+
+   with open("myenv.yml","w") as f:
+    f.write(myenv.serialize_to_string())
    ```
 
 4. Nasazení modelu ONNX pomocí Azure Machine Learning provádět:

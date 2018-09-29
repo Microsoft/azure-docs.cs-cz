@@ -13,12 +13,12 @@ ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 manager: douge
-ms.openlocfilehash: ac1872cf3f5ee8b83da9fa4c489188504aa8ad22
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 43cf75d875b2f5fbfea46fb2c8fbae809668057d
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161539"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405168"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core-and-visual-studio"></a>Zahájení práce se službou Azure Dev Spaces s .NET Core a sadou Visual Studio
 
@@ -29,9 +29,39 @@ V tomto průvodci se naučíte:
 - Vyvíjet nezávisle dvě samostatné služby a pomocí zjišťování služby DNS v Kubernetes volat jinou službu
 - Produktivně vyvíjet a testovat kód v týmovém prostředí
 
-[!INCLUDE [](includes/see-troubleshooting.md)]
+> [!Note]
+> **Pokud se někde zaseknete**, podívejte se do části [Řešení potíží](troubleshooting.md) nebo na tuto stránku přidejte komentář.
 
-[!INCLUDE [](includes/portal-aks-cluster.md)]
+
+## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Vytvoření clusteru Kubernetes s podporou Azure Dev Spaces
+
+1. Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
+1. Zvolte **Vytvořit prostředek**, vyhledejte **Kubernetes** a vyberte **Služba Kubernetes** > **Vytvořit**.
+
+   Pod jednotlivými nadpisy formuláře pro vytvoření clusteru AKS proveďte následující kroky.
+
+    - **PODROBNOSTI O PROJEKTU:** Vyberte předplatné Azure a novou nebo existující skupinu prostředků Azure.
+    - **PODROBNOSTI O CLUSTERU:** Zadejte název, oblast (v současné době můžete vybrat pouze oblast EastUS, CentralUS, WestEurope, WestUS2, CanadaCentral nebo CanadaEast), verzi a předponu názvu DNS pro cluster AKS.
+    - **ŠKÁLOVÁNÍ:** Vyberte velikost virtuálního počítače pro uzly agentů AKS a počet uzlů. Pokud s Azure Dev Spaces začínáte, na prozkoumání všech funkcí vám stačí jeden uzel. Počet uzlů můžete po nasazení clusteru kdykoli snadno upravit. Mějte na paměti, že velikost virtuálního počítače není možné po vytvoření clusteru AKS změnit. Pokud však potřebujete vertikálně navýšit kapacitu, po nasazení clusteru AKS můžete snadno vytvořit nový cluster AKS s většími virtuálními počítači a pomocí Dev Spaces provést opětovné nasazení do tohoto většího clusteru.
+
+   Nezapomeňte vybrat Kubernetes verze 1.9.6 nebo novější.
+
+   ![Nastavení konfigurace Kubernetes](media/common/Kubernetes-Create-Cluster-2.PNG)
+
+   Po dokončení vyberte **Další: Ověřování**.
+
+1. Vyberte požadované nastavení pro řízení přístupu na základě role (RBAC). Služba Azure Dev Spaces podporuje clustery s vypnutým i zapnutým řízením přístupu na základě role.
+
+    ![Nastavení řízení přístupu na základě role](media/common/k8s-RBAC.PNG)
+
+1. Ujistěte se, že je povolené směrování aplikace HTTP.
+
+   ![Povolení směrování aplikace HTTP](media/common/Kubernetes-Create-Cluster-3.PNG)
+
+    > [!Note]
+    > Pokud chcete povolit [Směrování aplikace HTTP](/azure/aks/http-application-routing) v existujícím clusteru, použijte tento příkaz: `az aks enable-addons --resource-group myResourceGroup --name myAKSCluster --addons http_application_routing`
+
+1. Vyberte **Zkontrolovat a vytvořit** a po dokončení vyberte **Vytvořit**.
 
 ## <a name="get-the-visual-studio-tools"></a>Získání nástrojů sady Visual Studio
 1. Nainstalujte nejnovější verzi sady [Visual Studio 2017](https://www.visualstudio.com/vs/).
@@ -52,7 +82,6 @@ V sadě Visual Studio 2017 vytvořte nový projekt. V současné době se musí 
 Vyberte šablonu **Webová aplikace (model-zobrazení-kontroler)** a ujistěte se, že jsou ve dvou rozevíracích seznamech v horní části dialogového okna vybrané položky **.NET Core** a **ASP.NET Core 2.0**. Projekt vytvoříte kliknutím na **OK**.
 
 ![](media/get-started-netcore-visualstudio/NewProjectDialog2.png)
-
 
 ### <a name="enable-dev-spaces-for-an-aks-cluster"></a>Povolení služby Dev Spaces pro cluster AKS
 

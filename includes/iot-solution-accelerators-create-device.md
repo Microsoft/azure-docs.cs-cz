@@ -5,15 +5,15 @@ services: iot-accelerators
 author: dominicbetts
 ms.service: iot-accelerators
 ms.topic: include
-ms.date: 08/16/2018
+ms.date: 09/28/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 9196648d7e3d2ea717b1a61cbca959805649ed2f
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 5eb3c08792b760bf66e443f79762d91210706c92
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44754417"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47435108"
 ---
 Do prvního scénáře, přidejte nový typ telemetrických dat na Contoso existující **chladič** typ zařízení.
 
@@ -90,7 +90,9 @@ Pokyny v tomto článku se předpokládá, že používáte Windows. Pokud použ
 
 ### <a name="download-the-microservices"></a>Stáhněte si mikroslužby
 
-Stáhněte a rozbalte [pro vzdálené monitorování mikroslužeb](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip) z Githubu do vhodného umístění na místním počítači.
+Stáhněte a rozbalte [pro vzdálené monitorování mikroslužeb](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip) z Githubu do vhodného umístění na místním počítači. Tento článek předpokládá, je název této složky **vzdálené monitorování – služby dotnet-master**.
+
+Stáhněte a rozbalte [mikroslužeb simulace zařízení](https://github.com/Azure/device-simulation-dotnet/archive/master.zip) z Githubu do vhodného umístění na místním počítači. Tento článek předpokládá, je název této složky **zařízení simulace dotnet-master**.
 
 ### <a name="run-the-storage-adapter-microservice"></a>Spustit adaptér mikroslužeb úložiště
 
@@ -116,20 +118,14 @@ V této části přidáte nový **vnitřní teplota** typ telemetrie k existují
 
     | Zdroj | Cíl |
     | ------ | ----------- |
-    | Services\Data\devicemodels\chiller-01.JSON | C:\temp\devicemodels\chiller-01.JSON |
-    | Services\Data\devicemodels\scripts\chiller-01-State.js | C:\temp\devicemodels\scripts\chiller-01-State.js |
-    | Services\Data\devicemodels\scripts\Reboot-Method.js | C:\temp\devicemodels\scripts\Reboot-Method.js |
-    | Services\Data\devicemodels\scripts\FirmwareUpdate-Method.js | C:\temp\devicemodels\scripts\FirmwareUpdate-Method.js |
-    | Services\Data\devicemodels\scripts\EmergencyValveRelease-Method.js | C:\temp\devicemodels\scripts\EmergencyValveRelease-Method.js |
-    | Services\Data\devicemodels\scripts\IncreasePressure-Method.js | C:\temp\devicemodels\scripts\IncreasePressure-Method.js |
+    | Services\data\devicemodels\chiller-01.JSON | C:\temp\devicemodels\chiller-01.JSON |
+    | Services\data\devicemodels\scripts\chiller-01-State.js | C:\temp\devicemodels\scripts\chiller-01-State.js |
+    | Services\data\devicemodels\scripts\Reboot-Method.js | C:\temp\devicemodels\scripts\Reboot-Method.js |
+    | Services\data\devicemodels\scripts\FirmwareUpdate-Method.js | C:\temp\devicemodels\scripts\FirmwareUpdate-Method.js |
+    | Services\data\devicemodels\scripts\EmergencyValveRelease-Method.js | C:\temp\devicemodels\scripts\EmergencyValveRelease-Method.js |
+    | Services\data\devicemodels\scripts\IncreasePressure-Method.js | C:\temp\devicemodels\scripts\IncreasePressure-Method.js |
 
 1. Otevřít **C:\temp\devicemodels\chiller-01.json** souboru.
-
-1. Aktualizace **SchemaVersion** hodnota následujícím způsobem:
-
-    ```json
-    "SchemaVersion": "1.0.0",
-    ```
 
 1. V **InitialState** části, přidejte následující dvě definice:
 
@@ -419,9 +415,9 @@ V této části provedete testovací typy zařízení, které jste vytvořili v 
 
 ### <a name="run-the-device-simulation-microservice"></a>Spustit mikroslužeb simulace zařízení
 
-Otevřít **remote-monitoring-services-dotnet-master\device-simulation** složky, které jste si stáhli z Githubu v nové instanci sady Visual Studio Code. Získáte po kliknutí na **obnovení** tlačítka a opravte všechna nevyřešené závislosti.
+Otevřít **zařízení simulace dotnet-master** složky, které jste si stáhli z Githubu v nové instanci sady Visual Studio Code. Získáte po kliknutí na **obnovení** tlačítka a opravte všechna nevyřešené závislosti.
 
-Otevřít **.vscode/launch.json** soubor a přiřadit k připojovací řetězec služby IoT Hub **PCS_IOTHUB_CONNSTRING** proměnné prostředí.
+Otevřít **.vscode/launch.json** soubor a přiřadit k připojovací řetězec služby IoT Hub **PCS_IOTHUB_CONNSTRING** proměnné prostředí. Ve stejném souboru přidejte **PCS_STORAGEADAPTER_DOCUMENTDB_CONNSTRING** proměnné prostředí a přiřazovat připojovacím řetězcem pro vaši databázi Cosmos DB.
 
 Otevřít **WebService/Properties/launchSettings.json** soubor a přiřadit k připojovací řetězec služby IoT Hub **PCS_IOTHUB_CONNSTRING** proměnné prostředí.
 
@@ -465,7 +461,7 @@ Nastavení nástroje Postman:
 
 1. Klikněte na tlačítko **soubor > Import**. Pak klikněte na tlačítko **vybrat soubory**.
 
-1. Přejděte **zařízení – simulace dotnet/docs/postman** složky. Vyberte **simulace zařízení Azure IoT řešení accelerator.postman_collection** a **simulace zařízení Azure IoT řešení accelerator.postman_environment** a klikněte na tlačítko **otevřete**.
+1. Přejděte **zařízení – simulace dotnet-master/docs/postman** složky. Vyberte **simulace zařízení Azure IoT řešení accelerator.postman_collection** a **simulace zařízení Azure IoT řešení accelerator.postman_environment** a klikněte na tlačítko **otevřete**.
 
 1. Rozbalte **akcelerátor řešení simulace zařízení IoT Azure** na požadavky můžete odesílat.
 

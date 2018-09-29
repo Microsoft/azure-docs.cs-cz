@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: lizross
-ms.openlocfilehash: 66e3e37d0f42516c67cfe37c42db3b3914cbb667
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: f5a148cba172b4e1e4490b52afb3b500da3a593c
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730543"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434156"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Plány nasazení Azure Active Directory
 Hledáte kompletní pokyny pro nasazení některých funkcí Azure Active Directory (Azure AD)? Následující plány nasazení popisují obchodní hodnotu, důležité informace o plánování, návrh a provozní postupy potřebné k úspěšnému zavedení několika běžnějších funkcí Azure AD. 
@@ -27,6 +27,7 @@ Velmi bychom uvítali váš názor na tyto dokumenty. Vyplňte tento krátký [d
 |Scénář |Popis |
 |-|-|
 |[Jednotné přihlašování](https://aka.ms/SSODPDownload)|Jednotné přihlašování pomáhá získat přístup ke všem aplikacím a prostředkům, které potřebujete ke své obchodní činnosti, prostřednictvím jediného přihlášení s použitím jednoho uživatelského účtu. Po přihlášení můžete přecházet například mezi Microsoft Office, SalesForce a Boxem, aniž by se po vás vyžadovalo další ověření (například zadáním hesla).|
+|[Zřizování WORKDAY řízené příchozí uživatelů](https://aka.ms/WorkdayDeploymentPlan)|Řízené WORKDAY příchozího zřizování uživatelů služby Active Directory vytvoří základ pro zásady správného řízení identit probíhající a zvyšuje kvalitu obchodních procesů, které jsou závislé na datech autoritativní identity. Pomocí této funkce můžete bez problémů spravovat životní cyklus identity zaměstnanců a zaměstnanců contingent tím, že nakonfigurujete pravidla, která mapují spojovač. funkci Leaver procesů (např. nové zařazení, ukončení, přenos) pro zřizování akce IT (jako je například vytvoření, povolit, Zakázat, odstraňovat účty).|
 |[Přístupový panel](https://aka.ms/AccessPanelDPDownload)|Nabízejí uživatelům jednoduchý hub ke zjištění a přístupu k aplikacím. Mohly být produktivnější díky samoobslužné funkce, jako je například umožňuje žádat o přístup k nové aplikace a skupiny, nebo spravovat přístup k těmto prostředkům jménem jiných uživatelů.|
 |[Zřizování uživatelů](https://aka.ms/UserProvisioningDPDownload)|Azure AD pomáhá automatizovat vytváření, údržbu a odebírání identit uživatelů v cloudových aplikacích (SaaS), jako jsou Dropbox, Salesforce, ServiceNow a další.|
 |[Multi-Factor Authentication](https://aka.ms/MFADPDownload)|Azure Multi-Factor Authentication (MFA) je řešení dvoustupňového ověřování od Microsoftu. Použitím metod ověřování schválených správcem pomáhá Azure MFA chránit přístup k datům a aplikacím a současně splňuje požadavky na jednoduchý proces přihlašování.|

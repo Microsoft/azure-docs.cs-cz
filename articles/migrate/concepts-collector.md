@@ -4,15 +4,15 @@ description: Poskytuje informace o zařízení Kolektoru ve službě Azure Migra
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 09/28/2018
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 88bc0bdc29d1f578bd0d314c5c7425026dfd2d22
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: b79045e54b9c2ee4846f2216704a419e0ff85501
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160874"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434428"
 ---
 # <a name="about-the-collector-appliance"></a>Informace o zařízení Kolektoru
 
@@ -28,13 +28,13 @@ Nasazení pomocí šablony OVF zařízení Kolektoru:
 - Stáhněte šablonu OVF z projektu Azure Migrate na webu Azure Portal. Importujte stažený soubor do vCenter serveru, nastavení zařízení Kolektoru virtuálního počítače.
 - Z OVF nastaví VMware virtuální počítač s 4 jádra, 8 GB paměti RAM a jeden disk 80 GB. Operační systém je Windows Server 2012 R2 (64bitová verze).
 - Při spuštění Kolektoru, abyste měli jistotu, že kolektor může připojit k Azure Migrate spustit řadu kontrol požadovaných součástí.
- 
-- [Další informace](tutorial-assessment-vmware.md#create-the-collector-vm) o vytváření kolekcí. 
+
+- [Další informace](tutorial-assessment-vmware.md#create-the-collector-vm) o vytváření kolekcí.
 
 
 ## <a name="collector-prerequisites"></a>Požadavky na kolekce
 
-Kolekce musí úspěšně projít několik kontroly splnění podmínek se můžete připojit ke službě Azure Migrate přes internet a nahrávání zjištěné data. 
+Kolekce musí úspěšně projít několik kontroly splnění podmínek se můžete připojit ke službě Azure Migrate přes internet a nahrávání zjištěné data.
 
 - **Zkontrolujte připojení k Internetu**: The kolekcí může připojit k Internetu přímo nebo prostřednictvím proxy serveru.
     - Kontrola předpokladů ověří připojení k [povinné a nepovinné adresy URL](#connect-to-urls).
@@ -71,12 +71,12 @@ Kolekce musí úspěšně projít několik kontroly splnění podmínek se můž
     ![Umístění úložiště certifikátů](./media/concepts-intercepting-proxy/certificate-store-location.png)
 
     6. Vyberte **všechny certifikáty umístit v následujícím úložišti** > **Procházet** > **Důvěryhodní vydavatelé**. Klikněte na tlačítko **Dokončit** importujte certifikát.
-    
+
     ![Úložiště certifikátů](./media/concepts-intercepting-proxy/certificate-store.png)
 
     7. Zkontrolujte, že je certifikát importován podle očekávání a zkontrolujte, že internetové připojení kontrolu požadovaných součástí funguje podle očekávání.
 
-    
+
 
 
 ### <a name="connect-to-urls"></a>Připojení k adresám URL
@@ -87,7 +87,7 @@ Kontrola připojení se ověří pomocí připojení k seznamu adres URL.
 --- | --- | ---
 *.portal.azure.com | Zkontroluje připojení pomocí služby Azure a synchronizaci času. | Přístup k je vyžadována adresa URL.<br/><br/> Kontrola předpokladů selže, pokud neexistuje žádná připojení.
 *.oneget.org:443<br/><br/> *.windows.net:443<br/><br/> *.windowsazure.com:443<br/><br/> *. powershellgallery.com:443<br/><br/> *.msecnd.net:443<br/><br/> *.visualstudio.com:443| Použít ke stažení modulu PowerShell vCenter PowerCLI. | Přístup k adresám URL, které jsou volitelné.<br/><br/> K selhání kontroly požadavků.<br/><br/> Instalace modulu automatické na virtuálním počítači Kolektoru se nezdaří. Bude nutné ručně nainstalovat modul.
- 
+
 
 ### <a name="install-vmware-powercli-module-manually"></a>Ruční instalace VMware PowerCLI modulu
 
@@ -104,7 +104,7 @@ Kolektor se připojí k serveru vCenter a dotazy na metadata virtuálního poč�
 - Ve výchozím nastavení připojení k serveru vCenter s plně kvalifikovaný název domény nebo IP adresu. Pokud systém vCenter Server naslouchá na jiném portu, k němu připojíte pomocí formuláře *IPAddress:Port_Number* nebo *FQDN:Port_Number*.
 - Ke shromažďování dat výkonu úložiště a sítě, nastavení Statistika pro vCenter Server musí být nastavené na úroveň 3.
 - Pokud úroveň je nižší než tři, Princip zjišťování, ale data o výkonu nebudou shromažďovány. Mohou být shromažďovány čítače, ale druhý se nastaví na hodnotu nula.
-- Pokud nejsou shromažďována data o výkonu úložiště a sítě, jsou doporučení pro interní hodnocení velikost dat na základě výkonu procesoru a paměti a na konfigurační data pro disk a síťové adaptéry. 
+- Pokud nejsou shromažďována data o výkonu úložiště a sítě, jsou doporučení pro interní hodnocení velikost dat na základě výkonu procesoru a paměti a na konfigurační data pro disk a síťové adaptéry.
 - Kolekce by měly mít síť dohled k serveru vCenter.
 
 #### <a name="account-permissions"></a>Oprávnění účtu
@@ -125,13 +125,10 @@ Kolektor komunikuje dle souhrnu v následující diagram a tabulky.
 --- | --- | ---
 Služba Azure Migrate | TCP 443 | Kolekce komunikuje se službou Azure Migrate přes SSL 443.
 vCenter Server | TCP 443 | Kolekce musí být schopný komunikovat s systému vCenter Server.<br/><br/> Ve výchozím nastavení připojí k serveru vCenter na 443.<br/><br/> Pokud systém vCenter Server naslouchá na jiném portu, tento port by měl být k dispozici jako odchozí port na Kolektoru.
-Protokol RDP | TCP 3389 | 
-
-
+Protokol RDP | TCP 3389 |
 
 
 ## <a name="securing-the-collector-appliance"></a>Zabezpečení zařízení Kolektoru
-
 
 Doporučujeme následující postup k zabezpečení zařízení Kolektoru:
 
@@ -141,19 +138,23 @@ Doporučujeme následující postup k zabezpečení zařízení Kolektoru:
 - Po dokončení migrace, odstraňte instanci zařízení.
 - Kromě toho po migraci, také odstraňte záložní soubory disku (Vmdk), jako disky mít přihlašovací údaje k vCenter do mezipaměti na ně.
 
-## <a name="updating-the-collector-vm"></a>Aktualizuje se virtuální počítač Kolektoru
+## <a name="os-license-in-the-collector-vm"></a>Licence operačního systému ve virtuálním počítači kolektoru
 
-Doporučujeme spustit průběžné aktualizace Windows na zařízení Kolektoru.
+Kolektor se dodává s zkušební licence Windows serveru 2012 R2, který je platný po dobu 180 dnů. Pokud vyprší platnost zkušební období pro váš virtuální počítač kolektoru, doporučujeme stáhnout nové soubory OVA a vytvořit nové zařízení.
+
+## <a name="updating-the-os-of-the-collector-vm"></a>Aktualizujte operační systém virtuálního počítače Kolektoru
+
+I když zařízení kolektoru zkušební licence po dobu 180 dnů, je potřeba průběžně aktualizovat operačního systému na zařízení, aby se zabránilo automatické vypnutí dolů na zařízení.
 
 - Pokud kolekce není aktualizován po dobu 60 dnů, se spustí automaticky vypnutí počítače.
 - Pokud je funkce zjišťování spuštěna, počítače nebudou vypnout, i v případě, že jste předali 60 dnů. Tento počítač bude vypnutý, po dokončení zjišťování.
-- Pokud po dobu více než 45 dnů jste použili Kolektoru, doporučujeme počítač aktualizoval na celou dobu spuštění aktualizace Windows.
+- Pokud po dobu více než 60 dnů jste použili Kolektoru, doporučujeme počítač aktualizoval na celou dobu spuštění aktualizace Windows.
 
 ## <a name="upgrading-the-collector-appliance-version"></a>Upgrade verze zařízení Kolektoru
 
 Kolekce můžete upgradovat na nejnovější verzi bez stáhnout soubor OVA znovu.
 
-1. Stáhněte si [nejnovější uvedené balíček s upgradem](concepts-collector-upgrade.md) 
+1. Stáhněte si [nejnovější uvedené balíček s upgradem](concepts-collector-upgrade.md)
 2. Tak, aby byl zabezpečený stažené oprav hotfix, otevřete okno příkazového řádku pro správce a spusťte následující příkaz, kterým vygenerujete hodnotu hash pro soubor ZIP. Vygenerovaná hodnota hash by měla odpovídat symbolem hash uvedených proti konkrétní verzi:
 
     ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
@@ -179,8 +180,6 @@ Komunikuje se jednorázově do systému vCenter Server ke shromažďování meta
 - Po nastavení úrovně na tři, to trvá až jeden den generovat čítače výkonu. Proto doporučujeme, abyste spustili zjišťování po jeden den.
 - Při shromažďování dat výkonu pro virtuální počítač, na zařízení se spoléhá na výkon historických dat uložených v systému vCenter Server. Shromažďuje historie výkonu za poslední měsíc.
 - Azure Migrate shromažďuje průměrnou čítače (spíše než čítače ve špičce) pro jednotlivé metriky.
-     
-
 
 ### <a name="continuous-discovery"></a>Průběžná zjišťování
 
@@ -191,12 +190,12 @@ Zařízení Kolektoru je trvalým připojením k projektu Azure Migrate.
 - Zařízení shrnuje ukázky 20 sekund a vytvoří jeden datový bod každých 15 minut.
 - Tato data vytváří bod zařízení vybere nejvyšší hodnotu z 20 sekund vzorků a odešle ji do Azure.
 - Můžete zastavit průběžné profilování v kdykoli z kolekce.
-     
+
 > [!NOTE]
 > Průběžná zjišťování funkce je ve verzi preview. Nastavení statistiky vCenter Server není nastaven na úroveň 3, doporučujeme použít tuto metodu.
 
 
-## <a name="discovery-process"></a>Proces zjišťování 
+## <a name="discovery-process"></a>Proces zjišťování
 
 Po nastavení zařízení, můžete spustit zjišťování. Zde je, jak to funguje:
 
@@ -208,7 +207,6 @@ Po nastavení zařízení, můžete spustit zjišťování. Zde je, jak to fungu
 - Zjištění virtuálních počítačů a jejich metadat a výkonu data se odesílají do Azure. Tyto akce jsou součástí úlohy kolekce.
     - Zařízení Kolektoru je přiřazena určité ID kolekce, která je pro daný počítač trvalé zjišťování.
     - Spuštěné úlohy kolekce je zadané ID konkrétní relace. ID změní pro každou úlohu kolekce a lze použít pro řešení potíží s.
-
 
 ### <a name="collected-metadata"></a>Shromáždila se metadata
 
@@ -223,13 +221,10 @@ Zařízení kolektoru zjistí následující statické metadata pro virtuální 
 - Velikost paměti, velikosti disků
 - Čítače výkonu virtuálních počítačů, disku a sítě.
 
-
-
 #### <a name="performance-counters"></a>Čítače výkonu
 
+- **Jednorázově**: když čítače se shromažďují, aby jednorázově, pamatujte na Tyhle věci:
 
-- **Jednorázově**: když čítače se shromažďují, aby jednorázově, pamatujte na Tyhle věci: 
-        
     - Může trvat až 15 minut pro shromažďování a odesílání metadat konfigurace do projektu.
     - Po shromáždění dat konfigurace, může trvat až hodinu, údaje o výkonu k dispozici na portálu.
     - Po metadat je k dispozici na portálu, zobrazí se seznam virtuálních počítačů a můžete začít vytvářet skupiny pro posouzení.
@@ -237,10 +232,8 @@ Zařízení kolektoru zjistí následující statické metadata pro virtuální 
     - Konfigurační data pro virtuální počítač je k dispozici hodinu po spuštění zjišťování
     - Údaje o výkonu se spustí poté jsou dostupné po 2 hodinách.
     - Po spuštění zjišťování pro zařízení, která má být profilována prostředí před vytvořením posouzení alespoň den počkejte.
-    
-   
 
-**Čítač** | **Úroveň** | **Úroveň podle zařízení** | **Dopad na posouzení** 
+**Čítač** | **Úroveň** | **Úroveň podle zařízení** | **Dopad na posouzení**
 --- | --- | --- | ---
 CPU.Usage.average | 1 | Není k dispozici | Doporučené velikosti virtuálních počítačů a náklady  
 mem.usage.average | 1 | Není k dispozici | Doporučené velikosti virtuálních počítačů a náklady  
@@ -250,9 +243,6 @@ virtualDisk.numberReadAveraged.average | 1 | 3 |  Vypočítá velikost disku, n�
 virtualDisk.numberWriteAveraged.average | 1 | 3 |   Vypočítá velikost disku, náklady na úložiště, velikost virtuálního počítače
 net.received.average | 2 | 3 |  Vypočítá náklady na velikost a sítě virtuálních počítačů                        |
 net.transmitted.average | 2 | 3 | Vypočítá náklady na velikost a sítě virtuálních počítačů    
-
-
-
 
 ## <a name="next-steps"></a>Další postup
 

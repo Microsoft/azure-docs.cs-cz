@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: a13cb0360a33c301129f2975ce67580204602d9a
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 8ff418c24e9171d452bca873c4b8f66ada2adb7c
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381156"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47431322"
 ---
 # <a name="general-claims-transformations"></a>Obecná deklarace identity transformace
 
@@ -61,7 +61,7 @@ Hash – zadaná jako prostý text pomocí sůl a tajný klíč.
 | InputClaim | ve formátu prostého textu | řetězec | Vstupní deklaraci identity šifrování |
 | InputClaim | Hodnota Salt | řetězec | Parametr řetězce salt. Můžete vytvořit náhodnou hodnotu pomocí `CreateRandomString` transformace deklarací identity. |
 | InputParameter | randomizerSecret | řetězec | Odkazuje na existující Azure AD B2C **klíče zásad**. Chcete-li vytvořit novou: ve vašem tenantovi Azure AD B2C vyberte **nastavení B2C > architekturu rozhraní identit**. Vyberte **klíče zásad** zobrazíte klíče, které jsou k dispozici ve vašem tenantovi. Vyberte **Přidat**. Pro **možnosti**vyberte **ruční**. Zadejte název (Zadaná předpona B2C_1A_ mohou být přidány automaticky.). V dialogovém okně tajného kódu zadejte jakékoli tajný klíč, který chcete použít, jako je například 1234567890. Použití klíče, vyberte **tajný klíč**. Vyberte **Vytvořit**. |
-| outputClaim | outputClaim | Boolean | Zavolání typu deklarace identity, který je vytvořen po to transformace deklarací identity. Deklarace identity gurovaný `plaintext` inputClaim. |
+| outputClaim | Hodnota hash | řetězec | Zavolání typu deklarace identity, který je vytvořen po to transformace deklarací identity. Deklarace identity gurovaný `plaintext` inputClaim. |
 
 ```XML
 <ClaimsTransformation Id="HashPasswordWithEmail" TransformationMethod="Hash">

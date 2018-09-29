@@ -2,27 +2,22 @@
 title: Příklad PowerShellu – Synchronizace mezi službou SQL Database a místním SQL Serverem | Microsoft Docs
 description: Ukázkový skript Azure PowerShellu pro synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru
 services: sql-database
-documentationcenter: sql-database
-author: allenwux
-manager: craigg
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: sql-database
-ms.custom: load & move data, mvc
+ms.subservice: data-movement
+ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: sample
-ms.tgt_pltfrm: sql-database
-ms.workload: database
-ms.date: 04/01/2018
+author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: f616cfb32164950b85a559d4e06b273212aec4b6
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+manager: craigg
+ms.date: 04/01/2018l
+ms.openlocfilehash: 6d8577bc54c3dd98ba0e81f60595e5c24d0061bf
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049429"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47054060"
 ---
 # <a name="use-powershell-to-sync-between-a-sql-database-and-a-sql-server-on-premises-database"></a>Použití PowerShellu k synchronizaci mezi službou SQL Database a místní databází SQL Serveru
 

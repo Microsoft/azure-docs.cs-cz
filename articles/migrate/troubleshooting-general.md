@@ -4,14 +4,14 @@ description: Poskytuje základní informace o známých problémech ve službě 
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 09/28/2018
 ms.author: raynew
-ms.openlocfilehash: ca0931810fd78ce4cc684ad307efeb866cee3353
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 906c6e56b670dfc26b5905a453fd43a3c72086c3
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165293"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433493"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Řešení problémů s Azure Migrate
 
@@ -92,9 +92,11 @@ Azure Migrate collector PowerCLI stáhne a nainstaluje na zařízení. Chyba př
 
 ### <a name="error-unhandledexception-internal-error-occured-systemiofilenotfoundexception"></a>Chyba interní chybě UnhandledException: System.IO.FileNotFoundException
 
-K těmto potížím dochází u Collectoru verze nižší než 1.0.9.5. S těmito potížemi se setkáte, pokud používáte Collector verze 1.0.9.2 nebo verze před GA, jako je 1.0.8.59. [Podrobnou odpověď najdete pomocí uvedeného odkazu na fóra](https://social.msdn.microsoft.com/Forums/azure/en-US/c1f59456-7ba1-45e7-9d96-bae18112fb52/azure-migrate-connect-to-vcenter-server-error?forum=AzureMigrate).
+Tomuto problému může dojít kvůli problému s instalací VMware PowerCLI. Postupujte podle níže uvedený postup k vyřešení daného problému:
 
-[Pokud chcete tyto potíže vyřešit, upgradujte Collector](https://aka.ms/migrate/col/checkforupdates).
+1. Pokud nejste na nejnovější verzi zařízení kolektoru [na nejnovější verzi, upgradujte Collector](https://aka.ms/migrate/col/checkforupdates) a zkontrolujte, jestli se problém vyřeší.
+2. Pokud už máte nejnovější verzi kolektoru, ručně nainstalujte [VMware PowerCLI 6.5.2](https://www.powershellgallery.com/packages/VMware.PowerCLI/6.5.2.6268016) a zkontrolujte, jestli se problém vyřeší.
+3. Pokud výše uvedené není problém vyřešit, přejděte do složky C:\Program Files\ProfilerService a odebrat VMware.dll a VimService65.dll soubory k dispozici ve složce a poté restartujte službu Azure Migrate Collector ve správě služby Windows (otevřít. Spustit "a zadejte 'services.msc' Chcete-li otevřít Správce služby Windows).
 
 ### <a name="error-unabletoconnecttoserver"></a>Chyba UnableToConnectToServer
 

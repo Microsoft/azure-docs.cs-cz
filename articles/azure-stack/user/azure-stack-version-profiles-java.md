@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 09/28/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: b5a876ea8b5cc70ee0ca0dcac8628c12dc2b009b
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: ffd22f3612d55258737cb9c004b2b0f4e9326f07
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47413347"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452509"
 ---
 # <a name="use-api-version-profiles-with-java-in-azure-stack"></a>Použití profilů verzí API s Javou v Azure stacku
 
@@ -63,7 +63,7 @@ Instalace sady Java SDK, postupujte následovně:
 
 1.  Postupujte podle pokynů oficiální nainstalujte Git. Pokyny najdete v tématu [Začínáme - instalaci Gitu](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
-2.  Oficiální pokyny k instalaci [sady Java SDK](http://zulu.org/download/)) a [Maven](https://maven.apache.org/). Správná verze je verze 8 Java Developer Kit. Správné Apache Maven je verze 3.0 nebo vyšší. Proměnná prostředí JAVA_HOME musí nastavit na umístění instalace sady Java Development Kit k dokončení tohoto rychlého startu. Další informace najdete v tématu [vytvoření první funkce pomocí Javy a Mavenu](../../azure-functions/functions-create-first-java-maven.md).
+2.  Oficiální pokyny k instalaci [sady Java SDK](http://zulu.org/download/) a [Maven](https://maven.apache.org/). Správná verze je verze 8 Java Developer Kit. Správné Apache Maven je verze 3.0 nebo vyšší. Proměnná prostředí JAVA_HOME musí nastavit na umístění instalace sady Java Development Kit k dokončení tohoto rychlého startu. Další informace najdete v tématu [vytvoření první funkce pomocí Javy a Mavenu](../../azure-functions/functions-create-first-java-maven.md).
 
 3.  K instalaci správné závislé balíčky, otevřete soubor Pom.xml ve vaši aplikaci v Javě. Přidáte závislost, jak je znázorněno v následujícím kódu:
 
@@ -89,7 +89,7 @@ Instalace sady Java SDK, postupujte následovně:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Použití sady .NET SDK pro Azure pomocí služby Azure Stack, musíte zadat následující hodnoty a pak nastavte hodnoty proměnné prostředí. Chcete-li nastavit proměnné prostředí, přečtěte si pokyny pod tabulkou pro váš operační systém.
+Použití sady Java SDK pro Azure pomocí služby Azure Stack, musíte zadat následující hodnoty a pak nastavte hodnoty proměnné prostředí. Chcete-li nastavit proměnné prostředí, přečtěte si pokyny pod tabulkou pro váš operační systém.
 
 | Hodnota                     | Proměnné prostředí | Popis                                                                                                                                                                                                          |
 | ------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -128,7 +128,9 @@ Mějte na paměti následující aspekty:
 
 - **ResourceManagerUrl** je v Azure Stack Development Kit (ASDK): https://management.local.azurestack.external/
 
-- **ResourceManagerUrl** v integrovaných systémech je: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` pro načtení metadat vyžaduje: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
+- **ResourceManagerUrl** v integrovaných systémech je: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`
+
+Načíst metadata, požadované: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`.
 
 Ukázkový soubor JSON:
 
@@ -149,9 +151,7 @@ Ukázkový soubor JSON:
 
 1.  **com.microsoft.Azure.Profile\_2018\_03\_01\_hybridní**: nejnovější profil vytvořené pro Azure Stack. Použijte tento profil služby bude nejvíc kompatibilní se systémem Azure Stack, dokud jsou na razítku. 1808 a další.
 
-2.  **com.microsoft.Azure.Profile\_2017\_03\_09\_profilu**: Pokud používáte nižší než sestavení. 1808 razítka, použít tento profil.
-
-3.  **com.microsoft.Azure**: profil, který se skládá z nejnovější verze všech služeb. Použijte nejnovější verze všech služeb.
+2.  **com.microsoft.Azure**: profil, který se skládá z nejnovější verze všech služeb. Použijte nejnovější verze všech služeb.
 
 Další informace o profilech rozhraní API a služby Azure Stack, najdete v článku [souhrn rozhraní API profily](../user/azure-stack-version-profiles.md#summary-of-api-profiles).
 
@@ -231,14 +231,14 @@ Následující ukázky na Githubu jako reference můžete použít k vytvářen�
 
 2.  Vytvoření instančního objektu Azure a přiřazení role přístupu k předplatnému. Pokyny k vytvoření instančního objektu najdete v tématu [pomocí prostředí Azure PowerShell k vytvoření instančního objektu s certifikátem](../azure-stack-create-service-principals.md).
 
-3.  Načte následující požadované hodnoty:
+3.  Načtěte následující hodnoty proměnné požadované prostředí:
     
-   1.  ID tenanta
-   2.  ID klienta
-   3.  Tajný kód klienta
-   4.  ID předplatného
-   5.  Koncový bod Resource Manageru
-   6.  Umístění prostředku
+   1.  TENANT_ID
+   2.  CLIENT_ID
+   3.  HODNOTA CLIENT_SECRET
+   4.  SUBSCRIPTION_ID
+   5.  ARM_ENDPOINT
+   6.  RESOURCE_LOCATION
 
 4.  Nastavte následující proměnné prostředí pomocí informace, které jste získali z instanční objekt vytvoříte pomocí příkazového řádku:
     
@@ -273,10 +273,8 @@ Následující ukázky na Githubu jako reference můžete použít k vytvářen�
    HttpResponse response = httpClient.execute(getRequest);
    ```
 
-7.  Do souboru pom.xml přidáte závislost níže použít profil 2018-03-01hybridní pro službu Azure Stack. Tato závislost nainstaluje moduly spojený s tímto profilem pro poskytovatele prostředků Compute, sítě, úložiště, trezor klíčů a App Services.
-    
-   Mějte na paměti, které můžete použít nejnovější profil k cíli Azure:
-        
+6.  Do souboru pom.xml přidáte závislost níže použít profil 2018-03-01hybridní pro službu Azure Stack. Tato závislost nainstaluje moduly spojený s tímto profilem pro poskytovatele prostředků Compute, sítě, úložiště, trezor klíčů a App Services.
+      
    ```xml
    <dependency>
    <groupId>com.microsoft.azure.profile_2018_03_01_hybrid</groupId>

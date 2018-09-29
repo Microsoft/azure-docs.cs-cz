@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: deguhath
-ms.openlocfilehash: 6e58429567e447002b1c9191bb8e50a4351649a9
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 6e9813d989a54dbb1609a58dd502a7493d973faa
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42060794"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433714"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Vědecké zpracování týmových dat v akci: použití serveru SQL Server
 V tomto kurzu vás provede procesem sestavování a nasazování modelu strojového učení pomocí SQL serveru a veřejně dostupné datové sady – [cesty taxíkem NYC](http://www.andresmh.com/nyctaxitrips/) datové sady. Postup následující pracovní postup standardních datových věd: ingestování a zkoumání dat, navrhování funkcí usnadnění vzdělávání, pak sestavit a nasadit model.
@@ -582,7 +582,7 @@ V tomto cvičení jsme mít již prozkoumali a analýzou dat v systému SQL Serv
 2. Vyberte **Azure SQL Database** jako **zdroj dat** v **vlastnosti** panelu.
 3. Zadejte název DNS databáze **název databázového serveru** pole. Formát: `tcp:<your_virtual_machine_DNS_name>,1433`
 4. Zadejte **název_databáze** v odpovídajícím poli.
-5. Zadejte **uživatelské jméno SQL** v ** aqccount uživatelského jména a hesla **heslo uživatelského účtu serveru**.
+5. Zadejte **uživatelské jméno SQL** v **název uživatelského účtu serveru**a **heslo** v **heslo uživatelského účtu serveru**.
 7. V **databázový dotaz** upravit textovou oblast, vložte dotaz, který extrahuje nezbytné databázová pole (včetně jakékoli vypočítaná pole, jako jsou štítky) a dolů vzorkuje data, která mají velikost požadovaného vzorku.
 
 Na následujícím obrázku je příklad binární klasifikace: experiment čtení dat přímo z databáze SQL serveru. Podobně jako experimenty může být vytvořen pro klasifikace víc tříd a regresní problémy.

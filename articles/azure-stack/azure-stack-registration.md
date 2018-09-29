@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2018
+ms.date: 09/28/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 6a929c0226734a95e088e78307f2bbcc0571adef
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 09f5dbdb173e1613ed942391da7baaeb045654e4
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364597"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452526"
 ---
 # <a name="register-azure-stack-with-azure"></a>Registrace Azure Stack s Azure
 
@@ -94,6 +94,19 @@ Nasazení Azure Stack může být *připojené* nebo *odpojení*.
  - **Odpojení**  
  S odpojené od možnost nasazení v Azure, můžete nasadit a používat Azure Stack bez připojení k Internetu. Odpojené nasazení jste ale omezeni na úložiště identity služby AD FS a model fakturace založená na kapacitě.
     - [Registrace odpojeného pomocí služby Azure Stack **kapacity** model fakturace ](#register-disconnected-with-capacity-billing)
+
+### <a name="determine-a-unique-registration-name-to-use"></a>Určení názvu jedinečným registračním použití 
+Při registraci služby Azure Stack v Azure, je nutné zadat název jedinečný registrace. Snadný způsob, jak přidružit Azure registraci předplatného Azure Stack je použití služby Azure Stack **ID cloudu**. 
+
+> [!NOTE]
+> Azure Stack registrace pomocí modelu fakturace na základě kapacity bude nutné změnit jedinečný název, při registraci znovu po vypršení platnosti těchto ročních předplatných.
+
+Pokud chcete zjistit ID cloudu pro vaše nasazení Azure Stack, otevřete PowerShell jako správce v počítači, než můžete přístup k privilegovaným koncový bod, spusťte následující příkazy a zaznamenejte **CloudID** hodnotu: 
+
+```powershell
+Run: Enter-PSSession -ComputerName <privileged endpoint computer name> -ConfigurationName PrivilegedEndpoint
+Run: get-azurestackstampinformation 
+```
 
 ## <a name="register-connected-with-pay-as-you-go-billing"></a>Registrace připojených s průběžnými platbami fakturace
 
@@ -257,7 +270,7 @@ Dále je třeba načíst z registrace prostředku v Azure vytvořit během regis
 Aktivační klíč získáte spuštěním následující rutiny prostředí PowerShell:  
 
   ```Powershell
-  $RegistrationResourceName = "AzureStack-<Cloud Id for the Environment to register>"
+  $RegistrationResourceName = "AzureStack-<unique-registration-name>"
   $KeyOutputFilePath = "$env:SystemDrive\ActivationKey.txt"
   $ActivationKey = Get-AzsActivationKey -RegistrationName $RegistrationResourceName -KeyOutputFilePath $KeyOutputFilePath
   ```
@@ -351,7 +364,7 @@ Registrační token použitý k vytvoření prostředku můžete použít:
 Nebo můžete použít název registrace:
 
   ```Powershell
-  $registrationName = "AzureStack-<Cloud ID of Azure Stack Environment>"
+  $registrationName = "AzureStack-<unique-registration-name>"
   Unregister-AzsEnvironment -RegistrationName $registrationName
   ```
 

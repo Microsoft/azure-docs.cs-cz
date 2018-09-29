@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/08/2018
 ms.author: fauhse
 ms.component: files
-ms.openlocfilehash: b32f388974f03ece206ae4eaece39f1a242d31e2
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 25bec4bdbae5b206d23fa300f139f55f86b8167e
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408535"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434377"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Nastavení proxy a firewallu Synchronizace souborů Azure
 Azure File Sync se připojí k Azure Files umožňuje synchronizaci více webů a funkce vrstvení cloudu na místních serverech. V důsledku toho musí být na místním serveru připojený k Internetu. Správce IT je potřeba rozhodnout nejlepší cestu pro server k získání přístupu do cloudových služeb Azure.
@@ -100,7 +100,7 @@ Následující tabulka popisuje požadovaných domén pro komunikace:
 | **Azure Active Directory** | https://graph.windows.net/ | Jako součást nasazení Azure File Sync se vytvoří instanční objekt služby ve službě Active Directory předplatného Azure. Pro, který se používá tuto adresu URL. Tento objekt se používá pro delegování minimální sadu práv ve službě Azure File Sync. Uživatel provádějící počáteční nastavení služby Azure File Sync musí být ověřený uživatel s oprávněními vlastníka předplatného. |
 | **Azure Storage** | &ast;.core.windows.net | Pokud server stáhne soubor, pak server provede tento přesun dat efektivněji přímo s sdílené složky Azure v účtu úložiště. Server má klíč SAS, která povoluje jenom pro přístup ke sdílené složce cílového souboru. |
 | **Azure File Sync** | &ast;.one.microsoft.com | Po registraci počáteční server přijímá na serveru místní adresu URL instance služby Azure File Sync v dané oblasti. Server může komunikovat přímo a efektivně s instancí zpracování synchronizace. použijte adresu URL. |
-| **Infrastruktura veřejných KLÍČŮ Microsoft** | http://www.microsoft.com/pki/mscorp  http://ocsp.msocsp.com | Po instalaci agenta Azure File Sync se adresa URL infrastruktury veřejných KLÍČŮ se používá ke stahování zprostředkující certifikáty vyžadované pro komunikaci se službou Azure File Sync. Adresa URL protokolu OCSP se používá ke kontrole stavu certifikátu. |
+| **Infrastruktura veřejných KLÍČŮ Microsoft** | http://www.microsoft.com/pki/mscorp  http://ocsp.msocsp.com | Po instalaci agenta Azure File Sync se adresa URL infrastruktury veřejných KLÍČŮ se používá ke stahování zprostředkující certifikáty vyžadované pro komunikaci se službou Azure File Sync a sdílené složky Azure. Adresa URL protokolu OCSP se používá ke kontrole stavu certifikátu. |
 
 > [!Important]
 > Při povolení provozu na &ast;. one.microsoft.com, provoz do více než jen synchronizační služby je možné ze serveru. Nejsou k dispozici v části subdomény mnoho další služby Microsoftu.

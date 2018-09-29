@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 09/28/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: f1541a0523ce0178ad3616a956d5188ef7df0ded
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 7278f784316fdbd7170bb69b9414911b8f5b3823
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395708"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452679"
 ---
 # <a name="azure-stack-1808-update"></a>Aktualizace služby Azure Stack. 1808
 
@@ -204,6 +204,17 @@ Toto jsou známé problémy této verze sestavení po instalaci.
 
 
 ### <a name="compute"></a>Compute
+
+- <!-- 3090289 – IS, ASDK --> Po použití. 1808 aktualizace, kterým může dojít k následujícím problémům při nasazování virtuálních počítačů se spravovanými disky:
+
+   1. Pokud předplatné bylo vytvořeno před aktualizací. 1808, nasazení virtuálního počítače se spravovanými disky může selhat s interní chybovou zprávu. Chcete chybu vyřešit, postupujte podle těchto kroků pro každé předplatné:
+      1. Portál pro klienty, přejděte na **předplatná** a vyhledejte předplatné. Klikněte na tlačítko **poskytovatelů prostředků**, klikněte na **Microsoft.Compute**a potom klikněte na tlačítko **přeregistrovat**.
+      2. V rámci stejného předplatného, přejděte na **řízení přístupu (IAM)** a ověřte, že **Azure Stack – spravovaný Disk** je uvedena.
+   2. Pokud jste nakonfigurovali prostředí s více tenanty, nasazování virtuálních počítačů v rámci služby předplacené asociovaná s adresářem hosta může selhat s interní chybovou zprávu. Chcete-li chybu vyřešit, postupujte takto:
+      1. Použít [. 1808 Azure Stack opravu Hotfix](https://support.microsoft.com/help/4465859).
+      2. Postupujte podle kroků v [v tomto článku](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) změna konfigurace všech vašich adresářů hosta.
+
+
 - <!-- 2869209 – IS, ASDK --> Při použití [ **přidat AzsPlatformImage** rutiny](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0), je nutné použít **- OsUri** parametr jako identifikátor URI, kde je odeslána na disk účtu úložiště. Pokud používáte místní cesta na disku, rutina selže s následující chybou: *dlouho běžící operace se nezdařila se stavem "Failed"*. 
 
 - <!--  2966665 – IS, ASDK --> Připojení SSD spravovaných disků úrovně premium velikosti spravovaného disku virtuální počítače (DS, DSv2, Fs, Fs_V2) selže s chybou: *nepovedlo se aktualizovat disky pro virtuální počítač 'vmname' Chyba: Požadovaná operace nejde provést, protože typ účtu úložiště. Premium_LRS' není podporována pro velikost virtuálního počítače "Standard_DS/Ds_V2/FS/Fs_v2)*

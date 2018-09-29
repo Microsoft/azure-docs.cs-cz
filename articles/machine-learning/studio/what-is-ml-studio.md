@@ -6,8 +6,6 @@ services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
 ms.author: hshapiro
-manager: hjerez
-editor: cgronlun
 ms.assetid: e65c8fe1-7991-4a2a-86ef-fd80a7a06269
 ms.service: machine-learning
 ms.component: studio
@@ -16,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 03/28/2018
-ms.openlocfilehash: cfe7f1dd932da45ae057b73817acd6bc4f859edd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b8a1723d95e6f13ca81cacc3d73aa55c6d8fa06b
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989834"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393940"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Co je Azure Machine Learning Studio?
 Microsoft Azure Machine Learning Studio je nástroj pro spolupráci, ve kterém je možné přetahováním vytvářet, testovat a nasazovat řešení prediktivní analýzy dat. Machine Learning Studio publikuje modely jako webové služby, které je možné snadno využívat ve vlastních aplikacích nebo nástrojích BI, například v Excelu.

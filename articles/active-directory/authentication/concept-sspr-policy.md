@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 8ec0947d041dc0d4f5423a48a443ab2dd86949e2
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: ee30ee4fa89ce47e8441845b088919b26ce32b31
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782531"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434264"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zásady hesel a omezení v Azure Active Directory
 
@@ -90,7 +90,7 @@ Následující tabulka popisuje nastavení zásad k dispozici heslo, které lze 
 
 | Vlastnost | Požadavky |
 | --- | --- |
-| Povolený počet znaků |<ul><li>A – Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / ` ~ “ ( ) ;</li></ul> |
+| Povolený počet znaků |<ul><li>A – Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / ` ~ " ( ) ;</li></ul> |
 | Znaky nejsou povoleny |<ul><li>Znaky Unicode.</li><li>Mezery.</li><li> Pouze silná hesla</li></ul> |
 | Omezení pro heslo |<ul><li>Minimálně 8 znaků a maximálně 16 znaků.</li><li>Silná hesla jenom: vyžaduje tři ze čtyř z následujících akcí:<ul><li>Malá písmena.</li><li>Velká písmena.</li><li>Číslice (0 – 9).</li><li>Symboly (viz předchozí omezení pro heslo).</li></ul></li></ul> |
 | Doba vypršení platnosti hesla |<ul><li>Výchozí hodnota: **90** dnů.</li><li>Hodnota je konfigurovatelná pomocí `Set-MsolPasswordPolicy` rutiny z Active Directory modulu Azure pro Windows PowerShell.</li></ul> |
