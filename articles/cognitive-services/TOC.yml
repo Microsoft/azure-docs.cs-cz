@@ -30,6 +30,8 @@ items:
   items:
   - name: Plány Azure do budoucna
     href: https://azure.microsoft.com/roadmap/?category=cognitive-services
+  - name: Podpora jazyků a oblastí
+    href: language-support.md
   - name: Ceny
     href: https://azure.microsoft.com/pricing/details/cognitive-services/
   - name: Cenová kalkulačka
@@ -42,9 +44,9 @@ items:
     href: http://go.microsoft.com/fwlink/?LinkId=698895
   - name: Znalostní báze
     href: https://cognitive.uservoice.com/knowledgebase
-ms.openlocfilehash: 233a9bb508c8e6d02fd3e95cb8176f56bc9726b9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8311019b6c4d985f40437788118eea293c78718d
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972606"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47431968"

@@ -84,6 +84,8 @@ items:
       href: batch-linux-nodes.md
     - name: Použití virtuálních počítačů s nízkou prioritou
       href: batch-low-pri-vms.md
+    - name: Kontrola chyb uzlů a fondů
+      href: batch-pool-node-error-checking.md
   - name: Správa úloh a úkolů
     items:
     - name: Příprava úlohy a dokončovací úkoly
@@ -216,9 +218,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-batch
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=batch
-ms.openlocfilehash: 4dcc965a8dadd891a323e6f609faa98cf716fb5b
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 4cf95728868db40f148d2750360f7055606d568d
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43050334"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433306"

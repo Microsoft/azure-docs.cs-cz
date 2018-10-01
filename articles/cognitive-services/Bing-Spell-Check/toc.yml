@@ -1,65 +1,72 @@
+items:
 - name: Dokumentace k rozhraní API pro kontrolu pravopisu Bingu
   href: index.yml
 - name: Přehled
   items:
-    - name: Co je rozhraní API pro kontrolu pravopisu Bingu?
-      href: proof-text.md
+  - name: Co je rozhraní API pro kontrolu pravopisu Bingu?
+    href: proof-text.md
 - name: Rychlá zprovoznění pro REST API
-  expanded: true
   items:
-    - name: 'C#'
-      href: quickstarts/csharp.md
-    - name: Java
-      href: quickstarts/java.md
-    - name: Node.js
-      href: quickstarts/nodejs.md
-    - name: PHP
-      href: quickstarts/php.md
-    - name: Python
-      href: quickstarts/python.md
-    - name: Ruby
-      href: quickstarts/ruby.md
+  - name: C#
+    href: quickstarts/csharp.md
+  - name: Java
+    href: quickstarts/java.md
+  - name: Node.js
+    href: quickstarts/nodejs.md
+  - name: PHP
+    href: quickstarts/php.md
+  - name: Python
+    href: quickstarts/python.md
+  - name: Ruby
+    href: quickstarts/ruby.md
+  expanded: true
 - name: Rychlá zprovoznění pro SDK
   items:
-    - name: 'Rychlé zprovoznění SDK v C#'
-      href: sdk-quickstart-spell-check.md
-    - name: Přehled ukázek SDK
-      href: sdk.md
+  - name: Rychlé zprovoznění SDK v C#
+    href: sdk-quickstart-spell-check.md
+  - name: Přehled ukázek SDK
+    href: sdk.md
 - name: Kurzy
   items:
-    - name: Vytvoření webové aplikace pro kontrolu pravopisu
-      href: tutorials/spellcheck.md
-    - name: 'Zdrojový kód: webová aplikace pro kontrolu pravopisu'
-      href: tutorials/spellcheck-source.md
+  - name: Vytvoření webové aplikace pro kontrolu pravopisu
+    href: tutorials/spellcheck.md
+  - name: 'Zdrojový kód: webová aplikace pro kontrolu pravopisu'
+    href: tutorials/spellcheck-source.md
 - name: Návody
   items:
-    - name: Požadavky na zobrazení a použití
-      href: UseAndDisplayRequirements.md
-    - name: Upgrade z v5 na v7
-      href: bing-spell-check-upgrade-guide-v5-to-v7.md
+  - name: Požadavky na zobrazení a použití
+    href: UseAndDisplayRequirements.md
+  - name: Upgrade z v5 na v7
+    href: bing-spell-check-upgrade-guide-v5-to-v7.md
 - name: Referenční informace
   items:
-    - name: Rozhraní API pro kontrolu pravopisu Bingu v7
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference'
-    - name: Rozhraní API pro kontrolu pravopisu Bingu v5 (stará verze)
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v5-reference'
+  - name: Rozhraní API pro kontrolu pravopisu Bingu v7
+    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference
+  - name: Rozhraní API pro kontrolu pravopisu Bingu v5 (stará verze)
+    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v5-reference
 - name: Zdroje a prostředky
   items:
-    - name: Analýzy pro rozhraní API pro kontrolu pravopisu Bingu
-      href: bing-spell-check-stats.md
-    - name: Nejčastější dotazy
-      href: bing-spell-check-resource-faq.md
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/spellcheck-api/'
-    - name: Regionální dostupnost
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/bing-api'
-    - name: Klíč předplatného
-      href: 'https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api'
-    - name: Podporované jazyky
-      href: bing-spell-check-supported-languages.md
-    - name: Vyzkoušejte si to!
-      href: 'https://azure.microsoft.com/services/cognitive-services/spell-check/'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/598195-bing-spell-check'
+  - name: Analýzy pro rozhraní API pro kontrolu pravopisu Bingu
+    href: bing-spell-check-stats.md
+  - name: Nejčastější dotazy
+    href: bing-spell-check-resource-faq.md
+  - name: Podpora jazyků a oblastí
+    href: language-support.md
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/cognitive-services/spellcheck-api/
+  - name: Regionální dostupnost
+    href: https://azure.microsoft.com/global-infrastructure/services/
+  - name: Stack Overflow
+    href: https://stackoverflow.com/questions/tagged/bing-api
+  - name: Klíč předplatného
+    href: https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api
+  - name: Vyzkoušejte si to!
+    href: https://azure.microsoft.com/services/cognitive-services/spell-check/
+  - name: UserVoice
+    href: https://cognitive.uservoice.com/forums/598195-bing-spell-check
+ms.openlocfilehash: 539de32b27a8fdb00479b280c0a0a18fe887f2b4
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432677"

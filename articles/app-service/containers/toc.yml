@@ -40,8 +40,8 @@ items:
       href: tutorial-php-mysql-app.md
     - name: Node.js s MongoDB
       href: tutorial-nodejs-mongodb-app.md
-    - name: Vlastní kontejner Pythonu s Postgresem
-      href: tutorial-docker-python-postgresql-app.md
+    - name: Python s Postgresem
+      href: tutorial-python-postgresql-app.md
   - name: Vícekontejnerová aplikace
     href: tutorial-multi-container-app.md
   - name: Vlastní image Dockeru
@@ -236,9 +236,9 @@ items:
         href: ../app-service-web-open-source-technologies-faq.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
       - name: Nejčastější dotazy ke konfiguraci a správě
         href: ../app-service-web-configuration-and-management-faq.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-ms.openlocfilehash: f0a62c3787603e34c9361184f8a71ca49ff12f23
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: e1974ed3bcd9de143f8fdac428fae57d476323e9
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222722"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434581"
