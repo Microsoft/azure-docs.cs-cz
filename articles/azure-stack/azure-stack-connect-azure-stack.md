@@ -1,6 +1,6 @@
 ---
-title: Připojení k Azure zásobníku | Microsoft Docs
-description: Zjistěte, jak se připojit k Azure zásobníku.
+title: Připojení k Azure Stack | Dokumentace Microsoftu
+description: Zjistěte, jak se připojit ke službě Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,51 +12,51 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/06/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
-ms.openlocfilehash: c1932f2ed0486fb56e467466c0fed53702e8f9b0
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 1cdf013325afe4b217f5f56043e06f60a4933419
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248682"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585624"
 ---
-# <a name="connect-to-azure-stack-development-kit"></a>Připojení k Azure zásobníku Development Kit
+# <a name="connect-to-azure-stack-development-kit"></a>Připojení k Azure Stack Development Kit
 
-*Platí pro: Azure zásobníku Development Kit*
+*Platí pro: Azure Stack Development Kit*
 
-Ke správě prostředků, musíte nejdřív připojit k Azure zásobníku Development Kit. V tomto článku jsme popisují kroky, které můžete provést připojení k sadě pro vývoj. Můžete použít jednu z následujících možností připojení:
+Ke správě prostředků, musíte se nejdřív připojit k Azure Stack Development Kit. V tomto článku jsme popisují kroky, které můžete provést pro připojení k sadě pro vývoj. Můžete použít jednu z následujících možností připojení:
 
-* [Připojení ke vzdálené ploše](#connect-with-remote-desktop). Při připojení pomocí připojení ke vzdálené ploše jednoho uživatele můžete rychle připojit k sadě pro vývoj.
-* [Virtuální privátní sítě (VPN)](#connect-with-vpn). Jakmile se připojíte pomocí sítě VPN, můžou souběžně více uživatelé připojovat ze klientům mimo infrastruktury Azure zásobníku. Připojení k síti VPN vyžaduje některé instalační program.
+* [Připojení ke vzdálené ploše](#connect-with-remote-desktop). Když se připojíte pomocí připojení ke vzdálené ploše, můžete rychle připojit jenom jednoho konkrétního uživatele development Kit.
+* [Virtuální privátní sítě (VPN)](#connect-with-vpn). Když se připojíte pomocí sítě VPN, více uživatelů současně připojit z klientům mimo infrastruktura Azure stacku. Připojení k síti VPN vyžaduje některé nastavení.
 
 <a name="connect-to-azure-stack-with-remote-desktop"></a>
-##  <a name="connect-to-azure-stack-by-using-remote-desktop-connection"></a>Připojení k Azure zásobníku pomocí připojení ke vzdálené ploše
+##  <a name="connect-to-azure-stack-by-using-remote-desktop-connection"></a>Připojení ke službě Azure Stack pomocí připojení ke vzdálené ploše
 
-Uživatel s jednotným souběžných můžete spravovat prostředky v portálu operátor nebo portálu user portal prostřednictvím připojení ke vzdálené ploše.
+Jeden souběžný uživatel může spravovat prostředky v operátoru portál nebo portál user portal prostřednictvím připojení ke vzdálené ploše.
 
-1. Otevřete připojení ke vzdálené ploše a připojte development Kit. Uživatelské jméno, zadejte **AzureStack\AzureStackAdmin**. Použijte operátor heslo, které jste zadali při nastavení Azure zásobníku.  
+1. Otevřete připojení ke vzdálené ploše a připojte se k vývojové sadě. Uživatelské jméno zadejte **AzureStack\AzureStackAdmin**. Použijte operátor heslo, které jste zadali při nastavení služby Azure Stack.  
 
-2. Na kit vývojovém počítači otevřete Správce serveru. Vyberte **místní Server**, zrušte **rozšířeného zabezpečení aplikace Internet Explorer** zaškrtněte políčko a pak zavřete Správce serveru.
+2. Ve vývojovém počítači kit otevřete Správce serveru. Vyberte **místní Server**, zrušte zaškrtnutí políčka **rozšířeného zabezpečení aplikace Internet Explorer** zaškrtněte políčko a potom zavřete Správce serveru.
 
-3. Chcete-li otevřít [portálu user portal](azure-stack-key-features.md#portal), přejděte na https://portal.local.azurestack.external/. Přihlaste se pomocí přihlašovacích údajů uživatele. Chcete-li otevřít zásobník Azure [operátor portál](azure-stack-key-features.md#portal), přejděte na https://adminportal.local.azurestack.external/. Přihlaste se pomocí přihlašovacích údajů Azure Active Directory (Azure AD), které zadáte během instalace.
+3. Chcete-li otevřít [portálu user portal](azure-stack-key-features.md#portal), přejděte na stránku https://portal.local.azurestack.external/. Přihlaste se pomocí uživatelských přihlašovacích údajů. Otevřete Azure Stack [operátor portál](azure-stack-key-features.md#portal), přejděte na stránku https://adminportal.local.azurestack.external/. Přihlaste se pomocí přihlašovacích údajů Azure Active Directory (Azure AD), které jste zadali během instalace.
 
 <a name="connect-to-azure-stack-with-vpn"></a>
-## <a name="connect-to-azure-stack-by-using-vpn"></a>Připojení k Azure zásobníku pomocí sítě VPN
+## <a name="connect-to-azure-stack-by-using-vpn"></a>Připojení ke službě Azure Stack pomocí sítě VPN
 
-Můžete vytvořit dělené tunelové propojení VPN připojení Azure zásobníku Development Kit. Připojení k síti VPN můžete použít pro přístup k portálu operátor Azure zásobníku, portál user portal a lokálně nainstalované nástroje, například Visual Studio a prostředí PowerShell ke správě prostředků Azure zásobníku. Připojení k síti VPN se podporuje ve službě Azure AD a nasazení služby Active Directory Federation Services (AD FS). Připojení k síti VPN umožňují více klientům připojení k Azure zásobníku ve stejnou dobu.
+Můžete vytvořit dělené tunelové propojení připojení VPN k Azure Stack Development Kit. Připojení k síti VPN můžete použít pro přístup k portálu Azure Stack operátor, portál user portal a lokálně nainstalovaných nástrojů, jako je Visual Studio a Powershellu ke správě prostředků Azure Stack. Připojení k síti VPN se podporuje ve službě Azure AD a nasazení služby Active Directory Federation Services (AD FS). Připojení k síti VPN umožňují více klientům připojit se ke službě Azure Stack ve stejnou dobu.
 
 > [!NOTE]
-> Připojení k síti VPN neposkytuje připojení k Azure zásobníku infrastruktury virtuálních počítačů.
+> Připojení k síti VPN neposkytuje připojení k Azure Stack infrastruktuře virtuálních počítačů.
 
 ### <a name="prerequisites"></a>Požadavky
 
-1. Nainstalujte [kompatibilní s Azure zásobník Azure PowerShell](azure-stack-powershell-install.md) v místním počítači.  
-2. Stažení [nástroje potřebné pro práci s Azure zásobníku](azure-stack-powershell-download.md).
+1. Nainstalujte [prostředí Azure PowerShell kompatibilní s Azure Stack](azure-stack-powershell-install.md) v místním počítači.  
+2. Ve službě [Azure Stack development Kit by měl být blobEndpoint](azure-stack-powershell-download.md) .
 
 ### <a name="set-up-vpn-connectivity"></a>Nastavit připojení k síti VPN
 
-Pokud chcete vytvořit připojení k síti VPN development Kit, otevřete prostředí Windows PowerShell jako správce v místním počítači systému Windows. Potom spusťte následující skript (aktualizace IP adresy a hesla hodnoty pro vaše prostředí):
+Chcete-li vytvořit připojení VPN development Kit, otevřete prostředí Windows PowerShell jako správce na vaše místní počítače se systémem Windows. Potom spusťte následující skript (aktualizace IP adresy a hesla hodnoty pro vaše prostředí):
 
 ```PowerShell
 # Configure Windows Remote Management (WinRM), if it's not already configured.
@@ -87,13 +87,13 @@ Add-AzsVpnConnection `
 
 ```
 
-Pokud instalace proběhne úspěšně, **azurestack** se zobrazí v seznamu připojení VPN.
+Pokud je instalace úspěšná, **azurestack** se zobrazí v seznamu připojení VPN.
 
 ![Připojení k síti](media/azure-stack-connect-azure-stack/image3.png)  
 
 ### <a name="connect-to-azure-stack"></a>Připojení ke službě Azure Stack
 
-Připojte se k instanci Azure zásobníku pomocí jedné z následujících metod:  
+Připojte se k instanci služby Azure Stack pomocí jedné z následujících metod:  
 
 * Použití `Connect-AzsVpn ` příkaz:
     
@@ -102,14 +102,14 @@ Připojte se k instanci Azure zásobníku pomocí jedné z následujících meto
     -Password $Password
   ```
 
-  Po zobrazení výzvy důvěryhodnosti hostitele zásobník Azure a nainstalujte certifikát z **AzureStackCertificateAuthority** v úložišti certifikátů místního počítače. (Na řádku může být skrytý na základě okno prostředí PowerShell.)
+  Po zobrazení výzvy důvěryhodnosti hostitele služby Azure Stack a nainstalovat certifikát z **AzureStackCertificateAuthority** v úložišti certifikátů místního počítače. (Do řádku může být skryty pomocí okna prostředí PowerShell.)
 
-* V místním počítači, vyberte **nastavení sítě** > **VPN** > **azurestack** > **připojit**. Do příkazového řádku přihlášení zadejte uživatelské jméno (**AzureStack\AzureStackAdmin**) a heslo.
+* V místním počítači, vybrat **nastavení sítě** > **VPN** > **azurestack** > **připojení**. Na řádku přihlásit, zadejte uživatelské jméno (**AzureStack\AzureStackAdmin**) a heslo.
 
-### <a name="test-vpn-connectivity"></a>Test připojení VPN
+### <a name="test-vpn-connectivity"></a>Test připojení k síti VPN
 
-Chcete-li otestovat připojení k portálu, otevřete webový prohlížeč a pak přejděte k portálu user portal (https://portal.local.azurestack.external/) nebo portálu – operátor (https://adminportal.local.azurestack.external/). Přihlaste se a vytvářet prostředky.  
+Pokud chcete otestovat připojení k portálu, otevřete webový prohlížeč a přejděte k portálu user portal (https://portal.local.azurestack.external/) nebo na portálu – operátor (https://adminportal.local.azurestack.external/). Přihlaste se a vytvářet prostředky.  
 
 ## <a name="next-steps"></a>Další postup
 
-[Virtuální počítače zpřístupnit uživatelům Azure zásobníku](azure-stack-tutorial-tenant-vm.md)
+[Virtuální počítače zpřístupnit uživatelům Azure stacku](azure-stack-tutorial-tenant-vm.md)

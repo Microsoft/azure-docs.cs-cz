@@ -1,58 +1,58 @@
 ---
-title: Nasazení virtuálního počítače s heslem bezpečně uložené v zásobníku Azure | Microsoft Docs
-description: Informace o nasazení virtuálního počítače pomocí hesla uložená v Azure zásobníku Key Vault
+title: Nasazení virtuálního počítače s heslem bezpečně uloženým ve službě Azure Stack | Dokumentace Microsoftu
+description: Zjistěte, jak nasadit virtuální počítač s použitím hesla uložená ve službě Azure Stack Key Vault
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 23322a49-fb7e-4dc2-8d0e-43de8cd41f80
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/07/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
-ms.openlocfilehash: 4239eb31afd4abc8b3555f0ee353f5d96716d623
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: e35a63a36a84316815d609afa178f9a896415c2b
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34068971"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47584112"
 ---
-# <a name="create-a-virtual-machine-using-a-secure-password-stored-in-azure-stack-key-vault"></a>Vytvoření virtuálního počítače pomocí zabezpečeného hesla uložená v Azure zásobníku Key Vault
+# <a name="create-a-virtual-machine-using-a-secure-password-stored-in-azure-stack-key-vault"></a>Vytvoření virtuálního počítače pomocí zabezpečeného hesla uložená ve službě Azure Stack Key Vault
 
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Tento článek obsahuje kroky prostřednictvím nasazení virtuálního počítače Windows serveru použít heslo uložené v Azure zásobníku Key Vault. Pomocí hesla trezoru klíčů je bezpečnější než předávání hesla v podobě prostého textu.
+Tento článek prochází jednotlivé kroky nasazení virtuálního počítače s Windows serverem pomocí hesla uložená ve službě Azure Stack Key Vault. Použití služby key vault hesla je bezpečnější než k předání hesla jako prostý text.
 
 ## <a name="overview"></a>Přehled
 
-Hodnoty jako například heslo můžete uložit jako tajný klíč v trezoru klíčů služby Azure zásobníku. Po vytvoření tajného klíče, můžete ho odkazovat v šablonách Azure Resource Manager. Pomocí tajných klíčů s Resource Manager poskytuje následující výhody:
+Hodnoty, jako je heslo můžete uložit jako tajný klíč v trezoru klíčů služby Azure Stack. Po vytvoření tajného klíče, které na něj mohli odkazovat v šablonách Azure Resource Manageru. Použití tajných kódů pomocí Resource Manageru poskytuje následující výhody:
 
-* Nemusíte ručně zadejte tajný klíč pokaždé, když nasazujete prostředku.
-* Můžete určit, kteří uživatelé nebo objekty služby můžete přístup k tajný klíč.
+* Není nutné ručně zadat tajný klíč pokaždé, když nasazení prostředku.
+* Můžete určit, které uživatele nebo instanční objekty přístupné tajného kódu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Musí se přihlásíte na nabídku obsahující službu Key Vault.
-* [Instalace prostředí PowerShell pro Azure zásobníku.](azure-stack-powershell-install.md)
-* [Konfigurace prostředí PowerShell Azure zásobník uživatele.](azure-stack-powershell-configure-user.md)
+* Můžete musí přihlásit k odběru nabídky, která obsahuje službu Key Vault.
+* [Instalace Powershellu pro Azure Stack.](azure-stack-powershell-install.md)
+* [Konfigurace prostředí PowerShell.](azure-stack-powershell-configure-user.md)
 
-Následující kroky popisují proces nutný k vytvoření virtuálního počítače načtením heslo uložené v Key Vault:
+Následující kroky popisují proces nutný k vytvoření virtuálního počítače s načtením hesla uložená ve službě Key Vault:
 
-1. Vytvořte tajný klíč trezoru.
-2. Aktualizujte soubor azuredeploy.parameters.json.
+1. Vytvoření tajného kódu Key Vault.
+2. Aktualizace souboru azuredeploy.parameters.json.
 3. Nasazení šablony.
 
->[POZNÁMKA] Tyto kroky ze Development Kit zásobník Azure nebo z externích klientských můžete použít, pokud jsou připojené prostřednictvím sítě VPN.
+> ! [POZNÁMKA]  
+> Tyto kroky ze sady Azure Stack Development Kit, nebo z externího klienta můžete použít, pokud jsou připojené prostřednictvím sítě VPN.
 
-## <a name="create-a-key-vault-secret"></a>Vytvoření tajný klíč trezoru
+## <a name="create-a-key-vault-secret"></a>Vytvoření tajného kódu Key Vault
 
-Následující skript vytvoří trezoru klíčů a ukládá heslo v trezoru klíčů jako tajný klíč. Použití `-EnabledForDeployment` parametr při vytváření trezoru klíčů. Tento parametr je zajištěno, že trezor klíčů můžete na něj odkazovat z šablon Azure Resource Manageru.
+Tento skript vytvoří trezor klíčů a uloží heslo ve službě key vault jako tajný kód. Použití `-EnabledForDeployment` parametr při vytváření trezoru klíčů. Tento parametr zajišťuje, že služby key vault může odkazovat ze šablon Azure Resource Manageru.
 
-```powershell
+```PowerShell
 
 $vaultName = "contosovault"
 $resourceGroup = "contosovaultrg"
@@ -78,13 +78,13 @@ Set-AzureKeyVaultSecret `
 
 ```
 
-Když spustíte předchozí skript, zahrnuje tajný identifikátor URI. Poznamenejte si tento identifikátor URI. Máte na něj v odkazovat [nasazení systému Windows virtuálního počítače s heslem v šabloně trezoru klíčů](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-windows-create-passwordfromkv). Stažení [101-vm zabezpečené heslo](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-windows-create-passwordfromkv) složka na vývojovém počítači. Tato složka obsahuje `azuredeploy.json` a `azuredeploy.parameters.json` soubory, které budete potřebovat v dalších krocích.
+Při spuštění předchozí skript výstup obsahuje identifikátor URI tajného kódu. Poznamenejte si tento identifikátor URI. Je nutné na něj v odkazovat [Windows nasazení virtuálního počítače s heslem v šabloně služby key vault](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-windows-create-passwordfromkv). Stáhněte si [101hesla virtuálního počítače zabezpečení](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-windows-create-passwordfromkv) složky na svém vývojovém počítači. Tato složka obsahuje `azuredeploy.json` a `azuredeploy.parameters.json` soubory, které budete potřebovat v dalších krocích.
 
-Změnit `azuredeploy.parameters.json` soubor na základě hodnoty prostředí. Parametry zajímají jsou název trezoru, skupině prostředků úložiště a tajný klíč identifikátor URI (generovaná předchozí skript). Následující soubor je příklad souboru parametrů:
+Upravit `azuredeploy.parameters.json` souboru souladu s hodnotami prostředí. Parametry zájmovou jsou název trezoru, skupina prostředků trezoru a tajný klíč identifikátoru URI (generovaná předchozí skript). Následující soubor je příkladem souboru parametrů:
 
-## <a name="update-the-azuredeployparametersjson-file"></a>Aktualizovat soubor azuredeploy.parameters.json
+## <a name="update-the-azuredeployparametersjson-file"></a>Aktualizace souboru azuredeploy.parameters.json
 
-Aktualizujte soubor azuredeploy.parameters.json URI KeyVault, secretName, adminUsername hodnoty virtuálního počítače podle vašeho prostředí. Následující soubor JSON ukazuje příklad souboru parametrů šablony:
+Aktualizace souboru azuredeploy.parameters.json se identifikátor URI trezoru klíčů, secretName, adminUsername hodnoty virtuálního počítače podle vašeho prostředí. Následující soubor JSON ukazuje příklad soubor parametrů šablony:
 
 ```json
 {
@@ -115,9 +115,9 @@ Aktualizujte soubor azuredeploy.parameters.json URI KeyVault, secretName, adminU
 
 ## <a name="template-deployment"></a>Nasazení šablon
 
-Nyní nasazení šablony pomocí následujícího skriptu prostředí PowerShell:
+Nyní nasaďte šablonu pomocí následujícího skriptu prostředí PowerShell:
 
-```powershell
+```PowerShell  
 New-AzureRmResourceGroupDeployment `
   -Name KVPwdDeployment `
   -ResourceGroupName $resourceGroup `
@@ -125,12 +125,12 @@ New-AzureRmResourceGroupDeployment `
   -TemplateParameterFile "<Fully qualified path to the azuredeploy.parameters.json file>"
 ```
 
-Při nasazení šablony úspěšně výsledkem následující výstup:
+Po úspěšném nasazení šablony, výsledkem následující výstup:
 
 ![Výstup nasazení](media/azure-stack-kv-deploy-vm-with-secret/deployment-output.png)
 
 ## <a name="next-steps"></a>Další postup
 
-[Nasazení ukázkové aplikace v Key Vault](azure-stack-kv-sample-app.md)
+[Nasaďte ukázkovou aplikaci pomocí služby Key Vault](azure-stack-kv-sample-app.md)
 
-[Nasadit virtuální počítač s certifikátem Key Vault](azure-stack-kv-push-secret-into-vm.md)
+[Nasazení virtuálního počítače s certifikátem Key Vaultu](azure-stack-kv-push-secret-into-vm.md)
