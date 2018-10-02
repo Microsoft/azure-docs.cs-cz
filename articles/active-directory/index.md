@@ -1,6 +1,6 @@
 ---
 layout: HubPage
-hide_bc: true
+hide_bc: false
 title: Dokumentace ke službě Azure Active Directory – kurzy, reference k rozhraní API | Dokumentace Microsoftu
 description: Azure Active Directory (Azure AD) od Microsoftu je víceklientská cloudová adresářová služba a služba pro správu identit. V rámci jednoho řešení kombinuje základní adresářové služby, správu přístupu k aplikacím a ochranu identity.
 services: active-directory
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 09/20/2018
 ms.author: mtillman
-ms.openlocfilehash: bf72b8fbe437971e6d621208c93c239c3c557f55
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 646d1639c7cdd4f9a21ec1c8ac65587cab4f4e12
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165054"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585199"
 ---
 <div id="main" class="v2">
     <div class="container">
