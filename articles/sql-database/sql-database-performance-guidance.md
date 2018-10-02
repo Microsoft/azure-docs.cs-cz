@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 283d27e330b7e1defb34196279693b5b5a7221df
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 09/24/2018
+ms.openlocfilehash: 09238b75680658e9efef3a6a9aaa3c288d3d91a4
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160583"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585845"
 ---
 # <a name="tuning-performance-in-azure-sql-database"></a>Optimalizace výkonu ve službě Azure SQL Database
 
@@ -30,29 +30,18 @@ V které nemáte žádná doporučení k dispozici a stále máte problémy s v�
 
 Toto jsou ruční metody, protože musíte se rozhodnout množství prostředků splňují vaše požadavky. V opačném případě by potřeba revize aplikace nebo kódu databáze a změny nasazení.
 
-## <a name="increasing-servicce-tier-of-your-database"></a>Zvýšení úrovně servicce vaší databáze
+## <a name="increasing-service-tier-of-your-database"></a>Zvýšení úrovně služby databáze
 
-Azure SQL Database nabízí dva modely nákupu, [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) a [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md) ze kterých si můžete vybrat. Každá úroveň služby výhradně izoluje prostředky, můžete použít SQL database a zajišťuje předvídatelný výkon úrovně služby. V tomto článku nabízíme pokyny, které vám můžou pomoct vybrat úroveň služby pro vaši aplikaci. Probereme také způsoby, jak vyladit aplikaci k plnému využití ze služby Azure SQL Database.
+Azure SQL Database nabízí [dva modely nákupu](sql-database-service-tiers.md), [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) a [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md) ze kterých si můžete vybrat. Každá úroveň služby výhradně izoluje prostředky, můžete použít SQL database a zajišťuje předvídatelný výkon úrovně služby. V tomto článku nabízíme pokyny, které vám můžou pomoct vybrat úroveň služby pro vaši aplikaci. Probereme také způsoby, jak vyladit aplikaci k plnému využití ze služby Azure SQL Database. Každá úroveň služby má svůj vlastní [omezení prostředků](sql-database-resource-limits.md). Další informace najdete v tématu [omezení prostředků na základě virtuálních jader](sql-database-vcore-resource-limits-single-databases.md) a [omezení prostředků na základě DTU](sql-database-dtu-resource-limits-single-databases.md).
 
 > [!NOTE]
 > Tento článek se zaměřuje na pokyny k výkonu pro izolované databáze ve službě Azure SQL Database. Průvodce výkonem související s elastickými fondy, najdete v části [cenové a výkonové požadavky elastických fondů](sql-database-elastic-pool-guidance.md). Všimněte si však, že můžete použít řadu doporučení pro vyladění v tomto článku pro databáze v elastickém fondu a získat podobné výhody výkonu.
-> 
-
-* **Základní**: základní služby úroveň nabízí dobrý výkon předvídatelnost pro každou databázi, hodinu za hodinu. V databázi Basic podporují dostatek prostředků dobrý výkon v malé databáze, který nemá více souběžných požadavků. Typické případy použití když použijete úroveň služeb Basic jsou:
-  * **Právě začínáte s Azure SQL Database**. Aplikace, které jsou ve vývoji často není nutné vysoce rozsáhlých výpočetních prostředků velikosti. Základní databáze jsou ideální prostředí pro vývoj databází nebo testování za nízkou cenu.
-  * **Když máte databázi s jedním uživatelem**. Aplikace, které u jednoho uživatele přidružit databázi obvykle nemají vysoké požadavky na souběžnost a výkon. Tyto aplikace jsou kandidáty na úrovni služby Basic.
-* **Standardní**: standardní úroveň služeb nabízí lepší výkon, předvídatelnost a poskytuje dobrý výkon u databází, které mají více souběžných žádostí, jako je pracovní skupiny a webových aplikací. Když vyberete databázi úroveň služeb Standard, můžete měnit velikost vaší databáze aplikace založená na předvídatelný výkon, minut za minutu.
-  * **Vaše databáze má více souběžných požadavků**. Aplikace, které služby více než jeden uživatel obvykle současně potřebují vyšší velikostí výpočetních. Například pracovní skupině nebo webové aplikace, které nízké nároky na provoz střední vstupně-výstupní operace podporuje více současných dotazů jsou vhodnými kandidáty pro úrovně služeb Standard.
-* **Premium**: úrovně služeb Premium poskytuje předvídatelný výkon, druhý za sekundu, pro každou databázi, Premium nebo pro důležité obchodní informace. Při výběru úrovně služeb Premium, můžete měnit velikost databáze aplikaci podle zatížení ve špičce pro tuto databázi. Tento plán odebere případy, ve které výkonu může způsobit variance malé dotazy trvá déle, než se očekávalo v operacích nízkou latenci. Tento model může výrazně zjednodušit vývoj a produktu cykly ověření pro aplikace, které je potřeba vytvořit silné příkazy týkající se potřebné prostředky ve špičce, odchylka výkonu nebo latence dotazu. Většina případy použití služby úrovně Premium mají jeden nebo více těchto vlastností:
-  * **Vysoká vrcholového zatížení**. Aplikace, která vyžaduje podstatné CPU, paměť či vstup/výstup (IO) k dokončení jeho operace vyžaduje velikost vyhrazené, vysoce rozsáhlých výpočetních prostředků. Například databázová operace známé využívat více jader procesoru po delší dobu je Release candidate úrovně Premium.
-  * **Velký počet souběžných požadavků**. Některé databáze aplikace služby velký počet souběžných požadavků, například když obsluhující web, který má vysokou návštěvností svazku. Základní a standardní úrovní služeb omezit počet souběžných požadavků na databázi. Aplikace, které vyžadují další připojení by bylo potřeba zvolte příslušné rezervace pro zpracování maximální počet potřebných požadavků.
-  * **Nízká latence**. Některé aplikace potřebují k zajištění minimální časovou odezva z databáze. Pokud konkrétní uložené procedury je volána v rámci širší operace zákazníka, bude pravděpodobně potřeba mít návrat z tohoto volání ve více než 20 milisekund a 99 % času. Tento typ aplikace těží z úrovně služeb Premium, abyste měli jistotu, že je k dispozici požadované výpočetní výkon.
 
 Úroveň služby, které potřebujete pro svou databázi závisí na požadavcích zatížení ve špičce pro jednotlivé rozměry prostředku. Některé aplikace pomocí jednoduchého dotazu množství jeden prostředek, ale mají významný požadavky pro jiné prostředky.
 
 ### <a name="service-tier-capabilities-and-limits"></a>Možnosti úrovně služby a omezení
 
-Na jednotlivých úrovních služby nastavíte velikost výpočetního tak můžete flexibilně platíte jenom za kapacitu, kterou potřebujete. Je možné [upravit kapacitu](sql-database-service-tiers-dtu.md), směrem nahoru nebo dolů, měnící se zatížení. Například pokud vaší úlohy databáze je vysoká během nákupní sezóny zpátky do školy, může zvýšit velikost výpočetní prostředky pro databázi nastavit dobu, červenec prostřednictvím září. Ho můžete snížit, až skončí období vaší ve špičce. Můžete minimalizovat platíte díky optimalizaci vašeho cloudového prostředí pro sezónnosti vašeho podnikání. Tento model také funguje dobře pro cykly vydávání verzí produktu. Testovací tým může přidělit kapacitu během testovacích běhů a uvolněte kapacitu této po dokončení testování. V požadavku kapacitního modelu platíte za kapacitu podle potřeby ho a vyhněte se výdaje na vyhrazených prostředcích, které můžou používat jen zřídka.
+Na jednotlivých úrovních služby nastavíte velikost výpočetního tak můžete flexibilně platíte jenom za kapacitu, kterou potřebujete. Je možné [upravit kapacitu](sql-database-single-database-scale.md), směrem nahoru nebo dolů, měnící se zatížení. Například pokud vaší úlohy databáze je vysoká během nákupní sezóny zpátky do školy, může zvýšit velikost výpočetní prostředky pro databázi nastavit dobu, červenec prostřednictvím září. Ho můžete snížit, až skončí období vaší ve špičce. Můžete minimalizovat platíte díky optimalizaci vašeho cloudového prostředí pro sezónnosti vašeho podnikání. Tento model také funguje dobře pro cykly vydávání verzí produktu. Testovací tým může přidělit kapacitu během testovacích běhů a uvolněte kapacitu této po dokončení testování. V požadavku kapacitního modelu platíte za kapacitu podle potřeby ho a vyhněte se výdaje na vyhrazených prostředcích, které můžou používat jen zřídka.
 
 ### <a name="why-service-tiers"></a>Proč úrovně služeb?
 I když každá úloha databáze se může lišit, k poskytování předvídatelnost výkonu při různých velikostech výpočetních je cílem úrovně služeb. Zákazníci s požadavky na prostředky ve velkém měřítku databáze můžete pracovat ve více vyhrazených výpočetního prostředí.

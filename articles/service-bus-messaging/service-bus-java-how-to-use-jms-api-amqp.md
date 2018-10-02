@@ -14,12 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: spelluru
-ms.openlocfilehash: b369f169fca903575ea4ae3f2ae04f6cd770e488
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 9a223c67e0c1f2e71d2953be63924a114e7420af
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433646"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018226"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>Jak Java Message Service (JMS) rozhraní API pomocí služby Service Bus a protokolu AMQP 1.0
 Rozšířené řízení front zpráv protokolu (AMQP) 1.0 je efektivní a spolehlivý přenosový protokol zasílání zpráv, který vám pomůže vytvářet aplikace napříč platformami, robustní zasílání zpráv.
@@ -29,7 +29,7 @@ Podpora pro protokolu AMQP 1.0 ve službě Service Bus znamená, že můžete po
 Tento článek vysvětluje, jak pomocí služby Service Bus (fronty a témata publikace nebo odběru) funkce zasílání zpráv v aplikacích v Javě pomocí Oblíbené Java zprávy služby JMS () standardní rozhraní API. Je [doprovodný článek](service-bus-amqp-dotnet.md) , který vysvětluje, jak provést stejný pomocí rozhraní .NET API služby Service Bus. Tyto dvě příručky můžete použít společně se dozvíte o zasílání zpráv mezi platformami pomocí AMQP 1.0.
 
 ## <a name="get-started-with-service-bus"></a>Začínáme se službou Service Bus
-Tento průvodce to předpokládá, že už máte obor názvů Service Bus, který obsahuje frontu s názvem **Frontě1**. Pokud ho nevidíte, pak můžete [vytvořit obor názvů a frontu](service-bus-create-namespace-portal.md) pomocí [webu Azure portal](https://portal.azure.com). Další informace o tom, jak vytvořit obory názvů služby Service Bus a fronty, naleznete v tématu [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md).
+Tento průvodce to předpokládá, že už máte obor názvů Service Bus, který obsahuje frontu s názvem **basicqueue**. Pokud ho nevidíte, pak můžete [vytvořit obor názvů a frontu](service-bus-create-namespace-portal.md) pomocí [webu Azure portal](https://portal.azure.com). Další informace o tom, jak vytvořit obory názvů služby Service Bus a fronty, naleznete v tématu [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md).
 
 > [!NOTE]
 > Dělené fronty a témata podporují také AMQP. Další informace najdete v tématu [segmentované entity zasílání zpráv](service-bus-partitioning.md) a [podpory AMQP 1.0 pro službu Service Bus dělené fronty a témata](service-bus-partitioned-queues-and-topics-amqp-overview.md).
@@ -42,9 +42,7 @@ Informace o tom, kde chcete stáhnout nejnovější verzi klientské knihovny Ap
 Následující čtyři soubory JAR z archivní úrovně distribuce Apache Qpid JMS protokolu AMQP 1.0 je nutné přidat do cesta třídy Java při vytváření a spouštění aplikací JMS službou Service Bus:
 
 * geronimo jms\_1.1\_1.0.jar specifikace
-* qpid-amqp-1-0-Client-[Version].JAR
-* qpid-amqp-1-0-Client-jms-[Version].JAR
-* qpid-amqp-1-0-Common-[Version].JAR
+* qpid-jms - client-[verze] .jar
 
 > ! [POZNÁMKA] JMS JAR názvy a verze se možná změnily Podrobnosti najdete v tématu [Qpid JMS - protokolu AMQP 1.0](https://qpid.apache.org/maven.html#qpid-jms-amqp-10).
 
@@ -65,56 +63,58 @@ connectionfactory.SBCF = amqps://[SASPolicyName]:[SASPolicyKey]@[namespace].serv
 queue.QUEUE = queue1
 ```
 
-#### <a name="configure-the-connectionfactory"></a>Konfigurace ConnectionFactory
-Položka sloužících k definování **ConnectionFactory** v souboru vlastnosti Qpid JNDI zprostředkovatel je v následujícím formátu:
+#### <a name="setup-jndi-context-and-configure-the-connectionfactory"></a>Kontext JNDI nainstalovat a nakonfigurovat ConnectionFactory
 
+**ConnectionString** odkazuje k dispozici "sdílené zásady přístupu' v jedné [webu Azure Portal](https://portal.azure.com) pod **primární připojovací řetězec**
 ```
-connectionfactory.[jndi_name] = [ConnectionURL]
+// The connection string builder is the only part of the azure-servicebus SDK library
+// we use in this JMS sample and for the purpose of robustly parsing the Service Bus 
+// connection string. 
+ConnectionStringBuilder csb = new ConnectionStringBuilder(connectionString);
+        
+// set up JNDI context
+Hashtable<String, String> hashtable = new Hashtable<>();
+hashtable.put("connectionfactory.SBCF", "amqps://" + csb.getEndpoint().getHost() + "?amqp.idleTimeout=120000&amqp.traceFrames=true");
+hashtable.put("queue.QUEUE", "BasicQueue");
+hashtable.put(Context.INITIAL_CONTEXT_FACTORY, "org.apache.qpid.jms.jndi.JmsInitialContextFactory");
+Context context = new InitialContext(hashtable);
+
+ConnectionFactory cf = (ConnectionFactory) context.lookup("SBCF");
+
+// Look up queue
+Destination queue = (Destination) context.lookup("QUEUE");
 ```
 
-Kde **[jndi_name]** a **[ConnectionURL]** mají následující význam:
-
-* **[jndi_name]** : Logický název ConnectionFactory. Toto je název, který bude vyřešen v aplikaci v Javě pomocí metody JNDI IntialContext.lookup().
-* **[ConnectionURL]** : Adresu URL, která poskytuje knihovnu JMS pomocí informací požadovaných pro zprostředkovatele protokolu AMQP.
-
-Formát **ConnectionURL** vypadá takto:
-
-```
-amqps://[SASPolicyName]:[SASPolicyKey]@[namespace].servicebus.windows.net
-```
-Kde **[obor názvů]**, **[SASPolicyName]** a **[SASPolicyKey]** mají následující význam:
-
-* **[obor názvů]** : Obor názvů sběrnice služby.
-* **[SASPolicyName]** : Název zásad fronty sdílený přístupový podpis.
-* **[SASPolicyKey]** : Klíče zásad the fronty sdílený přístupový podpis.
-
-> [!NOTE]
-> Je nutné kódování URL heslo ručně. Užitečné kódování URL nástroj, který je k dispozici na [ http://www.w3schools.com/tags/ref_urlencode.asp ](http://www.w3schools.com/tags/ref_urlencode.asp).
-> 
-> 
-
-#### <a name="configure-destinations"></a>Konfigurace cíle
+#### <a name="configure-producer-and-consumer-destination-queues"></a>Konfigurace Producer and Consumer cílové fronty
 Slouží k definování cíle v poskytovateli Qpid vlastnosti souboru JNDI položka je v následujícím formátu:
 
+Chcete-li vytvořit cílovou frontu pro výrobce- 
 ```
-queue.[jndi_name] = [physical_name]
+String queueName = "queueName";
+Destination queue = (Destination) queueName;
+
+ConnectionFactory cf = (ConnectionFactory) context.lookup("SBCF");
+Connection connection - cf.createConnection(csb.getSasKeyName(), csb.getSasKey());
+
+Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
+
+// Create Producer
+MessageProducer producer = session.createProducer(queue);
 ```
 
-nebo
-
+Chcete-li vytvořit cílovou frontu pro spotřebitele- 
 ```
-topic.[jndi_name] = [physical_name]
+String queueName = "queueName";
+Destination queue = (Destination) queueName;
+
+ConnectionFactory cf = (ConnectionFactory) context.lookup("SBCF");
+Connection connection - cf.createConnection(csb.getSasKeyName(), csb.getSasKey());
+
+Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
+
+// Create Consumer
+MessageConsumer consumer = session.createConsumer(queue);
 ```
-
-Kde **[jndi\_název]** a **[fyzické\_název]** mají následující význam:
-
-* **[jndi_name]** : Logický název cíle. Toto je název, který bude vyřešen v aplikaci v Javě pomocí metody JNDI IntialContext.lookup().
-* **[physical_name]** : Název entity služby Service Bus, do které aplikace odesílá nebo přijímá zprávy.
-
-> [!NOTE]
-> Pro příjem z odběru tématu služby Service Bus, fyzický název zadaný v JNDI by měl být název tématu. Název předplatného se zadává při vytvoření odolné předplatného v kódu aplikace JMS. [Service Bus AMQP 1.0 – Příručka vývojáře](service-bus-amqp-dotnet.md) obsahuje další podrobnosti o práci s tématy Service Bus z JMS.
-> 
-> 
 
 ### <a name="write-the-jms-application"></a>Napíšeme aplikaci JMS
 Neexistují žádné zvláštní rozhraní API nebo možnosti požaduje se při použití JMS službou Service Bus. Existují však několik omezení, které se věnujeme později. Stejně jako u jakékoli aplikace JMS nejprve thing požadované je konfigurace JNDI prostředí, které mají být schopen převést **ConnectionFactory** a cíle.
@@ -123,133 +123,210 @@ Neexistují žádné zvláštní rozhraní API nebo možnosti požaduje se při 
 JNDI prostředí je nakonfigurované pomocí předání do konstruktoru třídy javax.naming.InitialContext zatřiďovací tabulku informace o konfiguraci. Dvě požadované prvky v zatřiďovací tabulky jsou název třídy objektu pro vytváření počáteční kontext a adresa URL zprostředkovatele. Následující kód ukazuje, jak nakonfigurovat prostředí JNDI používat Qpid vlastnosti souboru na základě JNDI poskytovatele pomocí vlastnosti souboru s názvem **servicebus.properties**.
 
 ```java
-Hashtable<String, String> env = new Hashtable<>();
-env.put("connectionfactory.SBCF", "amqps://[namespace].servicebus.windows.net?amqp.idleTimeout=120000");
-env.put("queue.QUEUE", "queue");
-
-env.put(Context.INITIAL_CONTEXT_FACTORY, "org.apache.qpid.jms.jndi.JmsInitialContextFactory");
-Context context = new InitialContext(env);
+// set up JNDI context
+Hashtable<String, String> hashtable = new Hashtable<>();
+hashtable.put("connectionfactory.SBCF", "amqps://" + csb.getEndpoint().getHost() + \
+"?amqp.idleTimeout=120000&amqp.traceFrames=true");
+hashtable.put("queue.QUEUE", "BasicQueue");
+hashtable.put(Context.INITIAL_CONTEXT_FACTORY, "org.apache.qpid.jms.jndi.JmsInitialContextFactory");
+Context context = new InitialContext(hashtable);
 ``` 
 
 ### <a name="a-simple-jms-application-using-a-service-bus-queue"></a>Jednoduchou aplikaci JMS pomocí fronty Service Bus
 Následující ukázkový program JMS TextMessages odešle do fronty služby Service Bus s JNDI logický název fronty a přijímá zprávy zpět.
 
+Všechny dostanete všechny zdrojový kód a konfigurační informace z [služby Service Bus ukázky JMS fronty rychlý Start pro Azure](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/qpid-jms-client/JmsQueueQuickstart)
 
 ```java
-// SimpleSenderReceiver.java
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+package com.microsoft.azure.servicebus.samples.jmsqueuequickstart;
+
+import com.microsoft.azure.servicebus.primitives.ConnectionStringBuilder;
+import org.apache.commons.cli.*;
+import org.apache.log4j.*;
 
 import javax.jms.*;
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.Hashtable;
-import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Function;
 
-public class SimpleSenderReceiver implements MessageListener {
-    private static boolean runReceiver = true;
-    private Connection connection;
-    private Session sendSession;
-    private Session receiveSession;
-    private MessageProducer sender;
-    private MessageConsumer receiver;
-    private static Random randomGenerator = new Random();
+/**
+ * This sample demonstrates how to send messages from a JMS Queue producer into
+ * an Azure Service Bus Queue, and receive them with a JMS message consumer.
+ * JMS Queue. 
+ */
+public class JmsQueueQuickstart {
 
-    public SimpleSenderReceiver() throws Exception {
-        // Configure JNDI environment
-        Hashtable<String, String> env = new Hashtable<>();
-        // Specify the name of your namespace. Idle timeout value is set as Service Bus enforces timeout.         
-        env.put("connectionfactory.SBCF", "amqps://[namespace].servicebus.windows.net?amqp.idleTimeout=120000");
-        env.put("queue.QUEUE", "queue");
+    // Number of messages to send
+    private static int totalSend = 10;
+    //Tracking counter for how many messages have been received; used as termination condition
+    private static AtomicInteger totalReceived = new AtomicInteger(0);
+    // log4j logger 
+    private static Logger logger = Logger.getRootLogger();
 
-        env.put(Context.INITIAL_CONTEXT_FACTORY, "org.apache.qpid.jms.jndi.JmsInitialContextFactory");
-        Context context = new InitialContext(env);
+    public void run(String connectionString) throws Exception {
 
-        // Look up ConnectionFactory and Queue
+        // The connection string builder is the only part of the azure-servicebus SDK library
+        // we use in this JMS sample and for the purpose of robustly parsing the Service Bus 
+        // connection string. 
+        ConnectionStringBuilder csb = new ConnectionStringBuilder(connectionString);
+        
+        // set up JNDI context
+        Hashtable<String, String> hashtable = new Hashtable<>();
+        hashtable.put("connectionfactory.SBCF", "amqps://" + csb.getEndpoint().getHost() + "?amqp.idleTimeout=120000&amqp.traceFrames=true");
+        hashtable.put("queue.QUEUE", "BasicQueue");
+        hashtable.put(Context.INITIAL_CONTEXT_FACTORY, "org.apache.qpid.jms.jndi.JmsInitialContextFactory");
+        Context context = new InitialContext(hashtable);
         ConnectionFactory cf = (ConnectionFactory) context.lookup("SBCF");
+        
+        // Look up queue
         Destination queue = (Destination) context.lookup("QUEUE");
 
-        // Create Connection
-        connection = cf.createConnection();
+        // we create a scope here so we can use the same set of local variables cleanly 
+        // again to show the receive side separately with minimal clutter
+        {
+            // Create Connection
+            Connection connection = cf.createConnection(csb.getSasKeyName(), csb.getSasKey());
+            // Create Session, no transaction, client ack
+            Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
 
-        // Create sender-side Session and MessageProducer
-        sendSession = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-        sender = sendSession.createProducer(queue);
+            // Create producer
+            MessageProducer producer = session.createProducer(queue);
 
-        if (runReceiver) {
-            // Create receiver-side Session, MessageConsumer,and MessageListener
-            receiveSession = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
-            receiver = receiveSession.createConsumer(queue);
-            receiver.setMessageListener(this);
-            connection.start();
+            // Send messages
+            for (int i = 0; i < totalSend; i++) {
+                BytesMessage message = session.createBytesMessage();
+                message.writeBytes(String.valueOf(i).getBytes());
+                producer.send(message);
+                System.out.printf("Sent message %d.\n", i + 1);
+            }
+
+            producer.close();
+            session.close();
+            connection.stop();
+            connection.close();
         }
+
+        {
+            // Create Connection
+            Connection connection = cf.createConnection(csb.getSasKeyName(), csb.getSasKey());
+            connection.start();
+            // Create Session, no transaction, client ack
+            Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
+            // Create consumer
+            MessageConsumer consumer = session.createConsumer(queue);
+            // create a listener callback to receive the messages
+            consumer.setMessageListener(message -> {
+                try {
+                    // receives message is passed to callback
+                    System.out.printf("Received message %d with sq#: %s\n",
+                            totalReceived.incrementAndGet(), // increments the tracking counter
+                            message.getJMSMessageID());
+                    message.acknowledge();
+                } catch (Exception e) {
+                    logger.error(e);
+                }
+            });
+
+            // wait on the main thread until all sent messages have been received
+            while (totalReceived.get() < totalSend) {
+                Thread.sleep(1000);
+            }
+            consumer.close();
+            session.close();
+            connection.stop();
+            connection.close();
+        }
+
+        System.out.printf("Received all messages, exiting the sample.\n");
+        System.out.printf("Closing queue client.\n");
     }
 
     public static void main(String[] args) {
+
+        System.exit(runApp(args, (connectionString) -> {
+            JmsQueueQuickstart app = new JmsQueueQuickstart();
+            try {
+                app.run(connectionString);
+                return 0;
+            } catch (Exception e) {
+                System.out.printf("%s", e.toString());
+                return 1;
+            }
+        }));
+    }
+
+    static final String SB_SAMPLES_CONNECTIONSTRING = "SB_SAMPLES_CONNECTIONSTRING";
+
+    public static int runApp(String[] args, Function<String, Integer> run) {
         try {
 
-            if ((args.length > 0) && args[0].equalsIgnoreCase("sendonly")) {
-                runReceiver = false;
+            String connectionString = null;
+
+            // parse connection string from command line
+            Options options = new Options();
+            options.addOption(new Option("c", true, "Connection string"));
+            CommandLineParser clp = new DefaultParser();
+            CommandLine cl = clp.parse(options, args);
+            if (cl.getOptionValue("c") != null) {
+                connectionString = cl.getOptionValue("c");
             }
 
-            SimpleSenderReceiver simpleSenderReceiver = new SimpleSenderReceiver();
-            System.out.println("Press [enter] to send a message. Type 'exit' + [enter] to quit.");
-            BufferedReader commandLine = new java.io.BufferedReader(new InputStreamReader(System.in));
-
-            while (true) {
-                String s = commandLine.readLine();
-                if (s.equalsIgnoreCase("exit")) {
-                    simpleSenderReceiver.close();
-                    System.exit(0);
-                } else {
-                    simpleSenderReceiver.sendMessage();
-                }
+            // get overrides from the environment
+            String env = System.getenv(SB_SAMPLES_CONNECTIONSTRING);
+            if (env != null) {
+                connectionString = env;
             }
+
+            if (connectionString == null) {
+                HelpFormatter formatter = new HelpFormatter();
+                formatter.printHelp("run jar with", "", options, "", true);
+                return 2;
+            }
+            return run.apply(connectionString);
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.printf("%s", e.toString());
+            return 3;
         }
     }
-
-    private void sendMessage() throws JMSException {
-        TextMessage message = sendSession.createTextMessage();
-        message.setText("Test AMQP message from JMS");
-        long randomMessageID = randomGenerator.nextLong() >>>1;
-        message.setJMSMessageID("ID:" + randomMessageID);
-        sender.send(message);
-        System.out.println("Sent message with JMSMessageID = " + message.getJMSMessageID());
-    }
-
-    public void close() throws JMSException {
-        connection.close();
-    }
-
-    public void onMessage(Message message) {
-        try {
-            System.out.println("Received message with JMSMessageID = " + message.getJMSMessageID());
-            message.acknowledge();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-}    
+}
 ```
 
 ### <a name="run-the-application"></a>Spuštění aplikace
-Spuštění aplikace vytvoří výstup ve formátu:
+Předání **připojovací řetězec** ze sdílené zásady přístupu ke spuštění aplikace.
+Níže je výstup ve formátu spuštěním aplikace:
 
 ```
-> java SimpleSenderReceiver
-Press [enter] to send a message. Type 'exit' + [enter] to quit.
+> mvn clean package
+>java -jar ./target/jmsqueuequickstart-1.0.0-jar-with-dependencies.jar -c "<CONNECTION_STRING>"
 
-Sent message with JMSMessageID = ID:2867600614942270318
-Received message with JMSMessageID = ID:2867600614942270318
+Sent message 1.
+Sent message 2.
+Sent message 3.
+Sent message 4.
+Sent message 5.
+Sent message 6.
+Sent message 7.
+Sent message 8.
+Sent message 9.
+Sent message 10.
+Received message 1 with sq#: ID:7f6a7659-bcdf-4af6-afc1-4011e2ddcb3c:1:1:1-1
+Received message 2 with sq#: ID:7f6a7659-bcdf-4af6-afc1-4011e2ddcb3c:1:1:1-2
+Received message 3 with sq#: ID:7f6a7659-bcdf-4af6-afc1-4011e2ddcb3c:1:1:1-3
+Received message 4 with sq#: ID:7f6a7659-bcdf-4af6-afc1-4011e2ddcb3c:1:1:1-4
+Received message 5 with sq#: ID:7f6a7659-bcdf-4af6-afc1-4011e2ddcb3c:1:1:1-5
+Received message 6 with sq#: ID:7f6a7659-bcdf-4af6-afc1-4011e2ddcb3c:1:1:1-6
+Received message 7 with sq#: ID:7f6a7659-bcdf-4af6-afc1-4011e2ddcb3c:1:1:1-7
+Received message 8 with sq#: ID:7f6a7659-bcdf-4af6-afc1-4011e2ddcb3c:1:1:1-8
+Received message 9 with sq#: ID:7f6a7659-bcdf-4af6-afc1-4011e2ddcb3c:1:1:1-9
+Received message 10 with sq#: ID:7f6a7659-bcdf-4af6-afc1-4011e2ddcb3c:1:1:1-10
+Received all messages, exiting the sample.
+Closing queue client.
 
-Sent message with JMSMessageID = ID:7578408152750301483
-Received message with JMSMessageID = ID:7578408152750301483
-
-Sent message with JMSMessageID = ID:956102171969368961
-Received message with JMSMessageID = ID:956102171969368961
-exit
 ```
 
 ## <a name="amqp-disposition-and-service-bus-operation-mapping"></a>AMQP dispozice a mapování operace služby Service Bus
@@ -263,66 +340,6 @@ MODIFIED_FAILED = 4; -> Abandon() which increases delivery count
 MODIFIED_FAILED_UNDELIVERABLE = 5; -> Defer()
 ```
 
-## <a name="cross-platform-messaging-between-jms-and-net"></a>Multiplatformní zasílání zpráv mezi JMS a .NET
-Tento průvodce vám ukázal, jak posílat a přijímat zprávy do a ze služby Service Bus pomocí JMS. Mezi klíčové výhody protokolu AMQP 1.0 je však, že umožňuje aplikacím, které mají být sestaveny z komponent, které jsou napsány v různých jazycích s zprávy vyměňují spolehlivě a s plnou věrností.
-
-Pomocí JMS ukázkové aplikace popsané výše a podobně jako aplikace rozhraní .NET z doprovodný článek, [pomocí služby Service Bus z .NET pomocí protokolu AMQP 1.0](service-bus-amqp-dotnet.md), můžou vyměňovat zprávy mezi rozhraním .NET a Javy. V tomto článku pro další informace o podrobnosti o platformě zasílání zpráv služby Service Bus a protokolu AMQP 1.0.
-
-### <a name="jms-to-net"></a>JMS pro .NET
-K předvedení JMS k zasílání zpráv .NET:
-
-* Spusťte ukázkovou aplikaci .NET bez argumentů příkazového řádku.
-* Spuštění ukázkové aplikace Java s argumentem příkazového řádku "sendonly". V tomto režimu nebude aplikace přijme zprávy z fronty, kterou bude pouze odesílat.
-* Stisknutím klávesy **Enter** několikrát v konzole aplikace Java, která způsobí zpráv k odeslání.
-* Tyto zprávy jsou přijímány aplikace .NET.
-
-#### <a name="output-from-jms-application"></a>Výstup z aplikace JMS
-```
-> java SimpleSenderReceiver sendonly
-Press [enter] to send a message. Type 'exit' + [enter] to quit.
-Sent message with JMSMessageID = ID:4364096528752411591
-Sent message with JMSMessageID = ID:459252991689389983
-Sent message with JMSMessageID = ID:1565011046230456854
-exit
-```
-
-#### <a name="output-from-net-application"></a>Výstup z aplikace .NET
-```
-> SimpleSenderReceiver.exe    
-Press [enter] to send a message. Type 'exit' + [enter] to quit.
-Received message with MessageID = 4364096528752411591
-Received message with MessageID = 459252991689389983
-Received message with MessageID = 1565011046230456854
-exit
-```
-
-### <a name="net-to-jms"></a>.NET pro JMS
-K předvedení .NET pro JMS zasílání zpráv:
-
-* Spusťte ukázkovou aplikaci .NET s argumentem příkazového řádku "sendonly". V tomto režimu nebude aplikace přijme zprávy z fronty, kterou bude pouze odesílat.
-* Spusťte ukázkovou aplikaci Java bez argumentů příkazového řádku.
-* Stisknutím klávesy **Enter** několikrát v konzole aplikace .NET, které způsobí zpráv k odeslání.
-* Tyto zprávy jsou přijímány aplikaci v Javě.
-
-#### <a name="output-from-net-application"></a>Výstup z aplikace .NET
-```
-> SimpleSenderReceiver.exe sendonly
-Press [enter] to send a message. Type 'exit' + [enter] to quit.
-Sent message with MessageID = d64e681a310a48a1ae0ce7b017bf1cf3    
-Sent message with MessageID = 98a39664995b4f74b32e2a0ecccc46bb
-Sent message with MessageID = acbca67f03c346de9b7893026f97ddeb
-exit
-```
-
-#### <a name="output-from-jms-application"></a>Výstup z aplikace JMS
-```
-> java SimpleSenderReceiver    
-Press [enter] to send a message. Type 'exit' + [enter] to quit.
-Received message with JMSMessageID = ID:d64e681a310a48a1ae0ce7b017bf1cf3
-Received message with JMSMessageID = ID:98a39664995b4f74b32e2a0ecccc46bb
-Received message with JMSMessageID = ID:acbca67f03c346de9b7893026f97ddeb
-exit
-```
 
 ## <a name="unsupported-features-and-restrictions"></a>Nepodporované funkce a omezení
 Při použití JMS prostřednictvím protokolu AMQP 1.0 se Service Bus, konkrétně existují následující omezení:
@@ -330,8 +347,22 @@ Při použití JMS prostřednictvím protokolu AMQP 1.0 se Service Bus, konkrét
 * Pouze jeden **MessageProducer** nebo **MessageConsumer** smí za **relace**. Pokud je potřeba vytvořit několik **MessageProducers** nebo **MessageConsumers** v aplikaci, vytvořte vyhrazený **relace** pro každý z nich.
 * Odběry témat volatile se momentálně nepodporují.
 * **MessageSelectors** se momentálně nepodporují.
-* Dočasné cíle; například **TemporaryQueue**, **TemporaryTopic** se momentálně nepodporují, spolu s **QueueRequestor** a **TopicRequestor**Rozhraní API, která je používat.
 * Počet relací a distribuované transakce nejsou podporované.
+
+Kromě toho Azure Service Bus rozdělí rovina řízení v rovině dat a proto nepodporuje řadu funkcí pro JMS dynamické topologie:
+
+| Nepodporovaná – metoda          | Nahraďte                                                                             |
+|-----------------------------|------------------------------------------------------------------------------------------|
+| createDurableSubscriber     | Vytvoří předplatné tématu přenos zprávy modulu pro výběr                                 |
+| createDurableConsumer       | Vytvoří předplatné tématu přenos zprávy modulu pro výběr                                 |
+| createSharedConsumer        | Témata služby Service Bus jsou vždy ke sdílení, najdete výše                                       |
+| createSharedDurableConsumer | Témata služby Service Bus jsou vždy ke sdílení, najdete výše                                       |
+| createTemporaryTopic        | Vytvoření tématu přes správu rozhraní API/tools/portál s *AutoDeleteOnIdle* nastavte období vypršení platnosti |
+| createTopic                 | Vytvoření tématu přes správu rozhraní API/tools/portál                                           |
+| odhlášení odběru                 | Odstraňte téma správy rozhraní API/tools/portál                                             |
+| createBrowser               | Nepodporovaný. Použití funkce Peek() rozhraní API služby Service Bus                         |
+| createQueue                 | Vytvořte frontu přes správu rozhraní API/tools/portál                                           | 
+| createTemporaryQueue        | vytvořit frontu přes správu rozhraní API/tools/portál s *AutoDeleteOnIdle* nastavte období vypršení platnosti |
 
 ## <a name="summary"></a>Souhrn
 Tato příručka vám ukázal, jak používat funkce Service Bus pro zprostředkované zasílání zpráv (fronty a témata publikace nebo odběru) z Javy pomocí oblíbených rozhraní API pro JMS a protokolu AMQP 1.0.

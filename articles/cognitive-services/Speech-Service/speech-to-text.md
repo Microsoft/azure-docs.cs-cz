@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 7cb0257a7302221f80bb90c0a6c3446cde07290a
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: ef2f349333592e05185c5502490828832cb6c24c
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434122"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018345"
 ---
 # <a name="about-the-speech-to-text-api"></a>O Speech to Text API
 
@@ -26,7 +26,7 @@ ms.locfileid: "47434122"
 
 - V reálném čase průběžné rozpoznávání. **Převod řeči na Text** umožňuje uživatelům přepisy zvuku na text v reálném čase. Podporuje také přijímají mezilehlých výsledků slov, která zatím byly rozpoznány. Služba automaticky rozpozná konec řeči. Uživatelé mohou také další možnosti formátování, včetně malá a velká písmena a interpunkční znaménka, maskování vulgárních výrazů a normalizace inverzní textu.
 
-- Optimalizované **převod řeči na Text** výsledky pro interaktivní, konverzace a scénáře diktování. Rozpoznaný výsledky jsou vráceny ve formulářích Lexical a zobrazení (lexikální výsledky, naleznete v tématu DetailedSpeechRecognitionResult příklady nebo rozhraní API).
+- Výsledky vrácené v Lexical a zobrazení formulářů (lexikální výsledky, naleznete v tématu DetailedSpeechRecognitionResult příklady nebo rozhraní API).
 
 - Podporu mnoha jazyků mluvené slovo a dialekty. Úplný seznam podporovaných jazyků v jednotlivých režimech rozpoznávání najdete v tématu [podporované jazyky](language-support.md#speech-to-text).
 

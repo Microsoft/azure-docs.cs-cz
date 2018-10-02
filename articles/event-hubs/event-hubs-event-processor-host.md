@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 14db9ec9e4cd90d0c2d224bd944e2bc5b591a53b
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 63cc8a698c9e383c4b5908286d28b51d89842bdc
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405899"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585692"
 ---
 # <a name="azure-event-hubs-event-processor-host-overview"></a>Přehled služby Azure Event Hubs Event Processor Host
 
@@ -45,7 +45,7 @@ Místo vytváření vlastních řešení pro to, Event Hubs dokáže tuto funkci
 
 ## <a name="ieventprocessor-interface"></a>Rozhraní IEventProcessor
 
-Nejprve využívání aplikace implementovat [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) rozhraní, která má čtyři metody: [OpenAsync, CloseAsync, ProcessErrorAsync a ProcessEventsAsnyc](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor?view=azure-dotnet#methods). Toto rozhraní obsahuje skutečný kód pro zpracování událostí, které odešle služby Event Hubs. Následující kód ukazuje jednoduchý implementace:
+Nejprve využívání aplikace implementovat [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) rozhraní, která má čtyři metody: [OpenAsync, CloseAsync, ProcessErrorAsync a ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor?view=azure-dotnet#methods). Toto rozhraní obsahuje skutečný kód pro zpracování událostí, které odešle služby Event Hubs. Následující kód ukazuje jednoduchý implementace:
 
 ```csharp
 public class SimpleEventProcessor : IEventProcessor

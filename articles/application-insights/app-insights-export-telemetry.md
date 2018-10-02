@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: a960ace141d5d71559c39c627f96746a25bf5207
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 31d7f0fd70edf7bbf05a3a180baa6cc078e02ba1
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42061317"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585471"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Export telemetrie z Application Insights
 Chceme zajistit telemetrických dat po dobu delší než doba uchování standard? Nebo zpracovat nějakým způsobem specializované? Průběžný Export je ideální pro to. Události, které se zobrazí na portálu Application Insights je možné exportovat do úložiště v Microsoft Azure ve formátu JSON. Tam si můžete stáhnout data a zápis, cokoli, co kód potřebují ke zpracování.  
@@ -37,11 +37,9 @@ Poté, co průběžný Export zkopíruje data do služby storage (ve kterém mů
 ## <a name="setup"></a> Vytvoření průběžný Export
 1. V prostředku Application Insights pro vaši aplikaci, otevřete průběžný Export a zvolte **přidat**:
 
-    ![Posuňte se dolů a klikněte na tlačítko průběžný Export](./media/app-insights-export-telemetry/01-export.png)
-
 2. Vyberte datové typy, které chcete exportovat telemetrii.
 
-3. Vytvořte nebo vyberte [účtu služby Azure storage](../storage/common/storage-introduction.md) kam chcete uložit data.
+3. Vytvořte nebo vyberte [účet úložiště Azure] (.. / storage/common/storage-introduction.md) Pokud chcete uložit data. Další informace o cenových možnostech úložiště najdete [oficiální stránce s cenami](https://azure.microsoft.com/pricing/details/storage/).
 
     > [!Warning]
     > Ve výchozím umístění úložiště bude nastaveno na stejné zeměpisné oblasti jako váš prostředek Application Insights. Pokud uchováváte v jiné oblasti, může se účtují poplatky za přenos.

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 1be7dd9ce537d0999ace01eafa46318e42df9f20
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: adb3127e45166d4743c182cbd21944dd86810596
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732443"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47584162"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Import dat do služby soubory Azure pomocí služby Azure Import/Export
 
@@ -139,7 +139,7 @@ Proveďte následující kroky k vytvoření úlohy importu na webu Azure Portal
     
     - Nahrát soubory deníku, které jste vytvořili při předchozím [krok 1: Příprava jednotky](#step-1-prepare-the-drives). 
     - Vyberte účet úložiště, která data se naimportují do. 
-    - Odkládací umístění se automaticky vyplní podle oblasti pro vybraný účet úložiště.
+    - Umístění dropoff se automaticky vyplní podle oblasti pro vybraný účet úložiště.
    
        ![Vytvoření úlohy importu – krok 2](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
 

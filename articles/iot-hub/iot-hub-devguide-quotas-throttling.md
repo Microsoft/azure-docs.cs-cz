@@ -8,23 +8,25 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: dobett
-ms.openlocfilehash: 3989ff6e8ef600500f1c3dcc292d4385d6fb4a8b
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 377f28f4798a1ffb6423c1f4d9f4e34b4fc60234
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162559"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018838"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Reference – IoT Hub kvóty a omezování
 
 ## <a name="quotas-and-throttling"></a>Kvóty a omezování
+
 Každé předplatné Azure může mít maximálně 50 centra IoT hub a nejvýše 1 bezplatný rozbočovače.
 
-Každé centrum IoT se služnou počet jednotek v konkrétní úroveň. Úrovně a počtu jednotek určit maximální denní kvótu zpráv, které můžete odeslat. Velikost zprávy, který slouží k výpočtu je denní kvóty pro rozbočovač na úrovni free po 0,5 KB a 4 KB pro všechny další úrovně. Další informace najdete v tématu [ceny služby Azure IoT Hub][lnk-pricing].
+Každé centrum IoT se služnou počet jednotek v konkrétní úroveň. Úrovně a počtu jednotek určit maximální denní kvótu zpráv, které můžete odeslat. Velikost zprávy, který slouží k výpočtu je denní kvóty pro rozbočovač na úrovni free po 0,5 KB a 4 KB pro všechny další úrovně. Další informace najdete v tématu [ceny služby Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 Na úrovni také určuje omezení, které služby IoT Hub vynucuje pro všechny operace.
 
 ## <a name="operation-throttles"></a>Omezení operace
+
 Omezení operace jsou míry omezení, které se použijí v minuta rozsahy a jsou určené k zabránění zneužití. IoT Hub pokusí zamezit vrácení chyby, kdykoli je to možné, ale spustí vrácení `429 ThrottlingException` Pokud porušení omezení příliš dlouho.
 
 V každém okamžiku může zvýšit kvóty nebo limity omezení zvýšením počtu zřízených jednotek služby IoT hub.
@@ -53,10 +55,10 @@ V následující tabulce jsou uvedeny vynucené omezení. Hodnoty se vztahují j
 
 Například pokud zakoupíte jedné jednotky S1, můžete získat omezení 100 připojení za sekundu. Proto se pokud chcete připojit 100 000 zařízení, trvá aspoň 1 000 sekund (přibližně 16 minut). Však může mít libovolný počet současně připojených zařízení, máte zařízení registrovaná v registru identit.
 
-Podrobné informace o službě IoT Hub chování při omezování chování, najdete v blogovém příspěvku [omezení šířky pásma služby IoT Hub a][lnk-throttle-blog].
+Podrobné informace o službě IoT Hub chování při omezování chování, najdete v blogovém příspěvku [omezení šířky pásma služby IoT Hub a](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/).
 
 > [!IMPORTANT]
-> Operace registru identit jsou určeny k použití za běhu ve správě zařízení a zřizování scénáře. Čtení nebo aktualizaci velkého počtu identit zařízení podporovaná prostřednictvím [import a export úloh][lnk-importexport].
+> Operace registru identit jsou určeny k použití za běhu ve správě zařízení a zřizování scénáře. Čtení nebo aktualizaci velkého počtu identit zařízení podporovaná prostřednictvím [import a export úloh](iot-hub-devguide-identity-registry.md#import-and-export-device-identities).
 > 
 > 
 
@@ -90,19 +92,11 @@ IoT Hub se snaží poskytovat s nízkou latencí pro všechny operace. Kvůli st
 * Zvažte použití k provádění operací nízkou latenci, na zařízení nebo pro bránu co nejblíž zařízení Azure IoT Edge.
 
 Víc jednotek služby IoT Hub vliv omezení, jak je popsáno výše, ale neposkytuje žádné výhody další latence nebo záruky.
+
 Pokud se zobrazí neočekávaná zvýší latence operace, obraťte se na [Microsoft Support](https://azure.microsoft.com/support/options/).
 
 ## <a name="next-steps"></a>Další postup
+
 Další referenční témata v této příručce pro vývojáře IoT Hub patří:
 
-* [Koncové body IoT Hubu][lnk-devguide-endpoints]
-* [Dotazovací jazyk služby IoT Hub pro dvojčata zařízení, úlohy a směrování zpráv][lnk-devguide-query]
-* [Podpora MQTT centra IoT][lnk-devguide-mqtt]
-
-[lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub
-[lnk-throttle-blog]: https://azure.microsoft.com/blog/iot-hub-throttling-and-you/
-[lnk-importexport]: iot-hub-devguide-identity-registry.md#import-and-export-device-identities
-
-[lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md
-[lnk-devguide-query]: iot-hub-devguide-query-language.md
-[lnk-devguide-mqtt]: iot-hub-mqtt-support.md
+* [Koncové body IoT Hubu](iot-hub-devguide-endpoints.md)

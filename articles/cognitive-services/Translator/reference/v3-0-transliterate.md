@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 4d156d3cfd0afa463cdc18b73ad05d09e4159dae
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 613cdd14ad196058458b090024cc6b9a4b8a80b6
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129484"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018617"
 ---
 # <a name="translator-text-api-30-transliterate"></a>Translator Text API 3.0: transkripce
 
@@ -41,16 +41,16 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
     <td>*Povinný parametr*.<br/>Verze rozhraní API požadovaná klientem. Hodnota musí být `3.0`.</td>
   </tr>
   <tr>
-    <td>jazyk</td>
+    <td>language</td>
     <td>*Povinný parametr*.<br/>Určuje jazyk textu pro převod z jednoho skriptu do jiného. Je to možné jazyky jsou uvedené v `transliteration` oboru získala při dotazování na službu pro jeho [podporované jazyky](.\v3-0-languages.md).</td>
   </tr>
   <tr>
     <td>fromScript</td>
-    <td>*Povinný parametr*.<br/>Určuje skript vstupního textu. Vyhledávání [podporované jazyky](.\v3-0-languages.md) pomocí `transliteration` oboru se najít vstupní skripty k dispozici pro vybraný jazyk.</td>
+    <td>*Povinný parametr*.<br/>Určuje skript vstupního textu. Vyhledání [podporované jazyky](.\v3-0-languages.md) pomocí `transliteration` oboru se najít vstupní skripty k dispozici pro vybraný jazyk.</td>
   </tr>
   <tr>
     <td>toScript</td>
-    <td>*Povinný parametr*.<br/>Určuje výstupní skript. Vyhledávání [podporované jazyky](.\v3-0-languages.md) pomocí `transliteration` oboru najít výstup nejsou k dispozici pro vybranou kombinaci jazyk skripty a vstupní skriptu.</td>
+    <td>*Povinný parametr*.<br/>Určuje výstupní skript. Vyhledání [podporované jazyky](.\v3-0-languages.md) pomocí `transliteration` oboru najít výstup nejsou k dispozici pro vybranou kombinaci jazyk skripty a vstupní skriptu.</td>
   </tr>
 </table> 
 
@@ -171,7 +171,7 @@ Datová část JSON pro požadavek v tomto příkladu:
 [{"text":"こんにちは","script":"jpan"},{"text":"さようなら","script":"jpan"}]
 ```
 
-Pokud používáte cUrl v okně příkazového řádku, který nepodporuje znaky Unicode, využijte následující datové části JSON a uložte ho do souboru s názvem `request.txt`. Nezapomeňte uložit soubor s `UTF-8` kódování.
+Pokud používáte cURL v okně příkazového řádku, který nepodporuje znaky Unicode, využijte následující datové části JSON a uložte ho do souboru s názvem `request.txt`. Nezapomeňte uložit soubor s `UTF-8` kódování.
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0&language=ja&fromScript=Jpan&toScript=Latn" -H "X-ClientTraceId: 875030C7-5380-40B8-8A03-63DACCF69C11" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d @request.txt

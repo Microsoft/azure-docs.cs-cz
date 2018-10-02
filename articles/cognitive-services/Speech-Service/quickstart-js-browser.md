@@ -9,12 +9,12 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: fmegen
-ms.openlocfilehash: b925a382a32f320c5d6906bc3fa23f046d260cb0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9ac48bd77087a8dc050ccd1ee8fe63ec5c25a643
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997433"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018380"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-cognitive-services-speech-sdk"></a>Rychlý start: Rozpoznávat řeč v jazyce JavaScript v prohlížeči pomocí Cognitive Services SDK řeči
 
@@ -36,6 +36,8 @@ Aplikace je založena na Microsoft Cognitive Services sadou SDK pro řeč ([stah
 Vytvořte novou prázdnou složku. V případě, že chcete hostovat ukázku na webovém serveru, ujistěte se, že webový server má přístup do složky.
 
 ## <a name="unpack-the-speech-sdk-for-javascript-into-that-folder"></a>Rozbalit sadou SDK pro řeč pro jazyk JavaScript do této složky
+
+[!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
 Stáhněte si sadou SDK pro řeč jako [zazipovaný balíček s](https://aka.ms/csspeech/jsbrowserpackage) a rozbalte ho do nově vytvořené složky. Výsledkem by měl být dva soubory během rozbalování, například `microsoft.cognitiveservices.speech.sdk.bundle.js` a `microsoft.cognitiveservices.speech.sdk.bundle.js.map`.
 Druhá možnost souboru je volitelný a slouží jako Nápověda ladění do kódu SDK, v případě potřeby.

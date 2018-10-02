@@ -1,6 +1,6 @@
 ---
-title: Detekce anomálií v Azure Stream Analytics (Preview)
-description: Tento článek popisuje, jak používat Azure Stream Analytics a Azure Machine Learning společně k zjišťovat anomálie.
+title: Detekce anomálií ve službě Azure Stream Analytics (Náhled)
+description: Tento článek popisuje, jak používat Azure Stream Analytics a Azure Machine Learning společně k detekci anomálií.
 services: stream-analytics
 author: dubansal
 ms.author: dubansal
@@ -9,31 +9,31 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: e7274e4507d901a209ed5832e98ca630feefda4f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 045d7623c3f00ee984dad406247e3197a4ecc45a
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31420091"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47586167"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Detekce anomálií v Azure Stream Analytics
 
 > [!IMPORTANT]
-> Tato funkce je ve verzi preview, není doporučujeme používat s produkčním prostředí.
+> Tato funkce se právě přestanou používat, ale nahradí se nové funkce. Další informace najdete [osm nových funkcí ve službě Azure Stream Analytics](https://azure.microsoft.com/en-us/blog/eight-new-features-in-azure-stream-analytics/) blogový příspěvek.
 
-**AnomalyDetection** operátor slouží ke zjištění různých typů anomálie v datových proudů událostí. Například může být pomalé poklesu volná paměť nad dlouhou dobu naznačuje výslednou nevrácené paměti nebo počet žádosti webové služby, které jsou v rozsahu stabilní může výrazně zvýšit nebo snížit.  
+**Anomalydetection, který** operátor se používá ke zjišťování různé typy anomálií v datových proudů událostí. Například pomalá pokles volná paměť nad dlouhou dobu může být indikátorem nevracení paměti nebo může výrazně zvýšit nebo snížit počet žádosti webové služby, které jsou stabilní v rozsahu.  
 
-Operátor AnomalyDetection detekuje tři typy anomálií: 
+Operátor anomalydetection, který rozpoznává tři typy anomálií: 
 
-* **Změna úrovně obousměrný**: dlouhodobě zvětšit nebo zmenšit na úrovni hodnot směrem nahoru a dolů. Tato hodnota se liší od špičky a vyhrazené IP adresy, které jsou zajistí okamžité vynucování nebo krátkodobou změny.  
+* **Změna úrovně obousměrné**: trvalé zvýšení nebo snížení úrovně hodnoty nahoru a dolů. Tato hodnota se liší od provozní špičky a vyhrazené IP adresy, které jsou změny zajistí okamžité vynucování nebo krátkodobou.  
 
-* **Pomalé pozitivní Trend**: na pomalých růst trend v čase.  
+* **Zpomalit pozitivní Trend**: pomalé zvýšení trend v čase.  
 
-* **Pomalé negativní Trend**: pomalé poklesu trend v čase.  
+* **Zpomalit negativní Trend**: pomalé pokles trend v čase.  
 
-Při použití operátoru AnomalyDetection, je nutné zadat **Limit Duration** klauzule. Tuto klauzuli Určuje že časový interval (jak daleko zpět v historii z aktuální událost) považovat za při zjišťování anomálií. Tento operátor. volitelně může být omezen na jenom události, které odpovídají určité vlastnosti nebo podmínku pomocí **při** klauzule. Tento operátor. volitelně může zpracovat skupiny událostí odděleně podle je klíč zadaný v **oddílu pomocí** klauzule. Školení a předpovědi dojít nezávisle pro každý oddíl. 
+Při použití operátor anomalydetection, který je nutné zadat **Limit Duration** klauzuli. Tato klauzule určuje že časový interval (jak daleko zpět v historii z aktuální události) by měl být při detekci anomálií. Tento operátor volitelně může být omezen na pouze události, které odpovídají určité vlastnosti nebo podmínku s použitím **při** klauzuli. Tento operátor může také v případě potřeby zpracovat zvýrazňující skupiny událostí samostatně na základě klíče zadaný v **rozdělit podle** klauzuli. Trénování a predikcí dojít nezávisle pro každý oddíl. 
 
-## <a name="syntax-for-anomalydetection-operator"></a>Syntaxe pro AnomalyDetection – operátor
+## <a name="syntax-for-anomalydetection-operator"></a>Syntaxe pro operátor anomalydetection, který
 
 `ANOMALYDETECTION(<scalar_expression>) OVER ([PARTITION BY <partition key>] LIMIT DURATION(<unit>, <length>) [WHEN boolean_expression])` 
 
@@ -43,122 +43,122 @@ Při použití operátoru AnomalyDetection, je nutné zadat **Limit Duration** k
 
 ### <a name="arguments"></a>Argumenty
 
-* **skalární_výraz** -skalární výraz, za které se provádí detekce anomálií. Povolené hodnoty pro tento parametr zahrnout Float nebo Bigint datové typy to návratový jednu hodnotu (skalární). Výraz se zástupnými znaky **\*** není povolen. Skalární výraz, který nemůže obsahovat jiné analytické funkce nebo externí funkce. 
+* **skalární_výraz** -skalární výraz, přes které se provádí pro detekci anomálií. Povolené hodnoty pro tento parametr obsahovat plovoucí desetinnou čárkou nebo Bigint datových typů, který návratový (skalární) hodnotu single. Výraz se zástupnými znaky **\*** není povolený. Skalární výraz, který nemůže obsahovat další analytických funkcí nebo externí funkce. 
 
-* **partition_by_clause** – `PARTITION BY <partition key>` klauzule rozděluje učení a školení napříč samostatné oddíly. Jinými slovy, samostatného modelu se použije na hodnotu `<partition key>` a jenom události s hodnotou, kterou by se používat pro učení a školení v tomto modelu. Například následující dotaz vlacích a skóre a čtení proti jiných odečty stejné senzoru pouze:
+* **partition_by_clause** – `PARTITION BY <partition key>` klauzule rozděluje vzdělávání a odbornou v samostatných oddílech. Jinými slovy, samostatného modelu se použije na hodnotu `<partition key>` a pouze události s touto hodnotou se použije pro vzdělávání a odbornou v takovém modelu. Například následující dotaz železniční a vyhodnocování čtení pro další čtení stejné senzor:
 
   `SELECT sensorId, reading, ANOMALYDETECTION(reading) OVER(PARTITION BY sensorId LIMIT DURATION(hour, 1)) FROM input`
 
-* **klauzule limit_duration** `DURATION(<unit>, <length>)` -Určuje časový interval (jak daleko zpět v historii z aktuální událost) považovat za při zjišťování anomálií. V tématu [DATEDIFF](https://msdn.microsoft.com/azure/stream-analytics/reference/datediff-azure-stream-analytics) podrobný popis podporované jednotky a jejich zkratky. 
+* **klauzule limit_duration** `DURATION(<unit>, <length>)` -Určuje časový interval (jak daleko zpět v historii z aktuální události) by měl být při detekci anomálií. Zobrazit [DATEDIFF](https://msdn.microsoft.com/azure/stream-analytics/reference/datediff-azure-stream-analytics) podrobný popis podporované jednotky a jejich zkratkami. 
 
-* **when_clause** -určuje boolean podmínku pro události za v výpočet detekce anomálií.
+* **when_clause** -určuje je logická podmínka pro události v výpočet detekce anomálií.
 
 ### <a name="return-types"></a>Návratové typy
 
-Operátor AnomalyDetection vrátí záznam obsahující všechny tři skóre jako výstup. Vlastnosti související s různými typy anomálií detektory jsou:
+Operátor anomalydetection, který vrátí záznam obsahující všechny tři výsledky jako výstup. Vlastnosti související s různými typy anomálií detektory jsou:
 
 - BiLevelChangeScore
 - SlowPosTrendScore
 - SlowNegTrendScore
 
-Chcete-li extrahovat jednotlivé hodnoty mimo záznam, použijte **GetRecordPropertyValue** funkce. Příklad:
+Chcete-li extrahovat jednotlivé hodnoty mimo tento záznam, použijte **GetRecordPropertyValue** funkce. Příklad:
 
 `SELECT id, val FROM input WHERE (GetRecordPropertyValue(ANOMALYDETECTION(val) OVER(LIMIT DURATION(hour, 1)), 'BiLevelChangeScore')) > 3.25` 
 
-Anomálií typu je zjištěna, když jeden skóre anomálií překračuje prahovou hodnotu. Prahová hodnota může být jakékoli číslo s plovoucí desetinnou čárkou > = 0. Prahová hodnota je kompromis mezi velkých a malých písmen a spolehlivosti. Například by nižší prahové hodnotě zkontrolujte detekce více citlivé na změny a generovat více výstrah, zatímco vyšší prahová hodnota může zvýšit detekce méně citlivou a větší jistotu, ale některé anomálií maskování. Přesný prahová hodnota používat závisí na scénáři. Neexistuje žádné horní limit, ale je doporučené rozsah 3,25 5. 
+Anomálií typu se zjistí, pokud jeden z skóre anomálií překročí mezní hodnotu. Prahová hodnota může být jakékoli číslo s plovoucí desetinnou čárkou > = 0. Prahová hodnota je kompromis mezi citlivosti a spolehlivosti. Nižší prahové hodnotě by například provést zjišťování citlivější na změny a generovat další výstrahy, že vyšší prahová hodnota může být detekce míň citlivými informacemi a větší jistotu ale maskování anomálie některé. Hodnotu přesný práh, závisí na scénáři. Neexistuje žádná horní hranice, ale doporučené rozsah je 3,25 – 5. 
 
-Hodnota 3,25 v příkladu je pouze navrhované počáteční bod. Upřesnit hodnota spuštěním operací na sadu dat a sledovat výstupní hodnotu, dokud se nedostanete přípustný prahovou hodnotu.
+Hodnota 3,25 je znázorněno v příkladu je právě navrhované výchozí bod. Vyladění hodnotu spuštěním operace na datovou sadu a sledujte výstupní hodnota, dokud se nedostanete přípustné prahové hodnoty.
 
 ## <a name="anomaly-detection-algorithm"></a>Algoritmus detekce anomálií
 
-* Operátor AnomalyDetection používá **supervize** přístup, kde se nepředpokládá jakýkoli typ distribuce v události. Obecně platí dva modely jsou zachována ve paralelní v každém okamžiku, kdy jeden z nich se používá pro výpočet skóre a dalších je trénink na pozadí. Modely detekce anomálií probíhá Trénink pomocí dat z aktuální datového proudu, nikoli pomocí mechanismus out-of-band. Množství dat používá pro školení závisí na d velikost okna, zadanou uživatelem v rámci parametr Limit Duration. Každý model nakonec získá o získávání cvičení podle d 2d za události. Doporučuje se mít alespoň 50 události v každé okna pro dosažení co nejlepších výsledků. 
+* Operátor anomalydetection, který použije **supervize** přístup, ve kterém se nepředpokládá jakýkoli typ distribuce v události. Obecně platí dva modely se zachovají paralelní v daném okamžiku, kdy jeden z nich se používá k vyhodnocení a druhý se trénuje na pozadí. Modely detekce anomálií se trénuje pomocí dat z aktuální datový proud, spíše než pomocí mechanismu out-of-band. Data ukládaná za účelem školení závisí na d velikost okna zadanou uživatelem v rámci parametru Limit Duration. Každý model končí získávání školení podle d 2d za událostí. Doporučuje se mít alespoň 50 událostí v každé okno pro dosažení co nejlepších výsledků. 
 
-* Používá operátor AnomalyDetection **posuvné okno sémantiku** ke cvičení modely a skóre události. Což znamená, že všechny události vyhodnotí anomálií a skóre je vrácen. Skóre udává, že anomálií úroveň spolehlivosti. 
+* Operátor anomalydetection, který používá **posuvné okno sémantiku** k trénování modelů a skóre události. Což znamená, že všechny události se vyhodnocuje pro anomálií a vrátí se skóre. Skóre je údaj o spolehlivosti této anomálií. 
 
-* Poskytuje AnomalyDetection operátor **opakovatelnosti záruku** stejné vstupní vždy vytváří stejný skóre bez ohledu na výstup úlohy počáteční čas. Čas spuštění úlohy výstupu představuje čas, kdy je první událost výstupu produkovaný úlohy. Je nastavena podle uživateli aktuální čas, na vlastní hodnotu nebo čas posledního výstup (Pokud je úloha měl dříve vytvořeného výstup). 
+* Operátor anomalydetection, který poskytuje **opakovatelnosti záruku** stejný vstup vždy vytváří stejný výsledek bez ohledu na to, výstup úlohy počáteční čas. Čas spuštění výstupu úlohy představuje čas, kdy je první událost výstup vytvořený úlohou. Je nastavena podle uživatele na aktuální čas, vlastní hodnotu nebo čas posledního výstupu (Pokud je úloha měla výstup vytvořený dříve). 
 
-### <a name="training-the-models"></a>Cvičení modely 
+### <a name="training-the-models"></a>Trénování modelů 
 
-V průběhu času modely probíhá Trénink s odlišnými daty. Chcete-li smysl skóre, pomáhá pochopit základní mechanismus, pomocí kterého probíhá Trénink modely. Zde **t<sub>0</sub>**  je **výstup úlohy počáteční čas** a **d** je **velikost okna** z Limit Duration parametr. Předpokládejme, který čas je rozdělená do **směrování velikost d**, počínaje okamžikem `01/01/0001 00:00:00`. Následující postup slouží k natrénování modelu a skóre události:
+V průběhu času jsou trénované modely s různými daty. Dávat smysl skóre, dobré pochopit základní mechanismus, pomocí kterého jsou trénované modely. Tady **t<sub>0</sub>**  je **čas spuštění výstupu úlohy** a **d** je **velikost okna** z Limit Duration parametr. Předpokládejme, čas je rozdělena do **směrování velikost d**od `01/01/0001 00:00:00`. Následující postup slouží k natrénování modelu a skóre události:
 
-* Po spuštění úlohy přečte data od času t<sub>0</sub> – 2d.  
-* Když čas dosáhne další směrování, nový model M1 se vytvoří a spustí získávání cvičení.  
-* Pokud čas přejde podle další směrování, nový model M2 se vytvoří a spustí získávání cvičení.  
-* Pokud čas dosáhne t<sub>0</sub>, M1 přišla aktivní a jeho skóre spustí získávání výstupem.  
-* V dalším místě směrování tři věci nastat současně:  
+* Při spuštění úlohy, čte data od času t<sub>0</sub> – 2d.  
+* Po uplynutí další směrování, nový model M1 se vytvoří a spustí získávání školení.  
+* Při posunutí času o další směrování, nový model M2 se vytvoří a spustí získávání školení.  
+* Pokud čas dosáhne t<sub>0</sub>M1 se stane aktivní a spustí jeho skóre získávání výstupu.  
+* Další směrování dojde ke třem věcem ve stejnou dobu:  
 
-  * Již není potřeba M1 a bude ignorován.  
-  * M2 má dostatečně cvičena, použije se pro vyhodnocování.  
-  * Nový model M3 se vytvoří a spustí získávání trénink na pozadí.  
+  * Už nepotřebujete M1 a se zahodí.  
+  * M2 byla dostatečně školení, používá se pro vyhodnocení.  
+  * Nový model M3 se vytvoří a spustí, získat školení na pozadí.  
 
-* Tento cyklus opakuje pro každý směrování, kde je zrušené active modelu, přepněte do paralelní modelu a spustit cvičení třetí modelu na pozadí. 
+* Tento cyklus se opakuje pro každý segment směrování tam, kde je zrušené active vzor, přepněte na paralelní modelu a spusťte trénujete model pro třetí na pozadí. 
 
 Kroky diagramem, vypadat takto: 
 
-![Školení modely](media/stream-analytics-machine-learning-anomaly-detection/training_model.png)
+![Trénování modelů](media/stream-analytics-machine-learning-anomaly-detection/training_model.png)
 
-|**Model** | **Čas zahájení školení** | **Čas spuštění pomocí jeho skóre** |
+|**Model** | **Čas zahájení školení** | **Pokud chcete začít používat jeho skóre čas** |
 |---------|---------|---------|
 |M1     | 11:20   | 11:33   |
 |M2     | 11:30   | 11:40   |
 |M3     | 11:40   | 11:50   |
 
-* Model M1 spustí školení v 11:20 am, což je další směrování, po spuštění úlohy čtení v 11:13 am. První výsledek z M1 v 11:33 am po školení s 13 minut data. 
+* Model M1 spustí školení v 11:20, což je další segment směrování po zahájení úlohy čtení v 11:13. První výstup je vytvořen z M1 v 11:33 po trénováním 13 minut data. 
 
-* Nový model M2 také spustí školení v 11:30 am, ale jeho skóre získat nepoužívá až 11:40 am, což je po byl vyzkoušen s 10 minut data. 
+* Nový model M2 také začne školení v 11:30 upgradujete, ale jeho skóre získat nepoužívá až do 11:40 am, což je po byla vyškolila s 10 minut data. 
 
-* M3 následující stejné jako M2. 
+* M3 používá stejný vzor jako M2. 
 
 ### <a name="scoring-with-the-models"></a>Vyhodnocování s modely 
 
-Algoritmus detekce anomálií na úrovni Machine Learning, vypočítá hodnotu strangeness pro všechny příchozí události porovnáním s událostmi v okně historie. Výpočet strangeness se liší pro jednotlivé typy anomálií.  
+Na úrovni Machine Learning vypočítá algoritmus detekce anomálií strangeness hodnotu pro všechny příchozí události porovnáním s událostmi v okně historie. Výpočet strangeness se liší pro jednotlivé typy anomálií.  
 
-Pojďme si strangeness výpočet podrobně (předpokládá existuje sada historických windows s událostmi): 
+Pojďme se podívat na výpočet strangeness podrobně (Předpokládejme existuje sada historických windows s událostmi): 
 
-1. **Změna úrovně obousměrný:** založená na okno historie, normální pracovní rozsah se vypočítá jako [10th percentilu, 90. percentil] tedy 10 percentilu hodnotu jako hodnota percentilu dolní mez a 90th jako horní mez. Hodnotu strangeness pro aktuální událost je vypočítán jako:  
+1. **Změna úrovně obousměrné:** založené na okno historie, normální provozní rozsah je vypočítán jako [10th percentil 90. percentil] tedy 10th percentil hodnoty jako dolní mez a 90. percentil hodnoty percentilu jako horní mez. Hodnota strangeness aktuální události se vypočítává jako:  
 
    - 0, pokud je event_value v běžném provozním rozsahu  
    - Pokud event_value/90th_percentile event_value > 90th_percentile  
    - 10th_percentile/event_value, pokud je event_value < 10th_percentile  
 
-2. **Pomalé pozitivní trend:** trendu přes hodnoty události v okně historie je počítaný, a operaci hledá pozitivní trend v řádku. Strangeness hodnota je vypočítána jako:  
+2. **Pomalé pozitivní trend:** trendové linie vedoucí přes hodnoty událostí v okně historie se počítá a operace hledá pozitivní trend v rámci řádku. Hodnota strangeness se vypočítává jako:  
 
-   - Sklon, pokud je kladné sklon  
-   - 0, jinak hodnota 
+   - Sklon, pokud křivka je pozitivní  
+   - 0, jinak 
 
-3. **Pomalé negativní trend:** trendu přes hodnoty události v okně historie je počítaný, a operaci Hledat negativní trend v řádku. Strangeness hodnota je vypočítána jako: 
+3. **Pomalé negativní trend:** trendové linie vedoucí přes hodnoty událostí v okně historie se počítá a operace hledá negativní trend v rámci řádku. Hodnota strangeness se vypočítává jako: 
 
-   - Sklon, pokud sklon je záporná.  
-   - 0, jinak hodnota  
+   - Sklon, pokud je záporné sklon  
+   - 0, jinak  
 
-Jakmile hodnota strangeness pro příchozí události je vypočítána, martingale hodnota se vypočítá podle hodnota strangeness (najdete v článku [blog Machine Learning](https://blogs.technet.microsoft.com/machinelearning/2014/11/05/anomaly-detection-using-machine-learning-to-detect-abnormalities-in-time-series-data/) podrobnosti o tom, jak martingale hodnota je vypočítána). Tato hodnota martingale je retuned jako skóre anomálií. Hodnota martingale zvyšuje pomalu v reakci na neobvyklé hodnoty, což umožňuje detektor zůstat robustní na výskyt občasný změny a snižuje false výstrahy. Je také užitečné vlastnost: 
+Jakmile je vypočítán strangeness hodnotu Příchozí události, je vypočítán na základě hodnoty strangeness martingale hodnotu (najdete v článku [blog o Machine Learning](https://blogs.technet.microsoft.com/machinelearning/2014/11/05/anomaly-detection-using-machine-learning-to-detect-abnormalities-in-time-series-data/) podrobnosti o jak martingale hodnota byla vypočítána). Tato hodnota martingale je retuned jako hodnocení anomálie. Hodnota martingale zvýší pomalu v reakci na neobvyklé hodnoty, což umožňuje detektor k zajištění robustní sporadické změny a snižuje falešným výstrahám. Obsahuje také užitečné vlastnost: 
 
-Pravděpodobnost [existuje t takové této M<sub>t</sub> > λ] < 1 nebo λ, kde M<sub>t</sub> je hodnota martingale v rychlých t a λ je skutečné hodnoty. Například, pokud je výstraha při M<sub>t</sub>> 100 a potom pravděpodobnost falešně pozitivních je menší než 1/100.  
+Pravděpodobnost [existuje t takové této M<sub>t</sub> > λ] < 1/λ, kde M<sub>t</sub> martingale hodnotu rychlé t a λ je skutečné hodnoty. Například, pokud je výstraha při M<sub>t</sub>> 100 a pravděpodobnosti výskytu falešně pozitivních testů je menší než 1/100.  
 
-## <a name="guidance-for-using-the-bi-directional-level-change-detector"></a>Pokyny pro použití úrovně obousměrný změnit detektor 
+## <a name="guidance-for-using-the-bi-directional-level-change-detector"></a>Pokyny k používání obousměrné úroveň změňte detectoru 
 
-Změna úrovně obousměrný detektor lze použít ve scénářích, například power výpadku a obnovení nebo expresní hodinu provoz atd. Ale funguje tak, že model je trénink na některá data, další změnou úrovně je neobvyklé Pokud nová hodnota je vyšší než předchozí horní limit (zvýšení úrovně velká písmena) nebo nižší než předchozí dolní limit (klesající úroveň velká písmena). Proto byste neměli vidět model data hodnoty v rozsahu novou úroveň (směrem nahoru nebo dolů) v okně jeho školení, aby se dalo považovat za neobvyklé. 
+Detektor Změna úrovně obousměrné lze použít ve scénářích, jako je výpadek a obnovení nebo špičce provoz power atd. Však funguje tak, že jakmile model se trénuje pomocí určitá data, jiná změna úrovně je neobvyklé pouze v případě nová hodnota je vyšší než předchozí horní limit (stoupající úroveň změnit velikost písmen) nebo nižší než předchozí dolní mez (klesající úroveň Změňte velikost písmen). Model proto neměli vidět datové hodnoty v rozsahu novou úroveň (směrem nahoru nebo dolů) v okně školení pro ně považuje za neobvyklé. 
 
-Následující body považovat při použití této detektor: 
+Při použití této detektor by měl úvahu tyto body: 
 
-1. Když časové řady najednou uvidí zvětšit nebo vyřadit v hodnotě, operátor AnomalyDetection zjistí ho. Ale zjišťování návratu do normální vyžaduje další plánování. Pokud během stabilního stavu před anomálií, které lze dosáhnout nastavení operátor AnomalyDetection detekce okno na maximálně poloviční délka anomálií se časové řady. Tento scénář předpokládá, že se dá odhadnout minimální trvání anomálií dopředu a nejsou k dispozici dostatek události v tomto časovém rámci pro trénování modelu dostatečně (alespoň 50 událostí). 
+1. Když časové řady náhle uvidí zvýšení nebo vyřadit v hodnotě, operátor anomalydetection, který zjistí. Ale zjišťování vrátit do normálního vyžaduje další plánování. Pokud se v stabilního stavu před anomálií, které lze dosáhnout nastavením interval zjišťování operátor anomalydetection, který nejvíce poloviční délku anomálii časové řady. Tento scénář předpokládá, že minimální doba trvání anomálii se dá odhadnout předem domluvili a nejsou k dispozici dostatek akce v tomto časovém rámci pro trénování modelu dostatečně (nejméně 50 událostí). 
 
-   Můžete se podívat na obrázcích 1 a 2 níže pomocí o změnu horní limit (stejná logika platí pro nižší limit změny). Na obou obrázcích jsou tvarový průběh o neobvyklé změnu úrovně. Svislé čáry oranžové označují směrování hranice a velikost skoku je stejný jako okno detekce zadaný v operátoru AnomalyDetection. Zelená řádky označují velikost okna školení. Velikost skoku na obrázku 1 je stejný jako doba, kterou vydrží anomálií. Na obrázku 2 je velikost skoku poloviny doby, pro kterou anomálií platnost. Ve všech případech je zjištěna vzestupnou změnu protože model používá pro vyhodnocování naučil na normální data. Ale podle toho, jak funguje detektor Změna úrovně obousměrný, se musí vyloučit normální hodnoty z okna školení použít pro model, který skóre návratu do normální. Na obrázku 1 školení vyhodnocování model obsahuje některé běžné události, vraťte se na normální nebyl nalezen. Ale na obrázku 2 zahrnuje školení jenom neobvyklé části, které zajišťuje rozpoznání návratu do normální. Nic menší než polovinu funguje i pro ze stejného důvodu, že něco větší dojdete včetně bit normální událostí. 
+   To je ukázáno v obrázcích 1 a 2 níže pomocí o změnu horní limit (stejná logika platí na nižší limit změnu). Na obou obrázcích tvarový průběh jsou neobvyklé Změna úrovně. Oranžové svislé čáry označují hranice směrování a velikost skoku je stejný jako zadaný v operátor anomalydetection, který intervalu zjišťování. Zelená čáry označují velikost okna školení. Na obrázku 1 velikost skoku je stejné jako čas, pro které má platnost anomálií. Na obrázku 2 je velikost skoku poloviční dobu, pro které anomálii trvá. Ve všech případech je detekovat stoupající změnit, protože model použít pro vyhodnocování se trénuje na normální data. Ale založené na fungování detektor obousměrné Změna úrovně, je nutné vyloučit běžných hodnot z okna školení pro model, který stanoví skóre vrátit do normálního. Na obrázku 1 cvičení vyhodnocení modelu obsahuje některé běžné události, vraťte se na normální nebyl nalezen. Ale na obrázku 2 se na školení pouze zahrnuje neobvyklé část, která zajistí, že se detekuje vrácené výsledky na normální. Nic menšího než polovinu funguje taky ze stejného důvodu, že něco větší skončí včetně hodně normální události. 
 
-   ![AD s délkou rovna anomálií velikost okna](media/stream-analytics-machine-learning-anomaly-detection/windowsize_equal_anomaly_length.png)
+   ![AD s délkou rovná anomálií velikost okna](media/stream-analytics-machine-learning-anomaly-detection/windowsize_equal_anomaly_length.png)
 
-   ![AD s velikost okna rovná polovině anomálií délky](media/stream-analytics-machine-learning-anomaly-detection/windowsize_equal_half_anomaly_length.png)
+   ![Polovinu anomálií délka se rovná AD s velikost okna](media/stream-analytics-machine-learning-anomaly-detection/windowsize_equal_half_anomaly_length.png)
 
-2. V případech, kdy nelze předpovědět délka anomálií tento detektor funguje nejlépe úsilí. Však při výběru že užší časový interval omezení jsou Cvičná data, která by zvýšit pravděpodobnost detekce návratu do normální. 
+2. V případech, kde nemůže být předpovězen délka anomálii tento detektor funguje nejlépe úsilí. Ale při výběru že užší časový interval omezení trénovací data, která zvýší pravděpodobnost detekce vrátit do normálního. 
 
-3. V následujícím scénáři nebyla zjištěna delší anomálií jako okno školení již obsahuje anomálií stejnou vysokou hodnotu. 
+3. V následujícím scénáři delší anomálií nebyl rozpoznán jako okno školení již obsahuje anomálií stejnou vysokou hodnotu. 
 
    ![Anomálie se stejnou velikostí](media/stream-analytics-machine-learning-anomaly-detection/anomalies_with_same_length.png)
 
-## <a name="example-query-to-detect-anomalies"></a>Ukázkový dotaz zjišťovat anomálie 
+## <a name="example-query-to-detect-anomalies"></a>Příklad dotazu k detekci anomálií 
 
-Následující dotaz slouží k vypsání výstrahu v případě zjištění anomálií.
-Pokud vstupní datový proud není uniform, může pomoci krok agregace transformují je na uniform časové řady. V příkladu používá průměr ale specifický typ agregace závisí na scénáři uživatele. Kromě toho časové řady má větší než interval agregace mezery, nejsou k dispozici žádné události časové řady detekce anomálií aktivační události (podle posuvné okno sémantiku). V důsledku toho se předpokládá jednotnost je poškozená po příchodu následující události. V takových případech by mělo být zadáno mezer v časové řady. Jeden z možných přístupů je převést na poslední událost do všech oken směrování, jak je uvedeno níže.
+Následující dotaz je možné do výstupního výstrahu, pokud se detekuje anomálie.
+Pokud vstupní datový proud není jednotné, může pomoct krok agregace transformovali je do řady jednotným časem. V příkladu se používá AVG, ale konkrétní typ agregace, závisí na uživatelský scénář. Kromě toho pokud časové řady má větší než interval agregace mezery, nejsou k dispozici žádné události v časové řadě detekce anomálií aktivační událost (podle posuvné okno sémantiku). V důsledku toho předpokladů uniformita je přerušeno při obdržení další události. V takových situacích by mělo být zadáno mezer v časové řady. Jedním z možných způsobů je provedení poslední událost v každé okno směrování, jak je znázorněno níže.
 
 ```sql
     WITH AggregationStep AS 
@@ -224,27 +224,27 @@ Pokud vstupní datový proud není uniform, může pomoci krok agregace transfor
 
 ## <a name="performance-guidance"></a>Průvodce výkonem
 
-* Použijte pro úlohy šest jednotek streamování. 
-* Odesílání událostí alespoň jedna sekunda od sebe.
-* Dotaz bez oddílů, který používá operátor AnomalyDetection může vytvářet výsledky v průměru s latencí výpočtu o 25 ms.
-* Latence zasáhla oddílů dotazu se mírně liší s počet oddílů, jako počet výpočty je vyšší. Latence je však o stejný jako bez oddílů případ porovnatelný z hlediska celkový počet událostí pro všechny oddíly.
-* Při čtení dat v reálném čase, velké množství dat požity rychle. Zpracování tato data je aktuálně nižší. Latence v takových případech byl nalezen lineárně zvyšte počet datových bodů v okně spíše než interval okna velikost nebo událostí. Chcete-li snížit latenci v reálném čase případech, doporučujeme použít menší velikost okna. Případně zvažte úlohu od aktuální čas. Několik příkladů latence v dotazu bez oddílů: 
-    - 60 datových bodů v okně detekce může mít za následek latence 10 sekund s propustností 3 MB/s. 
-    - Na 600 datových bodů latence dosáhnout přibližně 80 sekund s propustností 0,4 MB/s.
+* Použití šest jednotek streamování pro úlohy. 
+* Odesílání událostí alespoň jedné sekundy od sebe.
+* Dotaz bez oddílů, který používá operátor anomalydetection, který může vést k výsledkům s latencí výpočtu přibližně 25 ms v průměru.
+* Latence zaznamenal dělená dotazem se mírně liší se počet oddílů, je vyšší počet výpočty. Latence se ale o stejné jako v případě bez oddílů srovnatelné celkový počet událostí na všechny oddíly.
+* Při čtení dat v reálném čase, velký objem dat přijatých rychle. Zpracování těchto dat je aktuálně pomalejší. Latence v takových scénářích bylo zjištěno zvýšení lineárně s počtem datových bodů v okně spíše než interval okna velikost nebo události. Pokud chcete snížit latenci v reálném čase případy, zvažte použití menší velikost okna. Můžete také začít úlohy můžete od aktuálního času. Několik příkladů latenci v dotazu bez oddílů: 
+    - 60 datových bodů v intervalu zjišťování může vést k latenci 10 sekund s propustností 3 MB/s. 
+    - Latence na 600 datových bodů, dosáhnout přibližně 80 sekund s propustností 0.4 MB/s.
 
-## <a name="limitations-of-the-anomalydetection-operator"></a>Omezení AnomalyDetection operátor 
+## <a name="limitations-of-the-anomalydetection-operator"></a>Omezení operátor anomalydetection, který 
 
-* Tento operátor aktuálně nepodporuje zjišťování Špička a vyhrazené IP adresy. Špičky a vyhrazené IP adresy jsou spontánních nebo krátkodobou změn v časové řady. 
+* Tento operátor v současné době nepodporuje zjišťování (špičky) a vyhrazené IP adresy. Provozní špičky a vyhrazené IP adresy jsou spontánních nebo krátkodobou změny v časové řady. 
 
-* Tento operátor aktuálně zpracovává vzory sezónnosti. Vzory sezónnosti jsou opakovaných vzorů v datech, například o jiných webových přenosů chování během víkendu nebo jiné nákupní trendy během černé pátek, které nejsou anomálií, ale očekávané vzor v chování. 
+* Tento operátor aktuálně nezpracovává vzory sezónnosti. Sezónnost vzorky se opakující se vzory v datech, například jiný webový provoz chování během víkendu nebo jiné nákupní trendy během černý pátek, které nejsou anomálie, ale očekávaný vzor chování. 
 
-* Tento operátor očekává být uniform vstupní časové řady. Datového proudu událostí můžete provedeny uniform agregování přes přeskakující nebo posílání okno. Ve scénářích, kdy mezery mezi událostmi vždy menší než okno agregace přeskakující okno stačí aby uniform časové řady. Při mezera může být větší, může být vyplněna mezer opakováním poslední hodnotu pomocí skákající okno. 
+* Tento operátor očekává, že vstupní časové řady být jednotné. Datového proudu událostí je možné provádět jednotné pomocí agregaci přes aktivační událost pro přeskakující nebo kdy se skok provádí okna. Ve scénářích, kde je mezera mezi událostmi vždy menší než časový interval agregace aktivační událost pro přeskakující okno stačí provést jednotné časové řady. Když mezery, může být větší, lze také zopakováním posledních hodnotu pomocí skákajícím oknem vyplnit mezery. 
 
 ## <a name="references"></a>Odkazy
 
-* [Detekce anomálií – pomocí strojového učení zjišťovat anomálie v časových řad dat](https://blogs.technet.microsoft.com/machinelearning/2014/11/05/anomaly-detection-using-machine-learning-to-detect-abnormalities-in-time-series-data/)
-* [Strojového učení detekce anomálií rozhraní API](https://docs.microsoft.com/en-gb/azure/machine-learning/machine-learning-apps-anomaly-detection-api)
-* [Detekce anomálií časové řady](https://msdn.microsoft.com/library/azure/mt775197.aspx)
+* [Detekce anomálií – použití strojového učení pro detekci anomálií v datech časové řady](https://blogs.technet.microsoft.com/machinelearning/2014/11/05/anomaly-detection-using-machine-learning-to-detect-abnormalities-in-time-series-data/)
+* [Ve službě Machine learning API pro detekci anomálií](https://docs.microsoft.com/en-gb/azure/machine-learning/machine-learning-apps-anomaly-detection-api)
+* [Čas detekce anomálií řady](https://msdn.microsoft.com/library/azure/mt775197.aspx)
 
 ## <a name="next-steps"></a>Další postup
 

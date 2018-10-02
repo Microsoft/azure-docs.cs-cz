@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 08/31/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3f9bdcb67628a6780e42ef16acea2b91ca9817d9
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 2eb838bcb9d3f64d0bbf4657c516adb50d103223
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377016"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585301"
 ---
 # <a name="install-the-durable-functions-extension-and-samples-azure-functions"></a>Instalace rozšíření Durable Functions a ukázky (Azure Functions)
 
@@ -36,7 +36,7 @@ Visual Studio nyní poskytuje nejlepší prostředí pro vývoj aplikací, kter�
 ### <a name="start-with-sample-functions"></a>Začněte s ukázkové funkce 
 
 1. Stáhněte si [ukázkovou aplikaci v souboru .zip pro sadu Visual Studio](https://azure.github.io/azure-functions-durable-extension/files/VSDFSampleApp.zip). Není nutné přidat odkaz NuGet, protože ukázkový projekt již existuje.
-2. Nainstalujte a spusťte [emulátoru úložiště Azure](https://docs.microsoft.com/azure/storage/storage-use-emulator) verze 5.6 nebo novější. Alternativně můžete aktualizovat *local.appsettings.json* soubor s skutečné připojovacích řetězců Azure Storage.
+2. Nainstalujte a spusťte [emulátoru úložiště Azure](https://docs.microsoft.com/azure/storage/storage-use-emulator) verze 5.6 nebo novější. Alternativně můžete aktualizovat *local.settings.json* soubor s skutečné připojovacích řetězců Azure Storage.
 3. Otevřete projekt v sadě Visual Studio 2017. 
 4. Pokyny ke spuštění ukázky začínat [Function řetězení - Hello pořadí ukázka](durable-functions-sequence.md). Ukázku můžete spustit místně nebo publikovat do Azure.
 
@@ -63,7 +63,7 @@ Visual Studio Code poskytuje místní vývojové prostředí pro všechny hlavn�
     >[!IMPORTANT]
     >Odolná služba Functions v jazyce JavaScript vyžaduje verzi 2.x nástrojů Azure Functions Core.
 
-*  Pokud jste na počítači s Windows, nainstalujte a spusťte [emulátoru úložiště Azure](https://docs.microsoft.com/azure/storage/storage-use-emulator) verze 5.6 nebo novější. Alternativně můžete aktualizovat *local.appsettings.json* soubor s skutečných připojení služby Azure Storage. 
+*  Pokud jste na počítači s Windows, nainstalujte a spusťte [emulátoru úložiště Azure](https://docs.microsoft.com/azure/storage/storage-use-emulator) verze 5.6 nebo novější. Alternativně můžete aktualizovat *local.settings.json* soubor s skutečných připojení služby Azure Storage. 
 
 
 ### <a name="start-with-sample-functions"></a>Začněte s ukázkové funkce
@@ -82,7 +82,7 @@ Visual Studio Code poskytuje místní vývojové prostředí pro všechny hlavn�
     ```bash
     func extensions install -p Microsoft.Azure.WebJobs.Extensions.Twilio -v 3.0.0-beta8
     ```
-5. Spustit emulátor úložiště Azure nebo aktualizace *local.appsettings.json* soubor s skutečné připojovacího řetězce služby Azure Storage.
+5. Spustit emulátor úložiště Azure nebo aktualizace *local.settings.json* soubor s skutečné připojovacího řetězce služby Azure Storage.
 6. Otevřete projekt ve Visual Studio Code. 
 7. Pokyny ke spuštění ukázky začínat [Function řetězení - Hello pořadí ukázka](durable-functions-sequence.md). Ukázku můžete spustit místně nebo publikovat do Azure.
 8. Spusťte projekt spuštěním v příkazu výzvy / terminálu následující příkaz:
@@ -94,50 +94,52 @@ Visual Studio Code poskytuje místní vývojové prostředí pro všechny hlavn�
 
 1. Klonování [Durable Functions úložiště](https://github.com/Azure/azure-functions-durable-extension.git).
 2. Přejděte na počítači se [složce samples JavaScript](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/javascript). 
-3. Spuštěním následujícího příkazu nainstalujte trvalý rozšíření Azure Functions okno Příkazový řádek nebo terminálu:
+3. Spuštěním následujícího příkazu nainstalujte trvalý rozšíření Azure Functions okno Příkazový řádek nebo terminálu
 
-    ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.6.0
     ```
+    func extensions install
+    ```
+    > [!NOTE] 
+    > To vyžaduje, aby [.NET Core SDK](https://www.microsoft.com/net/download) být nainstalovaný na počítači
 4. Obnovení balíčků npm spuštěním následujícího příkazu okno Příkazový řádek nebo terminálu:
     
-    ```bash
+    ```
     npm install
     ``` 
-5. Aktualizace *local.appsettings.json* souboru skutečné připojovacím řetězcem služby Azure Storage.
-6. Otevřete projekt ve Visual Studio Code. 
+5. Aktualizace *local.settings.json* soubor s připojovacím řetězcem z účtu služby Azure storage pro `AzureWebJobsStorage`.  Tento účet úložiště se použije pro funkce trvalý stav.
+6. Projekt otevřete v editoru, jako je Visual Studio Code. 
 7. Pokyny ke spuštění ukázky začínat [Function řetězení - Hello pořadí ukázka](durable-functions-sequence.md). Ukázku můžete spustit místně nebo publikovat do Azure.
 8. Spusťte projekt spuštěním v příkazu výzvy / terminálu následující příkaz:
-    ```bash
-    func host start
+    ```
+    func start
     ```
 
 ### <a name="start-with-an-empty-project"></a>Začněte s prázdným projektem
  
 1. V příkazu výzvy / terminálu přejděte do složky, který bude hostovat vaši aplikaci function app.
-2. Spuštěním následujícího příkazu nainstalujte trvalý rozšíření Azure Functions okno Příkazový řádek nebo terminálu:
-
-    ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.6.0
-    ```
 3. Vytvoření projektu aplikace Function App spuštěním následujícího příkazu:
 
-    ```bash
+    ```
     func init
     ``` 
-4. Spustit emulátor úložiště Azure nebo aktualizace *local.appsettings.json* soubor s skutečné připojovacího řetězce služby Azure Storage.
+4. Spustit emulátor úložiště Azure (jenom Windows) nebo aktualizovat *local.settings.json* soubor s skutečné připojovacího řetězce služby Azure Storage pro `AzureWebJobsStorage`.
 5. Potom spuštěním následujícího příkazu vytvořte novou funkci a postupujte podle pokynů průvodce:
 
-    ```bash
+    ```
     func new
     ```
     >[!IMPORTANT]
     > V současné době není k dispozici šablona odolné funkce ale můžete začít s některou z podporovaných možností a pak upravte kód. Ukázky pro použijte pro referenci [klient Orchestrace](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/csx/HttpStart), [Orchestrace Trigger](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/csx/E1_HelloSequence), a [aktivační událost pro aktivitu](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/csx/E1_HelloSequence).
+2. Spuštěním následujícího příkazu nainstalujte trvalý rozšíření Azure Functions okno Příkazový řádek nebo terminálu v adresáři aplikace funkce:
+
+    ```
+    func extensions install
+    ```
 
 6. Otevřít složku projektu ve Visual Studio Code a pokračujte tak, že upravíte kód šablony. 
 7. Spusťte projekt spuštěním v příkazu výzvy / terminálu následující příkaz:
-    ```bash
-    func host start
+    ```
+    func start
     ```
 
 ## <a name="azure-portal"></a>portál Azure

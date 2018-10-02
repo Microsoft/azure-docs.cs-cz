@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/25/2018
+ms.date: 10/01/2018
 ms.author: tomfitz
-ms.openlocfilehash: d8bc1165d131c593d5f4697b20166b72605ad488
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: f19708d232080b53446bedd9316fcf9d7772890d
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47228353"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585794"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Povolit postupy bezpečného nasazení s Azure Deployment Manager (Public Preview)
 
@@ -144,7 +144,7 @@ Následující příklad ukazuje obecný formát prostředku služby. V každé 
 
 Další informace najdete v tématu [služby referenčními informacemi k šablonám](/azure/templates/Microsoft.DeploymentManager/serviceTopologies/services).
 
-### <a name="service-units"></a>Jednotky služby
+### <a name="service-units"></a>Jednotky služeb
 
 Následující příklad ukazuje obecný formát prostředek jednotky služby. V každé jednotce služby zadejte skupinu prostředků, [režim nasazení](deployment-modes.md) pro nasazení a cesta k souboru šablony a parametrů. Pokud chcete zadat relativní cestu pro šablonu a parametry, úplná cesta je vytvořen z kořenové složky ve zdroji artefaktů. Můžete zadat absolutní cestu pro šablonu a parametry, ale můžete ztratit možnost snadno verzi vydávání verzí. Jednotky služby závisí na službě.
 
@@ -220,7 +220,7 @@ Další informace najdete v tématu [kroky referenčními informacemi k šablon�
 
 ### <a name="rollouts"></a>Uvedení
 
-Pokud chcete mít jistotu, že je k dispozici zdroj artefaktu, uvedení závisí na něm. Uvedení definuje skupiny kroků pro každou službu jednotku, která je nasazena. Můžete definovat akce prováděné před nebo po nasazení. Například můžete určit, že nasazení počkejte po nasazení služby jednotky. 
+Pokud chcete mít jistotu, že je k dispozici zdroj artefaktu, uvedení závisí na něm. Uvedení definuje skupiny kroků pro každou službu jednotku, která je nasazena. Můžete definovat akce prováděné před nebo po nasazení. Například můžete určit, že nasazení počkejte po nasazení služby jednotky. Můžete definovat pořadí skupin kroků.
 
 Určuje objekt identita [uživatelsky přiřazené identity spravované](#identity-and-access) , který provede akce související s nasazením.
 
@@ -248,6 +248,7 @@ Následující příklad ukazuje obecný formát uvedení.
         "stepGroups": [
             {
                 "name": "stepGroup1",
+                "dependsOnStepGroups": ["<step-group-name>"],
                 "preDeploymentSteps": ["<step-ID>"],
                 "deploymentTargetId":
                     "<service-unit-ID>",

@@ -11,12 +11,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 3f98b4e34c4c76efc33395530ef016b26e1ad523
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: f6a574f169310f2779fb20353fda748e6893a4bd
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44163035"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48016736"
 ---
 # <a name="set-up-security-info-to-use-email-preview"></a>Nastavení informací o zabezpečení pro použití e-mailu (preview)
 
@@ -46,7 +46,7 @@ V závislosti na nastavení vaší organizace zobrazí se výzva k přidání e-
 
 3. V **bezpečnost vašeho účtu** stránce **provádí**.
 
-    Vaše bezpečnostní údaje se aktualizuje a ověřit vaši identitu, při použití dvoustupňové ověřování pomocí e-mailovou adresu.
+    Vaše bezpečnostní údaje se aktualizuje a použít k ověření vaší identity při resetování hesla pomocí e-mailovou adresu.
 
 ## <a name="additional-security-info-options"></a>Další informace o možnosti zabezpečení
 

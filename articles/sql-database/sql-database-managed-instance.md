@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/26/2018
-ms.openlocfilehash: 626dd362248027831c78d1505662ca12d2ff334d
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.date: 10/01/2018
+ms.openlocfilehash: a09a19957c318416f3cb4de79305b181dbc3be81
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392818"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018277"
 ---
 # <a name="what-is-a-managed-instance"></a>Co je Managed Instance?
 
@@ -75,7 +75,7 @@ Managed Instance je k dispozici ve dvou úrovních služeb:
 Obě úrovně služeb 99,99 % dostupnost a vám umožní nezávisle na sobě vyberte velikost úložiště a výpočetní kapacitu. Další informace o architektura pro vysokou dostupnost služby Azure SQL Database najdete v tématu [vysokou dostupnost a Azure SQL Database](sql-database-high-availability.md).
 
 > [!IMPORTANT]
-> Změna vaší úrovně služby z obecné na důležité obchodní informace a naopak se nepodporuje ve verzi Public Preview. Pokud chcete migrovat vaše databáze v úrovních různé služby, můžete vytvořit novou instanci, obnovení databází pomocí bodu v čase z původní instance a potom vyřaďte původní instanci, pokud už není potřeba. 
+> Změna vaší úrovně služby z obecné na důležité obchodní informace a naopak se nepodporuje ve verzi Public Preview. Pokud chcete migrovat vaše databáze v úrovních různé služby, můžete vytvořit novou instanci, obnovení databází pomocí bodu v čase z původní instance a potom vyřaďte původní instanci, pokud už není potřeba. Však můžete škálovat počet virtuálních jader a úložiště navýšení nebo snížení kapacity v rámci úrovně služeb bez výpadků.
 
 ### <a name="general-purpose-service-tier"></a>Obecné účely úrovně služeb
 
@@ -108,7 +108,7 @@ Následující seznam popisuje klíčové vlastnosti vrstvy služby s obecné ú
 
 \* Virtuální jádro reprezentuje logický procesor nabízený s možností volby mezi generacemi hardwaru. Gen 4 logické procesory jsou založeny na Intel E5-2673 v3 (Haswell) 2,4 GHz a logické procesory generace 5 jsou založené na Intel E5-2673 v4 (Broadwell) 2,3 GHz procesorech. 
 
-Další informace najdete v části [dostupnost/Standard pro obecné účely a architektura](sql-database-high-availability.md#standardgeneral-purpose-availability) ve službě Azure SQL Database.
+Další informace najdete v tématu [dostupnost/Standard pro obecné účely a architektura](sql-database-high-availability.md#standardgeneral-purpose-availability) ve službě Azure SQL Database a [úložiště osvědčené postupy z hlediska výkonu a důležité informace týkající se Azure SQL DB mi (General Účel)](https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose/).
 
 ### <a name="business-critical-service-tier-preview"></a>Obchodní vrstvu služby (preview)
 

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 08/15/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 8a2e06d2e6cf3e470d4e0909e5559ac0411292fd
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 0f2543ff10f19d6f1ccd656855dbb41cf42e6ae2
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307109"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018991"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Functions – reference pro jazyk pro definování pracovních postupů v Azure Logic Apps
 
@@ -82,7 +82,7 @@ Pro práci s řetězci, můžete použít tyto funkce řetězce a také někter�
 | [indexOf](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | Vrátí počáteční pozici pro dílčí řetězec. | 
 | [lastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | Vrátí počáteční pozici posledního výskytu podřetězce. | 
 | [nahradit](../logic-apps/workflow-definition-language-functions-reference.md#replace) | Nahraďte podřetězce pomocí zadaného řetězce a vrátit řetězec aktualizované. | 
-| [split](../logic-apps/workflow-definition-language-functions-reference.md#split) | Vrátí pole, které obsahuje všechny znaky z řetězce a odděluje jednotlivé znaky s konkrétní oddělovací znak. | 
+| [split](../logic-apps/workflow-definition-language-functions-reference.md#split) | Vrátí pole obsahující podřetězců, oddělených čárkami, z většího řetězce na základě zadaného oddělovače znaků v původním řetězci. | 
 | [startsWith](../logic-apps/workflow-definition-language-functions-reference.md#startswith) | Zkontrolujte, jestli řetězec začíná na konkrétní dílčí řetězec. | 
 | [dílčí řetězec](../logic-apps/workflow-definition-language-functions-reference.md#substring) | Vrácení znaků z řetězce, počínaje od zadané pozice. | 
 | [toLower](../logic-apps/workflow-definition-language-functions-reference.md#toLower) | Vrátí řetězec ve formátu malá písmena. | 
@@ -3016,32 +3016,32 @@ A vrátí toto pole Zbývající položky: `[1,2,3]`
 
 ### <a name="split"></a>split
 
-Vrátit pole, která obsahuje všechny znaky z řetězce a má každý znak oddělené *oddělovač*.
+Vrátí pole obsahující podřetězců, oddělených čárkami, založené na znak zadaného oddělovače v původním řetězci. 
 
 ```
-split('<text>', '<separator>')
+split('<text>', '<delimiter>')
 ```
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Text*> | Ano | Řetězec | Řetězec, který obsahuje znaky, které chcete rozdělit |  
-| <*Oddělovač*> | Ano | Řetězec | Oddělovač, který se zobrazí mezi každý znak v výsledné pole | 
+| <*Text*> | Ano | Řetězec | Řetězec, který má rozdělit do podřetězců na základě zadaného oddělovače v původním řetězci |  
+| <*Oddělovač*> | Ano | Řetězec | Znak v původní řetězec, který se použije jako oddělovač | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| [<*char1*><*oddělovač*><*char2*><*oddělovač*>...] | Pole | Výsledná pole vytvořené ze všech položek v zadaném řetězci |
+| [<*substring1*>, <*substring2*>;...] | Pole | Pole obsahující podřetězců z původního řetězce, oddělené čárkami |
 |||| 
 
 *Příklad* 
 
-Tento příklad vytvoří pole ze zadaného řetězce, každý znak oddělíte čárkou jako oddělovačem:
+Tento příklad vytvoří pole s podřetězců ze zadaného řetězce na zadaný znak jako oddělovač základě: 
 
 ```
-split('abc', ',')
+split('a_b_c', '_')
 ```
 
-A vrátí výsledek: `[a, b, c]`
+A jako výsledek vrátí toto pole: `["a","b","c"]`
 
 <a name="startOfDay"></a>
 

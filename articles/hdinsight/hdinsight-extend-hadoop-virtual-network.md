@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/26/2018
-ms.openlocfilehash: 98c62f54e2413bd67600db182c452d0d5965f239
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4cbbfe5c40dd8686cf25ac31aa5db53b2a6415f7
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972177"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018855"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozšíření Azure HDInsight pomocí Azure Virtual Network
 
@@ -253,7 +253,7 @@ Vynucené tunelování znamená konfigurace směrování definované uživatelem
 >
 > Pokud je velmi riskantní používat skupiny zabezpečení sítě nebo uživatelem definované trasy k řízení provozu, můžete ignorovat tento oddíl.
 
-Pokud používáte skupiny zabezpečení sítě nebo trasy definované uživatelem, musíte povolit provoz z Azure stavu a Správa služby k dosažení HDInsight. Pokud chcete zjistit IP adresy, které musí být povoleno, postupujte následovně:
+Pokud používáte skupiny zabezpečení sítě nebo trasy definované uživatelem, musíte povolit provoz z Azure stavu a Správa služby k dosažení HDInsight. Musíte také povolit provoz mezi virtuálními počítači v rámci podsítě. Pokud chcete zjistit IP adresy, které musí být povoleno, postupujte následovně:
 
 1. Vždy musí povolit provoz z následujících IP adres:
 

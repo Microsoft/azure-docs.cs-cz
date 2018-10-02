@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren, vinagara
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f03e124aab27292ee86fcd8c28ecebb0ba9cbdcf
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fd8ba47e8fb0d591fab7717117329357b74f907a
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999507"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585964"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Přidání Log Analytics uložené hledání a výstrahy do řešení pro správu (Preview)
 
@@ -84,7 +84,7 @@ Uložené výsledky hledání se jednotlivé vlastnosti je popsané v následuj�
 | query | Spustit dotaz. |
 
 > [!NOTE]
-> Budete muset použít řídicí znaky v dotazu, pokud obsahuje znaky, které může být interpretován jako JSON.  Například, pokud byl váš dotaz **typ: AzureActivity OperationName:"Microsoft.Compute/virtualMachines/write"**, by měl být zadaný v souboru řešení, které **typ: AzureActivity OperationName:\" Microsoft.Compute/virtualMachines/write\"**.
+> Budete muset použít řídicí znaky v dotazu, pokud obsahuje znaky, které může být interpretován jako JSON.  Například, pokud byl váš dotaz **typ: AzureActivity OperationName:"Microsoft.Compute/virtualMachines/write"**, by měl být zadaný v souboru řešení, které **typ: AzureActivity OperationName:\\" Microsoft.Compute/virtualMachines/write\\"**.
 
 ## <a name="alerts"></a>Výstrahy
 [Upozornění Azure Log](../monitoring-and-diagnostics/monitor-alerts-unified-log.md) jsou vytvořené pravidly upozornění Azure, které v pravidelných intervalech spouští dotazy zadaný protokol.  Pokud výsledky dotazu splňují zadaná kritéria, se vytvoří záznam o upozornění a jednu nebo více akcí se spouštějí pomocí [skupiny akcí](../monitoring-and-diagnostics/monitoring-action-groups.md).  
@@ -250,7 +250,7 @@ Každý plán obsahuje jednu **výstrah** akce.  Definuje podrobnosti výstrahy 
 | Název elementu | Požaduje se | Popis |
 |:--|:--|:--|
 | Příjemci | Ano | Čárkami oddělený seznam e-mailové adresy k odeslání oznámení, když výstraha se vytvoří, jako v následujícím příkladu.<br><br>**[ "recipient1@contoso.com", "recipient2@contoso.com" ]** |
-| Předmět | Ano | Řádek předmětu e-mailu. |
+| Subjekt | Ano | Řádek předmětu e-mailu. |
 | Příloha | Ne | Přílohy se momentálně nepodporují.  Pokud tento prvek je součástí, mělo by být **žádný**. |
 
 

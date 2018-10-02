@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/27/2018
 ms.author: aljo
-ms.openlocfilehash: cf8e9dff020e16efe4b37a2bfd66563211be3020
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 69f29eac17ecdf5381a550bc182c547fa0c25278
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055535"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018974"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Nastavení clusteru Service Fabric
 Tento článek popisuje, jak přizpůsobit různá nastavení prostředků infrastruktury pro cluster Service Fabric. Pro clustery hostovaných v Azure, můžete upravit pomocí nastavení [webu Azure portal](https://portal.azure.com) nebo s použitím šablony Azure Resource Manageru. Pro samostatné clustery upravit nastavení aktualizací ClusterConfig.json souborů a provádění upgradu na konfiguraci v clusteru. 
@@ -352,6 +352,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |ApplicationUpgradeTimeout| Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(360)|Dynamická| Zadejte časový interval v sekundách. Časový limit pro upgrade aplikace. Pokud časový limit je menší než "ActivationTimeout" deployer se nezdaří. |
 |ContainerServiceArguments|řetězec, výchozí hodnota je "-H localhost: 2375 -H npipe: / /"|Statická|Service Fabric (SF) spravuje démona dockeru (s výjimkou na klientské počítače s windows jako Win10). Tato konfigurace umožňuje uživateli zadat vlastní argumenty, které by měly být předány démona dockeru, při jeho spuštění. Když zadáte vlastní argumenty, Service Fabric do modulu Dockeru s výjimkou nepředávejte žádné další argumenty '--pidfile "argument. Proto by neměl určovat uživatele '--pidfile "argument jako součást svých argumentů zákazníka. Kromě toho vlastní argumenty se ujistěte, které docker démon naslouchá na kanálu s výchozím názvem ve Windows (nebo Unixovému soketu domény v Linuxu) služba Service Fabric komunikovat s ním.|
 |ContainerServiceLogFileMaxSizeInKb|int, výchozí je 32768|Statická|Maximální velikost souboru protokolu vygenerované kontejnery dockeru.  Jenom Windows.|
+|ContainerImagesToSkip|řetězec, názvy imagí, které jsou oddělené znakem svislé čáry, výchozí hodnota je ""|Statická|Název jedné nebo víc imagí kontejnerů, které by neměly být odstraněny.  Použít s parametrem PruneContainerImages.|
 |ContainerServiceLogFileNamePrefix|řetězec, výchozí je "sfcontainerlogs"|Statická|Předpona názvu souboru pro soubory protokolů generované kontejnery dockeru.  Jenom Windows.|
 |ContainerServiceLogFileRetentionCount|Int, výchozí hodnota je 10|Statická|Počet souborů protokolů generovaných kontejnery dockeru se soubory protokolu budou přepsány.  Jenom Windows.|
 |CreateFabricRuntimeTimeout|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(120)|Dynamická| Zadejte časový interval v sekundách. Hodnota časového limitu pro synchronizaci FabricCreateRuntime volání |
@@ -375,6 +376,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |NTLMAuthenticationPasswordSecret|SecureString, výchozí hodnota je Common::SecureString("")|Statická|Není že šifrované má, který se používá ke generování hesla pro uživatele, protokol NTLM. Musí být nastavena pokud NTLMAuthenticationEnabled má hodnotu true. Ověřuje modul pro nasazení. |
 |NTLMSecurityUsersByX509CommonNamesRefreshInterval|Časový interval, výchozí hodnota je Common::TimeSpan::FromMinutes(3)|Dynamická|Zadejte časový interval v sekundách. Pravidelné interval, ve které Hosting hledá nové certifikáty pro použití protokolu NTLM FileStoreService konfigurace nastavení pro konkrétní prostředí. |
 |NTLMSecurityUsersByX509CommonNamesRefreshTimeout|Časový interval, výchozí hodnota je Common::TimeSpan::FromMinutes(4)|Dynamická| Zadejte časový interval v sekundách. Pro konfiguraci protokolu NTLM uživatele, kteří používají certifikát běžných názvů vypršel časový limit. Uživatelé NTLM je třeba FileStoreService sdílené složky. |
+|PruneContainerImages|Logická hodnota, výchozí hodnotu FALSE|Dynamická| Odeberte nepoužívané aplikace Image kontejneru z uzlů. Když ApplicationType se registrace z clusteru Service Fabric, imagí kontejnerů, které byly použity touto aplikací se odeberou na uzlech, které jste stáhli Service Fabric. Vyřazení spouští každou hodinu, tak může trvat až jednu hodinu (a dobu chcete-li vyřadit bitovou kopii) pro Image má být odebrán z clusteru.<br>Service Fabric se nikdy stáhnout a odebíráním imagí není související s aplikací.  Nesouvisejících imagí, které byly staženy ručně nebo v opačném případě je nutné explicitně.<br>V parametru ContainerImagesToSkip lze bitové kopie, které se nesmí odstranit.| 
 |RegisterCodePackageHostTimeout|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(120)|Dynamická| Zadejte časový interval v sekundách. Hodnota časového limitu pro volání FabricRegisterCodePackageHost synchronizace. To je možné použít pouze s více kódu balíček hostitelů aplikací jako FWP |
 |RequestTimeout|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(30)|Dynamická| Zadejte časový interval v sekundách. To představuje časový limit pro komunikaci mezi aplikační hostitel systému a prostředků infrastruktury proces pro různé hostingové souvisejících operací jako je registrace továrny; uživatele Registrace modulu runtime. |
 |RunAsPolicyEnabled| Logická hodnota, výchozí hodnotu FALSE|Statická| Povolí spouštění balíčků kódu jako místní uživatel, než je uživatel v rámci které prostředků infrastruktury je proces spuštěn. Chcete-li povolit tyto zásady, které prostředky infrastruktury musí běžet jako systém, nebo jako uživatel, který má SeAssignPrimaryTokenPrivilege. |

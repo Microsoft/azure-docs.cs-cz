@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/6/2018
 ms.author: victorh
-ms.openlocfilehash: b34e5317a35d694e8521e73b0846da973661d9df
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: f9bd0288d4009af536bdc8f45cbaed4b3f1eee18
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39530840"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018704"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Přehled monitorování stavu Application Gateway
 
@@ -96,7 +96,7 @@ Následující tabulka obsahuje definice pro vlastnosti sondu stavu vlastní.
 
 Pokud se podsítě služby application gateway je skupina zabezpečení sítě (NSG), rozsahy portů 65503 65534 musí být otevřen na podsítě služby application gateway pro příchozí provoz. Tyto porty jsou povinné pro stav back-endu rozhraní API pro práci.
 
-Kromě toho nelze blokovat odchozí připojení k Internetu a musí být povolený provoz z značka AzureLoadBalancer.
+Kromě toho nelze blokovat odchozí připojení k Internetu a musí být povolené příchozí provoz přicházející z značka AzureLoadBalancer.
 
 ## <a name="next-steps"></a>Další postup
 Po získání informací o monitorování stavu Application Gateway, můžete nakonfigurovat [sondu stavu vlastní](application-gateway-create-probe-portal.md) na webu Azure Portal nebo [sondu stavu vlastní](application-gateway-create-probe-ps.md) pomocí Powershellu a Azure Resource Manageru model nasazení.

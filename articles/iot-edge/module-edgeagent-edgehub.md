@@ -8,12 +8,12 @@ ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5e358992661f7bcf06121a07c1bafca0850316b2
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 259d61125828ee487b74daa525f3635cfa592ce7
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423133"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017700"
 ---
 # <a name="properties-of-the-edge-agent-and-edge-hub-module-twins"></a>Vlastnosti agenta Edge a dvojčaty modulů Centrum Edge
 
@@ -46,6 +46,7 @@ Dvojče modulu pro agenta Edge se nazývá `$edgeAgent` a koordinuje komunikaci 
 | systemModules.edgeHub.configuration.id | ID nasazení, které nasadit tento modul. | Tato vlastnost nastavena ve službě IoT Hub, při použití tohoto manifestu použitím modelu nasazení. Není součástí manifestu nasazení. |
 | moduly. {ID modulu} .version | Uživatelem definovaný řetězec představující verze tohoto modulu. | Ano |
 | modules.{moduleId}.type | Musí být "docker" | Ano |
+| moduly. {ID modulu} .status | {"spuštěno" \| "zastavena"} | Ano |
 | moduly. {ID modulu} .restartPolicy | {"nikdy" \| "na-se nezdařilo" \| "na-není v pořádku" \| "always"} | Ano |
 | modules.{moduleId}.settings.image | Identifikátor URI bitové kopie modulu. | Ano |
 | modules.{moduleId}.settings.createOptions | Převedený na řetězec formátu JSON obsahující požadované možnosti pro vytvoření kontejneru modulu. [Možnosti vytvoření dockeru][lnk-docker-create-options] | Ne |

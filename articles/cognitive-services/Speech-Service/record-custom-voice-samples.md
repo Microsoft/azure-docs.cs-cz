@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/5/2018
 ms.author: v-jerkin
-ms.openlocfilehash: b1bab65b68c5f37165fbc8414ac4300c924e53b9
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: c30d531876ae7c69c164bc1d73103e493aaaa8fa
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165172"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018298"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Záznam hlasu ukázky vytvořte vlastní hlasové
 
@@ -38,7 +38,7 @@ Záznam inženýr  |Dohlíží technické aspekty záznam a funguje záznam zař
 Ředitel            |Připraví skript a coaches talentu hlasové výkonu.
 Editor              |Dokončí zvukové soubory a připravit je pro nahrání na portál vlastní hlasové.
 
-Jednotlivec může vyplnit více než jednu roli. Tento průvodce to předpokládá, že budete primárně vyplnění roli ředitel a nabírat hlasové talentů a pracovníkem záznam. Pokud chcete, aby se záznamy sami pro sebe, tento článek obsahuje nějaké informace týkající role softwarového inženýra záznam. Rolí editor, není nutná až po relaci, tak může provádět inženýr ředitel záznam.
+Jednotlivec může vyplnit více než jednu roli. Tento průvodce to předpokládá, že budete primárně vyplnění roli ředitel a nabírat hlasové talentů a pracovníkem záznam. Pokud chcete, aby se záznamy sami pro sebe, tento článek obsahuje nějaké informace týkající role softwarového inženýra záznam. Rolí editor, není nutná až po relaci, tak může provádět ředitel nebo inženýr záznam.
 
 ## <a name="choose-your-voice-talent"></a>Zvolte vašeho talentu hlasu
 

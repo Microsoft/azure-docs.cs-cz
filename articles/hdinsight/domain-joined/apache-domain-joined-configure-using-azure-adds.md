@@ -8,12 +8,12 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: eb24aa0471604696de99f4878baef764cfef0a8b
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 6cfe587abadf8350fecc497b1af1cea9700f4f28
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408350"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018713"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurace clusteru HDInsight s balíčkem Enterprise Security Package pomocí Azure Active Directory Domain Services
 
@@ -44,6 +44,10 @@ Zobrazit stav Azure Active Directory Domain Services tak, že vyberete **stavu**
 ![Stav služby Azure Active Directory Domain Services](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-health.png)
 
 ## <a name="add-managed-identity"></a>Přidat spravované identity
+
+Vytvoření uživatelsky přiřazené spravovanou identitu, pokud již nemáte. Zobrazit [Create, seznam, delete nebo přiřadit roli, kterou chcete přiřadit uživatele spravovanou identitu pomocí webu Azure portal](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal) pokyny. 
+
+Spravovaná identita se používá k zjednodušení operací služby domény. Tato identita má přístup, číst, vytvářet, upravovat a odstraňovat doménové služby operace, které jsou potřebné pro HDInsight Enterprise Security Package, jako je vytvoření organizační jednotky a principů služby.
 
 Po povolení služby Azure AD – DS vytvoření uživatelsky přiřazené identity spravované a přiřaďte ho **Přispěvatel služby HDInsight domény** roli řízení přístupu Azure AD DS.
 

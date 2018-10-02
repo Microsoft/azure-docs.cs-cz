@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: nberdy
-ms.openlocfilehash: f2e04c793f5c238716930bcbdcaa090e6a133588
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: f9476d42bbdb9d2a499c08d83eed6696fbbed469
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452580"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585998"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Pochopení a vyvolání přímých metod ze služby IoT Hub
 
@@ -33,7 +33,7 @@ Odkazovat na [pokyny komunikaci typu Cloud zařízení](iot-hub-devguide-c2d-gui
 Přímé metody jsou implementovány v zařízení a může vyžadovat nula nebo více vstupů v datové části metody správně vytvořit instanci. Vyvolání přímé metody prostřednictvím služby přístupem k identifikátoru URI (`{iot hub}/twins/{device id}/methods/`). Zařízení obdrží přímých metod v tématu MQTT konkrétní zařízení (`$iothub/methods/POST/{method name}/`) nebo prostřednictvím protokolu AMQP odkazů ( `IoThub-methodname` a `IoThub-status` vlastnosti aplikace). 
 
 > [!NOTE]
-> Při vyvolání přímé metody v zařízení, názvy a hodnoty vlastností mohou obsahovat pouze US-ASCII tisknutelný alfanumerické znaky, s výjimkou těch v následující sadě: ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``.
+> Při vyvolání přímé metody v zařízení, názvy a hodnoty vlastností mohou obsahovat pouze US-ASCII tisknutelný alfanumerické znaky, s výjimkou těch následující: ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``
 > 
 
 Přímé metody jsou synchronní a buď úspěšné nebo neúspěšné po uplynutí časového limitu (výchozí: 30 sekund, nastavit až na 3 600 sekund). Přímé metody jsou užitečné pro interaktivní scénáře, ve kterém chcete zařízení tak, aby fungoval pouze v případě zařízení je online a příjem příkazů. Například zapnutí světla z telefonu. V těchto scénářích platí budete chtít najdete v článku okamžité úspěch nebo neúspěch, cloudové služby můžou jednat výsledek co nejdříve. Zařízení může vrátit některé zprávy jako výsledek metody, ale není to nutné pro metodu Uděláte to tak. Neexistuje žádná záruka na řazení nebo jakékoli souběžnosti sémantiky pro volání metody.

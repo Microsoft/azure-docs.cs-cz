@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: e5b44ed2435986ffd500cade1f7c8ff8047d353d
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 65134d78fb011ae707c0629bef1ebb1a66bd8ec2
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452294"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018498"
 ---
 # <a name="select-and-use-a-compute-target-to-train-your-model"></a>Vyberte a použijte cílové výpočetní prostředí k natrénování modelu
 
@@ -372,7 +372,7 @@ Můžete zobrazit, co výpočetní cíle jsou spojeny s váš pracovní prostor 
 1. Přejděte [webu Azure portal](https://portal.azure.com) a přejděte do pracovního prostoru.
 2. Klikněte na __Compute__ odkaz pod __aplikací__ oddílu.
 
-    ![Karta výpočetní zobrazení](./media/how-to-set-up-training-targets/compute_tab.png)
+    ![Karta výpočetní zobrazení](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)
 
 ### <a name="create-a-compute-target"></a>Vytvořte cílové výpočetní prostředí
 
@@ -380,7 +380,7 @@ Postupujte podle výše uvedené kroky, chcete-li zobrazit seznam cílových vý
 
 1. Klikněte na tlačítko __+__ přihlášení k přidání cílového výpočetního prostředí.
 
-    ![Přidat Compute ](./media/how-to-set-up-training-targets/add_compute.png)
+    ![Přidat Compute ](./media/how-to-set-up-training-targets/add-compute-target.png)
 
 1. Zadejte název cílového výpočetního prostředí.
 1. Vyberte typ compute připojit pro __školení__. 

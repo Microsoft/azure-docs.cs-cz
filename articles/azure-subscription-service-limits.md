@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: byvinyal
-ms.openlocfilehash: efaca1b9506ada02c52ad0833139d3b4e441d456
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 0b78c7c94f5dc6d7c427188ac4ffd807a06a867e
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393609"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585488"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 Tento dokument uvádí některé nejčastějšími omezeními Microsoft Azure, které se taky říká se jim kvóty. Tento dokument nepopisuje aktuálně všech služeb Azure. V průběhu času v seznamu rozbalit a doplněn o popis další platformy.
@@ -102,7 +102,7 @@ V následující omezení se přidala nová tabulka tak, aby odrážel případn
 * [Škálovací sady virtuálních počítačů](#virtual-machine-scale-sets-limits)
 
 ### <a name="subscription-limits"></a>Omezení předplatného
-#### <a name="subscription-limits"></a>Omezení předplatného
+#### <a name="subscription-limits---azure-service-management-classic-resources"></a>Limity předplatného – Správa služeb Azure (klasické prostředky)
 [!INCLUDE [azure-subscription-limits](../includes/azure-subscription-limits.md)]
 
 #### <a name="subscription-limits---azure-resource-manager"></a>Limity předplatného – Azure Resource Manageru

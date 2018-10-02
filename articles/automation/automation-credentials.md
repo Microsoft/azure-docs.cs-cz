@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4fa2bc2dd59a5c62becc7f5cd4c4c9633dac1a29
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: e5414a7607c036f1d60f58e1eb047da1e54f4db9
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42057219"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585336"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Assety přihlašovacích údajů ve službě Azure Automation
 
@@ -77,6 +77,9 @@ Funkce v následující tabulce se používá pro přístup k přihlašovacím �
 2. Klikněte na tlačítko **pověření** části otevřete **pověření** okno.
 3. Klikněte na tlačítko **přidat přihlašovací údaj** v horní části okna.
 4. Vyplňte formulář a klikněte na tlačítko **vytvořit** uložit nový přihlašovací údaj.
+
+> [!NOTE]
+> Uživatelské účty, které používají ověřování službou Multi-Factor Authentication nejsou podporovány pro použití ve službě Azure Automation.
 
 ### <a name="to-create-a-new-credential-asset-with-windows-powershell"></a>K vytvoření nových assetů přihlašovacích údajů pomocí Windows Powershellu
 

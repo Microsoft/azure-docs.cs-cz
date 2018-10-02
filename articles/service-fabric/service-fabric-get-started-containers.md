@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 4a5ca4879f81533e3617ca9dfe9cdf8afcf2965b
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 0782b50662d1d49ec79aebbf7a5f889471f11283
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700167"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018448"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Vytvoření první aplikace Service Fabric typu kontejner v systému Windows
 > [!div class="op_single_selector"]
@@ -575,7 +575,7 @@ Výchozí časový interval je nastavený na 10 sekund. Vzhledem k tomu, že je 
 
 ## <a name="configure-the-runtime-to-remove-unused-container-images"></a>Konfigurace modulu runtime pro odebrání nepoužívaných imagí kontejneru
 
-Cluster Service Fabric můžete nakonfigurovat tak, aby z uzlu odebral nepoužívané image kontejneru. Tato konfigurace umožňuje znovu získat místo na disku v případě, že je na uzlu příliš mnoho imagí kontejneru. Pokud chcete tuto funkci povolit, aktualizujte část `Hosting` v manifestu clusteru, jak je znázorněno v následujícím fragmentu kódu: 
+Cluster Service Fabric můžete nakonfigurovat tak, aby z uzlu odebral nepoužívané image kontejneru. Tato konfigurace umožňuje znovu získat místo na disku v případě, že je na uzlu příliš mnoho imagí kontejneru. Pokud chcete tuto funkci povolit, aktualizujte [Hosting](service-fabric-cluster-fabric-settings.md#hosting) části v manifestu clusteru, jak je znázorněno v následujícím fragmentu kódu: 
 
 
 ```json
@@ -596,7 +596,7 @@ Cluster Service Fabric můžete nakonfigurovat tak, aby z uzlu odebral nepouží
 } 
 ```
 
-Image, které se nesmí odstranit, můžete zadat v rámci parametru `ContainerImagesToSkip`. 
+Image, které se nesmí odstranit, můžete zadat v rámci parametru `ContainerImagesToSkip`.  
 
 
 ## <a name="configure-container-image-download-time"></a>Konfigurace doby stahování image kontejneru

@@ -8,12 +8,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 6758cd658daf75beeea93bf9c719508cd271c8be
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: cc73be09cec4ef963a496687d112f98e05d98802
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032423"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018515"
 ---
 # <a name="speech-service-rest-apis"></a>Speech service rozhraní REST API
 
@@ -32,11 +32,11 @@ Toto rozhraní API podporuje pouze krátkou projevy. Požadavky může obsahovat
 
 ### <a name="query-parameters"></a>Parametry dotazu
 
-Tyto parametry mohou být zahrnuty v řetězci dotazu požadavku REST.
+Následující parametry mohou být zahrnuty v řetězci dotazu požadavku REST.
 
 |Název parametru|Požadované a volitelné|Význam|
 |-|-|-|
-|`language`|Požaduje se|Identifikátor jazyka, který má být rozpoznána. Zobrazit [podporované jazyky](supported-languages.md#speech-to-text).|
+|`language`|Požaduje se|Identifikátor jazyka, který má být rozpoznána. Zobrazit [podporované jazyky](language-support.md#speech-to-text).|
 |`format`|Nepovinné<br>Výchozí hodnota: `simple`|Výsledný formát `simple` nebo `detailed`. Jednoduché výsledky obsahují `RecognitionStatus`, `DisplayText`, `Offset`a doby trvání. Podrobné výsledky obsahují více kandidátů s jistotou hodnotami a čtyři různé reprezentace.|
 |`profanity`|Nepovinné<br>Výchozí hodnota: `masked`|Způsob zpracování vulgárních výrazů v výsledky rozpoznávání. Může být `masked` (nahradí vulgárních výrazů hvězdičky z obou stran), `removed` (odebere všechny vulgárních výrazů), nebo `raw` (včetně vulgárních výrazů).
 
@@ -195,9 +195,6 @@ Níže jsou koncové body REST pro převod textu na řeč z služba Speech API. 
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
 
-> [!NOTE]
-> Pokud jste vytvořili vlastní hlasové písmo, použijte místo toho přidružené vlastní koncový bod.
-
 Speech service podporuje výstupní zvuková 24 KHz kromě výstup 16 Khz podporována pro zpracování řeči Bingu. Čtyři 24 KHz výstupní formáty jsou k dispozici pro použití v `X-Microsoft-OutputFormat` hlavičky protokolu HTTP, jako jsou dvě hlasy 24 KHz, `Jessa24kRUS` a `Guy24kRUS`.
 
 Národní prostředí | Jazyk   | Pohlaví | Název mapování služby
@@ -205,7 +202,7 @@ Národní prostředí | Jazyk   | Pohlaví | Název mapování služby
 cs-CZ  | Jazykovou verzi US English | Žena | "Microsoft serveru řeči Text na řeč hlas (en US, Jessa24kRUS)" 
 cs-CZ  | Jazykovou verzi US English | Muž   | "Microsoft serveru řeči Text na řeč hlas (en US, Guy24kRUS)"
 
-Úplný seznam dostupných hlasů je k dispozici v [podporované jazyky](supported-languages.md#text-to-speech).
+Úplný seznam dostupných hlasů je k dispozici v [podporované jazyky](language-support.md#text-to-speech).
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
@@ -265,7 +262,8 @@ Kód HTTP|Význam|Možný důvod
 400 |Chybný požadavek |Povinný parametr nebyl nalezen, prázdný nebo null. Nebo hodnota předaná buď povinný nebo volitelný parametr není platný. Běžné potíže se hlavičku, která je příliš dlouhý.
 401|Neautorizováno |Požadavek není autorizovaný. Ověřte váš klíč předplatného nebo token je platný a v oblasti správné.
 413|Příliš velká entita požadavku|Vstup SSML je delší než 1024 znaků.
-|502|Chybná brána    | Problém sítě nebo na straně serveru. Může také znamenat neplatné záhlaví.
+429|Příliš mnoho žádostí|Překročili jste kvótu nebo počet požadavků pro vaše předplatné povolená.
+502|Chybná brána | Problém sítě nebo na straně serveru. Může také znamenat neplatné záhlaví.
 
 Pokud je stav protokolu HTTP `200 OK`, tělo odpovědi obsahuje zvukový soubor v požadovanému formátu. Tento soubor můžete přehrát, jako má přenesených nebo uložit do vyrovnávací paměti nebo později přehrát či jiné použití souboru.
 

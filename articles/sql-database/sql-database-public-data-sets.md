@@ -12,12 +12,12 @@ ms.author: douglasl
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 6977995fb33d221b48a633076f61d3ee39d6ba40
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 225c8093816c5186cbc084f74bc6e0591107ec00
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160413"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47586253"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Veřejných datových sadách pro tvorbu prototypů a testování
 
@@ -40,7 +40,7 @@ Projdete seznam veřejných datových sadách pro data, která vám pomůže se 
 
 | Zdroj dat | Informace o datech | O souborech |
 |---|---|---|
-| [Data taxislužby města New York](http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml) | "Záznamy cesty taxíkem obsahovat pole zachytávání odběr a odkládací data/časy odběr a odkládací umístění, o jízdách vzdálenosti, rozepsané tarify, míra typy, typy plateb a počty ovladač ohlásil osobní." | Datové sady jsou v souborech CSV podle měsíce. |
+| [Data taxislužby města New York](http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml) | "Záznamy cesty taxíkem obsahovat pole zachytávání odběr dropoff data/časy odběr a dropoff umístění, o jízdách vzdálenosti, rozepsané tarify, míra typy, typy plateb a počítá ovladač ohlásil osobní." | Datové sady jsou v souborech CSV podle měsíce. |
 | [Microsoft Research datové sady – "Datové vědy pro výzkum"](https://www.microsoft.com/research/academic-program/data-science-microsoft-research/) | Více datových sad, interakce s počítačem, zvuk/video, načítání dat dolování nebo informace, Geoprostorové/umístění, zpracování přirozeného jazyka a pro robotiku a počítačové zpracování obrazu. | Datové sady jsou v různých formátech, ZIP ke stažení. |
 | [Data veřejného genomu](http://www.completegenomics.com/public-data/) | "Různorodé datové sady plné lidské genomů jsou volně dostupných veřejně přístupný pro zvýšení jakékoli genomický studie..." Privátní komerční corporation je poskytovatel, dokončení Genomics. | Po extrakci, nastavení datových sad a jsou v textovém formátu UNIX. Nástroje pro analýzu jsou také k dispozici. |
 | [Otevřete data Science dat v cloudu](https://www.opensciencedatacloud.org/) | "Otevřené cloudové datové vědy poskytuje vědy s prostředky pro ukládání, sdílení a analýzu terabajt a petabajtů vědecké datových sad."| Datové sady jsou v různých formátech. |

@@ -15,12 +15,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: e9598cb464360e35a86b6fe35d8c965a5e7fb51d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0a2a9845f82f1a81f3e187edbbb2deaa2300b3be
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963028"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585913"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Postupy: povolení jednotného přihlašování napříč aplikacemi pro iOS pomocí knihovny ADAL
 
@@ -250,7 +250,7 @@ Jak postupovat, jsou:
 1. Povolte režim zprostředkovatele v kódu aplikace volání sady SDK MS.
 2. Vytvořit nový identifikátor URI přesměrování a stanoví, že aplikace a registrace vaší aplikace.
 3. Registruje se schéma adresy URL.
-4. Podpora iOS9: přidejte oprávnění do souboru info.plist.
+4. Přidejte oprávnění do souboru info.plist.
 
 #### <a name="step-1-enable-broker-mode-in-your-application"></a>Krok 1: Povolení režimu zprostředkovatele v aplikaci
 
@@ -307,12 +307,16 @@ Pro podporu certifikátu ověřování na základě druhý "msauth" musí být z
 
 Příklad: *msauth://code/x-msauth-mytestiosapp%3A%2F%2Fcom.myapp.mytestapp*
 
-#### <a name="step-4-ios9-add-a-configuration-parameter-to-your-app"></a>Krok 4: iOS9: Přidání konfiguračního parametru do vaší aplikace
+#### <a name="step-4-add-a-configuration-parameter-to-your-app"></a>Krok 4: Přidejte parametr konfigurace do vaší aplikace
 
-ADAL využívá – canOpenURL: Zkontrolujte, jestli je na zařízení nainstalovaný zprostředkovatel. V Iosu 9 Apple uzamčené co schémata aplikaci dotázat. Budete muset přidat "msauth" LSApplicationQueriesSchemes část vašeho `info.plist file`.
+ADAL využívá – canOpenURL: Zkontrolujte, jestli je na zařízení nainstalovaný zprostředkovatel. V Iosu 9 na Apple uzamčené co schémata aplikaci dotázat. Budete muset přidat "msauth" LSApplicationQueriesSchemes část vašeho `info.plist file`.
 
 ```
-<key>LSApplicationQueriesSchemes</key> <array><string>msauth</string></array>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>msauth</string>
+    </array>
+
 ```
 
 ### <a name="youve-configured-sso"></a>Dokončení konfigurace jednotného přihlašování!

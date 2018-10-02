@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: 4bfaed3d908574eff3521cedcef4b117d45e1ca2
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: c6bc77e5ee1fa5e180b41dca50640dc01fee0691
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220915"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017512"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-azure-virtual-machine-scale-using-a-template"></a>Konfigurace spravovaných identit pro prostředky Azure v měřítku virtuálních počítačů Azure pomocí šablony
 
@@ -146,7 +146,7 @@ Pokud máte škálovací sady virtuálního počítače, který už je systém p
 
    Pokud je vaše verze rozhraní API `2018-06-01` a váš virtuální počítač má systém i uživatelsky přiřazené identity spravované odebrat `SystemAssigned` z typ identity a zachovat `UserAssigned` spolu s hodnotami userAssignedIdentities slovníku.
 
-   **Microsoft.Compute/virtualMachineScaleSets rozhraní API verze 2018-06-01 a starší**
+   **Microsoft.Compute/virtualMachineScaleSets rozhraní API verze 2018-06-01**
 
    Pokud je vaše verze rozhraní API `2017-12-01` a škálovací sady virtuálních počítačů má systém i uživatelsky přiřazené identity spravované odebrat `SystemAssigned` z typ identity a zachovat `UserAssigned` spolu s `identityIds` pole uživatelsky přiřazené spravované identity. 
    
@@ -279,7 +279,7 @@ V této části přiřadíte uživateli přiřazena spravovanou identitu virtuá
     ]
    ```
 
-   **Microsoft.Compute/virtualMachines rozhraní API verze 2017-12-01 dříve eand**
+   **Microsoft.Compute/virtualMachines rozhraní API verze 2017-12-01**
 
    ```json
    "resources": [

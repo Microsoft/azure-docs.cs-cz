@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: yshoukry, LADocs
 ms.topic: article
 ms.date: 07/20/2018
-ms.openlocfilehash: d4fbbcb81433876e4c57763b8a90b3ff1168a699
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: daeb0c5436d851b6e234c1b97583df526192659e
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842443"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018770"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Instalace místní brány dat pro Azure Logic Apps
 
@@ -101,7 +101,7 @@ Informace o tom, jak použít bránu s ostatními službami, najdete v těchto �
 
 ## <a name="install-data-gateway"></a>Instalace brány dat
 
-1. [Stáhnout, uložte a spusťte instalační program brány na místním počítači](http://go.microsoft.com/fwlink/?LinkID=820931&clcid=0x409).
+1. [Stáhnout, uložte a spusťte instalační program brány na místním počítači](https://aka.ms/on-premises-data-gateway-installer).
 
 2. Přijměte výchozí cestu instalace, nebo zadejte umístění ve vašem počítači, ve které chcete nainstalovat bránu.
 
@@ -182,7 +182,7 @@ Pokud musíte změnit umístění vaší brány, přesunutí instalace brány do
 
 1. Z vašeho počítače **ovládací panely**, přejděte na stránku **programy a funkce**. V seznamu programů vyberte **On-premises data gateway**a klikněte na tlačítko **odinstalovat**.
 
-2. [Znovu nainstalujte místní bránu dat](http://go.microsoft.com/fwlink/?LinkID=820931&clcid=0x409).
+2. [Znovu nainstalujte místní bránu dat](https://aka.ms/on-premises-data-gateway-installer).
 
 3. Až instalační program otevře, přihlaste se pomocí stejného pracovního nebo školního účtu, dříve použitým při instalaci brány.
 

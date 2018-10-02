@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
-ms.openlocfilehash: 09c551ea7196ae20a60a5dd34c1cda889ff5df46
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: e9309f8cb46b31ded46b705308465ac6f6c89204
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091046"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585182"
 ---
 # <a name="enable-azure-cli-for-azure-stack-users"></a>Povolení rozhraní příkazového řádku Azure pro uživatele Azure stacku
 
@@ -69,7 +69,5 @@ A [ukázkový soubor alias](https://raw.githubusercontent.com/Azure/azure-rest-a
 ## <a name="next-steps"></a>Další postup
 
 - [Nasazení šablon pomocí Azure CLI](azure-stack-deploy-template-command-line.md)
-
 - [Připojení přes PowerShell](azure-stack-connect-powershell.md)
-
 - [Správa uživatelských oprávnění](azure-stack-manage-permissions.md)

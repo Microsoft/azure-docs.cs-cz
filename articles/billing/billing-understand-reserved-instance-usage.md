@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2018
+ms.date: 09/28/2018
 ms.author: cwatson
-ms.openlocfilehash: c81db66637a4c56a36b6995ad8df0fe1967d08ef
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 1edf87d9ec334845f82c3c0c20c958e27f01e87a
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391658"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585216"
 ---
 # <a name="understand-azure-reservation-usage-for-your-pay-as-you-go-subscription"></a>Vysvětlení využití Azure rezervace pro vaše předplatné s průběžnými platbami
 
@@ -62,9 +62,11 @@ Filtrovat podle **Další informace o** a zadejte vaše **ID rezervace**. Násle
 4. **ID měřiče** je ID měřiče pro rezervaci. Náklady na tento měřič je hodnotou 0 USD. Toto id měřiče se zobrazí pro jakýkoli virtuální počítač, který může využít sleva za rezervaci.
 5. Standard_DS1_v2 je jeden virtuální procesor virtuálního počítače a virtuálního počítače se nasazují bez programu Azure Hybrid Benefit. Tedy tento měřič zahrnuje korunu navíc softwaru Windows. Měření odpovídající 1 jádro virtuálních počítačů řady D series najdete v tématu [náklady na software Windows instancí virtuálních počítačů rezervy Azure](billing-reserved-instance-windows-software-costs.md). Pokud máte na program Azure Hybrid Benefit se nepoužije tento další poplatek.
 
-## <a name="usage-for-sql-database-reserved-capacity-reservations"></a>Využití pro službu SQL Database vyhrazené kapacity rezervace
+## <a name="usage-for-sql-database--cosmos-db-reserved-capacity-reservations"></a>Využití pro SQL Database a Cosmos DB vyhrazené kapacity rezervace
 
-V dalších částech předpokládají, že používáte SQL Database Gen 4 oblasti USA – východ a vaší rezervace informace vypadá jako v následující tabulce:
+V dalších částech používat Azure SQL Database jako příklad k popisu sestavu využití. Stejný postup můžete použít také zobrazíte využití služby Azure Cosmos DB. 
+
+Předpokládejme, že používáte SQL Database Gen 4 oblasti USA – východ a vaší rezervace informace vypadá jako v následující tabulce:
 
 | Pole | Hodnota |
 |---| --- |
@@ -75,7 +77,7 @@ V dalších částech předpokládají, že používáte SQL Database Gen 4 obla
 
 ### <a name="statement-section-of-csv-file"></a>Příkaz části ze souboru CSV
 
-Filtrovat podle **využití rezervovaných instancí** název měřiče. Zobrazit něco jako na následujícím snímku obrazovky:
+Filtrovat podle **využití rezervovaných instancí** měřit název a zvolte požadovaný **kategorie měřiče** – Azure SQL database nebo Azure Cosmos DB. Zobrazit něco jako na následujícím snímku obrazovky:
 
 ![Soubor CSV pro službu SQL Database rezervované kapacity](./media/billing-understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-statements.png)
 
@@ -106,3 +108,5 @@ Další informace o rezervacích Azure, najdete v následujících článcích:
 ## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktování podpory
 
 Pokud máte další otázky, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.
+
+

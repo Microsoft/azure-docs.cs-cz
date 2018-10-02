@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: diviso
-ms.openlocfilehash: 3a6fbc8410dbc5aec4522f0972a29c67527edb23
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: de89756a3f9ef1139e855da16c0343a9919b56cb
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42057470"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585370"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Automatizace nasazení virtuálních počítačů Azure pomocí Chefu
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 Chef je skvělým nástrojem k zajištění automatizace a požadované konfigurace stavu.
 
-S nejnovějším cloudových rozhraní api verze, Chef poskytuje bezproblémovou integraci s Azure, což vám umožní zřídit a nasadit stavům konfigurace prostřednictvím jediného příkazu.
+S nejnovější verzí cloudového rozhraní API Chef poskytuje bezproblémovou integraci s Azure, což vám umožní zřídit a nasadit stavům konfigurace prostřednictvím jediného příkazu.
 
 V tomto článku se nastavení prostředí Chef ke zřízení virtuálních počítačů Azure a vás provedou vytvořením zásady nebo "Kuchařka" a poté nasaďte tento kuchařka pro virtuální počítač Azure.
 
@@ -42,7 +42,7 @@ Následující diagram znázorňuje základní architektura Chef.
 
 Chef má tři hlavní součásti architektury: Chef, Chef klienta (uzel), Chef pracovní stanici a serveru.
 
-Chef serveru je bod správy a existují dvě možnosti pro Chef Server: hostovaného řešení nebo místního řešení. Použijeme hostovaného řešení.
+Chef serveru je bod správy a existují dvě možnosti pro Chef Server: hostovaného řešení nebo místního řešení. Použijeme hostovaného řešení pro účely tohoto kurzu.
 
 Klient Chef (node) je agent, který je umístěný na serverech, které spravujete.
 
@@ -75,7 +75,7 @@ Po vytvoření vaší organizaci, stáhněte si starter kit.
 ![][4]
 
 > [!NOTE]
-> Pokud se zobrazí výzva s upozorněním, že vaše klíče se resetuje, je ok pokračovat, protože máme k dispozici žádné existující infrastruktury ještě nakonfigurované.
+> Pokud se zobrazí výzva s upozorněním, že vaše klíče se resetuje, je možné pokračovat, protože máme k dispozici žádné existující infrastruktury ještě nakonfigurované.
 > 
 > 
 
@@ -94,7 +94,7 @@ Teď byste měli mít čtyři soubory v kořenové složce c:\chef včetně soub
 
 Soubory PEM obsahují vaší organizace a privátního klíče správce pro komunikaci, zatímco knife.rb soubor obsahuje konfiguraci nůž. Budeme muset upravit soubor knife.rb.
 
-Otevřete soubor v editoru podle výběru a upravit tak, že odeberete "cookbook_path" /.. / z cesty, takže se zobrazuje, jak je ukázáno dále.
+Otevřete soubor v editoru podle výběru a upravit tak, že odeberete "cookbook_path" /.. / z cesty, takže se zobrazí jako:
 
     cookbook_path  ["#{current_dir}/cookbooks"]
 
@@ -109,7 +109,7 @@ Váš soubor knife.rb by teď měl vypadat podobně jako v následujícím pří
 Tyto řádky zajistí, že odkazuje na adresář návody v c:\chef\cookbooks nůž a také používá naše soubor nastavení publikování v Azure během operací Azure.
 
 ## <a name="installing-the-chef-development-kit"></a>Instalace sady Chef Development Kit
-Další [stáhněte a nainstalujte](http://downloads.getchef.com/chef-dk/windows) ChefDK (Chef Development Kit) nastavit pracovní stanice Chef.
+Dále [stáhněte a nainstalujte](http://downloads.getchef.com/chef-dk/windows) ChefDK (Chef Development Kit) nastavit pracovní stanice Chef.
 
 ![][7]
 
@@ -119,7 +119,9 @@ Potvrďte, že vaše proměnná PATH obsahuje položky pro C:\opscode\chefdk\bin
 
 Pokud nejsou existuje, ujistěte se, že přidáte tyto cesty!
 
-*VŠIMNĚTE SI, ŽE JE DŮLEŽITÉ POŘADÍ CESTY!* Pokud vaše opscode cesty nejsou ve správném pořadí budete mít problémy.
+> [!NOTE]
+> Důležité je pořadí cesty! Pokud vaše opscode cesty nejsou ve správném pořadí budete mít problémy. 
+> 
 
 Než budete pokračovat, restartujte počítač pracovní stanice.
 

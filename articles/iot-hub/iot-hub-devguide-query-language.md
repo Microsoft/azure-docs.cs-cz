@@ -2,22 +2,21 @@
 title: Vysvětlení dotazovací jazyk služby Azure IoT Hub | Dokumentace Microsoftu
 description: Příručka pro vývojáře – popis služby IoT Hub podobném SQL dotazovací jazyk používá k načtení informací o zařízení a modul dvojčata a úlohy ze služby IoT hub.
 author: fsautomata
-manager: ''
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: 2e4b356fec642e06e3223700967eeacd19f1c49c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4aa4a3b1e617009d88c581966f791569322d967f
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952473"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018431"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Dotazovací jazyk služby IoT Hub pro dvojčata zařízení a modul, úlohy a směrování zpráv
 
-Centrum IoT poskytuje výkonné jazyce podobném SQL k načtení informací o [dvojčata zařízení] [ lnk-twins] a [úlohy][lnk-jobs]a [směrování zpráv][lnk-devguide-messaging-routes]. Tento článek představuje:
+Centrum IoT poskytuje výkonné jazyce podobném SQL k načtení informací o [dvojčata zařízení](iot-hub-devguide-device-twins.md) a [úlohy](iot-hub-devguide-jobs.md), a [směrování zpráv](iot-hub-devguide-messages-d2c.md). Tento článek představuje:
 
 * Úvod do hlavní funkce dotazovací jazyk služby IoT Hub, a
 * Podrobný popis jazyka. Podrobnosti o dotazovací jazyk pro směrování zpráv, najdete v části [dotazy v směrování zpráv](../iot-hub/iot-hub-devguide-routing-query-syntax.md).
@@ -25,7 +24,9 @@ Centrum IoT poskytuje výkonné jazyce podobném SQL k načtení informací o [d
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 ## <a name="device-and-module-twin-queries"></a>Dotazů na dvojčata zařízení a modul
-[Dvojčata zařízení] [ lnk-twins] a dvojčaty modulů může obsahovat libovolné objekty JSON vlastnosti a značky. IoT Hub umožňuje dvojčaty modulů a dvojčata zařízení dotazu jako jeden dokument JSON obsahující informace o veškerém dvojčete.
+
+[Dvojčata zařízení](iot-hub-devguide-device-twins.md) a dvojčaty modulů může obsahovat libovolné objekty JSON vlastnosti a značky. IoT Hub umožňuje dvojčaty modulů a dvojčata zařízení dotazu jako jeden dokument JSON obsahující informace o veškerém dvojčete.
+
 Předpokládejme například, že vaše dvojčata zařízení centra IoT mají následující strukturu (dvojče zařízení by se měl podobat pouze s další moduleId):
 
 ```json
@@ -80,15 +81,14 @@ Předpokládejme například, že vaše dvojčata zařízení centra IoT mají n
 
 ### <a name="device-twin-queries"></a>Dotazy dvojčete zařízení
 
-Služba IoT Hub zpřístupní dvojčata zařízení jako kolekce dokumentů s názvem **zařízení**.
-Proto následující dotaz načte celou sadu dvojčata zařízení:
+Služba IoT Hub zpřístupní dvojčata zařízení jako kolekce dokumentů s názvem **zařízení**. Například následující dotaz načte celou sadu dvojčata zařízení:
 
 ```sql
 SELECT * FROM devices
 ```
 
 > [!NOTE]
-> [Sady SDK Azure IoT] [ lnk-hub-sdks] podporuje stránkování výsledků velký.
+> [Sady SDK Azure IoT](iot-hub-devguide-sdks.md) podporuje stránkování výsledků velký.
 
 IoT Hub umožňuje načíst dvojčata zařízení filtrování pomocí libovolné podmínky. Například pro příjem zařízení dvojčat where **location.region** značka je nastavená na **USA** následující dotaz:
 
@@ -97,11 +97,11 @@ SELECT * FROM devices
 WHERE tags.location.region = 'US'
 ```
 
-Logické operátory a aritmetické porovnání jsou také podporovány. Dvojčata nachází ve Spojených státech a nakonfigurovaná k odesílání telemetrických dat kratší než každou minutu použijte k načtení zařízení následující dotaz:
+Logické operátory a aritmetické porovnání jsou také podporovány. Například pokud chcete načíst dvojčata zařízení nachází v USA a nakonfigurovaná k odesílání telemetrie každou méně než minutu, použijte následující dotaz:
 
 ```sql
 SELECT * FROM devices
-WHERE tags.location.region = 'US'
+  WHERE tags.location.region = 'US'
     AND properties.reported.telemetryConfig.sendFrequencyInSecs >= 60
 ```
 
@@ -109,25 +109,25 @@ V zájmu usnadnění práce, je také možné použít konstanty pole s **v** a 
 
 ```sql
 SELECT * FROM devices
-WHERE properties.reported.connectivity IN ['wired', 'wifi']
+  WHERE properties.reported.connectivity IN ['wired', 'wifi']
 ```
 
 Často je potřeba identifikovat všechny dvojčata zařízení, které obsahují určitou vlastnost. IoT Hub podporuje funkci `is_defined()` pro tento účel. Například k načtení dvojčata zařízení, které definují `connectivity` vlastnosti použijte tento dotaz:
 
 ```SQL
 SELECT * FROM devices
-WHERE is_defined(properties.reported.connectivity)
+  WHERE is_defined(properties.reported.connectivity)
 ```
 
-Odkazovat [klauzule WHERE] [ lnk-query-where] najdete úplný přehled možností filtrování.
+Odkazovat [klauzule WHERE](iot-hub-devguide-query-language.md#where-clause) najdete úplný přehled možností filtrování.
 
-Seskupení a agregace jsou také podporovány. Najít počet zařízení v jednotlivých telemetrii, stav konfigurace použijte tento dotaz:
+Seskupení a agregace jsou také podporovány. Například pokud chcete zjistit počet zařízení v každém stavu konfigurace telemetrická data, použijte následující dotaz:
 
 ```sql
 SELECT properties.reported.telemetryConfig.status AS status,
     COUNT() AS numberOfDevices
-FROM devices
-GROUP BY properties.reported.telemetryConfig.status
+  FROM devices
+  GROUP BY properties.reported.telemetryConfig.status
 ```
 
 Toto seskupení dotaz by vrátil výsledek podobný následujícím příkladu:
@@ -159,7 +159,7 @@ SELECT LastActivityTime FROM devices WHERE status = 'enabled'
 
 ### <a name="module-twin-queries"></a>Dotazy dvojčete modulu
 
-Při dotazování u dvojčaty modulů je podobný dotaz na dvojčata zařízení, ale pomocí jiné kolekce/oboru názvů, tedy ne "zařízení z" můžete zadat dotaz
+Při dotazování u dvojčaty modulů se podobá po pokládání dotazů na dvojčata zařízení, ale pomocí jiné kolekce/oboru názvů, tedy ne "zařízení z" může dotazovat device.modules:
 
 ```sql
 SELECT * FROM devices.modules
@@ -171,14 +171,18 @@ Nepovolit jsme spojení mezi zařízeními a devices.modules kolekce. Pokud chce
 Select * from devices.modules where properties.reported.status = 'scanning'
 ```
 
-Tento dotaz vrátí všechny dvojčaty modulů s kontroly stavu, ale jenom na zadaný dílčí sadu zařízení.
+Tento dotaz vrátí všechny dvojčaty modulů s kontroly stavu, ale pouze na zadané určité podskupiny zařízení:
 
 ```sql
-Select * from devices.modules where properties.reported.status = 'scanning' and deviceId IN ('device1', 'device2')  
+Select * from devices.modules 
+  where properties.reported.status = 'scanning' 
+  and deviceId IN ('device1', 'device2')  
 ```
 
 ### <a name="c-example"></a>Příklad jazyka C#
-Funkce dotazu je zveřejněna rozhraním [sady SDK služby jazyka C#] [ lnk-hub-sdks] v **RegistryManager** třídy.
+
+Funkce dotazu je zveřejněna rozhraním [sady SDK služby jazyka C#](iot-hub-devguide-sdks.md) v **RegistryManager** třídy.
+
 Tady je příklad jednoduchého dotazu:
 
 ```csharp
@@ -198,7 +202,9 @@ while (query.HasMoreResults)
 Objekt dotazu vystavuje více **Další** hodnoty v závislosti na možnosti deserializace vyžadované dotazu. Například objekty úlohy nebo dvojčat zařízení nebo prostý JSON při použití projekce.
 
 ### <a name="nodejs-example"></a>Příklad Node.js
-Funkce dotazu je zveřejněna rozhraním [pro službu Azure IoT SDK pro Node.js] [ lnk-hub-sdks] v **registru** objektu.
+
+Funkce dotazu je zveřejněna rozhraním [pro službu Azure IoT SDK pro Node.js](iot-hub-devguide-sdks.md) v **registru** objektu.
+
 Tady je příklad jednoduchého dotazu:
 
 ```nodejs
@@ -233,8 +239,7 @@ V současné době porovnání jsou podporovány pouze mezi primitivní typy (ž
 
 ## <a name="get-started-with-jobs-queries"></a>Začínáme s dotazy úlohy
 
-[Úlohy] [ lnk-jobs] poskytují způsob, jak provádět operace na sadu zařízení. Dvojče každého zařízení obsahuje informace o úlohy, které je součástí v kolekci s názvem **úlohy**.
-Logicky,
+[Úlohy](iot-hub-devguide-jobs.md) poskytují způsob, jak provádět operace na sadu zařízení. Dvojče každého zařízení obsahuje informace o úlohy, které je součástí v kolekci s názvem **úlohy**.
 
 ```json
 {
@@ -276,16 +281,18 @@ Například k získání všech úloh (posledních a plánované), které mají 
 
 ```sql
 SELECT * FROM devices.jobs
-WHERE devices.jobs.deviceId = 'myDeviceId'
+  WHERE devices.jobs.deviceId = 'myDeviceId'
 ```
 
 Všimněte si, jak tento dotaz obsahuje stav specifický pro zařízení (a případně odpovědi přímé metody) jednotlivých úloh vrátila.
+
 Je také možné filtrovat pomocí libovolného logické podmínky u všech vlastností objektu v **devices.jobs** kolekce.
+
 Například pokud chcete načíst všechny úlohy aktualizace dvojčete dokončené zařízení, vytvořené pro konkrétní zařízení od září 2016, použijte tento dotaz:
 
 ```sql
 SELECT * FROM devices.jobs
-WHERE devices.jobs.deviceId = 'myDeviceId'
+  WHERE devices.jobs.deviceId = 'myDeviceId'
     AND devices.jobs.jobType = 'scheduleTwinUpdate'
     AND devices.jobs.status = 'completed'
     AND devices.jobs.createdTimeUtc > '2016-09-01'
@@ -295,10 +302,11 @@ Můžete také načíst výsledky na zařízení z jedné úlohy.
 
 ```sql
 SELECT * FROM devices.jobs
-WHERE devices.jobs.jobId = 'myJobId'
+  WHERE devices.jobs.jobId = 'myJobId'
 ```
 
 ### <a name="limitations"></a>Omezení
+
 V současné době se dotazuje na **devices.jobs** nepodporují:
 
 * Projekce, proto pouze `SELECT *` je možné.
@@ -306,24 +314,28 @@ V současné době se dotazuje na **devices.jobs** nepodporují:
 * Provádění agregací, jako je například počet, průměr, Seskupit podle.
 
 ## <a name="basics-of-an-iot-hub-query"></a>Základní informace o službě IoT Hub dotazu
+
 Každý dotaz služby IoT Hub se skládá, vyberte a z klauzule volitelné místo, kde a klauzule GROUP BY. Každý dotaz se spouští v kolekci dokumentů JSON, například dvojčata zařízení. Klauzule FROM označuje provést iteraci v kolekci dokumentů (**zařízení** nebo **devices.jobs**). Poté je použit filtr v klauzuli WHERE. Pomocí agregace, jsou výsledky tohoto kroku seskupené podle zadání v klauzuli Group by. Pro každou skupinu, je vygenerována řádku zadané v klauzuli SELECT.
 
 ```sql
 SELECT <select_list>
-FROM <from_specification>
-[WHERE <filter_condition>]
-[GROUP BY <group_specification>]
+  FROM <from_specification>
+  [WHERE <filter_condition>]
+  [GROUP BY <group_specification>]
 ```
 
 ## <a name="from-clause"></a>FROM – klauzule
+
 **z < from_specification >** klauzule může převzít jenom dvě hodnoty: **ze zařízení** na dvojčata zařízení dotazu, nebo **z devices.jobs** na podrobnosti o dotazu úlohy na zařízení.
+
 
 ## <a name="where-clause"></a>Klauzule WHERE
 **Kde < filter_condition >** klauzule je volitelný. Určuje, že mají být zahrnuty jako součást výsledku musí splňovat jednu nebo více podmínek, že v kolekci z dokumentů JSON. Jakýkoliv dokument JSON musí být zadané podmínky na "true" mají být zahrnuty ve výsledku.
 
-Povolené podmínky jsou popsány v části [výrazy a podmínky][lnk-query-expressions].
+Povolené podmínky jsou popsány v části [výrazy a podmínky](iot-hub-devguide-query-language.md#expressions-and-conditions).
 
 ## <a name="select-clause"></a>Klauzule SELECT
+
 **Vyberte < select_list >** je povinná a určuje, jaké hodnoty jsou načteny z dotazu. Určuje hodnoty JSON se použije k vygenerování nových objektů JSON.
 Pro každý prvek filtrované (a volitelně seskupené) podmnožinu kolekce z fáze projekce vygeneruje nový objekt JSON. Tento objekt je vytvořený pomocí hodnoty zadané v klauzuli SELECT.
 
@@ -349,7 +361,7 @@ SELECT [TOP <max number>] <projection list>
     | max(<projection_element>)
 ```
 
-**Attribute_name v relaci** odkazuje na všechny vlastnosti v kolekci z dokumentu JSON. Některé příklady klauzule FROM najdete v [Začínáme s dotazy dvojčete zařízení] [ lnk-query-getstarted] oddílu.
+**Attribute_name v relaci** odkazuje na všechny vlastnosti v kolekci z dokumentu JSON. Některé příklady klauzule FROM najdete v [Začínáme s dotazy dvojčete zařízení](iot-hub-devguide-query-language.md#get-started-with-device-twin-queries) oddílu.
 
 V současné době výběr klauzule liší od **vyberte*** jsou podporovány pouze v agregačních dotazů na dvojčata zařízení.
 
@@ -483,18 +495,5 @@ V podmínkách trasy jsou podporovány následující funkce řetězec:
 | CONTAINS(x,y) | Vrátí hodnotu typu Boolean označující, zda řetězec prvního výrazu obsahuje druhý. |
 
 ## <a name="next-steps"></a>Další postup
-Zjistěte, jak provádět dotazy ve svých aplikacích pomocí [sad SDK Azure IoT][lnk-hub-sdks].
 
-[lnk-query-where]: iot-hub-devguide-query-language.md#where-clause
-[lnk-query-expressions]: iot-hub-devguide-query-language.md#expressions-and-conditions
-[lnk-query-getstarted]: iot-hub-devguide-query-language.md#get-started-with-device-twin-queries
-
-[lnk-twins]: iot-hub-devguide-device-twins.md
-[lnk-jobs]: iot-hub-devguide-jobs.md
-[lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md
-[lnk-devguide-quotas]: iot-hub-devguide-quotas-throttling.md
-[lnk-devguide-mqtt]: iot-hub-mqtt-support.md
-[lnk-devguide-messaging-routes]: iot-hub-devguide-messages-d2c.md
-[lnk-devguide-messaging-format]: iot-hub-devguide-messages-construct.md
-
-[lnk-hub-sdks]: iot-hub-devguide-sdks.md
+Zjistěte, jak provádět dotazy ve svých aplikacích pomocí [sad SDK Azure IoT](iot-hub-devguide-sdks.md).

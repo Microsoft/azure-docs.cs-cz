@@ -9,12 +9,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 068f0a0d9202174faf5d54bebf5cf5f8fae86766
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: def8d8f9fc55aa6491799a134a554a8a7fe2884a
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720991"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017191"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>Začínáme se sadou SDK pro řeč zařízení
 
@@ -45,7 +45,7 @@ Než začnete s vývojem pomocí sady SDK zařízení řeči, shromážděte inf
 
 ## <a name="set-up-the-development-kit"></a>Nastavení sady development kit
 
-1. Připojte se k počítači dev kit nebo power adaptér pomocí kabelu USB mini. Při připojení dev kit na zelené power ukazatel aktivuje v horním panelu.
+1. Vývojová sada připojit k počítači nebo napájení adaptér pomocí kabelu USB mini. Při připojení sadě zelené power indikátor aktivuje v horním panelu.
 
 1. Vývojová sada připojení k počítači s použitím druhý mini kabelu USB.
 
@@ -72,7 +72,7 @@ Než začnete s vývojem pomocí sady SDK zařízení řeči, shromážděte inf
    ```
 
     > [!NOTE]
-    > Tyto příkazy používají Android Debug Bridge, adb.exe, který je součástí instalace sady Android Studio. Tento nástroj se nachází v C:\Users\[uživatelské jméno] \AppData\Local\Android\Sdk\platform nástroje. Tento adresář můžete přidat do cesty k němu pohodlnější, který má být vyvolán `adb`. V opačném případě musíte zadat úplnou cestu k instalaci adb.exe v každý příkaz, který vyvolá `adb`.
+    > Tyto příkazy používají Android Debug Bridge, `adb.exe`, který je součástí instalace sady Android Studio. Tento nástroj se nachází v C:\Users\[uživatelské jméno] \AppData\Local\Android\Sdk\platform nástroje. Tento adresář můžete přidat do cesty k němu pohodlnější, který má být vyvolán `adb`. V opačném případě musíte zadat úplnou cestu k instalaci adb.exe v každý příkaz, který vyvolá `adb`.
 
     > [!TIP]
     > Ztlumte mikrofonu a reproduktorů Ujistěte se, že pracujete s mikrofonů development kit v počítači. Díky tomu nebude aktivujete omylem zařízení se zvukem z počítače.
@@ -110,7 +110,7 @@ Ke spuštění testů ROOBO a ověření nastavení development kit, sestavit a 
 
 1.  Spusťte Android Studio.
 
-1.  Vyberte **otevřete existující projekt Android Studio**.
+1.  Vyberte **Open an existing Android Studio project** (Otevřít existující projekt Android Studia).
 
     ![Android Studio – otevřít existující projekt](media/speech-devices-sdk/qsg-5.png)
  
