@@ -1,6 +1,6 @@
 ---
-title: Shromažďování výkonu aplikace Linux v OMS Log Analytics | Microsoft Docs
-description: Tento článek obsahuje podrobné informace pro konfiguraci agenta OMS pro Linux ke shromažďování čítače výkonu pro MySQL a serveru Apache HTTP Server.
+title: Výkon Linuxových aplikací v OMS Log Analytics shromažďovat | Dokumentace Microsoftu
+description: Tento článek obsahuje podrobnosti pro konfiguraci agenta OMS pro Linux ke shromažďování čítačů výkonu pro MySQL a serveru Apache HTTP Server.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -14,33 +14,33 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 528274844908f9a1b2a604de42d8e84f4dc7d6f2
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: 5120fa869d9c3fe28630b189b84b9c3e3f5577e2
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37127347"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044565"
 ---
-# <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Shromáždit čítače výkonu pro Linux aplikace v analýzy protokolů 
-Tento článek obsahuje podrobné informace pro konfiguraci [OMS agenta pro Linux](https://github.com/Microsoft/OMS-Agent-for-Linux) ke shromažďování čítače výkonu pro konkrétní aplikace.  Aplikace, zahrnuté v tomto článku jsou:  
+# <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Shromáždit čítače výkonu pro Linuxové aplikace ve službě Log Analytics 
+Tento článek obsahuje podrobné informace pro konfiguraci [agenta OMS pro Linux](https://github.com/Microsoft/OMS-Agent-for-Linux) získat čítače výkonu pro určité aplikace.  Aplikací obsažených v tomto článku jsou:  
 
 - [MySQL](#MySQL)
 - [Serveru Apache HTTP Server](#apache-http-server)
 
 ## <a name="mysql"></a>MySQL
-Pokud MySQL nebo MariaDB serveru je zjištěn v počítači, pokud je nainstalován OMS agent, se automaticky nainstaluje zprostředkovatele pro Server databáze MySQL monitorování výkonu. Tento zprostředkovatel připojí k místnímu serveru MySQL nebo MariaDB vystavit statistiku výkonu. Přihlašovací údaje uživatele MySQL musí nakonfigurovat tak, aby zprostředkovatel můžete přístup k serveru databáze MySQL.
+Pokud se MySQL Server nebo MariaDB serveru při instalaci agenta OMS zjistí na počítači, se automaticky nainstaluje poskytovatele pro MySQL Server monitorování výkonu. Tento zprostředkovatel připojení k místnímu serveru MySQL/MariaDB vystavit statistiky výkonu. Přihlašovací údaje uživatele MySQL je třeba nastavit tak, aby zprostředkovatel má přístup k serveru MySQL.
 
-### <a name="configure-mysql-credentials"></a>Konfigurovat přihlašovací údaje databáze MySQL
-Zprostředkovatel MySQL OMI vyžaduje předkonfigurované uživatele MySQL a nainstalovat MySQL klientské knihovny k dotazování na výkon a informace o stavu z instance databáze MySQL.  Tyto přihlašovací údaje jsou uložené v souboru ověřování, který je uložený na agenta systému Linux.  Soubor ověřování určuje, jaké vazby adresu a port instance databáze MySQL naslouchá na a jaké přihlašovací údaje se má použít ke shromažďování metrik.  
+### <a name="configure-mysql-credentials"></a>Nakonfigurujte přihlašovací údaje MySQL
+Zprostředkovatel MySQL OMI vyžaduje předkonfigurované uživatele MySQL a nainstalovat klientské knihovny MySQL aby bylo možné dotazovat výkonu a informace o stavu z MySQL instance.  Tyto přihlašovací údaje jsou uložené v souboru ověřování, která je uložena na agenta pro Linux.  Ověřovacího souboru Určuje, jaké vazby adresu a port instanci MySQL naslouchá a jaké přihlašovací údaje použít ke shromažďování metrik.  
 
-Během instalace agenta OMS pro Linux MySQL OMI zprostředkovatele vyhledá MySQL my.cnf konfigurační soubory (výchozí umístění) pro vazbu adresy a portu a částečně nastavit MySQL OMI soubor pro ověření.
+Během instalace agenta OMS pro Linux MySQL OMI zprostředkovatele vyhledá MySQL my.cnf konfigurační soubory (výchozí umístění) pro vazbu adresy a portu a částečně nastavení MySQL OMI ověřovacího souboru.
 
-MySQL ověřování je uložen v `/var/opt/microsoft/mysql-cimprov/auth/omsagent/mysql-auth`.
+MySQL ověřovacího souboru je uložené v `/var/opt/microsoft/mysql-cimprov/auth/omsagent/mysql-auth`.
 
 
 ### <a name="authentication-file-format"></a>Formát souboru ověřování
-Toto je formát pro ověření souboru MySQL OMI
+Má tento formát pro ověření souboru MySQL OMI
 
     [Port]=[Bind-Address], [username], [Base64 encoded Password]
     (Port)=(Bind-Address), (username), (Base64 encoded Password)
@@ -51,122 +51,122 @@ Položky v souboru ověřování jsou popsané v následující tabulce.
 
 | Vlastnost | Popis |
 |:--|:--|
-| Port | Představuje aktuální port, který naslouchá instance databáze MySQL na. Port 0 určuje, že jsou pro výchozí instanci používat následující vlastnosti. |
-| Vazby – adresy| Adresa-aktuální MySQL vazby. |
+| Port | Představuje aktuální port, který naslouchá instanci MySQL. Port 0 určuje, že se používají následující vlastnosti pro výchozí instanci. |
+| Adresy vazby| Aktuální vazby MySQL-adresu. |
 | uživatelské jméno| Uživatel MySQL lze použít k monitorování instance serveru MySQL. |
-| Kódováním base64, pomocí hesla| Heslo uživatele monitorování MySQL kódovaný jako Base64. |
-| Pomocí funkce Automatické aktualizace| Určuje, jestli se znovu zkontrolujte změny v souboru my.cnf a při upgraduje se zprostředkovatel OMI MySQL přepsat soubor MySQL OMI ověřování. |
+| Heslo s kódováním base64| Heslo uživatele MySQL monitorování kódovaný jako Base64. |
+| Automatickou aktualizaci| Určuje, jestli se má prohledat znovu na změny v souboru my.cnf a přepsat soubor MySQL OMI ověřování při upgradu infrastruktury OMI poskytovatele MySQL. |
 
 ### <a name="default-instance"></a>Výchozí instance
-Soubor MySQL OMI ověřování můžete definovat výchozí instance a číslo portu provádět správu více instancí databáze MySQL na jednom hostiteli systému Linux jednodušší.  Instance s portem 0 je označený jako výchozí instanci. Všechny další instance zdědí vlastnosti nastavit z výchozí instanci, pokud určí různé hodnoty. Například pokud je přidána instance databáze MySQL naslouchání na portu '3308', vazby adresu výchozí instance, uživatelské jméno a heslo kódováním Base64 použije sledovat instance naslouchá na 3308 a zkuste to. Pokud instanci na 3308 je vázána na jinou adresu a používá stejný MySQL dvojici uživatelské jméno a heslo je potřeba jenom adresy vazby a zdědí vlastnosti.
+Ověřovacího souboru MySQL OMI můžete definovat výchozí instance a číslo portu provádět správu více instancí MySQL na jednom hostiteli systému Linux jednodušší.  Výchozí instance je označen instance s portem 0. Všechny další instance zdědí vlastnosti nastavit z výchozí instance, pokud jsou specifikování různých hodnot. Například pokud se přidá instanci MySQL naslouchá na portu "3308", vazba adresu výchozí instance, uživatelské jméno a heslo kódovanou jako Base64 se použije sledovat instanci naslouchá na 3308 a zkuste to. Pokud instanci na 3308 je vázán na jinou adresu a používá stejnou dvojici uživatelského jména a hesla MySQL je potřeba jenom adresy vazby a ostatní vlastnosti se budou dědit.
 
-Následující tabulka obsahuje příklad nastavení instance 
+Následující tabulka obsahuje příklady nastavení instance 
 
 | Popis | File |
 |:--|:--|
-| Výchozí instance a instanci s portem 3308. | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=, ,`<br>`AutoUpdate=true` |
-| Výchozí instance a instanci s portem 3308 a jiné uživatelské jméno a heslo. | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=127.0.1.1, myuser2,cGluaGVhZA==`<br>`AutoUpdate=true` |
+| Výchozí instanci a instanci s portem 3308. | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=, ,`<br>`AutoUpdate=true` |
+| Výchozí instanci a instanci s portem 3308 a jiné uživatelské jméno a heslo. | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=127.0.1.1, myuser2,cGluaGVhZA==`<br>`AutoUpdate=true` |
 
 
 ### <a name="mysql-omi-authentication-file-program"></a>MySQL OMI ověřování souboru programu
-Součástí instalace zprostředkovatele MySQL OMI je MySQL OMI soubor programu ověřování, který můžete použít k úpravě souboru MySQL OMI ověřování. Soubor programu ověřování najdete v následujícím umístění.
+Součástí instalace zprostředkovatele MySQL OMI je program ověřování souboru MySQL OMI, který slouží k úpravě MySQL OMI ověřovacího souboru. Soubor programu ověřování najdete v následujícím umístění.
 
     /opt/microsoft/mysql-cimprov/bin/mycimprovauth
 
 > [!NOTE]
-> Soubor s přihlašovacími údaji musí být účet omsagent. Doporučuje se spuštěním příkazu mycimprovauth jako omsgent.
+> Soubor s přihlašovacími údaji musí být čitelný omsagent účtem. Spuštění příkazu mycimprovauth jako omsgent se doporučuje.
 
-Následující tabulka obsahuje podrobnosti o syntaxi použití mycimprovauth.
+Následující tabulka obsahuje podrobnosti o syntaxi pro používání mycimprovauth.
 
 | Operace | Příklad: | Popis
 |:--|:--|:--|
-| pomocí funkce Automatické aktualizace *true nebo false* | false mycimprovauth automatických aktualizací | Nastaví, jestli se automaticky aktualizuje soubor ověřování na restartovat nebo aktualizovat. |
-| výchozí *vazby adresu uživatelské jméno, heslo* | mycimprovauth výchozí 127.0.0.1 kořenové pwd | Nastaví výchozí instance databáze MySQL OMI soubor pro ověření.<br>Pole hesla by měly být zadány ve formátu prostého textu – heslo v souboru MySQL OMI ověřování bude kódováním Base 64. |
+| automatickou aktualizaci *true nebo false* | false mycimprovauth automatických aktualizací | Určuje, jestli se automaticky aktualizují ověřovacího souboru nastaví na restartování nebo aktualizovat. |
+| výchozí *uživatelské jméno vázání adresy a hesla* | mycimprovauth výchozí 127.0.0.1 kořenové heslo | Nastaví výchozí instanci MySQL OMI ověřovacího souboru.<br>Do pole hesla by měly být zadány ve formátu prostého textu – hesla ověřovacího souboru MySQL OMI bude kódování Base 64. |
 | Odstranit *výchozí nebo port_num* | mycimprovauth 3308 | Odstraní zadanou instanci buď výchozí nebo číslo portu. |
 | Nápověda | mycimprov nápovědy | Vytiskne seznam příkazů použít. |
-| Tisk | mycimprov tisku | Vytiskne snadno MySQL OMI číst soubor pro ověření. |
-| Aktualizovat port_num *vazby adresu uživatelské jméno, heslo* | mycimprov aktualizace 3307 127.0.0.1 kořenové pwd | Aktualizuje zadaný instanci nebo přidá instanci, pokud neexistuje. |
+| Tisk | mycimprov tisku | Vytiskne snadno čitelný MySQL OMI ověřovacího souboru. |
+| Aktualizovat port_num *uživatelské jméno vázání adresy a hesla* | mycimprov aktualizace 3307 127.0.0.1 kořenové heslo | Aktualizuje zadaný instanci nebo přidá instanci, pokud neexistuje. |
 
-Příkazy v následujícím příkladu definovat výchozí uživatelského účtu pro server databáze MySQL na localhost.  Pole hesla by měly být zadány ve formátu prostého textu – heslo v souboru MySQL OMI ověřování bude kódováním Base 64
+Příkazy v následujícím příkladu definovat výchozí uživatelský účet pro MySQL server v místním hostiteli.  Do pole hesla by měly být zadány ve formátu prostého textu – hesla ověřovacího souboru MySQL OMI bude kódování Base 64
 
     sudo su omsagent -c '/opt/microsoft/mysql-cimprov/bin/mycimprovauth default 127.0.0.1 <username> <password>'
     sudo /opt/omi/bin/service_control restart
 
-### <a name="database-permissions-required-for-mysql-performance-counters"></a>Databáze oprávnění vyžadovaná pro čítače výkonu databáze MySQL
+### <a name="database-permissions-required-for-mysql-performance-counters"></a>Oprávnění databáze požadovaná pro čítače výkonu MySQL
 Uživatel MySQL vyžaduje přístup k následující dotazy ke shromažďování dat výkonu serveru MySQL. 
 
     SHOW GLOBAL STATUS;
     SHOW GLOBAL VARIABLES:
 
 
-Uživatel MySQL taky vyžaduje vyberte přístup k následující výchozí tabulky.
+Uživatel MySQL také vyžaduje přístup SELECT k následující výchozí tabulky.
 
 - INFORMATION_SCHEMA
-- databáze MySQL. 
+- MySQL. 
 
-Tato oprávnění lze udělit spuštěním následujících příkazů grant.
+Tato oprávnění lze udělit spuštěním následujících příkazů udělení.
 
     GRANT SELECT ON information_schema.* TO ‘monuser’@’localhost’;
     GRANT SELECT ON mysql.* TO ‘monuser’@’localhost’;
 
 
 > [!NOTE]
-> Udělte oprávnění MySQL monitorování uživatel poskytující uživatel musí mít oprávnění k 'GRANT option, a také udělení oprávnění.
+> Udělení oprávnění k MySQL monitorování uživatel muselo uživatel musí mít oprávnění "GRANT option", jakož i udělením oprávnění.
 
 ### <a name="define-performance-counters"></a>Definování čítače výkonu
 
-Po dokončení konfigurace agenta OMS pro Linux k odesílání dat k analýze protokolů, je nutné nakonfigurovat shromažďování čítačů výkonu.  Pomocí postupu v [Windows a Linux zdroje dat výkonu v analýzy protokolů](log-analytics-data-sources-windows-events.md) s čítači v následující tabulce.
+Jakmile nakonfigurujete agenta OMS pro Linux pro odesílání dat do Log Analytics, je nutné nakonfigurovat shromažďování čítačů výkonu.  Použijte postup uvedený v [Windows a Linuxem zdroje dat výkonu do Log Analytics](log-analytics-data-sources-windows-events.md) s čítače v následující tabulce.
 
 | Název objektu | Název počítadla |
 |:--|:--|
 | Databáze MySQL | Místo na disku v bajtech |
 | Databáze MySQL | Tabulky |
-| MySQL Server | Přerušené připojení Pct |
+| MySQL Server | Přerušené připojení protokolu Pct |
 | MySQL Server | Připojení pomocí protokolu Pct |
 | MySQL Server | Využití místa na disku v bajtech |
-| MySQL Server | Tabulka úplné prohledávání Pct |
-| MySQL Server | Fondu vyrovnávací paměti InnoDB dosáhl Pct |
-| MySQL Server | Vyrovnávací paměť InnoDB fondu použití protokolu Pct |
-| MySQL Server | Vyrovnávací paměť InnoDB fondu použití protokolu Pct |
-| MySQL Server | Protokol Pct požadavků klíče mezipaměti |
+| MySQL Server | Procentní hodnota kontroly celou tabulku |
+| MySQL Server | Fond vyrovnávacích pamětí InnoDB přístupů protokolu Pct |
+| MySQL Server | Procentní hodnota použití fondu vyrovnávací paměti InnoDB |
+| MySQL Server | Procentní hodnota použití fondu vyrovnávací paměti InnoDB |
+| MySQL Server | Procentní hodnota přístupů do mezipaměti klíče |
 | MySQL Server | Klíče mezipaměti použití protokolu Pct |
-| MySQL Server | Protokol Pct zápisu klíče mezipaměti |
-| MySQL Server | Pct přístupů do mezipaměti dotazu |
-| MySQL Server | Dotaz mezipaměti vyřadí Pct |
+| MySQL Server | Procentní hodnota klíče mezipaměti zápisu |
+| MySQL Server | Dotaz protokolu Pct přístupů do mezipaměti |
+| MySQL Server | Procentní hodnota vyřadí mezipaměti dotazů |
 | MySQL Server | Dotaz mezipaměti použití protokolu Pct |
-| MySQL Server | Protokol Pct vstupů do mezipaměti tabulky |
+| MySQL Server | Procentní hodnota přístupů do mezipaměti tabulky |
 | MySQL Server | Tabulka mezipaměti použití protokolu Pct |
-| MySQL Server | Tabulka zámku kolizí Pct |
+| MySQL Server | Pct spor zámku tabulky |
 
 ## <a name="apache-http-server"></a>Apache HTTP Server 
-Pokud serveru Apache HTTP Server je v počítači nalezen, když je nainstalovaná sada omsagent, se automaticky nainstaluje zprostředkovatele pro serveru Apache HTTP Server monitorování výkonu. Tento zprostředkovatel spoléhá na modul Apache, který je nutné načíst do serveru Apache HTTP Server, aby měli přístup na údaje o výkonu. Modul můžete načíst pomocí následujícího příkazu:
+Pokud se při instalaci sady omsagent serveru Apache HTTP Server zjistí na počítači, se automaticky nainstaluje zprostředkovatele pro serveru Apache HTTP Server monitorování výkonu. Tento zprostředkovatel spoléhá na modul Apache, který musí být načten do serveru Apache HTTP Server za účelem přístupu k data o výkonu. Modul lze načíst pomocí následujícího příkazu:
 ```
 sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -c
 ```
 
-Unload modulu Sledování Apache, spusťte následující příkaz:
+Uvolnění modulu Sledování Apache, spusťte následující příkaz:
 ```
 sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 ```
 
 ### <a name="define-performance-counters"></a>Definování čítače výkonu
 
-Po dokončení konfigurace agenta OMS pro Linux k odesílání dat k analýze protokolů, je nutné nakonfigurovat shromažďování čítačů výkonu.  Pomocí postupu v [Windows a Linux zdroje dat výkonu v analýzy protokolů](log-analytics-data-sources-windows-events.md) s čítači v následující tabulce.
+Jakmile nakonfigurujete agenta OMS pro Linux pro odesílání dat do Log Analytics, je nutné nakonfigurovat shromažďování čítačů výkonu.  Použijte postup uvedený v [Windows a Linuxem zdroje dat výkonu do Log Analytics](log-analytics-data-sources-windows-events.md) s čítače v následující tabulce.
 
 | Název objektu | Název počítadla |
 |:--|:--|
 | Apache HTTP Server | Vytížených pracovních procesů |
 | Apache HTTP Server | Nečinných pracovních procesů |
-| Apache HTTP Server | Protokol PCT vytížených pracovních procesů |
-| Apache HTTP Server | Celkový počet Pct procesoru |
-| Apache virtuální hostitel | Chyby za minutu - klienta |
+| Apache HTTP Server | Procentní hodnota vytížených pracovních procesů |
+| Apache HTTP Server | Celkové procento CPU |
+| Apache virtuální hostitel | Chyby za minutu - klient |
 | Apache virtuální hostitel | Chyby za minutu - Server |
-| Apache virtuální hostitel | KB každý požadavek |
-| Apache virtuální hostitel | Žádosti o KB za sekundu |
+| Apache virtuální hostitel | KB na žádost |
+| Apache virtuální hostitel | KB požadavků za sekundu |
 | Apache virtuální hostitel | Počet požadavků za sekundu |
 
 
 
 ## <a name="next-steps"></a>Další postup
-* [Shromažďování čítačů výkonu](log-analytics-data-sources-performance-counters.md) od agentů systému Linux.
-* Další informace o [protokolu hledání](log-analytics-log-searches.md) analyzovat data shromážděná ze zdrojů dat a řešení. 
+* [Shromažďování čítačů výkonu](log-analytics-data-sources-performance-counters.md) z agentů Linuxu.
+* Další informace o [prohledávání protokolů](log-analytics-log-searches.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 

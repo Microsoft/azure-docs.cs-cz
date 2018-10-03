@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 9/20/2018
+ms.date: 10/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: 4664a9f84a92b7a223409d764971fda81317bbf0
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 756aadfb015ada8ea642e9e4893664eed3f6c9b2
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222246"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042544"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Automatizace registrace služby Azure Security Center pomocí Powershellu
 
 Je možné zabezpečit vaše úlohy Azure prostřednictvím kódu programu, pomocí modulu Azure Security Center PowerShell.
-Pomocí prostředí PowerShell umožňuje automatizovat úlohy a vyhněte se lidské chyby spočívající v ruční úlohy, to je zvláště užitečná v rozsáhlých nasazení, které se týkají desítky předplatných s využitím stovek a tisíce prostředky – všechny z nich musí být zabezpečená z na začátek.
+Pomocí prostředí PowerShell vám umožňuje automatizovat úlohy a vyhněte se lidské chyby spočívající v ruční úlohy. To je obzvláště užitečné v rozsáhlých nasazeních, které se týkají desítky předplatných se stovkami a tisíci prostředky – všechny z nich musí být zabezpečená od začátku.
 
 Registrace Azure Security Center pomocí prostředí PowerShell umožňuje programově automatické zařazení do systému a správu vašich prostředků Azure a přidání ovládacích prvků zabezpečení potřebné.
 
@@ -52,7 +52,6 @@ Tyto kroky musí provést předtím, než spustíte rutiny Security Center:
         Install-Module -Name PowerShellGet -Force
         Set-ExecutionPolicy -ExecutionPolicy AllSigned
         Import-Module PowerShellGet
-        Install-Module -Name AzureRM.profile -RequiredVersion 5.5.0
 6.  Restartujte prostředí PowerShell
 
 7. V prostředí PowerShell spusťte následující příkazy:
@@ -63,12 +62,12 @@ Tyto kroky musí provést předtím, než spustíte rutiny Security Center:
 
 1.  Zaregistrujte předplatné u poskytovatele prostředků centra zabezpečení:
 
-        Set-AzureRmContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c”
-        Register-AzureRmResourceProvider -ProviderNamespace ‘Microsoft.Security’ 
+        Set-AzureRmContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
+        Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.Security' 
 
 2.  Volitelné: Nastavení úrovně pokrytí (cenová úroveň) z předplatných (Pokud není definován, cenová úroveň je nastavena na bezplatnou):
 
-        Set-AzureRmContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c”
+        Set-AzureRmContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
         Set-AzureRmSecurityPricing -Name "default" -PricingTier "Standard"
 
 3.  Konfigurovat pracovní prostor Log Analytics, do kterého budou hlásit agenty. Musíte mít pracovní prostor Log Analytics, který jste již vytvořili, že virtuální počítače předplatné budou hlásit k. Můžete definovat několik předplatných do zprávy do stejného pracovního prostoru. Pokud není definován, použije se výchozí pracovní prostor.
@@ -78,7 +77,7 @@ Tyto kroky musí provést předtím, než spustíte rutiny Security Center:
 
 4.  Automatické zřizování instalace agenta Microsoft Monitoring Agent na virtuálních počítačích Azure:
     
-        Set-AzureRmContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c”
+        Set-AzureRmContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
     
         Set-AzureRmSecurityAutoProvisioningSetting -Name "default" -EnableAutoProvision
 
@@ -94,7 +93,7 @@ Tyto kroky musí provést předtím, než spustíte rutiny Security Center:
 
         Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
         $Policy = Get-AzureRmPolicySetDefinition -Name ' [Preview]: Enable Monitoring in Azure Security Center'
-        New-AzureRmPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope ‘/subscriptions/d07c0080-170c-4c24-861d-9c817742786c’
+        New-AzureRmPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'
 
 Jste teď úspěšně zprovoznění Azure Security Center pomocí Powershellu.
 
@@ -108,7 +107,7 @@ Nyní můžete tyto rutiny prostředí PowerShell se skripty pro automatizaci pr
 ## <a name="see-also"></a>Další informace najdete v tématech
 Další informace o použití Powershellu k automatizaci připojování ke službě Security Center, najdete v následujícím článku:
 
-* [AzureRM.Security](https://www.powershellgallery.com/packages/AzureRM.Security/0.1.0-preview).
+* [AzureRM.Security](https://www.powershellgallery.com/packages/AzureRM.Security/0.2.0-preview).
 
 Další informace o službě Security Center, najdete v následujícím článku:
 

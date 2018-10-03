@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 738ebdcc612d944db3794525085d220b33533245
-ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
+ms.openlocfilehash: 87d5389abd72875c62ea3484fc3f9ca43c339447
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "30198226"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48240012"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Jsou vlastní zásady IPsec/IKE podporovány ve všech skladových jednotkách (SKU) služby Azure VPN Gateway?
 Vlastní zásady IPsec/IKE jsou podporovány v branách Azure VPN Gateway úrovně **VpnGw1, VpnGw2, VpnGw3, Standard** a **HighPerformance**. Skladová položka **Basic** **není** podporována.
@@ -76,7 +76,7 @@ Následující tabulka uvádí podporované skupiny Diffie-Hellman pro protokoly
 | 2                         | DHGroup2                 | PFS2         | 1024bitová skupina MODP  |
 | 14                        | DHGroup14<br>DHGroup2048 | PFS2048      | 2048bitová skupina MODP  |
 | 19                        | ECP256                   | ECP256       | 256bitová skupina ECP    |
-| 20                        | ECP384                   | ECP284       | 384bitová skupina ECP    |
+| 20                        | ECP384                   | ECP384       | 384bitová skupina ECP    |
 | 24                        | DHGroup24                | PFS24        | 2048bitová skupina MODP  |
 |                           |                          |              |                |
 

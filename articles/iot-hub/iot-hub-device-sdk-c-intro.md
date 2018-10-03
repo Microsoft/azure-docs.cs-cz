@@ -2,19 +2,18 @@
 title: Zařízení Azure IoT SDK pro jazyk C | Dokumentace Microsoftu
 description: Začínáme s sady SDK pro zařízení Azure IoT pro C a zjistěte, jak vytvořit aplikace pro zařízení, které komunikují s centrem IoT.
 author: yzhong94
-manager: arjmands
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: yizhon
-ms.openlocfilehash: db9c22acfba0f6f1781348b36a1d253a515cc063
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0c2f39ed1610598ab4f7f857da3df817089bcb38
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977262"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044735"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Pro zařízení Azure IoT SDK pro jazyk C
 
@@ -38,13 +37,18 @@ Můžete najít [ **zařízení Azure IoT SDK pro jazyk C** ](https://github.com
 
 Nejnovější verzi knihovny najdete v **hlavní** větev úložiště:
 
-  ![](media/iot-hub-device-sdk-c-intro/01-MasterBranch.PNG)
+  ![Snímek obrazovky s hlavní větví úložiště](./media/iot-hub-device-sdk-c-intro/RepoMasterBranch.png)
 
 * Základní implementace sady SDK se **iothub\_klienta** složku, která obsahuje implementace nejnižší vrstvu rozhraní API v sadě SDK: **pro IoTHubClient** knihovny. **Pro IoTHubClient** knihovna obsahuje rozhraní API pro implementace nezpracovaná zasílání zpráv pro odeslání zprávy do služby IoT Hub a příjem zpráv ze služby IoT Hub. Při použití této knihovny, zodpovídáte za implementaci serializace zprávy, ale další podrobnosti o komunikaci se službou IoT Hub se postará služba za vás.
+
 * **Serializátor** složka obsahuje pomocné funkce a ukázky, které ukazují, jak k serializaci dat před odesláním do služby Azure IoT Hub pomocí klientské knihovny. Použití serializátoru, který není povinná a je k dispozici v zájmu usnadnění práce. Použít **serializátor** knihovny, definujete model, který určuje data k odeslání do služby IoT Hub a zprávy, které by se měl zobrazit z něj. Jakmile model je definován, sada SDK vám poskytne povrch rozhraní API, která umožňuje jednoduchá práci s zprávy typu zařízení cloud a cloud zařízení bez starostí o podrobnosti o serializaci. Knihovny závisí na jiných open source knihoven, které implementují přenosu pomocí protokoly, například MQTT a protokolu AMQP.
+
 * **Pro IoTHubClient** knihovny závisí na jiných open source knihoven:
+
   * [Azure C sdílený nástroj](https://github.com/Azure/azure-c-shared-utility) knihovny, která poskytuje běžné funkce pro základní úlohy (například řetězce, manipulace se seznamem a vstupně-výstupních operací) potřeby napříč několika souvisejících s Azure C sady SDK.
+
   * [Azure uAMQP](https://github.com/Azure/azure-uamqp-c) knihovny, která je na straně klienta provádění AMQP optimalizovaný pro zařízení s omezením prostředků.
+
   * [Azure uMQTT](https://github.com/Azure/azure-umqtt-c) knihovny, která je implementace protokolu MQTT knihovna pro obecné účely a optimalizovaný pro zařízení prostředků omezené.
 
 Použijte tyto knihovny je lze snáze pochopit prohlédněte příklad kódu. Následující části vás provede několik ukázkových aplikací, které jsou zahrnuty v sadě SDK. Tento názorný postup by vám měl dát správné chování pro různé funkce vrstvy architektury sady SDK a úvod do fungování rozhraní API.
@@ -70,7 +74,9 @@ Teď, když máte zdrojový kód ukázkové, je dalším krokem je získat sadu 
 Existuje několik opensourcových nástrojů, které vám pomohou při správě služby IoT hub.
 
 * Aplikace Windows s názvem [Průzkumník zařízení](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer).
+
 * Volá se, Visual Studio Code příponou napříč platformami [Azure IoT Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
+
 * Python – multiplatformního rozhraní příkazového řádku volá [rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension).
 
 Tento kurz používá grafickém *Průzkumník zařízení* nástroj. Můžete použít *rozšíření Azure IoT Toolkit pro VS Code* při vývoji v nástroji VS Code. Můžete také použít *rozšíření IoT pro Azure CLI 2.0* nástroj, pokud byste radši chtěli použít nástroj příkazového řádku.
@@ -79,29 +85,31 @@ Nástroj device explorer knihovny služby Azure IoT používá k provádění r�
 
 Pokud nejste obeznámeni s nástroj device explorer, následující postup popisuje, jak ho použít k přidání zařízení a získat připojovací řetězec zařízení.
 
-Chcete-li nainstalovat nástroj Průzkumník zařízení, najdete v článku [jak používat pro zařízení služby IoT Hub Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer).
+1. Chcete-li nainstalovat nástroj Průzkumník zařízení, najdete v článku [jak používat pro zařízení služby IoT Hub Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer).
 
-Když program spustíte, zobrazí se toto rozhraní:
+2. Když program spustíte, zobrazí se toto rozhraní:
 
-  ![](media/iot-hub-device-sdk-c-intro/03-DeviceExplorer.PNG)
+  ![Snímek obrazovky Dvojčete Device Explorer](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinConfigTab.png)
 
-Zadejte vaše **připojovacího řetězce centra IoT** na první pole a klikněte na **aktualizace**. Tento krok nakonfiguruje nástroj, aby mohla komunikovat s centrem IoT. **Připojovací řetězec** najdete v části **služby Azure IoT Hub** > **nastavení** > **zásady sdíleného přístupu**  >  **iothubowner**.
+3. Zadejte vaše **připojovacího řetězce centra IoT** na první pole a klikněte na **aktualizace**. Tento krok nakonfiguruje nástroj, aby mohla komunikovat s centrem IoT. 
 
-Pokud je nakonfigurovaná připojovací řetězec služby IoT Hub, klikněte na tlačítko **správu** kartu:
+**Připojovací řetězec** najdete v části **služby Azure IoT Hub** > **nastavení** > **zásady sdíleného přístupu**  >  **iothubowner**.
 
-  ![](media/iot-hub-device-sdk-c-intro/04-ManagementTab.PNG)
+4. Pokud je nakonfigurovaná připojovací řetězec služby IoT Hub, klikněte na tlačítko **správu** kartu:
+
+  ![Dvojče Device Explorer / Správa – snímek obrazovky](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinManagementTab.png)
 
 Tato karta je, kde budete spravovat zařízení registrovaná ve službě IoT hub.
 
-Vytvoření zařízení kliknutím **vytvořit** tlačítko. Dialogové okno zobrazí sadu předem naplněných klíče (primární i sekundární). Zadejte **ID zařízení** a potom klikněte na tlačítko **vytvořit**.
+5. Vytvoření zařízení kliknutím **vytvořit** tlačítko. Dialogové okno zobrazí sadu předem naplněných klíče (primární i sekundární). Zadejte **ID zařízení** a potom klikněte na tlačítko **vytvořit**.
 
-  ![](media/iot-hub-device-sdk-c-intro/05-CreateDevice.PNG)
+  ![Vytvořit snímek obrazovky zařízení](./media/iot-hub-device-sdk-c-intro/CreateDevice.png)
 
-Když se zařízení, zařízení seznam aktualizací se všechna registrovaná zařízení, včetně toho, který jste právě vytvořili. Pokud kliknete pravým tlačítkem nové zařízení, zobrazí tato nabídka:
+6. Když se zařízení, zařízení seznam aktualizací se všechna registrovaná zařízení, včetně toho, který jste právě vytvořili. Pokud kliknete pravým tlačítkem nové zařízení, zobrazí tato nabídka:
 
-  ![](media/iot-hub-device-sdk-c-intro/06-RightClickDevice.PNG)
+  ![Device Explorer Dvojčete klikněte pravým tlačítkem na výsledek](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinManagementTab_RightClick.png)
 
-Pokud se rozhodnete **zkopírujte připojovací řetězec pro vybrané zařízení**, připojovací řetězec zařízení je zkopírován do schránky. Zkopírujte připojovací řetězec zařízení. Když je potřebujete při spuštění ukázkové aplikace popsané v následujících částech.
+7. Pokud se rozhodnete **zkopírujte připojovací řetězec pro vybrané zařízení**, připojovací řetězec zařízení je zkopírován do schránky. Zkopírujte připojovací řetězec zařízení. Když je potřebujete při spuštění ukázkové aplikace popsané v následujících částech.
 
 Až provedete všechny výše uvedené kroky, jste připraveni začít spouštět nějaký kód. Většina ukázky obsahovat konstanty v horní části hlavní zdrojový soubor, který umožňuje zadat připojovací řetězec. Například odpovídající řádek z **iothub\_klienta\_ukázka\_mqtt** aplikace se zobrazí takto.
 
@@ -115,7 +123,7 @@ V rámci **iothub\_klienta** složky [azure-iot-sdk-c](https://github.com/azure/
 
 Verze Windows **iothub\_klienta\_ukázka\_mqtt** aplikace obsahuje následující řešení sady Visual Studio:
 
-  ![](media/iot-hub-device-sdk-c-intro/12-iothub-client-sample-mqtt.PNG)
+  ![Průzkumník řešení sady Visual Studio](./media/iot-hub-device-sdk-c-intro/iothub-client-sample-mqtt.png)
 
 > [!NOTE]
 > Pokud tento projekt otevřít v sadě Visual Studio 2017, potvrďte jej překonfigurovat projekt na nejnovější verzi.
@@ -141,7 +149,8 @@ Následující kroky vás provedou co je potřeba použít pomocí této ukázko
 Pokud chcete začít pracovat s knihovny, nejprve přidělte popisovač klienta služby IoT Hub:
 
 ```c
-if ((iotHubClientHandle = IoTHubClient_LL_CreateFromConnectionString(connectionString, MQTT_Protocol)) == NULL)
+if ((iotHubClientHandle = 
+  IoTHubClient_LL_CreateFromConnectionString(connectionString, MQTT_Protocol)) == NULL)
 {
     (void)printf("ERROR: iotHubClientHandle is NULL!\r\n");
 }
@@ -229,7 +238,7 @@ if (IoTHubClient_LL_SetMessageCallback(iotHubClientHandle, ReceiveMessageCallbac
 else
 {
     (void)printf("IoTHubClient_LL_SetMessageCallback...successful.\r\n");
-...
+    ...
 ```
 
 Poslední parametr není ukazatel void libovolně. V ukázce je ukazatel na celé číslo, ale může to být ukazatel na strukturu složitější data. Tento parametr povoluje funkce zpětného volání má provést výpočet sdílený stav s volající této funkce.
@@ -327,7 +336,7 @@ Koncepčně **serializátor** knihovny se nachází nahoře **pro IoTHubClient**
 
 Uvnitř **serializátor** složky [úložiště azure-iot-sdk-c](https://github.com/Azure/azure-iot-sdk-c), je **ukázky** složky, která obsahuje aplikaci s názvem **simplesample\_mqtt**. Verze Windows této ukázky obsahuje následující řešení sady Visual Studio:
 
-  ![](media/iot-hub-device-sdk-c-intro/14-simplesample_mqtt.PNG)
+  ![Řešení sady Visual Studio pro ukázku mqtt](./media/iot-hub-device-sdk-c-intro/simplesample_mqtt.png)
 
 > [!NOTE]
 > Pokud tento projekt otevřít v sadě Visual Studio 2017, potvrďte jej překonfigurovat projekt na nejnovější verzi.
@@ -457,7 +466,6 @@ static void sendMessage(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const unsign
 }
 ```
 
-
 Druhou pro poslední parametr **pro IoTHubClient\_LL\_SendEventAsync** je odkaz na funkci zpětného volání, která se volá, když data úspěšně odesílají. Tady je funkce zpětného volání v ukázce:
 
 ```c
@@ -480,7 +488,8 @@ To je vše je k odesílání zpráv typu zařízení cloud. Zbývá jen k pokryt
 Příjem zpráv funguje podobně jako zprávy způsob, jak pracovat **pro IoTHubClient** knihovny. Nejprve zaregistrujte funkce zpětného volání zpráv:
 
 ```c
-if (IoTHubClient_LL_SetMessageCallback(iotHubClientHandle, IoTHubMessage, myWeather) != IOTHUB_CLIENT_OK)
+if (IoTHubClient_LL_SetMessageCallback(iotHubClientHandle, 
+  IoTHubMessage, myWeather) != IOTHUB_CLIENT_OK)
 {
     printf("unable to IoTHubClient_SetMessageCallback\r\n");
 }
@@ -569,15 +578,8 @@ Každá z těchto tří funkcí v souladu s tři funkce inicializace, je popsán
 
 Tento článek popisuje základní informace o používání knihovny v **zařízení Azure IoT SDK pro jazyk C**. To vám poskytuje dostatek informací k pochopení, co je součástí sady SDK, jeho architektuře a jak začít pracovat s ukázkami Windows. Další článek pokračuje popis sady SDK a popsat [Další informace o knihovně pro IoTHubClient](iot-hub-device-sdk-c-iothubclient.md).
 
-Další informace o vývoji pro službu IoT Hub, najdete v článku [sad SDK Azure IoT][lnk-sdks].
+Další informace o vývoji pro službu IoT Hub, najdete v článku [sad SDK Azure IoT](iot-hub-devguide-sdks.md).
 
 Podrobněji prozkoumat možnosti služby IoT Hub, najdete v tématech:
 
-* [Nasazení AI do hraničních zařízení s použitím Azure IoT Edge][lnk-iotedge]
-
-[lnk-file upload]: iot-hub-csharp-csharp-file-upload.md
-[lnk-create-hub]: iot-hub-rm-template-powershell.md
-[lnk-c-sdk]: iot-hub-device-sdk-c-intro.md
-[lnk-sdks]: iot-hub-devguide-sdks.md
-
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
+* [Nasazení AI do hraničních zařízení pomocí služby Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: a79c09df7d5fec5884a6810b82b7c174042a4c93
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: f6067a6270010aaf57a404f66b8a99cbafa525ca
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054559"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041692"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>Jak to funguje: ověřování Azure Multi-Factor Authentication
 
@@ -57,8 +57,7 @@ Protože většina uživatelů jsou zvyklí používat jenom hesla pro ověřen�
 
 * Trénování pracovníci podpory pro zpracování scénářů, kde uživatel nemůže přihlásit, protože nemají přístup ke své metody ověřování, nebo nejsou správně funguje.
    * Pomocí zásad podmíněného přístupu pro službu Azure MFA, pracovníci podpory můžete přidat uživatele do skupiny, která je vyloučena ze zásad, které vyžadují vícefaktorové ověřování.
-   * Pracovníci podpory zákazníků můžete povolit dočasné jednorázové přihlášení pro uživatele Azure MFA Server chcete, aby uživatel možné ověřit bez dvoustupňové ověřování. Jednorázové přihlášení je dočasné a vyprší po zadaném počtu sekund.
-   * Pomocí zásad podmíněného přístupu pro službu Azure MFA pracovníkům podpory můžete přidat uživatele do skupiny, která je vyloučena ze zásad, které vyžadují vícefaktorové ověřování.
+   * Pracovníci podpory zákazníků můžete povolit dočasné jednorázové přihlášení pro uživatele Azure MFA Server chcete, aby uživatel možné ověřit bez dvoustupňové ověřování. Jednorázové přihlášení je dočasné a vyprší po zadaném počtu sekund.   
 * Zvažte použití důvěryhodné IP adresy nebo pojmenovaná umístění jako způsob, jak minimalizovat dvoustupňové ověřování výzvy. Pomocí této funkce můžou správci tenanta spravované nebo federované obejít dvoustupňové ověřování pro uživatele, kteří se přihlašují ze důvěryhodné síťové umístění, například intranetu organizace.
 * Nasazení [Azure AD Identity Protection](../active-directory-identityprotection.md) a aktivovat dvoustupňové ověřování založené na rizikové události.
 

@@ -2,21 +2,21 @@
 title: Azure Site Recovery – instalace a testování zotavení po havárii pro virtuální počítače Azure pomocí Azure Powershellu | Dokumentace Microsoftu
 description: Zjistěte, jak nastavit zotavení po havárii pro virtuální počítače Azure pomocí Azure Site Recovery pomocí Azure Powershellu.
 services: site-recovery
-author: bsiva
-manager: abhemraj
-editor: raynew
+author: sujayt
+manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
-ms.author: bsiva
-ms.openlocfilehash: 1bf2fe84f9695993dacb6d197d75c18e5db86c4e
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.date: 10/02/2018
+ms.author: sutalasi
+ms.openlocfilehash: 9b7200dab0351b6cd00aef05bf27c5c71a049d76
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433425"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044498"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Nastavení zotavení po havárii pro virtuální počítače Azure pomocí Azure Powershellu
+
 
 V tomto článku můžete zjistit, jak nastavit a testování zotavení po havárii pro virtuální počítače Azure pomocí Azure Powershellu.
 
@@ -159,12 +159,15 @@ Remove-Item -Path $Vaultsettingsfile.FilePath
 ```
 ## <a name="prepare-the-vault-to-start-replicating-azure-virtual-machines"></a>Příprava úložiště ke spuštění replikace virtuálních počítačů Azure
 
-####<a name="1-create-a-site-recovery-fabric-object-to-represent-the-primarysource-region"></a>1. Vytvoření objektu infrastruktury Site Recovery k reprezentaci primary(source) oblasti
+### <a name="create-a-site-recovery-fabric-object-to-represent-the-primary-source-region"></a>Vytvořit objekt a prostředků infrastruktury Site Recovery představují oblasti primární (zdroj)
 
-Objekt prostředků infrastruktury v trezoru představuje oblasti Azure. Objekt primární prostředků infrastruktury je fabric objekt vytvořený představující oblast Azure, do které patří virtuální počítače chráněné v trezoru. V příkladu v tomto článku je chráněný virtuální počítač v oblasti USA – východ.
+Objekt prostředků infrastruktury v trezoru představuje oblasti Azure. Vytvoření objektu primární fabric představující oblast Azure, do které patří virtuální počítače chráněné v trezoru. V příkladu v tomto článku je chráněný virtuální počítač v oblasti USA – východ.
 
-> [!NOTE]
-> Operace Azure Site Recovery se provedl asynchronně. Při zahájení operace odeslání úlohy služby Azure Site Recovery a úlohy sledování objektu se vrátí. Použijte tuto úlohu sledování objektů, chcete-li získat nejnovější stav úlohy (Get-ASRJob) a monitorovat stav operace.
+- Můžete vytvořit objekt pouze jednomu prostředku infrastruktury v jedné oblasti. 
+- Pokud jste už dříve povolili replikace Site Recovery pro virtuální počítač na webu Azure Portal, Site Recovery automaticky vytvoří objekt prostředků infrastruktury. Pokud objekt fabric existuje pro oblasti, nebude možné vytvořit nový.
+
+
+Než začnete, mějte na paměti, že operace Site Recovery se provedl asynchronně. Při zahájení operace odeslání úlohy služby Azure Site Recovery a úlohy sledování objektu se vrátí. Použijte tuto úlohu sledování objektů, chcete-li získat nejnovější stav úlohy (Get-ASRJob) a monitorovat stav operace.
 
 ```azurepowershell
 #Create Primary ASR fabric
@@ -184,7 +187,7 @@ $PrimaryFabric = Get-AsrFabric -Name "A2Ademo-EastUS"
 ```
 Pokud do stejného trezoru jsou chráněné virtuální počítače v několika oblastech Azure, vytvořte jeden objekt prostředků infrastruktury pro každý zdroj oblasti Azure.
 
-####<a name="2-create-a-site-recovery-fabric-object-to-represent-the-recovery-region"></a>2. Vytvoření objektu infrastruktury Site Recovery představující oblast pro obnovení
+### <a name="create-a-site-recovery-fabric-object-to-represent-the-recovery-region"></a>Vytvoření objektu infrastruktury Site Recovery představující oblast pro obnovení
 
 Objekt prostředků infrastruktury pro zotavení představuje obnovení umístění Azure. Virtuální počítače bude replikován a obnovit (v případě selhání) reprezentována prostředků infrastruktury pro zotavení oblast pro obnovení. Obnovení Azure oblasti používané v tomto příkladu je západní USA 2.
 
@@ -205,7 +208,7 @@ $RecoveryFabric = Get-AsrFabric -Name "A2Ademo-WestUS"
 
 ```
 
-####<a name="3-create-a-site-recovery-protection-container-in-the-primary-fabric"></a>3. Vytvoření kontejneru ochrany Site Recovery v prostředcích infrastruktury primární
+### <a name="create-a-site-recovery-protection-container-in-the-primary-fabric"></a>Vytvoření kontejneru ochrany Site Recovery v prostředcích infrastruktury primární
 
 Kontejner ochrany je kontejner, umožňuje seskupení replikované položky v rámci prostředků infrastruktury.
 
@@ -223,7 +226,7 @@ Write-Output $TempASRJob.State
 
 $PrimaryProtContainer = Get-ASRProtectionContainer -Fabric $PrimaryFabric -Name "A2AEastUSProtectionContainer"
 ```
-####<a name="4-create-a-site-recovery-protection-container-in-the-recovery-fabric"></a>4. Vytvoření kontejneru ochrany Site Recovery v prostředcích infrastruktury pro zotavení
+### <a name="create-a-site-recovery-protection-container-in-the-recovery-fabric"></a>Vytvoření kontejneru ochrany Site Recovery v prostředcích infrastruktury pro zotavení
 
 ```azurepowershell
 #Create a Protection container in the recovery Azure region (within the Recovery fabric)
@@ -242,7 +245,7 @@ Write-Output $TempASRJob.State
 $RecoveryProtContainer = Get-ASRProtectionContainer -Fabric $RecoveryFabric -Name "A2AWestUSProtectionContainer"
 ```
 
-####<a name="5-create-a-replication-policy"></a>5. Vytvoření zásady replikace
+### <a name="create-a-replication-policy"></a>Vytvoření zásady replikace
 
 ```azurepowershell
 #Create replication policy
@@ -259,7 +262,7 @@ Write-Output $TempASRJob.State
 
 $ReplicationPolicy = Get-ASRPolicy -Name "A2APolicy"
 ```
-####<a name="6-create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container"></a>6. Vytvoření mapování kontejnerů ochrany mezi primárními a obnovovacími kontejner ochrany
+### <a name="create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container"></a>Vytvoření mapování kontejnerů ochrany mezi primárními a obnovovacími kontejner ochrany
 
 Mapování kontejnerů ochrany mapuje primární ochranu kontejneru se kontejner ochrany pro obnovení a zásady replikace. Vytvořte jedno mapování pro každou zásadu replikace, které budete používat pro virtuální počítače replikovat mezi dvěma kontejneru ochrany.
 
@@ -279,7 +282,7 @@ Write-Output $TempASRJob.State
 $EusToWusPCMapping = Get-ASRProtectionContainerMapping -ProtectionContainer $PrimaryProtContainer -Name "A2APrimaryToRecovery"
 ```
 
-####<a name="7-create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover"></a>7. Vytvoření mapování kontejnerů ochrany pro navrácení služeb po obnovení (zpětná replikace po převzetí služeb)
+### <a name="create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover"></a>Vytvoření mapování kontejnerů ochrany pro navrácení služeb po obnovení (zpětná replikace po převzetí služeb)
 
 Po selhání, když budete chtít převeďte se virtuální počítač zpět do původní oblasti Azure, které navrácení služeb po obnovení. K navrácení služeb po obnovení, se přes virtuální počítač je zpětně replikované z se v oblasti, aby se původní oblast. Pro zpětnou replikaci přepnout role původní oblasti a oblasti pro zotavení. Původní oblast bude nyní nové oblasti pro zotavení a co byl původně oblasti obnovení teď bude primární oblasti. Mapování kontejnerů ochrany na zpětnou replikaci představuje přepnulo role oblastech původní a obnovení.
 

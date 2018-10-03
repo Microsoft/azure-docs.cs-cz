@@ -1,6 +1,6 @@
 ---
-title: Co je FPGA a Project Brainwave? -Azure Machine Learning
-description: Zjistěte, jak zrychlit modelů a s FPGA neuronových sítí v Azure. Tento článek obsahuje úvod do pole programmable gate Array (FPGA) a jak Azure Machine Learning poskytuje v reálném čase umělé inteligence (AI), při nasazení modelu do FPGA Azure.
+title: Co je FPGA a Project Brainwave? -Azure Machine Learning service
+description: Zjistěte, jak zrychlit modelů a s FPGA neuronových sítí v Azure. Tento článek obsahuje úvod do pole programmable gate Array (FPGA) a jak služba Azure Machine Learning poskytuje v reálném čase umělé inteligence (AI), při nasazení modelu do FPGA Azure.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,22 +9,22 @@ ms.author: tedway
 author: tedway
 ms.reviewer: jmartens
 ms.date: 9/24/2018
-ms.openlocfilehash: adcd812bc63f98e4cbde949946bf32a037c6d704
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 411beacd65915c30338ab415b095acc1a0c8cbe6
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47158681"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238851"
 ---
 # <a name="what-is-fpga-and-project-brainwave"></a>Co je FPGA a Project Brainwave?
 
-Tento článek obsahuje úvod do pole programmable gate Array (FPGA) a jak Azure Machine Learning poskytuje v reálném čase umělé inteligence (AI), při nasazení modelu do FPGA Azure.
+Tento článek obsahuje úvod do pole programmable gate Array (FPGA) a jak službu Azure Machine Learning poskytuje v reálném čase umělé inteligence (AI), při nasazení modelu do FPGA Azure.
 
 FPGA obsahovat pole programovatelný logiky bloků a hierarchii znovupoužitelných propojení. Propojení povolit tyto bloky v různých způsobů, jak po výrobu. FPGA zajišťoval programovatelnost a výkonu ve srovnání s další čipy.
 
 ## <a name="fpgas-vs-cpu-gpu-and-asic"></a>FPGA vs. Procesor, grafický procesor a ASIC
 
-![Porovnání služby Azure Machine Learning FPGA](./media/concept-accelerate-with-fpgas/azure-machine-learning-fpga-comparison.png)
+![Porovnání FPGA služby Azure Machine Learning](./media/concept-accelerate-with-fpgas/azure-machine-learning-fpga-comparison.png)
 
 |Procesor||Popis|
 |---|:-------:|------|

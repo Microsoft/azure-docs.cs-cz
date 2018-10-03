@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 3d7cf50bd2c845764aa2c3ac3b3db6891ff5c8d8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d9d40a111faefee705c3ce1987c380ee2ba695ec
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993846"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48040183"
 ---
 # <a name="performance-monitoring-with-log-analytics"></a>Sledování výkonu pomocí Log Analytics
 
@@ -86,7 +86,7 @@ Teď, když jste přidali agenta Log Analytics, přejděte na přes portál Log 
 
 6. Zavřete okno Upřesnit nastavení.
 
-7. V části Obecné, klikněte na tlačítko **přehled**.
+7. V části Obecné, klikněte na tlačítko **shrnutí pracovního prostoru**.
 
 8. Zobrazí se dlaždice ve formě grafu pro každou z řešení povolené, včetně pro Service Fabric. Klikněte na tlačítko **Service Fabric** grafu a pokračujte v Service Fabric analytického řešení.
 

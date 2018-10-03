@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 09/24/2018
-ms.openlocfilehash: 6d6e6a2aea867c5b603d950a4bbaa33f14695f45
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4b4f926009f94162b43dcbb8934e44c1924e91df
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47010920"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239523"
 ---
 Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí přihlašovacích údajů předplatného Azure, které budete používat. Pokud ještě nemáte předplatné Azure, vytvořte si teď [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -26,15 +26,15 @@ Vyberte tlačítko **Vytvořit prostředek** (+) v levém horním rohu portálu.
 
    ![Vytvořit prostředek na webu Azure Portal](./media/aml-create-in-portal/portal-create-a-resource.png)
 
-Do panelu vyhledávání zadejte **Machine Learning**. Vyberte výsledek hledání s názvem **pracovní prostor Machine Learning**.
+Do panelu vyhledávání zadejte **Machine Learning**. Vyberte výsledek hledání s názvem **pracovní prostor služby Machine Learning**.
 
    ![Hledat pracovní prostor](./media/aml-create-in-portal/allservices-search.PNG)
 
-V **pracovní prostor Machine Learning** podokno, posuňte se dolů a vyberte **vytvořit** začít.
+V **pracovní prostor služby Machine Learning** podokno, posuňte se dolů a vyberte **vytvořit** začít.
 
    ![vytvoření](./media/aml-create-in-portal/portal-create-button.png)
 
-V **pracovní prostor služby ML** podokně pracovní prostor.
+V **pracovního prostoru ML service** podokně pracovní prostor.
 
    Pole|Popis
    ---|---

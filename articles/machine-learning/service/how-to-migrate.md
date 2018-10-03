@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: haining
 author: haining
 ms.date: 09/24/2018
-ms.openlocfilehash: 0c5cfcee65b176147125dd2edbff2497b1eee70b
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 9778d348cf49d4066f034931dc350a1f4a608ad2
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47158560"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48236580"
 ---
 # <a name="migrate-to-the-latest-version-of-azure-machine-learning-service"></a>Migrace na nejnovější verzi služby Azure Machine Learning 
 
@@ -52,7 +52,7 @@ Další informace o [co se změnilo v této verzi](overview-what-happened-to-wor
 
 Prostředí nejde migrovat na nejnovější verzi služby Azure Machine Learning výpočetní prostředky, jako jsou účty služby experimentování ve službě, účty správy modelů a machine learningu. Zobrazit [časová osa](overview-what-happened-to-workbench.md#timeline) na jak dlouho by vaše prostředky budou nadále fungovat.
 
-Začínáme s nejnovější verzí tím, že vytvoříte pracovnímu prostoru Azure Machine Learning v [webu Azure portal](quickstart-get-started.md). Řídicí panel pracovního prostoru na portálu se podporuje jenom prohlížeče Edge, Chrome a Firefox.
+Začínáme s nejnovější verzí tím, že vytvoříte pracovní prostor služby Azure Machine Learning service v [webu Azure portal](quickstart-get-started.md). Řídicí panel pracovního prostoru na portálu se podporuje jenom prohlížeče Edge, Chrome a Firefox.
 
 Tento pracovní prostor je prostředek nejvyšší úrovně služby a umožňuje využívat všechny nejnovější funkce služby Azure Machine Learning. Další informace o tomto [pracovní prostor a architektura](concept-azure-machine-learning-architecture.md).
 

@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: d06d29fb43ea8d8971c3f013c1e66406a30798d3
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 738e78e608dbd819f24125799a1e8d48859f1aa0
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064250"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043592"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Vyhledání a použití doporučení k výkonu
 
@@ -105,7 +105,7 @@ Můžete nastavit Azure SQL Database automaticky implementace doporučení. Dopo
     ![Doporučené indexy](./media/sql-database-automatic-tuning-enable/server.png)
 
 > [!NOTE]
-> Pamatujte, že **DROP_INDEX** v tuto chvíli není kompatibilní s aplikací s použitím pomocné parametry přepnutí a index oddílu a v těchto případech by se neměla povolovat.
+> Pamatujte, že **DROP_INDEX** možnost není momentálně kompatibilní s aplikacemi pomocí pomocné parametry přepnutí a index oddílu. 
 >
 
 Jakmile vyberete požadovanou konfiguraci, klikněte na tlačítko použít.

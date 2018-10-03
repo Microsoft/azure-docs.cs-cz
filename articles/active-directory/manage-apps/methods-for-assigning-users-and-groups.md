@@ -5,25 +5,23 @@ services: active-directory
 documentationcenter: ''
 author: barbkess
 manager: mtillman
-ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2017
+ms.date: 10/01/2018
 ms.author: barbkess
-ms.openlocfilehash: d357a9a7f249127289a256685d9555f777742b68
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: c4aa311018603b32e854d3d3423d342350e6520d
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356393"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044480"
 ---
-# <a name="how-to-assign-users-and-groups-to-an-application"></a>Přiřazení uživatelů a skupin k aplikaci
-
-Než mohou vaši uživatelé provádět některé z následujících akcí pro danou aplikaci, musíte si nejdřív **je přiřadit k aplikaci** jim udělit přístup:
+# <a name="assign-users-and-groups-to-an-application-in-azure-active-directory"></a>Přiřazení uživatelů a skupin k aplikaci v Azure Active Directory
+Tento článek ukazuje, jak přiřadit uživatele nebo skupiny k aplikaci v Azure Active Directory (Azure AD). Uživatelé musí být přiřazen k aplikaci předtím, než správce můžete jim udělit přístup k následujícím:
 
 -   Přístup k aplikaci pomocí **přejdete na adresu URL aplikace přímo** (označované také jako iniciovaného Zprostředkovatelem přihlašování přihlášení).
 
@@ -33,17 +31,19 @@ Než mohou vaši uživatelé provádět některé z následujících akcí pro d
 
 -   V tématu aplikace se zobrazí na jejich [Spouštěče aplikací Office 365](https://support.office.com/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a).
 
-## <a name="methods-to-assign-applications-with-azure-active-directory"></a>Metody pro přiřazení aplikace pomocí Azure Active Directory 
+## <a name="prerequisties"></a>Prerequisties
+Než budete moci přiřadit uživatele a skupiny k aplikaci, musí vyžadují přiřazení uživatele. Vyžadování přiřazení uživatele:
 
-Můžete přiřadit aplikace s Azure Active Directory 3 způsoby:
+1. Přihlaste se k webu Azure portal pomocí účtu správce.
+2. Klikněte na **všechny služby** položku v hlavní nabídce.
+3. Vyberte adresář, který používáte pro aplikaci.
+4. Klikněte na **podnikové aplikace** kartu.
+5. Vyberte aplikaci ze seznamu aplikací, které jsou přidružené k tomuto adresáři.
+6. Klikněte na tlačítko **vlastnosti** kartu.
+7. Změnit **přiřazení uživatelů povinné?** přepnout na Ano.
+8. Klikněte na tlačítko **Uložit** tlačítko v horní části obrazovky.
 
--   [Přiřadit uživatele přímo k aplikaci jako správce](#assign-a-user-directly-as-an-administrator)
-
--   [Přiřazení skupiny přímo k aplikaci jako správce](#assign-a-group-directly-to-an-application-as-an-administrator)
-
--   [Povolení samoobslužného přístupu k aplikacím umožňuje uživatelům najít jejich vlastních aplikací](#enable-self-service-application-access-to-allow-users-to-find-their-own-applications)
-
-## <a name="assign-a-user-directly-as-an-administrator"></a>Přiřadit uživatele přímo jako správce
+## <a name="assign-users"></a>Přiřazení uživatelů
 
 Jeden nebo více uživatelů přiřadit přímo k aplikaci, postupujte podle následujících kroků:
 
@@ -81,7 +81,7 @@ Jeden nebo více uživatelů přiřadit přímo k aplikaci, postupujte podle ná
 
 Po krátké době možné ke spouštění těchto aplikací pomocí metod popsaných v části popis řešení uživatele, které jste vybrali.
 
-## <a name="assign-a-group-directly-to-an-application-as-an-administrator"></a>Přiřazení skupiny přímo k aplikaci jako správce
+## <a name="assign-groups"></a>Přiřazení skupin
 
 Jednu nebo více skupin přiřadit přímo k aplikaci, postupujte podle následujících kroků:
 
@@ -119,7 +119,7 @@ Jednu nebo více skupin přiřadit přímo k aplikaci, postupujte podle následu
 
 Po krátké době možné ke spouštění těchto aplikací pomocí metod popsaných v části popis řešení uživatelů v rámci jednotlivých skupin, které jste vybrali. Pokud jsou dynamické skupiny, může být některé další zpracování zpoždění v tato přiřazení pro uživatele v rámci těchto přiřazené skupiny.
 
-## <a name="enable-self-service-application-access-to-allow-users-to-find-their-own-applications"></a>Povolení samoobslužného přístupu k aplikacím umožňuje uživatelům najít jejich vlastních aplikací
+## <a name="enable-self-service-application-access"></a>Povolení samoobslužného přístupu k aplikacím
 
 Obchodní skupině schvalovat přístup k těmto aplikacím samoobslužného přístupu k aplikacím je skvělý způsob, jak povolit uživatelům samoobslužné zjišťování aplikací, volitelně povolit. Můžete povolit obchodní skupiny pro správu přiřazené těmto uživatelům pro heslo jednotné přihlašování v aplikacích vpravo od svých přístupových panelech přihlašovací údaje.
 

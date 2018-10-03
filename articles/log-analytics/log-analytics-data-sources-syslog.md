@@ -1,6 +1,6 @@
 ---
-title: Shromažďovat a analyzovat zprávy Syslog v OMS Log Analytics | Microsoft Docs
-description: Syslog je protokol protokolování událostí, které je běžné Linux. Tento článek popisuje, jak nakonfigurovat kolekce zprávy Syslog v analýzy protokolů a podrobnosti záznamů, které vytvoří v úložišti OMS.
+title: Shromažďovat a analyzovat zprávy Syslog v OMS Log Analytics | Dokumentace Microsoftu
+description: Syslog je protokol protokolování událostí, které jsou společné pro Linux. Tento článek popisuje, jak nakonfigurovat kolekce zprávy Syslog v Log Analytics a podrobnosti o záznamy, které vytvářejí v úložišti OMS.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,47 +13,47 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2017
-ms.author: magoedte;bwren
-ms.component: na
-ms.openlocfilehash: 1e7806e802f9b1dda16a9d5d477783663d03d416
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.author: magoedte
+ms.component: ''
+ms.openlocfilehash: 3b1724853b4c874a1482a13c4de0ccb179f52f98
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131782"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041099"
 ---
-# <a name="syslog-data-sources-in-log-analytics"></a>Syslog zdroje dat v analýzy protokolů
-Syslog je protokol protokolování událostí, které je běžné Linux.  Aplikace bude odesílat zprávy, které mohou být uloženy v místním počítači nebo doručit do kolekce Syslog.  Pokud je nainstalován Agent OMS pro Linux, nakonfiguruje místní démon procesu Syslog předávání zpráv do agenta.  Agent pak odešle zprávu k analýze protokolů, které se vytvoří odpovídající záznam v úložišti OMS.  
+# <a name="syslog-data-sources-in-log-analytics"></a>Zdroje dat protokolu Syslog v Log Analytics
+Syslog je protokol protokolování událostí, které jsou společné pro Linux.  Aplikace odešle zprávy, které mohou být uložené na místním počítači nebo doručí do kolekcí Syslog.  Při instalaci agenta OMS pro Linux, konfiguruje místní démona Syslog na předávání zpráv k agentovi.  Agent pak odešle zprávu do Log Analytics, ve kterém se vytvoří odpovídající záznam v úložišti OMS.  
 
 > [!NOTE]
-> Analýzy protokolů podporuje kolekce zprávy odeslané rsyslog nebo syslog ng, kde je rsyslog démon výchozí. Démon procesu syslog výchozí na verze 5 Red Hat Enterprise Linux a CentOS, Oracle Linux verze (sysklog) není podporována pro shromažďování událostí syslog. Ke shromažďování dat syslog z této verze těchto distribuce [rsyslog démon](http://rsyslog.com) musí být nainstalovaná a nakonfigurovaná nahradit sysklog.
+> Log Analytics podporuje sadu zpráv odeslaných rsyslog nebo syslog-ng, kde je rsyslog démona výchozí. Démon procesu syslog výchozí verze 5 Red Hat Enterprise Linux, CentOS a Oracle Linux verze (sysklog) není podporována pro shromažďování událostí protokolu syslog. Pro shromažďování syslogu z této verze těchto distribuce [používá proces démona rsyslogu](http://rsyslog.com) by měla být nainstalovaná a nakonfigurovaná pro nahrazení sysklog.
 >
 >
 
-![Kolekce Syslog](media/log-analytics-data-sources-syslog/overview.png)
+![Shromažďování Syslogu](media/log-analytics-data-sources-syslog/overview.png)
 
-## <a name="configuring-syslog"></a>Konfigurace procesu Syslog
-OMS agenta pro Linux bude pouze shromažďovat události se zařízením a závažnosti, které jsou určené v konfiguraci.  Můžete nakonfigurovat Syslog prostřednictvím portálu Azure nebo Správa konfiguračních souborů na agenty systému Linux.
+## <a name="configuring-syslog"></a>Konfigurace Syslog
+Agenta OMS pro Linux bude shromažďovat pouze události s zařízení a závažnosti, které jsou uvedeny v jeho konfiguraci.  Syslog můžete nakonfigurovat prostřednictvím webu Azure portal nebo Správa konfiguračních souborů na agenty Linux.
 
-### <a name="configure-syslog-in-the-azure-portal"></a>Konfigurovat Syslog na portálu Azure
-Konfigurace Syslog z [nabídce Data v nastavení pokročilé analýzy protokolů](log-analytics-data-sources.md#configuring-data-sources).  Tato konfigurace se doručí do konfiguračního souboru na každého agenta systému Linux.
+### <a name="configure-syslog-in-the-azure-portal"></a>Konfigurovat Syslog na webu Azure Portal
+Konfigurovat Syslog z [dat nabídky v Log Analytics Upřesnit nastavení](log-analytics-data-sources.md#configuring-data-sources).  Tato konfigurace se doručí do konfiguračního souboru na každého agenta pro Linux.
 
-Můžete přidat nové zařízení zadáním v jeho název a kliknutím na tlačítko **+**.  Pro každé zařízení budou shromažďovány pouze zprávy s vybranou závažnosti.  Zkontrolujte závažnosti pro konkrétní zařízení, které chcete shromažďovat.  Nelze poskytnout žádná další kritéria filtru zpráv.
+Můžete přidat nové zařízení tak, že zadáte jeho název a kliknete **+**.  Pro každé zařízení nebudou se shromažďovat pouze zprávy s vybranou závažnosti.  Zaškrtněte závažnosti pro konkrétní zařízení, která chcete shromažďovat.  Nelze zadat žádná další kritéria filtru zpráv.
 
-![Konfigurace procesu Syslog](media/log-analytics-data-sources-syslog/configure.png)
+![Konfigurovat Syslog](media/log-analytics-data-sources-syslog/configure.png)
 
-Ve výchozím nastavení všechny změny konfigurace automaticky odesílají na všechny agenty.  Pokud chcete ručně nakonfigurovat Syslog na každého agenta systému Linux, poté zrušte zaškrtnutí políčka *použít dole uvedenou konfiguraci u mých Linuxových počítačů*.
+Standardně jsou všechny změny konfigurace automaticky nahrány do všech agentů.  Pokud chcete ručně konfigurovat Syslog na každého agenta pro Linux, poté zrušte zaškrtnutí políčka *použít uvedenou konfiguraci u mých Linuxových počítačů*.
 
-### <a name="configure-syslog-on-linux-agent"></a>Konfigurace Syslog na agenta systému Linux
-Když [Linux klienta je nainstalován OMS agent](log-analytics-linux-agents.md), nainstaluje výchozí syslog konfiguračního souboru, který definuje zařízením a závažnost zpráv, které byly shromážděny.  Můžete upravit tento soubor a změňte konfiguraci.  Konfigurační soubor se liší v závislosti na tom, který se klient nainstaloval démon procesu Syslog.
+### <a name="configure-syslog-on-linux-agent"></a>Konfigurace Syslog na agenta pro Linux
+Když [instalaci agenta OMS v klientském počítači Linux](log-analytics-linux-agents.md), nainstaluje výchozí konfigurační soubor procesu syslog, který definuje zařízení a závažnost zpráv, které byly shromážděny.  Můžete upravit tento soubor a změňte konfiguraci.  Konfigurační soubor se liší v závislosti na démon procesu Syslog, který se klient nainstaloval.
 
 > [!NOTE]
-> Pokud chcete upravit konfiguraci syslog, je nutné restartovat démon procesu syslog změny se projeví.
+> Pokud upravíte konfiguraci syslogu, je nutné restartovat démon procesu syslog, aby se změny projevily.
 >
 >
 
 #### <a name="rsyslog"></a>rsyslog
-Konfigurační soubor pro rsyslog se nachází v **/etc/rsyslog.d/95-omsagent.conf**.  Níže jsou uvedeny výchozí obsah.  To shromažďuje syslog zpráv odeslaných z místního agenta pro všechna zařízení s úrovní varování nebo vyšší.
+Konfigurační soubor pro rsyslog nachází ve **/etc/rsyslog.d/95-omsagent.conf**.  Níže se zobrazují výchozí obsah.  To shromažďuje syslog zpráv odeslaných z místního agenta pro všechna zařízení s úrovní varování nebo vyšší.
 
     kern.warning       @127.0.0.1:25224
     user.warning       @127.0.0.1:25224
@@ -73,13 +73,13 @@ Konfigurační soubor pro rsyslog se nachází v **/etc/rsyslog.d/95-omsagent.co
     local6.warning     @127.0.0.1:25224
     local7.warning     @127.0.0.1:25224
 
-Budovy můžete odebrat odstraněním příslušném oddílu konfiguračního souboru.  Můžete omezit závažnosti, které se shromažďují pro konkrétní zařízení úpravou položky tohoto zařízení.  Chcete-li omezit uživatele zařízení pro zprávy o závažnosti chyby nebo vyšší je by upravit daného řádku konfiguračního souboru pro následující:
+Zařízení můžete odebrat odstraněním jeho oddílu konfiguračního souboru.  Můžete omezit závažnosti, které se shromažďují pro konkrétní zařízení tak, že upravíte položka tohoto zařízení.  Například pro omezení zařízení uživatele na zprávy s závažnost chyby nebo vyšší upravíte tento řádek v souboru konfigurace následujícím:
 
     user.error    @127.0.0.1:25224
 
 
-#### <a name="syslog-ng"></a>Syslog ng
-Konfigurační soubor pro syslog ng je umístění v **/etc/syslog-ng/syslog-ng.conf**.  Níže jsou uvedeny výchozí obsah.  To shromažďuje syslog zpráv odeslaných z místního agenta pro všechna zařízení a všechny závažnosti.   
+#### <a name="syslog-ng"></a>Syslog-ng
+Konfigurační soubor pro syslog-ng je umístění, od **/etc/syslog-ng/syslog-ng.conf**.  Níže se zobrazují výchozí obsah.  To shromažďuje syslog zpráv odeslaných z místního agenta pro všechna zařízení a všechny závažnosti.   
 
     #
     # Warnings (except iptables) in one file:
@@ -130,7 +130,7 @@ Konfigurační soubor pro syslog ng je umístění v **/etc/syslog-ng/syslog-ng.
     filter f_user_oms { level(alert,crit,debug,emerg,err,info,notice,warning) and facility(user); };
     log { source(src); filter(f_user_oms); destination(d_oms); };
 
-Budovy můžete odebrat odstraněním příslušném oddílu konfiguračního souboru.  Můžete omezit závažnosti, které se shromažďují pro konkrétní zařízení jejich vyjmutím ze seznamu.  Chcete-li omezit uživatele zařízení pro právě upozornění a kritickou zprávy, je by upravit tento oddíl konfiguračního souboru pro následující:
+Zařízení můžete odebrat odstraněním jeho oddílu konfiguračního souboru.  Můžete omezit závažnosti, které se shromažďují pro konkrétní zařízení tak, že odeberete ze seznamu.  Například pokud chcete omezit zařízení uživatele na právě upozornění a kritické zprávy, upravíte tohoto oddílu konfiguračního souboru takto:
 
     #OMS_facility = user
     filter f_user_oms { level(alert,crit) and facility(user); };
@@ -138,14 +138,14 @@ Budovy můžete odebrat odstraněním příslušném oddílu konfiguračního so
 
 
 ### <a name="collecting-data-from-additional-syslog-ports"></a>Shromažďování dat z další porty Syslog
-Zprávy Syslog v místním klientovi na portu 25224 naslouchá OMS agent.  Pokud je nainstalován agent nástroje, použít výchozí konfigurace syslog a najít v následujícím umístění:
+Agenta OMS přijímá zprávy Syslog na portu 25224 místního klienta.  Při instalaci agenta je výchozí konfigurace syslog použít a najdete v následujícím umístění:
 
 * Rsyslog: `/etc/rsyslog.d/95-omsagent.conf`
 * Syslog-ng: `/etc/syslog-ng/syslog-ng.conf`
 
-Číslo portu můžete změnit tak, že vytvoříte dvě konfigurační soubory: soubor konfigurace FluentD a soubor rsyslog nebo syslog ng v závislosti na instalaci démon procesu Syslog.  
+Číslo portu můžete změnit tak, že vytvoříte dva konfigurační soubory: konfigurační soubor FluentD a soubor rsyslog nebo syslog-ng v závislosti na tom jste si nainstalovali démon procesu Syslog.  
 
-* Soubor konfigurace FluentD by měl být nový soubor umístěný ve: `/etc/opt/microsoft/omsagent/conf/omsagent.d` a nahraďte hodnotu v **port** položka se vaše vlastní číslo portu.
+* Konfigurační soubor FluentD by měl být nový soubor umístěný v: `/etc/opt/microsoft/omsagent/conf/omsagent.d` a nahraďte hodnoty v **port** položka se vaše vlastní číslo portu.
 
         <source>
           type syslog
@@ -158,10 +158,10 @@ Zprávy Syslog v místním klientovi na portu 25224 naslouchá OMS agent.  Pokud
           type filter_syslog
         </filter>
 
-* Pro rsyslog, měli vytvořit nový soubor konfigurace umístěný v: `/etc/rsyslog.d/` a nahraďte hodnotu % SYSLOG_PORT % vaše vlastní číslo portu.  
+* Pro rsyslog, měli vytvořit nový konfigurační soubor umístěný v: `/etc/rsyslog.d/` a nahraďte hodnotu % SYSLOG_PORT vaše vlastní číslo portu.  
 
     > [!NOTE]
-    > Pokud změníte tuto hodnotu v konfiguračním souboru `95-omsagent.conf`, pokud agent použije výchozí konfiguraci bude přepsán.
+    > Pokud upravíte tuto hodnotu v konfiguračním souboru `95-omsagent.conf`, budou přepsány, pokud agent použije výchozí konfiguraci.
     >
 
         # OMS Syslog collection for workspace %WORKSPACE_ID%
@@ -170,43 +170,43 @@ Zprávy Syslog v místním klientovi na portu 25224 naslouchá OMS agent.  Pokud
         daemon.warning            @127.0.0.1:%SYSLOG_PORT%
         auth.warning              @127.0.0.1:%SYSLOG_PORT%
 
-* Konfigurace syslog ng by měl být upraven tak, že zkopírujete následující příklad konfigurace a přidání vlastní změny nastavení na konec syslog ng.conf konfigurační soubor umístěný ve `/etc/syslog-ng/`.  Proveďte **není** použít výchozí štítek **% WORKSPACE_ID % _oms** nebo **% WORKSPACE_ID_OMS**, definovat vlastní popisek k lepšímu odlišení změny.  
+* Konfigurace syslog-ng by měl být upraven tak, že zkopírujete Ukázková konfigurace je uvedeno níže, a přidáte vlastní upravené nastavení za účelem syslog ng.conf konfigurační soubor umístěný ve `/etc/syslog-ng/`.  Proveďte **není** použít výchozí popisek **% WORKSPACE_ID % _oms** nebo **% WORKSPACE_ID_OMS**, definovat vlastní popisek, rozeznali provedené změny.  
 
     > [!NOTE]
-    > Pokud změníte výchozí hodnoty v konfiguračním souboru, budou při agent použije výchozí konfigurace přepsány.
+    > Pokud změníte výchozí hodnoty v konfiguračním souboru, budou přepsány při agent použije výchozí konfiguraci.
     >
 
         filter f_custom_filter { level(warning) and facility(auth; };
         destination d_custom_dest { udp("127.0.0.1" port(%SYSLOG_PORT%)); };
         log { source(s_src); filter(f_custom_filter); destination(d_custom_dest); };
 
-Po dokončení změny, Syslog a OMS agent služba musí restartovat, aby se že projevily změny konfigurace.   
+Po dokončení změny, Syslogu a agenta OMS služba potřebuje restartovat, aby zajistěte, aby že změny konfigurace projevily.   
 
 ## <a name="syslog-record-properties"></a>Vlastnosti záznamu Syslog
-Zaznamenává Syslog mít typ **Syslog** a mít vlastnosti v následující tabulce.
+Záznamy Syslogu mají typ **Syslog** a mít vlastnosti v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Počítač |Počítač, který událost nebyla shromážděna z. |
-| Zařízení |Definuje část systému, který vygeneroval zprávu. |
-| HostIP |IP adresa systému odeslání zprávy. |
-| název hostitele |Název systému odeslání zprávy. |
-| Úroveň závažnosti |Úroveň závažnosti události. |
+| Počítač |Počítač, který událost byla shromážděna z. |
+| Zařízení |Definuje části systému, který vygeneroval zprávu. |
+| HostIP |IP adresa systému posílání zprávy. |
+| název hostitele |Název systému posílání zprávy. |
+| SeverityLevel |Úroveň závažnosti události. |
 | SyslogMessage |Text zprávy. |
-| ProcessID |ID procesu, který vygeneroval zprávu. |
-| EventTime |Datum a čas, která byla vygenerována událost. |
+| ProcessID |ID procesu, který se vygeneroval zprávu. |
+| čas události |Datum a čas, která byla vygenerována událost. |
 
-## <a name="log-queries-with-syslog-records"></a>Dotazy protokolu se záznamy Syslog
-Následující tabulka obsahuje různé příklady dotazů protokolu, která načítají záznamy Syslog.
+## <a name="log-queries-with-syslog-records"></a>Protokol dotazů s záznamy Syslogu
+Následující tabulka obsahuje příklady různých dotazů na protokoly, které načítají záznamy Syslogu.
 
 | Dotaz | Popis |
 |:--- |:--- |
-| Syslog |Všechny systémové protokoly. |
-| Syslog &#124; kde úroveň závažnosti == "error. |Všechny záznamy Syslog s závažnosti chyby. |
-| Syslog &#124; shrnout AggregatedValue = count() počítačem. |Počet Syslog záznamy počítačem. |
-| Syslog &#124; shrnout AggregatedValue = count() podle zařízení |Počet Syslog záznamy podle budovy. |
+| Syslog |Všechny Syslogy. |
+| Syslog &#124; kde SeverityLevel == "Chyba" |Všechny záznamy Syslogu s závažnost chyby. |
+| Syslog &#124; summarize AggregatedValue = count() podle počítače |Počet Syslog záznamy podle počítače. |
+| Syslog &#124; summarize AggregatedValue = count() podle zařízení |Počet Syslog záznamy podle zařízení. |
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o [protokolu hledání](log-analytics-log-searches.md) analyzovat data shromážděná ze zdrojů dat a řešení.
-* Použití [vlastní pole](log-analytics-custom-fields.md) k analýze dat z syslog záznamů do jednotlivých polí.
-* [Konfigurace agentů Linux](log-analytics-linux-agents.md) ke shromažďování dalších typů dat.
+* Další informace o [prohledávání protokolů](log-analytics-log-searches.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.
+* Použití [vlastní pole](log-analytics-custom-fields.md) analyzovat data ze záznamů protokolu syslog do jednotlivých polí.
+* [Konfigurace agentů systému Linux](log-analytics-linux-agents.md) ke shromažďování dalších typů dat.

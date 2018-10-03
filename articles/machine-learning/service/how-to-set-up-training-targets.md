@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: 65134d78fb011ae707c0629bef1ebb1a66bd8ec2
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 99d85c769b876baa360628bfc20ad5b1563a0a3f
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018498"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237326"
 ---
 # <a name="select-and-use-a-compute-target-to-train-your-model"></a>Vyberte a použijte cílové výpočetní prostředí k natrénování modelu
 
@@ -27,7 +27,7 @@ Můžete začít s místní spuštění v počítači a potom vertikálně nebo 
 
 ## <a name="supported-compute-targets"></a>Cílových podporovaných výpočetních prostředí
 
-Azure Machine Learning podporuje následující cílových výpočetních prostředí:
+Služba Azure Machine Learning podporuje následující cílových výpočetních prostředí:
 
 |Cílové výpočetní prostředí| Akcelerace GPU | Automatizované hyperparametrů | Výběr automatizované modelu | Je možné v kanálech|
 |----|:----:|:----:|:----:|:----:|
@@ -41,8 +41,8 @@ __[Azure Container Instances (ACI)](#aci)__  lze také použít k trénování m
 Jsou klíčové rozdíly mezi cílových výpočetních prostředí:
 * __Akcelerace GPU__: grafické procesory jsou k dispozici virtuální počítač pro datové vědy a Azure Batch AI. Můžete mít přístup k grafického procesoru v místním počítači, v závislosti na hardware, ovladače a rozhraní, které jsou nainstalovány.
 * __Automatizované hyperparametrů__: Azure Machine Learning automatizované hyperparameter optimalizace vám pomůže najít nejlepší hyperparameters pro váš model.
-* __Výběr modelu automatizované__: Azure Machine Learning můžete inteligentně doporučujeme algoritmus a hyperparameter výběr při vytváření modelu. Výběr automatizované modelu pomáhá rychleji, než se pokoušet ručně různé kombinace sloučit do vysoce kvalitních modelu. Další informace najdete v tématu [kurz: automaticky vyškolíme model klasifikace pomocí Azure Machine Learning automatizované](tutorial-auto-train-models.md) dokumentu.
-* __Kanály__: Azure Machine Learning umožňují kombinovat různé úkoly, jako jsou školení a jejich nasazení do kanálu. Kanálů může být spuštění paralelně nebo v pořadí a poskytují mechanismus spolehlivé služby automation. Další informace najdete v tématu [vytvářet kanály machine learning se službou Azure Machine Learning](concept-ml-pipelines.md) dokumentu.
+* __Výběr modelu automatizované__: Služba Azure Machine Learning můžete inteligentně doporučujeme algoritmus a hyperparameter výběr při vytváření modelu. Výběr automatizované modelu pomáhá rychleji, než se pokoušet ručně různé kombinace sloučit do vysoce kvalitních modelu. Další informace najdete v tématu [kurz: automaticky vyškolíme model klasifikace pomocí Azure Machine Learning automatizované](tutorial-auto-train-models.md) dokumentu.
+* __Kanály__: Služba Azure Machine Learning umožňuje kombinovat různé úkoly, jako jsou školení a jejich nasazení do kanálu. Kanálů může být spuštění paralelně nebo v pořadí a poskytují mechanismus spolehlivé služby automation. Další informace najdete v tématu [vytvářet kanály machine learning se službou Azure Machine Learning](concept-ml-pipelines.md) dokumentu.
 
 Vytvoření cílových výpočetních prostředí můžete použít sadu SDK Azure Machine Learning, Azure CLI nebo Azure portal. Můžete také použít existující cílových výpočetních prostředí tak, že přidáte (připojení) je do pracovního prostoru.
 

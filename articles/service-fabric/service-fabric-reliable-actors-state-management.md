@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: d5bc6877aa353ae37ba3ada53ee620a0230357e9
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: aae0ec93f3de708096ff9546a3a4f4e090095a89
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585165"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041151"
 ---
 # <a name="reliable-actors-state-management"></a>Správa stavu Reliable Actors
 Reliable Actors jsou jednovláknových objektů zapouzdřujících logiky a stavových. Actors spustit v modelu Reliable Services, proto jejich stav udržovat spolehlivě s použitím stejného trvalosti a mechanismech replikace. Tímto způsobem actors neztratili po selhání, po aktivaci po uvolnění paměti nebo se přesouvat mezi uzly v clusteru kvůli vyrovnávání prostředků nebo upgrady jejich stav.
@@ -121,7 +121,7 @@ Tady jsou některé doporučené postupy a tipy pro řešení potíží pro spr�
 To je velmi důležité pro výkon a využití prostředků aplikace. Pokaždé, když se neprovádí se žádné aktualizace/zápisu "pojmenované stavu" objektu actor, je na celočíselnou hodnotu odpovídající "s názvem státu" serializovat a odeslaných v síti do sekundárních replik.  Sekundárních replik zapsat do místních disků a odpověď zpět na primární repliku. Když primární přijme potvrzení od kvora sekundárních replik, zapíše stavu na svůj místní disk. Předpokládejme například, že hodnota je třída, která má 20 členy a o velikosti 1 MB. I v případě, že můžete upravovat jenom jeden z členy třídy, které je velikost 1 KB, můžete nakonec platíte cenu za serializace a sítě a disku zápisy pro úplné 1 MB. Podobně pokud je hodnota kolekce (jako je například seznam, pole nebo slovníku), platíte cenu úplnou kolekci i v případě, že upravíte jeden z jeho členů. Úložišti StateManager rozhraní třídy objektu actor je jako slovník. Vždy by měl modelů strukturu dat stavu objektu actor nad tento slovník reprezentující.
  
 ### <a name="correctly-manage-the-actors-life-cycle"></a>Správně spravovat životní cyklus objektu actor
-Měli byste mít jasné zásady týkající se správy velikost stavu v každém oddílu služby objektu actor. Vaše služba objektu actor musí mít pevný počet objektů actor a opakovaně používat, je velmi nejvíce. Pokud vytvoříte nepřetržitě nových objektů actor, je třeba je smazat po dokončení práce s jejich práci. Rozhraní objektu actor ukládá některá metadata o každého objektu actor, který existuje. Odstraňuje se stav prvek "actor" neodebere metadata o tomto objektu actor. Je nutné odstranit objekt actor (viz [odstranění objektů actor a jejich stav](service-fabric-reliable-actors-lifecycle.md#manually-deleting-actors-and-their-state)) odebrat všechny informace o jeho uložených v systému. Jako další kontrolu, by měl dotazování na službu objektu actor (viz [vytváření výčtu objektů actor](service-fabric-reliable-actors-enumerate.md)) v k Ujistěte se, že číslo actors jsou do očekávaného rozsahu.
+Měli byste mít jasné zásady týkající se správy velikost stavu v každém oddílu služby objektu actor. Vaše služba objektu actor musí mít pevný počet objektů actor a je možné míře znovu použít. Pokud vytvoříte nepřetržitě nových objektů actor, je třeba je smazat po dokončení práce s jejich práci. Rozhraní objektu actor ukládá některá metadata o každého objektu actor, který existuje. Odstraňuje se stav prvek "actor" neodebere metadata o tomto objektu actor. Je nutné odstranit objekt actor (viz [odstranění objektů actor a jejich stav](service-fabric-reliable-actors-lifecycle.md#manually-deleting-actors-and-their-state)) odebrat všechny informace o jeho uložených v systému. Jako další kontrolu, by měl dotazování na službu objektu actor (viz [vytváření výčtu objektů actor](service-fabric-reliable-actors-enumerate.md)) v k Ujistěte se, že počet objektů actor, které jsou do očekávaného rozsahu.
  
 Pokud někdy uvidíte, že se mimo očekávané velikosti zvyšuje velikost souboru databáze služby objektu Actor, ujistěte se, že postupujete výše uvedených pokynů. Pokud jsou dodržení těchto pokynů a jsou stále databáze problémům s velikostí souboru, měli byste [vytvořit lístek podpory](service-fabric-support.md) s produktovým týmem na nápovědu.
 

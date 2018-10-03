@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 8/3/2018
 ms.author: junhan
-ms.openlocfilehash: ef99f4be97f5168add44d373a7e74de62347d110
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d79e5b0b5281d502523cd92fbdb21106ffde0c21
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449733"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48040129"
 ---
 # <a name="use-azure-iot-toolkit-extension-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Použití rozšíření Azure IoT Toolkit pro Visual Studio Code pro správu zařízení Azure IoT Hub
 
@@ -23,8 +23,8 @@ ms.locfileid: "39449733"
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-| Možnost správy          | Úkol                                                                                                                            |
-|----------------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| Možnost správy          | Úkol                    |
+|----------------------------|--------------------------------|
 | Přímé metody             | Ujistěte se, zařízení fungují jako je například spouštění nebo zastavování zasílání zpráv nebo restartování zařízení.                                        |
 | Dvojče zařízení pro čtení           | Získejte ohlášené stav zařízení. Například zařízení hlásí, že je nyní blikající indikátor LED.                                    |
 | Aktualizovat dvojče zařízení         | Umístěte zařízení do některých stavech, například nastavit kontrolku LED na zelenou nebo nastavení intervalu odeslání telemetrie do 30 minut.         |
@@ -44,18 +44,22 @@ Spusťte rozšíření Azure IoT Toolkit pro Visual Studio Code pomocí různýc
 
 ## <a name="what-you-need"></a>Co potřebujete
 
-- Aktivní předplatné Azure.
-- Azure IoT hub v rámci vašeho předplatného.
-- [Visual Studio Code](https://code.visualstudio.com/)
-- [Azure IoT Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)
+* Aktivní předplatné Azure.
+* Azure IoT hub v rámci vašeho předplatného.
+* [Visual Studio Code](https://code.visualstudio.com/)
+* [Azure IoT Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>Přihlaste se ke službě IoT hub
 
 1. V **Explorer** VS Code, rozbalte **zařízení Azure IoT Hub** části v levém dolním rohu.
-1. Klikněte na tlačítko **vyberte centrum IoT** v kontextové nabídce.
-1. Automaticky otevírané okno se zobrazí v pravém dolním rohu umožňuje při prvním přihlášení k Azure.
-1. Po přihlášení se zobrazí seznam vašich předplatných Azure a potom vyberte předplatné Azure a IoT Hub.
-1. Zobrazí se seznam zařízení v **zařízení Azure IoT Hub** kartu za pár sekund.
+
+2. Klikněte na tlačítko **vyberte centrum IoT** v kontextové nabídce.
+
+3. Automaticky otevírané okno se zobrazí v pravém dolním rohu umožňuje při prvním přihlášení k Azure.
+
+4. Po přihlášení se zobrazí seznam vašich předplatných Azure a potom vyberte předplatné Azure a IoT Hub.
+
+5. Zobrazí se seznam zařízení v **zařízení Azure IoT Hub** kartu za pár sekund.
 
    > [!Note]
    > Nastavení můžete taky dokončit výběrem možnosti **Set IoT Hub Connection String** (Nastavení připojovacího řetězce IoT Hubu). Zadejte připojovací řetězec služby IoT hub, který připojí zařízení IoT k v místním okně.
@@ -63,27 +67,34 @@ Spusťte rozšíření Azure IoT Toolkit pro Visual Studio Code pomocí různýc
 ## <a name="direct-methods"></a>Přímé metody
 
 1. Klikněte pravým tlačítkem na zařízení a vyberte **vyvolání přímé metody**. 
-1. Zadejte název metody a datová část vstupního pole.
-1. Výsledky se zobrazí v **výstup** > **Azure IoT Toolkit** zobrazení.
+
+2. Zadejte název metody a datová část vstupního pole.
+
+3. Výsledky se zobrazí v **výstup** > **Azure IoT Toolkit** zobrazení.
 
 ## <a name="read-device-twin"></a>Dvojče zařízení pro čtení
 
 1. Klikněte pravým tlačítkem na zařízení a vyberte **úprava Dvojčete zařízení**. 
-1. **Azure-iot zařízení – twin.json** otevře se soubor s obsahem dvojče zařízení.
+
+2. **Azure-iot zařízení – twin.json** otevře se soubor s obsahem dvojče zařízení.
 
 ## <a name="update-device-twin"></a>Aktualizovat dvojče zařízení
 
 1. Ujistěte se, některé úpravy **značky** nebo **properties.desired** pole.
-1. Klikněte pravým tlačítkem na **azure-iot zařízení – twin.json** souboru.
-1. Vyberte **aktualizovat dvojče zařízení** aktualizovat dvojče zařízení.
+
+2. Klikněte pravým tlačítkem na **azure-iot zařízení – twin.json** souboru.
+
+3. Vyberte **aktualizovat dvojče zařízení** aktualizovat dvojče zařízení.
 
 ## <a name="send-cloud-to-device-messages"></a>Odesílání zpráv z cloudu do zařízení
 
 Odeslat zprávu na vaše zařízení ze služby IoT hub, postupujte podle těchto kroků:
  
 1. Klikněte pravým tlačítkem na zařízení a vyberte **C2D odeslat zprávu do zařízení**. 
-1. Zadejte zprávu vstupního pole.
-1. Výsledky se zobrazí v **výstup** > **Azure IoT Toolkit** zobrazení.
+
+2. Zadejte zprávu vstupního pole.
+
+3. Výsledky se zobrazí v **výstup** > **Azure IoT Toolkit** zobrazení.
 
 ## <a name="next-steps"></a>Další postup
 

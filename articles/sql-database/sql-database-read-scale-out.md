@@ -11,17 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/18/2018
-ms.openlocfilehash: d82f4e03176911804702db2ea18a5bc9a95583a3
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/01/2018
+ms.openlocfilehash: 3242f683fd6190209e3395bd8410dd1b2cd36960
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47158695"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043342"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Použít repliky jen pro čtení k načtení vyrovnávat zatížení dotazu jen pro čtení (preview)
 
-**Horizontální navýšení kapacity pro čtení** vám umožní načíst vyrovnávat Azure SQL Database jen pro čtení zatížení využití kapacity repliky jen pro čtení. 
+**Horizontální navýšení kapacity pro čtení** vám umožní načíst jen pro čtení úlohy serveru zůstatek Azure SQL Database pomocí kapacita jednu repliku pouze pro čtení. 
 
 ## <a name="overview-of-read-scale-out"></a>Přehled horizontální navýšení kapacity pro čtení
 

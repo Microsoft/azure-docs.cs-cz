@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 10/01/2018
 ms.author: douglasl
-ms.openlocfilehash: f4a88c5495fc3297699110d8a12a22ff7d6c2bbb
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: fa13b6509052438a0f59c4610f250d0b88b41f2b
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144350"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043069"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -105,7 +105,7 @@ Následující tabulka popisuje názvy a popisy vlastností, které jsou specifi
 | linkedServiceName     | Propojená služba se službou Azure Batch. Další informace o tuto propojenou službu, najdete v článku [propojené služby Compute](compute-linked-services.md) článku.  | Ano      |
 | command               | Příkaz vlastní aplikace, který se spustí. Pokud aplikace je již k dispozici na uzlech fondu Azure Batch, můžete přeskočit resourceLinkedService a folderPath. Například můžete zadat příkaz, který má být `cmd /c dir`, která je nativně podporuje uzlu Windows fondu služby Batch. | Ano      |
 | resourceLinkedService | Propojená služba Azure Storage do účtu úložiště, kde je uložený vlastní aplikace | Ne       |
-| folderPath            | Cesta ke složce vlastní aplikace a všechny její závislosti | Ne       |
+| folderPath            | Cesta ke složce vlastní aplikace a všechny její závislosti<br/><br/>Pokud máte závislosti uložena v podsložkách – to znamená, že v hierarchickou strukturu složek v části *folderPath* – struktura složek se sloučí aktuálně, když soubory se zkopírují do služby Azure Batch. To znamená všechny soubory se zkopírují do jediné složky žádné podsložky. Chcete-li tento problém vyřešit, zvažte komprese souborů, kopírování komprimovaného souboru a pak rozzipovávání vlastního kódu do požadovaného umístění. | Ne       |
 | referenceObjects      | Pole z existujících propojených služeb a datových sad. Odkazované propojené služby a datové sady jsou předány do vlastní aplikace ve formátu JSON tak váš vlastní kód může odkazovat na prostředky služby Data Factory | Ne       |
 | ExtendedProperties    | Uživatelem definované vlastnosti, které mohou být předány vlastní aplikaci ve formátu JSON, tak váš vlastní kód mohou odkazovat další vlastnosti | Ne       |
 

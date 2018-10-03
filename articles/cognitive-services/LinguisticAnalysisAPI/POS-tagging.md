@@ -9,19 +9,23 @@ ms.component: linguistic-analysis
 ms.topic: conceptual
 ms.date: 09/27/2016
 ms.author: lesun
-ms.openlocfilehash: 636b8bc4ef41674d1e9ca12111aecee05870f381
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ROBOTS: NOINDEX
+ms.openlocfilehash: a01fcea4ae6c8950d578bacefc2f064586d7306b
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124564"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238507"
 ---
 # <a name="part-of-speech-tagging"></a>Označování částí řeči
+
+> [!IMPORTANT]
+> Pro jazykovou analýzu ve verzi preview byla vyřazena z provozu, 9. srpna 2018. Doporučujeme používat [moduly analýzy textu Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics) pro zpracování textu a analýzy.
 
 ## <a name="background-and-motivation"></a>Na pozadí a motivace
 
 Jakmile text má rozdělené na věty a tokeny, dalším krokem analýzy je k identifikaci kategorie nebo část řeči jednotlivých slov.
-Patří mezi ně kategoriích, jako je *podstatné jméno* (obecně představující lidé, místa, věci, nápady, atd.) a *příkaz* (obecně představující akce, změny stavu a další. Pro některé slova, část – rozpoznávání řeči je jednoznačný (například *quagmire* je ve skutečnosti pouze podstatné jméno), ale pro řadu dalších je obtížné zjistit.
+Patří mezi ně kategoriích, jako je *podstatné jméno* (obecně představující lidé, místa, věci, nápady, atd.) a *příkaz* (obecně představující akce, změny stavu a další. Pro některé slova je jednoznačný část – rozpoznávání řeči (například *quagmire* je pouze podstatné jméno), pro řadu dalších je však obtížné zjistit.
 *Tabulka* může být místo, kde nacházejí (nebo 2D rozložení čísla), ale můžete také "tabulky diskusi".
 
 ## <a name="list-of-part-of-speech-tags"></a>Seznam značek částí řeči
@@ -45,10 +49,10 @@ Patří mezi ně kategoriích, jako je *podstatné jméno* (obecně představuj�
 | INDIE | mezerami nebo podřazování spojení| Pokud se vyskytuje na, jestli se v uvnitř |
 | JJ | přídavného jména nebo číslo, pořadové | devátý poměrně execrable Multimodální |
 | JJR | srovnávací přídavného jména | lepší rychleji levnější |
-| JJS | přídavného jména superlative | nejlepší nejrychlejší nejlevnější | 
+| JJS | přídavného jména superlative | nejlepší nejrychlejší nejlevnější |
 | LS | značka položky seznamu | (a) (b) 1 2 A B A. B. |
 | MD | pomocné modální okno | můžete může se bude může pravděpodobně by měl by mělo být |
-| NN | podstatné jméno, běžné, singulární nebo velkokapacitní | bot brambory peníze |
+| NN | podstatné jméno, běžné, jednotném čísle nebo hmotnost | bot brambory peníze |
 | NNP | správné, jednotném čísle podstatné jméno, | Kennedy Roosevelt Chicago Weehauken |
 | NNPS | správné, plural podstatné jméno, | Springfields keře |
 | NNS | běžné, plural podstatné jméno, | kusů mice pole |

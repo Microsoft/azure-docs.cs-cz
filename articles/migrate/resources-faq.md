@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: snehaa
-ms.openlocfilehash: d6677aa741b18bb6dbb6b90c07c5e7bd3f4d5afb
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 2b704edee55f7d15da1b59d8f8b357b9ba7ca8f3
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161858"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239213"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate – nejčastější dotazy (FAQ)
 
@@ -54,7 +54,7 @@ Azure Migrate aktuálně podporuje východní USA a střed USA – Západ jako u
 
 Připojení může být přes internet nebo pomocí veřejného partnerského vztahu ExpressRoute.
 
-### <a name="can-i-harden-the-vm-set-up-with-theova-template"></a>Můžete posílení virtuálního počítače s. Šablony pro soubory OVA?
+### <a name="can-i-harden-the-vm-set-up-with-the-ova-template"></a>Můžete posílení virtuálního počítače s. Šablony pro soubory OVA?
 
 Další součásti (například antivirový program) mohou být přidány do. Šablony pro soubory OVA za předpokladu, jako jsou ponechána komunikaci a pravidel brány firewall vyžadované pro zařízení Azure Migrate pro práci se.   
 

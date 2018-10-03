@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: v-jerkin
-ms.openlocfilehash: e8d84d83636bc8bed287d1fa68d36ce1c2ea3d58
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 9a867289cffa17030e397ef170e9055451057410
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018549"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237734"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>Podpora jazyka a oblasti pro rozhraní API pro rozpoznávání řeči služeb
 
@@ -31,16 +31,16 @@ Rozpoznávání řeči Microsoft rozhraní API podporuje následující jazyky. 
  ES certifikační autority | katalánština (Španělsko) | Ne | Ne | Ne
  da-DK | Dánština (Dánsko) | Ne | Ne | Ne
  de-DE | Němčina (Německo) | Ano | Ano | Ne
- cs AU | angličtina (Austrálie) | Ano | Ano | Ano
- cs CA | angličtina (Kanada) | Ano | Ano | Ano
- en-GB | Angličtina (Spojené království) | Ano | Ano | Ano
- en-IN | English (India) | Ne | Ano | Ano
- cs NZ | angličtina (Nový Zéland) | Ano | Ano | Ano  
+ cs AU | angličtina (Austrálie) | Ne | Ano | Ano
+ cs CA | angličtina (Kanada) | Ne | Ano | Ano
+ en-GB | Angličtina (Spojené království) | Ne | Ano | Ano
+ en-IN | English (India) | Ano | Ano | Ano
+ cs NZ | angličtina (Nový Zéland) | Ne | Ano | Ano  
  cs-CZ | Angličtina (Spojené státy) | Ano | Ano | Ano
- es-ES | Španělština (Španělsko) | Ano | Ano | Ne
- es-MX | Španělština (Mexiko) | Ano | Ano | Ne
+ es-ES | Španělština (Španělsko) | Ne | Ano | Ne
+ es-MX | Španělština (Mexiko) | Ne | Ano | Ne
  fi-FI | Finština (Finsko) | Ne | Ne | Ne
- fr-CA | Francouzština (Kanada) | Ano | Ano | Ne
+ fr-CA | Francouzština (Kanada) | Ne | Ano | Ne
  fr-FR | Francouzština (Francie) | Ano | Ano | Ne
  Dobrý den – v | hindština (Indie) | Ne | Ano | Ne
  IT-IT | Italština (Itálie) | Ano | Ano | Ne
@@ -51,7 +51,7 @@ Rozpoznávání řeči Microsoft rozhraní API podporuje následující jazyky. 
  pl-PL | Polština (Polsko) | Ne | Ne | Ne
  pt-BR | Portugalština (Brazílie) | Ne | Ano | Ne
  pt-PT | Portugalština (Portugalsko) | Ne | Ano | Ne
- ru-RU | Ruština (Rusko) | Ne | Ano | Ne
+ ru-RU | Ruština (Rusko) | Ano | Ano | Ne
  sv-SE | Švédština (Švédsko) | Ne | Ne | Ne
  zh-CN | Čínština (Mandarínština, zjednodušená čínština) | Ano | Ano | Ne
  zh-HK | Čínština (Mandarínština, tradiční) | Ne | Ano | Ne

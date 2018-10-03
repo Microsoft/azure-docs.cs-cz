@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 975b3d30f242b877512312f8a5a030bde9349287
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.component: ''
+ms.openlocfilehash: e4140bfa3053798be56f3af9512c11d3ff0e58c0
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003643"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042151"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Připojení počítačů s Windows ke službě Log Analytics v Azure
 

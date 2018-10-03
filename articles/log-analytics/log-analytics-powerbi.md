@@ -1,6 +1,6 @@
 ---
-title: Importovat Azure Log Analytics data do Power BI | Microsoft Docs
-description: Power BI je služba cloudové obchodní analýzy od společnosti Microsoft, která poskytuje bohatých vizualizací a sestav pro analýzu dat různé sady.  Tento článek popisuje postup konfigurace a importovat data analýzy protokolů do Power BI a nakonfigurovat, aby automaticky aktualizovat.
+title: Import dat Azure Log Analytics do Power BI | Dokumentace Microsoftu
+description: Power BI je Cloudová služba obchodní analýzy od Microsoftu, která poskytuje bohaté vizualizace a sestavy pro analýzu z různých sad dat.  Tento článek popisuje, jak nakonfigurovat a importovat do Power BI data služby Log Analytics a nakonfigurovat, aby automaticky aktualizovat.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -14,72 +14,72 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: fb05ddabab3702299df0e81e8dda5af5cb676c1a
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: 7610fcfc144e4337f8556c8824dc7d104265bcc4
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37127505"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044548"
 ---
-# <a name="import-azure-log-analytics-data-into-power-bi"></a>Importovat Azure Log Analytics data do Power BI
+# <a name="import-azure-log-analytics-data-into-power-bi"></a>Import dat Azure Log Analytics do Power BI
 
 
-[Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) je cloudové obchodní analýzy služba společnosti Microsoft, která poskytuje bohatých vizualizací a sestav pro analýzu dat různé sady.  Výsledky hledání protokolu analýzy protokolů můžete importovat do datové sady Power BI umožňuje využívat jeho funkce, jako je například kombinováním dat z různých zdrojů a sdílení sestavy na web a mobilní zařízení.
+[Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) je Cloudová služba obchodní analýzy od Microsoftu, která poskytuje bohaté vizualizace a sestavy pro analýzu z různých sad dat.  Výsledky prohledávání protokolu Log Analytics můžete importovat do datové sady Power BI umožňuje využívat jeho funkce, jako je kombinování dat z různých zdrojů a sdílení sestav na webu a mobilních zařízeních.
 
 ## <a name="overview"></a>Přehled
-K importu dat z pracovního prostoru analýzy protokolů do Power BI, vytvoříte datové sady ve službě Power BI založené na protokolu vyhledávací dotaz v analýzy protokolů.  Pokaždé, když se aktualizují datovou sadu spuštění dotazu.  Potom můžete vytvořit sestavy Power BI, které používají data z datové sady.  Vytvořit datová sada v Power BI, které exportujete dotazu z analýzy protokolů pro [Power Query (M) jazyk](https://msdn.microsoft.com/library/mt807488.aspx).  To poté použít k vytvoření dotazu v Power BI Desktop a potom jej publikujte do Power BI jako datové sady.  Podrobnosti tohoto procesu jsou popsané níže.
+K importu dat do Power BI z pracovního prostoru Log Analytics, vytvoření datové sady v Power BI na základě dotazu vyhledávání protokolů v Log Analytics.  Pokaždé, když se aktualizuje datovou sadu spuštění dotazu.  Potom můžete vytvářet sestavy Power BI, která využívají data z datové sady.  Vytvořte datovou sadu v Power BI, exportujete z Log Analytics pro váš dotaz [Power Query (M) jazyka](https://msdn.microsoft.com/library/mt807488.aspx).  Potom použít pro vytvoření dotazu v Power BI Desktopu a publikujte ji do Power BI jako datovou sadu.  Podrobnosti o tomto procesu jsou popsané níže.
 
-![Analýzy protokolů k Power BI.](media/log-analytics-powerbi/overview.png)
+![Log Analytics pro Power BI](media/log-analytics-powerbi/overview.png)
 
-## <a name="export-query"></a>Export dotazu
-Začněte vytvořením [hledání protokolů](log-analytics-log-search-new.md) , vrací data z analýzy protokolů chcete naplnění datové sady Power BI.  Poté exportujte tento dotaz, který [Power Query (M) jazyk](https://msdn.microsoft.com/library/mt807488.aspx) který může být použit Power BI Desktop.
+## <a name="export-query"></a>Exportovat dotaz
+Začněte vytvořením [prohledávání protokolů](log-analytics-log-search-new.md) , která vrací data ze služby Log Analytics, že chcete naplnění datové sady Power BI.  Poté exportovat tento dotaz k [Power Query (M) jazyk](https://msdn.microsoft.com/library/mt807488.aspx) které může využívat Power BI Desktopu.
 
-1. Vytvořte hledání protokolů v analýzy protokolů pro extrahování dat pro datovou sadu.
-2. Pokud používáte portál vyhledávání protokolu, klikněte na tlačítko **Power BI**.  Pokud používáte portál analýzy, vyberte **exportovat** > **Power BI dotazu (M)**.  Obě tyto možnosti dotazu exportovat do textového souboru s názvem **PowerBIQuery.txt**. 
+1. Vytvoření prohledávání protokolů v Log Analytics k extrakci dat pro datové sady.
+2. Pokud používáte portál pro prohledávání protokolu, klikněte na tlačítko **Power BI**.  Pokud používáte portál Analytics, vyberte **exportovat** > **Power BI dotazu (M)**.  Obě tyto možnosti exportovat dotaz do textového souboru s názvem **PowerBIQuery.txt**. 
 
-    ![Export protokolu vyhledávání](media/log-analytics-powerbi/export-logsearch.png) ![Export protokolu vyhledávání](media/log-analytics-powerbi/export-analytics.png)
+    ![Export prohledávání protokolů](media/log-analytics-powerbi/export-logsearch.png) ![Export prohledávání protokolů](media/log-analytics-powerbi/export-analytics.png)
 
-3. Otevřete textový soubor a zkopírujte její obsah.
+3. Otevřete textový soubor a zkopírujte jeho obsah.
 
-## <a name="import-query-into-power-bi-desktop"></a>Importovat dotaz do Power BI Desktop
-Power BI Desktop je plochy aplikace, která vám umožní vytvořit datové sady a sestavy, které může být publikována do služby Power BI.  Můžete ji použít i k vytvoření dotazu pomocí doplňku Power Query jazyka exportovaný z analýzy protokolů. 
+## <a name="import-query-into-power-bi-desktop"></a>Importovat dotaz do Power BI Desktopu
+Power BI Desktop je desktopová aplikace, která umožňuje vytvoření datové sady a sestavy, které je možné publikovat do Power BI.  Také ho můžete použít k vytvoření dotazu v jazyce Power Query exportované z Log Analytics. 
 
-1. Nainstalujte [Power BI Desktop](https://powerbi.microsoft.com/desktop/) Pokud nepoužíváte ji už máte a pak otevřete aplikaci.
-2. Vyberte **načíst Data** > **prázdné dotazu** otevřete nový dotaz.  Potom vyberte **Upřesnit** a vložte obsah exportovaný soubor do dotazu. Klikněte na **Done** (Hotovo).
+1. Nainstalujte [Power BI Desktopu](https://powerbi.microsoft.com/desktop/) Pokud nemáte ji už máte a pak otevřete aplikaci.
+2. Vyberte **získat Data** > **prázdný dotaz** otevřete nový dotaz.  Potom vyberte **rozšířený Editor** a vložte obsah exportovaného souboru do dotazu. Klikněte na **Done** (Hotovo).
 
-    ![Power BI Desktop dotazu](media/log-analytics-powerbi/desktop-new-query.png)
+    ![Power BI Desktopu dotazu](media/log-analytics-powerbi/desktop-new-query.png)
 
-5. Spuštění dotazu a její výsledky se zobrazí.  Můžete být vyzváni k zadání pověření pro připojení k Azure.  
-6. Zadejte popisný název pro dotaz.  Výchozí hodnota je **dotaz 1**. Klikněte na tlačítko **zavřete a použít** do sestavy přidat datovou sadu.
+5. Spustí dotaz a jeho výsledky se zobrazí.  Můžete být vyzváni k zadání pověření pro připojení k Azure.  
+6. Zadejte popisný název dotazu.  Výchozí hodnota je **Query1**. Klikněte na tlačítko **zavřít a použít** na datovou sadu přidat do sestavy.
 
-    ![Název Power BI Desktop](media/log-analytics-powerbi/desktop-results.png)
-
-
-
-## <a name="publish-to-power-bi"></a>Publikování do služby Power BI
-Když publikujete do Power BI, vytvoří se datové sady a sestavy.  Pokud vytvoříte sestavu v Power BI Desktop, pak to bude publikována s daty.  Pokud ne, pak se vytvoří prázdné sestavy.  Můžete upravit sestavu v Power BI nebo vytvořte novou založené na datovou sadu.
-
-8. Vytvoření sestavy založené na vaše data.  Použití [Power BI Desktop dokumentaci](https://docs.microsoft.com/power-bi/desktop-report-view) Pokud nejste obeznámeni s ním.  Až budete připraveni k odeslání do Power BI, klikněte na tlačítko **publikovat**.  Po zobrazení výzvy vyberte cílové umístění ve vašem účtu Power BI.  Pokud máte na určité cílové místo v paměti, používat **pracovního prostoru**.
-
-    ![Publikování Power BI Desktop](media/log-analytics-powerbi/desktop-publish.png)
-
-3. Po dokončení publikování, klikněte na tlačítko **otevřít v Power BI** otevřít Power BI se vaše nová datová sada.
+    ![Název Power BI Desktopu](media/log-analytics-powerbi/desktop-results.png)
 
 
-### <a name="configure-scheduled-refresh"></a>Nakonfigurujte plánované aktualizace
-Datové sady vytvořené v Power BI bude mít stejná data, která jste předtím viděli v Power BI Desktop.  Budete muset aktualizovat datová sada pravidelně k spusťte dotaz znovu a jeho naplnění nejnovější data z analýzy protokolů.  
 
-1. V pracovním prostoru, kde jste nahráli sestavy a vyberte příkaz **datové sady** nabídky. Vyberte příslušnou kontextovou nabídku vedle vaše nová datová sada a vyberte **nastavení**. V části **přihlašovací údaje ke zdroji dat** byste měli mít zprávu, že přihlašovací údaje jsou neplatné.  Je to proto, že nebyly zadali přihlašovací údaje ještě pro datovou sadu pro použití při ho aktualizuje jeho data.  Klikněte na tlačítko **upravit přihlašovací údaje** a zadejte přihlašovací údaje s přístupem k analýze protokolů.
+## <a name="publish-to-power-bi"></a>Publikování do Power BI
+Při publikování do Power BI se vytvoří datovou sadu a sestavu.  Pokud vytvoříte sestavu v Power BI Desktopu, pak toto bude publikován s vašimi daty.  Pokud ne, pak se vytvoří prázdné sestavy.  Můžete upravit sestavu v Power BI nebo vytvořte novou u datové sady.
 
-    ![Plán Power BI](media/log-analytics-powerbi/powerbi-schedule.png)
+8. Vytvoření sestavy založené na datech.  Použití [dokumentace ke službě Power BI Desktopu](https://docs.microsoft.com/power-bi/desktop-report-view) Pokud nejste obeznámeni s ním.  Až budete připravení odeslat do Power BI, klikněte na tlačítko **publikovat**.  Po zobrazení výzvy vyberte cílové umístění ve vašem účtu Power BI.  Pokud nemáte konkrétní cíl v paměti, použijte **Můj pracovní prostor**.
 
-5. V části **naplánovaná aktualizace** zapnout možnost **průběžně aktualizovat vaše data**.  Volitelně můžete změnit **obnovovací frekvence** a určitých časech spustit aktualizaci.
+    ![Publikování Power BI Desktopu](media/log-analytics-powerbi/desktop-publish.png)
+
+3. Po dokončení publikování klikněte na tlačítko **otevřít v Power BI** otevřete Power BI s novou datovou sadu.
+
+
+### <a name="configure-scheduled-refresh"></a>Konfigurace plánované aktualizace
+Datová sada v Power BI bude mít stejná data, která jste předtím viděli v Power BI Desktopu.  Bude nutné aktualizovat datové sady pravidelně na dotaz spustit znovu a jeho naplnění nejnovější data ze služby Log Analytics.  
+
+1. Klikněte na pracovní prostor, kam jste odeslali sestavy a vyberte **datových sad** nabídky. Vyberte příslušnou kontextovou nabídku vedle nová datová sada a vyberte **nastavení**. V části **přihlašovací údaje ke zdroji dat** byste měli mít zprávu, že přihlašovací údaje jsou neplatné.  Je to proto, že jste nezadali pověření zatím pro datovou sadu pro použití při aktualizuje jeho data.  Klikněte na tlačítko **upravit přihlašovací údaje** a zadat přihlašovací údaje s přístupem ke službě Log Analytics.
+
+    ![Power BI plán](media/log-analytics-powerbi/powerbi-schedule.png)
+
+5. V části **naplánovaná aktualizace** zapnout možnost **datech udržovat aktuální**.  Volitelně můžete změnit **obnovovací frekvence** a konkrétní čas spuštění aktualizace.
 
     ![Aktualizace Power BI](media/log-analytics-powerbi/powerbi-schedule-refresh.png)
 
 
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o [protokolu hledání](log-analytics-log-searches.md) vytvářet dotazy, které je možné exportovat do Power BI.
-* Další informace o [Power BI](http://powerbi.microsoft.com) vytvářet vizualizace podle exportuje analýzy protokolů.
+* Další informace o [prohledávání protokolů](log-analytics-log-searches.md) sestavování dotazů, které je možné exportovat do Power BI.
+* Další informace o [Power BI](http://powerbi.microsoft.com) k vytváření vizualizací založených na exporty Log Analytics.

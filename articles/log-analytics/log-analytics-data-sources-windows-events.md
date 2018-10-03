@@ -1,6 +1,6 @@
 ---
-title: Shromažďovat a analyzovat protokoly událostí systému Windows v Azure Log Analytics | Microsoft Docs
-description: Protokoly událostí systému Windows jsou jedním z nejčastějších zdroje dat používané analýzy protokolů.  Tento článek popisuje postup konfigurace shromažďování protokolů událostí systému Windows a podrobnosti záznamů, které vytvoří v pracovním prostoru analýzy protokolů.
+title: Shromažďovat a analyzovat protokoly událostí Windows v Azure Log Analytics | Dokumentace Microsoftu
+description: Protokoly událostí Windows jsou jedním z nejběžnější zdroje dat používané Log Analytics.  Tento článek popisuje, jak konfigurovat shromažďování protokolů událostí Windows a podrobnosti o záznamy, které vytvářejí v pracovním prostoru Log Analytics.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -14,68 +14,68 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/11/2017
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 8183258ddde335b09293c72368ad3bf58a69334a
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: 4e21c011f54382466bf614dc01fb9d51b514d998
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129349"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044242"
 ---
-# <a name="windows-event-log-data-sources-in-log-analytics"></a>Zdroje dat protokolu událostí systému Windows v analýzy protokolů
-Protokoly událostí systému Windows jsou jedním z většiny běžných [zdroje dat](log-analytics-data-sources.md) pro shromažďování dat pomocí agentů v systému Windows, vzhledem k tomu, že řada aplikací pro zápis do protokolu událostí systému Windows.  Kromě určení žádné vlastní protokoly, které jsou vytvořené pomocí aplikací, které potřebujete k monitorování může shromažďovat události z standardní protokoly, jako je například systém a aplikace.
+# <a name="windows-event-log-data-sources-in-log-analytics"></a>Zdroje dat protokolu událostí Windows ve službě Log Analytics
+Protokoly událostí Windows jsou jedním z nejčastěji používaných [zdroje dat](log-analytics-data-sources.md) pro shromažďování dat pomocí agentů Windows, protože mnoho aplikací se zapisují do protokolu událostí Windows.  Kromě zadání jakékoli vlastní protokoly vytvořené pomocí aplikací, které potřebujete k monitorování může shromažďovat události z standardní protokoly jako je například systém a aplikace.
 
-![Události systému Windows](media/log-analytics-data-sources-windows-events/overview.png)     
+![Události Windows](media/log-analytics-data-sources-windows-events/overview.png)     
 
-## <a name="configuring-windows-event-logs"></a>Protokoly událostí konfigurace systému Windows
-Protokoly událostí systému Windows z konfigurace [nabídce Data v nastavení analýzy protokolů](log-analytics-data-sources.md#configuring-data-sources).
+## <a name="configuring-windows-event-logs"></a>Protokoly událostí konfigurace Windows
+Konfigurovat protokoly událostí Windows z [dat nabídky v nastavení analýzy protokolů](log-analytics-data-sources.md#configuring-data-sources).
 
-Analýzy protokolů pouze shromažďuje události z protokolů událostí systému Windows, které jsou určené v nastavení.  Protokol událostí můžete přidat zadáním názvu do protokolu a kliknutím na tlačítko **+**.  Pro každý protokol se shromažďují jenom události s vybranou závažnosti.  Zkontrolujte závažnosti pro určitý protokol, který chcete shromáždit.  Nelze poskytnout žádná další kritéria filtrování událostí.
+Log Analytics shromažďuje jenom události z protokolů událostí Windows, které jsou určené v nastavení.  Protokol událostí přidáte zadáním názvu protokolu a kliknutím na **+**.  Pro všechny protokoly se shromažďují jen události s vybranou závažnosti.  Zaškrtněte závažnosti pro konkrétní protokol, který chcete shromáždit.  Nelze zadat žádná další kritéria filtrování událostí.
 
-Jak budete zadávat název protokolu událostí, analýzy protokolů poskytuje návrhy běžné názvy protokolu událostí. Pokud na protokol, který chcete přidat v seznamu nezobrazí, můžete ho přidat stále zadáním do úplného názvu protokolu. Úplný název protokolu můžete najít pomocí prohlížeče událostí. V prohlížeči událostí, otevřete *vlastnosti* stránky pro protokol a zkopírujte řetězec z *úplný název* pole.
+Jak budete zadávat název protokolu událostí, Log Analytics poskytuje návrhy běžnému názvu certifikátu protokolu událostí. Pokud na protokol, který chcete přidat, se nezobrazí v seznamu, můžete ho přidat stále tak, že zadáte úplný název protokolu. Úplný název protokolu můžete najít pomocí prohlížeče událostí. V prohlížeči událostí, otevřete *vlastnosti* stránce protokolu a zkopírujte řetězec z *jméno a příjmení* pole.
 
-![Konfigurace události systému Windows](media/log-analytics-data-sources-windows-events/configure.png)
+![Konfigurace událostí Windows](media/log-analytics-data-sources-windows-events/configure.png)
 
 ## <a name="data-collection"></a>Shromažďování dat
-Analýzy protokolů shromažďuje všechny události, která odpovídá vybrané závažnost z monitorovaných protokolu událostí, při vytváření události.  Agent zaznamenává jeho místo v každém protokolu událostí, shromažďující z.  Pokud agenta přejde do režimu offline dobu, pak analýzy protokolů shromažďuje události od poslední místa vypnout, i v případě, že tyto události byly vytvořeny v době, kdy agent offline.  Existuje možnost pro tyto události, které nelze shromažďovat, pokud v protokolu událostí zabalí s nesebraný události přepsáním při agenta je offline.
+Log Analytics shromažďuje každou událost, která odpovídá vybrané závažnosti z monitorovaných protokolu událostí při vytváření události.  Agenta zaznamenává každý protokol událostí, který shromažďuje z jeho umístění.  Pokud agenta přejde do režimu offline pro určitou dobu, pak Log Analytics shromažďuje události z tam, kde poslední skončila, i v případě, že tyto události byly vytvořeny v době, kdy agent offline.  Je v provozu tyto události nebudou shromažďují, pokud se zabalí do protokolu událostí s nesebraný události přepsání agenta je offline.
 
 >[!NOTE]
->Analýzy protokolů nejsou shromažďovány události auditu vytvořené systémem SQL Server ze zdroje *MSSQLSERVER* s ID události 18453, který obsahuje klíčová slova - *Classic* nebo *auditovat úspěšné* a – klíčové slovo *0xa0000000000000*.
+>Log Analytics vytvořená serverem SQL ze zdroje událostí auditu neshromažďuje *MSSQLSERVER* s ID události 18453, který obsahuje klíčová slova - *Classic* nebo *auditu úspěch* a klíčové slovo *0xa0000000000000*.
 >
 
-## <a name="windows-event-records-properties"></a>Vlastnosti záznamů událostí systému Windows
-Záznamy událostí Windows mít typ **událostí** a mít vlastnosti v následující tabulce:
+## <a name="windows-event-records-properties"></a>Vlastnosti záznamů událostí Windows
+Záznamy událostí Windows mají typ **události** a mít vlastnosti v následující tabulce:
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Počítač |Název počítače, který událost nebyla shromážděna z. |
+| Počítač |Název počítače, který událost byla shromážděna z. |
 | EventCategory |Kategorie události. |
-| EventData |Data všech událostí v nezpracovaném formátu. |
-| ID události |Číslo události. |
-| EventLevel |Závažnost události v číselný tvar. |
+| EventData |Všechna data události v nezpracovaném formátu. |
+| ID události |Počet události. |
+| eventLevel |Závažnost události v číselné podobě. |
 | EventLevelName |Závažnost události v textové podobě. |
-| Protokol událostí |Název protokolu událostí, který událost nebyla shromážděna z. |
-| ParameterXml |Hodnoty parametru události ve formátu XML. |
-| ManagementGroupName |Název skupiny pro správu pro agenty nástroje System Center Operations Manager.  Pro jiné agenty tato hodnota je AOI-<workspace ID> |
+| Protokol událostí |Název shromážděné události z protokolu událostí. |
+| ParameterXml |Hodnoty parametru událostí ve formátu XML. |
+| ManagementGroupName |Název skupiny pro správu pro agenty System Center Operations Manageru.  Pro ostatní agenty tato hodnota je AOI-<workspace ID> |
 | RenderedDescription |Popis události s hodnotami parametrů |
 | Zdroj |Zdroj události. |
-| SourceSystem |Typ agenta událost nebyla shromážděna z. <br> Připojit OpsManager – agent systému Windows, buď přímo nebo spravovaná nástroje Operations Manager <br> Linux – všechny agenty Linux  <br> Azurestorage – Azure Diagnostics. |
-| TimeGenerated |Datum a čas vytvoření události v systému Windows. |
-| Uživatelské jméno |Uživatelské jméno účtu, která událost zaznamenala. |
+| SourceSystem |Typ agenta událost byla shromážděna z. <br> OpsManager – Windows agent, buď přímé připojení nebo spravované nástroje Operations Manager <br> Linux – všichni agenti systému Linux  <br> AzureStorage – diagnostiky Azure |
+| TimeGenerated |Datum a čas vytvoření události ve Windows. |
+| Uživatelské jméno |Uživatelské jméno účtu, který protokoluje událost. |
 
-## <a name="log-searches-with-windows-events"></a>Protokol hledání se události systému Windows
-Následující tabulka obsahuje různé příklady vyhledávání protokolu, které načtení záznamů událostí systému Windows.
+## <a name="log-searches-with-windows-events"></a>Hledání v protokolu událostí Windows
+Následující tabulka obsahuje příklady různých prohledávání protokolů, které načítají záznamy událostí Windows.
 
 | Dotaz | Popis |
 |:---|:---|
-| Událost |Všechny události systému Windows. |
-| Událost &#124; kde EventLevelName == "error. |Všechny události systému Windows s závažnosti chyby. |
-| Událost &#124; shrnout count() zdrojem. |Události počet Windows zdrojem. |
-| Událost &#124; kde EventLevelName == "Chyba" &#124; shrnout count() zdrojem. |Události chyb počet Windows zdrojem. |
+| Událost |Všechny události Windows. |
+| Událost &#124; kde EventLevelName == "Chyba" |Všechny události Windows závažnost chyby. |
+| Událost &#124; shrnout count() podle zdroje |Počet Windows události podle zdroje. |
+| Událost &#124; kde EventLevelName == "Chyba" &#124; shrnout count() podle zdroje |Počet Windows chybové události podle zdroje. |
 
 
 ## <a name="next-steps"></a>Další postup
-* Konfigurace analýzy protokolů ke shromažďování dalších [zdroje dat](log-analytics-data-sources.md) pro analýzu.
-* Další informace o [protokolu hledání](log-analytics-log-searches.md) analyzovat data shromážděná ze zdrojů dat a řešení.  
+* Konfigurace Log Analytics ke shromažďování dalších [zdroje dat](log-analytics-data-sources.md) pro analýzu.
+* Další informace o [prohledávání protokolů](log-analytics-log-searches.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.  
 * Použití [vlastní pole](log-analytics-custom-fields.md) k analýze záznamů událostí do jednotlivých polí.
-* Konfigurace [kolekci čítačů výkonu](log-analytics-data-sources-performance-counters.md) z agentů v systému Windows.
+* Konfigurace [shromažďování čítačů výkonu](log-analytics-data-sources-performance-counters.md) z agentů Windows.

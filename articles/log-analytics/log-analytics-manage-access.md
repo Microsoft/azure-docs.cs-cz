@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: cb927c0bad69bb3b5b3001e4ba19b11acd1eb316
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.component: ''
+ms.openlocfilehash: 633bf2cf68449849c019ba940644d78d1478efc3
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389965"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042322"
 ---
 # <a name="manage-workspaces"></a>Správa pracovních prostorů
 

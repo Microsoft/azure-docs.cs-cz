@@ -11,26 +11,28 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 4c9edd60ffa1cd9ed5d95b37592fa49f44117818
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/01/2018
+ms.openlocfilehash: 31a423714154537cfc8d801b972869035aa61035
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161331"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042202"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Obnovit databázi Azure SQL pomocí automatizovaných záloh databáze
-SQL Database nabízí tyto možnosti pro databázi pomocí obnovení [automatizovaných záloh databáze](sql-database-automated-backups.md) a [v rámci dlouhodobého uchovávání záloh](sql-database-long-term-retention.md). Můžete obnovit ze zálohy databáze do:
+Ve výchozím nastavení zálohování SQL Database jsou uložené v geograficky replikovaném blob storage (RA-GRS). Tyto možnosti jsou k dispozici pro databázi pomocí obnovení [automatizovaných záloh databáze](sql-database-automated-backups.md):
 
-* Novou databázi na stejném logickém serveru obnovení k určitému bodu v čase do doby uchování. 
-* Databáze na stejném logickém serveru na čas odstranění pro odstraněnou databázi obnovit.
-* Novou databázi na jakékoli logickém serveru v libovolné oblasti obnovit do bodu nejnovější denní zálohy v geograficky replikovaném blob storage (RA-GRS).
+* Vytvořte novou databázi na stejném logickém serveru obnovení k určitému bodu v čase do doby uchování. 
+* Vytvořte databázi na stejném logickém serveru na čas odstranění pro odstraněnou databázi obnovit.
+* Vytvoření nové databáze v libovolné logický server v libovolné oblasti obnovit do bodu poslední zálohy.
+
+Pokud jste nakonfigurovali [zálohovat dlouhodobě uchovávaných](sql-database-long-term-retention.md) můžete také vytvořit novou databázi ze zálohy jakékoli zleva doprava na jakékoli logickém serveru v libovolné oblasti.  
 
 > [!IMPORTANT]
 > Během obnovení nelze přepsat stávající databázi.
 >
 
-Obnovené databáze s sebou nese náklady náklady na úložiště za následujících podmínek: 
+Při použití úrovně služeb Standard nebo Premium, obnovené databáze s sebou nese náklady náklady na úložiště za následujících podmínek: 
 - Obnovení P11 – P15 a S4 až S12, P1 – P6, pokud je maximální velikost databáze větší než 500 GB.
 - Obnovení P1 – P6 pro S4 až S12, pokud je maximální velikost databáze větší než 250 GB.
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: laevenso
 ms.custom: mvc
-ms.openlocfilehash: 7fb60f3c440b4804ad8c5e6c013ecfa454358833
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 231d7b875a7163aaa532be4a6477ca4e2eb67286
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716113"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043560"
 ---
 # <a name="using-gpus-on-aks"></a>Použití grafických procesorů v AKS
 
@@ -63,7 +63,7 @@ aks-nodepool1-22139053-1   Ready     agent     10h       v1.9.6
 aks-nodepool1-22139053-2   Ready     agent     10h       v1.9.6
 ```
 
-Jeden z uzlů, abychom potvrdili, že GPU plánovatelná popisují. To lze nalézt v `Capacity` oddílu. Například, `alpha.kubernetes.io/nvidia-gpu:  1`.
+Jeden z uzlů, abychom potvrdili, že GPU plánovatelná popisují. To lze nalézt v `Capacity` oddílu. Například, `nvidia.com/gpu:  1`. Pokud se nezobrazí GPU, obraťte se **Poradce při potížích** níže v části.
 
 ```
 $ kubectl describe node aks-nodepool1-22139053-0
@@ -96,12 +96,12 @@ Addresses:
   InternalIP:  10.240.0.4
   Hostname:    aks-nodepool1-22139053-0
 Capacity:
- alpha.kubernetes.io/nvidia-gpu:  1
+ nvidia.com/gpu:                  1
  cpu:                             6
  memory:                          57691688Ki
  pods:                            110
 Allocatable:
- alpha.kubernetes.io/nvidia-gpu:  1
+ nvidia.com/gpu:                  1
  cpu:                             6
  memory:                          57589288Ki
  pods:                            110
@@ -135,7 +135,7 @@ Events:         <none>
 
 Aby bylo možné prokázat, že jsou ve skutečnosti funguje GPU, plán grafického procesoru povolen s úlohou s odpovídající prostředek žádosti. V tomto příkladu se spustí [Tensorflow](https://www.tensorflow.org/versions/r1.1/get_started/mnist/beginners) úlohy proti [datovou sadu mnist ručně](http://yann.lecun.com/exdb/mnist/).
 
-Následující úloha manifest obsahuje omezení prostředků `alpha.kubernetes.io/nvidia-gpu: 1`. Odpovídající CUDA knihovny a nástroje pro ladění budou k dispozici v uzlu na `/usr/local/nvidia` a musí být připojeno pod pomocí specifikace svazku, jak je vidět níže.
+Následující úloha manifest obsahuje omezení prostředků `nvidia.com/gpu: 1`. 
 
 Zkopírujte manifest a uložit jako **ukázky tf mnist ručně demo.yaml**.
 ```
@@ -158,15 +158,8 @@ spec:
         imagePullPolicy: IfNotPresent
         resources:
           limits:
-            alpha.kubernetes.io/nvidia-gpu: 1
-        volumeMounts:
-        - name: nvidia
-          mountPath: /usr/local/nvidia
+           nvidia.com/gpu: 1
       restartPolicy: OnFailure
-      volumes:
-        - name: nvidia
-          hostPath:
-            path: /usr/local/nvidia
 ```
 
 Použití [použití kubectl] [ kubectl-apply] příkaz ke spuštění úlohy. Tento příkaz analyzuje soubor manifestu a vytvoří definované objekty Kubernetes.

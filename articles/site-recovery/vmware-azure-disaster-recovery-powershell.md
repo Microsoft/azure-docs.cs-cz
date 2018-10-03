@@ -2,17 +2,18 @@
 title: Replikace a převzetí služeb při selhání virtuálních počítačů VMware do Azure pomocí prostředí PowerShell ve službě Azure Site Recovery | Dokumentace Microsoftu
 description: Zjistěte, jak nastavit replikaci a převzetí služeb při selhání do Azure pro virtuální počítače VMware pomocí prostředí PowerShell ve službě Azure Site Recovery.
 services: site-recovery
-author: bsiva
+author: sujayt
+manager: rochakm
 ms.service: site-recovery
 ms.date: 07/06/2018
 ms.topic: conceptual
-ms.author: bsiva
-ms.openlocfilehash: a826817b8f2b4ebff8442da1fbee79a95990a9e8
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.author: sutalasi
+ms.openlocfilehash: 070e51b132828e4fdf597d28fc2ad602adf76692
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917808"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042798"
 ---
 # <a name="replicate-and-fail-over-vmware-vms-to-azure-with-powershell"></a>Replikace a převzetí služeb při selhání virtuálních počítačů VMware do Azure pomocí Powershellu
 
@@ -25,7 +26,7 @@ Získáte informace o těchto tématech:
 > - Ověření registrace serveru v trezoru.
 > - Nastavení replikace, včetně zásad replikace. Přidání serveru vCenter a zjištění virtuálních počítačů. > – Přidání serveru vCenter a zjišťování 
 > - Vytvoření účtů úložiště pro uložení dat replikace a replikovat virtuální počítače.
-> - Převzetí služeb. Konfigurace nastavení převzetí služeb při selhání, proveďte e nastavení pro replikaci virtuálních počítačů.
+> - Převzetí služeb při selhání Konfigurace nastavení převzetí služeb při selhání, proveďte e nastavení pro replikaci virtuálních počítačů.
 
 ## <a name="prerequisites"></a>Požadavky
 

@@ -7,12 +7,12 @@ ms.service: storage
 ms.date: 09/11/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 43acff5c4d37c46245566fb2e1d74d3e14d527bb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1f7fc9916fc856d636b6ad850f831a3235b80632
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949838"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237751"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>O službě soubory Azure – nejčastější dotazy (FAQ)
 [Služba soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné prostřednictvím standardních průmyslových [zprávy bloku SMB (Server) protokol](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure je možné připojit současně v cloudových i místních nasazení systémů Windows, Linux a macOS. Také můžete ukládat do mezipaměti sdílených složek Azure v počítačích s Windows serverem pomocí Azure File Sync pro rychlý přístup blízko, ve kterém jsou využívány.
@@ -108,60 +108,23 @@ Tento článek obsahuje odpovědi na běžné otázky o Azure Files funkce a fun
 
 * <a id="sizeondisk-versus-size"></a>
 **Proč není *velikost na disku* vlastnost souboru shody *velikost* vlastnost po použití Azure File Sync?**  
-    Průzkumníka souborů Windows poskytuje dvě vlastnosti k reprezentaci velikosti souboru: **velikost** a **velikost na disku**. Tyto vlastnosti se mírně liší v význam. **Velikost** představuje dokončení velikost souboru. **Velikost na disku** představuje velikost souboru datového proudu, který je uložený na disku. Hodnoty těchto vlastností můžete se liší z různých důvodů, jako je komprese, použít odstranění duplicitních dat nebo pomocí služby Azure File Sync vrstvení cloudu. Pokud je soubor Vrstvená do sdílené složky Azure, velikost na disku je nula, protože datový proud souboru je uložené v adresáři sdílené složky Azure a nikoli na disk. Je také možné pro soubor, který chcete být částečně vrstvené (nebo částečně odvolaného). V částečně vrstvený soubor je část souboru na disku. Tato situace může nastat, když jsou částečně číst pomocí aplikací, jako je multimediálního přehrávače nebo zip nástroje souborů. 
+ Zobrazit [vrstvení cloudu Principy](storage-sync-cloud-tiering.md#sizeondisk-versus-size).
 
 * <a id="is-my-file-tiered"></a>
 **Jak zjistit, jestli se vrstvený soubor?**  
-    Existuje několik způsobů, jak zkontrolovat, zda byl soubor Vrstvená do sdílené složky Azure:
-    
-   *  **Zkontrolujte soubor atributů souboru.**
-     Chcete-li to provést, klikněte pravým tlačítkem na soubor, přejděte na **podrobnosti**a potom přejděte dolů k položce **atributy** vlastnost. Vrstvený soubor má následující atributy nastavit:     
-        
-        | Atribut písmeno | Atribut | Definice |
-        |:----------------:|-----------|------------|
-        | A | Archiv | Označuje, že soubor by měl být zálohovány zálohovací software. Tento atribut je vždycky nastavený, bez ohledu na to, zda je soubor vrstvené nebo plně uložená na disku. |
-        | P | Chování řídkého souboru | Označuje, zda je soubor zhuštěného souboru. Chování řídkého souboru je speciální typ souboru, který nabízí systému souborů NTFS pro efektivní využití v datovém proudu disku se většinou prázdný. Azure File Sync používá zhuštěných souborů, protože plně vrstvené nebo částečně připomenout souboru. V souboru plně vrstvené datový proud souboru uložená v cloudu. V částečně odvolaného souboru, který je součástí souboru již na disku. Pokud je soubor plně připomenout, na disk, Azure File Sync převede z zhuštěného souboru na regulárním souborem. |
-        | L | Spojovací bod | Označuje, že soubor obsahuje bod rozboru. Bod opakování analýzy je speciální ukazatele pro použití ve filtru systému souborů. Azure File Sync používá spojovací body k definování filtru systému souborů Azure File Sync (StorageSync.sys) cloudových umístění, ve které je uložený soubor. Tento atribut podporuje bezproblémový přístup. Uživatelé nebudou muset vědět, jestli se používá Azure File Sync nebo jak získat přístup k souboru ve sdílené složky Azure. Když souboru je plně připomenout, Azure File Sync odebere ze souboru spojovacím bodem. |
-        | O | Offline | Označuje, že některé nebo všechny obsah souboru není uložený na disk. Azure File Sync souboru je plně připomenout, odebere tento atribut. |
-
-        ![Dialogové okno Vlastnosti souboru, s vybranou kartou podrobnosti](media/storage-files-faq/azure-file-sync-file-attributes.png)
-        
-        Atributy pro všechny soubory ve složce můžete zobrazit tak, že přidáte **atributy** do zobrazení tabulky v Průzkumníku souborů. Chcete-li to provést, klikněte pravým tlačítkem na existující sloupec (třeba **velikost**) vyberte **Další**a pak vyberte **atributy** z rozevíracího seznamu.
-        
-   * **Použití `fsutil` ke kontrole spojovacích bodů u souboru.**
-       Jak je popsáno v předchozí možnosti, vrstvený soubor má vždy spojovacím bodu sady. Ukazatel rozboru je speciální ukazatel pro filtr systému souborů Azure File Sync (StorageSync.sys). Chcete-li zkontrolovat, zda má soubor spojovacím bodem, v okně příkazového řádku nebo Powershellu se zvýšenými oprávněními, spusťte `fsutil` nástroje:
-    
-        ```PowerShell
-        fsutil reparsepoint query <your-file-name>
-        ```
-
-        Pokud má soubor spojovacím bodem, můžete očekávat zobrazíte **rozboru hodnota značky: 0x8000001e**. Tato šestnáctková hodnota je hodnota spojovací bod, který je vlastněn Azure File Sync. Výstup obsahuje také rozboru data, která představuje cestu k souboru na sdílené složky Azure.
-
-        > [!WARNING]  
-        > `fsutil reparsepoint` Nástroj příkaz má také možnost Odstranit bod rozboru. Pokud technického týmu Azure File Sync vás vyzve k není provedení tohoto příkazu. Spuštění tohoto příkazu může dojít ke ztrátě. 
+ Zobrazit [vrstvení cloudu Principy](storage-sync-cloud-tiering.md#is-my-file-tiered).
 
 * <a id="afs-recall-file"></a>**Soubor, který chcete použít zřízeny vrstvené. Jak můžete odvolat soubor na disk používat místně?**  
-    Nejjednodušší způsob, jak si možná Vzpomínáte soubor na disk se k otevření souboru. Soubor filtru systému souborů Azure File Sync (StorageSync.sys) bezproblémově stáhne ze sdílené složky Azure bez nutnosti dělat něco z vaší strany. Pro typy souborů, které může být částečně není pro čtení, jako jsou například soubory multimediálních souborů nebo ZIP, otevřete soubor stáhnout celý soubor.
+ Zobrazit [vrstvení cloudu Principy](storage-sync-cloud-tiering.md#afs-recall-file).
 
-    Prostředí PowerShell můžete použít také k vynucení soubor, který chcete zrušit. Tato možnost může být užitečné, pokud chcete odvolat více souborů najednou, jako je například všechny soubory ve složce. Otevřete relaci Powershellu k uzlu serveru, kde je nainstalovaný Azure File Sync a pak spusťte následující příkazy Powershellu:
-    
-    ```PowerShell
-    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-    Invoke-StorageSyncFileRecall -Path <file-or-directory-to-be-recalled>
-    ```
 
 * <a id="afs-force-tiering"></a>
 **Jak vynutit soubor nebo adresář vrstvený?**  
-    Pokud je povolena funkce výběru vrstvy na cloud, vrstvení automaticky soubory úrovních cloudu založený na poslední přístup a upravit dobu k dosažení Procento volné místo svazku na koncový bod cloudu. V některých případech však můžete chtít ručně vynutit soubor k vrstvě. To může být užitečné, pokud uložíte s velkými soubory, které nechcete použít znovu po dlouhou dobu a požadované volné místo na svazku teď má použít pro jiné soubory a složky. Můžete vynutit ovládání datových vrstev na následující příkazy Powershellu:
-
-    ```PowerShell
-    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-    Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
-    ```
+ Zobrazit [vrstvení cloudu Principy](storage-sync-cloud-tiering.md#afs-force-tiering).
 
 * <a id="afs-effective-vfs"></a>
 **Jak je *volné místo na svazku* interpretovat při mám několik koncových bodů serveru na svazku?**  
-    Pokud existuje více než jeden koncový bod serveru na svazku, prahová hodnota volného místa efektivní svazku je největší volné místo svazku zadat napříč libovolný koncový bod serveru na tomto svazku. Soubory se vrstvený podle jejich bez ohledu na to, které koncový bod serveru, ke kterému patří vzorce používání. Například pokud máte dva koncové body serveru na svazku, koncovém bodě 1 a Endpoint2, kde koncovém bodě 1 má prahová hodnota volného místa svazek o 25 % Endpoint2 má prahová hodnota volného místa na svazku 50 %, prahová hodnota volného místa na svazku pro oba koncové body serveru to 50 %.
+ Zobrazit [vrstvení cloudu Principy](storage-sync-cloud-tiering.md#afs-effective-vfs).
 
 * <a id="afs-files-excluded"></a>
 **Které soubory nebo složky jsou automaticky vyloučeny Azure File Sync?**  

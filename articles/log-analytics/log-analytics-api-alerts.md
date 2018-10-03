@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 7f55b762bda5ff0c7bbedf414b18465656496cbb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.component: ''
+ms.openlocfilehash: 6aaf9b42677064b31c56be96775692c75812e145
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984581"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044616"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Vytvářet a spravovat pravidla výstrah ve službě Log Analytics pomocí rozhraní REST API
 Log Analytics výstrah REST API můžete vytvářet a spravovat upozornění v Operations Management Suite (OMS).  Tento článek obsahuje podrobnosti o rozhraní API a několik příkladů k provádění různých operací.
@@ -329,7 +329,7 @@ E-mailová oznámení odeslat poštu na jeden nebo více příjemcům.  Patří 
 | Vlastnost | Popis |
 |:--- |:--- |
 | Příjemci |Seznam adres e-mailu. |
-| Předmět |Předmět e-mailu. |
+| Subjekt |Předmět e-mailu. |
 | Příloha |Přílohy se momentálně nepodporují, takže to bude mít vždy hodnotu "None". |
 
 Následuje ukázka odezvy pro akci oznámení e-mailu s prahovou hodnotou.  

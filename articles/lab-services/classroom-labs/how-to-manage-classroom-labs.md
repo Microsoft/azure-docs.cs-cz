@@ -11,36 +11,82 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 10/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 48056d6e2988dd674351aca83526032175c355b6
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: eebdc98db5ecdf518d3b0b58e6757a2b7ecd5dd7
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214388"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043800"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Správa testovacích prostředí v učebnách ve službě Azure Lab Services 
 Tento článek popisuje postup vytvoření a konfigurace testovacího prostředí v učebně, zobrazení všech testovacích prostředí v učebnách nebo odstranění testovacího prostředí v učebně.
 
 ## <a name="prerequisites"></a>Požadavky
-Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího prostředí, musíte v účtu testovacího prostředí být členem role **Autor testovacího prostředí**. Účet, který jste použili k vytvoření účtu testovacího prostředí se automaticky přidá do této role. Vlastník testovacího prostředí můžete přidat další uživatele do role Tvůrce prostředí, pomocí kroků v následujícím článku: [přidání uživatele do role Tvůrce prostředí](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role).
+Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího prostředí, musíte v účtu testovacího prostředí být členem role **Autor testovacího prostředí**. Do této role se automaticky přidá účet, který jste použili k vytvoření účtu testovacího prostředí. Vlastník testovacího prostředí může přidat další uživatele do role Autor testovacího prostředí podle postupu v následujícím článku: [Přidání uživatele do role Autor testovacího prostředí](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role).
 
 ## <a name="create-a-classroom-lab"></a>Vytvoření testovacího prostředí v učebně
 
-1. Přejděte na [web Azure Lab Services](https://labs.azure.com).
-2. Vyberte **Sign in** (Přihlásit se) a zadejte své přihlašovací údaje. Azure Lab Services podporuje účty a účty Microsoft.
+1. Přejděte na [web Azure Lab Services](https://labs.azure.com). 
+2. Vyberte **Sign in** (Přihlásit se) a zadejte své přihlašovací údaje. Azure Lab Services podporuje účty organizací a účty Microsoft. 
 3. V okně **New Lab** (Nové testovací prostředí) proveďte následující akce: 
-    1. Zadejte **název** testovacího prostředí v učebně. 
-    2. Vyberte **velikost** virtuálního počítače, který chcete v učebně použít.
-    3. Vyberte **image**, která se má použít k vytvoření virtuálního počítače.
-    4. Zadejte **výchozí pověření** pro protokolování do virtuálních počítačů v testovacím prostředí.
-    7. Vyberte **Uložit**.
+    1. Zadejte **název** testovacího prostředí. 
+    2. Zadejte maximální **počet uživatelů, kteří** na testovacím prostředí povolená. 
+    6. Vyberte **Uložit**.
 
-        ![Vytvoření testovacího prostředí v učebně](../media/how-to-manage-classroom-labs/new-lab-window.png)
+        ![Vytvoření testovacího prostředí v učebně](../media/tutorial-setup-classroom-lab/new-lab-window.png)
+4. Na **vyberte virtuální počítač specifikace** stránce, proveďte následující kroky:
+    1. Vyberte **velikost** pro virtuální počítače (VM) v labu vytvoří. 
+    2. Vyberte **oblasti** do kterých chcete virtuální počítače, který se má vytvořit. 
+    3. Vyberte **image virtuálního počítače** se použije k vytvoření virtuálních počítačů v testovacím prostředí. 
+    4. Vyberte **Další**.
+
+        ![Zadejte požadavky virtuálního počítače](../media/tutorial-setup-classroom-lab/select-vm-specifications.png)    
+5. Na **nastavit přihlašovací údaje** zadejte výchozí přihlašovací údaje pro všechny virtuální počítače v testovacím prostředí. 
+    1. Zadejte **jméno uživatele** pro všechny virtuální počítače v testovacím prostředí.
+    2. Zadejte **heslo** pro daného uživatele. 
+
+        > [!IMPORTANT]
+        > Poznamenejte si uživatelské jméno a heslo. Se znovu nezobrazí.
+    3. Vyberte **Vytvořit**. 
+
+        ![Nastavit přihlašovací údaje](../media/tutorial-setup-classroom-lab/set-credentials.png)
+6. Na **konfigurovat šablony** stránce se zobrazí stav procesu vytvoření testovacího prostředí. Vytvoření šablony v testovacím prostředí trvá až 20 minut. 
+
+    ![Konfigurace šablony](../media/tutorial-setup-classroom-lab/configure-template.png)
+7. Po dokončení konfigurace šablony naleznete na následující stránce: 
+
+    ![Po dokončení konfigurace stránka šablony](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
+8. Následující kroky jsou volitelné kroky v tomto kurzu: 
+    1. Začněte výběrem šablony virtuálního počítače **Start**.
+    2. Připojte se k šabloně virtuálního počítače tak, že vyberete **připojit**. 
+    3. Instalace a konfigurace softwaru na šablonu virtuálního počítače. 
+    4. **Zastavit** virtuálního počítače.  
+    5. Zadejte **popis** šablony
+
+        ![Další na stránce Konfigurace šablony](../media/tutorial-setup-classroom-lab/configure-template-next.png)
+9. Vyberte **Další** na stránce dané šablony. 
+10. Na **publikovat šablony** stránce, proveďte následující akce. 
+    1. Chcete-li publikovat šablony okamžitě, zaškrtněte políčko pro *beru na vědomí šablonu nelze změnit po publikování. Tento postup mohou provést pouze jednou a může trvat až hodinu*a vyberte **publikovat**.  
+
+        > [!WARNING]
+        > Jakmile publikujete, nelze zrušit publikování. 
+    2. Chcete-li publikovat později, vyberte **uložit pro pozdější**. Po dokončení průvodce můžete publikovat šablony virtuálního počítače. Podrobnosti o tom, jak nakonfigurovat a publikování po dokončení průvodce, přečtěte si další informace o tom, jak konfigurace a publikování po dokončení průvodce najdete v tématu [publikovat šablony](#publish-the-template) tématu [Správa testovacích prostředí v učebnách ](how-to-manage-classroom-labs.md) článku.
+
+        ![Publikování šablony](../media/tutorial-setup-classroom-lab/publish-template.png)
+11. Zobrazí **průběh publikování** šablony. Tento proces může trvat až hodinu. 
+
+    ![Publikování šablony - průběh](../media/tutorial-setup-classroom-lab/publish-template-progress.png)
+12. Když se šablony úspěšně publikuje, naleznete na následující stránce. Vyberte **Done** (Hotovo).
+
+    ![Publikování šablony – úspěch](../media/tutorial-setup-classroom-lab/publish-success.png)
 1. Zobrazí se **řídicí panel** testovacího prostředí. 
     
-    ![Řídicí panel testovacího prostředí v učebně](../media/how-to-manage-classroom-labs/classroom-lab-home-page.png)
+    ![Řídicí panel testovacího prostředí v učebně](../media/tutorial-setup-classroom-lab/classroom-lab-home-page.png)
+4. Přepněte na stránku **Virtual machines** (Virtuální počítače) a zkontrolujte, že se zobrazí virtuální počítače ve stavu **Unassigned** (Nepřiřazeno). Tyto virtuální počítače ještě nejsou přiřazené ke studentům. Měly by být ve stavu **Stopped** (Zastaveno). Na této stránce můžete spustit studentský virtuální počítač, připojit se k němu, zastavit ho a odstranit ho. Virtuální počítače můžete spustit na této stránce nebo jejich spuštění můžete nechat na studentech. 
+
+    ![Virtuální počítače v zastaveném stavu](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 
 ## <a name="configure-usage-policy"></a>Konfigurace zásad používání
 
@@ -77,7 +123,7 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
     ![Zastavení šablony virtuálního počítače](../media/tutorial-setup-classroom-lab/stop-template-vm.png)
 
 
-### <a name="publish-the-template"></a>Publikování šablony 
+## <a name="publish-the-template"></a>Publikování šablony 
 Jakmile publikujete šablonu, vytvoří služba Azure Lab Services pomocí této šablony virtuální počítače v testovacím prostředí. Počet virtuálních počítačů, které se v tomto procesu vytvoří, se rovná maximálnímu počtu uživatelů, kteří mohou k testovacímu prostředí přistupovat. Tento počet můžete nastavit v zásadách používání testovacího prostředí. Všechny virtuální počítače mají stejnou konfiguraci jako šablona. 
 
 1. V části **Template** (Šablona) vyberte **Publish** (Publikovat). 
@@ -125,7 +171,7 @@ Jakmile publikujete šablonu, vytvoří služba Azure Lab Services pomocí této
 
     ![Dialogové okno Odstranit](../media/how-to-manage-classroom-labs/delete-lab-dialog-box.png)
  
-## <a name="manage-student-vms"></a>Správa virtuálních počítačů studenta
+## <a name="manage-student-vms"></a>Správa virtuálních počítačů studentů
 Jakmile studenty registru pomocí Azure Lab Services pomocí registrace propojení za předpokladu, uvidíte virtuální počítače přiřazené pro studenty na **virtuálních počítačů** kartu. 
 
 ![Virtuální počítače přiřazené pro studenty](../media/how-to-manage-classroom-labs/virtual-machines-students.png)

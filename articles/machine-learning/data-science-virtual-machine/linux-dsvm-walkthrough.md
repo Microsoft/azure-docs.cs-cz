@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: d9b89329e2a9bdb26c9aa1d12bc181c61518dcb8
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: c125f503166e3f63599dbd09acf42c69fab8d2ce
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116159"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044650"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Pro datovou vědu Data Science virtuálním počítačem s Linuxem v Azure
 Tento návod ukazuje, jak provádět několik běžných úloh vědeckého zpracování virtuálního počítače s Linuxem datové vědy. Systému Linux dat virtuálního počítače VĚDY je image virtuálního počítače k dispozici v Azure, který může být předinstalovaný s kolekcí nástrojů používaných pro analýzu dat a strojové učení. Klíčové softwarové komponenty je uvedeno v [zřídit virtuální počítač Linux datové vědy](linux-dsvm-intro.md) tématu. Image virtuálního počítače umožňuje snadno a rychle začít, datových věd v řádech minut, aniž byste museli instalovat a konfigurovat každý z nástrojů jednotlivě. Můžete snadno vertikálně navýšit kapacitu virtuálních počítačů, v případě potřeby a zastavte ji není při použití. Proto tento prostředek je elastická a nákladově efektivní.
@@ -483,7 +483,7 @@ Abyste mohli začít, spusťte Squirrel SQL z nabídky aplikace. Nastavení ovla
 * Klikněte pravým tlačítkem na **PostgreSQL** a vyberte **upravit ovladače**.
 * Vyberte **Extra třídy cesta**, pak **přidat**.
 * Zadejte ***/usr/share/java/jdbcdrivers/postgresql-9.4.1208.jre6.jar*** pro **název souboru** a
-* Vyberte **otevřít**.
+* Vyberte **Open** (Otevřít).
 * Zvolte seznam ovladače a potom vyberte **org.postgresql.Driver** v **název třídy**a vyberte **OK**.
 
 Nastavit připojení k místnímu serveru:
@@ -544,6 +544,6 @@ A dotazování pomocí sqlcmd:
 Také můžete dotazovat pomocí Squirrel SQL. Postupujte podle podobných kroků pro PostgreSQL, pomocí ovladače JDBC Microsoft MSSQL serveru, který se nachází v ***/usr/share/java/jdbcdrivers/sqljdbc42.jar***.
 
 ## <a name="next-steps"></a>Další postup
-Přehled o tématech, které vás provedou úkoly, které tvoří procesu pro datové vědy v Azure, najdete v části [vědecké zpracování týmových dat](http://aka.ms/datascienceprocess).
+Přehled o tématech, které vás provedou úkoly, které tvoří procesu pro datové vědy v Azure, najdete v části [vědecké zpracování týmových dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview).
 
 Popis dalších začátku do konce postupy, které popisují kroky v vědecké zpracování týmových dat pro konkrétní scénáře, naleznete v tématu [názorné postupy vědeckého zpracování týmových dat](../team-data-science-process/walkthroughs.md). Názorné postupy také ukazují, jak zkombinovat cloudové a místní nástroje a služby do pracovního postupu nebo kanálu pro vytváření inteligentních aplikací.

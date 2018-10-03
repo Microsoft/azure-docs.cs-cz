@@ -1,6 +1,6 @@
 ---
-title: Shromažďovat výstrahy Nagios a Zabbix v OMS Log Analytics | Microsoft Docs
-description: Nagios a Zabbix jsou nástroje pro sledování s otevřeným zdrojem. Můžete shromáždit výstrahy z těchto nástrojů do analýzy protokolů, chcete-li analyzovat, společně s výstrahy z jiných zdrojů.  Tento článek popisuje postup konfigurace agenta OMS pro Linux ke shromažďování výstrah z těchto systémů.
+title: Shromažďovat výstrahy Nagios a Zabbix ve službě OMS Log Analytics | Dokumentace Microsoftu
+description: Nagios a Zabbix jsou open source nástroje pro monitorování. Můžete shromažďovat výstrahy z těchto nástrojů do Log Analytics, aby bylo možné analyzovat taky výstrahy z jiných zdrojů.  Tento článek popisuje, jak nakonfigurovat agenta OMS pro Linux ke shromažďování výstrah z těchto systémů.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -14,30 +14,30 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 240e56e3e482b81d6336f7d6d2a1f5688953ecd8
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: e668b2e989571d911c967d08d8012b11adaebd4d
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131547"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041029"
 ---
-# <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-oms-agent-for-linux"></a>Shromažďovat výstrahy z Nagios a Zabbix v analýzy protokolů z OMS agenta pro Linux 
-[Nagios](https://www.nagios.org/) a [Zabbix](http://www.zabbix.com/) jsou nástroje pro sledování s otevřeným zdrojem. Výstrahy můžete shromáždit z těchto nástrojů do analýzy protokolů, aby bylo možné analyzovat, spolu s [výstrahy z jiných zdrojů](log-analytics-alerts.md).  Tento článek popisuje postup konfigurace agenta OMS pro Linux ke shromažďování výstrah z těchto systémů.
+# <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-oms-agent-for-linux"></a>Shromažďovat výstrahy z řešení Nagios a Zabbix v Log Analytics z agenta OMS pro Linux 
+[Nagios](https://www.nagios.org/) a [Zabbix](http://www.zabbix.com/) jsou open source nástroje pro monitorování. Výstrahy můžete shromažďovat z těchto nástrojů do Log Analytics, aby mohl analyzovat spolu s [výstrahy z jiných zdrojů](log-analytics-alerts.md).  Tento článek popisuje, jak nakonfigurovat agenta OMS pro Linux ke shromažďování výstrah z těchto systémů.
  
 ## <a name="prerequisites"></a>Požadavky
-Agent OMS pro Linux podporuje shromažďování výstrahy z Nagios verzi 4.2.x a Zabbix až verze 2.x.
+Agenta OMS pro Linux podporuje shromažďování údajů o výstrahy Nagios verzi 4.2.x a Zabbix verzi 2.x.
 
-## <a name="configure-alert-collection"></a>Konfigurace shromažďování výstrah
+## <a name="configure-alert-collection"></a>Konfigurace shromažďování dat výstrah
 
 ### <a name="configuring-nagios-alert-collection"></a>Konfigurace shromažďování výstrah Nagios
-Shromažďovat výstrahy, proveďte následující kroky na serveru Nagios.
+Shromažďovat výstrahy, na serveru Nagios proveďte následující kroky.
 
-1. Udělit **omsagent** přístup pro čtení do souboru protokolu Nagios `/var/log/nagios/nagios.log`. Za předpokladu, že soubor nagios.log je vlastníkem skupiny `nagios`, můžete přidat uživatele **omsagent** k **nagios** skupiny. 
+1. Udělit uživateli **omsagent** přístup pro čtení do souboru protokolu Nagios `/var/log/nagios/nagios.log`. Za předpokladu, že soubor nagios.log je vlastněná touto skupinou `nagios`, je-li přidat uživatele **omsagent** k **nagios** skupiny. 
 
-    sudo "usermod" - a -G nagios omsagent
+    sudo usermod - a -G nagios omsagent
 
-2.  Upravte konfigurační soubor v `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`. Ujistěte se, že následující položky jsou existuje a není komentáři se:  
+2.  Upravte konfigurační soubor na `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`. Ověřte, že následující položky jsou k dispozici a není komentářem navýšení kapacity:  
 
         <source>  
           type tail  
@@ -51,18 +51,18 @@ Shromažďovat výstrahy, proveďte následující kroky na serveru Nagios.
           type filter_nagios_log  
         </filter>  
 
-3. Restartujte démon omsagent
+3. Restartujte démona omsagent
 
     ```
     sudo sh /opt/microsoft/omsagent/bin/service_control restart
     ```
 
 ### <a name="configuring-zabbix-alert-collection"></a>Konfigurace shromažďování výstrah Zabbix
-Shromažďovat výstrahy ze serveru Zabbix, budete muset zadat uživatele a heslo v *text vymažte, pokud*.  Když není ideální, doporučujeme vytvoření Zabbix uživatele s oprávněními jen pro čtení k zachycení příslušné výstrahy.
+Shromažďovat výstrahy z Zabbix serverem, budete muset zadat uživatele a heslo v *předáváním nešifrovaného textu*.  Když to není ideální, doporučujeme vytvořit Zabbix uživatele s oprávněními jen pro čtení k zachycení relevantní alarmy.
 
-Ke shromažďování výstrah na serveru Nagios, proveďte následující kroky.
+Shromažďovat výstrahy Nagios serveru, proveďte následující kroky.
 
-1. Upravte konfigurační soubor v `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`. Zkontrolujte, zda že následující položky jsou existuje a není komentáři limitu.  Změňte hodnoty pro vaše prostředí Zabbix uživatelské jméno a heslo.
+1. Upravte konfigurační soubor na `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`. Ujistěte se, že následující položky jsou k dispozici a není komentářem navýšení kapacity.  Změňte na hodnoty pro vaše prostředí Zabbix uživatelské jméno a heslo.
 
         <source>
          type zabbix_alerts
@@ -73,49 +73,49 @@ Ke shromažďování výstrah na serveru Nagios, proveďte následující kroky.
          zabbix_password zabbix
         </source>
 
-2. Restartujte démon omsagent
+2. Restartujte démona omsagent
 
     `sudo sh /opt/microsoft/omsagent/bin/service_control restart`
 
 
-## <a name="alert-records"></a>Výstrahy záznamů
-Výstrahy záznamy můžete načíst z Nagios a Zabbix pomocí [protokolu hledání](log-analytics-log-searches.md) v analýzy protokolů.
+## <a name="alert-records"></a>Záznamy upozornění
+Záznamy upozornění můžete načíst z řešení Nagios a Zabbix pomocí [prohledávání protokolů](log-analytics-log-searches.md) v Log Analytics.
 
-### <a name="nagios-alert-records"></a>Výstraha Nagios záznamů
+### <a name="nagios-alert-records"></a>Výstrahy Nagios záznamů
 
-Výstrahy mají záznamy shromažďují Nagios **typ** z **výstrahy** a **SourceSystem** z **Nagios**.  V následující tabulce mají vlastnosti.
+Výstrahy mají záznamy shromážděné Nagios **typ** z **výstrah** a **SourceSystem** z **Nagios**.  V následující tabulce mají vlastnosti.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Typ |*Výstrahy* |
+| Typ |*Upozornění* |
 | SourceSystem |*Nagios* |
 | AlertName |Název výstrahy. |
 | AlertDescription | Popis výstrahy. |
-| AlertState | Stav služby nebo hostitele.<br><br>OK<br>UPOZORNĚNÍ<br>NAHORU<br>DOLŮ |
-| název hostitele | Název hostitele, který vytvořili výstrahu. |
+| AlertState | Stav hostitele nebo službu.<br><br>OK<br>UPOZORNĚNÍ<br>NAHORU<br>DOLŮ |
+| název hostitele | Název hostitele, která upozornění vytvořila. |
 | PriorityNumber | Úroveň priority výstrahy. |
-| StateType | Typ stav výstrahy.<br><br>Konfigurace SOFT - problém, který nebyl opakovaným zkontrolováním.<br>PEVNÝ - problém, který byl znovu zkontrolují zadaného počtu opakování.  |
-| TimeGenerated |Datum a čas vytvoření výstrahy. |
+| StateType | Typ stav výstrahy.<br><br>Konfigurace SOFT - problém, který nebyl znovu zkontrolují.<br>PEVNÉ – problém, který se znovu zkontrolují zadaného počtu opakování.  |
+| TimeGenerated |Datum a čas, který byla výstraha vytvořena. |
 
 
-### <a name="zabbix-alert-records"></a>Výstrahy záznamy Zabbix
-Výstrahy mají záznamy shromažďují Zabbix **typ** z **výstrahy** a **SourceSystem** z **Zabbix**.  V následující tabulce mají vlastnosti.
+### <a name="zabbix-alert-records"></a>Záznamy upozornění Zabbix
+Výstrahy mají záznamy shromážděné Zabbix **typ** z **výstrah** a **SourceSystem** z **Zabbix**.  V následující tabulce mají vlastnosti.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Typ |*Výstrahy* |
+| Typ |*Upozornění* |
 | SourceSystem |*Zabbix* |
 | AlertName | Název výstrahy. |
 | AlertPriority | Závažnost výstrahy.<br><br>není klasifikovaný<br>Informace<br>upozornění<br>průměr<br>Vysoká<br>po havárii  |
 | AlertState | Stav výstrahy.<br><br>0 – stav je aktuální.<br>1 - stav není znám.  |
-| AlertTypeNumber | Určuje, zda výstraha může vygenerovat více událostí problém.<br><br>0 – stav je aktuální.<br>1 - stav není znám.    |
-| Komentáře | Další poznámky pro výstrahu. |
-| název hostitele | Název hostitele, který vytvořili výstrahu. |
-| PriorityNumber | Hodnota označující závažnost výstrahy.<br><br>0 – nezařazených<br>1 - informace<br>2 – upozornění<br>3 – průměr<br>4 – vysoká<br>5 - po havárii |
-| TimeGenerated |Datum a čas vytvoření výstrahy. |
-| TimeLastModified |Datum a čas, kdy byl naposledy změněn stav výstrahy. |
+| AlertTypeNumber | Určuje, zda výstraha může vygenerovat několik událostí problém.<br><br>0 – stav je aktuální.<br>1 - stav není znám.    |
+| Komentáře | Další komentáře pro výstrahu. |
+| název hostitele | Název hostitele, která upozornění vytvořila. |
+| PriorityNumber | Hodnota označuje závažnost výstrahy.<br><br>0 – nezařazených<br>1 – informace<br>2 – upozornění<br>3 – průměr<br>4 – vysoká<br>5 - po havárii |
+| TimeGenerated |Datum a čas, který byla výstraha vytvořena. |
+| TimeLastModified |Datum a čas, který byl naposled změněn stav výstrahy. |
 
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o [výstrahy](log-analytics-alerts.md) v analýzy protokolů.
-* Další informace o [protokolu hledání](log-analytics-log-searches.md) analyzovat data shromážděná ze zdrojů dat a řešení. 
+* Další informace o [výstrahy](log-analytics-alerts.md) v Log Analytics.
+* Další informace o [prohledávání protokolů](log-analytics-log-searches.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 

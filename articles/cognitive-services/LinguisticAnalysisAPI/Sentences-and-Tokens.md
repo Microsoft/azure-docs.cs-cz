@@ -10,14 +10,18 @@ ms.component: linguistic-analysis
 ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: davl
-ms.openlocfilehash: b31ca8f88d1e8d5710c3a6a6cfccbb167fdd762a
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ROBOTS: NOINDEX
+ms.openlocfilehash: 289cab4999276cbfb1fa558f558ebafa8e4e3a30
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126271"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237870"
 ---
 # <a name="sentence-separation-and-tokenization"></a>Rozdělení a Tokenizace vět
+
+> [!IMPORTANT]
+> Pro jazykovou analýzu ve verzi preview byla vyřazena z provozu, 9. srpna 2018. Doporučujeme používat [moduly analýzy textu Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics) pro zpracování textu a analýzy.
 
 ## <a name="background-and-motivation"></a>Na pozadí a motivace
 
@@ -53,7 +57,8 @@ První věta může být napsán jako "Whatdidyousay?")
 
 Existuje několik případů obtížné.
 Nejprve, interpunkční znaménka často (ale ne vždy) by měl dají rozdělit mimo jeho kolem kontextu.
-Za druhé, má Angličtina *staženiny*, jako je "neměli" nebo "je", ve kterém byly slova komprimované a se zkracuje na menší části. Cílem tokenizátoru je přerušit sekvence znaků slova.
+Za druhé, má Angličtina *staženiny*, jako je "neměli" nebo "je", ve kterém byly slova komprimované a se zkracuje na menší části.
+Cílem tokenizátoru je přerušit sekvence znaků slova.
 
 Vraťme se k věty příkladu výše.
 Nyní jsme jste umístili tečku"centra" (&middot;) mezi každý jedinečných token.
@@ -64,7 +69,8 @@ Nyní jsme jste umístili tečku"centra" (&middot;) mezi každý jedinečných t
 
 Všimněte si, jak většina tokeny jsou slova lze najít ve slovníku (například *důležité*, *ředitel*).
 Ostatní výhradně obsahovat interpunkce.
-Dostupné jsou i další neobvyklé tokeny k reprezentaci staženiny jako *nezobrazovat* pro *není*, Přivlastňovací pád jako *společnosti*atd. Tento Tokenizace umožňuje slovo *neměli* a frázi *ne* více konzistentním způsobem, například.
+Dostupné jsou i další neobvyklé tokeny k reprezentaci staženiny jako *nezobrazovat* pro *není*, a Přivlastňovací pád jako *společnosti*.
+Tato Tokenizace umožňuje slovo *neměli* a frázi *ne* více konzistentním způsobem.
 
 ## <a name="specification"></a>Specifikace
 

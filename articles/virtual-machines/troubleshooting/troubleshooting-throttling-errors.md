@@ -13,16 +13,16 @@ ms.topic: troubleshooting
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: vashan, rajraj, changov
-ms.openlocfilehash: 53d94d8674a064960b3447374f68af0d3fdf6e0c
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 7a1c283820b1ddef0c85899d9b56b6dcc3ea4b95
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47413401"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043131"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>Řešení potíží s chybami omezení rozhraní API 
 
-Požadavky na výpočetní prostředky Azure může omezit na předplatné a na základě jednotlivých oblastech, abychom vám pomohli s celkový výkon služby. Zajišťujeme, že všechna volání do Azure Compute Resource zprostředkovatele (CRP), který spravuje prostředky v rámci oboru názvů Microsoft.Compute nedošlo k překročení maximální povolené frekvence požadavků rozhraní API. Tento dokument popisuje rozhraní API, omezování, podrobnosti o tom, jak řešit omezování problémy a osvědčené postupy, aby omezené.  
+Požadavky na výpočetní prostředky Azure může omezit na předplatné a na základě jednotlivých oblastech, abychom vám pomohli s celkový výkon služby. Zajišťujeme, že všechna volání do Azure poskytovateli prostředků Compute (CRP), který spravuje prostředky v rámci oboru názvů Microsoft.Compute nedošlo k překročení maximální povolené frekvence požadavků rozhraní API. Tento dokument popisuje rozhraní API, omezování, podrobnosti o tom, jak řešit omezování problémy a osvědčené postupy, aby omezené.  
 
 ## <a name="throttling-by-azure-resource-manager-vs-resource-providers"></a>Omezení využití sítě pomocí Azure Resource Manageru vs poskytovatelů prostředků  
 
@@ -40,7 +40,7 @@ Když klienta aplikace Azure API získá omezení chybu, je stav protokolu HTTP 
 
 Všimněte si, že požadavek na rozhraní API může být podroben více omezení zásad. Bude samostatný `x-ms-ratelimit-remaining-resource` záhlaví pro každou zásadu. 
 
-Tady je ukázková odpověď se odstranit virtuální počítač v požadavku škálovací sady virtuálních počítačů.
+Tady je ukázková odpověď odstranit požadavek škálovací sady virtuálních počítačů.
 
 ```
 x-ms-ratelimit-remaining-resource: Microsoft.Compute/DeleteVMScaleSet3Min;107 
@@ -73,17 +73,18 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-Zásady se zbývající počet volání 0 je to omezení chyba je vrácena. V tomto případě je `HighCostGet30Min`. Celkový formát těla odpovědi je obecný formát Chyba rozhraní API Azure Resource Manageru (splňovala podmínky shody s protokolem OData). Kód chyby hlavní `OperationNotAllowed`, je ten poskytovatele výpočetních prostředků používá oznamuje omezování chyby (mimo jiné druhy chyby klienta). 
+Zásady se zbývající počet volání 0 je to omezení chyba je vrácena. V tomto případě je `HighCostGet30Min`. Celkový formát těla odpovědi je obecný formát Chyba rozhraní API Azure Resource Manageru (splňovala podmínky shody s protokolem OData). Kód chyby hlavní `OperationNotAllowed`, je ten poskytovatele výpočetních prostředků používá oznamuje omezování chyby (mimo jiné druhy chyby klienta). `message` Vlastnost vnitřní chyby obsahuje serializovaná strukturu JSON s podrobnostmi o porušení omezení.
 
 Jak je znázorněno výše, zahrnuje každé chybě omezení `Retry-After` hlavičky, která poskytuje minimální počet sekund, klient čekat před opakováním žádosti. 
 
 ## <a name="best-practices"></a>Osvědčené postupy 
 
-- Bezpodmínečně opakování chyby služby Azure API. Běžné výskyt je pro klientský kód rychle dostat do smyčce rychlé opakování, když dojde k nějaké chybě, která není možné opakovat. Opakované pokusy se nakonec vyčerpání limitu povolených volání pro operaci cílové skupiny a mít vliv na ostatní klienti předplatného. 
+- Bezpodmínečně a/nebo okamžitě opakování chyby rozhraní API služby Azure. Běžné výskyt je pro klientský kód rychle dostat do smyčce rychlé opakování, když dojde k nějaké chybě, která není možné opakovat. Opakované pokusy se nakonec vyčerpání limitu povolených volání pro operaci cílové skupiny a mít vliv na ostatní klienti předplatného. 
 - V případech, vysoký počet rozhraní API automatizace zvažte implementaci aktivní na straně klienta svým omezování, když počet dostupných volání pro cílovou skupinu operace klesne pod některé nízké prahové hodnoty. 
 - Při sledování asynchronních operací se dodržovat pomocné parametry hlavičkou Retry-After. 
-- Pokud se klientský kód potřebuje informace o konkrétní virtuální počítač, dotaz tohoto virtuálního počítače přímo namísto vypisování všechny virtuální počítače v obsahující skupiny prostředků nebo celé předplatné a pak vybrat potřebné virtuálního počítače na straně klienta. 
-- Pokud klientský kód potřebuje virtuální počítače, disky nebo snímky z určitého umístění Azure, založená na poloze formulář dotazu použít namísto dotaz na odběr všechny virtuální počítače a následného filtrování podle polohy na straně klienta: `GET /subscriptions/<subId>/providers/Microsoft.Compute/locations/<location>/virtualMachines?api-version=2017-03-30` a `/subscriptions/<subId>/providers/Microsoft.Compute/virtualMachines` dotaz, který výpočetní prostředky Prostředek zprostředkovatele místní koncové body. • Při vytváření nebo aktualizaci rozhraní API prostředky zejména, virtuální počítače a virtuálního počítače škálovací sady, je mnohem efektivnější než dotazování na adrese URL prostředku, samotný sledovat vrácený asynchronní operace do konce (na základě `provisioningState`).
+- Pokud klientský kód potřebuje informace o konkrétní virtuální počítač, dotaz tohoto virtuálního počítače přímo, bez výpis všech virtuálních počítačů v příslušnou skupinu prostředků nebo celé předplatné a pak vybrat potřebné virtuálního počítače na straně klienta. 
+- Pokud klientský kód potřebuje virtuální počítače, disky nebo snímky z určitého umístění Azure, založená na poloze formulář dotazu použít namísto dotaz na odběr všechny virtuální počítače a následného filtrování podle polohy na straně klienta: `GET /subscriptions/<subId>/providers/Microsoft.Compute/locations/<location>/virtualMachines?api-version=2017-03-30` dotazu na místní poskytovatele výpočetních prostředků Koncové body. 
+-   Při vytváření nebo aktualizaci rozhraní API prostředky zejména, virtuální počítače a škálovací sady virtuálních počítačů, je mnohem efektivnější než dotazování na adrese URL prostředku, samotný sledovat vrácený asynchronní operace do konce (na základě `provisioningState`).
 
 ## <a name="next-steps"></a>Další postup
 

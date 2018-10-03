@@ -12,16 +12,19 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/23/2018
-ms.openlocfilehash: 314a2182c3be5c5f10e075cdbda27f4a716f2536
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 18f354f931995731bf4f0da47e830a575e96fc7c
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160396"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237768"
 ---
 # <a name="what-is-the-hyperscale-service-tier-preview-in-azure-sql-database"></a>Co je úroveň velkokapacitní služby (preview) ve službě Azure SQL Database?
 
 Úroveň mírou škálování služby ve službě Azure SQL Database je nejnovější úroveň služby v nákupní model založený na virtuálních jádrech. Tato úroveň služby je vysoce škálovatelné úložiště a výpočetní úroveň výkonu, který využívá Azure architekturu pro horizontální navýšení kapacity úložiště a výpočetní prostředky pro službu Azure SQL Database podstatně nad limity, které jsou k dispozici pro obecné účely a Business Úrovně důležitých služeb.
+
+> [!IMPORTANT]
+> Velkokapacitní úroveň služby je aktuálně ve verzi public preview a je k dispozici v omezené oblastech Azure. Oblast úplný seznam najdete v tématu [velkokapacitní služby úroveň dostupných oblastí](#hyperscale-regions)
 
 ## <a name="what-are-the-capabilities-of-the-hyperscale-service-tier"></a>Jaké jsou možnosti vrstvy služby s Hyperškálováním
 
@@ -83,9 +86,12 @@ Zálohy snímků souborů základní a proto jsou téměř okamžité. Oddělen�
 
 Díky možnosti rozjedete směrem nahoru nebo dolů dalších jen pro čtení výpočetních uzlů Hyperškálovatelného architektura umožňuje významné čtení možnosti škálování a můžete také uvolnit primární výpočetní uzel obsluhuje další požadavky na zápis. Také výpočetní uzly je možné škálovat směrem nahoru nebo dolů rychle vzhledem k architektuře úložiště sdíleného v rámci architektury mírou škálování. 
 
+### <a name="a-namehyperscale-regions-hyperscale-service-tier-available-regions"></a><a name="hyperscale-regions"> Velkokapacitní služby úroveň dostupných oblastí
+Úroveň velkokapacitní služby je aktuálně ve verzi public preview a je k dispozici v následujících oblastech Azure: EastUS1 EastUS2, WestUS2, CentralUS, NorthCentralUS, WestEurope, NorthEurope, UKWest, AustraliaEast, AustraliaSouthEast, SouthEastAsia, JapanEast, KoreaCentral
 
 ## <a name="next-steps"></a>Další postup
 
 - Informace o úrovních služeb najdete v tématu [úrovně služeb](sql-database-service-tiers.md)
-- Podrobnosti týkající se limity prostředků najdete v tématu [vCore omezení prostředků](sql-database-resource-limits.md)
+- Zobrazit [Přehled prostředků omezuje na logickém serveru](sql-database-resource-limits-logical-server.md) informace o omezeních na úrovni serveru a předplatné.
+- Zakoupení modelu omezení pro jednu databázi, naleznete v tématu [založený na virtuálních jádrech zakoupení modelu omezení pro jednu databázi Azure SQL Database](sql-database-vcore-resource-limits-single-databases.md).
 - Pro funkce a seznam porovnání, naleznete v tématu [běžné funkce SQL](sql-database-features.md).

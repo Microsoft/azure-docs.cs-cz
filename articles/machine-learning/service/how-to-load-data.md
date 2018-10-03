@@ -10,20 +10,18 @@ author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 436ff9d318dc311efe27352a8b2ac91cfb5be618
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 91db32b7056a0cf211e6293a891d58e0239ca499
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221317"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237581"
 ---
-#<a name="load-and-read-data-with-azure-machine-learning"></a>Načtení a čtení dat pomocí Azure Machine Learning
+# <a name="load-and-read-data-with-azure-machine-learning"></a>Načtení a čtení dat pomocí Azure Machine Learning
 
 Použití [sady SDK služby Azure Machine Learning Data Prep](https://docs.microsoft.com/python/api/overview/azure/dataprep?view=azure-dataprep-py) načíst různé druhy vstupní data. 
 
-Jak načíst vaše data, máte dva přístupy:
-+ Zadejte datový typ souboru a jeho parametry
-+ Pomocí funkce Inteligentní čtení sady SDK automaticky rozpoznat typ souboru
+Pokud chcete načíst data, zadejte datový typ souboru a jeho parametry
 
 ## <a name="use-text-line-data"></a>Použít data řádku textu 
 Jedním z nejjednodušších způsobů načítání dat je číst jako řádky textu.
@@ -352,7 +350,3 @@ dataflow.to_pandas_dataframe().head()
 |2|1011878|100 přepočet mílí na trhu|http://www.pfcmarkets.com |507 Harrison St|Kalamazoo|Kalamazoo|
 |3|1009364|106 S. hlavní ulice Farmářům trhu|http://thetownofsixmile.wordpress.com/ |106 S. hlavní ulice|Šest míle|||
 |4|1010691|Společnost 10th trhu Farmářům Steet komunity|http://agrimissouri.com/mo-grown/grodetail.php... |Ulice 10 a topolů|Lamar|Barton|
-
-## <a name="use-smart-reading"></a>Použití "inteligentní čtení"
-
-Pomocí funkce Inteligentní čtení sady SDK automaticky rozpoznat typ souboru.

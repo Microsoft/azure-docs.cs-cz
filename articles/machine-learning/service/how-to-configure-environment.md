@@ -9,16 +9,16 @@ ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
 ms.date: 8/6/2018
-ms.openlocfilehash: 675dae022376fc62292f3b079bd735939b9199c2
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: f68d5d7faf3555918b9f9a6add7754c8ae23d0a8
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220291"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239230"
 ---
 # <a name="configure-a-development-environment-for-the-azure-machine-learning-service"></a>Konfigurace vývojového prostředí pro službu Azure Machine Learning
 
-Zjistěte, jak konfigurovat vaše vývojové prostředí pro práci se službou Azure Machine Learning. Se dozvíte, jak vytvořit konfigurační soubor, který se přidruží k pracovnímu prostoru Azure Machine Learning vašeho prostředí. Budete se také dozvíte, jak nakonfigurovat následující vývojových prostředích:
+Zjistěte, jak konfigurovat vaše vývojové prostředí pro práci se službou Azure Machine Learning. Se dozvíte, jak vytvořit konfigurační soubor, který se přidruží k pracovnímu prostoru Azure Machine Learning service vaše prostředí. Budete se také dozvíte, jak nakonfigurovat následující vývojových prostředích:
 
 * Poznámkové bloky Jupyter ve vašem počítači
 * Visual Studio Code
@@ -35,6 +35,9 @@ Doporučuje se použít Continuum Anaconda [virtuální prostředí conda](https
 
  * Pro prostředí Visual Studio Code [rozšíření Python](https://code.visualstudio.com/docs/python/python-tutorial).
 
+> [!NOTE]
+> Příkazy prostředí v tomto dokumentu jsou testovány bash on Linux a macOS. Příkazy jsou také testovat s cmd.exe ve Windows.
+
 ## <a name="create-workspace-configuration-file"></a>Vytvořte konfigurační soubor pracovního prostoru
 
 Konfigurační soubor pracovního prostoru se sada SDK používá ke komunikaci s pracovním prostorem služby Azure Machine Learning.  Chcete-li získat tento soubor dvěma způsoby:
@@ -49,7 +52,8 @@ Konfigurační soubor pracovního prostoru se sada SDK používá ke komunikaci 
         ![portál Azure](./media/how-to-configure-environment/configure.png) 
     
     1. Vytvořte soubor s tímto kódem Python. Spuštění kódu ve stejném adresáři jako skripty nebo poznámkových bloků, které odkazují na pracovním prostoru:
-        ```
+
+        ```python
         from azureml.core import Workspace
 
         subscription_id ='<subscription-id>'

@@ -1,6 +1,6 @@
 ---
-title: Používání úložiště blob pro službu IIS a tabulka úložiště pro události v Azure Log Analytics | Microsoft Docs
-description: Analýzy protokolů můžete přečíst v protokolech služby Azure, které zápis diagnostiky table Storage nebo protokoly služby IIS zapisovat do úložiště objektů blob.
+title: Použití úložiště objektů blob pro službu IIS a table storage pro události v Azure Log Analytics | Dokumentace Microsoftu
+description: Log Analytics najdete v protokolech služby Azure, které zápis diagnostiky do table storage nebo protokoly IIS zapsána do úložiště objektů blob.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -14,77 +14,77 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 8f923cc081ea652c8e32d4109225044c70c8767d
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: 9f4aae578606e14711deaac87e232bad0158bfe9
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128737"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041477"
 ---
-# <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>Používat úložiště objektů blob v Azure pro službu IIS a Azure úložiště table pro události se analýzy protokolů
+# <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>Používání úložiště objektů blob v Azure pro službu IIS a Azure table storage pro události s využitím Log Analytics
 
-Analýzy protokolů můžete přečíst v protokolech u následujících služeb, které zapsat diagnostiky table Storage nebo protokoly služby IIS zapisovat do úložiště objektů blob:
+Log Analytics najdete v protokolech tyto služby, které zapsat diagnostiky do table storage nebo protokoly IIS zapsána do úložiště objektů blob:
 
-* Service Fabric clusterů (Preview)
+* Clustery Service Fabric (verze Preview)
 * Virtuální počítače
-* Web/role pracovního procesu
+* Webové a pracovní role
 
-Před analýzy protokolů můžete shromažďovat data pro tyto prostředky, musí být povolena Azure diagnostics.
+Před Log Analytics může shromažďovat data pro tyto prostředky, musí být povolená Diagnostika Azure.
 
-Po diagnostiky jsou povolené, můžete použít portál Azure nebo PowerShell konfigurace analýzy protokolů shromažďovat protokoly.
+Jakmile je povolená Diagnostika, můžete použít na webu Azure portal nebo Powershellu konfigurace Log Analytics ke shromažďování protokolů.
 
-Azure Diagnostics je rozšířením Azure, která umožňuje shromažďování diagnostických dat z role pracovního procesu, webovou roli nebo virtuální počítač spuštěný v Azure. Data je uložený v účtu úložiště Azure a můžete pak shromáždit pomocí analýzy protokolů.
+Diagnostika Azure je rozšířením Azure, která umožňuje shromažďovat diagnostická data z role pracovního procesu, webové role nebo virtuálního počítače spuštěného v Azure. Data uložená v účtu služby Azure storage a můžete pak shromážděná službou Log Analytics.
 
-Pro analýzy protokolů pro shromažďování těchto protokolů Azure Diagnostics musí být v protokolech v následujících umístěních:
+Ke službě Log Analytics pro tyto protokoly diagnostiky Azure shromažďovat protokoly musí být v následujících umístěních:
 
 | Typ protokolu | Typ prostředku | Umístění |
 | --- | --- | --- |
-| Protokoly IIS |Virtuální počítače <br> Webové role <br> Role pracovního procesu |wad logfiles služby iis (úložiště objektů Blob) |
-| Syslog |Virtuální počítače |LinuxsyslogVer2v0 (tabulky úložiště) |
-| Provozní události služby prostředků infrastruktury |Uzly Service Fabric |WADServiceFabricSystemEventTable |
-| Události služby Fabric spolehlivé objektu Actor |Uzly Service Fabric |WADServiceFabricReliableActorEventTable |
-| Události spolehlivé služby Service Fabric |Uzly Service Fabric |WADServiceFabricReliableServiceEventTable |
-| Protokoly událostí Windows |Uzly Service Fabric <br> Virtuální počítače <br> Webové role <br> Role pracovního procesu |WADWindowsEventLogsTable (Table Storage) |
-| Protokoly systému Windows trasování událostí pro Windows |Uzly Service Fabric <br> Virtuální počítače <br> Webové role <br> Role pracovního procesu |WADETWEventTable (Table Storage) |
+| Protokoly IIS |Virtuální počítače <br> Webové role <br> Role pracovního procesu |wad-iis-logfiles (úložiště objektů Blob) |
+| Syslog |Virtuální počítače |LinuxsyslogVer2v0 (Table Storage) |
+| Provozní události služby Service Fabric |Uzly Service Fabricu |WADServiceFabricSystemEventTable |
+| Události služby Service Fabric Reliable Actors |Uzly Service Fabricu |WADServiceFabricReliableActorEventTable |
+| Události služby Service Fabric Reliable Service |Uzly Service Fabricu |WADServiceFabricReliableServiceEventTable |
+| Protokoly událostí Windows |Uzly Service Fabricu <br> Virtuální počítače <br> Webové role <br> Role pracovního procesu |WADWindowsEventLogsTable (Table Storage) |
+| Protokoly trasování událostí pro Windows Windows |Uzly Service Fabricu <br> Virtuální počítače <br> Webové role <br> Role pracovního procesu |WADETWEventTable (Table Storage) |
 
 > [!NOTE]
-> Protokoly služby IIS z webů Azure nejsou aktuálně podporovány.
+> Protokoly služby IIS z Azure Websites se momentálně nepodporují.
 >
 >
 
-Pro virtuální počítače, máte možnost nainstalovat [analýzy protokolů agenta](log-analytics-azure-vm-extension.md) do virtuálního počítače povolit další statistiky. Kromě toho schopní analyzovat protokoly událostí a protokoly služby IIS, můžete provádět další analýzu, včetně sledování změn konfigurace, vyhodnocení SQL a vyhodnocení aktualizací.
+Pro virtuální počítače, máte možnost instalace [agenta Log Analytics](log-analytics-azure-vm-extension.md) k virtuálnímu počítači povolit další statistiky. Kromě schopnost analyzovat protokoly událostí a protokoly služby IIS, můžete provádět další analýzu, včetně sledování změn konfigurace SQL posouzení a posouzení aktualizací.
 
-## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection"></a>Povolit Azure diagnostics ve virtuálním počítači pro protokol událostí a služby IIS protokolu kolekce
-Pomocí následujícího postupu umožníte Azure diagnostics ve virtuálním počítači pro protokol událostí a služby IIS protokolu kolekci pomocí portálu Microsoft Azure.
+## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection"></a>Azure diagnostics na virtuálním počítači povolit protokol událostí a služby IIS protokolu kolekce
+Následujícím postupem povolte Azure diagnostics na virtuálním počítači pro shromažďování protokolů služby IIS a protokolu událostí na portálu Microsoft Azure.
 
-### <a name="to-enable-azure-diagnostics-in-a-virtual-machine-with-the-azure-portal"></a>Chcete-li povolit Azure diagnostics ve virtuálním počítači pomocí portálu Azure
-1. Když vytvoříte virtuální počítač, nainstalujte agenta virtuálního počítače. Pokud virtuální počítač již existuje, ověřte, že je již nainstalován Agent virtuálního počítače.
+### <a name="to-enable-azure-diagnostics-in-a-virtual-machine-with-the-azure-portal"></a>Povolení diagnostiky Azure v rámci virtuálního počítače pomocí webu Azure portal
+1. Při vytváření virtuálního počítače, nainstalujte agenta virtuálního počítače. Pokud virtuální počítač už existuje, ověřte, že Agent virtuálního počítače je už nainstalovaný.
 
-   * Na portálu Azure přejděte do virtuálního počítače, vyberte **volitelné konfiguraci**, pak **diagnostiky** a nastavte **stav** k **na** .
+   * Na webu Azure Portal, přejděte k virtuálnímu počítači, vyberte **volitelná konfigurace**, pak **diagnostiky** a nastavte **stav** k **na** .
 
-     Po dokončení zpracování se má virtuální počítač Azure Diagnostics rozšíření nainstalovaná a spuštěná. Toto rozšíření je zodpovědná za shromažďování dat diagnostiky.
-2. Povolí monitorování a konfigurace protokolování událostí na existující virtuální počítač. Můžete povolit diagnostiku na úrovni virtuálního počítače. Povolte diagnostiku a pak nastavte protokolování událostí, proveďte následující kroky:
+     Po dokončení se virtuální počítač má rozšíření Azure Diagnostics nainstalovaný a spuštěný. Toto rozšíření je zodpovědná za shromažďovat diagnostická data.
+2. Povolení monitorování a konfigurace protokolování událostí v existující virtuální počítač. Můžete povolit diagnostiku na úrovni virtuálního počítače. Povolení diagnostiky a potom nakonfigurujte protokolování událostí, postupujte následovně:
 
    1. Vyberte virtuální počítač.
    2. Klikněte na tlačítko **monitorování**.
    3. Klikněte na tlačítko **diagnostiky**.
    4. Nastavte **stav** k **ON**.
-   5. Vyberte každý diagnostiky protokolu, které chcete shromažďovat.
+   5. Vyberte každou diagnostický protokol, který chcete shromáždit.
    6. Klikněte na **OK**.
 
-## <a name="enable-azure-diagnostics-in-a-web-role-for-iis-log-and-event-collection"></a>Povolit Azure diagnostics ve webové roli pro shromažďování protokolů a událostí služby IIS
-Odkazovat na [jak k povolení diagnostiky v cloudové službě](../cloud-services/cloud-services-dotnet-diagnostics.md) obecné pokyny k povolení Azure diagnostics. Níže uvedené pokyny použijte tyto informace a přizpůsobit pro použití s analýzy protokolů.
+## <a name="enable-azure-diagnostics-in-a-web-role-for-iis-log-and-event-collection"></a>Povolení diagnostiky Azure ve webové roli pro shromažďování protokolů a událostí služby IIS
+Odkazovat na [jak k povolení diagnostiky v cloudové službě](../cloud-services/cloud-services-dotnet-diagnostics.md) obecné pokyny k povolení diagnostiky Azure. Podle následujících pokynů tuto informaci použít a přizpůsobit ho pro použití se službou Log Analytics.
 
-S Azure diagnostics povoleno:
+S povolenou diagnostikou Azure:
 
-* Protokoly služby IIS jsou uloženy ve výchozím nastavení, s přenést v intervalu scheduledTransferPeriod přenosu dat protokolu.
-* Ve výchozím nastavení se nepřenesou protokoly událostí systému Windows.
+* Protokoly služby IIS jsou uloženy ve výchozím nastavení, s přenesených v intervalu hodnota scheduledTransferPeriod přenosu dat protokolu.
+* Ve výchozím nastavení se nepřenesou protokoly událostí Windows.
 
-### <a name="to-enable-diagnostics"></a>Povolí se Diagnostika
-Chcete-li povolit protokol událostí systému Windows, nebo změnit scheduledTransferPeriod, konfigurovat Azure Diagnostics pomocí konfiguračního souboru XML (diagnostics.wadcfg), jak je znázorněno v [krok 4: vytvoření konfiguračního souboru diagnostiky a nainstalovat rozšíření](../cloud-services/cloud-services-dotnet-diagnostics.md)
+### <a name="to-enable-diagnostics"></a>Povolit diagnostiku
+Povolení protokolů událostí Windows, nebo chcete změnit hodnota scheduledTransferPeriod, konfigurování diagnostiky Azure pomocí konfiguračního souboru XML (diagnostics.wadcfg), jak je znázorněno v [krok 4: Vytvořte konfigurační soubor diagnostiky a instalace rozšíření](../cloud-services/cloud-services-dotnet-diagnostics.md)
 
-Následující příklad konfiguračního souboru shromažďuje protokoly služby IIS a všechny události z protokolů systému a aplikace:
+Následující příklad konfiguračního souboru shromažďuje protokoly služby IIS a všechny události z protokolů aplikace a systém:
 
 ```
     <?xml version="1.0" encoding="utf-8" ?>
@@ -108,7 +108,7 @@ Následující příklad konfiguračního souboru shromažďuje protokoly služb
     </DiagnosticMonitorConfiguration>
 ```
 
-Zajistěte, aby vaše ConfigurationSettings určovala účtu úložiště, jako v následujícím příkladu:
+Ujistěte se, že vaše ConfigurationSettings Určuje účet úložiště, jako v následujícím příkladu:
 
 ```
     <ConfigurationSettings>
@@ -116,49 +116,49 @@ Zajistěte, aby vaše ConfigurationSettings určovala účtu úložiště, jako 
     </ConfigurationSettings>
 ```
 
-**AccountName** a **AccountKey** hodnoty se nacházejí v portálu Azure v řídicím panelu účet úložiště, v části Spravovat přístupové klíče. Protokol pro připojovací řetězec musí být **https**.
+**AccountName** a **AccountKey** hodnoty se nacházejí na webu Azure Portal na řídicím panelu úložiště účtu, pod spravovat přístupové klíče. Protokol pro připojovací řetězec musí být **https**.
 
-Jakmile aktualizované konfigurace diagnostiky se použije ke cloudové službě a diagnostiky ho je zápis do úložiště Azure, pak jste připraveni ke konfiguraci analýzy protokolů.
+Jakmile aktualizované konfigurace diagnostiky se použije ke cloudové službě a je Diagnostika zapisuje do služby Azure Storage, pak jste připraveni ke konfiguraci Log Analytics.
 
-## <a name="use-the-azure-portal-to-collect-logs-from-azure-storage"></a>Pomocí portálu Azure ke shromažďování protokolů z Azure Storage
-Na portálu Azure můžete použít ke konfiguraci analýzy protokolů pro shromažďování protokolů u následujících služeb Azure:
+## <a name="use-the-azure-portal-to-collect-logs-from-azure-storage"></a>Shromažďování protokolů ze služby Azure Storage pomocí webu Azure portal
+Na webu Azure portal můžete použít ke konfiguraci Log Analytics pro shromažďování protokolů u následujících služeb Azure:
 
 * Clustery Service Fabricu
 * Virtuální počítače
-* Web/role pracovního procesu
+* Webové a pracovní role
 
-Na portálu Azure přejděte do pracovního prostoru analýzy protokolů a provádět následující úlohy:
+Na webu Azure Portal přejděte do pracovního prostoru Log Analytics a provádět následující úlohy:
 
 1. Klikněte na tlačítko *protokoly účtů úložiště*
-2. Klikněte *přidat* úloh
-3. Vyberte účet úložiště, který obsahuje protokolů diagnostiky
-   * Tento účet může být účet úložiště classic nebo účet úložiště Azure Resource Manager
-4. Vyberte datový typ, který chcete shromáždit protokoly pro
-   * Možnosti jsou protokoly služby IIS. Události; Syslog (Linux); Protokoly trasování událostí pro Windows. Události služby prostředků infrastruktury
-5. Hodnota pro zdroj je automaticky vyplněno na základě typu dat a nedá se změnit
+2. Klikněte na tlačítko *přidat* úkolu
+3. Vyberte účet úložiště, který obsahuje diagnostické protokoly
+   * Tento účet může být klasický účet úložiště nebo účet úložiště Azure Resource Manageru
+4. Vyberte typ dat chcete shromažďovat protokoly
+   * Možnosti jsou protokoly služby IIS. Události. Syslog (Linux); Protokoly trasování událostí pro Windows. Události Service Fabric
+5. Hodnota zdroje se vyplní automaticky na základě datového typu a nedá se změnit
 6. Kliknutím na tlačítko OK uložte konfiguraci
 
-Opakujte kroky 2 až 6 pro další účty úložiště a datové typy, které chcete pro shromažďování protokolů analýzy.
+Opakujte kroky 2 až 6 pro datové typy, které chcete Log Analytics ke shromažďování a dalších účtů úložiště.
 
-V přibližně 30 minut budete moci zobrazit data z účtu úložiště v analýzy protokolů. Zobrazí se pouze data, která je zapsán do úložiště po použití konfigurace. Analýzy protokolů číst existující data z účtu úložiště.
+Během přibližně 30 minut budete moct zobrazit data z účtu úložiště ve službě Log Analytics. Zobrazí se pouze data, která jsou zapsána do úložiště, až tato konfigurace používá. Log Analytics nenačítá existující data z účtu úložiště.
 
 > [!NOTE]
-> Na portálu neověřuje, zda zdroj existuje v účtu úložiště nebo pokud probíhá zápis nová data.
+> Na portálu se neověřuje, jestli zdroj existuje v účtu úložiště nebo pokud je zapisovaná nová data.
 >
 >
 
-## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection-using-powershell"></a>Povolit Azure diagnostics ve virtuálním počítači pro protokol událostí a služby IIS protokolu kolekce pomocí prostředí PowerShell
-Postupujte podle kroků v [konfigurace analýzy protokolů Azure diagnostics indexování](log-analytics-powershell-workspace-configuration.md#configuring-log-analytics-to-index-azure-diagnostics) číst z Azure diagnostiky, které jsou napsané table Storage pomocí prostředí PowerShell.
+## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection-using-powershell"></a>Azure diagnostics na virtuálním počítači povolit protokol událostí a služby IIS protokolu kolekce pomocí Powershellu
+Postupujte podle kroků v [konfigurace Log Analytics k indexování Azure diagnostics](log-analytics-powershell-workspace-configuration.md#configuring-log-analytics-to-index-azure-diagnostics) čtení z diagnostiky Azure, který se zapisovat do table storage pomocí Powershellu.
 
-Pomocí Azure PowerShell přesněji můžete události, které se zapisují do služby Azure Storage.
+Pomocí prostředí Azure PowerShell můžete přesněji určit události, které jsou zapsány do služby Azure Storage.
 Další informace najdete v tématu [povolení diagnostiky v Azure Virtual Machines](../virtual-machines-dotnet-diagnostics.md).
 
-Můžete povolit a aktualizovat Azure diagnostics pomocí následujícího skriptu prostředí PowerShell.
-Tento skript můžete také použít s vlastní konfiguraci protokolování.
-Upravte skript tak, aby nastavení účtu úložiště, název služby a název virtuálního počítače.
-Tento skript využívá rutiny pro klasické virtuální počítače.
+Můžete povolit a aktualizovat diagnostiky Azure pomocí následujícího skriptu prostředí PowerShell.
+Tento skript můžete použít také s vlastní konfiguraci protokolování.
+Upravte skript, který chcete nastavit účet úložiště, název služby a název virtuálního počítače.
+Skript používá rutiny pro klasické virtuální počítače.
 
-Zkontrolujte následující ukázka skriptu, zkopírujte jej, upravte ho požadovaným způsobem, uložit ukázku jako soubor skriptu prostředí PowerShell a spusťte skript.
+Projděte si následující ukázkový skript, zkopírujte ho, podle potřeby upravte, uložte vzorku jako soubor skriptu Powershellu a spusťte skript.
 
 ```
     #Connect to Azure
@@ -193,6 +193,6 @@ Zkontrolujte následující ukázka skriptu, zkopírujte jej, upravte ho požado
 
 
 ## <a name="next-steps"></a>Další postup
-* [Shromažďovat protokoly a metriky pro služby Azure](log-analytics-azure-storage.md) podporovaných službami Azure.
-* [Povolit řešení](log-analytics-add-solutions.md) zajistit přehled o data.
-* [Použijte vyhledávací dotazy](log-analytics-log-searches.md) analyzovat data.
+* [Shromažďovat protokoly a metriky pro služby Azure](log-analytics-azure-storage.md) pro podporované služby Azure.
+* [Povolení řešení](log-analytics-add-solutions.md) k poskytování přehledů o data.
+* [Pomocí vyhledávacích dotazů](log-analytics-log-searches.md) chcete analyzovat data.

@@ -22,28 +22,32 @@ items:
   expanded: true
 - name: Kurzy
   items:
-  - name: Vytvoření vysoce dostupné databáze SQL
-    href: azure-stack-tutorial-sql.md
-  - name: Vytvoření vysoce dostupné databáze MySQL
-    href: azure-stack-tutorial-mysql.md
-  - name: Nasazení aplikací na platformy Azure a Azure Stack
-    href: azure-stack-solution-pipeline.md
-  - name: Konfigurace hybridní Cloudová identita
-    href: azure-stack-solution-hybrid-identity.md
-  - name: Konfigurace připojení k hybridní cloud
-    href: azure-stack-solution-hybrid-connectivity.md
-  - name: Přihlášení k odběru nabídky
-    href: azure-stack-subscribe-services.md
-  - name: Vytvoření virtuálního počítače ze šablony
-    href: azure-stack-create-vm-template.md
-  - name: Vytvoření edge řešení strojového učení
-    href: azure-stack-solution-machine-learning.md
-  - name: Vytvořit řešení analýzy pracovních dat
-    href: azure-stack-solution-staged-data-analytics.md
-  - name: Vytvoření řešení škálování cloudu s Azure
-    href: azure-stack-solution-cloud-burst.md
-  - name: Vytvoření řešení geograficky distribuované aplikace
-    href: azure-stack-solution-geo-distributed.md
+  - name: Běžné úkoly
+    items:
+    - name: Přihlášení k odběru nabídky
+      href: azure-stack-subscribe-services.md
+    - name: Vytvoření virtuálního počítače ze šablony
+      href: azure-stack-create-vm-template.md
+    - name: Vytvoření vysoce dostupné databáze SQL
+      href: azure-stack-tutorial-sql.md
+    - name: Vytvoření vysoce dostupné databáze MySQL
+      href: azure-stack-tutorial-mysql.md
+  - name: Hybridní cloudové vzory
+    items:
+    - name: Nasazení aplikací na platformy Azure a Azure Stack
+      href: azure-stack-solution-pipeline.md
+    - name: Konfigurace hybridní Cloudová identita
+      href: azure-stack-solution-hybrid-identity.md
+    - name: Konfigurace připojení k hybridní cloud
+      href: azure-stack-solution-hybrid-connectivity.md
+    - name: Vytvoření edge řešení strojového učení
+      href: azure-stack-solution-machine-learning.md
+    - name: Vytvořit řešení analýzy pracovních dat
+      href: azure-stack-solution-staged-data-analytics.md
+    - name: Vytvoření řešení škálování cloudu s Azure
+      href: azure-stack-solution-cloud-burst.md
+    - name: Vytvoření řešení geograficky distribuované aplikace
+      href: azure-stack-solution-geo-distributed.md
 - name: Návody
   items:
   - name: Použití portálu Azure Stack
@@ -208,9 +212,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: Školení a certifikace
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: a67adb5f0b641f5f4eadfeb08c9802214d9f217b
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 52dbfaf7b7ea7b6f264dcb9ac3d75aec782c8bff
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405406"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239400"

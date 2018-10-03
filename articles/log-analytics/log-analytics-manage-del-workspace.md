@@ -1,6 +1,6 @@
 ---
-title: Odstranit pracovní prostor služby Azure Log Analytics | Microsoft Docs
-description: Zjistěte, jak odstranit pracovní prostor analýzy protokolů, pokud jste vytvořili v odběru osobní nebo změny struktury modelu pracovního prostoru.
+title: Odstranění pracovního prostoru Azure Log Analytics | Dokumentace Microsoftu
+description: Zjistěte, jak odstranění pracovního prostoru Log Analytics, pokud jste vytvořili v rámci služby předplacené osobní nebo restrukturalizaci pracovního prostoru modelu.
 services: log-analytics
 documentationcenter: log-analytics
 author: mgoedtel
@@ -14,34 +14,34 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 54f2af60751ed0d9c64e71efad6fa9aa3ef06589
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: c04cc601152001dabc0cf152918c8d0ec884c7ed
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129111"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041132"
 ---
-# <a name="delete-an-azure-log-analytics-workspace-with-the-azure-portal"></a>Odstranit pracovní prostor služby Azure Log Analytics pomocí portálu Azure
-Tento článek ukazuje, jak pomocí portálu Azure můžete odstranit pracovní prostor analýzy protokolů, které už můžou vyžadovat. 
+# <a name="delete-an-azure-log-analytics-workspace-with-the-azure-portal"></a>Odstranění pracovního prostoru Azure Log Analytics pomocí webu Azure portal
+Tento článek ukazuje, jak pomocí webu Azure portal k odstranění pracovního prostoru Log Analytics, která může už nepotřebujete. 
 
 ## <a name="to-delete-a-workspace"></a>Odstranění pracovního prostoru 
-Při odstranění pracovní prostor analýzy protokolů všech dat spojených s pracovního prostoru je odstranit ze služby do 30 dní.  Chcete postupujte opatrně při odstranění pracovního prostoru, protože může být důležitá data a konfiguraci, která může mít negativní vliv na vaše operace služby. Vezměte v úvahu další služby Azure a zdroje, které ukládají data v analýzy protokolů, jako například:
+Když odstraníte pracovní prostor Log Analytics, všechna data související s do vašeho pracovního prostoru odstraní ze služby do 30 dní.  Chcete při odstranění pracovního prostoru, protože může být důležitá data a konfiguraci, která může mít negativní vliv na servisní operace. postupujte opatrně. Vezměte v úvahu dalšími službami Azure a zdroje, které ukládají data v Log Analytics, jako například:
 
 * Application Insights
 * Azure Security Center
 * Azure Automation
-* Agentů spuštěných na virtuálních počítačích s Windows a Linux
-* Agentů spuštěných v systému Windows a Linux počítačů ve vašem prostředí
+* Agenti na virtuálních počítačích Windows a Linux
+* Agenty používané ve Windows a Linuxu počítačů ve vašem prostředí
 * System Center Operations Manager
 * Řešení pro správu 
 
-Všechny agenty a skupin pro správu System Center Operations Manager nakonfigurovat tak, aby sestavy do pracovního prostoru i nadále v osamocené stavu.  Jaké agenty řešení, inventáře a jinými službami Azure jsou integrované s pracovním prostoru, než budete pokračovat.   
+Všichni agenti a skupiny pro správu System Center Operations Manager nakonfigurovat tak, aby sestavy do pracovního prostoru nadále ve stavu osamocený.  Jaké agenty řešení, zásob a další služby Azure jsou integrované s pracovním prostorem předtím, než budete pokračovat.   
  
-Pokud jste správce a k pracovnímu prostoru bylo přidruženo víc uživatelů, přidružení těchto uživatelů s pracovním prostorem se přeruší. Pokud byli tito uživatelé přidruženi s jinými pracovními prostory, můžou pokračovat v používání služby Log Analytics s těmito prostory. Ale pokud nejsou přidruženy jiných pracovních prostorech pak potřebují k vytvoření pracovního prostoru analýzy protokolů použít. 
+Pokud jste správce a k pracovnímu prostoru bylo přidruženo víc uživatelů, přidružení těchto uživatelů s pracovním prostorem se přeruší. Pokud byli tito uživatelé přidruženi s jinými pracovními prostory, můžou pokračovat v používání služby Log Analytics s těmito prostory. Ale pokud nejsou přidruženi s jinými pracovními prostory pak potřebují vytvořit pracovní prostor používat Log Analytics. 
 
 1. Přihlaste se k webu [Azure Portal](http://portal.azure.com). 
 2. Na webu Azure Portal klikněte v levém dolním rohu na **Další služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.
-3. V podokně analýzy protokolů předplatných, vyberte pracovní prostor a pak klikněte na tlačítko **odstranit** z horní části podokna uprostřed.<br><br> ![Odstranit možnost z podokna Vlastnosti pracovního prostoru](media/log-analytics-manage-del-workspace/log-analytics-delete-workspace.png)<br>  
-4. Když se zobrazí okno potvrzovací zpráva s výzvou k potvrzení odstranění pracovního prostoru, klikněte na tlačítko **Ano**.<br><br> ![Potvrdit odstranění pracovního prostoru](media/log-analytics-manage-del-workspace/log-analytics-delete-workspace-confirm.png)
+3. V podokně předplatná Log Analytics vyberte pracovní prostor a pak klikněte na tlačítko **odstranit** z horní části podokna uprostřed.<br><br> ![V podokně vlastností pracovního prostoru s možností odstranit](media/log-analytics-manage-del-workspace/log-analytics-delete-workspace.png)<br>  
+4. Jakmile se zobrazí v okně zprávy potvrzení, s výzvou k potvrzení odstranění pracovního prostoru, klikněte na tlačítko **Ano**.<br><br> ![Potvrzení odstranění pracovního prostoru](media/log-analytics-manage-del-workspace/log-analytics-delete-workspace-confirm.png)
 

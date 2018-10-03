@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2018
+ms.date: 09/21/2018
 ms.author: rkarlin
-ms.openlocfilehash: d6777e187c04ef9a2f03e4ae813476f5a1093156
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 2a747bdd8de41283b9cba1e40e2652aa826e9c60
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44723974"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044446"
 ---
-# <a name="ueba-for-azure-resources-and-users"></a>Behavioral pro prostředky Azure a uživatelé 
+# <a name="ueba-for-azure-resources-and-users"></a>UEBA pro uživatele a prostředky Azure 
 
 Partneři Azure Security Center pomocí Microsoft Cloud App Security, aby vám oznámení na základě uživatele a entity behaviorální analýzy (Behavioral) pro vaše prostředky Azure a uživatele (aktivit Azure). Tyto výstrahy zjišťovat anomálie v chování uživatelů a jsou založené na uživatele a entity pro vypracování analýzy chování a machine learning (ML) tak, aby ihned spustíte rozšířeného zjišťování hrozeb napříč aktivity vašich předplatných. Protože jsou automaticky povolené, nové detekce anomálií poskytnout okamžitou výsledky tím, že poskytuje okamžitou detekce, cílení na mnoho anomálií chování uživatelů a prostředcích přidružených k vašemu předplatnému. Tyto výstrahy navíc využít další data, která již existuje v modulu detekce Microsoft Cloud App Security, které vám pomohou zrychlit proces šetření a obsahovat trvalých hrozeb. 
 
@@ -55,8 +55,9 @@ Security Center podporuje výstrahy detekce anomálií Cloud App Security, jako 
 
 Tyto výstrahy jsou ve výchozím nastavení povolené, ale lze je vypnout:
 
-1. V okně Security Center vyberte **detekce hrozeb**.
-2. V části **detekce hrozeb – povolení integrace**, zrušte zaškrtnutí políčka **povolit Microsoft Cloud App Security přístup k data**a klikněte na tlačítko **Uložit**.
+1. V okně Security Center vyberte **zásady zabezpečení**. Předplatné, které chcete změnit, klikněte na tlačítko **upravit nastavení**.
+2.  Klikněte na tlačítko **detekce hrozeb**.
+3. V části **povolovat integrace**, zrušte zaškrtnutí políčka **povolit Microsoft Cloud App Security přístup k data**a klikněte na tlačítko **Uložit**.
 
    ![Výstrahy detekce hrozeb](./media/security-center-ueba-mcas/security-center-mcas-optout.png)
 

@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: tedway
 author: tedway
-ms.date: 09/24/2018
-ms.openlocfilehash: ee67585a523ab96b1442d9eee3e9dfd55a758d32
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 10/01/2018
+ms.openlocfilehash: df6637f1a52b679ba9ad0a49fb37d4e4b72f35e4
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971480"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237819"
 ---
 # <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning"></a>Nasazení modelu jako webové služby na FPGA službou Azure Machine Learning
 
@@ -24,7 +24,9 @@ Nasazení modelu jako webové služby na [pole programmable gate Array (FPGA)](c
 
 - Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-- Pracovní prostor služby Azure Machine Learning a Azure Machine Learning SDK for nainstalovaný Python. Další informace o získání těchto nezbytných podmínkách používání [jak nakonfigurovat prostředí pro vývoj](how-to-configure-environment.md) dokumentu.
+- Musíte požádat o a schválit FPGA kvóty. Chcete-li požádat o přístup, vyplňte formulář žádosti o kvóty: https://aka.ms/aml-real-time-ai
+
+- Pracovní prostor služby Azure Machine Learning service a Azure Machine Learning SDK for nainstalovaný Python. Další informace o získání těchto nezbytných podmínkách používání [jak nakonfigurovat prostředí pro vývoj](how-to-configure-environment.md) dokumentu.
  
   - Musí být v pracovním prostoru *USA – východ 2* oblasti.
 
@@ -47,11 +49,7 @@ Postupujte podle pokynů:
 > [!IMPORTANT]
 > Pokud chcete optimalizovat latenci a propustnost, musí být váš klient ve stejné oblasti Azure jako koncový bod.  Rozhraní API jsou aktuálně vytvořené v oblasti Azure USA – východ.
 
-### <a name="get-the-notebook"></a>Získání poznámkového bloku
 
-Pro usnadnění je k dispozici jako poznámkový blok Jupyter v tomto kurzu. Použít žádnou z těchto metod ke spuštění `project-brainwave/project-brainwave-quickstart.ipynb` Poznámkový blok:
-
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
 ### <a name="preprocess-image"></a>Předběžné zpracování obrazu
 První fáze kanálu je předběžné zpracování imagí.
@@ -66,6 +64,7 @@ in_images = tf.placeholder(tf.string)
 image_tensors = utils.preprocess_array(in_images)
 print(image_tensors.shape)
 ```
+
 ### <a name="add-featurizer"></a>Přidat Featurizer
 Inicializovat model a stáhněte si kontrolní bod TensorFlow kvantizované verze ResNet50 má být použit jako featurizer.
 
@@ -317,3 +316,11 @@ Pomocí některé z metod způsobí, že gRPC pro použití certifikátu jako ko
 
 > [!IMPORTANT]
 > gRPC nepřijímá nedůvěryhodné certifikáty. Pomocí nedůvěryhodného certifikátu se nezdaří pomocí `Unavailable` stavový kód. Podrobnosti o tomto selhání obsahovat `Connection Failed`.
+
+## <a name="sample-notebook"></a>Ukázka poznámkového bloku
+
+Koncepty v tomto článku je ukázán v `project-brainwave/project-brainwave-quickstart.ipynb` poznámkového bloku.
+
+Získáte tento poznámkový blok:
+
+[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]

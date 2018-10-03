@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2018
+ms.date: 10/5/2018
 ms.author: rkarlin
-ms.openlocfilehash: 313697d73d1e269691f1af4f021545049a907d66
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: d0455e549745e743e7a8c0f65cb56a1e16dfb131
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127087"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044072"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Shromažďování dat ve službě Azure Security Center
 Security Center shromažďuje data z Azure virtual machines (VM) a počítače mimo Azure monitorovat ohrožení zabezpečení a hrozby. Data se shromažďují pomocí agenta Microsoft Monitoring Agent, který z počítače načítá různé protokoly událostí a konfigurace související se zabezpečením a kopíruje data k analýze do vašeho pracovního prostoru. Příkladem takových dat jsou: operační systém typu a verzi, protokoly operačního systému (protokoly událostí Windows), spuštěné procesy, název počítače, IP adresy a přihlášeného uživatele. Microsoft Monitoring Agent také zkopíruje soubory se stavem systému do pracovního prostoru.
@@ -62,8 +62,8 @@ Povolení automatického zřizování agenta Microsoft Monitoring Agent:
 > - Pokyny o tom, jak zřídit existující instalace najdete v tématu [automatické zřizování v případech dříve existující instalace agenta](#preexisting).
 > - Pokyny k ruční zřizování najdete v tématu [nainstalovat rozšíření Microsoft Monitoring Agent ručně](#manualagent).
 > - Vypnutí automatického zřizování, v tématu [vypnout automatické zřizování](#offprovisioning).
+> - Pokyny, jak připojit Centrum zabezpečení pomocí Powershellu, v tématu [automatizace registrace služby Azure Security Center pomocí prostředí PowerShell](security-center-powershell-onboarding.md).
 >
-
 
 ## <a name="workspace-configuration"></a>Konfigurace pracovního prostoru
 Data shromážděná službou Security Center se ukládají v pracovních prostorech Log Analytics.  Můžete vybrat na data shromážděná z virtuálních počítačů Azure ukládat v pracovních prostorů vytvořených službou Security Center nebo existujícího pracovního prostoru, který jste vytvořili. 
@@ -147,12 +147,17 @@ Když vyberete pracovní prostor, ve kterých se mají ukládat data, jsou k dis
 
 
 ## <a name="data-collection-tier"></a>Úrovně shromažďování dat
-Security Center může snížit objem událostí při zachování dostatek události pro šetření, auditování a detekce hrozeb. Můžete použít právo filtrování zásady pro předplatná a pracovní prostory z čtyři sady události shromážděné agentem.
+Výběr úrovně shromažďování dat ve službě Azure Security Center mají vliv jenom úložiště událostí zabezpečení ve vašem pracovním prostoru Log Analytics. Microsoft Monitoring Agent bude stále shromažďujte a analyzujte události zabezpečení potřebné pro detekce hrozeb Azure Security Center, bez ohledu na to, jaké úroveň události zabezpečení můžete zvolit uložení pracovního prostoru Log Analytics (pokud existuje). Výběr k uložení událostí zabezpečení ve vašem pracovním prostoru vám umožní šetření, vyhledávání a auditování tyto události ve vašem pracovním prostoru. 
+> [!NOTE]
+> Ukládání dat v Log Analytics může účtovat další poplatky za úložiště dat, naleznete stránce s cenami pro další podrobnosti.
+>
+Můžete si vybrat vpravo filtrování zásady pro předplatná a pracovní prostory z čtyř sad událostí, které mají být uloženy ve vašem pracovním prostoru: 
 
-- **Všechny události** – pro zákazníky, kteří chtějí Ujistěte se, že všechny události se budou shromažďovat. Toto je výchozí.
-- **Běžné** – to je sadu událostí, která splňuje většina zákazníků a umožňuje jim úplný záznam pro audit.
+- **Žádný** – zakázat úložiště událostí zabezpečení. Toto je výchozí nastavení.
 - **Minimální** – menší sadu protokolovaných událostí pro zákazníky, kteří chtějí minimalizovat objem událostí.
-- **Žádný** – zakázat shromažďování událostí zabezpečení ze zabezpečení a protokolů AppLocker. Pro zákazníky, kteří tuto možnost zvolte jejich zabezpečení řídicích panelů mají pouze protokoly brány Windows Firewall a proaktivní posouzení, jako jsou antimalware, Směrný plán a aktualizace.
+- **Běžné** – to je sadu událostí, která splňuje většina zákazníků a umožňuje jim úplný záznam pro audit.
+- **Všechny události** – pro zákazníky, kteří chtějí Ujistěte se, že všechny události jsou uloženy.
+
 
 > [!NOTE]
 > Tyto sady události zabezpečení jsou k dispozici pouze v Security Center úrovně Standard. Další informace o cenových úrovních služby Security Center najdete na stránce s [cenami](security-center-pricing.md).
@@ -261,7 +266,7 @@ Microsoft Monitoring Agent, můžete nainstalovat ručně, můžete shromažďov
   > [!NOTE]
   > V části **shromažďování dat o událostech a výkonu** je volitelný.
   >
-6. Použití Powershellu k nasazení rozšíření: použijte následující příklad Powershellu:
+6. Použití Powershellu k nasazení rozšíření, použijte následující příklad Powershellu:
     1.  Přejděte na **Log Analytics** a klikněte na **upřesňující nastavení**.
     
         ![Nastavení log analytics][11]
@@ -289,8 +294,8 @@ Microsoft Monitoring Agent, můžete nainstalovat ručně, můžete shromažďov
         
              Set-AzureRmVMExtension -ResourceGroupName $vm1.ResourceGroupName -VMName $vm1.Name -Name "OmsAgentForLinux" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "OmsAgentForLinux" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True`
 
-
-
+> [!NOTE]
+> Pokyny, jak připojit Centrum zabezpečení pomocí Powershellu, v tématu [automatizace registrace služby Azure Security Center pomocí prostředí PowerShell](security-center-powershell-onboarding.md).
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

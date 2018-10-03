@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 08/14/2018
+ms.topic: conceptual
+ms.date: 10/02/2018
 ms.author: raynew
-ms.openlocfilehash: e363885afb77a60bfc0229a872fdb4e519d5979d
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 8c943b9ec8114699a7fad487c7d669b58942c019
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42055239"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042525"
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Matice podpory pro replikaci Hyper-V do Azure
 
@@ -59,16 +59,16 @@ Přidání disku na replikovaný virtuální počítač Hyper-V | Nepodporuje se
 
 **Komponenta** | **Technologie Hyper-V s Virtual Machine Manager** | **Technologie Hyper-V bez Virtual Machine Manager**
 --- | --- | ---
-Hostitelské sítě: seskupování síťové karty | Ano
-Hostitelské sítě: sítě VLAN | Ano
-Hostitelské sítě: IPv4 | Ano
-Hostitelské sítě: IPv6 | Ne
-Síť virtuálních počítačů hosta: seskupování síťové karty | Ne
-Síť virtuálních počítačů hosta: IPv4 | Ano
-Síť virtuálních počítačů hosta: IPv6 | Ne
-Síť virtuálních počítačů hosta: statická IP adresa (Windows) | Ano
-Síť virtuálních počítačů hosta: statická IP adresa (Linux) | Ne
-Síť virtuálních počítačů hosta: s více síťovými Kartami | Ano
+Hostitelské sítě: seskupování síťové karty | Ano | Ano
+Hostitelské sítě: sítě VLAN | Ano | Ano
+Hostitelské sítě: IPv4 | Ano | Ano
+Hostitelské sítě: IPv6 | Ne | Ne
+Síť virtuálních počítačů hosta: seskupování síťové karty | Ne | Ne
+Síť virtuálních počítačů hosta: IPv4 | Ano | Ano
+Síť virtuálních počítačů hosta: IPv6 | Ne | Ano
+Síť virtuálních počítačů hosta: statická IP adresa (Windows) | Ano | Ano
+Síť virtuálních počítačů hosta: statická IP adresa (Linux) | Ne | Ne
+Síť virtuálních počítačů hosta: s více síťovými Kartami | Ano | Ano
 
 
 

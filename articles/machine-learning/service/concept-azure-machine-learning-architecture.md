@@ -9,18 +9,18 @@ ms.author: haining
 author: hning86
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: 3011fa85dbac2135f4d9113c6b76a8b667ee4013
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 64104fc70c7be1589c9332905f243a2e1e692eee
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952121"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237972"
 ---
 # <a name="architecture-and-concepts-how-does-azure-machine-learning-service-work"></a>Architektura a koncepty: Jak funguje služba Azure Machine Learning? 
 
 Tento dokument popisuje architekturu a koncepty pro službu Azure Machine Learning. Následující diagram znázorňuje hlavní součásti služby a ilustruje obecný pracovní postup, při použití služby: 
 
-[![Azure Machine Learning architektury a pracovního postupu](./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
+[![Architektura služby Machine Learning a pracovní postup pro Azure](./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
 
 Pracovní postup obvykle zahrnuje následující kroky:
 
@@ -41,7 +41,7 @@ Pracovní postup obvykle zahrnuje následující kroky:
 
 ## <a name="workspace"></a>Pracovní prostor
 
-Pracovní prostor je prostředek nejvyšší úrovně pro službu Azure Machine Learning. Poskytuje centrální místo, kde můžete pracovat s všechny artefakty, které můžete vytvořit při používání Azure Machine Learning.
+Pracovní prostor je prostředek nejvyšší úrovně pro službu Azure Machine Learning. Poskytuje centrální místo, kde můžete pracovat s všechny artefakty, které vytvoříte, při použití služby Azure Machine Learning.
 
 Pracovním prostoru udržuje seznam cílových výpočetních prostředí, které lze použít k natrénování modelu. Také udržuje historii tréninkových spuštění, včetně protokolů, metrik, výstupu a snímek vašich skriptů. Tyto informace slouží k určení, které školení vznikly nejlepší model.
 
@@ -71,15 +71,15 @@ Následující diagram není moc taxonomie pracovního prostoru:
 
 V nejjednodušším model je část kódu, která přijímá vstup a výstup. Vytvoření modelu strojového učení zahrnuje výběr algoritmus, poskytuje s daty a ladění hyperparameters. Školení je iterativní proces, který vytváří trénovaného modelu, který zapouzdřuje modelu osvojené během procesu trénování.
 
-Model je produkovaný spustit ve službě Azure Machine Learning. Můžete také použít modelů trénovaných mimo Azure Machine Learning. Model lze zaregistrovat v části pracovní prostor služby Azure Machine Learning.
+Model je produkovaný spustit ve službě Azure Machine Learning. Můžete také použít modelů trénovaných mimo Azure Machine Learning. Model lze zaregistrovat v části pracovní prostor služby Azure Machine Learning service.
 
-Azure Machine Learning je nezávislý na rozhraní framework. Můžete použít jakoukoli architekturu learningu oblíbených počítač při vytváření modelu, jako je například scikit-informace xgboost PyTorch, TensorFlow, Chainer a CNTK.
+Služba Azure Machine Learning je nezávislý na rozhraní framework. Můžete použít jakoukoli architekturu learningu oblíbených počítač při vytváření modelu, jako je například scikit-informace xgboost PyTorch, TensorFlow, Chainer a CNTK.
 
-Příklad trénování modelu, najdete v článku [rychlý start: vytvoření pracovního prostoru machine learning](quickstart-get-started.md) dokumentu.
+Příklad trénování modelu, najdete v článku [rychlý start: vytvoření služby machine learning pracovního prostoru služby](quickstart-get-started.md) dokumentu.
 
 ### <a name="model-registry"></a>Model registru
 
-Model registru uchovává informace o všech modelů v pracovním prostoru Azure Machine Learning. 
+Model registru uchovává informace o všech modelů v pracovním prostoru služby Azure Machine Learning. 
 
 Modely jsou identifikovány názvem a verzí. Pokaždé, když zaregistrujete model se stejným názvem jako existující registru se předpokládá, že se jedná o novou verzi. Verze je zvýšen a nový model je zaregistrovaný pod názvem.
 

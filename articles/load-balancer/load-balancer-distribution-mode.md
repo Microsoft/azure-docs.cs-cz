@@ -4,21 +4,21 @@ description: Postup konfigurace distribučního režimu nástroje pro vyrovnáv�
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jpconnock
+manager: timlt
 ms.assetid: 7df27a4d-67a8-47d6-b73e-32c0c6206e6e
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/01/2018
+ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 776621f9ef95867c6e3c25dd11c656d451b6730e
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: cfca7361831734baaf150b3e19b14c7dc88def36
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018124"
+ms.locfileid: "48043566"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Konfigurace distribučního režimu nástroje pro vyrovnávání zatížení Azure
 
@@ -48,13 +48,13 @@ Jiné scénáře použití není odešlete médium. Probíhá odesílání dat p
 
 ## <a name="configure-source-ip-affinity-settings"></a>Konfigurace nastavení spřažení zdrojové IP adresy
 
-U virtuálních počítačů nasazených pomocí Resource Manageru změňte nastavení distribuce nástroje pro vyrovnávání zatížení na pravidla Vyrovnávání zatížení nástroje pro vyrovnávání zatížení pomocí prostředí PowerShell.  Tím se aktualizuje režim distribuce existujícího pravidla nástroje pro vyrovnávání zatížení:
+U virtuálních počítačů nasazených pomocí Resource Manageru změňte nastavení distribuce nástroje pro vyrovnávání zatížení na existující pravidlo Vyrovnávání zatížení pomocí prostředí PowerShell. Tím se aktualizuje režim distribuce: 
 
 ```powershell 
 $lb = Get-AzureRmLoadBalancer -Name MyLb -ResourceGroupName MyLbRg 
 $lb.LoadBalancingRules[0].LoadDistribution = 'sourceIp' 
 Set-AzureRmLoadBalancer -LoadBalancer $lb 
-``` 
+```
 
 Pro klasické virtuální počítače pomocí prostředí Azure PowerShell můžete změnit nastavení distribuce. K virtuálnímu počítači přidat koncový bod Azure a konfigurace distribučního režimu nástroje pro vyrovnávání zatížení:
 

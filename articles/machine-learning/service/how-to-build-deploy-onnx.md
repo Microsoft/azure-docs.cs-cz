@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: prasantp
 author: prasanthpul
 ms.date: 09/24/2018
-ms.openlocfilehash: 1350c543990963f8f860d9dd1da5670d3a1e990c
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: d58f580ecd4a4bcd984602f4efda8a2291573bc4
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585556"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239275"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX a Azure Machine Learning: vytvoření a nasazení interoperabilní modely AI
 
@@ -100,7 +100,7 @@ results = session.run([], {"input1": indata1, "input2": indata2})
 
 Tady je příklad pro nasazení modelu ONNX:
 
-1. Inicializace vaší aplikace Azure Machine Learning pracovního prostoru. Pokud jeden ještě nemáte, zjistěte, jak vytvořit pracovní prostor v [v tomto rychlém startu](quickstart-get-started.md).
+1. Inicializace pracovního prostoru služby Azure Machine Learning. Pokud jeden ještě nemáte, zjistěte, jak vytvořit pracovní prostor v [v tomto rychlém startu](quickstart-get-started.md).
 
    ```python
    from azureml.core import Workspace

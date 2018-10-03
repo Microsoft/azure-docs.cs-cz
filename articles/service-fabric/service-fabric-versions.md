@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/24/2018
+ms.date: 9/24/2018
 ms.author: TylerMSFT
-ms.openlocfilehash: 1a47f2e49d1b10f1d004971ff4270091565d73f5
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 1041f37486c556ae29eed47728336a1ccb518e78
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356461"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48040359"
 ---
 # <a name="supported-service-fabric-versions"></a>Podporované verze Service Fabric
 
@@ -42,5 +42,5 @@ Tady je seznam podporovaných verzích Service Fabric a jejich podpora koncové 
 | 5.7.* | 5.4.164.* |Menší nebo rovna verze 2.7 |Prosinec 15,2017  |
 | 6.0.* | 5.6.205.* |Menší nebo rovna verze 2.8 |Březen 30,2018     |
 | 6.1.* | 5.7.221.* |Menší nebo rovna verzi 3.0 |Červenec 15,2018      |
-| 6.2. * | 6.0.232.* |Menší nebo rovna verzi 3.1 |Září 15,2018 |
+| 6.2. * | 6.0.232.* |Menší nebo rovna verzi 3.1 |Říjen 26,2018 |
 | 6.3. * | 6.1.480.* |Menší nebo rovna verzi 3.2 |Aktuální verze a proto žádné datum ukončení |

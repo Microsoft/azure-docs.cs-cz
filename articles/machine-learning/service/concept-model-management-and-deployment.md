@@ -1,6 +1,6 @@
 ---
 title: Správa a nasazování modelů ve službě Azure Machine Learning
-description: Zjistěte, jak používat Azure Machine Learning nasazovat, spravovat a monitorovat vlastní modely a neustále je vylepšovat. Můžete nasadit modely, které natrénovaný pomocí Azure Machine Learning na místním počítači nebo z jiných zdrojů.
+description: Další informace o použití služby Azure Machine Learning nasazovat, spravovat a monitorovat vlastní modely a neustále je vylepšovat. Můžete nasadit modely, které natrénovaný pomocí služby Azure Machine Learning, na místním počítači nebo z jiných zdrojů.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,21 +9,21 @@ ms.reviewer: jmartens
 author: hjerez
 ms.author: hjerez
 ms.date: 09/24/2018
-ms.openlocfilehash: d3e0b63d42ad8c6d4765f5120c26c5dfdf5ad6fb
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: afba483172bc34b9d54afc3af755f0967affc875
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166533"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239162"
 ---
-# <a name="manage-deploy-and-monitor-models-with-azure-machine-learning"></a>Spravovat, nasazovat a sledovat modely Azure Machine Learning
+# <a name="manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>Spravovat, nasazovat a sledovat modely pomocí služby Azure Machine Learning
 
-V tomto článku se dozvíte, jak používat Azure Machine Learning nasazovat, spravovat a monitorovat vlastní modely a neustále je vylepšovat. Můžete nasadit modely, které natrénovaný pomocí Azure Machine Learning na místním počítači nebo z jiných zdrojů. 
+V tomto článku se dozvíte, jak pomocí služby Azure Machine Learning nasadit, spravovat a monitorovat vlastní modely a neustále je vylepšovat. Můžete nasadit modely, které natrénovaný pomocí Azure Machine Learning na místním počítači nebo z jiných zdrojů. 
 
 Následující diagram znázorňuje kompletního nasazení pracovního postupu: [ ![pracovní postup nasazení pro Azure Machine Learning](media/concept-model-management-and-deployment/deployment-pipeline.png) ](media/concept-model-management-and-deployment/deployment-pipeline.png#lightbox)
 
 Pracovní postup nasazení zahrnuje následující kroky:
-1. **Zaregistrujte model** v registru hostované ve vašem pracovním prostoru Azure Machine Learning
+1. **Zaregistrujte model** v registru hostované ve vašem pracovním prostoru služby Azure Machine Learning
 1. **Zaregistrovat image** , který dvojice model s hodnoticí skript a závislosti v přenosných kontejneru 
 1. **Nasazení** image jako webovou službu v cloudu nebo do hraničních zařízení
 1. **Monitorování a shromažďování dat**
@@ -35,7 +35,7 @@ Každý krok lze provést, samostatně nebo jako součást příkazu pro jedno n
 
 ## <a name="step-1-register-model"></a>Krok 1: Zaregistrujte model
 
-Model registru uchovává informace o všech modelů v pracovním prostoru Azure Machine Learning.
+Model registru uchovává informace o všech modelů v pracovním prostoru služby Azure Machine Learning.
 Modely jsou identifikovány názvem a verzí. Pokaždé, když zaregistrujete model se stejným názvem jako existující registr zvýší verzi. Během registrace, který se dá použít při vyhledávání pro modely můžete zadat také další metadata značky.
 
 Nelze odstranit modely, které se používají v obrázku.

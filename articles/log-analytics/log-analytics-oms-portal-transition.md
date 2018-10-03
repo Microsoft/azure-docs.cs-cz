@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: e24ad270996994a4061bbe7d71d79c7362e52406
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.component: ''
+ms.openlocfilehash: c7ccfd53b52416c8216b90f93f8d08f382c859d8
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43091218"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042100"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Portál OMS do Azure
 

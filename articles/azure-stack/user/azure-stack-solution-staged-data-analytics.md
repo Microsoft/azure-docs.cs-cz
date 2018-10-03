@@ -11,25 +11,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 10/02/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: b704db0b79d056f5c7081d3fed117e1d1f22b336
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b4b81546a267e6fd082f83db8b23010f0742771f
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978824"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237893"
 ---
 # <a name="tutorial-create-a-staged-data-analytics-solution-with-azure-and-azure-stack"></a>Kurz: Vytvoření řešení pro analýzu pracovních dat s využitím Azure a Azure Stack 
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Další informace o použití místních i veřejných cloudových prostředích k uspokojení požadavků podniků více zařízení. Azure Stack nabízí rychlé, zabezpečené a flexibilní řešení pro shromažďování, zpracování, ukládání a distribuci místním a vzdáleným datům, zejména při zabezpečení, důvěrnosti, podnikové zásady a dodržování legislativních požadavků může lišit mezi umístěními a uživatelé.
+Další informace o použití místních i veřejných cloudových prostředích k uspokojení požadavků podniků více zařízení. Azure Stack nabízí rychlé, zabezpečené a flexibilní řešení pro shromažďování, zpracování, ukládání a distribuci místním a vzdáleným datům, zejména při zabezpečení, důvěrnosti, podnikové zásady a dodržování legislativních požadavků může lišit mezi umístěními a uživatelů.
 
 V tomto vzoru jsou vaši zákazníci shromažďování dat, která vyžaduje analýzu místě kolekce tak, aby provádět rychlé rozhodování. Toto shromažďování dat často dochází k dispozici žádné internetové připojení. Když se naváže spojení, budete muset provádět náročné analýzu dat umožňuje získat další informace. Můžete přesto analyzovat data, když veřejný cloud je příliš pozdě nebo není k dispozici.
 
-V tomto kurzu vytvoříte ukázkové prostředí:
+V tomto kurzu se sestavení ukázkové prostředí:
 
 > [!div class="checklist"]
 > - Vytvoření objektu blob úložiště nezpracovaná data.
@@ -55,7 +55,7 @@ Některé přípravy je nutné k vytvoření tohoto řešení:
 
 -   Stáhnout a nainstalovat [Microsoft Azure Storage Explorer](http://storageexplorer.com/).
 
--   Není k dispozici data zpracovat pomocí těchto funkcí. Data musí být vygenerovaný a pro nahrání do kontejneru úložiště objektů blob v Azure stacku.
+-   Je potřeba zadat svoje vlastní data zpracovat pomocí funkcí. Data musí být vygenerovaný a pro nahrání do kontejneru úložiště objektů blob v Azure stacku.
 
 ## <a name="issues-and-considerations"></a>Problémy a důležité informace
 
@@ -123,17 +123,11 @@ Zvažte, jak vývojářské nástroje a správy zdrojových kódů vám umožní
 
 Vytvoření nové funkce služby Azure Stack můžete do Azure přesunout vyčištění dat ze služby Azure Stack.
 
-1.  Po kliknutí na vytvořit novou funkci **funkce**, pak bude **+ nová funkce** tlačítko.
+### <a name="create-the-azure-stack-function-app"></a>Vytvoření aplikace funkcí Azure Stack
 
-    ![Alternativní text](media\azure-stack-solution-staged-data-analytics\image3.png)
-
-2.  Vyberte **Trigger časovače**.
-
-    ![Alternativní text](media\azure-stack-solution-staged-data-analytics\image4.png)
-
-3.  Vyberte **C\#**  jako jazyk a název funkce: `upload-to-azure` nastavte plán `0 0 * * * *`, který v procesu CRON zápis je jednou za hodinu.
-
-    ![Alternativní text](media\azure-stack-solution-staged-data-analytics\image5.png)
+1. Přihlaste se [portálu Azure Stack](https://portal.local.azurestack.external).
+2. Vyberte **Všechny služby**.
+3. Vyberte **aplikace Function App** v **Web + mobilní zařízení** skupiny.
 
 4.  Vytvoření aplikace function app pomocí nastavení uvedená v tabulce pod obrázkem.
 
@@ -148,7 +142,7 @@ Vytvoření nové funkce služby Azure Stack můžete do Azure přesunout vyči�
     | Plán Consumption | Plán hostování, který určuje způsob přidělování prostředků aplikaci Function App. Ve výchozím plánu Consumption prostředky přidávají dynamicky podle požadavků vašich funkcí. V tomto hostování bez serveru, platíte jenom dobu, kdy jsou funkce spuštěné. |  |
     | Umístění | Oblast nejbližší | Zvolte oblast vaší blízkosti nebo v blízkosti jiných služeb vaší funkce přístupu. |
     | **Účet úložiště** |  |  |
-    | \<účet úložiště vytvořený výše > | Název nového účtu úložiště, který bude aplikace Function App používat. Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena. Můžete taky použít existující účet. |  |
+    | \<účet úložiště vytvořený výše > | Název nového účtu úložiště, který bude aplikace Function App používat. Názvy účtů úložiště musí být dlouhý 3 až 24 znaků. Název může použít pouze číslice a malá písmena. Můžete taky použít existující účet. |  |
 
     **Příklad:**
 
@@ -164,13 +158,25 @@ Vytvoření nové funkce služby Azure Stack můžete do Azure přesunout vyči�
 
 ![Aplikace Function App byla úspěšně vytvořena.](media\azure-stack-solution-staged-data-analytics\image8.png)
 
+### <a name="add-a-function-to-the-azure-stack-function-app"></a>Přidání funkce do aplikace funkcí Azure Stack
+
+1.  Po kliknutí na vytvořit novou funkci **funkce**, pak bude **+ nová funkce** tlačítko.
+
+    ![Alternativní text](media\azure-stack-solution-staged-data-analytics\image3.png)
+
+2.  Vyberte **Trigger časovače**.
+
+    ![Alternativní text](media\azure-stack-solution-staged-data-analytics\image4.png)
+
+3.  Vyberte **C\#**  jako jazyk a název funkce: `upload-to-azure` nastavte plán `0 0 * * * *`, který v procesu CRON zápis je jednou za hodinu.
+
+    ![Alternativní text](media\azure-stack-solution-staged-data-analytics\image5.png)
+
 ## <a name="create-a-blob-storage-triggered-function"></a>Vytvoření funkce aktivované službou Blob Storage
 
-1.  Rozbalte aplikaci function app a vyberte **+** vedle **funkce**. Pokud se jedná o první funkci ve aplikace function app, vyberte **vlastní funkce**. Zobrazí se kompletní sada šablon funkcí.
+1.  Rozbalte aplikaci function app a vyberte **+** vedle **funkce**.
 
-  ![Stručný úvod do služby Functions na webu Azure Portal](media\azure-stack-solution-staged-data-analytics\image9.png)
-
-2.  Do vyhledávacího pole zadejte objekt blob a zvolte jazyk požadovaný pro šablonu funkce aktivované úložiště objektů Blob.
+2.  Do vyhledávacího pole zadejte `blob` a zvolte jazyk požadovaný pro **aktivační událost objektů Blob** šablony.
 
   ![Vyberte šablonu funkce aktivované úložištěm objektů blob.](media\azure-stack-solution-staged-data-analytics\image10.png)
 

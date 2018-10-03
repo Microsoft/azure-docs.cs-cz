@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 9e00e9c3f90d668458d692db88570dac7e8df5a3
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.component: ''
+ms.openlocfilehash: 80749fedde17a9567aa13e1e72677dfdd027ca36
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39359060"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043256"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Řešení pro monitorování kontejnerů ve službě Log Analytics
 
@@ -595,7 +595,7 @@ Každé oblasti řídicího panelu je vizuální znázornění vyhledávání, k
 
 V **stav kontejneru** oblasti, jak je znázorněno níže, klikněte na tlačítko horní části.
 
-![stav kontejneru](./media/log-analytics-containers/containers-status.png)
+![Stav kontejneru](./media/log-analytics-containers/containers-status.png)
 
 Hledání v protokolu se otevře, zobrazení informací o stavu kontejnery.
 
@@ -609,7 +609,7 @@ Log Analytics označí jako kontejner **neúspěšné** Pokud se ukončil s nenu
 
 ### <a name="to-find-failed-containers"></a>Chcete-li najít neúspěšné kontejnery
 1. Klikněte na tlačítko **stav kontejneru** oblasti.  
-   ![stav kontejneru](./media/log-analytics-containers/containers-status.png)
+   ![Stav kontejneru](./media/log-analytics-containers/containers-status.png)
 2. Hledání v protokolu se otevře a zobrazí stav své kontejnery, podobný následujícímu.  
    ![Stav kontejnerů](./media/log-analytics-containers/containers-log-search.png)
 3. Dále klikněte na agregovanou hodnotu neúspěšné kontejnery zobrazíte další informace. Rozbalte **zobrazit více** zobrazíte ID image.  

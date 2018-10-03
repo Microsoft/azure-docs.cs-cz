@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 975a4f7b15d1e1c13767cd7026e961e9d4227603
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5ee03d8dc8dba08994715ace940875980c4f21bb
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998916"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041539"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>Použít balíček zabezpečení podniku v HDInsight
 
@@ -26,26 +26,20 @@ HDInsight spoléhá na zprostředkovatele oblíbených identity – Active Direc
 
 Virtuální počítače (VM) v HDInsight jsou domény připojené k zadané doméně. Proto všechny služby spuštěné v HDInsight (Ambari, Hive, Ranger, server Spark thrift server a další) pro ověřeného uživatele bezproblémově fungují. Správci pak mohou vytvářet zásady silné ověřování s použitím Apache Ranger k poskytování řízení přístupu na základě rolí pro prostředky v clusteru.
 
-
 ## <a name="integrate-hdinsight-with-active-directory"></a>Integrace služby HDInsight s Active Directory
 
 Open source Hadoop závisí na protokolu Kerberos pro ověřování a zabezpečení. Proto jsou uzly clusteru HDInsight s Enterprise Security Package (ESP) připojený k doméně, který je spravovaný službou Azure AD DS. Zabezpečení protokolu Kerberos je nakonfigurován pro součásti platformy Hadoop v clusteru. 
 
-Pro jednotlivé komponenty systému Hadoop instanční objekt služby vytvořit automaticky. Pro každý počítač, který je připojený k doméně se také vytvoří odpovídající počítač instančního objektu. K ukládání těchto služeb a počítačů objekty zabezpečení, je nutné zadat organizační jednotku (OU) v řadiči domény (Azure AD DS), kde jsou tyto objekty umístěny. 
+Automaticky vytvoří následující věci:
+- objekt služby pro jednotlivé komponenty systému Hadoop 
+- objekt počítače pro každý počítač, který je připojený k doméně
+- Organizační jednotce (OU) pro každý cluster pro uchovávání objektů tyto služby a počítače 
 
 Souhrnně řečeno, musíte nastavit prostředí pomocí:
 
 - Domény služby Active Directory (spravované službou Azure AD DS).
 - Zabezpečený LDAP (LDAPS) povolena ve službě Azure AD DS.
 - Správné síťové připojení z virtuální sítě HDInsight do Azure AD DS virtuální sítě, pokud se rozhodnete pro ně samostatné virtuální sítě. Virtuální počítač ve virtuální síti HDInsight by měl mít dohled do služby Azure AD DS prostřednictvím partnerského vztahu virtuální sítě. Pokud HDInsight a Azure AD DS jsou nasazené ve stejné virtuální síti, připojení se automaticky k dispozici a není potřeba žádná další akce.
-- Organizační jednotka [vytvořené v Azure AD DS](../../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md).
-- Účet služby, který má oprávnění:
-    - Vytvoření instančních objektů v organizační jednotce.
-    - Připojení počítače k doméně a vytvářet objekty počítače v organizační jednotce.
-
-Následující snímek obrazovky ukazuje organizační jednotku vytvořené v doméně contoso.com. Profil také ukazuje některé instančních objektů a objektů počítačů.
-
-![Organizační jednotka pro clustery HDInsight se ESP](./media/apache-domain-joined-architecture/hdinsight-domain-joined-ou.png).
 
 ## <a name="set-up-different-domain-controllers"></a>Nastavit různými řadiči domény
 HDInsight aktuálně podporuje pouze Azure AD DS jako řadič domény hlavním cluster používá pro komunikaci pomocí protokolu Kerberos. Ale jiné komplexní nastavení služby Active Directory je to možné, tak dlouho, dokud taková konfigurace vede k povolení služby Azure AD DS pro přístup k HDInsight.

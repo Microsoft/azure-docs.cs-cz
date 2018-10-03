@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 49d5e307c51a6527ade63bac0276fa141ecb5c24
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: bbf94d53b24c4087e7212d56bd51131034e39212
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222450"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042973"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Řešení problémů s výkonem Azure SQL Database s Intelligent Insights
 
@@ -73,7 +73,7 @@ Diagnostický protokol vypíše hodnoty hash dotazu dotazů, které měla vliv n
 
 Pokud bylo dosaženo omezení dostupné relace, můžete optimalizovat aplikací snížením počtu přihlášení, provedené v databázi. Pokud nemůžete snížit počet přihlášení z vaší aplikace k databázi, zvažte zvýšení cenová úroveň databáze. Nebo můžete rozdělit a přesuňte databázi do více databází pro více vyvážené distribuce zatížení.
 
-Další návrhy na řešení omezení relací, naleznete v tématu [jak zacházet s omezeními maximální přihlašovací jména SQL Database](https://blogs.technet.microsoft.com/latam/2015/06/01/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/). Omezení dostupných prostředků vaší úrovně předplatného najdete v tématu [limity prostředků SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits).
+Další návrhy na řešení omezení relací, naleznete v tématu [jak zacházet s omezeními maximální přihlašovací jména SQL Database](https://blogs.technet.microsoft.com/latam/2015/06/01/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/). Zobrazit [Přehled prostředků omezuje na logickém serveru](sql-database-resource-limits-logical-server.md) informace o omezeních na úrovni serveru a předplatné.
 
 ## <a name="workload-increase"></a>Zvýšení zatížení
 

@@ -1,5 +1,5 @@
 ---
-title: Místní brány dat | Dokumentace Microsoftu
+title: Místní brána dat
 description: Je nutné v případě, že váš server Analysis Services v Azure se připojí k místním zdrojům dat místní bránou.
 author: minewiskan
 manager: kfile
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9ed2614969952eab90dfec572d9b61071981c4bf
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 3b731d44348c506f09f0d30d6d42b9cbdc623936
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391619"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041931"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-azure-on-premises-data-gateway"></a>Připojení k místním zdrojům dat s využitím Azure na místní bránu dat
 Místní brána dat funguje jako most poskytující zabezpečený přenos dat mezi místním zdrojům dat a vaše servery Azure Analysis Services v cloudu. Kromě práce s více servery služby Azure Analysis Services ve stejné oblasti, nejnovější verzi brány také funguje s Azure Logic Apps, Power BI, Powerapps a Microsoft Flow. Více služeb ve stejném předplatném a stejné oblasti můžete přidružit jednu bránu. 
@@ -172,8 +172,6 @@ Soubory protokolu jsou důležité prostředků při řešení potíží.
 #### <a name="configuration-logs"></a>Konfigurační protokoly
 
 `C:\Users\<username>\AppData\Local\Microsoft\On-premises data gateway\GatewayConfigurator.log`
-
-
 
 
 #### <a name="event-logs"></a>Protokoly událostí

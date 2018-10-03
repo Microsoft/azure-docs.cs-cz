@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4ead83dc449f2b32461b0585f276c9f3bfd3f847
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: d9dbf816d4fd0d9f6044ebeea9a23a60adcc5bc8
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42919098"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044599"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Assety připojení v Azure Automation.
 
@@ -45,7 +45,7 @@ Aktivity v následující tabulce se používají pro přístup k připojením v
 |[Get-AutomationConnection](/powershell/module/servicemanagement/azure/get-azureautomationconnection?view=azuresmps-3.7.0)|Získá připojení pro použití. Vrátí zatřiďovací tabulku s vlastnostmi připojení.|
 
 >[!NOTE] 
->Byste neměli používat proměnné s názvem parametru – **Get - AutomationConnection** protože to může zkomplikovat zjišťování závislostí mezi runbooky nebo konfigurace DSC a assety připojení v době návrhu.
+>Byste neměli používat proměnné s názvem parametru – **Get-AutomationConnection** protože to může zkomplikovat zjišťování závislostí mezi runbooky nebo konfigurace DSC a assety připojení v době návrhu.
 
  
 ## <a name="python2-functions"></a>Funkce Python2 

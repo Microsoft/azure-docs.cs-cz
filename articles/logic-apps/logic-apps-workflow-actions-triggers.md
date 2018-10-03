@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/22/2018
-ms.openlocfilehash: 8adfd0b3d6d87834441ab87af194de141b77af34
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 4b124b79eeacf0df5f1b9dff798ebeea20d82090
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093614"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044769"
 ---
 # <a name="trigger-and-action-types-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Aktivační událost a akce referenční typy pro jazyk pro definování pracovních postupů v Azure Logic Apps
 
@@ -62,7 +62,7 @@ Aktivační události mají tyto prvky nejvyšší úrovně, i když některé j
 
 | Hodnota | Typ | Popis | 
 |-------|------|-------------| 
-| <*pole s podmínky*> | Pole | Pole, které obsahuje jeden nebo více [podmínky](#trigger-conditions) , které určují, jestli se má spustit pracovní postup | 
+| <*pole s podmínky*> | Pole | Pole, které obsahuje jeden nebo více [podmínky](#trigger-conditions) , které určují, jestli se má spustit pracovní postup. K dispozici pouze pro aktivační události. | 
 | <*Možnosti konfigurace modulu runtime*> | JSON – objekt | Můžete změnit chování modulu runtime triggeru nastavením `runtimeConfiguration` vlastnosti. Další informace najdete v tématu [nastavení konfigurace modulu Runtime](#runtime-config-options). | 
 | <*Vlastnost splitOn – výraz*> | Řetězec | Pro aktivační události, které vrací pole můžete zadat výraz, který [rozdělí nebo *debatches* ](#split-on-debatch) položek pole do několika instancí pracovních postupů pro zpracování. | 
 | <*možnost operace*> | Řetězec | Výchozí chování můžete změnit nastavením `operationOptions` vlastnost. Další informace najdete v tématu [možnosti operace](#operation-options). | 
@@ -657,7 +657,7 @@ Tato aktivační událost určuje, že příchozí požadavek musí používat m
 
 ## <a name="trigger-conditions"></a>Podmínky aktivace
 
-Pro libovolný trigger můžete zahrnout pole, která obsahuje jeden nebo více výrazů pro podmínky k určení, zda by měl spustit pracovní postup. Chcete-li přidat `conditions` vlastnost do aplikace logiky otevření aplikace logiky v zobrazení editoru kódu.
+Pro všechny aktivační události a pouze aktivačních událostí může obsahovat pole, která obsahuje jeden nebo více výrazů pro podmínky k určení, zda by měl spustit pracovní postup. Chcete-li přidat `conditions` vlastnost na trigger v aplikaci logiky otevření aplikace logiky v zobrazení editoru kódu.
 
 Například můžete určit, že aktivační událost aktivuje, pouze když web vrátí interní chybu serveru pomocí odkazu na kód stavu triggeru v `conditions` vlastnost:
 
@@ -1340,7 +1340,7 @@ Tato akce vytvoří pole z položek v jiném poli na základě zadaných podmín
 | Hodnota | Typ | Popis | 
 |-------|------|-------------| 
 | <*Pole*> | Pole | Pole nebo výraz, který obsahuje zdrojové položky. Pokud chcete zadat výraz, použijte tento výraz s dvojitými uvozovkami. |
-| <*podmínka nebo filtru*> | Řetězec | Podmínkou použitou pro filtrování položek v zdrojové pole <p>**Poznámka:**: Pokud žádné hodnoty splňují zadanou podmínku, tato akce vytvoří prázdné pole. |
+| <*podmínka nebo filtru*> | Řetězec | Podmínkou použitou pro filtrování položek v zdrojové pole <p>**Poznámka:**: Pokud žádné hodnoty splňují zadanou podmínku a akce vytvoří prázdné pole. |
 |||| 
 
 *Příklad*
@@ -2318,7 +2318,7 @@ Můžete změnit výchozí chování pro aktivační události a akce s `operati
 
 ### <a name="change-trigger-concurrency"></a>Změnit aktivační událost souběžnosti
 
-Ve výchozím nastavení, logiku aplikace instance spuštěné ve stejnou dobu, současně nebo paralelně až [výchozí limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Ano každou instanci aktivační událost aktivuje před instanci aplikace logiky dříve aktivní doběhnutí. Toto omezení pomáhá řídit počet požadavků, které přijímají back-endových systémů. 
+Ve výchozím nastavení, logiku aplikace instance spuštěné ve stejnou dobu, současně nebo paralelně až [výchozí limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Každá instance aktivační událost tak, aktivuje se před dokončením předchozí instanci aplikace logiky spuštěná. Toto omezení pomáhá řídit počet požadavků, které přijímají back-endových systémů. 
 
 Chcete-li změnit výchozí omezení, můžete použít editor kódu zobrazit nebo návrhář pro Logic Apps vzhledem k tomu, že změna nastavení souběžnosti prostřednictvím návrháře přidá nebo aktualizuje `runtimeConfiguration.concurrency.runs` vlastnost definice základní aktivační události a naopak. Tato vlastnost určuje maximální počet instancí aplikace logiky, které můžou běžet paralelně. 
 
@@ -2399,7 +2399,7 @@ Ve výchozím nastavení, logiku aplikace instance spuštěné ve stejnou dobu, 
 
 Má také počet běhů, které mohou čekat [výchozí limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits), které můžete změnit. Ale po vaše aplikace logiky dosáhne limitu čekajících běhů, modul Logic Apps již přijímá nová spuštění. Aktivační události požadavku a webhook vrátit 429 chyby a opakované triggery spuštění, přeskakuje se pokusy o dotazování.
 
-Chcete-li změnit výchozí omezení na spuštění čeká v základní definici spustí, přidejte a nastavte `runtimeConfiguration.concurency.maximumWaitingRuns` vlastnost na hodnotu v rozmezí `0` a `100`. 
+Chcete-li změnit výchozí omezení na spuštění čeká v základní definici spustí, přidejte `runtimeConfiguration.concurency.maximumWaitingRuns` vlastnost s hodnotou mezi `0` a `100`. 
 
 ```json
 "<trigger-name>": {

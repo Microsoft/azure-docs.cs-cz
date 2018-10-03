@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 5feefdb8fe6204bc8ef42a5e65bf1e30354e0cf9
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 39fd393e78a2b66749c6aa34a758b185b38effdf
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393923"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041183"
 ---
 # <a name="multi-master-conflict-resolution-in-azure-cosmos-db"></a>Řešení konfliktů několika hlavními databázemi ve službě Azure Cosmos DB 
 
@@ -157,7 +157,7 @@ Postup má čtyři parametry:
 
 * **conflictingDocuments:** určuje kolekci v potvrzené verzi všechny dokumenty v databázi, která jsou v konfliktu s incomingDocument na sloupec ID nebo další jedinečný index pole. Tyto dokumenty budou mít různé "odstranit" hodnotu ve srovnání s incomingDocument.
 
-Uživatelem definované postup má úplný přístup ke klíči oddílů služby Cosmos DB a můžete provádět jakékoli operace úložiště k řešení konfliktů. Pokud postup uživatelem definované nesměrují konflikt verzí, systém vyřadí konflikt a existingDocument bude i nadále potvrzeny. Pokud postup uživatelem definované selže nebo je buď neexistuje, Azure Cosmos DB všechny přidá konflikt do konflikty jen pro čtení informačního kanálu, ve kterém je možné je zpracovat asynchronně, jak je znázorněno [režimu řešení konfliktů. asynchronní](). 
+Uživatelem definované postup má úplný přístup ke klíči oddílů služby Cosmos DB a můžete provádět jakékoli operace úložiště k řešení konfliktů. Pokud postup uživatelem definované nesměrují konflikt verzí, systém vyřadí konflikt a existingDocument bude i nadále potvrzeny. Pokud postup uživatelem definované selže nebo je buď neexistuje, Azure Cosmos DB všechny přidá konflikt do konflikty jen pro čtení informačního kanálu, ve kterém je možné je zpracovat asynchronně, jak je znázorněno [režimu řešení konfliktů. asynchronní](#custom--asynchronous). 
 
 ### <a name="custom--asynchronous"></a>Vlastní – asynchronní  
 
