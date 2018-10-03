@@ -102,19 +102,24 @@ items:
       href: troubleshoot-recovery-disks-linux.md
     - name: portál Azure
       href: troubleshoot-recovery-disks-portal-linux.md
-- name: Chyby nástroje BitLocker
-  href: troubleshoot-bitlocker-boot-error.md
-- name: Kontrola chyb systému souborů
-  href: troubleshoot-check-disk-boot-error.md
+- name: Chyby spouštění
+  href: boot-error-troubleshoot.md
+  items:
+  - name: Chyby nástroje BitLocker
+    href: troubleshoot-bitlocker-boot-error.md
+  - name: Kontrola chyb systému souborů
+    href: troubleshoot-check-disk-boot-error.md
+  - name: Chyby typu modrá obrazovka
+    href: troubleshoot-common-blue-screen-error.md
 - name: Chyby způsobené omezením provozu
   href: troubleshooting-throttling-errors.md
 - name: Použití vnořené virtualizace
   href: troubleshoot-vm-by-use-nested-virtualization.md
 - name: Vysvětlení restartování systému
   href: understand-vm-reboot.md
-ms.openlocfilehash: b00e785c3ae31171ce3189edd9cffe094bc71024
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 296e296b52a6ad1a9809d94f2228411f027d0758
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410729"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585879"

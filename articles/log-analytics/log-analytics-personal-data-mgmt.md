@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 9ea004a35f739a8c4f7ee1ed320bd6657ed4e820
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.component: ''
+ms.openlocfilehash: 1b9d8d252055bb1368b7024ca9b0acf6c21ba7b3
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957910"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041607"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Pokyny pro osobní údaje uložené v Log Analytics a Application Insights
 
@@ -43,7 +43,7 @@ Zatímco bude až vám a vaší společnosti nakonec určit strategii, pomocí k
 
 Log Analytics je flexibilní úložiště, které při systematická schématu ke svým datům, umožňuje potlačit všechna pole s vlastními hodnotami. Kromě toho je možné ingestovat žádné vlastní schéma. V důsledku toho je možné napsat přesně kde soukromým datům najdete v konkrétním pracovním prostorem. Následujících umístěních, ale jsou dobré počáteční body ve vašem inventáři softwaru:
 
-### <a name="log-data"></a>Data protokolu
+### <a name="log-data"></a>Protokolování dat
 
 * *IP adresy*: Log Analytics shromažďuje širokou škálu informace o IP Adrese v mnoha různých tabulkách. Například následující dotaz zobrazí všechny tabulky, kde adresy IPv4 byly shromážděny během posledních 24 hodin:
     ```
@@ -100,7 +100,7 @@ Vymazání je vysoce privilegované operace, zda žádná aplikace nebo uživate
 
 Jakmile se přiřadila role Azure Resource Manageru, jsou k dispozici dvě nová rozhraní API cesty: 
 
-#### <a name="log-data"></a>Data protokolu
+#### <a name="log-data"></a>Protokolování dat
 
 * [Příspěvku vyprázdnění] (https://docs.microsoft.com/rest/api/loganalytics/workspaces%202015-03-20/purge) – určení parametrů dat. Chcete-li odstranit objekt převezme a vrátí odkaz na identifikátor GUID 
 * GET vyprázdnit stav – vyprázdnění volání POST tak vrátí hlavičku "x-ms stav – umístění", který bude obsahovat adresu URL, která můžete volat k určení stavu rozhraní purge API. Příklad:

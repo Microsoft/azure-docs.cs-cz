@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 9/18/2018
+ms.date: 9/28/2018
 ms.author: rithorn
-ms.openlocfilehash: d031059f9811cedb703fec4920e00fd1b2e3f877
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 6b369c8209e62ff3c98b3fdf78378b403b0a0d2d
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47045341"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017649"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Uspořádání vašich prostředků s využitím skupin pro správu Azure
 
@@ -62,19 +62,30 @@ Tato kořenová skupina pro správu je integrovaná do hierarchie tak, aby pod n
   - Každý, kdo má přístup k předplatnému, vidí kontext tohoto předplatného v rámci hierarchie.  
   - Ke kořenová skupina pro správu nikdo nemá výchozí přístup. Globální správci adresáře jsou jedinými uživateli, kteří si sami sobě mohou zvýšit oprávnění a získat tak přístup.  Jakmile správci adresáře mají přístup, mohou ostatním uživatelům přidělovat libovolné role RBAC pro správu.  
 
-> [!NOTE]
-> Pokud váš adresář začal službu skupin pro správu využívat dřív než 25. června 2018, je možné, že v něm nejsou nastavená všechna předplatná v hierarchii. Tým skupin pro správu zpětně aktualizuje jednotlivé adresáře, které začaly využívat skupiny pro správu ve verzi Public Preview před tímto datem, a to v průběhu července a srpna 2018. Všechna předplatná v adresářích budou nastavená jako podřízená příslušné kořenové skupiny pro správu.
->
-> Pokud máte k tomuto procesu nějaké dotazy, kontaktujte managementgroups@microsoft.com.  
-  
-## <a name="initial-setup-of-management-groups"></a>Počáteční nastavení skupin pro správu
-
-Když libovolný uživatel začne využívat skupiny pro správu, musí proběhnout úvodní proces nastavení. Prvním krokem je, že se v adresáři vytvoří kořenová skupina pro správu. Po vytvoření této skupiny se všechna existující předplatná, která v příslušném adresáři existují, nastaví jako podřízené prvky kořenové skupiny pro správu. Cílem tohoto procesu je zajistit, aby v rámci adresáře existovala jenom jedna hierarchie skupin pro správu. Jedna hierarchie v adresáři umožňuje zákazníkům využít globální přístup a zásady, které ostatní zákazníci v tomto adresáři nemohou obejít. Všechno, co se přiřadí na kořenové úrovni, se použije napříč všemi skupinami pro správu, skupinami prostředků, předplatnými a prostředky v rámci celého adresáře, a to díky tomu, že v adresáři je jediná hierarchie.
-
 > [!IMPORTANT]
 > Všechna přiřazení uživatelského přístupu nebo zásad v kořenové skupině pro správu **se použijí pro všechny prostředky v rámci příslušného adresáře**.
 > Vzhledem k tomu by uživatelé měli vyhodnotit, jestli je potřeba mít prostředky definované v tomto rozsahu.
 > Přiřazení uživatelského přístupu nebo zásad by v tomto rozsahu měla být jenom „povinná“.  
+
+## <a name="initial-setup-of-management-groups"></a>Počáteční nastavení skupin pro správu
+
+Když libovolný uživatel začne využívat skupiny pro správu, musí proběhnout úvodní proces nastavení. Prvním krokem je, že se v adresáři vytvoří kořenová skupina pro správu. Po vytvoření této skupiny se všechna existující předplatná, která v příslušném adresáři existují, nastaví jako podřízené prvky kořenové skupiny pro správu. Cílem tohoto procesu je zajistit, aby v rámci adresáře existovala jenom jedna hierarchie skupin pro správu. Jedna hierarchie v adresáři umožňuje zákazníkům využít globální přístup a zásady, které ostatní zákazníci v tomto adresáři nemohou obejít. Všechno, co se přiřadí na kořenové úrovni, se použije napříč všemi skupinami pro správu, skupinami prostředků, předplatnými a prostředky v rámci celého adresáře, a to díky tomu, že v adresáři je jediná hierarchie.
+
+## <a name="trouble-seeing-all-subscriptions"></a>Potíže se zobrazením všech předplatných
+
+U několika adresářů, které začaly využívat skupiny pro správu v rané fázi verze Preview před 25. červencem 2018, může docházet k chybě, kdy se do hierarchie nedostanou všechna předplatná.  Důvodem je skutečnost, že procesy pro zařazení předplatných do hierarchie se implementovaly až po přiřazení zásad nebo role pro kořenovou skupinu pro správu v příslušném adresáři.
+
+### <a name="how-to-resolve-the-issue"></a>Jak tyto potíže vyřešit
+
+Existují dvě možnosti samoobslužného vyřešení těchto potíží.
+
+1. Odebrání všech přiřazení rolí a zásad z kořenové skupiny pro správu
+    1. Odebrání všech přiřazení zásad a rolí z kořenové skupiny pro správu způsobí, že tato služba obnoví všechna předplatná do hierarchie při příštím nočním cyklu.  Důvodem této kontroly se zajistit, že se žádnému z klientských předplatných neposkytne náhodný přístup nebo přiřazení zásad.
+    1. Nejlepší způsob, jak to provést bez dopadu na vaše služby, je použít přiřazení zásad nebo rolí o jednu úroveň pod kořenovou skupinu pro správu. Potom můžete všechna přiřazení z kořenového oboru odebrat.
+1. Přímé volání rozhraní API pro zahájení procesu obnovení
+    1. Libovolný autorizovaný uživatel adresáře může volat rozhraní API *TenantBackfillStatusRequest* nebo *StartTenantBackfillRequest*. Rozhraní API StartTenantBackfillRequest po zavolání zahájí proces nastavení přesunu všech předplatných do hierarchie. Tento proces také začne vynucovat, aby se všechna nová předplatná stala podřízeným elementem kořenové skupiny pro správu. Tento postup se dá udělat beze změny přiřazení na kořenové úrovni, protože jím říkáte, že je v pořádku, když se přiřazení zásad nebo přístupu na kořenové úrovni použije pro všechna předplatná.
+
+Pokud máte k tomuto procesu obnovení nějaké dotazy, obraťte se prosím na managementgroups@microsoft.com.  
   
 ## <a name="management-group-access"></a>Přístup ke skupinám pro správu
 

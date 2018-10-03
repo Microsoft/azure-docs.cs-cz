@@ -10,12 +10,12 @@ author: shivanipatel
 manager: cgronlun
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: 03d692ddfd6f41fd559e9b921f0214a9cd2ada22
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 20469e127c8e04f4c6418fe28c49b63fc3b363d8
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225221"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239196"
 ---
 # <a name="prepare-to-deploy-models-on-iot-edge"></a>Příprava na nasazení modelů v prostředí IoT Edge
 
@@ -43,7 +43,7 @@ Informace o registraci vašeho zařízení a nainstalovat modul runtime IoT, pos
 
 ## <a name="register-the-model"></a>Zaregistrujte model
 
-Moduly Azure IoT Edge jsou založeny na Image kontejneru. Jak model nasadit do zařízení IoT Edge, použijte následující postup zaregistrujte model na pracovní prostor služby Azure Machine Learning a vytvořte image Dockeru. 
+Moduly Azure IoT Edge jsou založeny na Image kontejneru. Jak model nasadit do zařízení IoT Edge, použijte následující kroky k registraci modelu na pracovní prostor služby Azure Machine Learning service a vytvoření image Dockeru. 
 
 > [!IMPORTANT]
 > Pokud použijete k natrénování modelu, který může zaregistrovat již ve vašem pracovním prostoru Azure Machine Learning, v tomto případě přeskočte krok 3.
@@ -122,7 +122,7 @@ Azure IoT potřebuje přihlašovací údaje pro registr kontejneru, který uklá
 
 1. Přihlaste se k [portálu Azure](https://portal.azure.com/signin/index).
 
-1. Přejděte do pracovního prostoru Azure Machine Learning a vyberte __přehled__. Chcete-li přejít do nastavení registru kontejneru, vyberte __registru__ odkaz.
+1. Přejděte do pracovního prostoru služby Azure Machine Learning a vyberte __přehled__. Chcete-li přejít do nastavení registru kontejneru, vyberte __registru__ odkaz.
 
     ![Obrázek položky registru kontejneru](./media/how-to-deploy-to-iot/findregisteredcontainer.png)
 

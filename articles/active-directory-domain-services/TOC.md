@@ -22,6 +22,8 @@
 ## [Kontrola stavu spravované domény](active-directory-ds-check-health.md)
 ## [Použití Azure AD Domain Services v předplatných Azure CSP](active-directory-ds-csp.md)
 ## [Povolení služby Azure AD Domain Services pomocí PowerShellu](active-directory-ds-enable-using-powershell.md)
+## [Konfigurace synchronizace s vymezeným oborem z Azure AD do spravované domény](active-directory-ds-scoped-synchronization.md)
+## [Zabezpečení spravované domény](active-directory-ds-secure-your-domain.md)
 ## Připojení ke spravované doméně
 ### [Virtuální počítač s Windows Serverem](active-directory-ds-admin-guide-join-windows-vm-portal.md)
 ### [Virtuální počítač s Windows Serverem ze šablony](active-directory-ds-join-windows-vm-template.md)
@@ -44,7 +46,6 @@
 ### [Vytvoření skupinového účtu spravované služby ve spravované doméně](active-directory-ds-create-gmsa.md)
 ### [Správa zásad skupiny ve spravované doméně](active-directory-ds-admin-guide-administer-group-policy.md)
 ### [Konfigurace zásad hesel ve spravované doméně](active-directory-ds-password-policy.md)
-### [Konfigurace synchronizace s vymezeným oborem z Azure AD do spravované domény](active-directory-ds-scoped-synchronization.md)
 ## [Výběr virtuální sítě](active-directory-ds-networking.md)
 ## Nasazení aplikací
 ### [Konfigurace podpory pro synchronizaci profilu pro SharePoint Server](active-directory-ds-enable-sharepoint-profile-sync.md)

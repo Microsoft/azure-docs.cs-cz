@@ -58,7 +58,7 @@
 ### [Použití Azure PowerShellu](data-lake-store-performance-tuning-powershell.md)
 ### [Použití Sparku v HDInsightu](data-lake-store-performance-tuning-spark.md)
 ### [Použití Hivu v HDInsightu](data-lake-store-performance-tuning-hive.md)
-### [Použití v HDInsightu](data-lake-store-performance-tuning-mapreduce.md)
+### [Použití MapReduce v HDInsightu](data-lake-store-performance-tuning-mapreduce.md)
 ### [Použití Stormu v HDInsightu](data-lake-store-performance-tuning-storm.md)
 
 ## Integrace se službami Azure

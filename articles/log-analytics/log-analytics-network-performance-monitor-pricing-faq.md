@@ -1,6 +1,6 @@
 ---
-title: Ceny – nejčastější dotazy pro sledování výkonu sítě Azure | Microsoft Docs
-description: Nejčastější dotazy - sledování výkonu sítě Azure
+title: Ceny za Azure Network Performance Monitor – nejčastější dotazy | Dokumentace Microsoftu
+description: Časté otázky – Azure Network Performance monitoru
 services: monitoring-and-diagnostics
 documentationcenter: na
 author: agummadi
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/02/2018
 ms.author: ajaycode
-ms.component: na
-ms.openlocfilehash: 96eb26d6a4faf8c6907d23ebf21f2446722c913b
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: 9e9fdfce9dbb165227f88e9f72bc219dce8f3307
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37127089"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043376"
 ---
-# <a name="pricing-changes-for-azure-network-performance-monitor"></a>Změny cenových pro sledování výkonu sítě Azure
+# <a name="pricing-changes-for-azure-network-performance-monitor"></a>O změně v cenách pro Azure Network Performance monitoru
 
-Jsme naslouchali vaše připomínky a nedávno zavedená [nové cenách prostředí](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) pro různé sledování služby v Azure. Tento článek zachytává cenovou změny související s Azure [sledování výkonu sítě](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM) ve formátu čtení otázku a odpověď.
+Jsme naslouchali na vaši zpětnou vazbu a nedávno zavedli [nový cenový model prostředí](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) pro různé monitorování služby v Azure. Tento článek zachytává cenovou změny související s Azure [Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM) ve formátu otázek a odpovědí – čtení.
 
 Sledování výkonu sítě se skládá ze tří součástí:
 * [Sledování výkonu](https://docs.microsoft.com/azure/networking/network-monitoring-overview#performance-monitor)
@@ -36,90 +36,90 @@ Následující části popisují cenovou změny pro součásti NPM.
 
 ## <a name="performance-monitor"></a>Monitorování výkonu
 
-**Jak se využití sledování výkonu účtují v původním modelu?**
+**Jak se využití sledování výkonu ve starém modelu účtuje?**
 
-Fakturace pro NPM byl na základě využití a spotřeba ze dvou částí:
-* **Uzly**: všechny syntetické transakce pocházejí a ukončovat platnost u uzlů. Uzly jsou také označovány jako agentů nebo agenti pro správu Microsoft.
-* **Data**: výsledky různé testy sítě jsou uloženy v úložišti Azure Log Analytics.
+Fakturace za NPM byl založen na využití a využití ze dvou částí:
+* **Uzly**: všechny syntetické transakce pocházejí a ukončovat platnost u uzlů. Uzly jsou také označovány jako agenty nebo agenty pro správu Microsoft.
+* **Data**: výsledky různých testy sítě jsou uloženy v úložišti Azure Log Analytics.
 
-V rámci staré modelu se spočítala na základě počtu uzlů a objem dat generovaný kusovníku. 
+V části starý model se spočítala na základě počtu uzlů a objemu vygenerovaných dat faktury. 
 
-**Jak je účtován využití sledování výkonu v rámci nového modelu?**
+**Jak se účtuje využití sledování výkonu v rámci nového modelu?**
 
-Funkce sledování výkonu v NPM se teď fakturuje založené na kombinaci: 
+Funkce monitorování výkonu v NPM teď fakturace je založená na kombinaci: 
 
-* Sledovat odkazy podsítě
+* Monitorované odkazy na podsítě
 * Objem dat
 
-**Co je odkaz podsíť?**
+**Co je podsíť odkaz?**
 
-Sledování výkonu monitoruje připojení mezi dvěma nebo více umístění v síti. Připojení mezi skupina uzlů nebo agenti v jedné podsíti a skupinu uzlů v jiné podsíti, se nazývá odkaz podsítě.
+Performance Monitor monitoruje připojení mezi dvěma nebo více umístění v síti. Připojení mezi skupinu uzlů nebo agenty na jednu podsíť a skupinu uzlů v jiné podsíti, se nazývá propojení podsítě.
 
-**Je nutné dvě podsítě (A a B) a několik agentů je nutné v jednotlivých podsítích. Sledování výkonu monitoruje připojení ze všech agentů v síti A k všechny agenty na podsíti B. I odečte podle počtu připojení mezi podsíť?**
+**Můžu mít dvě podsítě: (A a B) a mám několik agentů v každé podsíti. Performance Monitor sleduje všechny agenty na podsíti A připojení ke všichni agenti v podsíti služby serveru B. Se mi účtovat na základě počtu připojení mezi podsíti?**
 
-Ne. Pro účely fakturace jsou všechna připojení z podsítě A podsíť B seskupeny dohromady na jednu podsíť odkaz. Fakturuje se jednoho připojení. Pokračuje v monitorování výkonu monitorování připojení mezi různé agenty v každé podsíti.
+Ne. Pro účely fakturace všechna připojení z podsítě A podsíť B jsou seskupeny do jedno propojení podsítě. Bude se vám účtovat pro jedno připojení. Pokračuje v monitorování výkonu monitorování připojení mezi různé agenty v každé podsíti.
 
-**Jaké jsou náklady pro monitorování odkaz podsíť?**
+**Jaké jsou ceny za monitorování podsítě odkaz?**
 
-Náklady na monitorování odkaz jedné podsíti za každý měsíc, najdete v článku [Ping OK](https://azure.microsoft.com/pricing/details/network-watcher/) části.
+Náklady na monitorování odkazem na jednu podsíť pro celý měsíc, najdete v článku [síť příkazů Ping](https://azure.microsoft.com/pricing/details/network-watcher/) oddílu.
 
-**Jaké jsou poplatků za data, která generuje sledování výkonu?**
+**Co jsou poplatky za data, která generuje sledování výkonu?**
 
-Zdarma pro přijímání (nahrání dat k analýze protokolů, zpracování a indexování) je k dispozici na [stránce s cenami](https://azure.microsoft.com/pricing/details/log-analytics/) pro analýzy protokolů, v části přijímat Data. Poplatek pro uchovávání dat (to znamená, data se uchovávají v možnost zákazníka po prvním měsíci) je také k dispozici na [stránce s cenami](https://azure.microsoft.com/pricing/details/log-analytics/), v části uchovávání dat.
+Poplatek za účelem ingestování datových (odesílání dat do služby Log Analytics, zpracování a indexování) je k dispozici na [stránce s cenami](https://azure.microsoft.com/pricing/details/log-analytics/) ke službě Log Analytics v části Ingestování. Poplatek za uchování dat (to znamená, data se uchovávají v možnost zákazníka, po prvním měsíci) je také k dispozici na [stránce s cenami](https://azure.microsoft.com/pricing/details/log-analytics/), v části uchování dat.
 
 
 ## <a name="expressroute-monitor"></a>ExpressRoute Monitor
 
-**Jaké jsou poplatky za využití monitorování ExpressRoute?**
+**Co jsou poplatky za využití monitorování ExpressRoute?**
 
-Poplatky za monitorování ExpressRoute se účtují podle objemu dat vygenerovaných během monitorování. Další informace najdete v části "Jaké jsou poplatků za data, která generuje sledování výkonu?"
+Poplatky za monitorování ExpressRoute se účtují na základě objemu dat vygenerovaných během monitorování. Další informace najdete v části "Jaké jsou poplatky za data, která generuje sledování výkonu?"
 
-**Používám ExpressRoute monitorování pro monitorování více okruhů ExpressRoute. Se mi strhla platba závislosti na počtu monitorovaných okruhy?**
+**Můžu pomocí ExpressRoute monitorování ke sledování víc okruhů ExpressRoute. Účtují se mi poplatky na základě počtu monitorované okruhy?**
 
-Vám není účtován na základě buď počet okruhy nebo typ partnerského vztahu (například soukromého partnerského vztahu, partnerský vztah Microsoftu). Budou se vám účtovat podle objemu dat, jak je popsáno dříve.
+Se vám neúčtují poplatky na základě počet okruhů nebo typ partnerského vztahu (například soukromý partnerský vztah, partnerský vztah Microsoftu). Můžete se účtuje podle objemu dat, jak bylo popsáno dříve.
 
 **Co je objem dat, které jsou generovány, pokud monitoruje jeden okruh ExpressRoute?**
 
-Objem dat generovaný za měsíc, kdy ExpressRoute monitoruje připojení soukromého partnerského vztahu, vypadá takto:
+Objem dat vygenerovaných za měsíc, kdy ExpressRoute monitoruje privátní připojení s partnerským vztahem, vypadá takto:
 
-|Percentil      |Data za měsíc (MB)|
+|Percentil      |Dat za měsíc (MB)|
 | :---:          |           ---:|
-|50<sup>tý</sup> |            192|
-|60<sup>tý</sup> |            256|
-|70<sup>tý</sup> |            360|
-|80<sup>tý</sup> |            498|
-|90<sup>tý</sup> |            870|
-|95<sup>tý</sup> |           1560|
+|50<sup>th</sup> |            192|
+|60<sup>th</sup> |            256|
+|70<sup>th</sup> |            360|
+|80<sup>th</sup> |            498|
+|90<sup>th</sup> |            870|
+|95<sup>th</sup> |           1560|
 
 
-Podle této tabulky Zákazníci na 50. percentil platit pro 192 MB dat. V $2.30 USD/GB pro první měsíc, náklady na monitorování okruh je USD $0.43 (= 192 * 2.30 / 1024).
+Podle této tabulky Zákazníci na 50. percentil platí za 192 MB na data. Ve 2,30 USD USD/GB na první měsíc, jsou náklady na monitorování okruhu USD $0.43 (= 192 * 2,30 / 1024).
 
-**Jaké jsou některé důvody rozdíly v objemu dat?**
+**Jaké jsou některé důvody pro různé variace objem dat?**
 
 Objem dat generované monitorování závisí na několika faktorech, jako například:
-* Počet agentů. Přesnost izolace chyb zvyšuje se zvýšením počtu nasazovaných agentů.
-* Počet směrování v síti.
-* Počet cest mezi zdrojovým a cílovým.
+* Počet agentů. Přesnost izolaci chyb zvyšuje větší počet agentů.
+* Počet segmentů směrování v síti.
+* Počet cest mezi zdrojem a cílem.
 
-Zákazníci na vyšší percentily (v předchozí tabulce) obvykle monitorovat jejich okruhy z několika bodů vantage ve svojí místní síti. Více agentů jsou také umístěny hlubší v síti, pokud chcete nastavit hraniční směrovač poskytovatele služeb. Agenti jsou často umístěny v několika lokalitách uživatele, větve a stojany v datových centrech.
+Zákazníci na vyšší percentil (v předchozí tabulce) obvykle monitorovat své okruhy připojil z několika bodů vantage ve svojí místní síti. Více agentů jsou také umístěny hlouběji v síti, pokud chcete nastavit hraniční směrovač poskytovatele služeb. Agenti jsou často umístěné v několika lokalitách uživatele, větve a stojanů v datových centrech.
 
 ## <a name="service-endpoint-monitor"></a>Monitorování koncového bodu služby
 
-**Jaké jsou poplatky za využití monitorování koncového bodu služby?**
+**Co jsou poplatky za využití monitorování koncového bodu služby?**
 
-Poplatky za využití monitorování koncového bodu služby se vypočítávají podle:
+Poplatky za využití monitorování koncového bodu služby se vypočítávají na základě:
 * Počet připojení
 * Objem dat
 
 **Co je připojení?**
 
-Připojení je testu dostupnosti jeden koncový bod (adresa URL nebo síťové služby) z jednoho agenta pro celý měsíc. Například monitorování připojení do vyhledávače bing.com ze tří agentů se považuje za tři připojení.
+Připojení je test dostupnosti jeden koncový bod (adresa URL nebo síťové služby) z jednoho agenta pro celý měsíc. Například monitorování připojení k bing.com z tři agenti se považuje za tři připojení.
 
-**Jaké jsou náklady na monitorování koncového bodu služby?**
+**Jaké jsou ceny za monitorování koncového bodu služby?**
 
-Odkazovat [monitorování připojení](https://azure.microsoft.com/pricing/details/network-watcher/) části nákladů na monitorování koncový bod pro celý měsíc. Zdarma pro data je k dispozici na [stránce s cenami](https://azure.microsoft.com/pricing/details/log-analytics/) pro analýzy protokolů, v části přijímat Data.
+Odkazovat [sledování připojení](https://azure.microsoft.com/pricing/details/network-watcher/) části nákladů na monitorování koncového bodu po celý měsíc. Cena za dat je k dispozici na [stránce s cenami](https://azure.microsoft.com/pricing/details/log-analytics/) ke službě Log Analytics v části Ingestování.
 
 ## <a name="references"></a>Odkazy
 
-[Protokolu analýzy ceny – nejčastější dotazy](https://azure.microsoft.com/pricing/details/log-analytics/): Nejčastější dotazy týkající se část obsahuje informace o úroveň free na uzlu ceny a další podrobnosti o cenách.
+[Protokolovat Analytics nejčastějších dotazech k cenám](https://azure.microsoft.com/pricing/details/log-analytics/): Nejčastější dotazy týkající se část obsahuje informace na úrovni free, podle počtu uzlů a další podrobnosti o cenách.
 

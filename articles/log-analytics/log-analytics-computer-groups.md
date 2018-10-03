@@ -1,6 +1,6 @@
 ---
-title: Skupiny počítačů v Azure Log Analytics protokolu hledání | Microsoft Docs
-description: Skupiny počítačů v analýzy protokolů umožňují oboru vyhledávání protokolu na konkrétní sadu počítačů.  Tento článek popisuje různé metody, které můžete použít k vytvoření skupiny počítačů a jejich použití v hledání protokolů.
+title: Prohledávání protokolů skupiny počítačů v Azure Log Analytics | Dokumentace Microsoftu
+description: Skupiny počítačů v Log Analytics vám umožní rozsah prohledávání protokolů konkrétní sadě počítačů.  Tento článek popisuje různé metody, které lze použít k vytvoření skupiny počítačů a jejich použití v hledání v protokolu.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -14,33 +14,33 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 23ac75b4afb07c3f8d5f0d90755a5cf2087087e1
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: 7e4889148a752b552f8bd65702ea5dda450ded31
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130671"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044293"
 ---
-# <a name="computer-groups-in-log-analytics-log-searches"></a>Skupiny počítačů v analýzy protokolů protokolu hledání
+# <a name="computer-groups-in-log-analytics-log-searches"></a>Prohledávání protokolů skupiny počítačů v Log Analytics
 
-Skupiny počítačů v analýzy protokolů umožňují oboru [protokolu hledání](log-analytics-log-search-new.md) na konkrétní sadu počítačů.  Každé skupiny se naplní se počítači buď pomocí dotaz, který definujete nebo importem skupiny z různých zdrojů.  Pokud skupina je obsažena v protokolu vyhledávání, výsledky jsou omezeny na záznamy, které odpovídají počítače ve skupině.
+Skupiny počítačů v Log Analytics vám umožní oboru [prohledávání protokolů](log-analytics-log-search-new.md) konkrétní sadě počítačů.  Každá skupina se zaplní, buď dotaz, který definujete pomocí počítače nebo importováním skupiny z různých zdrojů.  Skupiny je obsažen v prohledávání protokolu, výsledky jsou omezené na záznamy, které odpovídají počítačů ve skupině.
 
-## <a name="creating-a-computer-group"></a>Vytvoření skupiny počítačů
-Můžete vytvořit skupinu počítačů v analýzy protokolů pomocí libovolné metody v následující tabulce.  Podrobnosti o jednotlivých metod jsou uvedeny v následujících částech. 
+## <a name="creating-a-computer-group"></a>Vytvořit skupinu počítačů
+Vytvořit skupinu počítačů v Log Analytics pomocí některé z metod v následující tabulce.  Podrobnosti o každé metody jsou k dispozici v následujících částech. 
 
 | Metoda | Popis |
 |:--- |:--- |
-| Prohledávání protokolů |Vytvořte vyhledávání protokolu, který vrátí seznam počítačů. |
-| Rozhraní API pro prohledávání protokolů |Pomocí rozhraní API pro vyhledávání protokolu prostřednictvím kódu programu vytvořit skupinu počítačů, na základě výsledků hledání protokolů. |
-| Active Directory |Automaticky kontrolu členství ve skupině všechny počítače agenta, které jsou členy domény služby Active Directory a vytvořte skupinu ve analýzy protokolů pro každou skupinu zabezpečení. |
-| Configuration Manager | Importovat kolekce nástroje System Center Configuration Manager a vytvořte skupinu ve analýzy protokolů pro každý. |
-| Windows Server Update Services |Automatické prohledávání WSUS servery nebo klienty pro cílové skupiny a vytvořte skupinu ve analýzy protokolů pro každý. |
+| Prohledávání protokolů |Vytvoření prohledávání protokolu, který vrátí seznam počítačů. |
+| Rozhraní API pro prohledávání protokolů |Pomocí rozhraní API pro vyhledávání protokolu prostřednictvím kódu programu vytvořit skupinu počítačů na základě výsledků prohledávání protokolu. |
+| Active Directory |Automaticky vyhledávat členství ve skupině všechny počítače agenta, které jsou členy domény služby Active Directory a vytvoření skupiny pro každou skupinu zabezpečení ve službě Log Analytics. |
+| Configuration Manager | Importovat kolekce z nástroje System Center Configuration Manager a vytvoření skupiny ve službě Log Analytics pro každého. |
+| Windows Server Update Services |Automaticky vyhledat cílí na skupiny služby WSUS servery nebo klienty a vytvořte skupinu ve službě Log Analytics pro každého. |
 
 ### <a name="log-search"></a>Prohledávání protokolů
-Skupiny počítačů, které jsou vytvořené z hledání protokolů obsahovat všechny počítače vrácených dotazem, které definujete.  Tento dotaz běží pokaždé, když se používá skupina počítačů, tak, aby se projeví všechny změny, protože byla skupina vytvořena.  
+Skupiny počítačů, které jsou vytvořené z prohledávání protokolu obsahují všechny počítače vrácené dotazem, který určíte.  Tento dotaz je spustit pokaždé, když se skupina počítačů se používá tak, aby se projeví všechny změny, protože byla skupina vytvořena.  
 
-Pro skupinu počítačů můžete použít jakýkoli dotaz, ale musí vracet odlišnou sadu počítačů pomocí `distinct Computer`.  Následuje typický příklad hledání, které můžete použít pro jako skupinu počítačů.
+Můžete použít jakýkoli dotaz pro skupinu počítačů, ale musí vracet různé sady počítačů pomocí `distinct Computer`.  Tady je typickým příkladem vyhledávání, které můžete použít jako skupinu počítačů.
 
     Heartbeat | where Computer contains "srv" | distinct Computer
 
@@ -48,69 +48,69 @@ Následující tabulka popisuje vlastnosti, které definují skupinu počítač�
 
 | Vlastnost | Popis |
 |:---|:---|
-| Zobrazovaný název   | Název hledání pro zobrazení na portálu. |
-| Kategorie       | Kategorie k uspořádání vyhledávání v portálu. |
+| Zobrazovaný název   | Název hledání můžete zobrazit na portálu. |
+| Kategorie       | Kategorie k uspořádání hledání na portálu. |
 | Dotaz          | Dotaz pro skupinu počítačů. |
-| Alias funkce | Jedinečný odkaz použít k identifikaci skupiny počítačů v dotazu. |
+| Alias funkce | Jedinečný alias používaný k identifikaci skupinu počítačů v dotazu. |
 
-Použijte následující postup k vytvoření skupiny počítačů z protokolu hledání na portálu Azure.
+Pomocí následujícího postupu můžete vytvořit skupinu počítačů z prohledávání protokolů na webu Azure Portal.
 
-2. Otevřete **hledání protokolů** a pak klikněte na **uložená hledání** v horní části obrazovky.
+2. Otevřít **prohledávání protokolů** a potom klikněte na tlačítko **uložená hledání** v horní části obrazovky.
 3. Klikněte na tlačítko **přidat** a zadejte hodnoty pro každou vlastnost pro skupinu počítačů.
 4. Vyberte **uložit tento dotaz jako skupinu počítačů** a klikněte na tlačítko **OK**.
 
 
 
 ### <a name="active-directory"></a>Active Directory
-Když konfigurujete analýzy protokolů pro import členství ve skupině služby Active Directory, analyzuje členství ve skupině všechny počítače připojené k doméně s agentem OMS.  Skupina počítačů se vytvoří v analýzy protokolů pro každou skupinu zabezpečení ve službě Active Directory a každý počítač se přidá do odpovídající skupiny zabezpečení, které jsou členy skupin počítačů.  Členství v této se průběžně aktualizuje každé 4 hodiny.  
+Při konfiguraci Log Analytics pro import členství skupin Active Directory, analyzuje členství ve skupině všechny počítače připojené k doméně pomocí agenta OMS.  Skupina počítačů se vytvoří v Log Analytics pro každou skupinu zabezpečení ve službě Active Directory a každý počítač přidán do skupiny počítačů, které jsou členy skupiny zabezpečení odpovídající.  Toto členství se průběžně aktualizuje každé 4 hodiny.  
 
-Konfigurace analýzy protokolů k importu skupin zabezpečení služby Active Directory z analýzy protokolů **upřesňující nastavení** na portálu Azure.  Vyberte **skupiny počítačů**, **služby Active Directory**a potom **členství ve skupině služby Active Directory Import z počítačů**.  Není nutná žádná další konfigurace.
+Konfigurace Log Analytics k importu skupin zabezpečení služby Active Directory ze služby Log Analytics **upřesňující nastavení** na webu Azure Portal.  Vyberte **skupiny počítačů**, **služby Active Directory**a potom **členství ve skupině služby Active Directory Import z počítačů**.  Není nutná žádná další konfigurace.
 
 ![Skupiny počítačů ze služby Active Directory](media/log-analytics-computer-groups/configure-activedirectory.png)
 
-Importu skupin v nabídce uvádí počet počítačů s zjistil členství ve skupině a počet skupin importovat.  Kliknutím na některou z těchto odkazů se vrátíte **ComputerGroup** záznamy s těmito informacemi.
+Importu skupin v nabídce uvádí počet počítačů s členstvím skupiny zjistila a číslem skupiny importovat.  Kliknutím na některý z těchto odkazů se vraťte **ComputerGroup** záznamy s těmito informacemi.
 
 ### <a name="windows-server-update-service"></a>Windows Server Update Service
-Když konfigurujete analýzy protokolů pro import členství ve skupině WSUS, analyzuje zaměřená na členství ve skupině všechny počítače s agentem OMS.  Pokud používáte klienta cílení na skupiny cílení na jakýkoli počítač, který je připojený k analýze protokolů a je součástí všech WSUS má jeho členství ve skupinách importovat k analýze protokolů. Pokud používáte serverové cílení OMS agenta by měly být nainstalovány na serveru WSUS, aby se informace o členství ve skupině k importu analýzy protokolů.  Členství v této se průběžně aktualizuje každé 4 hodiny. 
+Při konfiguraci Log Analytics pro import členství ve skupině WSUS analyzuje cílení členství ve skupině všechny počítače s agentem OMS.  Pokud používáte na straně klienta cílí na skupiny cílí na jakýkoli počítač, který je připojený ke službě Log Analytics a je součástí libovolné služby WSUS se jeho členství ve skupině naimportovány do služby Log Analytics. Pokud používáte server-side cílení OMS by měl být agent nainstalovaný na serveru WSUS, aby se informace o členství ve skupinách pro import do Log Analytics.  Toto členství se průběžně aktualizuje každé 4 hodiny. 
 
-Konfigurace analýzy protokolů k importu skupin WSUS z analýzy protokolů **upřesňující nastavení** na portálu Azure.  Vyberte **skupiny počítačů**, **WSUS**a potom **Import WSUS členství ve skupinách**.  Není nutná žádná další konfigurace.
+Konfigurace Log Analytics k importu skupin WSUS ze služby Log Analytics **upřesňující nastavení** na webu Azure Portal.  Vyberte **skupiny počítačů**, **WSUS**a potom **služby WSUS pro Import členství ve skupinách**.  Není nutná žádná další konfigurace.
 
-![Skupiny počítačů ze služby WSUS](media/log-analytics-computer-groups/configure-wsus.png)
+![Skupiny počítačů služby WSUS](media/log-analytics-computer-groups/configure-wsus.png)
 
-Importu skupin v nabídce uvádí počet počítačů s zjistil členství ve skupině a počet skupin importovat.  Kliknutím na některou z těchto odkazů se vrátíte **ComputerGroup** záznamy s těmito informacemi.
+Importu skupin v nabídce uvádí počet počítačů s členstvím skupiny zjistila a číslem skupiny importovat.  Kliknutím na některý z těchto odkazů se vraťte **ComputerGroup** záznamy s těmito informacemi.
 
 ### <a name="system-center-configuration-manager"></a>System Center Configuration Manager
-Při konfiguraci analýzy protokolů pro import členství kolekce nástroje Configuration Manager vytvoří skupiny počítačů pro každou kolekci.  Informace o členství v kolekci je načíst každé 3 hodiny zachovat aktuální skupiny počítačů. 
+Při konfiguraci Log Analytics pro import členství v kolekcích Configuration Manageru se vytvoří skupina počítačů pro každou kolekci.  Informace o členství v kolekci se načte každé tři hodiny zachovat aktuální skupiny počítačů. 
 
-Před importem kolekcí nástroje Configuration Manager, musíte [připojení nástroje Configuration Manager k analýze protokolů](log-analytics-sccm.md).  Potom můžete nakonfigurovat importovat z analýzy protokolů **upřesňující nastavení** na portálu Azure.  Vyberte **skupiny počítačů**, **SCCM**a potom **členství v kolekcích Import Configuration Manager**.  Není nutná žádná další konfigurace.
+Před importem kolekcí nástroje Configuration Manager, je nutné [propojení Configuration Manageru k Log Analytics](log-analytics-sccm.md).  Potom můžete nakonfigurovat import ze služby Log Analytics **upřesňující nastavení** na webu Azure Portal.  Vyberte **skupiny počítačů**, **SCCM**a potom **členství v kolekcích Configuration Manageru Import**.  Není nutná žádná další konfigurace.
 
 ![Skupiny počítačů z SCCM](media/log-analytics-computer-groups/configure-sccm.png)
 
-Při kolekce byly importovány, v nabídce uvádí počet počítačů s zjistil členství ve skupině a počet skupin importovat.  Kliknutím na některou z těchto odkazů se vrátíte **ComputerGroup** záznamy s těmito informacemi.
+Importu kolekce v nabídce uvádí počet počítačů s členstvím skupiny zjistila a číslem skupiny importovat.  Kliknutím na některý z těchto odkazů se vraťte **ComputerGroup** záznamy s těmito informacemi.
 
 ## <a name="managing-computer-groups"></a>Správa skupin počítačů
-Můžete zobrazit skupiny počítačů, které byly vytvořeny z vyhledávání protokolu nebo rozhraní API pro vyhledávání protokolu z analýzy protokolů **upřesňující nastavení** na portálu Azure.  Vyberte **skupiny počítačů** a potom **uložené skupiny**.  
+Můžete zobrazit skupiny počítačů, které byly vytvořeny pomocí prohledávání protokolů nebo rozhraní API pro vyhledávání protokolů v Log Analytics **upřesňující nastavení** na webu Azure Portal.  Vyberte **skupiny počítačů** a potom **uložit skupiny**.  
 
-Klikněte **x** v **odebrat** sloupec odstranit skupinu počítačů.  Klikněte **zobrazit členy** ikona pro skupinu pro spuštění vyhledávání protokolu skupiny, který vrátí její členy.  Nelze upravit skupinu počítačů, ale místo toho musíte odstranit a znovu ji vytvořte s upravené nastavení.
+Klikněte na tlačítko **x** v **odebrat** sloupec, který chcete odstranit skupinu počítačů.  Klikněte na tlačítko **zobrazit členy** ikonu skupiny ke spuštění hledání v protokolu skupiny, která vrací jejích členů.  Nelze upravit skupinu počítačů, ale místo toho musíte odstranit a znovu ji vytvořte s upravená nastavení.
 
-![Skupiny uložené počítačů](media/log-analytics-computer-groups/configure-saved.png)
+![Uložené skupiny počítačů](media/log-analytics-computer-groups/configure-saved.png)
 
 
-## <a name="using-a-computer-group-in-a-log-search"></a>Použití skupiny počítačů do protokolu hledání
-Použití skupiny počítačů vytvořené z protokolu hledání v dotazu práce jeho alias jako funkci, obvykle s následující syntaxí:
+## <a name="using-a-computer-group-in-a-log-search"></a>Použití skupiny počítačů v prohledávání protokolu
+Můžete použít skupinu počítačů vytvořeny z prohledávání protokolů v dotazu úpravou jeho alias jako funkce, obvykle s následující syntaxí:
 
   `Table | where Computer in (ComputerGroup)`
 
-Například můžete použít následující vrátit UpdateSummary záznamy pro pouze počítače ve skupině počítač s názvem mycomputergroup.
+Například můžete použít následující vrátit záznamy UpdateSummary pro pouze počítače ve skupině počítač s názvem mycomputergroup.
  
   `UpdateSummary | where Computer in (mycomputergroup)`
 
 
-Skupiny importované počítače a jejich zahrnuté počítače jsou uloženy v **ComputerGroup** tabulky.  Například následující dotaz vrátí seznam počítačů ve skupině Domain Computers ze služby Active Directory. 
+Importovaný počítač skupiny a jejich zahrnuté počítače jsou uloženy v **ComputerGroup** tabulky.  Například následující dotaz vrátí seznam počítačů ve skupině Domain Computers ze služby Active Directory. 
 
   `ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer`
 
-Následující dotaz vrátí UpdateSummary záznamy pro jenom pro počítače v doméně počítače.
+Následující dotaz vrátí záznamy UpdateSummary pro jenom pro počítače v doméně počítače.
 
   ```
   let ADComputers = ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer;
@@ -120,21 +120,21 @@ Následující dotaz vrátí UpdateSummary záznamy pro jenom pro počítače v 
 
 
 
-## <a name="computer-group-records"></a>Záznamů skupiny počítače
-V pracovním prostoru analýzy protokolů pro každý členství ve skupině počítačů vytvořené pomocí služby Active Directory nebo služby WSUS se vytvoří záznam.  Tyto záznamy mají typ **ComputerGroup** a mít vlastnosti v následující tabulce.  Záznamy nejsou vytvořeny pro skupiny počítačů, které jsou založené na protokolu hledání.
+## <a name="computer-group-records"></a>Počítač seskupení záznamů
+V pracovním prostoru Log Analytics pro každého členství ve skupině počítačů vytvořené ze služby Active Directory nebo služby WSUS se vytvoří záznam.  Tyto záznamy mají typ **ComputerGroup** a mít vlastnosti v následující tabulce.  Pro skupiny počítačů, které jsou založené na prohledávání protokolů nejsou vytvářeny záznamy.
 
 | Vlastnost | Popis |
 |:--- |:--- |
 | Typ |*ComputerGroup* |
 | SourceSystem |*SourceSystem* |
-| Počítač |Název členského počítače. |
+| Počítač |Název členské počítače. |
 | Skupina |Název skupiny. |
 | GroupFullName |Úplná cesta ke skupině, včetně zdroje a název zdroje. |
-| GroupSource |Zdroj této skupině se shromážděných z. <br><br>Active Directory<br>WSUS<br>WSUSClientTargeting |
-| GroupSourceName |Název zdroje, který skupině nebyla shromážděna z.  U služby Active Directory je to název domény. |
-| ManagementGroupName |Název skupiny pro správu agentů SCOM.  Pro jiné agenty jde AOI -\<ID pracovního prostoru\> |
-| TimeGenerated |Datum a čas vytvoření nebo aktualizovat skupiny počítačů. |
+| GroupSource |Zdroj skupiny bylo shromážděno z. <br><br>Active Directory<br>WSUS<br>WSUSClientTargeting |
+| GroupSourceName |Název zdroje shromážděné ze skupiny.  Pro Active Directory jde o název domény. |
+| ManagementGroupName |Název skupiny pro správu agentů SCOM.  Pro ostatní agenty to je AOI -\<ID pracovního prostoru\> |
+| TimeGenerated |Datum a čas vytvoření nebo aktualizace skupiny počítačů. |
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o [protokolu hledání](log-analytics-log-searches.md) analyzovat data shromážděná ze zdrojů dat a řešení.  
+* Další informace o [prohledávání protokolů](log-analytics-log-searches.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.  
 

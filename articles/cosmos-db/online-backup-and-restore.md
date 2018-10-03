@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: govindk
-ms.openlocfilehash: a2c52844e09daf42418b4e548f7185e31dcf4ae9
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 77f22201b897703f6e74a5a3626a2ccc04a814f4
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053529"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043222"
 ---
 # <a name="automatic-online-backup-and-restore-with-azure-cosmos-db"></a>Automatické online zálohování a obnovení pomocí služby Azure Cosmos DB
 Azure Cosmos DB automaticky provede zálohování vašich dat v pravidelných intervalech. Automatické zálohy jsou prováděny bez vlivu na výkon nebo dostupnost databázových operací. Všechny zálohy jsou uloženy odděleně v jiné službě úložiště a tyto zálohy jsou globálně replikuje odolnosti proti místní havárií. Automatické zálohování jsou určené pro scénáře, pokud omylem odstraníte kontejneru Cosmos DB a později vyžadují obnovení dat nebo řešení zotavení po havárii.  
@@ -53,11 +53,15 @@ Pro rozhraní SQL API, pokud chcete zachovat vlastní snímky můžete exportova
 > Pokud jste "Zřídit propustnost pro skupinu kontejnerů na úrovni databáze," – Nezapomeňte se stane obnovení na úrovni účtu. úplné databáze. Je také potřeba zajistit oslovit do 8 hodin týmu podpory, pokud omylem odstraníte kontejner. Data nejde obnovit, pokud není kontaktovat tým podpory do 8 hodin. 
 
 
+
 ## <a name="restoring-a-database-from-an-online-backup"></a>Obnovení databáze z online zálohování
 
 Pokud omylem odstraníte, databáze nebo kontejneru, můžete si [lístek podpory](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) nebo [obraťte se na podporu Azure](https://azure.microsoft.com/support/options/) k obnovení dat z posledního automatického zálohování. Podpora Azure je dostupný pro vybrané plány, jako je například Standard, pro vývojáře, podporu není k dispozici s plánem Basic. Další informace o plánech podpory různých najdete v tématu [plánů podpory Azure](https://azure.microsoft.com/support/plans/) stránky. 
 
 Pokud je potřeba obnovit databázi z důvodu problému poškození dat (včetně případů, kdy se odstraní dokumenty v rámci kontejneru), najdete v článku [zpracování poškození dat](#handling-data-corruption) potřebujete provést další kroky, aby se zabránilo poškozená data přepsání existující zálohy. Pro konkrétní snímek zálohy obnovit Cosmos DB vyžaduje, aby byla data k dispozici po dobu trvání cyklu zálohování tohoto snímku.
+
+> [!NOTE]
+> Kolekce nebo databáze je možné obnovit až po požadavky zákazníků pro obnovení. Odstranit kontejner nebo databáze hned po obnovení dat je responsbility zákazníka. Pokud neprovedete odstranění obnovené databáze ani kolekce, bude se vám být naúčtovány náklady sazbou obnovené kolekce nebo databáze. Ano je velmi důležité je okamžitě odstranit. 
 
 ## <a name="handling-data-corruption"></a>Zpracování poškození dat.
 

@@ -1,6 +1,6 @@
 ---
-title: Shromažďování metrik Azure PaaS prostředků s Log Analytics | Microsoft Docs
-description: Zjistěte, jak povolit kolekce metriky prostředků Azure PaaS pomocí prostředí PowerShell pro uchování a analýzu v analýzy protokolů.
+title: Shromažďovat metriky prostředků Azure PaaS s využitím Log Analytics | Dokumentace Microsoftu
+description: Zjistěte, jak chcete zapnout shromažďování metrik prostředků Azure PaaS pomocí prostředí PowerShell pro uchovávání dat a analýzy v Log Analytics.
 services: log-analytics
 documentationcenter: log-analytics
 author: mgoedtel
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/13/2017
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: b44a6627ab12c8a4ad21e7beded7c5fd2c2e1d39
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: beac96629ef2cc0cbbe8644929e7e0cc7c97a243
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128458"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044344"
 ---
-# <a name="configure-collection-of-azure-paas-resource-metrics-with-log-analytics"></a>Konfigurace shromažďování metrik Azure PaaS prostředků s analýzy protokolů
+# <a name="configure-collection-of-azure-paas-resource-metrics-with-log-analytics"></a>Konfigurace shromažďování metrik prostředků Azure PaaS s využitím Log Analytics
 
-Azure platforma jako služba (PaaS) prostředky, jako Azure SQL a webových serverů (webové aplikace), můžete posílat data metriky výkonu nativně k analýze protokolů. Tento skript umožňuje uživatelům povolíte protokolování pro prostředky PaaS nasazené v určité skupiny zdrojů nebo v celé předplatné. 
+Platformu Azure jako služba (PaaS) prostředky, jako je Azure SQL a webových serverů (webové aplikace), můžete posílat data metrik výkonu nativně ke službě Log Analytics. Tento skript umožňuje uživatelům k zapnutí metrik pro PaaS prostředky, které jsou již nasazeny v konkrétní skupině prostředků nebo v celé předplatné protokolování. 
 
-V současné době neexistuje žádný způsob, jak povolit metriky protokolování pro PaaS prostředky prostřednictvím portálu Azure. Proto musíte použít skript prostředí PowerShell. Tato funkce protokolování nativní metriky společně s analýzy protokolů monitorování, umožňují sledovat prostředky Azure ve velkém měřítku. 
+V současné době neexistuje žádný způsob, jak povolit protokolování pro PaaS prostředků na webu Azure portal metriky. Proto budete muset použít skript prostředí PowerShell. Tato možnost protokolování nativní metriky spolu s Log Analytics, monitorování, umožňují snadno monitorovat prostředky Azure ve velkém měřítku. 
 
 ## <a name="prerequisites"></a>Požadavky
-Ověřte, zda že máte následující moduly Azure Resource Manager nainstalován na váš počítač před pokračováním:
+Ověřte, že máte následující moduly Azure Resource Manageru nainstalované v počítači, než budete pokračovat:
 
 - AzureRM.Insights
 - AzureRM.OperationalInsights
@@ -37,52 +37,52 @@ Ověřte, zda že máte následující moduly Azure Resource Manager nainstalov�
 - AzureRM.profile
 
 >[!NOTE]
->Doporučujeme vám, že jsou všechny moduly Azure Resource Manager stejnou verzi, aby se zajistila kompatibilita při spuštění Správce prostředků Azure příkazy z prostředí PowerShell.
+>Doporučujeme vám, že všechny moduly Azure Resource Manageru jsou stejné verze pro zajištění kompatibilitě, když spustíte příkazy Azure Resource Manageru v Powershellu.
 >
-Nainstalujte nejnovější verzi moduly Azure Resource Manager v počítači, najdete v tématu [instalace a konfigurace prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.1#update-azps).  
+Nainstalujte nejnovější moduly Azure Resource Manageru ve vašem počítači, naleznete v tématu [instalace a konfigurace Azure Powershellu](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.1#update-azps).  
 
-## <a name="enable-azure-diagnostics"></a>Povolit Azure Diagnostics  
-Konfigurace Azure Diagnostics pro PaaS prostředky se provádí spuštěním skriptu, **povolit AzureRMDiagnostics.ps1**, který je k dispozici [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/Enable-AzureRMDiagnostics/2.52/DisplayScript).  Skript podporuje následující scénáře:
+## <a name="enable-azure-diagnostics"></a>Povolení diagnostiky Azure  
+Konfigurace diagnostiky Azure pro prostředky PaaS dosahuje spuštěním skriptu **povolit AzureRMDiagnostics.ps1**, který je k dispozici [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/Enable-AzureRMDiagnostics/2.52/DisplayScript).  Tento skript podporuje následující scénáře:
   
-* Určení prostředek související s jednu nebo více skupin prostředků v předplatném.  
-* Určení prostředek související s určité skupiny zdrojů v předplatném.  
-* Překonfigurujte prostředek k předávání do různých pracovního prostoru
+* Určení prostředků související s jeden nebo více skupin prostředků v předplatném  
+* Určení prostředků související s konkrétní skupině prostředků v předplatném  
+* Změna konfigurace prostředků pro předávání s jiným pracovním prostorem
 
-Jsou podporovány pouze prostředky, které podporují shromažďování metrik pomocí diagnostiky Azure a odeslat přímo k Log Analytics.  Podrobný seznam, zkontrolujte [protokoly služby Azure shromažďovat a metriky pro použití v analýzy protokolů](log-analytics-azure-storage.md) 
+Podporují se jenom prostředky, které podporují shromažďování metrik pomocí diagnostiky Azure a odeslat přímo do služby Log Analytics.  Podrobný seznam najdete v tématu [protokoly služby Azure shromažďovat a metriky pro použití v Log Analytics](log-analytics-azure-storage.md) 
 
-Proveďte následující kroky ke stažení a spuštění skriptu.
+Proveďte následující kroky a stáhněte a spusťte skript.
 
-1.  Na úvodní obrazovce Windows, zadejte **prostředí PowerShell** a ve výsledcích hledání klikněte pravým tlačítkem na prostředí PowerShell.  Vyberte v nabídce **spustit jako správce**.   
-2. Uložit **povolit AzureRMDiagnostics.ps1** soubor skriptu místně tak, že spustíte následující příkaz a poskytnutí cesty k uložení skriptu.    
+1.  Na úvodní obrazovce Windows zadejte **Powershellu** a ve výsledcích hledání klikněte pravým tlačítkem na prostředí PowerShell.  Vyberte z nabídky **spustit jako správce**.   
+2. Uložit **povolit AzureRMDiagnostics.ps1** soubor skriptu místně tak, že spustíte následující příkaz a poskytuje cestu pro ukládání skriptu.    
 
     ```
     PS C:\> save-script -Name Enable-AzureRMDiagnostics -Path "C:\users\<username>\desktop\temp"
     ```
 
 3. Spuštěním příkazu `Connect-AzureRmAccount` vytvořte připojení k Azure.   
-4. Spusťte následující skript `.\Enable-AzureRmDiagnostics.ps1` bez parametrů Povolit shromažďování dat z konkrétní prostředek v rámci vašeho předplatného, nebo s parametrem `-ResourceGroup <myResourceGroup>` určete prostředku v určité skupiny zdrojů.   
-5. Ze seznamu vyberte odpovídající předplatné, pokud máte více než jednu, tak, že zadáte správnou hodnotu.<br><br> ![Vyberte předplatné, které vrátil skript](./media/log-analytics-collect-azurepass-posh/script-select-subscription.png)<br> Jinak automaticky vybere jeden odběr k dispozici.
-6. V dalším kroku skript vrátí seznam pracovních prostorů analýzy protokolů zaregistrován v rámci předplatného.  Vyberte příslušný ze seznamu.<br><br> ![Vyberte pracovní prostor vrátil skript](./media/log-analytics-collect-azurepass-posh/script-select-workspace.png)<br> 
-7. Vyberte, které chcete povolit kolekci z prostředku Azure. Pokud zadáte 5, je třeba povolit shromažďování dat pro databáze SQL Azure.<br><br> ![Typ vyberte prostředku vrácená skriptem](./media/log-analytics-collect-azurepass-posh/script-select-resource.png)<br>
-   Můžete zvolit pouze prostředky, které podporují shromažďování metrik pomocí diagnostiky Azure a odesílání přímo k Log Analytics.  Skript se zobrazí hodnota **True** pod **metriky** sloupec pro seznam zdrojů, které nalezne v předplatného nebo zadaná skupina prostředků.    
-8. Zobrazí se výzva k potvrzení výběru.  Zadejte **Y** povolení protokolování metriky pro všechny vybrané prostředky pro obor definovaný, které v našem příkladu jsou všechny databáze SQL v rámci předplatného.  
+4. Spusťte následující skript `.\Enable-AzureRmDiagnostics.ps1` bez parametrů povolíte shromažďování dat z konkrétního prostředku ve vašem předplatném nebo s parametrem `-ResourceGroup <myResourceGroup>` zadat prostředek v konkrétní skupině prostředků.   
+5. Ze seznamu vyberte odpovídající předplatné, pokud máte více než jeden, tak, že zadáte správnou hodnotu.<br><br> ![Vyberte předplatné, které vrátil skript](./media/log-analytics-collect-azurepass-posh/script-select-subscription.png)<br> V opačném případě automaticky vybere jedno předplatné, které jsou k dispozici.
+6. V dalším kroku skript vrátí seznam pracovních prostorů Log Analytics zaregistrován v rámci předplatného.  Vyberte příslušné předplatné ze seznamu.<br><br> ![Vyberte pracovní prostor, které vrátil skript](./media/log-analytics-collect-azurepass-posh/script-select-workspace.png)<br> 
+7. Vyberte prostředek Azure, který chcete povolit shromažďování z. Pokud zadáte 5, například povolíte shromažďování dat pro databáze SQL Azure.<br><br> ![Vyberte prostředek typu vrátil skript](./media/log-analytics-collect-azurepass-posh/script-select-resource.png)<br>
+   Můžete vybrat jenom prostředky, které podporují shromažďování metrik pomocí diagnostiky Azure a odesílání přímo ke službě Log Analytics.  Skript se zobrazí hodnota **True** pod **metriky** sloupců pro seznam prostředků zjistí v zadané skupině prostředků nebo předplatného.    
+8. Zobrazí se výzva k potvrzení výběru.  Zadejte **Y** povolení protokolování metriky pro všechny vybrané prostředky oboru definována, které v našem příkladu jsou všechny databáze SQL v předplatném.  
 
-Skript spustí u každého prostředku odpovídající vybraných kritérií a Povolit shromažďování metrik pro ně. Po jeho dokončení, zobrazí se zpráva oznamující, že konfigurace je hotová.  
+Skript spustit proti každého prostředku odpovídající vybraným kritériím a Povolit shromažďování metrik pro ně. Až se dokončí, zobrazí se zpráva oznamující, že konfigurace je hotová.  
 
-Krátce po dokončení se spustí, když chcete zobrazit data z prostředku Azure PaaS do úložiště analýzy protokolů.  Záznam s typem `AzureMetrics` je vytvořena a analýza tyto záznamy jsou podporována [Azure SQL Analytics](log-analytics-azure-sql.md) a [Azure Web Apps Analytics](log-analytics-azure-web-apps-analytics.md) řešení pro správu.   
+Krátce po dokončení se začnou zobrazovat data z Azure PaaS prostředku v úložišti Log Analytics.  Záznam s typem `AzureMetrics` se vytvoří a analýza tyto záznamy jsou podporovány [Azure SQL Analytics](log-analytics-azure-sql.md) a [Azure Web Apps Analytics](log-analytics-azure-web-apps-analytics.md) řešení pro správu.   
 
 ## <a name="update-a-resource-to-send-data-to-another-workspace"></a>Provést upgrade prostředku pro odesílání dat do jiného pracovního prostoru
-Pokud máte na prostředek, který je již odesílání dat do pracovního prostoru analýzy protokolů a později se rozhodnete překonfigurovat tak, aby odkazovaly jiného pracovního prostoru, můžete spustit skript se `-Update` parametr.  
+Pokud máte prostředek, který je už odesílání dat do pracovního prostoru Log Analytics a později se rozhodnete překonfigurování odkazovat na jiný pracovní prostor, můžete spustit skript `-Update` parametru.  
 
 **Příklad:** 
 `PS C:\users\<username>\Desktop\temp> .\Enable-AzureRMDiagnostics.ps1 -Update`
 
-Zobrazí se výzva k zodpovězení stejné informace jako při spuštění skriptu na provedení počáteční konfigurace.  
+Zobrazí výzva k zodpovězení stejné informace, jako když jste spustili skript, který chcete provést počáteční konfiguraci.  
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o [protokolu hledání](log-analytics-log-searches.md) analyzovat data shromážděná ze zdrojů dat a řešení. 
+* Další informace o [prohledávání protokolů](log-analytics-log-searches.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 
 
 * Použití [vlastní pole](log-analytics-custom-fields.md)(k analýze záznamů událostí do jednotlivých polí.
 
-* Zkontrolujte [vytvořit vlastní řídicí panel pro použití v analýzy protokolů](log-analytics-dashboards.md) pochopit, jak můžete vizualizovat váš protokol vyhledá smysluplnějšími způsoby pro organizaci.
+* Kontrola [vytvořit vlastní řídicí panel pro použití v Log Analytics](log-analytics-dashboards.md) pochopit, jak vizualizovat váš protokol vyhledá smysluplnějšími způsoby pro organizaci.
