@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/28/2018
+ms.date: 10/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7e0578572de53fefddb88e163520d2bf5f580012
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 578d078550daaae54c63bf91da1fa5590bb8fdf6
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434309"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249141"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Řetězec funkce pro šablony Azure Resource Manageru
 
@@ -1680,15 +1680,15 @@ Vrátí dílčí řetězec, který začíná na pozici zadaného znaku a obsahuj
 |:--- |:--- |:--- |:--- |
 | stringToParse |Ano |řetězec |Původní řetězec, ze které je dílčí řetězec extrahován. |
 | Počáteční index |Ne |int |Počáteční znak pozice s nulovým základem pro dílčí řetězec. |
-| Délka |Ne |int |Počet znaků pro dílčí řetězec. Musí odkazovat na umístění v rámci řetězce. |
+| Délka |Ne |int |Počet znaků pro dílčí řetězec. Musí odkazovat na umístění v rámci řetězce. Musí být nulová nebo větší. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Dílčí řetězec.
+Dílčí řetězec. Nebo prázdný řetězec, pokud délka je 0.
 
 ### <a name="remarks"></a>Poznámky
 
-Funkce selže, pokud podřetězec přesahuje konec řetězce. V následujícím příkladu se nezdaří s chybou "parametry index a délka musí odkazovat na umístění v rámci řetězce. Parametr indexu: "0", parametr délky: 11, délky řetězce: "10". ".
+Funkce selže, když podřetězec přesahuje konec řetězce, nebo když délka je menší než nula. V následujícím příkladu se nezdaří s chybou "parametry index a délka musí odkazovat na umístění v rámci řetězce. Parametr indexu: "0", parametr délky: 11, délky řetězce: "10". ".
 
 ```json
 "parameters": {

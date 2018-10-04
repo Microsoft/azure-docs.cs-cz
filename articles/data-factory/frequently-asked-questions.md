@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: shlo
-ms.openlocfilehash: 73bc8b6954470d11d6369bc733bb7c6f794ce892
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: d900c9c438ed40841639d556643a231075f4f194
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45577128"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249583"
 ---
 # <a name="azure-data-factory-faq"></a>Nejčastější dotazy k Azure Data Factory
 Tento článek obsahuje odpovědi na nejčastější dotazy ohledně služby Azure Data Factory.  
@@ -83,7 +83,7 @@ Od původní verze Public Preview v 2017 Data Factory přináší následující
 -   Spravované Instance (IU)
 -   Elastický fond
 -   Podpora pro Azure Resource Manageru Virtual Network (VNet) nad klasickou virtuální síť, která se nepoužívají v budoucnu – díky tomu můžete vložit/spojení vašeho prostředí Azure-SSIS Integration Runtime (IR) k virtuální síti, který je nakonfigurovaný pro službu Azure SQL DB pomocí koncových bodů služby virtuální sítě nebo MI / místní přístup k datům, naleznete v tématu: https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network 
--   Podpora pro ověřování Azure Active Directory (AAD) nad rámec ověřování SQL pro připojení k vaší databáze SSISDB – to vám umožní používat ověřování AAD s vaší ADF Identity spravované služby (MSI)
+-   Podpora pro ověřování Azure Active Directory (AAD) nad rámec ověřování SQL pro připojení k vaší databáze SSISDB – díky tomu můžete použít ověřování AAD pomocí vaší ADF spravované identity pro prostředky Azure
 -   Podpora pro přenesení svoji vlastní licenci systému SQL Server v místním získat značné úspory z možnosti Azure Hybrid Benefit (AHB)
 -   Podporu pro Enterprise Edition z Azure-SSIS IR, která vám umožní používat pokročilé/prémiové funkce, vlastní nastavení, chcete-li nainstalovat další součásti nebo rozšíření a 3. stran ekosystému, naleznete v tématu: https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/ 
 -   Hlubší integrace služby SSIS ve službě ADF, která umožňuje vyvolání nebo triggeru prvotřídní spuštění balíčku služby SSIS aktivit v kanálech ADF a naplánují je prostřednictvím aplikace SSMS, naleznete v tématu: https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/ 

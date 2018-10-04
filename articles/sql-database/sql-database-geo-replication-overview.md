@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: e3296430cd58c8ba33f7cc9acd4cded2925b5be9
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: bd224317ba777939a1db4edeb7cb5df728fc434c
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166278"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249005"
 ---
 # <a name="overview-active-geo-replication-and-auto-failover-groups"></a>Přehled: Aktivní geografickou replikaci a automatické převzetí služeb při selhání skupiny
 
@@ -90,6 +90,10 @@ Funkce aktivní geografickou replikaci poskytuje následující základní možn
 ## <a name="auto-failover-group-capabilities"></a>Funkce skupiny-automatické převzetí služeb při selhání
 
 Funkce automatického převzetí služeb skupiny poskytuje výkonné abstrakce aktivní geografickou replikaci díky podpoře replikace na úrovni skupiny a automatické převzetí služeb při selhání. Kromě toho odebere potřeba změnit připojovací řetězec SQL po převzetí služeb při selhání tím, že poskytuje další naslouchací proces koncové body. 
+
+> [!NOTE]
+> Automatické převzetí služeb při selhání není k dispozici ve spravované instanci.
+>  
 
 * **Skupiny převzetí služeb při selhání**: jeden nebo více skupin převzetí služeb při selhání můžete vytvořit mezi dvěma servery v různých oblastech (primární a sekundární server). Každá skupina může zahrnovat jednu nebo několik databází, které se dají obnovit jako jednotka v případě, že některá nebo všechna primární databáze nedostupné kvůli výpadku v primární oblasti.  
 * **Primární server**: server, který je hostitelem primární databází ve skupině převzetí služeb při selhání.
