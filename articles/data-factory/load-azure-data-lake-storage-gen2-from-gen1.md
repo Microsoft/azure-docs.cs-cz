@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: jingwang
-ms.openlocfilehash: a160c47e12db3c4ef9cefc5cd70293468ddf8234
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 953585ffcc5a40d9ae48055f68a1c1fa84db25cc
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008738"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249328"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-preview-with-azure-data-factory"></a>Kopírování dat z Azure Data Lake Storage Gen1 na Gen2 (Náhled) pomocí služby Azure Data Factory
 
@@ -80,7 +80,7 @@ V tomto článku se dozvíte, jak pomocí nástroje pro kopírování dat Data F
    3. Vyberte **Další**.
    
    > [!IMPORTANT]
-   > V tomto názorném postupu použijete _se identita spravované služby_ k ověření vaší Gen1e Data Lake Storage. Je potřeba udělit příslušná oprávnění v Azure Data Lake Storage Gen1 MSI pomocí následujícího [tyto pokyny](connector-azure-data-lake-store.md#using-managed-service-identity-authentication).
+   > V tomto názorném postupu použijete k ověření vaší Data Lake Storage Gen1e spravovanou identitu pro prostředky Azure. Je potřeba udělit příslušná oprávnění v Azure Data Lake Storage Gen1 MSI pomocí následujícího [tyto pokyny](connector-azure-data-lake-store.md#managed-identity).
    
    ![Zadejte účet Azure Data Lake Storage Gen1](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen1-account.png)
    

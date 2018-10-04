@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 54bb6056c41126aecada265eb0e079bc7c281be8
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: d5f5b66dee88a993347b6c1672fd9526ece09dc4
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865929"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269509"
 ---
 # <a name="api-management-access-restriction-policies"></a>Zásady omezení přístupu služby API Management
 Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -288,7 +288,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 -   **Zásady obory:** produktu  
   
 ##  <a name="SetUsageQuotaByKey"></a> Nastavení kvóty využití podle klíče  
- `quota-by-key` Zásada vynucuje obnovitelných nebo doba života volání svazku a/nebo šířku pásma kvóty, na základě za klíč. Klíč může obsahovat libovolné řetězcovou hodnotu a se většinou poskytuje pomocí výrazů zásad. Volitelný krok podmínku lze přidat k určení, které požadavky by měla být započítává kvóty.  
+ `quota-by-key` Zásada vynucuje obnovitelných nebo doba života volání svazku a/nebo šířku pásma kvóty, na základě za klíč. Klíč může obsahovat libovolné řetězcovou hodnotu a se většinou poskytuje pomocí výrazů zásad. Volitelný krok podmínku lze přidat k určení, které požadavky by měla být započítává kvóty. Jakmile se tato zásada se aktivuje volající přijímat `403 Forbidden` stavového kódu odpovědi.
   
  Další informace a příklady těchto zásad najdete v tématu [pokročilé omezování požadavků pomocí Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/).  
   
@@ -508,7 +508,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 |vyžadovat čas vypršení platnosti|Datový typ Boolean. Určuje, jestli se vyžaduje deklaraci identity vypršení platnosti tokenu.|Ne|true (pravda)|
 |require-scheme|Název tokenu schéma, například "Nosiče". Pokud tento atribut je nastaven, zásady zajistí, že zadané schéma je k dispozici v Hodnota hlavičky autorizace.|Ne|neuvedeno|
 |požadovat podepsané tokenů|Datový typ Boolean. Určuje, zda je token musí být podepsán.|Ne|true (pravda)|  
-|Oddělovač|Řetězec. Určuje oddělovač (například ",") má být použit pro extrahování sadu hodnot z více Vážíme si toho deklarace identity.|Ne|neuvedeno| 
+|Oddělovač|řetězec. Určuje oddělovač (například ",") má být použit pro extrahování sadu hodnot z více Vážíme si toho deklarace identity.|Ne|neuvedeno| 
 |url|Otevřete adresu URL koncového bodu konfigurace ID kde lze získat metadata Open ID konfigurace. Odpověď by měla být podle specifikace definované na adrese URL:`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`.  Azure Active Directory použít následující adresu URL: `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` nahraďte název tenanta adresáře, třeba `contoso.onmicrosoft.com`.|Ano|neuvedeno|  
   
 ### <a name="usage"></a>Využití  

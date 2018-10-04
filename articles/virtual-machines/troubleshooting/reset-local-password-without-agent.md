@@ -3,7 +3,7 @@ title: Resetování místního hesla Windows bez agenta Azure | Dokumentace Micr
 description: Jak resetovat heslo místního uživatelského účtu Windows, pokud agent hosta Azure není nainstalovaná nebo funkční na virtuálním počítači
 services: virtual-machines-windows
 documentationcenter: ''
-author: cynthn
+author: genlin
 manager: jeconnoc
 editor: ''
 ms.assetid: cf353dd3-89c9-47f6-a449-f874f0957013
@@ -12,13 +12,13 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
-ms.author: cynthn
-ms.openlocfilehash: d9dc78d73f7290c39e339320b3d2314069232b42
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.author: genli
+ms.openlocfilehash: a69692d9f50d0362a6b10d3237e1e5448c43baab
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47413268"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268712"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Resetování místního hesla Windows pro virtuální počítač Azure do offline režimu
 Můžete resetovat hesla Windows místního virtuálního počítače v Azure s využitím [webu Azure portal nebo Azure Powershellu](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) předpokladu, že je nainstalovaný agent hosta Azure. Tato metoda je primárním způsob, jak resetování hesla pro virtuální počítač Azure. Pokud narazíte na problémy s neodpovídajícím agentem hosta Azure nebo selhání instalace po nahrání vlastní image, můžete ručně resetovat hesla Windows. Tento článek podrobně popisuje, jak resetovat heslo místního účtu připojením zdrojový OS virtuální disk k jinému virtuálnímu počítači. Podle kroků popsaných v tomto článku se nevztahují na řadiče domény Windows. 

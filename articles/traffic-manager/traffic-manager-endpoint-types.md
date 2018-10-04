@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: kumud
-ms.openlocfilehash: e0c2ad2385b5c8a54b4d8a743cc4f081e5ff6703
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 06965c43408e943922048804099f8f28d69c8540
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127291"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248281"
 ---
 # <a name="traffic-manager-endpoints"></a>Koncové body Traffic Manageru
 Microsoft Azure Traffic Manager umožňuje řídit, jak je zatížení sítě distribuováno do nasazení aplikace spuštěné v různých datových centrech. Konfigurace nasazení každé aplikace jako "koncový bod' v Traffic Manageru. Když Traffic Manager obdrží žádost o DNS, vybere dostupný koncový bod vrátit v odpovědi DNS. Volba Traffic Manageru založen na aktuální stav koncového bodu a metodu směrování provozu. Další informace najdete v tématu [jak funguje Traffic Manager](traffic-manager-how-it-works.md).
@@ -37,8 +37,9 @@ Každý typ koncového bodu podrobněji v následujících částech.
 
 Koncové body Azure jsou používané pro služby založené na Azure ve službě Traffic Manager. Jsou podporovány následující typy prostředků Azure:
 
-* "Klasickém" virtuální počítače IaaS a PaaS cloudové služby.
+* PaaS cloud services.
 * Web Apps
+* Sloty webové aplikace
 * Prostředků PublicIPAddress (který jde připojit k virtuální počítače přímo nebo prostřednictvím služby Azure Load Balancer). PublicIpAddress musí mít název DNS přiřadit pro použití v profilu služby Traffic Manager.
 
 Prostředků PublicIPAddress jsou prostředky Azure Resource Manageru. Neexistují v modelu nasazení classic. Proto jsou pouze podporované v Traffic Manageru na Azure Resource Manageru prostředí. Jiné typy koncových bodů jsou podporované prostřednictvím modelu nasazení classic i Resource Manager.

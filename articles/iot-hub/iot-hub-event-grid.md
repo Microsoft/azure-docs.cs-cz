@@ -2,30 +2,29 @@
 title: Azure IoT Hub a Event Grid | Dokumentace Microsoftu
 description: Pomocí Azure Event Grid ke spouštění procesů na základě akcí, ke kterým dochází ve službě IoT Hub.
 author: kgremban
-manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/14/2018
 ms.author: kgremban
-ms.openlocfilehash: 3c12e98137f44ac094adaae282b5d56d30061e60
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 14bdbb5d629cb5a3fccd6f874e30ded0648e0124
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719847"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249464"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reakce na události služby IoT Hub s využitím služby Event Grid pro aktivaci akcí
 
 Azure IoT Hub se integruje s Azure Event Grid tak, aby mohla odesílat oznámení událostí k jiným službám a aktivovat podřízené procesy. Konfigurovat podnikové aplikace tak, aby naslouchala událostem IoT Hubu tak, aby mohly reagovat na kritické události spolehlivé, škálovatelné a zabezpečeným způsobem. Například sestavte aplikaci umožňuje provádět více akcí, jako je aktualizace databáze, vytvářet lístek a doručování e-mailové oznámení pokaždé, když se nový IoT zařízení je zaregistrované do služby IoT hub. 
 
-[Azure Event Grid] [ lnk-eg-overview] je plně spravovaná služba Směrování událostí, který používá publikování-odběru modelu. Event Grid obsahuje integrovanou podporu pro služby Azure, jako je [Azure Functions](../azure-functions/functions-overview.md) a [Azure Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md)a může poskytovat výstrahy na události na jiné než Azure services pomocí webhooků. Úplný seznam obslužných rutin událostí, které podporuje Služba Event Grid najdete v tématu [Úvod do služby Azure Event Grid][lnk-eg-overview]. 
+[Azure Event Grid](../event-grid/overview.md) je plně spravovaná služba Směrování událostí, který používá publikování-odběru modelu. Event Grid obsahuje integrovanou podporu pro služby Azure, jako je [Azure Functions](../azure-functions/functions-overview.md) a [Azure Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md)a může poskytovat výstrahy na události na jiné než Azure services pomocí webhooků. Úplný seznam obslužných rutin událostí, které podporuje Služba Event Grid najdete v tématu [Úvod do služby Azure Event Grid](../event-grid/overview.md). 
 
 ![Architektura služby Azure Event Grid](./media/iot-hub-event-grid/event-grid-functional-model.png)
 
 ## <a name="regional-availability"></a>Regionální dostupnost
 
-Integrace služby Event Grid je k dispozici pro IoT hub umístěných v oblastech, kde je podporován služby Event Grid. Nejnovější seznam oblastí najdete v tématu [Úvod do služby Azure Event Grid][lnk-eg-overview]. 
+Integrace služby Event Grid je k dispozici pro IoT hub umístěných v oblastech, kde je podporován služby Event Grid. Nejnovější seznam oblastí najdete v tématu [Úvod do služby Azure Event Grid](../event-grid/overview.md). 
 
 ## <a name="event-types"></a>Typy událostí
 
@@ -132,23 +131,23 @@ devices/{deviceId}
 ```
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>Omezení pro zařízení připojené a zařízení odpojí události
 
-Zobrazí zařízení, připojení a odpojení zařízení události, je nutné otevřít odkaz D2C nebo C2D odkaz pro vaše zařízení. Pokud vaše zařízení používá protokol MQTT, Centrum IoT udržovat C2D otevřete odkaz. AMQP můžete otevřít odkaz C2D voláním [přijímat asynchronní rozhraní API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet). Odkaz D2C je otevřený, když odesíláte telemetrii. Pokud je blikání připojení zařízení, například zařízení, připojení a odpojení často, nebudeme vám posílat každý jedno připojení stavu, ale budete publikovat stav připojení, která je zachycená každou minutu. I v případě výpadku služby IoT Hub publikujeme stav připojení zařízení ihned poté, co je výpadek. Pokud zařízení odpojí během tohoto výpadku, události odpojených zařízení bude publikován do 10 minut.
+Zobrazí zařízení, připojení a odpojení zařízení události, je nutné otevřít odkaz D2C nebo C2D odkaz pro vaše zařízení. Pokud vaše zařízení používá protokol MQTT, Centrum IoT udržovat C2D otevřete odkaz. AMQP můžete otevřít odkaz C2D voláním [přijímat asynchronní rozhraní API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet). 
+
+Odkaz D2C je otevřený, když odesíláte telemetrii. Pokud je blikání připojení zařízení, například zařízení, připojení a odpojení často, nebudeme vám posílat každý jedno připojení stavu, ale budete publikovat stav připojení, která je zachycená každou minutu. I v případě výpadku služby IoT Hub publikujeme stav připojení zařízení ihned poté, co je výpadek. Pokud zařízení odpojí během tohoto výpadku, události odpojených zařízení bude publikován do 10 minut.
 
 ## <a name="tips-for-consuming-events"></a>Tipy pro používání událostí
 
 Aplikace, které zpracovávají události služby IoT Hub postupujte podle těchto doporučené postupy:
 
 * Několik předplatných lze nakonfigurovat pro směrování událostí na stejný ovladač událostí, takže je důležité, abyste se předpokládá, že jsou události z určitého zdroje. Vždy zkontrolujte zpráv tématu k zajištění, že pocházejí ze služby IoT hub, které jste očekávali. 
+
 * Nepředpokládejte, že jsou všechny události, které se zobrazí typy, které jste očekávali. Vždy zkontrolujte typ události před zpracováním zprávy.
+
 * Můžete doručování zpráv mimo pořadí nebo po prodlevě. Značka etag pole použijte k pochopení, pokud je aktuální informace o objektech.
 
 ## <a name="next-steps"></a>Další postup
 
 * [Projděte si kurz událostí služby IoT Hub](../event-grid/publish-iot-hub-events-to-logic-apps.md)
-* [Informace o uspořádání událostí připojení a odpojení zařízení](../iot-hub/iot-hub-how-to-order-connection-state-events.md)
-* [Další informace o službě Event Grid][lnk-eg-overview]
-* [Srovnání rozdílů mezi směrování událostí služby IoT Hub a zpráv][lnk-eg-compare]
-
-<!-- Links -->
-[lnk-eg-overview]: ../event-grid/overview.md
-[lnk-eg-compare]: iot-hub-event-grid-routing-comparison.md
+* [Informace o uspořádání událostí připojení a odpojení zařízení](iot-hub-how-to-order-connection-state-events.md)
+* [Další informace o službě Event Grid](../event-grid/overview.md)
+* [Srovnání rozdílů mezi směrování událostí služby IoT Hub a zpráv](iot-hub-event-grid-routing-comparison.md)

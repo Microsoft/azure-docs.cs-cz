@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/28/2018
 ms.author: jingwang
-ms.openlocfilehash: ef1bd613943543f78d358064f4abefc6fa31b63e
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 77b6149f175723ccf19db660ed500fb8897080e8
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842331"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249617"
 ---
 #  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure SQL Data Warehouse pomocí Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -33,7 +33,7 @@ Kopírování dat z Azure SQL Data Warehouse do jakékoli podporovaného úloži
 
 Konkrétně tento konektor Azure SQL Data Warehouse podporuje tyto funkce:
 
-- Kopírování dat pomocí ověřování SQL a ověřování pomocí tokenu aplikace Azure Active Directory (Azure AD) pomocí instančního objektu služby nebo Identity spravované služby (MSI).
+- Kopírování dat pomocí ověřování SQL a ověřování pomocí tokenu aplikace Azure Active Directory (Azure AD) pomocí identity objektu zabezpečení nebo spravované služby pro prostředky Azure.
 - Jako zdroj načtení dat pomocí jazyka SQL nebo uloženou proceduru.
 - Jako jímka načítání dat pomocí PolyBase nebo hromadného vložení. PolyBase vám doporučujeme pro lepší výkon kopírování.
 
@@ -70,7 +70,7 @@ Různými typy ověřování najdete v následujících částech na požadavky 
 
 - [Ověřování SQL](#sql-authentication)
 - Azure AD aplikace ověřování pomocí tokenu: [instančního objektu](#service-principal-authentication)
-- Azure AD aplikace ověřování pomocí tokenu: [identita spravované služby](#managed-service-identity-authentication)
+- Azure AD aplikace ověřování pomocí tokenu: [spravovaných identit pro prostředky Azure](#managed-service-identity-authentication)
 
 >[!TIP]
 >Pokud spuštění chybě s kódem chyby jako "UserErrorFailedToConnectToSqlServer" a zpráva jako "limit relace pro databázi je XXX a bylo ho dosaženo.", přidejte `Pooling=false` připojovací řetězec a zkuste to znovu.
@@ -152,9 +152,9 @@ Pokud chcete použít ověřování pomocí tokenu aplikace služby založené n
 }
 ```
 
-### <a name="managed-service-identity-authentication"></a>Spravované ověřování Identity služby
+### <a name="managed-identities-for-azure-resources-authentication"></a>Spravovaných identit pro ověřování prostředků Azure
 
-Je možné přidružit datové továrny [identita spravované služby](data-factory-service-identity.md) , která představuje konkrétní objekt pro vytváření. Tuto identitu služby můžete použít pro ověřování v Azure SQL Data Warehouse. Přístup k určené objekt pro vytváření a kopírování dat z nebo do data warehouse s použitím této identity.
+Je možné přidružit datové továrny [spravované identity pro prostředky Azure](data-factory-service-identity.md) , která představuje konkrétní objekt pro vytváření. Tuto identitu služby můžete použít pro ověřování v Azure SQL Data Warehouse. Přístup k určené objekt pro vytváření a kopírování dat z nebo do data warehouse s použitím této identity.
 
 > [!IMPORTANT]
 > Všimněte si, že se momentálně nepodporuje PolyBase ověřování MSI.

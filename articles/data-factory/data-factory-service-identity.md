@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: jingwang
-ms.openlocfilehash: ffe7337282d06dd9a7e22d6750ac98b3a56964bd
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: db0bc0cb64c0b6d7df9319c8d2c5850a27e767a1
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42054439"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249209"
 ---
 # <a name="azure-data-factory-service-identity"></a>Identita služby Azure Data Factory
 
@@ -169,6 +169,6 @@ Type                  : ServicePrincipal
 Naleznete v následujících tématech, které představují, kdy a jak používat identita služeb datové továrny:
 
 - [Store přihlašovacích údajů ve službě Azure Key Vault](store-credentials-in-key-vault.md)
-- [Kopírování dat z/do Azure Data Lake Store pomocí ověření identity spravované služby](connector-azure-data-lake-store.md)
+- [Kopírování dat z/do Azure Data Lake Store pomocí spravované identity pro ověřování prostředků Azure](connector-azure-data-lake-store.md)
 
-V tématu [MSI přehled](~/articles/active-directory/msi-overview.md) pro další informace o identitu spravované služby, je na základě které identita služeb datové továrny. 
+Naleznete v tématu [spravovaných identit pro prostředky Azure – přehled](~/articles/active-directory/msi-overview.md) pro další informace o spravovaných identit pro prostředky Azure, je na základě které identita služeb datové továrny. 

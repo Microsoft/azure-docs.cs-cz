@@ -12,16 +12,20 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 07/16/2018
-ms.openlocfilehash: b2d4166c25014416efbb7392acda3f3f028b4fa9
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 6110773ecaba0ad333e4cfc9f9cc6014bd29a7a6
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162034"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249515"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Store Azure SQL Database zálohy až 10 let
 
 Máte spoustu aplikací na dodržování legislativních, dodržování předpisů nebo jiné obchodní účely, které vyžadují, abyste pro uchovávání záloh databáze se po uplynutí 7 – 35 dnů poskytuje Azure SQL Database [automatické zálohování](sql-database-automated-backups.md). Když použijete funkci dlouhodobé uchovávání dat (LTR), můžete uložit zadaný SQL database úplné zálohy v [RA-GRS](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) úložiště objektů blob až 10 let. Pak můžete obnovit jakékoli zálohy jako novou databázi.
+
+> [!NOTE]
+> Zleva doprava, je možné povolit v databázích, které jsou hostované v logické servery Azure SQL Database. Je stále nejsou k dispozici ve spravovaných instancí.
+> 
 
 ## <a name="how-sql-database-long-term-retention-works"></a>Jak funguje dlouhodobé uchovávání databáze SQL
 

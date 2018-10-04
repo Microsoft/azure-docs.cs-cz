@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: ramkris
-ms.openlocfilehash: 4fa28e2d3f5d94d7ab47ec3b1e1e3240e5c770de
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 26479ade27b18e817d7ad03d70d27b0cef687e8d
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042969"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269407"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Urychlení analýzy velkých objemů dat pomocí Apache Sparku do konektoru služby Azure Cosmos DB
  
@@ -179,7 +179,7 @@ Komunikace mezi Sparkem a Azure Cosmos DB je výrazně rychlejší, protože je 
 
 4. Extrahujte obsah ukázkové informační kanál Twitteru a otevřete soubor config.py. Aktualizujte hodnoty hlavního klíče, hostitele, ID databáze, collectionId a seznamu preferredLocations.  
 
-5. Přejděte na `http://apps.twitter.com/`a zaregistrujte twitteru přes aplikaci. Po výběru název vaší aplikace, budete mít k dispozici **uživatelský klíč, uživatelský tajný klíč, přístupový a tajný klíč přístupového tokenu**. Zkopírujte tyto hodnoty a provede jejich aktualizaci v souboru config.py poskytnout programový přístup k aplikaci pro Twitter informační kanál Twitteru.   
+5. Přejděte na `http://apps.twitter.com/`a zaregistrujte twitteru přes aplikaci. Po výběru název vaší aplikace, budete mít k dispozici **uživatelský klíč, uživatelský tajný klíč, přístupový a tajný klíč přístupového tokenu**. Zkopírujte tyto hodnoty a jejich aktualizaci v souboru config.py poskytují že programový přístup k aplikaci pro Twitter informační kanál Twitteru.   
 
 6. Uložte soubor config.py. Otevřete příkazový řádek a spusťte aplikaci v Pythonu pomocí následujícího příkazu:
 

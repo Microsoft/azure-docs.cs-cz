@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: jdial
-ms.openlocfilehash: e92c099d9e0dfacff71c13382059acb06037bb1e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2291136cf50439b7845c3a344be3218277257b34
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999864"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269475"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Virtuální síť Azure, nejčastější dotazy (FAQ)
 
@@ -230,7 +230,7 @@ Partnerský vztah virtuální sítě (nebo partnerský vztah virtuální sítě)
 Ano. Globální VNet peering umožní vytvořit partnerský vztah virtuálních sítí v různých oblastech. Globální VNet peering je k dispozici ve všech veřejných oblastech Azure. Můžete nejde vytvořit partnerský vztah globálně z veřejných oblastech Azure k národním cloudům. Globální partnerský vztah není aktuálně k dispozici v národních cloudech.
 
 ### <a name="can-i-enable-vnet-peering-if-my-virtual-networks-belong-to-subscriptions-within-different-azure-active-directory-tenants"></a>Můžete povolit VNet Peering Pokud Můj virtuální sítě patří do předplatných v rámci různých tenantů Azure Active Directory?
-Aktuálně není možné navázat partnerský vztah virtuální sítě (ať už místní nebo globální) Pokud vaše předplatná patří do různých tenantů Azure Active Directory.
+Ano. Je možné navázat partnerský vztah virtuální sítě (ať už místní nebo globální), pokud vaše předplatná patří do různých tenantů Azure Active Directory. Můžete to provést prostřednictvím Powershellu nebo rozhraní příkazového řádku. Portál se ještě nepodporuje.
 
 ### <a name="my-vnet-peering-connection-is-in-initiated-state-why-cant-i-connect"></a>Připojení s partnerským vztahem je ve virtuální síti *iniciováno* stav, proč se nemůžu připojit?
 Pokud vaše připojení s partnerským vztahem je ve stavu iniciováno, znamená to, že které jste vytvořili jenom jedno propojení. Obousměrné odkaz musí být vytvořen, aby bylo možné navázat úspěšné připojení. Například na vytvoření partnerského vztahu virtuálních sítí A virtuální síť B, odkaz musí vytvořit virtuální síť k sítí VNetB a VNetB pro virtuální síť. Vytváří se obě propojení se změní stav, který má *připojeno.*
@@ -259,7 +259,7 @@ Ne. Tranzitivní partnerský vztah se nepodporuje. Virtuální síť a sítí VN
 ### <a name="are-there-any-bandwidth-limitations-for-peering-connections"></a>Existují nějaká omezení šířky pásma pro partnerské vztahy virtuálních sítí?
 Ne. VNet peering, ať už místní nebo globální, nepředstavuje nějaká omezení šířky pásma. Šířka pásma je pouze omezení podle virtuálního počítače nebo výpočetních prostředků.
 
-## <a name="virtual-network-tap"></a>Klepněte na virtuální síť
+## <a name="virtual-network-tap"></a>Naslouchací zařízení virtuální sítě
 
 ### <a name="which-azure-regions-are-available-for-virtual-network-tap"></a>Které oblasti Azure jsou k dispozici pro virtuální síť TAP?
 Ve verzi preview pro vývojáře možnost je dostupná v oblasti střed USA – západ. Monitorovaných síťových rozhraní, klepněte na prostředek virtuální sítě a řešení kolekcí nebo analytics se musí nasadit ve stejné oblasti.

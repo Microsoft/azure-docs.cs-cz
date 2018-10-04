@@ -2,22 +2,22 @@
 title: Pro zařízení Azure IoT SDK pro jazyk C - pro IoTHubClient | Dokumentace Microsoftu
 description: Jak použít knihovnu pro IoTHubClient v zařízení Azure IoT SDK pro jazyk C k vytvoření aplikace pro zařízení, které komunikují s centrem IoT.
 author: yzhong94
-manager: arjmands
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: yizhon
-ms.openlocfilehash: 4ff4e8b9c6121366bf06eb8613b6d53667eeaca9
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 4c4ff981560fc4025c6bf782df71e648a1356c3f
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35756443"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248138"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>Pro zařízení Azure IoT SDK pro jazyk C – Další informace pro IoTHubClient
-[Nejprve článek](iot-hub-device-sdk-c-intro.md) v této sérii zavedené **zařízení Azure IoT SDK pro jazyk C**. Tento článek vysvětlil, že existují dvě vrstvy architektury v sadě SDK. Základní je **pro IoTHubClient** knihovnu, která přímo skladuje komunikaci s centrem IoT. K dispozici je také **serializátor** knihovnu, která takovou sestavení k poskytování služeb serializace. V tomto článku vám poskytneme další podrobnosti o **pro IoTHubClient** knihovny.
+
+[Pro zařízení Azure IoT SDK pro jazyk C](iot-hub-device-sdk-c-intro.md) je první článek v tomto představení řady **zařízení Azure IoT SDK pro jazyk C**. Tento článek vysvětlil, že existují dvě vrstvy architektury v sadě SDK. Základní je **pro IoTHubClient** knihovnu, která přímo skladuje komunikaci s centrem IoT. K dispozici je také **serializátor** knihovnu, která takovou sestavení k poskytování služeb serializace. V tomto článku vám poskytneme další podrobnosti o **pro IoTHubClient** knihovny.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
@@ -30,54 +30,55 @@ Použijeme **pro IoTHubClient** SDK ukázky, které popisují tato témata. Poku
 Můžete najít [ **zařízení Azure IoT SDK pro jazyk C** ](https://github.com/Azure/azure-iot-sdk-c) Githubu úložišti a zobrazit podrobnosti o rozhraní API ve službě [reference k rozhraní API jazyka C](https://azure.github.io/azure-iot-sdk-c/index.html).
 
 ## <a name="the-lower-level-apis"></a>Rozhraní API služby nižší úrovně
+
 Základní operace popsané v předchozím článku **pro IotHubClient** v kontextu **iothub\_klienta\_ukázka\_amqp** aplikace. Například to bylo vysvětleno, jak inicializovat knihovnu pomocí tohoto kódu.
 
-```
+```C
 IOTHUB_CLIENT_HANDLE iotHubClientHandle;
 iotHubClientHandle = IoTHubClient_CreateFromConnectionString(connectionString, AMQP_Protocol);
 ```
 
 Je také popsáno jak odesílat události pomocí volání funkce.
 
-```
+```C
 IoTHubClient_SendEventAsync(iotHubClientHandle, message.messageHandle, SendConfirmationCallback, &message);
 ```
 
 Článek také popisuje jak přijmout zprávy tak, že zaregistrujete funkce zpětného volání.
 
-```
+```C
 int receiveContext = 0;
 IoTHubClient_SetMessageCallback(iotHubClientHandle, ReceiveMessageCallback, &receiveContext);
 ```
 
 Tento článek také ukázala, jak uvolnění prostředků pomocí například následující kód.
 
-```
+```C
 IoTHubClient_Destroy(iotHubClientHandle);
 ```
 
-Existují však doprovodná funkce na každý z těchto rozhraní API:
+K dispozici je Průvodce vyhledáváním funkcí pro každou z těchto rozhraní API:
 
 * IoTHubClient\_LL\_CreateFromConnectionString
 * IoTHubClient\_LL\_SendEventAsync
 * Pro IoTHubClient\_LL\_SetMessageCallback
 * Pro IoTHubClient\_LL\_zničit
 
-Všechny tyto funkce zahrnout "L" název rozhraní API. Kromě toho jsou stejné jako jejich protějšky v jiné všechny parametry každá z těchto funkcí. Chování tyto funkce se však liší v jedním ze způsobů důležité.
+Tyto funkce všechny **LL** v názvu rozhraní API. Ostatní **LL** část názvu, jsou stejné jako jejich protějšky v jiné všechny parametry každá z těchto funkcí. Chování tyto funkce se však liší v jedním ze způsobů důležité.
 
-Při volání **pro IoTHubClient\_CreateFromConnectionString**, základní knihovny vytvořit nové vlákno, na kterém běží na pozadí. Toto vlákno odesílá události do a přijímá zprávy ze služby IoT Hub. Žádný takový vlákna je vytvořen při práci s "L" rozhraní API. Vytvoření vlákna na pozadí je pozornost pro vývojáře. Nemusíte se starat o explicitně odesílání událostí a příjem zpráv ze služby IoT Hub – probíhá automaticky na pozadí. Naproti tomu "L" rozhraní API poskytují explicitní kontrolu nad komunikace se službou IoT Hub, pokud ho potřebujete.
+Při volání **pro IoTHubClient\_CreateFromConnectionString**, základní knihovny vytvořit nové vlákno, na kterém běží na pozadí. Toto vlákno odesílá události do a přijímá zprávy ze služby IoT Hub. Žádný takový vlákna je vytvořen při práci s **LL** rozhraní API. Vytvoření vlákna na pozadí je pozornost pro vývojáře. Nemusíte se starat o explicitně odesílání událostí a příjem zpráv ze služby IoT Hub – probíhá automaticky na pozadí. Naproti tomu **LL** rozhraní API poskytují explicitní kontrolu nad komunikace se službou IoT Hub, pokud ho potřebujete.
 
-Chcete-li lépe pochopit, Pojďme se podívat na příklad:
+Pro lepší pochopení tento koncept, Pojďme se podívat na příklad:
 
 Při volání **pro IoTHubClient\_SendEventAsync**, co skutečně děláte nastavuje události ve vyrovnávací paměti. Vlákno na pozadí vytvořen při volání **pro IoTHubClient\_CreateFromConnectionString** průběžně monitoruje této vyrovnávací paměti a pošle nějaká data, která obsahuje do služby IoT Hub. To probíhá na pozadí ve stejnou dobu, že je hlavní vlákno provádění jiné práce.
 
 Podobně, když se zaregistrujete funkce zpětného volání pro zprávy pomocí **pro IoTHubClient\_SetMessageCallback**, jste instruující SDK má vlákna na pozadí vyvolat funkci zpětného volání při zprávu přijato, nezávisle na hlavním vlákně.
 
-Rozhraní API "l" nevytvářejte vlákna na pozadí. Místo toho nové rozhraní API se musí volat explicitně odesílat a přijímat data ze služby IoT Hub. To je ukázáno v následujícím příkladu.
+**LL** rozhraní API pro ně nevytvoříte vlákna na pozadí. Místo toho nové rozhraní API se musí volat explicitně odesílat a přijímat data ze služby IoT Hub. To je ukázáno v následujícím příkladu.
 
 **Iothub\_klienta\_ukázka\_http** ukazuje aplikace, která je součástí sady SDK rozhraní API služby nižší úrovně. V této ukázce jsme odesílání událostí do služby IoT Hub se například následující kód:
 
-```
+```C
 EVENT_INSTANCE message;
 sprintf_s(msgText, sizeof(msgText), "Message_%d_From_IoTHubClient_LL_Over_HTTP", i);
 message.messageHandle = IoTHubMessage_CreateFromByteArray((const unsigned char*)msgText, strlen(msgText));
@@ -85,9 +86,9 @@ message.messageHandle = IoTHubMessage_CreateFromByteArray((const unsigned char*)
 IoTHubClient_LL_SendEventAsync(iotHubClientHandle, message.messageHandle, SendConfirmationCallback, &message)
 ```
 
-První tři řádky vytvářejí zprávu a poslední řádek odesílá události. Nicméně jak již bylo zmíněno dříve, "odesílání" událost znamená, že se data jednoduše umístí do vyrovnávací paměti. Nic se přenášet v síti, je-li říkáme **pro IoTHubClient\_LL\_SendEventAsync**. Aby skutečně příchozího přenosu dat do služby IoT Hub, je nutné volat **pro IoTHubClient\_LL\_DoWork**, jako v tomto příkladu:
+První tři řádky vytvářejí zprávu a poslední řádek odesílá události. Ale jak už bylo zmíněno dříve, posílat že události znamená, že se data jednoduše umístí do vyrovnávací paměti. Nic se přenášet v síti, je-li říkáme **pro IoTHubClient\_LL\_SendEventAsync**. Aby skutečně příchozího přenosu dat do služby IoT Hub, je nutné volat **pro IoTHubClient\_LL\_DoWork**, jako v tomto příkladu:
 
-```
+```C
 while (1)
 {
     IoTHubClient_LL_DoWork(iotHubClientHandle);
@@ -97,13 +98,13 @@ while (1)
 
 Tento kód (z **iothub\_klienta\_ukázka\_http** aplikace) opakovaně volá **pro IoTHubClient\_LL\_DoWork**. Pokaždé, když **pro IoTHubClient\_LL\_DoWork** je volána, odesílá některé události z vyrovnávací paměti pro službu IoT Hub a načte zprávy ve frontě odesílaných do zařízení. Druhém případě znamená, že pokud jsme zaregistrovali funkci zpětného volání pro zprávy, pak zpětného volání je vyvolána (za předpokladu, že všechny zprávy jsou zařazeny do fronty). By zaregistrovali funkci zpětného volání s například následující kód:
 
-```
+```C
 IoTHubClient_LL_SetMessageCallback(iotHubClientHandle, ReceiveMessageCallback, &receiveContext)
 ```
 
 Z důvodu, který **pro IoTHubClient\_LL\_DoWork** se často nazývá smyčku, která je pokaždé, když je volána, odešle *některé* ukládány do vyrovnávací paměti událostí do služby IoT Hub a načte *Další* zprávy ve frontě pro zařízení. Každé volání není zaručeno, že k odesílání událostí všechny uložené do vyrovnávací paměti nebo pokud chcete načíst všechny zprávy zařazené do fronty. Pokud chcete odeslat všechny události ve vyrovnávací paměti a potom pokračujte na další zpracování, že tato smyčka můžete nahradit následující kód:
 
-```
+```C
 IOTHUB_CLIENT_STATUS status;
 
 while ((IoTHubClient_LL_GetSendStatus(iotHubClientHandle, &status) == IOTHUB_CLIENT_OK) && (status == IOTHUB_CLIENT_SEND_STATUS_BUSY))
@@ -117,7 +118,7 @@ Tento kód volá **pro IoTHubClient\_LL\_DoWork** dokud všechny události ve vy
 
 Když jste hotovi ingressing události a přijímání zpráv, nezapomeňte volat odpovídající funkce pro vyčištění prostředků.
 
-```
+```C
 IoTHubClient_LL_Destroy(iotHubClientHandle);
 ```
 
@@ -135,9 +136,10 @@ Opak platí také. Pokud byste začali s **pro IoTHubClient\_CreateFromConnectio
 V Azure sada SDK zařízení IoT pro jazyk C, najdete v článku **iothub\_klienta\_ukázka\_http** aplikace Úplný příklad nižší úrovně rozhraní API. **Iothub\_klienta\_ukázka\_amqp** aplikace může být odkazováno Úplný příklad jiné – vše rozhraní API.
 
 ## <a name="property-handling"></a>Vlastnost zpracování
+
 Zatím když jsme popsali odesílání dat, můžeme jste byla odkazující na text zprávy. Zvažte například tento kód:
 
-```
+```C
 EVENT_INSTANCE message;
 sprintf_s(msgText, sizeof(msgText), "Hello World");
 message.messageHandle = IoTHubMessage_CreateFromByteArray((const unsigned char*)msgText, strlen(msgText));
@@ -146,7 +148,7 @@ IoTHubClient_LL_SendEventAsync(iotHubClientHandle, message.messageHandle, SendCo
 
 Tento příklad odešle zprávu do služby IoT Hub s textem "Hello World." IoT Hub však umožňuje také vlastnosti, které chcete připojit ke každé zprávě. Vlastnosti jsou páry název/hodnota, které může být připojen ke zprávě. Například nám můžete upravit předchozí kód k připojení ke zprávě vlastnost:
 
-```
+```C
 MAP_HANDLE propMap = IoTHubMessage_Properties(message.messageHandle);
 sprintf_s(propText, sizeof(propText), "%d", i);
 Map_AddOrUpdate(propMap, "SequenceNumber", propText);
@@ -158,7 +160,7 @@ Při čtení události ze **Event Hubs**, příjemce, můžete vytvořit výčet
 
 V předchozím příkladu jsme se vlastnosti připojení k události, která nám odeslat do služby IoT Hub. Vlastnosti lze také připojit k zprávy přijaté ze služby IoT Hub. Pokud chcete načíst vlastnosti ze zprávy, můžete použít následující kód v naší funkce zpětného volání zpráv:
 
-```
+```C
 static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HANDLE message, void* userContextCallback)
 {
     . . .
@@ -193,9 +195,10 @@ Volání **IoTHubMessage\_vlastnosti** vrátí **MAPY\_zpracování** odkaz. My 
 Není nutné použít vlastnosti v aplikaci. Nicméně, pokud je potřeba nastavit u události nebo je načtou ze zpráv, **pro IoTHubClient** knihovna usnadňuje.
 
 ## <a name="message-handling"></a>Zpracování zpráv
+
 Jak bylo uvedeno dříve, při doručení zpráv ze služby IoT Hub **pro IoTHubClient** knihovny reaguje vyvoláním zaregistrované zpětné volání funkce. Existuje návratový parametr této funkce, který si zaslouží další vysvětlení. Tady je výpisem funkce zpětného volání v **iothub\_klienta\_ukázka\_http** ukázkovou aplikaci:
 
-```
+```C
 static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HANDLE message, void* userContextCallback)
 {
     . . .
@@ -206,7 +209,9 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HA
 Všimněte si, že je návratový typ **IOTHUBMESSAGE\_DISPOZICE\_výsledek** a v tomto konkrétním případě vrátíme **IOTHUBMESSAGE\_PŘIJATO**. Existují jiné hodnoty vrátíme z této funkce, které se mění způsob, jakým **pro IoTHubClient** knihovny jsou reaguje na zpětného volání zpráv. Zde jsou možnosti.
 
 * **IOTHUBMESSAGE\_PŘIJATO** – zpráva byla úspěšně zpracována. **Pro IoTHubClient** knihovny nebude volat funkci zpětného volání s stejné zprávy.
+
 * **IOTHUBMESSAGE\_Odmítnuto** – zpráva nebyla zpracována a neexistuje žádná chce udělat v budoucnu. **Pro IoTHubClient** knihovny by neměl volat funkci zpětného volání s stejné zprávy.
+
 * **IOTHUBMESSAGE\_ABANDONED** – zpráva nebyla zpracována úspěšně, ale **pro IoTHubClient** knihovny by měla vyvolat funkci zpětného volání s stejné zprávy.
 
 Pro první dva návratové kódy, **pro IoTHubClient** knihovny odešle zprávu do služby IoT Hub označující, že zpráva z fronty zařízení odstraněn a nedoručilo znovu. Výsledkem je stejný (odstraní zprávu z fronty zařízení), ale Určuje, zda byla zpráva přijímat nebo odmítat je stále zaznamenán.  Záznam toto rozlišení je užitečné pro odesílatele zprávy, kteří můžou Naslouchejte zpětné vazbě a zjistěte, pokud má zařízení přijímat nebo odmítat. konkrétní zprávu.
@@ -216,16 +221,17 @@ V posledním případě přijde zprávy do služby IoT Hub, ale znamená, že zp
 V každém případě mějte na paměti různých návratových kódů tak, že mohou vyvolat chování, které chcete z **pro IoTHubClient** knihovny.
 
 ## <a name="alternate-device-credentials"></a>Zařízení s alternativní přihlašovací údaje
+
 Jak bylo popsáno dříve, je prvním krokem při práci s **pro IoTHubClient** knihovny je použít k získání **IOTHUB\_klienta\_zpracování** pomocí volání, jako je následující:
 
-```
+```C
 IOTHUB_CLIENT_HANDLE iotHubClientHandle;
 iotHubClientHandle = IoTHubClient_CreateFromConnectionString(connectionString, AMQP_Protocol);
 ```
 
 Argumenty, které mají **pro IoTHubClient\_CreateFromConnectionString** jsou připojovací řetězec zařízení a parametr, který označuje protokol používáme pro komunikaci se službou IoT Hub. Připojovací řetězec zařízení má formát, který se zobrazí takto:
 
-```
+```C
 HostName=IOTHUBNAME.IOTHUBSUFFIX;DeviceId=DEVICEID;SharedAccessKey=SHAREDACCESSKEY
 ```
 
@@ -233,7 +239,7 @@ Existují čtyři úryvky informace v tomto řetězci: název služby IoT Hub, I
 
 **Pro IoTHubClient\_CreateFromConnectionString** představuje jeden způsob, jak inicializovat knihovnu. Pokud dáváte přednost, můžete vytvořit nový **IOTHUB\_klienta\_zpracování** pomocí těchto jednotlivých parametrů místo připojovací řetězec zařízení. Toho můžete dosáhnout s následujícím kódem:
 
-```
+```C
 IOTHUB_CLIENT_CONFIG iotHubClientConfig;
 iotHubClientConfig.iotHubName = "";
 iotHubClientConfig.deviceId = "";
@@ -248,9 +254,10 @@ To totéž jako **pro IoTHubClient\_CreateFromConnectionString**.
 To se může zdát zřejmé, že chcete použít **pro IoTHubClient\_CreateFromConnectionString** místo tuto podrobnější metodu inicializace. Mějte na paměti, ale, že při registraci zařízení ve službě IoT Hub se zobrazí se ID zařízení a klíč zařízení (ne připojovací řetězec). *Průzkumník zařízení* zavedený nástroj sady SDK [předchozím článku](iot-hub-device-sdk-c-intro.md) používá knihovny v **pro službu Azure IoT SDK** vytvořit připojovací řetězec zařízení z ID zařízení , klíč zařízení a název hostitele služby IoT Hub. Proto volání **pro IoTHubClient\_LL\_vytvořit** může být vhodnější, protože není nutné krok generování připojovací řetězec. Použijte, podle toho, která metoda je vhodné.
 
 ## <a name="configuration-options"></a>Možnosti konfigurace
+
 Zatím všechno, co je popsáno o způsobu, jakým **pro IoTHubClient** knihovny funguje odráží její výchozí chování. Existují však několik možností, které můžete nastavit, chcete-li změnit, jak funguje knihovny. To lze provést s využitím **pro IoTHubClient\_LL\_SetOption** rozhraní API. Podívejte se například:
 
-```
+```C
 unsigned int timeout = 30000;
 IoTHubClient_LL_SetOption(iotHubClientHandle, "timeout", &timeout);
 ```
@@ -258,19 +265,15 @@ IoTHubClient_LL_SetOption(iotHubClientHandle, "timeout", &timeout);
 Máte několik možností, které se běžně používají:
 
 * **SetBatching** (bool) – Pokud **true**, odesílání dat do služby IoT Hub je odeslaný v dávkách. Pokud **false**, pak jsou zprávy odesílány jednotlivě. Výchozí hodnota je **false**. Všimněte si, **SetBatching** možnost platí jenom pro protokol HTTPS a nechcete protokol MQTT nebo AMQP.
+
 * **Časový limit** (unsigned int) – Tato hodnota je vyjádřena v milisekundách. Pokud odesílá požadavek HTTPS a příjem odpovědí trvá déle, než tuto chvíli a pak připojení vyprší časový limit.
 
 Možnost dávkování je důležité. Ve výchozím nastavení, událostí ingresses knihovny jednotlivě (jednu událost je, bez ohledu na předané do **pro IoTHubClient\_LL\_SendEventAsync**). Pokud je možnost dávkování **true**, knihovně shromažďuje tolik události jako z vyrovnávací paměti (až do maximální velikost zprávy, který bude přijímat služby IoT Hub).  Batch událost je odeslána do služby IoT Hub v jednom volání HTTPS (jednotlivé události jsou seskupeny do pole JSON). Povolení dávkování obvykle za následek zvýšení výkonu velkých objemů vzhledem k tomu, že jste snížení doby odezvy v síti. Také významně snižuje šířku pásma, protože při odesílání jednu sadu záhlaví HTTPS pomocí služby batch události, nikoli sadu záhlaví jednotlivých událostí. Pokud nemáte konkrétní důvod, proč jinak, obvykle budete chtít povolit dávkové zpracování.
 
 ## <a name="next-steps"></a>Další postup
-Tento článek podrobně popisuje chování **pro IoTHubClient** součástí knihovny **zařízení Azure IoT SDK pro jazyk C**. Pomocí těchto informací byste měli mít dobrý přehled o možnostech **pro IoTHubClient** knihovny. [Dalšímu článku](iot-hub-device-sdk-c-serializer.md) poskytuje podobné podrobností na **serializátor** knihovny.
 
-Další informace o vývoji pro službu IoT Hub, najdete v článku [sad SDK Azure IoT][lnk-sdks].
+Tento článek podrobně popisuje chování **pro IoTHubClient** součástí knihovny **zařízení Azure IoT SDK pro jazyk C**. Pomocí těchto informací byste měli mít dobrý přehled o možnostech **pro IoTHubClient** knihovny. Je druhý článek v této sérii [zařízení Azure IoT SDK pro jazyk C - serializátor](iot-hub-device-sdk-c-serializer.md), který poskytuje podobné podrobností v **serializátor** knihovny.
 
-Podrobněji prozkoumat možnosti služby IoT Hub, najdete v tématech:
+Další informace o vývoji pro službu IoT Hub, najdete v článku [sad SDK Azure IoT](iot-hub-devguide-sdks.md).
 
-* [Nasazení AI do hraničních zařízení s použitím Azure IoT Edge][lnk-iotedge]
-
-[lnk-sdks]: iot-hub-devguide-sdks.md
-
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
+Chcete-li podrobněji prozkoumat možnosti služby IoT Hub, přečtěte si téma [nasazování AI do hraničních zařízení pomocí služby Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md).

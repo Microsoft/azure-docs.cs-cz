@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/10/2018
+ms.date: 10/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8b09170c31691be34cea577eb82c8cce3402be96
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: e1d116b96abab89f08546d3c2d5d7bff3234ecbc
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294647"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249226"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Použití propojené a vnořené šablony při nasazování prostředků Azure.
 
@@ -49,7 +49,7 @@ Chcete-li propojit s jinou šablonu, přidejte **nasazení** prostředků do hla
 ]
 ```
 
-Vlastnosti, které zadáte pro zdroj nasazení lišit v závislosti na, jestli jsou odkazování na externí šablony nebo vnořené šablony vložené v šabloně hlavní.
+Vlastnosti, které zadáte pro zdroj nasazení se liší podle toho, jestli jste odkazování na externí šablony nebo vnoření vložená šablona v šabloně hlavní.
 
 Pro obě propojené a vnořené šablony, můžete použít pouze [přírůstkové](deployment-modes.md) režimu nasazení.
 
@@ -121,7 +121,9 @@ Není nutné poskytovat `contentVersion` vlastnost pro šablony nebo parametry. 
 
 ### <a name="external-template-and-inline-parameters"></a>Externí šablony a vložené parametry
 
-Nebo můžete zadat parametr vložené. Chcete-li předat hodnotu z hlavní šablony propojené šablony, použijte **parametry**.
+Nebo můžete zadat parametr vložené. Do souboru parametrů nelze použít vložený parametry a odkaz. Nasazení se nezdaří s chybou při obě `parametersLink` a `parameters` jsou uvedeny.
+
+Chcete-li předat hodnotu z hlavní šablony propojené šablony, použijte **parametry**.
 
 ```json
 "resources": [

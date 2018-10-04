@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 46e12378812788d147c903046b50a93c13119f2f
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 79bb3042af6a42b4a8c33e9a19c80d117c3216e7
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444584"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248852"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Kopírování dat do nebo z úložiště objektů Blob v Azure pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -30,7 +30,7 @@ Kopírovat data ze všech podporovaných zdrojů úložišť dat do úložiště
 Konkrétně tento konektor úložiště objektů Blob podporuje:
 
 - Kopírování objektů BLOB mezi účty Azure storage pro obecné účely a vrstvami hot a cool blob storage. 
-- Kopírování objektů BLOB s použitím klíče účtu služby sdíleného přístupového podpisu, ověření identity objektu zabezpečení nebo spravované služby service.
+- Kopírování objektů BLOB s použitím klíče účtu služby sdíleného přístupového podpisu, identity objektu zabezpečení nebo spravované služby pro ověřování prostředků Azure.
 - Kopírování objektů blob z bloku, doplňovací nebo objekty BLOB stránky a kopírování dat do jenom objekty BLOB bloku. Azure Premium Storage není podporován jako jímka, protože se zajištěním objekty BLOB stránky.
 - Kopírování objektů BLOB, jako je analýza kódu nebo generování objektů BLOB s [podporované formáty souborů a komprese kodeky](supported-file-formats-and-compression-codecs.md).
 
@@ -47,7 +47,7 @@ Konektor Azure Blob podporuje následující typy ověřování, přečtěte si 
 - [Ověření pomocí klíče účtu](#account-key-authentication)
 - [Ověřování podpisu sdíleného přístupu](#shared-access-signature-authentication)
 - [Ověřování instančních objektů](#service-principal-authentication)
-- [Ověření identity spravované služby](#managed-service-identity-authentication)
+- [Spravovaných identit pro ověřování prostředků Azure](#managed-service-identity-authentication)
 
 >[!NOTE]
 >HDInsights, Azure Machine Learning a Azure SQL Data Warehouse PolyBase zatížení podporují pouze ověření klíče účtu úložiště objektů Blob v Azure.
@@ -191,13 +191,13 @@ Tyto vlastnosti jsou podporovány pro Azure Blob propojené služby storage:
 }
 ```
 
-### <a name="managed-service-identity-authentication"></a>Ověření identity spravované služby
+### <a name="managed-identity"></a> Spravovaných identit pro ověřování prostředků Azure
 
-Objekt pro vytváření dat můžou být spojené s [se identita spravované služby](data-factory-service-identity.md), která představuje této konkrétní datové továrně. Tuto identitu služby můžete použít přímo pro ověření úložiště objektů Blob podobně jako u vlastních instančního objektu. To umožňuje tento určený objekt pro vytváření pro přístup a kopírování dat z/do úložiště objektů Blob.
+Objekt pro vytváření dat můžou být spojené s [spravované identity pro prostředky Azure](data-factory-service-identity.md), která představuje této konkrétní datové továrně. Tuto identitu služby můžete použít přímo pro ověření úložiště objektů Blob podobně jako u vlastních instančního objektu. To umožňuje tento určený objekt pro vytváření pro přístup a kopírování dat z/do úložiště objektů Blob.
 
 Azure Storage MSI ověřování obecně platí, najdete v tématu [ověření přístupu ke službě Azure Storage pomocí Azure Active Directory](../storage/common/storage-auth-aad.md).
 
-Pokud chcete používat ověřování identita spravované služby, postupujte takto:
+Použití spravované identity pro ověřování prostředků Azure, postupujte podle těchto kroků:
 
 1. [Načíst identita služeb datové továrny](data-factory-service-identity.md#retrieve-service-identity) tak, že zkopírujete hodnotu "ID aplikace IDENTITY služby" generované spolu se svým objektem pro vytváření.
 
@@ -214,8 +214,8 @@ Tyto vlastnosti jsou podporovány pro Azure Blob propojené služby storage:
 | třídu serviceEndpoint | Zadejte koncový bod služby Azure Blob storage s vzor `https://<accountName>.blob.core.windows.net/`. |Ano |
 | connectVia | [Prostředí integration runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. (Pokud je vaše úložiště dat v privátní síti), můžete použít prostředí Azure Integration Runtime nebo modul Integration Runtime. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
->[!NOTE]
->Ověření identity spravované služby je podporován pouze ve "službě Azure BLOB Storage" typu propojené služby, ale ne předchozí "AzureStorage" typ propojené služby. 
+> [!NOTE]
+> Spravované identity pro prostředky Azure, které ověřování je podporován pouze ve službě Azure BLOB "Storage" typu propojené služby, ale ne předchozí "AzureStorage" typ propojené služby. 
 
 **Příklad:**
 

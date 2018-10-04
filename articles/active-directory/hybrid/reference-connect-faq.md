@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1fb19c7b74d059d83cc5a51a158dcc6ba9bede23
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 3cb44779f376dca1844f42f346ed0fa3bfaa93cf
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312218"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269441"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Nejčastější dotazy ke službě Azure Active Directory Connect
 
@@ -47,7 +47,7 @@ Ne, více konektorů pro stejnou doménu AD nejsou podporovány.
 **Dotaz: lze přesunout databázi služby Azure AD Connect z místní databáze do vzdálené instance systému SQL Server?**   
 Ano, následující kroky obsahují obecné pokyny o tom, jak to provést. Aktuálně pracujeme na podrobnější dokumentu.
 1. Proveďte zálohu databáze LocalDB ADSync.
-Nejjednodušší způsob, jak to provést, je použít SQL Server Management Studio nainstalované ve stejném počítači jako Azure AD Connect. Připojte se k *(localdb)\.\ADSync*a pak proveďte zálohu databáze ADSync.
+Nejjednodušší způsob, jak to provést, je použít SQL Server Management Studio nainstalované ve stejném počítači jako Azure AD Connect. Připojte se k *(LocalDb). \ADSync*a pak proveďte zálohu databáze ADSync.
 
 2. Obnovení databáze ADSync na vzdálenou instanci SQL serveru.
 

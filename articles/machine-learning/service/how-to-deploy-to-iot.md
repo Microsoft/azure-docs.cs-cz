@@ -10,12 +10,12 @@ author: shivanipatel
 manager: cgronlun
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: 20469e127c8e04f4c6418fe28c49b63fc3b363d8
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 66370aec76044454ab4f11eb432fe2e9b0cdb9cf
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239196"
+ms.locfileid: "48248581"
 ---
 # <a name="prepare-to-deploy-models-on-iot-edge"></a>Příprava na nasazení modelů v prostředí IoT Edge
 
@@ -35,7 +35,7 @@ Před nasazením modelu do hraničního zařízení, postupujte podle kroků v t
 
 * [Azure IoT Hub](../../iot-hub/iot-hub-create-through-portal.md) ve vašem předplatném Azure. 
 
-* Trénovaného modelu. Příklad toho, jak pro trénování modelu, najdete v článku [trénování modelu klasifikace obrázků s Azure Machine Learning](tutorial-train-models-with-aml.md) dokumentu.
+* Trénovaného modelu. Příklad toho, jak pro trénování modelu, najdete v článku [trénování modelu klasifikace obrázků s Azure Machine Learning](tutorial-train-models-with-aml.md) dokumentu. Předem natrénovaných modelů je k dispozici na [AI Toolkit pro Azure IoT Edge na Githubu úložiště](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial).
 
 ## <a name="prepare-the-iot-device"></a>Připravte zařízení IoT
 

@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: a43c52143f936eaefd4383714b1c67b6b74d34e8
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: d0ad7093249bea761e0a36c6fffab8cdd151a662
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378665"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268017"
 ---
 # <a name="how-to-use-the-expected-entity-property-of-actions"></a>Jak používat vlastnost "Očekáván entity" akcí
 
@@ -63,9 +63,10 @@ Namítají Pokud je pole "očekáván entity" akce nastavená $entity a potom na
 2. V odpovědi zadejte "Jak se jmenuješ?".
 3. Byl očekáván entity zadejte $name. Klikněte na Uložit.
     - Tato hodnota znamená, že pokud tento dotaz se zobrazí výzva, a odpověď uživatele nemá žádné entity, zjistili, robot by měl Předpokládejme, že celá odpověď uživatele je tuto entitu.
+    - Entita je automaticky přidán jako disqualifying entity. 
 2. Klikněte na tlačítko akce a pak novou akci na vytvoří druhou akci.
 3. V odpovědi zadejte "Hello $name".
-    - Všimněte si, že entita je automaticky přidán jako požadované entity. 
+    - Entita je automaticky přidán jako požadované entity.
 4. Klikněte na Uložit.
 
 Nyní máte dvě akce.
@@ -111,7 +112,7 @@ V následujících příkladech heuristiky "očekáván entity" spustí, ale je 
 2. Zadejte "hello".
 3. V reakci na "jak se jmenuješ" zadejte "Mi někdo volá frank".
     - Je zvýrazněn celou frázi. Je to proto statistické modelu nebyl nalezen název, takže heuristiky aktivoval a vybrat celé odpovědi jako název entity.
-2. Chcete-li ji opravit, klikněte na zvýrazněné věty a potom klikněte na červený symbol x. 
+2. K opravit, klikněte na zvýrazněné věty a potom klikněte na na červenou ikonu koše. 
 3. Kliknutím vyberte frank a potom klikněte na název.
 2. Klikněte na výsledek akce
 3. Vyberte "Hello $name".

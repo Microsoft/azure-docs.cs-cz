@@ -9,12 +9,12 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kylestorck
-ms.openlocfilehash: c19b19cab33ae868f11ded0b7ce87dac99269596
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: e42a2f854d5d4fa72e17a0b75ffef55069ccb626
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47431972"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267865"
 ---
 # <a name="known-issues"></a>Známé problémy
 Při použití návrháře ve verzi Preview pro projekt Akustika se můžete setkat s následující známé problémy.
@@ -23,17 +23,9 @@ Při použití návrháře ve verzi Preview pro projekt Akustika se můžete set
 
 Pokud přejmenujete scény, akustický parametry, které patří do tohoto scény nebude automaticky převést na novou scénu. Bude stále existují v původní soubor prostředku ale. Hledat **SceneName_AcousticParameters.asset** soubor uvnitř **Editor** adresáře vedle souboru scény. Přejmenujte soubor tak, aby odrážely nový název scény.
 
-## <a name="the-default-path-for-the-acousticsdata-folder-in-probes-tab-is-an-absolute-path"></a>Výchozí cesta ke složce AcousticsData na kartě testy je absolutní cesta
-
-To by ve výchozím nastavení relativní cestu k usnadnění sdílení projektů mezi spolupracovníky. Jako alternativní řešení změníte cestu relativní vzhledem k adresáři projektu.
-
 ## <a name="runtime-voxels-are-a-different-size-than-scene-preview-voxels"></a>Modul runtime voxels jsou jinou velikost než voxels scény ve verzi preview
 
 Pokud to uděláte **Calculate** na **sondy** karty a zobrazení voxels, proveďte která má označení vytvoření a zobrazení voxels za běhu pro stejnou scénu, voxels jsou různých velikostí. Voxels zobrazí před která má označení vytvoření jsou voxels používaných pro simulaci. Voxels, zobrazuje se v modulu runtime se používají pro interpolaci mezi body testu. To může způsobit nekonzistenci umístění portály open za běhu, které nejsou ve skutečnosti otevřít.
-
-## <a name="uwp-builds-not-working"></a>UWP vytváří nefunguje
-
-Na nejnovějších verzích Unity (2018.2 +) nejsou UPW sestavení úspěšná. Manipulace se blokováním do fáze spuštění sestavení a bude docházet k chybám "rozšíření Unity nejsou inicializovány ještě". To je sledován pomocí funkce [potíže Unity](https://fogbugz.unity3d.com/default.asp?1070491_1rgf14bakv5u779d).
 
 ## <a name="unity-crashes-when-closing-project"></a>Unity, dojde k chybě při zavření projektu
 
@@ -49,6 +41,9 @@ Zkontrolujte verze modulu Runtime skriptování v nastavení Player je nastaven�
 ## <a name="im-having-authentication-problems-when-connecting-to-azure"></a>Mám potíže s ověřování při připojení k Azure
 
 Zkontrolujte používáte správné přihlašovací údaje k účtu Azure, že váš účet podporuje typ uzlu, která má označení vytvoření požadované a že systémové hodiny je přesné.
+
+## <a name="canceling-a-bake-leaves-the-bake-tab-in-deleting-state"></a>Zrušení která má označení vytvoření opustí, která má označení vytvoření karty ve stavu "odstraňování"
+Akustika projektu bude vyčistit všechny prostředky Azure pro úlohy na úspěšném dokončení nebo zrušení, což může trvat až 5 minut.
 
 ## <a name="next-steps"></a>Další postup
 * Začínáme s [integrací akustiky do projektu Unity](getting-started.md)

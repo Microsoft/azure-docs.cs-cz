@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 10/3/2018
 ms.author: kumud
-ms.openlocfilehash: 63c193b4757c28f809a33b917058df36467d4db4
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 50b567b298406b936a11ad5a8737ce4b1e21c0c7
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163014"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248720"
 ---
 # <a name="load-balancer-outbound-rules"></a>Odchozí pravidla nástroje pro vyrovnávání zatížení
 
@@ -180,10 +180,10 @@ Definovat veřejný Load Balancer Standard, umístěte virtuální počítače d
 
 #### <a name="outbound-nat-for-internal-standard-load-balancer-scenarios"></a>Odchozí NAT pro interní nástroj pro vyrovnávání zatížení scénáře
 
-Při použití interní Load balanceru úrovně Standard, odchozí NAT není k dispozici, dokud veřejného Load balanceru úrovně Standard je také nakonfigurovaný. Toto můžete změnit pomocí a odchozí pravidlo můžete vytvořit odchozí připojení pro virtuální počítače za bránou interní Load balanceru úrovně Standard.
+Při použití interní Load balanceru úrovně Standard, odchozí NAT není k dispozici, dokud explicitně deklarovány odchozí připojení. Můžete definovat odchozí připojení pomocí odchozí pravidla vytvořit odchozí připojení pro virtuální počítače za bránou interní Load balanceru úrovně Standard pomocí těchto kroků:
 
 1. Vytvoření veřejného Load Balanceru úrovně Standard.
-2. Vytvořte back-endový fond a umístěte virtuální počítače do back-endový fond veřejného nástroje pro vyrovnávání zatížení.
+2. Vytvořte back-endového fondu a umístěte virtuální počítače do back-endový fond veřejného Load balanceru úrovně kromě interního nástroje pro vyrovnávání zatížení.
 3. Odchozí pravidlo nakonfigurujte na veřejný Load balancer úrovně programovat odchozí NAT pro tyto virtuální počítače.
 
 #### <a name="enable-both-tcp--udp-protocols-for-outbound-nat-with-a-public-standard-load-balancer"></a>Povolit protokoly TCP a UDP pro odchozí NAT s veřejného Load balanceru úrovně Standard

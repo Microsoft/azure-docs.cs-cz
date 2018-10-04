@@ -9,12 +9,12 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 8f594be67c4677fae00cb01598d3899e30dae1e8
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: b6bb04d9cec690198de663189dacd41fcbe960eb
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433220"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248600"
 ---
 # <a name="design-process-overview"></a>Přehled procesu návrhu
 Máte v úmyslu návrhu můžete vyjádřit ve všech třech fázích Akustika projektu pracovního postupu: předem zanést scény nastavení, zvukové zdrojové umístění a která má označení po vytvoření návrhu. Proces vyžaduje méně značek přidružené k uvedení dozvuku svazky při zachování návrháře kontrolu nad jak zvuky scény.
@@ -45,18 +45,30 @@ Zvuk poskytované DSP **Microsoft Acoustics** modulu plug-in spatializer Unity r
 
 ![Zeslabení vzdálenost](media/distanceattenuation.png)
 
+Akustika provádí výpočet v poli "simulace oblasti" zaměřená na umístění přehrávače. Pokud je Vzdálená přehrávači nacházejících se mimo tuto oblast simulace zdroje zvuku pouze geometrie v rámci pole bude mít vliv na zvukové šíření hodnoty (jako je například způsobí uzavření), což poměrně dobře funguje, když jsou occluders pixelům přehrávač. Ale v případech, když hráč je ve volném prostoru, ale occluders blíží vzdálené zdrojem zvuku zvuk může stát unrealistically disoccluded. Naše navrhované alternativním řešením je v takových případech Ujistěte se, že zvukový zeslabení spadá 0 přibližně 45 m, výchozí vzdálenost vodorovné přehrávače k okraji pole.
+
 ### <a name="tuning-scene-parameters"></a>Optimalizace parametrů scény
 Chcete-li upravit parametry pro všechny zdroje, klikněte na kanál pruhu v Unity a **Mixer zvuk**a upravit parametry na **Akustika Mixer** vliv.
 
 ![Přizpůsobení Mixer](media/MixerParameters.png)
 
 ### <a name="tuning-source-parameters"></a>Ladění zdrojových parametrů
-Připojení **AcousticsSourceCustomization** skript ke zdroji povolí optimalizaci parametrů pro tento zdroj. Připojit skriptu, klikněte na tlačítko **přidat součást** v dolní části **inspektoru** panelu a přejděte do **skripty > Přizpůsobení zdroj Akustika**. Tento skript má tři parametry:
+Připojení **AcousticsDesign** skript ke zdroji povolí optimalizaci parametrů pro tento zdroj. Připojit skriptu, klikněte na tlačítko **přidat součást** dole **inspektoru** panelu a přejděte do **skripty > Akustika návrhu**. Tento skript má šest ovládací prvky:
 
-![Vlastní nastavení zdroje](media/SourceCustomization.png)
+![AcousticsDesign](media/AcousticsDesign.png)
 
-* **Upravit Power dozvuku** – upraví dozvuku výkon, v databázi. Kladné hodnoty provádět zvuk více reverberant při záporné hodnoty provést více suchého zvuk.
+* **Faktor uzavření** – používají multiplikátoru na úrovni databáze uzavření počítají tak, že Akustika systému. Pokud tento multiplikátor je větší než 1, uzavření bude exaggerated, při hodnoty menší než 1. Ujistěte se, efekt uzavření složitější a hodnota 0 zakáže uzavření.
+* **Přenos (databáze)** -nastavit zeslabení (v databázi) způsobené přenos přes geometry. Nastavte tento posuvník na nejnižší úrovni zakázat přenos. Akustika spatializes počáteční suchého zvuk jako přicházejících kolem geometrie scény (portaling). Přenos poskytuje další suchého doručení, která spatialized ve směru z dohlednost. Všimněte si, že je použito také křivky zeslabení vzdálenost pro zdroj.
+* **Upravit wetness (databáze)** – upraví dozvuku výkon, v databázi, podle vzdálenosti ze zdroje. Kladné hodnoty provádět zvuk více reverberant při záporné hodnoty provést více suchého zvuk. Klikněte na křivku ovládací prvek (zelená čára) a zobrazte si editoru křivky. Klepněte na Přidat body levým tlačítkem myši a přetažení tyto body k vytvoření funkce, že které chcete upravte křivky. Osy x je vzdálenost od zdroje a osy y je úprava dozvuku v databázi. Najdete v tomto [Unity ruční](https://docs.unity3d.com/Manual/EditingCurves.html) podrobné informace o úpravách křivky. Pokud chcete obnovit výchozí křivku, klikněte pravým tlačítkem na **Wetness upravit** a vyberte **resetování**.
 * **Decay – časové měřítko** – nastaví dobu decay multiplikátoru. Například pokud Určuje, která má označení vytvoření výsledku decay čas 750 milisekund, ale tato hodnota nastavená na 1.5, je čas decay použití ke zdroji 1,125 milisekund.
 * **Povolit Akustika** – Určuje, zda Akustika je použito k tomuto zdroji. Pokud není zaškrtnuto, bude se zdroji spatialized s HRTFs, ale bez Akustika, to znamená bez překážky uzavření a reverberation dynamické parametry, například úroveň a decay čas. Reverberation se uplatní s pevnou úroveň a decay čas.
+* **Úprava outdoorness** -sčítání úprava na odhad systému Akustika jak "venku" by měl zvukové reverberation ve zdroji. Toto nastavení na hodnotu 1 způsobí, že zdroj vždy zvukové zcela venku, při nastavení na hodnotu -1 bude zdroje zvuku budovách.
 
-Různých zdrojů mohou vyžadovat různé nastavení k dosažení určitých efektů aesthetic nebo hraní her. Dialogové okno je jedním z příkladů je to možné. Lidské mazat je více attuned k reverberation v řeči, zatímco dialogové okno často musí být srozumitelné pro hraní her. To můžete účtu přitom dialogové okno bez diegetic úpravou power dozvuku dolů.
+Různých zdrojů mohou vyžadovat různé nastavení k dosažení určitých efektů aesthetic nebo hraní her. Dialogové okno je jedním z příkladů je to možné. Lidské mazat je více attuned k reverberation v řeči, zatímco dialogové okno často musí být srozumitelné pro hraní her. Můžete účet pro toto přitom dialogové okno bez diegetic přechodem **Wetness upravit** dolů, nastavení **Percepční Warp vzdálenost** parametr je popsáno níže, přidání některých **Přenosu** pro některé suchého zvuku boost šíření prostřednictvím stěn a/nebo omezení **uzavření faktor** od 1 do mají další zvuk doručení prostřednictvím portálů.
+
+Připojení **AcousticsDesignExperimental** skript, který zdroj umožňuje další experimentální parametry ladění u tohoto zdroje. Připojit skriptu, klikněte na tlačítko **přidat součást** dole **inspektoru** panelu a přejděte do **skripty > experimentální návrh Akustika**. Aktuálně nejsou k dispozici jeden experimentální ovládací prvek:
+
+![AcousticsDesignExperimental](media/AcousticsDesignExperimental.png)
+
+* **Percepční Warp vzdálenost** – použití exponenciální pokřivení vzdálenosti slouží k výpočtu poměru suchého vlhkého stavu. Systém Akustika vypočítá vlhkou úrovně v rámci oboru, které hladce lišit podle vzdálenosti a poskytují Percepční vzdálenost pomůcky. Pokřivení hodnoty větší než 1 exaggerate tento efekt zvýšením úrovně reverberation související vzdálenost, provedete zvukové "vzdálené", zatímco pokřivení hodnoty menší než 1 Zkontrolujte složitější, provádění zvuk informace na základě vzdálenosti reverberation změní "k dispozici".
+

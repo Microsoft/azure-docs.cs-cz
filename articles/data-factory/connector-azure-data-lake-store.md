@@ -12,12 +12,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 08/31/2018
 ms.author: jingwang
-ms.openlocfilehash: d500bc9c910858341d7fdacb4d85bffc8be215e1
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 932ddf5f377556e815205b7ad34a735815317ac0
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338758"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249036"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure Data Lake Storage Gen1 pomocí služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -32,7 +32,7 @@ Můžete kopírovat data ze všech podporovaných zdrojů úložišť dat do Azu
 
 Konkrétně tento konektor Azure Data Lake Store podporuje:
 
-- Kopírování souborů pomocí **instanční objekt služby** nebo **se identita spravované služby (MSI)** ověřování.
+- Kopírování souborů pomocí **instanční objekt služby** nebo **spravovaných identit pro prostředky Azure** ověřování.
 - Kopírování souborů jako-je nebo analýze a generování souborů pomocí [podporované formáty souborů a komprese kodeky](supported-file-formats-and-compression-codecs.md).
 
 > [!IMPORTANT]
@@ -65,7 +65,7 @@ Následující vlastnosti jsou podporovány pro propojenou službu Azure Data La
 Najdete v následujících částech další vlastnosti a ukázky JSON pro různými typy ověřování v uvedeném pořadí:
 
 - [Pomocí ověřování instančních objektů](#using-service-principal-authentication)
-- [Použití ověření identity spravované služby](#using-managed-service-identity-authentication)
+- [Ověřování prostředků Azure pomocí spravované identity](#using-managed-service-identity-authentication)
 
 ### <a name="using-service-principal-authentication"></a>Pomocí ověřování instančních objektů
 
@@ -114,11 +114,11 @@ Podporovány jsou následující vlastnosti:
 }
 ```
 
-### <a name="using-managed-service-identity-authentication"></a>Použití ověření identity spravované služby
+### <a name="managed-identity"></a> Ověřování prostředků Azure pomocí spravované identity
 
-Objekt pro vytváření dat můžou být spojené s [se identita spravované služby](data-factory-service-identity.md), která představuje této konkrétní datové továrně. Tuto identitu služby můžete použít přímo pro ověřování Data Lake Store, podobně jako u vlastních instančního objektu. To umožňuje tento určený objekt pro vytváření pro přístup a kopírování dat z/do vaše Data Lake Store.
+Objekt pro vytváření dat můžou být spojené s [spravované identity pro prostředky Azure](data-factory-service-identity.md), která představuje této konkrétní datové továrně. Tuto identitu služby můžete použít přímo pro ověřování Data Lake Store, podobně jako u vlastních instančního objektu. To umožňuje tento určený objekt pro vytváření pro přístup a kopírování dat z/do vaše Data Lake Store.
 
-Použití ověřování identita spravované služby:
+Použití spravované identity pro ověřování prostředků Azure:
 
 1. [Načíst identita služeb datové továrny](data-factory-service-identity.md#retrieve-service-identity) tak, že zkopírujete hodnotu "ID aplikace IDENTITY služby" generované spolu se svým objektem pro vytváření.
 2. Udělte přístup identity služby Data Lake Store stejným způsobem jako pro následující instančního objektu služby pod poznámky.

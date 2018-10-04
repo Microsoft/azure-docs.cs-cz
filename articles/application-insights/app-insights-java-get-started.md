@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: mbullwin
-ms.openlocfilehash: 093124432314472da06065fad3a7cdff0f558d22
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3d1c90c5b74fd7f27335fbc0f7d5e8016d61ab8c
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999813"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249396"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Začínáme s Application Insights ve webovém projektu Java
 
@@ -233,7 +233,6 @@ Tato třída nakonfiguruje `WebRequestTrackingFilter` jako první filtr v řetě
 
 > Vzhledem k tomu, že se jedná o aplikaci Spring Boot s vlastní konfigurací Spring MVC, místo konfigurace Spring MVC používáme konfiguraci webového filtru HTTP. Konfiguraci specifickou pro Spring MVC najdete v následujících částech.
 
-
 ### <a name="applications-using-webxml"></a>Aplikace využívající soubor Web.xml
 Vyhledejte a otevřete soubor web.xml ve vašem projektu a slučte následující kód pod uzlem webové aplikace, které jsou nakonfigurované filtry aplikace.
 
@@ -251,6 +250,11 @@ Chcete-li získat nejpřesnější výsledky, musí být filtr namapován před 
        <filter-name>ApplicationInsightsWebFilter</filter-name>
        <url-pattern>/*</url-pattern>
     </filter-mapping>
+
+   <!-- This listener handles shutting down the TelemetryClient when an application/servlet is undeployed. -->
+    <listener>
+      <listener-class>com.microsoft.applicationinsights.web.internal.ApplicationInsightsServletContextListener</listener-class>
+    </listener>
 ```
 
 #### <a name="if-youre-using-spring-web-mvc-31-or-later"></a>Pokud používáte Spring Web MVC 3.1 nebo novější

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 99e9edf0bb31ec0eab96e22e866d9602a26c2693
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 64cd440947c95de92ea156c14e4c524ecdc8e76c
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47179914"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268812"
 ---
 # <a name="set-up-sign-in-azure-active-directory-accounts-a-built-in-policy-in-azure-active-directory-b2c"></a>Nastavení přihlášení účtů Azure Active Directory předdefinovaných zásad v Azure Active Directory B2C
 
@@ -32,10 +32,10 @@ Povolit přihlášení pro uživatele z konkrétní organizace služby Azure AD,
 >`Contoso.com` slouží k organizační tenanta Azure AD a `fabrikamb2c.onmicrosoft.com` slouží jako tenant Azure AD B2C v následujících pokynech.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Ujistěte se, že používáte adresáře, který obsahuje organizace Azure AD tenant (contoso.com) kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
+2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C (fabrikamb2c.onmicrosoft.com) klikněte na filtr adresářů a předplatných v horní nabídce vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C a.
 3. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **registrace aplikací**.
 4. Vyberte **Registrace nové aplikace**.
-5. Zadejte název pro vaši aplikaci. Například, `Azure AD B2C App`.
+5. Zadejte název své aplikace. Například, `Azure AD B2C App`.
 6. Pro **typ aplikace**vyberte `Web app / API`.
 7. Pro **přihlašovací adresa URL**, zadejte následující adresu URL malými písmeny, kde `your-tenant` se nahradí názvem vašeho tenanta Azure AD B2C (fabrikamb2c.onmicrosoft.com):
 

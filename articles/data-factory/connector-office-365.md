@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: jingwang
-ms.openlocfilehash: dc5f6c8c12dc10d135eaaf26d83236b2287bf059
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 2229a8a01d29fc167eb3696423224f1d2ef0df4e
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223114"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248461"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-preview"></a>Zkopírovat data z Office 365 do Azure pomocí Azure Data Factory (Preview) 
 
@@ -33,8 +33,8 @@ Prozatím se v rámci jednoho kopírování můžete pouze **kopírování dat z
 >[!IMPORTANT]
 >- Předplatné Azure, který obsahuje objekt pro vytváření dat a úložiště dat jímky musí být ve stejném tenantovi Azure Active Directory (Azure AD) jako tenant Office 365.
 >- Zajištění oblasti Azure Integration Runtime používané pro aktivitu kopírování, stejně jako cíl je ve stejné oblasti, kde se nachází poštovní schránky uživatelů tenanta Office 365. Přečtěte si [tady](concepts-integration-runtime.md#integration-runtime-location) pochopit, jak je určeno umístění prostředí Azure IR. Odkazovat na [tabulku tady](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/Capabilities#data-regions) seznam podporovaných oblastí pro Office a odpovídající oblasti Azure.
->-  Pokud nahráváte data Office 365 do **Azure Blob Storage** jako cíl, ujistěte se, že používáte **[ověřování instančních objektů](connector-azure-blob-storage.md#service-principal-authentication)** při definování propojené Služby Azure Blob Storage a bez použití [klíč účtu](connector-azure-blob-storage.md#account-key-authentication), [sdílený přístupový podpis](connector-azure-blob-storage.md#shared-access-signature-authentication) nebo [se identita spravované služby ](connector-azure-blob-storage.md#managed-service-identity-authentication) ověření.
->-  Pokud nahráváte data Office 365 do **Azure Data Lake Storage Gen1** jako cíl, ujistěte se, že používáte [ **ověřování instančních objektů** ](connector-azure-data-lake-store.md#using-service-principal-authentication) při definování Propojená služba Azure Data Lake Storage Gen1 a bez použití [spravovaná služba ověření identity](connector-azure-data-lake-store.md#using-managed-service-identity-authentication).
+>-  Pokud nahráváte data Office 365 do **Azure Blob Storage** jako cíl, ujistěte se, že používáte **[ověřování instančních objektů](connector-azure-blob-storage.md#service-principal-authentication)** při definování propojené Služby Azure Blob Storage a bez použití [klíč účtu](connector-azure-blob-storage.md#account-key-authentication), [sdílený přístupový podpis](connector-azure-blob-storage.md#shared-access-signature-authentication) nebo [spravovaných identit pro prostředky Azure](connector-azure-blob-storage.md#managed-identity) ověření.
+>-  Pokud nahráváte data Office 365 do **Azure Data Lake Storage Gen1** jako cíl, ujistěte se, že používáte [ **ověřování instančních objektů** ](connector-azure-data-lake-store.md#using-service-principal-authentication) při definování Propojená služba Azure Data Lake Storage Gen1 a bez použití [spravovaných identit pro ověřování prostředků Azure](connector-azure-data-lake-store.md#managed-identity).
 
 ## <a name="prerequisites"></a>Požadavky
 

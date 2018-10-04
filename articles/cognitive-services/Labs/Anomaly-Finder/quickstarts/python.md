@@ -1,6 +1,6 @@
 ---
-title: Použití rozhraní API vyhledávací anomálií s Python - kognitivní služby Microsoft | Microsoft Docs
-description: Get informace a ukázky kódu můžete rychle začít používat anomálií vyhledávací s Pythonem v kognitivní služby.
+title: Jak používat rozhraní API pro vyhledávač anomálií s využitím Pythonu – Microsoft Cognitive Services | Dokumentace Microsoftu
+description: Získat informace a ukázky kódu můžete rychle začít používat vyhledávač anomálií na Pythonu ve službě Cognitive Services.
 services: cognitive-services
 author: chliang
 manager: bix
@@ -9,34 +9,36 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: c14916b0644edab613b298d6e71f8bbb9a6bb804
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c9fd96bf4a9bdc9dfe5baf52aa742e19d5436708
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343007"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247347"
 ---
-# <a name="use-the-anomaly-finder-api-with-python"></a>Použití anomálií vyhledávací rozhraní API s Pythonem
+# <a name="use-the-anomaly-finder-api-with-python"></a>Vyhledávač anomálií rozhraní API pomocí Pythonu
 
-Tento článek obsahuje informace a ukázky kódu, které vám pomohou rychle začít, pomocí rozhraní API vyhledávací anomálií Python k provedení úlohy získání anomálií výsledek pro data časové řady.
+[!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
+
+Tento článek obsahuje informace a ukázky kódu, které vám pomohou rychle začít používat rozhraní API pro vyhledávač anomálií na Python k provedení úlohy získání výsledku anomálií dat časové řady.
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [GetSubscriptionKey](../includes/get-subscription-key.md)]
 
-## <a name="getting-anomaly-points-with-anomaly-finder-api-using-python"></a>Získávání anomálií body s rozhraním API vyhledávací anomálií, které používá Python 
+## <a name="getting-anomaly-points-with-anomaly-finder-api-using-python"></a>Získání bodů anomálií s využitím Python API vyhledávač anomálií 
 
 [!INCLUDE [DataContract](../includes/datacontract.md)]
 
-### <a name="example-of-time-series-data"></a>Příklad data časové řady
+### <a name="example-of-time-series-data"></a>Příklad dat časových řad
 
-Následuje příklad času řadu datových bodů.
+Následuje příklad času datových bodů řady.
 
 [!INCLUDE [Request](../includes/request.md)]
 
-### <a name="analyze-data-and-get-anomaly-points-python-example"></a>Analýza dat a získat příklad anomálií body Python
+### <a name="analyze-data-and-get-anomaly-points-python-example"></a>Analýza dat a získat příklad v Pythonu body anomálií
 
-Zkontrolujte, zda jste nainstalovali python3 potom vytvořte python spustitelný soubor s názvem detect.py. V detect.py by měla obsahovat kód níže. Před provedením kód, nezapomeňte nahradit `[YOUR_SUBSCRIPTION_KEY]` hodnotu s klíč platné předplatné.
+Ujistěte se, že máte nainstalovanou pythonu3 a pak vytvořte spustitelný soubor pythonu s názvem detect.py. V detect.py měli byste zahrnout kód uvedený níže. Před spuštěním kódu, nezapomeňte nahradit `[YOUR_SUBSCRIPTION_KEY]` hodnotu klíčem platné předplatné.
 Nahraďte `[REPLACE_WITH_THE_EXAMPLE_OR_YOUR_OWN_DATA_POINTS]` s datovými body.
 
 ```python
@@ -65,10 +67,10 @@ print(result)
 
 ### <a name="example-response"></a>Příklad odpovědi
 
-Úspěšná odpověď se vrátí ve formátu JSON. Ukázková odpověď je následující.
+Úspěšná odpověď se vrátí ve formátu JSON. Ukázková odpověď vypadá takto.
 [!INCLUDE [Response](../includes/response.md)]
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Aplikace Python](../tutorials/python-tutorial.md)
+> [Aplikace v Pythonu](../tutorials/python-tutorial.md)

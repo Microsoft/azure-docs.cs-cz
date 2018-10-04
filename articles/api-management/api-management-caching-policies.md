@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: f3734304bdcc4b3f0944ebf568094595eea01a4e
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 160172b25f4bcdb04ac9f9649bca6b08e0be1b0d
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214896"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269068"
 ---
 # <a name="api-management-caching-policies"></a>Zásady ukládání do mezipaměti služby API Management
 Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -83,7 +83,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
  Tento příklad ukazuje, jak nakonfigurovat správu rozhraní API ukládání do mezipaměti Doba trvání odpovědi, která odpovídá ukládání odpovědí do mezipaměti této služby back-end jako zadané zálohované služby `Cache-Control` směrnice. Ukázka konfigurace a používání této zásady, najdete v části [Cloud Cover epizodě 177: Další funkce API Management s Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) a přechod na libovolný krok k 25:25.  
   
 ```xml  
-<!-- The following cache policy snippets demonstrate how to control API Management reponse cache duration with Cache-Control headers sent by the backend service. -->  
+<!-- The following cache policy snippets demonstrate how to control API Management response cache duration with Cache-Control headers sent by the backend service. -->  
   
 <!-- Copy this snippet into the inbound section -->  
 <cache-lookup vary-by-developer="false" vary-by-developer-groups="false" downstream-caching-type="public" must-revalidate="true" >  
@@ -91,7 +91,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
   <vary-by-header>Accept-Charset</vary-by-header>  
 </cache-lookup>  
   
-<!-- Copy this snippet into the outbound section. Note that cache duration is set to the max-age value provided in the Cache-Control header received from the backend service or to the deafult value of 5 min if none is found  -->  
+<!-- Copy this snippet into the outbound section. Note that cache duration is set to the max-age value provided in the Cache-Control header received from the backend service or to the default value of 5 min if none is found  -->  
 <cache-store duration="@{  
     var header = context.Response.Headers.GetValueOrDefault("Cache-Control","");  
     var maxAge = Regex.Match(header, @"max-age=(?<maxAge>\d+)").Groups["maxAge"]?.Value;  
@@ -161,7 +161,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
  Tento příklad ukazuje, jak nakonfigurovat správu rozhraní API ukládání do mezipaměti Doba trvání odpovědi, která odpovídá ukládání odpovědí do mezipaměti této služby back-end jako zadané zálohované služby `Cache-Control` směrnice. Ukázka konfigurace a používání této zásady, najdete v části [Cloud Cover epizodě 177: Další funkce API Management s Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) a přechod na libovolný krok k 25:25.  
   
 ```xml  
-<!-- The following cache policy snippets demonstrate how to control API Management reponse cache duration with Cache-Control headers sent by the backend service. -->  
+<!-- The following cache policy snippets demonstrate how to control API Management response cache duration with Cache-Control headers sent by the backend service. -->  
   
 <!-- Copy this snippet into the inbound section -->  
 <cache-lookup vary-by-developer="false" vary-by-developer-groups="false" downstream-caching-type="public" must-revalidate="true" >  
@@ -169,7 +169,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
   <vary-by-header>Accept-Charset</vary-by-header>  
 </cache-lookup>  
   
-<!-- Copy this snippet into the outbound section. Note that cache duration is set to the max-age value provided in the Cache-Control header received from the backend service or to the deafult value of 5 min if none is found  -->  
+<!-- Copy this snippet into the outbound section. Note that cache duration is set to the max-age value provided in the Cache-Control header received from the backend service or to the default value of 5 min if none is found  -->  
 <cache-store duration="@{  
     var header = context.Response.Headers.GetValueOrDefault("Cache-Control","");  
     var maxAge = Regex.Match(header, @"max-age=(?<maxAge>\d+)").Groups["maxAge"]?.Value;  

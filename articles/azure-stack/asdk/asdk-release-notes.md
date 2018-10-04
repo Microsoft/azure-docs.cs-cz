@@ -11,22 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2018
+ms.date: 10/02/2018
 ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: d322fe378e7f662c233e9572dfc79dcd961137bd
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 72c28f8d4f8d867d16c374e3dd659d845010813e
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237802"
+ms.locfileid: "48249090"
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Zpráva k vydání verze Azure Stack Development Kit  
 Tento článek obsahuje informace o vylepšení, oprav a známé problémy v Azure Stack Development Kit. Pokud si nejste jistí, kterou verzi používáte, můžete si [použití portálu ke kontrole](.\.\azure-stack-updates.md#determine-the-current-version).
 
 > Udržujte si s tím, co se přihlásíte k odběru je novinkou ASDK [ ![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [kanálu](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#).
 
-## <a name="build-11809xxx"></a>Sestavení 1.1809.x.xx
+## <a name="build-11808097"></a>Sestavení 1.1808.0.97
 
 ### <a name="new-features"></a>Nové funkce
 Toto sestavení obsahuje následující vylepšení a oprav pro Azure Stack.  
@@ -86,6 +86,8 @@ Další informace najdete v tématu [předávání syslog Azure Stack](../azure-
 
 
 #### <a name="compute"></a>Compute  
+
+- <!-- 3099544 – IS, ASDK --> Při vytváření nového virtuálního počítače (VM) pomocí portálu Azure Stack, a vyberte velikost virtuálního počítače, zobrazí se sloupec USD za měsíc s **není k dispozici** zprávy. Tento sloupec by se neměl zobrazit; zobrazení virtuální počítač cenové sloupec není podporován ve službě Azure Stack.
 
 - <!-- 3090289 – IS, ASDK --> Po použití. 1808 aktualizace, kterým může dojít k následujícím problémům při nasazování virtuálních počítačů se spravovanými disky:
 

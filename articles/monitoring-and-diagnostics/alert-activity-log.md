@@ -1,5 +1,5 @@
 ---
-title: Vytvoření, zobrazení a Správa upozornění protokolu aktivit ve službě Azure Monitor
+title: Vytváření, zobrazení a Správa upozornění protokolu aktivit ve službě Azure Monitor
 description: Postup vytvoření upozornění protokolu aktivit z webu Azure Portal, šablon prostředků a prostředí PowerShell.
 author: msvijayn
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 526c50fa4d261a30738c3f24d537fe5e0d765f6d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a95cdbb48371cf960211f55bf077cea9db783db5
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46951300"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248325"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Vytvoření, zobrazení a správa pomocí Azure monitoru upozornění protokolu aktivit  
 
@@ -25,7 +25,7 @@ Tyto výstrahy jsou pro prostředky Azure, můžete vytvořit pomocí šablony A
 > [!IMPORTANT]
 > Upozornění na stav služby notification nelze vytvořit pomocí rozhraní pro vytvoření upozornění protokolu aktivit. Další informace o vytváření a používání oznámení o stavu služby, najdete v článku [dostávat upozornění protokolu aktivit na oznámení o stavu služby](monitoring-activity-log-alerts-on-service-notifications.md).
 
-## <a name="manage-alert-rules-for-activity-log-using-azure-portal"></a>Spravovat pravidla upozornění protokolu aktivit pomocí webu Azure portal
+## <a name="azure-portal"></a>portál Azure
 
 > [!NOTE]
 
@@ -36,7 +36,7 @@ Tyto výstrahy jsou pro prostředky Azure, můžete vytvořit pomocí šablony A
 - Není žádný "anyOf" podmínky nebo vnořené podmínky v konfiguraci výstrahy JSON (v podstatě u žádné další allOf/anyOf je povoleno pouze jeden allOf).
 - Pokud je kategorie "správce". Musíte zadat alespoň jeden z předchozích kritéria v upozornění. Nelze vytvořit výstrahu, která se aktivuje vždy, když se vytvoří událost v protokolech aktivit.
 
-### <a name="create-an-alert-rule-for-an-activity-log-using-azure-portal"></a>Vytvoření pravidla upozornění protokolu aktivit pomocí webu Azure portal
+### <a name="create-with-azure-portal"></a>Vytvořit pomocí webu Azure portal
 
 Použijte následující postup:
 
@@ -102,7 +102,7 @@ Alternativně je jednoduchý přirovnání pro vysvětlení podmínky, na který
  ![ Přidat upozornění protokolu aktivit](./media/monitoring-activity-log-alerts-new-experience/add-activity-log.png)
     
 
-### <a name="view-and-manage-activity-log-alert-rules-in-azure-portal"></a>Umožňuje zobrazit a spravovat pravidla upozornění protokolu aktivit na webu Azure portal
+### <a name="view-and-manage-in-azure-portal"></a>Umožňuje zobrazit a spravovat na webu Azure portal
 
 1. Z webu Azure portal, klikněte na tlačítko **monitorování** > **výstrahy** a klikněte na tlačítko **spravovat pravidla** v levém horním rohu okna.
 
@@ -127,7 +127,7 @@ Alternativně je jednoduchý přirovnání pro vysvětlení podmínky, na který
 4.  Zakázání, povolení nebo odstranění pravidla. Vyberte příslušnou možnost v horní části okna, po výběru pravidla, jak je uvedeno v kroku 2.
 
 
-## <a name="manage-alert-rules-for-activity-log-using-azure-resource-template"></a>Spravovat pravidla upozornění protokolu aktivit pomocí šablony Azure Resource
+## <a name="azure-resource-template"></a>Šablony Azure Resource
 Pokud chcete vytvořit upozornění protokolu aktivit s využitím šablony Resource Manageru, vytvoříte prostředek typu `microsoft.insights/activityLogAlerts`. Potom vyplňte všechny související vlastnosti. Zde je šablona, která vytvoří upozornění protokolu aktivit.
 
 ```json
@@ -200,21 +200,23 @@ Výše uvedené ukázky json se dají uložit jako (Řekněme) sampleActivityLog
 > [!NOTE]
 > Může trvat až 5 minut nové pravidlo upozornění protokolu aktivit aktivuje
 
-## <a name="manage-alert-rules-for-activity-log-using-powershell-cli-or-api"></a>Spravovat pravidla upozornění protokolu aktivit pomocí Powershellu, rozhraní příkazového řádku nebo rozhraní API
+## <a name="rest-api"></a>REST API 
 [Azure Monitor – rozhraní API upozornění protokolu aktivit](https://docs.microsoft.com/rest/api/monitor/activitylogalerts) je rozhraní REST API a plně kompatibilní s rozhraním REST API Azure Resource Manageru. Proto může sloužit prostřednictvím Powershellu pomocí rutiny Resource Manageru a Azure CLI.
 
+## <a name="powershell"></a>PowerShell
 Znázorněno níže využití přes rutiny Powershellu pro Azure Resource Manager pro ukázku výše uvedenou šablonu prostředků (sampleActivityLogAlert.json) [oddíl prostředků šablony](#manage-alert-rules-for-activity-log-using-azure-resource-template) :
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile sampleActivityLogAlert.json -TemplateParameterFile sampleActivityLogAlert.parameters.json
 ```
 Ve které sampleActivityLogAlert.parameters.json má hodnoty poskytnutý pro parametry potřebné pro vytvoření pravidla upozornění.
 
+## <a name="cli"></a>Rozhraní příkazového řádku
 Znázorněno níže použití pomocí příkazu Azure Resource Manageru v Azure CLI v ukázce výše uvedenou šablonu prostředků (sampleActivityLogAlert.json) [oddíl prostředků šablony](#manage-alert-rules-for-activity-log-using-azure-resource-template) :
 
 ```azurecli
 az group deployment create --resource-group myRG --template-file sampleActivityLogAlert.json --parameters @sampleActivityLogAlert.parameters.json
 ```
-Ve které sampleActivityLogAlert.parameters.json má hodnoty poskytnutý pro parametry potřebné pro vytvoření pravidla upozornění.
+*SampleActivityLogAlert.parameters.json* soubor obsahuje hodnoty poskytnutý pro parametry potřebné pro vytvoření pravidla upozornění.
 
 
 ## <a name="next-steps"></a>Další postup

@@ -3,7 +3,7 @@ title: Resetovat heslo nebo konfigurace vzdálené plochy na virtuálním počí
 description: Zjistěte, jak resetovat heslo k účtu nebo služby Vzdálená plocha na virtuálním počítači s Windows pomocí webu Azure portal nebo Azure Powershellu.
 services: virtual-machines-windows
 documentationcenter: ''
-author: cynthn
+author: genlin
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
-ms.author: cynthn
-ms.openlocfilehash: a8db7ef82136bae51c99bcfd2a4743e09ebf5712
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.author: genli
+ms.openlocfilehash: 08461811203232d5db1ae9c8f34f4ac180b6b0ce
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47413273"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268292"
 ---
 # <a name="how-to-reset-the-remote-desktop-service-or-its-login-password-in-a-windows-vm"></a>Jak obnovit službu Vzdálená plocha nebo jeho heslo přihlášení do virtuálního počítače s Windows
 Pokud se nemůžete připojit k virtuálnímu počítači Windows (VM), můžete resetovat heslo místního správce nebo resetovat konfiguraci služby Vzdálená plocha (není podporováno ve Windows řadiče domény). Na webu Azure portal nebo rozšíření přístupu virtuálních počítačů v prostředí Azure PowerShell můžete použít k resetování hesla. Po přihlášení k virtuálnímu počítači, měli byste resetovat heslo tohoto uživatele.  

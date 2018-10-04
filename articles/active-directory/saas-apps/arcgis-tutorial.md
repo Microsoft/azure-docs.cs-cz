@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/13/2017
+ms.date: 10/03/2018
 ms.author: jeedes
-ms.openlocfilehash: 24a82bbaf47153791da2f21a0b68c2f81c0670e7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 12ab224481c519db36ae21dd11916649ff0bfbe3
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446352"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269030"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>Kurz: Integrace Azure Active Directory se službou ArcGIS Online
 
@@ -38,8 +38,8 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s ArcGIS Online, potřebujete následující položky:
 
-- S předplatným služby Azure AD
-- ArcGIS Online jediného přihlášení povolený předplatného
+- Předplatné Azure AD
+- ArcGIS Online jednotné přihlašování povolené předplatným
 
 > [!NOTE]
 > Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
@@ -50,31 +50,34 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 - Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí.
+Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání ArcGIS Online z Galerie
-1. Konfigurace a testování Azure AD jednotného přihlašování
+2. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-arcgis-online-from-the-gallery"></a>Přidání ArcGIS Online z Galerie
+
 Pokud chcete nakonfigurovat integraci ArcGIS Online do služby Azure AD, budete muset přidat ArcGIS Online z Galerie na váš seznam spravovaných aplikací SaaS.
 
 **Chcete-li přidat ArcGIS Online z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
-    ![Tlačítko Azure Active Directory][1]
+    ![image](./media/arcgis-tutorial/selectazuread.png)
 
-1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
-    ![V okně podnikové aplikace][2]
+    ![image](./media/arcgis-tutorial/a_select_app.png)
     
-1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
-    ![Tlačítko nové aplikace][3]
+    ![image](./media/arcgis-tutorial/a_new_app.png)
 
-1. Do vyhledávacího pole zadejte **ArcGIS Online**vyberte **ArcGIS Online** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **ArcGIS Online**vyberte **ArcGIS Online** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-    ![ArcGIS Online v seznamu výsledků](./media/arcgis-tutorial/tutorial_arcgisonline_addfromgallery.png)
+     ![image](./media/arcgis-tutorial/a_add_app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
@@ -87,10 +90,10 @@ ArcGIS online, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s ArcGIS Online, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-1. **[Vytvoření zkušebního uživatele ArcGIS Online](#create-a-arcgis-online-test-user)**  – Pokud chcete mít protějšek Britta Simon ArcGIS online, který je propojený s Azure AD reprezentace uživatele.
-1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření ArcGIS Online testovacího uživatele](#create-an-arcgis-online-test-user)**  – Pokud chcete mít protějšek Britta Simon ArcGIS online, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -98,53 +101,61 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
 **Ke konfiguraci Azure AD jednotné přihlašování s ArcGIS Online, postupujte následovně:**
 
-1. Na webu Azure Portal na **ArcGIS Online** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
+1. V [webu Azure portal](https://portal.azure.com/)na **ArcGIS Online** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
+    ![image](./media/arcgis-tutorial/b1_b2_select_sso.png)
 
-1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
- 
-    ![Jednotné přihlašování – dialogové okno](./media/arcgis-tutorial/tutorial_arcgisonline_samlbase.png)
+2. Klikněte na tlačítko **režim změnit jednotného přihlašování** nad obrazovky, vyberte **SAML** režimu.
 
-1. Na **ArcGIS Online domény a adresy URL** části, proveďte následující kroky:
+      ![image](./media/arcgis-tutorial/b1_b2_saml_ssso.png)
 
-    ![ArcGIS Online domény a adresy URL jednotného přihlašování – informace](./media/arcgis-tutorial/tutorial_arcgisonline_url.png)
+3. Na **vybrat jedinou metodu přihlašování** dialogového okna, klikněte na tlačítko **vyberte** pro **SAML** chcete povolit jednotné přihlašování.
 
-    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<companyname>.maps.arcgis.com`
+    ![image](./media/arcgis-tutorial/b1_b2_saml_sso.png)
 
-    b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `<companyname>.maps.arcgis.com`
+4. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** tlačítko Otevřít **základní konfiguraci SAML** dialogového okna.
+
+    ![image](./media/arcgis-tutorial/b1-domains_and_urlsedit.png)
+
+5. Na **základní konfiguraci SAML** části, proveďte následující kroky:
+
+    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<companyname>.maps.arcgis.com`.
+
+    b. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `<companyname>.maps.arcgis.com`.
+
+    ![image](./media/arcgis-tutorial/b1-domains_and_urls.png)
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [tým podpory ArcGIS Online klienta](http://support.esri.com/en/) k získání těchto hodnot. 
- 
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [tým podpory ArcGIS Online klienta](http://support.esri.com/en/) k získání těchto hodnot.
 
+6. Na **podpisový certifikát SAML** části, klikněte na **Stáhnout** Stáhnout **kód XML metadat federace** a uložte soubor xml ve vašem počítači.
 
-1. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
+    ![image](./media/arcgis-tutorial/federationxml.png)
 
-    ![Odkaz ke stažení certifikátu](./media/arcgis-tutorial/tutorial_arcgisonline_certificate.png) 
+7. K automatizaci konfigurace v rámci **ArcGIS Online**, je potřeba nainstalovat **Moje aplikace zabezpečené přihlašování rozšíření prohlížeče** kliknutím **nainstalovat rozšíření**.
 
-1. Klikněte na tlačítko **Uložit** tlačítko.
+    ![image](./media/arcgis-tutorial/install_extension.png)
 
-    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/arcgis-tutorial/tutorial_general_400.png)
+8. Po přidání rozšíření do prohlížeče, klikněte na **nastavení ArcGIS Online** nasměruje na ArcGIS Online aplikace. Odtud zadejte přihlašovací údaje správce pro přihlášení do ArcGIS Online. Rozšíření prohlížeče budou automaticky nakonfigurovat aplikaci za vás a automatizovat kroky 13. 9.
 
-1. V okně jiné webové prohlížeče přihlaste jako správce webu ArcGIS společnosti.
+9. Pokud chcete nastavit ArcGIS Online ručně, otevřete nové okno webového prohlížeče a přihlaste se jako správce ArcGIS společnosti lokalitu a proveďte následující kroky:
 
-1. Klikněte na tlačítko **upravovat nastavení**.
+10. Klikněte na tlačítko **upravovat nastavení**.
 
     ![Upravit nastavení](./media/arcgis-tutorial/ic784742.png "upravit nastavení")
 
-1. Klikněte na tlačítko **zabezpečení**.
+11. Klikněte na tlačítko **zabezpečení**.
 
     ![Zabezpečení](./media/arcgis-tutorial/ic784743.png "zabezpečení")
 
-1. V části **podnikové přihlašovací údaje**, klikněte na tlačítko **nastavit zprostředkovatele IDENTITY**.
+12. V části **podnikové přihlašovací údaje**, klikněte na tlačítko **nastavit zprostředkovatele IDENTITY**.
 
     ![Podnikové přihlašovací údaje](./media/arcgis-tutorial/ic784744.png "podnikové přihlašovací údaje")
 
-1. Na **nastavit zprostředkovatele Identity** konfigurační stránce, proveďte následující kroky:
-   
+13. Na **nastavit zprostředkovatele Identity** konfigurační stránce, proveďte následující kroky:
+
     ![Nastavit zprostředkovatele Identity](./media/arcgis-tutorial/ic784745.png "nastavit zprostředkovatele Identity")
-   
+
     a. V **název** textového pole zadejte název vaší organizace.
 
     b. Pro **Metadata pro zprostředkovatele Identity organizace bude zadán pomocí**vyberte **soubor**.
@@ -153,43 +164,32 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     d. Klikněte na tlačítko **zprostředkovatele IDENTITY sada**.
 
-> [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
-
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-   ![Vytvořit testovacího uživatele Azure AD][100]
+1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
 
-**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
+    ![image](./media/arcgis-tutorial/d_users_and_groups.png)
 
-1. Na webu Azure Portal, v levém podokně klikněte na tlačítko **Azure Active Directory** tlačítko.
+2. Vyberte **nového uživatele** v horní části obrazovky.
 
-    ![Tlačítko Azure Active Directory](./media/arcgis-tutorial/create_aaduser_01.png)
+    ![image](./media/arcgis-tutorial/d_adduser.png)
 
-1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
+3. Ve vlastnosti uživatele proveďte následující kroky.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/arcgis-tutorial/create_aaduser_02.png)
+    ![image](./media/arcgis-tutorial/d_userproperties.png)
 
-1. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
+    a. V **název** zadat **BrittaSimon**.
+  
+    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    Například BrittaSimon@contoso.com.
 
-    ![Tlačítko Přidat](./media/arcgis-tutorial/create_aaduser_03.png)
+    c. Vyberte **vlastnosti**, vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
-1. V **uživatele** dialogové okno pole, proveďte následující kroky:
+    d. Vyberte **Vytvořit**.
 
-    ![Dialogové okno uživatele](./media/arcgis-tutorial/create_aaduser_04.png)
-
-    a. V **název** zadejte **BrittaSimon**.
-
-    b. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
-
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
-
-    d. Klikněte na možnost **Vytvořit**.
- 
-### <a name="create-a-arcgis-online-test-user"></a>Vytvoření zkušebního uživatele ArcGIS Online
+### <a name="create-an-arcgis-online-test-user"></a>Vytvoření ArcGIS Online testovacího uživatele
 
 Chcete-li povolit uživatele Azure AD k přihlášení do ArcGIS Online, musí být poskytnuty do ArcGIS Online.  
 V případě ArcGIS Online zřizování je ruční úloha.
@@ -198,22 +198,22 @@ V případě ArcGIS Online zřizování je ruční úloha.
 
 1. Přihlaste se k vaší **ArcGIS** tenanta.
 
-1. Klikněte na tlačítko **pozvání členů**.
+2. Klikněte na tlačítko **pozvání členů**.
    
     ![Pozvání členů](./media/arcgis-tutorial/ic784747.png "zvát členy")
 
-1. Vyberte **automaticky přidat členy bez odeslání e-mailu**a potom klikněte na tlačítko **Další**.
+3. Vyberte **automaticky přidat členy bez odeslání e-mailu**a potom klikněte na tlačítko **Další**.
    
     ![Automaticky přidat členy](./media/arcgis-tutorial/ic784748.png "automaticky přidat členy")
 
-1. Na **členy** dialogového okna stránky, proveďte následující kroky:
+4. Na **členy** dialogového okna stránky, proveďte následující kroky:
    
      ![Přidat a zkontrolujte](./media/arcgis-tutorial/ic784749.png "přidat a revize")
     
      a. Zadejte **e-mailu**, **křestní jméno**, a **příjmení** platného účtu AAD, které chcete zřídit.
   
      b. Klikněte na tlačítko **přidat a kontrola**.
-1. Zkontrolujte data, která jste zadali a potom klikněte na tlačítko **přidat členy**.
+5. Zkontrolujte data, která jste zadali a potom klikněte na tlačítko **přidat členy**.
    
     ![Přidat člena](./media/arcgis-tutorial/ic784750.png "přidat člena")
         
@@ -224,55 +224,37 @@ V případě ArcGIS Online zřizování je ruční úloha.
 
 V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k ArcGIS Online.
 
-![Přiřazení role uživatele][200] 
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**.
 
-**Pokud chcete přiřadit Britta Simon ArcGIS online, postupujte následovně:**
+    ![image](./media/arcgis-tutorial/d_all_applications.png)
 
-1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
+2. V seznamu aplikací vyberte **ArcGIS Online**.
 
-    ![Přiřadit uživatele][201] 
+    ![image](./media/arcgis-tutorial/d_all_application.png)
 
-1. V seznamu aplikací vyberte **ArcGIS Online**.
+3. V nabídce na levé straně vyberte **uživatelů a skupin**.
 
-    ![ArcGIS Online odkaz v seznamu aplikací](./media/arcgis-tutorial/tutorial_arcgisonline_app.png)  
+    ![image](./media/arcgis-tutorial/d_leftpaneusers.png)
 
-1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+4. Vyberte **přidat** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
 
-    ![Odkaz "Uživatele a skupiny"][202]
+    ![image](./media/arcgis-tutorial/d_assign_user.png)
 
-1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+4. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-    ![Podokno Přidat přiřazení][203]
+5. V **přidat přiřazení** dialogové okno Vybrat **přiřadit** tlačítko.
 
-1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
-
-1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
-
-1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
-    
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
 Když kliknete na dlaždici ArcGIS Online na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci ArcGIS Online.
-Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-<!--Image references-->
 
-[1]: ./media/arcgis-tutorial/tutorial_general_01.png
-[2]: ./media/arcgis-tutorial/tutorial_general_02.png
-[3]: ./media/arcgis-tutorial/tutorial_general_03.png
-[4]: ./media/arcgis-tutorial/tutorial_general_04.png
-
-[100]: ./media/arcgis-tutorial/tutorial_general_100.png
-
-[200]: ./media/arcgis-tutorial/tutorial_general_200.png
-[201]: ./media/arcgis-tutorial/tutorial_general_201.png
-[202]: ./media/arcgis-tutorial/tutorial_general_202.png
-[203]: ./media/arcgis-tutorial/tutorial_general_203.png
 

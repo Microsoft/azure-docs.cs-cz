@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/2/2017
+ms.date: 10/02/2018
 ms.author: jeedes
-ms.openlocfilehash: d53877dbcc25edad14714633bfa11a0c3cbbf76e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c9ee0af3cbf2c1aa7b24d2f4cf5fba9d664bc087
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433254"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248036"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-expensify"></a>Kurz: Integrace Azure Active Directory se službou Expensify
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Expensify, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Expensify jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -56,25 +56,26 @@ V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím pro
 1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-expensify-from-the-gallery"></a>Přidání Expensify z Galerie
+
 Konfigurace integrace Expensify do služby Azure AD, budete muset přidat Expensify z Galerie na váš seznam spravovaných aplikací SaaS.
 
 **Chcete-li přidat Expensify z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
-    ![Tlačítko Azure Active Directory][1]
+    ![image](./media/expensify-tutorial/selectazuread.png)
 
-1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
-    ![V okně podnikové aplikace][2]
+    ![image](./media/expensify-tutorial/a_select_app.png)
     
-1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
-    ![Tlačítko nové aplikace][3]
+    ![image](./media/expensify-tutorial/a_new_app.png)
 
-1. Do vyhledávacího pole zadejte **Expensify**vyberte **Expensify** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **Expensify**vyberte **Expensify** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-    ![Expensify v seznamu výsledků](./media/expensify-tutorial/tutorial_expensify_addfromgallery.png)
+     ![image](./media/expensify-tutorial/a_add_app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
@@ -98,84 +99,75 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
 **Ke konfiguraci Azure AD jednotné přihlašování s Expensify, proveďte následující kroky:**
 
-1. Na webu Azure Portal na **Expensify** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
+1. V [webu Azure portal](https://portal.azure.com/)na **Expensify** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
+    ![image](./media/expensify-tutorial/b1_b2_select_sso.png)
 
-1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
- 
-    ![Jednotné přihlašování – dialogové okno](./media/expensify-tutorial/tutorial_expensify_samlbase.png)
+2. Klikněte na tlačítko **režim změnit jednotného přihlašování** nad obrazovky, vyberte **SAML** režimu.
 
-1. Na **Expensify domény a adresy URL** části, proveďte následující kroky:
+      ![image](./media/expensify-tutorial/b1_b2_saml_ssso.png)
 
-    ![Expensify domény a adresy URL jednotné přihlašování – informace](./media/expensify-tutorial/tutorial_expensify_url.png)
+3. Na **vybrat jedinou metodu přihlašování** dialogového okna, klikněte na tlačítko **vyberte** pro **SAML** chcete povolit jednotné přihlašování.
+
+    ![image](./media/expensify-tutorial/b1_b2_saml_sso.png)
+
+4. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** tlačítko Otevřít **základní konfiguraci SAML** dialogového okna.
+
+    ![image](./media/expensify-tutorial/b1-domains_and_urlsedit.png)
+
+5. Na **základní konfiguraci SAML** části, proveďte následující kroky:
 
     a. V **přihlašovací adresa URL** textového pole zadejte adresu URL jako: `https://www.expensify.com/authentication/saml/login`
 
-    b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://www.<companyname>.expensify.com`
+    b. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://www.<companyname>.expensify.com`
+
+    ![image](./media/expensify-tutorial/b1-domains_and_urls.png)
 
     > [!NOTE] 
-    > Nahradit `<companyname>` část identifikátoru adresy URL s doménou vaší společnosti. Podívejte se příklad `https://contoso.expensify.com` výše. Kontakt [tým podpory Expensify klienta](mailto:help@expensify.com) tuto výhodu získáte.
+    > Nahradit <companyname> část identifikátoru adresy URL s doménou vaší společnosti. Podívejte se příklad `https://contoso.expensify.com` výše. V Expensify, jde o název domény uvedené **Nastavení > domény řízení**.
 
-1. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
+    ![Expensify informace o doméně](./media/expensify-tutorial/tutorial_expensify_domain.png)
 
-    ![Odkaz ke stažení certifikátu](./media/expensify-tutorial/tutorial_expensify_certificate.png) 
+6. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** stáhnout příslušný certifikát, jak je uvedeno vaše požadavek a uložte ho do počítače.
 
-1. Klikněte na tlačítko **Uložit** tlačítko.
+    ![image](./media/expensify-tutorial/certificatebase64.png)
 
-    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/expensify-tutorial/tutorial_general_400.png)
-
-1. Pokud chcete povolit jednotné přihlašování v Expensify, je nejprve potřeba povolit **ovládací prvek domény** v aplikaci. Ovládací prvek domény můžete povolit v aplikaci pomocí kroků uvedených v tomto [tady](http://help.expensify.com/domain-control). Potřebujete další podporu, pracovat s [tým podpory Expensify klienta](mailto:help@expensify.com). Jakmile budete mít povolený nástroj řízení domény, postupujte podle těchto kroků:
+7. Pokud chcete povolit jednotné přihlašování v Expensify, je nejprve potřeba povolit **ovládací prvek domény** v aplikaci. Ovládací prvek domény můžete povolit v aplikaci pomocí kroků uvedených v tomto [tady](http://help.expensify.com/domain-control). Potřebujete další podporu, pracovat s [tým podpory Expensify klienta](mailto:help@expensify.com). Jakmile budete mít povolený nástroj řízení domény, postupujte podle těchto kroků:
    
     ![Konfigurace jednotného přihlašování](./media/expensify-tutorial/tutorial_expensify_51.png)
     
     a. Přihlaste se k aplikaci Expensify.
     
-    b. Na panelu nástrojů v horní části klikněte na tlačítko **správce**.
+    b. Na levém panelu klikněte na tlačítko **nastavení** a přejděte do **SAML**.
     
-    c. Na levém panelu klikněte na tlačítko **domény**.
+    c. Přepnout **SAML přihlášení** možnost jako **povoleno**.
     
-    d. Klikněte na název ověřené domény.
-    
-    e. Na levém panelu klikněte na tlačítko **SAML**a pak vyberte **povoleno**.
-    
-    f. Otevřete stažený federační Metadata ze služby Azure AD v programu Poznámkový blok, zkopírujte obsah a vložte jej do **metadat zprostředkovatele Identity** textového pole.
+    d. Otevřete stažený federační Metadata ze služby Azure AD v programu Poznámkový blok, zkopírujte obsah a vložte jej do **metadat zprostředkovatele Identity** textového pole.
 
-> [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
-
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-   ![Vytvořit testovacího uživatele Azure AD][100]
+1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
 
-**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
+    ![image](./media/expensify-tutorial/d_users_and_groups.png)
 
-1. Na webu Azure Portal, v levém podokně klikněte na tlačítko **Azure Active Directory** tlačítko.
+2. Vyberte **nového uživatele** v horní části obrazovky.
 
-    ![Tlačítko Azure Active Directory](./media/expensify-tutorial/create_aaduser_01.png)
+    ![image](./media/expensify-tutorial/d_adduser.png)
 
-1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
+3. Ve vlastnosti uživatele proveďte následující kroky.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/expensify-tutorial/create_aaduser_02.png)
+    ![image](./media/expensify-tutorial/d_userproperties.png)
 
-1. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
+    a. V **název** zadat **BrittaSimon**.
+  
+    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    Například BrittaSimon@contoso.com.
 
-    ![Tlačítko Přidat](./media/expensify-tutorial/create_aaduser_03.png)
+    c. Vyberte **vlastnosti**, vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
-1. V **uživatele** dialogové okno pole, proveďte následující kroky:
-
-    ![Dialogové okno uživatele](./media/expensify-tutorial/create_aaduser_04.png)
-
-    a. V **název** zadejte **BrittaSimon**.
-
-    b. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
-
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
-
-    d. Klikněte na možnost **Vytvořit**.
+    d. Vyberte **Vytvořit**.
  
 ### <a name="create-an-expensify-test-user"></a>Vytvořit testovacího uživatele Expensify
 
@@ -185,33 +177,27 @@ V této části vytvoříte uživatele v Expensify jako Britta Simon. Práce s [
 
 V této části je povolit Britta Simon k udělení přístupu k Expensify použití Azure jednotného přihlašování.
 
-![Přiřazení role uživatele][200] 
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**.
 
-**Přiřadit Expensify Britta Simon, proveďte následující kroky:**
+    ![image](./media/expensify-tutorial/d_all_applications.png)
 
-1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
+2. V seznamu aplikací vyberte **Expensify**.
 
-    ![Přiřadit uživatele][201] 
+    ![image](./media/expensify-tutorial/d_all_proapplications.png)
 
-1. V seznamu aplikací vyberte **Expensify**.
+3. V nabídce na levé straně vyberte **uživatelů a skupin**.
 
-    ![Odkaz Expensify v seznamu aplikací](./media/expensify-tutorial/tutorial_expensify_app.png)  
+    ![image](./media/expensify-tutorial/d_leftpaneusers.png)
 
-1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+4. Vyberte **přidat** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
 
-    ![Odkaz "Uživatele a skupiny"][202]
+    ![image](./media/expensify-tutorial/d_assign_user.png)
 
-1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+4. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-    ![Podokno Přidat přiřazení][203]
-
-1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
-
-1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
-
-1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+5. V **přidat přiřazení** dialogové okno Vybrat **přiřadit** tlačítko.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
@@ -223,17 +209,6 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-<!--Image references-->
 
-[1]: ./media/expensify-tutorial/tutorial_general_01.png
-[2]: ./media/expensify-tutorial/tutorial_general_02.png
-[3]: ./media/expensify-tutorial/tutorial_general_03.png
-[4]: ./media/expensify-tutorial/tutorial_general_04.png
 
-[100]: ./media/expensify-tutorial/tutorial_general_100.png
-
-[200]: ./media/expensify-tutorial/tutorial_general_200.png
-[201]: ./media/expensify-tutorial/tutorial_general_201.png
-[202]: ./media/expensify-tutorial/tutorial_general_202.png
-[203]: ./media/expensify-tutorial/tutorial_general_203.png
 

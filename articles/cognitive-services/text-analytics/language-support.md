@@ -1,21 +1,21 @@
 ---
 title: Podpora jazyků – Text Analytics API
 titleSuffix: Azure Cognitive Services
-description: 'Seznam podporovaných rozhraní Text Analytics API přirozeného jazyka. Tento článek vysvětluje, jaké jazyky jsou podporovány pro každou operaci: analýzu mínění, extrakci klíčových frází a rozpoznání jazyka.'
+description: 'Seznam podporovaných rozhraní Text Analytics API přirozeného jazyka. Tento článek vysvětluje, jaké jazyky jsou podporovány pro každou operaci: analýzu mínění, extrakci klíčových frází, rozpoznávání jazyka a rozpoznávání entit.'
 services: cognitive-services
 author: ashmaka
 manager: cgronlun
 ms.service: cognitive-services
 ms.technology: text-analytics
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: e9f466ac6bce98a6a9f2d79a443c9602ca40bb26
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: a94c2af4d3e0d0d0c466f7cb7d58ec35351ebc3e
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435447"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247732"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Podpora jazyka a oblasti pro rozhraní Text Analytics API
 
@@ -25,15 +25,15 @@ Tento článek vysvětluje, jaké jazyky jsou podporovány pro každou operaci: 
 
 Rozhraní Text Analytics API můžete zjišťovat až 120 jazyků. Rozpoznávání jazyka vrátí "skript" jazyk. Například pro frázi "Mám pes" vrátí `en` místo `en-US`. Pouze zvláštním případem je čínština, kde funkci zjišťování jazyka vrátí `zh_CHS` nebo `zh_CHT` pokud ji určit skript zadaného textu k dispozici. V situacích, kdy nelze identifikovat specifického skriptu pro čínské dokument, ho jednoduše vrátí `zh`.
 
-## <a name="sentiment-analysis-key-phrase-extraction-and-entity-linking"></a>Analýza mínění, extrakci klíčových frází a propojování entit
+## <a name="sentiment-analysis-key-phrase-extraction-and-entity-recognition"></a>Analýza mínění, extrakci klíčových frází a rozpoznávání entit
 
-Seznam podporovaných jazyků je pro analýzu mínění, extrakci klíčových frází a propojování entit, zvažte, jak analyzátory jsou kontrast pro přizpůsobení jazykových pravidel další jazyky.
+Seznam podporovaných jazyků je pro analýzu mínění, extrakci klíčových frází a rozpoznávání entit, zvažte, jak analyzátory jsou kontrast pro přizpůsobení jazykových pravidel další jazyky.
 
 ## <a name="language-list-and-status"></a>Seznam jazyků a stav
 
 Podpora jazyků je zpočátku nasazeny ve verzi preview, přechod na všeobecně dostupná (GA) stav, nezávisle na sobě a celkové služby pro analýzu textu. Je možné pro jazyky, které zůstává ve verzi preview, i když přechody rozhraní Text Analytics API na obecně k dispozici.
 
-| Jazyk    | Kód jazyka | Mínění | Klíčové fráze | Entity Linking |   Poznámky  |
+| Jazyk    | Kód jazyka | Mínění | Klíčové fráze | Rozpoznávání entit |   Poznámky  |
 |:----------- |:-------------:|:---------:|:-----------:|:-----------:|:-----------:
 | dánština      | `da`          | ✔ \*     | ✔           |             |     |
 | Holandština       | `nl`          | ✔ \*     | ✔          |             |     |
@@ -52,7 +52,7 @@ Podpora jazyků je zpočátku nasazeny ve verzi preview, přechod na všeobecně
 | ruština     | `ru`          | ✔ \*     | ✔           |             |     |
 | Španělština     | `es`          | ✔        | ✔           |     |     |
 | švédština     | `sv`          | ✔ \*     | ✔           |             |     |
-| turečtina     | `tr`          | ✔ \*     |             |             |     |
+| turečtina     | `tr`          | ✔ \*     |             |             |  |
 
 \* Určuje jazykovou podporu ve verzi preview
 

@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
 ms.date: 10/01/2018
-ms.openlocfilehash: 8fbddd7bca8750317490c35473730ff11f07374c
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 812c9911486174b1ed3be5373486e992e4037425
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/03/2018
-ms.locfileid: "48242367"
+ms.locfileid: "48248519"
 ---
 # <a name="monitor-your-azure-machine-learning-models-in-production-with-application-insights"></a>Monitorování vašich modelů Azure Machine Learning v produkčním prostředí pomocí nástroje Application Insights
 
@@ -49,7 +49,7 @@ Můžete povolit nebo zakázat Application Insights na webu Azure portal.
 
 4. V **rozšířená nastavení** vyberte **diagnostiky povolte Application Insights**.
 
-   [![Upravit](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png)#lightbox)
+   [![Upravit](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
 
 1. Vyberte **aktualizace** v dolní části obrazovky, aby se změny projevily. 
 

@@ -1,6 +1,6 @@
 ---
-title: Použití rozhraní API vyhledávací anomálií s cURL - kognitivní služby Microsoft | Microsoft Docs
-description: Získání informací o vám pomohou rychle začít, pomocí cURL a rozhraní API vyhledávací anomálií v kognitivní služby.
+title: Jak používat rozhraní API pro vyhledávač anomálií pomocí cURL – Microsoft Cognitive Services | Dokumentace Microsoftu
+description: Získat informace, které vám pomohou rychle začít používat cURL a rozhraní API vyhledávač anomálií ve službě Cognitive Services.
 services: cognitive-services
 author: chliang
 manager: bix
@@ -9,39 +9,41 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 3c1d791b8c0478715b4ffa93cd7dfa43f9be4586
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 31049e24687192b1ea1030a7180299f57bc76771
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343009"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48246326"
 ---
-# <a name="use-the-anomaly-finder-api-with-curl"></a>Rozhraní API vyhledávací anomálií pomocí cURL
+# <a name="use-the-anomaly-finder-api-with-curl"></a>Použití rozhraní API vyhledávač anomálií pomocí cURL
 
-Tento článek obsahuje informace a ukázky kódu, které vám pomohou rychle začít, pomocí rozhraní API vyhledávací anomálií cURL k provedení úlohy získání anomálií výsledek data časové řady.
+[!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
+
+Tento článek obsahuje informace a ukázky kódu, které vám pomohou rychle začít používat rozhraní API pro vyhledávač anomálií pomocí cURL k provedení úlohy získání výsledku anomálií dat časových řad.
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [GetSubscriptionKey](../includes/get-subscription-key.md)]
 
-## <a name="getting-anomaly-points-with-the-anomaly-finder-api-using-curl"></a>Získání bodů anomálií s rozhraním API vyhledávací anomálií pomocí cURL 
+## <a name="getting-anomaly-points-with-the-anomaly-finder-api-using-curl"></a>Začínáme s rozhraním API pro vyhledávač anomálií pomocí příkazu cURL anomálií body 
 
 [!INCLUDE [DataContract](../includes/datacontract.md)]
 
-### <a name="example-of-time-series-data"></a>Příklad data časové řady
+### <a name="example-of-time-series-data"></a>Příklad dat časových řad
 
-Následuje příklad času řadu datových bodů.
+Následuje příklad času datových bodů řady.
 
 [!INCLUDE [Request](../includes/request.md)]
 
 ### <a name="analyze-data-and-get-anomaly-points-curl-example"></a>Analýza dat a získat body anomálií příklad cURL
 
-Takto vypadají kroky v příkladu.
+Kroky v příkladu jsou následující.
 
-1. Nahraďte `[YOUR_SUBSCRIPTION_KEY]` hodnotu s klíč platné předplatné.
-2. Nahraďte `[YOUR_REGION]` a použít tak umístění, kde získat klíče pro předplatné.
-3. Nahraďte `[REPLACE_WITH_THE_EXAMPLE_OR_YOUR_OWN_DATA_POINTS]` s příklad nebo vlastních datových bodů.
-4. Spuštění a zkontrolujte odpovědi.
+1. Hodnotu `[YOUR_SUBSCRIPTION_KEY]` nahraďte platným klíčem předplatného.
+2. Nahradit `[YOUR_REGION]` a použít tak umístění, kde jste získali klíče předplatného.
+3. Nahradit `[REPLACE_WITH_THE_EXAMPLE_OR_YOUR_OWN_DATA_POINTS]` pomocí příkladu nebo vlastních datových bodů.
+4. Spustit a zkontrolovat odpovědi.
 
 ```cURL
 
@@ -53,7 +55,7 @@ curl -v -X POST "https://api.labs.cognitive.microsoft.com/anomalyfinder/v1.0/ano
 ```
 
 ### <a name="example-response"></a>Příklad odpovědi
-Úspěšná odpověď se vrátí ve formátu JSON. Příklad odpovědi je následující: [!INCLUDE [Response](../includes/response.md)]
+Úspěšná odpověď se vrátí ve formátu JSON. Příklad odpovědi je následujícím způsobem: [!INCLUDE [Response](../includes/response.md)]
 
 ## <a name="next-steps"></a>Další postup
 

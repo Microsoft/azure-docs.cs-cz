@@ -9,12 +9,12 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 0e16ec765ae3cbef8a941f43a149428ffdf5bd8d
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: a82472ccd5524e7cbe3d92070a6d2b583d8eb4d5
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181513"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249294"
 ---
 # <a name="bake-acoustics"></a>Vytvoření Akustika
 
@@ -199,15 +199,19 @@ Jakmile budete spokojeni s daty ve verzi preview, použijte **zanést** kartu k 
 1. Vytvoření karty tlačítka sloužícího k otevřete tuto stránku.
 2. Stručný popis toho, jak provést na této stránce.
 3. Pole k zadání přihlašovacích údajů Azure po vytvoření účtu Azure. Další informace najdete v tématu [vytvořit účet Azure Batch](create-azure-account.md).
-4. Služba Azure batch výpočetní uzel typ, který se použije k výpočtu. Typ uzlu musí podporovat vaše umístěním Azure datového centra. Pokud nejste si jistí, ponechte **Standard_F8**.
-5. Počet uzlů pro tento výpočet. Číslo, které tady zadáte ovlivňuje dobu pro dokončení která má označení vytvoření a přidělení základní služby Azure Batch, je omezen. Výchozí přidělení pouze umožňuje uzly dva 8 jader nebo uzlu jeden 16 jader, ale můžete rozšířit. Další informace o omezení přidělení core najdete v tématu [vytvořit účet Azure Batch](create-azure-account.md).
-6. Počet sondy pro vaše Scéna spočítané na **sondy** kartu. Počet sond určuje počet simulace, které je nutné spustit v cloudu. Nelze zadat více uzlů, než jsou testy.
-7. Množství uplynulého času, který se očekává, abyste mohli pro vaše úlohy určené ke spuštění v cloudu. To nezahrnuje čas spuštění uzlu. Po spuštění úlohy, jde o tom, jak dlouho by mělo být předtím, než se dostanete zpět výsledky. Všimněte si, že se jedná pouze o odhad.
-8. Celkové množství výpočetního času potřebné ke spuštění simulace. Toto je celková velikost uzlu výpočetního času, který se použije v Azure. Zobrazit [odhadování nákladů která má označení vytvoření](#Estimating-bake-cost) níže pro další informace o použití této hodnoty.
-9. Tato zpráva znamená, kam uložit výsledky která má označení vytvoření po dokončení úlohy.
-10. (Pouze pro pokročilé uživatele) Pokud z nějakého důvodu potřebujete vynutit Unity nemusíte zabývat která má označení vytvoření odeslán (třeba jste si stáhli výsledky použití jiného počítače), klikněte na tlačítko **Vymazat stav** tlačítko zapomenout o úloze, která byla odeslána. Všimněte si, že to znamená, že výsledného souboru, až budete připraveni, bude **není** stáhli, a **to není stejné jako zrušení úlohy**. Úlohy, pokud spuštěný, bude nadále spouštět v cloudu.
-11. Klikněte na tlačítko která má označení vytvoření k odeslání, která má označení vytvoření do cloudu. Když úloha běží, zobrazí se **zrušit úlohu** místo.
-12. Tato oblast se zobrazuje stav která má označení vytvoření. Po dokončení, měl by se zobrazit **stažené**.
+4. Značce image dockeru pro Akustika sadu nástrojů.
+5. Spuštění webu Azure portal ke správě vašich předplatných, sledování využití a zobrazit informace o fakturaci atd. 
+6. Služba Azure batch výpočetní uzel typ, který se použije k výpočtu. Typ uzlu musí podporovat vaše umístěním Azure datového centra. Pokud nejste si jistí, ponechte **Standard_F8s_v2**.
+7. Počet uzlů pro tento výpočet. Číslo, které tady zadáte ovlivňuje dobu pro dokončení která má označení vytvoření a přidělení základní služby Azure Batch, je omezen. Výchozí přidělení pouze umožňuje uzly dva 8 jader nebo uzlu jeden 16 jader, ale můžete rozšířit. Další informace o omezení přidělení core najdete v tématu [vytvořit účet Azure Batch](create-azure-account.md).
+8. Zaškrtnutím tohoto políčka konfigurovat fond výpočetních používat [uzly s nízkou prioritou](https://docs.microsoft.com/azure/batch/batch-low-pri-vms). Uzlů s nízkou prioritou mají mnohem nižší náklady, ale nemusí být vždy k dispozici nebo může dojít ke zrušení kdykoli.
+9. Počet sondy pro vaše Scéna spočítané na **sondy** kartu. Počet sond určuje počet simulace, které je nutné spustit v cloudu. Nelze zadat více uzlů, než jsou testy.
+10. Množství uplynulého času, který se očekává, abyste mohli pro vaše úlohy určené ke spuštění v cloudu. To nezahrnuje čas spuštění uzlu. Po spuštění úlohy, jde o tom, jak dlouho by mělo být předtím, než se dostanete zpět výsledky. Všimněte si, že se jedná pouze o odhad.
+11. Celkové množství výpočetního času potřebné ke spuštění simulace. Toto je celková velikost uzlu výpočetního času, který se použije v Azure. Zobrazit [odhadování nákladů která má označení vytvoření](#Estimating-bake-cost) níže pro další informace o použití této hodnoty.
+12. Tato zpráva znamená, kam uložit výsledky která má označení vytvoření po dokončení úlohy.
+13. (Pouze pro pokročilé uživatele) Pokud z nějakého důvodu potřebujete vynutit Unity nemusíte zabývat která má označení vytvoření odeslán (třeba jste si stáhli výsledky použití jiného počítače), klikněte na tlačítko **Vymazat stav** tlačítko zapomenout o úloze, která byla odeslána. Všimněte si, že to znamená, že výsledného souboru, až budete připraveni, bude **není** stáhli, a **to není stejné jako zrušení úlohy**. Úlohy, pokud spuštěný, bude nadále spouštět v cloudu.
+14. Klikněte na tlačítko která má označení vytvoření k odeslání, která má označení vytvoření do cloudu. Když úloha běží, zobrazí se **zrušit úlohu** místo.
+15. Připraví ke zpracování Akustika simulace na místních počítačích. Zobrazit [místní která má označení vytvoření](#Local-bake) Další informace.  
+16. Tato oblast se zobrazuje stav která má označení vytvoření. Po dokončení, měl by se zobrazit **stažené**.
 
 Vždy můžete získat podrobnější informace o aktivních úloh, fondů výpočetních a úložiště na webu [webu Azure Portal](https://portal.azure.com).
 
@@ -217,13 +221,34 @@ Po zahájení která má označení vytvoření, můžete zavřít Unity. V záv
 
 Přihlašovací údaje Azure jsou bezpečně uložené na místním počítači a přidružené Unity editor. Slouží pouze k navázat zabezpečené připojení k Azure.
 
-### <a name="Estimating-bake-cost"></a> Odhad, která má označení vytvoření náklady
+### <a name="Estimating-bake-cost"></a> Provádí se odhad nákladů Azure která má označení vytvoření
 
-Pokud chcete odhadnout, co bude daný která má označení vytvoření nákladů, přijmout hodnoty zobrazené pro **odhadované náklady na výpočetní**, což je dobu trvání a vícenásobně ve každou hodinu nákladů ve vaší místní měně **typ uzlu virtuálního počítače** jste vybrali. Výsledek nebude obsahovat uzel době potřebné ke zprovoznění uzly a spouštění. Pokud vyberete třeba **Standard_F8** typu uzlu, který má náklady na 0,75. $/ hod a odhadované náklady na výpočetní je 3 hodiny a 57 minut, odhadované náklady na spuštění úlohy bude $0,75 * ~ 4 hodin = ~ $3.00. Skutečné náklady se pravděpodobně o něco vyšší kvůli čas navíc k získání uzly spuštěna. Hodinové náklady na uzel můžete najít [ceny služby Azure Batch](https://azure.microsoft.com/pricing/details/virtual-machines/linux) stránky (vyberte "optimalizováno pro výpočty" nebo "vysokovýkonné výpočetní prostředí" kategorie).
+Pokud chcete odhadnout, co bude daný která má označení vytvoření nákladů, přijmout hodnoty zobrazené pro **odhadované náklady na výpočetní**, což je dobu trvání a vícenásobně ve každou hodinu nákladů ve vaší místní měně **typ uzlu virtuálního počítače** jste vybrali. Výsledek nebude obsahovat uzel době potřebné ke zprovoznění uzly a spouštění. Pokud vyberete třeba **Standard_F8s_v2** typu uzlu, který má náklady 0,40 $/ hod a odhadované náklady na výpočetní je 3 hodiny a 57 minut, odhadované náklady na spuštění úlohy bude $0,40 * ~ 4 hodin = ~ $1.60. Skutečné náklady se pravděpodobně o něco vyšší kvůli čas navíc k získání uzly spuštěna. Hodinové náklady na uzel můžete najít [ceny služby Azure Batch](https://azure.microsoft.com/pricing/details/virtual-machines/linux) stránky (vyberte "optimalizováno pro výpočty" nebo "vysokovýkonné výpočetní prostředí" kategorie).
 
 ### <a name="reviewing-the-bake-results"></a>Vyhodnocení výsledků která má označení vytvoření
 
 Po dokončení která má označení vytvoření, zkontrolujte, zda body voxels a kontroly jsou v jejich očekávané umístění spuštěním modulu runtime. Další informace jsou v [přehled procesu návrhu pro Akustika](design-process.md).
+
+## <a name="Local-bake"></a>Místní která má označení vytvoření
+Která má označení vytvoření místního spuštění simulace Akustika na místním počítači namísto snižování zátěže úloh k výpočetnímu clusteru služby Azure Batch. To může být dobrou volbou pro experimentování s Akustika nevyžaduje předplatné Azure, ale mějte na paměti, že simulace Akustika výpočetně náročné a může trvat dlouhou dobu v závislosti na velikosti od scény, simulace konfigurace a nezpracované výpočetní výkon zpracování počítače.
+
+### <a name="minimum-hardware-requirements"></a>Minimální požadavky na hardware
+64bitový procesor Intel s alespoň s 8 jádry a 32 GB paměti RAM nebo vyšší.
+
+Třeba na počítači s technologií Intel Xeon E5-1660 8 jader @ 3 GHz a 32 GB paměti-
+* Malé scény s 100 testů trvá přibližně 2 hodin pro hrubý která má označení vytvoření a přibližně 32 hodin která má označení vytvoření jemné řešení.
+* Větší scény s 1 000 testy paměti může trvat až přibližně 20 hodin, hrubé vyřešení tohoto problému a ~ 21 dnů která má označení vytvoření jemné řešení.
+
+### <a name="setup-docker"></a>Instalace Dockeru
+Instalace a konfigurace Dockeru na počítači, který bude zpracovávat simulace-
+1. Nainstalujte [nástrojů Dockeru](https://www.docker.com/products/docker-desktop).
+2. Spusťte nastavení Dockeru, přejděte na možnosti "Pokročilé" a konfigurovat prostředky, jak je znázorněno níže. ![Prostředky dockeru](media/DockerSettings.png)
+3. Přejděte na možnosti "Sdílené jednotky" a zapněte sdílení má jednotka použitá ke zpracování.![DockerDriveSharing](media/DockerSharedDrives.png)
+
+### <a name="run-local-bake"></a>Spusťte místní která má označení vytvoření
+1. Klikněte na tlačítko "Příprava místní zanést", která má označení vytvoření karty a vyberte složku, kam bude uložena vstupních souborů a provádění skriptů. Poté lze která má označení vytvoření na jakýkoli počítač splňuje minimální hardwarové požadavky a pokud je Docker nainstalovaný tak, že zkopírujete složku do tohoto počítače.
+2. Spuštění simulace použití "runlocalbake.bat" skript, který se image Dockeru Akustika projekt pomocí sady nástrojů, které jsou nezbytné pro simulaci zpracování načte a spustí simulace. 
+3. Jakmile se simulace dokončí, zkopírujte výsledný soubor .ace zpět na vašem Unity projektu do stejného umístění, který byl zadán v kartě testy. Zkontrolujte, jestli odpovídá názvu cílového souboru Unity a požadavky připojením ".bytes" přípona souboru. Podrobné protokoly pro simulaci jsou uložené v souboru "AcousticsLog.txt". Pokud narazíte na nějaké problémy, sdílejte tento soubor jako pomoc při diagnóze.
 
 ## <a name="Data-Files"></a>Datové soubory
 

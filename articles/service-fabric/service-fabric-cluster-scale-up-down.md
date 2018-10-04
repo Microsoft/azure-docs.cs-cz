@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2017
 ms.author: aljo
-ms.openlocfilehash: d820898b1a0cc26d6832be9d302c74306fa4882f
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: d9ac3334d790c1844993c7d95bc24ce6690bed19
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42055658"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248496"
 ---
 # <a name="read-before-you-scale"></a>Si přečtěte, než převedete
 Škálování výpočetních prostředků ke zdroji pracovní zatížení aplikace vyžaduje úmyslné plánování, bude téměř vždy trvat déle než hodinu k dokončení pro produkční prostředí a vyžaduje, abyste úlohy a obchodní kontext; ve skutečnosti Pokud tato aktivita před nikdy uděláte, se doporučuje začnete tím, že čtení a pochopení [informace o plánování kapacity clusteru Service Fabric](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-capacity), než budete pokračovat zbytek tohoto dokumentu. Toto doporučení je aby se zabránilo neúmyslnému LiveSite problémům a doporučuje se také, že je úspěšně otestovat operace, které se rozhodnete provést proti mimo produkční prostředí. Kdykoli můžete [oznámit problémy v produkčním prostředí nebo požádat o placené podpory pro Azure](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-support#report-production-issues-or-request-paid-support-for-azure). Pro techniky přidělené k provedení těchto operací, které mají odpovídající kontext Tento článek popisuje, operace škálování, ale je nutné rozhodnout a pochopit operace, které jsou vhodné pro případy použití; například prostředky škálování (CPU, úložiště, paměť) směr škálování (vertikálně nebo horizontálně) a jaké operace k provedení (nasazení prostředku šablony, portálu, Powershellu nebo rozhraní příkazového řádku).
@@ -33,7 +33,7 @@ ms.locfileid: "42055658"
 > 
 
 ## <a name="choose-the-node-typevirtual-machine-scale-set-to-scale"></a>Zvolte typ/virtuální uzel škálovací sady škálování počítačů
-V současné době nejste schopni k určení pravidel automatického škálování pro škálovací sady virtuálních počítačů pomocí portálu, proto nám dejte seznam typy uzlů a pak do nich přidejte pravidel automatického škálování pomocí Azure Powershellu (1.0 +).
+V současné době nejste schopni k určení pravidel automatického škálování pro škálovací sady virtuálních počítačů pomocí portálu k vytvoření clusteru Service Fabric, proto nám dejte seznam typy uzlů a pak do nich přidejte pravidel automatického škálování pomocí Azure Powershellu (1.0 +).
 
 Pokud chcete získat seznam škálovací sadu virtuálních počítačů, kterých se skládá cluster, spusťte následující rutiny:
 

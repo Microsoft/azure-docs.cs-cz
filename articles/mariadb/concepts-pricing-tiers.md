@@ -8,12 +8,12 @@ services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 92db6442352242d5c7f25d39442d208d6007621b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 561244efd653294694cc16a1115962473e9a7cec
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984332"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249022"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database pro MariaDB cenové úrovně
 
@@ -21,7 +21,7 @@ Azure Database pro MariaDB server můžete vytvořit v jednom ze tří různých
 
 |    | **Basic** | **Obecné účely** | **Optimalizované z hlediska paměti** |
 |:---|:----------|:--------------------|:---------------------|
-| Generace výpočetních funkcí | <!--Gen 4,--> Generace 5 |<!--Gen 4,-->Generace 5 |<!--Gen 4,--> Generace 5 |
+| Generace výpočetních funkcí | Gen 5 |Gen 5 | Gen 5 |
 | Virtuální jádra | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
 | Paměť na vCore | 2 GB | 5 GB | 10 GB |
 | Velikost úložiště | 5 GB až 1 TB | 5 GB až 4 TB | 5 GB až 4 TB |
@@ -40,40 +40,7 @@ Po vytvoření serveru, počet virtuálních jader a cenovou úroveň (s výjimk
 
 ## <a name="compute-generations-and-vcores"></a>COMPUTE generace a virtuální jádra
 
-Výpočetní prostředky jsou k dispozici jako virtuální jádra, která představuje logický procesor základního hardwaru.<!--Currently, you can choose from two compute generations, Gen 4 and Gen 5. Gen 4 logical CPUs are based on Intel E5-2673 v3 (Haswell) 2.4-GHz processors.--> Generace 5 logické procesory jsou založené na Intel E5-2673 v4 (Broadwell) 2.3 GHz procesorech.
-
-<!--
-| **Azure region** | **Gen 5** |
-|:---|:----------:|:--------------------:|
-| Central US | X | X |
-| East US | X | X |
-| East US 2 | X | X |
-| North Central US | X | X |
-| South Central US | X | X |
-| West US | X | X |
-| West US 2 |  | X |
-| Canada Central | X | X |
-| Canada East | X | X |
-| Brazil South | X | X |
-| North Europe | X | X |
-| West Europe |  | X |
-| France Central |  | X |
-| UK West |  | X |
-| UK South |  | X |
-| East Asia | X | X |
-| Southeast Asia | X | X |
-| Australia East |  | X |
-| Australia Central |  | X |
-| Australia Central 2 |  | X |
-| Australia Southeast |  | X |
-| Central India | X | X |
-| West India | X | X |
-| South India |  | X |
-| Japan East | X | X |
-| Japan West | X | X |
-| Korea Central |  | X |
-| Korea South |  | X |
--->
+Výpočetní prostředky jsou k dispozici jako virtuální jádra, která představuje logický procesor základního hardwaru. Generace 5 logické procesory jsou založené na Intel E5-2673 v4 (Broadwell) 2.3 GHz procesorech.
 
 ## <a name="storage"></a>Úložiště
 
@@ -97,7 +64,9 @@ Server je označen jen pro čtení, když velikost volného místa nedosáhne me
 
 Když se služba pokusí o nastavení serveru jen pro čtení, jsou blokovány všechny nové požadavky na zápis transakce a existující aktivní transakce budou i nadále spouštět. Navrácení služeb po potvrzení, když serveru je nastavena na jen pro čtení, všechny následné zápisu operace a transakce. Čtení dotazy budou nadále fungovat bez přerušení. Po zvýšíte zřízeného úložiště, server bude možné znovu přijmout transakce zápisu.
 
-Doporučujeme nastavit upozornění pro upozornění, úložiště serveru se blíží prahové hodnoty, tomu se můžete vyhnout, převedení do stavu jen pro čtení. <!--For more information, see the documentation on [how to set up an alert](howto-alert-on-metric.md).-->
+Doporučujeme nastavit upozornění pro upozornění, úložiště serveru se blíží prahové hodnoty, tomu se můžete vyhnout, převedení do stavu jen pro čtení. 
+
+<!--For more information, see the documentation on [how to set up an alert](howto-alert-on-metric.md).-->
 
 ## <a name="backup"></a>Backup
 
@@ -105,9 +74,11 @@ Služby trvá automatické zálohy vašeho serveru. Období minimální doby uch
 
 ## <a name="scale-resources"></a>Škálování prostředků
 
-Po vytvoření serveru nezávisle na sobě můžete změnit virtuálních jader, <!--the hardware generation,--> cenovou úroveň (s výjimkou do a z Basic), jaká část úložiště a období uchovávání záloh. Typ úložiště pro zálohování nelze změnit po vytvoření serveru. Počet virtuálních jader je možné škálovat směrem nahoru nebo dolů. Období uchování zálohy je možné škálovat směrem nahoru nebo dolů na 7 pro po dobu 35 dní. Velikost úložiště může být pouze zvýšena. Škálování prostředků můžete udělat buď na portálu nebo rozhraní příkazového řádku Azure. <!--For an example of scaling by using Azure CLI, see [Monitor and scale an Azure Database for MariaDB server by using Azure CLI](scripts/sample-scale-server.md).-->
+Po vytvoření serveru nezávisle na sobě můžete změnit virtuálních jader, cenová úroveň (s výjimkou do a z Basic), jaká část úložiště a období uchovávání záloh. Typ úložiště pro zálohování nelze změnit po vytvoření serveru. Počet virtuálních jader je možné škálovat směrem nahoru nebo dolů. Období uchování zálohy je možné škálovat směrem nahoru nebo dolů na 7 pro po dobu 35 dní. Velikost úložiště může být pouze zvýšena. Škálování prostředků můžete udělat buď na portálu nebo rozhraní příkazového řádku Azure. 
 
-Pokud změníte počet virtuálních jader, <!--the hardware generation,--> nebo cenovou úroveň kopii původního serveru se vytvoří s nové přidělení výpočetní prostředky. Po vytvoření a spuštění je nový server, připojení se přepnout na nový server. Během okamžiku, kdy systém přepne na nový server je možné navázat nová připojení a jsou všechny nepotvrzené transakce vráceny zpět. Toto okno se liší, ale ve většině případů je méně než minutu.
+<!--For an example of scaling by using Azure CLI, see [Monitor and scale an Azure Database for MariaDB server by using Azure CLI](scripts/sample-scale-server.md).-->
+
+Pokud změníte počet virtuálních jader nebo cenovou úroveň, kopii původního serveru se vytvoří s nové přidělení výpočetní prostředky. Po vytvoření a spuštění je nový server, připojení se přepnout na nový server. Během okamžiku, kdy systém přepne na nový server je možné navázat nová připojení a jsou všechny nepotvrzené transakce vráceny zpět. Toto okno se liší, ale ve většině případů je méně než minutu.
 
 Škálování úložiště a změna období uchování zálohy jsou true online operace. Neexistuje žádný výpadek a vaší aplikace neprojeví. Vstupně-výstupních operací škálování s velikost zřízeného úložiště, můžete zvýšit IOPS k dispozici pro váš server vertikálním navýšení kapacity úložiště.
 

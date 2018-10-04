@@ -4,7 +4,7 @@ description: Podrobnější SSH řešení potíží pro problémy s připojením
 keywords: SSH připojení se odmítlo, ssh chyba, azure ssh, připojení SSH se nezdařilo
 services: virtual-machines-linux
 documentationcenter: ''
-author: cynthn
+author: genlin
 manager: jeconnoc
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/13/2017
-ms.author: cynthn
-ms.openlocfilehash: a75a0e8c31934ff001674830bfe3d3d1c9e6beb1
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.author: genli
+ms.openlocfilehash: 1173e4c9ec40e8b8fe9e24587258f7e7aad7c7f8
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47413308"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269458"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Podrobné kroky pro problémy s připojením k virtuálnímu počítači s Linuxem v Azure pro řešení potíží SSH
 Existuje mnoho možných příčin, které nemusí být schopný připojit službu SSH na virtuálním počítači klienta SSH. Pokud jste postupovali podle prostřednictvím více [obecné SSH kroků pro řešení potíží](troubleshoot-ssh-connection.md), potřebujete-li dále řešit potíže s připojením. Tento článek vás provede podrobný postup řešení potíží k určení, kde se nedaří připojení SSH a o tom, jak problém vyřešit.

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 10/03/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 109d4eda7d7ad05b4d6138228be23b48076090ca
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.component: na
+ms.openlocfilehash: 9ee388e8d33d293240e70ccf79ec8d3c445dffd1
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237360"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269153"
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Řešení Wire Data 2.0 (Preview) ve službě Log Analytics
 
@@ -30,8 +30,8 @@ Data kabelové sítě jsou konsolidovaná síťová a výkonnostní data shromá
 
 Kromě agenta sady OMS využívá řešení Wire Data závislé agenty Microsoft, které instalujete do počítačů ve své IT infrastruktuře. Závislí agenti monitorují síťová data odesílaná do a z počítačů na úrovních sítě 2–3 v [modelu OSI](https://en.wikipedia.org/wiki/OSI_model), a to včetně různých použitých protokolů a portů. Data se pak do služby Log Analytics posílají pomocí agentů.  
 
-> [!NOTE]
-> Předchozí verze řešení Wire Data se nedá přidat do nových pracovních prostorů. Pokud máte povolené původní řešení Wire Data, můžete ho dál používat. Pokud ale chcete použít Wire Data 2.0, musíte původní verzi nejprve odebrat.
+>[!NOTE]
+>Pokud jste už nasadili řešení Service Map, nebo zvažuje Service Map nebo [monitorování Azure pro virtuální počítače](../monitoring/monitoring-vminsights-overview.md), je nové připojení metriky sady dat shromažďovat a ukládat ve službě Log Analytics, která poskytuje stejné informace s Wire Data.
 
 Služba Log Analytics standardně protokoluje výkonnostní data procesoru, paměti, disku a sítě z čítačů integrovaných do Windows a Linuxu, stejně jako z jiných čítačů výkonu, které určíte. Shromažďování síťových a jiných dat probíhá u každého agenta v reálném čase včetně podsítí a protokolů na úrovni aplikace, které počítač používá.  Řešení Wire Data sleduje síťová data na úrovni aplikace, nikoli v přenosové vrstvě TCP.  Toto řešení nesleduje individuální signály ACK a SYN.  Po dokončení metody handshake se připojení považuje za aktivní a označí se jako Připojeno. Toto připojení zůstává aktivní, dokud obě strany souhlasí, že je soket otevřený, a data mohou proudit tam a zpět.  Jakmile některá stana připojení zavře, označí se jako Odpojeno.  Proto se počítá jen šířka pásma úspěšně dokončených paketů a neoznamují se opětovně odeslané nebo neúspěšné pakety.
 
@@ -200,6 +200,9 @@ Při konfiguraci řešení Wire Data pro vaše pracovní prostory použijte nás
 1. Povolte řešení Activity Log Analytics z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) nebo pomocí postupu popsaného v článku [Přidání řešení Log Analytics z galerie řešení](log-analytics-add-solutions.md).
 2. Nainstalujte závislého agenta na každý počítač, ze kterého chcete získat data. Závislý agent dokáže monitorovat připojení k bezprostředním sousedům, takže nepotřebujete mít agenta na každém počítači.
 
+> [!NOTE]
+> Předchozí verze řešení Wire Data se nedá přidat do nových pracovních prostorů. Pokud máte povolené původní řešení Wire Data, můžete ho dál používat. Pokud ale chcete použít Wire Data 2.0, musíte původní verzi nejprve odebrat.
+> 
 ### <a name="install-the-dependency-agent-on-windows"></a>Instalace závislého agenta ve Windows
 
 K instalaci a odinstalaci tohoto agenta se vyžadují oprávnění správce.
@@ -268,7 +271,7 @@ Se snadným nasazením závislého agenta na mnoho serverů najednou vám pomů�
 
 ```PowerShell
 
-Invoke-WebRequest 'https://aka.ms/dependencyagentwindows' -OutFile InstallDependencyAgent-Windows.exe
+Invoke-WebRequest &quot;https://aka.ms/dependencyagentwindows&quot; -OutFile InstallDependencyAgent-Windows.exe
 
 .\InstallDependencyAgent-Windows.exe /S
 
@@ -291,7 +294,7 @@ K nasazení závislého agenta prostřednictvím konfigurace požadovaného stav
 ```
 Import-DscResource -ModuleName xPSDesiredStateConfiguration
 
-$DAPackageLocalPath = 'C:\InstallDependencyAgent-Windows.exe'
+$DAPackageLocalPath = &quot;C:\InstallDependencyAgent-Windows.exe&quot;
 
 
 
@@ -305,11 +308,11 @@ Node $NodeName
 
     {
 
-        Uri = 'https://aka.ms/dependencyagentwindows'
+        Uri = &quot;https://aka.ms/dependencyagentwindows&quot;
 
         DestinationPath = $DAPackageLocalPath
 
-        DependsOn = '[Package]OI'
+        DependsOn = &quot;[Package]OI&quot;
 
     }
 
@@ -317,21 +320,21 @@ Node $NodeName
 
     {
 
-        Ensure='Present'
+        Ensure=&quot;Present&quot;
 
-        Name = 'Dependency Agent'
+        Name = &quot;Dependency Agent&quot;
 
         Path = $DAPackageLocalPath
 
         Arguments = '/S'
 
-        ProductId = ''
+        ProductId = &quot;&quot;
 
-        InstalledCheckRegKey = 'HKEY\_LOCAL\_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\DependencyAgent'
+        InstalledCheckRegKey = &quot;HKEY\_LOCAL\_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\DependencyAgent&quot;
 
-        InstalledCheckRegValueName = 'DisplayName'
+        InstalledCheckRegValueName = &quot;DisplayName&quot;
 
-        InstalledCheckRegValueData = 'Dependency Agent'
+        InstalledCheckRegValueData = &quot;Dependency Agent&quot;
 
     }
 

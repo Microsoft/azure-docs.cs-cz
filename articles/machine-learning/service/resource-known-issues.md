@@ -9,16 +9,25 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: article
 ms.date: 10/01/2018
-ms.openlocfilehash: d4910eb3dfacb46efe3f85aea3a441bdaaeb1392
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 02cee5a3e088c919ec94aee6f46ef6f428b9bb48
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/03/2018
-ms.locfileid: "48236408"
+ms.locfileid: "48249413"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Známé problémy a řešení problémů služby Azure Machine Learning
  
 Tento článek vám pomůže najít a opravit chyby nebo při použití služby Azure Machine Learning došlo k selhání. 
+
+## <a name="sdk-installation-issues"></a>Problémy při instalaci sady SDK
+
+**Chybová zpráva: "PyYAML" nelze odinstalovat.** 
+
+PyYAML je projektem organizace nainstalovaná distutils. Proto jsme nelze určit přesné soubory, které patří k němu v případě částečné odinstalovat. Pokud chcete pokračovat v instalaci sady SDK při tato chyba se ignoruje, použijte:
+```Python 
+pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
+```
 
 ## <a name="image-building-failure"></a>Chyba vytváření bitové kopie
 
@@ -45,7 +54,7 @@ Problémy s Databricks a Azure Machine Learning.
    pstuil cryptography==1.5 pyopenssl==16.0.0 ipython=2.2.0
    ```
 
-## <a name="gather-diagnostics-information"></a>Shromážděte diagnostické informace
+## <a name="diagnostic-logs"></a>Diagnostické protokoly
 V některých případech může být užitečné, pokud může poskytnout diagnostické informace, pokud s žádostí o pomoc. Zde je, kde live soubory protokolu:
 
 ## <a name="resource-quotas"></a>Kvóty prostředků

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2018
+ms.date: 09/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 446268f28e7c87196023636889f03be2da92ecfd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4a5f3178ad4d4152bb29e6c313b3fd332124c154
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967638"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269390"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>Jak provádět dotazy protokolů ze služby Azure Monitor pro virtuální počítače
 Azure Monitor pro virtuální počítače shromažďuje metriky výkonu a připojení, počítače a zpracování dat inventáře a informace o stavu a předá jej do úložiště dat Log Analytics ve službě Azure Monitor.  Tato data jsou k dispozici pro [hledání](../log-analytics/log-analytics-log-searches.md) v Log Analytics. Tato data můžete použít scénáře, které zahrnují plánování migrace, kapacitu analýza, zjišťování a řešení potíží s výkonem na vyžádání.
@@ -37,9 +37,9 @@ Vzhledem k tomu, že pro zadaný proces a počítač v zadaném časovém rozmez
 ### <a name="connections"></a>Připojení
 Metrik připojení se zapisují do nové tabulky ve službě Log Analytics – VMConnection. Tato tabulka obsahuje informace o připojení pro počítač (příchozí a odchozí). Metrik připojení jsou přístupné také pomocí rozhraní API, která poskytují způsob, jak získat určité metriky během časového intervalu.  Připojení TCP vyplývající z "*přijmout*- ing naslouchání soketu se příchozí při vytvořených *připojení*- ing k dané IP adresy a portu jsou odchozí. Směr připojení je reprezentována vlastnost směr, který může být nastaven na hodnotu **příchozí** nebo **odchozí**. 
 
-Z data, která agenta závislostí se generují záznamy v těchto tabulkách. Každý záznam představuje hodnotu v časovém intervalu jedné minuty. Vlastnost TimeGenerated označuje začátek časového intervalu. Každý záznam obsahuje informace k identifikaci příslušné entity, to znamená, připojení nebo port, jakož i metriky, které jsou přidružené k dané entitě. V současné době se hlásí pouze síťové aktivity, ke které dojde, pomocí protokolu TCP přes protokol IPv4.
+Z data, která agenta závislostí se generují záznamy v těchto tabulkách. Každý záznam představuje hodnotu v minutových časovém intervalu. Vlastnost TimeGenerated označuje začátek časového intervalu. Každý záznam obsahuje informace k identifikaci příslušné entity, to znamená, připojení nebo port, jakož i metriky, které jsou přidružené k dané entitě. V současné době se hlásí pouze síťové aktivity, ke které dojde, pomocí protokolu TCP přes protokol IPv4.
 
-Pokud chcete spravovat náklady a složitost, záznamy o připojení nepředstavují jednotlivých fyzických síťových připojení. Víc fyzických síťových připojení jsou seskupeny do logických připojení, který je pak v příslušné tabulce.  Význam, zaznamená *VMConnection* tabulce představují logické seskupení a nikoli jednotlivé fyzické připojení, která jsou sledována. Fyzické síťové připojení, které sdílejí stejnou hodnotu pro následující atributy během intervalu daném jedné minuty se agregují do jednoho logického záznamu v *VMConnection*. 
+Pokud chcete spravovat náklady a složitost, záznamy o připojení nepředstavují jednotlivých fyzických síťových připojení. Víc fyzických síťových připojení jsou seskupeny do logických připojení, který je pak v příslušné tabulce.  Význam, zaznamená *VMConnection* tabulce představují logické seskupení a nikoli jednotlivé fyzické připojení, která jsou sledována. Fyzické připojení sdílejí stejnou hodnotu pro následující atributy během danému intervalu jedné minuty se agregují do jednoho logického záznamu v *VMConnection*. 
 
 | Vlastnost | Popis |
 |:--|:--|
@@ -69,9 +69,9 @@ Kromě metrik počet připojení informace o objemu dat odeslaných a přijatýc
 |BytesSent |Celkový počet bajtů, které byly odeslány časovém období vytváření sestav |
 |BytesReceived |Celkový počet bajtů, které byly přijaty časovém období vytváření sestav |
 |Odezvy |Počet odpovědí zjištěnými časovém období vytváření sestav. 
-|ResponseTimeMax |Maximální doba odezvy (milisekundy) zjištěnými časovém období vytváření sestav.  Pokud žádná hodnota vlastnosti je prázdná.|
-|ResponseTimeMin |Minimální doba odezvy (milisekundy) zjištěnými časovém období vytváření sestav.  Pokud žádná hodnota vlastnosti je prázdná.|
-|ResponseTimeSum |Součet všech doby odezvy (milisekundy) zjištěnými časovém období vytváření sestav.  Pokud žádná hodnota, vlastnost je prázdné|
+|ResponseTimeMax |Maximální doba odezvy (milisekundy) zjištěnými časovém období vytváření sestav. Pokud žádná hodnota vlastnosti je prázdná.|
+|ResponseTimeMin |Minimální doba odezvy (milisekundy) zjištěnými časovém období vytváření sestav. Pokud žádná hodnota vlastnosti je prázdná.|
+|ResponseTimeSum |Součet všech doby odezvy (milisekundy) zjištěnými časovém období vytváření sestav. Pokud žádná hodnota vlastnosti je prázdná.|
 
 Doba odezvy je třetí typ dat ohlašovaný – jak dlouho volající věnovat časový limit na žádosti zaslané prostřednictvím připojení ke zpracování a reagovalo oddělení vzdálený koncový bod. Doba odezvy hlášené je odhad doby odezvy true na základním protokolu aplikace. To je vypočítán s použitím heuristické metody založené na sledování tok dat mezi zdrojovou a cílovou konec připojení k fyzické síti. Koncepčně je rozdíl mezi časem poslední bajt požadavku opouští odesílatele a čas při přijetí posledního bajtu odpovědi k němu. Tyto dva časové razítko se používají od sebe odděluje událostí žádostí a odpovědí na jedno fyzické připojení. Rozdíl mezi nimi představuje doba odezvy jedné žádosti. 
 
@@ -93,8 +93,8 @@ Pro usnadnění práce IP adresu ke konci vzdáleného připojení je součást�
 | Vlastnost | Popis |
 |:--|:--|
 |RemoteCountry |Název země hostování RemoteIp.  Například *USA* |
-|RemoteLatitude |Zeměpisná poloha, zeměpisná šířka.  Například *47.68* |
-|RemoteLongitude |Informace o zeměpisné poloze délky.  Například *-122.12* |
+|RemoteLatitude |Zeměpisná poloha, zeměpisná šířka. Například *47.68* |
+|RemoteLongitude |Informace o zeměpisné poloze délky. Například *-122.12* |
 
 #### <a name="malicious-ip"></a>Škodlivá IP adresa
 Každá vlastnost RemoteIp v *VMConnection* tabulky je porovnávána s sadu IP adres pomocí známých škodlivých aktivit. Pokud se zjistí, RemoteIp jako škodlivý naplní se následující vlastnosti (jsou prázdné, pokud IP adresa se považuje za škodlivou) v záznamu následující vlastnosti:
@@ -102,16 +102,16 @@ Každá vlastnost RemoteIp v *VMConnection* tabulky je porovnávána s sadu IP a
 | Vlastnost | Popis |
 |:--|:--|
 |MaliciousIp |Vzdálená adresa IP adres |
-|IndicatorThreadType | |
-|Popis | |
-|TLPLevel | |
-|Spolehlivost | |
-|Severity | |
-|FirstReportedDateTime | |
-|LastReportedDateTime | |
-|IsActive | |
-|ReportReferenceLink | |
-|AdditionalInformation | |
+|IndicatorThreadType |Indikátor hrozeb zjistila je jeden z následujících hodnot *Botnet*, *C2*, *CryptoMining*, *Darknet*, *před útoky DDos* , *MaliciousUrl*, *Malware*, *Phishing*, *Proxy*, *PUA*, *Seznamu ke zhlédnutí*.   |
+|Popis |Popis zjištěných hrozeb. |
+|TLPLevel |Úroveň protokolu semaforu (algoritmus TLP) je jedna z definovaných hodnot *prázdné*, *zelená*, *žlutou*, *Red*. |
+|Spolehlivost |Hodnoty jsou *0 – 100*. |
+|Severity |Hodnoty jsou *0 – 5*, kde *5* je nejzávažnější a *0* není natolik vůbec. Výchozí hodnota je *3*.  |
+|FirstReportedDateTime |První zprostředkovatel ohlásil indikátoru. |
+|LastReportedDateTime |Čas posledního ukazatele viděla Interflow. |
+|IsActive |Označuje deaktivují se s indikátory *True* nebo *False* hodnotu. |
+|ReportReferenceLink |Obsahuje odkazy na sestavy související se daný pozorovat. |
+|AdditionalInformation |Poskytuje další informace, pokud je k dispozici informace o zjištěných hrozeb. |
 
 ### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL záznamů
 Záznamy typu *ServiceMapComputer_CL* mít data inventáře pro servery s agenta závislostí. Tyto záznamy mají vlastnosti v následující tabulce:
@@ -166,34 +166,34 @@ Záznamy typu *ServiceMapProcess_CL* mít data inventáře pro procesy připojen
 ## <a name="sample-log-searches"></a>Ukázky hledání v protokolech
 
 ### <a name="list-all-known-machines"></a>Seznam všech známých počítačů
-ServiceMapComputer_CL | shrnutí arg_max(TimeGenerated, *) podle ID prostředku
+`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>Seznam kapacita fyzické paměti všech spravovaných počítačů.
-ServiceMapComputer_CL | shrnutí arg_max(TimeGenerated, *) podle ID prostředku | Projekt PhysicalMemory_d, ComputerName_s
+`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s`
 
 ### <a name="list-computer-name-dns-ip-and-os"></a>Název počítače seznamu, DNS, IP a operačního systému.
-ServiceMapComputer_CL | shrnutí arg_max(TimeGenerated, *) podle ID prostředku | Projekt ComputerName_s OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s
+`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s`
 
 ### <a name="find-all-processes-with-sql-in-the-command-line"></a>Najít všechny procesy s "sql" v příkazovém řádku
-ServiceMapProcess_CL | kde CommandLine_s contains_cs "sql" | shrnutí arg_max(TimeGenerated, *) podle ID prostředku
+`ServiceMapProcess_CL | where CommandLine_s contains_cs "sql" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="find-a-machine-most-recent-record-by-resource-name"></a>Najít počítač (poslední záznam) podle názvu prostředku
-hledání v (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | shrnutí arg_max(TimeGenerated, *) podle ID prostředku
+`search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="find-a-machine-most-recent-record-by-ip-address"></a>Najít počítač (poslední záznam) podle IP adresy
-hledání v (ServiceMapComputer_CL) "10.229.243.232" | shrnutí arg_max(TimeGenerated, *) podle ID prostředku
+`search in (ServiceMapComputer_CL) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="list-all-known-processes-on-a-specified-machine"></a>Seznam všech známých procesů v zadaném počítači
-ServiceMapProcess_CL | kde MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | shrnutí arg_max(TimeGenerated, *) podle ID prostředku
+`ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="list-all-computers-running-sql"></a>Seznam všech počítačů s SQL
-ServiceMapComputer_CL | kde ResourceName_s v ((vyhledávání v (ServiceMapProcess_CL) "\*sql\*" | odlišné MachineResourceName_s)) | odlišné ComputerName_s
+`ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s`
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Zobrazí seznam všech verzí produktu jedinečné nástroje curl do svého datacentra
-ServiceMapProcess_CL | kde ExecutableName_s == "curl" | DISTINCT ProductVersion_s
+`ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s`
 
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>Vytvořit skupinu počítačů všechny počítače se systémem CentOS
-ServiceMapComputer_CL | kde OperatingSystemFullName_s contains_cs "CentOS" | DISTINCT ComputerName_s
+`ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s`
 
 ### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>Shrnutí odchozí připojení ze skupiny počítačů
 ```

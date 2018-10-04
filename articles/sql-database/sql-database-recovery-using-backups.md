@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/01/2018
-ms.openlocfilehash: 31a423714154537cfc8d801b972869035aa61035
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: bdd3f5c5304cec0a562945ffaf412771e15b6031
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042202"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248257"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Obnovit databázi Azure SQL pomocí automatizovaných záloh databáze
 Ve výchozím nastavení zálohování SQL Database jsou uložené v geograficky replikovaném blob storage (RA-GRS). Tyto možnosti jsou k dispozici pro databázi pomocí obnovení [automatizovaných záloh databáze](sql-database-automated-backups.md):
@@ -92,6 +92,9 @@ Chcete-li provést obnovení do bodu v čase pomocí webu Azure portal, otevřet
 ## <a name="deleted-database-restore"></a>Obnovení odstraněné databáze
 Čas odstranění pro odstraněnou databázi na stejném logickém serveru pomocí webu Azure portal, můžete obnovit odstraněnou databázi [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase), nebo [REST (createMode = obnovit)](https://msdn.microsoft.com/library/azure/mt163685.aspx). Můžete obnovit odstraněnou databázi k dřívějšímu bodu v době uchování pomocí [Powershellu](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase).
 
+> [!Note]
+> Obnovení odstraněné databáze není k dispozici ve spravované instanci.
+
 > [!TIP]
 > Ukázkový skript prostředí PowerShell ukazuje, jak obnovit odstraněnou databázi, naleznete v tématu [obnovení databáze SQL pomocí prostředí PowerShell](scripts/sql-database-restore-database-powershell.md).
 >
@@ -111,6 +114,9 @@ Obnovení odstraněné databáze během jeho [dobu uchování model založený n
 
 ## <a name="geo-restore"></a>Geografické obnovení
 Obnovení databáze SQL na libovolném serveru v libovolné oblasti Azure z poslední geograficky replikovaného úplné a rozdílové zálohy. Geografické obnovení pomocí geograficky redundantní zálohy jako zdroj a slouží k obnovení databáze, i když je nejsou dostupné kvůli výpadku databáze nebo datového centra. 
+
+> [!Note]
+> Geografické obnovení není k dispozici ve spravované instanci.
 
 Geografické obnovení je výchozí možnost zotavení, pokud vaše databáze není k dispozici z důvodu incidentu v oblasti, kde se hostuje databázi. Pokud ve velkém měřítku incidentů v oblasti výsledky v nedostupnost databázovou aplikaci, můžete obnovit databázi z geograficky replikovaných záloh na server v jiné oblasti. Dochází ke zpoždění mezi pořizování rozdílové zálohy a kdy je geograficky replikované do služby Azure blob do jiné oblasti. Toto zpoždění může být až hodinu, proto, pokud dojde k havárii, může trvat jednu hodinu ztrátu. Následující obrázek znázorňuje obnovit databázi z poslední dostupnou zálohou v jiné oblasti.
 

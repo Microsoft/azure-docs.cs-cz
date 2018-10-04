@@ -5,15 +5,15 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/06/2018
+ms.date: 10/02/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 60cdcbeba0c4149d8f049bbab553bd658c965338
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 322b21ae2273b949e9a46e0c47a9f9e4d661603e
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128591"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267949"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>Spouštění skriptů prostředí PowerShell ve virtuálním počítači Windows pomocí příkazu Spustit
 
@@ -21,7 +21,7 @@ Spusťte příkaz používá agent virtuálního počítače ke spouštění skr
 
 ## <a name="benefits"></a>Výhody
 
-Existuje několik možností, které slouží k přístupu k virtuálním počítačům. Spusťte příkaz můžete spustit skripty na virtuálních počítačích vzdáleně pomocí agenta virtuálního počítače. Spusťte příkaz se dá použít prostřednictvím webu Azure portal, [rozhraní REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [rozhraní příkazového řádku Azure](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke), nebo [Powershellu](/powershell/module/azurerm.compute/invoke-azurermvmruncommand).
+Existuje několik možností, které slouží k přístupu k virtuálním počítačům. Spusťte příkaz můžete spustit skripty na virtuálních počítačích vzdáleně pomocí agenta virtuálního počítače. Spusťte příkaz se dá použít prostřednictvím webu Azure portal, [rozhraní REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), nebo [Powershellu](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) pro virtuální počítače s Windows.
 
 Tato možnost je užitečná ve všech scénářích, kde chcete spustit skript v rámci virtuálních počítačů a je jedním z jediný způsob, jak odstraňovat potíže a opravte virtuální počítač, který nemá protokol RDP nebo otevřít SSH port z důvodu nesprávné sítě nebo správce konfigurace.
 
@@ -33,6 +33,7 @@ Při použití příkazu Spustit platí následující omezení:
 * Minimální doba pro spuštění skriptu je přibližně 20 sekund.
 * Skripty spouštěné jako systém na Windows
 * Může spustit jeden skript v čase
+* Skripty, které výzvu k zadání informace (interaktivní režim) nejsou podporovány.
 * Nelze zrušit spouštění skriptu
 * Maximální doba, kterou můžete spustit skript je 90 minut, po kterém vyprší časový limit
 * Odchozí připojení z virtuálního počítače je potřeba vrátit výsledky ze skriptu.

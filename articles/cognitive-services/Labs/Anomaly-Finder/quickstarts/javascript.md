@@ -9,14 +9,16 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 048647f1657a5674bcb508b20b7c57a8a6ed5ed9
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 8a880e5924ec6bfbabb5ae4d71742f2a29bdea7f
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665018"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48246925"
 ---
 # <a name="use-the-anomaly-finder-api-with-javascript"></a>Vyhledávač anomálií rozhraní API pomocí jazyka Javascript
+
+[!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
 Tento článek obsahuje informace a ukázky kódu, které vám pomohou rychle začít používat rozhraní API pro detekci anomálií JavaScript zde slouží k provádění úloh získat výsledek detekce anomálií dat časových řad.
 
@@ -40,7 +42,7 @@ Kroky v příkladu jsou následující.
 
 1. Vytvořte nový soubor HTML.
 2. Nahraďte soubor HTML s následujícím kódem.
-3. Nahraďte `[YOUR_SUBSCRIPTION_KEY]` hodnotu klíčem platné předplatné.
+3. Hodnotu `[YOUR_SUBSCRIPTION_KEY]` nahraďte platným klíčem předplatného.
 4. Nahraďte data v requestTextArea datových bodů.
 5. Otevřete soubor HTML ve webovém prohlížeči a klikněte na tlačítko `Anomaly Detection` tlačítko.
 

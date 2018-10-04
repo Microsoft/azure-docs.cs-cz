@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 10/03/2018
 ms.author: celested
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: 59856418adde1ea29a0513a1ca7c0c60531768d8
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 3e4b4e904fd4615458e8d873baa1bf30588fe81d
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036537"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249430"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Postupy: migrace ze služby Azure Access Control service
 
@@ -116,6 +116,9 @@ Tady je plán pro ukončení podpory pro řízení přístupu na komponenty:
 - **. Listopadu 2017**: prostředí správce Azure AD na portálu Azure classic [byl vyřazen z provozu](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). V tomto okamžiku je k dispozici na adrese URL nového, vyhrazené Správa oboru názvů pro řízení přístupu: `http://manage.windowsazure.com?restoreClassic=true`. Zobrazit vaše stávající obory názvů, povolovat a zakazovat obory názvů a odstraňovat obory názvů, pokud budete chtít použijte tuto adresu URl.
 - **2. dubnem 2018**: na portálu Azure classic portal byl zcela vyřazen z provozu, což znamená, Správa oboru názvů řízení přístupu už nejsou k dispozici prostřednictvím libovolnou adresu URL. V tuto chvíli nelze zakázat nebo povolit, odstranit nebo výčet obory názvů řízení přístupu. Ale na portálu pro správu řízení přístupu budou plně funkční a v `https://\<namespace\>.accesscontrol.windows.net`. Fungovat normálně dál všech ostatních součástí řízení přístupu.
 - **7. listopadu 2018**: řízení přístupu na všechny komponenty jsou trvale vypnout. To zahrnuje na portálu pro správu řízení přístupu, služba správy, služba tokenů zabezpečení a stroj pravidel transformace token. V tomto okamžiku všechny požadavky odeslané na řízení přístupu (umístěný ve \<obor názvů\>. accesscontrol.windows.net) selžou. Měli jste migrovali všechny existující aplikace a služby na jiné technologie dobře před tímto časem.
+
+> [!NOTE]
+> Zásadu zakazuje obory názvů, které nebyly požadovaný token pro určitou dobu. Od počáteční. září 2018 tuto dobu je aktuálně na 14 dnů nečinnosti, ale to bude zkrátila na 7 dnů nečinnosti v následujících týdnech. Pokud máte obory názvů řízení přístupu, které jsou aktuálně zakázány, můžete si [stáhněte a nainstalujte prostředí PowerShell služby ACS](#download-and-install-acs-powershell) znovu povolit namespace (s).
 
 ## <a name="migration-strategies"></a>Strategie migrace
 
@@ -347,6 +350,10 @@ V těchto případech zvažte migraci vaší webové aplikace na jinou cloudovou
 | ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping Identity](https://www.pingidentity.com) nabízí dvě řešení podobný služby ACS. PingOne je Cloudová služba identit, který podporuje mnoho stejných funkcí jako služby ACS a služby PingFederate je podobný produkt identity v místním prostředí, která nabízí vyšší flexibilitu. Odkazovat na [pokyny vyřazení z provozu služby ACS na příkaz Ping](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) pro další podrobnosti o použití těchto produktů. |
 
 Cílem naší práce s Ping Identity a Auth0 je zajistit, aby měli všichni zákazníci řízení přístupu na cestu migrace pro své aplikace a služby, který minimalizuje množství práce potřebné k přesunutí z řízení přístupu.
+
+#### <a name="passthrough-authentication"></a>Předávacího ověřování
+
+Předávacího ověřování s libovolného token transformace není žádná ekvivalentní technologii Microsoftu pro služby ACS. Pokud je to, co vaši zákazníci potřebují, Auth0 může být ten, který má nejvíce aproximace řešení.
 
 ## <a name="questions-concerns-and-feedback"></a>Otázky, otázky a zpětná vazba
 

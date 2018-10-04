@@ -9,12 +9,12 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: 0a30cce92de4b96b7dc0d29ce12f409df3e895df
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: d176c33a37b26b1e13d5b9beb7ac68d335cc7862
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721872"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249181"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Převod řeči na Text – nejčastější dotazy
 
@@ -57,6 +57,12 @@ Můžete nasadit standardní hodnoty a vlastní modely na portálu a potom spust
 **A**: nelze aktualizovat existující model. Jako řešení kombinovat původní datové sady s novou datovou sadu a readapt.
 
 Původní datové sady a nová datová sada musí zkombinovat do jednoho souboru .zip (pro akustických dat) nebo v souboru .txt (pro jazyk data). Po dokončení adaptace modelu nové a aktualizované je potřeba znovu nasadit k získání nového koncového bodu
+
+**Otázka: Pokud je dostupná nová verze směrného plánu je Moje nasazení automaticky aktualizuje?**
+
+**A**: nasazení se neaktualizuje automaticky. 
+
+Pokud máte upravit a nasadit model se standardními hodnotami V1.0, zůstane tohoto nasazení je. Zákazníci mají decommision nasazený model znovu přizpůsobit pomocí novější verze směrný plán a znovu nasadit.
 
 **Otázka: Co když budu potřebovat vyšší souběžnosti pro moje nasazený model než nabízejí na portálu?** 
 

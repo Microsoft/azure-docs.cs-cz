@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 7984d156c1f8d1c29bda57ae39991876341ea0ac
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 56f1769d601df6292decc46c9470768eac29102c
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127240"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249073"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Načtení dat do Azure Data Lake Storage Gen1 pomocí služby Azure Data Factory
 
@@ -85,7 +85,7 @@ Tento článek ukazuje, jak použít nástroje pro kopírování dat objekt pro 
    2. Zadejte **tajný přístupový klíč** hodnotu.
    3. Vyberte **Finish** (Dokončit).
    
-   ![Zadání účtu Amazon S3](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
+     ![Zadání účtu Amazon S3](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
    
    4. Zobrazí se nové připojení. Vyberte **Další**.
    
@@ -110,7 +110,7 @@ Tento článek ukazuje, jak použít nástroje pro kopírování dat objekt pro 
    3. Vyberte **Další**.
    
    > [!IMPORTANT]
-   > V tomto názorném postupu použijete _se identita spravované služby_ k ověření svého účtu Data Lake Storage Gen1. Je potřeba udělit příslušná oprávnění v Data Lake Storage Gen1 MSI pomocí následujícího [tyto pokyny](connector-azure-data-lake-store.md#using-managed-service-identity-authentication).
+   > V tomto názorném postupu použijete k ověření svého účtu Data Lake Storage Gen1 spravovanou identitu pro prostředky Azure. Je potřeba udělit příslušná oprávnění v Data Lake Storage Gen1 MSI pomocí následujícího [tyto pokyny](connector-azure-data-lake-store.md#managed-identity).
    
    ![Zadejte účet Data Lake Storage Gen1](./media/load-data-into-azure-data-lake-store/specify-adls.png)
 9. V **zvolte výstupní soubor nebo složku** zadejte **copyfroms3** jako název složky výstupu a vyberte **Další**: 

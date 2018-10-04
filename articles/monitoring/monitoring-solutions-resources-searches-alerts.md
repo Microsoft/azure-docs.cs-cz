@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren, vinagara
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fd8ba47e8fb0d591fab7717117329357b74f907a
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 8f5dba7ba1c21e33f23cf8917c93e478eadf5f88
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585964"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269520"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Přidání Log Analytics uložené hledání a výstrahy do řešení pro správu (Preview)
 
@@ -84,7 +84,7 @@ Uložené výsledky hledání se jednotlivé vlastnosti je popsané v následuj�
 | query | Spustit dotaz. |
 
 > [!NOTE]
-> Budete muset použít řídicí znaky v dotazu, pokud obsahuje znaky, které může být interpretován jako JSON.  Například, pokud byl váš dotaz **typ: AzureActivity OperationName:"Microsoft.Compute/virtualMachines/write"**, by měl být zadaný v souboru řešení, které **typ: AzureActivity OperationName:\\" Microsoft.Compute/virtualMachines/write\\"**.
+> Budete muset použít řídicí znaky v dotazu, pokud obsahuje znaky, které může být interpretován jako JSON.  Například, pokud byl váš dotaz **AzureActivity | OperationName:"Microsoft.Compute/virtualMachines/write"**, by měl být zadaný v souboru řešení, které **AzureActivity | OperationName: /\"Microsoft.Compute/virtualMachines/write\"**.
 
 ## <a name="alerts"></a>Výstrahy
 [Upozornění Azure Log](../monitoring-and-diagnostics/monitor-alerts-unified-log.md) jsou vytvořené pravidly upozornění Azure, které v pravidelných intervalech spouští dotazy zadaný protokol.  Pokud výsledky dotazu splňují zadaná kritéria, se vytvoří záznam o upozornění a jednu nebo více akcí se spouštějí pomocí [skupiny akcí](../monitoring-and-diagnostics/monitoring-action-groups.md).  

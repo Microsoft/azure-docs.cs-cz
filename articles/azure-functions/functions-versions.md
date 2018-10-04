@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: glenga
-ms.openlocfilehash: a601ea42549abad84d6cab5c429cf94147776436
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d4a0d53c3438be9ea4e0229e4a456ed6f5960996
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978620"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249056"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Přehled verze modulu runtime Azure Functions
 
@@ -98,7 +98,7 @@ Pro VS Code budete také muset aktualizovat nastavení hlavního názvu uživate
 
 ### <a name="changing-version-of-apps-in-azure"></a>Změna verze aplikace v Azure
 
-Verze publikované aplikace, které se konfigurují pomocí nastavení aplikace `FUNCTIONS_RUNTIME_VERSION`.  Je nastavené na `~2` pro aplikace v2 a `~1` pro aplikace v1.  Je doporučena změna verze modulu runtime aplikace, kterou má existující funkce publikovaná beze změny také kódu z těchto funkcí.  Doporučená cesta je vytvoření nové aplikace function app a nastavit na příslušnou verzi, otestovat změny a potom zakázat nebo odstranit předchozí aplikace.
+Verze publikované aplikace, které se konfigurují pomocí nastavení aplikace `FUNCTIONS_EXTENSION_VERSION`.  Je nastavené na `~2` pro aplikace v2 a `~1` pro aplikace v1.  Je doporučena změna verze modulu runtime aplikace, kterou má existující funkce publikovaná beze změny také kódu z těchto funkcí.  Doporučená cesta je vytvoření nové aplikace function app a nastavit na příslušnou verzi, otestovat změny a potom zakázat nebo odstranit předchozí aplikace.
 
 ## <a name="bindings"></a>Vazby 
 

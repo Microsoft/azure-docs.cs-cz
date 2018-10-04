@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/01/2018
-ms.openlocfilehash: 3242f683fd6190209e3395bd8410dd1b2cd36960
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: bc322857a459f9417ed7c89a6e4df7ce5c41c3f0
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043342"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48246477"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Použít repliky jen pro čtení k načtení vyrovnávat zatížení dotazu jen pro čtení (preview)
 
@@ -75,7 +75,11 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 > [!NOTE]
 > V každém okamžiku pouze jeden z replik AlwaysON přístupný relacemi jen pro čtení.
 
-## <a name="enable-and-disable-read-scale-out-using-azure-powershell"></a>Povolení a zákaz čtení horizontální navýšení kapacity pomocí Azure Powershellu
+## <a name="enable-and-disable-read-scale-out"></a>Povolení a zákaz horizontální navýšení kapacity pro čtení
+
+Ve výchozím nastavení v je povolené horizontální navýšení kapacity pro čtení [Managed Instance](sql-database-managed-instance.md) tier(Preview) pro důležité obchodní informace. By měla být explicitně povolená v [databáze umístěna na logickém serveru](sql-database-logical-servers.md) úrovně Premium a pro důležité obchodní informace. Metody pro povolení a zakázání horizontální navýšení kapacity pro čtení je zde popsáno. 
+
+### <a name="enable-and-disable-read-scale-out-using-azure-powershell"></a>Povolení a zákaz čtení horizontální navýšení kapacity pomocí Azure Powershellu
 
 Správa Škálováním pro čtení v prostředí Azure PowerShell vyžaduje prosince 2016 prostředí Azure PowerShell verze nebo novější. Nejnovější verze prostředí PowerShell najdete v části [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
 
@@ -99,7 +103,7 @@ Chcete-li vytvořit novou databázi s čtení horizontální navýšení kapacit
 New-AzureRmSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Enabled -Edition Premium
 ```
 
-## <a name="enabling-and-disabling-read-scale-out-using-the-azure-sql-database-rest-api"></a>Povolení a zakázání čtení horizontální navýšení kapacity pomocí REST API služby Azure SQL Database
+### <a name="enabling-and-disabling-read-scale-out-using-the-azure-sql-database-rest-api"></a>Povolení a zakázání čtení horizontální navýšení kapacity pomocí REST API služby Azure SQL Database
 
 K vytvoření databáze s čtení horizontální navýšení kapacity povolena, nebo k povolení nebo zakázání čtení horizontální navýšení kapacity pro existující databázi, vytvořit nebo aktualizovat odpovídající entita databáze s `readScale` nastavenou na `Enabled` nebo `Disabled` stejně jako v následující ukázky požadavek.
 

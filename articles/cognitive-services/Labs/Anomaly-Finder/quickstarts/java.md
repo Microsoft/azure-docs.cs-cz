@@ -1,6 +1,6 @@
 ---
-title: Použití rozhraní API vyhledávací anomálií s Java - kognitivní služby Microsoft | Microsoft Docs
-description: Get informace a ukázky kódu můžete rychle začít, Java a zjištění anomálií v kognitivní služby.
+title: Jak používat rozhraní API pro vyhledávač anomálií s využitím Javy – Microsoft Cognitive Services | Dokumentace Microsoftu
+description: Získat informace a ukázky kódu můžete rychle začít pracovat pomocí Javy a detekci anomálií ve službě Cognitive Services.
 services: cognitive-services
 author: chliang
 manager: bix
@@ -9,41 +9,43 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: kefre
-ms.openlocfilehash: 8152c23e6c5332d243d851be56bab1e4085dbe5a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 84997b5d50f879fd4be286a3ca362e70f90c9202
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343019"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249176"
 ---
-# <a name="use-the-anomaly-finder-api-with-java"></a>Použití anomálií vyhledávací rozhraní API s Javou
+# <a name="use-the-anomaly-finder-api-with-java"></a>Vyhledávač anomálií rozhraní API pomocí Javy
 
-Tento článek obsahuje informace a ukázky kódu, které vám pomohou rychle začít, pomocí rozhraní API detekce anomálií Java k provedení úlohy získání výsledků detekce anomálií pro data časové řady.
+[!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
+
+Tento článek obsahuje informace a ukázky kódu, které vám pomohou rychle začít používat rozhraní API pro detekci anomálií v Javě k provedení úlohy získat výsledek detekce anomálií dat časové řady.
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [GetSubscriptionKey](../includes/get-subscription-key.md)]
 
-## <a name="getting-anomaly-points-with-the-anomaly-detection-api-using-java"></a>Získávání anomálií body s rozhraním API detekce anomálií používá Java
+## <a name="getting-anomaly-points-with-the-anomaly-detection-api-using-java"></a>Zjišťování anomálií body rozhraní API pro detekci anomálií pomocí Javy
 
 [!INCLUDE [DataContract](../includes/datacontract.md)]
 
-### <a name="example-of-time-series-data"></a>Příklad data časové řady
+### <a name="example-of-time-series-data"></a>Příklad dat časových řad
 
-Následuje příklad času řadu datových bodů.
+Následuje příklad času datových bodů řady.
 
 [!INCLUDE [Request](../includes/request.md)]
 
 ### <a name="analyze-data-and-get-anomaly-points-java-example"></a>Analýza dat a získat body anomálií příkladu Java
 
-Pokud chcete spustit ukázku, proveďte následující kroky:
+Ke spuštění ukázky, proveďte následující kroky:
 1. Vytvoření nové aplikace příkazového řádku.
-2. Nahraďte následujícím kódem třídu Main (zachovat `package` příkazy).
-3. Nahraďte `[YOUR_SUBSCRIPTION_KEY]` hodnotu s klíč platné předplatné.
-4. Nahraďte `[REPLACE_WITH_THE_EXAMPLE_OR_YOUR_OWN_DATA_POINTS]` s příklad nebo vlastních datových bodů.
-5. Stáhněte si tyto globální knihovny z úložiště Maven k `lib` adresář ve vašem projektu:
+2. Nahraďte třídu Main následujícím kódem (zachovejte všechny příkazy `package`).
+3. Hodnotu `[YOUR_SUBSCRIPTION_KEY]` nahraďte platným klíčem předplatného.
+4. Nahradit `[REPLACE_WITH_THE_EXAMPLE_OR_YOUR_OWN_DATA_POINTS]` pomocí příkladu nebo vlastních datových bodů.
+5. Stáhněte si tyto globální knihovny z úložiště Maven k `lib` adresáře ve vašem projektu:
    * `org.apache.httpcomponents:httpclient:4.5.2`
-6. Spusťte "Hlavní".
+6. Spusťte třídu „Main“.
 
 ```java
 
@@ -113,10 +115,10 @@ public class Main {
 
 ### <a name="example-response"></a>Příklad odpovědi
 
-Úspěšná odpověď se vrátí ve formátu JSON. Tady je příklad odpovědi.
+Úspěšná odpověď se vrátí ve formátu JSON. Následuje příklad odpovědi.
 [!INCLUDE [Response](../includes/response.md)]
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Aplikace v jazyce Java](../tutorials/java-tutorial.md)
+> [Aplikace v Javě](../tutorials/java-tutorial.md)

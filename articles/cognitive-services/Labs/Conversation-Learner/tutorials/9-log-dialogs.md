@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 6ceeb9683a979256a8a52347fc74ab758fd1d348
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 4663fc377e795e603bd2484ec4cf98578408501f
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171431"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248377"
 ---
 # <a name="how-to-log-dialogs-in-a-conversation-learner-model"></a>Jak se připojit dialogová okna v modelu Learner konverzace
 
@@ -76,7 +76,7 @@ Teď máte dvě akce.
 
 Přidáte jiný příklad – dialogové okno:
 
-1. Klikněte na tlačítko Nová akce a potom dialogové okno Nový trénování.
+1. Klikněte na tlačítko trénování dialogová okna a pak nové dialogové okno trénování.
 2. Zadejte "co je o počasí v Praze?". Všimněte si, že Praha je označený jako entity.
 5. Klikněte na výsledek akce 
 6. Vyberte "o počasí v $city je pravděpodobně hezky".
@@ -86,7 +86,7 @@ Přidáte jiný příklad – dialogové okno:
 Představte si, že jsme tento robot nasadili pro uživatele.
 
 1. Klikněte na protokol dialogová okna.
-2. Klikněte na novou relaci konverzace.
+2. Kliknutím na dialogové okno Nový protokol.
     - To představuje robota, protože uživatel by docházet v řízení webového chatu na levé straně uživatelského rozhraní. Ignorovat prázdné oblasti na pravé straně.
 3. Zadejte "hello".
 4. Odpovědi robotů: "které Město?"
@@ -97,10 +97,10 @@ Představte si, že jsme tento robot nasadili pro uživatele.
 
 Pojďme zahájit novou relaci:
 
-2. Klikněte na novou relaci konverzace.
+2. Kliknutím na dialogové okno Nový protokol.
 3. Typ "předpovídáním Bostonu".
 4. Odpovědi robotů: "které Město?"
-2. Klikněte na Hotovo výuky.
+2. Klikněte na tlačítko Hotovo testování.
 
 Teď vytvoříme opravy druhé dialogové okno:
 

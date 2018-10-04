@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: apimpm
-ms.openlocfilehash: ed8c34a7e1e11d431d9a3b416067736da0d1612c
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 8983e98bdfb99d71559e1d79d5f6e72c8366b954
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046375"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268525"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Implementace zotavení po havárii pomocí služby zálohování a obnovení ve službě Azure API Management
 
@@ -74,7 +74,7 @@ Všechny úlohy, které můžete provést na prostředky pomocí Azure Resource 
 
 7. Klikněte na tlačítko **delegovaná oprávnění** vedle nově přidané aplikace zaškrtněte políčko u **přístup ke správě služeb Azure (preview)**.
 8. Stisknutím klávesy **vyberte**.
-9. Klikněte na tlačítko **udělení potvrdíte**.
+9. Klikněte na tlačítko **udělit oprávnění**.
 
 ### <a name="configuring-your-app"></a>Konfigurace aplikace
 

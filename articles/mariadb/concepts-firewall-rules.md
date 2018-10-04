@@ -8,12 +8,12 @@ services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 58ccc328281bb70e00294ccef054232108212ccc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 930e561c1777ccfcb8046c824853ebb12367cee5
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997654"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248096"
 ---
 # <a name="azure-database-for-mariadb-server-firewall-rules"></a>Azure Database pro MariaDB pravidla brány firewall serveru
 Že brání veškerému přístupu k vašemu databázovému serveru, dokud neurčíte, které počítače mají oprávnění. Brána firewall uděluje přístup k serveru, na základě původní IP adresy každé žádosti.
@@ -46,7 +46,9 @@ Chcete-li umožnit aplikacím z Azure připojení k Azure Database pro MariaDB s
 ![Povolit přístup ke službám Azure konfigurovat na portálu](./media/concepts-firewall-rules/allow-azure-services.png)
 
 ## <a name="programmatically-managing-firewall-rules"></a>Programová správa pravidel brány firewall
-Kromě webu Azure portal můžete pravidla brány firewall prostřednictvím kódu programu spravovat pomocí rozhraní příkazového řádku Azure. <!--See also [Create and manage Azure Database for MariaDB firewall rules using Azure CLI](./howto-manage-firewall-using-cli.md)-->
+Kromě webu Azure portal můžete pravidla brány firewall prostřednictvím kódu programu spravovat pomocí rozhraní příkazového řádku Azure. 
+
+<!--See also [Create and manage Azure Database for MariaDB firewall rules using Azure CLI](./howto-manage-firewall-using-cli.md)-->
 
 ## <a name="troubleshooting-the-database-firewall"></a>Řešení potíží s branou firewall databáze
 Při přístupu k Microsoft Azure Database pro MariaDB server služby se nechová podle očekávání, zvažte následující body:

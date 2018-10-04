@@ -12,19 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2018
-ms.author: daseidma;bwren
-ms.openlocfilehash: 30a03fd5df9d4119e61698cfe1e5fc612e2cfd3f
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.date: 10/03/2018
+ms.author: magoedte
+ms.openlocfilehash: 49688b958d904450c50944725b18e0d518e27146
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297822"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269254"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Pomocí řešení Service Map v Azure
 Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Pomocí mapy služeb, můžete zobrazit vaše servery tak, aby přirozeným způsobem: jako propojené systémy, které doručují důležité služby. Service Map ukazuje propojení mezi servery, procesy, příchozí a odchozí připojení čekací doba a požadované porty v jakékoli architektuře propojené TCP, žádnou konfiguraci kromě instalace agenta.
 
 Tento článek popisuje podrobnosti o zařazení do systému a použitím řešení Service Map. Informace o konfiguraci řešení Service Map a připojováním agentů najdete v tématu [řešení Service Map konfigurace v Azure]( monitoring-service-map-configure.md).
+
+>[!NOTE]
+>Pokud jste už nasadili řešení Service Map, můžete také prohlédnout vaše mapy ve službě Azure Monitor pro virtuální počítače, který obsahuje další funkce, které chcete sledovat výkon a stav virtuálního počítače. Další informace najdete v tématu [monitorování Azure pro virtuální počítače](monitoring-vminsights-overview.md).
+
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
@@ -230,6 +234,7 @@ Položky v připojených řešení ITSM, klikněte na tlačítko **zobrazit prac
 
 Chcete-li zobrazit podrobnosti o položce v prohledávání protokolu, klikněte na tlačítko **zobrazit v hledání v protokolu**.
 Metrik připojení se zapisují do dvou nových tabulek ve službě Log Analytics 
+
 ## <a name="change-tracking-integration"></a>Změnit integrace sledování
 Integrace mapy služeb pomocí řešení Change Tracking je automatické, pokud jsou obě řešení povolené a nakonfigurované ve vašem pracovním prostoru Log Analytics.
 
@@ -359,16 +364,16 @@ Každá vlastnost RemoteIp v *VMConnection* tabulky je porovnávána s sadu IP a
 | Vlastnost | Popis |
 |:--|:--|
 |MaliciousIp |Vzdálená adresa IP adres |
-|IndicatorThreadType | |
-|Popis | |
-|TLPLevel | |
-|Spolehlivost | |
-|Severity | |
-|FirstReportedDateTime | |
-|LastReportedDateTime | |
-|IsActive | |
-|ReportReferenceLink | |
-|AdditionalInformation | |
+|IndicatorThreadType |Indikátor hrozeb zjistila je jeden z následujících hodnot *Botnet*, *C2*, *CryptoMining*, *Darknet*, *před útoky DDos* , *MaliciousUrl*, *Malware*, *Phishing*, *Proxy*, *PUA*, *Seznamu ke zhlédnutí*.   |
+|Popis |Popis zjištěných hrozeb. |
+|TLPLevel |Úroveň protokolu semaforu (algoritmus TLP) je jedna z definovaných hodnot *prázdné*, *zelená*, *žlutou*, *Red*. |
+|Spolehlivost |Hodnoty jsou *0 – 100*. |
+|Severity |Hodnoty jsou *0 – 5*, kde *5* je nejzávažnější a *0* není natolik vůbec. Výchozí hodnota je *3*.  |
+|FirstReportedDateTime |První zprostředkovatel ohlásil indikátoru. |
+|LastReportedDateTime |Čas posledního ukazatele viděla Interflow. |
+|IsActive |Označuje deaktivují se s indikátory *True* nebo *False* hodnotu. |
+|ReportReferenceLink |Obsahuje odkazy na sestavy související se daný pozorovat. |
+|AdditionalInformation |Poskytuje další informace, pokud je k dispozici informace o zjištěných hrozeb. |
 
 ### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL záznamů
 Záznamy typu *ServiceMapComputer_CL* mít data inventáře pro servery s agenty řešení Service Map. Tyto záznamy mají vlastnosti v následující tabulce:

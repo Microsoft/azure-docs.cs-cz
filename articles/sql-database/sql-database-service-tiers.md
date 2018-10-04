@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 8f1c16aba3a3c082091707e33d3341e6eb6dc31e
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/02/2018
+ms.openlocfilehash: 99914fd1fbfb2647f54c8257145132db2c7bf045
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47158715"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249107"
 ---
 # <a name="azure-sql-database-purchasing-models-and-resources"></a>Azure SQL Database nákupu modely a prostředky 
 
@@ -26,7 +26,7 @@ Azure SQL Database umožňuje jednoduše koupit plně spravovanou PaaS databázo
  - [Spravované instance](sql-database-managed-instance.md) jenom nabídky Azure SQL Database [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md).
 
 > [!IMPORTANT]
-> [Velkokapacitní databáze (preview)](sql-database-hyperscale.md) jsou dostupná jenom u založený na virtuálních jádrech nákupní model pro izolované databáze s logický server nebo v rámci Managed Instance. 
+> [Velkokapacitní databáze (preview)](sql-database-hyperscale.md) jsou ve verzi public preview pouze pro izolované databáze pomocí virtuálních jader, model nákupu. 
 
 Následující tabulku a graf porovnání a kontrast tyto dva modely nákupu.
 

@@ -1,6 +1,6 @@
 ---
-title: Jak používat rozhraní API vyhledávací anomálií pomocí C# - kognitivní služby Microsoft | Microsoft Docs
-description: Get informace a ukázky kódu můžete rychle začít, pomocí jazyka C# a rozhraní API vyhledávací anomálií v kognitivní služby.
+title: Jak používat rozhraní API pro vyhledávač anomálií s C# – Microsoft Cognitive Services | Dokumentace Microsoftu
+description: Získat informace a ukázky kódu můžete rychle začít pracovat, pomocí C# a rozhraní API pro vyhledávač anomálií ve službě Cognitive Services.
 services: cognitive-services
 author: chliang
 manager: bix
@@ -9,37 +9,39 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 867ce4d0262c94de8da0dadeb8de71c28a8295d5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 3ae3d85e8e37fbf896405948f9bc7042bcdaca7b
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343015"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48246444"
 ---
-# <a name="use-the-anomaly-finder-api-with-c"></a>Pomocí funkce hledání anomálií rozhraní API jazyka C#
+# <a name="use-the-anomaly-finder-api-with-c"></a>Použít vyhledávač anomálií rozhraní API pomocí jazyka C#
 
-Tento článek obsahuje informace a ukázky kódu, které vám pomohou rychle začít používat rozhraní API vyhledávací anomálií pomocí C# k provedení úlohy získání anomálií výsledek data časové řady.
+[!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
+
+Tento článek obsahuje informace a ukázky kódu, které vám pomohou rychle začít používat rozhraní API pro vyhledávač anomálií pomocí jazyka C# k provedení úlohy získání výsledku anomálií dat časových řad.
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [GetSubscriptionKey](../includes/get-subscription-key.md)]
 
-## <a name="getting-anomaly-points-with-anomaly-finder-api-using-c"></a>Získávání anomálií body s rozhraním API vyhledávací anomálií pomocí jazyka C#
+## <a name="getting-anomaly-points-with-anomaly-finder-api-using-c"></a>Získání bodů anomálií s využitím C# API vyhledávač anomálií
 
 [!INCLUDE [DataContract](../includes/datacontract.md)]
 
-### <a name="example-of-time-series-data-points"></a>Příklad časové řady datových bodů
+### <a name="example-of-time-series-data-points"></a>Ukazuje příklad dat časových řad
 
-Následuje příklad času řadu datových bodů.
+Následuje příklad času datových bodů řady.
 [!INCLUDE [Request](../includes/request.md)]
 
 ### <a name="analyze-data-and-get-anomaly-points-c-example"></a>Analýza dat a získat anomálií body příklad jazyka C#
 
-Takto vypadají kroky v příkladu.
+Kroky v příkladu jsou následující.
 
-1. Vytvořte nové řešení konzoly v sadě Visual Studio.
-2. Nahradí Program.cs následujícím kódem a přidat odkaz na System.Net.Http.
-3. Nahraďte `[YOUR_SUBSCRIPTION_KEY]` hodnotu s klíč platné předplatné.
+1. Vytvořte nové konzoly řešení v sadě Visual Studio.
+2. Soubor Program.cs nahraďte následujícím kódem a přidejte odkaz na System.Net.Http.
+3. Nahraďte `[YOUR_SUBSCRIPTION_KEY]` hodnotu klíčem platné předplatné.
 4. Nahraďte `[REPLACE_WITH_THE_EXAMPLE_OR_YOUR_OWN_DATA_POINTS]` s datovými body.
 
 ```csharp
@@ -119,7 +121,7 @@ namespace Console
 
 ### <a name="example-response"></a>Příklad odpovědi
 
-Úspěšná odpověď se vrátí ve formátu JSON. Tady je příklad odpovědi.
+Úspěšná odpověď se vrátí ve formátu JSON. Následuje příklad odpovědi.
 [!INCLUDE [Response](../includes/response.md)]
 
 ## <a name="next-steps"></a>Další postup

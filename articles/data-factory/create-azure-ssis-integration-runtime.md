@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: a7ba62a28b65d1cd7152c793bc303e747057cdf8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ace95d39cf7c2d183249b0b6c4094835132b3198
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991466"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249379"
 ---
 # <a name="create-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Vytvoření prostředí Azure-SSIS integration runtime ve službě Azure Data Factory
 Tento článek popisuje kroky pro zřízení prostředí Azure-SSIS integration runtime ve službě Azure Data Factory. Následně můžete pomocí SQL Server Data Tools (SSDT) nebo aplikace SQL Server Management Studio (SSMS) v tomto modulu runtime v Azure nasazovat a spouštět balíčky SSIS (SQL Server Integration Services). 
@@ -27,7 +27,7 @@ Tento kurz [kurz: nasazení balíčků služby SQL Server Integration Services (
 
 - Volitelně můžete použijte Azure SQL Database s virtuální sítě služby koncové body nebo spravované Instance jako databázový server k hostování katalogu SSIS (databázi SSISDB). Pokyny k výběru typu databázový server pro hostování služby SSISDB, naleznete v tématu [logický server porovnání SQL Database a SQL Database Managed Instance](create-azure-ssis-integration-runtime.md#compare-sql-database-logical-server-and-sql-database-managed-instance). Předpokladem je budete muset připojit k prostředí Azure-SSIS IR k virtuální síti a konfigurace virtuální sítě oprávnění a nastavení podle potřeby. Zobrazit [připojení Azure-SSIS IR k virtuální síti](https://docs.microsoft.com/en-us/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network). 
 
-- Volitelně použijte ověřování Azure Active Directory (AAD) s váš Azure Data Factory Identity spravované služby (MSI) pro Azure-SSIS IR pro připojení k databázovému serveru. Předpokladem je, budete muset přidat vaše Data Factory MSI do skupiny AAD s oprávnění k přístupu k databázovému serveru, najdete v článku [ověřování AAD povolit pro Azure-SSIS IR](https://docs.microsoft.com/en-us/azure/data-factory/enable-aad-authentication-azure-ssis-ir). 
+- Volitelně můžete pomocí ověřování Azure Active Directory (AAD) vaší identity spravované služby Azure Data Factory pro prostředky Azure pro prostředí Azure-SSIS IR pro připojení k databázovému serveru. Předpokladem je, budete muset přidat vaše Data Factory MSI do skupiny AAD s oprávnění k přístupu k databázovému serveru, najdete v článku [ověřování AAD povolit pro Azure-SSIS IR](https://docs.microsoft.com/en-us/azure/data-factory/enable-aad-authentication-azure-ssis-ir). 
 
 ## <a name="overview"></a>Přehled
 Tento článek ukazuje různé způsoby zřizování prostředí Azure-SSIS IR: 
@@ -146,7 +146,7 @@ V této části použijete na webu Azure portal, konkrétně Uživatelském rozh
 
     c. Jako **Koncový bod databázového serveru katalogu** vyberte koncový bod vašeho databázového serveru pro hostování databáze SSISDB. Podle serveru vybrané databáze, SSISDB lze vytvořit za vás jako izolovanou databázi, součástí elastického fondu, nebo ve spravované instanci a je přístupný ve veřejné síti nebo připojení k virtuální síti. 
 
-    d. Na **ověřování pomocí AAD...**  zaškrtávací políčko, vyberte metodu ověřování pro databázový server pro hostování služby SSISDB: SQL nebo Azure Active Directory (AAD) s váš Azure Data Factory Identity spravované služby (MSI). Pokud ho budete kontrolovat, je potřeba přidat vaše Data Factory MSI do skupiny AAD s oprávnění k přístupu k databázovému serveru, naleznete v tématu [ověřování AAD povolit pro Azure-SSIS IR](https://docs.microsoft.com/en-us/azure/data-factory/enable-aad-authentication-azure-ssis-ir). 
+    d. Na **ověřování pomocí AAD...**  zaškrtávací políčko, vyberte metodu ověřování pro databázový server pro hostování služby SSISDB: SQL nebo Azure Active Directory (AAD) s Azure Data Factory se identita spravované pro prostředky Azure. Pokud ho budete kontrolovat, je potřeba přidat vaše Data Factory MSI do skupiny AAD s oprávnění k přístupu k databázovému serveru, naleznete v tématu [ověřování AAD povolit pro Azure-SSIS IR](https://docs.microsoft.com/en-us/azure/data-factory/enable-aad-authentication-azure-ssis-ir). 
 
     e. Jako **Uživatelské jméno správce** zadejte uživatelské jméno ověřování SQL pro váš databázový server pro hostování databáze SSISDB. 
 
@@ -333,7 +333,7 @@ Pokud není databáze SQL Azure pomocí virtuální sítě služby koncové body
 
 Pokud používáte spravovanou instanci pro hostování služby SSISDB, můžete CatalogPricingTier parametr vynecháte nebo předat prázdnou hodnotu pro něj. Jinak, nelze ji vynechat a musíte předat platnou hodnotu ze seznamu na podporované cenové úrovně pro službu Azure SQL Database, najdete v článku [limity prostředků SQL Database](../sql-database/sql-database-resource-limits.md). 
 
-Pokud pomocí ověřování Azure Active Directory (AAD) s váš Azure Data Factory Identity spravované služby (MSI) připojit k databázovému serveru, můžete vynechat parametr CatalogAdminCredential, ale vaše Data Factory MSI je nutné přidat do skupiny AAD s přístupem oprávnění k databázovému serveru, najdete v článku [ověřování AAD povolit pro Azure-SSIS IR](https://docs.microsoft.com/en-us/azure/data-factory/enable-aad-authentication-azure-ssis-ir). V opačném případě nemůžete vynechat a musíte předat platný objekt vytvořený z vaší uživatelské jméno správce serveru a heslo pro ověřování SQL.
+Pokud používáte ověřování Azure Active Directory (AAD) pomocí služby Azure Data Factory se identita spravované pro prostředky Azure se připojit k databázovému serveru, můžete vynechat parametr CatalogAdminCredential, ale vaše Data Factory MSI je nutné přidat do skupiny AAD s přístupová oprávnění k databázovému serveru, najdete v článku [ověřování AAD povolit pro Azure-SSIS IR](https://docs.microsoft.com/en-us/azure/data-factory/enable-aad-authentication-azure-ssis-ir). V opačném případě nemůžete vynechat a musíte předat platný objekt vytvořený z vaší uživatelské jméno správce serveru a heslo pro ověřování SQL.
 
 ```powershell               
 Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `

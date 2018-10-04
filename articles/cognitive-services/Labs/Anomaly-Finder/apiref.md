@@ -1,6 +1,6 @@
 ---
-title: Referenční dokumentace rozhraní API vyhledávací anomálií kognitivní služeb společnosti Microsoft | Microsoft Docs
-description: Anomálií referenční dokumentace vyhledávací rozhraní API pro kognitivní služby společnosti Microsoft.
+title: Reference k rozhraní API vyhledávač anomálií služeb Microsoft Cognitive Services | Dokumentace Microsoftu
+description: Anomálií odkaz na hledání rozhraní API služeb Microsoft Cognitive Services.
 services: cognitive-services
 author: tonyxing
 ms.service: cognitive-services
@@ -8,14 +8,16 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: tonyxing
-ms.openlocfilehash: 8f8c4f7e81b48eea698dfb870c5444002f362851
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8302d7be3bbe3e90b80d60eefd44eea5dcf96043
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343008"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48246951"
 ---
-# <a name="anomaly-finder-api-reference"></a>Anomálií vyhledávací API – referenční informace
+# <a name="anomaly-finder-api-reference"></a>Reference k rozhraní API vyhledávač anomálií
+
+[!INCLUDE [PrivatePreviewNote](../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
 [!INCLUDE [overview](./includes/overview.md)]
 [!INCLUDE [overview](./includes/definitions.md)]

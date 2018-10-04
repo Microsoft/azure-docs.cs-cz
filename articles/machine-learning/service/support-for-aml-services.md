@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: b5834bfd47cf2ab8462462c43394c8f05e43afa3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0c626bd193d883f292bf8d20913ff21d86d0d761
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971395"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268475"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-service"></a>Získat podporu a školení pro služby Azure Machine Learning
 
@@ -35,7 +35,7 @@ Podívejte se na tyto prostředky podpory:
 
 + **Technická podpora**: navštivte [technické podpoře Azure](https://azure.microsoft.com/support/options/) a vyberte Machine Learning. 
 
-+ **Fórum uživatelů**: klást otázky, odpovídat na otázky a připojení s ostatními uživateli v [fórum podpory služby Azure Machine Learning na webu MSDN](https://social.msdn.microsoft.com/Forums/windowsdesktop/home?forum=MachineLearning).
++ **Fórum uživatelů**: klást otázky, odpovídat na otázky a připojení s ostatními uživateli v [fórum podpory služby Azure Machine Learning na webu MSDN](https://aka.ms/aml-forum-service).
 
 + **Stack Overflow**: navštívit komunitu Azure Machine Learning na [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) označené "Azure Machine Learning".
 

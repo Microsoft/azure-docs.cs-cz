@@ -1,6 +1,6 @@
 ---
-title: Co je vyhledávací anomálií? -Microsoft kognitivní služby | Microsoft Docs
-description: Pomocí pokročilých algoritmů v hledání anomálií vám pomohou identifikovat anomálie v časových řad dat a vrátí informace ve kognitivní služby společnosti Microsoft.
+title: Co je Vyhledávač anomálií? – Microsoft Cognitive Services | Dokumentace Microsoftu
+description: Pomocí pokročilých algoritmů vyhledávač anomálií můžete identifikovat anomálie v datech časové řady a vrátí informace o Microsoft Cognitive Services.
 services: cognitive-services
 author: tonyxing
 ms.service: cognitive-services
@@ -8,65 +8,67 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: tonyxing
-ms.openlocfilehash: 1080bb0ad1d901a8b9a5ace4993d4e0d46924a03
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2a0715d3becf695600ed84edbae38151acf055a8
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343018"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48246838"
 ---
-# <a name="what-is-anomaly-finder"></a>Co je vyhledávací anomálií?
+# <a name="what-is-anomaly-finder"></a>Co je Vyhledávač anomálií?
 
-Vyhledávací anomálií vám umožňuje monitorovat data v čase a zjišťovat anomálie pomocí machine learning, který přizpůsobí jedinečným datům automaticky použitím právo statistické modelu bez ohledu na odvětví, scénář nebo datový svazek. Pomocí časové řady jako vstup, vrátí anomálií vyhledávací API zda datového bodu je anomálií, určuje očekávanou hodnotou a horní a dolní meze pro vizualizaci. Jako předem služba AI anomálií vyhledávací nevyžaduje žádné strojového učení znalosti nad rámec vědět, jak používat rozhraní RESTful API. Díky vývoj jednoduché a všestranné vzhledem k tomu, že ho pracuje se žádná data řady čas a může být vestavěny do dat systémy. Vyhledávací anomálií zahrnuje široké rozpětí případy použití – pro instanci finančních nástrojů pro správu podvod, krádež, změna trhů a potenciální obchodní incidenty nebo monitorování provoz zařízení IoT při zachování anonymity. Toto řešení můžete také peněžně jako součást služby pro koncové zákazníky pochopit změny v datech, výdaje, návratnost investic nebo aktivity uživatelů.
-Vyzkoušet rozhraní API vyhledávací anomálií a získali lepší představu o vaše data. 
+[!INCLUDE [PrivatePreviewNote](../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
-V tématu, můžete vytvořit s tímto rozhraním API:
+Vyhledávač anomálií vám umožňuje monitorovat data v čase a detekci anomálií machine Learning, která se přizpůsobí svá jedinečná data automaticky použitím přímo statistické modelu bez ohledu na odvětví, scénáři nebo dat svazku. Pomocí časové řady jako vstup, vrátí rozhraní API pro vyhledávač anomálií jestli datový bod je anomálie, určuje očekávanou hodnotu a horní a dolní meze pro vizualizaci. Vyhledávač anomálií jako předem připravené služby AI, nevyžaduje žádné strojového učení odborné znalosti nad rámec pochopení způsobu, jak používat rozhraní RESTful API. Díky tomu vývoj jednoduché a flexibilní protože spolupracuje s všech dat časových řad a také se dají do streamovaných dat systémy. Vyhledávač anomálií zahrnuje široký rozsah případy použití –, finanční nástroje pro správu podvodů, krádeží, změna trhy a potenciální firmy incidentů nebo monitorování provozu zařízení IoT a zachová anonymita. Toto řešení můžete také vydělat jako součást služby pro koncové zákazníky pochopit změny v datech, útraty, návratnost investic nebo aktivity uživatelů.
+Vyzkoušejte si rozhraní API pro vyhledávač anomálií a získali lepší představu o datech. 
 
-* Další informace k předvídání očekávaných hodnot na základě historických dat časové řady
-* Zjistit, zda je hodnota datového bodu anomálií mimo historických vzor
-* Generovat vzdálené k vizualizaci rozsah "normální" hodnoty
+Zobrazit, můžete vytvořit pomocí tohoto rozhraní API:
+
+* Naučte se předpovídat očekávané hodnoty na základě historických dat v časové řadě
+* Zjistit, zda je datový bod anomálií z historických vzor
+* Generovat vzdálené vizualizace rozsah "normální" hodnoty
 
 ![Anomaly_Finder](./media/anomaly_detection1.png) 
 
-Obrázek 1: Zjišťovat anomálie v prodeje příjmů
+Obrázek 1: Zjišťovat anomálie v prodejní výnosy
 
 ![Anomaly_Finder](./media/anomaly_detection2.png)
 
-Obrázek 2: Detekovat vzor změny v žádosti o službu
+Obrázek 2: Zjištění změn vzoru v žádosti o služby
 
 ## <a name="requirements"></a>Požadavky
 
-- Minimální objem dat pro vstup časové řady: minimální 13 dat body pro časové řady bez zrušte periodicity body minimálně 4 cykly data pro časové řady s známé periodicity. 
-- Integrita dat: čas datové body jsou oddělené ve stejném intervalu a žádné chybějící body řady. 
+- Časové řady minimum dat pro vstup: nejméně 13 data odkazuje minimálně 4 cykly dat body pro časové řady s známé periodicitu bez vymazat periodicitu časové řady. 
+- Integrita dat: časové řady, jsou ve stejném intervalu a žádné chybějící body oddělené datové body. 
 
-## <a name="identify-anomalies"></a>Identifikovat anomálií
+## <a name="identify-anomalies"></a>Identifikovat anomálie
 
-Detekce anomálií rozhraní API vrací výsledek, který jestli jakékoli dané datové body jsou anomálií, nebo Ne a poskytuje další informace o následujícím způsobem
-* Období - periodicity, který používá rozhraní API pro zjištění anomálií bodů.
-* WarningText - možné informace upozornění.
-* ExpectedValue - předpovězené hodnoty metodou učení základě modelu
-* IsAnomaly - výsledek na zda datové body jsou anomálií.
-* IsAnomaly_Neg - výsledek na tom, zda datové body jsou anomálie v záporné směru (vyhrazené)
-* IsAnomaly_Pos - výsledek na tom, zda datové body jsou anomálie v kladné směru (špičky)
-* UpperMargin – součet ExpectedValue a UpperMargin Určuje, že je stále představit jako normální horní hranice, která datového bodu
-* LowerMargin - (ExpectedValue - LowerMargin) Určuje dolní hranice, že datový bod je stále představit jako normální
+Vrátí výsledek, který, jestli všechny body daného data jsou anomálie, nebo ne rozhraní API pro detekci anomálií a poskytuje další informace o následujícím způsobem
+* Období - periodicitu, který používá rozhraní API pro detekci anomálií body.
+* WarningText - upozornění je to možné.
+* Model založený na ExpectedValue - předpovězené hodnoty učení
+* IsAnomaly - výsledek toho, zda datové body se anomálie nebo ne
+* IsAnomaly_Neg - výsledek toho, zda datové body se anomálie ve směru záporná (DIP)
+* IsAnomaly_Pos - výsledek toho, zda datové body se anomálie v kladné směru (špičky)
+* UpperMargin – součet ExpectedValue a UpperMargin Určuje, že je stále představit jako obvykle horní mez, která datového bodu
+* LowerMargin - (ExpectedValue - LowerMargin) Určuje dolní mez, datový bod je stále si mysleli, že jako obvykle
 
 > [!Note]
-> UpperMargin a LowerMargin můžete použít ke generování pásem kolem řady skutečný čas k vizualizaci rozsahu hodnot normální. 
+> UpperMargin a LowerMargin můžete použít ke generování pásem kolem skutečné časové řady k vizualizaci řadu běžných hodnot. 
 
-## <a name="adjusting-lower-and-upper-bounds-in-post-processing-on-the-response"></a>Úprava vybírány v následného zpracování v odpovědi
+## <a name="adjusting-lower-and-upper-bounds-in-post-processing-on-the-response"></a>Úprava dolní a horní hranice v příspěvku na zpracování v odpovědi
 
-Detekce anomálií rozhraní API vrátí výchozí výsledek toho, jestli hodnota datového bodu anomálií nebo Ne, a horní a dolní mez, lze vypočítat z ExpectedValue a UpperMargin/LowerMargin. Tyto výchozí hodnoty by měly fungovat správně pro většině případů. Ale některé scénáře vyžadují jiný rozsah než výchozí hodnoty. Postup doporučujeme aplikuje coefficiency na UpperMargin nebo LowerMargin upravit dynamické hranice.
+Rozhraní API pro detekci anomálií vrátí výchozí výsledek toho, jestli na datový bod anomálií nebo Ne, a z ExpectedValue a UpperMargin/LowerMargin lze vypočítat horní a dolní mez. Tyto výchozí hodnoty by měly fungovat stejně dobře většině případů. Některé scénáře však vyžadují jiný rozsah než výchozí hodnoty. Postup doporučujeme je platné coefficiency UpperMargin nebo LowerMargin upravit dynamický rozsah.
 
-### <a name="examples-with-1152-as-coefficiency"></a>Příklady 1/1.5/2 jako coefficiency
+### <a name="examples-with-1152-as-coefficiency"></a>Příklady s 1/1.5/2 jako coefficiency
 
-![Výchozí velkých a malých písmen](./media/sensitivity_1.png)
+![Výchozí citlivosti](./media/sensitivity_1.png)
 
-![1.5 velkých a malých písmen](./media/sensitivity_1.5.png)
+![1.5 citlivosti](./media/sensitivity_1.5.png)
 
-![2 velkých a malých písmen](./media/sensitivity_2.png)
+![2 citlivosti](./media/sensitivity_2.png)
 
-Žádosti s ukázkovými daty
+Žádost s ukázkovými daty
 
 [!INCLUDE [Request](./includes/request.md)]
 

@@ -1,6 +1,6 @@
 ---
-title: Použití rozhraní API vyhledávací anomálií s PHP - kognitivní služby Microsoft | Microsoft Docs
-description: Get informace a ukázky kódu můžete rychle začít používat anomálií vyhledávací s PHP v kognitivní služby.
+title: Jak používat rozhraní API pro vyhledávač anomálií s využitím PHP – Microsoft Cognitive Services | Dokumentace Microsoftu
+description: Získat informace a ukázky kódu můžete rychle začít používat vyhledávač anomálií s PHP ve službě Cognitive Services.
 services: cognitive-services
 author: chliang
 manager: bix
@@ -9,32 +9,34 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: f81c99b77f931b5b259633fa8fcd0bf3e358e281
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f5f055be584aa9c6afb66ff651fd3c01851afd76
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343013"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48246391"
 ---
-# <a name="use-the-anomaly-finder-api-with-php"></a>Použijte vyhledávací anomálií rozhraní API s PHP
+# <a name="use-the-anomaly-finder-api-with-php"></a>Vyhledávač anomálií rozhraní API pomocí PHP
 
-Tento článek obsahuje informace a ukázky kódu, které vám pomohou rychle začít používat rozhraní API vyhledávací anomálií s PHP k provedení úlohy získání anomálií výsledek pro data časové řady.
+[!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
+
+Tento článek obsahuje informace a ukázky kódu, které vám pomohou rychle začít používat rozhraní API pro vyhledávač anomálií s PHP k provedení úlohy získání výsledku anomálií dat časové řady.
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [GetSubscriptionKey](../includes/get-subscription-key.md)]
 
-## <a name="getting-anomaly-points-with-anomaly-finder-api-using-php"></a>Získání bodů anomálií s rozhraním API vyhledávací anomálií, které používá PHP
+## <a name="getting-anomaly-points-with-anomaly-finder-api-using-php"></a>Získání bodů anomálií s využitím PHP API vyhledávač anomálií
 [!INCLUDE [DataContract](../includes/datacontract.md)]
 
-### <a name="example-of-time-series-data"></a>Příklad data časové řady
-V příkladu data řady čas je následující.
+### <a name="example-of-time-series-data"></a>Příklad dat časových řad
+Následuje příklad dat časových řad.
 [!INCLUDE [Request](../includes/request.md)]
 
 ### <a name="analyze-data-and-get-anomaly-points-php-example"></a>Analýza dat a získat body anomálií příklad PHP
-1. Nahraďte `[YOUR_SUBSCRIPTION_KEY]` hodnotu s klíč platné předplatné.
-2. Nahraďte `[REPLACE_WITH_THE_EXAMPLE_OR_YOUR_OWN_DATA_POINTS]` s příklad nebo vlastních datových bodů.
-3. Spuštění a zkontrolujte odpovědi.
+1. Hodnotu `[YOUR_SUBSCRIPTION_KEY]` nahraďte platným klíčem předplatného.
+2. Nahradit `[REPLACE_WITH_THE_EXAMPLE_OR_YOUR_OWN_DATA_POINTS]` pomocí příkladu nebo vlastních datových bodů.
+3. Spustit a zkontrolovat odpovědi.
 
 ```PHP
 <?php
@@ -74,7 +76,7 @@ catch (HttpException $ex)
 
 ### <a name="example-response"></a>Příklad odpovědi
 
-Úspěšná odpověď se vrátí ve formátu JSON. Ukázková odpověď je následující.
+Úspěšná odpověď se vrátí ve formátu JSON. Ukázková odpověď vypadá takto.
 [!INCLUDE [Response](../includes/response.md)]
 
 ## <a name="next-steps"></a>Další postup

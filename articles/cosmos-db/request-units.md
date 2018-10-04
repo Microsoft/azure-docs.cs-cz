@@ -7,37 +7,37 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/26/2018
+ms.date: 10/02/2018
 ms.author: rimman
-ms.openlocfilehash: 66beeb2cc724f75d17a4c155f1cdb888153e8fbf
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 23a3e629e12e2a4d417757c9fef5db804bb72c9e
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286761"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248750"
 ---
-# <a name="request-units-in-azure-cosmos-db"></a>Požadované jednotky ve službě Azure Cosmos DB
+# <a name="throughput-and-request-units-in-azure-cosmos-db"></a>Propustnost a jednotkách požadavků ve službě Azure Cosmos DB
 
-[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) je globálně distribuovaná databáze Microsoftu vícemodelové. Pomocí služby Azure Cosmos DB není nutné poskytovat do nájmu virtuálních počítačů, nasazování softwaru nebo monitorování databází. Azure Cosmos DB je provozována a průběžně monitoruje přední technici Microsoftu k zajištění špičkové dostupnosti, výkonu a data protection. Můžete přistupovat k datům pomocí rozhraní API podle vašeho výběru, jako je třeba [SQL](documentdb-introduction.md), [MongoDB](mongodb-introduction.md), a [tabulky](table-introduction.md) rozhraní API a graph prostřednictvím [rozhraní Gremlin API](graph-introduction.md). Všechny nativně podporují všechna rozhraní API. 
+Prostředky Azure Cosmos DB se účtují na základě zřízenou propustnost a úložiště. Azure Cosmos DB propustnost je vyjádřena z hlediska **jednotek žádostí za sekundu (RU/s)**. Azure Cosmos DB podporuje různá rozhraní API, které mají různé operace, od jednoduchého čte a zapisuje do grafu komplexní dotazy. Každý požadavek využívá jednotek žádosti na základě objemu výpočtů, které jsou zapotřebí pro zpracování požadavku. Počet jednotek žádostí pro operaci je deterministický. Můžete sledovat počet jednotky žádostí, které jsou všechny operace ve službě Azure Cosmos DB s použitím hlavičky odpovědi. Pokud chcete zajistit předvídatelný výkon, měli byste si rezervovat propustnost v jednotkách 100 RU/s. Vašim potřebám propustnosti můžete odhadnout s využitím služby Azure Cosmos DB [Kalkulačka jednotek žádosti](https://www.documentdb.com/capacityplanner).
 
-Měna ve službě Azure Cosmos DB je *jednotky žádosti (RU)*. U jednotek požadavku není nutné rezervovat kapacity pro čtení a zápis nebo zřízení procesoru, paměti a vstupně-výstupních operací. Azure Cosmos DB podporuje různá rozhraní API, které mají různé operace, od jednoduchého čte a zapisuje do grafu komplexní dotazy. Protože ne všechny požadavky jsou stejné, požadavky jsou přiřazeny normalizované množství jednotek žádosti na základě objemu výpočtů, které jsou zapotřebí pro zpracování požadavku. Počet jednotek žádostí pro operaci je deterministický. Můžete sledovat počet jednotek žádosti, které se spotřebovávají všechny operace ve službě Azure Cosmos DB pomocí hlavičky odpovědi. 
+Ve službě Azure Cosmos DB může zřídit propustnost v přírůstcích po dvou: 
 
-Pokud chcete zajistit předvídatelný výkon, vyhrazuje propustnost v jednotkách 100 RU/s. Je možné [odhadnout propustnost potřebuje](request-units.md#estimating-throughput-needs) pomocí služby Azure Cosmos DB [Kalkulačka jednotek žádosti](https://www.documentdb.com/capacityplanner).
+1. **Kontejner Azure Cosmos DB:** propustnosti zřízené pro kontejner je vyhrazený pro tento konkrétní kontejner. Při přiřazování throughput(RU/s) na úrovni kontejneru, kontejnery lze vytvořit jako **Fixed** nebo **Unlimited**. 
 
-![Kalkulačka propustnost][5]
+  Kontejnery s pevnou velikostí mají omezení maximální propustnost 10 000 RU/s a 10 GB limit úložiště. Pokud chcete vytvořit neomezený kontejner, je nutné zadat minimální propustnost 1 000 RU/s a [klíč oddílu](partition-data.md). Vzhledem k tomu, že vaše data mohou rozdělit mezi několik oddílů, budete muset vybrat klíč oddílu, který má vysokou kardinalitou (100 milionům jedinečné hodnoty). Tak, že vyberete klíče oddílu s mnoha různých hodnot, služby Azure Cosmos DB zajišťuje, že požadavky na kolekce, tabulky a grafu se upraví rovnoměrně. 
 
-Po přečtení tohoto článku, budete moci odpovědět na následující otázky:
+2. **Databáze Azure Cosmos DB:** propustnosti zřízené pro databázi je sdílen mezi všechny kontejnery v rámci této databáze. Při zřizování propustnosti na úrovni databáze, můžete explicitně vyloučit určité kontejnery a místo toho zajištění propustnosti u těchto kontejnerů na úrovni kontejneru. Úroveň propustnosti databáze vyžaduje všechny kolekce se vytvoří s klíčem oddílu. Při přiřazování propustnosti na úrovni databáze, kontejnery, které patří do této databáze by měl vytvořit s klíčem oddílu, protože je každá kolekce **Unlimited** kontejneru.  
 
-* Co jsou jednotky žádostí a poplatky za žádost ve službě Azure Cosmos DB?
-* Jak určit kapacitu jednotky žádosti pro kontejneru nebo sadu kontejnerů ve službě Azure Cosmos DB?
-* Jak odhadnu musí jednotky žádosti mé aplikace?
-* Co se stane, když překročím požadavek jednotku kapacity pro kontejner nebo sadu kontejnerů ve službě Azure Cosmos DB?
+Na základě zřízené propustnosti, Azure Cosmos DB se přidělí fyzické oddíly k hostování kontejnerů a rozdělení dat napříč oddíly, jak rostou. Následující obrázek ukazuje zřizování propustnosti na různých úrovních:
 
-Azure Cosmos DB je vícemodelová databázová, proto je důležité si uvědomit, že v tomto článku se vztahuje na všechny datové modely a rozhraní API ve službě Azure Cosmos DB. Tento článek používá obecné podmínky jako *kontejneru* obecně o kolekci nebo grafu a *položky* obecně odkazovat na tabulku, dokument, uzel nebo entity.
+  ![Zřizování jednotek žádostí pro jednotlivé kontejnery a sadu kontejnerů](./media/request-units/provisioning_set_containers.png)
+
+> [!NOTE] 
+> Zřizování propustnosti na úrovni databáze a úrovni kontejneru jsou samostatné nabídky a přepínání mezi některý z těchto vyžadují migraci dat ze zdroje do cíle. Což znamená, že budete muset vytvořit novou databázi nebo nové kolekce a potom migrovat data s využitím [hromadné prováděcí modul knihovny](bulk-executor-overview.md) nebo [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md).
 
 ## <a name="request-units-and-request-charges"></a>Jednotky žádostí a poplatky za žádost
 
-Azure Cosmos DB nabízí rychlé a předvídatelný výkon vyhrazením prostředky, abyste vyhověli potřebám propustnosti vaší aplikace. Aplikace vzory zatížení a přístup v průběhu času měnit. Azure Cosmos DB můžete snadno zvýšit nebo snížit množství vyhrazenou propustností, které jsou k dispozici pro vaši aplikaci.
+Azure Cosmos DB poskytuje vysoký a předvídatelný výkon tím, že rezervuje prostředky, aby splnila požadavky vaší aplikace na propustnost. Vzory zatížení aplikací a přístupu k nim se v průběhu času mění. Azure Cosmos DB vám může pomoct snadno zvýšit nebo snížit rezervovanou propustnost, kterou má vaše aplikace k dispozici.
 
 Pomocí služby Azure Cosmos DB rezervované propustnosti specifikované jako jednotky žádosti, které zpracovává za sekundu. Jednotky žádostí můžete představit jako měnu propustnost. Které si vyhradíte počet jednotek zaručené žádosti k dispozici pro vaši aplikaci na základě za sekundu. Každá operace ve službě Azure Cosmos DB, včetně zápis dokumentu, provádění dotazu a aktualizuje se dokument, zpracuje procesoru, paměti a vstupně-výstupních operací. To znamená každé operace se účtují poplatky žádosti, která je vyjádřena v jednotkách požadavků. Až porozumíte faktorů ovlivňujících za jednotky žádosti a požadavkům na propustnost vaší aplikace, můžete spustit aplikaci jako nákladů efektivní co nejlépe. 
 
@@ -57,7 +57,7 @@ Při stanovení počtu jednotek požadavku na zřízení funkce, je důležité 
 * **Skript použití**. Stejně jako u dotazů, využívat jednotky žádostí podle složitosti prováděných operací uložených procedur a aktivačních událostí. Při vývoji vaší aplikace, kontrolovat poplatek hlavičky požadavku pro lepší pochopení způsobu, jakým každou operaci využívá kapacitu jednotek žádosti.
 
 ## <a name="estimating-throughput-needs"></a>Odhad potřebám propustnosti
-Jednotky žádosti je normalizované míra náklady na zpracování žádosti. Jeden požadavek jednotka představuje kapacitu zpracování, který má požadovaná pro čtení (prostřednictvím vlastní odkaz nebo ID) jednu položku 1 KB, který se skládá z 10 jedinečných vlastnost hodnot (s výjimkou vlastnosti systému). Požadavek na vytvoření (Vložit), nahrazení nebo odstranění stejná položka využívá další zpracování ze služby a tím vyžaduje další jednotky žádostí. 
+Jednotky žádosti je normalizované míra náklady na zpracování žádosti. Jeden požadavek jednotka představuje kapacitu zpracování, který má požadovaná pro čtení (prostřednictvím odkazu na sebe sama nebo ID) jednu položku 1KB, který se skládá z 10 jedinečných vlastnost hodnot (s výjimkou vlastnosti systému). Požadavek na vytvoření (Vložit), nahrazení nebo odstranění stejná položka využívá další zpracování ze služby a tím vyžaduje další jednotky žádostí. 
 
 > [!NOTE]
 > Základní jednotka 1 žádost pro 1 KB položku odpovídá jednoduché GET ve vlastní odkaz nebo ID položky.
@@ -74,7 +74,6 @@ Například tady je tabulka, která ukazuje, kolik jednotek požadavku na zříz
 | 4 KB | 500 | 500 | (500 * 1.3) + (500 * 7) = 4,150 RU/s
 | 64 kB | 500 | 100 | (500 * 10) + (100 * 48) = 9,800 RU/s
 | 64 kB | 500 | 500 | (500 * 10) + (500 * 48) = 29,000 RU/s
-
 
 ### <a name="use-the-request-unit-calculator"></a>Použití kalkulačky jednotek žádosti
 Vám usnadní vyladění vašich odhady propustnost, můžete použít webovou [Kalkulačka jednotek žádosti](https://www.documentdb.com/capacityplanner). Kalkulačce vám můžou pomoct odhadu požadavky jednotek žádosti o typických operací, včetně:
@@ -237,4 +236,5 @@ Pokud máte více než jednoho klienta kumulativně provozní výše je frekvenc
 [3]: ./media/request-units/RUEstimatorDocuments.png
 [4]: ./media/request-units/RUEstimatorResults.png
 [5]: ./media/request-units/RUCalculator2.png
+
 

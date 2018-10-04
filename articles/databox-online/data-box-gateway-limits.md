@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 09/24/2018
+ms.date: 10/03/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: edb4995b626055be830a7accb74d99f1db3ef8d0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 946c045407b150a923d0067776bf80cbfab54c67
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962176"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268034"
 ---
 # <a name="azure-data-box-gateway-limits-preview"></a>Omezení pro Azure Data Box brány (Preview)
 
@@ -28,12 +28,12 @@ ms.locfileid: "46962176"
 Jak nasadit a provozovat řešení Microsoft Azure Data Box brány vezměte v úvahu tyto limity. 
 
 > [!IMPORTANT] 
-> Brána pole dat je ve verzi Preview. Zkontrolujte [podmínky použití pro verze preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) před nasazením tohoto řešení. 
+> Data Box Gateway je ve verzi Preview. Před nasazením tohoto řešení si přečtěte [podmínky použití verze Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 
 ## <a name="data-box-gateway-service-limits"></a>Omezení služby data Box brány
 
-- V této verzi služba je k dispozici pouze v určitých oblastech v USA, Evropa a Asie a Tichomoří. Další informace najdete v části [dostupnost v oblastech](#data-box-gateway-overview#region-availability). Účet úložiště by měl být fyzicky nejblíž k oblasti, které se nasadí zařízení (může se lišit od služby geograficky).
+- V této verzi služba je k dispozici pouze v určitých oblastech v USA, Evropa a Asie a Tichomoří. Další informace najdete v části věnované [dostupnosti v oblastech](#data-box-gateway-overview#region-availability). Účet úložiště by měl být fyzicky nejblíž k oblasti, které se nasadí zařízení (může se lišit od služby geograficky).
 - Přesunutí prostředku brány dat pole jiné předplatné nebo skupinu prostředků se nepodporuje. Další podrobnosti najdete v části [přesunutí prostředků do nové skupiny prostředků nebo předplatného](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
 
 ## <a name="data-box-gateway-device-limits"></a>Omezení zařízení data Box Gateway
@@ -44,7 +44,7 @@ Následující tabulka popisuje omezení pro zařízení Data Box brány.
 |---|---|
 |Ne. souborů na zařízení |100 milionů <br> Limit je přibližně 25 milionů souborů pro každé 2 TB místa na disku s maximální limit na 100 milionů |
 |Ne. sdílených složek na zařízení |24 |
-|Maximální velikost souboru zapsána do sdílené složky|5 TB |
+|Maximální velikost souboru zapsána do sdílené složky|Maximální velikost souboru je 2 TB virtuální zařízení, 500 GB. <br> Maximální velikost souboru se zvyšuje s velikost datového disku v předchozím poměr, dokud nedosáhne maximálně 5 TB. |
 
 ## <a name="azure-storage-limits"></a>Omezení služby Azure storage
 
@@ -53,7 +53,7 @@ Tato část popisuje omezení pro službu Azure Storage a požadované zásady v
 Nejnovější informace o omezení služby Azure storage a osvědčené postupy pro zadávání názvů sdílených složek, kontejnery a souborů přejděte na:
 
 - [Pojmenování a odkazování na ně kontejnery](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
-- [Pojmenování a odkazování na sdílené složky](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
+- [Pojmenování sdílených složek a odkazování na ně](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
 - [Objekty BLOB bloku a vytváření názvů objektů blob stránky](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
 
 > [!IMPORTANT]
@@ -89,4 +89,4 @@ Tady jsou velikosti Azure objekty, které je možné zapisovat. Ujistěte se, ž
 
 ## <a name="next-steps"></a>Další postup
 
-- [Příprava na nasazení Azure Data Box brány](data-box-gateway-deploy-prep.md)
+- [Příprava k nasazení služby Azure Data Box Gateway](data-box-gateway-deploy-prep.md)

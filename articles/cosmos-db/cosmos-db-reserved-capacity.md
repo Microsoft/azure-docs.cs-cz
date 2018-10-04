@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 1be2d67d8a1ee51c4883ae1f50b80ad3a9691c2d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2291b2429e6c5c25e051c8f3eca30e1cc3f64611
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981963"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247325"
 ---
 # <a name="prepay-for-azure-cosmos-db-resources-with-reserved-capacity"></a>Předplatíte prostředky Azure Cosmos DB pomocí vyhrazené kapacity
 
@@ -32,11 +32,11 @@ Můžete si koupit službu Azure Cosmos DB vyhrazené kapacity z [webu Azure por
 
 Velikost rezervace by měla vycházet z celkové množství propustnost, které používají existující nebo brzy na--nasadit prostředky služby Azure Cosmos DB (například databáze nebo kontejnery – kolekce, tabulky, grafy). Požadované propustnosti může určit následujícími způsoby:
 
-* Přejděte do [webu Azure Portal](https://portal.azure.com), vyhledejte svůj účet služby Azure Cosmos DB, otevřete v okně s metrikami a získat tak podrobné údaje průměrná propustnost za sekundu z **propustnost** kartu po dobu 3 až 6 měsíců. Při nákupu, zadejte jako záložní kapacitu jednotek této velikosti.
+* Získáte historická data pro celková zřízená propustnost mezi účty Azure Cosmos DB, databáze a kolekce ve všech oblastech. Například můžete vyhodnotit denní průměrný zřízená propustnost stažením váš denní využití výpis z `https://account.azure.com`
 
-Případně, pokud se smlouvou Enterprise (EA), můžete stáhnout soubor využití a odkazovat na **typ služby** hodnotu **Další informace o** části souboru o využití se získat rozhraní Azure Cosmos DB Podrobnosti o propustnosti.
+* Případně, pokud se smlouvou Enterprise (EA), můžete stáhnout soubor využití a odkazovat na **typ služby** hodnotu **Další informace o** části souboru o využití se získat rozhraní Azure Cosmos DB Podrobnosti o propustnosti.
 
-Můžete také sečíst průměrná propustnost pro všemi úlohami na vaše účty služby Azure Cosmos DB předvídat spuštění pro další jeden nebo tři roky a použít toto množství pro rezervaci.
+* Můžete také sečíst průměrná propustnost pro všemi úlohami na vaše účty služby Azure Cosmos DB předvídat spuštění pro další jeden nebo tři roky a použít toto množství pro rezervaci.
 
 ## <a name="buy-azure-cosmos-db-reserved-capacity"></a>Koupit služby Azure Cosmos DB vyhrazené kapacity
 

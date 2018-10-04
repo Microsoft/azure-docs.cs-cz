@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: b56a75074af239f60b82edbe1d074c6384c4aef1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0ee34d99c78eb090514385de16cd77d04ddca4e4
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982972"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267694"
 ---
 # <a name="get-started-with-queries-in-log-analytics"></a>Začínáme s dotazy v Log Analytics
 
@@ -190,7 +190,7 @@ SecurityEvent
 ```
 
 ## <a name="summarize-aggregate-groups-of-rows"></a>Shrnutí: agregační skupiny řádků
-Použití **shrnout** identifikovat skupinami záznamů, podle jednoho nebo více sloupců, a na ně vztahují agregace. Nejběžnější použití operačního systému **shrnout** je *počet*, který vrátí počet výsledků v každé skupině.
+Použití **shrnout** identifikovat skupinami záznamů, podle jednoho nebo více sloupců, a na ně vztahují agregace. Nejběžnější použití nástroje **shrnout** je *počet*, který vrátí počet výsledků v každé skupině.
 
 Následující dotaz kontroluje všechny *výkonu* záznamy od poslední hodiny skupin je podle *ObjectName*a vrátí počet záznamů v každé skupině: 
 ```Kusto

@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: fa5eeaad6ec98bb7ce725e1bf4c977cb2d5398a6
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 52dd9d0ab5a22b702ad7d55d91b860d57e81f607
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448607"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267762"
 ---
 # <a name="manage-analysis-services"></a>Správa služby Analysis Services
 Po vytvoření serveru služby Analysis Services v Azure, může být administrace a správa úlohy, které je potřeba provést hned nebo nějakou dobu mimo provoz cestách. Například spusťte zpracování pro aktualizaci dat, řízení, kdo může přistupovat modely na serveru nebo monitorování stavu vašeho serveru. Některé úlohy správy lze provést pouze webu Azure Portal, ostatní v SQL Server Management Studio (SSMS) a některé úkoly lze provést v jednom.
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>portál Azure
 [Azure portal](http://portal.azure.com/) je, kde můžete vytvořit a odstranit servery, monitorovat prostředky serveru, změna velikosti a spravovat, kdo má přístup k vašim serverům.  Pokud máte nějaké problémy, můžete také odeslat žádost o podporu.
 
 ![Získání názvu serveru v Azure](./media/analysis-services-manage/aas-manage-portal.png)
@@ -46,7 +46,7 @@ Pokud chcete získat všechny nejnovější funkce a možnosti nejhladší při 
     > Typ ověřování, **univerzální podporující vícefaktorové ověřování služby Active Directory –**, doporučuje se.
 
     > [!NOTE]
-    > Pokud se přihlásíte Account Microsoft Live ID, Yanoo, Gmail, atd., ponechejte pole pro heslo prázdné. Zobrazí se výzva k zadání hesla po kliknutí na tlačítko Připojit.
+    > Pokud se přihlásíte Account Microsoft Live ID, Yahoo, Gmail, atd., ponechejte pole pro heslo prázdné. Zobrazí se výzva k zadání hesla po kliknutí na tlačítko Připojit.
 
     **Ověřování Windows** k použijte přihlašovací údaje Windows doména\uživatelské jméno a heslo.
 

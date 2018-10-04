@@ -1,6 +1,6 @@
 ---
 title: Aktualizace Azure Backup centrálního generování sestav balíčku obsahu
-description: Informace o aktualizacích k balíčku obsahu Azure Backup v Power BI
+description: Informace o aktualizacích k obsahu Azure Backup, aktualizací Service pack v Power BI
 services: backup
 documentationcenter: ''
 author: adigan
@@ -14,31 +14,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: adigan;
-ms.openlocfilehash: 07774234849d96b9a44678b68ca7b13b6b4830f9
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 73a5e8126ebe6223d790a5b58db7bd5d04b5350f
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39265544"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267289"
 ---
-# <a name="updating-azure-backup-central-reporting-content-pack"></a>Aktualizace Azure Backup centrálního generování sestav balíčku obsahu 
+# <a name="update-the-azure-backup-central-reporting-content-pack"></a>Aktualizace Azure Backup centrálního generování sestav balíčku obsahu 
 
-[Azure Backup balíčku obsahu](https://docs.microsoft.com/azure/backup/backup-azure-configure-reports#view-reports-in-power-bi) je možné zobrazit sestavy o zálohování centrálně. Balíček obsahu se pravidelně aktualizuje přidávat další funkce a chybu opraví. Tento článek vás provede kroky a aktualizujete balíček obsahu, zpoždění aktualizace a aktualizace, které probíhají v čase.
+[Azure Backup balíčku obsahu](https://docs.microsoft.com/azure/backup/backup-azure-configure-reports#view-reports-in-power-bi) je možné zobrazit sestavy o centrální zálohování. Balíček obsahu se aktualizuje pravidelně a přidat další funkce a opravit chyby. Tento článek vysvětluje, jak aktualizovat balíček obsahu. Informuje vás také odložit aktualizace a informace o aktualizacích provedené v čase.
 
-## <a name="how-to-get-updates-to-the-content-pack"></a>Jak získat aktualizace balíčku obsahu
+## <a name="get-updates-to-the-content-pack"></a>Aktualizace balíčku obsahu
 
-### <a name="to-get-the-updated-content-pack"></a>Chcete-li získat aktualizovaný balíček obsahu
-Kopii balíčku obsahu bude automaticky aktualizovat Pokud jste dosud provedli změny. V případě, že došlo ke změně balíčku obsahu, zobrazí se oznámení ve službě Power BI a e-mailové oznámení o stejné. Můžete získat aktualizovaný balíček obsahu podle usnadnění práce. 
+### <a name="get-the-updated-content-pack"></a>Získat aktualizovaný balíček obsahu
+Pokud jste ještě žádné změny k vaší kopii balíčku obsahu, aktualizuje automaticky. Když se změní balíček obsahu, obdržíte oznámení v Power BI a e-mailové oznámení. Můžete získat aktualizovaný balíček obsahu vám to nejlépe hodí. 
 
-### <a name="to-delay-the-update"></a>Chcete-li odložit aktualizace
-Osvědčeným postupem je importovat do balíčku obsahu [vlastní pracovní prostor](https://youtu.be/26zyOtyHPJM?t=1m57s). Teď máte možnost upravovat sestavy.
-Jak je uvedeno výše, pokud se změní balíček obsahu, se zobrazí oznámení ve službě Power BI. Můžete později získat balíček obsahu. 
+### <a name="postpone-the-update"></a>Odložit aktualizace
+Osvědčeným postupem je importovat do balíčku obsahu [vlastní pracovní prostor](https://youtu.be/26zyOtyHPJM?t=1m57s). Nyní můžete upravovat sestavy.
+Jak už jsme zmínili Pokud se změní balíček obsahu, se zobrazí oznámení v Power BI. Můžete později získat balíček obsahu. 
 
-## <a name="coming-soon"></a>Připravuje se
+## <a name="coming-soon"></a>Již brzy
    
-Azure Backup balíček obsahu je aktualizuje pro podporu více úloh, jako SQL v zálohování virtuálních počítačů IaaS a SC DPM kromě aktuální podpory pro MAB a zálohování virtuálních počítačů Azure. To znamená, že jste se už brzy bude možné zobrazit a analyzovat data veškerá zálohovaná data na jednom centrálním místě. [Sestavy se taky dají upravit](https://youtu.be/26zyOtyHPJM) tak, aby odpovídaly potřebám vaší organizace.
+Balíček obsahu Azure Backup je aktualizována o podporu více úloh. Mezi úlohy patří Azure SQL Database pro zálohování virtuálních počítačů IaaS a System Center Data Protection Manager. Tato podpora přidává do aktuální podpory pro Azure backup a zálohování virtuálních počítačů Azure. Tato podpora znamená, že můžete zobrazit a analyzovat veškerá zálohovaná data na jednom centrálním místě. [Sestavy lze také přizpůsobit](https://youtu.be/26zyOtyHPJM) tak, aby odpovídaly potřebám vaší organizace.
 
-Chcete-li lépe vystihuje sestav napříč úlohami, mění sadu sestav, které jsou předem nakonfigurovaným programem balíčku obsahu Azure Backup. Stručný náhled do nadcházející sadu sestav je k dispozici zde:
+Předem nakonfigurované sestavy, které jsou součástí balíčku obsahu Azure Backup se mění. Změny byly sestavy výstižnější napříč úlohami. Stručný náhled na nadcházející sadu sestav je zde k dispozici.
 
 ### <a name="summary"></a>Souhrn
    
@@ -57,7 +57,7 @@ Chcete-li lépe vystihuje sestav napříč úlohami, mění sadu sestav, které 
 ![Úložiště](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Storage.png)
 
 ### <a name="backup-items"></a>Zálohované položky
-![BackupItems](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-BackupItem.png)
+![Zálohované položky](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-BackupItem.png)
 
 ### <a name="alerts"></a>Výstrahy
 
@@ -68,7 +68,7 @@ Chcete-li lépe vystihuje sestav napříč úlohami, mění sadu sestav, které 
 ![Úlohy](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Jobs.png)
     
 
-## <a name="next-steps"></a>Další kroky:
+## <a name="next-steps"></a>Další postup
 
-* [Sdílení sestav ve vaší organizaci](https://youtu.be/26zyOtyHPJM)
+* [Sdílení sestav napříč vaší organizací](https://youtu.be/26zyOtyHPJM)
 * [Azure Backup – nejčastější dotazy](backup-azure-backup-faq.md)

@@ -1,35 +1,71 @@
 ---
-title: Použití rozhraní entity linking pomocí rozhraní API pro analýzu textu
+title: Rozpoznávání entit pomocí rozhraní API pro analýzu textu
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak identifikovat a vyřešit entit pomocí REST API pro analýzu textu.
+description: Zjistěte, jak rozpoznávání entit pomocí REST API pro analýzu textu.
 services: cognitive-services
 author: ashmaka
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: ad2168806f9ddd124faf66cdb5a0f51ed13dfadc
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: b2916e5c414562c55c35c9c5e7ab378963e004be
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604735"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248062"
 ---
-# <a name="how-to-identify-linked-entities-in-text-analytics-preview"></a>Zjištění propojených entit v rozhraní Text Analytics (Náhled)
+# <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Použití s názvem rozpoznávání entit v rozhraní Text Analytics (Náhled)
 
-[Rozhraní API služby Entity Linking](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634) převezme nestrukturovaného textu a pro každý dokument JSON vrátí seznam jednoznačně rozlišit entit s odkazy na další informace na webu (Wikipedia a Bing). 
+[Rozhraní API pro rozpoznávání entit](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) převezme nestrukturovaného textu a pro každý dokument JSON vrátí seznam jednoznačně rozlišit entit s odkazy na další informace na webu (Wikipedia a Bing). 
 
-## <a name="entity-linking-vs-named-entity-recognition"></a>Entity Linking vs. Rozpoznávání pojmenovaných entit
+## <a name="entity-linking-and-named-entity-recognition"></a>Propojování entit a rozpoznávání pojmenovaných entit
 
-Při zpracování přirozeného jazyka, lze snadno zaměnitelná koncepty propojování entit a rozpoznávání pojmenovaných entit (NER). Ve verzi preview pro analýzu textu `entities` koncový bod, jenom rozhraní entity linking se nepodporuje.
+Rozhraní Text Analytics `entities` koncový bod supprts s názvem rozpoznávání entit (NER) a propojování entit.
 
+### <a name="entity-linking"></a>Entity Linking
 Rozhraní entity linking je schopnost identifikovat a rozpoznat identity entity v textu (například určující, zda "Mars" je používán jako globální úrovni nebo Roman i war). Tento proces vyžaduje přítomnost který rozpoznáno entity jsou propojeny – Wikipedia slouží jako znalostní báze pro základní znalosti `entities` koncový bod pro analýzu textu.
+
+V rozhraní Text Analytics [verze 2.1-Preview](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)pouze propojování entit je k dispozici.
+
+### <a name="named-entity-recognition-ner"></a>Rozpoznávání pojmenovaných entit (NER)
+Rozpoznávání entit s názvem (NER) je schopnost určit různé entity v textu a uspořádejte je do kategorií na předem definované třídy. Níže jsou uvedeny podporované tříd entit.
+
+Ve verzi preview Text Analytics verze 2.1 (`https://[region].api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`), propojování entit a rozpoznávání pojmenovaných entit (NER) jsou k dispozici.
 
 ### <a name="language-support"></a>Podpora jazyků
 
 Použití rozhraní entity linking v různých jazycích vyžaduje použití odpovídající znalostní báze v každém jazyce. Pro rozhraní entity linking v rozhraní Text Analytics, to znamená, že každý jazyk, který je podporován `entities` koncový bod bude propojovat odpovídající Wikipedia souhrnu v daném jazyce. Protože velikost hromadných datech se pohybuje mezi jazyky, očekává se, že rozhraní entity linking odvolání funkce se bude lišit.
+
+## <a name="supported-types-for-named-entity-recognition"></a>Podporované typy pro rozpoznávání pojmenovaných entit
+
+| Typ  | Podtyp | Příklad: |
+|:-----------   |:------------- |:---------|
+| Person (Osoba)        | NENÍ K DISPOZICI\*         | "Jan", "Billem Gatesem"     |
+| Umístění      | NENÍ K DISPOZICI\*         | "Redmond, Washington", "Paříž"  |
+| Organizace  | NENÍ K DISPOZICI\*         | "Microsoft".   |
+| Množství      | Číslo        | "6", "šest"     | 
+| Množství      | Procentuální podíl    | "50 %", "50 %"| 
+| Množství      | Pořadí       | "2", "druhé"     | 
+| Množství      | NumberRange   | "4 až 8"     | 
+| Množství      | Věk           | "90 den starý", "30 let"    | 
+| Množství      | Měna      | "$10.99"     | 
+| Množství      | Dimenze     | "10 mil", "40 cm"     | 
+| Množství      | Teplota   | "32 stupňů"    |
+| DateTime      | NENÍ K DISPOZICI\*         | "6:30 odp. 4. února 2012"      | 
+| DateTime      | Datum          | ". Května 2. 2017", "05/02/2017"   | 
+| Datum a čas     | Čas          | "8: 00", "8:00"  | 
+| DateTime      | DateRange     | "Května 2. na 5. května"    | 
+| DateTime      | timeRange     | "18: 00 do 19: 00"     | 
+| DateTime      | Doba trvání      | "1 minutu a 45 sekundách"   | 
+| DateTime      | Nastavit           | "čtvrtek"     | 
+| DateTime      | Časové pásmo      |    | 
+| zprostředkovatele identity           | NENÍ K DISPOZICI\*         | http://www.bing.com    |
+| Email         | NENÍ K DISPOZICI\*         | support@contoso.com |
+\* V závislosti na vstupním a extrahované entit, může vynechat některé entity `SubType`.
+
 
 
 ## <a name="preparation"></a>Příprava
@@ -43,11 +79,11 @@ Velikost dokumentu musí být v jednom dokumentu v části 5 000 znaků a může
 ```
 {"documents": [{"id": "1",
                 "language": "en",
-                "text": "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable."
+                "text": "Jeff bought three dozen eggs because there was a 50% discount."
                 },
                {"id": "2",
                 "language": "en",
-                "text": "The Seattle Seahawks won the Super Bowl in 2014."
+                "text": "The Great Depression began in 1929. By 1933, the GDP in America fell by 25%."
                 }
                ]
 }
@@ -59,14 +95,14 @@ Podrobnosti o definice požadavku najdete v [volání rozhraní Text Analytics A
 
 + Vytvoření **příspěvek** požadavku. Projděte si dokumentaci k rozhraní API pro tuto žádost: [rozhraní API služby Entity Linking](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
 
-+ Nastavení koncového bodu HTTP pro extrakci klíčových frází. Musí zahrnovat `/entities` prostředků: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/entities`
++ Nastavení koncového bodu HTTP pro extrakci klíčových frází. Musí zahrnovat `/entities` prostředků: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
 
 + Nastavte hlavičku požadavku zahrnout přístupový klíč pro operace pro analýzu textu. Další informace najdete v tématu [jak najít koncových bodů a přístupové klíče](text-analytics-how-to-access-key.md).
 
 + V textu požadavku zadejte kolekci dokumentů JSON, který jste připravili pro tuto analýzu
 
 > [!Tip]
-> Použití [Postman](text-analytics-how-to-call-api.md) nebo otevřít **testovací rozhraní API konzoly** v [dokumentaci](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634) struktury žádost a PUBLIKUJE je do služby.
+> Použití [Postman](text-analytics-how-to-call-api.md) nebo otevřít **testovací rozhraní API konzoly** v [dokumentaci](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) struktury žádost a PUBLIKUJE je do služby.
 
 ## <a name="step-2-post-the-request"></a>Krok 2: Odeslání žádosti
 
@@ -82,74 +118,168 @@ Výstup se vrátí okamžitě. Můžete Streamovat výsledky do aplikace, která
 
 Příklad výstupu pro rozhraní entity linking se zobrazí následující:
 
-```
+```json
 {
-    "documents": [
+    "Documents": [
         {
-            "id": "1",
-            "entities": [
+            "Id": "1",
+            "Entities": [
                 {
-                    "name": "Xbox One",
-                    "matches": [
+                    "Name": "Jeff",
+                    "Matches": [
                         {
-                            "text": "XBox One",
-                            "offset": 23,
-                            "length": 8
+                            "Text": "Jeff",
+                            "Offset": 0,
+                            "Length": 4
                         }
                     ],
-                    "wikipediaLanguage": "en",
-                    "wikipediaId": "Xbox One",
-                    "wikipediaUrl": "https://en.wikipedia.org/wiki/Xbox_One",
-                    "bingId": "446bb4df-4999-4243-84c0-74e0f6c60e75"
+                    "Type": "Person"
                 },
                 {
-                    "name": "Ultra-high-definition television",
-                    "matches": [
+                    "Name": "three dozen",
+                    "Matches": [
                         {
-                            "text": "4K",
-                            "offset": 63,
-                            "length": 2
+                            "Text": "three dozen",
+                            "Offset": 12,
+                            "Length": 11
                         }
                     ],
-                    "wikipediaLanguage": "en",
-                    "wikipediaId": "Ultra-high-definition television",
-                    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ultra-high-definition_television",
-                    "bingId": "7ee02026-b6ec-878b-f4de-f0bc7b0ab8c4"
+                    "Type": "Quantity",
+                    "SubType": "Number"
+                },
+                {
+                    "Name": "50",
+                    "Matches": [
+                        {
+                            "Text": "50",
+                            "Offset": 49,
+                            "Length": 2
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Number"
+                },
+                {
+                    "Name": "50%",
+                    "Matches": [
+                        {
+                            "Text": "50%",
+                            "Offset": 49,
+                            "Length": 3
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Percentage"
                 }
             ]
         },
         {
-            "id": "2",
-            "entities": [
+            "Id": "2",
+            "Entities": [
                 {
-                    "name": "2013 Seattle Seahawks season",
-                    "matches": [
+                    "Name": "Great Depression",
+                    "Matches": [
                         {
-                            "text": "Seattle Seahawks",
-                            "offset": 4,
-                            "length": 16
+                            "Text": "The Great Depression",
+                            "Offset": 0,
+                            "Length": 20
                         }
                     ],
-                    "wikipediaLanguage": "en",
-                    "wikipediaId": "2013 Seattle Seahawks season",
-                    "wikipediaUrl": "https://en.wikipedia.org/wiki/2013_Seattle_Seahawks_season",
-                    "bingId": "eb637865-4722-4eca-be9e-0ac0c376d361"
+                    "WikipediaLanguage": "en",
+                    "WikipediaId": "Great Depression",
+                    "WikipediaUrl": "https://en.wikipedia.org/wiki/Great_Depression",
+                    "BingId": "d9364681-98ad-1a66-f869-a3f1c8ae8ef8"
+                },
+                {
+                    "Name": "1929",
+                    "Matches": [
+                        {
+                            "Text": "1929",
+                            "Offset": 30,
+                            "Length": 4
+                        }
+                    ],
+                    "Type": "DateTime",
+                    "SubType": "DateRange"
+                },
+                {
+                    "Name": "By 1933",
+                    "Matches": [
+                        {
+                            "Text": "By 1933",
+                            "Offset": 36,
+                            "Length": 7
+                        }
+                    ],
+                    "Type": "DateTime",
+                    "SubType": "DateRange"
+                },
+                {
+                    "Name": "Gross domestic product",
+                    "Matches": [
+                        {
+                            "Text": "GDP",
+                            "Offset": 49,
+                            "Length": 3
+                        }
+                    ],
+                    "WikipediaLanguage": "en",
+                    "WikipediaId": "Gross domestic product",
+                    "WikipediaUrl": "https://en.wikipedia.org/wiki/Gross_domestic_product",
+                    "BingId": "c859ed84-c0dd-e18f-394a-530cae5468a2"
+                },
+                {
+                    "Name": "United States",
+                    "Matches": [
+                        {
+                            "Text": "America",
+                            "Offset": 56,
+                            "Length": 7
+                        }
+                    ],
+                    "WikipediaLanguage": "en",
+                    "WikipediaId": "United States",
+                    "WikipediaUrl": "https://en.wikipedia.org/wiki/United_States",
+                    "BingId": "5232ed96-85b1-2edb-12c6-63e6c597a1de",
+                    "Type": "Location"
+                },
+                {
+                    "Name": "25",
+                    "Matches": [
+                        {
+                            "Text": "25",
+                            "Offset": 72,
+                            "Length": 2
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Number"
+                },
+                {
+                    "Name": "25%",
+                    "Matches": [
+                        {
+                            "Text": "25%",
+                            "Offset": 72,
+                            "Length": 3
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Percentage"
                 }
             ]
         }
     ],
-    "errors": []
+    "Errors": []
 }
 ```
-
-Pokud je k dispozici, odpověď obsahuje Wikipedia ID, adresu URL Wikipedie a Bing ID pro každou zjištěnou entitu. Ty je použít k dalšímu vylepšení vaší aplikace s informacemi o propojené entitě.
 
 
 ## <a name="summary"></a>Souhrn
 
 V tomto článku jste zjistili, koncepty a pracovní postup pro propojování entit pomocí analýzy textu ve službě Cognitive Services. V souhrnu:
 
-+ [Rozhraní API služby entity Linking](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634) je k dispozici pro vybrané jazyky.
++ [Entity rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) je k dispozici pro vybrané jazyky.
 + Dokumenty JSON v textu požadavku zahrnují id, text a jazyka kódu.
 + Je požadavek POST `/entities` koncový bod, pomocí firemního [přístup ke key a koncového bodu](text-analytics-how-to-access-key.md) , který je platný pro vaše předplatné.
 + Výstup odezvy, který se skládá z propojené entity (včetně jistotu, že skóre, posuny a webové odkazy pro každý dokument ID) lze použít v jakékoli aplikace
@@ -163,4 +293,4 @@ V tomto článku jste zjistili, koncepty a pracovní postup pro propojování en
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Rozhraní text Analytics API](//westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)
+> [Rozhraní text Analytics API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)

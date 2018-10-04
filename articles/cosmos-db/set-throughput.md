@@ -7,28 +7,18 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/02/2018
 ms.author: andrl
-ms.openlocfilehash: 2da00f700f5cc234455cc686377e5863f1c35bdd
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 2f6720e39856366e4bca387effdc2a0624d85826
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734467"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247990"
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>Nastavení a zjištění propustnosti pro kontejnery služby Azure Cosmos DB a databázi
 
-Propustnost můžete nastavit pro kontejner služby Azure Cosmos DB nebo sadu kontejnerů pomocí webu Azure portal nebo pomocí klientské sady SDK. 
-
-**Zřídit propustnost pro kontejner:** při zřizování propustnosti pro sadu kontejnerů, všechny tyto kontejnery sdílejí zřízenou propustnost. Zřizování propustnosti pro jednotlivé kontejnery se zaručí, rezervované propustnosti pro tento konkrétní kontejner. Při přiřazování RU/s na úrovni jednotlivých kontejnerů, kontejnery lze vytvořit jako *oprava* nebo *neomezené*. Kontejnery s pevnou velikostí mají omezení maximální velikosti 10 GB a propustnosti 10 000 RU/s. Pokud chcete vytvořit neomezený kontejner, je nutné zadat minimální propustnost 1 000 RU/s a [klíč oddílu](partition-data.md). Vzhledem k tomu, že vaše data pravděpodobně nutné se rozdělit mezi několik oddílů, je potřeba vybrat klíč oddílu, který má vysokou kardinalitou (100 milionům jedinečné hodnoty). Výběr klíče oddílu s mnoha různých hodnot, zajistíte, že kontejner/tabulky/grafu a žádostí je možné škálovat jednotně ve službě Azure Cosmos DB. 
-
-**Zřizování propustnosti pro skupinu kontejnerů nebo v databázi:** zřizování propustnosti databáze umožňuje sdílet propustnosti mezi všechny kontejnery, které přísluší této databázi. V databázi Azure Cosmos DB může mít sadu kontejnerů, které sdílí propustnost, stejně jako kontejnery, které mají Vyhrazená propustnost. Při přiřazování RU/s mezi sadu kontejnerů, kontejnery, které patří do této sady jsou považovány za *neomezené* kontejnery a musí určovat klíč oddílu.
-
-Na základě zřízené propustnosti, Azure Cosmos DB se přidělí fyzické oddíly k hostování kontejnerů a rozdělení/rebalances dat napříč oddíly, jak rostou. Kontejner a zřizování úrovně propustnosti databáze jsou samostatné nabídky a přepínání mezi některý z těchto vyžadují migraci dat ze zdroje do cíle. Což znamená, že budete muset vytvořit novou databázi nebo nové kolekce a potom migrovat data s využitím [hromadné prováděcí modul knihovny](bulk-executor-overview.md) nebo [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md). Následující obrázek ukazuje zřizování propustnosti na různých úrovních:
-
-![Zřizování jednotek žádostí pro jednotlivé kontejnery a sadu kontejnerů](./media/request-units/provisioning_set_containers.png)
-
-V následujících částech se dozvíte kroky potřebnými ke konfiguraci propustnosti na různých úrovních pro účet služby Azure Cosmos DB. 
+Propustnost můžete nastavit pro kontejner služby Azure Cosmos DB nebo sadu kontejnerů pomocí webu Azure portal nebo pomocí klientské sady SDK. Tento článek popisuje kroky potřebné ke konfiguraci propustnosti na různých členitostmi pro účet služby Azure Cosmos DB.
 
 ## <a name="provision-throughput-by-using-azure-portal"></a>Propustnost zřízení pomocí webu Azure portal
 

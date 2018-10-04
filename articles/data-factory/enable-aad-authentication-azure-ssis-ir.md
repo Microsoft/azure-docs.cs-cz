@@ -12,16 +12,16 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: douglasl
-ms.openlocfilehash: aa06110a6f6fe668388c6aecd98c1ddeeae37edd
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 234fb5af55565602d283539c63076adebad1ed25
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576625"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248971"
 ---
 # <a name="enable-azure-active-directory-authentication-for-the-azure-ssis-integration-runtime"></a>Povolit ověřování Azure Active Directory pro prostředí Azure-SSIS integration runtime
 
-V tomto článku se dozvíte, jak vytvořit prostředí Azure-SSIS IR s identitou služby Azure Data Factory. Ověřování Azure Active Directory (Azure AD) se Identity spravované služby (MSI) pro Azure-SSIS integration runtime vám umožní používat MSI objekt pro vytváření dat namísto ověřování SQL pro vytvoření prostředí Azure-SSIS integration runtime.
+V tomto článku se dozvíte, jak vytvořit prostředí Azure-SSIS IR s identitou služby Azure Data Factory. Ověřování Azure Active Directory (Azure AD) pomocí spravované identity pro prostředky Azure pro prostředí Azure-SSIS integration runtime vám umožní používat MSI objekt pro vytváření dat namísto ověřování SQL pro vytvoření prostředí Azure-SSIS integration runtime.
 
 Další informace o Data Factory MSI najdete v tématu [identitu služby Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity).
 

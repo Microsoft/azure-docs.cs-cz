@@ -9,14 +9,14 @@ ms.reviewer: jmartens
 author: ph-com
 ms.author: pahusban
 ms.date: 09/24/2018
-ms.openlocfilehash: aef7bae7d2c511766bdbebbf1180e19263d7ccec
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 20c75b55e9b02f30e90ad40ea11383b91ae0a247
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986298"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267291"
 ---
-# <a name="export-or-delete-your-workspace-data-in-machine-learning"></a>Exportovat nebo odstraňovat data vašeho pracovního prostoru ve službě Machine Learning
+# <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Exportovat nebo odstraňovat data pracovní prostor služby Machine Learning 
 
 Ve službě Azure Machine Learning můžete exportovat nebo odstranit pracovní prostor dat s využitím ověřeného rozhraní REST API. Tento článek vysvětluje, jak.
 

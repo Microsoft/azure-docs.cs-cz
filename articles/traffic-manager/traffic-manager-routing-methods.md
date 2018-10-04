@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: kumud
-ms.openlocfilehash: 797f97b9c1548484d72f518ae1d2c56633b7b5b3
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: ab5f6d10e4f9edc4d899e976291482bb3a795c07
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126764"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248920"
 ---
 # <a name="traffic-manager-routing-methods"></a>Metody směrování Traffic Manageru
 
@@ -105,7 +105,7 @@ Pokud profil, který je konfigurován pro geografické směrování, každý kon
 - Světové – žádné oblasti
 - Oblastní seskupení – například Afrika, Střední východ, Austrálie/Tichomoří atd. 
 - Země/oblast – například, Irsko, Peru, Hongkong – zvláštní administrativní oblast atd. 
-- Stát/kraj – například Kalifornie USA, Austrálie – Queensland, Kanada Alberta atd. (Poznámka: Tato úroveň členitost je podporována pouze pro stavy / provincie v Austrálii, Kanada, Spojené království a USA).
+- Stát/kraj – například Kalifornie USA, Austrálie – Queensland, Kanada Alberta atd. (Poznámka: Tato úroveň členitost je podporována pouze pro stavy / provincie v Austrálii, Kanadě a USA).
 
 Když se koncový bod přiřadí sadě oblastí nebo oblast, všechny požadavky z těchto oblastí směrování pouze do tohoto koncového bodu. Traffic Manager používá k určení oblasti, ze kterého uživatel se dotazuje z – to je obvykle IP adresu místního překladače DNS provádění dotazu jménem uživatele zdrojové IP adresy dotaz DNS.  
 

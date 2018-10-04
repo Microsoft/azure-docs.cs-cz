@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, sashan
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 9c06a028df098874a1ec12d83a362e01a5f4a711
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: dfb1e218218a44aafd318acb53750c875bdf1263
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161892"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247715"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Vysoká dostupnost a Azure SQL Database
 
@@ -56,7 +56,7 @@ V modelu úrovně premium Azure SQL database integruje výpočetní výkon a úl
 
 Proces databázový stroj SQL serveru a příslušná soubory mdf a ldf jsou umístěny na stejném uzlu s místně připojené úložiště SSD, které poskytuje nízkou latenci pro vaši úlohu. Vysoká dostupnost je implementováno pomocí standardní [skupin dostupnosti Always On](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server). Každá databáze je cluster databázové uzly se jedna primární databáze, který je přístupný pro úlohu zákazníka a tři sekundární procesy kopie dat, který obsahuje. Primárního uzlu neustále nasdílí změny do sekundární uzly aby se zajistilo, že data jsou k dispozici na sekundárních replikách, pokud z nějakého důvodu dojde k chybě primárního uzlu. Převzetí služeb při selhání se zpracovává souborem databázový stroj SQL serveru – jedna sekundární replika se stane primárním uzlu a zajistit dostatek uzlů v clusteru se vytvoří sekundární repliku. Zatížení je automaticky přesměrován na nový primární uzel.
 
-Kromě toho pro důležité obchodní informace clusteru poskytuje předdefinovaný uzel jen pro čtení, který slouží ke spouštění jen pro čtení dotazů (například sestavy), které by neměla mít vliv na výkon vaší primární úlohy. 
+Kromě toho pro důležité obchodní informace clusteru má integrovanou [horizontální navýšení kapacity pro čtení](sql-database-read-scale-out.md) funkci, která poskytuje zdarma z účtovat předdefinovaný uzel jen pro čtení, který slouží ke spouštění jen pro čtení dotazů (například sestavy), které by neměla mít vliv na výkon primární úlohy.
 
 ## <a name="zone-redundant-configuration-preview"></a>Konfigurace redundantního (preview)
 
@@ -70,15 +70,6 @@ Vzhledem k tomu zóny redundantní kvora sady replik v různých datových centr
 Zóna redundantní verzi architektury vysoké dostupnosti je znázorněn v následujícím diagramu:
  
 ![Vysoká dostupnost architektura zónově redundantní](./media/sql-database-high-availability/high-availability-architecture-zone-redundant.png)
-
-## <a name="read-scale-out"></a>Horizontální navýšení kapacity pro čtení
-Jak je popsáno, úrovně služeb Premium a pro důležité obchodní informace kvora sady a využít technologii AlwaysOn pro vysokou dostupnost v jedné oblasti a zóny redundantní konfigurace. Jednou z výhod technologie AlwaysOn serveru je, že tyto repliky jsou vždy transakčně konzistentní stav. Vzhledem k tomu, že repliky se stejnou velikostí jako primární výpočetní prostředky, aplikace můžou využít výhod této dodatečnou kapacitu pro obsluhu úlohy jen pro čtení bez dalších nákladů (čtení horizontální navýšení kapacity). Tímto způsobem dotazy jen pro čtení budou z hlavní úlohy čtení a zápis izolovaných a nebude mít vliv na jeho výkon. Čtení funkce úpravy rozsahu je určená pro aplikace, které zahrnují logicky oddělené úlohy jen pro čtení, jako jsou analýzy a proto může využívat tuto dodatečnou kapacitu bez připojení k primární. 
-
-Jak používat funkci horizontální navýšení kapacity pro čtení s danou databází, je nutné explicitně aktivovat ho při vytváření databáze nebo později změnou jeho konfigurace přes PowerShell voláním [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) nebo [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) rutiny nebo přes rozhraní REST API Azure Resource Manageru pomocí [databází – vytvořit nebo aktualizovat](/rest/api/sql/databases/createorupdate) metody.
-
-Po povolení horizontální navýšení kapacity pro čtení pro databázi aplikace propojíte databázi budete přesměrováni do repliky pro čtení a zápis nebo jen pro čtení replik databáze podle `ApplicationIntent` vlastnost nakonfigurovaný ve vaší aplikace připojovací řetězec. Informace o tom, `ApplicationIntent` vlastnost, naleznete v tématu [zadání záměru aplikace](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent). 
-
-Pokud je zakázán horizontální navýšení kapacity pro čtení nebo nastavte vlastnost ReadScale v vrstvu Nepodporovaná služba, všechna připojení jsou směrované na repliky pro čtení i zápis, nezávisle `ApplicationIntent` vlastnost.
 
 ## <a name="conclusion"></a>Závěr
 Azure SQL Database je úzce integrovaná s platformou Azure a vysoce závisí na platformě Service Fabric pro zjištění selhání a obnovení v Azure Storage blob pro ochranu dat a zóny dostupnosti pro vyšší odolnost proti chybám. Ve stejnou dobu Azure SQL database plně využívá technologii skupiny dostupnosti Always On z pole produktu SQL Server pro replikaci a převzetí služeb při selhání. Kombinací těchto technologií umožňuje aplikacím plně využít výhod modelu smíšené úložiště a podporu nejnáročnější smlouvy o úrovni služeb. 

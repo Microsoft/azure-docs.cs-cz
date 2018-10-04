@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: cwatson
-ms.openlocfilehash: 405e0d5184880a00c07de55bd968210fa28e45fc
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 76f4a52b702a609d7181b9c6c0f2ce600d8a6aac
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393073"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267983"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Struktura řídicích panelů Azure
 Tento dokument vás provede struktura řídicí panel Azure, jako příklad použijeme následující řídicí panel:
@@ -326,7 +326,7 @@ __Částí__ objekt obsahuje vlastnosti pro každou část, kde název vlastnost
 Každý objekt jednotlivé části má __pozice__, a __metadat__.
 
 ### <a name="the-position-object"></a>Pozice objektu
-__Pozice__ vlastnost obsahuje informace o velikost a umístění pro části vyjádřený jako __x__, __y__, __rowSpan__a __colSpan__. Hodnoty jsou z hlediska jednotky mřížky. Tyto jednotky mřížky jsou viditelná, když řídicí panel je v režimu přizpůsobení, jak je znázorněno zde. Pokud chcete dlaždici mít šířku dvě jednotky mřížky, výška jedné mřížce jednotky a umístění v horní části levém horním rohu řídicího panelu potom obejct pozice vypadá takto:
+__Pozice__ vlastnost obsahuje informace o velikost a umístění pro části vyjádřený jako __x__, __y__, __rowSpan__a __colSpan__. Hodnoty jsou z hlediska jednotky mřížky. Tyto jednotky mřížky jsou viditelná, když řídicí panel je v režimu přizpůsobení, jak je znázorněno zde. Pokud chcete dlaždici mít šířku dvě jednotky mřížky, výška jedné mřížce jednotky a umístění v horní části levém horním rohu řídicího panelu a pozici objektu vypadá takto:
 
 `location: { x: 0, y: 0, rowSpan: 2, colSpan: 1 }`
 
@@ -338,7 +338,7 @@ Každá část má vlastnost metadat, objekt obsahuje pouze jeden požadovaná v
 
 1. `Extension/Microsoft_Azure_Monitoring/PartType/MetricsChartPart` – Slouží k zobrazení monitorování metrik
 1. `Extension[azure]/HubsExtension/PartType/MarkdownPart` – Slouží k zobrazení textu nebo obrázků pomocí základní formátování pro seznamy, odkazy, atd.
-1. `Extension[azure]/HubsExtension/PartType/VideoPart` – Používá k zobrazení videa z YouTube, webu Channel 9 a jakýkoli jiný typ video, které funguje ve videu značky jazyka html.
+1. `Extension[azure]/HubsExtension/PartType/VideoPart` – Používá k zobrazení videa z YouTube, webu Channel 9 a jakýkoli jiný typ video, které funguje ve videu značky jazyka HTML.
 1. `Extension/Microsoft_Azure_Compute/PartType/VirtualMachinePart` – Umožňuje zobrazit název a stav virtuálního počítače Azure.
 
 Každý typ část má svůj vlastní konfigurace. Vlastnosti konfigurace je to možné, se nazývají __vstupy__, __nastavení__, a __asset__. 

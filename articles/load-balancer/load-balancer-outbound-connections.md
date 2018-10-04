@@ -4,7 +4,7 @@ description: Tento článek vysvětluje, jak Azure umožňuje virtuálním poč�
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
+manager: jpconnock
 editor: ''
 ms.assetid: 5f666f2a-3a63-405a-abcd-b2e34d40e001
 ms.service: load-balancer
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/27/2018
+ms.date: 10/01/2018
 ms.author: kumud
-ms.openlocfilehash: 24eec3b1f3c85384f80823b82962038c235b6dac
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 58ae89a6b9d7b9e3858358d290e3ecb197e0ac2b
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036986"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249124"
 ---
 # <a name="outbound-connections-in-azure"></a>Odchozích připojení v Azure
 
@@ -67,7 +67,7 @@ Při vytváření virtuálního počítače s vyrovnáváním zatížení odchoz
 
 Dočasné porty nástroje pro vyrovnávání zatížení veřejnou IP adresu front-endovou slouží k rozlišení jednotlivých toků, vytvoří se virtuální počítač. Dynamicky používá SNAT [předpřidělené dočasné porty](#preallocatedports) při vytvoření odchozích toků. V tomto kontextu se označují jako dočasné porty používané pro SNAT SNAT porty.
 
-SNAT porty jsou předpřidělené, jak je popsáno v [SNAT principy a token PAT](#snat) oddílu. Jsou to omezené prostředek, který může dojít k vyčerpání. Je důležité pochopit, jak jsou [spotřebované](#pat). Chcete-li pochopit, jak navrhnout za toto využití a zmírnit podle potřeby, zkontrolovat [Správa SNAT vyčerpání](#snatexhaust).
+Porty SNAT přidělují předem podle popisu v [SNAT principy a token PAT](#snat) oddílu. Jsou to omezené prostředek, který může dojít k vyčerpání. Je důležité pochopit, jak jsou [spotřebované](#pat). Chcete-li pochopit, jak navrhnout za toto využití a zmírnit podle potřeby, zkontrolovat [Správa SNAT vyčerpání](#snatexhaust).
 
 Když [několik veřejných IP adres jsou spojeny s základní nástroje pro vyrovnávání zatížení](load-balancer-multivip-overview.md), všechny tyto veřejné IP adresy jsou [Release candidate pro odchozí toky](#multivipsnat), a jedna náhodně vybraná.  
 
@@ -75,7 +75,7 @@ Pokud chcete monitorovat stav odchozí připojení s základní nástroje pro vy
 
 ### <a name="defaultsnat"></a>Scénář 3: Samostatný virtuální počítač bez Instance úroveň veřejné IP adresy
 
-V tomto případě virtuální počítač není součástí fondu veřejný nástroj pro vyrovnávání zatížení (a není součástí fondu interního Load balanceru úrovně Standard) a nemá ILPIP adresu přiřazenou. Když virtuální počítač vytvoří odchozí tok, přeloží Azure privátní zdrojové IP adresy odchozí tok veřejné Zdrojová IP adresa. Veřejnou IP adresu použít pro tento odchozí tok není Konfigurovatelný a nepočítá s limitem předplatného veřejný IP prostředek.
+V tomto případě virtuální počítač není součástí fondu veřejný nástroj pro vyrovnávání zatížení (a není součástí fondu interního Load balanceru úrovně Standard) a nemá ILPIP adresu přiřazenou. Když virtuální počítač vytvoří odchozí tok, přeloží Azure privátní zdrojové IP adresy odchozí tok veřejné Zdrojová IP adresa. Veřejnou IP adresu použít pro tento odchozí tok není Konfigurovatelný a nepočítá s limitem předplatného veřejný IP prostředek. Tato veřejná IP adresa nepatří a nemůže být rezervované. Pokud provádíte opakované nasazení virtuálního počítače nebo skupiny dostupnosti nebo VMSS, tato veřejná IP adresa se uvolní a požaduje novou veřejnou IP adresu. Nepoužívejte tento scénář pro přidávání na seznam povolených IP adres. Místo toho použijte jednu z těchto dvou scénářích Pokud explicitně deklarujete odchozí scénář a veřejnou IP adresu pro odchozí připojení.
 
 >[!IMPORTANT] 
 >Tento scénář platí i při __pouze__ je připojen interní Load balancer úrovně Basic. Scénář 3 je __není k dispozici__ když interní Load balanceru úrovně Standard je připojen k virtuálnímu počítači.  Musíte explicitně vytvořit [scénář 1](#ilpip) nebo [scénář 2](#lb) kromě používání interní Load balanceru úrovně Standard.

@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 09/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 9e3e3ff05836cb49d46a25ef3fa55d40a0bd134f
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 479fcc0408021ff63dbcabe3734f60a4ad6d542f
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47184745"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247750"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-my-award-points-top-subtop-team"></a>Kurz: Integrace Azure Active Directory s Můj tým Sub/horní horní ocenění body
 
@@ -50,7 +50,8 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí.
+Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Můj tým Sub/horní horní ocenění body z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
@@ -112,7 +113,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://microsoftrr.performnet.com/biwv1auth/Shibboleth.sso/Login?providerId=<SAMLENTITYID>`
 
     > [!NOTE]
-    > Přihlašování byste použili hodnotu URL není skutečný. Aktualizujte tuto hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory Moje ocenění body horní Sub/horní týmu klienta](mailto:myawardpoints@biworldwide.com) tuto výhodu získáte.
+    > Zobrazí se `<SAMLENTITYID>` hodnotu v dalších krocích v tomto kurzu.
 
 4. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
@@ -122,7 +123,9 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/myawardpoints-tutorial/tutorial_general_400.png)
 
-6. Ke konfiguraci jednotného přihlašování na **Můj tým Sub/horní horní ocenění body** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory Můj tým Sub/horní horní ocenění body](mailto:myawardpoints@biworldwide.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+6. V **Moje ocenění body horní Sub/horní týmu konfigurace** vyberte **konfigurace Můj ocenění body horní Sub/horní tým** otevření okna Konfigurovat přihlašování. Zkopírujte ID Entity SAML z **Stručná referenční příručka** části a připojte hodnotu SAML Entity ID s přihlášení na adrese URL místo hodnoty `<SAMLENTITYID>` v **Moje ocenění body horní Sub/horní týmu domény a adresy URL** části webu Azure Portal.
+
+7. Ke konfiguraci jednotného přihlašování na **Můj tým Sub/horní horní ocenění body** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory Můj tým Sub/horní horní ocenění body](mailto:myawardpoints@biworldwide.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
