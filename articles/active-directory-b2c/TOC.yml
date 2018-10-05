@@ -67,8 +67,6 @@ items:
   items:
   - name: Přístup k protokolům auditu
     href: active-directory-b2c-reference-audit-logs.md
-  - name: Shromažďování protokolů pomocí Application Insights
-    href: active-directory-b2c-troubleshoot-custom.md
   - name: Konfigurace tokenů
     href: active-directory-b2c-token-session-sso.md
   - name: Přizpůsobení jazyka
@@ -90,6 +88,8 @@ items:
     items:
     - name: Vytvoření vlastní zásady
       href: active-directory-b2c-get-started-custom.md
+    - name: Shromažďování protokolů pomocí Application Insights
+      href: active-directory-b2c-troubleshoot-custom.md
     - name: Integrace rozhraní RESTful API
       items:
       - name: Ověření vstupu uživatele
@@ -319,9 +319,9 @@ items:
     href: active-directory-b2c-support.md
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: 90fad0aa411d6b8a090d2683041bc2809548393a
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 6263bc6fdaa1ae7bce80e85110e36c5c4b4ddf42
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394301"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801994"
