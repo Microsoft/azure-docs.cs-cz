@@ -3,7 +3,7 @@ items:
   href: index.yml
 - name: Přehled
   items:
-  - name: Co je Azure Machine Learning?
+  - name: Co je služba Azure Machine Learning?
     href: overview-what-is-azure-ml.md
   - name: Co se stalo s aplikací Workbench?
     href: overview-what-happened-to-workbench.md
@@ -12,8 +12,10 @@ items:
   expanded: true
 - name: Šablony Rychlý start
   items:
-  - name: Začínáme
+  - name: Začínáme – portál
     href: quickstart-get-started.md
+  - name: Začínáme – Python
+    href: quickstart-create-workspace-with-python.md
 - name: Kurzy
   items:
   - name: 'Trénování modelů: část 1'
@@ -42,8 +44,12 @@ items:
       href: how-to-choose-a-dev-environment.md
     - name: Konfigurace prostředí
       href: how-to-configure-environment.md
-  - name: Nastavení prostředí trénování
-    href: how-to-set-up-training-targets.md
+    - name: Nástroje VS Code pro AI
+      items:
+      - name: Začínáme
+        href: how-to-vscode-tools.md
+      - name: Trénování a nasazení
+        href: how-to-vscode-train-deploy.md
   - name: Příprava dat
     href: how-to-data-prep.md
     items:
@@ -53,19 +59,23 @@ items:
       href: how-to-transform-data.md
     - name: Zápis dat
       href: how-to-write-data.md
-  - name: Trénování a ladění
+  - name: Přístup k datům
+    href: how-to-access-data.md
+  - name: Trénování modelů
     items:
-    - name: Přístup k datům
-      href: how-to-access-data.md
-    - name: Trénování modelů ML
+    - name: Nastavení prostředí trénování
+      href: how-to-set-up-training-targets.md
+    - name: Vytváření kalkulátorů
       href: how-to-train-ml-models.md
       items:
-      - name: Trénování modelů PyTorch
+      - name: PyTorch
         href: how-to-train-pytorch.md
-      - name: Trénování modelů TensorFlow
+      - name: TensorFlow
         href: how-to-train-tensorflow.md
     - name: Vytváření a nasazování modelů ONNX
       href: how-to-build-deploy-onnx.md
+  - name: Ladění modelů
+    items:
     - name: Ladění hyperparametrů
       href: how-to-tune-hyperparameters.md
     - name: Sledování experimentů a metrik
@@ -77,21 +87,28 @@ items:
       href: how-to-configure-auto-train.md
     - name: Použití vzdálených cílových výpočetních prostředí
       href: how-to-auto-train-remote.md
-  - name: Nasazení a monitorování
+  - name: Modely nasazení
     items:
     - name: Kam se mají modely nasadit
       href: how-to-deploy-and-where.md
-      items:
-      - name: Nasazení do ACI
-        href: how-to-deploy-to-aci.md
-      - name: Nasazení do AKS
-        href: how-to-deploy-to-aks.md
-      - name: Nasazení do FPGA
-        href: how-to-deploy-fpga-web-service.md
-      - name: Nasazení do IoT Edge
-        href: how-to-deploy-to-iot.md
+    - name: Nasazení do ACI
+      href: how-to-deploy-to-aci.md
+    - name: Nasazení do AKS
+      href: how-to-deploy-to-aks.md
+    - name: Nasazení do FPGA
+      href: how-to-deploy-fpga-web-service.md
+    - name: Nasazení do IoT Edge
+      href: how-to-deploy-to-iot.md
+    - name: Řešení potíží
+      href: how-to-troubleshoot-deployment.md
+    - name: Zabezpečení pomocí protokolu SSL
+      href: how-to-secure-web-service.md
+  - name: Monitorování modelů
+    items:
     - name: Shromažďování dat v produkčním prostředí
       href: how-to-enable-data-collection.md
+    - name: Monitorování pomocí Application Insights
+      href: how-to-enable-app-insights.md
   - name: Správa kvót prostředků
     href: how-to-manage-quotas.md
   - name: Export a odstranění dat
@@ -104,8 +121,6 @@ items:
     href: reference-azure-machine-learning-cli.md
 - name: Zdroje a prostředky
   items:
-  - name: Příručka pro vývojáře v R
-    href: ../r-developers-guide.md
   - name: Plány Azure do budoucna
     href: https://azure.microsoft.com/roadmap/
   - name: Ceny
@@ -114,6 +129,8 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: Export nebo odstranění dat účtu
     href: ../desktop-workbench/export-delete-experimentation-model-management-data-dsr.md
+  - name: Poznámky k verzi
+    href: azure-machine-learning-release-notes.md
   - name: Známé problémy
     href: resource-known-issues.md
   - name: Získat podporu
@@ -314,17 +331,13 @@ items:
           href: https://docs.microsoft.com/python/api/overview/azure-machine-learning/textanalytics
         - name: Vytváření a nasazování modelů klasifikace textu
           href: ../desktop-workbench/how-to-build-deploy-text-classification-models.md
-    - name: Poznámky ke starší verzi
-      href: azure-machine-learning-release-notes.md
     - name: Nejčastější dotazy
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: Starší problémy
       href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-    - name: Podpora
-      href: support-for-aml-services.md
-ms.openlocfilehash: 0e069ce7bb04a4aef2e631488ec807a1539c32e5
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: fb5ffe0b261d1c233765175170b5697050b58d20
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162147"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248807"

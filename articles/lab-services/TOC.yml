@@ -72,6 +72,25 @@ items:
       href: devtest-lab-store-secrets-in-key-vault.md
     - name: Testování aplikace v Azure
       href: test-app-azure.md
+    - name: Nastavení infrastruktury DevTest Labs ve vašem podniku
+      href: devtest-lab-guidance-prescriptive-adoption.md
+      items:
+      - name: Začínáme používat DevTest Labs
+        href: devtest-lab-guidance-get-started.md
+      - name: Vertikální navýšení kapacity nasazení DevTest Labs
+        href: devtest-lab-guidance-scale.md
+      - name: Orchestrace implementace DevTest Labs
+        href: devtest-lab-guidance-orchestrate-implementation.md
+      - name: Zásady správného řízení infrastruktury DevTest Labs
+        items:
+        - name: Zdroje a prostředky
+          href: devtest-lab-guidance-governance-resources.md
+        - name: Náklady a vlastnictví
+          href: devtest-lab-guidance-governance-cost-ownership.md
+        - name: Zásady a dodržování předpisů
+          href: devtest-lab-guidance-governance-policy-compliance.md
+        - name: Migrace a integrace aplikací
+          href: devtest-lab-guidance-governance-application-migration-integration.md
     - name: Použití virtuálních počítačů v testovacím prostředí
       items:
       - name: Vytvoření virtuálních počítačů
@@ -194,9 +213,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab
   - name: Ceny
     href: https://azure.microsoft.com/pricing/details/devtest-lab/
-ms.openlocfilehash: c2e701b16c67be86d3e8d2463b8ad45646f0ed0b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 401c41d1b91d6373dfb3c743e0c6f56332030b45
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46988627"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247562"

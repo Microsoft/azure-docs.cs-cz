@@ -104,6 +104,14 @@ items:
     href: prepare-transcription.md
   - name: Použití vlastních zvukových streamů
     href: how-to-use-audio-input-streams.md
+  - name: Migrace
+    items:
+    - name: Z rozhraní API pro zpracování řeči Bingu
+      href: how-to-migrate-from-bing-speech.md
+    - name: Ze služby Custom Speech
+      href: how-to-migrate-from-custom-speech-service.md
+    - name: Z rozhraní Translator Speech API
+      href: how-to-migrate-from-translator-speech-api.md
 - name: Koncepty
   items:
   - name: Převod řeči na text
@@ -127,6 +135,8 @@ items:
     href: regions.md
   - name: Rozhraní REST API
     href: rest-apis.md
+  - name: Referenční informace k Swaggeru
+    href: https://westus.cris.ai/swagger/ui/index
   - name: Rozhraní API sady Speech SDK
     displayName: C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows
     href: speech-sdk-reference.md
@@ -188,9 +198,9 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
   - name: Ochrana osobních údajů a soubory cookie
     href: https://privacy.microsoft.com/privacystatement
-ms.openlocfilehash: 4398c418d42bb2585d9f7e12a2e9e0685fe6dd0b
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 11faf3ac6bbe7578e0bd642aef87421cbb53ff08
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018000"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248206"
