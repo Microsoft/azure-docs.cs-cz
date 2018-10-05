@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: heidist
-ms.openlocfilehash: d28b9177684cf7b9a3ddc83107806aaa6afde477
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 0e1a0d299fb794c3aa937cb62dba9a6ce12c0570
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434022"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785303"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Zvolte cenovou úroveň pro službu Azure Search
 
@@ -41,19 +41,21 @@ The purpose of this article is to help you choose a tier. It supplements the [pr
 
 Ve službě Azure Search je nejdůležitější fakturační koncept pochopit *jednotka služby search* (SU). Protože Azure Search závisí na repliky a oddíly na funkci, nemá smysl pro fakturaci podle právě jeden z nich. Místo toho fakturace vychází složeného obou. 
 
-Formulaically, SU je produkt *repliky* a *oddíly* používané službou: **`(R X P = SU)`**
+SU je produkt *repliky* a *oddíly* používané službou: **`(R X P = SU)`**
 
-Minimálně každá služba začíná 1 SU (jednu repliku a jeden oddíl), ale pro větší zatížení realističtější model ještě nemusí být repliky 3, 3 oddíly služby účtovat jako 9 su. 
+Každá služba začíná 1 SU (jednu repliku a jeden oddíl) jako minimální. Maximální počet pro libovolnou službu je 36 su, které můžete dosáhnout různými způsoby: 6 oddíly x 6 repliky nebo replik pro 3 oddíly x 12 pár. 
+
+Je běžné použití nižší, než celkové kapacity. Například repliky 3, 3 oddíly služby, účtovat jako 9 su. 
 
 Fakturační sazba je **po hodinách za SU**, kde každá úroveň s postupně vyšší sazba. Vyšší úrovně součástí větší a zrychlit oddíly přispívající k celkové vyšší hodinové sazby za tuto úroveň. Sazby za pro každou vrstvu můžete najít na [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/search/). 
 
-I když každá úroveň nabízí postupně vyšší kapacitu, můžete zahrnout *část* online, celkové kapacity uchovávající zbývající ve fondu. Z hlediska fakturace, je počet oddílů a replik uvést online, vypočítané pomocí vzorce SU, která určuje, co skutečně platíte.
+Většina zákazníků přinést jen část celkové kapacity online, uchovávající zbývající ve fondu. Z hlediska fakturace, je počet oddílů a replik uvést online, vypočítané pomocí vzorce SU, která určuje, co skutečně platíte po hodinách.
 
 ### <a name="tips-for-reducing-costs"></a>Tipy pro snížení nákladů
 
-Nelze vypnout službu na nižší faktury. Vyhrazené prostředky oddílů a replik jsou provozní 24 7 přidělené pro vaše výhradní použití po dobu životnosti vaší služby. Jediný způsob, jak snížit účet se snížením repliky a oddíly, které na nízké úrovni, která stále poskytuje přijatelný výkon a [dodržování předpisů SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/). 
+Nelze vypnout službu na nižší faktury. Provozní 24 7 přidělené pro vaše výhradní použití po dobu životnosti vaší služby jsou vyhrazené prostředky. Jediný způsob, jak snížit účet se snížením repliky a oddíly, které na nízké úrovni, která stále poskytuje přijatelný výkon a [dodržování předpisů SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/). 
 
-Pro snížení nákladů na jinou úroveň je výběr úrovně s nižší hodinové sazby. S1 hodinové sazby jsou nižší než S2 nebo S3. Může si zřídíte službu zaměřené na dolní hranice vaší zatížení projekce. Pokud jste velký růst službu, vytvořte druhý větší vrstvené službu, opětovné sestavení indexů na druhý služby a odstraňte první z nich. Pro na místních serverech je běžné "koupit" tak, aby bylo možné zpracovat očekávané růstu. S cloudovou službou, můžete pokračovat úspory nákladů, ale většina agresivní, vědomím, že budete moct přepnout kdykoli službě vyšší vrstvenou pokud tu není dostatečná.
+Jedna úroveň mu pomáhá snižovat náklady je výběr úrovně s nižší hodinové sazby. S1 hodinové sazby jsou nižší než S2 nebo S3. Může si zřídíte službu zaměřené na dolní hranice vaší zatížení projekce. Pokud jste velký růst službu, vytvořte druhý větší vrstvené službu, opětovné sestavení indexů na druhý služby a odstraňte první z nich. Pokud jste provedli plánování kapacity na místních serverech, víte, že je společné pro "koupit" tak, aby bylo možné zpracovat očekávané růstu. Ale s cloudovou službou, vám může pokračovat další úspory nákladů agresivně vzhledem k tomu, že nejsou uzamčeny konkrétní nákupu. Můžete vždy přejdete na službu vyšší vrstvenou pokud tu není dostatečná.
 
 ### <a name="capacity-drill-down"></a>Kapacita procházení
 
@@ -92,7 +94,7 @@ Stránky portálu a cenové zaměření na velikost oddílu a úložiště, ale 
 **S3** a **S3 HD, High Density** jsou identické vysoké kapacity infrastruktury, ale každý jeden dosáhne svého maximálního limitu různými způsoby. **S3** cílí na menší počet velmi velké indexů. V důsledku toho jeho maximální limit je vázán na zdroj (pro každou službu 2,4 TB). **S3 HD, High Density** cílí na větší počet indexů velmi malý. Za 1000 indexů **S3 HD, High Density** dosaženo omezení v podobě omezení indexu. Pokud jste **S3 HD, High Density** zákazníka, který vyžaduje více než 1000 indexů, obraťte se na Microsoft Support informace o tom, aby bylo možné pokračovat.
 
 > [!NOTE]
-> Dříve limity pro dokumenty byly potřeba, ale již nejsou použitelné pro většinu služeb Azure Search zřízených po. ledna 2018. Další informace o podmínkách, u kterých se omezení dokumentů vztahuje stále účtují najdete v tématu [omezení služby: dokumentu limity](search-limits-quotas-capacity.md#document-limits).
+> Dříve limity pro dokumenty byly potřeba, ale již nejsou použitelné pro nové služby. Další informace o podmínky, za kterých se omezení dokumentů vztahuje stále používají, najdete v části [omezení služby: dokumentu limity](search-limits-quotas-capacity.md#document-limits).
 >
 
 ## <a name="evaluate-capacity"></a>Vyhodnocení kapacity

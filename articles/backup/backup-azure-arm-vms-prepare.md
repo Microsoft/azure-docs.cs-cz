@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 9/10/2018
 ms.author: markgal
-ms.openlocfilehash: 00432e1b5a181c57e4901b684d0a86c1cc843037
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: ebfd879fcd619dab48e4a08130f86afc68f91207
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408976"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785422"
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Příprava prostředí pro zálohování virtuálních počítačů s nasazením Resource Manageru
 
@@ -37,7 +37,7 @@ Pokud tyto podmínky se již existují ve vašem prostředí, pokračujte [zálo
 
  * **Linux**: Azure Backup podporuje [seznam distribucí, které Azure schvaluje](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), s výjimkou CoreOS Linux. Seznam operačních systémů Linux, které podporují obnovování souborů najdete v tématu [obnovení souborů ze záloh virtuálních počítačů](backup-azure-restore-files-from-vm.md#for-linux-os).
 
-    > [!NOTE] 
+    > [!NOTE]
     > Další používání your vlastní distribuce Linuxu mohou práce, za předpokladu, že agent virtuálního počítače je k dispozici na virtuálním počítači a podporovaný Python. Tyto distribuce ale podporované nejsou.
     >
  * **Windows Server**, **klienta Windows**: verze starší než Windows Server 2008 R2 nebo Windows 7, nejsou podporovány.
@@ -46,11 +46,10 @@ Pokud tyto podmínky se již existují ve vašem prostředí, pokračujte [zálo
 ## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>Omezení při zálohování a obnovení virtuálního počítače
 Předtím, než je připravit vaše prostředí, nezapomeňte seznámit s těmito omezeními:
 
-* Zálohování virtuálních počítačů s SSD na úrovni Standard se momentálně nepodporuje.
 * Zálohování virtuálních počítačů s více než 32 datových disků se nepodporuje.
 * Zálohování virtuálních počítačů s vyhrazenou IP adresu a není definovaný koncový bod se nepodporuje.
 * Zálohování virtuálních počítačů s Linuxem zašifrovaná pomocí šifrování na Linuxu Unified klíč instalační program (LUKS) se nepodporuje.
-* Nedoporučujeme zálohování virtuálních počítačů, které obsahují konfiguraci sdílené svazky clusteru (CSV) nebo souborového serveru se Škálováním. Pokud budete hotovi, očekává se selhání zapisovačů sdíleného svazku clusteru. Vyžadují zahrnující všechny virtuální počítače, které jsou součástí konfigurace clusteru během úlohu snímku. Azure Backup nepodporuje konzistence více virtuálních počítačů. 
+* Nedoporučujeme zálohování virtuálních počítačů, které obsahují konfiguraci sdílené svazky clusteru (CSV) nebo souborového serveru se Škálováním. Pokud budete hotovi, očekává se selhání zapisovačů sdíleného svazku clusteru. Vyžadují zahrnující všechny virtuální počítače, které jsou součástí konfigurace clusteru během úlohu snímku. Azure Backup nepodporuje konzistence více virtuálních počítačů.
 * Zálohovaná data neobsahuje síti připojené jednotky připojené k virtuálnímu počítači.
 * Nahrazení existujícího virtuálního počítače během obnovení se nepodporuje. Pokud se pokusíte obnovit virtuální počítač, virtuální počítač existuje, operaci obnovení se nezdaří.
 * Mezi různými oblastmi zálohování a obnovení nejsou podporovány.
@@ -115,7 +114,7 @@ Chcete-li upravit nastavení replikace úložiště:
    Pokud používáte Azure jako primární úložiště záloh koncový bod, pokračujte v používání geograficky redundantní úložiště. Pokud používáte Azure jako úložiště pro zálohování není váš primární koncový bod, vyberte místně redundantní úložiště. Další informace o možnosti úložiště v [Přehled replikace Azure Storage](../storage/common/storage-redundancy.md).
 
 1. Pokud jste změnili typ replikace úložiště, vyberte **Uložit**.
-    
+
 Po výběru možnosti úložiště pro svůj trezor jste připraveni přidružení virtuálního počítače v trezoru. Chcete-li začít přidružení, měli byste vyhledat a zaregistrovat virtuální počítače Azure.
 
 ## <a name="select-a-backup-goal-set-policy-and-define-items-to-protect"></a>Výběr cíle zálohování, nastavení zásad a určení položek k ochraně
@@ -172,11 +171,11 @@ Po úspěšném povolení zálohování, zásady zálohování se spouštět pod
 Pokud máte problémy registraci virtuálního počítače, viz následující informace o instalaci agenta virtuálního počítače a na připojení k síti. Pravděpodobně není nutné tyto informace Pokud chráníte virtuální počítače vytvořené v Azure. Ale pokud jste migrovali virtuální počítače do Azure, ujistěte se, že agent virtuálního počítače správně nainstalována a že váš virtuální počítač může komunikovat s virtuální sítí.
 
 ## <a name="install-the-vm-agent-on-the-virtual-machine"></a>Nainstalujte agenta virtuálního počítače na virtuálním počítači
-Pro fungování, Azure Backup rozšíření [agenta virtuálního počítače](../virtual-machines/extensions/agent-windows.md) musí být nainstalovaný na virtuálním počítači Azure. Pokud byl váš virtuální počítač vytvořen z Azure Marketplace, agent virtuálního počítače je již nainstalován na virtuálním počítači. 
+Pro fungování, Azure Backup rozšíření [agenta virtuálního počítače](../virtual-machines/extensions/agent-windows.md) musí být nainstalovaný na virtuálním počítači Azure. Pokud byl váš virtuální počítač vytvořen z Azure Marketplace, agent virtuálního počítače je již nainstalován na virtuálním počítači.
 
 Následující informace jsou poskytovány pro situace, ve kterém jsou *není* pomocí virtuálního počítače vytvořena z Azure Marketplace. **Například jste migrovali virtuální počítač z místního datacentra. V takovém případě se agent virtuálního počítače potřeba nainstalovat z důvodu ochrany virtuálního počítače.**
 
-**Poznámka:**: Po instalaci agenta virtuálního počítače, musíte také pomocí Azure Powershellu k aktualizaci vlastností ProvisionGuestAgent tak zná Azure je nainstalovaný agent virtuálního počítače. 
+**Poznámka:**: Po instalaci agenta virtuálního počítače, musíte také pomocí Azure Powershellu k aktualizaci vlastností ProvisionGuestAgent tak zná Azure je nainstalovaný agent virtuálního počítače.
 
 Pokud máte problémy se zálohováním virtuálních počítačů Azure, zkontrolujte, že je na virtuálním počítači správně nainstalovaný agent virtuálního počítače Azure pomocí následující tabulky. Tabulka poskytuje další informace o virtuální počítač agenta pro Windows a virtuální počítače s Linuxem.
 
@@ -207,11 +206,11 @@ Když jste rozhodování o tom, kterou možnost použít, kompromisy konfigurace
 ### <a name="whitelist-the-azure-datacenter-ip-ranges"></a>Rozsahy IP adres seznamu povolených IP adres datacentra Azure
 Seznam povolených rozsahů IP adres datacentra Azure najdete v článku [web Azure](http://www.microsoft.com/en-us/download/details.aspx?id=41653) podrobné informace o rozsahy IP adres a pokyny.
 
-Připojení ke službě storage konkrétní oblasti, můžete povolit pomocí [značky služeb](../virtual-network/security-overview.md#service-tags). Ujistěte se, že pravidlo, které umožňuje přístup k účtu úložiště má vyšší prioritu než pravidla, která blokuje přístup k Internetu. 
+Připojení ke službě storage konkrétní oblasti, můžete povolit pomocí [značky služeb](../virtual-network/security-overview.md#service-tags). Ujistěte se, že pravidlo, které umožňuje přístup k účtu úložiště má vyšší prioritu než pravidla, která blokuje přístup k Internetu.
 
 ![Skupina zabezpečení sítě se značky úložiště pro oblast](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
 
-Následující video vás provede krok za krokem postupem konfigurace značky služeb: 
+Následující video vás provede krok za krokem postupem konfigurace značky služeb:
 
 >[!VIDEO https://www.youtube.com/embed/1EjLQtbKm1M]
 
@@ -292,7 +291,7 @@ HttpProxy.Port=<proxy port>
    * Pro **místní port**vyberte **specifické porty protokolu**. Do následujícího pole zadejte číslo portu proxy serveru, který byl nakonfigurován.
    * Pro **vzdálený port**vyberte **všechny porty**.
 
-Pro zbývající část průvodce přijměte výchozí nastavení, dokud se nedostanete na konec. Toto pravidlo potom zadejte název. 
+Pro zbývající část průvodce přijměte výchozí nastavení, dokud se nedostanete na konec. Toto pravidlo potom zadejte název.
 
 #### <a name="step-3-add-an-exception-rule-to-the-nsg"></a>Krok 3: Přidejte pravidlo výjimky pro skupiny zabezpečení sítě
 Následující příkaz přidá výjimku do skupiny zabezpečení sítě. Tato výjimka umožňuje přenos TCP z jakéhokoli portu na 10.0.0.5 na jakoukoli adresu v Internetu na portu 80 (HTTP) nebo 443 (HTTPS). Pokud budete potřebovat konkrétní port na veřejný internet, je potřeba přidat tento port k ```-DestinationPortRange```.

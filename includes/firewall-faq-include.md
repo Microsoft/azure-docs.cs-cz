@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: ''
 ms.topic: include
-ms.date: 9/14/2018
+ms.date: 10/4/2018
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 1242cf80ffd283471eb507612949a81d4b3fd594
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: fa2542d530c37876de38a510a6771144043aae77
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47401531"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48812243"
 ---
 ### <a name="what-is-azure-firewall"></a>Co je brána Azure Firewall?
 
@@ -27,7 +27,7 @@ Azure Firewall je spravovaná cloudová služba síťového zabezpečení, kter�
 * Značky plně kvalifikovaných názvů domén
 * Pravidla filtrování síťového provozu
 * Podpora pro odchozí SNAT
-* Příchozí DNAT podpory
+* Podpora DNAT u příchozích přenosů
 * Centrálně vytvoření, vynucení a protokolovat zásady aplikace a síťové připojení mezi virtuálními sítěmi a předplatných Azure
 * Plná integrace se službou Azure Monitor zajišťující protokolování a analýzy 
 
@@ -69,7 +69,7 @@ Brány Firewall na Azure je služba základní brána firewall, která může vy
  
 ### <a name="what-is-the-difference-between-application-gateway-waf-and-azure-firewall"></a>Jaký je rozdíl mezi waf služby Application Gateway a Brána Firewall služby Azure?
 
-Firewall webových aplikací (WAF) je funkce služby Application Gateway poskytující centralizovanou ochranu příchozí webových aplikací před běžným zneužitím a ohrožení zabezpečení. Brána Firewall Azure poskytuje odchozí ochrany na úrovni sítě pro všechny porty a protokoly a ochrany na úrovni aplikace pro odchozí HTTP/S. Příchozí ochranu pro protokoly než HTTP/S (například RDP, SSH, FTP) je vyhledán nezávazně plánované pro zavedení všeobecné dostupnosti Brána Firewall služby Azure
+Firewall webových aplikací (WAF) je funkce služby Application Gateway poskytující centralizovanou ochranu příchozí webových aplikací před běžným zneužitím a ohrožení zabezpečení. Brána Firewall Azure poskytuje příchozí ochranu pro protokoly než HTTP/S (například protokol RDP, SSH, FTP), odchozí ochrany na úrovni sítě pro všechny porty a protokoly a ochrany na úrovni aplikace pro odchozí HTTP/S.
 
 ### <a name="what-is-the-difference-between-network-security-groups-nsgs-and-azure-firewall"></a>Jaký je rozdíl mezi skupiny zabezpečení sítě (Nsg) a Brána Firewall služby Azure?
 

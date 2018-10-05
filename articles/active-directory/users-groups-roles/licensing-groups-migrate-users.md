@@ -14,12 +14,12 @@ ms.component: users-groups-roles
 ms.date: 01/14/2018
 ms.author: curtand
 ms.custom: seohack1
-ms.openlocfilehash: 10851990f26124ae89945d4b56058115cacb81ee
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 5beee2fae518fec23b65ff05a79281e0fc3f1417
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37861690"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48800736"
 ---
 # <a name="how-to-add-licensed-users-to-a-group-for-licensing-in-azure-active-directory"></a>Jak přidat uživatele s licencí pro skupinu pro licencování v Azure Active Directory
 
@@ -47,7 +47,7 @@ Nejdůležitějším principem brát v úvahu je, že byste se měli vyhnout sit
 
 6. Zvažte odebrání původní přímého přiřazení můžete chtít provést postupně, "vlny", nejprve sledovat výsledek na určitou podskupinu uživatelů.
 
-  Původní přímých přiřazení může nechat na uživatele, ale když uživatelé ponechte jejich licencované skupiny zůstanou původní licence, který může být, aby, že je vhodné.
+  Původní přímých přiřazení by mohl nechat na uživatele, ale při jejich licencované skupiny nechte uživatele, zůstanou původní licence, který může být nechcete.
 
 ## <a name="an-example"></a>Příklad
 
@@ -84,7 +84,7 @@ Tady je proces migrace by mohla vypadat:
 
 Další informace o další scénáře pro správu licencí pomocí skupin najdete v článku
 
-* [Přiřazení licencí ke skupině ve službě Azure Active Directory](licensing-groups-assign.md)
+* [Přiřazení licencí ke skupině v Azure Active Directory](licensing-groups-assign.md)
 * [Co je skupina založená na licencování v Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
-* [Identifikace a řešení problémů pro skupinu v Azure Active Directory](licensing-groups-resolve-problems.md)
-* [Azure Active Directory na základě skupin licencí další scénáře](licensing-group-advanced.md)
+* [Identifikace a řešení potíží s licencemi pro skupinu v Azure Active Directory](licensing-groups-resolve-problems.md)
+* [Další scénáře licencování na základě skupin v Azure Active Directory](licensing-group-advanced.md)

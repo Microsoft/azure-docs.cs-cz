@@ -1,57 +1,71 @@
 ---
-title: Použití b2clogin.com | Dokumentace Microsoftu
-description: Další informace o použití b2clogin.com místo login.microsoftonline.com.
+title: Sada přesměrovaly na b2clogin.com pro Azure Active Directory B2C | Dokumentace Microsoftu
+description: Další informace o použití b2clogin.com do vaší přesměrovat adresy URL pro Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/29/2018
+ms.date: 10/04/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c24582fce44006d9a3972d73078aa8cb0d212c11
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 8e06cf1a443d4fd158e29ef4b53206a83800dfe9
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47053840"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803048"
 ---
-# <a name="using-b2clogincom"></a>Použití B2Clogin.com
+# <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Sada přesměrovaly na b2clogin.com pro Azure Active Directory B2C
 
-Od této chvíle, už jsme podporu všem zákazníkům používat `<YourDirectoryName>.b2clogin.com` a vyřadíme `login.microsoftonline.com`. B2Clogin.com poskytuje další výhody, jako:
-* Stejné soubory cookie se už nebude sdílet s jinými službami Microsoftu.
-* V adrese URL můžete odebrat všechny odkazy na Microsoft (můžete nahradit `<YourDirectoryName>.onmicrosoft.com` své ID adresáře). Například: `https://<YourDirectoryName>.b2clogin.com/tfp/<YourDirectoryID>/<policyname>/v2.0/.well-known/openid-configuration`.
+Když nastavíte zprostředkovatele identity pro registraci a přihlašování v aplikaci Azure Active Directory (Azure AD) B2C, budete muset zadat adresu URL přesměrování. V minulosti bylo použito login.microsoftonline.com, teď by měl být použití b2clogin.com.
 
-Zde je, co je potřeba k migraci na b2clogin.com
+Použití b2clogin.com poskytuje další výhody, jako například:
 
-* Změnit identifikátory URI pro přesměrování pro vaše aplikace zprostředkovatele identity v sociálních sítích
-* Upravit aplikace použije B2Clogin.com místo `login.microsoftonline.com` pro token koncových bodů a odkazy na zásady.
-* Pokud používáte MSAL, je nutné nastavit `ValidateAuthority=false`.  
+- Soubory cookie jsou již sdíleny s jinými službami Microsoftu.
+- Vaší adresy URL už nebude obsahovat odkaz na Microsoft. Například, `https://your-tenant-name.b2clogin.com/tfp/your-tenant-ID/policyname/v2.0/.well-known/openid-configuration`.
 
-##<a name="redirect-uris-for-social-identity-providers"></a>Identifikátory URI pro přesměrování pro zprostředkovatele identity v sociálních sítích
+Chcete-li použít b2clogin.com, nastavte přesměrování adresy URL ve vašich aplikacích zprostředkovatele identity použití b2clogin.com. Můžete také nastavit aplikace Azure AD B2C použití b2clogin.com pro token koncových bodů a odkazy na zásady. Pokud používáte MSAL, je nutné nastavit **ValidateAuthority** vlastnost `false`.
 
-Pokud máte nastavení ve vašem adresáři zprostředkovatelé identity účtu na sociální síti bude nutné provést změny ve svých aplikacích.  Neexistuje parametr pro aplikaci pro každý sociálních sítí poskytovatele, který obsahuje seznam důvěryhodných adres URL pro přesměrování Azure AD B2C.  V současné době máte pravděpodobně ji nastavit na některé přesměrovat `login.microsoftonline.com` lokality, bude nutné změnit tuto adresu URL tak, aby `YourDirectoryName.b2clogin.com` budou autorizovaní identifikátor URI přesměrování.  Ujistěte se, že chcete odebrat `/te` také.  Existují malé odchylky na tuto adresu URL pro každého zprostředkovatele identity proto zkontrolujte na odpovídající stránce zobrazíte přesnou adresu URL.  
+## <a name="change-redirect-urls"></a>Změna adresy URL pro přesměrování
 
-| Zprostředkovatel identity |
-|-------------------|
-|[Účet Microsoft](active-directory-b2c-setup-msa-app.md)|
-|[Facebook](active-directory-b2c-setup-fb-app.md)|
-|[Google](active-directory-b2c-setup-goog-app.md)|
-|[Amazon](active-directory-b2c-setup-amzn-app.md)|
-|[LinkedIn](active-directory-b2c-setup-li-app.md)|
-|[Twitter](active-directory-b2c-setup-twitter-app.md)|
-|[GitHub](active-directory-b2c-setup-github-app.md)|
-|[Weibo](active-directory-b2c-setup-weibo-app.md)|
-|[QQ](active-directory-b2c-setup-qq-app.md)|
-|[WeChat](active-directory-b2c-setup-wechat-app.md)|
-|[Azure AD](active-directory-b2c-setup-oidc-azure-active-directory.md)|
-|[Vlastní OIDC](active-directory-b2c-setup-oidc-idp.md)|
+Použití b2clogin.com, v nastavení pro vaši aplikaci zprostředkovatele identity, vyhledejte a změnit seznam důvěryhodných adres URL pro přesměrování zpět do Azure AD B2C.  V současné době máte pravděpodobně ji nastavit na přesměrovat zpět na některé login.microsoftonline.com lokality. 
 
-##<a name="update-your-application-references"></a>Aktualizovat odkazy na vaše aplikace
+Budete muset změnit adresu URL přesměrování tak, aby `your-tenant-name.b2clogin.com` autorizaci. Nezapomeňte nahradit `your-tenant-name` s názvem vaší Azure AD B2C tenanta a odeberte `/te` pokud existuje v adrese URL. Existují malé odchylky na tuto adresu URL pro každého zprostředkovatele identity proto zkontrolujte na odpovídající stránce zobrazíte přesnou adresu URL.
 
-Vaše aplikaci pravděpodobně odkazuje na `login.microsoftonline.com` na několika místech, jako jsou odkazy na zásady a koncové body tokenu.  Ujistěte se, že koncový bod autorizace, koncový bod tokenu a vystavitele byly aktualizovány.  
+Informace o nastavení pro zprostředkovatele identity najdete v následujících článcích:
 
-##<a name="set-validateauthorityfalse-in-msal"></a>Nastavte `ValidateAuthority=false` v MSAL
+- [Účet Microsoft](active-directory-b2c-setup-msa-app.md)
+- [Facebook](active-directory-b2c-setup-fb-app.md)
+- [Google](active-directory-b2c-setup-goog-app.md)
+- [Amazon](active-directory-b2c-setup-amzn-app.md)
+- [LinkedIn](active-directory-b2c-setup-li-app.md)
+- [Twitter](active-directory-b2c-setup-twitter-app.md)
+- [GitHub](active-directory-b2c-setup-github-app.md)
+- [Weibo](active-directory-b2c-setup-weibo-app.md)
+- [QQ](active-directory-b2c-setup-qq-app.md)
+- [WeChat](active-directory-b2c-setup-wechat-app.md)
+- [Azure AD](active-directory-b2c-setup-oidc-azure-active-directory.md)
+- [Vlastní OIDC](active-directory-b2c-setup-oidc-idp.md)
 
-Pokud používáte MSAL, budete muset nastavit `ValidateAuthority=false`.  Další informace najdete v tématu [této dokumentace](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase?view=azure-dotnet).
+## <a name="update-your-application"></a>Aktualizace aplikace
+
+Aplikace Azure AD B2C pravděpodobně odkazuje na `login.microsoftonline.com` na několika místech, jako jsou odkazy na zásady a koncové body tokenu.  Ujistěte se, že koncový bod autorizace, koncový bod tokenu a vystavitele byla aktualizována, aby používat `your-tenant-name.b2clogin.com`.  
+
+## <a name="set-the-validateauthority-property"></a>Nastavte vlastnost ValidateAuthority
+
+Pokud používáte MSAL, nastavte **ValidateAuthority** k `false`. Následující příklad ukazuje, jak může nastavit vlastnost:
+
+```
+this.clientApplication = new UserAgentApplication(
+  env.auth.clientId,
+  env.auth.loginAuthority,
+  this.authCallback.bind(this),
+  {
+    validateAuthority: false
+  }
+);
+```
+
+ Další informace najdete v tématu [ClientApplicationBase třídy ](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase?view=azure-dotnet).

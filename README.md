@@ -26,7 +26,7 @@ Postupujte podle pokynů uvedených v [instalace nástrojů pro tvorbu obsahu](h
 
 ## <a name="license"></a>Licence
 
-Najdete [licence](.github/LICENSE), [LICENSE-CODE](.github/LICENSE-CODE) a [ThirdPartyNotices](.github/ThirdPartyNotices) pro všechny informace o licencování.
+Najdete [licence](.github/LICENSE), [LICENSE-CODE](.github/LICENSE-CODE) a [ThirdPartyNotices](.github/ThirdPartyNotices.md) pro všechny informace o licencování.
 
 ## <a name="code-of-conduct"></a>Pravidla chování
 

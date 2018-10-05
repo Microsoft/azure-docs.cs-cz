@@ -12,19 +12,19 @@ ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/01/2018
-ms.openlocfilehash: a09a19957c318416f3cb4de79305b181dbc3be81
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 698fafac771c79bf014d6e9492c8ca22d1c31b47
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018277"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48784966"
 ---
 # <a name="what-is-a-managed-instance"></a>Co je Managed Instance?
 
 Azure SQL Database Managed Instance je nový model nasazení služby Azure SQL Database poskytuje téměř 100 % kompatibilitu s nejnovějšími serveru SQL Server v místním (Enterprise Edition) databázový stroj, poskytuje nativní [virtuální síť (VNet)](../virtual-network/virtual-networks-overview.md) implementace, která řeší běžné problémy zabezpečení a [obchodního modelu](https://azure.microsoft.com/pricing/details/sql-database/) uspokojivým pro zákazníky v místním systému SQL Server. Managed Instance umožňuje stávající zákazníci systému SQL Server k přenosu svých místních aplikací do cloudu s minimálními změnami aplikace a databáze. Managed Instance ve stejnou dobu, zachová všechny možnosti modelu PaaS (automatické použití dílčích oprav a verze aktualizace [automatické zálohování](sql-database-automated-backups.md), [vysoké dostupnosti](sql-database-high-availability.md) ), který výrazně snižuje režii na správu a celkové náklady na vlastnictví.
 
 > [!IMPORTANT]
-> Seznam oblastí, ve kterých je Managed Instance aktuálně k dispozici, najdete v tématu [Migrace databází do plně spravované služby pomocí Azure SQL Database Managed Instance](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/).
+> Seznam oblastí, ve kterých je Managed Instance aktuálně k dispozici, najdete v části [podporované oblasti](sql-database-managed-instance-resource-limits.md#supported-regions).
  
 Následující diagram popisuje klíčové funkce služby Managed Instance:
 
@@ -41,7 +41,7 @@ Rozhodování mezi izolovanou databázi Azure SQL Database, Azure SQL Database M
 Azure SQL Database Managed Instance jsou k dispozici nejlepší funkce, které jsou k dispozici v Azure SQL Database i SQL Server Database Engine.
 
 > [!IMPORTANT]
-> Managed Instance spouští všechny funkce nejnovější verzi SQL serveru, včetně online operace, plán automatické opravy a vylepšení výkonu jiné organizace. 
+> Managed Instance spouští všechny funkce nejnovější verzi SQL serveru, včetně online operace, plán automatické opravy a vylepšení výkonu jiné organizace. Porovnání funkcí, které jsou k dispozici je podrobně [porovnání funkcí: Azure SQL Database a SQL Server](sql-database-features.md).
 
 | **Výhody PaaS** | **Kontinuita podnikových procesů** |
 | --- | --- |
@@ -49,22 +49,34 @@ Azure SQL Database Managed Instance jsou k dispozici nejlepší funkce, které j
 |**Zabezpečení a dodržování předpisů** | **Správa**|
 |Izolované prostředí ([integrace virtuální sítě](sql-database-managed-instance-vnet-configuration.md), jednoho tenanta služby, vyhrazené výpočetní prostředky a úložiště) <br>[Transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Ověřování Azure AD](sql-database-aad-authentication.md), jednotné přihlašování – podpora <br>Dodržuje standardy pro dodržování předpisů stejně jako Azure SQL database <br>[Auditování SQL](sql-database-managed-instance-auditing.md) <br>[Detekce hrozeb](sql-database-managed-instance-threat-detection.md) |Rozhraní API Azure Resource Manageru pro automatizaci služby zřizování a škálování <br>Azure portal funkci pro ruční službu zřizování a škálování <br>Data Migration Service 
 
+Klíčové funkce Managed Instance jsou uvedeny v následující tabulce:
+
+|Funkce | Popis|
+|---|---|
+| Verze systému SQL Server / build | SQL Server Database Engine (nejnovější stabilní verze) |
+| Spravované automatizované zálohování | Ano |
+| Integrovanou instanci a databázi sledování a metriky | Ano |
+| Software automatické opravy | Ano |
+| Nejnovější funkce databázového stroje | Ano | 
+| Počet datových souborů (řádků) na databázi | Několik | 
+| Počet souborů protokolu (LOG) na databázi | 1 | 
+| Připojení typu VNet - nasazení Azure Resource Manageru | Ano |
+| Připojení typu VNet - model nasazení Classic | Ne |
+| Portál podpory | Ano|
+| Vestavěná integrace Service (SSIS) | Ne - služby SSIS je součástí [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) |
+| Integrované Analysis Service (SSAS) | Ne - SSAS je samostatný [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
+| Integrované služby generování sestav (SSRS) | Ne - použít Power BI nebo služby SSRS IaaS |
+|||
+
 ## <a name="vcore-based-purchasing-model"></a>nákupní model založený na virtuálních jádrech
 
-[Nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md) poskytuje flexibilitu, kontrolu, transparentnost a jednoduchý způsob převodu požadavků místních úlohy do cloudu. Tento model umožňuje škálování výpočetních prostředků, paměť a úložiště na základě jejich potřebám provádění úloh. Je také nárok až na 30 procent spoření s modelu virt. jader [zvýhodněné hybridní využití Azure pro SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
+[Nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md) v Managed Instance poskytuje flexibilitu, ovládací prvek, transparentnost a jednoduchý způsob převodu požadavků místních úlohy do cloudu. Tento model umožňuje změnit výpočetních, paměťových a úložiště na základě potřeb vašich úloh. Je také nárok až na 30 procent spoření s modelu virt. jader [zvýhodněné hybridní využití Azure pro SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
 
-Virtuální jádro reprezentuje logický procesor nabízený s možností volby mezi generacemi hardwaru.
-- Logické CPU 4. generace jsou založené na procesorech Intel E5-2673 v3 (Haswell) 2,4 GHz.
-- Generace 5 logické procesory jsou založené na Intel E5-2673 v4 (Broadwell) 2,3 GHz procesorech.
+V modelu virt. jader můžete mezi generacemi hardwaru.
+- **Gen 4** logické procesory jsou založeny na Intel E5-2673 v3 (Haswell) 2,4 GHz procesory, SSD připojené, fyzických jader, 7 GB paměti RAM na jádro a velikostí výpočetních mezi 8 až 24 virtuálních jader.
+- **5. generace** logické procesory jsou založeny na Intel E5-2673 v4 (Broadwell) 2.3 GHz procesorech rychlé eNVM SSD, technologie hyper-threaded logické jádro a výpočet velikosti mezi 80 a 8 jader.
 
-Následující tabulka vám pomůže pochopit postup výběru optimální konfiguraci výpočetních, paměťových, úložiště a vstupně-výstupní prostředky.
-
-||Gen 4|Gen 5|
-|----|------|-----|
-|Hardware|Intel E5-2673 v3 (Haswell) 2,4 GHz procesorech připojené SSD vCore = 1 PP (fyzických jader)|Intel E5-2673 v4 (Broadwell) 2,3 GHz procesorech rychlé eNVM SSD, vCore = 1 LP (hyper vlákno)|
-|Výpočet velikosti|8, 16, 24 virtuálních jader|8, 16, 24, 32, 40, 64, 80 virtuálních jader|
-|Memory (Paměť)|7 GB na vCore|5.5 GB na vCore|
-||||
+Další informace o rozdílech mezi generacemi hardwaru v [omezení prostředků Managed Instance](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics).
 
 ## <a name="managed-instance-service-tiers"></a>Spravovaná instanci úrovně služeb
 
@@ -83,32 +95,11 @@ Následující seznam popisuje úrovni General Purpose služeb klíčovou vlastn
 
 - Návrh pro většinu obchodních aplikací s požadavky na typické výkon 
 - Vysoce výkonné služby Azure Premium storage (8 TB) 
-- 100 databází na instanci 
+- Integrované [vysoké dostupnosti](sql-database-high-availability.md#standardgeneral-purpose-availability) na základě spolehlivé úložiště Azure úrovně Premium a [Azure Service Fabric](../service-fabric/service-fabric-overview.md)
 
-Následující seznam popisuje klíčové vlastnosti vrstvy služby s obecné účely:
+Další informace najdete v tématu [Storate vrstvy v úrovni General purpose](https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c) a [úložiště osvědčené postupy z hlediska výkonu a důležité informace týkající se Azure SQL DB mi (Obecné)](https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose/).
 
-|Funkce | Popis|
-|---|---|
-| Počet virtuálních jader * | 8, 16, 24 (gen 4)<br>8, 16, 24, 32, 40, 64, 80 (generace 5)|
-| Verze systému SQL Server / build | SQL Server Database Engine (nejnovější stabilní verze) |
-| Minimální velikost úložiště | 32 GB |
-| Maximální velikost úložiště | 8 TB |
-| Max. úložiště na databázi | Určuje maximální velikost úložiště na instanci |
-| Očekávaný úložiště vstupně-výstupních operací | 500-7500 IOPS na datový soubor (závisí na datovém souboru). Zobrazit [Storage úrovně Premium](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes) |
-| Počet datových souborů (řádků) na databázi | Několik | 
-| Počet souborů protokolu (LOG) na databázi | 1 | 
-| Spravované automatizované zálohování | Ano |
-| OVĚŘENÍ STAVU | Data uložená ve službě Azure Storage a [Azure Service Fabric](../service-fabric/service-fabric-overview.md) |
-| Integrovanou instanci a databázi sledování a metriky | Ano |
-| Software automatické opravy | Ano |
-| Připojení typu VNet - nasazení Azure Resource Manageru | Ano |
-| Připojení typu VNet - model nasazení Classic | Ne |
-| Portál podpory | Ano|
-|||
-
-\* Virtuální jádro reprezentuje logický procesor nabízený s možností volby mezi generacemi hardwaru. Gen 4 logické procesory jsou založeny na Intel E5-2673 v3 (Haswell) 2,4 GHz a logické procesory generace 5 jsou založené na Intel E5-2673 v4 (Broadwell) 2,3 GHz procesorech. 
-
-Další informace najdete v tématu [dostupnost/Standard pro obecné účely a architektura](sql-database-high-availability.md#standardgeneral-purpose-availability) ve službě Azure SQL Database a [úložiště osvědčené postupy z hlediska výkonu a důležité informace týkající se Azure SQL DB mi (General Účel)](https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose/).
+Další informace o rozdílech mezi úrovní služeb v [omezení prostředků Managed Instance](sql-database-managed-instance-resource-limits.md#service-tier-characteristics).
 
 ### <a name="business-critical-service-tier-preview"></a>Obchodní vrstvu služby (preview)
 
@@ -117,33 +108,14 @@ Obchodní vrstvy kritické služby je sestaven pro aplikace s vysokými požadav
 Následující seznam popisuje klíčové vlastnosti pro důležité obchodní informace vrstvy služby: 
 -   Je určená pro obchodní aplikace s nejvyšší výkon a požadavky na vysokou dostupnost 
 -   Se dodává s mimořádně rychlé úložiště SSD (až 1 TB na Gen 4 a až 4 TB generace 5)
--   Podporuje až 100 databáze na instanci 
-- Integrované další jen pro čtení, jež lze použít pro vytváření sestav a dalších úloh jen pro čtení
+- Integrované [vysoké dostupnosti](sql-database-high-availability.md#premiumbusiness-critical-availability) na základě [skupin dostupnosti Always On](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) a [Azure Service Fabric](../service-fabric/service-fabric-overview.md).
+- Integrované Další [repliky jen pro čtení databáze](sql-database-read-scale-out.md) , který lze použít pro vytváření sestav a další úlohy jen pro čtení
 - [OLTP v paměti](sql-database-in-memory.md) , který lze použít pro úlohy s vysokou prefrmance požadavky  
-
-|Funkce | Popis|
-|---|---|
-| Počet virtuálních jader * | 8, 16, 24, 32 (4. generace)<br>8, 16, 24, 32, 40, 64, 80 (generace 5)|
-| Verze systému SQL Server / build | SQL Server nejnovější (k dispozici) |
-| Další funkce | [OLTP v paměti](sql-database-in-memory.md)<br> 1 další repliky jen pro čtení ([horizontální navýšení kapacity pro čtení](sql-database-read-scale-out.md))
-| Minimální velikost úložiště | 32 GB |
-| Maximální velikost úložiště | Gen 4: 1 TB (všech velikostí vCore)<br> Generace 5:<ul><li>1 TB pro 8, 16 virtuálních jader</li><li>2 TB pro 24 virtuálních jader</li><li>4 TB pro 32, 40, 64, 80 virtuálních jader</ul>|
-| Max. úložiště na databázi | Určuje maximální velikost úložiště na instanci |
-| Počet datových souborů (řádků) na databázi | Několik | 
-| Počet souborů protokolu (LOG) na databázi | 1 | 
-| Spravované automatizované zálohování | Ano |
-| OVĚŘENÍ STAVU | Data uložená v místní SSD a použití [skupin dostupnosti Always On](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) a [Azure Service Fabric](../service-fabric/service-fabric-overview.md) |
-| Integrovanou instanci a databázi sledování a metriky | Ano |
-| Software automatické opravy | Ano |
-| Připojení typu VNet - nasazení Azure Resource Manageru | Ano |
-| Připojení typu VNet - model nasazení Classic | Ne |
-| Portál podpory | Ano|
-|||
-
-Další informace najdete v části [úrovně Premium/důležitých dostupnosti a architektura](sql-database-high-availability.md#premiumbusiness-critical-availability) ve službě Azure SQL Database.
 
 > [!IMPORTANT]
 > **Pro důležité obchodní informace** úrovně služeb je ve verzi preview.
+
+Další informace o rozdílech mezi úrovní služeb v [omezení prostředků Managed Instance](sql-database-managed-instance-resource-limits.md#service-tier-characteristics).
 
 ## <a name="advanced-security-and-compliance"></a>Pokročilé zabezpečení a dodržování předpisů 
 

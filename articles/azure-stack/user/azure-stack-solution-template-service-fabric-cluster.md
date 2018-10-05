@@ -14,18 +14,18 @@ ms.topic: tutorial
 ms.date: 09/12/2018
 ms.author: mattbriggs
 ms.reviewer: shnatara
-ms.openlocfilehash: 3d3701c670236d67697f4109a59fa31900037a0d
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: d402b2bcd5187cbb6ece78d7e981068c279c1f75
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720918"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804425"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>Nasazení clusteru Service Fabric v Azure stacku
 
 Použití **Service Fabric Cluster** položku z Azure Marketplace k nasazení zabezpečeného clusteru Service Fabric v Azure stacku. 
 
-Další informace o práci s platformou Service Fabric najdete v tématu [přehled Azure Service Frabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) a [scénáře zabezpečení clusteru Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security), dokumentace k Azure.
+Další informace o práci s platformou Service Fabric najdete v tématu [přehled Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) a [scénáře zabezpečení clusteru Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security), dokumentace k Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -186,7 +186,7 @@ Cluster Service Fabric můžete přistupovat pomocí rozhraní Service Fabric Ex
 
 1. K ověření na webu musíte vybrat certifikát pro použití. Vyberte **víc možností**, vyberte příslušný certifikát a potom klikněte na tlačítko **OK** pro připojení k Service Fabric Explorer. 
 
-   ![Ověřit](media/azure-stack-solution-template-service-fabric-cluster/image14.png)
+   ![Ověření](media/azure-stack-solution-template-service-fabric-cluster/image14.png)
 
 
 

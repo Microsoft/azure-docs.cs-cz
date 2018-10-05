@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 4365f12992c96ca45ff6b97b0f59202f1eeb4483
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: b5fd5a9544e27092c8b65e18d59701421fc59ef5
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268962"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48800855"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Zařízení s nižší úrovně připojená k řešení potíží s hybridní služby Azure Active Directory 
 
@@ -43,6 +43,10 @@ Tento článek předpokládá, že máte [nakonfigurované hybridní služby Azu
 Tento článek poskytuje pokyny o tom, jak vyřešit potenciální problémy při řešení potíží.  
 
 **Co byste měli vědět:** 
+
+- Připojení k hybridní službě Azure AD pro starší verze Windows zařízení funguje trochu jinak než nemá ve Windows 10. Mnoho zákazníků není dobré si uvědomit, že potřebují služby AD FS (u federovaných domén) nebo bezproblémové jednotné přihlašování nakonfigurovali (pro spravované domény).
+
+- Pro zákazníky s federovaných domén pokud bod připojení služby (SCP) byla nakonfigurovaná tak, aby odkazovala na název spravované domény (například contoso.onmicrosoft.com, ne contoso.com), pak hybridní připojení k Azure AD pro zařízení s Windows nižší úrovně se nebude fungovat.
 
 - Maximální počet zařízení na uživatele v současné době platí také pro zařízení připojená k Azure AD hybridní nižší úrovně. 
 

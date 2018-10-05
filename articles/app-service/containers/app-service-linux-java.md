@@ -12,12 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
-ms.openlocfilehash: 2b2256ef5802160dbaa66e2a098a798fcdc653d2
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 48d6836a2f1c7eb53fd6d7a08ee5a049cd9503f6
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47065104"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803031"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Příručka pro vývojáře Java pro službu App Service v Linuxu
 
@@ -229,7 +229,7 @@ Sdílené prostředky na úrovni serveru:
 
 ## <a name="docker-containers"></a>Kontejnery Dockeru
 
-Pokud chcete používat ve službě App Service v kontejnerech JDK Zulu podporovaných systémem Azure, ujistěte se, že vaše aplikace `Dockerfile` používá Image z [úložiště image Dockeru služby aplikace Java](https://github.com/Azure-App-Service/java).
+Pokud chcete použít sadu JDK Zulu podporovaných systémem Azure v kontejnerech, ujistěte se, že k vyžádání a použijte předem sestavené Image na [stránce pro stahování společnosti Azul](https://www.azul.com/downloads/azure-only/zulu/#docker) nebo použijte `Dockerfile` příklady z [úložiště Microsoft Java GitHub](https://github.com/Microsoft/java/tree/master/docker).
 
 ## <a name="runtime-availability-and-statement-of-support"></a>Dostupnost a modulu runtime prohlášení k podpoře
 
@@ -242,7 +242,7 @@ App Service pro Linux podporuje dva moduly runtime pro spravované hostování w
 
 ### <a name="jdk-versions-and-maintenance"></a>JDK verze a údržba
 
-Azure podporovaná Java Development Kit (JDK) je [Zulu](https://www.azul.com/products/zulu-and-zulu-enterprise/) zajišťována [Azul Systems](https://www.azul.com/).
+Azure podporovaná Java Development Kit (JDK) je [Zulu](https://www.azul.com/downloads/azure-only/zulu/) zajišťována [Azul Systems](https://www.azul.com/).
 
 Hlavní verze aktualizace bude poskytovat prostřednictvím nové možnosti modulu runtime ve službě Azure App Service pro Linux. Zákazníci, aktualizujte na tyto novější verze Javy podle konfigurace nasazení služby App Service a jsou zodpovědné za testování a zajištění hlavní aktualizace vyhovují jejich potřebám.
 
@@ -258,15 +258,15 @@ Pokud podporovaného modulu runtime Java se vyřadí z provozu, vývojáře v Az
 
 ### <a name="local-development"></a>Místní vývoj
 
-Vývojáři mohou stáhnout produkční verzi z Azul Zulu Enterprise sadu JDK pro místní vývoj z [serveru pro stahování společnosti Azul](https://www.azul.com/downloads/zulu/).
+Vývojáři mohou stáhnout produkční verzi z Azul Zulu Enterprise sadu JDK pro místní vývoj z [serveru pro stahování společnosti Azul](https://www.azul.com/downloads/azure-only/zulu/).
 
 ### <a name="development-support"></a>Podpora vývoje
 
-Při vývoji pro Azure je dostupná prostřednictvím podpory produktu pro sadu JDK Azul Zulu Enterprise nebo [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) s [kvalifikovaný plán podpory Azure](https://azure.microsoft.com/support/plans/).
+Odborná pomoc pro [podporovaných systémem Azure Azul Zulu JDK](https://www.azul.com/downloads/azure-only/zulu/) je k dispozici prostřednictvím při vývoji pro Azure nebo [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) s [kvalifikovaný plán podpory Azure](https://azure.microsoft.com/support/plans/).
 
 ### <a name="runtime-support"></a>Podpora modulu CLR
 
-Mohou vývojáři [otevřete problém](/azure/azure-supportability/how-to-create-azure-support-request) s App Service Linux Java runtime prostřednictvím podpory Azure, pokud mají [plán podpory kvalifikovaný](https://azure.microsoft.com/support/plans/).
+Mohou vývojáři [otevřete problém](/azure/azure-supportability/how-to-create-azure-support-request) s JDK Azul Zulu prostřednictvím podpory Azure, pokud mají [plán podpory kvalifikovaný](https://azure.microsoft.com/support/plans/).
 
 ## <a name="next-steps"></a>Další postup
 

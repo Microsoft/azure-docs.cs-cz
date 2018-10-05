@@ -1,22 +1,23 @@
 ---
-title: Hledat koncové body zprávy Bing | Dokumentace Microsoftu
+title: Koncové body Vyhledávání zpráv Bingu
+titlesuffix: Azure Cognitive Services
 description: Přehled koncového bodu rozhraní API hledání zpráv.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: v-gedod
-ms.openlocfilehash: ab892e947566adf025499382b213a52ed3e96e35
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 0ed8b9048c04c4aff5214cea697810a0c573559e
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433680"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48800541"
 ---
-# <a name="news-search-endpoints"></a>Koncové body vyhledávání zpráv
+# <a name="bing-news-search-endpoints"></a>Koncové body Vyhledávání zpráv Bingu
 **Rozhraní API pro vyhledávání zpráv** vrátí články, webových stránek, obrázků, videa, zprávy a [entity](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web). Entity obsahují souhrnné informace o osobě, místě nebo téma.
 ## <a name="endpoints"></a>Koncové body
 Chcete-li získat výsledky hledání zpráv pomocí rozhraní API Bingu pro odesílání `GET` požadavek na jednu z následujících koncových bodů. Specifikace definovat další hlaviček a parametrů adresy URL.

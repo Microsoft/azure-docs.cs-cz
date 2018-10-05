@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: kumud
-ms.openlocfilehash: ab5f6d10e4f9edc4d899e976291482bb3a795c07
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: be429e7d3ae847eec6dc4fd5ad6b9c3e5d76d5b5
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248920"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785405"
 ---
 # <a name="traffic-manager-routing-methods"></a>Metody směrování Traffic Manageru
 
@@ -39,7 +39,7 @@ Všechny profily Traffic Manageru patří monitorování koncových bodů a konc
 
 Organizace často chce zajistit spolehlivost pro své služby a nasadit jeden nebo více služeb zálohování v případě, že jejich primární služba přestane fungovat. Metody směrování provozu "Priority" umožňuje zákazníkům Azure snadno implementace tohoto modelu převzetí služeb při selhání.
 
-! [Azure Traffic Manager "Priority" metody směrování provozu] [1]
+![Azure Traffic Manager "Priority" metody směrování provozu](media/traffic-manager-routing-methods/priority.png)
 
 Profil služby Traffic Manager obsahuje seznam seřazený podle priority koncových bodů služby. Ve výchozím nastavení Traffic Manageru odesílá veškerý provoz na primární koncový bod (nejvyšší priorita). Pokud primární koncový bod není k dispozici, Traffic Manager směruje provoz do druhé koncového bodu. Pokud obě primární a sekundární koncových bodů nejsou k dispozici, provoz směrován na třetí a tak dále. Dostupnost koncového bodu závisí na nakonfigurovaných stavu (povoleno nebo zakázáno) a monitorování probíhající koncových bodů.
 
@@ -47,10 +47,10 @@ Profil služby Traffic Manager obsahuje seznam seřazený podle priority koncov�
 
 S Azure Resource Manageru, můžete nakonfigurovat Priorita koncového bodu explicitně pomocí vlastnosti "priority" pro každý koncový bod. Tato vlastnost je hodnota od 1 do 1000. Nižší hodnoty, tím vyšší priorita. Koncové body nelze sdílet hodnoty priority. Nastavení vlastnost je volitelná. Když tento parametr vynechán, použije se výchozí prioritu na základě pořadí koncový bod.
 
-##<a name = "weighted"></a>Metody váženého směrování provozu
+## <a name = "weighted"></a>Metody váženého směrování provozu
 Metody směrování provozu 'Váženého' umožňuje rovnoměrně distribuovat provoz nebo použít předem definované váhu.
 
-! [Azure Traffic Manager "" směrování provozu metody váženého] [2]
+![Azure Traffic Manageru 'vážená: metody směrování provozu](media/traffic-manager-routing-methods/weighted.png)
 
 Do metody váženého směrování provozu přiřaďte váhu každý koncový bod v konfigurace profilu Traffic Manageru. Váha je celé číslo od 1 do 1000. Tento parametr je nepovinný. Pokud tento parametr vynechán, Traffic Manager používá výchozí tloušťka '1'. Váha vyšší, tím vyšší je priorita.
 
@@ -78,7 +78,7 @@ Tyto účinky ukládání do mezipaměti DNS jsou společné pro všechny, přen
 
 Nasazení koncových bodů ve dvou nebo více míst po celém světě můžete rychlejší odezvu u mnoha aplikací můžete provoz nasměrovat na umístění, které je nejblíže k vám. Tuto možnost nabízí a metodu směrování provozu "Výkon".
 
-! [Azure Traffic Manager "Výkonu" metody směrování provozu] [3]
+![Azure Traffic Manager "Výkonu" metody směrování provozu](media/traffic-manager-routing-methods/performance.png)
 
 'Co nejblíže' koncový bod není nutně co nejblíž koncovým měřený podle geografické vzdálenosti. Místo toho metodu směrování provozu "Výkonu" Určuje koncový bod nejblíže na základě měření latence sítě. Traffic Manager udržuje tabulku Internet latence sledovat dobu odezvy mezi rozsahy IP adres a každé datové centrum Azure.
 

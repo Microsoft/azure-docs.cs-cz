@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: c39b78995aaa7e6754b180142c03cf3aa25199a5
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 2927521a76e74686592fbc4b3ccb931ece7981fd
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574265"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803303"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Jak vyžadovat dvoustupňové ověřování pro uživatele
 
@@ -87,8 +87,17 @@ Chcete-li změnit stav uživatele pomocí [Azure AD PowerShell](/powershell/azur
 
 Nepřesouvejte přímo na uživatele *vynucené* stavu. Pokud tak učiníte, aplikace nezaložené prohlížeči přestanou fungovat, protože nebyla uživatel neabsolvoval registraci Azure MFA a nezískal [heslo aplikace](howto-mfa-mfasettings.md#app-passwords).
 
+Nejprve nainstalujte modul pomocí:
+
+       Install-Module MSOnline
+       
+> [!TIP]
+> Nezapomeňte a připojte se nejprve pomocí **Connect-MsolService**
+
+
 Pomocí prostředí PowerShell je dobrou volbou, když budete chtít hromadné povolení uživatelů. Vytvořte Powershellový skript, který prochází seznam uživatelů a umožňuje jim:
 
+        Import-Module MSOnline
         $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
         $st.RelyingParty = "*"
         $st.State = “Enabled”
@@ -106,6 +115,14 @@ Následující skript představuje příklad:
         $sta = @($st)
         Set-MsolUser -UserPrincipalName $user -StrongAuthenticationRequirements $sta
     }
+    
+Zakázané MFA použít tento skript:
+
+    Get-MsolUser -UserPrincipalName user@domain.com | Set-MsolUser -StrongAuthenticationRequirements @()
+    
+nebo také lze zkrátit na:
+
+    Set-MsolUser -UserPrincipalName user@domain.com -StrongAuthenticationRequirements @()
 
 ## <a name="next-steps"></a>Další postup
 

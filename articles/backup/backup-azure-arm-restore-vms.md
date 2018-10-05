@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/04/2017
 ms.author: geg
-ms.openlocfilehash: eb47b1d8d3f2859b2b5c0b79633b2d37e5a40756
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: f7561ef4978e19439eafb6ef1a6ca1275c0f2bc7
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380161"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804612"
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Obnovení virtuálních počítačů pomocí webu Azure portal
 Chraňte vaše data pořizování snímků dat definovaných intervalech. Tyto snímky jsou označovány jako body obnovení a jsou uloženy v trezorech služby Recovery Services. Pokud je nutné opravit nebo znovu vytvořit virtuální počítač (VM), můžete obnovit virtuální počítač z některé z bodů obnovení uložených. Při obnovení bodu obnovení můžete provést tyto akce:
@@ -37,6 +37,7 @@ Obnovení virtuálního počítače nebo všechny disky z virtuálního počíta
 * Vybrat typ obnovení, vytvořit nový virtuální počítač nebo obnovte disky a zadejte požadované parametry. 
 
 ## <a name="select-a-restore-point-for-restore"></a>Vyberte bod obnovení pro obnovení
+
 1. Přihlaste se k [portálu Azure](http://portal.azure.com/).
 
 1. V nabídce Azure zvolte **Procházet**. V seznamu služeb zadejte **služby Recovery Services**. Seznam služeb se přizpůsobí, co zadáte. Když se zobrazí **trezory služby Recovery Services**, vyberte ji.
@@ -102,7 +103,7 @@ Jakmile vyberete bod obnovení, zvolte možnost obnovit konfiguraci virtuálníh
 Portál poskytuje **rychlé vytvoření** možnost pro obnovený virtuální počítač. K přizpůsobení konfigurace virtuálního počítače nebo názvy prostředků vytvořených jako součást vytváření nové výběr VM, obnovte zálohovanou disky pomocí Powershellu nebo na portálu. Použijte příkazy prostředí PowerShell pro připojení k podle vašeho výběru konfigurace virtuálního počítače. Nebo můžete použít šablonu, která se dodává s obnovených disků k přizpůsobení obnovený virtuální počítač. Informace o tom, jak obnovit virtuální počítač, který má několik síťových karet nebo je v části nástroje pro vyrovnávání zatížení najdete v tématu [obnovit virtuální počítač se speciální konfigurací sítě](#restore-vms-with-special-network-configurations). Pokud váš virtuální počítač Windows používá [centra licencování](../virtual-machines/windows/hybrid-use-benefit-licensing.md), obnovte disky a pomocí Powershellu/šablony uvedená v tomto článku můžete vytvořit virtuální počítač. Ověřte, že jste zadali **typ licence** jako "Windows_Server" při vytváření virtuálního počítače, pokud chcete využít výhod centra na obnovený virtuální počítač. 
  
 ## <a name="create-a-new-vm-from-a-restore-point"></a>Vytvořit nový virtuální počítač z bodu obnovení
-1. Pokud si nejste již existuje, [vyberte bod obnovení](#restore-a vm-with-special-network-configurations) předtím, než začnete vytvářet nový virtuální počítač z bodu obnovení. Až vyberete bod obnovení **obnovit konfiguraci** okně zadejte nebo vyberte hodnoty pro každou z těchto polí:
+1. Pokud si nejste již existuje, [vyberte bod obnovení](#select-a-restore-point-for-restore) předtím, než začnete vytvářet nový virtuální počítač z bodu obnovení. Až vyberete bod obnovení **obnovit konfiguraci** okně zadejte nebo vyberte hodnoty pro každou z těchto polí:
 
     a. **Typ obnovení**. Vytvoří virtuální počítač.
 
@@ -239,9 +240,9 @@ Znovu vytvořit plně virtuální počítače po obnovení na disku, postupujte 
 
    b. Vytvoření virtuálního počítače pro připojení k [nástroje pro vyrovnávání zatížení s přístupem k Internetu](https://azure.microsoft.com/documentation/articles/load-balancer-internet-getstarted/).
 
-   c. Vytvoření virtuálního počítače s [několik síťových karet](https://azure.microsoft.com/documentation/articles/virtual-networks-multiple-nics/).
+   c. Vytvoření virtuálního počítače s [několik síťových karet](../virtual-machines/windows/multiple-nics.md).
 
-   d. Vytvoření virtuálního počítače s [více vyhrazené IP adresy](https://azure.microsoft.com/documentation/articles/virtual-networks-reserved-public-ip/).
+   d. Vytvoření virtuálního počítače s [více vyhrazené IP adresy](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md).
 
 ## <a name="next-steps"></a>Další postup
 Teď můžete obnovit vaše virtuální počítače, najdete v článku řešení potíží najdete informace o běžných chybách s virtuálními počítači. Také přečtěte si článek o správu úloh pomocí vašich virtuálních počítačů.

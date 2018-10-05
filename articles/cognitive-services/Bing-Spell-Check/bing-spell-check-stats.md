@@ -1,21 +1,21 @@
 ---
-title: Analýza Bing pro API pro webové vyhledávání Bingu | Dokumentace Microsoftu
-titleSuffix: Cognitive Services
+title: Analýza Bing pro API pro webové vyhledávání Bingu
+titleSuffix: Azure Cognitive Services
 description: Popisuje, jak získat analýzy pro API kontrola pravopisu Bingu.
 services: cognitive-services
 author: swhite-msft
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: bing-spell-check
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: scottwhi
-ms.openlocfilehash: 4304ef506511827f578e6deb009410c378ed8ded
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d023bc726b46d54fba581e8f39e5dcf44f2c0204
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38317701"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801212"
 ---
 # <a name="how-to-get-analytics-for-bing-spell-check-api"></a>Jak získat analýzu pro API kontrola pravopisu Bingu
 

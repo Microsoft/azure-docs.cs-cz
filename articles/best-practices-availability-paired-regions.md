@@ -6,12 +6,12 @@ ms.service: multiple
 ms.topic: article
 ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: c500a1ecc817e4d95e39ca0ac985e1d90ffc8a78
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 5678b8408eac303d9036d21612f60fafc325425d
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721259"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801909"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Obchodní kontinuity podnikových procesů a zotavení po havárii (BCDR): spárované oblasti Azure
 
@@ -34,6 +34,7 @@ Obrázek 1 – Azure oblastních párech
 | Kanada |Kanada – střed |Kanada – východ |
 | Čína |Čína – sever |Čína – východ|
 | Evropa |Severní Evropa |Západní Evropa |
+| Francie |Francie – střed|Francie – jih|
 | Německo |Německo – střed |Německo – severovýchod |
 | Indie |Střed Indie |Indie – jih |
 | Indie |Indie – západ (1) |Indie – jih |
@@ -69,7 +70,7 @@ Obrázek 2 – hypotetické páru oblastí Azure
 ## <a name="cross-region-activities"></a>Aktivity mezi oblastmi
 Jak je uvedeno na obrázku 2.
 
-![PaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure Compute (PaaS)** – je třeba zřídit další výpočetní prostředky předem zajistit prostředky jsou k dispozici v jiné oblasti při havárii. Další informace najdete v tématu [technické pokyny k odolnosti Azure](resiliency/resiliency-technical-guidance.md).
+![IaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure Compute (IaaS)** – je třeba zřídit další výpočetní prostředky předem zajistit prostředky jsou k dispozici v jiné oblasti při havárii. Další informace najdete v tématu [technické pokyny k odolnosti Azure](resiliency/resiliency-technical-guidance.md).
 
 ![Úložiště](./media/best-practices-availability-paired-regions/2Green.png) **služby Azure Storage** – geograficky redundantní úložiště (GRS) je ve výchozím nastavení nakonfigurované, když se vytvoří účet služby Azure Storage. S GRS data automaticky replikují na třech místech v rámci primární oblasti a třikrát v párované oblasti. Další informace najdete v tématu [možnosti redundance Azure Storage](storage/common/storage-redundancy.md).
 

@@ -7,15 +7,15 @@ author: MikeDodaro
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: v-gedod
-ms.openlocfilehash: af5d0b5664e74d5d8490951a45bffea120f024b9
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: a8f7ccdb199f934011b6d64d813eb36cc9dff952
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435449"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804544"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>Podpora jazyka a oblasti pro rozhraní API pro vyhledávání zpráv Bingu
 

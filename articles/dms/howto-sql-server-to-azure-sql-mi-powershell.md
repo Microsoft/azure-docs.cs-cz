@@ -3,7 +3,7 @@ title: Pomocí modulu Azure Database Migration Service v prostředí Azure Power
 description: Zjistěte, jak migrovat z místního SQL serveru do služby Azure SQL DB MI pomocí Azure Powershellu.
 services: database-migration
 author: HJToland3
-ms.author: jtoland
+ms.author: rajpo
 manager: ''
 ms.reviewer: ''
 ms.service: database-migration
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 08/13/2018
-ms.openlocfilehash: 7bd7e7a4cb78cf8a9f818936c980b47a2e7865e7
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: c8747b7b8125f097fab3752693f4f14440ed7ce7
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "40099863"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804374"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-db-using-azure-powershell"></a>Migrace místního SQL serveru do služby Azure SQL DB pomocí Azure Powershellu
 V tomto článku, migrujete **Adventureworks2012** databáze obnovit k místní instanci systému SQL Server 2005 nebo novější do Azure SQL Database pomocí prostředí Azure PowerShell. Můžete migrovat databáze z místní instance systému SQL Server do Azure SQL Database s použitím `AzureRM.DataMigration` modulu v prostředí Azure PowerShell.
@@ -24,9 +24,9 @@ V tomto článku, migrujete **Adventureworks2012** databáze obnovit k místní 
 V tomto článku získáte informace o těchto tématech:
 > [!div class="checklist"]
 > * Vytvořte skupinu prostředků.
-> * Vytvoření instance služby Azure Database Migration Service.
+> * Vytvoření instance služby Azure Database Migration Service
 > * Vytvořte projekt migrace v instanci Azure Database Migration Service.
-> * Migraci spustíte.
+> * Spuštění migrace
 
 ## <a name="prerequisites"></a>Požadavky
 K dokončení těchto kroků budete potřebovat:
@@ -78,7 +78,7 @@ $service = New-AzureRmDms -ResourceGroupName myResourceGroup `
   -VirtualSubnetId $vSubNet.Id`
 ```
 
-## <a name="create-a-migration-project"></a>Vytvořit projekt migrace
+## <a name="create-a-migration-project"></a>Vytvoření projektu migrace
 Po vytvoření instance služby Azure Database Migration Service, vytvořte projekt migrace. Projekt Azure Database Migration Service vyžaduje informace o připojení pro obě instance zdroje a cíle, jakož i seznam databází, které chcete migrovat v rámci projektu.
 
 ### <a name="create-a-database-connection-info-object-for-the-source-and-target-connections"></a>Vytvoří objekt informace o připojení databáze pro zdroj a cíl připojení
@@ -175,7 +175,7 @@ Vytvořte proměnnou obsahující identifikátor URI SAS, který poskytuje Azure
 $blobSasUri="https://mystorage.blob.core.windows.net/test?st=2018-07-13T18%3A10%3A33Z&se=2019-07-14T18%3A10%3A00Z&sp=rwdl&sv=2018-03-28&sr=c&sig=qKlSA512EVtest3xYjvUg139tYSDrasbftY%3D"
 ```
 
-### <a name="select-logins"></a>Vybrat přihlašovací jména
+### <a name="select-logins"></a>Výběr přihlašovacích jmen
 Vytvořit seznam přihlášení k migraci, jak je znázorněno v následujícím příkladu: poznámka: aktuálně podporuje DMS migrace pouze přihlášeních SQL. 
 
 ```powershell

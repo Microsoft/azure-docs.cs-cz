@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: ef2f349333592e05185c5502490828832cb6c24c
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 456b60ee44f3e47bc04da341fd0e3df86662d16b
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018345"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785439"
 ---
 # <a name="about-the-speech-to-text-api"></a>O Speech to Text API
 
@@ -34,9 +34,11 @@ ms.locfileid: "48018345"
 
 - Rozpoznávání přirozeného jazyka. Díky integraci se sadou [Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS), které lze odvodit záměry a entity z řeči. Uživatelé nemusí vědět slovník vaší aplikace, ale můžete popsat, co chtějí ve své vlastní slova.
 
+- Skóre spolehlivosti se vrátí ze služby, pokud zadáte podrobný výstup na objekt konfigurace řeči (SpeechConfig.OutputFormat vlastnost). Pak můžete použít některé z metod Best() na výsledek nebo získat skóre přímo z JSON vrácený službou (něco jako výsledek. Properties.GetProperty(PropertyId.SpeechServiceResponse_JsonResult)).
+
 ## <a name="api-capabilities"></a>Funkce rozhraní API
 
-Velké množství funkcí **převod řeči na Text** rozhraní API – zejména v oblasti Vlastní nastavení – jsou k dispozici prostřednictvím REST. V následující tabulce najdete souhrn možností jednotlivých metod přístupu k rozhraní API. Pro úplný seznam možností a rozhraní API podrobnosti prosím najdete [Swagger](https://swagger/service/11ed9226-335e-4d08-a623-4547014ba2cc#/)
+Některé možnosti **převod řeči na Text** rozhraní API – zejména v oblasti Vlastní nastavení – jsou k dispozici prostřednictvím REST. V následující tabulce najdete souhrn možností jednotlivých metod přístupu k rozhraní API. 
 
 | Případ použití | REST | Sady SDK |
 |-----|-----|-----|----|

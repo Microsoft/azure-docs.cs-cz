@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: ef70d3d3dd2a806ea978be8e996b7d5ba0fbc96b
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 2b2d817c85528ef56fd0baef80d17c7cd6eae543
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586355"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802232"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -319,6 +319,16 @@ K této chybě dochází, protože agenta Azure File Sync nemá přístup ke sd�
 | **Požadována náprava** | Ano |
 
 Tato chyba nastane, pokud dojde k nějakému problému s interní databází používá Azure File Sync. Pokud k tomuto problému dochází, vytvořit žádost o podporu a pošleme vám pomůžou při řešení tohoto problému.
+
+<a id="-2134364053"></a>**Verze agenta Azure File Sync nainstalovaná na serveru není podporována.**  
+| | |
+|-|-|
+| **HODNOTA HRESULT** | 0x80C8306B |
+| **HRESULT (decimální)** | -2134364053 |
+| **Text chyby** | ECS_E_AGENT_VERSION_BLOCKED |
+| **Požadována náprava** | Ano |
+
+K této chybě dochází, pokud není podporován na serveru nainstalovaná verze agenta Azure File Sync. Chcete-li vyřešit tento problém [upgradovat]( https://docs.microsoft.com/en-us/azure/storage/files/storage-files-release-notes#upgrade-paths) k [podporovaná verze agenta]( https://docs.microsoft.com/en-us/azure/storage/files/storage-files-release-notes#supported-versions).
 
 <a id="-2134351810"></a>**Dosáhli jste limitu úložiště sdílené složky Azure file.**  
 | | |

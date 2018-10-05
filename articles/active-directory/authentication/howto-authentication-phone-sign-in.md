@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: librown
-ms.openlocfilehash: af5fe7c00b2dedd6b3447cd0919bdce3ac38ae5d
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 81c249c8dc8475428f4cb0014e57f09e28a3d9af
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237003"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804323"
 ---
 # <a name="password-less-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Přihlašování telefonem bez hesla pomocí aplikace Microsoft Authenticator (public preview)
 
@@ -37,7 +37,7 @@ Pro verzi public preview správce musíte nejprve přidat zásady pomocí powers
 
 ### <a name="steps-to-enable"></a>Postup povolení
 
-1. Nainstalujte [verze public preview služby Azure Active Directory V2 Powershellu modulu](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.114).  
+1. Nainstalujte [verze public preview služby Azure Active Directory V2 Powershellu modulu](https://www.powershellgallery.com/packages/AzureADPreview/).  
 2. V prostředí PowerShell spusťte dva příkazy:
    1. `Connect-AzureAD`
       1. V dialogovém okně pro ověření přihlašují účtem v tenantovi. Účet musí být buď správce zabezpečení nebo globální správce.

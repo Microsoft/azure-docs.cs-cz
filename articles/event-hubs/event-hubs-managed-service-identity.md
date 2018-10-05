@@ -1,6 +1,6 @@
 ---
-title: Identita spravované služby s verzí preview služby Azure Event Hubs | Dokumentace Microsoftu
-description: Identity spravovaných služeb pomocí Azure Event Hubs
+title: Spravované identity pro prostředky Azure s verzí preview služby Azure Event Hubs | Dokumentace Microsoftu
+description: Použití spravované identity pro prostředky Azure pomocí Azure Event Hubs
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -10,28 +10,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: shvija
-ms.openlocfilehash: f87a04b3b78bab124ca1b75006ed2c93a74f9198
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 815a6ff528e024ed1685b09b66f8fabce4d360c1
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005829"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48784549"
 ---
-# <a name="managed-service-identity-preview"></a>Identita spravované služby (Preview)
+# <a name="managed-identities-for-azure-resources-with-event-hubs"></a>Spravované identity pro prostředky Azure pomocí služby Event Hubs
 
-Identity spravované služby (MSI) je funkce napříč Azure, která umožňuje vytvořit zabezpečené identitu přidruženou k nasazení, pod kterým běží kód vaší aplikace. Potom můžete tuto identitu přidružit role řízení přístupu, které vlastní oprávnění pro přístup ke konkrétním prostředkům Azure, které vaše aplikace potřebuje. 
+[Spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) je funkce, mezi Azure, která umožňuje vytvořit zabezpečené identitu přidruženou k nasazení, pod kterým běží kód vaší aplikace. Potom můžete tuto identitu přidružit role řízení přístupu, které vlastní oprávnění pro přístup ke konkrétním prostředkům Azure, které vaše aplikace potřebuje. 
 
-Na platformě Azure pomocí MSI, spravuje tuto identitu modulu runtime. Není potřeba ukládat a chránit přístupových klíčů v kódu aplikace nebo konfigurace pro identitu, samotné nebo pro prostředky, které potřebujete získat přístup. Event Hubs klientské aplikaci spuštěnou v aplikaci Azure App Service nebo na virtuálním počítači povolená podpora MSI nemusí zpracovávat pravidla SAS a klíče nebo jiné přístupové tokeny. Klientská aplikace potřebuje pouze adresu koncového bodu z oboru názvů Event Hubs. Když se aplikace připojí, Event Hubs váže kontextu MSI do klienta v operaci, která se zobrazí v příklad dále v tomto článku.
+Pomocí spravované identity spravuje Platforma Azure tuto identitu modulu runtime. Není potřeba ukládat a chránit přístupových klíčů v kódu aplikace nebo konfigurace pro identitu, samotné nebo pro prostředky, které potřebujete získat přístup. Klienta aplikace služby Event Hubs v aplikaci Azure App Service nebo na virtuálním počítači s spravovaných identit pro prostředky Azure je povolená podpora nemusí zpracovávat pravidla SAS a klíče nebo jiné přístupové tokeny. Klientská aplikace potřebuje pouze adresu koncového bodu z oboru názvů Event Hubs. Když se aplikace připojí, vytvoří vazbu služby Event Hubs kontext spravované identity klienta v operaci, která se zobrazí v příklad dále v tomto článku.
 
-Až bude související s využitím identity spravované služby, klient služby Event Hubs můžete provádět všem oprávněným operace. Povolení uděleno tím, že přidružíte MSI s rolí služby Event Hubs. 
+Jakmile je přidružen k spravovanou identitu, klient služby Event Hubs můžete provést všechny schválené operace. Povolení uděleno tím, že přidružíte spravovanou identitu s rolí služby Event Hubs. 
 
 ## <a name="event-hubs-roles-and-permissions"></a>Event Hubs role a oprávnění
 
-Počáteční verze public preview verzi pouze přidáte identitu spravované služby "Vlastník" nebo "Přispěvatel" rolí obor názvů služby Event Hubs, která udělují oprávnění Úplné řízení identit na všechny entity v oboru názvů. Však nepodporuje správu operací, které se mění topologii obor názvů jsou zpočátku pouze když Azure Resource Manageru a ne přes rozhraní nativní Správa Event Hubs REST. Tato podpora také znamená, že nelze použít klienta rozhraní .NET Framework [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) objekt v rámci identity spravované služby. 
+Spravovaná identita lze přidat pouze do "Vlastník" nebo "Přispěvatel" rolí obor názvů služby Event Hubs, která udělují oprávnění Úplné řízení identit na všechny entity v oboru názvů. Ale správy, které operace, které změní topologie obor názvů jsou zpočátku podporované pouze když Azure Resource Manageru. Není nativní správu rozhraní REST centra událostí. Tato podpora také znamená, že nelze použít klienta rozhraní .NET Framework [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) objekt v rámci spravovanou identitu. 
  
-## <a name="use-event-hubs-with-a-managed-service-identity"></a>Použití služby Event Hubs s využitím Identity spravované služby
+## <a name="use-event-hubs-with-managed-identities-for-azure-resources"></a>Event Hubs pomocí spravované identity pro prostředky Azure
 
-Následující část popisuje kroky potřebné k vytvoření a nasazení ukázkové aplikace, na kterém běží v části Identita spravované služby, jak udělit přístup této identity na obor názvů služby Event Hubs a jak aplikace komunikuje s event hubs, která pomocí Identita.
+Následující část popisuje následující kroky:
+
+1. Vytvořte a nasaďte ukázkovou aplikaci, na kterém běží pod spravovanou identitu.
+2. Udělte přístup této identity na obor názvů služby Event Hubs.
+3. Jak aplikace komunikuje s event hubs pomocí tuto identitu.
 
 Tento úvod popisuje webové aplikaci hostované v [služby Azure App Service](https://azure.microsoft.com/services/app-service/). Kroky potřebné pro aplikace hostované na virtuálním počítači jsou podobné.
 
@@ -39,7 +43,7 @@ Tento úvod popisuje webové aplikaci hostované v [služby Azure App Service](h
 
 Prvním krokem je vytvoření aplikace App Service ASP.NET. Pokud nejste obeznámeni s jak to udělat v Azure, postupujte podle [Tato příručka](../app-service/app-service-web-get-started-dotnet-framework.md). Místo vytváření aplikace MVC, jak je znázorněno v tomto kurzu, vytvořte aplikaci webových formulářů.
 
-### <a name="set-up-the-managed-service-identity"></a>Nastavení identity spravované služby
+### <a name="set-up-the-managed-identity"></a>Nastavit spravované identity
 
 Jakmile vytvoříte aplikaci, přejděte na nově vytvořenou webovou aplikaci na webu Azure Portal (také je znázorněno postupy) a pak přejděte na **identita spravované služby** stránce a povolení této funkce: 
 
@@ -49,32 +53,29 @@ Po povolení funkce, je novou identitu služby vytvořené ve službě Azure Act
 
 ### <a name="create-a-new-event-hubs-namespace"></a>Vytvoření nového oboru názvů služby Event Hubs
 
-Dále [vytvořte obor názvů služby Event Hubs](event-hubs-create.md) v jedné oblasti Azure, které nabízí podporu verze preview pro MSI: **oblasti USA – východ**, **USA – východ 2**, nebo **západní Evropa**. 
+Dále [vytvořte obor názvů služby Event Hubs](event-hubs-create.md) v jedné oblasti Azure, které nabízí podporu verze preview pro spravované identity pro prostředky Azure: **oblasti USA – východ**, **USA – východ 2**, nebo  **Západní Evropa**. 
 
-Přejděte do oboru názvů **řízení přístupu (IAM)** stránky na portálu a potom klikněte na tlačítko **přidat** přidáte identitu spravované služby pro **vlastníka** role. Uděláte to tak, vyhledejte název webové aplikace v **přidat oprávnění** panel **vyberte** pole a potom klikněte na příslušnou položku. Potom klikněte na **Uložit**.
+Přejděte do oboru názvů **řízení přístupu (IAM)** stránky na portálu a potom klikněte na tlačítko **přidat** přidáte spravovanou identitu do **vlastníka** role. Uděláte to tak, vyhledejte název webové aplikace v **přidat oprávnění** panel **vyberte** pole a potom klikněte na příslušnou položku. Potom klikněte na **Uložit**.
 
 ![](./media/event-hubs-managed-service-identity/msi2.png)
  
-Identita spravované služby pro webové aplikace teď má přístup k oboru názvů Event Hubs a do centra událostí, kterou jste vytvořili dřív. 
+Spravovaná identita pro webové aplikace teď má přístup k oboru názvů Event Hubs a do centra událostí, kterou jste vytvořili dřív. 
 
 ### <a name="run-the-app"></a>Spuštění aplikace
 
 Nyní můžete upravte výchozí stránku, kterou jste vytvořili aplikaci ASP.NET. Můžete také použít kódu webové aplikace z [úložiště GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/MSI/EventHubsMSIDemoWebApp). 
 
->[!NOTE] 
-> Funkce MSI je ve verzi preview, je potřeba použít [verze preview knihovny služby Service Bus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/4.2.2-preview) za účelem přístupu k nová rozhraní API. 
+Po spuštění aplikace, přejděte v prohlížeči EventHubsMSIDemo.aspx. Můžete ho také nastavit jako úvodní stránku. Kód můžete najít v souboru EventHubsMSIDemo.aspx.cs. Výsledkem je minimální webové aplikace s několika polí pro zadávání a **odeslat** a **přijímat** tlačítka, která připojení do služby Event Hubs k odesílání nebo příjem událostí. 
 
-Po spuštění aplikace, přejděte v prohlížeči EventHubsMSIDemo.aspx. Alternativně nastavte ji jako úvodní stránku. Kód můžete najít v souboru EventHubsMSIDemo.aspx.cs. Výsledkem je minimální webové aplikace s několika polí pro zadávání a **odeslat** a **přijímat** tlačítka, která připojení do služby Event Hubs k odesílání nebo příjem událostí. 
+Poznámka: Jak [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) objekt je inicializován. Namísto použití zprostředkovatele tokenu sdíleného přístupového tokenu (SAS), kód vytvoří poskytovatel tokenů pro spravovanou identitu s `TokenProvider.CreateManagedServiceIdentityTokenProvider(ServiceAudience.EventHubAudience)` volání. V důsledku toho nejsou žádné tajné kódy ukládat a používat. Tok kontextu spravovaných identit do služby Event Hubs a povolení handshake jsou automaticky zpracovány od poskytovatele tokenu, tedy modelem jednodušší než při použití SAS.
 
-Poznámka: Jak [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) objekt je inicializován. Namísto použití zprostředkovatele tokenu sdíleného přístupového tokenu (SAS), kód vytvoří poskytovatel tokenů pro identity spravované služby u `TokenProvider.CreateManagedServiceIdentityTokenProvider(ServiceAudience.EventHubAudience)` volání. V důsledku toho nejsou žádné tajných kódů a zachovat. Tok kontext identity spravované služby Event Hubs a povolení handshake jsou automaticky zpracovány od poskytovatele tokenu, tedy modelem jednodušší než při použití SAS.
-
-Po provedení těchto změn, publikování a spuštění aplikace. Ke stažení a pak importovat profil publikování v sadě Visual Studio je snadný způsob, jak získat správný publikování dat:
+Po provedení těchto změn, publikování a spuštění aplikace. Stažením a následným importováním profil publikování v sadě Visual Studio můžete získat správná data publikování:
 
 ![](./media/event-hubs-managed-service-identity/msi3.png)
  
 Odesílat nebo přijímat zprávy, zadejte název oboru názvů a názvem entity, které jste vytvořili a pak klikněte na možnost **odeslat** nebo **přijímat**. 
  
-Všimněte si, že služby managed service identity funguje jenom v prostředí Azure a pouze v nasazení služby App Service, ve kterém jste je nakonfigurovali. Všimněte si také, že identity spravovaných služeb nefungují s sloty nasazení služby App Service v tuto chvíli.
+Spravovaná identita funguje jenom v prostředí Azure a pouze v nasazení služby App Service, ve kterém jste je nakonfigurovali. Spravované identity s sloty nasazení služby App Service v tuto chvíli nefungují.
 
 ## <a name="next-steps"></a>Další postup
 

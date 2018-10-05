@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: andrl
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d53106efa4e3761a497e67181546c8ec09fd880c
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: c35082d107b538e7e908162c00facafecc406bc6
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055501"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785632"
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Dělení a škálování ve službě Azure Cosmos DB
 
@@ -93,11 +93,13 @@ Když zvolit klíč oddílu s nad aspekty, není nutné se starat o počet oddí
 
 ## <a name="prerequisites"></a>Předpoklady pro dělení
 
-Kontejnery služby Azure Cosmos DB je možné vytvořit, jak je stanoveno nebo neomezené na webu Azure Portal. Kontejnery s pevnou velikostí mají omezení maximální velikosti 10 GB a propustnosti 10 000 RU/s. Pokud chcete vytvořit kontejner jako neomezený, je nutné zadat klíč oddílu a minimální propustnost 1 000 RU/s. Kontejnery služby Azure Cosmos DB může také nakonfigurovat tak, aby sdílet propustnosti mezi sadu kontejnerů, ve kterých musí každý kontejner určením oddílu klíče a můžete rozšiřovat neomezený počet. Toto jsou požadavky ke zvážení pro dělení a škálování:
+Kontejnery služby Azure Cosmos DB je možné vytvořit, jak je stanoveno nebo neomezený. Kontejnery s pevnou velikostí mají omezení maximální velikosti 10 GB a propustnosti 10 000 RU/s. Pokud chcete vytvořit kontejner jako neomezený, je nutné zadat klíč oddílu a minimální propustnost 1 000 RU/s. Kontejnery služby Azure Cosmos DB můžete vytvořit také tak, aby sdílejí propustnost. V takových případech musíte každý kontejner určením klíče oddílu a můžou růst neomezený počet. 
 
-* Při vytváření kontejneru (např. kolekce, graf nebo tabulku) na webu Azure Portal, vyberte **Unlimited** možnost kapacity úložiště využívat neomezené škálování. Pro fyzické oddíly k automatické rozdělit do **p1** a **p2** jak je popsáno v [jak dělení funguje](#how-does-partitioning-work), je potřeba vytvořit kontejner s propustností 1 000 RU/s nebo více (nebo sdílené složky propustnosti mezi sadu kontejnerů) a musí být zadaný klíč oddílu. 
+Toto jsou požadavky ke zvážení pro dělení a škálování:
 
-* Pokud jste vytvořili kontejner na webu Azure Portal nebo prostřednictvím kódu programu a počáteční propustnosti bylo 1 000 RU/s nebo více a zadat klíč oddílu, můžete využít výhod neomezené škálování bez změny do kontejneru. Jedná se o **Fixed** kontejnery, pokud počáteční kontejner byl vytvořen s alespoň 1 000 RU/s, propustnosti a zadat klíč oddílu.
+* Při vytváření kontejneru (např. kolekce, graf nebo tabulku) na webu Azure Portal, vyberte **Unlimited** možnost kapacity úložiště využívat neomezené škálování. Na fyzické oddíly automaticky rozdělit do **p1** a **p2** jak je popsáno v [jak dělení funguje](#how-does-partitioning-work) článku, je nutné vytvořit kontejner s propustností 1 000 RU/s nebo Další (nebo sdílené složky propustnosti mezi sadu kontejnerů) a musí být zadaný klíč oddílu. 
+
+* Je-li vytvořit kontejner s počáteční propustnosti větší než nebo rovno 1 000 RU/s a zadejte klíč oddílu, můžete využít výhod neomezené škálování bez nutnosti jakkoli měnit svůj kontejner. To znamená, že i když vytvoříte **Fixed** kontejneru, je-li počáteční kontejneru se vytvoří s propustností alespoň 1 000 RU/s a pokud je zadaný klíč oddílu, kontejner funguje jako neomezený kontejner.
 
 * Všechny kontejnery nakonfigurován pro sdílení propustnost jako součást sady kontejnery jsou považovány za **Unlimited** kontejnery.
 

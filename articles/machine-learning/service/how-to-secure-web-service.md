@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2018
-ms.openlocfilehash: 8a26491acc7215598e57ce6074fffe26a4374a96
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 885d867d0733ef923d327d8d6a36fc1588fd4961
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48251012"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801008"
 ---
 # <a name="secure-azure-machine-learning-web-services-with-ssl"></a>Zabezpečení webových služeb Azure Machine Learning s protokolem SSL
 
@@ -81,7 +81,7 @@ Chcete-li nasadit (nebo znovu nasadit) na službu s protokol SSL povolený, nast
     aci_config = AciWebservice.deploy_configuration(ssl_enabled=True, ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     ```
 
-+ **Nasazení v rámci pole funkce gamma programovatelný polí (FPGA)**
++ **Nasazení na pole Programmable Gate Array (FPGA)**
 
   Odpověď `create_service` operace obsahuje IP adresu služby. IP adresa se používá při mapování názvu DNS na IP adresu služby. Také obsahuje odpovědi __primární klíč__ a __sekundární klíč__ , která se používají k používání této služby. Zadejte hodnoty pro parametry související s protokolem SSL, jak znázorňuje fragment kódu:
 
@@ -119,7 +119,7 @@ V dalším kroku je nutné aktualizovat DNS tak, aby odkazoval na webovou služb
 
   Aktualizace DNS na kartě "Konfigurace" z "Veřejné IP adresy" clusteru AKS, jak je znázorněno na obrázku. Veřejnou IP adresu najdete jako jeden z typů prostředků vytvořené v rámci skupiny prostředků, která obsahuje agentské uzly AKS a jiných síťových prostředků.
 
-  [ ![Služba Azure Machine Learning: zabezpečení webové služby s protokolem SSL](./media/how-to-secure-web-service/aks-public-ip-address.png) ] ((.media/how-to-secure-web-service/aks-public-ip-address.png#lightbox)
+  ![Služba Azure Machine Learning: zabezpečení webové služby s protokolem SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)
 
 ## <a name="consume-authenticated-services"></a>Využívání služeb ověřený
 
@@ -131,7 +131,7 @@ V dalším kroku je nutné aktualizovat DNS tak, aby odkazoval na webovou služb
 
   + [Postup nasazení do AKS](how-to-deploy-to-aks.md)
 
-+ **ACI a FPGA**:  
++ **Pro FPGA**:  
 
   Následující příklady ukazují, jak využívat služby ověřené FPGA na Python a C#.
   Nahraďte `authkey` s primárním nebo sekundárním klíčem, který byl vrácen, pokud byla nasazená služba.

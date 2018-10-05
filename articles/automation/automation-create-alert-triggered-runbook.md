@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ac117994140f96ec993e4fed739626f736ad7efc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 98de7a84dc388f74c64d7c265d2ce8ed32995a5a
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965275"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48784771"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Pomocí upozornění můžete aktivovat runbooku Azure Automation
 
@@ -211,7 +211,7 @@ Chcete-li vytvořit akci oznámení do skupiny akcí:
    ![Přidat stránku skupiny akcí](./media/automation-create-alert-triggered-runbook/add-action-group.png)
 1. Chcete-li vytvořit skupinu akcí, vyberte **OK**.
 
-Tato skupina akcí v můžete použít [upozornění protokolu aktivit](../monitoring-and-diagnostics/monitoring-activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json) a [téměř v reálném čase dostávat](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md?toc=%2fazure%2fautomation%2ftoc.json#create-an-alert-rule-with-the-azure-portal) , který vytvoříte.
+Tato skupina akcí v můžete použít [upozornění protokolu aktivit](../monitoring-and-diagnostics/monitoring-activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json) a [téměř v reálném čase dostávat](../monitoring-and-diagnostics/monitoring-overview-alerts.md?toc=%2fazure%2fautomation%2ftoc.json) , který vytvoříte.
 
 ## <a name="classic-alert"></a>Upozornění Classic
 
@@ -231,4 +231,4 @@ Vytvoření klasického upozornění:
 * Další informace o spuštění runbooku Automation pomocí webhooku, najdete v části [spuštění runbooku z webhooku](automation-webhooks.md).
 * Podrobnosti o různých způsobech spouštění sady runbook najdete v tématu [spuštění sady runbook](automation-starting-a-runbook.md).
 * Další postup vytvoření upozornění protokolu aktivit najdete v tématu [vytvoření upozornění protokolu aktivit](../monitoring-and-diagnostics/monitoring-activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json).
-* Zjistěte, jak vytvořit téměř v reálném čase výstrahy, najdete v článku [vytvořit pravidlo upozornění na webu Azure Portal](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md?toc=%2fazure%2fautomation%2ftoc.json#create-an-alert-rule-with-the-azure-portal).
+* Zjistěte, jak vytvořit téměř v reálném čase výstrahy, najdete v článku [vytvořit pravidlo upozornění na webu Azure Portal](../monitoring-and-diagnostics/alert-metric.md?toc=/azure/azure-monitor/toc.json).

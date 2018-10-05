@@ -9,12 +9,12 @@ ms.workload: core
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: shvija
-ms.openlocfilehash: 3497abdd571282974d85ebaa58d06b47cbe3b159
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 413f36a12dee135cc1a7dc99a34d8b7b2be6c46f
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368610"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801059"
 ---
 # <a name="send-events-to-azure-event-hubs-using-nodejs"></a>Odesílání událostí do služby Azure Event Hubs pomocí Node.js
 
@@ -72,6 +72,7 @@ Sady SDK, které jste naklonovali obsahuje několik ukázek, které ukazují, ja
 ## <a name="review-the-sample-code"></a>Revize ukázkového kódu 
 Tady je ukázkový kód pro odesílání událostí do centra událostí pomocí node.js. Můžete ručně vytvořit soubor sampleSender.js a spusťte ho k odesílání událostí do centra událostí. 
 
+
 ```nodejs
 const { EventHubClient, EventPosition } = require('@azure/event-hubs');
 
@@ -89,6 +90,18 @@ main().catch((err) => {
     console.log(err);
 });
 
+```
+
+Nezapomeňte nastavit proměnné prostředí před spuštěním skriptu. Můžete nastavit tuto konfiguraci na příkazovém řádku, jak je znázorněno v následujícím příkladu, nebo použít [dotenv balíčku](https://www.npmjs.com/package/dotenv#dotenv). 
+
+```
+// For windows
+set EVENTHUB_CONNECTION_STRING="<your-connection-string>"
+set EVENTHUB_NAME="<your-event-hub-name>"
+
+// For linux or macos
+export EVENTHUB_CONNECTION_STRING="<your-connection-string>"
+export EVENTHUB_NAME="<your-event-hub-name>"
 ```
 
 ## <a name="next-steps"></a>Další postup

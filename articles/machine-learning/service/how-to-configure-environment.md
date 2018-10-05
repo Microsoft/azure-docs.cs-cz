@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
 ms.date: 8/6/2018
-ms.openlocfilehash: 73cc346e882acab1c2c00cc49738a388927d3ccf
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 40a74af4f71fe649e5e4c6e67d4fdcb9751cc06e
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248240"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48800753"
 ---
 # <a name="configure-a-development-environment-for-the-azure-machine-learning-service"></a>Konfigurace vývojového prostředí pro službu Azure Machine Learning
 
@@ -188,7 +188,7 @@ Příklad použití poznámkových bloků Azure ve službě Azure Machine Learni
     conda install <new package>
     ```
 
-6. Spusťte Visual Studio Code a pak použít __CTRL-SHIFT-P__ zobrazíte __paletu příkazů__. Zadejte *Python: Select Interpreter*a vyberte prostředí conda, který jste vytvořili.
+6. Spusťte Visual Studio Code a pak použít __CTRL-SHIFT-P__ pro Windows nebo __příkazu-SHIFT-P__ pro Mac zobrazíte __paletu příkazů__. Zadejte *Python: Select Interpreter*a vyberte prostředí conda, který jste vytvořili.
 
     > [!NOTE]
     > Visual Studio Code je automaticky znát prostředí conda ve vašem počítači. Další informace najdete v tématu [dokumentaci kódu sady Visual Studio](https://code.visualstudio.com/docs/python/environments#_conda-environments).

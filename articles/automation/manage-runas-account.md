@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a8821b2e1be10cddafba04109041e76ef65f6a6a
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 5e8e8d1923caf5f51cffedd6b918dbc617b5c3a9
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433697"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785473"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Správa účtů služby Automation spustit jako pro Azure
 
@@ -35,7 +35,7 @@ Existují dva typy účtů spustit jako:
 
 ## <a name="permissions"></a>Oprávnění ke konfiguraci účtů spustit jako
 
-Vytvořit nebo aktualizovat účet Spustit jako, musí mít specifické oprávnění a oprávnění. Globální správce nebo Spolusprávce může dokončení všech úloh. V situaci, kdy máte seperation povinností následující tabulka uvádí seznam úkolů, ekvivalentní rutinu a potřebná oprávnění:
+Vytvořit nebo aktualizovat účet Spustit jako, musí mít specifické oprávnění a oprávnění. Globální správce nebo Spolusprávce může dokončení všech úloh. V situaci, kdy máte oddělení povinností následující tabulka uvádí seznam úkolů, ekvivalentní rutinu a potřebná oprávnění:
 
 |Úkol|Rutina  |Minimální oprávnění  |
 |---|---------|---------|
@@ -49,18 +49,18 @@ Vytvořit nebo aktualizovat účet Spustit jako, musí mít specifické oprávn�
 * Uživatelský účet AD s oprávněními role přispěvatele pro prostředky Microsoft.Automation, jak je uvedeno v článku [řízení přístupu na základě rolí ve službě Azure Automation](automation-role-based-access-control.md#contributor).  
 * Uživatelé ve vašem tenantovi Azure AD, kteří nejsou správci, můžou [registrovat aplikace AD](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions), pokud je možnost **Uživatelé můžou registrovat aplikace** na stránce **Uživatelská nastavení** pro vašeho tenanta Azure AD nastavená na **Ano**. Pokud je nastavení Registrace aplikací nastaveno na **Ne**, uživatel provádějící tuto akci musí být globálním správcem služby Azure AD.
 
-Pokud před přidáním do role globálního správce nebo spolusprávce nejste členem instance Active Directory příslušného předplatného, budete do služby Active Directory přidaní jako host. V takovém případě se zobrazí `You do not have permissions to create…` upozornění na **přidat účet Automation** stránky. Uživatele, kteří byli nejdřív přidaní do role globálního správce nebo spolusprávce, je možné z instance Active Directory předplatného odebrat a potom je znovu přidat – tak se z nich ve službě Active Directory stanou úplní uživatelé. Takovou situaci můžete ověřit v podokně **Azure Active Directory** na webu Azure Portal. Vyberte **Uživatelé a skupiny**, potom **Všichni uživatelé** a po výběru konkrétního uživatele vyberte **Profil**. Hodnota atributu **Typ uživatele** v profilu uživatele by neměla být **Host**.
+Pokud nejste členem instance Active Directory předplatného před přidané do globální správce nebo spolusprávce role pro předplatné, se přidá jako Host. V takovém případě se zobrazí `You do not have permissions to create…` upozornění na **přidat účet Automation** stránky. Uživatele, kteří byli nejdřív přidaní do role globálního správce nebo spolusprávce, je možné z instance Active Directory předplatného odebrat a potom je znovu přidat – tak se z nich ve službě Active Directory stanou úplní uživatelé. Takovou situaci můžete ověřit v podokně **Azure Active Directory** na webu Azure Portal. Vyberte **Uživatelé a skupiny**, potom **Všichni uživatelé** a po výběru konkrétního uživatele vyberte **Profil**. Hodnota atributu **Typ uživatele** v profilu uživatele by neměla být **Host**.
 
 ## <a name="create-a-run-as-account-in-the-portal"></a>Vytvoření účtu spustit jako na portálu
 
 V této části provedete následující kroky a aktualizujete svůj účet Azure Automation na webu Azure Portal. Vytvoříte samostatně účet Spustit jako a účet Spustit jako pro Azure Classic. Pokud nepotřebujete spravovat klasické prostředky, můžete vytvořit jenom účet Spustit jako pro Azure.  
 
 1. Přihlaste se k webu Azure Portal pomocí účtu, který je členem role správců předplatného a spolusprávcem předplatného.
-1. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Automation**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Účty Automation**.
-1. Na stránce **Účty Automation** vyberte ze seznamu svůj účet Automation.
-1. V levém podokně vyberte **Účty Spustit jako** v části **Nastavení účtu**.  
-1. Podle toho, který účet požadujete, vyberte buď **Účet Spustit jako pro Azure**, nebo **Účet Spustit jako pro Azure Classic**. Po výběru se zobrazí podokno **Přidat účet Spustit jako pro Azure** nebo **Přidat účet Spustit jako pro Azure Classic**. Jakmile zkontrolujete souhrnné informace, klikněte na **Vytvořit** a pokračujte ve vytváření účtu Spustit jako.  
-1. Zatímco Azure vytváří účet Spustit jako, můžete průběh sledovat v nabídce v části **Oznámení**. Zobrazí se také nápis informující, že je účet vytvořený. Dokončení tohoto procesu může trvat několik minut.  
+2. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Automation**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Účty Automation**.
+3. Na stránce **Účty Automation** vyberte ze seznamu svůj účet Automation.
+4. V levém podokně vyberte **Účty Spustit jako** v části **Nastavení účtu**.  
+5. Podle toho, který účet požadujete, vyberte buď **Účet Spustit jako pro Azure**, nebo **Účet Spustit jako pro Azure Classic**. Po výběru se zobrazí podokno **Přidat účet Spustit jako pro Azure** nebo **Přidat účet Spustit jako pro Azure Classic**. Jakmile zkontrolujete souhrnné informace, klikněte na **Vytvořit** a pokračujte ve vytváření účtu Spustit jako.  
+6. Zatímco Azure vytváří účet Spustit jako, můžete průběh sledovat v nabídce v části **Oznámení**. Zobrazí se také nápis informující, že je účet vytvořený. Dokončení tohoto procesu může trvat několik minut.  
 
 ## <a name="create-run-as-account-using-powershell"></a>Vytvoření účtu spustit jako pomocí Powershellu
 
@@ -73,7 +73,7 @@ Následující seznam uvádí požadavky pro vytvoření účtu spustit jako v p
 * Účet Automation, na který se odkazuje jako na hodnotu parametrů *-AutomationAccountName* a *-ApplicationDisplayName*.
 * Oprávnění na jaký je uveden v [požadovaná oprávnění ke konfiguraci účtů spustit jako](#permissions)
 
-Abyste získali hodnoty pro parametry *SubscriptionID*, *ResourceGroup* a *AutomationAccountName*, které jsou pro skript povinné, postupujte takto:
+Abyste získali hodnoty pro *SubscriptionID*, *ResourceGroup*, a *AutomationAccountName*, které jsou požadovanými parametry pro skript, proveďte následující kroky:
 
 1. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Automation**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Účty Automation**.
 1. Na stránce účtu Automation vyberte váš účet Automation a potom v části **Nastavení účtu** vyberte **Vlastnosti**.  
@@ -306,7 +306,7 @@ Po úspěšném spuštění skriptu je třeba počítat s následujícím:
 
 * Pokud jste vytvořili účet Spustit jako pro Classic s využitím veřejného certifikátu podepsaného svým držitelem (soubor .cer), skript ho vytvoří a uloží ve složce dočasných souborů ve vašem počítači pod profilem uživatele *%USERPROFILE%\AppData\Local\Temp*, který používáte ke spuštění relace PowerShellu.
 
-* Pokud jste vytvořili účet Spustit jako pro Classic s využitím podnikového veřejného certifikátu (soubor .cer), použijte tento certifikát. Postupujte podle pokynů pro [odeslání certifikátu rozhraní API pro správu na webu Azure portal](../azure-api-management-certs.md). () Automation-Verify-runas-Authentication.MD#Classic-Run-as-Authentication).
+* Pokud jste vytvořili účet Spustit jako pro Classic s využitím podnikového veřejného certifikátu (soubor .cer), použijte tento certifikát. Postupujte podle pokynů pro [odeslání certifikátu rozhraní API pro správu na webu Azure portal](../azure-api-management-certs.md).
 
 ## <a name="delete-a-run-as-or-classic-run-as-account"></a>Odstranění účet Spustit jako nebo Spustit jako pro Classic
 
@@ -314,9 +314,9 @@ Tato část popisuje, jak odstranit a znovu vytvořit účet Spustit jako nebo �
 
 1. Na webu Azure Portal otevřete účet Automation.
 
-1. Na stránce **Účet Automation** vyberte **Účty Spustit jako**.
+2. Na stránce **Účet Automation** vyberte **Účty Spustit jako**.
 
-1. Na stránce vlastností **Účty Spustit jako** vyberte účet Spustit jako nebo účet Spustit jako pro Classic, který chcete odstranit. Potom v podokně **Vlastnosti** vybraného účtu klikněte na **Odstranit**.
+3. Na stránce vlastností **Účty Spustit jako** vyberte účet Spustit jako nebo účet Spustit jako pro Classic, který chcete odstranit. Potom v podokně **Vlastnosti** vybraného účtu klikněte na **Odstranit**.
 
  ![Odstranění účtu Spustit jako](media/manage-runas-account/automation-account-delete-runas.png)
 
@@ -330,7 +330,7 @@ Tato část popisuje, jak odstranit a znovu vytvořit účet Spustit jako nebo �
 
 V určitém okamžiku před vypršením platnosti účtu spustit jako, musíte obnovit certifikát. Pokud se domníváte, že zabezpečení účtu Spustit jako je ohrožené, můžete ho odstranit a vytvořit znovu. Tato část popisuje, jak tyto operace provést.
 
-Platnost certifikátu podepsaného svým držitelem, který jste vytvořili pro účet Spustit jako, vyprší jeden rok od data jeho vytvoření. Před vypršením platnosti ho můžete kdykoli obnovit. Když ho obnovíte, aktuální platný certifikát se uchová, aby se zajistilo, že to negativně neovlivní runbooky ověřované účtem Spustit jako, které jsou právě ve frontě nebo aktivně spuštěné. Certifikát zůstane platný až do data vypršení jeho platnosti.
+Platnost certifikátu podepsaného svým držitelem, který jste vytvořili pro účet Spustit jako, vyprší jeden rok od data jeho vytvoření. Před vypršením platnosti ho můžete kdykoli obnovit. Když jej obnovíte, aktuální platný certifikát se uchová zajistit negativně neovlivní runbooky, které jsou zařazeny do fronty nebo aktivně spuštěné a, který proveďte ověření pomocí účtu spustit jako. Certifikát zůstane platný až do data vypršení jeho platnosti.
 
 > [!NOTE]
 > Pokud jste svůj účet Automation Spustit jako nakonfigurovali k používání certifikátu vydaného podnikovou certifikační autoritou a použijete tuto možnost, tento podnikový certifikát se nahradí certifikátem podepsaným svým držitelem.
@@ -359,7 +359,7 @@ Na webu Azure Portal, vyberte **předplatná** a zvolte předplatné účtu Auto
 
 ![Přispěvatelé předplatného](media/manage-runas-account/automation-account-remove-subscription.png)
 
-Přidání instančního objektu do skupiny prostředků, vyberte skupinu prostředků v Azure portal a vyberte **řízení přístupu (IAM)**. Vyberte **přidat**, tím se otevře **přidat oprávnění** stránky. Pro **Role**vyberte **Přispěvatel**. V **vyberte** textového pole zadejte název objektu služby pro účet Spustit jako a vyberte ho ze seznamu. Kliknutím na **Uložit** uložte změny. To lze proveďte pro skupiny prostředků, kterou chcete přidělit Azure Automation spustit jako službu objektu zabezpečení přístup k.
+Přidání instančního objektu do skupiny prostředků, vyberte skupinu prostředků v Azure portal a vyberte **řízení přístupu (IAM)**. Vyberte **přidat**, tím se otevře **přidat oprávnění** stránky. Pro **Role**vyberte **Přispěvatel**. V **vyberte** textového pole zadejte název objektu služby pro účet Spustit jako a vyberte ho ze seznamu. Kliknutím na **Uložit** uložte změny. Proveďte tyto kroky pro skupiny prostředků, kterou chcete přidělit Azure Automation spustit jako službu objektu zabezpečení přístup k.
 
 ## <a name="misconfiguration"></a>Chybná konfigurace
 

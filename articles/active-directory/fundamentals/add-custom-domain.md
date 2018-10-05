@@ -12,12 +12,12 @@ ms.date: 09/18/2018
 ms.author: lizross
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: c4529948a0a1b165945de78de97cc2470c6b431e
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 30b4a038c2ad9bd86f2ba78d52ed3754acec07f0
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237547"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785253"
 ---
 # <a name="how-to-add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Postupy: Přidání vlastního názvu domény pomocí portálu Azure Active Directory
 Každý nový Azure AD tenanta se dodává s počáteční název domény, *domainname*. onmicrosoft.com. Nelze změnit ani odstranit název domény, ale vaše organizace názvy můžete přidat do seznamu. Přidání vlastních názvů domén vám pomůže vytvořit uživatelská jména, které jsou vaši uživatelé znají, jako je například *alain@contoso.com*.
@@ -84,7 +84,7 @@ Až dokončíte registraci vlastního názvu domény, budete muset Ujistěte se,
 
     ![Stránka Contoso s informace o DNS záznam a na tlačítko Ověřit](media/add-custom-domain/contoso-blade-with-dns-info-verify.png)
 
-### <a name="common-verification-issues"></a>Běžné problémy ověření
+## <a name="common-verification-issues"></a>Běžné problémy ověření
 - Pokud Azure AD nemůže ověřit vlastní název domény, vyzkoušejte následující návrhy:
     - **Počkejte aspoň hodinu a zkuste to znovu**. Záznamy DNS musí rozšířit a teprve potom Azure AD můžete ověřit, že domény a tento proces může trvat hodinu i déle.
 
@@ -93,7 +93,8 @@ Až dokončíte registraci vlastního názvu domény, budete muset Ujistěte se,
     Pokud nemůžete aktualizovat record na webu registrátora, musejí sdílet ji s někým, který má správná oprávnění k přidání položky a ověřte, zda že je přesné.
 
 - **Ujistěte se, že název domény se už používá v jiném adresáři.** Název domény můžete ověřit jenom v jednom adresáři, což znamená, že pokud je název vaší domény aktuálně ověřený v jiném adresáři, není také možné ho ověřit v novém adresáři. Chcete-li vyřešit tento problém duplikace, je nutné odstranit název domény z původního adresáře. Další informace o odstraňování názvů domén najdete v tématu [Správa vlastních názvů domén](../users-groups-roles/domains-manage.md).
-    - Pokud máte uživatele, kteří si aktivovali PowerBI prostřednictvím samoobslužné registrace a vytvořili nespravovaného tenanta pro vaši organizaci, může správce IT spravovat tohoto tenanta prostřednictvím převzetí nebo může pokračovat v přidání domény pomocí možnosti vynucení převzetí v PowerShellu. Další informace o převzetí domény správcem, naleznete v tématu [převzít kontrolu nad nespravovaného adresáře jako správce v Azure Active Directory](../users-groups-roles/domains-admin-takeover.md).
+
+- **Ujistěte se, že nemáte žádné nespravované tenantů Power BI.** Pokud vaši uživatelé si aktivovali Powerbi prostřednictvím samoobslužné registrace a vytvořili nespravovaného tenanta pro vaši organizaci, je nutné provést nad správou jako interní nebo externí správu, pomocí Powershellu. Další informace o tom, jak převzít kontrolu nad nespravovaného adresáře, naleznete v tématu [převzít kontrolu nad nespravovaného adresáře jako správce v Azure Active Directory](../users-groups-roles/domains-admin-takeover.md).
 
 ## <a name="next-steps"></a>Další postup
 

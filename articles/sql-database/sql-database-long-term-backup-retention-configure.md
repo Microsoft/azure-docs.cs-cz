@@ -10,17 +10,20 @@ ms.topic: conceptual
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/19/2018
-ms.openlocfilehash: 68746874ec01f44055421f0033acd0d485e1d230
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.date: 10/04/2018
+ms.openlocfilehash: fd747eb66a91a1ac9fe3b1c0d2ef7ac50a08faea
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586083"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801112"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Správa dlouhodobého uchovávání záloh Azure SQL Database
 
-Azure SQL database s můžete nakonfigurovat [dlouhodobého uchovávání záloh](sql-database-long-term-retention.md) zásad (LTR) automaticky uchovávání záloh ve službě Azure blob storage po dobu až 10 let. Pak můžete obnovit databázi pomocí tyto zálohy pomocí webu Azure portal nebo Powershellu.
+Ve službě Azure SQL Database, můžete nakonfigurovat jeden nebo databázi ve fondu s [dlouhodobého uchovávání záloh](sql-database-long-term-retention.md) zásad (LTR) automaticky uchovávání záloh ve službě Azure blob storage po dobu až 10 let. Pak můžete obnovit databázi pomocí tyto zálohy pomocí webu Azure portal nebo Powershellu.
+
+> [!IMPORTANT]
+> [Azure SQL Database Managed Instance](sql-database-managed-instance.md) aktuálně nepodporuje dlouhodobého uchovávání záloh.
 
 ## <a name="use-the-azure-portal-to-configure-long-term-retention-policies-and-restore-backups"></a>Pomocí webu Azure portal nakonfigurovat zásady dlouhodobou uchovávání a obnovení záloh
 Následující části ukazují, jak pomocí webu Azure portal nakonfigurovat dlouhodobé uchovávání, zobrazení v rámci dlouhodobého uchovávání záloh a obnovení z dlouhodobého uchování zálohy.

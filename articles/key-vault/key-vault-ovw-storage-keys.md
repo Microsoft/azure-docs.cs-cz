@@ -8,19 +8,19 @@ ms.service: key-vault
 author: bryanla
 ms.author: bryanla
 manager: mbaldwin
-ms.date: 08/21/2017
-ms.openlocfilehash: 7545a035541a4e464a6c82acb9fa9de18cf8e86d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 10/03/2018
+ms.openlocfilehash: 38717fed9f3877dfd0aa9819571ef0f32befc117
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304318"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785507"
 ---
 # <a name="azure-key-vault-storage-account-keys"></a>Klíče účtu úložiště Azure Key Vault
 
-Vývojáři se před klíčů k účtu Azure Key Vault úložiště, museli spravovat své vlastní klíče účtu úložiště Azure (ASA) a otočení je ručně nebo přes externí služby automation. Nyní, klíče účtu úložiště Key Vault se implementují jako [tajných kódů služby Key Vault](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates#BKMK_WorkingWithSecrets) pro ověřování pomocí účtu služby Azure Storage.
+Před klíče účtu úložiště Azure Key Vault vývojáři museli spravovat své vlastní klíče účtu úložiště Azure (ASA) a otočení je ručně nebo přes externí služby automation. Nyní, klíče účtu úložiště Key Vault se implementují jako [tajných kódů služby Key Vault](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates#BKMK_WorkingWithSecrets) pro ověřování pomocí účtu služby Azure Storage.
 
-Klíčovou funkcí účet úložiště Azure (ASA) slouží ke správě tajných kódů otočení za vás. Zároveň se tím odebere potřebu přímém kontaktu s klíčem ASA nabídkou sdílených přístupových podpisů (SAS) jako metodu.
+Klíčovou funkcí účet úložiště Azure (ASA) slouží ke správě tajných kódů otočení za vás. Zároveň se tím odebere potřebu přímém kontaktu s klíčem Azure Stream Analytics, tím, že nabízí sdílených přístupových podpisů (SAS) jako metodu.
 
 Další obecné informace o účtech Azure Storage, najdete v části [účty Azure storage](https://docs.microsoft.com/azure/storage/storage-create-storage-account).
 
@@ -95,28 +95,38 @@ accountSasCredential.UpdateSASToken(sasToken);
 - Nepovolit klíče Azure Stream Analytics lze spravovat pomocí více než jeden objekt služby Key Vault.
 - Pokud je potřeba ručně znovu vygenerovat klíče Azure Stream Analytics, doporučujeme vám, můžete obnovit pomocí služby Key Vault.
 
-## <a name="getting-started"></a>Začínáme
+## <a name="authorize-key-vault-to-access-to-your-storage-account"></a>Autorizace služby Key Vault pro přístup k účtu úložiště
 
-### <a name="give-key-vault-access-to-your-storage-account"></a>Poskytnout službě Key Vault přístup k vašemu účtu úložiště 
+Před služby Key Vault můžete přístup a spravovat své klíče účtu úložiště, musí povolit jeho přístup k účtu úložiště.  Stejně jako mnoho aplikací služby Key Vault se integruje s Azure AD služby pro správu identit a přístupu. 
 
-Stejně jako mnoho aplikací je Key Vault v Azure AD zaregistrováno Chcete-li použít OAuth pro přístup k dalším službám. Během registrace [hlavního názvu služby](/azure/active-directory/develop/app-objects-and-service-principals) je vytvořen objekt, který se používá k reprezentování identitu aplikace v době běhu. Instanční objekt se používá také k autorizaci identitu pro přístup k jinému zdroji, prostřednictvím řízení přístupu na základě role (RBAC).
+Protože Key Vault je aplikace Microsoft, je ve všech tenantů Azure AD podle ID aplikace předem registrovánu `cfa8b339-82a2-471a-a3c9-0fc0be7a4093`. A stejně jako všechny aplikace v Azure AD zaregistrováno [instanční objekt služby](/azure/active-directory/develop/app-objects-and-service-principals) objekt, který poskytuje vlastnosti identity aplikace. Instanční objekt je pak možné přidělit autorizaci pro přístup k jinému zdroji, prostřednictvím řízení přístupu na základě role (RBAC).  
 
-Identita aplikace služby Azure Key Vault potřebuje oprávnění k *seznamu* a *znovu vygenerovat* klíče účtu úložiště. Nastavení těchto oprávnění pomocí následujících kroků:
+Aplikace služby Azure Key Vault vyžaduje oprávnění k *seznamu* a *znovu vygenerovat* klíče účtu úložiště. Tato oprávnění jsou povolené prostřednictvím integrovaných [služby operátor klíčů účtu úložiště](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role) RBAC role. Přiřadit instanční objekt služby Key Vault do této role pomocí následujících kroků:
 
 ```powershell
-# Get the resource ID of the Azure Storage Account you want to manage.
-# Below, we are fetching a storage account using Azure Resource Manager
+# Get the resource ID of the Azure Storage Account you want Key Vault to manage
 $storage = Get-AzureRmStorageAccount -ResourceGroupName "mystorageResourceGroup" -StorageAccountName "mystorage"
 
-# Get Application ID of Azure Key Vault's service principal
-$servicePrincipal = Get-AzureRmADServicePrincipal -ServicePrincipalName cfa8b339-82a2-471a-a3c9-0fc0be7a4093
-
 # Assign Storage Key Operator role to Azure Key Vault Identity
-New-AzureRmRoleAssignment -ObjectId $servicePrincipal.Id -RoleDefinitionName 'Storage Account Key Operator Service Role' -Scope $storage.Id
+New-AzureRmRoleAssignment -ApplicationId “cfa8b339-82a2-471a-a3c9-0fc0be7a4093” -RoleDefinitionName 'Storage Account Key Operator Service Role' -Scope $storage.Id
 ```
 
-    >[!NOTE]
-    > For a classic account type, set the role parameter to *"Classic Storage Account Key Operator Service Role."*
+> [!NOTE]
+> Pro typ účtu Azure classic, nastavte parametr role *"Klasický účet klíč Role služby operátor úložiště."*
+
+Po přiřazení role úspěšné byste měli vidět výstup podobný následujícímu
+
+```console
+RoleAssignmentId   : /subscriptions/03f0blll-ce69-483a-a092-d06ea46dfb8z/resourceGroups/rgSandbox/providers/Microsoft.Storage/storageAccounts/sabltest/providers/Microsoft.Authorization/roleAssignments/189cblll-12fb-406e-8699-4eef8b2b9ecz
+Scope              : /subscriptions/03f0blll-ce69-483a-a092-d06ea46dfb8z/resourceGroups/rgSandbox/providers/Microsoft.Storage/storageAccounts/sabltest
+DisplayName        : Azure Key Vault
+SignInName         :
+RoleDefinitionName : Storage Account Key Operator Service Role
+RoleDefinitionId   : 81a9blll-bebf-436f-a333-f67b29880f1z
+ObjectId           : c730c8da-blll-4032-8ad5-945e9dc8262z
+ObjectType         : ServicePrincipal
+CanDelegate        : False
+```
 
 ## <a name="working-example"></a>Funkční příklad
 
@@ -124,7 +134,7 @@ Následující příklad ukazuje vytvoření služby Key Vault spravovat účet 
 
 ### <a name="prerequisite"></a>Požadavek
 
-Zkontrolujte jste dokončili [nastavit oprávnění řízení přístupu na základě role](#setup-for-role-based-access-control-rbac-permissions).
+Než začnete, ujistěte se, že jste [autorizace služby Key Vault pro přístup k účtu úložiště](#authorize-key-vault-to-access-to-your-storage-account).
 
 ### <a name="setup"></a>Nastavení
 
@@ -199,7 +209,7 @@ $readSasToken = (Get-AzureKeyVaultSecret -VaultName $keyVaultName -SecretName "$
 $writeSasToken = (Get-AzureKeyVaultSecret -VaultName $keyVaultName -SecretName "$accountName-$writeSasName").SecretValueText
 ```
 
-### <a name="create-storage"></a>Vytvořit úložiště
+### <a name="create-storage"></a>Vytvoření úložiště
 
 Všimněte si, že se pokoušíte získat přístup pomocí *$readSasToken* selže, ale, že máme přístup pomocí *$writeSasToken*.
 

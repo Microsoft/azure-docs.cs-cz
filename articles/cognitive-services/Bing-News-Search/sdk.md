@@ -1,39 +1,38 @@
 ---
-title: Hledání Bing SDK | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: Bing vyhledávání SDK pro aplikace, které vyhledávání na webu.
+title: Sada SDK pro vyhledávání zpráv Bingu
+titleSuffix: Azure Cognitive Services
+description: SDK vyhledávání zpráv Bingu pro aplikace, které vyhledávání na webu.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
-ms.assetid: ''
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 1/24/2018
 ms.author: v-gedod
-ms.openlocfilehash: 4a40ea665e153536d2322706b455598902ce41eb
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b1d9eaa35416adfa11647f2116171256f82fe095
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343660"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801229"
 ---
-# <a name="bing-search-sdk"></a>Hledání Bing SDK
-Ukázky rozhraní API pro Bing příspěvky hledání zahrnout scénáře který:
-1. Dotaz zprávy podmínek vyhledávání s `market` a `count` parametry, ověřte počet výsledků a vytiskněte `totalEstimatedMatches`, název, URL, popis, publikované čas a název zprostředkovatele první výsledek zprávy.
-2. Vyhledat nejnovější příspěvky hledaných termínů s `freshness` a `sortBy` parametry, ověřte počet výsledků a vytiskněte `totalEstimatedMatches`, adresa URL, popis, publikované čas a název zprostředkovatele první výsledek zprávy.
-3. Dotaz kategorie zprávy pro `movie` a `TV entertainment` s bezpečné vyhledávání, ověřte počet výsledků a vytiskněte kategorie, název, URL, popis, publikované čas a název zprostředkovatele první výsledek zprávy.
-4. Dotaz trendů témata zprávy v Bing, ověřte počet výsledků a vytiskněte název, text dotazu, `webSearchUrl`, `newsSearchUrl` a adresa URL první zprávy výsledku obrázku.
+# <a name="bing-search-sdk"></a>Vyhledávání Bingu SDK
+Ukázky rozhraní API pro vyhledávání zpráv Bingu patří scénáře, které:
+1. Novinky dotázat hledané výrazy s `market` a `count` parametry, zkontrolujte počet výsledků a vytiskne `totalEstimatedMatches`, jméno, adresu URL, popis, času publikování a název zprostředkovatele první výsledek zprávy.
+2. Nejnovější informace dotázat hledané výrazy s `freshness` a `sortBy` parametry, zkontrolujte počet výsledků a vytiskne `totalEstimatedMatches`, adresa URL, popis, času publikování a název zprostředkovatele první výsledek zprávy.
+3. Kategorie zpráv pro dotaz `movie` a `TV entertainment` s bezpečného hledání, zkontrolujte počet výsledků a vytiskne kategorie, název, URL, popis, času publikování a název zprostředkovatele první výsledek zprávy.
+4. Dotaz populárních tématech zpráv v Bingu, zkontrolujte počet výsledků a vytiskne název, text příkazu jazyka `webSearchUrl`, `newsSearchUrl` a adresa URL první zprávy výsledku obrázku.
 
-Sady SDK vyhledávání Bing zpřístupněte funkce vyhledávání web snadno v těchto programovacích jazycích:
-* Začínáme s [.NET – ukázky](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
+Sady SDK pro vyhledávání Bingu zpřístupnit webové funkce vyhledávání snadno do těchto programovacích jazycích:
+* Začínáme s [ukázky .NET](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
     * [Balíček NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.NewsSearch/1.2.0)
     * Viz také [knihovny .NET](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Search/BingNewsSearch) pro definice a závislosti.
 * Začínáme s [ukázky Node.js](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples) 
-    * Viz také [Node.js knihovny](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/newsSearch) pro definice a závislosti.
-* Začínáme s [ukázky Java](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples) 
-    * Viz také [Java knihovny](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch) pro definice a závislosti.
-* Začínáme s [ukázky Python](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples) 
-    * Viz také [Python knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/azure-cognitiveservices-search-newssearch) pro definice a závislosti.
+    * Viz také [knihoven Node.js](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/newsSearch) pro definice a závislosti.
+* Začínáme s [ukázky v Javě](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples) 
+    * Viz také [knihovny Java](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch) pro definice a závislosti.
+* Začínáme s [ukázky Pythonu](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples) 
+    * Viz také [knihoven Pythonu](https://github.com/Azure/azure-sdk-for-python/tree/master/azure-cognitiveservices-search-newssearch) pro definice a závislosti.
 
-Ukázky sady SDK pro každý jazyk můžete zahrnout soubor ReadMe s podrobnostmi o požadavcích a instalaci nebo spuštění ukázky.
+Ukázky sady SDK pro jednotlivé jazyky zahrnují soubor ReadMe s podrobnostmi o předpokladů a instalaci a spuštění ukázky.

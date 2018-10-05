@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/23/2018
-ms.openlocfilehash: 18f354f931995731bf4f0da47e830a575e96fc7c
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: be7c0b80b8f735a5eefe4e8345cd4d4a16885ec4
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237768"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803558"
 ---
 # <a name="what-is-the-hyperscale-service-tier-preview-in-azure-sql-database"></a>Co je úroveň velkokapacitní služby (preview) ve službě Azure SQL Database?
 
@@ -25,6 +25,9 @@ ms.locfileid: "48237768"
 
 > [!IMPORTANT]
 > Velkokapacitní úroveň služby je aktuálně ve verzi public preview a je k dispozici v omezené oblastech Azure. Oblast úplný seznam najdete v tématu [velkokapacitní služby úroveň dostupných oblastí](#hyperscale-regions)
+
+> [!IMPORTANT]
+> Úroveň velkokapacitní služby je aktuálně ve verzi public preview. Nedoporučujeme s jakékoli produkčními úlohami v databázích Hyperškálovatelného ještě. Velkokapacitní databáze nelze aktualizovat na další úrovně služeb. Pro testovací účely doporučujeme vytvořit kopii aktuální databáze a aktualizovat kopii Hyperškálovatelného vrstvu služby.
 
 ## <a name="what-are-the-capabilities-of-the-hyperscale-service-tier"></a>Jaké jsou možnosti vrstvy služby s Hyperškálováním
 

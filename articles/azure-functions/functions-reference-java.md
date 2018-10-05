@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: f6c5eb4a3ace1fcca1bbbef321371d55a0ce8da9
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 9e07cddb9d446ea24143d3a6dec5e310d3ed6f1c
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123483"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802113"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Příručka pro vývojáře Azure Functions Java
 
@@ -115,9 +115,15 @@ s odpovídajícím `function.json`:
 
 ```
 
+## <a name="jdk-runtime-availability-and-support"></a>JDK běhovou dostupnost a podpora 
+
+Stáhnout a použít [Azul Zulu pro Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) JDK od [Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) pro místní vývoj aplikací v Javě funkce. JDK jsou k dispozici pro Windows, Linux a macOS a [podpory Azure](https://support.microsoft.com/en-us/help/4026305/sql-contact-microsoft-azure-support) je k dispozici pro problémů při vývoji se [plán podpory kvalifikovaný](https://azure.microsoft.com/support/plans/).
+
 ## <a name="third-party-libraries"></a>Knihovny třetích stran 
 
 Služba Azure Functions podporuje použití knihovny třetích stran. Ve výchozím nastavení, zadané všechny závislosti ve vašem projektu `pom.xml` souboru budou automaticky seskupeny během `mvn package` cíle. Pro knihovny není stanoveno, v závislosti `pom.xml` souboru, umístit je do `lib` adresáře v kořenovém adresáři funkce. Závislosti umístěné v `lib` adresáře se přidají do třídy zavaděč systému v době běhu.
+
+`com.microsoft.azure.functions:azure-functions-java-library` Závislostí je k dispozici na cestě ve výchozím nastavení a nemusí být součástí `lib` adresáře.
 
 ## <a name="data-type-support"></a>Podpora typ dat
 
@@ -235,7 +241,7 @@ Někdy funkce musí mít podrobnou kontrolu nad vstupy a výstupy. Speciální t
 
 | Speciálním typem      |       Cíl        | Typické použití                  |
 | --------------------- | :-----------------: | ------------------------------ |
-| `HttpRequestMessage<T>`  |    HTTP Trigger     | Metoda, záhlaví a dotazy |
+| `HttpRequestMessage<T>`  |    Trigger HTTP     | Metoda, záhlaví a dotazy |
 | `HttpResponseMessage<T>` | Vazby výstupu protokolu HTTP | Než 200 návratový stav   |
 
 > [!NOTE] 

@@ -6,19 +6,19 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/17/2018
+ms.date: 09/26/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c2d13a409d095bca64da781e5c5ca58553f9710c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 9bbf3582da2664b6e6429677d47aad4d69a7c1bb
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047321"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785320"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integrace správy zdrojového kódu ve službě Azure Automation
 
-Správy zdrojového kódu umožňuje udržovat vaše sady runbook v automatizace účtu se až do data pomocí skriptů v úložišti Githubu nebo Azure Dev Ops zdrojového ovládacího prvku. Správy zdrojového kódu můžete snadno spolupracovat se svým týmem, sledovat změny a vrátit zpět na starší verze vašich sadách runbook. Například správy zdrojového kódu umožňuje synchronizovat různými větvemi ve správě zdrojového kódu pro vývojové, testovací nebo produkční prostředí účty služby Automation, což usnadňuje podporu kód, který byl testován ve vašem vývojovém prostředí automatizace v produkčním prostředí účet.
+Správy zdrojového kódu umožňuje udržovat vaše sady runbook ve vaší službě Automation jsou účet aktuální pomocí skriptů v úložišti Githubu nebo Azure Dev Ops zdrojového ovládacího prvku. Správy zdrojového kódu můžete snadno spolupracovat se svým týmem, sledovat změny a vrátit zpět na starší verze vašich sadách runbook. Například správy zdrojového kódu můžete synchronizovat různými větvemi ve správě zdrojového kódu pro účty služby Automation vývojové, testovací nebo produkční prostředí. To usnadňuje podporu kód, který byl testován ve vašem vývojovém prostředí účtu Automation v produkčním prostředí.
 
 Azure Automation podporuje 3 typy správy zdrojového kódu:
 
@@ -29,6 +29,7 @@ Azure Automation podporuje 3 typy správy zdrojového kódu:
 ## <a name="pre-requisites"></a>Požadavky
 
 * Úložiště správy zdrojového kódu (GitHub nebo Visual Studio Team Services)
+* Správné [oprávnění](#personal-access-token-permissions) do úložiště správy zdrojového kódu
 * A [Run-As účet a připojení](manage-runas-account.md)
 
 > [!NOTE]
@@ -40,7 +41,7 @@ V rámci účtu Automation vyberte **správy zdrojového kódu (preview)** a kli
 
 ![Vyberte správy zdrojového kódu](./media/source-control-integration/select-source-control.png)
 
-Zvolte **– typ ovládacího prvku zdroje** , klikněte na tlačítko **ověřit**.
+Zvolte **– typ ovládacího prvku zdroje**, klikněte na tlačítko **ověřit**.
 
 Zkontrolujte na stránku žádosti o oprávnění aplikace a klikněte na **přijmout**.
 
@@ -49,8 +50,8 @@ Na **souhrnný ovládací prvek zdroje** stránce, potřebné informace a klikn�
 |Vlastnost  |Popis  |
 |---------|---------|
 |Název správy zdrojového kódu     | Popisný název pro správu zdrojového kódu        |
-|Typ správy zdrojového kódu     | Typ zdrojového ovládacího prvku zdroje. Dostupné možnosti jsou:</br> GitHub</br>Visual Studio Team Services (Git)</br>Visual Studio Team Services (TFVC)        |
-|Úložiště     | Název úložiště nebo projektu. To se načítají z úložiště správy zdrojového kódu. Příklad: $/ ContosoFinanceTFVCExample         |
+|Typ správy zdrojového kódu     | Typ zdrojového ovládacího prvku zdroje. Dostupné možnosti jsou:</br> GitHub</br>Visual Studio Team Services (Git)</br> Visual Studio Team Services (TFVC)        |
+|Úložiště     | Název úložiště nebo projektu. Tato hodnota se načítají z úložiště správy zdrojového kódu. Příklad: $/ ContosoFinanceTFVCExample         |
 |Větev     | Větev o přijetí změn zdrojových souborů ze. Cílení na větev není k dispozici pro typ ovládacího prvku zdroje TFVC.          |
 |Cesta ke složce     | Tato složka obsahuje sady runbook k synchronizaci. Příklad: /Runbooks         |
 |Automatická synchronizace     | Zapne nebo vypne Automatická synchronizace při potvrzení změn do úložiště správy zdrojového kódu         |
@@ -61,13 +62,13 @@ Na **souhrnný ovládací prvek zdroje** stránce, potřebné informace a klikn�
 
 ## <a name="syncing"></a>Synchronizace
 
-Pokud automatickou synchronizaci byl nastaven při konfiguraci integrace správy zdrojového kódu, začnou automaticky počáteční synchronizace. Pokud nebyla nastavena automatická synchronizace, vyberte zdroj z tabulky na **(Preview) správy zdrojového kódu** stránky. Klikněte na tlačítko **zahájit synchronizaci** zahájíte proces synchronizace.  
+Při konfiguraci integrace správy zdrojového kódu, konfigurace autosync, počáteční synchronizace automaticky spustí. Pokud nebyla nastavena automatická synchronizace, vyberte zdroj z tabulky na **(Preview) správy zdrojového kódu** stránky. Klikněte na tlačítko **zahájit synchronizaci** zahájíte proces synchronizace.  
 
 Můžete zobrazit stav aktuální úloha synchronizace nebo předchozích balíčcích kliknutím **synchronizovat úlohy** kartu. Na **správy zdrojových kódů** rozevíracího seznamu, vyberte správy zdrojového kódu.
 
 ![Stav synchronizace](./media/source-control-integration/sync-status.png)
 
-Kliknutím na úlohu vám umožní zobrazit výstup úlohy. Následuje příklad výstupu z úlohy synchronizace zdrojového ovládacího prvku.
+Kliknutím na úlohu vám umožní zobrazit výstup úlohy. V následujícím příkladu je výstup z úlohy synchronizace zdrojového ovládacího prvku.
 
 ```output
 ========================================================================================================
@@ -101,6 +102,35 @@ Source Control Sync Summary:
 
 ========================================================================================================
 ```
+
+## <a name="personal-access-token-permissions"></a>Osobní přístupový token oprávnění
+
+Správy zdrojových kódů vyžaduje některé minimální sadu oprávnění pro osobní přístupové tokeny. Následující tabulky obsahují minimální sadu oprávnění potřebných pro GitHub a Azure DevOps.
+
+### <a name="github"></a>GitHubu
+
+|Rozsah  |Popis  |
+|---------|---------|
+|**úložiště**     |         |
+|úložiště: stav     | Stav přístupu pro potvrzení změn         |
+|repo_deployment      | Stav přístupu pro nasazení         |
+|public_repo     | Přístup veřejných úložišť         |
+|**Admin: repo_hook**     |         |
+|zápis: repo_hook     | Zápis háky úložiště         |
+|čtení: repo_hook|Háky úložiště pro čtení|
+
+### <a name="azure-devops"></a>Azure DevOps
+
+|Rozsah  |
+|---------|
+|Kódování (čtení)     |
+|Projekt a tým (čtení)|
+|Identita (čtení)      |
+|Profil uživatele (čtení)     |
+|Pracovní položky (čtení)    |
+|Připojení služby (čtení, dotazování a správu)<sup>1</sup>    |
+
+<sup>1</sup>oprávnění k připojení k Service je jenom nutné, pokud jste povolili autosync.
 
 ## <a name="disconnecting-source-control"></a>Odpojení správy zdrojového kódu
 

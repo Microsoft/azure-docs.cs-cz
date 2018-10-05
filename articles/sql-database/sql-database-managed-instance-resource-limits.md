@@ -11,20 +11,20 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop
 manager: craigg
-ms.date: 10/03/2018
-ms.openlocfilehash: 6ae9b3f71cb5328c7f4a7ee8e43ec0aff8b5fcec
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.date: 10/04/2018
+ms.openlocfilehash: 3f571a8d8a138656fc8bae5d6f45d183a8819bc3
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267780"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803201"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Přehled limity prostředků Azure SQL Database Managed Instance
 
 Tento článek obsahuje základní informace o omezení prostředků Azure SQL Database Managed Instance a poskytuje informace o tom, jak vytvořit žádost o zvýšení počtu výchozí limity předplatného místní. 
 
 > [!NOTE]
-> Další omezení Managed Instance najdete v části [nákupní model založený na virtuálních jádrech](sql-database-managed-instance.md#vcore-based-purchasing-model) a [úrovně služeb Managed Instance](sql-database-managed-instance.md#managed-instance-service-tiers).
+> Další omezení Managed Instance najdete v části [nákupní model založený na virtuálních jádrech](sql-database-managed-instance.md#vcore-based-purchasing-model) a [úrovně služeb Managed Instance](sql-database-managed-instance.md#managed-instance-service-tiers). Rozdíly v podporovaných funkcích a T-SQL příkazy naleznete v tématu [rozdíly ve funkcích](sql-database-features.md) a [podpora příkazu T-SQL](sql-database-managed-instance-transact-sql-information.md).
 
 ## <a name="instance-level-resource-limits"></a>Omezení prostředků na úrovni instance
 
@@ -38,8 +38,8 @@ Azure SQL Database Managed Instance je možné nasadit na generování dvě hard
 | --- | --- | --- |
 | Hardware | Intel E5-2673 v3 (Haswell) 2,4 GHz procesorech připojené SSD vCore = 1 PP (fyzických jader) | Intel E5-2673 v4 (Broadwell) 2.3 GHz procesorech rychlé eNVM SSD, vCore = 1 LP (hyper vlákno) |
 | Compute | 8, 16, 24 virtuálních jader | 8, 16, 24, 32, 40, 64, 80 virtuálních jader |
-| Memory (Paměť) | 7 GB na vCore | 5.5 GB na vCore |
-| Maximální velikost úložiště (pro důležité obchodní informace) | 1TB | 1TB, 2TB, v závislosti na počtu jader 4TB |
+| Memory (Paměť) | 7 GB na vCore | 5.1 GB na vCore |
+| Maximální velikost úložiště (pro důležité obchodní informace) | 1 TB | 1 TB, 2 TB nebo 4 TB, v závislosti na počtu jader |
 
 ### <a name="service-tier-characteristics"></a>Vlastnosti úrovně služeb
 
@@ -53,11 +53,11 @@ Managed Instance má dvě úrovně služeb - obecné účely a pro důležité o
 | Max. úložiště na databázi | Určuje maximální velikost úložiště na instanci | Určuje maximální velikost úložiště na instanci |
 | Maximální počet databází na instanci | 100 | 100 |
 | Maximální počet databází na instanci | Až 280 | Unlimited |
-| Očekávaný maximální velikosti úložiště vstupně-výstupních operací | 500-7500 IOPS na datový soubor ([závisí na velikosti souboru dat](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)). | Závisí na rychlosti podkladové SSD. |
+| Očekávaný maximální velikosti úložiště vstupně-výstupních operací | 500-5000 ([závisí na velikosti souboru dat](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)). | Závisí na rychlosti podkladové SSD. |
 
 ## <a name="supported-regions"></a>Podporované oblasti
 
-Spravované Instanced lze vytvořit pouze v [podporované oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database). Pokud chcete v oblasti, která je v tuto chvíli nepodporuje vytvoření Managed Instance, můžete si [odeslat žádost o podporu prostřednictvím webu Azure portal](#obtaining-a-larger-quota-for-sql-managed-instance).
+Spravované Instanced lze vytvořit pouze v [podporované oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Pokud chcete v oblasti, která je v tuto chvíli nepodporuje vytvoření Managed Instance, můžete si [odeslat žádost o podporu prostřednictvím webu Azure portal](#obtaining-a-larger-quota-for-sql-managed-instance).
 
 ## <a name="supported-subscription-types"></a>Typy podporované předplatného
 
@@ -94,23 +94,27 @@ Tyto limity můžete zvýšit tak, že vytvoříte speciální [žádost o podpo
 > [!IMPORTANT]
 > Při plánování vašeho nasazení, vezměte v úvahu, že instance kritické obchodní (BC) (z důvodu přidání redundance) obecně využívá 4 x větší kapacitu než instance obecné účely (zásady skupiny). Ano, pro výpočty, 1 GP instance = 1 instance jednotky a 1 BC instance = 4 jednotky instance. Pro zjednodušení analýzy využití pro výchozí omezení, shrnutí instance jednotky ve všech podsítí v oblasti, ve které jsou nasazené spravované instance a porovnávat výsledky s limity instancí jednotky pro typ vašeho předplatného.
 
-### <a name="deployment-options-for-gp-and-bc-deployments-within-the-same-subnet"></a>Možnosti nasazení pro nasazení zásad skupiny a BC ve stejné podsíti
+## <a name="strategies-for-deploying-mixed-general-purpose-and-business-critical-instances"></a>Strategie pro nasazení smíšeném instance pro obecné účely a pro důležité obchodní informace
+
+[Smlouvy Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) předplatné může mít kombinací instancí GP a BC. Existují však některá omezení týkající se umístění instance v podsítí.
+
+> [!Note] 
+> [Průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p/) a [Cloud Service Provider (CSP)](https://docs.microsoft.com/partner-center/csp-documents-and-learning-resources) typy předplatného může mít buď jeden pro důležité obchodní informace nebo až na 4 instance pro obecné účely.
 
 Následující příklady pokrývají nasazené služby se neprázdný podsítěmi a smíšené GP a BC úrovně služeb.
 
 |Počet podsítí|podsíť 1|Podsíť 2|Podsíť 3|
 |:---|:---|:---|:---|
-|1|0 BC až 12 GP<br>1 BC až 8 GP<br>2 BC až 4 GP<br>3 BC|neuvedeno| neuvedeno|
-|2|BC 0, až 4 GP|BC 0, až na 8 GP<br>BC 1, až 4 GP<br>2 BC|neuvedeno|
-|2|1 BC|BC 0, až na 8 GP<br>BC 1, až 4 GP<br>2 BC|neuvedeno|
-|2|2 BC|BC 0, až na 8 GP<br>BC 1, až 4 GP<br>2 BC|neuvedeno|
+|1|1 BC až 8 GP<br>2 BC až 4 GP|neuvedeno| neuvedeno|
+|2|BC 0, až 4 GP|BC 1, až 4 GP<br>BC 2, 0 GP|neuvedeno|
+|2|BC 1, 0 GP|BC 0, až na 8 GP<br>BC 1, až 4 GP|neuvedeno|
+|2|BC 2, 0 GP|BC 0, až 4 GP|neuvedeno|
 |3|BC 1, 0 GP|BC 1, 0 GP|BC 0, až 4 GP|
-|3|1BC 0 GP|BC 0, až 4 GP|BC 1, 0 GP|
-|3|BC 0, až 4 GP|BC 1, 0 GP|1BC 0 GP|
+|3|BC 1, 0 GP|BC 0, až 4 GP|BC 0, až 4 GP|
 
-### <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>Získání vyšší kvóty pro spravovanou instanci SQL
+## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>Získání vyšší kvóty pro spravovanou instanci SQL
 
-Chcete-li zahájit proces získávání vyšší kvóty:
+Pokud potřebujete více spravovaných instancí v aktuální oblasti, můžete odeslat žádost o podporu pro rozšíření kvóty pomocí webu Azure portal. Chcete-li zahájit proces získávání vyšší kvóty:
 
 1. Otevřít **Nápověda a podpora**a klikněte na tlačítko **nová žádost o podporu**. 
 

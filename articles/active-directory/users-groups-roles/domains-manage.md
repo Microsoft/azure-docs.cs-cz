@@ -10,44 +10,50 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 11/14/2017
+ms.date: 10/04/2018
 ms.author: curtand
 ms.reviewer: elkuzmen
-ms.openlocfilehash: b503ef4c5cd922d4f7b58940cfc98a83a78ae986
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 65c3fa4c667fdb2d670ff259b190db140b4d968f
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449788"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803915"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Správa vlastních názvů domén v Azure Active Directory
+
 Název domény je důležitou součástí identifikátoru pro mnoho prostředků adresáře: je součástí uživatelského jména nebo e-mailové adresy pro uživatele, část adresy pro skupinu a můžou být součástí identifikátor URI ID aplikace pro aplikaci. Název domény, který už je ověřený jako vlastní adresáře, který obsahuje prostředek může obsahovat prostředků v Azure Active Directory (Azure AD). Jenom globální správce může provádět úkoly správy domény ve službě Azure AD.
 
 ## <a name="set-the-primary-domain-name-for-your-azure-ad-directory"></a>Nastavit název domény primárního pro váš adresář Azure AD
+
 Když se do adresáře, počáteční název domény, například "contoso.onmicrosoft.com", je také název primární doménu. Primární doména je výchozí název domény pro nového uživatele, když vytvoříte nového uživatele. Nastavení názvu domény primární zjednodušuje proces pro správce k vytváření nových uživatelů na portálu. Chcete-li změnit primární doména název:
 
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com) pomocí účtu, který má oprávnění globálního správce adresáře.
 2. Vyberte **Azure Active Directory**.
-3. Vyberte **vlastní názvy domén**.
-     
+3. Vyberte **Názvy vlastních domén**.
+  
    ![Otevírání správy uživatelů](./media/domains-manage/add-custom-domain.png)
 4. Vyberte název domény, které mají být primární doménu.
 5. Vyberte **nastavit jako primární** příkazu. Potvrďte svou volbu po zobrazení výzvy.
-   
+  
    ![Nastavit jako primární název domény](./media/domains-manage/make-primary-domain.png)
 
 Můžete změnit název primární domény pro váš adresář bude ověřené vlastní doméně, která není Federovaná. Primární doména pro svůj adresář změna neovlivní uživatelských jmen pro všechny stávající uživatele.
 
 ## <a name="add-custom-domain-names-to-your-azure-ad-tenant"></a>Přidání vlastních názvů domén do svého tenanta Azure AD
-Je můžete ušetřit až do maximálního počtu 900 názvů spravované domény. Pokud konfigurujete všech domén pro federaci s místní služby Active Directory, můžete přidat do maximálního počtu 450 názvů domén v každém adresáři. Další informace najdete v tématu [federovaných a spravovaných názvech domén](https://docs.microsoft.com/azure/active-directory/active-directory-add-domain-concepts#federated-and-managed-domain-names).
+
+Můžete přidat maximálně 900 názvů spravovaných domén. Pokud konfigurujete všech domén pro federaci s místní služby Active Directory, můžete přidat do maximálního počtu 450 názvů domén v každém adresáři. 
 
 ## <a name="add-subdomains-of-a-custom-domain"></a>Přidání subdomén vlastní domény
+
 Pokud chcete přidat název domény třetí úrovně jako je například 'europe.contoso.com' do adresáře, byste nejprve přidání a ověření domény druhé úrovně, jako je například contoso.com. Poddomény se automaticky ověří pomocí Azure AD. Pokud chcete zobrazit, že byla ověřena subdomény, kterou jste právě přidali, aktualizujte stránku v prohlížeči se zobrazí seznam domén.
 
 ## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>Co dělat, když změníte registrátora DNS pro název vaší vlastní domény
+
 Pokud změníte registrátora DNS pro vlastní název domény, můžete nadále používat vlastní název domény s samotné služby Azure AD bez přerušení a bez dalších úloh konfigurace. Pokud používáte vlastní název domény s Office 365, Intune nebo jiných služeb, které spoléhají na vlastních názvů domén ve službě Azure AD, najdete v dokumentaci pro tyto služby.
 
 ## <a name="delete-a-custom-domain-name"></a>Odstranit vlastní název domény
+
 Pokud vaše organizace už používá tento název domény nebo pokud budete muset použít tento název domény pomocí jiné služby Azure AD, můžete odstranit vlastní název domény z Azure AD.
 
 Před odstranit vlastní název domény, musíte napřed zajistit, že žádné prostředky ve vašem adresáři Spolehněte se na název domény. Název domény nelze odstranit z adresáře, pokud:
@@ -58,12 +64,53 @@ Před odstranit vlastní název domény, musíte napřed zajistit, že žádné 
 
 Musíte změnit nebo odstranit takových prostředků ve vašem adresáři Azure AD, než budete moct odstranit vlastní název domény.
 
+### <a name="forcedelete-option"></a>Možnost ForceDelete
+
+Je možné **ForceDelete** názvu domény v [centra pro správu Azure AD](https://aad.portal.azure.com) nebo pomocí [Microsoft Graph API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/api/domain_forcedelete). Tyto možnosti použít asynchronní operaci a aktualizujte všechny odkazy z vlastního názvu domény jako "user@contoso.com"na počáteční výchozí název domény, jako"user@contoso.onmicrosoft.com." 
+
+Chcete-li volat **ForceDelete** na webu Azure Portal, musíte zajistit, že existují méně než 1000 odkazy na název domény, a všechny odkazy, kde je zřizovací služba Exchange musí aktualizovat nebo odebrat v [ Centra pro správu Exchange](https://outlook.office365.com/ecp/). To zahrnuje Exchange Mail-Enabled zabezpečení skupin a distribuovaných seznamů; Další informace najdete v tématu [odebírají skupiny zabezpečení s povolenou poštou](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups). Také **ForceDelete** operace nebude úspěšná, pokud je splněna jedna z následujících akcí:
+
+* Koupit domény prostřednictvím služby domény předplatné Office 365
+* Jste partner Správa jménem jiného tenanta zákazníka
+
+Byly provedeny následující akce v rámci **ForceDelete** operace:
+
+* Přejmenuje na počáteční výchozí název domény hlavního názvu uživatele, EmailAddress a ProxyAddress uživatelů s odkazy na vlastní název domény.
+* Přejmenuje EmailAddress skupiny s odkazy na vlastní název domény na počáteční výchozí název domény.
+* Přejmenuje identifierUris aplikací s odkazy na vlastní název domény na počáteční výchozí název domény.
+
+Chyba je vrácena, pokud:
+
+* Počet objektů, které chcete přejmenovat, je větší než 1000
+* Jednou z aplikace, které chcete přejmenovat, je aplikace s více tenanty
+  
+### <a name="frequently-asked-questions"></a>Nejčastější dotazy
+
+**Otázka: Proč je odstranění domény selhání zobrazí se chyba s oznámením, že mám na tento název domény Exchange standardní skupiny?** <br>
+**Odpověď:** v současné době určitých skupin, jako jsou skupiny zabezpečení s povolenou poštou a distribuované seznamy byly povolené nástrojem Exchange a muset ručně vyčistit v [správce Exchange System Center (EAC)](https://outlook.office365.com/ecp/). Existuje může být přetrvávání odstraněných ProxyAddresses, které využívají vlastní název domény a bude nutné ručně aktualizovat tak, aby jiný název domény. 
+
+**Otázka: jsem přihlášený jako admin@contoso.com , ale nemůžu odstranit název domény "contoso.com"?**<br>
+**Odpověď:** nemůže odkazovat vlastní název domény se pokoušíte odstranit v názvu uživatelského účtu. Ujistěte se, že účet globálního správce používá počáteční výchozí název domény (. onmicrosoft.com), jako admin@contoso.onmicrosoft.com. Přihlaste se pomocí jiného globálního správce účtu, který jako admin@contoso.onmicrosoft.com nebo jiný název vlastní domény, jako je "fabrikam.com", které je účet admin@fabrikam.com.
+
+**Otázka: nemůžu kliknutí na tlačítko pro odstranění domény a viz `In Progress` stavu pro operace Delete. Jak dlouho trvá? Co se stane, když dojde k chybě?**<br>
+**Odpověď:** operace odstranění domény je pozadí asynchronní úloha, která přejmenuje všechny odkazy na název domény. By se měla dokončit během několika minut. Pokud odstranění domény selhání, ujistěte se, že není nutné:
+
+* Aplikace nakonfigurované v názvu domény pomocí appIdentifierURI
+* Žádné skupina s povolenou poštou odkazovat na název vlastní domény
+* Více než 1 000 odkazy na název domény.
+
+Pokud zjistíte, že některá z podmínek nebyly splněny, ručně vyčistit odkazy a zkuste to znovu odstranit doménu.
+
 ## <a name="use-powershell-or-graph-api-to-manage-domain-names"></a>Pomocí Powershellu nebo rozhraní Graph API ke správě názvů domén
+
 Většina úkolů správy pro názvy domén v Azure Active Directory je možné provést i pomocí Powershellu Microsoft nebo programově pomocí rozhraní Azure AD Graph API.
 
 * [Použití Powershellu ke správě názvů domén ve službě Azure AD](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains)
 * [Pomocí rozhraní Graph API ke správě názvů domén ve službě Azure AD](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
 
 ## <a name="next-steps"></a>Další postup
-* [Přidání vlastních názvů domén](../fundamentals/add-custom-domain.md)
 
+* [Přidání vlastních názvů domén](/azure/active-directory/fundamentals/add-custom-domain?context=azure/active-directory/users-groups-roles/context/ugr-context)
+* [Odebrat skupiny zabezpečení s povoleným e-mailu Exchange v Centru pro správu Exchange na vlastní název domény ve službě Azure AD](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups)
+* [Aktualizovat odkaz na vaše aplikace do jiné domény ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad#updating-an-application)
+* [ForceDelete vlastního názvu domény pomocí rozhraní Microsoft Graph API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/api/domain_forcedelete)

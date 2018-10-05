@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 10/04/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 1ae74f7c43e763962224683954b28e5941136c08
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 57446f068945d74351a77f21e16874d9e24ddcab
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295814"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801926"
 ---
 # <a name="how-to-configure-password-writeback"></a>Postupy: Konfigurace zpětného zápisu hesla
 
@@ -34,6 +34,12 @@ Následující postup předpokládá, že jste už nakonfigurovali Azure AD Conn
 8. Až se konfigurace dokončí, vyberte **Ukončit**.
 
 Související se zpětným zápisem hesla, běžné úloh odstraňování potíží naleznete v části [řešení potíží se zpětným zápisem hesla](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) v našem článku Poradce při potížích.
+
+> [!WARNING]
+> Zpětný zápis hesla, přestanou fungovat pro zákazníky, kteří používají Azure AD Connect verze 1.0.8641.0 a starší při [Azure Access Control service (ACS) je dostupné jenom do 7. listopadu 2018](../develop/active-directory-acs-migration.md). Azure AD Connect verze 1.0.8641.0 a starší se už nebude povolovat zpětného zápisu hesla v daném čase protože závisejí na služby ACS, které tuto funkci.
+>
+> Pokud chcete zabránit přerušení služby, upgrade z předchozí verze služby Azure AD Connect na novější verzi, najdete v článku [Azure AD Connect: Upgrade z předchozí verze na nejnovější verzi](../hybrid/how-to-upgrade-previous-version.md)
+>
 
 ## <a name="active-directory-permissions"></a>Oprávnění služby Active Directory
 
@@ -67,7 +73,7 @@ Pokud chcete nastavit příslušná oprávnění pro zpětný zápis hesla na v�
 4. Z **oprávnění** kartu, vyberte možnost **přidat**.
 5. Vyberte účet, který oprávnění se používají pro (z instalace služby Azure AD Connect).
 6. V **se vztahuje na** rozevíracího seznamu vyberte **podřízené uživatelské** objekty.
-7. V části **oprávnění**, zaškrtněte políčka pro následující:
+7. V části **oprávnění**, zaškrtněte políčka u následujících možností:
     * **Resetování hesla**
     * **Změnit heslo**
     * **Zápis lockoutTime**

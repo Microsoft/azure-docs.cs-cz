@@ -5,27 +5,33 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 10/04/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 8440d8a492105365417190ad286798e0bdf47a0c
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 43d2ba496be90e9e87185e6365dd998adccfa09d
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295831"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804527"
 ---
 # <a name="what-is-password-writeback"></a>Co je zpětný zápis hesla?
 
-Nástroj pro resetování hesla cloudové je skvělé, ale většina společností má stále v místním adresáři, kde existují svým uživatelům. Jak funguje zachování podpory Microsoft tradiční místní Active Directory (AD) synchronizované s změny hesla v cloudu? Zpětný zápis hesla je povolená funkce [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) , která umožňuje změny hesla v cloudu a možné zpětně zapsat do existujícího místního adresáře v reálném čase.
+Nástroj pro resetování hesla cloudových je skvělé, ale většina společností má stále v místním adresáři, kde existují svým uživatelům. Jak funguje zachování podpory Microsoft tradiční místní Active Directory (AD) synchronizované s změny hesla v cloudu? Zpětný zápis hesla je povolená funkce [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) , která umožňuje změny hesla v cloudu a možné zpětně zapsat do existujícího místního adresáře v reálném čase.
 
 Zpětný zápis hesla je podporována v prostředí, které používá:
 
 * [Active Directory Federation Services (AD FS)](../hybrid/how-to-connect-fed-management.md)
 * [Synchronizace hodnoty hash hesel](../hybrid/how-to-connect-password-hash-synchronization.md)
 * [Předávací ověřování](../hybrid/how-to-connect-pta.md)
+
+> [!WARNING]
+> Zpětný zápis hesla, přestanou fungovat pro zákazníky, kteří používají Azure AD Connect verze 1.0.8641.0 a starší při [Azure Access Control service (ACS) je dostupné jenom do 7. listopadu 2018](../develop/active-directory-acs-migration.md). Azure AD Connect verze 1.0.8641.0 a starší se už nebude povolovat zpětného zápisu hesla v daném čase protože závisejí na služby ACS, které tuto funkci.
+>
+> Pokud chcete zabránit přerušení služby, upgrade z předchozí verze služby Azure AD Connect na novější verzi, najdete v článku [Azure AD Connect: Upgrade z předchozí verze na nejnovější verzi](../hybrid/how-to-upgrade-previous-version.md)
+>
 
 Zpětný zápis hesla nabízí:
 

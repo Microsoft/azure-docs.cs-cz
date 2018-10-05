@@ -9,14 +9,14 @@ keywords: funkce azure, funkce, zpracování událostí, webhook, dynamické vý
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.date: 05/24/2018
+ms.date: 09/24/2018
 ms.author: glenga
-ms.openlocfilehash: cc965073863375d76efb969ad66cf5750c9755bb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 694dd98caadb12571c58f9d615cf75325654c772
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969423"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801301"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Aktivace Azure Functions a vazby koncepty
 
@@ -168,7 +168,7 @@ Tato část platí jenom pro funkce 2.x. Rozšíření vazby nemusí být explic
 
 Při vytváření funkce nebo přidat vazbu, zobrazí se výzva při rozšíření pro triggerem nebo vazbou vyžaduje registrace. Na výzvy odpovíte kliknutím **nainstalovat** k registraci rozšíření. Instalace může trvat až 10 minut, než v plánu consumption.
 
-Každé rozšíření musí nainstalovat pouze jednou pro danou funkci aplikace. 
+Každé rozšíření musí nainstalovat pouze jednou pro danou funkci aplikace. U podporovaných vazeb, které nejsou k dispozici na portálu nebo aktualizovat nainstalovaného rozšíření můžete také [ruční instalaci nebo aktualizaci vazby rozšíření z portálu Azure Functions](install-update-binding-extensions-manual.md).  
 
 ### <a name="local-development-azure-functions-core-tools"></a>Místní vývoj nástrojů Azure Functions Core
 

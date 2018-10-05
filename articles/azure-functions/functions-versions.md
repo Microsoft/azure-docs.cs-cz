@@ -7,14 +7,14 @@ author: ggailey777
 manager: jeconnoc
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 09/14/2018
+ms.date: 10/03/2018
 ms.author: glenga
-ms.openlocfilehash: d4a0d53c3438be9ea4e0229e4a456ed6f5960996
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 372cf445e518ccdb287ce23ade6a3d92ddc5bc2b
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249056"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48784895"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Přehled verze modulu runtime Azure Functions
 
@@ -63,6 +63,7 @@ Kromě změn v jazycích a vazby existují některé funkce, které byly odebrá
 * Nastavení aplikace (`local.settings.json`) požadovat hodnotu pro vlastnost `FUNCTIONS_WORKER_RUNTIME` , která se mapuje na jazyk aplikace `dotnet | node | java | python`.
     * Ke zlepšení času nároky na místo a spuštění aplikace jsou omezené na jeden jazyk. Můžete publikovat víc aplikací má funkce v různých jazycích pro stejné řešení.
 * Výchozí hodnota časového limitu pro funkce v plánu služby app service je 30 minut.  To je stále možné ručně nastavit neomezený počet.
+* Omezení souběžnosti HTTP jsou implementovány ve výchozím nastavení pro funkce plánu consumption (100 souběžných požadavků na instanci).  Tato nastavení můžete změnit prostřednictvím `host.json` souboru.
 * [Z důvodu .NET core omezením](https://github.com/Azure/azure-functions-host/issues/3414), `.fsx` skripty pro funkcí F # se odebraly. Funkce F # jsou stále podporovány.
 * Formát založené na webhoocích aktivační události (například služby Event Grid) se změnila na `https://{app}/runtime/webhooks/{triggerName}`
 
