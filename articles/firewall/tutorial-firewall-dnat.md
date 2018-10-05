@@ -5,26 +5,22 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 9/25/2018
+ms.date: 9/27/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 766ad04251fbe404d43734115e41e23ae0a4be28
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 894389ec07fb8e371a269f895473fe82985de7c3
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982034"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405967"
 ---
 # <a name="tutorial-filter-inbound-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Kurz: Filtrování příchozího provozu pomocí DNAT služby Azure Firewall a webu Azure Portal
 
-Ve službě Azure Firewall můžete nakonfigurovat překlad adres na základě zdroje (DNAT) pro překlad a filtrování příchozího provozu do vašich podsítí. Azure Firewall nezná koncept příchozích a odchozích pravidel. Na veškerý provoz přicházející do brány firewall se uplatňují pravidla aplikace a pravidla sítě. Nejprve se použijí pravidla sítě, pak pravidla aplikace a tato pravidla jsou ukončující.
+Ve službě Azure Firewall můžete nakonfigurovat překlad adres na základě zdroje (DNAT) pro překlad a filtrování příchozího provozu do vašich podsítí. Když nakonfigurujete DNAT, akce kolekce pravidel NAT se nastaví na **Překlad adres na základě cíle (DNAT)**. Každé pravidlo v kolekci pravidel NAT pak lze použít k překladu veřejné IP adresy a portu brány firewall na privátní IP adresu a port. Pravidla DNAT implicitně přidávají odpovídající pravidlo sítě, které povoluje přeložený provoz. Toto chování můžete přepsat explicitním přidáním kolekce pravidel sítě s pravidly pro odepření, která odpovídají přeloženému provozu. Další informace najdete v článku, který pojednává o [logice zpracování pravidel služby Azure Firewall](rule-processing.md).
 
->[!NOTE]
->Funkce DNAT služby Firewall je momentálně dostupná pouze v Azure PowerShellu a rozhraní REST.
-
-Pokud se například najde shoda s pravidlem sítě, příslušný paket se nevyhodnotí podle pravidel aplikace. Pokud se nenajde shoda s žádným pravidlem sítě a protokol paketu je HTTP nebo HTTPS, paket se vyhodnotí podle pravidel aplikace. Pokud se stále nenajde žádná shoda, paket se vyhodnotí podle [kolekce pravidel infrastruktury](infrastructure-fqdns.md). Pokud se stále nenajde žádná shoda, ve výchozím nastavení se paket odepře.
-
-Když nakonfigurujete DNAT, akce kolekce pravidel NAT se nastaví na **Překlad adres na základě cíle (DNAT)**. Veřejná IP adresa a port brány firewall se přeloží na privátní IP adresu a port. Potom se pravidla uplatňují obvyklým způsobem, nejprve pravidla sítě a pak pravidla aplikace. Můžete například nakonfigurovat pravidlo sítě, které povolí provoz Vzdálené plochy na portu TCP 3389. Nejprve se provede překlad adres a pak se na přeložené adresy použijí pravidla sítě a aplikace.
+> [!NOTE]
+> DNAT nefunguje pro port 80 a 22. Pracujeme na tom, abychom to v blízké budoucnosti opravili. Do té doby použijte jako cílový port v pravidlech NAT jakýkoliv jiný port. Port 80 nebo 22 se dá pořád použít jako přeložený port. Například veřejný port ip:81 můžete namapovat na privátní port ip:80.
 
 V tomto kurzu se naučíte:
 
@@ -33,7 +29,6 @@ V tomto kurzu se naučíte:
 > * Nasadit bránu firewall
 > * Vytvořit výchozí trasu
 > * Konfigurace pravidla DNAT
-> * Konfigurace pravidla sítě
 > * Otestovat bránu firewall
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
@@ -199,48 +194,18 @@ U podsítě **SN-Workload** nakonfigurujete výchozí trasu v odchozím směru, 
 
 ## <a name="configure-a-dnat-rule"></a>Konfigurace pravidla DNAT
 
-```azurepowershell-interactive
- $rgName  = "RG-DNAT-Test"
- $firewallName = "FW-DNAT-test"
- $publicip = type the Firewall public ip
- $newAddress = type the private IP address for the Srv-Workload virtual machine 
- 
-# Get Firewall
-    $firewall = Get-AzureRmFirewall -ResourceGroupName $rgName -Name $firewallName
-  # Create NAT rule
-    $natRule = New-AzureRmFirewallNatRule -Name RL-01 -SourceAddress * -DestinationAddress $publicip -DestinationPort 3389 -Protocol TCP -TranslatedAddress $newAddress -TranslatedPort 3389
-  # Create NAT rule collection
-    $natRuleCollection = New-AzureRmFirewallNatRuleCollection -Name RC-DNAT-01 -Priority 200 -Rule $natRule
-  # Add NAT Rule collection to firewall:
-    $firewall.AddNatRuleCollection($natRuleCollection)
-  # Save:
-    $firewall | Set-AzureRmFirewall
-```
-## <a name="configure-a-network-rule"></a>Konfigurace pravidla sítě
-
-1. Otevřete skupinu prostředků **RG-DNAT-Test** a klikněte na bránu firewall **FW-DNAT-test**.
-1. Na stránce **FW-DNAT-test** v části **Nastavení** klikněte na **Pravidla**.
-2. Klikněte na **Přidat kolekci pravidel sítě**.
-
-Pomocí následující tabulky nakonfigurujte pravidlo a pak klikněte na **Přidat**:
-
-
-|Parametr  |Hodnota  |
-|---------|---------|
-|Název     |**RC-Net-01**|
-|Priorita     |**200**|
-|Akce     |**Povolit**|
-
-V části **Pravidla**:
-
-|Parametr  |Nastavení  |
-|---------|---------|
-|Název     |**RL-RDP**|
-|Protocol (Protokol)     |**TCP**|
-|Zdrojové adresy     |*|
-|Cílové adresy     |Privátní IP adresa virtuálního počítače **Srv-Workload**|
-|Cílové porty|**3389**|
-
+1. Otevřete skupinu prostředků **RG-DNAT-Test** a klikněte na bránu firewall **FW-DNAT-test**. 
+1. Na stránce **FW-DNAT-test** v části **Nastavení** klikněte na **Pravidla**. 
+2. Klikněte na **Přidat kolekci pravidel DNAT**. 
+3. Jako **Název** zadejte **RC-DNAT-01**. 
+1. V části **Priorita** zadejte **200**. 
+6. V části **Pravidla** jako **Název** zadejte **RL-01**. 
+7. Do pole **Zdrojové adresy** zadejte *. 
+8. Do pole **Cílové adresy** zadejte veřejnou IP adresu brány firewall. 
+9. Do pole **Cílové porty** zadejte **3389**. 
+10. Do pole **Přeložená adresa** zadejte privátní IP adresu virtuálního počítače Srv-Workload. 
+11. Do pole **Přeložený port** zadejte **3389**. 
+12. Klikněte na tlačítko **Add** (Přidat). 
 
 ## <a name="test-the-firewall"></a>Otestovat bránu firewall
 
@@ -262,7 +227,6 @@ V tomto kurzu jste se naučili:
 > * Nasadit bránu firewall
 > * Vytvořit výchozí trasu
 > * Konfigurace pravidla DNAT
-> * Konfigurace pravidla sítě
 > * Otestovat bránu firewall
 
 Dál můžete pokračovat monitorováním protokolů brány Azure Firewall.

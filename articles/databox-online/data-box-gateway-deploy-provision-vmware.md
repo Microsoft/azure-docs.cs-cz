@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 09/26/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: d0c6f8723909b71501894c9363932c752c1e130c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5a173340be424c74c76da659816b1b95b74c465f
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989851"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419538"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware-preview"></a>Kurz: Zřízení služby Azure Data Box Gateway ve VMware (Preview)
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Zajištění, aby hostitel splňoval minimální požadavky na zařízení
-> * Zřízení virtuálního zařízení v hypervisoru
+> * Zřízení virtuálního zařízení ve VMware
 > * Spuštění virtuálního zařízení a získání IP adresy
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
@@ -198,7 +198,7 @@ Pomocí následujících kroků spusťte své virtuální zařízení a připojt
 
 6. Kroky 5 až 7 proveďte pouze v případě, že zařízení spouštíte v jiném prostředí než DHCP. Pokud jste v prostředí DHCP, přeskočte tyto kroky a přejděte ke kroku 8. Pokud jste zařízení spustili v jiném prostředí než DHCP, zobrazí se o tom zpráva: **Pomocí rutiny Set-HcsIPAddress nakonfigurujte síť**. 
    
-7. Pokud chcete nakonfigurovat síť, na příkazovém řádku použijte příkaz `Get-HcsIpAddress`, který vypíše povolená síťová rozhraní na vašem virtuálním zařízení. Pokud má vaše zařízené povolené jediné síťové rozhraní, výchozí název přiřazený tomuto rozhraní je `DATA1`.
+7. Pokud chcete nakonfigurovat síť, na příkazovém řádku použijte příkaz `Get-HcsIpAddress`, který vypíše povolená síťová rozhraní na vašem virtuálním zařízení. Pokud má vaše zařízené povolené jediné síťové rozhraní, výchozí název přiřazený tomuto rozhraní je `Ethernet`.
 
 8. Pomocí rutiny `Set-HcsIpAddress` nakonfigurujte síť. Příklad najdete níže:
 
@@ -208,7 +208,7 @@ Pomocí následujících kroků spusťte své virtuální zařízení a připojt
 
    ![](./media/data-box-gateway-deploy-provision-vmware/image24.png)
 
-Pokud vaše zařízení nesplňuje minimální požadavky na konfiguraci, zobrazí se v textu banneru chyba (viz níže). Budete muset upravit konfiguraci zařízení tak, aby mělo dostatečné prostředky ke splnění minimálních požadavků. Pak můžete zařízení restartovat a připojit se k němu. Projděte si minimální požadavky na konfiguraci v [kroku 1: Zajištění, aby hostitelský systém splňoval minimální požadavky na virtuální zařízení](#step-1-ensure-host-system-meets-minimum-virtual-device-requirements).
+Pokud vaše zařízení nesplňuje minimální požadavky na konfiguraci, zobrazí se v textu banneru chyba (viz níže). Budete muset upravit konfiguraci zařízení tak, aby mělo dostatečné prostředky ke splnění minimálních požadavků. Pak můžete zařízení restartovat a připojit se k němu. Projděte si minimální požadavky na konfiguraci v části věnované [kontrole, jestli hostitelský systém splňuje minimální požadavky na virtuální zařízení](#check-the-host-system).
 
 <!---If you face any other error during the initial configuration using the local web UI, refer to the following workflows:
 
@@ -221,7 +221,7 @@ V tomto kurzu jste se dozvěděli o tématech spojených se službou Data Box Ga
 
 > [!div class="checklist"]
 > * Zajištění, aby hostitel splňoval minimální požadavky na zařízení
-> * Zřízení virtuálního zařízení v hypervisoru
+> * Zřízení virtuálního zařízení ve VMware
 > * Spuštění virtuálního zařízení a získání IP adresy
 
 V dalším kurzu se dozvíte, jak připojit, nastavit a aktivovat virtuální zařízení.

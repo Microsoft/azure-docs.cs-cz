@@ -1,49 +1,50 @@
 ---
-title: Přehled vlastních Speech Service v Azure | Dokumentace Microsoftu
-description: Custom Speech Service je Cloudová služba, která umožňuje uživatelům přizpůsobit modely řeči pro určené k transkripci řeči na text.
+title: Co je Custom Speech Service?
+titlesuffix: Azure Cognitive Services
+description: Custom Speech Service je cloudová služba, která uživatelům umožňuje přizpůsobit modely řeči pro přepis řeči na text.
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: article
+ms.topic: overview
 ms.date: 02/07/2017
 ms.author: panosper
 ROBOTS: NOINDEX
-ms.openlocfilehash: da88989753069f7ba8ca2c2e2806a648f3df4e3c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: MT
+ms.openlocfilehash: f90fc40a42806cfb002da2d9943eaa41736df4d7
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948362"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222739"
 ---
 # <a name="what-is-custom-speech-service"></a>Co je Custom Speech Service?
 
-Custom Speech Service je Cloudová služba, která poskytuje uživatelům možnost přizpůsobit si modely řeči pro určené k transkripci řeči na Text.
-Pomocí služby Custom Speech Service, najdete v tématu [vlastní Speech Service Portal](https://cris.ai).
+Custom Speech Service je cloudová služba, která uživatelům poskytuje možnost přizpůsobení modelů řeči pro přepis řeči na text.
+Pokud chcete službu Custom Speech Service používat, přejděte na [portál služby Custom Speech Service](https://cris.ai).
 
-Custom Speech Service umožňuje vytvářet vlastní jazykové modely a akustických modelů přizpůsobená pro vaši aplikaci a uživatele. Tím, že nahrajete váš konkrétní řeči a/nebo textových dat pro Custom Speech Service, můžete vytvořit vlastní modely, které lze použít ve spojení s existující modely řeči stavu moderní společnosti Microsoft.
+Služba Custom Speech Service umožňuje vytvářet jazykové a akustické modely přizpůsobené vaší aplikaci a uživatelům. Po nahrání konkrétních řečových a/nebo textových dat do služby Custom Speech Service můžete vytvořit vlastní modely, které lze použít v kombinaci s existujícími špičkovými modely řeči Microsoftu.
 
-Například pokud přidáváte hlasové interakce na mobilním telefonu, tabletu nebo počítači aplikace, můžete vytvořit vlastního jazykového modelu, který je možné kombinovat s akustický model od Microsoftu k vytvoření koncového bodu převodu řeči na text určený speciálně pro vaši aplikaci. Pokud vaše aplikace je navržen pro použití v konkrétním prostředí nebo prostřednictvím naplnění určitého uživatele, můžete také vytvořit a nasadit vlastního akustického modelu s touto službou.
+Pokud například přidáváte hlasové interakce do aplikace pro mobilní telefon, tablet nebo počítač, můžete vytvořit vlastní jazykový model, který můžete v kombinaci s akustickým modelem Microsoftu použít k vytvoření koncového bodu převodu řeči na text určeného speciálně pro vaši aplikaci. Jestliže je vaše aplikace určená pro konkrétní prostředí nebo konkrétní populaci uživatelů, můžete pomocí této služby také vytvořit a nasadit vlastní akustický model.
 
 
-## <a name="how-do-speech-recognition-systems-work"></a>Jak systémy rozpoznávání řeči funguje?
-Systémy rozpoznávání řeči se skládají z několika komponent, které vzájemně spolupracují. Jsou dva nejdůležitější součástí akustický model a jazykový model.
+## <a name="how-do-speech-recognition-systems-work"></a>Jak systémy rozpoznávání řeči fungují?
+Systémy rozpoznávání řeči se skládají z několika komponent, které vzájemně spolupracují. Mezi dvě nejdůležitější komponenty patří akustický model a jazykový model.
 
-Akustický model je klasifikátor, který označuje krátké zvukové fragmenty do jednoho několika fonémů, nebo zvukových jednotek v daném jazyce. Například slovo "speech" je tvořeno čtyřmi fonémy "s p iy ch". Tyto klasifikace se provádějí řádově stokrát za sekundu.
+Akustický model je klasifikátor, který označuje krátké zvukové fragmenty jedním z mnoha fonémů, neboli zvukových jednotek, v daném jazyce. Například slovo „speech“ je tvořeno čtyřmi fonémy „s p iy ch“. Tyto klasifikace se provádějí řádově 100krát za sekundu.
 
-Jazykový model je pravděpodobnostní rozdělení přes posloupnosti slov. Jazykový model pomáhá systému zvolit takovou posloupnost slov, která zní podobně, a to na základě pravděpodobnosti jednotlivých posloupností slov. Například posloupnosti „recognize speech“ a „wreck a nice beach“ znějí podobně, ale výskyt první z nich je mnohem pravděpodobnější, takže jí bude jazykovým modelem přiřazené vyšší ohodnocení.
+Jazykový model je pravděpodobnostní rozdělení přes posloupnosti slov. Jazykový model pomáhá systému rozhodovat mezi posloupnostmi podobně znějících slov na základě pravděpodobnosti samotných posloupností slov. Například posloupnosti „recognize speech“ a „wreck a nice beach“ zní podobně, ale výskyt první z nich je mnohem pravděpodobnější, takže jí bude jazykovým modelem přiřazeno vyšší skóre.
 
-Jak akustických a jazykových modelů jsou statistických modelů zjistili díky spolupráci trénovací data. V důsledku toho fungují nejlépe při rozpoznávání řeči, které mohou nastat při použití v aplikacích jsou podobná datům, během kterých se zjistí během cvičení. Akustických a jazykových modelů v modulu Microsoft Speech-To-Text byl trénovaných na obrovském kolekce pro zpracování řeči a text a poskytují výkon stavu techniky pro nejběžnější scénáře použití, jako je například interakci s Cortanou, na vaší smart telefonu, tabletu nebo PC, hlasové dotazy vyhledávání na webu nebo diktování příteli textové zprávy.
+Akustické i jazykové modely jsou statistické modely, které se učí z trénovacích dat. Ve výsledku pak fungují nejlépe, pokud se řeč, kterou rozpoznávají v aplikacích, podobá datům zpracovaným během tréninku. Akustické a jazykové modely v modulu Microsoftu pro převod řeči na text byly trénovány na ohromné kolekci řeči a textu a ve většině běžných situací, ke kterým patří interakce s Cortanou na smartphonu, tabletu nebo v počítači, hlasové vyhledávání na webu nebo diktování SMS zpráv přátelům, poskytují špičkový výkon.
 
-## <a name="why-use-the-custom-speech-service"></a>Proč používat služby Custom Speech Service?
-Modul Microsoft řeči na Text je prvotřídní, je zaměřeny na scénáře popsané výše. Ale pokud očekáváte, že hlasové dotazy na vaši aplikaci budou obsahovat určité slovníkové položky, jako jsou názvy produktů nebo žargonu, ke které dochází jen zřídka v běžné řeči, je pravděpodobné, že můžete získat lepší výkon, že úpravou jazykového modelu.
+## <a name="why-use-the-custom-speech-service"></a>Proč službu Custom Speech Service používat?
+Přestože modul Microsoftu pro převod řeči na text patří ke světové špičce, je zaměřený na výše popsané situace. Pokud ale očekáváte, že hlasové dotazy ve vaší aplikaci budou obsahovat určité slovníkové položky, jako jsou názvy produktů nebo žargon, který se v běžné řeči vyskytuje zřídka, je pravděpodobné, že přizpůsobením jazykového modelu můžete výkon zlepšit.
 
-Pokud například vytváříte aplikaci umožňující hlasové dotazy na web MSDN, je pravděpodobné, že termíny jako „object-oriented“, „namespace“ nebo „dot net“ se budou vyskytovat častěji než v klasických hlasových aplikacích. Přizpůsobení jazykového modelu umožní systému se to naučit.
+Pokud například vytváříte aplikaci pro hlasové vyhledávání na webu MSDN, je pravděpodobné, že se termíny jako „object-oriented“, „namespace“ nebo „dot net“ budou vyskytovat častěji než v klasických hlasových aplikacích. Přizpůsobení jazykového modelu umožní systému se to naučit.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, jak pomocí služby Custom Speech Service, najdete v článku [Custom Speech portálu služby] (https://cris.ai).
+Další informace o používání služby Custom Speech Service najdete na [portálu služby Custom Speech Service] (https://cris.ai).
 
 * [Začínáme](cognitive-services-custom-speech-get-started.md)
 * [Nejčastější dotazy](cognitive-services-custom-speech-faq.md)

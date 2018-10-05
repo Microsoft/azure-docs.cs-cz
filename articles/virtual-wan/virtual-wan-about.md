@@ -5,31 +5,31 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 09/21/2018
+ms.date: 09/25/2018
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: a21b97f603fc28cdbba8983547ce958a34df0774
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 54d177d7542d7501a91a955be20af776b16657a2
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968590"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182361"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Co je Azure Virtual WAN?
 
-Azure Virtual WAN je síťová služba poskytující optimalizované a automatizované možnosti propojení jednotlivých poboček prostřednictvím Azure. Virtual WAN umožňuje připojit a nakonfigurovat zařízení v pobočkách tak, aby komunikovaly přes Azure. Můžete to udělat buď ručně, nebo pomocí zařízení preferovaného partnera pro Virtual WAN. Podrobnosti najdete v článku o [preferovaných partnerech](https://go.microsoft.com/fwlink/p/?linkid=2019615). Využití zařízení preferovaného partnera vám zajistí snadné použití, jednoduché propojení a správu konfigurace. Integrovaný řídicí panel Azure WAN nabízí okamžité přehledy pro řešení potíží, díky kterým ušetříte čas a získáte snadný způsob zobrazení propojení ve velkém měřítku.
+Azure Virtual WAN je síťová služba poskytující optimalizované a automatizované možnosti propojení jednotlivých poboček prostřednictvím Azure. Virtuální síť WAN umožňuje připojit a nakonfigurovat zařízení v pobočkách tak, aby komunikovaly přes Azure. Můžete to udělat buď ručně, nebo pomocí zařízení preferovaného partnera pro Virtual WAN. Podrobnosti najdete v článku o [preferovaných partnerech](https://go.microsoft.com/fwlink/p/?linkid=2019615). Využití zařízení preferovaného partnera vám zajistí snadné použití, jednoduché propojení a správu konfigurace. Integrovaný řídicí panel Azure WAN nabízí okamžité přehledy pro řešení potíží, díky kterým ušetříte čas a získáte snadný způsob zobrazení propojení ve velkém měřítku.
 
-![Diagram Virtual WAN](./media/virtual-wan-about/virtualwan.png)
+![Diagram virtuální sítě WAN](./media/virtual-wan-about/virtualwan.png)
 
 Tento článek obsahuje rychlý přehled o síťovém propojení úloh v prostředí Azure i mimo ně. Virtual WAN nabízí následující výhody:
 
 * **Integrovaná řešení propojení ve hvězdicovém modelu:** Můžete zautomatizovat konfiguraci Site-to-Site a propojení mezi místními lokalitami a rozbočovačem Azure.
-* **Automatizované vytvoření a konfigurace paprsků:** Můžete si snadno propojit svoje virtuální sítě a úlohy s rozbočovačem Azure.
+* **Automatizované vytvoření a konfigurace koncových sítí:** Připojte bez starostí své virtuální sítě a úlohy k rozbočovači Azure.
 * **Intuitivní řešení potíží:** Můžete zobrazit celý tok dat v rámci Azure a získané informace použít k provedení potřebných akcí.
 
 ## <a name="s2s"></a>Propojení typu Site-to-Site
 
-K vytvoření propojení typu Site-to-Site pomocí služby Virtual WAN můžete buď využít služeb [partnera pro Virtual WAN](https://go.microsoft.com/fwlink/p/?linkid=2019615), nebo vytvořit připojení ručně.
+K vytvoření připojení typu Site-to-Site pomocí služby Virtual WAN můžete buď využít služeb [partnera pro Virtual WAN](https://go.microsoft.com/fwlink/p/?linkid=2019615), nebo vytvořit připojení ručně.
 
 ### <a name="s2spartner"></a>Práce s partnerem Virtual WAN
 
@@ -43,6 +43,8 @@ V případě spolupráce s partnerem pro Virtual WAN probíhá celý proces nás
 Pokud nechcete využít preferovaného partnera, můžete propojení nakonfigurovat ručně. Informace najdete v tématu věnovaném [vytvoření propojení typu Site-to-Site pomocí Virtual WAN](virtual-wan-site-to-site-portal.md).
 
 ## <a name="p2s"></a>Propojení typu Point-to-Site (Preview)
+
+Propojení typu Point-to-Site (P2S) umožňuje vytvořit zabezpečené připojení k virtuálnímu rozbočovači z individuálního klientského počítače. Připojení P2S se vytvoří jeho zahájením z klientského počítače. Toto řešení je užitečné pro osoby pracující na dálku, které se chtějí připojit ze vzdáleného umístění, například z domova nebo konference. Síť VPN P2S je také užitečným řešením nahrazujícím síť VPN S2S, pokud máte pouze několik klientů, kteří se potřebují připojit.
 
 Postup ručního vytvoření propojení typu Point-to-Site najdete v tématu o [vytvoření propojení typu Point-to-Site pomocí Virtual WAN](https://go.microsoft.com/fwlink/p/?linkid=2020051&clcid).
 

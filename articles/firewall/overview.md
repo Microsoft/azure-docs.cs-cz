@@ -6,14 +6,14 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 9/24/2018
+ms.date: 9/26/2018
 ms.author: victorh
-ms.openlocfilehash: 2961f6cc8607ba7ec670b297a1858bf433c3ec89
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1527ed9c0a83577da9a231cb91a93ad7f182061c
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960783"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392686"
 ---
 # <a name="what-is-azure-firewall"></a>Co je brána Azure Firewall?
 
@@ -68,7 +68,9 @@ Brána Azure Firewall má následující známé problémy:
 |Hvězdicová architektura s globálním peeringem nefunguje|Hvězdicová architektura, kdy jsou rozbočovač a brána firewall nasazené v jedné oblasti Azure a koncové body připojené k rozbočovači prostřednictvím globálního peeringu VNet jsou v jiné oblasti, není podporovaná.|Další informace najdete v tématu [Vytvoření, změna nebo odstranění peeringu virtuální sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints).|
 Pravidla síťového filtrování pro jiné protokoly než TCP/UDP (třeba ICMP) nebudou fungovat pro provoz do internetu.|Pravidla síťového filtrování pro jiné protokoly než TCP/UDP nefungují s překladem SNAT na veřejnou IP adresu. Jiné protokoly než TCP/UDP jsou ale podporované mezi koncovými podsítěmi a virtuálními sítěmi.|Azure Firewall používá vyvažování zatížení úrovně Standard, [které v současnosti nepodporuje SNAT pro protokol IP](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#limitations). Zkoumáme možnosti, jak podporu tohoto scénáře zahrnout do budoucích verzí.|
 |Určení NAT (DNAT) nefunguje pro port 80 a 22.|Pole Cílový port v kolekci pravidel NAT nemůže obsahovat port 80 nebo 22.|Pracujeme na tom, abychom to v blízké budoucnosti opravili. Do té doby použijte jako cílový port v pravidlech NAT jakýkoliv jiný port. Port 80 nebo 22 může i nadále sloužit jako překládaný port (například můžete namapovat veřejnou adresu ip:81 na privátní ip:80).|
-|
+|Chybějící podpora PowerShellu a rozhraní příkazového řádku pro protokol ICMP|Azure PowerShell a rozhraní příkazového řádku nepodporují ICMP jako platný protokol v pravidlech sítě.|ICMP můžete pořád používat jako protokol prostřednictvím portálu a rozhraní REST API. Pracujeme na brzkém přidání protokolu ICMP do PowerShellu a rozhraní příkazového řádku.|
+|Značky plně kvalifikovaného názvu domény vyžadují, aby byl nastavený protokol: port|Pravidla aplikace se značkami plně kvalifikovaného názvu domény vyžadují definici port:protokol.|Jako hodnotu port: protokol můžete použít **https**. Pracujeme na tom, aby toto pole bylo při použití značek plně kvalifikovaného názvu domény nepovinné.|
+|Přesunutí brány firewall do jiné skupiny prostředků nebo předplatného není podporované.|Přesunutí brány firewall do jiné skupiny prostředků nebo předplatného není podporované.|Podporu této funkčnosti máme v plánu doplnit. Pokud chcete bránu firewall přesunout do jiné skupiny prostředků nebo předplatného, musíte odstranit aktuální instanci a znovu ji vytvořit v nové skupině prostředků nebo předplatném.|
 
 ## <a name="next-steps"></a>Další kroky
 

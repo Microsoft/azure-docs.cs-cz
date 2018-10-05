@@ -10,12 +10,12 @@ ms.component: video-indexer
 ms.topic: tutorial
 ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: f7c86985d12d52ac2dc8b4d2952f048969d3c339
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 89d15e83954f529705b3ac3c6f12e2a16a17479d
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984470"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220009"
 ---
 # <a name="tutorial-how-to-sign-up-and-upload-your-first-video"></a>Kurz: Jak se zaregistrovat a nahrát na server svoje první video
 
@@ -32,7 +32,7 @@ Pokud chcete začít s vývojem pomocí Video Indexeru, přejděte na web [Video
 1. Přihlaste se k webu [Video Indexer](https://www.videoindexer.ai/).
 2. Pokud chcete nahrát video na server, stiskněte tlačítko nebo odkaz **Upload** (Nahrát).
 
-    ![Upload](./media/video-indexer-get-started/video-indexer-upload.png)
+    ![Odeslat](./media/video-indexer-get-started/video-indexer-upload.png)
 
     Když se vaše video nahraje na server, začne ho Video Indexer indexovat a analyzovat.
 

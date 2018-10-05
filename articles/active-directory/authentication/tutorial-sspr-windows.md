@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 27f271a20af2bb9910f1cf7d63e6033d78e67b83
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: f2f2208f325728275706eeed9ff16e8afc3b11cf
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41918058"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166873"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Kurz: Resetování hesla Azure AD z přihlašovací obrazovky
 
@@ -45,8 +45,6 @@ Nasazení změny konfigurace, která umožní resetování hesla z přihlašovac
    * Volitelně zadejte výstižný popis profilu.
    * Jako platformu vyberte **Windows 10 a novější**.
    * Jako typ profilu vyberte **Vlastní**.
-
-   ![Vytvoření profilu][CreateProfile]
 
 3. Nakonfigurujte **Nastavení**.
    * **Přidejte** následující Nastavení identifikátoru OMA-URI, které povolí odkaz na resetování hesla.
@@ -100,7 +98,6 @@ Co se po konfiguraci a přiřazení zásad změnilo pro uživatele? Jak se dozv�
 ![Přihlašovací obrazovka][LoginScreen]
 
 Při pokusu o přihlášení se teď uživatelům na přihlašovací obrazovce zobrazí odkaz Resetovat heslo, který otevře prostředí samoobslužného resetování hesla. Tato funkce umožňuje uživatelům resetovat své heslo, aniž by museli použít jiné zařízení pro přístup k webovému prohlížeči.
-Při pokusu o přihlášení se teď uživatelům na přihlašovací obrazovce zobrazí odkaz Resetovat heslo, který otevře prostředí samoobslužného resetování hesla. Tato funkce umožňuje uživatelům resetovat své heslo, aniž by museli použít jiné zařízení pro přístup k webovému prohlížeči.
 
 Vaši uživatelé najdou pokyny k použití této funkce v tématu popisujícím [resetování hesla k pracovnímu nebo školnímu účtu](../user-help/active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in).
 
@@ -114,7 +111,11 @@ Při testování této funkce s použitím Vzdálené plochy se odkaz Resetovat 
 
 * Resetování hesla u Vzdálené plochy se v současné době nepodporuje.
 
-Pokud je pomocí klíče registru nebo zásady skupiny zakázaná zamykací obrazovka Windows, **resetování hesla** nebude k dispozici.
+Pokud je pomocí klíče registru nebo zásad skupiny zakázaná zamykací obrazovka Windows, nebude **resetování hesla** k dispozici.
+
+Protokol auditu služby Azure AD bude obsahovat informace o IP adrese a typu klienta, kde došlo k resetování hesla.
+
+![Příklad resetování hesla na přihlašovací obrazovce v protokolu auditu služby Azure AD](media/tutorial-sspr-windows/windows-sspr-azure-ad-audit-log.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -127,6 +128,5 @@ V tomto kurzu jste umožnili uživatelům resetovat svá hesla z přihlašovací
 > [!div class="nextstepaction"]
 > [Hodnocení rizika při přihlášení](tutorial-risk-based-sspr-mfa.md)
 
-[CreateProfile]: ./media/tutorial-sspr-windows/create-profile.png "Vytvoření profilu konfigurace zařízení Intune pro povolení odkazu na resetování hesla na přihlašovací obrazovce Windows 10"
 [Assignment]: ./media/tutorial-sspr-windows/profile-assignment.png "Přiřazení zásad konfigurace zařízení Intune ke skupině zařízení s Windows 10"
 [LoginScreen]: ./media/tutorial-sspr-windows/logon-reset-password.png "Odkaz na resetování hesla na přihlašovací obrazovce Windows 10"

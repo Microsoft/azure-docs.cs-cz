@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: ''
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 09/24/2018
+ms.date: 09/27/2018
 ms.author: alkohli
-ms.openlocfilehash: d0da9107fe1dd34481ca0bf1aa9a0b260bb10951
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e47ffbe15291275a7104d5e201a597d084cdbdd9
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946625"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422860"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: nejčastější dotazy
 
@@ -45,7 +45,7 @@ A.  Služba Azure Data Box je určená pro příjem dat offline. Tato služba sp
 ### <a name="q-what-is-azure-data-box"></a>Otázka: Co je Azure Data Box?
 A. Azure Data Box umožňuje rychlý, levný a bezpečný přenos terabajtů dat do nebo z Azure. Zařízení Data Box si můžete objednat na webu Azure Portal. Microsoft dodává úložné zařízení s využitelnou kapacitou 80 TB prostřednictvím místního dopravce. 
 
-Jakmile vám zařízení přijde, můžete ho rychle nastavit v místním webovém uživatelském rozhraní. Zkopírujte data ze serverů do zařízení a pak ho pošlete zpět do Azure. V datacentru Azure se vaše data automaticky nahrají ze zařízení do Azure. Celý proces se od začátku do konce sleduje ve službě Data Box na webu Azure Portal.
+Jakmile vám zařízení přijde, můžete ho rychle nastavit v místním webovém uživatelském rozhraní. Zkopírujte data ze serverů do zařízení a pak ho pošlete zpět do Azure. V datacentru Azure se vaše data nahrají ze zařízení do Azure automaticky. Celý proces se od začátku do konce sleduje ve službě Data Box na webu Azure Portal.
 
 ### <a name="q-when-should-i-use-data-box"></a>Otázka: Kdy mám použít Data Box?
 A. Data Box pro vás bude výhodný, pokud máte 40–500 TB dat, která chcete přenést do Azure. Pokud máte méně než 40 TB dat, použijte Data Box Disk. Pokud máte více než 500 TB dat, zaregistrujte se do služby Data Box Heavy.
@@ -116,8 +116,8 @@ A.
 ### Q. I could not set up Data Box on a private network. Why would this be?
 A.-->
 
-### <a name="q-the-system-fault-indicator-led-on-the-front-operating-panel-is-on-what-should-i-do"></a>Otázka: Na předním ovládacím panelu svítí dioda, která signalizuje chybu systému. Co bych měl(a) dělat?
-A. Pokud svítí dioda, která signalizuje chybu systému, znamená to, že systém není v pořádku. O dalších krocích se poraďte s podporou Microsoftu.
+### <a name="q-the-system-fault-indicator-led-on-the-front-operating-panel-is-on-what-should-i-do"></a>Otázka: Na předním ovládacím panelu svítí dioda, která signalizuje chybu systému. Co bych měl/a dělat?
+A. Pokud svítí dioda, která signalizuje chybu systému, znamená to, že systém není v pořádku. O dalším postupu se [poraďte s podporou Microsoftu](data-box-disk-contact-microsoft-support.md).
 
 ### <a name="q-i-cant-access-the-data-box-unlock-password-in-the-azure-portal-why-would-this-be"></a>Otázka: Nemám přístup k heslu pro odemčení Data Boxu na webu Azure Portal. Čím to může být?
 A. Pokud nemůžete získat přístup k heslu pro odemčení, které je na webu Azure Portal, zkontrolujte oprávnění v předplatném a v účtu úložiště. Ověřte, že na úrovni skupiny prostředků máte oprávnění přispěvatele nebo vlastníka. K zobrazení přihlašovacích údajů musíte mít aspoň oprávnění platné pro roli obsluhy Data Boxu.
@@ -127,8 +127,8 @@ A. Pokud nemůžete získat přístup k heslu pro odemčení, které je na webu 
 ### <a name="q-how-do-i-track-the-data-box-from-when-i-placed-the-order-to-shipping-the-device-back"></a>Otázka: Jak můžu sledovat Data Box od okamžiku vystavení objednávky až do zpětného odeslání zařízení? 
 A.  Stav objednávky Data Boxu můžete sledovat na webu Azure Portal. Při vytváření objednávky se zobrazuje také výzva k zadání e-mailové adresy pro oznámení. Pokud jste tuto adresu zadali, budete prostřednictvím e-mailu dostávat oznámení o všech změnách stavu dané objednávky. Další informace o [konfiguraci e-mailových adres pro oznámení](data-box-portal-ui-admin.md#edit-notification-details).
 
-### <a name="q-how-do-i-return-the-disks"></a>Otázka: Jak můžu disky vrátit? 
-A.  Microsoft zobrazí expediční štítek na displeji s elektronickým inkoustem. Připevněte tento štítek k odesílanému balíčku a zavezte zapečetěný balíček na pobočku dopravce. Pokud se tento štítek poškodil nebo ztratil, přejděte na **Přehled > Stáhnout expediční štítek** a stáhněte si nový zpětný expediční štítek.
+### <a name="q-how-do-i-return-the-device"></a>Otázka: Jak můžu zařízení vrátit? 
+A.  Microsoft zobrazuje expediční štítek na displeji s elektronickým inkoustem. Pokud se expediční štítek na displeji s elektronickým inkoustem nezobrazuje, přejděte na **Přehled > Stáhnout expediční štítek**. Stáhněte a vytiskněte tento štítek, vložte ho do průhledného plastového obalu na zařízení a předejte zařízení svému dopravci. 
 
 ### <a name="q-i-received-an-email-notification-that-my-device-has-reached-the-azure-datacenter-how-do-i-find-out-if-the-data-upload-is-in-progress"></a>Otázka: Přišlo mi e-mailem oznámení, že zařízení dorazilo do datacentra Azure. Jak zjistím, jestli probíhá nahrávání dat?
 A. Na webu Azure Portal přejděte k objednávce Data Boxu a pak přejděte na **Přehled**. Pokud se data začala nahrávat do Azure, zobrazí se v pravém podokně průběh kopírování. 
@@ -175,17 +175,17 @@ A.  Ano. Data Box podporuje maximálně 10 účtů úložišť, úložišť pro 
 
 <!--### Q. How do I schedule a pickup for my Data Box?--> 
 
-### <a name="q-my-device-was-delivered-but-the-device-seems-to-be-damaged-what-should-i-do"></a>Otázka: Zařízení přišlo, ale zdá se být poškozené. Co bych měl(a) dělat?
+### <a name="q-my-device-was-delivered-but-the-device-seems-to-be-damaged-what-should-i-do"></a>Otázka: Zařízení přišlo, ale zdá se být poškozené. Co bych měl/a dělat?
 A. Pokud zařízení přišlo poškozené nebo s ním někdo nedovoleným způsobem manipuloval, nepoužívejte ho. [Obraťte se na podporu Microsoftu](data-box-disk-contact-microsoft-support.md) a co nejdříve zařízení vraťte. Můžete také vystavit novou objednávku náhradního zařízení Data Box. V uvedeném případě vám náhradní zařízení nebudeme účtovat.
 
 ### <a name="q-can-i-use-my-own-shipping-carrier-to-ship-data-box"></a>Otázka: Můžu k dodání zařízení Data Box použít vlastního dopravce?
 A. U služby Data Box zajišťuje dopravu do datacentra Azure i z něj Microsoft. Pokud chcete použít vlastního dopravce, můžete použít službu Azure Import/Export. Další informace najdete v článku o [službě Azure Import/Export](../storage/common/storage-import-export-service.md).
 
-### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>Otázka: Na displeji s elektronickým inkoustem se nezobrazuje expediční štítek pro vrácení zásilky. Co bych měl(a) dělat?
+### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>Otázka: Na displeji s elektronickým inkoustem se nezobrazuje expediční štítek pro vrácení zásilky. Co mám dělat?
 A. Pokud se na displeji s elektronickým inkoustem nezobrazuje štítek pro vrácení zásilky, postupujte takto:
 - Odstraňte starý expediční štítek a všechny ostatní štítky, které se týkají minulé přepravy.
-- Na webu Azure Portal přejděte ke své objednávce. Přejděte na Přehled a stáhněte si expediční štítek. Další informace najdete v článku o [stažení expedičního štítku](data-box-portal-admin.md#download-shipping-label).
-- Vytiskněte si expediční štítek a vložte ho do průhledného obalu, který nalepíte na zařízení. 
+- Na webu Azure Portal přejděte ke své objednávce. Přejděte na **Přehled** > **Stáhnout expediční štítek**. Další informace najdete v článku o [stažení expedičního štítku](data-box-portal-admin.md#download-shipping-label).
+- Vytiskněte expediční štítek a vložte ho do průhledného plastového obalu, který je připevněný k zařízení. 
 - Expediční štítek musí být dobře viditelný. 
 
 ### <a name="q-how-is-my-data-protected-during-transit"></a>Otázka: Jak jsou data během přenosu chráněná? 
@@ -204,12 +204,11 @@ A. Ano. Zařízení můžete znovu zapnout a přidat do něj další data. Až d
 A.  Jakmile se u objednávky zařízení **Data Copy** zobrazí stav **dokončeno**, měli byste mít přístup ke svým datům.
 
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>Otázka: Kde v Azure se moje data po nahrání nachází?
-A.  Když data zkopírujete do Data Boxu, nahrají se do jedné z těchto cest v úložišti Azure Storage (podle toho, jestli jde o objekt blob bloku, objekt blob stránky nebo o soubory Azure):
- - `<You_storage_account_name_BlockBlob>/<my_container>/Blob` 
- - `<Your_storage_account_name_PageBlob>/<my_container>/Blob`
- - `<Your_storage_account_name_AzFile>/` 
-
-Ve sdílených složkách objektů blob bloku a objektů blob stránky jsou entitami první úrovně kontejnery a entitami druhé úrovně objekty blob. Ve sdílených složkách souborů Azure jsou entitami první úrovně sdílené složky a entitami druhé úrovně soubory.
+A.  Když data zkopírujete do Data Boxu, nahrají se do jedné z těchto cest v účtu Azure Storage (podle toho, jestli jde o objekt blob bloku, objekt blob stránky nebo soubory Azure).
+ - `https://<storage_account_name>.blob.core.windows.net/<containername>` 
+ -  `https://<storage_account_name>.file.core.windows.net/<sharename>`
+ 
+ Alternativně můžete přejít na svůj účet Azure Storage na webu Azure Portal a dokončit navigaci tam.
 
 ### <a name="q-i-just-noticed-that-i-did-not-follow-the-azure-naming-requirements-for-my-containers-will-my-data-fail-to-upload-to-azure"></a>Otázka: Zjistil(a) jsem, že jsem nedodržel(a) požadavky Azure na názvy kontejnerů. Znamená to, že nahrání mých dat do Azure se nezdaří?
 A.  Pokud názvy kontejnerů obsahují velká písmena, automaticky se převedou na malá písmena. Pokud názvy nevyhovují z jiných důvodů (speciální znaky, jiné jazyky atd.), nahrání se nepodaří. Další informace o osvědčených postupech při pojmenovávání sdílených složek, kontejnerů a souborů najdete zde: 

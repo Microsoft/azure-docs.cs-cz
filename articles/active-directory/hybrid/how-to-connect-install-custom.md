@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/18/2018
+ms.date: 09/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9fe18c5e9514d7b8ecc3e38b394ddb4fadcc4393
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: e984dc985100bcdabbee4fb86bd1819a329301a5
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46303940"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452628"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Vlastní instalace služby Azure AD Connect
 **Vlastní nastavení** Azure AD Connect se používá, pokud chcete využít další možnosti instalace. Používá se, pokud máte víc doménových struktur, nebo pokud chcete nakonfigurovat volitelné funkce, které nejsou zahrnuty v rychlé instalaci. Používá se ve všech případech, kde možnost [**rychlá instalace**](how-to-connect-install-express.md) nevyhovuje nasazení nebo topologii.
@@ -56,10 +56,10 @@ Po instalaci požadovaných součástí budete vyzváni, abyste vybrali metodu j
 | Federace se službou AD FS |Uživatelé se můžou přihlašovat ke cloudovým službám Microsoft, například Office 365, stejným heslem jako v místní síti.  Uživatelé jsou k přihlášení přesměrováni do místní instance služby AD FS a ověření probíhá místně. |
 | Federace s PingFederate|Uživatelé se můžou přihlašovat ke cloudovým službám Microsoft, například Office 365, stejným heslem jako v místní síti.  Uživatelé se k přihlášení přesměrují do místní instance PingFederate a ověření proběhne místně. |
 | Nekonfigurovat |Nenainstaluje a nenakonfiguruje se žádná funkce přihlašování uživatelů. Tuto možnost zvolte, pokud už využíváte federační server třetí strany nebo jiné existující řešení. |
-|Povolit jednotné přihlašování|Tato možnost je dostupná pro synchronizaci hesla i pro předávací ověřování a poskytuje jednotné přihlašovací prostředí pro uživatele stolních počítačů v podnikové síti. Další informace najdete v tématu [Jednotné přihlašování](how-to-connect-sso.md). </br>Poznámka: Pro zákazníky služby AD FS není tato možnost dostupná, protože AD FS už nabízí stejnou úroveň jednotného přihlašování.</br>
+|Povolit jednotné přihlašování|Tato možnost je dostupná při synchronizaci hodnot hash hesel i předávacím ověřování a poskytuje jednotné přihlašovací prostředí pro uživatele stolních počítačů v podnikové síti. Další informace najdete v tématu [Jednotné přihlašování](how-to-connect-sso.md). </br>Poznámka: Pro zákazníky služby AD FS není tato možnost dostupná, protože AD FS už nabízí stejnou úroveň jednotného přihlašování.</br>
 
 ### <a name="connect-to-azure-ad"></a>Připojení k Azure AD
-Na obrazovce Připojení k Azure AD zadejte účet a heslo globálního správce. Pokud jste na předchozí stránce vybrali **Federace se službou AD FS**, nepřihlašujte se pomocí účtu v doméně, kterou plánujete povolit pro federaci. Je vhodné použít účet ve výchozí doméně **onmicrosoft.com**, která je součástí adresáře Azure AD.
+Na obrazovce Připojení k Azure AD zadejte účet a heslo globálního správce. Pokud jste na předchozí stránce vybrali **Federace se službou AD FS**, nepřihlašujte se pomocí účtu v doméně, kterou plánujete povolit pro federaci. Doporučuje se použít účet ve výchozí doméně **onmicrosoft.com**, která je součástí tenanta služby Azure AD.
 
 Tento účet slouží jenom k vytvoření účtu služby v Azure AD, a po dokončení průvodce se už nepoužívá.  
 ![Přihlášení uživatele](./media/how-to-connect-install-custom/connectaad.png)
@@ -93,7 +93,7 @@ Tato stránka vám umožní zkontrolovat domény hlavního názvu uživatele (UP
 ![Neověřené domény](./media/how-to-connect-install-custom/aadsigninconfig2.png)  
 Zkontrolujte všechny domény označené jako **Nepřidáno** a **Neověřeno**. Ujistěte se, že domény, které používáte, byly ověřeny v Azure AD. Po ověření domén klikněte na symbol obnovení. Další informace najdete v tématu [přidání a ověření domény](../active-directory-domains-add-azure-portal.md)
 
-**UserPrincipalName** – Atribut userPrincipalName je atribut, který uživatelé používají při přihlášení k Azure AD a Office 365. Použité domény, označované také jako přípona UPN, je nutné před synchronizací uživatelů ověřit ve službě Azure AD. Společnost Microsoft doporučuje ponechat výchozí atribut userPrincipalName. Pokud tento atribut není směrovatelný a nedá se ověřit, je možné vybrat jiný atribut. Jako atribut, který uchovává přihlašovací ID, můžete například vybrat e-mail. Použití jiného atributu než userPrincipalName se nazývá **Alternativní ID**. Hodnota atributu Alternativní ID se musí řídit standardem RFC822. Alternativní ID se dá použít se synchronizací hesla i federací. Tento atribut nesmí být v Active Directory definovaný jako atribut s více hodnotami, a to ani když obsahuje pouze jednu hodnotu.
+**UserPrincipalName** – Atribut userPrincipalName je atribut, který uživatelé používají při přihlášení k Azure AD a Office 365. Použité domény, označované také jako přípona UPN, je nutné před synchronizací uživatelů ověřit ve službě Azure AD. Společnost Microsoft doporučuje ponechat výchozí atribut userPrincipalName. Pokud tento atribut není směrovatelný a nedá se ověřit, je možné vybrat jiný atribut. Jako atribut, který uchovává přihlašovací ID, můžete například vybrat e-mail. Použití jiného atributu než userPrincipalName se nazývá **Alternativní ID**. Hodnota atributu Alternativní ID se musí řídit standardem RFC822. Alternativní ID lze použít při synchronizaci hodnot hash hesel, předávacím ověřování a federaci. Tento atribut nesmí být v Active Directory definovaný jako atribut s více hodnotami, a to ani když obsahuje pouze jednu hodnotu.
 
 >[!NOTE]
 > Když povolíte předávací ověřování, musíte mít alespoň jednu ověřenou doménu, abyste mohli pokračovat v průvodci.
@@ -139,7 +139,7 @@ Atribut sourceAnchor je atribut, který se za dobu existence objektu uživatele 
 | Nechat správu zdrojového ukotvení na Azure | Tuto možnost vyberte, pokud chcete, aby Azure AD vybral atribut za vás. Pokud vyberete tuto možnost, průvodce službou Azure AD Connect použije logiku výběru atributu sourceAnchor popsanou v části článku [Azure AD Connect: Koncepty návrhu – použití ms-DS-ConsistencyGuid jako parametru sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor). Jakmile se vlastní instalace dokončí, průvodce vás informuje, který atribut byl vybrán jako atribut zdrojového ukotvení. |
 | Konkrétní atribut | Tuto možnost vyberte, pokud chcete jako atribut sourceAnchor zadat existující atribut AD. |
 
-Protože atribut nejde změnit, je nutné naplánovat a použít dobrý atribut. Jednou z vhodných možností je objectGUID. Tento atribut se změní jenom tehdy, pokud se uživatelský účet přesune mezi doménovými strukturami nebo doménami. V prostředí více doménových struktur, kde přesouváte účty mezi doménovými strukturami, je nutné použít jiný atribut, například atribut s employeeID. Vyhněte se atributům, které se mění, když uživatel uzavře manželství nebo se změní jeho přiřazení. Nelze použít atributy se symbolem @-sign, takže se nedá použít e-mail ani atribut userPrincipalName. V atributu se taky rozlišují velká a malá písmena, proto při přesunutí objektu mezi doménovými strukturami dejte pozor, abyste správně zachovali velká a malá písmena. Binární atributy se zakódují do formátu Base64, ale ostatní typy atributů zůstávají v nekódovaném stavu. Při federacích a v některých rozhraních Azure AD se tento atribut taky nazývá immutableID. Další informace o zdrojovém ukotvení najdete v [konceptech návrhu](plan-connect-design-concepts.md#sourceanchor).
+Protože atribut nejde změnit, je nutné naplánovat a použít dobrý atribut. Jednou z vhodných možností je objectGUID. Tento atribut se změní jenom tehdy, pokud se uživatelský účet přesune mezi doménovými strukturami nebo doménami. Vyhněte se atributům, které se mění, když uživatel uzavře manželství nebo se změní jeho přiřazení. Nelze použít atributy se symbolem @-sign, takže se nedá použít e-mail ani atribut userPrincipalName. V atributu se taky rozlišují velká a malá písmena, proto při přesunutí objektu mezi doménovými strukturami dejte pozor, abyste správně zachovali velká a malá písmena. Binární atributy se zakódují do formátu Base64, ale ostatní typy atributů zůstávají v nekódovaném stavu. Při federacích a v některých rozhraních Azure AD se tento atribut taky nazývá immutableID. Další informace o zdrojovém ukotvení najdete v [konceptech návrhu](plan-connect-design-concepts.md#sourceanchor).
 
 ### <a name="sync-filtering-based-on-groups"></a>Filtrování synchronizace podle skupin
 Funkce filtrování podle skupin umožňuje synchronizovat pouze malou podmnožinu objektů pro pilotní nasazení. Pokud chcete tuto funkci použít, vytvořte pro tento účel skupinu v místní službě Active Directory. Jako přímé členy přidejte uživatele a skupiny, které chcete synchronizovat do Azure AD. Později můžete přidáváním uživatelů do této skupiny a jejich odebíráním spravovat seznam objektů, které mají být dostupné v Azure AD. Každý objekt, který chcete synchronizovat, musí být přímým členem skupiny. Přímými členy musí být uživatelé, skupiny, kontakty a počítače/zařízení. Členství ve vnořené skupině se nepřeloží. Když jako člena přidáte skupinu, přidá se jenom samotná skupina, a ne její členové.
@@ -220,7 +220,7 @@ Na počítači, který obsahuje Nástroje pro správu zásad skupiny:
 
         Value: `https://autologon.microsoftazuread-sso.com`  
         Data: 1  
-    
+
 
 5.  Mělo by to vypadat nějak takto:  
 ![Zóny intranetu](./media/how-to-connect-install-custom/sitezone.png)
@@ -382,7 +382,7 @@ Pokud chcete ověřit, že je kompletní ověřování úspěšné, měli byste 
 ## <a name="troubleshooting"></a>Řešení potíží
 Následující část popisuje řešení potíží a obsahuje informace, které můžete využít, pokud narazíte na problém s instalací Azure AD Connect.
 
-### <a name="the-adsync-database-already-contains-data-and-cannot-be-overwritten"></a>„Databáze ADSync již obsahuje data a není možné ji přepsat.“ 
+### <a name="the-adsync-database-already-contains-data-and-cannot-be-overwritten"></a>„Databáze ADSync již obsahuje data a není možné ji přepsat.“
 Pokud zvolíte vlastní instalaci Azure AD Connect a na stránce **Instalace požadovaných komponent** vyberete možnost **Použít existující SQL Server**, může dojít k chybě se zprávou **Databáze ADSync již obsahuje data a není možné ji přepsat. Odeberte existující databázi a zkuste to znovu.**
 
 ![Chyba](./media/how-to-connect-install-custom/error1.png)
@@ -393,7 +393,7 @@ K tomu obvykle dochází po odinstalaci Azure AD Connect.  Při odinstalaci se d
 
 Pokud chcete tento problém vyřešit, nejprve ověřte, že se již nepoužívá databáze **ADSync**, kterou před odinstalací používal nástroj Azure AD Connect.
 
-Dále doporučujeme databázi před odstraněním zálohovat. 
+Dále doporučujeme databázi před odstraněním zálohovat.
 
 Nakonec musíte databázi odstranit.  Můžete to provést pomocí aplikace **Microsoft SQL Server Management Studio** po připojení k instanci SQL. Vyhledejte databázi **ADSync**, klikněte na ni pravým tlačítkem a v místní nabídce vyberte **Odstranit**.  Pak ji kliknutím na **OK** odstraňte.
 

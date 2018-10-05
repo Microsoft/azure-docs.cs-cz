@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 09/12/2018
+ms.date: 09/26/2018
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporoate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 46a48c6e06f37968ab3f41b30d983f2664785811
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0b8de4d04d9cca47423634164e458e8699154f30
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990548"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405304"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>Kurz: Vytvoření přidružení ExpressRoute pomocí služby Azure Virtual WAN (Preview)
 
@@ -39,6 +39,30 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
 
+## <a name="register"></a>Registrace této funkce
+
+Kliknutím na **Vyzkoušet** zaregistrujete tuto funkci snadno pomocí prostředí Azure Cloud Shell.
+
+>[!NOTE]
+>Pokud tuto funkci nezaregistrujete, nebudete ji moci použít ani ji neuvidíte na portálu.
+>
+>
+
+Po kliknutí na **Vyzkoušet** se otevře Azure Cloud Shell. Zkopírujte a vložte následující příkazy:
+
+```azurepowershell-interactive
+Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowCortexExpressRouteGateway
+```
+ 
+```azurepowershell-interactive
+Get-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowCortexExpressRouteGateway
+```
+
+Jakmile bude tato funkce zaregistrovaná, znovu zaregistrujte předplatné do oboru názvů Microsoft.Network.
+
+```azurepowershell-interactive
+Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
+```
 
 ## <a name="vnet"></a>1. Vytvoření virtuální sítě
 
@@ -46,7 +70,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="openvwan"></a>2. Vytvoření virtuální sítě WAN
 
-V prohlížeči přejděte na web [Azure Portal](https://portal.azure.com) a přihlaste se pomocí svého účtu Azure.
+V prohlížeči přejděte na [Azure Portal (Preview)](http://aka.ms/azurevirtualwanpreviewfeatures) a přihlaste se pomocí svého účtu Azure.
 
 [!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-vwan-include.md)]
 

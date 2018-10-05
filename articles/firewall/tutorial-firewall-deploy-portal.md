@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 727d38cae6c2f98d2922d5760f116ab85d75b8ac
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ff8df51011ef664950ecfeb9eef0b201306c8ad5
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983510"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221639"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Kurz: Nasazení a konfigurace brány Azure Firewall pomocí webu Azure Portal
 
@@ -31,9 +31,7 @@ Síťový provoz podléhá nakonfigurovaným pravidlům brány firewall, když h
 
 Aplikace a síťová pravidla se ukládají do *kolekcí pravidel*. Kolekce pravidel je seznam pravidel, které sdílí stejnou akci a prioritu.  Kolekce pravidel sítě je seznam pravidel sítě a kolekce pravidel aplikace je seznam pravidel aplikace.
 
-Azure Firewall nezná koncept příchozích a odchozích pravidel. Na veškerý provoz přicházející do brány firewall se uplatňují pravidla aplikace a pravidla sítě. Nejprve se použijí pravidla sítě, pak pravidla aplikace a tato pravidla jsou ukončující.
-
-Pokud se například najde shoda s pravidlem sítě, příslušný paket se nevyhodnotí podle pravidel aplikace. Pokud se nenajde shoda s žádným pravidlem sítě a protokol paketu je HTTP nebo HTTPS, paket se vyhodnotí podle pravidel aplikace. Pokud se stále nenajde žádná shoda, paket se vyhodnotí podle kolekce pravidel infrastruktury. Pokud se stále nenajde žádná shoda, ve výchozím nastavení se paket odepře.
+Azure Firewall používá pravidla překladu adres (NAT), pravidla sítě a pravidla aplikace. Další informace najdete v článku, který pojednává o [logice zpracování pravidel služby Azure Firewall](rule-processing.md).
 
 V tomto kurzu se naučíte:
 
@@ -215,9 +213,6 @@ U podsítě **Workload-SN** nakonfigurujete výchozí trasu v odchozím směru, 
 11. Klikněte na tlačítko **Add** (Přidat).
 
 Brána Azure Firewall obsahuje předdefinovanou kolekci pravidel pro infrastrukturu plně kvalifikovaných názvů domén, které jsou ve výchozím nastavení povolené. Tyto plně kvalifikované názvy domén jsou specifické pro tuto platformu a pro jiné účely je nelze použít. Další informace najdete v tématu [Plně kvalifikované názvy domén infrastruktury](infrastructure-fqdns.md).
-
-> [!Note]
-> Značky plně kvalifikovaných názvů domén je v současné době možné konfigurovat pouze pomocí Azure PowerShellu a rozhraní REST. Další informace získáte po kliknutí [sem](https://aka.ms/firewallapplicationrule). 
 
 ## <a name="configure-network-rules"></a>Konfigurace pravidel sítě
 

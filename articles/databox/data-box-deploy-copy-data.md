@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 09/25/2018
 ms.author: alkohli
-ms.openlocfilehash: 0204445464a9d61b4e25be1d71373ce8394b32f0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9bc84a9b08c4cfbdf7f24416c923e0dbd7076556
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957667"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161926"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box"></a>Kurz: Kopírování dat do Azure Data Boxu 
 
@@ -233,7 +233,7 @@ Aby se zajistila integrita dat, při kopírování dat se počítá kontrolní s
 
 Pokud používáte hostitelský počítač s Linuxem, použijte podobný nástroj pro kopírování jako Robocopy. Mezi dostupné alternativy v Linuxu patří [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) nebo [Ultracopier](https://ultracopier.first-world.info/).  
 
-Jednou z nejlepších možností, jak zkopírovat adresář, je příkaz cp. Další informace o jeho použití najdete na [manuálových stránkách pro příkaz cp](http://man7.org/linux/man-pages/man1/cp.1.html).
+Jednou z nejlepších možností, jak zkopírovat adresář, je příkaz `cp`. Další informace o jeho použití najdete na [manuálových stránkách pro příkaz cp](http://man7.org/linux/man-pages/man1/cp.1.html).
 
 Pokud používáte možnost rsync ke kopírování s více vlákny, postupujte podle těchto pokynů:
 
@@ -273,7 +273,7 @@ Posledním krokem je připravit zařízení k odeslání. V tomto kroku se všec
    
     ![Příprava k odeslání 1](media/data-box-deploy-copy-data/prepare-to-ship1.png)
 
-2. Pokud jste nepovolili kontrolní součet, zobrazí se možnost povolit kontrolní součet. Doporučujeme, abyste z důvodu zajištění integrity dat prováděli ověřování kontrolního součtu. Výběrem možnosti **Povolit kontrolní součet** se aktivuje počítání kontrolního součtu, což může v závislosti na velikosti dat nějakou dobu trvat. Klikněte na **Zahájit přípravu**.
+2. Kontrolní součty se standardně počítají na řádku během přípravě k odeslání. Výpočet kontrolního součtu může v závislosti na velikosti vašich dat chvíli trvat. Klikněte na **Zahájit přípravu**.
     1. Během přípravy k odeslání se sdílené složky zařízení převedou do režimu offline a zařízení se uzamkne.
         
         ![Příprava k odeslání 1](media/data-box-deploy-copy-data/prepare-to-ship2.png) 

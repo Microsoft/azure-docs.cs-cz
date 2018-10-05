@@ -9,16 +9,22 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.component: metrics
-ms.openlocfilehash: f6b7b9fe73f5e815e08bbf4f6493ee181a0c692b
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: be6f3efd74d013e9ddb02c44031dd6a402f00871
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918267"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409486"
 ---
-# <a name="archive-azure-monitoring-data"></a>Archivace dat monitorování Azure
+# <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Archivace metrik Azure a dat protokolů s použitím Azure Storage
 
-Různé vrstvy vašeho prostředí Azure generují data protokolů a metrik, která je možné archivovat do účtu Azure Storage. Můžete to provádět za účelem zachování historie dat monitorování v průběhu času v nenákladném a neprohledávatelném úložišti po uplynutí doby uchovávání těchto dat v Log Analytics nebo ve službě Azure Monitor. Tento kurz prochází proces konfigurace prostředí Azure pro archivaci dat do účtu úložiště.
+Různé vrstvy vašeho prostředí Azure generují data protokolů a metrik, která je možné archivovat do účtu Azure Storage. Můžete to provádět za účelem zachování historie dat monitorování v průběhu času v nenákladném a neprohledávatelném úložišti po uplynutí doby uchovávání těchto dat. 
+
+- Metriky platformy Azure Monitor se uchovávají po dobu 93 dnů. 
+- Protokoly diagnostiky prostředků se zobrazí jen při směrování do služby Log Analytics, kde mají konfigurovatelnou dobu uchování minimálně po 30 dnů. 
+- Položky protokolu aktivit se uchovávají po dobu 90 dnů.  
+
+Tento kurz prochází proces konfigurace prostředí Azure pro archivaci dat do účtu úložiště.
 
 > [!div class="checklist"]
 > * Vytvoření účtu úložiště pro uchovávání dat monitorování

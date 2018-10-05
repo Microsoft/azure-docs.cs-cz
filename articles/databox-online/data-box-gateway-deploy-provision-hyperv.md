@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 09/26/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: bf744d2aaab168b8ce918f7b776d8855cdc5ad16
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ad498dc8c5bea9516bef5a62495fc0d0cc8f7399
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46975237"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419691"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v-preview"></a>Kurz: Zřízení služby Azure Data Box Gateway v Hyper-V (Preview)
 
@@ -87,7 +87,7 @@ K vytvoření virtuálního zařízení potřebujete:
 
     * Minimálně 4 jádra
     * Minimálně 8 GB paměti RAM
-    * Jedno síťové rozhraní připojené k síti, která podporuje směrování provozu do internetu. .
+    * Jedno síťové rozhraní připojené k síti, která podporuje směrování provozu do internetu. 
     * 250GB disk s operačním systémem
     * 2TB virtuální disk pro data systému
 
@@ -105,9 +105,6 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte zařízení.
    ![](./media/data-box-gateway-deploy-provision-hyperv/image2.png)
 4. Na stránce **Než začnete** Průvodce novým virtuálním počítačem klikněte na **Další**.
 5. Na stránce **Zadejte název a umístění** zadejte **Název** virtuálního zařízení. Klikněte na **Další**.
-   
-   > [!IMPORTANT]
-   > V této verzi můžete v názvu virtuálního zařízení použít pouze velká písmena.
 
    ![](./media/data-box-gateway-deploy-provision-hyperv/image3.png)
 6. Na stránce **Zadat generaci** zvolte jako typ image zařízení .vhdx **Generace 2** a pak klikněte na **Další**.    
@@ -171,17 +168,10 @@ Pomocí následujících kroků spusťte své virtuální zařízení a připojt
 3. Možná budete muset 10 až 15 minut počkat, než se zařízení připraví. V konzole se zobrazí zpráva o stavu značící průběh. Jakmile bude zařízení připravené, přejděte do části **Akce**. Stiskněte `Ctrl + Alt + Delete` a přihlaste se k virtuálnímu zařízení. Výchozí uživatel je *EdgeUser* a výchozí heslo je *Password1*.
 
    ![](./media/data-box-gateway-deploy-provision-hyperv/image21.png)
-4. Z bezpečnostních důvodů platnost hesla správce zařízení vyprší po prvním přihlášení. Zobrazí se výzva ke změně hesla.
-
-   Zadejte heslo, které obsahuje minimálně 8 znaků. Heslo musí splňovat alespoň 3 z následujících 4 požadavků: velká písmena, malá písmena, číslice a speciální znaky. Znovu zadejte heslo, abyste ho potvrdili. Zobrazí se oznámení o změně hesla.
    
-5. Po úspěšné změně hesla se virtuální zařízení může restartovat. Počkejte, až se zařízení spustí.  Zobrazí se konzola Windows PowerShellu zařízení a indikátor průběhu.
-
-   ![](./media/data-box-gateway-deploy-provision-hyperv/image22.png)
-
-6. Kroky 6 až 8 proveďte pouze v případě, že zařízení spouštíte v jiném prostředí než DHCP. Pokud jste v prostředí DHCP, přeskočte tyto kroky a přejděte ke kroku 9. Pokud jste zařízení spustili v jiném prostředí než DHCP, zobrazí se o tom zpráva.
+6. Kroky 5 až 7 proveďte pouze v případě, že zařízení spouštíte v jiném prostředí než DHCP. Pokud jste v prostředí DHCP, přeskočte tyto kroky. Pokud jste zařízení spustili v jiném prostředí než DHCP, zobrazí se o tom zpráva.
     
-7. Pokud chcete nakonfigurovat síť, použijte příkaz `Get-HcsIpAddress`, který vypíše povolená síťová rozhraní na vašem virtuálním zařízení. Pokud má vaše zařízené povolené jediné síťové rozhraní, výchozí název přiřazený tomuto rozhraní je `DATA1`.
+7. Pokud chcete nakonfigurovat síť, použijte příkaz `Get-HcsIpAddress`, který vypíše povolená síťová rozhraní na vašem virtuálním zařízení. Pokud má vaše zařízené povolené jediné síťové rozhraní, výchozí název přiřazený tomuto rozhraní je `Ethernet`.
 
 8. Pomocí rutiny `Set-HcsIpAddress` nakonfigurujte síť. Prohlédněte si následující příklad:
 
@@ -192,7 +182,7 @@ Pomocí následujících kroků spusťte své virtuální zařízení a připojt
    ![](./media/data-box-gateway-deploy-provision-hyperv/image23.png)
       
 
-Pokud vaše zařízení nesplňuje minimální požadavky na konfiguraci, zobrazí se v textu banneru chyba. Upravte konfiguraci zařízení tak, aby měl počítač dostatečné prostředky ke splnění minimálních požadavků. Pak můžete zařízení restartovat a připojit se k němu. Projděte si minimální požadavky na konfiguraci v [kroku 1: Zajištění, aby hostitelský systém splňoval minimální požadavky na virtuální zařízení](#step-1-ensure-that-the-host-system-meets-minimum-virtual-device-requirements).
+Pokud vaše zařízení nesplňuje minimální požadavky na konfiguraci, zobrazí se v textu banneru chyba. Upravte konfiguraci zařízení tak, aby měl počítač dostatečné prostředky ke splnění minimálních požadavků. Pak můžete zařízení restartovat a připojit se k němu. Projděte si minimální požadavky na konfiguraci v části věnované [kontrole, jestli hostitelský systém splňuje minimální požadavky na virtuální zařízení](#check-the-host-system).
 
 <!--If you face any other error during the initial configuration using the local web UI, refer to the following workflows:
 

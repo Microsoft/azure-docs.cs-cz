@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/05/2018
+ms.date: 09/28/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: f25d0b3522658d5fcd4b34110cb03b624dd9e7b1
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 776f70b6b24288006d52cb0e91797d1074180160
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841501"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452611"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Kurz: Kopírování dat na Azure Data Box Disk a jejich ověření
 
@@ -30,17 +30,14 @@ V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Kopírování dat na Data Box Disk
-> * Ověření integrity dat
+> * Ověření dat
 
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že:
 - Máte za sebou [Kurz: Instalace a konfigurace Azure Data Box Disku](data-box-disk-deploy-set-up.md).
-- Vaše disky jsou rozbalené a zapnuté.
-- Máte hostitelský počítač, ze kterého chcete zkopírovat data na disky. Hostitelský počítač musí splňovat tyto požadavky:
-    - Musí na něm běžet [podporovaný operační systém](data-box-disk-system-requirements.md).
-    - Musí na něm být [nainstalované prostředí Windows PowerShell 4](https://www.microsoft.com/download/details.aspx?id=40855).
-    - Musí na něm být [nainstalované rozhraní .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653).
+- Vaše disky jsou odemknuté a připojené ke klientskému počítači.
+- Klientský počítač, který se používá ke kopírování dat na disky, musí používat [podporovaný operační systém](data-box-disk-system-requirements.md).
 
 
 ## <a name="copy-data-to-disks"></a>Kopírování dat na disky
@@ -59,6 +56,7 @@ Pokud chcete připojit počítač k Data Box Disku a zkopírovat z něj data, pr
 
     Při volbě názvů kontejnerů a objektů blob se řiďte požadavky na názvy v Azure.
 
+    #### <a name="azure-naming-conventions-for-container-and-blob-names"></a>Zásady vytváření názvů kontejnerů a objektů blob v Azure
     |Entita   |Zásady  |
     |---------|---------|
     |Názvy kontejnerů pro objekty blob bloku a objekty blob stránky     |Musí začínat písmenem nebo číslicí a smí obsahovat jenom písmena, číslice a pomlčky (-). Každé pomlčce (-) musí bezprostředně předcházet číslice (0–9) nebo malé písmeno (a–z) a také po ní musí následovat. Názvy nesmí obsahovat po sobě jdoucí pomlčky. <br>Musí se jednat o platný název DNS o délce 3 až 63 znaků.          |
@@ -165,17 +163,21 @@ Pokud chcete připojit počítač k Data Box Disku a zkopírovat z něj data, pr
 > -  Při kopírování dat se ujistěte, že velikost dat odpovídá omezením velikosti popsaným v článku [Omezení Azure Storage a Data Box Disku](data-box-disk-limits.md). 
 > - Pokud data nahrávaná Data Box Diskem zároveň nahrávají jiné aplikace mimo Data Box Disk, může to způsobit selhání úlohy nahrávání a poškození dat.
 
-## <a name="verify-data-integrity"></a>Ověření integrity dat
+## <a name="verify-data"></a>Ověření dat 
 
-Pokud chcete ověřit integritu dat, proveďte následující kroky.
+Data ověříte následujícím postupem.
 
-1. Spusťte příkaz `AzureExpressDiskService.ps1`, který provede ověření kontrolního součtu. V Průzkumníku souborů přejděte v jednotce do složky *AzureImportExport*. Klikněte pravým tlačítkem a zvolte **Spustit v prostředí PowerShell**. 
+1. Spusťte příkaz `DataBoxDiskValidation.cmd` pro ověření kontrolního součtu ve složce *AzureImportExport* na jednotce. 
+    
+    ![Výstup ověřovacího nástroje Data Box Disku](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 
-    ![Spuštění kontrolního součtu](media/data-box-disk-deploy-copy-data/data-box-disk-checksum.png)
-
-2. V závislosti na velikosti dat může tento krok nějakou dobu trvat. Po dokončení skriptu se zobrazí souhrn procesu kontroly integrity dat s časem dokončení procesu. Okno příkazového řádku zavřete stisknutím klávesy **Enter**.
+2. Zvolte příslušnou možnost. **Doporučujeme vždy ověřit soubory a vygenerovat kontrolní součty výběrem možnosti 2**. V závislosti na velikosti dat může tento krok nějakou dobu trvat. Po dokončení skriptu ukončete příkazové okno. Pokud během ověřování a generování kontrolního součtu došlo k chybě, budete na to upozorněni a obdržíte odkaz na protokoly chyb.
 
     ![Výstup kontrolního součtu](media/data-box-disk-deploy-copy-data/data-box-disk-checksum-output.png)
+
+    > [!TIP]
+    > - Mezi dvěma spuštěními nástroj resetujte.
+    > - Možnost 1 použijte k ověření souborů jen při zpracování velkých datových sad obsahujících malé soubory (v řádu kB). V těchto případech může generování kontrolního součtu trvat velmi dlouho a výkon může být velmi pomalý.
 
 3. Pokud používáte víc disků, spusťte příkaz pro každý disk.
 

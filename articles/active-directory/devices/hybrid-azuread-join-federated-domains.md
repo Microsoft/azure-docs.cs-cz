@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: f4659d2dc8dfd52ae6f7ec19dc29ec31c9b3ca6b
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: bc2b391457d7652b62558c9a752376b07b50a8c1
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047338"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47391797"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Kurz: Konfigurace hybridního připojení k Azure Active Directory pro federované domény
 
@@ -122,7 +122,7 @@ Ke konfiguraci hybridního připojení k Azure AD pomocí Azure AD Connect potř
 
     a. Vyberte doménovou strukturu.
 
-    b. Vyberte ověřovací službu.
+    b. Vyberte ověřovací službu. Pokud vaše organizace nepoužívá výhradně klienty s Windows 10, musíte vybrat server služby AD FS.
 
     c. Klikněte na **Přidat** a zadejte přihlašovací údaje podnikového správce.
 
@@ -170,7 +170,7 @@ Následující zásada musí být nastavená na hodnotu **Všichni**: **Uživate
 
 ### <a name="configure-the-local-intranet-settings-for-device-registration"></a>Konfigurace nastavení místního intranetu pro registraci zařízení
 
-Pokud chcete úspěšně dokončit hybridní připojení zařízení s Windows nižší úrovně k Azure AD a vyhnout se zobrazování výzev k zadání certifikátu při ověřování zařízení v Azure AD, můžete do zařízení připojených k doméně odeslat nabízenou zásadu, která přidá následující adresy URL do zóny Místní intranet v aplikaci Internet Explorer:
+Pokud chcete úspěšně dokončit hybridní připojení zařízení s Windows nižší úrovně k Azure AD a zabránit výzvám k zadání certifikátu při ověřování zařízení vůči Azure AD, můžete zařízením připojeným k doméně nabídnout zásadu, která přidá následující adresy URL do zóny Místní intranet v Internet Exploreru:
 
 - `https://device.login.microsoftonline.com`
 

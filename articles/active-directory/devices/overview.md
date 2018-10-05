@@ -16,12 +16,12 @@ ms.topic: overview
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 456b28c50bd5e7d69c3f16dd3e76a9ced20112f9
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 3baa48113022bed1bdc7caa5854a231334c975af
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048858"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224626"
 ---
 # <a name="what-is-device-management-in-azure-active-directory"></a>Co je správa zařízení v Azure Active Directory?
 
@@ -121,7 +121,7 @@ Už více než deset let využívá řada organizací připojení k doméně mí
 
 Organizace využívající místní prostředí se při zřizování zařízení obvykle spoléhají na metody vytváření imagí a ke správě těchto zařízení často využívají **System Center Configuration Manager (SCCM)** nebo **zásady skupiny**.
 
-Pokud se ve vašem prostředí využívá AD a také chcete využít možnosti, které poskytuje Azure Active Directory, můžete implementovat hybridní zařízení připojená k Azure AD. Jedná se o zařízení připojená k místní službě Active Directory i k Azure Active Directory.
+Pokud se ve vašem prostředí využívá AD a také chcete využít možnosti, které poskytuje Azure Active Directory, můžete implementovat hybridní zařízení připojená k Azure AD. Jedná se o zařízení připojená k místní službě Active Directory a zaregistrovaná ve službě Azure Active Directory.
 
 ![Zařízení zaregistrovaná v Azure AD](./media/overview/01.png)
 
