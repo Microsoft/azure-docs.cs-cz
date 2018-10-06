@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/02/2018
 ms.author: andrl
-ms.openlocfilehash: 2f6720e39856366e4bca387effdc2a0624d85826
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: c345235fa16a28877a46d5eaef54093d89ffcdd0
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247990"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815830"
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>Nastavení a zjištění propustnosti pro kontejnery služby Azure Cosmos DB a databázi
 
@@ -35,7 +35,7 @@ Propustnost můžete nastavit pro kontejner služby Azure Cosmos DB nebo sadu ko
    |ID databáze  |  Zadejte jedinečný název pro identifikaci vaší databáze. Databáze je logický kontejner jedné nebo více kolekcí. Názvy databází musí mít délku 1 až 255 znaků a nesmí obsahovat znaky /, \\, #, ? ani koncové mezery. |
    |ID kolekce  | Zadejte jedinečný název pro identifikaci vaší kolekce. ID kolekcí mají stejné požadavky na znaky jako názvy databází. |
    |Kapacita úložiště   | Tato hodnota představuje kapacitu úložiště databáze. Při zřizování propustnosti pro jednotlivé kolekce, kapacita úložiště může být **pevná (10 GB)** nebo **Unlimited**. Neomezenou kapacitou úložiště vyžaduje nastavení klíče oddílu pro vaše data.  |
-   |Propustnost   | Každá kolekce a databáze může mít propustnost v jednotkách žádostí za sekundu.  Pro kapacitu dlouhodobého úložiště minimální propustnost je 400 jednotek žádostí za sekundu (RU/s), neomezené úložiště kapacity, minimální propustnost je nastavena na 1000 RU/s.|
+   |Propustnost   | Každá kolekce a databáze může mít propustnost v jednotkách žádostí za sekundu.  Kolekce můžete mít opravovat nebo neomezenou kapacitou úložiště. |
 
 6. Po zadání hodnoty pro tato pole, vyberte **OK** uložte nastavení.  
 

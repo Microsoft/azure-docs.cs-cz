@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 890a6b9dd1ef63fcc59984686b2d6dec773cdb52
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 8ba1286f7283a1062b2b94d58c2439e8461c1573
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391840"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48817122"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurovat nastavení ověřování Azure Multi-Factor Authentication
 
@@ -111,17 +111,33 @@ Než začnete, mějte na paměti následující omezení:
 * Maximální velikost souboru je 5 MB.
 * Zprávy o ověřování by měl být kratší než 20 sekund. Zprávy, které jsou delší než 20 sekund může způsobit selhání ověřování. Uživatel nemusí odpovídat předtím, než se zpráva dokončí a ověření vyprší časový limit.
 
+### <a name="custom-message-language-behavior"></a>Chování jazykového vlastní zprávu
+
+Při přehrávání vlastní hlasové zprávy pro uživatele, jazyk zprávy závisí na těchto faktorech:
+
+* Jazyk aktuálního uživatele.
+   * Jazyk detekoval webového prohlížeče.
+   * Další scénáře ověřování může chovat jinak.
+* Jazyk nějaké k dispozici vlastní zprávy.
+   * Tento jazyk je vybrán správce, když se přidá vlastní zprávu.
+
+Například, pokud existuje jenom jeden vlastní zprávu s jazykem Němčina:
+
+* Uživatel, který ověřuje v češtině uslyší vlastní německé zprávu.
+* Uživatel, který ověřuje v angličtině přečte zprávu standard angličtina.
+
 ### <a name="set-up-a-custom-message"></a>Nastavit vlastní zprávu
 
 1. Přihlaste se na webu [Azure Portal](https://portal.azure.com) jako správce.
-2. Přejděte do **Azure Active Directory** > **MFA Server** > **nastavení telefonních hovorů**.
+1. Přejděte do **Azure Active Directory** > **MFA Server** > **nastavení telefonních hovorů**.
 
    ![Záznam vlastní telefon zprávy](./media/howto-mfa-mfasettings/phonecallsettings.png)
 
-3. Vyberte **přidat pozdrav**.
-4. Zvolte typ pozdrav. Vyberte jazyk.
-5. Vyberte MP3 nebo ve formátu WAV zvukový soubor k nahrání.
-6. Vyberte **Přidat**.
+1. Vyberte **přidat pozdrav**.
+1. Zvolte typ pozdrav. 
+1. Vyberte jazyk.
+1. Vyberte MP3 nebo ve formátu WAV zvukový soubor k nahrání.
+1. Vyberte **Přidat**.
 
 ## <a name="caching-in-azure-multi-factor-authentication"></a>Ukládání do mezipaměti v Azure Multi-Factor Authentication
 

@@ -12,26 +12,43 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/13/2018
+ms.date: 10/04/2018
 ms.author: magoedte
-ms.openlocfilehash: 2b989fbebe237e4e3746ef2f237193587173dfe4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 12a8b1f43fd822035417096bc21e0e44f574448d
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963402"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830631"
 ---
-# <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-azure-monitor-for-containers"></a>Jak zastavit monitorování Azure monitoru Azure Kubernetes Service (AKS) pro kontejnery
+# <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>Jak zastavit monitorování Azure Kubernetes Service (AKS) pomocí Azure monitoru pro kontejnery
 
-Pokud povolíte monitorování clusteru AKS, rozhodnete, že už chcete monitorovat, můžete *Odhlásit se totiž* pomocí dodané šablony Azure Resource Manageru pomocí rutiny Powershellu  **Nový AzureRmResourceGroupDeployment** nebo rozhraní příkazového řádku Azure CLI. Jedna šablona JSON Určuje konfiguraci tak, aby *Odhlásit se totiž*. Druhý obsahuje hodnoty parametrů, které můžete nakonfigurovat a určit tak AKS skupinu prostředků clusteru ID a prostředků, která je nasazená clusteru. 
+Pokud povolíte monitorování clusteru AKS, rozhodnete, že už chcete monitorovat, můžete *Odhlásit se totiž*.  Tento článek ukazuje, jak tento úkol dokončit pomocí rozhraní příkazového řádku Azure nebo s dodané šablony Azure Resource Manageru.  
+
+
+## <a name="azure-cli"></a>Azure CLI
+Použití [az aks disable-addons](https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-disable-addons) příkazu zakažte monitorování Azure pro kontejnery. Příkaz odebere agenta z uzlů clusteru, neodstraní řešení nebo datového již shromážděná a uložená v prostředku Log Analytics.  
+
+```azurecli
+az aks disable -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG
+```
+
+Chcete-li znovu povolte sledování pro váš cluster, přečtěte si téma [povolte monitorování pomocí Azure CLI](monitoring-container-insights-onboard.md#enable-monitoring-using-azure-cli).
+
+## <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
+Zadaná jsou dvě šablony Azure Resource Manageru pro podporu odebrání prostředků řešení ve vaší skupině prostředků konzistentně a opakovaně. Jeden je určení konfigurace šablony JSON *Odhlásit se totiž* a druhý obsahuje hodnoty parametrů, které můžete nakonfigurovat a určit tak AKS skupinu prostředků clusteru ID a prostředků, která je nasazená clusteru. 
 
 Pokud nejste obeznámeni s konceptem nasazení prostředků pomocí šablony, naleznete v tématu:
 * [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](../azure-resource-manager/resource-group-template-deploy.md)
 * [Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)
 
+>[!NOTE]
+>Šablona musí být nasazený ve stejné skupině prostředků jako cluster.
+>
+
 Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejprve nainstalovat a používat rozhraní příkazového řádku místně. Musíte používat Azure CLI verze 2.0.27 nebo novější. Zjistěte verzi, spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku Azure, najdete v článku [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
-## <a name="create-template"></a>Vytvoření šablony
+### <a name="create-template"></a>Vytvoření šablony
 
 1. Zkopírujte a vložte do souboru následující syntaxi JSON:
 
@@ -101,7 +118,7 @@ Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte n
 5. Uložte soubor jako **OptOutParam.json** do místní složky.
 6. Jste připraveni k nasazení této šablony. 
 
-## <a name="remove-the-solution-using-azure-cli"></a>Odebrat řešení pomocí Azure CLI
+### <a name="remove-the-solution-using-azure-cli"></a>Odebrat řešení pomocí Azure CLI
 Spusťte následující příkaz pomocí rozhraní příkazového řádku Azure v Linuxu odebrat řešení a vyčištění konfigurace ve vašem clusteru AKS.
 
 ```azurecli
@@ -116,7 +133,7 @@ Změna konfigurace může trvat několik minut. Když se dokončí, je vrácena 
 ProvisioningState       : Succeeded
 ```
 
-## <a name="remove-the-solution-using-powershell"></a>Odebrat řešení pomocí Powershellu
+### <a name="remove-the-solution-using-powershell"></a>Odebrat řešení pomocí Powershellu
 
 Spusťte následující příkazy prostředí PowerShell do složky obsahující šablonu, kterou chcete odebrat řešení a vyčištění konfigurace z clusteru AKS.    
 

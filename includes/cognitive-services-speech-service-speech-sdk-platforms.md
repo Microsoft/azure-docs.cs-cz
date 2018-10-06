@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: c3f505e0bc4836141f11fddb28be15a936f50f7b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 682b9a15fc6839ba91b026ac247908644ec185ef
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47017408"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48817258"
 ---
-| Programovací jazyk | Platforma                                                                      | Referenční materiály k rozhraní API
+| Programovací jazyk | Platforma                                                                      | API – referenční informace
 | -                    | -                                                                             | -
 | C#, .NET Standard    | Windows, UPW, .NET Standard (Windows)                                         | [Procházet](https://aka.ms/csspeech/csharpref)
 | C/C++                | Windows, Linux                                                                | [Procházet](https://aka.ms/csspeech/cppref)

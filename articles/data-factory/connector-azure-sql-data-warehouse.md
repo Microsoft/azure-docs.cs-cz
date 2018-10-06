@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 77b6149f175723ccf19db660ed500fb8897080e8
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 03f02d9d36ffc6a14334cdcccf2d1455db34e2bc
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249617"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815797"
 ---
 #  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure SQL Data Warehouse pomocí Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -70,7 +70,7 @@ Různými typy ověřování najdete v následujících částech na požadavky 
 
 - [Ověřování SQL](#sql-authentication)
 - Azure AD aplikace ověřování pomocí tokenu: [instančního objektu](#service-principal-authentication)
-- Azure AD aplikace ověřování pomocí tokenu: [spravovaných identit pro prostředky Azure](#managed-service-identity-authentication)
+- Azure AD aplikace ověřování pomocí tokenu: [spravovaných identit pro prostředky Azure](#managed-identity)
 
 >[!TIP]
 >Pokud spuštění chybě s kódem chyby jako "UserErrorFailedToConnectToSqlServer" a zpráva jako "limit relace pro databázi je XXX a bylo ho dosaženo.", přidejte `Pooling=false` připojovací řetězec a zkuste to znovu.
@@ -152,7 +152,7 @@ Pokud chcete použít ověřování pomocí tokenu aplikace služby založené n
 }
 ```
 
-### <a name="managed-identities-for-azure-resources-authentication"></a>Spravovaných identit pro ověřování prostředků Azure
+### <a name="managed-identity"></a> Spravovaných identit pro ověřování prostředků Azure
 
 Je možné přidružit datové továrny [spravované identity pro prostředky Azure](data-factory-service-identity.md) , která představuje konkrétní objekt pro vytváření. Tuto identitu služby můžete použít pro ověřování v Azure SQL Data Warehouse. Přístup k určené objekt pro vytváření a kopírování dat z nebo do data warehouse s použitím této identity.
 

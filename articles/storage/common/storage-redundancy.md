@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 01/21/2018
+ms.date: 10/02/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 18dfdce827a76d924494e66ceb0d03e2bb3a3ffe
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: bca75f9efa1614c4fa719b21007c827494ecd8f0
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523756"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830706"
 ---
 # <a name="azure-storage-replication"></a>Účet replikace Azure Storage
 
@@ -40,6 +40,8 @@ Následující tabulka poskytuje rychlý přehled o oboru odolnosti a dostupnost
 | Přístup pro čtení k datům (v oblasti vzdálené, geograficky replikovaného) v případě nedostupnosti celé oblasti | Ne                              | Ne                               | Ne                                   | Ano                                  |
 | Navrženo pro zajištění ___ odolnosti objektů v průběhu daného roku                                          | alespoň 99,999999999 % (11 9) | alespoň 99,9999999999 % (12 9) | minimálně 99,99999999999999 % (16. 9) | minimálně 99,99999999999999 % (16. 9) |
 | Typy účtů úložiště podporuje                                                                   | Objektů Blob v účtech GPv1, GPv2,                | GPv2                             | Objektů Blob v účtech GPv1, GPv2,                     | Objektů Blob v účtech GPv1, GPv2,                     |
+| Smlouva SLA o dostupnosti pro požadavky na čtení | Minimálně 99,9 % (99 % pro vrstvu přístupu cool)
+
 
 Zobrazit [ceny za Azure Storage](https://azure.microsoft.com/pricing/details/storage/) informace o možnostech různých redundance o cenách.
 

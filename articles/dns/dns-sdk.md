@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: victorh
-ms.openlocfilehash: 14860ae48e520f86ce9d5bea739605d1a4baf0c7
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 7acc0fa4c3654c96ac0f8f1baed7ea5b7b306376
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173189"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48829765"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>Vytvoření zóny DNS a sad záznamů pomocí sady .NET SDK
 
@@ -33,7 +33,7 @@ Programový přístup k prostředkům Azure, obvykle je poskytnuto prostřednict
 3. Použít pro udělení hlavní účet služby oprávnění "Přispěvatel zóny DNS" do skupiny prostředků Azure ([tady je způsob](../role-based-access-control/role-assignments-portal.md).)
 4. Pokud používáte sadu SDK Azure DNS ukázkového projektu, upravte soubor "program.cs" následujícím způsobem:
 
-   * Vložte správné hodnoty pro ID Tenanta, ID klienta (také označované jako ID účtu), tajný klíč (heslo instančního objektu účtu služby) a ID předplatného v kroku 1.
+   * Vložit správné hodnoty `tenantId`, `clientId` (také označované jako ID účtu) `secret` (heslo instančního objektu účtu služby) a `subscriptionId` použili v kroku 1.
    * Zadejte název skupiny prostředků vybrané v kroku 2.
    * Zadejte název zóny DNS podle vašeho výběru.
 
@@ -59,7 +59,7 @@ using Microsoft.Azure.Management.Dns.Models;
 
 ## <a name="initialize-the-dns-management-client"></a>Inicializace klienta správy DNS
 
-*DnsManagementClient* obsahuje metody a vlastnosti, které jsou nezbytné pro správu sady záznamů a zón DNS.  Následující kód se připojí k hlavní účet služby a vytvoří objekt DnsManagementClient.
+`DnsManagementClient` Obsahuje metody a vlastnosti, které jsou nezbytné pro správu sady záznamů a zón DNS.  Následující kód do hlavní účet služby přihlásí a vytvoří `DnsManagementClient` objektu.
 
 ```cs
 // Build the service credentials and DNS management client
@@ -72,7 +72,7 @@ dnsClient.SubscriptionId = subscriptionId;
 
 Vytvoření zóny DNS, nejdřív "Zóny" je vytvořen objekt obsahovat parametry zóny DNS. Protože zóny DNS nejsou připojeny na konkrétní oblasti, umístění se nastaví "globální". V tomto příkladu [Azure Resource Manageru 'značky'](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/) je taky přidaný do zóny.
 
-Ve skutečnosti vytvořit nebo aktualizovat zónu v Azure DNS, je předán objekt zóny obsahuje parametry zóny *DnsManagementClient.Zones.CreateOrUpdateAsyc* metody.
+Ve skutečnosti vytvořit nebo aktualizovat zónu v Azure DNS, je předán objekt zóny obsahuje parametry zóny `DnsManagementClient.Zones.CreateOrUpdateAsyc` metody.
 
 > [!NOTE]
 > DnsManagementClient podporuje tři režimy činnosti: synchronní ("CreateOrUpdate"), asynchronní ("CreateOrUpdateAsync"), nebo asynchronní s přístupem k odpovědi protokolu HTTP (CreateOrUpdateWithHttpMessagesAsync).  Můžete vybrat kteroukoli z těchto režimů, v závislosti na potřebách aplikace.
@@ -98,7 +98,7 @@ var dnsZone = await dnsClient.Zones.CreateOrUpdateAsync(resourceGroupName, zoneN
 
 Záznamy DNS se spravují jako sady záznamů. Sady záznamů je sada záznamů se stejným názvem a typ záznamu v rámci zóny.  Název sady záznamů je relativní vzhledem k názvu zóny, ne plně kvalifikovaný název DNS.
 
-Vytvořit nebo aktualizovat sadu záznamů, objekt parametry "Sady záznamů" vytvořen a předán *DnsManagementClient.RecordSets.CreateOrUpdateAsync*. Jak se zónami DNS existují tři režimy operace: synchronní ("CreateOrUpdate"), asynchronní ("CreateOrUpdateAsync"), nebo asynchronní s přístupem k odpovědi protokolu HTTP (CreateOrUpdateWithHttpMessagesAsync).
+Vytvořit nebo aktualizovat sadu záznamů, objekt parametry "Sady záznamů" vytvořen a předán `DnsManagementClient.RecordSets.CreateOrUpdateAsync`. Jak se zónami DNS existují tři režimy operace: synchronní ("CreateOrUpdate"), asynchronní ("CreateOrUpdateAsync"), nebo asynchronní s přístupem k odpovědi protokolu HTTP (CreateOrUpdateWithHttpMessagesAsync).
 
 Stejně jako u zóny DNS, operace v sadách záznamů zahrnují podporu pro optimistického řízení souběžnosti.  V tomto příkladu protože nejsou zadány "If-Match" ani "If-None-Match", sady záznamů je vytvořen vždy.  Toto volání přepíše všechny existující sady záznamů se stejným názvem a typ záznamu v této zóny DNS.
 
@@ -122,7 +122,7 @@ var recordSet = await dnsClient.RecordSets.CreateOrUpdateAsync(resourceGroupName
 
 ## <a name="get-zones-and-record-sets"></a>Získejte zón a sad záznamů
 
-*DnsManagementClient.Zones.Get* a *DnsManagementClient.RecordSets.Get* metody načtení jednotlivých zón a sad záznamů v uvedeném pořadí. Sady záznamů jsou označeny podle jejich typu, názvu a zóny a skupinu prostředků, ve kterém existují. Zóny jsou označeny podle jejich názvu a skupinu prostředků, ve kterém existují.
+`DnsManagementClient.Zones.Get` a `DnsManagementClient.RecordSets.Get` metody načtení jednotlivých zón a sad záznamů v uvedeném pořadí. Sady záznamů jsou označeny podle jejich typu, názvu a zóny a skupinu prostředků, ve kterém existují. Zóny jsou označeny podle jejich názvu a skupinu prostředků, ve kterém existují.
 
 ```cs
 var recordSet = dnsClient.RecordSets.Get(resourceGroupName, zoneName, recordSetName, RecordType.A);

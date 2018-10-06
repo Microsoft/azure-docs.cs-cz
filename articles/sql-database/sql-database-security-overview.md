@@ -7,17 +7,17 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: giladm
-ms.author: giladm
+author: ronitr
+ms.author: ronitr
 ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 04/20/2018
-ms.openlocfilehash: 01399544dc4817060ca797383743e673182e3653
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 25e37bcb1247e5fdb37c4be6ca8790c77c0f5575
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163065"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816663"
 ---
 # <a name="securing-your-sql-database"></a>Zabezpečení SQL Database
 

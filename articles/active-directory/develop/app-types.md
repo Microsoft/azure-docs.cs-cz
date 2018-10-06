@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: 3ac97ac5e9ae0a7059d9c74c5918212f1ce02790
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5a8e43934393c2e6a97b81809284781a5c207e41
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959950"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816340"
 ---
 # <a name="application-types-in-v10"></a>Typy aplikací v v1.0
 
@@ -69,7 +69,7 @@ Podrobnosti, zjistěte, jak [registrace aplikace ke koncovému bodu Azure AD v1.
 Zřizování se změní volbu, pokud víte, že existují dvě kategorie aplikací, které mohou být vyvinuté a integrovat se službou Azure AD:
 
 * **Jednoduché aplikace s tenanty** -jednoho tenanta aplikaci je určena pro použití v jedné organizaci. Toto jsou obvykle-obchodní (LoB) aplikace napsané tak podnikový vývojář. Jednoho tenanta aplikaci pouze musí mít přístup uživatelé v jednom adresáři, a proto potřebuje pouze zřídit v jednom adresáři. Tyto aplikace jsou běžně registrovány vývojáři, kteří v organizaci.
-* **Aplikace s více tenanty** – aplikace s více tenanty určena pro použití v mnoha organizacích, ne jenom jedné organizace. Toto jsou obvykle software-as-a-service (SaaS) aplikací autorem nezávislý výrobce softwaru (ISV). Aplikace s více tenanty potřeba ho zřídit v každém adresáři, kde se využijí, který vyžaduje souhlas správce nebo uživatele k registraci je. Tento proces souhlas začne, když aplikace byl zaregistrován v adresáři a je jim přístup k rozhraní Graph API nebo možná jiného webového rozhraní API. Pokud uživatel nebo správce z jiné organizace zaregistruje k používání aplikace, zobrazí se dialogové okno se zobrazí oprávnění, která aplikace požaduje instalaci. Uživatel nebo správce můžete pak souhlas s aplikací, které poskytuje přístup k aplikaci do uvedeného data a nakonec zaregistruje aplikaci do svého adresáře. Další informace najdete v tématu [přehled architektury souhlas](quickstart-v1-integrate-apps-with-azure-ad.md#overview-of-the-consent-framework).
+* **Aplikace s více tenanty** – aplikace s více tenanty určena pro použití v mnoha organizacích, ne jenom jedné organizace. Toto jsou obvykle software-as-a-service (SaaS) aplikací autorem nezávislý výrobce softwaru (ISV). Aplikace s více tenanty potřeba ho zřídit v každém adresáři, kde se využijí, který vyžaduje souhlas správce nebo uživatele k registraci je. Tento proces souhlas začne, když aplikace byl zaregistrován v adresáři a je jim přístup k rozhraní Graph API nebo možná jiného webového rozhraní API. Pokud uživatel nebo správce z jiné organizace zaregistruje k používání aplikace, zobrazí se dialogové okno se zobrazí oprávnění, která aplikace požaduje instalaci. Uživatel nebo správce můžete pak souhlas s aplikací, které poskytuje přístup k aplikaci do uvedeného data a nakonec zaregistruje aplikaci do svého adresáře. Další informace najdete v tématu [přehled architektury souhlas](consent-framework.md).
 
 ### <a name="additional-considerations-when-developing-single-tenant-or-multi-tenant-apps"></a>Další aspekty při vývoji jeden tenant nebo víceklientské aplikace
 

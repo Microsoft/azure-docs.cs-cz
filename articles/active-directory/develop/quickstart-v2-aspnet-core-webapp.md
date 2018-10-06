@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/25/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: ba67acec778a48c084897095aa457e5637240a57
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 4ab3d0b74e8305d67af862020197c69b15221086
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227419"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830221"
 ---
 # <a name="add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Přidání přihlašování s Microsoftem do webové aplikace ASP.NET Core
 
@@ -29,30 +29,30 @@ ms.locfileid: "47227419"
 
 Tento rychlý Start obsahuje ukázku kódu, který ukazuje, jak můžete podepsat webové aplikace ASP.NET Core v osobním (hotmail.com, live.com, ostatní) a pracovní a školní účty z libovolné instance služby Azure Active Directory.
 
-![Jak ukázková aplikace vygenerované v tomto rychlém startu funguje](media/quickstart-v2-aspnet-core-webapp/aspnetcorewebapp-intro.png)
+![Jak funguje ukázková aplikace vygenerovaná v tomto rychlém startu](media/quickstart-v2-aspnet-core-webapp/aspnetcorewebapp-intro.png)
 
 
 > [!div renderon="docs"]
-> ## <a name="register-your-application-and-download-your-quickstart-app"></a>Zaregistrujte si vaši aplikaci a stáhněte si aplikaci rychlý start
+> ## <a name="register-your-application-and-download-your-quickstart-app"></a>Registrace aplikace a stažení aplikace pro rychlý start
 >
-> ### <a name="register-and-configure-your-application-and-code-sample"></a>Registrace a konfigurace ukázky aplikace a kód
-> #### <a name="step-1-register-your-application"></a>Krok 1: Registrace vaší aplikace
+> ### <a name="register-and-configure-your-application-and-code-sample"></a>Zaregistrujte si a nakonfigurujte svoji aplikaci a vzorový kód
+> #### <a name="step-1-register-your-application"></a>Krok 1: Zaregistrujte si aplikaci
 > 
-> 1. Přejděte [portál pro registraci aplikací Microsoft](https://apps.dev.microsoft.com/portal/register-app).
-> 1. Zadejte název pro vaši aplikaci, ujistěte se, že možnost **instalační program s asistencí** není zaškrtnuté políčko a klikněte na tlačítko **vytvořit**.
-> 1. Klikněte na tlačítko `Add Platform`a pak vyberte `Web`.
-> 1. Ujistěte se, že **povolit implicitní tok** je *zaškrtnutí*.
-> 1. V **adresy URL pro přesměrování**, zadejte `https://localhost:3110/`.
-> 1. Posuňte se dolů dolní části stránky a klikněte na tlačítko **Uložit**.
+> 1. Přejděte na portál [Microsoft Application Registration Portal](https://apps.dev.microsoft.com/portal/register-app).
+> 1. Zadejte název svojí aplikace, ujistěte se, že políčko **Guided Setup** (Instalace s asistencí) není zaškrtnuté, a klikněte na **Create** (Vytvořit).
+> 1. Klikněte na `Add Platform`, pak vyberte `Web`.
+> 1. Zajistěte, aby bylo políčko **Allow Implicit Flow** (Povolit implicitní tok) *zaškrtnuté*.
+> 1. V části **Redirect URLs** (Adresy URL pro přesměrování) zadejte `http://localhost:3110/`.
+> 1. Přejděte do dolní části stránky a klikněte na **Save** (Uložit).
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-1-configure-your-application-in-azure-portal"></a>Krok 1: Konfigurace aplikace na webu Azure portal
-> Pro ukázkový kód pro tento rychlý start pro práci, budete muset přidat adresu URL odpovědi jako `http://localhost:3110/`.
+> #### <a name="step-1-configure-your-application-in-azure-portal"></a>Krok 1: Nakonfigurujte si aplikaci na portálu Azure Portal
+> Aby mohl vzorový kód pro rychlý start fungovat, musíte přidat adresu URL odpovědi ve formě `http://localhost:3110/`.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Provedení této změny pro mě]()
+> > [Udělat změnu za mě]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Už nakonfigurovali](media/quickstart-v2-aspnet-core-webapp/green-check.png) vaše aplikace je nakonfigurovaná pomocí tohoto atributu
+> > ![Už nakonfigurováno](media/quickstart-v2-aspnet-core-webapp/green-check.png) Vaše aplikace už má tento atribut nakonfigurovaný.
 
 #### <a name="step-2-download-your-aspnet-core-project"></a>Krok 2: Stáhněte si svůj projekt ASP.NET Core
 
@@ -60,7 +60,7 @@ Tento rychlý Start obsahuje ukázku kódu, který ukazuje, jak můžete podepsa
 
 #### <a name="step-3-configure-your-project"></a>Krok 3: Konfigurace projektu
 
-1. Extrahujte soubor zip do místní složky (například **C:\Azure-Samples**)
+1. Extrahujte soubor zip do místní složky blíž ke kořenové složce – například **C:\Azure-Samples**
 1. Pokud používáte Visual Studio 2017, otevřete projekt v sadě Visual Studio (volitelné)
 1. Upravit **appsettings.json** a nahraďte hodnotu pro `ClientId` s Id aplikace z aplikace, které jste právě zaregistrovali:
 
@@ -68,11 +68,11 @@ Tento rychlý Start obsahuje ukázku kódu, který ukazuje, jak můžete podepsa
     "ClientId": "Enter_the_Application_Id_here"
     "TenantId": "common"
     ```
-1. Pokud je vaše aplikace *jednoho tenanta aplikaci* (cílení na účty v aktuálním adresáři) v vaše **appsettings.json** souboru, najít hodnotu pro `TenantId` a nahraďte `common`s vaší **Id Tenanta** nebo **název Tenanta** (například contoso.microsoft.com). Název tenanta v můžete získat **stránka s přehledem**.
+1. Pokud je vaše aplikace *jednoho tenanta aplikaci* (cílení na účty v aktuálním adresáři) v vaše **appsettings.json** souboru, najít hodnotu pro `TenantId` a nahraďte `common`s vaší **Id Tenanta** nebo **název Tenanta** (například contoso.microsoft.com). Název tenanta zjistíte na **stránce s přehledem**.
 
 ## <a name="more-information"></a>Další informace
 
-Tato část poskytuje přehled o kód potřebný k přihlášení uživatelů. To může být užitečné k pochopení, jak kód funguje, hlavní argumenty i pokud budete chtít přidání přihlašování do stávající aplikace ASP.NET Core.
+Tato část obsahuje základní informace o kódu, který je nutný pro přihlášení uživatelů. To může být užitečné k pochopení, jak kód funguje, hlavní argumenty i pokud budete chtít přidání přihlašování do stávající aplikace ASP.NET Core.
 
 ### <a name="startup-class"></a>Třída při spuštění
 
@@ -111,13 +111,13 @@ public void Configure(string name, OpenIdConnectOptions options)
 ```
 > |Kde  |  |
 > |---------|---------|
-> |ID klienta     |Id aplikace z aplikace zaregistrované na webu Azure Portal|
-> |Autorita | Koncový bod služby tokenů zabezpečení fo uživatele k ověření. Obvykle https://login.microsoftonline.com/{tenant}/v2.0 pro veřejný cloud, kde je název tenanta, Id tenanta {klient} nebo *běžné* odkazu na společný koncový bod (používá se pro aplikace s více tenanty)|
+> |ClientId     |Id aplikace z aplikace zaregistrované na webu Azure Portal|
+> |Autorita | Koncový bod služby tokenů zabezpečení fo uživatele k ověření. obvykle https://login.microsoftonline.com/{tenant}/v2.0 pro veřejný cloud, kde hodnota {tenant} představuje název tenanta, ID tenanta nebo hodnotu *common* odkazující na společný koncový bod (používaný u multitenantních aplikací)|
 > |UseTokenLifetime |Označuje, že ověřovacího souboru cookie by měla odpovídat hodnotě tokenu ověřování|
 > |RequireHttpsMetadata     |Vyžadujte protokol HTTPS pro adresu metadat nebo autority. Doporučuje se tuto hodnotu na změnit `True`|
-> |Parametry tokenvalidationparameters.     | Seznam parametrů pro ověřování tokenů. V takovém případě `ValidateIssuer` je nastavena na `false` k označení, aby mohl přijímat přihlášení z jakékoli osobní, nebo pracovní nebo školní účty|
+> |Parametry tokenvalidationparameters.     | Seznam parametrů pro ověřování tokenů; V takovém případě `ValidateIssuer` je nastavena na `false` k označení, aby mohl přijímat přihlášení z jakékoli osobní, nebo pracovní nebo školní účty|
 
-### <a name="initiate-an-authentication-challenge"></a>Zahájit výzvu ověřování
+### <a name="initiate-an-authentication-challenge"></a>Iniciace výzvy ověřování
 
 Můžete přinutit uživatele k přihlášení pomocí žádosti výzvu ověřování v řadiči, stejně jako v **AccountController.cs**:
 
@@ -134,7 +134,7 @@ public IActionResult SignIn()
 > [!TIP]
 > Požaduje výzvu ověřování pomocí metody popsané výše je volitelné a commonsly použít, pokud chcete zobrazit dostupné pro ověřených i neověřených uživatelů. Řadiče můžete chránit pomocí metody popsané v další části.
 
-### <a name="protect-a-controller-or-a-controllers-method"></a>Ochrana kontroler nebo metodu kontroleru
+### <a name="protect-a-controller-or-a-controllers-method"></a>Ochrana řadiče nebo akcí řadiče
 
 Můžete chránit kontroler nebo pomocí řadiče methodss `[Authorize]` atribut. Tento atribut omezuje přístup k řadiči nebo metody povolením jenom ověření uživatelé – to znamená, že lze spustit výzvu ověřování pro přístup k řadiči, pokud uživatel není ověřen.
 

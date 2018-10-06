@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/27/2017
 ms.author: danlep
-ms.openlocfilehash: 698212ce1f4e88cda741a78030023f3acdeee9f0
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: a52dbdad3842760c447e22f4274ab944750840e7
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576079"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816782"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Ověření řešení pro správu služby Batch pomocí Active Directory
 
@@ -36,7 +36,7 @@ Další informace o použití knihovny Batch Management .NET a AccountManagement
 
 Azure [Active Directory Authentication Library][aad_adal] (ADAL) poskytuje programovací rozhraní do služby Azure AD pro použití v rámci vaší aplikace. Pro volání ADAL z aplikace, je nutné zaregistrovat aplikaci v tenantovi Azure AD. Při registraci vaší aplikace, je třeba zadat Azure AD s informacemi o vaší aplikaci, včetně názvu, v rámci tenanta Azure AD. Azure AD pak poskytuje ID aplikace, který použijete k aplikaci přidružit k Azure AD za běhu. Další informace o ID aplikace, najdete v článku [aplikace a instanční objekty v Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md).
 
-Zaregistrovat ukázkovou aplikaci AccountManagement, postupujte podle kroků v [přidáním aplikace](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md#adding-an-application) tématu [integrace aplikací s Azure Active Directory] [ aad_integrate]. Zadejte **nativní klientská aplikace** pro typ aplikace. V oboru standardní identifikátor URI OAuth 2.0 pro **identifikátor URI pro přesměrování** je `urn:ietf:wg:oauth:2.0:oob`. Ale můžete zadat libovolný platný identifikátor URI (například `http://myaccountmanagementsample`) pro **identifikátor URI pro přesměrování**, protože nemusí být skutečný koncový bod:
+Zaregistrovat ukázkovou aplikaci AccountManagement, postupujte podle kroků v [přidáním aplikace](../active-directory/develop/quickstart-v1-add-azure-ad-app.md) tématu [integrace aplikací s Azure Active Directory] [ aad_integrate]. Zadejte **nativní klientská aplikace** pro typ aplikace. V oboru standardní identifikátor URI OAuth 2.0 pro **identifikátor URI pro přesměrování** je `urn:ietf:wg:oauth:2.0:oob`. Ale můžete zadat libovolný platný identifikátor URI (například `http://myaccountmanagementsample`) pro **identifikátor URI pro přesměrování**, protože nemusí být skutečný koncový bod:
 
 ![](./media/batch-aad-auth-management/app-registration-management-plane.png)
 

@@ -9,20 +9,22 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: b20da0f31f197ed23aa73b185d127a6d5f2dbd8a
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: cbeee643ee4a2705d3f0202a7206e10fbcc5acab
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214937"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831615"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Zabezpečení Azure a dodržování předpisů – Data o stavu HIPAA/HITRUST a AI
 
 ## <a name="overview"></a>Přehled
 
-**Azure zabezpečení a dodržování předpisů – Data o stavu HIPAA/HITRUST a AI nabízí klíč nasazení Azure PaaS řešení, které ukazují, jak bezpečně ingestování, ukládání, analýzu a interakci s daty stavu při schopnost nesplní dodržování oborových předpisů požadavky. Podrobný plán pomáhá zrychlit přechod na cloud a využití pro zákazníky s daty, která je upravena.**
+**Azure zabezpečení a dodržování předpisů – Data o stavu HIPAA/HITRUST a AI nabízí klíč nasazení řešení Azure PaaS a IaaS ukazují, jak ingestování, ukládání, analyzovat a interaktivně pracovat, identity a bezpečně nasazovat řešení obsahující data stavu při dokáže splnit požadavky na dodržování předpisů odvětví. Podrobný plán pomáhá zrychlit přechod na cloud a využití pro zákazníky s daty, která je upravena.**
 
-Azure zabezpečení a dodržování předpisů – Data o stavu HIPAA/HITRUST a AI podrobný plán poskytuje nástroje a pokyny k nasazení zabezpečeného, údajů o zdravotním pojištění a zdravotním pojištění (HIPAA) a stavu informace důvěřovat Alliance (HITRUST) připravené Platforma jako služba (PaaS) prostředí pro ingestování, ukládání, analýzu a interakci s osobní, tak i mimo osobní zdravotnickými záznamy v zabezpečené a vícevrstvé cloudovém prostředí, nasadit jako řešení začátku do konce. Představuje běžné referenční architekturu a je navržené pro zjednodušení přijetí Microsoft Azure. Tato architektura zadaná znázorňuje řešení, které vyhoví potřebám organizace, které hledají cloudový způsob ke snížení režie a náklady na nasazení.
+Azure zabezpečení a dodržování předpisů – Data o stavu HIPAA/HITRUST a AI podrobný plán poskytuje nástroje a pokyny k nasazení zabezpečeného, údajů o zdravotním pojištění a zdravotním pojištění (HIPAA) a stavu informace důvěřovat Alliance (HITRUST) připravené Platforma jako služba (PaaS) prostředí pro ingestování, ukládání, analýzu a interakci s osobní, tak i mimo osobní zdravotnickými záznamy v zabezpečené a vícevrstvé cloudovém prostředí, nasadit jako řešení začátku do konce. 
+
+Řešení IaaS vám ukáže, jak migrovat místní řešení založená na jazyce SQL do Azure a provádět přístup k pracovní stanici s PRIVILEGOVANÝM přístupem k bezpečné správě cloudových služeb a řešení. Databáze systému SQL Server IaaS přidá potenciální služby experimentování ve službě, která data se importují do virtuálního počítače s SQL IaaS a, že virtuální počítač používá MSI ověřený přístup k interakci služby SQL Azure PaaS. Obě tyto běžné referenční architektura představuje sadu a je navržené pro zjednodušení přijetí Microsoft Azure. Tato architektura zadaná znázorňuje řešení, které vyhoví potřebám organizace, které hledají cloudový způsob ke snížení režie a náklady na nasazení.
 
 ![](images/components.png)
 
@@ -38,23 +40,15 @@ Tento podrobný plán má sloužit jako základ pro zákazníky, chcete-li uprav
 
 ## <a name="deploying-the-automation"></a>Automatizace nasazení
 
-- K nasazení řešení, postupujte podle pokynů uvedených v nasazování aktualizací. 
+- K nasazení řešení, postupujte podle pokynů uvedených v [nasazování](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/deployment.md). 
 
-[![](./images/deploy.png)](https://aka.ms/healthblueprintdeploy)
-
-Získejte rychlý přehled toho, jak toto řešení funguje, podívejte se na to [videa](https://aka.ms/healthblueprintvideo) vysvětlí a předvede jeho nasazení.
+- Získejte rychlý přehled toho, jak toto řešení funguje, podívejte se na to [videa](https://aka.ms/healthblueprintvideo) vysvětlí a předvede jeho nasazení.
 
 - Nejčastější otázky najdete v [nejčastější dotazy k](https://aka.ms/healthblueprintfaq) pokyny.
 
 -   **Diagram architektury.** Diagram znázorňuje referenční architektura používá pro podrobný plán a v příkladu scénáři použití.
 
--   **Nasazení šablony**. V tomto nasazení [šablon Azure Resource Manageru](/azure/azure-resource-manager/resource-group-overview#template-deployment) umožňují automaticky nasazovat součásti architektury do Microsoft Azure tak, že zadáte parametry konfigurace během instalace.
-
--   **[Automatizované skripty nasazení](https://aka.ms/healthblueprintdeploy)**. Tyto skripty pomáhající s nasazením řešení. Skripty obsahovat:
-
-
--   Instalace modulu a [globálního správce](/azure/active-directory/active-directory-assign-admin-roles-azure-portal) instalační skript se používá k instalaci a ověřte, zda jsou správně nakonfigurovány požadované moduly Powershellu a role globálního správce. 
--   Instalace powershellu se používá k nasazení řešení, které jsou k dispozici prostřednictvím souboru .zip, který obsahuje předem připravené ukázky funkce.
+-   [Rozšíření IaaS](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/README%20IaaS.md) toto řešení ukazuje, jak migrovat jako místní řešení založená na jazyce SQL do Azure a implementovat pracovní stanice Privieged přístup k bezpečné správě bsed cloudové služby a řešení. 
 
 ## <a name="solution-components"></a>Součásti řešení
 
@@ -70,7 +64,7 @@ Základní architektura se skládá z následujících součástí:
 # <a name="architectural-diagram"></a>Diagram architektury
 
 
-![](images/refarch.png)
+![](images/ra2.png)
 
 ## <a name="roles"></a>Role
 

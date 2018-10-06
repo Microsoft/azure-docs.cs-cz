@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2017
 ms.author: victorh
-ms.openlocfilehash: a9325dff84635955600bc78687ec0156495ae893
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d0a20de8738e8c7b2719a9de85d5fd16aa5778cf
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954377"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48829678"
 ---
 # <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>Správa zón DNS na webu Azure Portal
 
@@ -32,7 +32,7 @@ V tomto článku se dozvíte, jak spravovat zóny DNS pomocí webu Azure portal.
 ## <a name="create-a-dns-zone"></a>Vytvoření zóny DNS
 
 1. Přihlášení k webu Azure Portal
-2. V nabídce centra klikněte na tlačítko a klikněte na tlačítko **vytvořit prostředek > sítě >** a potom klikněte na tlačítko **zónu DNS** otevřete okno Vytvořit zónu DNS.
+2. V nabídce centra, přejděte na **vytvořit prostředek > sítě > zóna DNS** otevřít **vytvořit zónu DNS** okno.
 
     ![Zóna DNS](./media/dns-operations-dnszones-portal/openzone650.png)
 
@@ -51,7 +51,7 @@ V tomto článku se dozvíte, jak spravovat zóny DNS pomocí webu Azure portal.
 
 ## <a name="list-dns-zones"></a>Výpis zón DNS
 
-Na webu Azure Portal, přejděte na **další služby** > **sítě** > **zóny DNS**. Každé zóny DNS se jedná vlastní prostředek, informace, jako je počet sad záznamů a názvové servery, které jsou zobrazené v tomto zobrazení. Sloupec **NÁZVOVÉ servery** není ve výchozím zobrazení, a přidejte ji kliknutím **sloupce**vyberte **názvové servery** a klikněte na tlačítko **provádí**.
+Na webu Azure Portal, přejděte na **další služby** > **sítě** > **zóny DNS**. Každá zóna DNS je vlastní prostředek a informace, jako je počet sad záznamů a názvové servery, které jsou zobrazené v tomto zobrazení. Sloupec **NÁZVOVÉ servery** není ve výchozím zobrazení. Pokud chcete přidat, klikněte na tlačítko **sloupce**vyberte **názvové servery**a potom klikněte na tlačítko **provádí**.
 
 ![výpis zón DNS](./media/dns-operations-dnszones-portal/listzones.png)
 

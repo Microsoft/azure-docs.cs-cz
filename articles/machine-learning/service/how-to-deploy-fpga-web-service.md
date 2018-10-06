@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: tedway
 author: tedway
 ms.date: 10/01/2018
-ms.openlocfilehash: df6637f1a52b679ba9ad0a49fb37d4e4b72f35e4
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: b78a199df9f457b09bb487df74a646363fb172b9
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237819"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815065"
 ---
 # <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning"></a>Nasazení modelu jako webové služby na FPGA službou Azure Machine Learning
 
@@ -165,157 +165,8 @@ registered_model.delete()
 
 ## <a name="secure-fpga-web-services"></a>Zabezpečení webových služeb, FPGA
 
-Modely Azure Machine Learning, běží na FPGA poskytovat podpora protokolu SSL a ověřování na základě klíče. To umožňuje omezit přístup k vaší služby a zabezpečit data odeslaná klienty.
+Modely Azure Machine Learning, běží na FPGA poskytovat podpora protokolu SSL a ověřování na základě klíče. To umožňuje omezit přístup k vaší služby a zabezpečit data odeslaná klienty. [Zjistěte, jak zabezpečit webovou službu](how-to-secure-web-service.md).
 
-> [!IMPORTANT]
-> Ověřování je povoleno pouze pro služby, které jste zadali certifikát SSL a klíče. 
->
-> Pokud nepovolíte SSL, bude moct provádět volání do služby kdokoli na Internetu.
->
-> Pokud povolíte protokol SSL a ověřovací klíč je požadován při přístupu ke službě.
-
-SSL šifruje data odesílaná mezi klientem a službou. Je také používá klient ověřit identitu serveru.
-
-Můžete nasadit službu s protokol SSL povolený nebo aktualizovat už nasazenou službu, aby je. Postup je stejný:
-
-1. Získání názvu domény.
-
-2. Získejte certifikát SSL.
-
-3. Nasazení nebo službu aktualizujte protokol SSL povolený.
-
-4. Aktualizujte svoji službu DNS tak, aby odkazovala na službu.
-
-### <a name="acquire-a-domain-name"></a>Získání názvu domény
-
-Pokud jste již nevlastní název domény, můžete si zakoupit jeden z __registrátora názvu domény__. Proces se liší mezi registrátorů, stejně jako náklady. Doménový Registrátor také poskytuje nástroje pro správu název domény. Tyto nástroje se používají k mapování plně kvalifikovaný název domény (například www.contoso.com) na IP adresu, která je hostitelem služby.
-
-### <a name="acquire-an-ssl-certificate"></a>Získat certifikát SSL
-
-Existuje mnoho způsobů, jak získat certifikát SSL. Nejběžnější je to k nákupu z __certifikační autority__ (CA). Bez ohledu na to, kde můžete získat certifikát budete potřebovat následující soubory:
-
-* A __certifikát__. Certifikát musí obsahovat řetězce úplný certifikát a musí být kódovaný PEM.
-* A __klíč__. Klíč musí být kódovaný PEM.
-
-> [!TIP]
-> Pokud certifikační autorita nemůže poskytnout certifikát a klíč jako kódovaný PEM soubory, můžete použít nástroj, jako [OpenSSL](https://www.openssl.org/) změny formátu.
-
-> [!IMPORTANT]
-> Certifikáty podepsané svým držitelem by měla sloužit pouze pro vývoj. Není vhodné používat v produkčním prostředí.
->
-> Pokud používáte certifikát podepsaný svým držitelem, přečtěte si [využívání služeb pomocí certifikátů podepsaných svým držitelem](#self-signed) části konkrétní pokyny.
-
-> [!WARNING]
-> Při žádosti o certifikát, musíte plně kvalifikovaný název domény (FQDN) adresy, které chcete použít pro službu. Příklad: www.contoso.com. Porovnání adres razítkem do certifikát a adresu použitou klienty při ověřování identity služby.
->
-> Pokud adresy se neshodují, klienti obdrží chybu. 
-
-### <a name="deploy-or-update-the-service-with-ssl-enabled"></a>Nasazením nebo aktualizací služby s protokolem SSL povoleno
-
-Chcete-li nasadit službu s protokolem SSL povoleno, nastavte `ssl_enabled` parametr `True`. Nastavte `ssl_certificate` parametr na hodnotu __certifikát__ souboru a `ssl_key` na hodnotu __klíč__ souboru. Následující příklad ukazuje nasazení služby s protokolem SSL povoleno:
-
-```python
-from amlrealtimeai import DeploymentClient
-
-subscription_id = "<Your Azure Subscription ID>"
-resource_group = "<Your Azure Resource Group Name>"
-model_management_account = "<Your AzureML Model Management Account Name>"
-location = "eastus2"
-
-model_name = "resnet50-model"
-service_name = "quickstart-service"
-
-deployment_client = DeploymentClient(subscription_id, resource_group, model_management_account, location)
-
-with open('cert.pem','r') as cert_file:
-    with open('key.pem','r') as key_file:
-        cert = cert_file.read()
-        key = key_file.read()
-        service = deployment_client.create_service(service_name, model_id, ssl_enabled=True, ssl_certificate=cert, ssl_key=key)
-```
-
-Odpověď `create_service` operace obsahuje IP adresu služby. IP adresa se používá při mapování názvu DNS na IP adresu služby.
-
-Také obsahuje odpovědi __primární klíč__ a __sekundární klíč__ , která se používají k používání této služby.
-
-### <a name="update-your-dns-to-point-to-the-service"></a>Aktualizujte svoji službu DNS tak, aby odkazovala na službu
-
-Použijte nástroje poskytované systémem registrátora názvu domény aktualizovat záznam DNS pro název domény. Záznam musí odkazovat na IP adresu služby.
-
-> [!NOTE]
-> V závislosti na doménový Registrátor a čas live (TTL) nakonfigurovaný pro název domény, může trvat několik minut až několik hodin, než klienti mohli přeložit název domény.
-
-### <a name="consume-authenticated-services"></a>Využívání služeb ověřený
-
-Následující příklady ukazují, jak využívat služby ověřené pomocí jazyka Python a C#:
-
-> [!NOTE]
-> Nahraďte `authkey` s primárním nebo sekundárním klíčem Vrácená při vytváření služby.
-
-```python
-from amlrealtimeai import PredictionClient
-client = PredictionClient(service.ipAddress, service.port, use_ssl=True, access_token="authKey")
-image_file = R'C:\path_to_file\image.jpg'
-results = client.score_image(image_file)
-```
-
-```csharp
-var client = new ScoringClient(host, 50051, useSSL, "authKey");
-float[,] result;
-using (var content = File.OpenRead(image))
-    {
-        IScoringRequest request = new ImageRequest(content);
-        result = client.Score<float[,]>(request);
-    }
-```
-
-Další gRPC klienti můžou ověřovat požadavky nastavením se autorizační hlavička. Obecný postup je vytvořit `ChannelCredentials` objekt, který kombinuje `SslCredentials` s `CallCredentials`. Tím se přidá do hlavičky autorizace žádosti. Další informace o implementaci podpory pro konkrétní hlavičky najdete v tématu [ https://grpc.io/docs/guides/auth.html ](https://grpc.io/docs/guides/auth.html).
-
-Následující příklady ukazují, jak nastavit hlavičky v C# a Go:
-
-```csharp
-creds = ChannelCredentials.Create(baseCreds, CallCredentials.FromInterceptor(
-                      async (context, metadata) =>
-                      {
-                          metadata.Add(new Metadata.Entry("authorization", "authKey"));
-                          await Task.CompletedTask;
-                      }));
-
-```
-
-```go
-conn, err := grpc.Dial(serverAddr, 
-    grpc.WithTransportCredentials(credentials.NewClientTLSFromCert(nil, "")),
-    grpc.WithPerRPCCredentials(&authCreds{
-    Key: "authKey"}))
-
-type authCreds struct {
-    Key string
-}
-
-func (c *authCreds) GetRequestMetadata(context.Context, uri ...string) (map[string]string, error) {
-    return map[string]string{
-        "authorization": c.Key,
-    }, nil
-}
-
-func (c *authCreds) RequireTransportSecurity() bool {
-    return true
-}
-```
-
-### <a id="self-signed"></a>Využívání služeb pomocí certifikátů podepsaných svým držitelem
-
-Existují dva způsoby pro umožnění spolupráce klienta k ověření serveru zabezpečený pomocí certifikátu podepsaného svým držitelem:
-
-* V klientském systému, nastavte `GRPC_DEFAULT_SSL_ROOTS_FILE_PATH` proměnnou prostředí v klientském systému tak, aby odkazoval na soubor certifikátu.
-
-* Při vytváření `SslCredentials` objektu, předat konstruktoru obsah souboru certifikátu.
-
-Pomocí některé z metod způsobí, že gRPC pro použití certifikátu jako kořenového certifikátu.
-
-> [!IMPORTANT]
-> gRPC nepřijímá nedůvěryhodné certifikáty. Pomocí nedůvěryhodného certifikátu se nezdaří pomocí `Unavailable` stavový kód. Podrobnosti o tomto selhání obsahovat `Connection Failed`.
 
 ## <a name="sample-notebook"></a>Ukázka poznámkového bloku
 

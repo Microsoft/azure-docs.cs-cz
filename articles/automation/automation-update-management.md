@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/18/2018
+ms.date: 10/05/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3e21cb90dbe76a648cbb23729cc5068e75e8e5f7
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 403c52cb2de61f1c2d02ad72e9067da09b40a814
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498534"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816034"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -36,6 +36,8 @@ Následující diagram znázorňuje konceptuální zobrazení chování a toku d
 ![Proces správy aktualizací](media/automation-update-management/update-mgmt-updateworkflow.png)
 
 Správa aktualizací umožňuje nativně připojit počítače v několika předplatných ve stejném tenantovi. Ke správě počítačů v jiném tenantovi, musíte připojit jako [počítače mimo Azure](automation-onboard-solutions-from-automation-account.md#onboard-a-non-azure-machine). 
+
+Až CVE vydání, trvá 2 – 3 hodiny pro opravu se zobrazí pro počítače s Linuxem pro posouzení.  U počítačů s Windows trvá 12 až 15 hodin pro opravu zobrazení pro posouzení po byla uvolněna.
 
 Jakmile počítač provede kontrolu kompatibility aktualizací, agent předává informace hromadné ke službě Azure Log Analytics. Na počítači s Windows se kontrola dodržování předpisů ve výchozím nastavení provádí každých 12 hodin.
 

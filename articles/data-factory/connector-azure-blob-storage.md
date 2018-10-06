@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 79bb3042af6a42b4a8c33e9a19c80d117c3216e7
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: ee3dafe55799c46231aa3ca7c19684d905a057de
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248852"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815422"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Kopírování dat do nebo z úložiště objektů Blob v Azure pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -47,7 +47,7 @@ Konektor Azure Blob podporuje následující typy ověřování, přečtěte si 
 - [Ověření pomocí klíče účtu](#account-key-authentication)
 - [Ověřování podpisu sdíleného přístupu](#shared-access-signature-authentication)
 - [Ověřování instančních objektů](#service-principal-authentication)
-- [Spravovaných identit pro ověřování prostředků Azure](#managed-service-identity-authentication)
+- [Spravovaných identit pro ověřování prostředků Azure](#managed-identity)
 
 >[!NOTE]
 >HDInsights, Azure Machine Learning a Azure SQL Data Warehouse PolyBase zatížení podporují pouze ověření klíče účtu úložiště objektů Blob v Azure.

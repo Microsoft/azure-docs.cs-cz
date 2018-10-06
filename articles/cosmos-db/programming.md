@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: 3c18478fb2996178ee0b75870ce63dfc79ad4c4c
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 8452f84c1358c410cd0431416a5b65a88a8b903e
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054719"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48817094"
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Programování na straně serveru služby Azure Cosmos DB: uložené procedury, aktivační události databáze a uživatelem definovanými funkcemi
 
@@ -92,7 +92,7 @@ client.executeStoredProcedureAsync('dbs/testdb/colls/testColl/sprocs/helloWorld'
     });
 ```
 
-Objekt kontextu poskytuje přístup ke všem operacím, které lze provést u úložiště Cosmos DB, a také přístup k objektům žádostí a odpovědí. V tomto případě použijete objekt odpovědi nastavit text odpovědi, který byl odeslán zpět klientovi. Další informace najdete v tématu [server Azure Cosmos DB JavaScript dokumentace k sadě SDK](https://azure.github.io/azure-cosmosdb-js-server/).  
+Objekt kontextu poskytuje přístup ke všem operacím, které lze provést u úložiště Cosmos DB, a také přístup k objektům žádostí a odpovědí. V tomto případě použijete objekt odpovědi nastavit text odpovědi, který byl odeslán zpět klientovi. Další informace najdete v tématu [reference k rozhraní API Azure Cosmos DB JavaScript na straně serveru](https://azure.github.io/azure-cosmosdb-js-server/).  
 
 Dejte nám rozbalte v tomto příkladu a přidávají další funkce související s databáze uložené procedury. Uložené procedury lze vytvořit, aktualizovat, čtení, dotazování a odstranění dokumentů a příloh v kolekci.    
 
@@ -503,7 +503,7 @@ client.createUserDefinedFunctionAsync('dbs/testdb/colls/testColl', taxUdf)
 ```
 
 ## <a name="javascript-language-integrated-query-api"></a>Dotaz integrovaný jazyk JavaScript API
-Kromě vydávat dotazy pomocí gramatika SQL služby Azure Cosmos DB, sady SDK na straně serveru vám umožní provést optimalizované dotazy pomocí rozhraní fluent JavaScript bez znalosti jazyka SQL. Dotaz jazyka JavaScript, který rozhraní API můžete programově vytvářet dotazy předáním predikátu funkce do chainable funkce se volá s syntaxi na předdefinované pole a Oblíbené knihovny jazyka JavaScript, jako je Lodash ECMAScript5 společnosti. Dotazy jsou analyzovány pomocí modulu runtime jazyka JavaScript, který se spustí efektivně pomocí služby Azure Cosmos DB indexy.
+Kromě vydávat dotazy pomocí služby Azure Cosmos DB gramatiku SQL, [SDK na straně serveru](https://azure.github.io/azure-cosmosdb-js-server/) umožňuje provádět optimalizované dotazy pomocí rozhraní fluent JavaScript bez znalosti jazyka SQL. Dotaz jazyka JavaScript, který rozhraní API můžete programově vytvářet dotazy předáním predikátu funkce do chainable funkce se volá s syntaxi na předdefinované pole a Oblíbené knihovny jazyka JavaScript, jako je Lodash ECMAScript5 společnosti. Dotazy jsou analyzovány pomocí modulu runtime jazyka JavaScript, který se spustí efektivně pomocí služby Azure Cosmos DB indexy.
 
 > [!NOTE]
 > `__` (dvojité podtržítko) je alias `getContext().getCollection()`.
@@ -831,9 +831,8 @@ Až budete mít jeden nebo více uložené procedury, triggery a uživatelem def
 
 Můžete také zjistit následující odkazy a prostředky užitečné ve své cestě Další informace o programování na straně serveru v Azure Cosmos dB:
 
-* [Sady SDK služby Azure Cosmos DB](sql-api-sdk-dotnet.md)
+* [Azure Cosmos DB na straně serveru rozhraní API reference na JavaScript na](https://azure.github.io/azure-cosmosdb-js-server/)
 * [DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases)
-* [JSON](http://www.json.org/) 
 * [JavaScript ECMA 262](http://www.ecma-international.org/publications/standards/Ecma-262.htm)
 * [Rozšiřitelnost zabezpečení a přenosné databáze](http://dl.acm.org/citation.cfm?id=276339) 
 * [Služba orientované architektuře databáze](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 

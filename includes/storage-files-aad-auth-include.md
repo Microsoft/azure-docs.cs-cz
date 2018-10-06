@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 09/19/2018
+ms.date: 10/04/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 903074c78180ab2cd755abcf4207232f2851804e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c2dc0f2dea752dd44ab2805a0d6fc0e5517f5c6c
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47019673"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48831700"
 ---
 [Služba soubory Azure](../articles/storage/files/storage-files-introduction.md) podporuje ověřování na základě identity přes protokol SMB (Server Message Block) (preview) prostřednictvím [domény služby Azure Active Directory (Azure AD)](../articles/active-directory-domain-services/active-directory-ds-overview.md). Připojené k doméně Windows virtuálních počítačů (VM) můžete přístup k sdílenými složkami Azure pomocí [Azure AD](../articles/active-directory/fundamentals/active-directory-whatis.md) přihlašovací údaje. 
 
@@ -23,5 +23,7 @@ V rámci verze preview se soubory Azure také podporuje zachování dědění a 
 
 > [!NOTE]
 > Ověřování Azure AD prostřednictvím protokolu SMB se nepodporuje pro virtuální počítače s Linuxem ve verzi preview. Podporují se jenom virtuální počítače Windows serveru.
->
+
+> Ověřování Azure AD prostřednictvím protokolu SMB se nepodporuje pro místní počítače přistupující k Azure Files pomocí obou AD nebo přihlašovacích údajů AAD.
+
 > Ověřování Azure AD je k dispozici pouze pro účty úložiště vytvořené po 24. září 2018.

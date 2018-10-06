@@ -9,19 +9,19 @@ ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: ba43593e90b78aaa0083faf4f8162a7663c0ad47
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 43302bd449b2a25e3e1a65da5ae2a70c3660cb09
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974217"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815014"
 ---
 # <a name="how-to-train-tensorflow-models"></a>Trénování TensorFlow modelů
 
-Pro výuku hluboké neuronové sítě (DNN) s využitím TensorFlow, Azure Machine Learning poskytuje vlastní třídu TensorFlow odhadu. Azure SDK TensorFlow Estimator (nechcete conflated s [ `tf.estimator.Estimator` ](https://www.tensorflow.org/api_docs/python/tf/estimator/Estimator) třídy) vám umožní snadno odesílat úlohy trénování TensorFlow pro jeden uzel nebo distribuované spuštění v prostředí Azure compute.
+Pro výuku hluboké neuronové sítě (DNN) s využitím TensorFlow, Azure Machine Learning nabízí vlastní `TensorFlow` třídu `Estimator`. Azure SDK `TensorFlow` estimator (nechcete conflated s [ `tf.estimator.Estimator` ](https://www.tensorflow.org/api_docs/python/tf/estimator/Estimator) třídy) vám umožní snadno odesílat úlohy trénování TensorFlow pro spuštění jedním uzlem a distribuované na výpočetní prostředky Azure.
 
 ## <a name="single-node-training"></a>Trénování jedním uzlem
-Školení s TensorFlow Estimator je podobný používání [základní Estimator](how-to-train-ml-models.md), proto nejdřív přečíst článek s postupy a ujistěte se, že rozumíte konceptům uvedeným existuje.
+Školení s `TensorFlow` odhad je podobný používání [základní `Estimator` ](how-to-train-ml-models.md), proto nejdřív přečíst článek s postupy a ujistěte se, že rozumíte konceptům uvedeným existuje.
   
 Ke spuštění úlohy TensorFlow, vytvořit instanci `TensorFlow` objektu. Měli jste již vytvořili vaše [cílové výpočetní prostředí](how-to-set-up-training-targets.md#batch) objekt `compute_target`.
 
@@ -42,13 +42,15 @@ tf_est = TensorFlow(source_directory='./my-tf-proj',
 ```
 
 Jsme zde, zadejte následující parametry pro konstruktor TensorFlow:
-* `source_directory`: Místní adresář, který obsahuje vše potřebné pro trénovací úlohu kódu. Tato složka se zkopíruje z místního počítače pro vzdálený výpočetní
-* `script_params`: Zadání argumentů příkazového řádku pro cvičný skript slovník `entry_script`, ve formě < argument příkazového řádku, hodnota > páry
-* `compute_target`: Vzdálený výpočetní cvičný skript se spustí, v tomto případě [služby Batch AI](how-to-set-up-training-targets.md#batch) clusteru
-* `entry_script`: Cesta k souboru (relativně k `source_directory`) z trénovací skript ke spuštění na vzdálené výpočetní prostředky. Tento soubor a další soubory, na kterých závisí, se musí nacházet v této složce
-* `conda_packages`: Seznam balíčků Python nainstalovat přes conda vyžadované cvičný skript. V tomto případě cvičný skript používá `sklearn` pro načítání dat, proto zadejte tento balíček k instalaci.  
-Konstruktor má jiný parametr s názvem `pip_packages` , můžete použít pro všechny balíčky pip potřeby
-* `use_gpu`: Tento příznak nastavit `True` využití GPU pro vzdělávání. Výchozí hodnota je `False`.
+
+Parametr | Popis
+--|--
+`source_directory` | Místní adresář, který obsahuje vše potřebné pro trénovací úlohu kódu. Tato složka se zkopíruje z místního počítače pro vzdálený výpočetní
+`script_params` | Slovník zadání argumentů příkazového řádku pro cvičný skript `entry_script`, ve formě < argument příkazového řádku, hodnota > páry
+`compute_target` | Vzdálené výpočetní prostředky, které cvičný skript se spustí, v tomto případě [služby Batch AI](how-to-set-up-training-targets.md#batch) clusteru
+`entry_script` | Cesta k souboru (vzhledem k `source_directory`) z trénovací skript ke spuštění na vzdálené výpočetní prostředky. Tento soubor a další soubory, na kterých závisí, se musí nacházet v této složce
+`conda_packages` | Seznam balíčků Python nainstalovat přes conda vyžadované cvičný skript. V tomto případě cvičný skript používá `sklearn` pro načítání dat, proto zadejte tento balíček k instalaci.  Konstruktor má jiný parametr s názvem `pip_packages` , můžete použít pro všechny balíčky pip potřeby
+`use_gpu` | Tento příznak nastavit `True` využití GPU pro vzdělávání. Výchozí hodnota je `False`.
 
 Vzhledem k tomu, že používáte TensorFlow estimator, bude použita výchozí kontejner použitý k trénování TensorFlow balíčku a související závislosti nutné ke školení na procesory a grafickými procesory.
 
@@ -61,8 +63,8 @@ run = exp.submit(tf_est)
 Odhad TensorFlow také umožňuje trénování modelů ve velkém měřítku napříč clustery CPU a GPU virtuálních počítačů Azure. Můžete snadno spouštět distribuované trénování tensorflowu se několik volání rozhraní API, zatímco bude Azure Machine Learning spravovat na pozadí, infrastruktury a potřeby provádět tyto úlohy Orchestrace.
 
 Azure Machine Learning podporuje dvě metody distribuované trénování TensorFlow:
-1. Na základě MPI distribuované trénování pomocí [Horovod](https://github.com/uber/horovod) framework
-2. nativní [distribuované TensorFlow](https://www.tensorflow.org/deploy/distributed) prostřednictvím parametru metody serveru
+* Na základě MPI distribuované trénování pomocí [Horovod](https://github.com/uber/horovod) framework
+* nativní [distribuované TensorFlow](https://www.tensorflow.org/deploy/distributed) prostřednictvím parametru metody serveru
 
 ### <a name="horovod"></a>Horovod
 [Horovod](https://github.com/uber/horovod) je kanál – allreduce open source platforma pro distribuované trénování vypracovanou organizací cccppf Uber.
@@ -83,13 +85,17 @@ tf_est = TensorFlow(source_directory='./my-tf-proj',
 ```
 
 Výše uvedený kód zveřejňuje následující nové parametry pro konstruktor TensorFlow:
-* `node_count`: Počet uzlů pro trénovací úlohu. Výchozí hodnota tohoto argumentu `1`
-* `process_count_per_node`: Počet procesů (nebo "pracovníky") pro spuštění na každý uzel. Výchozí hodnota tohoto argumentu `1`
-* `distributed_backend`: Back-endem pro spouštění distribuovaných školení, která nabízí odhadu prostřednictvím MPI. Výchozí hodnota tohoto argumentu `None`. Pokud chcete provést paralelní nebo distribuované trénování (třeba `node_count`> 1 nebo `process_count_per_node`> 1 nebo obě) MPI (a Horovod), nastavte `distributed_backend='mpi'`. Implementace MPI používá technologii Azure Machine Learning je [otevřít MPI](https://www.open-mpi.org/).
+
+Parametr | Popis | Výchozí
+--|--|--
+`node_count` | Počet uzlů pro trénovací úlohu. | `1`
+`process_count_per_node` | Počet procesů (nebo "pracovníky") pro spuštění na každý uzel.|`1`
+`distributed_backend` | Back-endu pro spouštění distribuovaných školení, která nabízí odhadu prostřednictvím MPI. Pokud chcete provést paralelní nebo distribuované trénování (třeba `node_count`> 1 nebo `process_count_per_node`> 1 nebo obě) MPI (a Horovod), nastavte `distributed_backend='mpi'`. Implementace MPI používá technologii Azure Machine Learning je [otevřít MPI](https://www.open-mpi.org/). | `None`
 
 Výše uvedený příklad spustí distribuované trénování s dva pracovní procesy, jeden pracovní proces na jeden uzel.
 
 Horovod a jeho závislosti se nainstaluje za vás, takže ho můžete jednoduše importovat v cvičný skript `train.py` následujícím způsobem:
+
 ```Python
 import tensorflow as tf
 import horovod
@@ -104,6 +110,7 @@ run = exp.submit(tf_est)
 Můžete také spustit [nativní distribuované TensorFlow](https://www.tensorflow.org/deploy/distributed), model serveru parametr, který používá. V této metodě trénování napříč clusterem parametr serverů a pracovních procesů. Zaměstnanci vypočítat přechody během cvičení, zatímco parametr servery agregovat přechody.
 
 Vytvoření objektu TensorFlow:
+
 ```Python
 from azureml.train.dnn import TensorFlow
 
@@ -119,9 +126,12 @@ tf_est = TensorFlow(source_directory='./my-tf-proj',
 ```
 
 Věnujte pozornost na následující parametry pro konstruktor TensorFlow ve výše uvedeném kódu:
-* `worker_count`: Počet pracovních procesů. Výchozí hodnota tohoto argumentu `1`
-* `parameter_server_count`: Počet serverů parametrů. Výchozí hodnota tohoto argumentu `1`
-* `distributed_backend`: Back-endu pro distribuované trénování. Výchozí hodnota tohoto argumentu `None`. Aby bylo možné provést distribuované trénování prostřednictvím parametru serveru, budete muset nastavit `distributed_backend='ps'`
+
+Parametr | Popis | Výchozí
+--|--|--
+`worker_count` | Počet pracovních procesů. | `1`
+`parameter_server_count` | Počet serverů parametrů. | `1`
+`distributed_backend` | Back-end pro distribuované trénování. Nastavení provedete distribuované trénování prostřednictvím parametrů serveru `distributed_backend='ps'` | `None`
 
 #### <a name="note-on-tfconfig"></a>Poznámka: na `TF_CONFIG`
 Budete také potřebovat síťové adresy a porty u clusteru [ `tf.train.ClusterSpec` ](https://www.tensorflow.org/api_docs/python/tf/train/ClusterSpec), takže se nastaví Azure Machine Learning `TF_CONFIG` proměnnou prostředí za vás.
@@ -161,13 +171,13 @@ run = exp.submit(tf_est)
 
 ## <a name="examples"></a>Příklady
 Kurz týkající se trénování TensorFlow jedním uzlem naleznete v tématu:
-* `training/03.train-tune-deploy-tensorflow/03.train-tune-deploy-tensorflow.ipynb`
+* `training/03.train-hyperparameter-tune-deploy-with-tensorflow `
 
 Kurz týkající se Horovod distribuované TensorFlow naleznete v tématu:
-* `training/04.distributed-tensorflow-with-horovod/04.distributed-tensorflow-with-horovod.ipynb`
+* `training/04.distributed-tensorflow-with-horovod`
 
 Kurz týkající se nativní distribuované TensorFlow naleznete v tématu:
-* `training/05.distributed-tensorflow-with-parameter-server/05.distributed-tensorflow-with-parameter-server.ipynb`
+* `training/05.distributed-tensorflow-with-parameter-server`
 
 Získejte tyto poznámkové bloky:
 

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 6831f67a33d114ca5c42ddacf8ef4de704e21711
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 32ef8ba2f6416e1b59fc98595f1b204e94bd2ead
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036952"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830986"
 ---
 # <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>Použijte frázi v seznamech boost signál seznam slov
 
@@ -46,7 +46,7 @@ Přidání funkcí do své aplikace LUIS a zvýšit jeho přesnost. Funkce pomá
 <a name="deactivate-phrase-list"></a>
 
 > [!Note]
-> Můžete upravit, odstranit nebo deaktivovat seznam frází z se třemi tečkami (***...*** ) tlačítko na konci řádku eac frázi seznamu.
+> Můžete odstranit nebo deaktivovat frázi seznamu z panelu nástrojů kontextové na **frázi seznamy** stránky.
 
 ## <a name="pattern-regular-expression-feature"></a>Funkce vzorku (regulární výraz) 
 **Tato funkce je zastaralá**. Nové funkce vzor nelze přidat do služby LUIS. Všechny existující funkce vzoru jsou podporovány května 2018. Přispívat standardní LUIS porovnávání regulárních výrazů s žádostí o přijetí změn do [úložiště Github rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text). 

@@ -15,12 +15,12 @@ ms.date: 09/27/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 6fe9a106975a03fabc9d674ede694e683dc3cd94
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 88667749d9cdf5239be33f3aca52d1a614556a41
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410268"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816598"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Předdefinované role pro prostředky Azure
 [Řízení přístupu na základě role (RBAC)](overview.md) má několik definic předdefinovaná role, které jste přiřadili pro uživatele, skupiny nebo instanční objekty. Přiřazení rolí představují způsob, jak řídit přístup k prostředkům v Azure. Pokud předdefinované role nesplňují konkrétní požadavky vaší organizace, můžete si vytvořit [vlastní role](custom-roles.md).
@@ -786,14 +786,14 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | **Popis** | Umožňuje správu služeb Data Factory, ale ne přístup k nim. |
 > | **ID** | 673868aa-7521-48A0-acc6-0f60742d39f5 |
 > | **Akce** |  |
-> | Microsoft.Authorization/*/read | Další role a přiřazení role |
+> | Microsoft.Authorization/*/read | Další role a přiřazení rolí. |
 > | Microsoft.DataFactory/dataFactories/* | Vytvářejte a spravujte datové továrny a podřízené prostředky v nich. |
 > | Microsoft.DataFactory/factories/* | Vytvářejte a spravujte datové továrny a podřízené prostředky v nich. |
-> | Microsoft.Insights/alertRules/* | Vytvářet a spravovat pravidla výstrah |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Získá stavy dostupnosti pro všechny prostředky v zadaném rozsahu. |
-> | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
-> | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
-> | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | Microsoft.Insights/alertRules/* | Vytvářet a spravovat pravidla výstrah. |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | Získáte stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | Microsoft.Resources/deployments/* | Vytvářejte a spravujte nasazení skupiny prostředků. |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Získat nebo vypsat skupiny prostředků. |
+> | Microsoft.Support/* | Vytvořit a spravovat lístky podpory. |
 
 ## <a name="data-lake-analytics-developer"></a>Vývojář Data Lake Analytics
 > [!div class="mx-tableFixed"]

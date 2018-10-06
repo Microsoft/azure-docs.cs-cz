@@ -7,15 +7,15 @@ author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: v-gedod
-ms.openlocfilehash: 73aa67ec4939aca28a28e1733a39c8517c2c38c5
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 8fa70705d1dff5c3150fa5868938a3c50ef863fe
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435468"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815559"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>Podpora jazyka a oblasti pro rozhraní API pro vlastní vyhledávání Bingu
 

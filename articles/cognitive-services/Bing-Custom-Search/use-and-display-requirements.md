@@ -1,19 +1,20 @@
 ---
-title: Použijte a zobrazí požadavky pro rozhraní API pro vyhledávání Bing webové | Microsoft Docs
-description: Data z rozhraní API pro vyhledávání Bing webové využívat ke zlepšování výsledky z vyhledávání na webu.
+title: Použít a zobrazit požadavky - API pro vlastní vyhledávání Bingu
+titlesuffix: Azure Cognitive Services
+description: Pomocí dat z rozhraní API pro vyhledávání Bingu vlastní zlepšit výsledky hledání na webu.
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: v-brapel
-ms.openlocfilehash: e03d81597aeaad1d42e8d83e075e0f1f37b9f502
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 02f167e2c292c07a1d9df1fc19a09b812ff72757
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343623"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816619"
 ---
 [!INCLUDE [cognitive-services-bing-use-and-display-requirements](../../../includes/cognitive-services-bing-use-and-display-requirements.md)]

@@ -8,12 +8,12 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: fbbc5a199116e46aac0874f3dc6d6d9aa18c60cd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7f1e06fba76b833d4a344af1163ef7ef2c29bdb6
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954013"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816850"
 ---
 # <a name="manage-azure-data-explorer-database-permissions"></a>Spravovat oprávnění k databázi Průzkumníka dat služby Azure
 
@@ -31,7 +31,6 @@ Průzkumník služby Azure Data má následující role:
 |Uživatel databáze              |Může číst všechna data a metadata v databázi. Kromě toho může vytvořit tabulky (stát správce tabulky pro tabulku) a funkce v databázi.|
 |Databáze prohlížeče            |Může číst všechna data a metadata v databázi.|
 |Přijímač databáze          |Můžete ingestovat data do všech existujících tabulek v databázi, ale ne zadávat dotazy na data.|
-|Unrestrictedviewer databáze|Můžete zadávat dotazy na tabulky, které mají **RestrictedViewAccess** povolenou zásadou. Nemůže zadat dotaz na jiné tabulky.|
 |Monitorování databáze           |Můžete spustit příkazy .show... v kontextu databáze a její podřízené entity.|
 |Správce tabulku                |Můžete provádět v rámci konkrétní tabulku. |
 |Přijímač tabulky             |Můžete ingestovat data v rámci určité tabulce, ale ne zadávat dotazy na data.|

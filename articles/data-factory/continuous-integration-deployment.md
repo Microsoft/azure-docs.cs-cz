@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/01/2018
+ms.date: 10/04/2018
 ms.author: douglasl
-ms.openlocfilehash: aa8572ea0195891657baf3df1916ce0b4f36f788
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 8027b167481fd4e48e03b3c1ad3ed8c6adcb853e
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018804"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815439"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Průběžná integrace a doručování (CI/CD) v Azure Data Factory
 
@@ -116,7 +116,7 @@ Tady je postup nastavení vydání verze Azure kanály, abyste mohli automatizov
     g. Vyberte **přírůstkové** režimu nasazení.
 
     > [!WARNING]
-    > Pokud vyberete **Complete** režimu nasazení existující prostředky budou odstraněny, včetně cílová skupina prostředků.
+    > Pokud vyberete **Complete** režimu nasazení existující prostředky budou odstraněny, včetně všech prostředků v cílové skupině prostředků, které nejsou definovány v šabloně Resource Manageru.
 
 1.  Uložte kanál pro vydávání verzí.
 

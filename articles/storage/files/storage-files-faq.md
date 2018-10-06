@@ -4,15 +4,15 @@ description: Najděte odpovědi na nejčastější dotazy o službě soubory Azu
 services: storage
 author: RenaShahMSFT
 ms.service: storage
-ms.date: 09/11/2018
+ms.date: 10/04/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 1f7fc9916fc856d636b6ad850f831a3235b80632
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 725aa5ff0d5ac0d6760656fc596fe44ca8661d1f
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237751"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816119"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>O službě soubory Azure – nejčastější dotazy (FAQ)
 [Služba soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné prostřednictvím standardních průmyslových [zprávy bloku SMB (Server) protokol](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure je možné připojit současně v cloudových i místních nasazení systémů Windows, Linux a macOS. Také můžete ukládat do mezipaměti sdílených složek Azure v počítačích s Windows serverem pomocí Azure File Sync pro rychlý přístup blízko, ve kterém jsou využívány.
@@ -179,7 +179,7 @@ Tento článek obsahuje odpovědi na běžné otázky o Azure Files funkce a fun
 * <a id="ad-support-regions"></a>
 **Je ve verzi preview služby Azure AD prostřednictvím protokolu SMB pro soubory Azure k dispozici ve všech oblastech Azure?**
 
-    Verzi preview je k dispozici ve všech veřejných oblastech s výjimkou: USA – Západ, USA – západ 2, střed USA – Jih, USA – východ, USA – východ 2, střed USA, střed USA – sever, Austrálie – východ, západní Evropa, Severní Evropa.
+    Verzi preview je k dispozici ve všech veřejných oblastech s výjimkou: západní USA, střed USA – Jih, střed USA, západní Evropa, Severní Evropa.
 
 * <a id="ad-support-on-premises"></a>
 **Ověřování pomocí Azure AD z místní počítače podporuje ověřování Azure AD prostřednictvím protokolu SMB pro soubory Azure (Preview)?**

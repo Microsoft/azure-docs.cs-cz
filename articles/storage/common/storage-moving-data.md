@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/26/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 1df237a65a8b5312b20de19a99399b3a3dd075ff
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 76da33a74ad95d7f074bc4efd3a8d9f97c19d612
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049606"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830308"
 ---
 # <a name="moving-data-to-and-from-azure-storage"></a>Přesunutí dat z Azure Storage a do Azure Storage
 Pokud chcete pro přesun místních dat do služby Azure Storage (nebo naopak), existuje široká škála způsobů, jak to provést. Si přístup, který vám bude nejlépe vyhovovat bude záviset na vaší situaci. Tento článek poskytuje stručný přehled různých scénářů a příslušné nabídky pro každé z nich.
@@ -38,7 +38,7 @@ Pokud vyžaduje nebo jsou lépe seznámíte s nástrojem příkazového řádku 
 ### <a name="azcopy"></a>AzCopy
 AzCopy je nástroj příkazového řádku určený pro vysoce výkonné kopírování dat do a ze služby Azure Storage. Můžete také zkopírovat data v rámci účtu úložiště nebo mezi jiný účet úložiště. AzCopy je k dispozici na [Windows](storage-use-azcopy.md) a na [Linux](storage-use-azcopy-linux.md).
 
-Zobrazit [přenos dat pomocí nástroje příkazového řádku Azcopy](storage-use-azcopy.md) nebo [přenos dat pomocí AzCopy v Linuxu](storage-use-azcopy-linux.md) Další informace.
+Zjistěte, jak migrovat místní data do služby Azure Storage, najdete v článku [kurz: migrace místních dat do cloudového úložiště pomocí AzCopy](storage-use-azcopy-migrate-on-premises-data.md).
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 Azure PowerShell je modul, který nabízí rutiny pro správu služeb v Azure. Je to prostředí příkazového řádku založené na úlohách a skriptovací jazyk určený speciálně pro správu systému.

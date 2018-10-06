@@ -7,12 +7,12 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.component: alerts
-ms.openlocfilehash: 586ced5b239b77dd9ae596a754613a66cee371a9
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 0ac19ec18c443f677260ba22b6bce1c06237fb2e
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405916"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816426"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Pochopit, jak metrika výstrahy práce ve službě Azure Monitor
 
@@ -93,7 +93,43 @@ Pro upozornění metrik obvykle dostanete oznámení za méně než 5 minut Poku
 
 ## <a name="supported-resource-types-for-metric-alerts"></a>Podporované typy prostředků pro upozornění na metriku
 
-Úplný seznam podporovaných typů prostředků najdete v tomto [článku](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported)
+Úplný seznam podporovaných typů prostředků najdete v tomto [článku](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported).
+
+Pokud používáte klasického upozornění metrik ještě dnes a chcete zjistit, pokud podporují upozornění na metriku všechny typy prostředků, který používáte, následující tabulka ukazuje na prostředek typy podporovaných klasického upozornění metrik a pokud se podporuje upozornění metrik ještě dnes nebo ne.
+
+|Typ prostředku podporuje klasického upozornění metrik | Podporuje upozornění na metriku |
+|-------------------------------------------------|----------------------------|
+| Microsoft.ApiManagement/service | Ano |
+| Microsoft.Batch/batchAccounts| Ano|
+|Microsoft.Cache/redis| Ano
+|Microsoft.ClassicCompute/virtualMachines | Ne |
+|Microsoft.ClassicCompute/domainNames/slots/roles | Ne|
+|Microsoft.CognitiveServices/accounts | Ne |
+|Microsoft.Compute/virtualMachines | Ano|
+|Microsoft.Compute/virtualMachineScaleSets| Ano|
+|Microsoft.ClassicStorage/storageAccounts| Ne |
+|Microsoft.DataFactory/datafactories | Ano|
+|Microsoft.DBforMySQL/servers| Ano|
+|Microsoft.DBforPostgreSQL/servers| Ano|
+|Microsoft.Devices/IotHubs | Ne|
+|Microsoft.DocumentDB/databaseAccounts| Ne|
+|Microsoft.EventHub/namespaces | Ano|
+|Microsoft.Logic/workflows | Ano|
+|Microsoft.Network/loadBalancers |Ano|
+|Microsoft.Network/publicIPAddresses| Ano|
+|Microsoft.Network/applicationGateways| Ano|
+|Microsoft.Network/expressRouteCircuits| Ano|
+|Microsoft.Network/trafficManagerProfiles | Ano|
+|Microsoft.Search/searchServices | Ne|
+|Microsoft.ServiceBus/namespaces| Ne|
+|Microsoft.Storage/storageAccounts | Ano|
+|Microsoft.StreamAnalytics/streamingjobs| Ano|
+|Microsoft.TimeSeriesInsights/environments | Ano|
+|Společnosti Microsoft. Web/serverových farem | Ano |
+|Společnosti Microsoft. Weby (s výjimkou funkce) | Ano|
+|Společnosti Microsoft. Web/hostingEnvironments/multiRolePools | Ne|
+|Společnosti Microsoft. Web/hostingEnvironments/workerPools| Ne
+|Microsoft.SQL/Servers | Ne|
 
 ## <a name="next-steps"></a>Další postup
 

@@ -12,12 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
-ms.openlocfilehash: 48d6836a2f1c7eb53fd6d7a08ee5a049cd9503f6
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: e11b115d7a6421c34e7f1371ad8931b6affa0436
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803031"
+ms.locfileid: "48815167"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Příručka pro vývojáře Java pro službu App Service v Linuxu
 
@@ -216,14 +216,18 @@ Sdílené prostředky na úrovni serveru:
 
 4. Zajistěte, aby byly soubory ovladačů JDBC k dispozici pro Tomcat classloader tak, že je `/home/tomcat/lib` adresáře. Pokud chcete nahrát tyto soubory k vaší instanci služby App Service, postupujte následovně:  
     1. Instalace rozšíření webpp služby Azure App Service:
+
       ```azurecli-interactive
       az extension add –name webapp
       ```
+
     2. Spusťte následující příkaz rozhraní příkazového řádku a vytvořte tunel SSH z místního systému do služby App Service:
+
       ```azurecli-interactive
       az webapp remote-connection create –g [resource group] -n [app name] -p [local port to open]
       ```
-    3. Připojení na místní port tunelového propojení s vašeho klienta protokolu SFTP a odesílání souborů do `/home/tomcat/lib`.
+
+    3. Připojení na místní port tunelového propojení s vašeho klienta protokolu SFTP a odesílání souborů do `/home/tomcat/lib` složky.
 
 5. Restartování aplikace App Service pro Linux. Tomcat resetuje `CATALINA_HOME` k `/home/tomcat` a použít aktualizovanou konfiguraci a třídy.
 

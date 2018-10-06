@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: dobett
-ms.openlocfilehash: cc2b813efe31822b273a98d21d0dcf0b62385b92
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 55c8ff799ba3ff7fe9691d46dc90a00d5182d390
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734297"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48829406"
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-windows"></a>Připojení zařízení k akcelerátor řešení vzdálené monitorování (Windows)
 
@@ -29,15 +29,15 @@ K dokončení kroků v této příručce s postupy, postupujte podle kroků v [n
 
 ## <a name="view-the-code"></a>Zobrazení kódu
 
-[Ukázkový kód](https://github.com/Azure/azure-iot-sdk-c/tree/master/samples/solutions/remote_monitoring) použitý v tomto průvodci je k dispozici v úložišti Azure IoT C SDK na Githubu.
+[Ukázkový kód](https://github.com/Azure/azure-iot-sdk-c/tree/master/samples/solutions/remote_monitoring_client) použitý v tomto průvodci je k dispozici v úložišti Azure IoT C SDK na Githubu.
 
 ### <a name="download-the-source-code-and-prepare-the-project"></a>Stáhněte si zdrojový kód a příprava projektu
 
 Příprava projektu, klonovat nebo stáhnout [úložiště sad SDK Azure IoT C](https://github.com/Azure/azure-iot-sdk-c) z Githubu.
 
-Tato ukázka se nachází v **ukázky a řešení/remote_monitoring** složky.
+Tato ukázka se nachází v **ukázky a řešení/remote_monitoring_client** složky.
 
-Otevřít **remote_monitoring.c** soubor **ukázky a řešení/remote_monitoring** složky v textovém editoru.
+Otevřít **remote_monitoring.c** soubor **ukázky a řešení/remote_monitoring_client** složky v textovém editoru.
 
 [!INCLUDE [iot-accelerators-connecting-code](../../includes/iot-accelerators-connecting-code.md)]
 
@@ -50,7 +50,7 @@ Otevřít **remote_monitoring.c** soubor **ukázky a řešení/remote_monitoring
 1. Na příkazovém řádku, který jste použili k vytvoření řešení spusťte:
 
     ```cmd
-    samples\solutions\remote_monitoring\Release\remote_monitoring_client.exe
+    samples\solutions\remote_monitoring_client\Release\remote_monitoring_client.exe
     ```
 
     Této konzole se zobrazují zprávy jako:

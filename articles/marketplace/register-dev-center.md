@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: ffc2a9fb7b0ed516645c833f87c9ef5c95ca20ff
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 7416a6ccbb734c031f09bd4185b2674dead71dc8
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580748"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816799"
 ---
 # <a name="register-in-dev-center"></a>Registrace ve službě Dev Center  
 K ověření, že nejste přihlášeni k účtu osobní prohlížeče, otevřete nový Internet Explorer InPrivate nebo Incognito Chrome relaci procházení.  
@@ -130,7 +130,10 @@ Pokud máte problémy s registrací Dev Center, postupujte podle těchto kroků 
 > Vyhledání e-mailu z verify@microsoft.com s řádkem předmětu "vyžaduje se akce: ověření vaší e-mailový účet Microsoft". Klikněte na odkaz pro citlivé ověření času k dokončení registrace. *Pokud jste neobdrželi e-mailu za 24 hodin, zkontrolujte složky spamu.*
 
 *   **Jaké jsou další kroky po ověření, Centrum pro vývojáře?**
-> Přejděte na "Aplikace" (https://developer.microsoft.com/en-us/dashboard/Account/Programs) a přihlaste se k účtu Dev Center. Měli byste vidět část s názvem "Doporučené programy pro vás" a v části, které Azure. Bude klikněte na tlačítko "Začínáme" a projít procesem vytvoření účtu Azure.
+> Přejděte na "Aplikace" (https://developer.microsoft.com/dashboard/Account/Programs) a přihlaste se k účtu Dev Center. Pokud nevidíte Azure jako registrované programu, podívejte se do části "Programy doporučeno pro vás" a vyhledejte Azure a vyberte "Get Started."
+
+*   **Jak propojit svůj účet služby Dev Center do svého profilu vydavatele portál partnerů cloudu?**
+> V posledním kroku, než je publikování propojení účtu Dev Center pro váš portál partnerů cloudu [profilu](https://cloudpartner.azure.com/#profile). Pokud se liší od vašeho účtu na svém účtu centra vývojářů [portál partnerů cloudu](https://cloudpartner.azure.com/#alloffers), přidat jako nový účtu Dev Center [uživatele](https://cloudpartner.azure.com/#documentation/manage-users) v portál partnerů cloudu. Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/#alloffers) pomocí svého účtu Dev Center. Vyberte profil vydavatele v nabídce v horní části přímo ve webovém prohlížeči. Účet, vyberte odkaz Dev Center.
 
 *   **Proč se Moje Centrum pro vývojáře žádost zamítnuta?**
 > Společnost prověřování třetích stran (Duns & Bradstreet) nemohl kontaktovat prostřednictvím telefonní číslo, které jste zadali. Kontaktujte podporu na [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support) znovu spustit proces prověřování

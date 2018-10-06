@@ -12,12 +12,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 08/31/2018
 ms.author: jingwang
-ms.openlocfilehash: 932ddf5f377556e815205b7ad34a735815317ac0
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: d8bbc3a5e4ac14ed60fcd6e5f19bdf1df03455a6
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249036"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48817020"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure Data Lake Storage Gen1 pomocí služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -65,7 +65,7 @@ Následující vlastnosti jsou podporovány pro propojenou službu Azure Data La
 Najdete v následujících částech další vlastnosti a ukázky JSON pro různými typy ověřování v uvedeném pořadí:
 
 - [Pomocí ověřování instančních objektů](#using-service-principal-authentication)
-- [Ověřování prostředků Azure pomocí spravované identity](#using-managed-service-identity-authentication)
+- [Ověřování prostředků Azure pomocí spravované identity](#managed-identity)
 
 ### <a name="using-service-principal-authentication"></a>Pomocí ověřování instančních objektů
 

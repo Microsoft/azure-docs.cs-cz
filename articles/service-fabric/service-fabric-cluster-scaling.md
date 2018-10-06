@@ -1,6 +1,6 @@
 ---
-title: Škálování Azure Service Fabric clusteru | Microsoft Docs
-description: Další informace o škálování clusterů Service Fabric v nebo out a nahoru nebo dolů.
+title: Škálování clusteru v Azure Service Fabric | Dokumentace Microsoftu
+description: Další informace o škálování clusterů Service Fabric v nebo navýšení kapacity a nahoru nebo dolů.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -14,97 +14,101 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/09/2018
 ms.author: ryanwi
-ms.openlocfilehash: f9e3f190decdc907cf57a0235b9d7142081bd2f1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f199e6615109278764b9fcc75346da9ee6171cfa
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208025"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815643"
 ---
-# <a name="scaling-service-fabric-clusters"></a>Clustery škálování Service Fabric
-Cluster Service Fabric je sada virtuální nebo fyzické počítače, do kterých jsou nasazené a spravovat vaše mikroslužeb připojené k síti. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel. Clustery může obsahovat potenciálně tisících uzlů. Po vytvoření clusteru Service Fabric, je možné škálovat clusteru vodorovně (změnit počet uzlů) nebo svisle (změnit prostředky uzly).  Je možné škálovat clusteru kdykoli, i když jsou úlohy běžící v clusteru.  Jako cluster škáluje, vaše aplikace se automaticky také škálování.
+# <a name="scaling-service-fabric-clusters"></a>Service Fabric škálování clusterů
+Cluster Service Fabric je síťově propojená sada virtuálních nebo fyzických počítačů, do které se nasazují a spravují mikroslužby. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel. Clustery můžou potenciálně obsahovat tisících uzlech. Po vytvoření clusteru Service Fabric, je možné škálovat cluster vodorovně (změnit počet uzlů), nebo svisle (změnit prostředky uzly).  Je možné škálovat cluster v okamžiku, i když spouštění úloh v clusteru.  Škálování clusteru, vaše aplikace automaticky škálovat směrem také.
 
-Proč škálování clusteru? Požadavky na aplikace v průběhu času mění.  Může se stát, že je třeba zvýšit prostředky clusteru splňovat aplikace vyšší zatížení nebo síťový provoz nebo snižte prostředky clusteru při vyžádání zahodí.
+Proč škálování clusteru? Požadavky na aplikace v průběhu času měnit.  Budete muset zvýšit prostředky clusteru k zajištění provozu aplikace vyšší zatížení nebo sítě nebo omezovat prostředky clusteru, jakmile poptávka poklesne.
 
-### <a name="scaling-in-and-out-or-horizontal-scaling"></a>Škálování a odhlašování nebo vodorovné škálování
-Změní počet uzlů v clusteru.  Po připojení ke clusteru, nových uzlů [správce prostředků clusteru](service-fabric-cluster-resource-manager-introduction.md) přesune services k nim, což snižuje zátěž na uzlech existujícího.  Pokud prostředky clusteru nejsou využívány efektivně, může snížit počet uzlů.  Jako uzly nechte cluster, služby přesunout mimo tyto uzly a zátěž zvyšuje ve zbývajících uzlech.  Snížení počtu uzlů v clusteru se systémem v Azure můžete ušetřit peníze, vzhledem k tomu, že platíte za počet virtuálních počítačů můžete použít a není zatížením na těchto virtuálních počítačích.  
+### <a name="scaling-in-and-out-or-horizontal-scaling"></a>Dovnitř a ven vertikální nebo horizontální škálování
+Změní z počtu uzlů v clusteru.  Jakmile nových uzlů připojit ke clusteru, [Cluster Resource Manageru](service-fabric-cluster-resource-manager-introduction.md) přesune služby k nim, což snižuje zátěž existujících uzlů.  Pokud prostředky clusteru nejsou využívány efektivně, může snížit počet uzlů.  Nechat uzly clusteru, služby přestali ty uzly a zvyšuje na zbývajících uzlech zátěž.  Snížení počtu uzlů v clusteru běžícího v Azure dají ušetřit peníze, protože platíte za počet virtuálních počítačů, které není úloha v těchto virtuálních počítačů a použití.  
 
-- Výhody: Nekonečné škálování, teoreticky.  Pokud vaše aplikace je určená pro škálovatelnost, můžete povolit neomezenou růstu přidáním další uzly.  Nástrojů v prostředí cloudu umožňuje snadno přidávat nebo odebírat uzly, takže lze snadno upravit kapacitu a platit pouze pro prostředky, které můžete použít.  
-- Nevýhody: Aplikace musí být [určená pro škálovatelnost](service-fabric-concepts-scalability.md).  Databáze aplikace a trvalost může vyžadovat další práci architektury škálovat také.  [Spolehlivé kolekce](service-fabric-reliable-services-reliable-collections.md) v Service Fabric stavové služby, ale bylo mnohem snazší škálování data aplikací.
+- Výhody: Neomezeně Škálované, teoreticky.  Pokud vaše aplikace je určená pro škálovatelnost, můžete povolit neomezené růstu přidáním více uzlů.  Nástrojů v prostředí cloudu umožňuje snadno přidávat a odebírat uzly, tak snadno upravit kapacitu a platíte jenom za prostředky, které používáte.  
+- Nevýhody: Aplikace musí být [určená pro škálovatelnost](service-fabric-concepts-scalability.md).  Aplikačních databází a trvalost můžou vyžadovat další architektury práce jako správné škálování.  [Spolehlivé kolekce](service-fabric-reliable-services-reliable-collections.md) v Service Fabric stavové služby, ale to značně zjednodušují škálování dat aplikací.
 
-### <a name="scaling-up-and-down-or-vertical-scaling"></a>Škálování nahoru a dolů, nebo svislé škálování 
-Změní prostředků (procesor, paměť nebo úložiště) uzly v clusteru.
-- Výhody: Softwaru a architektura aplikace zůstává stejný.
-- Nevýhody: Konečné škálování, protože je omezena na kolik může zvýšit prostředky v jednotlivých uzlech. Výpadky, protože budete muset provést fyzické nebo virtuální počítače do režimu offline za účelem přidat nebo odebrat prostředky.
+### <a name="scaling-up-and-down-or-vertical-scaling"></a>Vertikální navýšení nebo snížení kapacity nebo vertikální škálování 
+Změní prostředky (procesor, paměť nebo úložiště) z uzlů v clusteru.
+- Výhody: Softwaru a architekturu aplikace zůstala stejná.
+- Nevýhody: Konečné škálování, protože neexistuje omezení můžete zvýšit množství prostředky v jednotlivých uzlech. Výpadky, protože budete muset provést fyzických nebo virtuálních počítačů do režimu offline za účelem přidání nebo odebrání prostředků.
 
-## <a name="scaling-an-azure-cluster-in-or-out"></a>Škálování clusteru služby Azure příchozí nebo odchozí
-Sady škálování virtuálního počítače se Azure výpočtový prostředek, který můžete použít k nasazení a správě kolekci jako sada virtuálních počítačů. Každý typ uzlu, který je definován v clusteru služby Azure je [nastavený jako samostatné škálovací sadu](service-fabric-cluster-nodetypes.md). Každý typ uzlu můžete škálovat v nebo na nezávisle, mají různé sady otevřené porty a může mít různé kapacity metriky. 
+## <a name="scaling-an-azure-cluster-in-or-out"></a>Škálování clusteru Azure snížení nebo navýšení kapacity
+Škálovací sady virtuálních počítačů jsou výpočetním prostředkem Azure, můžete použít k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který je definován v clusteru Azure je [nastavit jako samostatné škálovací sada](service-fabric-cluster-nodetypes.md). U každého typu uzlu pak možné horizontálně snížit nebo navýšení kapacity nezávisle na sobě mají různé sady otevřených portů a může mít různé metriky kapacity. 
 
-Při zvětšení velikosti Azure clusteru, mějte tyto pokyny:
-- typy primárního uzlu spuštění úlohy v produkčním prostředí by měl mít vždy pět nebo víc uzlů.
-- typy uzlů neprimární spuštěná stavová produkčním prostředí by měl mít vždy pět nebo víc uzlů.
-- typy uzlů neprimární systémem bezstavové produkčním prostředí by měl mít vždy dva nebo víc uzlů.
-- Jakýkoli typ uzlu [úroveň odolnosti](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) zlatý nebo Silver by měl mít vždy pět nebo víc uzlů.
-- Není odeberte náhodných instancí virtuálního počítače/uzly z typu uzlu, vždy použít měřítko sady škálování virtuálního počítače dolů funkce. Odstranění náhodných instance virtuálních počítačů může nepříznivě ovlivnit systémy schopnost správně Vyrovnávání zatížení.
-- Pokud pomocí pravidel automatického škálování, nastavte pravidla tak, aby se jeden uzel provádí škálování v (odebrání instance virtuálních počítačů) v čase. Škálování dolů více než jednu instanci v čase není bezpečná.
+Při škálování clusteru Azure, mějte podle následujících pokynů:
+- zpracovává produkční zátěž s typy primárního uzlu by měl mít vždy pět nebo více uzlů.
+- typy jiné než primární uzel spuštěná stavová produkční úlohy by měl vždy mít pět nebo více uzlů.
+- typy uzlů neprimární spuštěná Bezstavová produkční úlohy by měl mít vždy dva nebo víc uzlů.
+- Jakýkoli typ uzlu [úroveň odolnosti](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) Gold a Silver by měli vždy mít pět nebo více uzlů.
+- Není náhodné instance virtuálního počítače/uzly odebrat typ uzlu, vždy používejte škálovací sady škálování virtuálních počítačů mimo provoz funkce. Odstranění instancí virtuálních počítačů náhodné nepříznivě ovlivnit schopnost systémů správně Vyrovnávání zatížení.
+- Při použití pravidel automatického škálování, nastavte pravidla tak, aby se jeden uzel provádí škálování v (odebírání instancí virtuálních počítačů) v čase. Škálování více než jednu instanci v čase není bezpečné.
 
-Vzhledem k tomu, že Service Fabric typy uzlů v clusteru se skládají z sadách škálování virtuálních počítačů v back-end, můžete [nastavení pravidel škálování automaticky nebo ručně škálovat,](service-fabric-cluster-scale-up-down.md) každý uzel typu nebo virtuální počítač škálovací sadu.
+Protože typy uzlů Service Fabric v clusteru skládají se z škálovacích sad virtuálních počítačů v back-endu, můžete [nastavit pravidla automatického škálování nebo ručně škálovat](service-fabric-cluster-scale-up-down.md) každý uzel typu nebo virtuální počítače škálovací sady.
 
-### <a name="programmatic-scaling"></a>Programová změna měřítka
-V mnoha scénářích [ručně nebo pomocí pravidel automatického škálování škálování clusteru](service-fabric-cluster-scale-up-down.md) jsou dobré řešení. Pro pokročilejší scénáře ale jejich nemusí být vpravo fit. Potenciální nedostatky do těchto přístupů patří:
+### <a name="programmatic-scaling"></a>Programová změna velikosti
+V mnoha případech [škálování clusteru ručně nebo pomocí pravidel automatického škálování](service-fabric-cluster-scale-up-down.md) jsou dobré řešení. Pro pokročilejší scénáře ale jejich nemusí být správné přizpůsobit. Potenciální nedostatky tyto postupy zahrnují:
 
-- Ruční škálování vyžaduje, abyste se přihlaste a explicitní žádost o škálování operace. Pokud operace škálování se často vyžadují, nebo v nepředvídatelným časech, tento přístup nemusí být vhodné řešení.
-- Při pravidel automatického škálování odebrání instance škálovací sadu virtuálních počítačů, jejich neodebírejte automaticky znalosti o tomto uzlu z clusteru Service Fabric přidružené Pokud typ uzlu má úroveň odolnosti Silver nebo zlatý. Protože pravidel automatického škálování fungovat ve velkém měřítku, nastavte úroveň (nikoli na úrovni Service Fabric), automatickému škálování pravidla můžete odebrat uzly Service Fabric bez jejich řádně vypínání. Odebrání tohoto článku neslušní uzlu ponechá 'neodstraněných' stav uzlu Service Fabric po škálování v operacích. Pravidelně vyčistěte stav odebraném uzlu v clusteru Service Fabric potřebovat fyzickou (nebo služby).
-- Typ uzlu s úrovní odolnost zlatý nebo Silver automaticky vyčistí odebrané uzly, je potřeba žádné další čištění.
-- I když jsou [mnoho metriky](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md) podporovaná pravidel automatického škálování, je stále omezenou sadu. Pokud váš scénář vyžaduje škálování podle některé metrika nejsou zahrnuté v dané sadě, pravidel automatického škálování, nemusí být vhodný.
+- Ruční škálování vyžaduje, abyste pro přihlášení a explicitní žádost o operace škálování. Pokud operace škálování často nebo po dobu nepředvídatelné, tento přístup nemusí být dobrým řešením.
+- Pokud pravidel automatického škálování odebrání instance škálovací sady virtuálních počítačů, jejich neodebírejte automaticky znalosti o tomto uzlu z přidružených clusteru Service Fabric, pokud typ uzlu neobsahuje úroveň odolnosti stříbrné nebo zlaté úrovně. Vzhledem k tomu, že pravidla automatického škálování pracovat ve velkém měřítku, nastavte úroveň (spíše než na úrovni Service Fabric), pravidel automatického škálování můžete odebrat uzly Service Fabricu bez jejich řádné vypnutí. Odebrání tohoto článku neslušní uzel ponechá "skryté" stav uzlu Service Fabric po operacích škálování na méně instancí. Osoba (nebo služby), třeba tak, aby pravidelně stav odebraném uzlu v clusteru Service Fabric.
+- Typ uzlu s úrovní odolnosti Gold a Silver automaticky vyčistí odebrané uzly, takže je potřeba žádné další čištění.
+- I když jsou [mnoha metrik](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md) podporovaná pravidel automatického škálování, je stále omezenou sadu. Pokud váš scénář vyžaduje škálování na základě některé metriky nejsou zahrnuta v dané sadě, pravidel automatického škálování, nemusí být vhodný.
 
-Jak by měl postupovat, Service Fabric škálování závisí na vašem scénáři. Pokud škálování neobvyklé, možnost přidávat nebo odebírat uzly ručně je pravděpodobně dostatečná. Složitější scénáře pravidel automatického škálování a sady SDK vystavení schopnost škálování prostřednictvím kódu programu nabízí výkonné alternativy.
+Jak by měl postupovat, Service Fabric škálování závisí na vaší situaci. Pokud škálování je běžné, možnost přidávat a odebírat uzly ručně je pravděpodobně dostatečná. Pro složitější scénáře nabízejí výkonné alternativy pravidel automatického škálování a sady SDK vystavení nezávislého škálování prostřednictvím kódu programu.
 
-Rozhraní API Azure existují, které umožňují aplikacím prostřednictvím kódu programu pracovat s virtuálním počítačem škálování sady a clusterů Service Fabric. Pokud pro váš scénář nepodporují existující možnosti automatického škálování, tato rozhraní API umožňují k implementaci vlastní logiky škálování. 
+Rozhraní API pro Azure existují, které umožňují aplikacím prostřednictvím kódu programu pracovat s virtuálního počítače škálovací sady a clustery Service Fabric. Pokud stávající možnosti automatické škálování nefunguje pro váš scénář, tato rozhraní API umožňují implementovat vlastní logiku na škálování. 
 
-Jeden ze způsobů implementace tato "domovské ze" funkce automatického škálování je přidání nové bezstavové služby do aplikace Service Fabric ke správě operací škálování. Vytvoření vlastního škálování služby zajišťuje, že je na nejvyšší úrovni řízení a možnosti přizpůsobení přes aplikaci škálování chování. To může být užitečné pro scénářům, které vyžadují přesnou kontrolu nad při nebo jak aplikace škáluje příchozí nebo odchozí. Tento ovládací prvek se ale dodává s kompromis složitost kódu. Tento přístup, znamená to, budete muset vlastní škálování kód, který je netriviální. V rámci služby `RunAsync` metody sadu aktivační události můžete zjistit, jestli škálování vyžaduje (včetně kontrolu parametry, jako je například maximální velikost clusteru a škálování cooldowns).   
+Jeden ze způsobů implementace tato "domovské ze" funkce automatického škálování je přidání nové bezstavovou službu do aplikace Service Fabric ke správě operací škálování. Vytváření vlastních, škáluje se služba poskytuje že nejvyšší stupeň ovládacího prvku a přizpůsobitelnost přes aplikaci prvku škálování chování. To může být užitečné pro scénáře nutnosti mít naprostou kontrolu nad a aplikace se škáluje snížení nebo navýšení kapacity. Tento ovládací prvek však zahrnuje kompromis složitost kódu. Tento přístup znamená, že je potřeba vlastní škálování kód, který je netriviální. V rámci služby `RunAsync` metody sady aktivačních událostí můžete určit, zda škálování vyžaduje (včetně kontroly parametrů, jako je například maximální velikost clusteru a škálování cooldowns).   
 
-Rozhraní API používá pro interakce sady škálování virtuálního počítače, (obojí ke kontrole aktuální počet instancí virtuálního počítače a upravit ho) je [fluent Azure Compute správy knihovny](https://www.nuget.org/packages/Microsoft.Azure.Management.Compute.Fluent/). Knihovna fluent výpočetní poskytuje rozhraní API snadno použitelné pro interakci s sady škálování virtuálního počítače.  Chcete-li pracovat s samotného clusteru Service Fabric, použijte [System.Fabric.FabricClient](/dotnet/api/system.fabric.fabricclient).
+Rozhraní API používá pro virtuální počítač škálovací sady interakce (obojí ke kontrole aktuální počet instancí virtuálních počítačů a upravte ho) je [fluent knihovny správy Azure Compute](https://www.nuget.org/packages/Microsoft.Azure.Management.Compute.Fluent/). Knihovny fluent výpočetní poskytuje rozhraní API snadno použitelné pro interakci se škálovacími sadami virtuálních počítačů.  Chcete-li pracovat s samotného clusteru Service Fabric, použijte [System.Fabric.FabricClient](/dotnet/api/system.fabric.fabricclient).
 
-Pro spuštění jako služba v clusteru a být změněna, ale nemusí kód škálování. Obě `IAzure` a `FabricClient` může připojit k jejich přidružené prostředky Azure vzdáleně, tak službu škálování může být snadno konzolové aplikace nebo služba systému Windows spuštěna z mimo aplikace Service Fabric.
+Ke spuštění jako služby v clusteru škálování, ale nemusí škálování kódu. Obě `IAzure` a `FabricClient` můžete vzdálené připojení k jejich souvisejících prostředcích Azure, takže škálování služby může být snadno Konzolová aplikace nebo služba Windows spuštěná z mimo aplikací Service Fabric.
 
-Podle těchto omezení, budete pravděpodobně chtít [implementace více přizpůsobené automatické škálování modely](service-fabric-cluster-programmatic-scaling.md).
+Podle těchto omezení, možná budete chtít [implementovat více přizpůsobené automatické škálování modely](service-fabric-cluster-programmatic-scaling.md).
 
 
-## <a name="scaling-a-standalone-cluster-in-or-out"></a>Škálování clusteru samostatné příchozí nebo odchozí
-Samostatné clustery umožňují nasadit Service Fabric clusteru místně nebo ve zprostředkovateli cloudu podle svého výběru.  Typy uzlů se skládají z fyzických počítačů nebo virtuální počítače, v závislosti na nasazení. Ve srovnání s clustery spuštěná v Azure, je proces škálování clusteru s podporou samostatné zapojí o něco víc.  Musíte ručně změnit počet uzlů v clusteru a poté spuštění upgradu konfigurace clusteru.
+## <a name="scaling-a-standalone-cluster-in-or-out"></a>Škálování samostatného clusteru snížení nebo navýšení kapacity
+Samostatné clustery umožňují nasazení Service Fabric cluster místně nebo v poskytovateli cloudu podle vašeho výběru.  Typy uzlů se skládají z fyzických strojích nebo virtuálních počítačů, v závislosti na nasazení. Ve srovnání s clustery v Azure, proces škálování samostatného clusteru se zapojí o něco víc.  Musíte ručně změnit počet uzlů v clusteru a pak spusťte konfigurace upgradu clusteru.
 
-Odebrání uzlů může zahájit více upgradů. Některé uzly jsou označené jako `IsSeedNode=”true”` značky a lze identifikovat podle dotazování clusteru manifestu pomocí [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest). Odebrání těchto uzlů může trvat déle než jiné, protože uzly počáteční hodnoty musí přesunout v těchto scénářích. Cluster musí zachovat minimálně tři uzly typ primárního uzlu.
-
-Při zvětšení velikosti samostatné clusteru, mějte tyto pokyny:
-- Nahrazení primární uzly by měl být provádí jeden uzel za druhým, místo odebráním a potom přidat v dávkách.
-- Před odebráním typ uzlu, zkontrolujte, zda jsou všechny uzly odkazující na typ uzlu. Odeberte tyto uzly před odebráním odpovídající typ uzlu. Po odebrání všech odpovídajících uzlů můžete odebrat typ uzlu z clusteru konfigurace a zahájit konfiguraci upgradovat pomocí [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade).
-
-Další informace najdete v tématu [škálování clusteru samostatné](service-fabric-cluster-windows-server-add-remove-nodes.md).
-
-## <a name="scaling-an-azure-cluster-up-or-down"></a>Škálování clusteru služby Azure nahoru nebo dolů
-Sady škálování virtuálního počítače se Azure výpočtový prostředek, který můžete použít k nasazení a správě kolekci jako sada virtuálních počítačů. Každý typ uzlu, který je definován v clusteru služby Azure je [nastavený jako samostatné škálovací sadu](service-fabric-cluster-nodetypes.md). Každý typ uzlu je pak možné spravovat samostatně.  Škálování typ uzlu nahoru nebo dolů zahrnuje změnu SKU instancí virtuálního počítače v sadě škálování. 
+Odebrání uzlů může zahájit více upgradů. Některé uzly jsou označené `IsSeedNode=”true”` značku a lze je identifikovat pomocí dotazu na clusteru manifestu pomocí [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest). Odebrání těchto uzlů může trvat déle než jiné, jelikož budou muset počáteční uzly přesouvat v takových scénářích. Cluster, musíte mít minimálně tří uzlů typ primárního uzlu.
 
 > [!WARNING]
-> Doporučujeme, pokud se spouští ve není změnit SKU virtuálních počítačů typu sady nebo uzel škálování [stříbrnou odolnost nebo větší](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster). Změna velikosti virtuálních počítačů SKU je operace destruktivní dat místní infrastrukturu. Bez některé možnost zpoždění nebo sledovat tuto změnu je možné, že operaci může způsobit ztrátu dat pro stavové služby nebo způsobit další nepředpokládaného provozní problémy, i pro Bezstavová zatížení. 
+> Doporučujeme, abyste nesníží níže počet uzlů [velikost clusteru úroveň spolehlivosti](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) pro cluster. Bude to narušit ablility systémové služby Service Fabric replikuje v clusteru a bude destabilizovat nebo případně odstranit cluster.
 >
 
-Při zvětšení velikosti Azure clusteru, mějte tyto zásady:
-- Pokud škálování dolů typu primárního uzlu, můžete by nikdy snižovat je více než co [úroveň spolehlivosti](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) umožňuje.
+Při škálování samostatného clusteru, mějte podle následujících pokynů:
+- Nahrazení hlavní uzly, které musí být jeden uzel provádí po druhé, namísto odeberte a pak přidejte v dávkách.
+- Před odebráním typ uzlu, zkontrolujte, jestli jsou všechny uzly, které odkazuje typ uzlu. Před odebráním odpovídající typ uzlu, odeberte tyto uzly. Jakmile se odeberou všechny odpovídající uzly, můžete odebrat uzlu (NodeType) z konfigurace clusteru a začněte konfiguraci upgrade s využitím [Start ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade).
 
-Proces nahoru nebo dolů škálování typ uzlu se liší v závislosti na tom, jestli je typem neprimární nebo primární uzel.
+Další informace najdete v tématu [škálování samostatného clusteru](service-fabric-cluster-windows-server-add-remove-nodes.md).
 
-### <a name="scaling-non-primary-node-types"></a>Škálování není primární uzel typy
-Vytvoření nového typu uzlu s prostředky, které potřebujete.  Aktualizujte omezení umístění spuštěných služby zahrnuté nového typu uzlu.  Postupně (jeden po druhém), zmenšete počet instancí staré počet instancí typu uzlu na nulu, tak, aby spolehlivost clusteru nemá vliv.  Služby budou postupně migrovat do nového typu uzlu jako starý typ uzlu je decommisioned.
+## <a name="scaling-an-azure-cluster-up-or-down"></a>Škálování clusteru Azure směrem nahoru nebo dolů
+Škálovací sady virtuálních počítačů jsou výpočetním prostředkem Azure, můžete použít k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který je definován v clusteru Azure je [nastavit jako samostatné škálovací sada](service-fabric-cluster-nodetypes.md). Každý typ uzlu je pak spravovat samostatně.  Typ uzlu škálování směrem nahoru nebo dolů postup zahrnuje změnu SKU instance virtuálních počítačů ve škálovací sadě. 
 
-### <a name="scaling-the-primary-node-type"></a>Škálování typ primárního uzlu
-Doporučujeme neměnit SKU virtuálních počítačů typu primárního uzlu. Pokud potřebujete větší kapacitu clusteru, doporučujeme přidávání více instancí. 
+> [!WARNING]
+> Doporučujeme vám, pokud se spouští ve není změnit skladovou Položku virtuálního počítače škálovací sady/uzel typu [Silver odolnosti nebo větší](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster). Změna velikosti skladové položky virtuálních počítačů je operace destruktivní dat místní infrastrukturu. Bez některé možnosti zpoždění nebo sledovat tuto změnu je možné, že operace může způsobit ztrátu dat pro stavové služby nebo způsobit jiné nepředvídatelné provozní problémy, dokonce i u bezstavových zatížení. 
+>
 
-Pokud není možné, můžete vytvořit nový cluster a [obnovit stav aplikace](service-fabric-reliable-services-backup-restore.md) (pokud existuje) z původního clusteru. Není nutné obnovit všechny služby stavu systému, že jsou vytvořeny při nasazení aplikací do nového clusteru. Pokud jste právě spuštěna bezstavové aplikace v clusteru, je všechny, které můžete provést nasazení aplikací do nového clusteru, máte žádné položky k obnovení. Pokud se rozhodnete přejít nepodporované trasy a chcete změnit SKU virtuální počítač, pak provedete změny škálování virtuálního počítače nastavit modelu definici, aby odpovídala nové verze SKU. Pokud váš cluster jenom jeden uzel typ, ujistěte se, že všechny stavové aplikace reagovat na všechny [služby události životního cyklu repliky](service-fabric-reliable-services-lifecycle.md) (jako je zablokované repliky v sestavení) v a včasné a které vaše služba repliky sestavit Doba trvání je méně než pět minut (úroveň stříbrným odolnost). 
+Při škálování clusteru Azure, mějte následujícími pravidly:
+- Pokud vertikálního snižování typ primárního uzlu by nikdy ji převedete dolů více, než nabízí [úroveň spolehlivosti](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) umožňuje.
+
+Proces typ uzlu vertikálního navýšení nebo snížení kapacity se liší v závislosti na tom, zda je typ neprimární nebo primárního uzlu.
+
+### <a name="scaling-non-primary-node-types"></a>Škálování typy jiné než primární uzel
+Vytvoření nového typu uzlu s prostředky, které potřebujete.  Aktualizujte omezení umístění spuštění služby zahrnuté nového typu uzlu.  Postupně (postupně po jednom), snížit počet instancí starý počet instancí typu uzlu na nulu, tak, aby spolehlivosti clusteru nemá vliv.  Služby se postupně migrovat do nového typu uzlu decommisioned je původní typ uzlu.
+
+### <a name="scaling-the-primary-node-type"></a>Škálování primární typ uzlu
+Doporučujeme neměnit skladovou Položku virtuálního počítače z primární typ uzlu. Pokud potřebujete víc kapacity clusteru, doporučujeme přidat více instancí. 
+
+Pokud není možné, můžete vytvořit nový cluster a [obnovit stav aplikace](service-fabric-reliable-services-backup-restore.md) (Pokud je k dispozici) z původního clusteru. Není potřeba obnovit jakékoli služby stavu systému, že se opětovně vytvoří při nasazení aplikací do nového clusteru. Pokud jste právě spuštěna bezstavové aplikace v clusteru, pak vše, co můžete udělat, je nasazení aplikací do nového clusteru, nemáte nic k obnovení. Pokud se rozhodnete přejít nepodporované trasy a chcete změnit skladovou Položku virtuálního počítače, Model definice tak, aby odrážely novou skladovou Položku sady škálování virtuálního počítače pak provedete změny. Pokud váš cluster má pouze jeden uzel typu, ujistěte se, že všechny stavové aplikace reagovat na všechny [služby události životního cyklu repliky](service-fabric-reliable-services-lifecycle.md) (jako jsou repliky v sestavení se zasekne) a včasné a repliku služby sestavení Doba trvání je méně než pět minut (pro úroveň Silver odolnosti). 
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o [škálovatelnost aplikace](service-fabric-concepts-scalability.md).
-* [Škálování clusteru služby Azure příchozí nebo odchozí](service-fabric-tutorial-scale-cluster.md).
-* [Škálování clusteru služby Azure prostřednictvím kódu programu](service-fabric-cluster-programmatic-scaling.md) pomocí fluent Azure výpočetní SDK.
-* [Škálování clusteru standaone příchozí nebo odchozí](service-fabric-cluster-windows-server-add-remove-nodes.md).
+* Další informace o [aplikace škálovatelnost](service-fabric-concepts-scalability.md).
+* [Škálování clusteru Azure snížení nebo navýšení kapacity](service-fabric-tutorial-scale-cluster.md).
+* [Škálování clusteru Azure prostřednictvím kódu programu](service-fabric-cluster-programmatic-scaling.md) pomocí fluent Azure compute SDK.
+* [Horizontální snížení nebo navýšení kapacity clusteru samostatná](service-fabric-cluster-windows-server-add-remove-nodes.md).
 

@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 08/31/2018
 ms.author: dobett
-ms.openlocfilehash: fcc11347d06cde43c79ef4272f5c2ad87555c040
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 5faa91f054e62e2b3d9d317efe57f2d3f659cee6
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734484"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48829830"
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-linux"></a>Připojení zařízení k akcelerátor řešení vzdálené monitorování (Linux)
 
@@ -29,15 +29,15 @@ K dokončení kroků v této příručce s postupy, je třeba zařízení se sys
 
 ## <a name="view-the-code"></a>Zobrazení kódu
 
-[Ukázkový kód](https://github.com/Azure/azure-iot-sdk-c/tree/master/samples/solutions/remote_monitoring) použitý v tomto průvodci je k dispozici v úložišti Azure IoT C SDK na Githubu.
+[Ukázkový kód](https://github.com/Azure/azure-iot-sdk-c/tree/master/samples/solutions/remote_monitoring_client) použitý v tomto průvodci je k dispozici v úložišti Azure IoT C SDK na Githubu.
 
 ### <a name="download-the-source-code-and-prepare-the-project"></a>Stáhněte si zdrojový kód a příprava projektu
 
 Příprava projektu, klonovat nebo stáhnout [úložiště sad SDK Azure IoT C](https://github.com/Azure/azure-iot-sdk-c) z Githubu.
 
-Tato ukázka se nachází v **ukázky a řešení/remote_monitoring** složky.
+Tato ukázka se nachází v **ukázky a řešení/remote_monitoring_client** složky.
 
-Otevřít **remote_monitoring.c** soubor **ukázky a řešení/remote_monitoring** složky v textovém editoru.
+Otevřít **remote_monitoring.c** soubor **ukázky a řešení/remote_monitoring_client** složky v textovém editoru.
 
 [!INCLUDE [iot-accelerators-connecting-code](../../includes/iot-accelerators-connecting-code.md)]
 
@@ -59,7 +59,7 @@ Následující kroky popisují způsob použití *CMake* k vytvoření klientsk�
 1. Spuštění klientské aplikace a odesílání telemetrických dat do služby IoT Hub:
 
     ```sh
-    ./samples/solutions/remote_monitoring/remote_monitoring_client
+    ./samples/solutions/remote_monitoring_client/remote_monitoring_client
     ```
 
     Této konzole se zobrazují zprávy jako:

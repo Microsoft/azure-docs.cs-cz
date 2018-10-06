@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9abdb17c7b1cf0662913a4c9cd59c49efc91e419
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 8ae3a2d8dc42944bdea2b3e6ebac0a40029c0540
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785490"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48817173"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Spuštění/zastavení virtuálních počítačů v době mimo špičku řešení ve službě Azure Automation
 
@@ -33,6 +33,8 @@ Toto jsou omezení do aktuálního řešení:
 
 > [!NOTE]
 > Pokud používáte řešení pro klasické virtuální počítače, pak všechny virtuální počítače se budou zpracovávat postupně na jednu cloudovou službu. Zpracování paralelních úloh je stále podporována napříč různými cloudovými službami.
+>
+> Předplatná Azure Cloud Solution Provider (CSP pro Azure) podporují pouze model Azure Resource Manageru, services – Azure Resource Manageru nejsou k dispozici v programu. Při spuštění/zastavení řešení běží se může zobrazit chyby jako obsahuje rutiny pro správu klasických prostředků. Další informace o CSP najdete v tématu [dostupných služeb v předplatných CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments).
 
 ## <a name="prerequisites"></a>Požadavky
 

@@ -5,17 +5,17 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/23/2018
+ms.date: 10/04/2018
 ms.author: cherylmc
 Customer intent: As a Virtual WAN software-defined connectivity provider, I want to set up a provisioning environment.
-ms.openlocfilehash: 7f70470880845fd4271ffdbb35af771ec433babc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0ea1b69b788255b1d8d24e17fcc1409d35a4fd36
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961939"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814317"
 ---
-# <a name="virtual-wan-partners-preview"></a>Virtuální sítě WAN partnery (Preview)
+# <a name="virtual-wan-partners"></a>Virtuální sítě WAN partnerů
 
 Tento článek vám pomůže pochopit nastavení automatizovaného prostředí pro připojení a konfigurace zařízení větev (v místním zařízení VPN zákazníka nebo SDWAN CPE) pro Azure virtuální sítě WAN. Pokud se zprostředkovatel, který poskytuje zařízení větve, které zvládne připojení k síti VPN prostřednictvím protokolu IPsec nebo IKEv2 nebo protokolu IPsec/IKEv1, tento článek právě pro vás.
 

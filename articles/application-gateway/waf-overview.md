@@ -1,35 +1,29 @@
 ---
-title: Úvod do Firewallu webových aplikací (WAF) služby Azure Application Gateway | Dokumentace Microsoftu
-description: Na této stránce najdete přehled firewallu webových aplikací (WAF) služby Application Gateway.
-documentationcenter: na
+title: Úvod do firewallu webových aplikací (WAF) služby Azure Application Gateway
+description: Tento článek obsahuje přehled firewallu webových aplikací (WAF) služby Application Gateway.
 services: application-gateway
 author: amsriva
-manager: rossort
-editor: amsriva
-ms.assetid: 04b362bc-6653-4765-86f6-55ee8ec2a0ff
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/03/2017
+ms.date: 10/6/2017
 ms.author: amsriva
-ms.openlocfilehash: 9e04f69410251b5748facf44e9f2947b1415bc19
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: a16f8d988c900d015810bfe72b04ff5e9eb0682a
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32160830"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815660"
 ---
 # <a name="web-application-firewall-waf"></a>Firewall webových aplikací (WAF)
 
 Firewall webových aplikací (WAF) je funkce služby Application Gateway poskytující centralizovanou ochranu webových aplikací před běžným zneužitím a ohrožením zabezpečení. 
 
-Firewall webových aplikací je založený na základě [základní sady pravidel OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 nebo 2.2.9. Webové aplikace se čím dál častěji stávají cílem škodlivých útoků, které zneužívají běžně známé chyby zabezpečení. Mezi tyto běžné typy zneužití patří mimo jiné například útoky prostřednictvím injektáže SQL nebo skriptování mezi weby. Předcházet takovým útokům v kódu aplikace může být náročné a může vyžadovat pečlivou údržbu, opravy a monitorování několika vrstev topologie aplikace. Centralizovaný firewall webových aplikací značně zjednodušuje správu zabezpečení a nabízí správcům lepší ochranu aplikací před hrozbami neoprávněného vniknutí. Řešení Firewall webových aplikací (WAF) může také rychleji reagovat na ohrožení zabezpečení, protože opravuje známé chyby zabezpečení v centrálním umístění, namísto zabezpečování jednotlivých webových aplikací. Stávající aplikační brány je možné jednoduše převést na aplikační brány doplněné webovým aplikačním firewallem.
+Webové aplikace se čím dál častěji stávají cílem škodlivých útoků, které zneužívají běžně známé chyby zabezpečení. Mezi tyto běžné typy zneužití patří mimo jiné například útoky prostřednictvím injektáže SQL nebo skriptování mezi weby. Předcházet takovým útokům v kódu aplikace může být náročné a může vyžadovat pečlivou údržbu, opravy a monitorování několika vrstev topologie aplikace. Centralizovaný firewall webových aplikací značně zjednodušuje správu zabezpečení a nabízí správcům lepší ochranu aplikací před hrozbami neoprávněného vniknutí. Řešení Firewall webových aplikací (WAF) může také rychleji reagovat na ohrožení zabezpečení, protože opravuje známé chyby zabezpečení v centrálním umístění, namísto zabezpečování jednotlivých webových aplikací. Stávající aplikační brány je možné jednoduše převést na aplikační brány doplněné webovým aplikačním firewallem.
+
+WAF je na základě pravidel ze [základní sady pravidel OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 nebo 2.2.9. Automaticky aktualizuje zahrnout ochranu proti nová ohrožení zabezpečení, nepotřebují žádnou další konfiguraci.
 
 ![imageURLroute](./media/waf-overview/WAF1.png)
 
-Application Gateway funguje jako řadič doručování aplikací a zajišťuje zakončení protokolu SSL, spřažení relace na základě souborů cookie, distribuci zatížení pomocí kruhového dotazování, směrování na základě obsahu, schopnost hostovat více webů a vylepšení zabezpečení. Vylepšení zabezpečení nabízená službou Application Gateway zahrnují správu zásad protokolu SSL a podporu koncového šifrování protokolu SSL. Zabezpečení aplikací je nyní posíleno integrací firewallu webových aplikací (WAF) přímo do nabídky ADC. Získáte tak snadno konfigurovatelné centrální umístění pro správu a ochranu svých webových aplikací před běžnými webovými chybami zabezpečení.
+Application Gateway funguje jako kontroler doručování aplikací (ADC) a nabízí ukončení protokolu SSL, spřažení relace na základě souborů cookie, distribuci zatížení pomocí kruhového dotazování, směrování na základě obsahu, schopnost hostovat více webů a vylepšení zabezpečení. Vylepšení zabezpečení nabízená službou Application Gateway zahrnují správu zásad protokolu SSL a podporu koncového šifrování protokolu SSL. Zabezpečení aplikací je nyní posíleno integrací firewallu webových aplikací (WAF) přímo do nabídky ADC. Získáte tak snadno konfigurovatelné centrální umístění pro správu a ochranu svých webových aplikací před běžnými webovými chybami zabezpečení.
 
 ## <a name="benefits"></a>Výhody
 
@@ -61,7 +55,7 @@ Firewall webových aplikací se poskytuje s předem nakonfigurovanou sadou pravi
 * Ochrana před narušením protokolu HTTP.
 * Ochrana před anomáliemi protokolu HTTP, jako například chybějící údaj user-agent hostitele nebo hlavičky Accept.
 * Ochrana před roboty, prohledávacími moduly a skenery.
-* Detekce běžných chyb v konfiguraci aplikací (tj. Apache, IIS atd.).
+* Detekce běžných chyb v konfiguraci aplikací (tj. Apache, IIS atd.)
 
 Podrobnější seznam pravidel a ochrany, kterou poskytují, naleznete v popisu [základních sad pravidel](#core-rule-sets).
 
@@ -108,7 +102,7 @@ Základní sada pravidel 2.2.9 má 10 skupin pravidel, shrnutých v následujíc
 
 Firewall webových aplikací (WAF) služby Application Gateway lze nakonfigurovat ke spuštění v těchto dvou režimech:
 
-* **Režim detekce** – Když je nakonfigurován ke spuštění v režimu detekce, WAF služby Application Gateway monitoruje a protokoluje všechny výstrahy na hrozby do souboru protokolu. Diagnostika protokolování pro službu Application Gateway by měla být v části **Diagnostika** zapnutá. Bude také třeba zajistit, aby byl vybrán a zapnut protokol WAF. když je firewall webových aplikací spuštěný v režimu detekce, neblokuje příchozí požadavky.
+* **Režim detekce** – když nakonfigurované na spouštění v režimu detekce, waf služby Application Gateway monitoruje a protokoluje do všech upozornění na hrozby do souboru protokolu. Diagnostika protokolování pro službu Application Gateway by měla být v části **Diagnostika** zapnutá. Bude také třeba zajistit, aby byl vybrán a zapnut protokol WAF. když je firewall webových aplikací spuštěný v režimu detekce, neblokuje příchozí požadavky.
 * **Režim prevence** – Když je nakonfigurován ke spuštění v režimu prevence, služba Application Gateway aktivně blokuje vniknutí a útoky detekované pomocí svých pravidel. Útočník obdrží výjimku 403 – Neoprávněný přístup a připojení se ukončí. Režim prevence takové útoky nadále protokoluje do protokolů WAF.
 
 ### <a name="application-gateway-waf-reports"></a>Monitorování WAF
@@ -119,7 +113,7 @@ Monitorování stavu službu Application Gateway je velmi důležité. Monitorov
 
 #### <a name="azure-monitor"></a>Azure Monitor
 
-Každý protokol aplikační brány je integrovaný do služby [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md).  To umožňuje sledovat diagnostické informace, včetně výstrah a protokolů WAF.  Tato možnost je poskytována v rámci prostředku Application Gateway na portálu na kartě **Diagnostika** nebo přímo prostřednictvím služby Azure Monitor. Další informace o povolení diagnostických protokolů pro službu Application Gateway najdete na stránkách o [diagnostice služby Application Gateway](application-gateway-diagnostics.md)
+Každý protokol aplikační brány je integrovaný do služby [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md).  To umožňuje sledovat diagnostické informace, včetně výstrah a protokolů WAF.  Tato možnost je poskytována v rámci prostředku Application Gateway na portálu na kartě **Diagnostika** nebo přímo prostřednictvím služby Azure Monitor. Další informace o povolení diagnostických protokolů pro službu application gateway najdete v článku [diagnostice služby Application Gateway](application-gateway-diagnostics.md)
 
 #### <a name="azure-security-center"></a>Azure Security Center
 
@@ -165,7 +159,7 @@ Firewall webových aplikací (WAF) služby Application Gateway poskytuje podrobn
 
 Firewall webových aplikací je k dispozici jako nová položka WAF SKU. Tato položka SKU je k dispozici pouze v modelu zřizování Azure Resource Manager, nikoli v rámci klasického modelu nasazení. WAF SKU je navíc dostupný jen pro střední a velké instance aplikační brány. Všechna omezení pro aplikační brány platí také pro WAF SKU. Ceny jsou založeny na hodinové sazbě za instanci brány a na poplatcích za zpracování dat. Hodinová sazba za bránu se pro položku WAF SKU liší od sazby pro standardní položky SKU. Sazby jsou uvedeny v článku [Podrobnosti o cenách Application Gateway](https://azure.microsoft.com/pricing/details/application-gateway/). Poplatky za zpracování dat zůstávají stejné. Neexistují žádné poplatky za pravidla nebo skupiny pravidel. Jedna aplikační brána může chránit několik webových aplikací a další aplikace nejsou zpoplatněny. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Až se podrobněji seznámíte se schopnostmi WAF, přečtěte si článek [Postup konfigurace Firewallu webových aplikací ve službě Application Gateway](tutorial-restrict-web-traffic-powershell.md).
+Po získání informací o WAF, naleznete v tématu [postup konfigurace firewallu webových aplikací ve službě Application Gateway](tutorial-restrict-web-traffic-powershell.md).
 

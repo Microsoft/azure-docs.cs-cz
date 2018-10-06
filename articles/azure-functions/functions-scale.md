@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 08/09/2018
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7168db80593426977e238fa2b8a5f09638cf0fdf
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 4585b6d4e9e3f6c64e1c583b947f979b8edc5a74
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542155"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830252"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Hostování a škálování Azure Functions
 
@@ -124,7 +124,7 @@ Jednotka škálování je aplikace function app. Aplikace function app horizont�
 
 Škálování se může lišit na celé řadě faktorů a škálování různě v závislosti na triggeru a vybraný jazyk. Několik aspektů škálování, díky kterému se však v systému existuje ještě dnes:
 
-* Aplikace s jedinou funkci se pouze škálování až na 100 instancí. Jednu instanci může zpracovat více než jeden zprávy nebo žádost o najednou, proto není k dispozici nastavte limit počtu souběžných spuštění.
+* Aplikace s jedinou funkci se pouze škálování na maximální počet instancí 200. Jednu instanci může zpracovat více než jeden zprávy nebo žádost o najednou, proto není k dispozici nastavte limit počtu souběžných spuštění.
 * Nové instance pouze se přidělí maximálně každých 10 sekund.
 
 Jiné triggery mohou mít i jiné limity škálování, jakož i zdokumentovaných níže:

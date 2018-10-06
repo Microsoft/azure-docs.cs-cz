@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: jingwang
-ms.openlocfilehash: c513ef76174507f1ea78b265b1882266b8473737
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: e50d1696fdc22916f5ac4699bd17ddc21a82a148
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248937"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815864"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Kopírování dat do nebo ze služby Azure SQL Database s použitím služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
@@ -64,7 +64,7 @@ Různými typy ověřování najdete v následujících částech na požadavky 
 
 - [Ověřování SQL](#sql-authentication)
 - [Azure ověřování tokenu aplikací AD: instanční objekt služby](#service-principal-authentication)
-- [Azure AD aplikace ověřování pomocí tokenu: spravovaných identit pro prostředky Azure](#managed-service-identity-authentication)
+- [Azure AD aplikace ověřování pomocí tokenu: spravovaných identit pro prostředky Azure](#managed-identity)
 
 >[!TIP]
 >Pokud spuštění chybě s kódem chyby jako "UserErrorFailedToConnectToSqlServer" a zpráva jako "limit relace pro databázi je XXX a bylo ho dosaženo.", přidejte `Pooling=false` připojovací řetězec a zkuste to znovu.
@@ -146,7 +146,7 @@ Pokud chcete používat ověřování tokenu aplikací služeb na základě inst
 }
 ```
 
-### <a name="managed-identities-for-azure-resources-authentication"></a>Spravovaných identit pro ověřování prostředků Azure
+### <a name="managed-identity"></a> Spravovaných identit pro ověřování prostředků Azure
 
 Je možné přidružit datové továrny [spravované identity pro prostředky Azure](data-factory-service-identity.md) , která představuje konkrétní datové továrny. Tuto identitu služby můžete použít pro ověřování Azure SQL Database. Přístup k určené objekt pro vytváření a kopírování dat z nebo do databáze s použitím této identity.
 

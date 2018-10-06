@@ -17,12 +17,12 @@ ms.date: 09/14/2018
 ms.author: celested
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 3d6692808bad2010779323cecc42778def32a38c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: dd164882f9820cab970edd4d01f2f28c26771f88
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980266"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815207"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Postupy: uvedení aplikace v galerii aplikací Azure Active Directory
 
@@ -39,7 +39,7 @@ ms.locfileid: "46980266"
 
 - Pro aplikace federativní (Open ID a SAML/WS-Fed) musí aplikace podporovat model SaaS pro dostat na seznam v galerii Azure AD. Podnikové aplikace Galerie by měl podporovat konfigurací s víc zákazníků a nikoli konkrétního zákazníka.
 
-- Pro Open ID Connect, by měla být aplikace s více klienty a [rozhraní Azure AD pro udělování souhlasu](quickstart-v1-integrate-apps-with-azure-ad.md#overview-of-the-consent-framework) by měla být správně implementována pro aplikaci. Uživatel můžete poslat žádost o přihlášení na společný koncový bod tak, aby každý zákazník se může poskytnout souhlas pro aplikaci. Můžete řídit přístup uživatelů na základě ID tenanta a hlavním názvem uživatele přijata v tokenu.
+- Pro Open ID Connect, by měla být aplikace s více klienty a [rozhraní Azure AD pro udělování souhlasu](consent-framework.md) by měla být správně implementována pro aplikaci. Uživatel můžete poslat žádost o přihlášení na společný koncový bod tak, aby každý zákazník se může poskytnout souhlas pro aplikaci. Můžete řídit přístup uživatelů na základě ID tenanta a hlavním názvem uživatele přijata v tokenu.
 
 - Pro SAML 2.0 a WS-Fed vaše aplikace potřebuje mít možnost provádět integraci jednotného přihlašování SAML/WS-Fed v režimu SP nebo zprostředkovatele identity. Ujistěte se prosím, že to funguje správně před odesláním požadavku.
 

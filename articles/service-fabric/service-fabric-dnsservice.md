@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/20/2018
 ms.author: msfussell
-ms.openlocfilehash: 3c8eac98414fa43213136940fb4c91694a78a2c1
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: a420033d96a1366a79f5f2032693c38d7eca4ac3
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397522"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830969"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Služba DNS v Azure Service Fabric
 Služba DNS je volitelná systémová služba, kterou můžete povolit ve vašem clusteru na zjišťovat další služby pomocí protokolu DNS. 
@@ -132,7 +132,7 @@ Jakmile aplikace nasazena, instance služby v Service Fabric explorer zobrazí n
 
 ![Koncové body služby](./media/service-fabric-dnsservice/service-fabric-explorer-dns.png)
 
-Následující příklad nastaví název DNS pro stavové služby k `statefulsvc.app`. Služba používá pojmenované schéma dělení. Všimněte si, že názvy oddílů jsou malá. To je požadavek na oddíly, které budou cílem v dotazech DNS; Další informace najdete v tématu [oddílu služby DNS provádění dotazů na stavový](#making-dns-queries-on-a-stateful-service-partition).
+Následující příklad nastaví název DNS pro stavové služby k `statefulsvc.app`. Služba používá pojmenované schéma dělení. Všimněte si, že názvy oddílů jsou malá. To je požadavek na oddíly, které budou cílem v dotazech DNS; Další informace najdete v tématu [oddílu služby DNS provádění dotazů na stavový](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-dnsservice#preview-making-dns-queries-on-a-stateful-service-partition).
 
 ```xml
     <Service Name="Stateful1" ServiceDnsName="statefulsvc.app" />

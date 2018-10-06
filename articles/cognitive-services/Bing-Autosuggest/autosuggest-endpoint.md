@@ -1,45 +1,46 @@
 ---
-title: Koncový bod pro automatické návrhy | Microsoft Docs
-description: Souhrn rozhraní API pro automatické návrhy koncového bodu.
+title: Koncový bod Automatických návrhů Bingu
+titlesuffix: Azure Cognitive Services
+description: Souhrn koncový bod rozhraní API pro automatické návrhy Bingu.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-autosuggest
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: v-gedod
-ms.openlocfilehash: 5aaddd09006cb6f1812bb6ae213a2f5e6720fb1b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c2d1c97ad2af266558f9b664162526d5006d2092
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343401"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830440"
 ---
-# <a name="autosuggest-endpoint"></a>Koncový bod pro automatické návrhy
+# <a name="bing-autosuggest-endpoint"></a>Koncový bod Automatických návrhů Bingu
 
-**Rozhraní API pro automatické návrhy** obsahuje jeden koncový bod, který vrátí seznam hodnot navrhované dotazy z částečné hledaný termín.
+**Rozhraní API pro automatické návrhy Bingu** zahrnuje jeden koncový bod, který vrátí seznam navrhovaných dotazů z hledaný termín.
 
 ## <a name="endpoint"></a>Koncový bod
 
-Získat návrhy dotazy pomocí rozhraní API služby Bing, odeslání `GET` požadavek na následující koncový bod. Můžete definovat další specifikace pomocí hlaviček a parametrů adresy URL.
+Chcete-li získat navrhované dotazy pomocí rozhraní API Bingu pro odeslání `GET` požadavek na následující koncový bod. Použijte k definování další specifikace hlaviček a parametrů adresy URL.
 
-**Koncový bod:** vrátí vyhledávání návrhy jako výsledky JSON, které jsou relevantní pro vstup uživatele, které jsou definované `?q=""`.
+**Koncový bod:** návrhy hledání vrátí jako výsledky JSON, které se týkají vstupu uživatele určené `?q=""`.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/Suggestions 
 ```
 
-Podrobnosti o hlavičky, parametry, trhu kódy, objekty odpovědi, chyb atd., najdete [rozhraní API pro automatické návrhy v Bingu v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference) odkaz.
+Podrobnosti o záhlaví, parametry, kódy na trhu, objekty odpovědi, chyby dále, viz [rozhraní API pro automatické návrhy Bingu v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference) odkaz.
 
 ## <a name="response-json"></a>Odpověď JSON
 
-Odpověď na žádost o automatických návrhů obsahuje výsledky jako objekty JSON. Příklady Analýza výsledků najdete v tématu [kurzu](tutorials/autosuggest.md) a [zdrojový kód](tutorials/autosuggest-source.md).
+Odpovědi na požadavek pro automatické návrhy obsahuje výsledky jako objekty JSON. Viz příklady parsování výsledků [kurzu](tutorials/autosuggest.md) a [zdrojový kód](tutorials/autosuggest-source.md).
 
 ## <a name="next-steps"></a>Další postup
 
-**Bing** rozhraní API pro podporu vyhledávání akcí, které vracejí výsledky podle jejich typu. Všechny koncové body vyhledávání vrátí výsledky jako objekty JSON odpovědi.
-Všechny koncové body podporu dotazů, které vracejí konkrétní jazyk nebo umístění zeměpisné délky, zeměpisnou šířku a hledání radius.
+**Bingu** rozhraní API podporují akce hledání, které vracejí výsledky podle jejich typu. Všechny koncové body hledání vrátí výsledky jako objekty JSON odpovědi.
+Všechny koncové body podporují dotazy využívající vrátit konkrétní jazyk a/nebo umístění longitude, latitude a vyhledávání protokolu radius.
 
-Úplné informace o parametrech nepodporuje každý koncový bod najdete na stránkách odkaz pro každý typ.
-Příklady základní požadavků pomocí rozhraní API pro automatické návrhy najdete v tématu [pro automatické návrhy – elementy QuickStart](https://docs.microsoft.com/azure/cognitive-services/Bing-Autosuggest).
+Podrobnější informace o parametrech podporuje každý koncový bod najdete v referenčních stránkách pro jednotlivé typy.
+Příklady základní požadavky na používání rozhraní API pro automatické návrhy najdete v tématu [rychlých startů pro automatické návrhy](https://docs.microsoft.com/azure/cognitive-services/Bing-Autosuggest).
