@@ -6,7 +6,6 @@ documentationcenter: dev-center-name
 author: andretms
 manager: mtillman
 editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
@@ -15,12 +14,12 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: c6d5fab6ff065dee336c510e3f94583cb0c4960b
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 248f2575e284ae456578b071013e1a5501329116
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46466150"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843441"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-get-a-token-for-the-microsoft-graph-api"></a>Pomocí knihovny Microsoft Authentication Library (MSAL) k získání tokenu pro rozhraní Microsoft Graph API
 
@@ -205,7 +204,7 @@ class ViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate 
 
 <!--start-collapse-->
 ### <a name="more-information"></a>Další informace
-#### <a name="getting-a-user-token-interactively"></a>Získání tokenu uživatele interaktivně
+#### <a name="getting-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 Volání `acquireToken` metoda výsledky v okně prohlížeče výzvy k přihlášení. Aplikace obvykle vyžadují uživateli umožní přihlásit interaktivně poprvé, které potřebují přístup k chráněnému prostředku, nebo při bezobslužném operaci získat token selže (třeba heslo uživatele s prošlou platností).
 
 #### <a name="getting-a-user-token-silently"></a>Získání tokenu uživatele bez upozornění

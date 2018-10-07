@@ -6,7 +6,6 @@ documentationcenter: dev-center-name
 author: navyasric
 manager: mtillman
 editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
@@ -15,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 07aac49e7aed7c95863a2058a9de3d1e8f2cd1ad
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 038ea48bedeb31416627f99b38ebb083846747e4
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47060418"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843194"
 ---
 ## <a name="register-your-application"></a>Registrace vaší aplikace
 
@@ -36,7 +35,7 @@ Teď musíte zaregistrovat svoji aplikaci *portál pro registraci aplikací Micr
 
 ### <a name="option-2-register-your-application-advanced-mode"></a>Možnost 2: Registrace vaší aplikace (rozšířený režim)
 
-1. Přejděte [portál pro registraci aplikací Microsoft](https://apps.dev.microsoft.com/portal/register-app) pro registraci aplikace.
+1. Abyste mohli zaregistrovat aplikaci, přejděte na [portál pro registraci aplikací Microsoft](https://apps.dev.microsoft.com/portal/register-app).
 2. Zadejte název vaší aplikace a e-mailu.
 3. Ujistěte se, že možnost **instalační program s asistencí** není zaškrtnuta.
 4.  Klikněte na tlačítko **přidat platformy**a pak vyberte **webové**.

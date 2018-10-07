@@ -6,7 +6,6 @@ documentationcenter: dev-center-name
 author: navyasric
 manager: mtillman
 editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
@@ -15,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: be8ffeae1977fb2f56e0f85a716d982a6d2f84dc
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 77400453e455ff2ebf20f59f888a3e3d641bcf07
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47060818"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843481"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>Přihlásit uživatele pomocí knihovny Microsoft Authentication Library (MSAL)
 
@@ -132,12 +131,12 @@ Po kliknutí *"Sign In"* tlačítko poprvé, `signIn` volání metody `loginPopu
 
 Jednostránková aplikace vygenerované to provede volání `acquireTokenSilent` a/nebo `acquireTokenPopup` získat *přístupový token* používá k dotazování na rozhraní Microsoft Graph API pro informace o profilu uživatele. Pokud potřebujete vzorku, který ověří ID token, podívejte se na [to](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "active-directory-javascript-singlepageapp-dotnet-webapi-v2 ukázky Githubu") ukázková aplikace v Githubu – Ukázka používá ASP .NET webového rozhraní API pro ověřování tokenů.
 
-#### <a name="getting-a-user-token-interactively"></a>Získání tokenu uživatele interaktivně
+#### <a name="getting-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 
 Po počátečním přihlášení, nechcete žádat uživatele nutnost opakovaného ověření příslušných pokaždé, když potřebují k vyžádání tokenu pro přístup k prostředku – tedy *acquireTokenSilent* by ve většině případů použít k získání tokenů. Existují však situace, že je potřeba vynutit uživatelům, aby komunikovali s koncovým bodem služby Azure Active Directory v2 – mezi příklady patří:
-- Uživatelé mohou muset znovu zadat své přihlašovací údaje, protože vypršela platnost hesla
-- Aplikace žádá o přístup k prostředku, který uživatel musí vyjádřit souhlas
-- Dvoufaktorové ověřování je povinné
+- Může být potřeba, aby uživatelé znovu zadali svoje přihlašovací údaje, protože vypršela platnost hesla
+- Vaše aplikace žádá o přístup k prostředku, ke kterému musí dát uživatel souhlas
+- Je nutné dvoufaktorové ověřování
 
 Volání *acquireTokenPopup(scope)* výsledky v automaticky otevíraném okně (nebo *acquireTokenRedirect(scope)* výsledkem přesměrování uživatelů na koncový bod Azure Active Directory verze 2) Pokud uživatelé potřebují k interakce potvrzení přihlašovacích údajů, udělení souhlasu pro požadovaný prostředek, nebo dokončení dvoufaktorového ověřování.
 

@@ -5,12 +5,21 @@ services: active-directory
 documentationcenter: dev-center-name
 author: brandwe
 manager: mtillman
-ms.openlocfilehash: ca7a47fbe2c5ee2a4eb10abf3b9b50a2d28c252e
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+editor: ''
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: ios
+ms.workload: identity
+ms.date: 09/19/2018
+ms.author: brandwe
+ms.custom: include file
+ms.openlocfilehash: 331d16df55e26df5d49555c636b307499dd052af
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46466151"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843507"
 ---
 ## <a name="register-your-application"></a>Registrace vaší aplikace
 Můžete zaregistrovat aplikaci v některém ze dvou způsobů, jak je popsáno v následujících dvou částech.

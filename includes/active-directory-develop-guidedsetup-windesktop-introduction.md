@@ -3,47 +3,46 @@ title: zahrnout soubor
 description: zahrnout soubor
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
+author: jmprieur
 manager: mtillman
 editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/19/2018
-ms.author: andret
+ms.date: 09/17/2018
+ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: e99d4f6676795a846b48ccd2a08856f4d32f269f
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 9f25734259ce34caa0f0d7e844fc985f953b2795
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "36205633"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843159"
 ---
-# <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Volání Microsoft Graph API z aplikace na ploše systému Windows
+# <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Volání rozhraní Microsoft Graph API z desktopové aplikace Windows
 
-Tato příručka ukazuje, jak získat přístupový token a volání rozhraní Graph API Microsoft nebo jiná rozhraní API, které vyžadují přístupové tokeny z koncového bodu Azure Active Directory v2 nativní aplikace Windows Desktop .NET (XAML).
+Tato příručka ukazuje, jak získat přístupový token a volání rozhraní Microsoft Graph API nebo jiné rozhraní API, které vyžadují přístupových tokenů z Azure Active Directory v2 koncový bod nativní aplikace pro Windows Desktop .NET (XAML).
 
-Po dokončení průvodce, aplikace bude moci volat chráněné rozhraní API, které používá osobní účty (včetně live.com, outlook.com a dalších). Aplikace se také použít pracovní a školní účty z jakékoli společnosti nebo organizace, která využívá Azure Active Directory.  
+Po dokončení průvodce, vaše aplikace bude moct volat chráněné rozhraní API, které používá osobní účty (včetně outlook.com, live.com a další). Aplikace bude také použít pracovní a školní účty z jakéhokoli společnosti nebo organizace, která používá Azure Active Directory.  
 
 > [!NOTE] 
-> V Průvodci vyžaduje Visual Studio 2015 Update 3 nebo Visual Studio 2017.  Nemáte buď tyto verze? [Stáhněte si Visual Studio 2017 zdarma](https://www.visualstudio.com/downloads/).
+> V Průvodci vyžaduje Visual Studio 2015 Update 3 nebo Visual Studio 2017.  Nemáte některou z těchto verzí? [Stáhněte si Visual Studio 2017 zdarma](https://www.visualstudio.com/downloads/).
 
-## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Jak funguje ukázková aplikace generované tímto průvodcem
+## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Jak funguje ukázkové aplikace vygenerované v této příručce
 
-![Jak funguje tato příručka](./media/active-directory-develop-guidedsetup-windesktop-intro/windesktophowitworks.png)
+![Jak funguje tento průvodce](./media/active-directory-develop-guidedsetup-windesktop-intro/windesktophowitworks.png)
 
-Ukázkové aplikace, které vytvoříte v této příručce umožňuje aplikace Windows Desktop, který se dotazuje rozhraní Microsoft Graph API nebo webového rozhraní API, které přijímá tokeny z koncového bodu v2 Azure Active Directory. V tomto scénáři přidat token na požadavky HTTP přes autorizační hlavičky. Microsoft ověřování knihovny (MSAL) zpracovává získání tokenu a obnovení.
+Ukázkovou aplikaci, kterou vytvoříte v této příručce umožňuje aplikaci Windows Desktop, který se dotazuje rozhraní Microsoft Graph API nebo webové rozhraní API, které přijímá tokeny z koncového bodu Azure Active Directory v2. Pro tento scénář přidejte token na požadavky HTTP přes autorizační hlavičky. Microsoft Authentication Library (MSAL) zpracovává získání tokenu a obnovení.
 
 ## <a name="handling-token-acquisition-for-accessing-protected-web-apis"></a>Zpracování získání tokenu pro přístup k chráněné webové rozhraní API
 
-Po ověření uživatele je ukázková aplikace obdrží token, který slouží k dotazu Microsoft Graph API nebo webového rozhraní API, která je zabezpečená službou Azure Active Directory v2.
+Po ověření uživatele je ukázková aplikace přijme token, který můžete použít k dotazování rozhraní Microsoft Graph API nebo webové rozhraní API, která je zabezpečena pomocí služby Azure Active Directory v2.
 
-Rozhraní API, jako je například Microsoft Graph vyžadují token pro povolení přístupu ke konkrétním prostředkům. Token je například potřeba čtení profilu uživatele, přístup k kalendáře uživatele nebo odeslání e-mailu. Aplikace může požadovat token přístupu pomocí MSAL k těmto prostředkům přistupovat tak, že zadáte obory rozhraní API. Tento přístupový token se pak přidá do hlavičky HTTP autorizace pro každé volání, které se provádí před k chráněnému prostředku. 
+Rozhraní API, jako je například Microsoft Graphu vyžaduje token pro povolení přístupu ke konkrétním prostředkům. Token je například potřeba čtení profilu uživatele, přístup uživatele kalendáře nebo odeslat e-mailu. Aplikace může požadovat přístupový token s použitím MSAL k těmto prostředkům přistupovat zadáním obory API. Tento přístupový token se pak přidá do hlavičky autorizace HTTP pro každé volání, která se provádí proti chráněnému prostředku. 
 
-MSAL spravuje ukládání do mezipaměti a obnovení přístupových tokenů pro vás, tak, aby vaše aplikace nemusí.
+Knihovna MSAL spravuje ukládání do mezipaměti a aktualizaci přístupových tokenů pro vás, tak, aby vaše aplikace nemusí.
 
 ## <a name="nuget-packages"></a>Balíčky NuGet
 
@@ -51,5 +50,5 @@ Tato příručka používá následující balíčky NuGet:
 
 |Knihovna|Popis|
 |---|---|
-|[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Knihovna Microsoft ověřování (MSAL)|
+|[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Knihovna Microsoft Authentication Library (MSAL)|
 

@@ -6,7 +6,6 @@ documentationcenter: dev-center-name
 author: andretms
 manager: mtillman
 editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
@@ -15,12 +14,12 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 93a1772eba291b5141a0bba4ee9a777feb51ab9e
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 063ca2bbb334c120e285d4b3eac8af00fafa7e5a
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46466145"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843328"
 ---
 # <a name="call-the-microsoft-graph-api-from-an-ios-application"></a>Volání rozhraní Microsoft Graph API z aplikace pro iOS
 
@@ -32,9 +31,9 @@ Po dokončení cvičení v této příručce, může volat chráněné rozhraní
 - Verze XCode 10.x se vyžaduje pro ukázku, která se vytvoří v této příručce. Si můžete stáhnout z XCode [iTunes webu](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "adresa URL pro XCode stahování").
 - [Carthage](https://github.com/Carthage/Carthage) správce závislostí, je třeba Správa balíčků.
 
-## <a name="how-this-guide-works"></a>Jak funguje tato příručka
+## <a name="how-this-guide-works"></a>Jak funguje tento průvodce
 
-![Jak funguje tato příručka](media/active-directory-develop-guidedsetup-ios-introduction/iosintro.png)
+![Jak funguje tento průvodce](media/active-directory-develop-guidedsetup-ios-introduction/iosintro.png)
 
 V této příručce ukázkovou aplikaci umožňuje dotazování rozhraní Microsoft Graph API nebo webové rozhraní API, které přijímá tokeny z koncového bodu Azure AD v2.0 aplikace pro iOS. V tomto scénáři token se přidá na požadavky HTTP s použitím **autorizace** záhlaví. Získání tokenu a obnovení jsou zpracovány pomocí Microsoft Authentication Library (MSAL).
 

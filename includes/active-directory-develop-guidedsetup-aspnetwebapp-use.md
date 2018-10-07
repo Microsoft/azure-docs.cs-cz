@@ -6,7 +6,6 @@ documentationcenter: dev-center-name
 author: andretms
 manager: mtillman
 editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
@@ -15,18 +14,18 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 98bb86be1e1d0dccb5a76b91489e664ee4a30765
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 167fccd8e0546bc8f5ac1b24489cae68cc14191f
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36943585"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843036"
 ---
-## <a name="add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>Přidat řadič pro zpracování požadavků na přihlášení a odhlášení
+## <a name="add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>Přidání kontroleru pro zpracování požadavků na přihlášení a odhlášení
 
-Tento krok ukazuje, jak vytvořit nový řadič vystavit metody přihlášení a odhlášení.
+Tento krok ukazuje, jak vytvořit nový kontroler zveřejňovat metody přihlašování a odhlašování.
 
-1.  Klikněte pravým tlačítkem `Controllers` složky a vyberte `Add` > `Controller`
+1.  Klikněte pravým tlačítkem myši `Controllers` a pak zvolte položku `Add` > `Controller`
 2.  Vyberte `MVC (.NET version) Controller – Empty`.
 3.  Klikněte na tlačítko *přidat*
 4.  Pojmenujte ji `HomeController` a klikněte na tlačítko *přidat*
@@ -38,7 +37,7 @@ Tento krok ukazuje, jak vytvořit nový řadič vystavit metody přihlášení a
     using Microsoft.Owin.Security.OpenIdConnect;
     ```
     
-6. Přidejte tyto dvě metody níže zpracování přihlášení a odhlášení řadiče pomocí inicializace výzvu ověřování prostřednictvím kódu:
+6. Přidejte tyto dvě metody níže pro zpracování přihlašování a odhlašování k řadiči pomocí inicializace výzvu ověřování prostřednictvím kódu:
     
     ```csharp
     /// <summary>
@@ -66,13 +65,13 @@ Tento krok ukazuje, jak vytvořit nový řadič vystavit metody přihlášení a
     }
     ```
 
-## <a name="create-the-apps-home-page-to-sign-in-users-via-a-sign-in-button"></a>Vytvoření aplikace domovskou stránku pro přihlášení uživatele prostřednictvím přihlášení tlačítko
+## <a name="create-the-apps-home-page-to-sign-in-users-via-a-sign-in-button"></a>Vytvoření aplikace domovskou stránku pro přihlášení prostřednictvím tlačítka přihlašování uživatelů
 
-V sadě Visual Studio vytvořte nové zobrazení přidat tlačítko přihlásit a zobrazit informace o uživateli po ověření:
+V sadě Visual Studio vytvořte nové zobrazení, do kterého přidáte tlačítko pro přihlášení a ve kterém se po ověření zobrazí informace o uživateli:
 
-1.  Klikněte pravým tlačítkem `Views\Home` složky a vyberte `Add View`
+1.  Klikněte pravým tlačítkem myši `Views\Home` a pak zvolte položku `Add View`
 2.  Pojmenujte ji `Index`.
-3.  Přidejte následující kód HTML, která obsahuje tlačítko přihlášení, do souboru:
+3.  Do souboru přidejte následující kód HTMP, který obsahuje tlačítko pro přihlášení:
 
     ```html
     <html>
@@ -114,17 +113,17 @@ V sadě Visual Studio vytvořte nové zobrazení přidat tlačítko přihlásit 
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>Další informace
-> Tato stránka přidá tlačítko přihlášení ve formátu SVG s černým pozadí:<br/>![Přihlaste se pomocí Microsoft](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Tlačítka Další přihlášení, přejděte [tuto stránku](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "Branding pokyny").
+> Tato stránka přidá tlačítko přihlášení ve formátu SVG s černým pozadím:<br/>![Přihlásit se účtem Microsoft](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Pro tlačítka Další přihlásit, přejděte prosím [tuto stránku](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "pokyny pro Branding").
 <!--end-collapse-->
 
-## <a name="add-a-controller-to-display-users-claims"></a>Přidat řadič zobrazíte deklarací identity uživatele
-Tento řadič ukazuje použití `[Authorize]` atribut k ochraně řadiči. Tento atribut omezuje přístup k řadiči tím, že se pouze ověřené uživatele. Následující kód využívá atribut zobrazíte deklarace identity uživatelů, které byly získány v rámci přihlášení.
+## <a name="add-a-controller-to-display-users-claims"></a>Přidání kontroleru pro zobrazení deklarací identity uživatele
+Tento kontroler demonstruje použití atributu `[Authorize]` k ochraně kontroleru. Tento atribut omezuje přístup ke kontroleru tím, že povolí pouze ověřené uživatele. Následující kód používá atribut pro zobrazení deklarací identity uživatelů, které byly načteny v rámci přihlášení.
 
-1.  Klikněte pravým tlačítkem `Controllers` složky: `Add` > `Controller`
+1.  Klikněte pravým tlačítkem myši `Controllers` složky: `Add` > `Controller`
 2.  Vyberte `MVC {version} Controller – Empty`.
 3.  Klikněte na tlačítko *přidat*
-4.  Název `ClaimsController`
-5.  Nahraďte kód vaší třídy kontroleru pomocí kódu níže – tím se přidá `[Authorize]` atribut třídy:
+4.  Pojmenujte ji `ClaimsController`
+5.  Nahraďte kód třídy kontroleru kód uvedený níže – tím se přidá `[Authorize]` atribut pro třídu:
 
     ```csharp
     [Authorize]
@@ -157,16 +156,16 @@ Tento řadič ukazuje použití `[Authorize]` atribut k ochraně řadiči. Tento
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>Další informace
-> Protože se používá `[Authorize]` atribut, všechny metody tohoto řadiče lze spustit pouze pokud je uživatel ověřený. Pokud uživatel není ověřen a pokusí o přístup k kontroleru, bude OWIN zahájit výzvu ověřování a nutí uživatele k ověření. Výše uvedený kód zjistí seznam deklarací identity pro konkrétního uživatele atributy součástí token Id uživatele. Tyto atributy zahrnují úplné uživatelské jméno a uživatelské jméno, jakož i subjektu identifikátor globální uživatele. Obsahuje taky *ID klienta*, která reprezentuje ID pro uživatele organizaci. 
+> Protože je použit atribut `[Authorize]`, všechny metody tohoto kontroleru lze spustit pouze v případě, že je uživatel ověřen. Pokud uživatel není ověřen a pokusí o přístup k řadiči, bude OWIN zahájit výzvu ověřování a nutí uživatele k ověření. Výše uvedený kód vyhledá v seznamu deklarací pro atributy konkrétního uživatele zahrnuté v tokenu Id uživatele. Tyto atributy zahrnují celé jméno uživatele a jeho uživatelské jméno, ale také subjekt globálního identifikátoru uživatele. Obsahuje také *ID tenanta*, které představuje ID organizace uživatele. 
 <!--end-collapse-->
 
-## <a name="create-a-view-to-display-the-users-claims"></a>Vytvoření zobrazení deklaracích identity uživatele
+## <a name="create-a-view-to-display-the-users-claims"></a>Vytvoření zobrazení pro zobrazení deklarací identity uživatele
 
-V sadě Visual Studio vytvořte nové zobrazení zobrazíte deklaracích identity uživatele na webové stránce:
+V sadě Visual Studio vytvořte nové zobrazení, ve kterém se budou zobrazovat deklarace identity uživatele na webové stránce:
 
-1.  Klikněte pravým tlačítkem `Views\Claims` složky a: `Add View`
+1.  Klikněte pravým tlačítkem myši `Views\Claims` složky a: `Add View`
 2.  Pojmenujte ji `Index`.
-3.  Do souboru přidejte následující kód HTML:
+3.  Přidejte do souboru následující kód HTML:
 
     ```html
     <html>

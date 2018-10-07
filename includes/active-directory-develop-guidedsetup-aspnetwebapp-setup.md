@@ -2,36 +2,42 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: active-directory
+documentationcenter: dev-center-name
 author: andretms
+manager: mtillman
+editor: ''
 ms.service: active-directory
+ms.devlang: na
 ms.topic: include
-ms.date: 05/08/2018
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/17/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 9c7daf7bc947b08835148f6d09c58b47c9e0186b
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 99eabd8f9c9b3ab86c348350e8924cea0eb668ba
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "36204916"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48842957"
 ---
 ## <a name="set-up-your-project"></a>Nastavení projektu
 
-Tato část uvádí kroky pro instalaci a konfiguraci kanálu ověřování prostřednictvím middlewaru OWIN v projektu ASP.NET pomocí OpenID Connect. 
+Tato část popisuje postup instalace a konfigurace ověřovacího kanálu prostřednictvím middlewaru OWIN v projektu aplikace ASP.NET pomocí OpenID Connect. 
 
-> Místo toho stáhněte projekt Visual Studio Tato ukázka dávají přednost? [Stažení projektu](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip) a pokračujte [krok konfigurace](#register-your-application) před provedením konfigurace ukázka kódu.
+> Stáhněte si tento ukázkový projekt sady Visual Studio místo toho raději? [Stáhnete projekt](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip) a pokračujte [potřeba provádět krok konfigurace](#register-your-application) konfigurace ukázkového kódu před spuštěním.
 
 ### <a name="create-your-aspnet-project"></a>Vytvoření projektu ASP.NET
 
 1. V sadě Visual Studio: `File` > `New` > `Project`
-2. V části *Visual C# \Web*, vyberte `ASP.NET Web Application (.NET Framework)`.
-3. Název aplikace a klikněte na tlačítko *OK*
-4. Vyberte `Empty` a zaškrtněte políčko Přidat `MVC` odkazy
+2. V části *Visual C# \Web*vyberte `ASP.NET Web Application (.NET Framework)`.
+3. Pojmenujte svoji aplikaci a klikněte na tlačítko *OK*
+4. Vyberte `Empty` a vyberte zaškrtávací políčko a přidáním `MVC` odkazy
 
-## <a name="add-authentication-components"></a>Přidat ověřování součásti
+## <a name="add-authentication-components"></a>Přidání součástí ověřování
 
 1. V sadě Visual Studio: `Tools` > `Nuget Package Manager` > `Package Manager Console`
-2. Přidat *balíčky NuGet middleware OWIN* pomocí následujícího příkazu v okně konzoly Správce balíčků:
+2. Přidejte *balíčky NuGet middlewaru OWIN* tak, že do okna konzoly Správce balíčků zadáte toto:
 
     ```powershell
     Install-Package Microsoft.Owin.Security.OpenIdConnect
@@ -40,19 +46,19 @@ Tato část uvádí kroky pro instalaci a konfiguraci kanálu ověřování pros
     ```
 
 <!--start-collapse-->
-> ### <a name="about-these-libraries"></a>O tyto knihovny
->Výše uvedené knihovny povolit jednotné přihlašování (SSO) prostřednictvím ověřování na základě souborů cookie pomocí OpenID Connect. Po dokončení ověření a token představující uživatele je odeslána do vaší aplikace, middlewaru OWIN, který vytvoří soubor cookie relace. Tento soubor cookie v prohlížeči pak používá na následné žádosti, takže uživatel nebude muset znovu zadejte heslo a je potřeba žádné další ověření.
+> ### <a name="about-these-libraries"></a>Informace o těchto knihoven
+>Knihovny uvedené výše umožňují jednotné přihlašování pomocí OpenID Connect přes ověřování na základě souborů cookie. Po dokončení ověřování a odeslání tokenu, který reprezentuje uživatele, do aplikace, vytvoří middleware OWIN soubor cookie relace. Tento soubor cookie v prohlížeči pak používá na následné žádosti, takže uživatel nebude muset znovu zadejte heslo a je potřeba žádné další ověření.
 <!--end-collapse-->
 
-## <a name="configure-the-authentication-pipeline"></a>Konfigurace ověřování kanálu
-Následující postup slouží k vytváření middleware OWIN při spuštění třída ke konfiguraci ověřování OpenID Connect. Tato třída bude provedena automaticky při spuštění procesu služby IIS.
+## <a name="configure-the-authentication-pipeline"></a>Konfigurace ověřovacího kanálu
+Následující postup slouží k vytvoření middleware OWIN při spuštění třída ke konfiguraci ověřování OpenID Connect. Tato třída se spustí automaticky při spuštění procesu služby IIS.
 
 > [!TIP]
-> Pokud nemá projektu `Startup.cs` souboru v kořenové složce:
+> Pokud projekt nemá soubor `Startup.cs` v kořenové složce:
 > 1. Klikněte pravým tlačítkem na kořenové složky projektu: > `Add` > `New Item...` > `OWIN Startup class`<br/>
-> 2. Název `Startup.cs`
+> 2. Pojmenujte ji `Startup.cs`
 >
->> Zajistěte, aby byl vybranou třídu třídy pro spuštění OWIN a není standardní C# třídu. To můžete ověřit kontrolou, pokud se zobrazí `[assembly: OwinStartup(typeof({NameSpace}.Startup))]` výše obor názvů.
+>> Zkontrolujte, že vybraná třída je počáteční třídou OWIN a nikoli standardní třídou C#. Ověříte si to tak, že nad oborem názvů bude uvedeno `[assembly: OwinStartup(typeof({NameSpace}.Startup))]`.
 
 1. Přidat *OWIN* a *Microsoft.IdentityModel* odkazuje na `Startup.cs`:
 
@@ -67,7 +73,7 @@ Následující postup slouží k vytváření middleware OWIN při spuštění t
     using Microsoft.Owin.Security.Notifications;
     ```
 
-2. Nahraďte třída při spuštění následující kód:
+2. Počáteční třída nahraďte následujícím kódem:
 
     ```csharp
     public class Startup
@@ -137,6 +143,6 @@ Následující postup slouží k vytváření middleware OWIN při spuštění t
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>Další informace
-> Parametry, zadejte v *OpenIDConnectAuthenticationOptions* sloužit jako souřadnice aplikace komunikovat s Azure AD. Protože middleware OpenID Connect používá soubory cookie na pozadí, musíte taky nastavit ověřování souborů cookie jako kód výš ukazuje. *Atribut ValidateIssuer* hodnota informuje OpenIdConnect není omezit přístup k jedné konkrétní organizaci.
+> Parametry, které zadáte v *OpenIDConnectAuthenticationOptions*, slouží jako souřadnice pro komunikaci aplikace s Azure AD. Vzhledem k tomu middleware OpenID Connect používá soubory cookie na pozadí, budete také muset nastavit ověřování souborů cookie jako kódu nad ukazuje. Hodnota *ValidateIssuer* dává middlewaru OpenIDConnect pokyn, aby neomezoval přístup na jednu konkrétní organizaci.
 <!--end-collapse-->
 

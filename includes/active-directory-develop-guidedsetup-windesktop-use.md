@@ -3,24 +3,23 @@ title: zahrnout soubor
 description: zahrnout soubor
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
+author: jmprieur
 manager: mtillman
 editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/18/2018
-ms.author: andret
+ms.date: 09/17/2018
+ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: d4ba15e4ad46044c04c242c8805af9f320e95150
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 538b0c969d8c039079c09232e06f55e24aabf393
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368442"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843490"
 ---
 ## <a name="use-msal-to-get-a-token-for-the-microsoft-graph-api"></a>Použití MSAL k získání tokenu pro rozhraní Microsoft Graph API
 
@@ -98,7 +97,7 @@ V této části Použití MSAL k získání tokenu pro rozhraní Microsoft Graph
 <!--start-collapse-->
 ### <a name="more-information"></a>Další informace
 
-#### <a name="get-a-user-token-interactively"></a>Získání tokenu uživatele interaktivně
+#### <a name="get-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 
 Volání `AcquireTokenAsync` metodu vede okno, které vyzve uživatele k přihlášení. Aplikace obvykle vyžadují uživatelům umožní přihlásit interaktivně poprvé, které potřebují přístup k chráněnému prostředku. Také může být potřeba přihlášení při selhání pasivní operace k získání tokenu (například pokud vypršela platnost hesla uživatele).
 

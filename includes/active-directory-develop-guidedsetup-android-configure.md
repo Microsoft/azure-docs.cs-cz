@@ -6,7 +6,6 @@ documentationcenter: dev-center-name
 author: andretms
 manager: mtillman
 editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
@@ -15,18 +14,18 @@ ms.workload: identity
 ms.date: 09/13/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: f0e584a4a4a54fc04b5539b56d5c901bfaa42bcc
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 6e20ce083c415bced22231835cc616ede8f0dd04
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46293683"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48842928"
 ---
 ## <a name="register-your-application"></a>Registrace vaší aplikace
 Můžete zaregistrovat aplikaci v některém ze dvou způsobů, jak je popsáno v následujících dvou částech.
 
 ### <a name="option-1-express"></a>Možnost 1: Express
-1. Přejděte [portál pro registraci aplikací Microsoft](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=android&step=configure).
+1. Přejděte na portál [Microsoft Application Registration Portal](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=android&step=configure).
 2.  V **název_aplikace**, zadejte název pro vaši aplikaci.
 
 3. Ujistěte se, že **instalační program s asistencí** zaškrtávací políčko je vybrané a pak vyberte **vytvořit**.
@@ -34,12 +33,12 @@ Můžete zaregistrovat aplikaci v některém ze dvou způsobů, jak je popsáno 
 4. Postupujte podle pokynů pro získání ID aplikace a vložte ho do svého kódu.
 
 ### <a name="option-2-advanced"></a>Možnost 2: Upřesnit 
-1. Přejděte [portál pro registraci aplikací Microsoft](https://apps.dev.microsoft.com/portal/register-app).
-2. V **název_aplikace** pole, zadejte název pro vaši aplikaci. 
+1. Přejděte na portál [Microsoft Application Registration Portal](https://apps.dev.microsoft.com/portal/register-app).
+2. Do pole **Application Name** (Název aplikace) zadejte název vaší aplikace. 
 
-3. Ujistěte se, že **instalační program s asistencí** je zaškrtávací políčko nezaškrtnuté a pak vyberte **vytvořit**.
+3. Zkontrolujte, že není zaškrtnuté políčko **Guided Setup** (Instalační program s asistencí) a vyberte **Create** (Vytvořit).
 
-4. Vyberte **přidat platformy**vyberte **nativní aplikace**a pak vyberte **Uložit**.
+4. Vyberte **Add Platform** (Přidat platformu), **Native Application** (Nativní aplikace) a pak **Save** (Uložit).
 
 5. V části **aplikace** > **java** > **{hostitele}. { obor názvů}**, otevřete `MainActivity`. 
 
