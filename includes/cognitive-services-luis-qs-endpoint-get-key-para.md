@@ -3,32 +3,32 @@ title: zahrnout soubor
 description: zahrnout soubor
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: include
 ms.custom: include file
 ms.date: 08/16/2018
 ms.author: diberry
-ms.openlocfilehash: 25a70d314ecb690a34e89a3dff7d2c4fad8b7a00
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
-ms.translationtype: MT
+ms.openlocfilehash: fcf3bf29e2cdf89bdc93c7ebac313e5d9a9c18f0
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42820117"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47043994"
 ---
-Přístup ke koncovému bodu předpovědi je součástí klíče rozhraní koncového bodu. Pro účely tohoto rychlého startu použijte bezplatnou úvodní klíč spojené s vaším účtem služby LUIS. 
+Přístup ke koncovému bodu předpovědí umožňuje klíč koncového bodu. Pro účely tohoto rychlého startu použijte bezplatný počáteční klíč přidružený k vašemu účtu LUIS. 
  
-1. Přihlaste se pomocí svého účtu služby LUIS. 
+1. Přihlaste se pomocí účtu LUIS. 
 
-    [![Seznam aplikací – snímek obrazovky z Language Understanding (LUIS)](media/cognitive-services-luis/app-list.png "seznamu aplikací – snímek obrazovky z Language Understanding (LUIS)")](media/cognitive-services-luis/app-list.png)
+    [![Snímek obrazovky se seznamem aplikací LUIS](media/cognitive-services-luis/app-list.png "Snímek obrazovky se seznamem aplikací LUIS")](media/cognitive-services-luis/app-list.png)
 
-2. V pravé horní nabídce vyberte své jméno a pak vyberte **nastavení**.
+2. V pravé horní nabídce vyberte své jméno a potom vyberte **Nastavení**.
 
-    ![Přístup do nabídky nastavení uživatelské služby LUIS](media/cognitive-services-luis/get-user-settings-in-luis.png)
+    ![Přístup do nabídky nastavení uživatelů služby LUIS](media/cognitive-services-luis/get-user-settings-in-luis.png)
 
-3. Zkopírujte hodnotu **klíč pro tvorbu**. Použijete ji později v tomto rychlém startu. 
+3. Zkopírujte hodnotu **klíče pro vytváření obsahu**. Později ho ještě použijete. 
 
-    [![Snímek obrazovky z Language Understanding (LUIS) uživatelská nastavení](media/cognitive-services-luis/get-user-authoring-key.png "uživatelská nastavení snímku obrazovky z Language Understanding (LUIS)")](media/cognitive-services-luis/get-user-authoring-key.png)
+    [![Snímek obrazovky s nastavením uživatele služby LUIS](media/cognitive-services-luis/get-user-authoring-key.png "Snímek obrazovky s nastavením uživatele služby LUIS")](media/cognitive-services-luis/get-user-authoring-key.png)
 
-    Vytváření klíč umožňuje aplikaci zdarma neomezený počet požadavků rozhraní API pro vytváření obsahu a až 1000 dotazů k předpovědi koncový bod rozhraní API za měsíc pro všechny vaše aplikace LUIS. <!--Once the prediction endpoint quota from the authoring key is used for the month, you need to create a **Language Understanding** key from the Azure portal. The key created in the portal is known as the endpoint key. The endpoint key is used _only_ for prediction endpoint queries.-->
+    Díky klíči pro vytváření obsahu získáte pro všechny aplikace LUIS neomezený počet bezplatných požadavků na rozhraní API pro vytváření a až 1000 dotazů na rozhraní API koncového bodu předpovědí měsíčně. <!--Once the prediction endpoint quota from the authoring key is used for the month, you need to create a **Language Understanding** key from the Azure portal. The key created in the portal is known as the endpoint key. The endpoint key is used _only_ for prediction endpoint queries.-->

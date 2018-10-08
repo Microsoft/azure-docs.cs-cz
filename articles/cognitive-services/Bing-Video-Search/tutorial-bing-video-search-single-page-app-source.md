@@ -1,24 +1,25 @@
 ---
-title: Vyhledávání videí Bingu jednostránkovou webovou aplikaci (zdrojový kód) | Dokumentace Microsoftu
-description: Zdrojový kód pro kurz, ve kterém použití API Bingu pro vyhledávání videí v jednostránkovou webovou aplikaci.
+title: 'Kurz: Sestavení jednostránkové webové aplikace – Vyhledávání videí Bingu'
+titlesuffix: Azure Cognitive Services
+description: Zdrojový kód pro kurz, který ukazuje, jak používat rozhraní API Bingu pro vyhledávání videí v jednostránkové webové aplikaci.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 11/01/2017
-ms.author: v-gedod
-ms.openlocfilehash: bed17c1df2b7c8dff9f874e43be8d67900fd7836
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
-ms.translationtype: MT
+ms.author: rosh
+ms.openlocfilehash: b0856be88382e1bb7a4cc65f5fd05910b814e152
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39112456"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223283"
 ---
-# <a name="tutorial-single-page-video-search-app"></a>Kurz: Pro vyhledávání videí jednostránkové aplikace
+# <a name="tutorial-single-page-bing-video-search-app"></a>Kurz: Jednostránková aplikace s Vyhledáváním videí Bingu
 
-Toto je úplný zdrojový kód, který je podrobněji popsána [jednostránkovou aplikaci kurzu](tutorial-bing-video-search-single-page-app.md) pro vyhledávání videí Bingu. Spusťte aplikaci, zkopírujte zdrojový kód do poznámkového bloku nebo jiného textového editoru a uložte ho jako `bing.html`. Otevřete v Microsoft Edge nebo jiný prohlížeč oblíbených uloženého souboru.
+Toto je úplný zdrojový kód probíraný v [kurzu pro jednostránkovou aplikaci](tutorial-bing-video-search-single-page-app.md) pro Vyhledávání videí Bingu. Pokud chcete aplikaci spustit, zkopírujte zdrojový kód do Poznámkového bloku nebo jiného textového editoru a uložte ho jako `bing.html`. Potom otevřete uložený soubor v Microsoft Edgi nebo jiném oblíbeném prohlížeči.
 
 ```html
 <!DOCTYPE html>

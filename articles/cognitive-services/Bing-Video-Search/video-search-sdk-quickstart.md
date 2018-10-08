@@ -1,40 +1,40 @@
 ---
-title: Video vyhledávání rychlý start SDK jazyka C# | Microsoft Docs
-description: Instalační program pro vyhledávání Video SDK konzolové aplikace.
-titleSuffix: Azure cognitive services setup News search SDK C# console application
+title: 'Rychlý start: Sada SDK Vyhledávání videí Bingu, C#'
+titleSuffix: Azure Cognitive Services
+description: Nastavení pro konzolovou aplikaci sady SDK Vyhledávání videí Bingu
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 01/29/2018
-ms.author: v-gedod
-ms.openlocfilehash: f53e2d0f0052ccfabb6d750556cb532f069c9121
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.author: rosh
+ms.openlocfilehash: 6cf7a16fa28602e5e3733741db8bfb7296882487
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343668"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219936"
 ---
-# <a name="video-search-sdk-c-quickstart"></a>Video vyhledávání SDK jazyka C# rychlý start
+# <a name="quickstart-bing-video-search-sdk-with-c"></a>Rychlý start: Vyhledávání videí Bingu SDK s jazykem C# 
 
-SDK služby Bing Video Search obsahuje funkci rozhraní REST API pro webové žádosti a analýza výsledků.
+Sada SDK Vyhledávání videí Bingu obsahuje funkce rozhraní REST API pro webové požadavky a parsování výsledků.
 
-[Zdrojového kódu pro C# Bing Video vyhledávání SDK ukázky](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVideoSearch) je k dispozici v centru Git.
+[Zdrojový kód pro ukázky sady SDK Vyhledávání videí Bingu v jazyce C#](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVideoSearch) je k dispozici v Git Hubu.
 
-## <a name="application-dependencies"></a>Závislosti aplikací
+## <a name="application-dependencies"></a>Závislosti aplikace
 
-Pokud chcete nastavit konzolovou aplikaci pomocí sady SDK Bing Video vyhledávání, vyhledejte `Manage NuGet Packages` možnost v Průzkumníku řešení v sadě Visual Studio.  Přidat `Microsoft.Azure.CognitiveServices.Search.VideoSearch` balíčku.
+Pokud chcete nastavit konzolovou aplikaci pomocí sady SDK Vyhledávání videí Bingu, přejděte v sadě Visual Studio v Průzkumníkovi řešení na možnost `Manage NuGet Packages`.  Přidejte balíček `Microsoft.Azure.CognitiveServices.Search.VideoSearch`.
 
-Instalace [[balíček NuGet Video vyhledávání SDK]](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.VideoSearch/1.2.0) nainstaluje taky závislosti, včetně:
+Spolu s [balíčkem sady SDK Vyhledávání videí NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.VideoSearch/1.2.0) se nainstalují i závislosti, mezi které patří:
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.Azure
 * Newtonsoft.Json
 
 
-## <a name="video-search-client"></a>Video vyhledávání klienta
-Chcete-li vytvořit instanci `VideoSearchAPI` klienta, přidání direktivy using:
+## <a name="video-search-client"></a>Klient Vyhledávání videí
+Pokud chcete vytvořit instanci klienta `VideoSearchAPI`, přidejte direktivy using:
 ```
 using Microsoft.Azure.CognitiveServices.Search.VideoSearch;
 using Microsoft.Azure.CognitiveServices.Search.VideoSearch.Models;
@@ -46,14 +46,14 @@ var client = new VideoSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-
 
 
 ```
-Klient použijte pro vyhledávání s text dotazu "SwiftKey" pro videa.
+Pomocí klienta vyhledejte videa tak, že zadáte text dotazu SwiftKey.
 ```
 var videoResults = client.Videos.SearchAsync(query: "SwiftKey").Result;
 Console.WriteLine("Search videos for query \"SwiftKey\"");
 
 ```
 
-Analýza výsledků, pak ověřte počet výsledků a vytiskněte ID, název a adresu url videa první výsledek.
+Parsujte výsledky, pak ověřte jejich počet a vytiskněte ID, název a adresu URL prvního výsledku videa.
 ```
 if (videoResults == null)
 {
@@ -77,9 +77,9 @@ else
 }
 
 ```
-## <a name="complete-console-application"></a>Dokončení konzolové aplikace
+## <a name="complete-console-application"></a>Kompletní konzolová aplikace
 
-Následující konzolové aplikace provede dříve definovaném dotaz a analyzuje výsledky.
+Následující konzolová aplikace spustí dříve definovaný dotaz a parsuje výsledky.
 
 ```
 using System;
@@ -142,7 +142,7 @@ namespace VideoSrchSDK
 ```
 ## <a name="url-parameters"></a>Parametry adresy URL
 
-Hledání textu dotazu "Bellevue přípojným" pro videa, která jsou beze změny, krátký a překlad 1080p.  Ověřte počet výsledků a vytiskněte ID, název a adresu url videa první výsledek.
+Textem dotazu Bellevue Trailer najdete videa, která se nezměnila, jsou krátká a mají rozlišení 1080p.  Ověřte počet výsledků a vytiskněte ID, název a adresu URL prvního výsledku videa.
 
 ```
         public static void VideoSearchWithFilters(VideoSearchAPI client)
@@ -183,8 +183,8 @@ Hledání textu dotazu "Bellevue přípojným" pro videa, která jsou beze změn
 
 
 ```
-## <a name="trending-videos"></a>Videa, která jsou v kurzu
-Vyhledejte trendů videa a pak ověřte dlaždice informační zpráva a kategorie.
+## <a name="trending-videos"></a>Populární videa
+Vyhledejte populární videa a pak ověřte dlaždice bannerů a kategorie.
 ```
         public static void VideoTrending(VideoSearchAPI client)
         {
@@ -259,7 +259,7 @@ Vyhledejte trendů videa a pak ověřte dlaždice informační zpráva a kategor
 
 ```
 ## <a name="details"></a>Podrobnosti
-Vyhledejte "Bellevue přípojným" videa a poté vyhledejte podrobné informace o první videa.
+Vyhledejte videa pro výraz Bellevue Trailer a pak vyhledejte podrobné informace o prvním videu.
 ```
         public static void VideoDetail(VideoSearchAPI client)
         {
@@ -321,6 +321,6 @@ Vyhledejte "Bellevue přípojným" videa a poté vyhledejte podrobné informace 
 
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Kognitivní services .NET SDK ukázky](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
+[Ukázky kognitivních služeb sady .NET SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

@@ -1,24 +1,27 @@
 ---
-title: Vytvoření nové znalostní báze – rychlý start pro C# – pro rozhraní API služby Microsoft QnA Maker (verze 4) – Azure Cognitive Services | Microsoft Docs
-description: Vytvořte v C# znalostní bázi, která bude ukládat nejčastější dotazy nebo příručky k produktům, abyste mohli začít používat službu QnA Maker.
+title: 'Rychlý start: Rozhraní API v C# – vytvoření znalostní báze – QnA Maker'
+titlesuffix: Azure Cognitive Services
+description: Tento rychlý start vás provede procesem vytvoření ukázkové znalostní báze služby QnA Maker prostřednictvím kódu programu, která se zobrazí na řídicím panelu Azure účtu rozhraní API služby QnA Maker.
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: quickstart
-ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: 16d17a335bb84212497010b3eeb930582fa86dc4
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 8a0840a96f21f76f3a742d973c86dd02929b8e30
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "43769102"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039442"
 ---
 # <a name="create-a-new-knowledge-base-in-c"></a>Vytvoření nové znalostní báze v C#
 
 Tento rychlý start vás provede procesem vytvoření ukázkové znalostní báze služby QnA Maker prostřednictvím kódu programu, která se zobrazí na řídicím panelu Azure účtu rozhraní API služby QnA Maker.
+
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-csharp-repo-note.md)]
 
 Dvě ukázkové adresy URL nejčastějších dotazů jsou uvedeny níže (adresy url v řetězci kb). Služba QnA Maker automaticky extrahuje otázky a odpovědi z částečně strukturovaného obsahu, jako jsou nejčastější dotazy. Podrobněji je to vysvětleno v tomto dokumentu [zdrojů dat](../Concepts/data-sources-supported.md). V tomto rychlém startu můžete použít i vlastní adresy URL nejčastějších dotazů.
 

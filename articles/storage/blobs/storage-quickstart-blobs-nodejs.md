@@ -1,23 +1,23 @@
 ---
-title: Rychlý start Azure – Vytvoření objektu blob v úložišti objektů pomocí Node.js | Microsoft Docs
+title: 'Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Node.js – Azure Storage'
 description: V tomto rychlém startu vytvoříte v úložišti objektů (blob) účet úložiště a kontejner. Pak použijete klientskou knihovnu pro úložiště pro Node.js k nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů blob v kontejneru.
 services: storage
 author: craigshoemaker
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 04/09/2018
+ms.date: 09/20/2018
 ms.author: cshoe
-ms.openlocfilehash: b1cb7d327d8bfd9a7c6fe9d466445c50620f8b45
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1c62dbd6856ec7bf2663f0b70a47357b52528899
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976874"
+ms.locfileid: "47040808"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-nodejs"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Node.js
 
-V tomto rychlém startu zjistíte, jak pomocí Node.js nahrávat, stahovat a vypisovat objekty blob bloku v kontejneru s použitím úložiště objektů blob v Azure.
+V tomto rychlém startu zjistíte, jak pomocí Node.js nahrávat, stahovat a vypisovat objekty blob a spravovat kontejnery v úložišti objektů blob Azure.
 
 K dokončení tohoto rychlého startu potřebujete [předplatné Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -48,69 +48,91 @@ npm install
 ```
 
 ## <a name="run-the-sample"></a>Spuštění ukázky
-Teď, když jsou závislosti nainstalované, můžete ukázku spustit předáním příkazů do skriptu. Například kontejner objektů blob můžete vytvořit spuštěním následujícího příkazu:
+Teď, když jsou závislosti nainstalované, můžete ukázku spustit následujícím příkazem:
 
 ```bash
-node index.js --command createContainer
+npm start
 ```
 
-Mezi dostupné příkazy patří:
+Výstup skriptu se bude podobat tomuto:
 
-| Příkaz | Popis |
-|---------|---------|
-|*createContainer* | Vytvoří kontejner *test-container* (příkaz proběhne úspěšně i v případě, že kontejner již existuje). |
-|*upload*          | Nahraje soubor *example.txt* do kontejneru *test-container*. |
-|*download*        | Stáhne obsah objektu blob *example* do souboru *example.downloaded.txt*. |
-|*odstranění*          | Odstraní objekt blob *example*. |
-|*list*            | Vypíše do konzoly obsah kontejneru *test-container*. |
+```bash
+Containers:
+ - container-one
+ - container-two
+Container "demo" is created
+Blob "quickstart.txt" is uploaded
+Local file "./readme.md" is uploaded
+Blobs in "demo" container:
+ - quickstart.txt
+ - readme.md
+Blob downloaded blob content: "hello Blob SDK"
+Blob "quickstart.txt" is deleted
+Container "demo" is deleted
+Done
+```
 
+Všimněte si, že pokud pro tento rychlý start použijete nový účet úložiště, nemusí se názvy kontejnerů v části *Kontejnery* zobrazit.
 
-## <a name="understanding-the-sample-code"></a>Vysvětlení vzorového kódu
-Tento vzorový kód k vytvoření rozhraní pro systém souborů a příkazový řádek používá několik modulů. 
+## <a name="understanding-the-code"></a>Vysvětlení kódu
+První výraz slouží načtení hodnot do proměnných prostředí.
 
 ```javascript
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').load();
 }
+```
+
+Modul *dotenv* načte proměnné prostředí při místním spuštění aplikace za účelem ladění. Hodnoty jsou definovány v souboru s názvem *.env* a načteny do aktuálního kontextu spuštění. V produkčních kontextech tyto hodnoty poskytuje konfigurace serveru a to je důvodem, proč se tento kód spouští, pouze pokud neběží v produkčním kontextu.
+
+```javascript
 const path = require('path');
-const args = require('yargs').argv;
 const storage = require('azure-storage');
 ```
 
 Účelem těchto modulů je následující: 
 
-- Modul *dotenv* načte proměnné prostředí definované v souboru *.env* do aktuálního kontextu spuštění.
+Načtení souboru s názvem *.env* do aktuálního kontextu spuštění
 - Modul *path* se vyžaduje k určení absolutní cesty k souboru, který se má nahrát do úložiště objektů blob.
-- Modul *yargs* zveřejňuje jednoduché rozhraní pro přístup k argumentům příkazového řádku.
 - Modul *azure-storage* je modul sady [SDK služby Azure Storage](https://docs.microsoft.com/javascript/api/azure-storage) pro Node.js.
 
-Dále se inicializuje sada proměnných:
+Dále se proměnná **blobService** inicializuje jako nová instance služby Azure Blob.
 
 ```javascript
 const blobService = storage.createBlobService();
-const containerName = 'test-container';
-const sourceFilePath = path.resolve('./example.txt');
-const blobName = path.basename(sourceFilePath, path.extname(sourceFilePath));
 ```
 
-Tyto proměnné se nastaví na následující hodnoty:
+V následující implementaci jsou všechny funkce *blobService* zabalené do funkce *Promise* (Příslib), která umožňuje přístup k funkci *async* a operátoru *await* JavaScriptu pro zjednodušení zpětného volání rozhraní [API služby Azure Storage](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest). Po návratu úspěšné odpovědi pro všechny funkce se příslib přeloží s použitím relevantních dat společně se zprávou specifickou pro danou akci.
 
-- Proměnná *blobService* se nastaví na novou instanci služby Azure Blob service.
-- Proměnná *containerName* se nastaví na název kontejneru.
-- Proměnná *sourceFilePath* se nastaví na absolutní cestu k souboru, který se má nahrát.
-- Proměnná *blobName* se vytvoří z názvu souboru odebráním přípony.
+### <a name="list-containers"></a>Výpis kontejnerů
 
-V následující implementaci jsou všechny funkce *blobService* zabalené do funkce *Promise* (Příslib), která umožňuje přístup k funkci *async* a operátoru *await* JavaScriptu pro zjednodušení zpětného volání rozhraní [API služby Azure Storage](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest). Po návratu úspěšné odpovědi pro všechny funkce se příslib přeloží s použitím relevantních dat společně se zprávou specifickou pro danou akci.
-
-### <a name="create-a-blob-container"></a>Vytvoření kontejneru objektů blob
-
-Funkce *createContainer* zavolá metodu [createContainerIfNotExists](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createcontainerifnotexists) a nastaví pro objekt blob odpovídající úroveň přístupu.
+Funkce *listContainers* zavolá metodu [listContainersSegmented](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#listcontainerssegmented), která vrátí kolekci kontejnerů ve skupině.
 
 ```javascript
-const createContainer = () => {
+const listContainers = async () => {
+    return new Promise((resolve, reject) => {
+        blobService.listContainersSegmented(null, (err, data) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve({ message: `${data.entries.length} containers`, containers: data.entries });
+            }
+        });
+    });
+};
+```
+
+Velikost skupin je možné konfigurovat prostřednictvím možnosti [ListContainersOptions](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice.listcontaineroptions?view=azure-node-latest). Zavoláním funkce *listContainersSegmented* se vrátí metadata objektů blob jako pole instancí [ContainerResult](/nodejs/api/azure-storage/blobresult). Výsledky se vrací v dávkách (segmentech) v přírůstcích po 5 000. Pokud je v kontejneru více než 5 000 objektů blob, budou výsledky obsahovat hodnotu *continuationToken* (token pro pokračování). Pokud chcete vypsat další segmenty z kontejneru objektů blob, můžete token pro pokračování předat zpět do metody *listContainersSegment* jako druhý argument.
+
+### <a name="create-a-container"></a>Vytvoření kontejneru
+
+Funkce *createContainer* zavolá metodu [createContainerIfNotExists](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createcontainerifnotexists) a nastaví pro objekt blob odpovídající úroveň přístupu.
+
+```javascript
+const createContainer = async (containerName) => {
     return new Promise((resolve, reject) => {
         blobService.createContainerIfNotExists(containerName, { publicAccessLevel: 'blob' }, err => {
-            if(err) {
+            if (err) {
                 reject(err);
             } else {
                 resolve({ message: `Container '${containerName}' created` });
@@ -124,39 +146,56 @@ Druhý parametr (*options*) pro metodu **createContainerIfNotExists** přijímá
 
 Použití metody **createContainerIfNotExists** umožňuje aplikaci několikrát spustit příkaz *createContainer* bez vracení chyb, pokud kontejner již existuje. V produkčním prostředí často voláte metodu **createContainerIfNotExists** pouze jednou, protože se stejný kontejner používá v rámci celé aplikace. V těchto případech můžete vytvořit kontejner předem prostřednictvím portálu nebo Azure CLI.
 
-### <a name="upload-a-blob-to-the-container"></a>Nahrání objektu blob do kontejneru
+### <a name="upload-text"></a>Nahrání textového řetězce
 
-Funkce *upload* používá funkci [createBlockBlobFromLocalFile](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromlocalfile) k nahrání a zapsání nebo přepsání souboru ze systému souborů do úložiště objektů blob. 
+Funkce *uploadString* zavolá metodu [createBlockBlobFromText](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromtext) a do kontejneru objektů blob zapíše libovolný řetězec (nebo ho přepíše).
 
 ```javascript
-const upload = () => {
+const uploadString = async (containerName, blobName, text) => {
     return new Promise((resolve, reject) => {
-        blobService.createBlockBlobFromLocalFile(containerName, blobName, sourceFilePath, err => {
-            if(err) {
+        blobService.createBlockBlobFromText(containerName, blobName, text, err => {
+            if (err) {
                 reject(err);
             } else {
-                resolve({ message: `Upload of '${blobName}' complete` });
+                resolve({ message: `Text "${text}" is written to blob storage` });
             }
         });
     });
 };
 ```
-V kontextu ukázkové aplikace se nahraje soubor *example.txt* do objektu blob *example* v kontejneru *test-container*. Mezi další dostupné přístupy k nahrávání obsahu do objektů blob patří práce s [textem](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromtext) a [datovými proudy](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromstream).
+### <a name="upload-a-local-file"></a>Nahrání místního souboru
 
-Pokud chcete ověřit nahrání souboru do úložiště objektů blob, můžete pomocí [Průzkumníka služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) zobrazit data ve vašem účtu.
-
-### <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
-
-Funkce *list* zavolá metodu [listBlobsSegmented](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#listblobssegmented), která vrátí seznam metadat objektů blob v kontejneru. 
+Funkce *uploadLocalFile* používá metodu [createBlockBlobFromLocalFile](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createBlockBlobFromLocalFile) k nahrání a zapsání nebo přepsání souboru ze systému souborů do úložiště objektů blob. 
 
 ```javascript
-const list = () => {
+const uploadLocalFile = async (containerName, filePath) => {
     return new Promise((resolve, reject) => {
-        blobService.listBlobsSegmented(containerName, null, (err, data) => {
-            if(err) {
+        const fullPath = path.resolve(filePath);
+        const blobName = path.basename(filePath);
+        blobService.createBlockBlobFromLocalFile(containerName, blobName, fullPath, err => {
+            if (err) {
                 reject(err);
             } else {
-                resolve({ message: `Items in container '${containerName}':`, data: data });
+                resolve({ message: `Local file "${filePath}" is uploaded` });
+            }
+        });
+    });
+};
+```
+Mezi další dostupné přístupy k nahrávání obsahu do objektů blob patří práce s [textem](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createBlockBlobFromText) a [datovými proudy](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createBlockBlobFromStream). Pokud chcete ověřit nahrání souboru do úložiště objektů blob, můžete pomocí [Průzkumníka služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) zobrazit data ve vašem účtu.
+
+### <a name="list-the-blobs"></a>Výpis objektů blob
+
+Funkce *listBlobs* zavolá metodu [listBlobsSegmented](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createBlockBlobFromText), která vrátí seznam metadat objektů blob v kontejneru. 
+
+```javascript
+const listBlobs = async (containerName) => {
+    return new Promise((resolve, reject) => {
+        blobService.listBlobsSegmented(containerName, null, (err, data) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve({ message: `${data.entries.length} blobs in '${containerName}'`, blobs: data.entries });
             }
         });
     });
@@ -165,35 +204,35 @@ const list = () => {
 
 Zavoláním metody *listBlobsSegmented* se vrátí metadata objektů blob jako pole instancí [BlobResult](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice.blobresult?view=azure-node-latest). Výsledky se vrací v dávkách (segmentech) v přírůstcích po 5 000. Pokud je v kontejneru více než 5 000 objektů blob, budou výsledky obsahovat hodnotu **continuationToken** (token pro pokračování). Pokud chcete vypsat další segmenty z kontejneru objektů blob, můžete token pro pokračování předat zpět do metody **listBlobSegmented** jako druhý argument.
 
-### <a name="download-a-blob-from-the-container"></a>Stažení objektu blob z kontejneru
+### <a name="download-a-blob"></a>Stažení objektu blob
 
-Funkce *download* používá metodu [getBlobToLocalFile](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#getblobtolocalfile) ke stažení obsahu objektu blob do zadané absolutní cesty.
+Funkce *download* používá metodu [getBlobToLocalFile](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#getblobtotext) ke stažení obsahu objektu blob do zadané absolutní cesty k souboru.
 
 ```javascript
-const download = () => {
-    const dowloadFilePath = sourceFilePath.replace('.txt', '.downloaded.txt');
+const downloadBlob = async (containerName, blobName) => {
+    const dowloadFilePath = path.resolve('./' + blobName.replace('.txt', '.downloaded.txt'));
     return new Promise((resolve, reject) => {
-        blobService.getBlobToLocalFile(containerName, blobName, dowloadFilePath, err => {
-            if(err) {
+        blobService.getBlobToText(containerName, blobName, (err, data) => {
+            if (err) {
                 reject(err);
             } else {
-                resolve({ message: `Download of '${blobName}' complete` });
+                resolve({ message: `Blob downloaded "${data}"`, text: data });
             }
         });
     });
 };
 ```
-Zde uvedená implementace změní cestu ke zdrojovému souboru tak, že k názvu souboru připojí *.downloaded.txt*. V reálných kontextech můžete umístění i název souboru změnit při výběru cíle stahování.
+Implementace znázorněná v tomto příkladu změní zdroj a vrátí obsah objektu blob jako řetězec. Můžete také stáhnout objekt blob jako [stream](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#getblobtostream) nebo přímo do [místního souboru](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#getblobtolocalfile).
 
-### <a name="delete-blobs-in-the-container"></a>Odstranění objektů blob v kontejneru
+### <a name="delete-a-blob"></a>Odstranění objektu blob
 
-Funkce *deleteBlock* (v příkazu konzoly má alias *delete*) volá funkci [deleteBlobIfExists](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#deleteblobifexists). Jak již název napovídá, tato funkce nevrací chybu, pokud je objekt blob již odstraněný.
+Funkce *deleteBlob* zavolá funkci [deleteBlobIfExists](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_deleteBlobIfExists). Jak již název napovídá, tato funkce nevrací chybu, pokud je objekt blob již odstraněný.
 
 ```javascript
-const deleteBlock = () => {
+const deleteBlob = async (containerName, blobName) => {
     return new Promise((resolve, reject) => {
         blobService.deleteBlobIfExists(containerName, blobName, err => {
-            if(err) {
+            if (err) {
                 reject(err);
             } else {
                 resolve({ message: `Block blob '${blobName}' deleted` });
@@ -203,76 +242,101 @@ const deleteBlock = () => {
 };
 ```
 
-### <a name="upload-and-list"></a>Nahrání a výpis
+### <a name="delete-a-container"></a>Odstranění kontejneru
 
-Jednou z výhod používání příslibů je možnost řetězení příkazů. Funkce **uploadAndList** ukazuje, jak snadné je vypsat obsah objektu blob přímo po nahrání souboru.
+Kontejnery se odstraní zavoláním metody *deleteContainer* mimo službu objektu blob a předáním názvu kontejneru.
 
 ```javascript
-const uploadAndList = () => {
-    return _module.upload().then(_module.list);
+const deleteContainer = async (containerName) => {
+    return new Promise((resolve, reject) => {
+        blobService.deleteContainer(containerName, err => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve({ message: `Container '${containerName}' deleted` });
+            }
+        });
+    });
 };
 ```
 
 ### <a name="calling-code"></a>Volání kódu
 
-Za účelem zveřejnění implementovaných funkcí do příkazového řádku se jednotlivé funkce mapují jako literály objektu.
+Aby bylo možné podporovat syntaxi *async/await* Javascriptu, zabalí se veškerý volající kód do funkce s názvem *execute*. Potom se zavolá funkce execute a zpracuje se jako příslib.
 
 ```javascript
-const _module = {
-    "createContainer": createContainer,
-    "upload": upload,
-    "download": download,
-    "delete": deleteBlock,
-    "list": list,
-    "uploadAndList": uploadAndList
-};
-```
-
-Když teď máte objekt *_module*, všechny příkazy jsou dostupné z příkazového řádku.
-
-```javascript
-const commandExists = () => exists = !!_module[args.command];
-```
-
-Pokud zadaný příkaz neexistuje, do konzoly se vypíší vlastnosti objektu *_module* sloužící jako text nápovědy pro uživatele. 
-
-Funkce *executeCommand* je *asynchronní* funkce, která volá zadaný příkaz s použitím operátoru *await* a protokoluje všechny zprávy pro data do konzoly.
-
-```javascript
-const executeCommand = async () => {
-    const response = await _module[args.command]();
-
-    console.log(response.message);
-
-    if (response.data) {
-        response.data.entries.forEach(entry => {
-            console.log('Name:', entry.name, ' Type:', entry.blobType)
-        });
-    }
-};
-```
-
-Nakonec prováděný kód nejprve zavoláním funkce *commandExists* ověří předání známého příkazu do skriptu. Pokud je vybraný existující příkaz, pak se příkaz spustí a případné chyby se zaprotokolují do konzoly.
-
-```javascript
-try {
-    const cmd = args.command;
-
-    console.log(`Executing '${cmd}'...`);
-
-    if (commandExists()) {
-        executeCommand();
-    } else {
-        console.log(`The '${cmd}' command does not exist. Try one of these:`);
-        Object.keys(_module).forEach(key => console.log(` - ${key}`));
-    }
-} catch (e) {
-    console.log(e);
+async function execute() {
+    // commands 
 }
+
+execute().then(() => console.log("Done")).catch((e) => console.log(e));
+```
+Veškerý následující kód se spustí uvnitř funkce execute, kde je umístěn komentář `// commands`.
+
+Nejprve se relevantní proměnné deklarují pro přiřazení názvů, ukázkového obsahu a pro odkázání na místní soubor, který se má nahrát do úložiště objektů blob.
+
+```javascript
+const containerName = "demo";
+const blobName = "quickstart.txt";
+const content = "hello Node SDK";
+const localFilePath = "./readme.md";
+let response;
+```
+
+Pro zobrazení seznamu kontejnerů v účtu úložiště se zavolá funkce listContainers a vrácený seznam kontejnerů se zaprotokoluje do okna výstupu.
+
+```javascript
+console.log("Containers:");
+response = await listContainers();
+response.containers.forEach((container) => console.log(` -  ${container.name}`));
+```
+
+Jakmile je seznam kontejnerů k dispozici, můžete pomocí metody *findIndex* pole zobrazit, zda kontejner, který chcete vytvořit, už existuje. Pokud kontejner neexistuje, vytvoří se.
+
+```javascript
+const containerDoesNotExist = response.containers.findIndex((container) => container.name === containerName) === -1;
+
+if (containerDoesNotExist) {
+    await createContainer(containerName);
+    console.log(`Container "${containerName}" is created`);
+}
+```
+Dále se řetězec a místní soubor nahrají do úložiště objektů blob.
+
+```javascript
+await uploadString(containerName, blobName, content);
+console.log(`Blob "${blobName}" is uploaded`);
+
+response = await uploadLocalFile(containerName, localFilePath);
+console.log(response.message);
+```
+Proces zobrazení seznamu objektů blob je stejný jako zobrazení seznamu kontejnerů. Volání funkce *listBlobs* vrátí pole objektů blob v kontejneru, které se zaprotokolují do okna výstupu.
+
+```javascript
+console.log(`Blobs in "${containerName}" container:`);
+response = await listBlobs(containerName);
+response.blobs.forEach((blob) => console.log(` - ${blob.name}`));
+```
+
+Pokud chcete stáhnout objekt blob, odpověď se zachytí a použije pro přístup k hodnotě objektu blob. readableStreamBody z odpovědi se převede na řetězec a zaprotokoluje se do okna výstupu.
+
+```javascript
+response = await downloadBlob(containerName, blobName);
+console.log(`Downloaded blob content: "${response.text}"`);
+```
+
+Nakonec se objekt blob i kontejner z účtu úložiště odstraní.
+
+```javascript
+await deleteBlob(containerName, blobName);
+console.log(`Blob "${blobName}" is deleted`);
+
+await deleteContainer(containerName);
+console.log(`Container "${containerName}" is deleted`);
 ```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud neplánujete používat data nebo účty vytvořené v rámci tohoto článku, můžete je odstranit, abyste se vyhnuli nežádoucímu účtování. K odstranění objektů blob a kontejnerů můžete použít metody [deleteBlobIfExists](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#deleteblobifexists) a [deleteContainerIfExists](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#deletecontainerifexists). [Prostřednictvím portálu](../common/storage-create-storage-account.md) můžete odstranit také účet úložiště.
+Veškerá data zapsaná do účtu úložiště se automaticky odstraní na konci vzorku kódu. 
 
 ## <a name="resources-for-developing-nodejs-applications-with-blobs"></a>Zdroje informací pro vývoj aplikací Node.js s využitím objektů blob
 
@@ -289,9 +353,7 @@ Prohlédněte si tyto další zdroje informací o vývoji v Node.js s využitím
 
 ## <a name="next-steps"></a>Další kroky
 
-Tyto rychlé starty ukazují, jak odeslat soubor mezi místním diskem a úložištěm objektů blob v Azure pomocí Node.js. Další informace o práci s úložištěm objektů blob najdete v postupech pro úložiště objektů blob.
+Tyto rychlé starty ukazují, jak odeslat soubor mezi místním diskem a úložištěm objektů blob v Azure pomocí Node.js. Další informace o práci s úložištěm objektů blob najdete v tématu věnovanému úložišti GitHub.
 
 > [!div class="nextstepaction"]
-> [Operace s úložištěm objektů blob – postupy](storage-nodejs-how-to-use-blob-storage.md)
-
-Referenční informace k Node.js pro službu Azure Storage najdete v [balíčku azure-storage](https://docs.microsoft.com/javascript/api/azure-storage).
+> [Sada Azure Storage SDK pro úložiště JavaScript](https://github.com/Azure/azure-storage-node)

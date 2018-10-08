@@ -1,22 +1,23 @@
 ---
-title: Analýza textu v přirozeném jazyce ve službě Language Understanding (LUIS) pomocí Go – Azure Cognitive Services | Microsoft Docs
+title: Rychlý start pro jazyk Go – předpověď záměru – LUIS
+titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu použijete dostupnou veřejnou aplikaci LUIS ke zjištění záměru uživatele z textu konverzace. Pomocí Go odešlete záměr uživatele jako text do koncového bodu předpovědi HTTP veřejné aplikace. Služba LUIS použije v koncovém bodě model veřejné aplikace k analýze smyslu textu v přirozeném jazyce, zjištění celkového záměru a extrakci dat, která jsou relevantní pro doménu subjektu aplikace.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 08/23/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: b00d815b712d98136b474d1e73afe7e35d1c7ef4
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: f19c46fcc7dcff2e02786bb3a03082f831e880a2
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160162"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032729"
 ---
-# <a name="quickstart-call-a-luis-endpoint-using-go"></a>Rychlý start: Volání koncového bodu služby LUIS pomocí Go
+# <a name="quickstart-get-intent-using-go"></a>Rychlý start: Získání záměru pomocí jazyka Go
 
 [!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
@@ -32,11 +33,11 @@ ms.locfileid: "44160162"
 
 [!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
 
-## <a name="analyze-text-with-browser"></a>Analýza textu pomocí prohlížeče
+## <a name="get-intent-with-browser"></a>Získání záměru prostřednictvím prohlížeče
 
 [!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-browser-para.md)]
 
-## <a name="analyze-text-with-go"></a>Analýza textu pomocí Go
+## <a name="get-intent-programmatically"></a>Získání záměru prostřednictvím kódu programu
 
 Pomocí jazyka Go můžete získat přístup ke stejným výsledkům, jako jste viděli v okně prohlížeče v předchozím kroku. 
 

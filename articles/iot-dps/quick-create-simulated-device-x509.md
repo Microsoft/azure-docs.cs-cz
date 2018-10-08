@@ -9,18 +9,18 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 40d6d149d07f55784e8428eb0faa943814195a47
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 9eb80b085f979208999b6764d6e4014cdbcfd2a0
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42024032"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159121"
 ---
 # <a name="quickstart-provision-an-x509-simulated-device-using-the-azure-iot-c-sdk"></a>Rychlé zprovoznění: Zřízení simulovaného zařízení X.509 s využitím sady Azure IoT C SDK
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
-V tomto rychlém zprovoznění se dozvíte, jak vytvořit a spustit simulátor zařízení X.509 na vývojovém počítači s Windows. Toto simulované zařízení nakonfigurujete tak, aby se dalo přiřadit k IoT Hubu pomocí registrace instance služby Device Provisioning Service. K simulaci spouštěcí sekvence pro zařízení se použije vzorový kód sady [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c). Rozpoznání zařízení proběhne na základě registrace ve službě zřizování a dojde k jeho přiřazení do IoT Hubu.
+V tomto rychlém startu se dozvíte, jak vytvořit a spustit simulátor zařízení X.509 na vývojovém počítači s Windows. Toto simulované zařízení nakonfigurujete tak, aby se dalo přiřadit k IoT Hubu pomocí registrace instance služby Device Provisioning Service. K simulaci spouštěcí sekvence pro zařízení se použije vzorový kód sady [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c). Rozpoznání zařízení proběhne na základě registrace ve službě zřizování a dojde k jeho přiřazení do IoT Hubu.
 
 Pokud neznáte proces automatického zřizování, projděte si [koncepty automatického zřizování](concepts-auto-provisioning.md). Než budete pokračovat v tomto rychlém zprovoznění, ujistěte se také, že jste provedli kroky uvedené v tématu [Nastavení služby IoT Hub Device Provisioning Service pomocí webu Azure Portal](./quick-setup-auto-provision.md). 
 
@@ -39,12 +39,20 @@ Pokud neznáte proces automatického zřizování, projděte si [koncepty automa
 
 V této části připravíte vývojové prostředí použité k sestavení sady [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c), která zahrnuje vzorový kód spouštěcí sekvence zařízení X.509.
 
-1. Stáhněte si nejnovější vydanou verzi [sestavovacího systému CMake](https://cmake.org/download/). Na stejném webu si najděte kryptografickou hodnotu hash pro zvolenou binární distribuci. Stažený binární soubor ověřte pomocí odpovídající kryptografické hodnoty hash. Následující příklad používá Windows PowerShell k ověření kryptografické hodnoty hash pro verzi 3.11.4 distribuce x64 MSI:
+1. Stáhněte si verzi 3.11.4 [sestavovacího systému CMake](https://cmake.org/download/). Stažený binární soubor ověřte pomocí odpovídající kryptografické hodnoty hash. Následující příklad používá Windows PowerShell k ověření kryptografické hodnoty hash pro verzi 3.11.4 distribuce x64 MSI:
 
     ```PowerShell
-    PS C:\Users\wesmc\Downloads> $hash = get-filehash .\cmake-3.11.4-win64-x64.msi
-    PS C:\Users\wesmc\Downloads> $hash.Hash -eq "56e3605b8e49cd446f3487da88fcc38cb9c3e9e99a20f5d4bd63e54b7a35f869"
+    PS C:\Downloads> $hash = get-filehash .\cmake-3.11.4-win64-x64.msi
+    PS C:\Downloads> $hash.Hash -eq "56e3605b8e49cd446f3487da88fcc38cb9c3e9e99a20f5d4bd63e54b7a35f869"
     True
+    ```
+    
+    V době psaní tohoto textu byly na webu CMake uvedené tyto hodnoty hash pro verzi 3.11.4:
+
+    ```
+    6dab016a6b82082b8bcd0f4d1e53418d6372015dd983d29367b9153f1a376435  cmake-3.11.4-Linux-x86_64.tar.gz
+    72b3b82b6d2c2f3a375c0d2799c01819df8669dc55694c8b8daaf6232e873725  cmake-3.11.4-win32-x86.msi
+    56e3605b8e49cd446f3487da88fcc38cb9c3e9e99a20f5d4bd63e54b7a35f869  cmake-3.11.4-win64-x64.msi
     ```
 
     Je důležité, aby požadavky na sadu Visual Studio (Visual Studio a sada funkcí Vývoj desktopových aplikací pomocí C++) byly na vašem počítači nainstalované ještě **před** zahájením instalace `CMake`. Jakmile jsou požadované součásti k dispozici a stažený soubor je ověřený, nainstalujte sestavovací systém CMake.
@@ -95,10 +103,10 @@ V této části připravíte vývojové prostředí použité k sestavení sady 
 
 ## <a name="create-a-self-signed-x509-device-certificate"></a>Vytvoření certifikátu zařízení X.509 podepsaného svým držitelem
 
-V této části budete používat certifikát X.509 podepsaný svým držitelem. Je důležité vzít v úvahu následující body:
+V této části budete používat certifikát X.509 podepsaný svým držitelem. Je důležité vzít v úvahu tyto body:
 
 * Certifikáty podepsané svým držitelem jsou určené jenom pro testování a neměly by se používat v produkčním prostředí.
-* Výchozí datum vypršení platnosti certifikátu podepsaného svým držitelem je 1 rok.
+* Výchozí datum vypršení platnosti certifikátu podepsaného svým držitelem je jeden rok.
 
 Pomocí vzorového kódu ze sady Azure IoT C SDK vytvoříte certifikát, který použije položka registrace pro simulované zařízení.
 
@@ -110,7 +118,7 @@ Pomocí vzorového kódu ze sady Azure IoT C SDK vytvoříte certifikát, který
 
 4. V nabídce sady Visual Studio vyberte **Ladit** > **Spustit bez ladění** a spusťte řešení. Po zobrazení výzvy zadejte v okně Výstup **i** pro jednotlivou registraci. 
 
-    V okně Výstup se zobrazí místně vygenerovaný certifikát X.509 podepsaný svým držitelem pro vaše simulované zařízení. Zkopírujte výstup do schránky od řádku **-----BEGIN CERTIFICATE-----** po první řádek **-----END CERTIFICATE-----** a ujistěte se, že kopírujete i oba tyto řádky. Pamatujte, že z okna Výstup potřebujete pouze první certifikát.
+    V okně Výstup se zobrazí místně vygenerovaný certifikát X.509 podepsaný svým držitelem pro vaše simulované zařízení. Zkopírujte výstup do schránky od řádku **-----BEGIN CERTIFICATE-----** po první řádek **-----END CERTIFICATE-----** a ujistěte se, že kopírujete i oba tyto řádky. Z okna výstupu potřebujete jenom první certifikát.
  
 5. Pomocí textového editoru uložte certifikát do nového souboru s názvem **_X509testcert.pem_**. 
 
@@ -127,7 +135,7 @@ Pomocí vzorového kódu ze sady Azure IoT C SDK vytvoříte certifikát, který
     - V části **Soubor .pem nebo .cer primárního certifikátu** klikněte na **Vyberte soubor** a vyberte soubor certifikátu X509testcert.pem vytvořený v předchozích krocích.
     - **ID zařízení centra IoT Hub:** Jako ID zařízení zadejte **test-docs-cert-device**.
 
-    [![Přidání jednotlivé registrace pro ověření X.509 na portálu](./media/quick-create-simulated-device-x509/individual-enrollment.png)](./media/quick-create-simulated-device-x509/individual-enrollment.png#lightbox)
+    [![Přidání jednotlivé registrace pro ověření X.509 na portálu](./media/quick-create-simulated-device-x509/device-enrollment.png)](./media/quick-create-simulated-device-x509/device-enrollment.png#lightbox)
 
     Po úspěšné registraci se vaše zařízení X.509 zobrazí jako **riot-device-cert** ve sloupci *ID registrace* na kartě *Jednotlivé registrace*. 
 
@@ -180,7 +188,7 @@ V této části aktualizujete vzorový kód tak, aby odeslal spouštěcí sekven
     test-docs-hub.azure-devices.net, deviceId: test-docs-cert-device    
     ```
 
-7. Na portálu přejděte do centra IoT Hub propojeného s vaší službou zřizování a klikněte na kartu **Zařízení IoT**. Po úspěšném zřízení simulovaného zařízení X.509 pro toto centrum se ID tohoto zařízení zobrazí v okně **Zařízení IoT** a jeho *STAV* bude **povoleno**. Upozorňujeme, že možná budete muset nahoře kliknout na tlačítko **Aktualizovat**. 
+7. Na portálu přejděte do centra IoT Hub propojeného s vaší službou zřizování a klikněte na kartu **Zařízení IoT**. Po úspěšném zřízení simulovaného zařízení X.509 pro toto centrum se ID tohoto zařízení zobrazí v okně **Zařízení IoT** a jeho *STAV* bude **povoleno**. Možná budete muset nahoře kliknout na tlačítko **Aktualizovat**. 
 
     ![Zařízení je zaregistrované u centra IoT](./media/quick-create-simulated-device/hub-registration.png) 
 

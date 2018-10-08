@@ -1,35 +1,37 @@
 ---
-title: Rychlý start k rozhraní API pro počítačové zpracování obrazu s rukou psaným textem se sadou SDK v C# | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: V tomto rychlém startu extrahujete rukou psaný text z obrázku pomocí klientské knihovny C# systému Windows počítačového zpracování obrazu ve službách Cognitive Services.
+title: 'Rychlý start: Extrakce textu – SDK, C# – počítačové zpracování obrazu'
+titleSuffix: Azure Cognitive Services
+description: V tomto rychlém startu extrahujete text z obrázku pomocí klientské knihovny počítačového zpracování obrazu systému Windows.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: 7eb87e3d4b1703bf1ee0e30c930b0bc724b7f22f
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.date: 09/27/2018
+ms.author: nolachar
+ms.openlocfilehash: 86808756721b2dc983df6eaf8a9e643a12d73969
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43769238"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409007"
 ---
-# <a name="quickstart-extract-handwritten-text---sdk-c35"></a>Rychlý start: Extrakce rukou psaného textu – SDK, C&#35;
+# <a name="quickstart-extract-text-using-the-computer-vision-sdk-and-c"></a>Rychlý start: Extrakce textu s použitím sady SDK pro počítačové zpracování obrazu a jazyka C#
 
-V tomto rychlém startu extrahujete rukou psaný text z obrázku pomocí klientské knihovny počítačového zpracování obrazu systému Windows.
+V tomto rychlém startu extrahujete rukou psaný nebo tištěný text z obrázku pomocí klientské knihovny počítačového zpracování obrazu systému Windows.
+
+Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Abyste mohli počítačové zpracování obrazu použít, potřebujete klíč předplatného. Přečtěte si, [jak klíče předplatného získat](../Vision-API-How-to-Topics/HowToSubscribe.md).
+* Abyste mohli počítačové zpracování obrazu použít, potřebujete klíč předplatného. Přečtěte si, [jak získat klíče předplatného](../Vision-API-How-to-Topics/HowToSubscribe.md).
 * Libovolná edice sady [Visual Studio 2015 nebo 2017](https://www.visualstudio.com/downloads/).
 * Balíček NuGet klientské knihovny [Microsoft.Azure.CognitiveServices.Vision.ComputerVision](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision). Stažení tohoto balíčku není nutné. Pokyny k instalaci jsou uvedené dál.
 
 ## <a name="recognizetextasync-method"></a>Metoda RecognizeTextAsync
 
-Metody `RecognizeTextAsync` a `RecognizeTextInStreamAsync` využívají [rozhraní API pro rozpoznávání textu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) pro vzdálené a místní obrázky, v uvedeném pořadí. Metoda `GetTextOperationResultAsync` používá [rozhraní API pro získání výsledků operace rozpoznávání textu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201).  Pomocí těchto metod můžete rozpoznat rukou psaný text v obrázku a extrahovat rozpoznané znaky do znakového proudu, který je strojově využitelný.
+Metody `RecognizeTextAsync` a `RecognizeTextInStreamAsync` využívají [rozhraní API pro rozpoznávání textu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) pro vzdálené a místní obrázky, v uvedeném pořadí. Metoda `GetTextOperationResultAsync` používá [rozhraní API pro získání výsledků operace rozpoznávání textu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201).  Pomocí těchto metod můžete rozpoznat text v obrázku a extrahovat rozpoznané znaky do datového proudu se strojově využitelnými znaky.
 
 Pokud chcete spustit ukázku, postupujte takto:
 
@@ -40,7 +42,8 @@ Pokud chcete spustit ukázku, postupujte takto:
     1. Jakmile se zobrazí, vyberte **Microsoft.Azure.CognitiveServices.Vision.ComputerVision**, potom klikněte na zaškrtávací políčko vedle názvu vašeho projektu a na **Nainstalovat**.
 1. `Program.cs` nahraďte následujícím kódem.
 1. Místo `<Subscription Key>` použijte platný klíč předplatného.
-1. V případě potřeby změňte `computerVision.AzureRegion = AzureRegions.Westcentralus` na umístění, kde jste získali klíče předplatného.
+1. V případě potřeby změňte `computerVision.Endpoint` na oblast Azure spojenou s klíči vašeho předplatného.
+1. Můžete nastavit `textRecognitionMode` na `TextRecognitionMode.Printed`.
 1. `<LocalImage>` nahraďte cestou a názvem souboru místního obrázku.
 1. Volitelně můžete `remoteImageUrl` nastavit na jiný obrázek.
 1. Spusťte program.
@@ -53,12 +56,16 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace ImageHandText
+namespace ExtractText
 {
     class Program
     {
         // subscriptionKey = "0123456789abcdef0123456789ABCDEF"
         private const string subscriptionKey = "<SubscriptionKey>";
+
+        // For printed text, change to TextRecognitionMode.Printed
+        private const TextRecognitionMode textRecognitionMode =
+            TextRecognitionMode.Handwritten;
 
         // localImagePath = @"C:\Documents\LocalImage.jpg"
         private const string localImagePath = @"<LocalImage>";
@@ -72,33 +79,33 @@ namespace ImageHandText
 
         static void Main(string[] args)
         {
-            ComputerVisionAPI computerVision = new ComputerVisionAPI(
+            ComputerVisionClient computerVision = new ComputerVisionClient(
                 new ApiKeyServiceClientCredentials(subscriptionKey),
                 new System.Net.Http.DelegatingHandler[] { });
 
             // You must use the same region as you used to get your subscription
             // keys. For example, if you got your subscription keys from westus,
-            // replace "Westcentralus" with "Westus".
+            // replace "westcentralus" with "westus".
             //
             // Free trial subscription keys are generated in the westcentralus
             // region. If you use a free trial subscription key, you shouldn't
             // need to change the region.
 
             // Specify the Azure region
-            computerVision.AzureRegion = AzureRegions.Westcentralus;
+            computerVision.Endpoint = "https://westcentralus.api.cognitive.microsoft.com";
 
             Console.WriteLine("Images being analyzed ...");
-            var t1 = ExtractRemoteHandTextAsync(computerVision, remoteImageUrl);
-            var t2 = ExtractLocalHandTextAsync(computerVision, localImagePath);
+            var t1 = ExtractRemoteTextAsync(computerVision, remoteImageUrl);
+            var t2 = ExtractLocalTextAsync(computerVision, localImagePath);
 
             Task.WhenAll(t1, t2).Wait(5000);
-            Console.WriteLine("Press any key to exit");
+            Console.WriteLine("Press ENTER to exit");
             Console.ReadLine();
         }
 
         // Recognize text from a remote image
-        private static async Task ExtractRemoteHandTextAsync(
-            ComputerVisionAPI computerVision, string imageUrl)
+        private static async Task ExtractRemoteTextAsync(
+            ComputerVisionClient computerVision, string imageUrl)
         {
             if (!Uri.IsWellFormedUriString(imageUrl, UriKind.Absolute))
             {
@@ -108,15 +115,16 @@ namespace ImageHandText
             }
 
             // Start the async process to recognize the text
-            RecognizeTextHeaders textHeaders = await computerVision.RecognizeTextAsync(
-                    imageUrl, TextRecognitionMode.Handwritten);
+            RecognizeTextHeaders textHeaders =
+                await computerVision.RecognizeTextAsync(
+                    imageUrl, textRecognitionMode);
 
             await GetTextAsync(computerVision, textHeaders.OperationLocation);
         }
 
         // Recognize text from a local image
-        private static async Task ExtractLocalHandTextAsync(
-            ComputerVisionAPI computerVision, string imagePath)
+        private static async Task ExtractLocalTextAsync(
+            ComputerVisionClient computerVision, string imagePath)
         {
             if (!File.Exists(imagePath))
             {
@@ -130,7 +138,7 @@ namespace ImageHandText
                 // Start the async process to recognize the text
                 RecognizeTextInStreamHeaders textHeaders =
                     await computerVision.RecognizeTextInStreamAsync(
-                        imageStream, TextRecognitionMode.Handwritten);
+                        imageStream, textRecognitionMode);
 
                 await GetTextAsync(computerVision, textHeaders.OperationLocation);
             }
@@ -138,7 +146,7 @@ namespace ImageHandText
 
         // Retrieve the recognized text
         private static async Task GetTextAsync(
-            ComputerVisionAPI computerVision, string operationLocation)
+            ComputerVisionClient computerVision, string operationLocation)
         {
             // Retrieve the URI where the recognized text will be
             // stored from the Operation-Location header
@@ -165,7 +173,7 @@ namespace ImageHandText
             // Display the results
             Console.WriteLine();
             var lines = result.RecognitionResult.Lines;
-            foreach(Line line in lines)
+            foreach (Line line in lines)
             {
                 Console.WriteLine(line.Text);
             }
@@ -179,7 +187,7 @@ namespace ImageHandText
 
 Úspěšná odpověď zobrazí řádky rozpoznaného textu jednotlivých obrázků.
 
-Příklad nezpracovaného výstupu JSON najdete v [rychlých startech pro rozhraní API a extrakci rukou psaného textu s C#](../QuickStarts/CSharp-hand-text.md#recognize-text-response).
+Příklad nezpracovaného výstupu JSON najdete v tématu [Rychlý start: Extrakce rukou psaného textu – REST, C#](../QuickStarts/CSharp-hand-text.md#examine-the-response).
 
 ```cmd
 Calling GetHandwritingRecognitionOperationResultAsync()

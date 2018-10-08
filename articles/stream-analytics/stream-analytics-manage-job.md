@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/04/2018
-ms.openlocfilehash: 6b924e0555ea7a57f8d5e5309a266b6d2fb44f44
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 1955fc033e0351be9da89bbee11dc41d6281a63a
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702523"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433986"
 ---
 # <a name="create-a-stream-analytics-job-to-analyze-phone-call-data-and-visualize-results-in-a-power-bi-dashboard"></a>Vytvoření úlohy Stream Analytics k analýze dat telefonních hovorů a vizualizaci výsledků v řídicím panelu Power BI
  
@@ -101,12 +101,12 @@ Před spuštěním aplikace TelcoGenerator byste ji měli nakonfigurovat tak, ab
 5. Otevřete příkazové okno, přejděte do složky, do které jste extrahovali aplikaci TelcoGenerator, a zadejte následující příkaz:
 
    ```
-   telcodatagen.exe 1000 .2 2
+   telcodatagen.exe 1000 0.2 2
    ```
 
    Tento příkaz má následující parametry:
    * **Počet záznamů dat volání za hodinu**.  
-   * **Procento pravděpodobnosti podvodů** – to znamená, jak často by měla aplikace simulovat podvodné volání. Hodnota .2 znamená, že přibližně 20 % záznamů volání bude vypadat podvodně.  
+   * **Procento pravděpodobnosti podvodů** – to znamená, jak často by měla aplikace simulovat podvodné volání. Hodnota 0,2 znamená, že přibližně 20 % záznamů volání bude falešných.  
    * **Doba v hodinách** – počet hodin, po které by aplikace měl být spuštěna. Aplikaci můžete také kdykoli zastavit ukončením procesu (Ctrl + C) na příkazovém řádku.
 
    Po několika sekundách aplikace začne zobrazovat záznamy telefonních hovorů na obrazovce, když je odešle do centra událostí. Data telefonních hovorů obsahují následující pole:
@@ -228,7 +228,7 @@ Dotaz z editoru dotazů můžete otestovat, k tomu potřebujete ukázková data.
 
 3. V poli **Minuty** nastavte hodnotu 3 a vyberte **OK**. Ze vstupního streamu se vytváří ukázka ze tří minut dat. Když jsou ukázková data připravená, zobrazí se vám upozornění. Stav vytváření ukázkových dat můžete sledovat v oznamovacím pruhu. 
 
-   Ukázková data jsou dočasně uložena a jsou dostupná, dokud je otevřené okno dotazu. Pokud okno dotazu zavřete, budou ukázková data odstraněna a budete muset vytvořit novou sadu ukázkových dat. Můžete také z [GitHubu](https://github.com/Azure/azure-stream-analytics/blob/master/Sample Data/telco.json) získat soubor .json, který obsahuje ukázková data, a potom tento soubor .json nahrát a použít jako ukázková data pro vstup CallStream.  
+   Ukázková data jsou dočasně uložena a jsou dostupná, dokud je otevřené okno dotazu. Pokud okno dotazu zavřete, budou ukázková data odstraněna a budete muset vytvořit novou sadu ukázkových dat. Můžete také z [GitHubu](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/telco.json) získat soubor .json, který obsahuje ukázková data, a potom tento soubor .json nahrát a použít jako ukázková data pro vstup CallStream.  
 
 4. Výběrem **Testovat** otestujte dotaz. Měli byste vidět výstupní výsledky, jak je zobrazeno na tomto snímku obrazovky:  
 
@@ -262,7 +262,7 @@ Dotaz z editoru dotazů můžete otestovat, k tomu potřebujete ukázková data.
 
 Pro tuto část kurzu budete pro vložení řídicího panelu používat ukázkovou webovou aplikaci [ASP.NET](http://asp.net/) vytvořenou týmem PowerBI. Další informace o vkládání řídicích panelů najdete v tématu [Vkládání pomocí Power BI](https://docs.microsoft.com/power-bi/developer/embedding).
 
-V tomto kurzu budeme postupovat podle kroků pro uživatele, který vlastní datovou aplikaci. Chcete-li nastavit aplikaci, přejděte do úložiště Githubu [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) a postupujte podle pokynů v části **User Owns Data** (použijte URL pro přesměrování a URL domovské stránky, které jsou uvedené v části **integrate-dashboard-web-app**). Vzhledem k tomu, že používáme příklad pro řídicí panel, použijte ukázkový kód integrate-dashboard-web-app, který je umístěný v [úložišti GitHubu](https://github.com/Microsoft/PowerBI-Developer-Samples/tree/master/User Owns Data/integrate-dashboard-web-app).
+V tomto kurzu budeme postupovat podle kroků pro uživatele, který vlastní datovou aplikaci. Chcete-li nastavit aplikaci, přejděte do úložiště Githubu [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) a postupujte podle pokynů v části **User Owns Data** (použijte URL pro přesměrování a URL domovské stránky, které jsou uvedené v části **integrate-dashboard-web-app**). Vzhledem k tomu, že používáme příklad pro řídicí panel, použijte ukázkový kód integrate-dashboard-web-app, který je umístěný v [úložišti GitHubu](https://github.com/Microsoft/PowerBI-Developer-Samples/tree/master/User%20Owns%20Data/integrate-dashboard-web-app).
 Jakmile aplikace běží v prohlížeči, postupujte podle těchto kroků a vložte do webové stránky řídicí panel, který jste vytvořili dříve:
 
 1. Vyberte **Přihlásit se k Power BI**, čím aplikaci udělíte přístup k řídicím panelům ve vašem účtu Power BI.  

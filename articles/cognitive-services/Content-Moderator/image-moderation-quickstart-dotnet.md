@@ -1,42 +1,44 @@
 ---
-title: Azure Content Moderator – moderování obrázků s využitím .NET | Dokumentace Microsoftu
-description: Jak moderování obrázků s využitím Azure Content Moderator SDK pro .NET
+title: 'Rychlý start: Moderování obrázků pomocí prostředí .NET – Content Moderator'
+titlesuffix: Azure Cognitive Services
+description: Jak moderovat obrázky pomocí sady Content Moderator SDK pro .NET
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: 9c662558d21bf52b6e9e5c9e781fee7121493ea2
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
-ms.translationtype: MT
+ms.openlocfilehash: d89d9b8a2e3b00155e82cc28105007ab39fc549c
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182004"
+ms.locfileid: "47226160"
 ---
-# <a name="moderate-images-using-net"></a>Moderování obrázků s využitím .NET
+# <a name="quickstart-moderate-images-using-net"></a>Rychlý start: Moderování obrázků pomocí prostředí .NET
 
-Tento článek obsahuje informace a ukázky kódu, které vám pomůžou začít používat [Content Moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) na: 
-- Zkontrolujte image pro dospělé nebo pikantního obsahu
-- Detekujte a extrahujte text z obrázku
+Tento článek obsahuje informace a ukázky kódu, které vám pomůžou začít používat [sadu Content Moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) k následujícím účelům: 
+
+- Kontrola, zda se v obrázku vyskytuje obsah pro dospělé
+- Rozpoznání a extrakce textu z obrázku
 - Rozpoznávání tváří v obrázku
 
-Tento článek předpokládá, že jste již obeznámeni s Visual Studio a C#.
+Tento článek předpokládá, že už máte zkušenosti se sadou Visual Studio a jazykem C#.
 
-## <a name="sign-up-for-content-moderator-services"></a>Zaregistrovat do služby Content Moderator
+## <a name="sign-up-for-content-moderator-services"></a>Registrace do služeb Content Moderatoru
 
-Před použitím služby Content Moderator přes rozhraní REST API nebo sady SDK, budete potřebovat klíč rozhraní API a oblasti pro váš účet rozhraní API.
-Odkazovat [rychlý Start](quick-start.md) postup, jak se zaregistrovat do služby Content Moderator k získání obou.
+Než začnete služby Content Moderatoru prostřednictvím rozhraní REST API nebo sady SDK používat, budete potřebovat klíč rozhraní API a oblast vašeho účtu pro rozhraní API.
+Na stránce [Rychlý start](quick-start.md) se můžete registrovat do Content Moderatoru a obdržet klíč i oblast.
 
-## <a name="create-your-visual-studio-project"></a>Vytvoření projektu sady Visual Studio
+## <a name="create-your-visual-studio-project"></a>Vytvoření projektu v sadě Visual Studio
 
-1. Přidat nový **Konzolová aplikace (.NET Framework)** do svého řešení projekt.
+1. Přidejte ke svému řešení nový projekt **Konzolová aplikace (.NET Framework)**.
 
-   Ve vzorovém kódu, pojmenujte projekt **ImageModeration**.
+   Ve vzorovém kódu pojmenujte tento projekt **ImageModeration**.
 
-1. Vyberte tento projekt jako jeden spouštěný projekt pro řešení.
+1. Projekt vyberte jako jeden spouštěný projekt řešení.
 
 
 ### <a name="install-required-packages"></a>Instalace požadovaných balíčků
@@ -47,9 +49,9 @@ Nainstalujte následující balíčky NuGet:
 - Microsoft.Rest.ClientRuntime
 - Newtonsoft.Json
 
-### <a name="update-the-programs-using-statements"></a>Aktualizace programu v nástrojích příkazy
+### <a name="update-the-programs-using-statements"></a>Aktualizace příkazů using programu
 
-Upravit program v nástrojích příkazy.
+Upravte příkazy using programu.
 
     using Microsoft.Azure.CognitiveServices.ContentModerator;
     using Microsoft.CognitiveServices.ContentModerator;
@@ -60,12 +62,12 @@ Upravit program v nástrojích příkazy.
     using System.IO;
     using System.Threading;
 
-### <a name="create-the-content-moderator-client"></a>Vytvoření klienta služby Content Moderator
+### <a name="create-the-content-moderator-client"></a>Vytvoření klienta Content Moderatoru
 
-Přidejte následující kód k vytvoření klienta Content Moderator pro vaše předplatné.
+Přidáním následujícího kódu vytvořte pro své předplatné klienta Content Moderatoru.
 
 > [!IMPORTANT]
-> Aktualizace **Oblast_azure** a **CMSubscriptionKey** pole s hodnotami vaší oblasti identifikátor a klíč předplatného.
+> Aktualizujte pole **AzureRegion** a **CMSubscriptionKey** hodnotami identifikátoru oblasti a klíče předplatného.
 
     /// <summary>
     /// Wraps the creation and configuration of a Content Moderator client.
@@ -109,9 +111,9 @@ Přidejte následující kód k vytvoření klienta Content Moderator pro vaše 
         }
     }
 
-### <a name="initialize-application-specific-settings"></a>Inicializace nastavení specifické pro aplikaci
+### <a name="initialize-application-specific-settings"></a>Inicializace nastavení specifických pro aplikaci
 
-Přidejte následující statické pole na **Program** třída v souboru Program.cs.
+Do třídy **Program** v souboru Program.cs přidejte následující statická pole.
 
     ///<summary>
     ///The name of the file that contains the image URLs to evaluate.
@@ -130,13 +132,13 @@ Přidejte následující statické pole na **Program** třída v souboru Program
 
 
 > [!NOTE]
-> Ukázka používá následující obrázky generovat výstup pro tento rychlý start.
+> Ukázka k generování výstupu pro tento rychlý start používá následující obrázky.
 > - https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
 > - https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
-## <a name="store-the-analysis-results"></a>Store výsledky analýzy
+## <a name="store-the-analysis-results"></a>Uložení výsledků analýzy
 
-Přidejte následující třídy, která se **Program** třídy. Slouží k zaznamenání výsledky při moderování obrázků, přezkoumání instance této třídy.
+Do třídy **Program** přidejte následující třídu. Pokud chcete zaznamenávat výsledky moderování kontrolovaných obrázků, použijte instanci této třídy.
 
     /// <summary>
     /// Contains the image moderation results for an image, 
@@ -165,14 +167,14 @@ Přidejte následující třídy, která se **Program** třídy. Slouží k zazn
         public FoundFaces FaceDetection;
     }
 
-## <a name="evaluate-an-individual-image"></a>Vyhodnocení jednotlivých obrázků
+## <a name="evaluate-an-individual-image"></a>Vyhodnocení jednotlivého obrázku
 
-Do třídy **Program** přidejte následující metodu. Tato metoda jedné image vyhodnotí a vrátí výsledky hodnocení.
+Do třídy **Program** přidejte následující metodu. Tato metoda ohodnotí jeden obrázek a vrátí výsledky hodnocení.
 
 > [!NOTE]
-> Klíč služby Content Moderator má požadavků za druhé omezení četnosti (předávajících stran) a při překročení limitu, vyvolá výjimku s kódem chyby 429, sady SDK. 
+> Klíč služby Content Moderatoru má limit četnosti požadavků za sekundu (RPS), a pokud ho překročíte, sada SDK zobrazí výjimku s chybovým kódem 429. 
 >
-> Klíč úroveň free má omezení četnosti jeden RPS.
+> Klíč úrovně Free má limit nastavený na 1 RPS za sekundu.
 
 
     /// <summary>
@@ -213,18 +215,18 @@ Do třídy **Program** přidejte následující metodu. Tato metoda jedné image
         return imageData;
     }
 
-**EvaluateUrlInput** metoda tvoří obálku pro rozhraní REST API pro moderování obrázků.
+Metoda **EvaluateUrlInput** tvoří obálku pro rozhraní REST API moderování obrázků.
 Návratová hodnota obsahuje objekt vrácený z volání rozhraní API.
 
-**OCRUrlInput** metoda tvoří obálku pro rozhraní API REST OCR obrázků.
+Metoda **OCRUrlInput** tvoří obálku pro rozhraní REST API OCR obrázků.
 Návratová hodnota obsahuje objekt vrácený z volání rozhraní API.
 
-**FindFacesUrlInput** metoda tvoří obálku pro Image najít čelí REST API.
+Metoda **FindFacesUrlInput** tvoří obálku pro rozhraní REST API rozpoznávání tváří v obrázcích.
 Návratová hodnota obsahuje objekt vrácený z volání rozhraní API.
 
-## <a name="process-the-image-urls-in-your-code"></a>Zpracování adresy URL obrázků v kódu
+## <a name="process-the-image-urls-in-your-code"></a>Zpracování adres URL obrázků v kódu
 
-Přidejte následující kód, který **hlavní** metody.
+Do metody **Main** přidejte následující kód.
 
     // Create an object to store the image moderation results.
     List<EvaluationData> evaluationData = new List<EvaluationData>();
@@ -257,13 +259,13 @@ Přidejte následující kód, který **hlavní** metody.
         outputWriter.Close();
     }
 
-## <a name="run-the-program-and-review-the-output"></a>Spusťte program a prohlédněte si výstup
+## <a name="run-the-program-and-review-the-output"></a>Spuštění programu a kontrola výstupu
 
 Následující objekt JSON obsahuje výstup programu.
 
 > [!NOTE]
-> `isImageAdultClassified` představuje potenciální přítomnost bitové kopie, které lze považovat za sexuálně explicitní nebo pro dospělé v určitých situacích.
-> `isImageRacyClassified` představuje potenciální přítomnost bitové kopie, které lze považovat za sexuálně sugestivní nebo až po zralé v určitých situacích.
+> `isImageAdultClassified` představuje potenciální přítomnost obrázků, které lze v určitých situacích považovat za sexuálně explicitní nebo pouze pro dospělé.
+> `isImageRacyClassified` představuje potenciální přítomnost obrázků, které lze v určitých situacích považovat za sexuálně sugestivní nebo pouze pro dospělé.
 >
 
     [
@@ -451,4 +453,4 @@ Následující objekt JSON obsahuje výstup programu.
 
 ## <a name="next-steps---get-the-source-code"></a>Další kroky – získat zdrojový kód
 
-Získejte [Content Moderator sady .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) a [řešení sady Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) pro tuto a další rychlé starty Content Moderator pro platformu .NET a začít používat svoji integraci.
+Získejte pro tento rychlý start a jiné rychlé starty Content Moderatoru pro .NET [sadu Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) a [řešení Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) a začněte se svou integrací.

@@ -1,20 +1,21 @@
 ---
-title: Vytvoření nové znalostní báze – rychlý start pro Go – pro rozhraní API služby Microsoft QnA Maker (verze 4) – Azure Cognitive Services | Microsoft Docs
-description: Vytvořte v Go znalostní bázi, která bude ukládat nejčastější dotazy nebo příručky k produktům, abyste mohli začít používat službu QnA Maker.
+title: 'Rychlý start: Rozhraní API v Go – vytvoření znalostní báze – QnA Maker'
+titlesuffix: Azure Cognitive Services
+description: Tento rychlý start vás provede procesem vytvoření ukázkové znalostní báze služby QnA Maker prostřednictvím kódu programu, která se zobrazí na řídicím panelu Azure účtu rozhraní API služby QnA Maker.
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: quickstart
-ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: fe763dada6d40822148423443be12df7c1626687
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 17d4a03966b1d6e3f278d5a507e46f9f6fcafa05
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "43768970"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034055"
 ---
 # <a name="create-a-new-knowledge-base-in-go"></a>Vytvoření nové znalostní báze v Go
 

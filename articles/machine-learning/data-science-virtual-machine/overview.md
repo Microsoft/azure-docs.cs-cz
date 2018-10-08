@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/27/2017
 ms.author: gokuma
-ms.openlocfilehash: 661c757cda2f70b03d136f3726c7afe633fbbe04
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 62c8ff225b9c649afa7532ad5edfdd627e573d81
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42022966"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032225"
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Úvod k virtuálnímu počítači pro datové vědy pro Linux a Windows
 
@@ -137,3 +137,5 @@ Virtuální počítač pro datovou vědu obsahuje mnoho oblíbených nástrojů 
 * Další informace o vytvoření virtuálního počítače pro datovou vědu pro Ubuntu a jeho použití najdete v článku [Zřízení virtuálního počítače pro datovou vědu pro Linux (Ubuntu)](dsvm-ubuntu-intro.md). Další informace o vytvoření virtuálního počítače pro datovou vědu pro CentOS a jeho použití najdete v článku [Zřízení virtuálního počítače pro datovou vědu pro Linux CentOS](linux-dsvm-intro.md).
 * Postup provedení několika běžných úloh vědeckého zpracování dat na virtuálním počítači Linux (v systémech CentOS a Ubuntu) najdete v článku [Datová věda na virtuálním počítači pro datovou vědu pro Linux](linux-dsvm-walkthrough.md).
 
+## <a name="next-steps"></a>Další kroky
+[Příručka pro vývojáře v R pro Azure](../r-developers-guide.md)

@@ -1,22 +1,23 @@
 ---
-title: Analýza textu v přirozeném jazyce ve službě Language Understanding (LUIS) pomocí Ruby – Cognitive Services – Azure Cognitive Services | Microsoft Docs
+title: Rychlý start pro Ruby – předpověď záměru – LUIS
+titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu použijete dostupnou veřejnou aplikaci LUIS ke zjištění záměru uživatele z textu konverzace. Pomocí Ruby odešlete záměr uživatele jako text do koncového bodu předpovědi HTTP veřejné aplikace. Služba LUIS použije v koncovém bodě model veřejné aplikace k analýze smyslu textu v přirozeném jazyce, zjištění celkového záměru a extrakci dat, která jsou relevantní pro doménu subjektu aplikace.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 08/23/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 0909c1dd056570a275b3042674d251c637413cae
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: b8ef763a0b2379115150c88becc2ad43ba9cde89
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44157697"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47030927"
 ---
-# <a name="quickstart-analyze-text-using-ruby"></a>Rychlý start: Analýza textu pomocí Ruby
+# <a name="quickstart-get-intent-using-ruby"></a>Rychlý start: Získání záměru pomocí Ruby
 
 [!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
@@ -35,11 +36,11 @@ ms.locfileid: "44157697"
 
 [!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
 
-## <a name="analyze-text-with-browser"></a>Analýza textu pomocí prohlížeče
+## <a name="get-intent-with-browser"></a>Získání záměru prostřednictvím prohlížeče
 
 [!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-browser-para.md)]
 
-## <a name="analyze-text-with-ruby"></a>Analýza textu pomocí Ruby 
+## <a name="get-intent-programmatically"></a>Získání záměru prostřednictvím kódu programu
 
 Pomocí Ruby můžete získat přístup ke stejným výsledkům, jako jste viděli v okně prohlížeče v předchozím kroku. 
 

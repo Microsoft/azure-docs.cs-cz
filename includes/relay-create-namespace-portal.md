@@ -1,5 +1,5 @@
 1. Přihlaste se na web [Azure Portal][Azure portal].
-2. V nabídce vlevo vyberte **+ Vytvořit prostředek**. Pak vyberte **Podniková integrace** > **Relay**.
+2. V nabídce vlevo vyberte **+ Vytvořit prostředek**. Pak vyberte **Integrace** > **Přenos**. Pokud se v seznamu **Přenos** nezobrazuje, vyberte v pravém horním rohu **Zobrazit vše**. 
 3. V části **Vytvořit obor názvů** zadejte název oboru názvů. Systém okamžitě kontroluje, jestli je název dostupný.
 4. V poli **Předplatné** vyberte předplatné Azure, ve kterém chcete obor názvů vytvořit.
 5. V poli [Skupina prostředků](../articles/azure-resource-manager/resource-group-portal.md) vyberte existující skupinu prostředků, do které se obor názvů umístí, nebo vytvořte novou.  

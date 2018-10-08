@@ -1,71 +1,81 @@
 ---
-title: Kurz kontroly promluv koncového bodu ve službě Language Understanding (LUIS) – Azure | Microsoft Docs
-description: V tomto kurzu zjistíte, jak kontrolovat promluvy koncového bodu v doméně lidských zdrojů (HR) ve službě LUIS.
+title: 'Kurz 1: Kontroly promluv koncového bodu aktivním učením'
+titleSuffix: Azure Cognitive Services
+description: Vylepšete predikce aplikace ověřením nebo opravou promluv získaných prostřednictvím koncového bodu HTTP služby LUIS, které nemusí být správně naučené. U některých promluv může být potřeba zkontrolovat záměr, zatímco u jiných entitu. Promluvy koncového bodu byste měli pravidelně kontrolovat v rámci plánované údržby služby LUIS.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: luis
+ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 08/03/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: db44bfad5ece59ed3373699c10d6134201bf1879
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 1047c117228b57f7361a1e386bc6cde7acbfdde8
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160077"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042263"
 ---
-# <a name="tutorial-review-endpoint-utterances"></a>Kurz: Kontrola promluv koncového bodu
-V tomto kurzu zlepšíte predikce aplikace ověřením nebo opravou promluv získaných prostřednictvím koncového bodu HTTP služby LUIS. 
+# <a name="tutorial-1-fix-unsure-predictions"></a>Kurz 1: Oprava nejistých předpovědí
+V tomto kurzu vylepšíte predikce aplikace ověřením nebo opravou promluv získaných prostřednictvím koncového bodu HTTPS služby LUIS, které nemusí mít tato služba správně naučené. U některých promluv může být potřeba zkontrolovat záměr, zatímco u jiných entitu. Promluvy koncového bodu byste měli pravidelně kontrolovat v rámci plánované údržby služby LUIS. 
 
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * Vysvětlení kontroly promluv koncového bodu 
-> * Použití aplikace LUIS pro doménu lidských zdrojů 
-> * Kontrola promluv koncového bodu
-> * Trénování a publikování aplikace
-> * Odeslání dotazu na koncový bod aplikace a zobrazení odpovědi JSON ze služby LUIS
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="before-you-begin"></a>Než začnete
-Pokud nemáte aplikaci pro lidské zdroje z kurzu k [mínění](luis-quickstart-intent-and-sentiment-analysis.md), naimportujte ji z úložiště [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-sentiment-HumanResources.json) na Githubu. Pokud tento kurz používáte jako novou naimportovanou aplikaci, musíte ji také natrénovat, publikovat a potom přidat promluvy do koncového bodu pomocí [skriptu](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/demo-upload-endpoint-utterances/endpoint.js) nebo z koncového bodu v prohlížeči. Přidávané promluvy jsou tyto:
-
-   [!code-nodejs[Node.js code showing endpoint utterances to add](~/samples-luis/examples/demo-upload-endpoint-utterances/endpoint.js?range=15-26)]
-
-Pokud chcete zachovat původní aplikaci pro lidské zdroje, naklonujte verzi na stránce [Settings](luis-how-to-manage-versions.md#clone-a-version) (Nastavení) a pojmenujte ji `review`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. 
-
-Pokud máte díky sérii kurzů všechny verze této aplikace, může vás u některých verzí překvapit, že se seznam **Kontrola promluv koncového bodu** nezmění. Je jenom jeden fond promluv ke kontrole bez ohledu na to, jakou verzi promluvy právě editujete nebo jaká verze aplikace byla publikovaná v koncovém bodě. 
-
-## <a name="purpose-of-reviewing-endpoint-utterances"></a>Účel kontroly promluv koncového bodu
-Tento proces kontroly představuje další způsob, jakým se LUIS seznamuje s vaší aplikační doménou. Služba LUIS vybrala projevy v seznamu revizí. Tento seznam:
+Tento proces kontroly představuje další způsob, jakým se LUIS seznamuje s vaší aplikační doménou. Služba LUIS vybrala promluvy zobrazené v seznamu revizí. Tento seznam:
 
 * Je specifický pro danou aplikaci.
 * Má za cíl zlepšit přesnost předpovědí aplikace. 
 * Měl by se pravidelně kontrolovat. 
 
-Kontrolou projevů koncového bodu ověřujete nebo opravujete předpokládaný záměr promluvy. Označíte také vlastní entity, které nebyly předpokládané. 
+Kontrolou projevů koncového bodu ověřujete nebo opravujete předpokládaný záměr promluvy. Označíte také vlastní entity, které nebyly předpovězené, nebo jejichž předpověď byla nesprávná. 
+
+**V tomto kurzu se naučíte:**
+
+<!-- green checkmark -->
+> [!div class="checklist"]
+> * Použít existující ukázkovou aplikaci
+> * Kontrola promluv koncového bodu
+> * Aktualizovat seznam frází
+> * Trénovat aplikaci
+> * Publikování aplikace
+> * Odeslání dotazu na koncový bod aplikace a zobrazení odpovědi JSON ze služby LUIS
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="use-existing-app"></a>Použití existující aplikace
+
+Pokračujte s aplikací s názvem **HumanResources** vytvořenou v posledním kurzu. 
+
+Pokud tuto aplikaci nemáte, proveďte následující kroky:
+
+1.  Stáhněte a uložte si [soubor JSON aplikace](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json).
+
+2. Naimportujte JSON do nové aplikace.
+
+3. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `review`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Vzhledem k tomu, že název verze je součástí cesty URL, smí obsahovat jen znaky platné v adresách URL.
+
+    Pokud tento kurz používáte jako novou naimportovanou aplikaci, musíte ji také natrénovat, publikovat a potom přidat promluvy do koncového bodu pomocí [skriptu](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/demo-upload-endpoint-utterances/endpoint.js) nebo z koncového bodu v prohlížeči. Přidávané promluvy jsou tyto:
+
+   [!code-nodejs[Node.js code showing endpoint utterances to add](~/samples-luis/examples/demo-upload-endpoint-utterances/endpoint.js?range=15-26)]
+
+    Pokud máte díky sérii kurzů všechny verze této aplikace, může vás u některých verzí překvapit, že se seznam **Kontrola promluv koncového bodu** nezmění. Je jen jeden fond promluv ke kontrole bez ohledu na to, jakou verzi právě editujete nebo jaká verze aplikace byla publikovaná v koncovém bodě. 
 
 ## <a name="review-endpoint-utterances"></a>Kontrola promluv koncového bodu
 
-1. Ujistěte se, že je vaše aplikace pro lidské zdroje uvedená v části **Build** (Sestavení) služby LUIS. Do této části můžete přejít výběrem možnosti **Build** (Sestavit) v pravém horním řádku nabídek. 
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. V levém navigačním panelu vyberte **Review endpoint utterances** (Kontrola promluv koncového bodu). Seznam je filtrovaný pro záměr **ApplyForJob**. 
 
-    [ ![Snímek obrazovky s tlačítkem pro kontrolu promluv koncového bodu na levém navigačním panelu](./media/luis-tutorial-review-endpoint-utterances/entities-view-endpoint-utterances.png)](./media/luis-tutorial-review-endpoint-utterances/entities-view-endpoint-utterances.png#lightbox)
+    [ ![Snímek obrazovky s tlačítkem pro kontrolu promluv koncového bodu na levém navigačním panelu](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png#lightbox)
 
 3. Přepněte zobrazení entit (**Entities view**), aby se zobrazily označené entity. 
     
-    [ ![Snímek obrazovky kontroly promluv koncového bodu se zvýrazněným přepínačem zobrazení entit](./media/luis-tutorial-review-endpoint-utterances/select-entities-view.png)](./media/luis-tutorial-review-endpoint-utterances/select-entities-view.png#lightbox)
+    [ ![Snímek obrazovky kontroly promluv koncového bodu se zvýrazněným přepínačem zobrazení entit](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png#lightbox)
 
     |Promluva|Správný záměr|Chybějící entity|
     |:--|:--|:--|
     |I'm looking for a job with Natural Language Processing|GetJobInfo|Job – "Natural Language Process"|
 
     Tato promluva není ve správném záměru a má skóre menší než 50 %. Záměr **ApplyForJob** má 21 promluv, zatímco záměr **GetJobInformation** má sedm promluv. Současně se správným zařazením promluv koncového bodu by se do záměru **GetJobInformation** měly přidat další promluvy. To necháme na vás jako cvičení, které si můžete provést sami. Každý záměr s výjimkou záměru **None** by měl mít přibližně stejný počet ukázkových promluv. Záměr **None** by měl mít 10 % z celkového počtu promluv v aplikaci. 
-
-    V zobrazení tokenů (**Tokens View**) můžete najetím myši na libovolný modrý text zobrazit predikovaný název entity. 
 
 4. Pro promluvu `I'm looking for a job with Natual Language Processing` vyberte správný záměr **GetJobInformation** ve sloupci **Aligned intent** (Nastavený záměr). 
 
@@ -87,11 +97,13 @@ Kontrolou projevů koncového bodu ověřujete nebo opravujete předpokládaný 
 
     [ ![Snímek obrazovky finalizace zbývajících promluv v nastaveném záměru](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png)](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png#lightbox)
 
-9. Seznam už by toto promluvy neměl obsahovat. Pokud se zobrazí další promluvy, pokračujte v práci s tímto seznamem a opravujte záměry a označujte všechny chybějící entity, dokud tento seznam není prázdný. Vyberte další záměr v seznamu filtru a potom pokračujte v opravách promluv a označování entit. Nezapomeňte, že posledním krokem každého záměru je buď vybrat **Add to aligned intent** (Přidat do nastaveného záměru) na řádku promluvy, nebo zaškrtnout políčko vedle každého záměru a vybrat **Add selected** (Přidat vybrané) nad tabulkou. 
+9. Seznam už by toto promluvy neměl obsahovat. Pokud se zobrazí další promluvy, pokračujte v práci s tímto seznamem a opravujte záměry a označujte všechny chybějící entity, dokud tento seznam nebude prázdný. 
 
-    Tato aplikace je velmi malá. Celý proces kontroly trvá jenom několik minut.
+10. Vyberte další záměr v seznamu filtru a potom pokračujte v opravách promluv a označování entit. Nezapomeňte, že posledním krokem každého záměru je buď vybrat **Add to aligned intent** (Přidat do nastaveného záměru) na řádku promluvy, nebo zaškrtnout políčko vedle každého záměru a vybrat **Add selected** (Přidat vybrané) nad tabulkou.
 
-## <a name="add-new-job-name-to-phrase-list"></a>Přidání nového názvu pracovní pozice do seznamu frází
+    Pokračujte tak dlouho, dokud v seznamu filtru nebudou žádné záměry a entity. Tato aplikace je velmi malá. Celý proces kontroly trvá jenom několik minut. 
+
+## <a name="update-phrase-list"></a>Aktualizace seznamu frází
 Aktualizujte seznam frází každým nově zjištěným názvem pracovní pozice. 
 
 1. V levém navigačním panelu vyberte **Phrase lists** (Seznam frází).
@@ -100,19 +112,19 @@ Aktualizujte seznam frází každým nově zjištěným názvem pracovní pozice
 
 3. Jako hodnotu přidejte `Natural Language Processing` a potom vyberte **Uložit**. 
 
-## <a name="train-the-luis-app"></a>Trénování aplikace LUIS
+## <a name="train"></a>Trénování
 
 Služba LUIS nemá o těchto změnách informace, dokud se nenatrénuje. 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikování aplikace a získání adresy URL koncového bodu
+## <a name="publish"></a>Publikování
 
 Pokud jste tuto aplikaci naimportovali, musíte vybrat **Sentiment analysis** (Analýza mínění).
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="query-the-endpoint-with-an-utterance"></a>Odeslání dotazu na koncový bod s promluvou
+## <a name="get-intent-and-entities-from-endpoint"></a>Získání záměru a entit z koncového bodu
 
 Vyzkoušejte promluvu blízkou opravené promluvě. 
 
@@ -223,16 +235,14 @@ Vyzkoušejte promluvu blízkou opravené promluvě.
 Asi vás napadá, proč nepřidat další ukázkové promluvy. Jaký je účel kontrol promluv koncového bodu? V reálných aplikacích LUIS jsou promluvy koncového bodu od uživatelů a mají volbu slov a uspořádání, které jste ještě nepoužili. Pokud jste použili stejnou volbu slov a uspořádání, původní predikce by měla vyšší procentní hodnocení. 
 
 ## <a name="why-is-the-top-intent-on-the-utterance-list"></a>Proč je hlavní záměr uvedený v seznamu promluv? 
-Některé z promluv koncového bodu budou mít v seznamu kontrol vysoký počet procent. Tyto promluvy musíte přesto zkontrolovat a ověřit. Jsou v tomto seznamu proto, že další záměr má skóre příliš blízko skóre nejlepšího záměru. 
-
-## <a name="what-has-this-tutorial-accomplished"></a>Co bylo účelem tohoto kurzu?
-Kontrolou projevů z koncového bodu se zvýšila přesnost predikcí této aplikace. 
+Některé z promluv koncového bodu budou mít v seznamu kontrol vysoké skóre předpovědi. Tyto promluvy musíte přesto zkontrolovat a ověřit. Jsou v tomto seznamu proto, že další záměr má skóre příliš blízko skóre nejlepšího záměru. Mezi jednotlivými hlavními záměry je dobré mít asi 15% rozdíl.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
+V tomto kurzu jste zkontrolovali promluvy získané z koncového bodu, které nemusela mít služba LUIS správně naučené. Jakmile se takové promluvy ověří a přesunou jako ukázkové promluvy do správných záměrů, zlepší se ve službě LUIS přesnost předpovědí.
 
 > [!div class="nextstepaction"]
 > [Jak používat vzory](luis-tutorial-pattern.md)

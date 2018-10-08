@@ -1,69 +1,70 @@
 ---
-title: přerušování katalogu elektronické obchodování s machine learning a AI s Azure obsahu moderátora | Microsoft Docs
-description: Automaticky střední katalogů elektronické obchodování s machine learning a AI
+title: 'Kurz: Moderování katalogu elektronického obchodování – Content Moderator'
+titlesuffix: Azure Cognitive Services
+description: Automatické moderování katalogů elektronického obchodování pomocí strojového učení a AI
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: 6177758eaa3e611ad67da0778d889df48b052d90
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
-ms.translationtype: MT
+ms.openlocfilehash: 2405ba9087e63b57c7bd6bc6f290cdafacaf7a49
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37095747"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227346"
 ---
-# <a name="ecommerce-catalog-moderation-with-machine-learning"></a>přerušování katalogu elektronické obchodování s machine learning
+# <a name="tutorial-ecommerce-catalog-moderation-with-machine-learning"></a>Kurz: Moderování katalogu elektronického obchodování pomocí strojového učení
 
-V tomto kurzu jsme zjistěte, jak implementovat na základě machine learning inteligentního elektronické obchodování katalogu přerušování kombinací s asistencí počítač AI technologie s lidským přerušování k zajištění inteligentního katalogu systému.
+V tomto kurzu se naučíme implementovat inteligentní moderování katalogu elektronického obchodování založené na strojovém učení. Využijeme k tomu kombinaci technologií strojově podporované umělé inteligence s moderováním člověkem a vytvoříme tak inteligentní systém katalogu.
 
-![Obrázky klasifikovaný produktů](images/tutorial-ecommerce-content-moderator.PNG)
+![Klasifikované obrázky produktů](images/tutorial-ecommerce-content-moderator.PNG)
 
-## <a name="business-scenario"></a>Podnikový scénář
+## <a name="business-scenario"></a>Obchodní scénář
 
-Počítače s asistencí technologie používají ke klasifikaci a střední obrázky produktů v těchto kategoriích:
+Pomocí strojově podporovaných technologií můžete klasifikovat a moderovat obrázky produktů v těchto kategoriích:
 
-1. Pro dospělé (nahota)
-2. Zájem (sugestivní)
-3. Celebrit
-4. Příznaky USA
-5. Toys
+1. Obsah pro dospělé (nahota)
+2. Nevhodné (sugestivní)
+3. Celebrity
+4. Vlajky USA
+5. Hračky
 6. Pera
 
-## <a name="tutorial-steps"></a>Kurz kroky
+## <a name="tutorial-steps"></a>Kroky v kurzu
 
-Tento kurz vás provede tyto kroky:
+Tento kurz vás provede následujícími kroky:
 
-1. Registrace a vytvoření týmu obsahu moderátora.
-2. Nakonfigurujte přerušování značky (popisky) pro potenciální celebrit a příznak obsahu.
-3. Pomocí rozhraní API moderátora obsah image vyhledat potenciální obsah pro dospělé a zájem.
-4. Použijte rozhraní API vize počítače můžete spustit kontrolu potenciálních celebrit.
-5. Použijte službu vlastní vize kontrolovala možné přítomnosti příznaky.
-6. K dispozici výsledky nuanced kontroly pro lidské zkontrolujte a provedení konečné rozhodnutí.
+1. Registrace a vytvoření týmu Content Moderatoru
+2. Konfigurace značek (popisků) moderování pro případný obsah s celebritami a vlajkami
+3. Vyhledání případného nevhodného obsahu a obsahu pro dospělé pomocí rozhraní API Content Moderatoru pro obrázky
+4. Vyhledání případných celebrit pomocí rozhraní API pro počítačové zpracování obrazu
+5. Vyhledání případných vlajek pomocí Custom Vision Service
+6. Předání nerozhodných výsledků hledání ke kontrole člověkem a konečné rozhodnutí
 
 ## <a name="create-a-team"></a>Vytvoření týmu
 
-Odkazovat [rychlý Start](quick-start.md) stránky zaregistrovat obsahu moderátora a vytvoření týmu. Poznámka: **ID týmu** z **pověření** stránky.
+Zaregistrovat se do Content Moderatoru a vytvořit tým můžete na stránce [Rychlý start](quick-start.md). Poznamenejte si **ID týmu** ze stránky **Přihlašovací údaje**.
 
 
-## <a name="define-custom-tags"></a>Zadejte vlastní značky
+## <a name="define-custom-tags"></a>Definice vlastních značek
 
-Odkazovat [značky](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/tags) článek a přidat vlastní značky. Kromě integrovaných **pro dospělé** a **zájem** značky, nové značky povolit nástroj zkontrolujte zobrazíte popisný název pro značek.
+Pokud chcete přidat vlastní značky, přečtěte si článek o [značkách](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/tags). Kromě integrovaných značek **adult** a **racy** umožňují nové značky nástroji pro kontrolu zobrazovat popisné názvy značek.
 
-V našem případě jsme definovali tyto vlastní značky (**celebrit**, **příznak**, **nám**, **hračka**, **pera**):
+V našem případě definujeme tyto vlastní značky (**celebrity**, **flag**, **us**, **toy**, **pen**):
 
-![Konfigurace vlastní značky](images/tutorial-ecommerce-tags2.PNG)
+![Konfigurace vlastních značek](images/tutorial-ecommerce-tags2.PNG)
 
-## <a name="list-your-api-keys-and-endpoints"></a>Seznam koncové body a klíče rozhraní API
+## <a name="list-your-api-keys-and-endpoints"></a>Vypsání klíčů a koncových bodů rozhraní API
 
-1. Tento kurz používá tři rozhraní API a odpovídající klíče a rozhraní API koncové body.
-2. Váš koncový bod rozhraní API se liší podle toho oblasti vašeho předplatného a ID obsahu moderátora zkontrolujte Team.
+1. Tento kurz používá tři rozhraní API, odpovídající klíče a koncové body rozhraní API.
+2. Vaše koncové body rozhraní API se budou lišit v závislosti na oblastech předplatného a ID posuzovacího týmu Content Moderatoru.
 
 > [!NOTE]
-> Kurz je určena k použití předplatného klíče v oblastech viditelné v následujících koncových bodů. Ujistěte se, že odpovídají klíče rozhraní API s oblasti identifikátory URI jinak klíče nemusí fungovat s vytvoření následujících koncových bodů:
+> Tento kurz je navržený tak, aby používal klíče předplatných v oblastech, které se zobrazují v následujících koncových bodech. Ujistěte se, že klíče rozhraní API odpovídají identifikátorům URI oblastí, jinak vaše klíče nemusí fungovat s následujícími koncovými body:
 
          // Your API keys
         public const string ContentModeratorKey = "XXXXXXXXXXXXXXXXXXXX";
@@ -76,12 +77,12 @@ V našem případě jsme definovali tyto vlastní značky (**celebrit**, **pří
         public const string ComputerVisionUri = "https://westcentralus.api.cognitive.microsoft.com/vision/v1.0";
         public const string CustomVisionUri = "https://southcentralus.api.cognitive.microsoft.com/customvision/v1.0/Prediction/XXXXXXXXXXXXXXXXXXXX/url";
 
-## <a name="scan-for-adult-and-racy-content"></a>Vyhledat obsah pro dospělé a zájem
+## <a name="scan-for-adult-and-racy-content"></a>Hledání nevhodného obsahu a obsahu pro dospělé
 
-1. Funkce přijímá jako parametry adresu URL obrázku a pole páry klíč hodnota.
-2. Zavolá rozhraní API bitové kopie obsahu moderátora získat Dospělý a Racy skóre.
-3. Pokud skóre je vyšší než 0.4 (rozsah je od 0 do 1), nastaví hodnotu **ReviewTags** pole na **True**.
-4. **ReviewTags** pole se používá ke zvýraznění odpovídající značky v nástroji revize.
+1. Funkce jako své parametry přijímá adresu URL obrázku a pole párů klíč-hodnota.
+2. Zavolá rozhraní API Content Moderatoru pro obrázky a získá skóre v kategoriích obsahu pro dospělé a nevhodného obsahu.
+3. Pokud je skóre větší než 0,4 (z rozsahu 0 až 1), nastaví hodnotu v poli **ReviewTags** na **True**.
+4. Pole **ReviewTags** slouží ke zvýraznění odpovídajících značek v nástroji pro kontrolu.
 
         public static bool EvaluateAdultRacy(string ImageUrl, ref KeyValuePair[] ReviewTags)
         {
@@ -119,17 +120,17 @@ V našem případě jsme definovali tyto vlastní značky (**celebrit**, **pří
             return response.IsSuccessStatusCode;
         }
 
-## <a name="scan-for-celebrities"></a>Vyhledat celebrit
+## <a name="scan-for-celebrities"></a>Vyhledání celebrit
 
-1. Zaregistrujte si [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) z [počítače vize API](https://azure.microsoft.com/services/cognitive-services/computer-vision/).
-2. Klikněte **získat klíč rozhraní API** tlačítko.
-3. Podmínky přijměte.
-4. Chcete-li přihlášení, zvolte ze seznamu Internetové účty, které jsou k dispozici.
-5. Poznámka: zobrazené na stránku služby klíče rozhraní API.
+1. Zaregistrujte si [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) [rozhraní API pro počítačové zpracování obrazu](https://azure.microsoft.com/services/cognitive-services/computer-vision/).
+2. Klikněte na tlačítko **Získat klíč rozhraní API**.
+3. Přijměte podmínky.
+4. Přihlaste se tak, že si zvolíte nějakou hodnotu ze seznamu dostupných účtů v internetu.
+5. Poznamenejte si klíče rozhraní API, které se zobrazují na stránce služby.
     
-   ![Rozhraní API vize klíče počítače](images/tutorial-computer-vision-keys.PNG)
+   ![Klíče rozhraní API pro počítačové zpracování obrazu](images/tutorial-computer-vision-keys.PNG)
     
-6. Naleznete projektu zdrojového kódu pro funkce, která kontroluje bitovou kopii s rozhraním API vize počítače.
+6. Funkci, která prohledá obrázky pomocí rozhraní API pro počítačové zpracování obrazu, najdete ve zdrojovém kódu projektu.
 
          public static bool EvaluateComputerVisionTags(string ImageUrl, string ComputerVisionUri, string ComputerVisionKey, ref KeyValuePair[] ReviewTags)
         {
@@ -156,13 +157,13 @@ V našem případě jsme definovali tyto vlastní značky (**celebrit**, **pří
             return Response.IsSuccessStatusCode;
         }
 
-## <a name="classify-into-flags-toys-and-pens"></a>Klasifikovat do příznaky, toys a pera
+## <a name="classify-into-flags-toys-and-pens"></a>Klasifikace na vlajky, hračky a pera
 
-1. [Přihlaste se](https://azure.microsoft.com/en-us/services/cognitive-services/custom-vision-service/) k [preview rozhraní API vize vlastní](https://www.customvision.ai/).
-2. Použití [rychlý Start](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) vytvořit vaše vlastní třídění k detekci přítomnosti potenciální příznaky, toys a pera.
-   ![Vlastní vize školení obrázků](images/tutorial-ecommerce-custom-vision.PNG)
-3. [Získat adresu URL koncového bodu předpovědi](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api) pro vaše vlastní třídění.
-4. Prohlédněte si kód zdroj projektu zobrazíte funkce, která volá váš koncový bod předpovědi vlastní třídění ke kontrole bitové kopie.
+1. [Přihlaste se](https://azure.microsoft.com/en-us/services/cognitive-services/custom-vision-service/) k [rozhraní Custom Vision API Preview](https://www.customvision.ai/).
+2. Pomocí [Rychlého startu](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) vytvořte vlastní klasifikátor, který zjistí případnou přítomnost značek, hraček a per.
+   ![Trénovací obrázky pro Custom Vision](images/tutorial-ecommerce-custom-vision.PNG)
+3. [Získejte adresu URL koncového bodu pro predikce](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api) pro váš vlastní klasifikátor.
+4. Funkci, která volá koncový bod pro predikci vlastního klasifikátoru, aby se prohledal obrázek, najdete ve zdrojovém kódu projektu.
 
         public static bool EvaluateCustomVisionTags(string ImageUrl, string CustomVisionUri, string CustomVisionKey, ref KeyValuePair[] ReviewTags)
         {
@@ -180,11 +181,11 @@ V našem případě jsme definovali tyto vlastní značky (**celebrit**, **pří
             return response.IsSuccessStatusCode;
         }       
  
-## <a name="reviews-for-human-in-the-loop"></a>Recenze pro lidské v the smyčky
+## <a name="reviews-for-human-in-the-loop"></a>Kontroly člověkem zapojeným do procesu
 
-1. V předchozích částech zkontrolovat pro příchozí obrázky pro dospělé a zájem (obsahu moderátora), celebrit (vize počítače) a příznaky (vlastní vize).
-2. Podle našich shodu prahové hodnoty pro každý kontroly, zpřístupníte nuanced případů pro lidské zkontrolujte v nástroji Kontrola.
-        Veřejné statické bool {CreateReview (řetězec ImageUrl, KeyValuePair [] Metadata)
+1. V předchozích částech jste vyhledali v příchozích obrázcích obsah pro dospělé a nevhodný obsah (Content Moderator), celebrity (Počítačové zpracování obrazu) a vlajky (Custom Vision).
+2. Nerozhodné případy můžete na základě našich prahových hodnot pro jednotlivá hledání předat ke kontrole člověkem v nástroji pro kontrolu.
+        public static bool CreateReview(string ImageUrl, KeyValuePair[] Metadata) {
 
             ReviewCreationRequest Review = new ReviewCreationRequest();
             Review.Item[0] = new ReviewItem();
@@ -202,11 +203,11 @@ V našem případě jsme definovali tyto vlastní značky (**celebrit**, **pří
             return response.IsSuccessStatusCode;
         }
 
-## <a name="submit-batch-of-images"></a>Odeslání dávky bitových kopií
+## <a name="submit-batch-of-images"></a>Odeslání dávky obrázků
 
-1. Tento kurz předpokládá adresář "C:Test" s textový soubor, který obsahuje seznam adres URL bitové kopie.
+1. V tomto kurzu se předpokládá existence adresáře C:Test s textovým souborem, který obsahuje seznam adres URL obrázků.
 2. Následující kód zkontroluje existenci souboru a načte všechny adresy URL do paměti.
-            Vyhledejte adresář testu pro textový soubor s seznam adres URL bitové kopie ke kontrole var topdir = @"C:\test\"; var Urlsfile = topdir +"Urls.txt";
+            // Kontrola textového souboru se seznamem adres URL obrázků, které se prohledají, v testovacím adresáři var topdir = @"C:\test\"; var Urlsfile = topdir + "Urls.txt";
 
             if (!Directory.Exists(topdir))
                 return;
@@ -219,11 +220,11 @@ V našem případě jsme definovali tyto vlastní značky (**celebrit**, **pří
             // Read all image URLs in the file
             var Urls = File.ReadLines(Urlsfile);
 
-## <a name="initiate-all-scans"></a>Spuštění všech kontrol
+## <a name="initiate-all-scans"></a>Zahájení všech kontrol
 
-1. Tato funkce nejvyšší úrovně projde všechny adresy URL bitové kopie v textovém souboru, který jsme už zmínili dřív.
-2. Prohledá je s každé rozhraní API a pokud skóre spolehlivosti shodu spadá do našich kritéria pro lidské moderátorů vytvoří kontrolu.
-             pro každou adresa URL obrázku v souboru... příkazu foreach (var Url v adresách URL) {/ / Initiatize nové pole značky zkontrolujte ReviewTags = nové KeyValuePair [MAXTAGSCOUNT];
+1. Tato funkce nejvyšší úrovně prochází všechny adresy URL obrázků v textovém souboru, který jsme zmínili výše.
+2. Prohledá je jednotlivými rozhraními API, a pokud skóre spolehlivosti shody spadá do našich kritérií, vytvoří se kontrola pro lidské moderátory.
+             // pro každou adresu URL obrázku v souboru... foreach (var Url in Urls) { // Inicializace nového pole ReviewTags array ReviewTags = new KeyValuePair[MAXTAGSCOUNT];
 
                 // Evaluate for potential adult and racy content with Content Moderator API
                 EvaluateAdultRacy(Url, ref ReviewTags);
@@ -240,12 +241,12 @@ V našem případě jsme definovali tyto vlastní značky (**celebrit**, **pří
 
 ## <a name="license"></a>Licence
 
-Všechny sady Microsoft kognitivní služby SDK a ukázky licenci s licencí MIT. Další podrobnosti najdete v tématu [licence](https://microsoft.mit-license.org/).
+Všechny sady SDK služeb Microsoft Cognitive Services a ukázky jsou licencovány licencí MIT. Další podrobnosti najdete v [LICENCI](https://microsoft.mit-license.org/).
 
 ## <a name="developer-code-of-conduct"></a>Pravidla chování vývojáře
 
-Vývojáře, kteří používají kognitivní služeb, včetně Tato klientská knihovna pro & ukázce se očekává, postupujte podle "Vývojáře kód z chování pro Microsoft kognitivní služby", který naleznete na http://go.microsoft.com/fwlink/?LinkId=698895.
+Vývojáři, kteří používají Cognitive Services, včetně této klientské knihovny a ukázky, by měli postupovat podle pravidel chování vývojářů pro Microsoft Cognitive Services, která se nacházejí na adrese http://go.microsoft.com/fwlink/?LinkId=698895.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Sestavení a rozšíření kurz pomocí [zdrojové soubory projektu](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) na Githubu.
+Sestavte a rozšiřte kurz pomocí [zdrojových souborů projektu](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) na Githubu.

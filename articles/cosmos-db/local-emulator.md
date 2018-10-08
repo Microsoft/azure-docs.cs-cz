@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/20/2018
 ms.author: danoble
-ms.openlocfilehash: 355f80479ba7c6d6399bb25f7ba1511c6b18599b
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 7067a71eea3ffbfadf006a102ee926fb15347f63
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43285223"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423642"
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Použití emulátoru služby Azure Cosmos DB pro místní vývoj a testování
 
@@ -35,10 +35,7 @@ ms.locfileid: "43285223"
 </tr>
 </table>
   
-Emulátor služby Azure Cosmos DB zajistí místní prostředí, které emuluje službu Azure Cosmos DB pro účely vývoje. Pomocí emulátoru služby Azure Cosmos DB můžete vyvíjet a testovat aplikace místně bez vytváření předplatného Azure a bez jakýchkoli nákladů. Jakmile budete spokojeni s fungováním aplikace v emulátoru, můžete přejít na účet služby Azure Cosmos DB v cloudu.
-
-> [!NOTE]
-> V tuto chvíli Průzkumník dat v emulátoru plně podporuje pouze kolekce rozhraní SQL API a kolekce MongoDB. Kontejnery Table, Graph a Cassandra nejsou plně podporovány. 
+Emulátor služby Azure Cosmos DB zajistí místní prostředí, které emuluje službu Azure Cosmos DB pro účely vývoje. Pomocí emulátoru služby Azure Cosmos DB můžete vyvíjet a testovat aplikace místně bez vytváření předplatného Azure a bez jakýchkoli nákladů. Jakmile budete spokojeni s fungováním aplikace v emulátoru, můžete přejít na účet služby Azure Cosmos DB v cloudu. Emulátor služby Azure Cosmos DB můžete použít se všemi rozhraními API – SQL, MongoDB, Cassandra, Gremlin a Table.
 
 Tento článek se zabývá následujícími úkony: 
 
@@ -54,9 +51,9 @@ Tento článek se zabývá následujícími úkony:
 
 ## <a name="how-the-emulator-works"></a>Jak emulátor funguje
 
-Emulátor služby Azure Cosmos DB s vysokou věrností emuluje službu Azure Cosmos DB. Podporuje identické funkce jako Azure Cosmos DB, včetně podpory pro vytváření a dotazování dokumentů JSON, zřizování a škálování kolekcí a spouštění uložených procedur a aktivačních událostí. V emulátoru služby Azure Cosmos DB můžete vyvíjet a testovat aplikace a potom je nasadit v Azure v globálním měřítku tak, že provedete pouze jedinou změnu konfigurace koncového bodu připojení pro službu Azure Cosmos DB.
+Emulátor služby Azure Cosmos DB s vysokou věrností emuluje službu Azure Cosmos DB. Podporuje identické funkce jako Azure Cosmos DB, včetně podpory pro vytváření a dotazování dokumentů JSON, zřizování a škálování kolekcí a spouštění uložených procedur a aktivačních událostí. V emulátoru služby Azure Cosmos DB můžete vyvíjet a testovat aplikace a potom je nasadit do Azure v globálním měřítku pouhou změnou konfigurace koncového bodu připojení služby Azure Cosmos DB.
 
-Přestože je emulace služby Azure Cosmos DB věrná, implementace emulátoru se od služby liší. Emulátor například používá standardní součásti operačního systému, například místní systém souborů pro trvalost a zásobník protokolu HTTPS pro připojení. Funkce, které jsou závislé na infrastruktuře Azure, jako je globální replikace, latence pro čtení a zápis v řádu milisekund a nastavitelné úrovně konzistence, nejsou k dispozici.
+Přestože je emulace služby Azure Cosmos DB věrná, implementace emulátoru se od služby liší. Emulátor například používá standardní součásti operačního systému, jako je místní systém souborů pro trvalost a sada protokolů HTTPS pro připojení. Funkce, které jsou závislé na infrastruktuře Azure, jako je globální replikace, latence pro čtení a zápis v řádu milisekund a nastavitelné úrovně konzistence, nejsou k dispozici.
 
 ## <a name="differences-between-the-emulator-and-the-service"></a>Rozdíly mezi emulátorem a službou 
 Vzhledem k tomu, že emulátor služby Azure Cosmos DB poskytuje emulované prostředí běžící na místní pracovní stanici vývojáře, existují některé rozdíly ve funkčnosti mezi emulátorem a účtem služby Azure Cosmos DB v cloudu:
@@ -314,11 +311,11 @@ Pokud chcete změnit počet kolekcí, které jsou k dispozici pro emulátor slu�
 2. Odstraňte všechna data emulátoru ve složce C:\Users\uživatelské_jméno\AppData\Local\CosmosDBEmulator.
 3. Ukončete všechny otevřené instance tak, že kliknete pravým tlačítkem myši na ikonu **emulátoru služby Azure Cosmos DB** na hlavním panelu systému a potom kliknete na **Exit** (Konec). Ukončení všech instancí může chvíli trvat.
 4. Nainstalujte nejnovější verzi [emulátoru služby Azure Cosmos DB](https://aka.ms/cosmosdb-emulator).
-5. Spusťte emulátor s příznakem PartitionCount nastaveným na hodnotu < = 250. Například: `C:\Program Files\Azure CosmosDB Emulator>CosmosDB.Emulator.exe /PartitionCount=100`.
+5. Spusťte emulátor s příznakem PartitionCount nastaveným na hodnotu < = 250. Například: `C:\Program Files\Azure Cosmos DB Emulator> CosmosDB.Emulator.exe /PartitionCount=100`.
 
 ## <a name="controlling-the-emulator"></a>Řízení emulátoru
 
-Emulátor je dodáván s modulem PowerShellu, který umožňuje spouštět, zastavovat a odinstalovat emulátor a získávat stav služby. Pokud ho chcete použít:
+Emulátor se dodává s modulem PowerShell, který umožňuje spustit, zastavit, odinstalovat a načíst stav této služby. Pokud ho chcete použít:
 
 ```powershell
 Import-Module "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules\Microsoft.Azure.CosmosDB.Emulator"
@@ -380,7 +377,7 @@ Emulátor služby Azure Cosmos DB můžete spustit v aplikaci Docker for Windows
 
 Jakmile [Docker for Windows](https://www.docker.com/docker-windows) nainstalujete, přepněte na kontejnery Windows tak, že kliknete pravým tlačítkem myši na ikonu Dockeru na panelu nástrojů a vyberete **Switch to Windows containers** (Přepnout na kontejnery Windows).
 
-Potom si vyžádejte image emulátoru z Centra Dockeru spuštěním následujícího příkazu z vašeho oblíbeného prostředí.
+Potom si spuštěním následujícího příkazu z vašeho oblíbeného prostředí stáhněte image emulátoru z Centra Dockeru.
 
 ```     
 docker pull microsoft/azure-cosmosdb-emulator 
@@ -402,7 +399,7 @@ docker run -v $env:LOCALAPPDATA\CosmosDBEmulatorCert:C:\CosmosDB.Emulator\Cosmos
 Odpověď vypadá podobně jako následující zpráva:
 
 ```
-Starting Emulator
+Starting emulator
 Emulator Endpoint: https://172.20.229.193:8081/
 Master Key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
 Exporting SSL Certificate
@@ -440,7 +437,7 @@ Následující tipy použijte k řešení potíží s emulátorem služby Azure 
 
 - Pokud jste nainstalovali novou verzi emulátoru a dochází k chybám, proveďte obnovení dat. Data obnovíte tak, že kliknete pravým tlačítkem myši na ikonu emulátoru služby Azure Cosmos DB na hlavním panelu systému a potom kliknete na Reset Data (Obnovit data). Pokud se takto chyby neopraví, můžete odinstalovat a znovu nainstalovat aplikaci. Pokyny najdete v části [Odinstalace místního emulátoru](#uninstall).
 
-- Pokud dochází k chybovému ukončování emulátoru služby Azure Cosmos DB, shromážděte soubory výpisů ze složky c:\Users\uživatelské_jméno\AppData\Local\CrashDumps, zkomprimujte je a připojte je k e-mailu, který odešlete na adresu [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com).
+- Pokud se emulátor služby Azure Cosmos DB chybově ukončuje, shromážděte soubory výpisu stavu systému ve složce c:\Users\uživatelské_jméno\AppData\Local\CrashDumps, zkomprimujte je a připojte je k e-mailu, který odešlete na adresu [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com).
 
 - Pokud dojde k selhání v programu CosmosDB.StartupEntryPoint.exe, spusťte z příkazového řádku správce následující příkaz: `lodctr /R` 
 
@@ -448,12 +445,14 @@ Následující tipy použijte k řešení potíží s emulátorem služby Azure 
 
 - Pokud se zobrazí zpráva **Služba není dostupná**, pravděpodobně se emulátoru nedaří inicializovat sadu síťových protokolů. Zkontrolujte, zda máte nainstalovaného klienta Pulse Secure nebo klienta Juniper Networks, protože potíže mohou způsobovat jejich ovladače síťových filtrů. Odinstalace ovladačů síťových filtrů třetích stran obvykle potíže vyřeší.
 
+- Pokud emulátor běží, když počítač přechází do režimu spánku nebo instaluje nějaké aktualizace operačního systému, může se zobrazit zpráva, že **služba momentálně není dostupná**. Kliknutím pravým tlačítkem na ikonu, která se zobrazí v oznamovací oblasti Windows, a výběrem možnosti **Obnovit data** obnovte emulátor.
+
 ### <a id="trace-files"></a>Shromažďování trasovacích souborů
 
 Pokud chcete shromažďovat trasovací soubory pro ladění, spusťte z příkazového řádku pro správu následující příkazy:
 
 1. `cd /d "%ProgramFiles%\Azure Cosmos DB Emulator"`
-2. `CosmosDB.Emulator.exe /shutdown`. Sledujte hlavní panel systému a ujistěte se, že program je vypnutý. Může to chvíli trvat. Můžete taky jen kliknout na **Exit** (Konec) v uživatelském rozhraní emulátoru služby Azure Cosmos DB.
+2. `CosmosDB.Emulator.exe /shutdown`. Sledujte hlavní panel systému a ujistěte se, že program je vypnutý. Může to chvíli trvat. Můžete také jen kliknout na **Exit** (Konec) v uživatelském rozhraní emulátoru služby Azure Cosmos DB.
 3. `CosmosDB.Emulator.exe /starttraces`
 4. `CosmosDB.Emulator.exe`
 5. Reprodukujte problém. Pokud Průzkumník dat nefunguje, stačí několik sekund čekat na otevření prohlížeče a zachytit chybu.
@@ -463,10 +462,10 @@ Pokud chcete shromažďovat trasovací soubory pro ladění, spusťte z příkaz
 
 ### <a id="uninstall"></a>Odinstalace místního emulátoru
 
-1. Ukončete všechny otevřené instance místního emulátoru tak, že kliknete pravým tlačítkem myši na ikonu emulátoru služby Azure Cosmos DB na hlavním panelu systému a potom kliknete na Exit (Konec). Ukončení všech instancí může chvíli trvat.
+1. Kliknutím pravým tlačítkem na ikonu emulátoru služby Azure Cosmos DB v oznamovací oblasti a následným kliknutím na Exit (Konec) ukončete všechny otevřené instance místního emulátoru. Ukončení všech instancí může chvíli trvat.
 2. Do vyhledávacího pole ve Windows zadejte **Programy a funkce** a klikněte na výsledek **Programy a funkce (nastavení systému)**.
 3. V seznamu aplikací se posuňte na položku **Azure Cosmos DB Emulator**, vyberte ji, klikněte na **Odinstalovat**, potvrďte a znovu klikněte na **Odinstalovat**.
-4. Po odinstalaci aplikace přejděte do C:\Users\<uživatel> \AppData\Local\CosmosDBEmulator a odstraňte složku. 
+4. Když je aplikace odinstalovaná, přejděte do složky `C:\Users\<user>\AppData\Local\CosmosDBEmulator` a odstraňte ji. 
 
 ## <a name="change-list"></a>Seznam změn
 
@@ -474,11 +473,11 @@ Pokud chcete shromažďovat trasovací soubory pro ladění, spusťte z příkaz
 
 ### <a name="1220-released-on-april-20-2018"></a>1.22.0. Vydáno 20. dubna 2018
 
-Kromě aktualizace služeb emulátoru pro zajištění parity s cloudovými službami Cosmos DB jsme zahrnuli vylepšenou dokumentaci PowerShellu a různé opravy chyb.
+Kromě aktualizace služeb emulátoru pro zajištění souladu s cloudovými službami Cosmos DB jsme zahrnuli vylepšenou dokumentaci PowerShellu a opravy různých chyb.
 
 ### <a name="12106-released-on-march-27-2018"></a>1.21.0.6 Vydáno 27. března 2018
 
-Kromě aktualizace služeb emulátoru pro zajištění parity s cloudovými službami Cosmos DB jsme do této verze zahrnuli jednu novou funkci a dvě opravy chyb.
+Kromě aktualizace služeb emulátoru pro zajištění souladu s cloudovými službami Cosmos DB jsme do této verze zahrnuli jednu novou funkci a opravy dvou chyb.
 
 #### <a name="features"></a>Funkce
 
@@ -510,7 +509,7 @@ V této verzi byla přidána jedna nová funkce a dvě opravy chyb. Děkujeme z�
 
 #### <a name="features"></a>Funkce
 
-Mnoho zákazníků, s nimiž jsme mluvili, vyjádřilo přání, aby byl emulátor skriptovatelný. Proto jsme v této verzi přidali některé možnosti skriptování. Emulátor nyní zahrnuje modul PowerShellu, který umožňuje spouštět, zastavovat a odinstalovat emulátor a získávat stav služby: `Microsoft.Azure.CosmosDB.Emulator`. 
+Mnoho zákazníků, s nimiž jsme mluvili, vyjádřilo přání, aby byl emulátor skriptovatelný. Proto jsme v této verzi přidali některé možnosti skriptování. Emulátor teď obsahuje modul PowerShell, který ho umožňuje spustit, zastavit, získat stav a odinstalovat: `Microsoft.Azure.CosmosDB.Emulator`. 
 
 ### <a name="120911-released-on-january-26-2018"></a>1.20.91.1 Vydáno 26. ledna 2018
 

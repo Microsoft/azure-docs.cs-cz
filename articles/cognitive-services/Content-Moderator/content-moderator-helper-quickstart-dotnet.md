@@ -1,45 +1,46 @@
 ---
-title: Azure obsahu moderátora SDK pro .NET Pomocná metoda | Microsoft Docs
-description: Jak vracet obsahu moderátora klienta pomocí sady Azure obsahu moderátora SDK pro .NET
+title: 'Rychlý start: Metoda pomocné rutiny sady Content Moderator SDK pro .NET'
+titlesuffix: Azure Cognitive Services
+description: Jak vracet klienta Content Moderatoru pomocí sady Azure Content Moderator SDK pro .NET
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: quickstart
 ms.date: 01/04/2018
 ms.author: sajagtap
-ms.openlocfilehash: 36f2124708731f78f34849d8210ed39ea8f59140
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 0c167de3af8aea6820962e7cc8d0c21f5ba61807
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342393"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223263"
 ---
-# <a name="helper-code-to-return-a-content-moderator-client"></a>Kód pomocného objektu vrátit obsahu moderátora klienta
+# <a name="quickstart-helper-code-to-return-a-content-moderator-client"></a>Rychlý start: Kód pomocné rutiny k vrácení klienta Content Moderatoru
 
-Tento článek obsahuje informace a ukázky kódu, které vám pomůžou začít používat obsahu moderátora SDK pro .NET k vytváření obsahu moderátora klienta pro vaše předplatné.
+Tento článek obsahuje informace a ukázky kódu, které vám pomůžou začít používat sadu Content Moderator SDK pro .NET, abyste mohli vytvořit klienta Content Moderatoru pro své předplatné.
 
-Knihovny používá jiné – elementy QuickStart v této části.
+Knihovnu používají další rychlé starty v této části.
 
-Tento článek předpokládá, že jste již obeznámeni s Visual Studio a C#.
+Tento článek předpokládá, že už máte zkušenosti se sadou Visual Studio a jazykem C#.
 
 > [!IMPORTANT]
-> Tato knihovna tříd obsahuje kód určena pouze pro demonstrační účely.
-> Pokud však upravit tento kód pro použití v produkčním prostředí, použijte zabezpečené metody ukládání a použití svůj klíč předplatného moderátora obsahu.
+> Tato knihovna tříd obsahuje kód určený pouze pro demonstrační účely.
+> Pokud upravíte tento kód pro použití v produkčním prostředí, použijte bezpečný způsob ukládání a používání svého klíče předplatného Content Moderatoru.
 
-## <a name="sign-up-for-content-moderator-services"></a>Zaregistrujte si obsahu moderátora služby
+## <a name="sign-up-for-content-moderator-services"></a>Registrace do služeb Content Moderatoru
 
-Před použitím služby obsahu moderátora přes rozhraní REST API nebo sady SDK, je nutné klíč předplatného.
-Odkazovat [rychlý Start](quick-start.md) se dozvíte, jak můžete získat klíč.
+Než začnete služby Content Moderatoru prostřednictvím rozhraní REST API nebo sady SDK používat, budete potřebovat klíč předplatného.
+Podívejte se na tento [Rychlý start](quick-start.md), kde se dozvíte, jak klíč získat.
 
-## <a name="create-your-visual-studio-project"></a>Vytvoření projektu sady Visual Studio
+## <a name="create-your-visual-studio-project"></a>Vytvoření projektu v sadě Visual Studio
 
-1. Vytvořte novou **knihovny tříd (rozhraní .NET Framework)** projektu.
+1. Vytvořte nový projekt **Knihovna tříd (.NET Framework)**.
 
-   V ukázkovém kódu I s názvem projektu **ModeratorHelper**.
+   V ukázkovém kódu jsem projekt pojmenoval **ModeratorHelper**.
 
-1. Přidat odkaz na **System.Configuration** sestavení rozhraní.
+1. Přidejte odkaz na sestavení Frameworku **System.Configuration**.
 
 ### <a name="install-required-packages"></a>Instalace požadovaných balíčků
 
@@ -49,9 +50,9 @@ Nainstalujte následující balíčky NuGet:
 - Microsoft.Rest.ClientRuntime
 - Newtonsoft.Json
 
-### <a name="create-the-content-moderator-client"></a>Vytvoření obsahu moderátora klienta
+### <a name="create-the-content-moderator-client"></a>Vytvoření klienta Content Moderatoru
 
-Nahraďte obsah souboru ModeratorHelper.cs následujícím kódem:
+Obsah souboru ModeratorHelper.cs nahraďte následujícím kódem:
 
     using Microsoft.CognitiveServices.ContentModerator;
 
@@ -102,10 +103,10 @@ Nahraďte obsah souboru ModeratorHelper.cs následujícím kódem:
 
 
 > [!IMPORTANT]
-> Aktualizace **AzureRegion** a **CMSubscriptionKey** pole s hodnotami klíče oblast identifikátor a předplatné.
+> Aktualizujte pole **AzureRegion** a **CMSubscriptionKey** hodnotami identifikátoru oblasti a klíče předplatného.
 
-Nyní máte rychlý způsob, jak vytvořit klienta obsahu moderátora pro vaše předplatné.
+Teď už umíte rychle vytvořit klienta Content Moderatoru pro své předplatné.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Stáhněte si řešení sady Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) v tomto a dalších – elementy QuickStart obsahu moderátora pro platformu .NET a začít na svoji integraci.
+[Stáhněte si řešení sady Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) pro tento rychlý start a jiné rychlé starty Content Moderatoru pro .NET a začněte se svou integrací.

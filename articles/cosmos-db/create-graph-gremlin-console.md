@@ -1,5 +1,5 @@
 ---
-title: 'Kurz ke službě Azure Cosmos DB: Vytváření, zadávání dotazů a procházení v konzole Apache TinkerPops Gremlin | Microsoft Docs'
+title: 'Kurz ke službě Azure Cosmos DB: Vytváření, zadávání dotazů a procházení v konzole Apache TinkerPops Gremlin | Dokumentace Microsoftu'
 description: Rychlý start ke službě Azure Cosmos DB vám pomůže s vytvářením vrcholů, okrajů a dotazů pomocí rozhraní Gremlin API služby Azure Cosmos DB.
 services: cosmos-db
 author: luisbosquez
@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 905873a695635ba80de258cbf458c8dd3e18d443
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: e73b0e88a98c1b06216378078626b4338c598816
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700334"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422962"
 ---
 # <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Služba Azure Cosmos DB: Vytváření, zadávání dotazů a procházení grafu v konzole Gremlin
 
@@ -90,21 +90,16 @@ serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessage
 
 5. Potom spusťte příkaz `:remote console`, abyste přesměrovali všechny příkazy konzoly na vzdálený server.
 
+   > [!NOTE]
+   > Pokud jste nespustili příkaz `:remote console`, ale chcete přesměrovat všechny příkazy konzoly na vzdálený server, zadejte před příkaz předponu `:>`. Příklad spuštěného příkazu: `:> g.V().count()`. Předpona je součástí příkazu. Při používání konzoly Gremlin s Azure Cosmos DB je to důležité. Pokud tuto předponu vynecháte, dáte konzole pokyn, aby příkaz spustila lokálně – často s grafem v paměti. Použitím předpony `:>` dáváte konzole pokyn ke spuštění vzdáleného příkazu. V tomto případě ve službě Azure Cosmos DB (v emulátoru místního hostitele nebo v instanci Azure).
+
 Výborně! Nastavení se nám podařilo dokončit a teď můžete spouštět některé příkazy konzoly.
 
 Vyzkoušejme jednoduchý příkaz count(). Zadejte do příkazového řádku konzoly následující:
-```
-:> g.V().count()
-```
 
-> [!TIP]
-> Vidíte část příkazu `:>`, která předchází textu `g.V().count()`? 
->
-> Tuto část příkazu je potřeba zadat ručně. Při používání konzole Gremlin s Azure Cosmos DB je to důležité.  
->
-> Vynechání této předpony `:>` dá konzole pokyn, aby příkaz spustila lokálně – často s grafem v paměti.
-> Použití `:>` informuje konzolu, že má spustit vzdálený příkaz – v tomto případě se službou Cosmos DB (buď emulátor místního hostitele, nebo > instance Azure).
-
+```
+g.V().count()
+```
 
 ## <a name="create-vertices-and-edges"></a>Vytváření vrcholů a okrajů
 
@@ -113,7 +108,7 @@ Začněme přidáním pěti osob pro nastavení vrcholů: *Tomáš*, *Marie*, *R
 Vstup (Tomáš):
 
 ```
-:> g.addV('person').property('firstName', 'Thomas').property('lastName', 'Andersen').property('age', 44).property('userid', 1)
+g.addV('person').property('firstName', 'Thomas').property('lastName', 'Andersen').property('age', 44).property('userid', 1)
 ```
 
 Výstup:
@@ -124,7 +119,7 @@ Výstup:
 Vstup (Marie):
 
 ```
-:> g.addV('person').property('firstName', 'Mary Kay').property('lastName', 'Andersen').property('age', 39).property('userid', 2)
+g.addV('person').property('firstName', 'Mary Kay').property('lastName', 'Andersen').property('age', 39).property('userid', 2)
 
 ```
 
@@ -138,7 +133,7 @@ Výstup:
 Vstup (Robin):
 
 ```
-:> g.addV('person').property('firstName', 'Robin').property('lastName', 'Wakefield').property('userid', 3)
+g.addV('person').property('firstName', 'Robin').property('lastName', 'Wakefield').property('userid', 3)
 ```
 
 Výstup:
@@ -150,7 +145,7 @@ Výstup:
 Vstup (Petr):
 
 ```
-:> g.addV('person').property('firstName', 'Ben').property('lastName', 'Miller').property('userid', 4)
+g.addV('person').property('firstName', 'Ben').property('lastName', 'Miller').property('userid', 4)
 
 ```
 
@@ -163,7 +158,7 @@ Výstup:
 Vstup (Jan):
 
 ```
-:> g.addV('person').property('firstName', 'Jack').property('lastName', 'Connor').property('userid', 5)
+g.addV('person').property('firstName', 'Jack').property('lastName', 'Connor').property('userid', 5)
 ```
 
 Výstup:
@@ -178,7 +173,7 @@ V dalším kroku přidejme pro vztahy mezi osobami okraje.
 Vstup (Tomáš -> Marie):
 
 ```
-:> g.V().hasLabel('person').has('firstName', 'Thomas').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Mary Kay'))
+g.V().hasLabel('person').has('firstName', 'Thomas').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Mary Kay'))
 ```
 
 Výstup:
@@ -190,7 +185,7 @@ Výstup:
 Vstup (Tomáš -> Robin):
 
 ```
-:> g.V().hasLabel('person').has('firstName', 'Thomas').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Robin'))
+g.V().hasLabel('person').has('firstName', 'Thomas').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Robin'))
 ```
 
 Výstup:
@@ -202,7 +197,7 @@ Výstup:
 Vstup (Robin -> Petr):
 
 ```
-:> g.V().hasLabel('person').has('firstName', 'Robin').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Ben'))
+g.V().hasLabel('person').has('firstName', 'Robin').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Ben'))
 ```
 
 Výstup:
@@ -217,7 +212,7 @@ Aktualizujme vrchol *Tomáš* s novým věkovým údajem *45* let.
 
 Vstup:
 ```
-:> g.V().hasLabel('person').has('firstName', 'Thomas').property('age', 45)
+g.V().hasLabel('person').has('firstName', 'Thomas').property('age', 45)
 ```
 Výstup:
 
@@ -234,7 +229,7 @@ Vyzkoušejme nejdříve dotaz s filtrem pro vrácení pouze osob nad 40 let.
 Vstup (dotaz s filtrem):
 
 ```
-:> g.V().hasLabel('person').has('age', gt(40))
+g.V().hasLabel('person').has('age', gt(40))
 ```
 
 Výstup:
@@ -248,7 +243,7 @@ Teď navrhněme název pro skupinu osob nad 40 let.
 Vstup (filtru + dotaz projekce):
 
 ```
-:> g.V().hasLabel('person').has('age', gt(40)).values('firstName')
+g.V().hasLabel('person').has('age', gt(40)).values('firstName')
 ```
 
 Výstup:
@@ -264,7 +259,7 @@ Umožňuje procházet graf tak, aby vrátil všechny přátele uživatele Tomá�
 Vstup (přátelé uživatele Tomáš):
 
 ```
-:> g.V().hasLabel('person').has('firstName', 'Thomas').outE('knows').inV().hasLabel('person')
+g.V().hasLabel('person').has('firstName', 'Thomas').outE('knows').inV().hasLabel('person')
 ```
 
 Výstup: 
@@ -279,7 +274,7 @@ V následujícím kroku načteme další vrstvu vrcholů. Umožňuje procházet
 Vstup (přátelé přátel uživatele Tomáš):
 
 ```
-:> g.V().hasLabel('person').has('firstName', 'Thomas').outE('knows').inV().hasLabel('person').outE('knows').inV().hasLabel('person')
+g.V().hasLabel('person').has('firstName', 'Thomas').outE('knows').inV().hasLabel('person').outE('knows').inV().hasLabel('person')
 ```
 Výstup:
 
@@ -294,7 +289,7 @@ Teď odstraníme vrchol z databáze grafu.
 Vstup (vyřazení vrcholu Jan):
 
 ```
-:> g.V().hasLabel('person').has('firstName', 'Jack').drop()
+g.V().hasLabel('person').has('firstName', 'Jack').drop()
 ```
 
 ## <a name="clear-your-graph"></a>Resetování grafu
@@ -304,8 +299,8 @@ Nakonec odstraníme z databáze všechny vrcholy a okraje.
 Vstup:
 
 ```
-:> g.E().drop()
-:> g.V().drop()
+g.E().drop()
+g.V().drop()
 ```
 
 Blahopřejeme! Dokončili jste kurz rozhraní Gremlin API služby Azure Cosmos DB.

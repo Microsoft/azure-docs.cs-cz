@@ -1,20 +1,21 @@
 ---
-title: Vytvoření první aplikace LUIS (Language Understanding) během 10 minut – Cognitive Services LUIS | Microsoft Docs
-description: V tomto rychlém startu vytvoříte aplikaci LUIS, která používá předem připravenou doménu `HomeAutomation` pro zapínání a vypínání světel a zařízení. Tato předem připravená doména poskytuje záměry, entity a příklady promluv. Až budete hotovi, budete mít koncový bod služby LUIS spuštěný v cloudu.
+title: Deset minut do vaší první aplikace LUIS
+titleSuffix: Azure Cognitive Services
+description: Vytvoříte aplikaci LUIS, která používá předem připravenou doménu `HomeAutomation` pro zapínání a vypínání světel a zařízení. Tato předem připravená doména poskytuje záměry, entity a příklady promluv. Až budete hotovi, budete mít koncový bod služby LUIS spuštěný v cloudu.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 08/22/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 457f23936dec0cf85e9aebbf3e54bba37c2f3ca3
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 12a660b49d1a81865c34ceda38f041de9be31eb1
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "43769199"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037469"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Rychlý start: Použití předem připravené aplikace domácí automatizace
 
@@ -54,11 +55,7 @@ Po úspěšném přidání domény pak pole předem připravené domény zobrazu
 
 ## <a name="intents-and-entities"></a>Záměry a entity
 
-V levém navigačním podokně vyberte **Intents** (Záměry) a podívejte se na záměry domény Home Automation. 
-
-[![](media/luis-quickstart-new-app/home-automation-intents.png "Snímek obrazovky se seznamem záměrů a zvýrazněnými názvy záměrů v tabulce")](media/luis-quickstart-new-app/home-automation-intents.png)
-
-Každý záměr má ukázkové promluvy.
+V levém navigačním podokně vyberte **Intents** (Záměry) a podívejte se na záměry domény Home Automation. Každý záměr má ukázkové promluvy.
 
 > [!NOTE]
 > **None** (Žádný) je záměr, který poskytují všechny aplikace LUIS. Používá se ke zpracování promluv, které neodpovídají funkci poskytované vaší aplikací. 
@@ -67,11 +64,9 @@ Vyberte záměr **HomeAutomation.TurnOff**. Vidíte, že záměr obsahuje seznam
 
 [![](media/luis-quickstart-new-app/home-automation-turnon.png "Snímek obrazovky záměru HomeAutomation.TurnOff")](media/luis-quickstart-new-app/home-automation-turnon.png)
 
-## <a name="train-your-app"></a>Trénování aplikace
+## <a name="train-the-luis-app"></a>Trénování aplikace LUIS
 
-V horní navigaci vyberte **Train** (Trénovat).
-
-[![](media/luis-quickstart-new-app/trained.png "Snímek obrazovky záměru HomeAutomation.TurnOff se zeleným oznámením o úspěchu")](media/luis-quickstart-new-app/trained.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="test-your-app"></a>Testování aplikace
 Jakmile aplikaci vytrénujete, můžete ji otestovat. V horní navigaci vyberte **Test** (Testovat). Do podokna Interactive Testing (Interaktivní testování) zadejte testovací promluvu, například „Turn off the lights“ (Vypnout světla), a stiskněte Enter. 
@@ -89,29 +84,23 @@ V tomto příkladu je „Turn off the lights“ (Vypnout světla) správně iden
 
 Znovu vyberte **Test** (Testovat) a sbalte podokno testování. 
 
-## <a name="publish-your-app"></a>Publikování aplikace
-V horní navigaci vyberte **Publish** (Publikovat). 
+<a name="publish-your-app"></a>
 
-[![](media/luis-quickstart-new-app/publish.png "Snímek obrazovky aplikace se zvýrazněným tlačítkem Publish (Publikovat)")](media/luis-quickstart-new-app/publish.png)
+## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikování aplikace a získání adresy URL koncového bodu
 
-Vyberte slot Production (Produkční) a tlačítko **Publish** (Publikovat).
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-Zelený oznamovací pruh v horní části oznamuje, že se aplikace úspěšně publikovala.
+## <a name="query-the-endpoint-with-a-different-utterance"></a>Odeslání dotazu na koncový bod s jinou promluvou
 
-[![](media/luis-quickstart-new-app/published.png "Snímek obrazovky aplikace s oznámením o úspěšném publikování")](media/luis-quickstart-new-app/published.png)
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
-Jakmile aplikaci úspěšně publikujete, můžete použít adresu URL koncového bodu zobrazenou na stránce **Publish app** (Publikovat aplikaci).
+2. Na konec adresy URL zadejte `turn off the living room light` a stiskněte Enter. Prohlížeč zobrazí odpověď JSON koncového bodu HTTP.
 
-[![](media/luis-quickstart-new-app/endpoint.png "Snímek obrazovky se stránkou Publish (Publikovat) a zvýrazněnou adresou URL koncového bodu")](media/luis-quickstart-new-app/endpoint.png)
-
-## <a name="use-your-app"></a>Použití aplikace
-Publikovaný koncový bod můžete otestovat v prohlížeči pomocí vygenerované adresy URL. Tuto adresu URL otevřete v prohlížeči a parametr URL „&q“ nastavte na testovací dotaz. Na konec adresy URL například přidejte `turn off the living room light` a potom stiskněte klávesu Enter. Prohlížeč zobrazí odpověď JSON koncového bodu HTTP.
-
-
-[![](media/luis-quickstart-new-app/turn-off-living-room.png "Snímek obrazovky prohlížeče s výsledkem JSON s rozpoznaným záměrem TurnOff (Vypnout)")](media/luis-quickstart-new-app/turn-off-living-room.png)
-
+    [![](media/luis-quickstart-new-app/turn-off-living-room.png "Snímek obrazovky prohlížeče s výsledkem JSON s rozpoznaným záměrem TurnOff (Vypnout)")](media/luis-quickstart-new-app/turn-off-living-room.png)
+    
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. Vyberte tlačítko se třemi tečkami (***...***) vpravo od názvu aplikace v seznamu aplikací a potom vyberte **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

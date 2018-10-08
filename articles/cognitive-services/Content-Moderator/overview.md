@@ -1,57 +1,58 @@
 ---
-title: Přehled služby Azure obsahu moderátora | Microsoft Docs
-description: Naučte se používat obsah moderátora ke sledování, příznak, hodnocení a filtrování nevhodných obsah na uživatelem generovaný obsah.
+title: Co je Content Moderator?
+titlesuffix: Azure Cognitive Services
+description: Dozvíte se, jak s použitím Content Moderatoru sledovat, označovat příznaky, vyhodnocovat a filtrovat nevhodný obsah v uživatelem generovaném obsahu.
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: overview
 ms.date: 06/15/2017
 ms.author: sajagtap
-ms.openlocfilehash: cd9e2e9c10e9dc5ba118c8319f76174bf6f0da9f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: e109376f47d921fb18d7bb9a6252e80315419ec0
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343618"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226037"
 ---
-# <a name="what-is-content-moderator"></a>Co je obsahu moderátora?
+# <a name="what-is-content-moderator"></a>Co je Content Moderator?
 
-Přerušování obsahu je proces monitorování možné urážlivé, nežádoucím a rizikové obsahu. Moderované obsah může být bitové kopie, text a videa.
+Moderování obsahu je proces monitorování potenciálně urážlivého, nežádoucího a rizikového obsahu. Moderovaným obsahem můžou být obrázky, text a videa.
 
 ## <a name="where-it-is-used"></a>Kde se používá
 
-Následující seznam obsahuje několik ukázkových scénářů, kde se používá moderátora obsahu:
+Následující seznam obsahuje několik ukázkových scénářů, kde se používá Content Moderator:
 
-- Online tržiště moderování katalogy produktů a uživatelem generovaný obsah
-- Herní společností moderování uživatele vytvořila herní artefaktů a chatovací místnosti
-- Sociální platformy zasílání zpráv moderování bitové kopie, text a videa přidal uživatelů
-- Enterprise média společností implementace centralizované přerušování obsahu pro obsah
-- Poskytovatelé řešení K-12 education filtrování chybný a urážlivé obsahu pro studenty a lektorům
+- Online tržiště moderující katalogy produktů a uživatelem generovaný obsah
+- Herní společnosti moderující uživatelem generované herní artefakty a chatovací místnosti
+- Sociální platforma zasílání zpráv moderující obrázky, texty a videa přidaná uživateli
+- Podnikové mediální společnosti implementující centralizované moderování jejich obsahu
+- Poskytovatelé řešení vzdělávání K-12 filtrující chybný a urážlivý obsah pro studenty a vyučující
 
-## <a name="what-it-includes"></a>Její součástí
+## <a name="what-it-includes"></a>Co zahrnuje
 
-Obsahu moderátora se skládá z několika webové rozhraní API a integrované lidské v the smyčku zkontrolujte nástroje, který pomůže střední obrázky, text a videa.
+Content Moderator se skládá z několika rozhraní API webových služeb a integrovaného nástroje pro kontrolu HITL (human-in-the-loop), které pomáhají moderovat obrázky, text a videa.
 
-![Obsahu moderátora Blokový diagram](images/content-moderator-block-diagram.png)
+![Blokový diagram Content Moderatoru](images/content-moderator-block-diagram.png)
 
 ## <a name="apis"></a>Rozhraní API
 
-Obsahu moderátora zahrnuje následující rozhraní API:
-  - [**Text přerušování rozhraní API**](text-moderation-api.md): používat toto rozhraní API ke kontrole text možné vulgárnost explicitní, sugestivní, urážlivé a identifikovatelné osobní informace (PII).
-  - [**Vlastní termín seznamu rozhraní API**](try-terms-list-api.md): Toto rozhraní API použijte k porovnání vlastní seznamy podmínky kromě předdefinovaných podmínky. Využijte tyto seznamy blokovat nebo povolit obsah podle obsahu zásad.  
-  - [**Obrázek přerušování rozhraní API**](image-moderation-api.md): Toto rozhraní API použijte ke kontrole bitové kopie na obsah pro dospělé a zájem, detekovat text v bitové kopie pomocí funkce rozpoznávání optické rozpoznávání znaků (znaků) a zjistit řezy.
-  - [**Vlastní image seznamu rozhraní API**](try-image-list-api.md): Toto rozhraní API použijte k porovnání vlastních seznamů obrázků, předem identifikovaných obsah, který je nebudete muset znovu klasifikovat.
-  - [**Video přerušování rozhraní API**](video-moderation-api.md): používat toto rozhraní API ke kontrole videa pro potenciální obsah pro dospělé a zájem.
-  - [**Zkontrolujte rozhraní API**](try-review-api-job.md): použití [úlohy](try-review-api-job.md), [recenze](try-review-api-review.md), a [pracovního postupu](try-review-api-workflow.md) na vytvoření a automatizovat pracovní postupy lidské v the smyčky v rámci operací Zkontrolujte nástroj.
+Content Moderator zahrnuje následující rozhraní API:
+  - [**Rozhraní API pro moderování textu**](text-moderation-api.md): pomocí tohoto rozhraní API můžete zkontrolovat, zda text obsahuje potenciálně vulgární, explicitní, sugestivní, urážlivé výrazy nebo identifikovatelné osobní údaje (PII).
+  - [**Rozhraní API pro správu vlastního seznamu termínů**](try-terms-list-api.md): pomocí tohoto rozhraní API můžete navíc k integrovaným termínům hledat shody s vlastními seznamy termínů. Pomocí těchto seznamů můžete zablokovat nebo povolit obsah podle vašich zásad obsahu.  
+  - [**Rozhraní API pro moderování obrázků**](image-moderation-api.md): pomocí tohoto rozhraní API můžete kontrolovat, zda se v obrázcích vyskytuje obsah pro dospělé nebo nevhodný obsah, rozpoznávat text v obrázku pomocí optického rozpoznávání znaků (OCR) a rozpoznávat tváře.
+  - [**Rozhraní API pro správu vlastního seznamu obrázků**](try-image-list-api.md): pomocí tohoto rozhraní API můžete hledat shody s vlastním seznamem obrázků, předem identifikovaným obsahem, který není nutné znovu klasifikovat.
+  - [**Rozhraní API moderování videa**](video-moderation-api.md): pomocí tohoto rozhraní API můžete kontrolovat videa z hlediska obsahu pro dospělé nebo nevhodného obsahu.
+  - [**Rozhraní API pro kontrolu**](try-review-api-job.md): použijte operace [úlohy](try-review-api-job.md), [kontroly](try-review-api-review.md), a [pracovní postupy](try-review-api-workflow.md), abyste v nástroji pro kontrolu vytvořili a automatizovali pracovní postupy prováděné lidmi.
 
-## <a name="human-review-tool"></a>Nástroj pro recenze prováděné lidmi
+## <a name="human-review-tool"></a>Nástroj pro kontrolu prováděnou lidmi
 
-Vaše předplatné obsahu moderátora zahrnuje předdefinovaná [lidské Zkontrolujte nástroj](Review-Tool-User-Guide/human-in-the-loop.md). Pomocí výše uvedených zkontrolujte API můžete vytvořit recenze text, obrázky a videa pro vaše lidského moderátorů přijímat konečné rozhodnutí.
+Vaše předplatné Content Moderatoru zahrnuje integrovaný [nástroj pro kontrolu prováděnou lidmi](Review-Tool-User-Guide/human-in-the-loop.md). Pomocí výše uvedených rozhraní API pro kontrolu můžete vytvořit kontroly textu, obrázků a videí pro lidské moderátory a jejich konečná rozhodnutí.
 
-![Zkontrolujte nástroj obsahu moderátora video](images/video-review-default-view.png)
+![Nástroj pro kontrolu videa Content Moderatoru](images/video-review-default-view.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Použití [rychlý Start](quick-start.md) začít pracovat s moderátora obsahu.
+Na stránce [rychlého startu](quick-start.md) získáte přehled, jak začít s Content Moderatorem.

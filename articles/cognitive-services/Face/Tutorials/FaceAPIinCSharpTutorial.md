@@ -1,21 +1,21 @@
 ---
-title: Kurz k rozhraní API pro rozpoznávání tváře v C# | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: V tomto kurzu vytvoříte jednoduchou aplikaci pro Windows, která využívá službu Rozpoznávání tváře Cognitive Services k rozpoznání a orámování tváří na obrázku.
+title: 'Kurz: Detekce a orámování tváří na obrázku – rozhraní API pro rozpoznávání tváře, C#'
+titleSuffix: Azure Cognitive Services
+description: V tomto kurzu vytvoříte jednoduchou aplikaci pro Windows, která využívá rozhraní API pro rozpoznávání tváře k rozpoznání a orámování tváří na obrázku.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: tutorial
-ms.date: 06/29/2018
+ms.date: 09/24/2018
 ms.author: nolachar
-ms.openlocfilehash: e4f2192c40f0b650b31ed59642dee89e42eca703
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 657c471761c36de5095763623210909308f55c2a
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125927"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162607"
 ---
 # <a name="tutorial-create-a-wpf-app-to-detect-and-frame-faces-in-an-image"></a>Kurz: Vytvoření aplikace WPF k detekci a orámování tváří na obrázku
 
@@ -36,7 +36,7 @@ V tomto kurzu získáte informace o následujících postupech:
 
 - Ke spuštění této ukázky budete potřebovat klíč předplatného. Klíče bezplatného zkušebního předplatného můžete získat v tématu [Zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api).
 - Libovolná edice sady [Visual Studio 2015 nebo 2017](https://www.visualstudio.com/downloads/). Pro Visual Studio 2017 se vyžaduje úloha vývoje desktopových aplikací .NET. Tento kurz využívá Visual Studio 2017 Community Edition.
-- Balíček NuGet klientské knihovny [Microsoft.Azure.CognitiveServices.Vision.Face 2.0.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.0.0-preview). Stažení tohoto balíčku není nutné. Pokyny k instalaci jsou uvedené dál.
+- Balíček NuGet klientské knihovny [Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview). Stažení tohoto balíčku není nutné. Pokyny k instalaci jsou uvedené dál.
 
 ## <a name="create-the-visual-studio-solution"></a>Vytvoření řešení v sadě Visual Studio
 
@@ -54,7 +54,7 @@ Při instalaci klientské knihovny postupujte podle těchto pokynů.
 1. V nabídce **Nástroje** vyberte **Správce balíčků NuGet** a potom **Konzola Správce balíčků**.
 1. Do pole **Konzola správce balíčků**, vložte následující text a potom stiskněte **Enter**.
 
-    `Install-Package Microsoft.Azure.CognitiveServices.Vision.Face -Version 2.0.0-preview`
+    `Install-Package Microsoft.Azure.CognitiveServices.Vision.Face -Version 2.2.0-preview`
 
 ## <a name="add-the-initial-code"></a>Přidání počátečního kódu
 
@@ -122,8 +122,8 @@ namespace FaceTutorial
         // NOTE: Free trial subscription keys are generated in the westcentralus
         // region, so if you are using a free trial subscription key, you should
         // not need to change this region.
-        private const string baseUri =
-            "https://westcentralus.api.cognitive.microsoft.com/face/v1.0";
+        private const string faceEndpoint =
+            "https://westcentralus.api.cognitive.microsoft.com";
 
         private readonly IFaceClient faceClient = new FaceClient(
             new ApiKeyServiceClientCredentials(subscriptionKey),
@@ -137,13 +137,13 @@ namespace FaceTutorial
         {
             InitializeComponent();
 
-            if (Uri.IsWellFormedUriString(baseUri, UriKind.Absolute))
+            if (Uri.IsWellFormedUriString(faceEndpoint, UriKind.Absolute))
             {
-                faceClient.BaseUri = new Uri(baseUri);
+                faceClient.Endpoint = faceEndpoint;
             }
             else
             {
-                MessageBox.Show(baseUri,
+                MessageBox.Show(faceEndpoint,
                     "Invalid URI", MessageBoxButton.OK, MessageBoxImage.Error);
                 Environment.Exit(0);
             }
@@ -197,8 +197,8 @@ namespace FaceTutorial
 - V souboru *MainWindow.xaml.cs* najděte následující řádek a nahraďte nebo ověřte klíč předplatného přidružený k oblasti Azure:
 
     ```csharp
-    private const string baseUri =
-        "https://westcentralus.api.cognitive.microsoft.com/face/v1.0";
+    private const string Endpoint =
+        "https://westcentralus.api.cognitive.microsoft.com";
     ```
 
     Ujistěte se, že umístění je stejné jako to, ve kterém jste získali klíče předplatného. Pokud jste klíče předplatného získali například z oblasti **westus**, `Westcentralus` nahraďte `Westus`.

@@ -1,107 +1,70 @@
 ---
-title: 'Rychlý start: Rozpoznávat řeč v jazyce C# v rozhraní .NET Framework na Windows s využitím Cognitive Services SDK řeči'
+title: 'Rychlý start: Rozpoznávání řeči v C# v rozhraní .NET Framework ve Windows s využitím sady Cognitive Services Speech SDK'
 titleSuffix: Microsoft Cognitive Services
-description: Zjistěte, jak rozpoznávat řeč v jazyce C# v rozhraní .NET Framework na Windows s využitím Cognitive Services SDK řeči
+description: Naučte se rozpoznávat řeč v C# v rozhraní .NET Framework ve Windows s využitím sady Cognitive Services Speech SDK.
 services: cognitive-services
 author: wolfma61
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
-ms.date: 07/16/2018
+ms.topic: quickstart
+ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 0f4c0243c09fd7a6b8d221d6c077775f83d82b8b
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
-ms.translationtype: MT
+ms.openlocfilehash: 32b484451c4ee2264c25cca92b1d03d91b955a29
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024539"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47053992"
 ---
-# <a name="quickstart-recognize-speech-in-c-under-net-framework-on-windows-using-the-speech-sdk"></a>Rychlý start: Rozpoznávat řeč v jazyce C# v rozhraní .NET Framework ve Windows pomocí sady SDK pro řeč
+# <a name="quickstart-recognize-speech-in-c-under-net-framework-on-windows-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v C# v rozhraní .NET Framework ve Windows s využitím sady Speech SDK
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-V tomto článku se dozvíte, jak vytvořit konzolovou aplikaci C# pro rozhraní .NET Framework na Windows přepisy převod řeči na text pomocí Cognitive Services SDK řeči.
-Aplikace je sestavená s [Microsoft Cognitive Services řeči balíčku sady SDK NuGet](https://aka.ms/csspeech/nuget) a Microsoft Visual Studio 2017.
+V tomto článku vytvoříte konzolovou aplikaci C# pro .NET Framework ve Windows s využitím sady [Speech SDK](speech-sdk.md). V reálném čase přepíšete řeč z mikrofonu počítače na text. Tato aplikace je vytvořená pomocí [balíčku NuGet sady Speech SDK](https://aka.ms/csspeech/nuget) a sady Microsoft Visual Studio 2017 (libovolné edice).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Klíč předplatného pro službu rozpoznávání řeči. Zobrazit [službu řeči si můžete vyzkoušet zdarma](get-started.md).
-* Windows PC s pracovní mikrofon.
-* Visual Studio 2017, edice Community nebo vyšší.
-* **Vývoj desktopových aplikací .NET** úlohy v sadě Visual Studio. Můžete ho povolit **nástroje** \> **stažení nástrojů a funkcí**.
-
-  ![Povolit vývoj desktopových aplikací .NET](media/sdk/vs-enable-net-desktop-workload.png)
+K dokončení tohoto rychlého startu potřebujete klíč předplatného služby Speech. Můžete ho získat zdarma. Podrobnosti najdete v článku [Vyzkoušejte si službu Speech zdarma](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Vytvoření projektu ve Visual Studiu
 
-1. V sadě Visual Studio 2017 vytvoření nového Visual C# konzolové aplikace. V **nový projekt** dialogové okno, v levém podokně rozbalte **nainstalováno** \> **Visual C#** \> **Windows Desktop** a pak vyberte **Konzolová aplikace (.NET Framework)**. Název projektu zadejte *helloworld*.
+[!INCLUDE [Create project ](../../../includes/cognitive-services-speech-service-create-speech-project-vs-csharp.md)]
 
-    ![Vytvoření aplikace Visual C# Konzolová aplikace (.NET Framework)](media/sdk/qs-csharp-dotnet-windows-01-new-console-app.png "vytvořit Visual C# Konzolová aplikace (.NET Framework)")
+## <a name="add-sample-code"></a>Přidání ukázkového kódu
 
-1. Instalaci a odkazují [balíček NuGet sady SDK pro řeč](https://aka.ms/csspeech/nuget). V Průzkumníku řešení klikněte pravým tlačítkem myši na řešení a vyberte **spravovat balíčky NuGet pro řešení**.
-
-    ![Klikněte pravým tlačítkem na spravovat balíčky NuGet pro řešení](media/sdk/qs-csharp-dotnet-windows-02-manage-nuget-packages.png "spravovat balíčky NuGet pro řešení")
-
-1. V pravém horním rohu v **zdroj balíčku** pole, vyberte **Nuget.org**. Hledat `Microsoft.CognitiveServices.Speech` balíček a nainstalujte ho do **helloworld** projektu.
-
-    ![Nainstalujte balíček NuGet Microsoft.CognitiveServices.Speech](media/sdk/qs-csharp-dotnet-windows-03-nuget-install-0.5.0.png "balíček Nuget nainstalovat")
-
-1. Přijměte licenci na tento zobrazené.
-
-    ![Přijměte licenci](media/sdk/qs-csharp-dotnet-windows-04-nuget-license.png "přijměte licenci")
-
-1. Následující řádek výstupu se zobrazí v konzole Správce balíčků.
-
-   ```text
-   Successfully installed 'Microsoft.CognitiveServices.Speech 0.6.0' to helloworld
-   ```
-
-## <a name="create-a-platform-configuration-matching-your-pc-architecture"></a>Vytvořit konfiguraci platformy tak odpovídající vaší architektury PC
-
-V této části přidáte novou platformu na konfiguraci, která odpovídá architektuře procesoru.
-
-1. Spuštění nástroje Configuration Manager. Vyberte **sestavení** > **nástroje Configuration Manager**.
-
-    ![Spusťte Správce konfigurace](media/sdk/qs-csharp-dotnet-windows-05-cfg-manager-click.png "spuštění nástroje configuration manager")
-
-1. V **nástroje Configuration Manager** dialogovém okně Přidat novou platformu. Z **platformou aktivního řešení** rozevíracího seznamu vyberte **nový**.
-
-    ![Přidat novou platformu pod oknem configuration Manageru](media/sdk/qs-csharp-dotnet-windows-06-cfg-manager-new.png "přidat novou platformu pod oknem configuration Manageru")
-
-1. Pokud používáte systém Windows 64-bit, vytvořte novou konfiguraci platformy tak s názvem `x64`. Pokud používáte systém Windows 32-bit, vytvořit novou konfiguraci platformy s názvem `x86`. V tomto článku vytvoříte `x64` konfiguraci platformy.
-
-    ![Na Windows 64-bit, přidejte novou platformu s názvem "x64"](media/sdk/qs-csharp-dotnet-windows-07-cfg-manager-add-x64.png "přidat x64 platformy")
-
-## <a name="add-the-sample-code"></a>Přidejte ukázkový kód
-
-1. Otevřít `Program.cs` a nahraďte kód v ji následujícím kódem.
+1. Otevřete soubor `Program.cs` a veškerý kód nahraďte následujícím kódem.
 
     [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-dotnet-windows/helloworld/Program.cs#code)]
 
-1. Nahraďte řetězec `YourSubscriptionKey` s klíči předplatného.
+1. Ve stejném souboru nahraďte řetězec `YourSubscriptionKey` klíčem předplatného služby Speech.
 
-1. Nahraďte řetězec `YourServiceRegion` s [oblasti](regions.md) přidružených k vašemu předplatnému (například `westus` pro bezplatnou zkušební verzi předplatného).
+1. Také řetězec `YourServiceRegion` nahraďte [oblastí](regions.md) přidruženou k vašemu předplatnému (například `westus` pro bezplatnou zkušební verzi předplatného).
 
 1. Uložte změny do projektu.
 
-## <a name="build-and-run-the-sample"></a>Sestavení a spuštění ukázky
+## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
 
-1. Sestavení aplikace. V panelu nabídky vyberte **sestavení** > **sestavit řešení**. Kód by měl nyní kompilovat bez chyb.
+1. Sestavte aplikaci. V řádku nabídek vyberte **Sestavení** > **Sestavit řešení**. Kód by se teď měl zkompilovat bez chyb.
 
-    ![Úspěšné sestavení](media/sdk/qs-csharp-dotnet-windows-08-build.png "úspěšné sestavení")
+    ![Snímek obrazovky s aplikací sady Visual Studio se zvýrazněnou možností Sestavit řešení](media/sdk/qs-csharp-dotnet-windows-08-build.png "Úspěšné sestavení")
 
-1. Spusťte aplikaci. V panelu nabídky vyberte **ladění** > **spustit ladění**, nebo stiskněte klávesu **F5**.
+1. Spusťte aplikaci. V řádku nabídek vyberte **Ladit** > **Spustit ladění** nebo stiskněte klávesu **F5**.
 
-    ![Spusťte aplikaci do ladění](media/sdk/qs-csharp-dotnet-windows-09-start-debugging.png "spusťte aplikaci do ladění")
+    ![Snímek obrazovky s aplikací sady Visual Studio se zvýrazněnou možností Spustit ladění](media/sdk/qs-csharp-dotnet-windows-09-start-debugging.png "Spuštění aplikace s laděním")
 
-1. Zobrazí se okno konzoly výzvou řekl něco (v angličtině). Textové rozpoznaných se pak objeví ve stejném okně.
+1. Zobrazí se okno konzoly a vyzve vás, abyste něco řekli. Vyslovte anglickou frázi nebo větu. Vyslovená řeč se přenese do služby Speech a přepíše na text, který se zobrazí ve stejném okně.
 
-    ![Po úspěšném rozpoznávání výstupu konzoly](media/sdk/qs-csharp-dotnet-windows-10-console-output.png "výstupu konzoly po úspěšné rozpoznávání")
+    ![Snímek obrazovky s výstupem konzoly po úspěšném rozpoznání](media/sdk/qs-csharp-dotnet-windows-10-console-output.png "Výstup konzoly po úspěšném rozpoznání")
 
-[!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-Hledat v této ukázce `quickstart/csharp-dotnet-windows` složky.
+[!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+Vyhledejte tuto ukázku ve složce `quickstart/csharp-dotnet-windows`.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
+
+> [!div class="nextstepaction"]
+> [Rozpoznávání záměrů z řeči pomocí sady Speech SDK pro C#](how-to-recognize-intents-from-speech-csharp.md)
+
+## <a name="see-also"></a>Viz také
 
 - [Překlad řeči](how-to-translate-speech-csharp.md)
 - [Přizpůsobení akustických modelů](how-to-customize-acoustic-models.md)

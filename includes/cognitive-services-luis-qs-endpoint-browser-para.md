@@ -3,33 +3,33 @@ title: zahrnout soubor
 description: zahrnout soubor
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: include
 ms.custom: include file
 ms.date: 08/16/2018
 ms.author: diberry
-ms.openlocfilehash: dae56e05f01e83f05e75fdf378c0c50679d18728
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
-ms.translationtype: MT
+ms.openlocfilehash: e507a7c45e286473abe9b9e4365e80fb29eba2a4
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42820080"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47043995"
 ---
-Vysvětlení, co vrátí koncový bod služby LUIS predikcí, zobrazení výsledků predikce ve webovém prohlížeči. Aby bylo možné dotazovat veřejné aplikace, musíte si vlastní klíč a ID aplikace. Veřejné ID aplikace IoT, `df67dcdb-c37d-46af-88e1-8b97951ca1c2`, je k dispozici jako část adresy URL v kroku jedna.
+Abyste porozuměli výsledkům koncového bodu předpovědí služby LUIS, zobrazte si výsledek předpovědi ve webovém prohlížeči. Pokud chcete zadat dotaz na veřejnou aplikaci, potřebujete vlastní klíč a ID aplikace. ID veřejné aplikace IoT (`df67dcdb-c37d-46af-88e1-8b97951ca1c2`) najdete v rámci adresy URL v kroku 1.
 
-Formát adresy URL pro **získat** požadavku koncového bodu je:
+Formát adresy URL pro požadavek koncového bodu **GET** je následující:
 
 ```JSON
 https://<region>.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription-key=<YOUR-KEY>&q=<user-utterance>
 ```
 
-1. Koncový bod veřejné aplikace IoT je v tomto formátu: `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=<YOUR_KEY>&q=turn on the bedroom light`
+1. Koncový bod veřejné aplikace IoT má tento formát: `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=<YOUR_KEY>&q=turn on the bedroom light`.
 
-    Zkopírujte adresu URL a náhradní klíč pro hodnotu vlastnosti `<YOUR_KEY>`.
+    Zkopírujte adresu URL a nahraďte hodnotu `<YOUR_KEY>` klíčem.
 
-2. Vložte adresu URL do okna prohlížeče a stiskněte Enter. Prohlížeč zobrazí výsledek JSON, která označuje, že zjistí služba LUIS `HomeAutomation.TurnOn` záměru jako hlavní záměr a `HomeAutomation.Room` entity s hodnotou `bedroom`.
+2. Vložte adresu URL do okna prohlížeče a stiskněte Enter. V prohlížeči se zobrazí výsledek JSON, který značí, že služba LUIS rozpoznala záměr `HomeAutomation.TurnOn` jako hlavní záměr a entitu `HomeAutomation.Room` s hodnotou `bedroom`.
 
     ```JSON
     {
@@ -50,7 +50,7 @@ https://<region>.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription
     }
     ```
 
-3. Změňte hodnotu parametru `q=` v adrese URL na `turn off the living room light` a stiskněte Enter. Výsledek teď znamená, že služba LUIS nalezen `HomeAutomation.TurnOff` záměru jako hlavní záměr a `HomeAutomation.Room` entity s hodnotou `living room`. 
+3. Změňte hodnotu parametru `q=` v adrese URL na `turn off the living room light` a stiskněte Enter. Výsledek teď značí, že služba LUIS rozpoznala záměr `HomeAutomation.TurnOff` jako hlavní záměr a entitu `HomeAutomation.Room` s hodnotou `living room`. 
 
     ```JSON
     {

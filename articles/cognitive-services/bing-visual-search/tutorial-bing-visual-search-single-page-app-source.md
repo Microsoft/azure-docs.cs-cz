@@ -1,25 +1,25 @@
 ---
-title: Pro vizuální vyhledávání Bingu jednostránkovou webovou aplikaci (zdrojový kód) | Dokumentace Microsoftu
-titleSuffix: Bing Web Search APIs - Cognitive Services
-description: Zdrojový kód pro kurz ukazuje, jak používat Visual API Bingu pro vyhledávání v jednostránkovou webovou aplikaci.
+title: 'Kurz: Sestavení jednostránkové webové aplikace (zdrojový kód) – Vizuální vyhledávání Bingu'
+titleSuffix: Azure Cognitive Services
+description: Zdrojový kód pro kurz, který ukazuje, jak používat rozhraní API pro vizuální vyhledávání Bingu v jednostránkové webové aplikaci.
 services: cognitive-services
 author: v-jerkin
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-image-search
-ms.topic: article
+ms.component: bing-visual-search
+ms.topic: tutorial
 ms.date: 10/04/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 9b6164b811f897ec5cd8a67d27d3aa4f3d250f2e
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
-ms.translationtype: MT
+ms.openlocfilehash: a908bdcf447039ad3a27ceae04f0a6cfff890d21
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002588"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225748"
 ---
-# <a name="tutorial-visual-search-single-page-web-app"></a>Kurz: Webová vizuálního vyhledávání jednostránkové aplikace
+# <a name="tutorial-visual-search-single-page-web-app"></a>Kurz: Vizuální vyhledávání v jednostránkové webové aplikaci
 
-Toto je úplný zdrojový kód, který je podrobněji popsána [vizuálního vyhledávání jednostránkovou webovou aplikaci](tutorial-bing-visual-search-single-page-app.md) kurz pro vizuální vyhledávání Bingu. Spusťte aplikaci, zkopírujte zdrojový kód do poznámkového bloku nebo jiného textového editoru a uložte ho jako `bing-visual-search.html`. Otevřete v Microsoft Edge nebo jiný prohlížeč oblíbených uloženého souboru.
+Toto je úplný zdrojový kód probíraný v kurzu [Vizuální vyhledávání v jednostránkové webové aplikaci](tutorial-bing-visual-search-single-page-app.md) pro Vizuální vyhledávání Bingu. Pokud chcete aplikaci spustit, zkopírujte zdrojový kód do Poznámkového bloku nebo jiného textového editoru a uložte ho jako `bing-visual-search.html`. Potom otevřete uložený soubor v Microsoft Edgi nebo jiném oblíbeném prohlížeči.
 
 ```html
 <!DOCTYPE html>

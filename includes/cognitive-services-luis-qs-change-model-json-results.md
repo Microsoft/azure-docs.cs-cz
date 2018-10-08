@@ -3,21 +3,21 @@ title: zahrnout soubor
 description: zahrnout soubor
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: include
 ms.custom: include file
 ms.date: 08/16/2018
 ms.author: diberry
-ms.openlocfilehash: e14f29593d588a8b13162b374372b723c50db8e9
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
-ms.translationtype: MT
+ms.openlocfilehash: ec178827a2f27a4566f509fe76b58e451329efd4
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42920495"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47044130"
 ---
-`response` Pole pro přidání projevů příklad indikuje úspěch nebo neúspěch pro každý příklad utterance s `hasError` vlastnost. Následující odpověď JSON ukazuje, že oba projevy byly úspěšně přidány. 
+Pole `response` pro přidání ukázkových promluv označuje úspěch nebo neúspěch každé takové promluvy s vlastností `hasError`. Následující odpověď JSON ukazuje, že obě promluvy byly přidány úspěšně. 
 
 ```json
     "response": [
@@ -50,7 +50,7 @@ Následující JSON ukazuje výsledek úspěšného požadavku na trénování:
 }
 ```
 
-Následující kód JSON ukazuje výsledek úspěšný dotaz na stav školení. Každý modelID je záměru. Každý záměr má zaškolení na všechny projevy pro zajištění správné identifikace projevy patří k příslušnému záměru i projevy, které nepatří k příslušnému záměru. 
+Následující JSON ukazuje výsledek úspěšného požadavku na stav trénování. Každé modelID představuje záměr. Každý záměr se musí trénovat na všech promluvách, aby dokázal správně rozpoznat promluvy, které do záměru patří, respektive nepatří. 
 
 ```JSON
 [

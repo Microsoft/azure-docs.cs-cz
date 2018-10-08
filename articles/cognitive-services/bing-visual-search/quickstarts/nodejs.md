@@ -1,27 +1,27 @@
 ---
-title: Rychlý start jazyka JavaScript pro vizuální vyhledávání Bingu rozhraní API | Dokumentace Microsoftu
-titleSuffix: Bing Web Search APIs - Cognitive Services
-description: Ukazuje, jak k nahrání obrázku do API pro vizuální vyhledávání Bingu a získat přehledy o imagi.
+title: 'Rychlý start: Vytvoření dotazu pro vizuální vyhledávání, Node.js – Vizuální vyhledávání Bingu'
+titleSuffix: Azure Cognitive Services
+description: Zde najdete informace, jak nahrát obrázek do rozhraní API pro vizuální vyhledávání Bingu a získat zpět přehledy o obrázku.
 services: cognitive-services
 author: swhite-msft
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: bing-visual-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: 60b1dc9b8ea9eda258e9776b8967df38c97d964e
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
-ms.translationtype: MT
+ms.openlocfilehash: b13738c5bfd8fc75224bf934ae8be56e7c2edd69
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39071698"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225493"
 ---
-# <a name="your-first-bing-visual-search-query-in-javascript"></a>Svůj první dotaz v jazyce JavaScript pro vizuální vyhledávání Bingu
+# <a name="quickstart-your-first-bing-visual-search-query-in-javascript"></a>Rychlý start: Váš první dotaz Vizuálního vyhledávání Bingu v JavaScriptu
 
-API pro vizuální vyhledávání Bingu vrátí informace o bitovou kopii, která zadáte. Image můžete zadat pomocí adresy URL obrázku, insights, token, nebo nahráním image. Informace o těchto možnostech najdete v tématu [co je API pro vizuální vyhledávání Bingu?](../overview.md) Tento článek ukazuje nahráváním obrázku. Nahrání image může být užitečné v mobilních situacích, kde pořídit snímek dobře známé památek a získat informace o něm. Triviální prvek o památek může obsahovat třeba přehledy. 
+Rozhraní API pro Vizuální vyhledávání Bingu vrátí informace o obrázku, který zadáte. Obrázek můžete zadat pomocí adresy URL obrázku, tokenu insights nebo nahráním obrázku. Informace o těchto možnostech najdete v článku [Co je rozhraní API pro vizuální vyhledávání Bingu?](../overview.md) Tento článek ukazuje nahrávání obrázku. Nahrání obrázku může být užitečné v situacích s mobilním telefonem, když pořídíte snímek dobře známé pamětihodnosti a chcete o ní získat informace. Přehledy můžou například obsahovat základní informace o pamětihodnosti. 
 
-Pokud odešlete místní image, následuje data formuláře musí obsahovat v textu příspěvku. Data formuláře musí zahrnovat hlavičku Content-Disposition. Jeho `name` parametr musí být nastaven na "image" a `filename` parametr může být nastaven na libovolný řetězec. Obsah formuláře je binární soubor obrázku. Maximální velikost, kterou můžete k nahrání je 1 MB. 
+Pokud nahrajete místní obrázek, ukazuje následující kód data formuláře, která musíte zahrnout do textu žádosti POST. Data formuláře musí obsahovat hlavičku Content-Disposition. Jeho parametr `name` musí být nastavený na "image" a parametr `filename` může být nastavený na libovolný řetězec. Obsah formuláře je binární soubor obrázku. Maximální velikost obrázku, kterou můžete nahrát, je 1 MB. 
 
 ```
 --boundary_1234-abcd
@@ -32,34 +32,34 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 --boundary_1234-abcd--
 ```
 
-Tento článek obsahuje jednoduchou konzolovou aplikaci, která odešle žádost o API pro vizuální vyhledávání Bingu a zobrazí výsledky hledání JSON. Zatímco tato aplikace je napsána v jazyce JavaScript, je rozhraní API RESTful webová služba, která je kompatibilní s programovací jazyk, který může vytvářet požadavky HTTP a parsování formátu JSON. 
+Tento článek obsahuje jednoduchou konzolovou aplikaci, která pošle žádost do rozhraní API pro vizuální vyhledávání Bingu a zobrazí výsledky hledání JSON. Aplikace je sice napsaná v Javascriptu, ale rozhraní API je webová služba RESTful kompatibilní s každým programovacím jazykem, který dokáže provádět požadavky HTTP a parsovat JSON. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Potřebujete [Node.js 6](https://nodejs.org/en/download/) tento kód spustit.
+Abyste mohli tento kód spustit, budete potřebovat [Node.js 6](https://nodejs.org/en/download/).
 
-Pro účely tohoto rychlého startu, můžete zadat [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) klíč předplatného, nebo klíč do placené předplatné.
+Pro tento rychlý start můžete použít klíč [bezplatné zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) předplatného, nebo klíč placeného předplatného.
 
 ## <a name="running-the-application"></a>Spouštění aplikace.
 
-Následující ukazuje, jak odesílat zprávy pomocí FormData v Node.js.
+Níže najdete ukázku, jak zprávu odeslat pomocí objektu FormData v Node.js.
 
-Ke spuštění této aplikace, postupujte podle těchto kroků:
+Pokud chcete tuto aplikaci spustit, postupujte následovně:
 
-1. Vytvořte složku pro váš projekt (nebo použijte vaše oblíbené prostředí IDE nebo editoru).
-2. Z příkazového řádku nebo v terminálu přejděte do složky, kterou jste právě vytvořili.
-3. Instalace modulů žádosti:  
+1. Vytvořte složku pro váš projekt (nebo použijte vaše oblíbené prostředí IDE nebo oblíbený editor).
+2. Z příkazového řádku nebo terminálu přejděte do složky, kterou jste právě vytvořili.
+3. Nainstalujte moduly žádosti:  
   ```  
   npm install request  
   ```  
-3. Instalace modulů data formuláře:  
+3. Nainstalujte moduly objektu form-data:  
   ```  
   npm install form-data  
   ```  
-4. Vytvořte soubor s názvem GetVisualInsights.js a přidejte do ní následující kód.
-5. Nahraďte `subscriptionKey` hodnotu s klíči předplatného.
-6. Nahraďte `imagePath` hodnotu s cestou k nahrání obrázku.
-7. Spuštění programu.  
+4. Vytvořte soubor s názvem GetVisualInsights.js a přidejte do něj následující kód.
+5. Hodnotu `subscriptionKey` nahraďte klíčem předplatného.
+6. Hodnotu `imagePath` nahraďte cestou nahrávaného obrázku.
+7. Spusťte program.  
   ```
   node GetVisualInsights.js
   ```
@@ -92,12 +92,12 @@ function requestCallback(err, res, body) {
 ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Získejte přehled o bitovou kopii pomocí tokenu insights](../use-insights-token.md)  
-[Kurz nahrávání obrázků pro vizuální vyhledávání Bingu](../tutorial-visual-search-image-upload.md)
-[kurzu jednostránkovou aplikaci pro vizuální vyhledávání Bingu](../tutorial-bing-visual-search-single-page-app.md)  
-[Přehled pro vizuální vyhledávání Bingu](../overview.md)  
+[Získání přehledu o obrázku pomocí tokenu insights](../use-insights-token.md)  
+[Kurz nahrávání obrázků Vizuálního vyhledávání Bingu](../tutorial-visual-search-image-upload.md)
+[Kurz k jednostránkové aplikaci Vizuálního vyhledávání Bingu](../tutorial-bing-visual-search-single-page-app.md)  
+[Přehled Vizuálního vyhledávání Bingu](../overview.md)  
 [Vyzkoušejte si to](https://aka.ms/bingvisualsearchtryforfree)  
-[Získat bezplatnou zkušební verzi přístupový klíč](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
-[Referenční dokumentace API pro vizuální vyhledávání Bingu](https://aka.ms/bingvisualsearchreferencedoc)
+[Získání bezplatné zkušební verze přístupového klíče](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
+[Reference k rozhraní API pro vizuální vyhledávání Bingu](https://aka.ms/bingvisualsearchreferencedoc)

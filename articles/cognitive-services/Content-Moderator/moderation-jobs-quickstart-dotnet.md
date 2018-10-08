@@ -1,63 +1,64 @@
 ---
-title: Azure Content Moderator – spuštění úlohy moderování pomocí .NET | Dokumentace Microsoftu
-description: Spuštění úlohy moderování pomocí Azure Content Moderator SDK pro .NET
+title: 'Rychlý start: Spuštění úloh moderování pomocí technologie .NET – Content Moderator'
+titlesuffix: Azure Cognitive Services
+description: Jak zahájit úlohy moderování pomocí sady Azure Content Moderator SDK pro technologii .NET
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: 3761552f81bd733f9c93fab40db07ef6f5a6a7f6
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
-ms.translationtype: MT
+ms.openlocfilehash: 6045d6daf2abace6e2b38bd6fd6e22516e3a60a0
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181596"
+ms.locfileid: "47227420"
 ---
-# <a name="start-moderation-jobs-using-net"></a>Spuštění úloh moderování pomocí .NET
+# <a name="quickstart-start-moderation-jobs-using-net"></a>Rychlý start: Spuštění úloh moderování pomocí technologie .NET
 
-Tento článek obsahuje informace a ukázky kódu, které vám pomůžou začít používat [Content Moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) na:
+Tento článek obsahuje informace a ukázky kódu, které vám pomůžou začít používat [sadu Content Moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) k následujícím účelům:
  
-- Spustit úlohu moderování kontrolovat a vytvoření revize pro lidských moderátorů
-- Získat stav Čeká na revizi
-- Sledovat a získat konečný stav kontroly
-- Odeslat výsledek, který má adresu Url zpětného volání
+- Spuštění úlohy moderování, která vyhledá a vytvoří kontroly pro lidské moderátory
+- Získání stavu čekající kontroly
+- Sledování kontroly a získání jejího konečného stavu
+- Odeslání výsledku na adresu URL pro zpětné volání
 
-Tento článek předpokládá, že jste již obeznámeni s Visual Studio a C#.
+Tento článek předpokládá, že už máte zkušenosti se sadou Visual Studio a jazykem C#.
 
-## <a name="sign-up-for-content-moderator"></a>Zaregistrujte si Content Moderatoru
+## <a name="sign-up-for-content-moderator"></a>Registrace do Content Moderatoru
 
-Než budete moct použít služby Content Moderator přes rozhraní REST API nebo sady SDK, je nutné klíč předplatného.
-Odkazovat [rychlý Start](quick-start.md) se dozvíte, jak můžete získat klíč.
+Než začnete služby Content Moderatoru prostřednictvím rozhraní REST API nebo sady SDK používat, budete potřebovat klíč předplatného.
+Informace o tom, jak klíč získat, najdete v [Rychlém startu](quick-start.md).
 
-## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>Zaregistrovat účet nástroj pro kontrolu, pokud nebyla dokončena v předchozím kroku
+## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>Registrace účtu nástroje pro kontrolu, pokud jste se nezaregistrovali v předchozím kroku
 
-Pokud jste získali Content Moderator z webu Azure portal, také [zaregistrujte si účet nástroj pro revize](https://contentmoderator.cognitive.microsoft.com/) a vytvořte tým kontroly. Budete potřebovat Id týmu a nástroje pro recenze pro volání rozhraní API přezkoumání a spuštění úlohy a zobrazíte recenzí v nástroj pro recenze.
+Pokud jste Content Moderator získali na portálu Azure Portal, [zaregistrujte si i účet nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com/) a vytvořte posuzovací tým. Abyste mohli zavolat rozhraní API pro kontroly a tím zahájit úlohu a zobrazit kontroly v nástroji pro kontrolu, budete potřebovat ID týmu a nástroj pro kontrolu.
 
-## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>Ujistěte se, že svůj klíč rozhraní API můžete volat rozhraní API pro kontrolu pro vytvoření revize
+## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>Kontrola, že klíč rozhraní API může volat rozhraní API pro kontroly, aby se mohla vytvořit kontrola
 
-Po dokončení předchozích kroků, můžete uvíznout dva klíče Content Moderator Pokud jste spustili z webu Azure portal. 
+Pokud jste začínali na portálu Azure Portal, můžete po dokončení předchozích kroků získat dva klíče Content Moderatoru. 
 
-Pokud máte v plánu používat klíč rozhraní API poskytuje Azure ve vaší ukázce sady SDK, postupujte podle pokynů uvedených v [klíče služby Azure pomocí rozhraní API pro kontrolu](review-tool-user-guide/credentials.md#use-the-azure-account-with-the-review-tool-and-review-api) oddílu, aby vaše aplikace volat rozhraní API pro kontrolu a vytvořit revize.
+Pokud plánujete ve své ukázkové sadě SDK používat klíč rozhraní API poskytnutý službou Azure, postupujte podle pokynů v části o [použití klíče Azure s rozhraním API pro kontroly](review-tool-user-guide/credentials.md#use-the-azure-account-with-the-review-tool-and-review-api), aby aplikace mohla volat rozhraní API pro kontroly a vytvářet kontroly.
 
-Pokud používáte bezplatné zkušební verze klíč vygenerovaný pomocí nástroje pro recenze, váš účet nástroj pro revize již ví o klíči a proto nejsou požadované žádné další kroky.
+Pokud použijete klíč bezplatné zkušební verze vygenerovaný nástrojem pro kontrolu, váš účet nástroje pro kontrolu už klíč zná, proto není nutné dělat nic dalšího.
 
-## <a name="define-a-custom-moderation-workflow"></a>Definovat vlastní moderování pracovního postupu
+## <a name="define-a-custom-moderation-workflow"></a>Definice vlastního pracovního postupu moderování
 
-Kontroluje obsah pomocí rozhraní API a používá moderování úlohy **pracovního postupu** k určení, jestli se má vytvořit revize, nebo ne.
-Nástroj pro recenze obsahuje výchozí pracovní postup, Pojďme [definovat vlastní pracovní postup](Review-Tool-User-Guide/Workflows.md) pro tento rychlý start.
+Úloha moderování zkontroluje obsah pomocí rozhraní API a použije **pracovní postup**, pomocí kterého určí, jestli se mají vytvořit kontroly, nebo ne.
+I když nástroj pro kontrolu obsahuje výchozí pracovní postup, pro tento rychlý start si [definujeme vlastní pracovní postup](Review-Tool-User-Guide/Workflows.md).
 
-Název pracovního postupu použijete v kódu, který se spustí úloha pro moderování.
+Použijete název pracovního postupu v kódu, který zahájí úlohu moderování.
 
-## <a name="create-your-visual-studio-project"></a>Vytvoření projektu sady Visual Studio
+## <a name="create-your-visual-studio-project"></a>Vytvoření projektu Visual Studio
 
-1. Přidat nový **Konzolová aplikace (.NET Framework)** do svého řešení projekt.
+1. Přidejte do svého řešení nový projekt **Konzolová aplikace (.NET Framework)**.
 
-   Ve vzorovém kódu, pojmenujte projekt **CreateReviews**.
+   Ve vzorovém kódu pojmenujte tento projekt **CreateReviews**.
 
-1. Vyberte tento projekt jako jeden spouštěný projekt pro řešení.
+1. Projekt vyberte jako jediný spouštěný projekt řešení.
 
 ### <a name="install-required-packages"></a>Instalace požadovaných balíčků
 
@@ -67,9 +68,9 @@ Nainstalujte následující balíčky NuGet:
 - Microsoft.Rest.ClientRuntime
 - Newtonsoft.Json
 
-### <a name="update-the-programs-using-statements"></a>Aktualizace programu v nástrojích příkazy
+### <a name="update-the-programs-using-statements"></a>Aktualizace příkazů using programu
 
-Upravit program v nástrojích příkazy.
+Upravte příkazy using programu.
 
     using Microsoft.Azure.CognitiveServices.ContentModerator;
     using Microsoft.CognitiveServices.ContentModerator;
@@ -80,12 +81,12 @@ Upravit program v nástrojích příkazy.
     using System.IO;
     using System.Threading;
 
-### <a name="create-the-content-moderator-client"></a>Vytvoření klienta služby Content Moderator
+### <a name="create-the-content-moderator-client"></a>Vytvoření klienta Content Moderatoru
 
-Přidejte následující kód k vytvoření klienta Content Moderator pro vaše předplatné.
+Přidejte následující kód, abyste pro své předplatné vytvořili klienta Content Moderatoru.
 
 > [!IMPORTANT]
-> Aktualizace **Oblast_azure** a **CMSubscriptionKey** pole s hodnotami vaší oblasti identifikátor a klíč předplatného.
+> Aktualizujte pole **AzureRegion** a **CMSubscriptionKey** hodnotami identifikátoru oblasti a klíče předplatného.
 
 
     /// <summary>
@@ -130,15 +131,15 @@ Přidejte následující kód k vytvoření klienta Content Moderator pro vaše 
         }
     }
 
-### <a name="initialize-application-specific-settings"></a>Inicializace nastavení specifické pro aplikaci
+### <a name="initialize-application-specific-settings"></a>Inicializace nastavení specifických pro aplikaci
 
-Přidejte následující konstanty a statická pole na **Program** třída v souboru Program.cs.
+Do třídy **Program** v souboru Program.cs přidejte následující konstanty a statická pole.
 
 > [!NOTE]
-> Nastavte název, který jste použili při vytvoření odběru Content Moderator TeamName – konstanta. Načíst TeamName z [Content Moderator webu](https://westus.contentmoderator.cognitive.microsoft.com/).
-> Po přihlášení vyberte **pověření** z **nastavení** nabídky (ozubené kolo).
+> Konstantu TeamName nastavte na název, který jste použili při vytváření předplatného Content Moderatoru. TeamName najdete na [webu Content Moderatoru](https://westus.contentmoderator.cognitive.microsoft.com/).
+> Až se přihlásíte, vyberte z nabídky **Nastavení** (ozubené kolo) možnost **Přihlašovací údaje**.
 >
-> Hodnota je název vašeho týmu **Id** pole **rozhraní API** oddílu.
+> Název týmu je hodnota pole **Id** v části **API**.
 
 
     /// <summary>
@@ -182,12 +183,12 @@ Přidejte následující konstanty a statická pole na **Program** třída v sou
     /// callback endpoint using an HTTP POST request.</remarks>
     private const string CallbackEndpoint = "";
 
-## <a name="add-code-to-auto-moderate-create-a-review-and-get-the-job-details"></a>Přidejte kód do střední automatické vytvoření recenze a získání podrobností o úlohách
+## <a name="add-code-to-auto-moderate-create-a-review-and-get-the-job-details"></a>Přidání kódu, který provede automatické moderování, vytvoří kontrolu a získá podrobnosti o úloze
 
 > [!Note]
-> V praxi, nastavte adresu URL zpětného volání **CallbackEndpoint** na adresu URL, která přijímá výsledky ruční kontrolu (prostřednictvím požadavku HTTP POST).
+> V praxi byste nastavili adresu URL pro zpětné volání **CallbackEndpoint** na adresu URL, která by načítala výsledky ručních kontrol (prostřednictvím požadavku HTTP POST).
 
-Začněte přidáním následujícího kódu **hlavní** metody.
+Začněte tak, že do metody **Main** přidáte následující kód.
 
     using (TextWriter writer = new StreamWriter(OutputFile, false))
     {
@@ -241,27 +242,27 @@ Začněte přidáním následujícího kódu **hlavní** metody.
     }
 
 > [!NOTE]
-> Klíč služby Content Moderator má požadavků za druhé omezení četnosti (předávajících stran). Při překročení limitu, sada SDK dojde k výjimce s kódem chyby 429. 
+> Klíč služby Content Moderator má omezený počet požadavků za sekundu (RPS). Když tento limit překročíte, sada SDK vyvolá výjimku s kódem chyby 429. 
 >
-> Klíč úroveň free má omezení četnosti jeden RPS.
+> Klíč úrovně Free má limit nastavený na 1 RPS.
 
-## <a name="run-the-program-and-review-the-output"></a>Spusťte program a prohlédněte si výstup
+## <a name="run-the-program-and-review-the-output"></a>Spuštění programu a kontrola výstupu
 
-Následující ukázkový výstup v konzole zobrazí:
+V konzole uvidíte následující ukázkový výstup:
 
     Perform manual reviews on the Content Moderator site.
     Then, press any key to continue.
 
-Přihlaste se k Content Moderator Zkontrolujte nástroj zobrazte čekající image zkontrolovat.
+Přihlaste se k nástroji Content Moderatoru pro kontrolu, abyste si zobrazili čekající kontroly obrázků.
 
-Použití **Další** tlačítko Odeslat.
+Tlačítkem **Další** kontrolu odešlete.
 
-![Obrázek kontroly pro lidských moderátorů](images/ocr-sample-image.PNG)
+![Kontrola obrázku lidskými moderátory](images/ocr-sample-image.PNG)
 
-## <a name="see-the-sample-output-in-the-log-file"></a>Ukázkový výstup do souboru protokolu
+## <a name="see-the-sample-output-in-the-log-file"></a>Zobrazení ukázkového výstupu v souboru protokolu
 
 > [!NOTE]
-> Ve výstupním souboru, řetězce **Teamname**, **ContentId**, **CallBackEndpoint**, a **WorkflowId** odrážejí hodnoty, které jste použili dříve.
+> Řetězce **Teamname**, **ContentId**, **CallBackEndpoint** a **WorkflowId** ve výstupním souboru odrážejí hodnoty, které jste použili dříve.
 
     Create moderation job for an image.
     {
@@ -295,12 +296,12 @@ Použití **Další** tlačítko Odeslat.
     }
 
 
-## <a name="your-callback-url-if-provided-receives-this-response"></a>Vaše adresa Url zpětného volání-li zadán, obdrží tuto odpověď.
+## <a name="your-callback-url-if-provided-receives-this-response"></a>Adresa URL pro zpětné volání, pokud se poskytla, získá tuto odpověď
 
-Zobrazí se odpověď jako v následujícím příkladu:
+Zobrazí se odpověď, která vypadá přibližně takto:
 
 > [!NOTE]
-> V odpovědi zpětné volání, řetězce **ContentId** a **WorkflowId** odrážejí hodnoty, které jste použili dříve.
+> Řetězce **ContentId** a **WorkflowId** v odpovědi zpětného volání odrážejí hodnoty, které jste použili dříve.
 
     {
         "JobId": "2018014caceddebfe9446fab29056fd8d31ffe",
@@ -318,6 +319,6 @@ Zobrazí se odpověď jako v následujícím příkladu:
     }
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Získejte [Content Moderator sady .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) a [řešení sady Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) pro tuto a další rychlé starty Content Moderator pro platformu .NET a začít používat svoji integraci.
+Získejte pro tento rychlý start a jiné rychlé starty Content Moderatoru pro technologii .NET [sadu Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) a [řešení Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) a začněte se svou integrací.

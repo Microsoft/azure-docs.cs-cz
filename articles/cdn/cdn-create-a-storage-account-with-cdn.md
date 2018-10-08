@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 05/24/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 05ce8c932e9d3d812e34e23c082d459c3193ea40
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1f720c8921a9a49e76465cce1c8226232fdb12ea
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608497"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47096237"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Rychlý start: Integrace účtu služby Azure Storage s Azure CDN
 V tomto rychlém startu povolíte službě [Azure Content Delivery Network (CDN)](cdn-overview.md), aby obsah ze služby Azure Storage ukládala do mezipaměti. Azure CDN nabízí vývojářům globální řešení pro doručování širokopásmového obsahu. Do mezipaměti může ukládat objekty blob a statický obsah výpočetních instancí ve fyzických uzlech v USA, Evropě, Asii, Austrálii a Jižní Americe.
@@ -84,7 +84,7 @@ K vytvoření účtu úložiště můžete použít několik metod, včetně web
 
 ## <a name="enable-azure-cdn-for-the-storage-account"></a>Povolení Azure CDN pro účet úložiště
 
-Azure CDN můžete pro účet úložiště povolit přímo z vašeho účtu úložiště. Pokud chcete pro koncový bod CDN specifikovat pokročilá nastavení konfigurace, jako je například typ optimalizace, můžete místo toho použít [rozšíření Azure CDN](cdn-create-new-endpoint.md) a vytvořit profil CDN nebo koncový bod CDN.
+Azure CDN můžete pro účet úložiště povolit přímo z vašeho účtu úložiště. Pokud chcete pro koncový bod CDN specifikovat pokročilá nastavení konfigurace, jako je například [optimalizaci stahování velkých souborů](cdn-optimization-overview.md#large-file-download), můžete místo toho použít [rozšíření Azure CDN](cdn-create-new-endpoint.md) a vytvořit profil CDN a koncový bod.
 
 1. Na řídicím panelu vyberte účet úložiště a pak v levém podokně vyberte **Azure CDN**. Pokud tlačítko **Azure CDN** není okamžitě vidět, můžete do **vyhledávacího** pole v levém podokně zadat CDN a vyhledat ho.
     
@@ -109,6 +109,9 @@ Azure CDN můžete pro účet úložiště povolit přímo z vašeho účtu úlo
 Na stránce **Azure CDN** účtu úložiště vyberte v seznamu koncový bod CDN a otevřete stránku konfigurace koncového bodu CDN. Na této stránce můžete povolit další funkce CDN pro doručení, jako je například [komprese](cdn-improve-performance.md), [ukládání řetězců dotazů do mezipaměti](cdn-query-string.md) a [geografické filtrování](cdn-restrict-access-by-country.md). 
     
 ![Konfigurace koncového bodu CDN úložiště](./media/cdn-create-a-storage-account-with-cdn/cdn-storage-endpoint-configuration.png)
+
+## <a name="enable-sas"></a>Povolení SAS
+Pokud chcete udělit omezený přístup k privátním kontejnerům úložiště, můžete použít funkci sdíleného přístupového podpisu (SAS) účtu Azure Storage. SAS je identifikátor URI, který uděluje omezená přístupová práva k vašim prostředkům Azure Storage bez odhalení vašeho klíče účtu. Další informace najdete v článku věnovaném [použití Azure CDN s SAS](cdn-sas-storage-support.md).
 
 ## <a name="access-cdn-content"></a>Přístup k obsahu CDN
 Pokud chcete získat přístup k obsahu v mezipaměti ve službě CDN, použijte adresu URL CDN uvedenou na portálu. Adresa objektu blob uloženého v mezipaměti má následující formát:
@@ -139,8 +142,8 @@ V předchozích krocích jste ve skupině prostředků vytvořili profil a konco
 3. Pokud chcete účet úložiště odstranit, vyberte ho na řídicím panelu a pak v horní nabídce vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
-Pokud chcete zjistit, jak do koncového bodu CDN přidat vlastní doménu, projděte si následující kurz:
+Pokud chcete zjistit, jak do koncového bodu CDN přidat vlastní doménu a povolit HTTPS, projděte si tento kurz:
 
 > [!div class="nextstepaction"]
-> [Kurz: Přidání vlastní domény do koncového bodu Azure CDN](cdn-map-content-to-custom-domain.md)
+> [Kurz: Přístup k objektům blob úložiště pomocí vlastní domény Azure CDN prostřednictvím protokolu HTTPS](cdn-storage-custom-domain-https.md)
 

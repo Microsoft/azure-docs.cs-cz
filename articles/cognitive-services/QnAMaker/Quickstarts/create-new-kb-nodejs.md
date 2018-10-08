@@ -1,24 +1,26 @@
 ---
-title: Vytvoření nové znalostní báze – rychlý start pro Node.js – pro rozhraní API služby Microsoft QnA Maker (verze 4) – Azure Cognitive Services | Microsoft Docs
-description: Vytvořte znalostní bázi v Node.js, která bude ukládat nejčastější dotazy nebo příručky k produktům, abyste mohli začít používat službu QnA Maker.
+title: 'Rychlý start: Rozhraní API v Node.js – vytvoření znalostní báze – QnA Maker'
+description: Tento rychlý start vás provede procesem vytvoření ukázkové znalostní báze služby QnA Maker prostřednictvím kódu programu, která se zobrazí na řídicím panelu Azure účtu rozhraní API služby QnA Maker.
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: quickstart
-ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: cbf89aa3a10012ea2d99972c6a83dd351739c5a6
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 435c937e64d0befc5a3bf30f9d58ccd303247b9e
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "43769138"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037299"
 ---
 # <a name="create-a-new-knowledge-base-in-nodejs"></a>Vytvoření nové znalostní báze v Node.js
 
 Tento rychlý start vás provede procesem vytvoření ukázkové znalostní báze služby QnA Maker prostřednictvím kódu programu, která se zobrazí na řídicím panelu Azure účtu rozhraní API služby QnA Maker.
+
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
 
 Níže jsou uvedeny dvě ukázkové adresy URL nejčastějších dotazů (v adresách url **req={}**), které budou poskytovat obsah. Služba QnA Maker automaticky extrahuje otázky a odpovědi z tohoto částečně strukturovaného obsahu. Podrobněji je to vysvětleno v tomto dokumentu [zdrojů dat](../Concepts/data-sources-supported.md). V tomto rychlém startu můžete použít i vlastní adresy URL nejčastějších dotazů.
 

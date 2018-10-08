@@ -1,41 +1,42 @@
 ---
-title: Java rychlý úvodní kurz pro Azure kognitivní služby Bing Video vyhledávání rozhraní API | Microsoft Docs
-description: Get informace a ukázky kódu můžete rychle začít používat rozhraní API služby Bing Video Search v kognitivní služby společnosti Microsoft na platformě Azure.
+title: 'Rychlý start: Rozhraní API Bingu pro vyhledávání videí, Java'
+titlesuffix: Azure Cognitive Services
+description: Zde najdete informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API Bingu pro vyhledávání videí.
 services: cognitive-services
-documentationcenter: ''
 author: v-jerkin
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: db9bc353c86565956881c90ce3a3b6275e1b8771
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 8ec5aa9e832a24fcd3b029727217bffb3b4d94e0
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343417"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223232"
 ---
-# <a name="quickstart-for-bing-video-search-api-with-java"></a>Rychlý start pro Bing Video vyhledávání rozhraní API s Javou
+# <a name="quickstart-bing-video-search-api-with-java"></a>Rychlý start: Rozhraní API Bingu pro vyhledávání videí s Javou
 
-Tento článek ukazuje, jak pomocí rozhraní API služby Bing vyhledávání, součástí kognitivní služby společnosti Microsoft na platformě Azure. Při tomto článku aktivuje Java, rozhraní API je kompatibilní s žádný programovací jazyk, který můžete nastavit požadavků HTTP a analyzovat JSON RESTful webová služba. 
+Tento článek vám ukazuje, jak používat rozhraní API pro vyhledávání Bingu, což je součást Microsoft Cognitive Services v Azure. V tomto článku se sice používá Java, ale rozhraní API je webová služba RESTful kompatibilní s každým programovacím jazykem, který dokáže provádět požadavky HTTP a parsovat JSON. 
 
-Příklad kódu se zapíše se spouští jako Konzolová aplikace Java 7.
+Příklad kódu je napsaný tak, aby běžel pod Javou 7 jako konzolová aplikace.
 
-Odkazovat [referenční dokumentace rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) technické podrobnosti o rozhraní API.
+V [referenčních informacích k rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) najdete technické podrobnosti o rozhraních API.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Musíte mít [kognitivní rozhraní API služby účet](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraní API pro Bing vyhledávání**. [Bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) stačí pro tento rychlý start. Budete potřebovat přístupový klíč zadaný při aktivaci bezplatné zkušební verze, nebo může použít klíč placené předplatné z řídicího panelu Azure.
+Musíte mít [účet API Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s přístupem k **rozhraním API pro vyhledávání Bingu**. [Bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) pro účely tohoto rychlého startu stačí. Pro aktivaci vaší bezplatné zkušební verze budete potřebovat přístupový klíč, nebo můžete použít klíč placeného předplatného z řídicího panelu Azure.
 
-## <a name="bing-video-search"></a>Video vyhledávání v Bingu
+## <a name="bing-video-search"></a>Vyhledávání videí Bingu
 
-[Rozhraní API vyhledávání Video Bing](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference) vrátí video výsledky z Bing vyhledávací web.
+[Rozhraní API Bingu pro vyhledávání videí](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference) vrátí výsledky videí z vyhledávacího webu Bing.
 
-1. Stáhnout nebo nainstalovat [gson knihovny](https://github.com/google/gson).
-2. Vytvoření nového projektu Java vaše oblíbené IDE nebo editoru.
-3. Přidejte kód níže uvedenou.
-4. Nahraďte `subscriptionKey` hodnotu s přístupový klíč platný pro vaše předplatné.
+1. Stáhněte si nebo nainstalujte [knihovnu gson](https://github.com/google/gson).
+2. Ve svém oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Javy.
+3. Přidejte níže uvedený kód.
+4. Hodnotu `subscriptionKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
 5. Spusťte program.
 
 ```java
@@ -256,12 +257,12 @@ class SearchResults{
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Stránkování videa](paging-videos.md)
-> [Resizing a oříznutí obrázky miniatur](resize-and-crop-thumbnails.md)
+> [Stránkování videí](paging-videos.md)
+> [Změna velikosti a oříznutí obrázků miniatur](resize-and-crop-thumbnails.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech 
+## <a name="see-also"></a>Viz také 
 
- [Vyhledávání na webu pro videa](search-the-web.md) [vyzkoušet](https://azure.microsoft.com/services/cognitive-services/bing-video-search-api/)
+ [Vyhledávání videí na webu](search-the-web.md) [Vyzkoušejte si to](https://azure.microsoft.com/services/cognitive-services/bing-video-search-api/)

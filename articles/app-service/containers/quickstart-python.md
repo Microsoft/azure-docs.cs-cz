@@ -1,26 +1,32 @@
 ---
-title: Nasazení aplikace v Pythonu ve službě Azure Web App for Containers
-description: Postup nasazení image Dockeru s aplikací v Pythonu do služby Azure Web App for Containers.
-keywords: azure app service, web app, python, docker, container
-services: app-service
+title: Vytvoření webové aplikace v Pythonu ve službě Azure App Service v Linuxu | Microsoft Docs
+description: Během několika minut můžete nasadit svou první aplikaci Hello world v Pythonu ve službě Azure App Service v Linuxu.
+services: app-service\web
+documentationcenter: ''
 author: cephalin
 manager: jeconnoc
-ms.service: app-service
-ms.devlang: python
+editor: ''
+ms.assetid: ''
+ms.service: app-service-web
+ms.workload: web
+ms.tgt_pltfrm: na
+ms.devlang: na
 ms.topic: quickstart
-ms.date: 07/13/2018
+ms.date: 09/13/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 6d328d8a3556f565e7eac8ee079bd191b7dcadef
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c3089ad11dc951d3105b25b6857b7697f8c38d1a
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433438"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432063"
 ---
-# <a name="deploy-a-python-web-app-in-web-app-for-containers"></a>Nasazení webové aplikace v Pythonu ve službě Web App for Containers
+# <a name="create-a-python-web-app-in-azure-app-service-on-linux-preview"></a>Vytvoření webové aplikace v Pythonu ve službě Azure App Service v Linuxu (verze Preview)
 
-[App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů s využitím operačního systému Linux. Tento rychlý start ukazuje, jak vytvořit webovou aplikaci a pomocí vlastní image z centra Dockeru k ní nasadit jednoduchou aplikaci Flask. Webovou aplikaci vytvoříte pomocí [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).
+[App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů s využitím operačního systému Linux. Tento rychlý start ukazuje, jak nasadit aplikaci v Pythonu na integrovanou image Pythonu (verze Preview) ve službě App Service v Linuxu pomocí [Azure CLI](/cli/azure/install-azure-cli).
+
+Postup v tomto článku můžete použít v případě počítačů se systémem Mac, Windows nebo Linux.
 
 ![Ukázková aplikace spuštěná ve službě Azure](media/quickstart-python/hello-world-in-browser.png)
 
@@ -28,67 +34,50 @@ ms.locfileid: "39433438"
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro absolvování tohoto kurzu potřebujete:
+K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
-* <a href="https://git-scm.com/" target="_blank">Nainstalovat Git</a>.
-* <a href="https://www.docker.com/community-edition" target="_blank">Nainstalovat Docker Community Edition</a>
-* <a href="https://hub.docker.com/" target="_blank">Zaregistrovat si účet Centra Dockeru</a>
+* <a href="https://www.python.org/downloads/" target="_blank">Nainstalovat Python 3.7</a>
+* <a href="https://git-scm.com/" target="_blank">Nainstalovat Git</a>
 
 ## <a name="download-the-sample"></a>Stažení ukázky
 
-V okně terminálu naklonujte spuštěním následujících příkazů ukázkovou aplikaci do místního počítače a přejděte do adresáře, který obsahuje vzorový kód.
+V okně terminálu naklonujte spuštěním následujících příkazů ukázkovou aplikaci do místního počítače a přejděte do adresáře s ukázkovým kódem.
 
 ```bash
 git clone https://github.com/Azure-Samples/python-docs-hello-world
 cd python-docs-hello-world
 ```
 
-Toto úložiště obsahuje jednoduchou aplikaci Flask, kterou najdete ve složce _/app_, a soubor _Dockerfile_, který určuje tři věci:
-
-- Použití základní image [tiangolo/uwsgi-nginx-flask:python3.6-alpine3.7](https://hub.docker.com/r/tiangolo/uwsgi-nginx-flask/).
-- Kontejner musí naslouchat na portu 8000.
-- Zkopírování adresáře `/app` do adresáře kontejneru `/app`.
-
-Tato konfigurace se řídí [pokyny pro základní image](https://hub.docker.com/r/tiangolo/uwsgi-nginx-flask/).
-
 ## <a name="run-the-app-locally"></a>Místní spuštění aplikace
 
-Spusťte aplikaci v kontejneru Dockeru.
+Spusťte aplikaci místně, abyste viděli, jak by měla vypadat po nasazení do Azure. Otevřete okno terminálu a pomocí následujících příkazů nainstalujte požadované závislosti a spusťte integrovaný vývojový server. 
 
 ```bash
-docker build --rm -t flask-quickstart .
-docker run --rm -it -p 8000:8000 flask-quickstart
+# In Bash
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+FLASK_APP=application.py flask run
+
+# In PowerShell
+py -3 -m venv env
+env\scripts\activate
+pip install -r requirements.txt
+Set-Item Env:FLASK_APP ".\application.py"
+flask run
 ```
 
-Otevřete webový prohlížeč a přejděte do ukázkové aplikace na adrese `http://localhost:8000`.
+Otevřete webový prohlížeč a přejděte do ukázkové aplikace na adrese `http://localhost:5000/`.
 
-Na stránce se zobrazí zpráva **Hello World** od ukázkové aplikace.
+Na stránce se zobrazí zpráva **Hello World!** z ukázkové aplikace.
 
-![Ukázková aplikace spuštěná místně](media/quickstart-python/localhost-hello-world-in-browser.png)
+![Ukázková aplikace spuštěná místně](media/quickstart-python/hello-world-in-browser.png)
 
-V okně terminálu zastavte kontejner stisknutím **Ctrl + C**.
-
-## <a name="deploy-image-to-docker-hub"></a>Nasazení image do Centra Dockeru
-
-Přihlaste se ke svému účtu Centra Dockeru. Po zobrazení výzvy zadejte přihlašovací údaje k Centru Dockeru.
-
-```bash
-docker login
-```
-
-Označte image a pak ji nasdílejte do nového _veřejného_ úložiště účtu Centra Dockeru s názvem `flask-quickstart`. Nahraďte *\<dockerhub_id>* svým ID účtu Centra Dockeru.
-
-```bash
-docker tag flask-quickstart <dockerhub_id>/flask-quickstart
-docker push <dockerhub_id>/flask-quickstart
-```
-
-> [!NOTE]
-> Příkaz `docker push` vytvoří veřejné úložiště, pokud zadané úložiště nenajde. Tento rychlý start pracuje s veřejným úložištěm v Centru Dockeru. Pokud chcete image nasdílet do privátního úložiště, budete muset později v Azure App Service nakonfigurovat své přihlašovací údaje Centra Dockeru. Viz níže v části [Vytvoření webové aplikace](#create-a-web-app).
-
-Po nasdílení image ji můžete použít ve webové aplikaci Azure.
+V okně terminálu ukončete webový server stisknutím **Ctrl + C**.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
+[!INCLUDE [Configure deployment user](../../../includes/configure-deployment-user.md)]
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux.md)]
 
@@ -96,99 +85,100 @@ Po nasdílení image ji můžete použít ve webové aplikaci Azure.
 
 ## <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
-Pomocí příkazu [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) vytvořte [webovou aplikaci](../app-service-web-overview.md) v plánu služby App Service `myAppServicePlan`. Nahraďte *\<app name>* globálně jedinečným názvem aplikace a nahraďte *\<dockerhub_id >* svým ID Centra Dockeru.
+[!INCLUDE [Create app service plan](../../../includes/app-service-web-create-web-app-python-linux-no-h.md)]
 
-```azurecli-interactive
-az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> --deployment-container-image-name <dockerhub_id>/flask-quickstart
+Přejděte na web a zobrazte nově vytvořenou webovou aplikaci s použitím integrované image. Nahraďte _&lt;app name>_ názvem vaší webové aplikace.
+
+```bash
+http://<app_name>.azurewebsites.net
 ```
 
-Po vytvoření webové aplikace Azure CLI zobrazí výstup podobný následujícímu příkladu:
+Vaše nová webová aplikace by měla vypadat takto:
 
-```json
-{
-  "availabilityState": "Normal",
-  "clientAffinityEnabled": true,
-  "clientCertEnabled": false,
-  "cloningInfo": null,
-  "containerSize": 0,
-  "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "<app name>.azurewebsites.net",
-  "deploymentLocalGitUrl": "https://<username>@<app name>.scm.azurewebsites.net/<app name>.git",
-  "enabled": true,
-  < JSON data removed for brevity. >
-}
-```
+![Prázdná stránka webové aplikace](media/quickstart-php/app-service-web-service-created.png)
 
-Pokud jste dříve použili privátní úložiště, musíte také ve službě App Service nakonfigurovat své přihlašovací údaje Centra Dockeru. Další informace získáte v tématu věnovaném [použití privátní image z Centra Dockeru](tutorial-custom-docker-image.md#use-a-private-image-from-docker-hub-optional).
+[!INCLUDE [Push to Azure](../../../includes/app-service-web-git-push-to-azure.md)] 
 
-### <a name="specify-container-port"></a>Zadání portu kontejneru
-
-Jak je uvedeno v souboru _Dockerfile_, váš kontejner naslouchá na portu 8000. Aby služba App Service směrovala váš požadavek na správný port, budete muset nastavit *WEBSITES_PORT*.
-
-Ve službě Cloud Shell spusťte příkaz [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set).
-
-
-```azurecli-interactive
-az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings WEBSITES_PORT=8000
-```
+```bash
+Counting objects: 42, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (39/39), done.
+Writing objects: 100% (42/42), 9.43 KiB | 0 bytes/s, done.
+Total 42 (delta 15), reused 0 (delta 0)
+remote: Updating branch 'master'.
+remote: Updating submodules.
+remote: Preparing deployment for commit id 'c40efbb40e'.
+remote: Generating deployment script.
+remote: Generating deployment script for python Web Site
+.
+.
+.
+remote: Finished successfully.
+remote: Running post deployment command(s)...
+remote: Deployment successful.
+remote: App container will begin restart within 10 seconds.
+To https://user2234@cephalin-python.scm.azurewebsites.net/cephalin-python.git
+ * [new branch]      master -> master
+ ```
 
 ## <a name="browse-to-the-app"></a>Přechod do aplikace
 
+V prohlížeči zadejte adresu nasazené aplikace.
+
 ```bash
-http://<app_name>.azurewebsites.net/
+http://<app_name>.azurewebsites.net
 ```
+
+Ukázkový kód Pythonu se spustí ve webové aplikaci s použitím integrované image.
 
 ![Ukázková aplikace spuštěná ve službě Azure](media/quickstart-python/hello-world-in-browser.png)
 
-> [!NOTE]
-> První spuštění webové aplikace nějaký čas trvá, protože se musí stáhnout a spustit image z Centra Dockeru. Pokud se po delší době zobrazí chyba, stránku obnovte.
+**Blahopřejeme!** Nasadili jste svoji první aplikaci v Pythonu do služby App Service v Linuxu.
 
-**Blahopřejeme!** Do služby Web App for Containers jste nasadili vlastní image Dockeru s aplikací v Pythonu.
+## <a name="update-locally-and-redeploy-the-code"></a>Místní aktualizace a opětovné nasazení kódu
 
-## <a name="update-locally-and-redeploy"></a>Místní aktualizace a opětovné nasazení
-
-Pomocí místního textového editoru otevřete soubor `app/main.py` v rámci aplikace v Pythonu a proveďte malou změnu textu vedle příkazu `return`:
+V místním úložišti otevřete soubor `application.py` a proveďte malou změnu textu na posledním řádku:
 
 ```python
-return 'Hello, Azure!'
+return "Hello Azure!"
 ```
 
-Image znovu sestavte a nasdílejte do Centra Dockeru.
+Potvrďte změny v Gitu a potom odešlete změny kódu do Azure.
 
 ```bash
-docker build --rm -t flask-quickstart .
-docker tag flask-quickstart <dockerhub_id>/flask-quickstart
-docker push <dockerhub_id>/flask-quickstart
+git commit -am "updated output"
+git push azure master
 ```
 
-Restartujte aplikaci ve službě Cloud Shell. Restartováním aplikace zajistí, že se použijí všechna nastavení a z registru se stáhne nejnovější kontejner.
-
-```azurecli-interactive
-az webapp restart --resource-group myResourceGroup --name <app_name>
-```
-
-Počkejte asi 15 sekund, než služba App Service stáhne aktualizovanou image. Vraťte se do okna prohlížeče, které se otevřelo v kroku **Přechod do aplikace**, a aktualizujte zobrazení stránky.
+Po dokončení nasazení se vraťte do okna prohlížeče, které se otevřelo v kroku **Přechod do aplikace**, a aktualizujte zobrazení stránky.
 
 ![Aktualizovaná ukázková aplikace spuštěná ve službě Azure](media/quickstart-python/hello-azure-in-browser.png)
 
-## <a name="manage-your-azure-web-app"></a>Správa webové aplikace Azure
+## <a name="manage-your-new-azure-web-app"></a>Správa vaší nové webové aplikace Azure
 
-Přejděte na web [Azure Portal](https://portal.azure.com) k webové aplikaci, kterou jste vytvořili.
+Pokud chcete spravovat webovou aplikaci, kterou jste vytvořili, přejděte na web <a href="https://portal.azure.com" target="_blank">Azure Portal</a>.
 
 V levé nabídce klikněte na **App Services** a pak klikněte na název vaší webové aplikace Azure.
 
 ![Navigace portálem k webové aplikaci Azure](./media/quickstart-python/app-service-list.png)
 
-Na začátku portál zobrazí stránku **Přehled** vaší webové aplikace. Tato stránka poskytuje přehled, jak si vaše aplikace stojí. Tady můžete také provést základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění. Karty na levé straně stránky obsahují různé stránky konfigurace, které můžete otevřít.
+Zobrazí se stránka s přehledem vaší webové aplikace. Tady můžete provádět základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění.
 
-![Stránka služby App Service na webu Azure Portal](./media/quickstart-python/app-service-detail.png)
+![Stránka služby App Service na webu Azure Portal](media/quickstart-python/app-service-detail.png)
 
-[!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]
+Levá nabídka obsahuje odkazy na různé stránky pro konfiguraci vaší aplikace. 
+
+[!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
+Integrovaná image Pythonu ve službě App Service v Linuxu je aktuálně ve verzi Preview. Produkční aplikace v Pythonu můžete místo ní vytvářet s využitím vlastního kontejneru.
+
 > [!div class="nextstepaction"]
-> [Python sh PostgreSQL](tutorial-docker-python-postgresql-app.md)
+> [Python sh PostgreSQL](tutorial-python-postgresql-app.md)
+
+> [!div class="nextstepaction"]
+> [Konfigurace integrované image Pythonu](how-to-configure-python.md)
 
 > [!div class="nextstepaction"]
 > [Použití vlastní image](tutorial-custom-docker-image.md)

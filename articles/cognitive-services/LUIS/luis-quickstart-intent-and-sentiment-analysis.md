@@ -1,40 +1,25 @@
 ---
-title: Kurz vytvoření aplikace LUIS vracející analýzu mínění – Azure | Microsoft Docs
-description: V tomto kurzu zjistíte, jak do své aplikace LUIS přidat analýzu mínění umožňující analýzu pozitivních, negativních a neutrálních pocitů v promluvách.
+title: 'Kurz 9: Analýza mínění včetně určení pozitivních, negativních a neutrálních promluv v LUIS'
+titleSuffix: Azure Cognitive Services
+description: V tomto kurzu vytvoříte aplikaci, která ukazuje, jak z promluv extrahovat pozitivní, negativní a neutrální mínění. Mínění se určuje z celé promluvy.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: luis
+ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 08/02/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: a89755bcc0ed5ef8bee4ed00b99c73993a57bcb9
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: ff5a47f977f34535c5ad1fde7e6cac5995e7f7dd
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44163018"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031454"
 ---
-# <a name="tutorial-9--add-sentiment-analysis"></a>Kurz: 9.  Přidání analýzy mínění
-V tomto kurzu vytvoříte aplikaci, která ukazuje, jak z promluv extrahovat pozitivní, negativní a neutrální mínění.
+# <a name="tutorial-9--extract-sentiment-of-overall-utterance"></a>Kurz 9: Extrahování mínění z celé promluvy
+V tomto kurzu vytvoříte aplikaci, která ukazuje, jak z promluv extrahovat pozitivní, negativní a neutrální mínění. Mínění se určuje z celé promluvy.
 
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * Vysvětlení analýzy mínění
-> * Použití aplikace LUIS v doméně lidských zdrojů 
-> * Přidání analýzy mínění
-> * Trénování a publikování aplikace
-> * Odeslání dotazu na koncový bod aplikace a zobrazení odpovědi JSON ze služby LUIS 
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="before-you-begin"></a>Než začnete
-Pokud nemáte aplikaci pro lidské zdroje z kurzu k [předdefinované entitě klíčové fráze](luis-quickstart-intent-and-key-phrase.md), [naimportujte](luis-how-to-start-new-app.md#import-new-app) JSON do nové aplikace na webu služby [LUIS](luis-reference-regions.md#luis-website). Aplikaci k importování najdete v úložišti [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-keyphrase-HumanResources.json) na Githubu.
-
-Pokud chcete zachovat původní aplikaci pro lidské zdroje, naklonujte verzi na stránce [Settings](luis-how-to-manage-versions.md#clone-a-version) (Nastavení) a pojmenujte ji `sentiment`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. 
-
-## <a name="sentiment-analysis"></a>Analýza mínění
 Analýza mínění představuje možnost určit, jestli je promluva uživatele pozitivní, negativní nebo neutrální. 
 
 Následující promluvy ukazují příklady mínění:
@@ -44,18 +29,40 @@ Následující promluvy ukazují příklady mínění:
 |pozitivní|0,91 |John W. Smith did a great job on the presentation in Paris (John W. Smith udělal skvělou práci na prezentaci v Paříži).|
 |pozitivní|0,84 |jill-jones@mycompany.com did fabulous work on the Parker sales pitch (jill-jones@mycompany.com odvedla vynikající práci při prodejní prezentaci pro firmu Parker).|
 
-Analýza mínění je nastavení aplikace, které se vztahuje na všechny promluvy. Nemusíte vyhledávat slova indikující mínění v promluvě a označovat je, protože analýza mínění se používá u celé promluvy. 
+Analýza mínění je nastavení publikování, které se vztahuje na všechny promluvy. Nemusíte vyhledávat slova indikující mínění v promluvě a označovat je, protože analýza mínění se používá u celé promluvy. 
 
-## <a name="add-employeefeedback-intent"></a>Přidání záměru EmployeeFeedback (Zpětná vazba o zaměstnancích) 
+Jedná se o nastavení publikování, takže se nezobrazuje na stránkách záměrů a entit. Zobrazuje se v podokně [interaktivního testu](luis-interactive-test.md#view-sentiment-results) nebo při testování na adrese URL koncového bodu. 
+
+**Co se v tomto kurzu naučíte:**
+
+<!-- green checkmark -->
+> [!div class="checklist"]
+> * Použití existující ukázkové aplikace 
+> * Přidání analýzy mínění jako nastavení publikování
+> * Trénování
+> * Publikování
+> * Získání mínění promluvy z koncového bodu
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="use-existing-app"></a>Použití existující aplikace
+
+Pokračujte s aplikací **HumanResources**, kterou jste vytvořili v posledním kurzu. 
+
+Pokud tuto aplikaci nemáte, proveďte tyto kroky:
+
+1.  Stáhněte a uložte si [soubor JSON aplikace](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-keyphrase-HumanResources.json).
+
+2. Naimportujte JSON do nové aplikace.
+
+3. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `sentiment`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto může obsahovat jenom znaky podporované v adresách URL.
+
+## <a name="employeefeedback-intent"></a>Záměr EmployeeFeedback (Zpětná vazba o zaměstnancích) 
 Přidejte nový záměr, který bude zachycovat zpětnou vazbu o zaměstnancích od členů společnosti. 
 
-1. Ujistěte se, že je vaše aplikace pro lidské zdroje uvedená v části **Build** (Sestavení) služby LUIS. Do této části můžete přejít výběrem možnosti **Build** (Sestavit) v pravém horním řádku nabídek. 
-
-    [ ![Snímek obrazovky aplikace LUIS se zvýrazněnou možností Build (Sestavit) na pravém horním navigačním panelu](./media/luis-quickstart-intent-and-sentiment-analysis/hr-first-image.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-first-image.png#lightbox)
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Vyberte **Create new intent** (Vytvořit nový záměr).
-
-    [ ![Snímek obrazovky aplikace LUIS se zvýrazněnou možností Build (Sestavit) na pravém horním navigačním panelu](./media/luis-quickstart-intent-and-sentiment-analysis/hr-create-new-intent.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-create-new-intent.png#lightbox)
 
 3. Nový záměr pojmenujte `EmployeeFeedback`.
 
@@ -78,135 +85,126 @@ Přidejte nový záměr, který bude zachycovat zpětnou vazbu o zaměstnancích
 
     [ ![Snímek obrazovky aplikace LUIS s příklady promluv v záměru EmployeeFeedback (Zpětná vazba o zaměstnancích)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png#lightbox)
 
-## <a name="train-the-luis-app"></a>Trénování aplikace LUIS
+## <a name="train"></a>Trénování
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="configure-app-to-include-sentiment-analysis"></a>Konfigurace aplikace pro zahrnutí analýzy mínění
-Analýza mínění se konfiguruje na stránce **Publish** (Publikovat). 
+1. Na pravém horním navigačním panelu vyberte **Manage** (Správa) a pak v levé nabídce vyberte **Publish settings** (Nastavení publikování).
 
-1. Na pravém horním navigačním panelu vyberte **Publish** (Publikovat).
+2. Přepnutím možnosti **Sentiment Analysis** (Analýza mínění) povolte toto nastavení. 
 
-    ![Snímek obrazovky se stránkou záměru a rozbaleným tlačítkem Publish (Publikovat) ](./media/luis-quickstart-intent-and-sentiment-analysis/hr-publish-button-in-top-nav-highlighted.png)
+    ![](./media/luis-quickstart-intent-and-sentiment-analysis/turn-on-sentiment-analysis-as-publish-setting.png)
 
-2. Vyberte **Enable Sentiment Analysis** (Povolit analýzu mínění). 
-
-## <a name="publish-app-to-endpoint"></a>Publikování aplikace do koncového bodu
+## <a name="publish"></a>Publikování
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="query-the-endpoint-with-an-utterance"></a>Odeslání dotazu na koncový bod s promluvou
+## <a name="get-sentiment-of-utterance-from-endpoint"></a>Získání mínění promluvy z koncového bodu
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Na konec adresy URL zadejte `Jill Jones work with the media team on the public portal was amazing`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. Tato promluva není stejná jako žádná z označených promluv, proto je to dobrý test a měl by se vrátit záměr `EmployeeFeedback` s extrahovanou analýzou mínění.
-
-```
-{
-  "query": "Jill Jones work with the media team on the public portal was amazing",
-  "topScoringIntent": {
-    "intent": "EmployeeFeedback",
-    "score": 0.4983256
-  },
-  "intents": [
+    
+    ```JSON
     {
-      "intent": "EmployeeFeedback",
-      "score": 0.4983256
-    },
-    {
-      "intent": "MoveEmployee",
-      "score": 0.06617523
-    },
-    {
-      "intent": "GetJobInformation",
-      "score": 0.04631853
-    },
-    {
-      "intent": "ApplyForJob",
-      "score": 0.0103248553
-    },
-    {
-      "intent": "Utilities.StartOver",
-      "score": 0.007531875
-    },
-    {
-      "intent": "FindForm",
-      "score": 0.00344597152
-    },
-    {
-      "intent": "Utilities.Help",
-      "score": 0.00337914471
-    },
-    {
-      "intent": "Utilities.Cancel",
-      "score": 0.0026357458
-    },
-    {
-      "intent": "None",
-      "score": 0.00214573368
-    },
-    {
-      "intent": "Utilities.Stop",
-      "score": 0.00157622492
-    },
-    {
-      "intent": "Utilities.Confirm",
-      "score": 7.379545E-05
-    }
-  ],
-  "entities": [
-    {
-      "entity": "jill jones",
-      "type": "Employee",
-      "startIndex": 0,
-      "endIndex": 9,
-      "resolution": {
-        "values": [
-          "Employee-45612"
-        ]
+      "query": "Jill Jones work with the media team on the public portal was amazing",
+      "topScoringIntent": {
+        "intent": "EmployeeFeedback",
+        "score": 0.4983256
+      },
+      "intents": [
+        {
+          "intent": "EmployeeFeedback",
+          "score": 0.4983256
+        },
+        {
+          "intent": "MoveEmployee",
+          "score": 0.06617523
+        },
+        {
+          "intent": "GetJobInformation",
+          "score": 0.04631853
+        },
+        {
+          "intent": "ApplyForJob",
+          "score": 0.0103248553
+        },
+        {
+          "intent": "Utilities.StartOver",
+          "score": 0.007531875
+        },
+        {
+          "intent": "FindForm",
+          "score": 0.00344597152
+        },
+        {
+          "intent": "Utilities.Help",
+          "score": 0.00337914471
+        },
+        {
+          "intent": "Utilities.Cancel",
+          "score": 0.0026357458
+        },
+        {
+          "intent": "None",
+          "score": 0.00214573368
+        },
+        {
+          "intent": "Utilities.Stop",
+          "score": 0.00157622492
+        },
+        {
+          "intent": "Utilities.Confirm",
+          "score": 7.379545E-05
+        }
+      ],
+      "entities": [
+        {
+          "entity": "jill jones",
+          "type": "Employee",
+          "startIndex": 0,
+          "endIndex": 9,
+          "resolution": {
+            "values": [
+              "Employee-45612"
+            ]
+          }
+        },
+        {
+          "entity": "media team",
+          "type": "builtin.keyPhrase",
+          "startIndex": 25,
+          "endIndex": 34
+        },
+        {
+          "entity": "public portal",
+          "type": "builtin.keyPhrase",
+          "startIndex": 43,
+          "endIndex": 55
+        },
+        {
+          "entity": "jill jones",
+          "type": "builtin.keyPhrase",
+          "startIndex": 0,
+          "endIndex": 9
+        }
+      ],
+      "sentimentAnalysis": {
+        "label": "positive",
+        "score": 0.8694164
       }
-    },
-    {
-      "entity": "media team",
-      "type": "builtin.keyPhrase",
-      "startIndex": 25,
-      "endIndex": 34
-    },
-    {
-      "entity": "public portal",
-      "type": "builtin.keyPhrase",
-      "startIndex": 43,
-      "endIndex": 55
-    },
-    {
-      "entity": "jill jones",
-      "type": "builtin.keyPhrase",
-      "startIndex": 0,
-      "endIndex": 9
     }
-  ],
-  "sentimentAnalysis": {
-    "label": "positive",
-    "score": 0.8694164
-  }
-}
-```
+    ```
 
-Hodnota SentimentAnalysis je kladná a má skóre 0,86. 
-
-## <a name="what-has-this-luis-app-accomplished"></a>Co tato aplikace LUIS udělala?
-Tato aplikace s povolenou analýzou mínění identifikovala záměr dotazu v přirozeném jazyce a vrátila extrahovaná data, včetně celkového mínění v podobě skóre. 
-
-Váš chatbot má teď dostatek informací k určení dalšího kroku v konverzaci. 
-
-## <a name="where-is-this-luis-data-used"></a>Kde se tato data služby LUIS používají? 
-Služba LUIS s tímto požadavkem skončila. Volající aplikace, například chatbot, může převzít výsledek topScoringIntent a data o mínění z promluvy a provést další krok. Služba LUIS neprovádí tuto programovou práci za chatbota ani nevolá aplikaci. Služba LUIS pouze určuje, co je záměrem uživatele. 
+    Hodnota SentimentAnalysis je kladná a má skóre 0,86. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
+V tomto kurzu se přidá analýza mínění jako nastavení publikování tak, aby se extrahovaly hodnoty mínění z promluvy jako celku.
 
 > [!div class="nextstepaction"] 
 > [Kontrola promluv koncového bodu v aplikaci HR](luis-tutorial-review-endpoint-utterances.md) 

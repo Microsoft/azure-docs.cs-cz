@@ -1,40 +1,41 @@
 ---
-title: Rychlý start C# pro kognitivní služby Azure, Bing Video vyhledávání rozhraní API | Microsoft Docs
-description: Get informace a ukázky kódu můžete rychle začít používat rozhraní API služby Bing Video Search v kognitivní služby společnosti Microsoft na platformě Azure.
+title: 'Rychlý start: Rozhraní API pro vyhledávání videí Bingu, C#'
+titlesuffix: Azure Cognitive Services
+description: Umožňuje získat informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API Bingu pro vyhledávání videí.
 services: cognitive-services
-documentationcenter: ''
 author: v-jerkin
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 0686d99b5f6f7b0546fc4e8c24369957667a7da6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 00522ac87a74226c9af1920bd884792ff2956a95
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343423"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225765"
 ---
-# <a name="quickstart-for-bing-video-search-api-with-c"></a>Rychlý start pro Bing Video vyhledávání rozhraní API pomocí jazyka C#
+# <a name="quickstart-bing-video-search-api-with-c"></a>Rychlý start: Rozhraní API pro vyhledávání videí Bingu s C#
 
-Tento článek ukazuje, jak pomocí rozhraní API týkající se hledání Video Bing, součástí kognitivní služby společnosti Microsoft na platformě Azure. Při tomto článku aktivuje C#, rozhraní API je kompatibilní s žádný programovací jazyk, který můžete nastavit požadavků HTTP a analyzovat JSON RESTful webová služba. 
+Tento článek vám ukazuje, jak používat rozhraní API Bingu pro vyhledávání videí, což je součást Azure Cognitive Services. V tomto článku se sice používá C#, ale rozhraní API je webová služba RESTful kompatibilní s každým programovacím jazykem, který dokáže provádět požadavky HTTP a parsovat JSON. 
 
-Příklad kódu se aplikace .NET Core, s minimálním externí závislosti, takže je možné také spustit v systému Linux nebo Mac OS X pomocí Mono napsané v C#.
+Ukázkový kód je napsaný v jazyce C# jako aplikace .NET Core s minimálními externími závislostmi, můžete ho tedy spustit také na systému Linux nebo Mac OS X pomocí architektury Mono.
 
-Odkazovat [referenční dokumentace rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) technické podrobnosti o rozhraní API.
+Technické podrobnosti o rozhraních API najdete v [referenci k rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Musíte mít [kognitivní rozhraní API služby účet](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraní API pro Bing vyhledávání**. [Bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) stačí pro tento rychlý start. Budete potřebovat přístupový klíč zadaný při aktivaci bezplatné zkušební verze, nebo může použít klíč placené předplatné z řídicího panelu Azure.
+Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s přístupem k **rozhraním API pro vyhledávání Bingu**. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Pro aktivaci bezplatné zkušební verze budete potřebovat přístupový klíč nebo můžete použít klíč placeného předplatného z řídicího panelu Azure.
 
-## <a name="bing-video-search"></a>Hledání Bing Video
+## <a name="bing-video-search"></a>Vyhledávání videí Bingu
 
-[Rozhraní API vyhledávání Video Bing](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference) vrátí video výsledky z Bing vyhledávací web.
+[Rozhraní API Bingu pro vyhledávání videí](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference) vrátí výsledky videí z vyhledávacího webu Bing.
 
-1. Vytvořte nové řešení konzoly v sadě Visual Studio (Community Edition je v pořádku).
-1. Nahraďte kód níže uvedenou Program.cs.
-1. Nahraďte `accessKey` hodnotu s přístupový klíč platný pro vaše předplatné.
+1. Vytvořte nové konzolové řešení v sadě Visual Studio (Community Edition je v pořádku).
+1. Nahraďte soubor Program.cs níže uvedeným kódem.
+1. Hodnotu `accessKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
 1. Spusťte program.
 
 ```csharp
@@ -298,13 +299,13 @@ namespace BingVideoSearchCSharpCore
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Stránkování videa](paging-videos.md)
-> [Resizing a oříznutí obrázky miniatur](resize-and-crop-thumbnails.md)
+> [Stránkování videí](paging-videos.md)
+> [Změna velikosti a oříznutí obrázků miniatur](resize-and-crop-thumbnails.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech 
+## <a name="see-also"></a>Viz také 
 
- [Vyhledávání na webu pro videa](search-the-web.md)  
+ [Hledání videí na webu](search-the-web.md)  
  [Vyzkoušet](https://azure.microsoft.com/services/cognitive-services/bing-video-search-api/)

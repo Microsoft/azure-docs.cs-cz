@@ -1,26 +1,27 @@
 ---
-title: Doporučení rozhraní API | Microsoft Docs
-description: Verze Preview rozhraní API je nyní přerušeno, nahrazuje šablona řešení doporučení.
+title: Co je rozhraní API pro doporučování (Recommendations API)?
+titlesuffix: Azure Cognitive Services
+description: Verze Preview rozhraní API už skončila a nahrazuje ji šablona řešení Doporučení.
 services: cognitive-services
 author: LuisCabrer
-manager: mwinkle
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: recommendations
-ms.topic: article
+ms.topic: overview
 ms.date: 02/15/2018
 ms.author: luisca
-ms.openlocfilehash: 2224a44c76ce7b04ab6705babbe9fa4f3bfa1c04
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 59529806c322176c1d85c273a99682eaa7c13e41
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342623"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222656"
 ---
-# <a name="recommendations-api-discontinued"></a>Doporučení rozhraní API (pozastaveno)
+# <a name="recommendations-api-discontinued"></a>Rozhraní API pro doporučování (ukončené)
 
-Ve verzi preview rozhraní API doporučení je již ve službě active vývoji a oficiálně vyřazenou na února 15. 
+Verzi Preview rozhraní API pro doporučování už se aktivně nevyvíjí a od 15. února je oficiálně ukončena. 
 
-Alternativu, vezměte v úvahu nové open-source [šablona řešení doporučení](http://aka.ms/recopcs), která vám umožňuje hostovat modul doporučení v rámci předplatného Azure. Podporuje scénáře jádra rozhraní API doporučení přitom taky poskytuje možnost používat tato zařízení k nasazení pro všechny oblasti Azure a další řídí výpočetní prostředky využívané cvičení modely a poskytovat doporučení. 
+Jako alternativu zvažte novou open-source [šablonu řešení Doporučení](http://aka.ms/recopcs), s kterou můžete hostovat modul pro doporučování v rámci vašeho předplatného Azure. Podporuje základní scénáře rozhraní API pro doporučování, ale zároveň vám také dává volnost nasazovat do libovolné oblasti Azure a přesněji řídit výpočetní prostředky používané k trénování modelů a obsluze doporučení. 
 
-Další informace o řešení doporučení šablony načtením [dokumentaci](https://github.com/Microsoft/Product-Recommendations). 
+Další informace o šabloně řešení Doporučení si můžete přečíst v [dokumentaci](https://github.com/Microsoft/Product-Recommendations). 
 

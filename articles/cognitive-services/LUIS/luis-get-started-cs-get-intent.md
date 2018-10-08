@@ -1,22 +1,23 @@
 ---
-title: Analýza textu v přirozeném jazyce ve službě Language Understanding (LUIS) pomocí C# – Azure Cognitive Services | Microsoft Docs
+title: Rychlý start pro C# – předpověď záměru – LUIS
+titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu použijete dostupnou veřejnou aplikaci LUIS ke zjištění záměru uživatele z textu konverzace. Pomocí C# odešlete záměr uživatele jako text do koncového bodu předpovědi HTTP veřejné aplikace. Služba LUIS použije v koncovém bodě model veřejné aplikace k analýze smyslu textu v přirozeném jazyce, zjištění celkového záměru a extrakci dat, která jsou relevantní pro doménu subjektu aplikace.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 08/23/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: b6ddd48fc6bfa5c099e42f3717a2113f871b4f9a
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 51c23029cc771db5351575ce329944a9f06dd286
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44163256"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035840"
 ---
-# <a name="quickstart-analyze-text-using-c"></a>Rychlý start: Analýza textu pomocí C#
+# <a name="quickstart-get-intent-using-c"></a>Rychlý start: Získání záměru pomocí C#
 
 [!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
@@ -35,11 +36,11 @@ ms.locfileid: "44163256"
 
 [!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
 
-## <a name="analyze-text-with-browser"></a>Analýza textu pomocí prohlížeče
+## <a name="get-intent-with-browser"></a>Získání záměru prostřednictvím prohlížeče
 
 [!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-browser-para.md)]
 
-## <a name="analyze-text-with-c"></a>Analýza textu pomocí C# 
+## <a name="get-intent-programmatically"></a>Získání záměru prostřednictvím kódu programu
 
 K získání stejných výsledků, jaké jste viděli v okně prohlížeče v předchozí části, použijte jazyk C# a dotaz na rozhraní [API](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78) koncového bodu predikce. 
 

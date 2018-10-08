@@ -1,7 +1,7 @@
 ---
-title: Vytvoření aplikace v Ruby a její nasazení do služby App Service v Linuxu | Dokumentace Microsoftu
-description: Naučte se vytvářet aplikace v Ruby pomocí služby App Service v Linuxu.
-keywords: azure app service, linux, oss, ruby
+title: Vytvoření aplikace v Ruby on Rails a její nasazení do služby App Service v Linuxu | Microsoft Docs
+description: Naučte se vytvořit aplikaci v Ruby on Rails pomocí služby App Service v Linuxu.
+keywords: azure app service, linux, oss, ruby, rails
 services: app-service
 documentationcenter: ''
 author: SyntaxC4
@@ -16,16 +16,19 @@ ms.topic: quickstart
 ms.date: 08/24/2018
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 729ed8ac4568f5f39fd62fadbc8d4d0e4595f7b8
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 04025998f78843b1cc69acd663681b9563a531bc
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42885285"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47431221"
 ---
-# <a name="create-a-ruby-app-in-app-service-on-linux"></a>Vytvoření aplikace v Ruby ve službě App Service v Linuxu
+# <a name="create-a-ruby-on-rails-app-in-app-service-on-linux"></a>Vytvoření aplikace v Ruby on Rails ve službě App Service v Linuxu
 
 [Azure App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. V tomto rychlém startu se dozvíte, jak vytvořit základní aplikaci v [Ruby on Rails](https://rubyonrails.org/), kterou pak můžete nasadit do Azure jako webovou aplikaci v Linuxu.
+
+> [!NOTE]
+> Vývojová sada Ruby podporuje v současnosti jen Ruby on Rails. Pokud chcete použít jinou platformu, například Sinatra, přečtěte si prosím rychlý start pro [Web App for Containers](https://docs.microsoft.com/azure/app-service/containers/).
 
 ![Hello World](./media/quickstart-ruby/hello-world-updated.png)
 
@@ -48,9 +51,16 @@ git clone https://github.com/Azure-Samples/ruby-docs-hello-world
 
 Spusťte aplikaci místně, abyste viděli, jak by měla vypadat po nasazení do Azure. Otevřete okno terminálu, přejděte do adresáře `hello-world` a pomocí příkazu `rails server` spusťte server.
 
+Prvním krokem je instalace požadovaných souborů gem. Součástí ukázky je soubor `Gemfile`, takže nemusíte určovat, jaké soubory gem se mají nainstalovat. K tomuto účelu použijeme příkaz bundler:
+
+```
+bundle install
+```
+
+Po instalaci souborů gem použijeme příkaz bundler ke spuštění aplikace:
+
 ```bash
-cd hello-world\bin
-rails server
+bundle exec rails server
 ```
 
 Ve webovém prohlížeči přejděte na adresu `http://localhost:3000` a místně otestujte aplikaci.

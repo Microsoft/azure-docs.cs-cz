@@ -1,24 +1,27 @@
 ---
-title: Publikování znalostní báze, rychlý start pro Node.js – Azure Cognitive Services | Microsoft Docs
+title: 'Rychlý start: Publikování znalostní báze v Node.js – QnA Maker'
+titleSuffix: Azure Cognitive Services
 description: Postup publikování znalostní báze pro QnA Maker v Node.js
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: quickstart
-ms.date: 06/18/2018
-ms.author: nolachar
-ms.openlocfilehash: fad3857774f2726e3db595ee6bc72d52a8ac46d9
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 00642661995e16bda9ad995e69545b28468779c5
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "43769194"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040934"
 ---
 # <a name="publish-a-knowledge-base-in-nodejs"></a>Publikování znalostní báze v Node.js
 
 Následující kód publikuje existující znalostní bázi pomocí metody [Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe).
+
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
 
 Pokud znalostní bázi ještě nemáte, můžete si vytvořit ukázkovou znalostní bázi a použít ji v tomto rychlém startu. Přečtěte si o [vytvoření nové znalostní báze](create-new-kb-nodejs.md).
 

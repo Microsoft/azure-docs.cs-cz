@@ -1,121 +1,125 @@
 ---
-title: 'Rychlý start: Rozpoznávat řeč v jazyce C# v aplikaci UWP pomocí Cognitive Services SDK řeči'
+title: 'Rychlý start: Rozpoznávání řeči v C# v aplikaci pro UPW s využitím sady Cognitive Services Speech SDK'
 titleSuffix: Microsoft Cognitive Services
-description: Zjistěte, jak rozpoznávat řeč v aplikace pro UPW pomocí Cognitive Services SDK řeči
+description: Naučte se rozpoznávat řeč v aplikaci pro UPW s využitím sady Cognitive Services Speech SDK.
 services: cognitive-services
 author: wolfma61
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
-ms.date: 07/16/2018
+ms.topic: quickstart
+ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: b709b2791ae7472689cc2c7ca747f75ce0f1e6bf
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
-ms.translationtype: MT
+ms.openlocfilehash: 2eb6bda7066a01e5532fe7c0e20b0ee13f4289b6
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126086"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432983"
 ---
-# <a name="quickstart-recognize-speech-in-a-uwp-app-using-the-speech-sdk"></a>Rychlý start: Rozpoznávat řeč v aplikace pro UPW pomocí sady SDK pro řeč
+# <a name="quickstart-recognize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v aplikaci pro UPW s využitím sady Speech SDK
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-V tomto článku se dozvíte, jak vytvořit aplikaci univerzální platformy Windows (UPW) přepisy převod řeči na text pomocí Cognitive Services SDK řeči.
-Aplikace je sestavená s [Microsoft Cognitive Services řeči balíčku sady SDK NuGet](https://aka.ms/csspeech/nuget) a Microsoft Visual Studio 2017.
+V tomto článku vytvoříte aplikaci pro Univerzální platformu Windows (UPW) v jazyce C# pomocí sady Cognitive Services [Speech SDK](speech-sdk.md). V reálném čase přepíšete řeč z mikrofonu zařízení na text. Tato aplikace je vytvořená pomocí [balíčku NuGet sady Speech SDK](https://aka.ms/csspeech/nuget) a sady Microsoft Visual Studio 2017 (libovolné edice).
 
 > [!NOTE]
-> Univerzální platforma Windows umožňuje vyvíjet aplikace, které běží na všech zařízeních, která podporuje Windows 10, včetně počítačů, Xbox, Surface Hubu a dalších zařízení. Aplikace s využitím sadou SDK pro řeč ještě nepředávejte Kit certifikaci aplikace Windows (souboru). Je možné nainstalovat ji bokem, které vaše aplikace, ale nemusí být odeslány aktuálně pro Windows Store.
+> Univerzální platforma Windows umožňuje vyvíjet aplikace, které běží na všech zařízeních podporujících Windows 10 včetně počítačů, Xboxu, Surface Hubu a dalších.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Klíč předplatného pro službu rozpoznávání řeči. Zobrazit [službu řeči si můžete vyzkoušet zdarma](get-started.md).
-* Počítače s Windows (Windows 10 Fall Creators Update nebo novější) s pracovní mikrofon.
-* [Microsoft Visual Studio 2017](https://www.visualstudio.com/), edice Community nebo vyšší.
-* **Vývoj pro univerzální platformu Windows** úlohy v aplikaci Visual Studio.You můžete povolit v **nástroje** \> **stažení nástrojů a funkcí**.
-
-  ![Povolit vývoj pro univerzální platformu Windows](media/sdk/vs-enable-uwp-workload.png)
+K dokončení tohoto rychlého startu potřebujete klíč předplatného služby Speech. Můžete ho získat zdarma. Podrobnosti najdete v článku [Vyzkoušejte si službu Speech zdarma](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Vytvoření projektu ve Visual Studiu
 
-1. V sadě Visual Studio 2017 vytvořte nový Visual C# Windows Universal prázdnou aplikaci. V **nový projekt** dialogové okno, v levém podokně rozbalte **nainstalováno** \> **Visual C#** \> **Windows Universal** a pak vyberte **prázdná aplikace (Universal Windows)**. Název projektu zadejte *helloworld*.
+1. Spusťte Visual Studio 2017.
 
-    ![](media/sdk/qs-csharp-uwp-01-new-blank-app.png)
+1. Ověřte, že je k dispozici sada funkcí **Vývoj pro Univerzální platformu Windows**. Volbou příkazu **Nástroje** > **Získat nástroje a funkce** na řádku nabídek sady Visual Studio otevřete instalační program sady Visual Studio. Pokud je tato sada funkcí už povolená, zavřete dialogové okno. 
 
-1. V **nový projekt univerzální platformy Windows** okno, které bodů POP, zvolte **Windows 10 Fall Creators Update (10.0; Sestavení 16299)** jako **minimální verze**a to nebo novější verze, jako **cílovou verzi**, pak klikněte na tlačítko **OK**.
+    ![Snímek obrazovky instalačního programu sady Visual Studio se zvýrazněnou kartou Sady funkcí](media/sdk/vs-enable-uwp-workload.png)
 
-    ![](media/sdk/qs-csharp-uwp-02-new-uwp-project.png)
+    V opačném případě zaškrtněte políčko **Vývoj multiplatformních aplikací pomocí rozhraní .NET** a vyberte **Změnit** v pravém dolním rohu dialogového okna. Instalace nové funkce chvíli trvá.
 
-1. Pokud máte spuštěný na instalaci Windows 64-bit, přepnete platforma sestavení k `x64`.
+1. Vytvořte prázdnou univerzální aplikaci pro Windows v jazyce Visual C#. Nejdříve v nabídce vyberte **Soubor** > **Nový** > **Projekt**. V dialogovém okně **Nový projekt** rozbalte **Nainstalováno** > **Visual C#** > **Univerzální aplikace pro Windows**  v levém podokně. Pak vyberte **Prázdná aplikace (univerzální pro Windows)**. Jako název projektu zadejte *helloworld*.
 
-   ![Přepnout na x64 platforma sestavení](media/sdk/qs-csharp-uwp-03-switch-to-x64.png)
+    ![Snímek obrazovky s dialogovým oknem Nový projekt](media/sdk/qs-csharp-uwp-01-new-blank-app.png)
+
+1. Sada Speech SDK vyžaduje, aby aplikace byla vytvořená pro Windows 10 Fall Creators Update nebo novější. V zobrazeném okně **Nový projekt Univerzální platformy Windows** zvolte v poli **Minimální verze** možnost **Windows 10 Fall Creators Update (10.0; build 16299)**. V poli **Cílová verze** vyberte tuto nebo novější verzi a pak klikněte na **OK**.
+
+    ![Snímek obrazovky s oknem Nový projekt univerzální platformy Windows](media/sdk/qs-csharp-uwp-02-new-uwp-project.png)
+
+1. Pokud používáte 64bitovou verzi Windows, můžete pomocí rozevírací nabídky na panelu nástrojů sady Visual Studio přepnout platformu sestavení na `x64`. (64bitová verze Windows dokáže spouštět 32bitové aplikace, takže pokud chcete, můžete ponechat nastavení `x86`.)
+
+   ![Snímek obrazovky panelu nástrojů sady Visual Studio se zvýrazněnou možností x64](media/sdk/qs-csharp-uwp-03-switch-to-x64.png)
 
    > [!NOTE]
-   > V současné době podporuje sadou SDK pro řeč procesory kompatibilní s verzí Intel, ale ne ARM.
+   > Sada Speech SDK podporuje jen procesory kompatibilní s Intelem. Procesory ARM nejsou momentálně podporované.
 
-1. Instalaci a odkazují [balíček NuGet sady SDK pro řeč](https://aka.ms/csspeech/nuget). V Průzkumníku řešení klikněte pravým tlačítkem myši na řešení a vyberte **spravovat balíčky NuGet pro řešení**.
+1. Nainstalujte [balíček NuGet sady Speech SDK](https://aka.ms/csspeech/nuget) a vytvořte na něho odkaz. V Průzkumníku řešení klikněte pravým tlačítkem na řešení a vyberte **Spravovat balíčky NuGet pro řešení**.
 
-    ![Klikněte pravým tlačítkem na spravovat balíčky NuGet pro řešení](media/sdk/qs-csharp-uwp-04-manage-nuget-packages.png)
+    ![Snímek obrazovky s Průzkumníkem řešení a zvýrazněnou možností Spravovat balíčky NuGet pro řešení](media/sdk/qs-csharp-uwp-04-manage-nuget-packages.png)
 
-1. V pravém horním rohu v **zdroj balíčku** pole, vyberte **Nuget.org**. Vyhledejte a nainstalujte `Microsoft.CognitiveServices.Speech` balíček a nainstalujte ho do **helloworld** projektu.
+1. V poli **Zdroj balíčku** v pravém horním rohu vyberte **nuget.org**. Vyhledejte balíček `Microsoft.CognitiveServices.Speech` a nainstalujte ho do projektu **helloworld**.
 
-    ![Nainstalujte balíček NuGet Microsoft.CognitiveServices.Speech](media/sdk/qs-csharp-uwp-05-nuget-install-0.5.0.png "balíček Nuget nainstalovat")
+    ![Snímek obrazovky s dialogovým oknem Spravovat balíčky pro řešení](media/sdk/qs-csharp-uwp-05-nuget-install-1.0.0.png "Instalace balíčku NuGet")
 
-1. Přijměte licenci na tento zobrazené.
+1. Přijměte zobrazenou licenci a zahajte instalaci tohoto balíčku NuGet.
 
-    ![Přijměte licenci](media/sdk/qs-csharp-uwp-06-nuget-license.png "přijměte licenci")
+    ![Snímek obrazovky s dialogovým oknem Souhlas s podmínkami licence](media/sdk/qs-csharp-uwp-06-nuget-license.png "Přijetí licence")
 
-1. Následující řádek výstupu se zobrazí v konzole Správce balíčků.
+1. V konzole Správce balíčků se zobrazí následující řádek výstupu.
 
    ```text
-   Successfully installed 'Microsoft.CognitiveServices.Speech 0.6.0' to helloworld
+   Successfully installed 'Microsoft.CognitiveServices.Speech 1.0.0' to helloworld
    ```
 
-## <a name="add-the-sample-code"></a>Přidejte ukázkový kód
+1. Protože aplikace používá mikrofon pro hlasový vstup, přidejte do projektu schopnost **Mikrofon**. V Průzkumníku řešení dvakrát klikněte na **Package.appxmanifest** a upravte manifest aplikace. Přepněte na kartu **Schopnosti**, zaškrtněte políčko u schopnosti **Mikrofon** a uložte provedené změny.
 
-1. V Průzkumníku řešení poklikejte na **Package.appxmanifest** upravit manifest aplikace.
-   Vyberte **možnosti** kartu, zaškrtněte políčko **mikrofon** funkce, které se a uložte provedené změny.
+   ![Snímek obrazovky s manifestem aplikace sady Visual Studio a zvýrazněnými volbami Schopnosti a Mikrofon](media/sdk/qs-csharp-uwp-07-capabilities.png)
 
-   ![](media/sdk/qs-csharp-uwp-07-capabilities.png)
 
-1. Upravit uživatelské rozhraní vaší aplikace na něj poklikejte `MainPage.xaml` v Průzkumníku řešení. 
+## <a name="add-sample-code"></a>Přidání ukázkového kódu
 
-    V zobrazení návrháři XAML, vložte následující fragment kódu XAML do mřížky značky (mezi `<Grid>` a `</Grid>`).
+1. Uživatelské rozhraní aplikace je definované pomocí XAML. Otevřete `MainPage.xaml` v Průzkumníku řešení. V zobrazení XAML návrháře vložte do značky Grid (mezi `<Grid>` a `</Grid>`) následující fragment kódu XAML.
 
    [!code-xml[UI elements](~/samples-cognitive-services-speech-sdk/quickstart/csharp-uwp/helloworld/MainPage.xaml#StackPanel)]
 
-1. Úprava kódu XAML dvojitým kliknutím `MainPage.xaml.cs` v Průzkumníku řešení (je seskupený pod `MainPage.xaml` položky).
-   Veškerý kód v tomto souboru nahraďte následujícím kódem.
+1. Otevřete zdrojový soubor s kódem `MainPage.xaml.cs` (je seskupený pod `MainPage.xaml`). Veškerý kód nahraďte následujícím kódem.
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-uwp/helloworld/MainPage.xaml.cs#code)]
 
-1. V `SpeechRecognitionFromMicrophone_ButtonClicked` obslužnou rutinu, nahraďte řetězec `YourSubscriptionKey` s klíči předplatného.
+1. V obslužné rutině `SpeechRecognitionFromMicrophone_ButtonClicked` v tomto souboru nahraďte řetězec `YourSubscriptionKey` klíčem předplatného.
 
-1. V `SpeechRecognitionFromMicrophone_ButtonClicked` obslužnou rutinu, nahraďte řetězec `YourServiceRegion` s [oblasti](regions.md) přidružených k vašemu předplatnému (například `westus` pro bezplatnou zkušební verzi předplatného).
+1. V obslužné rutině `SpeechRecognitionFromMicrophone_ButtonClicked` nahraďte řetězec `YourServiceRegion` [oblastí](regions.md) přidruženou k vašemu předplatnému (například `westus` pro bezplatnou zkušební verzi předplatného).
 
 1. Uložte všechny změny do projektu.
 
-## <a name="build-and-run-the-sample"></a>Sestavení a spuštění ukázky
+## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
 
-1. Sestavení aplikace. V panelu nabídky vyberte **sestavení** > **sestavit řešení**. Kód by měl nyní kompilovat bez chyb.
+1. Sestavte aplikaci. V řádku nabídek vyberte **Sestavení** > **Sestavit řešení**. Kód by se teď měl zkompilovat bez chyb.
 
-    ![Úspěšné sestavení](media/sdk/qs-csharp-uwp-08-build.png "úspěšné sestavení")
+    ![Snímek obrazovky s aplikací sady Visual Studio se zvýrazněnou možností Sestavit řešení](media/sdk/qs-csharp-uwp-08-build.png "Úspěšné sestavení")
 
-1. Spusťte aplikaci. V panelu nabídky vyberte **ladění** > **spustit ladění**, nebo stiskněte klávesu **F5**.
+1. Spusťte aplikaci. V řádku nabídek vyberte **Ladit** > **Spustit ladění** nebo stiskněte klávesu **F5**.
 
-    ![Spusťte aplikaci do ladění](media/sdk/qs-csharp-uwp-09-start-debugging.png "spusťte aplikaci do ladění")
+    ![Snímek obrazovky s aplikací sady Visual Studio se zvýrazněnou možností Spustit ladění](media/sdk/qs-csharp-uwp-09-start-debugging.png "Spuštění aplikace s laděním")
 
-1. Zobrazí okno grafického uživatelského rozhraní. Nejprve klikněte na tlačítko **povolit mikrofon** tlačítko a berou na vědomí žádost o oprávnění, která se otevře.
+1. Otevře se okno. Vyberte **Povolit mikrofon** a potvrďte žádost o oprávnění, která se otevře.
 
-    ![Spusťte aplikaci do ladění](media/sdk/qs-csharp-uwp-10-access-prompt.png "spusťte aplikaci do ladění")
+    ![Snímek obrazovky s žádostí o oprávnění](media/sdk/qs-csharp-uwp-10-access-prompt.png "Spuštění aplikace s laděním")
 
-1. Klikněte na tlačítko **rozpoznávání řeči se vstupem mikrofon** a Mluvte krátkých frází do vašeho zařízení mikrofon. Rozpoznaný text se zobrazí v okně.
+1. Vyberte **Rozpoznávání řeči se vstupem z mikrofonu** a vyslovte do mikrofonu zařízení anglickou frázi nebo větu. Vaše řeč se přenese do služby Speech a přepíše na text, který se zobrazí v okně.
 
-    ![](media/sdk/qs-csharp-uwp-11-ui-result.png)
+    ![Snímek obrazovky uživatelského rozhraní pro rozpoznávání řeči](media/sdk/qs-csharp-uwp-11-ui-result.png)
 
-[!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-Hledat v této ukázce `quickstart/csharp-uwp` složky.
+[!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+Vyhledejte tuto ukázku ve složce `quickstart/csharp-uwp`.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
+
+> [!div class="nextstepaction"]
+> [Rozpoznávání záměrů z řeči pomocí sady Speech SDK pro C#](how-to-recognize-intents-from-speech-csharp.md)
+
+## <a name="see-also"></a>Viz také
 
 - [Překlad řeči](how-to-translate-speech-csharp.md)
 - [Přizpůsobení akustických modelů](how-to-customize-acoustic-models.md)

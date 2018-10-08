@@ -1,25 +1,27 @@
 ---
-title: Rychlý start k analýze obrázku pomocí rozhraní API pro počítačové zpracování obrazu se sadou SDK a C# | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: V tomto rychlém startu analyzujete obrázek pomocí klientské knihovny C# systému Windows počítačového zpracování obrazu ve službách Cognitive Services.
+title: 'Rychlý start: Analýza obrázku – SDK, C# – Počítačové zpracování obrazu'
+titleSuffix: Azure Cognitive Services
+description: V tomto rychlém startu analyzujete obrázek pomocí klientské knihovny C# systému Windows počítačového zpracování obrazu.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: 3ff3a4702ab0b1fb663ee896f268065caf043809
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.date: 09/14/2018
+ms.author: nolachar
+ms.openlocfilehash: 0315b1c90eeae27d30a237aea76e66465818fba4
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43769342"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056070"
 ---
-# <a name="quickstart-analyze-an-image---sdk-c35"></a>Rychlý start: Analýza obrázku – SDK, C&#35;
+# <a name="quickstart-analyze-an-image-using-the-computer-vision-sdk-and-c"></a>Rychlý start: Analýza obrázku s použitím sady SDK pro počítačové zpracování obrazu a C#
 
 V tomto rychlém startu analyzujete místní a vzdálený obrázek za účelem extrakce vizuálních prvků pomocí klientské knihovny Windows počítačového zpracování obrazu.
+
+Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -39,7 +41,7 @@ Metody `AnalyzeImageAsync` a `AnalyzeImageInStreamAsync` využívají [rozhraní
 * Kategorie definované v této [taxonomii](../Category-Taxonomy.md)
 * Je obsah obrázku určený pro dospělé nebo se jedná o sexuálně sugestivní obsah?
 
-Pokud chcete spustit ukázku, postupujte následovně:
+Pokud chcete spustit ukázku, postupujte takto:
 
 1. V sadě Visual Studio vytvořte novou konzolovou aplikaci Visual C#.
 1. Nainstalujte balíček NuGet klientské knihovny počítačového zpracování obrazu.
@@ -48,7 +50,7 @@ Pokud chcete spustit ukázku, postupujte následovně:
     1. Jakmile se zobrazí, vyberte **Microsoft.Azure.CognitiveServices.Vision.ComputerVision**, potom klikněte na zaškrtávací políčko vedle názvu vašeho projektu a na **Nainstalovat**.
 1. `Program.cs` nahraďte následujícím kódem.
 1. Místo `<Subscription Key>` použijte platný klíč předplatného.
-1. V případě potřeby změňte `computerVision.AzureRegion = AzureRegions.Westcentralus` na umístění, kde jste získali klíče předplatného.
+1. V případě potřeby změňte `computerVision.Endpoint` na oblast Azure spojenou s vašimi klíči předplatného.
 1. `<LocalImage>` nahraďte cestou a názvem souboru místního obrázku.
 1. Volitelně můžete `remoteImageUrl` nastavit na jiný obrázek.
 1. Spusťte program.
@@ -86,33 +88,33 @@ namespace ImageAnalyze
 
         static void Main(string[] args)
         {
-            ComputerVisionAPI computerVision = new ComputerVisionAPI(
-                new ApiKeyServiceClientCredentials(subscriptionKey), 
+            ComputerVisionClient computerVision = new ComputerVisionClient(
+                new ApiKeyServiceClientCredentials(subscriptionKey),
                 new System.Net.Http.DelegatingHandler[] { });
 
             // You must use the same region as you used to get your subscription
             // keys. For example, if you got your subscription keys from westus,
-            // replace "Westcentralus" with "Westus".
+            // replace "westcentralus" with "westus".
             //
             // Free trial subscription keys are generated in the westcentralus
             // region. If you use a free trial subscription key, you shouldn't
             // need to change the region.
 
             // Specify the Azure region
-            computerVision.AzureRegion = AzureRegions.Westcentralus;
+            computerVision.Endpoint = "https://westcentralus.api.cognitive.microsoft.com";
 
             Console.WriteLine("Images being analyzed ...");
             var t1 = AnalyzeRemoteAsync(computerVision, remoteImageUrl);
             var t2 = AnalyzeLocalAsync(computerVision, localImagePath);
 
             Task.WhenAll(t1, t2).Wait(5000);
-            Console.WriteLine("Press any key to exit");
+            Console.WriteLine("Press ENTER to exit");
             Console.ReadLine();
         }
 
         // Analyze a remote image
         private static async Task AnalyzeRemoteAsync(
-            ComputerVisionAPI computerVision, string imageUrl)
+            ComputerVisionClient computerVision, string imageUrl)
         {
             if (!Uri.IsWellFormedUriString(imageUrl, UriKind.Absolute))
             {
@@ -128,7 +130,7 @@ namespace ImageAnalyze
 
         // Analyze a local image
         private static async Task AnalyzeLocalAsync(
-            ComputerVisionAPI computerVision, string imagePath)
+            ComputerVisionClient computerVision, string imagePath)
         {
             if (!File.Exists(imagePath))
             {
@@ -159,9 +161,9 @@ namespace ImageAnalyze
 
 Úspěšná odpověď zobrazí nejrelevantnější titulek každého obrázku.
 
-Příklad nezpracovaného výstupu JSON najdete v [rychlých startech pro rozhraní API a analýzu místního obrázku s C#](../QuickStarts/CSharp-analyze.md#analyze-image-response).
+Příklad nezpracovaného výstupu JSON najdete v [rychlých startech pro rozhraní API a analýzu místního obrázku s C#](../QuickStarts/CSharp-analyze.md#examine-the-response).
 
-```cmd
+```
 http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg
 a large waterfall over a rocky cliff
 ```
@@ -171,4 +173,4 @@ a large waterfall over a rocky cliff
 Prozkoumejte rozhraní API pro počítačové zpracování obrazu používané pro analýzu obrázku, zjišťování celebrit a památek, vytvoření miniatury a extrahování tištěného a ručně psaného textu.
 
 > [!div class="nextstepaction"]
-> [Prozkoumejte rozhraní API pro počítačové zpracování obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
+> [Prozkoumat rozhraní API pro počítačové zpracování obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

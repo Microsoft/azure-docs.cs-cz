@@ -1,32 +1,32 @@
 ---
-title: Kurz image nahrávání pro vizuální vyhledávání Bingu | Dokumentace Microsoftu
-titleSuffix: Bing Web Search APIs - Cognitive Services
-description: Rozděluje proces nahrávání obrázku do Bingu získat přehled o je analýza kódu a zobrazení odpovědi.
+title: 'Kurz: Jak nahrát obrázek – Vizuální vyhledávání Bingu'
+titleSuffix: Azure Cognitive Services
+description: Rozděluje proces nahrávání obrázku do Bingu, aby o něm získal přehledy, a potom parsuje a zobrazí odpověď.
 services: cognitive-services
 author: swhite-msft
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: bing-visual-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: 1352ccbcda35c693c5ac0b36156af199ae46bee9
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
-ms.translationtype: MT
+ms.openlocfilehash: a5bc5197ecd1f35b4d0026caa076a844c9d57c40
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39068664"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221313"
 ---
-# <a name="tutorial-breaking-down-bing-visual-search-upload"></a>Kurz: Popis vnitřních principů nahrávání pro vizuální vyhledávání Bingu
+# <a name="tutorial-breaking-down-bing-visual-search-upload"></a>Kurz: Rozdělení nahrávání Vizuálního vyhledávání Bingu
 
-V tomto kurzu rozděluje proces nahrávání obrázku do Bingu a získávání přehledu zpět. Také ukazuje, jak získat přístup a zobrazit přehledy v odpovědi JSON. Kompletní příklad HTML a JavaScript, najdete v části [dokončení kódu](#complete-code).
+Tento kurz rozděluje proces nahrávání obrázku do Bingu a získávání přehledů. Také ukazuje, jak získat přístup k přehledům a zobrazit je v odpovědi JSON. Kompletní příklad HTML a JavaScriptu najdete v části [Celý kód](#complete-code).
 
-V tomto kurzu je k dispozici pro vývojáře, který chce Seznamte se s obsahem odpovědi pro vizuální vyhledávání Bingu. Nelze použít veškeré použití a zobrazit požadavky (například, neposkytuje odkaz na zásady ochrany osobních údajů společnosti Microsoft). Všechny požadavky na použití, naleznete v tématu [požadavky na zobrazení a použití Bingu](./use-and-display-requirements.md).
+Tento kurz je určený vývojáři, který chce prozkoumat obsah odpovědi Vizuálního vyhledávání Bingu. Neaplikuje veškeré požadavky na použití a zobrazení (například neposkytuje odkaz na zásady ochrany osobních údajů společnosti Microsoft). Všechny požadavky na použití najdete v tématu [Požadavky na zobrazení a použití Bingu](./use-and-display-requirements.md).
 
 
 ## <a name="where-to-start"></a>Kde začít?
 
-Začněme stránky HTML, která odešle obrázek Bingu a získá zpět insights a zobrazí je. Ve svém oblíbeném editoru vytvořte soubor s názvem, uploaddemo.html. Přidejte následující základní struktura HTML do souboru.
+Začněme stránkou HTML, která pošle Bingu obrázek a získá zpět přehledy a zobrazí je. Ve svém oblíbeném editoru vytvořte soubor s názvem uploaddemo.html. Přidejte do souboru následující základní strukturu HTML.
 
 ```html
 <!DOCTYPE html>
@@ -40,7 +40,7 @@ Začněme stránky HTML, která odešle obrázek Bingu a získá zpět insights 
 </html>      
 ```
 
-Spustit, Pojďme rozdělit na stránce oddíl žádost, ve kterém uživatel zadá všechny informace potřebné k odeslání požadavku, a odpověď části, kde se zobrazují informace. Přidejte následující \<div\> klíčová slova \<tělo\>. \<Hr\> značky vizuálně kolem části žádosti z části odpovědi.
+Na úvod rozdělme stránku na oddíl s žádostí, ve které uživatel zadá všechny informace potřebné k vytvoření žádosti, a oddíl s odpovědí, kde se zobrazí přehledy. Přidejte následující značky \<div\> do části \<body\>. Značka \<hr\> vizuálně vymezuje oddíl žádosti a oddíl odpovědi.
 
 ```html
         <div id="requestSection"></div>
@@ -50,13 +50,13 @@ Spustit, Pojďme rozdělit na stránce oddíl žádost, ve kterém uživatel zad
         <div id="responseSection"></div>
 ```
 
-## <a name="get-the-file-to-upload"></a>Získat soubor k nahrání
+## <a name="get-the-file-to-upload"></a>Načtení souboru, který se má nahrát
 
-Aby mohl uživatel vybrat bitovou kopii k nahrání, používá tuto ukázku \<vstupní\> značku s atributem typu nastavení do souboru. Uživatelské rozhraní je potřeba usnadňují vymazat, ukázky používá k získání požadovaných výsledků vyhledávání Bingu. 
+Aby mohl uživatel vybrat obrázek k nahrání, používá tato ukázka značku \<input\> s atributem typu nastaveným na soubor. V uživatelském rozhraní je třeba dát jasně najevo, že ukázka používá k získání výsledků hledání Bing. 
 
-Přidejte následující \<div\> k requestSection div. Vstupní soubor přijímá jeden soubor libovolného typu bitové kopie (například JPG, GIF, PNG). `onchange` Událostí určuje obslužná rutina, která je volána, když uživatel vybere soubor.
+Do requestSection div přidejte následující \<div\>. Vstup souboru přijímá jeden soubor libovolného typu obrázku (například .jpg, .gif, .png). Událost `onchange` určuje obslužnou rutinu, která je volána, když uživatel vybere soubor.
 
-\<Výstup\> značka se používá k zobrazení miniatury vybrané bitové kopie.
+Značka \<output\> slouží k zobrazení miniatury vybraného obrázku.
 
 
 ```html
@@ -69,14 +69,14 @@ Přidejte následující \<div\> k requestSection div. Vstupní soubor přijím�
             </div>
 ```
 
-Před přidáním obslužnou rutinu, přidejte \<skript\> značku na \<head\> značky.
+Před přidáním obslužné rutiny přidejte značku \<script\> do značky \<head\>.
 
 ```html
         <script>
         <\script>
 ```
 
-Následuje ukázka obslužná rutina, která zachycuje vybrané bitové kopie. Obslužná rutina obsahuje logiku a ujistěte se, že vybraný soubor je soubor obrázku a že jeho velikost je 1 MB nebo méně. Umožňuje uživateli vybrat větší soubory, ale je třeba zmenšit velikost image na méně než 1 MB před jejich nahráním do Bingu. Poslední věcí, kterou provádí obslužnou rutinu se zobrazí miniatura obrázku, aby mohl uživatel visual připomenutí souboru, který se vybral.
+Následující příklad ukazuje obslužnou rutinu, která zachycuje vybraný obrázek. Obslužná rutina obsahuje logiku, která zajišťuje, že je vybraný soubor soubor obrázku a že jeho velikost nepřesahuje 1 MB. Můžete uživateli umožnit vybrat větší soubory, ale před nahráním obrázku do Bingu je třeba zmenšit jeho velikost na méně než 1 MB. Poslední věcí, kterou obslužná rutina provádí, je zobrazení miniatury obrázku, aby měl uživatel vizuální připomenutí souboru, který vybral.
 
 ```javascript
         function handleFileSelect(selector) {
@@ -126,9 +126,9 @@ Následuje ukázka obslužná rutina, která zachycuje vybrané bitové kopie. O
 ```
 
 
-## <a name="what-else-is-needed-before-making-the-call-to-bing"></a>Co je potřeba před provedením volání do Bingu?
+## <a name="what-else-is-needed-before-making-the-call-to-bing"></a>Co je ještě potřeba před zavoláním do Bingu?
 
-Ukázky stále potřebuje klíč předplatného. V praxi by pravděpodobně získat klíč předplatného ze zabezpečeného úložiště, ale pro zjednodušení této ukázku je potřeba ho zadat v uživatelském rozhraní. Přidejte následující \<vstupní\> značku (s atributem typu nastaven na text) na \<tělo\> pod souboru \<výstup\> značky.
+Ukázka stále potřebuje klíč předplatného. V praxi byste si klíč předplatného nejspíš opatřili ze zabezpečeného úložiště, ale za účelem zjednodušení této ukázky ho bude potřeba zadat v uživatelském rozhraní. Přidejte následující značku \<input\> (s atributem typu nastaveným na text) do části \<body\> hned pod značku \<output\> souboru.
 
 ```html
         <div>
@@ -138,9 +138,9 @@ Ukázky stále potřebuje klíč předplatného. V praxi by pravděpodobně zís
         </div>
 ```
 
-Na obrázku a klíč předplatného v rukou můžete provést volání pro vizuální vyhledávání Bingu k získání přehledů o imagi. Volání byste použili výchozí trhu a bezpečného hledání hodnoty (en-us a střední, v uvedeném pořadí).
+Když máte obrázek a klíč předplatného, můžete provést volání do Vizuálního vyhledávání Bingu, abyste získali přehled o obrázku. Volání použije výchozí hodnoty pro trh a bezpečné hledání (en-us a střední).
 
-Tato ukázka poskytuje uživateli možnost změnit tyto hodnoty. Přidejte následující \<div\> níže div. klíčů předplatného Ukázka používá \<vyberte\> značky, které poskytují rozevíracího seznamu pro vstup na trh a bezpečné vyhledávání hodnoty. Oba seznamy zobrazení Bingu výchozí hodnoty.
+Tato ukázka poskytuje uživateli možnost tyto hodnoty změnit. Přidejte následující \<div\> pod div klíče předplatného. Ukázka používá značku \<select\>, která poskytne rozevírací seznam pro hodnoty pro trh a bezpečné hledání. Oba seznamy zobrazují výchozí hodnotu Bingu.
 
  
 ```html
@@ -203,7 +203,7 @@ Tato ukázka poskytuje uživateli možnost změnit tyto hodnoty. Přidejte násl
         </div>
 ```
 
-Ukázky skryje seznamů do sbalitelné div, kterým je řízeno odkaz Možnosti dotazu. Po kliknutí na odkaz na další možnosti dotazu, rozšíří divu. proto můžete zobrazit a upravit možnosti dotazu. Pokud kliknete na možnosti dotazu znovu, odkaz sbalí div a je skrytá. Následuje ukázka odkaz Možnosti dotazu popisovač události. Obslužná rutina řídí, jestli je div rozbalená nebo sbalená. Přidání této obslužné rutiny na \<skript\> oddílu. Všechny možné sbalit prvky div skrytých v ukázce používá obslužnou rutinu.
+Ukázka seznamy skryje do sbalitelného div, který je řízen odkazem na možnosti Dotaz. Po kliknutí na odkaz na další možnosti dotazu se div rozbalí, abyste viděli a mohli upravit možnosti dotazu. Pokud kliknete na odkaz znovu, div se sbalí a zůstane skrytý. Následující příklad ukazuje obslužnou rutinu onclick odkazu na možnosti dotazu. Obslužná rutina řídí, jestli je div rozbalený nebo sbalený. Přidejte tuto obslužnou rutinu do oddílu \<script\>. Obslužnou rutinu používají všechny sbalitelné divy v ukázce.
 
 ```javascript
         // Contains the toggle state of divs.
@@ -228,13 +228,13 @@ Ukázky skryje seznamů do sbalitelné div, kterým je řízeno odkaz Možnosti 
 
 ## <a name="making-the-call"></a>Volání
 
-Přidáte na následující tlačítko Get insights pod možností div v textu. Tlačítko umožňuje uživatelům iniciujte hovor. Když uživatel klikne na tlačítko, kurzor se změní na kurzor pro čekání pokryjte a se nazývá popisovač události.
+Přidejte následující tlačítko Get insights (Získat přehledy) pod div možností v oddílu body. Tlačítko umožňuje uživateli iniciovat volání. Když uživatel na tlačítko klikne, kurzor se změní na otáčející se kurzor čekání a zavolá se obslužná rutina onclick.
 
 ```html
         <p><input type="button" id="query" value="Get insights" onclick="document.body.style.cursor='wait'; handleQuery()" /></p>
 ```
 
-Přidání obslužné rutiny při klepnutí na tlačítko na \<skript\> značky. Obslužná rutina zajišťuje, že je k dispozici a je 32 znaků. klíč předplatného, a že image byla vybrána. Vymaže i žádné přehledy z předchozího dotazu. Pokud všechno, co je v pořádku, volá funkci Odesilani provede volání.
+Přidejte obslužnou rutinu onclick tlačítka do značky \<script\>. Obslužná rutina zajišťuje, že je k dispozici klíč předplatného a je dlouhý 32 znaků a že je vybraný obrázek. Vymaže také všechny přehledy z předchozího dotazu. Pokud je všechno v pořádku, volá funkci sendRequest, aby uskutečnila volání.
 
 ```javascript
         function handleQuery() {
@@ -271,7 +271,7 @@ Přidání obslužné rutiny při klepnutí na tlačítko na \<skript\> značky.
         }
 ```
 
-Funkce Odesilani formáty adresu URL koncového bodu, nastaví záhlaví Ocp-Apim-Subscription-Key klíč předplatného, připojí binární soubor k nahrání obrázku, určuje obslužné rutiny a provádí volání. 
+Funkce sendRequest zformátuje adresu URL koncového bodu, nastaví hlavičku Ocp-Apim-Subscription-Key na klíč předplatného, připojí binární soubor nahrávaného obrázku, určí obslužnou rutinu odpovědi a provede volání. 
 
 ```javascript
         function sendRequest(file, key) {
@@ -293,11 +293,11 @@ Funkce Odesilani formáty adresu URL koncového bodu, nastaví záhlaví Ocp-Api
 
 ## <a name="handling-the-response"></a>Zpracování odpovědi
 
-Funkce handleResponse zpracuje odpověď z volání pro vizuální vyhledávání Bingu. Pokud je volání úspěšné, analyzuje odpověď JSON do jednotlivé značky, které obsahují přehledy. V dalším kroku přidá řetězec, výsledky hledání v Internetu Bing, na stránku, kde se dá uživateli vědět, že data pocházejí ze služby Bing.
+Funkce handleResponse zpracuje odpověď z volání do Vizuálního vyhledávání Bingu. Pokud je volání úspěšné, naparsuje odpověď JSON do jednotlivých značek, které obsahují přehledy. V dalším kroku přidá na stránku řetězec „výsledky hledání Bingu na internetu“, aby uživatel věděl, že data pocházejí ze služby Bing.
 
-Ukázky může vypsat všechny přehledy na stránku, ale některé obrázky vrátit velké množství dat, která by se obtížně využívat. Místo toho ukázky vytvoří sbalitelnou div pro jednotlivé značky tak, že uživatel může spravovat jak velký objem dat, zobrazí se jim.
+Ukázka by mohla vypsat všechny přehledy na stránku, ale některé obrázky vracejí velké množství dat, která by se obtížně využívala. Místo toho ukázka vytvoří sbalitelný div pro jednotlivé značky tak, že uživatel může spravovat, jak velký objem dat se mu zobrazí.
 
-Přidání obslužné rutiny \<skript\> oddílu.
+Přidejte tuto obslužnou rutinu do oddílu \<script\>.
 
 ```javascript
         function handleResponse() {
@@ -334,7 +334,7 @@ Přidání obslužné rutiny \<skript\> oddílu.
         }
 ```
 
-Funkce buildTagSections prochází analyzovaný značkami JSON a volá funkci buildDiv sestavit div pro jednotlivé značky. Stejně jako možnost dotazu jednotlivé značky zobrazí jako odkaz. Když uživatel klikne na odkaz, značky se rozšíří zobrazující přehledy související se značkou. Pokud uživatel klikne na odkaz znovu, v části sbalí skrytí insights od uživatele.
+Funkce buildTagSections prochází parsovanými značkami JSON a volá funkci buildDiv, aby se pro každou značku sestavil div. Stejně jako u možnosti dotazu se každá značka zobrazí jako odkaz. Když uživatel klikne na odkaz, značka se rozbalí a zobrazí přehledy související se značkou. Pokud uživatel klikne na odkaz znovu, oddíl se sbalí a přehledy se před uživatelem skryjí.
 
 ```javascript
         function buildTagSections(tags) {
@@ -372,11 +372,11 @@ Funkce buildTagSections prochází analyzovaný značkami JSON a volá funkci bu
         }
 ```
 
-Funkce buildDiv volá funkci addDivContent k sestavení obsahu sbalitelné jednotlivé značky div.
+Funkce buildDiv volá funkci addDivContent k sestavení obsahu sbalitelného divu každé značky.
 
-Obsah na značku zahrnuje JSON z odpovědi pro značku. Ukázky obsahuje kód JSON pro tyto vývojáře, které chcete zobrazit ve formátu JSON vedly. Standardně se zobrazuje jenom prvních 100 znaků ve formátu JSON, ale můžete kliknout na řetězec JSON, který má zobrazit ve formátu JSON. Vyberete-li ho znovu, sbalí řetězec JSON zpět do 100 znaků.
+Obsah značky zahrnuje kód JSON z odpovědi pro značku. Ukázka obsahuje kód JSON pro ty vývojáře, kteří chtějí za odpovědí vidět JSON. Standardně se zobrazuje jenom prvních 100 znaků ve formátu JSON, můžete ale na řetězec JSON kliknout a zobrazit ho celý. Pokud na něj kliknete znovu, řetězec JSON se sbalí zpět na 100 znaků.
 
-V dalším kroku přidejte akci typy nalezené ve značce. Pro každý typ akce volejte různé funkce přidejte jeho insights.
+V dalším kroku přidejte typy akcí nalezené ve značce. Pro každý typ akce volejte různé funkce, abyste měli i jejich přehledy.
 
 ```javascript
         function addDivContent(div, tag, json) {
@@ -451,9 +451,9 @@ V dalším kroku přidejte akci typy nalezené ve značce. Pro každý typ akce 
         }
 ```
 
-Tady jsou všechny funkce, které zobrazují poznatky pro provedení různých akcí. Většina těchto funkcí jsou přímočaré &mdash; buď poskytují kliknout, čímž obrázek nebo prokliknutelný odkaz, který přesune uživatele na webové stránce, kde můžete získat další informace o imagi (Bing.com nebo webovou stránku hostitele na obrázku). Tento kurz nezobrazí všechna data přidružená k těchto přehledů. Všechna pole, které jsou k dispozici pro určitý přehled najdete v tématu [referenční příručka Visual pro vyhledávání Bingu](https://aka.ms/bingvisualsearchreferencedoc).
+Tady jsou všechny funkce, které zobrazují přehledy pro různé akce. Většina těchto funkcí jsou přímočaré – buď poskytují obrázek nebo odkaz, na který se dá kliknout a který přenese uživatele na webovou stránku, kde můžete získat další informace o obrázku (Bing.com nebo webovou stránku hostitele obrázku). Tento kurz nezobrazuje všechna data přidružená k přehledu. Pokud chcete vidět všechna pole dostupná pro určitý přehled, přečtěte si článek [Referenční příručka Vizuálnímu vyhledávání Bingu](https://aka.ms/bingvisualsearchreferencedoc).
 
-Mějte na paměti, je minimální množství dat, které je třeba zobrazit, je zbytek jenom na vás. Ujistěte se, že jste v dodržování předpisů, najdete v článku [požadavky na zobrazení a použití Bingu](./use-and-display-requirements.md).
+Mějte na paměti, že existuje minimální množství dat, která musíte zobrazit, a zbytek je na vás. Pokud si chcete být jisti, že dodržujete předpisy, podívejte se do článku [Požadavky na zobrazení a použití Bingu](./use-and-display-requirements.md).
 
 
 ```javascript
@@ -676,9 +676,9 @@ Mějte na paměti, je minimální množství dat, které je třeba zobrazit, je 
 
 
 
-## <a name="adding-styles-to-make-the-page-display-correctly"></a>Přidání styly, chcete-li správně zobrazit stránku
+## <a name="adding-styles-to-make-the-page-display-correctly"></a>Přidání stylů, aby se stránka zobrazovala správně
 
-Přidejte následující \<styl\> části \<head\> značky.
+Přidejte následující oddíl \<style\> do značky \<head\>.
 
 ```html
         <style>
@@ -713,9 +713,9 @@ Přidejte následující \<styl\> části \<head\> značky.
 
 
 
-## <a name="complete-code"></a>Kompletní kód
+## <a name="complete-code"></a>Celý kód
 
-Tady je úplný příklad HTML a JavaScript.
+Tady je kompletní příklad v HTML a JavaScriptu.
 
 ```html
 <!DOCTYPE html>
@@ -1329,6 +1329,6 @@ Tady je úplný příklad HTML a JavaScript.
 </html>      
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Pokud chcete zobrazit podrobný přehled fungování pomocí a přehledů token, viz [Bingu Visual Search SDK ImageInsightsToken kurzu](.\tutorial-visual-search-insights-token.md).
+Pokud chcete zjistit, jak funguje získávání přehledu pomocí tokenu insights, přečtěte si [Kurz k tokenu ImageInsightsToken sady SDK pro Vizuální vyhledávání Bingu](.\tutorial-visual-search-insights-token.md).

@@ -1,50 +1,50 @@
 ---
-title: Visual vyhledávání rychlý start Python SDK | Microsoft Docs
-description: Instalace Visual vyhledávání SDK Python konzolové aplikace.
+title: 'Rychlý start: Sada SDK Vizuálního vyhledávání Bingu, Python'
 titleSuffix: Azure Cognitive Services
+description: Nastavení pro konzolovou aplikaci v Pythonu sady SDK pro vizuální vyhledávání
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
-ms.topic: article
+ms.component: bing-visual-search
+ms.topic: quickstart
 ms.date: 06/11/2018
 ms.author: v-gedod
-ms.openlocfilehash: f7a1f275f9059abdceaef577fb5ca722c9951366
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
-ms.translationtype: MT
+ms.openlocfilehash: 269eaccbf834646b540123dfeeeec7c569b8ced4
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36939448"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222637"
 ---
-# <a name="visual-search-sdk-python-quickstart"></a>Rychlý start Python SDK Visual vyhledávání
+# <a name="quickstart-bing-visual-search-sdk-python"></a>Rychlý start: Sada SDK Vizuálního vyhledávání Bingu v Pythonu
 
-Sada SDK Bing Visual hledání používá funkci rozhraní REST API pro webové žádosti a analýza výsledků.
-[Zdrojový kód pro Python Bing Visual vyhledávání SDK ukázky](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/visual_search_samples.py) je k dispozici v centru Git.
+SDK Vizuálního vyhledávání Bingu používá funkce REST API pro webové žádosti a parsování výsledků.
+[Zdrojový kód pro ukázky sady SDK Vizuálního vyhledávání Bingu v Pythonu](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/visual_search_samples.py) je dostupný v Git Hubu.
 
-Kód scénáře jsou popsané do těchto oblastí:
-* [Klienta Visual vyhledávání](#client)
-* [Dokončení konzolové aplikace](#complete-console)
-* [Obrázek binární post s cropArea](#binary-crop)
+Situace s kódy jsou popsané pod těmito nadpisy:
+* [Klient Vizuálního vyhledávání](#client)
+* [Kompletní konzolová aplikace](#complete-console)
+* [Post binárního souboru obrázku s objektem cropArea](#binary-crop)
 * [Parametr KnowledgeRequest](#knowledge-req)
-* [Značky, akce a typ akce](#tags-actions)
+* [Značky, akce a actionType](#tags-actions)
 
-## <a name="application-dependencies"></a>Závislosti aplikací
-* Klíč rozhraní API kognitivní služby je vyžadovaný k ověření volání sady SDK. Zaregistrujte si [bezplatné zkušební verze klíč](https://azure.microsoft.com/try/cognitive-services/?api=search-api-v7). Zkušební klíč je vhodný pro sedm dní s 1 volání za sekundu. Pro produkční scénář [koupit přístupový klíč](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). Viz také [informace o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/visual/).
-* Pokud ji nemáte, nainstalujte Python. Sada SDK je kompatibilní s Python 2.7, 3.3, 3.4, 3.5 a 3.6.
-* Obecná doporučení pro vývoj Python je použití [virtuální prostředí](https://docs.python.org/3/tutorial/venv.html). Instalace a inicializace virtuálního prostředí s [venv modulu](https://pypi.python.org/pypi/virtualenv). Nainstalujte virtualenv pro Python 2.7.
+## <a name="application-dependencies"></a>Závislosti aplikace
+* Vyžaduje se klíč rozhraní API kognitivních služeb k ověření volání sady SDK. Zaregistrujte si [bezplatný zkušební klíč](https://azure.microsoft.com/try/cognitive-services/?api=search-api-v7). Zkušební verze klíče je platná sedm dní s 1 voláním za sekundu. Do výroby si [kupte přístupový klíč](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). Podívejte se také na [informace o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/visual/).
+* Pokud nemáte Python, nainstalujte si ho. Sada SDK je kompatibilní s Pythonem 2.7, 3.3, 3.4, 3.5 a 3.6.
+* Obecně se pro vývoj v jazyce Python doporučuje používat [virtuální prostředí](https://docs.python.org/3/tutorial/venv.html). Nainstalujte a inicializujte virtuální prostředí s [modulem venv](https://pypi.python.org/pypi/virtualenv). Nainstalujte virtualenv pro Python 2.7.
 ```
 python -m venv mytestenv
 ```
-Instalace Bing Search Visual SDK závislosti:
+Nainstalujte závislosti sady SDK Vizuálního vyhledávání Bingu:
 ```
 cd mytestenv
 python -m pip install azure-cognitiveservices-search-visualsearch
 ```
 
 <a name="client"></a> 
-## <a name="visual-search-client"></a>Visual vyhledávání klienta
-Chcete-li vytvořit instanci `VisualSearchAPI` klienta, importovat následující knihovny:
+## <a name="visual-search-client"></a>Klient Vizuálního vyhledávání
+Pokud chcete vytvořit instanci klienta `VisualSearchAPI`, naimportujte si následující knihovny:
 ```
 import http.client, urllib.parse
 import json
@@ -58,7 +58,7 @@ from azure.cognitiveservices.search.visualsearch.models import (
     KnowledgeRequest,
 )
 ```
-Nahraďte hodnotu řetězce subscriptionKey klíč platné předplatné.
+Hodnotu řetězce subscriptionKey nahraďte platným klíčem předplatného.
 ```
 subscription_key = 'YOUR-VISUAL-SEARCH-ACCESS-KEY'
 ```
@@ -66,7 +66,7 @@ Potom vytvořte instanci klienta:
 ```
 var client = new WebSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
 ```
-Klient použijte k vyhledání bitové kopie a analyzovat výsledky:
+Pomocí klienta vyhledejte obrázky a parsujte výsledky:
 ```
 PATH = 'C:\\Users\\USER\\azure-cognitive-samples\\mytestenv\\TestImages\\'
 image_path = os.path.join(PATH, "image.jpg")
@@ -106,9 +106,9 @@ with open(image_path, "rb") as image_fd:
 ```
 
 <a name="complete-console"></a> 
-## <a name="complete-console-application"></a>Dokončení konzolové aplikace
+## <a name="complete-console-application"></a>Kompletní konzolová aplikace
 
-Následující konzolové aplikace provede dříve definovaném dotaz a analyzuje výsledky:
+Následující konzolová aplikace provede dříve definovaný dotaz a parsuje výsledky:
 ```
 import http.client, urllib.parse
 import json
@@ -173,12 +173,12 @@ with open(image_path, "rb") as image_fd:
 
 ```
 
-Ukázky vyhledávání Bing ukazují různé funkce sady SDK.  Přidejte následující funkce na dříve definované `VisualSrchSDK` třídy.
+Ukázky vyhledávání Bingu ukazují různé funkce sady SDK.  Přidejte následující funkce do dříve definované třídy `VisualSrchSDK`.
 
 <a name="binary-crop"></a>
-## <a name="image-binary-post-with-croparea"></a>Obrázek binární post s cropArea
+## <a name="image-binary-post-with-croparea"></a>Post binárního souboru obrázku s objektem cropArea
 
-Následující kód odešle obrázek binární v textu požadavku post, společně s cropArea objektu.  Potom zobrazí imageInsightsToken, počet značek, počet akcí a první typ akce.
+Následující kód pošle binární soubor obrázku do textu žádosti POST spolu s objektem cropArea.  Potom vytiskne imageInsightsToken, počet značek, počet akcí a první actionType.
 
 ```
 def search_image_binary_with_crop_area(client, sub_key, file_path):
@@ -227,7 +227,7 @@ def search_image_binary_with_crop_area(client, sub_key, file_path):
 <a name="knowledge-req"></a>
 ## <a name="knowledgerequest-parameter"></a>Parametr KnowledgeRequest
 
-Následující kód odešle adresu url obrázku v `knowledgeRequest` parametr, spolu s \"lokality: www.bing.com\" filtru. Potom vytiskne `imageInsightsToken`, počet značek, počet akcí a první typ akce.
+Následující kód pošle adresu url obrázku v parametru `knowledgeRequest` spolu s filtrem \"site:www.bing.com\". Potom vytiskne `imageInsightsToken`, počet značek, počet akcí a první actionType.
 ```
 def search_url_with_filters(client_in, sub_key):
 
@@ -274,9 +274,9 @@ def search_url_with_filters(client_in, sub_key):
 
 ```
 <a name="tags-actions"></a>
-## <a name="tags-actions-and-actiontype"></a>Značky, akce a typ akce
+## <a name="tags-actions-and-actiontype"></a>Značky, akce a actionType
 
-Následující kód odešle token Statistika bitové kopie v parametru knowledgeRequest, společně s cropArea objektu. Potom zobrazí imageInsightsToken, počet značek, počet akcí a první typ akce.
+Následující kód pošle token insights obrázku v parametru knowledgeRequest spolu s objektem cropArea. Potom vytiskne imageInsightsToken, počet značek, počet akcí a první actionType.
 
 ```
     client = client_in
@@ -323,6 +323,6 @@ Následující kód odešle token Statistika bitové kopie v parametru knowledge
         print("Couldn't find image tags!")
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Kognitivní services .NET SDK ukázky](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7).
+[Ukázky kognitivních služeb sady .NET SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

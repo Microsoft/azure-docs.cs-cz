@@ -1,24 +1,27 @@
 ---
-title: Vytvoření nové znalostní báze – rychlý start pro Javu – pro rozhraní API služby Microsoft QnA Maker (verze 4) – Azure Cognitive Services | Microsoft Docs
-description: Vytvořte v Javě znalostní bázi, která bude ukládat nejčastější dotazy nebo příručky k produktům, abyste mohli začít používat službu QnA Maker.
+title: 'Rychlý start: Rozhraní API v Javě – vytvoření znalostní báze – QnA Maker'
+titlesuffix: Azure Cognitive Services
+description: Tento rychlý start vás provede procesem vytvoření ukázkové znalostní báze služby QnA Maker prostřednictvím kódu programu. Tato znalostní báze se zobrazí na řídicím panelu Azure účtu rozhraní API služeb Cognitive Services.
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: quickstart
-ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: 3d637a4a046318a95eeeb532cbb7a9938cb1004d
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 5dfea3a8b4b5a79585b910fd2fad4ffbda4729fd
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "43769130"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037605"
 ---
 # <a name="create-a-new-knowledge-base-in-java"></a>Vytvoření nové znalostní báze v Javě
 
 Tento rychlý start vás provede procesem vytvoření ukázkové znalostní báze služby QnA Maker prostřednictvím kódu programu, která se zobrazí na řídicím panelu Azure účtu rozhraní API služby QnA Maker.
+
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
 
 Níže jsou uvedeny dvě ukázkové adresy URL nejčastějších dotazů (v kb.urls **getKB()**), které budou poskytovat obsah. Služba QnA Maker automaticky extrahuje otázky a odpovědi z částečně strukturovaného obsahu, jako jsou nejčastější dotazy. Podrobněji je to vysvětleno v tomto dokumentu [zdrojů dat](../Concepts/data-sources-supported.md). V tomto rychlém startu můžete použít i vlastní adresy URL nejčastějších dotazů.
 

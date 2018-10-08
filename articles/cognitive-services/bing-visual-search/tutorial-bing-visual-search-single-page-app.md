@@ -1,36 +1,36 @@
 ---
-title: Hledání bitové kopie Bingu jednostránkovou webovou aplikaci | Microsoft Docs
-titleSuffix: Bing Web Search APIs - Cognitive Services
-description: Ukazuje, jak používat rozhraní API služby Bing Image Search v jednostránkovou webovou aplikaci.
+title: 'Kurz: Sestavení jednostránkové webové aplikace – Vizuální vyhledávání Bingu'
+titleSuffix: Azure Cognitive Services
+description: Ukazuje, jak používat rozhraní API Bingu pro vizuální vyhledávání Bingu v jednostránkové webové aplikaci.
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-image-search
-ms.topic: article
+ms.component: bing-visual-search
+ms.topic: tutorial
 ms.date: 10/04/2017
 ms.author: v-brapel
-ms.openlocfilehash: 303d7745167d2ea25fda083ed99881ac4e0a7ec7
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: e3cd36d799256406b3ae12f35303bd2406468b3c
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343283"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227176"
 ---
-# <a name="tutorial-visual-search-single-page-web-app"></a>Kurz: Visual vyhledávání jednostránkové webové aplikace
+# <a name="tutorial-visual-search-single-page-web-app"></a>Kurz: Vizuální vyhledávání v jednostránkové webové aplikaci
 
-Rozhraní API vyhledávání Visual Bing poskytuje podobné zobrazený na Bing.com/images podrobnosti bitové kopie. S Visual Search můžete zadat bitovou kopii a získat zpět přehledy o bitovou kopii jako vizuálně podobné bitové kopie, nákupní zdroje, webové stránky, které zahrnují bitovou kopii a další. 
+API pro vizuální vyhledávání Bingu poskytuje prostředí podobné podrobnostem obrázků zobrazeným na Bing.com/images. Pomocí vizuálního vyhledávání můžete zadat obrázek a získat zpět přehledy o obrázku, například vizuálně podobné obrázky, nákupní zdroje, webové stránky, na kterých se obrázek nachází, a další. 
 
-V tomto kurzu rozšiřuje jednostránkové webové aplikace z tohoto kurzu vyhledávání bitové kopie Bingu (v tématu [jednostránkovou webovou aplikaci](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md)). Úplný zdrojový kód do začátku tohoto kurzu, najdete v části [jednostránkovou webovou aplikaci (zdrojový kód)](../Bing-Image-Search/tutorial-bing-image-search-single-page-app-source.md). Poslední zdrojový kód v tomto kurzu, najdete v části [Visual vyhledávání jednostránkovou webovou aplikaci](tutorial-bing-visual-search-single-page-app-source.md).
+Tento kurz rozšiřuje jednostránkovou webovou aplikaci z kurzu pro vyhledávání obrázků Bingu (viz [Jednostránková webová aplikace](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md)). Úplný zdrojový kód pro zahájení tohoto kurzu najdete ve [zdrojovém kódu jednostránkové webové aplikace](../Bing-Image-Search/tutorial-bing-image-search-single-page-app-source.md). Poslední zdrojový kód v tomto kurzu najdete v kurzu pro [jednostránkovou webovou aplikaci pro vizuální vyhledávání](tutorial-bing-visual-search-single-page-app-source.md).
 
-Úlohy popsané jsou:
+Probírají se tyto úlohy:
 
 > [!div class="checklist"]
-> * Volání rozhraní API vyhledávání Visual Bing s token Statistika bitové kopie
-> * Podobně jako zobrazení obrázků
+> * Volání rozhraní API pro vizuální vyhledávání Bingu s tokenem přehledů o obrázku
+> * Zobrazení podobných obrázků
 
-## <a name="call-bing-visual-search"></a>Volání hledání Visual Bing
-Upravit kurz Search bitové kopie Bingu a přidejte následující kód do konce element script na řádku 409. Tento kód zavolá rozhraní API služby Bing Visual vyhledávání a zobrazí výsledky.
+## <a name="call-bing-visual-search"></a>Volání vizuálního vyhledávání Bingu
+Upravte kurz pro vyhledávání obrázků Bingu a přidejte následující kód na konec prvku skriptu na řádku 409. Tento kód volá rozhraní API pro vizuální vyhledávání Bingu a zobrazí výsledky.
 
 ``` javascript
 function handleVisualSearchResponse(){
@@ -94,15 +94,15 @@ function bingVisualSearch(insightsToken){
 }
 ```
 
-## <a name="capture-insights-token"></a>Zaznamenat Statistika tokenu
-Přidejte následující kód do `searchItemsRenderer` objektu na řádku 151. Tento kód přidá **vyhledejte podobné** odkaz, který volá `bingVisualSearch` funkce při kliknutí na. Funkce imageInsightsToken přijímá jako argument.
+## <a name="capture-insights-token"></a>Zachycení tokenu přehledů
+Přidejte následující kód do objektu `searchItemsRenderer` na řádku 151. Tento kód přidá odkaz **find similar** (najít podobné), který při kliknutí volá funkci `bingVisualSearch`. Funkce jako argument obdrží token imageInsightsToken.
 
 ``` javascript
 html.push("<a href='javascript:bingVisualSearch(\"" + item.imageInsightsToken + "\");'>find similar</a><br>");
 ```
 
-## <a name="display-similar-images"></a>Podobně jako zobrazení obrázků
-Na řádku 601 přidejte následující kód HTML. Tento kód značek přidá element slouží k zobrazení výsledků volání rozhraní API vyhledávání Visual Bing.
+## <a name="display-similar-images"></a>Zobrazení podobných obrázků
+Přidejte následující kód HTML na řádek 601. Tento kód využívající značky přidá prvek sloužící k zobrazení výsledků volání rozhraní API pro vizuální vyhledávání Bingu.
 
 ``` html
 <div id="insights">
@@ -111,10 +111,10 @@ Na řádku 601 přidejte následující kód HTML. Tento kód značek přidá el
 </div>
 ```
 
-Se všemi nový kód JavaScript a prvků HTML na místě, se zobrazí výsledky hledání s **vyhledejte podobné** odkaz. Klikněte na odkaz k naplnění **podobá** část s obrázky, které jsou podobné jste vybrali. Možná budete muset Rozbalit **podobá** části zobrazíte bitové kopie.
+Když jsou všechny prvky kódu JavaScriptu a HTML na místě, zobrazují se výsledky hledání s odkazem **find similar** (najít podobné). Kliknutím na odkaz vyplníte sekci **Similar** (Podobné) obrázky, které se podobají vybranému obrázku. Možná budete muset sekci **Similar** rozbalit, aby se obrázky zobrazily.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Visual zdroj vyhledávání jednostránkovou webovou aplikaci](tutorial-bing-visual-search-single-page-app-source.md)
-> [Bing Visual vyhledávání API – referenční informace](https://aka.ms/bingvisualsearchreferencedoc)
+> [Zdroj jednostránkové webové aplikace pro vizuální vyhledávání](tutorial-bing-visual-search-single-page-app-source.md)
+> [Informace o rozhraní API pro vizuální vyhledávání Bingu](https://aka.ms/bingvisualsearchreferencedoc)

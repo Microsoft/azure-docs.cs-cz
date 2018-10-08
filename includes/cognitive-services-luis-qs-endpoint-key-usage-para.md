@@ -3,18 +3,18 @@ title: zahrnout soubor
 description: zahrnout soubor
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: include
 ms.custom: include file
 ms.date: 08/16/2018
 ms.author: diberry
-ms.openlocfilehash: 91ae5f39b981a3124335271f702157dd6628d8e1
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
-ms.translationtype: MT
+ms.openlocfilehash: 51badea3a8bef6aeabb0b24481b024eb006220cb
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42820032"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47043989"
 ---
-Tento rychlý start využívá pro tvorbu klíč ke zvýšení pohodlí. Klíč je primárně určen pro vytváření modelu, ale umožňuje malé číslo (1000) požadavků na koncový bod. Až budete připravení pro více koncových bodů požadavků v testu, fáze nebo produkčním prostředí, vytvářet **Language Understanding** prostředků na webu Azure Portal a přiřadíte ho k LUIS aplikace portálu služby LUIS. 
+V tomto rychlém startu se pro usnadnění používá klíč pro vytváření obsahu. Ten primárně slouží k vytváření modelu, ale umožňuje jen malý počet (1000) požadavků koncového bodu. Jakmile budete v testovacím, přípravném nebo produkčním prostředí potřebovat více požadavků koncového bodu, vytvořte na webu Azure Portal prostředek služby **Language Understanding** a přiřaďte ho k aplikaci LUIS na portálu LUIS. 

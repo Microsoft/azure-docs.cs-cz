@@ -1,27 +1,27 @@
 ---
-title: Rychlý start Python pro vizuální vyhledávání Bingu rozhraní API | Dokumentace Microsoftu
-titleSuffix: Bing Web Search APIs - Cognitive Services
-description: Ukazuje, jak k nahrání obrázku do API pro vizuální vyhledávání Bingu a získat přehledy o imagi.
+title: 'Rychlý start: Vytvoření dotazu pro vizuální vyhledávání, Python – Vizuální vyhledávání Bingu'
+titleSuffix: Azure Cognitive Services
+description: Ukazuje, jak nahrát obrázek do rozhraní API pro vizuální vyhledávání Bingu a získat zpět přehledy o obrázku.
 services: cognitive-services
 author: swhite-msft
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: bing-visual-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: 96bd94e37c75d10726245fbcea7044d4ae2ed07e
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
-ms.translationtype: MT
+ms.openlocfilehash: 145749f52f64adf565eb33ab7fe92dd5494f9354
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070371"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223711"
 ---
-# <a name="your-first-bing-visual-search-query-in-python"></a>Svůj první dotaz v jazyce Python pro vizuální vyhledávání Bingu
+# <a name="quickstart-your-first-bing-visual-search-query-in-python"></a>Rychlý start: Váš první dotaz Vizuálního vyhledávání Bingu v Pythonu
 
-API pro vizuální vyhledávání Bingu vrátí informace o bitovou kopii, která zadáte. Image můžete zadat pomocí adresy URL obrázku, insights, token, nebo nahráním image. Informace o těchto možnostech najdete v tématu [co je API pro vizuální vyhledávání Bingu?](../overview.md) Tento článek ukazuje nahráváním obrázku. Nahrání image může být užitečné v mobilních situacích, kde pořídit snímek dobře známé památek a získat informace o něm. Triviální prvek o památek může obsahovat třeba přehledy. 
+Rozhraní API pro Vizuální vyhledávání Bingu vrátí informace o obrázku, který poskytnete. Obrázek můžete zadat pomocí adresy URL obrázku, tokenu insights nebo nahráním obrázku. Informace o těchto možnostech najdete v článku [Co je rozhraní API pro vizuální vyhledávání Bingu?](../overview.md) Tento článek ukazuje nahrávání obrázku. Nahrání obrázku může být užitečné v situacích s mobilním zařízením, když pořídíte snímek dobře známé pamětihodnosti a získáte o ní informace. Přehledy můžou například obsahovat základní informace o pamětihodnosti. 
 
-Pokud odešlete místní image, následuje data formuláře musí obsahovat v textu příspěvku. Data formuláře musí zahrnovat hlavičku Content-Disposition. Jeho `name` parametr musí být nastaven na "image" a `filename` parametr může být nastaven na libovolný řetězec. Obsah formuláře je binární soubor obrázku. Maximální velikost, kterou můžete k nahrání je 1 MB. 
+Pokud nahrajete místní obrázek, ukazuje následující kód data formuláře, která musíte zahrnout do textu žádosti POST. Data formuláře musí obsahovat hlavičku Content-Disposition. Jeho parametr `name` musí být nastavený na "image" a parametr `filename` může být nastavený na libovolný řetězec. Obsah formuláře je binární soubor obrázku. Maximální velikost obrázku, kterou můžete nahrát, je 1 MB. 
 
 ```
 --boundary_1234-abcd
@@ -32,27 +32,27 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 --boundary_1234-abcd--
 ```
 
-Tento článek obsahuje jednoduchou konzolovou aplikaci, která odešle žádost o API pro vizuální vyhledávání Bingu a zobrazí výsledky hledání JSON. Zatímco tato aplikace je napsaný v Pythonu, je rozhraní API RESTful webová služba, která je kompatibilní s programovací jazyk, který může vytvářet požadavky HTTP a parsování formátu JSON. 
+Tento článek obsahuje jednoduchou konzolovou aplikaci, která pošle žádost do rozhraní API pro vizuální vyhledávání Bingu a zobrazí výsledky hledání JSON. Aplikace je sice napsaná v Pythonu, ale rozhraní API je webová služba RESTful kompatibilní s každým programovacím jazykem, který dokáže provádět požadavky HTTP a parsovat JSON. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Potřebujete [Python 3](https://www.python.org/) tento kód spustit.
+Abyste mohli tento kód spustit, potřebujete [Python 3](https://www.python.org/).
 
-Pro účely tohoto rychlého startu, můžete zadat [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) klíč předplatného, nebo klíč do placené předplatné.
+Pro tento rychlý start můžete použít klíč [bezplatné zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) předplatného, nebo klíč placeného předplatného.
 
-## <a name="running-the-walkthrough"></a>Spuštění Průvodce
+## <a name="running-the-walkthrough"></a>Spuštění průvodce
 
-Ke spuštění této aplikace, postupujte podle těchto kroků:
+Pokud chcete tuto aplikaci spustit, postupujte následovně:
 
-1. Vytvoření nového projektu Pythonu v Oblíbené prostředí IDE nebo editoru.
-2. Vytvořte soubor s názvem visualsearch.py a přidejte kódu zobrazeného v rámci tohoto rychlého startu.
-3. Nahraďte `SUBSCRIPTION_KEY` hodnotu s klíči předplatného.
-3. Nahraďte `imagePath` hodnotu s cestou k nahrání obrázku.
-4. Spuštění programu.
+1. Vytvořte nový projekt v jazyce Python v oblíbeném integrovaném vývojovém prostředí nebo editoru.
+2. Vytvořte soubor s názvem visualsearch.py a přidejte do něj kód zobrazený v tomto rychlém startu.
+3. Hodnotu `SUBSCRIPTION_KEY` nahraďte klíčem předplatného.
+3. Hodnotu `imagePath` nahraďte cestou nahrávaného obrázku.
+4. Spusťte program.
 
 
 
-Následující ukazuje, jak odesílat zprávy pomocí dat vícedílného formuláře v jazyce Python.
+Dále je ukázáno, jak poslat zprávu pomocí dat vícedílného formuláře v Pythonu.
 
 ```python
 """Bing Visual Search upload image example"""
@@ -97,12 +97,12 @@ if __name__ == '__main__':
 ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Získejte přehled o bitovou kopii pomocí tokenu insights](../use-insights-token.md)  
-[Kurz nahrávání obrázků pro vizuální vyhledávání Bingu](../tutorial-visual-search-image-upload.md)
-[kurzu jednostránkovou aplikaci pro vizuální vyhledávání Bingu](../tutorial-bing-visual-search-single-page-app.md)  
-[Přehled pro vizuální vyhledávání Bingu](../overview.md)  
+[Získání přehledu o obrázku pomocí tokenu insights](../use-insights-token.md)  
+[Kurz nahrávání obrázků Vizuálního vyhledávání Bingu](../tutorial-visual-search-image-upload.md)
+[Kurz k jednostránkové aplikaci Vizuálního vyhledávání Bingu](../tutorial-bing-visual-search-single-page-app.md)  
+[Přehled Vizuálního vyhledávání Bingu](../overview.md)  
 [Vyzkoušejte si to](https://aka.ms/bingvisualsearchtryforfree)  
-[Získat bezplatnou zkušební verzi přístupový klíč](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
-[Referenční dokumentace API pro vizuální vyhledávání Bingu](https://aka.ms/bingvisualsearchreferencedoc)
+[Získání bezplatné zkušební verze přístupového klíče](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
+[Reference k rozhraní API pro vizuální vyhledávání Bingu](https://aka.ms/bingvisualsearchreferencedoc)

@@ -1,41 +1,24 @@
 ---
-title: Kurz vytvoření aplikace LUIS vracející klíčové fráze – Azure | Microsoft Docs
-description: V tomto kurzu zjistíte, jak do své aplikace LUIS přidat entitu klíčové fráze a na základě jejího vracení analyzovat klíčová témata v promluvách.
+title: 'Kurz 8: Extrahování klíčových frází v LUIS'
+titleSuffix: Azure Cognitive Services
+description: Použijte předem připravenou entitu keyPhrase pro extrahování témat z promluv. Není potřeba označovat promluvy s předem vytvořenými entitami. Příslušná entita se rozpozná automaticky.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: luis
+ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 08/02/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: ef7a1c81f453a8d4ff9526a4844518782e152c4f
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 8fa183c22b9b6830c57b0a16b7f5d20ca38e3ef3
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159482"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166516"
 ---
-# <a name="tutorial-8-add-keyphrase-entity"></a>Kurz: 8. Přidání entity klíčové fráze 
-V tomto kurzu použijete aplikaci, která ukazuje, jak z promluv extrahovat klíčová témata.
-
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * Vysvětlení entit klíčové fráze 
-> * Použití aplikace LUIS v doméně lidských zdrojů 
-> * Přidání entity klíčové fráze pro extrahování obsahu z promluvy
-> * Trénování a publikování aplikace
-> * Odeslání dotazu na koncový bod aplikace a zobrazení odpovědi JSON ze služby LUIS obsahující klíčové fráze
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="before-you-begin"></a>Než začnete
-Pokud nemáte aplikaci pro lidské zdroje z kurzu k [jednoduchým entitám](luis-quickstart-primary-and-secondary-data.md), [naimportujte](luis-how-to-start-new-app.md#import-new-app) JSON do nové aplikace na webu služby [LUIS](luis-reference-regions.md#luis-website). Aplikaci k importování najdete v úložišti [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-simple-HumanResources.json) na Githubu.
-
-Pokud chcete zachovat původní aplikaci pro lidské zdroje, naklonujte verzi na stránce [Settings](luis-how-to-manage-versions.md#clone-a-version) (Nastavení) a pojmenujte ji `keyphrase`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. 
-
-## <a name="keyphrase-entity-extraction"></a>Extrakce entity klíčové fráze
-Klíčová témata poskytuje předem připravená entita klíčové fráze **keyPhrase**. Tato entita vrací klíčové téma promluvy.
+# <a name="tutorial-8-extract-key-phrases-of-utterance"></a>Kurz 8: Extrahování klíčových frází z promluvy
+V tomto kurzu použijete předem připravenou entitu keyPhrase k extrahování témat z promluv. Není potřeba označovat promluvy s předem vytvořenými entitami. Příslušná entita se rozpozná automaticky.
 
 Následující promluvy ukazují příklady klíčových frází:
 
@@ -46,147 +29,157 @@ Následující promluvy ukazují příklady klíčových frází:
 
 Vaše klientská aplikace může tyto hodnoty používat spolu s dalšími extrahovanými entitami k rozhodování o dalším kroku v konverzaci.
 
+**V tomto kurzu se naučíte:**
+
+<!-- green checkmark -->
+> [!div class="checklist"]
+> * Použití existující ukázkové aplikace
+> * Přidání entity klíčové fráze 
+> * Trénování
+> * Publikování
+> * Získání záměrů a entit z koncového bodu
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="use-existing-app"></a>Použití existující aplikace
+
+Pokračujte s aplikací **HumanResources**, kterou jste vytvořili v posledním kurzu. 
+
+Pokud tuto aplikaci nemáte, proveďte tyto kroky:
+
+1.  Stáhněte a uložte si [soubor JSON aplikace](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-simple-HumanResources.json).
+
+2. Naimportujte JSON do nové aplikace.
+
+3. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `keyphrase`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto může obsahovat jenom znaky podporované v adresách URL.
+
 ## <a name="add-keyphrase-entity"></a>Přidání entity klíčové fráze 
 Přidejte předem připravenou entitu klíčové fráze pro extrahování témat z promluv.
 
-1. Ujistěte se, že je vaše aplikace pro lidské zdroje uvedená v části **Build** (Sestavení) služby LUIS. Do této části můžete přejít výběrem možnosti **Build** (Sestavit) v pravém horním řádku nabídek. 
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. V levé nabídce vyberte **Entities** (Entity).
 
-    [ ![Snímek obrazovky se zvýrazněnou možností Entities (Entity) na levém navigačním panelu v části Build (Sestavení)](./media/luis-quickstart-intent-and-key-phrase/hr-select-entities-button.png)](./media/luis-quickstart-intent-and-key-phrase/hr-select-entities-button.png#lightbox)
-
 3. Vyberte **Manage prebuilt entities** (Spravovat předem připravené entity).
-
-    [ ![Snímek obrazovky s automaticky otevíraným dialogovým oknem se seznamem entit](./media/luis-quickstart-intent-and-key-phrase/hr-manage-prebuilt-entities.png)](./media/luis-quickstart-intent-and-key-phrase/hr-manage-prebuilt-entities.png#lightbox)
 
 4. V automaticky otevíraném dialogovém okně vyberte **keyPhrase** (Klíčová fráze) a pak vyberte **Done** (Hotovo). 
 
     [ ![Snímek obrazovky s automaticky otevíraným dialogovým oknem se seznamem entit](./media/luis-quickstart-intent-and-key-phrase/hr-add-or-remove-prebuilt-entities.png)](./media/luis-quickstart-intent-and-key-phrase/hr-add-or-remove-prebuilt-entities.png#lightbox)
 
-    <!-- TBD: asking Carol
-    You won't see these entities labeled in utterances on the intents pages. 
-    -->
 5. V levé nabídce vyberte **Intents** (Záměry) a pak vyberte záměr **Utilities.Confirm** (Potvrzení nástrojů). Entita klíčové fráze je označená v několika promluvách. 
 
     [ ![Snímek obrazovky záměru Utilities.Confirm (Potvrzení nástrojů) s klíčovými frázemi označenými v promluvách](./media/luis-quickstart-intent-and-key-phrase/hr-keyphrase-labeled.png)](./media/luis-quickstart-intent-and-key-phrase/hr-keyphrase-labeled.png#lightbox)
 
-## <a name="train-the-luis-app"></a>Trénování aplikace LUIS
+## <a name="train"></a>Trénování
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-app-to-endpoint"></a>Publikování aplikace do koncového bodu
+## <a name="publish"></a>Publikování
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-
-## <a name="query-the-endpoint-with-an-utterance"></a>Odeslání dotazu na koncový bod s promluvou
+## <a name="get-intent-and-entities-from-endpoint"></a>Získání záměru a entit z koncového bodu
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Na konec adresy URL zadejte `does form hrf-123456 cover the new dental benefits and medical plan`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. 
-
-```
-{
-  "query": "does form hrf-123456 cover the new dental benefits and medical plan",
-  "topScoringIntent": {
-    "intent": "FindForm",
-    "score": 0.9300641
-  },
-  "intents": [
+    
+    ```JSON
     {
-      "intent": "FindForm",
-      "score": 0.9300641
-    },
-    {
-      "intent": "ApplyForJob",
-      "score": 0.0359598845
-    },
-    {
-      "intent": "GetJobInformation",
-      "score": 0.0141798034
-    },
-    {
-      "intent": "MoveEmployee",
-      "score": 0.0112197418
-    },
-    {
-      "intent": "Utilities.StartOver",
-      "score": 0.00507669244
-    },
-    {
-      "intent": "None",
-      "score": 0.00238501839
-    },
-    {
-      "intent": "Utilities.Help",
-      "score": 0.00202810857
-    },
-    {
-      "intent": "Utilities.Stop",
-      "score": 0.00102957746
-    },
-    {
-      "intent": "Utilities.Cancel",
-      "score": 0.0008688423
-    },
-    {
-      "intent": "Utilities.Confirm",
-      "score": 3.557994E-05
+      "query": "does form hrf-123456 cover the new dental benefits and medical plan",
+      "topScoringIntent": {
+        "intent": "FindForm",
+        "score": 0.9300641
+      },
+      "intents": [
+        {
+          "intent": "FindForm",
+          "score": 0.9300641
+        },
+        {
+          "intent": "ApplyForJob",
+          "score": 0.0359598845
+        },
+        {
+          "intent": "GetJobInformation",
+          "score": 0.0141798034
+        },
+        {
+          "intent": "MoveEmployee",
+          "score": 0.0112197418
+        },
+        {
+          "intent": "Utilities.StartOver",
+          "score": 0.00507669244
+        },
+        {
+          "intent": "None",
+          "score": 0.00238501839
+        },
+        {
+          "intent": "Utilities.Help",
+          "score": 0.00202810857
+        },
+        {
+          "intent": "Utilities.Stop",
+          "score": 0.00102957746
+        },
+        {
+          "intent": "Utilities.Cancel",
+          "score": 0.0008688423
+        },
+        {
+          "intent": "Utilities.Confirm",
+          "score": 3.557994E-05
+        }
+      ],
+      "entities": [
+        {
+          "entity": "hrf-123456",
+          "type": "HRF-number",git 
+          "startIndex": 10,
+          "endIndex": 19
+        },
+        {
+          "entity": "new dental benefits",
+          "type": "builtin.keyPhrase",
+          "startIndex": 31,
+          "endIndex": 49
+        },
+        {
+          "entity": "medical plan",
+          "type": "builtin.keyPhrase",
+          "startIndex": 55,
+          "endIndex": 66
+        },
+        {
+          "entity": "hrf",
+          "type": "builtin.keyPhrase",
+          "startIndex": 10,
+          "endIndex": 12
+        },
+        {
+          "entity": "-123456",
+          "type": "builtin.number",
+          "startIndex": 13,
+          "endIndex": 19,
+          "resolution": {
+            "value": "-123456"
+          }
+        }
+      ]
     }
-  ],
-  "entities": [
-    {
-      "entity": "hrf-123456",
-      "type": "HRF-number",git 
-      "startIndex": 10,
-      "endIndex": 19
-    },
-    {
-      "entity": "new dental benefits",
-      "type": "builtin.keyPhrase",
-      "startIndex": 31,
-      "endIndex": 49
-    },
-    {
-      "entity": "medical plan",
-      "type": "builtin.keyPhrase",
-      "startIndex": 55,
-      "endIndex": 66
-    },
-    {
-      "entity": "hrf",
-      "type": "builtin.keyPhrase",
-      "startIndex": 10,
-      "endIndex": 12
-    },
-    {
-      "entity": "-123456",
-      "type": "builtin.number",
-      "startIndex": 13,
-      "endIndex": 19,
-      "resolution": {
-        "value": "-123456"
-      }
-    }
-  ]
-}
-```
+    ```
 
-Při hledání formuláře poskytl uživatel víc informací, než bylo potřeba k nalezení formuláře. Další informace se vrátí jako hodnota **builtin.keyPhrase**. Klientská aplikace může tyto další informace použít pro následnou otázku, například „Chtěli byste hovořit se zástupcem oddělení lidských zdrojů o nových benefitech v oblasti péče o chrup“, nebo může poskytnou nabídku s dalšími možnostmi včetně položky „Další informace o nových benefitech v oblasti péče o chrup nebo o zdravotním připojištění“.
-
-## <a name="what-has-this-luis-app-accomplished"></a>Co tato aplikace LUIS udělala?
-Tato aplikace s rozpoznáváním entity klíčové fráze identifikovala záměr dotazu v přirozeném jazyce a vrátila extrahovaná data, včetně hlavního tématu. 
-
-Váš chatbot má teď dostatek informací k určení dalšího kroku v konverzaci. 
-
-## <a name="where-is-this-luis-data-used"></a>Kde se tato data služby LUIS používají? 
-Služba LUIS s tímto požadavkem skončila. Volající aplikace, například chatbot, může převzít výsledek topScoringIntent a data entity klíčové fráze z promluvy a provést další krok. Služba LUIS neprovádí tuto programovou práci za chatbota ani nevolá aplikaci. Služba LUIS pouze určuje, co je záměrem uživatele. 
+    Při hledání formuláře poskytl uživatel víc informací, než bylo potřeba k nalezení formuláře. Další informace se vrátí jako hodnota **builtin.keyPhrase**. Klientská aplikace může tyto další informace použít pro následnou otázku, například „Chtěli byste hovořit se zástupcem oddělení lidských zdrojů o nových benefitech v oblasti péče o chrup“, nebo může poskytnou nabídku s dalšími možnostmi včetně položky „Další informace o nových benefitech v oblasti péče o chrup nebo o zdravotním připojištění“.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
+
+V tomto kurzu jste přidali předem připravenou entitu keyPhrase, která rychle poskytuje klíčové fráze v promluvách bez nutnosti označování promluv. 
 
 > [!div class="nextstepaction"]
 > [Přidání analýzy mínění do aplikace](luis-quickstart-intent-and-sentiment-analysis.md)

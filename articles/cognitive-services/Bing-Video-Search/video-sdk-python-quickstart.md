@@ -1,51 +1,51 @@
 ---
-title: Video Rychlé spuštění vyhledávání Python SDK | Microsoft Docs
-description: Instalační program pro vyhledávání SDK Video konzolové aplikace.
-titleSuffix: Azure Video Search SDK Python quickstart
+title: 'Rychlý start: Sada SDK pro Vyhledávání videí, Python'
+titleSuffix: Azure Cognitive Services
+description: Nastavení pro konzolovou aplikaci sady SDK Vyhledávání videí.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/15/2018
-ms.author: v-gedod
-ms.openlocfilehash: 1c4769a6ca3391fa595cc078651beff330bbfd60
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.author: rosh
+ms.openlocfilehash: 9784894ea9a9deb350171e0d19042eb65644093b
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343664"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225646"
 ---
-# <a name="video-search-sdk-python-quickstart"></a>Video Python SDK vyhledávání rychlý start
+# <a name="quickstart-bing-video-search-sdk-with-python"></a>Rychlý start: Sada SDK k Vyhledávání videí Bingu s Pythonem
 
-Sada SDK vyhledávání bitové kopie Bingu obsahuje funkci rozhraní REST API pro webové dotazy a analýzy výsledků.
+Sada SDK Vyhledávání obrázků Bingu obsahuje funkce rozhraní REST API pro dotazy na webu a parsování výsledků.
 
-[Zdrojový kód pro Python Bing Video vyhledávání SDK ukázky](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/video_search_samples.py) je k dispozici v centru Git.
+[Zdrojový kód pro ukázky sady SDK Vyhledávání videí Bingu v Pythonu](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/video_search_samples.py) je dostupný v Git Hubu.
 
 
-## <a name="application-dependencies"></a>Závislosti aplikací
-Pokud ji nemáte, nainstalujte Python. Sada SDK je kompatibilní s Python 2.7, 3.3, 3.4, 3.5 a 3.6.
+## <a name="application-dependencies"></a>Závislosti aplikace
+Pokud nemáte Python, nainstalujte si ho. Sada SDK je kompatibilní s Pythonem 2.7, 3.3, 3.4, 3.5 a 3.6.
 
-Obecná doporučení pro vývoj Python je použití [virtuální prostředí](https://docs.python.org/3/tutorial/venv.html). Instalace a inicializace virtuálního prostředí s [venv modulu](https://pypi.python.org/pypi/virtualenv). Nainstalujte virtualenv pro Python 2.7.
+Obecně se pro vývoj v jazyce Python doporučuje používat [virtuální prostředí](https://docs.python.org/3/tutorial/venv.html). Nainstalujte a inicializujte virtuální prostředí s [modulem venv](https://pypi.python.org/pypi/virtualenv). Nainstalujte virtualenv pro Python 2.7.
 ```
 python -m venv mytestenv
 ```
-Nainstalujte závislosti Bing videa vyhledávání SDK:
+Nainstalujte závislosti sady SDK Vyhledávání videí Bingu:
 ```
 cd mytestenv
 python -m pip install azure-cognitiveservices-search-videosearch
 ```
-## <a name="video-search-client"></a>Video vyhledávání klienta
-Získání [kognitivní služby přístupový klíč](https://azure.microsoft.com/try/cognitive-services/) pod *vyhledávání*. Přidejte importy:
+## <a name="video-search-client"></a>Klient Vyhledávání videí
+Načtěte si pod *Search* (Hledání) [přístupový klíč služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/). Přidejte importy:
 ```
 subscription_key = "YOUR-SUBSCRIPTION-KEY"
 ```
-Vytvoření instance `CognitiveServicesCredentials`a vytvoření instancí klienta:
+Vytvořte instanci třídy `CognitiveServicesCredentials` a vytvořte instanci klienta:
 ```
 client = VideoSearchAPI(CognitiveServicesCredentials(subscription_key))
 ```
-Vyhledejte videa (SwiftKey) a pak ověřte počet výsledků. Tiskové out `ID`, `name` a `URL` první video výsledku.
+Vyhledejte videa pro výraz (SwiftKey) a pak ověřte počet výsledků. Vytiskněte `ID`, `name` a adresu `URL` prvního výsledku videa.
 ```
 client = VideoSearchAPI(CognitiveServicesCredentials(subscription_key))
 
@@ -66,7 +66,7 @@ except Exception as err:
     print("Encountered exception. {}".format(err))
 
 ```
-Vyhledávání videa pro (Bellevue přípojného), která je prostě volné a 1080p řešení. Ověřte počet výsledků a vytiskněte `ID`, `name` a `URL` první video výsledku.
+Vyhledejte videa pro výraz (Bellevue Trailer), který je zdarma, krátký a v rozlišení 1080p. Ověřte počet výsledků a vytiskněte `ID`, `name` a adresu `URL` prvního výsledku videa.
 ```
 def video_search_with_filtering(subscription_key):
 
@@ -95,7 +95,7 @@ def video_search_with_filtering(subscription_key):
 
 ```
 
-Získáte trendů výsledků. Ověřte dlaždice informační zpráva a kategorie:
+Získejte výsledky videí, které jsou v kurzu. Ověřte dlaždice banneru a kategorie:
 ```
 def video_trending(subscription_key):
 
@@ -139,7 +139,7 @@ def video_trending(subscription_key):
         print("Encountered exception. {}".format(err))
 
 ```
-Vyhledejte videa (Bellevue přípojného) a poté vyhledejte podrobné informace o první videa.
+Vyhledejte videa pro výraz (Bellevue Trailer) a pak vyhledejte podrobné informace o prvním videu.
 ```
 def video_detail(subscription_key):
 
@@ -179,7 +179,7 @@ def video_detail(subscription_key):
         print("Encountered exception. {}".format(err))
 
 ```
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Ukázky kognitivní služby Python SDK](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
+[Ukázky kognitivních služeb sady Python SDK](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 

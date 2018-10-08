@@ -14,12 +14,12 @@ ms.date: 09/25/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 293d8376d83d729588aab0aeaa1040d9b3e5e0b5
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 722a9ada338420cc1ed55eb7c4400f946d58ebac
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182276"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831649"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -84,11 +84,15 @@ K dispozici jsou následující role správce:
 
 * **[Partnerská podpora úrovně 2](#partner-tier2-support)**: nepoužívejte. Tato role se už nepoužívá a bude odebrána z Azure AD v budoucnu. Tato role je určen pro malý počet těmito partnery společnosti Microsoft a není určena pro obecné použití.
 
-* **[Heslo správce / správce technické podpory](#helpdesk-administrator)**: uživatelé s touto rolí můžou měnit hesla, zneplatnit obnovovací tokeny, spravovat žádosti o služby a monitorovat stav služby. Správců technické podpory můžou měnit hesla a zneplatnit tokeny obnovení pouze pro uživatele a jiným správcům technické podpory. Zrušení platnosti tokenu obnovení vynutí uživatel znovu přihlásil.
-
+* **[Heslo správce / správce technické podpory](#helpdesk-administrator)**: uživatelé s touto rolí můžou měnit hesla, zneplatnit obnovovací tokeny, spravovat žádosti o služby a monitorovat stav služby. Zrušení platnosti tokenu obnovení vynutí uživatel znovu přihlásil. Správců technické podpory může resetovat hesla a zneplatnit obnovovací tokeny jiných uživatelů, kteří nejsou správci, nebo členy z následujících rolí:
+  * Uživatelé s oprávněním ke čtení adresářů
+  * Odesílatel pozvánky hostů
+  * Správce technické podpory
+  * Čtenář Centra zpráv
+  * Čtenář sestav
+  
   > [!NOTE]
   > V rozhraní Microsoft Graph API, Azure AD Graph API a Azure AD PowerShell tato role nazývá "Správce technické podpory". Je "Heslo správce" v [webu Azure portal](https://portal.azure.com/).
-  >
   >
   
 * **[Správce služby Power BI](#power-bi-service-administrator)**: uživatelé s touto rolí mají globální oprávnění v Microsoft Power BI, pokud služba používá, a možnost spravovat lístky podpory a monitorovat stav služby. Další informace na [Principy role správce Power BI](https://docs.microsoft.com/power-bi/service-admin-role).
@@ -132,11 +136,13 @@ K dispozici jsou následující role správce:
 
 * **[Týmy, které správce služeb](#teams-service-administrator)**: uživatelé s touto rolí může spravovat všechny aspekty sady funkcí Microsoft Teams přes Microsoft Teams a Skype pro firmy centra pro správu a odpovídajících modulů prostředí PowerShell. To zahrnuje mimo jiné oblasti, všem nástrojům pro správu související s telefonního subsystému, zasílání zpráv, setkání a samotné týmy. Tato role také uděluje možnost Spravovat skupiny Office 365.
 
-* **[Správce uživatelských účtů](#user-account-administrator)**: uživatelé s touto rolí můžete vytvářet a spravovat všechny aspekty uživatelů a skupin. Kromě toho tato role obsahuje možnost spravovat lístky podpory a monitorovat stav služby. Platí určitá omezení. Tato role například neumožňuje odstranit globálního správce. Správci uživatelského účtu můžete změnit heslo a zneplatnit obnovovací tokeny pro uživatele, správců technické podpory a jiných správců uživatelských účtů. Zrušení platnosti tokenu obnovení vynutí uživatel znovu přihlásil.
+* **[Správce uživatelských účtů](#user-account-administrator)**: uživatelé s touto rolí můžou vytvářet uživatele a spravovat všechny aspekty uživatelů s určitými omezeními (viz níže). Uživatelé s touto rolí kromě toho můžete vytvořit a spravovat všechny skupiny. Tato role zahrnuje také možnost vytvářet a spravovat zobrazení uživatelů, spravovat lístky podpory a monitorovat stav služby.
 
-| Můžete provést | Nelze provést. |
-| --- | --- |
-| <p>Zobrazit firemní a uživatelská informace</p><p>Spravovat lístky podpory Office</p><p>Změna hesla pro uživatele, správců technické podpory a jiných správců uživatelských účtů</p><p>Vytvořit a spravovat zobrazení uživatelů</p><p>Vytvořit, upravit a odstraňovat uživatele a skupiny a spravovat uživatelské licence s omezeními. Uživatel nemůže odstranit globálního správce nebo vytvářet jiné správce.</p> |<p>Provádění operací nákupu a fakturace pro produkty Office</p><p>Spravovat domény</p><p>Správa informací společnosti</p><p>Delegovat role správců jiným uživatelům</p><p>Používat synchronizaci adresářů</p><p>Povolení nebo zakázání služby Multi-Factor authentication</p><p>Zobrazení protokolů auditu</p> |
+  | | |
+  | --- | --- |
+  |Obecné oprávnění|<p>Vytvoření uživatelů a skupin</p><p>Vytvořit a spravovat zobrazení uživatelů</p><p>Spravovat lístky podpory Office|
+  |<p>Pro všechny uživatele včetně všechny správce</p>|<p>Správa licencí</p><p>Spravovat všechny vlastnosti uživatele s výjimkou hlavní název uživatele</p>
+  |Pouze na uživatele, kteří bez oprávnění správce, nebo v některém z následujících omezené role správce:<ul><li>Uživatelé s oprávněním ke čtení adresářů<li>Odesílatel pozvánky hostů<li>Správce technické podpory<li>Čtenář Centra zpráv<li>Čtenář sestav<li>Správce uživatelských účtů|<p>Odstranění a obnovení</p><p>Zakázání a povolení</p><p>Zneplatnit obnovovacích tokenů</p><p>Spravovat všechny vlastnosti uživatele včetně hlavní název uživatele</p><p>Resetování hesla</p><p>Aktualizovat klíče zařízení (FIDO)</p>
 
 Následující tabulky popisují konkrétní oprávnění v Azure Active Directory na každou roli. Některé role může mít další oprávnění v outide služby Microsoft Azure Active Directory.
 

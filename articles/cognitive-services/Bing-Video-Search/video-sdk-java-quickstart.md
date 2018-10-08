@@ -1,30 +1,30 @@
 ---
-title: Rychlý start Java SDK vyhledávání Video Bing | Microsoft Docs
-description: Zjistěte, jak nastavit konzolové aplikace Bing Video vyhledávání SDK.
+title: 'Rychlý start: Sada SDK k Vyhledávání videí Bingu, Java'
 titleSuffix: Azure Cognitive Services
+description: Zde se dozvíte, jak nainstalovat konzolovou aplikaci sady SDK Vyhledávání videí Bingu.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/18/2018
-ms.author: v-gedod
-ms.openlocfilehash: 1d9ccd88de4b91060861c39ab20f6a203c820384
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.author: rosh
+ms.openlocfilehash: b0e083a7397378956d9fe0d0ae2257aaf0bbdf1e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343663"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223409"
 ---
-# <a name="bing-video-search-sdk-java-quickstart"></a>Java SDK vyhledávání Video Bing rychlý start
+# <a name="quickstart-bing-video-search-sdk-java"></a>Rychlý start: Sada SDK k Vyhledávání videí Bingu, Java
 
-Sada SDK Bing Video vyhledávání poskytuje funkce rozhraní API REST pro video dotazy a analýzy výsledků.
+Sada SDK Vyhledávání videí Bingu poskytuje funkce pro rozhraní REST API pro dotazy na videa a parsování výsledků.
 
-[Zdrojový kód pro Java Bing Video vyhledávání SDK ukázky](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingVideoSearch) je k dispozici v centru Git.
+[Zdrojový kód pro ukázky sady SDK pro Vyhledávání videí Bingu v Javě](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingVideoSearch) je dostupný v Git Hubu.
 
-## <a name="application-dependencies"></a>Závislosti aplikací
-Získání [kognitivní služby přístupový klíč](https://azure.microsoft.com/try/cognitive-services/) pod **vyhledávání**. Nainstalujte závislosti Bing Video vyhledávání SDK pomocí nástroje Maven, Gradle nebo jinému systému pro správu závislostí. Soubor Maven POM vyžaduje deklaraci:
+## <a name="application-dependencies"></a>Závislosti aplikace
+Načtěte si pod **Search** (Hledání) [přístupový klíč služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/). Nainstalujte si závislosti sady SDK Vyhledávání videí Bingu pomocí systému Maven, Gradle nebo jiného systému správy závislostí. Soubor POM Mavenu vyžaduje deklaraci:
 ```
   <dependencies>
     <dependency>
@@ -34,8 +34,8 @@ Získání [kognitivní služby přístupový klíč](https://azure.microsoft.co
     </dependency>
   </dependencies> 
 ```
-## <a name="video-search-client"></a>Video vyhledávání klienta
-Přidejte importy pro implementaci třídy.
+## <a name="video-search-client"></a>Klient Vyhledávání videí
+Přidání importů do implementace třídy.
 ```
 import com.microsoft.azure.cognitiveservices.videosearch.*;
 import com.microsoft.azure.cognitiveservices.videosearch.Freshness;
@@ -54,7 +54,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 ```
-Implementace **VideoSearchAPIImpl** klienta, které vyžaduje instanci systému **ServiceClientCredentials** třídy.
+Implementace klienta **VideoSearchAPIImpl**, který vyžaduje instanci třídy **ServiceClientCredentials**.
 ```
 public static VideoSearchAPIImpl getClient(final String subscriptionKey) {
     return new VideoSearchAPIImpl("https://api.cognitive.microsoft.com/bing/v7.0/",
@@ -78,7 +78,7 @@ public static VideoSearchAPIImpl getClient(final String subscriptionKey) {
             });
 }
 ```
-Vyhledejte videa o "SwiftKey." Zkontrolujte počet výsledků. Tisk ID, název a adresu URL pro první video výsledek.
+Vyhledání videí o SwiftKey. Kontrola počtu výsledků. Tisk ID, názvu a adresy URL pro první výsledek videa.
 ```
 public static void VideoSearch(String subscriptionKey)
 {
@@ -120,7 +120,7 @@ public static void VideoSearch(String subscriptionKey)
 
 
 ```
-Vyhledejte videa o "Bellevue přípojným." Filtrovat hledání se *volné*, *krátké*, a *řešení 1080p* parametry. Zkontrolujte počet výsledků. Tisk ID, název a adresu URL pro první video výsledek.
+Vyhledání videí o Bellevue Trailer. Filtrování hledání s použitím parametrů *free* (bezplatné), *short* (krátké) a *1080p resolution* (rozlišení 1080p). Kontrola počtu výsledků. Tisk ID, názvu a adresy URL pro první výsledek videa.
 ```
 public static void VideoSearchWithFilters(String subscriptionKey)
 {
@@ -160,7 +160,7 @@ public static void VideoSearchWithFilters(String subscriptionKey)
 }
 
 ```
-Hledání trendů videa. Ověřte **bannerTiles** a **kategorie** parametry.
+Vyhledání populárních videí. Ověření parametrů **bannerTiles** a **categories** (kategorie).
 ```
 public static void VideoTrending(String subscriptionKey)
 {
@@ -245,7 +245,7 @@ public static void VideoTrending(String subscriptionKey)
 }
 
 ```
-Vyhledejte videa o "Bellevue přípojným" a poté vyhledejte podrobnosti o první video výsledek.
+Vyhledání videí o Bellevue Trailer a potom vyhledání podrobností o prvním výsledku videa.
 ```
 public static void VideoDetail(String subscriptionKey)
 {
@@ -315,7 +315,7 @@ public static void VideoDetail(String subscriptionKey)
     }
 }
 ```
-Přidejte metody popsané v tomto článku do třídy se hlavní funkce pro provádění kódu.
+Přidání metod popsaných v tomto článku do třídy s hlavní funkcí pro provádění kódu.
 ```
 package videoSDK;
 import com.microsoft.azure.cognitiveservices.videosearch.*;
@@ -335,6 +335,6 @@ public class VideoSDK {
     // Include the methods described in this article.
 }
 ```
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Ukázky kognitivní Services Java SDK](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
+[Ukázky pro Cognitive Services v sadě Java SDK](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)

@@ -1,60 +1,61 @@
 ---
-title: Rozpoznávání mluvčího rozhraní API | Microsoft Docs
-description: Pomocí pokročilých algoritmů pro ověření mluvčího a identifikaci mluvčího s rozhraním API pro rozpoznávání mluvčího v kognitivní služby.
+title: Co je rozpoznávání mluvčího?
+titlesuffix: Azure Cognitive Services
+description: Použijte pokročilé algoritmy rozhraní API pro rozpoznávání mluvčího k ověření a identifikaci mluvčího.
 services: cognitive-services
 author: dwlin
-manager: zhang
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speaker-recognition
-ms.topic: article
+ms.topic: overview
 ms.date: 03/20/2016
 ms.author: dwlin
-ms.openlocfilehash: 6d5e4e4bbe0cb5e57d2556f680ffcf8d16ee1818
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 13a95aff8b2b0d5dad0574e6107958a20576702a
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342626"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227329"
 ---
 # <a name="speaker-recognition-api"></a>Rozhraní API pro rozpoznání mluvčího
 
-Vítá vás rozhraní API pro rozpoznávání mluvčího společnosti Microsoft. Rozhraní API pro rozpoznávání mluvčího jsou rozhraní API založené na cloudu, které poskytuje nejmodernější algoritmy pro ověření mluvčího a identifikaci mluvčího. Rozpoznávání mluvčího je možné rozdělit do dvou kategorií: ověření mluvčího a identifikaci mluvčího.
+Vítá vás rozhraní API pro rozpoznávání mluvčího. Rozhraní API pro rozpoznávání mluvčího jsou cloudová rozhraní API, která poskytují nejpokročilejší algoritmy pro ověření a identifikaci mluvčího. Rozpoznávání mluvčího lze rozdělit do dvou kategorií: ověření mluvčího a identifikace mluvčího.
 
 
 ## <a name="speaker-verification"></a>Ověření mluvčího
 
 
-Hlas má jedinečných charakteristik, které můžete použít k identifikaci osoby, stejně jako otisk prstu.  Použití hlasové jako signál pro scénáře řízení a ověřování přístupu vyplývá jako nový nástroj inovativní – v podstatě nabídky úroveň v zabezpečení, která zjednodušuje možnosti ověřování pro zákazníky.
+Hlas má, stejně jako otisk prstu, jedinečné rysy, které je možné použít k identifikaci osoby.  Z použití hlasu jako signálu pro řízení přístupu a ověřování se stává nový inovativní nástroj – v podstatě nabízí vyšší úroveň zabezpečení, která zákazníkům zjednodušuje proces ověřování.
 
-Rozhraní API pro ověření mluvčího můžete automaticky ověřte a ověření uživatelů pomocí jejich hlasové nebo řeči.
+Rozhraní API pro ověření mluvčího mohou uživatele automaticky ověřit pomocí hlasu nebo řeči.
 
 ### <a name="enrollment"></a>Registrace
 
-Registrace pro ověření mluvčího je závislém textu, což znamená, že mluvčí muset zvolit konkrétní heslo k použití během fáze registrace a ověření. 
+Registrace ověření mluvčího je závislá na textu. To znamená, že mluvčí si musí zvolit konkrétní frázi, která se použije jak při registraci, tak ve fázi ověřování. 
 
-V registraci mluvčího hlasu se zaznamenává oznámením konkrétní frázi, pak se extrahují celou řadu funkcí a je rozpoznány zvolené frázi. Společně extrahované funkce a zvolený fráze formuláře jedinečný hlasové podpis.
+Při registraci se nahraje hlas mluvčího, jak říká nějakou frázi, a potom se z této fráze extrahuje několik rysů, podle kterých se fráze rozpozná. Společně tyto extrahované rysy a zvolená fráze vytvoří jedinečný hlasový podpis.
 
 ### <a name="verification"></a>Ověření
 ###
-V ověření, vstupní hlas a frázi porovná s hlasové podpis registraci a frázi – Chcete-li ověřit, jestli jsou z stejná osoba, a pokud říkají správné heslo.
+Při ověřování se vstupní hlas a fráze porovná s hlasovým podpisem a frází registrace. Ověří se tak, zda jde o stejnou osobu a zda používá správnou frázi.
 
-Další podrobnosti o ověření mluvčího rozhraní API naleznete [mluvčího - ověření](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/563309b7778daf06340c9652).
+Další podrobnosti o ověření mluvčího najdete na stránce [rozhraní API pro ověření mluvčího](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/563309b7778daf06340c9652).
 
 ## <a name="speaker-identification"></a>Identifikace mluvčího
 
-Rozhraní API pro identifikaci mluvčího můžete automaticky identifikaci osoby hovořícího v zvukový soubor, danou skupinu potenciální mluvčí. Vstupní zvuk je spárován proti zadané skupiny řečníci, a v případě, že je nalezena shoda, je vrácen mluvčího identity.
+Rozhraní API pro identifikaci mluvčího mohou ze skupiny potenciálních mluvčích automaticky identifikovat osobu mluvící na zvukovém souboru. Vstupní zvuk se spáruje s poskytnutou skupinou mluvčích, a pokud se zjistí shoda, bude výsledkem identita mluvčího.
 
-Všechny mluvčí by měl projít proces registrace nejprve potřebujete hlasu zaregistrován v systému a mít hlasové tisku vytvořili.
+Všichni mluvčí by měli nejprve projít registrací, aby se jejich hlas zaregistroval do systému a vytvořil se otisk hlasu.
 
 
 ### <a name="enrollment"></a>Registrace
 
-Registrace pro identifikaci mluvčího je nezávislé textu, což znamená, že neexistují žádná omezení mluvčímu uvádí ve zvukovém souboru. Se zaznamenává mluvčího hlasu a celou řadu funkcí, které se extrahují k vytvoření podpisu jedinečný hlasu. 
+Registrace identifikace mluvčího je na textu nezávislá, což znamená, že neexistují žádná omezení, co může mluvčí říct. Hlas mluvčího se nahraje a pak se z něj extrahuje několik rysů, které vytvoří jedinečný hlasový podpis. 
 
 
-### <a name="recognition"></a>Uznání
+### <a name="recognition"></a>Rozpoznání
 
-Zvuk neznámou mluvčího, společně s potenciální skupiny řečníci, je k dispozici při rozpoznávání. Vstupní hlasu se porovná proti všechny řečníci, aby bylo možné zjistit jejichž hlasu je, a pokud je nalezena shoda, vrátí se identity mluvčímu.
+Během rozpoznání je k dispozici zvuk neznámého mluvčího a potenciální skupina mluvčích. Vstupní hlas se porovná se všemi mluvčími, aby se rozpoznalo, komu hlas patří, a pokud se najde shoda, výsledkem bude identita mluvčího.
 
 
-Další podrobnosti o identifikaci mluvčího rozhraní API naleznete [mluvčího - identifikace](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/5645c068e597ed22ec38f42e).
+Další podrobnosti o identifikaci mluvčího najdete na stránce [rozhraní API pro identifikaci mluvčího](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/5645c068e597ed22ec38f42e).

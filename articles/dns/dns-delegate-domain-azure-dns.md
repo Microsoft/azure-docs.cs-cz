@@ -8,12 +8,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 6/13/2018
 ms.author: victorh
-ms.openlocfilehash: 44f5bf9a28d56e85bae1d50136c50868ec96eb4e
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: ea0dc257d691326bc073b4cbff37e847a6990f02
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205437"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452290"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>Kurz: Hostování vaší domény v Azure DNS
 
@@ -70,6 +70,9 @@ Azure DNS automaticky vytvoří ve vaší zóně autoritativní záznamy NS pro 
 Teď, když je vytvořena zóna DNS a máte názvové servery, je potřeba aktualizovat nadřazenou doménu s názvovými servery Azure DNS. Každý registrátor má vlastní nástroje pro správu DNS, které umožňují měnit záznamy názvových serverů pro doménu. Na stránce správy DNS vašeho registrátora upravte záznamy NS a nahraďte je názvovými servery Azure DNS.
 
 Při delegování domény do Azure DNS musíte použít názvové servery, které poskytuje Azure DNS. Doporučuje se vždycky použít všechny čtyři názvové servery bez ohledu na název domény. Delegování domény nevyžaduje, aby názvový server měl stejnou doménu nejvyšší úrovně jako vaše doména.
+
+> [!NOTE]
+> Až budete kopírovat jednotlivé adresy názvových serverů, nezapomeňte zkopírovat i tečku na konci každé adresy. Tečka na konci znamená konec plně kvalifikovaného názvu domény. Pokud názvový server nemá na konci tečku, někteří registrátoři ji můžou připojovat. Abyste ale dodržovali specifikace DNS RFC, měli byste tečku na konci zahrnout, protože se nedá předpokládat, že ji každý registrátor připojí za vás.
 
 Delegování pomocí názvových serverů ve vaší vlastní zóně, někdy označovaných jako *jednoduché názvové servery*, v současné době není v Azure DNS podporované.
 

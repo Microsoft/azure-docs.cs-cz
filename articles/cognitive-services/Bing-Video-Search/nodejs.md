@@ -1,40 +1,41 @@
 ---
-title: Node.js rychlý úvodní kurz pro Azure kognitivní služby Bing Video vyhledávání rozhraní API | Microsoft Docs
-description: Get informace a ukázky kódu můžete rychle začít používat rozhraní API služby Bing Video Search v kognitivní služby společnosti Microsoft na platformě Azure.
+title: 'Rychlý start: Rozhraní API Bingu pro vyhledávání videí, Node.js'
+titlesuffix: Azure Cognitive Services
+description: Zde najdete informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API Bingu pro vyhledávání videí.
 services: cognitive-services
-documentationcenter: ''
 author: v-jerkin
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: be9cbd56a1db1f9df78ec6f1c378d803c0a37151
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: a4ee4b0c0f4ce46110cebf95cdf927f8df3567d0
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343415"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220371"
 ---
-# <a name="quickstart-for-bing-video-search-api-with-nodejs"></a>Rychlý start pro Bing Video vyhledávání rozhraní API pomocí Node.js
+# <a name="quickstart-bing-video-search-api-with-nodejs"></a>Rychlý start: Rozhraní API Bingu pro vyhledávání videí s Node.js
 
-Tento článek ukazuje, jak pomocí rozhraní API týkající se hledání Video Bing, součástí kognitivní služby společnosti Microsoft na platformě Azure. Při tomto článku aktivuje Node.js, rozhraní API je kompatibilní s žádný programovací jazyk, který můžete nastavit požadavků HTTP a analyzovat JSON RESTful webová služba. 
+Tento článek vám ukazuje, jak používat rozhraní API Bingu pro vyhledávání videí, což je součást Microsoft Cognitive Services v Azure. V tomto článku se sice používá Node.js, ale rozhraní API je webová služba RESTful kompatibilní s každým programovacím jazykem, který dokáže provádět požadavky HTTP a parsovat JSON. 
 
-V příkladu je napsána v jazyce JavaScript a běží pod Node.js 6.
+Příklad je napsaný v JavaScriptu a běží pod Node.js 6.
 
-Odkazovat [referenční dokumentace rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) technické podrobnosti o rozhraní API.
+Technické podrobnosti o rozhraních API najdete v [referenci k API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Musíte mít [kognitivní rozhraní API služby účet](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraní API pro Bing vyhledávání**. [Bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) stačí pro tento rychlý start. Budete potřebovat přístupový klíč zadaný při aktivaci bezplatné zkušební verze, nebo může použít klíč placené předplatné z řídicího panelu Azure.
+Musíte mít [účet API Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s přístupem k **rozhraním API pro vyhledávání Bingu**. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Pro aktivaci bezplatné zkušební verze budete potřebovat přístupový klíč nebo můžete použít klíč placeného předplatného z řídicího panelu Azure.
 
-## <a name="bing-video-search"></a>Video vyhledávání v Bingu
+## <a name="bing-video-search"></a>Vyhledávání videí Bingu
 
-[Rozhraní API vyhledávání Video Bing](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference) vrátí video výsledky z Bing vyhledávací web.
+[Rozhraní API Bingu pro vyhledávání videí](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference) vrátí výsledky videí z vyhledávacího webu Bing.
 
-1. Vaše oblíbené IDE nebo editoru vytvořte nový projekt Node.js.
-2. Přidejte kód níže uvedenou.
-3. Nahraďte `subscriptionKey` hodnotu s přístupový klíč platný pro vaše předplatné.
+1. Ve svém oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Node.js.
+2. Přidejte níže uvedený kód.
+3. Hodnotu `subscriptionKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
 4. Spusťte program.
 
 ```javascript
@@ -205,12 +206,12 @@ bing_video_search(term);
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Stránkování videa](paging-videos.md)
-> [Resizing a oříznutí obrázky miniatur](resize-and-crop-thumbnails.md)
+> [Videa o stránkování](paging-videos.md)
+> [Změna velikosti a oříznutí obrázků miniatur](resize-and-crop-thumbnails.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech 
+## <a name="see-also"></a>Viz také 
 
- [Vyhledávání na webu pro videa](search-the-web.md) [vyzkoušet](https://azure.microsoft.com/services/cognitive-services/bing-video-search-api/)
+ [Vyhledávání videí na webu](search-the-web.md) [Vyzkoušejte si to](https://azure.microsoft.com/services/cognitive-services/bing-video-search-api/)

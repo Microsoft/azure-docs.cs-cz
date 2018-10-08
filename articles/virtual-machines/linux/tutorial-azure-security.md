@@ -3,7 +3,7 @@ title: Kurz použití služby Azure Security Center pro virtuální počítače 
 description: V tomto kurzu získáte informace o funkcích služby Azure Security Center k ochraně a zabezpečení virtuálních počítačů s Linuxem v Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/07/2017
-ms.author: iainfou
+ms.date: 06/11/2018
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e049bed6336f87d8077726843bbc870be90c633f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 562fc267a056d6908af5b89fd7a93e858f1c6165
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47092607"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Kurz: Použití služby Azure Security Center k monitorování virtuálních počítačů s Linuxem
 
@@ -46,12 +47,13 @@ Security Center jde nad rámec zjišťování dat a poskytuje doporučení k pro
 
 ## <a name="set-up-data-collection"></a>Nastavení shromažďování dat
 
-Abyste mohli získat přehled o konfiguracích zabezpečení virtuálních počítačů, je potřeba v Security Center nastavit shromažďování dat. To zahrnuje zapnutí shromažďování dat a vytvoření účtu úložiště Azure, do kterého se shromážděná data budou ukládat. 
+Abyste mohli získat přehled o konfiguracích zabezpečení virtuálních počítačů, je potřeba v Security Center nastavit shromažďování dat. Zahrnuje to zapnutí shromažďování dat, čímž se na všechny virtuální počítače ve vašem předplatném automaticky nainstaluje Microsoft Monitoring Agent.
 
 1. Na řídicím panelu Security Center klikněte na **Zásady zabezpečení** a pak vyberte své předplatné. 
-2. V části **Shromažďování dat** vyberte **Zapnuto**.
-3. Účet úložiště vytvoříte výběrem možnosti **Zvolit účet úložiště**. Pak vyberte **OK**.
-4. V okně **Zásady zabezpečení** vyberte **Uložit**. 
+2. Pro **Shromažďování dat** v **Automatickém zřizování** vyberte **Zapnuto**.
+3. Pro **Výchozí konfiguraci pracovního prostoru** ponechejte **Použít pracovní prostory vytvořené službou Security Center (výchozí)**.
+4. V části **Události zabezpečení** ponechejte výchozí možnost **Common**.
+4. Klikněte na **Uložit** v horní části stránky. 
 
 Na všechny virtuální počítače se pak nainstaluje agent Security Center pro shromažďování dat a zahájí se shromažďování dat. 
 
@@ -59,26 +61,12 @@ Na všechny virtuální počítače se pak nainstaluje agent Security Center pro
 
 Zásady zabezpečení slouží k definici položek, pro které Security Center shromažďuje data a poskytuje doporučení. Na různé sady prostředků Azure můžete použít různé zásady zabezpečení. Přestože se ve výchozím nastavení u prostředků Azure vyhodnocují všechny položky zásad, jednotlivé položky zásad můžete pro všechny prostředky Azure nebo skupinu prostředků vypnout. Podrobné informace o zásadách zabezpečení Security Center najdete v tématu [Nastavení zásad zabezpečení v Azure Security Center](../../security-center/security-center-policies.md). 
 
-Nastavení zásady zabezpečení pro všechny prostředky Azure:
+Nastavení zásad zabezpečení pro celé předplatné:
 
 1. Na řídicím panelu Security Center vyberte **Zásady zabezpečení** a pak vyberte své předplatné.
-2. Vyberte **Zásady prevence**.
-3. Zapněte nebo vypněte položky zásad, které chcete použít pro všechny prostředky Azure.
-4. Jakmile budete hotovi s výběrem nastavení, vyberte **OK**.
-5. V okně **Zásady zabezpečení** vyberte **Uložit**. 
-
-Nastavení zásady pro konkrétní skupinu prostředků:
-
-1. Na řídicím panelu Security Center vyberte **Zásady zabezpečení** a pak vyberte skupinu prostředků.
-2. Vyberte **Zásady prevence**.
-3. Zapněte nebo vypněte položky zásad, které chcete pro tuto skupinu prostředků použít.
-4. V části **DĚDIČNOST** vyberte **Jedinečná**.
-5. Jakmile budete hotovi s výběrem nastavení, vyberte **OK**.
-6. V okně **Zásady zabezpečení** vyberte **Uložit**.  
-
-Na této stránce můžete také vypnout shromažďování dat pro konkrétní skupinu zabezpečení.
-
-V následujícím příkladu se vytvořila jedinečná zásada pro skupinu prostředků *myResoureGroup*. V této zásadě jsou vypnutá doporučení k šifrování disku a Firewallu webových aplikací.
+2. V okně **Zásady zabezpečení** vyberte **Zásady zabezpečení**. 
+3. V okně Zásady zabezpečení – Zásady zabezpečení zapněte nebo vypněte položky zásad, které chcete pro předplatné použít.
+4. Jakmile budete hotovi s výběrem nastavení, vyberte **Uložit** v horní části stránky. 
 
 ![Jedinečná zásada](./media/tutorial-azure-security/unique-policy.png)
 
@@ -90,12 +78,12 @@ S tím, jak se shromažďují data, se agreguje stav prostředků jednotlivých 
 
 Zobrazení stavu prostředků:
 
-1.  Na řídicím panelu Security Center v části **Stav zabezpečení prostředků** vyberte **Compute**. 
-2.  V okně **Compute** vyberte **Virtuální počítače**. Toto zobrazení obsahuje souhrn stavu konfigurace všech vašich virtuálních počítačů.
+1.  Na řídicím panelu Security Center v části **Prevence** vyberte **Compute**. 
+2.  V okně **Compute** vyberte **Virtuální počítače a počítače**. Toto zobrazení obsahuje souhrn stavu konfigurace všech vašich virtuálních počítačů.
 
 ![Stav výpočetních prostředků](./media/tutorial-azure-security/compute-health.png)
 
-Pokud chcete zobrazit všechna doporučení pro virtuální počítač, vyberte příslušný virtuální počítač. Doporučením a nápravám se podrobněji věnuje další část tohoto kurzu.
+Pokud chcete zobrazit všechna doporučení pro virtuální počítač, vyberte příslušný virtuální počítač. 
 
 ## <a name="remediate-configuration-issues"></a>Náprava problémů s konfigurací
 
@@ -118,14 +106,14 @@ Když se doporučení napraví, označí se jako vyřešená.
 
 Kromě doporučení ke konfiguraci prostředků zobrazuje Security Center upozornění na zjištěné hrozby. Funkce výstrah zabezpečení agreguje data shromážděná z jednotlivých virtuálních počítačů, síťových protokolů Azure a připojených partnerských řešení a detekuje bezpečnostní hrozby u prostředků Azure. Podrobné informace o možnostech detekce hrozeb v Security Center najdete v tématu [Možnosti detekce v Azure Security Center](../../security-center/security-center-detection-capabilities.md).
 
-Funkce výstrah zabezpečení vyžaduje zvýšení cenové úrovně Security Center z úrovně *Free* na úroveň *Standard*. Při přesunu na tuto vyšší cenovou úroveň je k dispozici 30denní **bezplatná zkušební verze**. 
+Funkce výstrah zabezpečení vyžaduje zvýšení cenové úrovně Security Center z úrovně *Free* na úroveň *Standard*. Při přesunu na tuto vyšší cenovou úroveň je k dispozici 60denní **bezplatná zkušební verze**. 
 
 Změna cenové úrovně:  
 
 1. Na řídicím panelu Security Center klikněte na **Zásady zabezpečení** a pak vyberte své předplatné.
 2. Vyberte **Cenová úroveň**.
-3. Vyberte novou úroveň a pak **Vybrat**.
-4. V okně **Zásady zabezpečení** vyberte **Uložit**. 
+3. Vyberte **Standard** a potom klikněte na **Uložit** v horní části okna.
+
 
 Po změně cenové úrovně se s detekovanými výstrahami zabezpečení začne naplňovat graf výstrah zabezpečení.
 
