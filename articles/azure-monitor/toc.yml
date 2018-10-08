@@ -700,14 +700,6 @@ items:
       items:
       - name: Vytváření pravidel upozornění
         items:
-        - name: Konfigurace upozornění protokolů nebo nových metrik na webu Azure Portal
-          href: ../monitoring-and-diagnostics/monitor-alerts-unified-usage.md?toc=/azure/azure-monitor/toc.json
-        - name: Konfigurace klasických upozornění na webu Azure Portal
-          href: ../monitoring-and-diagnostics/insights-alerts-portal.md?toc=/azure/azure-monitor/toc.json
-        - name: Konfigurace klasických upozornění pomocí rozhraní příkazového řádku
-          href: ../monitoring-and-diagnostics/insights-alerts-command-line-interface.md?toc=/azure/azure-monitor/toc.json
-        - name: Konfigurace klasických upozornění pomocí Azure PowerShellu
-          href: ../monitoring-and-diagnostics/insights-alerts-powershell.md?toc=/azure/azure-monitor/toc.json
         - name: Zkopírování upozornění z portálu OMS na web Azure Portal
           href: ../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md?toc=/azure/azure-monitor/toc.json
       - name: Použití upozornění metrik
@@ -977,9 +969,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Ukázky kódů
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: ecb930a1dc50b1a613533068846be2d7cfaeb748
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 7b26143e0fa2acc44636eb30afc6d3a76a05c2ec
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018889"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48784912"

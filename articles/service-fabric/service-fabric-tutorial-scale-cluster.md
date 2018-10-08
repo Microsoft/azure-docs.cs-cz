@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/06/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 0c5081960345e84cf48cb1ec07713cdaec8833a5
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: da9e1ce17e21f4d87286c0be5d425419f6ed0300
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008021"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408506"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Kurz: Škálování clusteru Service Fabric v Azure
 
@@ -38,14 +38,14 @@ V této sérii kurzů se naučíte:
 > * Vytvoření zabezpečeného [clusteru s Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) nebo [clusteru s Linuxem](service-fabric-tutorial-create-vnet-and-linux-cluster.md) v Azure pomocí šablony
 > * Horizontální snížení nebo navýšení kapacity clusteru
 > * [Upgrade modulu runtime clusteru](service-fabric-tutorial-upgrade-cluster.md)
-> * [Nasazení služby API Management s využitím Service Fabric](service-fabric-tutorial-deploy-api-management.md)
+> * [Odstranění clusteru](service-fabric-tutorial-delete-cluster.md)
 
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem:
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Nainstalujte [modul Azure PowerShellu verze 4.1 nebo novější ](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) nebo [Azure CLI 2.0](/cli/azure/install-azure-cli).
+* Nainstalujte si [modul Azure PowerShell verze 4.1 nebo novější ](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) nebo [Azure CLI](/cli/azure/install-azure-cli).
 * Vytvořte zabezpečený [cluster s Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) nebo [cluster s Linuxem](service-fabric-tutorial-create-vnet-and-linux-cluster.md) v Azure.
 * Pokud nasadíte cluster s Windows, nastavte vývojové prostředí ve Windows. Nainstalujte sadu [Visual Studio 2017](http://www.visualstudio.com) a sady funkcí **Vývoj pro Azure**, **Vývoj pro ASP.NET a web** a **Vývoj multiplatformních aplikací pomocí rozhraní .NET Core**.  Potom nastavte [vývojové prostředí .NET](service-fabric-get-started.md).
 * Pokud nasadíte cluster s Linuxem, nastavte vývojové prostředí Java v [Linuxu](service-fabric-get-started-linux.md) nebo [MacOS](service-fabric-get-started-mac.md).  Nainstalujte [Service Fabric CLI](service-fabric-cli.md).

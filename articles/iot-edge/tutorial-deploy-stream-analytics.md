@@ -4,17 +4,17 @@ description: V tomto kurzu nasadíte Azure Stream Analytics jako modul na zaří
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 08/10/2018
+ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 66d55c07493a540e36a08d48d6abbdc3d082b9b9
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 6997d40603bd6ebf39f8797a3e354e92c04da58d
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "41918442"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422741"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module-preview"></a>Kurz: Nasazení služby Azure Stream Analytics jako modulu IoT Edge (Preview)
 
@@ -50,7 +50,7 @@ Zařízení Azure IoT Edge:
 
 Cloudové prostředky:
 
-* [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) úrovně Standard v Azure. 
+* [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) úrovně Free v Azure. 
 
 
 ## <a name="create-an-azure-stream-analytics-job"></a>Vytvoření úlohy Azure Stream Analytics

@@ -7,14 +7,16 @@ items:
     href: overview.md
 - name: Šablony Rychlý start
   items:
-  - name: Vytvoření spravované aplikace
-    href: managed-apps-quickstart-cli.md
+  - name: Publikování definice aplikace
+    href: publish-managed-app-definition-quickstart.md
+  - name: Nasazení aplikace katalogu služeb
+    href: deploy-service-catalog-quickstart.md
   expanded: true
 - name: Kurzy
   items:
-  - name: Vytvoření souborů spravované aplikace
+  - name: Vytvoření definičních souborů
     href: publish-service-catalog-app.md
-  - name: Vytvoření aplikace Marketplace
+  - name: Publikování aplikace Marketplace
     href: publish-marketplace-app.md
 - name: Ukázky
   items:
@@ -26,16 +28,22 @@ items:
     href: sample-projects.md
 - name: Návody
   items:
-  - name: Vytvoření rozhraní portálu
-    href: create-uidefinition-overview.md
-  - name: Otestování rozhraní portálu
-    href: test-createuidefinition.md
-  - name: Aktualizace spravovaných prostředků
-    href: update-managed-resources.md
-  - name: Použití portálu k publikování
-    href: publish-portal.md
-  - name: Použití tajného kódu ze služby Key Vault
-    href: key-vault-access.md
+  - name: Vydavatelé
+    items:
+    - name: Vytvoření rozhraní portálu
+      href: create-uidefinition-overview.md
+    - name: Otestování rozhraní portálu
+      href: test-createuidefinition.md
+    - name: Aktualizace spravovaných prostředků
+      href: update-managed-resources.md
+    - name: Použití portálu k publikování definice aplikace
+      href: publish-portal.md
+    - name: Použití tajného kódu ze služby Key Vault
+      href: key-vault-access.md
+  - name: Příjemci
+    items:
+    - name: Monitorování spravované aplikace
+      href: monitor-managed-application-portal.md
 - name: Referenční informace
   items:
   - name: Azure CLI
@@ -97,9 +105,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: Stack Overflow
     href: http://stackoverflow.com/questions/tagged/azure-managedapps
-ms.openlocfilehash: 03a385046c0f30932e6ba99fdce46fbdc9849eb6
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: b74cfed4f0208a1b70980d34284fd7f9ff207ca4
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365294"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801553"

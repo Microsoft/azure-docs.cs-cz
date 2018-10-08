@@ -36,6 +36,18 @@ items:
     items:
     - name: Co je Azure Data Box Edge?
       href: data-box-edge-overview.md
+  - name: Kurzy
+    items:
+    - name: 1. Příprava
+      href: data-box-edge-deploy-prep.md
+    - name: 2. Instalace
+      href: data-box-edge-deploy-install.md
+    - name: 3. Připojení, nastavení, aktivace
+      href: data-box-edge-deploy-connect-setup-activate.md
+    - name: 4. Přidání a připojení
+      href: data-box-edge-deploy-add-shares.md
+    - name: 5. Konfigurace výpočetních funkcí
+      href: data-box-edge-deploy-configure-compute.md
 - name: Zdroje a prostředky
   items:
   - name: Plány Azure do budoucna
@@ -46,9 +58,9 @@ items:
     href: https://azure.microsoft.com/pricing/
   - name: Aktualizace služeb
     href: https://azure.microsoft.com/updates/?product=databox
-ms.openlocfilehash: e4371e6c6d8432dd579116a6b775af482b0e5794
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bb224b730de352ca79c9264a16960bce83c9bef9
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46985754"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48829521"
