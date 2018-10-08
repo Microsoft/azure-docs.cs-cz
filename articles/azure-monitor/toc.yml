@@ -131,8 +131,6 @@ items:
       href: ../monitoring-and-diagnostics/monitor-alerts-unified-log.md?toc=/azure/azure-monitor/toc.json
     - name: Upozornění protokolu aktivit
       href: ../monitoring-and-diagnostics/monitoring-activity-log-alerts.md?toc=/azure/azure-monitor/toc.json
-    - name: Rozšíření upozornění z Log Analytics do Azure
-      href: ../monitoring-and-diagnostics/monitoring-alerts-extend.md?toc=/azure/azure-monitor/toc.json
   - name: Vizualizace dat
     href: visualizations.md?toc=/azure/azure-monitor/toc.json
   - name: Integrace partnerů
@@ -700,8 +698,14 @@ items:
       items:
       - name: Vytváření pravidel upozornění
         items:
-        - name: Zkopírování upozornění z portálu OMS na web Azure Portal
-          href: ../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md?toc=/azure/azure-monitor/toc.json
+        - name: Konfigurace upozornění protokolů nebo nových metrik na webu Azure Portal
+          href: ../monitoring-and-diagnostics/monitor-alerts-unified-usage.md?toc=/azure/azure-monitor/toc.json
+        - name: Konfigurace klasických upozornění na webu Azure Portal
+          href: ../monitoring-and-diagnostics/insights-alerts-portal.md?toc=/azure/azure-monitor/toc.json
+        - name: Konfigurace klasických upozornění pomocí rozhraní příkazového řádku
+          href: ../monitoring-and-diagnostics/insights-alerts-command-line-interface.md?toc=/azure/azure-monitor/toc.json
+        - name: Konfigurace klasických upozornění pomocí Azure PowerShellu
+          href: ../monitoring-and-diagnostics/insights-alerts-powershell.md?toc=/azure/azure-monitor/toc.json
       - name: Použití upozornění metrik
         items:
         - name: Vytvoření, zobrazení a správa upozornění metrik v Azure Monitoru
@@ -904,6 +908,14 @@ items:
       href: ../application-insights/application-insights-data-model-metric-telemetry.md?toc=/azure/azure-monitor/toc.json
     - name: Kontext
       href: ../application-insights/application-insights-data-model-context.md?toc=/azure/azure-monitor/toc.json
+  - name: Výstrahy
+    items:
+    - name: Rozšíření upozornění z Log Analytics do Azure
+      href: ../monitoring-and-diagnostics/monitoring-alerts-extend.md?toc=/azure/azure-monitor/toc.json
+    - name: Zkopírování upozornění z portálu OMS na web Azure Portal
+      href: ../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md?toc=/azure/azure-monitor/toc.json
+    - name: Vyřazení klasického zobrazování upozornění a monitorování
+      href: ../monitoring-and-diagnostics/monitoring-classic-retirement.md?toc=/azure/azure-monitor/toc.json
   - name: Azure CLI
     href: /cli/azure/monitor?view=azure-cli-latest
   - name: Azure PowerShell
@@ -969,9 +981,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Ukázky kódů
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 7b26143e0fa2acc44636eb30afc6d3a76a05c2ec
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 50c8eac84be9df29bc15ea9b1fb177ad99cc77e8
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48784912"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815957"
