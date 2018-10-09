@@ -474,6 +474,8 @@ items:
     href: faq.md
   - name: Dokumenty white paper
     href: whitepapers.md
+  - name: Partneři
+    href: partners-migration-cosmosdb.md
   - name: Videa
     href: https://azure.microsoft.com/resources/videos/index/?services=cosmos-db
   - name: Plány Azure do budoucna
@@ -488,9 +490,9 @@ items:
       href: use-cases.md
     - name: Aplikace sociálních médií
       href: social-media-apps.md
-ms.openlocfilehash: 8d217ae35c38017061bbb1fb96d09de5928b2205
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 8111949d7069066b63c12a851324d21feda8bac2
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042308"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868588"
