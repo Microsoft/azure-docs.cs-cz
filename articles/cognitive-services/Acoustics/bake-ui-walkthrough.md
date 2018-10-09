@@ -9,12 +9,12 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: a82472ccd5524e7cbe3d92070a6d2b583d8eb4d5
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 7a409b1ecdd693a0f28d2303d55a27b177644eb0
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249294"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855404"
 ---
 # <a name="bake-acoustics"></a>Vytvoření Akustika
 
@@ -230,25 +230,25 @@ Pokud chcete odhadnout, co bude daný která má označení vytvoření náklad�
 Po dokončení která má označení vytvoření, zkontrolujte, zda body voxels a kontroly jsou v jejich očekávané umístění spuštěním modulu runtime. Další informace jsou v [přehled procesu návrhu pro Akustika](design-process.md).
 
 ## <a name="Local-bake"></a>Místní která má označení vytvoření
-Která má označení vytvoření místního spuštění simulace Akustika na místním počítači namísto snižování zátěže úloh k výpočetnímu clusteru služby Azure Batch. To může být dobrou volbou pro experimentování s Akustika nevyžaduje předplatné Azure, ale mějte na paměti, že simulace Akustika výpočetně náročné a může trvat dlouhou dobu v závislosti na velikosti od scény, simulace konfigurace a nezpracované výpočetní výkon zpracování počítače.
+Která má označení vytvoření místního spuštění Akustika simulace ve vašem vlastním počítači místo snižování zátěže úloh k výpočetnímu clusteru služby Azure Batch. To může být dobrou volbou pro experimentování s Akustika nevyžaduje předplatné Azure. Mějte na paměti, že simulace Akustika výpočetně náročné a může trvat dlouhou dobu v závislosti na velikosti scény, simulace konfigurace a raw výpočetní výkon zpracování počítače.
 
 ### <a name="minimum-hardware-requirements"></a>Minimální požadavky na hardware
 64bitový procesor Intel s alespoň s 8 jádry a 32 GB paměti RAM nebo vyšší.
 
-Třeba na počítači s technologií Intel Xeon E5-1660 8 jader @ 3 GHz a 32 GB paměti-
+Třeba na počítači s technologií Intel Xeon E5-1660 @ 3 GHz a 32 GB paměti RAM – 8 jader
 * Malé scény s 100 testů trvá přibližně 2 hodin pro hrubý která má označení vytvoření a přibližně 32 hodin která má označení vytvoření jemné řešení.
-* Větší scény s 1 000 testy paměti může trvat až přibližně 20 hodin, hrubé vyřešení tohoto problému a ~ 21 dnů která má označení vytvoření jemné řešení.
+* Větší scény s 1000 testy paměti může trvat až přibližně 20 hodin, hrubé vyřešení tohoto problému a ~ 21 dnů která má označení vytvoření jemné řešení.
 
 ### <a name="setup-docker"></a>Instalace Dockeru
 Instalace a konfigurace Dockeru na počítači, který bude zpracovávat simulace-
 1. Nainstalujte [nástrojů Dockeru](https://www.docker.com/products/docker-desktop).
-2. Spusťte nastavení Dockeru, přejděte na možnosti "Pokročilé" a konfigurovat prostředky, jak je znázorněno níže. ![Prostředky dockeru](media/DockerSettings.png)
-3. Přejděte na možnosti "Sdílené jednotky" a zapněte sdílení má jednotka použitá ke zpracování.![DockerDriveSharing](media/DockerSharedDrives.png)
+2. Spusťte nastavení Dockeru, přejděte na možnosti "Pokročilé" a konfigurovat prostředky k dispozici ochucené, o obsahu 8 GB paměti RAM. Více procesorů může přidělit Dockeru, tím rychleji která má označení vytvoření dokončí. ![Příklad nastavení Dockeru](media/DockerSettings.png)
+3. Přejděte na "Sdílené jednotky" a zapněte sdílení má jednotka použitá ke zpracování.![DockerDriveSharing](media/DockerSharedDrives.png)
 
 ### <a name="run-local-bake"></a>Spusťte místní která má označení vytvoření
 1. Klikněte na tlačítko "Příprava místní zanést", která má označení vytvoření karty a vyberte složku, kam bude uložena vstupních souborů a provádění skriptů. Poté lze která má označení vytvoření na jakýkoli počítač splňuje minimální hardwarové požadavky a pokud je Docker nainstalovaný tak, že zkopírujete složku do tohoto počítače.
-2. Spuštění simulace použití "runlocalbake.bat" skript, který se image Dockeru Akustika projekt pomocí sady nástrojů, které jsou nezbytné pro simulaci zpracování načte a spustí simulace. 
-3. Jakmile se simulace dokončí, zkopírujte výsledný soubor .ace zpět na vašem Unity projektu do stejného umístění, který byl zadán v kartě testy. Zkontrolujte, jestli odpovídá názvu cílového souboru Unity a požadavky připojením ".bytes" přípona souboru. Podrobné protokoly pro simulaci jsou uložené v souboru "AcousticsLog.txt". Pokud narazíte na nějaké problémy, sdílejte tento soubor jako pomoc při diagnóze.
+2. Spuštění simulace použití skriptu "runlocalbake.bat". Tento skript se image Dockeru Akustika projekt pomocí sady nástrojů, které jsou nezbytné pro simulaci zpracování načte a spustí simulace. 
+3. Jakmile se simulace dokončí, zkopírujte výsledný soubor .ace zpět na vašem Unity projektu. Pokud chcete mít jistotu, že Unity to rozpozná jako binárního souboru, připojte k rozšíření souboru (například "Scene1.ace.bytes") ".bytes". Podrobné protokoly pro simulaci se ukládají v "AcousticsLog.txt." Pokud narazíte na nějaké problémy, sdílejte tento soubor jako pomoc při diagnóze.
 
 ## <a name="Data-Files"></a>Datové soubory
 

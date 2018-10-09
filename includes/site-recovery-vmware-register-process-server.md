@@ -1,5 +1,5 @@
 * Připojte se k virtuálnímu počítači procesového serveru pomocí Připojení ke vzdálené ploše.
-* Program cspsconfigtool.exe můžete spustit kliknutím na zkratku na ploše. (Nástroje budou automaticky spuštěné, pokud se jedná o vaše první přihlášení k procesovému serveru).
+* Program cspsconfigtool.exe můžete spustit kliknutím na zkratku na ploše. (Nástroje budou automaticky spuštěné, pokud se to při prvním přihlášení do procesového serveru).
   - Plně kvalifikovaný název (FQDN) nebo IP adresa konfiguračního serveru.
   - Port, na kterém konfigurační server naslouchá. Hodnota by měla být 443.
   - Přístupové heslo připojení pro připojení ke konfiguračnímu serveru.

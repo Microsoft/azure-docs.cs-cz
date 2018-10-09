@@ -2,18 +2,17 @@
 title: Referenční dokumentace schématu webhook registru kontejneru Azure
 description: Webhook požadavku JSON datové části referenční informace pro Azure Container Registry.
 services: container-registry
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-registry
 ms.topic: article
 ms.date: 12/02/2017
-ms.author: marsma
-ms.openlocfilehash: 87fe978416c29b50abeef0e0a6624d7440dd87ef
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.author: danlep
+ms.openlocfilehash: 8bae44215cdc17e9f1617c909ef197f2757fc114
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47096889"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857750"
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Referenční informace webhook služby Azure Container Registry
 
@@ -41,7 +40,7 @@ Webhook se aktivuje, když je nasdílení imagí kontejneru do úložiště.
 
 ### <a name="push-event-payload"></a>Datová část události nabízených oznámení
 
-|Element|Typ|Popis|
+|Prvek|Typ|Popis|
 |-------------|----------|-----------|
 |`id`|Řetězec|ID události webhooku.|
 |`timestamp`|DateTime|Čas, kdy byla aktivována událost webhooku.|
@@ -51,7 +50,7 @@ Webhook se aktivuje, když je nasdílení imagí kontejneru do úložiště.
 
 ### <a name="target"></a>cíl
 
-|Element|Typ|Popis|
+|Prvek|Typ|Popis|
 |------------------|----------|-----------|
 |`mediaType`|Řetězec|Typ MIME odkazovaného objektu.|
 |`size`|Datový typ Int32|Počet bajtů obsahu. Stejné jako délku pole.|
@@ -62,7 +61,7 @@ Webhook se aktivuje, když je nasdílení imagí kontejneru do úložiště.
 
 ### <a name="request"></a>požadavek
 
-|Element|Typ|Popis|
+|Prvek|Typ|Popis|
 |------------------|----------|-----------|
 |`id`|Řetězec|ID požadavku, který spustil danou událost.|
 |`host`|Řetězec|Zvenku přístupný název hostitele instance registru, jak je uvedeno v HTTP hlavičce hostitele na příchozí požadavky.|
@@ -105,7 +104,7 @@ Webhook se aktivuje, když je odstraněn úložiště nebo manifest. Není aktiv
 
 ### <a name="delete-event-payload"></a>Odstranit datovou část události
 
-|Element|Typ|Popis|
+|Prvek|Typ|Popis|
 |-------------|----------|-----------|
 |`id`|Řetězec|ID události webhooku.|
 |`timestamp`|DateTime|Čas, kdy byla aktivována událost webhooku.|
@@ -115,7 +114,7 @@ Webhook se aktivuje, když je odstraněn úložiště nebo manifest. Není aktiv
 
 ### <a name="delete_target"></a> Cíl
 
-|Element|Typ|Popis|
+|Prvek|Typ|Popis|
 |------------------|----------|-----------|
 |`mediaType`|Řetězec|Typ MIME odkazovaného objektu.|
 |`digest`|Řetězec|Přehled obsahu, jak je definováno ve specifikaci protokolu HTTP rozhraní API V2 registru.|
@@ -123,7 +122,7 @@ Webhook se aktivuje, když je odstraněn úložiště nebo manifest. Není aktiv
 
 ### <a name="delete_request"></a> Požadavek
 
-|Element|Typ|Popis|
+|Prvek|Typ|Popis|
 |------------------|----------|-----------|
 |`id`|Řetězec|ID požadavku, který spustil danou událost.|
 |`host`|Řetězec|Zvenku přístupný název hostitele instance registru, jak je uvedeno v HTTP hlavičce hostitele na příchozí požadavky.|

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: spelluru
-ms.openlocfilehash: bdbec11cfbb467d45321d18931a2601a95d01bed
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: efe04b19188d7324c3f86565610040b8eaa97c43
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409095"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855387"
 ---
 # <a name="message-deferral"></a>Odložení zpráv
 
@@ -46,7 +46,6 @@ Odložené zprávy nemá vliv na vypršení platnosti zpráv, což znamená, že
 
 Další informace o zasílání zpráv Service Bus, najdete v následujících tématech:
 
-* [Základy služby Service Bus](service-bus-fundamentals-hybrid-solutions.md)
 * [Fronty, témata a odběry služby Service Bus](service-bus-queues-topics-subscriptions.md)
 * [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)
 * [Jak používat témata a odběry Service Bus](service-bus-dotnet-how-to-use-topics-subscriptions.md)

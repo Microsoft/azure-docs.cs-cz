@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/11/2018
 ms.author: harijay
-ms.openlocfilehash: 642bf03ecef7f6db25c51671635d96ef7baed91a
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: ce799f4201a560077c5bb1b943a9e587a71806f2
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47413271"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48856339"
 ---
 # <a name="virtual-machine-serial-console"></a>Konzola sériového portu virtuálního počítače
 
@@ -49,7 +49,7 @@ Pro dokumentaci ke konzole sériového portu pro virtuální počítače s Windo
 
 
 ## <a name="get-started-with-serial-console"></a>Začínáme s konzoly sériového portu
-Konzola sériového portu pro virtuální počítače je k dispozici pouze prostřednictvím [webu Azure portal](https://portal.azure.com). Níže je uvedený postup pro přístup ke konzole sériového portu pro virtuální počítače prostřednictvím portálu 
+Konzola sériového portu pro virtuální počítače je k dispozici pouze prostřednictvím [webu Azure portal](https://portal.azure.com). Ujistěte se, že jste splnili [požadavky](#prerequisites) výše. Níže je uvedený postup pro přístup ke konzole sériového portu pro virtuální počítače prostřednictvím portálu:
 
   1. Otevřete na webu Azure portal
   1. (Přeskočte to, pokud má virtuální počítač jako uživatel, který používá ověřování pomocí hesla) Kliknutím na okno "Resetovat heslo" Přidání uživatele s ověřováním

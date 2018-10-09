@@ -22,6 +22,7 @@
 #### [2. Týmový vývoj](team-development-nodejs.md)
 
 ## Postup
+### [Vytvoření clusteru Kubernetes pomocí Azure Cloud Shellu](how-to/create-cluster-cloud-shell.md)
 ### [Sdílení Azure Dev Spaces](how-to/share-dev-spaces.md)
 ### [Správa tajných kódů](how-to/manage-secrets.md)
 ### [Použití vlastního informačního kanálu NuGet](how-to/use-custom-nuget-feed.md)

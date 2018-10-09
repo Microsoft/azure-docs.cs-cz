@@ -9,12 +9,12 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 72a9d476b5e5dfc55c6a28dff7e09a20faab332c
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: f07fa60555f1bf866d39cb69c4824cfd93dc54f8
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48246986"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869441"
 ---
 # <a name="getting-started-with-project-acoustics"></a>Začínáme s Akustika projektu
 Této úvodní příručky obsahuje pokyny k integraci modulu plug-in ve vašem Unity projektu, zanést scéně a použít Akustika zdrojů zvuku. Pro účely tohoto rychlého startu je potřeba nejprve vytvořit [účet Azure batch](create-azure-account.md). Tento průvodce to předpokládá některé znalost Unity.
@@ -93,9 +93,9 @@ Vytvoření zdroje zvuku. Klikněte na zaškrtávací políčko v dolní části
 ![Zdroje zvuku](media/AudioSource.png)
 
 ## <a name="apply-post-bake-design"></a>Použití po která má označení vytvoření návrhu
-Můžete připojit skript **AcousticsDesign** ke zdroji zvuku ve scéně umožňující parametrů návrhu další zdroje, kliknutím na **přidat součást** a zvolíte **skripty > Akustika Návrh**:
+Můžete připojit skript **AcousticsAdjust** ke zdroji zvuku ve scéně umožňující parametrů návrhu další zdroje, kliknutím na **přidat součást** a zvolíte **skripty > Akustika Upravit**:
 
-![Vlastní nastavení zdroje](media/AcousticsDesign.png)
+![AcousticsAdjust](media/AcousticsAdjust.png)
 
 Existují také parametry na **Microsoft Akustika Mixer**. Další informace o návrhu po která má označení vytvoření najdete v tématu [návrh parametry](design-process.md).
 

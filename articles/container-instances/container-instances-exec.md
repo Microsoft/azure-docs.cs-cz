@@ -1,39 +1,38 @@
 ---
-title: Spuštění příkazů v spuštěných kontejnerů v Azure kontejner instancí
-description: Zjistěte, jak provést příkaz kontejner, který je aktuálně spuštěna v Azure kontejner instancí
+title: Spusťte příkazy v spuštěných kontejnerů ve službě Azure Container Instances
+description: Zjistěte, jak spustit příkaz do kontejneru, který aktuálně běží ve službě Azure Container Instances
 services: container-instances
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-instances
 ms.topic: article
 ms.date: 03/30/2018
-ms.author: marsma
-ms.openlocfilehash: 43211f620efb16cbcd722d3d386b1bb862fc6280
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: danlep
+ms.openlocfilehash: 577e2386c352798bc21a2c78b22726128ac7cf0a
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32165642"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854080"
 ---
-# <a name="execute-a-command-in-a-running-azure-container-instance"></a>Spuštění příkazu v instanci spuštěná Azure kontejneru
+# <a name="execute-a-command-in-a-running-azure-container-instance"></a>Provedení příkazu do funkční Azure container instance
 
-Azure instancí kontejnerů podporuje spouštění příkazu v běžící kontejneru. Spuštění příkazu v kontejneru, který jste už začali se hodí zejména při vývoji aplikací a řešení potíží. Tato funkce slouží nejčastěji Spusťte interaktivní prostředí tak, že ladíte problémy v běžící kontejneru.
+Služba Azure Container Instances podporuje spuštění příkazu v spuštěný kontejner. Spuštění příkazu v kontejneru, který jste už začali se hodí zejména při vývoji aplikací a řešení potíží. Nejběžnější použití této funkce je ke spuštění interaktivní prostředí, takže můžete ladit problémy v spuštěný kontejner.
 
 ## <a name="run-a-command-with-azure-cli"></a>Spuštění příkazu pomocí rozhraní příkazového řádku Azure
 
-Spuštění příkazu v kontejneru spuštěné s [az kontejneru exec] [ az-container-exec] v [rozhraní příkazového řádku Azure][azure-cli]:
+Spuštění příkazu v spuštěný kontejner s [az container exec] [ az-container-exec] v [rozhraní příkazového řádku Azure][azure-cli]:
 
 ```azurecli
 az container exec --resource-group <group-name> --name <container-group-name> --exec-command "<command>"
 ```
 
-Chcete-li například spustit prostředí Bash v kontejner Nginx:
+Chcete-li například spusťte prostředí Bash v kontejneru Nginx:
 
 ```azurecli
 az container exec --resource-group myResourceGroup --name mynginx --exec-command "/bin/bash"
 ```
 
-Příklad níže ve výstupu, je spustit prostředí Bash ve spuštěné Linux kontejner, poskytuje terminálu, ve kterém `ls` se spustí:
+Následující ukázkový výstup, prostředí Bash spouští ve složce spuštěný kontejner Linuxu, poskytování terminál, ve kterém `ls` spuštění:
 
 ```console
 $ az container exec --resource-group myResourceGroup --name mynginx --exec-command "/bin/bash"
@@ -45,7 +44,7 @@ exit
 Bye.
 ```
 
-V tomto příkladu se spustí příkazový řádek v běžící Nanoserver kontejneru:
+V tomto příkladu se spuštěný kontejner Nanoserver spouští příkazový řádek:
 
 ```console
 $ az container exec --resource-group myResourceGroup --name myiis --exec-command "cmd.exe"
@@ -75,9 +74,9 @@ Bye.
 
 ## <a name="multi-container-groups"></a>Skupiny více kontejnerů
 
-Pokud vaše [skupina kontejneru](container-instances-container-groups.md) má více kontejnerů, například kontejner aplikace a něho protokolování, zadejte název kontejneru, ve kterém se má spustit příkaz s `--container-name`.
+Pokud vaše [skupinu kontejnerů](container-instances-container-groups.md) má více kontejnery, jako je kontejner aplikace a sajdkáry protokolování, zadejte název kontejneru, ve kterém chcete spustit příkaz s `--container-name`.
 
-Například ve skupině kontejneru *mynginx* jsou dva kontejnery *nginx aplikace* a *protokolovač*. Spustit prostředí na *nginx aplikace* kontejneru:
+Například ve skupině kontejnerů *mynginx* jsou dva kontejnery *nginx aplikace* a *protokolovací nástroj*. Ke spuštění prostředí *nginx aplikace* kontejneru:
 
 ```azurecli
 az container exec --resource-group myResourceGroup --name mynginx --container-name nginx-app --exec-command "/bin/bash"
@@ -85,11 +84,11 @@ az container exec --resource-group myResourceGroup --name mynginx --container-na
 
 ## <a name="restrictions"></a>Omezení
 
-Azure instancí kontejnerů aktuálně podporuje spouštění jeden proces s [az kontejneru exec][az-container-exec], a nemůžete předat argumenty příkazu. Například nelze řetězu příkazy, jako je v `sh -c "echo FOO && echo BAR"`, nebo spuštění `echo FOO`.
+Služba Azure Container Instances v současné době podporuje spuštění jednoho procesu s [az container exec][az-container-exec], a nemůžete předat argumenty příkazu. Nelze například zřetězení příkazů, jako jsou v `sh -c "echo FOO && echo BAR"`, nebo když spouští `echo FOO`.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o dalších nástrojů pro řešení problémů a běžné problémy při nasazení v [potíží kontejneru a nasazení v Azure kontejner instancí](container-instances-troubleshooting.md).
+Další informace o dalších nástrojů pro odstraňování problémů a běžným problémům s nasazením v [kontejnerů a nasazení řešení problémů s ve službě Azure Container Instances](container-instances-troubleshooting.md).
 
 <!-- LINKS - internal -->
 [az-container-create]: /cli/azure/container#az-container-create

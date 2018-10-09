@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 09/18/2018
-ms.author: v-yijong
-ms.openlocfilehash: d484452e03110a71933f3c503f5bd06c93aac68c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.date: 10/05/2018
+ms.author: yijenj
+ms.openlocfilehash: 47333a7b5ad7d76ee8bbac19884ba8246eadc05e
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047244"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855778"
 ---
 # <a name="lead-management-for-cloud-marketplace"></a>Vedoucí správy pro cloudové Tržiště
 
@@ -56,6 +56,42 @@ Jakmile správně nakonfigurovali cíl potenciálních zákazníků a jste nedos
 
 Po technické nastavení je na místě, by měl obsahovat těchto potenciálních zákazníků na aktuální prodejní a marketingové strategie a provozních procesů. Snažíme se chtějí lépe porozumět procesu celkové prodeje a chcete úzce spolupracovat s vámi na poskytování vysoce kvalitní zájemce a dostatek dat, které vám zajistí úspěch. Vítáme váš názor na jsme způsob optimalizace a Vylepšete si potenciální zákazníci, který jsme vám poslali s dalšími daty, abyste se mohli úspěšně tito zákazníci. Dejte nám vědět, pokud vás zajímá poskytuje zpětná vazba a návrhy pro prodejní tým mohl být větších úspěchů s Marketplace vede umožní.
 
+
+
+## <a name="common-lead-configuration-errors-during-publishing-on-cloud-partner-portal"></a>Běžné chyby konfigurace potenciálních zákazníků při publikování na portál cloud partner 
+
+**Nepovedlo se uložit zájemce do Dynamics CRM. Zkontrolujte nastavení účtu Dynamics CRM. LastCRMError: Nepovedlo se přihlásit k aplikaci Dynamics CRM, LastCRMException:** 
+
+> Pokud jste vybrali ověřování O365, zkontrolujte, jestli je platný uživatelský účet a heslo. Pokud jste vybrali AAD, zaškrtněte, pokud ID tenanta, ID aplikace a tajný klíč odpovídá aplikace co byla nastavena na AAD. Postupujte podle pokynů [tady](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics). Pokud uživatelské jméno/heslo účtu je platný, Zkontrolujte prosím, že má přístup k Dynamics 365 a má přiřazené licence (kroky 11-15, pokud používáte-li uživatel aplikace Office pomocí Azure Active Directory nebo nastavení zabezpečení). 
+
+ 
+**Nepovedlo se uložit zájemce do Dynamics CRM. Uživatel oprávnění vytvářet pro atribut leadsourcecode v entitě potenciálních zákazníků** 
+
+> Uživatel nebo aplikace chybí role zabezpečení, které chcete zapisovače webu Microsoft Marketplace potenciálních zákazníků. Postupujte podle kroků 11-15, pokud používáte Azure Active Directory nebo nastavení zabezpečení při použití uživatele s Office [tady](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics).
+
+**Nepovedlo se uložit zájemce do Dynamics CRM pomocí AAD. Výjimka:: Klient nebyl nalezen. Tato instance může dojít, pokud nejsou žádná aktivní předplatná pro příslušného tenanta.**  
+
+> Id adresáře, které jsou k dispozici v části Správa potenciálních zákazníků není platný adresář. Podrobnosti získání Id adresáře podle pokynů v kroku 2 (v části Azure Active Directory, z [zde](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics) 
+
+**Nepovedlo se uložit zájemce do Dynamics CRM. LastCRMError: SecLib::RetrievePrivilegeForUser se nezdařilo - žádné role je přiřazená uživateli.**  
+
+> Řešení: Přiřazení role zabezpečení na webu Microsoft Marketplace zájemce zapisovače. Postupujte podle pokynů [tady](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics) v části Nastavení zabezpečení 
+
+**Nepovedlo se uložit zájemce do Dynamics CRM pomocí AAD. Výjimka:: Aplikaci s identifikátorem nebyl nalezen v adresáři** 
+
+> Id aplikace poskytnuté v části Správa potenciálních zákazníků není platný adresář. Podrobnosti získání Id adresáře podle pokynů v kroku 8 (v části Azure Active Directory, z [tady](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics)). 
+
+**Nepovedlo se uložit zájemce do Dynamics CRM pomocí AAD. Výjimka:: Požadovaný identifikátor tenanta není platný a není platný externí domény formátu** 
+
+> Id adresáře, které jsou k dispozici v části Správa potenciálních zákazníků není platný adresář. Podrobnosti získání Id adresáře podle pokynů v kroku 2 (v části Azure Active Directory, z [tady](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics)). 
+
+**Nepovedlo se uložit zájemce do Dynamics CRM pomocí AAD. Výjimkou:: Ověřují se přihlašovací údaje. Chyba: je k dispozici tajný kód klienta je neplatný.** 
+
+> Řešení: Přihlaste se k webu Azure Portal, zkontrolujte, jestli klíč aplikace odpovídá, co je portál partnerů cloudu. Vygenerujte heslo podle pokynů v kroku 10 (v části Azure Active Directory), z [tady](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics)). 
+
+**Nepovedlo se uložit zájemce do Dynamics CRM. LastCRMError: Kanálu požadavku skončila platnost při čekání na odpověď po 00:02:00. Zvyšte hodnotu časového limitu předanou volání požadavku nebo zvyšte hodnotu SendTimeout na vazbě. Čas přidělený této operaci pravděpodobně částí delšího časového limitu.**  
+
+> Řešení: Přihlášení na portál Cloud Partner, v podrobnostech o prodejních míst >> zájemce cílové >> adresy URL, zkontrolujte, jestli je platnou instanci CRM dynamické
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -201,41 +237,3 @@ Z důvodu zásad identifikovatelné osobní údaje (soukromé údaje) jsme nelze
 **Konfiguroval jsem, Azure Storage (tabulek/objektů BLOB) jako cíl Moje potenciálních zákazníků, kolik vás to bude stát?** 
 
 Vedoucí obecné data jsou s nízkou (< 1 GB pro téměř všechny zdroje). Náklady závisí na počet zájemců přijme, pokud jsou v daném měsíci 1 000 zájemců, nás stojí přibližně 50 centů. 
-
- 
-
-
-## <a name="common-lead-configuration-errors-during-publishing-on-cloud-partner-portal"></a>Běžné chyby konfigurace potenciálních zákazníků při publikování na portál cloud partner 
-
-**Nepovedlo se uložit zájemce do Dynamics CRM. Zkontrolujte nastavení účtu Dynamics CRM. LastCRMError: Nepovedlo se přihlásit k aplikaci Dynamics CRM, LastCRMException:** 
-
-> Pokud jste vybrali ověřování O365, zkontrolujte, jestli je platný uživatelský účet a heslo. Pokud jste vybrali AAD, zaškrtněte, pokud ID tenanta, ID aplikace a tajný klíč odpovídá aplikace co byla nastavena na AAD. Postupujte podle pokynů [tady](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics). Pokud uživatelské jméno/heslo účtu je platný, Zkontrolujte prosím, že má přístup k Dynamics 365 a má přiřazené licence (kroky 11-15, pokud používáte-li uživatel aplikace Office pomocí Azure Active Directory nebo nastavení zabezpečení). 
-
- 
-**Nepovedlo se uložit zájemce do Dynamics CRM. Uživatel oprávnění vytvářet pro atribut leadsourcecode v entitě potenciálních zákazníků** 
-
-> Uživatel nebo aplikace chybí role zabezpečení, které chcete zapisovače webu Microsoft Marketplace potenciálních zákazníků. Postupujte podle kroků 11-15, pokud používáte Azure Active Directory nebo nastavení zabezpečení při použití uživatele s Office [tady](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics).
-
-**Nepovedlo se uložit zájemce do Dynamics CRM pomocí AAD. Výjimka:: Klient nebyl nalezen. Tato instance může dojít, pokud nejsou žádná aktivní předplatná pro příslušného tenanta.**  
-
-> Id adresáře, které jsou k dispozici v části Správa potenciálních zákazníků není platný adresář. Podrobnosti získání Id adresáře podle pokynů v kroku 2 (v části Azure Active Directory, z [zde](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics) 
-
-**Nepovedlo se uložit zájemce do Dynamics CRM. LastCRMError: SecLib::RetrievePrivilegeForUser se nezdařilo - žádné role je přiřazená uživateli.**  
-
-> Řešení: Přiřazení role zabezpečení na webu Microsoft Marketplace zájemce zapisovače. Postupujte podle pokynů [tady](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics) v části Nastavení zabezpečení 
-
-**Nepovedlo se uložit zájemce do Dynamics CRM pomocí AAD. Výjimka:: Aplikaci s identifikátorem nebyl nalezen v adresáři** 
-
-> Id aplikace poskytnuté v části Správa potenciálních zákazníků není platný adresář. Podrobnosti získání Id adresáře podle pokynů v kroku 8 (v části Azure Active Directory, z [tady](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics)). 
-
-**Nepovedlo se uložit zájemce do Dynamics CRM pomocí AAD. Výjimka:: Požadovaný identifikátor tenanta není platný a není platný externí domény formátu** 
-
-> Id adresáře, které jsou k dispozici v části Správa potenciálních zákazníků není platný adresář. Podrobnosti získání Id adresáře podle pokynů v kroku 2 (v části Azure Active Directory, z [tady](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics)). 
-
-**Nepovedlo se uložit zájemce do Dynamics CRM pomocí AAD. Výjimkou:: Ověřují se přihlašovací údaje. Chyba: je k dispozici tajný kód klienta je neplatný.** 
-
-> Řešení: Přihlaste se k webu Azure Portal, zkontrolujte, jestli klíč aplikace odpovídá, co je portál partnerů cloudu. Vygenerujte heslo podle pokynů v kroku 10 (v části Azure Active Directory), z [tady](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics)). 
-
-**Nepovedlo se uložit zájemce do Dynamics CRM. LastCRMError: Kanálu požadavku skončila platnost při čekání na odpověď po 00:02:00. Zvyšte hodnotu časového limitu předanou volání požadavku nebo zvyšte hodnotu SendTimeout na vazbě. Čas přidělený této operaci pravděpodobně částí delšího časového limitu.**  
-
-> Řešení: Přihlášení na portál Cloud Partner, v podrobnostech o prodejních míst >> zájemce cílové >> adresy URL, zkontrolujte, jestli je platnou instanci CRM dynamické

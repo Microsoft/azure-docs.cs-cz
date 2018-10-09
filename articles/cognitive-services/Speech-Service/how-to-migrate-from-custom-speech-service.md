@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 10/01/2018
 ms.author: panosper
-ms.openlocfilehash: b5f23cf5a9dc3a675d9103bb32f686d387fda837
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 4b5d0b66c4d39320a082cb9e76252bfc00db6c3a
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239925"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854131"
 ---
 # <a name="migrate-from-the-custom-speech-service-to-the-speech-service"></a>Migrace ze služby Custom Speech service na Speech service
 
@@ -48,7 +48,7 @@ Cenový model je jednodušší, Přesun do cenového modelu založeného na hodi
 
 ## <a name="migration-for-existing-customers"></a>Migrace pro stávající zákazníky
 
-Stávající zákazníci jsou potřeba k migraci jejich stávajících klíčů prostředků do nové služby na portálu Speech Service. Použijte k tomu následující postup: 
+Stávající zákazníci je potřeba migrovat své existující klíče prostředku Speech service na portálu Speech Service. Použijte k tomu následující postup: 
 
 > [!NOTE] 
 > Klíče prostředku je možné migrovat pouze v rámci stejné oblasti. 

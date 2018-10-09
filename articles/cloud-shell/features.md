@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: juluk
-ms.openlocfilehash: 51dc1280dcc8c47c3cb3ad46fc720e0a38e04b69
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 9a6f7aeea799787becf0bb99cdfa08bed4e9d355
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48814436"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867455"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Funkce a nástroje pro Azure Cloud Shell
 
@@ -33,12 +33,12 @@ Azure Cloud Shell spouští na `Ubuntu 16.04 LTS`.
 
 Cloud Shell bezpečně a automaticky ověří přístup k účtu pro rozhraní příkazového řádku Azure a Azure Powershellu.
 
-### <a name="home-persistence-across-sessions"></a>Trvalost $Home napříč relacemi
+### <a name="home-persistence-across-sessions"></a>Trvalost $HOME napříč relacemi
 
 K trvalému ukládání souborů napříč relacemi, Cloud Shell vás provede připojením sdílené složky Azure při prvním spuštění.
-Po dokončení Cloud Shell automaticky připojit úložiště (připojit jako `$Home\clouddrive`) pro všechny budoucí relace.
-Kromě toho vaše `$Home` adresáře se ukládají jako img do sdílené složky Azure.
-Souborů mimo `$Home` a stav počítače nejsou trvalé napříč relacemi. Použijte osvědčené postupy při ukládání tajných klíčů, jako jsou klíče SSH. Služeb jako [Azure Key Vault mít podrobné pokyny pro nastavení](https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#prerequisites).
+Po dokončení Cloud Shell automaticky připojit úložiště (připojit jako `$HOME\clouddrive`) pro všechny budoucí relace.
+Kromě toho vaše `$HOME` adresáře se ukládají jako img do sdílené složky Azure.
+Souborů mimo `$HOME` a stav počítače nejsou trvalé napříč relacemi. Použijte osvědčené postupy při ukládání tajných klíčů, jako jsou klíče SSH. Služeb jako [Azure Key Vault mít podrobné pokyny pro nastavení](https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#prerequisites).
 
 [Další informace o zachování souborů ve službě Cloud Shell.](persisting-shell-storage.md)
 
@@ -61,7 +61,7 @@ Cloud Shell zahrnuje předem nakonfigurované ověřování pro open source nás
 |---|---|
 |Nástroje pro Linux            |Bash<br> zsh<br> TV<br> tmux<br> Ponořte se<br>               |
 |Nástroje Azure            |[Azure CLI](https://github.com/Azure/azure-cli) a [klasické rozhraní příkazového řádku Azure](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
-|Textových editorů           |VIM<br> nano<br> (emacs)       |
+|Textových editorů           |VIM<br> nano<br> (emacs)<br> kód       |
 |Správy zdrojového kódu         |git                    |
 |Nástroje sestavení            |Ujistěte se<br> Maven<br> npm<br> PIP         |
 |Containers             |[Rozhraní příkazového řádku dockeru](https://github.com/docker/cli)/[Docker Machine](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Příkaz Helm](https://github.com/kubernetes/helm)<br> [ROZHRANÍ PŘÍKAZOVÉHO ŘÁDKU DC/OS](https://github.com/dcos/dcos-cli)         |
@@ -76,7 +76,7 @@ Cloud Shell zahrnuje předem nakonfigurované ověřování pro open source nás
 |Přejít         |1.9        |
 |Java       |1.8        |
 |Node.js    |8.9.4      |
-|PowerShell |[6.1.0-Preview.4](https://github.com/PowerShell/powershell/releases)       |
+|PowerShell |[6.1.0](https://github.com/PowerShell/powershell/releases)       |
 |Python     |2.7 a 3.5 (výchozí)|
 
 ## <a name="next-steps"></a>Další postup

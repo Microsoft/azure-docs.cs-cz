@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 6af4533a4ab374071b904cc4b03ca239a3e83364
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 309c7275a1e775ed2bd689520ac39501e8bd6052
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008962"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857818"
 ---
 # <a name="overview-of-azure-cloud-services"></a>Přehled služby Azure Cloud Services
 Azure Cloud Services je příkladem [platforma jako služba](https://azure.microsoft.com/overview/what-is-paas/) (PaaS). Stejně jako [služby Azure App Service](../app-service/app-service-web-overview.md), tato technologie je navržen pro podporu aplikací, které jsou škálovatelné, spolehlivé a mají levný provoz. Stejným způsobem, App Service je proto hostována na virtuálních počítačích (VM), je příliš Azure Cloud Services. Máte však větší kontrolu nad virtuálními počítači. Svůj vlastní software můžete nainstalovat na virtuálních počítačích, které používají Azure Cloud Services a které můžete přistupovat vzdáleně.
@@ -33,7 +33,7 @@ Existují dva typy rolí Azure Cloud Services. Jediným rozdílem mezi těmito d
 
 * **Role pracovního procesu**: nepoužívají služby IIS, a spouští vaše samostatné aplikace.
 
-Jednoduchá aplikace může například použít právě jednu webovou roli, obsluhující Web. Složitější aplikaci může používat webové role ke zpracování příchozích požadavků od uživatelů a pak předejte tyto žádosti do role pracovního procesu pro zpracování. (Tato komunikace může použít [Azure Service Bus](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md) nebo [Azure Queue storage](../storage/common/storage-introduction.md).)
+Jednoduchá aplikace může například použít právě jednu webovou roli, obsluhující Web. Složitější aplikaci může používat webové role ke zpracování příchozích požadavků od uživatelů a pak předejte tyto žádosti do role pracovního procesu pro zpracování. (Tato komunikace může použít [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) nebo [Azure Queue storage](../storage/common/storage-introduction.md).)
 
 Na předchozím obrázku navrhuje, všechny virtuální počítače v jedné aplikaci jsou spuštěny v rámci stejné cloudové služby. Přístup uživatelů aplikace prostřednictvím jednu veřejnou IP adresu, s žádostmi o automaticky načíst vyvažují mezi virtuálních počítačů aplikaci. Platforma [dá škálovat a nasadí](cloud-services-how-to-scale-portal.md) virtuálních počítačů v aplikaci Azure Cloud Services tak, aby se vyhnete jediný bod selhání hardwaru.
 

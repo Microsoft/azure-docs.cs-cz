@@ -2,18 +2,17 @@
 title: Rychlý start – události odeslání Azure Container Registry do služby Event Grid
 description: V tomto rychlém startu povolte událostí služby Event Grid pro svůj registr kontejneru a odesílání nabízených oznámení image kontejneru a odstraňovat události k ukázkové aplikaci.
 services: container-registry
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-registry
 ms.topic: article
 ms.date: 08/23/2018
-ms.author: marsma
-ms.openlocfilehash: 4b29804690b951083810d4f75b68ff23fca44a44
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.author: danlep
+ms.openlocfilehash: 88265ee6f8a340909880ba70bd9f37a49ef85bf5
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039611"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857359"
 ---
 # <a name="quickstart-send-container-registry-events-to-event-grid"></a>Rychlý start: Odeslání kontejneru událostí registru do služby Event Grid
 

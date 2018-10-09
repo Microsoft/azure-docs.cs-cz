@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: spelluru
-ms.openlocfilehash: c81f876d352c05592257d7d4118a635982845d06
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: fb42f9920ce173b25cbc16725cf1f9dfd96fcc9e
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408415"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48853449"
 ---
 # <a name="duplicate-detection"></a>Vyhledávání duplicit
 
@@ -58,7 +58,6 @@ Udržování okno malé znamená, že méně identifikátory zpráv musí být z
 
 Další informace o zasílání zpráv Service Bus, najdete v následujících tématech:
 
-* [Základy služby Service Bus](service-bus-fundamentals-hybrid-solutions.md)
 * [Fronty, témata a odběry služby Service Bus](service-bus-queues-topics-subscriptions.md)
 * [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)
 * [Jak používat témata a odběry Service Bus](service-bus-dotnet-how-to-use-topics-subscriptions.md)

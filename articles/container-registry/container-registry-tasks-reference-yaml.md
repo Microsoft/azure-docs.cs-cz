@@ -2,17 +2,17 @@
 title: Azure Container Registry úlohy reference – YAML
 description: Referenční informace pro definování úloh v YAML pro ACR úlohy, včetně vlastnosti úlohy, krok typy, vlastnosti kroku a předdefinovaných proměnných.
 services: container-registry
-author: mmacy
+author: dlepow
 ms.service: container-registry
 ms.topic: article
 ms.date: 09/24/2018
-ms.author: marsma
-ms.openlocfilehash: a40c05b2775e32bd0932122245914951d42cf712
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.author: danlep
+ms.openlocfilehash: a26b766c18ea2b14796af796abe7f36aa4fc1c66
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047345"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854945"
 ---
 # <a name="acr-tasks-reference-yaml"></a>Referenční dokumentace úlohy ACR: YAML
 
@@ -30,7 +30,7 @@ Tento článek obsahuje referenční informace pro vytváření vícekrokových 
 Na nejvyšší úrovni `acr-task.yaml` primitivních elementů jsou **vlastnosti úlohy**, **krok typy**, a **krok vlastnosti**:
 
 * [Vlastnosti úlohy](#task-properties) platí pro všechny kroky v průběhu provádění úkolu. Existují tři vlastnosti globální úlohy:
-  * verze
+  * version
   * stepTimeout
   * totalTimeout
 * [Úloha krok typy](#task-step-types) představují typy akcí, které můžete provést v rámci úlohy. Existují tři typy kroku:

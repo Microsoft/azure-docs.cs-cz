@@ -2,17 +2,17 @@
 title: Automatizace sestavování image, testování a opravy s využitím Azure Container Registry vícekrokových úkolů
 description: Úvod vícekrokových úkolů, funkce ACR úloh ve službě Azure Container Registry poskytující založené na úlohách pracovní postupy pro sestavování, testování a používání dílčích oprav imagí kontejnerů v cloudu.
 services: container-registry
-author: mmacy
+author: dlepow
 ms.service: container-registry
 ms.topic: article
 ms.date: 09/24/2018
-ms.author: marsma
-ms.openlocfilehash: b88fbf927cff51d78d95ed9501921d528b22b455
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.author: danlep
+ms.openlocfilehash: cdabafc4f70b08076820e7e0d39300b3eb0bc1e7
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047274"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48856713"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>Spuštění několika kroky sestavení, testování a opravu úkoly v úlohách služby ACR
 

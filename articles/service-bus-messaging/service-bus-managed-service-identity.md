@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 90271758e4092a574d3a44deffe42e3c689a31ca
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 5532c86271fa6a5f2b573e005993a68ac0a9e248
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48784854"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857070"
 ---
 # <a name="managed-identities-for-azure-resources-with-service-bus"></a>Spravované identity pro prostředky Azure pomocí služby Service Bus 
 
@@ -83,7 +83,6 @@ Odesílat nebo přijímat zprávy, zadejte název oboru názvů a název sady en
 
 Další informace o zasílání zpráv Service Bus, najdete v následujících tématech:
 
-* [Základy služby Service Bus](service-bus-fundamentals-hybrid-solutions.md)
 * [Fronty, témata a odběry služby Service Bus](service-bus-queues-topics-subscriptions.md)
 * [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)
 * [Jak používat témata a odběry Service Bus](service-bus-dotnet-how-to-use-topics-subscriptions.md)

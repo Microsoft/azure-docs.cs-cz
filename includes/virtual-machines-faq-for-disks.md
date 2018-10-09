@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7208eb112b5f4a5b458c0374541dff113906aa0c
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: ea9eecbc1d59b80e5454a2677e897588d258c96a
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47185373"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48874119"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Nejčastější dotazy týkající se disky virtuálního počítače Azure IaaS a spravovaných a nespravovaných prémiové disky
 
@@ -146,7 +146,7 @@ Standardní disky SSD jsou standardní disky zálohovanými SSD média, optimali
 Všechny oblasti Azure teď podporují disků SSD na úrovni Standard.
 
 **Azure Backup je k dispozici, při použití standardní disky SSD?**
-Ne, Azure Backup ještě není k dispozici.
+Ano, je Azure Backup nyní k dispozici.
 
 **Jak vytvořím disků SSD na úrovni Standard?**
 Můžete vytvořit pomocí šablon Azure Resource Manageru, sady SDK, Powershellu nebo rozhraní příkazového řádku disků SSD na úrovni Standard. V následující tabulce jsou parametry potřebné v šabloně Resource Manageru k vytvoření standardní disky SSD:

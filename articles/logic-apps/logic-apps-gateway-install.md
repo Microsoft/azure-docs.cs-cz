@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: yshoukry, LADocs
 ms.topic: article
 ms.date: 07/20/2018
-ms.openlocfilehash: daeb0c5436d851b6e234c1b97583df526192659e
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 5fc4ccacaaedfc3fe6c77fa9a0ad693530bdde93
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018770"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855421"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Instalace místní brány dat pro Azure Logic Apps
 
@@ -211,7 +211,7 @@ Zadejte informace o proxy serveru pro bránu, najdete v článku [konfigurace na
 > [!NOTE]
 > Tento příkaz testuje pouze připojení k síti a připojení ke službě Azure Service Bus. Příkaz nic nedělá se brána nebo brána cloudovou službu a která zašifruje a uloží přihlašovací údaje a podrobnosti brány. 
 >
-> Také, tento příkaz je pouze k dispozici v systému Windows Server 2012 R2 nebo novější a Windows 8.1 nebo novější. V dřívějších verzích operačních systémů můžete použít protokol Telnet k testování připojení. Další informace o [Azure Service Bus a hybridní řešení](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md).
+> Také, tento příkaz je pouze k dispozici v systému Windows Server 2012 R2 nebo novější a Windows 8.1 nebo novější. V dřívějších verzích operačních systémů můžete použít protokol Telnet k testování připojení. Další informace o [Azure Service Bus a hybridní řešení](../service-bus-messaging/service-bus-messaging-overview.md).
 
 Vaše výsledky by měly vypadat podobně jako tento příklad s **TcpTestSucceeded** nastavena na **True**:
 
@@ -232,7 +232,7 @@ Brána firewall může také blokovat připojení, která provádí Azure Servic
 
 ## <a name="configure-ports"></a>Konfigurace portů
 
-Brána vytvoří odchozí připojení k [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) a komunikuje na odchozích portech: TCP 443 (výchozí), 5671, 5672, 9350 až 9354. Brána nevyžaduje příchozí porty. Další informace o [Azure Service Bus a hybridní řešení](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md).
+Brána vytvoří odchozí připojení k [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) a komunikuje na odchozích portech: TCP 443 (výchozí), 5671, 5672, 9350 až 9354. Brána nevyžaduje příchozí porty. Další informace o [Azure Service Bus a hybridní řešení](../service-bus-messaging/service-bus-messaging-overview.md).
 
 Brána používá tyto plně kvalifikované názvy domény:
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: juluk
-ms.openlocfilehash: ea7393584e77b51073ca8938ec03e9d6f6ad6fc0
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 85d054be6b72c736ec66384b9caec71208f36802
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166669"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869359"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Přehled služby Azure Cloud Shell
 Azure Cloud Shell je interaktivní, prohlížeč přístupné prostředí pro správu prostředků Azure.
@@ -78,7 +78,7 @@ Přečtěte si další informace o připojení [účtu úložiště nové nebo e
 * Cloud Shell vyžaduje sdílenou složku Azure připojit
 * Pro Bash i PowerShell cloud Shell používá stejné sdílené složky Azure
 * Cloud Shell je přiřazen jeden počítač v rámci uživatelského účtu
-* Cloud Shell nevyřeší $Home pomocí 5 GB image uložené ve sdílené složce
+* Cloud Shell nevyřeší $HOME pomocí 5 GB image uložené ve sdílené složce
 * Oprávnění jsou nastavena jako běžný uživatel Linuxu v prostředí Bash
 
 Další informace o funkcích v [Bash ve službě Cloud Shell](features.md) a [prostředí PowerShell ve službě Cloud Shell](features-powershell.md).

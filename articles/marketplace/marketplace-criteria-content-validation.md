@@ -12,30 +12,20 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 09/20/2018
+ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: 0b971535120e51a9aeec7b57da133c6b8db6a09e
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 383f16bf0671e0bdec840afe1abe85e37ed32ce2
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219405"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855353"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Pokyny pro zařazení na Azure Marketplace
 
 Tento dokument obsahuje pokyny pro požadavek, stejně jako kontrolní seznam pro recenzenty pro nové nabídky a služby uvedené na webu Azure Marketplace.
 
-Všechny nabídky musí splňovat "všechny výpis požadavky". Další požadavky a kontrolní seznamy jsou k dispozici pro konkrétní seznam typy patří: nabízí s připojenými zkušebních verzí consulting nabízí, aplikacím SaaS a kontejnerů.
-
-**Osvědčeným postupem výpis příklady v tomto článku najdete:**
-| Typ nabídky | Nabídka odkaz
-|:--- |:--- |
-| Obecné | <br> https://azuremarketplace.microsoft.com/en-us/marketplace/apps/barracudanetworks.waf?tab=Overview <br> https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.netapp-altavault-cloud-integrated-storage-solution?tab=Overview |
-| Zkušební verze | https://azuremarketplace.microsoft.com/en-us/marketplace/apps/intigua.intigua-agent-manager-trial?tab=Overview |
-| Aplikace SaaS | https://azuremarketplace.microsoft.com/en-us/marketplace/apps/apptimized.isvtesting?tab=Overview |
-| Containers |https://azuremarketplace.microsoft.com/en-us/marketplace/apps/couchbase.couchbase-server-enterprise-containercouchbase-enterprise-server-container-byol?tab=Overview |
-| Konzultační služby | https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/wipro-ltd.cmp-wipro?page=1 |
-
+Musí splňovat všechny nabídky [všechny požadavky na výpis](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#all-listing-requirements) uvedené níž. Další požadavky a kontrolní seznamy jsou k dispozici pro konkrétní seznam typy patří: nabídek s připojené [zkušebních verzí](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#trial-offer-requirements), [aplikace SaaS](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#saas-apps-requirements), [kontejnery](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#container-offer-requirements)a [consulting nabízí](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#consulting-offer-requirements).
 
 
 ## <a name="all-listing-requirements"></a>Všechny požadavky na seznam
@@ -69,7 +59,7 @@ Všechny nabídky musí splňovat "všechny výpis požadavky". Další požadav
 |:--- |:--- |:--- |:--- |
 | 1 | Název nabídky |<br>• Musí obsahovat jenom malá písmena, alfanumerické znaky, pomlčky nebo podtržítka. Nelze změnit po publikování. <br>• Popisují řešení, které nabízí.<br>• Odpovídá online propagují řešení na webu partnera. | Obsahuje klíčových slov |
 | 2 | Technické informace: Konfigurace |<br>• Pro aplikaci SaaS, zvolte, jestli chcete jenom uvedení vaší aplikace nebo pokud chcete zákazníkům umožnit, aby vaše aplikace prostřednictvím Azure zakoupit.<br>• Vyberte odpovídající text, který má na tlačítku pro získání vaší nabídky: Free, bezplatná zkušební verze nebo kontaktujte mě<br>• Pouze vyberte (v místním okně) – jednu z těchto podporovaných produktů, pokud vaše aplikace využívá technologie: Cortana Intelligence, šablony řešení Power BI, Power Apps |  |
-| 3 | Test Drive | Vyberte: Ano nebo ne | Odběratele můžete snadno pochopit, jaké další kroky, které jsou k dispozici jsou: <br>1. Zkuste platnost zkušební verze <br>2. Koupit <br>3. Pošleme e-mail nebo telefonní číslo zařídit PoC, hodnocení nebo přehledové. |
+| 3 | Testovací verze | Vyberte: Ano nebo ne | Odběratele můžete snadno pochopit, jaké další kroky, které jsou k dispozici jsou: <br>1. Zkuste platnost zkušební verze <br>2. Koupit <br>3. Pošleme e-mail nebo telefonní číslo zařídit PoC, hodnocení nebo přehledové. |
 | 4 | Prezentace podrobnosti: nabízí souhrn | Tím se zobrazí na stránce hledání vaší aplikace s délkou maximálně 100 znaků. | |
 | 5 | Prezentace podrobnosti: obory | Obory (max. 2): Vyberte obory, vaše aplikace bude nejlépe zarovnané a pro. | |
 | 6 | Popis nabídky | <br>• Jednoduchého kódu HTML je povolený, včetně p, em, ul, li, ol a hlavičky značky. Maximální počet znaků 3000. <br>• 2 až 3 odstavcích. <br>• Řešení, které nabízí snadno pochopitelný na první pohled <br>• Popis je komplexní a zachytí: cíl cílová skupina *, typ uživatele, proč je důležité (hodnota prop) <br>• Popis nabídky je v odstavci narativní formě tak s krátkou věty, který je snadno srozumitelná. | <br>• Cílového oboru je popsána (Pokud je to potřeba) <br>• Dobré styl formátování pomocí záhlaví jednotlivých odstavců s větu jedním nebo frázi sumarizace včetně odrážky a obsahu, který sleduje zdůraznit klíčové výhody odkazuje (v případě potřeby). Cílem tady je pro čtečku pochopit nabídky na první pohled v snadno zobrazit formát a není nutné číst odstavcích. <br>• Jsou mezery mezi každou odstavec a čtení jako brožuru automobilu. To znamená ne technickou funkce nebo kód lingo ale popisný nabídky zjednodušeně řečeno a je komplexní. | 
@@ -106,8 +96,6 @@ Všechny nabídky musí splňovat "všechny výpis požadavky". Další požadav
 | 10 | Produkty | Musí být Azure | |
 | 11 | Země/oblast | Zajištění shody zemí a oblastí zvolili měny | |
 | 12 | Další informace  | <br>• Odkazy dole (v části Popis není marketplace odkazy na levé straně) vede na další informace o řešení a jsou veřejně dostupné a zobrazování správně. <br>• Odkazy musí mít "popisný název" a nesmí být uvedené jako název souboru žádné soubory ke stažení | |
-
-
 
 
 ## <a name="next-steps"></a>Další postup

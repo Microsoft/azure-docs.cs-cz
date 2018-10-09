@@ -8,16 +8,16 @@ ms.technology: Speech to Text
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: 860b58a18fbc14532a8591fc753453d60492d3c0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e702cb6da3378e460ebb68542d82e736b9f57a52
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981368"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857784"
 ---
 # <a name="batch-transcription"></a>Dávkový přepis
 
-Přepis batch je ideální, pokud máte velké množství zvuk. Můžete odkazovat na zvukové soubory a získat zpět přepisů v asynchronním režimu.
+Přepis batch je ideální, pokud máte velké množství zvuk. Můžete odkazovat na zvukové soubory pomocí identifikátoru URI a získat zpět přepisů v asynchronním režimu.
 
 ## <a name="batch-transcription-api"></a>Přepis rozhraní API služby batch
 
@@ -59,7 +59,7 @@ Pro stereo zvukové datové proudy určené k transkripci Batch rozdělí levéh
 
 ## <a name="authorization-token"></a>Autorizační token
 
-Se všemi funkcemi Unified Speech Service, při vytváření odběru klíč z [webu Azure portal](https://portal.azure.com) následující naše [si úvodní příručku](get-started.md). Pokud budete chtít získat přepisů z našich základní modely pak to je všechno, co musíte udělat. 
+Jak se všemi funkcemi Speech Service, vytvořte klíč předplatného z [webu Azure portal](https://portal.azure.com) následující naše [si úvodní příručku](get-started.md). Pokud budete chtít získat přepisů z našich základní modely pak to je všechno, co musíte udělat. 
 
 Pokud máte v úmyslu na úpravách a používání vlastního modelu budete muset přidat tento klíč subscritpion na portál custom speech následujícím způsobem:
 

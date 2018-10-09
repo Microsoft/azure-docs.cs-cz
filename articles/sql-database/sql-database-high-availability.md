@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, sashan
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: dfb1e218218a44aafd318acb53750c875bdf1263
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.date: 10/05/2018
+ms.openlocfilehash: 1c6fb3660f395e709207e788b4ef648a69cae48d
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247715"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868571"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Vysoká dostupnost a Azure SQL Database
 
@@ -31,9 +31,9 @@ Azure SQL Database je založené na architektuře databázový stroj SQL serveru
 
 Azure upgradů a oprav základního operačního systému, ovladačů a databázový stroj SQL serveru transparentně s minimálními výpadkům pro koncové uživatele. Azure SQL Database běží na nejnovější stabilní verze databázového stroje SQL Server a operační systém Windows a většinu uživatelů by Všimněte si, že je aktualizován se provádí nepřetržitě.
 
-## <a name="standardgeneral-purpose-availability"></a>Dostupnost/standard pro obecné účely
+## <a name="basic-standard-and-general-purpose-service-tier-availability"></a>Úroveň Basic, Standard a obecné úroveň dostupnosti služeb
 
-Standardní dostupnost odkazuje na 99,99 % smlouva SLA, která se použije na úrovních Standard a Basic/obecné účely. Zajištění vysoké dostupnosti v této architektuře modelu se dosahuje oddělením výpočetní a úložnou vrstvu a replikace dat do vrstvy úložiště.
+Standardní dostupnost odkazuje na 99,99 % smlouva SLA, která se použije v úrovních služby Basic, Standard a obecné účely. Zajištění vysoké dostupnosti v této architektuře modelu se dosahuje oddělením výpočetní a úložnou vrstvu a replikace dat do vrstvy úložiště.
 
 Následující obrázek znázorňuje čtyři uzly ve standardní Architektonický model s oddělenými výpočetní a úložnou vrstvu.
 
@@ -46,9 +46,9 @@ V modelu standardní dostupnosti jsou dvě vrstvy:
 
 Pokaždé, když se upgraduje operační systém nebo databázový stroj, některá část základní infrastruktury selže nebo pokud se zjistí některé kritický problém v procesu serveru Sql Server, Azure Service Fabric se přesune bezstavové procesu serveru SQL Server na jiný bezstavové výpočetní uzel. Je sada uzlů za chodu, který čeká na spuštění nové služby výpočty v případě převzetí služeb při selhání, aby se minimalizoval čas převzetí služeb při selhání. Data ve vrstvě služby Azure Storage to neovlivní a data/log soubory jsou připojeny k nově inicializované procesu serveru SQL Server. Tento postup zaručuje 99,99 % dostupnost, ale může mít některé vliv na funkčnost v případě velkého zatížení, které běží kvůli čas přechodu a fakt nový uzel SQL serveru začíná studenou mezipaměti.
 
-## <a name="premiumbusiness-critical-availability"></a>Úrovně Premium/důležitých dostupnosti
+## <a name="premium-and-business-critical-service-tier-availability"></a>Dostupnost úroveň služeb Premium a pro důležité obchodní informace
 
-Premium dostupnosti je povolený v úrovni Premium služby Azure SQL Database a je určeno pro intenzivní úlohy, které nemůžou tolerovat ovlivnit výkon z důvodu operace průběžnou údržbu.
+Premium dostupnosti je povolený v úrovních Premium a pro důležité obchodní informace služby Azure SQL Database a je určeno pro intenzivní úlohy, které nemůžou tolerovat ovlivnit výkon z důvodu operace průběžnou údržbu.
 
 V modelu úrovně premium Azure SQL database integruje výpočetní výkon a úložiště na jeden uzel. V této architektuře modelu vysoké dostupnosti se dosahuje prostřednictvím replikace výpočetního prostředí (SQL Server Database Engine proces) a úložiště (místně připojených jednotkách SSD) nasazené v 4 uzly [skupin dostupnosti Always On](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) clusteru.
 

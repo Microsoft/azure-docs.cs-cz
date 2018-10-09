@@ -4,7 +4,7 @@ description: Popisuje role a oprávnění potřebná k vytvoření datové tová
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.date: 10-04/2018
+ms.date: 10/08/2018
 ms.topic: conceptual
 ms.service: data-factory
 services: data-factory
@@ -12,12 +12,12 @@ documentationcenter: ''
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.openlocfilehash: cd6e28298b773f466ea317b7217af7709802aa12
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 0c915c6b102f3aeedb316048fad1c6dc238fa0ad
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817496"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868611"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Role a oprávnění pro službu Azure Data Factory
 
@@ -50,6 +50,9 @@ Další informace o této role, naleznete v tématu [role Přispěvatel Data Fac
 ### <a name="resource-manager-template-deployment"></a>Nasazení šablony Resource Manageru
 
 **Přispěvatel Data Factory** role na úrovni skupiny prostředků nebo vyšší, umožňuje uživatelům nasadit šablon Resource Manageru. Členové role proto můžete použít šablony Resource Manageru k nasazování datové továrny a jejich podřízené prostředky, včetně datových sad, propojených služeb, kanály, aktivační události a prostředí integration runtime. Členství v této roli uživatele vytvořit další prostředky, ale neumožňuje.
+
+> [!WARNING]
+> Nasazení šablony Resource Manageru s **Přispěvatel Data Factory** role nezvýší vaše oprávnění. Například pokud nasadit šablonu, která vytvoří virtuální počítač Azure, a nemáte oprávnění k vytvoření virtuálních počítačů, nasazení se nezdaří s chybou autorizace.
 
 ### <a name="custom-scenarios-and-custom-roles"></a>Vlastní scénáře a vlastní role
 

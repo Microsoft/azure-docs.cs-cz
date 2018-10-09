@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/02/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: bca75f9efa1614c4fa719b21007c827494ecd8f0
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: b266bc11f32d8621b6819b695af42cb14908bc05
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830706"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870787"
 ---
 # <a name="azure-storage-replication"></a>Účet replikace Azure Storage
 
@@ -40,10 +40,12 @@ Následující tabulka poskytuje rychlý přehled o oboru odolnosti a dostupnost
 | Přístup pro čtení k datům (v oblasti vzdálené, geograficky replikovaného) v případě nedostupnosti celé oblasti | Ne                              | Ne                               | Ne                                   | Ano                                  |
 | Navrženo pro zajištění ___ odolnosti objektů v průběhu daného roku                                          | alespoň 99,999999999 % (11 9) | alespoň 99,9999999999 % (12 9) | minimálně 99,99999999999999 % (16. 9) | minimálně 99,99999999999999 % (16. 9) |
 | Typy účtů úložiště podporuje                                                                   | Objektů Blob v účtech GPv1, GPv2,                | GPv2                             | Objektů Blob v účtech GPv1, GPv2,                     | Objektů Blob v účtech GPv1, GPv2,                     |
-| Smlouva SLA o dostupnosti pro požadavky na čtení | Minimálně 99,9 % (99 % pro vrstvu přístupu cool)
+| Smlouva SLA o dostupnosti pro požadavky na čtení | Minimálně 99,9 % (99 % pro vrstvu přístupu cool) | Minimálně 99,9 % (99 % pro vrstvu přístupu cool) | Minimálně 99,9 % (99 % pro vrstvu přístupu cool) | Minimálně 99,99 % (99,9 % pro vrstvu přístupu Cool) |
+| Smlouva SLA o dostupnosti pro požadavky na zápis | Minimálně 99,9 % (99 % pro vrstvu přístupu cool) | Minimálně 99,9 % (99 % pro vrstvu přístupu cool) | Minimálně 99,9 % (99 % pro vrstvu přístupu cool) | Minimálně 99,9 % (99 % pro vrstvu přístupu cool) |
 
+Informace o cenách pro jednotlivé možnosti redundance, naleznete v tématu [ceny za Azure Storage](https://azure.microsoft.com/pricing/details/storage/). 
 
-Zobrazit [ceny za Azure Storage](https://azure.microsoft.com/pricing/details/storage/) informace o možnostech různých redundance o cenách.
+Informace o službě Azure Storage záruky dostupnosti a odolnosti najdete v článku [SLA pro Azure Storage](https://azure.microsoft.com/support/legal/sla/storage/).
 
 > [!NOTE]
 > Premium Storage podporuje jen místně redundantní úložiště (LRS). Informace o službě Premium Storage najdete v tématu [Premium Storage: vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../../virtual-machines/windows/premium-storage.md).

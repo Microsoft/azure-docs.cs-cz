@@ -3,18 +3,17 @@ title: Nejčastější dotazy k Azure Application Gateway
 description: Tato stránka nabízí odpovědi na nejčastější dotazy týkající se Azure Application Gateway
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 9/6/2018
+ms.date: 10/6/2018
 ms.author: victorh
-ms.openlocfilehash: 56c66418b9f47e0ae0d345cd6e8a7d3ef2914b82
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7b2a550c902e85caf02f05fcbbe5dd7b02acd0cc
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986672"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868849"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Nejčastější dotazy k Application Gateway
 
@@ -22,15 +21,15 @@ ms.locfileid: "46986672"
 
 **Q. Co je Application Gateway?**
 
-Azure Application Gateway je Application Delivery Controller (ADC) jako službu, nabízí různé možnosti pro vaše aplikace Vyrovnávání zatížení vrstvy 7. Nabízí vysoce dostupné a škálovatelné služby, která je plně spravuje Azure.
+Azure Application Gateway je Application Delivery Controller (ADC) jako službu, nabízí různé vrstvy 7 možnostmi Vyrovnávání zatížení pro vaše aplikace. Nabízí vysoce dostupné a škálovatelné služby, která je plně spravuje Azure.
 
 **Q. Jaké funkce Application Gateway podporuje?**
 
-Služba Application Gateway podporuje snižování zátěže protokolu SSL a kompletního protokolu SSL, Firewall webových aplikací, spřažení relace na základě souborů cookie, adresu url na základě cest směrování, hostování několika webů a dalších. Úplný seznam podporovaných funkcí najdete [seznámení se službou Application Gateway](application-gateway-introduction.md)
+Služba Application Gateway podporuje automatické škálování, snižování zátěže protokolu SSL a kompletního protokolu SSL, Firewall webových aplikací, spřažení relace na základě souborů cookie, adresa url na základě cest směrování, hostování několika webů a ostatní. Úplný seznam podporovaných funkcí najdete v tématu [seznámení se službou Application Gateway](application-gateway-introduction.md).
 
 **Q. Jaký je rozdíl mezi Application Gateway a nástroje pro vyrovnávání zatížení Azure?**
 
-Služba Application Gateway je Vyrovnávání zatížení vrstvy 7, což znamená, že pracuje s pouze webový provoz (HTTP/HTTPS/WebSocket). Podporuje možnosti, jako jsou ukončení protokolu SSL, spřažení relace na základě souborů cookie a kruhové dotazování pro provoz služby Vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení, zatížení provozu na vrstvy 4 (TCP/UDP).
+Služba Application Gateway je Vyrovnávání zatížení vrstvy 7, což znamená, že pracuje s pouze webový provoz (HTTP/HTTPS/WebSocket). Podporuje možnosti, jako jsou ukončení protokolu SSL, spřažení relace na základě souborů cookie a kruhové dotazování pro provoz služby Vyrovnávání zatížení. Načtěte provozu nástroje pro vyrovnávání zatížení vrstvy 4 (TCP/UDP).
 
 **Q. Jaké protokolů Application Gateway podporuje?**
 
@@ -38,7 +37,7 @@ Služba Application Gateway podporuje HTTP, HTTPS, HTTP/2 a protokolu WebSocket.
 
 **Q. Jak Application Gateway podporuje HTTP/2?**
 
-Podpora protokolu HTTP/2 je k dispozici klienti připojení k službě Application Gateway jenom naslouchacích procesů. Komunikace do fondů back-end serveru je přes HTTP/1.1. 
+Podpora protokolu HTTP/2 je k dispozici pro připojení klientů k application gateway pouze posluchače. Komunikace do fondů back-end serveru je přes HTTP/1.1. 
 
 Ve výchozím nastavení je zakázána podpora HTTP/2. Následující příklad fragmentu kódu prostředí Azure PowerShell ukazuje, jak můžete zajistit:
 
@@ -62,7 +61,7 @@ Služba Application Gateway je vyhrazené nasazení ve virtuální síti.
 
 **Q. Je HTTP -> přesměrování protokolu HTTPS, které jsou podporovány?**
 
-Přesměrování se nepodporuje. Navštivte [přehled přesměrování ve službě Application Gateway](application-gateway-redirect-overview.md) Další informace.
+Přesměrování se nepodporuje. Zobrazit [přehled přesměrování ve službě Application Gateway](application-gateway-redirect-overview.md) Další informace.
 
 **Q. V jakém pořadí se naslouchací procesy zpracovávají?**
 
@@ -70,34 +69,36 @@ Naslouchací procesy jsou zpracovávány v pořadí, ve kterém jsou zobrazeny. 
 
 **Q. Kde najdu IP a DNS Application Gateway?**
 
-Při použití veřejné IP adresy jako koncový bod, tyto informace najdete na prostředek veřejné IP adresy nebo na stránce Přehled služby Application Gateway na portálu. Pro interní IP adresy to najdete na stránce Přehled.
+Při použití veřejné IP adresy jako koncový bod, tyto informace můžete najít na prostředek veřejné IP adresy nebo na stránce Přehled pro službu application gateway na portálu. Pro interní IP adresy to najdete na stránce Přehled.
 
-**Q. IP adresy nebo DNS mění během životního cyklu Application Gateway?**
+**Q. Mění název IP nebo DNS během životního cyklu Application Gateway?**
 
-Virtuální IP adresu můžete změnit, pokud brána je zastaven a tím, že zákazník. DNS přidružené k Application Gateway nemění přes životní cyklus brány. Z tohoto důvodu se doporučuje použít CNAME alias a přejděte na adresu DNS služby Application Gateway.
+Virtuální IP adresu můžete změnit, pokud application gateway je zastavit a spustit. Název DNS, který je přidružený k službě application gateway nemění přes životní cyklus brány. Z tohoto důvodu se doporučuje použít CNAME alias a přejděte na adresu DNS služby application gateway.
 
 **Q. Služba Application Gateway podporuje statickou IP adresu?**
 
-Ne, služba Application Gateway nepodporuje statické veřejné IP adresy, ale nepodporuje statické interní IP adresy.
+Ano, podporuje skladové jednotce brány V2 aplikace statické veřejné IP adresy. V1 SKU podporuje statické interní IP adresy.
 
 **Q. Služba Application Gateway podporuje několik veřejných IP adres v bráně?**
 
-Ve službě Application Gateway se podporuje jenom jednu veřejnou IP adresu.
+Ve službě application gateway se podporuje jenom jednu veřejnou IP adresu.
 
 **Q. Jak velké by měl udělám mou podsíť pro službu Application Gateway?**
 
 Application Gateway využívá jednu privátní IP adresu na jednu instanci a jiné privátní IP adresu, pokud je nakonfigurovaný privátní front-endovou konfiguraci IP. Azure si vyhrazuje první čtyři a poslední IP adresu v každé podsíti pro interní použití.
-Například, pokud služba Application Gateway je nastavena na tři instance a žádné privátní front-endovou IP, pak je/29 nebo větší velikost podsítě je potřeba. V tomto případě Application Gateway používá tři IP adresy. Pokud máte tři instance a IP adresu pro privátní front-endovou konfiguraci protokolu IP, pak o velikosti/28 podsíť, velikost nebo vyšší je potřeba, protože čtyři IP adresy jsou povinné.
+Například, pokud služby application gateway je nastavena na tři instance a žádné privátní front-endovou IP, pak je/29 nebo větší velikost podsítě je potřeba. V tomto případě application gateway používá tři IP adresy. Pokud máte tři instance a IP adresu pro privátní front-endovou konfiguraci protokolu IP, pak o velikosti/28 podsíť, velikost nebo vyšší je potřeba, protože čtyři IP adresy jsou povinné.
 
 **Q. Služba Application Gateway podporuje hlavičky x předané pro?**
 
-Ano, služba Application Gateway vloží záhlaví x předané u, x-forwarded-proto a x předané port do žádosti předané back-endu. Formát pro x předané – pro hlavičky je čárkou oddělený seznam IP: port. Platné hodnoty pro x-forwarded-proto jsou http nebo https. X předané port Určuje port, ve kterém bylo dosaženo žádost ve službě Application Gateway.
+Ano, služba Application Gateway vloží záhlaví x předané u, x-forwarded-proto a x předané port do žádosti předané back-endu. Formát pro x předané – pro hlavičky je čárkou oddělený seznam IP: port. Platné hodnoty pro x-forwarded-proto jsou http nebo https. X předané port Určuje port, ve kterém bylo dosaženo žádost ve službě application gateway.
 
 Služba Application Gateway také vloží hlavičku X-původní-hostitele, která obsahuje hlavičku původního hostitele, pomocí kterého Přišla žádost. Tato hlavička se užitečné v situacích, jako jsou integrace webu Azure, ve kterém se upraví hlavičku hostitele příchozího před provoz směruje do back-endu.
 
 **Q. Jak dlouho trvá nasazení služby Application Gateway? My Application Gateway stále funguje při aktualizaci?**
 
-Nová nasazení Application Gateway může trvat až 20 minut, než se zřídit. Změny velikosti a počtu instancí nejsou rušivé a během této doby zůstává aktivní brány.
+Nová nasazení aplikací SKU V1 brány může trvat až 20 minut, než ke zřízení. Změny velikosti a počtu instancí nejsou rušivé a během této doby zůstává aktivní brány.
+
+V2 SKU nasazení může trvat přibližně pět až šest minut zřizování.
 
 ## <a name="configuration"></a>Konfigurace
 
@@ -105,19 +106,19 @@ Nová nasazení Application Gateway může trvat až 20 minut, než se zřídit.
 
 Ano, služba Application Gateway je vždy nasazeny v podsíti virtuální sítě. Tato podsíť může obsahovat jenom aplikační brány.
 
-**Q. Může služba Application Gateway sdělit instance mimo příslušné virtuální síti?**
+**Q. Služba Application Gateway komunikovat instance mimo příslušné virtuální síti?**
 
-Služba Application Gateway může komunikovat s instancí mimo virtuální síť, která bude v, jako je připojení pomocí IP adresy. Pokud plánujete používat interní IP adresy jako členy fondu back-end, pak vyžaduje [VNET Peering](../virtual-network/virtual-network-peering-overview.md) nebo [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
+Služba Application Gateway může komunikovat s instancí mimo virtuální síť, která probíhá, jako je připojení pomocí IP adresy. Pokud plánujete používat interní IP adresy jako členy fondu back-end, pak vyžaduje [VNET Peering](../virtual-network/virtual-network-peering-overview.md) nebo [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
-**Q. Je možné nasadit nic jiného v podsítě Application Gateway?**
+**Q. Je možné nasadit nic jiného v podsítě služby application gateway?**
 
 Ne, ale můžete nasadit další služby application Gateway v podsíti.
 
-**Q. Podporují se skupiny zabezpečení sítě na podsíť Application Gateway?**
+**Q. Podporují se skupinami zabezpečení sítě na podsítě služby application gateway?**
 
-Skupiny zabezpečení sítě jsou podporovány na podsítě Application Gateway s následujícími omezeními:
+Skupiny zabezpečení sítě jsou podporovány na podsítě služby application gateway s následujícími omezeními:
 
-* Výjimky musí být umístěno v pro příchozí provoz na portech 65503 65534. Tento rozsah portů je nutné pro komunikaci infrastruktury Azure. Jsou chráněny (uzamknuty) s použitím certifikátů Azure. Bez správných certifikátů nemohou externí entity, včetně zákazníků těchto bran, nebude možné zahájit žádné změny na tyto koncové body.
+* Výjimky musí být umístěno v pro příchozí provoz na portech 65503 65534 pro 65200-65535 SKU V1 brány aplikace a porty pro V2 SKU. Tento rozsah portů je nutné pro komunikaci infrastruktury Azure. Jsou chráněny (uzamknuty) s použitím certifikátů Azure. Bez správných certifikátů nemohou externí entity, včetně zákazníků těchto bran, nebude možné zahájit žádné změny na tyto koncové body.
 
 * Odchozí připojení k Internetu, nejde blokovat.
 
@@ -131,7 +132,7 @@ Například trasu UDR v podsítě služby application gateway můžete nastavit 
 
 **Q. Jaká jsou omezení ve službě Application Gateway? Můžete tyto limity zvýšit?**
 
-Navštivte [omezení služby Application Gateway](../azure-subscription-service-limits.md#application-gateway-limits) zobrazíte omezení.
+Zobrazit [omezení služby Application Gateway](../azure-subscription-service-limits.md#application-gateway-limits) zobrazíte omezení.
 
 **Q. Můžu používat Application Gateway pro externí a interní provozu současně?**
 
@@ -163,7 +164,7 @@ Pole hostitel Určuje název, který chcete odeslat testu a. Použít pouze v p�
 
 **Q. Je možné seznamu povolených IP adres službě Application Gateway přístup k několika zdrojové IP adresy?**
 
-Tento scénář lze provést pomocí skupin Nsg na podsítě Application Gateway. Následující omezení by mělo být uvedeno na podsítě v uvedené pořadí podle priority:
+Tento scénář lze provést pomocí skupin Nsg na podsítě služby application gateway. Následující omezení by mělo být uvedeno na podsítě v uvedené pořadí podle priority:
 
 * Umožňuje příchozí provoz ze zdrojového rozsahu IP/IP.
 
@@ -183,23 +184,25 @@ Ne, na tuto situaci se podpora nevztahuje.
 
 **Q. Jak Application Gateway podporuje vysokou dostupnost a škálovatelnost?**
 
-Služba Application Gateway podporuje scénáře vysoké dostupnosti, pokud mají nasazené nejmíň dvě instance. Azure rozděluje tyto instance mezi aktualizace a domény selhání k zajištění, že všechny instance neselže ve stejnou dobu. Služba Application Gateway podporuje škálovatelnost přidáním více instancí stejné bráně sdílení zatížení.
+SKU brány V1 aplikace podporuje scénáře vysoké dostupnosti mají nasazené nejmíň dvě instance. Azure rozděluje tyto instance mezi aktualizace a domény selhání k zajištění, že všechny instance neselže ve stejnou dobu. V1 SKU podporuje škálovatelnost přidáním více instancí stejné bráně sdílení zatížení.
+
+V2 SKU automaticky zajistí, že nové instance jsou rozděleny mezi doménami selhání a aktualizačními doménami. Pokud je zvolená redundanci zón nejnovější instance jsou také šíří napříč zónami dostupnosti nabízí oblastmi selhání odolnost proti chybám.
 
 **Q. Jak dosáhnu scénář zotavení po Havárii napříč datovými centry s bránou Application Gateway?**
 
 Zákazníci mohou pomocí Traffic Manageru k distribuování síťového provozu mezi více aplikačních bran v různých datových centrech.
 
-**Q. Automatické škálování je podporováno?**
+**Q. Je podporováno automatické škálování?**
 
-Ne, ale služba Application Gateway má metriky propustnosti, který slouží k upozornění, když je dosaženo prahové hodnoty. Ruční přidání instance nebo změna velikosti nerestartuje brány a nemá vliv na existující provoz.
+Ano, skladové jednotce brány V2 aplikace podporuje automatické škálování. Další informace najdete v tématu [automatické škálování a zónově redundantní služba Application Gateway (Public Preview)](application-gateway-autoscaling-zone-redundant.md).
 
 **Q. Je ruční škálování nahoru/dolů příčina výpadku?**
 
 Neexistuje žádný výpadek, instance se distribuují napříč upgradovací doménami a doménami selhání.
 
-**Q. Podporuje vyprázdnění application gateway podporu připojení?**
+**Q. Služba Application Gateway podporuje vyprázdnění připojení?**
 
-Ano. Můžete nakonfigurovat vyprázdnění Chcete-li změnit členy v rámci fondu back-end bez přerušení připojení. To vám umožní existující připojení a pokračujte v odešlou do jejich předchozího cíle, dokud nebude tento připojení se ukončilo nebo konfigurovatelný časový limit vyprší. Poznámka: Toto připojení vyprazdňování pouze čeká na dokončení aktuálních vydávaných za pochodu připojení. Služba Application Gateway nemá žádné informace o stavu relace aplikace.
+Ano. Můžete nakonfigurovat vyprázdnění Chcete-li změnit členy v rámci fondu back-end bez přerušení připojení. To vám umožní existující připojení a pokračujte v odešlou do jejich předchozího cíle, dokud nebude tento připojení se ukončilo nebo konfigurovatelný časový limit vyprší. Vyprázdnění připojení pouze čeká vydávaných za pochodu aktuální počet připojení k dokončení. Služba Application Gateway nemá žádné informace o stavu relace aplikace.
 
 **Q. Co jsou aplikace velikosti brány?**
 
@@ -225,11 +228,11 @@ Ano, Azure distribuuje instancí napříč aktualizace a domény selhání k zaj
 
 **Q. Jaké certifikáty jsou podporovány ve službě Application Gateway?**
 
-Vlastní podepsané certifikáty CA certs, a zástupný znak – certifikáty jsou podporovány. Rozšířené certifikátů nejsou podporovány.
+Certifikáty podepsané svým držitelem, certifikáty CA certs a zástupný znak – certifikáty jsou podporovány. Rozšířené certifikátů nejsou podporovány.
 
 **Q. Jaké jsou aktuální šifrovací sada podporovaná službou Application Gateway?**
 
-Toto jsou aktuální šifrovací sada podporovaná službou application gateway. Navštivte: [konfigurace protokolu SSL verze zásad a šifrovací sady ve službě Application Gateway](application-gateway-configure-ssl-policy-powershell.md) se naučíte přizpůsobit možnosti SSL.
+Toto jsou aktuální šifrovací sada podporovaná službou Application Gateway. Zobrazit [verze zásad konfigurace protokolu SSL a šifrovací sady ve službě Application Gateway](application-gateway-configure-ssl-policy-powershell.md) se naučíte přizpůsobit možnosti SSL.
 
 - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
@@ -311,7 +314,7 @@ Režim detekce Ne, zaznamená jenom provoz, která aktivuje pravidlo WAF.
 
 **Q. Jak mohu přizpůsobit pravidla firewallu webových aplikací?**
 
-Ano, jsou přizpůsobitelné, další informace o tom, jak si je přizpůsobit, navštivte pravidla firewallu webových aplikací [WAF přizpůsobení skupin pravidel a pravidla](application-gateway-customize-waf-rules-portal.md)
+Ano, jsou přizpůsobitelné, další informace o tom, jak si je přizpůsobit, viz pravidla firewallu webových aplikací [WAF přizpůsobení skupin pravidel a pravidla](application-gateway-customize-waf-rules-portal.md)
 
 **Q. Pravidla jsou aktuálně k dispozici?**
 
@@ -339,9 +342,9 @@ Ano. Můžete povolit ochranu před útoky DDos na virtuální síť, ve kterém
 
 **Q. Jaké typy protokolů jsou dostupné pomocí služby Application Gateway?**
 
-K dispozici tři protokoly pro službu Application Gateway. Další informace na tyto protokoly a další diagnostické možnosti [back-endu stav, diagnostické protokoly a metriky pro službu Application Gateway](application-gateway-diagnostics.md).
+K dispozici tři protokoly pro službu Application Gateway. Další informace na tyto protokoly a další diagnostické možnosti najdete v tématu [back-endu stav, diagnostické protokoly a metriky pro službu Application Gateway](application-gateway-diagnostics.md).
 
-- **ApplicationGatewayAccessLog** – protokol přístupu obsahuje každou odeslal se požadavek na front-endová služba Application Gateway. Data obsahují volajícího IP adresy URL vyžádané, latence odpovědi, návratový kód, bajtů a oddálení. Přístup k protokolu shromažďovaných každých 300 sekund. Tento protokol obsahuje jeden záznam za instance služby Application Gateway.
+- **ApplicationGatewayAccessLog** – protokol přístupu obsahuje každý požadavek odeslána k application gateway front-endu. Data obsahují volajícího IP adresy URL vyžádané, latence odpovědi, návratový kód, bajtů a oddálení. Přístup k protokolu shromažďovaných každých 300 sekund. Tento protokol obsahuje jeden záznam za instance služby application gateway.
 - **ApplicationGatewayPerformanceLog** -protokolu výkonu zaznamenává informace o výkonu na na základě instancí včetně celkový požadavek obsluhuje, propustnost v bajtech, celkový počet požadavků obsluhovat, počet neúspěšných požadavků funkčních a nefunkčních back-end počet instancí.
 - **ApplicationGatewayFirewallLog** – brány firewall protokolu obsahuje požadavky, které jsou zaznamenány pomocí detekce a ochrany před únikem informací režim služby application gateway, která je nakonfigurovaná s firewallem webových aplikací.
 
@@ -351,15 +354,15 @@ Můžete použít rutinu Powershellu `Get-AzureRmApplicationGatewayBackendHealth
 
 **Q. Co jsou zásady uchovávání informací na protokoly diagnostiky?**
 
-Diagnostické protokoly toku do účtu úložiště zákazníkům a zákazníci můžou nastavit zásady uchovávání informací podle jejich priority. Diagnostické protokoly můžete odeslat také do Log Analytics nebo centra událostí. Navštivte [diagnostiku brány aplikace](application-gateway-diagnostics.md) další podrobnosti.
+Diagnostické protokoly toku do účtu úložiště zákazníkům a zákazníci můžou nastavit zásady uchovávání informací podle jejich priority. Diagnostické protokoly můžete odeslat také do Log Analytics nebo centra událostí. Zobrazit [diagnostiku brány aplikace](application-gateway-diagnostics.md) další podrobnosti.
 
 **Q. Jak získám protokoly auditu pro službu Application Gateway?**
 
-Protokoly auditu jsou k dispozici pro službu Application Gateway. Na portálu klikněte na tlačítko **protokolu aktivit** v okně nabídky služby Application Gateway přístup k protokolu auditu. 
+Protokoly auditu jsou k dispozici pro službu Application Gateway. Na portálu klikněte na tlačítko **protokolu aktivit** v okně nabídky služby application gateway přístup k protokolu auditu. 
 
 **Q. Můžete nastavit výstrahy se službou Application Gateway?**
 
-Ano, služba Application Gateway podporuje výstrahy, se konfigurují mimo metriky. Application Gateway aktuálně poskytuje metriky "propustnosti", kterého lze nakonfigurovat na upozornění. Další informace o výstrahách, najdete v tématu [doručování oznámení o upozorněních](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
+Ano, služba Application Gateway podporuje výstrahy. Konfigurují se upozornění na metriky. Zobrazit [metriky Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#metrics) získat další informace o službě Application Gateway metriky. Další informace o výstrahách najdete v tématu [doručování oznámení o upozorněních](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
 
 **Q. Jak analyzovat statistiku provozu pro službu Application Gateway?**
 
@@ -369,8 +372,8 @@ Také jsme publikovali šablony Resource Manageru, který nainstaluje a spustí 
 
 **Q. Stav back-endu vrátí stav neznámý, co by mohlo být příčinou tohoto stavu?**
 
-Nejběžnějším důvodem je, blokuje přístup k back-endové skupiny zabezpečení sítě nebo vlastní DNS. Navštivte [back-endu stav, protokolování diagnostiky a metriky pro službu Application Gateway](application-gateway-diagnostics.md) Další informace.
+Nejběžnějším důvodem je, blokuje přístup k back-endové skupiny zabezpečení sítě nebo vlastní DNS. Zobrazit [back-endu stav, protokolování diagnostiky a metriky pro službu Application Gateway](application-gateway-diagnostics.md) Další informace.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o službě Application Gateway najdete [co je Azure Application Gateway?](overview.md)
+Další informace o službě Application Gateway najdete v tématu [co je Azure Application Gateway?](overview.md)

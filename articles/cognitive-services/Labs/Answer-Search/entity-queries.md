@@ -1,37 +1,38 @@
 ---
-title: Projekt Entity odpovědí vyhledávání dotazu - kognitivní služby Microsoft | Microsoft Docs
-description: Dotazy na entity pomocí projektu odpovědí hledání
+title: 'Rychlý start: Dotaz na entitu hledání odpovědí projekt'
+titlesuffix: Azure Cognitive Services
+description: Dotazy na entity pomocí projektu hledání odpovědí
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-answer-search
+ms.component: project-answer-search
 ms.topic: article
 ms.date: 04/16/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 2b8382b791c02514e5110097700e223d98fafd6a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: rosh
+ms.openlocfilehash: efb46fc7064bcad69b5ea84f9bdfe923d95ccbe6
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343230"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867574"
 ---
-# <a name="query-for-entities"></a>Dotazu pro entity
+# <a name="quickstart-query-for-entities"></a>Rychlý start: Dotazy na entity
 
-Pokud dotaz požádá o informace o osoby, místní nebo věcí, může obsahovat odpověď `entities` odpovědí.  Dotazy vždy vrátí webové stránky, [fakty](fact-queries.md) nebo [entity](entity-queries.md) dotazu jsou závislé.
+Pokud dotaz požaduje informace o osobě, místě nebo věc, odpověď může obsahovat `entities` odpovědí.  Dotazy se kdykoli vrátit webové stránky, [faktů](fact-queries.md) a/nebo [entity](entity-queries.md) dotazu jsou závislé.
 
 Entity podporují tři scénáře dotazu: 
--   DominantEntity – existuje pouze jedna entita, která odpovídá dotazu a záměru uživatele. Dotaz, místo ručička, například je DominantEntity scénář. 
--   Rozlišení více tras – existuje více než jedna entita, který odpovídá dotazu a záměru uživatele a je maximálně uživateli vybrat správný entity. Například dotaz herní Thrones je rozlišení více tras scénáře, který vrátí zobrazení televizi a řady adresáře. 
--   Seznam – existuje více entit, které odpovídají dotazu a záměru uživatele. Například dotaz "Seznam ohrožené druhy" je seznam scénáře, který vrátí formátovaný pro zobrazení na řádky a buňky tabulkových hodnot. 
+-   DominantEntity – existuje pouze jedna entita, která odpovídá dotazu a záměru uživatele. Například dotaz místa ručička je DominantEntity scénář. 
+-   Odstraňování mnohoznačnosti – existuje více než jednu entitu, která odpovídá dotazu a záměru uživatele a je uživateli vybrat správné entity. Například dotaz hru Thrones je odstraňování Mnohoznačnosti scénář, který vrátí televizního pořadu řady knihy. 
+-   Seznam – existuje více entit, které odpovídají dotazu a záměru uživatele. Dotaz "Seznam ohrožených druhů" je například seznam scénář, který vrátí tabulkových hodnot formátovat k zobrazení v řádky a buňky. 
  
-Pokud chcete zjistit scénář dotaz, použít `queryScenario` pole z `entities` objektu. Data, která zahrnuje entity závisí na typu entity. I když entity obsahují stejné základní informace, některé entitami, jako je například ubytovací atrakce nebo knihy obsahovat další vlastnosti. Entity, které obsahují další vlastnosti obsahují `_type` pole, která obsahuje pokyn používá serializátor. Následující entit patří další vlastnosti: 
--   Adresáře 
+K určení dotazu scénář, použijte `queryScenario` pole `entities` objektu. Data, která obsahuje entity, závisí na typu entity. Ačkoli entity obsahují stejné základní informace, některé entity jako jsou knihy, turistických zajímavostí zahrnout další vlastnosti. Entity, které zahrnují další vlastnosti zahrnují `_type` pole, které obsahuje nápovědu používané serializátor. Tyto entity zahrnují další vlastnosti: 
+-   Knihy 
 -   MusicRecording 
 -   Person (Osoba) 
 -   Přitažlivosti 
  
-Chcete-li zjistit typ entity, který obsahuje odpověď, použijte `entityTypeHints` pole, jak je uvedeno v dotazu pro vyúčtování brány.
+Chcete-li určit typ entity, která obsahuje odpověď, použijte `entityTypeHints` pole, jak je znázorněno v dotazu pro Billem Gatesem.
 ````
         },
         "description": "Bill Gates is an American business man and philanthropist, co-founder of Microsoft",
@@ -44,7 +45,7 @@ Chcete-li zjistit typ entity, který obsahuje odpověď, použijte `entityTypeHi
         "bingId": "6d7d66a7-2cb8-0ae9-637c-f81fd749dc9a"
       }
 ````
-Toto je dotaz ručička místa:
+Dotaz na místo ručička je následující:
 ````
 https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=space+needle&mkt=en-us
 ````
@@ -111,14 +112,14 @@ Odpověď obsahuje `entities` odpovědí. Poznámka: `entityScenario` a `entityT
 
 Dotaz může vrátit seznam, pokud je relevantní.
 
-**Dotaz:** vyhledá seznam ohrožených druhů následující dotaz:
+**Dotaz:** následující dotaz vyhledá seznam ohrožených druhy:
 
 ````
 https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=list+of+endangered+species
 
 ````
 
-**Odpověď:** odpověď obsahuje seznam formátu hodnot tabulky pro zobrazení:
+**Odpověď:** odpověď obsahuje seznam formátovat k zobrazení jako tabulkových hodnot:
 ````
   "facts": {
     "id": "https://www.bingapis.com/api/v7/#Facts",
@@ -221,6 +222,6 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=list+of+enda
 
 ## <a name="next-steps"></a>Další postup
 - [Rychlý start C#](c-sharp-quickstart.md)
-- [Rychlý start Java](java-quickstart.md)
-- [Rychlé spuštění uzlu](node-quickstart.md)
-- [Rychlý start Python](python-quickstart.md)
+- [Rychlý start pro Javu](java-quickstart.md)
+- [Rychlý start uzlu](node-quickstart.md)
+- [Rychlý start Pythonu](python-quickstart.md)

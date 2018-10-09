@@ -1,7 +1,7 @@
 ---
-title: Průběžné nasazování registr, kontejner Docker s webovou aplikaci pro kontejnery - Azure | Microsoft Docs
-description: Jak nastavit průběžné nasazování registr, kontejner Docker ve webové aplikaci pro kontejnery.
-keywords: služby Azure app service, linux, docker, acr, operačních systémů
+title: Průběžné nasazování z registru kontejnerů Dockeru pomocí služby Web App for Containers – Azure | Dokumentace Microsoftu
+description: Jak nastavit průběžné nasazování z registru kontejnerů Dockeru ve službě Web App for Containers.
+keywords: služby Azure app service, od linuxu, docker, acr, oss
 services: app-service
 documentationcenter: ''
 author: msangapu
@@ -15,38 +15,38 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: msangapu
-ms.openlocfilehash: 0f2d4626308eed376b71f1b3df2f9e43f1b2a4f7
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 20ca63b7126a6800538129115ff339308c11d8c5
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130957"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867016"
 ---
-# <a name="continuous-deployment-with-web-app-for-containers"></a>Průběžné nasazování s webovou aplikaci pro kontejnery
+# <a name="continuous-deployment-with-web-app-for-containers"></a>Průběžné nasazování se službou Web App for Containers
 
-V tomto kurzu nakonfigurujete průběžné nasazování pro bitovou kopii vlastní kontejner ze spravovaných [registru kontejner Azure](https://azure.microsoft.com/services/container-registry/) úložiště nebo [úložiště Docker Hub](https://hub.docker.com).
+V tomto kurzu nakonfigurujete průběžné nasazování pro vlastní image kontejneru ze spravované [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) úložišť nebo [Docker Hubu](https://hub.docker.com).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-## <a name="enable-the-continuous-deployment-feature"></a>Povolit funkci průběžné nasazování.
+## <a name="enable-the-continuous-deployment-feature"></a>Povolit funkci průběžné nasazování
 
-Povolit funkci průběžné nasazování pomocí [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) a spuštěním následujícího příkazu:
+Povolit funkci průběžné nasazování s použitím [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) a spuštěním následujícího příkazu:
 
 ```azurecli-interactive
 az webapp deployment container config --name name --resource-group myResourceGroup --enable-cd true
 ```
 
-V [portál Azure](https://portal.azure.com/), vyberte **služby App Service** možnost na levé straně stránky.
+V [webu Azure portal](https://portal.azure.com/), vyberte **služby App Service** možnost na levé straně stránky.
 
-Vyberte název aplikace, pro kterou chcete provést konfiguraci úložiště Docker Hub průběžné nasazování.
+Vyberte název aplikace, pro kterou chcete nakonfigurovat průběžné nasazování Docker Hubu.
 
-Na **kontejner Docker** vyberte **na**a potom vyberte **Uložit** povolit průběžné nasazování.
+Na **nastavení kontejneru** stránce **na**a pak vyberte **Uložit** umožnit průběžné nasazování.
 
 ![Snímek obrazovky nastavení aplikace](./media/app-service-webapp-service-linux-ci-cd/step2.png)
 
-## <a name="prepare-the-webhook-url"></a>Příprava adresa URL webhooku
+## <a name="prepare-the-webhook-url"></a>Příprava adresu URL webhooku
 
 Získat adresu URL webhooku pomocí [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) a spuštěním následujícího příkazu:
 
@@ -54,26 +54,26 @@ Získat adresu URL webhooku pomocí [rozhraní příkazového řádku Azure](htt
 az webapp deployment container show-cd-url --name sname1 --resource-group rgname
 ```
 
-Poznamenejte si adresu URL webhooku. Budete ho potřebovat v další části.
+Poznamenejte si adresu URL webhooku. Budete je potřebovat v další části.
 `https://<publishingusername>:<publishingpwd>@<sitename>.scm.azurewebsites.net/docker/hook`.
 
-Můžete získat vaše `publishingusername` a `publishingpwd` stažením webové aplikace profil publikování se pomocí portálu Azure.
+Můžete získat vaše `publishingusername` a `publishingpwd` stažením webové aplikace publikovat profilu pomocí webu Azure portal.
 
 ![Snímek obrazovky přidání webhooku 2](./media/app-service-webapp-service-linux-ci-cd/step3-3.png)
 
-## <a name="add-a-webhook"></a>Přidat webhook, jehož
+## <a name="add-a-webhook"></a>Přidání webhooku
 
-Pokud chcete přidat webhook, jehož, postupujte podle kroků v těchto průvodcích se dozvíte:
+Chcete-li přidat webhook, postupujte podle těchto návodů:
 
-- [Azure kontejneru registru](../../container-registry/container-registry-webhook.md) pomocí adresy URL webhooku
-- [Webhooky pro úložiště Docker Hub](https://docs.docker.com/docker-hub/webhooks/)
+- [Služba Azure Container Registry](../../container-registry/container-registry-webhook.md) využívající adresu URL webhooku
+- [Webhooky pro Docker Hubu](https://docs.docker.com/docker-hub/webhooks/)
 
 ## <a name="next-steps"></a>Další postup
 
-* [Úvod do Azure App Service v systému Linux](./app-service-linux-intro.md)
-* [Kontejner Azure registru](https://azure.microsoft.com/services/container-registry/)
+* [Úvod do služby Azure App Service v Linuxu](./app-service-linux-intro.md)
+* [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)
 * [Vytvoření webové aplikace .NET Core ve službě App Service v Linuxu](quickstart-dotnetcore.md)
-* [Vytvoření Ruby webové aplikace ve službě App Service v systému Linux](quickstart-ruby.md)
-* [Nasazení webové aplikace Docker nebo přejděte ve webové aplikaci pro kontejnery](quickstart-docker-go.md)
+* [Vytvoření webové aplikace Ruby ve službě App Service v Linuxu](quickstart-ruby.md)
+* [Nasazení webové aplikace v Dockeru/Go ve službě Web App for Containers](quickstart-docker-go.md)
 * [Nejčastější dotazy k Azure App Service v Linuxu](./app-service-linux-faq.md)
-* [Správa webové aplikace pro kontejnery pomocí rozhraní příkazového řádku Azure](./app-service-linux-cli.md)
+* [Spravovat Web App for Containers pomocí Azure CLI](./app-service-linux-cli.md)

@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.component: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/09/2018
-ms.author: slivkins,marcozo,alekh
-ms.openlocfilehash: 554b90efe1c646396597a722a74390e9048570ea
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.author: slivkins
+ms.openlocfilehash: 01f75d333e3eea5af35ca57bd44bc76148a481f2
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363172"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867611"
 ---
 # <a name="call-api-from-a-browser"></a>Volání rozhraní API z prohlížeče
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/14/2018
 ms.author: spelluru
-ms.openlocfilehash: d75f8654a33d670f107508b9e91661b1a7719755
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: adc9d64c4756e055b3ff9b772feebd80902d2c9f
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408545"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857869"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Řízení přístupu služby Service Bus se sdílenými přístupovými podpisy
 
@@ -31,7 +31,7 @@ SAS chrání přístup k Service Bus na základě pravidel autorizace. Ty jsou n
 
 Sdílené přístupové podpisy jsou založené na deklaracích autorizační mechanismus, pomocí jednoduchých tokeny. Pomocí SAS, klíče jsou nebyl nikdy předán na lince. Klíče se používají k podpisu kryptograficky informace, které můžete později ověřit pomocí služby. SAS slouží podobně jako uživatelské jméno a heslo schéma kde klient je okamžitě vlastníkem daného názvu pravidla autorizace a odpovídajícího klíče. SAS lze také podobně jako model zabezpečení, kde klient obdrží časově omezené a podepsaný přístupový token od služby tokenů zabezpečení bez někdy přicházejících na vlastnictví podpisový klíč.
 
-SAS ověřování ve službě Service Bus je nakonfigurovaný s názvem [sdíleného přístupu autorizační pravidla](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) s související přístupová práva a dvojice primární a sekundární kryptografických klíčů. Klíče jsou hodnoty 256 bitů v reprezentaci ve formátu Base64. Můžete nakonfigurovat pravidla na úrovni oboru názvů, ve službě Service Bus [předává](service-bus-fundamentals-hybrid-solutions.md#relays), [fronty](service-bus-fundamentals-hybrid-solutions.md#queues), a [témata](service-bus-fundamentals-hybrid-solutions.md#topics).
+SAS ověřování ve službě Service Bus je nakonfigurovaný s názvem [sdíleného přístupu autorizační pravidla](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) s související přístupová práva a dvojice primární a sekundární kryptografických klíčů. Klíče jsou hodnoty 256 bitů v reprezentaci ve formátu Base64. Můžete nakonfigurovat pravidla na úrovni oboru názvů, ve službě Service Bus [předává](../service-bus-relay/relay-what-is-it.md), [fronty](/service-bus-messaging/service-bus-messaging-overview.md#queues), a [témata](/service-bus-messaging/service-bus-messaging-overview.md#topics).
 
 [Sdílený přístupový podpis](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) token obsahuje název zvoleném autorizační pravidlo, identifikátor URI prostředku, který musí mít přístup, rychlé, vypršení platnosti a kryptografický podpis HMAC SHA256 vypočítaný přes pole primární nebo sekundární kryptografický klíč vybrané autorizační pravidlo.
 
@@ -301,7 +301,6 @@ V následující tabulce jsou uvedeny přístupová práva potřebná pro různ�
 
 Pokud se o přenosu zpráv přes Service Bus chcete dozvědět víc, pročtěte si následující témata.
 
-* [Základy služby Service Bus](service-bus-fundamentals-hybrid-solutions.md)
 * [Fronty, témata a odběry služby Service Bus](service-bus-queues-topics-subscriptions.md)
 * [Jak používat fronty Service Bus](service-bus-dotnet-get-started-with-queues.md)
 * [Jak používat témata a odběry Service Bus](service-bus-dotnet-how-to-use-topics-subscriptions.md)

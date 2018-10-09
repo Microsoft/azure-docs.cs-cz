@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: sngun
-ms.openlocfilehash: 686f21aa805560bb4c2a7fbf9b0c61e1edef14bb
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: dfd66c1ac2e627b72d24a520fc37c6ebfb361556
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785524"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869990"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Vizualizace dat služby Azure Cosmos DB pomocí konektoru služby Power BI
 
-[Power BI](https://powerbi.microsoft.com/) je online služba, kde můžete vytvářet a sdílet řídicí panely a sestavy. Power BI Desktop je nástroj, který vám umožňuje načíst data z různých zdrojů dat pro vytváření sestavy. Azure Cosmos DB je jeden jeden zdroj dat, který vám pomůže s Power BI Desktopu. Power BI Desktopu můžete připojit k účtu Azure Cosmos DB pomocí konektoru služby Azure Cosmos DB pro Power BI.  Po importu dat Azure Cosmos DB k Power BI je transformovat a vytváření sestav sestavy publikovat do Power BI.   
+[Power BI](https://powerbi.microsoft.com/) je online služba, kde můžete vytvářet a sdílet řídicí panely a sestavy. Power BI Desktop je nástroj, který vám umožňuje načíst data z různých zdrojů dat pro vytváření sestavy. Azure Cosmos DB je jeden zdroj dat, který vám pomůže s Power BI Desktopu. Power BI Desktopu můžete připojit k účtu Azure Cosmos DB pomocí konektoru služby Azure Cosmos DB pro Power BI.  Po importu dat Azure Cosmos DB k Power BI je transformovat a vytváření sestav sestavy publikovat do Power BI.   
 
 Tento článek popisuje kroky potřebné pro připojení účtu služby Azure Cosmos DB k Power BI Desktopu. Po připojení, přejděte do kolekce, extrahovat data, transformujte JSON data na tabulkovém formátu a publikování sestavy do Power BI.
 

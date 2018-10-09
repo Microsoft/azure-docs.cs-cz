@@ -16,12 +16,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: bd9d3a677d9fea54331200258d4b9b8e07a54312
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e896392404c23e88d697d45146f802576d6045d3
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956893"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870821"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Autorizace přístupu k webovým aplikacím služby Azure Active Directory pomocí toku přidělení kódu OAuth 2.0
 
@@ -274,7 +274,7 @@ Specifikaci RFC 6750 definuje následující chyby pro prostředky, které použ
 
 ## <a name="refreshing-the-access-tokens"></a>Aktualizaci přístupových tokenů
 
-Jsou krátkodobé přístupové tokeny a musí být aktualizovány po vypršení platnosti i nadále přístup k prostředkům. Můžete aktualizovat `access_token` odesláním jiného `POST` požádat o `/token` koncového bodu, ale tato doba poskytování `refresh_token` místo `code`.
+Jsou krátkodobé přístupové tokeny a musí být aktualizovány po vypršení platnosti i nadále přístup k prostředkům. Můžete aktualizovat `access_token` odesláním jiného `POST` požádat o `/token` koncového bodu, ale tato doba poskytování `refresh_token` místo `code`.  Obnovovací tokeny jsou platné pro všechny prostředky, které váš klient už je zadaná souhlas s přístupem k – díky tomu se obnovovací token vydaný na vyžádání pro `resource=https://graph.microsoft.com` umožňuje požádat o nový přístupový token pro `resource=https://contoso.com/api`. 
 
 Aktualizovat tokeny nemají zadaný životnosti. Životní cyklus obnovovací tokeny jsou obvykle poměrně dlouho. Ale v některých případech tokeny obnovení vyprší, byly odvolány nebo nemají dostatečná oprávnění pro požadovanou akci. Vaše aplikace potřebuje očekávají a zpracování chyby vrácené systémem koncový bod vystavování tokenů správně.
 

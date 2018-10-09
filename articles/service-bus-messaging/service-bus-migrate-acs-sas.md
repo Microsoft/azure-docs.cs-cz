@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: spelluru
-ms.openlocfilehash: 784709f29772f10968cabc3f3763cc7be7c8b383
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 7045172fcd3c64cb0d979f5e3e8381c49579f1d2
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393345"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855251"
 ---
 # <a name="migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Migrace z Azure Active Directory Access Control Service k povolení sdíleného přístupového podpisu
 
@@ -66,5 +66,4 @@ Další informace o ověřování služby Service Bus, najdete v následujícíc
 
 * [Ověřování a autorizace Service Bus](service-bus-authentication-and-authorization.md)
 * [Ověřování služby Service Bus se sdílenými přístupovými podpisy](service-bus-sas.md)
-* [Základy služby Service Bus](service-bus-fundamentals-hybrid-solutions.md)
 

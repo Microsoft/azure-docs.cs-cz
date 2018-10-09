@@ -10,19 +10,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 10/04/2018
+ms.date: 10/05/2018
 ms.author: curtand
 ms.reviewer: elkuzmen
-ms.openlocfilehash: 65c3fa4c667fdb2d670ff259b190db140b4d968f
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: d5f926ac41bb90ba716e0c52b790a60fd74e0631
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803915"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854911"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Správa vlastních názvů domén v Azure Active Directory
 
-Název domény je důležitou součástí identifikátoru pro mnoho prostředků adresáře: je součástí uživatelského jména nebo e-mailové adresy pro uživatele, část adresy pro skupinu a můžou být součástí identifikátor URI ID aplikace pro aplikaci. Název domény, který už je ověřený jako vlastní adresáře, který obsahuje prostředek může obsahovat prostředků v Azure Active Directory (Azure AD). Jenom globální správce může provádět úkoly správy domény ve službě Azure AD.
+Název domény je důležitou součástí identifikátoru pro mnoho prostředků adresáře: je součástí uživatelského jména nebo e-mailové adresy pro uživatele, část adresy pro skupinu a v některých případech je součástí aplikace identifikátor URI ID aplikace. Název domény, který je vlastněn adresáře, který obsahuje prostředek může obsahovat prostředků v Azure Active Directory (Azure AD). Jenom globální správce může spravovat domény ve službě Azure AD.
 
 ## <a name="set-the-primary-domain-name-for-your-azure-ad-directory"></a>Nastavit název domény primárního pro váš adresář Azure AD
 
@@ -38,19 +38,19 @@ Když se do adresáře, počáteční název domény, například "contoso.onmic
   
    ![Nastavit jako primární název domény](./media/domains-manage/make-primary-domain.png)
 
-Můžete změnit název primární domény pro váš adresář bude ověřené vlastní doméně, která není Federovaná. Primární doména pro svůj adresář změna neovlivní uživatelských jmen pro všechny stávající uživatele.
+Můžete změnit název primární domény pro váš adresář bude ověřené vlastní doméně, která není Federovaná. Primární doména pro svůj adresář změna neovlivní uživatelské jméno pro všechny stávající uživatele.
 
 ## <a name="add-custom-domain-names-to-your-azure-ad-tenant"></a>Přidání vlastních názvů domén do svého tenanta Azure AD
 
-Můžete přidat maximálně 900 názvů spravovaných domén. Pokud konfigurujete všech domén pro federaci s místní služby Active Directory, můžete přidat do maximálního počtu 450 názvů domén v každém adresáři. 
+Můžete přidat až 900 spravovaných názvech domén. Pokud konfigurujete všech domén pro federaci s místní služby Active Directory, můžete přidat až 450 názvy domén v každém adresáři.
 
 ## <a name="add-subdomains-of-a-custom-domain"></a>Přidání subdomén vlastní domény
 
-Pokud chcete přidat název domény třetí úrovně jako je například 'europe.contoso.com' do adresáře, byste nejprve přidání a ověření domény druhé úrovně, jako je například contoso.com. Poddomény se automaticky ověří pomocí Azure AD. Pokud chcete zobrazit, že byla ověřena subdomény, kterou jste právě přidali, aktualizujte stránku v prohlížeči se zobrazí seznam domén.
+Pokud chcete přidat název domény třetí úrovně jako je například 'europe.contoso.com' do adresáře, byste nejprve přidání a ověření domény druhé úrovně, jako je například contoso.com. Poddomény automaticky ověření pomocí Azure AD. Pokud chcete zobrazit, že je ověřený subdomény, kterou jste přidali, aktualizujte seznam domén v prohlížeči.
 
 ## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>Co dělat, když změníte registrátora DNS pro název vaší vlastní domény
 
-Pokud změníte registrátora DNS pro vlastní název domény, můžete nadále používat vlastní název domény s samotné služby Azure AD bez přerušení a bez dalších úloh konfigurace. Pokud používáte vlastní název domény s Office 365, Intune nebo jiných služeb, které spoléhají na vlastních názvů domén ve službě Azure AD, najdete v dokumentaci pro tyto služby.
+Pokud změníte registrátorů DNS, nejsou žádné další konfigurační úlohy ve službě Azure AD. Můžete pokračovat v používání název domény v Azure AD bez přerušení. Pokud používáte vlastní název domény s Office 365, Intune nebo jiných služeb, které spoléhají na vlastních názvů domén ve službě Azure AD, najdete v dokumentaci pro tyto služby.
 
 ## <a name="delete-a-custom-domain-name"></a>Odstranit vlastní název domény
 
@@ -83,7 +83,7 @@ Chyba je vrácena, pokud:
 
 * Počet objektů, které chcete přejmenovat, je větší než 1000
 * Jednou z aplikace, které chcete přejmenovat, je aplikace s více tenanty
-  
+
 ### <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
 **Otázka: Proč je odstranění domény selhání zobrazí se chyba s oznámením, že mám na tento název domény Exchange standardní skupiny?** <br>

@@ -7,13 +7,13 @@ ms.author: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/26/2018
-ms.openlocfilehash: 6df64afa5e99ea5fe3d3c6531e6e50425520286b
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.date: 10/08/2018
+ms.openlocfilehash: 724d3d7fe8ff037b82bbce797e391c21060aa53d
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801960"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870957"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozšíření Azure HDInsight pomocí Azure Virtual Network
 
@@ -302,7 +302,7 @@ Pokud používáte skupiny zabezpečení sítě nebo trasy definované uživatel
 
     Informace o IP adres k používání pro Azure Government, najdete v článku [Azure Government inteligence a analýza](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics) dokumentu.
 
-3. Pokud používáte vlastní server DNS s virtuální sítí, musíte také povolit přístup z __168.63.129.16__. Tato adresa je rekurzivní překladače Azure. Další informace najdete v tématu [překlad názvů pro virtuální počítače a Role instancí](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) dokumentu.
+3. Musíte také povolit přístup z __168.63.129.16__. Tato adresa je rekurzivní překladače Azure. Další informace najdete v tématu [překlad názvů pro virtuální počítače a Role instancí](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) dokumentu.
 
 Další informace najdete v tématu [řízení síťového provozu](#networktraffic) oddílu.
 

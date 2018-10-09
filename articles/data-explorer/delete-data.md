@@ -8,22 +8,16 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 571a005dd3f50690f291a7ffa3c1174ea15cb0ed
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 07ee05128333df963c2d8ff3dd3f6442a3843d07
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047332"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48866886"
 ---
 # <a name="delete-data-from-azure-data-explorer"></a>Odstranění dat z Průzkumníku dat Azure
 
 Průzkumník služby Azure Data podporuje několik přístupů hromadné odstranění, které probereme v tomto článku. Jednotlivé záznamy odstranění nepodporuje v reálném čase, protože je optimalizována pro rychlý přístup pro čtení.
-
-* Pokud databázi už je nepotřebujete, odstraňte ji pomocí příkazu drop database.
-
-    ```Kusto
-    .drop database <DatabaseName>
-    ```
 
 * Pokud jeden nebo více tabulek je už je nepotřebujete, odstraňte je pomocí přetažení tabulky nebo vyřadit příkaz tabulky.
 
@@ -44,12 +38,5 @@ Průzkumník služby Azure Data podporuje několik přístupů hromadné odstran
     ```
 
     Další informace najdete v tématu [zásady uchovávání informací](https://docs.microsoft.com/azure/kusto/concepts/retentionpolicy).
-
-* Můžete odstranit jednotlivé záznamy pomocí *vyprázdnit* operace založené na predikátu lajk `where CustomerName == 'contoso'`. Ale nutné dodat, vyprázdnění je hromadné odstranění, který není určený pro odstranění v reálném čase. Následující příklad ukazuje vyprázdnění.
-
-    ```Kusto
-    .purge table Customer records
-    | where CustomerName =='contoso'
-    ```
 
 Pokud potřebujete pomoc s problémy odstranění dat, otevřete prosím v žádosti o podporu [webu Azure portal](https://portal.azure.com).

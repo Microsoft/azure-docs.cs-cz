@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: 407782ff59147f227f5f34bc3318333093b4f57e
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 820caf1ef1b5a92ccea066ef1b5fc8e20737ef21
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283567"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870415"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>Úprava okruhu ExpressRoute pomocí prostředí PowerShell (classic)
 
@@ -47,7 +47,7 @@ Přihlásit se ke svému účtu Azure, použijte následující příklad:
 
 1. Otevřete konzolu PowerShellu se zvýšenými oprávněními a připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
 
-  ```powershel
+  ```powershell
   Connect-AzureRmAccount
   ```
 2. Zkontrolujte předplatná pro příslušný účet.
@@ -225,7 +225,7 @@ At line:1 char:1
 
 * Je nutné zrušit všechny virtuální sítě z okruhu ExpressRoute k úspěšnému provedení této operace. Zkontrolujte, zda máte žádné virtuální sítě, které jsou propojeny k okruhu, pokud se tato operace se nezdaří.
 * Pokud je stav zřizování poskytovatele služeb okruh ExpressRoute **zřizování** nebo **zřízená** , musíte pracovat se svým poskytovatelem služeb zrušit zřízení okruhu na své straně. Pokračujeme v rezervovat prostředky a účtovat až do dokončení zrušení zřízení okruhu a informuje nás poskytovatelem služeb.
-* Pokud poskytovatel služeb okruh zruší (poskytovatel služeb Stav zřizování je nastavena na **nezřízeno**), pak můžete odstranit okruh. Zastaví se fakturace pro okruh.
+* Pokud poskytovatel služeb okruh zruší (poskytovatel služeb Stav zřizování je nastavena na **nezřízeno**), pak můžete odstranit okruh. Tím se zastaví účtování okruhu.
 
 #### <a name="delete-a-circuit"></a>Odstranit okruh
 

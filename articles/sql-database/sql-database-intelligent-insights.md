@@ -11,21 +11,21 @@ author: danimir
 ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: 6ccb29c9c464c21f09b1e547903a283201c52618
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/05/2018
+ms.openlocfilehash: b64c8f5d30f95cccf8a029adfd5c443a81597c4d
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159615"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870685"
 ---
-# <a name="intelligent-insights"></a>Užitečné přehledy
+# <a name="intelligent-insights-using-artificial-intelligence-to-monitor-database-usage"></a>Inteligentní přehledy s využitím umělé inteligence monitorovat využití databáze
 
 Azure SQL Database Intelligent Insights vám umožňuje vědět, co se děje s výkonu vaší databáze SQL Database a Managed Instance.
 
-Intelligent Insights využívá integrované inteligentní funkce neustále monitorovat využití databáze prostřednictvím umělé inteligence a zjišťovat rušivé události, které způsobují nízký výkon. Jakmile detekuje, se provádí podrobné analýzy, která generuje protokol diagnostiky inteligentních hodnocení problému. Toto posouzení se skládá z analýzu původní příčiny potíží s výkonem databáze a kde je to možné, doporučení pro vylepšení výkonu. 
+Intelligent Insights využívá integrované inteligentní funkce neustále monitorovat využití databáze prostřednictvím umělé inteligence a zjišťovat rušivé události, které způsobují nízký výkon. Jakmile detekuje, se provádí podrobné analýzy, která generuje protokol diagnostiky inteligentních hodnocení problému. Toto posouzení se skládá z analýzu původní příčiny potíží s výkonem databáze a kde je to možné, doporučení pro vylepšení výkonu.
 
-## <a name="what-can-intelligent-insights-do-for-you"></a>Co můžete udělat Intelligent Insights pro vás?
+## <a name="what-can-intelligent-insights-do-for-you"></a>Co můžete udělat Intelligent Insights pro vás
 
 Intelligent Insights je jedinečné možnosti Azure integrované inteligentní funkce, která poskytuje následující hodnotu:
 
@@ -37,11 +37,11 @@ Intelligent Insights je jedinečné možnosti Azure integrované inteligentní f
 - Horizontální navýšení kapacity schopností na stovky tisíc databází
 - Pozitivní dopad prostředky DevOps a celkové náklady na vlastnictví
 
-## <a name="how-does-intelligent-insights-work"></a>Jak inteligentní přehledy funguji?
+## <a name="how-does-intelligent-insights-work"></a>Jak inteligentní přehledy funguji
 
 Intelligent Insights analyzuje porovnáním databázové úlohy od poslední hodiny s úlohou posledních sedm dní standardních hodnot výkonu databáze. Databázové úlohy se skládá z dotazů, jestli se má být nejvýznamnější na výkon databází, jako jsou dotazy nejvíce opakovaných a největší. Protože každá databáze je jedinečný, na základě struktury, data, použití a aplikace, je každý směrný plán úloh, který je generován konkrétní a jedinečné pro jednotlivé instance. Intelligent Insights, nezávisle na základní úlohy také sleduje absolutní provozní prahové hodnoty a detekuje problémy s nadměrným čekací dobu, kritické výjimky a problémy s parameterizations dotazu, které může mít vliv na výkon.
 
-Po snížení problému s výkonem se zjistí z několika zjištěnou metrik pomocí umělé inteligence, provedení analýzy. Diagnostický protokol je generována pomocí inteligentních přehledů na co se děje s vaší databáze. Intelligent Insights umožňuje snadno sledovat potíže s výkonem databáze z jeho první vzhled až do jejich vyřešení. Každé zjištěné potíže jsou sledovány prostřednictvím jejich životního cyklu od počátečního problém rozpoznávání a ověření zlepšení výkonu na jeho dokončení. Aktualizace jsou uvedeny v protokolu diagnostiky každých 15 minut. 
+Po snížení problému s výkonem se zjistí z několika zjištěnou metrik pomocí umělé inteligence, provedení analýzy. Diagnostický protokol je generována pomocí inteligentních přehledů na co se děje s vaší databáze. Intelligent Insights umožňuje snadno sledovat potíže s výkonem databáze z jeho první vzhled až do jejich vyřešení. Každé zjištěné potíže jsou sledovány prostřednictvím jejich životního cyklu od počátečního problém rozpoznávání a ověření zlepšení výkonu na jeho dokončení. Aktualizace jsou uvedeny v protokolu diagnostiky každých 15 minut.
 
 ![Pracovní postup analýzy výkonu databáze](./media/sql-database-intelligent-insights/intelligent-insights-concept.png)
 
@@ -62,7 +62,6 @@ Identifikuje SQL Database přehledu výkonu jsou zaznamenány v protokolu diagno
 
 Praktické přehled o používání Intelligent Insights s Azure SQL Analytics a typické scénáře využití najdete v části vložené video:
 
-
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player]
 >
 
@@ -70,17 +69,17 @@ Intelligent Insights oslní zjišťování a řešení potíží s výkonem SQL 
 
 ## <a name="configure-intelligent-insights"></a>Konfigurace Intelligent Insights
 
-Výstup Intelligent Insights je protokol diagnostiky inteligentních výkonu. Tento protokol mohou být spotřebovány v několika způsoby – streamování do Azure SQL Analytics, Azure Event Hubs a Azure storage nebo třetí strana produktu. 
+Výstup Intelligent Insights je protokol diagnostiky inteligentních výkonu. Tento protokol mohou být spotřebovány v několika způsoby – streamování do Azure SQL Analytics, Azure Event Hubs a Azure storage nebo třetí strana produktu.
 
-* Používání produktu s [Azure SQL Analytics](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-sql) zobrazíte insights prostřednictvím uživatelského rozhraní Azure porta. Toto je integrované řešení Azure a obvykle způsob, jak zobrazit přehledy.
-* Použití produktu pomocí Azure Event Hubs pro vývoj vlastní monitorování a upozorňování scénáře
-* Používání produktu pomocí úložiště Azure pro vývoj vlastních aplikací, jako jsou třeba vlastní data pro generování sestav, dlouhodobé archivace a tak dále.
+- Používání produktu s [Azure SQL Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) zobrazíte insights prostřednictvím uživatelského rozhraní na webu Azure portal. Toto je integrované řešení Azure a obvykle způsob, jak zobrazit přehledy.
+- Použití produktu pomocí Azure Event Hubs pro vývoj vlastní monitorování a upozorňování scénáře
+- Používání produktu pomocí úložiště Azure pro vývoj vlastních aplikací, jako jsou třeba vlastní data pro generování sestav, dlouhodobé archivace a tak dále.
 
 Integrace inteligentní přehledy s jinými produkty pro Azure SQL Analytics, Azure Event Hubs, Azure storage nebo produkty třetích stran pro použití se provádí prostřednictvím první povolení Intelligent Insights protokolování (protokol "SQLInsights") v diagnostiky okno nastavení databáze a pak nakonfigurujete Intelligent Insights vytvářet protokoly dat Streamovat do jednoho z těchto produktů.
 
-Další informace o povolení protokolování Intelligent Insights a konfigurace dat protokolu Streamovat k používání produktu najdete v tématu [Azure SQL Database metrik a protokolování diagnostiky](sql-database-metrics-diag-logging.md). 
+Další informace o povolení protokolování Intelligent Insights a konfigurace dat protokolu Streamovat k používání produktu najdete v tématu [Azure SQL Database metrik a protokolování diagnostiky](sql-database-metrics-diag-logging.md).
 
-### <a name="set-up-with-azure-sql-analytics"></a>S Azure SQL Analytics 
+### <a name="set-up-with-azure-sql-analytics"></a>S Azure SQL Analytics
 
 Řešení Azure SQL Analytics poskytuje grafické uživatelské rozhraní, vytváření sestav a upozorňování na výkonu databáze, spolu s Intelligent Insights diagnostické protokoly data.
 
@@ -88,9 +87,9 @@ Další informace o povolení protokolování Intelligent Insights a konfigurace
 > Rychlé zahájení práce: nejjednodušší způsob, jak získat firmu s využitím inteligentních přehledů je použít společně s Azure SQL Analytics, která bude poskytovat grafické uživatelské rozhraní pro problémy s výkonem databáze. Přidat řešení Azure SQL Analytics z webu marketplace, vytvořit pracovní prostor uvnitř tohoto řešení a potom pro každou databázi, kterého chcete povolit inteligentní přehledy na, nakonfigurujte vysílání datového proudu protokolu "SQLInsights" v okně nastavení diagnostiky nové databáze pracovní prostor služby Azure SQL Analytics.
 >
 
-Před požadavkem je mít Azure SQL Analytics přidat na řídicí panel portálu Azure z webu marketplace a chcete vytvořit pracovní prostor, přečtěte si téma [konfigurovat Azure SQL Analytics](../log-analytics/log-analytics-azure-sql.md#configuration) 
+Před požadavkem je mít Azure SQL Analytics přidat na řídicí panel portálu Azure z webu marketplace a chcete vytvořit pracovní prostor, přečtěte si téma [konfigurovat Azure SQL Analytics](../log-analytics/log-analytics-azure-sql.md#configuration)
 
-Intelligent Insights s Azure SQL Analytics, nakonfigurovat data protokolu Intelligent Insights odesílání do pracovního prostoru Azure SQL Analytics, které jste vytvořili v předchozím kroku, naleznete v tématu [metriky Azure SQL Database a Diagnostika protokolování](sql-database-metrics-diag-logging.md). 
+Intelligent Insights s Azure SQL Analytics, nakonfigurovat data protokolu Intelligent Insights odesílání do pracovního prostoru Azure SQL Analytics, které jste vytvořili v předchozím kroku, naleznete v tématu [metriky Azure SQL Database a Diagnostika protokolování](sql-database-metrics-diag-logging.md).
 
 Následující příklad ukazuje, že Intelligent Insights zobrazit pomocí Azure SQL Analytics:
 
@@ -100,7 +99,7 @@ Následující příklad ukazuje, že Intelligent Insights zobrazit pomocí Azur
 
 Intelligent Insights pomocí služby Event Hubs, konfigurace dat protokolu Intelligent Insights Streamovat do služby Event Hubs najdete v tématu [diagnostické protokoly Stream Azure do služby Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md).
 
-Nastavit vlastní monitorování a upozorňování pomocí služby Event Hubs naleznete v části [co dělat s Diagnostika a metriky protokolů ve službě Event Hubs](sql-database-metrics-diag-logging.md#what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs). 
+Nastavit vlastní monitorování a upozorňování pomocí služby Event Hubs naleznete v části [co dělat s Diagnostika a metriky protokolů ve službě Event Hubs](sql-database-metrics-diag-logging.md#what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs).
 
 ### <a name="set-up-with-azure-storage"></a>S Azure Storage
 
@@ -125,15 +124,15 @@ Systém automaticky bere v úvahu změny na zatížení a změny počtu požadav
 
 Některé metriky jsou považovány za společně v různých relacích prostřednictvím vědecky odvozené datový model, který slouží ke kategorizaci každý zjistil problémy s výkonem. Informací získaných prostřednictvím inteligentních přehledů zahrnuje:
 
-* Podrobnosti o zjištěném problému výkonu. 
-* Analýza původní příčiny problému, zjistili. 
-* Doporučení pro zlepšení výkonu monitorované SQL database, kde je to možné.
+- Podrobnosti o zjištěném problému výkonu.
+- Analýza původní příčiny problému, zjistili.
+- Doporučení pro zlepšení výkonu monitorované SQL database, kde je to možné.
 
 ## <a name="query-duration"></a>Doba trvání dotazu
 
 Model snížení doby trvání dotazu analyzuje jednotlivé dotazy a detekuje v čas potřebný ke kompilaci a spuštění dotazu porovnané se standardními hodnotami výkonu vyšší.
 
-Pokud integrované inteligentní funkce SQL Database zjistí výrazné zvýšení v kompilaci dotazu nebo doba provádění dotazu, který má vliv na výkon úloh, tyto dotazy se označí jako doba trvání dotazu problémech se snižováním výkonu. 
+Pokud integrované inteligentní funkce SQL Database zjistí výrazné zvýšení v kompilaci dotazu nebo doba provádění dotazu, který má vliv na výkon úloh, tyto dotazy se označí jako doba trvání dotazu problémech se snižováním výkonu.
 
 Protokol diagnostiky inteligentních přehledů uloží hodnota hash dotazu dotazu snížení výkonu. Hodnota hash dotazu určuje, zda byl snížení výkonu související s kompilace nebo spuštění dotazu zvýšení, která zvýšil doba trvání dotazu.
 
@@ -141,11 +140,11 @@ Protokol diagnostiky inteligentních přehledů uloží hodnota hash dotazu dota
 
 Časový limit žádosti o snížení model analyzuje jednotlivé dotazy a detekuje nějaký nárůst v časové limity na úrovni spuštění dotazu a celkový časový limit požadavku na úrovni databáze, ve srovnání s obdobím standardních hodnot výkonu.
 
-Některé dotazy může být vypršení časového limitu ještě dřív, než dorazí fáze spuštění. Prostředky přerušené pracovních procesů a požadavky SQL Database integrované inteligentní funkce opatření a analyzuje všech dotazů, které bylo dosaženo databáze, jestli máte do fáze spuštění nebo ne. 
+Některé dotazy může být vypršení časového limitu ještě dřív, než dorazí fáze spuštění. Prostředky přerušené pracovních procesů a požadavky SQL Database integrované inteligentní funkce opatření a analyzuje všech dotazů, které bylo dosaženo databáze, jestli máte do fáze spuštění nebo ne.
 
 Po počet vypršení časového limitu pro spuštěné dotazy nebo počet pracovních procesů přerušené požadavku překročí prahovou hodnotu spravovaných system, diagnostický protokol se vyplní inteligentní přehledy.
 
-Přehledy vytvořené obsahovat počet požadavků, vypršel časový limit a počet dotazů vypršel časový limit. Údaj o snížení výkonu má vztah k zvýšení časového limitu ve fázi provádění nebo je k dispozici celkovou úroveň databáze. Při zvýšení časových limitů je považován za důležité pro výkon databáze, tyto dotazy se označí jako problémech se snižováním výkonu vypršení časového limitu. 
+Přehledy vytvořené obsahovat počet požadavků, vypršel časový limit a počet dotazů vypršel časový limit. Údaj o snížení výkonu má vztah k zvýšení časového limitu ve fázi provádění nebo je k dispozici celkovou úroveň databáze. Při zvýšení časových limitů je považován za důležité pro výkon databáze, tyto dotazy se označí jako problémech se snižováním výkonu vypršení časového limitu.
 
 ## <a name="excessive-wait-times"></a>Nadměrné čekací dobu
 
@@ -172,14 +171,13 @@ Model snížení chybných žádostí v jednotlivých monitorování dotazů a z
 
 Když měřené zvýšení chybných žádostí vzhledem k celkový počet zpracovaných požadavků je považován za důležité pro výkon úloh, ovlivněné dotazy se označí jako problémech se snižováním výkonu chybných žádostí.
 
-Intelligent Insights protokolů výstupů počet chybných žádostí. Znamená to, jestli snížení výkonu byl související s prodloužením chybných žádostí nebo překračuje prahovou hodnotu monitorovaných kritické výjimky a měřitelných čas snížení výkonu. 
+Intelligent Insights protokolů výstupů počet chybných žádostí. Znamená to, jestli snížení výkonu byl související s prodloužením chybných žádostí nebo překračuje prahovou hodnotu monitorovaných kritické výjimky a měřitelných čas snížení výkonu.
 
 Pokud některý z monitorovaných kritické výjimky pro různé absolutní prahové hodnoty, které jsou spravované systémem, vygeneruje se s podrobnostmi o kritické výjimky inteligentních přehledů.
 
 ## <a name="next-steps"></a>Další postup
-* Zjistěte, jak [řešení problémů s výkonem SQL Database s Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
-* Použití [protokolování diagnostiky výkonu Intelligent Insights SQL Database](sql-database-intelligent-insights-use-diagnostics-log.md).
-* Zjistěte, jak [monitorování SQL Database s použitím SQL Analytics](../log-analytics/log-analytics-azure-sql.md).
-* Zjistěte, jak [shromažďovat a zpracovávat data protokolu z vašich prostředků Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
 
-
+- Zjistěte, jak [řešení problémů s výkonem SQL Database s Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
+- Použití [protokolování diagnostiky výkonu Intelligent Insights SQL Database](sql-database-intelligent-insights-use-diagnostics-log.md).
+- Zjistěte, jak [monitorování SQL Database s použitím SQL Analytics](../log-analytics/log-analytics-azure-sql.md).
+- Zjistěte, jak [shromažďovat a zpracovávat data protokolu z vašich prostředků Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).

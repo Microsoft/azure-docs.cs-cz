@@ -1,26 +1,18 @@
 ---
-title: Spravovat sady záznamů DNS a záznamy s využitím Azure DNS | Dokumentace Microsoftu
+title: Spravovat sady záznamů DNS a záznamy s využitím Azure DNS
 description: Azure DNS umožňuje spravovat záznamy a sadami záznamů DNS, při hostování domény.
 services: dns
-documentationcenter: na
 author: vhorne
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 18ed44a1-7bfe-454f-964e-922ad978264a
 ms.service: dns
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 08/16/2016
+ms.date: 10/6/2018
 ms.author: victorh
-ms.openlocfilehash: e24aa8d0fb72147b0ac30e7c495b598d6e9ea96f
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 891adfacde6e46b1d8fe8e2f6b5fb39c90ce27a0
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451388"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48853704"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Ke správě DNS záznamů a sad záznamů pomocí webu Azure portal
 
@@ -120,3 +112,4 @@ Nelze odstranit SOA a sady záznamů NS ve vrcholu zóny (název = "\@"), který
 * Další informace o službě Azure DNS, najdete v článku [přehled Azure DNS](dns-overview.md).
 * Další informace o automatizaci DNS najdete v tématu [vytváření DNS zón a sad záznamů pomocí sady .NET SDK](dns-sdk.md).
 * Další informace o reverzních záznamů DNS najdete v tématu [přehled reverzní DNS a podporu v Azure](dns-reverse-dns-overview.md).
+* Další informace o záznamů aliasů DNS Azure najdete v tématu [Azure DNS alias záznamy přehled](dns-alias.md).

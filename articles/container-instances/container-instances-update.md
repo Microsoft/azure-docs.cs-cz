@@ -2,18 +2,17 @@
 title: Aktualizace kontejnery ve službě Azure Container Instances
 description: Zjistěte, jak aktualizovat spuštěné kontejnery ve skupinách kontejnerů Azure Container Instances.
 services: container-instances
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-instances
 ms.topic: article
 ms.date: 08/01/2018
-ms.author: marsma
-ms.openlocfilehash: 5a42b0983b0f754b119fa304317e758a976fb4f6
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.author: danlep
+ms.openlocfilehash: 2df6a2724cbdcd6bbb6c6ca6636256b7e399da8e
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432612"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854537"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Aktualizace kontejnery ve službě Azure Container Instances
 
@@ -23,7 +22,7 @@ Během normálního provozu vaší instancí kontejneru možná bude nutné aktu
 
 Aktualizujte kontejnerů ve skupině kontejnerů pomocí opětovného nasazení existující skupinu s aspoň jeden změněné vlastnosti. Při aktualizaci kontejneru skupiny, restartují se všechny spuštěné kontejnery ve skupině na místě.
 
-Znovu nasadit existující skupinu kontejnerů pomocí příkazu pro vytvoření (nebo použijte na webu Azure portal) a zadejte název existující skupiny. Upravte alespoň jednu platnou vlastnost skupiny při vydání příkazu pro vytvoření aktivuje opětovné nasazení. Ne všechny vlastnosti skupiny kontejnerů jsou platné pro opětovné nasazení. Zobrazit [vlastností, které vyžadují odstranit](#properties-that-require-delete) seznam nepodporované vlastnosti.
+Znovu nasadit existující skupinu kontejnerů pomocí příkazu pro vytvoření (nebo použijte na webu Azure portal) a zadejte název existující skupiny. Upravte alespoň jednu platnou vlastnost skupiny při vydání příkazu pro vytvoření aktivuje opětovné nasazení. Ne všechny vlastnosti skupiny kontejnerů jsou platné pro opětovné nasazení. Zobrazit [vlastností, které vyžadují odstranit](#properties-that-require-container-delete) seznam nepodporované vlastnosti.
 
 Následující příklad rozhraní příkazového řádku Azure aktualizuje skupinu kontejnerů s použitím nového popisku názvu DNS. Vzhledem k tomu, že je změněna vlastnost popisku názvu DNS, skupiny, je znovu nasadit skupinu kontejnerů a jejím kontejnerům restartování.
 

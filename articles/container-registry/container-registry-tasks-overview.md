@@ -2,17 +2,17 @@
 title: Automatizace operačního systému a rozhraní framework opravy chyb s Azure Container Registry (ACR úloh)
 description: Úvod do úlohy služby ACR, sadu funkcí ve službě Azure Container Registry, která poskytuje zabezpečené, automatizovat sestavení image kontejneru a používání dílčích oprav v cloudu.
 services: container-registry
-author: mmacy
+author: dlepow
 ms.service: container-registry
 ms.topic: article
 ms.date: 09/24/2018
-ms.author: marsma
-ms.openlocfilehash: 3ba08a0c2422adcd987fa6ed601b666106e8503c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.author: danlep
+ms.openlocfilehash: 63affd4ad22d5246274ddfa3160d5675f702003f
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047297"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855750"
 ---
 # <a name="automate-os-and-framework-patching-with-acr-tasks"></a>Automatizace operačního systému a rozhraní framework opravy chyb s úlohami služby ACR
 
@@ -76,7 +76,7 @@ Další informace o operačním systému a rozhraní framework opravy chyb ve t�
 > [!NOTE]
 > Základní image aktualizuje aktivační události sestavení pouze v případě imagí základní a aplikace jsou umístěny ve stejné Azure container registry i základní třídy se nachází ve veřejném úložišti Docker Hubu.
 
-## <a name="multi-step-tasks-preview"></a>Vícekrokové úlohy (preview)
+## <a name="multi-step-tasks-preview"></a>Úlohy s více kroky (Preview)
 
 Vícekrokových úkolů, funkce ve verzi preview služby ACR úloh obsahuje definice založené na krok úlohy a provádění pro sestavování, testování a opravy chyb imagí kontejnerů v cloudu. Kroky úlohy definovat sestavení image kontejneru jednotlivých a operací push. Mohou také definovat provádění jeden nebo více kontejnerů, u každého kroku pomocí kontejneru jako prostředí pro spuštění.
 

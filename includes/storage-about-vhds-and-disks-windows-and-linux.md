@@ -2,18 +2,18 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: storage
-author: rogara
+author: roygara
 ms.service: storage
 ms.topic: include
 ms.date: 04/09/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 26c3e8a096a3ee7bc5146759f8de62e5c1c7fed1
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 796614a9e60ccb7ab155bc986b39c04c781224e8
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47389874"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48874105"
 ---
 ## <a name="about-vhds"></a>Virtuální pevné disky
 
@@ -34,11 +34,11 @@ Před odstraněním zdrojového souboru .vhd bude nutné toto označení odebrat
 
 Disky Azure jsou navržené pro 99,999% dostupnost. Disky Azure konzistentně dodá odolnost na podnikové úrovni, se špičkovou NULOVOU % Annualized chybovost.
 
-Existují tři úrovní výkonu úložiště, ze kterých si můžete vybrat při vytváření disků – Premium SSD disky SSD na úrovni Standard (Preview) a úložiště úrovně Standard pevný disk. Navíc existují dva typy disků – nespravované a spravované.
+Existují tři úrovní výkonu úložiště, ze kterých si můžete vybrat při vytváření disků – Premium SSD disky SSD na úrovni Standard a Storage úrovně Standard pevný disk. Navíc existují dva typy disků – nespravované a spravované.
 
 ### <a name="standard-hdd-disks"></a>Disky Standard pevný disk
 
-Standardní HDD disky jsou založená na jednotkách HDD a poskytování nákladově efektivních úložišť. Storage úrovně Standard pevný disk je možné místně replikovat v jednom datacentru, nebo být geograficky redundantní pomocí primárních a sekundárních datových center. Další informace o replikaci úložiště najdete v tématu [replikace Azure Storage](../articles/storage/common/storage-redundancy.md). 
+Standardní HDD disky jsou založená na jednotkách HDD a poskytování nákladově efektivních úložišť. Storage úrovně Standard pevný disk je možné místně replikovat v jednom datacentru, nebo být geograficky redundantní pomocí primárních a sekundárních datových center. Další informace o replikaci úložiště najdete v tématu [replikace Azure Storage](../articles/storage/common/storage-redundancy.md).
 
 Další informace o použití standardních pevných disků, naleznete v tématu [Storage úrovně Standard a disky](../articles/virtual-machines/windows/standard-storage.md).
 

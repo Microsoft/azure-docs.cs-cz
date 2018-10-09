@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: douglasl
-ms.openlocfilehash: 53ea7425f0497eca7c95ddefeaa09aa40259672b
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 38fbb62de60bc5604210c8ad7339368a04967c27
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216258"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867045"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Vytvoření aktivační události, která běží v reakci na událost kanálu
 
@@ -58,11 +58,11 @@ Jakmile dorazí soubor v umístění úložiště a vytvořit odpovídající ob
 
 ### <a name="map-trigger-properties-to-pipeline-parameters"></a>Mapování vlastnosti aktivační události na parametry kanálu
 
-Jakmile se spustí aktivační procedura událostí pro konkrétní objekt blob, událost zaznamená název složky a cesta k souboru objektu blob do vlastností `@triggerBody().folderPath` a `@triggerBody().fileName`. V kanálu používat hodnoty těchto vlastností, je nutné mapovat vlastnosti k parametrům kanálu. Po mapování vlastnosti na parametry, můžete přistupovat k hodnotám nezachytává aktivační události prostřednictvím `@pipeline.parameters.parameterName` výrazu v rámci kanálu.
+Jakmile se spustí aktivační procedura událostí pro konkrétní objekt blob, událost zaznamená název složky a cesta k souboru objektu blob do vlastností `@triggerBody().folderPath` a `@triggerBody().fileName`. V kanálu používat hodnoty těchto vlastností, je nutné mapovat vlastnosti k parametrům kanálu. Po mapování vlastnosti na parametry, můžete přistupovat k hodnotám nezachytává aktivační události prostřednictvím `@pipeline().parameters.parameterName` výrazu v rámci kanálu.
 
 ![Mapování vlastností pro parametry kanálu](media/how-to-create-event-trigger/event-based-trigger-image4.png)
 
-Například v předchozím snímku obrazovky. aktivační událost konfigurován tak, aby se aktivují, když cestu objektu blob s koncovkou `.csv` se vytvoří v účtu úložiště. V důsledku toho při objekt blob se `.csv` rozšíření se vytvoří kdekoli v účtu úložiště `folderPath` a `fileName` vlastnosti zachycení umístění nový objekt blob. Například `@triggerBody().folderPath` má hodnotu jako `/containername/foldername/nestedfoldername` a `@triggerBody().fileName` má hodnotu jako `filename.csv`. Tyto hodnoty jsou namapovány v příkladu parametry kanálu `sourceFolder` a `sourceFile`. Můžete je použít v celém kanálu `@pipeline.parameters.sourceFolder` a `@pipeline.parameters.sourceFile` v uvedeném pořadí.
+Například v předchozím snímku obrazovky. aktivační událost konfigurován tak, aby se aktivují, když cestu objektu blob s koncovkou `.csv` se vytvoří v účtu úložiště. V důsledku toho při objekt blob se `.csv` rozšíření se vytvoří kdekoli v účtu úložiště `folderPath` a `fileName` vlastnosti zachycení umístění nový objekt blob. Například `@triggerBody().folderPath` má hodnotu jako `/containername/foldername/nestedfoldername` a `@triggerBody().fileName` má hodnotu jako `filename.csv`. Tyto hodnoty jsou namapovány v příkladu parametry kanálu `sourceFolder` a `sourceFile`. Můžete je použít v celém kanálu `@pipeline().parameters.sourceFolder` a `@pipeline().parameters.sourceFile` v uvedeném pořadí.
 
 ## <a name="json-schema"></a>Schéma JSON
 

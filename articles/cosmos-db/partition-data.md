@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: andrl
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c35082d107b538e7e908162c00facafecc406bc6
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 9b7d9a0dd439b7c25180c8f250a87ae5ee184139
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785632"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870566"
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Dělení a škálování ve službě Azure Cosmos DB
 
@@ -118,6 +118,8 @@ Při vytváření kontejneru graf oddílů vezměte v úvahu následující podr
 - **Okraje se ukládají s jejich zdrojový vrchol**. Jinými slovy pro každý vrchol svůj klíč oddílu definuje kde jsou uložené vrcholu a hrany, které její odchozí. To se provádí při použití, aby dotazy napříč oddíly `out()` kardinalitu v dotazy na grafy.
 
 - **Dotazy na grafy musí určovat klíč oddílu**. Pokud chcete využívat všech výhod horizontální dělení ve službě Azure Cosmos DB, kdykoli to bude možné grafu dotazů by měly zahrnovat klíč oddílu. Třeba když jeden vrchol je vybrána. Následující příklad dotazy ukazují, jak zahrnovat klíč oddílu, při výběru jednoho nebo více vrcholy v dělené grafu:
+
+    - **Nyní nemůžete použít `/id` jako klíč oddílu pro kontejner ve službě rozhraní Gremlin API**.
 
     - Výběr vrcholů podle ID, potom **použít `.has()` krok pro určení této vlastnosti klíče oddílu**: 
     
@@ -225,6 +227,9 @@ Další informace najdete v tématu [vývoj pomocí rozhraní Table API](tutoria
 ### <a name="gremlin-api"></a>Rozhraní Gremlin API
 
 Pomocí rozhraní Gremlin API můžete na webu Azure portal nebo rozhraní příkazového řádku Azure k vytvoření kontejneru, který představuje grafu. Případně protože Azure Cosmos DB je vícemodelová, vám pomůže jeden z rozhraní API vytvořit a škálovat svůj kontejner grafu.
+
+> [!NOTE]
+> Nemůžete použít `/id` jako klíč oddílu pro kontejner ve službě Gremlin API nevztahují. 
 
 Na základě klíče oddílu a ID v Gremlin můžete číst všechny vrchol nebo Microsoft edge. Graf s oblasti ("USA") jako klíč oddílu a "Seattle" jako klíč řádku, například můžete najít vrcholu pomocí následující syntaxe:
 

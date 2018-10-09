@@ -10,12 +10,12 @@ ms.technology: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: diberry
-ms.openlocfilehash: 8cf9df5130f11fd07dbf468ad0ad93dff4584b21
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 154266f9d7e6fafc5e10053e67abbb10d0a2767f
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031476"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855132"
 ---
 # <a name="quickstart-for-microsoft-qna-maker-api-with-java"></a>Rychlý start pro nástroj QnA Maker Microsoft API s využitím Javy 
 <a name="HOLTop"></a>
@@ -41,7 +41,7 @@ V tomto článku se dozvíte, jak používat [API nástroje QnA Maker Microsoft]
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro kompilaci a spuštění tohoto kódu budete potřebovat [JDK 7 nebo 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). Pokud máte Oblíbené, ale bude stačit textový editor, můžete použít prostředí Java IDE.
+Pro kompilaci a spuštění tohoto kódu budete potřebovat [JDK 7 nebo 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). Můžete použít prostředí Java IDE, pokud je vaše oblíbené, ale stačit bude i textový editor.
 
 Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraním API služby Microsoft QnA Maker**. Budete potřebovat placené klíče předplatného ze svého [řídicího panelu Azure](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 
@@ -331,7 +331,7 @@ import com.google.gson.reflect.TypeToken;
 
 // Java does not natively support HTTP PATCH requests, so Apache HttpClient is required.
 /*
- * HttpClient: http://hc.apache.org/downloads.cgi
+ * HttpClient: https://hc.apache.org/downloads.cgi
  * Maven info:
  *    <dependency>
  *      <groupId>org.apache.httpcomponents</groupId>
@@ -458,13 +458,13 @@ public class UpdateKB {
         HttpPatch patch = new HttpPatch(url.toString());
         // HttpPatch implements HttpMessage, which includes addHeader. See:
         // https://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/client/methods/HttpPatch.html
-        // http://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/HttpMessage.html
+        // https://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/HttpMessage.html
         patch.addHeader("Content-Type", "application/json");
         // Note: Adding the Content-Length header causes the exception:
         // "Content-Length header already present."
         patch.addHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
         // HttpPatch implements HttpEntityEnclosingRequest, which includes setEntity. See:
-        // http://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/HttpEntityEnclosingRequest.html
+        // https://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/HttpEntityEnclosingRequest.html
         HttpEntity entity = new ByteArrayEntity(content.getBytes("UTF-8"));
         patch.setEntity(entity);
 
@@ -474,8 +474,8 @@ public class UpdateKB {
         // CloseableHttpResponse implements HttpMessage, which includes getAllHeaders. See:
         // https://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/client/methods/CloseableHttpResponse.html
         // Header implements NameValuePair. See:
-        // http://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/Header.html
-        // http://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/NameValuePair.html
+        // https://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/Header.html
+        // https://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/NameValuePair.html
         Map<String, List<String>> headers = new HashMap<String, List<String>>();
         for (Header header : response.getAllHeaders()) {
             List<String> list = new ArrayList<String>() {
@@ -487,9 +487,9 @@ public class UpdateKB {
         }
 
         // CloseableHttpResponse implements HttpResponse, which includes getEntity. See:
-        // http://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/HttpResponse.html
+        // https://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/HttpResponse.html
         // HttpEntity implements getContent, which returns an InputStream. See:
-        // http://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/HttpEntity.html
+        // https://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/HttpEntity.html
         StringBuilder output = new StringBuilder ();
         BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), "UTF-8"));
         String line;
@@ -1728,7 +1728,7 @@ import com.google.gson.reflect.TypeToken;
 
 // Java does not natively support HTTP PATCH requests, so Apache HttpClient is required.
 /*
- * HttpClient: http://hc.apache.org/downloads.cgi
+ * HttpClient: https://hc.apache.org/downloads.cgi
  * Maven info:
  *    <dependency>
  *      <groupId>org.apache.httpcomponents</groupId>
@@ -1781,13 +1781,13 @@ public class RefreshKeys {
         HttpPatch patch = new HttpPatch(url.toString());
         // HttpPatch implements HttpMessage, which includes addHeader. See:
         // https://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/client/methods/HttpPatch.html
-        // http://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/HttpMessage.html
+        // https://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/HttpMessage.html
         patch.addHeader("Content-Type", "application/json");
         // Note: Adding the Content-Length header causes the exception:
         // "Content-Length header already present."
         patch.addHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
         // HttpPatch implements HttpEntityEnclosingRequest, which includes setEntity. See:
-        // http://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/HttpEntityEnclosingRequest.html
+        // https://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/HttpEntityEnclosingRequest.html
         HttpEntity entity = new ByteArrayEntity(content.getBytes("UTF-8"));
         patch.setEntity(entity);
 
@@ -1797,8 +1797,8 @@ public class RefreshKeys {
         // CloseableHttpResponse implements HttpMessage, which includes getAllHeaders. See:
         // https://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/client/methods/CloseableHttpResponse.html
         // Header implements NameValuePair. See:
-        // http://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/Header.html
-        // http://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/NameValuePair.html
+        // https://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/Header.html
+        // https://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/NameValuePair.html
         Map<String, List<String>> headers = new HashMap<String, List<String>>();
         for (Header header : response.getAllHeaders()) {
             List<String> list = new ArrayList<String>() {
@@ -1810,9 +1810,9 @@ public class RefreshKeys {
         }
 
         // CloseableHttpResponse implements HttpResponse, which includes getEntity. See:
-        // http://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/HttpResponse.html
+        // https://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/HttpResponse.html
         // HttpEntity implements getContent, which returns an InputStream. See:
-        // http://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/HttpEntity.html
+        // https://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/HttpEntity.html
         StringBuilder output = new StringBuilder ();
         BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), "UTF-8"));
         String line;

@@ -1,7 +1,7 @@
 ---
 title: Zabezpečení v Azure App Service a Azure Functions | Dokumentace Microsoftu
 description: Další informace o App Service pomáhá jak zabezpečené aplikace a jak můžete dále uzamknout aplikace před hrozbami.
-keywords: služby Azure app service webovou aplikaci, mobilní aplikace, aplikace api, aplikace function app, zabezpečení, zabezpečení, zabezpečené, dodržování předpisů, předpisy, certifikátů, certifikáty, https, ftps, tls, vztah důvěryhodnosti, šifrování, šifrování, šifrované, omezení IP adres, ověřování, autorizace, ověřovacích, autho, msi, identita spravované služby, tajné kódy, tajný klíč, opravy, opravy, opravy, verze, izolaci, izolace sítě, před útoky ddos, mitm
+keywords: služby Azure app service webovou aplikaci, mobilní aplikace, aplikace api, aplikace function app, zabezpečení, zabezpečení, zabezpečené, dodržování předpisů, předpisy, certifikátů, certifikáty, https, ftps, tls, vztah důvěryhodnosti, šifrování, šifrování, šifrované, omezení IP adres, ověřování, autorizace, ověřovacích, autho, msi, identita spravované služby, spravovanou identitu, tajné kódy, tajný klíč, opravy, opravy, opravy, verze, izolaci, izolace sítě, před útoky ddos, mitm
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2018
 ms.author: cephalin
-ms.openlocfilehash: 40fdd22bdbb3fc0676688430069d58c0422a7ca2
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 3bacc2bf253a6b8c3b869b7a6d4952d982de3ee6
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382112"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857495"
 ---
 # <a name="security-in-azure-app-service-and-azure-functions"></a>Zabezpečení v Azure App Service a Azure Functions
 
@@ -69,7 +69,7 @@ App Service ověřování a autorizace podporují více zprostředkovatelů ově
 
 Při ověřování proti back-end služby App Service poskytuje dva různé mechanismy v závislosti na vaše potřeby:
 
-- **Služba identity** – Přihlaste se k vzdálený prostředek pomocí identity aplikace. App Service umožňuje snadné vytváření [se identita spravované služby](app-service-managed-service-identity.md), který můžete použít k ověření s ostatními službami, jako například [Azure SQL Database](/azure/sql-database/) nebo [Azure Key Vault](/azure/key-vault/). Kurz začátku do konce tohoto přístupu, najdete v tématu [připojení zabezpečení Azure SQL Database ze služby App Service pomocí identity spravované služby](app-service-web-tutorial-connect-msi.md).
+- **Služba identity** – Přihlaste se k vzdálený prostředek pomocí identity aplikace. App Service umožňuje snadné vytváření [se identita spravované](app-service-managed-service-identity.md), který můžete použít k ověření s ostatními službami, jako například [Azure SQL Database](/azure/sql-database/) nebo [Azure Key Vault](/azure/key-vault/). Kurz začátku do konce tohoto přístupu, najdete v tématu [připojení zabezpečení Azure SQL Database ze služby App Service pomocí spravované identity](app-service-web-tutorial-connect-msi.md).
 - **On-behalf-of (OBO)** – Ujistěte se, Delegovaný přístup ke vzdáleným prostředkům jménem uživatele. S Azure Active Directory jako zprostředkovatele ověřování, aplikace app Service můžete provádět delegované přihlášení vzdálené služby, jako například [Azure Active Directory Graph API](../active-directory/develop/active-directory-graph-api.md) nebo vzdálenou aplikaci API ve službě App Service. Kurz začátku do konce tohoto přístupu, najdete v tématu [ověřování a autorizaci uživatelů začátku do konce ve službě Azure App Service](app-service-web-tutorial-auth-aad.md).
 
 ## <a name="connectivity-to-remote-resources"></a>Připojení ke vzdáleným prostředkům
@@ -106,13 +106,13 @@ Mít bezpečný přístup k místním prostředkům, jako jsou databáze, třemi
 
 Neukládejte tajných klíčů aplikací, jako je například přihlašovací údaje databáze, tokeny rozhraní API a privátní klíče do kódu nebo konfiguračního souboru. Obecně uznávaný přístup je pro přístup k nim jako [proměnné prostředí](https://wikipedia.org/wiki/Environment_variable) standardním způsobem v jazyce podle výběru. Ve službě App Service, je způsob, jak definovat proměnné prostředí prostřednictvím [nastavení aplikace](web-sites-configure.md#app-settings) (a hlavně pro aplikace .NET, [připojovací řetězce](web-sites-configure.md#connection-strings)). Nastavení aplikace a připojovacích řetězců jsou uloženy v zašifrované podobě v Azure a máte dešifrovat jenom před se vloží do paměti procesu vaší aplikace při spuštění aplikace. Šifrovací klíče jsou pravidelně otočen.
 
-Alternativně můžete integrovat aplikace služby App Service s využitím [Azure Key Vault](/azure/key-vault/) pro správu rozšířené tajných kódů. Podle [přístup ke službě Key Vault s využitím identity spravované služby](../key-vault/tutorial-web-application-keyvault.md), vaše aplikace app Service mít bezpečný přístup, tajné kódy, které potřebujete.
+Alternativně můžete integrovat aplikace služby App Service s využitím [Azure Key Vault](/azure/key-vault/) pro správu rozšířené tajných kódů. Podle [přístup k trezoru klíčů na spravovanou identitu](../key-vault/tutorial-web-application-keyvault.md), vaše aplikace app Service mít bezpečný přístup, tajné kódy, které potřebujete.
 
 ## <a name="network-isolation"></a>Izolace sítě
 
 S výjimkou **izolované** cenovou úroveň, u všech úrovní aplikace můžete spouštět ve sdílené síťové infrastruktury ve službě App Service. Veřejné IP adresy a nástroje pro vyrovnávání zatížení front-endový jsou sdíleny s jinými tenanty. **Izolované** úroveň poskytuje kompletní síťovou izolaci spuštěním vaší aplikace v rámci vyhrazeného [App Service environment](environment/intro.md). Služby App Service environment běží ve vlastní instanci [Azure Virtual Network](/azure/virtual-network/). To vám umožní: 
 
-- Omezení síťového přístupu s [skupiny zabezpečení sítě](../virtual-network/virtual-networks-nsg.md). 
+- Omezení síťového přístupu s [skupiny zabezpečení sítě](../virtual-network/virtual-networks-dmz-nsg.md). 
 - Poskytování aplikací prostřednictvím vyhrazené veřejný koncový bod, s vyhrazenou front-endů.
 - Slouží k interní aplikaci pomocí interní nástroj pro vyrovnávání zatížení (ILB), který umožňuje přístup jenom v rámci vaší virtuální sítě Azure. ILB má IP adresu z vaší privátní podsítě, která poskytuje celkový počet izolace aplikací z Internetu.
 - [Pomocí ILB za bránou firewall webových aplikací (WAF)](environment/integrate-with-application-gateway.md). WAF nabízí ochranu podnikové úrovni pro vaše veřejné webové aplikace, například DDoS protection, identifikátor URI filtrování a prevence prostřednictvím injektáže SQL.

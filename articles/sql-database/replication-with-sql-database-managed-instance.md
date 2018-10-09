@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: 95c27bcc99f08cb1e4998e43a6a2abd508bee0ac
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 25d13ba53eb5a8b411a557b5eaf05d278faa3733
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47228298"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869308"
 ---
 # <a name="replication-with-sql-database-managed-instance"></a>Replikace SQL Database Managed Instance
 
@@ -76,21 +76,22 @@ Podporuje:
 
 ## <a name="configure-publishing-and-distribution-example"></a>Konfigurace publikování a distribuci příklad
 
-1. [Vytvoření Azure SQL Database Managed Instance](http://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-create-tutorial-portal) na portálu.
+1. [Vytvoření Azure SQL Database Managed Instance](sql-database-managed-instance-create-tutorial-portal.md) na portálu.
+2. [Vytvoření účtu služby Azure Storage](http://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) pro pracovní adresář.
 
-1. [Vytvoření účtu služby Azure Storage](http://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) pro pracovní adresář. Nezapomeňte si zkopírovat klíče úložiště. Zobrazit [zobrazení a zkopírování přístupových klíčů úložiště](http://docs.microsoft.com/azure/storage/common/storage-create-storage-account#manage-your-storage-access-keys).
-
-1. Vytvoření databáze vydavatele.
+   Nezapomeňte si zkopírovat klíče úložiště. Zobrazit [zobrazení a zkopírování přístupových klíčů úložiště](../storage/common/storage-account-manage.md#access-keys
+).
+3. Vytvoření databáze vydavatele.
 
    V níže uvedené příklady skriptů, nahraďte `<Publishing_DB>` s názvem této databáze.
 
-1. Vytvořte uživatele databáze s ověřováním SQL pro daného distributora. Zobrazit, [vytváření uživatelů databáze](http://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial#creating-database-users). Použijte zabezpečené heslo.
+4. Vytvořte uživatele databáze s ověřováním SQL pro daného distributora. Zobrazit, [vytváření uživatelů databáze](http://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial#creating-database-users). Použijte zabezpečené heslo.
 
    V níže uvedené příklady skriptů pomocí `<SQL_USER>` a `<PASSWORD>` s tímto účtem serveru SQL databáze, uživatele a heslo.
 
-1. [Připojení ke spravované instanci SQL Database](http://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms).
+5. [Připojení ke spravované instanci SQL Database](http://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms).
 
-1. Spusťte následující dotaz pro přidání distributora a distribuční databázi.
+6. Spusťte následující dotaz pro přidání distributora a distribuční databázi.
 
    ```sql
    USE [master]
@@ -99,7 +100,7 @@ Podporuje:
    EXEC sp_adddistributiondb @database = N'distribution';
    ```
 
-1. Konfigurace vydavatele použít zadaný distribuční databázi, aktualizovat a spusťte dotaz naleznete.
+7. Konfigurace vydavatele použít zadaný distribuční databázi, aktualizovat a spusťte následující dotaz.
 
    Nahraďte `<SQL_USER>` a `<PASSWORD>` účet serveru SQL a heslo.
 
@@ -107,7 +108,7 @@ Podporuje:
 
    Nahraďte `<STORAGE_CONNECTION_STRING>` připojovacím řetězcem z **přístupové klíče** kartu z účtu úložiště Microsoft Azure.
 
-   Po aktualizaci následující dotaz, spusťte ji. 
+   Po aktualizaci následující dotaz, spusťte ji.
 
    ```sql
    USE [master]
@@ -121,7 +122,7 @@ Podporuje:
    GO
    ```
 
-1. Konfigurace vydavatele pro replikaci. 
+8. Konfigurace vydavatele pro replikaci.
 
     V následujícím dotazem, nahraďte `<Publishing_DB>` s názvem vaší databáze vydavatele.
 
@@ -155,15 +156,13 @@ Podporuje:
                 @job_password = N'<PASSWORD>'
    ```
 
-1. Přidáte článek, předplatné a agenta nabízeného odběru. 
+9. Přidáte článek, předplatné a agenta nabízeného odběru.
 
    Pokud chcete přidat tyto objekty, aktualizujte následující skript.
 
-   Nahraďte `<Object_Name>` s názvem objektu publikace.
-
-   Nahraďte `<Object_Schema>` s názvem schématu zdroje. 
-
-   Nahraďte parametry v lomených závorkách `<>` tak, aby odpovídaly hodnoty v předchozí skripty. 
+   - Nahraďte `<Object_Name>` s názvem objektu publikace.
+   - Nahraďte `<Object_Schema>` s názvem schématu zdroje.
+   - Nahraďte parametry v lomených závorkách `<>` tak, aby odpovídaly hodnoty v předchozí skripty.
 
    ```sql
    EXEC sp_addarticle @publication = N'<Publication_Name>',
@@ -183,7 +182,7 @@ Podporuje:
                 @subscriber_security_mode = 0,
                 @subscriber_login = N'<SQL_USER>',
                 @subscriber_password = N'<PASSWORD>',
-                @job_login = N'<SQL_USER>', 
+                @job_login = N'<SQL_USER>',
                 @job_password = N'<PASSWORD>'
    GO
    ```

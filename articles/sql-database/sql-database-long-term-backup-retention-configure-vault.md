@@ -11,21 +11,20 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 05/08/2018
-ms.openlocfilehash: a9a3d696f1c503969b89795f8c6d86a77bd353e8
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/05/2018
+ms.openlocfilehash: 499689e4d36f368746e5e0ea9e6bc3f3bf0ec0d9
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160720"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868221"
 ---
-# <a name="configure-and-restore-from-azure-sql-database-long-term-backup-retention-using-azure-recovery-services-vault"></a>Konfigurace a obnovení z Azure SQL Database dlouhodobého uchování zálohy pomocí trezoru služby Azure Recovery Services
+# <a name="configure-long-term-backup-retention-using-azure-recovery-services-vault"></a>Konfigurace dlouhodobého uchovávání záloh pomocí trezoru služby Azure Recovery Services
 
 Můžete nakonfigurovat trezor služeb zotavení Azure k ukládání záloh Azure SQL database a poté obnovit databáze pomocí záloh v trezoru pomocí webu Azure portal nebo Powershellu.
 
 > [!NOTE]
-> Jako součást počáteční verzi preview dlouhodobého uchovávání záloh v říjnu 2016 byly zálohy uložené v trezoru služby Azure Recovery Services. Tato aktualizace odebere tuto závislost, ale kvůli zpětné kompatibilitě se původní rozhraní API podporuje až do 31. května 2018. Pokud budete potřebovat pro interakci s zálohy v trezoru Azure Services Recovery, přečtěte si téma [dlouhodobého uchovávání záloh pomocí služby Azure Recovery Services vault](sql-database-long-term-backup-retention-configure-vault.md). 
-
+> Jako součást počáteční verzi preview dlouhodobého uchovávání záloh v říjnu 2016 byly zálohy uložené v trezoru služby Azure Recovery Services. Tato aktualizace odebere tuto závislost, ale kvůli zpětné kompatibilitě se původní rozhraní API podporuje až do 31. května 2018. Pokud budete potřebovat pro interakci s zálohy v trezoru Azure Services Recovery, přečtěte si téma [dlouhodobého uchovávání záloh pomocí služby Azure Recovery Services vault](sql-database-long-term-backup-retention-configure-vault.md).
 
 ## <a name="azure-portal"></a>portál Azure
 
@@ -33,7 +32,7 @@ Následující části ukazují, jak pomocí webu Azure portal můžete nakonfig
 
 ### <a name="configure-the-vault-register-the-server-and-select-databases"></a>Konfigurace trezoru, registraci serveru a výběr databází
 
-Nakonfigurujete trezor služby Azure Recovery Services pro [uchovávání automatizovaných záloh](sql-database-long-term-retention.md) dobu delší, než je doba uchovávání vaší úrovně služby. 
+Nakonfigurujete trezor služby Azure Recovery Services pro [uchovávání automatizovaných záloh](sql-database-long-term-retention.md) dobu delší, než je doba uchovávání vaší úrovně služby.
 
 1. Otevřít **systému SQL Server** stránky pro váš server.
 
@@ -62,7 +61,7 @@ Nakonfigurujete trezor služby Azure Recovery Services pro [uchovávání automa
 7. Na **trezory služby Recovery Services** klikněte na **přidat**.
 
    ![Přidání odkazu na úložiště](./media/sql-database-get-started-backup-recovery/add-new-vault-link.png)
-   
+
 8. Na **trezor služby Recovery Services** stránky, zadejte platný název pro trezor služby Recovery Services.
 
    ![název nového trezoru](./media/sql-database-get-started-backup-recovery/new-vault-name.png)
@@ -73,7 +72,6 @@ Nakonfigurujete trezor služby Azure Recovery Services pro [uchovávání automa
 
    > [!IMPORTANT]
    > Trezor musí být umístěn ve stejné oblasti Azure jako logický server SQL Azure a musí používat stejnou skupinu prostředků jako logický server.
-   >
 
 10. Po vytvoření nového trezoru proveďte nezbytné kroky se vrátíte **trezor služby Recovery services** stránky.
 
@@ -84,9 +82,9 @@ Nakonfigurujete trezor služby Azure Recovery Services pro [uchovávání automa
 12. Na **konfigurovat** stránky, zadejte platný název pro nové zásady uchovávání informací, úpravy výchozích zásad uchovávání informací podle potřeby a potom klikněte na tlačítko **OK**.
 
    ![definování zásady uchovávání informací](./media/sql-database-get-started-backup-recovery/define-retention-policy.png)
-   
-   >[!NOTE]
-   >Názvy zásad uchovávání informací Nepovolit některé znaků včetně mezer.
+
+   > [!NOTE]
+   > Názvy zásad uchovávání informací Nepovolit některé znaků včetně mezer.
 
 13. Na **dlouhodobého uchovávání záloh** stránce pro vaši databázi, klikněte na tlačítko **Uložit** a potom klikněte na tlačítko **OK** použít zásadu dlouhodobého uchovávání záloh na všechny vybrané databáze.
 
@@ -98,11 +96,10 @@ Nakonfigurujete trezor služby Azure Recovery Services pro [uchovávání automa
 
 > [!IMPORTANT]
 > Po nakonfigurování se zálohy v trezoru objeví během příštích sedm dnů. Nepokračujte v tomto kurzu, dokud se zálohy neobjeví v trezoru.
->
 
 ### <a name="view-backups-in-long-term-retention-using-azure-portal"></a>Zobrazení záloh v rámci dlouhodobého uchovávání pomocí webu Azure portal
 
-Zobrazit informace o zálohách databáze v [dlouhodobého uchovávání záloh](sql-database-long-term-retention.md). 
+Zobrazit informace o zálohách databáze v [dlouhodobého uchovávání záloh](sql-database-long-term-retention.md).
 
 1. Na webu Azure Portal, otevřete trezoru služby Azure Recovery Services pro zálohování databáze (přejděte na **všechny prostředky** a vyberte ho ze seznamu prostředků pro vaše předplatné) Chcete-li zobrazit velikost úložiště využitá službou vaše zálohy databáze v trezor.
 
@@ -167,7 +164,7 @@ Použití [New-AzureRmRecoveryServicesVault](/powershell/module/azurerm.recovery
 $serverLocation = (Get-AzureRmSqlServer -ServerName $serverName -ResourceGroupName $resourceGroupName).Location
 $recoveryServiceVaultName = "{new-vault-name}"
 
-$vault = New-AzureRmRecoveryServicesVault -Name $recoveryServiceVaultName -ResourceGroupName $ResourceGroupName -Location $serverLocation 
+$vault = New-AzureRmRecoveryServicesVault -Name $recoveryServiceVaultName -ResourceGroupName $ResourceGroupName -Location $serverLocation
 Set-AzureRmRecoveryServicesBackupProperties -BackupStorageRedundancy LocallyRedundant -Vault $vault
 ```
 
@@ -176,18 +173,17 @@ Set-AzureRmRecoveryServicesBackupProperties -BackupStorageRedundancy LocallyRedu
 Použití [Set-AzureRmSqlServerBackupLongTermRetentionVault](/powershell/module/azurerm.sql/set-azurermsqlserverbackuplongtermretentionvault) k přidružení trezoru dříve vytvořeného recovery services s konkrétním serverem Azure SQL.
 
 ```PowerShell
-# Set your server to use the vault to for long-term backup retention 
+# Set your server to use the vault to for long-term backup retention
 
 Set-AzureRmSqlServerBackupLongTermRetentionVault -ResourceGroupName $resourceGroupName -ServerName $serverName -ResourceId $vault.Id
 ```
 
 ### <a name="create-a-retention-policy"></a>Vytvoření zásady uchovávání informací
 
-Zásada uchovávání informací stanoví, kde můžete nastavit dobu uchování zálohy databáze. Použít [Get-AzureRmRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupretentionpolicyobject) rutiny pro získání výchozí zásady uchovávání informací pro použití jako šablony pro vytváření zásad. V této šabloně je doba uchování nastavena na 2 roky. V dalším kroku spusťte [New-AzureRmRecoveryServicesBackupProtectionPolicy](/powershell/module/azurerm.recoveryservices.backup/new-azurermrecoveryservicesbackupprotectionpolicy) nakonec vytvořte zásadu. 
+Zásada uchovávání informací stanoví, kde můžete nastavit dobu uchování zálohy databáze. Použít [Get-AzureRmRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupretentionpolicyobject) rutiny pro získání výchozí zásady uchovávání informací pro použití jako šablony pro vytváření zásad. V této šabloně je doba uchování nastavena na 2 roky. V dalším kroku spusťte [New-AzureRmRecoveryServicesBackupProtectionPolicy](/powershell/module/azurerm.recoveryservices.backup/new-azurermrecoveryservicesbackupprotectionpolicy) nakonec vytvořte zásadu.
 
 > [!NOTE]
-> Některé rutiny vyžadují nastavit kontext trezoru před spuštěním ([Set-AzureRmRecoveryServicesVaultContext](/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext)), zobrazí se tato rutina v několika souvisejících fragmentech kódu. Můžete nastavit kontext, protože zásada je součástí trezoru. Můžete vytvořit více zásad uchovávání pro každý trezor a pak použít požadovanou zásadu u konkrétních databází. 
-
+> Některé rutiny vyžadují nastavit kontext trezoru před spuštěním ([Set-AzureRmRecoveryServicesVaultContext](/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext)), zobrazí se tato rutina v několika souvisejících fragmentech kódu. Můžete nastavit kontext, protože zásada je součástí trezoru. Můžete vytvořit více zásad uchovávání pro každý trezor a pak použít požadovanou zásadu u konkrétních databází.
 
 ```PowerShell
 # Retrieve the default retention policy for the AzureSQLDatabase workload type
@@ -218,7 +214,7 @@ Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName $resource
 
 ### <a name="view-backup-info-and-backups-in-long-term-retention"></a>Zobrazení informací o záloze a záloh v rámci dlouhodobého uchovávání
 
-Zobrazit informace o zálohách databáze v [dlouhodobého uchovávání záloh](sql-database-long-term-retention.md). 
+Zobrazit informace o zálohách databáze v [dlouhodobého uchovávání záloh](sql-database-long-term-retention.md).
 
 Chcete-li zobrazit informace o zálohování pomocí následujících rutin:
 
@@ -264,18 +260,17 @@ $restoredDb = Restore-AzureRmSqlDatabase -FromLongTermRetentionBackup -ResourceI
 $restoredDb
 ```
 
-
 > [!NOTE]
 > Odtud se můžete připojit k obnovené databázi pomocí SQL Server Management Studio a provádět požadované úlohy, například za účelem extrakce části dat z obnovené databáze a zkopírování do existující databáze nebo odstranění existující databáze a přejmenování obnovenou databáze na název existující databáze. Zobrazit [bodu v čase](sql-database-recovery-using-backups.md#point-in-time-restore).
 
 ## <a name="how-to-cleanup-backups-in-recovery-services-vault"></a>Postup vyčištění záloh v trezoru služby Recovery Services
 
-Od 1. července 2018 se už nepoužívá rozhraní API V1 zleva doprava a všechny existující zálohy v trezorech služby Recovery migroval do úložiště kontejnerů LTR spravovaných službou SQL Database. Pokud chcete mít jistotu, že se vám už nebude účtovat původní zálohy, že byly odebrány z tyto trezory po migraci. Ale pokud jste umístili zámek pro váš trezor záloh zůstane. Chcete-li se vyhnout zbytečným poplatkům, můžete ručně odebrat starší zálohy z trezor služby Recovery Services pomocí následujícího skriptu. 
+Od 1. července 2018 se už nepoužívá rozhraní API V1 zleva doprava a všechny existující zálohy v trezorech služby Recovery migroval do úložiště kontejnerů LTR spravovaných službou SQL Database. Pokud chcete mít jistotu, že se vám už nebude účtovat původní zálohy, že byly odebrány z tyto trezory po migraci. Ale pokud jste umístili zámek pro váš trezor záloh zůstane. Chcete-li se vyhnout zbytečným poplatkům, můžete ručně odebrat starší zálohy z trezor služby Recovery Services pomocí následujícího skriptu.
 
 ```PowerShell
 <#
 .EXAMPLE
-    .\Drop-LtrV1Backup.ps1 -SubscriptionId “{vault_sub_id}” -ResourceGroup “{vault_resource_group}” -VaultName “{vault_name}” 
+    .\Drop-LtrV1Backup.ps1 -SubscriptionId “{vault_sub_id}” -ResourceGroup “{vault_resource_group}” -VaultName “{vault_name}”
 #>
 [CmdletBinding()]
 Param (
@@ -302,14 +297,14 @@ $containers = Get-AzureRmRecoveryServicesBackupContainer -ContainerType AzureSQL
 
 ForEach ($container in $containers)
 {
-   $canDeleteContainer = $true  
+   $canDeleteContainer = $true
    $ItemCount = 0
    Write-Host "Working on container" $container.Name
    $items = Get-AzureRmRecoveryServicesBackupItem -container $container -WorkloadType AzureSQLDatabase
    ForEach ($item in $items)
    {
-          write-host "Deleting item" $item.name
-          Disable-AzureRmRecoveryServicesBackupProtection -RemoveRecoveryPoints -item $item -Force
+    write-host "Deleting item" $item.name
+    Disable-AzureRmRecoveryServicesBackupProtection -RemoveRecoveryPoints -item $item -Force
    }
 
    Write-Host "Deleting container" $container.Name

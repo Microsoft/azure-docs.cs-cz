@@ -2,18 +2,17 @@
 title: Azure Container Registry webhooků
 description: Další informace o použití webhooky k aktivační události, když dojde k určité akce v úložištích registru.
 services: container-registry
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-registry
 ms.topic: article
 ms.date: 08/20/2017
-ms.author: marsma
-ms.openlocfilehash: c424e81b13c3c60e975d3721693b1f80e00cfdd7
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.author: danlep
+ms.openlocfilehash: 350ae16aa66276e7e64c5c35718dca74a70f499e
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42059111"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854084"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Použití webhooků v Azure Container Registry
 
@@ -38,7 +37,7 @@ Podrobnosti o požadavky webhooku, najdete v části [referenční dokumentace s
 |---|---|
 | Název | Jméno, které chcete přidělit k webhooku. Může obsahovat jenom malá písmena a číslice a musí mít délku 5 až 50 znaků. |
 | Identifikátor URI služby | Identifikátor URI, kde by měl webhook odesílání oznámení příspěvku. |
-| Vlastní hlavičky | Hlavičky, které chcete předat spolu s požadavek POST. Uživatelé by měli být "klíč: hodnota" formátu. |
+| Vlastní záhlaví | Hlavičky, které chcete předat spolu s požadavek POST. Uživatelé by měli být "klíč: hodnota" formátu. |
 | Aktivační událost akce | Akce, které aktivují webhook. Webhooky můžou být aktivované nabízených image a/nebo odstranit některé akce. |
 | Status | Stav pro webhook po jeho vytvoření. Ve výchozím nastavení je povoleno. |
 | Rozsah | Rozsah, kdy se webhook funguje. Ve výchozím nastavení je oboru pro všechny události v registru. To se dá nastavit pro úložiště nebo značku ve formátu "úložiště: značka". |
@@ -55,7 +54,7 @@ Chcete-li vytvořit webhook pomocí Azure CLI, použijte [az acr webhook vytvoř
 az acr webhook create --registry mycontainerregistry --name myacrwebhook01 --actions delete --uri http://webhookuri.com
 ```
 
-## <a name="test-webhook"></a>Testovat webhook
+## <a name="test-webhook"></a>Test webhooku
 
 ### <a name="azure-portal"></a>portál Azure
 

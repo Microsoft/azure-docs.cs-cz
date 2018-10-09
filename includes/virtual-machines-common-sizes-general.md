@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: eac6c6d76bcc3b3d9cfeda7d8ca4e52e28ba9d8f
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 2d1a6bdb0cb53e3e58b4b4e8fed4bf29957d6489
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44369124"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48858073"
 ---
 Velikosti virtuálních počítačů pro obecné účely poskytují vyvážený poměr procesorů k paměti. Ideální pro testování a vývoj, malé a střední databáze a webové servery s nízkým a středním provozem. Tento článek obsahuje informace o počtu virtuálních procesorů, datové disky a síťové adaptéry, jakož i propustnost úložiště pro velikosti v této skupině. 
 
@@ -26,6 +26,8 @@ Velikosti virtuálních počítačů pro obecné účely poskytují vyvážený 
 - Dv3-series, funkcí procesoru 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) procesor nebo nejnovější procesorech 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell) procesoru v konfiguraci typu hyper, poskytuje lepší návrh hodnoty pro většinu obecných úloh účel.  Paměti došlo k rozbalení (z ~3.5 GiB/virtuální procesor do 4 GB a vCPU) zatímco disku a sítě limity byly upraveny na základě vázané na jádro, aby bylo v souladu s přechodem na hyperthreadingem.  Dv3 už má vysoký poměr paměti velikosti virtuálních počítačů řady D/Dv2, ty se přesunuly na novou řadu Ev3.
 
   Vzorové případy použití řady D-series zahrnují podnikových aplikací, relačních databází, ukládání do mezipaměti a analýzu. 
+  
+- [DC řad](#dc-series) je nová řada virtuálních počítačů v Azure, která můžou pomoct chránit důvěrnost a integrita dat a kódu při zpracovávání ve veřejném cloudu. Tyto počítače se zálohují na nejnovější generace 3,7 GHz procesoru Intel XEON E - 2176G SGX technologií. S technologií Intel Turbo Boost můžete tyto počítače přejít 4.7 GHz. Instance řady DC zákazníkům umožnit, aby vytváření zabezpečených aplikací enklávy chcete chránit svůj kód a data, když se používá
 
 ## <a name="b-series"></a>B-Series
 
@@ -138,6 +140,7 @@ Storage úrovně Premium: Není podporováno.
 
 Premium Storage ukládání do mezipaměti: Není podporováno
 
+
 | Velikost            | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální propustnost datových disků: IOPS | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) | 
 |-----------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_A1_v2  | 1         | 2           | 10             | 1000 / 20 / 10                                           | 2 / 2×500               | 2 / 250                 |
@@ -149,6 +152,22 @@ Premium Storage ukládání do mezipaměti: Není podporováno
 | Standard_A8m_v2 | 8         | 64          | 80             | 8000 / 160 / 80                                          | 16 / 16×500             | 8 / 2 000                     |
 
 <br>
+
+
+## <a name="dc-series"></a>Řadič domény series
+
+Storage úrovně Premium: podporováno
+
+Ukládání do mezipaměti služby Premium Storage: podporováno
+
+
+
+| Velikost          | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
+|---------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|-------------------------------------------|----------------------------------------------|
+| Standard_DC2s | 2    | 8           | 100                    | 2              | 4000 / 32 (43)                                                          | 3200 /48                                  | 2 / 1 500                                     |
+| Standard_DC4s | 4    | 16          | 200                    | 4              | 8000 / 64 (86)                                                          | 6400 /96                                  | 2 / 3000                                     |
+
+
 
 
 

@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.component: bing-image-search
 ms.topic: article
 ms.date: 04/24/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 30a266a1dc0441485b4f6ba70876ac32c3de0e14
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.author: rosh
+ms.openlocfilehash: 82a096ccc1ead9bfb542663ae193539fc227c1fb
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296464"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870243"
 ---
 # <a name="search-for-gif-images-using-the-bing-image-search-api"></a>Hledání obrázků GIF pomocí rozhraní API Bingu pro vyhledávání obrázků
 

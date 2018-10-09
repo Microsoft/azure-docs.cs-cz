@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/14/2018
+ms.date: 10/03/2018
 ms.author: sethm
-ms.reviewer: jeffgo
-ms.openlocfilehash: 9e579123124615df83483e244ef11810ca590844
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.reviewer: avishwan
+ms.openlocfilehash: 40ecb474b4faa4031cb364dfc1151c6fe6f09dd6
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45633959"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48856442"
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Vytvoření a publikování položky Marketplace
 
@@ -29,12 +29,15 @@ ms.locfileid: "45633959"
 1. [Stáhněte si](http://www.aka.ms/azurestackmarketplaceitem) nástroj Azure Galerie Packageru a ukázkové položky Azure Stack Marketplace.
 2. Otevření ukázkové položky Marketplace a přejmenovat **SimpleVMTemplate** složky. (Použijte stejný název jako vaše položky Marketplace – například **Contoso.TodoList**.) Tato složka obsahuje:
    
-       /Contoso.TodoList/
-       /Contoso.TodoList/Manifest.json
-       /Contoso.TodoList/UIDefinition.json
-       /Contoso.TodoList/Icons/
-       /Contoso.TodoList/Strings/
-       /Contoso.TodoList/DeploymentTemplates/
+   ```shell
+   /Contoso.TodoList/
+   /Contoso.TodoList/Manifest.json
+   /Contoso.TodoList/UIDefinition.json
+   /Contoso.TodoList/Icons/
+   /Contoso.TodoList/Strings/
+   /Contoso.TodoList/DeploymentTemplates/
+   ```
+
 3. [Vytvoření šablony Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md) nebo výběr šablony z Githubu. Položka Marketplace používá tuto šablonu k vytvoření prostředku.
 
     > [!Note]  
@@ -52,22 +55,30 @@ ms.locfileid: "45633959"
 8. V **manifest.json** změňte **název** k názvu položky Marketplace. Také změnit **vydavatele** na název vaší společnosti.
 9. V části **artefakty**, změňte **název** a **cesta** do správné informace pro šablony Azure Resource Manageru, který jste zahrnuli.
    
-         "artifacts": [
-            {
-                "name": "Type your template name",
-                "type": "Template",
-                "path": "DeploymentTemplates\\Type your path",
-                "isDefault": true
-            }
+   ```json
+   "artifacts": [
+      {
+          "name": "Type your template name",
+          "type": "Template",
+          "path": "DeploymentTemplates\\Type your path",
+          "isDefault": true
+      }
+   ```
+
 10. Nahraďte **Moje položky Marketplace** seznam kategorie, ve kterém by se měla zobrazit vaši položku Marketplace.
     
-             "categories":[
-                 "My Marketplace Items"
-              ],
+   ```json
+   "categories":[
+   "My Marketplace Items"
+   ],
+   ```
+
 11. Veškeré další úpravy do souboru manifest.json najdete [odkaz: manifest.json položky Marketplace](#reference-marketplace-item-manifestjson).
 12. Do složky balíčku do souboru .azpkg, otevřete příkazový řádek a spusťte následující příkaz:
     
-        AzureGalleryPackager.exe package –m <path to manifest.json> -o <output location for the package>
+   ```shell
+   AzureGalleryPackager.exe package –m <path to manifest.json> -o <output location for the package>
+   ```
     
     > [!NOTE]
     > Úplná cesta k výstupní balíčku musí existovat. Například pokud výstupní cesta je C:\MarketPlaceItem\yourpackage.azpkg, složka C:\MarketPlaceItem musí existovat.
@@ -79,8 +90,10 @@ ms.locfileid: "45633959"
 2. Na virtuálním klientovi v prostředí Microsoft Azure Stack Ujistěte se, že relace prostředí PowerShell je nastavené pomocí svých přihlašovacích údajů správce služby. Můžete najít pokyny k ověřování ve službě Azure Stack v Powershellu [nasazení šablony pomocí prostředí PowerShell](user/azure-stack-deploy-template-powershell.md).
 3. Při použití [PowerShell 1.3.0]( azure-stack-powershell-install.md) nebo později, můžete použít **přidat AzsGalleryItem** rutiny Powershellu k publikování položky Marketplace do služby Azure Stack. Před použitím prostředí PowerShell 1.3.0, použijte rutinu **přidat AzureRMGalleryitem** místo **přidat AzsGalleryItem**.  Například při použití prostředí PowerShell 1.3.0 nebo novější:
    
-       Add-AzsGalleryItem -GalleryItemUri `
-       https://sample.blob.core.windows.net/gallerypackages/Microsoft.SimpleTemplate.1.0.0.azpkg –Verbose
+   ```powershell
+   Add-AzsGalleryItem -GalleryItemUri `
+   https://sample.blob.core.windows.net/gallerypackages/Microsoft.SimpleTemplate.1.0.0.azpkg –Verbose
+   ```
    
    | Parametr | Popis |
    | --- | --- |
@@ -102,7 +115,9 @@ ms.locfileid: "45633959"
 
 6. Můžete odebrat položky Marketplace pomocí **odebrat AzureRMGalleryItem** rutiny. Příklad:
    
-        Remove-AzsGalleryItem -Name Microsoft.SimpleTemplate.1.0.0  –Verbose
+   ```powershell
+   Remove-AzsGalleryItem -Name Microsoft.SimpleTemplate.1.0.0  –Verbose
+   ```
    
    > [!NOTE]
    > Po odebrání položky se můžou zobrazovat uživatelského rozhraní Marketplace k chybě. Oprava chyby, klikněte na tlačítko **nastavení** na portálu. Vyberte **zahodit úpravy** pod **přizpůsobení portálu**.

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.reviewer: jonfan, LADocs
 ms.suite: integration
-ms.openlocfilehash: 001dc4d5057767191003697c5fb819e53a8658f2
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 681cafc60661e16d70deb862da71f6baf80509fd
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719932"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48856526"
 ---
 # <a name="migrate-biztalk-server-edi-solutions-to-biztalk-services-technical-guide"></a>Migrace řešení EDI z BizTalk serveru do BizTalk Services: technický průvodce
 
@@ -28,7 +28,7 @@ Recenzenti: Karthik Bharthy
 Napsané s využitím: verze Microsoft Azure BizTalk Services – únor 2014.
 
 ## <a name="introduction"></a>Úvod
-Elektronické výměny dat (EDI) je jedním z nejrozšířenější prostředky dat systému exchange které firmám elektronicky, také označován jako Business-to-Business nebo B2B transakce. BizTalk Server EDI podporu pro víc než dekádu od počáteční verze BizTalk severu došlo. Microsoft pokračuje s BizTalk Services v podpory pro řešení EDI z na platformě Microsoft Azure. B2B transakce jsou většinou externí vůči organizaci, a proto je snadnější implementovat, pokud bylo implementováno na cloudové platformě. Microsoft Azure poskytuje tuto funkci služby BizTalk Services.
+Elektronické výměny dat (EDI) je jedním z nejrozšířenější prostředky dat systému exchange které firmám elektronicky, také označován jako Business-to-Business nebo B2B transakce. BizTalk Server měl podporovat víc než dekádu od vydání počáteční BizTalk Server EDI. Microsoft pokračuje s BizTalk Services v podpory pro řešení EDI z na platformě Microsoft Azure. B2B transakce jsou většinou externí vůči organizaci, a proto je snadnější implementovat, pokud bylo implementováno na cloudové platformě. Microsoft Azure poskytuje tuto funkci služby BizTalk Services.
 
 Zatímco některé zákazníků si prohlédne BizTalk Services jako platforma "zelené louce" nová řešení EDI, řada zákazníků má aktuální řešení EDI z BizTalk serveru, která může být vhodné k migraci do Azure. Protože BizTalk Services EDI je navržena podle stejných klíčů entit jako architektura EDI z BizTalk serveru (obchodní partneři, entity, smlouvy), je možné k migraci artefaktů EDI z BizTalk serveru do BizTalk Services.
 

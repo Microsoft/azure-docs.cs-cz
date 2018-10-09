@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: e1884048d0f02de1b3a354bc4dac2b3e98dcccc9
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 17fec61e73298a6250cf6805bb9a713ff3d3a488
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47413474"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48858005"
 ---
 # <a name="virtual-machine-serial-console"></a>Konzola sériového portu virtuálního počítače
 
@@ -28,7 +28,7 @@ Konzole sériového portu virtuálního počítače v Azure poskytuje přístup 
 
 Dokumentaci konzoly sériového portu pro virtuální počítače s Linuxem [kliknutím sem](serial-console-linux.md).
 
-> [!Note] 
+> [!NOTE] 
 > Konzola sériového portu u virtuálních počítačů je obecně dostupná v globálními oblastmi Azure. V tomto okamžiku konzoly sériového portu ještě není k dispozici v cloudu Azure Government nebo Azure China.
 
  
@@ -83,9 +83,12 @@ Pokud je potřeba povolit Windows spouštěcí zavaděč zobrazí výzvu k zobra
 1. Připojte se k virtuálnímu počítači přes vzdálenou plochu Windows
 2. Z příkazového řádku pro správu spusťte následující příkazy 
 * `bcdedit /set {bootmgr} displaybootmenu yes`
-* `bcdedit /set {bootmgr} timeout 5`
+* `bcdedit /set {bootmgr} timeout 30`
 * `bcdedit /set {bootmgr} bootems yes`
 3. Restartování systému pro spouštěcí nabídky, aby byl povolen
+
+> [!NOTE] 
+> Časový limit, který jste nastavili pro spouštěcí nabídky Správce zobrazení bude mít vliv na váš operační systém spouštění čas v budoucnosti. Může být přijatelný pro některá přidat 30 druhý časový limit, který zajišťuje správce spouštění viditelné prostřednictvím konzoly sériového portu, ostatní může být vhodné kratší časový limit. Nastavte hodnotu časového limitu na hodnotu, která jste obeznámeni.
 
 ## <a name="use-serial-console-for-nmi-calls-in-windows-vms"></a>Použití konzoly sériového portu pro volání NMI ve virtuálních počítačích Windows
 Maskable přerušení (NMI) slouží k vytvoření signál, který nebude ignorovat softwaru na virtuálním počítači. V minulosti NMIs se používají ke sledování hardwarových problémů v systémech, které vyžaduje konkrétní odezvy.  Dnes, programátoři a správce systému často používají NMI jako mechanismus pro ladění nebo řešení potíží s systémy, které jsou zablokovaná.
@@ -99,7 +102,7 @@ Informace o konfiguraci Windows vytvořit výpis stavu systému, když dostane N
 ## <a name="disable-serial-console"></a>Zakázat konzoly sériového portu
 Všechna předplatná mají ve výchozím přístupem ke konzole sériového portu pro všechny virtuální počítače. Konzola sériového portu na úrovni předplatného nebo na úrovni virtuálního počítače můžete kdykoli deaktivovat.
 
-> [!Note]       
+> [!NOTE]       
 > Pokud chcete povolit nebo zakázat konzoly sériového portu k předplatnému, musíte mít oprávnění k zápisu do předplatného. To zahrnuje, ale není omezena pouze na role správce nebo vlastníka. Vlastní role může mít také oprávnění k zápisu.
 
 ### <a name="subscription-level-disable"></a>Zakázat úroveň předplatného

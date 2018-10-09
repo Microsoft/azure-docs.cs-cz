@@ -10,12 +10,12 @@ author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 673b8ddf3ed07507cbce4b54e9b8a488cb3ac689
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 83373f5d6e4a2227bcafdbc4b25b686b0b8d651d
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166601"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867183"
 ---
 # <a name="prepare-data-for-modeling-with-azure-machine-learning"></a>Příprava dat pro modelování s Azure Machine Learning
  
@@ -34,4 +34,4 @@ Přípravné kroky hlavní data jsou:
 ![Proces přípravy dat.](./media/concept-data-preparation/data-prep-process.png)
 
 ## <a name="next-steps"></a>Další postup
-Kontrola [Poznámkový blok příklad](https://github.com/Microsoft/PendletonDocs/blob/master/Scenarios/GettingStarted/getting-started.ipynb) přípravy dat pomocí sady SDK pro Azure Machine Learning Data Prep.
+Kontrola [Poznámkový blok příklad](https://github.com/Microsoft/MSDataPrepDocs/blob/master/Scenarios/GettingStarted/getting-started.ipynb) přípravy dat pomocí sady SDK pro Azure Machine Learning Data Prep.

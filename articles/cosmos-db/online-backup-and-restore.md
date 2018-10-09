@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: govindk
-ms.openlocfilehash: 77f22201b897703f6e74a5a3626a2ccc04a814f4
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 580c7410119a26ed3601c7c6ee020a13029339fe
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043222"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867795"
 ---
 # <a name="automatic-online-backup-and-restore-with-azure-cosmos-db"></a>Automatické online zálohování a obnovení pomocí služby Azure Cosmos DB
-Azure Cosmos DB automaticky provede zálohování vašich dat v pravidelných intervalech. Automatické zálohy jsou prováděny bez vlivu na výkon nebo dostupnost databázových operací. Všechny zálohy jsou uloženy odděleně v jiné službě úložiště a tyto zálohy jsou globálně replikuje odolnosti proti místní havárií. Automatické zálohování jsou určené pro scénáře, pokud omylem odstraníte kontejneru Cosmos DB a později vyžadují obnovení dat nebo řešení zotavení po havárii.  
+Azure Cosmos DB automaticky provede zálohování vašich dat v pravidelných intervalech. Automatické zálohy jsou prováděny bez vlivu na výkon nebo dostupnost databázových operací. Všechny zálohy jsou uloženy odděleně v jiné službě úložiště a tyto zálohy jsou globálně replikuje odolnosti proti místní havárií. Pokud omylem odstraníte kontejneru Cosmos DB a později vyžadují obnovení dat, automatické zálohování jsou určené pro scénáře.  
 
 Tento článek začíná rychlá rekapitulace toho, tak redundanci dat a dostupnost ve službě Cosmos DB a pak popisuje zálohování. 
 
@@ -67,14 +67,17 @@ Pokud je potřeba obnovit databázi z důvodu problému poškození dat (včetn�
 
 Azure Cosmos DB uchovává poslední dvě zálohy každý oddíl v databázovém účtu. Tento model funguje dobře, když kontejner (kolekce dokumentů, tabulka, graf) nebo databáze je omylem odstranili, protože jedna z posledních verzí můžete obnovit. Ale v případě, když uživatelé může představovat problém poškození dat, Azure Cosmos DB může je nezajímat se o poškození dat a je možné, že poškození může přepsat existující zálohy. 
 
-Jakmile se detekuje poškození, kontaktujte zákaznickou podporu s účet a kontejner informace o databázi s přibližný čas poškození. Další akce, které může uživatel provést v případě klíčových poškozen (odstranění dat aktualizace byla) uživatele odstraňte poškozený kontejner (kolekci/graf a tabulka) tak, aby zálohování jsou chráněny před přepsáním s poškozenými daty.  
+Poté, co je zjištěno, odstraňte uživatele poškozená kontejner (kolekci/graf a tabulka) tak, aby zálohování jsou chráněny před přepsáním s poškozenými daty. A co je nejdůležitější, kontaktujte Microsoft Support a vyvolat lístek s konkrétním požadavkem závažnost 2. 
 
 Následující obrázek ukazuje vytvoření žádosti o podporu pro container(collection/graph/table) obnovení prostřednictvím portálu Azure portal k náhodnému odstranění nebo aktualizaci dat v rámci kontejneru
 
 ![Obnovit jako kontejner pro chybné aktualizace nebo odstranění dat ve službě Cosmos DB](./media/online-backup-and-restore/backup-restore-support.png)
 
-Po dokončení obnovení se pro tento druh scénářů – obnovení dat do jiného účtu (s příponou "-obnovit") a kontejner. Tato obnovení se provádí na místě možnost poskytovat zákazníkům ověřování dat a přesun dat podle potřeby. Obnovené kontejner je ve stejné oblasti s stejné a zásady indexování. 
+Po dokončení obnovení se pro tento druh scénářů – obnovení dat do jiného účtu (s příponou "-obnovit") a kontejner. Tato obnovení se provádí na místě možnost poskytovat zákazníkům ověřování dat a přesun dat podle potřeby. Obnovené kontejner je ve stejné oblasti s stejné a zásady indexování. Uživatel, který je správcem předplatného nebo spolupracujícího správce uvidí tento účet obnovený.
 
+
+> [!NOTE]
+> Je-li obnovit data pro opravu poškození nebo jenom pro testování, prosíme o jejich odebrání brzy jako úloha probíhá obnovení kontejnery nebo databázi stojí navíc – podle zřízené propustnosti. 
 ## <a name="next-steps"></a>Další postup
 
 Replikovat vaši databázi v několika datových centrech, naleznete v tématu [distribuci dat pomocí služby Cosmos DB](distribute-data-globally.md). 

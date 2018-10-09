@@ -146,7 +146,7 @@
 ## Integrace
 ### [Jak odeslat e-maily v Azure pomocí SendGridu](../sendgrid-dotnet-how-to-send-email.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Export do PowerApps a Microsoft Flow](../azure-functions/app-service-export-api-to-powerapps-and-flow.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Použití služby Managed Service Identity](../app-service/app-service-managed-service-identity.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Použití spravované identity](../app-service/app-service-managed-service-identity.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## Řešení potíží
 ### Obecné řešení potíží v Mobile Apps

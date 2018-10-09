@@ -9,12 +9,12 @@ ms.author: mattfarm
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/15/2018
-ms.openlocfilehash: 2ffb1f7edef0cf92cbbf7adc4314967858bcfeb1
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 8fbc84b4016659b6d0d6ce9ec47c05a0b241c3d9
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128639"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855370"
 ---
 # <a name="enterprise-integration-architecture-with-queues-and-events"></a>Architektura integrace Enterprise s frontami a události
 
@@ -81,7 +81,7 @@ Event Grid používá model bez serveru. Fakturace se vypočítá podle počet o
 
 ### <a name="use-peeklock-to-consume-service-bus-messages"></a>Pomocí PeekLock využívat zprávy služby Service Bus
 
-Když vytvoříte aplikaci logiky, která využívat zprávy služby Service Bus, jste svou aplikaci logiky použít [PeekLock](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md#queues) pro přístup k skupinu zpráv. Při použití PeekLock aplikace logiky může provést kroky k ověření každou zprávu před dokončením nebo opuštění. Tento přístup chrání před ztrátou náhodného zprávy.
+Když vytvoříte aplikaci logiky, která využívat zprávy služby Service Bus, jste svou aplikaci logiky použít [PeekLock](../service-bus-messaging/service-bus-messaging-overview.md#queues) pro přístup k skupinu zpráv. Při použití PeekLock aplikace logiky může provést kroky k ověření každou zprávu před dokončením nebo opuštění. Tento přístup chrání před ztrátou náhodného zprávy.
 
 ### <a name="check-for-multiple-objects-when-an-event-grid-trigger-fires"></a>Vyhledat více objektů, když se aktivuje trigger Event Grid
 

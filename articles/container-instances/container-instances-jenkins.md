@@ -2,18 +2,17 @@
 title: Použití Azure Container Instances jako Jenkins agenta sestavení
 description: Zjistěte, jak pomocí Azure Container Instances, jak agenta sestavení Jenkinse.
 services: container-instances
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-instances
 ms.topic: article
 ms.date: 08/31/2018
-ms.author: marsma
-ms.openlocfilehash: 9108d9e1b230fe2267f0195bd2c33c5a4c57d956
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.author: danlep
+ms.openlocfilehash: dde40b8f53aa40f1c15fe0efd810889b8c4510fb
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44021936"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854858"
 ---
 # <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>Použití Azure Container Instances jako Jenkins agenta sestavení
 

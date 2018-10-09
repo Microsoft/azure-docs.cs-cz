@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: spelluru
-ms.openlocfilehash: a15e726e237bcdbd9d380aaf9232e5d16a2e648f
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 631c4334b1e2ca37dfc87709718b6639c2762c5c
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409131"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857682"
 ---
 # <a name="message-sequencing-and-timestamps"></a>Určování pořadí zpráv a časová razítka
 
@@ -26,7 +26,7 @@ Informace o sekvencování a časového razítka jsou dvě funkce, které jsou v
 
 Pro případy, ve kterých je důležité absolutní pořadí zpráv a/nebo ve kterém spotřebitel musí důvěryhodného jedinečný identifikátor zpráv, zpráv razítka zprostředkovatele s gap, bez zvýšení pořadové číslo vzhledem k fronty nebo tématu. Pro dělené entity je vydána pořadové číslo vzhledem k oddílu.
 
-**SequenceNumber** hodnota je jedinečné celé 64-bit přiřazená zpráva přijata a uložena jako jeho interní identifikátor zprostředkovatele a funkcemi. Pro dělené entity nejvyšší 16 bitů, aby odrážely identifikátor oddílu. Pořadová čísla nespotřebujete hodnotě nula. když se vyčerpá rozsah 48 a 64 bitů.
+**SequenceNumber** hodnota je jedinečné celé 64-bit přiřazená zpráva přijata a uložena jako jeho interní identifikátor zprostředkovatele a funkcemi. Pro dělené entity nejvyšší 16 bitů, aby odrážely identifikátor oddílu. Pořadová čísla nespotřebujete na hodnotu nula, když se vyčerpá rozsah 48 a 64-bit.
 
 Pořadové číslo může být důvěryhodné jako jedinečný identifikátor, protože je přiřazena autoritou – střed a neutrální a ne klienty. Také představuje true pořadí doručení a můžete ji přesnější než časové razítko jako kritérium pořadí, protože časová razítka nemusí mít dostatečné řešení sazby extreme zprávu a se můžou stát terčem (ale minimální) hodiny zkosení v situacích, kdy zprostředkovatel vlastnictví přechází mezi uzly.
 
@@ -50,7 +50,6 @@ Protože tato funkce je ukotven na jednotlivé zprávy a zprávy může být pou
 
 Další informace o zasílání zpráv Service Bus, najdete v následujících tématech:
 
-* [Základy služby Service Bus](service-bus-fundamentals-hybrid-solutions.md)
 * [Fronty, témata a odběry služby Service Bus](service-bus-queues-topics-subscriptions.md)
 * [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)
 * [Jak používat témata a odběry Service Bus](service-bus-dotnet-how-to-use-topics-subscriptions.md)

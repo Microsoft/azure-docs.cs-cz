@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: lmolkova
-ms.openlocfilehash: 59aa3ec8ee417bec68cfec181f63dc1910100c3f
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 2e4ff84c957540aa6863cd9836b1744e73c5b2f5
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392768"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854877"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Distribuované trasování a korelace prostřednictvím zasílání zpráv Service Bus
 
@@ -227,7 +227,6 @@ Za přítomnosti více `DiagnosticSource` naslouchací procesy pro stejný zdroj
 
 ## <a name="next-steps"></a>Další postup
 
-* [Základy služby Service Bus](service-bus-fundamentals-hybrid-solutions.md)
 * [Application Insights korelace](../application-insights/application-insights-correlation.md)
 * [Application Insights monitorovat závislosti](../application-insights/app-insights-asp-net-dependencies.md) zobrazíte, pokud REST, SQL nebo jiných externích prostředků vás zpomalují.
 * [Sledování vlastních operací pomocí Application Insights .NET SDK](../application-insights/application-insights-custom-operations-tracking.md)

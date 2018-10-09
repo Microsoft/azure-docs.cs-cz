@@ -11,15 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 25bb665d9ea9166d099ab7f3f9696d92da8314e9
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/05/2018
+ms.openlocfilehash: c54a644b140d65ccad1a3cba6c5a07a8e201cddb
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161810"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869614"
 ---
-# <a name="data-dependent-routing"></a>Směrování závislé na datech
+# <a name="use-data-dependent-routing-to-route-a-query-to-appropriate-database"></a>Použijte závislé na datech směrování směrovat dotaz k příslušné databázi
+
 **Směrování závislé na datech** je možnost používat data v dotazu pro směrování požadavku k příslušné databázi. Směrování dat závislé je základní vzor, pokud pracujete s horizontálně dělené databáze. Kontext požadavku může také sloužit pro směrování požadavku, zejména v případě, že je klíč horizontálního dělení není součástí dotazu. Je omezena na jednu databázi na žádost o přístup k každé konkrétní dotaz nebo transakce v aplikaci pomocí směrování závislé na datech. Pro nástroje Azure SQL Database Elastic tento směrování se provádí pomocí **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)) třídy.
 
 Aplikace nemusí pro sledování různých připojovací řetězce nebo DB umístění přidružené k jiné řezy dat v horizontálně dělené prostředí. Místo toho [správce mapování horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md) otevře připojení na správné databáze, pokud je nepotřebujete, založené na datech z mapy horizontálních oddílů a hodnota klíče horizontálního dělení, která je cílem dané žádosti o aplikace. Klíč je obvykle *customer_id*, *tenant_id*, *date_key*, nebo některé konkrétní identifikátor, který je základní parametr požadavek databáze. 

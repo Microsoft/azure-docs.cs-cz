@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: 1a02fd604d08e87c84a73657b7204ecb42b3498b
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: c94d4d4beea22e68a581cd208a25f915e4217614
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393175"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870872"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak používat Azure API Management s virtuálními sítěmi
 Virtuální sítě Azure (Vnet) umožňuje umístit některé z vašich prostředků Azure, které řídí přístup k síti možnosti směrování Internetu jiných. Potom se dá propojit tyto sítí k místním sítím pomocí různých technologií VPN. Další informace o Azure Virtual Networks začínat tyto informace tady: [Přehled služby Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -106,19 +106,21 @@ Tady je seznam častých problémech, které mohou nastat při nasazení služby
 
 Když jsou instance služby API Management je hostované ve virtuální síti, se používají porty v následující tabulce.
 
-| Zdrojové a cílové porty | Směr | Přenosový protokol | Zdroj a cíl | Účel (*) | Typ virtuální sítě |
-| --- | --- | --- | --- | --- | --- |
-| * / 80, 443 |Příchozí |TCP |INTERNET / VIRTUAL_NETWORK|Komunikace klienta do API managementu|Externí |
-| * / 3443 |Příchozí |TCP |APIMANAGEMENT / VIRTUAL_NETWORK|Koncový bod správy pro Azure portal a Powershellu |Externí a interní |
-| * / 80, 443 |Odchozí |TCP |VIRTUAL_NETWORK / úložiště|**Závislost na Azure Storage**|Externí a interní |
-| * / 80, 443 |Odchozí |TCP |VIRTUAL_NETWORK / INTERNET| Azure Active Directory (v případě potřeby)|Externí a interní |
-| * / 1433 |Odchozí |TCP |VIRTUAL_NETWORK / SQL|**Přístup ke koncovým bodům Azure SQL** |Externí a interní |
-| * / 5672 |Odchozí |TCP |VIRTUAL_NETWORK / centra událostí |Závislost pro protokol do zásady centra událostí a agenta monitorování |Externí a interní |
-| * / 445 |Odchozí |TCP |VIRTUAL_NETWORK / úložiště |Závislost na sdílenou složku Azure pro GIT |Externí a interní |
-| * / 1886 |Odchozí |TCP |VIRTUAL_NETWORK / INTERNET|Potřebné k publikování stav Resource Health |Externí a interní |
-| * / 25028 |Odchozí |TCP |VIRTUAL_NETWORK / INTERNET|Připojení k serveru SMTP pro odeslání e-mailů |Externí a interní |
-| * / 6381 - 6383 |Příchozí a odchozí |TCP |VIRTUAL_NETWORK / VIRTUAL_NETWORK|Instance služby Redis Cache přístupu mezi RoleInstances |Externí a interní |
-| * / * | Příchozí |TCP |AZURE_LOAD_BALANCER / VIRTUAL_NETWORK| Nástroj pro vyrovnávání zatížení infrastruktury Azure |Externí a interní |
+| Zdrojové a cílové porty | Směr          | Přenosový protokol | Zdroj a cíl                  | Účel (*)                                                 | Typ virtuální sítě |
+|------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
+| * / 80, 443                  | Příchozí            | TCP                | INTERNET / VIRTUAL_NETWORK            | Komunikace klienta do API managementu                      | Externí             |
+| * / 3443                     | Příchozí            | TCP                | APIMANAGEMENT / VIRTUAL_NETWORK       | Koncový bod správy pro Azure portal a Powershellu         | Externí a interní  |
+| * / 80, 443                  | Odchozí           | TCP                | VIRTUAL_NETWORK / úložiště             | **Závislost na Azure Storage**                             | Externí a interní  |
+| * / 80, 443                  | Odchozí           | TCP                | VIRTUAL_NETWORK / INTERNET            | Azure Active Directory (v případě potřeby)                   | Externí a interní  |
+| * / 1433                     | Odchozí           | TCP                | VIRTUAL_NETWORK / SQL                 | **Přístup ke koncovým bodům Azure SQL**                           | Externí a interní  |
+| * / 5672                     | Odchozí           | TCP                | VIRTUAL_NETWORK / centra událostí            | Závislost pro protokol do zásady centra událostí a agenta monitorování | Externí a interní  |
+| * / 445                      | Odchozí           | TCP                | VIRTUAL_NETWORK / úložiště             | Závislost na sdílenou složku Azure pro GIT                      | Externí a interní  |
+| * / 1886                     | Odchozí           | TCP                | VIRTUAL_NETWORK / INTERNET            | Potřebné k publikování stav Resource Health          | Externí a interní  |
+| * / 25                       | Odchozí           | TCP                | VIRTUAL_NETWORK / INTERNET            | Připojení k serveru SMTP pro odeslání e-mailů                    | Externí a interní  |
+| * / 587                      | Odchozí           | TCP                | VIRTUAL_NETWORK / INTERNET            | Připojení k serveru SMTP pro odeslání e-mailů                    | Externí a interní  |
+| * / 25028                    | Odchozí           | TCP                | VIRTUAL_NETWORK / INTERNET            | Připojení k serveru SMTP pro odeslání e-mailů                    | Externí a interní  |
+| * / 6381 - 6383              | Příchozí a odchozí | TCP                | VIRTUAL_NETWORK / VIRTUAL_NETWORK     | Instance služby Redis Cache přístupu mezi RoleInstances          | Externí a interní  |
+| * / *                        | Příchozí            | TCP                | AZURE_LOAD_BALANCER / VIRTUAL_NETWORK | Nástroj pro vyrovnávání zatížení infrastruktury Azure                          | Externí a interní  |
 
 >[!IMPORTANT]
 > Porty, pro kterou *účel* je **tučné** jsou požadovány pro službu API Management na úspěšné nasazení. Ostatní porty blokuje ale způsobí snížení v možnost použití a sledování spuštěnou službu.
@@ -129,11 +131,13 @@ Když jsou instance služby API Management je hostované ve virtuální síti, s
 
 * **Metriky a monitorování stavu**: odchozího síťového připojení k Azure monitorování koncových bodů, které vyřešit podle následujících domén: 
 
-    | Prostředí Azure | Koncové body |
-    | --- | --- |
-    | Veřejné Azure | <ul><li>prod.warmpath.msftcloudes.com</li><li>shoebox2.Metrics.nsatc.NET</li><li>prod3.Metrics.nsatc.NET</li><li>prod3 black.prod3.metrics.nsatc.net</li><li>prod3 red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com kde `East US 2` je eastus2.warm.ingestion.msftcloudes.com</li></ul> |
-    | Azure Government | <ul><li>fairfax.warmpath.usgovcloudapi.NET</li><li>shoebox2.Metrics.nsatc.NET</li><li>prod3.Metrics.nsatc.NET</li></ul> |
-    | Azure (Čína) | <ul><li>mooncake.warmpath.chinacloudapi.CN</li><li>shoebox2.Metrics.nsatc.NET</li><li>prod3.Metrics.nsatc.NET</li></ul> |
+    | Prostředí Azure | Koncové body                                                                                                                                                                                                                                                                                                                                                              |
+    |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | Veřejné Azure      | <ul><li>prod.warmpath.msftcloudes.com</li><li>shoebox2.Metrics.nsatc.NET</li><li>prod3.Metrics.nsatc.NET</li><li>prod3 black.prod3.metrics.nsatc.net</li><li>prod3 red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com kde `East US 2` je eastus2.warm.ingestion.msftcloudes.com</li></ul> |
+    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.NET</li><li>shoebox2.Metrics.nsatc.NET</li><li>prod3.Metrics.nsatc.NET</li></ul>                                                                                                                                                                                                                                                |
+    | Azure (Čína)       | <ul><li>mooncake.warmpath.chinacloudapi.CN</li><li>shoebox2.Metrics.nsatc.NET</li><li>prod3.Metrics.nsatc.NET</li></ul>                                                                                                                                                                                                                                                |
+
+* **Nastavením předávání SMTP**: odchozího síťového připojení pro předávání SMTP, který řeší v rámci hostitele `ies.global.microsoft.com`.
 
 * **Portál Azure Diagnostics**: Povolit tok diagnostické protokoly z webu Azure portal, při použití rozšíření pro správu rozhraní API z uvnitř virtuální sítě, odchozí přístup k `dc.services.visualstudio.com` na portu 443 je povinný. To pomáhá s řešením problémů, na které může setkat při použití rozšíření.
 

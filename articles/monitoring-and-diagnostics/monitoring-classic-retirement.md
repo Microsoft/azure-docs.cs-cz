@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 10b1d2088a489c73d8929bdf22069e21b8beac50
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 64d135ba336ca31fe6db5193f9f19c8c2340b454
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817493"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854843"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Sjednocené upozorňování a monitorování ve službě Azure Monitor nahradí classic upozorňování a monitorování
 
@@ -33,7 +33,7 @@ Nová jednotná monitorování a upozorňování pro službu Application Insight
 
 - **Application Insights platformy metriky** – které obsahuje oblíbené předem připravené metriky z produktu Application Insights. Další informace najdete v článku o používání [platformy metriky pro službu Application Insights na nový Azure Monitor](../application-insights/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics).
 - **Test dostupnosti Application Insights a Web** – které poskytuje možnost vyhodnotit rychlost reakce a dostupnost webové aplikace nebo serveru. Další informace najdete v článku o používání [testy dostupnosti a výstrah pro službu Application Insights na nový Azure Monitor](../application-insights/app-insights-monitor-web-app-availability.md).
-- **Application Insights vlastní metriky** – umožňuje definovat a generovat vlastní metriky pro monitorování a výstrah. Další informace najdete v článku o používání [vlastní metriky pro službu Application Insights na nový Azure Monitor](../application-insights/pre-aggregated-metrics-log-metrics.md#using-pre-aggregation-with-application-insights-custom-metrics).
+- **Application Insights vlastní metriky** – umožňuje definovat a generovat vlastní metriky pro monitorování a výstrah. Další informace najdete v článku o používání [vlastní metriky pro službu Application Insights na nový Azure Monitor](../application-insights/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation).
 - **Anomálie selhání Application Insights (součást inteligentního zjišťování)** – což automaticky upozorní téměř v reálném čase, zda neobvyklý nárůst míry neúspěšných žádostí HTTP a volání závislostí prostředích vašich webových aplikací. Anomálie selhání Insights (součást inteligentního zjišťování) aplikace jako součást nové monitorování Azure, bude brzy k dispozici a budeme aktualizovat tento dokument s odkazy na další iteraci jako to je zavést v nadcházejících měsících.
 
 ## <a name="unified-metrics--alerts-for-other-azure-resources"></a>Sjednocené metriky a výstrahy pro ostatní prostředky Azure
@@ -46,7 +46,7 @@ Jsou k dispozici jako novější metriky pro prostředky Azure:
 
 ## <a name="retirement-of-classic-monitoring-and-alerting-platform"></a>Vyřazení klasických monitorování a upozorňování platformy
 
-Jak bylo uvedeno dříve, classic monitorování a výstrah z aktuálně použitelné platformy [upozornění (klasická) části](monitoring-overview-alerts-classic.md) Azure portal se vyřadí z provozu během 12 měsíců vzhledem, byla nahrazena novější systém.
+Jak bylo uvedeno dříve, classic monitorování a výstrah z aktuálně použitelné platformy [upozornění (klasická) části](monitoring-overview-alerts-classic.md) Azure portal se vyřadí z provozu v odesílaných měsíců vzhledem, byla nahrazena novější systém.
 Starší classic monitorování a upozorňování se vyřadí z provozu 30. června 2019; včetně uzavření související rozhraní API, rozhraní Azure portal a služby v ní. Konkrétně přestanou používat tyto funkce:
 
 - Starší (classic) metrik a výstrah pro prostředky Azure jako aktuálně k dispozici prostřednictvím [upozornění (klasická) části](monitoring-overview-alerts-classic.md) Azure portal; přístupná jako [microsoft.insights/alertrules](https://docs.microsoft.com/en-us/rest/api/monitor/alertrules) prostředků
@@ -55,7 +55,7 @@ Starší classic monitorování a upozorňování se vyřadí z provozu 30. čer
 
 Všechny klasické monitorování a upozorňování systémy včetně odpovídající [API](https://msdn.microsoft.com/library/azure/dn931945.aspx), [PowerShell](insights-alerts-powershell.md), [rozhraní příkazového řádku](insights-alerts-command-line-interface.md), [stránky Azure portal a [šablony Resource](monitoring-enable-alerts-using-template.md) zůstane až do června 2019 použitelné. Po tomto datu classic monitorování a výstrahy služby budou vyřazený a už nebude k dispozici pro použití; Při jakékoli upozornění pravidla, která nadále existovat v upozornění (klasická) nad rámec 2019 dne bude dál spustit, ale není k dispozici pro úpravy.
 
-Všechny výstrahy zbývajících v klasickém monitoring a alerting platformy nad rámec 2019 dne, bude automaticky migrovat od Microsoftu na ekvivalentní na nové platformě Azure monitor v říjnu 2019. Proces bude bezproblémové bez jakýchkoli prostojů a ujistěte se, že zákazníci mají bez ztráty monitorování pokrytí.
+Všechny výstrahy zbývajících v klasickém monitoring a alerting platformy nad rámec 2019 dne, bude automaticky migrovat od Microsoftu na ekvivalentní na nové platformě Azure monitor v červenci 2019. Proces bude bezproblémové bez jakýchkoli prostojů a ujistěte se, že zákazníci mají bez ztráty monitorování pokrytí.
 
 Brzy budeme poskytovat nástroje, aby bylo možné odpojit migrovat vaše upozornění z [upozornění (klasická) části](monitoring-overview-alerts-classic.md) z webu Azure portal a nová upozornění Azure. Všechna pravidla nakonfigurovaných ve výstrahách (classic), které se migrují na nový Azure Monitor, zůstanou a nebudou účtovat. Migrované pravidla upozornění classic také nenese žádné poplatky pro odesílání nabízených oznámení prostřednictvím e-mailu, webhooku nebo aplikaci LogicApp. Použití novější oznámení nebo akce typů (jako je SMS, hlasovým hovorem, integraci ITSM atd.) bude však fakturovatelné, zda je přidána do migrovaných nebo nové výstrahy. Další informace najdete v tématu [ceny služby Azure Monitor](https://azure.microsoft.com/en-us/pricing/details/monitor/).
 

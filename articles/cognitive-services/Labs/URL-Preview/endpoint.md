@@ -1,27 +1,28 @@
 ---
-title: Projekt koncového bodu adresy URL náhledu - kognitivní služby Microsoft | Microsoft Docs
-description: Souhrn Preview adresu URL koncového bodu.
+title: Projekt ve verzi Preview se adresy URL koncového bodu
+titlesuffix: Azure Cognitive Services
+description: Přehled koncového bodu adresy URL náhledu.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: ddd53aa49db01d7a6db397eb285d0854edc59388
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0464ac80c451ada46561de78b5ba0860c59a9e34
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343236"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868645"
 ---
-# <a name="project-url-preview-endpoint"></a>Koncového bodu náhledu adresa URL projektu
+# <a name="project-url-preview-endpoint"></a>Projekt ve verzi Preview se adresy URL koncového bodu
 
-Rozhraní API Preview adresa URL obsahuje jeden koncový bod.
+Rozhraní API ve verzi Preview adresa URL obsahuje jeden koncový bod.
 
 ## <a name="endpoint"></a>Koncový bod
-Chcete-li získat adresu URL náhledu, odeslat požadavek na následující koncový bod. Použijte pro jiné specifikace hlaviček a parametrů adresy URL.
+Pokud chcete získat adresu URL ve verzi Preview, odesílejte požadavek na následující koncový bod. Použijte pro jiné specifikace hlaviček a parametrů adresy URL.
 
 GET:
 ````
@@ -32,12 +33,12 @@ https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=https://swiftk
 ### <a name="query-parameters"></a>Parametry dotazu
 |Název|Hodnota|Typ|Požaduje se|  
 |----------|-----------|----------|--------------|  
-|OTÁZKY|Adresa URL pro zobrazení náhledu|Řetězec |Ano|
-|bezpečné hledání|Neplatný obsah pro dospělé nebo nelegální obsahu, je blokovaný s kódem chyby 400 a *isFamilyFriendly* příznak nevrátí. <p>Pro právní obsah pro dospělé je nižší než chování. Stavový kód vrátí hodnotu 200 a *isFamilyFriendly* příznak nastaven na hodnotu false.<ul><li>bezpečné hledání = strict: název, popis, adresa URL, bitové kopie nejsou k dispozici.</li><li>bezpečné hledání = mírný; Získáte název, URL a popis ale není popisný bitové kopie.</li><li>bezpečné hledání = vypnuto; Získáte všechny odpovědi objekty nebo prvky – název, URL, popis a bitové kopie.</li></ul> |Řetězec|Není požadováno. </br> Výchozí nastavení je bezpečné hledání = strict.| 
+|q|Adresa URL ve verzi preview|Řetězec |Ano|
+|bezpečné hledání|Neplatný obsah pro dospělé nebo nelegální obsah blokovaný s kódem chyby 400 a *isFamilyFriendly* příznak nevrátí. <p>Platný obsah pro dospělé níže je chování. Vrátí stavový kód 200 a *isFamilyFriendly* je příznak nastaven na hodnotu false.<ul><li>bezpečné hledání = strict: název, popis, adresu URL a image se nezobrazí.</li><li>bezpečné hledání = střední; Získejte název, adresu URL a popis, ale není popisný obraz.</li><li>bezpečné hledání = off; Získejte odpovědi objekty/všeho – název, URL, popis a obrázek.</li></ul> |Řetězec|Není nutné. </br> Výchozí hodnota je bezpečné hledání = strict.| 
 
 ## <a name="response-object"></a>Objekt odpovědi
 
-Odpověď obsahuje hlavičky protokolu HTTP a objekt webová stránka s atributy, jak je znázorněno v následujícím příkladu: `name`, `url`, `description`, `isFamilyFriendly`, a `primaryImageOfPage`.
+Odpověď obsahuje hlavičky protokolu HTTP a objekt webovou stránku s atributy, jak je znázorněno v následujícím příkladu: `name`, `url`, `description`, `isFamilyFriendly`, a `primaryImageOfPage`.
 
 ````
 BingAPIs-TraceId: 15AFE52A97AA422F960433A94803F6CE
@@ -60,7 +61,7 @@ X-MSEdge-Ref: Ref A: 15AFE52A97AA422F960433A94803F6CE Ref B: PAOEDGE0418 Ref C: 
 
 ## <a name="next-steps"></a>Další postup
 - [Rychlý start C#](csharp.md)
-- [Rychlý start Java](java-quickstart.md)
-- [Rychlý start JavaScript](javascript.md)
-- [Rychlé spuštění uzlu](node-quickstart.md)
-- [Rychlý start Python](python-quickstart.md)
+- [Rychlý start pro Javu](java-quickstart.md)
+- [Rychlý start jazyka JavaScript](javascript.md)
+- [Rychlý start uzlu](node-quickstart.md)
+- [Rychlý start Pythonu](python-quickstart.md)

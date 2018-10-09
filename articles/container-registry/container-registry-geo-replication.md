@@ -1,6 +1,6 @@
 ---
-title: Geografická replikace registru Azure kontejneru
-description: Začínáme s vytváření a správa registrech geograficky replikované kontejner Azure.
+title: Geografická replikace služby Azure container registry
+description: Začínáme vytvářet a spravovat registry kontejnerů Azure geograficky replikovaný.
 services: container-registry
 author: stevelas
 manager: jeconnoc
@@ -8,98 +8,98 @@ ms.service: container-registry
 ms.topic: overview-article
 ms.date: 04/10/2018
 ms.author: stevelas
-ms.openlocfilehash: e4695428b03961f5e899007609dfb1088dde77a8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 784174c1fb2427441e0ed1a13b147d2440539fa9
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33768205"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870334"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geografická replikace ve službě Azure Container Registry
 
-Společnosti, které chcete místní přítomnosti nebo zálohu aktivní zvolit ke spouštění služeb z několika oblastmi Azure. Jako osvědčený postup umístění registru kontejneru v jednotlivých oblastech, kde se spouštějí bitové kopie umožňuje operace, zavřete sítě, povolení rychlé, spolehlivé image vrstvy přenosy. Geografická replikace umožňuje registru kontejner Azure jako jeden registru, obsluhovat více oblastí s více hlavních regionální registrech.
+Společnosti, které má s lokální přítomností nebo hot zálohování zvolte ke spouštění služeb v několika oblastech Azure. Jako osvědčený postup umístění registru kontejnerů v jednotlivých oblastech, kde jsou spouštěny imagí umožňuje operace blízko sítě, umožňuje rychlé a spolehlivé image vrstvy přenosy. Geografická replikace umožňuje službě Azure container registry fungovala jako jeden registr obsluhuje více oblastí s několika hlavními databázemi regionální Registry.
 
-Registr geograficky replikované poskytuje následující výhody:
+Geograficky replikovaný registr poskytuje následující výhody:
 
-* Nad několika oblastmi se dají použít jeden názvy registru nebo nebo značky obrázku
-* Přístup k síti zavřít registru z místního nasazení
-* Žádné další odchozí poplatky jako obrázky vyjmutí z místní, replikované registru ve stejné oblasti jako hostitele kontejneru
-* Správy registru nad několika oblastmi
+* Jediné názvy registru / / značka obrázku je možné napříč několika oblastmi
+* Přístup k registru blízko sítě z regionálních nasazení
+* Žádné poplatky za další odchozí přenosy jako obrázky se berou z místní replikovaný registr ve stejné oblasti jako váš hostitel kontejneru
+* Správu jednoho registru napříč několika oblastmi
 
-## <a name="example-use-case"></a>Příklad případ použití
-Contoso spustí web veřejné přítomnosti nachází v USA, Evropa i Kanada. K obsluze těchto trzích s obsahem, místní a sítě zavřít, spustí Contoso [Azure Container Service](/azure/container-service/kubernetes/) (ACS) Kubernetes clusterů v západní USA, Východ USA, Střední Kanada a západní Evropa. Webovou aplikaci, nasazené jako bitovou kopii Docker využívá stejný kód a image přes všechny oblasti. Obsah, místní pro danou oblast, se načtou z databáze, který je jednoznačně zřízené v každé oblasti. Každé místní nasazení má jedinečný konfiguraci pro prostředky jako místní databázi.
+## <a name="example-use-case"></a>Případy použití příklad
+Contoso se spustí web veřejné přítomnost umístění v rámci USA, Kanadě a Evropa. K poskytování těchto trzích s místní a síťové blízkosti obsah, spustí Contoso [Azure Container Service](/azure/container-service/kubernetes/) clusterů Kubernetes (ACS) v oblasti západní USA, USA – východ, Kanada – střed a západní Evropa. Webovou aplikaci, nasazené jako image Dockeru, využívá stejný kód a image ve všech oblastech. Z databáze, která je jednoznačně zřízené v jednotlivých oblastech se načítá obsah, místní pro tuto oblast. Každý místní nasazení má jeho jedinečnou konfiguraci pro zdroje, jako jsou místní databáze.
 
-Vývojový tým je umístěný v Praze WA, využitím datového centra západní USA.
+Vývojový tým se nachází v Seattlu, WA, využitím datové centrum západ USA.
 
-![Když zavedete více registry](media/container-registry-geo-replication/before-geo-replicate.png)<br />*Když zavedete více registry*
+![Doručením (push) do více registrů](media/container-registry-geo-replication/before-geo-replicate.png)<br />*Doručením (push) do více registrů*
 
-Před použitím funkce geografická replikace, měl Contoso registru na základě USA v západní USA s další registru v oblasti západní Evropa. K obsluze těchto různých oblastech, vývojový tým museli push bitové kopie na dvou různých registrech.
+Před použitím funkce geografickou replikaci, měl Contoso registru umístěné v USA v oblasti západní USA s další registru v oblasti západní Evropa. K poskytování těchto různých oblastech, vývojový tým měl k nahrávání imagí do dvou různých registrů.
 
 ```bash
-docker push contoso.azurecr.io/pubic/products/web:1.2
-docker push contosowesteu.azurecr.io/pubic/products/web:1.2
+docker push contoso.azurecr.io/public/products/web:1.2
+docker push contosowesteu.azurecr.io/public/products/web:1.2
 ```
-![Stahování z více registry](media/container-registry-geo-replication/before-geo-replicate-pull.png)<br />*Stahování z více registry*
+![Přijímání změn z více registrů](media/container-registry-geo-replication/before-geo-replicate-pull.png)<br />*Přijímání změn z více registrů*
 
-Typické výzvy více registrech patří:
+Typické obtíže spojené s více registrů patří:
 
-* Východ USA, západní USA a Kanada centrální clustery všechny načítat z registru západní USA, by docházelo poplatky za odchozí data, jak každý z těchto hostitelů vzdálené kontejneru načítat bitové kopie z datových centrech západní USA.
-* Vývojový tým musí nabízená bitové kopie registrech západní USA a západní Evropa.
-* Vývojový tým musí konfigurovat a spravovat každý místní nasazení s názvy bitové kopie odkazující na místním registru.
-* Přístup k registru musí být nakonfigurované pro každou oblast.
+* Východní USA, západní USA a Kanada – střed clustery všechny o přijetí změn z registru USA – Západ, jak každá z těchto hostitelů vzdáleném kontejneru přetahování imagí z datových centrech USA – západ za něho poplatky za odchozí přenosy.
+* Vývojový tým musí nahrávání imagí do registrů západní USA a západní Evropa.
+* Vývojový tým musí konfiguraci a údržbu každé místní nasazení s názvy bitové kopie odkazující na místním registru.
+* Přístup k registru musí být nakonfigurovaný pro každou oblast.
 
-## <a name="benefits-of-geo-replication"></a>Výhody geografická replikace
+## <a name="benefits-of-geo-replication"></a>Výhody funkce geografické replikace
 
-![Stahování z geograficky replikované registru](media/container-registry-geo-replication/after-geo-replicate-pull.png)
+![Přijímání změn z geograficky replikovaného registru](media/container-registry-geo-replication/after-geo-replicate-pull.png)
 
-Pomocí funkce geografická replikace registru kontejner Azure, jsou realizovány tyto výhody:
+Pomocí funkce geografické replikace ve službě Azure Container Registry, jsou realizované tyto výhody:
 
-* Spravovat jeden registru přes všechny oblasti: `contoso.azurecr.io`
-* Správa konfigurací jedné nasazení bitové kopie jako všech oblastech použít stejná adresa URL obrázku: `contoso.azurecr.io/public/products/web:1.2`
-* Nabízená jeden registru, zatímco ACR spravuje geografickou replikaci, včetně regionální webhooky pro místní oznámení
+* Správa jednoho registru napříč všemi oblastmi: `contoso.azurecr.io`
+* Spravovat jediné konfiguraci nasazení bitových kopií všech oblastech použít stejná adresa URL obrázku: `contoso.azurecr.io/public/products/web:1.2`
+* Odeslat do jednoho registru, zatímco ACR spravuje geografickou replikaci, včetně regionální webhooky pro místní oznámení
 
 ## <a name="configure-geo-replication"></a>Konfigurace geografické replikace
-Konfigurace geografická replikace je stejně snadná jako při kliknutí oblasti na mapě.
+Konfigurace geografické replikace je stejně snadné jako kliknutí na oblasti na mapě.
 
-Geografická replikace je funkce [Premium registrech](container-registry-skus.md) pouze. Pokud vaše registru není ještě Premium, můžete změnit na Basic a Standard Premium v [portál Azure](https://portal.azure.com):
+Geografická replikace je funkce [Premium Registry](container-registry-skus.md) pouze. Pokud váš registr není dosud Premium, můžete změnit z úrovní Basic a Standard na Premium v [webu Azure portal](https://portal.azure.com):
 
-![Přepínání SKU na portálu Azure](media/container-registry-skus/update-registry-sku.png)
+![Přepínání skladové položky na webu Azure Portal](media/container-registry-skus/update-registry-sku.png)
 
-Ke konfiguraci geografická replikace pro váš registru Premium, přihlaste se k portálu Azure v http://portal.azure.com.
+Konfigurace geografické replikace pro svůj registr úrovně Premium, přihlaste se k webu Azure portal na http://portal.azure.com.
 
-Přejděte do kontejneru registr Azure a vyberte **replikace**:
+Přejděte do služby Azure Container Registry a vyberte **replikace**:
 
 ![Replikace v uživatelském rozhraní registru kontejnerů na webu Azure Portal](media/container-registry-geo-replication/registry-services.png)
 
-Zobrazí se mapu, zobrazuje všechny aktuální oblasti Azure:
+Zobrazí se mapa se zobrazují všechny aktuální oblasti Azure:
 
  ![Mapa oblastí na webu Azure Portal](media/container-registry-geo-replication/registry-geo-map.png)
 
 * Modré Šestiúhelníky představují aktuální repliky
 * Zelená Šestiúhelníky představují možné repliky oblastí
-* Šedé Šestiúhelníky představují oblastí Azure ještě není k dispozici pro replikaci
+* Šedé Šestiúhelníky představují oblasti Azure, které ještě není k dispozici pro replikaci
 
-Pokud chcete nakonfigurovat repliku, vyberte zelená šestiúhelníku a pak vyberte **vytvořit**:
+Abyste konfigurovali repliku, vyberte zelený šestiúhelník a pak vyberte **vytvořit**:
 
  ![Vytvoření replikace v uživatelském rozhraní na webu Azure Portal](media/container-registry-geo-replication/create-replication.png)
 
-Pokud chcete nakonfigurovat další repliky, vyberte zelená šestiúhelníků pro jiné oblasti a pak klikněte na **vytvořit**.
+Pokud chcete nakonfigurovat další repliky, vyberte zelenou Šestiúhelníky pro ostatní oblasti a pak klikněte na **vytvořit**.
 
-ACR zahájí synchronizaci bitové kopie napříč nakonfigurované repliky. Po dokončení portálu odráží *připraven*. Stav repliky na portálu nebude aktualizovat automaticky. Použijte tlačítko Aktualizovat zobrazíte aktualizovaný stav.
+ACR zahájí synchronizaci imagí v nakonfigurovaných repliky. Jakmile budete hotovi, portálu odráží *připravené*. Stav repliky na portálu nebude automaticky aktualizovat. Pomocí tlačítka Aktualizovat zobrazí aktualizovaný stav.
 
-## <a name="geo-replication-pricing"></a>Geografická replikace ceny
+## <a name="geo-replication-pricing"></a>Ceny za geografickou replikaci
 
-Geografická replikace je funkce [skladová položka Premium](container-registry-skus.md) registru kontejner Azure. Při replikaci registru na vaše požadované oblasti, platit poplatky registru Premium pro každou oblast.
+Geografická replikace je funkce [SKU úrovně Premium](container-registry-skus.md) ve službě Azure Container Registry. Při replikaci registru do požadované oblasti se vám účtovat žádné poplatky registru úrovně Premium pro každou oblast.
 
-V předchozím příkladu Contoso konsolidovat dvě registrech na jedinou, přidání repliky do Východ USA, Střední Kanada a západní Evropa. Contoso by platila Premium čtyřikrát za měsíc bez další konfigurace a správy. Každá oblast nyní vrátí jejich obrázků místně, zvýšení výkonu, spolehlivosti bez poplatků odchozí sítě z západní USA Kanady a východní USA.
+V předchozím příkladu Contoso konsolidovat dvě registry dolů, přidání repliky do USA – východ, Kanada – střed a západní Evropa. Contoso v domácnosti platíte Premium čtyřikrát za měsíc, bez další konfigurace nebo správy. Každá oblast nyní načítá své obrázky místně, zvýšení výkonu, spolehlivosti bez sítě poplatky za odchozí přenosy z USA – západ na Kanada a USA – východ.
 
 ## <a name="summary"></a>Souhrn
 
-S geografickou replikací můžete spravovat místní datových centrech jako globální jeden cloud. Bitové kopie se používají mezi řadou služeb Azure, můžete využívat výhod správy roviny při zachování sítě zavřít, rychlé a spolehlivé obrázek místní vrátí.
+S geografickou replikací můžete spravovat místní datová centra jako jeden globální cloud. Image využívají napříč řadou služeb Azure, můžete využívat výhod rovina správy a přitom síťové blízkosti rychlé a spolehlivé místní image si vyžádá.
 
 ## <a name="next-steps"></a>Další postup
 
-Podívejte se na kurz řady třemi částmi, [geografická replikace v registru kontejner Azure](container-registry-tutorial-prepare-registry.md). Provede procesem vytvoření registru geograficky replikované, sestavování kontejner a jeho nasazení s jedním `docker push` příkaz více místní webové aplikace pro kontejnery instancí.
+Podívejte se na část třídílné série kurzů, [geografické replikace ve službě Azure Container Registry](container-registry-tutorial-prepare-registry.md). Provede vytvoření geograficky replikovaného registru sestavení kontejneru a jeho nasazení pomocí jediného `docker push` příkazu k více místní Web Apps for Containers instancí.
 
 > [!div class="nextstepaction"]
-> [Geografická replikace v registru kontejner Azure](container-registry-tutorial-prepare-registry.md)
+> [Geografická replikace ve službě Azure Container Registry](container-registry-tutorial-prepare-registry.md)

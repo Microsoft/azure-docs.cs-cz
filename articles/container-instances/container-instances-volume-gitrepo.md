@@ -2,18 +2,17 @@
 title: Připojit svazek gitRepo Azure Container Instances
 description: Zjistěte, jak připojit svazek gitRepo klonování úložiště Git do instancí kontejneru
 services: container-instances
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-instances
 ms.topic: article
 ms.date: 06/15/2018
-ms.author: marsma
-ms.openlocfilehash: 86d85f9f84b8d3ae3c31ff59089ce264d5e3192e
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.author: danlep
+ms.openlocfilehash: 9f693299d2466b560e0957a77e898e1b10433fb0
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304335"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857382"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Připojit svazek gitRepo ve službě Azure Container Instances
 

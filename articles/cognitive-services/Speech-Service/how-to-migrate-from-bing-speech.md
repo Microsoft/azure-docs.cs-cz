@@ -9,12 +9,12 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 10/01/2018
 ms.author: gracez
-ms.openlocfilehash: 432a17b1e3cd065bd6189ffa9f80ca5985629bb7
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 2dc034ea28075019b74fe9d9be548cf9d355d20e
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239929"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857478"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Migrace z pro zpracování řeči Bingu ve službě řeči
 
@@ -74,11 +74,11 @@ Speech Service aktuálně nenabízí globální koncový bod. Je potřeba určit
 
 Pokud vaše aplikace používá s dlouhým poločasem rozpadu připojení a nemůžete použít sadu SDK k dispozici, můžete použít připojení WebsSockets a spravovat během 10 minut časový limit znovu připojíte ve vhodných chvílích.
 
-Abyste mohli začít s novou sadou SDK pro řeč:
+Začínáme se sadou SDK pro řeč:
 
 1. Stáhněte si [řeči SDK](speech-sdk.md).
 1. Práce prostřednictvím Speech Service [příručky rychlý úvod](quickstart-csharp-dotnet-windows.md), [kurzy](how-to-recognize-intents-from-speech-csharp.md)a prohlédněte si [ukázky kódu](samples.md) jak získat zkušenosti nová rozhraní API.
-1. Aktualizace aplikace použije nová služba řeči a rozhraní API.
+1. Aktualizujte aplikace pomocí rozhraní API a Speech service.
 
 ## <a name="support"></a>Podpora
 

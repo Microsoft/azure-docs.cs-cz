@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/26/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 7cf3e08caad93bb7fb7fd221b6fdb9b2fc39397a
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: b6cb095736bbf41d53359bf7d07206703de5335c
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816731"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869993"
 ---
 # <a name="azure-stack-1805-update"></a>Aktualizace služby Azure Stack 1805
 
@@ -72,8 +72,8 @@ Tato aktualizace zahrnuje následující vylepšení pro službu Azure Stack.
 ## <a name="before-you-begin"></a>Než začnete    
 
 ### <a name="prerequisites"></a>Požadavky
-- Instalace služby Azure Stack [aktualizovat verzi 1804](azure-stack-update-1804.md) před instalací aktualizace Azure Stack 1805.  
-- Nainstalujte nejnovější dostupné [aktualizaci nebo opravu hotfix pro verzi 1804](azure-stack-update-1804.md#post-update-steps).   
+- Před instalací aktualizace Azure Stack 1805, nainstalujte aktualizaci Azure Stack 1804.  
+- Instalovat nejnovější dostupnou aktualizaci nebo opravu hotfix pro verzi 1804.   
 - Před zahájením instalace aktualizace 1805, spusťte [testovací AzureStack](azure-stack-diagnostic-test.md) ověřte stav služby Azure Stack a vyřešte všechny provozní problémy najít. Také aktivní výstrahy můžete zkontrolovat a vyřešit všechny, které vyžadují nějakou akci. 
 
 ### <a name="known-issues-with-the-update-process"></a>Známé problémy s proces aktualizace   
@@ -117,7 +117,7 @@ Toto jsou známé problémy této verze sestavení po instalaci.
   Alternativní řešení: Chcete-li tento problém vyřešit, po instalaci této aktualizace, použijte krok 3 ze [deklarací aktivování automatizace ke konfiguraci vztahu důvěryhodnosti zprostředkovatele ve službě Azure Stack](azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-1) postup resetovat vlastníka výchozí předplatné poskytovatele.   
 
 <!-- TBD - IS ASDK --> 
-- Některé typy pro správu předplatných nejsou k dispozici.  Při upgradu služby Azure Stack na tuto verzi předplatné dva typy, které byly [představený poprvé ve verzi 1804](azure-stack-update-1804.md#new-features) nejsou viditelné v konzole. To se očekává. Typy předplatného není k dispozici jsou *měření předplatné*, a *využití předplatného*. Tyto typy předplatného jsou viditelné v novým prostředím Azure Stack od verze 1804, ale ještě nejsou připravené k použití. By měla dál používat *výchozí zprostředkovatel* typu předplatného.  
+- Některé typy pro správu předplatných nejsou k dispozici. Při upgradu služby Azure Stack na tuto verzi předplatné dva typy, které byly představeny s nástrojem verzi 1804 nejsou viditelné v konzole. To se očekává. Typy předplatného není k dispozici jsou *měření předplatné*, a *využití předplatného*. Tyto typy předplatného jsou viditelné v novým prostředím Azure Stack od verze 1804, ale ještě nejsou připravené k použití. By měla dál používat *výchozí zprostředkovatel* typu předplatného.  
 
 <!-- 2403291 - IS ASDK --> 
 - Nemusí mít užívání vodorovný posuvník v dolní části portály správce a uživatele. Pokud nemůžete použít vodorovný posuvník, left pomocí popisu cesty přejít na předchozí okno na portálu tak, že vyberete název okna je chcete zobrazit v seznamu s popisem cesty v horní části portálu.
