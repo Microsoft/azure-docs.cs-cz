@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/13/2018
+ms.date: 10/03/2018
 ms.author: sethm
-ms.reviewer: jeffgo
-ms.openlocfilehash: abcf71f81d89f8b6a8c7b9523dd67592b8808baa
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.reviewer: ''
+ms.openlocfilehash: 785161d0f897b583c0c5536440afc1e8f05e736e
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630271"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854826"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Stažení položek z marketplace z Azure do služby Azure Stack
 
@@ -121,15 +121,12 @@ Existují dvě části pro tento scénář:
 
    ```
 
-5. Importujte modul syndikace a pak spusťte nástroj spuštěním následujícího skriptu. Nahradit *cesta k cílové složce* s umístěním pro uložení souborů můžete stáhnout z webu Azure Marketplace.   
+5. Importujte modul syndikace a pak spusťte nástroj spuštěním následujících příkazů. Nahraďte `Destination folder path` s umístěním pro uložení souborů můžete stáhnout z webu Azure Marketplace.   
 
    ```PowerShell  
    Import-Module .\Syndication\AzureStack.MarketplaceSyndication.psm1
 
-   Sync-AzSOfflineMarketplaceItem `
-     -destination "Destination folder path" `
-     -AzureTenantID $AzureContext.Tenant.TenantId `
-     -AzureSubscriptionId $AzureContext.Subscription.Id  
+   Export-AzSOfflineMarketplaceItem -destination "Destination folder path"
    ```
 
 6. Když je nástroj spuštěn, zobrazí se výzva k zadání přihlašovacích údajů k účtu Azure. Přihlaste se k účtu Azure, který jste použili k registraci Azure Stack. Po úspěšném přihlášení by se zobrazit obrazovka jako na následujícím obrázku se seznamem položek z marketplace k dispozici.  

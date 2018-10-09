@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/02/2018
 ms.author: brenduns
-ms.openlocfilehash: 0ff3402115ae9f4c736bf9058fc09de16eaefb1e
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: ed405a0f8892b278d81f2494ad90f776ad5faa41
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347179"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857087"
 ---
 # <a name="about-vpn-gateway-for-azure-stack"></a>Informace o službě VPN gateway pro Azure Stack
 
@@ -33,7 +33,7 @@ Při vytváření brány virtuální sítě musíte určit typ brány, který ch
 
 Každá virtuální síť může mít dvě brány virtuální sítě, ale každého typu jenom jednu. V závislosti na nastavení, které zvolíte, můžete k jedné bráně VPN vytvořit několik připojení. Příkladem je konfigurace připojení typu Multi-Site.
 
-Než vytvoříte a nakonfigurujete brány VPN Gateway pro Azure Stack, projděte si [důležité informace týkající se služby Azure Stack sítě](/azure/azure-stack/user/azure-stack-network-differences) se dozvíte, jak konfigurace pro službu Azure Stack se liší od Azure.
+Než vytvoříte a nakonfigurujete brány VPN Gateway pro Azure Stack, projděte si [důležité informace týkající se služby Azure Stack sítě](/articles/azure-stack/user/azure-stack-network-differences.md) se dozvíte, jak konfigurace pro službu Azure Stack se liší od Azure.
 
 >[!NOTE]
 >V Azure musí být rozdělen propustnost šířky pásma pro bránu sítě VPN zvolíte SKU napříč všechna připojení, které jsou připojeny k bráně. Ale ve službě Azure Stack hodnotu šířky pásma pro skladové položky brány VPN platí pro každý prostředek připojení, která je připojená k bráně.
