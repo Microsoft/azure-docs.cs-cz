@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 8ce550fcd9756286488d17ac5cad258aaf1682ba
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bde451a2a01a8baa347f093a1b56525dcead00f3
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946848"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855302"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Vytvoření, změna nebo odstranění partnerského vztahu virtuálních sítí
 
@@ -116,7 +116,7 @@ Pokud chcete, aby virtuální sítě ke komunikaci v některých případech, al
 - Při vytváření globální partnerský vztah, mohou existovat partnerských virtuálních sítích v libovolné oblasti Azure veřejného cloudu, ale ne v národních cloudů Azure. Může pouze vytvořit partnerský vztah virtuálních sítí ve stejné oblasti v národních cloudech.
 - Prostředky v jedné virtuální sítě nemůže komunikovat s front-endovou IP adresu Azure interního nástroje load balancer v globálním partnerském vztahu virtuální sítě. Nástroje pro vyrovnávání zatížení a prostředky, které s ním komunikují, musí být ve virtuální síti ve stejné oblasti. Pokud partnerských virtuálních sítích se ale ve stejné oblasti, můžete prostředky v obou virtuálních sítích komunikovat s front-endovou IP adresu Azure interního nástroje load balancer v obou virtuálních sítích v partnerském vztahu.
 - Nelze používat vzdálené brány nebo povolit průchod bránou v globálním partnerském vztahu virtuálních sítí. Pokud chcete používat vzdálené brány nebo povolit průchod bránou, musí být partnerských virtuálních sítích ve stejné oblasti.
-- Virtuální sítě může být ve stejném ani jiném předplatném. Po vytvoření partnerského vztahu virtuálních sítí v různých předplatných, dá se přidružit k stejného nebo jiného tenanta Azure Active Directory oběma předplatným. Pokud ještě nemáte klient služby AD, můžete rychle [vytvořit](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant). Podpora pro vytvoření partnerského vztahu mezi virtuálními sítěmi z předplatných přidružených k jiné tenanty Azure Aztuve Directory není k dispozici na portálu. Můžete použít rozhraní příkazového řádku, Powershellu nebo šablony.
+- Virtuální sítě může být ve stejném ani jiném předplatném. Po vytvoření partnerského vztahu virtuálních sítí v různých předplatných, dá se přidružit k stejného nebo jiného tenanta Azure Active Directory oběma předplatným. Pokud ještě nemáte klient služby AD, můžete rychle [vytvořit](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant). Podpora pro vytvoření partnerského vztahu mezi virtuálními sítěmi z předplatných přidružených k různým tenantům Azure Active Directory není k dispozici na portálu. Můžete použít rozhraní příkazového řádku, Powershellu nebo šablony.
 - Virtuální sítě, které můžete vytvořit partnerský vztah musí mít překrývat adresní prostory IP adres.
 - Nelze přidat rozsahy adres do nebo odstranit rozsahy adres z adresního prostoru virtuální sítě, jakmile se virtuální síť má partnerský vztah s jinou virtuální sítí. Chcete-li přidat nebo odebrat rozsahy adres, odstranit partnerský vztah, přidat nebo odebrat rozsahy adres, pak znovu vytvořte partnerský vztah. Přidat rozsahy adres k nebo odebrat rozsahy adres virtuální sítě, najdete v článku [Správa virtuálních sítí](manage-virtual-network.md).
 - Můžete vytvořit partnerský vztah dvou virtuálních sítí, které jsou nasazené prostřednictvím Resource Manageru nebo virtuální sítě nasazené prostřednictvím Resource Manageru pomocí virtuální sítě nasazené pomocí modelu nasazení classic. Nejde vytvořit partnerský vztah dvou virtuálních sítí vytvořených prostřednictvím modelu nasazení classic. Pokud nejste obeznámeni s modely nasazení Azure, přečtěte si [vysvětlení modelů nasazení Azure](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) článku. K propojení dvou virtuálních sítí vytvořených prostřednictvím modelu nasazení Classic můžete použít službu [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V).
