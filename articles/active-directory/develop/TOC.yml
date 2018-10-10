@@ -93,12 +93,14 @@ items:
           href: single-sign-on-saml-protocol.md
         - name: Odhlášení
           href: single-sign-out-saml-protocol.md
-        - name: WS-Federation
-          items:
-          - name: Metadata federování
-            href: azure-ad-federation-metadata.md
-        - name: Výměna podpisových klíčů
-          href: active-directory-signing-key-rollover.md
+        - name: Jak Azure AD využívá protokol SAML
+          href: active-directory-saml-protocol-reference.md
+      - name: WS-Federation
+        items:
+        - name: Metadata federování
+          href: azure-ad-federation-metadata.md
+      - name: Výměna podpisových klíčů
+        href: active-directory-signing-key-rollover.md
       - name: Tokeny ID
         href: id-tokens.md
       - name: Přístupové tokeny
@@ -123,7 +125,7 @@ items:
       - name: Rámec pro udělení souhlasu
         href: consent-framework.md
       - name: Prostředí udělení souhlasu pro aplikace
-        href: ../application-consent-experience.md
+        href: application-consent-experience.md
     - name: Podmíněný přístup
       href: conditional-access-dev-guide.md
     - name: Národní cloudy
@@ -144,9 +146,15 @@ items:
       - name: Konfigurace deklarací identity
         items:
         - name: Konfigurace deklarací identity rolí
-          href: ../active-directory-enterprise-app-role-management.md
+          href: active-directory-enterprise-app-role-management.md
         - name: Přizpůsobení deklarací identity
           href: active-directory-saml-claims-customization.md
+        - name: Přizpůsobení deklarací identity (Public Preview)
+          href: active-directory-claims-mapping.md
+        - name: Konfigurace volitelných deklarací identity (Public Preview)
+          href: active-directory-optional-claims.md
+        - name: Konfigurace životnosti tokenů (Public Preview)
+          href: active-directory-configurable-token-lifetimes.md
       - name: Osvědčené postupy zpracování chyb pro ADAL
         href: active-directory-devhowto-adal-error-handling.md
     - name: Konfigurace aplikací
@@ -196,8 +204,6 @@ items:
       href: active-directory-authentication-libraries.md
     - name: Azure AD Graph API
       href: active-directory-graph-api.md
-    - name: Deklarace identity v tokenech zabezpečení Azure AD
-      href: active-directory-optional-claims.md
     - name: Manifest aplikace
       href: reference-app-manifest.md
     - name: Kódy chyb autorizace a ověřování
@@ -317,7 +323,7 @@ items:
       - name: Rámec pro udělení souhlasu
         href: consent-framework.md
       - name: Prostředí udělení souhlasu pro aplikace
-        href: ../application-consent-experience.md
+        href: application-consent-experience.md
     - name: Národní cloudy
       href: authentication-national-cloud.md
   - name: Návody
@@ -325,9 +331,17 @@ items:
     - name: Authentication
       items:
       - name: Konfigurace deklarací identity rolí
-        href: ../active-directory-enterprise-app-role-management.md
+        href: active-directory-enterprise-app-role-management.md
       - name: Přizpůsobení deklarací identity
         href: active-directory-saml-claims-customization.md
+      - name: Přizpůsobení deklarací identity (Public Preview)
+        href: active-directory-claims-mapping.md
+      - name: Konfigurace volitelných deklarací identity (Public Preview)
+        href: active-directory-optional-claims.md
+      - name: Konfigurace životnosti tokenů (Public Preview)
+        href: active-directory-configurable-token-lifetimes.md
+      - name: Ověřování s využitím Azure AD a získání tokenu JWT s využitím OAuth 2.0
+        href: active-directory-protocols-oauth-get-jwt-token.md
     - name: Konfigurace aplikací
       items:
       - name: Převedení aplikace pro jednoho tenanta na aplikaci pro více tenantů
@@ -382,9 +396,9 @@ items:
     href: developer-support-help-options.md
   - name: Identita spravované služby pro prostředky Azure
     href: https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview
-ms.openlocfilehash: 139d80313bb663a45e476e90812ce7772beccc19
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: f7b8ce59f421c2a2c7cdb6269132910bd2b3ab4e
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48784997"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901834"

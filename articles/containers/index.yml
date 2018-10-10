@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 96f767e96bcebeadfd0557d64b8efbf45b9f9a39
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: f8083d9db71b9f3c7d80444d574ed5c89b918f6c
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43187560"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48900359"
 documentType: LandingData
 title: Azure pro kontejnery
 metadata:
@@ -69,6 +69,10 @@ sections:
       title: Vytvoření privátního registru Dockeru ve službě Azure Container Registry
       image:
         src: /azure/media/index/container-registry.svg
+    - href: https://docs.microsoft.com/azure/container-instances/container-instances-quickstart
+      title: Spuštění kontejnerové aplikace na vyžádání ve službě Azure Container Instances
+      image:
+        src: /azure/media/index/containerinstances.svg
 - title: Bezplatné školicí video od Pluralsightu
   items:
   - type: list

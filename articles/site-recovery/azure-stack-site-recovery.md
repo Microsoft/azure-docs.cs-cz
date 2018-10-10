@@ -6,16 +6,16 @@ author: rayne-wiselman
 manager: carmonm
 ms.topic: conceptual
 ms.service: site-recovery
-ms.date: 08/30/2018
+ms.date: 10/09/2018
 ms.author: raynew
-ms.openlocfilehash: c71f683355a09c8ba2381db406eeb1ccabdb7afa
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 802c2223a72a89dbe2a97404aab4b0fc85c391ed
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697692"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902820"
 ---
-# <a name="replicate-azure-stack-vms-to-azure-preview"></a>Replikace virtuálních počítačů Azure stacku pro Azure (preview)
+# <a name="replicate-azure-stack-vms-to-azure"></a>Replikace virtuálních počítačů Azure stacku pro Azure
 
 V tomto článku se dozvíte, jak nastavit zotavení po havárii do Azure pro virtuální počítače Azure Stack, pomocí [služby Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview).
 
@@ -25,10 +25,6 @@ Site Recovery přispívá ke strategii obchodní kontinuity podnikových proces�
 - Pokud v primární lokalitě dojde k výpadku, můžete pomocí Site Recovery převzetí služeb při selhání do Azure.
 - Na převzetí služeb při selhání virtuální počítače Azure jsou vytvářeny z uložených dat virtuálního počítače a uživatelé můžou dál přístup k úloh spuštěných na těchto virtuálních počítačích Azure.
 - Když je všechno, co znovu spuštěn a pracuje, můžete selhat obnovení virtuálních počítačů Azure do primární lokality a začaly replikovat do úložiště Azure znovu.
-
-
-> [!NOTE]
-> Site Recovery pro službu Azure Stack je aktuálně ve verzi public preview.
 
 
 V tomto článku získáte informace o těchto tématech:

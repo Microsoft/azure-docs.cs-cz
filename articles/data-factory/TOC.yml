@@ -343,6 +343,8 @@ items:
       href: compute-linked-services.md
   - name: Tok řízení
     items:
+    - name: Aktivita připojení proměnné
+      href: control-flow-append-variable-activity.md
     - name: Aktivita spuštění kanálu
       href: control-flow-execute-pipeline-activity.md
     - name: Aktivita filtrování
@@ -355,6 +357,8 @@ items:
       href: control-flow-if-condition-activity.md
     - name: Aktivita vyhledávání
       href: control-flow-lookup-activity.md
+    - name: Aktivita nastavení proměnné
+      href: control-flow-set-variable-activity.md
     - name: Aktivita Until
       href: control-flow-until-activity.md
     - name: Aktivita Wait
@@ -461,9 +465,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: Možnosti podpory
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: 9231e089802ebf9bd0a6df4a123f59b10552123a
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 7a6734c34acc91a602840c554c5204cbc722c910
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815932"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901817"
