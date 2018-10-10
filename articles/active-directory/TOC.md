@@ -25,7 +25,7 @@
 # Postup
 ## Plánování a návrh
 ### [Pochopení architektury Azure AD](fundamentals/active-directory-architecture.md)
-### [Mapování deklarací v Azure Active Directory](active-directory-claims-mapping.md)
+### [Mapování deklarací v Azure Active Directory](develop/active-directory-claims-mapping.md)
 ### [Nasazení řešení s hybridní identitou](hybrid/plan-hybrid-identity-design-considerations-overview.md)
 #### Určení požadavků
 ##### [Identita](hybrid/plan-hybrid-identity-design-considerations-business-needs.md)
@@ -200,7 +200,7 @@
 #### [Exportní tenanta](manage-apps/tenant-restrictions.md)
 #### [Použití uživatelů zřizování SCIM](manage-apps/use-scim-to-provision-users-and-groups.md)
 
-### [Prostředí vyjádření souhlasu s aplikací Azure AD](application-consent-experience.md)
+### [Prostředí vyjádření souhlasu s aplikací Azure AD](develop/application-consent-experience.md)
 
 ### Řešení potíží
 
@@ -323,7 +323,7 @@
 
 ### [Integrace místních identit pomocí Azure AD Connect](hybrid/whatis-hybrid-identity.md)
 
-### [Konfigurace životnosti tokenů](active-directory-configurable-token-lifetimes.md)
+### [Konfigurace životnosti tokenů](develop/active-directory-configurable-token-lifetimes.md)
 
 ## Zabezpečení identit
 

@@ -185,6 +185,8 @@ items:
         href: sql-api-sql-query-metrics.md
       - name: Uložené procedury, triggery a systémy souborů UDF
         href: programming.md
+      - name: Dělení dat SQL
+        href: sql-api-partition-data.md
       - name: Typy dat
         items:
         - name: DateTime
@@ -281,6 +283,8 @@ items:
       items:
       - name: Import dat grafu
         href: bulk-executor-graph-dotnet.md
+      - name: Dělení dat v grafu
+        href: graph-partitioning.md
   - name: Dokumentace k rozhraní Cassandra API
     items:
     - name: Úvod
@@ -418,8 +422,6 @@ items:
         href: performance-testing.md
     - name: Nákladově efektivní čtení a zápisy
       href: key-value-store-cost.md
-    - name: Dělení dat SQL
-      href: sql-api-partition-data.md
   - name: Integrace s ostatními službami Azure
     items:
     - name: Změna kanálu pro řešení elektronického obchodování
@@ -490,9 +492,9 @@ items:
       href: use-cases.md
     - name: Aplikace sociálních médií
       href: social-media-apps.md
-ms.openlocfilehash: 8111949d7069066b63c12a851324d21feda8bac2
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: dac79ee7d4a8810cce0a2e77e8dcd8d06842454c
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868588"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888013"

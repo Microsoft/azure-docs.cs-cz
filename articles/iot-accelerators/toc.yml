@@ -97,61 +97,6 @@ items:
       href: iot-accelerators-remote-monitoring-rbac.md
     - name: Udělení přístup k průzkumníku telemetrie
       href: iot-accelerators-remote-monitoring-rbac-tsi.md
-  - name: Vzdálené monitorování (předchozí verze)
-    items:
-    - name: Co jsou předkonfigurovaná řešení?
-      href: ../iot-suite/iot-suite-v1-what-are-preconfigured-solutions.md
-    - name: Nejčastější dotazy
-      href: ../iot-suite/iot-suite-v1-faq.md
-    - name: Začínáme
-      items:
-      - name: Začínáme s předkonfigurovanými řešeními
-        href: ../iot-suite/iot-suite-v1-getstarted-preconfigured-solutions.md
-      - name: Oprávnění na webu azureiotsuite.com
-        href: ../iot-suite/iot-suite-v1-permissions.md
-      - name: Seznámení s řešením vzdáleného monitorování
-        href: ../iot-suite/iot-suite-v1-remote-monitoring-sample-walkthrough.md
-      - name: Připojení Raspberry Pi
-        href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-get-started.md
-        items:
-        - name: Použití jazyka C
-          items:
-          - name: Simulovaná data
-            href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-c-get-started-simulator.md
-          - name: Použití reálných senzorů
-            href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-c-get-started-basic.md
-          - name: Implementace aktualizací firmwaru
-            href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-c-get-started-advanced.md
-        - name: Použití Node.js
-          items:
-          - name: Simulovaná data
-            href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-node-get-started-simulator.md
-          - name: Použití reálných senzorů
-            href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-node-get-started-basic.md
-          - name: Implementace aktualizací firmwaru
-            href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-node-get-started-advanced.md
-      - name: Připojení sady MXChip IoT DevKit
-        href: ../iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring.md
-    - name: Návody
-      items:
-      - name: Připojení simulovaného zařízení
-        items:
-        - name: C ve Windows
-          href: ../iot-suite/iot-suite-v1-connecting-devices.md
-        - name: C v Linuxu
-          href: ../iot-suite/iot-suite-v1-connecting-devices-linux.md
-        - name: Node.js
-          href: ../iot-suite/iot-suite-v1-connecting-devices-node.md
-      - name: Připojení aplikace logiky k řešení vzdáleného monitorování
-        href: ../iot-suite/iot-suite-v1-logic-apps-tutorial.md
-      - name: Přizpůsobení akcelerátoru řešení
-        href: ../iot-suite/iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md
-      - name: Použití dynamické telemetrie s řešením vzdáleného monitorování
-        href: ../iot-suite/iot-suite-v1-dynamic-telemetry.md
-      - name: Vytvoření vlastního pravidla v řešení vzdáleného monitorování
-        href: ../iot-suite/iot-suite-v1-custom-rule.md
-      - name: Informace o zařízení v řešení vzdáleného monitorování
-        href: ../iot-suite/iot-suite-v1-remote-monitoring-device-info.md
   - name: Propojená továrna
     items:
     - name: Použití řídicího panelu
@@ -203,7 +148,7 @@ items:
   - name: Řešení
     items:
     - name: Akcelerátory řešení IoT
-      href: /azure/iot-suite
+      href: /azure/iot-accelerators
     - name: IoT Central
       href: https://docs.microsoft.com/microsoft-iot-central/
   - name: Služby platformy
@@ -256,9 +201,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-iot-suite
   - name: Postup výuky akcelerátorů řešení IoT
     href: https://azure.microsoft.com/documentation/learning-paths/iot-suite/
-ms.openlocfilehash: 935b9acf2eeaaee73745426eefb5625f470f62b7
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: f0efa66bd9ed85ed4ab79f5937355bd19c404a64
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365464"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884323"
