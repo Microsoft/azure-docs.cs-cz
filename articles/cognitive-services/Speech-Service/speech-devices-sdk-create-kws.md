@@ -5,16 +5,16 @@ titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: v-jerkin
 ms.service: cognitive-services
-ms.technology: speech
+ms.component: speech
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 5b5a13c5a655260bde0496cb2289aec8a55e4b21
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 52f1d9cb242f140d485ccf7b39a55a46ee575a3d
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017033"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883614"
 ---
 # <a name="create-a-custom-wake-word-by-using-the-speech-service"></a>Vytvořit vlastní probuzení word s použitím Speech service
 

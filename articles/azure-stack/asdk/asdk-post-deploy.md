@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 3e76b10533702c20e9b49b9ea317edb4aa743190
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: a343b01b89bfbe9bc047c0b8b703b975b21b6290
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220054"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901870"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>Po dokončení instalace ASDK úlohy konfigurace
 
@@ -54,7 +54,7 @@ Nejnovější modul Azure Stack Powershellu můžete nainstalovat s nebo bez př
     # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
     Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
 
-    # Install Azure Stack Module Version 1.4.0. If running a pre-1804 version of Azure Stack, change the -RequiredVersion value to 1.2.11.
+    # Install Azure Stack Module Version 1.5.0.
     Install-Module -Name AzureStack -RequiredVersion 1.5.0
     ```
 

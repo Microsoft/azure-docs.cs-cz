@@ -5,16 +5,16 @@ description: Zjistěte, jak rozpoznávat řeč v Objective-C v iOS pomocí Cogni
 services: cognitive-services
 author: chlandsi
 ms.service: cognitive-services
-ms.technology: Speech
+ms.component: Speech
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: chlandsi
-ms.openlocfilehash: e343c24a5ef223e1fd6dc618f41d4acf89fc2f5d
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 3945bf0ae6edc0af0db90efca6811aeb22494592
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226020"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883428"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-cognitive-services-speech-sdk"></a>Rychlý start: Rozpoznávat řeč v Objective-C v iOS pomocí Cognitive Services SDK řeči
 
@@ -31,7 +31,7 @@ V tomto článku se dozvíte, jak vytvořit aplikaci pro iOS v Objective-C pomoc
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Aktuální verze sady SDK pro řeč Cognitive Services je `1.0.0`.
+Aktuální verze sady Cognitive Services Speech SDK je `1.0.0`.
 
 Cognitive Services sadou SDK pro řeč pro Mac OS a iOS je momentálně distribuován jako Cocoa Framework.
 Můžete ho stáhnout z https://aka.ms/csspeech/iosbinary. Stáhněte soubor do svého domovského adresáře.
@@ -83,8 +83,8 @@ Klikněte na tlačítko **Dokončit** v následujícím dialogovém beze změny 
 
     <string>Need microphone access for speech recognition from microphone.</string>
     ```
-1. Nahraďte řetězec `YourSubscriptionKey` s klíči předplatného.
-1. Nahraďte řetězec `YourServiceRegion` s [oblasti](regions.md) přidružených k vašemu předplatnému (například `westus` pro bezplatnou zkušební verzi předplatného).
+1. Řetězec `YourSubscriptionKey` nahraďte klíčem předplatného.
+1. Řetězec `YourServiceRegion` nahraďte [oblastí](regions.md) přidruženou k vašemu předplatnému (například `westus` pro bezplatnou zkušební verzi předplatného).
 
 
 ## <a name="building-and-running-the-sample"></a>Vytváření a spouštění vzorku
@@ -96,7 +96,7 @@ Klikněte na tlačítko **Dokončit** v následujícím dialogovém beze změny 
  ![Simulované aplikace pro iOS](media/sdk/qs-objectivec-simulated-app.png)
 
 [!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-Hledat v této ukázce `quickstart/objectivec-ios` složky.
+Vyhledejte tuto ukázku ve složce `quickstart/objectivec-ios`.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -9,12 +9,12 @@ ms.author: jamesbak
 ms.date: 06/27/2018
 ms.service: storage
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 27ea73862f834a834b1622d0e51d0076c9afbe71
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 71c3343db592162bcfa7ec46a29e0d680ca83079
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523100"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48900702"
 ---
 # <a name="use-the-azure-data-lake-storage-gen2-uri"></a>Použití Azure Data Lake Storage Gen2 identifikátoru URI
 
@@ -26,7 +26,7 @@ Syntaxe identifikátoru URI pro Data Lake Storage Gen2 je závislá na Určuje, 
 
 Pokud podporující účtu Data Lake Storage Gen2 budete chtít adresu **není** nastavena jako výchozí systém souborů během vytváření účtu, pak je zkrácený tvar vlastností syntaxe identifikátoru URI:
 
-<pre>abfs[s]<sup>1</sup>://&lt;file_system&gt;<sup>2</sup>@&lt;account_name&gt;<sup>3</sup>.dfs.core.widows.net/&lt;path&gt;<sup>4</sup>/&lt;file_name&gt;<sup>5</sup></pre>
+<pre>abfs[s]<sup>1</sup>://&lt;file_system&gt;<sup>2</sup>@&lt;account_name&gt;<sup>3</sup>.dfs.core.windows.net/&lt;path&gt;<sup>4</sup>/&lt;file_name&gt;<sup>5</sup></pre>
 
 1. **Identifikátor schématu**: `abfs` protokol se používá jako identifikátor schématu. Máte možnost se připojit s nebo bez připojení k zabezpečené socket layer (SSL). Použití `abfss` pro připojení pomocí připojení vrstvy zabezpečení soketu.
 

@@ -1,6 +1,6 @@
 ---
 title: Rychlý start – vyžadují podmínky použití přijmout před přístup ke cloudovým aplikacím, které se nechrání podmíněným přístupem Azure Active Directory | Dokumentace Microsoftu
-description: V tomto rychlém startu zjistíte, jak můžete vyžadovat, že jsou vaše podmínky použití přijmout před udělením přístupu k vybrané cloudovým aplikacím tak podmíněný přístup Azure Active Directory.
+description: V tomto rychlém startu zjistíte, jak můžete vyžadovat, že jsou vaše podmínky použití přijmout před udělením přístupu k vybrané cloudovým aplikacím pomocí podmíněného přístupu Azure Active Directory.
 services: active-directory
 keywords: podmíněný přístup pro aplikace, podmíněný přístup s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu, podmínky použití
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 2b06dcfd4bdeb68d114c0c6dd57134fadfef57b5
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: e121cfddf8dc598771d630e011b4410217f5e92b
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605840"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901874"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Rychlý start: Vyžadovat podmínky použití přijmout před přístupem k cloudových aplikací 
 
@@ -193,7 +193,7 @@ V zásadách nastavte:
 
 ## <a name="evaluate-a-simulated-sign-in"></a>Vyhodnocení Simulovaná přihlášení
 
-Teď, když jste nakonfigurovali zásady podmíněného přístupu, budete pravděpodobně chtít vědět, jestli funguje podle očekávání. Jako první krok pomocí podmíněného přístupu, nástroj pro co když zásady pro simulaci u přihlášení z testovacího uživatele. Simulace odhad dopadu tomto přihlášení na zásady a generuje sestavy simulace.  
+Teď, když jste nakonfigurovali zásady podmíněného přístupu, pravděpodobně chcete zjistit, jestli fungují podle očekávání. Jako první krok pomocí podmíněného přístupu, nástroj pro co když zásady pro simulaci u přihlášení z testovacího uživatele. Při této simulaci se odhadne dopad přihlášení na vaše zásady a vygeneruje se sestava simulace.  
 
 K inicializaci co, pokud nástroj pro vyhodnocení zásad, nastavit:
 

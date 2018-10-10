@@ -2,7 +2,7 @@
 title: Nejčastější dotazy týkající se použití Azure Database Migration Service | Dokumentace Microsoftu
 description: Přečtěte si nejčastější dotazy o použití k provedení migrace databází Azure Database Migration Service.
 services: database-migration
-author: HJToland3
+author: pochiraju
 ms.author: rajpo
 manager: ''
 ms.reviewer: ''
@@ -10,13 +10,13 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 06/19/2018
-ms.openlocfilehash: 08158843d0dfb3e5eb0635b5f5b5d015938d895e
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.date: 10/09/2018
+ms.openlocfilehash: f1f67921e7eadded4292f244f5754c8f00341a15
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804408"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887100"
 ---
 # <a name="faq-about-using-the-azure-database-migration-service"></a>Nejčastější dotazy týkající se použití Azure Database Migration Service
 Tento článek obsahuje nejčastější dotazy o použití Azure Database Migration Service společně se související odpovědi.
@@ -28,7 +28,7 @@ Azure Database Migration Service je plně spravovaná služba, která umožňuj�
 - Další investice do bezproblémové migrace.
 
 ### <a name="q-what-source-target-pairs-does-the-azure-database-migration-service-currently-support"></a>Otázka: Jaké párů zdroj cíl Azure Database Migration Service aktuálně podporuje?
-Tato služba momentálně podporuje migraci z SQL serveru do služby Azure SQL Database a můžete přejít na web Azure Portal teď začít používat Azure Database Migration Service pro tento scénář. Další páry zdroj cíl, jako je Oracle do Azure SQL Database jsou dostupné přes privátní verzi limited Preview. Příležitosti k účasti ve verzi limited Preview privátní z těchto scénářů, zaregistrujte [tady](https://aka.ms/dms-preview/).
+Tato služba momentálně podporuje migraci z SQL serveru do služby Azure SQL Database a můžete přejít na web Azure Portal teď začít používat Azure Database Migration Service pro tento scénář. Jiných párů zdroj cíl, jako je Oracle do Azure SQL Database jsou dostupné přes privátní verzi limited Preview. Příležitosti k účasti ve verzi limited Preview privátní z těchto scénářů, zaregistrujte [tady](https://aka.ms/dms-preview/).
 
 ### <a name="q-how-does-the-azure-database-migration-service-compare-to-other-microsoft-database-migration-tools-such-as-the-database-migration-assistant-dma-or-sql-server-migration-assistant-ssma"></a>Otázka: Jak Azure Database Migration Service se dá porovnat s ostatními nástroji Migrace databáze Microsoftu jako jsou databáze Migration Assistant (DMA) nebo SQL asistent migrace Server (SSMA)?
 Azure Database Migration Service je upřednostňovanou metodou pro migraci databází do Microsoft Azure ve velkém měřítku. Další podrobnosti o jak si Azure Database Migration Service vede jiné společnosti Microsoft databázových nástrojů pro migraci a doporučení týkající se používání služby pro různé scénáře, naleznete v tématu příspěvky blogu [odlišení těchto Microsoft databáze Nástroje pro migraci a služby](https://blogs.msdn.microsoft.com/datamigration/2017/10/13/differentiating-microsofts-database-migration-tools-and-services/).
@@ -59,9 +59,9 @@ Požadavky na Azure Database Migration Service, které jsou společné pro všec
 Seznam všech požadovaných součástí pro soutěžit konkrétní migrační scénáře pomocí Azure Database Migration Service najdete v tématu souvisejících kurzů v Azure Database Migration Service [dokumentaci](https://docs.microsoft.com/azure/dms/dms-overview) na Web docs.microsoft.com.
 
 ### <a name="q-how-do-i-find-the-ip-address-for-the-azure-database-migration-service-so-that-i-can-create-an-allow-list-for-the-firewall-rules-used-to-access-my-source-database-for-migration"></a>Otázka: Jak najdu IP adresu pro službu Azure Database Migration Service tak, že seznam povolených pro pravidla brány firewall pro přístup k databázi zdroje pro migraci můžete vytvořit?
-Budete muset přidat pravidla brány firewall umožňující Azure Database Migration Service přístup k vaší zdrojové databáze pro migraci. Je dynamická IP adresa pro službu, ale pokud používáte Expressroute, tato adresa se přiřadí soukromě ve vaší podnikové síti. Nejjednodušší způsob, jak určit správnou IP adresu, se vás pod rouškou ve stejné skupině prostředků jako vaše se zřídil prostředek Azure Database Migration Service k vyhledání přidružené síťové rozhraní. Název prostředku síťového rozhraní obvykle začíná příslušnou předponou síťovou kartu a za nímž následuje jedinečný znak a řadu příklad jj6tnztnmarpsskr82rbndyp síťové karty. Pokud vyberete tento prostředek síťové rozhraní, uvidíte IP adresu, musí být zahrnuty do seznamu povolených na webu Azure portal stránka Přehled prostředků.
+Budete muset přidat pravidla brány firewall umožňující Azure Database Migration Service přístup k vaší zdrojové databáze pro migraci. Je dynamická IP adresa pro službu, ale pokud používáte Expressroute, tato adresa se přiřadí soukromě ve vaší podnikové síti. Nejjednodušší způsob, jak určit správnou IP adresu, se vás pod rouškou ve stejné skupině prostředků jako vaše se zřídil prostředek Azure Database Migration Service k vyhledání přidružené síťové rozhraní. Název prostředku síťového rozhraní obvykle začíná příslušnou předponou síťovou kartu a za nímž následuje jedinečný znak a čísla pořadí, například síťová karta jj6tnztnmarpsskr82rbndyp. Pokud vyberete tento prostředek síťové rozhraní, uvidíte IP adresu, musí být zahrnuty do seznamu povolených na webu Azure portal stránka Přehled prostředků.
 
-Také budete muset zahrnout zdroje port, který SQL Server naslouchá na seznam povolených tříd. Ve výchozím nastavení je port 1433, ale zdrojového systému SQL Server může být nakonfigurovaná k naslouchání na i další porty. V takovém případě musíte zahrnout tyto porty na seznamu povolených. Můžete určit port, který SQL Server naslouchá na pomocí zobrazení dynamické správy dotazu:
+Také budete muset zahrnout zdroje port, který SQL Server naslouchá na seznam povolených tříd. Ve výchozím nastavení to je port 1433, ale požadovaný zdroj SQL Server může být nakonfigurovaná k naslouchání na i další porty. V takovém případě musíte zahrnout tyto porty na seznamu povolených. Můžete určit port, který SQL Server naslouchá na pomocí zobrazení dynamické správy dotazu:
 
 ```sql
     SELECT DISTINCT 

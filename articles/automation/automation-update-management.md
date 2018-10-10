@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/05/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 403c52cb2de61f1c2d02ad72e9067da09b40a814
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 8cdff34078c759379b5b939bdcdbc55155b51251
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816034"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887451"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -515,7 +515,7 @@ Zjistěte, jak integrovat do řešení pro správu pomocí nástroje System Cent
 
 ## <a name="inclusion-behavior"></a>Zahrnutí chování
 
-Zahrnutí aktualizací můžete zadat konkrétní aktualizace použít. Bez ohledu na to klasifikace vybrané pro nasazení jsou nainstalované opravy nebo balíčky, které jsou nastavené mají být zahrnuty.
+Zahrnutí aktualizací můžete zadat konkrétní aktualizace použít. Jsou nainstalované opravy nebo balíčky, které jsou nastavené mají být zahrnuty. Když klasifikaci je vybraná i balíčky nebo opravy jsou nastaveny mají být zahrnuty, nainstaluje se položky zahrnuté i položky, které splňují klasifikace.
 
 Pro počítače s Linuxem v případě, že balíček je součástí, ale má závislý balíček, který byl vyloučen, specifcally balíček není nainstalovaný.
 

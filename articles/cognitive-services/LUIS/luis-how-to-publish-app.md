@@ -7,15 +7,15 @@ author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 54d3b66f6a452e97e1d354fa75eb1b21065ab3e2
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 6eb48fd0f3290fbc3a249bc3880c809ace9f9ddb
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031267"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886469"
 ---
 # <a name="publish-your-trained-app"></a>Publikování trénovaného aplikace
 

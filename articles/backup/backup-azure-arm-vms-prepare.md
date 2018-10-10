@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 9/10/2018
 ms.author: markgal
-ms.openlocfilehash: ebfd879fcd619dab48e4a08130f86afc68f91207
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 7ab88ce3565ccf79f20847a3a5e744c495d5fcb1
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785422"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884929"
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Příprava prostředí pro zálohování virtuálních počítačů s nasazením Resource Manageru
 
@@ -62,6 +62,9 @@ Předtím, než je připravit vaše prostředí, nezapomeňte seznámit s těmit
   * Virtuální počítače v rámci konfigurace služby Vyrovnávání zatížení (interní a externí)
   * Virtuální počítače s víc vyhrazených IP adres
   * Virtuální počítače s více síťovými adaptéry
+
+  > [!NOTE]
+  > Azure Backup podporuje [Standard Managed SSD Disks](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/), nový typ trvalého úložiště pro virtuální počítače Microsoft Azure. Je podporované u spravovaných disků na [zásobníku zálohování virtuálních počítačů Azure V2](backup-upgrade-to-vm-backup-stack-v2.md).
 
 ## <a name="create-a-recovery-services-vault-for-a-vm"></a>Vytvoření trezoru služeb zotavení pro virtuální počítač
 Trezor služby Recovery Services je entita, která ukládá zálohy a body obnovení, které byly vytvořeny v čase. Trezor služby Recovery Services obsahuje také zásady zálohování, které jsou spojeny s chráněných virtuálních počítačů.

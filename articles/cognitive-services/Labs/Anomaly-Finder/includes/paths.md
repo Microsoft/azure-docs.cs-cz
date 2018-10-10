@@ -5,23 +5,23 @@ services: cognitive-services
 author: chliang
 manager: bix
 ms.service: cognitive-services
-ms.technology: anomaly-finder
+ms.component: anomaly-finder
 ms.topic: include
 ms.date: 04/13/2018
 ms.author: chliang
 ms.custom: include file
-ms.openlocfilehash: a806cac410eb57e59dacb42da9be954b2f962956
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: fb02496d9c107a2c21acca6c65ef69fdfceb4597
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343014"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48904461"
 ---
 <a name="paths"></a>
 ## <a name="paths"></a>Cesty
 
 <a name="anomalydetection-post"></a>
-### <a name="detect-anomaly-points-for-the-time-series-data-points-requested"></a>Zjištění anomálií bodů pro požadovaný čas řadu datových bodů
+### <a name="detect-anomaly-points-for-the-time-series-data-points-requested"></a>Zjištění anomálií bodů pro požadovaný čas datových bodů řady
 ```
 POST /anomalydetection
 ```
@@ -31,7 +31,7 @@ POST /anomalydetection
 
 |Typ|Název|Popis|Schéma|
 |---|---|---|---|
-|**Text**|**text**  <br>*Požadované*|Časové řady datové body a období, v případě potřeby.|[Požadavek](#request)|
+|**Text**|**Text**  <br>*Vyžaduje*|Časové řady datových bodů a je-li potřeba.|[Požadavek](#request)|
 
 
 #### <a name="responses"></a>Odezvy
@@ -39,7 +39,7 @@ POST /anomalydetection
 |Kód HTTP|Popis|Schéma|
 |---|---|---|
 |**200**|Úspěšná operace.|< [odpověď](#response) > pole|
-|**400**|Nelze analyzovat požadavku JSON.|Žádný obsah|
+|**400**|Nejde parsovat JSON žádosti.|Žádný obsah|
 |**403**|Certifikát, který jste zadali nebyla přijata serverem.|Žádný obsah|
 |**405**|Metoda není povolena.|Žádný obsah|
 |**500**|Interní chyba serveru|Žádný obsah|
@@ -57,7 +57,7 @@ POST /anomalydetection
 
 #### <a name="tags"></a>Značky
 
-* anomalydetection
+* anomalydetection, který
 
 
 

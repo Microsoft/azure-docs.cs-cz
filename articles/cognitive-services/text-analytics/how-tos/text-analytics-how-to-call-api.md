@@ -1,21 +1,21 @@
 ---
-title: Volání rozhraní REST API pro analýzu textu
-titleSuffix: Azure Cognitive Services
+title: Volání rozhraní Text Analytics API
+titlesuffix: Azure Cognitive Services
 description: Zjistěte, jak zavolat REST API pro analýzu textu.
 services: cognitive-services
 author: ashmaka
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: text-analytics
+ms.component: text-analytics
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: 5293aaf6083dc832f7fe96fd6656fc8d1c30060e
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: a70ef893019264ffc0eb3cb2982b05b15ebd0acf
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603256"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884364"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Volání REST API pro analýzu textu
 
@@ -40,9 +40,9 @@ Musíte mít [koncový bod a přístupový klíč](text-analytics-how-to-access-
 
 Vstup musí být v nezpracované nestrukturovaného textu JSON. XML není podporován. Schéma je jednoduché, který se skládá z prvků, je popsáno v následujícím seznamu. 
 
-Aktuálně můžete odeslat dokumenty stejný pro všechny operace rozhraní Text Analytics: zabarvení, klíčových frází, rozpoznávání jazyka a propojování entit. (Schéma je pravděpodobně lišit pro každou analýzy v budoucnu.)
+Aktuálně můžete odeslat dokumenty stejný pro všechny operace rozhraní Text Analytics: zabarvení, klíčových frází, rozpoznávání jazyka a identifikace entit. (Schéma je pravděpodobně lišit pro každou analýzy v budoucnu.)
 
-| Element | Platné hodnoty | Povinné? | Využití |
+| Prvek | Platné hodnoty | Povinné? | Využití |
 |---------|--------------|-----------|-------|
 |`id` |Datový typ je řetězec, ale v praxi ID dokumentu mají být celá čísla. | Požaduje se | Systém používá ID zadáte strukturovat výstup. Pro každé ID v požadavku se generují kódech jazyků, klíčové fráze a skóre mínění.|
 |`text` | Nestrukturované nezpracovaný text, maximálně 5 000 znaků. | Požaduje se | Pro rozpoznávání jazyka lze vyjádřit text v libovolném jazyce. Pro analýzu mínění, extrakci klíčových frází a identifikace entit, musí mít text [podporovaný jazyk](../text-analytics-supported-languages.md). |
@@ -65,7 +65,7 @@ Služba přijímá požádat o velikost až 1 MB. Pokud používáte Postman (ne
    + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment`
    + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases`
    + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/entities`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
 
 2. Nastavte tři hlavičky žádosti:
 
@@ -86,7 +86,7 @@ Služba přijímá požádat o velikost až 1 MB. Pokud používáte Postman (ne
   + [Rozpoznávání jazyka](text-analytics-how-to-language-detection.md)  
   + [Extrakce klíčových frází](text-analytics-how-to-keyword-extraction.md)  
   + [Analýza subjektivního hodnocení](text-analytics-how-to-sentiment-analysis.md)  
-  + [Rozhraní entity linking](text-analytics-how-to-entity-linking.md)  
+  + [Rozpoznávání entit (Preview)](text-analytics-how-to-entity-linking.md)  
 
 
 6. Klikněte na tlačítko **odeslat** odešlete žádost. Můžete odeslat až 100 požadavků za minutu. 

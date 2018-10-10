@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/04/2018
+ms.date: 10/09/2018
 ms.author: douglasl
-ms.openlocfilehash: 8027b167481fd4e48e03b3c1ad3ed8c6adcb853e
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 5da9d4b33951e14df251fe4939c54cff822843aa
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815439"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901948"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Průběžná integrace a doručování (CI/CD) v Azure Data Factory
 
@@ -182,6 +182,9 @@ Nasazení může selhat, pokud se pokusíte aktualizovat active aktivační udá
     ![](media/continuous-integration-deployment/continuous-integration-image11.png)
 
 Můžete podobným způsobem a použijte podobně jako kód (s `Start-AzureRmDataFactoryV2Trigger` funkce) po nasazení restartovat aktivační události.
+
+> [!IMPORTANT]
+> Scénáře nasazení a průběžnou integraci typ modulu Runtime integrace napříč různými prostředími musí být stejné. Pokud máte například *v místním prostředí* stejné prostředí IR Integration Runtime (IR) ve vývojovém prostředí, musí být typu *v místním prostředí* v jiných prostředích, jako je například testovací a produkční také. Podobně pokud sdílíte prostředí integration Runtime v několika fázích, budete muset nakonfigurovat IRs jako *propojené v místním prostředí* ve všech prostředích, jako je vývoj, testování a produkce.
 
 ## <a name="sample-deployment-template"></a>Ukázková šablona nasazení
 

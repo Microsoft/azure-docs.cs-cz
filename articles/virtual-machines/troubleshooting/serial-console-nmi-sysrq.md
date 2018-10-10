@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: ba42c3cc50466f9b5bf46cd1eef8f0d4e48bf89a
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 9dcec525adf7676b23c6dec14dff07c6d419c085
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855999"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884638"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Použít pro volání SysRq a NMI konzoly sériového portu
 
@@ -30,11 +30,11 @@ Jakmile se doručí SysRq pořadí, bude konfigurace jádra řídit, jak systém
 
 Sériové konzoly Azure je možné odeslat SysRq na virtuálním počítači Azure pomocí klávesnice ikony na příkazovém řádku je uvedeno níže.
 
-![](/media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
+![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
 
 Výběrem "příkazu SysRq Send" se otevře dialogové okno, které se poskytují běžné možnosti SysRq ani nebude přijímat posloupnost SysRq příkazy zadané do dialogového okna.  To umožňuje provádět základní operace, například bezpečné restartování pomocí pro řadu SysRq: `REISUB`.
 
-![](/media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
+![](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
 
 Příkaz SysRq nelze použít na virtuálních počítačích, které se zastaví nebo jejichž jádra je ve stavu, jako nereagující. (například poplachu jádra).
 
@@ -103,8 +103,9 @@ Maskable přerušení (NMI) slouží k vytvoření signál, který nebude ignoro
 
 Konzole sériového portu je možné odeslat NMI na virtuálním počítači Azure pomocí klávesnice ikony na příkazovém řádku je uvedeno níže. Jakmile se doručí NMI, konfigurace virtuálního počítače bude řídit, jak systém reaguje.  Operační systémy lze nakonfigurovat, aby při selhání a vytvořit výpis stavu paměti operačního systému Linux dostane NMI.
 
-![](/media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
+![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
 
+### <a name="enable-nmi"></a>Povolit NMI
 Pro systémy Linux, které podporují sysctl jádra parametry konfigurace můžete povolit nějaké při příjmu tohoto NMI pomocí následující:
 1. Přidání tohoto řádku */etc/sysctl.conf* <br>
     `kernel.panic_on_unrecovered_nmi=1`

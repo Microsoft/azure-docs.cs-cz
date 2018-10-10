@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/2/2018
 ms.author: markgal
-ms.openlocfilehash: efe08eddaceb5a764dbd5393e79644eac1e2e106
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 9168a67366664f50a49ae04ef8ddc2f7aa9d665b
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406154"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886471"
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Dotazy týkající se služby Azure Backup
 Tento článek obsahuje odpovědi na běžné dotazy týkající se komponenty Azure Backup. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Můžete klást otázky týkající se Azure Backup kliknutím na **Komentáře** (napravo). Komentáře se zobrazují v dolní části tohoto článku. Pro komentáře je potřeba účet Livefyre. Otázky týkající se služby Azure Backup můžete také publikovat na [diskusním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -43,10 +43,10 @@ Ne. Trezor se vytvoří na úrovni předplatného a nejde ji přiřadit do jiné
 Ne. Data záloh uložená v trezoru nejde přesunout do jiného trezoru.
 
 ### <a name="can-i-change-from-grs-to-lrs-after-a-backup-br"></a>Můžete změnit z GRS LRS za zálohování? <br/>
-Ne. Trezor služby Recovery Services můžete pouze změnit možnosti úložiště před všechny zálohy jsou uložené. 
+Ne. Trezor služby Recovery Services můžete pouze změnit možnosti úložiště před všechny zálohy jsou uložené.
 
 ### <a name="recovery-services-vaults-are-resource-manager-based-are-backup-vaults-still-supported-br"></a>Trezory služby Recovery Services jsou založené na Resource Manageru. Jsou trezory služby Backup stále podporovány? <br/>
-Trezory služby Backup se převedl na trezory služby Recovery Services. Pokud nejde převést trezoru služby Backup na trezor služby Recovery Services, poté trezoru služby Backup byl převeden na trezor služby Recovery Services za vás. 
+Trezory služby Backup se převedl na trezory služby Recovery Services. Pokud nejde převést trezoru služby Backup na trezor služby Recovery Services, poté trezoru služby Backup byl převeden na trezor služby Recovery Services za vás.
 
 ### <a name="can-i-migrate-a-backup-vault-to-a-recovery-services-vault-br"></a>Můžu migrovat trezor Backup do trezoru Služeb zotavení? <br/>
 Všechny trezory služby Backup se převedl na trezory služby Recovery Services. Pokud nejde převést trezoru služby Backup na trezor služby Recovery Services, poté trezoru služby Backup byl převeden na trezor služby Recovery Services za vás.
@@ -60,7 +60,6 @@ Podrobný seznam dotazů je uveden v tématu [Nejčastější dotazy k zálohov�
 ## <a name="back-up-vmware-servers"></a>Zálohování serverů VMware
 
 ### <a name="can-i-back-up-vmware-vcenter-servers-to-azure"></a>Je možné zálohovat servery VMware vCenter do Azure?
-
 Ano. Pomocí Azure Backup Serveru můžete do Azure zálohovat servery VMware vCenter a ESXi. Informace o podporovaných verzích VMware najdete v článku [Systém ochrany Azure Backup Serveru](backup-mabs-protection-matrix.md). Podrobné pokyny najdete v tématu [Použití Azure Backup Serveru k zálohování serveru VMware](backup-azure-backup-server-vmware.md).
 
 ### <a name="do-i-need-a-separate-license-to-recover-a-full-on-premises-vmwarehyper-v-cluster-from-dpm-or-azure-backup-serverbr"></a>Budu potřebovat samostatné licence služby obnovení úplné místní cluster VMware nebo Hyper-V z aplikace DPM nebo Azure Backup serveru?<br/>
@@ -74,17 +73,14 @@ Ano.
 Ne. Server DPM nebo MABS lze zaregistrovat pouze pro jeden trezor.
 
 ### <a name="which-version-of-system-center-data-protection-manager-is-supported"></a>Jaká verze aplikace System Center Data Protection Manager je podporována?
-
-Doporučujeme vám nainstalovat [nejnovějšího](http://aka.ms/azurebackup_agent) agenta Azure Backup na nejnovější kumulativní aktualizaci aplikace System Center Data Protection Manager (DPM). 
+Doporučujeme vám nainstalovat [nejnovějšího](http://aka.ms/azurebackup_agent) agenta Azure Backup na nejnovější kumulativní aktualizaci aplikace System Center Data Protection Manager (DPM).
 - Pro System Center DPM 2012 R2 [14 kumulativní aktualizace](https://support.microsoft.com/help/4043315/update-rollup-14-for-system-center-2012-r2-data-protection-manager) je nejnovější aktualizace.
 - Pro System Center DPM 2016 [kumulativní aktualizaci 2](https://support.microsoft.com/en-us/help/3209593) je nejnovější aktualizace.
 
 ### <a name="i-have-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-protect-on-premises-applicationvm-workloads-to-azure"></a>Nainstaloval jsem agenta Azure Backup, aby chránil moje soubory a složky. Můžete nainstalovat System Center DPM k ochraně místních aplikací a úloh virtuálního počítače do Azure?
-
 Ano. Použití Azure Backup pomocí System Center Data Protection Manager (DPM), nainstalujte nejprve DPM a potom nainstalovat agenta Azure Backup. Instalace komponent služby Azure Backup v tomto pořadí zajistí, že agent Azure Backup bude fungovat s DPM. Instalovat agenta Azure Backup dříve než DPM se nedoporučuje ani nepodporuje.
 
 ### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>Můžete použít aplikace DPM k zálohování aplikace ve službě Azure Stack?
-
 Ne. I když Azure Backup můžete použít k ochraně služby Azure Stack, Azure Backup nepodporuje aktuálně použití DPM k zálohování aplikace ve službě Azure Stack.
 
 ## <a name="how-azure-backup-works"></a>Jak funguje Azure Backup
@@ -115,7 +111,7 @@ Azure Backup podporuje pro zálohování souborů a složek a pro zálohování 
 | Windows Server 2016 |64bitová verze |Standard, Datacenter, Essentials |
 | Windows Server 2012 R2 a nejnovější aktualizace Service Packu |64bitová verze |Standard, Datacenter, Foundation |
 | Windows Server 2012 a nejnovější aktualizace Service Packu |64bitová verze |Datacenter, Foundation, Standard |
-| Windows Storage Server 2016 a nejnovější aktualizace Service Packu |64bitová verze |Standard, Workgroup | 
+| Windows Storage Server 2016 a nejnovější aktualizace Service Packu |64bitová verze |Standard, Workgroup |
 | Windows Storage Server 2012 R2 a nejnovější aktualizace Service Packu |64bitová verze |Standard, Workgroup |
 | Windows Storage Server 2012 a nejnovější aktualizace Service Packu |64bitová verze |Standard, Workgroup |
 | Windows Server 2012 R2 a nejnovější aktualizace Service Packu |64bitová verze |Essential |
@@ -192,7 +188,7 @@ Ano. Data jsou zašifrována na místním serveru, klientu nebo počítači SCDP
 Ano. Data odeslaná do Azure zůstávají šifrovaná (neaktivní uložená data). Microsoft nikdy nedešifruje zálohovaná data. Při zálohování virtuálního počítače Azure spoléhá služba Azure Backup na šifrování virtuálního počítače. Například pokud je váš virtuální počítač šifrovaný pomocí služby Azure Disk Encryption nebo jiné technologie šifrování, Azure Backup k zabezpečení dat použije toto šifrování.
 
 ### <a name="what-is-the-minimum-length-of-encryption-key-used-to-encrypt-backup-data-br"></a>Jaká je minimální délka šifrovacího klíče, který se používá k šifrování zálohovaných dat? <br/>
-Pokud používáte agenta Azure Backup, šifrovací klíč by měl obsahovat alespoň 16 znaků. Pro virtuální počítače Azure neplatí žádné omezení délky klíčů, které používá služba Azure Key Vault. 
+Pokud používáte agenta Azure Backup, šifrovací klíč by měl obsahovat alespoň 16 znaků. Pro virtuální počítače Azure neplatí žádné omezení délky klíčů, které používá služba Azure Key Vault.
 
 ### <a name="what-happens-if-i-misplace-the-encryption-key-can-i-recover-the-data-or-can-microsoft-recover-the-data-br"></a>Co se stane, když ztratím šifrovací klíč? Mohu obnovit data (nebo) může Microsoft obnovit data? <br/>
 Klíč, pomocí kterého se šifrují zálohovaná data, je přítomen pouze u zákazníka. Microsoft neudržuje jeho kopii v Azure a nemá ke klíči žádný přístup. Pokud zákazník klíč ztratí, Microsoft nemůže zálohovaná data obnovit.

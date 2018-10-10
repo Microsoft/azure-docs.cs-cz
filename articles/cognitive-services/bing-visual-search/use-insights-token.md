@@ -6,23 +6,23 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: bing-visual-search
+ms.component: bing-visual-search
 ms.topic: conceptual
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: e853545e07709d82fa1e3b1143392e6d6012f6f6
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 2843097d8fa0deafe7dda13fab63856009a17836
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227584"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887345"
 ---
 # <a name="using-an-insights-token-to-get-insights-about-an-image"></a>Chcete-li získat přehled o bitovou kopii pomocí tokenu insights
 
-API pro vizuální vyhledávání Bingu vrátí informace o bitovou kopii, která zadáte. Image můžete zadat pomocí adresy URL obrázku, insights, token, nebo nahráním image. Informace o těchto možnostech najdete v tématu [co je API pro vizuální vyhledávání Bingu?](overview.md). Tento článek ukazuje použití tokenu insights. Příklady, které si předvedli nahrání obrázku, který má získat přehledy, najdete rychlých startech ([jazyka C#](quickstarts\csharp.md) | [Java](quickstarts\java.md) | [Node.js](quickstarts\nodejs.md)  |  [Python](quickstarts\python.md)).
+Rozhraní API pro Vizuální vyhledávání Bingu vrátí informace o obrázku, který poskytnete. Obrázek můžete zadat pomocí adresy URL obrázku, tokenu insights nebo nahráním obrázku. Informace o těchto možnostech najdete v tématu [co je API pro vizuální vyhledávání Bingu?](overview.md). Tento článek ukazuje použití tokenu insights. Příklady, které si předvedli nahrání obrázku, který má získat přehledy, najdete rychlých startech ([jazyka C#](quickstarts\csharp.md) | [Java](quickstarts\java.md) | [Node.js](quickstarts\nodejs.md)  |  [Python](quickstarts\python.md)).
 
 
-Při odesílání pro vizuální vyhledávání image token nebo adresu URL, následuje data formuláře, že je třeba zahrnout text příspěvku. Data formuláře musí zahrnovat hlavičku Content-Disposition a jeho `name` parametr musí být nastaven na "knowledgeRequest". Podrobnosti o `imageInfo` objektu, najdete v článku [žádost](#the-request).
+Pokud do vizuálního vyhledávání odešlete token obrázku nebo adresu URL, musíte do těla POST zahrnout následující data formuláře. Data formuláře musí zahrnovat hlavičku Content-Disposition a jeho `name` parametr musí být nastaven na "knowledgeRequest". Podrobnosti o objektu `imageInfo` najdete v části [Požadavek](#the-request).
 
 ```json
 {
@@ -68,17 +68,17 @@ Příklady, které používají insights token najdete v tématu [jazyka C#](#us
 
 ### <a name="prerequisites"></a>Požadavky
 
-Budete potřebovat [Visual Studio 2017](https://www.visualstudio.com/downloads/) Chcete-li získat tento kód běžící na Windows. (Bude stačit bezplatná verze Community Edition.)
+Pokud chcete tento kód spustit na Windows, budete potřebovat [Visual Studio 2017](https://www.visualstudio.com/downloads/). (Bude stačit bezplatná verze Community Edition.)
 
-Pro účely tohoto rychlého startu, můžete zadat [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) klíč předplatného, nebo klíč do placené předplatné.
+Pro tento rychlý start můžete použít klíč [bezplatné zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) předplatného, nebo klíč placeného předplatného.
 
 ## <a name="running-the-application"></a>Spouštění aplikace.
 
-Ke spuštění této aplikace, postupujte podle těchto kroků:
+Pokud chcete tuto aplikaci spustit, postupujte následovně:
 
-1. Vytvořte nové konzoly řešení v sadě Visual Studio.
-1. Nahraďte obsah `Program.cs` kódem zobrazeným v tomto rychlém startu.
-2. Nahraďte `accessKey` hodnotu s klíči předplatného.
+1. Vytvořte nové konzolové řešení v sadě Visual Studio.
+1. Nahraďte obsah `Program.cs` kódem z tohoto rychlého startu.
+2. Hodnotu `accessKey` nahraďte klíčem předplatného.
 2. Nahraďte `insightsToken` hodnotu s tokenem přehledy z odpovědi hledání/imagí /.
 3. Spusťte program.
 
@@ -244,18 +244,18 @@ namespace VisualSearchInsightsToken
 
 ### <a name="prerequisites"></a>Požadavky
 
-Pro kompilaci a spuštění tohoto kódu budete potřebovat [JDK 7 nebo 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). Pokud máte Oblíbené, ale bude stačit textový editor, můžete použít prostředí Java IDE.
+Pro kompilaci a spuštění tohoto kódu budete potřebovat [JDK 7 nebo 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). Můžete použít prostředí Java IDE, pokud je vaše oblíbené, ale stačit bude i textový editor.
 
-Pro účely tohoto rychlého startu, můžete zadat [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) klíč předplatného, nebo klíč do placené předplatné.
+Pro tento rychlý start můžete použít klíč [bezplatné zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) předplatného, nebo klíč placeného předplatného.
 
 ## <a name="running-the-application"></a>Spouštění aplikace.
 
-Ke spuštění této aplikace, postupujte podle těchto kroků:
+Pokud chcete tuto aplikaci spustit, postupujte následovně:
 
-1. Stáhnout nebo nainstalovat [gson knihovny](https://github.com/google/gson). To může získat prostřednictvím nástroje Maven.
-2. Vytvoření nového projektu Java v Oblíbené prostředí IDE nebo editoru.
+1. Stáhněte si nebo nainstalujte [knihovnu gson](https://github.com/google/gson). Můžete ji také získat prostřednictvím systému Maven.
+2. Ve svém oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Javy.
 3. Přidejte poskytnutý kód do souboru s názvem `VisualSearch.java`.
-4. Nahraďte `subscriptionKey` hodnotu s klíči předplatného.
+4. Hodnotu `subscriptionKey` nahraďte klíčem předplatného.
 5. Spusťte program.
 
 ```java
@@ -362,26 +362,26 @@ public class InsightsToken {
 
 ### <a name="prerequisites"></a>Požadavky
 
-Potřebujete [Node.js 6](https://nodejs.org/en/download/) tento kód spustit.
+Abyste mohli tento kód spustit, budete potřebovat [Node.js 6](https://nodejs.org/en/download/).
 
-Pro účely tohoto rychlého startu, můžete zadat [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) klíč předplatného, nebo klíč do placené předplatné.
+Pro tento rychlý start můžete použít klíč [bezplatné zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) předplatného, nebo klíč placeného předplatného.
 
 ## <a name="running-the-application"></a>Spouštění aplikace.
 
-Ke spuštění této aplikace, postupujte podle těchto kroků:
+Pokud chcete tuto aplikaci spustit, postupujte následovně:
 
-1. Vytvořte složku pro váš projekt (nebo použijte vaše oblíbené prostředí IDE nebo editoru).
-2. Z příkazového řádku nebo v terminálu přejděte do složky, kterou jste právě vytvořili.
-3. Instalace modulů žádosti:  
+1. Vytvořte složku pro váš projekt (nebo použijte vaše oblíbené prostředí IDE nebo oblíbený editor).
+2. Z příkazového řádku nebo terminálu přejděte do složky, kterou jste právě vytvořili.
+3. Nainstalujte moduly žádosti:  
   ```  
   npm install request  
   ```  
-3. Instalace modulů data formuláře:  
+3. Nainstalujte moduly objektu form-data:  
   ```  
   npm install form-data  
   ```  
-4. Vytvořte soubor s názvem GetVisualInsights.js a přidejte do ní následující kód.
-5. Nahraďte `subscriptionKey` hodnotu s klíči předplatného.
+4. Vytvořte soubor s názvem GetVisualInsights.js a přidejte do něj následující kód.
+5. Hodnotu `subscriptionKey` nahraďte klíčem předplatného.
 7. Spusťte program.  
   ```
   node GetVisualInsights.js
@@ -430,17 +430,17 @@ function requestCallback(err, res, body) {
 
 ### <a name="prerequisites"></a>Požadavky
 
-Potřebujete [Python 3](https://www.python.org/) tento kód spustit.
+Abyste mohli tento kód spustit, potřebujete [Python 3](https://www.python.org/).
 
-Pro účely tohoto rychlého startu, můžete zadat [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) klíč předplatného, nebo klíč do placené předplatné.
+Pro tento rychlý start můžete použít klíč [bezplatné zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) předplatného, nebo klíč placeného předplatného.
 
-## <a name="running-the-walkthrough"></a>Spuštění Průvodce
+## <a name="running-the-walkthrough"></a>Spuštění průvodce
 
-Ke spuštění této aplikace, postupujte podle těchto kroků:
+Pokud chcete tuto aplikaci spustit, postupujte následovně:
 
-1. Vytvoření nového projektu Pythonu v Oblíbené prostředí IDE nebo editoru.
-2. Vytvořte soubor s názvem visualsearch.py a přidejte kódu zobrazeného v rámci tohoto rychlého startu.
-3. Nahraďte `SUBSCRIPTION_KEY` hodnotu s klíči předplatného.
+1. Vytvořte nový projekt v jazyce Python v oblíbeném integrovaném vývojovém prostředí nebo editoru.
+2. Vytvořte soubor s názvem visualsearch.py a přidejte do něj kód zobrazený v tomto rychlém startu.
+3. Hodnotu `SUBSCRIPTION_KEY` nahraďte klíčem předplatného.
 4. Spusťte program.
 
 
@@ -493,7 +493,7 @@ if __name__ == '__main__':
 ## <a name="next-steps"></a>Další postup
 
 [Kurz jednostránkovou aplikaci pro vizuální vyhledávání Bingu](tutorial-bing-visual-search-single-page-app.md)  
-[Přehled pro vizuální vyhledávání Bingu](overview.md)  
+[Přehled Vizuálního vyhledávání Bingu](overview.md)  
 [Vyzkoušejte si to](https://aka.ms/bingvisualsearchtryforfree)  
-[Získat bezplatnou zkušební verzi přístupový klíč](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
-[Referenční dokumentace API pro vizuální vyhledávání Bingu](https://aka.ms/bingvisualsearchreferencedoc)
+[Získání bezplatné zkušební verze přístupového klíče](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
+[Reference k rozhraní API pro vizuální vyhledávání Bingu](https://aka.ms/bingvisualsearchreferencedoc)

@@ -1,5 +1,5 @@
 ---
-title: Ověření ve službě Azure AD a získat pomocí OAuth 2.0 Token JWT
+title: Ověření ve službě Azure AD a získá token JWT, a pomocí OAuth 2.0
 description: Příklad kódu ukazuje, jak ověřování pomocí Azure Active Directory pomocí OAuth 2.0 pro přístup k zabezpečené webové aplikace a webová rozhraní API ve vaší organizaci.
 services: active-directory
 author: rloutlaw
@@ -13,14 +13,14 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: routlaw
 ms.custom: aaddev
-ms.openlocfilehash: d77af898d5baef4fa7970132b0eb8deddb8f68cb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f4bcbb2064a8f7fcdfd2002d2e8d6e0c4f679ffc
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981793"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902905"
 ---
-# <a name="request-an-access-token-using-oauth-20-to-access-web-apis-and-applications-secured-by-azure-active-directory"></a>Žádost o přístupový token pomocí OAuth 2.0 pro přístup k webovým rozhraním API a aplikace zabezpečené pomocí Azure Active Directory
+# <a name="how-to-request-an-access-token-using-oauth-20-to-access-web-apis-and-applications-secured-by-azure-ad"></a>Postupy: žádost o přístupový token pro přístup k webovým rozhraním API a aplikace zabezpečené pomocí Azure AD pomocí OAuth 2.0
 
 Tento článek ukazuje, jak získat JSON Web Token (JWT) pro přístup k prostředkům zabezpečené pomocí Azure AD. Předpokládá, že máte [autorizační token](/azure/active-directory/develop/active-directory-protocols-oauth-code#request-an-authorization-code) z uživateli uděleno oprávnění nebo prostřednictvím [instanční objekt služby](/azure/active-directory/develop/active-directory-application-objects).
 
@@ -45,7 +45,6 @@ Vyžadují se následující hlavičky:
 |--------------------|-----------------|  
 | *Hostitel:* | https://login.microsoftonline.com |
 | *Typ obsahu:*| Application/x--www-form-urlencoded |
- 
 
 ### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
@@ -59,6 +58,7 @@ Vyžadují se následující hlavičky:
 | redirect_uri  | povinné              | Stejné redirect_uri hodnota, která byla použita k získání authorization_code.                                                                                                                                                                                                                                                                                                                                                             |
 | Hodnota client_secret | vyžaduje se pro webové aplikace | Tajný klíč aplikace, kterou jste vytvořili v portálu pro registraci aplikace pro vaši aplikaci. Nepoužívejte v nativní aplikaci, protože client_secrets nemůže být spolehlivě uložená na zařízeních. Vyžaduje se pro webové aplikace a webová rozhraní API, které se budou moct bezpečně uložit hodnotu client_secret na straně serveru.  Tajné klíče klienta musí být kódovaná adresou URL před odesláním.                                                                                 |
 | code_verifier | nepovinné              | Stejné code_verifier, který se používá k získání authorization_code. Povinné, pokud PKCE použila žádost o udělení autorizace kódu. Další informace najdete v tématu [PKCE RFC](https://tools.ietf.org/html/rfc7636)                                                                                                                                                                                                                                                                                             |
+
 ## <a name="handle-the-response"></a>Zpracování odpovědi
 
 Úspěšné odpovědi tokenu bude obsahovat JWT token a bude vypadat:
@@ -81,6 +81,3 @@ Vyžadují se následující hlavičky:
 | scope         | Obory, které je platný pro access_token.                                                                                                                                                                                                                                                                                                                                                                                                         |
 | refresh_token | Aktualizace tokenu OAuth 2.0. Aplikace můžete používat tento token získat dodatečné přístupové tokeny, až vyprší platnost aktuálního tokenu přístupu. Refresh_tokens jsou dlouhodobé a slouží k přístupu k prostředkům uchovávat po dlouhou dobu. Další podrobnosti najdete [kódu v2.0 udělit odkaz](v2-oauth2-auth-code-flow.md#refresh-the-access-token). <br> **Poznámka:** pouze zadaný if `offline_access` byl vyžádán oboru.                                               |
 | id_token      | Bez znaménka JSON Web Token (JWT). Aplikace může dekódovat segmenty tento token na žádost o informace o uživateli, který přihlášení. Aplikaci můžete ukládat do mezipaměti hodnoty a jejich zobrazení, ale na ně neměli spoléhat pro povolení nebo hranice zabezpečení. Další informace o id_tokens, najdete v článku [ `id_token reference` ](id-tokens.md). <br> **Poznámka:** pouze zadaný if `openid` byl vyžádán oboru. |
-
-
-

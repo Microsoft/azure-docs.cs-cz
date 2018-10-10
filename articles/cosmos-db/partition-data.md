@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: andrl
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9b7d9a0dd439b7c25180c8f250a87ae5ee184139
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: d7c1c28b3d7b2f51c31f5f05cdef66cc8d71e192
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870566"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886378"
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Dělení a škálování ve službě Azure Cosmos DB
 
@@ -104,50 +104,6 @@ Toto jsou požadavky ke zvážení pro dělení a škálování:
 * Všechny kontejnery nakonfigurován pro sdílení propustnost jako součást sady kontejnery jsou považovány za **Unlimited** kontejnery.
 
 Pokud jste vytvořili **Fixed** kontejneru bez oddílu klíč nebo propustnost menší než 1 000 RU/s, kontejner není automatického škálování. Chcete-li migrovat data z pevný kontejner do neomezeného kontejneru, budete muset použít [nástroj pro migraci dat](import-data.md) nebo [knihovna Change Feed](change-feed.md). 
-
-## <a name="PartitionedGraph"></a>Požadavky pro dělené grafu
-
-Při vytváření kontejneru graf oddílů vezměte v úvahu následující podrobnosti:
-
-- **Nastavení dělení je nezbytné** Pokud kontejner má mít více než 10 GB a/nebo pokud přidělení více než 10 000 jednotek žádostí za sekundu (RU/s) se bude vyžadovat.
-
-- **Vrcholů a hran jsou ukládány jako dokumenty JSON** v back-end Azure Cosmos DB Gremlin API.
-
-- **Klíč oddílu vyžadovat vrcholy**. Tento klíč určuje oddíl, který se používá k ukládání vrcholu a tento proces používá algoritmus hash. Název tohoto klíče oddílu je řetězec jednoslovnou bez mezery ani speciální znaky a je definován při vytváření nového kontejneru pomocí formátu `/partitioning-key-name`.
-
-- **Okraje se ukládají s jejich zdrojový vrchol**. Jinými slovy pro každý vrchol svůj klíč oddílu definuje kde jsou uložené vrcholu a hrany, které její odchozí. To se provádí při použití, aby dotazy napříč oddíly `out()` kardinalitu v dotazy na grafy.
-
-- **Dotazy na grafy musí určovat klíč oddílu**. Pokud chcete využívat všech výhod horizontální dělení ve službě Azure Cosmos DB, kdykoli to bude možné grafu dotazů by měly zahrnovat klíč oddílu. Třeba když jeden vrchol je vybrána. Následující příklad dotazy ukazují, jak zahrnovat klíč oddílu, při výběru jednoho nebo více vrcholy v dělené grafu:
-
-    - **Nyní nemůžete použít `/id` jako klíč oddílu pro kontejner ve službě rozhraní Gremlin API**.
-
-    - Výběr vrcholů podle ID, potom **použít `.has()` krok pro určení této vlastnosti klíče oddílu**: 
-    
-        ```
-        g.V('vertex_id').has('partitionKey', 'partitionKey_value')
-        ```
-    
-    - Výběr vrcholů podle **zadání řazené kolekce členů, včetně hodnoty klíče oddílu a ID**: 
-    
-        ```
-        g.V(['partitionKey_value', 'vertex_id'])
-        ```
-        
-    - Výběr vrcholu zadáním **pole řazených kolekcí členů, které obsahují hodnoty klíče oddílu a ID**:
-    
-        ```
-        g.V(['partitionKey_value0', 'verted_id0'], ['partitionKey_value1', 'vertex_id1'], ...)
-        ```
-        
-    - Vyberte sadu vrcholů podle **určení seznamu hodnot klíče oddílu**: 
-    
-        ```
-        g.V('vertex_id0', 'vertex_id1', 'vertex_id2', …).has('partitionKey', within('partitionKey_value0', 'partitionKey_value01', 'partitionKey_value02', …)
-        ```
-
-* **Vždycky zadat hodnotu klíče oddílu při dotazování na vrcholu**. Získávání vrcholu ze známých oddílu je nejúčinnější způsob, jak z hlediska výkonu.
-
-* **Použít odchozí směr při dotazování hrany** vždy, když je to možné. Okraje se ukládají s jejich zdroj vrcholy v odchozím směru. To znamená, že při dat a dotazy jsou navržené v tomto modelu v paměti, minimalizuje se pravděpodobnost nutnosti uchýlit se k dotazy napříč oddíly.
 
 ## <a name="designing-for-partitioning"></a> Vytvoření klíče oddílu 
 Na webu Azure portal nebo Azure CLI slouží k vytvoření kontejnerů a umožňují škálování do kdykoli. Tato část ukazuje, jak vytvořit kontejnery a zadejte zřízenou propustnost a oddíl klíče pomocí každé rozhraní API.

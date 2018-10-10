@@ -6,16 +6,16 @@ services: cognitive-services
 author: ashmaka
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: text-analytics
-ms.topic: article
+ms.component: text-analytics
+ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: a94c2af4d3e0d0d0c466f7cb7d58ec35351ebc3e
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 9d09115d3d55d5ba44d35cb0b2009d800ab42a2b
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247732"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886647"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Podpora jazyka a oblasti pro rozhraní Text Analytics API
 

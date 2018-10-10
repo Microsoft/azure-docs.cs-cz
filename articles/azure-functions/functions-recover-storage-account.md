@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: f5e23a5734f8451b99823f238b577a21a4752c18
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: babad23743a0a3c9631c0bcf406de3521174264a
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047256"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887204"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>Řešení potíží s "modul runtime služby functions nedostupný"
 
@@ -28,7 +28,7 @@ Tento dokument je určený k odstranění následující chyby při zobrazení n
 `Error: Azure Functions Runtime is unreachable. Click here for details on storage configuration`
 
 ### <a name="summary"></a>Souhrn
-Tento problém nastane, když Azure unctions modul Runtime nemůže spustit. Nejčastější příčinou této chyby na výskyt je aplikace function app ztráty přístupu k jeho účet úložiště. [Další informace o požadavcích účtu úložiště tady](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)
+Tento problém nastane, pokud nelze spustit modul Runtime služby Azure Functions. Nejčastější příčinou této chyby na výskyt je aplikace function app ztráty přístupu k jeho účet úložiště. [Další informace o požadavcích účtu úložiště tady](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)
 
 ### <a name="troubleshooting"></a>Řešení potíží
 Projdeme čtyři nejběžnější případy chyb, jak identifikovat a jak řešit každý případ.

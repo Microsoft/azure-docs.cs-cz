@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/27/2018
+ms.date: 10/9/2018
 ms.author: Kumud
-ms.openlocfilehash: 43945dc8810151eb701aa9e1aa1be47d4fbb0491
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 0711b52b76a22e32d05f27e6aae6c981bd2c148a
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125640"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902599"
 ---
 # <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>Metriky a stav diagnostiky pro Load balancer úrovně Standard
 
-Azure Load balancer úrovně Standard poskytuje následující možnosti diagnostiky prostředků:
-* **Vícedimenzionálních metrik**: poskytuje nové multidimenzionální diagnostické možnosti pro veřejné a vnitřní zatížení konfigurace nástroje pro vyrovnávání. Můžete monitorovat, spravovat a řešení potíží s prostředky nástroje pro vyrovnávání zatížení.
+Azure Load balancer úrovně Standard poskytuje Azure Load balancer úrovně Standard poskytuje následující možnosti diagnostiky prostředků:
+* **Vícedimenzionálních metrik**: poskytuje nové multidimenzionální diagnostické možnosti prostřednictvím [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) pro veřejné a vnitřní načtení konfigurace nástroje pro vyrovnávání. Můžete monitorovat, spravovat a řešení potíží s prostředky nástroje pro vyrovnávání zatížení.
 
 * **Služba Resource health**: služby Load balancer úrovně stránky na webu Azure Portal a Resource Health stránky (v části monitorování) vystavit Resource Health část pro konfiguraci nástroje pro vyrovnávání zatížení veřejného Load balanceru úrovně Standard.
 
@@ -219,6 +219,7 @@ Různé stavy stavu prostředků a jejich popisy jsou uvedeny v následující t
 
 - Další informace o [Load Balanceru úrovně Standard](load-balancer-standard-overview.md).
 - Další informace o vaší [odchozí připojení nástroje pro vyrovnávání zatížení](https://aka.ms/lboutbound).
+- Další informace o [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview).
 - Další informace o [metriky rozhraní REST API služby Azure Monitor](https://docs.microsoft.com/rest/api/monitor/metrics/).
 
 

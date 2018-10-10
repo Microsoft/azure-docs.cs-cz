@@ -5,16 +5,16 @@ titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
 ms.service: cognitive-services
-ms.technology: speech
+ms.component: speech
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 5d9fd0669302dbfbd4f1c3082643d6c03abc7019
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 6ae21b447c1a77e976791a734c1e31d9178fda2c
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39281959"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888066"
 ---
 # <a name="speech-devices-sdk-license-agreement"></a>Rozpoznávání řeči Devices SDK licenční smlouvy
 

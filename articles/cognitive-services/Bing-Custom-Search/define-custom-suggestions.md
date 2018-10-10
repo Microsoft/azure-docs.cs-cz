@@ -6,16 +6,16 @@ services: cognitive-services
 author: brapel
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: bing-custom-search
+ms.component: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: v-brapel
-ms.openlocfilehash: 7a583cccce65c22bdce5f36e2a9268b6f181ca37
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 738f0d6ea083b59cddf408941cda81e980daa334
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815679"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883186"
 ---
 # <a name="configure-your-custom-autosuggest-experience"></a>Konfigurace prostředí pro funkci vlastních automatických návrhů
 

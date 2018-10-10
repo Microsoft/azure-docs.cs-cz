@@ -1,98 +1,99 @@
 ---
-title: Syntaxe vyhledávání lambda v Academic Knowledge API | Microsoft Docs
-description: Další informace o syntaxe vyhledávání Lambda, které můžete použít v Academic Knowledge API v kognitivní služby společnosti Microsoft.
+title: Syntaxe prohledávání lambda - rozhraní Academic Knowledge API
+titlesuffix: Azure Cognitive Services
+description: Další informace o syntaxe prohledávání Lambda, který můžete použít v rozhraní Academic Knowledge API.
 services: cognitive-services
 author: alch-msft
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: f486368e1d0258087091acb846a84b125712db40
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 284f1d90f043e2634e143508e2ab0e98cd309f46
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342397"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902684"
 ---
-# <a name="lambda-search-syntax"></a>Syntaxe vyhledávání lambda
+# <a name="lambda-search-syntax"></a>Syntaxe prohledávání lambda
 
-Každý *lambda* vyhledávací dotaz řetězec popisuje schéma grafu. Dotaz musí mít alespoň jeden počáteční uzel zadání, z které uzlu grafu začneme průchodu. Chcete-li zadat počáteční uzel, zavolejte *MAG. StartFrom()* metoda a předejte jí ID jeden nebo více uzly nebo dotaz objektu, který určuje omezení vyhledávání. *StartFrom()* metoda má tři přetížení. Všechny z nich trvat dva argumenty s druhou je volitelné. První argument může být dlouhé celé číslo, kolekci vyčíslitelná dlouhé celé číslo nebo řetězec představující JSON objekt se stejnou sémantiku jako v *json* vyhledávání:
+Každý *lambda* vyhledávací dotaz řetězec popisuje vzor grafu. Dotaz musí mít aspoň jednu počáteční uzel zadání, ze které uzlu grafu začneme průchodu. Chcete-li zadat počáteční uzel, zavolejte *MAG. StartFrom()* metoda a předejte jí ID nejmíň jeden uzel (uzly) nebo dotazu objektu, který určuje omezení hledání. *StartFrom()* metoda má tři přetížení. Provést všechny z nich dva argumenty s druhou je volitelné. První argument může být dlouhé celé číslo, vyčíslitelné kolekce dlouhé celé číslo nebo řetězec JSON představující objekt se stejnou sémantiku jako v *json* hledání:
 ```
 StartFrom(long cellid, IEnumerable<string> select = null)
 StartFrom(IEnumerable<long> cellid, IEnumerable<string> select = null)
 StartFrom(string queryObject, IEnumerable<string> select = null)
 ```
 
-Proces zápisu lambda vyhledávací dotaz se vás z jednoho uzlu do jiného. Pokud chcete zadat typ edge vás provede, použijte *FollowEdge()* a předat typy požadované okraj. *FollowEdge()* přebírá libovolný počet řetězcové argumenty:
+Proces vytváření vyhledávacího dotazu lambda je procesem z jednoho uzlu do jiného. Chcete-li určit typ hraničními zařízeními a provede, použijte *FollowEdge()* a předejte mu typy požadované edge. *FollowEdge()* přijímá libovolný počet řetězcových argumentů:
 ```
 FollowEdge(params string[] edgeTypes)
 ```
 > [!NOTE]
-> Pokud není záleží nám typy edge(s) provést, jednoduše vynechat *FollowEdge()* mezi dvěma uzly: dotaz provede všechny možné okraje mezi těmito dvěma uzly.
+> Záleží nám na nejsou typy edge(s) dodržovat, jednoduše vynechejte *FollowEdge()* mezi dvěma uzly: dotaz provede všechny možné okraje mezi těmito dvěma uzly.
 
-Lze zadat akce traversal mají být provedeny v uzlu prostřednictvím *VisitNode()*, to znamená, zda chcete zastavit tento uzel a jako výsledek vrátí aktuální cestě nebo pokračovat v průzkumu grafu.  Typ výčtu *akce* definuje dva typy akcí: *Action.Return* a *Action.Continue*. Můžete předat takové hodnotu výčtu přímo do *VisitNode()*, nebo jejich kombinací s bitové- a operátor 'a'. Když dvě akce se zkombinují, znamená to, že obě akce se provedou. Poznámka: Nepoužívejte bitový- nebo operátor ' |' na akce. To způsobí, že dotaz ukončit bez vrácení nic. Přeskočení *VisitNode()* mezi dvěma *FollowEdge()* volání způsobí, že dotaz bezpodmínečně prozkoumat grafu po přicházejících na uzlu.
+Lze zadat možné provádět na uzlu prostřednictvím akce procházení *VisitNode()*, to znamená, zda chcete zastavit na tomto uzlu a jako výsledek vrátit aktuální cestu nebo pokračovat v průzkumu grafu.  Typ výčtu *akce* definuje dva typy akcí: *Action.Return* a *Action.Continue*. Můžete předat tyto hodnoty výčtu přímo do *VisitNode()*, nebo můžete zkombinovat s bitovým – a operátor 'a'. Když dvě akce se zkombinují, znamená to, provedou se obě akce. Poznámka: Nepoužívejte bitový- nebo operátor ' |' na akce. To způsobí, že dotaz ukončit bez vrácení cokoli. Přeskakuje se *VisitNode()* mezi dvěma *FollowEdge()* volání způsobí, že dotaz tak, aby bezpodmínečně prozkoumat graf po přicházejících u uzlu.
 
 ```
 VisitNode(Action action, IEnumerable<string> select = null)
 ```
 
-Pro *VisitNode()*, můžete také předat ve výrazu lambda typu *výraz\<Func\<uzlů INode, akce\>\>*, což trvá *Uzlů INode* a vrátí traversal akce:
+Pro *VisitNode()*, jsme také můžete předat ve výrazu lambda typu *výraz\<Func\<uzlů, akce\>\>*, který by *Uzlů* a vrátí procházení akce:
 
 ```
 VisitNode(Expression<Func<INode, Action>> action, IEnumerable<string> select = null)
 ```
 
-## <a name="inode"></a>*Uzlů INode* 
+## <a name="inode"></a>*Uzlů* 
 
-*Uzlů INode* poskytuje *jen pro čtení* rozhraní a několik integrovaných pomocných funkcí na uzlu přístup k datům. 
+*Uzlů* poskytuje *jen pro čtení* rozhraní a několik integrovaných pomocných funkcí na uzlu přístupu k datům. 
 
-### <a name="basic-data-access-interfaces"></a>Základní data přístup k rozhraní
+### <a name="basic-data-access-interfaces"></a>Rozhraní pro přístup k základní data
 
 ##### <a name="long-cellid"></a>dlouhé CellID
 
-64bitová verze ID uzlu. 
+64-bit ID uzlu. 
 
-##### <a name="t-getfieldtstring-fieldname"></a>T GetField\<T\>(název pole řetězce)
+##### <a name="t-getfieldtstring-fieldname"></a>T GetField\<T\>(řetězec fieldName)
 
-Získá hodnotu zadanou vlastnost. *T* je požadovaný typ, který by měla být interpretovat jako pole. Pokud požadovaný typ nelze implicitně převést z typu pole se pokusí automatické typ přetypování. Poznámka: Pokud je vlastnost více hodnot, *GetField\<řetězec\>*  způsobí, že v seznamu k serializaci do řetězce formátu Json ["hodnota1", "hodnota2",...]. Pokud vlastnost neexistuje, bude vyvolána výjimka a zrušení aktuální zkoumání grafu.
+Získá hodnotu zadané vlastnosti. *T* je požadovaný typ, který by měla být interpretován jako pole. Automatické přetypování se provedou, pokud požadovaný typ nejde implicitně převést z typu pole. Poznámka: Pokud je vlastnost s více hodnotami, *GetField\<řetězec\>*  způsobí, že seznam se musí serializovat do řetězce formátu Json ["hodnota1", "hodnota2",...]. Pokud vlastnost neexistuje, bude vyvolat výjimku a zrušení aktuální průzkum grafu.
 
 ##### <a name="bool-containsfieldstring-fieldname"></a>BOOL ContainsField (název pole řetězce)
 
-Určuje, zda pole s daným názvem existuje v aktuálním uzlu.
+Určuje, jestli pole s daným názvem existuje v aktuálním uzlu.
 
-##### <a name="string-getstring-fieldname"></a>řetězec získat (název pole řetězce)
+##### <a name="string-getstring-fieldname"></a>získat řetězec (řetězec fieldName)
 
-Funguje jako *GetField\<řetězec\>(název pole)*. Ale pokud pole není nalezeno nevyvolá výjimky, místo toho vrátí prázdný řetězec.
+Funguje jako *GetField\<řetězec\>(fieldName)*. Ale nevyvolá výjimky, pokud pole není nalezeno, místo toho vrátí prázdný řetězec.
 
 ##### <a name="bool-hasstring-fieldname"></a>má BOOL (název pole řetězce)
 
-Určuje, jestli se daná vlastnost existuje v aktuálním uzlu. Stejné jako *ContainsField(fieldName)*.
+Sdělí, jestli se daná vlastnost existuje v aktuálním uzlu. Stejné jako *ContainsField(fieldName)*.
 
-##### <a name="bool-hasstring-fieldname-string-value"></a>má BOOL (název řetězce, pole řetězcovou hodnotu)
+##### <a name="bool-hasstring-fieldname-string-value"></a>má BOOL (fieldName řetězec, řetězec)
 
-Informuje, pokud má vlastnost předané hodnoty. 
+Informuje, pokud má vlastnost zadanou hodnotu. 
 
 ##### <a name="int-countstring-fieldname"></a>počet int (název pole řetězce)
 
-Získáte počet hodnot dané vlastnosti. Pokud vlastnost neexistuje, vrátí hodnotu 0.
+Získáte počet hodnot dané vlastnosti. Pokud vlastnost buď neexistuje, vrátí hodnotu 0.
 
-### <a name="built-in-helper-functions"></a>Integrovaných pomocných funkcí
+### <a name="built-in-helper-functions"></a>Integrované pomocné funkce
 
-##### <a name="action-returnifbool-condition"></a>Akce return_if (bool podmínku)
+##### <a name="action-returnifbool-condition"></a>Akce return_if (podmínka bool)
 
-Vrátí *Action.Return* Pokud je podmínka vyhodnocena *true*. Pokud je podmínka vyhodnocena *false* a tento výraz není spojena s další akce bitové- a operátorem, bude přerušena zkoumání grafu.
+Vrátí *Action.Return* Pokud podmínka není *true*. Pokud je podmínka *false* a tento výraz není připojený k jiné akce pomocí logické bitové – a operátorem, průzkum grafu se přeruší.
 
-##### <a name="action-continueifbool-condition"></a>Akce continue_if (bool podmínku)
+##### <a name="action-continueifbool-condition"></a>Akce continue_if (podmínka bool)
 
-Vrátí *Action.Continue* Pokud je podmínka vyhodnocena *true*. Pokud je podmínka vyhodnocena *false* a tento výraz není spojena s další akce bitové- a operátorem, bude přerušena zkoumání grafu.
+Vrátí *Action.Continue* Pokud podmínka není *true*. Pokud je podmínka *false* a tento výraz není připojený k jiné akce pomocí logické bitové – a operátorem, průzkum grafu se přeruší.
 
-##### <a name="bool-dicedouble-p"></a>rozčlenění BOOL (dvojité p)
+##### <a name="bool-dicedouble-p"></a>rozčlenění BOOL (double p)
 
-Generuje náhodné číslo, které je větší než nebo rovno 0,0 a menší než 1,0. Funkce vrátí hodnotu *true* pouze v případě, že počet je menší než nebo rovno *p*.
+Generuje náhodné číslo, které je větší než nebo rovna hodnotě 0,0 a menší než 1,0. Tato funkce vrací *true* pouze v případě, že číslo je menší než nebo rovna *p*.
 
-Ve srovnání s *json* hledání, *lambda* vyhledávání je více výrazovou: C# lambda – výrazy dá přímo použít k zadání vzorům dotazů. Tady jsou dva příklady.
+Ve srovnání s *json* vyhledávání, *lambda* je více výrazovými možnostmi vyhledávání: lambda výrazy jazyka C# můžete přímo použít k určení vzory dotazů. Tady jsou dva příklady.
 
 ```
 MAG.StartFrom(@"{

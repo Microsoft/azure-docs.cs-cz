@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 10/09/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: d59de5beb01da3b23de0a7e177fd1cb1887694fc
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 410566e62daeb42100443e72f2d8a1acb8dad5a3
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586049"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902276"
 ---
 # <a name="register-azure-stack-with-azure"></a>Registrace Azure Stack s Azure
 
@@ -210,11 +210,11 @@ Propojené prostředí můžete přístup k Internetu a z Azure. U těchto prost
       -PrivilegedEndpointCredential $CloudAdminCred `
       -PrivilegedEndpoint <PrivilegedEndPoint computer name> `
       -AgreementNumber <EA agreement number> `
-      -BillingModel Capacity
+      -BillingModel Capacity `
       -RegistrationName $RegistrationName
   ```
    > [!Note]  
-   > Zakážete generování sestav s parametrem UsageReportingEnabled pro použití **Set-AzsRegistration** rutiny. Nastavte parametr na hodnotu false. Příklad: "UsageReportingEnabled
+   > Zakážete generování sestav s parametrem UsageReportingEnabled pro použití **Set-AzsRegistration** rutiny nastavením parametru na hodnotu false. 
    
   Další informace o rutině Set-AzsRegistration najdete v tématu [Reference k registraci](#registration-reference).
 

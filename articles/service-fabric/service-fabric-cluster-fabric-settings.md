@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/27/2018
+ms.date: 10/08/2018
 ms.author: aljo
-ms.openlocfilehash: 69f29eac17ecdf5381a550bc182c547fa0c25278
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 7a80693090b92db55ad2feed52fdbb2a455e3c39
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018974"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884489"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Nastavení clusteru Service Fabric
 Tento článek popisuje, jak přizpůsobit různá nastavení prostředků infrastruktury pro cluster Service Fabric. Pro clustery hostovaných v Azure, můžete upravit pomocí nastavení [webu Azure portal](https://portal.azure.com) nebo s použitím šablony Azure Resource Manageru. Pro samostatné clustery upravit nastavení aktualizací ClusterConfig.json souborů a provádění upgradu na konfiguraci v clusteru. 
@@ -361,6 +361,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |DeploymentMaxFailureCount|Int, výchozí hodnota je 20| Dynamická|Nasazení aplikace se provede pro časy DeploymentMaxFailureCount před selháním nasazení této aplikace na uzlu.| 
 |DeploymentMaxRetryInterval| Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(3600)|Dynamická| Zadejte časový interval v sekundách. Maximální interval opakování pro nasazení. Při každé průběžné selhání interval opakování se počítá jako Min (DeploymentMaxRetryInterval; Průběžný počet selhání * DeploymentRetryBackoffInterval) |
 |DeploymentRetryBackoffInterval| Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(10)|Dynamická|Zadejte časový interval v sekundách. Regresní interval selhání nasazení. Při každé selhání průběžného nasazování bude systém pokusem o nasazení pro až MaxDeploymentFailureCount. Interval opakování je produkt selhání průběžného nasazování a interval omezení rychlosti nasazení. |
+|DisableDockerRequestRetry|Logická hodnota, výchozí hodnotu FALSE |Dynamická| Ve výchozím nastavení SF komunikuje s DD (docker dameon) s časovým limitem "DockerRequestTimeout" pro každý požadavek http do něj odesílají. Pokud není DD odpoví během tohoto časového období; SF znovu odešle požadavek, pokud stále má nejvyšší úrovně operace remining čas.  S Hyper-v kontejneru; DD někdy trvat mnohem více času, vyvolejte kontejneru nebo ho deaktivovat. V takových případech DD žádosti vyprší z perspektivy SF a SF zopakuje pokus o operaci. Někdy se to zdá přidá další tlak na DD. Tato konfigurace umožňuje zakázat při tomto opakovaném pokusu a počkejte, DD reagovat. |
 |EnableActivateNoWindow| Logická hodnota, výchozí hodnotu FALSE|Dynamická| Aktivovaný proces se vytvoří na pozadí bez jakékoli konzoly. |
 |EnableContainerServiceDebugMode|Logická hodnota, výchozí hodnotu TRUE|Statická|Povolí nebo zakáže protokolování pro kontejnery dockeru.  Jenom Windows.|
 |EnableDockerHealthCheckIntegration|Logická hodnota, výchozí hodnotu TRUE|Statická|Umožňuje integraci dockeru HEALTHCHECK událostí s sestavy stavu systému Service Fabric |
@@ -422,6 +423,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |SharedLogId |řetězec, výchozí hodnota je "" |Statická|Jedinečný identifikátor guid pro sdílené protokolu kontejneru. Použití "" Pokud používáte výchozí cesta pod kořen dat prostředků infrastruktury. |
 |SharedLogPath |řetězec, výchozí hodnota je "" |Statická|Cesta a název souboru do umístění, na sdílené protokolu kontejneru. Použití "" pro použití výchozí cesta pod kořen dat prostředků infrastruktury. |
 |SharedLogSizeInMB |Int, výchozí hodnota je 8192 |Statická|Počet MB k přidělení v kontejneru sdílené protokolu. |
+|SharedLogThrottleLimitInPercentUsed|int, výchozí je 0 | Statická | Procento využití sdílené protokolu, který způsobí omezení šířky pásma. Hodnota by měla být mezi 0 a 100. Hodnota 0 znamená, s výchozí hodnotou procenta. Hodnota 100 znamená, nedojde k omezování vůbec. Určuje hodnotu mezi 1 a 99 procento využití log výše, bude probíhat který omezení; Například pokud je sdílená protokol 10GB a hodnota je 90 throttleing bude probíhat až 9GB se používá. Doporučuje se použít výchozí hodnotu.|
 |WriteBufferMemoryPoolMaximumInKB | int, výchozí je 0 |Dynamická|Číslo KB umožňující paměti fondu vyrovnávacích pamětí zápisu rozšířit až. Použijte hodnotu 0 označující bez omezení. |
 |WriteBufferMemoryPoolMinimumInKB |Int, výchozí hodnota je 8388608 |Dynamická|Číslo KB k začátku přidělení pro fond vyrovnávací paměti zápisu. Použijte hodnotu 0 označující bez omezení, výchozí by měl být konzistentní s SharedLogSizeInMB níže. |
 

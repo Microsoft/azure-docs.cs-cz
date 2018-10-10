@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 39b9c2d9eb982eaffa7cb6246fd0b22375939f52
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: e8737e379dc69385b2bd5ac2b2af89bf8d38b63a
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868674"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886870"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Přidání služby AD FS jako zprostředkovatele identity SAML pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -170,6 +170,18 @@ Otevřete prohlížeč a přejděte na adresu URL. Ujistěte se, že jste zadali
 13. Ve Správci serveru vyberte **nástroje**a pak vyberte **správu služby AD FS**.
 14. Vyberte vztah důvěryhodnosti předávající strany jste vytvořili, vyberte **aktualizace z federačních metadat**a potom klikněte na tlačítko **aktualizace**. 
 
+## <a name="create-an-azure-ad-b2c-application"></a>Vytvoření aplikace Azure AD B2C
+
+Probíhá komunikace s Azure AD B2c prostřednictvím aplikace, kterou vytvoříte ve vašem tenantovi. Tato část obsahuje seznam volitelné kroky, které můžete použít k vytvoření aplikace testů, pokud jste tak již neučinili.
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
+3. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **Azure AD B2C**.
+4. Vyberte **aplikací**a pak vyberte **přidat**.
+5. Zadejte název aplikace, například *testapp1*.
+6. Pro **webová aplikace / webové rozhraní API**vyberte `Yes`a pak zadejte `https://jwt.ms` pro **adresy URL odpovědi**.
+7. Klikněte na možnost **Vytvořit**.
+
 ### <a name="update-and-test-the-relying-party-file"></a>Aktualizace a předávající strany soubor testu
 
 Aktualizujte předávající stranu soubor, který iniciuje cesty uživatele, který jste vytvořili.
@@ -178,4 +190,6 @@ Aktualizujte předávající stranu soubor, který iniciuje cesty uživatele, kt
 2. Otevřete nový soubor a aktualizujte hodnotu **PolicyId** atributu **TrustFrameworkPolicy** s jedinečnou hodnotu. Například, `SignUpSignInADFS`.
 3. Aktualizujte hodnotu **PublicPolicyUri** s identifikátorem URI pro zásady. Například "http://contoso.com/B2C_1A_signup_signin_adfs" >
 4. Aktualizujte hodnotu **ReferenceId** atribut **DefaultUserJourney** tak, aby odpovídaly ID nové cesty uživatele, který jste vytvořili (SignUpSignInADFS).
-5. Uložte provedené změny, nahrajte soubor a otestovat ho otevřít a kliknutím na **spustit nyní**.
+5. Uložte provedené změny, nahrajte soubor a pak v seznamu vyberte novou zásadu.
+6. Ujistěte se, že je vybraná aplikaci Azure AD B2C, kterou jste vytvořili v **vyberte aplikaci** pole a pak ho otestujte kliknutím **spustit nyní**.
+

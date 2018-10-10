@@ -6,16 +6,16 @@ description: >
 services: cognitive-services
 author: wolfma61
 ms.service: cognitive-services
-ms.technology: Speech
+ms.component: Speech
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: b3df385adbd93cd81637661f4df9a15707170346
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 133bce7443f8cd9fce41446fef9f9247355e1125
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959440"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886412"
 ---
 # <a name="recognize-speech-by-using-the-speech-sdk-for-c"></a>Rozpoznávání řeči pomocí sadou SDK pro řeč pro C++
 

@@ -10,12 +10,12 @@ ms.date: 10/02/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 93b13a92bd4ac887df982433d3faac94133e1635
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 4ba890f4763fc77981917d9311cf2bf6c97ec80f
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042355"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902439"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Integrace datových center Azure Stack – Identity
 Azure Stack pomocí Azure Active Directory (Azure AD) nebo Active Directory Federation Services (AD FS) můžete nasadit jako zprostředkovatele identity. Volba je třeba provést před nasazením služby Azure Stack. Nasazení pomocí služby AD FS se také označuje jako při nasazování služby Azure Stack v odpojeném režimu.
@@ -236,7 +236,7 @@ Pokud se rozhodnete ručně spuštěním příkazů, postupujte podle těchto kr
 
    @RuleTemplate = "PassThroughClaims"
    @RuleName = "Pass through all windows account name claims"
-   c:[Type == http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname]
+   c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"]
    => issue(claim = c);
    ```
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 009baf154aa0df51df168bccb92c3d9fe9859686
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: d341f7328eb4a977d266c25f6746d4173393b54e
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182599"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887208"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Nastavení přihlášení pro více tenantů Azure Active Directory pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -38,7 +38,7 @@ Povolit přihlášení pro uživatele z konkrétní organizace služby Azure AD,
 2. Ujistěte se, že používáte adresáře, který obsahuje organizace Azure AD tenant (contoso.com) kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
 3. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **registrace aplikací**.
 4. Vyberte **Registrace nové aplikace**.
-5. Zadejte název pro vaši aplikaci. Například, `Azure AD B2C App`.
+5. Zadejte název své aplikace. Například, `Azure AD B2C App`.
 6. Pro **typ aplikace**vyberte `Web app / API`.
 7. Pro **přihlašovací adresa URL**, zadejte následující adresu URL malými písmeny, kde `your-tenant` se nahradí názvem vašeho tenanta Azure AD B2C (fabrikamb2c.onmicrosoft.com):
 
@@ -183,6 +183,17 @@ Teď, když máte tlačítko na místě, budete potřebovat odkázat na akci. Ak
 
 3. Uložit *TrustFrameworkExtensions.xml* souboru a nahrajte ji znovu pro ověření.
 
+## <a name="create-an-azure-ad-b2c-application"></a>Vytvoření aplikace Azure AD B2C
+
+Probíhá komunikace s Azure AD B2c prostřednictvím aplikace, kterou vytvoříte ve vašem tenantovi. Tato část obsahuje seznam volitelné kroky, které můžete použít k vytvoření aplikace testů, pokud jste tak již neučinili.
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
+3. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **Azure AD B2C**.
+4. Vyberte **aplikací**a pak vyberte **přidat**.
+5. Zadejte název aplikace, například *testapp1*.
+6. Pro **webová aplikace / webové rozhraní API**vyberte `Yes`a pak zadejte `https://jwt.ms` pro **adresy URL odpovědi**.
+7. Klikněte na možnost **Vytvořit**.
 
 ## <a name="update-and-test-the-relying-party-file"></a>Aktualizace a předávající strany soubor testu
 
@@ -192,4 +203,5 @@ Aktualizujte předávající stranu soubor, který iniciuje cesty uživatele, kt
 2. Otevřete nový soubor a aktualizujte hodnotu **PolicyId** atributu **TrustFrameworkPolicy** s jedinečnou hodnotu. Například, `SignUpSignInContoso`.
 3. Aktualizujte hodnotu **PublicPolicyUri** s identifikátorem URI pro zásady. Například`http://contoso.com/B2C_1A_signup_signin_contoso`
 4. Aktualizujte hodnotu **ReferenceId** atribut **DefaultUserJourney** tak, aby odpovídaly ID nové cesty uživatele, který jste vytvořili (SignUpSignContoso).
-5. Uložte provedené změny, nahrajte soubor a otestovat ho otevřít a kliknutím na **spustit nyní**.
+5. Uložte provedené změny, nahrajte soubor a pak v seznamu vyberte novou zásadu.
+6. Ujistěte se, že je vybraná aplikaci Azure AD B2C, kterou jste vytvořili v **vyberte aplikaci** pole a pak ho otestujte kliknutím **spustit nyní**.

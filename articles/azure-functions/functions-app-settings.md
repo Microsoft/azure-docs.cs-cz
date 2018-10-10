@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: 4e40a731530e9423c7be6f2e2449aad970bb327c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: b3b96bec7a56a0d1f8471f0290ae928ef80d7b3a
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040240"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883733"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Reference k nastavení aplikací pro službu Azure Functions
 
@@ -114,7 +114,7 @@ Platné hodnoty jsou "readwrite" a "jen pro čtení".
 
 ## <a name="functionsextensionversion"></a>FUNKCE\_ROZŠÍŘENÍ\_VERZE
 
-Verze modulu runtime Azure Functions pro použití v této aplikace function app. Tilda s hlavní verzí znamená, že používat nejnovější verzi Tato hlavní verze (například "~ 2"). Když jsou k dispozici nová verze pro stejný hlavní verze, jsou automaticky nainstalovány do aplikace function App. Chcete-li připnout aplikaci na konkrétní verzi, použijte celé číslo verze (například "2.0.12345"). Výchozí hodnota je "~ 2".
+Verze modulu runtime Functions pro použití v této aplikace function app. Tilda s hlavní verzí znamená, že používat nejnovější verzi Tato hlavní verze (například "~ 2"). Když jsou k dispozici nová verze pro stejný hlavní verze, jsou automaticky nainstalovány do aplikace function App. Chcete-li připnout aplikaci na konkrétní verzi, použijte celé číslo verze (například "2.0.12345"). Výchozí hodnota je "~ 2". Hodnota `~1` připíná vaší aplikace na verzi 1.x modulu runtime.
 
 |Klíč|Ukázková hodnota|
 |---|------------|
@@ -122,7 +122,7 @@ Verze modulu runtime Azure Functions pro použití v této aplikace function app
 
 ## <a name="functionsworkerruntime"></a>FUNKCE\_PRACOVNÍHO PROCESU\_MODULU RUNTIME
 
-Pracovního procesu CLR pro načtení do aplikace function App.  To bude odpovídat jazyku používán ve vaší aplikaci (například "dotnet"). Pro funkce v několika jazycích, je potřeba publikovat je do více aplikacemi, každý s odpovídající hodnotou modulu runtime pracovního procesu.  Platné hodnoty jsou `dotnet`, `node`, a `java`.
+Pracovního procesu CLR pro načtení do aplikace function App.  To bude odpovídat jazyku používán ve vaší aplikaci (například "dotnet"). Pro funkce v několika jazycích, je potřeba publikovat je do více aplikacemi, každý s odpovídající hodnotou modulu runtime pracovního procesu.  Platné hodnoty jsou `dotnet` (C# /F #), `node` (JavaScript), a `java` (Java).
 
 |Klíč|Ukázková hodnota|
 |---|------------|

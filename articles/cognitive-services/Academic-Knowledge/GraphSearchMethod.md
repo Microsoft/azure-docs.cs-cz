@@ -1,24 +1,25 @@
 ---
-title: Graf metodu Search v Academic Knowledge API | Microsoft Docs
-description: Pomocí metody grafu, pro vyhledávání v Academic Knowledge API vrátit sady academic entit na základě způsobů určité grafů v kognitivní služby společnosti Microsoft.
+title: Metoda hledání – Academic Knowledge API Graph
+titlesuffix: Azure Cognitive Services
+description: Pomocí hledání v grafu metody v rozhraní Academic Knowledge API vrátit sadu akademické entity, které na základě způsobů konkrétní graf.
 services: cognitive-services
 author: alch-msft
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: d811db117c934c0d41fbfea1220d241cc022e4a8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 83f29106d72f564f894c968102b703ab6bb5d8c2
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342367"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902376"
 ---
-# <a name="graph-search-method"></a>Metodu Search grafu
+# <a name="graph-search-method"></a>Metoda prohledávání grafů
 
-**Grafu vyhledávání** REST API se používá k vrácení sady academic entit na základě způsobů daným grafem.  Odpověď je grafu cesty, které splňují zadané uživatelem omezení. Se cesta ke grafu prokládaná řady grafu uzly a okrajů ve formě _v0, e0, v1, e1,..., vn_, kde _v0_ je počáteční uzel cesty.
+**Hledání v grafu** rozhraní REST API se používá k vrácení sady akademické entity, které na základě vzorců daným grafem.  Odpověď je sada cest grafu nesplňujete omezení zadané uživatelem. Cesta grafu je prokládané pořadí grafu uzlů a hran v podobě _v0, e0, v1, e1,..., vn_, kde _v0_ je počáteční uzel cesty.
 <br>
 
 **Koncový bod REST:**  
@@ -30,28 +31,28 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/graph/search?
 ## <a name="request-parameters"></a>Parametry žádosti  
 Název     | Hodnota | Povinné?  | Popis
 -----------|-----------|---------|--------
-**režim**       | Textový řetězec | Ano | Název režimu, který chcete použít. Hodnota je buď *json* nebo *lambda*.
+**Režim**       | Textový řetězec | Ano | Název režimu, který chcete použít. Hodnota je buď *json* nebo *lambda*.
 
-Metodu search grafu musí být voláno prostřednictvím požadavku HTTP POST. Požadavek post by měla obsahovat záhlaví typu obsahu: **application/json**.
+Metoda prohledávání grafů musí volat prostřednictvím požadavku HTTP POST. Požadavek post by měl obsahovat záhlaví typu obsahu: **application/json**.
 
 ##### <a name="json-search"></a>Hledání JSON 
 
-Pro *json* hledání textu POST je objekt JSON. Objekt JSON popisuje vzorek cesty pomocí zadaného uživatelem omezení (najdete v článku [specifikaci objekt JSON](JSONSearchSyntax.md) pro *json* vyhledávání).
+Pro *json* hledání textu POST je objekt JSON. Objekt JSON popisuje vzor cesty pomocí zadaného uživatelem omezení (najdete v článku [specifikace objektu JSON](JSONSearchSyntax.md) pro *json* vyhledávání).
 
 
-##### <a name="lambda-search"></a>Hledání lambda
+##### <a name="lambda-search"></a>Hledání výrazu lambda
 
-Pro *lambda* hledání textu POST je řetězec ve formátu prostého textu. Textu POST je řetězec dotazu LIKQ lambda, což je jediný příkaz jazyka C# (viz [specifikace řetězce dotazu](LambdaSearchSyntax.md) pro *lambda* vyhledávání). 
+Pro *lambda* hledání textu POST je řetězec ve formátu prostého textu. Tělo POST je řetězec LIKQ lambda dotazu, což je jeden příkaz jazyka C# (najdete v článku [specifikace řetězec dotazu](LambdaSearchSyntax.md) pro *lambda* vyhledávání). 
 
 <br>
 ## <a name="response-json"></a>Odpověď (JSON)
 Název | Popis
 -------|-----   
-**Výsledky** | Pole 0 nebo více entit, které odpovídají výrazu dotazu. Každá entita obsahuje hodnoty požadované atributy. Toto pole je k dispozici, pokud požadavek byl úspěšně zpracován.
-**Chyba** | Stavové kódy HTTP. Toto pole je přítomen, pokud se požadavek nezdaří.
-**Zpráva** | Chybová zpráva. Toto pole je přítomen, pokud se požadavek nezdaří.
+**výsledky** | Pole 0 nebo více entit, které odpovídají výrazu dotazu. Každá entita obsahuje hodnoty požadovaných atributů. Toto pole je k dispozici v případě, že byla žádost úspěšně zpracována.
+**Chyba** | Stavové kódy HTTP. Toto pole je k dispozici, pokud požadavek selže.
+**Zpráva** | Chybová zpráva. Toto pole je k dispozici, pokud požadavek selže.
 
-Pokud dotaz nelze zpracovat v rámci _800 ms_, _časový limit_ bude vrácena chyba. 
+Pokud dotaz nelze zpracovat v rámci _800 ms_, _vypršení časového limitu_ se vrátí chyba. 
 
 <br>
 #### <a name="example"></a>Příklad:
@@ -61,7 +62,7 @@ Pokud dotaz nelze zpracovat v rámci _800 ms_, _časový limit_ bude vrácena ch
 https://westus.api.cognitive.microsoft.com/academic/v1.0/graph/search?mode=json
 ```
 <br>
-Pro *json* hledat, pokud chcete získat tyto dokumenty, jejichž názvy obsahovat "graf modul" a zapsaných správcem "bin shao", lze zadat dotaz následujícím způsobem.
+Pro *json* hledání, pokud chcete získat tyto dokumenty, jejichž názvy obsahují "grafu modul" a zapisuje "bin shao", lze zadat dotaz následujícím způsobem.
 
 ```JSON
 {
@@ -82,7 +83,7 @@ Pro *json* hledat, pokud chcete získat tyto dokumenty, jejichž názvy obsahova
 }
 ```
 
-Výstup tohoto dotazu je pole cesty grafu. Pole objektů uzlu odpovídající uzly zadaný v cestě dotazu se cesta ke grafu. Tyto objekty uzlu mají alespoň jednu vlastnost *CellID*, která reprezentuje ID entity. Ostatní vlastnosti můžete načíst tak, že zadáte názvy vlastností, které prostřednictvím operátor select z [ *objekt akce Traversal*](JSONSearchSyntax.md).
+Výstup dotazu je pole cest grafu. Cesta grafu je pole objektů uzlu odpovídající uzly zadaný v cestě k dotazu. Tyto uzly objekty mají alespoň jednu vlastnost *CellID*, která představuje ID entity. Další vlastnosti můžete načíst tak, že zadáte názvy vlastností, které prostřednictvím vyberte operátor [ *objektu akce procházení*](JSONSearchSyntax.md).
 
 ```JSON
 {
@@ -127,13 +128,13 @@ Výstup tohoto dotazu je pole cesty grafu. Pole objektů uzlu odpovídající uz
 }
  ```
 
-##### <a name="lambda-search"></a>Hledání lambda 
+##### <a name="lambda-search"></a>Hledání výrazu lambda 
 
 ```
 https://westus.api.cognitive.microsoft.com/academic/v1.0/graph/search?mode=lambda
 ```
 <br>
-Pro *lambda* hledání, pokud chcete získat ID daného dokumentu, Autor jsme můžete napsat dotaz stejný, jako je následující.
+Pro *lambda* vyhledávání, pokud chcete získat ID daného papíru, Autor jsme můžete napsat dotaz podobný následujícímu.
 
 ```
 MAG.StartFrom(@"{
@@ -144,7 +145,7 @@ MAG.StartFrom(@"{
 }").FollowEdge("AuthorIDs").VisitNode(Action.Return)
 ```
 
-Výstup *lambda* vyhledávací dotaz je také pole grafu cesty:
+Výstup *lambda* vyhledávacího dotazu je také pole cest grafu:
 
 ```JSON
 {
@@ -179,6 +180,6 @@ Výstup *lambda* vyhledávací dotaz je také pole grafu cesty:
  
 ## <a name="graph-schema"></a>Schéma grafu
 
-Graf schématu je užitečné pro zápis grafu vyhledávací dotazy. Zobrazí se na následujícím obrázku.
+Schéma grafu je užitečné při vytváření grafu vyhledávací dotazy. Je znázorněno na následujícím obrázku.
 
-![Microsoft Academic Graph schématu](./Images/AcademicGraphSchema.png)
+![Schéma Microsoft Academic Graph](./Images/AcademicGraphSchema.png)

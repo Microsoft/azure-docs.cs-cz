@@ -1,24 +1,25 @@
 ---
-title: Vyhodnocení metody v Academic Knowledge API | Microsoft Docs
-description: Pomocí této metody Evaluate vrátit sadu academic entit na základě výrazu dotazu v kognitivní služby společnosti Microsoft.
+title: Vyhodnocení metody – Academic Knowledge API
+titlesuffix: Azure Cognitive Services
+description: Pomocí metody vyhodnotit vrátit sadu akademické entity, které jsou založené na výrazu dotazu.
 services: cognitive-services
 author: alch-msft
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: 3005ae1f6df042a49db086de4982d8206f6938a4
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 262beeefbbafefc95da51e9f4afcbc1bc143f952
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342365"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902327"
 ---
-# <a name="evaluate-method"></a>Vyhodnocení – metoda
+# <a name="evaluate-method"></a>vyhodnocení metody
 
-**Vyhodnotit** REST API se používá k vrácení sady academic entit na základě výrazu dotazu.
+**Vyhodnotit** rozhraní REST API se používá k vrácení sady akademické entity, které jsou založené na výrazu dotazu.
 <br>
 
 **Koncový bod REST:**  
@@ -29,20 +30,20 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate?
 ## <a name="request-parameters"></a>Parametry žádosti  
 Název     | Hodnota | Povinné?  | Popis
 -----------|-----------|---------|--------
-**Expr**       | Textový řetězec | Ano | Výraz dotazu, který určuje entit, které má být vrácen.
-**model**      | Textový řetězec | Ne  | Název modelu, který chcete dotaz.  V současné době má výchozí hodnotu *nejnovější*.        
-**Atributy** | Textový řetězec | Ne<br>Výchozí: Id | Seznam s položkami oddělenými čárkou, který určuje hodnoty atributů, které jsou zahrnuty v odpovědi. Názvy atributů rozlišují velká a malá písmena.
-**počet**        | Číslo | Ne<br>Výchozí: 10 | Počet výsledků vrátit.
-**Posun**     | Číslo |   Ne<br>Výchozí: 0    | Index prvního výsledku vrátit.
-**Řadit podle** |   Textový řetězec | Ne<br>Výchozí hodnota: snížením prob | Název atributu, který se používá pro řazení entity. Volitelně můžete pořadí lze zadat. Formát je: *název: asc* nebo *název: desc*.
+**výraz**       | Textový řetězec | Ano | Výraz dotazu, který určuje entit, které má být vrácen.
+**Model**      | Textový řetězec | Ne  | Název modelu, který chcete dotazovat.  V současné době má výchozí hodnotu *nejnovější*.        
+**Atributy** | Textový řetězec | Ne<br>Výchozí: Id | Čárkami oddělený seznam, který určuje hodnoty atributů, které jsou zahrnuty v odpovědi. Názvy atributů rozlišují malá a velká písmena.
+**Počet**        | Číslo | Ne<br>Výchozí: 10 | Číslo s vrácenými výsledky.
+**Posun**     | Číslo |   Ne<br>Výchozí: 0    | Index první výsledek vrátit.
+**Řadit podle** |   Textový řetězec | Ne<br>Výchozí hodnota: snížením prob | Název atributu, který se používá pro řazení entity. Volitelně můžete Vzestupně/sestupně lze zadat. Formát je: *název: asc* nebo *název: desc*.
   
  <br>
 ## <a name="response-json"></a>Odpověď (JSON)
 Název | Popis
 -------|-----   
-**Expr** |  *Expr* parametr z požadavku.
-**entity** |  Pole 0 nebo více entit, které odpovídá výrazu dotazu. Každá entita obsahuje hodnotu pravděpodobnosti přirozené protokolu a hodnoty další požadované atributy.
-**byl zrušen** | Hodnota TRUE, pokud vypršel časový limit požadavku.
+**výraz** |  *Expr* parametr z požadavku.
+**Entity** |  Pole 0 nebo více entit, které odpovídají výrazu dotazu. Každá entita obsahuje přirozený logaritmus hodnota pravděpodobnosti a hodnot jiných požadovaných atributů.
+**Přerušeno** | True, pokud vypršel časový limit žádosti.
 
 <br>
 #### <a name="example"></a>Příklad:
@@ -50,9 +51,9 @@ Název | Popis
 https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate?expr=
 Composite(AA.AuN=='jaime teevan')&count=2&attributes=Ti,Y,CC,AA.AuN,AA.AuId
 ```
-<br>Obvykle bude výraz získán z odpověď **interpretovat** metoda.  Ale můžete také vytvořit výrazy dotazů sami (viz [syntaxe výrazu dotazu](QueryExpressionSyntax.md)).  
+<br>Obvykle bude výraz získán z odpovědí **interpretovat** metody.  Můžete také vytvářet – výrazy dotazů sami, ale (viz [syntaxe výrazu dotazu](QueryExpressionSyntax.md)).  
   
-Pomocí *počet* a *posun* parametry, velkého počtu výsledků lze získat bez odeslání této odpovědi výsledky v velký (a potenciálně pomalu) jeden požadavek.  V tomto příkladu používá požadavek výraz pro první interpretace z **interpretovat** jako odpověď rozhraní API *expr* hodnotu. *Počet = 2* parametr určuje, že se vyžadují 2 výsledky entity. A *atributy = Ti, Y, kopie, AA. AuN, AA. AuId* parametr označuje, že název, rok, počet citací, jméno autora a Autor ID se pro každý výsledek.  V tématu [atributům Entity](EntityAttributes.md) pro seznam atributů.
+Použití *počet* a *posun* parametry, velký počet výsledky mohou být získány bez odeslání jeden požadavek tuto odpověď výsledky v velkým (a potenciálně pomalé).  V tomto příkladu požadavek používá výraz pro první výklad z **interpretovat** odpověď rozhraní API jako *expr* hodnotu. *Počet = 2* parametr určuje, že jsou požadovány 2 výsledky entit. A *atributy = Ti, Y, kopie, AA. AuN, AA. AuId* parametr označuje, že název, rok, počet citace, jméno autora a Autor ID jsou požadovány pro každého výsledku.  Zobrazit [atributů Entity](EntityAttributes.md) seznam atributů.
   
 ```JSON
 {

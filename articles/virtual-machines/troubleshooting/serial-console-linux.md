@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/11/2018
 ms.author: harijay
-ms.openlocfilehash: ce799f4201a560077c5bb1b943a9e587a71806f2
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: bccf53ed5554579f4ff0a864c38562b7b7f0d3ca
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856339"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885285"
 ---
 # <a name="virtual-machine-serial-console"></a>Konzola sériového portu virtuálního počítače
 
@@ -44,7 +44,7 @@ Pro dokumentaci ke konzole sériového portu pro virtuální počítače s Windo
 
     ![](./media/virtual-machines-serial-console/virtual-machine-serial-console-reset-password.png)
 
-* Nastavení specifická pro distribuce Linuxu najdete v části [přístup ke konzole sériového portu pro Linux](#Serial-Console-Linux-distro-availability)
+* Nastavení specifická pro distribuce Linuxu najdete v části [dostupnost distribuce Linuxu sériové konzoly](#serial-console-linux-distro-availability)
 
 
 
@@ -206,7 +206,7 @@ A. Musíte mít přístup úrovně Přispěvatel nebo vyšší do virtuálního 
 
 **Q. Moje konzoly sériového portu se nezobrazuje nic, co mám dělat?**
 
-A. Vaše image je pravděpodobně nesprávně nakonfigurované pro přístup ke konzole sériového portu. Zobrazit [konzoly sériového portu přístup pro Linux](#Access-Serial-Console-for-Linux) podrobné informace o konfiguraci bitové kopie umožňují konzoly sériového portu.
+A. Vaše image je pravděpodobně nesprávně nakonfigurované pro přístup ke konzole sériového portu. Zobrazit [dostupnost distribuce Linuxu sériové konzoly](#serial-console-linux-distro-availability) podrobné informace o konfiguraci bitové kopie umožňují konzoly sériového portu.
 
 **Q. Je k dispozici konzoly sériového portu pro Virtual Machine Scale Sets?**
 

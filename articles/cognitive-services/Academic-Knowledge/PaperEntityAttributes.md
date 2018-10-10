@@ -1,20 +1,21 @@
 ---
-title: Papír atributy entit v rozhraní Academic Knowledge API | Dokumentace Microsoftu
-description: Další atributy, které můžete použít s papíru entit v rozhraní Academic Knowledge API služeb Cognitive Services.
+title: Atributy entit papíru – Academic Knowledge API
+titlesuffix: Azure Cognitive Services
+description: Další atributy, které můžete použít s papíru entit v rozhraní Academic Knowledge API.
 services: cognitive-services
 author: alch-msft
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
-ms.openlocfilehash: 75efba2c2ce8842f233f766876ca00844338fb25
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: c1f97896a8c3264fca0e76a0800731b8c6c85267
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094707"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901597"
 ---
 # <a name="paper-entity"></a>Entity dokumentu
 

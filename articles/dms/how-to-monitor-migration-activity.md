@@ -2,7 +2,7 @@
 title: Monitorování migrace pomocí Azure Database Migration Service | Dokumentace Microsoftu
 description: Naučte se používat Azure Database Migration Service monitorování migrace.
 services: database-migration
-author: HJToland3
+author: pochiraju
 ms.author: rajpo
 manager: ''
 ms.reviewer: ''
@@ -10,13 +10,13 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 08/27/2018
-ms.openlocfilehash: ab1cf83c90a7473e4a61a9054f372086876b64a2
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.date: 10/09/2018
+ms.openlocfilehash: 8c30af5023cb83ee1f9ca0f41db5b7f977cc4bc7
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802385"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883903"
 ---
 # <a name="monitor-migration-activity"></a>Monitorování aktivity migrace
 V tomto článku se dozvíte, jak můžete sledovat průběh migrace na úrovni databáze i na úrovni tabulky.

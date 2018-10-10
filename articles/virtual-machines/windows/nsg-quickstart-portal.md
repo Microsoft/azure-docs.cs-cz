@@ -12,59 +12,79 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 12/13/2017
+ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 2820dcabf042d7463f9776b42f277a0457caf3b6
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: cac17403425f53593d4f48692b4216a92c8624e3
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929011"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884381"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Postup otevření portů k virtuálnímu počítači pomocí webu Azure portal
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
 
-## <a name="quick-commands"></a>Rychlé příkazy
-Můžete také [tyto kroky provést pomocí prostředí Azure PowerShell](nsg-quickstart-powershell.md).
 
-Nejprve vytvořte skupinu zabezpečení sítě. Vyberte skupinu prostředků na portálu, zvolte **přidat**, vyhledejte a vyberte **skupinu zabezpečení sítě**:
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
-![Přidat skupinu zabezpečení sítě](./media/nsg-quickstart-portal/add-nsg.png)
+## <a name="create-a-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
 
-Zadejte název skupiny zabezpečení sítě, vyberte nebo vytvořte skupinu prostředků a vyberte umístění. Vyberte **vytvořit** po dokončení:
+1. Vyhledejte a vyberte skupinu prostředků příslušného virtuálního počítače, zvolte **přidat**, vyhledejte a vyberte **skupinu zabezpečení sítě**.
 
-![Vytvořte skupinu zabezpečení sítě](./media/nsg-quickstart-portal/create-nsg.png)
+2. Vyberte **Vytvořit**.
 
-Vyberte novou skupinu zabezpečení sítě. Vyberte "Příchozí pravidla zabezpečení" a potom **přidat** tlačítko vytvoříte pravidlo:
+    **Vytvořit skupinu zabezpečení sítě** otevře se okno.
 
-![Přidat příchozí pravidlo](./media/nsg-quickstart-portal/add-inbound-rule.png)
+    ![Vytvoření skupiny zabezpečení sítě](./media/nsg-quickstart-portal/create-nsg.png)
 
-Chcete-li vytvořit pravidlo, které umožní provoz:
+2. Zadejte název skupiny zabezpečení sítě. 
 
-- Vyberte **základní** tlačítko. Ve výchozím nastavení **Upřesnit** okno poskytuje některé další možnosti konfigurace, například pro účely definování rozsahu konkrétní zdrojové IP bloku nebo portu.
-- Zvolte společný **služby** z rozevírací nabídky, jako například *HTTP*. Můžete také vybrat *vlastní* poskytnout konkrétní port, které se má použít. 
-- V případě potřeby změňte prioritu nebo název. Prioritu má vliv na pořadí, ve kterém jsou použita pravidla - nižší číselná hodnota, tím výše se pravidlo použije.
-- Až budete připravení, vyberte **OK** vytvoření pravidla:
+3. Vyberte nebo vytvořte skupinu prostředků a potom vyberte umístění.
 
-![Vytvoření příchozího pravidla](./media/nsg-quickstart-portal/create-inbound-rule.png)
+4. Vyberte **vytvořit** vytvořte skupinu zabezpečení sítě.
 
-Posledním krokem je přidružení skupiny zabezpečení sítě k podsíti nebo konkrétnímu síťovému rozhraní. Pojďme přidružte skupinu zabezpečení sítě k podsíti. Vyberte **podsítě**, klikněte na tlačítko **přidružit**:
+## <a name="create-an-inbound-security-rule"></a>Vytvoření pravidla zabezpečení příchozích dat
 
-![Přidružte skupinu zabezpečení sítě k podsíti](./media/nsg-quickstart-portal/associate-subnet.png)
+1. Vyberte novou skupinu zabezpečení sítě. 
 
-Vyberte virtuální síť a potom vyberte vhodnou podsíť:
+2. Vyberte **příchozí pravidla zabezpečení**a pak vyberte **přidat**.
 
-![Přidružení skupiny zabezpečení sítě s virtuální sítí](./media/nsg-quickstart-portal/select-vnet-subnet.png)
+    ![Přidat příchozí pravidlo](./media/nsg-quickstart-portal/add-inbound-rule.png)
 
-Nyní jste vytvořili skupinu zabezpečení sítě, vytvoří příchozí pravidlo, které povoluje provoz na portu 80 a jeho přidružené k podsíti. Všechny virtuální počítače, ke kterým se připojujete k této podsíti jsou dostupné na portu 80.
+3. Vyberte **Upřesnit**. 
 
-## <a name="more-information-on-network-security-groups"></a>Další informace o skupinách zabezpečení sítě
-Rychlé příkazy umožní začít pracovat s přenosy směřující do virtuálního počítače. Skupiny zabezpečení sítě poskytují mnoho skvělých funkcí a členitost řízení přístupu k vašim prostředkům. Další informace o [vytvoření skupiny zabezpečení sítě a seznamu ACL pravidla zde](../../virtual-network/tutorial-filter-network-traffic.md).
+4. Zvolte společný **služby** z rozevírací nabídky, jako například **HTTP**. Můžete také vybrat **vlastní** Pokud byste chtěli poskytnout konkrétní port, které se má použít. 
 
-U vysoce dostupných webových aplikací by měl umístěte své virtuální počítače za nástrojem Azure Load Balancer. Nástroje pro vyrovnávání zatížení distribuuje provoz do virtuálních počítačů pomocí skupiny zabezpečení sítě, která poskytuje filtrování provozu. Další informace najdete v tématu [zatížení vyrovnávat virtuální počítače s Linuxem v Azure za účelem vytvoření vysoce dostupné aplikace](tutorial-load-balancer.md).
+5. Volitelně můžete změnit **Priority** nebo **název**. Priorita ovlivňuje pořadí, ve kterém jsou použity pravidla: Čím nižší číselná hodnota, tím výše se pravidlo použije.
+
+6. Vyberte **přidat** vytvoření pravidla.
+
+## <a name="associate-your-network-security-group-with-a-subnet"></a>Přidružte skupinu zabezpečení sítě k podsíti
+
+Posledním krokem je přidružení skupiny zabezpečení sítě k podsíti nebo konkrétnímu síťovému rozhraní. V tomto příkladu jsme budete přidružte skupinu zabezpečení sítě k podsíti. 
+
+1. Vyberte **podsítě**a pak vyberte **přidružit**.
+
+    ![Přidružte skupinu zabezpečení sítě k podsíti](./media/nsg-quickstart-portal/associate-subnet.png)
+
+2. Vyberte virtuální síť a pak vyberte vhodnou podsíť.
+
+    ![Přidružení skupiny zabezpečení sítě s virtuální sítí](./media/nsg-quickstart-portal/select-vnet-subnet.png)
+
+    Všechny virtuální počítače, ke kterým se připojujete k této podsíti jsou teď dostupné na portu 80.
+
+## <a name="additional-information"></a>Další informace
+
+Můžete také [proveďte kroky v tomto článku pomocí Azure Powershellu](nsg-quickstart-powershell.md).
+
+Příkazů popsaných v tomto článku vám umožňují rychle zajistit provoz k vašemu virtuálnímu počítači. Skupiny zabezpečení sítě poskytují mnoho skvělých funkcí a členitost řízení přístupu k vašim prostředkům. Další informace najdete v tématu [filtrování provozu sítě s použitím skupiny zabezpečení sítě](../../virtual-network/tutorial-filter-network-traffic.md).
+
+U vysoce dostupných webových aplikací zvažte umístění virtuálních počítačů za služby Azure load balancer. Nástroje pro vyrovnávání zatížení distribuuje provoz do virtuálních počítačů, se skupinou zabezpečení sítě, která poskytuje filtrování provozu. Další informace najdete v tématu [vyrovnávat zatížení virtuálních počítačů Windows v Azure za účelem vytvoření vysoce dostupné aplikace](tutorial-load-balancer.md).
 
 ## <a name="next-steps"></a>Další postup
-V tomto příkladu jste vytvořili jednoduché pravidlo pro povolení provozu HTTP. Můžete najít informace o vytváření podrobnější prostředí v následujících článcích:
+V tomto článku jste vytvořili skupinu zabezpečení sítě, vytvoří příchozí pravidlo, které umožní provoz protokolu HTTP na portu 80 a toto pravidlo potom přidružené k podsíti. 
 
-* [Přehled Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md)
-* [Co je skupina zabezpečení sítě?](../../virtual-network/security-overview.md)
+Můžete najít informace o vytváření podrobnější prostředí v následujících článcích:
+- [Přehled Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md)
+- [Skupiny zabezpečení](../../virtual-network/security-overview.md)

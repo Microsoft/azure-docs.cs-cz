@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/22/2018
 ms.author: adigan
-ms.openlocfilehash: 873e7066bcf51b32c3a7a54e845ffd5a744f407f
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 2da5b04f56a5746fb77de6bc954bb5971eb4664b
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745431"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885166"
 ---
 # <a name="preparing-to-back-up-workloads-to-azure-with-dpm"></a>Příprava zálohování úloh do Azure pomocí DPM
 > [!div class="op_single_selector"]
@@ -170,7 +170,7 @@ Po vytvoření trezoru služby Azure Backup, musí být agent nainstalován na j
 14. Při použití aplikace Data Protection Manager, můžete upravit nastavení určené během pracovního postupu registrace kliknutím **konfigurovat** tak, že vyberete možnost **Online** pod **správy**  Kartu.
 
 ## <a name="requirements-and-limitations"></a>Požadavky (a omezení)
-* Aplikace DPM může běžet jako fyzický server nebo virtuální počítač Hyper-V v nástroji System Center 2012 SP1 nebo System Center 2012 R2 nainstalována. Může taky běžet jako virtuální počítač Azure s v nástroji System Center 2012 R2 s DPM 2012 R2 Update Rollup 3 nebo virtuální počítač Windows ve VMWare běžící na System Center 2012 R2 s kumulativní aktualizací 5.
+* Aplikace DPM může běžet jako fyzický server nebo virtuální počítač Hyper-V v nástroji System Center 2012 SP1 nebo System Center 2012 R2 nainstalována. Může taky běžet jako virtuální počítač Azure s v nástroji System Center 2012 R2 s DPM 2012 R2 Update Rollup 3 nebo virtuální počítač Windows ve VMware běžící na System Center 2012 R2 s kumulativní aktualizací 5.
 * Pokud spouštíte aplikaci DPM se System Center 2012 SP1 nainstalujte kumulativní aktualizaci 2 pro System Center Data Protection Manager SP1. To je potřeba, abyste mohli nainstalovat agenta Azure Backup.
 * Server aplikace DPM musí mít Windows PowerShell a rozhraní .net Framework 4.5 nainstalované.
 * DPM může zálohovat většinu úloh Azure Backup. Úplný seznam najdete v tématu Co je podporováno podporuje služba Azure Backup položky dole.

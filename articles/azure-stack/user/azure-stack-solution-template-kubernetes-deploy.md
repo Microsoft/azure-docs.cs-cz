@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 10/08/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 82d99f575837b47a29bd6d8330ee58f442b6110a
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 71fdf609badd6c8a9f4db5a5a1d2aa70c8c2e5f5
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409350"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887468"
 ---
 # <a name="deploy-kubernetes-to-azure-stack"></a>Nasazení Kubernetes pro Azure Stack
 
@@ -165,6 +165,9 @@ Poskytněte přístup instančního objektu služby do vašeho předplatného, t
 2. Zkontrolujte nastavení.
 
 3. Vyberte **OK** k nasazení clusteru.
+
+> [!TIP]  
+>  Pokud máte dotazy k vašemu nasazení, můžete se zveřejněte svůj dotaz nebo se pokud někdo už odpověděl na dotaz v [fórum pro Azure Stack](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). 
 
 ## <a name="connect-to-your-cluster"></a>Připojení k vašemu clusteru
 

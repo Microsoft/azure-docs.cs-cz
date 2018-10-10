@@ -3,17 +3,17 @@ title: Konfigurace clusteru HDInsight s balíčkem Enterprise Security Package p
 description: Zjistěte, jak nastavit a konfigurovat cluster HDInsight Enterprise Security Package pomocí Azure Active Directory Domain Services.
 services: hdinsight
 ms.service: hdinsight
-author: omidm1
-ms.author: omidm
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: conceptual
-ms.date: 10/3/2018
-ms.openlocfilehash: 84ee24b9002237d0993a30190944dbd6dd190ac8
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.date: 10/9/2018
+ms.openlocfilehash: c56158a5e8df2e8781ec8e4431c75beadd154297
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48784931"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901647"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurace clusteru HDInsight s balíčkem Enterprise Security Package pomocí Azure Active Directory Domain Services
 
@@ -25,6 +25,9 @@ V tomto článku se dozvíte, jak konfigurace clusteru HDInsight s ESP pomocí A
 >ESP je GA v HDI 3.6 pro Hadoop, Spark a interaktivní. ESP pro typy clusterů HBase a Kafka je ve verzi preview.
 
 ## <a name="enable-azure-ad-ds"></a>Povolení služby Azure AD DS
+
+> [!NOTE]
+> Pouze správci tenanta máte oprávnění k vytvoření instance služby Azure AD – DS. Pokud je úložiště clusteru služby Azure Data Lake Store (ADLS) Gen1 a Gen2, zakažte Vícefaktorové ověřování (MFA) pouze pro uživatele, kteří se přístup ke clusteru. Pokud je cluster úložiště Azure Blob Storage (WASB), nezakazujte vícefaktorové ověřování.
 
 Povolení služby Azure AD DS je předpokladem předtím, než vytvoříte HDInsight cluster s ESP. Další informace najdete v tématu [povolit Azure Active Directory Domain Services pomocí webu Azure portal](../../active-directory-domain-services/active-directory-ds-getting-started.md). 
 
@@ -40,8 +43,7 @@ Změna konfigurace serverů DNS ve virtuální síti Azure AD DS použití těch
 
 ![Aktualizuje se konfigurace DNS virtuální sítě](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-vnet-configuration.png)
 
-> [!NOTE]
-> Pouze správci tenanta máte oprávnění k vytvoření instance služby Azure AD – DS. Ověřování službou Multi-Factor Authentication je potřeba zakázat pouze pro uživatele, kteří se přístup ke clusteru.
+
 
 Při povolování protokolu secure LDAP, vložte název domény do názvu subjektu nebo alternativní název subjektu v certifikátu. Například, pokud je název vaší domény *contoso.com*, ujistěte se, že přesným názvem existuje v názvu subjektu certifikátu nebo alternativní název subjektu. Další informace najdete v tématu [konfigurace zabezpečeného protokolu LDAP pro Azure AD – DS spravované domény](../../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md).
 

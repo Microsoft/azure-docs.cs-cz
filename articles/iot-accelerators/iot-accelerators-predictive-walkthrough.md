@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 07/12/2018
 ms.author: dobett
-ms.openlocfilehash: e7c6c8d017e4371919088ec414d3108939ca4a19
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 822e02d42be8ce516901190af4be579d13ac841d
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036250"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888318"
 ---
 # <a name="predictive-maintenance-solution-accelerator-overview"></a>Přehled akcelerátoru řešení prediktivní údržby
 

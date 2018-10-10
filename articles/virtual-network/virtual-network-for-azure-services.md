@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: ef902f58f37cd0d09195aa5d1ff03847906ef414
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 163a8f318608ba980d98209277371fb4d148c4ff
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238893"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902769"
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Integrace virtuální sítě pro služby Azure
 
@@ -46,9 +46,6 @@ Nasazení služby v rámci virtuální sítě poskytuje následující možnosti
 - Volitelně může vyžadovat služby [delegovaný podsítě](virtual-network-manage-subnet.md#add-a-subnet) jako explicitní identifikátor, že podsíť může hostovat konkrétní službu. Podsíť delegování dává explicitní oprávnění ke službě vytvářet prostředky specifické pro služby v podsíti.
 
 ### <a name="services-that-can-be-deployed-into-a-virtual-network"></a>Služby, které je možné nasadit do virtuální sítě
-
-Každá služba nasadit přímo do virtuální sítě má specifické požadavky na směrování a typy dat, která musí být povoleno do proměnné a z podsítě. Různé služby, které je možné nasadit do virtuální sítě jsou zařazené do kategorií níže. Vyberte konkrétní služby v tabulce získat další informace o jeho a jak ji integrovat s vaší virtuální sítě. 
-
 
 |Kategorie|Služba|
 |-|-|

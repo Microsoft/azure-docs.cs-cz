@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/27/2018
+ms.date: 10/09/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: a9a4b7728eff3057b9677d12df51cc8c477744ca
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e6950c38db83efb57e5f3b1809aa6baa56532cd0
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953935"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48903041"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Připojte se k prostředí Azure-SSIS integration runtime k virtuální síti
 Připojte se k prostředí Azure-SSIS integration runtime (IR) ke službě Azure virtual network v následujících scénářích: 
@@ -57,6 +57,8 @@ Následující oddíly poskytují další podrobnosti.
 ## <a name="requirements-for-virtual-network-configuration"></a>Požadavky na konfiguraci virtuální sítě
 -   Ujistěte se, že `Microsoft.Batch` je registrovaný poskytovatel v rámci předplatného vaší podsítě virtuální sítě, který je hostitelem prostředí Azure-SSIS IR. Pokud použijete klasické virtuální síti připojit také `MicrosoftAzureBatch` role Přispěvatel virtuálních počítačů modelu Classic pro tuto virtuální síť. 
 
+-   Ujistěte se, že máte potřebná oprávnění. Zobrazit [požadovaná oprávnění](#perms).
+
 -   Vyberte správnou podsíť k hostování prostředí Azure-SSIS IR. Zobrazit [vyberte podsíť](#subnet). 
 
 -   Pokud používáte vlastní server služby DNS (Domain Name) ve virtuální síti, přečtěte si téma [Domain Name Services server](#dns_server). 
@@ -66,6 +68,16 @@ Následující oddíly poskytují další podrobnosti.
 -   Pokud používáte Azure Express Route nebo konfigurace uživatelem definovanou trasou (UDR), přečtěte si téma [pomocí Azure ExpressRoute nebo uživatelem definovaná trasa](#route). 
 
 -   Ujistěte se, že skupiny prostředků ve virtuální síti můžete vytvářet a odstraňovat určitých prostředků sítě Azure. Zobrazit [požadavky pro skupinu prostředků](#resource-group). 
+
+### <a name="perms"></a> Požadovaná oprávnění
+
+- Pokud jste se zapojili SSIS IR k virtuální síti Azure v aktuální verzi, máte dvě možnosti:
+
+  - Použijte předdefinovanou roli *Přispěvatel sítě*. Vyžaduje tato role *Microsoft.Network/\**  oprávnění, ale který má mnohem větší rozsah.
+
+  - Vytvořit vlastní roli, která zahrnuje oprávnění *Microsoft.Network/virtualNetworks/\*/join nebo akce*. 
+
+- Pokud jste se zapojili IR služby SSIS pro klasickou virtuální síť Azure, doporučujeme použít předdefinovanou roli *Přispěvatel virtuálních počítačů modelu Classic*. Jinak budete muset definovat vlastní roli, která zahrnuje oprávnění k připojení k virtuální síti.
 
 ### <a name="subnet"></a> Vyberte podsíť
 -   Nesmí být zvolen GatewaySubnet pro nasazení prostředí Azure-SSIS Integration Runtime, protože je vyhrazený pro brány virtuální sítě. 

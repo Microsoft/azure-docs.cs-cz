@@ -1,27 +1,29 @@
 ---
 title: Správa jednotného přihlašování a token přizpůsobení pomocí vlastních zásad v Azure Active Directory B2C | Dokumentace Microsoftu
-description: Další informace o správě jednotného přihlašování a token přizpůsobení pomocí vlastních zásad.
+description: Další informace o správě jednotného přihlašování a token přizpůsobení pomocí vlastních zásad v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/02/2017
+ms.date: 10/09/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 811fb8b2de59c9d324ab4acb8b0f51b4cec80aee
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: c7ba1f87b877466ff4d9d11e4b3b5a6567e7ae06
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441793"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902623"
 ---
-# <a name="azure-active-directory-b2c-manage-sso-and-token-customization-with-custom-policies"></a>Azure Active Directory B2C: Správa jednotného přihlašování a token přizpůsobení pomocí vlastních zásad
-Pomocí vlastních zásad poskytuje stejnou kontrolu nad token, relace a jednotné přihlašování – konfigurace (SSO) pomocí předdefinovaných zásad.  Každé nastavení, zjistěte, co naleznete v dokumentaci [tady](#active-directory-b2c-token-session-sso).
+# <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Správa jednotného přihlašování a token přizpůsobení pomocí vlastních zásad v Azure Active Directory B2C
+
+Tento článek obsahuje informace o tom, jak můžete spravovat token, relace a konfigurace jednotného přihlašování (SSO) pomocí [vlastní zásady](active-directory-b2c-overview-custom.md) v Azure Active Directory (Azure AD) B2C.
 
 ## <a name="token-lifetimes-and-claims-configuration"></a>Konfigurace tokenu životnosti a deklarace identity
-Chcete-li změnit nastavení na vaše životností tokenů, musíte přidat `<ClaimsProviders>` element v souboru předávající strana zásady měly týkat.  `<ClaimsProviders>` Element je podřízeným prvkem `<TrustFrameworkPolicy>`.  Uvnitř budete muset poskytnout informace, které má vliv na vaše životností tokenů.  XML vypadá jako v tomto příkladu:
+
+Chcete-li změnit nastavení na vaše životností tokenů, je přidat [ClaimsProviders](claimsproviders.md) element v souboru předávající strana zásady měly týkat.  **ClaimsProviders** element je podřízeným prvkem [TrustFrameworkPolicy](trustframeworkpolicy.md) elementu. Uvnitř budete muset poskytnout informace, které má vliv na vaše životností tokenů. XML vypadá jako v tomto příkladu:
 
 ```XML
 <ClaimsProviders>
@@ -43,41 +45,36 @@ Chcete-li změnit nastavení na vaše životností tokenů, musíte přidat `<Cl
 </ClaimsProviders>
 ```
 
-**Přístup k životností tokenů** -životnost tokenu přístupu lze změnit pomocí úpravy hodnoty uvnitř `<Item>` klíčem = "token_lifetime_secs" v řádu sekund.  Výchozí hodnota v předdefinované je 3 600 sekund (60 minut).
+Následující hodnoty jsou nastavené v předchozím příkladu:
 
-**Životnost tokenu ID** – ID dobu životnosti tokenu lze změnit pomocí úpravy hodnoty uvnitř `<Item>` klíčem = "id_token_lifetime_secs" v řádu sekund.  Výchozí hodnota v předdefinované je 3 600 sekund (60 minut).
+- **Přístup k životností tokenů** – životnost tokenu přístupu, hodnota se nastaví pomocí **token_lifetime_secs** položku metadat. Výchozí hodnota je 3 600 sekund (60 minut).
+- **Životnost tokenu ID** – ID dobu životnosti tokenu hodnota se nastaví pomocí **id_token_lifetime_secs** položku metadat. Výchozí hodnota je 3 600 sekund (60 minut).
+- **Doba života obnovovacího tokenu** – aktualizace dobu životnosti tokenu hodnota se nastaví pomocí **refresh_token_lifetime_secs** položku metadat. Výchozí hodnota je 1209600 sekund (14 dnů).
+- **Token doba života posuvného okna obnovovacího** – Pokud chcete nastavit doba života posuvného okna k aktualizaci tokenu, nastavte hodnotu **rolling_refresh_token_lifetime_secs** položku metadat. Výchozí hodnota je 7776000 (90 dnů). Pokud nechcete, aby k vynucení doba života posuvného okna, nahraďte položku s `<Item Key="allow_infinite_rolling_refresh_token">True</Item>`.
+- **Deklarace identity vystavitele (iss)** – deklarace identity vystavitele (iss) nastavená **IssuanceClaimPattern** položku metadat. Příslušné hodnoty jsou `AuthorityAndTenantGuid` a `AuthorityWithTfp`.
+- **Nastavení deklarace identity představující ID zásady** – možnosti pro nastavení této hodnoty jsou `TFP` (framework zásady důvěryhodnosti) a `ACR` (informace o kontextu ověřování). `TFP` Doporučená hodnota. Nastavte **AuthenticationContextReferenceClaimPattern** s hodnotou `None`. Ve vaší **OutputClaims** položky, přidejte tento element:
+    
+    ```XML
+    <OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />
+    ```
 
-**Doba života obnovovacího tokenu** – aktualizace dobu životnosti tokenu lze změnit pomocí úpravy hodnoty uvnitř `<Item>` klíčem = "refresh_token_lifetime_secs" v řádu sekund.  Výchozí hodnota v předdefinované je 1209600 sekund (14 dnů).
+    Pro službu ACR, odeberte **AuthenticationContextReferenceClaimPattern** položky.
 
-**Token doba života posuvného okna obnovovacího** – Pokud chcete nastavit doba života posuvného okna obnovovací token, upravte hodnotu uvnitř `<Item>` klíčem = "rolling_refresh_token_lifetime_secs" v řádu sekund.  Výchozí hodnota v předdefinované je 7776000 (90 dnů).  Pokud nechcete, aby k vynucení doba života posuvného okna, nahraďte tento řádek:
-```XML
-<Item Key="allow_infinite_rolling_refresh_token">True</Item>
-```
+- **Deklarace identity subjektu (sub)** – výchozí hodnota této možnosti ObjectID, pokud byste chtěli přepnutí tohoto nastavení na `Not Supported`, nahraďte tento řádek: 
 
-**Deklarace identity vystavitele (iss)** – Pokud chcete změnit deklarace identity vystavitele (iss), upravte hodnotu uvnitř `<Item>` klíčem = "IssuanceClaimPattern".  Příslušné hodnoty jsou `AuthorityAndTenantGuid` a `AuthorityWithTfp`.
-
-**Nastavení deklarace identity představující ID zásady** – možnosti pro nastavení této hodnoty jsou TFP (zásady důvěryhodnosti framework) a služby ACR (authentication kontextu odkaz).  
-Doporučujeme nastavit to TFP, ujistěte se, k tomu, `<Item>` s Key = "AuthenticationContextReferenceClaimPattern" existuje a má hodnotu `None`.
-Ve vaší `<OutputClaims>` položky, přidejte tento element:
-```XML
-<OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />
-```
-Pro službu ACR, odeberte `<Item>` klíčem = "AuthenticationContextReferenceClaimPattern".
-
-**Deklarace identity subjektu (sub)** – tato možnost je nastavena na výchozí ID objektu, pokud chcete přepnout na `Not Supported`, postupujte takto:
-
-Nahraďte tento řádek 
-```XML
-<OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub" />
-```
-Tento řádek:
-```XML
-<OutputClaim ClaimTypeReferenceId="sub" />
-```
+    ```XML
+    <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub" />
+    ```
+    
+    Tento řádek:
+    
+    ```XML
+    <OutputClaim ClaimTypeReferenceId="sub" />
+    ```
 
 ## <a name="session-behavior-and-sso"></a>Chování relace a jednotné přihlašování
 
-Chcete-li změnit chování relace a konfigurace jednotného přihlašování, budete muset přidat `<UserJourneyBehaviors>` prvek uvnitř `<RelyingParty>` element.  `<UserJourneyBehaviors>` Prvek musí následovat bezprostředně `<DefaultUserJourney>`.  Uvnitř vaší `<UserJourneyBehavors>` prvek by měl vypadat takto:
+Chcete-li změnit chování relace a konfigurace jednotného přihlašování, můžete přidat **UserJourneyBehaviors** ovládacího prvku [RelyingParty](relyingparty.md) element.  **UserJourneyBehaviors** prvek musí následovat bezprostředně **DefaultUserJourney**. Uvnitř vaší **UserJourneyBehavors** prvek by měl vypadat jako v tomto příkladu:
 
 ```XML
 <UserJourneyBehaviors>
@@ -86,8 +83,9 @@ Chcete-li změnit chování relace a konfigurace jednotného přihlašování, b
    <SessionExpiryInSeconds>86400</SessionExpiryInSeconds>
 </UserJourneyBehaviors>
 ```
-**Jednotné přihlašování (SSO) konfigurace** – Pokud chcete změnit jediné konfiguraci přihlašování, budete muset upravit hodnotu `<SingleSignOn>`.  Příslušné hodnoty jsou `Tenant`, `Application`, `Policy` a `Disabled`. 
 
-**Webová aplikace životnost relace (minuty)** – Pokud chcete změnit životnost relace webové aplikace potřebujete změnit hodnotu `<SessionExpiryInSeconds>` elementu.  Výchozí hodnota v integrovaných zásad je 86 400 sekund (1 440 minut).
+Následující hodnoty jsou nakonfigurované v předchozím příkladu:
 
-**Časový limit relace webové aplikace** – Pokud chcete změnit časový limit webové aplikace relace je třeba hodnotu změnit `<SessionExpiryType>`.  Příslušné hodnoty jsou `Absolute` a `Rolling`.
+- **Jednotné přihlašování (SSO)** -jednotného přihlašování se nakonfigurují **SingleSignOn**. Příslušné hodnoty jsou `Tenant`, `Application`, `Policy`, a `Suppressed`. 
+- **Webové aplikace životnost relace (minuty)** – relace webové aplikace životnost nastavená **SessionExpiryInSeconds** elementu. Výchozí hodnota je 86 400 sekund (1 440 minut).
+- **Časový limit relace webové aplikace** – časový limit se nastavuje pomocí webové aplikace relace **sessionexpirytype pro** elementu. Příslušné hodnoty jsou `Absolute` a `Rolling`.

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 387668263a6bab6e12a21adf04aebfbbf108a006
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: adb44dcc8c41b1a7846ff346d141dc0c4b028e96
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036486"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888284"
 ---
 # <a name="add-example-utterances-and-label-with-entities"></a>Přidejte příklad projevy a popisek s entitami
 
@@ -92,12 +92,12 @@ Přidáte synonyma do entitou seznamu tak, že vyberete slovo nebo frázi v utte
 
 V utterance, vyberte synonymní slovo, jako je například `aqua` vody, vyberte název seznamu entit v rozevíracím seznamu, například **nepijí**a pak vyberte **nastavit jako synonymum**, vyberte v seznamu Položka je synonymní s, jako například **vody**.
 
-![Stránce s podrobnostmi o snímek obrazovky záměrů, výrazem Create nové synonymum zvýrazněnou](./media/luis-how-to-add-example-utterances/set-agua-as-synonym.png)
+![Stránce s podrobnostmi o snímek obrazovky záměrů, s vytvořit nové zobrazení normalizovaná zvýrazněnou](./media/luis-how-to-add-example-utterances/set-agua-as-synonym.png)
 
 ## <a name="create-new-item-for-list-entity"></a>Vytvořit novou položku pro seznam entit
-Vytvořte novou položku pro existující entity seznam tak, že vyberete slovo nebo frázi v utterance. Pokud máte nápoje seznamu a chcete přidat `tea` jako nová položka, postupujte podle kroků:
+Vytvořte novou položku pro existující entity seznam tak, že vyberete slovo nebo frázi v utterance. Pokud jste zaměstnanec seznamu a chcete přidat `Bob Smith` jako nová položka, postupujte podle kroků:
 
-V utterance, vyberte word pro novou položku seznamu, jako je například `tea`, vyberte v rozevíracím seznamu, jako název entity seznamu **nepijí**a pak vyberte **vytvořit nové synonymum**. 
+V utterance, vyberte slovo nebo frázi pro novou položku seznamu, jako je například `Bob Smith`, vyberte v rozevíracím seznamu, jako název entity seznamu **zaměstnance**a pak vyberte **vytvoření nového zobrazení normalizovaná**. 
 
 ![Snímek obrazovky přidání nové položky seznamu](./media/luis-how-to-add-example-utterances/list-entity-create-new-item.png)
 

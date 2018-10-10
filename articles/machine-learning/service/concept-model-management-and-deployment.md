@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: hjerez
 ms.author: hjerez
 ms.date: 09/24/2018
-ms.openlocfilehash: afba483172bc34b9d54afc3af755f0967affc875
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: b09ef259d73744612c41adc4fc40ea0235da9bcb
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239162"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885063"
 ---
 # <a name="manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>Spravovat, nasazovat a sledovat modely pomocí služby Azure Machine Learning
 
@@ -71,7 +71,7 @@ Image můžete nasadit následující [cíle nasazení](how-to-deploy-and-where.
 * Azure počítače FPGA
 * Zařízení Azure IoT Edge
 
-Jak je vaše služba nasazená, odvozování požadavku je automaticky s vyrovnáváním zatížení a splňovat všechny špičky na vyžádání je škálování clusteru. [Telemetrická data o vaší služby](https://docs.microsoft.com/python/api/azureml-telemetry/azureml.telemetry?view=azure-ml-py) ve službě Azure Application Insights přidružený k vaší pracovní prostor se dají zachytit.
+Jak je vaše služba nasazená, odvozování požadavku je automaticky s vyrovnáváním zatížení a splňovat všechny špičky na vyžádání je škálování clusteru. [Telemetrická data o vaší služby se dají zachytit](how-to-enable-app-insights.md) ve službě Azure Application Insights přidružený k pracovního prostoru.
 
 ## <a name="step-4-monitor-models-and-collect-data"></a>Krok 4: Monitorování modely a shromažďování dat
 

@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/29/2018
+ms.date: 10/09/2018
 ms.author: dobett
-ms.openlocfilehash: cb6afd04dacf3ae5c3d88293e2b96e180e69c33d
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: b9ad7a0e1947c9ca95b343a443688e976c306f95
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585454"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884220"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Plánování úloh na několika zařízeních
 
@@ -29,82 +29,82 @@ Zvažte použití úloh když budete potřebovat k plánování a sledování pr
 
 ## <a name="job-lifecycle"></a>Životní cyklus úlohy
 
-Úlohy jsou iniciovaných back-end řešení a spravuje pomocí služby IoT Hub. Můžete spustit úlohu prostřednictvím služby přístupem k identifikátoru URI (`{iot hub}/jobs/v2/{device id}/methods/<jobID>?api-version=2016-11-14`) a dotazování na průběh provádění úlohy prostřednictvím služby přístupem k identifikátoru URI (`{iot hub}/jobs/v2/<jobId>?api-version=2016-11-14`). K aktualizaci stavu spuštěných úloh po zahájení úlohy, spusťte dotaz úlohy.
+Úlohy jsou iniciovaných back-end řešení a spravuje pomocí služby IoT Hub. Můžete spustit úlohu prostřednictvím služby přístupem k identifikátoru URI (`PUT https://<iot hub>/jobs/v2/<jobID>?api-version=2018-06-30`) a dotazování na průběh provádění úlohy prostřednictvím služby přístupem k identifikátoru URI (`GET https://<iot hub>/jobs/v2/<jobID?api-version=2018-06-30`). K aktualizaci stavu spuštěných úloh po zahájení úlohy, spusťte dotaz úlohy.
 
 > [!NOTE]
 > Když spustíte úlohu, názvy a hodnoty vlastností může obsahovat pouze US-ASCII tisknutelný alfanumerické znaky, s výjimkou těch následující: `$ ( ) < > @ , ; : \ " / [ ] ? = { } SP HT`
-> 
 
 ## <a name="jobs-to-execute-direct-methods"></a>Úlohy spouštějí přímé metody
 
 Následující fragment kódu ukazuje podrobnosti o žádosti HTTPS 1.1 pro spouštění [přímá metoda](iot-hub-devguide-direct-methods.md) na sadu zařízení pomocí úlohy:
 
-    ```
-    PUT /jobs/v2/<jobId>?api-version=2016-11-14
+```
+PUT /jobs/v2/<jobId>?api-version=2018-06-30
 
-    Authorization: <config.sharedAccessSignature>
-    Content-Type: application/json; charset=utf-8
-    Request-Id: <guid>
-    User-Agent: <sdk-name>/<sdk-version>
+Authorization: <config.sharedAccessSignature>
+Content-Type: application/json; charset=utf-8
+Request-Id: <guid>
+User-Agent: <sdk-name>/<sdk-version>
 
-    {
-        jobId: '<jobId>',
-        type: 'scheduleDirectRequest', 
-        cloudToDeviceMethod: {
-            methodName: '<methodName>',
-            payload: <payload>,                 
-            responseTimeoutInSeconds: methodTimeoutInSeconds 
-        },
-        queryCondition: '<queryOrDevices>', // query condition
-        startTime: <jobStartTime>,          // as an ISO-8601 date string
-        maxExecutionTimeInSeconds: <maxExecutionTimeInSeconds>        
-    }
-    ```
+{
+    "jobId": "<jobId>",
+    "type": "scheduleDirectMethod",
+    "cloudToDeviceMethod": {
+        "methodName": "<methodName>",
+        "payload": <payload>,
+        "responseTimeoutInSeconds": methodTimeoutInSeconds
+    },
+    "queryCondition": "<queryOrDevices>", // query condition
+    "startTime": <jobStartTime>,          // as an ISO-8601 date string
+    "maxExecutionTimeInSeconds": <maxExecutionTimeInSeconds>
+}
+```
 
 Podmínka dotazu může být také na jedno zařízení ID nebo na seznam zařízení ID, jak je znázorněno v následujícím příkladu:
 
 ```
-queryCondition = "deviceId = 'MyDevice1'"
-queryCondition = "deviceId IN ['MyDevice1','MyDevice2']"
-queryCondition = "deviceId IN ['MyDevice1']
+"queryCondition" = "deviceId = 'MyDevice1'"
+"queryCondition" = "deviceId IN ['MyDevice1','MyDevice2']"
+"queryCondition" = "deviceId IN ['MyDevice1']"
 ```
+
 [Dotazovací jazyk IoT Hub](iot-hub-devguide-query-language.md) pokrývá dotazovací jazyk služby IoT Hub v dalších podrobností.
 
 ## <a name="jobs-to-update-device-twin-properties"></a>Úlohy se aktualizovat vlastnosti dvojčat zařízení
 
 Následující fragment kódu ukazuje podrobnosti o žádosti HTTPS 1.1 pro aktualizaci vlastnosti dvojčat zařízení pomocí úlohy:
 
-    ```
-    PUT /jobs/v2/<jobId>?api-version=2016-11-14
-    
-    Authorization: <config.sharedAccessSignature>
-    Content-Type: application/json; charset=utf-8
-    Request-Id: <guid>
-    User-Agent: <sdk-name>/<sdk-version>
+```
+PUT /jobs/v2/<jobId>?api-version=2018-06-30
 
-    {
-        jobId: '<jobId>',
-        type: 'scheduleTwinUpdate', 
-        updateTwin: <patch>                 // Valid JSON object
-        queryCondition: '<queryOrDevices>', // query condition
-        startTime: <jobStartTime>,          // as an ISO-8601 date string
-        maxExecutionTimeInSeconds: <maxExecutionTimeInSeconds>        // format TBD
-    }
-    ```
+Authorization: <config.sharedAccessSignature>
+Content-Type: application/json; charset=utf-8
+Request-Id: <guid>
+User-Agent: <sdk-name>/<sdk-version>
+
+{
+    "jobId": "<jobId>",
+    "type": "scheduleTwinUpdate",
+    "updateTwin": <patch>                 // Valid JSON object
+    "queryCondition": "<queryOrDevices>", // query condition
+    "startTime": <jobStartTime>,          // as an ISO-8601 date string
+    "maxExecutionTimeInSeconds": <maxExecutionTimeInSeconds>
+}
+```
 
 ## <a name="querying-for-progress-on-jobs"></a>Dotazování na průběh úlohy
 
 Následující fragment kódu ukazuje podrobnosti o žádosti HTTPS 1.1 pro dotazování pro úlohy:
 
-    ```
-    GET /jobs/v2/query?api-version=2016-11-14[&jobType=<jobType>][&jobStatus=<jobStatus>][&pageSize=<pageSize>][&continuationToken=<continuationToken>]
+```
+GET /jobs/v2/query?api-version=2018-06-30[&jobType=<jobType>][&jobStatus=<jobStatus>][&pageSize=<pageSize>][&continuationToken=<continuationToken>]
 
-    Authorization: <config.sharedAccessSignature>
-    Content-Type: application/json; charset=utf-8
-    Request-Id: <guid>
-    User-Agent: <sdk-name>/<sdk-version>
-    ```
-    
+Authorization: <config.sharedAccessSignature>
+Content-Type: application/json; charset=utf-8
+Request-Id: <guid>
+User-Agent: <sdk-name>/<sdk-version>
+```
+
 Token continuationToken je k dispozici z odpovědi.
 
 Můžete zadat dotaz na stav provádění úlohy na každé zařízení pomocí [dotazovací jazyk služby IoT Hub pro dvojčata zařízení, úlohy a směrování zpráv](iot-hub-devguide-query-language.md).

@@ -3,17 +3,17 @@ title: Mapování funkce styl ve službě Azure Maps | Dokumentace Microsoftu
 description: Další informace o Azure Maps styl související funkce.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/05/2018
+ms.date: 10/08/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: d0614f55b9666f6d5d7e95529fd78fdf1c19e615
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 32571d88ffc08c19f819335254b4f5dda521bdb0
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857614"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885917"
 ---
 # <a name="choose-a-map-style-in-azure-maps"></a>Vyberte styl map ve službě Azure Maps
 
@@ -24,7 +24,7 @@ Azure Maps má čtyři různé mapy styly lze vybírat. Další informace o mapo
 <iframe height='500' scrolling='no' title='Nastavení stylu na mapě zatížení' src='//codepen.io/azuremaps/embed/WKOQRq/?height=265&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/WKOQRq/'>nastavení stylu na mapě zatížení</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Blok kódu výše nastaví klíč předplatného a vytvoří objekt Map nastaven na stupně šedé styl. Zobrazit [Vytvořte mapu](./map-create.md) pokyny o tom, jak vytvořit mapu.
+Blok kódu výše nastaví klíč předplatného a vytvoří objekt Map stylu nastavena na grayscale_dark. Zobrazit [Vytvořte mapu](./map-create.md) pokyny o tom, jak vytvořit mapu.
 
 ## <a name="update-the-style"></a>Aktualizace stylu
 
@@ -33,7 +33,7 @@ Blok kódu výše nastaví klíč předplatného a vytvoří objekt Map nastaven
 
 Blok kódu výše nastaví klíč předplatného a vytvoří objekt Map bez předem nastavení stylu. Zobrazit [Vytvořte mapu](./map-create.md) pokyny o tom, jak vytvořit mapu.
 
-Druhý hodiny kódu používá na mapě [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setstyle) metody nastavte styl mapy satelit.
+Druhý blok kódu pomocí mapy [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setstyle) metody nastavte styl mapy satelit.
 
 ## <a name="add-the-style-picker"></a>Přidat nástroj pro výběr stylu
 
@@ -44,7 +44,7 @@ První blok kódu ve výše uvedeném kódu nastaví klíč předplatného a vyt
 
 Druhý blok kódu vytvoří selektor stylů pomocí atlas [StyleControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.stylecontrol?view=azure-iot-typescript-latest#stylecontrol) konstruktoru.
 
-Styl ovládacího prvku pro výběr umožňuje výběr stylu pro mapu. Třetí blok kódu do mapy pomocí mapy Přidá výběr stylu [control.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metody. Všechny ovládací prvky jsou v rámci naslouchací proces událostí Mapa k zajištění, že všechny ovládací prvky jsou načteny po mapy načte plně.
+Styl ovládacího prvku pro výběr umožňuje výběr stylu pro mapu. Třetí blok kódu do mapy pomocí mapy Přidá výběr stylu [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metody. Selektor stylů je v rámci mapy **naslouchací proces událostí** zajistit, že načte po plně načte mapy.
 
 ## <a name="next-steps"></a>Další postup
 

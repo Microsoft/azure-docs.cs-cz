@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/31/2018
+ms.date: 10/09/2018
 ms.author: douglasl
-ms.openlocfilehash: 7bc603ceee1f85e6f00cdac9a6ac098abb39e217
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 287dcdedede5cab575aa0b9a73ec3e122556dc93
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48251001"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48900719"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Parametrizovat propojené služby v Azure Data Factory
 
@@ -27,6 +27,18 @@ Uživatelské rozhraní Data Factory na webu Azure Portal nebo programovací roz
 
 > [!TIP]
 > Doporučujeme, abyste se parametrizovat hesla nebo tajné kódy. Místo toho Store všechny připojovací řetězce ve službě Azure Key Vault a parametrizovat *název tajného kódu*.
+
+## <a name="supported-data-stores"></a>Úložiště dat podporovaných
+
+V tuto chvíli Parametrizace propojené služby je podporována v Uživatelském rozhraní Data Factory na webu Azure Portal pro následující typy úložišť dat. Pro všechny ostatní úložišť dat, můžete parametrizovat propojenou službu tak, že vyberete **kód** ikonu na kartu kanálu a pomocí editoru JSON.
+- Azure SQL Database
+- Azure SQL Data Warehouse
+- SQL Server
+- Oracle
+- Databáze Cosmos
+- Amazon Redshift
+- MySQL
+- Azure Database for MySQL
 
 ## <a name="data-factory-ui"></a>Uživatelské rozhraní Data Factory
 

@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/01/2018
+ms.date: 10/18/2018
 ms.author: douglasl
-ms.openlocfilehash: fa13b6509052438a0f59c4610f250d0b88b41f2b
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 77e5d6c278436a1fc192421c9867106409389a66
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043069"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888217"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -293,6 +293,23 @@ Pokud chcete využívat obsah stdout.txt v podřízené aktivity, můžete získ
   > [!IMPORTANT]
   > - Activity.json, linkedServices.json a datasets.json jsou uloženy ve složce modulu runtime úlohy služby Batch. V tomto příkladu activity.json, linkedServices.json a datasets.json jsou uloženy v "https://adfv2storage.blob.core.windows.net/adfjobs/<GUID>/runtime/" cesta. V případě potřeby, musíte ho PROČISTIT samostatně. 
   > - Pro propojené služby se používá modul Integration Runtime, citlivé informace, jako jsou klíče nebo hesla je jím zašifrovaná modul Integration Runtime, aby přihlašovací údaje definované zůstane v zákazníka privátním síťovém prostředí. Při odkazu kód vlastní aplikace tímto způsobem, může být některá citlivá pole chybí. V extendedProperties namísto používání odkaz na propojenou službu, v případě potřeby použijte SecureString. 
+
+## <a name="retrieve-securestring-outputs"></a>Načíst SecureString výstupy
+
+Určený jako typ hodnoty vlastností důvěrné *SecureString*, jak je znázorněno v některé z příkladů v tomto článku jsou maskována na kartě monitorování v uživatelském rozhraní služby Data Factory.  Při provádění skutečné kanálu, ale *SecureString* vlastnost serializuje jako JSON v rámci `activity.json` souboru jako prostý text. Příklad:
+
+```json
+"extendedProperties": {
+    "connectionString": {
+        "type": "SecureString",
+        "value": "aSampleSecureString"
+    }
+}
+```
+
+Serializace není skutečně zabezpečené a není určena pro zabezpečení. Cílem je pomocný parametr do služby Data Factory k maskování hodnotu na kartě monitorování.
+
+Pro přístup k vlastnostem typu *SecureString* z vlastní aktivitu, přečtěte si `activity.json` soubor, který je umístěn ve stejné složce jako vaše. Soubor EXE, deserializovat JSON a pak přístup k vlastnosti JSON (extendedProperties = > [propertyName] = > hodnota).
 
 ## <a name="compare-v2-v1"></a> Porovnání v2 pro vlastní aktivity a verze 1 (vlastní) aktivity DotNet
 

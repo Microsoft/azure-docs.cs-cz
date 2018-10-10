@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f75f6b66e4176459023088ca944348055aabff1b
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: ebce7a661ab305e5dcfda191ddbad54a4e9d33a1
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182718"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887253"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-custom-policies-in-azure-active-directory-b2c"></a>Přihlaste se pomocí zprostředkovatele Salesforce SAML lze nastavit pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -195,6 +195,18 @@ Teď, když máte tlačítko na místě, budete potřebovat odkázat na akci. Ak
 
 3. Uložit *TrustFrameworkExtensions.xml* souboru a nahrajte ji znovu pro ověření.
 
+## <a name="create-an-azure-ad-b2c-application"></a>Vytvoření aplikace Azure AD B2C
+
+Probíhá komunikace s Azure AD B2c prostřednictvím aplikace, kterou vytvoříte ve vašem tenantovi. Tato část obsahuje seznam volitelné kroky, které můžete použít k vytvoření aplikace testů, pokud jste tak již neučinili.
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
+3. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **Azure AD B2C**.
+4. Vyberte **aplikací**a pak vyberte **přidat**.
+5. Zadejte název aplikace, například *testapp1*.
+6. Pro **webová aplikace / webové rozhraní API**vyberte `Yes`a pak zadejte `https://jwt.ms` pro **adresy URL odpovědi**.
+7. Klikněte na možnost **Vytvořit**.
+
 ## <a name="update-and-test-the-relying-party-file"></a>Aktualizace a předávající strany soubor testu
 
 Aktualizujte předávající stranu soubor, který iniciuje cesty uživatele, který jste právě vytvořili:
@@ -203,4 +215,5 @@ Aktualizujte předávající stranu soubor, který iniciuje cesty uživatele, kt
 2. Otevřete nový soubor a aktualizujte hodnotu **PolicyId** atributu **TrustFrameworkPolicy** s jedinečnou hodnotu. Například, `SignUpSignInSalesforce`.
 3. Aktualizujte hodnotu **PublicPolicyUri** s identifikátorem URI pro zásady. Například`http://contoso.com/B2C_1A_signup_signin_salesforce`
 4. Aktualizujte hodnotu **ReferenceId** atribut **DefaultUserJourney** tak, aby odpovídaly ID nové cesty uživatele, který jste vytvořili (SignUpSignInSalesforce).
-5. Uložte provedené změny, nahrajte soubor a otestovat ho otevřít a kliknutím na **spustit nyní**.
+5. Uložte provedené změny, nahrajte soubor a pak v seznamu vyberte novou zásadu.
+6. Ujistěte se, že je vybraná aplikaci Azure AD B2C, kterou jste vytvořili v **vyberte aplikaci** pole a pak ho otestujte kliknutím **spustit nyní**.

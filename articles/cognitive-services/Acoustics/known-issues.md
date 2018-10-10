@@ -1,20 +1,21 @@
 ---
-title: Známé problémy s modulem plug-in Akustika – Cognitive Services
+title: Známé problémy s modulem plug-in Akustika projektu
+titlesuffix: Azure Cognitive Services
 description: Při použití návrháře ve verzi Preview pro projekt Akustika se můžete setkat s následující známé problémy.
 services: cognitive-services
 author: kylestorck
-manager: noelc
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: acoustics
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kylestorck
-ms.openlocfilehash: e42a2f854d5d4fa72e17a0b75ffef55069ccb626
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 6d3605b579a44dccb259bef281392cbfe2b9f916
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267865"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902144"
 ---
 # <a name="known-issues"></a>Známé problémy
 Při použití návrháře ve verzi Preview pro projekt Akustika se můžete setkat s následující známé problémy.

@@ -10,12 +10,12 @@ ms.component: custom-vision
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: anroth
-ms.openlocfilehash: 53884cfc2683832d9df2b215c92b6b683ba29d2c
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: ce06effbce12abb6271e050829d3218f4fbbfbf4
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363459"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902854"
 ---
 # <a name="limits-and-quotas"></a>Omezení a kvóty
 
@@ -26,7 +26,8 @@ Prostředky projektu omezené zkušební verze jsou připojeny k vaše vize vlas
 ||**Omezené zkušební verze**|**F0 (Azure)**|**S0 (Azure)**|
 |-----|-----|-----|-----|
 |Projekty|2|2|100|
-|Trénovacích obrázků na projekt|5 000|5 000|50,000|
+|Trénovacích obrázků na projekt, klasifikace|5 000|5 000|50,000|
+|Trénovacích obrázků na projekt, detekce objektů|5 000|5 000|10 000|
 |Predikce / měsíc|10 000 |10 000|Unlimited|
 |Značky / project|50|50|250|
 |Iterace |10|10|10|

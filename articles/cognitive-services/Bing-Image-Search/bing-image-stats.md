@@ -6,16 +6,16 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: bing-image-search
+ms.component: bing-image-search
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: e0e7362873d566ec9bbe4dadfdaf3b1d34cc1d8c
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 7940330d1bc32a5d1fef158998a9292c86f21154
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46293967"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888116"
 ---
 # <a name="how-to-get-analytics-for-the-bing-image-search-api"></a>Získání analýzy pro rozhraní API Bingu pro vyhledávání obrázků
 

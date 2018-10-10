@@ -11,12 +11,12 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/12/2018
-ms.openlocfilehash: d72f1b986671bfab1d79772ac50935918da7e681
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8177808fd4d666ea04b1bc097f261c7643931704
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963266"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885035"
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Azure Machine Learning Workbench – známé problémy a Průvodce odstraňováním potíží 
 Tento článek vám pomůže najít a opravit chyby nebo selhání došlo k jako součást pomocí aplikace Azure Machine Learning Workbench. 
@@ -25,7 +25,7 @@ Tento článek vám pomůže najít a opravit chyby nebo selhání došlo k jako
 Při komunikaci se na tým podpory, je důležité zahrnout číslo sestavení z aplikace Workbench. Na Windows, můžete zjistit číslo buildu kliknutím na **pomáhají** nabídku a zvolte **o aplikaci Azure ML Workbench**. V systému macOS, můžete kliknout na **aplikaci Azure ML Workbench** nabídku a zvolte **o aplikaci Azure ML Workbench**.
 
 ## <a name="machine-learning-msdn-forum"></a>Fórum MSDN služby Machine Learning
-Máme fórum na webu MSDN, můžete posílat otázky. Produktový tým Toto fórum aktivně monitoruje. Fórum je adresa URL [ https://aka.ms/azureml-forum ](https://aka.ms/azureml-forum). 
+Máme fórum na webu MSDN, můžete posílat otázky. Produktový tým Toto fórum aktivně monitoruje. Fórum je adresa URL [ https://aka.ms/aml-forum-service ](https://aka.ms/aml-forum-service). 
 
 ## <a name="gather-diagnostics-information"></a>Shromážděte diagnostické informace
 V některých případech může být užitečné, pokud může poskytnout diagnostické informace, pokud s žádostí o pomoc. Zde je, kde live soubory protokolu:

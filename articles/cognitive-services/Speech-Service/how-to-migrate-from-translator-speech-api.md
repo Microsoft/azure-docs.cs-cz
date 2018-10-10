@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: Speech
+ms.component: Speech
 ms.topic: article
 ms.date: 10/01/2018
 ms.author: aahi
-ms.openlocfilehash: 55303b38a5fe8890cddc2336b4bc47a23fc03745
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: b50cdc6978519c0ec9da447c324237c00577d9fd
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239927"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885268"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>Migrace z Translator Speech API k Speech Service
 

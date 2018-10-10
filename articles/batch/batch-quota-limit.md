@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2018
+ms.date: 09/10/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b3f4907d99b25df31ac7f081282cebe700f55b62
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 25a8150a2fcf7cdd4e3c82478c0b3db3dad870b4
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423738"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887560"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Kvóty a omezení služby Batch
 
@@ -53,7 +53,9 @@ Pokud jste nevytvořili účet Batch s režimem přidělování fondu nastavit n
 | [Aplikace](batch-application-packages.md) jeden účet Batch |20 |
 | Balíčky aplikací na jednu aplikaci |40 |
 | Úloha maximální doba života | 7 dní<sup>1</sup> |
-| Výpočetní uzly ve fondu komunikace mezi uzly povolena | 100 |
+| Výpočetní uzly v [fondu komunikace mezi uzly povolena](batch-mpi.md) | 100 |
+| Vyhrazené výpočetní uzly v [fond vytvořen s použitím vlastní image virtuálního počítače](batch-custom-images.md) | 2500 |
+| S nízkou prioritou výpočetních uzlů ve [fond vytvořen s použitím vlastní image virtuálního počítače](batch-custom-images.md) | 1000 |
 
 <sup>1</sup> maximální doba života úkolu, od jeho přidání do úlohy po jeho dokončení, je 7 dní. Dokončené úkoly se zachovávají po neomezenou dobu; data pro úkoly, které se nedokončí v rámci maximální doby života, nejsou dostupná.
 

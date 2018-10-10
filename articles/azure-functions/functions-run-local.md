@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: glenga
-ms.openlocfilehash: 52330d9f999676301e3a92487c0106f2fa59bc76
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: e77e81624c93bf1189afd556a8257362197c6b60
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237938"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902956"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -180,7 +180,7 @@ Další informace najdete v tématu [aktivace Azure Functions a vazby koncepty](
 
 ## <a name="local-settings-file"></a>Soubor místního nastavení
 
-Soubor local.settings.json ukládá nastavení aplikace, připojovacích řetězců a nastavení pro Azure Functions Core Tools. Má následující strukturu:
+Soubor local.settings.json ukládá nastavení aplikace, připojovacích řetězců a nastavení pro Azure Functions Core Tools. Nastavení v souboru local.settings.json používají pouze pomocí nástrojů funkce při místním spuštění. Ve výchozím nastavení se nemigrují automaticky při publikování projektu do Azure. Použití `--publish-local-settings` přepnout [při publikování](#publish) k Ujistěte se, že tato nastavení jsou přidány do aplikace function app v Azure. Všimněte si, že hodnoty v **ConnectionStrings** se nikdy publikováno. Soubor má následující strukturu:
 
 ```json
 {
@@ -214,11 +214,9 @@ Hodnoty nastavení aplikace funkcí můžete číst také ve vašem kódu jako p
 
 + [Předkompilované C#](functions-dotnet-class-library.md#environment-variables)
 + [C# skript (.csx)](functions-reference-csharp.md#environment-variables)
-+ [F#](functions-reference-fsharp.md#environment-variables)
++ [Skript F # (.fsx)](functions-reference-fsharp.md#environment-variables)
 + [Java](functions-reference-java.md#environment-variables) 
 + [JavaScript](functions-reference-node.md#environment-variables)
-
-Nastavení v souboru local.settings.json používají pouze pomocí nástrojů funkce při místním spuštění. Ve výchozím nastavení se nemigrují automaticky při publikování projektu do Azure. Použití `--publish-local-settings` přepnout [při publikování](#publish) k Ujistěte se, že tato nastavení jsou přidány do aplikace function app v Azure. Hodnoty v **ConnectionStrings** se nikdy publikováno.
 
 Pokud se žádný platný připojovací řetězec úložiště jsou nastavené pro **AzureWebJobsStorage** a se nepoužívá emulátor, se zobrazí následující chybová zpráva:  
 
@@ -425,7 +423,7 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 
 ## <a name="publish"></a>Publikování do Azure
 
-Základní nástroje podporuje dva typy nasazení, nasazení soubory projektu funkce přímo do aplikace function app a nasazením vlastního kontejneru Linuxu, který je podporován pouze ve verzi 2.x.
+Základní nástroje podporuje dva typy nasazení, nasazení soubory projektu funkce přímo do aplikace function app a nasazením vlastního kontejneru Linuxu, který je podporován pouze ve verzi 2.x. Musíte mít již [vytvoří aplikaci funkcí ve vašem předplatném Azure](functions-cli-samples.md#create).
 
 Ve verzi 2.x, musíte mít [zaregistrovaný rozšíření](#register-extensions) ve vašem projektu před publikováním. Projekty, které vyžadují kompilace by měly být sestaveny tak, aby binární soubory je možné nasadit.
 
@@ -444,13 +442,8 @@ Tento příkaz publikuje do existující aplikaci function app v Azure. Dojde k 
 `publish` Příkaz odešle obsah adresáře projektu funkce. Pokud odstraníte soubory lokálně, `publish` příkaz neodstranila z Azure. Můžete odstranit soubory v Azure pomocí [Kudu nástroj](functions-how-to-use-azure-function-app-settings.md#kudu) v [Azure Portal].  
 
 >[!IMPORTANT]  
-> Když vytvoříte aplikaci function app v Azure, používá verzi 2.x modul runtime funkce ve výchozím nastavení. Chcete-li funkce aplikace použijte verzi 1.x modulu runtime, přidat nastavení aplikace `FUNCTIONS_EXTENSION_VERSION=~1`.  
-Chcete-li přidat toto nastavení aplikace function app pomocí následujícího kódu rozhraní příkazového řádku Azure:
-
-```azurecli-interactive
-az functionapp config appsettings set --name <function_app> \
---resource-group myResourceGroup --settings FUNCTIONS_EXTENSION_VERSION=~1
-```
+> Když vytvoříte aplikaci function app na webu Azure Portal, používá verzi 2.x modul runtime funkce ve výchozím nastavení. Chcete-li funkce aplikace použijte verzi 1.x modulu runtime, postupujte podle pokynů v [spustit ve verzi 1.x](functions-versions.md#creating-1x-apps).  
+> Nelze změnit verzi modulu runtime aplikace function App, který má existující funkce.
 
 Můžete použít následující možnosti publikování, které platí pro verze, 1.x a 2.x:
 

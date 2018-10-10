@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: clemensv
-ms.openlocfilehash: ccb759a9151d734aa99a6f6b9c68e6072874dd84
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: c6e9eef762d4a9eb95685d94c61ce10d499bb155
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394824"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884799"
 ---
 # <a name="use-ip-filters"></a>Pomocí filtrů IP adres
 
@@ -48,6 +48,8 @@ Například pokud chcete adresy v rozsahu 70.37.104.0/24 přijmout nebo odmítno
 > Odmítnutí IP adresy můžete zabránit komunikaci se Service Bus dalšími službami Azure (jako je Azure Stream Analytics, Azure Virtual Machines nebo Device Explorer na portálu).
 
 ### <a name="creating-a-virtual-network-rule-with-azure-resource-manager-templates"></a>Vytvoření pravidla virtuální sítě pomocí šablon Azure Resource Manageru
+
+> ! [DŮLEŽITÉ] Virtuální sítě jsou podporovány pouze **premium** úroveň služby Service Bus.
 
 Následující šablony Resource Manageru umožňuje do existujícího oboru názvů služby Service Bus přidáte pravidlo virtuální sítě.
 

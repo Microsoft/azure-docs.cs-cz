@@ -9,14 +9,21 @@ ms.component: custom-vision
 ms.topic: conceptual
 ms.date: 08/28/2018
 ms.author: anroth
-ms.openlocfilehash: 61fa0b1d2fc40daed8b3b99a0ab0d36de802ce3d
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 8b4ba1601a7c5a9f523f7f8145a032861aac5d8c
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367980"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901316"
 ---
 # <a name="custom-vision-service-release-notes"></a>Zpráva k vydání verze služby Custom Vision
+
+## <a name="october-9-2018"></a>9. října 2018
+- Detekce objektů zadá placená verze preview. Nyní můžete vytvořit objekt detekce projekty k prostředku Azure.
+- "Přesun do Azure" funkce na webu, aby bylo snazší upgradovat projekt omezenou zkušební verzí propojit s Azure. Odkazovaný projekt prostředků (F0 nebo S0.) To můžete najít na stránce nastavení pro svůj produkt.  
+- Přidání export ONNX 1.2, podporovat Windows Update. října 2018 verzi Windows ML.
+Opravy chyb včetně pro export ONNX speciální znaky. 
+
 
 ## <a name="august-14-2018"></a>14. srpna 2018
 - Přidání "Začínáme" widget, který se customvision.ai webu provedou uživatele školení projektu. 
@@ -24,12 +31,12 @@ ms.locfileid: "46367980"
 
 ## <a name="june-28-2018"></a>28. června 2018
 - Opravy chyb a back-endu vylepšení.
-- Enabeled Multiclass klasifikace pro projekty, kde mají přesně jeden popisek Image. V předpovědi pro režim s více třídami, bude do jednoho součet pravděpodobnosti (všechny bitové kopie jsou klasifikovány mezi zadaným značkám).
+- Povolit klasifikace víc tříd pro projekty, kde mají přesně jeden popisek Image. V předpovědi pro režim s více třídami, bude do jednoho součet pravděpodobnosti (všechny bitové kopie jsou klasifikovány mezi zadaným značkám).
 
 ## <a name="june-13-2018"></a>13. června 2018
 - Aktualizace uživatelského rozhraní, zaměřuje na snadnost použití a přístupnost. 
 - Vylepšení kanálu strojového učení prospěch multilabel projektů s velkým množstvím značek.
-- Oprava chyby v TensorFlow exportu. Exportovat Enabeled model správy verzí, tak iterace je možné exportovat více než jednou. 
+- Oprava chyby v TensorFlow exportu. Povolit exportované model správy verzí, tak iterace je možné exportovat více než jednou. 
 
 ## <a name="may-7-2018"></a>7. května 2018
 - Zavedení funkce detekce objektů ve verzi Preview pro projekty využívající omezenou zkušební verzi
@@ -38,7 +45,7 @@ ms.locfileid: "46367980"
 - Významná vylepšení back-endu kanálu strojového učení pro projekty klasifikace obrázků. Výhody těchto aktualizací budou moct využít projekty natrénované po 27. dubnu 2018.
 - Přidání možnosti exportu modelů do ONNX pro použití s Windows ML
 - Přidání možnosti exportu modelů do souboru Dockerfile. Díky tomu si můžete stáhnout artefakty pro sestavení vlastních kontejnerů Windows nebo Linuxu, včetně souboru Dockerfile, modelu TensorFlow a kódu služby. 
-- Pro zajištění konzistence napříč všemi projekty jsou teď pro nově natrénované modely exportované do TensorFlow v doménách General (Compact) (Obecné – kompaktní) a Landmark (Compact) (Památka – kompaktní) [střední hodnoty (0, 0, 0)](https://github.com/azure-samples/cognitive-services-android-customvision-sample). 
+- Pro nově vycvičené modely exportovat do TensorFlow obecně (Compact) a památek (Compact) domény [znamenat hodnoty jsou nyní (0,0,0)](https://github.com/azure-samples/cognitive-services-android-customvision-sample), pro zajištění konzistence ve všech projektech. 
 
 ## <a name="march-1-2018"></a>1. března 2018
 - Příchod placené verze Preview a registrace na web Azure Portal. Projekty je teď možné připojit k prostředkům Azure s úrovní F0 (Free) nebo S0 (Standard). Zavedení projektů úrovně S0, které umožňují až 100 značek a 25 000 obrázků. 

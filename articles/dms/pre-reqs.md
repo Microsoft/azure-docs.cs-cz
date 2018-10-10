@@ -2,7 +2,7 @@
 title: Přehled požadavků na používání Azure Database Migration Service | Dokumentace Microsoftu
 description: Další informace o přehled požadavků na používání Azure Database Migration Service k provedení migrace databází.
 services: database-migration
-author: HJToland3
+author: pochiraju
 ms.author: rajpo
 manager: ''
 ms.reviewer: ''
@@ -10,13 +10,13 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 06/19/2018
-ms.openlocfilehash: c90727db28bde0a1985104f1fbc9c7380bba8dee
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.date: 10/09/2018
+ms.openlocfilehash: b3c974eaf4e44a80046efc4b1545f29797fcaf0c
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802929"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887662"
 ---
 # <a name="overview-of-prerequisites-for-using-the-azure-database-migration-service"></a>Přehled požadavků na používání Azure Database Migration Service
 Existuje několik předpokladů, které jsou potřeba k tomu, že Azure Database Migration Service běží bez problémů při provádění migrace databází. Některé z požadovaných součástí ve všech scénářích (párů zdroj cíl) podporované službou, zatímco jiné požadavky, které jsou jedinečné pro konkrétní scénář uplatnit.

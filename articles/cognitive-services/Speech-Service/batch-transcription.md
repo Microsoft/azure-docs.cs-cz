@@ -4,16 +4,16 @@ description: Ukázky
 services: cognitive-services
 author: PanosPeriorellis
 ms.service: cognitive-services
-ms.technology: Speech to Text
+ms.component: Speech
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: e702cb6da3378e460ebb68542d82e736b9f57a52
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 8f9a033ebf9cdfdb96ae8511b14202e49ec0a85e
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857784"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884455"
 ---
 # <a name="batch-transcription"></a>Dávkový přepis
 

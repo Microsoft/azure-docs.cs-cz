@@ -5,16 +5,16 @@ services: cognitive-services
 author: nitinme
 manager: cgronlund
 ms.service: cognitive-services
-ms.component: cognitive-services
+ms.component: ''
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: nitinme
-ms.openlocfilehash: e0d60b655628f15cdaf5e1b8839bd4087ac30807
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 5fcd625edf913e6629bfedb7ce7a6b5fe204af28
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718986"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901426"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Co jsou Azure Cognitive Services?
 
@@ -36,7 +36,7 @@ Azure Cognitive Services jsou rozhraní API sady SDK a služby, které jsou k di
 |Název služby|Popis služby|
 |:-----------|:------------------|
 |[Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "Speech Service") (Preview)|Speech Service přidá funkce s podporou řeči do aplikací.|
-|[Custom Speech Service](https://docs.microsoft.com/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home "Custom Speech Service") (Preview)|Custom Speech Service umožňuje vytvářet vlastní jazykové modely a akustických modelů přizpůsobená pro vaši aplikaci a uživatele.|
+|[Custom Speech Service](https://docs.microsoft.com/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home "Custom Speech Service") (Preview)|Služba Custom Speech Service umožňuje vytvářet jazykové a akustické modely přizpůsobené vaší aplikaci a uživatelům.|
 |[Rozhraní API pro zpracování řeči Bingu](https://docs.microsoft.com/azure/cognitive-services/speech/home "rozhraní API pro zpracování řeči Bingu")|Rozhraní Bing Speech API poskytuje snadný způsob, jak vytvořit funkce s podporou řeči ve svých aplikacích.|
 |[Translator Speech](https://docs.microsoft.com/azure/cognitive-services/translator-speech/ "Translator Speech")|Translator Speech je služba pro strojový překlad.|
 |[Rozhraní API pro rozpoznání mluvčího](https://docs.microsoft.com/azure/cognitive-services/speaker-recognition/home "rozhraní API pro rozpoznání mluvčího") (Preview)|Rozhraní API pro rozpoznávání mluvčího poskytuje algoritmy pro identifikaci mluvčího a ověření.|

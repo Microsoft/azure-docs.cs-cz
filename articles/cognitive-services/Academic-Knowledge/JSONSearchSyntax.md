@@ -1,22 +1,23 @@
 ---
-title: Syntaxe vyhledávání JSON v Academic Knowledge API | Microsoft Docs
-description: Další informace o syntaxe vyhledávání JSON, které můžete použít v Academic Knowledge API v kognitivní služby společnosti Microsoft.
+title: Syntaxe prohledávání JSON – Academic Knowledge API
+titlesuffix: Azure Cognitive Services
+description: Další informace o syntaxi vyhledávání souboru JSON, která vám pomůže v rozhraní Academic Knowledge API.
 services: cognitive-services
 author: alch-msft
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: a4b9cf535dae60258d71c43bba6f9eec1444bd41
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 5ece028f89ad9e93840211383db97a5d8a80069a
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342359"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48900406"
 ---
-# <a name="json-search-syntax"></a>Syntaxe vyhledávání JSON
+# <a name="json-search-syntax"></a>Syntaxe prohledávání JSON
 
 ```javascript
 /* Query Object:
@@ -32,9 +33,9 @@ ms.locfileid: "35342359"
 }
 ```
 
-Názvy uzlů byste v cestě dotazu (_v0 v1,..._ ) slouží jako identifikátory uzlu, které mohou odkazovat v objektu dotazu. názvy okraj (_e0, e1,..._ ) v cestě představují typy odpovídající okraje. Můžeme použít hvězdičku _*_ jako název uzlu nebo Microsoft edge (s výjimkou počáteční uzel, který musí být poskytnut) deklarovat, nejsou žádná omezení na takový prvek. Například cestu dotazu `/v0/*/v1/e1/*/` načte cesty z grafu bez omezení typ okraj _(v0 v1)_. Mezitím dotaz nemá žádné omezení na cílové (poslední uzel) cesty buď.
+Názvy uzlů v cestě dotazu (_v0 v1,..._ ) bude sloužit jako identifikátory uzlů, které lze odkazovat v objektu dotazu. názvy edge (_e0 e1,..._ ) v cestě představují typy odpovídající hran. Můžeme použít hvězdičku _*_ jako uzlů nebo hran název (s výjimkou počáteční uzel, který se musí předávat) Chcete-li deklarovat, které nejsou bez omezení na takový prvek. Například cestu dotazu `/v0/*/v1/e1/*/` načte cesty z grafu bez omezení typu na hraničních zařízeních _(v0 v1)_. Mezitím dotaz nemá omezení v cílovém umístění (poslední uzel) cesta buď.
 
-Pokud cesta obsahuje pouze jeden uzel, vyslovení _v0_, jednoduše dotaz vrátí všechny entity, které odpovídají omezení. Objekt omezení u počáteční uzel se nazývá *od objektu dotazu*, jehož není určeno následujícím způsobem.
+Pokud cesta obsahuje pouze jeden uzel, Řekněme, že _v0_, jednoduše dotaz vrátí všechny entity, které vyhovují omezení. Omezení objekt použitý pro počáteční uzel, se nazývá *od objektu dotazu*, jejichž specifikace dostane následujícím způsobem.
 
 ```javascript
 /* Starting Query Object:
@@ -63,7 +64,7 @@ Pokud cesta obsahuje pouze jeden uzel, vyslovení _v0_, jednoduše dotaz vrátí
 }
 ```
 
-Pokud cesta obsahuje více než jen počáteční uzel, provede procesor dotazů graf traversal následující vzor zadaná cesta. Při doručení na uzlu, zadán uživatel traversal akce, které se spustí, to znamená, zda se zastaví na aktuálním uzlu a vrátit nebo pokračovat v průzkumu grafu. Pokud je zadána žádná akce traversal, výchozí akce se provedou. Pro zprostředkující uzel je výchozí akci pokračovat v průzkumu grafu. Pro poslední uzel, cesty je výchozí akci zastavit a vrátit. Omezení objektu, který určuje traversal akce je volána *objekt akce Traversal*. Jeho specifikaci je dán následujícím způsobem:
+Pokud cesta obsahuje více než jen počáteční uzel, provede procesor dotazů grafu procházení následující vzor zadané cesty. Při příchodu uzel, akce procházení zadané uživatelem se aktivuje, to znamená, zda se zastaví na aktuální uzel a vrátit, nebo pokračovat v průzkumu grafu. Pokud není zadána žádná akce procházení, provedou se výchozí akce. Výchozí akce pro zprostředkující uzel, je dále prozkoumávat grafu. Pro poslední uzel cesty je výchozí akci k zastavení a vrácení. Je volána zadaných objektů omezení, která určuje akce procházení *objektu akce procházení*. Jeho specifikaci se vypočte takto:
 
 ```javascript
 /* Traversal Action Object:
@@ -106,7 +107,7 @@ Pokud cesta obsahuje více než jen počáteční uzel, provede procesor dotazů
 }
 ```
 
-Tělo POST *json* vyhledávací dotaz by měl obsahovat alespoň *cesta* vzor. Objekty křížovou akce jsou volitelné. Tady jsou dva příklady.
+Tělo POST *json* vyhledávací dotaz by měl obsahovat alespoň *cesta* vzor. Procházet akce objekty jsou volitelné. Tady jsou dva příklady.
 
 ```JSON
 {

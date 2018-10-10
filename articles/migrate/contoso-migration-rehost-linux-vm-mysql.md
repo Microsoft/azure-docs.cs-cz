@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: raynew
-ms.openlocfilehash: 49667251cbce4a3f71d71a6508793a2d4c7aac38
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: f6c877a182395d12ee46e9fd9b7892a4a3e5cdb8
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300398"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887781"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms-and-azure-mysql"></a>Migrace Contoso: Změna hostitele aplikace Linux místních virtuálních počítačů Azure a Azure MySQL
 
@@ -53,7 +53,7 @@ Vedení IT úzké spolupráci s obchodními partnery pochopit, co chtějí dosá
 
 Tým cloudových Contoso má připnutou dolů cíle pro tuto migraci, aby bylo možné určit nejlepší metody migrace:
 
-- Po dokončení migrace aplikace v Azure by měla mít stejné možnosti výkonu stejně jako dnes v jejich místní prostředí VMWare.  Aplikace zůstanou jako kritické v cloudu je místní. 
+- Po dokončení migrace aplikace v Azure by měla mít stejné možnosti výkonu stejně jako dnes v jejich místní prostředí VMware.  Aplikace zůstanou jako kritické v cloudu je místní. 
 - Contoso nechce investovat do této aplikace.  Je důležité pro podnikání, ale v aktuální podobě Contoso jednoduše má bezpečně přesunout do cloudu.
 - Po dokončení několik přenesení aplikací Windows, Contoso chce informace o používání infrastruktury založené na Linuxu v Azure.
 - Contoso chce minimalizovat úlohy správy databáze po přesunu aplikace do cloudu.

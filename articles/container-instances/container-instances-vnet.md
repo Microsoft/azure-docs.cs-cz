@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: danlep
-ms.openlocfilehash: 6d319c09b8a935b5ca81a6d5815daa5d2f706f45
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: feb9547b004141a3c1d02ef4b356b9d00b74fc95
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854595"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902354"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Nasazení instancí kontejneru do služby Azure virtual network
 
@@ -174,15 +174,85 @@ index.html           100% |*******************************|  1663   0:00:00 ETA
 
 Výstup protokolu, který by měl zobrazit `wget` se může připojit a stáhnout soubor indexu z první kontejner pomocí jeho privátní IP adresa v místní podsíti. Síťový provoz mezi dvěma kontejneru skupiny zůstala v rámci virtuální sítě.
 
+## <a name="deploy-to-existing-virtual-network---yaml"></a>Nasazení do existující virtuální sítě – YAML
+
+Skupiny kontejnerů do existující virtuální sítě můžete nasadit také pomocí souboru YAML. Pokud chcete nasadit do podsítě ve virtuální síti, zadáte několik dalších vlastností YAML:
+
+* `ipAddress`: Nastavení IP adresy pro skupinu kontejnerů.
+  * `ports`: Porty, které chcete spustit, pokud existuje.
+  * `protocol`: Protokol (TCP nebo UDP) pro je otevřený port.
+* `networkProfile`: Určuje nastavení sítě, jako jsou virtuální síť a podsíť pro prostředek Azure.
+  * `id`: Úplné ID prostředku Resource Manageru z `networkProfile`.
+
+Pokud chcete nasadit skupinu kontejnerů do virtuální sítě pomocí souboru YAML, musíte nejprve získat ID profilu sítě. Spustit [přehled profilu sítě az] [ az-network-profile-list] příkazu, zadáním názvu skupiny prostředků, která obsahuje virtuální síť a podsíť delegovaný.
+
+``` azurecli
+az network profile list --resource-group myResourceGroup --query [0].id --output tsv
+```
+
+Výstup příkazu se zobrazí úplné ID prostředku pro profil sítě:
+
+```console
+$ az network profile list --resource-group myResourceGroup --query [0].id --output tsv
+/subscriptions/<Subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkProfiles/aci-network-profile-aci-vnet-aci-subnet
+```
+
+Jakmile budete mít síť ID profilu, zkopírujte následující kód YAML do nového souboru s názvem *virtuální sítě nasadit aci.yaml*. V části `networkProfile`, nahraďte `id` hodnotu s ID, které jste právě načteny, pak soubor uložte. Tato YAML vytvoří skupinu kontejnerů *appcontaineryaml* ve vaší virtuální síti.
+
+```YAML
+apiVersion: '2018-09-01'
+location: westus
+name: appcontaineryaml
+properties:
+  containers:
+  - name: appcontaineryaml
+    properties:
+      image: microsoft/aci-helloworld
+      ports:
+      - port: 80
+        protocol: TCP
+      resources:
+        requests:
+          cpu: 1.0
+          memoryInGB: 1.5
+  ipAddress:
+    type: Private
+    ports:
+    - protocol: tcp
+      port: '80'
+  networkProfile:
+    id: /subscriptions/<Subscription ID>/resourceGroups/container/providers/Microsoft.Network/networkProfiles/aci-network-profile-aci-vnet-subnet
+  osType: Linux
+  restartPolicy: Always
+tags: null
+type: Microsoft.ContainerInstance/containerGroups
+```
+
+Nasadit skupinu kontejnerů s [az container vytvořit] [ az-container-create] příkaz a určete název souboru YAML `--file` parametr:
+
+```azurecli
+az container create --resource-group myResourceGroup --file vnet-deploy-aci.yaml
+```
+
+Po dokončení nasazení spusťte [az container show] [ az-container-show] příkazu můžete zobrazit její stav:
+
+```console
+$ az container show --resource-group myResourceGroup --name appcontaineryaml --output table
+Name              ResourceGroup    Status    Image                     IP:ports     Network    CPU/Memory       OsType    Location
+----------------  ---------------  --------  ------------------------  -----------  ---------  ---------------  --------  ----------
+appcontaineryaml  myResourceGroup  Running   microsoft/aci-helloworld  10.0.0.5:80  Private    1.0 core/1.5 gb  Linux     westus
+```
+
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 ### <a name="delete-container-instances"></a>Odstranit instance kontejnerů
 
-Po dokončení práce se službou container instances jste vytvořili, odstraňte i pomocí následujících příkazů:
+Po dokončení práce se službou container instances jste vytvořili, je odstranit pomocí následujících příkazů:
 
 ```azurecli
 az container delete --resource-group myResourceGroup --name appcontainer -y
 az container delete --resource-group myResourceGroup --name commchecker -y
+az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 ```
 
 ### <a name="delete-network-resources"></a>Odstranit síťové prostředky
@@ -239,4 +309,6 @@ Několik prostředky virtuální sítě a funkce byly popisovaných v tomto čl�
 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create
+[az-container-show]: /cli/azure/container#az-container-show
 [az-network-vnet-create]: /cli/azure/network/vnet#az-network-vnet-create
+[az-network-profile-list]: /cli/azure/network/profile#az-network-profile-list

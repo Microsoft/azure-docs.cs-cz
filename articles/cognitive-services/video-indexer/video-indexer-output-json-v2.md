@@ -8,19 +8,19 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: video-indexer
 ms.topic: conceptual
-ms.date: 09/15/2018
+ms.date: 10/08/2018
 ms.author: juliako
-ms.openlocfilehash: 76f83e7ad70e3e1906bc1aa90c74d600053aeb6f
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 27f24d588cf1cac5f580a41cc0901a8907b66652
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985640"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884287"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>Prozkoumání výstupu funkce Video Indexer vytvořené metodou rozhraní API v2
 
 > [!Note]
-> 1. srpna 2018 se přestala nabízet Video Indexer V1 API. Byste teď měli použít rozhraní Video Indexer API v2. <br/>Vývoj pomocí rozhraní API pro Video Indexer v2, najdete pokyny, nalezeno [tady](https://api-portal.videoindexer.ai/). 
+> API Video Indexeru ve verzi 1 se přestalo používat 1. srpna 2018. Teď byste měli používat rozhraní API Video Indexeru ve verzi 2. <br/>Pokyny k vývoji pomocí rozhraní API Video Indexeru ve verzi 2 najdete [tady](https://api-portal.videoindexer.ai/). 
 
 Při volání **získat Index Video** rozhraní API a stav odpovědi je v pořádku, získejte podrobný výstup JSON jako obsah odpovědi. Obsah JSON obsahuje podrobné informace o zadané nové poznatky z videí. Informace zahrnují dimenzí, jako jsou: záznamy o studiu, ocrs, tváří, témat, bloky, atd. Dimenze mít instancí časových rozsahů, které ukazují jednotlivých rozměrů zobrazené ve videu.  
 
@@ -115,7 +115,7 @@ Tato část uvádí přehled informací.
 |publishedUrlProxy|Adresa url pro streamování videa z (pro zařízení Apple).|
 |viewToken|Krátkodobý zobrazení token pro streamování videa.|
 |sourceLanguage|Zdrojový jazyk videa.|
-|jazyk|Aktuální jazyk videa (překlad).|
+|language|Aktuální jazyk videa (překlad).|
 |indexingPreset|Přednastavení, použít k indexování videa.|
 |streamingPreset|Přednastavení k publikování videa.|
 |linguisticModelId|Model CRIS používaný k přepisy videa.|
@@ -155,7 +155,7 @@ Přehledy jsou sadu dimenzí (například přepisu řádky, tváří, značky, a
 |Verze|Kód verze|
 |---|---|
 |sourceLanguage|Zdrojový jazyk videa (za předpokladu, že jeden hlavní jazyk). Ve formuláři [BCP-47](https://tools.ietf.org/html/bcp47) řetězec.|
-|jazyk|Jazyk insights (přeloženého ze zdrojového jazyka). Ve formuláři [BCP-47](https://tools.ietf.org/html/bcp47) řetězec.|
+|language|Jazyk insights (přeloženého ze zdrojového jazyka). Ve formuláři [BCP-47](https://tools.ietf.org/html/bcp47) řetězec.|
 |přepis|[Přepisu](#transcript) dimenze.|
 |optické rozpoznávání znaků|[Ocr](#ocr) dimenze.|
 |klíčová slova|[Klíčová slova](#keywords) dimenze.|
@@ -205,7 +205,7 @@ instance|Seznam časových rozsahů tento blok.|
 |---|---|
 |id|ID řádku.|
 |text|Přepis samotný.|
-|jazyk|Jazyk přepisu. Určené pro podporu přepisu, kde každý řádek může mít jiný jazyk.|
+|language|Jazyk přepisu. Určené pro podporu přepisu, kde každý řádek může mít jiný jazyk.|
 |instance|Seznam časových rozsahů, ve kterém se tento řádek. Pokud je instance přepisu, bude mít jenom 1 instance.|
 
 Příklad:
@@ -244,7 +244,7 @@ Příklad:
 |id|ID OCR řádku.|
 |text|OCR textu.|
 |spolehlivosti|Rozpoznávání spolehlivosti.|
-|jazyk|OCR jazyk.|
+|language|OCR jazyk.|
 |instance|Seznam časových rozsahů, ve kterém se objevil tento OCR (stejné OCR může objevit více než jednou).|
 
 ```json
@@ -287,7 +287,7 @@ Příklad:
 |id|ID – klíčové slovo.|
 |text|Text – klíčové slovo.|
 |spolehlivosti|Klíčové slovo rozpoznávání spolehlivosti.|
-|jazyk|Jazyk – klíčové slovo (při překladu).|
+|language|Jazyk – klíčové slovo (při překladu).|
 |instance|Seznam časových rozsahů, ve kterém se nacházela toto klíčové slovo (klíčové slovo může objevit více než jednou).|
 
 ```json
@@ -332,13 +332,13 @@ Příklad:
 |Název|Popis|
 |---|---|
 |id|ID tváře.|
-|jméno|Název vzhledu. Může být "Neznámý #0", identifikovaný celebrit nebo trénovaného osoba zákazníka.|
+|jméno|Název typ písma. Může být "Neznámý #0, identifikovaný celebrit nebo trénovaného osoby zákazníka.|
 |spolehlivosti|Identifikace spolehlivosti pro rozpoznávání tváře.|
 |description|Popis celebrity. |
 |thumbnalId|ID miniatury této pro rozpoznávání tváře.|
 |knownPersonId|Pokud se jedná o známé osoba, jeho interní ID.|
 |referenceId|Pokud je celebrit Bing, jeho ID Bingu.|
-|Hodnota referenceType|Aktuálně jenom Bingu.|
+|Hodnota referenceType|V současné době pouze Bingu.|
 |název|Pokud se jedná celebrit, jeho název (například "CEO společnosti Microsoft").|
 |imageUrl|Pokud se jedná celebrit jeho adresa url obrázku.|
 |instance|Toto jsou instance z kde zobrazovaly plochu v daném časovém rozsahu. Každá instance má také thumbnailsId. |
@@ -378,7 +378,7 @@ Příklad:
 |---|---|
 |id|ID popisku.|
 |jméno|Název popisku (například "Computer", "TV").|
-|jazyk|Popisek názvu jazyka (při překladu). BCP-47|
+|language|Popisek názvu jazyka (při překladu). BCP-47|
 |instance|Seznam časových rozsahů, ve kterém se tento popisek (popisek se může objevit více než jednou). Každá instance má pole jistotou. |
 
 
@@ -678,7 +678,7 @@ Video Indexer identifikuje emoce podle pomůcky pro zpracování řeči a zvuku.
 |Název|Popis|
 |---|---|
 |id|ID pro rozpoznávání emocí.|
-|type|Rozpoznávání emocí chvíli, kdy byl identifikován na základě rozpoznávání řeči a zvuku pomůcky. Může být rozhraním pro rozpoznávání emocí: radosti a velkou, smutek, hněv nebo strach.|
+|type|Rozpoznávání emocí chvíli, kdy byl identifikován na základě rozpoznávání řeči a zvuku pomůcky. Rozpozná tyto emoce: radost, smutek, hněv nebo strach.|
 |instance|Seznam časových rozsahů, ve kterém se objevil tento pro rozpoznávání emocí.|
 
 ```json
@@ -771,7 +771,7 @@ Video Indexer umožňuje odvození hlavní témata z záznamy o studiu. Pokud je
 |jméno|Název tématu, například: "Pharmaceuticals".|
 |referenceId|Odráží hierarchii témata s popisem cesty. Příklad: "stavu a wellbeing / lékařství a zdravotní péče / Pharmaceuticals".|
 |spolehlivosti|Skóre spolehlivosti v rozsahu [0,1]. Vyšší je větší jistotu.|
-|jazyk|Jazyk použitý v tomto tématu.|
+|language|Jazyk použitý v tomto tématu.|
 |iptcName|IPTC média kódu název, pokud se zjistí.|
 |instance |V současné době Video Indexer neindexujte tématu se časové intervaly, takže celý video se používá jako interval.|
 

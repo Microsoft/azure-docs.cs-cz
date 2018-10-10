@@ -5,16 +5,16 @@ description: Ukazuje, jak překlad řeči pomocí sadou SDK pro řeč pro jazyk 
 services: cognitive-services
 author: wolfma61
 ms.service: cognitive-services
-ms.technology: Speech
+ms.component: Speech
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: c4a30553dc7782bcb9622cf48c3071cd83b40000
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 27e7fac33ce03895adcf97bf5d1a9022173dd431
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974693"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883445"
 ---
 # <a name="translate-speech-with-the-cognitive-services-speech-sdk-for-c"></a>Překlad řeči sadou Cognitive Services řeči SDK pro C++
 
@@ -35,5 +35,5 @@ Vyhledejte kód, který se používá v tomto článku ve složce samples/cpp/wi
 
 ## <a name="next-steps"></a>Další postup
 
-- [Jak rozpoznávání řeči](how-to-recognize-speech-cpp.md)
+- [Rozpoznávání řeči](how-to-recognize-speech-cpp.md)
 - [Jak rozpoznat záměry z řeči](how-to-recognize-intents-from-speech-cpp.md)

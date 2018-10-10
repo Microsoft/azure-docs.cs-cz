@@ -8,20 +8,14 @@ ms.topic: conceptual
 ms.date: 09/17/2017
 ms.author: vitaly.gorbenko
 ms.component: metrics
-ms.openlocfilehash: 21b0029ff12915c8416ad2366fbf6c45ddfaa288
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f82b4dff20e2b26e62889c41b3ff3c27bc86066a
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978412"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901409"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Průzkumník metrik Azure monitoru
-
-Tento návod popisuje další generace metrik Azure monitoru grafy prostředí, který je aktuálně ve verzi public preview. Nové prostředí podporuje vykreslování grafů pro vícerozměrné metriky i základní metriky se žádné dimenze. Můžete zobrazit grafy, které překryv metriky z různých typů prostředků, několika skupin prostředků a předplatných. Použití filtrů dimenzí, stejně jako seskupení lze přizpůsobit grafy vícedimenzionálních metrik. Libovolný graf, včetně přizpůsobené grafy je možné připnout na řídicí panely.
-
-Pokud hledáte informace o starému prostředí, která podporuje pouze základní metriky se žádné dimenze, najdete v oddílu s názvem "Přístup k metrikám přes portál" v [přehled metrik služby Microsoft Azure průvodce](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics).
-
-## <a name="what-is-azure-monitor-metrics-explorer"></a>Co je Průzkumník metrik Azure monitoru?
 
 Průzkumník metrik služby Azure Monitor je součástí portálu Microsoft Azure, která umožňuje vykreslení grafy, vizuálně korelace trendy a prošetřování provozní špičky a poklesy hodnot metrik. Průzkumník metrik je nezbytné výchozí bod pro zkoumání různých výkon a dostupnost problémy s vaší aplikací a infrastruktury hostované v Azure nebo monitorovat pomocí služby Azure Monitor. 
 
@@ -29,34 +23,29 @@ Průzkumník metrik služby Azure Monitor je součástí portálu Microsoft Azur
 
 Metriky ve službě Microsoft Azure jsou řady měřené hodnoty a výčty, které jsou shromážděná a uložená v čase. Existují metriky standard (nebo "platformy") a vlastní metriky. Standardní metriky jsou které jste získali od platformě Azure jako takové. Standardní metriky odrážejí statistické údaje o stavu a využití vašich prostředků Azure. Vzhledem k tomu, vlastní metriky se odesílají do Azure ve svých aplikacích pomocí [API pro Application Insights pro vlastní události](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics). Vlastní metriky jsou uloženy v prostředky Application Insights spolu s dalšími metrikami konkrétní aplikace.
 
-
-
 ## <a name="how-do-i-create-a-new-chart"></a>Jak vytvořit nový graf?
 
-   > [!NOTE]
-   > Některé funkce starému prostředí metrik ještě nejsou dostupné v novém Průzkumníku metrik. Nové prostředí je ve verzi preview, můžete nadále používat staré (bez trojrozměrné) zobrazení metrik služby Azure Monitor. 
-
 1. Otevřete na webu Azure portal
-2. Přejděte k novému **monitorování** kartu a potom vyberte **metriky (preview)**.
+2. Přejděte k novému **monitorování** kartu a potom vyberte **metriky**.
 
-   ![Obrázek náhledu metriky](./media/monitoring-metric-charts/0001.png)
+   ![Obrázek metriky](./media/monitoring-metric-charts/0001.png)
 
 3. **Metriky selektor** bude automaticky otevřít za vás. Zvolte prostředek ze seznamu zobrazíte jeho související metriky. V seznamu jsou uvedeny pouze prostředky s metrikami.
 
-   ![Obrázek náhledu metriky](./media/monitoring-metric-charts/0002.png)
+   ![Obrázek metriky](./media/monitoring-metric-charts/0002.png)
 
    > [!NOTE]
    >Pokud máte více než jedno předplatné Azure, -> si Průzkumníka metrik z prostředků ve všech předplatných, které jsou vybrány v nastavení portálu filtr podle seznamu předplatných. Ho změnit, klikněte na ikonu ozubeného kola nastavení portálu na obrazovku a vyberte předplatné, které chcete použít.
 
-4. Pro některé typy prostředků (tj. účty úložiště a virtuální počítače), před výběrem metriku, je nutné vybrat **Namespace**. Každý obor názvů představuje vlastní sadu metriky, které jsou relevantní pouze tento obor názvů a ne ostatní obory názvů.
+4. Pro některé typy prostředků (účty úložiště a virtuální počítače), před výběrem metriku, je nutné vybrat **Namespace**. Každý obor názvů představuje vlastní sadu metriky, které jsou relevantní pouze tento obor názvů a ne ostatní obory názvů.
 
    Každé služby Azure Storage má například metriky pro subservices "BLOB", "Files", "Fronty" a "Tabulky", které jsou všechny části účtu úložiště. Metrika "počet zpráv fronty" je však přirozeně použitelné, což "Fronty", ne všechny ostatní subservices účtu úložiště.
 
-   ![Obrázek náhledu metriky](./media/monitoring-metric-charts/0003.png)
+   ![Obrázek metriky](./media/monitoring-metric-charts/0003.png)
 
 5. Vyberte metriku ze seznamu. Pokud znáte částečný název metriky, které chcete, můžete začít zadávat v filtrovaný seznam dostupných metrik:
 
-   ![Obrázek náhledu metriky](./media/monitoring-metric-charts/0004.png)
+   ![Obrázek metriky](./media/monitoring-metric-charts/0004.png)
 
 6. Po výběru metriku, bude vykreslení grafu s výchozí agregace pro vybranou metriku. V tomto okamžiku můžete jen kliknout na klávesou **metriky selektor** ho zavřít. Graf můžete také v případě potřeby přepnout na jinou agregaci. Pro některé metriky přepínání agregace umožňuje zvolit hodnotu, která chcete zobrazit v grafu. Například můžete přepínat mezi průměrné, minimální a maximální hodnoty. 
 

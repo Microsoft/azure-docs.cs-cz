@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/12/2017
+ms.date: 10/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4809a413ce40532cc0367945fd902188f065baaa
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 9c40cfd9b15f2ae6398b70effc4f4d38111cfe1e
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312050"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886061"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Synchronizace Azure AD Connect: rozšíření adresáře
 Rozšíření adresáře můžete použít k rozšíření schématu do služby Azure Active Directory (Azure AD) pomocí vlastních atributů z místní služby Active Directory. Tato funkce umožňuje vytváření obchodních aplikací prostřednictvím atributy, které budete nadále spravovat místní. Tyto atributy mohou být spotřebovány prostřednictvím [rozšíření adresáře Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions) nebo [Microsoft Graphu](https://graph.microsoft.io/). Dostupné atributy lze zobrazit pomocí [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/) a [Microsoft Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer)v uvedeném pořadí.
@@ -28,6 +28,9 @@ Rozšíření adresáře můžete použít k rozšíření schématu do služby 
 V současné době žádné úlohy Office 365 využívá tyto atributy.
 
 Můžete nakonfigurovat další atributy, které se mají synchronizovat v cestě vlastní nastavení v Průvodci instalací.
+
+>[!NOTE]
+>Dostupné atributy pole rozlišuje velká a malá písmena.
 
 ![Průvodce rozšířením schématu](./media/how-to-connect-sync-feature-directory-extensions/extension2.png)  
 

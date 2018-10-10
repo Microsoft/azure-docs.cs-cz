@@ -5,16 +5,16 @@ description: Zjistěte, jak rozpoznávat řeč v jazyce JavaScript v prohlíže�
 services: cognitive-services
 author: fmegen
 ms.service: cognitive-services
-ms.technology: Speech
+ms.component: Speech
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: fmegen
-ms.openlocfilehash: 9ac48bd77087a8dc050ccd1ee8fe63ec5c25a643
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 75dcda643741e3aeb1238f82128e4c5b058be840
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018380"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883650"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-cognitive-services-speech-sdk"></a>Rychlý start: Rozpoznávat řeč v jazyce JavaScript v prohlížeči pomocí Cognitive Services SDK řeči
 
@@ -103,7 +103,7 @@ Ke spuštění aplikace, dvakrát klikněte na soubor index.html nebo otevřete 
 Spuštění vaší aplikace, otevřete oblíbený webový prohlížeč a přejděte na veřejnou adresu URL, která hostujete na složce, zadejte vaše [oblasti](regions.md)a aktivovat rozpoznávání používat mikrofon. Pokud nakonfigurované, získá token ze zdroje tokenu.
 
 [!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-Hledat v této ukázce `quickstart/js-browser` složky.
+Vyhledejte tuto ukázku ve složce `quickstart/js-browser`.
 
 ## <a name="next-steps"></a>Další postup
 

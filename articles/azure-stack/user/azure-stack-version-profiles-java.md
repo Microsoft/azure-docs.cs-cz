@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/28/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: ffd22f3612d55258737cb9c004b2b0f4e9326f07
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 5a97a683e7f25029199ba68ce3d5cee410c3cf29
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452509"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886820"
 ---
 # <a name="use-api-version-profiles-with-java-in-azure-stack"></a>Použití profilů verzí API s Javou v Azure stacku
 
@@ -40,7 +40,7 @@ Profil rozhraní API je kombinací poskytovatelů prostředků a verze rozhraní
     
       - Toto je třeba zadat do souboru Pom.xml jako závislost, která automaticky načte moduly Pokud zvolíte správné třídy z rozevíracího seznamu stejně jako s .NET.
         
-          - Horní části každého modulu, který se zobrazí takto:         
+      - Horní části každého modulu, který se zobrazí takto:         
            `Import com.microsoft.azure.management.resources.v2018_03_01.ResourceGroup`
              
 
@@ -93,11 +93,11 @@ Použití sady Java SDK pro Azure pomocí služby Azure Stack, musíte zadat ná
 
 | Hodnota                     | Proměnné prostředí | Popis                                                                                                                                                                                                          |
 | ------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ID tenanta                 | TENANT_ID            | Výhody služby Azure Stack [ <span class="underline">ID tenanta</span>](../azure-stack-identity-overview.md).                                                          |
-| ID klienta                 | CLIENT_ID             | Služba ID instančního objektu aplikace neuloží, když se vytvoří nový instanční objekt služby v předchozí části tohoto dokumentu.                                                                                              |
-| ID předplatného           | SUBSCRIPTION_ID      | [ <span class="underline">ID předplatného</span> ](../azure-stack-plan-offer-quota-overview.md#subscriptions) je, jak získat přístup k nabídky ve službě Azure Stack.                |
-| Tajný kód klienta             | HODNOTA CLIENT_SECRET        | Aplikace instančního objektu služby tajný klíč neuloží, když se vytvoří nový instanční objekt služby.                                                                                                                                   |
-| Koncový bod Resource Manageru | KONCOVÝ BOD              | Zobrazit [ <span class="underline">koncový bod služby Azure Stack resource manager</span>](../user/azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint). |
+| ID tenanta                 | AZURE_TENANT_ID            | Výhody služby Azure Stack [ <span class="underline">ID tenanta</span>](../azure-stack-identity-overview.md).                                                          |
+| ID klienta                 | AZURE_CLIENT_ID             | Služba ID instančního objektu aplikace neuloží, když se vytvoří nový instanční objekt služby v předchozí části tohoto dokumentu.                                                                                              |
+| ID předplatného           | AZURE_SUBSCRIPTION_ID      | [ <span class="underline">ID předplatného</span> ](../azure-stack-plan-offer-quota-overview.md#subscriptions) je, jak získat přístup k nabídky ve službě Azure Stack.                |
+| Tajný kód klienta             | AZURE_CLIENT_SECRET        | Aplikace instančního objektu služby tajný klíč neuloží, když se vytvoří nový instanční objekt služby.                                                                                                                                   |
+| Koncový bod Resource Manageru | ARM_ENDPOINT              | Zobrazit [ <span class="underline">koncový bod služby Azure Stack resource manager</span>](../user/azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint). |
 | Umístění                  | RESOURCE_LOCATION    | Místní pro Azure Stack                                                                                                                                                                                                |
 
 K vyhledání ID tenanta pro službu Azure Stack, postupujte podle pokynů uvedených [tady](../azure-stack-csp-ref-operations.md). Chcete-li nastavit proměnné prostředí, postupujte takto:
@@ -107,7 +107,7 @@ K vyhledání ID tenanta pro službu Azure Stack, postupujte podle pokynů uvede
 Chcete-li nastavit proměnné prostředí v příkazovém řádku Windows, použijte následující formát:
 
 ```shell
-Set Azure_Tenant_ID=<Your_Tenant_ID>
+Set AZURE_TENANT_ID=<Your_Tenant_ID>
 ```
 
 ### <a name="macos-linux-and-unix-based-systems"></a>macOS, Linux a systémů založených na systému Unix
@@ -115,7 +115,7 @@ Set Azure_Tenant_ID=<Your_Tenant_ID>
 V systémech Unix na základě můžete použít následující příkaz:
 
 ```shell
-Export Azure_Tenant_ID=<Your_Tenant_ID>
+Export AZURE_TENANT_ID=<Your_Tenant_ID>
 ```
 
 ### <a name="the-azure-stack-resource-manager-endpoint"></a>Koncový bod služby Azure Stack resource manager
@@ -162,7 +162,8 @@ Následující kód se ověřuje instanční objekt služby ve službě Azure St
 ```java
 AzureTokenCredentials credentials = new ApplicationTokenCredentials(client, tenant, key, AZURE_STACK)
                     .withDefaultSubscriptionId(subscriptionId);
-            Azure azureStack = Azure.configure().withLogLevel(com.microsoft.rest.LogLevel.BASIC)
+Azure azureStack = Azure.configure()
+                    .withLogLevel(com.microsoft.rest.LogLevel.BASIC)
                     .authenticate(credentials, credentials.defaultSubscriptionId());
 ```
 
@@ -182,7 +183,7 @@ AzureEnvironment AZURE_STACK = new AzureEnvironment(new HashMap<String, String>(
                     put("activeDirectoryResourceId", settings.get("audience"));
                     put("activeDirectoryGraphResourceId", settings.get("graphEndpoint"));
                     put("storageEndpointSuffix", armEndpoint.substring(armEndpoint.indexOf('.')));
-                    put("keyVaultDnsSuffix", ".adminvault" + armEndpoint.substring(armEndpoint.indexOf('.')));
+                    put("keyVaultDnsSuffix", ".vault" + armEndpoint.substring(armEndpoint.indexOf('.')));
                 }
             });
 ```
@@ -205,8 +206,7 @@ HttpGet getRequest = new
 HttpGet(String.format("%s/metadata/endpoints?api-version=1.0",
 armEndpoint));
 
-// Add additional header to getRequest which accepts application/xml
-data
+// Add additional header to getRequest which accepts application/xml data
 getRequest.addHeader("accept", "application/xml");
 
 // Execute request and catch response
@@ -217,37 +217,37 @@ HttpResponse response = httpClient.execute(getRequest);
 
 Následující ukázky na Githubu jako reference můžete použít k vytváření řešení pomocí profilů .NET a rozhraní API služby Azure Stack:
 
-  - [Správa skupin prostředků](https://github.com/viananth/resources-java-manage-resource-group/tree/stack/Hybrid)
+  - [Správa skupin prostředků](https://github.com/Azure-Samples/Hybrid-resources-java-manage-resource-group)
 
-  - [Správa účtů úložiště](https://github.com/viananth/storage-java-manage-storage-accounts/tree/stack/Hybrid)
+  - [Správa účtů úložiště](https://github.com/Azure-Samples/hybrid-storage-java-manage-storage-accounts)
 
-  - [Správa virtuálního počítače](https://github.com/viananth/compute-java-manage-vm/tree/stack/Hybrid)
+  - [Správa virtuálního počítače](https://github.com/Azure-Samples/hybrid-compute-java-manage-vm)
 
 ### <a name="sample-unit-test-project"></a>Ukázkový projekt testování částí 
 
 1.  Naklonujte úložiště pomocí následujícího příkazu:
     
-    `git clone https://github.com/viananth/resources-java-manage-resource-group/tree/stack/Hybrid`
+    `git clone https://github.com/Azure-Samples/Hybrid-resources-java-manage-resource-group.git`
 
 2.  Vytvoření instančního objektu Azure a přiřazení role přístupu k předplatnému. Pokyny k vytvoření instančního objektu najdete v tématu [pomocí prostředí Azure PowerShell k vytvoření instančního objektu s certifikátem](../azure-stack-create-service-principals.md).
 
 3.  Načtěte následující hodnoty proměnné požadované prostředí:
     
-   1.  TENANT_ID
-   2.  CLIENT_ID
-   3.  HODNOTA CLIENT_SECRET
-   4.  SUBSCRIPTION_ID
-   5.  ARM_ENDPOINT
-   6.  RESOURCE_LOCATION
+    -  AZURE_TENANT_ID
+    -  AZURE_CLIENT_ID
+    -  AZURE_CLIENT_SECRET
+    -  AZURE_SUBSCRIPTION_ID
+    -  ARM_ENDPOINT
+    -  RESOURCE_LOCATION
 
 4.  Nastavte následující proměnné prostředí pomocí informace, které jste získali z instanční objekt vytvoříte pomocí příkazového řádku:
     
-   1. Export TENANT_ID = {id vašeho tenanta}
-   2. Export CLIENT_ID = {id klienta}
-   3. Export CLIENT_SECRET {váš tajný klíč klienta} =
-   4. Export SUBSCRIPTION_ID = {id předplatného}
-   5. Export ARM_ENDPOINT = {vašich prostředků Azure Stack adresa URL správce}
-   6. Export RESOURCE_LOCATION = {umístění služby Azure Stack}
+    - Export AZURE_TENANT_ID = {id vašeho tenanta}
+    - Export AZURE_CLIENT_ID = {id klienta}
+    - Export AZURE_CLIENT_SECRET = {váš tajný klíč klienta}
+    - Export AZURE_SUBSCRIPTION_ID = {id předplatného}
+    - Export ARM_ENDPOINT = {vašich prostředků Azure Stack adresa URL správce}
+    - Export RESOURCE_LOCATION = {umístění služby Azure Stack}
 
    Ve Windows, použijte **nastavit** místo **exportovat**.
 

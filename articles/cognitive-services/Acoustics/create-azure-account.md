@@ -1,20 +1,21 @@
 ---
-title: Vytváření účtů Azure pro Akustika – Cognitive Services
+title: Nastavení Azure účtů pro Akustika projektu
+titlesuffix: Azure Cognitive Services
 description: Postupujte podle tohoto průvodce pro nastavení účtů služby Azure Batch a úložiště potřebné pro práci s Akustika.
 services: cognitive-services
 author: ashtat
-manager: noelc
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: acoustics
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: d5e78df2cb17e8275aef3694dda90a705ef4bdaa
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 05f7c435ca61930da6270c54e71c784f1b7aebcc
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181483"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48900612"
 ---
 # <a name="create-an-azure-batch-account"></a>Vytvoření účtu služby Azure Batch
 Postupujte podle tohoto průvodce pro nastavení účtů služby Azure Batch a úložiště potřebné pro práci s Akustika. Informace o modulu Unity vyvinutý jako součást projektu Akustika najdete v tématu [novinky Akustika](what-is-acoustics.md). Informace o tom, jak začlenit do vašich projektů Unity Akustika najdete v tématu [Začínáme](getting-started.md).  

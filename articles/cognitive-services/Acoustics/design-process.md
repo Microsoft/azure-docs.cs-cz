@@ -1,20 +1,21 @@
 ---
-title: Přehled procesu návrhu pro Akustika – Cognitive Services
+title: Přehled procesu návrhu pro Akustika projektu
+titlesuffix: Azure Cognitive Services
 description: Tento dokument popisuje, jak vyjádřit záměr vašeho návrhu ve všech třech fázích Akustika projektu pracovního postupu.
 services: cognitive-services
 author: kegodin
-manager: noelc
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: acoustics
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: bb3e5010f1839f7b18396cc8e177ed07e52ea98a
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 46e2e276086f836ff881fde1db6462f6e7788e22
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867628"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901358"
 ---
 # <a name="design-process-overview"></a>Přehled procesu návrhu
 Máte v úmyslu návrhu můžete vyjádřit ve všech třech fázích Akustika projektu pracovního postupu: předem zanést scény nastavení, zvukové zdrojové umístění a která má označení po vytvoření návrhu. Proces vyžaduje méně značek přidružené k uvedení dozvuku svazky při zachování návrháře kontrolu nad jak zvuky scény.

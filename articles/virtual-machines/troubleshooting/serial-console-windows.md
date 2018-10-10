@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 17fec61e73298a6250cf6805bb9a713ff3d3a488
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 705366dbb055679a2d0adc628938fa419609f6ed
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48858005"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885115"
 ---
 # <a name="virtual-machine-serial-console"></a>Konzola sériového portu virtuálního počítače
 
@@ -222,7 +222,7 @@ A. Musíte mít přístup úrovně Přispěvatel nebo vyšší do virtuálního 
 
 **Q. Moje konzoly sériového portu se nezobrazuje nic, co mám dělat?**
 
-A. Vaše image je pravděpodobně nesprávně nakonfigurované pro přístup ke konzole sériového portu. Zobrazit [povolit konzoly sériového portu v obrázcích vlastní nebo starší](#Enable-Serial-Console-in-custom-or-older-images) podrobné informace o konfiguraci bitové kopie umožňují konzoly sériového portu.
+A. Vaše image je pravděpodobně nesprávně nakonfigurované pro přístup ke konzole sériového portu. Zobrazit [povolit konzoly sériového portu v obrázcích vlastní nebo starší](#enable-serial-console-in-custom-or-older-images) podrobné informace o konfiguraci bitové kopie umožňují konzoly sériového portu.
 
 **Q. Je k dispozici konzoly sériového portu pro Virtual Machine Scale Sets?**
 

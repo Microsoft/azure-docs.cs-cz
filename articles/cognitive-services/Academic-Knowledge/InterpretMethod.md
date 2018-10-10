@@ -1,26 +1,27 @@
 ---
-title: Interpretace metoda v rozhraní Academic Knowledge API | Microsoft Docs
-description: Pomocí této metody Interpret vrátí formátovaný interpretace řetězců dotazů uživatele na základě dat Academic grafu a Academic gramatika v kognitivní služby společnosti Microsoft.
+title: Interpretace metoda – Academic Knowledge API
+titlesuffix: Azure Cognitive Services
+description: Pomocí této metody interpretaci vrátí formátovaný interpretace řetězce dotazu na základě dat Academic Graph a akademické gramatiky Microsoft Cognitive Services.
 services: cognitive-services
 author: alch-msft
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: a46c792f14fabf6562666d1067ef880bd505741f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e16a772caa5fba632f8544094e2d8b57ed4ca765
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342387"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902565"
 ---
-# <a name="interpret-method"></a>Interpretace – metoda
+# <a name="interpret-method"></a>interpretace – metoda
 
-**Interpretovat** REST API trvá koncový uživatel řetězec dotazu (tj, dotaz zadá uživatel aplikace) a vrátí formátovaný interpretace záměru uživatele na základě dat Academic grafu a Academic gramatika.
+**Interpretovat** rozhraní REST API přijímá koncový uživatel řetězec dotazu (například dotazu zadaného uživatelem, aplikace) a vrátí formátovaný interpretace záměru uživatele na základě dat Academic Graph a akademické gramatiky.
 
-Zajistit interaktivní prostředí, můžete tuto metodu lze volat opakovaně po každý znak zadané uživatelem. V takovém případě byste měli nastavit **dokončení** parametr 1 pro zapnutí automatického dokončování návrhy. Pokud vaše aplikace nemusí automatické doplňování, byste měli nastavit **dokončení** parametru na hodnotu 0.
+Pro zajištění interaktivní prostředí, můžete volat tuto metodu opakovaně po jednotlivé znaky zadané uživatelem. V takovém případě byste měli nastavit **kompletní** parametr 1 pro zapnutí návrhy automatického dokončování. Pokud aplikace nepotřebuje automatického dokončování, byste měli nastavit **kompletní** parametru na hodnotu 0.
 
 **Koncový bod REST:**
 
@@ -30,34 +31,34 @@ Zajistit interaktivní prostředí, můžete tuto metodu lze volat opakovaně po
 
 Název     | Hodnota | Povinné?  | Popis
 ---------|---------|---------|---------
-**dotaz**    | Textový řetězec | Ano | Dotaz zadaný uživatelem.  Pokud dokončení nastavena na hodnotu 1, dotaz, bude vyhodnocen jako předponu pro generování návrhy automatické dokončování dotazů.        
-**model**    | Textový řetězec | Ne  | Název modelu, který chcete dotaz.  V současné době má výchozí hodnotu *nejnovější*.        
-**dokončení** | 0 nebo 1 | Ne<br>Výchozí: 0  | 1 znamená, že jsou automatické doplňování návrzích vydány na základě dat gramatika a graf.         
-**počet**    | Číslo | Ne<br>Výchozí: 10 | Maximální počet interpretace vrátit.         
-**Posun**   | Číslo | Ne<br>Výchozí: 0  | Index prvního interpretace vrátit. Například *počet = 2 & Posun = 0* vrátí interpretace 0 a 1. *Počet = 2 & Posun = 2* vrátí interpretace 2 a 3.       
-**časový limit**  | Číslo | Ne<br>Výchozí: 1000 | Časový limit v milisekundách. Vrátí se pouze interpretace nalezen předtím, než je časový limit uplynul.
+**Dotaz**    | Textový řetězec | Ano | Dotazu zadaného uživatelem.  Pokud dokončení je nastavená na 1, dotaz bude interpretovat jako předponu pro generování návrhy automatického dokončování dotazů.        
+**Model**    | Textový řetězec | Ne  | Název modelu, který chcete dotazovat.  V současné době má výchozí hodnotu *nejnovější*.        
+**Dokončení** | 0 nebo 1 | Ne<br>Výchozí: 0  | 1 znamená, že návrhy automatického dokončování jsou generovány na základě dat gramatiky a graf.         
+**Počet**    | Číslo | Ne<br>Výchozí: 10 | Maximální počet interpretace vrátit.         
+**Posun**   | Číslo | Ne<br>Výchozí: 0  | Index prvního interpretace vrátit. Například *počet = 2 & UN přenosu = 0* vrátí interpretace 0 a 1. *Počet = 2 & UN přenosu = 2* vrátí interpretace 2 a 3.       
+**časový limit**  | Číslo | Ne<br>Výchozí: 1000 | Časový limit v milisekundách. Jsou vráceny pouze interpretace nalezen předtím, než vypršel časový limit.
 <br>
   
 ## <a name="response-json"></a>Odpověď (JSON)
 Název     | Popis
 ---------|---------
-**dotaz** |*Dotazu* parametr z požadavku.
-**interpretace** |Pole odpovídající vstup uživatele s gramatiky 0 nebo více různých způsobů.
-**.logprob interpretace [x]**  |Relativní přirozené protokolu pravděpodobnost interpretaci. Vyšší hodnoty budou s větší pravděpodobností.
-**.parse interpretace [x]**  |Řetězec XML, který ukazuje, jak se interpretují jednotlivých součástí dotazu.
-**.rules interpretace [x]**  |Pole 1 nebo více pravidla definovaná v gramatiku, které byly vyvolány během interpretace. Academic Knowledge API bude vždy 1 pravidlo.
-**interpretace [.název .rules [y] x]**  |Název pravidla.
-**interpretace [.output .rules [y] x]**  |Výstupní pravidlo.
-**interpretace [.output.type .rules [y] x]** |Datový typ výstupu pravidla.  Academic Knowledge API bude vždy "dotaz".
-**interpretace [.output.value .rules [y] x]**  |Výstupní pravidlo. Academic Knowledge API to je řetězec dotazu výraz, který se dá předat do hodnocení a calchistogram metody.
-**byl zrušen** | Hodnota TRUE, pokud vypršel časový limit požadavku.
+**Dotaz** |*Dotazu* parametr z požadavku.
+**interpretace** |Pole 0 nebo více různých způsobů, jak odpovídající vstup uživatele v porovnání se gramatika.
+**.logprob interpretace [x]**  |Pravděpodobnost relativní přirozený logaritmus výkladu. Vyšší hodnoty budou pravděpodobně.
+**.parse interpretace [x]**  |Řetězec XML, který ukazuje, jak byl interpretován každá část dotazu.
+**.rules interpretace [x]**  |Pole 1 nebo více pravidel definovaných v gramatice, které byly vyvolány během vyhodnocení. Pro rozhraní Academic Knowledge API bude vždy 1 pravidlo.
+**interpretace [.name .rules [y] x]**  |Název pravidla.
+**interpretace [.output .rules [y] x]**  |Výstup pravidla.
+**interpretace [.output.type .rules [y] x]** |Datový typ výstupu pravidla.  Pro rozhraní Academic Knowledge API bude vždy "dotaz".
+**interpretace [.output.value .rules [y] x]**  |Výstup pravidla. Pro rozhraní Academic Knowledge API Toto je řetězec výraz dotazu, který může být předán vyhodnotit a calchistogram metody.
+**Přerušeno** | True, pokud vypršel časový limit žádosti.
 
 <br>
 #### <a name="example"></a>Příklad:
 ```
 https://westus.api.cognitive.microsoft.com/academic/v1.0/interpret?query=papers by jaime&complete=1&count=2
  ```
-<br>Níže uvedené odpovědi obsahuje horních dvou (z důvodu parametr *počet = 2*) pravděpodobně interpretace, která dokončí částečné uživatelský vstup *dokumenty Paper podle jaime*: *dokumenty Paper podle jaime teevan*  a *dokumenty Paper podle jaime zelená*.  Dokončování dotazů služby generované místo pouze s přesnou odpovídá od autora *jaime* vzhledem k tomu, že zadaný požadavek *dokončení = 1*. Všimněte si, že kanonické hodnoty *j l zelená* shodná prostřednictvím synonymum *jamie zelená*, jak je uvedeno v analýzy.
+<br>Odpověď níže obsahuje dva (z důvodu parametr *počet = 2*) pravděpodobně interpretace, které dokončení částečné uživatelský vstup *Paper podle jaime*: *Paper podle jaime teevan*  a *Paper zelenou barvou jaime*.  Služba vygeneruje dokončování dotazů místo vzhledem k tomu jenom přesné shody pro autora *jaime* vzhledem k tomu, že zadaná žádost *dokončení = 1*. Všimněte si, že Kanonická hodnota *j l zelené* odpovídající prostřednictvím synonymum *jamie zelená*, jak je uvedeno v analýzy.
 
 
 ```JSON
@@ -93,7 +94,7 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/interpret?query=papers 
   ]
 }
 ```  
-<br>Pro načtení entity výsledky pro interpretaci, použijte *output.value* z **interpretovat** rozhraní API a předejte, který do **vyhodnotit** rozhraní API prostřednictvím *expr*  parametr. V tomto příkladu dotaz pro první výkladu je: 
+<br>Chcete-li načíst výsledky entit pro výklad, použijte *output.value* z **interpretovat** rozhraní API a předat ho do **vyhodnotit** API prostřednictvím *výraz*  parametru. V tomto příkladu dotaz pro první výkladu je: 
 ```
 evaluate?expr=Composite(AA.AuN=='jaime teevan')
 ```

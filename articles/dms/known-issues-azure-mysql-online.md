@@ -3,20 +3,20 @@ title: Článek o omezeních známé problémy a migrace s online migrace do slu
 description: Přečtěte si o známých problémech a migrace omezení online migrace do služby Azure Database for MySQL.
 services: database-migration
 author: HJToland3
-ms.author: rajpo
+ms.author: scphang
 manager: ''
 ms.reviewer: ''
 ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 08/24/2018
-ms.openlocfilehash: 3697b702545c7b67b961d9820166d8dbbcb050f0
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.date: 10/09/2018
+ms.openlocfilehash: 6e82c10d8e9109279045095c1b856520245a5a6f
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802198"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884506"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-mysql"></a>Známé problémy a migrace omezení online migrace do Azure DB for MySQL
 

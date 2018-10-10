@@ -5,16 +5,16 @@ titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: v-jerkin
 ms.service: cognitive-services
-ms.technology: speech
+ms.component: speech
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: d6328a9663aa1a7936f40606b6252fa119d31d0c
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 91107601055a115efc039ac588f652eab2fba3cf
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025372"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887730"
 ---
 # <a name="get-the-cognitive-services-speech-devices-sdk"></a>Zařízení řeči služeb Cognitive Services SDK
 

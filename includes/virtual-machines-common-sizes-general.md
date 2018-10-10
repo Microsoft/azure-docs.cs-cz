@@ -5,17 +5,19 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/06/2018
+ms.date: 10/08/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 2d1a6bdb0cb53e3e58b4b4e8fed4bf29957d6489
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 8297e324f03d263acaa30dfa2147f7ee713bd265
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48858073"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48904664"
 ---
 Velikosti virtuálních počítačů pro obecné účely poskytují vyvážený poměr procesorů k paměti. Ideální pro testování a vývoj, malé a střední databáze a webové servery s nízkým a středním provozem. Tento článek obsahuje informace o počtu virtuálních procesorů, datové disky a síťové adaptéry, jakož i propustnost úložiště pro velikosti v této skupině. 
+
+- [DC řad](#dc-series) je nová řada virtuálních počítačů v Azure, která můžou pomoct chránit důvěrnost a integrita dat a kódu při zpracovávání ve veřejném cloudu. Tyto počítače se zálohují na nejnovější generace 3,7 GHz procesoru Intel XEON E - 2176G SGX technologií. S technologií Intel Turbo Boost můžete tyto počítače přejít 4.7 GHz. Instance řady DC zákazníkům umožnit, aby vytváření zabezpečených aplikací enklávy chcete chránit svůj kód a data, když se používá.
 
 - Virtuální počítače řady Av2-series je možné nasadit na celou řadu typů hardwaru a procesorů. Díky konfiguraci paměti a výkonu procesoru jsou virtuální počítače řady A-Series nejvhodnější pro úlohy základní úrovně, jako je vývoj a testování. Velikost je omezována v závislosti na použitém hardwaru a nabízí konzistentní výkon procesoru pro spuštěné instance bez ohledu na hardware. Pokud chcete zjistit fyzický hardware, na kterém je virtuální počítač dané velikosti nasazený, zadejte dotaz na virtuální hardware přímo z virtuálního počítače.
 
@@ -27,7 +29,6 @@ Velikosti virtuálních počítačů pro obecné účely poskytují vyvážený 
 
   Vzorové případy použití řady D-series zahrnují podnikových aplikací, relačních databází, ukládání do mezipaměti a analýzu. 
   
-- [DC řad](#dc-series) je nová řada virtuálních počítačů v Azure, která můžou pomoct chránit důvěrnost a integrita dat a kódu při zpracovávání ve veřejném cloudu. Tyto počítače se zálohují na nejnovější generace 3,7 GHz procesoru Intel XEON E - 2176G SGX technologií. S technologií Intel Turbo Boost můžete tyto počítače přejít 4.7 GHz. Instance řady DC zákazníkům umožnit, aby vytváření zabezpečených aplikací enklávy chcete chránit svůj kód a data, když se používá
 
 ## <a name="b-series"></a>B-Series
 

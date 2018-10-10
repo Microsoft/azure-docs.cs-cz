@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 66494ca6bd9b4d8276469e85f4c6bb435ae245f7
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 154d82ab5e309631df0bfa40df7fe14902327f46
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716396"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884271"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Nejčastější dotazy k akcelerátorům řešení IoT
 
@@ -41,6 +41,10 @@ V současné době pouze řešení vzdáleného monitorování využívá archit
 ### <a name="what-advantages-does-the-new-open-sourced-microservices-based-architecture-provide-in-the-new-update"></a>Jaké výhody nové open source založených na mikroslužbách architektury poskytuje v nové aktualizaci?
 
 Za poslední dva roky se výrazně vyvinula cloudové architektury. Mikroslužeb mají umístila jako skvělé vzor k dosažení škálování a flexibility, aniž byste museli obětovat rychlost vývoje. Tento Architektonický model se používá v různými službami společnosti Microsoft interně skvělé spolehlivosti a škálovatelnosti výsledky. Jsme jsou uvedení tyto materiály v praxi, takže naši zákazníci využívat.
+
+### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>Kde najdu informace o předchozí verzi řešení vzdáleného monitorování
+
+Předchozí verze akcelerátor řešení vzdálené monitorování se označuje jako řešení vzdáleného monitorování IoT Suite předkonfigurované. Můžete najít Archivovaná dokumentace na [ https://docs.microsoft.com/previous-versions/azure/iot-suite/ ](https://docs.microsoft.com/previous-versions/azure/iot-suite/).
 
 ### <a name="is-the-new-solution-accelerator-available-in-the-same-geographic-region-as-the-existing-solution"></a>Je k dispozici nový akcelerátor řešení ve stejné zeměpisné oblasti jako existující řešení?
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: 8d5f31f09d51794f9ad3c126edf2fd935f379221
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: fa19c932a18102107068303e1474abd992df3161
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296463"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48903024"
 ---
 # <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>Migrace místních aplikací AD FS do Azure 
 
@@ -151,7 +151,7 @@ Mezi aplikace, které je aktuálně možné snadno migrovat, patří aplikace SA
 - Jméno
 - Příjmení
 - Alternativní atribut jako SAML **NameID**, včetně atributu Azure AD mail, předpony atributu mail, ID zaměstnance, atributů rozšíření 1–15 nebo místního atributu **SamAccountName**. Další informace najdete v tématu [Úprava deklarace identity NameIdentifier](../develop/active-directory-saml-claims-customization.md).
-- Vlastní deklarace identity. Informace o podporovaných mapováních deklarací najdete v tématech [Mapování deklarací v Azure Active Directory](../active-directory-claims-mapping.md) a [Přizpůsobování deklarací identity vystavených v tokenu SAML pro podnikové aplikace v Azure Active Directory](../develop/active-directory-saml-claims-customization.md).
+- Vlastní deklarace identity. Informace o podporovaných mapováních deklarací najdete v tématech [Mapování deklarací v Azure Active Directory](../develop/active-directory-claims-mapping.md) a [Přizpůsobování deklarací identity vystavených v tokenu SAML pro podnikové aplikace v Azure Active Directory](../develop/active-directory-saml-claims-customization.md).
 
 Kromě vlastních deklarací identity a elementů **NameID** jsou konfigurace, které v rámci migrace vyžadují další kroky konfigurace ve službě Azure AD, následující:
 - Pravidla vlastní autorizace nebo vícefaktorového ověřování ve službě AD FS. Můžete je nakonfigurovat pomocí funkce [Podmíněný přístup služby Azure AD](../active-directory-conditional-access-azure-portal.md).
@@ -171,7 +171,7 @@ V současné době není možné migrovat aplikace, které vyžadují následuj�
 - Možnosti deklarací identity v rámci tokenů:
     - Vystavování názvů místních skupin jako deklarací identity.
     - Deklarace identity z jiných úložišť než služba Azure AD.
-    - Komplexní pravidla transformace vystavování deklarací identity. Informace o podporovaných mapováních deklarací najdete v tématech [Mapování deklarací v Azure Active Directory](../active-directory-claims-mapping.md) a [Přizpůsobování deklarací identity vystavených v tokenu SAML pro podnikové aplikace v Azure Active Directory](../develop/active-directory-saml-claims-customization.md).
+    - Komplexní pravidla transformace vystavování deklarací identity. Informace o podporovaných mapováních deklarací najdete v tématech [Mapování deklarací v Azure Active Directory](../develop/active-directory-claims-mapping.md) a [Přizpůsobování deklarací identity vystavených v tokenu SAML pro podnikové aplikace v Azure Active Directory](../develop/active-directory-saml-claims-customization.md).
     - Vystavování rozšíření adresáře jako deklarací identity.
     - Vlastní specifikace formátu **NameID**.
     - Vystavování atributů s více hodnotami.

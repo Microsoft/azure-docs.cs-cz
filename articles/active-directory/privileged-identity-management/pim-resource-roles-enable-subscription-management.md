@@ -1,6 +1,6 @@
 ---
 title: Povolení správy předplatného ve vašem tenantovi – Azure | Dokumentace Microsoftu
-description: Zjistěte, jak k povolení správy předplatného povolit ve vašem tenantovi, při použití Azure AD Privileged Identity Management (PIM).
+description: Informace o povolení správy předplatného ve vašem tenantovi, při použití Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,12 +14,12 @@ ms.component: pim
 ms.date: 03/27/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 89bb6fd48c58b7672b7a2251a172cc169093d368
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: bcaea64484010672a53050cb806c4256a17b19a8
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189991"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901171"
 ---
 # <a name="enable-subscription-management-in-your-tenant"></a>Povolení správy předplatného ve vašem tenantovi
 

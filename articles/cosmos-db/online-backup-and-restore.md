@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: govindk
-ms.openlocfilehash: 580c7410119a26ed3601c7c6ee020a13029339fe
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 657b75e5e3bb5c35bb23221235e62298fc797046
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867795"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902667"
 ---
 # <a name="automatic-online-backup-and-restore-with-azure-cosmos-db"></a>Automatické online zálohování a obnovení pomocí služby Azure Cosmos DB
 Azure Cosmos DB automaticky provede zálohování vašich dat v pravidelných intervalech. Automatické zálohy jsou prováděny bez vlivu na výkon nebo dostupnost databázových operací. Všechny zálohy jsou uloženy odděleně v jiné službě úložiště a tyto zálohy jsou globálně replikuje odolnosti proti místní havárií. Pokud omylem odstraníte kontejneru Cosmos DB a později vyžadují obnovení dat, automatické zálohování jsou určené pro scénáře.  
@@ -47,12 +47,18 @@ Následující obrázek ukazuje pravidelné úplné zálohy všechny entity Cosm
 ## <a name="backup-retention-period"></a>Období uchování zálohy
 Jak je popsáno výše, bude Azure Cosmos DB na úrovni oddílu trvá snímky dat každé čtyři hodiny. V každém okamžiku pouze posledních dvou snímky, zůstanou zachovány. Pokud však odstranění kontejnerů a databáze Azure Cosmos DB zůstane existující snímky pro všechny odstraněné oddíly v rámci daného kontejneru/databáze po dobu 30 dnů.
 
-Pro rozhraní SQL API, pokud chcete zachovat vlastní snímky můžete exportovat do formátu JSON možnost v služby Azure Cosmos DB [nástroj pro migraci dat](import-data.md#export-to-json-file) naplánování dalšího zálohování.
+Pro rozhraní SQL API Pokud chcete zachovat vlastní snímky, můžete tak učiníte s použitím následujících možností:
+
+* Export do formátu JSON možnost použít v Azure Cosmos DB [nástroj pro migraci dat](import-data.md#export-to-json-file) naplánování dalšího zálohování.
+
+* Použití [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) pravidelně přesouvat data.
+
+* Pomocí služby Azure Cosmos DB [kanálu změn](change-feed.md) ke čtení dat pravidelně pro úplnou zálohu a odděleně pro přírůstkovou a přejít k cílové objektů blob. 
+
+* Pro správu teplé zálohování, je možné pravidelně číst data z datového kanálu změn a zpoždění jeho zápisu do jiné kolekce. Tím se zajistí, není potřeba obnovit data a můžete okamžitě prohlédnout data pro problém. 
 
 > [!NOTE]
-> Pokud jste "Zřídit propustnost pro skupinu kontejnerů na úrovni databáze," – Nezapomeňte se stane obnovení na úrovni účtu. úplné databáze. Je také potřeba zajistit oslovit do 8 hodin týmu podpory, pokud omylem odstraníte kontejner. Data nejde obnovit, pokud není kontaktovat tým podpory do 8 hodin. 
-
-
+> Pokud jste "Zřídit propustnost pro skupinu kontejnerů na úrovni databáze," – Nezapomeňte se stane obnovení na úrovni účtu. úplné databáze. Je také potřeba zajistit oslovit do 8 hodin týmu podpory, pokud omylem odstraníte kontejner. Data nejde obnovit, pokud není kontaktovat tým podpory do 8 hodin.
 
 ## <a name="restoring-a-database-from-an-online-backup"></a>Obnovení databáze z online zálohování
 
@@ -61,7 +67,7 @@ Pokud omylem odstraníte, databáze nebo kontejneru, můžete si [lístek podpor
 Pokud je potřeba obnovit databázi z důvodu problému poškození dat (včetně případů, kdy se odstraní dokumenty v rámci kontejneru), najdete v článku [zpracování poškození dat](#handling-data-corruption) potřebujete provést další kroky, aby se zabránilo poškozená data přepsání existující zálohy. Pro konkrétní snímek zálohy obnovit Cosmos DB vyžaduje, aby byla data k dispozici po dobu trvání cyklu zálohování tohoto snímku.
 
 > [!NOTE]
-> Kolekce nebo databáze je možné obnovit až po požadavky zákazníků pro obnovení. Odstranit kontejner nebo databáze hned po obnovení dat je responsbility zákazníka. Pokud neprovedete odstranění obnovené databáze ani kolekce, bude se vám být naúčtovány náklady sazbou obnovené kolekce nebo databáze. Ano je velmi důležité je okamžitě odstranit. 
+> Kolekce nebo databází lze obnovit pouze na požadavky zákazníků explicitní. Je zodpovědností zákazníka se odstranit kontejner nebo databáze hned po vyřešení data. Pokud neprovedete odstranění obnovené databáze ani kolekce, že se vám být naúčtovány náklady jednotek žádostí, úložiště a výchozí přenos dat.
 
 ## <a name="handling-data-corruption"></a>Zpracování poškození dat.
 
@@ -73,7 +79,7 @@ Následující obrázek ukazuje vytvoření žádosti o podporu pro container(co
 
 ![Obnovit jako kontejner pro chybné aktualizace nebo odstranění dat ve službě Cosmos DB](./media/online-backup-and-restore/backup-restore-support.png)
 
-Po dokončení obnovení se pro tento druh scénářů – obnovení dat do jiného účtu (s příponou "-obnovit") a kontejner. Tato obnovení se provádí na místě možnost poskytovat zákazníkům ověřování dat a přesun dat podle potřeby. Obnovené kontejner je ve stejné oblasti s stejné a zásady indexování. Uživatel, který je správcem předplatného nebo spolupracujícího správce uvidí tento účet obnovený.
+Po dokončení obnovení se pro tento druh scénářů – obnovení dat do jiného účtu (s příponou "-obnovit") a kontejner. Tato obnovení se provádí na místě možnost poskytovat zákazníkům ověřování dat a přesun dat podle potřeby. Obnovené kontejner je ve stejné oblasti s stejné a zásady indexování. Uživatel, který je správcem předplatného nebo coadmin uvidí tento účet obnovený.
 
 
 > [!NOTE]
