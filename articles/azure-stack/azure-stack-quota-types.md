@@ -3,7 +3,7 @@ title: Typy kvót ve službě Azure Stack | Dokumentace Microsoftu
 description: Zkontrolujte typy různých kvót k dispozici pro služby a prostředky ve službě Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/30/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 2e884164347239838d08fbbc1616ed54ffc4ff24
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 3c0ab236dd6fce10be0a50c435f04517e14c1387
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358731"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077591"
 ---
 # <a name="quota-types-in-azure-stack"></a>Typy kvót ve službě Azure Stack
 

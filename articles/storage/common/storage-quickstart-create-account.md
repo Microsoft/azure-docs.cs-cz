@@ -1,27 +1,24 @@
 ---
-title: Rychlý start Azure – Vytvoření účtu úložiště | Dokumentace Microsoftu
-description: Rychle se naučíte, jak vytvořit nový účet úložiště pomocí Azure CLI, Azure PowerShellu nebo webu Azure Portal.
+title: 'Rychlý start: Vytvoření účtu úložiště – Azure Storage'
+description: V tomto rychlém startu se naučíte vytvořit účet úložiště pomocí webu Azure Portal, Azure PowerShellu nebo Azure CLI. Účet úložiště Azure poskytuje v Microsoft Azure jedinečný obor názvů pro ukládání a přístup k datovým objektům, které vytvoříte ve službě Azure Storage.
 services: storage
 author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 07/03/2018
+ms.date: 09/18/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 91e98f74fd6cd88533a5090a383897eaa0e60648
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: a695e333f48ed0bbf1ad5656c20964232feff4d7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524016"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990123"
 ---
-# <a name="create-a-storage-account"></a>vytvořit účet úložiště
+# <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
-Účet úložiště Azure Storage poskytuje jedinečný obor názvů v cloudu pro ukládání datových objektů ve službě Azure Storage a přístup k nim. Účet úložiště obsahuje všechny objekty blob, soubory, fronty, tabulky a disky, které pod tímto účtem vytvoříte. 
-
-Pokud chcete začít pracovat se službou Azure Storage, musíte nejdřív vytvořit účet úložiště. Účet Azure Storage si můžete vytvořit pomocí [webu Azure Portal](https://portal.azure.com/), [Azure PowerShellu](https://docs.microsoft.com/powershell/azure/overview) nebo [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure?view=azure-cli-latest). Tento rychlý start ukazuje, jak tyto jednotlivé možnosti využít k vytvoření nového účtu úložiště. 
-
+V tomto rychlém startu se naučíte vytvořit účet úložiště pomocí webu [Azure Portal](https://portal.azure.com/), [Azure PowerShellu](https://docs.microsoft.com/powershell/azure/overview) nebo [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest).  
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -54,7 +51,7 @@ Toto tlačítko spustí interaktivní prostředí, které můžete použít k p
 
 ### <a name="install-the-cli-locally"></a>Místní instalace rozhraní příkazového řádku
 
-Azure CLI můžete také nainstalovat a používat místně. Tento rychlý start vyžaduje použití Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli). 
+Azure CLI můžete také nainstalovat a používat místně. Tento rychlý start vyžaduje použití Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). 
 
 ---
 
@@ -84,26 +81,21 @@ az login
 
 ---
 
-## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
+## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
-Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Další informace o skupinách prostředků najdete v článku [Přehled Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md).
+Teď jste připraveni k vytvoření účtu úložiště.
+
+Každý účet úložiště musí patřit do nějaké skupiny prostředků Azure. Skupina prostředků je logický kontejner pro seskupení služeb Azure. Při vytváření účtu úložiště máte možnost buď vytvořit novou skupinu prostředků, nebo použít některou existující skupinu prostředků. Tento rychlý start vám ukáže, jak vytvořit novou skupinu prostředků. 
+
+Účet úložiště **Univerzální v2** poskytuje přístup ke všem službám Azure Storage: objektům blob, souborům, frontám, tabulkám a diskům. V tomto rychlém startu vytvoříte účet úložiště Univerzální v2, ale postup vytvoření libovolného typu účtu úložiště je podobný.   
 
 # <a name="portaltabportal"></a>[Azure Portal](#tab/portal)
 
-Při vytváření skupiny prostředků na webu Azure Portal použijte tento postup:
-
-1. Na webu Azure Portal rozbalením nabídky na levé straně otevřete nabídku služeb a zvolte **Skupiny prostředků**.
-2. Kliknutím na tlačítko **Přidat** přidáte novou skupinu prostředků.
-3. Zadejte název nové skupiny prostředků.
-4. Vyberte předplatné, ve kterém chcete novou skupinu prostředků vytvořit.
-5. Vyberte umístění pro tuto skupinu prostředků.
-6. Klikněte na tlačítko **Vytvořit**.  
-
-![Snímek obrazovky znázorňující vytvoření skupiny prostředků na webu Azure Portal](./media/storage-quickstart-create-account/create-resource-group.png)
+[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
-Pokud chcete vytvořit novou skupinu prostředků pomocí PowerShellu, použijte příkaz [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup): 
+Napřed vytvořte novou skupinu prostředků v PowerShellu pomocí příkazu [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup): 
 
 ```powershell
 # put resource group in a variable so you can use the same group name going forward,
@@ -119,64 +111,7 @@ Get-AzureRmLocation | select Location
 $location = "westus"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-Pokud chcete vytvořit novou skupinu prostředků pomocí Azure CLI, použijte příkaz [az group create](/cli/azure/group#az_group_create). 
-
-```azurecli-interactive
-az group create \
-    --name storage-quickstart-resource-group \
-    --location westus
-```
-
-Pokud si nejste jisti, jakou oblast máte zadat v parametru `--location`, můžete pomocí příkazu [az account list-locations](/cli/azure/account#az_account_list) načíst seznam podporovaných oblastí pro vaše předplatné.
-
-```azurecli-interactive
-az account list-locations \
-    --query "[].{Region:name}" \
-    --out table
-```
-
----
-
-## <a name="create-a-general-purpose-storage-account"></a>Vytvoření účtu úložiště pro obecné účely
-
-Účet úložiště pro obecné účely poskytuje přístup ke všem službám Azure Storage: objektům blob, souborům, frontám a tabulkám. Účet úložiště pro obecné účely je možné vytvořit s úrovní Standard nebo Premium. Příklady v tomto článku ukazují, jak vytvořit účet úložiště pro obecné účely v úrovni Standard (výchozí).
-
-Úložiště Azure nabízí dva typy účtů úložiště pro obecné účely:
-
-- Účty úložiště pro obecné účely verze 2 
-- Účty úložiště pro obecné účely verze 1 
-
-> [!NOTE]
-> Doporučuje se vytvářet nové účty úložiště jako **účty pro obecné účely verze 2**, abyste mohli využívat novější funkce, které jsou pro tyto účty k dispozici.  
-
-Další informace o typech účtů úložiště najdete v článku [Možnosti účtu Azure Storage](storage-account-options.md).
-
-Při pojmenování účtu úložiště mějte na paměti tato pravidla:
-
-- Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena.
-- Název vašeho účtu úložiště musí být jedinečný v rámci Azure. Žádné dva účty úložiště nemůžou mít stejný název.
-
-# <a name="portaltabportal"></a>[Azure Portal](#tab/portal)
-
-Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 na webu Azure Portal, postupujte takto:
-
-1. Na webu Azure Portal rozbalením nabídky na levé straně otevřete nabídku služeb a zvolte **Všechny služby**. Potom přejděte dolů do části **Úložiště** a zvolte **Účty úložiště**. V okně **Účty úložiště**, které se zobrazí, zvolte **Přidat**.
-2. Zadejte název účtu úložiště.
-3. V poli **Druh účtu** nastavte hodnotu **StorageV2 (pro obecné účely verze 2)**.
-4. V poli **Replikace** nechte nastavenou hodnotu **Místně redundantní úložiště (LRS)**. Alternativně můžete zvolit **Zónově redundantní úložiště (ZRS)**, **Geograficky redundantní úložiště (GRS)** nebo **Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)**.
-5. V následujících polích ponechte výchozí nastavení: **Model nasazení**, **Výkon** a **Vyžadovat zabezpečený přenos**.
-6. Vyberte předplatné, ve kterém chcete vytvořit účet úložiště.
-7. V části **Skupina prostředků** vyberte **Použít stávající** a potom zvolte skupinu prostředků, kterou jste vytvořili v předchozí části.
-8. Vyberte umístění pro váš nový účet úložiště.
-9. Vytvořte účet úložiště kliknutím na **Vytvořit**.      
-
-![Snímek obrazovky znázorňující vytvoření účtu úložiště na webu Azure Portal](./media/storage-quickstart-create-account/create-account-portal.png)
-
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
-
-Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 pomocí PowerShellu s využitím místně redundantního úložiště (LRS), použijte příkaz [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount): 
+Dále vytvořte účet úložiště Univerzální v2 s místně redundantním úložištěm (LRS). Použijte příkaz [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount): 
 
 ```powershell
 New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
@@ -197,7 +132,23 @@ Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 s využit
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 pomocí Azure CLI s využitím místně redundantního úložiště, použijte příkaz [az storage account create](/cli/azure/storage/account#az_storage_account_create).
+Napřed vytvořte novou skupinu prostředků v Azure CLI pomocí příkazu [az group create](/cli/azure/group#az_group_create). 
+
+```azurecli-interactive
+az group create \
+    --name storage-quickstart-resource-group \
+    --location westus
+```
+
+Pokud si nejste jisti, jakou oblast máte zadat v parametru `--location`, můžete pomocí příkazu [az account list-locations](/cli/azure/account#az_account_list) načíst seznam podporovaných oblastí pro vaše předplatné.
+
+```azurecli-interactive
+az account list-locations \
+    --query "[].{Region:name}" \
+    --out table
+```
+
+Dále vytvořte účet úložiště Univerzální v2 s místně redundantním úložištěm. Použijte příkaz [az storage account create](/cli/azure/storage/account#az_storage_account_create):
 
 ```azurecli-interactive
 az storage account create \
@@ -258,16 +209,16 @@ V tomto rychlém startu jste vytvořili účet úložiště úrovně Standard pr
 # <a name="portaltabportal"></a>[Azure Portal](#tab/portal)
 
 > [!div class="nextstepaction"]
-> [Přenos objektů do a z úložiště objektů blob v Azure pomocí webu Azure Portal](../blobs/storage-quickstart-blobs-portal.md)
+> [Práce s objekty blob pomocí webu Azure Portal](../blobs/storage-quickstart-blobs-portal.md)
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
 > [!div class="nextstepaction"]
-> [Přenos objektů do a z úložiště objektů blob v Azure pomocí PowerShellu](../blobs/storage-quickstart-blobs-powershell.md)
+> [Práce s objekty blob pomocí PowerShellu](../blobs/storage-quickstart-blobs-powershell.md)
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 > [!div class="nextstepaction"]
-> [Přenos objektů do a z úložiště objektů blob v Azure pomocí Azure CLI](../blobs/storage-quickstart-blobs-cli.md)
+> [Práce s úložištěm objektů blob pomocí Azure CLI](../blobs/storage-quickstart-blobs-cli.md)
 
 ---

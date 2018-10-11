@@ -1,78 +1,78 @@
 ---
-title: Translator Speech kurzu (C#) | Dokumentace Microsoftu
-titleSuffix: Cognitive Services
-description: Naučte se používat službu Translator speech můžete přeložit text v reálném čase.
+title: 'Kurz: Rozhraní Translator Speech API v jazyce C#'
+titleSuffix: Azure Cognitive Services
+description: Rozhraní Translator Speech API můžete použít k překladu textu v reálném čase.
 services: cognitive-services
 author: v-jerkin
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-speech
-ms.devlang: csharp
-ms.topic: article
+ms.topic: tutorial
 ms.date: 3/5/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 010ad8b5ceeaf046c8d361ff352e6058154a482d
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
-ms.translationtype: MT
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2de56366c3204e77eb2e6775ddd88b6fc4f0c219
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41987452"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993863"
 ---
-# <a name="tutorial-microsoft-translator-wpf-application-in-c"></a>Kurz: Microsoft Translatoru WPF aplikace v jazyce C#
+# <a name="tutorial-translator-speech-application-in-c"></a>Kurz: Aplikace služby Translator Speech v jazyce C#
 
-Tento kurz je si nástroj pro překladatele interaktivní řeči, používající překladatelské služby Microsoft Translator Speech, součást služeb Microsoft Cognitive Services v Azure. Získáte informace o těchto tématech:
+Tento kurz pojednává o nástroji pro interaktivní překlad řeči využívajícím rozhraní Translator Speech API, které je součástí služby Azure Cognitive Services. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Žádost o seznam jazyků podporovaných službou
-> * Zaznamenat zvuk a předá je do služby
-> * Přijímat a zobrazovat překlady řeči jako text
-> * Volitelně můžete přehrát mluvené řeči (převod textu na řeč) verze překladu
+> * Vyžádat seznam jazyků, které tato služba podporuje
+> * Zaznamenat zvuk a přenést ho do této služby
+> * Přijmout a zobrazit překlady řeči ve formě textu
+> * Volitelně přehrát mluvenou verzi překladu (pomocí převodu textu na řeč)
 
-Soubor řešení sady Visual Studio pro tuto aplikaci je [k dispozici na Githubu](https://github.com/MicrosoftTranslator/SpeechTranslator).
+Soubor řešení sady Visual Studio pro tuto aplikaci je [dostupný na GitHubu](https://github.com/MicrosoftTranslator/SpeechTranslator).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro účely tohoto kurzu potřebujete libovolná edice sady Visual Studio 2017, včetně Community Edition. 
+Pro účely tohoto kurzu potřebujete libovolnou edici sady Visual Studio 2017 včetně Community Edition. 
 
-Řešení sady Visual Studio také vytvoří instalační program pro aplikaci. Je nutné [sadu nástrojů WiX Toolset](http://wixtoolset.org/) a [rozšíření sady Visual Studio WiX Toolset](https://marketplace.visualstudio.com/items?itemName=RobMensching.WixToolsetVisualStudio2017Extension) pro podporu této funkce.
+Toto řešení sady Visual Studio také vytvoří instalační program pro aplikaci. Kvůli podpoře této funkce potřebujete [WiX Toolset](http://wixtoolset.org/) a rozšíření [WiX Toolset Visual Studio Extension](https://marketplace.visualstudio.com/items?itemName=RobMensching.WixToolsetVisualStudio2017Extension).
 
-Budete také potřebovat klíč předplatného pro službu Translator Speech, kterou lze získat z řídicího panelu Microsoft Azure. Volná cenová úroveň je k dispozici, který umožňuje překlad řeči za měsíc zdarma až 10 hodin. Tato úroveň je dostačující pro účely tohoto kurzu.
+Potřebujete rovněž klíč předplatného pro službu Translator Speech, který si můžete opatřit na řídicím panelu Microsoft Azure. K dispozici je cenová úroveň Free, která umožňuje bezplatný překlad až 10 hodin řeči za měsíc. Tato úroveň je pro účely tohoto kurzu dostačující.
 
-Třetí strany [JSON.Net knihovny](https://www.newtonsoft.com/json) (z Newtonsoft) je také nutný. Toto sestavení se automaticky nainstaluje balíčkem NuGet, pokud obě zaškrtávací políčka obnovení balíčků jsou povolené v možnostech sady Visual Studio.
+Dále se vyžaduje [knihovna JSON.Net](https://www.newtonsoft.com/json) (od společnosti Newtonsoft). NuGet toto sestavení nainstaluje automaticky, pokud jsou v možnostech sady Visual Studio zaškrtnutá obě políčka pro obnovení balíčku.
 
-## <a name="trying-the-translation-app"></a>Při operaci posunutí aplikace
+## <a name="trying-the-translation-app"></a>Vyzkoušení aplikace pro překlad
 
-Po otevření řešení Microsoft Speech Translator (`SpeechTranslator.sln`) v sadě Visual STudio, stiskněte klávesu F5 sestavte a spusťte aplikaci.  Zobrazí se hlavní okno programu.
+Po otevření řešení Speech Translator (`SpeechTranslator.sln`) v sadě Visual Studio tuto aplikaci sestavte a spusťte stisknutím klávesy F5.  Zobrazí se hlavní okno programu.
 
-![[Hlavní okno Translator speech]](media/speech-translator-main-window.png)
+![[Hlavní okno aplikace Speech Translator]](media/speech-translator-main-window.png)
 
-Při prvním spuštění, zvolte **nastavení účtu** z **nastavení** nabídce otevřete okno je vidět tady.
+Při prvním spuštění zvolte **Nastavení účtu** v nabídce **Nastavení**. Otevře se zde zobrazené okno.
 
-![[Hlavní okno Translator speech]](media/speech-translator-settings-window.png)
+![[Hlavní okno aplikace Speech Translator]](media/speech-translator-settings-window.png)
 
-V tomto okně vložte váš klíč předplatného Microsoft Translator Speech a potom klikněte na tlačítko **uložit.** Mezi spuštění se uloží váš klíč.
+Vložte do tohoto okna klíč předplatného služby Translator Speech a klikněte na **Uložit**. Klíč se uloží pro následná spuštění.
 
-Zpět v hlavním okně zvolte zvukový vstup a výstup zařízení, které chcete použít a jaké z a do jazyků. Pokud chcete k přehrávání zvuku překladu, ujistěte se, **převod textu na ŘEČ** (převod textu na řeč) zaškrtnete políčko. Pokud chcete zobrazit spekulativního částečné překlady při mluvit, povolte **částečných výsledků** možnost.
+Zpět v hlavním okně zvolte požadovaná zařízení pro vstup a výstup zvuku a jazyky From (Zdrojový) a To (Cílový). Pokud chcete tento překlad přehrát, zaškrtněte políčko **TTS** (převod textu na řeč). Pokud chcete během mluvení vidět spekulativní částečné překlady, povolte možnost **Partial Results** (Částečné výsledky).
 
-Nakonec klikněte na tlačítko **Start** zahájíte překladu. Dejme tomu, že něco, co chcete mít přeložit a prohlédněte si rozpoznaný text a překladu se zobrazí v okně. Pokud jste povolili možnost převodu textu na ŘEČ, také slyšet překlad.
+Nakonec kliknutím na **Start** zahajte překlad. Řekněte něco, co chcete přeložit, a sledujte, jak se v okně zobrazuje rozpoznaný text a jeho překlad. Pokud jste zaškrtli políčko TTS, překlad navíc uslyšíte.
 
 ## <a name="obtaining-supported-languages"></a>Získání podporovaných jazyků
 
-Při psaní tohoto návodu služba Microsoft Translator podporuje více než pět deseti jazycích pro překlad textu. Menší počet jazyky jsou podporovány pro překlad řeči. Tyto jazyky vyžadují podporu pro obě přepis (rozpoznávání řeči) a pro převod textu na řeč výstup, syntézy.
+V době psaní tohoto článku podporuje služba Translator Speech více než 60 jazyků pro překlad textu. Pro překlad řeči je podporovaný menší počet jazyků. Tyto jazyky vyžadují podporu jak pro přepis (rozpoznávání řeči), tak pro výstup převodu textu na řeč, neboli syntézu.
 
-Jinými slovy pro překlad řeči, jazyka zdroje musí mít jednu podporované pro přepis. Jazyk výstup může být libovolná z jazyků pro překlady textů, za předpokladu, že chcete, aby výsledkem text nepodporuje. Pokud chcete řečovém výstupu, lze pouze přeloží do jazyka pro převod textu na řeč nepodporuje.
+Jinými slovy, kvůli překladu řeči musí zdrojový jazyk podporovat přepis. Jazyk výstupu může být libovolný z podporovaných jazyků pro překlad textu, pokud chcete výsledek v podobě textu. Pokud chcete řečový výstup, můžete překládat jen do jazyka s podporou převodu textu na řeč.
 
-Microsoft může čas od času přidat podporu nových jazyků. Z tohoto důvodu byste měli není pevně zakódovat žádnou znalost podporované jazyky ve vaší aplikaci. Místo toho rozhraní Translator Speech API poskytuje koncový bod jazyky, které vám umožní načíst podporované jazyky v době běhu. Je možné přijímat jeden nebo více seznamů jazyky: 
+Microsoft může čas od času přidat podporu nových jazyků. Z tohoto důvodu byste neměli znalost podporovaných jazyků v aplikaci pevně zakódovat. Rozhraní Translator Speech API místo toho poskytuje koncový bod Jazyky, který umožňuje získat podporované jazyky za běhu. Můžete přijmout jeden nebo více seznamů jazyků: 
 
 | | |
 |-|-|
-|`speech`|Jazyky podporované pro určené k transkripci řeči. Může být source jazyky pro překlad řeči.|
-|`text`|Jazyky podporované pro překlad textu do textu. Může být cílový jazyk pro překlad řeči, pokud se používá textový výstup.|
-|`tts`|Hlasy podporované pro syntézu řeči, každý přidružený konkrétní jazyk. Může být cílový jazyk pro překlad řeči při převodu textu na řeč se používá. Daný jazyk může být podporován více než jeden hlas.|
+|`speech`|Jazyky podporované pro přepis řeči Mohou být zdrojovými jazyky pro překlad řeči.|
+|`text`|Jazyky podporované pro překlad textu na text Mohou být cílovými jazyky pro překlad řeči, pokud se používá textový výstup.|
+|`tts`|Hlasy podporované pro syntézu řeči, každý přidružený ke konkrétnímu jazyku Mohou být cílovými jazyky pro překlad řeči, pokud se používá převod textu na řeč. Daný jazyk může být podporován více než jedním hlasem.|
 
-Koncový bod jazyky nevyžaduje klíč předplatného a jeho využití se nepočítají proti vaší kvóty. Jeho identifikátoru URI je `https://dev.microsofttranslator.com/languages` a vrátí výsledky ve formátu JSON.
+Koncový bod Jazyky nevyžaduje klíč předplatného a jeho použití se nezapočítává do vaší kvóty. Jeho identifikátor URI je `https://dev.microsofttranslator.com/languages` a vrací výsledky ve formátu JSON.
 
-Metoda `UpdateLanguageSettingsAsync()` v `MainWindow.xaml.cs`, jak je znázorněno zde, zavolá koncový bod jazyky zobrazíte seznam podporovaných jazyků. 
+Zde uvedená metoda `UpdateLanguageSettingsAsync()` v souboru `MainWindow.xaml.cs` získává voláním koncového bodu Jazyky seznam podporovaných jazyků. 
 
 ```csharp
 private async Task UpdateLanguageSettingsAsync()
@@ -188,54 +188,54 @@ private async Task UpdateLanguageSettingsAsync()
 }
 ```
 
-Tato metoda nejprve vytvoří požadavek HTTP na koncový bod jazyky, požadování všechny tři seznamy jazyků (`text`, `speech`, a `tts`).
+Tato metoda nejprve sestaví žádost HTTP na koncový bod Jazyky a vyžádá si všechny tři seznamy jazyků (`text`, `speech` a `tts`).
 
-Koncový bod jazyky používá žádosti `Accept-Languages` hlavičky určuje jazyk, ve kterém jsou reprezentovány názvy jazyků. Například jazyk říká "Německé" se nazývá "Deutsch" v němčině a "Alemán" ve španělštině a seznamu jazyků k anglické přednášející odráží tyto rozdíly. Výchozí jazyk v systému se používá pro toto záhlaví.
+Koncový bod Jazyky pomocí hlavičky žádosti `Accept-Languages` určí jazyk, ve kterém jsou uvedeny názvy jazyků. Například jazyk, který je anglicky mluvícím lidem známý jako „German“, se v němčině řekne „Deutsch“ a ve španělštině „Alemán“, přičemž do seznamu jazyků jsou tyto rozdíly promítnuty. Pro tuto hlavičku se používá výchozí jazyk systému.
 
-Poté, co byl odeslán požadavek a odpověď JSON přijetí odpovědi je analyzován do interních datových struktur. Tyto struktury se následně použijí k vytvoření nabídky v jazyce a pro jazyk. 
+Potom, co byla odeslána žádost a přijata odpověď JSON, se tato odpověď parsuje do interních datových struktur. Tyto struktury se následně použijí k sestavení nabídek zdrojového a cílového jazyka. 
 
-Protože k dispozici hlasy závisí na jazyku k uživatelem, není možné nastavit v nabídce hlasové ještě. Místo toho k dispozici hlasy pro jednotlivé jazyky se ukládají pro pozdější použití. `ToLanguage_SelectionChanged` Obslužné rutině (ve stejném zdrojovém souboru) později aktualizace v nabídce hlasové voláním `UpdateVoiceComboBox()` když uživatel klikne na jazyk. 
+Protože dostupné hlasy závisejí na cílovém jazyku zvoleném uživatelem, není zatím možné nastavit nabídku hlasů. Místo toho se dostupné hlasy pro jednotlivé jazyky uloží pro pozdější použití. Obslužná rutina `ToLanguage_SelectionChanged` (ve stejném zdrojovém souboru) později aktualizuje nabídku hlasů voláním metody `UpdateVoiceComboBox()`, když uživatel zvolí cílový jazyk. 
 
-Jen pro zábavu jazyk na náhodně vybrané Pokud uživatel nebyla spuštěna před aplikaci. (Nastavení nabídky jsou uloženy mezi relacemi.)
+Čistě pro zábavu se cílový jazyk vybere náhodně, pokud uživatel tuto aplikaci dříve nespustil. (Nastavení nabídek se uloží pro následné relace.)
 
-## <a name="authenticating-requests"></a>Ověřování požadavků
+## <a name="authenticating-requests"></a>Žádosti o ověření
 
-K ověření služby Microsoft Translator Speech, je nutné odeslat svůj klíč předplatného Azure v hlavičce hodnotu `Ocp-Apim-Subscription-Key` v žádosti o připojení.
+Kvůli ověření vůči službě Microsoft Translator Speech musíte v žádosti o připojení odeslat svůj klíč předplatného Azure v hlavičce jako hodnotu `Ocp-Apim-Subscription-Key`.
 
-## <a name="translation-overview"></a>Přehled nástroje Translation
+## <a name="translation-overview"></a>Přehled překladu
 
-Rozhraní API pro překlad (koncový bod WebSockets `wss://dev.microsofttranslator.com/speech/translate`) přijímá zvuku přeložit v monophonic, 16 kHz, 16bitové podepsané formátu WAVE. Tato služba vrátí jeden nebo více odpověďmi ve formátu JSON obsahující jak známé a přeložený text. Pokud se požaduje převod textu na řeč, odešle se zvukový soubor.
+Rozhraní Translate API (koncový bod `wss://dev.microsofttranslator.com/speech/translate` protokolu WebSocket) akceptuje překládaný zvuk v 16kHz, 16bitovém monofonním formátu WAVE. Tato služba vrací jednu nebo několik odpovědí JSON obsahující jak rozpoznaný, tak přeložený text. Pokud se požaduje převod textu na řeč, odešle se zvukový soubor.
 
-Uživatel vybere zdroje zvuku pomocí nabídky vstupního mikrofon nebo souboru. Zvuk může pocházet ze zvukové zařízení (například mikrofon) nebo `.WAV` souboru.
+Uživatel zvolí zdroj zvuku pomocí nabídky vstupu přes mikrofon nebo soubor. Zvuk může pocházet ze zvukového zařízení (například mikrofonu) nebo souboru `.WAV`.
 
-Metoda `StartListening_Click` je voláno, když uživatel klikne na tlačítko Start. Tato obslužná rutina události, volá `Connect()` zahájíte proces odeslat zvuk na koncový bod rozhraní API služby. `Connect()` Metoda provádí následující úlohy:
+Metoda `StartListening_Click` se volá, když uživatel klikne na tlačítko Start. Tato obslužná rutina události následně voláním metody `Connect()` zahájí proces odeslání zvuku do koncového bodu rozhraní API této služby. Metoda `Connect()` provádí následující úlohy:
 
-
-> [!div class="checklist"]
-> * Nastavení uživatele z hlavního okna a ověřit je
-> * Inicializace zvukového vstupu a výstupu datové proudy
-> * Volání `ConnectAsync()` zpracovat zbývající práce
-
-`ConnectAsync()`, však zpracovává následující úkoly:
 
 > [!div class="checklist"]
-> * Ověřování pomocí klíče předplatného Azure v záhlaví `Ocp-Apim-Subscription-Key`
-> * Vytváření `SpeechClient` instance (součástí `SpeechClient.cs`) ke komunikaci se službou
-> * Inicializace `TextMessageDecoder` a `BinaryMessageDecoder` instance (viz `SpeechResponseDecoder.cs`) pro zpracování odpovědi
-> * Posílání zvuku prostřednictvím `SpeechClient` instance Translator Speech service
+> * Získání uživatelských nastavení z hlavního okna a jejich ověření
+> * Inicializace zvukového vstupu a výstupních streamů
+> * Volání metody `ConnectAsync()`, která zařídí zbytek
+
+Metoda `ConnectAsync()` se následně postará o:
+
+> [!div class="checklist"]
+> * Ověření pomocí klíče předplatného Azure v hlavičce `Ocp-Apim-Subscription-Key`
+> * Vytvoření instance `SpeechClient` (v souboru `SpeechClient.cs`) ke komunikaci se službou
+> * Inicializaci instancí `TextMessageDecoder` a `BinaryMessageDecoder` (viz `SpeechResponseDecoder.cs`) pro zpracování odpovědí
+> * Odeslání zvuku prostřednictvím instance `SpeechClient`do služby Translator Speech
 > * Příjem a zpracování výsledků překladu
 
-Odpovědnosti `SpeechClient` jsou méně:
+`SpeechClient` toho má na starosti méně:
 
 > [!div class="checklist"]
-> * Vytvoření objektu websocket na straně připojení ke službě Translator Speech
-> * Zvuková data odesílání a příjem odpovědí prostřednictvím soketu.
+> * Navázání připojení ke službě Translator Speech přes protokol WebSocket
+> * Odeslání zvukových dat a příjem odpovědí přes tento soket
 
 ## <a name="a-closer-look"></a>Bližší pohled
 
-Měla by být jasnější nyní jak částí aplikace spolupracují při zpracování požadavku překlad. Pojďme se podívat na nějaký kód, zaměřuje se na relevantní části.
+Nyní by mělo být jasnější, jak spolu součásti aplikace spolupracují při zpracování žádosti o překlad. Podívejme se na kód se zaměřením na relevantní části.
 
-Tady je částečný verze `Connect()` zvukové datové proudy, které zobrazí nastavení:
+Zde je částečná verze metody `Connect()`, která ukazuje nastavení zvukových streamů:
 
 ```csharp
 private void Connect()
@@ -357,11 +357,11 @@ private void Connect()
 }
 ```
 
-Podstatná část `Connect()` zahrnuje vytvoření `SpeechClientOptions` instance (naleznete v tématu `SpeechClientOptions.cs`) pro uložení možnosti pro překlad. Mezi možnosti patří informace potřebné pro připojení ke službě (třeba ověřovací klíč a název hostitele) a funkce používá pro překlad. Pole tady mapují na pole hlavičky a parametry protokolu HTTP vystavené [rozhraní Translator Speech API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference).
+Podstatná část metody `Connect()` se stará o vytvoření instance `SpeechClientOptions` (viz `SpeechClientOptions.cs`) pro uložení možností překladu. Mezi tyto možnosti patří informace potřebné pro připojení ke službě (například ověřovací klíč a název hostitele) a funkce použité pro překlad. Zde uvedená pole se mapují na pole hlavičky a parametry HTTP zpřístupněné [rozhraním Translator Speech API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference).
 
-`Connect()` také vytvoří a inicializuje vstupní zvuková zařízení (proměnná `sampleProvider`), který slouží jako zdroj řeč k převodu. Toto zařízení je vstupní zařízení hardwaru, jako například mikrofon nebo soubor, který obsahuje WAVE zvuková data.
+Metoda `Connect()` také vytváří a inicializuje vstupní zvukové zařízení (proměnná `sampleProvider`), které slouží jako zdroj překládané řeči. Tímto zařízením je buď hardwarové vstupní zařízení (například mikrofon), nebo soubor obsahující zvuková data WAVE.
 
-Tady je `ConnectAsync()` metodu, která vytvoří instanci `speechClient` třídy a připojuje anonymní funkce pro zpracování textu a binárních odpovědí ze služby.
+Zde je metoda `ConnectAsync()`, která vytváří instanci třídy `speechClient` a připojuje anonymní funkce pro zpracování textu a binárních odpovědí ze služby.
 
 ```csharp
 private async Task ConnectAsync(SpeechClientOptions options, bool suspendInputAudioDuringTTS)
@@ -422,13 +422,13 @@ private async Task ConnectAsync(SpeechClientOptions options, bool suspendInputAu
 }
 ```
 
-Po ověření, kterou metoda vytvoří `SpeechClient` instance. `SpeechClient` Třídy (v `SpeechClient.cs`) vyvolá obslužné rutiny událostí při příjmu binární a textová data. Další obslužné rutiny jsou vyvolány, dojde k selhání připojení nebo odpojení.
+Po ověření vytvoří tato metoda instanci `SpeechClient`. Třída `SpeechClient` (v `SpeechClient.cs`) vyvolává obslužné rutiny událostí při příjmu binárních a textových dat. Další obslužné rutiny se vyvolají, když připojení selže nebo se odpojí.
 
-Binární data jsou zvuku (řeč výstup) odeslaných službou, pokud je povolena převod textu na ŘEČ. Textová data se částečné nebo úplné překladu textu mluvené slovo. Proto po vytvoření instance, metoda zavěšení funkcí pro zpracování těchto zpráv: zvuku uložením později přehrát a text zobrazením v okně.
+Binární data představují zvuk (výstup převodu textu na řeč) odesílaný službou, pokud je zaškrtnuté políčko TTS. Textová data představují částečný nebo úplný překlad vysloveného textu. Po vytvoření instance proto tato metoda připojí funkce pro zpracování těchto zpráv: zvuk jeho uložením pro pozdější přehrání a text jeho zobrazením v okně.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Tato ukázka kódu je plně funkční aplikace pro používání rozhraní Translator Speech API. V důsledku toho jsou veletrh řadu pohyblivých částí pochopit. Jste prošli nejdůležitějších částí. Pro ostatní může být poučné nastavit několik zarážky v sadě Visual Studio a provede procesem překladu. Až porozumíte ukázkovou aplikaci, že umožňuje použít službu Translator Speech ve svých vlastních aplikacích.
+Tato ukázka kódu je plnohodnotná aplikace, která demonstruje použití rozhraní Translator Speech API. Vyžaduje pochopení celé řady součástí. Prošli jste si ty nejdůležitější prvky. U zbytku může být poučné, když si nastavíte v sadě Visual Studio pár zarážek a celý proces překladu si projdete. Až této ukázkové aplikaci porozumíte, budete mít dostatek vědomostí k použití služby Translator Speech ve svých vlastních aplikacích.
 
 > [!div class="nextstepaction"]
-> [Odkaz na rozhraní Microsoft Translator Speech API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)
+> [Referenční informace k rozhraní Microsoft Translator Speech API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)

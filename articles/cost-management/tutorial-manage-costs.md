@@ -1,26 +1,29 @@
 ---
-title: Kurz – Správa nákladů pomocí služby Azure Cost Management | Microsoft Docs
+title: Kurz – Správa nákladů pomocí Cloudyn v Azure | Microsoft Docs
 description: V tomto kurzu zjistíte, jak spravovat náklady s využitím přidělování nákladů a sestav metod showback a chargeback.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 09/18/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: 16f86eace9b5848f263e0d0772db441a123f21ae
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 743576d8cbd7135369fb692e601360cb57a6c3bd
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989631"
 ---
-# <a name="tutorial-manage-costs-by-using-azure-cost-management"></a>Kurz: Správa nákladů pomocí služby Azure Cost Management
+# <a name="tutorial-manage-costs-by-using-cloudyn"></a>Kurz: Správa nákladů pomocí Cloudyn
 
-Ve službě Azure Cost Management spravujete náklady a vytváříte sestavy metody showback přidělováním nákladů na základě značek. Proces přidělování nákladů přiřazuje náklady ke spotřebovaným cloudovým prostředkům. K úplnému přidělení nákladů dojde, když jsou všechny prostředky uspořádané do kategorií pomocí značek. Po přidělení nákladů můžete svým uživatelům prostřednictvím řídicích panelů a sestav poskytnout metodu showback nebo chargeback. Když však začnete používat službu Cost Management, řada prostředků nemusí být označených nebo označení nemusí podporovat.
+Ve službě Cloudyn spravujete náklady a vytváříte sestavy metody showback přidělováním nákladů na základě značek. Proces přidělování nákladů přiřazuje náklady ke spotřebovaným cloudovým prostředkům. K úplnému přidělení nákladů dojde, když jsou všechny prostředky uspořádané do kategorií pomocí značek. Po přidělení nákladů můžete svým uživatelům prostřednictvím řídicích panelů a sestav poskytnout metodu showback nebo chargeback. Když ale začnete používat Cloudyn, řada prostředků nemusí být označených nebo označení nemusí podporovat.
 
 Například si můžete chtít nechat uhradit náklady na vytváření. Musíte být schopni svému technickému týmu ukázat, že potřebujete konkrétní částku v závislosti na nákladech na prostředky. Můžete jim ukázat sestavu všech spotřebovaných prostředků označených značkou *engineering* (vytváření).
+
+V tomto článku se značky a kategorie někdy používají jako synonyma. Kategorie jsou rozsáhlé kolekce, které mohou představovat spoustu věcí. Mohou sem patřit obchodní jednotky, nákladová centra, webové služby nebo cokoli, co je opatřené značkou. Značky jsou dvojice název/hodnota, pomocí kterých můžete kategorizovat prostředky a zobrazovat a spravovat souhrnné fakturační údaje. Stačí, když u několika prostředků a skupin prostředků použijete stejnou značku. Ve starších verzích webu Azure Portal se *název značky* označoval jako *klíč*. Značky se vytvářejí pro jedno předplatné Azure, ve kterém jsou uložené. V AWS se značky skládají z dvojic klíč/hodnota. Protože v Azure i AWS se používá termín *klíč*, používá tento termín také Cloudyn. Správce kategorií používá klíče (názvy značek) ke sloučení značek.
 
 V tomto kurzu se naučíte:
 
@@ -33,13 +36,22 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ## <a name="prerequisites"></a>Požadavky
 
 - Musíte mít účet Azure.
-- Musíte mít zaregistrovanou zkušební verzi nebo placené předplatné služby Azure Cost Management.
+- Musíte mít buď zaregistrovanou zkušební verzi, nebo placené předplatné Cloudyn.
+- [Neaktivované účty se musí aktivovat](activate-subs-accounts.md) na portálu Cloudyn.
+- Na virtuálních počítačích musí být povolené [monitorování na úrovni hosta](azure-vm-extended-metrics.md).
+
 
 ## <a name="use-custom-tags-to-allocate-costs"></a>Použití vlastních značek k přidělování nákladů
 
-Když začnete s přidělováním nákladů, první věc, kterou je potřeba udělat, je definovat rozsah s použitím modelu nákladů. Model nákladů náklady nemění, ale distribuuje je. Při vytváření modelu nákladů rozdělíte svá data podle entity nákladů, účtu nebo předplatného a několika značek. Mezi běžné příklady značek může patřit kód pro fakturaci, nákladové středisko nebo název skupiny. Značky pomáhají také provádět showback a chargeback do jiných částí organizace.
+Cloudyn získává data značek skupin prostředků z Azure a automaticky předává informace o značkách prostředkům. V přidělení nákladů vidíte náklady podle značek prostředků.
 
-Pokud chcete vytvořit vlastní model přidělování nákladů, vyberte v nabídce sestavy **Cost** (Náklady) &gt; **Cost Management** (Správa nákladů) &gt; **Cost Allocation 360°** (360° přidělování nákladů).
+Při použití tohoto modelu přidělování nákladů definujete kategorie (značky), které se interně aplikují na nekategorizované (neoznačené) prostředky a umožňují seskupit náklady a definovat pravidla pro nakládání s neoznačenými náklady. Pravidla přidělování nákladů jsou vámi uložené pokyny, jak se mají náklady na službu rozúčtovat na nějakou jinou službu. Při výběru vytvořeného modelu se následně u těchto prostředků zobrazí značky/kategorie v sestavách *přidělení nákladů*.
+
+Mějte na paměti, že informace o značkách se u těchto prostředků nezobrazují v sestavách *analýzy nákladů*. Značky použité v Cloudyn pomocí přidělování nákladů se navíc neodesílají do Azure, takže je neuvidíte na webu Azure Portal.
+
+Když začnete s přidělováním nákladů, první věc, kterou je potřeba udělat, je definovat rozsah s použitím modelu nákladů. Model nákladů nemění náklady, ale provádí jejich rozúčtování. Při vytváření modelu nákladů rozdělíte svá data podle entity nákladů, účtu nebo předplatného a několika značek. Mezi běžné příklady značek může patřit kód pro fakturaci, nákladové středisko nebo název skupiny. Značky pomáhají také provádět showback a chargeback do jiných částí organizace.
+
+Pokud chcete vytvořit vlastní model přidělování nákladů, vyberte v nabídce sestavy **Costs (Náklady)** &gt; **Cost Management (Správa nákladů)** &gt; **Cost Allocation 360° (360° přidělování nákladů)**.
 
 ![Výběr možnosti Cost Allocation 360° (360° přidělování nákladů)](./media/tutorial-manage-costs/cost-allocation-360.png)
 
@@ -53,13 +65,13 @@ Příklad ukazuje, že 14 444 USD není zařazeno do kategorií (nemá značku)
 
 Dále vyberte **Uncategorized Resources** (Prostředky nezařazené do kategorií) a vyberte služby s nepřidělenými náklady. Pak definujte pravidla pro přidělení prostředků.
 
-Můžete například vzít náklady na úložiště Azure a rovnoměrně je distribuovat na virtuální počítače Azure. Pokud to chcete provést, vyberte službu **Azure/Storage**, pak možnost **Proportional to Categorized** (Proporční na kategorizované) a pak vyberte **Azure/VM**. Potom vyberte **Create** (Vytvořit).
+Můžete například vzít náklady na úložiště Azure a rovnoměrně je rozúčtovat na virtuální počítače Azure. Pokud to chcete provést, vyberte službu **Azure/Storage**, pak možnost **Proportional to Categorized** (Proporční na kategorizované) a pak vyberte **Azure/VM**. Potom vyberte **Create** (Vytvořit).
 
-![Příklad pravidla přidělování v modelu nákladů pro rovnoměrnou distribuci](./media/tutorial-manage-costs/cost-model02.png)
+![Příklad pravidla přidělení v modelu nákladů pro rovnoměrné rozúčtování](./media/tutorial-manage-costs/cost-model02.png)
 
 
 
-V jiném příkladu můžete chtít přidělit veškeré náklady na síť Azure ke konkrétní obchodní jednotce v rámci organizace. Pokud to chcete provést, vyberte službu **Azure/Network** a pak vyberte možnost **Explicit Distribution** (Explicitní distribuce). Potom nastavte podíl distribuce v procentech na 100 a vyberte obchodní jednotku – na následujícím obrázku je to **G&amp;A**:
+V jiném příkladu můžete chtít přidělit veškeré náklady na síť Azure ke konkrétní obchodní jednotce v rámci organizace. Uděláte to tak, že vyberete službu **Azure/Network** a pak v oblasti **Define Allocation Rule** (Definovat pravidlo přidělování) vyberete **Explicit Distribution** (Explicitní rozúčtování). Potom nastavte procento rozúčtování na 100 a vyberte obchodní jednotku – na následujícím obrázku je to **G&amp;A**:
 
 ![Příklad pravidla přidělování v modelu nákladů pro konkrétní obchodní jednotku](./media/tutorial-manage-costs/cost-model03.png)
 
@@ -97,9 +109,9 @@ Data značek, která se zobrazují v sestavách Cloudyn, pocházejí ze tří m�
     - Značky entit Cloudyn – uživatelsky definovaná metadata použitá na entity Cloudyn.
     - Category Manager (Správce kategorií) – nástroj pro čištění dat, který vytváří nové značky na základě pravidel použitých na existující značky.
 
-Pokud chcete v sestavách nákladů Cloudyn zobrazit značky poskytovatele cloudu, musíte vytvořit vlastní model přidělování nákladů pomocí možnosti Cost Allocation 360° (360° přidělování nákladů). Pokud to chcete provést, přejděte do **Cost** (Náklady) > **Cost Management** (Správa nákladů) > **Cost Allocation 360** (360° přidělování nákladů), vyberte požadované značky a pak definujte pravidla pro zpracování neoznačených nákladů. Pak vytvořte nový model nákladů. Následně můžete podle značek prostředků Azure zobrazit, filtrovat a řadit sestavy v části Cost Allocation Analysis (Analýza přidělování nákladů).
+Pokud chcete v sestavách nákladů Cloudyn zobrazit značky poskytovatele cloudu, musíte vytvořit vlastní model přidělování nákladů pomocí možnosti Cost Allocation 360° (360° přidělování nákladů). Uděláte to tak, že přejdete na **Costs (Náklady)** > **Cost Management (Správa nákladů)** > **Cost Allocation 360 (360° přidělování nákladů)**, vyberete požadované značky a pak definujete pravidla pro nakládání s neoznačenými náklady. Pak vytvořte nový model nákladů. Následně můžete podle značek prostředků Azure zobrazit, filtrovat a řadit sestavy v části Cost Allocation Analysis (Analýza přidělování nákladů).
 
-Značky prostředků Azure se zobrazí pouze v sestavách **Cost Allocation Analysis** (Analýza přidělování nákladů).
+Značky prostředků Azure se zobrazují jen v sestavách **Costs (Náklady)** > **Cost Allocation Analysis (Analýza přidělování nákladů)**.
 
 Značky fakturace poskytovatele cloudu se zobrazí ve všech sestavách nákladů.
 

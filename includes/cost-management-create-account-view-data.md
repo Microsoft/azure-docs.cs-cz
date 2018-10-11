@@ -5,16 +5,16 @@ services: cost-management
 author: bandersmsft
 ms.service: cost-management
 ms.topic: include
-ms.date: 04/26/2018
+ms.date: 09/17/2018
 ms.author: banders
 manager: dougeby
 ms.custom: include file
-ms.openlocfilehash: 1b65775ef5ad40ca9e9c1e2c96fe1c2b8d92afdc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4acc3f43f04c51e5303c8eba1d934580802312b5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32198851"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47017641"
 ---
 ## <a name="view-cost-data"></a>Zobrazení informací o nákladech
 
@@ -26,27 +26,27 @@ V tomto příkladu řídicí panel správy ukazuje souhrnné náklady firmy Cont
 
 Pokud si nejste jisti účelem sestavy na řídicím panelu a chcete zobrazit vysvětlení, najeďte myší na symbol **i**. Kliknutím na jakoukoli sestavu na řídicím panelu zobrazíte úplnou sestavu.
 
-Sestavy můžete zobrazit také pomocí nabídky sestav v horní části portálu. Podívejme se na náklady společnosti Contoso na prostředky Azure za posledních 30 dnů. Klikněte na **Cost** (Náklady) > **Cost Analysis** (Analýza nákladů) > **Actual Cost Analysis** (Analýza skutečných nákladů). Pokud jsou ve vaší sestavě nastavené nějaké hodnoty pro značky, skupiny nebo filtry, vymažte je.
+Sestavy můžete zobrazit také pomocí nabídky sestav v horní části portálu. Podívejme se na náklady společnosti Contoso na prostředky Azure za posledních 30 dnů. Klikněte na **Costs** (Náklady) > **Cost Analysis** (Analýza nákladů) > **Actual Cost Analysis** (Analýza skutečných nákladů). Pokud jsou ve vaší sestavě nastavené nějaké hodnoty pro značky, skupiny nebo filtry, vymažte je.
 
 ![Analýza skutečných nákladů](./media/cost-management-create-account-view-data/actual-cost-01.png)
 
-V tomto příkladu jsou celkové náklady 75 970 USD a rozpočet je 130 000 USD.
+V tomto příkladu jsou celkové náklady 122 273 USD a rozpočet je 290 000 USD.
 
 Nyní upravíme formát sestavy a nastavíme skupiny a filtry, abychom omezili výsledky na náklady na Azure. Nastavte **Date Range** (Rozsah dat) na posledních 30 dnů. Kliknutím na symbol sloupce vpravo nahoře nastavte formát na pruhový graf a v části Skupiny vyberte **Provider** (Poskytovatel). Potom nastavte filtr **Provider** (Poskytovatel) na **Azure**.
 
 ![filtrovaná analýza skutečných nákladů](./media/cost-management-create-account-view-data/actual-cost-02.png)
 
-V tomto příkladu byly celkové náklady na prostředky Azure za posledních 30 dnů 3 839 USD.
+V tomto příkladu byly celkové náklady na prostředky Azure za posledních 30 dnů 3 309 USD.
 
 Klikněte pravým tlačítkem na pruh Provider (Azure) a rozbalte **Resource types** (Typy prostředků).
 
 ![rozbalení](./media/cost-management-create-account-view-data/actual-cost-03.png)
 
-Následující obrázek ukazuje náklady na prostředky Azure účtované společnosti Contoso. Celkové náklady byly 3 839 USD. V tomto příkladu byla přibližně polovina nákladů na místně redundantní úložiště a přibližně polovina na různé instance virtuálních počítačů.
+Následující obrázek ukazuje náklady na prostředky Azure účtované společnosti Contoso. Celkové náklady byly 3 309 USD. V tomto příkladu připadala přibližně polovina nákladů na virtuální počítače Standard_A1 a druhá polovina nákladů na různé služby Azure a instance virtuálních počítačů.
 
 ![typy prostředků](./media/cost-management-create-account-view-data/actual-cost-04.png)
 
-Klikněte pravým tlačítkem na typ prostředku a výběrem možnosti **Cost entities** (Entity nákladů) zobrazte entity nákladů a služby, které spotřebovaly tyto prostředky. Virtuální počítače a služby Worker v DevOps v tomto příkladu spotřebovaly 486,60 USD a 435,71 USD. Celkové náklady na obojí jsou 922 USD.
+Klikněte pravým tlačítkem na typ prostředku a výběrem možnosti **Cost entities** (Entity nákladů) zobrazte entity nákladů a služby, které spotřebovaly tyto prostředky. Na následujícím obrázku je místně redundantní úložiště nastavené jako typ Prostředek. Contoso|Azure/úložiště spotřebovalo 15,65 USD. Technické zabezpečení| Azure Storage spotřebovalo 164,25 USD. Sdílená infrastruktura | Azure/úložiště spotřebovalo 116,58 USD. Celkové náklady za služby jsou 296 USD.
 
 ![entity nákladů a služby](./media/cost-management-create-account-view-data/actual-cost-05.png)
 

@@ -3,7 +3,7 @@ title: Nastavení služby VPN gateway pro Azure Stack | Dokumentace Microsoftu
 description: Přečtěte si o nastaveních pro brány VPN Gateway, které používáte pro Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: fa8d3adc-8f5a-4b4f-8227-4381cf952c56
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/14/2018
-ms.author: brenduns
-ms.openlocfilehash: 6380936766bb0f3848811be305783c274867b0fc
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.author: sethm
+ms.openlocfilehash: 2fa062621e551ce7182facc45ec84b39d4c2dad7
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43381863"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078745"
 ---
 # <a name="vpn-gateway-configuration-settings-for-azure-stack"></a>Konfigurace nastavení služby VPN gateway pro Azure Stack
 
@@ -67,7 +67,7 @@ Podobně Azure Stack nepodporuje změnu velikosti z podporovaných starší verz
 
 Pokud použijete k vytvoření brány virtuální sítě Resource Manageru na portálu Azure Stack, můžete pomocí rozevíracího seznamu vyberte SKU brány. Možnosti, které máte na výběr odpovídají typ brány a typ sítě VPN, kterou jste vybrali.
 
-#### <a name="powershell"></a>Prostředí Power Shell
+#### <a name="powershell"></a>PowerShell
 
 Následující příklad Powershellu Určuje, **- GatewaySku** jako VpnGw1.
 
@@ -121,9 +121,9 @@ V následující tabulce jsou uvedeny požadavky pro brány VPN Gateway.
 
 | |Brány sítě VPN PolicyBased Basic | Brána VPN typu RouteBased Basic | Brána VPN typu RouteBased Standard | RouteBased vysoce výkonná brána sítě VPN|
 |--|--|--|--|--|
-| **Připojení Site-to-Site (S2S připojení)** | Není podporováno | Konfigurace VPN typu RouteBased | Konfigurace VPN typu RouteBased | Konfigurace VPN typu RouteBased |
-| **Metoda ověřování**  | Není podporováno | Předsdílený klíč pro připojení S2S  | Předsdílený klíč pro připojení S2S  | Předsdílený klíč pro připojení S2S  |   
-| **Maximální počet připojení S2S**  | Není podporováno | 10 | 10| 5|
+| **Připojení Site-to-Site (S2S připojení)** | Nepodporuje se | Konfigurace VPN typu RouteBased | Konfigurace VPN typu RouteBased | Konfigurace VPN typu RouteBased |
+| **Metoda ověřování**  | Nepodporuje se | Předsdílený klíč pro připojení S2S  | Předsdílený klíč pro připojení S2S  | Předsdílený klíč pro připojení S2S  |   
+| **Maximální počet připojení S2S**  | Nepodporuje se | 10 | 10| 5|
 |**Podpora aktivního směrování (BGP)** | Nepodporuje se | Nepodporuje se | Podporováno | Podporováno |
 
 ### <a name="gateway-subnet"></a>Podsíť brány
@@ -173,7 +173,7 @@ Na rozdíl od Azure, která podporuje několik nabídek jako iniciátor i respon
 |-|-|
 | Verze IKE           | IKEv2 |
 |Skupina Diffie-Hellman   | Skupina 2 (1 024 bitů) |
-| Metoda ověření | Předsdílený klíč |
+| Metoda ověřování | Předsdílený klíč |
 |Algoritmy šifrování a hash | AES256, SHA256 |
 |Životnost SA (čas)     | 28 800 sekund|
 

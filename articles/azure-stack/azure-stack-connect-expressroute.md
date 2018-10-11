@@ -3,7 +3,7 @@ title: Připojení k Azure pomocí ExpressRoute Azure Stack
 description: Zjistěte, jak propojit virtuální sítě ve službě Azure Stack k virtuálním sítím v Azure pomocí ExpressRoute.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: db9f19154668fa33bb94e59a4da6735b1a6d3d49
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: eee4407af8d7def94061002941d758a99237645f
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720493"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078694"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>Připojení k Azure pomocí Azure ExpressRoute Azure Stack
 
@@ -183,7 +183,7 @@ Po vytvoření brány virtuální sítě můžete získat veřejnou IP adresu br
 1. V části **Brána virtuální sítě**vyberte **přehled** ze seznamu prostředků. Alternativně můžete vybrat **vlastnosti**.
 1. IP adresa, kterou chcete mějte na paměti, je uvedený v části **veřejnou IP adresu**. Tato adresa je pro příklad konfigurace 192.68.102.1.
 
-#### <a name="create-a-virtual-machine"></a>Vytvořit virtuální počítač
+#### <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
 Vyzkoušejte přenosy dat prostřednictvím připojení VPN, budete potřebovat virtuální počítače pro odesílání a přijímání dat ve virtuální síti Azure Stack. Vytvoření virtuálního počítače a nasaďte ji k podsíti virtuálních počítačů pro vaši virtuální síť.
 
@@ -216,7 +216,7 @@ Vyzkoušejte přenosy dat prostřednictvím připojení VPN, budete potřebovat 
 >* Vytvoření brány virtuální sítě
 >* Vytvoření brány místní sítě
 >* Vytvoření připojení
->* Vytvořit virtuální počítač
+>* Vytvoření virtuálního počítače
 >
 >Pokud se chystáte použít 2 Tenanta jako příklad, nezapomeňte změnit IP adres, aby se zabránilo překrytí.
 
@@ -352,7 +352,7 @@ Vytvoření partnerského vztahu centra a virtuální sítě pomocí postupu v p
 * V centru do paprsku **povolit průchod bránou**.
 * Z paprsku k rozbočovači **používat vzdálenou bránu**.
 
-### <a name="create-a-virtual-machine"></a>Vytvořit virtuální počítač
+### <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
 Úlohy virtuálních počítačů nasaďte do virtuální sítě paprsků.
 
@@ -589,7 +589,7 @@ route-map VNET-ONLY permit 10
 !
 ```
 
-## <a name="test-the-connection"></a>Otestovat připojení
+## <a name="test-the-connection"></a>Otestování připojení
 
 Po navázání připojení Site-to-Site a okruh ExpressRoute, vyzkoušejte připojení.
 

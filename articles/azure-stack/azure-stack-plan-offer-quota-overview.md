@@ -1,9 +1,9 @@
 ---
-title: Přehled plán, nabídka, kvóty a předplatné Azure zásobníku | Microsoft Docs
-description: Jako operátor cloudu chcete pochopit plány, nabídky, kvóty a předplatná Azure zásobníku.
+title: Přehled plánu, nabídky, kvót a předplatného Azure Stack | Dokumentace Microsoftu
+description: Jako operátor cloudu chci pochopit plány, nabídky, kvóty a předplatných Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: 3dc92e5c-c004-49db-9a94-783f1f798b98
@@ -13,75 +13,75 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/07/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: d8aef778807d3a8a61cf9eedaae24abce84a19ab
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 70ed5d45701133434c708ad80aaafc58645297e8
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248754"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077112"
 ---
 # <a name="plan-offer-quota-and-subscription-overview"></a>Přehled plánů, nabídek, kvót a předplatných
 
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-[Azure zásobníku](azure-stack-poc.md) umožňuje poskytovat širokou škálu služeb databáze systému SQL Server, SharePoint, Exchange, jako jsou virtuální počítače a dokonce i [položky Azure Marketplace](azure-stack-marketplace-azure-items.md). Jako operátor zásobník Azure konfiguraci a poskytování těchto služeb v zásobníku Azure pomocí plánů, nabídky a kvóty.
+[Azure Stack](azure-stack-poc.md) umožňuje poskytovat celou řadu služeb, jako jsou virtuální počítače, databáze systému SQL Server, SharePoint, Exchange a dokonce i [položky Azure Marketplace](azure-stack-marketplace-azure-items.md). Jako operátory Azure stacku konfigurace a poskytování těchto služeb ve službě Azure Stack pomocí plánů, nabídek a kvót.
 
-Nabízí obsahovat jeden nebo více plánů a každý plán zahrnuje jednu nebo více služeb. Vytvořením plány a jejich kombinace do jiné nabídky, můžete spravovat:
+Nabídky obsahovat jeden nebo více plánů a každý plán obsahuje jednu nebo víc služeb. Vytváření plánů a jejich sloučením do různých nabídek, můžete spravovat:
 
-- Role a prostředky, které uživatelé přístup.
-- Objem prostředků, které uživatelé můžou využívat.
+- Které služby a vaši uživatelé měli přístup k prostředkům.
+- Množství prostředků, které uživatelé můžou využívat.
 - Oblasti, které mají přístup k prostředkům.
 
-Při předvádění službu, postupujte podle těchto kroků:
+Při předvádění služby postupujte podle těchto kroků:
 
-1. Přidáte službu, kterou chcete poskytovat uživatelům.
-2. Vytvoření plánu, který má jeden nebo více služeb. Při vytváření plánu, vyberte nebo vytvořte kvóty, které definují omezení prostředků každé služby v plánu.
-3. Vytvořte nabídku, který obsahuje jeden nebo více plánů. Nabídka může zahrnovat základní a volitelné rozšíření plány.
+1. Přidáte službu, kterou chcete doručovat uživatelům.
+2. Vytvořte plán, který má jednu nebo víc služeb. Při vytváření plánu, vyberte nebo vytvořte kvóty, které definují omezení prostředků každé služby v plánu.
+3. Vytvořte nabídku, která obsahuje jeden nebo více plánů. Nabídka může obsahovat základní plány a volitelné doplňkové plány.
 
-Po vytvoření nabídky, mohou uživatelé přihlásit k přístup služeb a prostředků, které poskytuje nabídku. Uživatelé se mohou přihlásit k tolik nabídky požadovaným způsobem. Následující diagram ukazuje jednoduchý příklad uživatele, který se připojila ke dvěma nabídky. Každý nabídka má plán nebo dva a každý plán uděluje uživateli přístup ke službám.
+Po vytvoření nabídky, uživatelé mohou přihlásit k mu umožní přístup k službám a prostředkům, které poskytuje tuto nabídku. Uživatelé můžou přihlásit k libovolný počet nabídek, jak chtějí. Následující diagram ukazuje jednoduchý příklad uživatele, který se připojila k dvou nabídek. Každá nabídka má plán jedné až dvou a každý plán jim uděluje přístup ke službám.
 
-![Předplatné s nabídkami a plány klienta](media/azure-stack-key-features/image4.png)
+![Předplatného tenanta pomocí nabídky a plány](media/azure-stack-key-features/image4.png)
 
 ## <a name="plans"></a>Plány
 
-Plány jsou seskupení jednu nebo více služeb. Jako operátor zásobník Azure můžete [vytvářet plány](azure-stack-create-plan.md) a nabídnout uživatelům. Pak vaši uživatelé přihlásit k vaší nabídky pro plány a službách, které obsahují. Při vytváření plánů, nezapomeňte nastavit vaší kvóty, definovat základní plánu a zvážit, včetně plánů volitelné rozšíření.
+Plány představují seskupení jedné nebo více služeb. Jako operátory Azure stacku můžete [vytváření plánů](azure-stack-create-plan.md) nabízí svým uživatelům. Uživatelé pak předplatit nabídek, aby mohli používat plány a služby, které patří mezi ně. Při vytváření plánů, ujistěte se, že pro nastavení svoje kvóty, definujte základní plány a zvážit volitelné doplňkové plány.
 
 ### <a name="quotas"></a>Kvóty
 
-Ke správě vašeho kapacitu cloudu, můžete použít předem nakonfigurovaná kvóty nebo vytvořit nové kvóty pro každou službu v plánu. Kvóty definovat limity horní prostředků, které uživatel předplatné můžete zřizovat nebo využívat. Například kvótu, mohou povolovat uživatel vytvoří až pět virtuální počítače (VM). Nastavíte dodatečných kvótách u virtuálních počítačů, jako je například paměti RAM a procesoru jádra.
+Vám pomůžou spravovat kapacitu cloudu, můžete použít předem nakonfigurované kvóty nebo vytvořit novou kvótu pro každou službu v plánu. Kvóty definovat omezení horní prostředků, které můžete zřizovat nebo využívat předplatného uživatele. Například může kvótu umožňují uživateli vytvořit až pět virtuálních počítačů (VM). Nastavit další kvóty pro virtuální počítače, jako je například paměti RAM a procesorů jádra.
 
-Můžete konfigurovat kvóty podle oblasti. Plán, který poskytuje výpočetní služby pro oblast A může mít například kvótu dva virtuální počítače s 4 GB paměti RAM a 8 jader procesoru.
+Můžete konfigurovat kvóty podle oblasti. Plán, který poskytuje výpočetních služeb pro oblast A může mít například kvótu dva virtuální počítače s 4 GB paměti RAM a 8 jader procesoru.
 
 >[!NOTE]
->V Development Kit zásobník Azure, pouze jedna oblast (s názvem *místní*) je k dispozici.
+>V sadě Azure Stack Development Kit, pouze jedna oblast (s názvem *místní*) je k dispozici.
 
-Další informace o [typy kvót v zásobníku Azure](azure-stack-quota-types.md).
+Další informace o [typy kvót ve službě Azure Stack](azure-stack-quota-types.md).
 
 ### <a name="base-plan"></a>Základní plán
 
-Při vytváření nabídky, Správce služeb můžete zahrnout základního plánu. Tyto základní plány jsou zahrnuté ve výchozím nastavení, pokud se uživatel přihlásí na tuto nabídku. Pokud se uživatel přihlásí, kterým mají přístup všichni zprostředkovatelé prostředků zadaný v těchto plánech základní (s odpovídající kvóty.)
+Při vytváření nabídky, Správce služeb můžete zahrnout základní plán. Tyto základní plány jsou zahrnuté ve výchozím nastavení, pokud se uživatel přihlásí k této nabídce. Pokud se uživatel přihlásí, mají přístup všechny poskytovatele prostředků podle těchto základních plánů (s odpovídajícím kvóty.)
 
 ### <a name="add-on-plans"></a>Doplňkové plány
 
-Rozšíření plány jsou volitelné plány, které přidáte do nabídky. Plány rozšíření nejsou zahrnuté ve výchozím nastavení v rámci předplatného. Rozšíření plány jsou další plány (s kvóty) k dispozici v nabídku, můžete k jejich odběry přidat odběratele. Například můžete nabízet základní plán s prostředků omezené zkušební verzi a plán rozšíření s více značné prostředky pro zákazníky, kteří se rozhodnete přijmout službu.
+Doplňkové plány jsou volitelné plány, které přidáte do nabídky. Doplňkové plány nejsou zahrnuté ve výchozím nastavení v rámci předplatného. Doplňkové plány jsou další plány (s kvótami) k dispozici v nabídce, odběratele můžete přidat do svých předplatných. Například můžete nabízet základní plán s omezenými zdroji pro zkušební verzi a doplňkový plán s více prostředky pro zákazníky, kteří se rozhodnete přijmout službu.
 
 ## <a name="offers"></a>Nabídky
 
-Nabídky jsou skupiny jeden nebo více plánů, které vytvoříte tak, aby uživatelé se mohou přihlásit k nim. Nabízejí Alpha může například obsahovat A plán, který poskytuje sadu výpočetní služby a plánování B, který poskytuje sadu úložiště a síťové služby.
+Nabídky jsou skupiny jednoho nebo několika plánů, které vytvoříte tak, aby uživatelé se mohou přihlásit k nim. Alfa nabízí může obsahovat například A plán, který poskytuje sadu výpočetních služeb a plánování B, která poskytuje sada služeb úložiště a sítě.
 
-Pokud jste [vytvořit nabídku](azure-stack-create-offer.md), musí obsahovat alespoň jeden základního plánu, ale můžete vytvořit také plány rozšíření, které uživatele můžete přidat do své předplatné.
+Pokud jste [vytvořte nabídku](azure-stack-create-offer.md), musí obsahovat aspoň jeden základní plán, ale můžete také vytvořit doplňkové plány, které uživatelé můžou přidávat do svého předplatného.
 
 ## <a name="subscriptions"></a>Předplatná
 
-Předplatné je, jak uživatelé přistupovat k vaší nabídky. Pokud jste Azure zásobníku operátor pro poskytovatele služeb, uživatelé (klienty) koupit vašim službám prostřednictvím registrace k vaší nabídky. Pokud jste Azure zásobníku operátor v organizaci, uživatelé (zaměstnanci) může přihlásit k služby, které nabízejí bez placení.
+Předplatné je, jak uživatelé přistupovat k vaší nabídky. Pokud jste operátory Azure stacku pro poskytovatele služeb, uživatelé (tenantů) koupit služby prostřednictvím přihlášení odběru na vaše nabídky. Pokud jste operátory Azure stacku v organizaci, uživatelé (zaměstnanci) může přihlásit k službám, které nabízejí bez nutnosti platit.
 
-Každé kombinaci uživatele s nabídku je jedinečný předplatné. Uživatel může mít odběry více nabídky, ale každý odběr platí pouze pro jednu nabídku. Plány, nabídky a kvóty se vztahují pouze na jedinečný předplatné – nemohou být sdíleny mezi předplatnými. Každý prostředek, který uživatel vytvoří je přidružen jeden odběr.
+Každá kombinace uživatele, jejichž nabídka je jedinečný předplatné. Uživatel může mít předplatné více nabídek, ale každé předplatné se vztahuje pouze na jednu nabídku. Plánů, nabídek a kvót pouze použít na jedinečných předplatné – nemohou být sdíleny mezi předplatnými. Každý prostředek, který uživatel vytvoří je přidružená k jednomu předplatnému.
 
-### <a name="default-provider-subscription"></a>Výchozí zprostředkovatel předplatné
+### <a name="default-provider-subscription"></a>Výchozí předplatné poskytovatele.
 
-Výchozí zprostředkovatel předplatné se automaticky vytvoří při nasazení Azure zásobníku Development Kit. Toto předplatné lze spravovat Azure zásobníku, nasazení zprostředkovatelé dalších prostředků a vytvořte plány a nabízí pro uživatele. Zabezpečení a licencování z důvodů by neměl lze použít ke spuštění úloh zákazníka a aplikace.
+Výchozí zprostředkovatel odběru se automaticky vytvoří při nasazení Azure Stack Development Kit. Toto předplatné můžete použít ke správě služby Azure Stack, nasadit další prostředků poskytovatele a vytvořit plány a nabídky pro uživatele. Zabezpečení a správy licencí z důvodů není vhodné používat pro spouštění úloh zákazníka a aplikací.
 
 ## <a name="next-steps"></a>Další postup
 

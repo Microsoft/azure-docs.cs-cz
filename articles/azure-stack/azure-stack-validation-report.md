@@ -3,7 +3,7 @@ title: Sestava ověření pro Azure Stack | Dokumentace Microsoftu
 description: Zkontrolujte výsledky ověření pomocí sestavy Kontrola připravenosti Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/08/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 06b5660a9428e98d2e99b5d447a05700968ec884
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 156b84e4941363716721b5cee6c19333ffe7594c
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43381909"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079442"
 ---
 # <a name="azure-stack-validation-report"></a>Sestava ověření služby Azure Stack
 Použijte nástroj prerequisite Checker připravenosti Azure Stack spustit ověření, které podporují nasazení a údržby prostředí Azure Stack. Nástroj zapisuje výsledky do sestavy soubor .json. Sestava zobrazí podrobné a souhrnné údaje o stavu všech požadovaných součástí pro nasazení služby Azure Stack. Sestava také zobrazí informace o otočení tajné kódy pro existující nasazení Azure Stack.  
@@ -60,8 +60,8 @@ Chcete-li zobrazit sestavu s filtrem na jeden typ ověřování, použijte **- R
 - Certifikát
 - AzureRegistration
 - AzureIdentity
-- Počet úloh   
-- Všechna  
+- Úlohy   
+- Vše  
 
 Například chcete-li zobrazit sestavu shrnutí pro certifikáty, použít pouze následující příkazový řádek Powershellu: 
  > `Start-AzsReadinessChecker -ReportPath .\AzsReadinessReport.json -ReportSections Certificate – Summary`

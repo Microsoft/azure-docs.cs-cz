@@ -3,7 +3,7 @@ title: Připojení k Azure pomocí VPN Azure Stack
 description: Jak propojit virtuální sítě ve službě Azure Stack k virtuálním sítím v Azure pomocí připojení VPN.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: scottnap
-ms.openlocfilehash: bd36f423fe2c7acb05b805154da8f6e6c35f9455
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: dcbe222d8dd3d3c658e5778fdc4bc1cc01b5c12d
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718130"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078881"
 ---
 # <a name="connect-azure-stack-to-azure-using-vpn"></a>Připojení k Azure pomocí VPN Azure Stack
 
@@ -123,7 +123,7 @@ Nejprve vytvořte prostředky sítě pro Azure. Následující pokyny ukazují, 
 
 10. Zkontrolujte **Souhrn** a potom vyberte **OK**.
 
-## <a name="create-a-virtual-machine"></a>Vytvořit virtuální počítač
+## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
 Vytvoření virtuálního počítače v Azure teď a umístí ji podsítě virtuálních počítačů ve vaší virtuální síti.
 
@@ -237,7 +237,7 @@ Pokud chcete zkontrolovat připojení k síti VPN, je potřeba vytvořit dva vir
 8. Na **nastavení** části, přijměte výchozí hodnoty. Ujistěte se, že **Azs-VNet** je vybraná virtuální síť. Ověřte, že podsíť je nastavená na **10.1.0.0/24**. Pak vyberte **OK**.
 9. Na **Souhrn** části, zkontrolujte nastavení a pak vyberte **OK**.
 
-## <a name="test-the-connection"></a>Otestovat připojení
+## <a name="test-the-connection"></a>Otestování připojení
 
 Po vytvoření připojení site-to-site, měli byste ověřit, že můžete získat data v obou směrech. Tímto způsobem testu pomocí příkazu ping je nejjednodušší způsob, jak otestovat připojení:
 

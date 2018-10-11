@@ -1,42 +1,44 @@
 ---
-title: Rychlý start C# pro Azure Cognitive Services, Microsoft Translator Speech API | Dokumentace Microsoftu
-description: Získat informace a ukázky kódu můžete rychle začít používat Microsoft Translator Speech API ve službě Microsoft Cognitive Services v Azure.
+title: 'Rychlý start: Rozhraní Translator Speech API v jazyce C#'
+titlesuffix: Azure Cognitive Services
+description: Získejte informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní Translator Speech API.
 services: cognitive-services
-documentationcenter: ''
 author: v-jaswel
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-speech
-ms.topic: article
+ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: c8c1945d8343ad966fe4b09f67099bccdae4be29
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
-ms.translationtype: MT
+ROBOTS: NOINDEX
+ms.openlocfilehash: 7d1f5968fe6ddffce3194f070b6a17aca4d3d9ab
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128533"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995036"
 ---
-# <a name="quickstart-for-microsoft-translator-speech-api-with-c"></a>Rychlý start pro rozhraní Microsoft Translator Speech API pomocí jazyka C# 
+# <a name="quickstart-translator-speech-api-with-c"></a>Rychlý start: Rozhraní Translator Speech API v jazyce C# 
 <a name="HOLTop"></a>
 
-V tomto článku se dozvíte, jak používat Microsoft Translator Speech API pro převod slova v souboru ve formátu WAV.
+V tomto článku se dozvíte, jak použít rozhraní Translator Speech API k překladu vyslovených slov do souboru .wav.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Budete potřebovat [Visual Studio 2017](https://www.visualstudio.com/downloads/) tento kód spustit na Windows. (Bude stačit bezplatná verze Community Edition.)
+Ke spuštění tohoto kódu ve Windows budete potřebovat [Visual Studio 2017](https://www.visualstudio.com/downloads/). (Bude stačit bezplatná verze Community Edition.)
 
-Budete potřebovat soubor WAV s názvem "speak.wav" ve stejné složce jako spustitelný soubor, který kompilaci z níže uvedeného kódu. Tento soubor ve formátu WAV musí být ve standardní PCM, 16 bitů, 16kHz, mono formátu.
+Budete potřebovat soubor .wav s názvem „speak.wav“ ve stejné složce jako spustitelný soubor, který zkompilujete z níže uvedeného kódu. Tento soubor .wav musí být ve standardním 16bitovém, 16kHz monofonním formátu PCM.
 
-Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **Microsoft Translator Speech API**. Budete potřebovat placené předplatné klíče z vašeho [řídicí panel Azure](https://portal.azure.com/#create/Microsoft.CognitiveServices).
+Musíte mít [účet rozhraní Cognitive Services API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s rozhraním **Microsoft Translator Speech API**. Budete potřebovat placené klíče předplatného ze svého [řídicího panelu Azure](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 
 ## <a name="translate-speech"></a>Překlad řeči
 
-Následující kód přeloží řeči z jednoho jazyka do druhého.
+Následující kód překládá řeč z jednoho jazyka do druhého.
 
-1. Vytvořte nový projekt C# v oblíbeném prostředí IDE.
+1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt C#.
 2. Přidejte níže uvedený kód.
-3. Nahraďte `key` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Spuštění programu.
+3. Hodnotu `key` nahraďte přístupovým klíčem platným pro vaše předplatné.
+4. Spusťte program.
 
 ```csharp
 using System;
@@ -142,18 +144,18 @@ namespace TranslateSpeechQuickStart
 }
 ```
 
-**Překlad řeči odpovědi**
+**Odpověď s přeloženou řečí**
 
-Úspěšný výsledek je vytvoření souboru s názvem "speak2.wav". Tento soubor obsahuje překlad slova, kterým se mluví ve "speak.wav".
+Úspěšným výsledkem je vytvoření souboru s názvem „speak2.wav“. Tento soubor obsahuje překlad vyslovených slov ze souboru „speak.wav“.
 
 [Zpět na začátek](#HOLTop)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Translator Speech kurz](../tutorial-translator-speech-csharp.md)
+> [Kurz ke službě Translator Speech](../tutorial-translator-speech-csharp.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech 
+## <a name="see-also"></a>Viz také 
 
-[Přehled rozhraní Translator Speech](../overview.md)
-[Reference k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)
+[Přehled služby Translator Speech](../overview.md)
+[Referenční materiály k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)

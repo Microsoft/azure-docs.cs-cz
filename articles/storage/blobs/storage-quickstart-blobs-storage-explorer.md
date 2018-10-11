@@ -1,29 +1,31 @@
 ---
-title: Rychlý start Azure – Vytvoření objektu blob v úložišti objektů pomocí Průzkumníka služby Azure Storage | Microsoft Docs
-description: V tomto rychlém startu použijete v úložišti objektů (blob) Průzkumníka služby Azure Storage. Pak použijete Průzkumníka služby Storage k nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů blob v kontejneru.
+title: 'Rychlý start: Vytvoření objektu blob v úložišti objektů pomocí Průzkumníka služby Azure Storage'
+description: V tomto rychlém startu se dozvíte, jak použít Průzkumníka služby Azure Storage k vytvoření kontejneru a objektu blob. Dále zjistíte, jak stáhnout tento objekt blob do místního počítače a jak zobrazit všechny objekty blob v kontejneru. Zároveň se naučíte vytvořit snímek objektu blob, spravovat zásady přístupu ke kontejneru a vytvořit sdílený přístupový podpis.
 services: storage
 author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 04/09/2018
+ms.date: 08/27/2018
 ms.author: tamram
-ms.openlocfilehash: 83698abd3006671c5edce37e3cada26d07d25b8f
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 3f0418e9ccdc5fe3babd2f1ac4482795994fe3b4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399632"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996124"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-using-azure-storage-explorer"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Průzkumníka služby Azure Storage
+# <a name="quickstart-use-azure-storage-explorer-to-create-a-blob-in-object-storage"></a>Rychlý start: Vytvoření objektu blob v úložišti objektů pomocí Průzkumníka služby Azure Storage
 
-[Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) je multiplatformní uživatelské rozhraní pro správu obsahu vašeho účtu úložiště. Tento článek podrobně popisuje použití Průzkumníka služby Azure Storage k přenosu souborů mezi místním diskem a úložištěm objektů blob v Azure.
+V tomto rychlém startu se dozvíte, jak použít [Průzkumníka služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) k vytvoření kontejneru a objektu blob. Dále zjistíte, jak stáhnout tento objekt blob do místního počítače a jak zobrazit všechny objekty blob v kontejneru. Zároveň se naučíte vytvořit snímek objektu blob, spravovat zásady přístupu ke kontejneru a vytvořit sdílený přístupový podpis.
+
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-Tento postup vyžaduje instalovaného Průzkumníka služby Azure Storage. Pokud ho potřebujete nainstalovat, na stránce [Průzkumníka služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) si ho můžete stáhnout pro Windows, Macintosh nebo Linux.
+Tento rychlý start vyžaduje instalaci Průzkumníka služby Azure Storage. Instalaci Průzkumníka služby Azure Storage pro Windows, Macintosh nebo Linux popisuje článek [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/).
 
-[!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
+[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
 ## <a name="log-in-to-storage-explorer"></a>Přihlášení do Průzkumníka služby Storage
 

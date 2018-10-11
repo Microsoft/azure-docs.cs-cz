@@ -3,7 +3,7 @@ title: Vytvoření připojení site-to-site VPN mezi dvěma virtuálními sítě
 description: Podrobný postup, který správce cloudu se použije k vytvoření připojení site-to-site VPN mezi dvěma prostředími Azure Stack Development Kit jedním uzlem.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: 3f1b4e02-dbab-46a3-8e11-a777722120ec
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: scottnap
 ROBOTS: NOINDEX
-ms.openlocfilehash: a219f44cb27bb6ebe4e17079ad487457ae8852f0
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: b17b1b077a1acac5ddb0e9eea8c4a2cf44697979
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718113"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078898"
 ---
 # <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>Vytvoření připojení site-to-site VPN mezi dvěma virtuálními sítěmi v různých prostředích Azure Stack Development Kit
 ## <a name="overview"></a>Přehled
@@ -235,7 +235,7 @@ Správce služeb můžete přihlásit jako tenant k testovací plány, nabídky 
 9. V **sdílený klíč (PSK)**, zadejte **12345**. Pokud zvolíte jinou hodnotu, mějte na paměti, že *musí* odpovídat hodnotě pro sdílený klíč, který jste vytvořili v POC1. Vyberte **OK**.
 10. Zkontrolujte **Souhrn** okna a pak vyberte **OK**.
 
-## <a name="create-a-virtual-machine"></a>Vytvořit virtuální počítač
+## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 Teď vytvořte virtuální počítač v POC2 a umístí jej podsítě virtuálních počítačů ve vaší virtuální síti.
 
 1. Na webu Azure Portal, vyberte **+ vytvořit prostředek**.
@@ -311,7 +311,7 @@ Pokud chcete nakonfigurovat připojení VPN, musíte vytvořit statickou trasu m
 
 4. Opakujte tento postup v POC2.
 
-## <a name="test-the-connection"></a>Otestovat připojení
+## <a name="test-the-connection"></a>Otestování připojení
 Teď, když se připojení site-to-site, měli byste ověřit, že dokážete zajistit provoz přes něj. Pokud chcete ověřit, přihlaste se k jednomu z virtuálních počítačů, které jste vytvořili v prostředí Azure Stack Development Kit. Pak odešlete zprávu ping virtuální počítač, který jste vytvořili v druhém prostředí. 
 
 Pokud chcete mít jistotu, že je přenos odesílat přes připojení site-to-site, zkontrolujte pomocí příkazu ping adresa Direct IP (DIP) virtuálního počítače ve vzdálené podsíti, nikoli virtuální IP adresy. K tomuto účelu najdete IP adresu na druhém konci připojení. Uložte adresu pro pozdější použití.

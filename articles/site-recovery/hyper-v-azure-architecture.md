@@ -2,16 +2,17 @@
 title: Hyper-V do Azure replikace architektura v Azure Site Recovery | Dokumentace Microsoftu
 description: Tento článek obsahuje přehled komponent a architektury používané při replikaci místních virtuálních počítačů Hyper-V (bez nástroje VMM) do Azure s využitím služby Azure Site Recovery.
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: c5d31b6217d3afe8ddb3550c145820be5996c96a
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 49059415c5f96eeb4dd871e7d2c8ae4ab9b2c12e
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920594"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078354"
 ---
 # <a name="hyper-v-to-azure-replication-architecture"></a>Hyper-V do Azure replikace architektury
 
@@ -69,7 +70,7 @@ Následující tabulka a obrázek poskytuje souhrnný přehled komponenty použ�
 1. Po povolení ochrany pro virtuální počítače Hyper-V (na webu Azure Portal nebo místně) se spustí **Povolení ochrany**.
 2. Úloha zkontroluje, zda počítač splňuje požadavky, a potom vyvolá metodu [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx), která nastaví replikaci s nastavením, které jste nakonfigurovali.
 3. Úloha spustí počáteční replikaci vyvoláním metody [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx), která zahájí úplnou replikaci virtuálního počítače a odešle virtuální disky virtuálního počítače do Azure.
-4. Úlohu můžete sledovat na kartě **Úlohy**.      ![Seznam úloh](media/hyper-v-azure-architecture/image1.png)![Podrobnosti povolení ochrany](media/hyper-v-azure-architecture/image2.png)
+4. Úlohu můžete sledovat na kartě **Úlohy**.      ![Seznam úloh](media/hyper-v-azure-architecture/image1.png) ![Podrobnosti povolení ochrany](media/hyper-v-azure-architecture/image2.png)
 
 
 ### <a name="initial-data-replication"></a>Počáteční replikace dat.
