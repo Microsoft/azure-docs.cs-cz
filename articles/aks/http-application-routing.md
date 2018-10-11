@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: laevenso
-ms.openlocfilehash: fa9c9416a8a1f80a62a21e5d9041e750b1debb98
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 181a37504569088e44dbe39da9113257bfb35c4e
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269373"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068930"
 ---
 # <a name="http-application-routing"></a>Směrování aplikace HTTP
 
@@ -88,6 +88,13 @@ spec:
       containers:
       - image: r.j3ss.co/party-clippy
         name: party-clippy
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
         tty: true
         command: ["party-clippy"]
         ports:

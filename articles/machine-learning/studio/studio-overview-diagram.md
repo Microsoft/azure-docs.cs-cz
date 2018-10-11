@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 04/04/2017
-ms.openlocfilehash: f1364435d2f7b50c642d1bb5b41708ec52bda533
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 240be0e7dc199a84130739244743d245b780b608
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946200"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902072"
 ---
 # <a name="overview-diagram-of-azure-machine-learning-studio-capabilities"></a>Diagram s přehledem možností nástroje Machine Learning Studio
 Diagram s **přehledem možností nástroje Machine Learning Studio** nastiňuje na nejvyšší úrovni, jak pomocí nástroje Machine Learning Studio vyvinout model prediktivní analýzy a zprovoznit ho v cloudu Azure.
@@ -47,7 +47,7 @@ Stáhněte si diagram s **přehledem možností nástroje Machine Learning Studi
 
 
 ## <a name="more-help-with-machine-learning-studio"></a>Další nápověda k nástroji Machine Learning Studio
-* Přehled služby Microsoft Azure Machine Learning najdete v tématu [Úvod do strojového učení v Microsoft Azure](what-is-machine-learning.md).
+* Přehled služby Microsoft Azure Machine Learning najdete v tématu [Úvod do strojového učení v Microsoft Azure](../service/overview-what-is-azure-ml.md).
 * Přehled nástroje Machine Learning Studio najdete v tématu [Co je Azure Machine Learning Studio?](what-is-ml-studio.md).
 * Algoritmy strojového učení dostupné v nástroji Machine Learning Studio podrobně rozebíráme v tématu [Jak zvolit algoritmy pro Microsoft Azure Machine Learning](algorithm-choice.md).
 

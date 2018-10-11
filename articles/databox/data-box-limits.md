@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 09/05/2018
+ms.date: 10/10/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: fe42380288c0f139a2bae80a12f0ebc428a4c286
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d1aeabd2de529d2c6b3159d9cd65996fb5096d0a
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993070"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069365"
 ---
 # <a name="azure-data-box-limits"></a>Omezení služby Azure Data Box
 
@@ -35,7 +35,7 @@ Tato omezení zvažte, jak nasadit a provozovat váš Microsoft Azure Data Box. 
 
 ## <a name="data-box-limits"></a>Omezení zařízení data Box
 
-- Data Box můžete uložit maximálně 5 milionů souborů.
+- Data Box můžete uložit maximálně 500 milionů souborů.
 
 ## <a name="azure-storage-limits"></a>Omezení služby Azure storage
 
@@ -44,7 +44,7 @@ Tato část popisuje omezení pro službu Azure Storage a požadované zásady v
 Nejnovější informace o omezení služby Azure storage a osvědčené postupy pro zadávání názvů sdílených složek, kontejnery a souborů přejděte na:
 
 - [Pojmenování a odkazování na ně kontejnery](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
-- [Pojmenování a odkazování na sdílené složky](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
+- [Pojmenování sdílených složek a odkazování na ně](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
 - [Objekty BLOB bloku a vytváření názvů objektů blob stránky](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
 
 > [!IMPORTANT]

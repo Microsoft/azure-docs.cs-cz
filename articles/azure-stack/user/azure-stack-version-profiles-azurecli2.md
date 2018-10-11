@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/08/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 59b637e6887a645430d902cd846cacda13b14cfe
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6042aa4dd8b26a0986737edc3c89b8e165ae970a
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972806"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067699"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Použití profilů verzí API pomocí Azure CLI ve službě Azure Stack
 
@@ -168,7 +168,8 @@ Následující kroky použijte pro připojení ke službě Azure Stack:
 
 1. Přihlaste se k prostředí Azure Stack pomocí `az login` příkazu. Můžete se přihlásit k prostředí Azure Stack jako uživatel, nebo jako [instanční objekt služby](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects). 
 
-   * Přihlaste se jako *uživatele*: můžete zadat uživatelské jméno a heslo přímo v rámci `az login` příkaz % $n nebo ověřování pomocí prohlížeče. Je nutné provést ten, pokud má váš účet zapnuté vícefaktorové ověřování.
+    * Prostředí AAD
+      * Přihlaste se jako *uživatele*: můžete zadat uživatelské jméno a heslo přímo v rámci `az login` příkaz % $n nebo ověřování pomocí prohlížeče. Je nutné provést ten, pokud má váš účet zapnuté vícefaktorové ověřování.
 
       ```azurecli
       az login \
@@ -179,7 +180,7 @@ Následující kroky použijte pro připojení ke službě Azure Stack:
       > [!NOTE]
       > Pokud váš uživatelský účet má povolené ověřování službou Multi-Factor Authentication, můžete použít `az login command` bez zadání `-u` parametru. Spuštěním příkazu poskytuje adresu URL a kód, který je nutné použít k ověření.
    
-   * Přihlaste se jako *instanční objekt služby*: než se přihlásit, [vytvoření instančního objektu služby na webu Azure portal](azure-stack-create-service-principals.md) nebo rozhraní příkazového řádku a přiřaďte ho roli. Teď se přihlaste pomocí následujícího příkazu:
+      * Přihlaste se jako *instanční objekt služby*: než se přihlásit, [vytvoření instančního objektu služby na webu Azure portal](azure-stack-create-service-principals.md) nebo rozhraní příkazového řádku a přiřaďte ho roli. Teď se přihlaste pomocí následujícího příkazu:
 
       ```azurecli
       az login \
@@ -188,6 +189,22 @@ Následující kroky použijte pro připojení ke službě Azure Stack:
         -u <Application Id of the Service Principal> \
         -p <Key generated for the Service Principal>
       ```
+    * AD FS prostředí
+
+        * Přihlaste se jako *instanční objekt služby*: 
+          1.    Připravte soubor .pem, který má být použit pro přihlášením instančního objektu.
+                * Na klientském počítači, kde byl vytvořen objekt zabezpečení a export certifikátu objektu služby jako pfx s privátním klíčem (umístěné na cert: \CurrentUser\My; název certifikátu má stejný název jako objekt zabezpečení).
+
+                *   Převeďte soubor pfx na pem (použití OpenSSL nástroje).
+
+          1.    Přihlaste se k rozhraní příkazového řádku. :
+                ```azurecli
+                az login --service-principal \
+                 -u <Client ID from the Service Principal details> \
+                 -p <Certificate's fully qualified name. Eg. C:\certs\spn.pem>
+                 --tenant <Tenant ID> \
+                 --debug 
+                ```
 
 ## <a name="test-the-connectivity"></a>Otestovat připojení
 

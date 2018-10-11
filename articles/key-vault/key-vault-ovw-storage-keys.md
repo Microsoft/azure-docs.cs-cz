@@ -9,16 +9,17 @@ author: bryanla
 ms.author: bryanla
 manager: mbaldwin
 ms.date: 10/03/2018
-ms.openlocfilehash: 80601ed30785af37346f801b7e4f1c90e897b3cd
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: b5b30f7f5ffc7fcbef918162bc736c1f0a888d1b
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888058"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067733"
 ---
 # <a name="azure-key-vault-storage-account-keys"></a>Klíče účtu úložiště Azure Key Vault
 
-[!NOTE] [Azure storage teď podporuje ověřování AAD](https://docs.microsoft.com/azure/storage/common/storage-auth-aad). Doporučujeme použít Azure Active Directory pro ověřování a autorizace pro úložiště, jak uživatelé nemusí dělat starosti o otáčení své klíče účtu úložiště. 
+> [!NOTE]
+> [Azure storage teď podporuje ověřování AAD](https://docs.microsoft.com/azure/storage/common/storage-auth-aad). Doporučujeme použít Azure Active Directory pro ověřování a autorizace pro úložiště, jak uživatelé nemusí dělat starosti o otáčení své klíče účtu úložiště.
 
 - Azure Key Vault se spravuje klíče z Azure Storage účtu (ASA).
     - Azure Key Vault interně, můžete zobrazit seznam klíčů (sync) pomocí účtu služby Azure Storage.    

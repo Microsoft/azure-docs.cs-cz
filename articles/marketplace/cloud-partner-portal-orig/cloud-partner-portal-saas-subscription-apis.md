@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 0368d9822df193fbf00d8a2069108e23100a58cd
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: c9ed3f3511def085f5e0658bbcbd7978e3a7ce20
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809351"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079305"
 ---
 <a name="saas-sell-through-azure---apis"></a>Zákazník SaaS pomocí Azure – rozhraní API
 ==============================
@@ -63,12 +63,14 @@ Registrace nové aplikace pomocí webu Azure portal, postupujte následovně:
 
 4.  Na stránce pro vytvoření, zadejte vaše aplikace\'s informace o registraci:
     -   **Název**: Zadejte název smysluplné aplikace
-    -   **Typ aplikace**: vyberte **webová aplikace / rozhraní API** pro [klientské aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application) a [prostředků nebo rozhraní API aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server) , které jsou nainstalovány na zabezpečení serveru. Toto nastavení se používá pro OAuth důvěrné [webových klientů](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client) a veřejné [uživatelského agenta – klienti se systémem](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client).
+    -   **Typ aplikace**: 
+        - Vyberte **Nativní** pro [klientské aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application), které jsou nainstalované místně na zařízení. Toto nastavení se používá pro veřejné [nativní klienty](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#native-client) OAuth.
+        - Vyberte **webová aplikace / rozhraní API** pro [klientské aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application) a [prostředků nebo rozhraní API aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server) , které jsou nainstalovány na zabezpečení serveru. Toto nastavení se používá pro OAuth důvěrné [webových klientů](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client) a veřejné [uživatelského agenta – klienti se systémem](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client).
         Stejná aplikace může také zpřístupnit klienta i prostředek / rozhraní API.
     -   **Přihlašovací adresa URL**: pro webové aplikace nebo rozhraní API aplikace, zadejte základní adresu URL vaší aplikace. Například **http://localhost:31544** může být adresa URL pro webovou aplikaci spuštěnou na místním počítači. Uživatelé by pak pomocí této adresy URL pro přihlášení k webové klientské aplikace.
     -   **Identifikátor URI pro přesměrování**: U nativních aplikací zadejte identifikátor URI používá Azure AD k vracení odpovědí na tokeny. Zadejte hodnotu specifickou pro vaši aplikaci, například **http://MyFirstAADApp**.
 
-        Podívejte se na rychlý start pro konkrétní příklady webových nebo nativních aplikací na základě nastavení, které jsou k dispozici v části Začínáme [příručku pro vývojáře v Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide#get-started).
+        ![Registrace aplikací SaaS AD](media/saas-offer-publish-with-subscription-apis/saas-offer-app-registration-2.png) konkrétní příklady webových nebo nativních aplikací, podívejte se na rychlý start na základě nastavení, které jsou k dispozici v části Začínáme [příručku pro vývojáře v Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide#get-started).
 
 5.  Jakmile budete hotovi, klikněte na **Vytvořit**. Azure AD jedinečný Identifikátor aplikace přiřadí vaší aplikaci a\'znovu provést do vaší aplikace\'s hlavním registrační stránku. V závislosti na tom, jestli je vaše aplikace webová nebo nativní, jsou k dispozici různé volby pro přidání dalších možností do vaší aplikace.
 
@@ -112,7 +114,7 @@ Metoda HTTP
 |  Parametr Grant_type         | True         | Typ udělení oprávnění. Výchozí hodnota je `client_credentials`.                    |
 |  Client_id          | True         |  Identifikátor klienta nebo aplikace přidružené k aplikaci Azure AD.                  |
 |  Hodnota client_secret      | True         |  Heslo přidružené k aplikaci Azure AD.                               |
-|  Prostředek           | True         |  Cílový prostředek, pro kterou je požadována token. Výchozí hodnota je `b3cca048-ed2e-406c-aff2-40cf19fe7bf5`. |
+|  Prostředek           | True         |  Cílový prostředek, pro kterou je požadována token. Výchozí hodnota je `62d94f6c-d599-489b-a797-3e10e42fbe22`. |
 |  |  |  |
 
 
@@ -120,7 +122,7 @@ Metoda HTTP
 
 |  **Název**  | **Typ**       |  **Popis**    |
 | ---------- | -------------  | ------------------- |
-| 200 OK /    | TokenResponse  | Požadavek byl úspěšný.   |
+| 200 OK    | TokenResponse  | Požadavek byl úspěšný.   |
 |  |  |  |
 
 *TokenResponse*
@@ -170,6 +172,7 @@ Akce POST na vyřešit koncový bod umožňuje uživatelům vyřešit token trva
 | x-ms-ID korelace | Ne           | Jedinečnou hodnotu řetězce pro operaci na straně klienta. To koreluje všech událostí z operace klienta s událostmi na straně serveru. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi. |
 | Typ obsahu       | Ano          | `application/json`                                        |
 | Autorizace      | Ano          | JSON web token (JWT) nosný token.                    |
+| x-ms-marketplace-token| Ano| Parametr token dotazu v adrese URL, když je uživatel přesměrován na SaaS ISV webu z Azure. **Poznámka:** URL dekódování hodnota tokenu z prohlížeče před jeho použitím.|
 |  |  |  |
   
 
@@ -178,14 +181,16 @@ Akce POST na vyřešit koncový bod umožňuje uživatelům vyřešit token trva
  ``` json       
     { 
         “id”: “”, 
+        “subscriptionName”: “”,
         “offerId”:””, 
-         “planId”:””, 
+         “planId”:””
     }     
 ```
 
 | **Název parametru** | **Datový typ** | **Popis**                       |
 |--------------------|---------------|---------------------------------------|
 | id                 | Řetězec        | ID předplatného SaaS.          |
+| subscriptionName| Řetězec| Název předplatného SaaS nastavena podle uživatele v Azure při přihlášení k odběru ve službě SaaS.|
 | OfferId            | Řetězec        | ID nabídky, který uživatel přihlášen k odběru. |
 | planId             | Řetězec        | ID plánu, který uživatel přihlášen k odběru.  |
 |  |  |  |
@@ -224,7 +229,7 @@ Koncový bod přihlásit k odběru umožňuje uživatelům spustit předplatné 
 
 | **Název parametru**  | **Popis**                                       |
 |---------------------|-------------------------------------------------------|
-| subscriptionId      | ID SaaS předplatného.                              |
+| subscriptionId      | Jedinečné Id předplatného saas, která se získá po vyřešení token prostřednictvím rozhraní API vyřešit.                              |
 | verze API-version         | Verze operace pro tento požadavek. |
 |  |  |
 
@@ -237,19 +242,20 @@ Koncový bod přihlásit k odběru umožňuje uživatelům spustit předplatné 
 | If-Match nebo If-None-Match |   Ne         |   Silné ověřování hodnota ETag.                                                          |
 | Typ obsahu           |   Ano        |    `application/json`                                                                   |
 |  Autorizace         |   Ano        |    JSON web token (JWT) nosný token.                                               |
+| x-ms-marketplace –-režim relace| Ne | Příznak pro povolení zkušebním režimu při přihlášení k odběru nabídky SaaS. Pokud nastavíte, předplatné nebude nic účtovat. To je užitečné pro nezávislé výrobce softwaru testování scénářů. Nastavte ji na **"dryrun.**|
 |  |  |  |
 
 *Text*
 
 ``` json
   { 
-      “planId”:””, 
+      “planId”:””
    }      
 ```
 
 | **Název elementu** | **Datový typ** | **Popis**                      |
 |------------------|---------------|--------------------------------------|
-| planId           | Řetězec        | ID plánu, který uživatel přihlášen k odběru. |
+| planId           | (Povinné) Řetězec        | Id plánu uživatele služby SaaS je přihlášena k odběru.  |
 |  |  |  |
 
 *Kódy odpovědí*
@@ -264,6 +270,8 @@ Koncový bod přihlásit k odběru umožňuje uživatelům spustit předplatné 
 | 429                  | `RequestThrottleId`  | Služba je zaneprázdněná zpracováním žádostí, zkuste to znovu později.                  |
 | 503                  | `ServiceUnavailable` | Služba je dolů dočasně, zkuste to znovu později.                          |
 |  |  |  |
+
+Pro odpovědi 202 vyřídit stav operace žádosti v hlavičce operace umístění. Ověřování je stejný jako jiná rozhraní API Marketplace.
 
 *Hlavičky odpovědi*
 
@@ -306,14 +314,14 @@ Změna koncového bodu mu umožní převést jejich aktuálně předplacenému p
 
 ``` json
                 { 
-                    “planId”:””, 
+                    “planId”:””
                 } 
 ```
 
 
 |  **Název elementu** |  **Datový typ**  | **Popis**                              |
 |  ---------------- | -------------   | --------------------------------------       |
-|  planId           |  Řetězec         | ID plánu, který uživatel přihlášen k odběru.         |
+|  planId           |  (Povinné) Řetězec         | Id plánu uživatele služby SaaS je přihlášena k odběru.          |
 |  |  |  |
 
 *Kódy odpovědí*
@@ -377,6 +385,8 @@ Akce odstranění na koncovém bodu přihlásit k odběru umožňuje uživateli 
 | 429                  | `RequestThrottleId`  | Služba je zaneprázdněná zpracováním žádostí, zkuste to prosím znovu později.                  |
 | 503                  | `ServiceUnavailable` | Služba je dočasně mimo provoz. Zkuste to prosím znovu později.                          |
 |  |  |  |
+
+Pro odpovědi 202 vyřídit stav operace žádosti v hlavičce operace umístění. Ověřování je stejný jako jiná rozhraní API Marketplace.
 
 *Hlavičky odpovědi*
 
@@ -457,7 +467,6 @@ Tento koncový bod umožňuje uživateli sledovat stav aktivovaných asynchronn�
 | x-ms-ID korelace | Ano          | ID korelace, pokud předaná klientem, jinak to je ID serveru korelace.                   |
 | x-ms-ID aktivity    | Ano          | Jedinečnou hodnotu řetězce pro sledování žádosti ze služby. Používá se pro všechny odsouhlasení. |
 | Retry-After        | Ano          | Interval, pomocí kterého klienta můžete zkontrolovat stav.                                                       |
-| Operace umístění | Ano          | Propojit k prostředku získat stav operace.                                                        |
 |  |  |  |
 
 ### <a name="get-subscription"></a>Získat předplatné
@@ -493,9 +502,9 @@ Přihlášení k odběru akce Get na koncový bod umožňuje uživateli získat 
       “saasSubscriptionName”:””, 
       “offerId”:””, 
        “planId”:””, 
-      “saasSubscriptionStatus”:”” 
-      “created”:”” 
-      “lastModified”: “”, 
+      “saasSubscriptionStatus”:””, 
+      “created”:””, 
+      “lastModified”: “” 
   }
 ```
 | **Název parametru**     | **Datový typ** | **Popis**                               |
@@ -541,7 +550,7 @@ Akce Get na koncový bod předplatná umožňuje uživateli získat všechna př
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/subscriptions?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=2017-04-15**
 
 | **Název parametru**  | **Popis**                                       |
 |---------------------|-------------------------------------------------------|
@@ -566,9 +575,9 @@ Akce Get na koncový bod předplatná umožňuje uživateli získat všechna př
       “saasSubscriptionName”:””, 
       “offerId”:””, 
        “planId”:””, 
-      “saasSubscriptionStatus”:”” 
-      “created”:”” 
-      “lastModified”: “”, 
+      “saasSubscriptionStatus”:””, 
+      “created”:””, 
+      “lastModified”: “”
   }
 ```
 

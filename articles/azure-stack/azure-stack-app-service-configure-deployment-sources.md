@@ -3,7 +3,7 @@ title: Konfigurace zdrojů nasazení pro App Service v Azure stacku | Dokumentac
 description: Jak může správce služby konfigurace zdrojů nasazení (Git, GitHub, BitBucket, DropBox a Onedrivu) pro službu App Service ve službě Azure Stack
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: anwestg
-ms.openlocfilehash: 4945ab0b8da961fc5739388d83f7c645f40e510d
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: fdb91f8989bced3d148c858f131e7d78f1d9f51c
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093057"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077133"
 ---
 # <a name="configure-deployment-sources"></a>Konfigurace zdrojů nasazení
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*

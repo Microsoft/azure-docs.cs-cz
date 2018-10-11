@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 10/25/2017
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: ff382becb71f187ac38b0ef5d31c1b29c43f3fe7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bcb772185f0a16183b8a6c9674419781ef41be3e
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972551"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068532"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace virtuálních sítí a bran firewall Azure Storage
 Azure Storage poskytuje vrstvený model zabezpečení umožňuje zabezpečit vaše účty úložiště s konkrétní sadou povolených sítí.  Když jsou nakonfigurovaná pravidla sítě, můžete pouze aplikace z povolených sítí přístup k účtu úložiště.  Při volání z povolené sítě, aplikace dál vyžadují správnou autorizaci (platný přístupový klíč nebo SAS token) pro přístup k účtu úložiště.
 
 > [!IMPORTANT]
-> Zapnutí pravidla brány Firewall pro váš účet úložiště bude blokovat přístup na příchozí požadavky pro data, včetně od ostatních služeb Azure.  To zahrnuje pomocí portálu pro zápis protokolů, atd.  Pro zúčastněné služby můžete znovu povolit funkce prostřednictvím [výjimky](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) níže v části.  Pro přístup k portálu je třeba provést z počítače v rámci důvěryhodné hranice (IP nebo virtuální síť), který jste nastavili.
+> Zapnutí pravidla brány Firewall pro váš účet úložiště bude blokovat přístup na příchozí požadavky pro data, včetně od ostatních služeb Azure.  To zahrnuje pomocí portálu pro zápis protokolů, atd.  Služby Azure, které pracují z v rámci virtuální sítě může být udělen přístup tím, že podsíť bude instance služby.  Služby Azure, které nejsou v provozu z v rámci virtuální sítě bude blokován branou firewall.  Omezený počet scénářů lze povolit prostřednictvím [výjimky](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) mechanismus popsaný níže.  Pro přístup k portálu je třeba provést z počítače v rámci důvěryhodné hranice (IP nebo virtuální síť), který jste nastavili.
 >
 
 ## <a name="scenarios"></a>Scénáře

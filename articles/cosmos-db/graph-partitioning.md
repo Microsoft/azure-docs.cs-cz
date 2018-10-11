@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.author: lbosq
-ms.openlocfilehash: a513d186f895c33ef9329ce0464c70de5884330d
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: bf91ec77f8d7248c6fa2047636f295c187f626c8
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48891042"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078218"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Použití dělené grafu ve službě Azure Cosmos DB
 
@@ -41,7 +41,7 @@ Toto jsou podrobnosti, které je třeba porozumět při vytváření oddílů gr
 
 - **Dotazy na grafy musí určovat klíč oddílu**. Pokud chcete využívat všech výhod horizontální dělení ve službě Azure Cosmos DB, musí být zadaný klíč oddílu, když je vybraný jeden vrchol, kdykoli to bude možné. Tady jsou dotazy pro výběr jednoho nebo více vrcholy v dělené grafu:
 
-    - Nyní nemůžete použít `/id` jako klíč oddílu pro kontejner ve službě Gremlin API nevztahují.
+    - `/id` a `/label` nejsou podporovány jako klíče oddílu pro kontejner ve službě rozhraní Gremlin API...
 
 
     - Výběr vrcholů podle ID, potom **pomocí `.has()` krok pro určení této vlastnosti klíče oddílu**: 

@@ -1,34 +1,35 @@
 ---
-title: Vytvoření interního load balanceru úrovně Azure Kubernetes Service (AKS)
+title: Vytvoření interního nástroje ve službě Azure Kubernetes Service (AKS)
 description: Informace o vytváření a používání interního nástroje pro vystavit svoje služby Azure Kubernetes Service (AKS).
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/12/2018
+ms.date: 10/08/2018
 ms.author: iainfou
-ms.custom: mvc
-ms.openlocfilehash: 123fc08995416e0ff9c7e12a526deadc34b3a4a2
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 75530c38ec3ecc5719ac5759d31bc38e7e886329
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001391"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069331"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Použití interního nástroje Azure Kubernetes Service (AKS)
 
-Interní Vyrovnávání zatížení zpřístupňuje služby Kubernetes aplikace spuštěné ve stejné virtuální síti jako Kubernetes cluster. Tento článek popisuje, jak vytváření a používání interního nástroje Azure Kubernetes Service (AKS). Nástroj Azure Load Balancer je k dispozici ve dvou skladových položkách: Basic a Standard. AKS používá základní SKU.
+Pokud chcete omezit přístup k aplikacím ve službě Azure Kubernetes Service (AKS), můžete vytvořit a používat interní load balancer. Interní nástroj zpřístupňuje služby Kubernetes pouze pro aplikace spuštěné ve stejné virtuální síti jako Kubernetes cluster. Tento článek popisuje, jak vytváření a používání interního nástroje Azure Kubernetes Service (AKS).
+
+> [!NOTE]
+> Nástroj Azure Load Balancer je k dispozici ve dvou skladových jednotkách - *základní* a *standardní*. Další informace najdete v tématu [porovnání SKU nástroje pro vyrovnávání zatížení Azure][azure-lb-comparison]. V současné době podporuje AKS *základní* SKU. Pokud chcete použít *standardní* SKU, můžete použít nadřazený [acs-engine][acs-engine].
 
 ## <a name="create-an-internal-load-balancer"></a>Vytvořte interní nástroj pro vyrovnávání zatížení.
 
-Vytvoření interního nástroje, vytvoření manifestu služby s typem služby *nástroj pro vyrovnávání zatížení* a *azure zatížení – nástroje pro vyrovnávání – interní* poznámky, jak je znázorněno v následujícím příkladu:
+Vytvoření interního nástroje, vytvoření manifestu služby s názvem `internal-lb.yaml` s typem služby *nástroj pro vyrovnávání zatížení* a *azure zatížení – nástroje pro vyrovnávání – interní* poznámky, jak je znázorněno v následujícím Příklad:
 
 ```yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: azure-vote-front
+  name: internal-app
   annotations:
     service.beta.kubernetes.io/azure-load-balancer-internal: "true"
 spec:
@@ -36,31 +37,29 @@ spec:
   ports:
   - port: 80
   selector:
-    app: azure-vote-front
+    app: internal-app
 ```
 
-Po nasazení s `kubetctl apply`, služby Azure load balancer je vytvořen a k dispozici ve stejné virtuální síti jako clusteru AKS.
+Po nasazení s `kubectl apply -f internal-lb.yaml`, služby Azure load balancer je vytvořen a k dispozici ve stejné virtuální síti jako clusteru AKS.
 
-![Obrázek AKS interního nástroje load balancer](media/internal-lb/internal-lb.png)
-
-Když zobrazujete podrobnosti služby, IP adresa v *EXTERNAL-IP* sloupec je IP adresa interní služby load balancer, jak je znázorněno v následujícím příkladu:
+Když zobrazujete podrobnosti služby, IP adresa interní služby load balancer je zobrazena ve *EXTERNAL-IP* sloupce. Může trvat minutu nebo dvě IP adresy v *\<čekající\>* na skutečné vnitřní IP adresu, jak je znázorněno v následujícím příkladu:
 
 ```
-$ kubectl get service azure-vote-front
+$ kubectl get service internal-app
 
-NAME               TYPE           CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
-azure-vote-front   LoadBalancer   10.0.248.59   10.240.0.7    80:30555/TCP   10s
+NAME           TYPE           CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
+internal-app   LoadBalancer   10.0.248.59   10.240.0.7    80:30555/TCP   2m
 ```
 
 ## <a name="specify-an-ip-address"></a>Zadejte IP adresu
 
-Pokud chcete použít konkrétní IP adresu pomocí interní služby load balancer, přidejte *loadBalancerIP* vlastnost specifikace nástroje pro vyrovnávání zatížení. Zadaná IP adresa se musí nacházet ve stejné podsíti jako AKS cluster a nesmí být přiřazeny k prostředku.
+Pokud chcete použít konkrétní IP adresu pomocí interní služby load balancer, přidejte *loadBalancerIP* vlastnosti manifestu YAML nástroje pro vyrovnávání zatížení. Zadaná IP adresa se musí nacházet ve stejné podsíti jako AKS cluster a nesmí být přiřazeny k prostředku.
 
 ```yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: azure-vote-front
+  name: internal-app
   annotations:
     service.beta.kubernetes.io/azure-load-balancer-internal: "true"
 spec:
@@ -69,16 +68,16 @@ spec:
   ports:
   - port: 80
   selector:
-    app: azure-vote-front
+    app: internal-app
 ```
 
-Když zobrazujete podrobnosti služby, IP adresa na *EXTERNAL-IP* odráží zadaná IP adresa:
+Když zobrazujete podrobnosti služby, IP adresa v *EXTERNAL-IP* sloupce odráží zadaná IP adresa:
 
 ```
-$ kubectl get service azure-vote-front
+$ kubectl get service internal-app
 
-NAME               TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
-azure-vote-front   LoadBalancer   10.0.184.168   10.240.0.25   80:30225/TCP   4m
+NAME           TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
+internal-app   LoadBalancer   10.0.184.168   10.240.0.25   80:30225/TCP   4m
 ```
 
 ## <a name="use-private-networks"></a>Použití privátních sítí
@@ -88,10 +87,10 @@ Při vytváření clusteru AKS, můžete zadat rozšířené nastavení sítě. 
 Žádné změny k předchozí kroky jsou nutné k nasazení interního nástroje v clusteru AKS, který používá privátní sítě. Nástroje pro vyrovnávání zatížení je vytvořen ve stejné skupině prostředků jako AKS cluster, ale připojení k vaší privátní virtuální síť a podsíť, jak je znázorněno v následujícím příkladu:
 
 ```
-$ kubectl get service azure-vote-front
+$ kubectl get service internal-app
 
-NAME               TYPE           CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
-azure-vote-front   LoadBalancer   10.1.15.188   10.0.0.35     80:31669/TCP   1m
+NAME           TYPE           CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
+internal-app   LoadBalancer   10.1.15.188   10.0.0.35     80:31669/TCP   1m
 ```
 
 > [!NOTE]
@@ -105,7 +104,7 @@ Zadejte podsíť pro nástroj pro vyrovnávání zatížení, přidat *azure zat
 apiVersion: v1
 kind: Service
 metadata:
-  name: azure-vote-front
+  name: internal-app
   annotations:
     service.beta.kubernetes.io/azure-load-balancer-internal: "true"
     service.beta.kubernetes.io/azure-load-balancer-internal-subnet: "apps-subnet"
@@ -114,12 +113,14 @@ spec:
   ports:
   - port: 80
   selector:
-    app: azure-vote-front
+    app: internal-app
 ```
 
 ## <a name="delete-the-load-balancer"></a>Odstranit nástroj pro vyrovnávání zatížení
 
 Při odstranění všech služeb, které používají interní služby load balancer, se odstraní také nástroj pro vyrovnávání zatížení, samotného.
+
+Můžete také přímo odstranit službu jako s jakýmikoli prostředky Kubernetes jako `kubectl delete service internal-app`, což také odstraní základní nástroje pro vyrovnávání zatížení Azure.
 
 ## <a name="next-steps"></a>Další postup
 
@@ -127,9 +128,11 @@ Další informace o službách Kubernetes na [dokumentace ke službě services K
 
 <!-- LINKS - External -->
 [kubernetes-services]: https://kubernetes.io/docs/concepts/services-networking/service/
+[acs-engine]: https://github.com/Azure/acs-engine
 
 <!-- LINKS - Internal -->
 [advanced-networking]: networking-overview.md
 [deploy-advanced-networking]: networking-overview.md#configure-networking---cli
 [az-aks-show]: /cli/azure/aks#az-aks-show
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
+[azure-lb-comparison]: ../load-balancer/load-balancer-overview.md#skus

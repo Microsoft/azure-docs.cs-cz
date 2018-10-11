@@ -3,7 +3,7 @@ title: Delegování nabídek v Azure stacku | Dokumentace Microsoftu
 description: Zjistěte, jak vložit jiní lidé starosti vytvoření nabídky a registraci uživatelů.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: alfredop
-ms.openlocfilehash: d3e3bcc9f637ed0a93091c0b0b8797d667459f11
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 77819c5592fe8b61ed4e3fcb5f874fc0bf5ca602
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716181"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077980"
 ---
 # <a name="delegate-offers-in-azure-stack"></a>Delegování nabídek v Azure Stacku
 

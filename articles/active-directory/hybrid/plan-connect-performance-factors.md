@@ -1,5 +1,5 @@
 ---
-title: Faktory ovlivňující výkon služby Azure AD Connect
+title: Faktory ovlivňující výkon nástroje Azure AD Connect
 description: Tento dokument popisuje, jak různé faktory ovlivňující zřizování modulu Azure AD Connect. Tyto faktory pomůže podnikům naplánovat jejich nasazení Azure AD Connect, abyste měli jistotu, že jsou že splněné požadavky na jejich synchronizaci.
 services: active-directory
 author: billmath
@@ -11,14 +11,14 @@ ms.workload: identity
 ms.date: 10/06/2018
 ms.reviewer: martincoetzer
 ms.author: billmath
-ms.openlocfilehash: 6ad8e04a3cd61061b44ca9b6a216f92d69a70f6b
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 7cf0e2b211f9d34f6d8f4fe89a230d8a2e97512a
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902990"
+ms.locfileid: "49069009"
 ---
-# <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Faktory ovlivňující výkon služby Azure AD Connect
+# <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Faktory ovlivňující výkon nástroje Azure AD Connect
 
 Azure AD Connect synchronizuje služby Active Directory do služby Azure AD. Tento server je zásadní součástí sady řešení identity vašich uživatelů Přesun do cloudu. K základním faktorům, které ovlivňují výkon služby Azure AD Connect jsou:
 
@@ -62,15 +62,13 @@ Profil počáteční synchronizace je proces čtení připojené adresáře, jak
 
 ### <a name="delta-sync-profile"></a>Rozdílová synchronizace profilu
 
-K optimalizaci procesu synchronizace tento profil spuštění pouze zpracování změny (vytvoří, odstraní a aktualizuje) objektů v připojených adresářích, od posledního procesu synchronizace. Profil synchronizace delta ve výchozím nastavení spouští každých 30 minut. Organizace se měli snažit Udržovat čas potřebný k pod 30 minut, aby se zajistilo, že Azure AD je aktuální. K monitorování stavu služby Azure AD Connect, použijte [agenta monitorování stavu](how-to-connect-health-sync.md) zobrazíte všechny problémy procesu. Rozdílová synchronizace profil obsahuje následující kroky:
+K optimalizaci procesu synchronizace tento profil spuštění pouze zpracování změny (vytvoří, odstraní a aktualizuje) objektů v připojených adresářích, od posledního procesu synchronizace. Profil synchronizace delta ve výchozím nastavení spouští každých 30 minut. Organizace se měli snažit Udržovat čas potřebný k pod 30 minut, aby se zajistilo, že Azure AD je aktuální. Chcete-li monitorovat stav služby Azure AD Connect, použijte [agenta monitorování stavu](how-to-connect-health-sync.md) zobrazíte všechny problémy s procesem. Rozdílová synchronizace profil obsahuje následující kroky:
 
 1. Rozdílový import na všechny konektory
 2. Rozdílová synchronizace na všechny konektory
 3. Exportovat na všechny konektory
 
 Typické podnikové organizace rozdílové synchronizace scénáře je:
-
-
 
 - ~ 1 % objekty budou odstraněny.
 - ~ 1 % objekty jsou vytvořeny.
@@ -103,7 +101,7 @@ Modul runtime proces synchronizace má následující vlastnosti výkonu:
 * Synchronizace je jedinou vláken, což znamená, že modul zřizování neprovádí žádné paralelní zpracování profilů spuštění připojené adresářů, objekty nebo atributy.
 * Import čas lineárně roste s počtem objektů synchronizuje. Například pokud 10 000 objektů trvat 10 minut, než k importu, pak 20 000 objektů bude trvat přibližně 20 minut na stejném serveru.
 * Export je také lineární.
-* Synchronizace se zvětší exponenciálně zvyšuje podle počtu objektů s odkazy na jiné objekty. Členství ve skupinách a vnořené skupiny mají dopad na výkon hlavní, protože členy odkazovat na objekty uživatele nebo jiné skupiny. Tyto odkazy musí být nalezen a odkazuje na skutečných objektů v MV k dokončení synchronizační cyklus.
+* Synchronizace se zvětší exponenciálně zvyšuje podle počtu objektů s odkazy na jiné objekty. Členství ve skupinách a vnořené skupiny mají dopad na výkon hlavní, protože jeho členy odkazovat na objekty uživatele nebo jiné skupiny. Tyto odkazy musí být nalezen a odkazuje na skutečných objektů v MV k dokončení synchronizační cyklus.
 
 ### <a name="filtering"></a>Filtrování
 
@@ -183,10 +181,10 @@ Chcete-li optimalizovat výkon vaší implementace služby Azure AD Connect, zva
 - Použití [doporučené konfigurace hardwaru](how-to-connect-install-prerequisites.md) na základě velikosti vaší implementace pro server Azure AD Connect.
 - Při upgradu služby Azure AD Connect v nasazení ve velkém měřítku, zvažte použití [Postupná migrace metoda](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version#swing-migration), ujistěte se, že máte alespoň výpadky a nejlepší spolehlivost. 
 - Pro databázi SQL pro nejlepší výkon zápisu používají SSD.
-- Obor služby Active Directory pouze objekty, které musí být zřízená ve službě Azure AD, pomocí doménu, organizační jednotky nebo filtrování atributu filtru.
+- Filtrovat služby Active Directory oboru zahrnout pouze objekty, které je třeba zřídit ve službě Azure AD, pomocí doménu, organizační jednotky nebo filtrování atributů.
 - Pokud potřebujete změnit výchozí pravidla pro tok atributů, nejprve zkopírovat pravidlo, pak změňte kopie a původní pravidlo zakázat. Nezapomeňte znovu spustit úplnou synchronizaci.
 - Naplánujte dostatečný čas pro profil spuštění počáteční úplné synchronizace.
-- Rozdílová synchronizace snažit cyklu skončí za 30 minut. Pokud profil rozdílové synchronizace nedokončí za 30 minut, upravte výchozí frekvence synchronizace zahrnout cyklus úplné rozdílové synchronizace.
+- Přitom se snaží dokončit cyklus synchronizace delta za 30 minut. Pokud profil rozdílové synchronizace nedokončí za 30 minut, upravte výchozí frekvence synchronizace zahrnout cyklus úplné rozdílové synchronizace.
 - Monitorování vaší [stavu synchronizace Azure AD Connect](how-to-connect-health-agent-install.md) ve službě Azure AD.
 
 ## <a name="next-steps"></a>Další postup

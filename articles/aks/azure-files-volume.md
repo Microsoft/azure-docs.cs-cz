@@ -5,16 +5,16 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 10/08/2018
 ms.author: iainfou
-ms.openlocfilehash: e5518ebb2985635507368943774e6be803cfffa8
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 1a8609dbf5fa1c1e7d5f4e35b081ecaa09994eb6
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409046"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068073"
 ---
-# <a name="manually-create-and-use-an-azure-files-share-in-azure-kubernetes-service-aks"></a>Ručně vytvořit a použít sdílenou složku Azure Files ve službě Azure Kubernetes Service (AKS)
+# <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Ručně vytvořit a používat svazku se sdílenou složku služby soubory Azure ve službě Azure Kubernetes Service (AKS)
 
 Kontejnerových aplikací často potřebují přístup k a zachovat data ve svazku externí data. Pokud potřebujete více podů souběžný přístup na stejný svazek úložiště, můžete používat soubory Azure a připojte se pomocí [zprávy bloku SMB (Server) protokol][smb-overview]. Tento článek ukazuje, jak ručně vytvořit sdílenou složku služby soubory Azure a připojit ho k pod ve službě AKS.
 
@@ -65,10 +65,10 @@ Poznamenejte si název účtu úložiště a klíč uvedené na konci výstupu s
 
 Kubernetes potřebuje přihlašovací údaje pro přístup ke sdílené složce vytvořili v předchozím kroku. Tyto přihlašovací údaje jsou uložené v [tajného kódu Kubernetes][kubernetes-secret], který se odkazuje při vytváření podu Kubernetes.
 
-Použití `kubectl create secret` příkaz pro vytvoření tajného klíče. Následující příklad vytvoří sdílenou s názvem *azure-secret*. Nahraďte *název_účtu_úložiště* názvem vašeho účtu úložiště zobrazí ve výstupu předchozího kroku, a *klíč_účtu_úložiště* se klíče účtu úložiště:
+Použití `kubectl create secret` příkaz pro vytvoření tajného klíče. Následující příklad vytvoří sdílenou s názvem *azure-secret* a naplní *azurestorageaccountname* a *azurestorageaccountkey* z předchozího kroku. Pokud chcete použít existující účet úložiště Azure, zadejte název účtu a klíč.
 
 ```console
-kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=STORAGE_ACCOUNT_NAME --from-literal=azurestorageaccountkey=STORAGE_ACCOUNT_KEY
+kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=$AKS_PERS_STORAGE_ACCOUNT_NAME --from-literal=azurestorageaccountkey=$STORAGE_KEY
 ```
 
 ## <a name="mount-the-file-share-as-a-volume"></a>Připojení sdílené složky jako svazek
@@ -79,15 +79,22 @@ Pro připojení sdílené složky Azure Files v podu, nakonfigurujte u svazku v 
 apiVersion: v1
 kind: Pod
 metadata:
- name: azure-files-pod
+  name: mypod
 spec:
- containers:
-  - image: microsoft/sample-aks-helloworld
-    name: azure
+  containers:
+  - image: nginx:1.15.5
+    name: mypod
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 250m
+        memory: 256Mi
     volumeMounts:
       - name: azure
         mountPath: /mnt/azure
- volumes:
+  volumes:
   - name: azure
     azureFile:
       secretName: azure-secret
@@ -101,7 +108,32 @@ Použití `kubectl` příkaz pro vytvoření pod.
 kubectl apply -f azure-files-pod.yaml
 ```
 
-Teď máte spuštěné pod s do sdílené složky Azure Files připojil */mnt/azure*. Můžete použít `kubectl describe pod azure-files-pod` ověření je úspěšně připojit sdílenou složku.
+Teď máte spuštěné pod s do sdílené složky Azure Files připojil */mnt/azure*. Můžete použít `kubectl describe pod mypod` ověření je úspěšně připojit sdílenou složku. Následující výstup zhuštěnému příkladu ukazuje svazek připojený v kontejneru:
+
+```
+Containers:
+  mypod:
+    Container ID:   docker://86d244cfc7c4822401e88f55fd75217d213aa9c3c6a3df169e76e8e25ed28166
+    Image:          nginx:1.15.5
+    Image ID:       docker-pullable://nginx@sha256:9ad0746d8f2ea6df3a17ba89eca40b48c47066dfab55a75e08e2b70fc80d929e
+    State:          Running
+      Started:      Mon, 08 Oct 2018 19:28:34 +0000
+    Ready:          True
+    Mounts:
+      /mnt/azure from azure (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-z5sd7 (ro)
+[...]
+Volumes:
+  azure:
+    Type:        AzureFile (an Azure File Service mount on the host and bind mount to the pod)
+    SecretName:  azure-secret
+    ShareName:   aksshare
+    ReadOnly:    false
+  default-token-z5sd7:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-z5sd7
+[...]
+```
 
 ## <a name="next-steps"></a>Další postup
 

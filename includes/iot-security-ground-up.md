@@ -1,19 +1,19 @@
 ---
 title: zahrnout soubor
 description: zahrnout soubor
-services: iot-suite
-author: dominicbetts
-ms.service: iot-suite
+services: iot-fundamentals
+author: robinsh
+ms.service: iot-fundamentals
 ms.topic: include
 ms.date: 04/24/2018
-ms.author: dobett
+ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 181432c3050bbc614898b1ddf779bc90239a35be
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 8137a292045377c5dccb69c21a8118d0dc17874e
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39189380"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069936"
 ---
 # <a name="internet-of-things-security-from-the-ground-up"></a>Zabezpečení Internetu věcí od počátku
 
@@ -62,7 +62,9 @@ Zásady řízení přístupu Azure IoT Hub v cloudu Povolit aktivaci a zakazuje 
 Funkce zabezpečení další zařízení:
 
 * Zařízení nepřijímají nevyžádané síťové připojení. Navázání všechna připojení a trasy podporuje pouze odchozí. Aby zařízení mohlo přijmout příkaz z back-endu musí inicializovat připojení a kontrolovat případné čekající příkazy ke zpracování. Jakmile mezi zařízením a centrem IoT se vytvoří zabezpečené připojení, zasílání zpráv z cloudu do zařízení a zařízení do cloudu je možné posílat transparentně.
+
 * Zařízení pouze připojení k nebo vytvořit trasy a dobře známé služby, se kterými mají partnerský, jako jsou služby Azure IoT Hub.
+
 * Autorizaci na úrovni systému a ověřování používat identifikaci jednotlivých zařízení, aby přístupové údaje a povolení téměř – okamžitě odvolatelný.
 
 ### <a name="secure-connectivity"></a>Zabezpečené připojení
@@ -76,7 +78,9 @@ Efektivita je důležité zajistit ochranu prostředků a operace v prostředí 
 Další připojení funkce zabezpečení zahrnují:
 
 * Komunikační trasa mezi zařízením a Azure IoT Hub, nebo mezi brány a Azure IoT Hub je zabezpečený pomocí standardních zabezpečení TLS (Transport Layer) s Azure IoT Hub ověřování pomocí protokolu X.509.
+
 * Aby bylo možné chránit zařízení před nevyžádaná příchozí připojení, Azure IoT Hub nelze otevřít žádné připojení k zařízení. Zařízení zahájí všechna připojení.
+
 * Azure IoT Hub trvale ukládá zprávy pro zařízení a čeká na zařízení připojovat. Tyto příkazy jsou uloženy po dobu dvou dnů, povolení zařízení připojení nedojde, z důvodu nebo připojením obavy, přijímá tyto příkazy. Azure IoT Hub udržuje fronty podle zařízení pro každé zařízení.
 
 ### <a name="secure-processing-and-storage-in-the-cloud"></a>Zabezpečení zpracování a ukládání v cloudu
@@ -100,8 +104,13 @@ Akcelerátory řešení sestavit v bezpečnostních opatření záměrné, povol
 Každý akcelerátor řešení vytvoří instance služeb Azure, jako například:
 
 * [**Azure IoT Hub**](https://azure.microsoft.com/services/iot-hub/): brána, která se připojuje cloudu do zařízení. Je možné škálovat na miliony připojení na rozbočovače a zpracování velkých objemů dat s podporou ověřování podle zařízení pomáhá vám zabezpečit vaše řešení.
+
 * [**Azure Cosmos DB**](https://azure.microsoft.com/services/cosmos-db/): škálovatelná, plně indexované databázovou službu pro částečně strukturovaná data, která spravuje metadat pro zařízení si zřídíte, jako jsou atributy, konfigurace a vlastnosti zabezpečení. Azure Cosmos DB nabízí vysoce výkonné a vysoce propustné zpracování, schématu nezávislé indexování dat a také bohaté rozhraní příkazů jazyka SQL.
+
 * [**Azure Stream Analytics**](https://azure.microsoft.com/services/stream-analytics/): v reálném čase v cloudu, která umožňuje rychlý vývoj a nasazení nízkonákladového analytického řešení pro odhalení informací v reálném čase ze zařízení, senzorů, infrastruktury a aplikací pro zpracování datových proudů . Data z této plně spravované služby můžete škálovat pro jakýkoli svazek, zatímco stále dosahuje vysoké propustnosti, nízké latence a odolnost proti chybám.
+
 * [**Služba Azure App Services**](https://azure.microsoft.com/services/app-service/): cloudovou platformou můžete tvořit výkonné webové a mobilní aplikace, které se připojují k datům bez ohledu na; v cloudu nebo místně. Vytvářejte poutavé mobilní aplikace pro iOS, Android a Windows. Integrate váš Software jako služba (SaaS) a podnikové aplikace s out-of-the-box připojení k desítkám cloudových služeb a podnikových aplikací. Kód v oblíbeném jazyce a integrovaném vývojovém prostředí – .NET, Node.js, PHP, Python nebo Java – k vytváření webových aplikací a rozhraní API rychleji než kdy dřív.
+
 * [**Logic Apps**](https://azure.microsoft.com/services/app-service/logic/): funkci Logic Apps služby Azure App Service pomáhá vašemu řešení IoT umožní vaše stávající systémy z podnikové integrace a automatizace pracovních postupů. Logic Apps umožňuje vývojářům navrhovat pracovní postupy, které začínají spouštěčem událostí a provádějí sérii kroků, pravidla a akce, které používají výkonné konektory pro integraci s obchodními procesy. Logic Apps nabízí out-of-the-box připojení k rozsáhlému ekosystému aplikací SaaS, cloudové a místní aplikace.
-* [**Úložiště objektů blob v Azure**](https://azure.microsoft.com/services/storage/): spolehlivé, úsporné cloudové úložiště pro data, která vaše zařízení odesílají do cloudu.
+
+* [**Azure Blob storage**](https://azure.microsoft.com/services/storage/): spolehlivé, úsporné cloudové úložiště pro data, která vaše zařízení odesílají do cloudu.

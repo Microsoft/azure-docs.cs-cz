@@ -16,12 +16,12 @@ ms.date: 10/05/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 56b0f0ce39d421e80890ad0dbad9b7cfe0812cdb
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: c42e8978a94730669f3c3f879d1d26c4426bd9da
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902869"
+ms.locfileid: "49079125"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app-public-preview"></a>Postupy: Zadejte nepovinných deklarací identity do aplikace Azure AD (Public Preview)
 
@@ -35,18 +35,22 @@ Tato funkce slouží vývojáři aplikace k určení, které deklarace identity,
 
 Seznam standardních deklarace identity a jejich použití v tokenech, najdete v článku [základní informace o tokeny vystavené službou Azure AD](v1-id-and-access-tokens.md). 
 
-Jedním z cílů systému [koncového bodu Azure AD v2.0](active-directory-appmodel-v2-overview.md) je menší velikost tokenu zajistit optimální výkon klienty.  V důsledku toho několik deklarace identity dříve součástí přístup a tokeny typu ID už nejsou k dispozici v tokenech v2.0 a musíte požádat konkrétně na základě jednotlivých aplikací.  
+Jedním z cílů systému [koncového bodu Azure AD v2.0](active-directory-appmodel-v2-overview.md) je menší velikost tokenu zajistit optimální výkon klienty.  V důsledku toho několik deklarace identity dříve součástí přístup a tokeny typu ID už nejsou k dispozici v tokenech v2.0 a musíte požádat konkrétně na základě jednotlivých aplikací.
+
+  
 
 **Tabulka 1: použitelnosti**
 
 | Typ účtu | Koncový bod verze 1.0 | Koncový bod verze 2.0  |
 |--------------|---------------|----------------|
 | Osobní účet Microsoft  | Není k dispozici – místo toho používají lístky RPS | Podpora už |
-| Účet Azure AD            | Podporováno                          | Podporováno      |
+| Účet Azure AD          | Podporováno                          | Podporované s omezením      |
+
+> [!Important]
+> V současné době aplikace, které podporují osobní účty a Azure AD (registrovaný prostřednictvím metody [portál pro registraci aplikace](https://apps.dev.microsoft.com)) nejde použít nepovinných deklarací identity.  Aplikace registrované u právě Azure AD pomocí koncového bodu v2.0 však můžete získat nepovinných deklarací identity, které, o který žádali v manifestu.
 
 ## <a name="standard-optional-claims-set"></a>Sada standardních nepovinných deklarací identity
-
-Sada nepovinných deklarací identity ve výchozím nastavení dostupné pro použití aplikacemi jsou uvedeny níže.  Chcete-li přidat vlastní nepovinných deklarací identity pro vaši aplikaci, najdete v článku [rozšíření adresáře](active-directory-optional-claims.md#Configuring-custom-claims-via-directory-extensions)níže. 
+Sada nepovinných deklarací identity ve výchozím nastavení dostupné pro použití aplikacemi jsou uvedeny níže.  Chcete-li přidat vlastní nepovinných deklarací identity pro vaši aplikaci, najdete v článku [rozšíření adresáře](active-directory-optional-claims.md#Configuring-custom-claims-via-directory-extensions)níže.  Všimněte si, že při přidání deklarace identity **přístupový token**, tato změna se projeví na přístupové tokeny požadovaný *pro* aplikace (webového rozhraní API), ne ty *podle* aplikace.  Tím se zajistí, že bez ohledu na to klientovi přístup k rozhraní API, jsou k dispozici v tokenu přístupu, které používají k ověřování na základě vašeho rozhraní API správná data.
 
 > [!Note]
 >Většina těchto deklarací mohou být součástí tokeny Jwt pro v1.0 a v2.0 tokeny, ale ne tokeny SAML, s výjimkou uvedeno ve sloupci Typ tokenu.  Kromě toho při nepovinných deklarací identity se podporují jenom pro uživatele AAD aktuálně, podpory pro MSA přidáte.  Když MSA má nepovinných deklarací identity podporovat na koncový bod v2.0, bude uživatelský typ sloupce označení Pokud deklarace identity je k dispozici pro uživatele služby AAD nebo MSA.  
@@ -241,7 +245,7 @@ Nejsou k dispozici pro aktualizaci vlastností konfigurace identity aplikace pov
             ]
       }
       ```
-      V takovém případě různých nepovinných deklarací identity byly přidány do každého typu token, který aplikace může přijímat. Tokeny ID bude teď obsahovat jméno UPN u federovaných uživatelů v úplné formě (`<upn>_<homedomain>#EXT#@<resourcedomain>`). Přístupových tokenů teď budete přijímat deklarace identity auth_time. Tokeny SAML bude teď obsahovat rozšíření schématu skypeId adresář (v tomto příkladu je ab603c56068041afb2f6832e2a17e237 ID aplikace pro tuto aplikaci).  Tokeny SAML bude vystavovat Skypové jako `extension_skypeId`.
+      V takovém případě různých nepovinných deklarací identity byly přidány do každého typu token, který aplikace může přijímat. Tokeny ID bude teď obsahovat jméno UPN u federovaných uživatelů v úplné formě (`<upn>_<homedomain>#EXT#@<resourcedomain>`). Přístupové tokeny, které ostatní klienti požadují pro tuto aplikaci teď bude zahrnovat auth_time deklarace identity. Tokeny SAML bude teď obsahovat rozšíření schématu skypeId adresář (v tomto příkladu je ab603c56068041afb2f6832e2a17e237 ID aplikace pro tuto aplikaci).  Tokeny SAML bude vystavovat Skypové jako `extension_skypeId`.
 
 1. Jakmile budete hotovi, aktualizuje se manifest, klikněte na tlačítko **Uložit** pro uložení manifestu
 

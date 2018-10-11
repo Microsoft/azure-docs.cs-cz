@@ -9,12 +9,12 @@ ms.date: 10/03/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 74310e50f37e40856d5fe379baec071b4773f80e
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 6094236269df881eac6f8cd2fd04183dd9d6df3b
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801416"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068753"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Store dat na hraničních zařízeních s Azure Blob Storage na hraničních zařízeních IoT (preview)
 
@@ -60,7 +60,7 @@ Existuje několik způsobů, jak nasadit moduly IoT Edge zařízení a všechny 
 
 Pokud chcete nasadit úložiště objektů blob pomocí webu Azure portal, postupujte podle kroků v [moduly nasazení Azure IoT Edge z portálu Azure portal](how-to-deploy-modules-portal.md). Před vytvoření přejít na nasazení modulu, zkopírujte identifikátor URI image a příprava kontejneru možnosti podle operačního systému vašeho kontejneru. Použijte tyto hodnoty **konfigurace manifestu nasazení** článku nasazení. 
 
-Zadejte identifikátor URI image pro modul úložiště objektů blob: **mcr.microsoft.com/azure-blob-storage**. 
+Zadejte identifikátor URI image pro modul úložiště objektů blob: **mcr.microsoft.com/azure-blob-storage:latest**. 
    
 Pomocí následující šablony JSON pro **možnosti vytvoření kontejneru** pole. Konfigurace ve formátu JSON pomocí názvu účtu úložiště, klíč účtu úložiště a úložiště directory vazby.  
    
@@ -86,8 +86,10 @@ V možnosti vytvořit JSON, aktualizujte `\<your storage account name\>` s názv
 V možnosti vytvořit JSON, aktualizujte `<storage directory bind>` v závislosti na váš kontejner operační systém. Zadejte název [svazku](https://docs.docker.com/storage/volumes/) nebo absolutní cesta do adresáře na zařízení IoT Edge místo modulu objektů blob pro uložení data.  
 
    * Kontejnery Linuxu:  **\<cestu úložiště >: / blobroot**. Například/srv/containerdata: / blobroot. Nebo tento svazek: / blobroot. 
-   * Kontejnery Windows:  **\<cestu úložiště >: C: / BlobRoot**. Například C: / ContainerData:C: / BlobRoot. Nebo, my-svazku: C: / blobroot. 
-
+   * Kontejnery Windows:  **\<cestu úložiště >: C: / BlobRoot**. Například C: / ContainerData:C: / BlobRoot. Nebo, my-svazku: C: / blobroot.
+   
+   > [!CAUTION]
+   > Neměňte "/ blobroot" pro systémy Linux a "C:/BlobRoot" pro Windows, pro  **\<vazby adresář úložiště >** hodnoty.
 
 Není potřeba zadávat přihlašovací údaje registru pro přístup k úložišti objektů Blob v Azure na hraničních zařízeních IoT a není nutné deklarovat všechny trasy pro vaše nasazení. 
 
@@ -111,7 +113,7 @@ Pomocí následujícího postupu vytvořte nové řešení IoT Edge s modulem ú
    
    4. **Zadejte název modulu** -zapamatovatelný název pro modul, jako je třeba zadat **službě Azure BLOB Storage**.
    
-   5. **Použijte image Dockeru pro modul** – zadejte identifikátor URI image: **mcr.microsoft.com/azure-blob-storage**
+   5. **Použijte image Dockeru pro modul** – zadejte identifikátor URI image: **mcr.microsoft.com/azure-blob-storage:latest**
 
 VS Code přebírá informace k dispozici, vytvoří řešení IoT Edge a nahraje je v novém okně. 
 
@@ -133,6 +135,9 @@ VS Code přebírá informace k dispozici, vytvoří řešení IoT Edge a nahraje
 
    * Kontejnery Linuxu:  **\<cestu úložiště >: / blobroot**. Například/srv/containerdata: / blobroot. Nebo tento svazek: / blobroot.
    * Kontejnery Windows:  **\<cestu úložiště >: C: / BlobRoot**. Například C: / ContainerData:C: / BlobRoot. Nebo, my-svazku: C: / blobroot.
+   
+   > [!CAUTION]
+   > Neměňte "/ blobroot" pro systémy Linux a "C:/BlobRoot" pro Windows, pro  **\<vazby adresář úložiště >** hodnoty.
 
 5. Uložit **deployment.template.json**.
 
@@ -159,7 +164,13 @@ Můžete použít název účtu a klíč účtu, že jste nakonfigurovali pro mo
 
 Zadejte zařízení IoT Edge jako koncový bod objektu blob pro jakékoli úložiště požadavků, které můžete provádět. Je možné [vytvoření připojovacího řetězce pro koncový bod explicitního úložiště](../storage/common/storage-configure-connection-string.md#create-a-connection-string-for-an-explicit-storage-endpoint) pomocí informací o zařízení IoT Edge a název účtu, který jste nakonfigurovali. 
 
-Koncový bod objektu blob Azure Blob Storage na hraničních zařízeních IoT je `http://<IoT Edge device hostname>:11002/<account name>`. 
+1. Pro moduly, které jsou nasazené na stejném zařízení edge se spuštěným systémem "Azure Blob Storage na hraničních zařízeních IoT", je koncový bod služby blob: `http://<Module Name>:11002/<account name>`. 
+2. Pro moduly, které jsou nasazené na jiné hraniční zařízení, než hraničním zařízením, ve kterém běží "Azure Blob Storage na hraničních zařízeních IoT" a potom v závislosti na vašem nastavení koncový bod objektu blob je: `http://<device IP >:11002/<account name>` nebo `http://<IoT Edge device hostname>:11002/<account name>` nebo `http://<FQDN>:11002/<account name>`
+
+## <a name="logs"></a>Logs
+
+Protokoly uvnitř kontejneru, najdete v části: 
+* Pro Linux: /blobroot/logs/platformblob.log
 
 ## <a name="deploy-multiple-instances"></a>Nasazení více instancí
 
@@ -193,7 +204,7 @@ Ne všechny operace úložiště objektů Blob v Azure jsou podporovány službo
 ### <a name="account"></a>Účet
 
 Podporovány: 
-* Seznam kontejnerů
+* Výpis kontejnerů
 
 Nepodporovaný: 
 * Získání a nastavení vlastností služby blob

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: bwren
-ms.openlocfilehash: 0413357b6e17bf66b0ae9b504bc23b9702d03c91
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 0f17cf7f2ef655f482b08b5c7163c0d85be77ce5
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220971"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068690"
 ---
 # <a name="azure-monitor-overview"></a>Přehled služby Azure Monitor
 
@@ -70,7 +70,7 @@ Azure Monitor může shromažďovat data protokolu z jakéhokoli klienta REST po
 Sledování dat je pouze užitečné, pokud zvýšíte svůj vhled do provozu vaše výpočetní prostředí. Azure Monitor obsahuje několik funkcí a nástrojů, které poskytují cenné přehledy o vašich aplikací a další prostředky, které jsou závislé. [Řešení monitorování](../monitoring/monitoring-solutions.md) a funkce, jako [Application Insights](../application-insights/app-insights-overview.md) a přehledy o kontejnerech poskytnout podrobný přehled o různých aspektech vaší aplikace a konkrétních služeb Azure. 
 
 ### <a name="application-insights"></a>Application Insights
-[Application Insights](http://azure.microsoft.com/documentation/services/application-insights) Monitoruje dostupnost, výkon a využití webových aplikací, ať už jsou hostované v cloudu nebo místně. Využívá výkonnou datovou platformu pro analýzy ve službě Log Analytics můžete poskytnout podrobné informace o operacích vaší aplikace a diagnostikovat chyby bez čekání na jejich nahlášení uživatelem. Application Insights obsahuje spojovací body s celou řadu nástrojů pro vývoj a integruje se sadou Visual Studio pro podporu vašich procesů DevOps.
+[Application Insights](../application-insights/app-insights-overview.md) Monitoruje dostupnost, výkon a využití webových aplikací, ať už jsou hostované v cloudu nebo místně. Využívá výkonnou datovou platformu pro analýzy ve službě Log Analytics můžete poskytnout podrobné informace o operacích vaší aplikace a diagnostikovat chyby bez čekání na jejich nahlášení uživatelem. Application Insights obsahuje spojovací body s celou řadu nástrojů pro vývoj a integruje se sadou Visual Studio pro podporu vašich procesů DevOps.
 
 ![App Insights](media/overview/app-insights.png)
 

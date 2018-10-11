@@ -2,19 +2,18 @@
 title: Kurz služby Azure Container Registry – Nahrání aktualizované image do regionálních nasazení
 description: Nahrajte upravenou image Dockeru do vlastního geograficky replikovaného registru kontejneru Azure a změny se automaticky nasadí do webových aplikací běžících v několika oblastech. Třetí částí z třídílné série.
 services: container-registry
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 04/30/2018
-ms.author: marsma
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 1a18b6f627a28b912baeda6f180297dc703e665e
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 96e46c84039b7c72d5419972c7a5a401eab64659
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031199"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855506"
 ---
 # <a name="tutorial-push-an-updated-image-to-regional-deployments"></a>Kurz: Nahrání aktualizované image do regionálních nasazení
 

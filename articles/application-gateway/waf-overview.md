@@ -4,14 +4,14 @@ description: Tento článek obsahuje přehled firewallu webových aplikací (WAF
 services: application-gateway
 author: amsriva
 ms.service: application-gateway
-ms.date: 10/6/2017
+ms.date: 10/11/2018
 ms.author: amsriva
-ms.openlocfilehash: a16f8d988c900d015810bfe72b04ff5e9eb0682a
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 10a67eab142287cf9303e54005b6b167e9890df0
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815660"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068447"
 ---
 # <a name="web-application-firewall-waf"></a>Firewall webových aplikací (WAF)
 
@@ -47,21 +47,43 @@ Tady jsou základní výhody, které poskytují Application Gateway s firewallem
 
 ## <a name="features"></a>Funkce
 
-Firewall webových aplikací se poskytuje s předem nakonfigurovanou sadou pravidel CRS 3.0, nebo můžete použít verzi 2.2.9. CRS 3.0 dosahuje menšího počtu falešně pozitivních nálezů oproti verzi 2.2.9. Je zajištěna možnost [přizpůsobit si pravidla, podle vašich potřeb](application-gateway-customize-waf-rules-portal.md). Mezi běžné webové zranitelnosti, proti kterým firewall webových aplikací chrání, patří tyto:
+- Ochrana před útoky prostřednictvím injektáže SQL.
+- Ochrana před skriptováním mezi weby.
+- Ochrana před běžnými webovými útoky, jako je například injektáž příkazů, pronášení požadavků HTTP, rozdělování odpovědí protokolu HTTP a útok pomocí vložení vzdáleného souboru.
+- Ochrana před narušením protokolu HTTP.
+- Ochrana před anomáliemi protokolu HTTP, jako například chybějící údaj user-agent hostitele nebo hlavičky Accept.
+- Ochrana před roboty, prohledávacími moduly a skenery.
+- Detekce běžných chyb v konfiguraci aplikací (tj. Apache, IIS atd.)
 
-* Ochrana před útoky prostřednictvím injektáže SQL.
-* Ochrana před skriptováním mezi weby.
-* Ochrana před běžnými webovými útoky, jako je například injektáž příkazů, pronášení požadavků HTTP, rozdělování odpovědí protokolu HTTP a útok pomocí vložení vzdáleného souboru.
-* Ochrana před narušením protokolu HTTP.
-* Ochrana před anomáliemi protokolu HTTP, jako například chybějící údaj user-agent hostitele nebo hlavičky Accept.
-* Ochrana před roboty, prohledávacími moduly a skenery.
-* Detekce běžných chyb v konfiguraci aplikací (tj. Apache, IIS atd.)
+### <a name="public-preview-features"></a>Funkce ve verzi Public preview
 
-Podrobnější seznam pravidel a ochrany, kterou poskytují, naleznete v popisu [základních sad pravidel](#core-rule-sets).
+Aktuální WAF veřejná verze preview SKU incudes následující funkce:
+
+- **Požádat o omezení velikosti** – Firewall webových aplikací umožňuje uživatelům konfigurovat omezení velikosti požadavku v rámci dolní a horní hranice.
+- **Seznamy vyloučení** – seznamy vyloučení WAF povolit uživatelům vynechání určité atributy žádosti ze zkušební verze WAF. Běžným příkladem je že vložen tokeny, které se používají pro ověřování nebo pole s heslem služby Active Directory.
+
+Další informace o verzi public preview WAF najdete v tématu [webové omezení velikosti brány firewall na žádost o aplikaci a seznamy vyloučení (Public Preview)](application-gateway-waf-configuration.md).
+
+
+
+
 
 ### <a name="core-rule-sets"></a>Základní sady pravidel
 
 Application Gateway podporuje dvě sady pravidel, CRS 3.0 a CRS 2.2.9. Tyto základní sady pravidel jsou kolekce pravidel, které chrání vaše webové aplikace před škodlivými aktivitami.
+
+Firewall webových aplikací se poskytuje s předem nakonfigurovanou sadou pravidel CRS 3.0, nebo můžete použít verzi 2.2.9. CRS 3.0 dosahuje menšího počtu falešně pozitivních nálezů oproti verzi 2.2.9. Je zajištěna možnost [přizpůsobit si pravidla, podle vašich potřeb](application-gateway-customize-waf-rules-portal.md). Mezi běžné webové zranitelnosti, proti kterým firewall webových aplikací chrání, patří tyto:
+
+- Ochrana před útoky prostřednictvím injektáže SQL.
+- Ochrana před skriptováním mezi weby.
+- Ochrana před běžnými webovými útoky, jako je například injektáž příkazů, pronášení požadavků HTTP, rozdělování odpovědí protokolu HTTP a útok pomocí vložení vzdáleného souboru.
+- Ochrana před narušením protokolu HTTP.
+- Ochrana před anomáliemi protokolu HTTP, jako například chybějící údaj user-agent hostitele nebo hlavičky Accept.
+- Ochrana před roboty, prohledávacími moduly a skenery.
+- Detekce běžných chyb v konfiguraci aplikací (tj. Apache, IIS atd.).
+
+Podrobnější seznam pravidel a jejich ochrany najdete v části [základních sad pravidel](#core-rule-sets).
+
 
 #### <a name="owasp30"></a>OWASP_3.0
 

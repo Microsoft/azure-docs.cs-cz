@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: jeffgilb
 ms.reviewer: prchint
-ms.openlocfilehash: cabe6a6fd09961665221210ecb9c52be23ddce4c
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 5ebddbf1fea49fbf868d15a544a18e5a8c6369fd
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368609"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078303"
 ---
 # <a name="azure-stack-capacity-planner"></a>Capacity Planner služby Azure Stack
 Azure Stack Capacity Planner je tabulka pro plánování kapacity prostředků Azure Stack. Capacity planner vám poskytuje schopnost navrhovat různých přidělení výpočetní prostředky a zobrazit, jak by přizpůsobit přes výběr nabídky hardwaru. Níže jsou uvedené podrobné pokyny pro použití kalkulačky Azure Stack.
@@ -61,7 +61,7 @@ Vytvořit model s použitím jedné kolekce různé velikosti a množství virtu
 3. Nyní jste připraveni začít přidávat různé velikosti virtuálních počítačů do modelu. Zahrnout konkrétní typ virtuálního počítače, zadejte hodnotu množství do modré pole osnovy nalevo od položky tohoto virtuálního počítače.
 
   > [!NOTE]
-  > Každý virtuální počítač se spustí s velikostí původně přiřazené úložiště. Velikost úložiště se zobrazí pomocí seznamu a lze upravit a přizpůsobit požadovanou úroveň prostředku úložiště pro každý virtuální počítač Azure Stack. Pokud není k dispozici velikost úložiště, který chcete použít, můžete ho přidat tak, že upravíte některý containeded 10 počáteční velikosti v seznamu "Dostupné úložiště konfigurace" na pravé straně stránky.<br><br>Začíná na každý virtuální počítač původně přiřazené místní dočasné úložiště. Tak, aby odrážely dynamické zajišťování dočasného úložiště můžete změnit temp místní číslo k ničemu v rozevírací nabídce včetně dočasného úložiště o maximální povolená velikost.
+  > Každý virtuální počítač se spustí s velikostí původně přiřazené úložiště. Velikost úložiště se zobrazí pomocí seznamu a lze upravit a přizpůsobit požadovanou úroveň prostředku úložiště pro každý virtuální počítač Azure Stack. Pokud není k dispozici velikost úložiště, který chcete použít, můžete ho přidat tak, že upravíte některý z 10 počáteční velikosti obsažené v seznamu "Dostupné úložiště konfigurace" na pravé straně stránky.<br><br>Začíná na každý virtuální počítač původně přiřazené místní dočasné úložiště. Tak, aby odrážely dynamické zajišťování dočasného úložiště můžete změnit temp místní číslo k ničemu v rozevírací nabídce včetně dočasného úložiště o maximální povolená velikost.
 
 4. Jak budete přidávat virtuální počítače, zobrazí se grafy, které se zobrazí dostupné zdroje SKU změna. To umožňuje vidět jejich vliv přidávání různé velikosti a množství virtuálních počítačů během procesu modelování. Dalším způsobem, jak zobrazit změny je sledovat spotřebovaná a stále k dispozici čísla, které jsou uvedeny přímo pod seznamem dostupných virtuálních počítačů. Tato čísla odrážejí hodnoty podle aktuálně vybraného hardwaru SKU.
 5. Jakmile vytvoříte sadu virtuálních počítačů můžete najít navrhované hardwaru SKU kliknutím na tlačítko "Navrhované SKU" v pravém horním rohu stránky přímo pod popiskem "Aktuální skladová položka". Pomocí tohoto tlačítka můžete potom změnit konfiguraci virtuálního počítače a podívejte se, jaké hardware podporuje každou konfiguraci.

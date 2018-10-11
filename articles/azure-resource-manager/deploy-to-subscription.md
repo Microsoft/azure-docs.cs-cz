@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2018
+ms.date: 10/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6166161f6d50e747681217281a0afc6514df78fb
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 1d281ebe80c6089c559cfaa77f4875a856566092
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617447"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079374"
 ---
 # <a name="deploy-resources-to-an-azure-subscription"></a>Nasazení prostředků k předplatnému Azure
 
@@ -38,13 +38,13 @@ Pro předplatné úrovně nasazení existují některé důležité informace p�
 * [ResourceId()](resource-group-template-functions-resource.md#resourceid) funkce není podporována. Použijte ho k získání ID prostředku pro prostředky, které se používají na úrovni nasazení předplatných. Třeba získáte ID prostředku definice zásady pomocí `resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))`
 * [Reference()](resource-group-template-functions-resource.md#reference) a [list()](resource-group-template-functions-resource.md#list) funkce jsou podporovány.
 
-## <a name="assign-policy"></a>Přiřazení zásad
+## <a name="assign-policy"></a>Přiřadit zásady
 
 Následující příklad přiřadí existující definici zásady k předplatnému. Pokud zásady parametry, zadejte je jako objekt. Pokud zásady nepřijímá parametry, použijte výchozí prázdný objekt.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "policyDefinitionID": {
@@ -136,7 +136,7 @@ Je možné [definovat](../azure-policy/policy-definition.md) a přiřazení zás
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {},
     "variables": {},
@@ -144,7 +144,7 @@ Je možné [definovat](../azure-policy/policy-definition.md) a přiřazení zás
         {
             "type": "Microsoft.Authorization/policyDefinitions",
             "name": "locationpolicy",
-            "apiVersion": "2018-03-01",
+            "apiVersion": "2018-05-01",
             "properties": {
                 "policyType": "Custom",
                 "parameters": {},
@@ -162,7 +162,7 @@ Je možné [definovat](../azure-policy/policy-definition.md) a přiřazení zás
         {
             "type": "Microsoft.Authorization/policyAssignments",
             "name": "location-lock",
-            "apiVersion": "2018-03-01",
+            "apiVersion": "2018-05-01",
             "dependsOn": [
                 "locationpolicy"
             ],
@@ -199,7 +199,7 @@ Následující příklad přiřadí roli uživatele nebo skupinu.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "principalId": {
@@ -214,7 +214,7 @@ Následující příklad přiřadí roli uživatele nebo skupinu.
         {
             "type": "Microsoft.Authorization/roleAssignments",
             "name": "[guid(parameters('principalId'), deployment().name)]",
-            "apiVersion": "2017-05-01",
+            "apiVersion": "2017-09-01",
             "properties": {
                 "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', parameters('roleDefinitionId'))]",
                 "principalId": "[parameters('principalId')]"

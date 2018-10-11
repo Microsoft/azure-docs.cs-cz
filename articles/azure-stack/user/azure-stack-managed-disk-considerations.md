@@ -3,7 +3,7 @@ title: Rozdíly a aspekty u služby Managed Disks ve službě Azure Stack | Doku
 description: Další informace o rozdíly a aspekty při práci se službou Managed Disks v Azure stacku.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: jiahan
-ms.openlocfilehash: 26f8880d01da00780317ee2a6f66ee5007576a50
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 2870bf8911c48ac4cbb442278f172b37a474152b
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347660"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078049"
 ---
 # <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Managed Disks zásobníku: Rozdíly a aspekty
 Tento článek shrnuje známé rozdíly mezi Azure Stack Managed Disks a Managed Disks pro Azure. Další informace o základní rozdíly mezi Azure Stack a Azure, najdete v článku [klíče aspekty](azure-stack-considerations.md) článku.

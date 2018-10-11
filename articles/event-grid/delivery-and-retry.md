@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 10/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 15d68e4da6dd03751300f87ea5830c2db0470b60
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 4d53c33daefaadb4c58ce500a5d564af7988b606
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604854"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077084"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Doručování zpráv Event Grid a zkuste to znovu
 
@@ -22,7 +22,7 @@ Event gridu poskytuje odolné doručování. Poskytuje každou zprávu alespoň 
 
 V současné době služby Event Grid odesílá každé události jednotlivě odběratelům. Odběratel přijímá pole obsahující jednu událost.
 
-## <a name="retry-intervals-and-duration"></a>Intervaly opakování a dobu trvání
+## <a name="retry-schedule-and-duration"></a>Plán opakování a dobu trvání
 
 Event Grid používá zásady opakování exponenciálního omezení rychlosti pro doručování událostí. Pokud koncový bod nereaguje nebo vrací kód chyby, služby Event Grid se opakuje doručování následujícího plánu:
 
@@ -34,7 +34,7 @@ Event Grid používá zásady opakování exponenciálního omezení rychlosti p
 6. 30 minut
 7. 1 hodina
 
-Event Grid přidá malé náhodné ke všem intervalům opakování. Doručování událostí po jedné hodině, proběhne jednou za hodinu.
+Event Grid přidá malé náhodné všechny kroky opakovat. Doručování událostí po jedné hodině, proběhne jednou za hodinu.
 
 Ve výchozím nastavení služby Event Grid vyprší platnost všech událostí, které nejsou doručeny do 24 hodin. Je možné [přizpůsobit zásady opakování](manage-event-delivery.md) při vytváření odběru událostí. Zadejte maximální počet pokusů o doručení (výchozí hodnota je 30) a události time to live (výchozí hodnota je 1440 minut).
 

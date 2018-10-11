@@ -10,63 +10,122 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2018
+ms.date: 10/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9cb9fcbb6750bf854cca74ed6bd08a91caed9e26
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 06719f3a92dae805081ea85c346df97ebed0e0dc
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717586"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078066"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Použití Azure Key Vault k předání zabezpečený parametr. hodnoty během nasazení
 
 Pokud potřebujete předat jako parametr zabezpečenou hodnotu (jako jsou hesla) během nasazení, můžete načíst hodnotu z [Azure Key Vault](../key-vault/key-vault-whatis.md). Načtení hodnoty pomocí odkazu na trezor klíčů a tajný klíč v souboru parametrů. Hodnota se nikdy vystavena, protože pouze odkazujete na jeho ID služby key vault. Trezor klíčů může existovat v jiném předplatném než skupina prostředků, které nasazujete.
 
-## <a name="enable-access-to-the-secret"></a>Povolení přístupu k tajný kód
-
-Existují dvě důležité podmínky, které musí existovat pro přístup k trezoru klíčů během nasazování šablony:
-
-1. Vlastnosti trezoru klíčů `enabledForTemplateDeployment` musí být `true`.
-2. Uživatel nasazení šablony musí mít přístup k tajný kód. Uživatel musí mít `Microsoft.KeyVault/vaults/deploy/action` oprávnění pro key vault. [Vlastníka](../role-based-access-control/built-in-roles.md#owner) a [Přispěvatel](../role-based-access-control/built-in-roles.md#contributor) obě role udělit přístup.
-
-Při použití služby Key Vault se šablonou pro [spravované aplikace](../managed-applications/overview.md), je nutné udělit přístup k **poskytovatele prostředků zařízení** instančního objektu. Další informace najdete v tématu [tajného kódu trezoru klíčů přístup při nasazování služby Azure Managed Applications](../managed-applications/key-vault-access.md).
-
-
 ## <a name="deploy-a-key-vault-and-secret"></a>Nasazení služby key vault a tajný klíč
 
-Pokud chcete vytvořit trezor klíčů a tajný klíč, pomocí Azure CLI nebo Powershellu. Všimněte si, že služby key vault je povoleno pro šablonu nasazení. 
+Pokud chcete vytvořit trezor klíčů a tajný klíč, pomocí Azure CLI nebo Powershellu. `enabledForTemplateDeployment` je vlastností služby key vault. K nasazení podle modelu Resource Manager, přístup k tajným klíčům v této službě Key Vault `enabledForTemplateDeployment` musí být `true`. 
+
+Následující ukázkový skript Azure Powershellu a Azure CLI ukazuje, jak vytvořit trezor klíčů a tajný klíč.
 
 Pokud používáte Azure CLI, použijte:
 
 ```azurecli-interactive
-vaultname={your-unique-vault-name}
-password={password-value}
+keyVaultName='{your-unique-vault-name}'
+resourceGroupName='{your-resource-group-name}'
+location='centralus'
+userPrincipalName='{your-email-address-associated-with-your-subscription}'
 
-az group create --name examplegroup --location 'South Central US'
+# Create a resource group
+az group create --name $resourceGroupName --location $location
+
+# Create a Key Vault
 az keyvault create \
-  --name $vaultname \
-  --resource-group examplegroup \
-  --location 'South Central US' \
+  --name $keyVaultName \
+  --resource-group $resourceGroupName \
+  --location $location \
   --enabled-for-template-deployment true
-az keyvault secret set --vault-name $vaultname --name examplesecret --value $password
+az keyvault set-policy --upn $userPrincipalName --name $keyVaultName --secret-permissions set delete get list
+
+# Create a secret with the name, vmAdminPassword
+password=$(openssl rand -base64 32)
+echo $password
+az keyvault secret set --vault-name $keyVaultName --name 'vmAdminPassword' --value $password
 ```
 
 Pokud používáte PowerShell, použijte:
 
-```powershell
-$vaultname = "{your-unique-vault-name}"
-$password = "{password-value}"
+```azurepowershell-interactive
+$keyVaultName = "{your-unique-vault-name}"
+$resourceGroupName="{your-resource-group-name}"
+$location='Central US'
+$userPrincipalName='{your-email-address-associated-with-your-subscription}'
 
-New-AzureRmResourceGroup -Name examplegroup -Location "South Central US"
+New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+
 New-AzureRmKeyVault `
-  -VaultName $vaultname `
-  -ResourceGroupName examplegroup `
-  -Location "South Central US" `
+  -VaultName $keyVaultName `
+  -resourceGroupName $resourceGroupName `
+  -Location $location `
   -EnabledForTemplateDeployment
+Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $userPrincipalName -PermissionsToSecrets set,delete,get,list
+
+$password = openssl rand -base64 32
+echo $password
 $secretvalue = ConvertTo-SecureString $password -AsPlainText -Force
-Set-AzureKeyVaultSecret -VaultName $vaultname -Name "examplesecret" -SecretValue $secretvalue
+Set-AzureKeyVaultSecret -VaultName $keyVaultName -Name "vmAdminPassword" -SecretValue $secretvalue
 ```
+
+Pokud při spuštění skriptu PowerShell mimo Cloud Shell, použijte místo toho vytvořit heslo následující příkaz:
+
+```powershell
+Add-Type -AssemblyName System.Web
+[System.Web.Security.Membership]::GeneratePassword(16,3)
+```
+
+Použití šablony Resource Manageru: viz [kurz: integrace Azure Key Vault v nasazení šablony Resource Manageru](./resource-manager-tutorial-use-key-vault.md#prepare-the-key-vault).
+
+> [!NOTE]
+> Jednotlivé služby Azure má požadavky na konkrétní heslo. Například požadavky na Azure virtuální počítače najdete tady [jaké jsou požadavky na heslo při vytváření virtuálního počítače?](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
+
+## <a name="enable-access-to-the-secret"></a>Povolení přístupu k tajný kód
+
+Kromě nastavení `enabledForTemplateDeployment` k `true`, musí mít uživatel nasazení šablony `Microsoft.KeyVault/vaults/deploy/action` oprávnění pro obor, který obsahuje Key Vault, včetně skupiny prostředků a Key Vault. [Vlastníka](../role-based-access-control/built-in-roles.md#owner) a [Přispěvatel](../role-based-access-control/built-in-roles.md#contributor) obě role udělit přístup. Pokud vytvoříte trezor klíčů, jste vlastníkem, abyste měli oprávnění. Pokud služby Key Vault je pod správou jiného předplatného, musí vlastník služby Key Vault grand přístup.
+
+Následující postup ukazuje, jak vytvořit roli s minimální permssion a přiřazení uživatele
+1. Vytvořte soubor JSON s definicí vlastní role:
+
+    ```json
+    {
+      "Name": "Key Vault resource manager template deployment operator",
+      "IsCustom": true,
+      "Description": "Lets you deploy a resource manager template with the access to the secrets in the Key Vault.",
+      "Actions": [
+        "Microsoft.KeyVault/vaults/deploy/action"
+      ],
+      "NotActions": [],
+      "DataActions": [],
+      "NotDataActions": [],
+      "AssignableScopes": [
+        "/subscriptions/00000000-0000-0000-0000-000000000000"
+      ]
+    }
+    ```
+    "00000000-0000-0000-0000-000000000000" nahraďte ID předplatného uživatele, který potřebují pro nasazení šablony.
+
+2. Vytvoření nové role pomocí souboru JSON:
+
+    ```azurepowershell
+    $resourceGroupName= "<Resource Group Name>" # the resource group which contains the Key Vault
+    $userPrincipalName = "<Email Address of the deployment operator>"
+    New-AzureRmRoleDefinition -InputFile "<PathToTheJSONFile>" 
+    New-AzureRmRoleAssignment -ResourceGroupName $resourceGroupName -RoleDefinitionName "Key Vault resource manager template deployment operator" -SignInName $userPrincipalName
+    ```
+
+    `New-AzureRmRoleAssignment` Ukázka přiřazení vlastní role uživatele na úrovni skupiny prostředků.  
+
+Při použití služby Key Vault se šablonou pro [spravované aplikace](../managed-applications/overview.md), je nutné udělit přístup k **poskytovatele prostředků zařízení** instančního objektu. Další informace najdete v tématu [tajného kódu trezoru klíčů přístup při nasazování služby Azure Managed Applications](../managed-applications/key-vault-access.md).
 
 ## <a name="reference-a-secret-with-static-id"></a>Odkazovat na tajný kód se statické ID
 
@@ -147,7 +206,7 @@ Nyní nasaďte šablonu a předejte parametr soubor. Můžete použít šablonu 
 Pokud používáte Azure CLI, použijte:
 
 ```azurecli-interactive
-az group create --name datagroup --location "South Central US"
+az group create --name datagroup --location $location
 az group deployment create \
     --name exampledeployment \
     --resource-group datagroup \
@@ -157,8 +216,8 @@ az group deployment create \
 
 Pokud používáte PowerShell, použijte:
 
-```powershell
-New-AzureRmResourceGroup -Name datagroup -Location "South Central US"
+```powershell-interactive
+New-AzureRmResourceGroup -Name datagroup -Location $location
 New-AzureRmResourceGroupDeployment `
   -Name exampledeployment `
   -ResourceGroupName datagroup `
@@ -274,7 +333,7 @@ Nasadit předchozí šablonu a zadejte hodnoty pro parametry. Můžete použít 
 Pokud používáte Azure CLI, použijte:
 
 ```azurecli-interactive
-az group create --name datagroup --location "South Central US"
+az group create --name datagroup --location $location
 az group deployment create \
     --name exampledeployment \
     --resource-group datagroup \
@@ -285,7 +344,7 @@ az group deployment create \
 Pokud používáte PowerShell, použijte:
 
 ```powershell
-New-AzureRmResourceGroup -Name datagroup -Location "South Central US"
+New-AzureRmResourceGroup -Name datagroup -Location $location
 New-AzureRmResourceGroupDeployment `
   -Name exampledeployment `
   -ResourceGroupName datagroup `

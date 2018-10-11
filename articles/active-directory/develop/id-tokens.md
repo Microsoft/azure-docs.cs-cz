@@ -1,6 +1,6 @@
 ---
 title: Odkaz tokenu Azure Active Directory ID | Dokumentace Microsoftu
-description: Pomocí id_tokens, protože ho vygeneroval v1 a v2 koncové body služby Azure AD.
+description: Další informace o použití id_tokens, protože ho vygeneroval koncové body v1.0 a v2.0 služby Azure AD.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -16,12 +16,12 @@ ms.date: 10/05/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 85c8100dd567308500fac1c1d8577c84da98013f
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: e74d2cbada1d433bdaf4ebc905e88d66444b2e2f
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815354"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078201"
 ---
 # <a name="id-tokens"></a>Tokeny ID
 
@@ -64,11 +64,12 @@ Zobrazit tento token ukázkové verze 2.0 v [jwt.ms](https://jwt.ms/#id_token=ey
 
 |Deklarovat | Formát | Popis |
 |-----|--------|-------------|
-|`aud` | Řetězec, identifikátor ID URI aplikace | Identifikuje zamýšlený příjemce tokenu. V `id_tokens`, cílová skupina je ID vaší aplikace, přiřazené vaší aplikaci na webu Azure Portal. Vaše aplikace by měl ověřit tuto hodnotu a odmítnout token, pokud hodnota se neshoduje. |
-|`iss` | Řetězec, identifikátor URI služby tokenů zabezpečení | Identifikuje službu tokenů zabezpečení (STS), který vytvoří a vrátí token a tenanta Azure AD, ve kterém byl uživatel ověřený. Pokud byl token vydán bodem v2.0, identifikátor URI, skončí za `/v2.0`. Identifikátor GUID, který označuje, že uživatel je příjemce uživatele z účtu Microsoft je `9188040d-6c67-4c5b-b112-36a304b66dad`. Aplikace by měla část GUID deklarace slouží k omezení sadu klienty, kteří se můžou přihlásit k aplikaci, pokud je k dispozici. |
-|`iat` | int, UNIXOVÉ časové razítko | "Vystaveno v" označuje, kdy došlo k ověřování pro tento token. |
-|`nbf` | int, UNIXOVÉ časové razítko | Deklarace identity "nbf" (ne dřív) označuje čas, před kterým musí nebylo přijato tokenů JWT pro zpracování.|
-|`exp` | int, UNIXOVÉ časové razítko | Deklarace identity "exp" (čas vypršení platnosti) označuje čas vypršení platnosti na nebo za které se token JWT nesmí přijaté ke zpracování. Je důležité si uvědomit, že prostředek může před tímto časem také – Pokud například změny v ověřování se vyžaduje token zrušení byl zjištěn či odmítnout token. |
+|`aud` |  Řetězec, identifikátor ID URI aplikace | Identifikuje zamýšlený příjemce tokenu. V `id_tokens`, cílová skupina je ID vaší aplikace, přiřazené vaší aplikaci na webu Azure Portal. Vaše aplikace by měl ověřit tuto hodnotu a odmítnout token, pokud hodnota se neshoduje. |
+|`iss` |  Řetězec, identifikátor URI služby tokenů zabezpečení | Identifikuje službu tokenů zabezpečení (STS), který vytvoří a vrátí token a tenanta Azure AD, ve kterém byl uživatel ověřený. Pokud byl token vydán bodem v2.0, identifikátor URI, skončí za `/v2.0`.  Identifikátor GUID, který označuje, že uživatel je příjemce uživatele z účtu Microsoft je `9188040d-6c67-4c5b-b112-36a304b66dad`. Aplikace by měla část GUID deklarace slouží k omezení sadu klienty, kteří se můžou přihlásit k aplikaci, pokud je k dispozici. |
+|`iat` |  int, UNIXOVÉ časové razítko | "Vystaveno v" označuje, kdy došlo k ověřování pro tento token.  |
+|`idp`|Řetězec, obvykle o identifikátor URI služby tokenů zabezpečení | Zaznamenává zprostředkovatele identity, který ověřil subjekt tokenu. Tato hodnota se shoduje s hodnotu deklarace identity vystavitele, není-li uživatelský účet není ve stejném tenantovi jako vystavitel - hosté, třeba. Pokud deklarace identity není k dispozici, znamená to, že hodnota `iss` lze použít.  Pro osobní účty, které se používá v kontextu orgnizational (například pomocí osobního účtu pozvat do tenanta služby Azure AD) `idp` deklarace může být 'live.com' nebo identifikátor URI služby tokenů zabezpečení obsahující tenanta účtu Microsoft `9188040d-6c67-4c5b-b112-36a304b66dad`. |
+|`nbf` |  int, UNIXOVÉ časové razítko | Deklarace identity "nbf" (ne dřív) označuje čas, před kterým musí nebylo přijato tokenů JWT pro zpracování.|
+|`exp` |  int, UNIXOVÉ časové razítko | Deklarace identity "exp" (čas vypršení platnosti) označuje čas vypršení platnosti na nebo za které se token JWT nesmí přijaté ke zpracování.  Je důležité si uvědomit, že prostředek může před tímto časem také – Pokud například změny v ověřování se vyžaduje token zrušení byl zjištěn či odmítnout token. |
 | `c_hash`| Řetězec |Hodnota hash kódu je součástí tokeny typu ID, pouze v případě, že je vydaný ID token s autorizačního kódu OAuth 2.0. Slouží k ověření pravosti autorizační kód. Podrobnosti o provedení tohoto ověření naleznete v tématu [OpenID Connect specifikace](http://openid.net/specs/openid-connect-core-1_0.html). |
 |`at_hash`| Řetězec |Přístup, který je zahrnuta hodnota hash tokenu v ID tokeny, pouze pokud ID token vydaný s přístupovým tokenem OAuth 2.0. Slouží k ověření pravosti tokenu přístupu. Podrobnosti o provedení tohoto ověření naleznete v tématu [OpenID Connect specifikace](http://openid.net/specs/openid-connect-core-1_0.html). |
 |`aio` | Neprůhledný řetězec | Vnitřní deklarace, která používá Azure AD při zaznamenávání dat pro opakované použití tokenu. Třeba ji ignorovat.|

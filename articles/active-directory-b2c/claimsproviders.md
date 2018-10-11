@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: a9159ade6e16c1d14149197e85cee8720dd98b09
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: b226aeac86084c56a49d00c2a2f8deddaf7b0f68
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381158"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068770"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders 
 
@@ -42,7 +42,7 @@ Zprostředkovatel deklarací identity obsahuje sadu [technické profily](technic
 
 **ClaimsProviders** prvek obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | ClaimsProvider | 1: n | Poskytovatele akreditované deklarace identity, který můžete využít v různých cest uživatele. |
 
@@ -50,9 +50,9 @@ Zprostředkovatel deklarací identity obsahuje sadu [technické profily](technic
 
 **ClaimsProvider** prvek obsahuje následujících podřízených elementů:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ---------- | ----------- |
-| Domain (Doména) | 0:1 | Řetězec, který obsahuje název domény pro poskytovatele deklarací identity. Například pokud poskytovatele deklarací identity obsahuje technický profil na Facebooku, název domény je Facebook.com. Tento název domény se používá pro všechny technické profily definovanými v zprostředkovatele deklarací identity, pokud není přepsán technický profil. |
+| Domain (Doména) | 0:1 | Řetězec, který obsahuje název domény pro poskytovatele deklarací identity. Například pokud poskytovatele deklarací identity obsahuje technický profil na Facebooku, název domény je Facebook.com. Tento název domény se používá pro všechny technické profily definovanými v zprostředkovatele deklarací identity, pokud není přepsán technický profil. Název domény můžete také odkazovat **domain_hint**. Další informace najdete v tématu **přesměrování přihlášení k poskytovateli sociální** část [nastavit přímé přihlášení pomocí Azure Active Directory B2C](direct-signin.md). |
 | Zobrazovaný název | 0:1 | Řetězec, který obsahuje název, který může být zobrazen uživatelům. |
 | [TechnicalProfiles](technicalprofiles.md) | 0:1 | Sada technické profily, které podporuje zprostředkovatel deklarací identity |
 

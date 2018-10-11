@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/20/2018
 ms.author: danoble
-ms.openlocfilehash: 7067a71eea3ffbfadf006a102ee926fb15347f63
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: a5481f9b2b443a0860ce0df5643427f357e1c294
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423642"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785367"
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Použití emulátoru služby Azure Cosmos DB pro místní vývoj a testování
 
@@ -466,54 +466,6 @@ Pokud chcete shromažďovat trasovací soubory pro ladění, spusťte z příkaz
 2. Do vyhledávacího pole ve Windows zadejte **Programy a funkce** a klikněte na výsledek **Programy a funkce (nastavení systému)**.
 3. V seznamu aplikací se posuňte na položku **Azure Cosmos DB Emulator**, vyberte ji, klikněte na **Odinstalovat**, potvrďte a znovu klikněte na **Odinstalovat**.
 4. Když je aplikace odinstalovaná, přejděte do složky `C:\Users\<user>\AppData\Local\CosmosDBEmulator` a odstraňte ji. 
-
-## <a name="change-list"></a>Seznam změn
-
-Číslo verze můžete zkontrolovat tak, že kliknete pravým tlačítkem na ikonu místního emulátoru na hlavním panelu a kliknete na položku nabídky O aplikaci.
-
-### <a name="1220-released-on-april-20-2018"></a>1.22.0. Vydáno 20. dubna 2018
-
-Kromě aktualizace služeb emulátoru pro zajištění souladu s cloudovými službami Cosmos DB jsme zahrnuli vylepšenou dokumentaci PowerShellu a opravy různých chyb.
-
-### <a name="12106-released-on-march-27-2018"></a>1.21.0.6 Vydáno 27. března 2018
-
-Kromě aktualizace služeb emulátoru pro zajištění souladu s cloudovými službami Cosmos DB jsme do této verze zahrnuli jednu novou funkci a opravy dvou chyb.
-
-#### <a name="features"></a>Funkce
-
-1. Příkaz Start-CosmosDbEmulator nyní zahrnuje možnosti spuštění.
-
-#### <a name="bug-fixes"></a>Opravy chyb
-
-1. Modul Microsoft.Azure.CosmosDB.Emulator PowerShell teď zajišťuje, že je načten výčet `ServiceControllerStatus`.
-
-2. Modul Microsoft.Azure.CosmosDB.Emulator PowerShell nyní obsahuje manifest; opomenutí z prvního vydání.
-
-### <a name="1201084-released-on-february-14-2018"></a>1.20.108.4 Vydáno 14. února 2018
-
-V této verzi byla přidána jedna nová funkce a dvě opravy chyb. Děkujeme zákazníkům, kteří nám pomohli najít a opravit tyto problémy.
-
-#### <a name="bug-fixes"></a>Opravy chyb
-
-1. Emulátor teď funguje na počítačích s 1 nebo 2 jádry (nebo virtuálními procesory).
-
-   Cosmos DB přiděluje úlohy za účelem provedení různých služeb. Počet přidělených úloh je násobkem počtu jader na hostiteli. Výchozí hodnota násobku funguje dobře v produkčním prostředí s velkým počtem jader. U počítačů s 1 nebo 2 procesory však při použití tohoto násobku nejsou k provedení těchto služeb přiděleny žádné úlohy.
-
-   Toto chování jsme opravili přidáním přepsání konfigurace do emulátoru. Nyní je použitý násobek 1. Počet úloh přidělených k provádění různých služeb se nyní rovná počtu jader na hostiteli.
-
-   I kdybychom v této verzi nezměnili nic jiného, bylo potřeba vyřešit tento problém. Zjistili jsme, že mnoho vývojářských a testovacích prostředí hostujících emulátor má 1 nebo 2 jádra.
-
-2. Emulátor už k instalaci nevyžaduje Microsoft Visual C++ 2015 Redistributable.
-
-   Zjistili jsme, že nové instalace systému Windows (verze pro stolní počítače a servery) neobsahují tento distribuovatelný balíček. Proto jsme teď distribuovatelné binární soubory přidali k emulátoru.
-
-#### <a name="features"></a>Funkce
-
-Mnoho zákazníků, s nimiž jsme mluvili, vyjádřilo přání, aby byl emulátor skriptovatelný. Proto jsme v této verzi přidali některé možnosti skriptování. Emulátor teď obsahuje modul PowerShell, který ho umožňuje spustit, zastavit, získat stav a odinstalovat: `Microsoft.Azure.CosmosDB.Emulator`. 
-
-### <a name="120911-released-on-january-26-2018"></a>1.20.91.1 Vydáno 26. ledna 2018
-
-* Ve výchozím nastavení je povolen kanál agregace MongoDB.
 
 ## <a name="next-steps"></a>Další kroky
 

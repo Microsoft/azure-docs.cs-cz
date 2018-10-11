@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 10/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5db53567b1df9e726fb0c507f0302536ea45b7f4
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: fcf3ecaff6e8ba1421496a96d01428946cf8ab8e
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603766"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077778"
 ---
 # <a name="dead-letter-and-retry-policies"></a>Zásady opakování a nedoručené zprávy
 
@@ -48,7 +48,7 @@ Chcete-li vypnout dead-lettering, spusťte znovu příkaz pro vytvoření odběr
 
 Při vytváření odběr Event gridu, můžete nastavit hodnoty pro jak dlouho by měl zkuste doručování událostí služby Event Grid. Ve výchozím nastavení služby Event Grid pokusí za 24 hodin (1 440 minut) a pokusí až 30krát. Pro váš odběr služby event grid můžete nastavit některé z těchto hodnot. Hodnota time to live události musí být celé číslo od 1 do 1440. Hodnota pro maximální doručování pokusů musí být celé číslo od 1 do 30.
 
-Nejde nakonfigurovat [interval opakování](delivery-and-retry.md#retry-intervals-and-duration).
+Nejde nakonfigurovat [plán opakování](delivery-and-retry.md#retry-schedule-and-duration).
 
 Pokud chcete nastavit událost time-to-live na jinou hodnotu než 1 440 minut, použijte:
 

@@ -1,85 +1,95 @@
 ---
-title: Vytvořit nebo připojit paralelních větvích - Azure Logic Apps | Microsoft Docs
-description: Jak vytvořit nebo připojit paralelních větvích pro pracovní postupy v Azure Logic Apps
+title: Vytvořit nebo připojit k paralelních větvích – Azure Logic Apps | Dokumentace Microsoftu
+description: Jak vytvořit nebo připojit paralelní větve pro pracovní postupy v Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
-ms.date: 03/05/2018
-ms.topic: article
 ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 2a8dcd82b67ee64e5687d8687415056b0aab39aa
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.topic: article
+ms.date: 10/10/2018
+ms.openlocfilehash: 344768e08fbd70aaae4fdb250b00cc968ed8eae1
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298851"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067020"
 ---
-# <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Vytvořit nebo připojit paralelních větvích pro akce pracovního postupu v Azure Logic Apps
+# <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Vytvořit nebo připojit k paralelní větve pro akce pracovního postupu ve službě Azure Logic Apps
 
-Ve výchozím vaše akce v pracovních postupech logiku aplikace spouští sekvenčně. K provádění akcí nezávislé ve stejnou dobu, můžete vytvořit [paralelní větve](#parallel-branches)a potom [připojení těchto větví](#join-branches) novější v vaší toku. 
+Ve výchozím nastavení akcí v pracovních postupů aplikace logiky spouští sekvenčně. K provádění akcí nezávislé ve stejnou dobu, můžete vytvořit [paralelní větve](#parallel-branches)a potom [připojení těchto větví](#join-branches) dále v toku. 
 
 > [!TIP] 
-> Pokud máte aktivační událost, která přijímá pole a chcete spustit pracovní postup pro každou položku pole, můžete *debatch* tohoto pole s [ **SplitOn** aktivovat vlastnost](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch).
+> Pokud máte trigger, který přijímá pole a chcete spustit pracovní postup pro každou položku pole, můžete si *debatch* toto pole se [ **vlastnost SplitOn** aktivovat vlastnost](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch).
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
-* Základní znalosti o [postup vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Základní znalosti o [postupy vytváření aplikací logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
 <a name="parallel-branches"></a>
 
-## <a name="add-a-parallel-branch"></a>Přidat paralelní větev
+## <a name="add-parallel-branch"></a>Přidat paralelní větev
 
-Ke spuštění nezávislé kroků ve stejnou dobu, můžete přidat paralelních větvích vedle stávající krok. 
+Ke spuštění nezávislých kroků ve stejnou dobu, můžete přidat paralelních větvích vedle stávající krok. 
 
-![Paralelní spuštění kroky](media/logic-apps-control-flow-branches/parallel.png)
+![Kroky při paralelním spuštění](media/logic-apps-control-flow-branches/parallel.png)
 
-Aplikace logiky čeká všechny větve ukončíte před pokračováním pracovního postupu.
-Paralelní větve spustit pouze tehdy, když jejich `runAfter` hodnoty vlastností shodují v kroku dokončení nadřazené stavu. Například pro obě `branchAction1` a `branchAction2` jsou nastaveny na spouštění pouze tehdy, když `parentAction` dokončení s `Succeded` stavu.
+Počká, pro všechny větve na dokončení před pokračováním pracovní postup aplikace logiky. Paralelní větve spustit jenom v případě jejich `runAfter` hodnoty vlastností odpovídá stavu na dokončení nadřazené krok. Například obě `branchAction1` a `branchAction2` jsou nastavena pro spuštění pouze tehdy, když `parentAction` dokončí s `Succeded` stav.
 
 > [!NOTE]
-> Než začnete, aplikace logiky musíte už mít krok kterém můžete přidat paralelních větvích.
+> Než začnete, aplikace logiky musí už mít krok ve kterém můžete přidat paralelních větvích.
 
-1. V <a href="https://portal.azure.com" target="_blank">portál Azure</a>, otevřete aplikaci logiky v návrháři aplikace logiky.
+1. V <a href="https://portal.azure.com" target="_blank">webu Azure portal</a>, otevřete v návrháři aplikace logiky aplikace logiky.
 
-2. Přesunutím ukazatele myši nad šipku výše v kroku, ve které chcete přidat paralelních větvích.
+1. Přesuňte ukazatel myši na šipku nad krok, ve které chcete přidat paralelních větvích. Zvolte **plus** znaménko (**+**), který se zobrazí a klikněte na tlačítko **přidat paralelní větev**. 
 
-3. Vyberte **plus** přihlašovací (**+**), zvolte **přidat paralelní větev**a vyberte položku, kterou chcete přidat.
+   ![Přidat paralelní větev](media/logic-apps-control-flow-branches/add-parallel-branch.png)
 
-   ![Přidat paralelní větve](media/logic-apps-control-flow-branches/add-parallel-branch.png)
+1. Do vyhledávacího pole vyhledejte a vyberte požadovanou akci.
 
-   Vybrané položky se teď zobrazí v paralelní větev.
+   ![Vyhledejte a vyberte požadovanou akci](media/logic-apps-control-flow-branches/find-select-parallel-action.png)
 
-4. Pro každou paralelní větev přidáte kroky, které chcete. Pokud chcete přidat sekvenční akce paralelní větev, přesuňte ukazatel myši v části Akce, ve které chcete přidat sekvenční akce. Vyberte **plus** (**+**) přihlášení a krok, který chcete přidat.
+   Vybranou akci nyní zobrazí v paralelní větvi, například:
 
-   ![Přidat sekvenční krok paralelní větve](media/logic-apps-control-flow-branches/add-sequential-action-parallel-branch.png)
+   ![Vyhledejte a vyberte požadovanou akci](media/logic-apps-control-flow-branches/added-parallel-branch.png)
 
-5. Sloučit větví zpět společně [připojení paralelních větvích](#join-branches). 
+1. Teď v jednotlivých paralelních větvích, přidejte kroky, které chcete. Přidání další akce na větev, přesuňte ukazatel v akci, ve které chcete přidat sekvenční akce. Zvolte **plus** (**+**) znak, který se zobrazí a pak vyberte **přidat akci**.
+
+   ![Přidat paralelní větev sekvenční akci](media/logic-apps-control-flow-branches/add-sequential-action.png)
+
+1. Do vyhledávacího pole vyhledejte a vyberte požadovanou akci.
+
+   ![Vyhledejte a vyberte sekvenční akce](media/logic-apps-control-flow-branches/find-select-sequential-action.png)
+
+   Vybranou akci nyní se zobrazí v aktuální větvi, například:
+
+   ![Vyhledejte a vyberte sekvenční akce](media/logic-apps-control-flow-branches/added-sequential-action.png)
+
+Ke sloučení větví zpět společně [připojení paralelních větvích](#join-branches). 
 
 <a name="parallel-json"></a>
 
-## <a name="parallel-branch-definition-json"></a>Paralelní větev definice (JSON)
+## <a name="parallel-branch-definition-json"></a>Definice paralelní větev (JSON)
 
-Pokud pracujete v zobrazení kódu, můžete definovat strukturu paralelní v definici aplikace logiky JSON místo, například:
+Pokud pracujete v zobrazení kódu, můžete definovat paralelní konstrukce v definici JSON vaší aplikace logiky místo, například:
 
 ``` json
 {
   "triggers": {
-    "myTrigger": { }
+    "myTrigger": {}
   },
   "actions": {
     "parentAction": {
       "type": "<action-type>",
-      "inputs": { },
+      "inputs": {},
       "runAfter": {}
     },
     "branchAction1": {
       "type": "<action-type>",
-      "inputs": { },
+      "inputs": {},
       "runAfter": {
         "parentAction": [
           "Succeeded"
@@ -88,7 +98,7 @@ Pokud pracujete v zobrazení kódu, můžete definovat strukturu paralelní v de
     },
     "branchAction2": {
       "type": "<action-type>",
-      "inputs": { },
+      "inputs": {},
       "runAfter": {
         "parentAction": [
           "Succeeded"
@@ -102,25 +112,31 @@ Pokud pracujete v zobrazení kódu, můžete definovat strukturu paralelní v de
 
 <a name="join-branches"></a>
 
-## <a name="join-parallel-branches"></a>Připojení k paralelních větvích
+## <a name="join-parallel-branches"></a>Připojte se k paralelních větvích
 
-Sloučit paralelních větvích společně, stačí přidáte krok dole v části všechny větve. Tento krok se spouští po všech paralelních větvích dokončit, spuštěná.
+Pokud chcete sloučit paralelních větvích, stačí přidáte krok v dolní části v rámci všech větví. Tento krok se spustí po všech paralelních větvích dokončit systémem.
 
-![Připojení k paralelních větvích](media/logic-apps-control-flow-branches/join.png)
+![Připojte se k paralelních větvích](media/logic-apps-control-flow-branches/join.png)
 
-1. V [portál Azure](https://portal.azure.com), najít a otevřít aplikaci logiky v návrháři aplikace logiky. 
+1. V [webu Azure portal](https://portal.azure.com), vyhledání a otevření aplikace logiky v návrháři aplikace logiky. 
 
-2. V části paralelní větve, které chcete připojit přidejte krok, který chcete provést.
+1. V části paralelních větvích, které se chcete připojit, zvolte **nový krok**. 
 
-   ![Přidejte krok, který připojí paralelních větvích](media/logic-apps-control-flow-branches/join-steps.png)
+   ![Přidat krok pro připojení](media/logic-apps-control-flow-branches/add-join-step.png)
 
-   Nyní jsou sloučeny paralelních větvích.
+1. Do vyhledávacího pole vyhledejte a vyberte akci, kterou chcete, aby jako krok, který spojuje větve.
+
+   ![Vyhledejte a vyberte akci, která připojí paralelních větvích](media/logic-apps-control-flow-branches/join-steps.png)
+
+   Paralelních větvích jsou nyní sloučeny.
+
+   ![Připojené k doméně větví](media/logic-apps-control-flow-branches/joined-branches.png)
 
 <a name="join-json"></a>
 
-## <a name="join-definition-json"></a>Připojení k definici (JSON)
+## <a name="join-definition-json"></a>Připojte se k definici (JSON)
 
-Pokud pracujete v zobrazení kódu, můžete definovat strukturu spojení v definici aplikace logiky JSON místo, například:
+Pokud pracujete v zobrazení kódu, můžete definovat strukturu spojení v definici JSON vaší aplikace logiky místo, například:
 
 ``` json
 {
@@ -171,11 +187,11 @@ Pokud pracujete v zobrazení kódu, můžete definovat strukturu spojení v defi
 ## <a name="get-support"></a>Získat podporu
 
 * Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Odeslání nebo hlasovat o funkcích a návrhy, najdete [web pro zasílání názorů uživatele Azure Logic Apps](http://aka.ms/logicapps-wish).
+* Odeslání návrhu nebo hlasování o funkcích a návrhy, najdete v tématu [webu zpětné vazby uživatelů Azure Logic Apps](http://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další postup
 
 * [Spustit kroky na základě podmínky (podmíněné příkazy)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
-* [Spustit kroky na základě různých hodnot (příkazech switch)](../logic-apps/logic-apps-control-flow-switch-statement.md)
-* [Spuštění a opakujte kroky (smyčky)](../logic-apps/logic-apps-control-flow-loops.md)
-* [Spustit kroky na základě stavu seskupené akce (oborům)](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
+* [Spustit kroky na základě různých hodnot (příkazů přepínače)](../logic-apps/logic-apps-control-flow-switch-statement.md)
+* [Spuštění a opakujte kroky (cykly)](../logic-apps/logic-apps-control-flow-loops.md)
+* [Spustit kroky na základě stavu seskupené akce (obory)](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)

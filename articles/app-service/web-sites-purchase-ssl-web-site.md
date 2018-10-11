@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: c223e8fb000686aedefa1c02e93c1c8cbb30ec73
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 0c2adcfa4e11e444f66e1a9c04bea6e3d352f117
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888289"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077722"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Koupě a konfigurace certifikátu SSL pro službu Azure App Service
 
@@ -198,14 +198,6 @@ Jako ručně obnovit certifikát, klikněte na tlačítko **ruční obnovení** 
 
 > [!NOTE]
 > Obnoveného certifikátu není automaticky svázán s vaší aplikace, ať už ručně obnovit nebo ho obnovit automaticky. Vytvořte jeho vazbu do vaší aplikace, najdete v článku [prodloužit platnost certifikátů](./app-service-web-tutorial-custom-ssl.md#renew-certificates). 
-
-<a name="notrenewed"></a>
-## <a name="why-is-my-certificate-not-auto-renewed"></a>Proč se tento certifikát automaticky obnoví?
-
-Pokud certifikát SSL, je nakonfigurovaný pro automatické obnovení, ale se automaticky neobnoví, bude pravděpodobně domény čeká na ověření. Poznámky: 
-
-- GoDaddy, který generuje certifikáty služby App Service, vyžaduje ověření domény jednou za dva roky. Správce domény obdrží e-mailu jednou za tři roky k ověření domény. Zkontrolujte e-mail nebo ověřte svoji doménu selhání brání automaticky obnovuje certifikát App Service. 
-- Z důvodu změny v zásadách GoDaddy všechny certifikáty služby App Service vydané před 1. března 2017 vyžadovat reverification domény v době další obnovení (i když je povolená automatické obnovení certifikátu). Zkontrolujte e-mailu a dokončete ověření tohoto jednorázového domény pokračujte automatické obnovení certifikátu služby App Service. 
 
 ## <a name="more-resources"></a>Další zdroje informací
 

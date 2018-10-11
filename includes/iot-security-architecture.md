@@ -1,19 +1,19 @@
 ---
 title: zahrnout soubor
 description: zahrnout soubor
-services: iot-suite
-author: dominicbetts
-ms.service: iot-suite
+services: iot-fundamentals
+author: robinsh
+ms.service: iot-fundamentals
 ms.topic: include
-ms.date: 04/24/2018
-ms.author: dobett
+ms.date: 08/07/2018
+ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 1137f1dac9570b56dc202194e5f94dfd72c31c9f
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 64c7525be9bd44b0d33fdcd8da717e9fe893e057
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39030046"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49070181"
 ---
 # <a name="internet-of-things-security-architecture"></a>Architektura zabezpečení Internetu věcí
 
@@ -185,7 +185,7 @@ V každém z kategorií uvedených v architektuře Azure IoT pokusí zmírnit ce
 
 Tady je několik příkladů hrozby v této kategorii:
 
-Falšování identity: Útočník může extrahujte kryptografický materiál klíče ze zařízení, buď na softwarové nebo hardwarové úrovni a následně přístup, který je už zabraný systému pomocí jiné fyzické nebo virtuální zařízení s identitou zařízení materiál klíče z.
+**Falšování**: útočník může extrahovat kryptografické klíče ze zařízení, buď na úrovni softwaru nebo hardwaru, a následně má přístup k systému s jiné fyzické nebo virtuální zařízení s identitou zařízení materiál klíče byla přijata z.
 
 **Útok DoS**: zařízení lze vykreslit nepodporující fungovat nebo sdělování narušovaly rádiových frekvencí nebo vyjmutí vodičům stanice. Sledování fotoaparát, který má připojení k napájení nebo sítě záměrně vyseknuté například nejde hlásit data, vůbec.
 

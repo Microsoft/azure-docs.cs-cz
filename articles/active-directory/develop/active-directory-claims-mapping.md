@@ -12,14 +12,14 @@ ms.topic: article
 ms.date: 10/05/2018
 ms.author: celested
 ms.reviewer: hirsin, jeedes
-ms.openlocfilehash: c188b800e2227a5c9f3a11d7d8d752af3efdf66a
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 43b17c54014d2f1beedd02f9ec627dd087e65d5a
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/10/2018
-ms.locfileid: "48904155"
+ms.locfileid: "49069263"
 ---
-# <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-public-preview"></a>Postupy: přizpůsobení deklarací identity v tokenech pro konkrétní aplikaci v tenantovi (Public Preview), protože ho
+# <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Postupy: přizpůsobení deklarací identity v tokenech pro konkrétní aplikaci v tenantovi (Preview), protože ho
 
 > [!NOTE]
 > Tato funkce nahrazuje a nahrazuje [deklarací přizpůsobení](active-directory-saml-claims-customization.md) nabízeným prostřednictvím portálu. Ve stejné aplikaci pokud je přizpůsobení deklarací identity pomocí portálu kromě metodu grafu nebo Powershellu podrobně popsané v tomto dokumentu, tokeny vydané pro, že aplikace bude ignorovat konfigurace na portálu. Konfigurace provedené pomocí metody popsané v tomto dokumentu se neprojeví v portálu.

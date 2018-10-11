@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 03/04/2018
 ms.author: glenga
-ms.openlocfilehash: 24f7faa0fb111e4e537a7db3f5e1eea709d1ca59
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c4206b3178cd02082b8e0815081fedf59a6836b1
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957725"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068296"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Příručka pro vývojáře Azure Functions JavaScript
 Tato příručka obsahuje informace o složitými rozhraními vytváření Azure Functions s použitím jazyka JavaScript.
@@ -66,6 +66,8 @@ module.exports = function(context, myTrigger, myInput, myOtherInput) {
     // function logic goes here :)
     context.done();
 };
+```
+```javascript
 // You can also use 'arguments' to dynamically handle inputs
 module.exports = async function(context) {
     context.log('Number of inputs: ' + arguments.length);
@@ -79,6 +81,37 @@ module.exports = async function(context) {
 Aktivační události a vstupní vazby (vazby `direction === "in"`) lze předat jako parametry funkce. Jsou předávány do funkce ve stejném pořadí, ve kterém jsou definovány v *function.json*. Můžete taky dynamicky zpracovávat vstupy pomocí jazyka JavaScript [ `arguments` ](https://msdn.microsoft.com/library/87dw3w1k.aspx) objektu. Pokud máte například `function(context, a, b)` a změňte ho na `function(context, a)`, stále můžete získat hodnotu `b` v kódu funkce rekapitulací `arguments[2]`.
 
 Všechny vazby, bez ohledu na směru, jsou také předají `context` pomocí `context.bindings` vlastnost.
+
+### <a name="exporting-an-async-function"></a>Export asynchronní funkce
+Při použití jazyka JavaScript [ `async function` ](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) prohlášení nebo prostý JavaScript [příslibů](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise) (není k dispozici s funkcí v1.x), není potřeba explicitně volat [ `context.done` ](#contextdone-method) zpětné volání pro signalizaci, že vaše funkce byla dokončena. Vaše funkce se dokončí po dokončení asynchronní exportované funkce/Promise.
+
+Například je jednoduchou funkci, která zaznamená, že byla spuštěna a okamžitě se dokončí provádění.
+``` javascript
+module.exports = async function (context) {
+    context.log('JavaScript trigger function processed a request.');
+};
+```
+
+Při exportu asynchronní funkci, můžete taky nakonfigurovat vazby výstupu se `return` hodnotu. Toto je alternativní způsob přiřazení výstupy pomocí [ `context.bindings` ](#contextbindings-property) vlastnost.
+
+K přiřazení výstupu pomocí `return`, změnit `name` vlastnost `$return` v `function.json`.
+```json
+{
+  "type": "http",
+  "direction": "out",
+  "name": "$return"
+}
+```
+Kód vaší funkce JavaScript může vypadat takto:
+```javascript
+module.exports = async function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+    // You can call and await an async method here
+    return {
+        body: "Hello, world!"
+    };
+}
+```
 
 ## <a name="context-object"></a>objekt kontextu
 Modul runtime používá `context` objekt k předávání dat do a z vaší funkce a umožnit vám komunikovat s modulem runtime.

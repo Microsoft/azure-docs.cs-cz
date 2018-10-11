@@ -1,20 +1,21 @@
 ---
-title: Seznámení s akustikou – Cognitive Services
+title: Co je Project Acoustics?
+titlesuffix: Azure Cognitive Services
 description: Modul plug-in Project Acoustics pro Unity poskytuje okluzi, ozvěnu a prostorový zvuk pro projekty, které cílí na virtuální realitu i tradiční obrazovky.
 services: cognitive-services
 author: kegodin
-manager: noelc
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: acoustics
 ms.topic: overview
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 08c6d8b8e229aabcc05fdfde2d8ffadf3a6346c2
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 6a3c97ead40cfb24604edac0624e38a9b0713fc0
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40180972"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901020"
 ---
 # <a name="what-is-project-acoustics"></a>Co je Project Acoustics?
 Modul plug-in Project Acoustics pro Unity poskytuje okluzi, ozvěnu a prostorový zvuk pro projekty, které cílí na virtuální realitu i tradiční obrazovky. Poskytuje způsob návrhu herní akustiky, který vrství záměry návrháře nad fyzikální simulaci vln.

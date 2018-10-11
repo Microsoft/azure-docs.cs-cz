@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 6f57bc41cddc997a69f92ba4e8ca66faaeb29738
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d2e4491f2ee21deedd674a5a8a64e4dd99149924
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424598"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079346"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Řešení běžných potíží ve službě Azure Container Instances
 
@@ -89,11 +89,24 @@ Pokud nelze načíst obrázek, události, jako jsou následující se zobrazí v
 ],
 ```
 
-## <a name="container-continually-exits-and-restarts"></a>Kontejner průběžně ukončí a restartuje
+## <a name="container-continually-exits-and-restarts-no-long-running-process"></a>Kontejner průběžně ukončí a restartuje (bez dlouho běžící proces)
 
-Pokud váš kontejner úloha poběží do konce a automaticky restartuje, je nutné nastavit [zásady restartování](container-instances-restart-policy.md) z **OnFailure** nebo **nikdy**. Pokud zadáte **OnFailure** a stále viz neustálého restartování, může být problém s aplikací nebo skript spustit v kontejneru.
+Skupin kontejnerů ve výchozím nastavení [zásady restartování](container-instances-restart-policy.md) z **vždy**, takže kontejnery ve skupině kontejnerů vždy restartuje po jejich dokončení. Budete muset změnit tuto hodnotu na **OnFailure** nebo **nikdy** Pokud máte v úmyslu spouštět kontejnery založené na úlohách. Pokud zadáte **OnFailure** a stále viz neustálého restartování, může být problém s aplikací nebo skript spustit v kontejneru.
 
-Zahrnuje rozhraní API instance kontejneru `restartCount` vlastnost. Pokud chcete zkontrolovat počet restartování pro kontejner, můžete použít [az container show] [ az-container-show] příkaz v rozhraní příkazového řádku Azure. V následujícím příkladu výstupu (který byl zkrácen pro zkrácení), zobrazí se `restartCount` vlastnost na konci výstupu.
+Při spuštění skupiny kontejnerů bez dlouho běžící procesy se může zobrazit opakované ukončí a restartuje s obrázky, jako je Ubuntu nebo Alpine. Připojení přes [EXEC](container-instances-exec.md) nebude fungovat podle kontejneru nemá žádný proces udržování zachování připojení. Chcete-li vyřešit to zahrnovat start příkaz podobný tomuto s nasazením kontejneru skupiny pro zachování provozu kontejneru.
+
+```azurecli-interactive
+## Deploying a Linux container
+az container create -g MyResourceGroup --name myapp --image ubuntu --command-line "tail -f /dev/null"
+```
+
+```azurecli-interactive 
+## Deploying a Windows container
+az container create -g myResourceGroup --name mywindowsapp --os-type Windows --image windowsservercore:ltsc2016
+ --command-line "ping -t localhost"
+```
+
+Zahrnuje rozhraní API Container Instances a Azure portal `restartCount` vlastnost. Pokud chcete zkontrolovat počet restartování pro kontejner, můžete použít [az container show] [ az-container-show] příkaz v rozhraní příkazového řádku Azure. V následujícím příkladu výstupu (který byl zkrácen pro zkrácení), zobrazí se `restartCount` vlastnost na konci výstupu.
 
 ```json
 ...

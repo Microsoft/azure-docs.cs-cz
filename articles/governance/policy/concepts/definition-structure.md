@@ -8,12 +8,12 @@ ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 1d2925f36001ac37a3d94eb192c52fc3f25a95d5
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: e3770fe29d6f1073a0ca6507fdf57059cbd3727e
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785698"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067530"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -308,49 +308,11 @@ Seznam aliasů se pořád rozrůstá. Pokud chcete zjistit, jaké aliasy jsou ak
   ```azurepowershell-interactive
   # Login first with Connect-AzureRmAccount if not using Cloud Shell
 
-  $azContext = Get-AzureRmContext
-  $azProfile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
-  $profileClient = New-Object -TypeName Microsoft.Azure.Commands.ResourceManager.Common.RMProfileClient -ArgumentList ($azProfile)
-  $token = $profileClient.AcquireAccessToken($azContext.Subscription.TenantId)
-  $authHeader = @{
-    'Authorization'='Bearer ' + $token.AccessToken
-  }
+  # Use Get-AzureRmPolicyAlias to list available providers
+  Get-AzureRmPolicyAlias -ListAvailable
 
-  # Create a splatting variable for Invoke-RestMethod
-  $invokeRest = @{
-    Uri = 'https://management.azure.com/providers/?api-version=2017-08-01&$expand=resourceTypes/aliases'
-    Method = 'Get'
-    ContentType = 'application/json'
-    Headers = $authHeader
-  }
-
-  # Invoke the REST API
-  $response = Invoke-RestMethod @invokeRest
-
-  # Create an List to hold discovered aliases
-  $aliases = [System.Collections.Generic.List[pscustomobject]]::new()
-
-  foreach ($ns in $response.value)
-  {
-      foreach ($rT in $ns.resourceTypes)
-      {
-          if ($rT.aliases)
-          {
-              foreach ($obj in $rT.aliases)
-              {
-                  $alias = [PSCustomObject]@{
-                      Namespace    = $ns.namespace
-                      resourceType = $rT.resourceType
-                      alias        = $obj.name
-                  }
-                  $aliases.Add($alias)
-              }
-          }
-      }
-  }
-
-  # Output the list and sort it by Namespace, resourceType and alias. You can customize with Where-Object to limit as desired.
-  $aliases | Sort-Object -Property Namespace, resourceType, alias
+  # Use Get-AzureRmPolicyAlias to list aliases for a Namespace (such as Azure Automation -- Microsoft.Automation)
+  Get-AzureRmPolicyAlias -NamespaceMatch 'automation'
   ```
 
 - Azure CLI

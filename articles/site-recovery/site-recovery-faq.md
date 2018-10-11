@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 41fa742571b94505588172b94ea91f196e212a4c
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: cd0af3bc9489452dfc98efaa3ded768a8ca775ab
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920955"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079476"
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery: Časté otázky (FAQ)
 Tento článek obsahuje nejčastější dotazy týkající se Azure Site Recovery. Pokud po přečtení tohoto článku máte dotazy, zveřejněte na [fóru Azure Recovery Services](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
@@ -99,7 +99,7 @@ Ano, [ExpressRoute je možné](concepts-expressroute-with-site-recovery.md) pro 
 Váš uživatelský účet Azure je potřeba některé [oprávnění](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) k replikaci nového virtuálního počítače do Azure.
 
 ### <a name="can-i-replicate-hyper-v-generation-2-virtual-machines-to-azure"></a>Mohu do Azure replikovat virtuální počítače Hyper-V generace 2?
-Ano. Site Recovery převede z generace 2 na generaci 1 během převzetí služeb při selhání. Při navrácení služeb po obnovení se počítač převede zpět na generaci 2. [Přečtěte si další informace](http://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).
+Ano. Site Recovery převede z generace 2 na generaci 1 během převzetí služeb při selhání. Při navrácení služeb po obnovení se počítač převede zpět na generaci 2. [Další informace](http://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).
 
 ### <a name="if-i-replicate-to-azure-how-do-i-pay-for-azure-vms"></a>Pokud replikuji do Azure, jak platím za virtuální počítače Azure?
 Během běžné replikace se data replikují na geograficky redundantní úložiště Azure a nemusíte platit žádné poplatky za virtuální počítače Azure IaaS poskytuje výraznou výhodu. Když spustíte převzetí služeb při selhání do Azure, Site Recovery automaticky vytvoří virtuální počítače Azure IaaS. Následně se vám budou fakturovat výpočetní prostředky, které v Azure spotřebujete.

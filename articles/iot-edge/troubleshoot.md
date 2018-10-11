@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 413b94c1f1845e0dcda54b04882e5d6664b81380
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: a63a31c5ceb4298829f85627196fea5d7a38ca4b
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815490"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068498"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Běžné potíže se službou Azure IoT Edge a jejich řešení
 
@@ -324,6 +324,18 @@ Proces démon IoT Edge vynutí proces identifikace pro všechny moduly propojít
 
 ### <a name="resolution"></a>Řešení
 Ujistěte se, že stejné id procesu je vždy používá vlastní modul IoT Edge pro odesílání zpráv edgeHub. Například se ujistěte, že `ENTRYPOINT` místo `CMD` příkaz v souboru Docker, protože `CMD` povede k jeden proces id modulu a jiné id procesu pro příkaz prostředí bash s hlavní program, že `ENTRYPOINT` povede k id jednoho procesu.
+
+
+## <a name="firewall-and-port-configuration-rules-for-iot-edge-deployment"></a>Konfigurace pravidla brány firewall a portů pro nasazení IoT Edge
+Azure IoT Edge umožňuje komunikaci z místní hraniční server do cloudu Azure pomocí podporovaných protokolů služby IoT Hub, najdete v článku [výběr komunikační protokol](../iot-hub/iot-hub-devguide-protocols.md). Pro zvýšení zabezpečení komunikačních kanálů mezi Azure IoT Edge a Centrum IoT Azure jsou vždy nakonfigurované jako odchozí; To je založené na [komunikace s asistencí služby](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/), což minimalizuje napadení škodlivým entity prozkoumat. Příchozí komunikace je pouze vyžadované pro konkrétní scénáře, kdy je potřeba nabízené zprávy na server Azure IoT Edge (například v cloudu pro zasílání zpráv zařízení), Azure IoT Hub těchto znovu jsou chráněny pomocí zabezpečené kanály TLS a můžete dál zabezpečit pomocí X.509 certifikáty a moduly zařízení TPM. Správce zabezpečení Azure IoT Edge se řídí, jak může být tato komunikace naváže, naleznete v tématu [IoT Edge Security Manager](../iot-edge/iot-edge-security-manager.md).
+
+I když IoT Edge poskytuje rozšířené konfigurace pro zabezpečení modulu runtime Azure IoT Edge a nasadit moduly, je stále závislá na základní konfiguraci počítače a sítě. Proto je nutné zajistit správné sítě a pravidel brány firewall jsou nastavené pro zabezpečené hraničními zařízeními a komunikace cloudu. Tímto lze použít jako vodítko při konfiguraci brány firewall pravidla pro základní servery je hostitelem modulu runtime Azure IoT Edge:
+
+|Protocol (Protokol)|Port|příchozí|Odchozí|Doprovodné materiály|
+|--|--|--|--|--|
+|MQTT|8883|BLOKOVANÉ (výchozí)|BLOKOVANÉ (výchozí)|<ul> <li>Nakonfigurujte odchozí (odchozí) být otevřít, když jako protokol pro komunikaci pomocí protokolu MQTT.<li>IoT Edge není podporován. 1883 pro MQTT. <li>Příchozí připojení (příchozí) by se zablokovat.</ul>|
+|AMQP|5671|BLOKOVANÉ (výchozí)|Otevřít (výchozí)|<ul> <li>Výchozí komunikační protokol pro IoT Edge. <li> Musí být nakonfigurován Open Azure IoT Edge není nakonfigurovaný pro jiné podporované protokoly nebo je požadovaný komunikační protokol AMQP.<li>5672 pro AMQP nepodporuje IoT Edge.<li>Blokovat tento port při použití Azure IoT Edge různé IoT Hub podporovaný protokol.<li>Příchozí připojení (příchozí) by se zablokovat.</ul></ul>|
+|HTTPS|443|BLOKOVANÉ (výchozí)|Otevřít (výchozí)|<ul> <li>Nakonfigurujte odchozí (odchozí) bude otevřít na 443 pro IoT Edge zřizování, to je potřeba při používání ruční skriptů a Azure IoT zařízení zřizování služby (DPS). <li>Příchozí připojení (příchozí) by měl být otevřené pouze u konkrétních scénářů: <ul> <li>  Pokud máte transparentní brány pomocí zařízení typu list, které může odesílat požadavky metod. Port 443 v takovém případě nemusí být otevřený, aby externí sítě připojit k IOT hub nebo poskytuje služby IOT hub pomocí Azure IoT Edge. Proto může být příchozí pravidlo s omezeným přístupem můžete pouze otevřít příchozí (příchozí) z interní sítě. <li> Klient zařízení (C2D) scénáře.</ul><li>80 pro protokol HTTP není podporován IoT Edge.<li>Pokud se v podnikové síti; nedá nakonfigurovat jiných protokolů HTTP (např. AMQP, MQTT) zprávy odesílat přes WebSockets. Port 443 se v takovém případě používat pro komunikaci pomocí protokolu WebSocket.</ul>|
 
 
 ## <a name="next-steps"></a>Další postup

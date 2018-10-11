@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: andrl
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d7c1c28b3d7b2f51c31f5f05cdef66cc8d71e192
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 968651e2bd06d54c8b735bf2418e0d84b94f315d
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886378"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078558"
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Dělení a škálování ve službě Azure Cosmos DB
 
@@ -185,7 +185,7 @@ Další informace najdete v tématu [vývoj pomocí rozhraní Table API](tutoria
 Pomocí rozhraní Gremlin API můžete na webu Azure portal nebo rozhraní příkazového řádku Azure k vytvoření kontejneru, který představuje grafu. Případně protože Azure Cosmos DB je vícemodelová, vám pomůže jeden z rozhraní API vytvořit a škálovat svůj kontejner grafu.
 
 > [!NOTE]
-> Nemůžete použít `/id` jako klíč oddílu pro kontejner ve službě Gremlin API nevztahují. 
+> `/id` a `/label` nejsou podporovány jako klíče oddílu pro kontejner ve službě Gremlin API nevztahují.
 
 Na základě klíče oddílu a ID v Gremlin můžete číst všechny vrchol nebo Microsoft edge. Graf s oblasti ("USA") jako klíč oddílu a "Seattle" jako klíč řádku, například můžete najít vrcholu pomocí následující syntaxe:
 

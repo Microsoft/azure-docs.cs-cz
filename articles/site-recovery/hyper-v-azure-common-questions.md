@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 09/12/2018
+ms.date: 10/10/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 7600fc81d0d3e3607f2185ad2c793255a0c68634
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 83c23933acf1ed621728991fbdeea088911cf36c
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227295"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078660"
 ---
 # <a name="common-questions---hyper-v-to-azure-replication"></a>Časté otázky – Hyper-V do Azure replikace
 

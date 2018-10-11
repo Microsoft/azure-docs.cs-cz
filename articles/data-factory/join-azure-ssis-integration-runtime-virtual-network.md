@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 10/10/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: e6950c38db83efb57e5f3b1809aa6baa56532cd0
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: cc206e1134fe6df0280512e89447336a32a2d810
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/10/2018
-ms.locfileid: "48903041"
+ms.locfileid: "49068351"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Připojte se k prostředí Azure-SSIS integration runtime k virtuální síti
 Připojte se k prostředí Azure-SSIS integration runtime (IR) ke službě Azure virtual network v následujících scénářích: 
@@ -70,6 +70,8 @@ Následující oddíly poskytují další podrobnosti.
 -   Ujistěte se, že skupiny prostředků ve virtuální síti můžete vytvářet a odstraňovat určitých prostředků sítě Azure. Zobrazit [požadavky pro skupinu prostředků](#resource-group). 
 
 ### <a name="perms"></a> Požadovaná oprávnění
+
+Uživatel, který vytvoří prostředí Azure-SSIS Integration Runtime musí mít následující oprávnění:
 
 - Pokud jste se zapojili SSIS IR k virtuální síti Azure v aktuální verzi, máte dvě možnosti:
 

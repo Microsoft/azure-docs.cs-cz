@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 10/10/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 65f43eb28ef2ef51409469934d59e1add7e83666
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 57c807b7729b58d2537ee09ddd5d05d4f2afb55e
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297210"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068839"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Uživatelům udělit B2B v Azure AD přístup k místním aplikacím
 
@@ -65,9 +65,9 @@ Můžete spravovat objekty uživatele B2B v místním prostřednictvím zásad s
 - Zásady ověřování službou Multi-Factor Authentication (MFA) pro uživatele typu Host můžete nastavit tak, aby používalo vícefaktorového ověřování během ověřování Proxy aplikací. Další informace najdete v tématu [podmíněného přístupu pro uživatele spolupráce B2B](conditional-access.md).
 - Žádné sponsorship, kontroly přístupu, ověřování účtu, atd., které se provádějí v cloudu B2B uživatelů platí pro místní uživatele. Například pokud prostřednictvím zásad správy životního cyklu odstranění uživatele cloud, místní uživatel se odstraní také MIM Sync nebo prostřednictvím synchronizace Azure AD Connect. Další informace najdete v tématu [kontroly přístupu hostů spravovat pomocí služby Azure AD access](../governance/manage-guest-access-with-access-reviews.md).
 
-### <a name="create-b2b-guest-user-objects-through-mim-preview"></a>Vytvořit objekty uživatelů typu Host B2B prostřednictvím MIM (Preview)
+### <a name="create-b2b-guest-user-objects-through-mim"></a>Vytvořit objekty uživatelů typu Host B2B prostřednictvím MIM
 
-Informace o tom, jak vytvořit objekty uživatelů typu Host v místním adresáři pomocí MIM 2016 Service Pack 1 a agenta pro správu MIM pro Microsoft Graph najdete v tématu [business-to-business (B2B) spolupráce Azure AD s Microsoft Identity Manager (MIM) 2016 SP1 s Proxy aplikace Azure (Public Preview)](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016-graph-b2b-scenario).
+Informace o tom, jak vytvořit objekty uživatelů typu Host v místním adresáři pomocí MIM 2016 Service Pack 1 a agenta pro správu MIM pro Microsoft Graph najdete v tématu [business-to-business (B2B) spolupráce Azure AD s Microsoft Identity Manager (MIM) 2016 SP1 s Proxy aplikací Azure](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016-graph-b2b-scenario).
 
 ### <a name="create-b2b-guest-user-objects-through-a-script-preview"></a>Vytvořit objekty uživatelů typu Host B2B pomocí skriptu (Preview)
 

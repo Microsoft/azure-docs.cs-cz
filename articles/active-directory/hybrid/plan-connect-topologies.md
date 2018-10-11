@@ -15,18 +15,16 @@ ms.topic: article
 ms.date: 10/09/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 26049b1e7283d53be7214130ff64cf830935708c
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: ef72829d507d6a471ec9a8972ead262da7f7b582
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901798"
+ms.locfileid: "49068688"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologie pro Azure AD Connect
 Tento článek popisuje různé místní a topologie služby Azure Active Directory (Azure AD), ve kterých pomocí synchronizace Azure AD Connect jako klíče integrační řešení. Tento článek popisuje podporované a nepodporované konfigurace.
 
->[!IMPORTANT]
->Pomocí řešení než Azure AD Connect pro synchronizaci služby Active Directory s Azure AD může mít za následek nekonzistentní nebo nepodporovaný stav. V důsledku toho Microsoft nemůže pro taková nasazení poskytovat technickou podporu.
 
 Tady je legendy pro obrázky v následujícím článku:
 

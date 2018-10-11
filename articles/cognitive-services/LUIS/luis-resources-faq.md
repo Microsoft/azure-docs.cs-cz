@@ -1,5 +1,5 @@
 ---
-title: Časté otázky – Language Understanding (LUIS)
+title: Nejčastější dotazy – nejčastější dotazy – Language Understanding (LUIS)
 titleSuffix: Azure Cognitive Services
 description: Tento článek obsahuje odpovědi na nejčastější dotazy o Language Understanding (LUIS).
 author: diberry
@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 10/10/2018
 ms.author: diberry
-ms.openlocfilehash: 0e604138c35e476d1635cb695923bb7d2b83de82
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: b5433ea0a92635b5bf9c2a4887451f1e64ec62e6
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831258"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067756"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding – nejčastější dotazy
 
@@ -112,6 +112,10 @@ Zobrazit [Batch testování](luis-tutorial-batch-testing.md) kurzu.
 ### <a name="when-an-app-is-exported-then-reimported-into-a-new-app-with-a-new-app-id-the-luis-prediction-scores-are-different-why-does-this-happen"></a>Pokud aplikace je exportovat a importovat do nové aplikace (s novým ID aplikace), skóre predikcí služby LUIS se liší. Proč k tomu dochází?
 
 Zobrazit [předpovědi rozdíly mezi kopie stejnou aplikaci](luis-concept-prediction-score.md#differences-with-predictions).
+
+### <a name="some-utterances-go-to-the-wrong-intent-after-i-made-changes-to-my-app-the-issue-seems-to-disappear-at-random-how-do-i-fix-it"></a>Některé projevy přejděte do nesprávného záměr po provedené změny aplikace. Zdá se, že problém náhodně zmizí. Jak ho mám opravit? 
+
+Zobrazit [trénování se všemi daty](luis-how-to-train.md#train-with-all-data).
 
 ## <a name="app-publishing"></a>Publikování aplikací
 

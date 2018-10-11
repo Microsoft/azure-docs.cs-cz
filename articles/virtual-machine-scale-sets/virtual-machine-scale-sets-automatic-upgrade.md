@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: rajraj
-ms.openlocfilehash: 1ca0ec7185707d9b9f9712c2ace8dacb361f7b5b
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: cf25d08fc9a0e1ae458d350be93af31447928ecb
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394365"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069450"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatické upgrady bitové kopie operačního systému sady škálování virtuálních počítačů Azure
 
@@ -92,7 +92,12 @@ PUT or PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/p
 } 
 ```
 
-Podpora konfigurace této vlastnosti prostřednictvím Azure Powershellu nebo CLI 2.0 se začne distribuovat na 10/09.
+Následující příklad používá rozhraní příkazového řádku Azure (2.0.47 nebo novějším) konfigurovat automatické upgrady pro škálovací sadu s názvem *myVMSS* ve skupině prostředků s názvem *myResourceGroup*:
+
+```azurecli
+az vmss update --name myVMSS --resource-group myResourceGroup --set UpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade=true
+```
+Podpora konfigurace této vlastnosti prostřednictvím Azure Powershellu se začne distribuovat brzy.
 
 ## <a name="using-application-health-probes"></a>Stav aplikace pomocí sond 
 
@@ -139,10 +144,10 @@ Get-AzureRmVmss -ResourceGroupName myResourceGroup -VMScaleSetName myVMSS -OSUpg
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Následující příklad používá rozhraní příkazového řádku Azure (2.0.20 nebo novější) a zkontrolujte stav pro škálovací sadu s názvem *myVMSS* ve skupině prostředků s názvem *myResourceGroup*:
+Následující příklad používá rozhraní příkazového řádku Azure (2.0.47 nebo novější) a zkontrolujte stav pro škálovací sadu s názvem *myVMSS* ve skupině prostředků s názvem *myResourceGroup*:
 
 ```azurecli
-az vmss rolling-upgrade get-latest --resource-group myResourceGroup --name myVMSS
+az vmss get-os-upgrade-history --resource-group myResourceGroup --name myVMSS
 ```
 
 ### <a name="rest-api"></a>REST API
@@ -192,10 +197,18 @@ Vrátí volání GET vlastnosti podobně jako následující příklad výstupu:
 
 ## <a name="how-to-get-the-latest-version-of-a-platform-os-image"></a>Jak získat nejnovější verzi image platformy operačního systému? 
 
-Pro automatické operační systém upgradovat podporované skladové položky pomocí verze image získáte následujících rutin prostředí PowerShell: 
+Pro automatické operační systém upgradovat podporované skladové položky pomocí verze image získáte následující příklady: 
+
+```
+GET on `/subscriptions/subscription_id/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions?api-version=2018-10-01`
+```
 
 ```powershell
 Get-AzureRmVmImage -Location "westus" -PublisherName "Canonical" -Offer "UbuntuServer" -Skus "16.04-LTS"
+```
+
+```azurecli
+az vm image list --location "westus" --publisher "Canonical" --offer "UbuntuServer" --sku "16.04-LTS" --all
 ```
 
 ## <a name="deploy-with-a-template"></a>Nasazení pomocí šablony

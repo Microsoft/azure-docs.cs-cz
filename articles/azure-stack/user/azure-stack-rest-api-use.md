@@ -3,22 +3,22 @@ title: Použití rozhraní API Azure Stack | Dokumentace Microsoftu
 description: Zjistěte, jak načíst ověření z Azure, aby žádosti rozhraní API pro Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: cblackuk
+author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2018
+ms.date: 10/10/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: 3b89564bf17a9884640b51faa1c3966dce93f89a
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 945c5df9aa76cef6d55b759e3cef7c00bf54e1c4
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346786"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078326"
 ---
 <!--  cblackuk and charliejllewellyn. This is a community contribution by cblackuk-->
 
@@ -28,7 +28,7 @@ ms.locfileid: "37346786"
 
 Rozhraní API (Application Programming) můžete použít k automatizaci operací, jako je přidání virtuálního počítače do cloudu služby Azure Stack.
 
-Rozhraní API vyžaduje váš klient k ověření na koncový bod přihlašovacího účtu Microsoft Azure. Koncový bod vrátí token určený v hlavičce každého požadavku odeslaného do rozhraní API Azure Stack. Microsoft Azure používá Oauth 2.0.
+Rozhraní API vyžaduje váš klient k ověření do Microsoft Azure přihlášení koncového bodu. Koncový bod vrátí token určený v hlavičce každého požadavku odeslaného do rozhraní API Azure Stack. Microsoft Azure používá Oauth 2.0.
 
 Tento článek obsahuje příklady, které používají **cURL** nástroj k vytváření žádostí o služby Azure Stack. Použití cURL, je nástroj příkazového řádku pomocí knihovny pro přenos dat. Tyto příklady provedou proces načítání tokenu pro přístup k rozhraní API služby Azure Stack. Většina programovacích jazyků poskytují knihovny Oauth 2.0, které mají robustní token úkolů správy a zpracování těchto obnovení tokenu.
 
@@ -138,7 +138,7 @@ Pro každou hodnotu:
 
 ### <a name="example"></a>Příklad:
 
-Žádost:
+Požadavek:
 
 ```
 curl -X "POST" "https://login.windows.net/fabrikam.onmicrosoft.com/oauth2/token" \
@@ -169,7 +169,7 @@ Odpověď:
 
 Jakmile se zobrazí váš přístupový token, musíte přidat jako hlavičku do všech žádostí o rozhraní API. Pokud chcete udělat, je potřeba vytvořit hlavičku **autorizace** s hodnotou: `Bearer <access token>`. Příklad:
 
-Žádost:
+Požadavek:
 
 ```bash  
 curl -H "Authorization: Bearer eyJ0eXAiOi...truncated for readability..." 'https://adminmanagement.local.azurestack.external/subscriptions?api-version=2016-05-01'

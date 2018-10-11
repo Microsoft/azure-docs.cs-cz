@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/02/2018
+ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 8c943b9ec8114699a7fad487c7d669b58942c019
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 83d2fabbe3a1b0ab44cb97e53baf0aa40349aeed
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042525"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079204"
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Matice podpory pro replikaci Hyper-V do Azure
 
@@ -90,7 +90,7 @@ Akcelerované síťové služby | Ne | Ne
 
 ## <a name="hyper-v-host-storage"></a>Úložiště hostitele Hyper-V
 
-**Úložiště** | **Technologie Hyper-V s Virtual Machine Manager** | **Technologie Hyper-V bez Virtual Machine Manager**
+**Storage** | **Technologie Hyper-V s Virtual Machine Manager** | **Technologie Hyper-V bez Virtual Machine Manager**
 --- | --- | --- | ---
 Systém souborů NFS | Není k dispozici | Není k dispozici
 SMB 3.0 | Ano | Ano
@@ -99,7 +99,7 @@ Více cest (MPIO). Testovat pomocí:<br></br> DSM od společnosti Microsoft, SP4
 
 ## <a name="hyper-v-vm-guest-storage"></a>Úložiště hostů virtuálních počítačů Hyper-V
 
-**Úložiště** | **Technologie Hyper-V s Virtual Machine Manager** | **Technologie Hyper-V bez Virtual Machine Manager**
+**Storage** | **Technologie Hyper-V s Virtual Machine Manager** | **Technologie Hyper-V bez Virtual Machine Manager**
 --- | --- | ---
 VMDK | Není k dispozici | Není k dispozici
 VHD/VHDX | Ano | Ano

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 6aaf9b42677064b31c56be96775692c75812e145
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: b178744911d03547509de58e35be5cd99e046391
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044616"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079051"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Vytvářet a spravovat pravidla výstrah ve službě Log Analytics pomocí rozhraní REST API
 Log Analytics výstrah REST API můžete vytvářet a spravovat upozornění v Operations Management Suite (OMS).  Tento článek obsahuje podrobnosti o rozhraní API a několik příkladů k provádění různých operací.
@@ -138,6 +138,7 @@ Plán by měl mít jeden a pouze jeden akce upozornění.  Akce upozornění maj
 |:--- |:--- |:--- |
 | Prahová hodnota |Kritéria pro při spuštění akce.| Vyžaduje se pro každou výstrahu před nebo po se rozšíří do Azure. |
 | Severity |Popisek použitý ke klasifikaci, když se aktivuje upozornění.| Vyžaduje se pro každou výstrahu před nebo po se rozšíří do Azure. |
+| Potlačit |Možnost zastavit odesílání oznámení z výstrahy. | Volitelné pro každou výstrahu před nebo po se rozšíří do Azure. |
 | Skupiny akcí |ID skupina akcí Azure, ve kterém jsou zadané požadované akce, například - e-mailů, SMSs, hlasových hovorů, Webhooků, Runbooků služby Automation, konektorů ITSM atd.| Vyžaduje po výstrahy se rozšíří do Azure|
 | Přizpůsobit akce|Upravit ve standardním výstupu pro akce vyberte z skupina akcí| Volitelné pro každou výstrahu, je možné po výstrahy se rozšíří do Azure. |
 | EmailNotification |Odeslání e-mailu více příjemcům. | Není vyžadována, pokud se upozornění rozšíří do Azure|
@@ -213,6 +214,37 @@ Použijte metodu Put se existující ID akce změnit závažnost akce pro plán.
 
     $thresholdWithSevJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdWithSevJson
+
+#### <a name="suppress"></a>Potlačit
+Log Analytics na základě dotazu, který upozornění se aktivuje vždy, když je prahová hodnota dosažená nebo Překročená. Na základě logiky vyjádřena v dotazu, může být výsledkem upozornění získávání aktivuje například pro řadu intervalech a proto oznámení také odesílají neustále. Pokud chcete zabránit takový scénář, může uživatel nastavit možnost potlačit instruující Log Analytics počkat stanoveného časového intervalu před oznámení se aktivuje při druhém pravidlo upozornění. Pokud tedy potlačit nastavení po dobu 30 minut; upozornění se aktivuje při prvním a odeslat oznámení nakonfigurované. Ale Počkejte 30 minut, než oznámení pro pravidlo výstrahy je znovu použít. V přechodném období pravidlo upozornění budou nadále spuštěné – pouze oznámení se potlačil Log Analytics na určitou dobu bez ohledu na to, kolikrát se pravidlo upozornění aktivuje v tomto období.
+
+Potlačit vlastnosti pravidlo výstrahy je určen pomocí Log Analytics *omezování* hodnotu a období potlačení pomocí *doba trvání v minutách* hodnotu.
+
+Toto je ukázková odpověď pro akce s pouze prahové hodnoty, závažnost a potlačit vlastnosti
+
+    "etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
+    "properties": {
+        "Type": "Alert",
+        "Name": "My threshold action",
+        "Threshold": {
+            "Operator": "gt",
+            "Value": 10
+        },
+        "Throttling": {
+          "DurationInMinutes": 30
+        },
+        "Severity": "critical",
+        "Version": 1    }
+
+Použijte metodu Put s ID jedinečná akce pro vytvoření nové akce pro plán se závažností.  
+
+    $AlertSuppressJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Throttling': { 'DurationInMinutes': 30 },'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
+    armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myalert?api-version=2015-03-20 $AlertSuppressJson
+
+Použijte metodu Put se existující ID akce změnit závažnost akce pro plán.  Text požadavku musí obsahovat značku etag akce.
+
+    $AlertSuppressJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Throttling': { 'DurationInMinutes': 30 },'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
+    armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myalert?api-version=2015-03-20 $AlertSuppressJson
 
 #### <a name="action-groups"></a>Skupiny akcí
 Všechna upozornění v Azure, použijte skupiny akcí jako výchozího mechanismu pro zpracování akce. Pomocí skupiny akcí můžete zadat vaše akce jednou a přidružte skupinu akcí více výstrah – napříč Azure. Bez nutnosti opakovaně opětovně deklarovat stejné akce. Skupiny akcí podporovat více akcí – včetně e-mailu, SMS, hlasovým hovorem, připojení ITSM, Runbook služby Automation, Webhooku URI a dalších. 

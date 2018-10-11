@@ -3,7 +3,7 @@ title: Analýzy webové aplikace Java pomocí Azure Application Insights | Dokum
 description: 'Sledování výkonu webových aplikací Java pomocí Application Insights '
 services: application-insights
 documentationcenter: java
-author: mrbullwinkle
+author: lgayhardt
 manager: carmonm
 ms.assetid: 051d4285-f38a-45d8-ad8a-45c3be828d91
 ms.service: application-insights
@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/19/2018
-ms.author: mbullwin
-ms.openlocfilehash: 3d1c90c5b74fd7f27335fbc0f7d5e8016d61ab8c
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.date: 10/09/2018
+ms.author: lagayhar
+ms.openlocfilehash: 216cebe74b7661e0ca336480774a56ea953ddc75
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249396"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069467"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Začínáme s Application Insights ve webovém projektu Java
 
@@ -177,49 +177,60 @@ Poslední krok konfigurace umožňuje komponentě požadavku HTTP zaprotokolovat
 Zaregistrujte ve své třídě Configuration filtr Application Insights `WebRequestTrackingFilter`:
 
 ```Java
-package devCamp.WebApp.configurations;
+package <yourpackagename>.configurations;
 
-    import javax.servlet.Filter;
+import javax.servlet.Filter;
 
-    import org.springframework.boot.web.servlet.FilterRegistrationBean;
-    import org.springframework.context.annotation.Bean;
-    import org.springframework.core.Ordered;
-    import org.springframework.beans.factory.annotation.Value;
-    import org.springframework.context.annotation.Configuration;
-    import com.microsoft.applicationinsights.TelemetryConfiguration;
-    import com.microsoft.applicationinsights.web.internal.WebRequestTrackingFilter;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.core.Ordered;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import com.microsoft.applicationinsights.TelemetryConfiguration;
+import com.microsoft.applicationinsights.web.internal.WebRequestTrackingFilter;
 
+@Configuration
+public class AppInsightsConfig {
 
-    @Configuration
-    public class AppInsightsConfig {
-
-    //Initialize AI TelemetryConfiguration via Spring Beans
-        @Bean
-        public String telemetryConfig() {
-            String telemetryKey = System.getenv("APPLICATION_INSIGHTS_IKEY");
-            if (telemetryKey != null) {
-                TelemetryConfiguration.getActive().setInstrumentationKey(telemetryKey);
-            }
-            return telemetryKey;
+    @Bean
+    public String telemetryConfig() {
+        String telemetryKey = System.getenv("<instrumentation key>");
+        if (telemetryKey != null) {
+            TelemetryConfiguration.getActive().setInstrumentationKey(telemetryKey);
         }
-    
-    //Set AI Web Request Tracking Filter
-        @Bean
-        public FilterRegistrationBean aiFilterRegistration(@Value("${spring.application.name:application}") String applicationName) {
-           FilterRegistrationBean registration = new FilterRegistrationBean();
-           registration.setFilter(new WebRequestTrackingFilter(applicationName));
-           registration.setName("webRequestTrackingFilter");
-           registration.addUrlPatterns("/*");
-           registration.setOrder(Ordered.HIGHEST_PRECEDENCE + 10);
-           return registration;
-       } 
-
-    //Set up AI Web Request Tracking Filter
-        @Bean(name = "WebRequestTrackingFilter")
-        public Filter webRequestTrackingFilter(@Value("${spring.application.name:application}") String applicationName) {
-            return new WebRequestTrackingFilter(applicationName);
-        }   
+        return telemetryKey;
     }
+
+    /**
+     * Programmatically registers a FilterRegistrationBean to register WebRequestTrackingFilter
+     * @param webRequestTrackingFilter
+     * @return Bean of type {@link FilterRegistrationBean}
+     */
+    @Bean
+    public FilterRegistrationBean webRequestTrackingFilterRegistrationBean(WebRequestTrackingFilter webRequestTrackingFilter) {
+        FilterRegistrationBean registration = new FilterRegistrationBean();
+        registration.setFilter(webRequestTrackingFilter);
+        registration.addUrlPatterns("/*");
+        registration.setOrder(Ordered.HIGHEST_PRECEDENCE + 10);
+        return registration;
+    }
+
+
+    /**
+     * Creates bean of type WebRequestTrackingFilter for request tracking
+     * @param applicationName Name of the application to bind filter to
+     * @return {@link Bean} of type {@link WebRequestTrackingFilter}
+     */
+    @Bean
+    @ConditionalOnMissingBean
+
+    public WebRequestTrackingFilter webRequestTrackingFilter(@Value("${spring.application.name:application}") String applicationName) {
+        return new WebRequestTrackingFilter(applicationName);
+    }
+
+
+}
 ```
 
 > [!NOTE]

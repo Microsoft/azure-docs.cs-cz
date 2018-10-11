@@ -1,9 +1,9 @@
 ---
-title: Oblast správy v zásobníku Azure | Microsoft Docs
-description: Přehled správy oblast v zásobníku Azure.
+title: Správa oblastí ve službě Azure Stack | Dokumentace Microsoftu
+description: Přehled oblastí správy ve službě Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: e94775d5-d473-4c03-9f4e-ae2eada67c6c
@@ -13,44 +13,44 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: efemmano
-ms.openlocfilehash: 0286ed9c7b3fe320b936d33fe3beaddccd6ac0fa
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 401b81ceb7ab71528a4ad11bc7d8944b4d732933
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35247530"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078850"
 ---
-# <a name="region-management-in-azure-stack"></a>Oblast správy v Azure zásobníku
+# <a name="region-management-in-azure-stack"></a>Správa oblastí ve službě Azure Stack
 
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Azure zásobníku používá koncept oblastí, které se skládá z hardwarové prostředky, které tvoří infrastruktury Azure zásobníku logických entit. V oblasti správy můžete najít všechny prostředky, které jsou nutné pro úspěšný provoz infrastruktury Azure zásobníku.
+Azure Stack používá koncept oblastí, které jsou logické entity sestává z hardwarové prostředky, které tvoří infrastruktura Azure stacku. V oblasti správy můžete najít všechny prostředky, které jsou nutné pro úspěšný provoz infrastruktury Azure stacku.
 
-Jedna integrovaná nasazení systému (označované jako *zásobník Azure cloud*) tvoří jedné oblasti. Každý Azure zásobníku Development Kit má jedné oblasti, s názvem **místní**. Pokud nasadíte druhý zásobník Azure integrovaný systém nebo jinou instanci development kit na samostatných nastavíte, je tento cloud Azure zásobníku v jiné oblasti.
+Jedna integrovaná nasazení systému (označované jako *cloudu služby Azure Stack*) tvoří jedné oblasti. Každá Azure Stack Development Kit má jedné oblasti s názvem **místní**. Pokud nasazujete druhý systém Azure Stack integrované nebo nastavit jiná instance sada na samostatné hardwaru, je tento cloud Azure Stack v jiné oblasti.
 
-## <a name="information-available-through-the-region-management-tile"></a>Informace, které jsou k dispozici prostřednictvím dlaždici správy oblast
+## <a name="information-available-through-the-region-management-tile"></a>Informace, které jsou k dispozici prostřednictvím dlaždice oblasti správy
 
-Obsahuje sadu oblast možnosti správy, které jsou dostupné v Azure zásobníku **oblast správy** dlaždici. Tato dlaždice není k dispozici pro operátor zásobník Azure na výchozí řídicí panel portálu správce. Prostřednictvím této dlaždice můžete monitorovat a aktualizovat vaši oblast Azure zásobníku a jeho komponenty, které jsou specifické pro oblast.
+Obsahuje sadu možností správy oblasti k dispozici v Azure Stack **Správa oblastí** dlaždici. Tato dlaždice není k dispozici pro operátory Azure stacku na výchozí řídicí panel portálu správce. Prostřednictvím této dlaždice můžete monitorovat a aktualizovat vaši oblast Azure Stack a jeho komponenty, které jsou specifické pro oblast.
 
- ![Na dlaždici správy oblast](media/azure-stack-manage-region/image1.png)
+ ![Dlaždice oblasti správy](media/azure-stack-manage-region/image1.png)
 
- Pokud kliknete na oblast na dlaždici správy oblast, se můžete dostat následující informace:
+ Pokud kliknete na oblast v oblasti správy dlaždici, můžete získat následující informace:
 
-  ![Popis podokna v okně správy oblast](media/azure-stack-manage-region/image2.png)
+  ![Popis podoken v okně správy oblasti](media/azure-stack-manage-region/image2.png)
 
-1. **V nabídce prostředků**. Zde můžete přístup k oblasti správy konkrétní infrastruktury a zobrazit a spravovat prostředky uživatele, například účty úložiště a virtuální sítě.
+1. **V nabídce prostředků**. Tady, přístup k oblasti konkrétní infrastrukturu správy a umožňuje zobrazit a spravovat prostředky uživatele, jako jsou virtuální síť a účet úložiště.
 
-2. **Výstrahy**. Toto jsou uvedeny systémové výstrahy a poskytuje podrobné informace o každé z těchto výstrah.
+2. **Výstrahy**. Toto jsou uvedeny systémová oznámení a poskytuje podrobné informace o každé z těchto upozornění.
 
-3. **Aktualizace**. Sem můžete zobrazit aktuální verzi vaší infrastruktury Azure zásobníku, dostupné aktualizace a aktualizace historie. Můžete také aktualizovat integrovaný systém.
+3. **Aktualizace**. Zde můžete zobrazit aktuální verzi vaší infrastruktury Azure stacku, dostupné aktualizace a aktualizace historie. Můžete aktualizovat také integrovaného systému.
 
-4. **Zprostředkovatelé prostředků**. Zprostředkovatelé prostředků je místo, ke správě uživatele funkce nabízené komponenty potřebné ke spuštění zásobník Azure. Každý poskytovatel prostředků se dodává s správu prostředí. Toto prostředí může zahrnovat výstrahy pro konkrétního poskytovatele, metriky a dalším funkcím správy specifické pro poskytovatele prostředků.
+4. **Poskytovatelé prostředků**. Poskytovatelé prostředků je místem, kde můžete spravovat uživatelské funkce nabízené komponenty potřebné ke spuštění služby Azure Stack. Každý poskytovatel prostředků obsahuje prostředí pro správu. Tyto možnosti mohou zahrnovat upozornění pro konkrétního zprostředkovatele, metrik a jiné funkce Správa specifické pro poskytovatele prostředků.
 
-5. **Role infrastruktury**. Role infrastruktury jsou komponenty potřebné ke spuštění zásobník Azure. Jsou uvedeny pouze role infrastruktury, které sestavy výstrahy. Pokud vyberete roli, můžete zobrazit výstrahy spojené se role a instance rolí, kde je spuštěna tato role.
+5. **Infrastrukturu role**. Infrastrukturu role jsou komponenty potřebné ke spuštění služby Azure Stack. Jsou uvedeny pouze infrastrukturu role, které podléhají výstrahy. Pokud vyberete roli, můžete zobrazit výstrahy spojené s rolí a instancí rolí, ve kterém je spuštěna tato role.
 
 ## <a name="next-steps"></a>Další postup
 
-- [Sledování stavu a výstrahy v Azure zásobníku](azure-stack-monitor-health.md)
-- [Správa aktualizací v Azure zásobníku](azure-stack-updates.md)
+- [Monitorování stavu a výstrah ve službě Azure Stack](azure-stack-monitor-health.md)
+- [Správa aktualizací ve službě Azure Stack](azure-stack-updates.md)

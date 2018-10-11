@@ -3,18 +3,16 @@ title: Nasazení kontejnerů s nástrojem Helm. v Kubernetes v Azure
 description: Nasazení kontejnerů v clusteru Azure Kubernetes Service (AKS) pomocí nástroje Helm balení
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/13/2018
+ms.date: 10/01/2018
 ms.author: iainfou
-ms.custom: mvc
-ms.openlocfilehash: dd2deba25615373765dd3492d03c1ba547c8ba8c
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: d95f7ad337e52aed47656c2ea60e6b193a427946
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39055130"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068573"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Instalace aplikací s nástrojem Helm ve službě Azure Kubernetes Service (AKS)
 
@@ -26,32 +24,11 @@ Tento článek ukazuje, jak nakonfigurovat a používat Helm v clusteru Kubernet
 
 Kroky popsané v tomto dokumentu předpokládají, že jste vytvořili AKS cluster a navázali `kubectl` připojení ke clusteru. Pokud budete potřebovat tyto položky zobrazit, [AKS quickstart][aks-quickstart].
 
-## <a name="install-helm-cli"></a>Nainstalovat Helm CLI
-
-Helm CLI je klient, který běží ve vývojovém systému a umožňuje spuštění, zastavení a správu aplikací s nástrojem Helm.
-
-Pokud používáte Azure Cloud Shell, rozhraní příkazového řádku Helm je již nainstalována. Chcete-li nainstalovat rozhraní příkazového řádku příkaz Helm na počítači Mac, použijte `brew`. Další instalační možnosti najdete v tématu [instalace Helm][helm-install-options].
-
-```console
-brew install kubernetes-helm
-```
-
-Výstup:
-
-```
-==> Downloading https://homebrew.bintray.com/bottles/kubernetes-helm-2.9.1.high_sierra.bottle.tar.gz
-######################################################################## 100.0%
-==> Pouring kubernetes-helm-2.9.1.high_sierra.bottle.tar.gz
-==> Caveats
-Bash completion has been installed to:
-  /usr/local/etc/bash_completion.d
-==> Summary
-🍺  /usr/local/Cellar/kubernetes-helm/2.9.1: 50 files, 66.2MB
-```
+Budete také potřebovat Helm nainstalované rozhraní příkazového řádku, klient, který běží ve vývojovém systému a umožňuje spuštění, zastavení a správu aplikací s nástrojem Helm. Pokud používáte Azure Cloud Shell, rozhraní příkazového řádku Helm je již nainstalována. Pokyny k instalaci na místní platformě najdete [instalace Helm][helm-install].
 
 ## <a name="create-a-service-account"></a>Vytvoření účtu služby
 
-Před nasazením Helm v clusteru s podporou RBAC, potřebujete účet služby a role vazby pro službu Tiller. Další informace o zabezpečení Helm / Tiller v RBAC povolena clusteru, naleznete v tématu [Tiller, obory názvů a RBAC][tiller-rbac]. Pokud váš cluster není povoleno RBAC, tento krok přeskočte.
+Před nasazením Helm v clusteru AKS povolené RBAC, potřebujete účet služby a role vazby pro službu Tiller. Další informace o zabezpečení Helm / Tiller v RBAC povolena clusteru, naleznete v tématu [Tiller, obory názvů a RBAC][tiller-rbac]. Pokud váš cluster AKS není povoleno RBAC, tento krok přeskočte.
 
 Vytvořte soubor s názvem `helm-rbac.yaml` a zkopírujte do následující kód YAML:
 
@@ -76,10 +53,10 @@ subjects:
     namespace: kube-system
 ```
 
-Vytvořit účet služby a role vazba s `kubectl create` příkaz:
+Vytvořit účet služby a role vazba s `kubectl apply` příkaz:
 
 ```console
-kubectl create -f helm-rbac.yaml
+kubectl apply -f helm-rbac.yaml
 ```
 
 ## <a name="secure-tiller-and-helm"></a>Zabezpečení Tiller a Helm
@@ -96,7 +73,7 @@ Chcete-li nasadit základní Tiller do clusteru AKS, použijte [příkaz helm in
 helm init --service-account tiller
 ```
 
-Pokud jste nakonfigurovali protokol TLS/SSL mezi Helm a Tiller poskytují `--tiller-tls-` parametrů a názvů vlastních certifikátů, jak je znázorněno v následujícím příkladu:
+Pokud jste nakonfigurovali protokol TLS/SSL mezi Helm a Tiller poskytují `--tiller-tls-*` parametrů a názvů vlastních certifikátů, jak je znázorněno v následujícím příkladu:
 
 ```console
 helm init \

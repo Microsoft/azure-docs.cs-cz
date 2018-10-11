@@ -8,14 +8,14 @@ manager: jeconnoc
 ms.service: azure-functions
 ms.custom: vs-azure
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 63a2d5a62cf2cdfa2a1a08c56ef5a87aaaa13529
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 3ba8919a499da0db8e2deb626d8cf4d5067c1c25
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395539"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069173"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Vývoj Azure Functions pomocí sady Visual Studio  
 
@@ -198,6 +198,20 @@ Můžete také spravovat nastavení aplikace v jednom z těchto způsobů:
 * [Pomocí webu Azure portal](functions-how-to-use-azure-function-app-settings.md#settings).
 * [Použití `--publish-local-settings` možnost publikování v Azure Functions Core Tools](functions-run-local.md#publish).
 * [Použití Azure CLI](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set). 
+
+## <a name="monitoring-functions"></a>Funkce monitorování
+
+Díky integraci s Azure Application Insights je doporučeným způsobem, jak monitorovat vaši funkci v Azure. Když vytvoříte aplikaci function app na webu Azure Portal, je tato integrační ve výchozím nastavení provede za vás. Když vytvoříte aplikaci function app během publikování sady Visual Studio, není dokončení integrace ve vaší aplikaci function app v Azure. Místo toho získáte vestavěné protokolování, které se nedoporučuje.
+
+Povolení Application Insights pro aplikaci funkcí v Azure:
+
+1. Vytvoření instance služby Application Insights v [webu Azure portal](https://portal.azure.com) a zkopírujte jeho Instrumentační klíč. Další informace o postupu [ručně připojit prostředek App Insights](functions-monitoring.md#manually-connect-an-app-insights-resource).  
+
+1. Přidání aplikace nastavení s názvem `APPINSIGHTS_INSTRUMENTATIONKEY` do nastavení aplikace function app v Azure, jak je popsáno v [fungovat nastavení aplikace](#function-app-settings). Tato nastavení aplikace, které obsahuje klíč instrumentace, který jste vytvořili v předchozím kroku.
+
+1. Odeberte `AzureWebJobsDashboard` nastavení aplikace, které z aplikace function app v Azure, která zakáže vestavěné protokolování.  
+
+Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md).
 
 ## <a name="next-steps"></a>Další postup
 

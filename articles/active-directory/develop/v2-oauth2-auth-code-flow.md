@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7ff7167d60a4c22459622aea6a71130bd1e209fb
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 1b9f1f1ff5e0a2a178b5a0b2a09f5513bf508b3f
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868866"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079170"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>Protokoly v2.0 - tok autorizačního kódu OAuth 2.0
 
@@ -178,8 +178,10 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | expires_in    | Jak dlouho je přístupový token platný (v sekundách).                                                                                                                                                                                                                                                                                                                                                                                                       |
 | scope         | Obory, které je platný pro access_token.                                                                                                                                                                                                                                                                                                                                                                                                         |
 | refresh_token | Aktualizace tokenu OAuth 2.0. Aplikace můžete používat tento token získat dodatečné přístupové tokeny, až vyprší platnost aktuálního tokenu přístupu. Refresh_tokens jsou dlouhodobé a slouží k přístupu k prostředkům uchovávat po dlouhou dobu. Další podrobnosti o aktualizaci tokenu přístupu, najdete [níže v části](#refresh-the-access-token). <br> **Poznámka:** pouze zadaný if `offline_access` byl vyžádán oboru.                                               |
-| id_token      | Bez znaménka JSON Web Token (JWT). Aplikace může dekódovat segmenty tento token na žádost o informace o uživateli, který přihlášení. Aplikaci můžete ukládat do mezipaměti hodnoty a jejich zobrazení, ale na ně neměli spoléhat pro povolení nebo hranice zabezpečení. Další informace o id_tokens, najdete v článku [ `id_token reference` ](id-tokens.md). <br> **Poznámka:** pouze zadaný if `openid` byl vyžádán oboru. |
+| id_token      | JSON Web Token (JWT). Aplikace může dekódovat segmenty tento token na žádost o informace o uživateli, který přihlášení. Aplikaci můžete ukládat do mezipaměti hodnoty a jejich zobrazení, ale na ně neměli spoléhat pro povolení nebo hranice zabezpečení. Další informace o id_tokens, najdete v článku [ `id_token reference` ](id-tokens.md). <br> **Poznámka:** pouze zadaný if `openid` byl vyžádán oboru. |
+
 #### <a name="error-response"></a>Odpověď na chybu
+
 Chybové odpovědi bude vypadat takto:
 
 ```json

@@ -11,17 +11,16 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/29/2018
+ms.date: 10/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: ef79ff7c8e238a0a90912d099b4b9dfe2a387c1d
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 5ea026de228f3c93eed04770ad931d072387aa95
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45577220"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079068"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Shromažďování, uchování a ukládání dat v nástroji Application Insights
-
 
 Při instalaci [Azure Application Insights] [ start] SDK v aplikaci, se odesílá telemetrii týkající se vaší aplikace do cloudu. Přirozeně odpovídá vývojáři chtějí vědět, jaká data se posílají přesně, co se stane, že k datům a jak můžete zachovat kontrolu nad jeho. Konkrétně by mohla pošlou citlivá data, kde je uložený a zabezpečené je? 
 
@@ -90,6 +89,8 @@ To může být zápisem je to možné [modulu plug-in procesoru telemetrie](app-
 Nezpracované datové body (to znamená, položky, které se můžete dotazovat v Analytics a kontrolovat v hledání) uchovávají po dobu 90 dnů. Pokud je potřeba uchovávat data déle než, můžete použít [průběžný export](app-insights-export-telemetry.md) a zkopírujte ho do účtu úložiště.
 
 Agregovaná data (to znamená, počty, průměr a jiných statistická data, která se zobrazí v Průzkumníku metrik) jsou zachovány za interval 1 minuta po dobu 90 dnů.
+
+[Ladění snímků](app-insights-snapshot-debugger.md) ukládají po dobu sedmi dní. Tyto zásady uchování je nastavena na základě jednotlivých aplikací. Pokud je potřeba tuto hodnotu zvýšit, můžete požádat o zvýšení tak, že otevřete případ podpory na webu Azure Portal.
 
 ## <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
 Data jsou viditelné pro vás a, pokud již máte účet organizace, členové týmu. 

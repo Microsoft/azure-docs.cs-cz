@@ -1,9 +1,9 @@
 ---
-title: Přidání bitové kopie systému Linux do Azure zásobníku
-description: Zjistěte, jak přidat Linux bitové kopie do protokolů Azure.
+title: Přidat Linuxové Image do služby Azure Stack
+description: Zjistěte, jak přidat Linuxové Image do služby Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -12,46 +12,46 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: jeffgo
-ms.openlocfilehash: 64a860bc925b9c7499363c1fe39d03df88a9a51d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: db52d145c3bfbd9415072be13ccb502969f07374
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33935704"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077643"
 ---
-# <a name="add-linux-images-to-azure-stack"></a>Přidání bitové kopie systému Linux do Azure zásobníku
+# <a name="add-linux-images-to-azure-stack"></a>Přidat Linuxové Image do služby Azure Stack
 
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Linuxové virtuální počítače (VM) můžete nasadit v Azure zásobníku přidáním bitové kopie založené na systému Linux do Azure Marketplace zásobníku. Nejjednodušší způsob, jak přidat bitovou kopii systému Linux do protokolů Azure je přes správu Marketplace. Tyto bitové kopie byly připravené a testovány z hlediska kompatibility s Azure zásobníku.
+Přidáním bitové kopie založené na Linuxu v Tržišti Azure Stack můžete nasadit virtuální počítače s Linuxem (VM) ve službě Azure Stack. Nejjednodušší způsob, jak přidat do image Linuxu do služby Azure Stack je prostřednictvím webu Marketplace správu. Tyto bitové kopie byly připravit a otestovat jejich kompatibilitu s Azure Stack.
 
 ## <a name="marketplace-management"></a>Správa webu Marketplace
 
-Chcete-li Linux bitové kopie z Azure Marketplace, použijte postupy v následujícím článku. Vyberte Image Linux, které můžete chtít nabízet uživatelům v zásobníku vaší Azure. 
+Stažení imagí Linuxu na Azure Marketplace, pomocí postupů v následujícím článku. Vyberte Image Linuxu, které mají uživatelé ve vaší službě Azure Stack. 
 
-[Stažení položky marketplace z Azure do Azure zásobníku](azure-stack-download-azure-marketplace-item.md).
+[Stažení položek z marketplace z Azure do služby Azure Stack](azure-stack-download-azure-marketplace-item.md).
 
-Všimněte si, že jsou časté aktualizace do těchto bitových kopií, proto Marketplace Management často k zachování aktualizovaného stavu.
+Všimněte si, že jsou časté aktualizace do těchto bitových kopií, tak správu Marketplace často se má aktualizovat.
 
-## <a name="prepare-your-own-image"></a>Příprava vlastní image
+## <a name="prepare-your-own-image"></a>Příprava svoji vlastní image
 
- Pokud je to možné, stažení bitové kopie, které přes správu Marketplace, které byly připravené a testována zásobník Azure. 
+ Kdykoli je to možné, stáhněte si Image, která je dostupná prostřednictvím webu Marketplace správu, který byl předem připraven a testovat pro službu Azure Stack. 
  
- Azure Linux Agent (obvykle nazývá `WALinuxAgent` nebo `walinuxagent`) je nutné, a ne všechny verze agenta bude fungovat v Azure zásobníku. Měli byste použít verzi 2.2.18 nebo novější, pokud vytvoříte vlastní image. Všimněte si, že [cloudu init](https://cloud-init.io/) v tuto chvíli není podporován v zásobníku Azure.
+ Azure Linux Agent (obvykle nazývá `WALinuxAgent` nebo `walinuxagent`) je nutné použít, a ne všechny verze agenta bude fungovat ve službě Azure Stack. Používejte verze 2.2.18 nebo novější, pokud vytvoříte vlastní image. Všimněte si, že [cloud-init](https://cloud-init.io/) není v tuto chvíli nepodporuje v Azure stacku.
 
- Vlastní image Linux pomocí následujících pokynů můžete připravit:
+ Můžete připravit své vlastní image s Linuxem podle následujících pokynů:
 
-   * [Na základě centOS distribuce](../virtual-machines/linux/create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+   * [Distribuce založené na centOS](../virtual-machines/linux/create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
    * [Debian Linux](../virtual-machines/linux/debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
    * [Red Hat Enterprise Linux](azure-stack-redhat-create-upload-vhd.md)
    * [SLES & openSUSE](../virtual-machines/linux/suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
    * [Ubuntu Server](../virtual-machines/linux/create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
     
-## <a name="add-your-image-to-the-marketplace"></a>Přidání bitové kopie do marketplace.
+## <a name="add-your-image-to-the-marketplace"></a>Přidání bitové kopie na webu Marketplace
  
-Postupujte podle [lze přidat image do Marketplace](azure-stack-add-vm-image.md). Ujistěte se, že `OSType` parametr je nastaven na `Linux`.
+Postupujte podle [Přidání bitové kopie na webu Marketplace](azure-stack-add-vm-image.md). Ujistěte se, že `OSType` parametr je nastaven na `Linux`.
 
-Po přidání bitovou kopii na Marketplace, je-li vytvořit položku Marketplace. a mohou uživatelé nasadit virtuální počítač s Linuxem.
+Po přidání obrázku na webu Marketplace, je vytvořena položka Marketplace a uživatelé můžou nasazovat virtuální počítače s Linuxem.

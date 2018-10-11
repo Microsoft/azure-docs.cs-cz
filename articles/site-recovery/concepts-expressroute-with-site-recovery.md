@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: manayar
-ms.openlocfilehash: ac64c73ac26c610c08dceff13cbd524916853146
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: eb28a3d165bcb6cc5e63162053029ce14b0d7f8f
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916412"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078132"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure ExpressRoute pomocí Azure Site Recovery
 
@@ -49,7 +49,7 @@ Azure Site Recovery nabízí zotavení po havárii [virtuálních počítačů A
 
 Pro zotavení po havárii virtuálního počítače Azure ve výchozím nastavení, ExpressRoute se nevyžaduje pro replikaci. Po virtuálním počítačům převzetí služeb při selhání do cílové oblasti Azure, k nim můžete přistupovat pomocí [soukromého partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#azure-private-peering).
 
-Pokud už používáte ExpressRoute pro připojení z místního datacentra do virtuálních počítačů Azure na zdrojové oblasti, můžete naplánovat pro obnovujete připojení ExpressRoute v cílové oblasti převzetí služeb při selhání. Stejnému okruhu ExpressRoute můžete použít pro připojení k cílové oblasti novou virtuální síťové připojení nebo využití samostatné okruh ExpressRoute a připojení pro zotavení po havárii. Různé možné scénáře jsou popsané [tady](azure-vm-disaster-recovery-with-expressroute.md#failover-models-with-expressroute).
+Pokud už používáte ExpressRoute pro připojení z místního datacentra do virtuálních počítačů Azure na zdrojové oblasti, můžete naplánovat pro obnovujete připojení ExpressRoute v cílové oblasti převzetí služeb při selhání. Stejnému okruhu ExpressRoute můžete použít pro připojení k cílové oblasti novou virtuální síťové připojení nebo využití samostatné okruh ExpressRoute a připojení pro zotavení po havárii. Různé možné scénáře jsou popsané [tady](azure-vm-disaster-recovery-with-expressroute.md#fail-over-azure-vms-when-using-expressroute).
 
 Můžete replikovat virtuální počítače Azure do libovolné oblasti Azure v rámci stejné zeměpisné clusteru jako podrobné [tady](../site-recovery/azure-to-azure-support-matrix.md#region-support). Pokud není zvolené cílové oblasti Azure v rámci stejné geopolitické oblasti jako zdroj, může být potřeba povolit ExpressRoute Premium. Více informací najdete v [umístění ExpressRoute](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region) a [ceny za ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute/).
 

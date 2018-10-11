@@ -2,19 +2,18 @@
 title: Kurz služby Azure Container Registry – Příprava geograficky replikovaného registru kontejnerů Azure
 description: Vytvořte registr kontejnerů Azure, nakonfigurujte geografickou replikaci, připravte image Dockeru a nasaďte ji do registru. První část třídílné série.
 services: container-registry
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 04/30/2017
-ms.author: marsma
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 379878e261007eca13a4e455ef2b97237c81eeba
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 9d1371dc02f37889b15b3448d82c62d76472f847
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39450024"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854299"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Kurz: Příprava geograficky replikovaného registru kontejnerů Azure
 
@@ -42,7 +41,7 @@ Azure Cloud Shell neobsahuje součásti Dockeru nutné pro dokončení všech kr
 
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
 
-Přihlaste se k [portálu Azure](http://portal.azure.com).
+Přihlaste se k webu [Azure Portal](http://portal.azure.com).
 
 Vyberte **Vytvořit prostředek** > **Kontejnery** > **Azure Container Registry**.
 

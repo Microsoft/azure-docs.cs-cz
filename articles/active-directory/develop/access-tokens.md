@@ -1,6 +1,6 @@
 ---
 title: Přístup k Azure Active Directory tokeny odkaz | Dokumentace Microsoftu
-description: Přijímá přístupové tokeny, protože ho vygeneroval v1.0 a v2.0 koncové body služby Azure AD.
+description: Další informace o přístupové tokeny, protože ho vygeneroval koncové body v1.0 a v2.0 služby Azure AD.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 5f467b5fd9db913d41342bfec3e08791ad41a36a
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: f184c18e97144f7efb30d61ebd024344510f3f5c
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815626"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078762"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Azure Active Directory přístupové tokeny
 
@@ -87,6 +87,7 @@ Deklarace identity jsou k dispozici pouze v případě, že existuje hodnota do 
 |-----|--------|-------------|
 | `aud` | Řetězec, identifikátor ID URI aplikace | Identifikuje zamýšlený příjemce tokenu. V přístupových tokenech je cílová skupina ID vaší aplikace, přiřazené vaší aplikaci na webu Azure Portal. Vaše aplikace by měl ověřit tuto hodnotu a odmítnout token, pokud hodnota se neshoduje. |
 | `iss` | Řetězec, identifikátor URI služby tokenů zabezpečení | Identifikuje službu tokenů zabezpečení (STS), který vytvoří a vrátí token a tenanta Azure AD, ve kterém byl uživatel ověřený. Pokud byl token vydán bodem v2.0, identifikátor URI, skončí za `/v2.0`. Identifikátor GUID, který označuje, že uživatel je příjemce uživatele z účtu Microsoft je `9188040d-6c67-4c5b-b112-36a304b66dad`. Aplikace by měla část GUID deklarace slouží k omezení sadu klienty, kteří se můžou přihlásit k aplikaci, pokud je k dispozici. |
+|`idp`|Řetězec, obvykle o identifikátor URI služby tokenů zabezpečení | Zaznamenává zprostředkovatele identity, který ověřil subjekt tokenu. Tato hodnota se shoduje s hodnotu deklarace identity vystavitele, není-li uživatelský účet není ve stejném tenantovi jako vystavitel - hosté, třeba. Pokud deklarace identity není k dispozici, znamená to, že hodnota `iss` lze použít.  Pro osobní účty, které se používá v kontextu orgnizational (například pomocí osobního účtu pozvat do tenanta služby Azure AD) `idp` deklarace může být 'live.com' nebo identifikátor URI služby tokenů zabezpečení obsahující tenanta účtu Microsoft `9188040d-6c67-4c5b-b112-36a304b66dad`. |  
 | `iat` | int, UNIXOVÉ časové razítko | "Vystaveno v" označuje, kdy došlo k ověřování pro tento token. |
 | `nbf` | int, UNIXOVÉ časové razítko | Deklarace identity "nbf" (ne dřív) označuje čas, před kterým nesmí být přijaty tokenů JWT pro zpracování. |
 | `exp` | int, UNIXOVÉ časové razítko | Deklarace identity "exp" (čas vypršení platnosti) označuje čas vypršení platnosti, po který tokenů JWT nesmí být přijata ke zpracování dni. Je důležité si uvědomit, že prostředek může odmítnout token před tímto časem stejně, jako je například, pokud je požadované změny v ověřování nebo byl zjištěn token zrušení. |

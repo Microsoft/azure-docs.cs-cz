@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 13b4dc6e49c67ae9fd880ab64880966835242dec
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: e1a0ee2a9ad958a5938569927a489785edd8ee1f
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921497"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078830"
 ---
 # <a name="support-matrix-for-replication-of-hyper-v-vms-to-a-secondary-site"></a>Matice podpory pro replikaci virtuálních počítačů Hyper-V do sekundární lokality
 
@@ -97,7 +97,7 @@ Přidání nebo odebrání horké disku | Ne
 Vyloučení disku | Ano
 Více cest (MPIO) | Ano
 
-## <a name="vaults"></a>Trezory služby
+## <a name="vaults"></a>Trezory
 
 **Akce** | **Podporuje se**
 --- | --- 
@@ -108,7 +108,7 @@ Přesunout úložiště, sítě, virtuální počítače Azure mezi skupinami pr
 
 Zprostředkovatel koordinuje komunikaci mezi servery VMM. 
 
-**Nejnovější** | **Aktualizace**
+**nejnovější** | **Aktualizace**
 --- | --- | --- | --- | ---
 5.1.19 ([dostupná z portálu](http://aka.ms/downloaddra) | [Nejnovější funkce a opravy](https://support.microsoft.com/kb/3155002)
 

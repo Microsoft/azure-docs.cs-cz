@@ -1,28 +1,34 @@
 ---
-title: Použijte Azure soubor s AKS
-description: Použití disků v Azure s AKS
+title: Dynamicky se vytvářejí soubory svazku pro několik podů se ve službě Azure Kubernetes Service (AKS)
+description: Zjistěte, jak dynamicky se vytvářejí trvalý svazek se soubory Azure pro použití s více souběžných podů ve službě Azure Kubernetes Service (AKS)
 services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 10/08/2018
 ms.author: iainfou
-ms.openlocfilehash: dfc9171f54effe3da7a0f13695ab233d561357d4
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 022ffeaf75f8f03447b931ed9c3a474286a17f89
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43285681"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067801"
 ---
-# <a name="persistent-volumes-with-azure-files"></a>Trvalé svazků se soubory Azure
+# <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamicky vytvořit a použít trvalý svazek se soubory Azure ve službě Azure Kubernetes Service (AKS)
 
-Trvalý svazek je část úložiště, které byly vytvořeny pro použití v clusteru Kubernetes. Trvalý svazek může využívat jeden nebo více podů a je možné dynamicky nebo staticky vytvořit. Tento dokument podrobně popisuje **dynamické vytváření** ze sdílené složky Azure jako trvalý svazek.
+Trvalý svazek představuje část úložiště, která byla zřízena pro použití s podů Kubernetes. Trvalý svazek může využívat jeden nebo více podů a je možné dynamicky nebo staticky zřídit. Pokud potřebujete více podů souběžný přístup na stejný svazek úložiště, můžete používat soubory Azure a připojte se pomocí [zprávy bloku SMB (Server) protokol][smb-overview]. Tento článek popisuje, jak dynamicky se vytvářejí sdílenou složku služby soubory Azure používají několik podů se v clusteru služby Azure Kubernetes Service (AKS).
 
-Další informace o Kubernetes najdete v článku trvalé svazky, včetně statických vytvoření [trvalé svazky Kubernetes][kubernetes-volumes].
+Další informace o Kubernetes trvalé svazky, naleznete v tématu [trvalé svazky Kubernetes][kubernetes-volumes].
+
+## <a name="before-you-begin"></a>Než začnete
+
+Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete AKS cluster, najdete v tomto rychlém startu AKS [pomocí Azure CLI] [ aks-quickstart-cli] nebo [pomocí webu Azure portal][aks-quickstart-portal].
+
+Také nutné mít Azure CLI verze 2.0.46 nebo později nainstalované a nakonfigurované. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
-Při vytváření dynamicky sdílené složky Azure jako svazek Kubernetes, libovolný účet úložiště je možné, dokud se AKS **uzel** skupinu prostředků. Tato skupina je se *MC_* předponu, která vytvořil zřizování prostředků pro AKS clusteru. Získejte název skupiny prostředků pomocí příkazu [az-aks-show] [az aks zobrazit].
+Při vytváření dynamicky do sdílené složky Azure Files jako svazek Kubernetes, libovolný účet úložiště je možné, dokud se AKS **uzel** skupinu prostředků. Tato skupina je se *MC_* předponu, která vytvořil zřizování prostředků pro AKS clusteru. Získání názvu skupiny prostředků s [az aks zobrazit] [ az-aks-show] příkazu.
 
 ```azurecli
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -77,7 +83,7 @@ Povolit platformu Azure k vytvoření prostředků úložiště, vytvořte *Clus
 
 ```yaml
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: system:azure-cloud-provider
@@ -86,7 +92,7 @@ rules:
   resources: ['secrets']
   verbs:     ['get','create']
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: system:azure-cloud-provider
@@ -154,11 +160,18 @@ metadata:
   name: mypod
 spec:
   containers:
-    - name: myfrontend
-      image: nginx
-      volumeMounts:
-      - mountPath: "/mnt/azure"
-        name: volume
+  - name: mypod
+    image: nginx:1.15.5
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 250m
+        memory: 256Mi
+    volumeMounts:
+    - mountPath: "/mnt/azure"
+      name: volume
   volumes:
     - name: volume
       persistentVolumeClaim:
@@ -175,9 +188,9 @@ Teď máte spuštěné pod s Azure disku připojené */mnt/azure* adresáře. Ta
 
 ```
 Containers:
-  myfrontend:
+  mypod:
     Container ID:   docker://053bc9c0df72232d755aa040bfba8b533fa696b123876108dec400e364d2523e
-    Image:          nginx
+    Image:          nginx:1.15.5
     Image ID:       docker-pullable://nginx@sha256:d85914d547a6c92faa39ce7058bd7529baacab7e0cd4255442b04577c4d1f424
     State:          Running
       Started:      Wed, 15 Aug 2018 22:22:27 +0000
@@ -189,7 +202,7 @@ Containers:
 Volumes:
   volume:
     Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
-    ClaimName:  azurefile2
+    ClaimName:  azurefile
     ReadOnly:   false
 [...]
 ```
@@ -198,7 +211,7 @@ Volumes:
 
 Výchozí *režimu souboru fileMode* a *dirMode* hodnoty se liší mezi verzemi Kubernetes, jak je popsáno v následující tabulce.
 
-| verze | hodnota |
+| version | hodnota |
 | ---- | ---- |
 | v1.6.x, v1.7.x | 0777 |
 | v1.8.0-v1.8.5 | 0700 |
@@ -244,7 +257,7 @@ spec:
   - file_mode=0777
   - uid=1000
   - gid=1000
-  ```
+```
 
 Pokud používáte cluster verze 1.8.0 - 1.8.4, kontext zabezpečení je možné zadat při *Spustit_jako_uživatel* nastavena na hodnotu *0*. Další informace o kontextu zabezpečení Pod najdete v tématu [konfigurace kontext zabezpečení][kubernetes-security-context].
 
@@ -267,6 +280,7 @@ Další informace o trvalé svazky Kubernetes pomocí služby soubory Azure.
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/
 [pv-static]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#static
 [kubernetes-rbac]: https://kubernetes.io/docs/reference/access-authn-authz/rbac/
+[smb-overview]: /windows/desktop/FileIO/microsoft-smb-protocol-and-cifs-protocol-overview
 
 <!-- LINKS - internal -->
 [az-group-create]: /cli/azure/group#az-group-create
@@ -277,3 +291,7 @@ Další informace o trvalé svazky Kubernetes pomocí služby soubory Azure.
 [az-storage-key-list]: /cli/azure/storage/account/keys#az-storage-account-keys-list
 [az-storage-share-create]: /cli/azure/storage/share#az-storage-share-create
 [mount-options]: #mount-options
+[aks-quickstart-cli]: kubernetes-walkthrough.md
+[aks-quickstart-portal]: kubernetes-walkthrough-portal.md
+[install-azure-cli]: /cli/azure/install-azure-cli
+[az-aks-show]: /cli/azure/aks#az-aks-show

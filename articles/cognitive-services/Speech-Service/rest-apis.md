@@ -8,12 +8,12 @@ ms.component: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: dd43aff91568ba4bd93f27e88cc63a50b9d8e4bd
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: fea4f762a46963f923ba8f44644df37b29fc77a6
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886432"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068730"
 ---
 # <a name="speech-service-rest-apis"></a>Speech service rozhraní REST API
 
@@ -21,7 +21,7 @@ Rozhraní REST API služby Azure Cognitive Services řeči se podobají rozhran�
 
 ## <a name="speech-to-text"></a>Převod řeči na text
 
-V následující tabulce jsou uvedeny koncové body pro převod řeči na Text REST API. Použijte ten, který odpovídá oblasti vašeho předplatného. Odkaz **rozpoznávání režimy** dole můžete nahradit `conversation` s oběma `interactive` nebo `dictation` pro vaše požadované sceanrio v daném volání rozhraní API.
+V následující tabulce jsou uvedeny koncové body pro převod řeči na Text REST API. Použijte ten, který odpovídá oblasti vašeho předplatného. 
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
 
@@ -29,52 +29,6 @@ V následující tabulce jsou uvedeny koncové body pro převod řeči na Text R
 > Pokud jste si přizpůsobili akustický model nebo jazykového modelu nebo výslovnost, místo toho použijte vlastní koncový bod.
 
 Toto rozhraní API podporuje pouze krátkou projevy. Požadavky může obsahovat až 10 sekund zvuk a naposledy maximálně 14 sekund celkové. Rozhraní REST API vrátí pouze konečných výsledků, částečné nebo dočasné výsledky. Speech service má také [batch určené k transkripci](batch-transcription.md) rozhraní API, které můžete přepisy delší zvuk.
-
-### <a name="recognition-modes"></a>Rozpoznávání režimy
-
-Při použití rozhraní REST API nebo pomocí protokolu WebSocket protokolu přímo, je potřeba zadat režim rozpoznávání: `interactive`, `conversation`, nebo `dictation`. Režim rozpoznávání upraví na základě toho, jak se uživatelé mohou mluvit rozpoznávání řeči. Zvolte odpovídající rozpoznávání režim pro vaši aplikaci.
-
-> [!NOTE]
-> Rozpoznávání režimy může mít různé chování v protokolu REST, než v protokolu WebSocket. Například rozhraní REST API nepodporuje průběžné rozpoznávání i v režimu takovou konverzaci či diktování.
-> [!NOTE]
-> Tyto režimy platí při přímo použít protokol REST nebo pomocí protokolu WebSocket. [Sadou SDK pro řeč](speech-sdk.md) používá různé parametry k určení konfigurace rozpoznávání. Další informace najdete v klientské knihovně podle vašeho výběru.
-
-Microsoft Speech Service vrátí pouze jeden výsledek rozpoznání fráze ve všech režimech rozpoznávání. Platí limit 15 sekund pro jakékoli jedné utterance při použití rozhraní REST API nebo pomocí protokolu WebSocket protokolu přímo.
-
-#### <a name="interactive-mode"></a>Interaktivní režim
-
-V `interactive` režimu, uživatel provede krátký požadavků a očekává, že aplikace provádět akce v reakci.
-
-Následující vlastnosti jsou běžně aplikací interaktivní režim:
-
-- Uživatelé věděli, že jsou mluvený k počítači a ne do jiného lidské.
-- Uživatelům aplikace vědět předem chce říct, založené na to, co chtějí aplikace provést.
-- Projevy obvykle o poslední 2-3 sekundy.
-
-#### <a name="conversation-mode"></a>Režim konverzace
-
-V `conversation` režim, uživatelé se zabývají lidských lidských konverzace.
-
-Následující vlastnosti jsou typické pro aplikace v režimu konverzace:
-
-- Uživatelé vědí, jsou někým jiným osobně.
-- Rozpoznávání řeči rozšiřuje tím, že jedno nebo obě účastníci mluvené slovo text zobrazí lidské konverzace.
-- Uživatelé vždy nezamýšlíte chce říct.
-- Uživatelé často používají slang a dalších neformální řeči.
-
-#### <a name="dictation-mode"></a>Diktování
-
-V `dictation` režim, uživatelé vyslovení projevy delší do aplikace pro další zpracování.
-
-Následující vlastnosti jsou běžně diktování režim aplikací:
-
-- Uživatelé vědí, že jsou kdekoliv na počítač.
-- Uživatelům se zobrazí textové výsledky rozpoznávání řeči.
-- Uživatelé často plánování, co chtějí Řekněme, že a použít formálnější jazyk.
-- Uživatelé využívají úplné věty, posledních 5 až 8 sekund.
-
-> [!NOTE]
-> V režimech diktování a konverzace Microsoft Speech Service vracet částečné výsledky. Místo toho službu vrátí výsledky stabilní frázi po nečinnosti hranice v zvukový datový proud. Microsoft může vylepšovat protokolu řeči vylepšit uživatelské prostředí v těchto režimech průběžné rozpoznávání.
 
 
 ### <a name="query-parameters"></a>Parametry dotazu

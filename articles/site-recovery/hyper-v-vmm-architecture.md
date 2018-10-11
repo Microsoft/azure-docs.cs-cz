@@ -2,16 +2,17 @@
 title: Replikace Hyper-V do sekundární lokality architektury v Azure Site Recovery | Dokumentace Microsoftu
 description: Tento článek obsahuje přehled architektury pro replikaci místních virtuálních počítačů Hyper-V do sekundární lokality System Center VMM s využitím služby Azure Site Recovery.
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 0319e4d1cdbd20c39772c659a3e5a1580d8b925b
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 8f8b498164cc4a77cace470f7483aa572fefbaed
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919644"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078915"
 ---
 # <a name="hyper-v-replication-to-a-secondary-site"></a>Replikace Hyper-V do sekundární lokality
 

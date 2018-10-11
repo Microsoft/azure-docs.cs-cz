@@ -1,26 +1,33 @@
 ---
-title: Vytvářet trvalé svazky pomocí služby Azure Kubernetes Service
-description: Další informace o použití disků v Azure k vytvoření trvalého svazků pro podů ve službě Azure Kubernetes Service (AKS)
+title: Dynamicky se vytvářejí diskový svazek pro několik podů se ve službě Azure Kubernetes Service (AKS)
+description: Zjistěte, jak dynamicky se vytvářejí trvalého svazku s disky Azure pro použití s více souběžných podů ve službě Azure Kubernetes Service (AKS)
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/20/2018
+ms.date: 10/08/2018
 ms.author: iainfou
-ms.openlocfilehash: 7048ab4e08d25fd5181857a4e7592d0bcb7d3b5f
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 4fea0f63f3e28f25392ef909d9735c6129df69e7
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42885590"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067003"
 ---
-# <a name="create-persistent-volumes-with-azure-disks-for-azure-kubernetes-service-aks"></a>Vytvářet trvalé svazky s disky Azure pro Azure Kubernetes Service (AKS)
+# <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Dynamické vytváření a používání trvalého svazku s disky Azure ve službě Azure Kubernetes Service (AKS)
 
-Trvalý svazek představuje část úložiště, která byla zřízena pro použití s podů Kubernetes. Trvalý svazek může využívat jeden nebo více podů a je možné dynamicky nebo staticky zřídit. Další informace o Kubernetes trvalé svazky, naleznete v tématu [trvalé svazky Kubernetes][kubernetes-volumes]. Tento článek ukazuje, jak použít trvalé svazky s Azure disky v clusteru služby Azure Kubernetes Service (AKS).
+Trvalý svazek představuje část úložiště, která byla zřízena pro použití s podů Kubernetes. Trvalý svazek může využívat jeden nebo více podů a je možné dynamicky nebo staticky zřídit. Tento článek ukazuje, jak dynamicky vytvářet trvalé svazky s disků v Azure používají jeden pod v clusteru služby Azure Kubernetes Service (AKS).
 
 > [!NOTE]
-> Disk s Azure je možné připojit pouze s *režim přístupu* typ *ReadWriteOnce*, takže je k dispozici pouze jeden uzel AKS. Pokud museli trvalý svazek sdílet mezi více uzlů, zvažte použití [Azure Files][azure-files-pvc].
+> Disk s Azure je možné připojit pouze s *režim přístupu* typ *ReadWriteOnce*, takže je k dispozici pouze jeden pod ve službě AKS. Pokud potřebujete sdílet mezi více podů trvalý svazek, použijte [Azure Files][azure-files-pvc].
+
+Další informace o Kubernetes trvalé svazky, naleznete v tématu [trvalé svazky Kubernetes][kubernetes-volumes].
+
+## <a name="before-you-begin"></a>Než začnete
+
+Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete AKS cluster, najdete v tomto rychlém startu AKS [pomocí Azure CLI] [ aks-quickstart-cli] nebo [pomocí webu Azure portal][aks-quickstart-portal].
+
+Také nutné mít Azure CLI verze 2.0.46 nebo později nainstalované a nakonfigurované. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
 ## <a name="built-in-storage-classes"></a>Součástí třídy úložiště
 
@@ -44,7 +51,7 @@ managed-premium     kubernetes.io/azure-disk   1h
 ```
 
 > [!NOTE]
-> Trvalý svazek deklarace identity jsou uvedeny v GiB, ale Azure managed disks se účtují po SKU pro určité velikosti. Tyto skladové položky sahají od 32GiB disků S4 nebo P4 4TiB S50 nebo P50 disků. Propustnost a výkon vstupně-výstupních operací na úrovni Premium spravovaného disku závisí na obou SKU a velikosti instance uzlů v clusteru AKS. Další informace najdete v tématu [ceny a výkonu Managed Disks][managed-disk-pricing-performance].
+> Trvalý svazek deklarace identity jsou uvedeny v GiB, ale Azure managed disks se účtují po SKU pro určité velikosti. Tyto skladové položky sahají od 32GiB disků S4 nebo P4 32TiB S80 nebo P80 disků. Propustnost a výkon vstupně-výstupních operací na úrovni Premium spravovaného disku závisí na obou SKU a velikosti instance uzlů v clusteru AKS. Další informace najdete v tématu [ceny a výkonu Managed Disks][managed-disk-pricing-performance].
 
 ## <a name="create-a-persistent-volume-claim"></a>Vytvořit deklaraci identity trvalý svazek
 
@@ -69,10 +76,10 @@ spec:
 > [!TIP]
 > Chcete-li vytvořit disk, který používá služba storage úrovně standard, použijte `storageClassName: default` spíše než *spravované premium*.
 
-Vytvořit deklaraci trvalý svazek s [kubectl vytvořit] [ kubectl-create] příkaz a zadejte vaše *azure premium.yaml* souboru:
+Vytvořit deklaraci trvalý svazek s [použití kubectl] [ kubectl-apply] příkaz a zadejte vaše *azure premium.yaml* souboru:
 
 ```
-$ kubectl create -f azure-premium.yaml
+$ kubectl apply -f azure-premium.yaml
 
 persistentvolumeclaim/azure-managed-disk created
 ```
@@ -90,21 +97,28 @@ metadata:
   name: mypod
 spec:
   containers:
-    - name: myfrontend
-      image: nginx
-      volumeMounts:
-      - mountPath: "/mnt/azure"
-        name: volume
+  - name: mypod
+    image: nginx:1.15.5
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 250m
+        memory: 256Mi
+    volumeMounts:
+    - mountPath: "/mnt/azure"
+      name: volume
   volumes:
     - name: volume
       persistentVolumeClaim:
         claimName: azure-managed-disk
 ```
 
-Vytvořte pod s [kubectl vytvořit] [ kubectl-create] příkaz, jak je znázorněno v následujícím příkladu:
+Vytvořte pod s [použití kubectl] [ kubectl-apply] příkaz, jak je znázorněno v následujícím příkladu:
 
 ```
-$ kubectl create -f azure-pvc-disk.yaml
+$ kubectl apply -f azure-pvc-disk.yaml
 
 pod/mypod created
 ```
@@ -124,7 +138,7 @@ Volumes:
     Type:        Secret (a volume populated by a Secret)
     SecretName:  default-token-smm2n
     Optional:    false
-
+[...]
 Events:
   Type    Reason                 Age   From                               Message
   ----    ------                 ----  ----                               -------
@@ -189,11 +203,18 @@ metadata:
   name: mypodrestored
 spec:
   containers:
-    - name: myfrontendrestored
-      image: nginx
-      volumeMounts:
-      - mountPath: "/mnt/azure"
-        name: volume
+  - name: mypodrestored
+    image: nginx:1.15.5
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 250m
+        memory: 256Mi
+    volumeMounts:
+    - mountPath: "/mnt/azure"
+      name: volume
   volumes:
     - name: volume
       azureDisk:
@@ -202,10 +223,10 @@ spec:
         diskURI: /subscriptions/<guid>/resourceGroups/MC_myResourceGroupAKS_myAKSCluster_eastus/providers/Microsoft.Compute/disks/pvcRestored
 ```
 
-Vytvořte pod s [kubectl vytvořit] [ kubectl-create] příkaz, jak je znázorněno v následujícím příkladu:
+Vytvořte pod s [použití kubectl] [ kubectl-apply] příkaz, jak je znázorněno v následujícím příkladu:
 
 ```
-$ kubectl create -f azure-restored.yaml
+$ kubectl apply -f azure-restored.yaml
 
 pod/mypodrestored created
 ```
@@ -237,7 +258,7 @@ Další informace o Kubernetes trvalé svazky s využitím disků v Azure.
 
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
-[kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubernetes-storage-classes]: https://kubernetes.io/docs/concepts/storage/storage-classes/
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/
@@ -251,3 +272,6 @@ Další informace o Kubernetes trvalé svazky s využitím disků v Azure.
 [az-snapshot-create]: /cli/azure/snapshot#az-snapshot-create
 [az-disk-create]: /cli/azure/disk#az-disk-create
 [az-disk-show]: /cli/azure/disk#az-disk-show
+[aks-quickstart-cli]: kubernetes-walkthrough.md
+[aks-quickstart-portal]: kubernetes-walkthrough-portal.md
+[install-azure-cli]: /cli/azure/install-azure-cli

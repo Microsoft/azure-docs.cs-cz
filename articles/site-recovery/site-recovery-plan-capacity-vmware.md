@@ -2,17 +2,18 @@
 title: Plánování kapacity a škálování pro replikaci VMware do Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
 description: Použijte tento článek k plánování kapacity a škálování při replikaci virtuálních počítačů VMware do Azure pomocí Azure Site Recovery
 services: site-recovery
-author: rayne-wiselman
+author: nsoneji
+manager: garavd
 ms.service: site-recovery
-ms.date: 07/06/2018
+ms.date: 10/10/2018
 ms.topic: conceptual
 ms.author: rayne
-ms.openlocfilehash: b615ffa3571730ef9607893882f509b2fa490f35
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 833000cb09d315a996ebc9e2d66210c805160f2a
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056337"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067544"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-replication-with-azure-site-recovery"></a>Plánování kapacity a škálování pro replikaci VMware pomocí Azure Site Recovery
 
