@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Ladění webové aplikace Azure Service Fabric Mesh | Microsoft Docs'
+title: Kurz –Ladění webové aplikace Azure Service Fabric Mesh spuštěné v místním clusteru pro vývoj | Microsoft Docs
 description: V tomto kurzu se dozvíte, jak ladit aplikaci Azure Service Fabric Mesh, která je spuštěná v místním clusteru.
 services: service-fabric-mesh
 documentationcenter: .net
@@ -12,19 +12,19 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/17/2018
+ms.date: 09/18/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c519d24a8401823039f3d6598276890ec6498bbc
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 27e4c8f6ac24d40a6afacf10175413745f5151d9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41918613"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997008"
 ---
-# <a name="tutorial-debug-a-service-fabric-mesh-web-application"></a>Kurz: Ladění webové aplikace Service Fabric Mesh
+# <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Kurz: Ladění aplikace Service Fabric Mesh spuštěné v místním clusteru pro vývoj
 
-V tomto kurzu, který je druhou částí série, se dozvíte, jak ladit webovou aplikaci Azure Service Fabric Mesh v místním vývojovém clusteru.
+V tomto kurzu, který je druhou částí série, se dozvíte, jak sestavit a ladit aplikaci Azure Service Fabric Mesh v místním vývojovém clusteru.
 
 V tomto kurzu se dozvíte:
 
@@ -34,9 +34,11 @@ V tomto kurzu se dozvíte:
 
 V této sérii kurzů se naučíte:
 > [!div class="checklist"]
-> * [Sestavit aplikaci Service Fabric Mesh](service-fabric-mesh-tutorial-create-dotnetcore.md)
-> * Ladit aplikaci místně
-> * [Publikovat aplikaci do Azure](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+> * [Vytvoření aplikace Service Fabric Mesh v sadě Visual Studio](service-fabric-mesh-tutorial-create-dotnetcore.md)
+> * Ladění aplikace Service Fabric Mesh spuštěné v místním clusteru pro vývoj
+> * [Nasazení aplikace Service Fabric Mesh](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+> * [Upgrade aplikace Service Fabric Mesh](service-fabric-mesh-tutorial-upgrade.md)
+> * [Vyčištění prostředků Service Fabric Mesh](service-fabric-mesh-tutorial-cleanup-resources.md)
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
@@ -105,4 +107,4 @@ V této části kurzu jste se naučili:
 
 Přejděte k dalšímu kurzu:
 > [!div class="nextstepaction"]
-> [Publikování webové aplikace Service Fabric Mesh](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+> [Nasazení aplikace Service Fabric Mesh](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)

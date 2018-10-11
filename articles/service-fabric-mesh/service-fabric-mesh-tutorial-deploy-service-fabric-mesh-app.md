@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Nasazení aplikace Service Fabric Mesh do služby Service Fabric Mesh | Microsoft Docs'
-description: Naučte se publikovat aplikaci Azure Service Fabric Mesh s webem ASP.NET Core, která komunikuje s back-endovou webovou službou.
+title: Kurz – Nasazení aplikace Service Fabric Mesh | Microsoft Docs
+description: Zjistěte, jak pomocí sady Visual Studio publikovat aplikaci Azure Service Fabric Mesh složenou z webu ASP.NET Core, který komunikuje s back-endovou webovou službou.
 services: service-fabric-mesh
 documentationcenter: .net
 author: TylerMSFT
@@ -12,35 +12,35 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/26/2018
+ms.date: 09/18/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 350749161260768071afbb47b854cb2e9184bd9d
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 467484824ec3a3ceffb6dfa692953406ed6acc1b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284723"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963317"
 ---
-# <a name="tutorial-deploy-a-service-fabric-mesh-web-application"></a>Kurz: Nasazení webové aplikace Service Fabric Mesh
+# <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>Kurz: Nasazení aplikace Service Fabric Mesh
 
 V tomto kurzu, který je třetí částí série, se dozvíte, jak publikovat webovou aplikaci Azure Service Fabric Mesh přímo ze sady Visual Studio.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
-> * Publikovat aplikaci do Azure
+> * Publikování aplikace do Azure pomocí sady Visual Studio
 > * Zkontrolovat stav nasazení aplikace
-> * Zobrazit všechny aplikace aktuálně nasazené v předplatném
-> * Zobrazit protokoly aplikací
-> * Vymazat prostředky používané aplikací
+> * Zobrazení všech aplikací aktuálně nasazených v předplatném
 
 V této sérii kurzů se naučíte:
 > [!div class="checklist"]
-> * [Sestavit webovou aplikaci Service Fabric Mesh](service-fabric-mesh-tutorial-create-dotnetcore.md)
-> * [Ladit aplikaci v místním prostředí](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
-> * Publikování aplikace do Azure
+> * [Vytvoření aplikace Service Fabric Mesh v sadě Visual Studio](service-fabric-mesh-tutorial-create-dotnetcore.md)
+> * [Ladění aplikace Service Fabric Mesh spuštěné v místním clusteru pro vývoj](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
+> * Nasazení aplikace Service Fabric Mesh
+> * [Upgrade aplikace Service Fabric Mesh](service-fabric-mesh-tutorial-upgrade.md)
+> * [Vyčištění prostředků Service Fabric Mesh](service-fabric-mesh-tutorial-cleanup-resources.md)
 
-Dozvíte se, jak vytvořit aplikaci Azure Service Fabric Mesh s webovým front-endem ASP.NET a back-endovou službou s webovým rozhraním API ASP.NET Core. Potom provedete ladění aplikace v místním clusteru pro vývoj a publikujete ji do Azure. Na konci tak získáte jednoduchou aplikaci s úkoly, která předvádí volání mezi službami ve webové aplikaci Service Fabric Mesh.
+[!INCLUDE [preview note](./includes/include-preview-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -62,7 +62,7 @@ Aplikace se nachází v adresáři `src\todolistapp`.
 
 ## <a name="publish-to-azure"></a>Publikování aplikací do Azure
 
-Pokud chcete projekt Service Fabric Mesh publikovat v Azure, klikněte v sadě Visual Studio pravým tlačítkem myši na **ServiceFabricMeshApp** a vyberte **Publikovat**.
+Pokud chcete projekt Service Fabric Mesh publikovat do Azure, klikněte v sadě Visual Studio pravým tlačítkem na **todolistapp** a vyberte **Publikovat**.
 
 Zobrazí se dialogové okno **Publikovat aplikaci Service Fabricu**.
 
@@ -74,9 +74,9 @@ V části **Skupina prostředků** vyberte **\<Vytvořit novou skupinu prostřed
 
 ![Dialogové okno nové skupiny prostředků Service Fabric Mesh v sadě Visual Studio](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-resource-group-dialog.png)
 
-V dialogovém okně **Publikovat aplikaci Service Fabricu** vyberte v části **Azure Container Registry** možnost **\<Vytvořit nový registr kontejneru...>**. V dialogovém okně **Vytvořit registr kontejneru** použijte pro **registr kontejneru** jedinečný název. Zadejte **umístění** (tento kurz používá **USA – východ**). V rozevírací nabídce vyberte **skupinu prostředků**, kterou jste vytvořili v předchozím kroku, například **sfmeshTutorial1RG**. **Skladovou položku** nastavte na **Basic** a kliknutím na **Vytvořit** se vraťte do dialogu pro publikování.
+V dialogovém okně **Publikovat aplikaci Service Fabricu** vyberte v části **Azure Container Registry** možnost **\<Vytvořit nový registr kontejneru...>**. V dialogovém okně **Vytvořit registr kontejneru** použijte pro **registr kontejneru** jedinečný název. Zadejte **umístění** (tento kurz používá **USA – východ**). V rozevírací nabídce vyberte **skupinu prostředků**, kterou jste vytvořili v předchozím kroku, například **sfmeshTutorial1RG**. Nastavte **skladovou položku** na **Basic** a pak stisknutím **Vytvořit** vytvořte privátní registr kontejneru Azure a vraťte se do dialogového okna Publikovat.
 
-![Dialogové okno nové skupiny prostředků Service Fabric Mesh v sadě Visual Studio](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-container-registry-dialog.png)
+![Dialogové okno nového registru kontejneru Service Fabric Mesh v sadě Visual Studio](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-container-registry-dialog.png)
 
 Pokud se vám zobrazí chyba, že poskytovatel prostředků není ve vašem předplatném zaregistrován, můžete ho zaregistrovat. Nejprve se podívejte, zda je poskytovatel prostředků pro vaše předplatné dostupný:
 
@@ -109,7 +109,6 @@ Spusťte webový prohlížeč a přejděte na tuto adresu URL, abyste se mohli p
 ## <a name="set-up-service-fabric-mesh-cli"></a>Nastavení rozhraní příkazového řádku služby Service Fabric Mesh 
 K dokončení zbývajících kroků můžete použít Azure Cloud Shell nebo místní instalaci Azure CLI. Nainstalujte rozšiřující modul Azure Service Fabric Mesh CLI pomocí těchto [pokynů](service-fabric-mesh-howto-setup-cli.md).
 
-
 ## <a name="check-application-deployment-status"></a>Zkontrolovat stav nasazení aplikace
 
 V tuto chvíli je vaše aplikace nasazena. Na její stav se můžete podívat pomocí příkazu `app show`. 
@@ -124,31 +123,9 @@ az mesh app show --resource-group $rg --name ServiceMeshApp
 
 Seznam aplikací, které jste nasadili v předplatném, zobrazíte pomocí příkazu app list.
 
-```cli
+```azurecli-interactive
 az mesh app list --output table
 ```
-
-## <a name="see-the-application-logs"></a>Zobrazení protokolů aplikací
-
-Projděte si protokoly nasazené aplikace:
-
-```azurecli-interactive
-az mesh code-package-log get --resource-group $rg --application-name ServiceMeshApp --service-name todoservice --replica-name 0 --code-package-name ServiceMeshApp
-```
-
-## <a name="clean-up-resources"></a>Vyčištění prostředků
-
-Pokud už vytvořené prostředky nepotřebujete, všechny je odstraňte. Protože jste vytvořili novou skupinu prostředků za účelem hostování prostředků služby ACR a Service Fabric Mesh, můžete tuto skupinu prostředků bezpečně odstranit. Odstraní se také všechny přidružené prostředky.
-
-```azurecli
-az group delete --resource-group sfmeshTutorial1RG
-```
-
-```powershell
-Remove-AzureRmResourceGroup -Name sfmeshTutorial1RG
-```
-
-Skupinu prostředků můžete také odstranit [prostřednictvím portálu](../azure-resource-manager/resource-group-portal.md#delete-resource-group-or-resources). 
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -157,13 +134,9 @@ V této části kurzu jste se naučili:
 > * Publikovat aplikaci do Azure
 > * Zkontrolovat stav nasazení aplikace
 > * Zobrazit všechny aplikace aktuálně nasazené v předplatném
-> * Zobrazit protokoly aplikací
-> * Vymazat prostředky používané aplikací
 
-Nyní, když jste dokončili publikování aplikace Service Fabric Mesh do Azure, vyzkoušejte toto:
-
-* Prohlédněte si [ukázku hlasovací aplikace](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/votingapp) a podívejte se na další příklad komunikace mezi službami.
-* Přečtěte si o [prostředcích Service Fabric](service-fabric-mesh-service-fabric-resources.md).
-* Přečtěte si o [Cloud Shellu](https://docs.microsoft.com/azure/cloud-shell/overview).
+Přejděte k dalšímu kurzu:
+> [!div class="nextstepaction"]
+> [Upgrade aplikace Service Fabric Mesh](service-fabric-mesh-tutorial-upgrade.md)
 
 [azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest

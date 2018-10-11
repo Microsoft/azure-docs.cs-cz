@@ -1,200 +1,323 @@
 ---
-title: Koncepty, pojmy a entity Scheduleru | Dokumentace Microsoftu
-description: Koncepty, terminologie a hierarchie entit služby Azure Scheduler včetně úloh a kolekcí úloh.  Zobrazí ucelený příklad naplánované úlohy.
+title: Koncepty, termíny a entity – Azure Scheduler | Microsoft Docs
+description: Seznamte se s koncepty, terminologií a hierarchií entit, včetně úloh a kolekcí úloh, ve službě Azure Scheduler.
 services: scheduler
-documentationcenter: .NET
-author: derek1ee
-manager: kevinlam1
-editor: ''
-ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
 ms.service: scheduler
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
+ms.suite: infrastructure-services
+author: derek1ee
+ms.author: deli
+ms.reviewer: klam
+ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
 ms.topic: get-started-article
 ms.date: 08/18/2016
-ms.author: deli
-ms.openlocfilehash: 91302d57c43a6c9d14aeeee95df3d61fa6f73172
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 07b7cce4b026464ba34296b54c4ae90d6d2b1afa
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31418838"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981157"
 ---
-# <a name="scheduler-concepts-terminology--entity-hierarchy"></a>Koncepty, terminologie a hierarchie entit Scheduleru
-## <a name="scheduler-entity-hierarchy"></a>Hierarchie entit Scheduleru
-V následující tabulce jsou uvedené hlavní prostředky, které rozhraní API Scheduleru vystavuje nebo používá.
+# <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Koncepty, terminologie a entity ve službě Azure Scheduler
 
-| Prostředek | Popis |
-| --- | --- |
-| **Kolekce úloh** |Kolekce úloh obsahuje skupinu úloh a zachovává nastavení, kvóty a omezení, které jsou sdílené mezi úlohami v kolekci. Kolekci úloh vytvoří vlastník předplatného a seskupuje úlohy podle použití nebo hranic aplikací. Je omezená na jednu oblast. Taky umožňuje vynucovat kvóty a dál tak omezovat používání všech úloh v dané kolekci. Tyto kvóty zahrnují hodnoty MaxJobs a MaxRecurrence. |
-| **Úloha** |Úloha definuje jednu opakující se akci s jednoduchými nebo komplexními strategiemi provedení. Akce můžou zahrnovat požadavky HTTP, fronty úložiště, fronty sběrnice nebo témata sběrnice. |
-| **Historie úlohy** |Historie úlohy obsahuje podrobnosti o provedení úlohy. Obsahuje podrobnosti o úspěchu/neúspěchu a jakékoli odezvě. |
+> [!IMPORTANT]
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje službu Azure Scheduler, která se vyřazuje z provozu. K plánování úloh [místo ní zkuste použít Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
 
-## <a name="scheduler-entity-management"></a>Správa entit Scheduleru
-Na vysoké úrovni plánovač a rozhraní API pro správu služeb vystavují na prostředky tyto operace:
+## <a name="entity-hierarchy"></a>Hierarchie entit
 
-| Schopnost | Popis a adresa identifikátoru URI |
-| --- | --- |
-| **Správa kolekce úloh** |Podpora pro GET, PUT a DELETE pro vytváření a úpravu kolekcí úloh a v nich obsažených úloh. Kolekce úloh je kontejner pro úlohy a mapy ke kvótám a sdíleným nastavením. Příklady kvót popsané později jsou maximální počet úloh a nejmenší interval opakování. <p>PUT a DELETE: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}`</p><p>GET: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}`</p> |
-| **Správa úloh** |Podpora pro GET, PUT, POST, PATCH a DELETE pro vytváření a úpravu úloh. Všechny úlohy musí patřit do stejné kolekce, která už existuje, takže k vytváření nedochází. <p>`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}`</p> |
-| **Správa historie úloh** |Podpora pro GET pro načtení historie provádění úloh, jako je uplynulá doba úlohy a výsledky provedení úlohy, za posledních 60 dní. Přidá podporu parametru řetězce dotazu pro filtrování podle stavu a statusu. <P>`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history`</p> |
+Rozhraní REST API služby Scheduler zpřístupňuje a používá tyto hlavní entity neboli prostředky:
+
+| Entita | Popis |
+|--------|-------------|
+| **Úloha** | Definuje jednu opakující se akci s jednoduchými nebo komplexními strategiemi provedení. Akce můžou zahrnovat požadavky HTTP, fronty úložiště, fronty služby Service Bus nebo tématu služby Service Bus. | 
+| **Kolekce úloh** | Obsahuje skupinu úloh a zachovává nastavení, kvóty a omezení, které jsou sdílené mezi úlohami v kolekci. Jako vlastník předplatného Azure můžete vytvářet kolekce úloh a seskupovat úlohy na základě jejich využití nebo hranic aplikací. Kolekce úloh má tyto vlastnosti: <p>– Je omezená na jednu oblast. <br>– Umožňuje vynucovat kvóty, takže můžete omezit využití všech úloh v kolekci. <br>– Mezi kvóty patří například MaxJobs a MaxRecurrence. | 
+| **Historie úlohy** | Popisuje podrobnosti provádění úlohy, například stav a všechny podrobnosti odpovědi. |
+||| 
+
+## <a name="entity-management"></a>Správa entit
+
+Na nejvyšší úrovni rozhraní REST API služby Scheduler zpřístupňuje tyto operace pro správu entit.
+
+### <a name="job-management"></a>Správa úloh
+
+Podporuje operace vytváření a úpravy úloh. Všechny úlohy musí patřit do existující kolekce, aby se implicitně nevytvářely další kolekce. Další informace najdete v tématu [Rozhraní REST API služby Scheduler – Úlohy](https://docs.microsoft.com/rest/api/scheduler/jobs). Tady je adresa URI pro tyto operace:
+
+`https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}`
+
+### <a name="job-collection-management"></a>Správa kolekce úloh
+
+Podporuje operace vytváření a úpravy úloh a kolekce úloh, které se mapují na kvóty a sdílená nastavení. Kvóty určují například maximální počet úloh nebo nejmenší interval opakování. Další informace najdete v tématu [Rozhraní REST API služby Scheduler – Kolekce úloh](https://docs.microsoft.com/rest/api/scheduler/jobcollections). Tady je adresa URI pro tyto operace:
+
+`https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}`
+
+### <a name="job-history-management"></a>Správa historie úloh
+
+Podporuje operaci GET pro načtení historie provádění úloh, jako je uplynulá doba úlohy a výsledky provedení úlohy, za posledních 60 dní. Zahrnuje podporu parametru řetězce dotazu pro filtrování podle stavu a statusu. Další informace najdete v tématu [Rozhraní REST API služby Scheduler – Úlohy – Výpis historie úloh](https://docs.microsoft.com/rest/api/scheduler/jobs/listjobhistory). Tady je adresa URI pro tuto operaci:
+
+`https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history`
 
 ## <a name="job-types"></a>Typy úloh
-Existují různé typy úloh: úlohy HTTP (a úlohy HTTPS, které podporují SSL), úlohy fronty úložiště, úlohy fronty sběrnice a úlohy témata sběrnice. Úlohy HTTP jsou ideální, pokud máte koncový bod existující úlohy nebo služby. Úlohy fronty úložiště můžete použít k odeslání zprávy do front úložiště, takže jsou ideální pro úlohy, které používají fronty úložiště. Úlohy sběrnice služby jsou zase ideální pro úlohy, které používají témata a fronty sběrnice služby.
 
-## <a name="the-job-entity-in-detail"></a>Podrobnosti o entitě „úloha“
-Na základní úrovni má naplánovaná úloha několik částí:
+Azure Scheduler podporuje několik typů úloh: 
 
-* Akce, která se má provést, když časovač úlohy sepne  
-* (Volitelné) Čas, kdy se má úloha spustit  
-* (Volitelné) Kdy a jak často se má úloha opakovat  
-* (Volitelné) Akce, která se má provést, pokud primární akce selže  
+* Úlohy HTTP včetně úloh HTTPS s podporou SSL pro případ, že máte koncový bod pro existující službu nebo úlohu
+* Úlohy fronty úložiště pro úlohy využívající fronty úložiště, jako je odesílání zpráv do front úložiště
+* Úlohy fronty služby Service Bus pro úlohy využívající fronty služby Service Bus
+* Úlohy tématu služby Service Bus pro úlohy využívající témata služby Service Bus
 
-Naplánovaná úloha interně taky obsahuje data poskytnutá systémem, jako je třeba čas příštího naplánovaného provedení.
+## <a name="job-definition"></a>Definice úlohy
 
-Následující kód je komplexní příklad naplánované úlohy. Podrobnější informace jsou uvedené v dalších částech.
+Úloha služby Scheduler se skládá z těchto tří základních částí:
 
-    {
-        "startTime": "2012-08-04T00:00Z",               // optional
-        "action":
-        {
-            "type": "http",
-            "retryPolicy": { "retryType":"none" },
-            "request":
-            {
-                "uri": "http://contoso.com/foo",        // required
-                "method": "PUT",                        // required
-                "body": "Posting from a timer",         // optional
-                "headers":                              // optional
+* Akce, která se spustí, když se aktivuje časovač úlohy
+* Volitelné: Čas, kdy se má úloha spustit
+* Volitelné: Kdy a jak často se má úloha opakovat
+* Volitelné: Akce při chybě, která se spustí, pokud primární akce selže
 
-                {
-                    "Content-Type": "application/json"
-                },
-            },
-           "errorAction":
-           {
-               "type": "http",
-               "request":
-               {
-                   "uri": "http://contoso.com/notifyError",
-                   "method": "POST",
-               },
-           },
-        },
-        "recurrence":                                   // optional
-        {
-            "frequency": "week",                        // can be "year" "month" "day" "week" "minute"
-            "interval": 1,                              // optional, how often to fire (default to 1)
-            "schedule":                                 // optional (advanced scheduling specifics)
-            {
-                "weekDays": ["monday", "wednesday", "friday"],
-                "hours": [10, 22]
-            },
-            "count": 10,                                 // optional (default to recur infinitely)
-            "endTime": "2012-11-04",                     // optional (default to recur infinitely)
-        },
-        "state": "disabled",                           // enabled or disabled
-        "status":                                       // controlled by Scheduler service
-        {
-            "lastExecutionTime": "2007-03-01T13:00:00Z",
-            "nextExecutionTime": "2007-03-01T14:00:00Z ",
-            "executionCount": 3,
-                                                "failureCount": 0,
-                                                "faultedCount": 0
-        },
-    }
+Úloha obsahuje také data poskytnutá systémem, jako je například čas dalšího plánovaného spuštění úlohy. Definice kódu úlohy je objekt ve formátu JSON (JavaScript Object Notation), který obsahuje tyto elementy:
 
-Jak je vidět na předešlé ukázce naplánované úlohy, má definice úlohy několik částí:
+| Element | Požaduje se | Popis | 
+|---------|----------|-------------| 
+| [**startTime**](#start-time) | Ne | Čas spuštění úlohy s posunem časového pásma ve [formátu ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) | 
+| [**action**](#action) | Ano | Podrobnosti pro primární akci, které můžou zahrnovat objekt **errorAction** | 
+| [**errorAction**](#error-action) | Ne | Podrobnosti pro sekundární akci, která se spustí, pokud primární akce selže |
+| [**recurrence**](#recurrence) | Ne | Podrobnosti pro opakující se úlohu, například frekvence a interval opakování | 
+| [**retryPolicy**](#retry-policy) | Ne | Podrobnosti o tom, jak často se má akce opakovat | 
+| [**state**](#state) | Ano | Podrobnosti o aktuálním stavu úlohy |
+| [**status**](#status) | Ano | Podrobnosti o aktuálním statusu úlohy, který řídí služba |
+||||
 
-* Čas spuštění („startTime“)  
-* Akce („action“), která zahrnuje i akci při chybě („errorAction“)
-* Opakování („recurrence“)  
-* Stav („state“)  
-* Status („status“)  
-* Zásady opakovaných pokusů („retryPolicy“)  
+Tady je příklad, který ukazuje komplexní definici úlohy pro akci HTTP (podrobnější popis elementů najdete v dalších částech): 
 
-Podívejme se na každou podrobněji:
+```json
+"properties": {
+   "startTime": "2012-08-04T00:00Z",
+   "action": {
+      "type": "Http",
+      "request": {
+         "uri": "http://contoso.com/some-method", 
+         "method": "PUT",          
+         "body": "Posting from a timer",
+         "headers": {
+            "Content-Type": "application/json"
+         },
+         "retryPolicy": { 
+             "retryType": "None" 
+         },
+      },
+      "errorAction": {
+         "type": "Http",
+         "request": {
+            "uri": "http://contoso.com/notifyError",
+            "method": "POST"
+         }
+      }
+   },
+   "recurrence": {
+      "frequency": "Week",
+      "interval": 1,
+      "schedule": {
+         "weekDays": ["Monday", "Wednesday", "Friday"],
+         "hours": [10, 22]
+      },
+      "count": 10,
+      "endTime": "2012-11-04"
+   },
+   "state": "Disabled",
+   "status": {
+      "lastExecutionTime": "2007-03-01T13:00:00Z",
+      "nextExecutionTime": "2007-03-01T14:00:00Z ",
+      "executionCount": 3,
+      "failureCount": 0,
+      "faultedCount": 0
+   }
+}
+```
+
+<a name="start-time"></a>
 
 ## <a name="starttime"></a>startTime
-„startTime“ je čas spuštění a umožňuje volajícímu zadat posun časového pásma ve [formátu ISO-8601](http://en.wikipedia.org/wiki/ISO_8601).
 
-## <a name="action-and-erroraction"></a>action a errorAction
-„action“ je akce vyvolaná při každém výskytu a popisuje typ vyvolání služby. Akce je to, co se provede podle stanoveného plánu. Scheduler podporuje akce HTTP, fronty úložiště, fronty sběrnice a témata sběrnice.
+V objektu **startTime** můžete zadat čas spuštění a posun časového pásma ve [formátu ISO 8601](http://en.wikipedia.org/wiki/ISO_8601).
 
-V příkladu nahoře je akce HTTP. Dole je příklad akce fronty úložiště:
+<a name="action"></a>
 
-    {
-            "type": "storageQueue",
-            "queueMessage":
-            {
-                "storageAccount": "myStorageAccount",  // required
-                "queueName": "myqueue",                // required
-                "sasToken": "TOKEN",                   // required
-                "message":                             // required
-                    "My message body",
-            },
+## <a name="action"></a>action
+
+Úloha služby Scheduler spouští primární **akci** podle zadaného plánu. Scheduler podporuje akce HTTP, fronty úložiště, fronty služby Service Bus a tématu služby Service Bus. Pokud primární **akce** selže, může Scheduler spustit sekundární akci [**errorAction**](#errorAction), která chybu zpracuje. Objekt **action** popisuje tyto elementy:
+
+* Typ služby akce
+* Podrobnosti akce
+* Alternativní akci **errorAction**
+
+Předchozí příklad popisuje akci HTTP. Tady je příklad akce fronty úložiště:
+
+```json
+"action": {
+   "type": "storageQueue",
+   "queueMessage": {
+      "storageAccount": "myStorageAccount",  
+      "queueName": "myqueue",                
+      "sasToken": "TOKEN",                   
+      "message": "My message body"
     }
+}
+```
 
-Dole je příklad akce témata sběrnice.
+Tady je příklad akce fronty služby Service Bus:
 
-  "action": { "type": "serviceBusTopic", "serviceBusTopicMessage": { "topicPath": "t1",  
-      "namespace": "mySBNamespace", "transportType": "netMessaging", // Can be either netMessaging or AMQP "authentication": { "sasKeyName": "QPolicy", "type": "sharedAccessKey" }, "message": "Some message", "brokeredMessageProperties": {}, "customMessageProperties": { "appname": "FromScheduler" } }, }
+```json
+"action": {
+   "type": "serviceBusQueue",
+   "serviceBusQueueMessage": {
+      "queueName": "q1",  
+      "namespace": "mySBNamespace",
+      "transportType": "netMessaging", // Either netMessaging or AMQP
+      "authentication": {  
+         "sasKeyName": "QPolicy",
+         "type": "sharedAccessKey"
+      },
+      "message": "Some message",  
+      "brokeredMessageProperties": {},
+      "customMessageProperties": {
+         "appname": "FromScheduler"
+      }
+   }
+},
+```
 
-Dole je příklad akce fronty sběrnice:
+Tady je příklad akce tématu služby Service Bus:
 
-  "action": { "serviceBusQueueMessage": { "queueName": "q1",  
-      "namespace": "mySBNamespace", "transportType": "netMessaging", // Can be either netMessaging or AMQP "authentication": {  
-        "sasKeyName": "QPolicy", "type": "sharedAccessKey" }, "message": "Some message",  
-      "brokeredMessageProperties": {}, "customMessageProperties": { "appname": "FromScheduler" } }, "type": "serviceBusQueue" }
+```json
+"action": {
+   "type": "serviceBusTopic",
+   "serviceBusTopicMessage": {
+      "topicPath": "t1",  
+      "namespace": "mySBNamespace",
+      "transportType": "netMessaging", // Either netMessaging or AMQP
+      "authentication": {
+         "sasKeyName": "QPolicy",
+         "type": "sharedAccessKey"
+      },
+      "message": "Some message",
+      "brokeredMessageProperties": {},
+      "customMessageProperties": {
+         "appname": "FromScheduler"
+      }
+   }
+},
+```
 
-„errorAction“ je obslužná rutina chyb – akce vyvolaná při selhání primární akce. Tuto proměnnou můžete použít k zavolání koncového hodu pro zpracování chyby nebo odeslání oznámení pro uživatele. To se může použít pro spojení se sekundárním koncovým bodem v případě, že primární koncový bod není dostupný (např. při nehodě nebo přírodní katastrofě v lokalitě koncového bodu) nebo se může použít pro upozornění koncového bodu pro zpracování chyby. Stejně jako primární akce může i obslužná rutina mít jednoduchou nebo složenou logiku podle jiných akcí. Pokud se chcete dozvědět, jak vytvořit token SAS, podívejte se na téma [Vytvoření a používání sdíleného přístupového podpisu](https://msdn.microsoft.com/library/azure/jj721951.aspx).
+Další informace o tokenech sdíleného přístupového podpisu (SAS) najdete v tématu [Autorizace s využitím sdílených přístupových podpisů](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+
+<a name="error-action"></a>
+
+## <a name="erroraction"></a>errorAction
+
+Pokud primární **akce** úlohy selže, může Scheduler spustit akci **errorAction**, která chybu zpracuje. V primární **akci** můžete zadat objekt **errorAction** a tím umožnit službě Scheduler zavolat koncový bod pro zpracování chyb nebo odeslat oznámení uživateli. 
+
+Pokud například dojde k havárii na primárním koncovém bodu, můžete pomocí akce **errorAction** volat sekundární koncový bod nebo odeslat oznámení do koncového bodu pro zpracování chyb. 
+
+Stejně jako primární **akce** může i akce při chybě využívat jednoduchou nebo složenou logiku na základě jiných akcí. 
+
+<a name="recurrence"></a>
 
 ## <a name="recurrence"></a>recurrence
-Opakování má několik částí:
 
-* Frequency (frekvence): Minuta, hodina, den, týden, měsíc nebo rok  
-* Interval: Interval při dané frekvenci opakování  
-* Prescribed schedule (předepsaný plán): Minuty, hodiny, dny v týdnu, měsíce a dny v měsíci pro opakování  
-* Count (počet): Počet výskytů  
-* End time (čas ukončení): Po zadaném čase ukončení se neprovedou žádné úlohy  
+Pokud definice JSON úlohy zahrnuje objekt **recurrence**, úloha se bude opakovat. Příklad:
 
-Úloha se opakuje, jestliže má ve své definici JSON opakující se objekt. Pokud jsou zadané count i endTime, má přednost to pravidlo dokončení, které nastane jako první.
+```json
+"recurrence": {
+   "frequency": "Week",
+   "interval": 1,
+   "schedule": {
+      "hours": [10, 22],
+      "minutes": [0, 30],
+      "weekDays": ["Monday", "Wednesday", "Friday"]
+   },
+   "count": 10,
+   "endTime": "2012-11-04"
+},
+```
 
-## <a name="state"></a>state
-Stav (state) úlohy může mít jednu ze čtyř hodnot: enabled (zapnuto, disabled (vypnuto), completed (dokončeno) nebo faulted (chyba). Pomocí PUT nebo PATCH můžete aktualizovat stav úloh a tím jim přidělit stav zapnuto nebo vypnuto. Pokud má úloha stav dokončeno nebo chyba, je to konečný stav, který se už nedá změnit (na úlohu ale stále můžete použít DELETE). Příklad vlastnosti state:
+| Vlastnost | Požaduje se | Hodnota | Popis | 
+|----------|----------|-------|-------------| 
+| **frequency** | Ano, pokud se používá **opakování** | Minute (minuta), Hour (hodina), Day (den), Week (týden), Month (měsíc), Year (rok) | Časová jednotka intervalu mezi opakováními | 
+| **interval** | Ne | 1 až 1000 (včetně) | Kladné číslo, které určuje počet časových jednotek mezi jednotlivými opakováními na základě vlastnosti **frequency** | 
+| **schedule** | Ne | Různé | Podrobnosti pro složitější a pokročilejší plány. Viz **hours**, **minutes**, **weekDays**, **months** a **monthDays**. | 
+| **hours** | Ne | 1 až 24 | Pole s hodinami, kdy se má úloha spustit | 
+| **minutes** | Ne | 1 až 60 | Pole s minutami, kdy se má úloha spustit | 
+| **months** | Ne | 1 až 12 | Pole s měsíci, kdy se má úloha spustit | 
+| **monthDays** | Ne | Různé | Pole se dny v měsíci, kdy se má úloha spustit | 
+| **weekDays** | Ne | Monday (pondělí), Tuesday (úterý), Wednesday (středa), Thursday (čtvrtek), Friday (pátek), Saturday (sobota), Sunday (neděle) | Pole se dny v týdnu, kdy se má úloha spustit | 
+| **count** | Ne | <*žádné*> | Počet opakování. Ve výchozím nastavení se opakování bude provádět donekonečna. Není možné použít vlastnost **count** a zároveň **endTime** – přednost bude mít pravidlo, které se dokončí jako první. | 
+| **endTime** | Ne | <*žádné*> | Datum a čas, kdy se má opakování zastavit. Ve výchozím nastavení se opakování bude provádět donekonečna. Není možné použít vlastnost **count** a zároveň **endTime** – přednost bude mít pravidlo, které se dokončí jako první. | 
+||||
 
-        "state": "disabled", // enabled, disabled, completed, or faulted
-Dokončené úlohy a úlohy, které selhaly, se odstraní po 60 dnech.
+Další informace o těchto elementech najdete v tématu [Vytváření složitých plánů a pokročilých opakování](../scheduler/scheduler-advanced-complexity.md).
 
-## <a name="status"></a>status
-Po zahájení úlohy Scheduleru se vrátí informace o aktuálním statusu (stavu) úlohy. Uživatel nemůže tento objekt nastavit – nastaví ho systém. Je ale obsažený v objektu úlohy (a ne v samostatném propojeném prostředku), aby se mohl snadno získat stav (status) úlohy.
-
-Stav (status) úlohy obsahuje čas předchozího spuštění (pokud existuje), čas dalšího naplánovaného spuštění (pro probíhající úlohy) a počet provedení úlohy.
+<a name="retry-policy"></a>
 
 ## <a name="retrypolicy"></a>retryPolicy
-Pro případ, že úloha Scheduleru selže, se můžou zadat zásady opakovaných pokusů a pomocí nich se může nastavit, jestli se má pokus o provedení úlohy opakovat a když ano, tak jak. To se nastavuje pomocí objektu **retryType** – pokud nejsou žádné zásady opakovaných pokusů, jako v příkladu nahoře, je nastavený na **none**. Pokud zásady opakovaných pokusů existují, nastavte ho na **fixed**.
 
-Pokud chcete nastavit zásady opakovaných pokusů, můžete nastavit další dvě nastavení: interval opakovaných pokusů (**retryInterval**) a počet opakovaných pokusů (**retryCount**).
+Pro případ, že by došlo k selhání úlohy služby Scheduler, můžete nastavit zásadu opakování, která určuje, jestli a jak má služba Scheduler akci zopakovat. Ve výchozím nastavení zopakuje služba Scheduler úlohu ještě čtyřikrát v 30sekundových intervalech. Agresivitu této zásady můžete zvýšit nebo snížit například tak, aby zásada opakovala akci dvakrát denně:
 
-Interval opakovaných pokusů zadaný v objektu **retryInterval** je interval mezi opakovanými pokusy. Výchozí hodnota je 30 sekund, minimální nastavitelná hodnota je 15 sekund a maximální hodnota je 18 měsíců. Definuje se ve formátu ISO 8601. Podobně je to s hodnotou počtu opakovaných pokusů nastavených v objektu **retryCount** – je to počet, kolikrát se má pokus opakovat. Výchozí hodnota je 4 a maximální hodnota je 20. Oba objekty **retryInterval** a **retryCount** jsou volitelné. Pokud je objekt **retryType** nastavený na **fixed** a nejsou explicitně zadané žádné konkrétní hodnoty, použijí se výchozí hodnoty.
+```json
+"retryPolicy": { 
+   "retryType": "Fixed",
+   "retryInterval": "PT1D",
+   "retryCount": 2
+},
+```
+
+| Vlastnost | Požaduje se | Hodnota | Popis | 
+|----------|----------|-------|-------------| 
+| **retryType** | Ano | **Pevné**, **Žádné** | Určuje, jestli jste zadali určili zásadu opakování (**pevné**), nebo ne (**žádné**). | 
+| **retryInterval** | Ne | PT30S | Určuje interval a frekvenci opakovaných pokusů ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Minimální hodnota je 15 sekund a maximální hodnota je 18 měsíců. | 
+| **retryCount** | Ne | 4 | Určuje počet opakovaných pokusů. Maximální hodnota je 20. | 
+||||
+
+Další informace najdete v tématu [Vysoká dostupnost a spolehlivost](../scheduler/scheduler-high-availability-reliability.md).
+
+<a name="status"></a>
+
+## <a name="state"></a>state
+
+Stav úlohy je **Povoleno**, **Zakázáno**, **Dokončeno** nebo **Došlo k chybě**. Příklad: 
+
+`"state": "Disabled"`
+
+Pokud chcete změnit stav úloh na **Povoleno** nebo **Zakázáno**, můžete pro tyto úlohy použít operaci PUT nebo PATCH.
+Pokud je však úloha ve stavu **Dokončeno** nebo **Došlo k chybě**, její stav aktualizovat nemůžete, ale můžete pro ni provést operaci DELETE. Dokončené úlohy a úlohy, které selhaly, Scheduler po 60 dnech odstraní. 
+
+<a name="status"></a>
+
+## <a name="status"></a>status
+
+Po spuštění úlohy vrací Scheduler informace o stavu úlohy prostřednictvím objektu **status**, který řídí pouze služba Scheduler. Objekt **status** však můžete najít v objektu **job**. Stav úlohy zahrnuje následující informace:
+
+* Čas předchozího spuštění, pokud k nějakému došlo
+* Čas dalšího naplánovaného spuštění u probíhajících úloh
+* Počet spuštění úlohy
+* Počet selhání, pokud k nějakým došlo
+* Počet chyb, pokud k nějakým došlo
+
+Příklad:
+
+```json
+"status": {
+   "lastExecutionTime": "2007-03-01T13:00:00Z",
+   "nextExecutionTime": "2007-03-01T14:00:00Z ",
+   "executionCount": 3,
+   "failureCount": 0,
+   "faultedCount": 0
+}
+```
 
 ## <a name="see-also"></a>Viz také
- [Co je Scheduler?](scheduler-intro.md)
 
- [Úvod do používání Scheduleru na portálu Azure Portal](scheduler-get-started-portal.md)
-
- [Plány a fakturace v Azure Scheduleru](scheduler-plans-billing.md)
-
- [Sestavení komplexních plánů a pokročilé opakování v Azure Scheduleru](scheduler-advanced-complexity.md)
-
- [REST API Azure Scheduleru – referenční informace](https://msdn.microsoft.com/library/mt629143)
-
- [Rutiny PowerShellu pro Azure Scheduler – referenční informace](scheduler-powershell-reference.md)
-
- [Vysoká dostupnost a spolehlivost Azure Scheduleru](scheduler-high-availability-reliability.md)
-
- [Omezení, výchozí hodnoty a chybové kódy Azure Scheduleru](scheduler-limits-defaults-errors.md)
-
- [Odchozí ověření Azure Scheduleru](scheduler-outbound-authentication.md)
-
+* [Co je Azure Scheduler?](scheduler-intro.md)
+* [Koncepty, terminologie a hierarchie entit](scheduler-concepts-terms.md)
+* [Vytváření složitých plánů a pokročilých opakování](scheduler-advanced-complexity.md)
+* [Omezení, kvóty, výchozí hodnoty a kódy chyb](scheduler-limits-defaults-errors.md)
+* [REST API Azure Scheduleru – referenční informace](https://docs.microsoft.com/rest/api/schedule)
+* [Rutiny PowerShellu pro Azure Scheduler – referenční informace](scheduler-powershell-reference.md)

@@ -1,28 +1,32 @@
 ---
-title: Kurz – Kontrola využití a nákladů ve službě Azure Cost Management | Microsoft Docs
+title: Kurz – Kontrola využití a nákladů pomocí Cloudyn v Azure | Microsoft Docs
 description: V tomto kurzu zkontrolujete využití a náklady, abyste mohli sledovat trendy, zjišťovat nedostatečnou efektivitu a vytvářet upozornění.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/07/2018
+ms.date: 09/18/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: 5505ec8dd25e5468fad81d4eb26980202425969a
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 72eaa6f085581f34b696a946e2168eceaa21a849
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "35627811"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987709"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
 
 # <a name="tutorial-review-usage-and-costs"></a>Kurz: Kontrola využití a nákladů
 
-Azure Cost Management zobrazuje využití a náklady, abyste mohli sledovat trendy, zjišťovat nedostatečnou efektivitu a vytvářet upozornění. Všechna data o využití a nákladech se zobrazí na řídicích panelech a v sestavách Cloudyn. Příklady v tomto kurzu vás provedou kontrolou využití a nákladů prostřednictvím řídicích panelů a sestav. V tomto kurzu se naučíte:
+Cloudyn zobrazuje využití a náklady, abyste mohli sledovat trendy, zjišťovat nedostatečnou efektivitu a vytvářet upozornění. Všechna data o využití a nákladech se zobrazí na řídicích panelech a v sestavách Cloudyn. Příklady v tomto kurzu vás provedou kontrolou využití a nákladů prostřednictvím řídicích panelů a sestav.
+
+Azure Cost Management nabízí podobné funkce jako Cloudyn. Azure Cost Management je nativní řešení Azure pro správu nákladů. Umožní vám analyzovat náklady, vytvářet a spravovat rozpočty, exportovat data, kontrolovat optimalizační doporučení k úspoře peněz a reagovat na ně. Další informace najdete v tématu [Azure Cost Management](overview-cost-mgt.md).
+
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Sledovat trendy využití a nákladů
@@ -35,7 +39,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ## <a name="prerequisites"></a>Požadavky
 
 - Musíte mít účet Azure.
-- Musíte mít zaregistrovanou zkušební verzi nebo placené předplatné služby Azure Cost Management.
+- Musíte mít buď zaregistrovanou zkušební verzi, nebo placené předplatné Cloudyn.
 
 ## <a name="open-the-cloudyn-portal"></a>Otevření portálu Cloudyn
 
@@ -59,7 +63,7 @@ V předchozím příkladu se od 31. 8. 2017 utratilo méně peněz než předtí
 
 V příkladu je jasně vidět, že od 31. 8. 2017 klesly náklady na Azure Storage, zatímco výdaje na ostatní služby Azure zůstaly stejné. Co tedy toto snížení výdajů způsobilo? V tomto příkladu došlo k tomu, že někteří zaměstnanci byli na dovolené a službu Storage nepoužívali.
 
-Pokud chcete zhlédnout výukové video o sledování trendů využití a nákladů, podívejte se na video [Analyzing your cloud billing data vs. time with Azure Cost Management](https://youtu.be/7LsVPHglM0g) (Analýza informací o fakturaci cloudu pomocí služby Azure Cost Management).
+Pokud chcete zhlédnout výukové video o sledování trendů využití a nákladů, podívejte se na video [Analyzing your cloud billing data vs. time with Cloudyn](https://youtu.be/7LsVPHglM0g) (Analýza informací o fakturaci cloudu pomocí Cloudyn).
 
 ## <a name="detect-usage-inefficiencies"></a>Zjišťovat nedostatečnou efektivitu využití
 
@@ -83,7 +87,7 @@ Kliknutím na symbol plus vedle položky **List of Candidates** (Seznam kandidá
 
 ![Seznam kandidátů](./media/tutorial-review-usage/sizing03.png)
 
-Pokud chcete zhlédnout výukové video o zjišťování nedostatečné efektivity využití, podívejte se na video [Optimizing VM Size in Azure Cost Management](https://youtu.be/1xaZBNmV704) (Optimalizace velikosti virtuálního počítače ve službě Azure Cost Management).
+Pokud chcete zhlédnout výukové video o zjišťování nedostatečné efektivity využití, podívejte se na video [Optimizing VM Size in Cloudyn](https://youtu.be/1xaZBNmV704) (Optimalizace velikosti virtuálního počítače v Cloudyn).
 
 ## <a name="create-alerts-for-unusual-spending"></a>Vytváření upozornění na neobvyklé výdaje
 

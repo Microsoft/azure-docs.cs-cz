@@ -1,6 +1,6 @@
 ---
-title: Sdílené složky pro cluster Azure DC/OS
-description: Vytvořit a připojit sdílenou složku na clusteru DC/OS v Azure Container Service
+title: Sdílená složka pro cluster Azure DC/OS
+description: Vytvoření sdílené složky a její připojení ke clusteru DC/OS ve službě Azure Container Service
 services: container-service
 author: julienstroheker
 manager: dcaro
@@ -9,31 +9,31 @@ ms.topic: tutorial
 ms.date: 06/07/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: c1c318f4204efd24a2d9d3d83bb1cb71f5775bdb
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 4e03a0b450c9806edfb81a867fba97052659ec44
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2017
-ms.locfileid: "26331198"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46973492"
 ---
-# <a name="create-and-mount-a-file-share-to-a-dcos-cluster"></a>Vytvořit a připojit sdílenou složku na clusteru DC/OS
+# <a name="create-and-mount-a-file-share-to-a-dcos-cluster"></a>Vytvoření sdílené složky a její připojení ke clusteru DC/OS
 
-V tomto kurzu podrobné informace o tom, jak vytvořit sdílenou složku v Azure a připojte ho na každého agenta a k hlavnímu serveru clusteru DC/OS. Nastavení sdílené složky usnadňuje sdílení souborů mezi vašeho clusteru, například konfigurace, přístup, protokoly a další. V tomto kurzu jsou prováděny následující úlohy:
+Tento kurz podrobně popisuje vytvoření sdílené složky v Azure a její připojení ke všem agentům a hlavnímu uzlu clusteru DC/OS. Nastavení sdílené složky usnadňuje sdílení souborů, jako jsou konfigurační a přístupové soubory, protokoly a další, v rámci clusteru. V tomto kurzu provedete následující úlohy:
 
 > [!div class="checklist"]
 > * Vytvoření účtu úložiště Azure
 > * Vytvoření sdílené složky
-> * Připojit sdílenou složku v clusteru DC/OS
+> * Připojení sdílené složky v clusteru DC/OS
 
-Je třeba cluster služby ACS DC/OS, pokud chcete provést kroky v tomto kurzu. V případě potřeby [tento ukázkový skript](./../kubernetes/scripts/container-service-cli-deploy-dcos.md) můžete vytvořit za vás.
+K provedení kroků v tomto kurzu potřebujete cluster DC/OS ACS. V případě potřeby si ho můžete nechat vytvořit pomocí [tohoto ukázkového skriptu](./../kubernetes/scripts/container-service-cli-deploy-dcos.md).
 
-Tento kurz vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Tento kurz vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-file-share-on-microsoft-azure"></a>Vytvoření sdílené složky v Microsoft Azure
 
-Než sdílenou složku Azure pomocí clusteru služby ACS DC/OS, je třeba vytvořit sdílené složky pro účet a soubor úložiště. Spusťte následující skript pro vytvoření sdílené složky úložiště a souboru. Aktualizujte parametry thoes ze svého prostředí.
+Než začnete používat sdílenou složku Azure s clusterem ACS DC/OS, je potřeba vytvořit účet úložiště a sdílenou složku. Spuštěním následujícího skriptu vytvořte úložiště a sdílenou složku. Aktualizujte parametry s použitím hodnot z vašeho prostředí.
 
 ```azurecli-interactive
 # Change these four parameters
@@ -52,13 +52,13 @@ export AZURE_STORAGE_CONNECTION_STRING=`az storage account show-connection-strin
 az storage share create -n $DCOS_PERS_SHARE_NAME
 ```
 
-## <a name="mount-the-share-in-your-cluster"></a>Připojit sdílenou složku v clusteru
+## <a name="mount-the-share-in-your-cluster"></a>Připojení sdílené složky v clusteru
 
-V dalším kroku sdílené složky musí připojit na každý virtuální počítač v rámci clusteru. Tato úloha skončí, pomocí nástroje/protokol cifs. Operace připojení můžete dokončit ručně na každém uzlu clusteru, nebo spuštěním skriptu na každém uzlu v clusteru.
+Dále je potřeba sdílenou složku připojit ke všem virtuálním počítačům v rámci clusteru. Tuto úlohu provedete pomocí nástroje a protokolu cifs. Operaci připojení je možné provést ručně na jednotlivých uzlech clusteru nebo spuštěním skriptu pro každý uzel v clusteru.
 
-V tomto příkladu dva skripty se spouštějí, jeden připojit sdílenou složkou Azure a druhou spusťte tento skript na každém uzlu clusteru DC/OS.
+V tomto příkladu se spustí dva skripty. Jeden připojí sdílenou složku Azure a druhý tento skript spustí na každém uzlu clusteru DC/OS.
 
-Nejdřív je potřeba název účtu úložiště Azure a přístupový klíč. Spusťte následující příkazy k získání těchto informací. Všimněte si, se používají tyto hodnoty později.
+Nejprve je potřeba název a přístupový klíč účtu úložiště Azure. Tyto informace získáte spuštěním následujících příkazů. Obě hodnoty si poznamenejte, protože je použijete v dalším kroku.
 
 Název účtu úložiště:
 
@@ -73,27 +73,27 @@ Přístupový klíč účtu úložiště:
 az storage account keys list --resource-group $DCOS_PERS_RESOURCE_GROUP --account-name $STORAGE_ACCT --query "[0].value" -o tsv
 ```
 
-V dalším kroku získat plně kvalifikovaný název domény hlavního serveru DC/OS a uložte ho do proměnné.
+Nejprve získejte plně kvalifikovaný název domény hlavního uzlu DC/OS a uložte ho jako proměnnou.
 
 ```azurecli-interactive
 FQDN=$(az acs list --resource-group $DCOS_PERS_RESOURCE_GROUP --query "[0].masterProfile.fqdn" --output tsv)
 ```
 
-Zkopírujte privátní klíč do hlavní uzel. Tento klíč je potřeba k vytvoření ssh připojení se všechny uzly v clusteru. Aktualizujte uživatelské jméno, pokud při vytvoření clusteru se použila jiná než výchozí hodnotu. 
+Zkopírujte do hlavního uzlu svůj privátní klíč. Tento klíč je potřeba k vytvoření připojení SSH ke všem uzlům v clusteru. Pokud se při vytváření clusteru použila jiná než výchozí hodnota, aktualizujte uživatelské jméno. 
 
 ```azurecli-interactive
 scp ~/.ssh/id_rsa azureuser@$FQDN:~/.ssh
 ```
 
-Vytvoření připojení SSH s hlavním serverem (nebo prvního hlavního serveru) ve vašem clusteru založenými na DC/OS. Aktualizujte uživatelské jméno, pokud při vytvoření clusteru se použila jiná než výchozí hodnotu.
+Vytvořte připojení SSH k této předloze (nebo první předloze) clusteru založeného na DC/OS. Pokud se při vytváření clusteru použila jiná než výchozí hodnota, aktualizujte uživatelské jméno.
 
 ```azurecli-interactive
 ssh azureuser@$FQDN
 ```
 
-Vytvořte soubor s názvem **cifsMount.sh**a zkopírujte do něj následující obsah. 
+Vytvořte soubor **cifsMount.sh** a zkopírujte do něj následující obsah. 
 
-Tento skript se používá k připojení Azure sdílené složky. Aktualizace `STORAGE_ACCT_NAME` a `ACCESS_KEY` shromážděny proměnné s informacemi dříve.
+Tento skript slouží k připojení sdílené složky Azure. Aktualizujte proměnné `STORAGE_ACCT_NAME` a `ACCESS_KEY` s použitím informací získaných dříve.
 
 ```azurecli-interactive
 #!/bin/bash
@@ -112,9 +112,9 @@ if [ ! -d "/mnt/share/$SHARE_NAME" ]; then sudo mkdir -p "/mnt/share/$SHARE_NAME
 # Mount the share under the previous local folder created
 sudo mount -t cifs //$STORAGE_ACCT_NAME.file.core.windows.net/$SHARE_NAME /mnt/share/$SHARE_NAME -o vers=3.0,username=$STORAGE_ACCT_NAME,password=$ACCESS_KEY,dir_mode=0777,file_mode=0777
 ```
-Vytvořte druhý soubor s názvem **getNodesRunScript.sh** a zkopírujte následující obsah do souboru. 
+Vytvořte druhý soubor **getNodesRunScript.sh** a zkopírujte do něj následující obsah. 
 
-Tento skript zjistí všechny uzly clusteru a poté spustí **cifsMount.sh** skript pro připojení sdílené složky na každém.
+Tento skript vyhledá všechny uzly clusteru a pak spustí skript **cifsMount.sh**, který ke každému z nich připojí sdílenou složku.
 
 ```azurecli-interactive
 #!/bin/bash
@@ -132,24 +132,24 @@ do
   done
 ```
 
-Spusťte skript pro připojení Azure sdílené složky na všech uzlech clusteru.
+Spusťte skript, aby se sdílená složka Azure připojila ke všem uzlům clusteru.
 
 ```azurecli-interactive
 sh ./getNodesRunScript.sh
 ```  
 
-Sdílené složky je nyní přístupná na `/mnt/share/dcosshare` na každém uzlu clusteru.
+Sdílená složka je teď na každém uzlu clusteru dostupná na adrese `/mnt/share/dcosshare`.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu Azure byl proveden sdílené složky k dispozici pro cluster DC/OS pomocí kroků:
+V tomto kurzu se pomocí následujících kroků zpřístupnila sdílená složka Azure pro cluster DC/OS:
 
 > [!div class="checklist"]
 > * Vytvoření účtu úložiště Azure
 > * Vytvoření sdílené složky
-> * Připojit sdílenou složku v clusteru DC/OS
+> * Připojení sdílené složky v clusteru DC/OS
 
-Přechodu na v dalším kurzu se dozvíte o integraci služby Azure kontejneru registru s DC/OS v Azure.  
+V dalším kurzu se dozvíte, jak integrovat službu Azure Container Registry s DC/OS v Azure.  
 
 > [!div class="nextstepaction"]
 > [Vyrovnávání zatížení aplikací](container-service-dcos-acr.md)

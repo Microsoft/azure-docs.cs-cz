@@ -1,6 +1,6 @@
 ---
-title: Kurz nasazení modelu pro služby Azure Machine Learning
-description: V tomto kurzu na pokračování se dozvíte, jak komplexně používat služby Azure Machine Learning. Toto je třetí část, ve které se probírá nasazení modelu.
+title: Kurz nasazení modelu pro službu Azure Machine Learning
+description: V tomto kurzu na pokračování se dozvíte, jak komplexně používat službu Azure Machine Learning. Toto je třetí část, ve které se probírá nasazení modelu.
 services: machine-learning
 author: aashishb
 ms.author: aashishb
@@ -12,14 +12,18 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/13/2018
-ms.openlocfilehash: de0c93ef5b907b56e6ad66a04bb728b5b9aabb9a
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2eb6eb5090b0a68a189e2d4f1148d3238bc3ee0d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41917706"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946608"
 ---
 # <a name="tutorial-3-classify-iris-deploy-a-model"></a>Kurz 3: Klasifikace Iris – Nasazení modelu
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
 Azure Machine Learning (Preview) představuje integrované, komplexní řešení datové vědy a pokročilé analýzy pro profesionální datové vědce. Datoví vědci pomocí nich můžou připravovat data, vyvíjet experimenty a nasazovat modely na úrovni cloudu.
 
 Tento kurz je **třetí částí z třídílné série**. V této části kurzu provedete pomocí služby Machine Learning (Preview) následující úlohy:
@@ -38,7 +42,7 @@ Tento kurz používá nadčasovou [datovou sadu Iris](https://en.wikipedia.org/w
 
 Pro absolvování tohoto kurzu potřebujete:
 - Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
-- Účet Experimentování a nainstalovanou aplikaci Azure Machine Learning Workbench, jak je popsáno v tomto [rychlém startu](../service/quickstart-installation.md).
+- Účet Experimentování a nainstalovanou aplikaci Azure Machine Learning Workbench, jak je popsáno v tomto [rychlém startu](quickstart-installation.md).
 - Model klasifikace z [části 2 tohoto kurzu](tutorial-classifying-iris-part-2.md).
 - Nainstalovaný a místně spuštěný modul Docker.
 
@@ -224,9 +228,9 @@ Teď můžete vytvořit webovou službu v reálném čase.
 1. K vytvoření webové služby v reálném čase použijte následující příkaz:
 
    ```azurecli
-   az ml service create realtime -f score_iris.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true -c aml_config\conda_dependencies.yml
+   az ml service create realtime -f score_iris.py --model-file model.pkl -s ./output/service_schema.json -n irisapp -r python --collect-model-data true -c aml_config\conda_dependencies.yml
    ```
-   Tento příkaz vygeneruje ID webové služby, které můžete použít později.
+   Tento příkaz vygeneruje ID webové služby, které můžete použít později. Pokud jste v poznámkovém bloku, vynechte výstupní adresář.
 
    Pro příkaz **az ml service create realtime** se používají následující přepínače:
 
@@ -276,9 +280,9 @@ Nejprve zaregistrujte model. Potom vygenerujte manifest, sestavte image Dockeru 
    K vytvoření manifestu použijte následující příkaz a zadejte výstup ID modelu z předchozího kroku:
 
    ```azurecli
-   az ml manifest create --manifest-name <new manifest name> -f score_iris.py -r python -i <model ID> -s service_schema.json -c aml_config\conda_dependencies.yml
+   az ml manifest create --manifest-name <new manifest name> -f score_iris.py -r python -i <model ID> -s ./output/service_schema.json -c aml_config\conda_dependencies.yml
    ```
-   Tento příkaz vygeneruje ID manifestu.
+   Tento příkaz vygeneruje ID manifestu.  Pokud jste v poznámkovém bloku, vynechte výstupní adresář.
 
 1. Vytvořte image Dockeru.
 

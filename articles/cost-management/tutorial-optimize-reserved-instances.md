@@ -1,30 +1,30 @@
 ---
-title: Kurz – Optimalizace nákladů na rezervované instance pomocí služby Azure Cost Management | Microsoft Docs
+title: Kurz – Optimalizace nákladů na rezervované instance pomocí Cloudyn v Azure | Microsoft Docs
 description: V tomto kurzu zjistíte, jak optimalizovat náklady na rezervované instance pro Azure a Amazon Web Services (AWS).
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 09/18/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: f0edad58256ecc29e2fd215095e8b5ab13d69ce8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c50259f0df955c3a22edc979dfebc8bfb2059e16
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32177319"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987750"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->
 
 # <a name="tutorial-optimize-reserved-instances"></a>Kurz: Optimalizace rezervovaných instancí
 
-V tomto kurzu zjistíte, jak vám služba Cost Management může pomoct optimalizovat náklady na rezervované instance a jejich využití pro Azure a Amazon Web Services (AWS). Rezervovaná instance u jakéhokoli poskytovatele cloudových služeb představuje dlouhodobý smluvní závazek, kdy se předem zavazujete k budoucímu využití virtuálního počítače. Potenciálně může také nabízet výrazné úspory oproti standardnímu cenovému modelu virtuálních počítačů s platbami za použití. Potenciálních úspor dosáhnete pouze při plném využití kapacity rezervovaných instancí.
+V tomto kurzu zjistíte, jak vám Cloudyn může pomoct optimalizovat náklady na rezervované instance Azure a Amazon Web Services (AWS) a jejich využití. Rezervovaná instance u jakéhokoli poskytovatele cloudových služeb představuje dlouhodobý smluvní závazek, kdy se předem zavazujete k budoucímu využití virtuálního počítače. Potenciálně může také nabízet výrazné úspory oproti standardnímu cenovému modelu virtuálních počítačů s platbami za použití. Potenciálních úspor dosáhnete pouze při plném využití kapacity rezervovaných instancí.
 
-Tento kurz popisuje, jakým způsobem služba Cost Management podporuje rezervované instance (RI) Azure a AWS. Popisuje také možnosti optimalizace nákladů na rezervované instance. Hlavně tím, že se vaše rezervace budou využívat naplno. V tomto kurzu provedete následující:
+Tento kurz popisuje, jakým způsobem Cloudyn podporuje rezervované instance Azure a AWS. Popisuje také možnosti optimalizace nákladů na rezervované instance. Hlavně tím, že se vaše rezervace budou využívat naplno. V tomto kurzu provedete následující:
 
 > [!div class="checklist"]
 > * Porozumění nákladům na rezervované instance Azure
@@ -41,7 +41,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ## <a name="prerequisites"></a>Požadavky
 
 - Musíte mít účet Azure.
-- Musíte mít zaregistrovanou zkušební verzi nebo placené předplatné služby Azure Cost Management.
+- Musíte mít buď zaregistrovanou zkušební verzi, nebo placené předplatné Cloudyn.
 - Musíte mít zakoupené rezervované instance v Azure nebo AWS.
 
 ## <a name="understand-azure-ri-costs"></a>Porozumění nákladům na rezervované instance Azure
@@ -85,7 +85,7 @@ Nákup sdíleného rozsahu je nejflexibilnější a doporučuje se, kdykoli je t
 
 ## <a name="optimize-azure-ri-costs"></a>Optimalizace nákladů na rezervované instance Azure
 
-Azure Cost Management podporuje rezervované instance a Zvýhodněné hybridní využití prostřednictvím:
+Cloudyn podporuje rezervované instance a Zvýhodněné hybridní využití prostřednictvím:
 
 - Zobrazení nákladů souvisejících s cenovými modely
 - Sledování využití rezervovaných instancí
@@ -116,7 +116,7 @@ Pokud však bude spuštěný pouze 50 % času, hranice rentability nastane v 10.
 
 ## <a name="view-ri-costs"></a>Zobrazení nákladů na rezervované instance
 
-Při nákupu rezervace provedete jednorázovou platbu. Ve službě Cost Management můžete tuto platbu zobrazit dvěma způsoby:
+Při nákupu rezervace provedete jednorázovou platbu. V Cloudyn můžete tuto platbu zobrazit dvěma způsoby:
 
 - Skutečné náklady
 - Amortizované náklady

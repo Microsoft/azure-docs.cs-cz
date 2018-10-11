@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: b1af82060d316a18cd6427f70695ca4fa982064d
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 81959159d4860512c184ada25930da814b5ae044
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106793"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946574"
 ---
 # <a name="set-up-continuous-integration-and-deployment-to-azure-app-service-with-jenkins"></a>Nastavení průběžné integrace a nasazování do služby Azure App Service s využitím Jenkinse
 
@@ -35,7 +35,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 * [Jenkinse](https://jenkins.io/) s nakonfigurovanou sadou JDK a nástroji Maven. Pokud systém Jenkins nemáte, vytvořte ho teď v Azure s použitím [šablony řešení Jenkinse](/azure/jenkins/install-jenkins-solution-template).
 * Účet [GitHub](https://github.com).
-* [Azure CLI 2.0](/cli/azure), a to buď z místního příkazového řádku, nebo ve službě [Azure Cloud Shell](/azure/cloud-shell/overview).
+* [Azure CLI](/cli/azure), a to buď z místního příkazového řádku, nebo ve službě [Azure Cloud Shell](/azure/cloud-shell/overview).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

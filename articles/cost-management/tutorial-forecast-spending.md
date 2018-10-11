@@ -1,25 +1,25 @@
 ---
-title: Kurz – Odhad útraty pomocí služby Azure Cost Management | Microsoft Docs
+title: Kurz – Odhad útraty pomocí Cloudyn v Azure | Microsoft Docs
 description: V tomto kurzu zjistíte, jak odhadnout útratu na základě historických dat o využití a výdajích.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 09/18/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: 411b4797510b26dec43ea7f2232457199808c857
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 587459be69fe250b3e73fb9eb9d5cd08cf2e7a42
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32162190"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953680"
 ---
 # <a name="tutorial-forecast-future-spending"></a>Kurz: Odhad budoucí útraty
 
-Azure Cost Management pomáhá odhadovat budoucí útratu na základě historických údajů o využití a nákladech. Sestavy Cloudynu můžete využít k zobrazení všech dat odhadu nákladů. Příklady v tomto kurzu vás provedou kontrolou odhadu nákladů s využitím sestav. V tomto kurzu se naučíte:
+Cloudyn pomáhá odhadovat budoucí útratu na základě historických údajů o využití a nákladech. Sestavy Cloudynu můžete využít k zobrazení všech dat odhadu nákladů. Příklady v tomto kurzu vás provedou kontrolou odhadu nákladů s využitím sestav. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Odhad budoucí útraty
@@ -29,7 +29,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ## <a name="prerequisites"></a>Požadavky
 
 - Musíte mít účet Azure.
-- Musíte mít zaregistrovanou zkušební verzi nebo placené předplatné služby Azure Cost Management.
+- Musíte mít buď zaregistrovanou zkušební verzi, nebo placené předplatné Cloudyn.
 
 ## <a name="forecast-future-spending"></a>Odhad budoucí útraty
 
@@ -37,7 +37,7 @@ Cloudyn zahrnuje sestavy odhadu nákladů, které pomáhají odhadovat útratu n
 
 Sestava plánovaných nákladů pro aktuální měsíc ukazuje náklady na vaše služby. K zobrazení odhadovaných nákladů využívá náklady ze začátku měsíce a z předchozího měsíce. V nabídce sestav v horní části portálu klikněte na **Cost** > **Projection and Budget** > **Current Month Projected Cost** (Náklady > Plán a rozpočet > Plánované náklady pro aktuální měsíc). Příklad ukazuje následující obrázek.
 
-![plánované náklady pro aktuální měsíc](./media/tutorial-forecast-spending/project-month01.png)
+![Plánované náklady pro aktuální měsíc](./media/tutorial-forecast-spending/project-month01.png)
 
 V tomto příkladu vidíte, za které služby se utratilo nejvíc. Náklady na Azure byly nižší než náklady na AWS. Pokud chcete zobrazit podrobné informace o odhadu nákladů pro virtuální počítače Azure, v seznamu **Filtr** vyberte **Azure/VM**.
 
@@ -49,11 +49,11 @@ Sestava ročních plánovaných nákladů ukazuje extrapolované náklady na va�
 
 V nabídce sestav v horní části portálu klikněte na **Cost** > **Projection and Budget** > **Annual Projected Cost** (Náklady > Plán a rozpočet > Roční plánované náklady). Příklad ukazuje následující obrázek.
 
-![sestava ročních plánovaných nákladů](./media/tutorial-forecast-spending/project-annual01.png)
+![Sestava ročních plánovaných nákladů](./media/tutorial-forecast-spending/project-annual01.png)
 
 V tomto příkladu vidíte, za které služby se utratilo nejvíc. Stejně jako u příkladu pro poslední měsíc byly náklady na Azure nižší než náklady na AWS. Pokud chcete zobrazit podrobné informace o odhadu nákladů pro virtuální počítače Azure, v seznamu **Filtr** vyberte **Azure/VM**.
 
-![roční plánované náklady pro virtuální počítače](./media/tutorial-forecast-spending/project-annual02.png)
+![Roční plánované náklady na virtuální počítače](./media/tutorial-forecast-spending/project-annual02.png)
 
 Na obrázku výše roční plánované náklady na virtuální počítače Azure dosahují 28 374 USD.
 

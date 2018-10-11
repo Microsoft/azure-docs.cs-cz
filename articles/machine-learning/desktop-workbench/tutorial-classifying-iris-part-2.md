@@ -1,6 +1,6 @@
 ---
-title: Kurz sestavení modelu pro služby Azure Machine Learning (Preview) | Microsoft Docs
-description: V tomto kurzu na pokračování se dozvíte, jak komplexně používat služby Azure Machine Learning (Preview). Toto je druhá část, ve které se probírá experimentování.
+title: Kurz sestavení modelu pro službu Azure Machine Learning (Preview) | Microsoft Docs
+description: V tomto kurzu na pokračování se dozvíte, jak komplexně používat službu Azure Machine Learning (Preview). Toto je druhá část, ve které se probírá experimentování.
 services: machine-learning
 author: hning86
 ms.author: haining
@@ -12,17 +12,21 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/15/2018
-ms.openlocfilehash: 4f9b14762332bd11fd69a855d8fabdb206e34919
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ROBOTS: NOINDEX
+ms.openlocfilehash: 6faabc3003048c93c08451c537496e762352b50b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41919522"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997304"
 ---
 # <a name="tutorial-2-classify-iris---build-a-model"></a>Kurz 2: Klasifikace Iris – Sestavení modelu
-Služby Azure Machine Learning (Preview) představují integrované řešení datové vědy a pokročilé analýzy pro profesionální datové vědce, které slouží k přípravě dat, vývoji experimentů a nasazování modelů na úrovni cloudu.
 
-Tento kurz je **druhou částí z třídílné série**. V této části kurzu provedete pomocí služeb Azure Machine Learning následující úlohy:
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
+Služba Azure Machine Learning (Preview) představuje integrované řešení datové vědy a pokročilé analýzy pro profesionální datové vědce, které slouží k přípravě dat, vývoji experimentů a nasazování modelů na úrovni cloudu.
+
+Tento kurz je **druhou částí z třídílné série**. V této části kurzu provedete pomocí služby Azure Machine Learning následující úlohy:
 
 > [!div class="checklist"]
 > * Otevírání skriptů a kontrola kódu
@@ -39,7 +43,7 @@ Tento kurz používá nadčasovou [datovou sadu Iris](https://en.wikipedia.org/w
 
 Pro absolvování tohoto kurzu potřebujete:
 - Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
-- Účet Experimentování a nainstalovanou aplikaci Azure Machine Learning Workbench, jak je popsáno v tomto [rychlém startu](../service/quickstart-installation.md).
+- Účet Experimentování a nainstalovanou aplikaci Azure Machine Learning Workbench, jak je popsáno v tomto [rychlém startu](quickstart-installation.md).
 - Projekt a připravená data Iris z [části 1 tohoto kurzu](tutorial-classifying-iris-part-1.md).
 - Nainstalovaný a místně spuštěný modul Docker. Docker Community Edition je dostačující. Informace o instalaci Dockeru najdete tady: https://docs.docker.com/engine/installation/.
 

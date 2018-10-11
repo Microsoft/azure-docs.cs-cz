@@ -1,6 +1,6 @@
 ---
-title: Ukázkový skript Azure CLI – Ruční škálování webové aplikace pomocí Azure CLI 2.0 | Microsoft Docs
-description: Ukázkový skript Azure CLI – Ruční škálování webové aplikace pomocí Azure CLI 2.0
+title: Ukázkový skript Azure CLI – Ruční škálování webové aplikace pomocí Azure CLI | Microsoft Docs
+description: Ukázkový skript Azure CLI – Ruční škálování webové aplikace pomocí Azure CLI
 services: appservice
 documentationcenter: appservice
 author: syntaxc4
@@ -16,12 +16,12 @@ ms.workload: web
 ms.date: 12/11/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 844250dce567bac280ae3a9a688cc8e5bc5852c9
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 28ca20d44d18e8fe25153b7f9298d5174412ad79
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30282442"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46988576"
 ---
 # <a name="scale-a-web-app-manually"></a>Ruční škálování webové aplikace
 
@@ -31,7 +31,7 @@ Tento ukázkový skript vytvoří skupinu prostředků, plán služby App Servic
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Ukázkový skript
 

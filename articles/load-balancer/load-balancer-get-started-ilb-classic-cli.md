@@ -1,6 +1,6 @@
 ---
-title: Vytvoření interního nástroje pro vyrovnávání zatížení – klasický příkazový řádek Azure CLI | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit interní nástroj pro vyrovnávání zatížení pomocí rozhraní příkazového řádku Azure v modelu nasazení Classic
+title: Vytvoření interního nástroje pro vyrovnávání zatížení – Azure Classic CLI | Microsoft Docs
+description: Zjistěte, jak vytvořit interní nástroj pro vyrovnávání zatížení pomocí Azure Classic CLI v modelu nasazení Classic.
 services: load-balancer
 documentationcenter: na
 author: genlin
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 06/18/2018
 ms.author: genli
-ms.openlocfilehash: 8f0ac03ff7b749e47692d03d65502df0a19bb758
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fb8929b31fa4325b996ddf4c5ec48e4acb0b930a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38539513"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966889"
 ---
-# <a name="get-started-creating-an-internal-load-balancer-classic-using-the-azure-cli"></a>Začínáme vytvářet interní nástroj pro vyrovnávání zatížení (Classic) pomocí rozhraní příkazového řádku Azure
+# <a name="get-started-creating-an-internal-load-balancer-using-the-azure-classic-cli"></a>Začínáme vytvářet interní nástroj pro vyrovnávání zatížení pomocí Azure Classic CLI
 
 > [!div class="op_single_selector"]
 > * [PowerShell](../load-balancer/load-balancer-get-started-ilb-classic-ps.md)
@@ -44,11 +44,11 @@ Pokud chcete vytvořit sadu interního nástroje pro vyrovnávání zatížení 
 2. Přidejte koncové body odpovídající virtuálním počítačům, které můžou přijímat příchozí provoz.
 3. Nakonfigurujte servery tak, aby posílaly provoz na virtuální IP adresu instance interního vyrovnávání zatížení.
 
-## <a name="step-by-step-creating-an-internal-load-balancer-using-cli"></a>Vytvoření interního nástroje pro vyrovnávání zatížení pomocí rozhraní příkazového řádku krok za krokem
+## <a name="step-by-step-creating-an-internal-load-balancer-using-classic-cli"></a>Vytvoření interního nástroje pro vyrovnávání zatížení pomocí rozhraní Classic CLI krok za krokem
 
 Tento průvodce ukazuje, jak vytvořit interní nástroj pro vyrovnávání zatížení založený na výše uvedeném scénáři.
 
-1. Pokud jste rozhraní příkazového řádku Azure nikdy nepoužívali, přejděte na téma [Instalace a konfigurace rozhraní příkazového řádku Azure](../cli-install-nodejs.md) a postupujte podle pokynů až do chvíle, kdy můžete vybrat svůj účet a předplatné Azure.
+1. Pokud jste rozhraní Classic CLI nikdy nepoužívali, přečtěte si téma [Instalace a konfigurace Azure CLI](../cli-install-nodejs.md) a postupujte podle pokynů až do chvíle, kdy můžete vybrat svůj účet a předplatné Azure.
 2. Spuštěním příkazu **azure config mode** přejděte do režimu Classic, jak vidíte níže.
 
     ```azurecli

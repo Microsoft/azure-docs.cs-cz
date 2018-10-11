@@ -1,155 +1,152 @@
 ---
-title: Začínáme se Schedulerem na webu Azure Portal | Dokumentace Microsoftu
-description: Začínáme se Schedulerem na portálu Azure
+title: Vytváření plánovaných úloh pomocí služby Azure Scheduler – Azure Portal | Microsoft Docs
+description: Zjistěte, jak vytvořit, naplánovat a spustit první automatizovanou úlohu pomocí služby Azure Scheduler na webu Azure Portal.
 services: scheduler
-documentationcenter: .NET
-author: derek1ee
-manager: kevinlam1
-editor: ''
-ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
 ms.service: scheduler
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
-ms.topic: hero-article
-ms.date: 08/10/2016
+ms.suite: infrastructure-services
+author: derek1ee
 ms.author: deli
-ms.openlocfilehash: f03ddb475835b30e9b931b7f057c062b57ac45f3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.reviewer: klam
+ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
+ms.topic: hero-article
+ms.date: 09/17/2018
+ms.openlocfilehash: f1f7e67fbd5d8a9ebfae03c00eb0de36e86d9a97
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31413426"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949583"
 ---
-# <a name="get-started-with-azure-scheduler-in-azure-portal"></a>Začínáme se Schedulerem na portálu Azure
-Ve službě Azure Scheduler je vytváření plánovaných úloh snadné. V tomto kurzu se naučíte, jak vytvořit úlohu. Taky poznáte možnosti Scheduleru pro sledování a správu.
+# <a name="create-and-schedule-your-first-job-with-azure-scheduler---azure-portal"></a>Vytvoření a naplánování první úlohy pomocí služby Azure Scheduler – Azure Portal
 
-## <a name="create-a-job"></a>Vytvoření úlohy
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).  
-2. Klikněte na **+Nový** > v poli pro vyhledávání zadejte *Scheduler* > ve výsledcích vyberte **Scheduler** > klikněte na **Vytvořit**.
-   
-    ![][marketplace-create]
-3. Teď vytvoříme úlohu, která jednoduše vyšle požadavek GET na http://www.microsoft.com/. Na obrazovce **Úloha Scheduleru** zadejte následující informace:
-   
-   1. **Název:**`getmicrosoft`  
-   2. **Předplatné:** Vaše předplatné Azure   
-   3. **Kolekce úloh:** Vyberte existující kolekci úloh nebo klikněte na **Vytvořit novou** &gt; zadejte název.
-4. Dál klikněte na **Nastavení akce** a definujte tyto hodnoty:
-   
-   1. **Typ akce:**` HTTP`  
-   2. **Metoda:**`GET`  
-   3. **Adresa URL:**` http://www.microsoft.com`  
-      
-      ![][action-settings]
-5. Nakonec nastavíme plán. Úloha se může definovat jako jednorázová, ale my vytvoříme plán opakování:
-   
-   1. **Opakování**: `Recurring`
-   2. **Začátek**: Dnešní datum
-   3. **Opakovat každý**: `12 Hours`
-   4. **Konec**: Dva dny po dnešním datu  
-      
-      ![][recurrence-schedule]
-6. Klikněte na **Vytvořit**
+> [!IMPORTANT]
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje službu Azure Scheduler, která se vyřazuje z provozu. K plánování úloh [místo ní zkuste použít Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
 
-## <a name="manage-and-monitor-jobs"></a>Správa a sledování úloh
-Úloha se po vytvoření objeví v hlavním řídicím panelu Azure. Klikněte na úlohu a otevře se nové okno s těmito kartami:
+V tomto kurzu se dozvíte, jak snadné je vytvořit a naplánovat úlohu a následně ji monitorovat a spravovat. 
 
-1. Vlastnosti  
-2. Nastavení akce  
-3. Plán  
-4. Historie
-5. Uživatelé
+Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>.
+
+## <a name="create-job"></a>Vytvoření úlohy
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).  
+
+1. V hlavní nabídce Azure vyberte **Vytvořit prostředek**. Do vyhledávacího pole zadejte scheduler. V seznamu výsledků vyberte **Scheduler** a pak zvolte **Vytvořit**.
+
+   ![Vytvoření prostředku služby Scheduler](./media/scheduler-get-started-portal/scheduler-v2-portal-marketplace-create.png)
+
+   Teď vytvořte úlohu, která odešle požadavek GET na tuto adresu URL: `http://www.microsoft.com/` 
+
+1. V části **Úloha Scheduleru** zadejte tyto informace:
+
+   | Vlastnost | Příklad hodnoty | Popis |
+   |----------|---------------|-------------| 
+   | **Název** | getMicrosoft | Název vaší úlohy | 
+   | **Kolekce úloh** | <*název_kolekce_úloh*> | Vytvořte kolekci úloh nebo vyberte existující kolekci. | 
+   | **Předplatné** | <*název_předplatného_Azure*> | Název vašeho předplatného Azure | 
+   |||| 
+
+1. Vyberte **Nastavení akce – Konfigurace**, zadejte tyto informace a jakmile budete hotovi, vyberte **OK**:
+
+   | Vlastnost | Příklad hodnoty | Popis |
+   |----------|---------------|-------------| 
+   | **Akce** | **Http** | Typ akce, která se má spustit | 
+   | **Metoda** | **Get** | Metoda, která se má zavolat | 
+   | **Adresa URL** | **http://www.microsoft.com** | Cílová adresa URL | 
+   |||| 
    
-   ![][job-overview]
+   ![Definice úlohy](./media/scheduler-get-started-portal/scheduler-v2-portal-action-settings.png)
+
+1. Vyberte **Plán – Konfigurace**, definujte plán a jakmile budete hotovi, vyberte **OK**:
+
+   Přestože můžete vytvořit jednorázovou úlohu, v tomto příkladu se nastaví plán opakování.
+
+   | Vlastnost | Příklad hodnoty | Popis |
+   |----------|---------------|-------------| 
+   | **Opakování** | **Opakující se** | Jednorázová, nebo opakující se úloha | 
+   | **Zahájení** | <*dnešní_datum*> | Datum zahájení úlohy | 
+   | **Frekvence opakování** | **1 hodina** | Interval a frekvence opakování | 
+   | **Ukončení** | **Ukončit do** dvou dnů po dnešním datu | Datum ukončení úlohy | 
+   | **Posun oproti času UTC** | **UTC + 08:00** | Časový rozdíl mezi časem UTC (Coordinated Universal Time) a časem ve vašem umístění | 
+   |||| 
+
+   ![Definice plánu](./media/scheduler-get-started-portal/scheduler-v2-portal-recurrence-schedule.png)
+
+1. Jakmile budete připraveni, zvolte **Vytvořit**.
+
+   Po vytvoření úlohy ji Azure nasadí a úloha se zobrazí na řídicím panelu Azure. 
+
+1. Když Azure zobrazí oznámení o úspěšném nasazení, zvolte **Připnout na řídicí panel**. Jinak zvolte ikonu **Oznámení** (zvonek) na panelu nástrojů Azure a pak zvolte **Připnout na řídicí panel**.
+
+## <a name="monitor-and-manage-jobs"></a>Monitorování a správa úloh
+
+Pokud chcete zkontrolovat, monitorovat a spravovat svou úlohu, vyberte ji na řídicím panelu Azure. V části **Nastavení** je několik oblastí, které můžete pro svou úlohu zkontrolovat a spravovat:
+
+![Nastavení úlohy](./media/scheduler-get-started-portal/scheduler-v2-portal-job-overview-1.png)
+
+Další informace o těchto oblastech získáte výběrem příslušné oblasti:
+
+* [**Vlastnosti**](#properties)
+* [**Nastavení akce**](#action-settings)
+* [**Plán**](#schedule)
+* [**Historie**](#history)
+* [**Uživatelé**](#users)
+
+<a name="properties"></a>
 
 ### <a name="properties"></a>Vlastnosti
-Tyto vlastnosti jsou jen pro čtení a popisují metadata správy pro úlohu Scheduleru.
 
-   ![][job-properties]
+Pokud chcete zobrazit vlastnosti jen pro čtení, které popisují metadata správy pro vaši úlohu, vyberte **Vlastnosti**.
+
+![Zobrazení vlastností úlohy](./media/scheduler-get-started-portal/scheduler-v2-portal-job-properties.png)
+
+<a name="action-settings"></a>
 
 ### <a name="action-settings"></a>Nastavení akce
-Pokud chcete nakonfigurovat úlohu, klikněte na ni na obrazovce **Úlohy**. Pokud jste pokročilá nastavení nenakonfigurovali v průvodci rychlým vytvořením podle svých představ, můžete je konfigurovat tady.
 
-Pro všechny typy akcí můžete změnit zásady opakovaných pokusů a akci při chybě.
+Pokud chcete změnit upřesňující nastavení vaší úlohy, vyberte **Nastavení akce**. 
 
-Pro akce úloh HTTP a HTTPS můžete změnit metodu na libovolnou povolenou operaci HTTP. Taky můžete přidat, odstranit nebo změnit hlavičky a základní ověřovací údaje.
+![Kontrola nastavení akce](./media/scheduler-get-started-portal/scheduler-v2-portal-job-action-settings.png)
 
-Pro akce fronty úložiště můžete změnit účet úložiště, název fronty, token SAS a hlavní část.
+| Typ akce | Popis | 
+|-------------|-------------| 
+| Všechny typy | Můžete změnit nastavení **Zásady opakování** a **Akce při chybě**. | 
+| Protokoly HTTP a HTTPS | Můžete změnit **Metodu** na libovolnou povolenou metodu. Také můžete přidat, odstranit nebo změnit hlavičky a základní ověřovací údaje. | 
+| Fronta úložiště| Můžete změnit účet úložiště, název fronty, token SAS a text. | 
+| Service Bus | Můžete změnit obor názvů, cestu k tématu nebo frontě, nastavení ověření, typ přenosu, vlastnosti zprávy a text zprávy. | 
+||| 
 
-Pro akce sběrnice můžete změnit obory názvů, cestu k tématu/frontě, nastavení ověření, typ přenosu, vlastnosti zprávy a hlavní část zprávy.
-
-   ![][job-action-settings]
+<a name="schedule"></a>
 
 ### <a name="schedule"></a>Plán
-Pokud vám plán vytvořený v průvodci rychlým vytvořením nevyhovuje, můžete ho tady změnit.
 
-To je příležitost k sestavení [komplexních plánů a pokročilého opakování ve vaší úloze](scheduler-advanced-complexity.md).
+Pokud nastavíte plán pomocí průvodce úlohou, můžete tento plán změnit například úpravou data a času zahájení, plánu opakování a data a času ukončení opakujících se úloh.
+Můžete také vytvářet [složitější plány a pokročilá opakování](scheduler-advanced-complexity.md).
 
-Můžete změnit datum a čas zahájení, plán opakování a datum a čas ukončení (pokud se úloha opakuje).
+Pokud chcete změnit zobrazení nebo plán úlohy, vyberte **Plán**:
 
-   ![][job-schedule]
+![Zobrazení plánu úlohy](./media/scheduler-get-started-portal/scheduler-v2-portal-job-schedule.png)
+
+<a name="history"></a>
 
 ### <a name="history"></a>Historie
-Na kartě **Historie** jsou zobrazené vybrané metriky pro každé provedení vybrané úlohy v systému. Tyto metriky v reálném čase poskytují hodnoty ohledně kondice vašeho Scheduleru:
 
-1. Status  
-2. Podrobnosti  
-3. Opakované pokusy
-4. Výskyt: 1., 2., 3. atd.
-5. Čas zahájení provedení  
-6. Čas ukončení provedení
-   
-   ![][job-history]
+Pokud chcete zobrazit metriky všech spuštění vybrané úlohy, vyberte **Historie**. Tyto metriky poskytují v reálném čase hodnoty vypovídající o stavu vaší úlohy, například stav, počet opakovaných pokusů, počet opakování, čas spuštění a čas ukončení.
 
-Můžete kliknout na běh a zobrazí se **Podrobnosti historie** včetně kompletní odpovědi na každé provedení. Toto dialogové okno vám taky umožní zkopírovat odpověď do schránky.
+![Zobrazení metrik a historie úlohy](./media/scheduler-get-started-portal/scheduler-v2-portal-job-history.png)
 
-   ![][job-history-details]
+Pokud chcete zobrazit podrobnosti historie jednotlivých spuštění, například úplnou odpověď, v části **Historie** vyberte požadované spuštění. 
+
+![Zobrazení podrobností historie úlohy](./media/scheduler-get-started-portal/scheduler-v2-portal-job-history-details.png)
+
+<a name="users"></a>
 
 ### <a name="users"></a>Uživatelé
-Řízení přístupu na základě role ve službě Azure Scheduler umožňuje přesnou správu přístupu. Pokud se chcete naučit používat kartu Uživatelé, přečtěte si témě [Řízení přístupu Azure na základě rolí](../role-based-access-control/role-assignments-portal.md).
 
-## <a name="see-also"></a>Viz také
- [Co je Scheduler?](scheduler-intro.md)
+Přístup ke službě Azure Scheduler můžete pro všechny uživatele podrobně spravovat pomocí řízení přístupu na základě role Azure. Informace o nastavení přístupu na základě rolí najdete v tématu [Správa přístupu pomocí řízení přístupu na základě role](../role-based-access-control/role-assignments-portal.md).
 
- [Koncepty, terminologie a hierarchie entit Scheduleru](scheduler-concepts-terms.md)
+## <a name="next-steps"></a>Další kroky
 
- [Plány a fakturace v Azure Scheduleru](scheduler-plans-billing.md)
-
- [Sestavení komplexních plánů a pokročilé opakování v Azure Scheduleru](scheduler-advanced-complexity.md)
-
- [Referenční materiály k rozhraní REST API Scheduleru](https://msdn.microsoft.com/library/mt629143)
-
- [Rutiny PowerShellu pro Scheduler – referenční informace](scheduler-powershell-reference.md)
-
- [Vysoká dostupnost a spolehlivost Scheduleru](scheduler-high-availability-reliability.md)
-
- [Omezení, výchozí hodnoty a kódy chyb Scheduleru](scheduler-limits-defaults-errors.md)
-
- [Odchozí ověření Scheduleru](scheduler-outbound-authentication.md)
-
-[marketplace-create]: ./media/scheduler-get-started-portal/scheduler-v2-portal-marketplace-create.png
-[action-settings]: ./media/scheduler-get-started-portal/scheduler-v2-portal-action-settings.png
-[recurrence-schedule]: ./media/scheduler-get-started-portal/scheduler-v2-portal-recurrence-schedule.png
-[job-properties]: ./media/scheduler-get-started-portal/scheduler-v2-portal-job-properties.png
-[job-overview]: ./media/scheduler-get-started-portal/scheduler-v2-portal-job-overview-1.png
-[job-action-settings]: ./media/scheduler-get-started-portal/scheduler-v2-portal-job-action-settings.png
-[job-schedule]: ./media/scheduler-get-started-portal/scheduler-v2-portal-job-schedule.png
-[job-history]: ./media/scheduler-get-started-portal/scheduler-v2-portal-job-history.png
-[job-history-details]: ./media/scheduler-get-started-portal/scheduler-v2-portal-job-history-details.png
-
-
-[1]: ./media/scheduler-get-started-portal/scheduler-get-started-portal001.png
-[2]: ./media/scheduler-get-started-portal/scheduler-get-started-portal002.png
-[3]: ./media/scheduler-get-started-portal/scheduler-get-started-portal003.png
-[4]: ./media/scheduler-get-started-portal/scheduler-get-started-portal004.png
-[5]: ./media/scheduler-get-started-portal/scheduler-get-started-portal005.png
-[6]: ./media/scheduler-get-started-portal/scheduler-get-started-portal006.png
-[7]: ./media/scheduler-get-started-portal/scheduler-get-started-portal007.png
-[8]: ./media/scheduler-get-started-portal/scheduler-get-started-portal008.png
-[9]: ./media/scheduler-get-started-portal/scheduler-get-started-portal009.png
-[10]: ./media/scheduler-get-started-portal/scheduler-get-started-portal010.png
-[11]: ./media/scheduler-get-started-portal/scheduler-get-started-portal011.png
-[12]: ./media/scheduler-get-started-portal/scheduler-get-started-portal012.png
-[13]: ./media/scheduler-get-started-portal/scheduler-get-started-portal013.png
-[14]: ./media/scheduler-get-started-portal/scheduler-get-started-portal014.png
-[15]: ./media/scheduler-get-started-portal/scheduler-get-started-portal015.png
+* Informace o [konceptech, terminologii a hierarchii entit](scheduler-concepts-terms.md)
+* [Vytváření složitých plánů a pokročilých opakování](scheduler-advanced-complexity.md)
+* Informace o [vysoké dostupnosti a spolehlivosti služby Azure Scheduler](scheduler-high-availability-reliability.md)
+* Informace o [omezeních, kvótách, výchozích hodnotách a kódech chyb](scheduler-limits-defaults-errors.md)

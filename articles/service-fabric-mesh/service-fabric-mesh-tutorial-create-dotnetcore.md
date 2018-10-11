@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Vytvoření a ladění webové aplikace s více službami a její nasazení do služby Service Fabric Mesh | Microsoft Docs'
+title: Kurz – Vytvoření a ladění aplikace s více službami a její nasazení a monitorování ve službě Service Fabric Mesh | Microsoft Docs
 description: V tomto kurzu vytvoříte aplikaci Azure Service Fabric Mesh s více službami složenou z webu ASP.NET Core, který komunikuje s back-endovou webovou službou, provedete její místní ladění a publikujete ji do Azure.
 services: service-fabric-mesh
 documentationcenter: .net
@@ -12,26 +12,28 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/17/2018
+ms.date: 09/18/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 59ff3434e7b984f4530ad4f8b03b27991d3a9c1c
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 09112aafdbabf0cda2b3ae13af73a9223533a6e1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41919520"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46979189"
 ---
-# <a name="tutorial-create-debug-and-deploy-a-multi-service-web-application-to-service-fabric-mesh"></a>Kurz: Vytvoření a ladění webové aplikace s více službami a její nasazení do služby Azure Service Fabric Mesh
+# <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>Kurz: Vytvoření, ladění, nasazení a upgrade aplikace Service Fabric Mesh s více službami
 
-Tento kurz je první částí série. Dozvíte se, jak vytvořit aplikaci Azure Service Fabric Mesh s webovým front-endem ASP.NET Core a back-endovou službou s webovým rozhraním API ASP.NET Core. Potom provedete ladění aplikace v místním clusteru pro vývoj a publikujete do Azure. Na konci tak získáte jednoduchou aplikaci s úkoly, která předvádí volání typu služba-služba v aplikaci Service Fabric spuštěné ve službě Azure Service Fabric Mesh.
+Tento kurz je první částí série. Dozvíte se, jak pomocí sady Visual Studio vytvořit aplikaci Azure Service Fabric Mesh s webovým front-endem ASP.NET a back-endovou službou s webovým rozhraním API ASP.NET Core. Potom provedete ladění aplikace v místním clusteru pro vývoj. Aplikaci publikujete do Azure, pak provedete změny kódu a konfigurace a aplikaci upgradujete. Nakonec vyčistíte nepoužívané prostředky Azure, aby se vám neúčtovaly poplatky za něco, co nevyužíváte.
+
+Jakmile budete hotovi, budete za sebou mít většinu fází správy životního cyklu aplikace a budete mít vytvořenou aplikaci Service Fabric Mesh předvádějící volání mezi službami.
 
 Pokud nechcete aplikaci s úkoly vytvářet ručně, můžete si [stáhnout zdrojový kód](https://github.com/azure-samples/service-fabric-mesh) dokončené aplikace a přeskočit k části [Místní ladění aplikace](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md).
 
 V první části této série se naučíte:
 
 > [!div class="checklist"]
-> * Vytvořit aplikaci Service Fabric Mesh, která se skládá z webového front-endu ASP.NET
+> * Vytvořit pomocí sady Visual Studio aplikaci Service Fabric Mesh, která se skládá z webového front-endu ASP.NET
 > * Vytvořit model, který reprezentuje položky úkolů
 > * Vytvořit back-endovou službu a načíst z ní data
 > * Přidat kontroler a třídu DataContext v rámci architektury model-zobrazení-kontroler pro back-endovou službu
@@ -40,9 +42,11 @@ V první části této série se naučíte:
 
 V této sérii kurzů se naučíte:
 > [!div class="checklist"]
-> * Sestavit aplikaci Service Fabric Mesh
-> * [Ladit aplikaci v místním prostředí](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
-> * [Publikovat aplikaci do Azure](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+> * Vytvoření aplikace Service Fabric Mesh v sadě Visual Studio
+> * [Ladění aplikace Service Fabric Mesh spuštěné v místním clusteru pro vývoj](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
+> * [Nasazení aplikace Service Fabric Mesh](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+> * [Upgrade aplikace Service Fabric Mesh](service-fabric-mesh-tutorial-upgrade.md)
+> * [Vyčištění prostředků Service Fabric Mesh](service-fabric-mesh-tutorial-cleanup-resources.md)
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
@@ -54,9 +58,7 @@ Než začnete s tímto kurzem:
 
 * Zkontrolujte, že jste [nastavili vývojové prostředí](service-fabric-mesh-howto-setup-developer-environment-sdk.md), což zahrnuje instalaci modulu runtime Service Fabric, sady SDK, Dockeru a sady Visual Studio 2017.
 
-* Aplikaci pro účely tohoto kurzu musíte prozatím sestavit v anglickém národním prostředí.
-
-## <a name="create-a-service-fabric-mesh-project"></a>Vytvoření projektu Service Fabric Mesh
+## <a name="create-a-service-fabric-mesh-project-in-visual-studio"></a>Vytvoření projektu Service Fabric Mesh v sadě Visual Studio
 
 Spusťte Visual Studio a vyberte **Soubor** > **Nový** > **Projekt…**
 
@@ -212,10 +214,7 @@ public static class DataContext
 
     static DataContext()
     {
-        ToDoList = new Model.ToDoList("Main List");
-
         // Seed to-do list
-
         ToDoList.Add(Model.ToDoItem.Load("Learn about microservices", 0, true));
         ToDoList.Add(Model.ToDoItem.Load("Learn about Service Fabric", 1, true));
         ToDoList.Add(Model.ToDoItem.Load("Learn about Service Fabric Mesh", 2, false));
@@ -368,6 +367,7 @@ V souboru service.yaml přidejte do části `environmentVariables` následujíc�
 
 > [!IMPORTANT]
 > K odsazení proměnných v souboru service.yaml je potřeba použít mezery, ne tabulátory, jinak nebude moct proběhnout kompilace. Visual Studio může při vytváření proměnných prostředí vložit tabulátory. Všechny tabulátory nahraďte mezerami. I když se ve výstupu ladění **build** zobrazí chyby, aplikace se spustí. Nebude ale fungovat, dokud nenahradíte tabulátory mezerami. Pokud chcete mít jistotu, že v souboru service.yaml nezůstaly žádné tabulátory, můžete v editoru sady Visual Studio zobrazit prázdné znaky pomocí voleb **Upravit**  > **Upřesnit**  > **Zobrazit prázdné znaky**.
+> Mějte na paměti, že soubory service.yaml se zpracovávají s použitím anglického národního prostředí.  Pokud například potřebujete použít desetinný oddělovač, použijte místo čárky tečku.
 
 Soubor **service.yaml** projektu **WebFrontEnd** by se měl podobat následujícímu příkladu, i když hodnota `ApiHostPort` bude pravděpodobně jiná:
 
@@ -389,4 +389,4 @@ V této části kurzu jste se naučili:
 
 Přejděte k dalšímu kurzu:
 > [!div class="nextstepaction"]
-> [Ladění aplikace Service Fabric Mesh spuštěné v místním prostředí](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
+> [Ladění aplikace Service Fabric Mesh spuštěné v místním clusteru pro vývoj](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)

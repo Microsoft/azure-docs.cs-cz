@@ -12,12 +12,12 @@ ms.date: 12/15/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: f2f4e7d96c4d8725d9d34314854665440d86ce8d
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: a085d7e25854a928778802d2b4ef50cf9e57eff9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095075"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46960919"
 ---
 # <a name="create-an-openapi-definition-for-a-function"></a>Vytvoření definice OpenAPI pro funkci
 Rozhraní REST API se často popisují pomocí definice OpenAPI (dříve označované jako soubor [Swagger](http://swagger.io/)). Tato definice obsahuje informace o tom, jaké operace jsou v rozhraní API dostupné a jakou strukturu by měla mít data požadavku a odpovědi pro toto rozhraní API.
@@ -31,6 +31,9 @@ V tomto kurzu se naučíte:
 > * Vygenerování definice OpenAPI pomocí nástrojů OpenAPI
 > * Úprava definice, aby poskytovala další metadata
 > * Otestování definice zavoláním funkce
+
+> [!IMPORTANT]
+> Funkce OpenAPI ve verzi Preview je v současné době k dispozici pouze v modulu runtime verze 1.x. Informace o tom, jak vytvořit aplikaci funkcí 1.x [najdete tady](./functions-versions.md#creating-1x-apps).
 
 ## <a name="create-a-function-app"></a>Vytvoření Function App
 

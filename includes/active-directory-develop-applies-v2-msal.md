@@ -6,7 +6,6 @@ documentationcenter: dev-center-name
 author: andretms
 manager: mtillman
 editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
@@ -15,12 +14,12 @@ ms.workload: identity
 ms.date: 08/26/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: e9d784d1b735719b000cd3c2e8b74557dd2168c9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ab9ed773a6aff4b991541203ad4e42035f66872b
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47011329"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843457"
 ---
 |   |
 |---|
