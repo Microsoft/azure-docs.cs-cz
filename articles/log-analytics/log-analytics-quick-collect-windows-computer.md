@@ -15,13 +15,13 @@ ms.topic: quickstart
 ms.date: 08/02/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.component: na
-ms.openlocfilehash: 91a656b055dbe882bdd5e5c208cc5d8955c74041
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.component: ''
+ms.openlocfilehash: 39c30934ddf3b1d90b2dc604af0f0bb29bf79c04
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480435"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043725"
 ---
 # <a name="configure-log-analytics-agent-for-windows-computers-in-a-hybrid-environment"></a>Konfigurace agenta Log Analytics pro počítače s Windows v hybridním prostředí
 [Azure Log Analytics](log-analytics-overview.md) může shromažďovat data přímo z fyzického nebo virtuálního počítače s Windows ve vašem datacentru nebo jiném cloudovém prostředí do jednoho úložiště pro účely podrobných analýz a korelací.  Tento rychlý start ukazuje, jak v několik snadných krocích nakonfigurovat počítač s Windows a shromažďovat z něj data.  Informace týkající se virtuálních počítačů Azure s Windows najdete v tématu [Shromažďování dat o virtuálních počítačích Azure](log-analytics-quick-collect-azurevm.md).  

@@ -1,0 +1,44 @@
+items:
+- name: Dokumentace k přizpůsobení webu Azure Portal
+  href: index.yml
+- name: Řídicí panely Azure
+  items:
+  - name: Vytváření a sdílení řídicích panelů Azure
+    href: azure-portal-dashboards.md
+  - name: Sdílení řídicích panelů prostřednictvím řízení přístupu na základě role
+    href: azure-portal-dashboard-share-access.md
+  - name: Struktura řídicích panelů Azure
+    href: azure-portal-dashboards-structure.md
+  - name: Vytváření řídicích panelů Azure prostřednictvím kódu programu
+    href: azure-portal-dashboards-create-programmatically.md
+- name: Nastavení
+  items:
+  - name: Klávesové zkratky
+    href: azure-portal-keyboard-shortcuts.md
+  - name: Podporované prohlížeče a zařízení
+    href: ../azure-preview-portal-supported-browsers-devices.md
+  - name: Zapnutí vysokého kontrastu nebo změna motivu
+    href: azure-portal-change-theme-high-contrast.md
+  - name: Export nebo odstranění uživatelských nastavení
+    href: azure-portal-export-delete-settings.md
+  expanded: true
+- name: Zdroje a prostředky
+  items:
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/updates/
+  - name: Získávání dovedností pomocí Microsoft Learn
+    href: /learn/browse/?products=azure-portal
+  - name: Cenová kalkulačka
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Regionální dostupnost
+    href: https://azure.microsoft.com/regions/services/
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-management-portal
+  - name: Videa
+    href: https://azure.microsoft.com/documentation/videos/index/?services=azure-portal&sort=newest
+ms.openlocfilehash: d2918197e211cc40662d51fa9f6d6131df426ef6
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079702"

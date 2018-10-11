@@ -2,19 +2,18 @@
 title: Kurz služby Azure Container Instances – Příprava služby Azure Container Registry
 description: Kurz služby Azure Container Instances, část 2 ze 3 – Příprava služby Azure Container Registry
 services: container-instances
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
-ms.author: marsma
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: e01c736896043ac7639a374c4f75390c4a0e2e52
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e7cf9c5fad6219e71205c181b2dbb6828595afdd
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39422208"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855438"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>Kurz: Nasazení a použití služby Azure Container Registry
 

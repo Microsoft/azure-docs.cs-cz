@@ -1,20 +1,20 @@
 ---
 title: 'Rychlý start: Vytvoření clusteru Spark v HDInsight pomocí webu Azure Portal'
 description: V tomto rychlém startu se dozvíte, jak pomocí webu Azure Portal vytvořit cluster Apache Spark v Azure HDInsight a jak spustit Spark SQL.
-services: azure-hdinsight
+services: hdinsight
 author: jasonwhowell
+ms.author: jasonh
 ms.reviewer: jasonh
-ms.service: azure-hdinsight
+ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 05/07/2018
-ms.author: jasonh
 ms.custom: mvc
-ms.openlocfilehash: 15190258fcc8800bdfec3796ebd8b4b0487d05e2
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 912cbf77c4e2beb32238708a704405fad1582705
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041923"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785697"
 ---
 # <a name="quickstart-create-a-spark-cluster-in-hdinsight-using-the-azure-portal"></a>Rychlý start: Vytvoření clusteru Spark v HDInsight pomocí webu Azure Portal
 Zjistěte, jak vytvořit cluster Apache Spark v Azure HDInsight a jak spustit dotazy Spark SQL na tabulky Hive. Apache Spark umožňuje rychlou analýzu dat a clusterové výpočty s využitím zpracování v paměti. Informace o Apache Spark ve službě HDInsight najdete v tématu [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md).

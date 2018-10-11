@@ -6,16 +6,16 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: bing-visual-search
+ms.component: bing-visual-search
 ms.topic: quickstart
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: 56e1b943f03128fa6703a7b15bd0d6ade09089d6
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 0e2f4d83904240cb32d3e162c4c873f0c8e469fd
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222620"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885251"
 ---
 # <a name="quickstart-your-first-bing-visual-search-query-in-java"></a>Rychlý start: Váš první dotaz Vizuálního vyhledávání Bingu v Javě
 
@@ -41,7 +41,7 @@ Pro kompilaci a spuštění tohoto kódu budete potřebovat [JDK 7 nebo 8](http:
 
 Pro tento rychlý start můžete použít klíč [bezplatné zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) předplatného, nebo klíč placeného předplatného.
 
-## <a name="running-the-application"></a>Spuštění aplikace
+## <a name="running-the-application"></a>Spouštění aplikace.
 
 Následující příklad ukazuje, jak nahrát obrázek pomocí MultipartEntityBuilder v jazyce Java.
 

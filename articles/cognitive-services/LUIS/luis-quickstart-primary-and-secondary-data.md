@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 941c29506aa8f17dcb6262495b28dd26e78194d5
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: e0cdda629ddded121a424af61377c04ee8d958d3
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036048"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867540"
 ---
 # <a name="tutorial-7-extract-names-with-simple-entity-and-phrase-list"></a>Kurz 7: Extrahování názvů pomocí jednoduché entity a seznamu frází
 
@@ -35,12 +35,12 @@ Jednoduchá entita je vhodná pro tento typ dat, když platí následující:
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Použít existující ukázkovou aplikaci
+> * Používat existující ukázkovou aplikaci
 > * Přidání jednoduché entity k extrahování pracovních pozic z aplikace
 > * Přidání seznamu frází ke zlepšení signalizování slov týkajících se pracovních pozic
 > * Trénování 
 > * Publikování 
-> * Získat záměry a entity z koncového bodu
+> * Zjistit záměry a entity z koncového bodu
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
@@ -48,13 +48,13 @@ Jednoduchá entita je vhodná pro tento typ dat, když platí následující:
 
 Pokračujte s aplikací **HumanResources**, kterou jste vytvořili v posledním kurzu. 
 
-Pokud tuto aplikaci nemáte, proveďte tyto kroky:
+Pokud aplikaci HumanResources z předchozího kurzu nemáte, postupujte takto:
 
-1.  Stáhněte a uložte si [soubor JSON aplikace](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-composite-HumanResources.json).
+1.  Stáhněte si [soubor JSON aplikace](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-composite-HumanResources.json) a uložte si ho.
 
-2. Naimportujte JSON do nové aplikace.
+2. Naimportujte soubor JSON do nové aplikace.
 
-3. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `simple`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto může obsahovat jenom znaky podporované v adresách URL.
+3. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `simple`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto smí obsahovat jenom znaky, které jsou platné v adresách URL.
 
 ## <a name="simple-entity"></a>Jednoduchá entita
 Jednoduchá entita rozpozná jeden koncept dat obsažený ve slovech nebo frázích.
@@ -299,7 +299,7 @@ Otevřete soubor [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Sample
 
     [![](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "Snímek obrazovky s automaticky otevíraným oknem pro vytvoření nového seznamu frází se slovy v polích s hodnotami seznamu frází")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 
-5. Aplikaci [natrénujte](#train-the-luis-app) a znovu [publikujte](#publish-the-app-to-get-the-endpoint-URL), aby tento seznam frází používala.
+5. Aplikaci [natrénujte](#train) a znovu [publikujte](#publish), aby tento seznam frází používala.
 
 6. Znovu zadejte dotaz na koncovém bodě pomocí stejné promluvy: `This is the lead welder paperwork.`
 
