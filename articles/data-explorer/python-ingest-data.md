@@ -8,18 +8,18 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: b35cbb65c32336b0021a2004f4237a9784db8ea7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 52be08006985ee2f2e1ea4427e0f63ebbeb6e8b2
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969083"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48900492"
 ---
 # <a name="quickstart-ingest-data-using-the-azure-data-explorer-python-library"></a>Rychlý start: Ingestování dat pomocí knihovny Python Průzkumníka dat Azure
 
 Průzkumník dat Azure je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Průzkumník dat Azure nabízí dvě klientské knihovny pro Python: [knihovnu ingestů](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest) a [knihovnu dat](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Tyto knihovny umožňují snadno ingestovat (načíst) data do clusteru a dotazovat se na data z vašeho kódu. V tomto rychlém startu nejdříve vytvoříte mapování tabulky a dat v testovacím clusteru. Pak vytvoříte frontu ingestace do clusteru a ověříte výsledky.
 
-Tento rychlý start je také k dispozici jako [Azure Notebook](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb).
+Tento rychlý start je dostupný také v podobě [poznámkového bloku Azure](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -51,13 +51,13 @@ import pandas as pd
 import datetime
 ```
 
-K ověření aplikace používá Průzkumník dat Azure ID vašeho tenanta AAD. Pokud chcete ID vašeho tenanta zjistit, použijte následující adresu URL, ve které *YourDomain* nahradíte svou doménou.
+K ověření aplikace používá Průzkumník dat Azure ID vašeho tenanta AAD. ID tenanta zjistíte pomocí následující adresy URL, ve které *YourDomain* nahradíte svou doménou.
 
 ```
 https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
 ```
 
-Pokud je třeba vaše doména *contoso.com*, adresa URL je: [https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/). Kliknutím na tuto adresu URL zobrazte výsledky. První řádek vypadá jako v následujícím příkladu. 
+Pokud je vaše doména například *contoso.com*, je adresa URL [https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/). Kliknutím na tuto adresu URL zobrazte výsledky. První řádek vypadá jako v následujícím příkladu. 
 
 ```
 "authorization_endpoint":"https://login.windows.net/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"
@@ -72,7 +72,7 @@ KUSTO_INGEST_URI = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/
 KUSTO_DATABASE  = "<DatabaseName>"
 ```
 
-Teď vytvořte připojovací řetězec. Tento příklad používá ověřování zařízení pro přístup ke clusteru. Můžete také použít certifikát aplikace AAD, klíč aplikace AAD a uživatele a heslo AAD.
+Teď vytvořte připojovací řetězec. V tomto příkladu se pro přístup ke clusteru používá ověřování pomocí zařízení. Můžete také použít certifikát aplikace AAD, klíč aplikace AAD a uživatele a heslo AAD.
 
 Cílovou tabulku a mapování vytvoříte v pozdějším kroku.
 
@@ -132,12 +132,15 @@ df_mapping_create_output
 Přidejte zprávu do fronty k získání dat z úložiště objektů blob a tato data ingestujte do Průzkumníka dat Azure.
 
 ```python
-KUSTO_INGEST_CLIENT = KustoIngestClient(KCSB_INGEST)
+INGESTION_CLIENT = KustoIngestClient(KCSB_INGEST)
 
+# All ingestion properties are documented here: https://docs.microsoft.com/en-us/azure/kusto/management/data-ingest#ingestion-properties
 INGESTION_PROPERTIES  = IngestionProperties(database=KUSTO_DATABASE, table=DESTINATION_TABLE, dataFormat=DataFormat.csv, mappingReference=DESTINATION_TABLE_COLUMN_MAPPING, additionalProperties={'ignoreFirstRecord': 'true'})
-KUSTO_INGEST_CLIENT.ingest_from_multiple_blobs([BlobDescriptor(BLOB_PATH,FILE_SIZE)],delete_sources_on_success=False,ingestion_properties=INGESTION_PROPERTIES)
+BLOB_DESCRIPTOR = BlobDescriptor(BLOB_PATH, FILE_SIZE)  # 10 is the raw size of the data in bytes
+INGESTION_CLIENT.ingest_from_blob(BLOB_DESCRIPTOR,ingestion_properties=INGESTION_PROPERTIES)
 
-print('Done queueing up ingestion with Kusto')
+print('Done queuing up ingestion with Azure Data Explorer')
+
 ```
 
 ## <a name="validate-that-data-was-ingested-into-the-table"></a>Ověření, že se data do tabulky ingestovala
