@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 01b288136036fc5ff719c179821801aeac95c5c5
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 7bfa1becd3eed5bcf3e2d0bec160a4b4e2f254a3
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830528"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091875"
 documentType: LandingData
 title: Dokumentace k sadě Speech SDK
 metadata:
@@ -26,15 +26,6 @@ metadata:
   ms.author: nitinme
 abstract:
   description: Přečtěte si, jak můžete pomocí služby Speech a sady Speech SDK přidat do vašich aplikací funkce s podporou řeči. Pomocí sady Speech SDK můžete do vašich aplikací přidat funkce <i>převod řeči na text</i> (rozpoznávání řeči), <i>záměr</i>, <i>překlad</i> a <i>převod textu na řeč</i>. Služba Speech nabízí také rozhraní REST API, které funguje s jakýmkoli programovacím jazykem, který dokáže provádět požadavky HTTP.
-  aside:
-    image:
-      alt: 
-      height: 110
-      src: ../media/index/speech-landing-page-video.png
-      width: 250
-    title: Přehled služby Speech (10:34)
-    href: https://azure.microsoft.com/resources/videos/connect-2017-microsoft-cognitive-services-overview-of-advanced-speech-capabilities/
-    width: 250
 sections:
 - items:
   - type: list

@@ -11,12 +11,12 @@ ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
 ms.author: carolz
-ms.openlocfilehash: 76afc558048f1890e5e2440fd002361172acbea2
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: c1dab114ddd010daa88222f380ad7a47f1dd1767
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433824"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49090701"
 ---
 <div class="content">
    <h1>Docker v Azure</h1>   
@@ -38,7 +38,7 @@ Docker je oblíbená platforma pro správu a vytváření imagí kontejnerů, kt
 </ol>
 <h2>Zdroje a prostředky</h2>
 <p>Další referenční materiály a nástroje pro práci s Dockerem v Azure můžete získat prostřednictvím následujících odkazů.</p>
-<a href="https://www.docker.com/docker-azure">Web Dockeru pro Azure</a><br/>
+<a href="https://docs.docker.com/docker-for-azure/why/">Web Dockeru pro Azure</a><br/>
 <a href="https://docs.docker.com/machine/drivers/azure/">Ovladač Dockeru pro Azure</a><br/>
 <a href="https://docker.com">Další informace o Dockeru</a><br/>
 </div>
