@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: chackdan
-ms.openlocfilehash: d1d17ff331d3e770b77ce729904e57cf88ebc16c
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 86099c5385c14ce7cf10bbc84ebe1b5e70b2b3e6
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348564"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49094203"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Co zvážit při plánování kapacity clusteru Service Fabric
 Pro každého produkčního nasazení plánování kapacity je důležitý krok. Tady jsou některé položky, které musíte zvážit jako součást tohoto procesu.
@@ -165,6 +165,7 @@ Pro produkční úlohy:
 - 14 GB místní SSD je minimální požadavek. Naše doporučení je minimálně 50 GB. Pro vaše úlohy, zejména při spouštění kontejnerů Windows se vyžaduje větších disků. 
 - Částečné core skladové položky virtuálních počítačů jako standardní instance A0 nejsou podporovány pro produkční úlohy.
 - Standardní A1 SKU není podporována pro produkční úlohy z důvodů výkonu.
+- Virtuální počítače s nízkou prioritou se nepodporují.
 
 > [!WARNING]
 > Změna primárního uzlu velikost skladovou Položku virtuálního počítače na spuštěný cluster, je operaci škálování a dokumentovány v článku [Škálovací sady virtuálních počítačů pro horizontální navýšení kapacity](virtual-machine-scale-set-scale-node-type-scale-out.md) dokumentaci.

@@ -14,26 +14,168 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: e3efb19010f36a6ef1fa0a191695a0e2c9f39d19
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 70e4e131cd83c6e80bc9b61a91cfd98adee0c952
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190517"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116942"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Zpráva k vydání verze Microsoft Azure Storage Explorer
 
-Tento článek obsahuje poznámky k verzi Azure Storage Explorer 1.4.1, stejně jako zpráva k vydání verze pro předchozí verze.
+Tento článek obsahuje poznámky k verzi Azure Storage Explorer 1.4.3, stejně jako zpráva k vydání verze pro předchozí verze.
 
 [Microsoft Azure Storage Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) je samostatná aplikace, která umožňuje jednoduchá práci s daty Azure Storage ve Windows, macOS a Linuxu.
 
+## <a name="version-143"></a>Verze 1.4.3
+10/11/2018
+
+### <a name="download-azure-storage-explorer-143"></a>Stáhněte si Průzkumníka služby Azure Storage 1.4.3
+- [Průzkumník služby Azure Storage 1.4.3 pro Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Průzkumník služby Azure Storage 1.4.3 pro Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Průzkumník služby Azure Storage 1.4.3 pro Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="hotfixes"></a>Opravy hotfix
+* Verze rozhraní Api Azure Resource Management byla vrácena zpět k odblokování uživatelů Azure US Government. [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
+* Načítání číselníky teď používají animace CSS a snížit množství GPU používané Průzkumníka služby Storage. [#653](https://github.com/Microsoft/AzureStorageExplorer/issues/653)
+
+### <a name="new"></a>Nová
+* Přílohy externího zdroje, například připojení SAS a emulátory, je výrazně Vylepšená. Nyní můžete:
+   * Přizpůsobení zobrazovaný název prostředku, který při připojování. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
+   * Připojení k několika místním emulátory pomocí jiné porty. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
+   * Přidání připojených zdrojů na rychlý přístup. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
+* Průzkumník služby Storage teď podporuje obnovitelné odstranění. Můžete:
+   * Umožňuje nakonfigurujte zásadu obnovitelného odstranění kliknutím pravým tlačítkem na uzel kontejnery objektů Blob v účtu úložiště.
+   * Zobrazení obnovitelné odstranění objektů BLOB v editoru objektů Blob tak, že vyberete "aktivní a odstranit objekty BLOB" v rozevírací nabídce vedle na navigačním panelu.
+   * Obnovit obnovitelně odstraněné objekty BLOB.
+
+### <a name="fixes"></a>Opravy
+* Akce "Konfigurovat nastavení CORS" již není k dispozici na účty Storage úrovně Premium, protože účty služby Premium Storage nepodporují CORS. [#142](https://github.com/Microsoft/AzureStorageExplorer/issues/142)
+* Je nyní vlastnost sdílený přístupový podpis SAS připojené služby. [#184](https://github.com/Microsoft/AzureStorageExplorer/issues/184)
+* Akce "Nastavit výchozí úroveň přístupu" je nyní k dispozici pro objekt Blob a úložiště GPV2 účty, které byla připnuta na rychlý přístup. [#229](https://github.com/Microsoft/AzureStorageExplorer/issues/229)
+* V některých případech Průzkumníka služby Storage selže účty klasického úložiště. [#323](https://github.com/Microsoft/AzureStorageExplorer/issues/323)
+
+### <a name="known-issues"></a>Známé problémy
+* Při použití emulátorů, jako je například emulátoru úložiště Azure nebo Azurite, je potřeba ho naslouchání pro připojení na jejich výchozích portů. Průzkumník služby Storage v opačném případě nebude schopen připojit se k nim.
+* Pokud používáte VS pro Mac a již někdy vytvářeli vlastní konfiguraci AAD, je možná nebudete moct přihlásit. Chcete-li tento problém obejít, odstraňte její obsah ~ /. IdentityService/AadConfigurations. Pokud to není překážku, zadejte komentář na [tento problém](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
+* Azurite nebyla ještě implementována plně všechna rozhraní API úložiště. Z toho důvodu může být neočekávané chyby nebo chování při použití Azurite k vývojovým úložištěm.
+* Ve výjimečných případech můžou uváznout stromu fokus na rychlý přístup. Chcete-li unstick fokus, můžete aktualizovat vše.
+* Nahrává se ze složky Onedrivu nefunguje z důvodu chyby v NodeJS. Chyb bylo opraveno, ale zatím nejsou integrované do elektronovým.
+* Při cílení na služby Azure Stack, odesílání určité soubory jako doplňovací objekty BLOB může selhat.
+* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Důvodem je, že používáme popsané řešení filtr Storno [tady](https://github.com/Azure/azure-storage-node/issues/317).
+* Pokud se rozhodnete nesprávný certifikát PIN kód nebo čipová karta, je potřeba restartovat, aby měla zapomenout rozhodnutí Průzkumníka služby Storage.
+* Přejmenování objektů BLOB (jednotlivě nebo uvnitř kontejneru objektů blob přejmenováno) se nezachová snímky. Všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity jsou zachovány při přejmenování.
+* I když Azure Stack v současné době nepodporuje sdílené složky, se zobrazí stále uzlu sdílených složek v účtu služby storage připojené služby Azure Stack.
+* Elektronovým prostředí používané Průzkumníka služby Storage má potíže s hardwarovou akceleraci některé GPU (grafický procesor). Pokud Průzkumník služby Storage se zobrazuje hlavní okno prázdné (prázdné), můžete zkusit spustíte Průzkumníka služby Storage z příkazového řádku a zakázání GPU akceleraci tak, že přidáte `--disable-gpu` přepínače:
+
+```
+./StorageExplorer.exe --disable-gpu
+```
+
+* Pro uživatele systému Linux, budete muset nainstalovat [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* Pro uživatele v Ubuntu 14.04, budete muset ověřte, že je aktuální GCC – to můžete udělat spuštěním následujících příkazů a následného restartování počítače:
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Pro uživatele v Ubuntu č. 17.04 budete muset nainstalovat GConf – to můžete udělat spuštěním následujících příkazů a následného restartování počítače:
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+## <a name="previous-releases"></a>Předchozí verze
+
+* [Verze 1.4.2](#version-142)
+* [Verze 1.4.1](#version-141)
+* [Verze 1.3.0](#version-130)
+* [Verzi 1.2.0](#version-120)
+* [Verze 1.1.0](#version-110)
+* [Verze 1.0.0](#version-100)
+* [Verze 0.9.6](#version-096)
+* [Verze 0.9.5](#version-095)
+* [Verze 0.9.4 a 0.9.3](#version-094-and-093)
+* [Verze 0.9.2](#version-092)
+* [Verze 0.9.1 a 0.9.0](#version-091-and-090)
+* [Verze 0.8.16](#version-0816)
+* [Verze 0.8.14](#version-0814)
+* [Verze 0.8.13](#version-0813)
+* [Verze 0.8.12 a 0.8.11 a 0.8.10](#version-0812-and-0811-and-0810)
+* [Verze 0.8.9 a 0.8.8](#version-089-and-088)
+* [Verze 0.8.7](#version-087)
+* [Verze 0.8.6](#version-086)
+* [Verze 0.8.5](#version-085)
+* [Verze 0.8.4](#version-084)
+* [Verze 0.8.3](#version-083)
+* [Verze 0.8.2](#version-082)
+* [Verze 0.8.0](#version-080)
+* [Verze 0.7.20160509.0](#version-07201605090)
+* [Verze 0.7.20160325.0](#version-07201603250)
+* [Verze 0.7.20160129.1](#version-07201601291)
+* [Verze 0.7.20160105.0](#version-07201601050)
+* [Verze 0.7.20151116.0](#version-07201511160)
+
+## <a name="version-142"></a>Verze 1.4.2
+09/24/2018
+
+### <a name="hotfixes"></a>Opravy hotfix
+* Aktualizujte verzi rozhraní Api správy prostředků Azure na 2018-07-01 a přidat podporu pro nové typy účtu úložiště Azure. [#652](https://github.com/Microsoft/AzureStorageExplorer/issues/652)
+
+### <a name="new"></a>Nová
+* Přílohy externího zdroje, například připojení SAS a emulátory, je výrazně Vylepšená. Nyní můžete:
+   * Přizpůsobení zobrazovaný název prostředku, který při připojování. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
+   * Připojení k několika místním emulátory pomocí jiné porty. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
+   * Přidání připojených zdrojů na rychlý přístup. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
+* Průzkumník služby Storage teď podporuje obnovitelné odstranění. Můžete:
+   * Umožňuje nakonfigurujte zásadu obnovitelného odstranění kliknutím pravým tlačítkem na uzel kontejnery objektů Blob v účtu úložiště.
+   * Zobrazení obnovitelné odstranění objektů BLOB v editoru objektů Blob tak, že vyberete "aktivní a odstranit objekty BLOB" v rozevírací nabídce vedle na navigačním panelu.
+   * Obnovit obnovitelně odstraněné objekty BLOB.
+
+### <a name="fixes"></a>Opravy
+* Akce "Konfigurovat nastavení CORS" již není k dispozici na účty Storage úrovně Premium, protože účty služby Premium Storage nepodporují CORS. [#142](https://github.com/Microsoft/AzureStorageExplorer/issues/142)
+* Je nyní vlastnost sdílený přístupový podpis SAS připojené služby. [#184](https://github.com/Microsoft/AzureStorageExplorer/issues/184)
+* Akce "Nastavit výchozí úroveň přístupu" je nyní k dispozici pro objekt Blob a úložiště GPV2 účty, které byla připnuta na rychlý přístup. [#229](https://github.com/Microsoft/AzureStorageExplorer/issues/229)
+* V některých případech Průzkumníka služby Storage selže účty klasického úložiště. [#323](https://github.com/Microsoft/AzureStorageExplorer/issues/323)
+
+### <a name="known-issues"></a>Známé problémy
+* Při použití emulátorů, jako je například emulátoru úložiště Azure nebo Azurite, je potřeba ho naslouchání pro připojení na jejich výchozích portů. Průzkumník služby Storage v opačném případě nebude schopen připojit se k nim.
+* Pokud používáte VS pro Mac a již někdy vytvářeli vlastní konfiguraci AAD, je možná nebudete moct přihlásit. Chcete-li tento problém obejít, odstraňte její obsah ~ /. IdentityService/AadConfigurations. Pokud to není překážku, zadejte komentář na [tento problém](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
+* Azurite nebyla ještě implementována plně všechna rozhraní API úložiště. Z toho důvodu může být neočekávané chyby nebo chování při použití Azurite k vývojovým úložištěm.
+* Ve výjimečných případech můžou uváznout stromu fokus na rychlý přístup. Chcete-li unstick fokus, můžete aktualizovat vše.
+* Nahrává se ze složky Onedrivu nefunguje z důvodu chyby v NodeJS. Chyb bylo opraveno, ale zatím nejsou integrované do elektronovým.
+* Při cílení na služby Azure Stack, odesílání určité soubory jako doplňovací objekty BLOB může selhat.
+* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Důvodem je, že používáme popsané řešení filtr Storno [tady](https://github.com/Azure/azure-storage-node/issues/317).
+* Pokud se rozhodnete nesprávný certifikát PIN kód nebo čipová karta, je potřeba restartovat, aby měla zapomenout rozhodnutí Průzkumníka služby Storage.
+* Přejmenování objektů BLOB (jednotlivě nebo uvnitř kontejneru objektů blob přejmenováno) se nezachová snímky. Všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity jsou zachovány při přejmenování.
+* I když Azure Stack v současné době nepodporuje sdílené složky, se zobrazí stále uzlu sdílených složek v účtu služby storage připojené služby Azure Stack.
+* Elektronovým prostředí používané Průzkumníka služby Storage má potíže s hardwarovou akceleraci některé GPU (grafický procesor). Pokud Průzkumník služby Storage se zobrazuje hlavní okno prázdné (prázdné), můžete zkusit spustíte Průzkumníka služby Storage z příkazového řádku a zakázání GPU akceleraci tak, že přidáte `--disable-gpu` přepínače:
+
+```
+./StorageExplorer.exe --disable-gpu
+```
+
+* Pro uživatele systému Linux, budete muset nainstalovat [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* Pro uživatele v Ubuntu 14.04, budete muset ověřte, že je aktuální GCC – to můžete udělat spuštěním následujících příkazů a následného restartování počítače:
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Pro uživatele v Ubuntu č. 17.04 budete muset nainstalovat GConf – to můžete udělat spuštěním následujících příkazů a následného restartování počítače:
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
 ## <a name="version-141"></a>Verze 1.4.1
 08/28/2018
-
-### <a name="download-azure-storage-explorer-141"></a>Stáhněte si Průzkumníka služby Azure Storage 1.4.1
-- [Průzkumník služby Azure Storage 1.4.1 pro Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Průzkumník služby Azure Storage 1.4.1 pro Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Průzkumník služby Azure Storage 1.4.1 pro Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="hotfixes"></a>Opravy hotfix
 * Při prvním spuštění se nepodařilo vygenerovat klíč používaný k šifrování citlivých dat Průzkumníka služby Storage. To způsobí problémy při použití rychlého přístupu a připojení prostředků. [#535](https://github.com/Microsoft/AzureStorageExplorer/issues/535)
@@ -91,35 +233,6 @@ Tento článek obsahuje poznámky k verzi Azure Storage Explorer 1.4.1, stejně 
     ```
     sudo apt-get install libgconf-2-4
     ```
-
-## <a name="previous-releases"></a>Předchozí verze
-
-* [Verze 1.3.0](#version-130)
-* [Verzi 1.2.0](#version-120)
-* [Verze 1.1.0](#version-110)
-* [Verze 1.0.0](#version-100)
-* [Verze 0.9.6](#version-096)
-* [Verze 0.9.5](#version-095)
-* [Verze 0.9.4 a 0.9.3](#version-094-and-093)
-* [Verze 0.9.2](#version-092)
-* [Verze 0.9.1 a 0.9.0](#version-091-and-090)
-* [Verze 0.8.16](#version-0816)
-* [Verze 0.8.14](#version-0814)
-* [Verze 0.8.13](#version-0813)
-* [Verze 0.8.12 a 0.8.11 a 0.8.10](#version-0812-and-0811-and-0810)
-* [Verze 0.8.9 a 0.8.8](#version-089-and-088)
-* [Verze 0.8.7](#version-087)
-* [Verze 0.8.6](#version-086)
-* [Verze 0.8.5](#version-085)
-* [Verze 0.8.4](#version-084)
-* [Verze 0.8.3](#version-083)
-* [Verze 0.8.2](#version-082)
-* [Verze 0.8.0](#version-080)
-* [Verze 0.7.20160509.0](#version-07201605090)
-* [Verze 0.7.20160325.0](#version-07201603250)
-* [Verze 0.7.20160129.1](#version-07201601291)
-* [Verze 0.7.20160105.0](#version-07201601050)
-* [Verze 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-130"></a>Verze 1.3.0
 07/09/2018

@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 09/27/2018
-ms.openlocfilehash: 696932135cdd3850e04d25370867c0273b99b3bf
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.date: 10/10/2018
+ms.openlocfilehash: aab867e5c58ba9de17b3c68c8e507fca5354eb90
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423540"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093437"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL cenové úrovně
 
@@ -46,8 +46,8 @@ Výpočetní prostředky jsou k dispozici jako virtuální jádra, která předs
 
 | **Oblasti Azure** | **4. generace** | **Generace 5** |
 |:---|:----------:|:--------------------:|
-| USA – střed | X | X |
-| USA – východ | X | X |
+| USA – střed |  | X |
+| USA – východ |  | X |
 | Východní USA 2 | X | X |
 | Střed USA – sever | X | X |
 | Střed USA – jih | X | X |
@@ -97,7 +97,7 @@ Můžete monitorovat spotřebu vstupně-výstupních operací na webu Azure Port
 
 ### <a name="reaching-the-storage-limit"></a>Dosažení limitu úložiště
 
-Server je označen jen pro čtení, když velikost volného místa nedosáhne menší než 5 GB nebo 5 % zřízeného úložiště, podle toho, co je menší. Například, pokud jste zřídili 100 GB úložiště a skutečné využití prochází přes 95 GB, na serveru je označen jen pro čtení. Případně pokud jste zřídili 5 GB úložiště, server je označen jen pro čtení dosáhne volný úložný prostor na méně než 250 MB.  
+Server se označí jako jen pro čtení, když velikost volného úložiště klesne pod 5 GB nebo 5 % zřízeného úložiště, podle toho, která hodnota je nižší. Například, pokud jste zřídili 100 GB úložiště a skutečné využití prochází přes 95 GB, na serveru je označen jen pro čtení. Případně pokud jste zřídili 5 GB úložiště, server se označí jako jen pro čtení, když velikost volného úložiště klesne pod 250 MB.  
 
 Když serveru je nastavena na jen pro čtení, jsou odpojené všechny existující relace a nepotvrzené transakce jsou vrácena zpět. Všechny operace zápisu následné a transakce potvrzení nezdaří. Všechny následné čtení dotazy budou fungovat bez přerušení.  
 

@@ -5,21 +5,23 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/11/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: dcfcfb24d2b47a8272c576856fc3accc547f354a
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 837601a55bbe97e904f3dece9f4c87563d6dd4e9
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42060754"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092673"
 ---
 # <a name="create-a-model-in-azure-portal"></a>Vytvoření modelu na webu Azure portal
 
 Funkce návrháře (preview) webové služby Azure Analysis Services na webu Azure portal poskytuje rychlý a snadný způsob, jak vytvořit a upravit tabulkové modely a dotazovat data modelu přímo v prohlížeči. 
 
-Mějte na paměti, je webový Návrhář **ve verzi preview**. Funkce je omezena. Pro pokročilejší model vývoje a testování je nejvhodnější použít Visual Studio (SSDT) a SQL Server Management Studio (SSMS).
+> [!IMPORTANT]
+> Tato funkce je zastaralá. Může být odebrán nebo významně změnil v budoucí aktualizaci. Doporučuje se, že přestat udržovat kompatibilitu s budoucími aktualizacemi použití této funkce v nové i stávající projekty. Pro pokročilejší model vývoje a testování je nejvhodnější použít Visual Studio (SSDT) a SQL Server Management Studio (SSMS).
+
 
 ## <a name="before-you-begin"></a>Než začnete
 

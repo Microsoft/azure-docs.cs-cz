@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/02/2018
 ms.author: manayar
-ms.openlocfilehash: 2e8df15da0572e037dedb9e0dd27a0728953ba4a
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: c3fc8edf1601b3bb6f670df64d444edc9dcfbd6d
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079425"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114872"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrace Azure ExpressRoute se zotavení po havárii pro virtuální počítače Azure
 
@@ -166,7 +166,7 @@ Tato konfigurace pomáhá chránit proti selhání primární okruh ExpressRoute
 
 V této konfiguraci je jenom jeden okruh Expressroute. I když je okruh má redundantní připojení v případě, že jeden ocitne mimo provoz, jednu trasu okruhu neposkytne odolnost, pokud partnerského vztahu oblast přestane fungovat. Poznámky:
 
-- Virtuální počítače Azure, které se dají replikovat do jakékoliv oblasti Azure v [stejné zeměpisné polohy](azure-to-azure-support-matrix.md#region-support). Není-li cílovou oblastí Azure ve stejném umístění jako zdroj, je potřeba povolit ExpressRoute Premium, pokud používáte jeden okruh ExpressRoute. Další informace o [umístění ExpressRoute](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region) a [ceny za ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute/).
+- Můžete replikovat virtuální počítače Azure do jakékoliv oblasti Azure v [stejné zeměpisné polohy](azure-to-azure-support-matrix.md#region-support). Není-li cílovou oblastí Azure ve stejném umístění jako zdroj, je potřeba povolit ExpressRoute Premium, pokud používáte jeden okruh ExpressRoute. Další informace o [umístění ExpressRoute](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region) a [ceny za ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute/).
 - Nemůžete se připojit zdrojové a cílové virtuální sítě současně k okruhu Pokud se používá stejné adresní prostor IP adres v cílové oblasti. V tomto scénáři:    
     -  Odpojit připojení na straně zdroje a potom musí vytvořit připojení na straně cíl. Tato změna připojení možnost využívat skripty jako součást plánu obnovení Site Recovery. Poznámky:
         - Selhání v oblasti pokud je primární oblast nedostupná operace odpojení, může selhat. Může to mít dopad vytvoření připojení k cílové oblasti.

@@ -7,12 +7,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: nolach
-ms.openlocfilehash: 843ff39f49141ff78219771a6d4af2e9e6e7644b
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 21b37d2b61af81e6481de4c5e7537a3382d895b6
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017478"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49113916"
 ---
 # <a name="creating-custom-voice-fonts"></a>Vytvoření vlastního hlasového písma
 
@@ -22,12 +22,9 @@ K vytvoření hlasového písma, provedete studio nahrávání a nahrát přidru
 
 Můžete začít s menším objemem dat pro testování konceptu. Ale čím více dat zadáte, čím více přirozený a professional zvuky svůj hlas.
 
-
 ## <a name="prerequisites"></a>Požadavky
 
-**Převod textu na řeč** hlasová přizpůsobení funkce je aktuálně ve verzi private preview. [Vyplňte formulář přihlášky](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0N8Vcdi8MZBllkZb70o6KdURjRaUzhBVkhUNklCUEMxU0tQMEFPMjVHVi4u) považovat pro přístup.
-
-Potřebujete účet Azure a předplatné služby řeči. [Vytvořte si ho](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started) Pokud jste tak již neučinili. Vaše předplatné připojení k portálu vlastní hlasové následujícím způsobem:
+Potřebujete účet Azure a předplatné služby řeči. [Vytvořte si ho](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started) Pokud jste tak již neučinili. Připojení k portálu vlastní hlasové vašeho předplatného, jak je znázorněno zde.
 
 1. Přihlaste se k [vlastní hlasové portál](https://customvoice.ai) pomocí stejného účtu Microsoft, který jste použili k použití pro přístup.
 
@@ -37,7 +34,6 @@ Potřebujete účet Azure a předplatné služby řeči. [Vytvořte si ho](https
 
 3. Na stránce předplatných vyberte **připojit stávající předplatné**. Všimněte si, že hlasové služby podporuje různých oblastech. Zkontrolujte oblast, kde klíč předplatného. byla vytvořena a ujistěte se, že připojení k portálu správné dílčí klíč.  
 
-     
 4. Vložte váš klíč předplatného do tabulky, jak je znázorněno v následujícím příkladu. Každé předplatné má dva klíče, a můžete použít kteroukoli z nich.
 
      ![Přidat předplatné](media/custom-voice/add-subscription.png)

@@ -1,6 +1,6 @@
 ---
 title: Vytvoření virtuálního počítače s Windows ze specializovaného virtuálního pevného disku v Azure | Dokumentace Microsoftu
-description: Vytvořte nový virtuální počítač Windows připojením specializované spravovaného disku jako disku s operačním systémem pomocí v modelu nasazení Resource Manageru.
+description: Vytvořte nový virtuální počítač Windows připojením specializované spravovaného disku jako disku s operačním systémem pomocí modelu nasazení Resource Manager.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -13,37 +13,37 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2018
+ms.date: 10/10/2018
 ms.author: cynthn
-ms.openlocfilehash: 34bfe7733c60337d6ab7d81c498d2fb0fd15e1fd
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: e90c5953456e585c9fb804fef1384b9e5b9ee912
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338482"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49115802"
 ---
-# <a name="create-a-windows-vm-from-a-specialized-disk-using-powershell"></a>Vytvoření virtuálního počítače s Windows ze specializovaného disku s využitím Powershellu
+# <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Vytvoření virtuálního počítače s Windows ze specializovaného disku pomocí prostředí PowerShell
 
-Vytvoření nového virtuálního počítače připojením specializované spravovaného disku jako disku s operačním systémem. Specializovaného disku je kopie virtuálního pevného disku (VHD) ze stávajícího virtuálního počítače, který uchovává uživatelské účty, aplikace a další data o stavu z původního virtuálního počítače. 
+Vytvoření nového virtuálního počítače připojením specializované spravovaného disku jako disku s operačním systémem. Specializovaného disku je kopie virtuálního pevného disku (VHD) ze stávajícího virtuálního počítače, který obsahuje uživatelské účty, aplikace a další data o stavu z původního virtuálního počítače. 
 
-Při vytvoření nového virtuálního počítače pomocí specializovaného virtuálního pevného disku, nový virtuální počítač zachová název počítače z původního virtuálního počítače. Další informace specifické pro počítač je také zachována, a v některých případech se tyto duplicitní informace může způsobit problémy. Mějte na jaké typy informací specifických pro počítač aplikací využívají při kopírování virtuálního počítače.
+Při vytvoření nového virtuálního počítače pomocí specializovaného virtuálního pevného disku, nový virtuální počítač zachová název počítače z původního virtuálního počítače. Další informace specifické pro počítač se také ukládají a v některých případech se tyto duplicitní informace může způsobit problémy. Při kopírování virtuálního počítače, třeba vědět, jaké typy informací specifických pro počítač využívají vaše aplikace.
 
 Máte několik možností:
-* [Použití existujícího spravovaného disku](#option-1-use-an-existing-disk). To je užitečné, pokud máte virtuální počítač, který nepracuje správně. Můžete odstranit virtuální počítač opakované použití spravovaného disku k vytvoření nového virtuálního počítače. 
+* [Použití existujícího spravovaného disku](#option-1-use-an-existing-disk). Tato možnost je užitečná, pokud máte virtuální počítač, který nepracuje správně. Můžete odstranit virtuální počítač a pak znovu použít spravovaného disku k vytvoření nového virtuálního počítače. 
 * [Nahrání virtuálního pevného disku](#option-2-upload-a-specialized-vhd) 
-* [Kopie existujícího virtuálního počítače Azure pomocí funkce vytváření snímků](#option-3-copy-an-existing-azure-vm)
+* [Kopírování existujících virtuálních počítačů Azure pomocí snímků](#option-3-copy-an-existing-azure-vm)
 
 Můžete použít také na webu Azure portal [vytvoření nového virtuálního počítače z specializovaného VHD](create-vm-specialized-portal.md).
 
-V tomto tématu se dozvíte, jak používat spravované disky. Pokud máte starší verzi nasazení, která vyžaduje použití účtu úložiště, najdete v článku [vytvoření virtuálního počítače ze specializovaného VHD v účtu úložiště](sa-create-vm-specialized.md)
+V tomto článku se dozvíte, jak používat spravované disky. Pokud máte starší verzi nasazení, která vyžaduje použití účtu úložiště, najdete v článku [vytvoření virtuálního počítače ze specializovaného VHD v účtu úložiště](sa-create-vm-specialized.md).
 
 ## <a name="before-you-begin"></a>Než začnete
-Pokud používáte PowerShell, ujistěte se, že máte nejnovější verzi modul AzureRM.Compute Powershellu. 
+Jak pomocí prostředí PowerShell, ujistěte se, že máte nejnovější verzi modul AzureRM.Compute Powershellu. 
 
 ```powershell
 Install-Module AzureRM -RequiredVersion 6.0.0
 ```
-Další informace najdete v tématu [Správa verzí Azure Powershellu](/powershell/azure/overview).
+Další informace najdete v tématu [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
 
 ## <a name="option-1-use-an-existing-disk"></a>Možnost 1: Použití existujícího disku
 
@@ -63,17 +63,17 @@ Teď můžete připojit tento disk jako disk s operačním systémem k [nový vi
 Můžete nahrát virtuální pevný disk ze specializovaného virtuálního počítače vytvoří místní virtualizace nástroj, jako je Hyper-V nebo virtuální počítač exportovat z jiného cloudu.
 
 ### <a name="prepare-the-vm"></a>Příprava virtuálního počítače
-Pokud máte v úmyslu použít virtuální pevný disk jako – k vytvoření nového virtuálního počítače, ověřte následující kroky. 
+Použít virtuální pevný disk jako-je vytvoření nového virtuálního počítače. 
   
   * [Příprava virtuálního pevného disku Windows k nahrání do Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). **Ne** generalizace virtuálního počítače pomocí nástroje Sysprep.
-  * Odeberte všechny hostované virtualizačních nástrojů a agenty, kteří jsou nainstalováni na virtuálním počítači (např. nástroje VMware).
-  * Zajistěte, aby že virtuální počítač je nakonfigurovaný na vyžádání jeho IP adresu a nastavení DNS prostřednictvím protokolu DHCP. Tím se zajistí, že server při spuštění získá IP adresu v rámci virtuální sítě. 
+  * Odeberte všechny hostované virtualizačních nástrojů a agenty, kteří jsou nainstalováni na virtuálním počítači (například nástroje VMware).
+  * Ujistěte se, že virtuální počítač je nakonfigurovaný tak, nastavení DNS IP adresy a ze serveru DHCP. Tím se zajistí, že server při spuštění získá IP adresu v rámci virtuální sítě. 
 
 
 ### <a name="get-the-storage-account"></a>Získat účet úložiště.
 Budete potřebovat účet úložiště v Azure k ukládání nahraný virtuální pevný disk. Můžete použít existující účet úložiště nebo vytvořte novou. 
 
-Pokud chcete zobrazit účty úložiště k dispozici, zadejte:
+Zobrazit účty úložiště k dispozici.
 
 ```powershell
 Get-AzureRmStorageAccount
@@ -81,15 +81,15 @@ Get-AzureRmStorageAccount
 
 Pokud chcete použít existující účet úložiště, pokračujte [nahrát virtuální pevný disk](#upload-the-vhd-to-your-storage-account) oddílu.
 
-Pokud potřebujete vytvořit účet úložiště, postupujte podle těchto kroků:
+Vytvoření účtu úložiště
 
-1. Budete potřebovat název skupiny prostředků, ve kterém by měl vytvořit účet úložiště. Pokud chcete zjistit všechny skupiny prostředků, které jsou ve vašem předplatném, zadejte:
+1. Budete potřebovat název skupiny prostředků, ve kterém se vytvoří účet úložiště. Použijte Get-AzureRmResourceGroup zobrazit všechny skupiny prostředků, které jsou v rámci vašeho předplatného.
    
     ```powershell
     Get-AzureRmResourceGroup
     ```
 
-    Chcete-li vytvořit skupinu prostředků s názvem *myResourceGroup* v *USA – západ* oblast, typ:
+    Vytvořte skupinu prostředků s názvem *myResourceGroup* v *USA – západ* oblasti.
 
     ```powershell
     New-AzureRmResourceGroup `
@@ -97,7 +97,7 @@ Pokud potřebujete vytvořit účet úložiště, postupujte podle těchto krok�
        -Location "West US"
     ```
 
-2. Vytvoření účtu úložiště s názvem *mystorageaccount* v této skupině prostředků s použitím [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) rutiny:
+2. Vytvoření účtu úložiště s názvem *mystorageaccount* v nové skupině prostředků s použitím [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) rutiny.
    
     ```powershell
     New-AzureRmStorageAccount `
@@ -109,7 +109,7 @@ Pokud potřebujete vytvořit účet úložiště, postupujte podle těchto krok�
     ```
 
 ### <a name="upload-the-vhd-to-your-storage-account"></a>Nahrání virtuálního pevného disku do účtu úložiště 
-Použití [Add-AzureRmVhd](/powershell/module/azurerm.compute/add-azurermvhd) rutiny k nahrání virtuálního pevného disku do kontejneru v účtu úložiště. Tento příklad nahraje soubor *myVHD.vhd* z `"C:\Users\Public\Documents\Virtual hard disks\"` na účet úložiště s názvem *mystorageaccount* v *myResourceGroup* skupinu prostředků. Soubor je uložen v kontejneru s názvem *mycontainer* a nový název souboru bude *myUploadedVHD.vhd*.
+Použití [Add-AzureRmVhd](/powershell/module/azurerm.compute/add-azurermvhd) rutiny k nahrání virtuálního pevného disku do kontejneru v účtu úložiště. Tento příklad nahraje soubor *myVHD.vhd* z "C:\Users\Public\Documents\Virtual pevné disky\" na účet úložiště s názvem *mystorageaccount* v  *myResourceGroup* skupinu prostředků. Soubor je uložen v kontejneru s názvem *mycontainer* a nový název souboru bude *myUploadedVHD.vhd*.
 
 ```powershell
 $resourceGroupName = "myResourceGroup"
@@ -120,7 +120,7 @@ Add-AzureRmVhd -ResourceGroupName $resourceGroupName `
 ```
 
 
-V případě úspěchu se získat odpověď bude vypadat nějak takto:
+Příkazy jsou úspěšné, získáte odpověď bude vypadat nějak takto:
 
 ```powershell
 MD5 hash is being calculated for the file C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd.
@@ -134,11 +134,11 @@ LocalFilePath           DestinationUri
 C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd
 ```
 
-V závislosti na připojení k síti a velikost souboru virtuálního pevného disku tohoto příkazu může trvat dobu
+V závislosti na připojení k síti a velikost souboru virtuálního pevného disku tohoto příkazu může chvíli trvat.
 
 ### <a name="create-a-managed-disk-from-the-vhd"></a>Vytvoření spravovaného disku z virtuálního pevného disku
 
-Vytvoření spravovaného disku ze specializovaného VHD v účtu úložiště pomocí [New-AzureRMDisk](/powershell/module/azurerm.compute/new-azurermdisk). Tento příklad používá **myOSDisk1** pro název disku umístí disku *Standard_LRS* úložiště a použije *https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd* jako identifikátor URI pro zdrojový virtuální pevný disk.
+Vytvoření spravovaného disku ze specializovaného VHD v účtu úložiště pomocí [New-AzureRMDisk](/powershell/module/azurerm.compute/new-azurermdisk). Tento příklad používá *myOSDisk1* pro název disku umístí disku *Standard_LRS* úložiště a použije *https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd* jako identifikátor URI pro zdrojový virtuální pevný disk.
 
 Vytvořte novou skupinu prostředků pro nový virtuální počítač.
 
@@ -162,14 +162,14 @@ $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk `
 
 ## <a name="option-3-copy-an-existing-azure-vm"></a>Možnost 3: Zkopírování existujícího virtuálního počítače Azure
 
-Můžete vytvořit kopii tohoto virtuálního počítače, že používá spravované disky podle pořízení snímku virtuálního počítače a pak pomocí tohoto snímku pro vytvoření nového spravovaného disku a nového virtuálního počítače.
+Můžete vytvořit kopii tohoto virtuálního počítače, který používá spravované disky pořízení snímku virtuálního počítače a pomocí tohoto snímku pro vytvoření nového spravovaného disku a nového virtuálního počítače.
 
 
 ### <a name="take-a-snapshot-of-the-os-disk"></a>Pořízení snímku disku s operačním systémem
 
-Udělat snímek z a celý virtuální počítač (včetně všech disků) nebo pouze jedním diskem. Následující kroky ukazují, jak k vytvoření snímku jenom disk s operačním systémem virtuálního počítače pomocí [New-AzureRmSnapshot](/powershell/module/azurerm.compute/new-azurermsnapshot) rutiny. 
+Udělat snímek celého virtuálního počítače (včetně všech disků) nebo pouze jedním diskem. Následující kroky ukazují, jak k vytvoření snímku jenom disk s operačním systémem virtuálního počítače pomocí [New-AzureRmSnapshot](/powershell/module/azurerm.compute/new-azurermsnapshot) rutiny. 
 
-Nastavení některých parametrů. 
+Nejprve nastavte některé parametry. 
 
  ```powershell
 $resourceGroupName = 'myResourceGroup' 
@@ -211,7 +211,7 @@ $snapShot = New-AzureRmSnapshot `
 ```
 
 
-Pokud máte v plánu pomocí tohoto snímku rychle vytvořit virtuální počítač, který má být vysoké provádění, použijte parametr `-AccountType Premium_LRS` pomocí příkazu New-AzureRmSnapshot. Parametr vytvoří snímek tak, aby se ukládá jako spravovaný Disk úrovně Premium. Jsou dražší než Standard Managed Disks úrovně Premium. Proto ujistěte se, že opravdu potřebujete Premium před použitím parametru.
+Pokud chcete použít tento snímek vytvořit virtuální počítač, který má být vysoce výkonné, přidejte parametr `-AccountType Premium_LRS` příkazu New-AzureRmSnapshot. Tento parametr vytvoří snímek tak, aby se ukládá jako spravovaný Disk úrovně Premium. Jsou dražší než Standard Managed Disks úrovně Premium, proto buďte opravdu že Premium budete potřebovat před použitím tohoto parametru.
 
 ### <a name="create-a-new-disk-from-the-snapshot"></a>Vytvoření nového disku ze snímku
 
@@ -245,35 +245,35 @@ $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk `
 
 Vytvoření sítě a další prostředky virtuálních počítačů pro nový virtuální počítač.
 
-### <a name="create-the-subnet-and-vnet"></a>Vytvoření podsítě a virtuální sítě
+### <a name="create-the-subnet-and-virtual-network"></a>Vytvoření podsítě a virtuální sítě
 
-Vytvořit virtuální síť a podsíť [virtuální sítě](../../virtual-network/virtual-networks-overview.md).
+Vytvořte [virtuální sítě](../../virtual-network/virtual-networks-overview.md) a podsíť pro virtuální počítač.
 
-Vytvořte podsíť. Tento příklad vytvoří podsíť s názvem **mySubNet**, ve skupině prostředků **myDestinationResourceGroup**a nastaví předponu adresy podsítě na **10.0.0.0/24**.
+1. Vytvořte podsíť. Tento příklad vytvoří podsíť s názvem *mySubNet*, ve skupině prostředků *myDestinationResourceGroup*a nastaví předponu adresy podsítě na *10.0.0.0/24*.
    
-```powershell
-$subnetName = 'mySubNet'
-$singleSubnet = New-AzureRmVirtualNetworkSubnetConfig `
-   -Name $subnetName `
-   -AddressPrefix 10.0.0.0/24
-```
-
-Vytvořte virtuální síť. V tomto příkladu nastaví název virtuální sítě bude **myVnetName**, umístění pro **USA – západ**a předpony adresy pro virtuální síť k **10.0.0.0/16**. 
+    ```powershell
+    $subnetName = 'mySubNet'
+    $singleSubnet = New-AzureRmVirtualNetworkSubnetConfig `
+       -Name $subnetName `
+       -AddressPrefix 10.0.0.0/24
+    ```
+    
+2. Vytvořte virtuální síť. V tomto příkladu nastaví na název virtuální sítě *myVnetName*, umístění pro *USA – západ*a předpony adresy pro virtuální síť k *10.0.0.0/16*. 
    
-```powershell
-$vnetName = "myVnetName"
-$vnet = New-AzureRmVirtualNetwork `
-   -Name $vnetName -ResourceGroupName $destinationResourceGroup `
-   -Location $location `
-   -AddressPrefix 10.0.0.0/16 `
-   -Subnet $singleSubnet
-```    
-
+    ```powershell
+    $vnetName = "myVnetName"
+    $vnet = New-AzureRmVirtualNetwork `
+       -Name $vnetName -ResourceGroupName $destinationResourceGroup `
+       -Location $location `
+       -AddressPrefix 10.0.0.0/16 `
+       -Subnet $singleSubnet
+    ```    
+    
 
 ### <a name="create-the-network-security-group-and-an-rdp-rule"></a>Vytvořte skupinu zabezpečení sítě a pravidlo protokolu RDP
-Abyste mohli pro přihlášení k virtuálnímu počítači pomocí protokolu RDP, budete muset mít pravidlo zabezpečení, které povoluje přístup protokolu RDP na portu 3389. Vzhledem k tomu, že virtuální pevný disk pro nový virtuální počítač byl vytvořen z existujícího specializovaného virtuálního počítače, můžete použít účet ze zdrojového virtuálního počítače pro protokol RDP.
+Aby bylo možné se přihlásit k virtuálnímu počítači pomocí protokolu vzdálené plochy (RDP), musíte mít pravidlo zabezpečení, které povoluje přístup protokolu RDP na portu 3389. V našem příkladu byl vytvořen virtuální pevný disk pro nový virtuální počítač z existujícího specializovaného virtuálního počítače, proto můžete použít účet, který existoval na zdrojovém virtuálním počítači pro protokol RDP.
 
-V tomto příkladu nastaví název skupiny NSG na **myNsg** a názvu pravidlo protokolu RDP **myRdpRule**.
+V tomto příkladu nastaví název skupinu zabezpečení sítě na *myNsg* a názvu pravidlo protokolu RDP *myRdpRule*.
 
 ```powershell
 $nsgName = "myNsg"
@@ -289,32 +289,32 @@ $nsg = New-AzureRmNetworkSecurityGroup `
     
 ```
 
-Další informace o koncových bodů a pravidel NSG najdete v tématu [otevření portů k virtuálnímu počítači v Azure pomocí Powershellu](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Další informace o koncových bodů a pravidel NSG najdete v tématu [otevření portů k virtuálnímu počítači v Azure pomocí prostředí PowerShell](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ### <a name="create-a-public-ip-address-and-nic"></a>Vytvoření veřejné IP adresy a síťové karty
-Pokud chcete povolit komunikaci s virtuálním počítačem ve virtuální síti, budete potřebovat [veřejnou adresu IP](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) a síťové rozhraní.
+Pokud chcete povolit komunikaci s virtuálním počítačem ve virtuální síti, budete potřebovat [veřejnou IP adresu](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) a síťové rozhraní.
 
-Vytvoření veřejné IP adresy. V tomto příkladu je název veřejné IP adresy nastavena **myIP**.
+1. Vytvoření veřejné IP adresy. V tomto příkladu je název veřejné IP adresy nastavena *myIP*.
    
-```powershell
-$ipName = "myIP"
-$pip = New-AzureRmPublicIpAddress `
-   -Name $ipName -ResourceGroupName $destinationResourceGroup `
-   -Location $location `
-   -AllocationMethod Dynamic
-```       
-
-Vytvořte síťové rozhraní V tomto příkladu je název síťové karty nastavený na **myNicName**.
+    ```powershell
+    $ipName = "myIP"
+    $pip = New-AzureRmPublicIpAddress `
+       -Name $ipName -ResourceGroupName $destinationResourceGroup `
+       -Location $location `
+       -AllocationMethod Dynamic
+    ```       
+    
+2. Vytvořte síťové rozhraní V tomto příkladu je název síťové karty nastavený na *myNicName*.
    
-```powershell
-$nicName = "myNicName"
-$nic = New-AzureRmNetworkInterface -Name $nicName `
-   -ResourceGroupName $destinationResourceGroup `
-   -Location $location -SubnetId $vnet.Subnets[0].Id `
-   -PublicIpAddressId $pip.Id `
-   -NetworkSecurityGroupId $nsg.Id
-```
-
+    ```powershell
+    $nicName = "myNicName"
+    $nic = New-AzureRmNetworkInterface -Name $nicName `
+       -ResourceGroupName $destinationResourceGroup `
+       -Location $location -SubnetId $vnet.Subnets[0].Id `
+       -PublicIpAddressId $pip.Id `
+       -NetworkSecurityGroupId $nsg.Id
+    ```
+    
 
 
 ### <a name="set-the-vm-name-and-size"></a>Nastavte název virtuálního počítače a velikost
@@ -335,7 +335,7 @@ $vm = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id
 
 ### <a name="add-the-os-disk"></a>Přidat disk s operačním systémem 
 
-Přidat disk s operačním systémem pomocí konfigurace [Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk). V tomto příkladu nastaví velikost disku, který se *128 GB* a připojí spravovaného disku jako *Windows* disk s operačním systémem.
+Přidat disk s operačním systémem v konfiguraci s použitím [Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk). V tomto příkladu nastaví velikost disku, který se *128 GB* a připojí spravovaného disku jako *Windows* disk s operačním systémem.
  
 ```powershell
 $vm = Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType Standard_LRS `
@@ -344,13 +344,13 @@ $vm = Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType 
 
 ### <a name="complete-the-vm"></a>Dokončete tento virtuální počítač 
 
-Vytvoření virtuálního počítače pomocí [New-AzureRMVM](/powershell/module/azurerm.compute/new-azurermvm)konfigurace, které jsme právě vytvořili.
+Vytvoření virtuálního počítače pomocí [New-AzureRMVM](/powershell/module/azurerm.compute/new-azurermvm) s konfiguracemi, které jsme právě vytvořili.
 
 ```powershell
 New-AzureRmVM -ResourceGroupName $destinationResourceGroup -Location $location -VM $vm
 ```
 
-Pokud tento příkaz byl úspěšný, zobrazí se výstup podobný tomuto:
+Pokud tento příkaz je úspěšný, zobrazí se výstup podobný tomuto:
 
 ```powershell
 RequestId IsSuccessStatusCode StatusCode ReasonPhrase
@@ -360,7 +360,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>Ověřte, že se vytvořil virtuální počítač
-Nově vytvořený virtuální počítač by se měla zobrazit buď v [webu Azure portal](https://portal.azure.com)v části **Procházet** > **virtuálních počítačů**, nebo pomocí následujících příkazů Powershellu:
+Nově vytvořený virtuální počítač by se měla zobrazit buď v [webu Azure portal](https://portal.azure.com) pod **Procházet** > **virtuálních počítačů**, nebo pomocí následujících příkazů Powershellu.
 
 ```powershell
 $vmList = Get-AzureRmVM -ResourceGroupName $destinationResourceGroup

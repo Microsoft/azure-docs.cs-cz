@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 93754c209fa66b6707126216473693f5a86aac41
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 1171ff64bea99d7bc736a5a4fe88d9c08324b9d9
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887143"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116466"
 ---
 # <a name="tune-hyperparameters-for-your-model"></a>Optimalizovat pro váš model hyperparameters
 
@@ -340,7 +340,7 @@ print('\n batch size:',parameter_values[7])
 
 ## <a name="sample-notebook"></a>Ukázka poznámkového bloku
 Odkazovat na 
-* `training/03.train-hyperparameter-tune-deploy-with-tensorflow/03.train-hyperparameter-tune-deploy-with-tensorflow.ipynb` kurz týkající se ladění hyperparameters Tensorflow modelu. 
+* [Training/03.Train-hyperparameter-Tune-Deploy-with-tensorflow](https://github.com/Azure/MachineLearningNotebooks/blob/master/training/03.train-hyperparameter-tune-deploy-with-tensorflow) kurz týkající se ladění hyperparameters Tensorflow modelu. 
 
 Získáte tento poznámkový blok:
 

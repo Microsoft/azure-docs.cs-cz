@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
-ms.date: 8/21/2018
+ms.date: 10/11/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 06d9fda01a89340eb019b4900c02e321e0b73cf5
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 3b665ed0539a41ffeca87511154f3607a57cff4a
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818960"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116189"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Podporované služby, schémat a kategorie pro diagnostické protokoly Azure
 
@@ -53,13 +53,14 @@ Schéma protokolů diagnostiky prostředků se liší podle kategorie prostředk
 | Brány Application Gateway |[Diagnostika protokolování pro službu Application Gateway](../application-gateway/application-gateway-diagnostics.md) |
 | Azure Automation |[Log analytics pro Azure Automation.](../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Protokolování diagnostiky služby Azure Batch](../batch/batch-diagnostics.md) |
+| Azure Database for MySQL | [Azure Database for MySQL diagnostické protokoly](../mysql/concepts-server-logs.md#diagnostic-logs) |
+| Azure Database for PostgreSQL | [Azure Database for PostgreSQL diagnostické protokoly](../postgresql/concepts-server-logs.md#diagnostic-logs) |
 | Cognitive Services | Schéma není k dispozici. |
 | Content Delivery Network | [Diagnostické protokoly Azure CDN](../cdn/cdn-azure-diagnostic-logs.md) |
 | CosmosDB | [Protokolování služby Azure Cosmos DB](../cosmos-db/logging.md) |
 | Data Factory | [Monitorovat datové továrny pomocí Azure monitoru](../data-factory/monitor-using-azure-monitor.md) |
 | Data Lake Analytics |[Přístup k protokolům diagnostiky pro Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[Zobrazení diagnostických protokolů pro Azure Data Lake Store](../data-lake-store/data-lake-store-diagnostic-logs.md) |
-| DB for PostgreSQL |  Schéma není k dispozici. |
 | Event Hubs |[Diagnostické protokoly Azure Event Hubs](../event-hubs/event-hubs-diagnostic-logs.md) |
 | ExpressRoute | Schéma není k dispozici. |
 | Brána Azure Firewall | Schéma není k dispozici. |
@@ -104,6 +105,7 @@ Schéma protokolů diagnostiky prostředků se liší podle kategorie prostředk
 |Microsoft.DataLakeAnalytics/accounts|Požadavky|Vyžádat protokoly|
 |Microsoft.DataLakeStore/accounts|Auditování|Protokoly auditu|
 |Microsoft.DataLakeStore/accounts|Požadavky|Vyžádat protokoly|
+|Microsoft.DBforMySQL/servers|MySqlSlowLogs|Protokoly pomalých dotazů MySQL|
 |Microsoft.DBforPostgreSQL/servers|PostgreSQLLogs|Protokoly serveru PostgreSQL|
 |Microsoft.Devices/IotHubs|Připojení|Připojení|
 |Microsoft.Devices/IotHubs|DeviceTelemetry|Telemetrie zařízení|

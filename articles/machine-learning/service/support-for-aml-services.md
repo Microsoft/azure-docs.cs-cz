@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 0c626bd193d883f292bf8d20913ff21d86d0d761
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: a857b813cee86079b96cd2bca297c1cf098819f5
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268475"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49113899"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-service"></a>Získat podporu a školení pro služby Azure Machine Learning
 
@@ -26,6 +26,8 @@ Kromě dokumentaci na tomto webu najdete tady:
 + [Kurzy a články s návody](../service/index.yml)
 + [Přehled architektury](../service/concept-azure-machine-learning-architecture.md)
 + [Videa](https://azure.microsoft.com/resources/videos/index/?services=machine-learning)
+
+## <a name="submit-doc-feedback"></a>Odeslat zpětnou vazbu doc 
 
 Je možné **požadavky můžete odesílat** Další výukové materiály pomocí odkazu zpětná vazba v dolní části tohoto článku.
 

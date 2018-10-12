@@ -3,16 +3,17 @@ title: Posouzení vhodnosti místních úloh pro Contoso migraci do Azure | Doku
 description: Zjistěte, jak společnosti Contoso vyhodnocuje jeho místních počítačů pro migraci do Azure pomocí Azure Migrate a Data Migration Assistant.
 services: site-recovery
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/05/2018
+ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 3969286b4a748a9dde8c126f91a5b19ee14a7c0d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 34409197a080b4d755b76f140111b7694925b5df
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303310"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49094050"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Migrace Contoso: posouzení vhodnosti místních úloh pro migraci do Azure
 
@@ -35,6 +36,7 @@ Tento článek je součástí série, která popisuje, jak fiktivní společnost
 [Článku 11: Refaktorujte Team Foundation Server na službách Azure DevOps](contoso-migration-tfs-vsts.md) | Contoso migrovat své místní nasazení serveru Team Foundation Server ke službám Azure DevOps v Azure. | K dispozici.
 [Článek 12: Úprava architektury aplikace na kontejnery služby Azure a Azure SQL Database](contoso-migration-rearchitect-container-sql.md) | Contoso migruje jeho SmartHotel aplikace do Azure. Potom rearchitects webové vrstvy aplikace jako kontejner Windows se spuštěnou v Azure Service Fabric a databázi Azure SQL Database. | K dispozici.
 [Článek 13: Znovu sestavte aplikaci v Azure](contoso-migration-rebuild.md) | Contoso replikujícím svou aplikaci SmartHotel pomocí celé řady funkcí Azure a služeb, včetně služby Azure App Service, Azure Kubernetes Service (AKS), Azure Functions, Azure Cognitive Services a Azure Cosmos DB. | K dispozici.
+[Článek 14: Škálování migrace do Azure](contoso-migration-scale.md) | Po vyzkoušení kombinace migrace, Contoso připraví škálovat na plné migraci do Azure. | K dispozici.
 
 
 ## <a name="overview"></a>Přehled
@@ -43,7 +45,7 @@ Jak Contoso považuje migraci do Azure, společnost chce provést interní techn
 
 Abyste mohli začít, abyste lépe poznali technologií společnosti Contoso vyhodnocuje dvě z jeho místní aplikace, které jsou shrnuty v následující tabulce. Společnost vyhodnocuje pro scénáře migrace této metody opětovného hostování a Refaktorujte aplikací pro migraci. Další informace o opětovném hostování a refaktoring v [Přehled migrace Contoso](contoso-migration-overview.md).
 
-Název aplikace | Platforma | Úrovně aplikace | Podrobnosti
+App name (Název aplikace) | Platforma | Úrovně aplikace | Podrobnosti
 --- | --- | --- | ---
 SmartHotel360<br/><br/> (spravuje Contoso cestovní požadavky) | Běží na Windows s databází SQL serveru | Dvouvrstvém aplikace. Front-endový Web ASP.NET běží na jeden virtuální počítač (**WEBVM**) a SQL Server běží na jiný virtuální počítač (**SQLVM**). | Virtuální počítače VMware, které běží na hostiteli ESXi spravované přes vCenter Server.<br/><br/> Můžete stáhnout ukázkovou aplikaci z [Githubu](https://github.com/Microsoft/SmartHotel360).
 osTicket<br/><br/> (Contoso helpdesku app service) | Spustí se v systému Linux/Apache s PHP s MySQL (LAMP) | Dvouvrstvém aplikace. Front-endu webu v PHP běží na jeden virtuální počítač (**OSTICKETWEB**) a databáze MySQL se spustí na jiný virtuální počítač (**OSTICKETMYSQL**). | Aplikace používá ke sledování problémů pro interní zaměstnance a externí zákazníky zákaznických služeb aplikací.<br/><br/> Můžete stáhnout ukázku z [Githubu](https://github.com/osTicket/osTicket).

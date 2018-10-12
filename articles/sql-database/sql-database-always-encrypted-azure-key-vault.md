@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 2d735225782398b4e22a42816586a56cab54b763
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 79613ab7a0e96405abbb3b380800f5ba951c3bdc
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870192"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092690"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Funkce Always Encrypted: Ochrana citlivých dat a ukládání šifrovacích klíčů ve službě Azure Key Vault
 
@@ -55,6 +55,7 @@ Teď, když vaše klientské aplikace je nakonfigurovaná a máte ID vaší apli
 
 Spuštěním následujícího skriptu můžete rychle vytvořit trezor klíčů. Podrobné vysvětlení těchto rutin a další informace o vytváření a konfiguraci služby key vault najdete v tématu [Začínáme s Azure Key Vault](../key-vault/key-vault-get-started.md).
 
+```powershell
     $subscriptionName = '<your Azure subscription name>'
     $userPrincipalName = '<username@domain.com>'
     $applicationId = '<application ID from your AAD application>'
@@ -72,7 +73,7 @@ Spuštěním následujícího skriptu můžete rychle vytvořit trezor klíčů.
 
     Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -PermissionsToKeys create,get,wrapKey,unwrapKey,sign,verify,list -UserPrincipalName $userPrincipalName
     Set-AzureRmKeyVaultAccessPolicy  -VaultName $vaultName  -ResourceGroupName $resourceGroupName -ServicePrincipalName $applicationId -PermissionsToKeys get,wrapKey,unwrapKey,sign,verify,list
-
+```
 
 
 
@@ -107,6 +108,7 @@ V této části vytvoříte tabulku pro uložení dat o pacientech. Není původ
 2. Klikněte pravým tlačítkem myši **Clinic** databáze a klikněte na tlačítko **nový dotaz**.
 3. Vložte následující příkazů jazyka Transact-SQL (T-SQL) do nové okno dotazu a **Execute** ho.
 
+```sql
         CREATE TABLE [dbo].[Patients](
          [PatientId] [int] IDENTITY(1,1),
          [SSN] [char](11) NOT NULL,
@@ -120,7 +122,7 @@ V této části vytvoříte tabulku pro uložení dat o pacientech. Není původ
          [BirthDate] [date] NOT NULL
          PRIMARY KEY CLUSTERED ([PatientId] ASC) ON [PRIMARY] );
          GO
-
+```
 
 ## <a name="encrypt-columns-configure-always-encrypted"></a>Šifrování sloupců (Konfigurace funkce Always Encrypted)
 SSMS poskytuje průvodce, který vám pomůže snadno nakonfigurovat funkce Always Encrypted s nastavením hlavního klíče sloupce, šifrovací klíč sloupce a šifrované sloupce za vás.
@@ -183,9 +185,10 @@ Teď, když je nastavený s funkcí Always Encrypted, můžete vytvořit aplikac
 
 Spusťte následující dva řádky kódu v konzole Správce balíčků.
 
+```powershell
     Install-Package Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
-
+```
 
 
 ## <a name="modify-your-connection-string-to-enable-always-encrypted"></a>Upravit připojovací řetězec k povolení funkcí Always Encrypted
@@ -204,6 +207,7 @@ Přidejte následující klíčové slovo do připojovacího řetězce.
 ### <a name="enable-always-encrypted-with-sqlconnectionstringbuilder"></a>Povolit Always Encrypted s SqlConnectionStringBuilder
 Následující kód ukazuje, jak povolit funkce Always Encrypted s nastavením [SqlConnectionStringBuilder.ColumnEncryptionSetting](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.columnencryptionsetting.aspx) k [povoleno](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectioncolumnencryptionsetting.aspx).
 
+```CS
     // Instantiate a SqlConnectionStringBuilder.
     SqlConnectionStringBuilder connStringBuilder =
        new SqlConnectionStringBuilder("replace with your connection string");
@@ -211,10 +215,12 @@ Následující kód ukazuje, jak povolit funkce Always Encrypted s nastavením [
     // Enable Always Encrypted.
     connStringBuilder.ColumnEncryptionSetting =
        SqlConnectionColumnEncryptionSetting.Enabled;
+```
 
 ## <a name="register-the-azure-key-vault-provider"></a>Zaregistrujte zprostředkovatele služby Azure Key Vault
 Následující kód ukazuje, jak se zaregistrovat poskytovatele služby Azure Key Vault pomocí ovladače ADO.NET.
 
+```C#
     private static ClientCredential _clientCredential;
 
     static void InitializeAzureKeyVaultProvider()
@@ -230,8 +236,7 @@ Následující kód ukazuje, jak se zaregistrovat poskytovatele služby Azure Ke
        providers.Add(SqlColumnEncryptionAzureKeyVaultProvider.ProviderName, azureKeyVaultProvider);
        SqlConnection.RegisterColumnEncryptionKeyStoreProviders(providers);
     }
-
-
+```
 
 ## <a name="always-encrypted-sample-console-application"></a>Always Encrypted ukázková Konzolová aplikace
 Tato ukázka předvádí, jak:
@@ -244,7 +249,7 @@ Tato ukázka předvádí, jak:
 Nahraďte obsah **Program.cs** následujícím kódem. Nahraďte připojovací řetězec connectionString globální proměnné na řádku, který přímo předchází metoda Main s platným připojovacím řetězcem z webu Azure portal. Toto je jediná změna, kterou je třeba provést na tento kód.
 
 Spusťte aplikaci v akci najdete v článku s funkcí Always Encrypted.
-
+```CS
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -584,7 +589,7 @@ Spusťte aplikaci v akci najdete v článku s funkcí Always Encrypted.
         public DateTime BirthDate { get; set; }
     }
     }
-
+```
 
 
 ## <a name="verify-that-the-data-is-encrypted"></a>Ověřte, že se data zašifrují.
@@ -592,7 +597,9 @@ Můžete rychle zkontrolovat, že skutečná data na serveru se šifrují dotazo
 
 Spusťte následující dotaz na databázi Clinic.
 
+```sql
     SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
+```
 
 Uvidíte, že šifrované sloupce nebudou obsahovat žádná data ve formátu prostého textu.
 
@@ -608,12 +615,13 @@ Pak přidejte *nastavení šifrování sloupce = povoleno* parametr během přip
    
     ![Novou konzolovou aplikaci](./media/sql-database-always-encrypted-azure-key-vault/ssms-connection-parameter.png)
 4. Spusťte následující dotaz na databázi Clinic.
-   
-        SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
-   
-     Nyní je vidět data ve formátu prostého textu v šifrované sloupce.
 
-    ![Novou konzolovou aplikaci](./media/sql-database-always-encrypted-azure-key-vault/ssms-plaintext.png)
+   ```sql
+      SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
+   ```
+
+     Nyní je vidět data ve formátu prostého textu v šifrované sloupce.
+     ![Novou konzolovou aplikaci](./media/sql-database-always-encrypted-azure-key-vault/ssms-plaintext.png)
 
 
 ## <a name="next-steps"></a>Další postup

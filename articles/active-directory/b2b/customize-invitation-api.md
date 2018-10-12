@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 20c824da82d6e3e66bfa2d7447c8a9573cbdce69
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 8809a5a8b4f76d6e33bbb934e13931e86f2d681c
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985809"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091761"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory s B2B spolupráce rozhraní API a přizpůsobení
 
@@ -79,7 +79,7 @@ Další informace naleznete na: https://graph.microsoft.io/docs/authorization/pe
 
 
 ## <a name="powershell"></a>PowerShell
-Nyní je možné přidat a snadno pozvat externího uživatele organizace pomocí Powershellu. Vytvoření pozvánky pomocí rutiny:
+Prostředí PowerShell můžete použít k přidání a snadno pozvat externího uživatele organizace. Vytvoření pozvánky pomocí rutiny:
 
 ```
 New-AzureADMSInvitation
@@ -92,7 +92,25 @@ Můžete použít následující možnosti:
 * -SendInvitationMessage
 * -InvitedUserMessageInfo
 
-Můžete také si přečtěte reference k rozhraní API pozvání v [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)
+### <a name="invitation-status"></a>Stav žádosti
+
+Jakmile odešlete pozvání externího uživatele, můžete použít **Get-AzureADUser** rutiny zobrazíte, pokud jste přijali ji. Následující vlastnosti Get-AzureADUser zaplnění odeslání pozvání externího uživatele:
+
+* **Stav uživatele UserState** označuje, zda je e-mailové pozvánce **PendingAcceptance** nebo **přijato**.
+* **UserStateChangedOn** ukazuje časové razítko pro poslední změnu **stav uživatele UserState** vlastnost.
+
+Můžete použít **filtr** filtrovat výsledky podle **stav uživatele UserState**. Následující příklad ukazuje, jak filtrovat výsledky a zobrazit pouze uživatele, kteří mají nevyřízená Pozvánka. Příklad také ukazuje, **Format-List** možnost, která umožňuje určit vlastnosti pro zobrazení. 
+ 
+```
+Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Property DisplayName,UserPrincipalName,UserState,UserStateChangedOn
+```
+
+> [!NOTE]
+> Ujistěte se, že máte nejnovější verzi modulu Azure AD PowerShell nebo modulu AzureADPreview PowerShell. 
+
+## <a name="see-also"></a>Další informace najdete v tématech
+
+Podívejte se na odkaz na pozvánku rozhraní API v [ https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation ](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation).
 
 ## <a name="next-steps"></a>Další postup
 

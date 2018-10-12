@@ -1,6 +1,6 @@
 ---
-title: Jak číst nebo zapisovat na oddíly dat v Azure Data Factory | Microsoft Docs
-description: Zjistěte, jak číst nebo zapisovat oddílů dat v Azure Data Factory.
+title: Tom, jak číst nebo zapisovat data ve službě Azure Data Factory rozdělit na oddíly | Dokumentace Microsoftu
+description: Zjistěte, jak ke čtení nebo zápis dělených dat ve službě Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -13,18 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: shlo
-ms.openlocfilehash: 59644f3318e2bf9c4f0ea6c3f5699fe1d19f2089
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 24464d110b00508cfb3fde4ab1a050773511e255
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053706"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091045"
 ---
-# <a name="how-to-read-or-write-partitioned-data-in-azure-data-factory"></a>Jak číst nebo zapisovat data v Azure Data Factory rozdělena na oddíly
-Azure Data Factory v verze 1, podporované čtení nebo zápis oddílů dat pomocí SliceStart/SliceEnd/WindowStart/WindowEnd systémové proměnné. V aktuální verzi objektu pro vytváření dat můžete toto chování dosáhnout pomocí parametru kanálu a čas nebo naplánovaný čas spuštění aktivační události jako hodnotu parametru. 
+# <a name="how-to-read-or-write-partitioned-data-in-azure-data-factory"></a>Tom, jak číst nebo zapisovat data ve službě Azure Data Factory rozdělit na oddíly
 
-## <a name="use-a-pipeline-parameter"></a>Pomocí parametru kanálu 
-Ve verzi 1 můžete použít vlastnost partitionedBy a SliceStart systémové proměnné, jak je znázorněno v následujícím příkladu: 
+Ve službě Azure Data Factory verze 1, může čtení nebo zápis dělených dat s použitím **SliceStart**, **SliceEnd**, **WindowStart**, a **WindowEnd** systémové proměnné. V aktuální verzi Data Factory můžete toto chování dosáhnout pomocí parametr kanálu a počáteční aktivační události nebo plánovaný čas jako hodnotu parametru. 
+
+## <a name="use-a-pipeline-parameter"></a>Parametr kanálu 
+
+Ve službě Data Factory verze 1, můžete použít **partitionedBy** vlastnost a **SliceStart** systémová proměnná, jak je znázorněno v následujícím příkladu: 
 
 ```json
 "folderPath": "adfcustomerprofilingsample/logs/marketingcampaigneffectiveness/{Year}/{Month}/{Day}/",
@@ -35,13 +37,13 @@ Ve verzi 1 můžete použít vlastnost partitionedBy a SliceStart systémové pr
 ],
 ```
 
-Další informace o vlastnosti partitonedBy najdete v tématu [konektor Azure Blob verze 1](v1/data-factory-azure-blob-connector.md#dataset-properties) článku. 
+Další informace o **partitonedBy** vlastnost, naleznete v tématu [kopírování dat do nebo z úložiště objektů Blob v Azure pomocí Azure Data Factory](v1/data-factory-azure-blob-connector.md#dataset-properties). 
 
-V aktuální verzi objektu pro vytváření dat je způsob, jak dosáhnout toto chování provést následující akce: 
+K dosažení tohoto chování v aktuální verzi Data Factory: 
 
-1. Definování **kanálu parametr** typu řetězec. V následujícím příkladu je název parametru kanálu **windowStartTime**. 
-2. Nastavit **folderPath** v definici datové sady, chcete-li hodnota parametru kanálu. 
-3. Předat skutečná hodnota pro parametr při vyvolání kanálu na vyžádání nebo předejte čas/naplánovaný čas zahájení aktivační události dynamicky za běhu. 
+1. Definování *kanálu parametr* typu **řetězec**. V následujícím příkladu je název parametru kanálu **windowStartTime**. 
+2. Nastavte **folderPath** v definici datové sady odkazují na hodnoty parametrů kanálu. 
+3. Skutečná hodnota pro parametr předáte při volání kanálu na vyžádání. Můžete také předat trigger's počáteční nebo naplánovaném čase dynamicky za běhu. 
 
 ```json
 "folderPath": {
@@ -50,8 +52,9 @@ V aktuální verzi objektu pro vytváření dat je způsob, jak dosáhnout toto 
 },
 ```
 
-## <a name="pass-in-value-from-a-trigger"></a>Předejte hodnotu z aktivační události
-V následující přeskakující okno definici aktivační událost, čas zahájení okna aktivační události je předán jako hodnotu pro parametr kanálu **windowStartTime**: 
+## <a name="pass-in-a-value-from-a-trigger"></a>Předejte hodnotu z aktivační události
+
+Následující aktivační událost pro přeskakující okno Definice aktivační události, čas zahájení okna aktivační událost se předá jako hodnotu pro parametr kanálu **windowStartTime**: 
 
 ```json
 {
@@ -80,7 +83,7 @@ V následující přeskakující okno definici aktivační událost, čas zaháj
 
 ## <a name="example"></a>Příklad:
 
-Zde je ukázka definice datové sady:
+Tady je ukázková definice datové sady:
 
 ```json
 {
@@ -116,7 +119,7 @@ Zde je ukázka definice datové sady:
 }
 ```
 
-Definice kanál: 
+Definice kanálu: 
 
 ```json
 {
@@ -176,4 +179,6 @@ Definice kanál:
 ```
 
 ## <a name="next-steps"></a>Další postup
-Kompletní návod, jak vytvořit objekt pro vytváření dat se zřetězením příkazů, najdete v části [rychlý start: Vytvořte objekt pro vytváření dat](quickstart-create-data-factory-powershell.md). 
+
+Kompletní návod, jak vytvořit datovou továrnu s kanálem, naleznete v tématu [rychlý start: vytvoření datové továrny](quickstart-create-data-factory-powershell.md). 
+

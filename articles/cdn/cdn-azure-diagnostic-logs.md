@@ -3,8 +3,8 @@ title: Diagnostické protokoly Azure | Dokumentace Microsoftu
 description: Odběratele můžete povolit analýzy protokolů pro Azure CDN.
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: cfowler
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
-ms.author: v-deasim
-ms.openlocfilehash: 0baa43977099af9c6c0d9c2e4c03abc121ec279d
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.author: magattus
+ms.openlocfilehash: 6834222ec2befa305b558abf0976a1c9899a7086
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47097002"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093022"
 ---
 # <a name="azure-diagnostic-logs"></a>Diagnostické protokoly Azure
 
@@ -49,7 +49,7 @@ Další informace o diagnostických protokolech najdete v tématu [diagnostické
 
 Postupujte podle těchto kroků povolit protokolování pomocí CDN core analytics:
 
-Přihlaste se k [portálu Azure](http://portal.azure.com). Pokud není již jste povolili CDN pro pracovní postup [vytvoření koncového bodu a profilu Azure CDN](cdn-create-new-endpoint.md) předtím, než budete pokračovat.
+Přihlaste se k webu [Azure Portal](http://portal.azure.com). Pokud není již jste povolili CDN pro pracovní postup [vytvoření koncového bodu a profilu Azure CDN](cdn-create-new-endpoint.md) předtím, než budete pokračovat.
 
 1. Na webu Azure Portal, přejděte na **profil CDN**.
 

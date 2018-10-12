@@ -3,16 +3,17 @@ title: Aplikace Contoso Refaktorovat a migrujte jej pro webové aplikace Azure a
 description: Zjistěte, jak společnosti Contoso ke kolizi místní aplikace díky migraci na Azure Web App a Azure SQL Server database.
 services: site-recovery
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/20/2018
+ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 39444b20dfefd947abb2f2bc00a9945398996dd0
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 923a1ab9020925c17b3b19d24c7524ab2f8f3356
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040529"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092755"
 ---
 # <a name="contoso-migration-refactor-an-on-premises-app-to-an-azure-web-app-and-azure-sql-database"></a>Migrace Contoso: Refaktorovat místní aplikace do webové aplikace Azure a Azure SQL database
 
@@ -35,6 +36,7 @@ Tento dokument je jednou z řady článků, které ukazují, jak fiktivní spole
 [Článek 11: Refaktorovat TFS na službách Azure DevOps](contoso-migration-tfs-vsts.md) | Ukazuje, jak společnosti Contoso migruje svoje místní nasazení Team Foundation Server (TFS) a migrujte ho ke službám Azure DevOps v Azure. | K dispozici.
 [Článek 12: Úprava architektury aplikace na kontejnery služby Azure a Azure SQL Database](contoso-migration-rearchitect-container-sql.md) | Ukazuje, jak společnosti Contoso migruje a rearchitects jeho SmartHotel aplikace do Azure. Jejich úprava architektury webové vrstvy aplikace jako kontejner Windows a databáze aplikace ve službě Azure SQL Database. | K dispozici.
 [Článek 13: Znovu sestavte aplikaci v Azure](contoso-migration-rebuild.md) | Ukazuje, jak společnosti Contoso znovu sestavte své aplikace SmartHotel pomocí celé řady funkcí Azure a služeb, včetně služeb App Services, Kubernetes v Azure, Azure Functions, Cognitive services a Cosmos DB. | K dispozici.
+[Článek 14: Škálování migrace do Azure](contoso-migration-scale.md) | Po vyzkoušení kombinace migrace, Contoso připraví škálovat na plné migraci do Azure. | K dispozici.
 
 V tomto článku se migruje Contoso dvouvrstvé Windows. NET SmartHotel360 aplikace běžící na virtuálních počítačích VMware do Azure. Pokud chcete používat tuto aplikaci, se poskytuje jako open source a můžete ji stáhnout [Githubu](https://github.com/Microsoft/SmartHotel360).
 
@@ -300,7 +302,7 @@ Správce společnosti Contoso teď nakonfigurovat Azure DevOps k provedení sest
 
 5. To zahajuje první sestavení. Kliknutí na číslo sestavení ke sledování procesu. Po dokončení se mohou zobrazit proces zpětné vazby a klikněte na tlačítko **artefakty** zobrazení výsledků sestavení.
 
-    ![Zkontrolovat](./media/contoso-migration-refactor-web-app-sql/pipeline5.png)
+    ![Revize](./media/contoso-migration-refactor-web-app-sql/pipeline5.png)
 
 6. Složka **vyřadit** obsahuje výsledků sestavení.
 

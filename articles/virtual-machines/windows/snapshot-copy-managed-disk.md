@@ -1,6 +1,6 @@
 ---
-title: Vytvořte snímek virtuálního pevného disku v Azure | Microsoft Docs
-description: Naučte se vytvořit kopii virtuálního počítače Azure používat jako zpět nahoru nebo řešení potíží.
+title: Vytvoření snímku virtuálního pevného disku v Azure | Dokumentace Microsoftu
+description: Zjistěte, jak vytvořit kopii tohoto virtuálního počítače Azure používat jako zálohování směrem nahoru nebo pro řešení potíží.
 documentationcenter: ''
 author: cynthn
 manager: jeconnoc
@@ -12,38 +12,38 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 04/10/2018
+ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 7d45fd749fea4036d944d740541d8b8607553835
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 87d78178c32aea3ae601983ec14e9df0732b59e2
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658151"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091296"
 ---
 # <a name="create-a-snapshot"></a>Vytvoření snímku
 
-Pořízení snímku operačním systémem nebo datovými disk, který vystavuje virtuálního pevného disku pro zálohování a řešení souvisejících problémů virtuálních počítačů. Snímek je úplná, jen pro čtení kopie virtuálního pevného disku. 
+Snímek je kopie virtuálního pevného disku (VHD) úplné, jen pro čtení. Vytvoření snímku disku operačního systému nebo datového virtuálního pevného disku jako zálohu, nebo k řešení potíží virtuální počítač (VM). 
 
-## <a name="use-azure-portal-to-take-a-snapshot"></a>Pořízení snímku pomocí portálu Azure 
+## <a name="use-the-azure-portal"></a>Použití webu Azure Portal 
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Spouštění v levém horním, klikněte na tlačítko **vytvořit prostředek** a vyhledejte **snímku**.
-3. V okně snímku, klikněte na tlačítko **vytvořit**.
-4. Zadejte **název** pro snímku.
-5. Vyberte existující [skupinu prostředků](../../azure-resource-manager/resource-group-overview.md#resource-groups) nebo zadejte název nové skupiny prostředků. 
-6. Vyberte umístění datového centra Azure.  
-7. Pro **zdrojový disk**, vyberte spravované Disk snímek.
-8. Vyberte **typ účtu** používat k uložení snímku. Doporučujeme, abyste **Standard_LRS** Pokud to uložená na vysokou provádění disku potřebujete.
-9. Klikněte na možnost **Vytvořit**.
+2. V nabídce vlevo vyberte **vytvořit prostředek**a poté vyhledejte a vyberte **snímku**.
+3. V **snímku** okně **vytvořit**. **Vytvořit snímek** zobrazí se okno.
+4. Zadejte **název** snímku.
+5. Vyberte existující [skupiny prostředků](../../azure-resource-manager/resource-group-overview.md#resource-groups) nebo zadejte název nové. 
+6. Vyberte **umístění** datového centra Azure.  
+7. Pro **zdrojový disk**, vyberte spravovaného disku do snímku.
+8. Vyberte **typ účtu** používat k uložení snímku. Vyberte **Standard_HDD**, pokud potřebujete snímek uloží na disku pro vysoce výkonné.
+9. Vyberte **Vytvořit**.
 
-## <a name="use-powershell-to-take-a-snapshot"></a>Pořízení snímku pomocí prostředí PowerShell
+## <a name="use-powershell"></a>Použití prostředí PowerShell
 
-Následující kroky vám ukážou, jak získat disku VHD zkopírovat, vytvořte snímek konfigurace, a pořízení snímku disku pomocí [New-AzureRmSnapshot](/powershell/module/azurerm.compute/new-azurermsnapshot) rutiny. 
+Následující kroky ukazují, jak zkopírujte virtuální pevný disk, vytvořte snímek konfigurace a pořízení snímku disku s použitím [New-AzureRmSnapshot](/powershell/module/azurerm.compute/new-azurermsnapshot) rutiny. 
 
-Než začnete, ujistěte se, že máte nejnovější verzi modulu AzureRM.Compute prostředí PowerShell. Tento článek vyžaduje AzureRM verze modulu 5.7.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
+Než začnete, ujistěte se, máte nejnovější verzi modul AzureRM.Compute Powershellu, který musí být verze 5.7.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, spusťte [Connect-AzureRmAccount](https://docs.microsoft.com/powershell/module/azurerm.profile/connect-azurermaccount) vytvořit připojení k Azure.
 
-Nastavte některé parametry. 
+1. Nastavení některých parametrů: 
 
  ```azurepowershell-interactive
 $resourceGroupName = 'myResourceGroup' 
@@ -52,39 +52,36 @@ $vmName = 'myVM'
 $snapshotName = 'mySnapshot'  
 ```
 
-Získáte virtuální počítač.
+2. Získání virtuálního počítače:
 
  ```azurepowershell-interactive
 $vm = get-azurermvm `
-   -ResourceGroupName $resourceGroupName `
+   -ResourceGroupName $resourceGroupName 
    -Name $vmName
 ```
 
-Vytvoření snímku konfigurace. V tomto příkladu přidáme snímku disk operačního systému.
+3. Vytvořte snímek konfigurace. V tomto příkladu snímek je disk s operačním systémem:
 
  ```azurepowershell-interactive
-$snapshot =  New-AzureRmSnapshotConfig `
-   -SourceUri $vm.StorageProfile.OsDisk.ManagedDisk.Id `
-   -Location $location `
+$snapshot =  New-AzureRmSnapshotConfig 
+   -SourceUri $vm.StorageProfile.OsDisk.ManagedDisk.Id 
+   -Location $location 
    -CreateOption copy
 ```
    
-> [!NOTE]
-> Pokud chcete uložit snímku do zóny odolná úložiště, budete muset vytvořit v oblasti, která podporuje [dostupnost zóny](../../availability-zones/az-overview.md) a zahrnout `-SkuName Standard_ZRS` parametr.   
-
+   > [!NOTE]
+   > Pokud chcete uložit snímek do zóny odolná úložiště, vytvořte ji v oblasti, která podporuje [zóny dostupnosti](../../availability-zones/az-overview.md) a zahrnout `-SkuName Standard_ZRS` parametru.   
    
-Vytvořte snímek.
+4. Vytvořte snímek:
 
-```azurepowershell-interactive
-New-AzureRmSnapshot `
-   -Snapshot $snapshot `
-   -SnapshotName $snapshotName `
+ ```azurepowershell-interactive
+New-AzureRmSnapshot 
+   -Snapshot $snapshot 
+   -SnapshotName $snapshotName 
    -ResourceGroupName $resourceGroupName 
 ```
 
 
-
-
 ## <a name="next-steps"></a>Další postup
 
-Vytvoření virtuálního počítače ze snímku vytvořením se spravovaným diskem ze snímku a potom nový spravované disk jako disk operačního systému se připojuje. Další informace najdete v tématu [vytvoření virtuálního počítače ze snímku](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json) ukázka.
+Vytvoření virtuálního počítače ze snímku pomocí vytvoření spravovaného disku ze snímku a pak připojení nového spravovaného disku jako disku s operačním systémem. Další informace najdete v ukázce v [vytvoření virtuálního počítače ze snímku pomocí Powershellu](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json).

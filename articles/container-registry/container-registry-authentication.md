@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: be8adf9779c2d168c0ac7a0ed7dbc3e85935df68
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: c0c2323d1864be24edbf6005d634ae1d08bba8ea
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44293724"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116602"
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>Ověřování pomocí privátního registru kontejnerů Dockeru
 
@@ -48,7 +48,7 @@ Instanční objekty umožňují bezobslužného připojení k registru v nabíze
 
   * *Čtečka*: nasazení kontejneru z registru pro systémy Orchestrace včetně Kubernetes, DC/OS a Docker Swarm. Můžete také využít z registry kontejnerů pro související služby Azure, jako [AKS](../aks/index.yml), [služby App Service](../app-service/index.yml), [Batch](../batch/index.yml), [Service Fabric](/azure/service-fabric/), a ostatní.
 
-  * *Přispěvatel*: průběžné integrace a nasazování řešení, jako je Azure DevOps nebo Jenkinse, který sestavování imagí kontejneru a nahrajete do registru.
+  * *Přispěvatel*: průběžné integrace a nasazování řešení, jako je Azure kanály nebo Jenkinse, který sestavování imagí kontejneru a nahrajete do registru.
 
 > [!TIP]
 > Spuštěním můžete obnovit heslo instančního objektu [az ad sp reset-credentials](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-reset-credentials) příkazu.

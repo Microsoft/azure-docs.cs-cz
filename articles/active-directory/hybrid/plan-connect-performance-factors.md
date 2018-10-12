@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/06/2018
 ms.reviewer: martincoetzer
 ms.author: billmath
-ms.openlocfilehash: 7cf0e2b211f9d34f6d8f4fe89a230d8a2e97512a
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: cdca1b31f9b6cf10113dc0dba70b8f8991bafa2b
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069009"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093962"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Faktory ovlivňující výkon nástroje Azure AD Connect
 
@@ -30,7 +30,7 @@ Azure AD Connect synchronizuje služby Active Directory do služby Azure AD. Ten
 | Konfigurace| Jak Azure AD Connect procesy adresáře a informace. |
 | Načtení| Četnost změn objektů. Zatížení se mohou lišit během hodiny, dne nebo týdne. V závislosti na komponentě bude pravděpodobně nutné návrh pro zátěž ve špičce nebo průměrnou zátěž. |
 
-Účelem tohoto dokumentu je popsat faktory ovlivňující výkon vliv na výkon modulu zřizování služby Azure AD Connect. Ostatní součásti služby Azure AD Connect, jako například [Azure AD Connect health](how-to-connect-health-agent-install.md) a agenti nejsou součástí tohoto.
+Účelem tohoto dokumentu je popsat faktory, které ovlivňují výkon služby Azure AD Connect zřizování modulu. Velké a složité organizace (organizace zřizování více než 100 000 objektů) můžete použít doporučení k optimalizaci jejich implementaci služby Azure AD Connect, pokud zaznamenají problémy s výkonem podle zde uvedeného. Ostatní součásti služby Azure AD Connect, jako například [Azure AD Connect health](how-to-connect-health-agent-install.md) a agenti nejsou součástí tohoto.
 
 > [!IMPORTANT]
 > Microsoft nepodporuje úpravy ani provoz služby Azure AD Connect mimo formálně zdokumentované akce. Některé z těchto akcí můžou způsobit nekonzistentní nebo nepodporovaný stav synchronizace služby Azure AD Connect. Microsoft proto nemůže pro taková nasazení poskytovat technickou podporu.
@@ -179,7 +179,7 @@ Chcete-li optimalizovat výkon vaší implementace služby Azure AD Connect, zva
 
 
 - Použití [doporučené konfigurace hardwaru](how-to-connect-install-prerequisites.md) na základě velikosti vaší implementace pro server Azure AD Connect.
-- Při upgradu služby Azure AD Connect v nasazení ve velkém měřítku, zvažte použití [Postupná migrace metoda](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version#swing-migration), ujistěte se, že máte alespoň výpadky a nejlepší spolehlivost. 
+- Při upgradu služby Azure AD Connect v rozsáhlých nasazeních, zvažte použití [Postupná migrace metoda](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version#swing-migration), ujistěte se, že máte alespoň výpadky a nejlepší spolehlivost. 
 - Pro databázi SQL pro nejlepší výkon zápisu používají SSD.
 - Filtrovat služby Active Directory oboru zahrnout pouze objekty, které je třeba zřídit ve službě Azure AD, pomocí doménu, organizační jednotky nebo filtrování atributů.
 - Pokud potřebujete změnit výchozí pravidla pro tok atributů, nejprve zkopírovat pravidlo, pak změňte kopie a původní pravidlo zakázat. Nezapomeňte znovu spustit úplnou synchronizaci.

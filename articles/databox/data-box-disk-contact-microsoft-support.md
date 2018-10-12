@@ -4,16 +4,17 @@ description: Zjistěte, jak protokolování žádosti o podporu pro problémy so
 services: databox
 author: alkohli
 ms.service: databox
+ms.subservice: disk
 ms.topic: article
 ms.date: 09/27/2018
-ms.author: alkohli;
+ms.author: alkohli
 ms.component: ''
-ms.openlocfilehash: 9bab8a55301a5eb40b38bec984205fff2a52559e
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 86d89f50a6d137d0c3ebf9148478ac6cec9951f6
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47422809"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092486"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Vytvořit lístek podpory Azure Data Box 
 

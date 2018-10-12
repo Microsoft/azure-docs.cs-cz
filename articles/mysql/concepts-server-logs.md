@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 09/17/2018
-ms.openlocfilehash: ac5be20815b552c08e5cd1054bf24d7a10b56498
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.date: 10/03/2018
+ms.openlocfilehash: 73be0e4ecff4bc0d9b69249430bba69a93cc54ae
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124265"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093778"
 ---
 # <a name="server-logs-in-azure-database-for-mysql"></a>Protokolů serveru ve službě Azure Database for MySQL
 Ve službě Azure Database for MySQL je k dispozici uživatelům v protokolu pomalých dotazů. Přístup k protokolu transakcí se nepodporuje. Protokol pomalých dotazů je možné identifikovat kritické body výkonu pro řešení potíží. 
@@ -45,6 +45,39 @@ Další parametry, které můžete upravit patří:
 - **log_throttle_queries_not_using_indexes**: Tento parametr omezuje počet jiných indexu dotazů, které se dají zapisovat do protokolu pomalých dotazů. Tento parametr se projeví při log_queries_not_using_indexes nastavená na ON.
 
 Zobrazit MySQL [zpomalit dokumentace ke službě log dotazu](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) úplný popis parametrů protokol pomalých dotazů.
+
+## <a name="diagnostic-logs"></a>Diagnostické protokoly
+Azure Database for MySQL je integrovaná s diagnostické protokoly Azure monitoru. Jakmile povolíte protokoly pomalých dotazů na váš server MySQL, můžete je mít znovu vygenerován pro Log Analytics a Event Hubs, Azure Storage. Další informace o tom, jak povolit diagnostické protokoly, zjistit, jak část [dokumentace k diagnostickým protokolům](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
+
+Následující tabulka popisuje, co je v každém protokolu. V závislosti na metodě výstup pole zahrnutá a pořadí, ve kterém jsou uvedeny se mohou lišit.
+
+| **Vlastnost** | **Popis** |
+|---|---|---|
+| ID Tenanta | Vaše ID tenanta |
+| SourceSystem | `Azure` |
+| TimeGenerated [UTC] | Časové razítko, kdy se přihlášení v protokolu ve standardu UTC |
+| Typ | Typ protokolu. Vždy `AzureDiagnostics` |
+| SubscriptionId | Identifikátor GUID pro předplatné, které server patří do |
+| ResourceGroup | Název skupiny prostředků, do které patří server |
+| ResourceProvider | Název poskytovatele prostředků. Vždy `MICROSOFT.DBFORMYSQL` |
+| ResourceType | `Servers` |
+| ID prostředku | Identifikátor URI prostředku |
+| Prostředek | Název serveru |
+| Kategorie | `MySqlSlowLogs` |
+| OperationName | `LogEvent` |
+| Logical_server_name_s | Název serveru |
+| start_time_t [UTC] | Čas zahájení dotazu |
+| query_time_s | Celková doba, kterou trvalo provádění dotazu |
+| lock_time_s | Celkový čas, který dotaz byl uzamčen. |
+| user_host_s | Uživatelské jméno |
+| rows_sent_s | Počet řádků, které jsou odeslány |
+| rows_examined_s | Počet řádků, které jsou zkoumány |
+| last_insert_id_s | [last_insert_id](https://dev.mysql.com/doc/refman/8.0/en/information-functions.html#function_last-insert-id) |
+| insert_id_s | Vložte id |
+| sql_text_s | Celý dotaz |
+| server_id_s | Id serveru |
+| thread_id_s | id vlákna |
+| \_ID prostředku | Identifikátor URI prostředku |
 
 ## <a name="next-steps"></a>Další kroky
 - [Jak nakonfigurovat a přístup k protokolům server z příkazového řádku Azure](howto-configure-server-logs-in-cli.md).

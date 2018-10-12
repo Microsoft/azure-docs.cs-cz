@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: b28e7b158af939defd37734c3ff9fe2309e3ab85
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: d641688b5e2da7bf571b536aa9cc340e9a5b2ace
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094395"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49115416"
 ---
 # <a name="create-your-first-function-with-java-and-intellij-preview"></a>Vytvoření první funkce pomocí Javy a IntelliJ (Preview)
 
 > [!NOTE] 
 > Java pro službu Azure Functions je aktuálně ve verzi Preview.
 
-V tomto článku se dozvíte, jak vytvořit [bez serveru](https://azure.microsoft.com/overview/serverless-computing/) projekt Functions s IntelliJ IDEA a Apache Maven, testování a ladění na vašem počítači v prostředí IDE a nasazení do služby Azure Functions. 
+V tomto článku se dozvíte, jak vytvořit [bez serveru](https://azure.microsoft.com/solutions/serverless/) projekt Functions s IntelliJ IDEA a Apache Maven, testování a ladění na vašem počítači v prostředí IDE a nasazení do služby Azure Functions. 
 
 <!-- TODO ![Access a Hello World function from the command line with cURL](media/functions-create-java-maven/hello-azure.png) -->
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: f79b1d4c1afc4d5a516a46a9bf6cb1790034b279
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 58fd3afa37d965cfbe21dcf23823ddb8425442b9
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45986298"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116707"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Čas synchronizace pro virtuální počítače s Linuxem v Azure
 
@@ -44,7 +44,7 @@ Virtuální počítač interakce s hostitelem může také ovlivnit hodin. Běhe
 
 Bez synchronizace pracovní doby, hodiny na virtuálním počítači by accumulate chyby. Pokud existuje jenom jeden virtuální počítač, pokud úloha vyžaduje velmi přesné měřidlo času nemusí být významné efekt. Ale ve většině případů budeme mít více, propojených virtuálních počítačů, které používají ke sledování transakcí a času musí být konzistentní v rámci celého nasazení čas. Když je jiný čas mezi virtuálními počítači, je možné, že uvidíte v následujících efektů:
 
-- Protokoly zabezpečení, jako je protokol Kerberos nebo certifikát závislé na technologii využívají čas je konzistentní napříč systémy. 
+- Ověření se nezdaří. Protokoly zabezpečení, jako je protokol Kerberos nebo certifikát závislé na technologii využívají čas je konzistentní napříč systémy.
 - Je velmi obtížné zjistit, co se nestalo v systému protokolů (nebo jiná data) Nesouhlasím včas. Stejnou událost bude vypadat jako došlo k chybě, a v různých časech, provedete korelace obtížné.
 - Pokud hodin je vypnuté, může nesprávně počítá fakturace.
 

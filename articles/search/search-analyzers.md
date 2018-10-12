@@ -1,6 +1,6 @@
 ---
-title: Analyzátory ve službě Azure Search | Microsoft Docs
-description: Přiřazení analyzátorům prohledávatelné textových polí v indexu nahradit výchozí standardní Lucene s alternativami vlastní, předdefinované nebo konkrétní jazyk.
+title: Analyzátory ve službě Azure Search | Dokumentace Microsoftu
+description: Přiřazení analyzátorům prohledávatelná textová pole v indexu nahradit výchozí standardní Lucene s alternativami vlastní, předdefinovaný nebo konkrétní jazyk.
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -8,90 +8,90 @@ ms.date: 09/11/2017
 ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
-ms.openlocfilehash: e858966fb5a15b84af1952399a5eff3ca50d0d59
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 68ce4fa5536f21d6d66245a9383a4b58c42febff
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795693"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116366"
 ---
 # <a name="analyzers-in-azure-search"></a>Analyzátory ve službě Azure Search
 
-*Analyzátor* je součástí [fulltextové vyhledávání](search-lucene-query-architecture.md) zodpovědná za zpracování textu v řetězců dotazů a indexované dokumenty. Následující transformace jsou typické během analýzy:
+*Analyzátor* je součástí [fulltextové vyhledávání](search-lucene-query-architecture.md) zodpovědná za zpracování textu v řetězci dotazu a indexovaných dokumentů. Tyto transformace jsou typické během analýzy:
 
-+ Není nezbytné slova (stopslova) a interpunkce se odeberou.
-+ Fráze a rozděleným slova jsou rozdělené podle součásti.
-+ Velká slova jsou použita nižší.
-+ Slova jsou omezeny na kořenové formuláře tak, aby bez ohledu na to slovesného času může být nalezena shoda.
++ Bez nezbytné slova (stopword) a interpunkční znaménka se odeberou.
++ Fráze a slovech jsou rozdělené do součásti.
++ Slov velká písmena jsou malá malými a velkými písmeny.
++ Slova jsou zmenšeny na kořenové formulářů tak, aby bez ohledu na čas může být nalezena shoda.
 
-Převést lingvistické analyzátorů textový vstup na primitivní nebo kořenové formuláře, které jsou efektivní informace o ukládání a načítání. Převod dojde během indexování, když je sestavena index a pak znovu při hledání, pokud je pro index čtení. Se pravděpodobně získat výsledky hledání očekáváte, že pokud použijete stejný text analyzátor pro obě operace.
+Jazykové analyzátory převést textový vstup do primitivních nebo kořenový formuláře, které jsou efektivní informace o ukládání a načítání. Převod vyvolá se při indexování, při vytváření indexu a pak znovu během hledání, pokud je index pro čtení. Pravděpodobněji k získání požadovaných výsledků hledání očekáváte, že pokud použijete stejný analyzátor textu pro obě operace.
 
-Služba Azure Search používá [standardní Lucene analyzátor](https://lucene.apache.org/core/4_0_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) jako výchozí. Můžete přepsat výchozí na základě pole pole. Tento článek popisuje rozsah hodnot a nabízí osvědčené postupy pro vlastní analýzu. Také poskytuje příklad konfigurace pro klíčové scénáře.
+Používá služba Azure Search [analyzátor Lucene standardní](https://lucene.apache.org/core/4_0_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) jako výchozí. Můžete přepsat výchozí na základě pole pomocí pole. Tento článek popisuje škálu možností a nabízí osvědčené postupy pro vlastní analýza. Také poskytuje příklad konfigurace pro klíčové scénáře.
 
 ## <a name="supported-analyzers"></a>Podporované analyzátory
 
-Následující seznam popisuje, jaké analyzátorů jsou podporovány ve službě Azure Search.
+Následující seznam popisuje, jaké analyzátory jsou podporované ve službě Azure Search.
 
 | Kategorie | Popis |
 |----------|-------------|
-| [Standardní analyzátor Lucene](https://lucene.apache.org/core/4_0_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | Výchozí hodnota. Není potřeba žádná specifikace nebo konfigurace. Tento pro obecné účely analyzátor provede vhodné pro většinu jazyků a scénáře.|
-| Předdefinované analyzátory | Nabízí tak, jak má produkt dokončení má být použit jako-je s omezenou přizpůsobení. <br/>Existují dva typy: specializované a jazyk. Díky je "předdefinované" je odkaz je podle názvu s neexistuje vlastní nastavení. <br/><br/>[Specializuje (bez ohledu na jazyk) analyzátorů](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search#AnalyzerTable) se používají, když text vstupy vyžadují speciální zpracování nebo minimální zpracování. Zahrnout předdefinované analyzátory non jazyka **Asciifolding**, **– klíčové slovo**, **vzor**, **jednoduché**, **Zastavit**, **Prázdné**.<br/><br/>[Analyzátory jazyka](https://docs.microsoft.com/rest/api/searchservice/language-support) se používají, když potřebujete bohaté jazykovou podporu pro jednotlivé jazyky. Služba Azure Search podporuje 35 Lucene analyzátory jazyka a 50 analyzátorů zpracování přirozeného jazyka Microsoft. |
-|[Vlastní analyzátory](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | Uživatelem definované konfigurace kombinaci existující prvky, který se skládá z jednoho tokenizátor (povinné) a volitelné filtry (char nebo token).|
+| [Standardní analyzátor Lucene](https://lucene.apache.org/core/4_0_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | Default (Výchozí). Vyžaduje se žádné specifikace nebo konfigurace. Tento analyzátor pro obecné účely provádí dobře pro většinu scénářů a jazyky.|
+| Předdefinované analyzátory | Nabízí jak finální produkt je určen pro použití jako-je omezená vlastními změnami. <br/>Existují dva typy: specializované a jazyk. Co je kvůli tomu je "předdefinovaný" můžete odkazovat podle názvu se žádné přizpůsobení. <br/><br/>[Specializované (jazykově nezávislé) analyzátory](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search#AnalyzerTable) se používají při textovými vstupy vyžadují speciální zpracování a minimální zpracování. Zahrnout předdefinované non jazykové analyzátory **Asciifolding**, **– klíčové slovo**, **vzor**, **jednoduché**, **Zastavit**, **Prázdné znaky**.<br/><br/>[Analyzátory jazyka](https://docs.microsoft.com/rest/api/searchservice/language-support) se používají, když budete potřebovat bohatou jazykovou podporu pro jednotlivé jazyky. Služba Azure Search podporuje 35 Lucene jazykové analyzátory a 50 analyzátory zpracování přirozeného jazyka Microsoft. |
+|[Vlastní analyzátory](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | Uživatelem definované konfigurace kombinaci stávající elementy skládající se z jednoho tokenizátor (povinné) a volitelné filtry (char nebo token).|
 
-Můžete přizpůsobit předdefinované analyzátor, jako například **vzor** nebo **Zastavit**, použít alternativní možnosti, které jsou dokumentovány v článku [předdefinované analyzátor odkazu](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search#AnalyzerTable). Pouze několik předdefinovaných analyzátorů mají možností, které můžete nastavit. Jak se všechny vlastní nastavení, zadejte nové konfigurace s názvem, jako třeba *myPatternAnalyzer* ho odlišuje od Lucene vzor analyzátor.
+Můžete přizpůsobit předdefinovanou analyzátoru, jako **vzor** nebo **Zastavit**, použít alternativní možnosti uvedené v [předdefinovaný odkaz analyzátoru](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search#AnalyzerTable). Pouze několik předdefinovaných analyzátory máte možnosti, které můžete nastavit. Jak pomocí jakéhokoli přizpůsobení, zadejte nové konfigurace s názvem, jako třeba *myPatternAnalyzer* ho odlišuje od analyzátor Lucene vzor.
 
 ## <a name="how-to-specify-analyzers"></a>Určení analyzátory
 
-1. (pro vlastní analyzátorů pouze) Vytvoření **analyzátor** část v definici indexu. Další informace najdete v tématu [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) a také [vlastní analyzátorů > vytvořit](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search#create-a-custom-analyzer).
+1. (pro vlastní analyzátory jenom) Vytvoření **analyzátor** části v definici indexu. Další informace najdete v tématu [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) a také [vlastní analyzátory > vytvořit](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search#create-a-custom-analyzer).
 
-2. Na [pole definice](https://docs.microsoft.com/rest/api/searchservice/create-index) v indexu, nastavte **analyzátor** vlastnost na název cílového analyzer (například `"analyzer" = "keyword"`. Platné hodnoty patří název předdefinované analyzátor, analyzátor jazyka nebo vlastní analyzátor rovněž definovaný ve schématu indexu.
+2. Na [pole definice](https://docs.microsoft.com/rest/api/searchservice/create-index) v indexu, nastavte **analyzátor** vlastnost na název cílového analyzer (například `"analyzer" = "keyword"`. Platné hodnoty jsou název předdefinovaného analyzátoru, analyzátor jazyka nebo vlastní analyzátor také definováno ve schématu indexu.
 
-3. Volitelně můžete místo jeden **analyzátor** vlastnost můžete nastavit různé analyzátory pro indexování a dotazování pomocí **indexAnalyzer** a **searchAnalyzer'** pole Parametry. 
+3. Volitelně můžete místo jednoho **analyzátor** vlastnost můžete nastavit různé analyzátory pro indexování a dotazování pomocí **indexAnalyzer** a **searchAnalyzer "** pole Parametry. 
 
-3. Přidání analyzátor do definice pole způsobuje operaci zápisu na index. Pokud přidáte **analyzátor** do existujícího indexu, Všimněte si následujících kroků:
+3. Analyzátor přidání definice pole pro s sebou nese náklady operace zápisu na index. Pokud chcete přidat **analyzátor** do existujícího indexu, mějte na paměti následující kroky:
  
  | Scénář | Dopad | Kroky |
  |----------|--------|-------|
- | Přidat nové pole | minimální | Pokud pole ještě neexistuje ve schématu, neexistuje žádná pole revize pro provést, protože pole ještě nemá fyzickou přítomnost v indexu. Použití [aktualizace indexu](https://docs.microsoft.com/rest/api/searchservice/update-index) a [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) pro tuto úlohu.|
- | Přidáte analyzátor na stávající indexovaného pole. | Opětovné sestavení | Převedený index pro toto pole je nutné znovu vytvořit od základů nahoru a obsah těchto polí musí být přeindexovány. <br/> <br/>Pro indexy active vyvíjené [odstranit](https://docs.microsoft.com/rest/api/searchservice/delete-index) a [vytvořit](https://docs.microsoft.com/rest/api/searchservice/create-index) index pro vyzvednutí novou definici pole. <br/> <br/>Pro indexy v produkčním prostředí měli byste vytvořit nové pole a zadejte definici revidovaný jej začít používat. Použití [aktualizace indexu](https://docs.microsoft.com/rest/api/searchservice/update-index) a [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) začlenit nové pole. Později v rámci obsluhy plánované index vyčistěte index odebrat zastaralé pole. |
+ | Přidání nového pole | Minimální | Pokud pole ještě neexistuje ve schématu, neexistuje žádné pole revize provést, protože pole ještě nemá fyzickou přítomnost v indexu. Použití [aktualizaci indexu](https://docs.microsoft.com/rest/api/searchservice/update-index) a [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) pro tuto úlohu.|
+ | Analyzátor přidání do existujícího indexovaného pole. | Opětovné sestavení | Obráceným index pro toto pole musí se znovu vytvořit zdola nahoru a musí být přeindexovány obsah těchto polí. <br/> <br/>Pro indexy aktivně vyvíjí [odstranit](https://docs.microsoft.com/rest/api/searchservice/delete-index) a [vytvořit](https://docs.microsoft.com/rest/api/searchservice/create-index) index ke sbírání nová definice pole. <br/> <br/>Pro indexy v produkčním prostředí měli byste vytvořit nové pole zadejte definici upravená a začít používat. Použití [aktualizaci indexu](https://docs.microsoft.com/rest/api/searchservice/update-index) a [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) začlenit nové pole. Později, v rámci index plánované údržby můžete vyčistit index odebrat zastaralé pole. |
 
 ## <a name="tips-and-best-practices"></a>Tipy a osvědčené postupy
 
-Tato část nabízí Rady, jak pracovat s analyzátorů.
+Tato část nabízí Rady o tom, jak pracovat s analyzátory.
 
-### <a name="one-analyzer-for-read-write-unless-you-have-specific-requirements"></a>Jeden analyzátor pro čtení a zápis Pokud nemáte konkrétní požadavky
+### <a name="one-analyzer-for-read-write-unless-you-have-specific-requirements"></a>Jeden analyzátor pro čtení i zápis Pokud nemáte konkrétní požadavky
 
-Služba Azure Search umožňuje určit různé analyzátory pro indexování a hledání prostřednictvím další `indexAnalyzer` a `searchAnalyzer` pole parametrů. Pokud tento parametr zadán, analyzátor nastavit `analyzer` vlastnost se používá pro indexování a vyhledávání. Pokud `analyzer` je tento parametr nezadáte, analyzátor standardní Lucene výchozí se používá.
+Služba Azure Search umožňuje určit různé analyzátory pro indexování a vyhledávání prostřednictvím dalších `indexAnalyzer` a `searchAnalyzer` pole parametrů. Pokud tento parametr zadán, analyzátor sadu s `analyzer` vlastnost se používá pro indexování a vyhledávání. Pokud `analyzer` je tento parametr zadán, výchozí analyzátor Lucene standardní se používá.
 
-Obecným pravidlem je použít stejné analyzátor pro indexování i dotazování, není-li konkrétní požadavky nevyzvou jinak. Ujistěte se, že jste důkladně otestovat. Při zpracování textu se liší v hledání a indexování čas, spustíte riziko neshody mezi indexované termínů, pokud nejsou zarovnány vyhledávání a indexování analyzátor konfigurace a dotazu.
+Obecně je použití stejné analyzátoru pro indexování a dotazování, není-li konkrétní požadavky stanovují jinak. Třeba důkladně otestovat. Při zpracování textu se liší v hledání a indexování čas, vystavujete se riziku Neshoda mezi indexované termínů, pokud nejsou zarovnány hledání a indexování analyzátor konfigurace a dotaz.
 
-### <a name="test-during-active-development"></a>Testování během vývoje active
+### <a name="test-during-active-development"></a>Test při aktivním vývoji
 
-Přepsání standardního analyzátor vyžaduje opětovné sestavení indexu. Rozhodněte, pokud je to možné, na které analyzátorů používat během active vývoje, před distribucí indexu v produkčním prostředí.
+Přepsání standardního analyzátor vyžaduje opětovné sestavení indexu. Rozhodněte, pokud je to možné, na které analyzátory pro použití při aktivním vývoji, před distribucí indexu do produkčního prostředí.
 
-### <a name="inspect-tokenized-terms"></a>Zkontrolujte tokenizovaná podmínky
+### <a name="inspect-tokenized-terms"></a>Kontrola tokenizovaná podmínky
 
-Pokud se hledání nezdaří vracet očekávané výsledky, je nejpravděpodobnější scénář tokenu nesrovnalostí mezi termín vstupů v dotazu a tokenizovaná podmínky v indexu. Pokud tokeny nejsou stejné, shoduje se nepodařilo vyhodnotit. Chcete-li prověřit tokenizátor výstup, doporučujeme používat [analyzovat rozhraní API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) jako nástroj šetření. Odpověď se skládá z tokenů, generovaná konkrétní analyzátor.
+Pokud se hledání nezdaří vrátit očekávané výsledky, je nejpravděpodobnější scénář token nesrovnalosti mezi termín vstupů v dotazu a tokenizovaná podmínky v indexu. Pokud tokeny nejsou stejné, odpovídá nepodaří sloučit. Chcete-li prověřit tokenizátor výstup, doporučujeme použít [analyzovat rozhraní API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) jako nástroj pro zkoumání. Odpověď se skládá z tokenů, generovaná konkrétní Analyzer.
 
 ### <a name="compare-english-analyzers"></a>Porovnání anglické analyzátory
 
-[Vyhledávání analyzátor ukázku](http://alice.unearth.ai/) je třetí strany ukázkové aplikace zobrazuje vedle sebe porovnání standardní analyzátor Lucene, Lucene na anglickém jazyce analyzátor a procesor anglické přirozeného jazyka společnosti Microsoft. Index vyřešen; obsahuje text z oblíbených scénáře. Pro každý vstupní hledání zadáte, výsledky z každé analyzátor jsou zobrazeny v sousedících podokna budete představu o tom, jak každý analyzátor zpracovává do jednoho řetězce. 
+[Ukázka analyzátoru hledání](http://alice.unearth.ai/) je třetí strany ukázkovou aplikaci ukazující srovnání vedle sebe standardní analyzátor Lucene, analyzátor Lucene pro angličtinu a procesor anglické přirozeného jazyka od Microsoftu. Index je pevná; obsahuje text z oblíbených scénáře. Pro každý vstupní hledání zadáte, výsledky z každé analyzátoru jsou zobrazeny v sousední podoken, získáte tak představu o způsob, jak každý analyzátor zpracuje do jednoho řetězce. 
 
 ## <a name="examples"></a>Příklady
 
-Následující příklady ukazují definice analyzátor pro několik klíčových scénářů.
+Následující příklady ukazují analyzátor definice pro několik klíčových scénářů.
 
 <a name="Example1"></a>
 ### <a name="example-1-custom-options"></a>Příklad 1: Vlastní možnosti
 
-Tento příklad ukazuje definici analyzátor s vlastní možnosti. Vlastní možnosti pro filtry char, tokenizers a tokenu filtry se zadávají samostatně jako s názvem konstrukce a pak odkazuje v definici analyzátor. Předdefinované elementy jsou použity jako-je a jednoduše odkazuje jeho názvem.
+Tento příklad ukazuje definici analyzátoru s vlastními možnostmi. Vlastní možnosti pro filtry char, tokenizátory a token filtry se zadávají samostatně jako pojmenované konstrukcí a pak odkazuje v definici analyzátor. Předdefinované elementy se používají jako-je a jednoduše odkazovat podle názvu.
 
-Tento příklad s návodem:
+Provede v tomto příkladu:
 
-* Analyzátory jsou vlastností třídy pole pro prohledávatelné pole.
-* Vlastní analyzátor je součástí definice indexu. Mohl být lehce přizpůsobené (např. přizpůsobení jednu možnost v jeden filtr) nebo přizpůsobit na více místech.
-* V takovém případě je vlastní analyzátor "my_analyzer", které dále používá vlastní standardní tokenizátor "my_standard_tokenizer" a dva filtry tokenu: malá písmena a přizpůsobit asciifolding filtru "my_asciifolding".
-* Definuje také filtr char vlastní "map_dash" nahradit všechny pomlčky podtržítka před tokenizaci (standardní tokenizátor zalomení na dash, ale ne na podtržítko).
+* Analyzátory jsou vlastnosti třídy pole pro prohledávatelné pole.
+* Vlastní analyzátor je součástí definice indexu. Pravděpodobně je lehce přizpůsobit (například přizpůsobení jednu možnost v jednom filtru) nebo přizpůsobit na více místech.
+* V takovém případě je vlastní analyzátor "my_analyzer", která dále používá vlastní standardní tokenizátor "my_standard_tokenizer" a dva filtry token: malá písmena a přizpůsobené asciifolding filtr "my_asciifolding".
+* Definuje také filtr vlastních "map_dash" char nahradit všechny pomlčky podtržítky před Tokenizace (standardní tokenizátor konce čárka – ale ne podtržítko).
 
 ~~~~
   {
@@ -134,7 +134,7 @@ Tento příklad s návodem:
      "tokenizers":[
         {
            "name":"my_standard_tokenizer",
-           "@odata.type":"#Microsoft.Azure.Search.StandardTokenizer",
+           "@odata.type":"#Microsoft.Azure.Search.StandardTokenizerV2",
            "maxTokenLength":20
         }
      ],
@@ -151,9 +151,9 @@ Tento příklad s návodem:
 <a name="Example2"></a>
 ### <a name="example-2-override-the-default-analyzer"></a>Příklad 2: Přepsat výchozí analyzátor
 
-Standardní Analyzátor je výchozí. Předpokládejme, že chcete nahradit výchozí různých předdefinovaných analyzátor, jako je například analyzátor vzor. Pokud si nejste vlastních možností nastavení, stačí zadat název v definici pole.
+Výchozím nastavením je standardní analyzátor. Předpokládejme, že budete chtít nahradit výchozí pomocí různých předdefinovaných analyzátoru, jako je model analyzátoru. Pokud si nejste možnosti vlastního nastavení, stačí určit podle názvu v definici pole.
 
-Element "analyzer" přepsání standardních analyzátor na základě pole pole. Neexistuje žádný globální přepsání. V tomto příkladu `text1` používá vzor analyzátor a `text2`, která neurčuje analyzátor, používá výchozí.
+Prvek "analyzátor" přepisuje standardní analyzátor na základě pole pomocí pole. Neexistuje žádné globální přepsání. V tomto příkladu `text1` používá model analyzátoru a `text2`, která neurčuje analyzátor, používá výchozí.
 
 ~~~~
   {
@@ -183,7 +183,7 @@ Element "analyzer" přepsání standardních analyzátor na základě pole pole.
 <a name="Example3"></a>
 ### <a name="example-3-different-analyzers-for-indexing-and-search-operations"></a>Příklad 3: Různé analyzátory pro operace indexování a vyhledávání
 
-Rozhraní API obsahovat atributy další index pro zadání různé analyzátory pro indexování a vyhledávání. `searchAnalyzer` a `indexAnalyzer` atributy musí být zadány jako pár nahrazení jedné `analyzer` atribut.
+Rozhraní API obsahuje další index atributy pro určení jiné analyzátory pro indexování a vyhledávání. `searchAnalyzer` a `indexAnalyzer` atributy musí být zadán jako dvojice, nahrazení jedné `analyzer` atribut.
 
 
 ~~~~
@@ -210,7 +210,7 @@ Rozhraní API obsahovat atributy další index pro zadání různé analyzátory
 <a name="Example4"></a>
 ### <a name="example-4-language-analyzer"></a>Příklad 4: Analyzátor jazyka
 
-Pole obsahující řetězce v různých jazycích můžete použít analyzátor jazyka, zatímco ostatní pole ponechte výchozí (nebo pomocí některé jiné předdefinované nebo vlastní analyzátoru). Pokud chcete použít analyzátor jazyka, musíte ho použít pro operace indexování a vyhledávání. Pole, která je použít analyzátor jazyka nemůže mít jiný analyzátory pro indexování a hledání.
+Pole obsahující řetězce v různých jazycích můžete použít analyzátor jazyka, zatímco ostatní pole ponechte výchozí hodnotu (nebo pomocí některé jiné předdefinovaným nebo vlastním analyzátoru). Pokud používáte analyzátor jazyka, musí být použit pro operace indexování a vyhledávání. Pole, která lze použít analyzátor jazyka nemůže mít různé analyzátory pro indexování a vyhledávání.
 
 ~~~~
   {
@@ -241,15 +241,15 @@ Pole obsahující řetězce v různých jazycích můžete použít analyzátor 
 
 ## <a name="next-steps"></a>Další postup
 
-+ Přečtěte si naše komplexní vysvětlení [jak úplné textové vyhledávání funguje ve službě Azure Search](search-lucene-query-architecture.md). Tento článek používá příklady vysvětlení chování, které vám mohou připadat counter-intuitive na ploše.
++ Projděte si naše komplexní vysvětlení [jak funguje fulltextové vyhledávání ve službě Azure Search](search-lucene-query-architecture.md). V tomto článku se používají příklady který vysvětluje chování, která se může zdát counter-intuitive na povrchu.
 
-+ Zkuste syntaxe další dotazu z [vyhledávání dokumentů](https://docs.microsoft.com/rest/api/searchservice/search-documents#examples) příklad části nebo z [jednoduchá syntaxe dotazů](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) v Průzkumník služby Search na portálu.
++ Zkuste syntaxi dalšího dotazu [vyhledávání dokumentů](https://docs.microsoft.com/rest/api/searchservice/search-documents#examples) vzorový oddíl nebo z [jednoduchá syntaxe dotazů](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) v Průzkumníku služby Search na portálu.
 
-+ Zjistěte, jak použít [lexikální analyzátory jazyka](https://docs.microsoft.com/rest/api/searchservice/language-support).
++ Zjistěte, jak použít [specifické pro jazyk lexikální analyzátory](https://docs.microsoft.com/rest/api/searchservice/language-support).
 
-+ [Konfigurace vlastní analyzátorů](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search) pro minimální zpracování nebo speciální zpracování u jednotlivých polí.
++ [Konfigurace vlastní analyzátory](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search) pro minimální zpracování nebo speciální zpracování pro jednotlivá pole.
 
-+ [Porovnání standardní a anglické analyzátorů](http://alice.unearth.ai/) v sousedících podokna na tento ukázkový web. 
++ [Porovnat standardní a angličtině analyzátory](http://alice.unearth.ai/) v sousední podokna na tomto webu ukázku. 
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 

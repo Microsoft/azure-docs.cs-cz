@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 2308897737014befb831cbef9880065856c20c77
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: aff1d59000a95f2b8f029b9db30ff1facb2f8ba6
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868792"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114664"
 ---
 # <a name="azure-sql-transparent-data-encryption-bring-your-own-key-support"></a>Azure transparentní šifrování dat SQL: Podpora Your Own Key přeneste
 
@@ -66,7 +66,14 @@ Transparentní šifrování dat, je nejprve konfigurován pro použití ochrana 
   > [!NOTE]
   > Pokud Azure AD Identity **je omylem odstraněn nebo byly odvolány, serveru oprávnění** pomocí zásady přístupu trezoru klíčů, server ztratí přístup k trezoru klíčů a transparentní šifrování dat šifrované databáze zařazují do 24 hodin.
 
-- Konfigurace služby Azure Key Vault bez virtuální sítě a brány firewall.  Pokud SQL ztratí přístup k trezoru klíčů, jsou vynechány TDE šifrované databáze během 24 hodin.
+- Při použití brány firewall a virtuální sítě se službou Azure Key Vault, je nutné nakonfigurovat následující: 
+  - Povolit přístup z "Vybrané sítě" 
+  - Přidat existující virtuální sítě a vyberte síť, SQL Database, pokud je k dispozici (je to pro spravované instance povinných a volitelných pro jednoznačné databáze) 
+  - Povolit důvěryhodným službám Microsoftu obejít tuto bránu firewall – zvolili Ano 
+         
+    > [!NOTE] 
+    > Pokud je šifrovaný transparentní šifrování dat databází SQL ztratí přístup k trezoru klíčů, protože se nedá obejít bránu firewall, databáze zařazují do 24 hodin.
+
 - Povolit auditování a vytváření sestav na všechny šifrovací klíče: Key Vault poskytuje protokoly, které se dají snadno vkládat do jiné nástroje pro správu (SIEM) událostí zabezpečení. Operations Management Suite (OMS) [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault) je příkladem služby, která je již integrovaná.
 - K zajištění vysoké dostupnosti šifrovaným databázím, nakonfigurujte každý logický server s dvěma Azure Key Vault, které se nacházejí v různých oblastech.
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 80749fedde17a9567aa13e1e72677dfdd027ca36
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: f9876f3e21a7cfccae2fb7f70913269d4ca1fdf4
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043256"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49115365"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Řešení pro monitorování kontejnerů ve službě Log Analytics
 
@@ -36,7 +36,7 @@ Toto řešení ukazuje, které kontejnery jsou spuštěná, jaké image kontejne
 - Service Fabric
 - Red Hat OpenShift
 
-Pokud vás zajímají sledování výkonu vašich úloh nasadit do prostředí Kubernetes hostovaném na AKS (Azure Container Service), přečtěte si téma [monitorování služby Azure Container Service](../monitoring/monitoring-container-health.md).  Řešení pro monitorování kontejnerů nezahrnuje podporu pro monitorování této platformy.  
+Pokud vás zajímají sledování výkonu vašich úloh nasazených do hostovaného prostředí Kubernetes ve službě Azure Kubernetes Service (AKS), najdete v článku [monitorování Azure Kubernetes Service](../monitoring/monitoring-container-health.md). Řešení pro monitorování kontejnerů nezahrnuje podporu pro monitorování této platformy.  
 
 Následující diagram znázorňuje vztahy mezi různými hostitelích kontejnerů a agenty pomocí Log Analytics.
 

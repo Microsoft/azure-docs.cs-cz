@@ -10,12 +10,12 @@ author: shivanipatel
 manager: cgronlun
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: 66370aec76044454ab4f11eb432fe2e9b0cdb9cf
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 7d706cf71761496fd740c729224ee4331eeb2911
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248581"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091619"
 ---
 # <a name="prepare-to-deploy-models-on-iot-edge"></a>Příprava na nasazení modelů v prostředí IoT Edge
 
@@ -45,9 +45,6 @@ Informace o registraci vašeho zařízení a nainstalovat modul runtime IoT, pos
 
 Moduly Azure IoT Edge jsou založeny na Image kontejneru. Jak model nasadit do zařízení IoT Edge, použijte následující kroky k registraci modelu na pracovní prostor služby Azure Machine Learning service a vytvoření image Dockeru. 
 
-> [!IMPORTANT]
-> Pokud použijete k natrénování modelu, který může zaregistrovat již ve vašem pracovním prostoru Azure Machine Learning, v tomto případě přeskočte krok 3.
-
 1. Inicializovat pracovní prostor a načtení souboru config.json:
 
     ```python
@@ -58,6 +55,9 @@ Moduly Azure IoT Edge jsou založeny na Image kontejneru. Jak model nasadit do z
     ```    
 
 1. Zaregistrujte model do pracovního prostoru. Nahraďte text výchozí cestu model, název, značky a popis:
+
+    > [!IMPORTANT]
+    > Pokud jste použili aplikaci Azure Machine Learning pro trénování modelu, možná už zaregistrovaný v pracovním prostoru. Pokud ano, tento krok přeskočte. Chcete-li zobrazit seznam modelů registrované s tímto pracovním prostorem, použijte `Model.list(ws)`.
 
     ```python
     from azureml.core.model import Model
@@ -81,9 +81,9 @@ Moduly Azure IoT Edge jsou založeny na Image kontejneru. Jak model nasadit do z
 
 1. Vytvoření **vyhodnocování skript** s názvem `score.py`. Tento soubor se používá ke spuštění modelu v bitové kopii. Musí zahrnovat následující funkce:
 
-    * `init()` Funkce, která obvykle načte do globálního objektu modelu. Tato funkce se spustí pouze jednou při spuštění kontejneru Dockeru. 
+    * Funkce `init()`, která obvykle načítá daný model do globálního objektu. Tato funkce se spustí jenom jednou, a to při spuštění kontejneru Dockeru. 
 
-    * `run(input_data)` Funkce používá model k predikci hodnoty založené na vstupní data. Vstupy a výstupy spustit obvykle používají JSON pro serializaci a rušení serializace, ale ostatní formáty jsou podporovány.
+    * Funkce `run(input_data)` používá daný model k předpovědi hodnoty na základě vstupních dat. Vstupy a výstupy spuštění obvykle pro serializaci a deserializaci používají JSON, ale podporují se i další formáty.
 
     Příklad najdete v tématu [kurz klasifikace obrázků](tutorial-deploy-models-with-aml.md#make-script).
 
@@ -120,7 +120,7 @@ Moduly Azure IoT Edge jsou založeny na Image kontejneru. Jak model nasadit do z
 
 Azure IoT potřebuje přihlašovací údaje pro registr kontejneru, který ukládá Image dockeru ve službě Azure Machine Learning. Použijte následující postup k získání přihlašovacích údajů:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/signin/index).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/signin/index).
 
 1. Přejděte do pracovního prostoru služby Azure Machine Learning a vyberte __přehled__. Chcete-li přejít do nastavení registru kontejneru, vyberte __registru__ odkaz.
 

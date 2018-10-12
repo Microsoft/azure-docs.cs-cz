@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 705366dbb055679a2d0adc628938fa419609f6ed
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: ceff8f6134f04409a4df1045a764c06597d997fc
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885115"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092826"
 ---
 # <a name="virtual-machine-serial-console"></a>Konzola sériového portu virtuálního počítače
 
@@ -83,12 +83,12 @@ Pokud je potřeba povolit Windows spouštěcí zavaděč zobrazí výzvu k zobra
 1. Připojte se k virtuálnímu počítači přes vzdálenou plochu Windows
 2. Z příkazového řádku pro správu spusťte následující příkazy 
 * `bcdedit /set {bootmgr} displaybootmenu yes`
-* `bcdedit /set {bootmgr} timeout 30`
+* `bcdedit /set {bootmgr} timeout 10`
 * `bcdedit /set {bootmgr} bootems yes`
 3. Restartování systému pro spouštěcí nabídky, aby byl povolen
 
 > [!NOTE] 
-> Časový limit, který jste nastavili pro spouštěcí nabídky Správce zobrazení bude mít vliv na váš operační systém spouštění čas v budoucnosti. Může být přijatelný pro některá přidat 30 druhý časový limit, který zajišťuje správce spouštění viditelné prostřednictvím konzoly sériového portu, ostatní může být vhodné kratší časový limit. Nastavte hodnotu časového limitu na hodnotu, která jste obeznámeni.
+> Časový limit, který jste nastavili pro spouštěcí nabídky Správce zobrazení bude mít vliv na váš operační systém spouštění čas v budoucnosti. Může být přijatelný pro některá přidání 10 druhý časový limit, který zajišťuje správce spouštění viditelné prostřednictvím konzoly sériového portu, ostatní může být vhodné kratší nebo delší časový limit. Nastavte hodnotu časového limitu na hodnotu, která jste obeznámeni.
 
 ## <a name="use-serial-console-for-nmi-calls-in-windows-vms"></a>Použití konzoly sériového portu pro volání NMI ve virtuálních počítačích Windows
 Maskable přerušení (NMI) slouží k vytvoření signál, který nebude ignorovat softwaru na virtuálním počítači. V minulosti NMIs se používají ke sledování hardwarových problémů v systémech, které vyžaduje konkrétní odezvy.  Dnes, programátoři a správce systému často používají NMI jako mechanismus pro ladění nebo řešení potíží s systémy, které jsou zablokovaná.

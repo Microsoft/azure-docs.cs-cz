@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2018
+ms.date: 10/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 6feafba41cf65a752dd5bf0819b0b93bacff0aff
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 48dcb4a3b1e06ab62905092055ba1b48bd0dddb7
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42055023"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114492"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce-sandbox"></a>Kurz: Integrace Azure Active Directory s Salesforce Sandbox
 
@@ -107,30 +107,38 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+2. Klikněte na tlačítko **režim změnit jednotného přihlašování** nad obrazovky, vyberte **SAML** režimu.
 
-    ![Jednotné přihlašování – dialogové okno](./media/salesforce-sandbox-tutorial/tutorial_salesforcesandbox_samlbase.png)
+      ![Nakonfigurovat jednotné přihlašování – odkaz](./media/salesforce-sandbox-tutorial/tutorial_general_300.png)
 
-3. Na **Salesforce izolovaného prostoru domény a adresy URL** části, proveďte následující kroky, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
+3. Na **vybrat jedinou metodu přihlašování** dialogového okna, klikněte na tlačítko **vyberte** pro **SAML** chcete povolit jednotné přihlašování.
 
-   ![Salesforce izolovaného prostoru domény a adresy URL jednotného přihlašování – informace](./media/salesforce-sandbox-tutorial/tutorial_salesforcesandbox_url1.png)
+    ![Nakonfigurovat jednotné přihlašování – odkaz](./media/salesforce-sandbox-tutorial/tutorial_general_301.png)
 
-   V **adresy URL odpovědi** textového pole zadejte konkrétní organizace **adresy URL odpovědi**.
+4. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** tlačítko Otevřít **základní konfiguraci SAML** dialogového okna.
+   
+    ![Nakonfigurovat jednotné přihlašování – odkaz](./media/salesforce-sandbox-tutorial/tutorial_general_302.png)
 
-   > [!NOTE]
-   > Aktualizujte hodnotu adresy URL odpovědi skutečná adresa URL odpovědi, který je vysvětlen později v tomto kurzu.
+5. Na **základní konfiguraci SAML** části, proveďte následující kroky, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
 
-4. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(RAW)** a uložte soubor certifikátu v počítači.
+    a. Klikněte na tlačítko **nahrát soubor metadat**.
+
+    ![Nahrát soubor metadat](./media/salesforce-sandbox-tutorial/upload_metadata.png)
+
+    b. Klikněte na **složky logo** vyberte soubor metadat a klikněte na **nahrát**.
+
+    ![Zvolte soubor metadat](./media/salesforce-sandbox-tutorial/browse_upload_metadata.png)
+
+    > [!NOTE]
+    > Poskytovatel služeb soubor metadat panelu zobrazí na portálu pro správu služby Salesforce izolovaného prostoru, který je vysvětlen později v tomto kurzu.
+
+    c. Po úspěšném odeslání souboru metadat **adresy URL odpovědi** hodnota se zobrazí automaticky vyplní v **adresy URL odpovědi** textového pole.
+
+    ![Salesforce izolovaného prostoru domény a adresy URL jednotného přihlašování – informace](./media/salesforce-sandbox-tutorial/tutorial_salesforcesandbox_url1.png)
+
+6. Na **podpisový certifikát SAML** části, klikněte na **Stáhnout** Stáhnout **kód XML metadat federace** a uložte soubor xml ve vašem počítači.
 
     ![Odkaz ke stažení certifikátu](./media/salesforce-sandbox-tutorial/tutorial_salesforcesandbox_certificate.png)
-
-5. Klikněte na tlačítko **Uložit** tlačítko.
-
-    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/salesforce-sandbox-tutorial/tutorial_general_400.png)
-
-6. Na **Salesforce izolovaného prostoru konfigurace** klikněte na tlačítko **konfigurace Sandboxu Salesforce** otevřete **nakonfigurovat přihlašování** okno. Kopírovat **SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
-
-    ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/tutorial_salesforcesandbox_configure.png)
 
 7. Otevření nové záložky v prohlížeči a přihlaste se k vašemu účtu správce izolovaného prostoru služby Salesforce.
 
@@ -150,41 +158,21 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/sf-enable-saml.png)
 
-12. Konfigurace SAML jednotné přihlašování – nastavení, klikněte na tlačítko **nový**.
+12. Konfigurace SAML jednotné přihlašování – nastavení, klikněte na tlačítko **nový ze souboru metadat**.
 
     ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
 
-13. Na **nastavení jednotného přihlašování** části, proveďte následující kroky:
+13. Klikněte na tlačítko **zvolit soubor** nahrát soubor metadat XML, který jste si stáhli z webu Azure portal a klikněte na tlačítko **vytvořit**.
 
-    ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/sf-saml-config1.png)
+    ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/xmlchoose.png)
 
-    a. Vyberte **povoleno SAML** zaškrtávací políčko.
+14. Na **SAML jednotné přihlašování – nastavení** stránky, automaticky vyplnit pole a klikněte na Uložit.
 
-    b. V **vystavitele** pole, vložte hodnotu **SAML Entity ID**, který jste zkopírovali z portálu Azure portal.
+    ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/salesforcexml.png)
 
-    c. Nahrát **certifikát poskytovatele Identity**, klikněte na tlačítko **Procházet** Procházet a vyberte soubor certifikátu, který jste si stáhli z webu Azure portal.
-
-    d. V **přihlašovací adresa URL zprostředkovatele Identity** textového pole vložte hodnotu **jednotné přihlašování – adresa URL služby**, který jste zkopírovali z portálu Azure portal.
-
-    e. Jako **typ Identity SAML**, zvolte jednu z následujících možností:
-
-      * Vyberte **kontrolní výraz obsahuje uživatelské jméno uživatele Salesforce**, pokud uživatelské jméno Salesforce uživatele se předává v kontrolní výraz SAML
-
-      * Vyberte **kontrolní výraz obsahuje ID federace z objektu uživatele**, pokud je předávána federace z objektu uživatele v kontrolní výraz SAML
-  
-    f. Jako **umístění Identity SAML**vyberte **identita je element atribut**.
-
-    g. SFDC nepodporuje odhlašování SAML.  Jako alternativní řešení, vložte `https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0` do **odhlašovací adresa URL vlastní** textového pole.
-
-    h. Klikněte na **Uložit**.
-
-14. Na **nastavení jednotného přihlašování** stránky, klikněte na tlačítko **stáhnout Metadata** tlačítko.
+15. Na **nastavení jednotného přihlašování** stránky, klikněte na tlačítko **stáhnout Metadata** tlačítko a stáhněte si soubor metadat zprostředkovatele služby. Použít tento soubor **základní konfiguraci SAML** části na webu Azure Portal ke konfiguraci potřebné adresy URL, jak je vysvětleno výše.
 
     ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/configure4.png)
-
-15. Otevřete stažený metadat v jiném okně prohlížeče a zkopírujte **umístění** hodnotu a vložte ho do **adresy URL odpovědi** textového pole na **Salesforce izolovaného prostoru domény a adresy URL**části webu Azure Portal.  
-
-    ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/configure5.png)
 
 16. Pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu po jsou požadavky, které:
 
@@ -192,7 +180,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     b. Budete muset nakonfigurovat a povolit vaši doménu v Sandboxu služby Salesforce, kroky pro tento jsou vysvětleny dále v tomto kurzu.
 
-    c. Na webu Azure Portal na **Salesforce izolovaného prostoru domény a adresy URL** oddílu, zkontrolujte **zobrazit pokročilé nastavení URL** a postupujte následovně:
+    c. Na webu Azure Portal na **základní konfiguraci SAML** klikněte na tlačítko **nastavit další adresy URL** a postupujte následovně:
   
     ![Salesforce izolovaného prostoru domény a adresy URL jednotného přihlašování – informace](./media/salesforce-sandbox-tutorial/tutorial_salesforcesandbox_url.png)
 
@@ -201,71 +189,41 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     > [!NOTE]
     > Tato hodnota by měla zkopírovali z portálu Sandboxu služby Salesforce, jakmile povolíte domény.
 
-17. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(RAW)** a uložte soubor certifikátu v počítači.
+17. Na **podpisový certifikát SAML** klikněte na tlačítko **kód XML metadat federace** a uložte soubor xml ve vašem počítači.
 
     ![Odkaz ke stažení certifikátu](./media/salesforce-sandbox-tutorial/tutorial_salesforcesandbox_certificate.png)
 
-18. Klikněte na tlačítko **Uložit** tlačítko.
+18. Otevření nové záložky v prohlížeči a přihlaste se k vašemu účtu správce izolovaného prostoru služby Salesforce.
 
-    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/salesforce-sandbox-tutorial/tutorial_general_400.png)
-
-19. Na **Salesforce izolovaného prostoru konfigurace** klikněte na tlačítko **konfigurace Sandboxu Salesforce** otevřete **nakonfigurovat přihlašování** okno. Kopírovat **SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
-
-    ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/tutorial_salesforcesandbox_configure.png)
-
-20. Otevření nové záložky v prohlížeči a přihlaste se k vašemu účtu správce izolovaného prostoru služby Salesforce.
-
-21. Klikněte na **nastavení** pod **ikona nastavení** v pravém horním rohu stránky.
+19. Klikněte na **nastavení** pod **ikona nastavení** v pravém horním rohu stránky.
 
     ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/configure1.png)
 
-22. Přejděte dolů k položce **nastavení** v levém navigačním podokně klikněte na tlačítko **Identity** tím rozbalíte související. Pak klikněte na tlačítko **nastavení jednotného přihlašování**.
+20. Přejděte dolů k položce **nastavení** v levém navigačním podokně klikněte na tlačítko **Identity** tím rozbalíte související. Pak klikněte na tlačítko **nastavení jednotného přihlašování**.
 
     ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/sf-admin-sso.png)
 
-23. Na **nastavení jednotného přihlašování** stránky, klikněte na tlačítko **upravit** tlačítko.
+21. Na **nastavení jednotného přihlašování** stránky, klikněte na tlačítko **upravit** tlačítko.
 
     ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/configure3.png)
 
-24. Vyberte **povoleno SAML**a potom klikněte na tlačítko **Uložit**.
+22. Vyberte **povoleno SAML**a potom klikněte na tlačítko **Uložit**.
 
     ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/sf-enable-saml.png)
 
-25. Konfigurace SAML jednotné přihlašování – nastavení, klikněte na tlačítko **nový**.
+23. Konfigurace SAML jednotné přihlašování – nastavení, klikněte na tlačítko **nový ze souboru metadat**.
 
     ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
 
-26. Pokud chcete přidat druhou instanci, je potřeba povolit domény, jak už jsme zmínili výše (SP zahájeno případ). V části SAML jednotné přihlašování – nastavení proveďte následující kroky:
+24. Klikněte na tlačítko **zvolit soubor** nahrát soubor metadat XML a klepněte na tlačítko **vytvořit**.
+
+    ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/xmlchoose.png)
+
+25. Na **SAML jednotné přihlašování – nastavení** stránky, automaticky vyplnit pole, zadejte název konfigurace (například: *SPSSOWAAD_Test*) v **název** textového pole a Klikněte na Uložit.
 
     ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/sf-saml-config.png)
 
-    a. V **název** textového pole zadejte název konfigurace (například: *SPSSOWAAD_Test*).
-
-    b. V **vystavitele** pole, vložte hodnotu **SAML Entity ID**, který jste zkopírovali z portálu Azure portal.
-
-    c. V **Entity ID** textové pole, použijte `https://test.salesforce.com` hodnotu pro první instanci a z druhé instance aplikace můžete použít konkrétní hodnotu ID tenanta.
-
-    d. Nahrát **certifikát poskytovatele Identity**, klikněte na tlačítko **zvolit soubor** Procházet a vyberte soubor certifikátu, který jste si stáhli z webu Azure portal.
-
-    e. Jako **typ Identity SAML**, zvolte jednu z následujících možností:
-
-      * Vyberte **kontrolní výraz obsahuje uživatelské jméno uživatele Salesforce**, pokud uživatelské jméno Salesforce uživatele se předává v kontrolní výraz SAML
-
-      * Vyberte **kontrolní výraz obsahuje ID federace z objektu uživatele**, pokud je předávána federace z objektu uživatele v kontrolní výraz SAML
-
-      * Vyberte **kontrolní výraz obsahuje ID použití z objektu uživatele**v případě, že ID uživatele z objektu uživatele je předávaný kontrolní výraz SAML
-
-    f. Jako **umístění Identity SAML**vyberte **identita je v elementu NameIdentifier příkazu subjektu**.
-
-    g. Jako **poskytovatele inicioval žádost o vazbu služby**vyberte **HTTP POST**.
-
-    h. V **přihlašovací adresa URL zprostředkovatele Identity** textového pole vložte hodnotu **jednotné přihlašování – adresa URL služby**, který jste zkopírovali z portálu Azure portal.
-
-    i. SFDC nepodporuje odhlašování SAML.  Jako alternativní řešení, vložte `https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0` do **odhlašovací adresa URL vlastní** textového pole.
-
-    j. Klikněte na **Uložit**.
-
-27. Pokud chcete povolit vaši doménu v Sandboxu služby Salesforce, postupujte následovně:
+26. Pokud chcete povolit vaši doménu v Sandboxu služby Salesforce, postupujte následovně:
 
     > [!NOTE]
     > Před povolením doménu je potřeba vytvořit stejný v Sandboxu služby Salesforce. Další informace najdete v tématu [definování váš název domény](https://help.salesforce.com/HTViewHelpDoc?id=domain_name_define.htm&language=en_US). Po vytvoření domény, ujistěte se prosím, že je správně nakonfigurován.
@@ -286,33 +244,26 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-   ![Vytvořit testovacího uživatele Azure AD][100]
+1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
 
-**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
+    ![Vytvoření uživatele Azure AD][100]
 
-1. Na webu Azure Portal, v levém podokně klikněte na tlačítko **Azure Active Directory** tlačítko.
+2. Vyberte **nového uživatele** v horní části obrazovky.
 
-    ![Tlačítko Azure Active Directory](./media/salesforce-sandbox-tutorial/create_aaduser_01.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/salesforce-sandbox-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
+3. Ve vlastnosti uživatele proveďte následující kroky.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/salesforce-sandbox-tutorial/create_aaduser_02.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/salesforce-sandbox-tutorial/create_aaduser_02.png)
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
+    a. V **název** zadat **BrittaSimon**.
+  
+    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    Například BrittaSimon@contoso.com.
 
-    ![Tlačítko Přidat](./media/salesforce-sandbox-tutorial/create_aaduser_03.png)
+    c. Vyberte **vlastnosti**, vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
-4. V **uživatele** dialogové okno pole, proveďte následující kroky:
-
-    ![Dialogové okno uživatele](./media/salesforce-sandbox-tutorial/create_aaduser_04.png)
-
-    a. V **název** zadejte **BrittaSimon**.
-
-    b. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
-
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
-
-    d. Klikněte na možnost **Vytvořit**.
+    d. Vyberte **Vytvořit**.
 
 ### <a name="create-a-salesforce-sandbox-test-user"></a>Vytvoření zkušebního uživatele Sandboxu služby Salesforce
 
@@ -338,7 +289,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
     ![Odkaz "Uživatele a skupiny"][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+4. Klikněte na tlačítko **přidat uživatele** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Podokno Přidat přiřazení][203]
 
@@ -360,7 +311,6 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 * [Konfigurace zřizování uživatelů](salesforce-sandbox-provisioning-tutorial.md)
-
 
 <!--Image references-->
 

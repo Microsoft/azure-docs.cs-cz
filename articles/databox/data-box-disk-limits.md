@@ -2,25 +2,18 @@
 title: Omezení disku Azure Data Box | Dokumentace Microsoftu
 description: Popisuje omezení systému a doporučené velikosti pro Microsoft Azure Data Box Disk.
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: disk
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
 ms.date: 09/04/2018
 ms.author: alkohli
-ms.custom: ''
-ms.openlocfilehash: b7de39ca8723df2d15da7677b7032c98e84ecb1d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bbaf1f10284fb520cc3a52a6c04c4150de3b6546
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960613"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092010"
 ---
 # <a name="azure-data-box-disk-limits-preview"></a>Omezení pro Azure Data Box Disk (Preview)
 
@@ -28,7 +21,7 @@ ms.locfileid: "46960613"
 Jak nasadit a provozovat řešení Microsoft Azure Data Box Disk vezměte v úvahu tyto limity. 
 
 > [!IMPORTANT] 
-> Azure Data Box Disk je ve verzi Preview. Zkontrolujte [podmínky použití pro verze preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) před nasazením tohoto řešení. 
+> Azure Data Box Disk je ve verzi Preview. Před nasazením tohoto řešení si přečtěte [podmínky použití verze Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 
 ## <a name="data-box-service-limits"></a>Omezení služby data Box
@@ -47,7 +40,7 @@ Tato část popisuje omezení pro službu Azure Storage a požadované zásady v
 Nejnovější informace o omezení služby Azure storage a osvědčené postupy pro zadávání názvů sdílených složek, kontejnery a souborů přejděte na:
 
 - [Pojmenování a odkazování na ně kontejnery](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
-- [Pojmenování a odkazování na sdílené složky](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
+- [Pojmenování sdílených složek a odkazování na ně](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
 - [Objekty BLOB bloku a vytváření názvů objektů blob stránky](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
 
 > [!IMPORTANT]

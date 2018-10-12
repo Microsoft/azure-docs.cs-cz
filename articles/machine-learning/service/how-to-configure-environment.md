@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
 ms.date: 8/6/2018
-ms.openlocfilehash: 53592cbac446f30d1f771be06850a2914270bc30
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 9938772618e9a85f7d85678c4ddde3147cbc40dd
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883367"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091846"
 ---
 # <a name="configure-a-development-environment-for-the-azure-machine-learning-service"></a>Konfigurace vývojového prostředí pro službu Azure Machine Learning
 
@@ -122,7 +122,7 @@ Příklad použití poznámkových bloků Azure ve službě Azure Machine Learni
     > [!NOTE]
     > Pokud se zobrazí zpráva, která `PyYAML` nelze odinstalovat, použijte následující příkaz:
     > 
-    > `pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML`
+    > `pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML` 
 
     Může trvat několik minut, než k instalaci sady SDK.
 

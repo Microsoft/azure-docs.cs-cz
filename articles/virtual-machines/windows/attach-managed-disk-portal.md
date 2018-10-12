@@ -1,6 +1,6 @@
 ---
-title: Připojit spravované datový disk k virtuálnímu počítači Windows - Azure | Microsoft Docs
-description: Jak připojit nový spravovaný datový disk pro virtuální počítač s Windows v portálu Azure pomocí modelu nasazení Resource Manager.
+title: Připojení spravovaného datového disku k virtuálnímu počítači s Windows – Azure | Dokumentace Microsoftu
+description: Jak se připojit spravovaného datového disku k virtuálnímu počítači s Windows pomocí webu Azure portal.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -13,73 +13,71 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 12/13/2017
+ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 14721b2f2bc7913c2b7eadfc5ee801a223201ea9
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 8d83af114ebb5e5ff78372897d3e08ed592d4012
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30913412"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093897"
 ---
-# <a name="how-to-attach-a-managed-data-disk-to-a-windows-vm-in-the-azure-portal"></a>Tom, jak připojit spravované datový disk k virtuálnímu počítači Windows na portálu Azure
+# <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>Připojení spravovaného datového disku k virtuálnímu počítači s Windows pomocí webu Azure portal
 
-Tento článek ukazuje, jak připojit nový spravovaný datový disk pro virtuální počítače s Windows v portálu Azure. Než to uděláte, projděte si tyto tipy:
-
-* Velikost virtuálního počítače určuje, kolik datových disků můžete připojit. Podrobnosti najdete v tématu [velikosti virtuálních počítačů](sizes.md).
-* Pro nový disk nemusíte nejdřív ji vytvořit, protože Azure ji vytvoří, když jeho připojení.
-
-Můžete také [připojit datový disk pomocí prostředí Powershell](attach-disk-ps.md).
+V tomto článku se dozvíte, jak připojit nový spravovaného datového disku k virtuálnímu počítači (VM) Windows pomocí webu Azure portal. Velikost virtuálního počítače určuje, kolik datových disků můžete připojit. Další informace najdete v tématu [velikosti virtuálních počítačů](sizes.md).
 
 
+## <a name="add-a-data-disk"></a>Přidání datového disku
 
-## <a name="add-a-data-disk"></a>Přidat datový disk
-1. V nabídce na levé straně klikněte na tlačítko **virtuální počítače**.
-2. Ze seznamu vyberte virtuální počítač.
-3. Na stránce virtuálního počítače klikněte na tlačítko **disky**.
-4. Na **disky** klikněte na tlačítko **+ přidat datový disk**.
-5. V rozevírací nabídky pro nový disk, vyberte **vytvořit disk**.
-6. V **spravovaných disků na vytvořit** stránky, zadejte název pro disk a upravte nastavení podle potřeby. Až budete hotoví, klikněte na **Vytvořit**.
-7. V **disky** klikněte na tlačítko **Uložit** uložíte novou konfiguraci disku pro virtuální počítač.
-6. Jakmile Azure vytvoří disk a připojí jej k virtuálnímu počítači, na nový disk, je uvedena ve nastavení disku virtuálního počítače v části **datových disků**.
+1. V [webu Azure portal](https://portal.azure.com), v nabídce na levé straně vyberte **virtuálních počítačů**.
+2. Vyberte virtuální počítač ze seznamu.
+3. Na **virtuálního počítače** stránce **disky**.
+4. Na **disky** stránce **přidat datový disk**.
+5. V rozevíracím seznamu pro nový disk, vyberte **vytvořit disk**.
+6. V **vytvoření spravovaného disku** stránky, zadejte název pro disk a podle potřeby upravte ostatní nastavení. Až to budete mít, vyberte **Vytvořit**.
+7. V **disky** stránce **Uložit** uložte novou konfiguraci disku pro virtuální počítač.
+8. Poté, co Azure disk vytvoří a připojí ho k virtuálnímu počítači, nový disk je uvedený v nastavení disku virtuálního počítače v rámci **datové disky**.
 
 
-## <a name="initialize-a-new-data-disk"></a>Inicializace nový datový disk
+## <a name="initialize-a-new-data-disk"></a>Inicializovat nový datový disk
 
-1. Připojte k virtuálnímu počítači.
-1. Klikněte na nabídku start uvnitř virtuálního počítače a typ **diskmgmt.msc** a počtu **Enter**. Otevře se modul snap-in Správa disků.
-2. Správa disků rozpozná, že máte nový, zrušení inicializovaného disku a **inicializovat Disk** okno se zobrazí.
-3. Zkontrolujte, že je vybraný nový disk a klikněte na tlačítko **OK** k chybě při inicializaci ho.
-4. Nový disk se zobrazí jako **nepřidělené**. Klepněte pravým tlačítkem myši na disk a vyberte **nový jednoduchý svazek**. **Průvodci vytvořením jednoduchého svazku** otevře.
-5. Postupujte dle pokynů průvodce, udržuje všechny výchozí hodnoty, po dokončení vyberte **Dokončit**.
-6. Zavřete Správa disků.
-7. Zobrazí automaticky otevírané okno, které potřebujete k formátování nový disk, abyste mohli používat. Klikněte na tlačítko **formát disku**.
-8. V **nový disk formát** dialogové okno, zkontrolujte nastavení a pak klikněte na tlačítko **spustit**.
-9. Zobrazí upozornění, že formátování disky vymaže všechna data, klikněte na tlačítko **OK**.
-10. Po dokončení Formát klikněte na tlačítko **OK**.
+1. Připojte se k virtuálnímu počítači.
+1. Vyberte Windows **Start** nabídku uvnitř spuštěného virtuálního počítače a zadejte **diskmgmt.msc** do vyhledávacího pole. **Správa disků** konzole otevře.
+2. Správa disků rozpozná, že máte novou neinicializované disků a **inicializovat Disk** zobrazí se okno.
+3. Ověřte nový disk je vybraná a pak vyberte **OK** inicializovat ji.
+4. Nový disk se zobrazí jako **nepřidělené**. Klikněte pravým tlačítkem na libovolné místo na disku a vyberte **nový jednoduchý svazek**. **Průvodci vytvořením jednoduchého svazku** otevře se okno.
+5. Pokračujte podle pokynů průvodce, všechny výchozí hodnoty, a po dokončení vyberte **Dokončit**.
+6. Zavřít **nástroji Správa disků**.
+7. Automaticky otevírané okno se zobrazí upozornění, že je nutné naformátovat nový disk, než budete moct použít. Vyberte **naformátovat disk**.
+8. V **naformátovat nový disk** okna, zkontrolujte nastavení a pak vyberte **Start**.
+9. Zobrazí se upozornění oznamující, že formátování disky vymaže všechna data. Vyberte **OK**.
+10. Po dokončení formátování vyberte **OK**.
 
-## <a name="use-trim-with-standard-storage"></a>Použít standardní úložiště uvolnění dočasné paměti
+## <a name="use-trim-with-standard-storage"></a>Pomocí operace TRIM na úložiště úrovně standard
 
-Pokud chcete použít standardní úložiště (HDD), měli byste povolit uvolnění dočasné paměti. TRIM zahodí nepoužívané bloky na disku, můžete se účtují pouze pro úložiště, které skutečně používáte. To můžete uložit na náklady, pokud chcete vytvořit velkých souborů a pak odstraňte je. 
+Pokud používáte storage úrovně standard (HDD), měli byste povolit **TRIM** příkazu. **TRIM** příkaz zahodí nepoužívané bloky na disku tak, že bude se vám účtovat jenom za úložiště, které skutečně používáte. S použitím **TRIM**, ušetříte náklady na Pokud vytvoříte velkých souborů a pak je později odstranit. 
 
-Můžete spustit tento příkaz a zkontrolujte nastavení uvolnění dočasné paměti. Otevřete příkazový řádek na virtuální počítač s Windows a zadejte:
+Chcete-li zkontrolovat **TRIM** nastavení, otevřete příkazový řádek na virtuálním počítači Windows a zadejte následující příkaz:
 
 ```
 fsutil behavior query DisableDeleteNotify
 ```
 
-Pokud příkaz vrátí hodnotu 0, TRIM správně povolené. Pokud vrátí hodnotu 1, spusťte následující příkaz k povolení uvolnění dočasné paměti:
+Pokud příkaz vrátí hodnotu 0, **TRIM** je povolená správně. V opačném případě vrátí hodnotu 1, spusťte následující příkaz umožňující **TRIM**:
+
 ```
 fsutil behavior set DisableDeleteNotify 0
 ```
 
-Po odstranění dat z disku, můžete zajistit TRIM operace vyprázdnění správně spuštěním defragmentační s uvolnění dočasné paměti:
+Po odstranění dat z disku, můžete zajistit **TRIM** operace flush správně spuštěním defragmentační s **TRIM**:
 
 ```
 defrag.exe <volume:> -l
 ```
 
-Můžete také zajistit, že celý svazek je oříznut podle formátování svazku.
+Můžete také formátovat svazku a ujistěte se, že celý svazek je oříznuta.
 
 ## <a name="next-steps"></a>Další postup
-Pokud aplikace potřebuje používat D: disk k uložení dat, můžete [změnit písmeno jednotky dočasné disk systému Windows](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+
+- Můžete také [připojení datového disku pomocí prostředí PowerShell](attach-disk-ps.md).
+- Pokud vaše aplikace potřebuje používat *D:* jednotka pro ukládání dat, můžete [změnit písmeno jednotky dočasného disku Windows](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).

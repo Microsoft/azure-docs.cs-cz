@@ -5,17 +5,17 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 10/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: f6067a6270010aaf57a404f66b8a99cbafa525ca
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 4a90dc1d97121426e7b161b1d5c92df78b0925a6
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041692"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114154"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>Jak to funguje: ověřování Azure Multi-Factor Authentication
 
@@ -42,15 +42,6 @@ Ověřování službou Multi-Factor Authentication je součástí následující
 > [!NOTE]
 > Noví zákazníci už koupit Azure Multi-Factor Authentication jako samostatná nabízí efektivní dne 1. května 2018. Ověřování službou Multi-Factor Authentication bude i nadále k dispozici funkce v licence Azure AD Premium.
 
-### <a name="auth-provider-or-mfa-license"></a>Zprostředkovatel vícefaktorového ověřování nebo vícefaktorové ověřování licencí
-
-Pokud už máte Azure AD Premium nebo jiné sady licence obsahující Azure AD Premium, už máte Azure MFA. Vaše organizace není nutné žádné další rozšířit funkci dvoustupňové ověření pro všechny uživatele. Potřebujete pouze přiřadit licenci uživateli, a pak můžete zapnout vícefaktorové ověřování.
-
-Pokud nemáte licence, které patří Azure MFA, nebo nemáte dostatek licencí pro pokrytí všech uživatelů, můžete vytvořit [zprostředkovatel vícefaktorového ověřování MFA](concept-mfa-authprovider.md) rozšířit všechny možnosti služby MFA pro uživatele, kteří je potřebují.
-
-> [!IMPORTANT]
-> Pokud nemáte k dispozici dostatek licencí pro vaše uživatele, můžete vytvořit poskytovatele Multi-Factor Auth jednotlivých uživatelů k pokrytí zbytku organizace. Nevytvářejte poskytovatele služby Multi-Factor Auth na ověřování. Pokud tak učiníte, můžou být nakonec platíte za ověření požadavků od uživatelů, které už máte licence.
-
 ## <a name="supportability"></a>Možnosti podpory
 
 Protože většina uživatelů jsou zvyklí používat jenom hesla pro ověření, je důležité, že vaše organizace komunikuje se všichni uživatelé týkající se tohoto procesu. Sledování může snížit pravděpodobnost, že uživatelé volat vaše oddělení technické podpory pro menší problémy související s MFA. Existují však některé scénáře, kde dočasným zákazem MFA je nezbytné. Chcete-li pochopit, jak zvládnout tyto scénáře pomocí následujících pokynů:
@@ -65,8 +56,8 @@ Protože většina uživatelů jsou zvyklí používat jenom hesla pro ověřen�
 
 - Získat podrobné MFA [plán nasazení](https://aka.ms/MFADeploymentPlan)
 
-- Najít podrobnosti o [Licencování uživatelů](concept-mfa-licensing.md)
+- Přečtěte si podrobnosti o [licencování uživatelů](concept-mfa-licensing.md).
 
-- Přečtěte si podrobnosti o [která verze se má nasadit](concept-mfa-whichversion.md)
+- Získejte podrobné informace o tom, [kterou verzi nasadit](concept-mfa-whichversion.md).
 
-- Najděte odpovědi na [– nejčastější dotazy](multi-factor-authentication-faq.md)
+- Získejte odpovědi na [nejčastější dotazy](multi-factor-authentication-faq.md).

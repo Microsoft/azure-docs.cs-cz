@@ -9,12 +9,12 @@ author: bryanla
 ms.author: bryanla
 manager: mbaldwin
 ms.date: 10/03/2018
-ms.openlocfilehash: b5b30f7f5ffc7fcbef918162bc736c1f0a888d1b
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: adc8b84f0f22e85de88c4bd80c10a2a35d7b490a
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067733"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114596"
 ---
 # <a name="azure-key-vault-storage-account-keys"></a>Klíče účtu úložiště Azure Key Vault
 
@@ -38,24 +38,19 @@ ms.locfileid: "49067733"
 -------------------------
 
 1. Získejte ID prostředku účtu úložiště Azure, kterou chcete spravovat.
-    a. Po vytvoření účtu úložiště 
+    a. Po vytvoření účtu úložiště spusťte následující příkaz k získání ID prostředku účtu úložiště, že který chcete spravovat
     ```
     az storage account show -n storageaccountname (Copy ID out of the result of this command)
     ```
-2. Získejte ID prostředku účtu úložiště Azure, kterou chcete spravovat.
-    ```
-    az storage account show -n storageaccountname (Take ID out of this)
-    ```
-3. Získat aplikace ID z Azure Key Vault pro službu objektu zabezpečení 
+2. Získat aplikace ID z Azure Key Vault pro službu objektu zabezpečení 
     ```
     az ad sp show --id cfa8b339-82a2-471a-a3c9-0fc0be7a4093
     ```
-4. Přiřadit roli operátora klíč úložiště do služby Azure Key Vault Identity
+3. Přiřadit roli operátora klíč úložiště do služby Azure Key Vault Identity
     ```
     az role assignment create --role "Storage Account Key Operator Service Role"  --assignee-object-id hhjkh --scope idofthestorageaccount
     ```
-5. Vytvoření trezoru klíčů spravovaného účtu úložiště.     <br /><br />
-   Následující příkaz se vás zeptá služby Key Vault se znovu vygenerovat klíč každých 90 dní.
+4. Vytvoření trezoru klíčů spravovaného účtu úložiště.     <br /><br />
    Následující příkaz se vás zeptá služby Key Vault se znovu vygenerovat přístupové klíče vašeho úložiště pravidelně, s dobou znovu generovat. Níže jsme nastavujete opětovné generování uplynutí 90 dnů. Po 90 dnech se služby Key Vault znovu vygenerovat "key1" a Prohodit aktivní klíč z "key2" k "key1".
    ### <a name="key-regeneration"></a>Opětovném generování přístupového klíče
     ```

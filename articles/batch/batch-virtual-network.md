@@ -1,48 +1,43 @@
 ---
 title: Zřízení fondu Azure Batch ve službě virtual network | Dokumentace Microsoftu
-description: Můžete vytvořit fond služby Batch ve virtuální síti, tak, aby výpočetních uzlů můžete zabezpečeně komunikovat s jiným virtuálním počítačům v síti, například souborový server.
+description: Postup vytvoření fondu služby Batch ve virtuální síti Azure tak, aby výpočetních uzlů můžete zabezpečeně komunikovat s jiným virtuálním počítačům v síti, například souborový server.
 services: batch
 author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 10/05/2018
 ms.author: danlep
-ms.openlocfilehash: 9e8bd6819601cc4436e3432ee390f2ae82a0d94a
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: ef37d482e86e4ae05d3f14c78404dc395792b236
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42057209"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091948"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Vytvoření fondu služby Azure Batch ve virtuální síti
 
-
 Při vytváření fondu Azure Batch můžete zřídit fond v podsíti [virtuální síť Azure](../virtual-network/virtual-networks-overview.md) (VNet), který zadáte. Tento článek vysvětluje, jak vytvořit fond služby Batch ve virtuální síti. 
-
-
 
 ## <a name="why-use-a-vnet"></a>Proč používat virtuální síť?
 
-
 Fond služby Azure Batch má nastavení, které povolí výpočetních uzlů komunikovat mezi sebou – například, spustíte úkoly s více instancemi. Tato nastavení nevyžadují samostatnou virtuální síť. Ve výchozím nastavení, ale uzlů nemůže komunikovat s virtuální počítače, které nejsou součástí fondu služby Batch, jako je například licenční server nebo souborovým serverem. Povolit fondu výpočetních uzlů k bezpečné komunikaci s jinými virtuálními počítači, nebo v místní síti, můžete zřídit fond v podsíti virtuální síť Azure. 
-
-
 
 ## <a name="prerequisites"></a>Požadavky
 
 * **Ověřování**: Pokud chcete použít virtuální síť Azure klientské rozhraní API služby Batch musí používat ověřování pomocí Azure Active Directory (AD). Podpora služby Azure AD ve službě Azure Batch je zdokumentovaná v tématu [Ověřování řešení služby Batch pomocí Active Directory](batch-aad-auth.md). 
 
-* **Virtuální síť Azure**. Virtuální síť, jednu nebo více podsítí připravit předem, můžete na webu Azure portal, prostředí Azure PowerShell, rozhraní příkazového řádku Azure (CLI) nebo jiné metody. Vytvoření virtuální sítě založené na Azure Resource Manageru najdete v tématu [vytvoření virtuální sítě](../virtual-network/manage-virtual-network.md#create-a-virtual-network). Pokud chcete vytvořit klasickou virtuální síť, naleznete v tématu [vytvoření virtuální sítě (klasické) s několika podsítěmi](../virtual-network/create-virtual-network-classic.md).
+* **Virtuální síť Azure**. Následující části pro požadavky na virtuální síť a konfigurace. Virtuální síť, jednu nebo více podsítí připravit předem, můžete na webu Azure portal, prostředí Azure PowerShell, rozhraní příkazového řádku Azure (CLI) nebo jiné metody.  
+  * Vytvoření virtuální sítě založené na Azure Resource Manageru najdete v tématu [vytvoření virtuální sítě](../virtual-network/manage-virtual-network.md#create-a-virtual-network). Virtuální sítě založené na Resource Manager se doporučuje pro nová nasazení a je podporován pouze ve fondech v konfiguraci virtuálního počítače.
+  * Pokud chcete vytvořit klasickou virtuální síť, naleznete v tématu [vytvoření virtuální sítě (klasické) s několika podsítěmi](../virtual-network/create-virtual-network-classic.md). Klasické virtuální sítě je podporována pouze ve fondech v konfiguraci cloudové služby.
 
-### <a name="vnet-requirements"></a>Požadavky na virtuální síť
+## <a name="vnet-requirements"></a>Požadavky na virtuální síť
+
 [!INCLUDE [batch-virtual-network-ports](../../includes/batch-virtual-network-ports.md)]
-    
+
 ## <a name="create-a-pool-with-a-vnet-in-the-portal"></a>Vytvoření fondu pomocí virtuální sítě na portálu
 
 Po vytvoření virtuální sítě a přiřazené podsítě, můžete vytvořit fond služby Batch pomocí této virtuální síti. Postupujte podle těchto kroků můžete vytvořit fond z portálu Azure portal: 
-
-
 
 1. Na webu Azure Portal přejděte ke svému účtu Batch. Tento účet musí být ve stejném předplatném a oblasti jako skupinu prostředků obsahující virtuální síť, kterou chcete použít. 
 2. V **nastavení** na levé straně vyberte okno **fondy** položky nabídky.
@@ -64,7 +59,7 @@ Pokud chcete mít jistotu, že vaše výpočetní uzly fondu Azure Batch fungova
 
 * Zkontrolujte, že odchozí provoz do služby Azure Storage (konkrétně adresy URL ve formátu `<account>.table.core.windows.net`, `<account>.queue.core.windows.net`, a `<account>.blob.core.windows.net`) není blokovaný prostřednictvím vaší místní síti zařízení.
 
-Při přidání trasy definované uživatelem, definovat trasu pro každou související předponu adresy IP služby Batch a nastavit **typem dalšího segmentu směrování** k **Internet**. Podívejte se na následující příklad:
+Při přidání trasy definované uživatelem, definovat trasu pro každou související předponu adresy IP služby Batch a nastavit **typem dalšího segmentu směrování** k **Internet**. Prohlédněte si následující příklad:
 
 ![Trasa definovaná uživatelem](./media/batch-virtual-network/user-defined-route.png)
 

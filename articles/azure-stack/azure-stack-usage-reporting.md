@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/30/2018
 ms.author: sethm
 ms.reviewer: alfredop
-ms.openlocfilehash: 54a81e6c5c6e1fe5c37b985e40174dc369edfe6d
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: cf6604730ab3bd9ee04fac36e703022f63dcb949
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630405"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49090361"
 ---
 # <a name="report-azure-stack-usage-data-to-azure"></a>Azure Stack využití dat sestavy do Azure 
 
@@ -95,10 +95,6 @@ Pro Azure Stack multinode předplatná se smlouvou Enterprise (EA) a zprostředk
 ## <a name="does-usage-data-reporting-work-in-sovereign-clouds"></a>Provádí práci v suverénních cloudech generování sestav dat využití?
 
 V Azure Stack Development Kit generování sestav dat využití vyžaduje předplatné, které jsou vytvořené v globálním systému Azure. Předplatné vytvořené v některém z suverénních cloudech (cloudy Azure Government, Azure Germany a Azure China) nelze registrovat s Azure, takže nepodporují generování sestav dat využití.
-
-## <a name="how-can-users-identify-azure-stack-usage-data-in-the-azure-billing-portal"></a>Jak můžou uživatelé identifikovat data o využití služby Azure Stack na fakturačním portálu Azure?
-
-Uživatelé vidí dat využití služby Azure Stack v souboru podrobnosti o využití. Potřebujete vědět o tom, jak získat soubor podrobnosti o použití najdete [soubor využití stáhnout z článku centra účtů Azure](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-from-the-account-center-csv). Podrobnosti o využití obsahuje měřiče služby Azure Stack, které identifikují úložiště služby Azure Stack a virtuálních počítačů. Všechny prostředky používané ve službě Azure Stack jsou hlášeny v oblasti s názvem "Azure Stack."
 
 ## <a name="why-doesnt-the-usage-reported-in-azure-stack-match-the-report-generated-from-azure-account-center"></a>Proč neodpovídá využití ohlášena v zásobníku Azure sestava vygenerována z centra účtů Azure?
 

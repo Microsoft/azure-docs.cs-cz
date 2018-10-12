@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 10/9/2018
-ms.openlocfilehash: c56158a5e8df2e8781ec8e4431c75beadd154297
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 93a6480cdab0153d0febad376c93b9321a87deda
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901647"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114889"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurace clusteru HDInsight s balíčkem Enterprise Security Package pomocí Azure Active Directory Domain Services
 
@@ -33,7 +33,7 @@ Povolení služby Azure AD DS je předpokladem předtím, než vytvoříte HDIns
 
 Pokud Azure AD – DS je povoleno, všechny uživatele a objekty start, synchronizaci ze služby Azure Active Directory k Azure AD – DS ve výchozím nastavení. Operace synchronizace závisí na počtu objektů ve službě Azure AD. Synchronizace může trvat několik dní pro stovky tisíc objektů. 
 
-Zákazníci si mohou vybrat synchronizaci pouze skupiny, které potřebují pracovat s clustery HDInsight. Tato možnost synchronizaci pouze určité skupiny se nazývá *obor synchronizace*. Zobrazit [konfigurace s rozsahem synchronizace ze služby Azure AD do spravované domény](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-scoped-synchronization) pokyny.
+Zákazníci si mohou vybrat synchronizaci pouze skupiny, které potřebují pracovat s clustery HDInsight. Tato možnost synchronizaci pouze určité skupiny se nazývá *obor synchronizace*. Zobrazit [konfigurace s rozsahem synchronizace ze služby Azure AD do spravované domény](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-scoped-synchronization) pokyny.
 
 Po povolení služby Azure AD-DS místní server služby DNS (Domain Name) běží na virtuálních počítačích (VM) AD. Konfigurace služby AD DS virtuální sítě (virtuální sítě Azure) používat tyto vlastní servery DNS. Chcete-li najít správné IP adresy, vyberte **vlastnosti** pod **spravovat** kategorie a podívejte se na IP adresy uvedené pod **IP adresu ve virtuální síti**.
 
@@ -47,31 +47,38 @@ Změna konfigurace serverů DNS ve virtuální síti Azure AD DS použití těch
 
 Při povolování protokolu secure LDAP, vložte název domény do názvu subjektu nebo alternativní název subjektu v certifikátu. Například, pokud je název vaší domény *contoso.com*, ujistěte se, že přesným názvem existuje v názvu subjektu certifikátu nebo alternativní název subjektu. Další informace najdete v tématu [konfigurace zabezpečeného protokolu LDAP pro Azure AD – DS spravované domény](../../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md).
 
-## <a name="check-azure-ad-ds-health-status"></a>Kontrola stavu služby Azure AD – DS
 
+## <a name="check-azure-ad-ds-health-status"></a>Kontrola stavu služby Azure AD – DS
 Zobrazit stav Azure Active Directory Domain Services tak, že vyberete **stavu** pod **spravovat** kategorie. Ujistěte se, že je stav Azure AD – DS zelený (s) a synchronizace byla dokončena.
 
 ![Stav služby Azure Active Directory Domain Services](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-health.png)
 
-## <a name="add-managed-identity"></a>Přidat spravované identity
+Ujistěte se, že všechny [požadované porty](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers) jsou povolené v podsíti služby AAD DS pravidla skupiny zabezpečení sítě, pokud AAD DS je zabezpečena pomocí skupiny zabezpečení sítě. 
 
-Vytvoření uživatelsky přiřazené spravovanou identitu, pokud již nemáte. Zobrazit [Create, seznam, delete nebo přiřadit roli, kterou chcete přiřadit uživatele spravovanou identitu pomocí webu Azure portal](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal) pokyny. 
+## <a name="create-and-authorize-a-managed-identity"></a>Vytvořit a autorizovat spravované identity
+> [!NOTE]
+> Pouze správci AAD DS nemají oprávnění k autorizaci tuto spravovanou identitu.
 
-Spravovaná identita se používá k zjednodušení operací služby domény. Tato identita má přístup, číst, vytvářet, upravovat a odstraňovat doménové služby operace, které jsou potřebné pro HDInsight Enterprise Security Package, jako je vytvoření organizační jednotky a principů služby.
+A **uživatelsky přiřazené identity spravované** slouží ke zjednodušení operací služby domény. Pokud přiřadíte roli přispěvatele služby HDInsight domény spravovanou identitu, ho čtení, vytvořit, upravit a Odstranit operacích v doméně služby. Některé operace, jako je vytvoření organizační jednotky služby domain services a zásady služby jsou nezbytné k HDInsight Enterprise Security Package. Spravované identity je možné vytvořit v libovolné předplatné. Další informace najdete v tématu [spravovaných identit pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
 
-Po povolení služby Azure AD – DS vytvoření uživatelsky přiřazené identity spravované a přiřaďte ho **Přispěvatel služby HDInsight domény** roli řízení přístupu Azure AD DS.
+Pokud chcete nastavit spravovanou identitu pro použití s clustery HDInsight ESP, vytvoření uživatelsky přiřazené spravovanou identitu Pokud již nemáte. Zobrazit [Create, seznam, delete nebo přiřadit roli, kterou chcete přiřadit uživatele spravovanou identitu pomocí webu Azure portal](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal) pokyny. Dále přiřaďte spravovanou identitu do **Přispěvatel služby HDInsight domény** roli řízení přístupu služby AD DS Azure (oprávnění správce AAD DS jsou nezbytné pro toto přiřazení role).
 
 ![Azure Active Directory domény služby Access control](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-configure-managed-identity.png)
 
-Přiřazení spravovaných identit k **Přispěvatel služby HDInsight domény** role zajistí, že identita má přístup k provádění určitých operací služby domény v doméně služby Azure AD – DS. Další informace najdete v tématu [co je spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
+Přiřazení spravovaných identit k **Přispěvatel služby HDInsight domény** role zajistí, že identita má přístup k provádění určitých operací služby domény v doméně AAD DS.
+
+Jakmile spravovaná identita je vytvořen a daný správnou roli, můžete nastavit správce AAD DS používající tuto spravovanou identitu. Nastavení uživatelů pro spravovanou identitu, musí správce vybrat spravovanou identitu na portálu a potom klikněte na **řízení přístupu (IAM)** pod **přehled**. Na pravé straně, přiřazení role "Operátor spravovaných identit" na uživatele nebo skupiny, které chcete k vytvoření clusterů HDInsight ESP. Například můžete přiřadit správce AAD DS tuto roli do skupiny "MarketingTeam" identity "sjmsi" spravované, jak je znázorněno na obrázku níže.
+
+![HDInsight Spravovat přiřazení rolí Identity – operátor](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-managed-identity-operator-role-assignment.png)
+
 
 ## <a name="create-a-hdinsight-cluster-with-esp"></a>Vytvoření clusteru HDInsight s ESP
 
 Dalším krokem je vytvoření clusteru HDInsight s ESP aktivuje pomocí služby Azure AD – DS.
 
-Je jednodušší umístit instance služby Azure AD – DS a HDInsight cluster ve stejné virtuální síti Azure. Pokud jsou v různých virtuálních sítích, musíte vytvořit partnerský vztah těchto virtuálních sítí, tak, aby virtuální počítače s HDInsight jsou viditelné na řadič domény a mohou být přidány do domény. Další informace najdete v tématu [partnerský vztah virtuálních sítí](../../virtual-network/virtual-network-peering-overview.md). Otestovat, pokud partnerský vztah provedena správně, připojení k HDInsight virtuálních sítí/podsítí virtuálního počítače a odešlete zprávu ping název domény nebo spustit **ldp.exe** pro přístup k doméně Azure AD – DS.
+Je jednodušší umístit instance služby Azure AD – DS a HDInsight cluster ve stejné virtuální síti Azure. Pokud jsou v různých virtuálních sítích, musíte vytvořit partnerský vztah těchto virtuálních sítí, tak, aby virtuální počítače s HDInsight jsou viditelné na řadič domény a mohou být přidány do domény. Další informace najdete v tématu [partnerský vztah virtuálních sítí](../../virtual-network/virtual-network-peering-overview.md). 
 
-Po vytvoření partnerského vztahu virtuálních sítí, konfigurovat virtuální síť HDInsight použít vlastní server DNS a zadejte privátní IP adresy služby Azure AD – DS jako adresy serverů DNS. Když obou virtuálních sítích používat stejné servery DNS, vlastní název domény se přeloží správné IP a bude dostupný v HDInsight. Například pokud je název domény "contoso.com" pak po provedení tohoto kroku příkaz ping "contoso.com" musí se překládat na pravé straně IP adres Azure AD DS. Virtuální počítač pak můžete připojit k této doméně.
+Po vytvoření partnerského vztahu virtuálních sítí, konfigurovat virtuální síť HDInsight použít vlastní server DNS a zadejte privátní IP adresy služby Azure AD – DS jako adresy serverů DNS. Když obou virtuálních sítích používat stejné servery DNS, vlastní název domény se přeloží správné IP a bude dostupný v HDInsight. Například pokud je název domény "contoso.com" pak po provedení tohoto kroku příkaz ping "contoso.com" musí se překládat na pravé straně IP adres Azure AD DS. Otestovat, pokud partnerský vztah provedena správně, připojení virtuálního počítače s windows pro HDInsight virtuálních sítí/podsítí a odešlete zprávu ping název domény nebo spustit **ldp.exe** pro přístup k doméně Azure AD – DS. Připojte tento virtuální počítač s windows do domény potvrďte, že všechny požadované volání RPC úspěšné mezi klientem a serverem.
 
 ![Konfigurace vlastního DNS serverů pro partnerské virtuální síti](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
 

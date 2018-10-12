@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/05/2018
+ms.date: 10/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8cdff34078c759379b5b939bdcdbc55155b51251
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 6127e300ee46dbd33f8537f0138963cd4e3b5cc8
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887451"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49094135"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -517,7 +517,7 @@ Zjistěte, jak integrovat do řešení pro správu pomocí nástroje System Cent
 
 Zahrnutí aktualizací můžete zadat konkrétní aktualizace použít. Jsou nainstalované opravy nebo balíčky, které jsou nastavené mají být zahrnuty. Když klasifikaci je vybraná i balíčky nebo opravy jsou nastaveny mají být zahrnuty, nainstaluje se položky zahrnuté i položky, které splňují klasifikace.
 
-Pro počítače s Linuxem v případě, že balíček je součástí, ale má závislý balíček, který byl vyloučen, specifcally balíček není nainstalovaný.
+Je důležité vědět, že vyloučení přepsat zahrnutí. Například pokud definujete pravidla vyloučení z `*`, pak žádné opravy nebo balíčky jsou nainstalovány jako že jsou všechny vyloučené. Pro počítače s Linuxem v případě, že balíček je součástí, ale má závislý balíček, který byl vyloučen, specifcally balíček není nainstalovaný.
 
 ## <a name="patch-linux-machines"></a>Počítače s Linuxem opravy
 

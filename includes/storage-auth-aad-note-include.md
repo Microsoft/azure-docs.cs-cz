@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 09/06/2018
+ms.date: 10/09/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 3a3ee0cda3643ac73581f868e47905841d9f1563
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: ac7aa294dee25a6dea4ec2ee614f2b2d34d3a6bc
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095587"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49117673"
 ---
 > [!IMPORTANT]
 > - Náhled ověřování Azure AD pro objekty BLOB a fronty je určeno pouze pro nevýrobní prostředí. Produkční smlouvy o úrovni služeb (SLA) nejsou aktuálně k dispozici. Pokud pro váš scénář zatím nepodporuje ověřování Azure AD, nadále používat povolení sdíleného klíče nebo tokeny SAS ve svých aplikacích.
@@ -22,4 +22,10 @@ ms.locfileid: "44095587"
 >
 > - Musí používat protokol HTTPS k ověřování ve službě Azure AD při volání operace objektů blob a fronty.
 >
-> - Ve verzi preview na webu Azure portal přihlašovacích údajů Azure AD pro čtení a zápis dat objektů blob a fronty nepoužívá. Místo toho nadále portálu závisí na přístupový klíč účtu. Zobrazit nebo aktualizovat data objektů blob nebo fronty na portálu, uživatel musí mít přiřazenou roli RBAC, která zahrnuje [Microsoft.Storage/storageAccounts/listkeys/action](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role), která uděluje oprávnění pro volání [účty úložiště - Vypsat klíče](https://docs.microsoft.com/rest/api/storagerp/storageaccounts/listkeys). Role Přispěvatel a Čtenář pro objekty BLOB a fronty v současnosti nezahrnuje **klíče listkey** akce jako součást verze preview verzi a tak neposkytuje přístup k datům prostřednictvím webu Azure portal. Prozkoumat založené na identitě přístup k datům objektu blob a fronty v předběžné verzi, pomocí Powershellu nebo rozhraní příkazového řádku Azure.
+> - Na webu Azure portal teď podporuje používání přihlašovacích údajů Azure AD ke čtení a zápis dat objektů blob jako součást verze preview.
+> 
+> - Na webu Azure portal nepodporuje aktuálně pomocí přihlašovacích údajů Azure AD. číst a zapisovat data ve frontě. Data ve frontě se přistupuje přes své klíče účtu úložiště.
+>
+> - [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) aktuálně používá klíč účtu úložiště pro přístup k datům objektu blob a fronty.
+
+

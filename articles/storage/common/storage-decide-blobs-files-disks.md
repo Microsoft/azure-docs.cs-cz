@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/28/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 3f2609ea57ea5a5a0cce2544a1031c55199d137b
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: bc6d615409f3c2d0f46286d2ad2ba20c32574afd
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39530697"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091707"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Rozhodování, jestli použít Azure Blobs, soubory Azure nebo Azure Disks
 
@@ -64,8 +64,8 @@ Následující tabulka porovnává soubory Azure pomocí Azure Disks.
 |Vyčištění|Automaticky|Ručně|  
 |Přístup pomocí rozhraní REST|Soubory virtuálního pevného disku není přístupný.|Soubory uložené ve sdílené složce je přístupný.|  
 |Maximální velikost|4 TB disku|5 TiB sdílené složky a 1 TiB souboru v rámci sdílené složky|  
-|Maximální velikosti 8KB IOps|500 IOps|1 000 IOps|  
-|Propustnost|Až 60 MiB/s na Disk|Až 60 MiB/s na sdílenou složku|  
+|Maximální počet vstupně-výstupních operací|500 IOps|1 000 IOps|  
+|Propustnost|Až 60 MiB/s na Disk|Cíl je 60 MiB/s na sdílenou složku (můžete získat vyšší pro vyšší velikosti vstupně-výstupních operací)|  
 
 ## <a name="next-steps"></a>Další postup
 

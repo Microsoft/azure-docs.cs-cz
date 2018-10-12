@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: prasantp
 author: prasanthpul
 ms.date: 09/24/2018
-ms.openlocfilehash: d58f580ecd4a4bcd984602f4efda8a2291573bc4
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 190b7fff24c9d6b3dee86471b56ad68c962e51ce
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239275"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116874"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX a Azure Machine Learning: vytvoření a nasazení interoperabilní modely AI
 
@@ -197,10 +197,10 @@ Tyto poznámkové bloky ukazují, jak vytvořit modely ONNX a nasadit je pomocí
 + `/onnx/onnx-train-pytorch-aml-deploy-mnist.ipynb`
 
 Tyto poznámkové bloky ukazují, jak nasazovat existující modely ONNX službou Azure Machine Learning: 
-+ `/onnx/onnx-inference-mnist.ipynb` 
-+ `/onnx/onnx-inference-emotion-recognition.ipynb`
++ [onnx/onnx odvození mnist.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-inference-mnist.ipynb) 
++ [onnx/onnx odvození-pro rozpoznávání emocí – recognition.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-inference-emotion-recognition.ipynb)
  
-Získáte tento poznámkový blok:
+Získejte tyto poznámkové bloky:
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

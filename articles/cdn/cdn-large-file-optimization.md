@@ -1,10 +1,10 @@
 ---
-title: Optimalizace stahování velkých souborů pomocí Azure CDN
-description: Tento článek vysvětluje, jak velký soubor stahování lze optimalizovat.
+title: Optimalizace velkých souborů ke stažení s Azure CDN
+description: Tento článek vysvětluje, jak velký soubor, soubory ke stažení, lze optimalizovat.
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: akucer
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -13,132 +13,132 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2018
-ms.author: v-deasim
-ms.openlocfilehash: 2bdb6bdea7b6180e34458883d026161403e4cb58
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.author: magattus
+ms.openlocfilehash: 9793348b47763e6de10992b9a8a4606fc532cc4d
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33766202"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49094016"
 ---
-# <a name="large-file-download-optimization-with-azure-cdn"></a>Optimalizace stahování velkých souborů pomocí Azure CDN
+# <a name="large-file-download-optimization-with-azure-cdn"></a>Optimalizace velkých souborů ke stažení s Azure CDN
 
-Velikosti souborů obsahu doručit přes internet pořád roste s tím kvůli rozšířené funkce, vylepšené grafika a bohatý mediální obsah. Tento nárůst vycházejí z hlavních faktorů: širokopásmové průnikům, větší zařízení nenákladné úložiště, zvýšení rozšířeným vysokým rozlišením video a připojené k Internetu zařízení (IoT). Doručení rychlé a efektivní mechanismus pro velkých souborů je velmi důležité, aby bylo prostředí hladký a zábavná příjemce.
+Velikosti souborů obsahu doručit přes internet i nadále růst díky vylepšené funkce, vylepšení grafiky a bohatý mediální obsah. Tímto růstem vychází celá řada faktorů: širokopásmové průniku, větší levné úložných zařízení, rozšířených zvýšení vysokém videa a připojené k Internetu zařízení (IoT). Rychlé a efektivní doručování mechanismus pro velké soubory je důležité zajistit hladký a dovoluje uživatelské prostředí.
 
-Doručování velkých souborů má několik problémy. Průměrná doba stahování velký soubor nejdřív může být důležité, protože všechna data aplikace nemusí stahovat postupně. V některých případech může aplikace stahovat poslední část souboru před první část. Pokud se požaduje jenom malé množství soubor nebo nastavení stahování, stahování může selhat. Stahování také může dojít ke zpoždění až po síti pro doručování obsahu (CDN) načte celý soubor ze zdrojového serveru. 
+Doručování velkých souborů má několik problémů. Průměrná doba stahování velkých souborů nejdřív, může být důležité, protože aplikace nemusí stahovat všechna data postupně. V některých případech může aplikace lze stáhnout v poslední části souboru před první část. Když je požadováno pouze malé množství souboru nebo nastavení stahování, stahování může selhat. Stahování také můžou být zpožděné až po síti pro doručování obsahu (CDN), načte celý soubor ze zdrojového serveru. 
 
-Druhý latenci mezi počítačem uživatele a soubor určuje rychlost, kdy se může zobrazit obsah. Kromě toho problémy zahlcení a kapacitu sítě také ovlivnit propustnost. Větší vzdálenosti mezi servery a uživatelé vytvoření dalších možností pro ke ztrátě paketů odesílaných dojde k, což snižuje kvality. Snížení kvality způsobené omezená propustnost a ztráta paketů vyšší může se prodloužit doba čekání stahování souborů k dokončení. 
+Za druhé latence mezi uživatele počítače a souboru určuje rychlost, jakou můžou si zobrazit obsah. Kromě toho přetížení a kapacitu problémy se sítí také ovlivnit propustnost. Další příležitosti pro ztrátu paketů pravděpodobnější, což snižuje kvalitu vytvořit větší vzdálenosti mezi servery a uživatele. Snížení kvality způsobené omezená propustnost a ztráta paketů větší může prodloužit dobu čekání pro stahování souborů na dokončení. 
 
-Třetí mnoho velkých souborů nejsou doručeny jako celek. Uživatelé mohou zrušit uprostřed stahování nebo si pusťte pouze první několik minut dlouhé video MP4. Proto software a média doručení společnosti chcete poskytovat jenom ta část souboru, který je požadovaný. Efektivní distribuci požadované části snižuje výchozí přenos ze zdrojového serveru. Efektivní distribuční zmenšuje paměti a vstupu a výstupu tlak na původním serveru. 
-
-
-## <a name="optimize-for-delivery-of-large-files-with-azure-cdn-from-microsoft"></a>Optimalizace pro doručování velkých souborů pomocí Azure CDN společnosti Microsoft
-
-**Azure CDN Standard od společnosti Microsoft** koncové body poskytovat velké soubory bez cap na velikost souboru. Další funkce jsou zapnuté ve výchozím nastavení rychleji doručování velkých souborů.
-
-### <a name="object-chunking"></a>Objekt rozdělování 
-
-**Azure CDN Standard od společnosti Microsoft** využívá techniku, názvem rozdělování objektu. Pokud se požaduje velký soubor, CDN načte menší části souboru z tohoto počátku. Až serveru CDN POP, obdrží žádost o úplné nebo rozsah bajtů souboru, požadavků CDN edge server soubor z tohoto počátku v bloky 8 MB. 
-
-Po bloku dat dorazí na hranici CDN, nemá v mezipaměti a okamžitě poskytovaného pro uživatele. CDN pak prefetches další blok paralelně. Toto předběžné načtení zajistí, že obsah zůstane jeden blok před uživatele, což snižuje latence. Tento proces pokračuje, dokud celý stažení souboru (je-li požadována), všechny rozsahů bajtů jsou k dispozici (je-li požadována), nebo klienta, ukončí připojení. 
-
-Další informace o žádosti o rozsah bajtů, najdete v části [RFC 7233](https://tools.ietf.org/html/rfc7233).
-
-CDN ukládá do mezipaměti všechny bloky dat po přijetí. Celý soubor nepotřebuje ukládat do mezipaměti v mezipaměti CDN. Odeslání dalších žádostí o souboru nebo bajtů rozsahy se zpracovávají z mezipaměti CDN. Není-li všechny bloky dat jsou do mezipaměti na CDN, předběžné načtení slouží k vyžádání bloků dat z tohoto počátku. Tato optimalizace spoléhá na možnost na zdrojový server pro podporu požadavků rozsah bajtů; Pokud je zdrojový server nepodporuje požadavky rozsah bajtů, optimalizace není platná. 
-
-### <a name="conditions-for-large-file-optimization"></a>Podmínky pro optimalizaci velkých souborů
-Optimalizace velkých souborů funkcí pro **Azure CDN Standard od společnosti Microsoft** jsou ve výchozím nastavení zapnuta při použití daný typ doručení optimalizace obecné web. Neexistují žádná omezení na maximální velikost souboru.
+Třetí mnoho velkých souborů nejsou doručeny v plné výši. Uživatelé mohou zrušit stahování polovinu životnosti nebo sledovat pouze prvních několik minut dlouhé video MP4. Proto software a mediálním společnostem doručení má být dodána pouze část souboru, které jsou požadovány. Efektivní distribuci požadované části snižuje výchozí přenos ze zdrojového serveru. Efektivní distribuci také snižuje požadavek paměť a vstupně-výstupních operací tlak na původním serveru. 
 
 
-## <a name="optimize-for-delivery-of-large-files-with-azure-cdn-from-verizon"></a>Optimalizace pro doručování velkých souborů pomocí Azure CDN společnosti Verizon
+## <a name="optimize-for-delivery-of-large-files-with-azure-cdn-from-microsoft"></a>Optimalizovat doručování velkých souborů pomocí Azure CDN od společnosti Microsoft
 
-**Azure CDN Standard od společnosti Verizon** a **Azure CDN Premium od společnosti Verizon** koncové body poskytovat velké soubory bez cap na velikost souboru. Další funkce jsou zapnuté ve výchozím nastavení rychleji doručování velkých souborů.
+**Azure CDN Standard od společnosti Microsoft** koncové body doručování velkých souborů bez limitu velikosti souboru. Další funkce jsou zapnuté ve výchozím nastavení provádět rychlejší doručování velkých souborů.
 
-### <a name="complete-cache-fill"></a>Dokončení mezipaměti výplně
+### <a name="object-chunking"></a>Objekt dělením dat do bloků 
 
-Funkce Výchozí dokončení mezipaměti výplně umožňuje od CDN k vyžádání obsahu souboru do mezipaměti, při opuštění nebo ke ztrátě počáteční požadavku. 
+**Azure CDN Standard od společnosti Microsoft** pomocí techniky označované jako objekt bloků. Pokud se požaduje s velkými soubory, CDN načte menších souboru z původního zdroje. Až serveru CDN POP obdrží žádost o úplné nebo rozsah bajtů souboru, CDN edge server si soubor vyžádá ze zdroje v blocích 8 MB. 
 
-Výplně dokončení mezipaměti je nejvhodnější pro velké prostředky. Většinou uživatelé je nemusíte stahovat od začátku do konce. Používají progresivní stahování. Výchozí chování vynutí hraničního serveru k zahájení načítání na pozadí prostředku ze zdrojového serveru. Potom prostředku je v hraniční server místní mezipaměti. Po úplné objekt je v mezipaměti, edge server plnit požadavky rozsah bajtů k CDN pro objekt uložená v mezipaměti.
+Po bloku dat dorazí na hranici CDN, má uložené v mezipaměti a okamžitě obsluhovat uživateli. CDN pak prefetches další blok paralelně. Této předběžné načtení se zajistí, že obsah zůstane jeden blok před časem uživatele, což snižuje latence. Tento proces pokračuje, dokud se celý soubor se stáhne (je-li požadovány), všechny rozsahů bajtů jsou k dispozici (je-li požadovány), nebo klient ukončí připojení. 
 
-Výchozí chování je možné zakázat prostřednictvím stroj pravidel v **Azure CDN Premium od společnosti Verizon**.
+Další informace o žádosti o rozsah bajtů, naleznete v tématu [RFC 7233](https://tools.ietf.org/html/rfc7233).
 
-### <a name="peer-cache-fill-hot-filing"></a>Sdílená mezipaměť vyplnění horkou podání
+Síť CDN ukládá do mezipaměti všechny bloky dat po přijetí. Celý soubor nemusí být uložena do mezipaměti CDN mezipaměti. Odeslání dalších žádostí o souboru nebo bajt rozsahy se obsluhují z mezipaměti CDN. Není-li všechny bloky dat jsou uložené v mezipaměti v CDN, předběžné načtení slouží k vyžádání bloků dat z původního zdroje. Tato optimalizace se spoléhá na schopnost zdrojový server podporovat požadavky na zjištění rozsahu bajtů; Pokud zdrojový server nepodporuje požadavky na zjištění rozsahu bajtů, optimalizací není platná. 
 
-Funkce výchozích sdílené mezipaměti výplně horkou podání používá sofistikované vlastního algoritmu. Používá další hraniční ukládání do mezipaměti servery založené na šířku pásma a agregace požadavků metriky, aby vyplnila požadavky klienta pro velkých, vysoce oblíbených objekty. Tato funkce zabraňuje situaci, v níž jsou odesílány velký počet navíc požadavků uživatele zdrojový server. 
-
-### <a name="conditions-for-large-file-optimization"></a>Podmínky pro optimalizaci velkých souborů
-
-Optimalizace velkých souborů funkcí pro **Azure CDN Standard od společnosti Verizon** a **Azure CDN Premium od společnosti Verizon** jsou ve výchozím nastavení zapnuta při použití daný typ doručení optimalizace obecné web. Neexistují žádná omezení na maximální velikost souboru. 
+### <a name="conditions-for-large-file-optimization"></a>Podmínky pro optimalizace velkých souborů
+Optimalizace velkých souborů funkcí pro **Azure CDN Standard od společnosti Microsoft** jsou ve výchozím nastavení zapnutý při použití typu optimalizace doručení obecné webu. Neplatí žádné limity na maximální velikost souboru.
 
 
-## <a name="optimize-for-delivery-of-large-files-with-azure-cdn-standard-from-akamai"></a>Optimalizace pro doručování velkých souborů pomocí Azure CDN Standard společnosti Akamai
+## <a name="optimize-for-delivery-of-large-files-with-azure-cdn-from-verizon"></a>Optimalizovat doručování velkých souborů pomocí Azure CDN od Verizonu
 
-**Azure CDN Standard od Akamai** profil koncové body nabízí funkce, která poskytuje velkých souborů efektivně uživatelům po celém světě ve velkém měřítku. Funkci snižuje latenci, protože snižuje zatížení serverů původu.
+**Azure CDN Standard od Verizonu** a **Azure CDN Premium od Verizonu** koncové body doručování velkých souborů bez limitu velikosti souboru. Další funkce jsou zapnuté ve výchozím nastavení provádět rychlejší doručování velkých souborů.
 
-Typ funkce optimalizace velkých souborů zapne optimalizace sítě a konfigurace k poskytování velkých souborů rychlejší a více responsively. Obecné webové přenosy s **Azure CDN Standard od společnosti Akamai** koncové body pouze následující 1,8 GB soubory ukládá do mezipaměti, a můžete soubory tunelového propojení (ne mezipaměť) až do 150 GB. Velkých souborů optimalizace mezipaměti souborů až do 150 GB.
+### <a name="complete-cache-fill"></a>Výplň kompletní mezipaměti
 
-Optimalizace velkých souborů je účinný, pokud jsou splněny určité podmínky. Podmínky zahrnují, jak funguje na zdrojový server a velikosti a typy souborů, které jsou požadovány. 
+Funkce výchozí kompletní mezipaměti výplně umožňuje CDN pro vyžádanou souboru do mezipaměti při opuštění nebo ztráty počáteční požadavku. 
 
-### <a name="configure-an-akamai-cdn-endpoint-to-optimize-delivery-of-large-files"></a>Konfigurace koncového bodu Akamai CDN za účelem optimalizace doručování velkých souborů
+Výplň kompletní mezipaměti je zvláště užitečná pro velké prostředky. Obvykle uživatele není si je stáhnout od začátku do konce. Používají progresivní stahování. Výchozí chování způsobí, že server edge k zahájení načítání na pozadí prostředku ze zdrojového serveru. Následně prostředek je v místní mezipaměti hraničním serveru. Po úplné objektu v mezipaměti, edge server splňuje požadavky na zjištění rozsahu bajtů do sítě CDN pro objekt uložený v mezipaměti.
 
-Můžete nakonfigurovat vaše **Azure CDN Standard od společnosti Akamai** koncový bod za účelem optimalizace doručování velkých souborů prostřednictvím portálu Azure. K tomu můžete také použít rozhraní REST API nebo některou z klienta sady SDK. Následující kroky ukazují proces prostřednictvím portálu Azure **Azure CDN Standard od společnosti Akamai** profil:
+Výchozí chování lze zakázat pomocí stroj pravidel v **Azure CDN Premium od Verizonu**.
 
-1. Chcete-li přidat nový koncový bod na Akamai **profil CDN** vyberte **koncový bod**.
+### <a name="peer-cache-fill-hot-filing"></a>Sdílená mezipaměť vyplnit horkou vyplňování
+
+Výchozí sdílené mezipaměti výplně horkou vyplňování funkce používá sofistikované vlastního algoritmu. Agregace požadavků metriky, aby vyplnila požadavky klienta pro velká a velmi populární objekty a používá další edge ukládání do mezipaměti serverech v závislosti na šířce pásma. Tato funkce zabraňuje situace, ve kterém jsou odesílány velký počet dalších požadavků na server původu uživatele. 
+
+### <a name="conditions-for-large-file-optimization"></a>Podmínky pro optimalizace velkých souborů
+
+Optimalizace velkých souborů funkcí pro **Azure CDN Standard od Verizonu** a **Azure CDN Premium od Verizonu** jsou ve výchozím nastavení zapnutý při použití typu optimalizace doručení obecné webu. Neplatí žádné limity na maximální velikost souboru. 
+
+
+## <a name="optimize-for-delivery-of-large-files-with-azure-cdn-standard-from-akamai"></a>Optimalizovat doručování velkých souborů pomocí Azure CDN Standard od Akamai
+
+**Azure CDN Standard od Akamai** koncové body profilu nabízejí funkce, která přináší velké soubory efektivně uživatelům po celém světě ve velkém měřítku. Funkci snižuje latenci, protože snižuje zatížení původních serverů.
+
+Funkce typ optimalizace velkých souborů zapne optimalizace sítě a konfigurace k doručování velkých souborů, rychlejší a více responzivně. Obecné doručování webu s **Azure CDN Standard od Akamai** koncových bodů mezipaměti soubory pouze pod 1,8 GB a můžete soubory tunelového propojení (ne mezipaměť) až 150 GB. Mezipaměti optimalizace velkých souborů soubory až do 150 GB.
+
+Optimalizace velkých souborů je účinné, pokud jsou splněny určité podmínky. Příkladem podmínek může být jak zdrojový server funguje a velikosti a typy souborů, které jsou požadovány. 
+
+### <a name="configure-an-akamai-cdn-endpoint-to-optimize-delivery-of-large-files"></a>Konfigurace koncového bodu CDN společnosti Akamai optimalizovat doručování velkých souborů
+
+Můžete nakonfigurovat váš **Azure CDN Standard od Akamai** koncový bod pro optimalizaci doručování velkých souborů prostřednictvím portálu Azure portal. Provedete to tak můžete také použít rozhraní REST API nebo některou z klientské sady SDK. Následující kroky ukazují proces prostřednictvím webu Azure portal **Azure CDN Standard od Akamai** profilu:
+
+1. Chcete-li přidat nový koncový bod na Akamai **profil CDN** stránce **koncový bod**.
 
     ![Nový koncový bod](./media/cdn-large-file-optimization/cdn-new-akamai-endpoint.png)    
  
-2. V **optimalizované pro** rozevíracího seznamu vyberte **stahování velkých souborů**.
+2. V **optimalizovaná pro** rozevíracího seznamu vyberte **stahování velkých souborů**.
 
-    ![Vybrané optimalizace velkých souborů](./media/cdn-large-file-optimization/cdn-large-file-select.png)
+    ![Optimalizace velkých souborů vybrané](./media/cdn-large-file-optimization/cdn-large-file-select.png)
 
 
 Po vytvoření koncového bodu CDN, bude se vztahovat optimalizace velkých souborů pro všechny soubory, které splňují určitá kritéria. Následující část popisuje tento proces.
 
-### <a name="object-chunking"></a>Objekt rozdělování 
+### <a name="object-chunking"></a>Objekt dělením dat do bloků 
 
-Optimalizace velkých souborů s **Azure CDN Standard od společnosti Akamai** využívá techniku, názvem rozdělování objektu. Pokud se požaduje velký soubor, CDN načte menší části souboru z tohoto počátku. Až serveru CDN POP, obdrží žádost o úplné nebo rozsah bajtů souboru, zkontroluje, zda pro tato optimalizace je podporován typ souborů. Také zkontroluje, zda typ souboru splňuje požadavky na velikost souboru. Pokud velikost souboru je větší než 10 MB, požaduje CDN edge server soubor z tohoto počátku v bloky 2 MB. 
+Optimalizace velkých souborů s **Azure CDN Standard od Akamai** pomocí techniky označované jako objekt bloků. Pokud se požaduje s velkými soubory, CDN načte menších souboru z původního zdroje. Až serveru CDN POP obdrží žádost o úplné nebo rozsah bajtů souboru, zkontroluje, zda typ souboru se nepodporuje. Tato optimalizace. Také zkontroluje, zda tento typ souboru splňuje požadavky na velikost souboru. Pokud velikost souboru je větší než 10 MB, CDN edge server si soubor vyžádá ze zdroje v blocích 2 MB. 
 
-Po bloku dat dorazí na hranici CDN, nemá v mezipaměti a okamžitě poskytovaného pro uživatele. CDN pak prefetches další blok paralelně. Toto předběžné načtení zajistí, že obsah zůstane jeden blok před uživatele, což snižuje latence. Tento proces pokračuje, dokud celý stažení souboru (je-li požadována), všechny rozsahů bajtů jsou k dispozici (je-li požadována), nebo klienta, ukončí připojení. 
+Po bloku dat dorazí na hranici CDN, má uložené v mezipaměti a okamžitě obsluhovat uživateli. CDN pak prefetches další blok paralelně. Této předběžné načtení se zajistí, že obsah zůstane jeden blok před časem uživatele, což snižuje latence. Tento proces pokračuje, dokud se celý soubor se stáhne (je-li požadovány), všechny rozsahů bajtů jsou k dispozici (je-li požadovány), nebo klient ukončí připojení. 
 
-Další informace o žádosti o rozsah bajtů, najdete v části [RFC 7233](https://tools.ietf.org/html/rfc7233).
+Další informace o žádosti o rozsah bajtů, naleznete v tématu [RFC 7233](https://tools.ietf.org/html/rfc7233).
 
-CDN ukládá do mezipaměti všechny bloky dat po přijetí. Celý soubor nepotřebuje ukládat do mezipaměti v mezipaměti CDN. Odeslání dalších žádostí o souboru nebo bajtů rozsahy se zpracovávají z mezipaměti CDN. Není-li všechny bloky dat jsou do mezipaměti na CDN, předběžné načtení slouží k vyžádání bloků dat z tohoto počátku. Tato optimalizace spoléhá na možnost na zdrojový server pro podporu požadavků rozsah bajtů; Pokud je zdrojový server nepodporuje požadavky rozsah bajtů, optimalizace není platná.
+Síť CDN ukládá do mezipaměti všechny bloky dat po přijetí. Celý soubor nemusí být uložena do mezipaměti CDN mezipaměti. Odeslání dalších žádostí o souboru nebo bajt rozsahy se obsluhují z mezipaměti CDN. Není-li všechny bloky dat jsou uložené v mezipaměti v CDN, předběžné načtení slouží k vyžádání bloků dat z původního zdroje. Tato optimalizace se spoléhá na schopnost zdrojový server podporovat požadavky na zjištění rozsahu bajtů; Pokud zdrojový server nepodporuje požadavky na zjištění rozsahu bajtů, optimalizací není platná.
 
 ### <a name="caching"></a>Ukládání do mezipaměti
-Optimalizace velkých souborů používá jiný výchozí doba ukládání do mezipaměti vypršení platnosti z obecné webové doručení. Rozlišuje ukládání do mezipaměti kladné a záporné ukládání do mezipaměti na základě kódů odpovědi HTTP. Pokud je zdrojový server určuje čas vypršení platnosti prostřednictvím ovládacího prvku mezipaměti nebo vyprší platnost hlavičky v odpovědi, CDN ctí tuto hodnotu. Když soubor odpovídá podmínkám typ a velikost pro tento typ optimalizace počátek neuvádí, CDN použije výchozí hodnoty pro optimalizaci velkých souborů. CDN, jinak používá výchozí hodnoty pro obecné webové doručení.
+Optimalizace velkých souborů používá různé výchozí dobu ukládání do mezipaměti vypršení platnosti od obecné doručování webu. Rozlišuje mezi ukládání do mezipaměti kladné a záporné ukládání do mezipaměti na základě kódů odpovědí HTTP. Pokud zdrojový server určuje dobu vypršení platnosti prostřednictvím cache-control nebo expires hlaviček v odpovědi, CDN respektuje tuto hodnotu. Když soubor odpovídá podmínkám typu a velikosti pro tento typ optimalizace původ neurčuje, CDN používá výchozí hodnoty pro optimalizace velkých souborů. V opačném případě CDN používá výchozí nastavení pro obecné doručování webu.
 
 
 |    | Obecné web | Optimalizace velkých souborů 
 --- | --- | --- 
-Ukládání do mezipaměti: kladné <br> HTTP 200, 203, 300, <br> 301, 302 a 410 | 7 dní |1 den  
+Ukládání do mezipaměti: pozitivní <br> HTTP 200, 203, 300, <br> 301, 302 a 410 | 7 dní |1 den  
 Ukládání do mezipaměti: záporná <br> HTTP 204, 305, 404, <br> a 405 | Žádný | 1 sekunda 
 
-### <a name="deal-with-origin-failure"></a>Řešení s chybou počátek
+### <a name="deal-with-origin-failure"></a>Řešení selhání původu
 
-Délka časového limitu pro čtení počátek zvyšuje ze dvou sekund k doručení obecné webové do dvou minut pro typ optimalizace velkých souborů. Toto zvýšení účty pro velkých souborů, aby se zabránilo předčasné vypršení časového limitu připojení.
+Čtení – časový limit délky původu zvyšuje ze dvou sekund pro obecné doručování webu do dvou minut, než se typ optimalizace velkých souborů. Toto zvýšení účty pro větší velikosti souborů, aby se zabránilo předčasné časový limit připojení.
 
-Pokud vyprší časový limit připojení, CDN opakuje několikrát, než odešle "504 – časový limit brány" Chyba do klienta. 
+Když vyprší časový limit připojení, síť CDN opakování s počtem opakování, než odešle klientovi chybu "504 – časový limit brány". 
 
-### <a name="conditions-for-large-file-optimization"></a>Podmínky pro optimalizaci velkých souborů
+### <a name="conditions-for-large-file-optimization"></a>Podmínky pro optimalizace velkých souborů
 
-Následující tabulka uvádí sadu kritérií, které je třeba splnit pro optimalizaci velkých souborů:
+V následující tabulce jsou uvedeny sadu kritérií, které je třeba splnit pro optimalizace velkých souborů:
 
 Podmínka | Hodnoty 
 --- | --- 
-Podporované typy souborů | 3g, 2, 3gp, amp, avi, bz2, dmg, exe, f4v, flv, <br> GZ, hdp, iso, jxr, m4v, mkv, mov, mp4, <br> MPEG, mpg, serveru mts, pkg, RT, rm, swf, vkládání, <br> TGZ, wdp, WBEM, webp, wma, wmv, zip  
-Minimální velikost souboru | 10 MB. 
+Podporované typy souborů | 3g, 2, 3gp, amp, avi, bz2, dmg, exe, f4v, flv, <br> GZ, hdp, iso, jxr, m4v, mkv, mov, mp4, <br> MPEG, mpg, mts, balíčku, qt, rm, swf tar, <br> TGZ, wdp, webm, webp, wma, wmv, zip  
+Minimální velikost souboru | 10 MB 
 Maximální velikost souboru | 150 GB 
-Vlastnosti serveru počátek | Žádosti o rozsah bajtů musí podporovat. 
+Vlastnosti serveru původu | Musí podporovat požadavky na zjištění rozsahu bajtů 
 
 ## <a name="additional-considerations"></a>Další aspekty
 
 Vezměte v úvahu následující další aspekty pro tento typ optimalizace:
 
-- Proces bloku dat vygeneruje další požadavky na zdrojový server. Celkový objem dat doručit od počátku je však mnohem menší. Bloku dat za následek lepší ukládání do mezipaměti charakteristiky v CDN.
+- Proces vytváření bloků vygeneruje další požadavky na zdrojový server. Celkový objem dat od počátku je však mnohem menší. Vytváření bloků za následek lepší charakteristiky ukládání do mezipaměti v CDN.
 
-- Paměť a vstupně-výstupních operací přetížení jsou omezeny na počátku vzhledem k tomu, že jsou doručovány na menší části souboru.
+- Paměti a přetížení vstupně-výstupních operací se snížit na počátku, protože se doručují menších souboru.
 
-- U bloky dat uložené v mezipaměti v CDN neexistují žádné další požadavky na počátek až vyprší platnost obsahu nebo je vyřazena z mezipaměti.
+- Pro bloky dat uložené v mezipaměti v CDN neexistují žádné další požadavky na počátku až vyprší platnost obsahu nebo je odstraněn z mezipaměti.
 
-- Mohou uživatelé provádět požadavky na rozsah k CDN, které jsou zpracovány jako jakýkoli normální soubor. Optimalizace platí jenom v případě, že je platný typ souboru a rozsah bajtů je mezi 10 MB a 150 GB. Pokud je požadovaná velikost průměrná soubor je menší než 10 MB, použijte místo toho obecné webové doručení.
+- Mohou uživatelé provádět požadavky na zjištění rozsahu do sítě CDN, které jsou zpracovány jako jakýkoli normální soubor. Optimalizace platí jenom v případě, že je platný typ souboru a rozsah bajtů je 10 MB až 150 GB. Pokud je požadovaná velikost průměrné soubor menší než 10 MB, použijte obecné doručování webu.
 

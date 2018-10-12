@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: v-deken
-ms.openlocfilehash: 49cba0e9b6958beb07b6f074e6dc748679514525
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 2a77306f408e87d5055a292d6f403cc041790eba
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985307"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093863"
 ---
 # <a name="recognizing-printed-and-handwritten-text"></a>Rozpoznávání tištěného a ručně psaného textu
 
@@ -29,7 +29,7 @@ Počítačové zpracování obrazu dokáže rozpoznat tištěné a rukou psaný 
 
 - Obrázek musí uvedené ve formátu JPEG, PNG nebo BMP
 - Velikost souboru obrázku musí být menší než 4 megabajty (MB).
-- Rozměry obrázku musí být až 40 x 40 3200 x 3200 pixelů
+- Rozměry obrázku musí být až 50 × 50 pixelů 4200 x 4200
 
 > [!NOTE]
 > Tato technologie je momentálně ve verzi preview a je dostupná jenom pro anglický text.

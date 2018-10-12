@@ -9,12 +9,12 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: ced10a54d569531b06ee47b646130f43cedd2963
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3256c8815b19f9b070cce3cd422f92c296e3e5c3
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984598"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49115178"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Sledujte experimenty a vzdělávání metriky ve službě Azure Machine Learning
 
@@ -148,7 +148,7 @@ Tento příklad rozšiřuje základní model skriptu sklearn Ridge výše. Prov�
           "test": {"X": X_test, "y": y_test}}
 
   # list of numbers from 0.0 to 1.0 with a 0.05 interval
-  alphas = np.arange(0.0, 1.0, 0.05)
+  alphas = mylib.get_alphas()
 
   for alpha in alphas:
       # Use Ridge algorithm to create a regression model
@@ -213,7 +213,7 @@ Tento příklad rozšiřuje základní model skriptu sklearn Ridge výše. Prov�
 ## <a name="view-run-details"></a>Zobrazení podrobností o spuštění
 
 ### <a name="monitor-run-with-jupyter-notebook-widgets"></a>Monitorování spuštění pomocí widgetů poznámkového bloku Jupyter
-Při použití **ScriptRunConfig** spuštěním metody k odeslání, můžete sledovat průběh spuštění s pomůckou Poznámkový blok Jupyter. Stejně jako spuštění odeslání widgetu je asynchronní a poskytuje živé aktualizace každých 10 až 15 sekund, dokud se úloha nedokončí.
+Při použití **ScriptRunConfig** spuštěním metody k odeslání, můžete sledovat průběh spuštění s pomůckou Poznámkový blok Jupyter. Podobně jako odeslání spuštění je tento widget asynchronní a poskytuje průběžné aktualizace každých 10 až 15 sekund, dokud se úloha nedokončí.
 
 1. Při čekání na dokončení běhu zobrazte widgetu Jupyter.
 
@@ -247,8 +247,8 @@ Můžete také zobrazit všechny výstupy a protokoly pro spuštění nebo stáh
 
 ## <a name="example-notebooks"></a>Příklad poznámkové bloky
 Tyto poznámkové bloky předvedení konceptů v tomto článku:
-* `01.getting-started/01.train-within-notebook/01.train-within-notebook.ipynb`
-* `01.getting-started/02.train-on-local/02.train-on-local.ipynb`
+* [01.Getting-Started/01.Train-within-notebook/01.Train-within-notebook.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/01.train-within-notebook)
+* [01.Getting-Started/02.Train-on-local/02.Train-on-local.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local)
 
 Získejte tyto poznámkové bloky: [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

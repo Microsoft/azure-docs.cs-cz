@@ -8,12 +8,12 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: f14fee349f5b5d88d628d0322e32bedeacd0562f
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: cac82fb7378a16663346666ad6576589bcaa5664
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816255"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093948"
 ---
 # <a name="support-and-help-options"></a>Možnosti podpory a Nápověda
 
@@ -48,7 +48,7 @@ Kde *{Your hledané termíny}* je klíčová slova pro vyhledávání.
 
 Zákazníci Azure můžete vytvářet a spravovat žádosti o podporu na webu Azure Portal.
 
-* [Azure Portal](https://portal.azure.com)
+* [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [Portál Azure pro vládu Spojených států amerických](https://portal.azure.us)
 
 ## <a name="post-a-question-to-stack-overflow"></a>Odeslat dotaz na Stack Overflow

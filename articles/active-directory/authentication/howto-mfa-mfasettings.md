@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 8ba1286f7283a1062b2b94d58c2439e8461c1573
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: a66a7537632aac2190cd39f13665bcd8d4ed6ce7
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817122"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114979"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurovat nastavení ověřování Azure Multi-Factor Authentication
 
@@ -322,11 +322,11 @@ _Zapamatovat Multi-Factor Authentication_ funkce pro zařízení a prohlížeče
 
 ### <a name="how-the-feature-works"></a>Princip funkce
 
-Funkci zapamatovat Multi-Factor Authentication nastaví trvalého souboru cookie v prohlížeči, když uživatel vybere **nezobrazovat dotaz dalších X dní** možnost při přihlášení. Uživatel není vyzván znovu pro ověřování službou Multi-Factor Authentication ze stejného prohlížeče do vypršení platnosti souboru cookie. Když uživatel otevře jiný prohlížeč na stejné zařízení nebo vymaže jejich souborů cookie, jsou vyzváni znovu ověřit. 
+Funkci zapamatovat Multi-Factor Authentication nastaví trvalého souboru cookie v prohlížeči, když uživatel vybere **nezobrazovat dotaz dalších X dní** možnost při přihlášení. Uživatel není vyzván znovu pro ověřování službou Multi-Factor Authentication ze stejného prohlížeče do vypršení platnosti souboru cookie. Když uživatel otevře jiný prohlížeč na stejné zařízení nebo vymaže jejich souborů cookie, jsou vyzváni znovu ověřit.
 
-**Nezobrazovat dotaz dalších X dní** možnost není zobrazena na neprohlížečové aplikace, bez ohledu na to, jestli aplikace podporuje moderní ověřování. Tyto aplikace použít _obnovovacích tokenů_ , které poskytují nové přístupové tokeny každou hodinu. Po ověření obnovovací token Azure AD ověří, že došlo k poslední dvoustupňové ověření během zadaného počtu dnů. 
+**Nezobrazovat dotaz dalších X dní** možnost není zobrazena na neprohlížečové aplikace, bez ohledu na to, jestli aplikace podporuje moderní ověřování. Tyto aplikace použít _obnovovacích tokenů_ , které poskytují nové přístupové tokeny každou hodinu. Po ověření obnovovací token Azure AD ověří, že došlo k poslední dvoustupňové ověření během zadaného počtu dnů.
 
-Funkci snižuje počet ověření ve službě web apps, které obvykle výzvu pokaždé, když. Tato funkce zvyšuje počet ověření pro moderní ověřování klientů, které obvykle výzvu každých 90 dní.
+Funkci snižuje počet ověření ve službě web apps, které obvykle výzvu pokaždé, když. Tato funkce zvyšuje počet ověření pro moderní ověřování klientů, které obvykle výzvu každých 90 dní. Může také zvýšit počet ověření v kombinaci se zásadami podmíněného přístupu.
 
 >[!IMPORTANT]
 >**Zapamatovat Multi-Factor Authentication** není kompatibilní s funkcí **neodhlašovat** funkce služby AD FS, když uživatelé provedou dvoustupňové ověřování pro službu AD FS pomocí Azure Multi-Factor Authentication Ověřování serveru nebo řešení třetí strany služby Multi-Factor authentication.
