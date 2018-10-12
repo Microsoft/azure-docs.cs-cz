@@ -10,15 +10,19 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: tutorial
 ms.date: 10/15/2017
-ms.openlocfilehash: 10fe861682da6c1d1ac701a565cef11f9b44cd1e
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ROBOTS: NOINDEX
+ms.openlocfilehash: b9b515a2ccaedc40fc531d6a1cc58cbe98212b4a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41918626"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967893"
 ---
 # <a name="tutorial-classifying-iris-using-the-command-line-interface"></a>Kurz: Klasifikace Iris pomocí rozhraní příkazového řádku
-Služby Azure Machine Learning (verze Preview) představují integrované, komplexní řešení datové vědy a pokročilé analýzy pro profesionální datové vědce, které slouží k přípravě dat, vývoji experimentů a nasazování modelů na úrovni cloudu.
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
+Služba Azure Machine Learning (verze Preview) představuje integrované, komplexní řešení datové vědy a pokročilé analýzy pro profesionální datové vědce, které slouží k přípravě dat, vývoji experimentů a nasazování modelů na úrovni cloudu.
 
 V tomto kurzu zjistíte, jak pomocí nástrojů rozhraní příkazového řádku ve funkcích služby Azure Machine Learning ve verzi Preview provádět následující úlohy: 
 > [!div class="checklist"]
@@ -34,7 +38,7 @@ Pro absolvování tohoto kurzu potřebujete:
   
   Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-- Nainstalovanou aplikaci Azure Machine Learning Workbench, jak je popsáno v tématu [Rychlý start: Instalace a spuštění služeb Azure Machine Learning](../service/quickstart-installation.md). 
+- Nainstalovanou aplikaci Azure Machine Learning Workbench, jak je popsáno v tématu [Rychlý start: Instalace a spuštění služby Azure Machine Learning](quickstart-installation.md). 
 
   >[!IMPORTANT]
   >Nevytvářejte účty služeb Azure Machine Learning, protože to provedete v tomto článku pomocí rozhraní příkazového řádku.
@@ -139,16 +143,16 @@ $ az ml project create --name <project name> --workspace <workspace name> --acco
 ```
 
 ### <a name="create-a-new-project-associated-with-a-cloud-git-repository"></a>Vytvoření nového projektu přidruženého ke cloudovému úložišti Git
-Můžete vytvořit nový projekt přidružený k úložišti VSTS (Visual Studio Team Services) Git. Při každém odeslání experimentu se do vzdáleného úložiště Git uloží snímek celé složky projektu. Další podrobnosti najdete v tématu [Použití úložiště Git s projektem aplikace Azure Machine Learning Workbench](using-git-ml-project.md).
+Můžete vytvořit nový projekt přidružený k úložišti Azure DevOps Git. Při každém odeslání experimentu se do vzdáleného úložiště Git uloží snímek celé složky projektu. Další podrobnosti najdete v tématu [Použití úložiště Git s projektem aplikace Azure Machine Learning Workbench](using-git-ml-project.md).
 
 > [!NOTE]
-> Azure Machine Learning podporuje pouze prázdná úložiště Git vytvořená ve VSTS.
+> Azure Machine Learning podporuje jenom prázdná úložiště Git vytvořená v Azure DevOps.
 
 ```azure-cli
 $ az ml project create --name <project name> --workspace <workspace name> --account <experimentation account name> --resource-group <resource group name> --path <local folder path> --repo <VSTS repo URL>
 ```
 > [!TIP]
-> Pokud se zobrazuje chyba „Adresa URL úložiště je možná neplatná nebo uživatel možná nemá přístup“, můžete ve VSTS vytvořit token zabezpečení (v části _Zabezpečení_ v nabídce _Přidat tokeny PAT_) a při vytváření projektu použít argument `--vststoken`. 
+> Pokud se zobrazuje chyba „Adresa URL úložiště je možná neplatná nebo uživatel možná nemá přístup“, můžete v Azure DevOps vytvořit token zabezpečení (v části _Zabezpečení_ v nabídce _Přidat tokeny PAT_) a při vytváření projektu použít argument `--vststoken`. 
 
 ### <a name="sample_create"></a>Vytvoření nového projektu z ukázky
 V tomto příkladu vytvoříte nový projekt s použitím ukázkového projektu jako šablony.

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 10/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ed5da0afe67deaa7000c1bf3b8d75bdea14f2ecd
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 7fcf0b924868d755bc76f7d1e695e73afc4eae6a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616322"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993387"
 ---
 # <a name="quickstart-deploy-a-java-reliable-services-application-to-service-fabric"></a>Rychlý start: Nasazení aplikace spolehlivých služeb v Javě do Service Fabric
 
@@ -101,7 +101,7 @@ Přihlaste se a připojte se ke [clusteru s Linuxem](http://aka.ms/tryservicefab
 Service Fabric poskytuje několik nástrojů, pomocí kterých můžete spravovat cluster a jeho aplikace:
 
 * Nástroj v prohlížeči Service Fabric Explorer.
-* Rozhraní příkazového řádku (CLI) Service Fabric, které se spouští nad Azure CLI 2.0.
+* Rozhraní příkazového řádku (CLI) Service Fabric, které se spouští nad Azure CLI.
 * Příkazy PowerShellu.
 
 V tomto rychlém startu použijete Service Fabric CLI a Service Fabric Explorer.

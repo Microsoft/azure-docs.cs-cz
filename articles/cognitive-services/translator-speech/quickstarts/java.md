@@ -1,55 +1,57 @@
 ---
-title: Java Quickstart pro Azure Cognitive Services, Microsoft Translator Speech API | Dokumentace Microsoftu
-description: Získat informace a ukázky kódu můžete rychle začít používat Microsoft Translator Speech API ve službě Microsoft Cognitive Services v Azure.
+title: 'Rychlý start: Rozhraní Translator Speech API v jazyce Java'
+titlesuffix: Azure Cognitive Services
+description: Získejte informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní Translator Speech API.
 services: cognitive-services
-documentationcenter: ''
 author: v-jaswel
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-speech
-ms.topic: article
+ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 0db55f4064d3415cb647519ea9030936012a8446
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
-ms.translationtype: MT
+ROBOTS: NOINDEX
+ms.openlocfilehash: dde7d3dc7c1a744da9a22c0e4c0a483a186aa327
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41987493"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46969457"
 ---
-# <a name="quickstart-for-microsoft-translator-speech-api-with-java"></a>Rychlý start pro Microsoft Translator Speech API s využitím Javy 
+# <a name="quickstart-translator-speech-api-with-java"></a>Rychlý start: Rozhraní Translator Speech API v jazyce Java 
 <a name="HOLTop"></a>
 
-V tomto článku se dozvíte, jak používat Microsoft Translator Speech API pro převod slova v souboru ve formátu WAV.
+V tomto článku se dozvíte, jak použít rozhraní Translator Speech API k překladu vyslovených slov do souboru .wav.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Budete potřebovat [JDK 7 nebo 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) kompilace a spuštění tohoto kódu. Pokud máte Oblíbené, ale bude stačit textový editor, můžete použít prostředí Java IDE.
+Pro kompilaci a spuštění tohoto kódu budete potřebovat [JDK 7 nebo 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). Můžete použít prostředí Java IDE, pokud je vaše oblíbené, ale stačit bude i textový editor.
 
 Budete potřebovat následující soubory.
-- [javax.websocket. rozhraní api 1.1.jar (nebo novější)](https://mvnrepository.com/artifact/javax.websocket/javax.websocket-api)
+- [javax.websocket-api-1.1.jar (nebo novější)](https://mvnrepository.com/artifact/javax.websocket/javax.websocket-api)
 - [jetty-http-9.4.11.v20180605.jar (nebo novější)](https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-http)
-- [jetty. vstupně-výstupních operací 9.4.11.v20180605.jar (nebo novější)](https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-io)
-- [jetty. util 9.4.11.v20180605.jar (nebo novější)](https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-util)
-- [objekt websocket. rozhraní api 9.4.11.v20180605.jar (nebo novější)](https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/websocket-api)
-- [objekt websocket. klient 9.4.11.v20180605.jar (nebo novější)](https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/websocket-client)
-- [objekt websocket. běžné 9.4.11.v20180605.jar (nebo novější)](https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/websocket-common)
-- [javax-protokolu websocket – klient impl – 9.4.11.v20180605.jar (nebo novější)](https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/javax-websocket-client-impl)
-- [jetty. klient 9.4.11.v20180605.jar (nebo novější)](https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-client)
+- [jetty-io-9.4.11.v20180605.jar (nebo novější)](https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-io)
+- [jetty-util-9.4.11.v20180605.jar (nebo novější)](https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-util)
+- [websocket-api-9.4.11.v20180605.jar (nebo novější)](https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/websocket-api)
+- [websocket-client-9.4.11.v20180605.jar (nebo novější)](https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/websocket-client)
+- [websocket-common-9.4.11.v20180605.jar (nebo novější)](https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/websocket-common)
+- [javax-websocket-client-impl-9.4.11.v20180605.jar (nebo novější)](https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/javax-websocket-client-impl)
+- [jetty-client-9.4.11.v20180605.jar (nebo novější)](https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-client)
 
-Budete potřebovat soubor WAV s názvem "speak.wav" ve stejné složce jako spustitelný soubor, který kompilaci z níže uvedeného kódu. Tento soubor ve formátu WAV musí být ve standardní PCM, 16 bitů, 16kHz, mono formátu. Můžete získat takový WAV soubor z [převod textu na řeč API](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech).
+Budete potřebovat soubor .wav s názvem „speak.wav“ ve stejné složce jako spustitelný soubor, který zkompilujete z níže uvedeného kódu. Tento soubor .wav musí být ve standardním 16bitovém, 16kHz monofonním formátu PCM. Takový soubor .wav můžete získat z [rozhraní API pro převod textu na řeč](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech).
 
-Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **Microsoft Translator Speech API**. Budete potřebovat placené předplatné klíče z vašeho [řídicí panel Azure](https://portal.azure.com/#create/Microsoft.CognitiveServices).
+Musíte mít [účet rozhraní Cognitive Services API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s rozhraním **Microsoft Translator Speech API**. Budete potřebovat placené klíče předplatného ze svého [řídicího panelu Azure](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 
 ## <a name="translate-speech"></a>Překlad řeči
 
-Následující kód přeloží řeči z jednoho jazyka do druhého.
+Následující kód překládá řeč z jednoho jazyka do druhého.
 
-1. Vytvoření nového projektu v Javě v oblíbeném prostředí IDE.
+1. Ve svém oblíbeném integrovaném vývojovém prostředí vytvořte nový projekt Javy.
 2. Přidejte níže uvedený kód.
-3. Nahraďte `key` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Spuštění programu.
+3. Hodnotu `key` nahraďte přístupovým klíčem platným pro vaše předplatné.
+4. Spusťte program.
 
-Config.Java:
+Config.java:
 
 ```java
 import java.util.*;
@@ -71,7 +73,7 @@ public class Config extends ClientEndpointConfig.Configurator {
 }
 ```
 
-Client.Java:
+Client.java:
 
 ```java
 import java.io.*;
@@ -214,7 +216,7 @@ See:
 }
 ```
 
-Speak.Java:
+Speak.java:
 
 ```java
 /*
@@ -263,18 +265,18 @@ public class Speak {
 }
 ```
 
-**Překlad řeči odpovědi**
+**Odpověď s přeloženou řečí**
 
-Úspěšný výsledek je vytvoření souboru s názvem "speak2.wav". Tento soubor obsahuje překlad slova, kterým se mluví ve "speak.wav".
+Úspěšným výsledkem je vytvoření souboru s názvem „speak2.wav“. Tento soubor obsahuje překlad vyslovených slov ze souboru „speak.wav“.
 
 [Zpět na začátek](#HOLTop)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Translator Speech kurz](../tutorial-translator-speech-csharp.md)
+> [Kurz ke službě Translator Speech](../tutorial-translator-speech-csharp.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech 
+## <a name="see-also"></a>Viz také 
 
-[Přehled rozhraní Translator Speech](../overview.md)
-[Reference k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)
+[Přehled služby Translator Speech](../overview.md)
+[Referenční materiály k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)

@@ -1,6 +1,6 @@
 ---
-title: Příprava dat pro kurz klasifikace Iris ve službách Azure Machine Learning | Dokumentace Microsoftu
-description: V tomto kurzu na pokračování se dozvíte, jak komplexně používat služby Azure Machine Learning (Preview). Toto je první část, ve které se probírá příprava dat.
+title: Příprava dat pro kurz klasifikace Iris ve službě Azure Machine Learning (Preview) | Microsoft Docs
+description: V tomto kurzu na pokračování se dozvíte, jak komplexně používat službu Azure Machine Learning (Preview). Toto je první část, ve které se probírá příprava dat.
 services: machine-learning
 author: hning86
 ms.author: haining
@@ -12,18 +12,21 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/7/2018
-ms.openlocfilehash: 56f1d26d5d687982366b9a8fb20235ff338a9573
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ROBOTS: NOINDEX
+ms.openlocfilehash: 272b8250a80fee42780311dec92f6d47c221c160
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38722979"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990157"
 ---
 # <a name="tutorial-1-classify-iris---preparing-the-data"></a>Kurz 1: Klasifikace Iris – Příprava dat
 
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
 Služba Azure Machine Learning (verze Preview) představuje integrované, komplexní řešení datové vědy a pokročilé analýzy pro profesionální datové vědce, které slouží k přípravě dat, vývoji experimentů a nasazování modelů na úrovni cloudu.
 
-Tento kurz je **první částí z třídílné série**. V tomto kurzu se názorně seznámíte se základy služeb Azure Machine Learning (Preview) a naučíte se následující postupy:
+Tento kurz je **první částí z třídílné série**. V tomto kurzu se názorně seznámíte se základy služby Azure Machine Learning (Preview) a naučíte se následující postupy:
 
 > [!div class="checklist"]
 > * Vytvoření projektu v aplikaci Azure Machine Learning Workbench
@@ -31,6 +34,8 @@ Tento kurz je **první částí z třídílné série**. V tomto kurzu se názor
 > * Vygenerování kódu Pythonu/PySpark k vyvolání balíčku pro přípravu dat
 
 Tento kurz používá nadčasovou [datovou sadu Iris](https://en.wikipedia.org/wiki/Iris_flower_data_set). 
+
+[!INCLUDE [aml-preview-note](../../../includes/aml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -40,11 +45,11 @@ K dokončení tohoto kurzu potřebujete:
 - Účet Experimentování ve službě Azure Machine Learning
 - Nainstalovanou aplikaci Azure Machine Learning Workbench
 
-Pokud tyto požadavky ještě nemáte, postupujte podle kroků v článku [Rychlý start: Instalace a spuštění](../service/quickstart-installation.md) a nastavte své účty a nainstalujte aplikaci Azure Machine Learning Workbench. 
+Pokud tyto požadavky ještě nemáte, postupujte podle kroků v článku [Rychlý start: Instalace a spuštění](quickstart-installation.md) a nastavte své účty a nainstalujte aplikaci Azure Machine Learning Workbench. 
 
 ## <a name="create-a-new-project-in-workbench"></a>Vytvoření nového projektu v aplikaci Workbench
 
-Pokud jste postupovali podle kroků v článku [Rychlý start: Instalace a spuštění](../service/quickstart-installation.md), měli byste tento projekt už mít a můžete přeskočit k další části.
+Pokud jste postupovali podle kroků v článku [Rychlý start: Instalace a spuštění](quickstart-installation.md), měli byste tento projekt už mít a můžete přeskočit k další části.
 
 1. Otevřete aplikaci Azure Machine Learning Workbench a v případě potřeby se přihlaste. 
    
@@ -62,7 +67,7 @@ Pokud jste postupovali podle kroků v článku [Rychlý start: Instalace a spuš
    Název projektu | myIris |Zadejte jedinečný název, který identifikuje váš účet. Můžete použít své jméno nebo třeba název oddělení nebo projektu, který experiment nejlépe identifikuje. Název musí mít délku od 2 do 32 znaků. Může obsahovat jenom alfanumerické znaky a znak spojovníku (-). 
    Adresář projektu | c:\Temp\ | Zadejte adresář, ve kterém se projekt vytvoří.
    Popis projektu | _ponechte prázdné_ | Volitelné pole, které je užitečné pro popis projektů.
-   Adresa URL úložiště GIT Visualstudio.com |_ponechte prázdné_ | Volitelné pole. Projekt můžete přidružit k úložišti Git ve Visual Studio Team Services, které umožňuje správu zdrojového kódu a spolupráci. [Tady najdete potřebné informace](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo). 
+   Adresa URL úložiště GIT Visualstudio.com |_ponechte prázdné_ | Volitelné pole. Projekt můžete přidružit k úložišti Git v Azure DevOps, které umožňuje správu zdrojového kódu a spolupráci. [Tady najdete potřebné informace](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo). 
    Vybraný pracovní prostor | IrisGarden (pokud existuje) | Zvolte pracovní prostor, který jste vytvořili pro svůj účet Experimentování na webu Azure Portal. <br/>Pokud jste postupovali podle tohoto rychlého startu, měli byste mít pracovní prostor IrisGarden. Pokud ne, vyberte pracovní prostor, který jste vytvořili při vytváření účtu Experimentování, nebo jakýkoli jiný, který chcete použít.
    Šablona projektu | Klasifikace Iris | Šablony obsahují skripty a data, pomocí kterých můžete produkt zkoumat. Tato šablona obsahuje skripty a data, které potřebujete pro tento rychlý start a další kurzy na tomto webu dokumentace. 
 

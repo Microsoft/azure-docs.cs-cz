@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 03/01/2017
 ms.author: rogardle
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: d89e9b4dcfe44648f1e3ddd95fb01b62a36295df
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6bb13ad19f9b0b6137cdb2b4a9afbb2f325b9d36
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32166333"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46975050"
 ---
 # <a name="introduction-to-docker-container-hosting-solutions-with-azure-container-service"></a>Úvod k řešením hostování kontejnerů Docker pomocí Azure Container Service 
 
@@ -30,7 +30,7 @@ Díky používání služby Azure Container Service můžete využívat výhody 
 Naším cílem u služby Azure Container Service je poskytnout hostitelské prostředí pro kontejnery díky používání nástrojů a technologií open source, které jsou dnes mezi našimi zákazníky oblíbené. Za tímto účelem zveřejňujeme standardní koncové body rozhraní API pro zvolený orchestrátor (systém DC/OS, Docker Swarm nebo Kubernetes). S použitím těchto koncových bodů můžete využívat veškerý software, který s nimi dokáže komunikovat. V případě koncového bodu Docker Swarm můžete například zvolit použití rozhraní příkazového řádku (CLI) Dockeru. V případě systému DC/OS můžete zvolit rozhraní příkazového řádku systému DC/OS. V případě systému Kubernetes můžete zvolit použití `kubectl`.
 
 ## <a name="creating-a-docker-cluster-by-using-azure-container-service"></a>Vytvoření clusteru Dockeru s použitím služby Azure Container Service
-Chcete-li začít používat službu Azure Container Service, nasaďte cluster Azure Container Service prostřednictvím portálu (vyhledejte na Marketplace řetězec **Azure Container Service**) s použitím šablony Azure Resource Manageru ([Docker Swarm](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm), systém [DC/OS](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos) nebo [Kubernetes](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes)) nebo [rozhraní příkazového řádku Azure CLI 2.0](container-service-create-acs-cluster-cli.md). Poskytované šablony pro rychlý začátek lze upravit tak, aby obsahovaly další nebo rozšířenou konfiguraci Azure. Další informace najdete v části [Nasazení clusteru Azure Container Service](container-service-deployment.md).
+Pokud chcete začít používat službu Azure Container Service, nasaďte cluster Azure Container Service prostřednictvím portálu (vyhledejte na Marketplace řetězec **Azure Container Service**) s použitím šablony Azure Resource Manageru ([Docker Swarm](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm), [DC/OS](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos) nebo [Kubernetes](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes)) nebo [Azure CLI](container-service-create-acs-cluster-cli.md). Poskytované šablony pro rychlý začátek lze upravit tak, aby obsahovaly další nebo rozšířenou konfiguraci Azure. Další informace najdete v části [Nasazení clusteru Azure Container Service](container-service-deployment.md).
 
 ## <a name="deploying-an-application"></a>Nasazení aplikace
 Služba Azure Container Service poskytuje možnost orchestrace prostřednictvím Docker Swarmu, systému DC/OS nebo Kubernetes. Způsob nasazení aplikace závisí na zvoleném orchestrátoru.
@@ -55,7 +55,8 @@ Ve výchozím nastavení systém DC/OS spuštěný ve službě Azure Container S
 ![Universe pro systém DC/OS ve službě Azure Container Service](media/dcos/universe.png)
 
 #### <a name="using-marathon"></a>S použitím systému Marathon
-Marathon je celoclusterový inicializační a řídicí systém pro služby ve skupinách cgroup – nebo (v případě služby Azure Container Service) v kontejnerech s formátem Dockeru. Systém Marathon poskytuje webové uživatelské rozhraní, ze kterého můžete nasazovat své aplikace. K dispozici je přístup prostřednictvím adresy URL, která vypadá přibližně takto: `http://DNS_PREFIX.REGION.cloudapp.azure.com` Proměnné DNS\_PREFIX a REGION se definují v době nasazení. Samozřejmě můžete také zadat vlastní název DNS. Další informace o spouštění kontejneru prostřednictvím webového uživatelského rozhraní systému Marathon najdete v části [Správa kontejnerů systému DC/OS prostřednictvím webového uživatelského rozhraní systému Marathon](container-service-mesos-marathon-ui.md).
+Marathon je celoclusterový inicializační a řídicí systém pro služby ve skupinách cgroup – nebo (v případě služby Azure Container Service) v kontejnerech s formátem Dockeru. Systém Marathon poskytuje webové uživatelské rozhraní, ze kterého můžete nasazovat své aplikace. K dispozici je přístup prostřednictvím adresy URL, která vypadá přibližně takto: `http://DNS_PREFIX.REGION.cloudapp.azure.com`.
+Proměnné DNS\_PREFIX a REGION se definují v době nasazení. Samozřejmě můžete také zadat vlastní název DNS. Další informace o spouštění kontejneru prostřednictvím webového uživatelského rozhraní systému Marathon najdete v části [Správa kontejnerů systému DC/OS prostřednictvím webového uživatelského rozhraní systému Marathon](container-service-mesos-marathon-ui.md).
 
 ![Seznam aplikací systému Marathon](media/dcos/marathon-applications-list.png)
 
@@ -102,4 +103,4 @@ Sestavování aplikací s použitím služby Azure Container Service (sestavení
 
 ## <a name="next-steps"></a>Další kroky
 
-Nasazení clusteru služby Container Service pomocí [portálu](container-service-deployment.md) nebo [Azure CLI 2.0 ](container-service-create-acs-cluster-cli.md).
+Nasaďte cluster služby Container Service pomocí [portálu](container-service-deployment.md) nebo [Azure CLI](container-service-create-acs-cluster-cli.md).

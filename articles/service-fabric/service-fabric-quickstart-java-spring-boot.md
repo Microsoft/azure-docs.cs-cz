@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 11/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: cedc13cb18440eee32e333d395494043e2eca9d1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 702d247bf331a4231b4b71ae6661ff88c9e0be2e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442509"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982762"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-application-to-service-fabric"></a>Rychlý start: Nasazení aplikace Spring Boot v Javě do Service Fabric
 
@@ -187,7 +187,7 @@ Přihlaste se a připojte se ke [clusteru s Linuxem](http://aka.ms/tryservicefab
 Service Fabric poskytuje několik nástrojů, pomocí kterých můžete spravovat cluster a jeho aplikace:
 
 * Nástroj v prohlížeči Service Fabric Explorer.
-* Rozhraní příkazového řádku (CLI) Service Fabric, které se spouští nad Azure CLI 2.0.
+* Rozhraní příkazového řádku (CLI) Service Fabric, které se spouští nad Azure CLI.
 * Příkazy PowerShellu.
 
 V tomto rychlém startu použijete Service Fabric CLI a Service Fabric Explorer.

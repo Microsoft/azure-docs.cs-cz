@@ -1,5 +1,5 @@
 ---
-title: Směrování provozu virtuální sítě Azure | Dokumentace Microsoftu
+title: Směrování provozu virtuální sítě Azure | Microsoft Docs
 description: Zjistěte, jak Azure směruje provoz virtuální sítě a jak můžete směrování Azure přizpůsobit.
 services: virtual-network
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: b206d93d7c72f5d8ff3dd3baa277cd0db33ba583
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 97e192312619455c0055a917df880cc48eb082dd
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42811909"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978900"
 ---
 # <a name="virtual-network-traffic-routing"></a>Směrování provozu virtuální sítě
 
@@ -105,13 +105,13 @@ V trasách definovaných uživatelem nemůžete jako typ dalšího segmentu smě
 
 Zobrazené a odkazované názvy typů dalších segmentů směrování se liší na webu Azure Portal a v nástrojích příkazového řádku a v modelech nasazení Azure Resource Manager a Classic. Následující tabulka uvádí názvy používané k odkazování na jednotlivé typy dalších segmentů směrování v různých nástrojích a [modelech nasazení](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json):
 
-|Typ dalšího segmentu                   |Azure CLI 2.0 a PowerShell (Resource Manager) |Azure CLI 1.0 a PowerShell (Classic)|
+|Typ dalšího segmentu                   |Azure CLI a PowerShell (Resource Manager) |Azure Classic CLI a PowerShell (Classic)|
 |-------------                   |---------                                       |-----|
 |Brána virtuální sítě         |VirtualNetworkGateway                           |VPNGateway|
-|Virtuální síť                 |VNetLocal                                       |VNETLocal (není dostupné v CLI 1.0 v režimu asm)|
-|Internet                        |Internet                                        |Internet (není dostupné v CLI 1.0 v režimu asm)|
+|Virtuální síť                 |VNetLocal                                       |VNETLocal (není dostupné v Classic CLI v režimu asm)|
+|Internet                        |Internet                                        |Internet (není dostupné v Classic CLI v režimu asm)|
 |Virtuální zařízení               |VirtualAppliance                                |VirtualAppliance|
-|Žádný                            |Žádný                                            |Null (není dostupné v CLI 1.0 v režimu asm)|
+|Žádný                            |Žádný                                            |Null (není dostupné v Classic CLI v režimu asm)|
 |Partnerské vztahy virtuálních sítí         |Partnerské vztahy virtuálních sítí                                    |Neuvedeno|
 |Koncový bod služby virtuální sítě|VirtualNetworkServiceEndpoint                   |Neuvedeno|
 

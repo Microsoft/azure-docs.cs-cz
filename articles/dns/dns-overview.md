@@ -5,14 +5,14 @@ author: vhorne
 manager: jeconnoc
 ms.service: dns
 ms.topic: overview
-ms.date: 6/7/2018
+ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: 0812f5e3e23fbf49afec91524b4de2ff0eb7cd9a
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: e3e04bf7e35b22a56465810f476323ed217e047a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574177"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967621"
 ---
 # <a name="what-is-azure-dns"></a>Co je Azure DNS?
 
@@ -52,6 +52,14 @@ Své domény a záznamy můžete spravovat pomocí webu Azure Portal, rutin Azur
 Azure DNS také podporuje privátní domény DNS, které jsou aktuálně ve verzi Public Preview. Můžete tak ve svých privátních virtuálních sítích místo aktuálně dostupných názvů poskytovaných Azure používat vlastní názvy domén.
 
 Další informace najdete v tématu o [použití Azure DNS pro privátní domény](private-dns-overview.md).
+
+## <a name="alias-records"></a>Záznamy aliasů
+
+Azure DNS podporuje sady záznamů aliasů. Sadu záznamů aliasů můžete použít k odkazování na prostředek Azure, jako je veřejná IP adresa Azure nebo profil Traffic Managera. Pokud se změní IP adresa základního prostředku, sada záznamů aliasů se bez problémů aktualizuje během překladu DNS. Sada záznamů aliasů odkazuje na instanci služby a instance služby je spojená s IP adresou. 
+
+Kromě toho teď můžete vrchol zóny nebo základní doménu (třeba contoso.com) odkazovat pomocí záznamu aliasu na profil Traffic Managera.
+
+Další informace najdete v [přehledu záznamů aliasů Azure DNS](dns-alias.md).
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 04/11/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: b0ded0fb274f6b64935ddaba75abf23a94063120
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c84470936dfc9610f23dacb55d8d8643a2651f71
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38452647"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948396"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Rychlý start: Nasazení kontejnerů Linuxu do Service Fabric
 
@@ -65,7 +65,7 @@ Přihlaste se a připojte se ke [clusteru s Linuxem](http://aka.ms/tryservicefab
 Service Fabric poskytuje několik nástrojů, pomocí kterých můžete spravovat cluster a jeho aplikace:
 
 - Nástroj v prohlížeči Service Fabric Explorer.
-- Rozhraní příkazového řádku (CLI) Service Fabric, které se spouští nad Azure CLI 2.0.
+- Rozhraní příkazového řádku (CLI) Service Fabric, které se spouští nad Azure CLI. 
 - Příkazy PowerShellu.
 
 V tomto rychlém startu použijete Service Fabric CLI ve službě Cloud Shell a Service Fabric Explorer. V následujících částech se dozvíte, jak pomocí těchto nástrojů nainstalovat certifikát potřebný k připojení k zabezpečenému clusteru.

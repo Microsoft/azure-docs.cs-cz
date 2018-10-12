@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/07/2018
+ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d0d140a1656719b406567fee431d8e48a51852c5
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 37498394bc163852d397337cf5728b4941ae45a7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714447"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956502"
 ---
 # <a name="what-is-role-based-access-control-rbac"></a>Co je řízení přístupu na základě role (RBAC)?
 
@@ -89,7 +89,7 @@ Když udělíte přístup na úrovni nadřízeného oboru, podřízené obory zd
 - Pokud přiřadíte roli [Čtenář](built-in-roles.md#reader) skupině v oboru předplatného, členové takové skupiny mohou zobrazit všechny skupiny prostředků a prostředky v daném předplatném.
 - Pokud přiřadíte roli [Přispěvatel](built-in-roles.md#contributor) aplikaci v oboru skupiny prostředků, může aplikace spravovat prostředky všech typů v dané skupině prostředků, ale už ne žádné jiné skupiny prostředků v předplatném.
 
-### <a name="role-assignment"></a>Přiřazení role
+### <a name="role-assignments"></a>Přiřazení rolí
 
 *Přiřazení role* je proces svázání definice role s uživatelem, skupinou nebo instančním objektem v určitém oboru za účelem udělení přístupu. Přístup se uděluje vytvořením přiřazení role a odvolává se odebráním přiřazení role.
 
@@ -98,6 +98,32 @@ Následující diagram znázorňuje příklad přiřazení role. V tomto příkl
 ![Přiřazení role za účelem řízení přístupu](./media/overview/rbac-overview.png)
 
 Přiřazení rolí můžete vytvořit pomocí portálu Azure Portal, Azure CLI, Azure PowerShellu, sad Azure SDK nebo rozhraní REST API. V každém předplatném můžete mít až 2 000 přiřazení rolí. K vytváření a odebírání přiřazení rolí musíte mít oprávnění `Microsoft.Authorization/roleAssignments/*`. Toto oprávnění se uděluje prostřednictvím role [Vlastník](built-in-roles.md#owner) nebo [Správce uživatelských přístupů](built-in-roles.md#user-access-administrator).
+
+## <a name="deny-assignments"></a>Přiřazení zamítnutí
+
+Model RBAC původně umožňoval jen povolení, ne zamítnutí, teď ale omezeně podporuje také přiřazení zamítnutí. Podobně jako u přiřazení rolí vytváří *přiřazení zamítnutí* vazbu mezi sadou akcí zamítnutí a uživatelem, skupinou nebo instančním objektem v určitém oboru za účelem zamítnutí přístupu. Přiřazení role definuje sadu akcí, které jsou *povolené*, naopak přiřazení zamítnutí definuje sadu akcí, které *povolené nejsou*. Jinými slovy, přiřazení zamítnutí blokuje uživatelům možnost provádět určité akce i v případě, že přiřazení role jim přístup uděluje. Přiřazení zamítnutí mají přednost před přiřazením rolí.
+
+Přiřazení zamítnutí jsou momentálně **jen pro čtení** a může je nastavit jen Azure. Nemůžete sice vytvářet vlastní přiřazení zamítnutí, můžete ale vytvořit jejich seznam, protože můžou ovlivnit účinnost vašich oprávnění. K získání informací o přiřazení zamítnutí potřebujete oprávnění `Microsoft.Authorization/denyAssignments/read`, které je obsaženo ve většině [předdefinovaných rolí](built-in-roles.md#owner). Další informace najdete v článku, který [vysvětluje přiřazení zamítnutí](deny-assignments.md).
+
+## <a name="how-rbac-determines-if-a-user-has-access-to-a-resource"></a>Jak se v modelu RBAC určí, jestli má uživatel přístup k prostředku
+
+V následující části popisujeme obecné kroky, které se v modelu RBAC používají k určení toho, zda budete mít v rovině správy přístup k prostředku. Tyto principy je užitečné chápat, pokud se snažíte vyřešit potíže s přístupem.
+
+1. Uživatel (nebo instanční objekt služby) získá token pro Azure Resource Manager.
+
+    Tento token obsahuje členství uživatele ve skupinách (včetně tranzitivního členství ve skupinách).
+
+1. Uživatel provede s připojeným tokenem volání rozhraní REST API do Azure Resource Manageru.
+
+1. Azure Resource Manager načte všechna přiřazení rolí a přiřazení zamítnutí vztahující se k prostředku, na kterém se akce provádí.
+
+1. Azure Resource Manageru zúží přiřazení rolí, které se vztahují na tohoto uživatele nebo jeho skupinu, a určí, jaké role má uživatel u daného prostředku.
+
+1. Azure Resource Manager určí, zda je akce ve volání rozhraní API je zahrnuta v rolích, které uživatel pro tento prostředek má.
+
+1. Pokud uživatel nemá roli s akcí v požadovaném oboru, není přístup povolen. V opačném případě Azure Resource Manager ověří, zda platí přiřazení zamítnutí.
+
+1. Pokud ano, přístup se zablokuje. Pokud ne, přístup je udělen.
 
 ## <a name="next-steps"></a>Další kroky
 

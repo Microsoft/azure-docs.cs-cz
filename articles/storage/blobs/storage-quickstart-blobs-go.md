@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: seguler
-ms.openlocfilehash: 90858501cbf20af032c98ca8703f9e74b475e9c1
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 93dc651767fc2be815fb706f71386ce72b382a37
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398572"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981711"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Go
 
@@ -23,11 +23,14 @@ V tomto rychlém startu zjistíte, jak pomocí programovacího jazyka Go nahráv
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba: 
 * Nainstalovat jazyk [Go verze 1.8 nebo vyšší](https://golang.org/dl/).
-* Stáhnout a nainstalovat [sadu Azure Storage Blob SDK pro jazyk Go](https://github.com/azure/azure-storage-blob-go/) pomocí příkazu `go get -u github.com/azure/azure-storage-blob-go/2016-05-31/azblob`. 
+* Stáhnout a nainstalovat [sadu Azure Storage Blob SDK pro jazyk Go](https://github.com/azure/azure-storage-blob-go/) pomocí příkazu `go get -u github.com/Azure/azure-storage-blob-go/2016-05-31/azblob`. 
+
+> [!WARNING]
+> Nezapomeňte pro Azure v adrese URL použít velká písmena. Pokud to neuděláte, při práci s touto sadou SDK mohou nastat problémy při importu, které souvisejí s použitím velkých a malých písmen. Velká písmena musíte použít také pro Azure v příkazech pro import.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-[!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
+[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
 ## <a name="download-the-sample-application"></a>Stažení ukázkové aplikace
 [Ukázková aplikace](https://github.com/Azure-Samples/storage-blobs-go-quickstart.git) použitá v tomto rychlém startu je základní aplikace v jazyce Go.  

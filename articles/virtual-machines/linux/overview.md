@@ -1,5 +1,5 @@
 ---
-title: Přehled virtuálních počítačů s Linuxem v Azure | Dokumentace Microsoftu
+title: Přehled virtuálních počítačů s Linuxem v Azure | Microsoft Docs
 description: Popis služeb Azure Compute, Storage a síťové služby Azure s použitím virtuálních počítačů s Linuxem.
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 1ac55b728a29ff1bb8129087da5992ffe5f23df9
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 6ed1ef6019e339768c4ba6a62d8b4d99d844f254
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42820309"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949517"
 ---
 # <a name="azure-and-linux"></a>Azure a Linux
 Microsoft Azure je rostoucí kolekce integrovaných veřejných cloudových služeb včetně analýz, virtuálních počítačů, databází, mobilních a síťových služeb, úložiště a webu &mdash; je tak ideální pro hostování vašich řešení.  Microsoft Azure poskytuje škálovatelnou výpočetní platformu, s kterou můžete platit jenom za to, co používáte a když to potřebujete – nemusíte tak investovat do hardwaru místně ve své firmě.  Platforma Azure dokáže flexibilně reagovat na vaše potřeby. Můžete tak libovolně škálovat kapacitu (vertikálně i horizontálně) pro svá řešení podle požadavků svých klientů.
@@ -37,7 +37,7 @@ Platforma Azure oznámila špičkovou smlouvu o úrovni služeb (SLA) s 99,9% do
 
 ## <a name="managed-disks"></a>Managed Disks
 
-Služba Managed Disks se na pozadí stará o vytvoření a správu účtu služby Azure Storage za vás a zajišťuje, že si nemusíte dělat starosti s omezením škálovatelnosti účtu úložiště. Zadáte velikost disku a úroveň výkonu (Standard nebo Premium) a Azure disk vytvoří a postará se o jeho správu. S využitím úložiště si nemusíte dělat starosti ani v případě, že přidáváte disky nebo vertikálně navyšujete a snižujete kapacitu virtuálního počítače. Pokud vytváříte nové virtuální počítače, [pomocí Azure CLI 2.0](quick-create-cli.md) nebo webu Azure Portal vytvořte virtuální počítače se spravovanými disky operačního systému a datovými disky. Pokud máte virtuální počítače s nespravovanými disky, můžete [virtuální počítače převést na využívání služby Managed Disks](convert-unmanaged-to-managed-disks.md).
+Služba Managed Disks se na pozadí stará o vytvoření a správu účtu služby Azure Storage za vás a zajišťuje, že si nemusíte dělat starosti s omezením škálovatelnosti účtu úložiště. Zadáte velikost disku a úroveň výkonu (Standard nebo Premium) a Azure disk vytvoří a postará se o jeho správu. S využitím úložiště si nemusíte dělat starosti ani v případě, že přidáváte disky nebo vertikálně navyšujete a snižujete kapacitu virtuálního počítače. Pokud vytváříte nové virtuální počítače, [pomocí Azure CLI](quick-create-cli.md) nebo webu Azure Portal vytvořte virtuální počítače se spravovanými disky operačního systému a datovými disky. Pokud máte virtuální počítače s nespravovanými disky, můžete [virtuální počítače převést na využívání služby Managed Disks](convert-unmanaged-to-managed-disks.md).
 
 V jednom účtu úložiště na oblast Azure můžete také spravovat vlastní image a vytvářet pomocí nich stovky virtuálních počítačů v rámci stejného předplatného. Další informace o spravovaných discích najdete v tématu [Přehled služby Managed Disks](../linux/managed-disks-overview.md).
 
@@ -91,7 +91,7 @@ Abyste mohli začít používat Azure, potřebujete účet Azure, nainstalované
 Prvním krokem při používání cloudu Azure je registrace účtu Azure.  Začněte tím, že přejdete na stránku [Registrace účtu Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 ### <a name="install-the-cli"></a>Instalace rozhraní příkazového řádku
-S novým účtem Azure můžete rovnou začít pracovat pomocí webu Azure Portal, což je webový panel pro správu.  Pokud chcete spravovat cloud Azure přes příkazový řádek, nainstalujte `azure-cli`.  Nainstalujte na svou pracovní stanici se systémem Mac nebo Linux [Azure CLI 2.0](/cli/azure/install-azure-cli).
+S novým účtem Azure můžete rovnou začít pracovat pomocí webu Azure Portal, což je webový panel pro správu.  Pokud chcete spravovat cloud Azure přes příkazový řádek, nainstalujte `azure-cli`.  Nainstalujte na svou pracovní stanici se systémem Mac nebo Linux [Azure CLI](/cli/azure/install-azure-cli).
 
 ### <a name="create-an-ssh-key-pair"></a>Vytvoření páru klíčů SSH
 Nyní máte účet Azure, webový portál Azure a Azure CLI.  Dalším krokem je vytvoření páru klíčů SSH, který slouží k připojení k Linuxu přes SSH bez použití hesla.  [Vytvořte v systému Linux nebo Mac klíče SSH](mac-create-ssh-keys.md) a umožněte přihlašování bez hesla a lepší zabezpečení.

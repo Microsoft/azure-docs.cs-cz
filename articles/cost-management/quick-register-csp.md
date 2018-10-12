@@ -1,25 +1,25 @@
 ---
-title: Registrace ve službě Azure Cost Management s použitím informací o partnerovi CSP | Dokumentace Microsoftu
-description: Použijte své informace o partnerovi CSP k registraci ve službě Azure Cost Management.
+title: Registrace u Cloudyn v Azure s použitím informací o partnerovi CSP | Microsoft Docs
+description: Použijte své informace o partnerovi CSP k registraci u Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 08/06/2018
+ms.date: 09/18/2018
 ms.topic: quickstart
 ms.custom: ''
 ms.service: cost-management
 manager: dougeby
-ms.openlocfilehash: e97ac06d5740a793d5f811e1a7ac01fef1a32806
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 698ddab4f5bca5aacf79cb952a51c385a67eee32
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578054"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985426"
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>Registrace do partnerského programu CSP a zobrazení informací o nákladech
 
-Jako partner CSP se můžete zaregistrovat ve službě Azure Cost Management. Registrací získáte přístup k portálu Cloudyn. Tento rychlý start podrobně popisuje proces registrace nezbytný k vytvoření zkušebního předplatného a přihlášení k portálu Cloudyn. Ukazuje také, jak rovnou začít zobrazovat informace o nákladech.
+Jako partner CSP se můžete zaregistrovat u Cloudyn. Registrací získáte přístup k portálu Cloudyn. Tento rychlý start podrobně popisuje proces registrace nezbytný k vytvoření zkušebního předplatného a přihlášení k portálu Cloudyn. Ukazuje také, jak rovnou začít zobrazovat informace o nákladech.
 
 
 >[!NOTE]
@@ -35,12 +35,12 @@ Další informace najdete v tématu [Připojení k rozhraní API partnerského c
 
 - Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 
-## <a name="register-with-azure-cost-management"></a>Registrace ve službě Azure Cost Management
+## <a name="register-with-cloudyn"></a>Registrace u Cloudyn
 
 1. Na webu Azure Portal klikněte v seznamu služeb na **Cost Management a fakturace**.
-2. V části **Přehled** klikněte na **Cost Management**.  
-    ![Stránka služby Cost Management](./media/quick-register-csp/cost-mgt-billing-service.png)
-3. Na stránce **Cost Management** klikněte na **Přejít do služby Cost Management** a v novém okně se otevře stránka pro registraci do Cloudyn.
+2. V části **Přehled** klikněte na **Cloudyn**.  
+    ![Stránka Cloudyn](./media/quick-register-csp/cost-mgt-billing-service.png)
+3. Na stránce **Cloudyn** klikněte na **Přejít na Cloudyn** a v novém okně se otevře stránka pro registraci u Cloudyn.
 4. Na stránce pro registraci zkušební verze portálu Cloudyn zadejte název vaší společnosti, vyberte **Správce partnerského programu Microsoft CSP** a pak klikněte na **Další**.  
 5. Zadejte **ID aplikace**, **Obchodní ID**, **Tajný klíč aplikace** a vyberte **Výchozí cenový plán**. Pokud tyto informace nemáte po ruce, přihlaste se pomocí svého primárního účtu správce k portálu partnerského centra na adrese [https://partnercenter.microsoft.com](https://partnercenter.microsoft.com) a proveďte následující kroky:
   1. Přejděte na **Řídicí panel**, klikněte na symbol **Nastavení**, klikněte na **Nastavení partnera** a pak na **Správa aplikací**.
@@ -62,7 +62,7 @@ Rozhraní API partnerského centra je ve výchozím nastavení přístupné pouz
 Pokud chcete umožnit přístup nepřímým zákazníkům nebo partnerům CSP, pomocí postupu v části [Vytvoření registrace zkušební verze](#create-a-trial-registration) nastavte registraci zkušební verze. Dále provedením následujících kroků segmentujte data nepřímých poskytovatelů CSP pomocí skupin entit Cloudyn. Potom skupinám entit přiřaďte odpovídající uživatelská oprávnění.
 
 1. Vytvořte skupinu entit s použitím informací v části [Vytvoření entit](tutorial-user-access.md#create-and-manage-entities).
-2. Postupujte podle kroků v článku [Assigning subscriptions to Cost Entities](https://support.cloudyn.com/hc/en-us/articles/115005139425-Video-Assigning-subscriptions-to-Cost-Entities) (Přiřazování předplatných k entitám nákladů). Přidružte účet nepřímého zákazníka CSP a příslušná předplatná Azure k entitě, kterou jste vytvořili dříve.
+2. Postupujte podle kroků v článku [Assigning subscriptions to Cost Entities](https://support.cloudyn.com/hc/articles/115005139425-Video-Assigning-subscriptions-to-Cost-Entities) (Přiřazování předplatných k entitám nákladů). Přidružte účet nepřímého zákazníka CSP a příslušná předplatná Azure k entitě, kterou jste vytvořili dříve.
 3. Postupujte podle kroků v části [Vytvoření uživatele s přístupem správce](tutorial-user-access.md#create-a-user-with-admin-access) a vytvořte uživatelský účet s přístupem správce. Potom se ujistěte, že má uživatelský účet přístup ke konkrétním entitám, které jste vytvořili dříve pro nepřímý účet.
 
 Nepřímí partneři CSP se k portálu Cloudyn přihlašují pomocí účtů, které jste pro ně vytvořili.
@@ -72,7 +72,7 @@ Nepřímí partneři CSP se k portálu Cloudyn přihlašují pomocí účtů, kt
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste použili své informace o CSP k registraci ve službě Cost Management. Také jste se přihlásili k portálu Cloudyn a začali jste zobrazovat informace o nákladech. Další informace o službě Azure Cost Management najdete v kurzu pro službu Cost Management.
+V tomto rychlém startu jste použili své informace o CSP k registraci u Cloudyn. Také jste se přihlásili k portálu Cloudyn a začali jste zobrazovat informace o nákladech. Další informace o Cloudyn najdete v kurzu pro Cloudyn.
 
 > [!div class="nextstepaction"]
 > [Kontrola využití a nákladů](./tutorial-review-usage.md)

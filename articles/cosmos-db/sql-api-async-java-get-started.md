@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 06/29/2018
 ms.author: sngun
-ms.openlocfilehash: faa213caf415f98c230af741822e17a511b6fe43
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: aa2613f7cb73c2c338189aaaa48587c49a3093f5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696291"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46962180"
 ---
 # <a name="build-a-java-application-by-using-azure-cosmos-db-async-java-sdk"></a>Sestavení aplikace v Javě pomocí sady SDK Async Java databáze Azure Cosmos DB 
 
@@ -26,7 +26,6 @@ ms.locfileid: "43696291"
 > * [Java](sql-api-java-get-started.md)
 > * [Async Java](sql-api-async-java-get-started.md)
 > * [Node.js](sql-api-nodejs-get-started.md)
-> * [Node.js – v2](sql-api-nodejs-get-started-preview.md) 
 > 
 
 Azure Cosmos DB je globálně distribuovaná databáze pro více modelů. V tomto kurzu se dozvíte, jak použít účty rozhraní SQL API databáze Azure Cosmos DB k ukládání dat a přístupu k nim pomocí aplikace v Async Java. 
