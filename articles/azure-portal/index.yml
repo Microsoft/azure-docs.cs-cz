@@ -1,0 +1,51 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: ceab905b2baf87446238d44151146b5066e55335
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079720"
+documentType: LandingData
+title: Dokumentace k přizpůsobení webu Azure Portal
+metadata:
+  description: Zjistěte, jak přizpůsobit web Azure Portal.
+  services: azure portal
+  documentationcenter: ''
+  author: cwatson-cat
+  manager: dougeby
+  editor: ''
+  ms.assetid: 3e12c488-9c8c-4d0d-9b07-e018dec42fc6
+  ms.service: azure-portal
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.tgt_pltfrm: na
+  ms.workload: na
+  ms.date: 10/08/2018
+  ms.author: cwatson
+abstract:
+  description: Azure Portal je unifikovaná webová konzola, která umožňuje vytvářet, spravovat a sledovat všechno od jednoduchých webových aplikací až po složité cloudové aplikace. Zahrnuje přizpůsobitelné řídicí panely a možnosti usnadnění.
+sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/azure-preview-portal-supported-browsers-devices
+      html: <p>Azure Portal můžete spouštět na všech moderních desktopech, tabletech a prohlížečích.</p>
+      title: Podporované prohlížeče a zařízení
+    - href: /azure/azure-portal/azure-portal-change-theme-high-contrast
+      html: <p>Na webu Azure Portal můžete změnit kontrast nebo barevné schéma.</p>
+      title: Zapnutí vysokého kontrastu
+    - href: /azure/azure-portal/azure-portal-keyboard-shortcuts
+      html: <p>Seznamte se s klávesovými zkratkami, které fungují na webu Azure Portal.</p>
+      title: Klávesové zkratky
+    - href: /azure/azure-portal/azure-portal-dashboards
+      html: <p>Využijte možnost vytvořit několik řídicích panelů a sdílet je s ostatními, kteří mají přístup k vašim předplatným Azure.</p>
+      title: Vytváření a sdílení řídicích panelů Azure
+    - href: /azure/azure-portal/azure-portal-dashboard-share-access
+      html: <p>Publikujte řídicí panel a sdílejte ho s ostatními uživateli ve vaší organizaci.</p>
+      title: Sdílení řídicích panelů pomocí RBAC
+    - href: /azure/azure-portal/azure-portal-dashboards-create-programmatically
+      html: <p>Prostřednictvím kódu programu vytvářejte a publikujte řídicí panely pro vaši organizaci.</p>
+      title: Vytváření řídicích panelů Azure prostřednictvím kódu programu

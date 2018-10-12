@@ -1,6 +1,6 @@
 ---
-title: Minimální dobou výpadku migrace do databáze Azure pro PostgreSQL
-description: Tento článek popisuje, jak provést minimální dobou výpadku migraci databáze PostgreSQL do databáze Azure pro PostgreSQL pomocí služby Azure databáze migrace.
+title: Migrace s minimem výpadků ke službě Azure Database for PostgreSQL
+description: Tento článek popisuje, jak provést migraci minimálními prostoji databázi PostgreSQL do služby Azure Database for PostgreSQL s využitím Azure Database Migration Service.
 services: postgresql
 author: HJToland3
 ms.author: jtoland
@@ -8,24 +8,24 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 06/21/2018
-ms.openlocfilehash: 9ab5d4615a8baf763d0b7ee47bf0890124f8665c
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.date: 10/11/2018
+ms.openlocfilehash: 80e5d30677735b35d90fda6288d7bf6f2ea4aa1b
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36292538"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093829"
 ---
-# <a name="minimal-downtime-migration-to-azure-database-for-postgresql"></a>Minimální dobou výpadku migrace do databáze Azure pro PostgreSQL
-Můžete provést PostgreSQL migrací databáze Azure pro PostgreSQL s minimálními výpadky pomocí nově přináší **průběžné synchronizace schopností** pro [služba migrace databáze Azure](https://aka.ms/get-dms) (DMS) . Tato funkce omezí doba výpadku, který je spojené s prováděním.
+# <a name="minimal-downtime-migration-to-azure-database-for-postgresql"></a>Migrace s minimem výpadků ke službě Azure Database for PostgreSQL
+Můžete provést migraci PostgreSQL do služby Azure Database for PostgreSQL s minimálními prostoji pomocí nově zavedená **Průběžná synchronizace schopností** pro [Azure Database Migration Service](https://aka.ms/get-dms) (DMS) . Tato funkce omezuje množství prostoje, které se účtují podle aplikace.
 
 ## <a name="overview"></a>Přehled
-Služba DMS provede počáteční zatížení místní databázi Azure pro PostgreSQL a pak nepřetržitě synchronizuje všechny nové transakce do Azure aplikace bez přerušení chodu. Po data zachytí na cíli Azure straně, zastavte aplikaci na chvíli stručný (minimální výpadek), počkat na poslední dávku dat (od času zastavte aplikaci, dokud nebude aplikace efektivně provést jakékoli nové přenosy dat k dispozici) pro zachycení až na cíli a aktualizujte připojovací řetězec tak, aby odkazoval na Azure. Jakmile budete hotovi, bude vaše aplikace za provozu v Azure!
+DMS provede počáteční načtení místní ke službě Azure Database for PostgreSQL a potom průběžně synchronizuje všechny nové transakce do Azure během aplikace zůstane spuštěný. Po data vyrovnat na cílové straně Azure, zastavte aplikaci pro krátké chvíle (minimální výpadek), počkejte pro poslední dávku dat (od doby, dokud aplikace není dostupná efektivně provádět žádné nové přenosy dat se zastavit aplikaci) k zachycení až do cíle a pak aktualizujte připojovací řetězec tak, aby odkazoval do Azure. Až budete hotovi, vaše aplikace bude živě v Azure!
 
-![Průběžné synchronizace se službou Azure databáze migrace](./media/howto-migrate-online/ContinuousSync.png)
+![Průběžná synchronizace s Azure Database Migration Service](./media/howto-migrate-online/ContinuousSync.png)
 
-Migrace DMS PostgreSQL zdrojů je aktuálně ve verzi preview. Pokud chcete vyzkoušet službu, kterou chcete migrovat úlohy PostgreSQL, zaregistrujte si prostřednictvím Azure DMS [stránku s náhledem](https://aka.ms/dms-preview) vyjádřit váš zájem. Vaše zpětná vazba je neocenitelnou pomocí v dále zlepšit služby.
+DMS migraci zdroje pro PostgreSQL je aktuálně ve verzi preview. Pokud chcete vyzkoušet na služby migrace úloh PostgreSQL, registrace přes Azure DMS [náhled stránky](https://aka.ms/dms-preview) vyjádřit váš zájem. Vaše zpětná vazba je neocenitelný při řízení a usnadnit tak další vylepšení služby.
 
 ## <a name="next-steps"></a>Další postup
-- Zobrazit na video [modernizace aplikaci s Microsoft Azure](https://medius.studios.ms/Embed/Video/BRK2102?sid=BRK2102), který obsahuje ukázku znázorňující způsob migrace PostgreSQL aplikace do databáze Azure pro PostgreSQL.
-- Zaregistrujte si omezené preview minimální dobou výpadku migrace PostgreSQL do databáze Azure pro PostgreSQL prostřednictvím Azure DMS [stránku s náhledem](https://aka.ms/dms-preview).
+- Zobrazení videa [modernizace aplikací s Microsoft Azure](https://medius.studios.ms/Embed/Video/BRK2102?sid=BRK2102), která obsahuje ukázky, ukazuje, jak migrovat aplikace PostgreSQL do služby Azure Database for PostgreSQL.
+- Projděte si kurz [PostgreSQL migrovat do služby Azure Database for PostgreSQL online pomocí DMS](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online).

@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: raynew
-ms.openlocfilehash: 82674aec8d62388d0d0f26e730f66b8b078a5d75
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 5c1858fca1ca5f6bc48f5225ecf2d52dee055c91
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48904164"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092741"
 ---
 # <a name="contoso---scale-a-migration-to-azure"></a>Contoso – škálování migrace do Azure
 
@@ -37,7 +37,7 @@ Tento článek je jednou z řady článků, které dokumentují, jak fiktivní s
 [Článku 11: Refaktorujte Team Foundation Server na službách Azure DevOps](contoso-migration-tfs-vsts.md) | Contoso migrovat své místní nasazení serveru Team Foundation Server ke službám Azure DevOps v Azure. | K dispozici.
 [Článek 12: Úprava architektury aplikace na kontejnery služby Azure a Azure SQL Database](contoso-migration-rearchitect-container-sql.md) | Contoso migruje jeho SmartHotel aplikace do Azure. Potom rearchitects webové vrstvy aplikace jako kontejner Windows se spuštěnou v Azure Service Fabric a app databáze s využitím Azure SQL Database. | K dispozici.    
 [Článek 13: Znovu sestavte aplikaci v Azure](contoso-migration-rebuild.md) | Contoso replikujícím svou aplikaci SmartHotel pomocí celé řady funkcí Azure a služeb, včetně služby Azure App Service, Azure Kubernetes Service (AKS), Azure Functions, Azure Cognitive Services a Azure Cosmos DB. | K dispozici. 
-Článek 14: Škálování migrace do Azure | Po vyzkoušení kombinace migrace, Contoso je nyní probíhá příprava škálovat na plné migraci do Azure. | V tomto článku
+Článek 14: Škálování migrace do Azure | Po vyzkoušení kombinace migrace, Contoso připraví škálovat na plné migraci do Azure. | V tomto článku
 
 ## <a name="business-drivers"></a>Obchodní faktory
 
@@ -65,7 +65,7 @@ Tým cloudových Contoso má připnutou dolů cíle pro tuto migraci. Tyto cíle
 
 Po Připnutí dolů cíle a požadavky, Contoso kontroly IT zázemí a identifikuje proces migrace.
 
-## <a name="current-app"></a>Aktuální aplikaci
+## <a name="current-deployment"></a>Aktuální nasazení
 
 Po plánování a nastavení [infrastruktury Azure](contoso-migration-infrastructure.md) a vyzkoušejte si různé kombinace testování konceptu (POC) migrace popsané v předchozí tabulce, Contoso je připravený k provedení úplné migrace do Azure ve velkém měřítku. Tady je Contoso chce migrovat.
 

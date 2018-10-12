@@ -2,24 +2,18 @@
 title: Zabezpečení pro vaše zařízení Azure Data Box | Dokumentace Microsoftu
 description: Popisuje konvence bezpečnost, pokyny a důležité informace a vysvětluje, jak bezpečně instalaci a provozování váš Azure Data Box.
 services: databox
-documentationcenter: ''
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: na
+ms.subservice: pod
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: f933da6d534d13a989b21b9cac6b47b41a81d79c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 65b111d74121b6a679883d480b9e1f19d41e334e
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961803"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093554"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box"></a>Bezpečně instalaci a provozování váš Azure Data Box
 ![Ikona upozornění](./media/data-box-safety/warning_icon.png)

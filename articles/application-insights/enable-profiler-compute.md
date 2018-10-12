@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.reviewer: ramach
 ms.author: mbullwin
-ms.openlocfilehash: 2da281f52a85992c6fade360c94fbf473c38dc20
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: eb2ec0c0b77e71a54d1e7f852a22d82203abf7b6
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424020"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091976"
 ---
 # <a name="enable-application-insights-profiler-for-azure-vms-service-fabric-and-azure-cloud-services"></a>Povolit Application Insights Profiler pro virtuální počítače Azure, Service Fabric a Azure Cloud Services
 
@@ -48,7 +48,7 @@ Plně povolit Profiler, musíte změnit konfiguraci na třech místech:
 
    ![Umístění Instrumentační klíč](./media/enable-profiler-compute/CopyAIKey.png)
 
-1. Abychom mohli dokončit nastavování instanci Application Insights pro Profiler, dokončete postup, který je popsaný v [Povolit Profiler. Není nutné se propojit webové aplikace, protože kroky jsou specifické pro prostředek aplikace služby. Ujistěte se, že Profiler je povolen v **nakonfigurujte Profiler** podokně.
+1. Abychom mohli dokončit nastavování instanci Application Insights pro Profiler, dokončete postup, který je popsaný v [povolit Profiler](https://docs.microsoft.com/azure/application-insights/app-insights-profiler). Není nutné se propojit webové aplikace, protože kroky jsou specifické pro prostředek aplikace služby. Ujistěte se, že Profiler je povolen v **nakonfigurujte Profiler** podokně.
 
 
 ## <a name="set-up-the-application-source-code"></a>Nastavte si zdrojový kód aplikace
@@ -163,7 +163,7 @@ K nastavení prostředí, postupujte takto:
 
 ### <a name="azure-cloud-services"></a>Azure Cloud Services
 
-1. K zajištění, že používáte [rozhraní .NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) nebo novější, stačí potvrdit, že *ServiceConfiguration.\*. cscfg* soubory mají `osFamily` hodnotu "5" nebo novější.
+1. K zajištění, že používáte [rozhraní .NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) nebo novější, stačí potvrdit, že *ServiceConfiguration.\*.cscfg* soubory mají `osFamily` hodnotu "5" nebo novější.
 
 1. Vyhledejte [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) *diagnostics.wadcfgx* souboru pro vaši roli v aplikaci, jak je znázorněno zde:  
 
@@ -191,7 +191,7 @@ K nastavení prostředí, postupujte takto:
 >  * Klíč, který je používán `ApplicationInsights` jímky.  
 >  * Klíč, který je používán `ApplicationInsightsProfiler` jímky.  
 >
-> Můžete najít hodnotu klíče skutečné instrumentace, která používá `ApplicationInsights` jímky *ServiceConfiguration.\*. cscfg* soubory.  
+> Můžete najít hodnotu klíče skutečné instrumentace, která používá `ApplicationInsights` jímky *ServiceConfiguration.\*.cscfg* soubory.  
 > Po vydání Visual Studio 15.5 Azure SDK, pouze Instrumentační klíče, které používají aplikace a `ApplicationInsightsProfiler` potřeba jímky vzájemně odpovídaly.
 
 
