@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: a4ebb64d14b325680a65ffd52f6a07836c1e6ede
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: abc32b726eea55f08a052f29a12f1eb237d4f5d6
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585675"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311316"
 ---
 # <a name="use-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Odesílání zpráv typu zařízení cloud do různých koncových bodů pomocí směrování zpráv
 
@@ -21,7 +21,7 @@ ms.locfileid: "47585675"
 
 Směrování zpráv umožňuje odesílání zpráv z vašich zařízení ke cloudovým službám automatizované, škálovatelných a spolehlivých způsobem. Směrování zpráv je možné pro: 
 
-* **Odesílání telemetrie messsages zařízení, stejně jako události** konkrétně události životního cyklu zařízení a do koncových bodů integrované-endpoint a vlastní události změn dvojčete zařízení. Další informace o [směrování koncových bodů](##routing-endpoints).
+* **Odesílání telemetrie messsages zařízení, stejně jako události** konkrétně události životního cyklu zařízení a do koncových bodů integrované-endpoint a vlastní události změn dvojčete zařízení. Další informace o [směrování koncových bodů](#routing-endpoints).
 
 * **Filtrování dat před směrování do různých koncových bodů** použitím bohaté dotazy. Směrování zpráv umožňuje dotazování na vlastnosti zprávy a tělo zprávy stejně jako značky dvojčat zařízení a vlastnosti dvojčete zařízení. Další informace o používání [dotazy v směrování zpráv](iot-hub-devguide-routing-query-syntax.md).
 

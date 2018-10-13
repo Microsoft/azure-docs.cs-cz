@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/9/2018
+ms.date: 10/11/2018
 ms.author: Kumud
-ms.openlocfilehash: 0711b52b76a22e32d05f27e6aae6c981bd2c148a
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 6c730455e2d8b590a4e4b9ca0392985918678bf4
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902599"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167694"
 ---
 # <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>Metriky a stav diagnostiky pro Load balancer úrovně Standard
 
@@ -220,6 +220,6 @@ Různé stavy stavu prostředků a jejich popisy jsou uvedeny v následující t
 - Další informace o [Load Balanceru úrovně Standard](load-balancer-standard-overview.md).
 - Další informace o vaší [odchozí připojení nástroje pro vyrovnávání zatížení](https://aka.ms/lboutbound).
 - Další informace o [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview).
-- Další informace o [metriky rozhraní REST API služby Azure Monitor](https://docs.microsoft.com/rest/api/monitor/metrics/).
+- Další informace o [REST API služby Azure Monitor](https://docs.microsoft.com/rest/api/monitor/) a [jak načíst metriky přes rozhraní REST API](https://docs.microsoft.com/rest/api/monitor/metrics/metrics_list).
 
 

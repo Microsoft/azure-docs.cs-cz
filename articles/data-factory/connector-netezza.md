@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat z Netezza pomocí Azure Data Factory | Microsoft Docs
-description: Postup kopírování dat z Netezza do úložiště dat podporovaných podřízený pomocí aktivity kopírování v kanál služby Azure Data Factory.
+title: Kopírování dat z Netezza pomocí služby Azure Data Factory | Dokumentace Microsoftu
+description: Zjistěte, jak kopírovat data z Netezza úložišť dat podporovaných jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,47 +13,47 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: f8c10e2200f830ea6e568e7b3fba1f0a6085cef2
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 1b7499990a049f276bf1af9e31b639ea4944d8f7
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37058894"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167560"
 ---
-# <a name="copy-data-from-netezza-using-azure-data-factory"></a>Kopírování dat z Netezza pomocí Azure Data Factory 
+# <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Kopírování dat z Netezza pomocí služby Azure Data Factory 
 
-Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z Netezza. Vychází [zkopírujte aktivity přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
+Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Data Factory ke zkopírování dat z Netezza. Tento článek vychází [aktivita kopírování ve službě Azure Data Factory](copy-activity-overview.md), který nabízí obecný přehled o aktivitě kopírování.
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
-Data můžete zkopírovat z Netezza do úložiště dat žádné podporované jímky. Seznam úložišť dat, které jsou podporovány jako zdroje nebo jímky aktivitě kopírování najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
+Kopírování dat z Netezza do jakékoli podporovaného úložiště dat jímky. Seznam dat ukládá podporovanou aktivitou kopírování jako zdroje a jímky, najdete v části [podporovaných úložišť dat a formáty](copy-activity-overview.md#supported-data-stores-and-formats).
 
-Azure Data Factory poskytuje integrované ovladače pro umožnění připojení, proto nemusíte ručně nainstalovat všechny ovladače, používání tohoto konektoru.
+Azure Data Factory poskytuje integrovaný ovladač umožňující připojení. Není nutné ručně nainstalovat všechny ovladače, které chcete použít tento konektor.
 
-## <a name="getting-started"></a>Začínáme
+## <a name="get-started"></a>Začínáme
 
-Vytvoření kanálu s aktivitou kopírování pomocí sady .NET SDK, Python SDK, Azure PowerShell, REST API nebo šablony Azure Resource Manageru. V tématu [kurzu aktivity kopírování](quickstart-create-data-factory-dot-net.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
+Můžete vytvořit kanál, který používá aktivitu kopírování pomocí sady .NET SDK, Python SDK, Azure Powershellu, rozhraní REST API nebo šablony Azure Resource Manageru. Najdete v článku [kurz aktivity kopírování](quickstart-create-data-factory-dot-net.md) pro podrobné pokyny k vytvoření kanálu obsahujícího aktivitu kopírování.
 
-Následující části obsahují podrobnosti o vlastnosti, které slouží k určení konkrétní entity služby Data Factory ke Netezza konektoru.
+Následující části obsahují podrobnosti o vlastnostech, které lze použít k definování entit služby Data Factory, které jsou specifické pro konektor Netezza.
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
-Pro Netezza propojené služby jsou podporovány následující vlastnosti:
+Netezza propojené služby jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu musí být nastavena na: **Netezza** | Ano |
-| připojovací řetězec | Řetězec připojení rozhraní ODBC pro připojení k Netezza. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| connectVia | [Integrace Runtime](concepts-integration-runtime.md) který se má použít pro připojení k úložišti. (Pokud je veřejně přístupná data store), můžete použít modul Runtime integrace Self-hosted nebo Runtime integrace Azure. Pokud není zadaný, použije výchozí Runtime integrace Azure. |Ne |
+| type | **Typ** musí být vlastnost nastavena na **Netezza**. | Ano |
+| připojovací řetězec | ODBC připojovací řetězec služby pro připojení k Netezza. Označte toto pole jako **SecureString** typ bezpečně uložit ve službě Data Factory. Můžete také [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) používat pro připojení k úložišti. Můžete vybrat v místním prostředí Integration Runtime nebo prostředí Azure Integration Runtime (Pokud vaše úložiště dat je veřejně dostupná). Pokud není zadán, použije se výchozí prostředí Azure Integration Runtime. |Ne |
 
-Typické připojovací řetězec je `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>`. Další vlastnosti, které můžete nastavit na váš případ:
+Připojovací řetězec je `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>`. Následující tabulka popisuje další vlastnosti, které můžete nastavit:
 
 | Vlastnost | Popis | Požaduje se |
-|:--- |:--- |:--- |:--- |
-| SecurityLevel | Úroveň zabezpečení (SSL/TLS), který používá ovladač pro připojení k úložišti dat. Například `SecurityLevel=preferredSecured`. Podporované hodnoty jsou:<br/>-Pouze nezabezpečené (**onlyUnSecured**): ovladač nepoužívá protokol SSL.<br/>- **Upřednostňovaný nezabezpečená (preferredUnSecured) (výchozí)**: Pokud server nabízí výběr, ovladače není používat protokol SSL. <br/>- **Upřednostňovaný zabezpečené (preferredSecured)**: Pokud server nabízí výběr, ovladač používá protokol SSL. <br/>- **Pouze zabezpečené (onlySecured)**: ovladač nepřipojí, pokud je k dispozici připojení SSL | Ne |
-| Soubor_certifikátu_cú | Úplná cesta k certifikátu SSL, který se používá serverem. Například `CaCertFile=<cert path>;`| Ano, pokud je povolen protokol SSL |
+|:--- |:--- |:--- |
+| SecurityLevel | Úroveň zabezpečení (SSL/TLS), který používá ovladač pro připojení k úložišti. Příklad: `SecurityLevel=preferredSecured`. Podporované hodnoty jsou:<br/>- **Pouze nezabezpečené** (**onlyUnSecured**): ovladač nebude používat protokol SSL.<br/>- **Upřednostňovaný nezabezpečené (preferredUnSecured) (výchozí)**: Pokud server poskytuje možnost volby, ovladač nebude používat protokol SSL. <br/>- **Upřednostňovaný zabezpečené (preferredSecured)**: Pokud server poskytuje možnost volby, ovladač používá protokol SSL. <br/>- **Pouze zabezpečené (onlySecured)**: Ovladač nelze připojit, dokud je k dispozici připojení SSL. | Ne |
+| Soubor_certifikátu_cú | Úplná cesta k certifikátu SSL, který se používá serverem. Příklad: `CaCertFile=<cert path>;`| Ano, pokud je povolen protokol SSL |
 
-**Příklad:**
+**Příklad**
 
 ```json
 {
@@ -76,9 +76,11 @@ Typické připojovací řetězec je `Server=<server>;Port=<port>;Database=<datab
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datové sady](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastností nepodporuje Netezza datovou sadu.
+Tato část obsahuje seznam vlastností, které podporuje Netezza datové sady.
 
-Ke zkopírování dat z Netezza, nastavte vlastnost typu datové sady, která **NetezzaTable**. Není k dispozici žádné další vlastnosti specifické pro typ v tomto typu datové sady.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, naleznete v tématu [datových sad](concepts-datasets-linked-services.md). 
+
+Chcete-li kopírovat data z Netezza, nastavte **typ** vlastnosti datové sady na **NetezzaTable**. Neexistuje žádné další vlastnosti specifické pro typ. v tomto typu datové sady.
 
 **Příklad**
 
@@ -97,16 +99,18 @@ Ke zkopírování dat z Netezza, nastavte vlastnost typu datové sady, která **
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivity, najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností nepodporuje Netezza zdroje.
+Tato část obsahuje seznam vlastností, které podporuje Netezza zdroje.
+
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v tématu [kanály](concepts-pipelines-activities.md). 
 
 ### <a name="netezza-as-source"></a>Netezza jako zdroj
 
-Ke zkopírování dat z Netezza, nastavte typ zdroje v aktivitě kopírování do **NetezzaSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
+Ke zkopírování dat z Netezza, nastavte **zdroj** typ v aktivitě kopírování do **NetezzaSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typ zdroje kopie aktivity musí být nastavena na: **NetezzaSource** | Ano |
-| query | Čtení dat pomocí vlastního dotazu SQL. Například: `"SELECT * FROM MyTable"`. | Ano |
+| type | **Typ** musí být nastavena vlastnost zdroje aktivity kopírování **NetezzaSource**. | Ano |
+| query | Použijte vlastní dotaz SQL číst data. Příklad: `"SELECT * FROM MyTable"` | Ano |
 
 **Příklad:**
 
@@ -141,4 +145,5 @@ Ke zkopírování dat z Netezza, nastavte typ zdroje v aktivitě kopírování d
 ```
 
 ## <a name="next-steps"></a>Další postup
-Seznam úložišť dat jako zdroje a jímky nepodporuje aktivitu kopírování v Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
+
+Seznam úložišť dat, která aktivitu kopírování, která podporuje jako zdroje a jímky ve službě Azure Data Factory najdete v tématu [podporovaných úložišť dat a formáty](copy-activity-overview.md#supported-data-stores-and-formats).

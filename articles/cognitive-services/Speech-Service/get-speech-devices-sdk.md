@@ -3,18 +3,18 @@ title: Získání sady Speech Devices SDK
 description: Zjistěte, jak získat přístup k sadou SDK pro řeč zařízení.
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: v-jerkin
+author: erhopf
 ms.service: cognitive-services
 ms.component: speech
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-jerkin
-ms.openlocfilehash: 91107601055a115efc039ac588f652eab2fba3cf
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.author: erhopf
+ms.openlocfilehash: 1d64e9b88f689f680ffe1e12a2ec87bf1536fa8b
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887730"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166113"
 ---
 # <a name="get-the-cognitive-services-speech-devices-sdk"></a>Zařízení řeči služeb Cognitive Services SDK
 

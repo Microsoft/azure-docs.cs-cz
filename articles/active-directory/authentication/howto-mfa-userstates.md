@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: df86b8466291ee6b1cb5baf7f0a16bec9c719c6f
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 302cf047ee1ffea685a939bddee84551de7042ec
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115123"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166759"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Jak vyžadovat dvoustupňové ověřování pro uživatele
 Můžete využít jeden ze dvou následujících metod pro vyžadováním dvoustupňového ověřování, které vyžadují pomocí účtu globálního správce. První možností je povolit jednotlivé uživatele pro Azure Multi-Factor Authentication (MFA). Pokud uživatelé jsou povolené jednotlivě, jejich provedení dvoustupňového ověřování pokaždé, když se přihlásí (s několika výjimkami, jako je například, když se přihlásí z důvěryhodných IP adres nebo když _zapamatovaných zařízeních_ funkce je zapnutá). Druhou možností je nastavit zásady podmíněného přístupu, která vyžaduje dvoustupňové ověření za určitých podmínek.
@@ -124,6 +124,8 @@ nebo také lze zkrátit na:
     Set-MsolUser -UserPrincipalName user@domain.com -StrongAuthenticationRequirements @()
 
 ## <a name="next-steps"></a>Další postup
+
+Proč byla uživateli zobrazí výzva nebo nechcete zobrazit výzvu k provedení vícefaktorové ověřování? V části [sestavy přihlášení Azure AD v sestavách v dokumentu ověřování Azure Multi-Factor Authentication](howto-mfa-reporting.md#azure-ad-sign-ins-report).
 
 Chcete-li nakonfigurovat další nastavení, jako jsou důvěryhodné IP adresy, vlastní hlasové zprávy a upozornění na podvod, najdete v článku [nastavení konfigurace Azure Multi-Factor Authentication](howto-mfa-mfasettings.md)
 

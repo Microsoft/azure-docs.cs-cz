@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 1ddcbba4eacad040420efaf087f170e6c06ab2a0
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 5f6ce3564cf4056dc9295e1885be425bbe3d7701
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182395"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165296"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účtu Google pomocí Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ Použít účet Google jako zprostředkovatele identity v Azure Active Directory
 3. Zadejte **název projektu**, klikněte na tlačítko **vytvořit**a zkontrolujte, že používáte nový projekt.
 3. Vyberte **pověření** v nabídce vlevo a pak vyberte **Vytvořte přihlašovací údaje** > **ID klienta Oauth**.
 4. Vyberte **obrazovkami pro vyjádření souhlasu konfigurovat**.
-5. Vyberte nebo zadejte platný **e-mailová adresa**, zadejte **název produktu, který se uživatelům zobrazí**a klikněte na tlačítko **Uložit**.
+5. Vyberte nebo zadejte platný **e-mailová adresa**, zadejte **název produktu, který se uživatelům zobrazí**, přidejte `b2clogin.com` k **oprávnění domény**a klikněte na tlačítko **uložit** .
 6. V části **typ aplikace**vyberte **webovou aplikaci**.
 7. Zadejte **název** pro vaši aplikaci, zadejte `https://your-tenant-name.b2clogin.com` v **oprávnění JavaScript zdroje**, a `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` v **identifikátory URI pro přesměrování autorizovaní**. Nahraďte `your-tenant-name` s názvem vašeho tenanta. Budete muset použít jenom malá písmena. Pokud zadáte název vašeho klienta i v případě, že klient je definována s velká písmena v Azure AD B2C.
 8. Klikněte na možnost **Vytvořit**.

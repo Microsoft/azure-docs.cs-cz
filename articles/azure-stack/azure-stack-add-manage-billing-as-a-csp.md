@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/30/2018
 ms.author: sethm
 ms.reviewer: alfredo
-ms.openlocfilehash: b8c00795c7777e5485f4725e1da63fc764973f43
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: b4df9d3b107945b2c0797875718f3266b7fd0b10
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45628926"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166539"
 ---
 # <a name="manage-usage-and-billing-for-azure-stack-as-a-cloud-service-provider"></a>Spravovat využití a fakturace pro Azure Stack jako poskytovatele cloudových služeb 
 
@@ -35,7 +35,7 @@ Následující diagram znázorňuje kroky, které budete muset zvolit svůj úč
 
 ![Proces pro povolení použití a správa jako poskytovatele cloudových služeb.](media\azure-stack-add-manage-billing-as-a-csp\process-add-useage-as-a-csp.png)
 
-## <a name="create-a-csp-or-cspss-subscription"></a>Vytvoření zprostředkovatele kryptografických služeb nebo CSPSS odběru
+## <a name="create-a-csp-or-apss-subscription"></a>Vytvoření zprostředkovatele kryptografických služeb nebo APSS odběru
 
 ### <a name="cloud-service-provider-subscription-types"></a>Typy předplatného poskytovatele služeb v cloudu
 
@@ -44,13 +44,13 @@ Musíte zvolit typ účtu sdílené služby, který používáte pro službu Azu
  - Poskytovatel cloudových služeb 
  - Partnerského předplatného sdílené služby 
 
-#### <a name="csp-shared-services"></a>Zprostředkovatel kryptografických služeb sdílených služeb
+#### <a name="azure-partner-shared-services"></a>Azure Partner sdílené služby
 
-Cloudová služba zprostředkovatele sdílených služeb (CSPSS) předplatná jsou upřednostňované volbou pro registraci při přímé poskytovatele CSP nebo distributora CSP funguje Azure Stack.
+Předplatná Azure Partner sdílených služeb (APSS) jsou upřednostňované volbou pro registraci při přímé poskytovatele CSP nebo distributora CSP funguje Azure Stack.
 
-CSPSS předplatná jsou přidružená k tenantovi sdílených služeb. Když si zaregistrujete Azure Stack, budete muset zadat přihlašovací údaje pro účet, který je vlastníkem předplatného. Účet, který používáte k registraci Azure Stack se může lišit od účtu správce, který používáte pro nasazení. Kromě toho proveďte dva účty *není* musí patřit do stejné domény. Jinými slovy může nasazení, můžete použít klienta, které už používáte. Může například používat ContosoCSP.onmicrosoft.com a poté funkci zaregistrujte pomocí jiného tenanta, třeba IURContosoCSP.onmicrosoft.com. Je potřeba pamatovat, že se přihlásit pomocí ContosoCSP.onmicrosoft.com, když provedete den Azure stacku správu. Při přihlášení do Azure s využitím IURContosoCSP.onmicrosoft.com, když budete chtít provést operace registrace.
+APSS předplatná jsou přidružená k tenantovi sdílených služeb. Když si zaregistrujete Azure Stack, budete muset zadat přihlašovací údaje pro účet, který je vlastníkem předplatného. Účet, který používáte k registraci Azure Stack se může lišit od účtu správce, který používáte pro nasazení. Kromě toho proveďte dva účty *není* musí patřit do stejné domény. Jinými slovy může nasazení, můžete použít klienta, které už používáte. Může například používat ContosoCSP.onmicrosoft.com a poté funkci zaregistrujte pomocí jiného tenanta, třeba IURContosoCSP.onmicrosoft.com. Je potřeba pamatovat, že se přihlásit pomocí ContosoCSP.onmicrosoft.com, když provedete den Azure stacku správu. Při přihlášení do Azure s využitím IURContosoCSP.onmicrosoft.com, když budete chtít provést operace registrace.
 
-Přečtěte si následující popis CSPSS předplatná a pokyny o tom, jak vytvořit odběr [přidat Azure Partner Shared Services](https://msdn.microsoft.com/partner-center/shared-services).
+Přečtěte si následující popis APSS předplatná a pokyny o tom, jak vytvořit odběr [přidat Azure Partner Shared Services](https://msdn.microsoft.com/partner-center/shared-services).
 
 #### <a name="csp-subscriptions"></a>Předplatná CSP
 
@@ -58,7 +58,7 @@ Cloudová předplatná poskytovatele služeb (CSP) jsou upřednostňované volbo
 
 ## <a name="register-azure-stack"></a>Registrace Azure Stack
 
-Registraci Azure Stack v Azure použijte CSPSS předplatné vytvořili uvedenými informacemi v předchozí části. Další informace najdete v tématu [registrace Azure Stack s vaším předplatným Azure](azure-stack-registration.md).
+Registraci Azure Stack v Azure použijte APSS předplatné vytvořili uvedenými informacemi v předchozí části. Další informace najdete v tématu [registrace Azure Stack s vaším předplatným Azure](azure-stack-registration.md).
 
 ## <a name="add-end-customer"></a>Přidání koncového zákazníka
 
@@ -72,7 +72,7 @@ Pomocí registrace Azure Stack můžete:
  - Azure Commerce předávat data o využití služby Azure Stack a vyúčtování předplatného Azure.
  - Zasílání zpráv o využití jednotlivých zákazníků v jiném předplatném s víceklientského nasazení Azure Stack. Víceklientské architektury umožňuje službě Azure Stack pro podporu různých organizací na stejnou instanci služby Azure Stack.
 
-Pro každý Azure Stack je jedno výchozí předplatné a mnoho tenantů předplatných. Výchozí předplatné je předplatné Azure, které se účtují, pokud není k dispozici předplatné specifickým pro tenanta. Musí být první odběrům registrovaným. Předplatné pro použití více tenantů reporting fungovat, musí být CSP nebo CSPSS předplatného.
+Pro každý Azure Stack je jedno výchozí předplatné a mnoho tenantů předplatných. Výchozí předplatné je předplatné Azure, které se účtují, pokud není k dispozici předplatné specifickým pro tenanta. Musí být první odběrům registrovaným. Předplatné pro použití více tenantů reporting fungovat, musí být CSP nebo APSS předplatného.
 
 Registrace se pak aktualizuje s předplatným Azure pro každého klienta, na který budete používat Azure Stack. Předplatná tenanta musí být typu CSP a musí zahrnout do partnera, který vlastní výchozí předplatné. Jinými slovy nelze zaregistrovat zákazníci někoho jiného.
 

@@ -1,25 +1,19 @@
 ---
 title: Požadavky na systém Microsoft Azure Data Box Gateway | Dokumentace Microsoftu
 description: Další informace o softwaru a požadavky na síť pro bránu Azure Data Box
-services: databox-edge-gateway
-documentationcenter: NA
+services: databox
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
-ms.service: databox-edge-gateway
-ms.devlang: NA
+ms.service: databox
+ms.subservice: gateway
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 915190f6f2773d22d14c75be1140f96b7dd40559
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 16d9604100d3ec37cef7ad4ebbdc376967006e15
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991568"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166691"
 ---
 # <a name="azure-data-box-gateway-system-requirements-preview"></a>Azure Data Box brány požadavky na systém (Preview)
 
@@ -31,7 +25,7 @@ Požadavky na systém pro virtuální zařízení Data Box brány patří:
 - **Požadavky na síť pro zařízení** – poskytuje informace o všech požadavků na síť pro operaci virtuálního zařízení.
 
 > [!IMPORTANT]
-> Brána pole dat je ve verzi Preview. Podívejte se prosím [podmínky použití pro verze preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) před nasazením tohoto řešení. 
+> Data Box Gateway je ve verzi Preview. Před nasazením tohoto řešení si prosím přečtěte [podmínky použití verze Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 ## <a name="supported-os-for-clients-connected-to-device"></a>Podporovaný operační systém pro klienty připojené k zařízení
 
@@ -134,7 +128,7 @@ Doporučujeme nastavit pravidla brány firewall pro odchozí provoz, podle pole 
 
 Následující požadavky platí pro minimální šířka pásma sítě Internet k dispozici pro zařízení Data Box brány.
 
-- Vaše brána dat pole má vyhrazenou šířku pásma 20 MB/s sítě Internet (nebo více) vždy k dispozici. Tuto šířku pásma by neměly sdílet s jinými aplikacemi. 
+- Vaše služba Data Box Gateway má vyhrazenou šířku internetového pásma 20 Mb/s (nebo více), která je vždy dostupná. Tato šířka pásma by se neměla sdílet s žádnými jinými aplikacemi. 
 - Vaše brána dat pole má vyhrazenou šířku pásma 32 MB/s sítě Internet (nebo více) při použití omezení využití sítě.
 
 ## <a name="next-step"></a>Další krok

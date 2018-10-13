@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 08/29/2018
+ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: 384d0fa32b64706c9d9d9baa0e2e0bbb2ac3c522
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: eb020dfd52140375778cf22c6b70e715a7422761
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719592"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310239"
 ---
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>ASP.NET Core v Service Fabric Reliable Services
 
@@ -252,6 +252,50 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 V tomto příkladu instanci typu singleton `IReliableStateManager` je k dispozici do kontejneru pro vkládání závislosti tomuto webovému hostiteli. To není nezbytně nutné, ale umožňuje používat `IReliableStateManager` a spolehlivé kolekce v vaše metody akce kontroleru MVC.
 
 `Endpoint` Se název konfigurace **není** poskytnuté `KestrelCommunicationListener` stavové služby. To je vysvětleno podrobněji v následující části.
+
+### <a name="configure-kestrel-to-use-https"></a>Nakonfigurovat Kestrel k používání HTTPS
+Při povolení protokolu HTTPS se Kestrel ve službě, je potřeba nastavit několik možností, jak naslouchání.  Aktualizace `ServiceInstanceListener` použít koncový bod EndpointHttps a naslouchá na určitém portu (například port 443). Při konfiguraci webového hostitele pro použití Kestrel serveru, je nutné nakonfigurovat Kestrel k naslouchání pro adresy IPv6 na všech síťových rozhraní: 
+
+```csharp
+new ServiceInstanceListener(
+serviceContext =>
+    new KestrelCommunicationListener(
+        serviceContext,
+        "EndpointHttps",
+        (url, listener) =>
+        {
+            ServiceEventSource.Current.ServiceMessage(serviceContext, $"Starting Kestrel on {url}");
+
+            return new WebHostBuilder()
+                .UseKestrel(opt =>
+                {
+                    int port = serviceContext.CodePackageActivationContext.GetEndpoint("EndpointHttps").Port;
+                    opt.Listen(IPAddress.IPv6Any, port, listenOptions =>
+                    {
+                        listenOptions.UseHttps(GetCertificateFromStore());
+                        listenOptions.NoDelay = true;
+                    });
+                })
+                .ConfigureAppConfiguration((builderContext, config) =>
+                {
+                    config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+                })
+
+                .ConfigureServices(
+                    services => services
+                        .AddSingleton<HttpClient>(new HttpClient())
+                        .AddSingleton<FabricClient>(new FabricClient())
+                        .AddSingleton<StatelessServiceContext>(serviceContext))
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseStartup<Startup>()
+                .UseServiceFabricIntegration(listener, ServiceFabricIntegrationOptions.None)
+                .UseUrls(url)
+                .Build();
+        }))
+```
+
+Úplný příklad použitý v kurzu, najdete v části [nakonfigurovat Kestrel k používání HTTPS](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#configure-kestrel-to-use-https).
+
 
 ### <a name="endpoint-configuration"></a>Konfigurace koncového bodu
 `Endpoint` Konfigurace není k využití Kestrel nutné. 

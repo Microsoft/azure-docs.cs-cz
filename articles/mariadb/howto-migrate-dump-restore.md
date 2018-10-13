@@ -8,12 +8,12 @@ services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 9b22890bceba6205c995a01105cdf11a08a9c10b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 551fe303994f6c72f8a4bf39e76f12c62f58026b
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998742"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309531"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>Migrace databáze MariaDB do služby Azure Database pro MariaDB pomocí výpisu a obnovení
 Tento článek vysvětluje dva běžné způsoby, jak zálohovat a obnovit databáze ve službě Azure Database pro MariaDB
@@ -30,7 +30,9 @@ Pro jednotlivé kroky v této příručce s postupy, musíte mít:
 Pomocí běžných nástrojů a nástrojů, jako jsou aplikace MySQL Workbench, mysqldump, Toad nebo Navicat vzdáleně připojit a obnovení dat do služby Azure Database pro MariaDB. Pomocí těchto nástrojů v klientském počítači s připojením k Internetu pro připojení k Azure Database pro MariaDB. Osvědčené postupy zabezpečení připojení šifrováno SSL, najdete v tématu taky [konfigurace připojení SSL ve službě Azure Database pro MariaDB](concepts-ssl-connection-security.md). Chcete-li přesunout soubory s výpisem paměti do jakéhokoli umístění speciální cloudu při migraci do služby Azure Database pro MariaDB nepotřebujete. 
 
 ## <a name="common-uses-for-dump-and-restore"></a>Běžné použití výpisu a obnovení.
-Můžete použít nástroje MySQL jako je například mysqldump a mysqlpump na příkazy dump a load databáze do Azure Database pro MariaDB server v několika běžných scénářů. <!--In other scenarios, you may use the [Import and Export](concepts-migrate-import-export.md) approach instead.-->
+Můžete použít nástroje MySQL jako je například mysqldump a mysqlpump na příkazy dump a load databáze do Azure Database pro MariaDB server v několika běžných scénářů. 
+
+<!--In other scenarios, you may use the [Import and Export](howto-migrate-import-export.md) approach instead.-->
 
 - Použít databázi výpisy při migraci celé databáze. Toto doporučení obsahuje při přesunu velkých objemů dat, nebo když chcete minimalizovat přerušení služeb pro weby nebo aplikace. 
 -  Ujistěte se, že všechny tabulky v databázi použít modul InnoDB úložiště při načítání dat do služby Azure Database pro MariaDB. Azure Database pro MariaDB podporuje pouze modul InnoDB úložiště a proto nepodporuje moduly alternativní úložiště. Pokud vaše tabulky jsou nakonfigurované s ostatních vyhledávacích strojů úložiště, převeďte na formát modul InnoDB před migrací do služby Azure Database pro MariaDB.

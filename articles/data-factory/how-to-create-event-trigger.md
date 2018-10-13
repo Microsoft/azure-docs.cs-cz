@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/23/2018
+ms.date: 10/11/2018
 ms.author: douglasl
-ms.openlocfilehash: 38fbb62de60bc5604210c8ad7339368a04967c27
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 20ee69654a6b19365c9b7c46e1fa11e102168365
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867045"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309343"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Vytvoření aktivační události, která běží v reakci na událost kanálu
 
@@ -80,7 +80,7 @@ Následující tabulka obsahuje přehled elementů schématu souvisejících s t
 Tato část obsahuje příklady nastavení založeného na událostech aktivační události.
 
 -   **Cesta k objektu BLOB začíná**("/ containername /") – přijímá události pro všechny objekty blob v kontejneru.
--   **Cesta k objektu BLOB začíná**("/ containername/objektů BLOB/foldername") – přijímá události pro všechny objekty BLOB v kontejneru containername a název_složky složky.
+-   **Cesta k objektu BLOB začíná**("/ containername/objektů BLOB/foldername") – přijímá události pro všechny objekty BLOB v kontejneru containername a název_složky složky. Je také možné odkazovat podsložku; například "/ containername/objektů BLOB/název_složky/subfoldername /".
 -   **Cesta k objektu BLOB začíná**("/ containername/blobs/foldername/file.txt") – přijímá události pro objekt blob s názvem soubor.txt ve složce název_složky v kontejneru containername.
 -   **Cesta k objektu BLOB končí**("soubor.txt") – přijme události pro objekt blob s názvem soubor.txt v jakékoli cestě.
 -   **Cesta k objektu BLOB končí**("/ containername/blobs/file.txt") – přijímá události pro objekt blob s názvem soubor.txt v kontejneru containername.

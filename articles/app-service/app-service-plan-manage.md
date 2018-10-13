@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
-ms.openlocfilehash: 2c08522df598bd5c6313c3f026efe48e1c4a2c56
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f426982163a5e49264bc4f222f6869d9cbb40c89
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449355"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166062"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Správa plánu služby App Service v Azure
 
@@ -57,6 +57,12 @@ Můžete vytvořit prázdnou plán služby App Service, nebo jako součást vytv
 
 Aplikaci můžete přesunout na jiný plán služby App Service, plán zdrojového a cílového plánu jsou v _stejnou skupinu prostředků a zeměpisné oblasti_.
 
+> [!NOTE]
+> Azure nasadí každý nový plán služby App Service do jednotku nasazení, a interně volá se, webový prostor. Každá oblast může mít mnoho webových prostorech, ale vaše aplikace můžete přesouvat jen mezi plány, které jsou vytvořeny ve stejném webový prostor. Služby App Service Environment je izolované webový prostor, takže aplikace lze přesunout mezi plány v stejné službě App Service Environment, ale není mezi plány v různých prostředích App Service.
+>
+> Nelze zadat webový prostor, který chcete, aby při vytváření plánu, ale je možné k zajištění, že plán se vytvoří ve stejné webový prostor jako existující plán. Stručně řečeno všechny plány vytvořené pomocí stejné skupiny prostředků a oblasti kombinaci jsou nasazené do stejné webový prostor. Například pokud vytvoříte plán ve skupině prostředků A a B oblast, pak všechny plán, který následně vytvořit ve skupině prostředků A a B oblasti se nasadí do stejné webový prostor. Všimněte si plány nelze přesunout webových prostorech po vytvoření, takže plán nelze přesunout do "stejný webový prostor" jako jiný plán přesunutím do jiné skupiny prostředků.
+> 
+
 1. V [webu Azure portal](https://portal.azure.com), přejděte do aplikace, kterou chcete přesunout.
 
 1. V nabídce, vyhledejte **plán služby App Service** oddílu.
@@ -67,16 +73,7 @@ Aplikaci můžete přesunout na jiný plán služby App Service, plán zdrojové
 
 1. V **plán služby App Service** selektor, vyberte existující v úmyslu přesunout do této aplikace.   
 
-> [!IMPORTANT]
-> **Plán App Service vyberte** stránka se vyfiltruje podle následujících kritérií: 
-> - Ve stejné skupině prostředků existuje 
-> - Existuje ve stejné zeměpisné oblasti 
-> - Existuje ve stejném webový prostor:  
-> 
-> A _webový prostor_ je logická konstrukce ve službě App Service, která definuje seskupení prostředků serveru. Zeměpisné oblasti (například USA – západ) obsahuje mnoho webových prostorech, aby bylo možné přidělit zákazníci, kteří používají služby App Service. V současné době nelze přesunout prostředky App Service mezi webové prostory. 
-> 
-
-[!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
+**Plán App Service vyberte** stránce se zobrazí pouze plány, které jsou ve stejné skupině prostředků a zeměpisné oblasti jako aktuální aplikaci plán služby App Service.
 
 Každý plán má vlastní cenovou úroveň. Například přesun na web z **Free** vrstvy k **standardní** umožňuje úroveň všechny aplikace přiřazené k němu chcete používat funkce a prostředky **standardní** úroveň. Ale přesun aplikace z plánu vyšší vrstvenou do plánu vrstvené malá znamená, že už máte přístup k některým funkcím. Pokud vaše aplikace používá funkce, která není k dispozici v rámci cílového plánu, dojde k chybě, která zobrazuje funkce, které se používá, který není k dispozici. 
 

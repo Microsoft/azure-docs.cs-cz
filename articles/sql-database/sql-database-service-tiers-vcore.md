@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 10/09/2018
-ms.openlocfilehash: e93de9b3642e0b01bf65b6761d8832b0d4c2a431
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.date: 10/12/2018
+ms.openlocfilehash: a0d8e225718361c096b914245d73064edb1715c4
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901681"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166351"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-use-benefit-and-migration"></a>vCore úrovně služeb, program Azure Hybrid Use Benefit a migrace
 
@@ -66,9 +66,13 @@ V nákupní model založený na virtuálních jádrech mohou vyměňovat své so
 
 ## <a name="migration-from-dtu-model-to-vcore-model"></a>Migrace z modelu DTU do modelu virt. jader
 
-### <a name="migration-of-single-databases-with-geo-replication-links"></a>Migrace jednotlivých databází s vazby geografické replikace
+### <a name="migration-of-a-database"></a>Migrace databáze
 
-Migrace z modelu založeného na DTU na model založený na virtuálních jádrech je podobný upgradu nebo downgradu vztahy geografické replikace mezi databáze Standard a Premium. Nevyžaduje se, že se ukončuje geografickou replikaci, ale uživatel musí dodržovat pravidla klasifikace. Při upgradu, musíte nejdřív upgradovat sekundární databáze a pak upgradovat primární. Při downgradu, pořadí: musí nejprve provést downgrade primární databáze a poté downgradovat sekundární. 
+Migrace databáze z nákupní model založený na DTU pro nákupní model založený na virtuálních jádrech je podobný upgrade a Downgrade mezi databáze Standard a Premium v nákupní model založený na DTU.
+
+### <a name="migration-of-databases-with-geo-replication-links"></a>Migrace databází s vazby geografické replikace
+
+Migrace z modelu založeného na DTU na model založený na virtuálních jádrech je podobný upgradu nebo downgradu vztahy geografické replikace mezi databáze Standard a Premium. Nevyžaduje se, že se ukončuje geografickou replikaci, ale uživatel musí dodržovat pravidla klasifikace. Při upgradu, musíte nejdřív upgradovat sekundární databáze a pak upgradovat primární. Při downgradu, pořadí: musí nejprve provést downgrade primární databáze a poté downgradovat sekundární.
 
 Při použití geografické replikace mezi dva elastické fondy, doporučuje se určit jeden fond jako primární a druhá – jako sekundární. V takovém případě by měl migraci elastických fondů pomocí stejné pokyny.  Je však že je technicky možné, že elastický fond obsahuje primární i sekundární databáze. V takovém případě správně migraci vám by měl zpracovávat fond s vyšší využití jako "primární" a postupujte podle pravidla klasifikace odpovídajícím způsobem.  
 
@@ -88,15 +92,15 @@ Následující tabulka uvádí pokyny k migraci konkrétních scénářů:
 
 \* Každý 100 DTU ve standardní úrovni vyžaduje alespoň 1 virtuální jádro a každý 125 DTU na úrovni Premium vyžaduje alespoň 1 virtuální jádro
 
-### <a name="migration-of-failover-groups"></a>Migrace skupin převzetí služeb při selhání 
+### <a name="migration-of-failover-groups"></a>Migrace skupin převzetí služeb při selhání
 
-Migrace skupin převzetí služeb při selhání s více databázemi vyžaduje jednotlivých migraci primární a sekundární databází. Během tohoto procesu použít stejné aspekty a pravidel klasifikace. Databáze po převodu na model založený na virtuálních jádrech, skupiny převzetí služeb při selhání zůstávají v platnosti se stejnými nastaveními zásad. 
+Migrace skupin převzetí služeb při selhání s více databázemi vyžaduje jednotlivých migraci primární a sekundární databází. Během tohoto procesu použít stejné aspekty a pravidel klasifikace. Databáze po převodu na model založený na virtuálních jádrech, skupiny převzetí služeb při selhání zůstávají v platnosti se stejnými nastaveními zásad.
 
 ### <a name="creation-of-a-geo-replication-secondary"></a>Vytvoření sekundární geografické replikace
 
 Můžete vytvořit pouze typu geo-secondary pomocí stejné úrovně služeb jako primární. Pro databázi s protokolu vysokou míru generování doporučujeme, že se vytvoří sekundární se stejnou velikostí výpočetních jako primární. Při vytváření typu geo-secondary v elastickém fondu pro jednu primární databázi, doporučuje se, že má fond `maxVCore` nastavení, která odpovídá výpočetní velikost primární databáze. Pokud vytváříte typu geo-secondary v elastickém fondu pro primární do druhého elastického fondu, se doporučuje že fondy mají stejné `maxVCore` nastavení
 
-### <a name="using-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>Převést databázi založený na DTU na databázi založený na virtuálních jádrech, pomocí kopie databáze.
+### <a name="using-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>Pomocí kopie databáze převést databázi založený na DTU na databázi založený na virtuálních jádrech
 
 Můžete zkopírovat libovolnou databázi s velikostí výpočetními prostředky na základě jednotek DTU na databázi s velikostí výpočetních založený na virtuálních jádrech bez omezení nebo speciální pořadí úloh, tak dlouho, dokud výpočty velikost cíle podporuje maximální velikost zdrojové databáze. Kopírování databáze vytvoří snímek dat od počáteční čas operace kopírování a neprovede synchronizace dat mezi zdrojem a cílem.
 

@@ -5,14 +5,14 @@ services: storage
 author: seguler
 ms.service: storage
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 10/11/2018
 ms.author: seguler
-ms.openlocfilehash: 9964aa4d263e0b75eb59b4e1434a9b3f0aac6ea1
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 4f29933fbd4b9ea5c9868e307a6affa7e2273e3d
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39400438"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165177"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>Postup připojení služby Blob storage jako systém souborů s blobfuse
 
@@ -27,7 +27,7 @@ Tato příručka ukazuje, jak používat blobfuse a připojení kontejneru úlo�
 > 
 
 ## <a name="install-blobfuse-on-linux"></a>Instalace blobfuse v Linuxu
-Blobfuse binární soubory jsou k dispozici na [Microsoft úložiště softwaru Linux](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software). Abyste mohli nainstalovat blobfuse, nakonfigurujte jednu z těchto úložišť.
+Blobfuse binární soubory jsou k dispozici na [Microsoft úložiště softwaru Linux](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software) pro distribuce operačních systémů se systémem Ubuntu a RHEL. Abyste mohli nainstalovat blobfuse na těchto distribucí, nakonfigurujte jednu z úložiště ze seznamu. Můžete také sestavit binární soubory ze zdrojového kódu následujících kroků instalace [tady](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source) Pokud nejsou k dispozici pro vaši distribuci žádné binární soubory.
 
 ### <a name="configure-the-microsoft-package-repository"></a>Nakonfigurujte úložiště balíčků tak Microsoft
 Konfigurace [úložiště balíčků Linux pro produkty společnosti Microsoft](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software).
@@ -89,7 +89,7 @@ Blobfuse vyžaduje vaše přihlašovací údaje k uložení do textového soubor
 
 ```
 accountName myaccount
-accountKey myaccesskey==
+accountKey 9fD-/KjshdfLDERmcIjabcdefhAUSIHD/asdhfoiasiaAISOIabcdef/askdfewiAASJDNFL+askdlfj==
 containerName mycontainer
 ```
 
@@ -97,6 +97,10 @@ Po vytvoření tohoto souboru, ujistěte se, že chcete omezit přístup, aby ž
 ```bash
 chmod 700 fuse_connection.cfg
 ```
+
+> [!NOTE]
+> Pokud vytvoříte konfigurační soubor na Windows, nezapomeňte spustit `dos2unix` opravuje a převést na formát Unix. 
+>
 
 ### <a name="create-an-empty-directory-for-mounting"></a>Vytvořte prázdný adresář pro připojení
 ```bash

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: c6d7268a8501c602354d21edc5a0feaae9b1a0b2
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 19351d31331431e3b5137676061aadc681c496a7
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575470"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166623"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Rozhraní API protokolu HTTP v Durable Functions (Azure Functions)
 
@@ -197,6 +197,9 @@ Tady je datovou část odpovědi příklad včetně Orchestrace provádění his
 ### <a name="get-all-instances-status"></a>Získat stav všech instancí
 
 Dotazovat můžete také stav všech instancí. Odeberte `instanceId` z požadavku "Získat stav instance". Parametry jsou stejné jako "Get stav instance." 
+
+Je jedna věc, mějte na paměti, že `connection` a `code` jsou volitelné. Pokud máte anonymní ověřování na funkci kódu není povinné.
+Pokud nechcete použít připojovací řetězec úložiště objektů blob v jiné než definované v nastavení aplikace, které AzureWebJobsStorage, můžete bezpečně ignorovat připojení parametru řetězce dotazu.
 
 #### <a name="request"></a>Žádost
 

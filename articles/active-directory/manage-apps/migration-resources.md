@@ -11,16 +11,16 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: barbkess
 ms.reviewer: baselden
-ms.openlocfilehash: 750bf1905a3ca352e181dcd5b7fcecdfc8d04f76
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: d2ede423a92fe9e0d45155d9470d63689bc8d281
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465499"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165529"
 ---
 # <a name="resources-for-migrating-applications-to-azure-active-directory"></a>Zdroje pro migraci aplikací do Azure Active Directory
 
-Prostředky vám pomůžeme s migrací aplikace přístup a ověřování do Azure Active Directory (Azure AD). 
+Prostředky vám pomůžeme s migrací aplikace přístup a ověřování do Azure Active Directory (Azure AD). Tento krátký dotazník (https://aka.ms/AppsMigrationFeedback) poskytnout zpětnou vazbu na prostředí pro migraci aplikací do služby Azure AD (včetně problémy blokující migraci, třeba pro nástroje / pokyny nebo důvody pro zachování svého zprostředkovatele identity v místním prostředí). 
 
 | Prostředek  | Popis  |
 |:-----------|:-------------|

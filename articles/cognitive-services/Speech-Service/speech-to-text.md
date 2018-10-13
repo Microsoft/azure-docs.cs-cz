@@ -3,18 +3,18 @@ title: O převodu řeči na Text
 description: Přehled možností Speech to Text API.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
-author: v-jerkin
+author: erhopf
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-jerkin
-ms.openlocfilehash: 456b60ee44f3e47bc04da341fd0e3df86662d16b
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.author: erhopf
+ms.openlocfilehash: 3d03cd6a5cceb805ed8ee34548bd1a3973e9d78b
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785439"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167080"
 ---
 # <a name="about-the-speech-to-text-api"></a>O Speech to Text API
 

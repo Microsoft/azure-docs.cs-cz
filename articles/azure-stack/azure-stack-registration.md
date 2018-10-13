@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/09/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 410566e62daeb42100443e72f2d8a1acb8dad5a3
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: c9106557c7c113281b04d37f1bc3d8b29e2087cc
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902276"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310449"
 ---
 # <a name="register-azure-stack-with-azure"></a>Registrace Azure Stack s Azure
 
@@ -45,7 +45,7 @@ Předtím, než zaregistrujete, budete potřebovat následující na místě:
 
 Před zaregistrováním služby Azure Stack s Azure, musíte mít:
 
-- ID předplatného pro předplatné Azure. Pouze EA, CSP nebo CSP sdílené služby, který odběry podporují registrace. Poskytovatelé CSP se muset rozhodnout, jestli se má [použít jiné předplatné, CSP nebo CSPSS](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-cspss-subscription).<br><br>K získání ID, přihlaste se k Azure, klikněte na tlačítko **všechny služby**. Potom v části **Obecné** vyberte **předplatná**, klikněte na předplatné, které chcete použít, a v části **Essentials** najdete ID předplatného.
+- ID předplatného pro předplatné Azure. Pouze EA, CSP nebo CSP sdílené služby, který odběry podporují registrace. Poskytovatelé CSP se muset rozhodnout, jestli se má [použít jiné předplatné, CSP nebo APSS](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-apss-subscription).<br><br>K získání ID, přihlaste se k Azure, klikněte na tlačítko **všechny služby**. Potom v části **Obecné** vyberte **předplatná**, klikněte na předplatné, které chcete použít, a v části **Essentials** najdete ID předplatného.
 
   > [!Note]  
   > Německo Cloudová předplatná se momentálně nepodporují.

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 70269fc71fcb2ef9158b50d3bb281097abee0740
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 6d826702d8302246a225ebfcdf0a5987cf9d2045
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991163"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167048"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights pro webové stránky
 Zjistěte informace o výkonu a využití webové stránky nebo aplikace. Když přidáte [Application Insights](app-insights-overview.md) do skriptu stránky, získáte časování načtení stránky a volání AJAX, počty a podrobnosti výjimek prohlížeče a selhání AJAX, a také počty uživatelů a relací. Všechny tyto hodnoty mohou být segmentovány podle stránky, klientského operačního systému a verze prohlížeče, zeměpisné polohy a ostatních dimenzí. Můžete nastavit výstrahy na počet selhání nebo pomalé načítání stránky. A vložíte-li do kódu JavaScript trasování volání, můžete sledovat využití různých funkcí aplikace webové stránky.
@@ -48,12 +48,6 @@ Pokud ji nemáte, vytvořte ji:
 *Již máte dotazy?* [Další informace o vytvoření prostředku](app-insights-create-new-resource.md).
 
 ### <a name="add-the-sdk-script-to-your-app-or-web-pages"></a>Přidejte skript SDK do aplikace nebo webové stránky
-V části Rychlý start získáte skript pro webové stránky:
-
-![V okně přehledu aplikace zvolte Rychlý start, získat kód ke sledování webové stránky. Zkopírujte skript.](./media/app-insights-javascript/02-monitor-web-page.png)
-
-> [!NOTE]
-> Prostředí *Začínáme* se liší podle typu aplikace, který vyberete při vytváření prostředku Application Insights. Pokud pro vaši aplikaci není k dispozici skript, jak je znázorněno na předchozím snímku obrazovky, stačí použít následující skript.
 
 ```HTML
 <!-- 
@@ -127,7 +121,7 @@ Otevřete okno prohlížeče zobrazující agregovaná data výkonu z prohlíže
 
 ![Na stránce portal.azure.com otevřete prostředek vaší aplikace a klikněte na tlačítko Nastavení, Prohlížeč](./media/app-insights-javascript/03.png)
 
-Žádná data? V horní části stránky klikněte na **Obnovit**. Stále nic? Viz [Poradce při potížích](app-insights-troubleshoot-faq.md).
+Žádná data? V horní části stránky klikněte na **Obnovit. Stále nic? Viz [Poradce při potížích](app-insights-troubleshoot-faq.md).
 
 Okno prohlížeče je [okno Průzkumníka metrik](app-insights-metrics-explorer.md) s přednastavenými filtry a výběry grafu. Pokud chcete, můžete upravit časové rozmezí, filtry a konfiguraci grafu a uložit výsledek jako oblíbenou položku. Klikněte na tlačítko **Obnovit výchozí nastavení** a vraťte se zpět do původní konfigurace okna.
 

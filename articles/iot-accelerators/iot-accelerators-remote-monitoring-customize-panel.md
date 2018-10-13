@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
-ms.openlocfilehash: 656a2375b8b1033e9b698d5d8e1e2bbc32b32a79
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 3b855c3bed75945f44b55463bdacd049b7930aa7
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094555"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165874"
 ---
 # <a name="add-a-custom-panel-to-the-dashboard-in-the-remote-monitoring-solution-accelerator-web-ui"></a>Přidat vlastní panel na řídicím panelu vzdáleného monitorování řešení akcelerátoru webového uživatelského rozhraní
 
@@ -35,7 +35,7 @@ K dokončení kroků v této příručce s postupy, musíte na svém místním v
 
 By se měla dokončit kroky v [přidat vlastní stránky pro vzdálené monitorování řešení akcelerátoru webového uživatelského rozhraní](iot-accelerators-remote-monitoring-customize-page.md) článek, než budete pokračovat.
 
-## <a name="add-a-panel"></a>Přidání panelu
+## <a name="add-a-panel"></a>Přidat panel
 
 Přidání panelu do webového uživatelského rozhraní, budete muset přidat zdrojové soubory, které definují panelu a pak upravit na řídicím panelu zobrazí na panelu.
 
@@ -82,7 +82,7 @@ Přidejte následující definice buňky do mřížky v obsahu stránky:
           </Cell>
 ```
 
-## <a name="test-the-fly-out"></a>Test za běhu out
+## <a name="test-the-flyout"></a>Testování informační rámeček
 
 Pokud webové uživatelské rozhraní není spuštěná místně, spusťte následující příkaz v kořenové složce místní kopie úložiště:
 

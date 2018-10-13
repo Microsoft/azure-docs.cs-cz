@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat ze zdroje OData pomocí Azure Data Factory | Microsoft Docs
-description: Zjistěte, jak ke zkopírování dat z OData zdroje k úložištím dat. podporované podřízený pomocí aktivity kopírování v kanál služby Azure Data Factory.
+title: Kopírování dat ze zdroje OData s použitím služby Azure Data Factory | Dokumentace Microsoftu
+description: Zjistěte, jak kopírovat data ze zdroje OData do úložišť dat podporovaných jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,49 +13,50 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
-ms.openlocfilehash: aaec710dd6c12f96a479a1f41603351512da1df6
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: c8bee6902fb74cb77c34395fd05c1c861b4f630e
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054666"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166130"
 ---
-# <a name="copy-data-from-odata-source-using-azure-data-factory"></a>Kopírování dat z zdroj OData pomocí Azure Data Factory
+# <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Kopírování dat ze zdroje OData pomocí služby Azure Data Factory
+
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-odata-connector.md)
 > * [Aktuální verze](connector-odata.md)
 
-Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z zdroje OData. Vychází [zkopírujte aktivity přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
+Tento článek ukazuje, jak použít aktivitu kopírování ke kopírování dat ze zdroje OData ve službě Azure Data Factory. Tento článek vychází [aktivita kopírování ve službě Azure Data Factory](copy-activity-overview.md), který nabízí obecný přehled o aktivitě kopírování.
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
-Data můžete zkopírovat z zdroj OData do úložiště dat žádné podporované jímky. Seznam úložišť dat, které jsou podporovány jako zdroje nebo jímky aktivitě kopírování najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
+Kopírovat data ze zdroje OData k jakékoli podporovaného úložiště dat jímky. Seznam dat ukládá podporovanou aktivitou kopírování jako zdroje a jímky, najdete v části [podporovaných úložišť dat a formáty](copy-activity-overview.md#supported-data-stores-and-formats).
 
 Konkrétně tento konektor OData podporuje:
 
-- OData **verze 3.0 a 4.0**.
-- Kopírování dat pomocí následující ověření: **anonymní**, **základní**, a **Windows**.
+- OData verze 3.0 a 4.0.
+- Kopírování dat pomocí jedné z následujících ověření: **anonymní**, **základní**, nebo **Windows**.
 
-## <a name="getting-started"></a>Začínáme
+## <a name="get-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Následující části obsahují podrobnosti o vlastnosti, které slouží k určení konkrétní entity služby Data Factory ke konektoru OData.
+Následující části obsahují podrobnosti o vlastnostech, které lze použít k definování entit služby Data Factory, které jsou specifické pro konektor služby OData.
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
-Pro OData propojené služby jsou podporovány následující vlastnosti:
+Pro služby OData propojené se podporují následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu musí být nastavena na: **OData** |Ano |
-| url | Adresy URL kořenového adresáře služby OData. |Ano |
-| authenticationType. | Typ ověřování používaný pro připojení ke zdroji OData.<br/>Povolené hodnoty jsou: **anonymní**, **základní**, a **Windows**. Poznámka: OAuth není podporována. | Ano |
-| uživatelské jméno | Pokud používáte ověřování Basic nebo Windows, zadejte uživatelské jméno. | Ne |
-| heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
-| connectVia | [Integrace Runtime](concepts-integration-runtime.md) který se má použít pro připojení k úložišti. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít modul Runtime integrace Azure nebo Self-hosted integrace Runtime. Pokud není zadaný, použije výchozí Runtime integrace Azure. |Ne |
+| type | **Typ** musí být vlastnost nastavena na **OData**. |Ano |
+| url | Kořenovou adresu URL služby OData. |Ano |
+| authenticationType. | Typ ověřování používaný pro připojení ke zdroji OData. Povolené hodnoty jsou **anonymní**, **základní**, a **Windows**. OAuth se nepodporuje. | Ano |
+| uživatelské jméno | Zadejte **uživatelské jméno** Pokud používáte ověřování Basic nebo Windows. | Ne |
+| heslo | Zadejte **heslo** uživatele účtu, který jste zadali pro **uživatelské jméno**. Označte toto pole jako **SecureString** typ bezpečně uložit ve službě Data Factory. Můžete také [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
+| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) používat pro připojení k úložišti. Můžete vybrat prostředí Azure Integration Runtime nebo v místním prostředí Integration Runtime (Pokud je vaše úložiště dat se nachází v privátní síti). Pokud není zadán, použije se výchozí prostředí Azure Integration Runtime. |Ne |
 
-**Příklad 1: použití anonymní ověřování**
+**Příklad 1: Použití anonymní ověřování**
 
 ```json
 {
@@ -74,7 +75,7 @@ Pro OData propojené služby jsou podporovány následující vlastnosti:
 }
 ```
 
-**Příklad 2: použití základního ověřování**
+**Příklad 2: Použití základního ověřování**
 
 ```json
 {
@@ -84,7 +85,7 @@ Pro OData propojené služby jsou podporovány následující vlastnosti:
         "typeProperties": {
             "url": "<endpoint of OData source>",
             "authenticationType": "Basic",
-            "userName": "<username>",
+            "userName": "<user name>",
             "password": {
                 "type": "SecureString",
                 "value": "<password>"
@@ -98,7 +99,7 @@ Pro OData propojené služby jsou podporovány následující vlastnosti:
 }
 ```
 
-**Příklad 3: pomocí ověřování systému Windows**
+**Příklad 3: Použití ověřování Windows**
 
 ```json
 {
@@ -124,13 +125,15 @@ Pro OData propojené služby jsou podporovány následující vlastnosti:
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady najdete v článku datové sady. Tato část obsahuje seznam vlastností nepodporuje datovou sadu OData.
+Tato část obsahuje seznam vlastností, které podporuje datovou sadu OData.
 
-Ke zkopírování dat z OData, nastavte vlastnost typu datové sady, která **ODataResource**. Podporovány jsou následující vlastnosti:
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, naleznete v tématu [datové sady a propojené služby](concepts-datasets-linked-services.md). 
+
+Chcete-li kopírovat data z prostředí OData, nastavte **typ** vlastnosti datové sady na **ODataResource**. Podporovány jsou následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu datové sady musí být nastavena na: **ODataResource** | Ano |
+| type | **Typ** musí být nastavena vlastnost datové sady **ODataResource**. | Ano |
 | path | Cesta k prostředku OData. | Ano |
 
 **Příklad**
@@ -155,18 +158,20 @@ Ke zkopírování dat z OData, nastavte vlastnost typu datové sady, která **OD
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivity, najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností nepodporuje zdroj OData.
+Tato část obsahuje seznam vlastností, které podporuje zdroj OData.
 
-### <a name="odata-as-source"></a>Jako zdroj OData
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v tématu [kanály](concepts-pipelines-activities.md). 
 
-Ke zkopírování dat z OData, nastavte typ zdroje v aktivitě kopírování do **RelationalSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
+### <a name="odata-as-source"></a>OData jako zdroj
+
+Chcete-li kopírovat data z prostředí OData, nastavte **zdroj** typ v aktivitě kopírování do **RelationalSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typ zdroje kopie aktivity musí být nastavena na: **RelationalSource** | Ano |
-| query | Možnosti dotazu OData k filtrování dat Příklad: "? $select = název, popis a $top = 5".<br/><br/>Poznámka: v poslední, konektor OData zkopíruje data z adresy URL pro kombinované: `[url specified in linked service]/[path specified in dataset][query specified in copy activity source]`. Odkazovat na [OData pro adresy URL součásti](http://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Ne |
+| type | **Typ** musí být nastavena vlastnost zdroje aktivity kopírování **RelationalSource**. | Ano |
+| query | Možnosti dotazu OData pro filtrování dat Příklad: `"?$select=Name,Description&$top=5"`.<br/><br/>**Poznámka:**: konektor The OData kopíruje data z adresy URL pro kombinované: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`. Další informace najdete v tématu [OData pro adresy URL komponenty](http://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Ne |
 
-**Příklad:**
+**Příklad**
 
 ```json
 "activities":[
@@ -198,11 +203,11 @@ Ke zkopírování dat z OData, nastavte typ zdroje v aktivitě kopírování do 
 ]
 ```
 
-## <a name="data-type-mapping-for-odata"></a>Datový typ mapování pro OData
+## <a name="data-type-mapping-for-odata"></a>Datový typ mapování pro protokol OData
 
-Při kopírování dat z OData, se používají následující mapování datových typů OData k Azure Data Factory dočasné datové typy. V tématu [schéma a data zadejte mapování](copy-activity-schema-and-type-mapping.md) a zjistěte, jak aktivity kopírování mapuje zdroje schéma a data typ jímky.
+Při kopírování dat z protokolu OData, se používají následující mapování mezi Azure Data Factory dočasné datové typy a typy dat OData. Informace o tom, jak aktivitu kopírování, která mapuje typ zdroje schéma a data jímky, najdete v článku [schéma a data zadejte mapování](copy-activity-schema-and-type-mapping.md).
 
-| Datový typ OData | Typ průběžných dat objektu pro vytváření dat |
+| Typ dat OData | Data Factory dočasné datový typ |
 |:--- |:--- |
 | Edm.Binary | Byte] |
 | Edm.Boolean | BOOL |
@@ -213,16 +218,17 @@ Při kopírování dat z OData, se používají následující mapování datov�
 | Edm.Single | Jednoduchá |
 | Edm.Guid | Guid |
 | Edm.Int16 | Int16 |
-| Edm.Int32 | Int32 |
+| Edm.Int32 | Datový typ Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
 | Edm.String | Řetězec |
 | Edm.Time | Časový interval |
-| Edm.DateTimeOffset | Datový typ DateTimeOffset |
+| Edm.DateTimeOffset | DateTimeOffset |
 
-> [!Note]
-> OData komplexními datovými typy (například objekt) nejsou podporovány.
+> [!NOTE]
+> OData komplexních datových typů (například **objekt**) nejsou podporovány.
 
 
 ## <a name="next-steps"></a>Další postup
-Seznam úložišť dat jako zdroje a jímky nepodporuje aktivitu kopírování v Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md##supported-data-stores-and-formats).
+
+Seznam úložišť dat, která aktivitu kopírování, která podporuje jako zdroje a jímky ve službě Azure Data Factory najdete v tématu [podporovaných úložišť dat a formáty](copy-activity-overview.md##supported-data-stores-and-formats).

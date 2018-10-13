@@ -12,21 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 10/12/2018
 ms.author: bryanla
-ms.openlocfilehash: b1330f2f912f3e5974a43e43f649576561fbcc11
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 1d6f84612dd2bac34c238ad7eaf323dc7fa00ba3
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079221"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311350"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informace o klíčích, tajných kódů a certifikátů
 
 Služba Azure Key Vault umožňuje uživatelům ukládat a používat několik typů tajného kódu a klíče dat a aplikací Microsoft Azure:
 
 - Kryptografické klíče: podporuje více typy klíčů a algoritmy a umožňuje použití z moduly hardwarového zabezpečení (HSM) pro vysoká hodnota klíče. 
-- Tajné kódy: Umožňuje bezpečné ukládání tajných klíčů, jako jsou hesla. Tajné klíče jsou objekty octet omezenou velikost se žádné specifické sémantiku. 
+- Tajné kódy: Poskytuje zabezpečené úložiště tajných kódů, jako jsou hesla a databázové připojovací řetězce.
 - Certifikáty: Podporuje certifikáty, které jsou vytvořené s využitím klíče a tajné kódy a přidat funkci automatického obnovení.
 - Azure Storage: Může spravovat klíče účtu služby Azure Storage za vás. Interně jsou služby Key Vault můžete vypsat klíče (sync) pomocí účtu služby Azure Storage a znovu vygenerovat (Otočit) klíče pravidelně. 
 
@@ -94,7 +94,7 @@ Kryptografické klíče ve službě Key Vault jsou reprezentovány ve formě obj
 
      Další informace o zeměpisných hranic najdete v tématu [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/privacy/)  
 
-Key Vault podporuje jenom klíče RSA a eliptické křivky. Budoucí verze může podporovat další typy klíčů, jako symetrický.
+Key Vault podporuje jenom klíče RSA a eliptické křivky. 
 
 -   **ES**: klíč "text Soft" eliptické křivky.
 -   **ES HSM**: klíč "Pevného" eliptické křivky.
@@ -105,7 +105,7 @@ Key Vault podporuje klíče RSA 2048, 3072 do 4096 velikostí. Key Vault podporu
 
 ### <a name="cryptographic-protection"></a>Ochrana kryptografických
 
-Kryptografických modulů, které používá služby Key Vault, zda HSM nebo software, jsou ověřené podle standardu FIPS (Federal Information Processing Standards). Nemusíte dělat nic zvláštního ke spuštění v režimu FIPS. Pokud jste **vytvořit** nebo **importovat** klíče jako chráněné pomocí HSM, zaručeno v ke zpracování uvnitř modulu hardwarového zabezpečení ověřené na FIPS 140-2 úrovně 2 nebo vyšší. Pokud jste **vytvořit** nebo **importovat** jako softwarově chráněné klíče, jsou zpracované uvnitř kryptografických modulů, které jsou ověřené na FIPS 140-2 úrovně 1 nebo vyšší. Další informace najdete v tématu [klíče a typy klíčů](#keys-and-key-types).
+Kryptografických modulů, které používá služby Key Vault, zda HSM nebo software, jsou ověřené podle standardu FIPS (Federal Information Processing Standards). Nemusíte dělat nic zvláštního ke spuštění v režimu FIPS. Klíče **vytvořili** nebo **importovat** jako chráněné pomocí HSM jsou zpracovány uvnitř modulu hardwarového zabezpečení, ověření podle standardu FIPS 140-2 úrovně 2 nebo vyšší. Klíče **vytvořili** nebo **importovat** jako chráněný softwarem, jsou zpracovávány v kryptografických modulů, které jsou ověřené podle standardu FIPS 140-2 úrovně 1 nebo novější. Další informace najdete v tématu [klíče a typy klíčů](#keys-and-key-types).
 
 ###  <a name="ec-algorithms"></a>Algoritmy ES
  Podporují se následující identifikátory algoritmus s klíči ES a ES HSM ve službě Key Vault. 
@@ -136,8 +136,8 @@ Kryptografických modulů, které používá služby Key Vault, zda HSM nebo sof
 
 Key Vault podporuje následující operace na klíčové objekty:  
 
--   **Vytvoření**: umožňuje klientovi vytvoření klíče v Key Vault. Hodnotu klíče je generována pomocí služby Key Vault a uloženy a není vydané do klienta. Asymetrické (a v budoucnu eliptické křivky a Symmetric) klíče mohou být vytvořeny ve službě Key Vault.  
--   **Importovat**: umožňuje klientovi importovat existující klíč služby Key Vault. Asymetrické klíče mohou importovat do služby Key Vault pomocí několika různých balení metod v rámci JWK konstrukce. V budoucnu eliptické křivky a Symmetric také budou zabalené stejné.
+-   **Vytvoření**: umožňuje klientovi vytvoření klíče v Key Vault. Hodnotu klíče je generována pomocí služby Key Vault a uloženy a není vydané do klienta. Asymetrické klíče mohou být vytvořeny ve službě Key Vault.  
+-   **Importovat**: umožňuje klientovi importovat existující klíč služby Key Vault. Asymetrické klíče mohou importovat do služby Key Vault pomocí několika různých balení metod v rámci JWK konstrukce. 
 -   **Aktualizace**: umožňuje klientovi s dostatečnými oprávněními k úpravě metadat (klíčové atributy) přidružené k dříve uložené ve službě Key Vault klíč.  
 -   **Odstranit**: umožňuje klientovi s dostatečnými oprávněními k odstranění klíče ze služby Key Vault.  
 -   **Seznam**: umožňuje klientovi seznam všech klíčů v dané službě Key Vault.  
@@ -226,7 +226,7 @@ Další informace o práci s klíči najdete v tématu [klíče operací v Key V
 
 ### <a name="working-with-secrets"></a>Práce s tajnými kódy
 
-Tajné kódy ve službě Key Vault se octet pořadí s maximální velikostí 25 tisíc bajtů. Služba Key Vault neposkytuje sémantiku tajnými kódy. Je pouze přijímá data, šifruje, uloží ho a vrátí identifikátor tajného kódu ("id"). Tento identifikátor slouží k načtení tajný kód později.  
+Rozhraní API Key Vault z pohledu vývojáře přijímají a vrací hodnoty tajných kódů jako řetězce. Interně služby Key Vault uchovává a spravuje tajné kódy jako sekvence oktety (8 bitů v bajtech), s maximální velikostí 25 tisíc bajtů. Služba Key Vault neposkytuje sémantiku tajnými kódy. Je pouze přijímá data, šifruje, uloží ho a vrátí identifikátor tajného kódu ("id"). Tento identifikátor slouží k načtení tajný kód později.  
 
 Pro vysoce citlivá data klienti měli zvážit další vrstvy ochrany pro data. Šifrování dat pomocí klíče samostatné ochrany před úložiště ve službě Key Vault je jedním z příkladů.  
 
@@ -247,7 +247,7 @@ Existují další atributy jen pro čtení, které jsou zahrnuty v odpovědi, kt
 
 #### <a name="date-time-controlled-operations"></a>Operace řízené datum a čas
 
-Tajného **získat** operace bude fungovat pro tajné klíče není dosud platný a jejichž platnost vypršela, mimo *nbf* / *exp* okna. Volání tajného **získat** operaci pro není dosud platný tajný kód, lze použít pro účely testování. Načítání (**získat**ing) vypršela platnost tajného klíče, lze použít pro operace obnovení.
+Tajného **získat** operace bude fungovat pro tajné klíče není dosud platný a jejichž platnost vypršela, mimo *nbf* / *exp* okna. Volání tajného **získat** operaci pro není dosud platný tajný kód, lze použít pro účely testování. Načítání (**získat**nocení) vypršela platnost tajného klíče, lze použít pro operace obnovení.
 
 Další informace o typech dat najdete v části [datové typy](#data-types).  
 
@@ -281,7 +281,7 @@ Můžete zadat další metadata specifická pro aplikaci ve formě značek. Key 
 
 Podpora certifikáty služby Key Vault nabízí pro správu vaší x509 certifikáty a následujícího chování:  
 
--   Umožňuje vlastníkovi certifikátů k vytvoření certifikátu prostřednictvím procesu vytváření služby Key Vault nebo importu stávajícího certifikátu. To zahrnuje i podepsaný svým držitelem a vygenerovat certifikáty certifikační autority.
+-   Umožňuje vlastníkovi certifikátů k vytvoření certifikátu prostřednictvím procesu vytváření služby Key Vault nebo importu stávajícího certifikátu. Zahrnuje podepsané svým držitelem i a vygenerovat certifikáty certifikační autority.
 -   Umožňuje vlastníkovi certifikát služby Key Vault implementací zabezpečeného úložiště a správy X509 certifikáty bez interakce s materiál privátního klíče.  
 -   Umožňuje vlastníkovi certifikát můžete vytvořit zásadu, která přesměruje služby Key Vault pro správu životního cyklu certifikátu.  
 -   Umožňuje vlastníkům certifikát lze zadat kontaktní informace pro oznámení o události životního cyklu vypršení platnosti a obnovení certifikátu.  
@@ -406,7 +406,7 @@ Pokud zásady certifikátu je nastavena na automatické obnovení, se odešle oz
 -   Před obnovením certifikátu
 -   Po obnovení certifikátu, s informacemi o tom, pokud byl úspěšně obnovený certifikát, nebo pokud došlo k chybě, které vyžadují ruční prodloužení platnosti certifikátu.  
 
- Pokud zásady certifikátu nastaven ručně obnovené (e-mailu jenom) a pak oznámení se odešle, když je čas na obnovení certifikátu.  
+ Když se zásady certifikátu, který je nastaven na ručně obnovit (pouze pro e-mailu), jsou oznámení odesílána až nastane čas na obnovení certifikátu.  
 
 ### <a name="certificate-access-control"></a>Řízení přístupu na certifikát
 

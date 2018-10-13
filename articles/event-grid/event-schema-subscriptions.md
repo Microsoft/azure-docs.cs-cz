@@ -5,24 +5,24 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: reference
-ms.date: 08/17/2018
+ms.date: 10/12/2018
 ms.author: tomfitz
-ms.openlocfilehash: 18f2a64a4354fbd99f1a471c21cc35cbf5df6619
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: ae6513c503b930d9c953f5245a9c98ea096109bb
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42054836"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310229"
 ---
 # <a name="azure-event-grid-event-schema-for-subscriptions"></a>Schéma událostí Azure Event Grid pro předplatná
 
 Tento článek obsahuje vlastnosti a schéma pro události předplatného Azure. Úvod do schémata událostí, naleznete v tématu [schéma událostí služby Azure Event Grid](event-schema.md).
 
-Skupiny prostředků a předplatná Azure generování stejné typy událostí. Typy událostí se vztahují na změny v prostředcích. Hlavní rozdíl je, že skupiny prostředků vysílat události pro prostředky v rámci skupiny prostředků a předplatných Azure vysílat události pro prostředky v rámci předplatného.
+Skupiny prostředků a předplatná Azure generování stejné typy událostí. Typy událostí se vztahují na změny zdrojů nebo akce. Hlavní rozdíl je, že skupiny prostředků vysílat události pro prostředky v rámci skupiny prostředků a předplatných Azure vysílat události pro prostředky v rámci předplatného.
 
-Zdroj události jsou vytvářeny pro PUT, PATCH a operace, které se pošlou odstranění `management.azure.com`. Operace GET a POST nevytvářet události vytváření. Operace odeslání k rovině dat (třeba `myaccount.blob.core.windows.net`) nevytvářet události vytváření.
+Zdroj události jsou vytvořeny pro metodu POST PUT, PATCH, operací a odstranění, které se pošlou `management.azure.com`. ZÍSKAT operace nevytvářet události. Operace odeslání k rovině dat (třeba `myaccount.blob.core.windows.net`) nevytvářet události. Akce události poskytují data události pro operace, jako je výpis klíčů pro prostředek.
 
-Při vytvoření odběru událostí předplatného Azure, váš koncový bod přijímá všechny události pro toto předplatné. Události můžou zahrnovat události, kterou chcete zobrazit, jako je například aktualizaci virtuálního počítače, ale také událostí, které nejsou možná pro vás důležitá, jako je například zápis nová položka v historii nasazení. Můžete zobrazit všechny události na váš koncový bod a napsat kód, který zpracovává události, kterou chcete zpracovat, nebo můžete nastavit filtr při vytváření odběru událostí.
+Při vytvoření odběru událostí předplatného Azure, váš koncový bod přijímá všechny události pro toto předplatné. Události můžou zahrnovat události, kterou chcete zobrazit, jako je například aktualizaci virtuálního počítače, ale také událostí, které nejsou možná pro vás důležitá, jako je například zápis nová položka v historii nasazení. Můžete zobrazit všechny události na váš koncový bod a napsat kód, který zpracovává události, kterou chcete zpracovat. Nebo můžete nastavit filtr při vytváření odběru událostí.
 
 Programově zpracování událostí, můžete seřadit události pohledem `operationName` hodnotu. Například může váš koncový bod události pouze zpracovávat události pro operace, které se rovnají `Microsoft.Compute/virtualMachines/write` nebo `Microsoft.Storage/storageAccounts/write`.
 
@@ -36,12 +36,15 @@ Předplatná Azure vysílat události management z Azure Resource Manageru, nap�
 
 | Typ události | Popis |
 | ---------- | ----------- |
-| Microsoft.Resources.ResourceWriteSuccess | Vyvoláno při prostředek vytvořit nebo aktualizovat operace proběhne úspěšně. |
-| Microsoft.Resources.ResourceWriteFailure | Vyvolá se při vytvoření prostředku nebo operace aktualizace se nezdaří. |
-| Microsoft.Resources.ResourceWriteCancel | Vyvoláno při prostředek vytvořit nebo aktualizovat operace se zrušila. |
-| Microsoft.Resources.ResourceDeleteSuccess | Vyvolá se při úspěšné operaci odstranění prostředku. |
-| Microsoft.Resources.ResourceDeleteFailure | Vyvoláno, když selže operace odstranění prostředku. |
-| Microsoft.Resources.ResourceDeleteCancel | Vyvoláno, když je zrušena operace odstranění prostředku. Tato událost se stane, když se zruší nasazení šablony. |
+| Microsoft.Resources.ResourceActionCancel | Vyvoláno, když se zruší akci u prostředku. |
+| Microsoft.Resources.ResourceActionFailure | Vyvoláno, když se akce u prostředku se nezdaří. |
+| Microsoft.Resources.ResourceActionSuccess | Vyvoláno, když se akce u prostředku proběhne úspěšně. |
+| Microsoft.Resources.ResourceDeleteCancel | Vyvolá se, když odstranit operace se zrušila. Tato událost se stane, když se zruší nasazení šablony. |
+| Microsoft.Resources.ResourceDeleteFailure | Vyvolá se, když se odstranění nezdaří operace. |
+| Microsoft.Resources.ResourceDeleteSuccess | Vyvolá se, když operace odstranění úspěšná. |
+| Microsoft.Resources.ResourceWriteCancel | Vyvolá se, když vytvoření nebo aktualizace operace se zrušila. |
+| Microsoft.Resources.ResourceWriteFailure | Vyvolá se, když vytvořit nebo aktualizovat operace se nezdaří. |
+| Microsoft.Resources.ResourceWriteSuccess | Vyvolá se, když vytvoření nebo aktualizace operace úspěšná. |
 
 ## <a name="example-event"></a>Příklad události
 
@@ -171,6 +174,62 @@ Následující příklad ukazuje schématu **ResourceDeleteSuccess** událostí.
 }]
 ```
 
+Následující příklad ukazuje schématu **ResourceActionSuccess** událostí. Se používá stejné schéma pro **ResourceActionFailure** a **ResourceActionCancel** události s různými hodnotami parametru `eventType`.
+
+```json
+[{   
+  "subject": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventHub/namespaces/{namespace}/AuthorizationRules/RootManageSharedAccessKey",
+  "eventType": "Microsoft.Resources.ResourceActionSuccess",
+  "eventTime": "2018-10-08T22:46:22.6022559Z",
+  "id": "{ID}",
+  "data": {
+    "authorization": {
+      "scope": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventHub/namespaces/{namespace}/AuthorizationRules/RootManageSharedAccessKey",
+      "action": "Microsoft.EventHub/namespaces/AuthorizationRules/listKeys/action",
+      "evidence": {
+        "role": "Contributor",
+        "roleAssignmentScope": "/subscriptions/{subscription-id}",
+        "roleAssignmentId": "{ID}",
+        "roleDefinitionId": "{ID}",
+        "principalId": "{ID}",
+        "principalType": "ServicePrincipal"
+      }     
+    },
+    "claims": {
+      "aud": "{audience-claim}",
+      "iss": "{issuer-claim}",
+      "iat": "{issued-at-claim}",
+      "nbf": "{not-before-claim}",
+      "exp": "{expiration-claim}",
+      "aio": "{token}",
+      "appid": "{ID}",
+      "appidacr": "2",
+      "http://schemas.microsoft.com/identity/claims/identityprovider": "{URL}",
+      "http://schemas.microsoft.com/identity/claims/objectidentifier": "{ID}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "{ID}",       "http://schemas.microsoft.com/identity/claims/tenantid": "{ID}",
+      "uti": "{ID}",
+      "ver": "1.0"
+    },
+    "correlationId": "{ID}",
+    "httpRequest": {
+      "clientRequestId": "{ID}",
+      "clientIpAddress": "{IP-address}",
+      "method": "POST",
+      "url": "https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventHub/namespaces/{namespace}/AuthorizationRules/RootManageSharedAccessKey/listKeys?api-version=2017-04-01"
+    },
+    "resourceProvider": "Microsoft.EventHub",
+    "resourceUri": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventHub/namespaces/{namespace}/AuthorizationRules/RootManageSharedAccessKey",
+    "operationName": "Microsoft.EventHub/namespaces/AuthorizationRules/listKeys/action",
+    "status": "Succeeded",
+    "subscriptionId": "{subscription-id}",
+    "tenantId": "{tenant-id}"
+  },
+  "dataVersion": "2",
+  "metadataVersion": "1",
+  "topic": "/subscriptions/{subscription-id}" 
+}]
+```
+
 ## <a name="event-properties"></a>Vlastnosti události
 
 Událost má následující dat nejvyšší úrovně:
@@ -194,7 +253,7 @@ Datový objekt má následující vlastnosti:
 | deklarace identity | objekt | Vlastnosti deklarace identity. Další informace najdete v tématu [JWT specifikace](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
 | correlationId | řetězec | ID operace odstraňování potíží. |
 | httpRequest | objekt | Podrobnosti o operaci. Tento objekt je pouze zahrnuty při aktualizaci stávajícího prostředku nebo odstranění prostředku. |
-| ResourceProvider | řetězec | Poskytovatel prostředků provádění této operace. |
+| ResourceProvider | řetězec | Poskytovatel prostředků pro operaci. |
 | resourceUri | řetězec | Identifikátor URI prostředku v operaci. |
 | operationName | řetězec | Operace, která byla provedena. |
 | status | řetězec | Stav operace. |

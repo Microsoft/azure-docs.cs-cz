@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: b0fe9acc187aab87e8ee0528cf998e2ef923f897
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: cc7b1b9e96e32b090c0ec9ec9ab029588e5ec4ce
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44722006"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166963"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Otočit tajné kódy ve službě Azure Stack
 
@@ -81,7 +81,8 @@ Spuštění tajných kódů otočení pomocí následujícího postupu se opravi
 
    > [!IMPORTANT]  
    > Zajistěte, aby tajných kódů rotace nebyla provedena úspěšně ve vašem prostředí. Pokud již byla provedena tajných kódů otočení aktualizaci na verzi 1807 nebo novější, ještě před spuštěním otočení tajných kódů služby Azure Stack. 
-1.  Upozorněte uživatele na jakékoli operace údržby. Naplánujte běžné časová období údržby, co je to možné, během pracovní doby. Operace údržby může ovlivnit uživatelské úlohy a operací na portálu.
+1.  Operátory všimnout výstrahy otevírají a zavírají automaticky během otáčení tajných kódů služby Azure Stack.  Toto chování je očekávané a upozornění můžete ignorovat.  Operátory můžete spuštěním testu AzureStack ověřit platnost těchto upozornění.  Pro operátory pomocí nástroje SCOM k monitorování systémy Azure Stack, uvedení v režimu údržby systému zabrání dosažení jejich systémům ITSM tato upozornění ale bude nadále výstrahu, pokud je systém Azure Stack se nestane nedostupnou. 
+2. Upozorněte uživatele na jakékoli operace údržby. Naplánujte běžné časová období údržby, co je to možné, během pracovní doby. Operace údržby může ovlivnit uživatelské úlohy a operací na portálu.
     > [!note]  
     > Další kroky se projeví pouze v případě otáčení externích tajných klíčů Azure Stack.
 3. Přidejte novou sadu nahrazení externí certifikáty. Nová sada odpovídá certifikát požadavky uvedené v [požadavky na certifikát Azure Stack PKI](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs).

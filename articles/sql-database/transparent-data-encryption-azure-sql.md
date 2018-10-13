@@ -7,17 +7,17 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: becczhang
+author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 07/09/2018
-ms.openlocfilehash: 50b433c65dec1f667f32aaf60148a6e393c67320
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 935c54cf04854e75c39df55d8063138086be73a6
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165922"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309480"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transparentní šifrování dat pro SQL Database a Data Warehouse
 

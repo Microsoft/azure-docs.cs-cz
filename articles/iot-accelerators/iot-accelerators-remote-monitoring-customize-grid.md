@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: 71f2164c9c419604c513261df7e1264060a2c374
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: e1c694847a1ec16d4d7a7b1118df71cb06396186
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094557"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165926"
 ---
 # <a name="add-a-custom-grid-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Přidat vlastní mřížky do vzdáleného monitorování řešení akcelerátoru webového uživatelského rozhraní
 
@@ -188,7 +188,7 @@ Předchozí příkaz se spustí místně na uživatelské rozhraní [ http://loc
 
 Existují dvě možnosti pro povolení uživatele pro výběr řádků v tabulce:
 
-### <a name="hard-select-rows"></a>Vybrat pevné řádky
+### <a name="hard-select-rows"></a>Pevné vyberte řádky
 
 Když uživatel potřebuje k práci s více řádky ve stejnou dobu, pomocí zaškrtávacích políček na řádky:
 
@@ -214,7 +214,7 @@ Když uživatel potřebuje k práci s více řádky ve stejnou dobu, pomocí za�
     };
     ```
 
-1. Poskytnout kontext tlačítka na stránku při intenzivně výběru řádku v tabulce:
+1. Poskytnout kontext tlačítka na stránku při řádek v tabulce je obtížné vybrán:
 
     ```js
     this.contextBtns = [
@@ -234,7 +234,7 @@ Když uživatel potřebuje k práci s více řádky ve stejnou dobu, pomocí za�
     }
     ```
 
-1. Po kliknutí na tlačítko kontextové získáte intenzivně vybrané položky k provedení práce na:
+1. Po kliknutí na tlačítko kontextové získáte pevné vybrané položky k provedení práce na:
 
     ```js
     doSomething = () => {
@@ -243,9 +243,9 @@ Když uživatel potřebuje k práci s více řádky ve stejnou dobu, pomocí za�
     };
     ```
 
-### <a name="soft-select-rows"></a>Obnovitelné vybrat řádky
+### <a name="soft-select-rows"></a>Konfigurace soft výběr řádků
 
-Pokud uživatel se musí jednat o jeden řádek, nakonfigurujte obnovitelně vyberte odkaz pro jeden nebo více sloupců v **columnDefs**.
+Pokud uživatel se musí jednat o jeden řádek, konfigurace soft vyberte odkaz pro jeden nebo více sloupců v **columnDefs**.
 
 1. V **exampleGridConfig.js**, přidejte **SoftSelectLinkRenderer** jako **cellRendererFramework** pro **columnDef**.
 
@@ -260,7 +260,7 @@ Pokud uživatel se musí jednat o jeden řádek, nakonfigurujte obnovitelně vyb
     };
     ```
 
-1. Když dojde ke kliknutí na obnovitelně vyberte odkaz, aktivuje **onSoftSelectChange** událostí. Provedení libovolné akce je požadován pro tento řádek, jako je například otevřít podrobnosti průběžné out. Tento příklad jednoduše zapisuje do konzoly:
+1. Když dojde ke kliknutí na odkaz Konfigurace soft-select, aktivuje **onSoftSelectChange** událostí. Provedení libovolné akce je požadován pro tento řádek, jako je například otevřít podrobnosti vyskakovacího informačního rámečku. Tento příklad jednoduše zapisuje do konzoly:
 
     ```js
     onSoftSelectChange = (rowId, rowEvent) => {
@@ -281,6 +281,6 @@ Pokud uživatel se musí jednat o jeden řádek, nakonfigurujte obnovitelně vyb
 
 V tomto článku jste se dozvěděli o prostředky dostupné pro přidání nebo přizpůsobit stránky ve webovém uživatelském rozhraní v akcelerátoru řešení vzdáleného monitorování.
 
-Nyní jste definovali mřížky, dalším krokem je [přidat vlastní průběžné out do vzdáleného monitorování řešení akcelerátoru webového uživatelského rozhraní](iot-accelerators-remote-monitoring-customize-flyout.md) , který se zobrazí na příkladu stránky.
+Nyní jste definovali mřížky, dalším krokem je [přidat vlastní rozevírací nabídka pro vzdálené monitorování řešení akcelerátoru webového uživatelského rozhraní](iot-accelerators-remote-monitoring-customize-flyout.md) , který se zobrazí na příkladu stránky.
 
 Další koncepční informace o akcelerátoru řešení vzdáleného monitorování najdete v tématu [architektura vzdáleného monitorování](iot-accelerators-remote-monitoring-sample-walkthrough.md).

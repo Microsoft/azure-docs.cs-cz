@@ -9,12 +9,12 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 06/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: 6477879953dc2bb2c7503eb0b2d4b5effa7b6a11
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 911d62fc2baa50cce6d40f8b5bcc455f308d21d7
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024651"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309651"
 ---
 # <a name="manage-credentials"></a>Správa přihlašovacích údajů
 
@@ -66,11 +66,11 @@ Všimněte si také identifikátor vaší oblasti pro váš koncový bod rozhran
 
 ### <a name="resource-id"></a>ID prostředku
 
-Jsme probrali v této části [pomocí svého účtu Azure pomocí nástroje pro recenze a rozhraní API](credentials.md#how-to-use-your-azure-account-with-the-review-tool) oddílu. Toto pole je obvykle prázdné, pokud vaše Id prostředku Azure přidáte k tomuto poli jak je popsáno v předchozí části.
+Tato sada polí je popsaný v předchozí části [účtu Azure pomocí nástroje pro recenze a rozhraní API](credentials.md#use-the-azure-account-with-the-review-tool-and-review-api). Toto pole je obvykle prázdné, pokud vaše Id prostředku Azure přidáte k tomuto poli jak je popsáno v předchozí části.
 
 ### <a name="workflows"></a>Pracovní postupy
 
-Tuto sadu polí v předchozí části jsme probrali v [spouštění pracovních postupů pomocí Azure key](credentials.md#use-the-azure-account-with-the-workflows-in-the-review-tool). Ve výchozím nastavení nástroj pro recenze pomocí klíče zkušební verze automaticky generované pro spouštění pracovních postupů a, který se zobrazuje na začátku. Dvě pole umožňují, které používají seznamy termínů a bitové kopie v operacích obrazovky textových a obrázkových vyhodnotit v uvedeném pořadí.
+Tato sada polí je popsaný v předchozí části [používat účet Azure s pracovními postupy v nástroj pro recenze](credentials.md#use-the-azure-account-with-the-workflows-in-the-review-tool). Ve výchozím nastavení nástroj pro recenze pomocí klíče zkušební verze automaticky generované pro spouštění pracovních postupů a, který se zobrazuje na začátku. Dvě pole umožňují, které používají seznamy termínů a bitové kopie v operacích obrazovky textových a obrázkových vyhodnotit v uvedeném pořadí.
 
 ## <a name="next-steps"></a>Další postup
 

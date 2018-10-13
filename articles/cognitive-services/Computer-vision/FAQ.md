@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 01/26/2017
 ms.author: kefre
-ms.openlocfilehash: 5c0a4e981a290b9a758c8401a75e546c61618b45
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 55b474d0edbb8dc01b9f35d4f8799e53e37862df
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983897"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166368"
 ---
 # <a name="computer-vision-api-frequently-asked-questions"></a>Computer Vision API na nejčastější dotazy
 
@@ -44,7 +44,7 @@ ms.locfileid: "45983897"
 | Dánština (da-DK)  | Holandština (nl-NL)     | Angličtina           | Finština (fi-FI)            |Francouzština (fr-FR)
 | Němčina (de-DE)  | Řečtina (el-GR)     | Maďarština (hu-HU) | Italština (it-IT)            | Japonština (ja-JP)
 | Korejština (ko-KR)  | Norština (nb-NO) | Polština (pl-PL)    | Portugalština (pt-BR) (pt-PT) | Ruština (ru-RU)
-| Španělština (es-ES)   | Švédština (sv-SV)     | Turečtina (tr jednotek Propustnosti)   |                            |
+| Španělština (es-ES)   | Švédština (sv-SV)     | Turečtina (tr-TR)   |                            |
 
 -----
 

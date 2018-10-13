@@ -1,6 +1,6 @@
 ---
-title: Co je nového v nástroji Správa podniková aplikace v Azure Active Directory | Microsoft Docs
-description: Zjistěte, co je nového v nástroji Správa podniková aplikace v Azure Active Directory.
+title: Co je nového ve správě podnikových aplikací v Azure Active Directory | Dokumentace Microsoftu
+description: Zjistěte, co je nového ve správě podnikových aplikací v Azure Active Directory.
 services: active-directory
 documentationcenter: ''
 author: ajamess
@@ -15,147 +15,146 @@ ms.workload: identity
 ms.date: 07/13/2017
 ms.author: asteen
 ms.reviewer: asteen
-ms.openlocfilehash: 30b3fbd415fac1e11a77b3905cb01e5935a62839
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: fefc508679a309262d07a582fc8f5bdf9f67cfe5
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34350861"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310109"
 ---
-# <a name="whats-new-in-enterprise-application-management-in-azure-active-directory"></a>Co je nového v nástroji Správa podniková aplikace v Azure Active Directory 
+# <a name="whats-new-in-enterprise-application-management-in-azure-active-directory"></a>Co je nového ve správě podnikových aplikací v Azure Active Directory 
 
-Azure Active Directory (Azure AD) je vylepšené enterprise nástroje pro správu aplikací, s nové funkce a možnosti, aby Správa aplikací jednodušší a efektivní.
+Azure Active Directory (Azure AD) obsahuje rozšířenou podnikové aplikace nástroje pro správu, pomocí nové funkce a možnosti zjednodušit správu aplikací a efektivní.
 
-Zde jsou některé rozšířením pro službu Azure AD v [portál Azure](https://portal.azure.com).
+Zde jsou některé vylepšení pro Azure AD [webu Azure portal](https://portal.azure.com).
 
-- Vylepšené aplikace galerii prostředí s vytvoření modelu zjednodušené aplikací a podpora pro všechny typy aplikací, které jste použili. 
-- Zcela nový rychlý start prostředí, které vám může pomoct zprovoznění pilotní nasazení vaší aplikace. 
-- Nakonfigurujte zásady samoobslužné služby pomocí několika kliknutí. 
-- Vylepšení proxy aplikace jednotného přihlašování konfigurace a přineste si vlastní prostředí aplikace umožňuje získat více done než před.
+- Galerii aplikací vylepšené prostředí, zjednodušeným aplikačním vytváření modelu a podporu pro všechny typy aplikací, které jste zvyklí. 
+- Úplně rychlý start prostředí, které vám pomohou začít s pilotní nasazení vaší aplikace. 
+- Nakonfigurujte zásady samoobslužných služeb jen několika kliknutími. 
+- Vylepšení proxy aplikací, jednotného přihlašování a používání vlastních aplikací. ukázky, umožňuje získat víc práce než před.
 
-## <a name="improvements-to-the-azure-active-directory-application-gallery"></a>Vylepšení galerii aplikací Azure Active Directory
+## <a name="improvements-to-the-azure-active-directory-application-gallery"></a>Vylepšení pro aplikaci Galerie Azure Active Directory
 
-Vaše oblíbené aplikace přidat, ať už z [galerii aplikací](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery), vlastních aplikací, které jste rozšíření do cloudu nebo nové aplikace, které vyvíjíte.  Můžete začít používat s toto nové prostředí kliknutím **přidat** pod **podnikové aplikace, které** nebo **všechny aplikace**.
+Přidat vaše oblíbené aplikace, ať už jsou z [Galerie aplikací](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery), vlastních aplikací, které jste rozšíření do cloudu nebo vytváříte nové aplikace.  Můžete začít s tyto nové možnosti kliknutím **přidat** pod **podnikové aplikace** nebo **všechny aplikace**.
  
   ![Přidání aplikace](./media/active-directory-enterprise-apps-whats-new-azure-portal/01.png)
 
-Jednou v galerii, uvidíte, že všechny vybrané aplikace, které podporují zřizování uživatelů zobrazí přední a center. Můžete procházet nejrůznějším různých kategorií přejdete do aplikace, které se zajímáte o nebo možnosti vyhledávání můžete rychle najít aplikací, které chcete integrovat.
+Jednou v galerii, zobrazí se vám všechny vybrané aplikace, které podporují zřizování uživatelů zobrazí front a center. Můžete procházet celou řadu různých kategorií zobrazit podrobné informace o aplikacích, které vás zajímají, nebo můžete použít vyhledávání rychle najít aplikace, které chcete integrovat.
 
-  ![Galerii aplikací](./media/active-directory-enterprise-apps-whats-new-azure-portal/02.png)
+  ![Galerie aplikací](./media/active-directory-enterprise-apps-whats-new-azure-portal/02.png)
 
-## <a name="add-custom-applications-from-one-place"></a>Přidat vlastní aplikace z jednoho místa
+## <a name="add-custom-applications-from-one-place"></a>Přidat vlastní aplikace na jednom místě
 
-Kromě přidání předem integrovaných aplikací z galerie, všechny, které narazí konfiguraci vlastní aplikace měla použitá při na portálu classic správu jsou nyní v nového portálu. Zda jsou rozšíření aplikace v místním prostředí pomocí proxy aplikace, integraci vlastní heslo nebo federovaného jednotného přihlašování k aplikaci, nebo vytvoření zcela nové aplikace pomocí klíče registru aplikace, můžete získat k němu z jediné jeden.
+Kromě přidání předem integrovaných aplikací z galerie, jsou vše, co prostředí konfigurace vlastní aplikace, aby byly použity k portálu pro správu klasické, teď je to možné na novém portálu. Zda jsou rozšíření aplikace pomocí proxy aplikací, integraci heslo nebo federovaného jednotného přihlašování aplikace v místním nebo vytvoření zcela nové aplikace pomocí registru aplikace, můžete získat k němu z tohoto jediného místa.
 
   ![Přidání vlastní aplikace](./media/active-directory-enterprise-apps-whats-new-azure-portal/03.png)
 
  
-**Abyste mohli začít přidání vlastní aplikace**:
+**Začít přidávat svoji vlastní aplikaci**:
 
-1. Klikněte na tlačítko **přidat odkaz na vaši vlastní** v horní části galerii aplikací. 
-2. Uvidíte dvě možnosti před jste: **nasadit existující aplikaci** nebo **vytvořte novou aplikaci**. Přečtěte si informace o rozdílu mezi dvě možnosti a jejich použití.
+1. Klikněte na tlačítko **přidat vlastní odkaz** nahoře v galerii aplikací. 
+1. Uvidíte dvě možnosti před vámi: **nasadit existující aplikaci** nebo **vyvíjet nové aplikace**. Přečtěte si informace o rozdílu mezi dvěma možnostmi a jejich použití.
 
-### <a name="deploying-existing-applications"></a>Existující nasazení aplikace
+### <a name="deploying-existing-applications"></a>Nasazení existujících aplikací
 
-1. Pokud máte k dispozici již spuštěné aplikace a chcete jen na jeho integraci do Azure AD pro jednotné přihlašování nebo zřizování, zvolte **nasadit existující aplikaci** možnost. Vyberte název vaší aplikace, klikněte na tlačítko **přidat**.
-2. A to je vše! Místo nepotřebuje vědět všechny podrobnosti o aplikaci předem, můžete nyní nastavit jak novou aplikaci funguje tak, že procházení v levé nabídce a konfigurace aplikace libovolně kdykoli.
+1. Pokud máte aplikace, která už běží a chcete jenom na jeho integraci do služby Azure AD pro jednotné přihlašování nebo zřizování, zvolte **nasadit existující aplikaci** možnost. Vyberte název vaší aplikace, klikněte na tlačítko **přidat**.
+1. A to je vše! Místo toho budou znát všechny podrobnosti o své aplikaci ještě před zahájením, můžete nyní nastavit fungování novou aplikaci tak, že procházení v levé nabídce a konfigurace aplikace podle vašich představ v každém okamžiku.
 
-  ![Přidání stávající aplikace s jedním kliknutím](./media/active-directory-enterprise-apps-whats-new-azure-portal/04.png)
+  ![Přidání existující aplikace s jedním kliknutím](./media/active-directory-enterprise-apps-whats-new-azure-portal/04.png)
  
-### <a name="developing-new-applications"></a>Vývoj nových aplikací
+### <a name="developing-new-applications"></a>Vývoj nové aplikace
 
-1. Pokud vytváříte novou aplikaci, je snadný způsob získání registru aplikace pravé z galerie:
-2. Klikněte na tlačítko **přidat vlastní** z Galerie aplikace, vyberte možnost **vyvíjet existující aplikaci**, a uvidíte rychlý odkaz právo na používání přidat aplikací.
+1. Pokud vytváříte novou aplikaci, je jednoduchý způsob získání registru aplikace doprava z galerie:
+1. Klikněte na tlačítko **přidejte vlastní** z Galerie aplikací, vyberte možnost **vývoj existující aplikaci**, a zobrazí se vám rychlý odkaz přímo do prostředí přidat aplikaci.
 
-  ![Přidání nově vyvinutých aplikace stačí jen pár kliknutí](./media/active-directory-enterprise-apps-whats-new-azure-portal/05.png)
+  ![Přidání nově vyvinutých aplikací pomocí několika kliknutí](./media/active-directory-enterprise-apps-whats-new-azure-portal/05.png)
 
 
 >[!NOTE]
->Jakmile přidáte aplikace pomocí klíče registru aplikace, zobrazí se zobrazí v seznamu podnikové aplikace, kde budete moci konfigurovat jednotné přihlašování a spravovat zásady přístupu pro novou aplikaci.
+>Po přidání aplikace pomocí registru aplikace, zobrazí se zobrazí v seznamu podnikových aplikací, kde budete moct nakonfigurovat jednotné přihlašování a spravovat zásady přístupu pro novou aplikaci.
 
   ![Správa přístupu k nové aplikaci v podnikových aplikací](./media/active-directory-enterprise-apps-whats-new-azure-portal/06.png)
 
 
-## <a name="quickstart-get-going-with-your-new-application-right-away"></a>Rychlý úvod: Začínáme s novou aplikaci hned 
+## <a name="quickstart-get-going-with-your-new-application-right-away"></a>Rychlý start: Začínáme s novou aplikaci hned 
 
-Po přidání aplikace, jestli se předem integrované nebo vlastní aplikace, vytvořili jsme šité na míru prostředí úvodní, abyste si rychle založena na nové prostředí aplikace. Pokud budete postupovat systematičtěji podle jednotlivých možností, budete jsme vás provede procesem uživatelského rozhraní a ukazují, jak co nejrychleji začít s pilotní nasazení nové aplikace. 
+Po přidání aplikace, je použít předem integrované nebo vlastní aplikace, jsme vytvořili přizpůsobené prostředí rychlý start vás rychle založený na nové prostředí aplikace. Jestli začnete provádět jednotlivé možnosti systematicky, budete vás provedou uživatelského rozhraní a ukazují, jak začít využívat pilotní nasazení nové aplikace co nejrychleji. 
  
   ![Nové prostředí aplikace rychlý start](./media/active-directory-enterprise-apps-whats-new-azure-portal/07.png)
 
- Toto nové prostředí rychlé spuštění, kdykoli a pro každou aplikaci, můžete taky navštívit kliknutím na **rychlý Start** z levé navigační nabídce aplikace.
+ Tyto nové možnosti rychlého startu, kdykoli a pro každou aplikaci, můžete přejít kliknutím na **rychlý Start** z levé navigační nabídce aplikace.
 
 
-## <a name="updated-application-proxy-configuration"></a>Konfigurace proxy aktualizované aplikace
-Nyní Pojďme indikované jeden z nové aplikace, které jste přidali běží v místním prostředí a chcete integrovat se službou Azure AD.  Jedním z nástrojů nových informací o nové rozhraní konfigurace aplikací v nové službě Azure AD portál je, že rozdělením aplikace přihlašování v režimu z jeho konfigurace proxy aplikace nyní můžete snadno vystavit heslo jednotného přihlašování nebo federovaných aplikací, které běží ve vaší podnikové síti přímo do cloudu, aniž by bylo nutné vytvořit více instancí aplikace.
+## <a name="updated-application-proxy-configuration"></a>Konfigurace proxy serveru aktualizované aplikace
 
-Můžete také nakonfigurovat žádné z nové aplikace, které jste přidali pro použití se službou Azure AD Application Proxy přímo z portálu nový, včetně aplikací, které podporují nativní Windows ověřování.
+Nyní Pojďme Řekněme, jeden z nových aplikací, které jste přidali běží ve vašem místním prostředí a chcete ji integrovat s Azure AD.  Jeden z nástrojů nové věci o nové prostředí konfigurace aplikací v nové služby Azure AD portal je, že rozdělením aplikace přihlašování režimu z jeho konfigurace proxy aplikace, můžete nyní snadno vystavit heslem jednotného přihlašování nebo federovaným aplikacím které běží ve vaší podnikové síti přímo do cloudu, aniž byste museli vytvořit několik instancí aplikace.
 
-  ![Konfigurace aplikace použít možnost přihlášení integrované ověřování systému Windows](./media/active-directory-enterprise-apps-whats-new-azure-portal/08.png)
+Můžete taky nakonfigurovat některý z nové aplikace, které jste přidali pro použití se službou Azure AD Application Proxy přímo ze na novém portálu, včetně aplikací, které podporují nativní prostředí ověřování Windows.
+
+  ![Konfigurace aplikace pro použití integrovaného ověřování Windows přihlašování – možnost](./media/active-directory-enterprise-apps-whats-new-azure-portal/08.png)
  
-
-Chcete začít konfigurovat nativní aplikaci ověřování systému Windows s Proxy aplikace:
-1. Kliknutím na položku jednoho navigačního přihlašování a zvolte **integrované ověřování systému Windows** v části Nastavení přihlášení a nakonfigurujte nastavení libovolně.
-2. Nad podporuje tyto nové režimy ověřování, teď můžete také nahrát certifikáty z vlastní domény pro podporu aplikací běžících na zabezpečené koncové body v rámci vaší organizace.  
+Abyste mohli začít, konfigurace nativní aplikace ověřování Windows pomocí Proxy aplikace:
+1. Klikněte na položku navigačního jednotné přihlašování a zvolte **integrované ověřování Windows** v části nastavení přihlašování – a nakonfigurujte nastavení podle vašich představ.
+1. Nad rámec podpory těchto nových režimy ověřování, teď můžete také nahrát certifikáty z vlastních domén pro podporu aplikací běžících na zabezpečené koncové body v rámci vaší organizace.  
  
-   ![Nahrávání certifikátu pro použití s Proxy aplikace](./media/active-directory-enterprise-apps-whats-new-azure-portal/09.png)
+   ![Nahrává se certifikát, který se má použít s Proxy aplikací](./media/active-directory-enterprise-apps-whats-new-azure-portal/09.png)
 
-3. Pokud chcete nahrát nový certifikát pro vaše oblíbené místní aplikace, klikněte na **proxy aplikace** možnost z levé navigační nabídky, klikněte na tlačítko **certifikát** selektor a nahrání souboru certifikátu můžeme použít k šifrování požadavky z našich koncového bodu cloudu do vaší aplikace.
+1. Nahrát nový certifikát pro vaši aplikaci oblíbenými místními, klikněte na **proxy aplikací** z levé navigační nabídce, kliknutím na **certifikát** výběru a nahrání certifikátu soubor, který můžete použít k šifrování žádostí z naší koncového bodu cloudu pro vaši aplikaci.
 
-## <a name="advanced-federated-single-sign-on-configuration"></a>Pokročilé federované přihlašování jednotné
+## <a name="advanced-federated-single-sign-on-configuration"></a>Pokročilé federované jednotné přihlašování
 
-U těch, které používáte federovaným aplikacím dnes existuje mnoho nových funkcí v konfiguraci na základě SAML přihlášení. Abyste mohli začít teď můžete plně přizpůsobit, přidat, odebrat a mapovat existující uživatelské atributy vystaví jako deklarace identity v tokenech SAML.
+Pro ty z vás, používáte federované aplikace už existují v konfiguraci založené na SAML přihlašování – podpora řady nových funkcí. Začněte tím teď můžete plně přizpůsobit, přidat, odebrat a mapovat existující atributy uživatele vydaný jako deklarace identity v tokenech SAML.
  
-  ![Přizpůsobení atributy SAML token uživatele předaný federovaných aplikací](./media/active-directory-enterprise-apps-whats-new-azure-portal/10.png)
+  ![Přizpůsobení atributy SAML token uživatele předaný k federované aplikaci](./media/active-directory-enterprise-apps-whats-new-azure-portal/10.png)
 
+Chcete-li zkontrolovat, že si nové federované Konfigurace jednotného přihlašování:
+1. Otevřete federovaných aplikací **jednotného přihlašování** z levé navigační nabídce a ujistěte se, že "*přihlašování na základě SAML** vybraný režim. 
+1. Jednou, povolte zaškrtávací políčko **atributy uživatele** záhlaví změnit všechny atributy, které jsou zahrnuté v tokenu SAML předaný k dané aplikaci.
 
-Zkontrolujte, že se nový federovaný Konfigurace jednotného přihlašování:
-1. Otevřete federovaných aplikací **jednotného přihlašování** z levé navigační nabídku a ujistěte se, že '*na základě SAML přihlašování** vybrat režim. 
-2. Existuje, povolit políčka pod jednou **uživatelské atributy** záhlaví upravit všechny atributy, které jsou součástí tokenu SAML předaný tuto aplikaci.
-
-Můžete můžete také vytvořit, výměny a spravovat certifikáty používané pro federované jednotné přihlašování, jakož i upravit, který získá upozorněni, když váš certifikát již brzy vyprší. Zobrazí se tyto nové možnosti v části **certifikáty** záhlaví na stejné jeden přihlašování v podokně.
+Vám může také vytvoření, změna a správa certifikátů pro federované jednotné přihlašování, jakož i upravit, který načte oznámení, když vašeho certifikátu brzy vyprší platnost. Zobrazí se vám tyto nové možnosti v části **certifikáty** nadpis na jednotné přihlašování – podokno.
  
-  ![Vytvoření nového certifikátu, přizpůsobení vypršení platnosti oznámení e-mailu a možnosti podepsání certifikátu](./media/active-directory-enterprise-apps-whats-new-azure-portal/11.png)
+  ![Vytváří se nový certifikát, přizpůsobení vypršení platnosti oznámení e-mailu a certifikátu možnosti podpisu](./media/active-directory-enterprise-apps-whats-new-azure-portal/11.png)
 
-### <a name="relay-state-parameter"></a>Parametr předávání stavu
-Nakonec jsme jste také rozšířit sadu parametrů SAML URL podporujeme zahrnout **parametru State předávání**, což je stránce uživatelům budou zobrazovat uvnitř federovaných aplikací po dokončení přihlášení. Toto je užitečné nastavení konfigurace, pokud chcete uživatelům odeslat na konkrétní místo v aplikaci je nelze vrátit probíhající rychle.
+### <a name="relay-state-parameter"></a>Parametr stav přenosu
+Nakonec jsme jsme také rozšířit sadu parametrů adresy URL SAML podporujeme zahrnout **stav přenosu parametr**, což je stránka uživatele přesměrováni na uvnitř federovaných aplikací po dokončení přihlášení. To je užitečné nastavení můžete konfigurovat, pokud chcete uživatelům odeslat na konkrétní místo v rámci aplikace, aby je probíhající rychle.
 
-  ![Nastavení parametru SAML předávání stavu](./media/active-directory-enterprise-apps-whats-new-azure-portal/12.png)
+  ![Nastavení parametru stav přenosu SAML](./media/active-directory-enterprise-apps-whats-new-azure-portal/12.png)
  
-**Nastavení parametru stavu předávání**:
+**Nastavení parametru state relay**:
 
-1. Povolit **zobrazit upřesňující nastavení adresy URL** políčko v části **domény a adresy URL** záhlaví na jednotné přihlašování v podokně Konfigurace. 
-2. Sadu nové adrese URL vstupní zobrazovat pole, která vám umožní nastavit tento parametr a další nastavení adresy URL SAML.
+1. Povolit **zobrazit pokročilé nastavení URL** zaškrtávací políčko v části **domény a adresy URL** nadpis na jednotné přihlašování v podokně Konfigurace. 
+1. Zobrazí pole, které umožňují nastavit tento parametr a další nastavení SAML URL vstupní sada novou adresu URL.
 
-## <a name="bring-your-own-password-sso-applications"></a>Přineste vlastní heslo aplikace jednotného přihlašování
+## <a name="bring-your-own-password-sso-applications"></a>Přineste vlastní heslo jednotného přihlašování k aplikacím
 
-Víme, že ne každé aplikace podporuje federační okamžitě po nasazení. Může být například jeden nové aplikace, které jste přidali má vlastní přihlašovací obrazovku, kterou budou uživatelé používat uživatelské jméno a heslo pro přihlášení k aplikaci. Tyto typy aplikací můžete stále integraci s Azure AD pomocí našich **přineste si vlastní aplikace** funkci, která je nyní k dispozici, můžete nakonfigurovat v nového portálu.
+Víme, že ne každé aplikace podporuje federace předem připravené. Možná například jeden z nových aplikací, které jste přidali má vlastní přihlašovací obrazovku, která vaši uživatelé používat uživatelské jméno a heslo pro přihlášení k aplikaci. Tyto typy aplikací stále můžete integrovat s Azure AD pomocí našich **používání vlastních aplikací** funkci, která je teď můžete nakonfigurovat na novém portálu k dispozici.
  
-  ![Integrace vlastního hesla vaulting aplikací s Azure AD](./media/active-directory-enterprise-apps-whats-new-azure-portal/13.png)
+  ![Integrace vlastního hesla vaulting aplikací pomocí Azure AD](./media/active-directory-enterprise-apps-whats-new-azure-portal/13.png)
 
-**Rezervovat funkci "přineste vlastní aplikace,**:
+**Abyste se funkci 'Používání vlastních aplikací'**:
 
-1. Po nastavení jedné přihlašování v režimu pro novou vlastní aplikaci, kterou jste přidali do **založené na heslech přihlašování**, zadejte adresu URL, kde aplikace vykreslí jeho přihlašovací obrazovku a 
-2. Klikněte na **Uložit**.  
-2. Jakmile to uděláte, jsme budete automaticky scrape tuto adresu URL pro uživatelské jméno a heslo vstupní pole a vám umožní používat Azure AD bezpečně přenést hesla k dané aplikaci pomocí rozšíření přístup k panelu prohlížeče.
+1. Po nastavení jednotné přihlašování režim pro novou vlastní aplikaci, která jste přidali do **přihlašování na základě heslo**, zadejte adresu URL, kde aplikace zobrazí jeho obrazovka pro přihlášení a 
+1. Klikněte na **Uložit**.  
+1. Jakmile to uděláte, jsme budete automaticky scrape tuto adresu URL k zadání uživatelského jména a hesla vstupní pole a umožní vám umožňuje bezpečně přenášet hesla k dané aplikaci pomocí rozšíření prohlížeče přístupového panelu Azure AD.
 
-## <a name="configure-self-service-application-access"></a>Konfigurace přístupu k aplikaci Samoobslužné služby
+## <a name="configure-self-service-application-access"></a>Konfigurace samoobslužného přístupu k aplikacím
 
-Po přidání spoustu nové aplikace, možná budete chtít povolit uživatelům procházet a přidejte k vlastní panelů přístup k těmto aplikacím, aniž by museli jste Nepokoušejte se jako správce. Nyní tato nejnovější verze, můžete nakonfigurovat a spravovat přístup k aplikaci Samoobslužné služby přímo z nového portálu.
+Po přidání spoustu nových aplikací, možná budete chtít povolit uživatelům procházet a tyto aplikace přidat do své vlastní přístupových panelech, aniž byste museli jste Nepokoušejte se jako správce. Nyní v této nejnovější verzi, můžete nakonfigurovat a spravovat samoobslužného přístupu k aplikacím přímo z nového portálu.
 
-  ![Konfigurace samoobslužné služby aplikace přístup k zadání hesla aplikace jednotného přihlašování](./media/active-directory-enterprise-apps-whats-new-azure-portal/14.png)
+  ![Konfigurace samoobslužného přístupu k aplikacím s heslem jednotného přihlašování aplikace](./media/active-directory-enterprise-apps-whats-new-azure-portal/14.png)
  
-**Konfigurovat a spravovat přístup k aplikaci Samoobslužné služby**:
+**Ke konfiguraci a správě samoobslužného přístupu k aplikacím**:
 
-1. Chcete-li začít, můžete vybrat **samoobslužné služby** levé navigační nabídku a nastavit možnost z aplikace **povolit uživatelům žádat o přístup k této aplikaci?** možnost k '**Ano**'. 
-2. To vám umožní nakonfigurovat, kdo může schválit přístup k této aplikaci a kteří uživatelé samoobslužné služby skupiny budou přidáni. Kromě toho pokud aplikace je nakonfigurovaná pro heslo jednotného přihlašování, se také zobrazí jinou možnost, která umožňuje volitelně povolit tyto schvalovatelů spravovat hesla přiřazené k aplikaci.
+1. Abyste mohli začít, můžete vybrat **samoobslužné** levé navigační nabídce a nastavte možnost z aplikace **povolit uživatelům žádat o přístup k této aplikaci?** možnost "**Ano**". 
+1. To vám umožní nakonfigurovat, kdo může schvalovat přístup k této aplikaci a které samoobslužnými uživateli skupina bude přidána. Kromě toho pokud aplikace je nakonfigurovaná pro heslo jednotného přihlašování, uvidíte také další možnost, která umožňuje volitelně povolit tyto schvalovatele, které chcete spravovat hesla přiřazené k aplikaci.
 
 ## <a name="feedback"></a>Váš názor
 
-Věříme, že je jako vylepšenou prostředí Azure AD. Prosím udržovat zpětnou vazbu, než dorazí! POST vaše názory a návrhy pro zlepšení **portál pro správu** části našich [fóru pro zpětnou vazbu](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal).  Jsme se vzrušení o vytváření nástrojů nové vlastní položky každý den a použijte vaše pokyny na obrazec a definovat, co se máme zaměřit příště.
+Věříme, že jste například vylepšenou prostředí Azure AD. Nechte prosím už zpětnou vazbu! Publikovat vaše názory a návrhy pro zlepšení **portál pro správu** část naší [fóru pro zpětnou vazbu](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal).  Jsme už nadšený, vytváření nových co skvělého každý den a používat vaše pokyny na obrazec a definovat, co se máme zaměřit příště.
 
 ## <a name="next-steps"></a>Další postup
 
-Další podrobnosti najdete v tématu [Správa aplikací pomocí služby Azure Active Directory](manage-apps/what-is-application-management.md).
+Další podrobnosti najdete v tématu [Správa aplikací pomocí Azure Active Directory](manage-apps/what-is-application-management.md).
 
 
 

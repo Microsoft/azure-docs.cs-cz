@@ -1,26 +1,19 @@
 ---
 title: Azure Data Box brány omezí | Dokumentace Microsoftu
 description: Popisuje omezení systému a doporučené velikosti pro Microsoft Azure Data Box Gateway.
-services: databox-edge-gateway
-documentationcenter: NA
+services: databox
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
-ms.service: databox-edge-gateway
-ms.devlang: NA
+ms.service: databox
+ms.subservice: gateway
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
 ms.date: 10/03/2018
 ms.author: alkohli
-ms.custom: ''
-ms.openlocfilehash: 946c045407b150a923d0067776bf80cbfab54c67
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 60078845c98f2e241b00e184303dce0c860629e9
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268034"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49164429"
 ---
 # <a name="azure-data-box-gateway-limits-preview"></a>Omezení pro Azure Data Box brány (Preview)
 

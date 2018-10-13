@@ -3,18 +3,18 @@ title: Informace o službách Cognitive Services řeči SDK
 description: Přehled sady SDK k dispozici pro službu rozpoznávání řeči.
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: v-jerkin
+author: erhopf
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 09/24/2018
-ms.author: v-jerkin
-ms.openlocfilehash: c300c97691cbdd30a58342eafaf6b559a298c1db
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.author: erhopf
+ms.openlocfilehash: a8e23e971cc0186317a291ecbdd010fc2a3ae1e8
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815203"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167592"
 ---
 # <a name="about-the-cognitive-services-speech-sdk"></a>Informace o službách Cognitive Services řeči SDK
 

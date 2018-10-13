@@ -1,6 +1,6 @@
 ---
-title: Přidat navýšením průběžné řešení vzdálené monitorování uživatelské rozhraní – Azure | Dokumentace Microsoftu
-description: Tento článek ukazuje, jak přidat nové předem za běhu na stránce v vzdálené monitorování řešení akcelerátoru webového uživatelského rozhraní.
+title: Přidání vyskakovacího informačního rámečku do řešení vzdálené monitorování uživatelské rozhraní – Azure | Dokumentace Microsoftu
+description: Tento článek ukazuje, jak přidat nový informační rámeček na stránce v vzdálené monitorování řešení akcelerátoru webového uživatelského rozhraní.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -8,21 +8,21 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
-ms.openlocfilehash: 9ba58ca887332d2ea224320951b25031cacbef0d
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: ccb1a7ff6abbc68f42c7632a8ba7a392b2c48794
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094566"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167422"
 ---
-# <a name="add-a-custom-fly-out-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Přidat vlastní průběžné out do vzdáleného monitorování řešení akcelerátoru webového uživatelského rozhraní
+# <a name="add-a-custom-flyout-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Přidat vlastní rozevírací nabídka pro vzdálené monitorování řešení akcelerátoru webového uživatelského rozhraní
 
-Tento článek ukazuje, jak přidat nové předem za běhu na stránku ve vzdálené monitorování řešení akcelerátoru webového uživatelského rozhraní. Tento článek popisuje:
+Tento článek ukazuje, jak přidat nový informační rámeček na stránku ve vzdálené monitorování řešení akcelerátoru webového uživatelského rozhraní. Tento článek popisuje:
 
 - Jak připravit místní vývojové prostředí.
-- Postup přidání nové průběžné mimo stránku ve webovém uživatelském rozhraní.
+- Jak přidat nový informační rámeček stránku ve webovém uživatelském rozhraní.
 
-V příkladu za běhu na více instancí v tomto článku se zobrazí na stránce s mřížkou, který [přidat vlastní mřížky do vzdáleného monitorování řešení akcelerátoru webového uživatelského rozhraní](iot-accelerators-remote-monitoring-customize-grid.md) článek ukazuje, jak přidat.
+Na stránce s mřížkou zobrazí informační rámeček příklad v tomto článku, který [přidat vlastní mřížky do vzdáleného monitorování řešení akcelerátoru webového uživatelského rozhraní](iot-accelerators-remote-monitoring-customize-grid.md) článek ukazuje, jak přidat.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -39,27 +39,27 @@ Než budete pokračovat, by měl proveďte kroky v následujících článcích:
 - [Přidat vlastní služby do vzdáleného monitorování řešení akcelerátoru webového uživatelského rozhraní](iot-accelerators-remote-monitoring-customize-service.md)
 - [Přidat vlastní mřížky do vzdáleného monitorování řešení akcelerátoru webového uživatelského rozhraní](iot-accelerators-remote-monitoring-customize-grid.md)
 
-## <a name="add-a-fly-out"></a>Přidat za běhu out
+## <a name="add-a-flyout"></a>Přidání vyskakovacího informačního rámečku
 
-Přidat za běhu out do webového uživatelského rozhraní, musíte přidat zdrojové soubory, které definují průběžné out a změnit některé existující soubory ve webovém uživatelském rozhraní používající nové komponenty.
+Přidání vyskakovacího informačního rámečku do webového uživatelského rozhraní, budete muset přidat zdrojové soubory, které definují informační rámeček a změnit některé existující soubory ve webovém uživatelském rozhraní používající nové komponenty.
 
-### <a name="add-the-new-files-that-define-the-fly-out"></a>Přidat nové soubory, které definují mimo za běhu
+### <a name="add-the-new-files-that-define-the-flyout"></a>Přidat nové soubory, které definují informační rámeček
 
-Abyste mohli začít, **src/návod/součásti/stránek/pageWithFlyout/kontextové nabídky/exampleFlyout** složka obsahuje soubory, které definují průběžné out:
+Abyste mohli začít, **src/návod/součásti/stránek/pageWithFlyout/kontextové nabídky/exampleFlyout** složka obsahuje soubory, které definují vyskakovacího informačního rámečku:
 
 **exampleFlyout.container.js**
 
-[!code-javascript[Example fly-out container](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithFlyout/flyouts/exampleFlyout/exampleFlyout.container.js?name=flyoutcontainer "Example fly-out container")]
+[!code-javascript[Example flyout container](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithFlyout/flyouts/exampleFlyout/exampleFlyout.container.js?name=flyoutcontainer "Example flyout container")]
 
 **exampleFlyout.js**
 
-[!code-javascript[Example fly-out](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithFlyout/flyouts/exampleFlyout/exampleFlyout.js?name=flyout "Example fly-out")]
+[!code-javascript[Example flyout](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithFlyout/flyouts/exampleFlyout/exampleFlyout.js?name=flyout "Example flyout")]
 
 Kopírovat **src/návod/součásti/stránek/pageWithFlyout/kontextové nabídky** složku **src/součásti/stránek/příklad** složky.
 
-### <a name="add-the-fly-out-to-the-page"></a>Přidat vzdálené za běhu na stránku
+### <a name="add-the-flyout-to-the-page"></a>Přidat na stránku informační rámeček
 
-Upravit **src/components/pages/example/basicPage.js** přidat vzdálené za běhu.
+Upravit **src/components/pages/example/basicPage.js** přidáte informační rámeček.
 
 Přidat **Btn** pro importy z **součásti/shared** a přidejte importy pro **svgs** a **ExampleFlyoutContainer**:
 
@@ -104,7 +104,7 @@ Přidejte následující **const** definice **vykreslení** funkce:
     const isExampleFlyoutOpen = openFlyoutName === 'example';
 ```
 
-Přidání tlačítka pro otevření předem za běhu do kontextové nabídky:
+Přidání tlačítka pro otevření informační rámeček do kontextové nabídky:
 
 ```js
       <ContextMenu key="context-menu">
@@ -113,7 +113,7 @@ Přidání tlačítka pro otevření předem za běhu do kontextové nabídky:
       </ContextMenu>,
 ```
 
-Přidáte nějaký text a rozevírací kontejner pro obsah stránky:
+Přidejte nějaký text a kontejneru informační rámeček obsahu stránky:
 
 ```js
       <PageContent className="basic-page-container" key="page-content">
@@ -125,7 +125,7 @@ Přidáte nějaký text a rozevírací kontejner pro obsah stránky:
       </PageContent>
 ```
 
-## <a name="test-the-fly-out"></a>Test za běhu out
+## <a name="test-the-flyout"></a>Testování informační rámeček
 
 Pokud webové uživatelské rozhraní není spuštěná místně, spusťte následující příkaz v kořenové složce místní kopie úložiště:
 
@@ -139,6 +139,6 @@ Předchozí příkaz se spustí místně na uživatelské rozhraní [ http://loc
 
 V tomto článku jste se dozvěděli o prostředky dostupné pro přidání nebo přizpůsobit stránky ve webovém uživatelském rozhraní v akcelerátoru řešení vzdáleného monitorování.
 
-Nyní jste definovali za běhu na více instancí na stránce, dalším krokem je [přidat ve vzdálené monitorování řešení akcelerátoru webového uživatelského rozhraní na řídicí panel](iot-accelerators-remote-monitoring-customize-panel.md).
+Nyní jste definovali vyskakovacího informačního rámečku na stránce, dalším krokem je [přidat ve vzdálené monitorování řešení akcelerátoru webového uživatelského rozhraní na řídicí panel](iot-accelerators-remote-monitoring-customize-panel.md).
 
 Další koncepční informace o akcelerátoru řešení vzdáleného monitorování najdete v tématu [architektura vzdáleného monitorování](iot-accelerators-remote-monitoring-sample-walkthrough.md).

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 3565793347a8c9704e51e893e5aa916cf54cab8e
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: b53be5a5683ca8fcc8760a2d4cb7e766904a44a3
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115569"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167660"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -135,6 +135,21 @@ Chcete-li vyřešit tento problém, proveďte následující kroky:
 2. Ověřte, zda je správně nakonfigurované nastavení brány Firewall a proxy serveru:
     - Pokud je server za bránou firewall, ověřte, že je povolené odchozím portu 443. Pokud brána firewall omezuje provoz na konkrétní domény, zkontrolujte domén uvedené v bráně Firewall [dokumentaci](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall) jsou k dispozici.
     - Pokud je za proxy server, nakonfigurujte nastavení proxy celý počítač nebo konkrétní aplikace podle postupu v proxy serveru [dokumentaci](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy).
+
+<a id="endpoint-noactivity-sync"></a>**Koncový bod serveru je ve stavu stavu "Žádná aktivita" a "Online" je stav serveru v okně registrované servery**  
+
+Stav stavu koncového bodu serveru "Žádná aktivita" znamená, že koncový bod serveru nebyla zaznamenána aktivita synchronizace za poslední dvě hodiny.
+
+Koncový bod serveru nemůže protokolu aktivitu synchronizace z následujících důvodů:
+
+- Server dosáhl maximální počet souběžných synchronizace relací. Azure File Sync podporuje aktuálně 2 activesyncu relací na procesor nebo maximálně 8 active sync relace na serveru.
+
+- Server má aktivní relace synchronizace stínové kopie svazku (SnapshotSync). Při aktivním pro koncový bod serveru relaci synchronizace VSS další koncové body serveru na serveru nelze spustit relaci počáteční synchronizace až do dokončení stínové kopie svazku relace synchronizace.
+
+Aktuální aktivitu synchronizace na serveru, najdete v části [jak sledovat průběh aktuální relace synchronizace?](#how-do-i-monitor-the-progress-of-a-current-sync-session).
+
+> [!Note]  
+> Je-li stav serveru v okně registrované servery "Se zobrazí v režimu Offline", proveďte kroky popsané v [koncový bod serveru je ve stavu stavu "Žádná aktivita" nebo "Čeká na vyřízení" a stavu serveru v okně registrované servery je "Se zobrazí v režimu offline" ](#server-endpoint-noactivity) oddílu.
 
 ## <a name="sync"></a>Sync
 <a id="afs-change-detection"></a>**Když jsem vytvořil soubor přímo v mé sdílené složky Azure přes protokol SMB nebo prostřednictvím portálu, jak dlouho trvá synchronizaci pro servery ve skupině synchronizace souboru?**  

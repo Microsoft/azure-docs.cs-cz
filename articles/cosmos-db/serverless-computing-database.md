@@ -9,16 +9,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: b7908f9f9aef51857f0ffb07102e1df245b7a259
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: c183bbe2c20bdc1772160cbbd8260dece0b6eb54
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064451"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309497"
 ---
-# <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Azure Cosmos DB: Databáze bez serveru výpočetní prostředí s využitím Azure Functions
+# <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Výpočetní prostředí bez serveru databázi s využitím služby Azure Cosmos DB a Azure Functions
 
-Architektura bez serveru se točí kolem schopnost zaměřit na jednotlivé části logiky, které jsou opakovatelným a bezstavové. Tyto údaje vyžadují žádnou správu infrastruktury a jejich spotřebovávat prostředky jenom pro sekundy a milisekundy, mohou být spuštěny pro. V jádru služby bez serveru výpočetní přesun jsou funkce, které jsou k dispozici v ekosystému Azure podle [Azure Functions](https://azure.microsoft.com/services/functions).
+Architektura bez serveru se točí kolem schopnost zaměřit na jednotlivé části logiky, které jsou opakovatelným a bezstavové. Tyto údaje vyžadují žádnou správu infrastruktury a jejich spotřebovávat prostředky jenom pro sekundy a milisekundy, mohou být spuštěny pro. V jádru služby bez serveru výpočetní přesun jsou funkce, které jsou k dispozici v ekosystému Azure podle [Azure Functions](https://azure.microsoft.com/services/functions). Další informace o jiných prostředích provádění bez serveru v Azure najdete v tématu [bez serveru v Azure](https://azure.microsoft.com/solutions/serverless/) stránky. 
 
 Díky nativní integraci mezi službami [služby Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db) a Azure Functions můžete vytvořit aktivační procedury databáze, vstupní vazby a výstupní vazby přímo ze svého účtu Azure Cosmos DB. Pomocí Azure Functions a Azure Cosmos DB, můžete vytvořit a nasadit založený na událostech aplikace bez serveru s přístupem s nízkou latencí k velké množství dat pro globální uživatelské základny.
 

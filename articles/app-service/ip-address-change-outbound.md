@@ -10,12 +10,12 @@ ms.workload: web
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: cephalin
-ms.openlocfilehash: dfc0a13c1804d8ea74c78a61bfa85e9f5bdd1685
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 2355fa5e3e7fd83b5d9f22d87c19f8152659fc97
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42819066"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309339"
 ---
 # <a name="how-to-prepare-for-an-outbound-ip-address-change"></a>Postup přípravy na změnu odchozí IP adresy
 
@@ -47,4 +47,4 @@ Nové odchozí IP adresy se zobrazí na portálu předtím, než se projeví. P�
 
 ## <a name="next-steps"></a>Další postup
 
-Tento článek vysvětlil, jak připravit pro změnu IP adresy, který byl inicializován nástrojem Azure. Další informace o IP adresách v Azure App Service najdete v tématu [odchozí a odchozích IP adres ve službě Azure App Service](app-service-ip-addresses.md).
+Tento článek vysvětlil, jak připravit pro změnu IP adresy, který byl inicializován nástrojem Azure. Další informace o IP adresách v Azure App Service najdete v tématu [příchozí a odchozí IP adresy ve službě Azure App Service](app-service-ip-addresses.md).

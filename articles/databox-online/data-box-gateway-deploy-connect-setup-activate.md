@@ -1,26 +1,19 @@
 ---
 title: Připojte se ke konfiguraci a aktivovat Azure Data Box brány na webu Azure portal | Dokumentace Microsoftu
 description: Třetí kurz, abyste mohli nasadit bránu pole dat dává pokyn k připojení a nastavení a aktivaci vašeho virtuálního zařízení.
-services: databox-edge-gateway
-documentationcenter: NA
+services: databox
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
-ms.service: databox-edge-gateway
-ms.devlang: NA
+ms.service: databox
+ms.subservice: gateway
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/27/2018
 ms.author: alkohli
-ms.custom: ''
-ms.openlocfilehash: 77ccc6ebbb48ab3d7ce22d6c593bd62aa8dec3ac
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: 2126871472b044f9b8c0df99c7cb14df348eab0e
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419471"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166742"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway-preview"></a>Kurz: Připojení, nastavit, aktivovat Azure Data Box Gateway (Preview) 
 
@@ -40,7 +33,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 
 > [!IMPORTANT]
-> - Brána pole dat je ve verzi preview. Před objednáním a nasazením tohoto řešení si přečtěte [podmínky užívání pro předběžné verze systému Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
+> - Data Box Gateway je ve verzi Preview. Před objednáním a nasazením tohoto řešení si přečtěte [podmínky užívání pro předběžné verze systému Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -88,7 +81,7 @@ Teď jste na **řídicí panel** vašeho zařízení.
    
     Při konfiguraci nastavení sítě, mějte následující:
 
-    - Pokud DHCP je povolena ve vašem prostředí, se automaticky nakonfiguruje síťová rozhraní. Proto IP adresu, podsíť, brána a DNS jsou automaticky přiřazeny.
+    - Pokud je ve vašem prostředí povolený protokol DHCP, síťová rozhraní se nakonfigurují automaticky. Proto IP adresu, podsíť, brána a DNS jsou automaticky přiřazeny.
     - Pokud není povolený DHCP, můžete přiřadit statické IP adresy v případě potřeby.
     - Síťové rozhraní můžete nakonfigurovat jako pro protokol IPv4.
    
@@ -127,7 +120,7 @@ Teď jste na **řídicí panel** vašeho zařízení.
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste se dozvěděli o tématech brána pole dat, jako:
+V tomto kurzu jste se dozvěděli o tématech spojených se službou Data Box Gateway, jako jsou:
 
 > [!div class="checklist"]
 > * Připojte se k virtuálnímu zařízení

@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: 56df09f461458071093088159d3b468755b0e4ad
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 71d8bfa116fd4d0e824d80da26df7271121a595c
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434938"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311367"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Povolení služby Enterprise State Roaming v Azure Active Directory
 Enterprise State Roaming je k dispozici pro všechny organizace s Azure AD Premium nebo Enterprise Mobility + Security (EMS) licence. Další informace o tom, jak získat předplatné Azure AD, najdete v článku [stránce produktu Azure AD](https://azure.microsoft.com/services/active-directory).
@@ -32,9 +32,9 @@ Když povolíte Enterprise State Roaming, vaše organizace je automaticky uděle
 
 1. Přihlaste se k [centrum pro správu Azure AD](https://aad.portal.azure.com/).
 
-2. Vyberte **Azure Active Directory** &gt; **zařízení** &gt; **Enterprise State Roaming**.
+1. Vyberte **Azure Active Directory** &gt; **zařízení** &gt; **Enterprise State Roaming**.
 
-3. Vyberte **uživatelé můžou synchronizovat nastavení a data aplikací na zařízeních**. Další informace najdete v tématu [jak nakonfigurovat nastavení zařízení](https://docs.microsoft.com/azure/active-directory/device-management-azure-portal).
+1. Vyberte **uživatelé můžou synchronizovat nastavení a data aplikací na zařízeních**. Další informace najdete v tématu [jak nakonfigurovat nastavení zařízení](https://docs.microsoft.com/azure/active-directory/device-management-azure-portal).
   
   ![Obrázek nastavení zařízení s názvem uživatelé můžou synchronizovat nastavení a data aplikací na zařízeních](./media/active-directory-windows-enterprise-state-roaming-enable/device-settings.png)
   
@@ -57,15 +57,15 @@ Postupujte podle těchto kroků pro zobrazení zprávy o stavu synchronizace za�
 
 1. Přihlaste se k [centrum pro správu Azure AD](https://aad.portal.azure.com/).
 
-2. Vyberte **Azure Active Directory** &gt; **uživatelé** &gt; **všichni uživatelé**.
+1. Vyberte **Azure Active Directory** &gt; **uživatelé** &gt; **všichni uživatelé**.
 
-3. Vyberte uživatele a pak vyberte **zařízení**.
+1. Vyberte uživatele a pak vyberte **zařízení**.
 
-4. V části **zobrazit**vyberte **zařízení, která synchronizují nastavení a data aplikací** zobrazíte stav synchronizace.
+1. V části **zobrazit**vyberte **zařízení, která synchronizují nastavení a data aplikací** zobrazíte stav synchronizace.
   
   ![Obrázek nastavení synchronizace dat zařízení](./media/active-directory-windows-enterprise-state-roaming-enable/sync-status.png)
   
-5. Pokud zařízení, která synchronizují pro tohoto uživatele se zobrazí zařízení, jak je znázorněno zde.
+1. Pokud zařízení, která synchronizují pro tohoto uživatele se zobrazí zařízení, jak je znázorněno zde.
   
   ![Obrázek zařízení synchronizace úložiště se sloupcovou strukturou dat](./media/active-directory-windows-enterprise-state-roaming-enable/device-status-row.png)
 

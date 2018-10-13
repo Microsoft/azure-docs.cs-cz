@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: e167a5706a50c605a0f8741b866a7dcfe7f8feec
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 1b76bfded6562f61a0a9f4a870a18a1fff71bc6a
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586270"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309729"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>Principy a použití dvojčat modulů ve službě IoT Hub
 

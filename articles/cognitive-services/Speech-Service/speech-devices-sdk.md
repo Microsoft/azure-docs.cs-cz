@@ -3,18 +3,18 @@ title: Informace o zařízeních řeči SDK
 description: Iseznamte se sadou SDK pro řeč zařízení.
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: v-jerkin
+author: erhopf
 ms.service: cognitive-services
 ms.component: speech
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-jerkin
-ms.openlocfilehash: a480226510d3b477d3e8b5e93cf276c00f285f3a
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.author: erhopf
+ms.openlocfilehash: ba91d5fd556cdc189f6303ac216c8fdd9495c74b
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886837"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165416"
 ---
 # <a name="about-the-speech-devices-sdk-preview"></a>Informace o zařízeních řeči SDK (Preview)
 

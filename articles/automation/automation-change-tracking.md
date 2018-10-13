@@ -6,16 +6,16 @@ ms.service: automation
 ms.component: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 08/31/2018
+ms.date: 10/12/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 713c0f676067cb32a84361dd7801031295e2244f
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 2678b9a1b80b1c9de6f1b554ce43bcd4f2dd5d50
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634434"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166997"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Sledování změn ve vašem prostředí pomocí řešení Change Tracking
 
@@ -224,6 +224,17 @@ Agent sleduje pouze změny, tím se optimalizuje výkon agenta. Tím, že nastav
 |&nbsp;&nbsp;&nbsp;&nbsp;Monitoruje seznam známých nebo běžně používaných systémové knihovny DLL; Tento systém zabraňuje lidé zneužití oprávnění adresáře slabé aplikace přetažením v trojský kůň verze systémové knihovny DLL.|
 > |**Podstrom HKEY\_místní\_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Monitoruje seznam balíčků může přijímat oznámení událostí z přihlášení do systému Windows, model podpory interaktivní přihlášení pro operační systém Windows.|
+
+## <a name="network-requirements"></a>Síťové požadavky
+
+Tyto adresy jsou požadovány speciálně pro řešení Change Tracking. Komunikace na tyto adresy se provádí přes port 443.
+
+|Veřejné Azure  |Azure Government  |
+|---------|---------|
+|*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
+|*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
+|*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
+|*.azure-automation.net|*.Azure-automation.us|
 
 ## <a name="use-change-tracking"></a>Pomocí řešení Change Tracking
 

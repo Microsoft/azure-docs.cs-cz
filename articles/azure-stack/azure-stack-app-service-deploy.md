@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: anwestg
-ms.openlocfilehash: 9f584213a65b9f2408d4ca2a06108cf18222376d
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 08f08d926a9e27e421ff8db46051d8a1e7229041
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268795"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166878"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Přidání poskytovatele prostředků App Service do služby Azure Stack
 
@@ -130,7 +130,7 @@ Nasazení poskytovatele prostředků App Service, postupujte podle těchto krok�
 11. Zadejte podrobnosti serveru SQL Server instance serveru použitý k hostování databáze poskytovatele prostředků App Service a potom vyberte **Další**. Instalační program ověří vlastnosti připojení SQL.
 
     > [!NOTE]
-    > Instalační program se pokusí o test připojení k SQL serveru, než budete pokračovat. Ale pokud nasazení provádíte do existující virtuální sítě, může tento test připojení souborů. Jsou uvedeny upozornění a výzvy, chcete-li pokračovat. Informace o SQL serveru je správná, pokračujte v nasazení.
+    > Instalační program se pokusí o test připojení k SQL serveru, než budete pokračovat. Ale pokud nasazení provádíte do existující virtuální síť, tento test připojení se nemusí podařit. Jsou uvedeny upozornění a výzvy, chcete-li pokračovat. Informace o SQL serveru je správná, pokračujte v nasazení.
     >
     > Ze služby Azure App Service v Azure stacku a vyšší 1.3 instalační program bude zkontrolujte, zda SQL Server databáze členství ve skupině na úrovni serveru SQL povoleno.  Pokud není, zobrazí výzva k následující výjimce:
     > ```sql

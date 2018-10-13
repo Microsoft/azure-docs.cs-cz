@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6127e300ee46dbd33f8537f0138963cd4e3b5cc8
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 67a987d9b491ba6813e900c293529ed677c45757
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094135"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167677"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -35,30 +35,30 @@ Následující diagram znázorňuje konceptuální zobrazení chování a toku d
 
 ![Proces správy aktualizací](media/automation-update-management/update-mgmt-updateworkflow.png)
 
-Správa aktualizací umožňuje nativně připojit počítače v několika předplatných ve stejném tenantovi. Ke správě počítačů v jiném tenantovi, musíte připojit jako [počítače mimo Azure](automation-onboard-solutions-from-automation-account.md#onboard-a-non-azure-machine). 
+Správa aktualizací umožňuje nativně připojit počítače v několika předplatných ve stejném tenantovi. Ke správě počítačů v jiném tenantovi, musíte připojit jako [počítače mimo Azure](automation-onboard-solutions-from-automation-account.md#onboard-a-non-azure-machine).
 
-Až CVE vydání, trvá 2 – 3 hodiny pro opravu se zobrazí pro počítače s Linuxem pro posouzení.  U počítačů s Windows trvá 12 až 15 hodin pro opravu zobrazení pro posouzení po byla uvolněna.
+Až CVE vydání, trvá 2 – 3 hodiny pro opravu se zobrazí pro počítače s Linuxem pro posouzení.  Pro počítače s Windows trvá 12 až 15 hodin pro opravu zobrazení pro posouzení po byla uvolněna.
 
-Jakmile počítač provede kontrolu kompatibility aktualizací, agent předává informace hromadné ke službě Azure Log Analytics. Na počítači s Windows se kontrola dodržování předpisů ve výchozím nastavení provádí každých 12 hodin.
+Po dokončení kontroly dodržování předpisů pro aktualizace do počítače agenta předává informace hromadné ke službě Azure Log Analytics. Na počítači s Windows je spuštěný kontroly dodržování předpisů každých 12 hodin ve výchozím nastavení.
 
 Mimo plán kontrol dodržování předpisů pro aktualizace, zahájí se kontrola v rámci 15 minut v případě restartování agenta MMA, před instalací aktualizací a po instalaci aktualizace.
 
 Pro počítač s Linuxem se kontrola dodržování předpisů ve výchozím nastavení provádí každé tři hodiny. Pokud restartování agenta MMA, kontroly dodržování předpisů je zahájeno do 15 minut.
 
-Řešení podá zprávu o aktuálnosti počítače podle jakým zdrojem je nakonfigurované na synchronizaci se službou. Pokud počítač Windows je nakonfigurovaný tak, že sestavy do služby WSUS, podle toho, když WSUS poslední synchronizaci se službou Microsoft Update, výsledky mohou lišit od co ukazuje Microsoft Updates. Toto je stejná pro počítače s Linuxem, které jsou nakonfigurované k ukládání dat do místního úložiště namísto do veřejného úložiště.
+Řešení podá zprávu o aktuálnosti počítače podle jakým zdrojem je nakonfigurované na synchronizaci se službou. Pokud počítač Windows je nakonfigurovaný tak, že sestavy do služby WSUS, podle toho, když WSUS poslední synchronizaci se službou Microsoft Update, výsledky mohou lišit od co ukazuje Microsoft Updates. Toto chování je stejná pro počítače s Linuxem, které jsou nakonfigurované k ukládání dat do místního úložiště namísto do veřejného úložiště.
 
 > [!NOTE]
 > Správně sestavy ve službě správy aktualizací vyžaduje určitých adres URL a portů, aby byla povolená. Další informace o těchto požadavcích najdete v tématu [sítě plánování pro hybridní pracovní procesy](automation-hybrid-runbook-worker.md#network-planning).
 
 Na počítače, které vyžadují aktualizace softwaru, můžete tyto aktualizace nasadit a nainstalovat tak, že vytvoříte plánované nasazení. Aktualizace klasifikované jako *volitelné* nejsou zahrnuté do oboru nasazení pro počítače s Windows. Pouze požadované aktualizace jsou součástí rozsahu nasazení. 
 
-Plánované nasazení definuje, které cílové počítače obdrží použitelné aktualizace, buď tak, že počítače explicitně zadáte, nebo tak, že vyberete [skupinu počítačů](../log-analytics/log-analytics-computer-groups.md) , který je založen na prohledávání protokolů konkrétní sady počítačů. Zadáte také plán pro schválení a vyhrazení určitou dobu, během které se můžou aktualizace instalovat.
+Plánované nasazení definuje, které cílové počítače obdrží použitelné aktualizace, buď tak, že počítače explicitně zadáte, nebo tak, že vyberete [skupinu počítačů](../log-analytics/log-analytics-computer-groups.md) , který je založen na prohledávání protokolů konkrétní sady počítačů. Zadáte také plán pro schválení a nastavení určitou dobu, během které se můžou aktualizace instalovat.
 
-Aktualizace se instalují podle runbooků ve službě Azure Automation. Nelze zobrazit tyto sady runbook a runbook nevyžadují žádnou konfiguraci. Při vytvoření nasazení aktualizace nasazení aktualizace vytvoří plán, který se spustí hlavní runbook aktualizace v zadanou dobu pro zahrnuté počítače. Hlavní runbook spouští podřízený runbook na každém agentovi provést instalaci požadovaných aktualizací.
+Aktualizace se instalují podle runbooků ve službě Azure Automation. Nelze zobrazit tyto sady runbook a runbook nevyžadují žádnou konfiguraci. Při vytvoření nasazení aktualizace nasazení aktualizace vytvoří plán, který se spustí hlavní runbook aktualizace v zadanou dobu pro zahrnuté počítače. Hlavní runbook spouští podřízený runbook na každém agentovi k instalaci požadovaných aktualizací.
 
-Datum a čas zadaný v nasazení aktualizací cílové počítače paralelně spustit nasazení. Před instalací se provádí kontrolu ověření, že se aktualizace stále vyžadují. U klientských počítačů služby WSUS Pokud nejsou aktualizace schválené ve službě WSUS, nasazení aktualizace se nezdaří.
+Datum a čas zadaný v nasazení aktualizací cílové počítače paralelně spustit nasazení. Před instalací je spuštěné ověřte, že se aktualizace stále vyžadují kontrolu. U klientských počítačů služby WSUS Pokud nejsou aktualizace schválené ve službě WSUS, nasazení aktualizace se nezdaří.
 
-Máte na počítači registrován pro správu aktualizací v několika pracovní prostory Log Analytics (vícenásobné navádění) se nepodporuje.
+Máte na počítači registrován pro správu aktualizací ve více než jeden pracovní prostory Log Analytics (vícenásobné navádění) se nepodporuje.
 
 ## <a name="clients"></a>Klienti
 
@@ -70,7 +70,7 @@ Následující tabulka uvádí seznam podporovaných operačních systémů:
 |---------|---------|
 |Windows Server 2008, Windows Server 2008 R2 RTM    | Podporuje pouze aktualizovat posouzení.         |
 |Windows Server 2008 R2 SP1 a novější     |Rozhraní .NET framework 4.5 nebo novější je povinný. ([Stáhnout rozhraní .NET Framework](/dotnet/framework/install/guide-for-developers))<br/> Vyžaduje se Windows PowerShell 4.0 nebo novější. ([Stáhnout WMF 4.0](https://www.microsoft.com/download/details.aspx?id=40855))<br/> Windows PowerShell 5.1 se doporučuje pro zvýšení spolehlivosti.  ([Stáhnout WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616))        |
-|CentOS 6 (x86/x64) a 7 (x64)      | Agenty Linux musí mít přístup k úložišti aktualizací. Podle klasifikace opravy vyžaduje "yumu" vrátit data zabezpečení, která CentOS nemá úprav.         |
+|CentOS 6 (x86/x64) a 7 (x64)      | Agenty Linux musí mít přístup k úložišti aktualizací. Podle klasifikace opravy vyžaduje "yumu" vrátit data zabezpečení, které CentOS nemá úprav.         |
 |Red Hat Enterprise 6 (x86/x64) a 7 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) a 12 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
 |Ubuntu 14.04 LTS a 16.04 LTS (x86/x64)      |Agenty Linux musí mít přístup k úložišti aktualizací.         |
@@ -92,7 +92,7 @@ Agenti Windows musí být nakonfigurován pro komunikaci se serverem WSUS nebo m
 
 #### <a name="linux"></a>Linux
 
-Pro Linux musí mít tento počítač přístup k úložišti aktualizací. Úložiště aktualizací může být privátní nebo veřejné. K interakci s Update managementem se vyžaduje protokol TLS 1.1 a TLS 1.2. Toto řešení nepodporuje agenta Log Analytics pro Linux, který je nakonfigurovaný k ukládání dat do několika pracovních prostorů Log Analytics.
+Pro Linux musí mít tento počítač přístup k úložišti aktualizací. Úložiště aktualizací může být privátní nebo veřejné. K interakci s Update managementem se vyžaduje protokol TLS 1.1 a TLS 1.2. Toto řešení nepodporuje agenta Log Analytics pro Linux, který je nakonfigurovaný k ukládání dat do více než jeden pracovní prostory Log Analytics.
 
 Informace o instalaci agenta Log Analytics pro Linux a stáhněte si nejnovější verzi najdete v tématu [agenta Operations Management Suite pro Linux](https://github.com/microsoft/oms-agent-for-linux). Informace o tom, jak nainstalovat Log Analytics agenta pro Windows najdete v tématu [Operations Management Suite Agent pro Windows](../log-analytics/log-analytics-windows-agent.md).
 
@@ -194,7 +194,7 @@ Spustit hledání v protokolu, který vrací informace o počítači, aktualizac
 
 Po aktualizace se vyhodnocuje pro všechny systémy Linux a Windows počítače ve vašem pracovním prostoru, můžete nainstalovat požadované aktualizace vytvořením *nasazení aktualizací*. Nasazení aktualizací je plánovaná instalace požadovaných aktualizací pro jeden nebo více počítačů. Zadáte datum a čas pro nasazení a počítač nebo skupinu počítačů, které chcete zahrnout do oboru nasazení. Další informace o skupinách počítačů najdete v tématu [Skupiny počítačů v Log Analytics](../log-analytics/log-analytics-computer-groups.md).
 
- Když do svého nasazení aktualizací zahrnete skupiny počítačů, členství ve skupině se vyhodnotí jenom jednou, v době vytvoření plánu. Následné změny ve skupině se neprojeví. K orientaci použijte [dynamických skupin](#using-dynamic-groups), tyto skupiny jsou vyřešené v době nasazení a jsou definované v dotazu.
+ Když do svého nasazení aktualizací zahrnete skupiny počítačů, členství ve skupině se vyhodnotí jenom jednou, v době vytvoření plánu. Následné změny ve skupině se neprojeví. K orientaci použijte [dynamické skupiny](#using-dynamic-groups), tyto skupiny jsou vyřešené v době nasazení a jsou definované v dotazu.
 
 > [!NOTE]
 > Windows virtuálních počítačů nasazených z Azure Marketplace ve výchozím nastavení jsou nastaveny na přijímání automatických aktualizací ze služby Windows Update. Toto chování se při přidání tohoto řešení nebo přidat virtuální počítače Windows do pracovního prostoru nezmění. Pokud aktualizace není aktivně spravovat pomocí tohoto řešení, použije se výchozí chování (Automatické aktualizace).
@@ -209,7 +209,7 @@ Chcete-li vytvořit nové nasazení aktualizace, vyberte **naplánovat nasazení
 | --- | --- |
 | Název |Jedinečný název pro identifikaci nasazení aktualizace. |
 |Operační systém| Linux nebo Windows|
-| Skupiny, které se aktualizace (preview)|Definování dotazu na základě kombinace předplatného, skupiny prostředků, míst a značky vytvářet dynamické skupiny virtuálních počítačů Azure má zahrnout do vašeho nasazení. Další informace najdete tady [dynamické skupiny](automation-update-management.md#using-dynamic-groups)|
+| Skupiny, které se aktualizace (preview)|Definování dotazu na základě kombinace předplatného, skupiny prostředků, míst a značky vytvářet dynamické skupiny virtuálních počítačů Azure má zahrnout do vašeho nasazení. Další informace najdete v tématu [dynamické skupiny](automation-update-management.md#using-dynamic-groups)|
 | Počítače k aktualizaci |Vyberte uložená hledání, importované skupiny, nebo vybrat počítač z rozevíracího seznamu a vyberte jednotlivé počítače. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů.</br> Další informace o různých způsobech vytváření skupin počítačů v Log Analytics najdete v tématu [Skupiny počítačů v Log Analytics](../log-analytics/log-analytics-computer-groups.md). |
 |Klasifikace aktualizací|Vyberte všechny klasifikace aktualizací, které potřebujete|
 |Zahrnout nebo vyloučit aktualizace|Tím se otevře **zahrnout/vyloučit** stránky. Aktualizace zahrnuty nebo vyloučeny jsou v samostatných kartách. Další informace o zpracování zařazení, naleznete v tématu [zahrnutí chování](automation-update-management.md#inclusion-behavior) |
@@ -273,6 +273,7 @@ Tyto adresy jsou požadovány speciálně pro správu aktualizací. Probíhá ko
 |*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
 |*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
+|*.azure-automation.net|*.Azure-automation.us|
 
 Další informace o portech, které vyžaduje, aby Hybrid Runbook Worker, naleznete v tématu [porty role Hybrid Worker](automation-hybrid-runbook-worker.md#hybrid-worker-role).
 
@@ -494,7 +495,7 @@ Update
 
 ## <a name="using-dynamic-groups"></a>Používat dynamické skupiny (preview)
 
-Správa aktualizací umožňuje cílit na dynamické skupiny virtuálních počítačů Azure pro nasazení aktualizací. Tyto skupiny jsou definované v dotazu po zahájení nasazení aktualizací, členové této skupiny jsou vyhodnocovány. Při definování dotazu následující položky lze použít společně a naplnit dynamickou skupinu
+Správa aktualizací umožňuje cílit na dynamické skupiny virtuálních počítačů Azure pro nasazení aktualizací. Tyto skupiny jsou definované v dotazu po zahájení nasazení aktualizací, členové této skupiny jsou vyhodnocovány. Při definování vašeho dotazu, následující položky lze použít společně a naplnit dynamickou skupinu
 
 * Předplatné
 * Skupiny prostředků
@@ -515,9 +516,9 @@ Zjistěte, jak integrovat do řešení pro správu pomocí nástroje System Cent
 
 ## <a name="inclusion-behavior"></a>Zahrnutí chování
 
-Zahrnutí aktualizací můžete zadat konkrétní aktualizace použít. Jsou nainstalované opravy nebo balíčky, které jsou nastavené mají být zahrnuty. Když klasifikaci je vybraná i balíčky nebo opravy jsou nastaveny mají být zahrnuty, nainstaluje se položky zahrnuté i položky, které splňují klasifikace.
+Zahrnutí aktualizací můžete zadat konkrétní aktualizace použít. Jsou nainstalované opravy nebo balíčky, které jsou zahrnuty. Při balíčky nebo opravy jsou součástí a klasifikaci je také vybrána, nainstaluje se zahrnuté položky i položky, které splňují klasifikace.
 
-Je důležité vědět, že vyloučení přepsat zahrnutí. Například pokud definujete pravidla vyloučení z `*`, pak žádné opravy nebo balíčky jsou nainstalovány jako že jsou všechny vyloučené. Pro počítače s Linuxem v případě, že balíček je součástí, ale má závislý balíček, který byl vyloučen, specifcally balíček není nainstalovaný.
+Je důležité vědět, že vyloučení přepsat zahrnutí. Například pokud definujete pravidla vyloučení z `*`, pak žádné opravy nebo balíčky jsou nainstalovány jako že jsou všechny vyloučené. Pro počítače s Linuxem v případě, že balíček je součástí, ale má závislý balíček, který byl vyloučen, že balíček není nainstalovaný.
 
 ## <a name="patch-linux-machines"></a>Počítače s Linuxem opravy
 
@@ -535,13 +536,13 @@ V Red Hat Enterprise Linux je název balíčku pro vyloučení redhat-release-se
 
 ### <a name="critical--security-patches-arent-applied"></a>Kritické / opravy zabezpečení se nepoužijí.
 
-Když nasazujete aktualizace do počítače s Linuxem, můžete vybrat klasifikace aktualizací. Tím se vyfiltrují aktualizace, které se použijí pro ty, které splňují zadaná kritéria. Tento filtr je použit místně na počítači, při nasazení aktualizace.
+Když nasazujete aktualizace do počítače s Linuxem, můžete vybrat klasifikace aktualizací. Tím se vyfiltrují aktualizace, které se použijí pro počítače, které splňují zadaná kritéria. Tento filtr je použit místně na počítači, při nasazení aktualizace.
 
 Protože Update Management se provede aktualizace rozšíření v cloudu, některé aktualizace může být označen jako v Update Management tak, že má dopad na zabezpečení, i když v místním počítači nemá těchto informací. V důsledku toho pokud použijete důležité aktualizace pro počítač s Linuxem, může existovat aktualizace, které nejsou označeny tak, že má dopad na zabezpečení, počítači a aktualizace se nepoužijí.
 
 Update Management však stále hlásit tohoto počítače, jako je nedodržují předpisy, protože obsahuje další informace o příslušné aktualizace.
 
-Nasazení aktualizací podle klasifikace aktualizací nefunguje na CentOS úprav. Pro SUSE vyberete *pouze* jiné aktualizace klasifikace může vést k některé zabezpečení aktualizuje také nainstalované Pokud aktualizace zabezpečení související s zypperu (Správce balíčků) nebo jeho závislosti jsou požadovány nejprve. Jedná se omezení zypperu. V některých případech může být potřeba znovu spustit nasazení aktualizace, ověření zkontrolujte protokol aktualizace.
+Nasazení aktualizací podle klasifikace aktualizací nebude fungovat na CentOS úprav. Pro SUSE vyberete *pouze* jiné aktualizace klasifikace může vést k některé zabezpečení aktualizuje také nainstalované Pokud aktualizace zabezpečení související s zypperu (Správce balíčků) nebo jeho závislosti jsou požadovány nejprve. Jedná se omezení zypperu. V některých případech může být potřeba znovu spustit nasazení aktualizace, ověření zkontrolujte protokol aktualizace.
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
