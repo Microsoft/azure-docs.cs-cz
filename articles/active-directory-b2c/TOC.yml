@@ -104,6 +104,8 @@ items:
         href: active-directory-b2c-custom-rest-api-netfw-secure-cert.md
     - name: Poskytovatelé OIDC/OAUTH
       items:
+      - name: Amazon
+        href: setup-amazon-custom.md
       - name: Azure AD (jeden tenant)
         href: active-directory-b2c-setup-aad-custom.md
       - name: Azure AD (více tenantů)
@@ -319,9 +321,9 @@ items:
     href: active-directory-b2c-support.md
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: 6263bc6fdaa1ae7bce80e85110e36c5c4b4ddf42
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 6bed0f5fd9710e9862529ede59e765074c779c9a
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801994"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167388"
