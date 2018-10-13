@@ -1,45 +1,41 @@
 ---
-title: Moderování videa – Content Moderator
+title: 'Rychlý start: Zkontrolujte obsah videa v jazyce C# – Content Moderator'
 titlesuffix: Azure Cognitive Services
-description: Moderování videa pomocí můžete spustit kontrolu možné obsahu pro dospělé nebo pikantního obsahu.
+description: Návod k ověření video obsah pro dospělé nebo pikantního materiál pomocí sady SDK služby Content Moderator pro jazyk C#
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 02/02/2018
+ms.date: 10/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: 9b6240ef0883e1a523c50c9b641065deb2669d53
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: cb97eebcf398137653988ab3b6ef663f987fb57a
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226531"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310500"
 ---
-# <a name="video-moderation"></a>Moderování videa
+# <a name="quickstart-check-video-content-in-c"></a>Rychlý start: Zkontrolujte obsah videa v jazyce C#
 
-V současné době online prohlížeče generovat miliardy zobrazení videa napříč weby Oblíbené a regionální sociálních médií a zvýšení. S použitím služeb založených na strojové učení k předpovědi potenciální obsahu pro dospělé nebo pikantního obsahu, snížit náklady na vaše úsilí moderování.
+V současné době online prohlížeče generovat miliardy zobrazení videa mezi oblíbené a regionální sociálních médií weby a aplikace. Použití na základě machine learningu přistupovány službami detekovat potenciálně pro dospělé nebo pikantního obsahu můžete snížit náklady na vaše úsilí moderování.
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
 ## <a name="sign-up-for-the-content-moderator-media-processor-preview"></a>Zaregistrujte si procesor médií Content Moderator (preview)
 
-### <a name="create-a-free-azure-account"></a>Vytvořte si bezplatný účet Azure.
-
-[Začněte tady](https://azure.microsoft.com/free/) vytvořit si bezplatný účet Azure, pokud již nemáte.
-
 ### <a name="create-an-azure-media-services-account"></a>Vytvoření účtu Azure Media Services
 
-Content Moderator videa funkce je dostupná jako veřejná verze preview **procesor médií** v Azure Media Services (AMS) bez poplatků.
-
-[Vytvoření účtu Azure Media Services](https://docs.microsoft.com/azure/media-services/media-services-portal-create-account) ve vašem předplatném Azure.
+Content Moderator videa funkce je dostupná jako veřejná verze preview **procesor médií** v Azure Media Services (AMS) bez poplatků. [Vytvoření účtu Azure Media Services](https://docs.microsoft.com/azure/media-services/media-services-portal-create-account) ve vašem předplatném Azure.
 
 ### <a name="get-azure-active-directory-credentials"></a>Získání přihlašovacích údajů Azure Active Directory
 
-   1. Čtení [článku portálu služby Azure Media Services](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad) se naučíte získat přihlašovací údaje pro ověřování Azure AD pomocí webu Azure portal.
+   1. Čtení [článku portálu služby Azure Media Services](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad) informace o získání přihlašovacích údajů Azure Active Directory authentication pomocí webu Azure portal.
    1. Čtení [Azure Media Services .NET článku](https://docs.microsoft.com/azure/media-services/media-services-dotnet-get-started-with-aad) na další informace o použití přihlašovacích údajů Azure Active Directory pomocí .NET SDK.
 
    > [!NOTE]
-   > Ukázkový kód v tomto rychlém startu používá **ověřování instančních objektů** metody popsané v obou článcích.
+   > Ukázkový kód v tomto rychlém startu používá **ověřování instančních objektů** metody popsané v obou výše uvedených článcích.
 
 Jakmile se zobrazí vaše přihlašovací údaje AMS, zkuste procesor médií Content Moderator dvěma způsoby.
 
@@ -49,13 +45,13 @@ Pomocí interaktivního [Průzkumník Azure Media Services (AMS)](https://azure.
 
 ![Průzkumník služby Azure Media Services s Content Moderatorem](images/ams-explorer-content-moderator.PNG)
 
-## <a name="net-quickstart-with-visual-studio-and-c"></a>Rychlý úvod k .NET pomocí sady Visual Studio a C#
+## <a name="quickstart-with-visual-studio-and-c"></a>Rychlý start s Visual Studio a C#
 
-1. Přidat nový **Konzolová aplikace (.NET Framework)** do svého řešení projekt.
+1. Přidejte do svého řešení nový projekt **Konzolová aplikace (.NET Framework)**.
 
    Ve vzorovém kódu, pojmenujte projekt **VideoModeration**.
 
-1. Vyberte tento projekt jako jeden spouštěný projekt pro řešení.
+1. Projekt vyberte jako jediný spouštěný projekt řešení.
 
 ### <a name="install-required-packages"></a>Instalace požadovaných balíčků
 
@@ -64,299 +60,315 @@ Nainstalujte následující balíčky NuGet, která je k dispozici na [NuGet](ht
 - windowsazure.mediaservices
 - windowsazure.mediaservices.Extensions
 
-### <a name="update-the-programs-using-statements"></a>Aktualizace programu v nástrojích příkazy
+### <a name="update-the-programs-using-statements"></a>Aktualizace příkazů using programu
 
-Upravit program v nástrojích příkazy.
+Přidejte následující `using` příkazy.
 
-    using System;
-    using System.Linq;
-    using System.Threading.Tasks;
-    using Microsoft.WindowsAzure.MediaServices.Client;
-    using System.IO;
-    using System.Threading;
-    using Microsoft.WindowsAzure.Storage.Blob;
-    using Microsoft.WindowsAzure.Storage;
-    using Microsoft.WindowsAzure.Storage.Auth;
-    using System.Collections.Generic;
+```csharp
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.WindowsAzure.MediaServices.Client;
+using System.IO;
+using System.Threading;
+using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Auth;
+using System.Collections.Generic;
+```
 
+### <a name="initialize-application-specific-settings"></a>Inicializace nastavení specifických pro aplikaci
 
-### <a name="initialize-application-specific-settings"></a>Inicializace nastavení specifické pro aplikaci
+Přidejte následující statické pole na **Program** třídy v _Program.cs_.
 
-Přidejte následující statické pole na **Program** třída v souboru Program.cs.
+```csharp
+// declare constants and globals
+private static CloudMediaContext _context = null;
+private static CloudStorageAccount _StorageAccount = null;
 
-    // declare constants and globals
-    private static CloudMediaContext _context = null;
-    private static CloudStorageAccount _StorageAccount = null;
+// Azure Media Services (AMS) associated Storage Account, Key, and the Container that has 
+// a list of Blobs to be processed.
+static string STORAGE_NAME = "YOUR AMS ASSOCIATED BLOB STORAGE NAME";
+static string STORAGE_KEY = "YOUR AMS ASSOCIATED BLOB STORAGE KEY";
+static string STORAGE_CONTAINER_NAME = "YOUR BLOB CONTAINER FOR VIDEO FILES";
 
-    // Azure Media Services (AMS) associated Storage Account, Key, and the Container that has 
-    // a list of Blobs to be processed.
-    static string STORAGE_NAME = "YOUR AMS ASSOCIATED BLOB STORAGE NAME";
-    static string STORAGE_KEY = "YOUR AMS ASSOCIATED BLOB STORAGE KEY";
-    static string STORAGE_CONTAINER_NAME = "YOUR BLOB CONTAINER FOR VIDEO FILES";
+private static StorageCredentials _StorageCredentials = null;
 
-    private static StorageCredentials _StorageCredentials = null;
+// Azure Media Services authentication. See the quickstart for how to get these.
+private const string AZURE_AD_TENANT_NAME = "microsoft.onmicrosoft.com";
+private const string CLIENT_ID = "YOUR CLIENT ID"
+private const string CLIENT_SECRET = "YOUR CLIENT SECRET";
 
-    // Azure Media Services authentication. See the quickstart for how to get these.
-    private const string AZURE_AD_TENANT_NAME = "microsoft.onmicrosoft.com";
-    private const string CLIENT_ID = "YOUR CLIENT ID"
-    private const string CLIENT_SECRET = "YOUR CLIENT SECRET";
+// REST API endpoint, for example "https://accountname.restv2.westcentralus.media.azure.net/API".      
+private const string REST_API_ENDPOINT = "YOUR API ENDPOINT";
 
-    // REST API endpoint, for example "https://accountname.restv2.westcentralus.media.azure.net/API".      
-    private const string REST_API_ENDPOINT = "YOUR API ENDPOINT";
+// Content Moderator Media Processor Nam
+private const string MEDIA_PROCESSOR = "Azure Media Content Moderator";
 
-    // Content Moderator Media Processor Nam
-    private const string MEDIA_PROCESSOR = "Azure Media Content Moderator";
-
-    // Input and Output files in the current directory of the executable
-    private const string INPUT_FILE = "VIDEO FILE NAME";
-    private const string OUTPUT_FOLDER = "";
+// Input and Output files in the current directory of the executable
+private const string INPUT_FILE = "VIDEO FILE NAME";
+private const string OUTPUT_FOLDER = "";
+```
 
 ### <a name="create-a-preset-file-json"></a>Vytvořit soubor přednastavení (json)
 
 Vytvořte soubor JSON v aktuálním adresáři s číslem verze.
 
-    private static readonly string CONTENT_MODERATOR_PRESET_FILE = "preset.json";
-    //Example file content:
-    //        {
-    //             "version": "2.0"
-    //        }
-    private static readonly string CONTENT_MODERATOR_PRESET_FILE = "preset.json";
+```csharp
+//Example file content:
+//        {
+//             "version": "2.0"
+//        }
+private static readonly string CONTENT_MODERATOR_PRESET_FILE = "preset.json";
+```
 
 ### <a name="add-the-following-code-to-the-main-method"></a>Přidejte následující kód do metody main
 
-Metoda main nejprve vytvoří objekt Context médií Azure a potom objekt Context úložiště Azure v případě, že jsou vaše videa ve službě blob storage.
-Zbývající kód kontroluje videa z místní složky, objektů blob nebo více objektů BLOB v kontejneru služby Azure storage.
-Všechny možnosti můžete vyzkoušet tak další řádky kódu.
+Metoda main nejprve vytvoří objekt Context médií Azure a potom objekt Context úložiště Azure v případě, že jsou vaše videa ve službě blob storage. Zbývající kód kontroluje videa z místní složky, objektů blob nebo více objektů BLOB v kontejneru služby Azure storage. Všechny možnosti můžete vyzkoušet tak další řádky kódu.
 
-    // Create Azure Media Context
-    CreateMediaContext();
+```csharp
+// Create Azure Media Context
+CreateMediaContext();
 
-    // Create Storage Context
-    CreateStorageContext();
+// Create Storage Context
+CreateStorageContext();
 
-    // Use a file as the input.
-    // IAsset asset = CreateAssetfromFile();
-    
-    // -- OR ---
-    
-    // Or a blob as the input
-    // IAsset asset = CreateAssetfromBlob((CloudBlockBlob)GetBlobsList().First());
+// Use a file as the input.
+// IAsset asset = CreateAssetfromFile();
 
-    // Then submit the asset to Content Moderator
-    // RunContentModeratorJob(asset);
+// -- OR ---
 
-    //-- OR ----
+// Or a blob as the input
+// IAsset asset = CreateAssetfromBlob((CloudBlockBlob)GetBlobsList().First());
 
-    // Just run the content moderator on all blobs in a list (from a Blob Container)
-    RunContentModeratorJobOnBlobs();
+// Then submit the asset to Content Moderator
+// RunContentModeratorJob(asset);
+
+//-- OR ----
+
+// Just run the content moderator on all blobs in a list (from a Blob Container)
+RunContentModeratorJobOnBlobs();
+```
 
 ### <a name="add-the-code-to-create-an-azure-media-context"></a>Přidejte kód k vytvoření Azure Media kontextu
 
-    /// <summary>
-    /// Creates a media context from azure credentials
-    /// </summary>
-    static void CreateMediaContext()
-    {
-        // Get Azure AD credentials
-        var tokenCredentials = new AzureAdTokenCredentials(AZURE_AD_TENANT_NAME,
-            new AzureAdClientSymmetricKey(CLIENT_ID, CLIENT_SECRET),
-            AzureEnvironments.AzureCloudEnvironment);
+```csharp
+/// <summary>
+/// Creates a media context from azure credentials
+/// </summary>
+static void CreateMediaContext()
+{
+    // Get Azure AD credentials
+    var tokenCredentials = new AzureAdTokenCredentials(AZURE_AD_TENANT_NAME,
+        new AzureAdClientSymmetricKey(CLIENT_ID, CLIENT_SECRET),
+        AzureEnvironments.AzureCloudEnvironment);
 
-        // Initialize an Azure AD token
-        var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+    // Initialize an Azure AD token
+    var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
-        // Create a media context
-        _context = new CloudMediaContext(new Uri(REST_API_ENDPOINT), tokenProvider);
-    }
+    // Create a media context
+    _context = new CloudMediaContext(new Uri(REST_API_ENDPOINT), tokenProvider);
+}
+```
 
 ### <a name="add-the-code-to-create-an-azure-storage-context"></a>Přidejte kód k vytvoření kontextu Azure Storage
 Kontext úložiště, vytvoří od přihlašovacích údajů úložiště používáte pro přístup k úložišti objektů blob.
 
-    /// <summary>
-    /// Creates a storage context from the AMS associated storage name and key
-    /// </summary>
-    static void CreateStorageContext()
+```csharp
+/// <summary>
+/// Creates a storage context from the AMS associated storage name and key
+/// </summary>
+static void CreateStorageContext()
+{
+    // Get a reference to the storage account associated with a Media Services account. 
+    if (_StorageCredentials == null)
     {
-        // Get a reference to the storage account associated with a Media Services account. 
-        if (_StorageCredentials == null)
-        {
-            _StorageCredentials = new StorageCredentials(STORAGE_NAME, STORAGE_KEY);
-        }
-        _StorageAccount = new CloudStorageAccount(_StorageCredentials, false);
+        _StorageCredentials = new StorageCredentials(STORAGE_NAME, STORAGE_KEY);
     }
+    _StorageAccount = new CloudStorageAccount(_StorageCredentials, false);
+}
+```
 
 ### <a name="add-the-code-to-create-azure-media-assets-from-local-file-and-blob"></a>Přidejte kód, který vytvořit mediální Assety Azure z místního souboru a objektů blob
 Procesor médií Content Moderator spouštění úloh podle **prostředky** v rámci platformy Azure Media Services.
 Tyto metody vytvoří prostředky z místního souboru nebo přidružený objekt blob.
 
-    /// <summary>
-    /// Creates an Azure Media Services Asset from the video file
-    /// </summary>
-    /// <returns>Asset</returns>
-    static IAsset CreateAssetfromFile()
-    {
-        return _context.Assets.CreateFromFile(INPUT_FILE, AssetCreationOptions.None); ;
-    }
+```csharp
+/// <summary>
+/// Creates an Azure Media Services Asset from the video file
+/// </summary>
+/// <returns>Asset</returns>
+static IAsset CreateAssetfromFile()
+{
+    return _context.Assets.CreateFromFile(INPUT_FILE, AssetCreationOptions.None); ;
+}
 
-    /// <summary>
-    /// Creates an Azure Media Services asset from your blog storage
-    /// </summary>
-    /// <param name="Blob"></param>
-    /// <returns>Asset</returns>
-    static IAsset CreateAssetfromBlob(CloudBlockBlob Blob)
-    {
-        // Create asset from the FIRST blob in the list and return it
-        return _context.Assets.CreateFromBlob(Blob, _StorageCredentials, AssetCreationOptions.None);
-    }
+/// <summary>
+/// Creates an Azure Media Services asset from your blog storage
+/// </summary>
+/// <param name="Blob"></param>
+/// <returns>Asset</returns>
+static IAsset CreateAssetfromBlob(CloudBlockBlob Blob)
+{
+    // Create asset from the FIRST blob in the list and return it
+    return _context.Assets.CreateFromBlob(Blob, _StorageCredentials, AssetCreationOptions.None);
+}
+```
 
 ### <a name="add-the-code-to-scan-a-collection-of-videos-as-blobs-within-a-container"></a>Přidejte kód pro skenování kolekce videa (jako objekty BLOB) v rámci kontejneru
 
-    /// <summary>
-    /// Runs the Content Moderator Job on all Blobs in a given container name
-    /// </summary>
-    static void RunContentModeratorJobOnBlobs()
+```csharp
+/// <summary>
+/// Runs the Content Moderator Job on all Blobs in a given container name
+/// </summary>
+static void RunContentModeratorJobOnBlobs()
+{
+    // Get the reference to the list of Blobs. See the following method.
+    var blobList = GetBlobsList();
+
+    // Iterate over the Blob list items or work on specific ones as needed
+    foreach (var sourceBlob in blobList)
     {
-        // Get the reference to the list of Blobs. See the following method.
-        var blobList = GetBlobsList();
+        // Create an Asset
+        IAsset asset = _context.Assets.CreateFromBlob((CloudBlockBlob)sourceBlob,
+                            _StorageCredentials, AssetCreationOptions.None);
+        asset.Update();
 
-        // Iterate over the Blob list items or work on specific ones as needed
-        foreach (var sourceBlob in blobList)
-        {
-            // Create an Asset
-            IAsset asset = _context.Assets.CreateFromBlob((CloudBlockBlob)sourceBlob,
-                               _StorageCredentials, AssetCreationOptions.None);
-            asset.Update();
-
-            // Submit to Content Moderator
-            RunContentModeratorJob(asset);
-        }
+        // Submit to Content Moderator
+        RunContentModeratorJob(asset);
     }
+}
 
-    /// <summary>
-    /// Get all blobs in your container
-    /// </summary>
-    /// <returns></returns>
-    static IEnumerable<IListBlobItem> GetBlobsList()
-    {
-        // Get a reference to the Container within the Storage Account
-        // that has the files (blobs) for moderation
-        CloudBlobClient CloudBlobClient = _StorageAccount.CreateCloudBlobClient();
-        CloudBlobContainer MediaBlobContainer = CloudBlobClient.GetContainerReference(STORAGE_CONTAINER_NAME);
+/// <summary>
+/// Get all blobs in your container
+/// </summary>
+/// <returns></returns>
+static IEnumerable<IListBlobItem> GetBlobsList()
+{
+    // Get a reference to the Container within the Storage Account
+    // that has the files (blobs) for moderation
+    CloudBlobClient CloudBlobClient = _StorageAccount.CreateCloudBlobClient();
+    CloudBlobContainer MediaBlobContainer = CloudBlobClient.GetContainerReference(STORAGE_CONTAINER_NAME);
 
-        // Get the reference to the list of Blobs 
-        var blobList = MediaBlobContainer.ListBlobs();
-        return blobList;
-    }
+    // Get the reference to the list of Blobs 
+    var blobList = MediaBlobContainer.ListBlobs();
+    return blobList;
+}
+```
 
 ### <a name="add-the-method-to-run-the-content-moderator-job"></a>Přidejte metodu ke spuštění úlohy Content Moderatoru
 
-    /// <summary>
-    /// Run the Content Moderator job on the designated Asset from local file or blob storage
-    /// </summary>
-    /// <param name="asset"></param>
-    static void RunContentModeratorJob(IAsset asset)
+```csharp
+/// <summary>
+/// Run the Content Moderator job on the designated Asset from local file or blob storage
+/// </summary>
+/// <param name="asset"></param>
+static void RunContentModeratorJob(IAsset asset)
+{
+    // Grab the presets
+    string configuration = File.ReadAllText(CONTENT_MODERATOR_PRESET_FILE);
+
+    // grab instance of Azure Media Content Moderator MP
+    IMediaProcessor mp = _context.MediaProcessors.GetLatestMediaProcessorByName(MEDIA_PROCESSOR);
+
+    // create Job with Content Moderator task
+    IJob job = _context.Jobs.Create(String.Format("Content Moderator {0}",
+            asset.AssetFiles.First() + "_" + Guid.NewGuid()));
+
+    ITask contentModeratorTask = job.Tasks.AddNew("Adult and racy classifier task",
+            mp, configuration,
+            TaskOptions.None);
+    contentModeratorTask.InputAssets.Add(asset);
+    contentModeratorTask.OutputAssets.AddNew("Adult and racy classifier output",
+        AssetCreationOptions.None);
+
+    job.Submit();
+
+
+    // Create progress printing and querying tasks
+    Task progressPrintTask = new Task(() =>
     {
-        // Grab the presets
-        string configuration = File.ReadAllText(CONTENT_MODERATOR_PRESET_FILE);
-
-        // grab instance of Azure Media Content Moderator MP
-        IMediaProcessor mp = _context.MediaProcessors.GetLatestMediaProcessorByName(MEDIA_PROCESSOR);
-
-        // create Job with Content Moderator task
-        IJob job = _context.Jobs.Create(String.Format("Content Moderator {0}",
-                asset.AssetFiles.First() + "_" + Guid.NewGuid()));
-
-        ITask contentModeratorTask = job.Tasks.AddNew("Adult and racy classifier task",
-                mp, configuration,
-                TaskOptions.None);
-        contentModeratorTask.InputAssets.Add(asset);
-        contentModeratorTask.OutputAssets.AddNew("Adult and racy classifier output",
-            AssetCreationOptions.None);
-
-        job.Submit();
-
-
-        // Create progress printing and querying tasks
-        Task progressPrintTask = new Task(() =>
+        IJob jobQuery = null;
+        do
         {
-            IJob jobQuery = null;
-            do
-            {
-                var progressContext = _context;
-                jobQuery = progressContext.Jobs
-                .Where(j => j.Id == job.Id)
-                    .First();
-                    Console.WriteLine(string.Format("{0}\t{1}",
-                    DateTime.Now,
-                    jobQuery.State));
-                    Thread.Sleep(10000);
-             }
-             while (jobQuery.State != JobState.Finished &&
-             jobQuery.State != JobState.Error &&
-             jobQuery.State != JobState.Canceled);
-        });
-        progressPrintTask.Start();
+            var progressContext = _context;
+            jobQuery = progressContext.Jobs
+            .Where(j => j.Id == job.Id)
+                .First();
+                Console.WriteLine(string.Format("{0}\t{1}",
+                DateTime.Now,
+                jobQuery.State));
+                Thread.Sleep(10000);
+            }
+            while (jobQuery.State != JobState.Finished &&
+            jobQuery.State != JobState.Error &&
+            jobQuery.State != JobState.Canceled);
+    });
+    progressPrintTask.Start();
 
-        Task progressJobTask = job.GetExecutionProgressTask(
-        CancellationToken.None);
-        progressJobTask.Wait();
+    Task progressJobTask = job.GetExecutionProgressTask(
+    CancellationToken.None);
+    progressJobTask.Wait();
 
-        // If job state is Error, the event handling 
-        // method for job progress should log errors.  Here we check 
-        // for error state and exit if needed.
-        if (job.State == JobState.Error)
-        {
-            ErrorDetail error = job.Tasks.First().ErrorDetails.First();
-            Console.WriteLine(string.Format("Error: {0}. {1}",
-            error.Code,
-            error.Message));
-        }
-
-        DownloadAsset(job.OutputMediaAssets.First(), OUTPUT_FOLDER);
+    // If job state is Error, the event handling 
+    // method for job progress should log errors.  Here we check 
+    // for error state and exit if needed.
+    if (job.State == JobState.Error)
+    {
+        ErrorDetail error = job.Tasks.First().ErrorDetails.First();
+        Console.WriteLine(string.Format("Error: {0}. {1}",
+        error.Code,
+        error.Message));
     }
 
-### <a name="add-a-couple-of-helper-functions"></a>Přidejte do ní několik pomocných funkcí
+    DownloadAsset(job.OutputMediaAssets.First(), OUTPUT_FOLDER);
+}
+```
+
+### <a name="add-helper-functions"></a>Přidat pomocné funkce
 
 Tyto metody stahování prostředku Azure Media Services Content Moderator výstupního souboru (JSON) a sledovat stav úlohy moderování tak, že program může protokolovat stav spuštění do konzoly.
 
-    static void DownloadAsset(IAsset asset, string outputDirectory)
+```csharp
+static void DownloadAsset(IAsset asset, string outputDirectory)
+{
+    foreach (IAssetFile file in asset.AssetFiles)
     {
-        foreach (IAssetFile file in asset.AssetFiles)
-        {
-            file.Download(Path.Combine(outputDirectory, file.Name));
-        }
+        file.Download(Path.Combine(outputDirectory, file.Name));
     }
+}
 
-    // event handler for Job State
-    static void StateChanged(object sender, JobStateChangedEventArgs e)
+// event handler for Job State
+static void StateChanged(object sender, JobStateChangedEventArgs e)
+{
+    Console.WriteLine("Job state changed event:");
+    Console.WriteLine("  Previous state: " + e.PreviousState);
+    Console.WriteLine("  Current state: " + e.CurrentState);
+    switch (e.CurrentState)
     {
-        Console.WriteLine("Job state changed event:");
-        Console.WriteLine("  Previous state: " + e.PreviousState);
-        Console.WriteLine("  Current state: " + e.CurrentState);
-        switch (e.CurrentState)
-        {
-            case JobState.Finished:
-                Console.WriteLine();
-                Console.WriteLine("Job finished.");
-                break;
-            case JobState.Canceling:
-            case JobState.Queued:
-            case JobState.Scheduled:
-            case JobState.Processing:
-                Console.WriteLine("Please wait...\n");
-                break;
-            case JobState.Canceled:
-                Console.WriteLine("Job is canceled.\n");
-                break;
-            case JobState.Error:
-                Console.WriteLine("Job failed.\n");
-                break;
-            default:
-                break;
-        }
+        case JobState.Finished:
+            Console.WriteLine();
+            Console.WriteLine("Job finished.");
+            break;
+        case JobState.Canceling:
+        case JobState.Queued:
+        case JobState.Scheduled:
+        case JobState.Processing:
+            Console.WriteLine("Please wait...\n");
+            break;
+        case JobState.Canceled:
+            Console.WriteLine("Job is canceled.\n");
+            break;
+        case JobState.Error:
+            Console.WriteLine("Job failed.\n");
+            break;
+        default:
+            break;
     }
+}
+```
 
-### <a name="run-the-program-and-review-the-output"></a>Spusťte program a prohlédněte si výstup
+### <a name="run-the-program-and-review-the-output"></a>Spuštění programu a kontrola výstupu
 
 Po dokončení úlohy moderování obsahu analyzujte odpověď JSON. Skládá se z těchto elementů:
 
@@ -366,62 +378,62 @@ Po dokončení úlohy moderování obsahu analyzujte odpověď JSON. Skládá se
 - **Spustit**, **doba trvání**, **totalDuration**, a **časové razítko** v "značky". Dělení **časový rámec** Chcete-li získat číslo v sekundách.
  
 > [!NOTE]
-
 > - `adultScore` představuje potenciální prezentace a predikcí skóre obsah, který se dá považovat za sexuálně explicitní nebo pro dospělé v určitých situacích.
 > - `racyScore` představuje potenciální prezentace a predikcí skóre obsah, který se dá považovat za sexuálně sugestivní nebo až po zralé v určitých situacích.
 > - `adultScore` a `racyScore` jsou v rozmezí od 0 do 1. Čím více bodů vyšší model je predikce kategorii lze použít. V této verzi preview spoléhá na statistických modelů a nikoli ručně kódovaný výsledků. Doporučujeme ve Visual Basicu s vlastní obsah k určení, jak každou kategorii odpovídá vašim požadavkům.
 > - `reviewRecommended` je PRAVDA nebo NEPRAVDA v závislosti na interní skóre prahové hodnoty. Zákazníci by měli zhodnotit, zda chcete použít tuto hodnotu nebo při rozhodování o vlastní prahové hodnoty na základě jejich obsahu zásad.
->
 
-    {
-    "version": 2,
-    "timescale": 90000,
-    "offset": 0,
-    "framerate": 50,
-    "width": 1280,
-    "height": 720,
-    "totalDuration": 18696321,
-    "fragments": [
-    {
-      "start": 0,
-      "duration": 18000
-    },
-    {
-      "start": 18000,
-      "duration": 3600,
-      "interval": 3600,
-      "events": [
-        [
-          {
-            "reviewRecommended": false,
-            "adultScore": 0.00001,
-            "racyScore": 0.03077,
-            "index": 5,
-            "timestamp": 18000,
-            "shotIndex": 0
-          }
-        ]
-      ]
-    },
-    {
-      "start": 18386372,
-      "duration": 119149,
-      "interval": 119149,
-      "events": [
-        [
-          {
-            "reviewRecommended": true,
-            "adultScore": 0.00000,
-            "racyScore": 0.91902,
-            "index": 5085,
-            "timestamp": 18386372,
-            "shotIndex": 62
-          }
-        ]
-      ]
-    }
+```json
+{
+"version": 2,
+"timescale": 90000,
+"offset": 0,
+"framerate": 50,
+"width": 1280,
+"height": 720,
+"totalDuration": 18696321,
+"fragments": [
+{
+    "start": 0,
+    "duration": 18000
+},
+{
+    "start": 18000,
+    "duration": 3600,
+    "interval": 3600,
+    "events": [
+    [
+        {
+        "reviewRecommended": false,
+        "adultScore": 0.00001,
+        "racyScore": 0.03077,
+        "index": 5,
+        "timestamp": 18000,
+        "shotIndex": 0
+        }
     ]
-    }
+    ]
+},
+{
+    "start": 18386372,
+    "duration": 119149,
+    "interval": 119149,
+    "events": [
+    [
+        {
+        "reviewRecommended": true,
+        "adultScore": 0.00000,
+        "racyScore": 0.91902,
+        "index": 5085,
+        "timestamp": 18386372,
+        "shotIndex": 62
+        }
+    ]
+    ]
+}
+]
+}
+```
 
 ## <a name="next-steps"></a>Další postup
 

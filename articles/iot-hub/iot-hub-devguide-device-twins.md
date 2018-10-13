@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: elioda
-ms.openlocfilehash: 9997bf49ee986d6ceaa566e14edea0b9469fa14e
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 558bf0eb6ab4abb4ad16910ebe36fdb7c1e19374
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452373"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310925"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Principy a použití dvojčat zařízení ve službě IoT Hub
 

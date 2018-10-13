@@ -2,18 +2,18 @@
 title: Speech service rozhraní REST API
 description: Referenční informace pro rozhraní REST API pro službu rozpoznávání řeči.
 services: cognitive-services
-author: v-jerkin
+author: erhopf
 ms.service: cognitive-services
 ms.component: speech
 ms.topic: article
 ms.date: 05/09/2018
-ms.author: v-jerkin
-ms.openlocfilehash: fea4f762a46963f923ba8f44644df37b29fc77a6
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.author: erhopf
+ms.openlocfilehash: f8b27277cbf3ea6d53a8f02e550beae67fc50741
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068730"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167617"
 ---
 # <a name="speech-service-rest-apis"></a>Speech service rozhraní REST API
 

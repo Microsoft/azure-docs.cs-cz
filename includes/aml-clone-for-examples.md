@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 09/24/2018
-ms.openlocfilehash: e9e338e32e570ce98854e059ecdda21d99fda728
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 46be1c670002b584bac1d1a2d3e5e02e845027c7
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49117248"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49312469"
 ---
 1. [![Azure Notebooks](https://notebooks.azure.com/launch.png)](https://aka.ms/aml-clone-azure-notebooks)
 [importovat ukázkové poznámkové bloky do poznámkových bloků Azure](https://aka.ms/aml-clone-azure-notebooks). (Vaše organizace může vyžadovat [souhlas správce](https://notebooks.azure.com/help/signing-up/work-or-school-account/admin-consent) předtím, než se můžete přihlásit.)

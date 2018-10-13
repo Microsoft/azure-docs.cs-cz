@@ -1,105 +1,113 @@
 ---
-title: Import dat Cassandra do Azure Cosmos DB | Microsoft Docs
-description: Naučte se používat příkaz CQL Copy ke kopírování dat Cassandra do Azure Cosmos DB.
+title: Migrace dat do účtu rozhraní API Cassandra služby Azure Cosmos DB
+description: Získejte další informace o kopírování dat z Apache Cassandra do rozhraní API Cassandra služby Azure Cosmos DB pomocí příkazu CQL Copy a Sparku.
 services: cosmos-db
 author: kanshiG
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
-ms.devlang: dotnet
-ms.topic: tutorial
-ms.date: 11/15/2017
 ms.author: govindk
-ms.custom: mvc
-ms.openlocfilehash: f8c84cc501ea6a979d90d254abeceea8fcc6bddf
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.topic: tutorial
+ms.date: 09/24/2018
+ms.reviewer: sngun
+ms.openlocfilehash: 0bf5e47513ded4b2c65e7291db497e53a42776a8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053015"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46976172"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-cassandra-api-account"></a>Migrace dat do účtu rozhraní API Cassandra služby Azure Cosmos DB
 
-Tento kurz obsahuje pokyny pro import dat Cassandra do služby Azure Cosmos DB s využitím příkazu COPY jazyka CQL (Cassandra Query Language). 
+Tento kurz obsahuje pokyny k migraci dat Apache Cassandra do rozhraní API Cassandra služby Azure Cosmos DB. 
 
 Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
-> * Načtení připojovacího řetězce
-> * Import dat pomocí příkazu cqlsh COPY
-> * Import pomocí konektoru Spark 
+> * Plánování migrace
+> * Požadavky na migraci
+> * Migrace dat pomocí příkazu cqlsh COPY
+> * Migrace dat pomocí Sparku 
 
-# <a name="prerequisites"></a>Požadavky
+## <a name="plan-for-migration"></a>Plánování migrace
 
-* Instalace [Apache Cassandra](http://cassandra.apache.org/download/) a ověření, že je k dispozici *cqlsh*  
+Před migrací dat do rozhraní API Cassandra pro Azure Cosmos DB byste měli odhadnout svoje potřeby pro úlohy z hlediska propustnosti. Obecně se doporučuje začít s průměrnou propustností vyžadovanou pro operace CRUD a potom přidat další propustnost požadovanou pro extrakci, transformaci a načítání (ETL) a nárazové operace. K naplánování migrace budete potřebovat následující podrobnosti: 
 
-* Zvýšená propustnost: Doba trvání migrace dat závisí na propustnosti, kterou pro tabulky zřídíte. V případě rozsáhlejších migrací dat nezapomeňte propustnost zvýšit. Po dokončení migrace propustnost snižte, abyste dosáhli nižších nákladů. Další informace o zvýšení propustnosti na webu [Azure Portal](https://portal.azure.com) najdete v tématu věnovaném [nastavení propustnosti pro kontejnery Azure Cosmos DB](set-throughput.md).  
+* **Velikost stávajících dat nebo odhadovanou velikost dat:** Definuje minimální požadavky na velikost a propustnost databáze. Při odhadování velikosti dat pro novou aplikaci můžete předpokládat, že data jsou rovnoměrně distribuována mezi řádky, a odhadnout hodnotu vynásobením velikostí dat. 
 
-* Povolený protokol SSL: Azure Cosmos DB má striktní bezpečnostní požadavky a standardy. Při práci se svým účtem nezapomeňte povolit SSL. Když použijete CQL s protokolem SSH, máte možnost zadat informace SSL. 
+* **Požadovaná propustnost:** Přibližná propustnost pro čtení (operace query/get) a zápis (operace update/delete/insert). Tato hodnota je nutná k výpočtu požadovaných jednotek žádostí (RU) spolu s velikostí dat při stabilním stavu.  
 
-## <a name="get-your-connection-string"></a>Získání připojovacího řetězce
+* **Získání schématu:** Připojte se ke svému existujícímu clusteru Cassandra prostřednictvím cqlsh a vyexportujte si z něj schéma: 
 
-1. Úplně vlevo na webu [Azure Portal](https://portal.azure.com) klikněte na **Azure Cosmos DB**.
+  ```bash
+  cqlsh [IP] "-e DESC SCHEMA" > orig_schema.cql
+  ```
 
-2. V podokně **Předplatná** vyberte název vašeho účtu.
+Po identifikování požadavků vaší existující úlohy byste měli podle zjištěných požadavků na propustnost vytvořit účet služby Azure Cosmos DB a také databázi a kontejnery.  
 
-3. Klikněte na **Připojovací řetězec**. Pravé podokno obsahuje všechny informace, které potřebujete pro úspěšné připojení ke svému účtu.
+* **Zjištění poplatku za RU pro operaci:** Počet jednotek RU můžete zjistit pomocí sady Azure Cosmos DB Cassandra API SDK podle vašeho výběru. Tento příklad ukazuje získání poplatků za RU pro verzi .NET.
 
-    ![Stránka připojovacího řetězce](./media/cassandra-import-data/keys.png)
+  ```csharp
+  var tableInsertStatement = table.Insert(sampleEntity);
+  var insertResult = await tableInsertStatement.ExecuteAsync();
 
-## <a name="migrate-data-by-using-cqlsh-copy"></a>Migrace dat pomocí příkazu cqlsh COPY
+  foreach (string key in insertResult.Info.IncomingPayload)
+    {
+       byte[] valueInBytes = customPayload[key];
+       string value = Encoding.UTF8.GetString(valueInBytes);
+       Console.WriteLine($"CustomPayload:  {key}: {value}");
+    }
+  ```
 
-Při importu dat Cassandra do Azure Cosmos DB pro použití s rozhraním API Cassandra použijte následující pokyny:
+* **Přidělení požadované propustnosti:** Azure Cosmos DB dokáže automaticky škálovat úložiště a propustnost podle vašich rostoucích požadavků. S odhadem vašich potřeb z hlediska propustnosti vám pomůže [kalkulačka jednotek žádostí služby Azure Cosmos DB](https://www.documentdb.com/capacityplanner). 
 
-1. Přihlaste se k cqhsh pomocí připojovacích informací z portálu.
-2. Pomocí [příkazu CQL COPY](http://cassandra.apache.org/doc/latest/tools/cqlsh.html#cqlsh) zkopírujte místní data do koncového bodu rozhraní API Apache Cassandra. Ujistěte se, zdroj a cíl jsou ve stejném datovém centru, abyste minimalizovali případné problémy s latencí.
+## <a name="prerequisites-for-migration"></a>Požadavky na migraci
 
-### <a name="steps-to-move-data-with-cqlsh"></a>Postup přesunu dat pomocí cqlsh
+* **Vytvořené tabulky v rámci účtu rozhraní API Cassandra služby Azure Cosmos DB:** Před zahájením migrace dat si předem vytvořte všechny tabulky z portálu Azure Portal nebo z cqlsh.
 
-1. Předem vytvořte a škálujte tabulku:
-    * Ve výchozím nastavení Azure Cosmos DB zřídí novou tabulku rozhraní API Cassandra s 1 000 jednotek žádostí za sekundu (RU/s) (při vytvoření na základě CQL se zřídí s 400 RU/s). Před zahájením migrace pomocí cqlsh, předem vytvoříte všechny tabulky z prostředí [Azure Portal](https://portal.azure.com) nebo cqlsh. 
+* **Zvýšená propustnost:** Doba trvání migrace dat závisí na propustnosti, kterou pro tabulky v Azure Cosmos DB zřídíte. Po dobu trvání migrace propustnost zvyšte. Vyšší propustnost vám umožní zabránit omezování rychlosti a zkrátit dobu migrace. Po dokončení migrace propustnost snižte, abyste dosáhli nižších nákladů. Další informace o zvýšení propustnosti najdete v tématu věnovaném [nastavení propustnosti](set-throughput.md) pro kontejnery Azure Cosmos DB. Také se doporučuje mít účet služby Azure Cosmos DB ve stejné oblasti, v jaké je zdrojová databáze. 
 
-    * Na webu [Azure Portal](https://portal.azure.com) zvyšte na dobu migrace propustnost vašich tabulek, a to z výchozí hodnoty 400 nebo 1000 RU/s na 10 000 RU/s. Vyšší propustnost vám umožní zabránit omezování rychlosti a zkrátit dobu migrace. Díky fakturaci služby Azure Cosmos DB po hodinách můžete propustnost okamžitě po migraci snížit, abyste dosáhli nižších nákladů.
+* **Povolený protokol SSL:** Azure Cosmos DB má striktní bezpečnostní požadavky a standardy. Při práci se svým účtem nezapomeňte povolit SSL. Když použijete CQL s protokolem SSH, máte možnost zadat informace SSL.
 
-2. Zjistěte poplatky za RU pro operaci. Můžete k tomu využít sadu Azure Cosmos DB Cassandra API SDK podle vaší volby. Tento příklad ukazuje získání poplatků za RU pro verzi .NET. 
+## <a name="options-to-migrate-data"></a>Možnosti migrace dat
 
-    ```csharp
-    var tableInsertStatement = table.Insert(sampleEntity);
-    var insertResult = await tableInsertStatement.ExecuteAsync();
+Data můžete přesunout data z existujících úloh Cassandra do Azure Cosmos DB pomocí následujících možností:
 
-    foreach (string key in insertResult.Info.IncomingPayload)
-            {
-                byte[] valueInBytes = customPayload[key];
-                string value = Encoding.UTF8.GetString(valueInBytes);
-                Console.WriteLine($"CustomPayload:  {key}: {value}");
-            }
- 
-    ``` 
+* [Pomocí příkazu cqlsh COPY](#using-cqlsh-copy-command)  
+* [Pomocí Sparku](#using-spark) 
 
-3. Určete latenci ze svého počítače do služby Azure Cosmos DB. Pokud jste uvnitř datového centra Azure, měla by latence být malé jednociferné číslo v milisekundách. Pokud jste mimo datové centrum Azure, můžete zjistit přibližnou latenci z vašeho umístění pomocí příkazu psping nebo azurespeed.com.   
+## <a name="migrate-data-using-cqlsh-copy-command"></a>Migrace dat pomocí příkazu cqlsh COPY
 
-4. Vypočtěte vhodné hodnoty parametrů (NUMPROCESS, INGESTRATE, MAXBATCHSIZE nebo MINBATCHSIZE), které poskytují dobrý výkon. 
+[Příkaz CQL COPY](http://cassandra.apache.org/doc/latest/tools/cqlsh.html#cqlsh) se používá ke zkopírování místních dat do účtu rozhraní API Cassandra služby Azure Cosmos DB. Zkopírujte data provedením následujících kroků:
 
-5. Spusťte finální příkaz pro migraci. Spuštění tohoto příkazu se předpokládá, jste spustili cqlsh s využitím informací připojovacího řetězce.
+1. Získejte informace o připojovacím řetězci vašeho účtu rozhraní API Cassandra:
+
+   * Přihlaste se na portál [Azure Portal](https://portal.azure.com) a přejděte na svůj účet služby Azure Cosmos DB.
+
+   * Otevřete podokno **Připojovací řetězec**, které obsahuje všechny informace potřebné pro připojení k vašemu účtu rozhraní API Cassandra z cqlsh.
+
+2. Přihlaste se ke cqhsh pomocí informací o připojení z portálu.
+
+3. Pomocí příkazu CQL COPY zkopírujte místní data do účtu rozhraní API Cassandra.
 
    ```bash
    COPY exampleks.tablename FROM filefolderx/*.csv 
    ```
 
-## <a name="migrate-data-by-using-spark"></a>Migrace dat pomocí Sparku
+## <a name="migrate-data-using-spark"></a>Migrace dat pomocí Sparku 
 
-Pro data umístěná v existujícím clusteru ve virtuálních počítačích Azure představuje import dat pomocí Sparku také jednu z možných variant. Vyžaduje, aby byl Spark nastavený jako prostředník pro jednorázový nebo pravidelný příjem dat. 
+Provedením následujících kroků migrujte data do rozhraní API Cassandra pro Azure Cosmos DB pomocí Sparku:
+
+- Zřiďte [cluster HDInsight](cassandra-spark-hdinsight.md) nebo [Azure Databricks](cassandra-spark-databricks.md). 
+
+- Přesuňte data do cílového koncového bodu rozhraní API Cassandra pomocí [operace kopírování tabulky](cassandra-spark-table-copy-ops.md). 
+
+Migrace dat pomocí sparkových úloh je doporučenou možností, pokud máte data uložená v existujícím clusteru ve virtuálních počítačích Azure nebo jakémkoli jiném cloudu. Vyžaduje to, aby byl Spark nastavený jako prostředník pro jednorázové nebo pravidelné ingestování dat. Tuto migraci můžete urychlit pomocí připojení Express Route mezi místním prostředím a Azure. 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili provádět následující úlohy:
-
-> [!div class="checklist"]
-> * Načtení připojovacího řetězce
-> * Import dat pomocí příkazu cql copy
-> * Import pomocí konektoru Spark 
-
-Teď můžete přejít k části Koncepty, která obsahuje další informace o službě Azure Cosmos DB. 
+V tomto kurzu jste se naučili, jak si migrovat data do účtu rozhraní API Cassandra služby Azure Cosmos DB. Teď můžete přejít k části Koncepty, která obsahuje další informace o službě Azure Cosmos DB. 
 
 > [!div class="nextstepaction"]
->[Nastavitelné úrovně konzistence dat v Azure Cosmos DB](../cosmos-db/consistency-levels.md)
+> [Nastavitelné úrovně konzistence dat v Azure Cosmos DB](../cosmos-db/consistency-levels.md)
+
+

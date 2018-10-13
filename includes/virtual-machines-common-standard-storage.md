@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: yuemlu
 ms.custom: include file
-ms.openlocfilehash: e3d904358282f303a2d1ab35cf4fdc8026d7db55
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f1fe45283ef2886a50bf6a36e50e7ffe42055ee2
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47060873"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49312355"
 ---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>Nákladově efektivní úložiště úrovně Standard a spravované a nespravované disky virtuálních počítačů Azure
 
@@ -25,7 +25,7 @@ Tento článek se týká použití standardní disky SSD a HDD. Další informac
 
 Existují dva způsoby, jak vytvořit standardní disky pro virtuální počítače Azure:
 
-**Nespravované disky**: Tento typ disku je původní metody, kde budete spravovat účty úložiště používané pro uložení souborů virtuálního pevného disku, které odpovídají na disky virtuálního počítače. Soubory virtuálního pevného disku se ukládají jako objekty BLOB stránky v účtech úložiště. Nespravované disky můžete připojit k libovolné velikosti virtuálního počítače Azure, včetně virtuálních počítačů, které se primárně používají službu Premium Storage, jako je řada DSv2 a GS. Virtuální počítače Azure podporují připojení několik standardních disků, což až 256 PiB úložiště na každý virtuální počítač. Pokud používáte velikosti disků ve verzi preview, můžete mít až přibližně 2 PiB úložiště na každý virtuální počítač. 
+**Nespravované disky**: Tento typ disku je původní metody, kde budete spravovat účty úložiště používané pro uložení souborů virtuálního pevného disku, které odpovídají na disky virtuálního počítače. Soubory virtuálního pevného disku se ukládají jako objekty BLOB stránky v účtech úložiště. Nespravované disky můžete připojit k libovolné velikosti virtuálního počítače Azure, včetně virtuálních počítačů, které se primárně používají službu Premium Storage, jako je řada DSv2 a GS. Virtuální počítače Azure podporují připojení několik standardních disků, což až 256 TB úložiště na každý virtuální počítač. Pokud používáte velikosti disků ve verzi preview, můžete mít až přibližně 2 PiB úložiště na každý virtuální počítač.
 
 [**Služba Azure Managed Disks**](../articles/virtual-machines/windows/managed-disks-overview.md): Tato funkce spravuje účty úložiště používané pro disky virtuálních počítačů za vás. Zadejte typ (Premium SSD, SSD na úrovni Standard nebo standardní HDD) a velikost disku je nutné, a Azure vytvoří a spravuje disk za vás. Není nutné se starat o umisťováním disků ve více účtech úložiště, aby se vejdete do limitů škálovatelnosti pro účty úložiště – se postará Azure, který pro vás.
 
@@ -148,7 +148,7 @@ Také vám pomůže služba Azure Backup se službou Managed Disks vytváření 
 
 * [Seznámení se službou Azure Storage](../articles/storage/common/storage-introduction.md)
 
-* [vytvořit účet úložiště](../articles/storage/common/storage-quickstart-create-account.md)
+* [Vytvoření účtu úložiště](../articles/storage/common/storage-quickstart-create-account.md)
 
 * [Přehled služby Managed Disks](../articles/virtual-machines/linux/managed-disks-overview.md)
 

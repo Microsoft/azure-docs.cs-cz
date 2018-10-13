@@ -12,27 +12,29 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 10/12/2018
 ms.author: ambapat
-ms.openlocfilehash: 639dfb6e3231a5eba3d6ecb9cd0198f5718b4aef
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 4ad6a18f9937fcc7d24bebc3ac197e23990ff59e
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079017"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309242"
 ---
-# <a name="grant-permission-to-many-applications-to-access-a-key-vault"></a>Udělit oprávnění k velkému počtu aplikací pro přístup k trezoru klíčů
+# <a name="grant-several-applications-access-to-a-key-vault"></a>Udělit několik aplikací přístup k trezoru klíčů
 
-## <a name="q-i-have-several-applications-that-need-to-access-a-key-vault-how-can-i-give-these-applications-up-to-1024-access-to-key-vault"></a>Otázka: Mám několik aplikací, které potřebují přístup k trezoru klíčů, jak můžete mi poskytnout tyto aplikace (až 1 024) přístup do služby Key Vault?
+Zásada řízení přístupu je možné udělit několik aplikací přístup k trezoru klíčů. Zásady řízení přístupu může podporovat až 1024 aplikace a je konfigurován takto:
 
-Zásady řízení přístupu k trezoru klíčů podporuje až 1 024 položky. Ale můžete vytvořit skupiny zabezpečení služby Azure Active Directory. Přidejte všechny přidružené instanční objekty do této skupiny zabezpečení a potom jim udělit přístup k této skupině zabezpečení do služby Key Vault.
+1. Vytvoření skupiny zabezpečení služby Azure Active Directory. 
+2. Přidejte všechny aplikace přiřazené instanční objekty do skupiny zabezpečení.
+3. Udělte přístup skupiny zabezpečení ke službě Key Vault.
 
 Tady jsou požadavky:
 * [Instalace modulu Azure Active Directory V2 PowerShell](https://www.powershellgallery.com/packages/AzureAD).
 * [Nainstalujte prostředí Azure PowerShell](/powershell/azure/overview).
 * Spustit následující příkazy, budete potřebovat oprávnění k vytvoření nebo úpravě skupiny v tenantovi Azure Active Directory. Pokud nemáte příslušná oprávnění, budete muset kontaktovat svého správce Azure Active Directory. Zobrazit [o službě Azure Key Vault klíče, tajné kódy a certifikáty](about-keys-secrets-and-certificates.md) podrobnosti o službě Key Vault přístup k oprávnění zásad.
 
-Nyní spusťte následující příkazy v prostředí PowerShell.
+Nyní spusťte následující příkazy v prostředí PowerShell:
 
 ```powershell
 # Connect to Azure AD 

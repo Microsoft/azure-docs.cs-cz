@@ -6,13 +6,13 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 09/10/2018
-ms.openlocfilehash: 6d08dbe1976363be414597401d7a4efbae82c9b4
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.date: 10/12/2018
+ms.openlocfilehash: 9fefe75d43630a68a2d22bdc3270f255587030d0
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498432"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311002"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Požadavky Azure Disk Encryption (předchozí verze)
 
@@ -49,11 +49,22 @@ Příklad příkazy, které je možné připojit datové disky a vytvořte nezby
 
 ## <a name="bkmk_GPO"></a> Sítě a zásad skupiny
 
-**Povolit Azure Disk Encryption funkce, virtuální počítače IaaS musí splňovat následující požadavky na konfiguraci koncového bodu sítě:**
+**K povolení této funkce Azure Disk Encryption pomocí AAD starší syntaxe parametru, virtuální počítače IaaS, musí splňovat následující požadavky na konfiguraci koncového bodu sítě:** 
   - Získá token pro připojení k vašemu trezoru klíčů, musí být schopný se připojit k Azure Active Directory koncový bod, virtuálních počítačů IaaS \[login.microsoftonline.com\].
   - Zapsat šifrovací klíče do trezoru klíčů, musí být virtuální počítač IaaS může připojit ke koncovému bodu trezoru klíčů.
   - Virtuální počítač IaaS musí být schopný se připojit k koncový bod služby Azure storage, který je hostitelem úložiště rozšíření Azure a účet úložiště Azure, který je hostitelem souborů virtuálního pevného disku.
-  -  Pokud vaše zásady zabezpečení omezuje přístup z virtuálních počítačů Azure na Internetu, můžete vyřešit předchozí identifikátor URI a nakonfigurovat konkrétní pravidlo pro povolení odchozích připojení k IP adres. Další informace najdete v tématu [Azure Key Vault za bránou firewall](../key-vault/key-vault-access-behind-firewall.md).    
+  -  Pokud vaše zásady zabezpečení omezuje přístup z virtuálních počítačů Azure na Internetu, můžete vyřešit předchozí identifikátor URI a nakonfigurovat konkrétní pravidlo pro povolení odchozích připojení k IP adres. Další informace najdete v tématu [Azure Key Vault za bránou firewall](../key-vault/key-vault-access-behind-firewall.md).
+  - Na Windows, pokud byl explicitně zakázán protokol TLS 1.0 a verze rozhraní .NET se neaktualizoval na 4.6 nebo novější, následující změny registru povolí ADE vybrat novější verze TLS: "verze 5.00 Editor registru Windows
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
+        "SystemDefaultTlsVersions"=dword:00000001
+        "SchUseStrongCrypto"=dword:00000001
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
+        "SystemDefaultTlsVersions"=dword:00000001
+        "SchUseStrongCrypto"=dword:00000001` 
+
+ 
 
 
 **Zásady skupiny:**
@@ -65,7 +76,7 @@ Příklad příkazy, které je možné připojit datové disky a vytvořte nezby
 ## <a name="bkmk_PSH"></a> Prostředí Azure PowerShell
 [Prostředí Azure PowerShell](/powershell/azure/overview) poskytuje sadu rutin, které používá [Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md) modelu pro správu vašich prostředků Azure. Můžete ho použít ve svém prohlížeči prostřednictvím [Azure Cloud Shell](../cloud-shell/overview.md), nebo ho můžete nainstalovat na místním počítači použít v jakékoli relaci Powershellu pomocí následujícího postupu. Pokud už ho máte nainstalovaný místně, ujistěte se, že používáte nejnovější verzi sady SDK Azure Powershellu ke konfiguraci Azure Disk Encryption. Stáhněte si nejnovější verzi [prostředí Azure PowerShell verze](https://github.com/Azure/azure-powershell/releases).
 
-### <a name="install-azure-powershell-for-use-on-your-local-machine-optional"></a>Instalace Azure Powershellu pro použití v místním počítači (volitelné): 
+### <a name="install-azure-powershell-for-use-on-your-local-machine-optional"></a>Instalace Azure Powershellu pro použití v místním počítači (volitelné):  
 1. Postupujte podle pokynů v odkazech pro váš operační systém, pokračujte ale zbytek postupu níže.      
     - [Instalace a konfigurace Azure Powershellu pro Windows](/powershell/azure/install-azurerm-ps). 
         - Instalace modulu PowerShellGet, prostředí Azure PowerShell a načtení modulu AzureRM. 

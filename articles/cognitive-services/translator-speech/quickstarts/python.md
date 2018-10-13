@@ -1,44 +1,46 @@
 ---
-title: Rychlý start Pythonu pro Azure Cognitive Services, Microsoft Translator Speech API | Dokumentace Microsoftu
-description: Získat informace a ukázky kódu můžete rychle začít používat Microsoft Translator Speech API ve službě Microsoft Cognitive Services v Azure.
+title: 'Rychlý start: Rozhraní Translator Speech API v Pythonu'
+titlesuffix: Azure Cognitive Services
+description: Získejte informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní Translator Speech API.
 services: cognitive-services
-documentationcenter: ''
 author: v-jaswel
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-speech
-ms.topic: article
+ms.topic: quickstart
 ms.date: 07/17/2018
 ms.author: v-jaswel
-ms.openlocfilehash: a24ccd456df533542e7cbd2315fc1050cd82afbf
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
-ms.translationtype: MT
+ROBOTS: NOINDEX
+ms.openlocfilehash: 601e8473482cf6d90151b221309aef4d48d368d0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41987958"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46979011"
 ---
-# <a name="quickstart-for-microsoft-translator-speech-api-with-python"></a>Rychlý start pro Microsoft Translator Speech API s využitím Pythonu 
+# <a name="quickstart-translator-speech-api-with-python"></a>Rychlý start: Rozhraní Translator Speech API v Pythonu
 <a name="HOLTop"></a>
 
-V tomto článku se dozvíte, jak používat Microsoft Translator Speech API pro převod slova v souboru ve formátu WAV.
+V tomto článku se dozvíte, jak použít rozhraní Translator Speech API k překladu vyslovených slov do souboru .wav.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Budete potřebovat [Python 3.x](https://www.python.org/downloads/) tento kód spustit.
+Abyste mohli tento kód spustit, budete potřebovat [Python 3.x](https://www.python.org/downloads/).
 
-Budete muset nainstalovat [klient technologie websocket balíčku](https://pypi.python.org/pypi/websocket-client) pro Python.
+Budete muset nainstalovat [balíček websocket-client](https://pypi.python.org/pypi/websocket-client) pro Python.
 
-Budete potřebovat soubor WAV s názvem "speak.wav" ve stejné složce jako spustitelný soubor, který kompilaci z níže uvedeného kódu. Tento soubor ve formátu WAV musí být ve standardní PCM, 16 bitů, 16kHz, mono formátu. 
+Budete potřebovat soubor .wav s názvem „speak.wav“ ve stejné složce jako spustitelný soubor, který zkompilujete z níže uvedeného kódu. Tento soubor .wav musí být ve standardním 16bitovém, 16kHz monofonním formátu PCM. 
 
-Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **Microsoft Translator Speech API**. Budete potřebovat placené předplatné klíče z vašeho [řídicí panel Azure](https://portal.azure.com/#create/Microsoft.CognitiveServices).
+Musíte mít [účet rozhraní Cognitive Services API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s rozhraním **Microsoft Translator Speech API**. Budete potřebovat placené klíče předplatného ze svého [řídicího panelu Azure](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 
 ## <a name="translate-speech"></a>Překlad řeči
 
-Následující kód přeloží řeči z jednoho jazyka do druhého.
+Následující kód překládá řeč z jednoho jazyka do druhého.
 
-1. Vytvoření nového projektu Pythonu v oblíbeném prostředí IDE.
+1. V oblíbeném integrovaném vývojovém prostředí (IDE) vytvořte nový projekt Pythonu.
 2. Přidejte níže uvedený kód.
-3. Nahraďte `key` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Spuštění programu.
+3. Hodnotu `key` nahraďte přístupovým klíčem platným pro vaše předplatné.
+4. Spusťte program.
 
 ```python
 # -*- coding: utf-8 -*-
@@ -118,18 +120,18 @@ print ("Connecting...")
 client.run_forever()
 ```
 
-**Překlad řeči odpovědi**
+**Odpověď s přeloženou řečí**
 
-Úspěšný výsledek je vytvoření souboru s názvem "speak2.wav". Tento soubor obsahuje překlad slova, kterým se mluví ve "speak.wav".
+Úspěšným výsledkem je vytvoření souboru s názvem „speak2.wav“. Tento soubor obsahuje překlad vyslovených slov ze souboru „speak.wav“.
 
 [Zpět na začátek](#HOLTop)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Translator Speech kurz](../tutorial-translator-speech-csharp.md)
+> [Kurz ke službě Translator Speech](../tutorial-translator-speech-csharp.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech 
+## <a name="see-also"></a>Viz také 
 
-[Přehled rozhraní Translator Speech](../overview.md)
-[Reference k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)
+[Přehled služby Translator Speech](../overview.md)
+[Referenční materiály k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/07/2018
+ms.date: 10/12/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: a870ba238239a20af154f611f88e7c2fdb95f9f7
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 2e913881faadd4892ad1ebc8cb404efe6489eb0d
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870922"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310894"
 ---
 # <a name="azure-stack-1808-update"></a>Aktualizace služby Azure Stack. 1808
 
@@ -40,7 +40,7 @@ Je číslo sestavení aktualizace. Azure Stack 1808 **1.1808.0.97**.
 Tato aktualizace zahrnuje následující vylepšení pro službu Azure Stack.
 
 <!--  2682594   | IS  --> 
-- **Všechna prostředí Azure Stack teď použijte formát časového pásma koordinovaný univerzální čas (UTC).**  Všechny protokoly dat a související informace nyní zobrazuje ve formátu UTC. Při aktualizaci z předchozí verze, který nebyl nainstalován pomocí času UTC, vaše prostředí se aktualizuje a pomocí času UTC. 
+- **Všechna prostředí Azure Stack teď použijte formát časového pásma koordinovaný univerzální čas (UTC).**  Všechna data protokolů a související informace nyní zobrazit ve formátu UTC. Při aktualizaci z předchozí verze, který nebyl nainstalován pomocí času UTC, vaše prostředí se aktualizuje a pomocí času UTC. 
 
 <!-- 2437250  | IS  ASDK --> 
 - **Spravované disky se podporují.** Teď můžete použít Managed Disks v Azure stacku virtuální počítače a škálovací sady virtuálních počítačů. Další informace najdete v tématu [Azure Stack Managed Disks: rozdíly a aspekty](/azure/azure-stack/user/azure-stack-managed-disk-considerations).
@@ -52,7 +52,7 @@ Tato aktualizace zahrnuje následující vylepšení pro službu Azure Stack.
 - **Příprava hostitelském rozšíření**. Hostitel rozšíření můžete použít k zabezpečení služby Azure Stack pomůže snížením počtu požadované porty TCP/IP. S aktualizací. 1808 můžete připravit, Příprava služby Azure Stack pro rozšíření hostitele. Další informace najdete v tématu [Příprava hostitele rozšíření pro službu Azure Stack](/azure/azure-stack/azure-stack-extension-host-prepare).
 
 <!-- IS --> 
-- **Položky galerie pro Škálovací sady virtuálních počítačů jsou teď integrované**. Položka galerie Virtual Machine Scale Sets je teď k dispozici na portálech uživatele a správce bez nutnosti ho můžete stáhnout.  Pokud upgradujete na. 1808 je k dispozici po dokončení upgradu.  
+- **Položky galerie pro Škálovací sady virtuálních počítačů jsou teď součástí**. Položka galerie Virtual Machine Scale Sets je teď k dispozici na portálech uživatele a správce bez nutnosti ho můžete stáhnout.  Pokud upgradujete na. 1808 je k dispozici po dokončení upgradu.  
 
 <!-- IS, ASDK --> 
 - **Škálovací sada virtuálních počítačů škálování**. Můžete použít portál pro [škálování Škálovací sady virtuálních počítačů](azure-stack-compute-add-scalesets.md#scale-a-virtual-machine-scale-set) (VMSS).    
@@ -61,10 +61,10 @@ Tato aktualizace zahrnuje následující vylepšení pro službu Azure Stack.
 - **Podpora pro vlastní konfigurace zásad IPSec/IKE** pro [bran VPN Gateway ve službě Azure Stack](/azure/azure-stack/azure-stack-vpn-gateway-about-vpn-gateways).
 
 <!-- | IS ASDK--> 
-- **Položka marketplace Kubernetes**. Teď můžete nasadit clustery Kubernetes pomocí [položky Kubernetes Marketplace](azure-stack-solution-template-kubernetes-cluster-add.md). Uživatele můžete vybrat položku Kubernetes a vyplňte několik parametrů k nasazení clusteru Kubernetes do služby Azure Stack. Účelem šablony je usnadňují uživatelům, aby instalační program nasazení Kubernetes pro vývoj/testování v několika krocích.
+- **Položka marketplace Kubernetes**. Teď můžete nasadit clustery Kubernetes pomocí [položky Kubernetes Marketplace](azure-stack-solution-template-kubernetes-cluster-add.md). Uživatele můžete vybrat položku Kubernetes a vyplňte několik parametrů k nasazení clusteru Kubernetes do služby Azure Stack. Účelem šablony je usnadňují uživatelům, aby nastavení nasazení Kubernetes pro vývoj/testování v několika krocích.
 
 <!-- | IS ASDK--> 
-- **Blockchain šablony**. Teď můžete spustit [ethereum během nasazení consortium](azure-stack-ethereum.md) ve službě Azure Stack. Tři nové šablony v můžete najít [Azure Stack šablon pro rychlý Start](https://github.com/Azure/AzureStack-QuickStart-Templates). Povolit uživatele k nasazení a konfiguraci sítě konsorcia několika člen ethereum během s minimálními znalostmi Azure a Etherea. Účelem šablony je usnadňují uživatelům, aby instalační program pro vývoj/testování Blockchain nasazení v několika krocích.
+- **Blockchain šablony**. Teď můžete spustit [ethereum během nasazení consortium](azure-stack-ethereum.md) ve službě Azure Stack. Tři nové šablony v můžete najít [Azure Stack šablon pro rychlý Start](https://github.com/Azure/AzureStack-QuickStart-Templates). Povolit uživatele k nasazení a konfiguraci sítě konsorcia několika člen ethereum během s minimálními znalostmi Azure a Etherea. Účelem šablony je usnadňují uživatelům, aby nastavení pro vývoj/testování Blockchain nasazení v několika krocích.
 
 <!-- | IS ASDK--> 
 - **Rozhraní API verze profilu 2017-03-09-profile byla aktualizována na 2018-03-01hybridní**. Profily rozhraní API zadejte poskytovatel prostředků Azure a verze rozhraní API pro koncové body Azure REST. Další informace o profilech najdete v tématu [profilů verzí API spravovat ve službě Azure Stack](/azure/azure-stack/user/azure-stack-version-profiles).
@@ -145,6 +145,13 @@ Tato aktualizace obsahuje také ke zmírnění chyby zabezpečení spekulativní
 
 ### <a name="known-issues-with-the-update-process"></a>Známé problémy s proces aktualizace
 
+<!-- TBD - IS -->
+- Může se zobrazit následující upozornění se zobrazí opakovaně a zmizí v systému Azure Stack:
+   - *Instance role infrastruktury není k dispozici*
+   - *Uzel jednotka škálování je offline*
+   
+  Spusťte prosím [testovací AzureStack](azure-stack-diagnostic-test.md) rutina pro ověření stavu instance rolí infrastruktury a škálování jednotek uzlů. Pokud nejsou zjištěny žádné problémy podle [testovací AzureStack](azure-stack-diagnostic-test.md), tato upozornění můžete ignorovat. Pokud se zjistí problém, pokuste se spustit instanci role infrastruktury nebo uzlu pomocí portálu pro správu nebo prostředí PowerShell.
+
 - Při spuštění [testovací AzureStack](azure-stack-diagnostic-test.md) po 1808 aktualizaci, zobrazí se zpráva s upozorněním z řadič správy základní desky (BMC). Toto upozornění můžete ignorovat.
 
 <!-- 2468613 - IS --> 
@@ -170,7 +177,7 @@ Toto jsou známé problémy této verze sestavení po instalaci.
 - Technická dokumentace služby Azure Stack se zaměřuje na nejnovější verzi. Z důvodu portálu změn mezi verzemi co se zobrazí při použití na portálech Azure Stack se může lišit od naleznete v dokumentaci. 
 
 <!-- TBD - IS ASDK --> 
-- Může se zobrazit prázdný řídicí panel portálu. Obnovit řídicí panel, klikněte na tlačítko **upravit řídicí panel**, klikněte pravým tlačítkem myši a vyberte **resetovat do výchozího stavu**.
+- Může se zobrazit prázdný řídicí panel portálu. Obnovit řídicí panel, klikněte na tlačítko **upravit řídicí panel**, klikněte pravým tlačítkem a vyberte **resetovat do výchozího stavu**.
 
 <!-- 2930718 - IS ASDK --> 
 - Na portálu správce při přístupu k podrobnosti libovolné předplatné uživatele po zavření okna a kliknutím na **poslední**, se nezobrazí název předplatného uživatele.
@@ -226,7 +233,7 @@ Toto jsou známé problémy této verze sestavení po instalaci.
 
 
 <!-- 2812138 | IS --> 
-- Může se zobrazit upozornění pro **úložiště** komponenta, která mají následující podrobnosti:
+- Může se zobrazit upozornění pro **úložiště** komponenta, která obsahuje následující podrobnosti:
 
    - Název: Chyba interní komunikace se službou Storage  
    - ZÁVAŽNOST: kritické  

@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: yizhon
-ms.openlocfilehash: 0c2f39ed1610598ab4f7f857da3df817089bcb38
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 5e29dcde80da75fa70fe6dcbf35d7f319a5ca3cb
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044735"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311147"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Pro zařízení Azure IoT SDK pro jazyk C
 
@@ -87,29 +87,29 @@ Pokud nejste obeznámeni s nástroj device explorer, následující postup popis
 
 1. Chcete-li nainstalovat nástroj Průzkumník zařízení, najdete v článku [jak používat pro zařízení služby IoT Hub Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer).
 
-2. Když program spustíte, zobrazí se toto rozhraní:
+1. Když program spustíte, zobrazí se toto rozhraní:
 
   ![Snímek obrazovky Dvojčete Device Explorer](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinConfigTab.png)
 
-3. Zadejte vaše **připojovacího řetězce centra IoT** na první pole a klikněte na **aktualizace**. Tento krok nakonfiguruje nástroj, aby mohla komunikovat s centrem IoT. 
+1. Zadejte vaše **připojovacího řetězce centra IoT** na první pole a klikněte na **aktualizace**. Tento krok nakonfiguruje nástroj, aby mohla komunikovat s centrem IoT. 
 
 **Připojovací řetězec** najdete v části **služby Azure IoT Hub** > **nastavení** > **zásady sdíleného přístupu**  >  **iothubowner**.
 
-4. Pokud je nakonfigurovaná připojovací řetězec služby IoT Hub, klikněte na tlačítko **správu** kartu:
+1. Pokud je nakonfigurovaná připojovací řetězec služby IoT Hub, klikněte na tlačítko **správu** kartu:
 
   ![Dvojče Device Explorer / Správa – snímek obrazovky](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinManagementTab.png)
 
 Tato karta je, kde budete spravovat zařízení registrovaná ve službě IoT hub.
 
-5. Vytvoření zařízení kliknutím **vytvořit** tlačítko. Dialogové okno zobrazí sadu předem naplněných klíče (primární i sekundární). Zadejte **ID zařízení** a potom klikněte na tlačítko **vytvořit**.
+1. Vytvoření zařízení kliknutím **vytvořit** tlačítko. Dialogové okno zobrazí sadu předem naplněných klíče (primární i sekundární). Zadejte **ID zařízení** a potom klikněte na tlačítko **vytvořit**.
 
   ![Vytvořit snímek obrazovky zařízení](./media/iot-hub-device-sdk-c-intro/CreateDevice.png)
 
-6. Když se zařízení, zařízení seznam aktualizací se všechna registrovaná zařízení, včetně toho, který jste právě vytvořili. Pokud kliknete pravým tlačítkem nové zařízení, zobrazí tato nabídka:
+1. Když se zařízení, zařízení seznam aktualizací se všechna registrovaná zařízení, včetně toho, který jste právě vytvořili. Pokud kliknete pravým tlačítkem nové zařízení, zobrazí tato nabídka:
 
   ![Device Explorer Dvojčete klikněte pravým tlačítkem na výsledek](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinManagementTab_RightClick.png)
 
-7. Pokud se rozhodnete **zkopírujte připojovací řetězec pro vybrané zařízení**, připojovací řetězec zařízení je zkopírován do schránky. Zkopírujte připojovací řetězec zařízení. Když je potřebujete při spuštění ukázkové aplikace popsané v následujících částech.
+1. Pokud se rozhodnete **zkopírujte připojovací řetězec pro vybrané zařízení**, připojovací řetězec zařízení je zkopírován do schránky. Zkopírujte připojovací řetězec zařízení. Když je potřebujete při spuštění ukázkové aplikace popsané v následujících částech.
 
 Až provedete všechny výše uvedené kroky, jste připraveni začít spouštět nějaký kód. Většina ukázky obsahovat konstanty v horní části hlavní zdrojový soubor, který umožňuje zadat připojovací řetězec. Například odpovídající řádek z **iothub\_klienta\_ukázka\_mqtt** aplikace se zobrazí takto.
 
@@ -320,7 +320,7 @@ Použití **IoTHubMessage\_GetByteArray** funkce, která se načetla tuto zpráv
 
 Až to budete mít událostí odesílání a přijímání zpráv, můžete uninitialize knihovny IoT. Uděláte to tak, vydejte následující volání funkce:
 
-```
+```c
 IoTHubClient_LL_Destroy(iotHubClientHandle);
 ```
 

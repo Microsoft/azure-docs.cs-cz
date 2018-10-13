@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: dobett
-ms.openlocfilehash: 041eed3a65faeb4e6c19cd9220a9e6393e18532a
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 3e6e42da7f3c1423ecf2de507f3c2f0257fbb21f
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452203"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311231"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Vysvětlení registru identit ve službě IoT hub
 
@@ -29,7 +29,9 @@ Registr identit použijte, pokud potřebujete:
 * Řízení přístupu podle zařízení/za – moduly pro vaše Centrum zařízení nebo přístupem k modulu koncové body.
 
 > [!NOTE]
-> Registr identit neobsahuje žádná metadata specifická pro aplikaci.
+> * Registr identit neobsahuje žádná metadata specifická pro aplikaci.
+> * Dvojče zařízení identit a modul je ve verzi public preview. Následující funkce budou podporované v modulu identity po obecné k dispozici.
+>
 
 ## <a name="identity-registry-operations"></a>Operace registru identit
 
@@ -40,7 +42,6 @@ Registr identit služby IoT Hub zveřejňuje následující operace:
 * Načíst identitu zařízení nebo modul podle ID
 * Odstranit zařízení nebo modul identity
 * Seznam až 1 000 identit
-> Dvojče zařízení identit a modul je ve verzi public preview. Následující funkce budou podporované v modulu identity po obecné k dispozici.
 * Export identit zařízení do služby Azure blob storage
 * Importovat zařízení identit z úložiště objektů blob v Azure
 
@@ -60,7 +61,7 @@ Registr identit služby IoT Hub:
 > [!IMPORTANT]
 > Registr identit použijte pouze pro správu zařízení a zřizování operace. Vysoká propustnost operací v době běhu neměli spoléhat na provádění operací v registru identit. Například kontroluje se stav připojení zařízení před odesláním příkazu není podporovaný model. Ujistěte se, že ke kontrole [míru omezení](iot-hub-devguide-quotas-throttling.md) pro registr identit a [prezenčního signálu zařízení](iot-hub-devguide-identity-registry.md#device-heartbeat) vzor.
 
-## <a name="disable-devices"></a>Zakázat zařízení
+## <a name="disable-devices"></a>Zakázání zařízení
 
 Zařízení můžete zakázat aktualizací **stav** vlastnost identity v registru identit. Obvykle tuto vlastnost použijete ve dvou scénářích:
 

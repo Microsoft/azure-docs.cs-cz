@@ -1,7 +1,7 @@
 <!--
     Separate the generic "Get started" paragraph from each connector-* article in azure-docs-pr/articles/data-factory/ to ease future central update.
 -->
-Vytvoříte kanál s aktivitou kopírování pomocí jedné z následujících nástrojů nebo sad SDK. Vyberte odkaz přejděte na kurz s podrobnými pokyny k vytvoření kanálu s aktivitou kopírování. 
+Jeden z následujících nástrojů nebo sad SDK můžete použít aktivitu kopírování, která s kanálem. Vyberte odkaz na podrobné pokyny:
 
 - [Nástroj pro kopírování dat](../articles/data-factory/quickstart-create-data-factory-copy-data-tool.md)
 - [Azure Portal](../articles/data-factory/quickstart-create-data-factory-portal.md)
@@ -9,5 +9,5 @@ Vytvoříte kanál s aktivitou kopírování pomocí jedné z následujících n
 - [Python SDK](../articles/data-factory/quickstart-create-data-factory-python.md)
 - [Azure PowerShell](../articles/data-factory/quickstart-create-data-factory-powershell.md)
 - [REST API](../articles/data-factory/quickstart-create-data-factory-rest-api.md)
-- [Šablona Azure Resource Manageru](../articles/data-factory/quickstart-create-data-factory-resource-manager-template.md). 
+- [Šablona Azure Resource Manageru](../articles/data-factory/quickstart-create-data-factory-resource-manager-template.md)
 

@@ -10,12 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 5bd1b534386f38f8dd3a78bbd98ffd012875351f
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 5387eeacc78875ac0f38f96a6c83fb3f5791775e
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736151"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167610"
 ---
 #    <a name="text-merge-cognitive-skill"></a>Kognitivní dovednosti sloučení textu
 
@@ -122,7 +122,7 @@ Následující příklad dovednosti používá dovednosti optické rozpoznáván
       ],
       "outputs": [
         {
-          "name": "mergedText", "targetname" : "merged_text"
+          "name": "mergedText", "targetName" : "merged_text"
         }
       ]
     }
