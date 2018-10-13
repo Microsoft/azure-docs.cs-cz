@@ -20,7 +20,7 @@ items:
     href: asdk-advanced-eval.md
 - name: Postup
   items:
-  - name: Instalační program ASDK
+  - name: Nastavit ASDK
     items:
     - name: Stažení a extrakci development kit
       href: asdk-download.md
@@ -70,9 +70,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: Školení a certifikace
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 49a707294e6018355a2e355bffa2139057ba81f3
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: b02e610789ca77fa641d43957f4c00ed00b3ebc1
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023609"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309412"

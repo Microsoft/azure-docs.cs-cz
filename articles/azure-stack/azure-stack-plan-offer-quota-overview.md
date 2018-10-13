@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/07/2018
+ms.date: 10/12/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 70ed5d45701133434c708ad80aaafc58645297e8
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 343c29db4ac5fba37d8ea1b17862b86566ae15ca
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077112"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309191"
 ---
 # <a name="plan-offer-quota-and-subscription-overview"></a>Přehled plánů, nabídek, kvót a předplatných
 
@@ -40,7 +40,7 @@ Při předvádění služby postupujte podle těchto kroků:
 2. Vytvořte plán, který má jednu nebo víc služeb. Při vytváření plánu, vyberte nebo vytvořte kvóty, které definují omezení prostředků každé služby v plánu.
 3. Vytvořte nabídku, která obsahuje jeden nebo více plánů. Nabídka může obsahovat základní plány a volitelné doplňkové plány.
 
-Po vytvoření nabídky, uživatelé mohou přihlásit k mu umožní přístup k službám a prostředkům, které poskytuje tuto nabídku. Uživatelé můžou přihlásit k libovolný počet nabídek, jak chtějí. Následující diagram ukazuje jednoduchý příklad uživatele, který se připojila k dvou nabídek. Každá nabídka má plán jedné až dvou a každý plán jim uděluje přístup ke službám.
+Po vytvoření nabídky, uživatelé mohou přihlásit k mu umožní přístup k službám a prostředkům, které poskytuje tuto nabídku. Uživatelé můžou přihlásit k libovolný počet nabídek, jak chtějí. Následující obrázek znázorňuje jednoduchý příklad uživatele, který se připojila k dvou nabídek. Každá nabídka má plán jedné až dvou a každý plán jim uděluje přístup ke službám.
 
 ![Předplatného tenanta pomocí nabídky a plány](media/azure-stack-key-features/image4.png)
 
@@ -50,7 +50,7 @@ Plány představují seskupení jedné nebo více služeb. Jako operátory Azure
 
 ### <a name="quotas"></a>Kvóty
 
-Vám pomůžou spravovat kapacitu cloudu, můžete použít předem nakonfigurované kvóty nebo vytvořit novou kvótu pro každou službu v plánu. Kvóty definovat omezení horní prostředků, které můžete zřizovat nebo využívat předplatného uživatele. Například může kvótu umožňují uživateli vytvořit až pět virtuálních počítačů (VM). Nastavit další kvóty pro virtuální počítače, jako je například paměti RAM a procesorů jádra.
+Vám pomůžou spravovat kapacitu cloudu, můžete použít předem nakonfigurované *kvóty*, nebo vytvořit novou kvótu pro každou službu v plánu. Kvóty definovat omezení horní prostředků, které můžete zřizovat nebo využívat předplatného uživatele. Například může kvótu umožňují uživateli vytvořit až pět virtuálních počítačů (VM).
 
 Můžete konfigurovat kvóty podle oblasti. Plán, který poskytuje výpočetních služeb pro oblast A může mít například kvótu dva virtuální počítače s 4 GB paměti RAM a 8 jader procesoru.
 
@@ -61,7 +61,7 @@ Další informace o [typy kvót ve službě Azure Stack](azure-stack-quota-types
 
 ### <a name="base-plan"></a>Základní plán
 
-Při vytváření nabídky, Správce služeb můžete zahrnout základní plán. Tyto základní plány jsou zahrnuté ve výchozím nastavení, pokud se uživatel přihlásí k této nabídce. Pokud se uživatel přihlásí, mají přístup všechny poskytovatele prostředků podle těchto základních plánů (s odpovídajícím kvóty.)
+Při vytváření nabídky, Správce služeb můžete zahrnout základní plán. Tyto základní plány jsou zahrnuté ve výchozím nastavení, pokud se uživatel přihlásí k této nabídce. Pokud se uživatel přihlásí, mají přístup všechny poskytovatele prostředků podle těchto základních plánů (s odpovídajícím kvóty).
 
 ### <a name="add-on-plans"></a>Doplňkové plány
 
@@ -81,8 +81,8 @@ Každá kombinace uživatele, jejichž nabídka je jedinečný předplatné. Už
 
 ### <a name="default-provider-subscription"></a>Výchozí předplatné poskytovatele.
 
-Výchozí zprostředkovatel odběru se automaticky vytvoří při nasazení Azure Stack Development Kit. Toto předplatné můžete použít ke správě služby Azure Stack, nasadit další prostředků poskytovatele a vytvořit plány a nabídky pro uživatele. Zabezpečení a správy licencí z důvodů není vhodné používat pro spouštění úloh zákazníka a aplikací.
+Při nasazení Azure Stack Development Kit, je automaticky vytvořeno výchozí předplatné poskytovatele. Toto předplatné můžete použít ke správě služby Azure Stack, nasadit další prostředků poskytovatele a vytvořit plány a nabídky pro uživatele. Zabezpečení a správy licencí z důvodů není vhodné používat pro spouštění úloh zákazníka a aplikací.
 
 ## <a name="next-steps"></a>Další postup
 
-[Vytvoření plánu](azure-stack-create-plan.md)
+Další informace o plány a nabídky, naleznete v tématu [vytvořit plán](azure-stack-create-plan.md).
