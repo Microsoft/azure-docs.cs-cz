@@ -4,6 +4,18 @@ items:
   items:
   - name: Co je Content Moderator?
     href: overview.md
+- name: Šablony Rychlý start
+  items:
+  - name: Začínáme s Content Moderatorem
+    href: quick-start.md
+  - name: Pomocí sady .NET SDK
+    items:
+    - name: Kontrola obsahu obrázku
+      href: image-moderation-quickstart-dotnet.md
+    - name: Kontrola obsahu textu
+      href: text-moderation-quickstart-dotnet.md
+    - name: Kontrola obsahu videa
+      href: video-moderation-api.md
 - name: Ukázky
   items:
   - name: Ukázky .NET SDK
@@ -26,30 +38,20 @@ items:
   items:
   - name: Vyzkoušejte si Content Moderator
     items:
-    - name: Začínáme s Content Moderatorem
-      href: quick-start.md
     - name: Rozhraní API pro moderování
       items:
-      - name: Pomocná knihovna – .NET
-        href: content-moderator-helper-quickstart-dotnet.md
       - name: Obrázky – konzola API
         href: try-image-api.md
-      - name: Obrázky – .NET
-        href: image-moderation-quickstart-dotnet.md
+      - name: Kontrola obrázků proti vlastním seznamům
+        href: image-lists-quickstart-dotnet.md
       - name: Vlastní obrázky – konzola API
         href: try-image-list-api.md
-      - name: Vlastní obrázky – .NET
-        href: image-lists-quickstart-dotnet.md
       - name: Text – konzola API
         href: try-text-api.md
-      - name: Text – .NET
-        href: text-moderation-quickstart-dotnet.md
+      - name: Kontrola textu proti vlastním termínům
+        href: term-lists-quickstart-dotnet.md
       - name: Vlastní termíny – konzola API
         href: try-terms-list-api.md
-      - name: Vlastní termíny – .NET
-        href: term-lists-quickstart-dotnet.md
-      - name: Videa – .NET
-        href: video-moderation-api.md
     - name: Recenze rozhraní API
       items:
       - name: Úlohy – konzola API
@@ -132,9 +134,9 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
   - name: Webinář na vyžádání
     href: https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html
-ms.openlocfilehash: 32f0c64253836d3080cc815753e361d810e1f2e8
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 68febbe4e4206c774f75e1a07216eddf86dc5888
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433800"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309821"

@@ -1,23 +1,22 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f4ef48157896d7cf4947fbc8ef6eba8b59ec414b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7056f5478838eec1cccf6329e172d86ea90d4dd8
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986506"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311044"
 documentType: LandingData
-title: Azure Data Box pro offline přenos
+title: Dokumentace ke službě Azure Data Box – offline přenos
 metadata:
-  title: Dokumentace ke službě Azure Data Box pro offline přenos
-  description: Řada služeb Azure Data Box umožňuje přenášet stovky terabajtů dat do Azure rychlým, cenově dostupným a spolehlivým způsobem. Pokud vás při přenosu dat offline omezuje čas, síť nebo cena, použijte zařízení Data Box.
+  title: Dokumentace ke službě Azure Data Box – offline přenos
+  description: Pokud vás při offline přenosu dat do Azure omezuje čas, síť nebo cena, použijte zařízení Data Box.
   services: databox
   author: alkohli
   manager: twooley
   ms.service: databox
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: pod
   ms.topic: landing-page
-  ms.date: 09/24/2018
+  ms.date: 10/12/2018
   ms.author: alkohli
 abstract:
   description: Řada služeb Azure Data Box umožňuje přenášet stovky terabajtů dat do Azure rychlým, cenově dostupným a spolehlivým způsobem. Pokud vás při přenosu dat offline omezuje čas, síť nebo cena, použijte zařízení Data Box.<p>Podle velikosti vašich dat zvolte službu Data Box Disk, Data Box<SUP>Preview</SUP> nebo Data Box Heavy<SUP>Preview</SUP>. U každého zařízení probíhá přenos do Azure ve 4 snadných krocích – objednání, přijetí, kopírování dat na zařízení a vrácení zařízení do Azure. V datacentru Azure se data nahrají a potom vymažou.</p><p>Naučte se využívat službu Data Box pro offline přenos dat prostřednictvím našich šablon Rychlý start a kurzů.</p>

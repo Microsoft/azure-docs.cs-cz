@@ -349,9 +349,11 @@ items:
     href: storage-blob-static-website.md
   - name: Přenos dat
     items:
-    - name: AzCopy ve Windows
+    - name: AzCopy (v10)
+      href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - name: AzCopy ve Windows (v8)
       href: ../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: AzCopy v Linuxu
+    - name: AzCopy v Linuxu (v8)
       href: ../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Připojení služby Blob Storage jako systému souborů v Linuxu
       href: storage-how-to-mount-container-linux.md
@@ -459,9 +461,9 @@ items:
       href: https://github.com/Azure/azure-storage-ruby
     - name: iOS
       href: https://github.com/Azure/azure-storage-ios
-ms.openlocfilehash: bcbeff3cb506aefd47c26a548489d8f24f2ef2cd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 59e998f4e256ac730e5a7e1c572a1d5248a32cc8
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978161"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167031"

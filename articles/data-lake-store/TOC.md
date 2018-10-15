@@ -28,6 +28,7 @@
 ### [Řízení přístupu](data-lake-store-access-control.md)
 ### [Zabezpečení uložených dat](data-lake-store-secure-data.md)
 ### [Šifrování](data-lake-store-encryption.md)
+### [Integrace virtuální sítě (Preview)](data-lake-store-network-security.md)
 
 ## Ověřování s využitím služby Data Lake Storage Gen1
 ### [Možnosti ověřování](data-lakes-store-authentication-using-azure-active-directory.md)
@@ -97,7 +98,7 @@
 ## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/)
 ## [Blog služby Data Lake Store](https://blogs.msdn.microsoft.com/azuredatalake/)
 ## [Váš názor na UserVoice](https://feedback.azure.com/forums/327234-data-lake)
-## [Fórum na webu MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)
+## [Fórum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)
 ## [Ceny](https://azure.microsoft.com/pricing/details/data-lake-store/)
 ## [ Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)
 ## [Aktualizace služeb](https://azure.microsoft.com/updates/?product=data-lake-store)

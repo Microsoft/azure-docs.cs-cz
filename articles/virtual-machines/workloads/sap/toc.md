@@ -77,6 +77,7 @@
 #### [HA ve Windows se sdíleným diskem pro instanci (A)SCS](sap-high-availability-guide-wsfc-shared-disk.md)
 #### [HA ve Windows se sdílenou složkou SOFS pro instanci (A)SCS](sap-high-availability-guide-wsfc-file-share.md)
 #### [HA v SUSE Linuxu pro instanci (A)SCS](high-availability-guide-suse.md)
+#### [Vysoká dostupnost v Red Hat Enterprise Linuxu pro instanci (A)SCS](high-availability-guide-rhel.md)
 ### Příprava infrastruktury Azure
 #### [Windows se sdíleným diskem pro instanci (A)SCS](sap-high-availability-infrastructure-wsfc-shared-disk.md)
 #### [Windows se sdílenou složkou SOFS pro instanci (A)SCS](sap-high-availability-infrastructure-wsfc-file-share.md)

@@ -1,6 +1,12 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: fbe7b703df033a3feacfa20e17868885e459c7e7
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311130"
 documentType: LandingData
-title: Dokumentace k Azure Lab Services (dříve DevTest Labs) ve verzi Preview
+title: Dokumentace k Azure Lab Services ve verzi Preview a Azure DevTest Labs
 metadata:
   title: Dokumentace ke službě Azure Lab Services – kurzy, reference k rozhraní API | Microsoft Docs
   description: Naučte se využívat Azure Lab Services k rychlému nastavení testovacího prostředí pro vývoj, testování, hackathon nebo učebnu pro váš tým nebo studenty v cloudu. Kurzy, ukázky a další materiály Azure ukazují, jak vytvářet, spravovat a zabezpečovat testovací prostředí.
@@ -13,12 +19,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/06/2018
   ms.author: spelluru
-  ms.openlocfilehash: 1b37824b113fd9b1aaf225c5cb24b2dd27f1b47f
-  ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-  ms.translationtype: HT
-  ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/01/2018
-  ms.locfileid: "34636694"
 abstract:
   description: Naučte se využívat Azure Lab Services k rychlému nastavení testovacího prostředí pro vývoj, testování, hackathon nebo učebnu pro váš tým nebo studenty v cloudu. Kurzy, ukázky a další materiály Azure ukazují, jak vytvářet, spravovat a zabezpečovat testovací prostředí.
 sections:
