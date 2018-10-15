@@ -1,6 +1,6 @@
 ---
-title: Pomocí značek v obsahu moderátora Azure | Microsoft Docs
-description: Obsahu moderátora zahrnuje výchozí značky a můžete vytvořit vlastní značky pro moderování obsahu, které jsou specifické pro vaši firmu.
+title: Pomocí značek v Azure Content Moderator | Dokumentace Microsoftu
+description: Content Moderator zahrnuje výchozí značky a můžete vytvořit vlastní značky pro moderování obsahu, které jsou specifické pro vaše podnikání.
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
@@ -9,45 +9,45 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 06/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: add4c685c07c63944ae89f48a47ac78df28c1623
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c462ff2937453f942db7fdd5b751f3356b6fe715
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342411"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310075"
 ---
-# <a name="about-tags"></a>O značky #
+# <a name="about-tags"></a>Informace o značkách #
 
-Kromě dvě výchozí značky (isracy – isadult a r –) můžete vytvořit vlastní značky pro více cílové kontrolu. Tyto vlastní značky jsou pak dostupné pro lidské kontroloři přiřadit bitové kopie nebo text.
+Kromě značek dvě výchozí **isadult** (**a**) a **isracy** (**r**), můžete vytvořit vlastní značky více určených pro vyhledávání. Tyto vlastní značky jsou pak k dispozici pro lidské kontrolorům přiřadit Image nebo text.
 
 ## <a name="create-tags"></a>Vytvoření značky ##
 
 1.  Na kartě Nastavení vyberte značky.
 
-  ![Značky obsahu přerušování](images/tags-1.png)
+  ![Moderování obsahu značky](images/tags-1.png)
 
-2.  Zadejte krátký kód dvoupísmenným pro značku.
-3.  Zadejte název pro značku. Zachovejte krátký a popisný název. Například "isNudity".
+2.  Zadejte krátký kód dvoupísmenné pro značku.
+3.  Zadejte název značky. Zachovejte krátký a popisný název. Například **isbullying**.
 4.  Zadejte popis.
 5.  Klikněte na Přidat.
-6.  Po dokončení vytváření značky, klikněte na tlačítko Uložit.
+6.  Po dokončení vytváření značky, klikněte na Uložit.
 
-![Definování obsahu přerušování značky](images/tags-2-define.png)
+![Definování značek moderování obsahu](images/tags-2-define.png)
 
-## <a name="using-custom-tags"></a>Pomocí vlastních značek ##
+## <a name="using-custom-tags"></a>Použití vlastní značky ##
 
-Vlastní značky se používají při lidského revize. Zobrazené v náhledu a kontrolorovi vybere ho kliknutím na.
+Vlastní značky se používají během recenze prováděné lidmi. Zobrazí se ve verzi preview a kontrolor výběru kliknutím na.
 
-![Pomocí značek obsahu přerušování](images/tags-3-use.png)
+![Pomocí značek pro moderování obsahu](images/tags-3-use.png)
 
-Jiné značky pro různé recenze, můžete vypnout pomocí zaškrtnutí je viditelné.
+Různých klíčových slov pro jiné kontroly můžete vypnout zaškrtnutím nebo zrušením zaškrtnutí je viditelné.
  
-![Zakázání obsahu přerušování značky](images/tags-4-disable.png)
+![Zakázání moderování obsahu značky](images/tags-4-disable.png)
 
-I když nelze odstranit dvě výchozí značky, isadult a isracy, můžete odstranit všechny vlastní značky, které jste definovali. Klikněte na tlačítko paměti může vedle značky, které chcete odstranit.
+I když nelze odstranit dvě výchozí značky, **isadult** a **isracy**, odstraníte všechny vlastní značky, které jste definovali. Klikněte na ikonu koše vedle značku, kterou chcete odstranit.
 
-![Odstranění obsahu přerušování značky](images/tags-5-delete.png)
+![Moderování obsahu značky](images/tags-5-delete.png)
 
 ## <a name="next-steps"></a>Další postup ##
 
-Naučte se používat značky pro přerušování image, najdete v tématu [postup zkontrolujte moderované image](Review-Moderated-Images.md).
+Další informace o použití značek pro moderování obrázků, najdete v článku [kontroly, který image](Review-Moderated-Images.md).

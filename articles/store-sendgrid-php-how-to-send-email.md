@@ -14,14 +14,15 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
-ms.openlocfilehash: 846002264d5f709f7cef6bba67927fc8959a9ccb
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: c3627cdbabb38c2236a8a433e9d82d78fe502e4c
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42056798"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311081"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>Jak používat službu e-mailu Sendgridu z PHP
+
 Tato příručka ukazuje, jak k provádění běžných programovacích úloh s e-mailové služby SendGrid v Azure. Ukázky jsou napsané v jazyce PHP.
 Mezi popsané scénáře patří **vytváření e-mailu**, **odesílání e-mailů**, a **přidávání příloh**. Další informace o SendGrid a odesílání e-mailu, najdete v článku [další kroky](#next-steps) oddílu.
 
@@ -38,349 +39,374 @@ SendGrid je [založené na cloudu e-mailové služby] , která poskytuje spolehl
 Další informace najdete v tématu [ https://sendgrid.com ] [ https://sendgrid.com].
 
 ## <a name="create-a-sendgrid-account"></a>Vytvoření účtu SendGrid
+
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
 ## <a name="using-sendgrid-from-your-php-application"></a>Pomocí služby SendGrid z vaší aplikace PHP
+
 V aplikaci PHP v Azure pomocí Sendgridu vyžaduje žádná zvláštní konfigurace nebo psaní kódu. Protože SendGrid je služba, mohou být přístupné přesně stejným způsobem z cloudové aplikace, jako se můžete z místní aplikace.
 
 ## <a name="how-to-send-an-email"></a>Postupy: odesílání e-mailu
+
 Můžete odeslat e-mailu přes SMTP nebo webové rozhraní API, které SendGrid poskytuje.
 
 ### <a name="smtp-api"></a>ROZHRANÍ SMTP API
-Chcete-li odeslat e-mailu pomocí rozhraní API SendGrid SMTP, použijte *Swift poštovní*, knihovnu založených na komponentách odesílání e-mailů z aplikací PHP. Si můžete stáhnout *Swift poštovní* knihovnu z [http://swiftmailer.org/download] [https://swiftmailer.symfony.com/] v5.3.0 (použijte [Composer] instalace poštovní Swift). Odesílání e-mailů s knihovnou zahrnuje vytvoření instance <span class="auto-style2">Swift\_SmtpTransport</span>, <span class="auto-style2">Swift\_poštovní</span>, a <span class="auto-style2">Swift\_zprávy </span> tříd, nastavení příslušné vlastnosti a volání <span class="auto-style2">Swift\_Mailer::send</span> metody.
 
-    <?php
-     include_once "vendor/autoload.php";
-     /*
-      * Create the body of the message (a plain-text and an HTML version).
-      * $text is your plain-text email
-      * $html is your html version of the email
-      * If the receiver is able to view html emails then only the html
-      * email will be displayed
-      */
-     $text = "Hi!\nHow are you?\n";
-     $html = "<html>
-           <head></head>
-           <body>
-               <p>Hi!<br>
-                   How are you?<br>
-               </p>
-           </body>
-           </html>";
-     // This is your From email address
-     $from = array('someone@example.com' => 'Name To Appear');
-     // Email recipients
-     $to = array(
-           'john@contoso.com'=>'Destination 1 Name',
-           'anna@contoso.com'=>'Destination 2 Name'
-     );
-     // Email subject
-     $subject = 'Example PHP Email';
+Chcete-li odeslat e-mailu pomocí rozhraní API SendGrid SMTP, použijte *Swift poštovní*, knihovnu založených na komponentách odesílání e-mailů z aplikací PHP. Si můžete stáhnout [Swift poštovní knihovny](https://swiftmailer.symfony.com/) v5.3.0 (použijte [Composer] instalace poštovní Swift). Odesílání e-mailů s knihovnou zahrnuje vytvoření instance `Swift\_SmtpTransport`, `Swift\_Mailer`, a `Swift\_Message` tříd, nastavení příslušné vlastnosti a volání `Swift\_Mailer::send` metody.
 
-     // Login credentials
-     $username = 'yoursendgridusername';
-     $password = 'yourpassword';
+```php
+<?php
+ include_once "vendor/autoload.php";
+ /*
+  * Create the body of the message (a plain-text and an HTML version).
+  * $text is your plain-text email
+  * $html is your html version of the email
+  * If the receiver is able to view html emails then only the html
+  * email will be displayed
+  */
+ $text = "Hi!\nHow are you?\n";
+ $html = "<html>
+       <head></head>
+       <body>
+           <p>Hi!<br>
+               How are you?<br>
+           </p>
+       </body>
+       </html>";
+ // This is your From email address
+ $from = array('someone@example.com' => 'Name To Appear');
+ // Email recipients
+ $to = array(
+       'john@contoso.com'=>'Destination 1 Name',
+       'anna@contoso.com'=>'Destination 2 Name'
+ );
+ // Email subject
+ $subject = 'Example PHP Email';
 
-     // Setup Swift mailer parameters
-     $transport = Swift_SmtpTransport::newInstance('smtp.sendgrid.net', 587);
-     $transport->setUsername($username);
-     $transport->setPassword($password);
-     $swift = Swift_Mailer::newInstance($transport);
+ // Login credentials
+ $username = 'yoursendgridusername';
+ $password = 'yourpassword';
 
-     // Create a message (subject)
-     $message = new Swift_Message($subject);
+ // Setup Swift mailer parameters
+ $transport = Swift_SmtpTransport::newInstance('smtp.sendgrid.net', 587);
+ $transport->setUsername($username);
+ $transport->setPassword($password);
+ $swift = Swift_Mailer::newInstance($transport);
 
-     // attach the body of the email
-     $message->setFrom($from);
-     $message->setBody($html, 'text/html');
-     $message->setTo($to);
-     $message->addPart($text, 'text/plain');
+ // Create a message (subject)
+ $message = new Swift_Message($subject);
 
-     // send message
-     if ($recipients = $swift->send($message, $failures))
-     {
-         // This will let us know how many users received this message
-         echo 'Message sent out to '.$recipients.' users';
-     }
-     // something went wrong =(
-     else
-     {
-         echo "Something went wrong - ";
-         print_r($failures);
-     }
+ // attach the body of the email
+ $message->setFrom($from);
+ $message->setBody($html, 'text/html');
+ $message->setTo($to);
+ $message->addPart($text, 'text/plain');
+
+ // send message
+ if ($recipients = $swift->send($message, $failures))
+ {
+     // This will let us know how many users received this message
+     echo 'Message sent out to '.$recipients.' users';
+ }
+ // something went wrong =(
+ else
+ {
+     echo "Something went wrong - ";
+     print_r($failures);
+ }
+```
 
 ### <a name="web-api"></a>Web API
 Použití PHP na [curl funkce] [ curl function] k odesílání e-mailu pomocí webového rozhraní API SendGrid.
 
-    <?php
+```php
+<?php
 
-     $url = 'https://api.sendgrid.com/';
-     $user = 'USERNAME';
-     $pass = 'PASSWORD';
+ $url = 'https://api.sendgrid.com/';
+ $user = 'USERNAME';
+ $pass = 'PASSWORD';
 
-     $params = array(
-          'api_user' => $user,
-          'api_key' => $pass,
-          'to' => 'john@contoso.com',
-          'subject' => 'testing from curl',
-          'html' => 'testing body',
-          'text' => 'testing body',
-          'from' => 'anna@contoso.com',
-       );
+ $params = array(
+      'api_user' => $user,
+      'api_key' => $pass,
+      'to' => 'john@contoso.com',
+      'subject' => 'testing from curl',
+      'html' => 'testing body',
+      'text' => 'testing body',
+      'from' => 'anna@contoso.com',
+   );
 
-     $request = $url.'api/mail.send.json';
+ $request = $url.'api/mail.send.json';
 
-     // Generate curl request
-     $session = curl_init($request);
+ // Generate curl request
+ $session = curl_init($request);
 
-     // Tell curl to use HTTP POST
-     curl_setopt ($session, CURLOPT_POST, true);
+ // Tell curl to use HTTP POST
+ curl_setopt ($session, CURLOPT_POST, true);
 
-     // Tell curl that this is the body of the POST
-     curl_setopt ($session, CURLOPT_POSTFIELDS, $params);
+ // Tell curl that this is the body of the POST
+ curl_setopt ($session, CURLOPT_POSTFIELDS, $params);
 
-     // Tell curl not to return headers, but do return the response
-     curl_setopt($session, CURLOPT_HEADER, false);
-     curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+ // Tell curl not to return headers, but do return the response
+ curl_setopt($session, CURLOPT_HEADER, false);
+ curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
 
-     // obtain response
-     $response = curl_exec($session);
-     curl_close($session);
+ // obtain response
+ $response = curl_exec($session);
+ curl_close($session);
 
-     // print everything out
-     print_r($response);
+ // print everything out
+ print_r($response);
+```
 
 Webové rozhraní API Sendgridu je velmi podobný rozhraní REST API, když není skutečně rozhraní RESTful API, protože ve většině volání, jak získat a operací POST zaměnitelné.
 
 ## <a name="how-to-add-an-attachment"></a>Postupy: Přidání přílohy
+
 ### <a name="smtp-api"></a>ROZHRANÍ SMTP API
+
 Odeslání přílohy pomocí rozhraní SMTP API zahrnuje jeden další řádek kódu na ukázkový skript pro odeslání e-mailu s poštovní Swift.
 
-    <?php
-     include_once "vendor/autoload.php";
-     /*
-      * Create the body of the message (a plain-text and an HTML version).
-      * $text is your plain-text email
-      * $html is your html version of the email
-      * If the reciever is able to view html emails then only the html
-      * email will be displayed
-      */
-     $text = "Hi!\nHow are you?\n";
-      $html = "<html>
-          <head></head>
-          <body>
-             <p>Hi!<br>
-                How are you?<br>
-             </p>
-          </body>
-          </html>";
+```php
+<?php
+ include_once "vendor/autoload.php";
+ /*
+  * Create the body of the message (a plain-text and an HTML version).
+  * $text is your plain-text email
+  * $html is your html version of the email
+  * If the reciever is able to view html emails then only the html
+  * email will be displayed
+  */
+ $text = "Hi!\nHow are you?\n";
+  $html = "<html>
+      <head></head>
+      <body>
+         <p>Hi!<br>
+            How are you?<br>
+         </p>
+      </body>
+      </html>";
 
-     // This is your From email address
-     $from = array('someone@example.com' => 'Name To Appear');
+ // This is your From email address
+ $from = array('someone@example.com' => 'Name To Appear');
 
-     // Email recipients
-     $to = array(
-          'john@contoso.com'=>'Destination 1 Name',
-          'anna@contoso.com'=>'Destination 2 Name'
-     );
-     // Email subject
-     $subject = 'Example PHP Email';
+ // Email recipients
+ $to = array(
+      'john@contoso.com'=>'Destination 1 Name',
+      'anna@contoso.com'=>'Destination 2 Name'
+ );
+ // Email subject
+ $subject = 'Example PHP Email';
 
-     // Login credentials
-     $username = 'yoursendgridusername';
-     $password = 'yourpassword';
+ // Login credentials
+ $username = 'yoursendgridusername';
+ $password = 'yourpassword';
 
-     // Setup Swift mailer parameters
-     $transport = Swift_SmtpTransport::newInstance('smtp.sendgrid.net', 587);
-     $transport->setUsername($username);
-     $transport->setPassword($password);
-     $swift = Swift_Mailer::newInstance($transport);
+ // Setup Swift mailer parameters
+ $transport = Swift_SmtpTransport::newInstance('smtp.sendgrid.net', 587);
+ $transport->setUsername($username);
+ $transport->setPassword($password);
+ $swift = Swift_Mailer::newInstance($transport);
 
-     // Create a message (subject)
-     $message = new Swift_Message($subject);
+ // Create a message (subject)
+ $message = new Swift_Message($subject);
 
-     // attach the body of the email
-     $message->setFrom($from);
-     $message->setBody($html, 'text/html');
-     $message->setTo($to);
-     $message->addPart($text, 'text/plain');
-     $message->attach(Swift_Attachment::fromPath("path\to\file")->setFileName("file_name"));
+ // attach the body of the email
+ $message->setFrom($from);
+ $message->setBody($html, 'text/html');
+ $message->setTo($to);
+ $message->addPart($text, 'text/plain');
+ $message->attach(Swift_Attachment::fromPath("path\to\file")->setFileName("file_name"));
 
-     // send message
-     if ($recipients = $swift->send($message, $failures))
-     {
-          // This will let us know how many users received this message
-          echo 'Message sent out to '.$recipients.' users';
-     }
-     // something went wrong =(
-     else
-     {
-          echo "Something went wrong - ";
-          print_r($failures);
-     }
+ // send message
+ if ($recipients = $swift->send($message, $failures))
+ {
+      // This will let us know how many users received this message
+      echo 'Message sent out to '.$recipients.' users';
+ }
+ // something went wrong =(
+ else
+ {
+      echo "Something went wrong - ";
+      print_r($failures);
+ }
+```
 
 Další řádek kódu vypadá takto:
 
-     $message->attach(Swift_Attachment::fromPath("path\to\file")->setFileName('file_name'));
+```php
+ $message->attach(Swift_Attachment::fromPath("path\to\file")->setFileName('file_name'));
+```
 
-Tento řádek kódu volá metodu připojení na <span class="auto-style2">Swift\_zpráva</span> objektu a používá statickou metodu <span class="auto-style2">fromPath</span> na <span class="auto-style2">Swift\_přílohy</span> Třída pro získání a připojit soubor na zprávu.
+Tento řádek kódu volá metodu připojení na `Swift\_Message` objektu a používá statickou metodu `fromPath` na `Swift\_Attachment` třídy k získání a připojit soubor na zprávu.
 
 ### <a name="web-api"></a>Web API
+
 Odeslání přílohy pomocí rozhraní Web API je velmi podobný jako poslání e-mailu pomocí rozhraní Web API. Mějte však na paměti, že v následujícím příkladu pole parametrů musí obsahovat tento element:
 
+```php
     'files['.$fileName.']' => '@'.$filePath.'/'.$fileName
+```
 
-Příklad:
+#### <a name="example"></a>Příklad:
 
-    <?php
+```php
+<?php
 
-     $url = 'https://api.sendgrid.com/';
-     $user = 'USERNAME';
-     $pass = 'PASSWORD';
+ $url = 'https://api.sendgrid.com/';
+ $user = 'USERNAME';
+ $pass = 'PASSWORD';
 
-     $fileName = 'myfile';
-     $filePath = dirname(__FILE__);
+ $fileName = 'myfile';
+ $filePath = dirname(__FILE__);
 
-     $params = array(
-         'api_user' => $user,
-         'api_key' => $pass,
-         'to' =>'john@contoso.com',
-         'subject' => 'test of file sends',
-         'html' => '<p> the HTML </p>',
-         'text' => 'the plain text',
-         'from' => 'anna@contoso.com',
-         'files['.$fileName.']' => '@'.$filePath.'/'.$fileName
-     );
+ $params = array(
+     'api_user' => $user,
+     'api_key' => $pass,
+     'to' =>'john@contoso.com',
+     'subject' => 'test of file sends',
+     'html' => '<p> the HTML </p>',
+     'text' => 'the plain text',
+     'from' => 'anna@contoso.com',
+     'files['.$fileName.']' => '@'.$filePath.'/'.$fileName
+ );
 
-     print_r($params);
+ print_r($params);
 
-     $request = $url.'api/mail.send.json';
+ $request = $url.'api/mail.send.json';
 
-     // Generate curl request
-     $session = curl_init($request);
+ // Generate curl request
+ $session = curl_init($request);
 
-     // Tell curl to use HTTP POST
-     curl_setopt ($session, CURLOPT_POST, true);
+ // Tell curl to use HTTP POST
+ curl_setopt ($session, CURLOPT_POST, true);
 
-     // Tell curl that this is the body of the POST
-     curl_setopt ($session, CURLOPT_POSTFIELDS, $params);
+ // Tell curl that this is the body of the POST
+ curl_setopt ($session, CURLOPT_POSTFIELDS, $params);
 
-     // Tell curl not to return headers, but do return the response
-     curl_setopt($session, CURLOPT_HEADER, false);
-     curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+ // Tell curl not to return headers, but do return the response
+ curl_setopt($session, CURLOPT_HEADER, false);
+ curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
 
-     // obtain response
-     $response = curl_exec($session);
-     curl_close($session);
+ // obtain response
+ $response = curl_exec($session);
+ curl_close($session);
 
-     // print everything out
-     print_r($response);
+ // print everything out
+ print_r($response);
+```
 
 ## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>Postupy: použití filtrů k povolení zápatí, sledování a analýza
-SendGrid umožňuje zajistit další e-mailové funkce prostřednictvím "filtry". Toto jsou nastavení, které lze přidat do e-mailovou zprávu povolit konkrétní funkce, jako například povolení sledování kliknutí, Google analytics, předplatné, sledování a tak dále.
 
-Pomocí vlastnosti filtry můžete na zprávu použity filtry. Každý filtr je určená hodnotu hash, který obsahuje nastavení specifická pro filtr. Následující příklad povolí filtr zápatí a určuje textovou zprávu, která se připojí k dolnímu okraji e-mailové zprávy.
-V tomto příkladu budeme používat [knihovny sendgrid php].
+SendGrid umožňuje zajistit další e-mailové funkce prostřednictvím *filtry*. Toto jsou nastavení, které lze přidat do e-mailovou zprávu povolit konkrétní funkce, jako například povolení sledování kliknutí, Google analytics, předplatné, sledování a tak dále.
+
+Pomocí vlastnosti filtry můžete na zprávu použity filtry. Každý filtr je určená hodnotu hash, který obsahuje nastavení specifická pro filtr. Následující příklad povolí filtr zápatí a určuje textovou zprávu, která se připojí k dolnímu okraji e-mailové zprávy. V tomto příkladu budeme používat [Knihovna sendgrid php].
+
 Použití [Composer] k instalaci knihovny:
 
-    php composer.phar require sendgrid/sendgrid 2.1.1
+```bash
+php composer.phar require sendgrid/sendgrid 2.1.1
+```
 
-Příklad:    
+### <a name="example"></a>Příklad:  
 
-    <?php
-     /*
-      * This example is used for sendgrid-php V2.1.1 (https://github.com/sendgrid/sendgrid-php/tree/v2.1.1)
-      */
-     include "vendor/autoload.php";
+```php
+<?php
+ /*
+  * This example is used for sendgrid-php V2.1.1 (https://github.com/sendgrid/sendgrid-php/tree/v2.1.1)
+  */
+ include "vendor/autoload.php";
 
-     $email = new SendGrid\Email();
-     // The list of addresses this message will be sent to
-     // [This list is used for sending multiple emails using just ONE request to SendGrid]
-     $toList = array('john@contoso.com', 'anna@contoso.com');
+ $email = new SendGrid\Email();
+ // The list of addresses this message will be sent to
+ // [This list is used for sending multiple emails using just ONE request to SendGrid]
+ $toList = array('john@contoso.com', 'anna@contoso.com');
 
-     // Specify the names of the recipients
-     $nameList = array('Name 1', 'Name 2');
+ // Specify the names of the recipients
+ $nameList = array('Name 1', 'Name 2');
 
-     // Used as an example of variable substitution
-     $timeList = array('4 PM', '5 PM');
+ // Used as an example of variable substitution
+ $timeList = array('4 PM', '5 PM');
 
-     // Set all of the above variables
-     $email->setTos($toList);
-     $email->addSubstitution('-name-', $nameList);
-     $email->addSubstitution('-time-', $timeList);
+ // Set all of the above variables
+ $email->setTos($toList);
+ $email->addSubstitution('-name-', $nameList);
+ $email->addSubstitution('-time-', $timeList);
 
-     // Specify that this is an initial contact message
-     $email->addCategory("initial");
+ // Specify that this is an initial contact message
+ $email->addCategory("initial");
 
-     // You can optionally setup individual filters here, in this example, we have
-     // enabled the footer filter
-     $email->addFilter('footer', 'enable', 1);
-     $email->addFilter('footer', "text/plain", "Thank you for your business");
-     $email->addFilter('footer', "text/html", "Thank you for your business");
+ // You can optionally setup individual filters here, in this example, we have
+ // enabled the footer filter
+ $email->addFilter('footer', 'enable', 1);
+ $email->addFilter('footer', "text/plain", "Thank you for your business");
+ $email->addFilter('footer', "text/html", "Thank you for your business");
 
-     // The subject of your email
-     $subject = 'Example SendGrid Email';
+ // The subject of your email
+ $subject = 'Example SendGrid Email';
 
-     // Where is this message coming from. For example, this message can be from
-     // support@yourcompany.com, info@yourcompany.com
-     $from = 'someone@example.com';
+ // Where is this message coming from. For example, this message can be from
+ // support@yourcompany.com, info@yourcompany.com
+ $from = 'someone@example.com';
 
-     // If you do not specify a sender list above, you can specifiy the user here. If
-     // a sender list IS specified above, this email address becomes irrelevant.
-     $to = 'john@contoso.com';
+ // If you do not specify a sender list above, you can specifiy the user here. If
+ // a sender list IS specified above, this email address becomes irrelevant.
+ $to = 'john@contoso.com';
 
-     # Create the body of the message (a plain-text and an HTML version).
-     # text is your plain-text email
-     # html is your html version of the email
-     # if the receiver is able to view html emails then only the html
-     # email will be displayed
+ # Create the body of the message (a plain-text and an HTML version).
+ # text is your plain-text email
+ # html is your html version of the email
+ # if the receiver is able to view html emails then only the html
+ # email will be displayed
 
-     /*
-      * Note the variable substitution here =)
-      */
-     $text = "
-     Hello -name-,
-     Thank you for your interest in our products. We have set up an appointment to call you at -time- EST to discuss your needs in more detail.
-     Regards,
-     Fred";
+ /*
+  * Note the variable substitution here =)
+  */
+ $text = "
+ Hello -name-,
+ Thank you for your interest in our products. We have set up an appointment to call you at -time- EST to discuss your needs in more detail.
+ Regards,
+ Fred";
 
-     $html = "
-     <html>
-     <head></head>
-     <body>
-     <p>Hello -name-,<br>
-     Thank you for your interest in our products. We have set up an appointment
-     to call you at -time- EST to discuss your needs in more detail.
+ $html = "
+ <html>
+ <head></head>
+ <body>
+ <p>Hello -name-,<br>
+ Thank you for your interest in our products. We have set up an appointment
+ to call you at -time- EST to discuss your needs in more detail.
 
-     Regards,
+ Regards,
 
-     Fred<br>
-     </p>
-     </body>
-     </html>";
+ Fred<br>
+ </p>
+ </body>
+ </html>";
 
-     // set subject
-     $email->setSubject($subject);
+ // set subject
+ $email->setSubject($subject);
 
-     // attach the body of the email
-     $email->setFrom($from);
-     $email->setHtml($html);
-     $email->addTo($to);
-     $email->setText($text);
+ // attach the body of the email
+ $email->setFrom($from);
+ $email->setHtml($html);
+ $email->addTo($to);
+ $email->setText($text);
 
-     // Your SendGrid account credentials
-     $username = 'sendgridusername@yourdomain.com';
-     $password = 'example';
+ // Your SendGrid account credentials
+ $username = 'sendgridusername@yourdomain.com';
+ $password = 'example';
 
-     // Create SendGrid object
-     $sendgrid = new SendGrid($username, $password);
+ // Create SendGrid object
+ $sendgrid = new SendGrid($username, $password);
 
-     // send message
-     $response = $sendgrid->send($email);
+ // send message
+ $response = $sendgrid->send($email);
 
-     print_r($response);
+ print_r($response);
+ ```
 
 ## <a name="next-steps"></a>Další kroky
+
 Teď, když jste se naučili základy služby e-mailu Sendgridu, použijte tyto odkazy na další informace.
 
 * SendGrid dokumentace: <https://sendgrid.com/docs>
@@ -397,5 +423,5 @@ Další informace najdete v tématu taky [středisko pro vývojáře PHP](https:
 [curl function]: http://php.net/curl
 [založené na cloudu e-mailové služby]: https://sendgrid.com/email-solutions
 [doručování transakční e-mailů]: https://sendgrid.com/transactional-email
-[knihovny sendgrid php]: https://github.com/sendgrid/sendgrid-php/tree/v2.1.1
+[Knihovna sendgrid php]: https://github.com/sendgrid/sendgrid-php/tree/v2.1.1
 [Composer]: https://getcomposer.org/download/

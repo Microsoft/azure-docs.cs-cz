@@ -1,6 +1,6 @@
 ---
-title: Přesun dat ze zdroje HTTP - Azure | Microsoft Docs
-description: Další informace o tom, jak přesunout data z místní nebo zdroji HTTP cloudu pomocí Azure Data Factory.
+title: Přesun dat z HTTP zdroje – Azure | Dokumentace Microsoftu
+description: Zjistěte, jak přesunout data z místní nebo cloudové zdroje pomocí protokolu HTTP s použitím služby Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,64 +13,68 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 29281843dc1b375182eb3dafe95ad86c89217671
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 06eb11132d7e3968850aadb4bfdaa53261f14ada
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37052269"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167467"
 ---
-# <a name="move-data-from-an-http-source-using-azure-data-factory"></a>Přesun dat z HTTP zdroje pomocí Azure Data Factory
+# <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Přesun dat z zdroje HTTP pomocí Azure Data Factory
+
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](data-factory-http-connector.md)
 > * [Verze 2 (aktuální verze)](../connector-http.md)
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [HTTP konektoru V2](../connector-http.md).
+> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Azure Data Factory, přečtěte si téma [konektor HTTP ve V2](../connector-http.md).
 
 
-Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory pro přesun dat z koncový bod HTTP lokální/Cloudová k úložišti dat podporovaných jímky. Tento článek vychází [aktivity přesunu dat](data-factory-data-movement-activities.md) článek, který uvádí obecný přehled přesun dat s aktivitou kopírování a seznam úložiště dat, které jsou podporované jako zdroje nebo jímky.
+Tento článek popisuje, jak používat aktivitu kopírování, která ve službě Azure Data Factory k přesunu dat z místní nebo cloudové koncový bod HTTP do úložiště dat jímky podporované. Tento článek vychází [přesun dat pomocí aktivity kopírování](data-factory-data-movement-activities.md), který nabízí obecný přehled o přesun dat pomocí aktivity kopírování. Tento článek obsahuje také seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky.
 
-Objekt pro vytváření dat aktuálně podporuje pouze přesunutí dat z HTTP zdroje k jiným úložištím dat, ale není přesouvání dat od ostatních dat ukládá na umístění protokolu HTTP.
+Data Factory aktuálně podporuje pouze přesouvá data z HTTP zdroje do dalších úložišť dat. Nepodporuje přesouvá data z jiných úložišť dat do umístění protokolu HTTP.
 
 ## <a name="supported-scenarios-and-authentication-types"></a>Podporované scénáře a typy ověřování
-Tento konektor HTTP můžete použít k načtení dat z **cloudové i místní koncový bod HTTP/s** pomocí protokolu HTTP **získat** nebo **POST** metoda. Jsou podporovány následující typy ověřování: **anonymní**, **základní**, **Digest**, **Windows**, a  **ClientCertificate**. Všimněte si rozdíl mezi tohoto konektoru a [konektor tabulky webových](data-factory-web-table-connector.md) je: se používá k extrahování obsahu tabulky z HTML webové stránky.
 
-Při kopírování dat z místní koncový bod protokolu HTTP, je nutné nainstalovat brána pro správu dat v prostředí nebo Azure místní počítač. V tématu [přesouvání dat mezi místní umístění a cloudem](data-factory-move-data-between-onprem-and-cloud.md) článku se dozvíte o Brána pro správu dat a podrobné pokyny o nastavení brány.
+Můžete použít tento konektor HTTP pro načtení dat z *cloudové a místní koncový bod HTTP/S* pomocí HTTP **získat** nebo **příspěvek** metody. Jsou podporovány následující typy ověřování: **anonymní**, **základní**, **Digest**, **Windows**, a  **ClientCertificate**. Všimněte si rozdílu mezi tento konektor a [webový tabulky konektor](data-factory-web-table-connector.md). Webový konektor tabulky extrahuje obsah tabulky z webové stránce HTML.
 
-## <a name="getting-started"></a>Začínáme
-Vytvoření kanálu s aktivitou kopírování, který přesouvá data z zdroje HTTP pomocí různých nástrojů nebo rozhraní API.
+Při kopírování dat z koncového bodu HTTP místní, musíte nainstalovat bránu správy dat v místním prostředí nebo ve Virtuálním počítači Azure. Další informace o bráně pro správu dat a podrobné pokyny o tom, jak nastavit bránu najdete v tématu [přesun dat mezi místními umístěními a cloudu](data-factory-move-data-between-onprem-and-cloud.md).
 
-- Nejjednodušší způsob, jak vytvořit kanál je použití **Průvodce kopírováním**. V tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) podrobný rychlé vytvoření kanálu pomocí Průvodce kopírováním data.
+## <a name="get-started"></a>Začínáme
 
-- Tyto nástroje můžete také použít k vytvoření kanálu: **portál Azure**, **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru** , **.NET API**, a **rozhraní REST API**. V tématu [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování. JSON ukázky ke zkopírování dat z HTTP zdroje do Azure Blob Storage, najdete v části [JSON příklady](#json-examples) části Tento článek.
+Vytvoříte kanál s aktivitou kopírování pro přesun dat z zdroje HTTP pomocí různých nástrojů nebo rozhraní API:
+
+- Pomocí Průvodce kopírování dat je nejjednodušší způsob, jak vytvořit kanál. Rychlý postup vytvoření kanálu pomocí Průvodce kopírování dat, najdete v části [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md).
+
+- Tyto nástroje můžete také použít k vytvoření kanálu: **webu Azure portal**, **sady Visual Studio**, **prostředí Azure PowerShell**, **Azure Resource Manageru Šablona**, **rozhraní .NET API**, nebo **rozhraní REST API**. Podrobné pokyny k vytvoření kanálu obsahujícího aktivitu kopírování, najdete v článku [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). JSON – ukázky této kopírování dat z HTTP zdroje do služby Azure Blob storage, najdete v části [JSON příklady](#json-examples).
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
-Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro protokol HTTP propojené služby.
+
+Následující tabulka popisuje elementy JSON, které jsou specifické pro HTTP propojené služby:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| type | Vlastnost typu musí být nastavena na: `Http`. | Ano |
-| url | Základní adresu URL na webový server | Ano |
-| authenticationType. | Určuje typ ověřování. Povolené hodnoty jsou: **anonymní**, **základní**, **Digest**, **Windows**, **ClientCertificate**. <br><br> Naleznete v části dál v této tabulce na další vlastnosti a ukázky JSON pro tyto typy ověřování v uvedeném pořadí. | Ano |
-| enableServerCertificateValidation | Určete, zda chcete povolit ověřování certifikátu protokolu SSL serveru, pokud je zdroj Webový Server HTTPS. Pokud váš server HTTPS používá certifikát podepsaný svým držitelem, nastavte na hodnotu false. | Ne, výchozí hodnota je true |
-| gatewayName | Název brány pro správu dat pro připojení k místnímu zdroji HTTP. | Ano, pokud kopírování dat z místního zdroje HTTP. |
-| encryptedCredential | Šifrovaný přihlašovací údaje pro přístup k koncový bod HTTP. Automaticky vygenerované při konfiguraci informace o ověřování v Průvodce kopírováním nebo dialogové okno místní ClickOnce. | Ne. Platí jenom v případě, že kopírování dat z místního serveru HTTP. |
+| type | **Typ** musí být vlastnost nastavena na **Http**. | Ano |
+| url | Základní adresa URL webového serveru. | Ano |
+| authenticationType. | Určuje typ ověřování. Povolené hodnoty jsou **anonymní**, **základní**, **Digest**, **Windows**, a **ClientCertificate**. <br><br> Naleznete v dalších částech tohoto článku pro další vlastnosti a ukázky JSON pro typy ověřování. | Ano |
+| enableServerCertificateValidation | Určuje, zda povolit ověření certifikátu serveru SSL, pokud se zdrojový webový server služby protokolu HTTPS. Pokud váš server HTTPS používá certifikát podepsaný svým držitelem, nastavte na **false**. | Ne<br /> (výchozí hodnota je **true**) |
+| Název brány | Název instance brány správy dat pro připojení ke zdroji v místním HTTP. | Ano, pokud se kopírují data z místní zdroje HTTP |
+| encryptedCredential | Šifrované přihlašovací údaje pro přístup ke koncovému bodu HTTP. Hodnota se automaticky generuje při konfiguraci ověřovací údaje v Průvodci kopírovat nebo s použitím **ClickOnce** dialogové okno. | Ne<br /> (platí jenom v případě, že kopírování dat z místní server HTTP) |
 
-V tématu [přesun dat mezi místní zdroje a cloudu s Brána pro správu dat](data-factory-move-data-between-onprem-and-cloud.md) podrobnosti o nastavení přihlašovacích údajů pro zdroj dat konektor místní HTTP.
+Podrobnosti o nastavení přihlašovacích údajů pro zdroj dat místní HTTP konektoru najdete v tématu [přesun dat mezi místním zdrojům a cloudem pomocí brány správy dat](data-factory-move-data-between-onprem-and-cloud.md).
 
-### <a name="using-basic-digest-or-windows-authentication"></a>Pomocí ověřování Basic, ověřování algoritmem Digest nebo systému Windows
+### <a name="using-basic-digest-or-windows-authentication"></a>Používá ověřování Basic, Digest nebo Windows
 
-Nastavit `authenticationType` jako `Basic`, `Digest`, nebo `Windows`a zadejte následující vlastnosti kromě konektor HTTP obecné ty, které jsou zavedené výše:
+Nastavte **authenticationType** k **základní**, **Digest**, nebo **Windows**. Kromě obecných vlastností konektoru HTTP je popsáno v předchozích částech nastavte následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| uživatelské jméno | Uživatelské jméno pro přístup k koncový bod HTTP. | Ano |
-| heslo | Heslo pro uživatele (uživatelské jméno). | Ano |
+| uživatelské jméno | Uživatelské jméno pro použití pro přístup ke koncovému bodu HTTP. | Ano |
+| heslo | Heslo pro uživatele (**uživatelské jméno**). | Ano |
 
-#### <a name="example-using-basic-digest-or-windows-authentication"></a>Příklad: použití ověřování Basic, ověřování algoritmem Digest nebo systému Windows
+**Příklad: Používá ověřování Basic, Digest nebo Windows**
 
-```JSON
+```json
 {
     "name": "HttpLinkedService",
     "properties":
@@ -87,27 +91,28 @@ Nastavit `authenticationType` jako `Basic`, `Digest`, nebo `Windows`a zadejte n�
 }
 ```
 
-### <a name="using-clientcertificate-authentication"></a>Pomocí ClientCertificate ověřování
+### <a name="using-clientcertificate-authentication"></a>Pomocí ověřování ClientCertificate
 
-Chcete-li základní ověřování použijte, nastavte `authenticationType` jako `ClientCertificate`a zadejte následující vlastnosti kromě konektor HTTP obecné ty, které jsou zavedené výše:
+Chcete-li použít základní ověřování, nastavte **authenticationType** k **ClientCertificate**. Kromě obecných vlastností konektoru HTTP je popsáno v předchozích částech nastavte následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| embeddedCertData | Obsah s kódováním base64, pomocí binárních dat soubor Personal Information Exchange (PFX). | Zadejte buď `embeddedCertData` nebo `certThumbprint`. |
-| certThumbprint | Kryptografický otisk certifikátu, který byl nainstalován v úložišti certifikátů počítače brány. Platí jenom v případě, že kopírování dat z místního zdroje HTTP. | Zadejte buď `embeddedCertData` nebo `certThumbprint`. |
-| heslo | Heslo přidružené k certifikátu. | Ne |
+| embeddedCertData | Obsah s kódováním Base64 binární data ze souboru PFX. | Zadejte buď **embeddedCertData** nebo **certThumbprint** |
+| certThumbprint | Kryptografický otisk certifikátu, který byl nainstalován na počítači brány úložiště certifikátů. Platí jenom v případě, že kopírování dat z místních zdroje HTTP. | Zadejte buď **embeddedCertData** nebo **certThumbprint** |
+| heslo | Heslo, který je spojen s certifikátem. | Ne |
 
-Pokud používáte `certThumbprint` pro ověřování a certifikát nainstalovaný v osobním úložišti místního počítače, musí udělit oprávnění ke čtení ke službě brány:
+Pokud používáte **certThumbprint** pro ověřování a certifikát, který je nainstalován v osobním úložišti místního počítače, udělte oprávnění ke čtení pro službu brány:
 
-1. Spusťte konzolu Microsoft Management Console (MMC). Přidat **certifikáty** modul snap-in zacílený **místního počítače**.
-2. Rozbalte položku **certifikáty**, **osobní**a klikněte na tlačítko **certifikáty**.
-3. Klikněte pravým tlačítkem na certifikát z osobního úložiště a vyberte **všechny úlohy**->**spravovat privátní klíče...**
-3. Na **zabezpečení** přidejte uživatelský účet, pod kterou je spuštěna hostitelská služba brány správy dat s přístupem pro čtení k certifikátu.  
+1. Otevřete konzolu Microsoft Management Console (MMC). Přidat **certifikáty** modul snap-in, zaměřuje **místního počítače**.
+2. Rozbalte **certifikáty** > **osobní**a pak vyberte **certifikáty**.
+3. Klikněte pravým tlačítkem na certifikát z osobního úložiště a pak vyberte **všechny úkoly** >**spravovat soukromé klíče**.
+3. Na **zabezpečení** kartu, přidejte uživatelský účet, pod kterým běží služba hostitele brány pro správu dat s přístupem pro čtení k certifikátu.  
 
-#### <a name="example-using-client-certificate"></a>Příklad: pomocí klientského certifikátu
-Tato propojená služba propojuje datovou továrnu místní webový server HTTP. Používá klientský certifikát, který je nainstalován na počítači s brána správy dat nainstalována.
+**Příklad: Použití klientského certifikátu**
 
-```JSON
+Tato propojená služba propojuje svou datovou továrnu místní webový server HTTP. Používá klientský certifikát, který je nainstalován na počítači, který má brána správy dat nainstalovaná.
+
+```json
 {
     "name": "HttpLinkedService",
     "properties":
@@ -125,10 +130,11 @@ Tato propojená služba propojuje datovou továrnu místní webový server HTTP.
 }
 ```
 
-#### <a name="example-using-client-certificate-in-a-file"></a>Příklad: pomocí klientského certifikátu do souboru
-Tato propojená služba propojuje datovou továrnu místní webový server HTTP. Používá soubor certifikátu klienta na počítači s brána správy dat nainstalována.
+**Příklad: Použití klientský certifikát v souboru**
 
-```JSON
+Tato propojená služba propojuje svou datovou továrnu místní webový server HTTP. Používá soubor certifikátu klienta na počítači, který má brána správy dat nainstalovaná.
+
+```json
 {
     "name": "HttpLinkedService",
     "properties":
@@ -138,7 +144,7 @@ Tato propojená služba propojuje datovou továrnu místní webový server HTTP.
         {
             "authenticationType": "ClientCertificate",
             "url": "https://en.wikipedia.org/wiki/",
-            "embeddedCertData": "base64 encoded cert data",
+            "embeddedCertData": "Base64-encoded cert data",
             "password": "password of cert"
         }
     }
@@ -146,23 +152,26 @@ Tato propojená služba propojuje datovou továrnu místní webový server HTTP.
 ```
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
-Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [vytváření datových sad](data-factory-create-datasets.md) článku. Oddíly, jako je například struktura, dostupnost a zásad JSON datové sady jsou podobné pro všechny typy datovou sadu (Azure SQL Azure blob, tabulky Azure, atd.).
 
-**Rámci typeProperties** oddílu se liší pro jednotlivé typy datovou sadu a informace o umístění dat v úložišti dat. Rámci typeProperties část datové sady typ **Http** má následující vlastnosti
+Některé části souboru JSON datové sady, jako je například struktura, dostupnost a zásady, jsou podobné pro všechny datové sady typy (Azure SQL Database, Azure Blob storage, Azure Table storage).
+
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, naleznete v tématu [vytváření datových sad](data-factory-create-datasets.md).
+
+**TypeProperties** oddílu se liší pro každý typ datové sady. **TypeProperties** část obsahuje informace o umístění dat v úložišti. **TypeProperties** části datové sady **Http** typ má následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Zadaný typ datové sady. musí být nastavena na `Http`. | Ano |
-| relativeUrl | Relativní adresa URL k prostředku, který obsahuje data. Pokud cesta není zadána, je použít jenom adresu URL, zadaný v definici propojené služby. <br><br> Vytvořit dynamické adresy URL, můžete použít [funkce pro vytváření dat a systémové proměnné](data-factory-functions-variables.md), například "relativeUrl": "$$Text.Format ('/ my/sestavy? měsíc = {0:yyyy}-{0:MM} & fmt = csv', SliceStart)". | Ne |
-| requestMethod | Metoda HTTP. Povolené hodnoty jsou **získat** nebo **POST**. | Ne. Výchozí hodnota je `GET`. |
-| additionalHeaders | Další hlavičky žádosti HTTP. | Ne |
-| requestBody | Text pro požadavek HTTP. | Ne |
-| Formát | Pokud chcete jednoduše **načtou data z koncový bod HTTP jako-je** bez analýza ho, přeskočte tento formát nastavení. <br><br> Pokud chcete analyzovat během kopírování obsahu odpovědi HTTP, jsou podporovány následující typy formátu: **TextFormat**, **JsonFormat**, **AvroFormat**,  **OrcFormat**, **ParquetFormat**. Další informace najdete v tématu [textovém formátu](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formátu](data-factory-supported-file-and-compression-formats.md#orc-format), a [Parquet formát](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. |Ne |
-| Komprese | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Jsou podporované úrovně: **Optimal** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese v Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
+| type | **Typ** datové sady, musí být nastaveno na **Http**. | Ano |
+| relativeUrl | Relativní adresa URL k prostředku, který obsahuje data. Když cestu nezadáte, použije se pouze adresu URL, která je zadána v definici propojené služby. <br><br> K vytvoření dynamické adresy URL, můžete použít [funkce Data Factory a systémové proměnné](data-factory-functions-variables.md). Příklad: **relativeUrl**: **$$Text.Format ("/ Moje/tuto sestavu? měsíc = {0: yyyy} – {0:MM} & fmt = csv", SliceStart)**. | Ne |
+| requestMethod | Metoda protokolu HTTP. Povolené hodnoty jsou **získat** a **příspěvek**. | Ne <br />(výchozí hodnota je **získat**) |
+| additionalHeaders | Další hlavičky požadavků HTTP. | Ne |
+| Includesearchresults: true | Obsah žádosti protokolu HTTP. | Ne |
+| Formát | Pokud chcete *načtení dat z koncového bodu HTTP jako-je* bez je analýza kódu, přejděte **formátu** nastavení. <br><br> Pokud chcete analyzovat obsah odpovědi HTTP při kopírování, jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**,  **OrcFormat**, a **ParquetFormat**. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu JSON](data-factory-supported-file-and-compression-formats.md#json-format), [formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [formát Orc](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format). |Ne |
+| Komprese | Zadejte typ a úroveň komprese pro data. Podporované typy: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Podporované úrovně: **Optimal** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
 
-### <a name="example-using-the-get-default-method"></a>Příklad: použití metody GET (výchozí)
+**Příklad: Použití metody GET (výchozí)**
 
-```JSON
+```json
 {
     "name": "HttpSourceDataInput",
     "properties": {
@@ -181,9 +190,9 @@ Tato propojená služba propojuje datovou továrnu místní webový server HTTP.
 }
 ```
 
-### <a name="example-using-the-post-method"></a>Příklad: pomocí metody POST
+**Příklad: Použití metody POST**
 
-```JSON
+```json
 {
     "name": "HttpSourceDataInput",
     "properties": {
@@ -204,37 +213,44 @@ Tato propojená služba propojuje datovou továrnu místní webový server HTTP.
 ```
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
-Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování aktivity, najdete v článku [vytváření kanálů](data-factory-create-pipelines.md) článku. Vlastnosti, například název, popis, vstupní a výstupní tabulky a zásad jsou dostupné pro všechny typy aktivit.
 
-Vlastnosti, které jsou k dispozici v **rámci typeProperties** části aktivity na druhé straně lišit každý typ aktivity. Pro aktivitu kopírování budou lišit v závislosti na typech zdrojů a jímky.
+Vlastnosti, jako je název, popis, vstupní a výstupní tabulky a zásady jsou k dispozici pro všechny typy aktivit.
 
-V současné době po zdroji v aktivitě kopírování typu **HttpSource**, jsou podporovány následující vlastnosti.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v tématu [vytváření kanálů](data-factory-create-pipelines.md). 
+
+Vlastnosti, které jsou k dispozici v **typeProperties** části aktivity se liší s jednotlivými typu aktivity. Pro aktivitu kopírování vlastnosti lišit v závislosti na typy zdroje a jímky.
+
+V současné době když zdroj v aktivitě kopírování je **HttpSource** zadejte následující vlastnosti jsou podporovány:
 
 | Vlastnost | Popis | Požaduje se |
 | -------- | ----------- | -------- |
-| httpRequestTimeout | Časový limit (TimeSpan) pro získání odezvy požadavku HTTP. Získání odezvy, není časový limit číst data odpovědi je časový limit. | Ne. Výchozí hodnota: 00:01:40 |
+| httpRequestTimeout | Časový limit ( **TimeSpan** hodnotu) pro požadavek HTTP získat odpověď. Časový limit je získat odpověď, nevypršel časový limit pro čtení dat odpovědi. | Ne<br />(výchozí hodnota: **00:01:40**) |
 
 ## <a name="supported-file-and-compression-formats"></a>Podporované formáty souborů a komprese
-V tématu [formáty souborů a komprese v Azure Data Factory](data-factory-supported-file-and-compression-formats.md) článek na podrobnosti.
 
-## <a name="json-examples"></a>Příklady JSON
-Následující příklad zadejte ukázka JSON definice, které můžete použít k vytvoření kanálu pomocí [portál Azure](data-factory-copy-activity-tutorial-using-azure-portal.md) nebo [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Se ukazují, jak zkopírovat data ze zdroje HTTP do Azure Blob Storage. Nicméně je možné zkopírovat data **přímo** ze všech zdrojů do jakéhokoli z jímky uvádí [sem](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivity kopírování v Azure Data Factory.
+Zobrazit [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md) Další informace.
 
-### <a name="example-copy-data-from-http-source-to-azure-blob-storage"></a>Příklad: Kopírování dat ze zdroje HTTP do Azure Blob Storage
-Řešení Data Factory pro tato ukázka obsahuje následující entity služby Data Factory:
+## <a name="json-examples"></a>Příklady pro JSON
 
-1. Propojené služby typu [HTTP](#linked-service-properties).
-2. Propojené služby typu [azurestorage](data-factory-azure-blob-connector.md#linked-service-properties).
-3. Vstup [datovou sadu](data-factory-create-datasets.md) typu [Http](#dataset-properties).
-4. Výstup [datovou sadu](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-5. A [kanálu](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [HttpSource](#copy-activity-properties) a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+Následující příklady popisují ukázkový JSON definice, které můžete použít k vytvoření kanálu pomocí [webu Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Příklady ukazují, jak kopírovat data z HTTP zdroje do úložiště objektů Blob v Azure. Nicméně je možné zkopírovat data *přímo* z jakéhokoli zdroje, které chcete některý z jímky [, které jsou podporované](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivity kopírování ve službě Azure Data Factory.
 
-Ukázka zkopíruje data z HTTP zdroje do objektu blob Azure každou hodinu. Vlastnostech JSON použitých ve tyto ukázky jsou popsané v části následující ukázky.
+**Příklad: Kopírování dat z HTTP zdroje do úložiště objektů Blob v Azure**
 
-### <a name="http-linked-service"></a>Služba HTTP propojené
-Tento příklad používá služba HTTP propojené s anonymní ověřování. V tématu [HTTP propojená služba](#linked-service-properties) části pro různé typy ověřování můžete použít.
+Řešení Data Factory pro tento příklad obsahuje následující entity služby Data Factory:
 
-```JSON
+*   Propojené služby typu [HTTP](#linked-service-properties).
+*   Propojené služby typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
+*   Vstupní hodnota [datovou sadu](data-factory-create-datasets.md) typu [Http](#dataset-properties).
+*   Výstup [datovou sadu](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
+*   A [kanálu](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [HttpSource](#copy-activity-properties) a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+
+Ukázka kopíruje data z HTTP zdroje do objektu blob Azure každou hodinu. Vlastnostech JSON použitých v těchto ukázkách, jsou popsány v části Ukázky.
+
+### <a name="http-linked-service"></a>HTTP propojené služby
+
+Tento příklad používá službu HTTP propojené s anonymní ověřování. Zobrazit [HTTP propojená služba](#linked-service-properties) pro různé typy ověřování můžete použít.
+
+```json
 {
     "name": "HttpLinkedService",
     "properties":
@@ -249,24 +265,25 @@ Tento příklad používá služba HTTP propojené s anonymní ověřování. V 
 }
 ```
 
-### <a name="azure-storage-linked-service"></a>Propojená služba Azure Storage
+### <a name="azure-storage-linked-service"></a>Propojená služba úložiště Azure
 
-```JSON
+```json
 {
   "name": "AzureStorageLinkedService",
   "properties": {
     "type": "AzureStorage",
     "typeProperties": {
-      "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
+      "connectionString": "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>"
     }
   }
 }
 ```
 
-### <a name="http-input-dataset"></a>Vstupní datové sady HTTP
-Nastavení **externí** k **true** služba Data Factory informuje, že datová sada je externí k objektu pro vytváření dat a není vyprodukované aktivitu v datové továrně.
+### <a name="http-input-dataset"></a>Vstupní datová sada HTTP
 
-```JSON
+Nastavení **externí** k **true** služby Data Factory informuje, že datová sada je externí do služby data factory a není vytvořen aktivitou ve službě data factory.
+
+```json
 {
     "name": "HttpSourceDataInput",
     "properties": {
@@ -288,9 +305,9 @@ Nastavení **externí** k **true** služba Data Factory informuje, že datová s
 
 ### <a name="azure-blob-output-dataset"></a>Výstupní datová sada Azure Blob
 
-Data se zapisují do nového objektu blob každou hodinu (frekvence: hodiny, interval: 1).
+Data se zapisují do nového objektu blob každou hodinu (**frekvence**: **hodinu**, **interval**: **1**).
 
-```JSON
+```json
 {
     "name": "AzureBlobOutput",
     "properties":
@@ -310,19 +327,19 @@ Data se zapisují do nového objektu blob každou hodinu (frekvence: hodiny, int
 }
 ```
 
-### <a name="pipeline-with-copy-activity"></a>Kanál s aktivitou kopírování
+### <a name="pipeline-that-uses-a-copy-activity"></a>Kanál, který využívá aktivitu kopírování
 
-Kanál obsahuje aktivitu kopírování, který je nakonfigurovaný na použití vstupní a výstupní datové sady a je naplánováno spuštění každou hodinu. V definici JSON kanálu **zdroj** je typ nastaven na **HttpSource** a **podřízený** je typ nastaven na **BlobSink**.
+Kanálu obsahujícího aktivitu kopírování, který je nakonfigurován na použití vstupních a výstupních datových sad. Aktivita kopírování je naplánováno spuštění každou hodinu. V definici JSON kanálu **zdroj** je typ nastaven na **HttpSource** a **jímky** je typ nastaven na **BlobSink**.
 
-V tématu [HttpSource](#copy-activity-properties) pro seznam vlastností HttpSource nepodporuje.
+Pro seznam vlastností, které **HttpSource** podporuje, najdete v článku [HttpSource](#copy-activity-properties).
 
-```JSON
+```json
 {  
     "name":"SamplePipeline",
     "properties":{  
     "start":"2014-06-01T18:00:00",
     "end":"2014-06-01T19:00:00",
-    "description":"pipeline with copy activity",
+    "description":"pipeline with a copy activity",
     "activities":[  
       {
         "name": "HttpSourceToAzureBlob",
@@ -363,7 +380,8 @@ V tématu [HttpSource](#copy-activity-properties) pro seznam vlastností HttpSou
 ```
 
 > [!NOTE]
-> Mapování sloupců z datové sady zdroje na sloupce ze sady jímku dat naleznete v tématu [mapování sloupců datovou sadu v Azure Data Factory](data-factory-map-columns.md).
+> Pokud chcete namapovat sloupce ze zdrojovou datovou sadu na sloupce z datové sady jímky, najdete v článku [mapování sloupců v datové sadě ve službě Azure Data Factory](data-factory-map-columns.md).
 
 ## <a name="performance-and-tuning"></a>Výkon a ladění
-V tématu [výkonu kopie aktivity & ladění průvodce](data-factory-copy-activity-performance.md) Další informace o klíčových faktorů, že dopad výkon přesun dat (aktivita kopírování) v Azure Data Factory a různé způsoby, jak optimalizovat ho.
+
+Další informace o klíčových faktorů, které mají vliv na výkon přesun dat (aktivita kopírování) v Azure Data Factory a různé způsoby, jak optimalizovat, najdete v článku [Průvodce laděním a výkonem aktivity kopírování](data-factory-copy-activity-performance.md).

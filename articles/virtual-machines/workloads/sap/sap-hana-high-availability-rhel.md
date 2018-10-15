@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 637e926676c727c01c60fe0d3e4e758173bdbd18
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 77f4eeec1aa87f42c90d4e93f98f460a8b54b9a9
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45637559"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167405"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na Red Hat Enterprise Linux
 
@@ -643,8 +643,9 @@ Resource Group: g_ip_HN1_03
 </code></pre>
 
 Instalace agenta monitorování geografických zón Azure můžete otestovat tím, že zakážete síťového rozhraní na uzlu, SAP HANA se spuštěným systémem jako hlavní.
+Zobrazit [článku znalostní báze Red Hat 79523](https://access.redhat.com/solutions/79523) pro descricption o tom, jak simulovat selhání sítě. V tomto příkladu používáme skript net_breaker k blokování veškerého přístupu k síti.
 
-<pre><code>[root@hn1-db-1 ~]# sudo ifdown eth0
+<pre><code>[root@hn1-db-1 ~]# sh ./net_breaker.sh BreakCommCmd 10.0.0.6
 </code></pre>
 
 Virtuální počítač by měl nyní restartovat nebo zastavit v závislosti na konfiguraci clusteru.
