@@ -33,7 +33,6 @@
 ### [Webová aplikace Ruby on Rails](ruby-rails-web-app.md)
 ### [Klient Cassandra a Node.js](cassandra-nodejs.md)
 ### [Tomcat](setup-tomcat.md)
-### [Cluster s přímým přístupem do paměti vzdáleného počítače (RDMA) pro spouštění aplikací MPI](rdma-cluster.md)
 ### Sada HPC Pack
 #### [Vytvoření clusteru pro linuxové úlohy](hpcpack-cluster-powershell-script.md)
 #### [Správa clusteru s linuxovými uzly](hpcpack-cluster.md)
