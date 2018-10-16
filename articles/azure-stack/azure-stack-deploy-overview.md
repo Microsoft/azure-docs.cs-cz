@@ -1,6 +1,6 @@
 ---
-title: Vyhodnocení Development Kit Azure zásobníku | Microsoft Docs
-description: Zjistěte, jak nasadit Azure zásobníku Development Kit pro účely vyhodnocení.
+title: Vyzkoušejte Azure Stack Development Kit | Dokumentace Microsoftu
+description: Zjistěte, jak nasadit Azure Stack Development Kit pro účely vyhodnocení.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,83 +12,83 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 06/04/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.custom: mvc
-ms.openlocfilehash: a0e742ab3ac43cc7977761dd94c9689e3a7c2e0b
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: bf07fe56c65e53f5485b9927e0d704f80842cf3a
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235181"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49338692"
 ---
-# <a name="quickstart-evaluate-the-azure-stack-development-kit"></a>Rychlý úvod: vyhodnocení Azure zásobníku Development Kit
+# <a name="quickstart-evaluate-the-azure-stack-development-kit"></a>Rychlý start: vyhodnocení Azure Stack Development Kit
 
-[Azure zásobníku Development Kit (ASDK)](.\asdk\asdk-what-is.md) je testovací a vývojové prostředí, které můžete nasadit k vyhodnocení a předvedení funkcí Azure zásobníku a služby. Začít s ASDK, musíte připravit hostitele hardwaru počítače a poté spusťte některé skripty (instalace trvá několik hodin). Potom můžete přihlásit k portálů správce nebo uživatele a začít používat Azure zásobníku.
+[Azure Stack Development Kit (ASDK)](.\asdk\asdk-what-is.md) je vývoj a testování prostředí, které můžete nasadit k vyhodnocení a k předvedení funkcí služby Azure Stack a služeb. Abyste mohli začít s ASDK, budete muset Příprava hostitelském hardwaru počítače a pak spusťte některé skripty (instalace trvá několik hodin). Potom můžete přihlásit na portály správci nebo uživateli chcete začít používat Azure Stack.
 
 ## <a name="prerequisites"></a>Požadavky
 
 ### <a name="asdk-host-computer-requirements"></a>Požadavky na počítač ASDK hostitele
 
-Před instalací ASDK, budete muset připravit počítač, který bude hostitelem development kit. Development kit hostitelský počítač, musí splňovat hardwaru, softwaru a síťové požadavky popsané v  **[zkontrolujte aspektech plánování nasazení ASDK](.\asdk\asdk-deploy-considerations.md)**.
+Před instalací ASDK, budete muset připravit počítač, který bude hostitelem development kit. Development kit hostitelský počítač musí splňovat hardwaru, softwaru, a podle požadavků na síť  **[zkontrolujte aspektech plánování nasazení ASDK](.\asdk\asdk-deploy-considerations.md)**.
 
 > [!TIP]
-> Můžete použít [Zkontrolujte požadavky na nasazení Azure zásobníku nástroj](https://gallery.technet.microsoft.com/Deployment-Checker-for-50e0f51b) po instalaci operačního systému na hostitelský počítač development kit potvrďte, že váš hardware splňuje všechny požadavky.
+> Můžete použít [Zkontrolujte požadavky na nasazení služby Azure Stack nástroj](https://gallery.technet.microsoft.com/Deployment-Checker-for-50e0f51b) po instalaci operačního systému na vývojovém počítači hostitele kit potvrďte, že váš hardware splňuje všechny požadavky.
 
 ### <a name="account-requirements"></a>Požadavky na účet
 
-Budete také muset vybrat mezi ověřováním prostřednictvím Azure Active Directory (Azure AD) nebo Active Directory Federation Services (AD FS) jako řešení identity pro vaše nasazení. Zkontrolujte požadavky na účet v  **[aspektech plánování nasazení](.\asdk\asdk-deploy-considerations.md#account-requirements)**
+Také musíte zvolit mezi použitím nástrojů Azure Active Directory (Azure AD) nebo Active Directory Federation Services (AD FS) jako řešení identit pro vaše nasazení. Zkontrolujte požadavky na účet v  **[aspektech plánování nasazení](.\asdk\asdk-deploy-considerations.md#account-requirements)**
 
-## <a name="download-and-extract-the-deployment-package"></a>Stažení a extrakci balíčku pro nasazení
+## <a name="download-and-extract-the-deployment-package"></a>Stáhněte a rozbalte balíček pro nasazení
 
-Jakmile připravíte hostitelského počítače development kit, stažení a extrakci ASDK balíčku pro nasazení. Balíček pro nasazení zahrnuje Cloudbuilder.vhdx souboru, který je virtuálního pevného disku (VHD) s spouštěcí operačního systému, a instalační soubory protokolů Azure.
+Jakmile připravíte hostitelského počítače development kit, stažení a extrakci ASDK balíček pro nasazení. Balíček pro nasazení obsahuje Cloudbuilder.vhdx soubor, který je virtuálního pevného disku (VHD) s operačním systémem spouštěcí a instalační soubory služby Azure Stack.
 
-Balíček pro nasazení můžete stáhnout na development kit hostitele nebo do jiného počítače. Soubory extrahované nasazení trvat až 60 GB volného místa na disku, aby pomocí jiného počítače může pomoct snížit požadavky na úložiště na hostiteli development kit.
+Balíček pro nasazení můžete stáhnout na hostitele development kit, nebo do jiného počítače. Soubory extrahované nasazení trvat až 60 GB volného místa na disku, takže na jiném počítači může pomoct snížit požadavky na úložiště na hostiteli development kit.
 
-**[Stažení a extrakci Azure zásobníku Development Kit (ASDK)](.\asdk\asdk-download.md)**
+**[Stažení a extrakci Azure Stack Development Kit (ASDK)](.\asdk\asdk-download.md)**
 
-## <a name="prepare-the-host-computer"></a>Příprava na hostitelském počítači
+## <a name="prepare-the-host-computer"></a>Příprava hostitelském počítači
 
-Před instalací ASDK, musí být připraveno prostředí hostitele a systém nastaven na spuštění z development kit virtuálního pevného disku. Po restartování hostitele, spustí se z CloudBuilder.vhdx a můžete začít nasazovat ASDK.
+Před instalací ASDK hostitelského prostředí musí být připravené a systém nakonfigurován na spuštění ze development kit virtuálního pevného disku. Po restartování hostitele se spouští z CloudBuilder.vhdx a může začít nasazovat ASDK.
 
-**[Příprava na hostitelském počítači ASDK](.\asdk\asdk-prepare-host.md)**
+**[Příprava hostitelském počítači ASDK](.\asdk\asdk-prepare-host.md)**
 
-## <a name="install-the-asdk-on-the-host-computer"></a>Nainstalujte ASDK na hostitelském počítači
+## <a name="install-the-asdk-on-the-host-computer"></a>Nainstalujte ASDK v hostitelském počítači
 
-Po hostitelský počítač spustí z disku VHD, můžete nasadit do virtuálního prostředí Cloudbuilder development kit. Můžete nasadit ASDK pomocí grafického uživatelského rozhraní (GUI), poskytuje spuštěním skriptu prostředí PowerShell asdk installer.ps1 nebo z [příkazového řádku prostředí PowerShell](.\asdk\asdk-deploy-powershell.md)
+Po spuštění počítače hostitele z virtuálního pevného disku, můžete nasadit vývojová sada Cloudbuilder virtuální prostředí. Můžete nasadit ASDK pomocí grafického uživatelského rozhraní (GUI), spuštěním skriptu prostředí PowerShell asdk installer.ps1 osobně, nebo z [příkazového řádku Powershellu](.\asdk\asdk-deploy-powershell.md)
 
 > [!NOTE]
-> Po hostitele spustí z bitové kopie Cloudbuilder.vhdx, máte možnost konfigurace [nastavení telemetrie zásobník Azure](.\asdk\asdk-telemetry.md#set-telemetry-level-in-the-windows-registry) *před* instalaci ASDK.
+> Po spuštění hostitele z Cloudbuilder.vhdx image, máte možnost konfigurace [nastavení telemetrie Azure Stack](.\asdk\asdk-telemetry.md#set-telemetry-level-in-the-windows-registry) *před* instalaci ASDK.
 
-**[Nainstalovat Azure zásobníku Development Kit (ASDK)](.\asdk\asdk-install.md)**
+**[Instalace sady Azure Stack Development Kit (ASDK)](.\asdk\asdk-install.md)**
 
-## <a name="perform-post-deployment-configurations"></a>Provede konfigurace po nasazení
+## <a name="perform-post-deployment-configurations"></a>Provedení konfigurace po nasazení
 
 Po instalaci ASDK, existuje několik doporučených kontroly po instalaci a změny konfigurace, které by měly být.
 
 **Nástroje**
 
-Instalace nástroje Azure PowerShell zásobníku a Githubu a zkontrolujte úspěšné instalace pomocí rutiny test-AzureStack.
+Instalace nástrojů pro Azure Stack Powershellu a GitHub a zkontrolovat úspěšné instalace pomocí rutiny test-AzureStack.
 
 **Řešení identit**
 
-Pro nasazení, které používá Azure AD je nutné aktivovat obou zásobník Azure správce a klienta portálů. Tato aktivace souhlasí s uvedením zásobník Azure portal a Azure Resource Manager správná oprávnění (uvedené na stránce souhlas) pro všechny uživatele adresáři.
+Pro nasazení, které používá služby Azure AD je nutné aktivovat i Azure Stack správce a tenanta portály. Tato aktivace vyjádří souhlas poskytuje správná oprávnění (uvedené na stránce souhlas) pro všechny uživatele adresáře portálu Azure Stack a Azure Resource Manageru.
 
 **Vypršení platnosti hesla**
 
-Má resetovat zásad vypršení platnosti hesla a ujistěte se, že se heslo pro hostitele development kit nevyprší před ukončením svého zkušební období.
+Měli byste resetovat zásady vypršení platnosti hesla, abyste měli jistotu, že heslo pro hostitele development kit platnost pasu nevyprší před vám zkušební období skončí.
 
 > [!NOTE]
-> Máte také možnost konfigurace [nastavení telemetrie zásobník Azure](.\asdk\asdk-telemetry.md#enable-or-disable-telemetry-after-deployment) *po* instalaci ASDK.
+> Máte také možnost konfigurace [nastavení telemetrie Azure Stack](.\asdk\asdk-telemetry.md#enable-or-disable-telemetry-after-deployment) *po* instalace ASDK.
 
-**[Úlohy nasazení POST-ASDK](.\asdk\asdk-post-deploy.md)**
+**[Úlohy nasazení ASDK příspěvku](.\asdk\asdk-post-deploy.md)**
 
-## <a name="register-with-azure"></a>Zaregistrovat Azure
+## <a name="register-with-azure"></a>Zaregistrujte v Azure
 
-Je nutné, aby bylo možné zaregistrovat zásobník Azure s Azure [stažení položky Azure marketplace](.\asdk\asdk-marketplace-item.md) do protokolů Azure.
+Azure Stack musí registraci v Azure, abyste mohli [stažení položek z Azure marketplace](.\asdk\asdk-marketplace-item.md) do služby Azure Stack.
 
-**[Zaregistrovat Azure zásobník Azure](.\asdk\asdk-register.md)**
+**[Registrace Azure Stack s Azure](.\asdk\asdk-register.md)**
 
 ## <a name="next-steps"></a>Další postup
 
-Blahopřejeme! Pomocí kroků v této quickstart máte ASDK prostředí s [správce](https://adminportal.local.azurestack.external) portál a [uživatele](https://portal.local.azurestack.external) portálu.
+Blahopřejeme! Pomocí kroků v tomto rychlém startu jste ASDK prostředí s [správce](https://adminportal.local.azurestack.external) portál a [uživatele](https://portal.local.azurestack.external) portálu.

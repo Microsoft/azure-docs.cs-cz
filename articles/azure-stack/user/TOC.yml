@@ -80,6 +80,8 @@ items:
         href: azure-stack-managed-disk-considerations.md
       - name: Ochrana virtuálních počítačů
         href: azure-stack-manage-vm-protect.md
+      - name: Aktualizace virtuálního počítače a správy
+        href: vm-update-management.md
       - name: Důležité informace o virtuální počítač s SQL serverem
         href: azure-stack-sql-server-vm-considerations.md
     - name: Úložiště
@@ -216,9 +218,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: Školení a certifikace
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 34582adac206beea94abde500f351ab37764f517
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 5c4fec260e2b58aa7d34b9f3b7fcaa0d4755abf4
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113406"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321644"

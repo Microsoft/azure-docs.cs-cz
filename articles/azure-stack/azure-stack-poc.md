@@ -1,6 +1,6 @@
 ---
 title: Co je Azure Stack? | Dokumenty Microsoft
-description: Azure Stack vám umožní spustit služby Azure ve vašem datovém centru.
+description: Azure Stack umožňuje provozovat služby Azure ve vašem datovém centru.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,40 +12,41 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 06/04/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: unknown
 ms.custom: mvc
-ms.openlocfilehash: 848df59b01cc0c03b9a5f3dae2644d469c8651bb
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: b2b81938eafe104369e52e72f9958e2adf2cca6f
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234882"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345216"
 ---
 # <a name="what-is-azure-stack"></a>Co je Azure Stack?
 
-Microsoft Azure Stack je hybridní cloudové platformy, která umožňuje poskytovat služby Azure ve vašem datovém centru. Tato platforma je navržen pro podporu měnící podnikové požadavky. Azure Stack můžete povolit nové scénáře pro moderní aplikace, jako je například okraj a odpojených prostředích, nebo splňovat požadavky na zabezpečení a dodržování předpisů.
+Microsoft Azure Stack je hybridní Cloudová platforma, která vám umožní poskytovat služby Azure ve vašem datovém centru. Tato platforma je navržen pro podporu vyvíjející obchodní požadavky. Azure Stack můžete povolit nové scénáře pro moderní aplikace, jako je například hraničních a odpojených prostředích, nebo splňovat určité požadavky na zabezpečení a dodržování předpisů.
 
-Azure Stack je k dispozici v dvě možnosti nasazení podle svých potřeb.
+Azure Stack se teď nabízí dvě možnosti nasazení podle svých potřeb.
 
 ## <a name="azure-stack-integrated-systems"></a>Integrované systémy pro službu Azure Stack
-Azure Stack integrované systémy jsou nabízena prostřednictvím partnerství společnosti Microsoft a [hardwarovými partnery](https://azure.microsoft.com/overview/azure-stack/integrated-systems/), vytváření řešení, které nabízí cloudové pracovníky inovace a výpočetních zjednodušení správy. Protože Azure Stack je poskytován jako systém integrované hardwaru a softwaru, máte flexibilitu a řízení, které potřebujete, spolu se schopností inovacemi. Zajistěte z cloudu. Azure Stack integrované systémy rozsahu velikost z uzlů 4-12 a společně podporuje hardwaru partnera a společnosti Microsoft.  Použití Azure Stack integrované systémy a vytvářet nové scénáře nasazení nového řešení pro produkční zatížení.
+Azure Stack nabízí integrované systémy Díky partnerství Microsoftu a [hardwarových partnerů](https://azure.microsoft.com/overview/azure-stack/integrated-systems/), vytváření řešení, které nabízí cloud tempem inovace a výpočetnímu zjednodušení správy. Azure Stack se nabízí jako integrované hardwaru a softwaru system, takže máte flexibility a kontroly, které potřebujete, spolu se schopností na inovace v cloudu. Systémy ve službě Azure Stack integrované v rozsahu od 12. 4 uzly a společně podporuje hardwarových partnerů a Microsoft.  Integrované systémy Azure Stack slouží k vytvoření nové scénáře a nasazovat nové řešení pro vaše produkční úlohy.
 
 ## <a name="azure-stack-development-kit"></a>Vývojová sada pro Azure Stack
 
-Microsoft [Azure Stack Development Kit (ASDK)](.\asdk\asdk-what-is.md) je jedním uzlem nasazení Azure Stack, který můžete použít k vyhodnocení a další informace o Azure Stack.  Můžete také použít ASDK jako vývojářského prostředí pro vývoj aplikací pomocí rozhraní API a nástrojů, který je v souladu s Azure.
+Microsoft [Azure Stack Development Kit (ASDK)](.\asdk\asdk-what-is.md) je jedním uzlem nasazení služby Azure Stack, který můžete použít k vyhodnocení a další informace o službě Azure Stack.  Můžete také použít ASDK jako prostředí pro vývojáře k vytváření aplikací pomocí rozhraní API a nástrojů, který je konzistentní s Azure.
 
 >[!Note]
->ASDK není určena pro použití jako provozním prostředí.
+>ASDK není určena pro použití jako v provozním prostředí.
 
 ASDK má následující omezení:
 
-* ASDK je přidružen jeden Azure Active Directory (Azure AD) nebo zprostředkovatele identity služby Active Directory Federation Services (AD FS). Můžete vytvořit více uživatelů v tomto adresáři a přiřadit předplatná jednotlivých uživatelů.
-* Protože Azure Stack součásti jsou nasazeny na jeden hostitelský počítač, existují omezené fyzické prostředky k dispozici pro klientské prostředky. Tato konfigurace není určeno k vyhodnocení škálování nebo výkonu.
-* Scénáře pro sítě je omezen z důvodu jeden hostitel a síťový adaptér požadavky na nasazení.
+* ASDK je přidružen jedné služby Azure Active Directory (Azure AD) nebo zprostředkovatele identity služby Active Directory Federation Services (AD FS). Můžete vytvořit více uživatelů v tomto adresáři a přiřaďte předplatná každému uživateli.
+* Protože komponenty služby Azure Stack jsou nasazené na jednom počítači hostitele, existují omezené fyzické prostředky dostupné pro prostředky tenanta. Tato konfigurace není určena pro zkušební škálování a výkon.
+* Scénáře pro sítě jsou omezené z důvodu jednom hostiteli a síťovou kartu požadavky na nasazení.
 
 ## <a name="next-steps"></a>Další postup
 
-- [Klíčové funkce a koncepty](azure-stack-key-features.md)
-- [Azure Stack: Rozšíření Azure (pdf)](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/)
+[Klíčové funkce a koncepty](azure-stack-key-features.md)
+
+[Azure Stack: Rozšíření Azure (pdf)](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/)

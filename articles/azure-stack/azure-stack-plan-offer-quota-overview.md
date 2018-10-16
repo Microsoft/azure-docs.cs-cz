@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 10/12/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 343c29db4ac5fba37d8ea1b17862b86566ae15ca
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: ee336fb5a60998aaac1518a85b8b92f63d9d4b64
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309191"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318125"
 ---
 # <a name="plan-offer-quota-and-subscription-overview"></a>Přehled plánů, nabídek, kvót a předplatných
 
@@ -52,7 +52,7 @@ Plány představují seskupení jedné nebo více služeb. Jako operátory Azure
 
 Vám pomůžou spravovat kapacitu cloudu, můžete použít předem nakonfigurované *kvóty*, nebo vytvořit novou kvótu pro každou službu v plánu. Kvóty definovat omezení horní prostředků, které můžete zřizovat nebo využívat předplatného uživatele. Například může kvótu umožňují uživateli vytvořit až pět virtuálních počítačů (VM).
 
-Můžete konfigurovat kvóty podle oblasti. Plán, který poskytuje výpočetních služeb pro oblast A může mít například kvótu dva virtuální počítače s 4 GB paměti RAM a 8 jader procesoru.
+Můžete konfigurovat kvóty podle oblasti. Plán, který poskytuje výpočetních služeb pro oblast A může mít například kvótu dva virtuální počítače.
 
 >[!NOTE]
 >V sadě Azure Stack Development Kit, pouze jedna oblast (s názvem *místní*) je k dispozici.
