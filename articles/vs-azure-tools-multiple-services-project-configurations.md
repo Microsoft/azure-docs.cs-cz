@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/11/2017
 ms.author: ghogen
-ms.openlocfilehash: 56b01855a5996bb62f721bda2bfc207684227854
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 1ec587f4a4519f86efceb7cefa0acb372035a9a9
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42056605"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318210"
 ---
 # <a name="configuring-your-azure-project-in-visual-studio-to-use-multiple-service-configurations"></a>Konfigurace projektu Azure v sadě Visual Studio používat více konfigurace služby
 
@@ -75,8 +75,9 @@ Vytvoření připojovacího řetězce, vyberte **přidat nastavení** a nastavte
 Pro nové nebo existující připojovací řetězce, vyberte **...** * na pravé straně **hodnotu** pole, které chcete otevřít **vytvořit připojovací řetězec úložiště** dialogové okno:
 
 1. V části **připojit pomocí**, zvolte **předplatného** možnost vybrat účet úložiště z předplatného. Visual Studio pak získá přihlašovací údaje účtu úložiště automaticky z `.publishsettings` souboru.
-1. Výběr **ručně zadali přihlašovací údaje** umožňuje zadat název účtu a klíč přímo pomocí informací na webu Azure Portal. Zkopírování klíče účtu:. Přejděte na účet úložiště na Azure portal a vyberte **Správa klíčů**.
-    2. Pokud chcete zkopírovat klíč účtu, přejděte na účet úložiště na webu Azure portal vyberte **Nastavení > přístupové klíče**, potom pomocí tlačítka pro kopírování zkopírujte primární přístupový klíč do schránky.
+1. Výběr **ručně zadali přihlašovací údaje** umožňuje zadat název účtu a klíč přímo pomocí informací na webu Azure Portal. Zkopírování klíče účtu:
+    1. Přejděte na účet úložiště na Azure portal a vyberte **Správa klíčů**.
+    1. Pokud chcete zkopírovat klíč účtu, přejděte na účet úložiště na webu Azure portal vyberte **Nastavení > přístupové klíče**, potom pomocí tlačítka pro kopírování zkopírujte primární přístupový klíč do schránky.
 1. Vyberte jednu z možností připojení. **Zadejte vlastní koncové body** se zeptá, abyste zadali konkrétní adresy URL pro objekty BLOB, tabulky a zařadí do fronty. Vlastní koncové body umožňují jeho používání [vlastních domén](storage/blobs/storage-custom-domain-name.md) a řízení přístupu k více přesně. Zobrazit [nakonfigurování připojovacích řetězců Azure Storage](./storage/common/storage-configure-connection-string.md).
 1. Vyberte **OK**, pak **soubor > Uložit** se aktualizovat konfiguraci s nový připojovací řetězec.
 

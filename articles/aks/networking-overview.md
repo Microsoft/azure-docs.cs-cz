@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 08/31/2018
+ms.date: 10/11/2018
 ms.author: iainfou
-ms.openlocfilehash: d278e47979e696183b703f7e67e39757d854fdb2
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 258eb744cf86fcd14250be8f2e8ec18b5a0fada3
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857733"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319417"
 ---
 # <a name="network-configuration-in-azure-kubernetes-service-aks"></a>Konfigurace sítě ve službě Azure Kubernetes Service (AKS)
 
@@ -73,23 +73,19 @@ Plán IP adres pro AKS cluster se skládá z virtuální sítě, alespoň jednu 
 
 Výchozí maximální počet podů na jeden uzel v clusteru AKS se pohybuje mezi Basic a rozšířeného sítě a metody nasazení clusteru.
 
-### <a name="default-maximum"></a>Výchozí maximální
-
-Jedná se o *výchozí* maxima při nasazení AKS clusteru bez zadání maximálního počtu podů v době nasazení:
-
 | Metoda nasazení | Basic | Rozšířený | Možnost konfigurace během nasazení |
 | -- | :--: | :--: | -- |
-| Azure CLI | 110 | 30 | Ano |
-| Šablona Resource Manageru | 110 | 30 | Ano |
+| Azure CLI | 110 | 30 | Ano (maximálně 110) |
+| Šablona Resource Manageru | 110 | 30 | Ano (maximálně 110) |
 | Portál | 110 | 30 | Ne |
 
 ### <a name="configure-maximum---new-clusters"></a>Nakonfigurujte maximální - nových clusterů
 
-Chcete-li určit jiný maximální počet podů na uzel při nasazování clusteru AKS:
+Budete moct nakonfigurovat maximální počet podů na uzel *pouze v době nasazení clusteru*. Pokud provádíte nasazení pomocí rozhraní příkazového řádku Azure nebo pomocí šablony Resource Manageru, můžete nastavit maximální podů na hodnotu uzlu tak vysoké jako 110.
 
-* **Azure CLI**: Zadejte `--max-pods` argument při nasazování clusteru s [az aks vytvořit] [ az-aks-create] příkazu.
-* **Šablony Resource Manageru**: Zadejte `maxPods` vlastnost [ManagedClusterAgentPoolProfile] objektu při nasazování clusteru pomocí šablony Resource Manageru.
-* **Azure portal**: nelze změnit maximální počet podů na jeden uzel, při nasazování clusteru pomocí webu Azure portal. Rozšířeného sítě clustery jsou omezená na 30 podů podle počtu uzlů po nasazení na webu Azure Portal.
+* **Azure CLI**: Zadejte `--max-pods` argument při nasazování clusteru s [az aks vytvořit] [ az-aks-create] příkazu. Maximální hodnota je 110.
+* **Šablony Resource Manageru**: Zadejte `maxPods` vlastnost [ManagedClusterAgentPoolProfile] objektu při nasazování clusteru pomocí šablony Resource Manageru. Maximální hodnota je 110.
+* **Azure portal**: nelze změnit maximální počet podů na jeden uzel, při nasazování clusteru pomocí webu Azure portal. Při nasazení pomocí webu Azure portal jsou omezená na 30 podů na uzel rozšířeného sítě clusterů.
 
 ### <a name="configure-maximum---existing-clusters"></a>Nakonfigurujte maximální - stávajících clusterů
 

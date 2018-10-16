@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/03/2018
+ms.date: 10/15/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 43f077ef07597604eaf42cb4af47cbc2f0e6c524
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 9decd861ff20a45939f700eef99245b6555829f8
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041999"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319740"
 ---
 # <a name="collect-data-in-a-hybrid-environment-with-log-analytics-agent"></a>Shromažďování dat v hybridním prostředí pomocí agenta Log Analytics
 
@@ -51,15 +51,30 @@ Pro agenta Windows se oficiálně podporuje následující verze operačního sy
 * Windows 7 SP1 a novější.
 
 ## <a name="supported-linux-operating-systems"></a>Podporované operační systémy a Linux
-Následující Linuxových distribucích se oficiálně podporuje.  Agenta pro Linux může také spustit na jiné distribuce není uvedená.  Pokud není uvedeno jinak, jsou podporovány všechny dílčí verze pro všechny hlavní verze uvedené.  
+Tato část obsahuje podrobnosti o podporovaných distribucích systému Linux.    
 
-* Linux Amazon 2012.09 k 2015.09 (x86/x64)
-* Linux centOS 5, 6 a 7 (x86/x64)  
-* Oracle Linux 5, 6 a 7 (x86/x64) 
-* Red Hat Enterprise Linux Server 5, 6 a 7 (x86/x64)
-* Debian GNU/Linux 6, 7 a 8 (x86/x64)
-* Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS (x86/x64)
-* SUSE Linux Enterprise Server 11 a 12 (x86/x64)
+Počínaje verzí vydanou po. srpna 2018, provádíme následující změny k náš model podpory:  
+
+* Pouze server, které jsou podporovány verze, ne klienta.  
+* Nové verze [distribucích schválených pro Azure Linux](../virtual-machines/linux/endorsed-distros.md) se podporují vždycky.  
+* Všechny dílčí verze se podporují pro všechny hlavní verze uvedené.
+* Verze, které uplynuly od výrobce datum ukončení podpory nejsou podporovány.  
+* Nová verze AMI nejsou podporovány.  
+* Pouze verze, na kterých běží SSL 1.x ve výchozím nastavení jsou podporovány.
+
+Pokud používáte verzi, která se momentálně nepodporuje a nebude zarovnat na náš model podpory a distribuce, doporučujeme, abyste rozvětvili toto úložiště potvrdil, že podpory společnosti Microsoft nebude poskytovat pomoc s rozvětveného agenta verze.
+
+* Linux Amazon 2017.09 (x 64)
+* Linux centOS 6 (x86/x64) a 7 (x 64)  
+* Oracle Linux 6 a 7 (x86/x64) 
+* Red Hat Enterprise Linux Server 6 (x86/x64) a 7 (x 64)
+* Debian GNU/Linux 8 a 9 (x86/x64)
+* Ubuntu 14.04 LTS (x86/x64), 16.04 LTS (x86/x64) a 18.04 LTS (x64)
+* SUSE Linux Enterprise Server 12 (x 64)
+
+>[!NOTE]
+>OpenSSL 1.1.0 je podporována pouze na platformách x86_x64 (64 bitů) a OpenSSL dříve, než 1.x se nepodporuje na libovolné platformě.
+>
 
 ## <a name="tls-12-protocol"></a>Protokol TLS 1.2
 – Pomáhat zajistit zabezpečení dat při přenosu do služby Log Analytics, důrazně doporučujeme, abyste ke konfiguraci agenta pro použití s alespoň zabezpečení TLS (Transport Layer) 1.2. Starší verze z protokolu TLS/Secure Sockets Layer (SSL) bylo zjištěno ohrožen a stále aktuálně fungují povolit zpětnou kompatibilitu, ale jsou **ale nedoporučený krok**.  Další informace najdete v tématu [odesílání dat pomocí protokolu TLS 1.2](log-analytics-data-security.md#sending-data-securely-using-tls-12). 

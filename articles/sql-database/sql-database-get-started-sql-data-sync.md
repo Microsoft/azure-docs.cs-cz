@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 82390ae304fc4d6873efc4a5073725a02b915eaa
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 98d30d2987d42a2c4893e00c3ba2ea6acd471bef
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870583"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318805"
 ---
 # <a name="set-up-sql-data-sync-to-sync-data-between-azure-sql-database-and-sql-server-on-premises"></a>Nastavení synchronizace dat SQL, synchronizaci dat mezi Azure SQL Database a SQL Server v místním
 
@@ -61,7 +61,7 @@ Kompletní příklady Powershellu ukazující konfiguraci synchronizace dat SQL 
    2. V **databáze synchronizace metadat** zvolte, jestli chcete vytvořit novou databázi (doporučeno) nebo použít stávající databázi.
 
         > [!NOTE]
-        > Společnost Microsoft doporučuje vytvořit novou, prázdnou databázi pro použití jako databáze synchronizace metadat. Synchronizace dat vytvoří tabulky v této databázi a spouští Časté úlohy. Tato databáze je automaticky sdíleny jako databáze synchronizace metadat pro všechny vaše skupiny synchronizace ve vybrané oblasti. Bez vyřadíte nelze změnit jeho název nebo databáze synchronizace metadat.
+        > Společnost Microsoft doporučuje vytvořit novou, prázdnou databázi pro použití jako databáze synchronizace metadat. Synchronizace dat vytvoří tabulky v této databázi a spouští Časté úlohy. Tato databáze je automaticky sdíleny jako databáze synchronizace metadat pro všechny vaše skupiny synchronizace ve vybrané oblasti. Databáze synchronizace metadat nebo jeho název nelze změnit bez odebrání všech skupin synchronizace a agenti synchronizace v oblasti.
 
         Pokud jste zvolili **novou databázi**vyberte **vytvořit novou databázi.** **SQL Database** otevře se stránka. Na **SQL Database** stránce, pojmenovat a nakonfigurovat novou databázi. Pak vyberte **OK**.
 

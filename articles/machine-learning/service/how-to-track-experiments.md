@@ -9,30 +9,33 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: 3256c8815b19f9b070cce3cd422f92c296e3e5c3
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: b3e1fd5331b97fc2120819b17f7fbba57dadf7b1
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115178"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345046"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Sledujte experimenty a vzdělávání metriky ve službě Azure Machine Learning
 
 Ve službě Azure Machine Learning může sledovat vaše experimenty a monitorovat metriky vylepšit proces vytváření modelu. V tomto článku se dozvíte o různých způsobech přidání protokolování do skriptu školení, jak odeslání experimentu s **start_logging** a **ScriptRunConfig**, jak zkontrolovat průběh spuštěné úlohy a postup zobrazení výsledků spuštění. 
 
+>[!NOTE]
+> V tomto článku kódu byl testován s Azure Machine Learning SDK verze 0.168 
+
 ## <a name="list-of-training-metrics"></a>Seznam metrik školení 
 
 Pro spuštění při školení experiment lze přidat následující metriky. Chcete-li zobrazit podrobnější seznam co lze sledovat na běh, najdete v článku [referenční dokumentaci k sadě SDK](https://docs.microsoft.com/python/api/overview/azure/azure-ml-sdk-overview?view=azure-ml-py).
 
-|Typ| Funkce jazyka Python | Poznámky|
-|----|:----:|:----:|
-|Skalární hodnoty | `run.log(name, value, description='')`| Přihlaste se hodnota metriky běh s daným názvem. Protokolování metriky o spuštění způsobí, že tuto metriku, který bude uložen do běhu záznam v experimentu.  Stejné metriky můžete přihlásit více než jednou v rámci spuštěný proces, výsledek se považuje za vektor tuto metriku.|
-|Seznamy| `run.log_list(name, value, description='')`|Přihlaste se hodnota metriky seznamu běh s daným názvem.|
-|Řádek| `run.log_row(name, description=None, **kwargs)`|Pomocí *log_row* vytvoří metrika tabulky se sloupci, jak je popsáno v kwargs. Každý pojmenovaný parametr generuje sloupec s hodnotou.  *log_row* může být volána jednou pro přihlášení libovolné řazené kolekce členů nebo více než jednou ve smyčce pro generování celou tabulku.|
-|Table| `run.log_table(name, value, description='')`| Metrika tabulky protokolu pro spouštění s daným názvem. |
-|Image| `run.log_image(name, path=None, plot=None)`|Přihlaste se metriku image spusťte záznam. Použití k protokolování soubor obrázku nebo matplotlib log_image vykreslení spustit.  Tyto Image budou viditelné a srovnatelné v běhu záznamu.|
-|Označení spuštění| `run.tag(key, value=None)`|Označte běh s klíčem řetězce a volitelný řetězec.|
-|Nahrát soubor nebo adresář|`run.upload_file(name, path_or_stream)`|Nahrání souboru do běhu záznamu. Spuštění automaticky zachytávací soubor v zadané výstupní adresář, kde je použit výchozí ". / výstupy" pro většinu spuštění typy.  Není zadána upload_file použijte jenom v případě, že budete muset nahrát další soubory nebo výstupní adresář. Doporučujeme přidat `outputs` název tak, že nahrán do adresáře výstupy. Můžete vytvořit seznam všech souborů, které jsou spojeny s tímto spustit záznam podle volá `run.get_file_names()`|
+|Typ| Funkce jazyka Python | Příklad: | Poznámky|
+|----|:----|:----|:----|
+|Skalární hodnoty | `run.log(name, value, description='')`| `run.log("accuracy", 0.95) ` |Protokol a číselné nebo řetězcová hodnota pro spouštění s daným názvem. Protokolování metriky o spuštění způsobí, že tuto metriku, který bude uložen do běhu záznam v experimentu.  Stejné metriky můžete přihlásit více než jednou v rámci spuštěný proces, výsledek se považuje za vektor tuto metriku.|
+|Seznamy| `run.log_list(name, value, description='')`| `run.log_list("accuracies", [0.6, 0.7, 0.87])` | Přihlaste se seznam hodnot pro spouštění s daným názvem.|
+|Řádek| `run.log_row(name, description=None, **kwargs)`| `run.log_row("Y over X", x=1, y=0.4)` | Pomocí *log_row* vytvoří metriku s více sloupců, jak je popsáno v kwargs. Každý pojmenovaný parametr generuje sloupec s hodnotou.  *log_row* může být volána jednou pro přihlášení libovolné řazené kolekce členů nebo více než jednou ve smyčce pro generování celou tabulku.|
+|Table| `run.log_table(name, value, description='')`| `run.log_table("Y over X", {"x":[1, 2, 3], "y":[0.6, 0.7, 0.89]})` | Přihlaste se na objekt slovníku běh s daným názvem. |
+|Image| `run.log_image(name, path=None, plot=None)`| `run.log_image("ROC", plt)` | Přihlaste se image spusťte záznam. Použití k protokolování soubor obrázku nebo matplotlib log_image vykreslení spustit.  Tyto Image budou viditelné a srovnatelné v běhu záznamu.|
+|Označení spuštění| `run.tag(key, value=None)`| `run.tag("selected", "yes")` | Označte běh s klíčem řetězce a volitelný řetězec.|
+|Nahrát soubor nebo adresář|`run.upload_file(name, path_or_stream)`| Run.upload_file ("best_model.pkl", ". / model.pkl") | Nahrání souboru do běhu záznamu. Spuštění automaticky zachytávací soubor v zadané výstupní adresář, kde je použit výchozí ". / výstupy" pro většinu spuštění typy.  Není zadána upload_file použijte jenom v případě, že budete muset nahrát další soubory nebo výstupní adresář. Doporučujeme přidat `outputs` název tak, že nahrán do adresáře výstupy. Můžete vytvořit seznam všech souborů, které jsou spojeny s tímto spustit záznam podle volá `run.get_file_names()`|
 
 > [!NOTE]
 > Metriky pro skaláry, seznamy, řádků a tabulky může mít typ: float, celé číslo nebo řetězec.
@@ -141,7 +144,7 @@ Tento příklad rozšiřuje základní model skriptu sklearn Ridge výše. Prov�
 
   X, y = load_diabetes(return_X_y = True)
 
-  run = Run.get_submitted_run()
+  run = Run.get_context()
 
   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
   data = {"train": {"X": X_train, "y": y_train},

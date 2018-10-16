@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: 229f3dd11a90c4f6d65c9cae2a5dd3447eedf83e
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 1f2c8233e0385c58df66703f3611c51072f7118a
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225255"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341782"
 ---
 # <a name="azure-instance-metadata-service"></a>Služby Azure Instance Metadata
 
@@ -289,7 +289,7 @@ jméno | Název virtuálního počítače | 2017-04-02
 nabídka | Nabízí informace pro image virtuálního počítače. Tato hodnota platí jenom pro Image nasazují z Galerie imagí Azure. | 2017-04-02
 vydavatele | Vydavatel image virtuálního počítače | 2017-04-02
 Skladová položka | Konkrétní SKU pro image virtuálního počítače | 2017-04-02
-verze | Verzi image virtuálního počítače | 2017-04-02
+version | Verzi image virtuálního počítače | 2017-04-02
 osType | Linux nebo Windows | 2017-04-02
 platformUpdateDomain |  [Aktualizační doména](manage-availability.md) virtuální počítač je spuštěný | 2017-04-02
 platformFaultDomain | [Doména selhání](manage-availability.md) virtuální počítač je spuštěný | 2017-04-02
@@ -310,7 +310,7 @@ podsítě/předpona | Předpona podsítě, například 24 | 2017-04-02
 ipv6/ipAddress | Místní adresa IPv6 z virtuálního počítače | 2017-04-02 
 macAddress | Adresa mac virtuálního počítače | 2017-04-02 
 scheduledevents | Zobrazit [naplánované události](scheduled-events.md) | 2017-08-01
-identity | (Preview) Identita spravované služby. Zobrazit [získání přístupového tokenu](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01 
+identity | (Preview) Spravované identity pro prostředky Azure. Zobrazit [získání přístupového tokenu](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01 
 
 ## <a name="example-scenarios-for-usage"></a>Ukázkové scénáře pro využití  
 

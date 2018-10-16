@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 057af5e0e5b467ab60e8de7534e9f4428b96c3dc
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 668882b8b39052c3c8e7d7b72c881a64c5c05a10
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46298315"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321786"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Řešení potíží s resetováním hesla pomocí samoobslužné služby
 
@@ -173,16 +173,14 @@ Pro větší členitostí odkazovat na aktualizovaný seznam [Microsoft Azure ro
 
 Další informace najdete v tématu požadavky připojení [požadavky pro Azure AD Connect](../hybrid/how-to-connect-install-prerequisites.md) článku.
 
-
-
 ### <a name="restart-the-azure-ad-connect-sync-service"></a>Restartujte službu Azure AD Connect Sync
 
 Chcete-li vyřešit potíže s připojením nebo jiné přechodné problémy se službou, restartujte službu Azure AD Connect Sync:
 
    1. Jako správce, vyberte **Start** na serveru se službou Azure AD Connect.
-   2. Zadejte **services.msc** vyhledávacího pole a vyberte **Enter**.
-   3. Hledat **Microsoft Azure AD Sync** položka.
-   4. Klikněte pravým tlačítkem na položku služby, vyberte **restartovat**a potom počkejte na dokončení operace.
+   1. Zadejte **services.msc** vyhledávacího pole a vyberte **Enter**.
+   1. Hledat **Microsoft Azure AD Sync** položka.
+   1. Klikněte pravým tlačítkem na položku služby, vyberte **restartovat**a potom počkejte na dokončení operace.
 
    ![Restartujte službu Azure AD Sync][Service restart]
 
@@ -193,15 +191,15 @@ Tyto kroky znovu navázat připojení s cloudovou službou a vyřešit přeruše
 Chcete-li vyřešit potíže s připojením, zakázat a znovu povolit funkci zpětného zápisu hesla:
 
    1. Jako správce otevřete Průvodce konfigurace Azure AD Connect.
-   2. V **připojit ke službě Azure AD**, zadejte přihlašovací údaje globálního správce Azure AD.
-   3. V **připojit ke službě AD DS**, zadejte svoje přihlašovací údaje správce AD Domain Services.
-   4. V **Jednoznačná identifikace uživatelů**, vyberte **Další** tlačítko.
-   5. V **volitelné funkce**, zrušte zaškrtnutí políčka **zpětný zápis hesla** zaškrtávací políčko.
-   6. Vyberte **Další** prostřednictvím na zbývajících stránkách beze změny jakéhokoli, dokud se nedostanete do dialogového okna **připraveno ke konfiguraci** stránky.
-   7. Ujistěte se, že **připraveno ke konfiguraci stránky** ukazuje **zpětný zápis hesla** možnost jako **zakázané** a zvolte zelené **konfigurovat** tlačítko potvrďte provedené změny.
-   8. V **dokončeno**, zrušte zaškrtnutí políčka **synchronizovat** a potom vyberte možnost **Dokončit** zavřete průvodce.
-   9. Znovu otevřete Průvodce konfigurace Azure AD Connect.
-   10. Zopakujte kroky 2 až 8, s tím rozdílem, vyberte **zpětný zápis hesla** možnost **volitelné funkce** stránku a znovu povolit službu.
+   1. V **připojit ke službě Azure AD**, zadejte přihlašovací údaje globálního správce Azure AD.
+   1. V **připojit ke službě AD DS**, zadejte svoje přihlašovací údaje správce AD Domain Services.
+   1. V **Jednoznačná identifikace uživatelů**, vyberte **Další** tlačítko.
+   1. V **volitelné funkce**, zrušte zaškrtnutí políčka **zpětný zápis hesla** zaškrtávací políčko.
+   1. Vyberte **Další** prostřednictvím na zbývajících stránkách beze změny jakéhokoli, dokud se nedostanete do dialogového okna **připraveno ke konfiguraci** stránky.
+   1. Ujistěte se, že **připraveno ke konfiguraci stránky** ukazuje **zpětný zápis hesla** možnost jako **zakázané** a zvolte zelené **konfigurovat** tlačítko potvrďte provedené změny.
+   1. V **dokončeno**, zrušte zaškrtnutí políčka **synchronizovat** a potom vyberte možnost **Dokončit** zavřete průvodce.
+   1. Znovu otevřete Průvodce konfigurace Azure AD Connect.
+   1. Zopakujte kroky 2 až 8, s tím rozdílem, vyberte **zpětný zápis hesla** možnost **volitelné funkce** stránku a znovu povolit službu.
 
 Tyto kroky znovu navázat připojení k naší cloudové služby a řešení, které vám může dojít k přerušení práce.
 
@@ -215,10 +213,11 @@ Doporučujeme, abyste tento krok proveďte až po pokusu o první dva kroky pops
 
 > [!WARNING]
 > Pokud jste upravili out-of-the-box synchronizační pravidla, *zálohování je před pokračováním v upgradu a poté ručně znovu nasadit až budete hotovi.*
+>
 
-   1. Stáhněte si nejnovější verzi služby Azure AD Connect z [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=615771).
-   2. Vzhledem k tomu, že jste již nainstalovali Azure AD Connect, budete muset provést místní upgrade na nejnovější verzi aktualizace instalace služby Azure AD Connect.
-   3. Spuštění staženého balíčku a postupujte podle na obrazovce pokyny k aktualizaci vašeho počítače v Azure AD Connect.
+1. Stáhněte si nejnovější verzi služby Azure AD Connect z [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=615771).
+1. Vzhledem k tomu, že jste již nainstalovali Azure AD Connect, budete muset provést místní upgrade na nejnovější verzi aktualizace instalace služby Azure AD Connect.
+1. Spuštění staženého balíčku a postupujte podle na obrazovce pokyny k aktualizaci vašeho počítače v Azure AD Connect.
 
 V předchozích krocích by měl znovu navázat připojení s naší cloudovou službou a vyřešte všechny přerušení, které se mohou setkat.
 
@@ -228,34 +227,33 @@ Pokud instalaci nejnovější verze serveru služby Azure AD Connect váš probl
 
 Azure AD Connect vyžaduje služby Active Directory **resetovat heslo** oprávnění k provedení zpětný zápis hesla. Chcete-li zjistit, jestli služby Azure AD Connect má požadované oprávnění pro danou místní uživatelský účet Active Directory, můžete použít funkci Windows efektivního oprávnění:
 
-   1. Přihlaste se k serveru služby Azure AD Connect a spustit **Synchronization Service Manager** tak, že vyberete **Start** > **synchronizační služba**.
-   2. V části **konektory** kartu, vyberte místní **Active Directory Domain Services** konektoru a pak vyberte **vlastnosti**.  
-
+1. Přihlaste se k serveru služby Azure AD Connect a spustit **Synchronization Service Manager** tak, že vyberete **Start** > **synchronizační služba**.
+1. V části **konektory** kartu, vyberte místní **Active Directory Domain Services** konektoru a pak vyberte **vlastnosti**.  
    ![Efektivní oprávnění – krok 2](./media/active-directory-passwords-troubleshoot/checkpermission01.png)  
   
-   3. V místním okně vyberte **připojit k doménové struktuře služby Active Directory** a poznamenejte si **uživatelské jméno** vlastnost. Tato vlastnost je účet služby AD DS používá k provedení synchronizace adresářů Azure AD Connect. Pro Azure AD Connect k provádění zpětného zápisu hesla musí mít účet služby AD DS resetovat heslo oprávnění.  
+1. V místním okně vyberte **připojit k doménové struktuře služby Active Directory** a poznamenejte si **uživatelské jméno** vlastnost. Tato vlastnost je účet služby AD DS používá k provedení synchronizace adresářů Azure AD Connect. Pro Azure AD Connect k provádění zpětného zápisu hesla musí mít účet služby AD DS resetovat heslo oprávnění.  
    
    ![Efektivní oprávnění – krok 3](./media/active-directory-passwords-troubleshoot/checkpermission02.png) 
   
-   4. Přihlaste se k řadiči domény s místními a spustit **Active Directory Users and Computers** aplikace.
-   5. Vyberte **zobrazení** a ujistěte se, že **rozšířené funkce** je povolená možnost.  
+1. Přihlaste se k řadiči domény s místními a spustit **Active Directory Users and Computers** aplikace.
+1. Vyberte **zobrazení** a ujistěte se, že **rozšířené funkce** je povolená možnost.  
    
    ![Efektivní oprávnění – krok 5](./media/active-directory-passwords-troubleshoot/checkpermission03.png) 
   
-   6. Vyhledejte uživatelský účet Active Directory, kterou chcete ověřit. Klikněte pravým tlačítkem na název účtu a vyberte **vlastnosti**.  
+1. Vyhledejte uživatelský účet Active Directory, kterou chcete ověřit. Klikněte pravým tlačítkem na název účtu a vyberte **vlastnosti**.  
    
    ![Efektivní oprávnění – krok 6](./media/active-directory-passwords-troubleshoot/checkpermission04.png) 
 
-   7. V místním okně, přejděte **zabezpečení** kartě a vyberte **Upřesnit**.  
+1. V místním okně, přejděte **zabezpečení** kartě a vyberte **Upřesnit**.  
    
    ![Efektivní oprávnění – krok 7](./media/active-directory-passwords-troubleshoot/checkpermission05.png) 
    
-   8. V **Upřesnit nastavení zabezpečení pro správce** automaticky otevírané okno, přejděte **platného přístupu** kartu.
-   9. Vyberte **vybrat uživatele**, vyberte účet služby AD DS používá Azure AD Connect (viz krok 3) a pak vyberte **zobrazit platný přístup**.  
-   
+1. V **Upřesnit nastavení zabezpečení pro správce** automaticky otevírané okno, přejděte **platného přístupu** kartu.
+1. Vyberte **vybrat uživatele**, vyberte účet služby AD DS používá Azure AD Connect (viz krok 3) a pak vyberte **zobrazit platný přístup**.
+
    ![Efektivní oprávnění - kroku 9](./media/active-directory-passwords-troubleshoot/checkpermission06.png) 
   
-   10. Posuňte se dolů a najděte **resetovat heslo**. Pokud má položka zaškrtávací políčko, má účet služby AD DS oprávnění resetovat heslo vybraného uživatelského účtu služby Active Directory.  
+1. Posuňte se dolů a najděte **resetovat heslo**. Pokud má položka zaškrtávací políčko, má účet služby AD DS oprávnění resetovat heslo vybraného uživatelského účtu služby Active Directory.  
    
    ![Efektivní oprávnění - krok 10](./media/active-directory-passwords-troubleshoot/checkpermission07.png)  
 
@@ -285,8 +283,6 @@ K usnadnění správně, můžeme požádat, zadejte co nejvíce podrobností ne
     * Je to výhradně cloudový uživatel?
 * **Licencování**: uživatel mít přiřazenou licenci Azure AD Premium nebo Azure AD Basic?
 * **Protokol událostí aplikace**: Pokud používáte zpětný zápis hesla a chyba je ve vaší místní infrastruktuře, zahrňte ZIP kopii protokolu událostí aplikací ze serveru služby Azure AD Connect.
-
-
 
 [Service restart]: ./media/active-directory-passwords-troubleshoot/servicerestart.png "Restartujte službu Azure AD Sync"
 [Support code]: ./media/active-directory-passwords-troubleshoot/supportcode.png "Kód podpory, který se nachází v pravém dolním rohu okna"

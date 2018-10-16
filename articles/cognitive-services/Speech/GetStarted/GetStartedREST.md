@@ -10,15 +10,16 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: 0f98182a73cebdd4df9f7849b2306f89c620f24b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a9f74f4032a78ee51ea2a8f020cd1418bb3330ca
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973945"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345352"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>Rychlý start: Použití rozpoznávání řeči Bingu rozhraní REST API
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 Založené na cloudu Speech Service Bingu vám umožní vytvářet aplikace pomocí rozhraní REST API k převést mluvené slovo na text.
 
@@ -78,7 +79,7 @@ Následující pole musí být nastaveny v hlavičce žádosti:
 - `Ocp-Apim-Subscription-Key`: Při každém volání služby, je nutné předat klíč předplatného. v `Ocp-Apim-Subscription-Key` záhlaví. Speech Service podporuje také povolení předávání tokenů místo klíče předplatného. Další informace najdete v tématu [ověřování](../How-to/how-to-authentication.md).
 - `Content-type`: `Content-type` Pole popisuje formátu a kodek zvukový datový proud. V současné době pouze soubor WAV a PCM Mono 16000 kódování je podporováno. Hodnota Content-type pro tento formát je `audio/wav; codec=audio/pcm; samplerate=16000`.
 
-`Transfer-Encoding` Pole je volitelné. Pokud nastavíte toto pole na `chunked`, můžete jej zvuku do malých bloků. Další informace najdete v tématu [přenos rozdělený do bloků dat](../How-to/how-to-chunked-transfer.md).
+Pole `Transfer-Encoding` je nepovinné. Pokud nastavíte toto pole na `chunked`, můžete jej zvuku do malých bloků. Další informace najdete v tématu [přenos rozdělený do bloků dat](../How-to/how-to-chunked-transfer.md).
 
 Hlavička požadavku vzorku je následující:
 

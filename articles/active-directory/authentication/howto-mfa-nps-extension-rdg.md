@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 14607e01c0bd51ca9ae98f969c9cd6e1c8c62bb9
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 7fb69fd52c03300ee554fd903cba1670f2aa2421
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294267"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318601"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrace služby Brána vzdálené plochy infrastrukturu s použitím rozšíření serveru NPS (Network Policy Server) a Azure AD
 
@@ -47,12 +47,12 @@ Brány VP můžete nakonfigurovat pro použití zásady centrálního úložišt
 Když rozšíření NPS pro Azure je integrována se serverem NPS a Brána vzdálené plochy, tok úspěšné ověřování vypadá takto:
 
 1. Serveru služby Brána vzdálené plochy obdrží požadavek na ověření od uživatele vzdálené plochy pro připojení k prostředku, jako je například relaci vzdálené plochy. Funguje jako klienta protokolu RADIUS, serveru brány vzdálené plochy provede převod na zprávu pomocí protokolu RADIUS-žádost o přístup a odešle zprávu do serveru RADIUS (NPS), kde je nainstalovaná rozšíření NPS. 
-2. Kombinace uživatelského jména a hesla je ověřen ve službě Active Directory a ověření uživatele.
-3. Pokud jsou splněny všechny podmínky uvedené v žádosti o připojení serveru NPS a zásady sítě (například čas, den nebo skupiny omezeními pro členství vyplývajícími), rozšíření NPS spustí požadavek pro sekundární ověřování s Azure MFA. 
-4. Azure MFA komunikuje se službou Azure AD, načte podrobnosti daného uživatele a provádí sekundární ověření pomocí metody nakonfigurovaná uživatelem (textová zpráva, mobilní aplikace a tak dále). 
-5. Po úspěšném nasazení z ověřovacím testem MFA Azure MFA komunikuje výsledek, který má rozšíření serveru NPS.
-6. Server NPS, kde je nainstalovaná rozšíření, odešle zprávu přijmout přístup protokolu RADIUS pro zásady CAP ke vzdálené ploše na serveru brány vzdálené plochy.
-7. Uživateli je udělen přístup k prostředku požadovaná síť prostřednictvím brány VP.
+1. Kombinace uživatelského jména a hesla je ověřen ve službě Active Directory a ověření uživatele.
+1. Pokud jsou splněny všechny podmínky uvedené v žádosti o připojení serveru NPS a zásady sítě (například čas, den nebo skupiny omezeními pro členství vyplývajícími), rozšíření NPS spustí požadavek pro sekundární ověřování s Azure MFA. 
+1. Azure MFA komunikuje se službou Azure AD, načte podrobnosti daného uživatele a provádí sekundární ověření pomocí metody nakonfigurovaná uživatelem (textová zpráva, mobilní aplikace a tak dále). 
+1. Po úspěšném nasazení z ověřovacím testem MFA Azure MFA komunikuje výsledek, který má rozšíření serveru NPS.
+1. Server NPS, kde je nainstalovaná rozšíření, odešle zprávu přijmout přístup protokolu RADIUS pro zásady CAP ke vzdálené ploše na serveru brány vzdálené plochy.
+1. Uživateli je udělen přístup k prostředku požadovaná síť prostřednictvím brány VP.
 
 ## <a name="prerequisites"></a>Požadavky
 Tato část podrobně popisuje předpoklady nezbytné před integrace Azure MFA s bránou vzdálení plochy. Než začnete, musíte mít splněné následující požadavky na místě.  
@@ -105,9 +105,9 @@ Tato část obsahuje pokyny ke konfiguraci vzdálené plochy infrastruktury pro 
 Jako součást konfigurace rozšíření serveru NPS budete muset zadat přihlašovací údaje správce a Azure AD ID pro vašeho tenanta Azure AD. Následující kroky ukazují, jak získat ID tenanta.
 
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com) jako globální správce tenanta Azure.
-2. V levém navigačním panelu vyberte **Azure Active Directory** ikonu.
-3. Vyberte **vlastnosti**.
-4. V okně Vlastnosti vedle ID adresáře, klikněte na tlačítko **kopírování** ikonu, jak je znázorněno níže, ID zkopírovat do schránky.
+1. V levém navigačním panelu vyberte **Azure Active Directory** ikonu.
+1. Vyberte **vlastnosti**.
+1. V okně Vlastnosti vedle ID adresáře, klikněte na tlačítko **kopírování** ikonu, jak je znázorněno níže, ID zkopírovat do schránky.
 
  ![Vlastnosti](./media/howto-mfa-nps-extension-rdg/image1.png)
 
@@ -119,13 +119,13 @@ Instalace rozšíření serveru NPS na serveru s nainstalovanou rolí síťové 
 > 
 
 1. Stáhněte si [rozšíření NPS](https://aka.ms/npsmfa). 
-2. Zkopírujte spustitelný soubor instalace (NpsExtnForAzureMfaInstaller.exe) na server NPS.
-3. Na serveru NPS, klikněte dvakrát na **NpsExtnForAzureMfaInstaller.exe**. Pokud se zobrazí výzva, klikněte na tlačítko **spustit**.
-4. V dialogovém okně rozšíření NPS pro Azure MFA nastavení, přečtěte si licenční podmínky pro software, zkontrolujte **vyjadřuji souhlas s licenčními podmínkami a ujednáními**a klikněte na tlačítko **nainstalovat**.
+1. Zkopírujte spustitelný soubor instalace (NpsExtnForAzureMfaInstaller.exe) na server NPS.
+1. Na serveru NPS, klikněte dvakrát na **NpsExtnForAzureMfaInstaller.exe**. Pokud se zobrazí výzva, klikněte na tlačítko **spustit**.
+1. V dialogovém okně rozšíření NPS pro Azure MFA nastavení, přečtěte si licenční podmínky pro software, zkontrolujte **vyjadřuji souhlas s licenčními podmínkami a ujednáními**a klikněte na tlačítko **nainstalovat**.
  
   ![Nastavení Azure MFA](./media/howto-mfa-nps-extension-rdg/image2.png)
 
-5. V dialogovém okně rozšíření NPS pro Azure MFA nastavení klikněte na tlačítko **Zavřít**. 
+1. V dialogovém okně rozšíření NPS pro Azure MFA nastavení klikněte na tlačítko **Zavřít**. 
 
   ![Rozšíření NPS pro Azure MFA](./media/howto-mfa-nps-extension-rdg/image3.png)
 
@@ -145,20 +145,20 @@ Pokud chcete použít vlastní certifikáty, musíte přidružit veřejný klí�
 Pokud chcete použít skript, poskytují rozšíření pomocí svých přihlašovacích údajů správce Azure AD a ID tenanta Azure AD, který jste si zkopírovali dříve. Spusťte skript na každém serveru NPS, kam jste nainstalovali rozšíření serveru NPS. Potom udělejte následující:
 
 1. Otevřete řádku prostředí Windows PowerShell pro správu.
-2. Zadejte v příkazovém prostředí PowerShell `cd ‘c:\Program Files\Microsoft\AzureMfa\Config’`a stiskněte klávesu **ENTER**.
-3. Typ `.\AzureMfsNpsExtnConfigSetup.ps1`a stiskněte klávesu **ENTER**. Skript zkontroluje, zda je nainstalován modul Powershellu pro Azure Active Directory. Pokud nainstalovaná není, skript nainstaluje modul pro vás.
+1. Zadejte v příkazovém prostředí PowerShell `cd ‘c:\Program Files\Microsoft\AzureMfa\Config’`a stiskněte klávesu **ENTER**.
+1. Typ `.\AzureMfsNpsExtnConfigSetup.ps1`a stiskněte klávesu **ENTER**. Skript zkontroluje, zda je nainstalován modul Powershellu pro Azure Active Directory. Pokud nainstalovaná není, skript nainstaluje modul pro vás.
 
   ![Prostředí PowerShell Azure AD](./media/howto-mfa-nps-extension-rdg/image4.png)
   
-4. Jakmile skript ověří instalace modulu prostředí PowerShell, zobrazí dialogové okno modul Powershellu pro Azure Active Directory. V dialogovém okně zadejte svoje přihlašovací údaje správce Azure AD a heslo a klikněte na tlačítko **Sign In**.
+1. Jakmile skript ověří instalace modulu prostředí PowerShell, zobrazí dialogové okno modul Powershellu pro Azure Active Directory. V dialogovém okně zadejte svoje přihlašovací údaje správce Azure AD a heslo a klikněte na tlačítko **Sign In**.
 
   ![Otevřete prostředí Powershell účet](./media/howto-mfa-nps-extension-rdg/image5.png)
 
-5. Po zobrazení výzvy, vložte ID tenanta, který jste si zkopírovali do schránky a stiskněte klávesu **ENTER**.
+1. Po zobrazení výzvy, vložte ID tenanta, který jste si zkopírovali do schránky a stiskněte klávesu **ENTER**.
 
   ![Zadejte ID Tenanta](./media/howto-mfa-nps-extension-rdg/image6.png)
 
-6. Tento skript vytvoří certifikát podepsaný svým držitelem a provede další změny v konfiguraci. Výstup by měl být podobně jako na následujícím obrázku.
+1. Tento skript vytvoří certifikát podepsaný svým držitelem a provede další změny v konfiguraci. Výstup by měl být podobně jako na následujícím obrázku.
 
   ![Certifikát podepsaný svým držitelem](./media/howto-mfa-nps-extension-rdg/image7.png)
 
@@ -171,22 +171,22 @@ Tok ověření vyžaduje, že zprávy protokolu RADIUS se vyměňují mezi Brán
 Zásady autorizace připojení ke vzdálené ploše (CAP k vzdálené ploše) zadejte požadavky pro připojení k serveru služby Brána vzdálené plochy. CAP k vzdálené ploše můžete ukládat místně (výchozí) nebo může být uložený v centrální úložiště CAP ke vzdálené ploše, na kterém běží server NPS. Konfigurace integrace Azure MFA s vzdálené plochy, budete muset zadat příkaz use centrálního úložiště.
 
 1. Na serveru služby Brána VP, otevřete **správce serveru**. 
-2. V nabídce klikněte na tlačítko **nástroje**, přejděte na **služby Vzdálená plocha**a potom klikněte na tlačítko **Správce brány vzdálené plochy**.
+1. V nabídce klikněte na tlačítko **nástroje**, přejděte na **služby Vzdálená plocha**a potom klikněte na tlačítko **Správce brány vzdálené plochy**.
 
   ![Vzdálená plocha](./media/howto-mfa-nps-extension-rdg/image8.png)
 
-3. V Správce brány VP klikněte pravým tlačítkem na  **\[název serveru\] (místní)** a klikněte na tlačítko **vlastnosti**.
+1. V Správce brány VP klikněte pravým tlačítkem na  **\[název serveru\] (místní)** a klikněte na tlačítko **vlastnosti**.
 
   ![Název serveru](./media/howto-mfa-nps-extension-rdg/image9.png)
 
-4. V dialogovém okně Vlastnosti vyberte **VP Zakončení Store** kartu.
-5. Na kartě VP Zakončení Store vyberte **centrální server NPS**. 
-6. V **zadejte název nebo IP adresu serveru NPS** zadejte IP adresu nebo server název serveru, kam jste nainstalovali rozšíření serveru NPS.
+1. V dialogovém okně Vlastnosti vyberte **VP Zakončení Store** kartu.
+1. Na kartě VP Zakončení Store vyberte **centrální server NPS**. 
+1. V **zadejte název nebo IP adresu serveru NPS** zadejte IP adresu nebo server název serveru, kam jste nainstalovali rozšíření serveru NPS.
 
   ![Zadejte název nebo IP adresu](./media/howto-mfa-nps-extension-rdg/image10.png)
   
-7. Klikněte na tlačítko **Add** (Přidat).
-8. V **sdílený tajný klíč** dialogové okno, zadejte sdílený tajný klíč a potom klikněte na tlačítko **OK**. Zkontrolujte záznam sdílený tajný klíč a bezpečně uložit záznam.
+1. Klikněte na tlačítko **Add** (Přidat).
+1. V **sdílený tajný klíč** dialogové okno, zadejte sdílený tajný klíč a potom klikněte na tlačítko **OK**. Zkontrolujte záznam sdílený tajný klíč a bezpečně uložit záznam.
 
  >[!NOTE]
  >Sdílený tajný klíč se používá k navázání vztahu důvěryhodnosti mezi klienty a servery RADIUS. Vytvoření tajného klíče dlouhá a složitá.
@@ -194,45 +194,45 @@ Zásady autorizace připojení ke vzdálené ploše (CAP k vzdálené ploše) za
 
  ![Sdílený tajný kód](./media/howto-mfa-nps-extension-rdg/image11.png)
 
-9. Kliknutím na **OK** zavřete dialogové okno.
+1. Kliknutím na **OK** zavřete dialogové okno.
 
 ### <a name="configure-radius-timeout-value-on-remote-desktop-gateway-nps"></a>Hodnota časového limitu protokolu RADIUS nakonfigurovat na NPS brány vzdálené plochy
 Jak zajistit, že je čas na ověření přihlašovacích údajů uživatelů, provedení dvoustupňového ověřování, dostávat odpovědi a reagovat na zprávy pomocí protokolu RADIUS, je nutné upravit hodnoty časového limitu protokolu RADIUS.
 
 1. Na serveru služby Brána VP otevřete Správce serveru. V nabídce klikněte na tlačítko **nástroje**a potom klikněte na tlačítko **Network Policy Server**. 
-2. V **server NPS (místní)** rozbalte **klienti a servery RADIUS**a vyberte **vzdálený Server RADIUS**.
+1. V **server NPS (místní)** rozbalte **klienti a servery RADIUS**a vyberte **vzdálený Server RADIUS**.
 
  ![Server Remote RADIUS](./media/howto-mfa-nps-extension-rdg/image12.png)
 
-3. V podokně podrobností klikněte dvakrát na **TS GATEWAY SERVER GROUP**.
+1. V podokně podrobností klikněte dvakrát na **TS GATEWAY SERVER GROUP**.
 
  >[!NOTE]
  >Tato skupina serveru RADIUS byla vytvořena při konfiguraci centrálního serveru NPS zásady. Brána VP přeposílá zprávy pomocí protokolu RADIUS na tento server nebo skupinu serverů, pokud více než jedna ve skupině.
  >
 
-4. V **vlastností skupiny serverů brány TS** dialogového okna, vyberte IP adresu nebo název serveru NPS nakonfigurovat tak, aby úložiště CAP k vzdálené ploše a pak klikněte na tlačítko **upravit**. 
+1. V **vlastností skupiny serverů brány TS** dialogového okna, vyberte IP adresu nebo název serveru NPS nakonfigurovat tak, aby úložiště CAP k vzdálené ploše a pak klikněte na tlačítko **upravit**. 
 
  ![Skupiny serverů brány TS](./media/howto-mfa-nps-extension-rdg/image13.png)
 
-5. V **upravit Server protokolu RADIUS** dialogové okno, vyberte **Vyrovnávání zatížení** kartu.
-6. V **Vyrovnávání zatížení** kartě **počet sekund bez odpovědi, než je žádost považována za zrušenou** pole, změňte výchozí hodnotu ze 3 na hodnotu 30 – 60 sekund.
-7. V **počet sekund mezi požadavky, když je server identifikován jako nedostupný** pole, změňte výchozí hodnota 30 sekund na hodnotu, která je rovna nebo větší než hodnota zadaná v předchozím kroku.
+1. V **upravit Server protokolu RADIUS** dialogové okno, vyberte **Vyrovnávání zatížení** kartu.
+1. V **Vyrovnávání zatížení** kartě **počet sekund bez odpovědi, než je žádost považována za zrušenou** pole, změňte výchozí hodnotu ze 3 na hodnotu 30 – 60 sekund.
+1. V **počet sekund mezi požadavky, když je server identifikován jako nedostupný** pole, změňte výchozí hodnota 30 sekund na hodnotu, která je rovna nebo větší než hodnota zadaná v předchozím kroku.
 
  ![Upravit Server protokolu Radius](./media/howto-mfa-nps-extension-rdg/image14.png)
 
-8.  Klikněte na tlačítko **OK** dvakrát zavřete dialogová okna.
+1.  Klikněte na tlačítko **OK** dvakrát zavřete dialogová okna.
 
 ### <a name="verify-connection-request-policies"></a>Ověření zásad vyžádání nového připojení 
 Ve výchozím nastavení při konfiguraci brány VP pro použití zásady centrálního úložiště pro zásady autorizace připojení, je Brána VP nakonfigurované ke směrování žádostí Zakončení na server NPS. Server NPS pomocí rozšíření Azure MFA nainstalovali, zpracuje žádost o přístup protokolu RADIUS. Následující kroky ukazují, jak ověřit zásady vyžádání nového připojení výchozí. 
 
 1. Na bráně VP, v konzole serveru NPS (místní) rozbalte **zásady**a vyberte **zásady vyžádání nového připojení**.
-2. Dvakrát klikněte na panel **TS GATEWAY AUTHORIZATION POLICY**.
-3. V **TS GATEWAY AUTHORIZATION POLICY vlastnosti** dialogové okno, klikněte na tlačítko **nastavení** kartu.
-4. Na **nastavení** klikněte na kartu podle předání požadavku na připojení **ověřování**. Klient protokolu RADIUS konfigurován pro směrování požadavků pro ověřování.
+1. Dvakrát klikněte na panel **TS GATEWAY AUTHORIZATION POLICY**.
+1. V **TS GATEWAY AUTHORIZATION POLICY vlastnosti** dialogové okno, klikněte na tlačítko **nastavení** kartu.
+1. Na **nastavení** klikněte na kartu podle předání požadavku na připojení **ověřování**. Klient protokolu RADIUS konfigurován pro směrování požadavků pro ověřování.
 
  ![Nastavení ověřování](./media/howto-mfa-nps-extension-rdg/image15.png)
  
-5. Klikněte na tlačítko **zrušit**. 
+1. Klikněte na tlačítko **zrušit**. 
 
 ## <a name="configure-nps-on-the-server-where-the-nps-extension-is-installed"></a>Konfigurace serveru NPS na serveru, kde je nainstalovaná rozšíření NPS
 Server NPS, kde je nainstalovaná rozšíření NPS musí být schopen výměna zpráv pomocí protokolu RADIUS se serverem NPS na Brána vzdálené plochy. Pokud chcete povolit tento výměně zpráv, musíte nakonfigurovat komponenty NPS na serveru, ve kterém je nainstalovaná služba rozšíření NPS. 
@@ -241,13 +241,13 @@ Server NPS, kde je nainstalovaná rozšíření NPS musí být schopen výměna 
 Fungovat správně v tomto scénáři, NPS server musí být zaregistrované ve službě Active Directory.
 
 1. Na serveru NPS otevřete **správce serveru**.
-2. Ve Správci serveru klikněte na tlačítko **nástroje**a potom klikněte na tlačítko **Network Policy Server**. 
-3. V konzole serveru Network Policy Server klikněte pravým tlačítkem na **server NPS (místní)** a potom klikněte na tlačítko **zaregistrovat server ve službě Active Directory**. 
-4. Klikněte na tlačítko **OK** dvakrát.
+1. Ve Správci serveru klikněte na tlačítko **nástroje**a potom klikněte na tlačítko **Network Policy Server**. 
+1. V konzole serveru Network Policy Server klikněte pravým tlačítkem na **server NPS (místní)** a potom klikněte na tlačítko **zaregistrovat server ve službě Active Directory**. 
+1. Klikněte na tlačítko **OK** dvakrát.
 
  ![Registrace serveru ve službě AD](./media/howto-mfa-nps-extension-rdg/image16.png)
 
-5. Nechte konzolu otevřený pro další postup.
+1. Nechte konzolu otevřený pro další postup.
 
 ### <a name="create-and-configure-radius-client"></a>Vytvoření a konfigurace klienta protokolu RADIUS 
 Brána vzdálené plochy musí být nakonfigurován jako klienta RADIUS serveru NPS. 
@@ -256,39 +256,39 @@ Brána vzdálené plochy musí být nakonfigurován jako klienta RADIUS serveru 
 
  ![Noví klienti RADIUS](./media/howto-mfa-nps-extension-rdg/image17.png)
 
-2. V **nový klient protokolu RADIUS** dialogového okna zadejte popisný název, jako například _brány_a IP adresu nebo název DNS serveru brány vzdálené plochy. 
-3. V **sdílený tajný klíč** a **potvrzení sdíleného tajného klíče** pole, zadejte stejnou tajný klíč, který jste použili dříve.
+1. V **nový klient protokolu RADIUS** dialogového okna zadejte popisný název, jako například _brány_a IP adresu nebo název DNS serveru brány vzdálené plochy. 
+1. V **sdílený tajný klíč** a **potvrzení sdíleného tajného klíče** pole, zadejte stejnou tajný klíč, který jste použili dříve.
 
  ![Název a adresu](./media/howto-mfa-nps-extension-rdg/image18.png)
 
-4. Klikněte na tlačítko **OK** zavřete dialogové okno Nový klient protokolu RADIUS.
+1. Klikněte na tlačítko **OK** zavřete dialogové okno Nový klient protokolu RADIUS.
 
 ### <a name="configure-network-policy"></a>Konfigurovat zásady sítě
 Připomínáme, že server NPS pomocí rozšíření Azure MFA je úložiště určené centrální zásady pro povolení zásad připojení (CAP). Proto budete muset implementovat LIMITU na serveru NPS k autorizaci požadavků na platné připojení.  
 
 1. Na serveru NPS otevřete konzoly serveru NPS (místní počítač), rozbalte položku **zásady**a klikněte na tlačítko **zásady sítě**.
-2. Klikněte pravým tlačítkem na **připojení k jiným serverům přístup**a klikněte na tlačítko **duplikovat zásadu**. 
+1. Klikněte pravým tlačítkem na **připojení k jiným serverům přístup**a klikněte na tlačítko **duplikovat zásadu**. 
 
  ![Duplicitní zásad](./media/howto-mfa-nps-extension-rdg/image19.png)
 
-3. Klikněte pravým tlačítkem na **kopírování připojení k jiným serverům přístup**a klikněte na tlačítko **vlastnosti**.
+1. Klikněte pravým tlačítkem na **kopírování připojení k jiným serverům přístup**a klikněte na tlačítko **vlastnosti**.
 
  ![Vlastnosti sítě](./media/howto-mfa-nps-extension-rdg/image20.png)
 
-4. V **kopírování připojení k jiným serverům přístup** v dialogu **Název_zásady**, zadejte vhodný název, jako například _RDG_CAP_. Zkontrolujte **povolenou zásadou**a vyberte **udělit přístup**. Volitelně můžete v **typu server síťového přístupu**vyberte **Brána vzdálené plochy**, nebo můžete ponechat jako **nespecifikovaný**.
+1. V **kopírování připojení k jiným serverům přístup** v dialogu **Název_zásady**, zadejte vhodný název, jako například _RDG_CAP_. Zkontrolujte **povolenou zásadou**a vyberte **udělit přístup**. Volitelně můžete v **typu server síťového přístupu**vyberte **Brána vzdálené plochy**, nebo můžete ponechat jako **nespecifikovaný**.
 
  ![Kopie připojení](./media/howto-mfa-nps-extension-rdg/image21.png)
 
-5.  Klikněte na tlačítko **omezení** kartě a zaškrtněte **povolit klientům připojit se bez vyjednávání metodu ověřování**.
+1.  Klikněte na tlačítko **omezení** kartě a zaškrtněte **povolit klientům připojit se bez vyjednávání metodu ověřování**.
 
  ![Povolit klientům připojit se](./media/howto-mfa-nps-extension-rdg/image22.png)
 
-6. Případně můžete kliknout **podmínky** karta a přidat podmínky, které musí být splněny pro připojení k autorizaci, například členství v určité skupině Windows.
+1. Případně můžete kliknout **podmínky** karta a přidat podmínky, které musí být splněny pro připojení k autorizaci, například členství v určité skupině Windows.
 
  ![Podmínky](./media/howto-mfa-nps-extension-rdg/image23.png)
 
-7. Klikněte na **OK**. Po zobrazení výzvy k zobrazení příslušné téma nápovědy, klikněte na tlačítko **ne**.
-8. Ujistěte se, že nové zásady se v horní části seznamu, že je zásada povolená, a že uděluje přístup.
+1. Klikněte na **OK**. Po zobrazení výzvy k zobrazení příslušné téma nápovědy, klikněte na tlačítko **ne**.
+1. Ujistěte se, že nové zásady se v horní části seznamu, že je zásada povolená, a že uděluje přístup.
 
  ![Zásady sítě](./media/howto-mfa-nps-extension-rdg/image24.png)
 

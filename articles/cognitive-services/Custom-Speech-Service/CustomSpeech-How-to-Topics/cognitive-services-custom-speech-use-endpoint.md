@@ -1,24 +1,25 @@
 ---
-title: Použití koncového bodu vlastní převod řeči – Custom Speech Service
-titlesuffix: Azure Cognitive Services
-description: Další informace o použití vlastního koncového bodu převodu řeči na text pomocí Custom Speech Service.
+title: Koncový bod vlastní převod řeči pomocí Custom Speech Service v Azure | Dokumentace Microsoftu
+description: Další informace o použití vlastního koncového bodu převodu řeči na text pomocí Custom Speech Service ve službě Cognitive Services.
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: conceptual
+ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: 98c1b58e58490199b0258dfcc8df183c3fe9a8bd
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 9f1a21d6f099bc27c81e8c254f7df73d6c3e585d
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223368"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341794"
 ---
 # <a name="use-a-custom-speech-to-text-endpoint"></a>Použití vlastního koncového bodu pro převod řeči na text
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
+
 Můžete odeslat požadavků do koncového bodu Azure Custom Speech Service speech to text, podobným způsobem jako do výchozí koncový bod služby Cognitive Services řeči. Tyto koncové body jsou funkčně stejný jako výchozí koncové body rozhraní API pro rozpoznávání řeči. Stejné funkce, která je dostupná přes klientskou knihovnu nebo rozhraní REST API pro rozhraní Speech API je tedy také k dispozici pro váš vlastní koncový bod.
 
 Koncové body, které vytvoříte pomocí této služby může zpracovat různý počet souběžných požadavků. Svazek, závisí na cenové úrovni spojených s vaším předplatným. Pokud jsou příliš mnoho požadavků, dojde k chybě. Úroveň free má měsíčního limitu požadavků.

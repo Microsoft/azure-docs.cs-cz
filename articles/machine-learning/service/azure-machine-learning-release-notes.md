@@ -9,16 +9,34 @@ author: hning86
 ms.author: haining
 ms.reviewer: j-martens
 ms.date: 03/28/2018
-ms.openlocfilehash: be12a9ef0d6b520c741f95903d43f81727bc3b9b
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: c45ce91735dc47ecb5a2741395ed79d4fa7b6f3f
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238006"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321782"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
 V tomto článku najdete další informace o vydaných verzích služby Azure Machine Learning. 
+
+## <a name="2018-10-12"></a>2018-10-12
+
+### <a name="azure-machine-learning-sdk-for-python-v0168"></a>Azure Machine Learning sady SDK pro Python v0.1.68
+
+#### <a name="new-features"></a>Nové funkce
+ * Více tenantů podporu při vytváření nového pracovního prostoru.
+
+#### <a name="breaking-changes"></a>Změny způsobující chyby
+ * **V další vydané verzi nadcházející** *Workspace.compute_targets, úložišť, experimenty, obrázky, modely* a *webservices* se stanou vlastnosti namísto metod. Nahraďte třeba *Workspace.compute_targets()* s *Workspace.compute_targets*.
+
+#### <a name="bugs-fixed"></a>Opravy chyb
+ * Verze knihovny pynacl už musí být odkazována při nasazování webové front-end služby.
+
+### <a name="azure-machine-learning-data-prep-sdk-v030"></a>Sada SDK v0.3.0 pro přípravu dat Azure Machine Learning
+
+#### <a name="new-features"></a>Nové funkce:
+* Přidat metodu transform_partition_with_file(script_path), což umožňuje uživatelům a zajistěte tak předání cestu k souboru Pythonu ke spuštění
 
 ## <a name="2018-10-01"></a>2018-10-01
 

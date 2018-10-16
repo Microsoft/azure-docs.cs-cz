@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/12/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 2e913881faadd4892ad1ebc8cb404efe6489eb0d
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 2e40f0520c0f5e605974f883b3327699ff26313e
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310894"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321814"
 ---
 # <a name="azure-stack-1808-update"></a>Aktualizace služby Azure Stack. 1808
 
@@ -145,13 +145,6 @@ Tato aktualizace obsahuje také ke zmírnění chyby zabezpečení spekulativní
 
 ### <a name="known-issues-with-the-update-process"></a>Známé problémy s proces aktualizace
 
-<!-- TBD - IS -->
-- Může se zobrazit následující upozornění se zobrazí opakovaně a zmizí v systému Azure Stack:
-   - *Instance role infrastruktury není k dispozici*
-   - *Uzel jednotka škálování je offline*
-   
-  Spusťte prosím [testovací AzureStack](azure-stack-diagnostic-test.md) rutina pro ověření stavu instance rolí infrastruktury a škálování jednotek uzlů. Pokud nejsou zjištěny žádné problémy podle [testovací AzureStack](azure-stack-diagnostic-test.md), tato upozornění můžete ignorovat. Pokud se zjistí problém, pokuste se spustit instanci role infrastruktury nebo uzlu pomocí portálu pro správu nebo prostředí PowerShell.
-
 - Při spuštění [testovací AzureStack](azure-stack-diagnostic-test.md) po 1808 aktualizaci, zobrazí se zpráva s upozorněním z řadič správy základní desky (BMC). Toto upozornění můžete ignorovat.
 
 <!-- 2468613 - IS --> 
@@ -174,7 +167,7 @@ Toto jsou známé problémy této verze sestavení po instalaci.
 
 ### <a name="portal"></a>Portál
 
-- Technická dokumentace služby Azure Stack se zaměřuje na nejnovější verzi. Z důvodu portálu změn mezi verzemi co se zobrazí při použití na portálech Azure Stack se může lišit od naleznete v dokumentaci. 
+- Technická dokumentace služby Azure Stack se zaměřuje na nejnovější verzi služby Azure Stack. Z důvodu portálu změn mezi verzemi co se zobrazí při použití na portálech Azure Stack se může lišit od naleznete v dokumentaci. 
 
 <!-- TBD - IS ASDK --> 
 - Může se zobrazit prázdný řídicí panel portálu. Obnovit řídicí panel, klikněte na tlačítko **upravit řídicí panel**, klikněte pravým tlačítkem a vyberte **resetovat do výchozího stavu**.
@@ -214,6 +207,14 @@ Toto jsou známé problémy této verze sestavení po instalaci.
 
 
 ### <a name="health-and-monitoring"></a>Monitorování stavu a
+
+<!-- TBD - IS -->
+- Může se zobrazit následující upozornění se zobrazí opakovaně a zmizí v systému Azure Stack:
+   - *Instance role infrastruktury není k dispozici*
+   - *Uzel jednotka škálování je offline*
+   
+  Spusťte prosím [testovací AzureStack](azure-stack-diagnostic-test.md) rutina pro ověření stavu instance rolí infrastruktury a škálování jednotek uzlů. Pokud nejsou zjištěny žádné problémy podle [testovací AzureStack](azure-stack-diagnostic-test.md), tato upozornění můžete ignorovat. Pokud se zjistí problém, pokuste se spustit instanci role infrastruktury nebo uzlu pomocí portálu pro správu nebo prostředí PowerShell.
+
 <!-- 1264761 - IS ASDK --> 
 - Může se zobrazit upozornění **stavu řadiče** komponenta, která mají následující podrobnosti:  
 

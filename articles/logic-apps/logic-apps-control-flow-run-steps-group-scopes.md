@@ -1,69 +1,69 @@
 ---
-title: Přidat obory, které spouštění akcí na základě stavu skupiny - Azure Logic Apps | Microsoft Docs
-description: Postup vytvoření obory, které spustit pracovní postup akce na základě stavu akce skupiny v Azure Logic Apps
+title: Přidejte obory, na kterých běží akce na základě stavu skupiny – Azure Logic Apps | Dokumentace Microsoftu
+description: Jak vytvořit obory, které se spustit pracovní postup akce na základě stavu akce skupiny v Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
 manager: jeconnoc
-ms.date: 03/05/2018
-ms.topic: article
 ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 1258175eb3d28d39be8be08498ba8d2e0998aa43
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.date: 10/03/2018
+ms.topic: article
+ms.openlocfilehash: ac184ce790a0700fcacc63f70c2bb321142d7224
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298810"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320539"
 ---
-# <a name="create-scopes-that-run-workflow-actions-based-on-group-status-in-azure-logic-apps"></a>Vytvoření obory, které spustit pracovní postup akce na základě stavu skupiny v Azure Logic Apps
+# <a name="run-actions-based-on-group-status-with-scopes-in-azure-logic-apps"></a>Spustit akce na základě stavu skupiny pomocí oborů v Azure Logic Apps
 
-Ke spouštění akcí, až po jiná skupina akce úspěch nebo neúspěch, skupina tyto akce uvnitř *oboru*. Tato struktura je užitečné, když chcete uspořádat akce logické skupiny, vyhodnocení stavu pro tuto skupinu a provádět akce, které jsou založené na stav oboru. Po dokončení spuštění všechny akce v oboru oboru také získá svůj vlastní stav. Například můžete pomocí oborů, pokud chcete implementovat [výjimky a zpracování chyb](../logic-apps/logic-apps-exception-handling.md#scopes). 
+Ke spouštění akcí, až po jiné skupiny akcí úspěch nebo neúspěch, skupině tyto akce uvnitř *oboru*. Tato struktura je užitečné, když chcete uspořádání akcí jako logické skupiny, vyhodnocení stavu této skupiny a provádět akce, které jsou založeny na stav oboru. Jakmile skončí všechny akce v oboru, oboru také získá svůj vlastní stav. Například můžete použít obory, pokud chcete implementovat [výjimek a zpracování chyb](../logic-apps/logic-apps-exception-handling.md#scopes). 
 
-Chcete-li zkontrolovat stav oboru, můžete použít stejné kritéria, která slouží k určení logiku aplikace spustit stavu, jako je například "Succeeded", "Se nezdařilo", "Zrušeno" a tak dále. Ve výchozím nastavení když je akce všechny oboru úspěšné, stav oboru označena "Succeeded". Ale když selže veškeré akce v oboru, nebo je zrušena, je oboru stav označen "Se nezdařilo." Omezení u oborů, najdete v části [omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md). 
+Pokud chcete zkontrolovat stav oboru, můžete použít stejných kritérií, které používáte k určení logiku aplikace spustit stav, jako je například "ÚSPĚCH", "Se nezdařilo", "Zrušeno" a tak dále. Ve výchozím nastavení když všechny oboru akce úspěšné, označí stav oboru se "ÚSPĚCH". Ale když selže žádnou akci v oboru, nebo je zrušen, stav oboru je označen "Se nezdařilo." Omezení u oborů najdete v tématu [omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md). 
 
-Zde je třeba aplikaci vysoké úrovně logiku, která používá obor ke spuštění určitých akcí a podmínku pro kontrolu stavu oboru. Pokud všechny akce v oboru selhat nebo ukončení neočekávaně, oboru je označen "Failed" nebo "Přerušené" v uvedeném pořadí a logiku aplikace odešle zprávu "Oboru se nezdařilo". Pokud všechny vymezená akce úspěšné, aplikaci logiky odešle zprávu "Oboru bylo úspěšně dokončeno".
+Tady je například aplikace logiky na základní úrovni, který se používá ke spouštění určitých akcí a podmínku pro kontrolu stavu rozsahu oboru. Pokud všechny akce v rámci selhání nebo neočekávané ukončení, obor je označen "Failed" nebo "Přerušeno" v uvedeném pořadí a aplikace logiky odešle zprávu "Oboru se nezdařilo". Pokud s vymezeným oborem akce úspěšné, aplikace logiky odešle zprávu "Oboru bylo dokončeno".
 
-![Nastavit aktivační události "Plán opakování –"](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
+![Nastavení aktivační události "Plán – opakování"](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
-V našem příkladu v tomto článku, budete potřebovat tyto položky:
+V příkladu v tomto článku, budete potřebovat tyto položky:
 
 * Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
-* E-mailový účet ze zprostředkovatele všechny e-mailu podporuje Logic Apps. Tento příklad používá Outlook.com. Pokud chcete použít k jinému zprostředkovateli, obecný tok zůstane stejný, ale uživatelské rozhraní se zobrazí různé.
+* E-mailový účet z libovolného e-mailu poskytovatele podporovaného v Logic Apps. Tento příklad používá Outlook.com. Pokud používáte jiného poskytovatele, zůstává obecný postup stejný, ale vaše uživatelské rozhraní zobrazí různé.
 
-* Klíč mapy Bing. Chcete-li získat tento klíč, přečtěte si téma <a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">získání klíče mapy Bing</a>.
+* Klíč služby mapy Bing. Tento klíč získat, najdete v článku <a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">získání klíče k mapám Bing</a>.
 
-* Základní znalosti o [postup vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Základní znalosti o [postupy vytváření aplikací logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
 ## <a name="create-sample-logic-app"></a>Vytvoření ukázkové aplikace logiky
 
-Nejprve vytvořte této ukázkové aplikace logiky, abyste později přidat obor:
+Nejprve vytvořte Tato ukázková aplikace logiky tak, aby oboru můžete přidat později:
 
 ![Vytvoření ukázkové aplikace logiky](./media/logic-apps-control-flow-run-steps-group-scopes/finished-sample-app.png)
 
-* A **plán - opakování** aktivační událost, která kontroluje službu Bing Maps na časový interval, který zadáte
-* A **mapy Bing - Get trasy** akce, která kontroluje cesta čas mezi dvěma umístěními
-* Podmíněné příkaz, který kontroluje, zda cesta čas překročí zadaný doba
-* Akce, která odešle že e-mailu tohoto aktuální čas cesta překročí zadané časové
+* A **plán – opakování** aktivační událost, která kontroluje v intervalu, který zadáte, službu mapy Bing
+* A **mapy Bing – získat trasu** akci, která zkontroluje dobu trvání cesty mezi dvěma umístěními
+* Podmíněný příkaz, který kontroluje, zda doba trvání cesty překročí zadané doba
+* Akce, která vám odešle e-mail této aktuální dobu trvání cesty překročí zadanou dobu
 
-Můžete kdykoli uložit svou aplikaci logiky, často, uložte si práci.
+Můžete kdykoli uložit aplikaci logiky, tak často uložte svou práci.
 
-1. Přihlaste se k <a href="https://portal.azure.com" target="_blank">portál Azure</a>, pokud jste tak ještě neučinili. Vytvoření prázdné aplikace logiky
+1. Přihlaste se k <a href="https://portal.azure.com" target="_blank">webu Azure portal</a>, pokud jste tak již neučinili. Vytvoření prázdné aplikace logiky
 
-2. Přidat **plán - opakování** aktivační událost s těmito nastaveními: **Interval** = "1" a **frekvence** = "Minutu"
+1. Přidat **plán – opakování** aktivační událost s těmito nastaveními: **Interval** = "1" a **frekvence** = "Minute"
 
-   ![Nastavit aktivační události "Plán opakování –"](./media/logic-apps-control-flow-run-steps-group-scopes/recurrence.png)
+   ![Nastavení aktivační události "Plán – opakování"](./media/logic-apps-control-flow-run-steps-group-scopes/recurrence.png)
 
    > [!TIP]
-   > Vizuální zjednodušují zobrazení a skrytí podrobnosti každá akce v návrháři, sbalte obrazce každá akce jako průběh pomocí těchto kroků.
+   > Vizuálně zjednodušení zobrazení a skrýt podrobnosti o každé akce v návrháři, každá akce tvar sbalení během postupu v těchto kroků.
 
-3. Přidat **mapy Bing - Get trasy** akce. 
+1. Přidat **mapy Bing – získat trasu** akce. 
 
-   1. Pokud ještě nemáte připojení mapy Bing, budete vyzváni k vytvoření připojení.
+   1. Pokud ještě nemáte připojení k mapám Bing, budete vyzváni k vytvoření připojení.
 
       | Nastavení | Hodnota | Popis |
       | ------- | ----- | ----------- |
@@ -71,137 +71,170 @@ Můžete kdykoli uložit svou aplikaci logiky, často, uložte si práci.
       | **Klíč rozhraní API** | <*klíč-služby-Mapy-Bing*> | Zadejte klíč Map Bing, který jste dříve dostali. | 
       ||||  
 
-   2. Nastavení vaší **Get trasy** akce, jak je znázorněno v tabulce níže tuto bitovou kopii:
+   1. Nastavení vašeho **získat trasu** akce, jak je znázorněno v tabulce pod tento obrázek:
 
-      ![Nastavení "Mapy Bing - Get trasy" akce](./media/logic-apps-control-flow-run-steps-group-scopes/get-route.png) 
+      ![Nastavení "Mapy Bing – získat trasu" akce](./media/logic-apps-control-flow-run-steps-group-scopes/get-route.png) 
 
       Další informace o těchto parametrech najdete v tématu [Výpočet trasy](https://msdn.microsoft.com/library/ff701717.aspx).
 
       | Nastavení | Hodnota | Popis |
       | ------- | ----- | ----------- |
-      | **Bod na trase 1** | <*Spuštění*> | Zadejte zdroj vaší trasy. | 
-      | **Bod na trase 2** | <*End*> | Zadejte cílový vaší trasy. | 
-      | **Vyloučit** | Žádný | Zadejte položky, pokud chcete zabránit v postupu, jako je například dálnice, mýtné a tak dále. Možné hodnoty, najdete v části [vypočítat trasu](https://msdn.microsoft.com/library/ff701717.aspx). | 
-      | **Optimalizovat** | timeWithTraffic | Vyberte parametr, který se optimalizovat směrování, jako jsou například vzdálenost, čas aktuální informace o provozu a tak dále. Tento příklad používá tuto hodnotu: "timeWithTraffic" | 
-      | **Jednotka vzdálenosti** | <*vaše-volba*> | Zadejte jednotku vzdálenosti k výpočtu trasu. Tento příklad používá tuto hodnotu: "Míle" | 
-      | **Způsob cestování** | Autem | Zadejte režim cesta pro trasu. Tento příklad používá tato hodnota "Řidičských" | 
+      | **Bod na trase 1** | <*Spuštění*> | Zadejte počátek vaší cesty. | 
+      | **Bod na trase 2** | <*ukončení*> | Zadejte cíl vaší trasy. | 
+      | **Vyloučit** | Žádný | Zadejte položky, které chcete se na trase vyhnout, jako je například dálnice, mýtné a tak dále. Možné hodnoty najdete v části [výpočet trasy](https://msdn.microsoft.com/library/ff701717.aspx). | 
+      | **Optimalizovat** | timeWithTraffic | Vyberte parametr k optimalizaci vaší trasy, jako je například vzdálenost, doba aktuální informace o provozu a tak dále. Tento příklad používá tuto hodnotu: "timeWithTraffic" | 
+      | **Jednotka vzdálenosti** | <*vaše-volba*> | Zadejte jednotka vzdálenosti použitá k výpočtu vaší trasy. Tento příklad používá tuto hodnotu: "Míli" | 
+      | **Způsob cestování** | Autem | Zadejte režim dopravy pro danou trasu. Tento příklad používá tuto hodnotu "Řidičského" | 
       | **Datum a čas přejezdu** | Žádný | Platí pro pouze v režimu přenosu. | 
       | **Typ přenosu typu datum** | Žádný | Platí pro pouze v režimu přenosu. | 
       ||||  
 
-4. Přidejte podmínku do aškrtněte, zda aktuální čas cesta s přenosy překročí určitou dobu. V tomto příkladu postupujte podle kroků v části tuto bitovou kopii:
+1. [Přidat podmínku](../logic-apps/logic-apps-control-flow-conditional-statement.md) , která zkontroluje, jestli aktuální dobu trvání cesty s provozem překročí určitou dobu. V tomto příkladu postupujte podle těchto kroků:
 
-   ![Vytvořit podmínky](./media/logic-apps-control-flow-run-steps-group-scopes/build-condition.png)
+   1. Přejmenujte podmínku s použitím tohoto popisu: **Pokud doba provozu je více než určený čas**
 
-   1. Přejmenujte podmínky se tento popis: **Pokud provoz čas více než zadanou dobu**
+   1. V levém sloupci klikněte do **zvolit hodnotu** pole, zobrazí se seznam dynamického obsahu. V tomto seznamu, vyberte **doba trvání cesty s provozem** pole, která je v sekundách. 
 
-   2. Seznam parametrů, vyberte **cesta doba provozu** pole, která je v sekundách. 
+      ![Vytvoření podmínky](./media/logic-apps-control-flow-run-steps-group-scopes/build-condition.png)
 
-   3. Relační operátor, vyberte tento operátor: **je větší než**
+   1. V prostředním poli vyberte tento operátor: **je větší než**
 
-   4. Zadejte pro hodnotu porovnání **600**, což je v sekundách a ekvivalentem hodnoty na 10 minut.
+   1. Ve sloupci úplně vpravo, zadejte tuto hodnotu porovnání, který se nachází v řádu sekund a equivlent na 10 minut: **600**
 
-5. V podmínce pro **v případě hodnoty true** větev, přidat akci "odeslání e-mailu" pro váš poskytovatel e-mailu. Nastavte tuto akci s podrobnostmi, jak je znázorněno v tabulce v části tuto bitovou kopii:
+      Jakmile budete hotovi, vaše podmínka bude vypadat jako v tomto příkladu:
 
-   ![Přidání "Odeslat e-mailu" akce "je-li nastavena hodnota true" firemní pobočky](./media/logic-apps-control-flow-run-steps-group-scopes/send-email.png)
+      ![Dokončená podmínka](./media/logic-apps-control-flow-run-steps-group-scopes/finished-condition.png)
 
-   1. Pro **k** zadejte e-mailovou adresu pro účely testování.
+1. V **při hodnotě true** větve, přidejte akci "Odeslat e-mail" pro vašeho poskytovatele e-mailu. Nastavte tuto akci podle postupu pod tímto obrázkem:
 
-   2. Pro **subjektu** pole, zadejte tento text:
+   ![Přidat akci "Odeslat e-mail" k "při hodnotě true" větve](./media/logic-apps-control-flow-run-steps-group-scopes/send-email.png)
+
+   1. V **k** zadejte e-mailovou adresu pro účely testování.
+
+   1. V **subjektu** pole, zadejte následující text:
 
       ```Time to leave: Traffic more than 10 minutes```
 
-   3. Pro **textu** pole, zadejte tento text se počátečních a koncových znaků: 
+   1. V **tělo** zadejte tento text s koncovou mezerou: 
 
       ```Travel time: ```
 
-      Při kurzor se zobrazí v **textu** pole, seznamu dynamického obsahu zůstane otevřený, ve kterém můžete vybrat žádné parametry, které jsou k dispozici v tomto okamžiku.
+      Zatímco ukazatel myši se zobrazí v **tělo** pole, seznamu dynamického obsahu zůstane otevřený tak, že vyberete všechny parametry, které jsou v tuto chvíli k dispozici.
 
-   4. V seznamu dynamického obsahu vyberte **Výraz**.
+   1. V seznamu dynamického obsahu vyberte **Výraz**.
 
-   5. Najděte a vyberte **(div)** funkce.
+   1. Vyhledejte a vyberte **div()** funkce. 
+   Umístěte kurzor v dovnitř závorek funkce.
 
-   6. Kurzor je v závorkách funkce, vyberte **dynamický obsah** tak, aby můžete přidat **provozu doba provozu** parametr další.
-
-   7. V části **Get trasy** vyberte v seznamu dynamický parametr **provozu doba provozu** pole.
+   1. Kurzor je v závorkách funkce, zvolte **dynamický obsah** tak, aby zobrazil seznam dynamického obsahu. 
+   
+   1. Z **získat trasu** vyberte **provozu doba provozu** pole.
 
       ![Vyberte "Provozu doba provozu"](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-2.png)
 
-   8. Po pole přeloží do formátu JSON, přidat **čárkami** (```,```) a číslo ```60``` tak, aby převodu hodnoty v **provozu doba provozu** z sekund až minut. 
+   1. Po pole přeloží do formátu JSON, přidejte **čárkou** (```,```) za nímž následuje číslo ```60``` tak, aby se převést hodnotu **provozu doba provozu** ze sekund na minuty. 
    
       ```
       div(body('Get_route')?['travelDurationTraffic'],60)
       ```
 
-      Výraz teď vypadá v tomto příkladu:
+      Výraz se teď bude vypadat jako v tomto příkladu:
 
-      ![Dokončit výraz](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-3.png)  
+      ![Dokončení výrazu](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-3.png)  
 
-   9. Ujistěte se, že zvolíte **OK** po dokončení.
+   1. Jakmile budete hotovi, zvolte **OK**.
 
-  10. Po výraz řeší, přidejte tento text se úvodní mezery: ``` minutes```
+  1. Po výraz se přeloží, přidejte tento text s přední místa: ``` minutes```
   
-      Vaše **textu** pole bude vypadat jako tento ukázkový:
+     Vaše **tělo** pole bude vypadat jako v tomto příkladu:
 
-      ![Dokončení pole "Body"](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
+     ![Dokončení pole "Body"](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
 
-6. Uložte svou aplikaci logiky.
+1. Uložte svou aplikaci logiky.
 
-Dál přidejte obor, aby mohli skupiny konkrétní akce a vyhodnotit jejich stav.
+V dalším kroku přidáte obor, takže můžete seskupit konkrétní akce a vyhodnotit jejich stav.
 
 ## <a name="add-a-scope"></a>Přidat obor
 
-1. Pokud jste to ještě neudělali, otevřete aplikaci logiky v návrháři aplikace logiky. 
+1. Pokud jste to ještě neudělali, otevřete v návrháři aplikace logiky aplikace logiky. 
 
-2. V umístění pracovního postupu, který chcete přidáte obor. Příklad:
+1. Umístění pracovního postupu, který chcete přidáte nový obor. Například chcete-li přidat obor mezi stávající kroky v postupu aplikace logiky, postupujte takto: 
 
-   * Chcete-li přidat obor mezi existující kroky v pracovním postupu aplikace logiky, přesuňte ukazatel přes na šipku, ve které chcete přidat obor. 
-   Vyberte **znaménko plus** (**+**) > **přidat obor**.
+   1. Přesuňte ukazatel myši na šipku, ve které chcete přidat oboru. 
+   Zvolte **znaménko plus** (**+**) > **přidat akci**.
 
-     ![Přidat obor](./media/logic-apps-control-flow-run-steps-group-scopes/add-scope.png)
+      ![Přidat obor](./media/logic-apps-control-flow-run-steps-group-scopes/add-scope.png)
 
-     Pokud chcete přidat nový obor na konci pracovního postupu, v dolní části svou aplikaci logiky, vyberte **+ nový krok** > **... Další** > **přidat obor**.
+   1. Do vyhledávacího pole zadejte jako filtr "rozsah". 
+   Vyberte **oboru** akce.
 
-3. Nyní přidat kroky nebo přetáhněte stávající kroky, které chcete spustit uvnitř oboru. V tomto příkladu přetáhněte do oboru tyto akce:
+## <a name="add-steps-to-scope"></a>Přidání kroků do oboru
+
+1. Nyní přidejte kroky nebo přetáhněte existující kroky, které chcete spustit v oboru. V tomto příkladu přetáhněte do rozsahu těchto akcí:
       
-   * **Získat trasy**
-   * **Pokud provoz čas více než určitou dobu**, což zahrnuje i **true** a **false** větví
+   * **Získat trasu**
+   * **Pokud doba provozu je více než určený čas**, což zahrnuje i **true** a **false** větví
 
-   Aplikace logiky teď vypadá v tomto příkladu:
+   Aplikace logiky je teď vypadá jako v tomto příkladu:
 
    ![Přidat obor](./media/logic-apps-control-flow-run-steps-group-scopes/scope-added.png)
 
-4. V oboru přidejte podmínku, která ověří stav oboru. Přejmenujte podmínky se tento popis: **Pokud oboru se nezdařilo**
+1. V rámci oboru přidejte podmínku, která kontroluje stav obor. Přejmenujte podmínku s použitím tohoto popisu: **Pokud oboru se nezdařilo**
 
    ![Přidat podmínku pro kontrolu stavu oboru](./media/logic-apps-control-flow-run-steps-group-scopes/add-condition-check-scope-status.png)
   
-5. Sestavení tento výraz, který zkontroluje, zda je oboru stav rovna `Failed` nebo `Aborted`.
+1. V podmínce přidejte tyto výrazy, které kontrolují, zda je rovno "Failed" nebo "Přerušeno" stav oboru. 
 
-   ![Přidat výraz, který ověří stav oboru](./media/logic-apps-control-flow-run-steps-group-scopes/build-expression-check-scope-status.png)
+   1. Chcete-li přidat další řádek, zvolte **přidat**. 
 
-   Nebo, pokud chcete zadat Tento výraz jako text, zvolte **upravit v rozšířeném režimu**.
+   1. V každém řádku klikněte do levého pole, zobrazí se seznam dynamického obsahu. 
+   Ze seznamu dynamického obsahu vyberte **výraz**. Do textového pole zadejte tento výraz a klikněte na tlačítko **OK**: 
+   
+      `result('Scope')[0]['status']`
 
-   ```@equals('@result(''Scope'')[0][''status'']', 'Failed, Aborted')```
+      ![Přidat výraz, který kontroluje stav obor](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status.png)
 
-6. V **v případě hodnoty true** a **-li pravda** větví, přidejte akce, které chcete provést, například odeslání e-mailu nebo zprávy.
+   1. Pro obě řádky, vyberte **rovná** jako operátor. 
+   
+   1. Porovnání hodnot, na prvním řádku, zadejte `Failed`. 
+   Ve druhém řádku, zadejte `Aborted`. 
 
-   ![Přidat výraz, který ověří stav oboru](./media/logic-apps-control-flow-run-steps-group-scopes/handle-true-false-branches.png)
+      Jakmile budete hotovi, vaše podmínka bude vypadat jako v tomto příkladu:
 
-7. Uložte svou aplikaci logiky.
+      ![Přidat výraz, který kontroluje stav obor](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status-finished.png)
 
-Aplikace logiky dokončení teď vypadá v tomto příkladu všechny obrazce rozšířit:
+      Nyní nastavte podmínky `runAfter` vlastnost tak, aby podmínka kontroluje stav oboru a spuštění odpovídající akce, které definujete v dalších krocích.
 
-![Aplikace logiky bylo dokončeno s oborem](./media/logic-apps-control-flow-run-steps-group-scopes/scopes-overview.png)
+   1. Na **oboru se nezdařilo-li** podmínky, zvolte **tlačítko se třemi tečkami** (...) a pak zvolte **nakonfigurovat vlastnost runafter**.
 
-## <a name="test-your-work"></a>Testování práci
+      ![Nastavit vlastnost "runAfter.](./media/logic-apps-control-flow-run-steps-group-scopes/configure-run-after.png)
 
-Na panelu nástrojů návrháře zvolte **spustit**. Pokud všechny vymezená akce úspěšné, se zobrazí zpráva "Oboru bylo úspěšně dokončeno". Pokud všechny akce, oboru není úspěšné, se zobrazí zpráva "Oboru se nezdařilo". 
+   1. Vyberte všechny tyto stavy oboru: **úspěšné**, **selhala**, **se přeskočila**, a **vypršení časového limitu**
+
+      ![Vyberte rozsah stavů](./media/logic-apps-control-flow-run-steps-group-scopes/select-run-after-statuses.png)
+
+   1. Jakmile budete hotovi, zvolte **provádí**. 
+   Podmínka se teď zobrazuje ikona "informace o".
+
+1. V **při hodnotě true** a **případě hodnoty false** větví, přidání akce, které chcete provést na základě stavu každého rozsahu například odeslat e-mailem nebo zprávy.
+
+   ![Přidání akce, které se provedou v závislosti na rozsahu stav](./media/logic-apps-control-flow-run-steps-group-scopes/handle-true-false-branches.png)
+
+1. Uložte svou aplikaci logiky.
+
+Aplikace logiky dokončená teď vypadá jako v tomto příkladu:
+
+![Hotová aplikace logiky s oborem](./media/logic-apps-control-flow-run-steps-group-scopes/scopes-overview.png)
+
+## <a name="test-your-work"></a>Otestovat svou práci
+
+Na panelu nástrojů návrháře zvolte **spustit**. Pokud všechny vymezené akce úspěšné, může se zobrazit zpráva "Oboru bylo dokončeno". Pokud není úspěšné všechny akce s vymezeným oborem, může se zobrazit zpráva "Oboru se nezdařilo". 
 
 <a name="scopes-json"></a>
 
-## <a name="json-definition"></a>Definici JSON
+## <a name="json-definition"></a>Definice JSON
 
-Pokud pracujete v zobrazení kódu, můžete definovat strukturu oboru v definici aplikace logiky JSON místo. Zde je ukázka, definici JSON pro aktivační události a akce v předchozí aplikaci logiky:
+Pokud pracujete v zobrazení kódu, můžete definovat strukturu oboru v definici JSON vaší aplikace logiky místo. Tady je příklad definici JSON aktivační události a akce v předchozí aplikace logiky:
 
 ``` json
 "triggers": {
@@ -210,7 +243,7 @@ Pokud pracujete v zobrazení kódu, můžete definovat strukturu oboru v definic
     "recurrence": {
        "frequency": "Minute",
        "interval": 1
-    },
+    }
   }
 }
 ```
@@ -224,7 +257,7 @@ Pokud pracujete v zobrazení kódu, můžete definovat strukturu oboru v definic
         "type": "ApiConnection",
         "inputs": {
           "body": {
-            "Body": "Scope failed",
+            "Body": "Scope failed. Scope status: @{result('Scope')[0]['status']}",
             "Subject": "Scope failed",
             "To": "<your-email@domain.com>"
           },
@@ -245,7 +278,7 @@ Pokud pracujete v zobrazení kódu, můžete definovat strukturu oboru v definic
           "type": "ApiConnection",
           "inputs": {
             "body": {
-              "Body": "None",
+              "Body": "Scope succeeded. Scope status: @{result('Scope')[0]['status']}",
               "Subject": "Scope succeeded",
               "To": "<your-email@domain.com>"
             },
@@ -261,10 +294,28 @@ Pokud pracujete v zobrazení kódu, můžete definovat strukturu oboru v definic
         }
       }
     },
-    "expression": "@equals('@result(''Scope'')[0][''status'']', 'Failed, Aborted')",
+    "expression": {
+      "or": [ 
+         {
+            "equals": [ 
+              "@result('Scope')[0]['status']", 
+              "Failed"
+            ]
+         },
+         {
+            "equals": [
+               "@result('Scope')[0]['status']", 
+               "Aborted"
+            ]
+         } 
+      ]
+    },
     "runAfter": {
       "Scope": [
-        "Succeeded"
+        "Failed",
+        "Skipped",
+        "Succeeded",
+        "TimedOut"
       ]
     }
   },
@@ -291,14 +342,14 @@ Pokud pracujete v zobrazení kódu, můžete definovat strukturu oboru v definic
         },
         "runAfter": {}
       },
-      "If_traffic_time_more_than_specified_time": {
+      "If_traffic_time_is_more_than_specified_time": {
         "type": "If",
         "actions": {
           "Send_mail_when_traffic_exceeds_10_minutes": {
             "type": "ApiConnection",
             "inputs": {
               "body": {
-                 "Body": "Travel time:@{div(body('Get_route')?['travelDurationTraffic'], 60)} minutes",
+                 "Body": "Travel time:@{div(body('Get_route')?['travelDurationTraffic'],60)} minutes",
                  "Subject": "Time to leave: Traffic more than 10 minutes",
                  "To": "<your-email@domain.com>"
               },
@@ -313,7 +364,16 @@ Pokud pracujete v zobrazení kódu, můžete definovat strukturu oboru v definic
             "runAfter": {}
           }
         },
-        "expression": "@greater(body('Get_route')?['travelDurationTraffic'], 600)",
+        "expression": {
+          "and" : [
+            {
+               "greater": [ 
+                  "@body('Get_route')?['travelDurationTraffic']", 
+                  600
+               ]
+            }
+          ]
+        },
         "runAfter": {
           "Get_route": [
             "Succeeded"
@@ -323,17 +383,17 @@ Pokud pracujete v zobrazení kódu, můžete definovat strukturu oboru v definic
     },
     "runAfter": {}
   }
-}
+},
 ```
 
 ## <a name="get-support"></a>Získat podporu
 
 * Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Odeslání nebo hlasovat o funkcích a návrhy, najdete [web pro zasílání názorů uživatele Azure Logic Apps](http://aka.ms/logicapps-wish).
+* Odeslání návrhu nebo hlasování o funkcích a návrhy, najdete v tématu [webu zpětné vazby uživatelů Azure Logic Apps](http://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další postup
 
 * [Spustit kroky na základě podmínky (podmíněné příkazy)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
-* [Spustit kroky na základě různých hodnot (příkazech switch)](../logic-apps/logic-apps-control-flow-switch-statement.md)
-* [Spuštění a opakujte kroky (smyčky)](../logic-apps/logic-apps-control-flow-loops.md)
-* [Spuštění nebo sloučení paralelní kroky (větve)](../logic-apps/logic-apps-control-flow-branches.md)
+* [Spustit kroky na základě různých hodnot (příkazů přepínače)](../logic-apps/logic-apps-control-flow-switch-statement.md)
+* [Spuštění a opakujte kroky (cykly)](../logic-apps/logic-apps-control-flow-loops.md)
+* [Spuštění nebo sloučit paralelními kroky (větve)](../logic-apps/logic-apps-control-flow-branches.md)

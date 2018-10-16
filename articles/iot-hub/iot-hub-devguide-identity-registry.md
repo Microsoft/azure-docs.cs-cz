@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: dobett
-ms.openlocfilehash: 3e6e42da7f3c1423ecf2de507f3c2f0257fbb21f
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 6291350cab41c123b41f7fee811bf72a21d9ff35
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311231"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319128"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Vysvětlení registru identit ve službě IoT hub
 
@@ -198,6 +198,9 @@ Identit zařízení jsou reprezentovány jako dokumenty JSON s následujícími 
 > [!NOTE]
 > Stav připojení může představovat pouze služby IoT Hub pohled na stav připojení. Aktualizace tohoto stavu se může zpozdit, v závislosti na stavu sítě a konfigurace.
 
+> [!NOTE]
+> Aktuálně zařízení sady SDK nepodporují použití `+` a `#` znaků **deviceId**.
+
 ## <a name="module-identity-properties"></a>Vlastnosti modulu identity
 
 Modul identity jsou reprezentovány jako dokumenty JSON s následujícími vlastnostmi:
@@ -216,6 +219,9 @@ Modul identity jsou reprezentovány jako dokumenty JSON s následujícími vlast
 | Vlastnost connectionState |jen pro čtení |Pole určující stav připojení: buď **připojeno** nebo **odpojeno**. Toto pole představuje služby IoT Hub zobrazení stavu připojení zařízení. **Důležité**: Toto pole by měla sloužit pouze pro účely vývoje a ladění. Stav připojení se aktualizuje jenom pro zařízení používat protokol MQTT nebo AMQP. Také je založená na úrovni protokolu za příkazy ping (příkazy ping pro zjištění protokol MQTT nebo příkazy ping protokolu AMQP) a může mít maximální zpoždění, jenom 5 minut. Z těchto důvodů může být počet falešně pozitivních výsledků, například zařízení hlášená jako připojená, ale, která jsou odpojené. |
 | connectionStateUpdatedTime |jen pro čtení |Dočasné indikátor zobrazuje datum a čas posledního stavu připojení byla aktualizována. |
 | lastActivityTime |jen pro čtení |Dočasné indikátor zobrazuje datum a čas posledního zařízení připojené, přijetí nebo byla odeslána zpráva. |
+
+> [!NOTE]
+> Aktuálně zařízení sady SDK nepodporují použití `+` a `#` znaků **deviceId** a **moduleId**.
 
 ## <a name="additional-reference-material"></a>Další referenční materiál
 

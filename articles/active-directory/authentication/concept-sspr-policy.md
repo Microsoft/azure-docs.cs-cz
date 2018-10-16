@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 13b21c4f8fde2b11722d012c207ed75447a7f970
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 3e3b608d3928536d654a594c42cbcc955d620d98
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114636"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321729"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zásady hesel a omezení v Azure Active Directory
 
@@ -27,7 +27,7 @@ Tento článek popisuje zásady pro hesla a požadavky na složitost spojené s 
 
 Pomocí zásad brány dvě **správci nemají možnost použít bezpečnostní otázky**.
 
- Zásady dvě brány vyžadují dva druhy dat ověřování, jako jsou e-mailovou adresu *a* telefonní číslo. Dvě brány zásady platí za následujících okolností:
+Zásady dvě brány vyžadují dva druhy dat ověřování, jako jsou e-mailovou adresu *a* telefonní číslo. Dvě brány zásady platí za následujících okolností:
 
 * Všechny následující role Správce služby Azure jsou ovlivněny:
   * Správce technické podpory
@@ -50,29 +50,17 @@ Pomocí zásad brány dvě **správci nemají možnost použít bezpečnostní o
   * Správce služby CRM
   * Správce služby Power BI
 
-* Pokud ve zkušební verzi předplatného po uplynutí 30 dnů
-
-  nebo
-
-* Individuální doména je k dispozici, třeba contoso.com
-
-  nebo
-
+* Pokud ve zkušební verzi předplatného; po uplynutí 30 dnů nebo
+* Individuální doména je k dispozici, třeba contoso.com; nebo
 * Azure AD Connect je synchronizaci identit z místního adresáře
 
 ### <a name="exceptions"></a>Výjimky
 
 Zásada jedna brána vyžaduje jednu část ověření dat, jako jsou e-mailovou adresu *nebo* telefonní číslo. Jedna brána zásady platí za následujících okolností:
 
-* Je během prvních 30 dnů zkušebního předplatného
-
-  nebo
-
-* Není přítomna individuální doména (*. onmicrosoft.com)
-
-  a
-
-  Azure AD Connect nesynchronizuje identity
+* Je během prvních 30 dní zkušební předplatné; nebo
+* Není přítomna individuální doména (*. onmicrosoft.com); a
+* Azure AD Connect nesynchronizuje identity
 
 ## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>UserPrincipalName zásady, které platí pro všechny uživatelské účty
 
@@ -117,7 +105,7 @@ Chcete-li začít, je potřeba [stáhněte a nainstalujte modul Azure AD PowerSh
 ### <a name="check-the-expiration-policy-for-a-password"></a>Zkontrolujte, že zásada vypršení platnosti hesla
 
 1. Připojení k prostředí Windows PowerShell s použitím svých přihlašovacích údajů správce společnosti.
-2. Spustí jednu z následujících příkazů:
+1. Spustí jednu z následujících příkazů:
 
    * Pokud chcete zobrazit, pokud jeden uživatel heslo se nastavilo na nekonečnou platnost, spusťte následující rutinu pomocí hlavního názvu uživatele (například *aprilr@contoso.onmicrosoft.com*) nebo ID uživatele, kterého chcete zkontrolovat: `Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
    * Pokud chcete zobrazit **platnost hesla nikdy nevyprší** nastavení pro všechny uživatele, spusťte následující rutinu: `Get-AzureADUser -All $true | Select-Object UserPrincipalName, @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
@@ -125,7 +113,7 @@ Chcete-li začít, je potřeba [stáhněte a nainstalujte modul Azure AD PowerSh
 ### <a name="set-a-password-to-expire"></a>Nastavení vypršení platnosti hesla
 
 1. Připojení k prostředí Windows PowerShell s použitím svých přihlašovacích údajů správce společnosti.
-2. Spustí jednu z následujících příkazů:
+1. Spustí jednu z následujících příkazů:
 
    * Chcete-li nastavit heslo s jedním uživatelem, tak, aby platnost hesla vyprší, spusťte následující rutinu s použitím hlavní název uživatele nebo ID uživatele uživatele: `Set-AzureADUser -ObjectId <user ID> -PasswordPolicies None`
    * Pokud chcete nastavit hesel všech uživatelů v organizaci tak, aby platnost souhlasu vyprší, použijte následující rutinu: `Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies None`
@@ -133,7 +121,7 @@ Chcete-li začít, je potřeba [stáhněte a nainstalujte modul Azure AD PowerSh
 ### <a name="set-a-password-to-never-expire"></a>Nastavení hesla nikdy nevyprší
 
 1. Připojení k prostředí Windows PowerShell s použitím svých přihlašovacích údajů správce společnosti.
-2. Spustí jednu z následujících příkazů:
+1. Spustí jednu z následujících příkazů:
 
    * Pokud chcete nastavit heslo jednoho uživatele bez vypršení platnosti, spusťte následující rutinu s použitím hlavní název uživatele nebo ID uživatele uživatele: `Set-AzureADUser -ObjectId <user ID> -PasswordPolicies DisablePasswordExpiration`
    * Chcete-li nastavit hesel všech uživatelů v organizaci bez vypršení platnosti, spusťte následující rutinu: `Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies DisablePasswordExpiration`

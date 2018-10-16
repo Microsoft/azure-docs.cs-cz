@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: barclayn
-ms.openlocfilehash: fa8605f4822ff0ee5ba25ee0baca4fb2fec83b17
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 7e98853b5b2ccc779dca970337fc44217977c8c9
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46497599"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342553"
 ---
 # <a name="what-is-azure-key-vault"></a>Co je Azure Key Vault?
 
@@ -35,7 +35,7 @@ Azure Key Vault je nástroj pro zabezpečené ukládání tajných klíčů a p�
 
 V podstatě způsoby 3 k ověření do služby Key Vault
 
-1. **Pomocí [identita spravované služby](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)**  (**doporučené a nejlepší výkon**): při nasazení aplikace na virtuálním počítači v Azure, identitu, která můžete přiřadit ke svému virtuálnímu počítači, který má přístup k trezoru klíčů. Můžete také přiřadit identity další prostředky azure, které jsou uvedeny [tady](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview). Výhodou tohoto přístupu je aplikace / služby není správu oběhu první tajného klíče. Azure automaticky otočí identitu. 
+1. **Pomocí [spravovaných identit pro prostředky Azure](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)**  (**doporučené a osvědčených postupů**): při nasazení aplikace na virtuálním počítači v Azure identity můžete přiřadit ke svému virtuálnímu počítači který má přístup k trezoru klíčů. Můžete také přiřadit identity další prostředky azure, které jsou uvedeny [tady](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview). Výhodou tohoto přístupu je aplikace / služby není správu oběhu první tajného klíče. Azure automaticky otočí identitu. 
 2. **Pomocí instančního objektu a certifikát:** 2. možností je použití instančního objektu a přidružený certifikát, který má přístup do služby Key Vault. Břemeno otáčení certifikát se na vlastníka aplikace nebo pro vývojáře a proto se to nedoporučuje
 3. **Pomocí instančního objektu a tajného kódu:** ověření do služby Key Vault pomocí instančního objektu a tajného kódu je 3. možnost (ne upřednostňovanou možnost ověřování)
 

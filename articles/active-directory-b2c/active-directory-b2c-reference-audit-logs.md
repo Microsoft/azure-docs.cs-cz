@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 1697830f699c9cd50548bcfcdd038348db314020
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 67e57faf37697697bee74597a40db39149699fe5
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969655"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320233"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Přístup k protokolům auditu Azure AD B2C
 
@@ -24,7 +24,7 @@ Azure Active Directory B2C (Azure AD B2C) vysílá protokoly auditu obsahující
 > [!IMPORTANT]
 > Protokoly auditu se zachovají jenom po dobu sedmi dní. Plán stažení a ukládat vaše protokoly pomocí jedné z metod je uvedeno níže, pokud budete potřebovat delší doba uchovávání informací. 
 
-##<a name="overview-of-activities-available-in-the-b2c-category-of-audit-logs"></a>Přehled aktivit, které jsou k dispozici v kategorii B2C protokolů auditu
+## <a name="overview-of-activities-available-in-the-b2c-category-of-audit-logs"></a>Přehled aktivit, které jsou k dispozici v kategorii B2C protokolů auditu
 **B2C** kategorie z protokolů auditu obsahuje následující typy aktivit:
 |Typ aktivity |Popis  |
 |---------|---------|
@@ -38,10 +38,10 @@ Azure Active Directory B2C (Azure AD B2C) vysílá protokoly auditu obsahující
 > [!NOTE]
 > Aktivity CRUD objekt uživatele, najdete **základní adresář** kategorie.
 
-##<a name="example-activity"></a>Ukázkové aktivity
+## <a name="example-activity"></a>Ukázkové aktivity
 Následující příklad ukazuje data zaznamenaná, když se uživatel přihlásí pomocí externího zprostředkovatele identity: ![protokoly auditu – příklad](./media/active-directory-b2c-reference-audit-logs/audit-logs-example.png)
 
-##<a name="accessing-audit-logs-through-the-azure-portal"></a>Přístup k protokolům auditu na webu Azure Portal
+## <a name="accessing-audit-logs-through-the-azure-portal"></a>Přístup k protokolům auditu na webu Azure Portal
 1. Přejděte na [Azure Portal](https://portal.azure.com). Ujistěte se, že máte ve svém adresáři B2C.
 2. Klikněte na **Azure Active Directory** na panel Oblíbené položky na levé straně 
     
@@ -62,18 +62,18 @@ Zobrazí se seznam aktivit přihlášení za posledních sedm dní.
 - Pokud kliknete na konkrétní řádek v seznamu, kontextové pole na pravé straně se zobrazí další atributy, které jsou přidružená k aktivitě
 - Klikněte na **Stáhnout** stáhnete aktivity jako soubor csv
 
-##<a name="accessing-audit-logs-through-the-azure-ad-reporting-api"></a>Přístup k protokolům auditu prostřednictvím rozhraní API pro generování sestav Azure AD
+## <a name="accessing-audit-logs-through-the-azure-ad-reporting-api"></a>Přístup k protokolům auditu prostřednictvím rozhraní API pro generování sestav Azure AD
 Protokoly auditu se publikují do stejné kanálu další aktivity pro Azure Active Directory, takže k nim může přistupovat prostřednictvím [Azure Active Directory API pro vytváření sestav](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-audit-reference). 
 
-###<a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Požadavky
 K ověření na rozhraní API pro generování sestav Azure AD musíte nejprve registrovat aplikaci. Ujistěte se, že podle kroků v [požadavky pro přístup k rozhraní API pro generování sestav Azure AD](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/).
 
-###<a name="accesing-the-api"></a>Accesing rozhraní API
+### <a name="accesing-the-api"></a>Accesing rozhraní API
 Ke stažení protokolů auditu Azure AD B2C prostřednictvím rozhraní API, budete chtít filtrovat protokoly a **B2C** kategorie. Filtrovat podle kategorie, použijte parametr řetězce dotazu při volání koncového bodu rozhraní API pro generování sestav Azure AD, jak je znázorněno níže:
 
 `https://graph.windows.net/your-b2c-tentant.onmicrosoft.com/activities/audit?api-version=beta&$filter=category eq 'B2C'`
 
-###<a name="powershell-script"></a>Skript PowerShellu
+### <a name="powershell-script"></a>Skript PowerShellu
 Následující skript představuje příklad použití Powershellu k dotazování rozhraní API pro generování sestav Azure AD a výsledek uložit jako soubor JSON:
 
 ```powershell

@@ -3,19 +3,19 @@ title: Vylepšení klasifikátoru – Custom Vision Service
 titlesuffix: Azure Cognitive Services
 description: Zjistěte, jak zlepšit kvalitu klasifikátoru.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.author: nolachar
-ms.openlocfilehash: d3f0da9b7c5894a485db4bd204e1a9ed5967c1aa
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.author: pafarley
+ms.openlocfilehash: 2bee7f0af98bf03a13e376dea9dbf083b3f61815
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366536"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340286"
 ---
 # <a name="how-to-improve-your-classifier"></a>K vylepšení klasifikátoru
 

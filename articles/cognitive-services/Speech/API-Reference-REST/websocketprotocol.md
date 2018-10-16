@@ -10,15 +10,16 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: 6ee61a38615ac8cbf4c4fcf6b8d631c5f9a8f7d1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0bbc6b638d11335e6d46501fa651996f05957dd5
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962772"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341816"
 ---
 # <a name="bing-speech-websocket-protocol"></a>Protokol WebSocket pro zpracování řeči Bingu
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 Pro zpracování řeči Bingu je Cloudová platforma, která nabízí nejpokročilejší algoritmy, které jsou k dispozici pro převod mluvené slovo zvuku na text. Protokol pro zpracování řeči Bingu definuje [nastavení připojení](#connection-establishment) mezi klientské aplikace a služby a zpráv rozpoznávání řeči vyměňovaných mezi jejich protějšky ([klientského vznikla zprávy](#client-originated-messages) a [zprávy služby pochází](#service-originated-messages)). Kromě toho [telemetrických zpráv](#telemetry-schema) a [zpracování chyb](#error-handling) jsou popsány.
 
@@ -148,7 +149,7 @@ Hlavní zprávy odeslané klientem služby jsou `speech.config`, `audio`, a `tel
 
 Následující hlavičky jsou požadovány pro všechny zprávy klienta pochází.
 
-| Záhlaví | Hodnota |
+| Hlavička | Hodnota |
 |----|----|
 | Cesta | Cesta zprávy, jak je uvedeno v tomto dokumentu |
 | X-RequestId | Identifikátor UUID ve formátu "no-dash" |
@@ -248,7 +249,7 @@ Speech Service používá první `audio` zprávu, která obsahuje identifikátor
 
 Následující hlavičky jsou potřebné pro všechny `audio` zprávy.
 
-| Záhlaví         |  Hodnota     |
+| Hlavička         |  Hodnota     |
 | ------------- | ---------------- |
 | Cesta | `audio` |
 | X-RequestId | Identifikátor UUID ve formátu "no-dash" |

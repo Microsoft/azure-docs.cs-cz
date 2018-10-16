@@ -1,6 +1,6 @@
 ---
-title: Spuštění a zastavení Azure zásobníku Development Kit (ASDK) | Microsoft Docs
-description: Zjistěte, jak na spuštění a ukončení dolů Azure zásobníku Development Kit (ASDK).
+title: Spuštění a zastavení Azure Stack Development Kit (ASDK) | Dokumentace Microsoftu
+description: Zjistěte, jak ke spuštění a vypnutí dolů Azure Stack Development Kit (ASDK).
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,81 +12,81 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: dfb565803746ecdda9b36a4e12a3c3f2b4d9e0d0
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 98ae7fe0fde922aee28ffc05b64d223a40085447
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31426899"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340915"
 ---
-# <a name="start-and-stop-the-azure-stack-development-kit-asdk"></a>Spuštění a zastavení Azure zásobníku Development Kit (ASDK)
-Není doporučeno jednoduše restartujte ASDK hostitelský počítač. Místo toho by měla podle postupů v tomto článku správně vypnutí a restartování služby ASDK. 
+# <a name="start-and-stop-the-azure-stack-development-kit-asdk"></a>Spuštění a zastavení Azure Stack Development Kit (ASDK)
+Není doporučeno jednoduše Restartujte hostitelský počítač ASDK. Místo toho by měla podle postupů v tomto článku správně vypne a restartuje ASDK služby. 
 
-## <a name="stop-azure-stack"></a>Zastavit Azure zásobníku 
-Chcete-li správně vypnut služeb Azure zásobníku a ASDK hostitelský počítač, použijte následující příkazy prostředí PowerShell:
+## <a name="stop-azure-stack"></a>Zastavení služby Azure Stack 
+Vypnout správně ASDK hostitelského počítače a služby Azure stacku, použijte následující příkazy Powershellu:
 
 1. Přihlaste se jako AzureStack\CloudAdmin na hostitelském počítači ASDK.
-2. Otevřete PowerShell jako správce (není prostředí PowerShell ISE).
-3. Spusťte následující příkazy k vytvoření relace privilegované koncový bod (období): 
+2. Otevřete PowerShell jako správce (ne prostředí PowerShell ISE).
+3. Spusťte následující příkazy k vytvoření relace privileged koncový bod (období): 
 
    ```powershell
    Enter-PSSession -ComputerName AzS-ERCS01 -ConfigurationName PrivilegedEndpoint
    ```
-4. Dále v této relaci období, použijte **Stop-AzureStack** rutiny zastavení služeb Azure zásobníku a vypnout ASDK hostitelského počítače:
+4. Potom se v relaci období pomocí **Stop-AzureStack** k zastavení služby Azure Stack a vypnout počítač ASDK hostitele:
 
    ```powershell
    Stop-AzureStack
    ```
-5. Zkontrolujte výstup prostředí PowerShell zajistit, že všechny služby Azure zásobníku se úspěšně vypnul před ASDK hostitelský počítač vypne. Proces vypnutí trvá několik minut.
+5. Zkontrolujte výstup prostředí PowerShell zajistit, že všechny služby Azure Stack se úspěšně vypnul před ASDK hostitelský počítač vypne. Vypnutí procesu trvá několik minut.
 
-## <a name="start-azure-stack"></a>Spustit Azure zásobníku 
-ASDK služby by měl spustit automaticky při spuštění na hostitelském počítači. Však ASDK infrastruktury služby spuštění se liší v závislosti na výkonu v konfiguraci hardwaru počítače ASDK hostitele. Může trvat několik hodin pro všechny služby úspěšně restartování v některých případech.
+## <a name="start-azure-stack"></a>Spuštění služby Azure Stack 
+ASDK služby by měl spustit automaticky při spuštění v hostitelském počítači. Ale čas spuštění služby infrastruktury ASDK se liší v závislosti na výkonu hardwarová konfigurace ASDK hostitelského počítače. Může trvat několik hodin pro všechny služby, se úspěšně znovu spustit v některých případech.
 
-Bez ohledu na to, jak byl ASDK vypnout byste měli způsobem následujících kroků ověřte, zda jsou všechny služby Azure zásobníku spuštěna a je plně funkční, po hostitelský počítač je zapnutý: 
+Bez ohledu na to, jak byl ASDK vypnutý používejte následující postup ověření, že všechny služby Azure Stack spuštěn a plně funkční po hostitelský počítač je zapnutý: 
 
 1. Zapnutí ASDK hostitelský počítač. 
 2. Přihlaste se jako AzureStack\CloudAdmin na hostitelském počítači ASDK.
-3. Otevřete PowerShell jako správce (není prostředí PowerShell ISE).
-4. Spusťte následující příkazy k vytvoření relace privilegované koncový bod (období):
+3. Otevřete PowerShell jako správce (ne prostředí PowerShell ISE).
+4. Spusťte následující příkazy k vytvoření relace privileged koncový bod (období):
 
    ```powershell
    Enter-PSSession -ComputerName AzS-ERCS01 -ConfigurationName PrivilegedEndpoint
    ```
-5. Dále v této relaci období, spusťte následující příkazy a zkontrolujte stav spuštění služeb Azure zásobníku:
+5. V dalším kroku v této relaci období, spusťte následující příkazy ke kontrole stavu spuštění služby Azure Stack:
 
    ```powershell
    Get-ActionStatus Start-AzureStack
    ```
-6. Zkontrolujte výstup zajistit, že služby Azure zásobníku úspěšně restartovány.
+6. Zkontrolujte výstup zajistit, že jste úspěšně restartovat služby Azure Stack.
 
-Další informace o doporučených postupů správně vypnutí a restartování služby zásobník Azure najdete v tématu [zahájení a ukončení zásobník Azure](.\.\azure-stack-start-and-stop.md). 
+Další informace o doporučených postupů řádně vypnout a restartovat služby Azure Stack, najdete v článku [spouštění a zastavování služby Azure Stack](.\.\azure-stack-start-and-stop.md). 
 
 ## <a name="troubleshoot-startup-and-shutdown"></a>Řešení potíží s spuštění a vypnutí 
-Pokud nemáte Azure zásobníku služby úspěšně spustit během dvou hodin po zapnutí hostitelského počítače ASDK, proveďte tyto kroky:
+Pokud během dvou hodin po zapnutí ASDK hostitelský počítač není úspěšně spustit služby Azure Stack, proveďte tyto kroky:
 
 1. Přihlaste se jako AzureStack\CloudAdmin na hostitelském počítači ASDK.
-2. Otevřete PowerShell jako správce (není prostředí PowerShell ISE).
-3. Spusťte následující příkazy k vytvoření relace privilegované koncový bod (období):
+2. Otevřete PowerShell jako správce (ne prostředí PowerShell ISE).
+3. Spusťte následující příkazy k vytvoření relace privileged koncový bod (období):
 
    ```powershell
    Enter-PSSession -ComputerName AzS-ERCS01 -ConfigurationName PrivilegedEndpoint
    ```
-4. Dále v této relaci období, spusťte následující příkazy a zkontrolujte stav spuštění služeb Azure zásobníku:
+4. V dalším kroku v této relaci období, spusťte následující příkazy ke kontrole stavu spuštění služby Azure Stack:
 
    ```powershell
    Test-AzureStack
    ```
-5. Zkontrolujte výstup a vyřešte případné chyby. Další informace najdete v tématu [spustit test pro ověření Azure zásobníku](.\.\azure-stack-diagnostic-test.md).
-6. Restartujte služby Azure zásobníku z v rámci relace období spuštěním **Start-AzureStack** rutiny:
+5. Zkontrolujte výstup a vyřešte všechny chyby. Další informace najdete v tématu [spustit test pro ověření služby Azure Stack](.\.\azure-stack-diagnostic-test.md).
+6. Restartujte služby Azure Stack z v rámci relace období spuštěním **Start AzureStack** rutiny:
 
    ```powershell
    Start-AzureStack
    ```
 
-Pokud systém **počáteční AzureStack** má za následek selhání, přejděte [fórum podpory Azure zásobníku](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurestack) získat ASDK řešení potíží s podpory. 
+Pokud systém **Start AzureStack** důsledkem chyby, přejděte [fórum podpory služby Azure Stack](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurestack) zobrazíte ASDK podporu při řešení potíží. 
 
 ## <a name="next-steps"></a>Další postup 
-Další informace o Azure zásobníku nástroj pro diagnostiku a vystavování protokolování, najdete v části [diagnostické nástroje Azure zásobníku](.\.\azure-stack-diagnostics.md).
+Další informace o službě Azure Stack pro diagnostické nástroje a vydávání protokolování, najdete v článku [diagnostické nástroje služby Azure Stack](.\.\azure-stack-diagnostics.md).

@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: dd1e64d5ad6982c85a8205e3036d30a2ede92f7c
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 6da81ab90a87285f9e1874e3f10eff4570124192
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930286"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344009"
 ---
 # <a name="start-and-stop-azure-stack"></a>Spuštění a zastavení služby Azure Stack
 Postupujte podle postupů v tomto článku řádně vypnout a restartovat služby Azure Stack. Vypnutí se fyzicky vypnutí celého prostředí Azure Stack. Po spuštění zapne všechny role infrastruktury a vrátí prostředků tenanta power stavu, ve kterém se nacházely před vypnutí.
@@ -90,4 +90,4 @@ Pokud služby infrastruktury a klientů není úspěšně spustit dvě hodiny po
 
 ## <a name="next-steps"></a>Další postup 
 
-Další informace o službě Azure Stack pro diagnostické nástroje a vydávání protokolování, najdete v článku [diagnostické nástroje služby Azure Stack](azure-stack-diagnostics.md).
+Další informace o [diagnostické nástroje služby Azure Stack](azure-stack-diagnostics.md)

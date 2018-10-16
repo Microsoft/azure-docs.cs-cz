@@ -3,19 +3,19 @@ title: Popis Image - pro počítačové zpracování obrazu
 titleSuffix: Azure Cognitive Services
 description: Koncepty související s popisem obrázků s využitím rozhraní API pro počítačové zpracování obrazu.
 services: cognitive-services
-author: deken
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
-ms.author: v-deken
-ms.openlocfilehash: dc472a0a3f76dce8f3172689567e77c0b73ce8d9
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.author: pafarley
+ms.openlocfilehash: 423d1be57bc800108a08a81b72587ca2711bbc3d
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238722"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342411"
 ---
 # <a name="describing-images"></a>Popisování obrázků
 

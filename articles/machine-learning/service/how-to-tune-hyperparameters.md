@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 1171ff64bea99d7bc736a5a4fe88d9c08324b9d9
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 950d985ca87cce484edeb7930ca1bda34d812f33
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116466"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344128"
 ---
 # <a name="tune-hyperparameters-for-your-model"></a>Optimalizovat pro váš model hyperparameters
 
@@ -36,6 +36,8 @@ Ve scénářích obsáhlý learning / machine learning výkon modelů silně zá
 
 Azure Machine Learning umožňuje automatizovat hyperparameter zkoumání efektivním způsobem ukládá je spoustu času a prostředků. Zadejte rozsah hodnot hyperparameter a maximální počet školení běhů. Systém pak automaticky spustí více souběžných spuštění s konfiguracemi různých parametrů a najde odpovídající konfiguraci, která má za následek nejlepší výkon, měřený podle metriku, kterou zvolíte. Vypíšou tréninkových spuštění jsou automaticky předčasné ukončení, snížit plýtvání zbytečně velký počet výpočetních prostředků. Tyto prostředky se místo toho používají prozkoumat další hyperparameter konfigurace.
 
+>[!NOTE]
+> V tomto článku kódu byl testován s Azure Machine Learning SDK verze 0.168 
 
 ## <a name="define-search-space"></a>Definování prostor vyhledávání
 
@@ -164,7 +166,7 @@ Tato metrika protokolu ve skriptu školení s následující ukázka fragmentu k
 
 ```Python
 from azureml.core.run import Run
-run_logger = Run.get_submitted_run()
+run_logger = Run.get_context()
 run_logger.log("accuracy", float(val_accuracy))
 ```
 

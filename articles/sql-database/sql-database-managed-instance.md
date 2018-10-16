@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 52726d9145d2065da70eea55a03b47ad1602f1f7
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.date: 10/15/2018
+ms.openlocfilehash: f1b2f9c7ee9d2fbeec51315a5e348b197fb4c06b
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868550"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342496"
 ---
 # <a name="azure-sql-database-managed-instance-deployment-model-with-virtual-network-and-near-100-sql-server-compatibility"></a>Azure SQL Database Managed Instance modelu nasazení s virtuální sítí a téměř 100 % kompatibilitu s SQL serverem
 
@@ -105,7 +105,7 @@ Další informace o rozdílech mezi úrovní služeb v [omezení prostředků Ma
 
 ### <a name="business-critical-service-tier-preview"></a>Obchodní vrstvu služby (preview)
 
-Obchodní vrstvy kritické služby je sestaven pro aplikace s vysokými požadavky na vstupně-výstupních operací. Nabízí nejvyšší odolnost proti selhání s využitím několika izolovaných Always On replik.
+Obchodní vrstvy kritické služby je sestaven pro aplikace s vysokými požadavky na vstupně-výstupních operací. Nabízí nejvyšší odolnost proti selhání s využitím několika izolovaných replik.
 
 Následující seznam popisuje klíčové vlastnosti pro důležité obchodní informace vrstvy služby:
 
@@ -209,7 +209,7 @@ Následující diagram popisuje styčné plochy kompatibility ve spravované ins
 
 Managed Instance výhody z se vždycky nahoru – k datu v cloudu, což znamená, že některé funkce v místním SQL serveru může být buď zastaralé, vyřazený nebo mít alternativy. Existují zvláštní případy při nástroje třeba rozpoznat, že konkrétní funkce funguje trochu jinak nebo že služba není spuštěná v prostředí, které nebudete plně řídit:
 
-- Je součástí a předem nakonfigurované s vysokou dostupností. Funkce vysoké dostupnosti Always On se nezobrazí stejným způsobem, jak vypadá v implementacích SQL IaaS
+- Vysoká dostupnost je součástí a předem nakonfigurované pomocí technologie podobný [skupin dostupnosti Always On](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server).
 - Automatizované zálohování a bodu v čase. Zákazník může iniciovat `copy-only` zálohy, které nejsou v konfliktu s řetězec automatického zálohování.
 - Managed Instance nepovoluje zadání úplné fyzické cesty, takže všechny odpovídající scénáře a jinak není podporován: obnovení databáze nepodporuje se přesun, vytvořit DB neumožňuje fyzické cesty, BULK INSERT funguje s objekty BLOB Azure pouze atd.
 - Managed Instance podporuje [ověřování Azure AD](sql-database-aad-authentication.md) jako cloudové alternativu k ověřování Windows.

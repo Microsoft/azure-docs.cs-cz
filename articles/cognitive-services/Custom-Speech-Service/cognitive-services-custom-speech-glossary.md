@@ -1,30 +1,30 @@
 ---
-title: Glosář termínů – Custom Speech Service
-titlesuffix: Azure Cognitive Services
+title: Slovník pojmů pro Custom Speech Service v Azure | Dokumentace Microsoftu
 description: Terminologii používané v Glosář definuje podmínky, které se můžete setkat při práci s Custom Speech Service.
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: conceptual
+ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: 6922244fa9a5d053e506120112759d29bc74a8af
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 02f6c3f81cbaa26eed8de8b7785b519ecbc3bf26
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222790"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344247"
 ---
 # <a name="glossary"></a>Glosář
+
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
 
 ## <a name="a"></a>A
 
 ### <a name="acoustic-model"></a>Akustický Model
 
-Akustický model je klasifikátor, který označuje krátké zvukové fragmenty do jednoho několika fonémů, nebo zvukových jednotek v daném jazyce. Například slovo „speech“ je tvořeno čtyřmi fonémy „s p iy ch“. Tyto klasifikace se provádějí řádově 100krát za sekundu
+Akustický model je klasifikátor, který označuje krátké zvukové fragmenty jedním z mnoha fonémů, neboli zvukových jednotek, v daném jazyce. Například slovo „speech“ je tvořeno čtyřmi fonémy „s p iy ch“. Tyto klasifikace se provádějí řádově 100krát za sekundu
 
 ## <a name="b"></a>B
 

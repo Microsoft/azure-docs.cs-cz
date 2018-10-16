@@ -1,26 +1,26 @@
 ---
-title: Vysvětlení skóre předpovědi vrácený LUIS
+title: Predikce skóre – záměrů, entity - LUIS
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, co předpovědi skóre znamená, že v LUIS
+description: Predikce skóre označuje do jaké míry jistoty, LUIS má pro výsledky předpovědí.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 10/15/2018
 ms.author: diberry
-ms.openlocfilehash: dc19151e82f44159533050e60ba2f1c6d65466fe
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 56bec5ef4730e47b5c79263af5d1942df5a73f04
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032221"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341340"
 ---
 # <a name="prediction-score"></a>Skóre předpovědi
 Predikce skóre označuje do jaké míry jistoty, LUIS má pro výsledky předpovědí. 
 
-Predikce skóre je obvykle nula (0) a jedna (1). Příklad vysoce jistotu skóre LUIS je 0,99. Příklad s nízkou spolehlivostí skóre je 0,01. 
+Predikce skóre je nula (0) a jedna (1). Příklad vysoce jistotu skóre LUIS je 0,99. Příklad s nízkou spolehlivostí skóre je 0,01. 
 
 |Hodnota skóre|Spolehlivost|
 |--|--|

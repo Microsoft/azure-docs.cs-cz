@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 10/15/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: fb0fb4e0f23413cb56b1bb5ec419c44dfc52e7b6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a2f66078a817f5e6ad7296df11634a1a6130a055
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996838"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321661"
 ---
 # <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>Zvýšení úrovně přístupu pro globálního správce ve službě Azure Active Directory
 
@@ -31,29 +31,37 @@ Pokud jste [globálního správce](../active-directory/users-groups-roles/direct
 - Zobrazit všechna předplatná Azure v rámci organizace
 - Povolit přístup všech předplatných Azure k automatizace aplikace (jako je například aplikace auditování nebo fakturace)
 
-Ve výchozím nastavení, role správce Azure AD a Azure na základě rolí řízení přístupu role (RBAC) není span Azure AD a Azure. Pokud jste globální správce ve službě Azure AD, ale můžete zvýšit přístup ke správě předplatných Azure a skupiny pro správu. Když je zvýšení úrovně přístupu, budou mít [správce uživatelských přístupů](built-in-roles.md#user-access-administrator) rolí (RBAC role) na všechna předplatná pro konkrétního tenanta. Role správce přístupu uživatelů umožňuje udělit jiným uživatelům přístup k prostředkům Azure v kořenovém oboru (`/`).
-
-Toto zvýšení úrovně oprávnění by měl být dočasné a pouze v případě potřeby.
+Tento článek popisuje různé způsoby, můžete zvýšit váš přístup ve službě Azure AD.
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
+
+## <a name="overview"></a>Přehled
+
+Azure AD a prostředky Azure jsou zabezpečené nezávisle na sobě navzájem. To znamená přiřazení role Azure AD bez možnosti udělovat přístup k prostředkům Azure, a přiřazení Azure role bez možnosti udělovat přístup ke službě Azure AD. Ale pokud jste globální správce ve službě Azure AD, můžete přiřadit sami přístup ke všem předplatným Azure a skupiny pro správu ve vašem adresáři. Tuto funkci použijte, pokud nemáte přístup k prostředkům předplatného Azure, jako jsou virtuální počítače nebo účty úložiště, a chcete použít k získání přístupu k těmto prostředkům vaše oprávnění globálního správce.
+
+Když je zvýšení úrovně přístupu, se vám přidělí [správce uživatelských přístupů](built-in-roles.md#user-access-administrator) role v Azure na kořenového oboru (`/`). To umožňuje zobrazit všechny prostředky a přiřadit přístup v libovolné předplatné nebo skupinu pro správu v adresáři. Přiřazení rolí správce uživatelských přístupů lze odebrat pomocí Powershellu.
+
+Po provedení změny, které je třeba provést na kořenového oboru, měli byste odebrat tento přístup se zvýšeným oprávněním.
+
+![Zvýšení úrovně přístupu](./media/elevate-access-global-admin/elevate-access.png)
 
 ## <a name="azure-portal"></a>portál Azure
 
 Použijte následující postup zvýšení úrovně přístupu pro globálního správce pomocí webu Azure portal.
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com) nebo [centra pro správu Azure Active Directory](https://aad.portal.azure.com).
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com) nebo [centra pro správu Azure Active Directory](https://aad.portal.azure.com) jako globální správce.
 
 1. V navigačním seznamu klikněte na tlačítko **Azure Active Directory** a potom klikněte na tlačítko **vlastnosti**.
 
    ![Azure AD – vlastnosti – snímek obrazovky](./media/elevate-access-global-admin/aad-properties.png)
 
-1. V části **globální správce může spravovat předplatná Azure a skupiny pro správu**, nastavte přepínač na **Ano**.
+1. V části **Access management pro prostředky Azure**, nastavte přepínač na **Ano**.
 
-   ![Globální správce může spravovat předplatná Azure a skupiny pro správu – snímek obrazovky](./media/elevate-access-global-admin/aad-properties-global-admin-setting.png)
+   ![Správa přístupu pro prostředky Azure – snímek obrazovky](./media/elevate-access-global-admin/aad-properties-global-admin-setting.png)
 
-   Pokud nastavíte přepínač na **Ano**, váš účet globálního správce (aktuálně přihlášeného uživatele) je přidán do role správce přístupu uživatelů v Azure RBAC v kořenovém oboru (`/`), která uděluje přístup k zobrazení a sestavu na Všechna předplatná Azure přidružené k tenantovi Azure AD.
+   Pokud nastavíte přepínač na **Ano**, mají přiřazenou roli správce uživatelských přístupů v Azure RBAC v kořenovém oboru (/). To vám uděluje oprávnění k přiřazení rolí ve všech předplatných Azure a skupiny pro správu přidružené k tento adresář Azure AD. Tento přepínač je pouze dostupné pro uživatele, kteří mají přiřazenou roli globálního správce ve službě Azure AD.
 
-   Pokud nastavíte přepínač na **ne**, váš účet globálního správce (aktuálně přihlášeného uživatele) je odebrán z role správce přístupu uživatelů v Azure RBAC. Nelze zobrazit všechna předplatná Azure, které jsou spojené s tenantem Azure AD a můžete zobrazit a spravovat pouze předplatná Azure ke kterým vám byl udělen přístup.
+   Pokud nastavíte přepínač na **ne**, role správce přístupu uživatelů v Azure RBAC je odebraný z vašeho účtu uživatele. Už můžete přiřadit role ve všech předplatných Azure a skupiny pro správu, které jsou přidružené k tomuto adresáři Azure AD. Můžete zobrazit a spravovat pouze předplatná Azure a skupiny pro správu ke kterým vám byl udělen přístup.
 
 1. Klikněte na tlačítko **Uložit** uložte nastavení.
 
@@ -190,16 +198,16 @@ Při volání `elevateAccess`, vytvořit přiřazení role pro sebe, takže se o
 
     ID z si pak uložte `name` parametrů v tomto případě `18d7d88d-d35e-4fb5-a5c3-7773c20a72d9`.
 
-2. Potřebujete také seznam přiřazení role pro správce klienta v oboru tenanta. Seznam všech přiřazení v oboru tenanta pro `principalId` provedených volání zvýšení přístupu správce tenanta. Tím se zobrazí seznam všech přiřazení v tenantovi pro objectid.
+2. Potřebujete také seznam přiřazení role pro správce adresáře v adresáři oboru. Seznam všech přiřazení v oboru adresář pro `principalId` správce adresáře, který provedené zvýšení přístupu volání. Tím se zobrazí seznam všech přiřazení v adresáři pro objectid.
 
     ```http
     GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=principalId+eq+'{objectid}'
     ```
     
     >[!NOTE] 
-    >Správce tenanta by neměl mít mnoho přiřazení, pokud předchozí dotaz vrací příliš mnoho přiřazení, můžete také zadávat dotazy pro všechna přiřazení jenom na úrovni oboru tenanta a potom vyfiltrujte z výsledků: `GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
+    >Správce adresáře by neměly mít mnoho přiřazení, pokud předchozí dotaz vrací příliš mnoho přiřazení, můžete také zadávat dotazy pro všechna přiřazení jenom na úrovni oboru adresáře a potom vyfiltrujte z výsledků: `GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
         
-    2. Předchozí volání vrátí seznam přiřazení rolí. Vyhledejte přiřazení role, kde obor je `"/"` a `roleDefinitionId` končí ID názvu role jste získali v kroku 1 a `principalId` odpovídá objectId správce tenanta. 
+    2. Předchozí volání vrátí seznam přiřazení rolí. Vyhledejte přiřazení role, kde obor je `"/"` a `roleDefinitionId` končí ID názvu role jste získali v kroku 1 a `principalId` odpovídá objectId správce adresáře. 
     
     Ukázka přiřazení role:
 
@@ -235,6 +243,5 @@ Při volání `elevateAccess`, vytvořit přiřazení role pro sebe, takže se o
 
 ## <a name="next-steps"></a>Další postup
 
+- [Vysvětlení různých rolí](rbac-and-directory-admin-roles.md)
 - [Řízení přístupu podle role pomocí REST](role-assignments-rest.md)
-- [Správa přístupu k prostředkům Azure se službou Privileged Identity Management](pim-azure-resource.md)
-- [Správa přístupu ke správě Azure s podmíněným přístupem](conditional-access-azure-management.md)

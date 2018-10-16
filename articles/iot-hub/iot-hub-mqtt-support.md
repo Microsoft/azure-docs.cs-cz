@@ -1,19 +1,19 @@
 ---
 title: Podpora MQTT centra IoT Azure pochopit | Dokumentace Microsoftu
 description: Příručka pro vývojáře – podpora pro zařízení, připojení na koncový bod služby IoT Hub přístupem k zařízení pomocí protokolu MQTT. Obsahuje informace o předdefinovaných podpora MQTT v SDK pro zařízení Azure IoT.
-author: fsautomata
+author: rezasherafat
 manager: ''
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 03/05/2018
-ms.author: elioda
-ms.openlocfilehash: 2e45422ca6a861894193600eff17f192bc20b357
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.date: 10/12/2018
+ms.author: rezas
+ms.openlocfilehash: 6e2ab773f865a8e52c7b04b94a188dd244540e0d
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42058031"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344961"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikovat se službou IoT hub pomocí protokolu MQTT
 
@@ -107,7 +107,7 @@ Pro Device Explorer:
 
 MQTT připojit a odpojit pakety, IoT Hub vydá událost na **monitorování Operations** kanálu. Tato událost má další informace, které vám mohou pomoci při řešení problémů s připojením.
 
-Můžete určit aplikace pro zařízení **bude** zprávy v **připojit** paketů. Používejte aplikace pro zařízení s `devices/{device_id}/messages/events/{property_bag}` nebo `devices/{device_id}/messages/events/{property_bag}` jako **bude** název tématu k definování **bude** předávat jako telemetrické zprávy zprávy. V takovém případě pokud se zavře připojení k síti, ale **ODPOJIT** nebyl dříve přijat paket ze zařízení a pak odešle služby IoT Hub **bude** zprávy zadaný v **připojit** paketů do kanálu telemetrická data. Kanál telemetrických dat může být buď výchozí **události** koncového bodu nebo vlastní koncový bod definovaný ve službě IoT Hub směrování. Zpráva obsahuje **iothub-MessageType** vlastnost s hodnotou **bude** přiřazené.
+Můžete určit aplikace pro zařízení **bude** zprávy v **připojit** paketů. Používejte aplikace pro zařízení s `devices/{device_id}/messages/events/` nebo `devices/{device_id}/messages/events/{property_bag}` jako **bude** název tématu k definování **bude** předávat jako telemetrické zprávy zprávy. V takovém případě pokud se zavře připojení k síti, ale **ODPOJIT** nebyl dříve přijat paket ze zařízení a pak odešle služby IoT Hub **bude** zprávy zadaný v **připojit** paketů do kanálu telemetrická data. Kanál telemetrických dat může být buď výchozí **události** koncového bodu nebo vlastní koncový bod definovaný ve službě IoT Hub směrování. Zpráva obsahuje **iothub-MessageType** vlastnost s hodnotou **bude** přiřazené.
 
 ### <a name="tlsssl-configuration"></a>Konfigurace TLS/SSL
 
@@ -228,6 +228,8 @@ Další informace najdete v tématu [– Příručka vývojáře dvojčata zař�
 
 ### <a name="update-device-twins-reported-properties"></a>Aktualizovat ohlášené vlastnosti dvojčete zařízení
 
+K aktualizaci ohlášených vlastností zařízení vydá požadavek na do služby IoT Hub přes publikace přes určené téma MQTT. Po zpracování požadavku, IoT Hub odpovídá stavu úspěch nebo neúspěch operace aktualizace prostřednictvím publikování na jiné téma. V tomto tématu můžete nejdřív přihlásit k odběru zařízení k upozornění o výsledek své žádosti aktualizace dvojčete. Implment tohoto typu požadavek/odpověď interakce v protokol MQTT, můžeme využít pojem id požadavku (`$rid`) zpočátku poskytovanému zařízením v žádosti o jeho aktualizaci. Id této žádosti je také součástí odpověď ze služby IoT Hub, aby mohlo zařízení ke korelaci odpovědi na své konkrétní předchozí žádosti.
+
 Následující text popisuje, jak zařízení aktualizuje ohlášené vlastnosti v dvojčeti zařízení ve službě IoT Hub:
 
 1. Zařízení musí nejdřív přihlásit k odběru `$iothub/twin/res/#` tématu pro příjem odpovědí operaci ze služby IoT Hub.
@@ -253,6 +255,20 @@ Je to možné stavové kódy jsou:
 | 400 | Chybný požadavek. Nesprávný formát JSON |
 | 429 | Příliš mnoho požadavků (omezený), jak je uvedeno [omezení šířky pásma služby IoT Hub][lnk-quotas] |
 | 5** | Chyby serveru |
+
+Fragment kódu python níže ukazuje dvojčeti proces aktualizace vlastnosti ohlásil přes protokol MQTT (pomocí protokolu MQTT Paho klienta):
+```python
+from paho.mqtt import client as mqtt
+
+# authenticate the client with IoT Hub (not shown here)
+
+client.subscribe("$iothub/twin/res/#")
+rid = "1"
+twin_reported_property_patch = "{\"firmware_version\": \"v1.1\"}"
+client.publish("$iothub/twin/PATCH/properties/reported/?$rid=" + rid, twin_reported_property_patch, qos=0)
+```
+
+Po úspěšném nasazení dvojčete hlášené výše, vlastnosti aktualizace operaci publikování zprávy ze služby IoT Hub bude mít v následujícím tématu: `$iothub/twin/res/204/?$rid=1&$version=6`, kde `204` je stavový kód označující úspěšné, `$rid=1` odpovídá ID požadavku poskytovanému zařízením v kódu a `$version` odpovídá verzi ohlášené vlastnosti oddílu dvojčata zařízení po aktualizaci.
 
 Další informace najdete v tématu [– Příručka vývojáře dvojčata zařízení][lnk-devguide-twin].
 

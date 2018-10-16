@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: arjmands
 ms.custom: mvc
-ms.openlocfilehash: c94b5d4800f5776b51247c6ec2f6662a6ab26abc
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 4ab558b680a0d00d1b9bdfbcb1529219f6c37b37
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42058052"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319247"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>Použití různých mechanismů ověřování pomocí klientské sady SDK služby Device Provisioning pro C
 
@@ -143,6 +143,7 @@ Před vytvořením registrace zařízení sestavte sadu SDK.
 Pokud používáte TPM, podle pokynů v tématu [Vytvoření a zřízení simulovaného zařízení pomocí služby IoT Hub Device Provisioning](./quick-create-simulated-device.md) vytvořte položku registrace zařízení ve službě Device Provisioning a proveďte simulaci prvního spuštění.
 
 ### <a name="x509"></a>X **.** 509
+
 1. Pokud chcete zaregistrovat zařízení ve zřizovací službě, je potřeba si u každého zařízení poznamenat Ověřovací klíč a ID registrace, které se zobrazí v nástroji pro zřizování poskytovaném klientskou sadou SDK. Spusťte následující příkaz, který vytiskne kořenový certifikát webu (pro skupiny registrací) a listový certifikát (pro jednotlivé registrace):
       ```
       ./azure-iot-sdk-c/dps_client/tools/x509_device_provision/x509_device_provision.exe
@@ -185,4 +186,3 @@ Po zřízení zařízení pomocí zřizovací služby se toto rozhraní API při
   ```
   IOTHUB_CLIENT_LL_HANDLE handle = IoTHubClient_LL_CreateFromDeviceAuth(iothub_uri, device_id, iothub_transport);
   ```
-

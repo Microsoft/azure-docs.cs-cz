@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 10/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 3caae8ecae66178bc538d0b9d1240293028f33ad
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 8a36053fe3189a72c33ea14445a6b064260eec01
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867353"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318312"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-preview"></a>Zkopírovat data z Office 365 do Azure pomocí Azure Data Factory (Preview) 
 
@@ -55,7 +55,7 @@ Chcete-li kopírovat data z Office 365 do Azure, proveďte následující nutné
 
 Pokud je to poprvé, kdy požadujete data pro tento kontext (kombinace dat, které tabulky se přístup, které cílového účtu je načítají do data a které identity uživatele je vidět data žádost o přístup), zobrazí se aktivita kopírování stav "Probíhá", a pouze v případě, že kliknete na [odkaz "Details" v části Akce](copy-activity-overview.md#monitoring) se zobrazí stav jako "RequestingConsent".  Člen skupiny schvalovatel přístupu dat musí schválit žádost v Privileged Access Management extrakce dat mohl pokračovat.
 
-Přečtěte si [tady](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/Approving-a-data-access-request) na tom, jak můžete schválit schvalující přístup k žádosti o data a najdete v [tady](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/On-boarding) vysvětlení na celkovou integraci s Privileged Access managementu, včetně nastavení dat Schvalovatel skupiny pro řetězce klíčů.
+Přečtěte si [tady](https://github.com/OfficeDev/MS-Graph-Data-Connect/wiki/Approving-data-access-requests) na tom, jak můžete schválit schvalující přístup k žádosti o data a najdete v [tady](https://github.com/OfficeDev/MS-Graph-Data-Connect/wiki/Capabilities#integration-with-privileged-access-management) vysvětlení na celkovou integraci s Privileged Access managementu, včetně nastavení dat Schvalovatel skupiny pro řetězce klíčů.
 
 ## <a name="policy-validation"></a>Ověření zásad
 
@@ -124,7 +124,7 @@ Pokud chcete zkopírovat data z Office 365, jsou podporovány následující vla
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typ datové sady, musí být nastavena na: **Office365Table** | Ano |
-| tableName | Název datové sady, chcete-li extrahovat z Office 365. Tady najdete seznam datových sad Office 365 k dispozici pro extrahování. | Ano |
+| tableName | Název datové sady, chcete-li extrahovat z Office 365. Přečtěte si [tady](https://github.com/OfficeDev/MS-Graph-Data-Connect/wiki/Capabilities#datasets) seznam k dispozici pro extrahování datových sad Office 365. | Ano |
 | Predikát | Predikátu výraz, který můžete použít k filtrování konkrétní řádky, které mají extrahovat z Office 365.  Najdete zde zjistit sloupce, které lze použít pro filtrování predikát pro každou tabulku a formát výrazu filtru. | Ne<br>(Pokud není zadána žádná predikátu, výchozí hodnota je extrahovat data za posledních 30 dní) |
 
 **Příklad**

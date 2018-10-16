@@ -1,5 +1,5 @@
 ---
-title: Data Application Insights pomocí jazyka C# služby luis
+title: Data Application Insights služby luis pomocí Node.js
 titleSuffix: Azure Cognitive Services
 description: Vytvořte robota, integruje se službou LUIS aplikace a Application Insights s využitím Node.js.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 342c4f98d854d94426c3e4a1eb79bb2a6adffaad
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 6199e4a681f7f58ea0cf57b575afb2a63d160eee
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47037996"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321950"
 ---
 # <a name="add-luis-results-to-application-insights"></a>Přidání LUIS výsledky do Application Insights
 V tomto kurzu přidá LUIS požadavku a odpovědi informace, které [Application Insights](https://azure.microsoft.com/services/application-insights/) úložiště dat telemetrie. Až budete mít data, můžete ji dotazovat s Kusto jazyk nebo Power BI k analýze, agregovat a vytváření sestav o záměry a entity utterance v reálném čase. Tato analýza pomůže zároveň pomáhá určit, pokud by měl přidat nebo upravit záměry a entity aplikace LUIS.

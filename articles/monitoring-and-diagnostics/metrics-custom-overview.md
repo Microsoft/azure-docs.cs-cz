@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: c136772e27dab014c22234f1ef1d2baddd2ffe58
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1bdf1e1f5e58ecb0939d5876e0cef349e32de517
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978076"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344742"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Vlastní metriky ve službě Azure Monitor
 
@@ -31,14 +31,14 @@ Při odesílání vlastních metrik do Azure monitoru, každý datový bod (nebo
 
 ### <a name="authentication"></a>Authentication
 K odeslání vlastních metrik do Azure monitoru entity odesílání metriku musí být platný token Azure Active Directory "Nosiče" záhlaví žádosti. K získání tokenu nosiče platný několik podporované způsoby:
-1. [MSI (identita spravované služby)](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) – poskytuje identitu do samotného prostředku Azure (například virtuální počítač). MSI je určená k získání prostředků oprávnění k provádění určitých operací – například povolení prostředek generovat metriky o sobě. Prostředek (nebo jeho MSI) můžete udělit oprávnění "Monitorování metrik vydavatele" na jiný prostředek, a tím umožnit MSI generovat metriky a další zdroje.
+1. [Spravované identity pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) – poskytuje identitu do samotného prostředku Azure (například virtuální počítač). MSI je určená k získání prostředků oprávnění k provádění určitých operací – například povolení prostředek generovat metriky o sobě. Prostředek (nebo jeho MSI) můžete udělit oprávnění "Monitorování metrik vydavatele" na jiný prostředek, a tím umožnit MSI generovat metriky a další zdroje.
 2. [Instanční objekt služby AAD](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) – scénář v tomto poli je aplikace AAD (služba) je možné přiřadit oprávnění k emitování metriky o prostředku Azure.
 Azure Monitor ověřit žádost, ověří token aplikace pomocí AAD veřejných klíčů. Existující role "Monitorování metrik vydavatele" už má toto oprávnění, která je k dispozici na webu Azure Portal. Instanční objekt služby, v závislosti na tom, jaké prostředky se generování vlastních metrik, je možné přidělit role "Monitorování metrik vydavatele" v oboru požadované (předplatné, skupinu prostředků nebo konkrétní prostředek).
 
 > [!NOTE]
 > Při požadování tokenu AAD ke generování vlastních metrik zajistit je cílová skupina nebo prostředek, který žádá token pro https://monitoring.azure.com/ (nezapomeňte zahrnout koncový znak "/")
 
-### <a name="subject"></a>Předmět
+### <a name="subject"></a>Subjekt
 Tato vlastnost zaznamená, u kterého ID prostředku Azure vlastní metrika se použije v hlášení pro. Tyto informace budou kódovaný v adrese URL provádí volání rozhraní API. Každé rozhraní API, můžete zadat pouze hodnoty metrik pro jeden prostředek Azure.
 
 > [!NOTE]

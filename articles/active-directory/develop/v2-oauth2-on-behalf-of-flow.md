@@ -17,12 +17,12 @@ ms.date: 06/06/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: da13b7b7b9bd39692db422a315383e0f12aae453
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 8ff46246d46a6028bc83b8fdf9c984e87f5578a5
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344872"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320301"
 ---
 # <a name="azure-active-directory-v20-and-oauth-20-on-behalf-of-flow"></a>Azure Active Directory v2.0 a tok OAuth 2.0 On-Behalf-Of
 On-Behalf-Of OAuth 2.0, kterou flow slouží případ použití, kde aplikace vyvolá služby/webové rozhraní API, které pak je potřeba volat jiné služby nebo webové rozhraní API. Cílem je rozšíření delegovaný uživatel identit a oprávnění pomocí řetězce požadavku. Pro služby střední vrstvy, aby ověřených požadavků pro příjem dat služby je potřeba zabezpečit přístupového tokenu z Azure Active Directory (Azure AD) jménem uživatele.
@@ -33,7 +33,7 @@ On-Behalf-Of OAuth 2.0, kterou flow slouží případ použití, kde aplikace vy
 
 
 > [!IMPORTANT]
-> [Implicitní grant](v2-oauth2-implicit-grant-flow.md) nelze použít pro tok On-Behalf-Of - SPA musíte předat jejich (implicitní tok) přístupový token k důvěrnému klientovi střední vrstvy proveďte OBO toky. Zobrazit [omezení](#client-limitations) podrobné informace, na kterých mohou klienti provádí volání On-Behalf-Of.  
+> Od května 2018 je `id_token` nelze použít pro tok On-Behalf-Of - musí projít SPA **přístup** token do střední vrstvy důvěrnému klientovi provádět OBO toky. Zobrazit [omezení](#client-limitations) podrobné informace, na kterých mohou klienti provádí volání On-Behalf-Of.
 
 ## <a name="protocol-diagram"></a>Diagram protokolu
 Předpokládejme, že uživatel byl ověřen na aplikace s využitím [toku udělení autorizačního kódu OAuth 2.0](v2-oauth2-auth-code-flow.md). V tomto okamžiku má aplikace přístupový token *pro rozhraní API A* (token A) s deklarací identity uživatele a vyjádření souhlasu pro střední vrstvě přístup k webovému rozhraní API (A rozhraní API). Nyní rozhraní API A potřebuje provést ověřeného požadavku na podřízené webové rozhraní API (API B).

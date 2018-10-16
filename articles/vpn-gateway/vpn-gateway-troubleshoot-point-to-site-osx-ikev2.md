@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/27/2018
 ms.author: alzam
-ms.openlocfilehash: bc8e95b07d984505fc0e5fdad41fe120463b5b0e
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: c370808d06f31f9d79c99ca0f20f613d9e335d60
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585520"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339046"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>Řešení potíží s připojeními Point-to-Site VPN z klientů se systémem Mac OS X VPN
 
@@ -66,7 +66,9 @@ Pokud je všechno správně nastavené, opakujte předchozí kroky Stáhnout [Wi
 1. Filtrovat podle *isakmp* a podívejte se na **IKE_SA** paketů. Je třeba podívat na podrobnosti návrh přidružení zabezpečení v rámci **datová část: přidružení zabezpečení**. 
 2. Ověřte, že klient a server mají společnou sadu.
 
-  ![paketů](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/packet5.jpg)
+  ![paketů](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/packet5.jpg) 
+  
+3. Pokud se v trasování sítě nepřijde žádná odpověď serveru, ověřte, že jste povolili protokol IKEv2 na stránce konfigurace brány Azure na webu Azure Portal.
 
 ## <a name="next-steps"></a>Další postup
 Další nápovědu najdete v tématu [Microsoft Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).

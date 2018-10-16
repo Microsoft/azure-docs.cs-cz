@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/06/2018
+ms.date: 10/12/2018
 ms.author: jonbeck
-ms.openlocfilehash: 31e81741d2a627888e478b3871bdbab4e6b6d6f5
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: e00a4c5f5ee307a2d574702844e481894d28cb93
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37902635"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340303"
 ---
 # <a name="high-performance-compute-vm-sizes"></a>Velikosti virtuálních počítačů vysokovýkonné výpočty
 
@@ -50,12 +50,19 @@ ms.locfileid: "37902635"
   
   Další informace najdete v tématu [funkce a rozšíření virtuálních počítačů](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Můžete se s rozšířeními pro virtuální počítače nasazené v také pracovat [modelu nasazení classic](classic/manage-extensions.md).
 
+### <a name="cluster-configuration-options"></a>Možnosti konfigurace clusteru
 
-## <a name="using-hpc-pack"></a>Pomocí sady HPC Pack
+Azure poskytuje několik možností, jak vytvářet clustery virtuálních počítačů Windows HPC, který může komunikovat pomocí sítě RDMA, včetně: 
 
-[Sady Microsoft HPC Pack](https://technet.microsoft.com/library/jj899572.aspx), od Microsoftu zdarma HPC clusteru a úlohy řešení správy, je jedna možnost vytvořit výpočetní cluster v Azure ke spouštění aplikací MPI založené na Windows a jiné úlohy HPC. HPC Pack 2012 R2 a novější verze obsahují běhové prostředí pro MS-MPI, které používá síť Azure RDMA při nasazení na virtuální počítače s podporou RDMA.
+* **Virtuální počítače** -nasadit virtuální počítače s podporou RDMA HPC ve stejné skupině dostupnosti (Pokud používáte model nasazení Azure Resource Manageru). Pokud používáte model nasazení classic, nasaďte virtuální počítače ve stejné cloudové službě. 
 
+* **Škálovací sady virtuálních počítačů** - v virtuálního počítače škálovací sady, ujistěte se, že omezíte nasazení do jediné skupiny umístění. Například v šabloně Resource Manageru, nastavte `singlePlacementGroup` vlastnost `true`. 
 
+* **Azure CycleCloud** – vytvoření clusteru prostředí HPC v [Azure CycleCloud](/azure/cyclecloud/) ke spouštění úloh MPI na uzlech Windows.
+
+* **Služba Azure Batch** – vytvoření [Azure Batch](/azure/batch/) výpočetní uzly fondu pro spouštění úloh MPI ve Windows serveru. Další informace najdete v tématu [použití podporující RDMA nebo s podporou grafického procesoru instancí ve fondech Batch](../../batch/batch-pool-compute-intensive-sizes.md). Viz také [Batch loděnice](https://github.com/Azure/batch-shipyard) projekt, pro spouštění úloh kontejneru v Batch.
+
+* **Sady Microsoft HPC Pack** - [sady HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) zahrnuje běhové prostředí pro MS-MPI, které používá síť Azure RDMA při nasazení na virtuálních počítačích Windows s podporou RDMA. Například nasazení, najdete v článku [nastavení clusteru Windows RDMA pomocí sady HPC Pack pro spouštění aplikací MPI](classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 ## <a name="other-sizes"></a>Další velikosti
 - [Obecné účely](sizes-general.md)

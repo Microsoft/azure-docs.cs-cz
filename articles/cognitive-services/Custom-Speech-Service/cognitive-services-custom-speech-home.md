@@ -1,24 +1,24 @@
 ---
-title: Co je Custom Speech Service?
-titlesuffix: Azure Cognitive Services
+title: Přehled vlastních Speech Service v Azure | Dokumentace Microsoftu
 description: Custom Speech Service je cloudová služba, která uživatelům umožňuje přizpůsobit modely řeči pro přepis řeči na text.
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: overview
+ms.topic: article
 ms.date: 02/07/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: f90fc40a42806cfb002da2d9943eaa41736df4d7
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
-ms.translationtype: HT
+ms.openlocfilehash: 97eee2b6440dbbf740ad5fa856bd518facabbfef
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222739"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342289"
 ---
 # <a name="what-is-custom-speech-service"></a>Co je Custom Speech Service?
+
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
 
 Custom Speech Service je cloudová služba, která uživatelům poskytuje možnost přizpůsobení modelů řeči pro přepis řeči na text.
 Pokud chcete službu Custom Speech Service používat, přejděte na [portál služby Custom Speech Service](https://cris.ai).
@@ -42,9 +42,9 @@ Přestože modul Microsoftu pro převod řeči na text patří ke světové špi
 
 Pokud například vytváříte aplikaci pro hlasové vyhledávání na webu MSDN, je pravděpodobné, že se termíny jako „object-oriented“, „namespace“ nebo „dot net“ budou vyskytovat častěji než v klasických hlasových aplikacích. Přizpůsobení jazykového modelu umožní systému se to naučit.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Další informace o používání služby Custom Speech Service najdete na [portálu služby Custom Speech Service] (https://cris.ai).
+Další informace o tom, jak pomocí služby Custom Speech Service, najdete v článku [vlastní Speech Service Portal](https://cris.ai).
 
 * [Začínáme](cognitive-services-custom-speech-get-started.md)
 * [Nejčastější dotazy](cognitive-services-custom-speech-faq.md)

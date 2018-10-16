@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/11/2016
 ms.author: ghogen
-ms.openlocfilehash: dac5425f72ff57e412be664e1bc0c84aee3dec1f
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 99d723eee6bd5b60289af5490e4b1cd6a855cabb
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42054643"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319145"
 ---
 # <a name="using-windows-powershell-scripts-to-publish-to-dev-and-test-environments"></a>Použití skriptů Windows PowerShellu k publikování do vývojových a testovacích prostředí
 
@@ -52,6 +52,7 @@ Skript publikování obsahuje publikovat konkrétní kroky pro nasazování na w
 Modul prostředí Windows PowerShell, který generuje sada Visual Studio obsahuje funkce, které používá skript publikovat. Tyto funkce prostředí Azure PowerShell nejsou mají být změněna. Viz téma [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
 
 ### <a name="json-configuration-file"></a>Konfigurační soubor JSON
+
 Soubor JSON je vytvořen **konfigurace** složky a obsahuje konfigurační data, která určuje, které přesně prostředky k nasazení do Azure. Název souboru, který generuje sada Visual Studio je projekt název WAWS-dev.json Pokud jste vytvořili na webu nebo projekt název VM-dev.json, pokud jste vytvořili virtuální počítač. Tady je příklad konfiguračního souboru JSON, který je generován při vytvoření webu. Většina hodnot není potřeba vysvětlovat. Název webu je generován Azure, takže se nemusí shodovat se název vašeho projektu.
 
 ```json
@@ -150,7 +151,7 @@ Pokud máte web, který má více prostředí pro nasazení (označuje se jako s
 
 Pokud jste nikdy spustit skript prostředí Windows PowerShell před, musíte nejprve nastavte zásady spouštění umožňující spouštění skriptů. Zásady je funkce zabezpečení, která zabránit uživatelům ve spouštění skriptů prostředí Windows PowerShell v případě, že jsou citlivé na malwaru a virů, které se týkají spouštění skriptů.
 
-### <a name="run-the-script"></a>Spusťte skript
+### <a name="run-the-script"></a>Spuštění skriptu
 
 1. Vytvořte balíček nasazení webu pro váš projekt. Balíček nasazení webu je komprimovaný archiv (soubor .zip), které obsahují soubory, které chcete zkopírovat do svého webu nebo virtuálního počítače. Balíčky nasazení webu v sadě Visual Studio můžete vytvořit pro jakékoli webové aplikaci.
 
@@ -159,29 +160,29 @@ Pokud jste nikdy spustit skript prostředí Windows PowerShell před, musíte ne
 Další informace najdete v tématu [postupy: vytvoření balíčku pro nasazení webu v sadě Visual Studio](https://msdn.microsoft.com/library/dd465323.aspx). Můžete také automatizovat vytváření balíčku Webdeploy, jak je popsáno v [přizpůsobení a rozšíření scripts[(#customizing-and-extending-publish-scripts) publikovat]
 
 1. V **Průzkumníka řešení**, otevřete kontextovou nabídku pro skript a klikněte na tlačítko **otevřít v PowerShell ISE**.
-2. Pokud se spouštění skriptů prostředí Windows PowerShell na tomto počítači poprvé, otevřete okno příkazového řádku s oprávněními správce a zadejte následující příkaz:
+1. Pokud se spouštění skriptů prostředí Windows PowerShell na tomto počítači poprvé, otevřete okno příkazového řádku s oprávněními správce a zadejte následující příkaz:
 
     ```powershell
     Set-ExecutionPolicy RemoteSigned
     ```
 
-3. Přihlaste se do Azure pomocí následujícího příkazu.
+1. Přihlaste se do Azure pomocí následujícího příkazu.
 
     ```powershell
     Add-AzureAccount
     ```
 
-    Po zobrazení výzvy zadejte svoje uživatelské jméno a heslo.
+Po zobrazení výzvy zadejte svoje uživatelské jméno a heslo.
 
-    Všimněte si, že při automatizaci skriptu, tato metoda poskytuje přihlašovací údaje Azure nefunguje. Místo toho používejte `.publishsettings` souboru k zadání přihlašovacích údajů. Jednou pouze, je použít příkaz **Get-AzurePublishSettingsFile** stáhne soubor z Azure, a poté použijte **Import AzurePublishSettingsFile** se soubor naimportovat. Podrobné pokyny najdete v tématu [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
+Všimněte si, že při automatizaci skriptu, tato metoda poskytuje přihlašovací údaje Azure nefunguje. Místo toho používejte `.publishsettings` souboru k zadání přihlašovacích údajů. Jednou pouze, je použít příkaz **Get-AzurePublishSettingsFile** stáhne soubor z Azure, a poté použijte **Import AzurePublishSettingsFile** se soubor naimportovat. Podrobné pokyny najdete v tématu [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
 
-4. (Volitelné) Pokud chcete vytvářet prostředky Azure, jako je například virtuální počítač, databáze a webu bez publikování webové aplikace, použijte **publikovat WebApplication.ps1** příkazů **– konfigurace**argument nastavení do konfiguračního souboru JSON. Tento příkazový řádek využívá konfigurační soubor JSON k určení, které prostředky k vytvoření. Protože ho používá výchozí nastavení pro další argumenty příkazového řádku, vytvoří prostředky, ale nepodporuje publikování vašich webových aplikací. -Verbose – možnost získáte další informace o tom, co se děje.
+1. (Volitelné) Pokud chcete vytvářet prostředky Azure, jako je například virtuální počítač, databáze a webu bez publikování webové aplikace, použijte **publikovat WebApplication.ps1** příkazů **– konfigurace**argument nastavení do konfiguračního souboru JSON. Tento příkazový řádek využívá konfigurační soubor JSON k určení, které prostředky k vytvoření. Protože ho používá výchozí nastavení pro další argumenty příkazového řádku, vytvoří prostředky, ale nepodporuje publikování vašich webových aplikací. -Verbose – možnost získáte další informace o tom, co se děje.
 
     ```powershell
     Publish-WebApplication.ps1 -Verbose –Configuration C:\Path\WebProject-WAWS-dev.json
     ```
 
-5. Použití **publikovat WebApplication.ps1** příkaz, jak je znázorněno v jednom z následujících příkladů pro vyvolání skriptu a publikování vašich webových aplikací. Pokud je potřeba přepsat výchozí nastavení pro všechny další argumenty, jako je například název odběru, publikujte název balíčku, přihlašovací údaje virtuálního počítače nebo přihlašovací údaje serveru databáze, můžete zadat tyto parametry. Použití **– Verbose** můžete zobrazit další informace o průběhu procesu publikování.
+1. Použití **publikovat WebApplication.ps1** příkaz, jak je znázorněno v jednom z následujících příkladů pro vyvolání skriptu a publikování vašich webových aplikací. Pokud je potřeba přepsat výchozí nastavení pro všechny další argumenty, jako je například název odběru, publikujte název balíčku, přihlašovací údaje virtuálního počítače nebo přihlašovací údaje serveru databáze, můžete zadat tyto parametry. Použití **– Verbose** můžete zobrazit další informace o průběhu procesu publikování.
 
     ```powershell
     Publish-WebApplication.ps1 –Configuration C:\Path\WebProject-WAWS-dev-json `
@@ -191,27 +192,29 @@ Další informace najdete v tématu [postupy: vytvoření balíčku pro nasazen�
     -Verbose
     ```
 
-    Pokud vytváříte virtuální počítač, příkaz vypadá takto. Tento příklad také ukazuje, jak zadat pověření pro více databází. Pro virtuální počítače, které vytvářejí tyto skripty není certifikát SSL od důvěryhodné kořenové autoritě. Proto budete muset použít **– AllowUntrusted** možnost.
+Pokud vytváříte virtuální počítač, příkaz vypadá takto. Tento příklad také ukazuje, jak zadat pověření pro více databází. Pro virtuální počítače, které vytvářejí tyto skripty není certifikát SSL od důvěryhodné kořenové autoritě. Proto budete muset použít **– AllowUntrusted** možnost.
 
-    ```powershell
-    Publish-WebApplication.ps1 `
-    -Configuration C:\Path\ADVM-VM-test.json `
-    -SubscriptionName Contoso `
-    -WebDeployPackage C:\Path\ADVM.zip `
-    -AllowUntrusted `
-    -VMPassword @{name = "vmUserName"; password = "YourPasswordHere"} `
-    -DatabaseServerPassword @{Name="server1";Password="adminPassword1"}, @{Name="server2";Password="adminPassword2"} `
-    -Verbose
-    ```
+```powershell
+Publish-WebApplication.ps1 `
+-Configuration C:\Path\ADVM-VM-test.json `
+-SubscriptionName Contoso `
+-WebDeployPackage C:\Path\ADVM.zip `
+-AllowUntrusted `
+-VMPassword @{name = "vmUserName"; password = "YourPasswordHere"} `
+-DatabaseServerPassword @{Name="server1";Password="adminPassword1"}, @{Name="server2";Password="adminPassword2"} `
+-Verbose
+```
 
-    Skript můžete vytvářet databáze, ale nevytváří databázové servery. Pokud chcete vytvořit databázový server, můžete použít **New-AzureSqlDatabaseServer** funkce v modulu Azure.
+Skript můžete vytvářet databáze, ale nevytváří databázové servery. Pokud chcete vytvořit databázový server, můžete použít **New-AzureSqlDatabaseServer** funkce v modulu Azure.
 
 ## <a name="customizing-and-extending-the-publish-scripts"></a>Přizpůsobení a rozšíření skriptů publikování
+
 Můžete přizpůsobit publikovat skript a konfigurační soubor JSON. Funkce v modulu Windows PowerShell **AzureWebAppPublishModule.psm1** nejsou mají být změněna. Pokud chcete zadat jinou databázi, nebo změnit některé vlastnosti virtuálního počítače, upravte konfigurační soubor JSON. Pokud chcete rozšířit funkce skript, který chcete automatizovat vytváření a testování projektu, můžete implementovat zástupné procedury funkcí v **publikovat WebApplication.ps1**.
 
 K automatizaci sestavení projektu, přidejte kód, který volá MSBuild `New-WebDeployPackage` jak je znázorněno v tomto příkladu kódu. Cesta k příkazu MSBuild se liší v závislosti na verzi sady Visual Studio, které jste nainstalovali. Chcete-li získat správnou cestu, můžete použít funkci **Get-MSBuildCmd**, jak je znázorněno v tomto příkladu.
 
 ### <a name="to-automate-building-your-project"></a>K automatizaci sestavování projektu
+
 1. Přidat `$ProjectFile` parametru v části globální param.
 
     ```powershell
@@ -221,7 +224,7 @@ K automatizaci sestavení projektu, přidejte kód, který volá MSBuild `New-We
     $ProjectFile,
     ```
 
-2. Zkopírujte funkci `Get-MSBuildCmd` do souboru skriptu.
+1. Zkopírujte funkci `Get-MSBuildCmd` do souboru skriptu.
 
     ```powershell
     function Get-MSBuildCmd
@@ -242,7 +245,7 @@ K automatizaci sestavení projektu, přidejte kód, který volá MSBuild `New-We
     }
     ```
 
-3. Nahraďte `New-WebDeployPackage` s následující kód a nahraďte zástupné symboly při konstrukci řádku `$msbuildCmd`. Tento kód je pro Visual Studio 2017. Pokud používáte Visual Studio 2015, změňte **VisualStudioVersion** vlastnost `14.0` (`12.0` pro Visual Studio 2013).
+1. Nahraďte `New-WebDeployPackage` s následující kód a nahraďte zástupné symboly při konstrukci řádku `$msbuildCmd`. Tento kód je pro Visual Studio 2017. Pokud používáte Visual Studio 2015, změňte **VisualStudioVersion** vlastnost `14.0` (`12.0` pro Visual Studio 2013).
 
     ```powershell
     function New-WebDeployPackage
@@ -250,15 +253,15 @@ K automatizaci sestavení projektu, přidejte kód, který volá MSBuild `New-We
         #Write a function to build and package your web application
     ```
 
-    Pokud chcete vytvořit webovou aplikaci, použijte MsBuild.exe. Nápovědu najdete v tématu MSBuild Reference k příkazovému řádku na: [http://go.microsoft.com/fwlink/?LinkId=391339](http://go.microsoft.com/fwlink/?LinkId=391339)
+Pokud chcete vytvořit webovou aplikaci, použijte MsBuild.exe. Nápovědu najdete v tématu MSBuild Reference k příkazovému řádku na: [http://go.microsoft.com/fwlink/?LinkId=391339](http://go.microsoft.com/fwlink/?LinkId=391339)
 
-    ```powershell
-    Write-VerboseWithTime 'Build-WebDeployPackage: Start'
+```powershell
+Write-VerboseWithTime 'Build-WebDeployPackage: Start'
 
-    $msbuildCmd = '"{0}" "{1}" /T:Rebuild;Package /P:VisualStudioVersion=15.0 /p:OutputPath="{2}\MSBuildOutputPath" /flp:logfile=msbuild.log,v=d' -f (Get-MSBuildCmd), $ProjectFile, $scriptDirectory
+$msbuildCmd = '"{0}" "{1}" /T:Rebuild;Package /P:VisualStudioVersion=15.0 /p:OutputPath="{2}\MSBuildOutputPath" /flp:logfile=msbuild.log,v=d' -f (Get-MSBuildCmd), $ProjectFile, $scriptDirectory
 
-    Write-VerboseWithTime ('Build-WebDeployPackage: ' + $msbuildCmd)
-    ```
+Write-VerboseWithTime ('Build-WebDeployPackage: ' + $msbuildCmd)
+```
 
 ### <a name="start-execution-of-the-build-command"></a>Spuštění příkazu k sestavení
 
@@ -293,7 +296,7 @@ return $WebDeployPackage
     }
     ```
 
-2. Vyvolat vlastní skript z příkazového řádku pomocí předání `$Project` argument, jako v následujícím příkladu:
+1. Vyvolat vlastní skript z příkazového řádku pomocí předání `$Project` argument, jako v následujícím příkladu:
 
     ```powershell
     .\Publish-WebApplicationVM.ps1 -Configuration .\Configurations\WebApplication5-VM-dev.json `
@@ -303,9 +306,10 @@ return $WebDeployPackage
     -Verbose
     ```
 
-    Pokud chcete automatizovat testování vaší aplikace, přidejte kód pro `Test-WebApplication`. Nezapomeňte zrušte komentář u řádků v **publikovat WebApplication.ps1** kde jsou tyto funkce volány. Pokud nezadáte implementaci, můžete ručně vytvořit projekt pomocí sady Visual Studio a spusťte skript publikování publikovat do Azure.
+Pokud chcete automatizovat testování vaší aplikace, přidejte kód pro `Test-WebApplication`. Nezapomeňte zrušte komentář u řádků v **publikovat WebApplication.ps1** kde jsou tyto funkce volány. Pokud nezadáte implementaci, můžete ručně vytvořit projekt pomocí sady Visual Studio a spusťte skript publikování publikovat do Azure.
 
 ## <a name="publishing-function-summary"></a>Souhrn publikování – funkce
+
 Chcete-li získat nápovědu pro funkce, které můžete použít na příkazovém řádku prostředí Windows PowerShell, použijte příkaz `Get-Help function-name`. Nápověda obsahuje nápovědu k parametrům a příklady. Stejný text nápovědy je rovněž ve zdrojových souborech skript **AzureWebAppPublishModule.psm1** a **publikovat WebApplication.ps1**. V jazyce Visual Studio jsou lokalizovány skript a pomoc.
 
 **AzureWebAppPublishModule**

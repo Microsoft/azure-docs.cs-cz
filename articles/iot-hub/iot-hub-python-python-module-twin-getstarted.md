@@ -9,17 +9,18 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: 5a4d9debfcc48279bbb56df076a77a5c8b44e231
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 615dfc789db805e51ed3e7c11fed9da6d7079e96
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42061293"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319094"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-python-back-end-and-python-device"></a>Začínáme s IoT Hub identit a modul dvojče zařízení pomocí back-end Python a zařízení Python
 
 > [!NOTE]
 > [Identity modulů a dvojčata modulů](iot-hub-devguide-module-twins.md) se podobají identitě zařízení a dvojčeti zařízení služby Azure IoT Hub, ale poskytují větší úroveň členitosti. Zatímco identita zařízení a dvojče zařízení služby Azure IoT Hub umožňují back-endové aplikaci konfigurovat zařízení a poskytují vhled do stavu zařízení, identita modulu a dvojče modulu poskytují tyto možnosti pro jednotlivé součásti zařízení. Na způsobilých zařízeních s několika součástmi, jako jsou zařízení s operačním systémem nebo zařízení s firmwarem, to umožňuje izolovanou konfiguraci a vhled do stavu jednotlivých součástí.
+>
 
 Na konci tohoto kurzu budete mít dvě aplikace v Pythonu:
 
@@ -28,13 +29,13 @@ Na konci tohoto kurzu budete mít dvě aplikace v Pythonu:
 
 > [!NOTE]
 > Informace o sadách SDK služby Azure IoT Hub, s jejichž pomocí můžete sestavit aplikace, které poběží v zařízení, i back-end vašeho řešení, najdete v tématu [Sady SDK služby IoT Hub][lnk-hub-sdks].
+>
 
 Pro absolvování tohoto kurzu potřebujete:
 
 * Aktivní účet Azure. (Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet][lnk-free-trial].)
 * Služby IoT Hub.
 * Nainstalujte nejnovější [Python SDK](https://github.com/Azure/azure-iot-sdk-python).
-
 
 Nyní jste vytvořili službu IoT Hub a máte název hostitele a připojovací řetězec služby IoT Hub, které potřebujete k dokončení kurzu.
 
@@ -44,7 +45,7 @@ V této části vytvoříte aplikaci v Pythonu, která v registru identit ve slu
 
 Přidejte následující kód do souboru Pythonu:
 
-```Python
+```python
 import sys
 import iothub_service_client
 from iothub_service_client import IoTHubRegistryManager, IoTHubRegistryManagerAuthMethod, IoTHubError
@@ -78,6 +79,7 @@ Tato aplikace vytvoří identitu zařízení s ID **myFirstDevice** a identity m
 
 > [!NOTE]
 > V registru identit služby IoT Hub se uchovávají identity zařízení a modulů pouze za účelem bezpečného přístupu k centru IoT. Registr identit ukládá ID zařízení a klíče pro použití jako bezpečnostních pověření. Registr identit také ukládá povolené a zakázané příznaky pro jednotlivá zařízení, pomocí kterých můžete zakázat přístup pro dané zařízení. Pokud aplikace potřebuje pro zařízení ukládat další metadata, měla by používat úložiště pro konkrétní aplikaci. Pro identity modulů neexistuje žádný příznak povoleno/zakázáno. Další informace najdete v [Příručce pro vývojáře pro službu IoT Hub][lnk-devguide-identity].
+>
 
 ## <a name="update-the-module-twin-using-python-device-sdk"></a>Aktualizovat dvojče zařízení Python SDK
 
@@ -85,11 +87,11 @@ V této části vytvoříte Python aplikace na zařízení s Simulovaná, která
 
 1. **Získání připojovacího řetězce modulu** – Teď se přihlaste k webu [Azure Portal][lnk-portal]. Přejděte do vaší služby IoT Hub a klikněte na Zařízení IoT. Vyhledejte identitu zařízení myFirstDevice a otevřete ji. Zobrazí se úspěšně vytvořená identita modulu myFirstModule. Zkopírujte připojovací řetězec modulu. Budete ho potřebovat v dalším kroku.
 
-    ![Podrobnosti o modulu na webu Azure Portal][15]
+  ![Podrobnosti o modulu na webu Azure Portal][15]
 
-2. **Vytvoření aplikace UpdateModuleTwinReportedProperties** přidejte následující `using` příkazů v horní části **Program.cs** souboru:
+1. **Vytvoření aplikace UpdateModuleTwinReportedProperties** přidejte následující `using` příkazů v horní části **Program.cs** souboru:
 
-    ```Python
+    ```python
     import sys
     import iothub_service_client
     from iothub_service_client import IoTHubRegistryManager, IoTHubRegistryManagerAuthMethod, IoTHubDeviceTwin, IoTHubError
@@ -122,9 +124,10 @@ V této části vytvoříte Python aplikace na zařízení s Simulovaná, která
 Tento vzorový kód ukazuje, jak načíst dvojče modulu a aktualizovat hlášené vlastnosti pomocí protokolu AMQP. 
 
 ## <a name="get-updates-on-the-device-side"></a>Získat aktualizace na straně zařízení
+
 Kromě výše uvedeného kódu můžete přidat následující blok kódu, aktualizace dvojčete zpráv na vašem zařízení.
 
-```Python
+```python
 import random
 import time
 import sys
@@ -166,7 +169,7 @@ Chcete-li pokračovat v seznamování se službou IoT Hub a prozkoumat další s
 
 
 <!-- Images. -->
-[15]: ./media\iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG
+[15]:./media\iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG
 <!-- Links -->
 [lnk-hub-sdks]: iot-hub-devguide-sdks.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/

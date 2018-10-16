@@ -3,19 +3,19 @@ title: Popis pro dospělé nebo pikantního obsahu – pro počítačové zpraco
 titleSuffix: Azure Cognitive Services
 description: Koncepty související se zjišťováním obsahu pro dospělé nebo pikantního obsahu na obrázcích pomocí rozhraní APi pro počítačové zpracování obrazu.
 services: cognitive-services
-author: deken
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
-ms.author: v-deken
-ms.openlocfilehash: b1ba8e7556b6ba134624548142bf73e84d875c6a
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.author: pafarley
+ms.openlocfilehash: 71866149e3d2dca4b39585ce8da73aae658a4d59
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984518"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344910"
 ---
 # <a name="detecting-adult-and-racy-content"></a>Rozpoznávání obsahu pro dospělé a nevhodného obsahu
 

@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 05/29/2018
 ms.author: azcspmt;jonbeck;cynthn;danlep
 ms.custom: include file
-ms.openlocfilehash: 296e92d803bb69376f286aa60cfb4a955b08010f
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: c12fff63cdb7241d89e7511a3dac2ff9c1363ae6
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "34669338"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49346100"
 ---
 ## <a name="deployment-considerations"></a>Aspekty nasazování
 * **Předplatné Azure** – Chcete-li nasadit více než několik výpočetně náročných instancí, zvažte předplatné s průběžnými platbami nebo jiné možnosti nákupu. Pokud používáte [bezplatný účet Azure](https://azure.microsoft.com/free/), můžete použít pouze omezený počet výpočetních jader Azure.
 
-* **Ceny a dostupnost** – velikosti virtuálních počítačů tyto jsou nabízeny jen v standardní cenová úroveň. Zkontrolujte dostupné produkty v jednotlivých oblastech] (https://azure.microsoft.com/regions/services/) pro dostupnost v oblastech Azure. 
+* **Ceny a dostupnost** – velikosti virtuálních počítačů tyto jsou nabízeny jen v standardní cenová úroveň. Zkontrolujte [dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/) pro dostupnost v oblastech Azure. 
 * **Kvóta pro jádra** – možná budete muset zvýšili kvótu jader v předplatném Azure z výchozí hodnoty. Vaše předplatné může také omezit počet jader, které můžete nasadit v určitých rodinách velikostí virtuálních počítačů, včetně řady H-series. Požádat o zvýšení kvóty, [otevřete žádost o online zákaznickou podporu](../articles/azure-supportability/how-to-create-azure-support-request.md) bez poplatků. (Výchozí omezení může lišit v závislosti na vaše předplatné kategorie).
   
   > [!NOTE]
@@ -37,4 +37,3 @@ Toto rozhraní podporuje RDMA podporovat instance komunikovat přes síť Infini
 > V Azure IP over IB nepodporuje. Je podporován pouze RDMA přes IB.
 >
 
-Nasazení podporující RDMA virtuální počítače HPC ve stejné skupině dostupnosti nebo škálovací sady virtuálních počítačů (Pokud používáte model nasazení Azure Resource Manageru) nebo stejné cloudové služby (Pokud používáte model nasazení classic). Pokud použijete škálovací sady virtuálních počítačů, ujistěte se, že omezíte na jediné skupiny umístění; nasazení například v šabloně Resource Manageru, nastavte *singlePlacementGroup* vlastnost *true*. Následují další požadavky pro virtuální počítače s podporou RDMA HPC pro přístup k síti Azure RDMA.

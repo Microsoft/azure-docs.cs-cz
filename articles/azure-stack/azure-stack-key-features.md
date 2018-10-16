@@ -1,6 +1,6 @@
 ---
-title: Klíčové funkce a koncepty v zásobníku Azure | Microsoft Docs
-description: Další informace o klíčových funkcích a koncepty v zásobníku Azure.
+title: Klíčových funkcích a konceptech v Azure stacku | Dokumentace Microsoftu
+description: Další informace o klíčových funkcích a konceptech v Azure stacku.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,157 +12,157 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: ''
-ms.openlocfilehash: 851530910c702d388cd4dc8607bf09ecb5fa44e0
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 16c908dabd313cd9d64ce5be9b7d0299423a7675
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34198469"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344681"
 ---
-# <a name="key-features-and-concepts-in-azure-stack"></a>Klíčové funkce a koncepty v Azure zásobníku
-Pokud jste nový do protokolů Microsoft Azure, může být užitečné tyto podmínky a popis funkcí.
+# <a name="key-features-and-concepts-in-azure-stack"></a>Klíčových funkcích a konceptech v Azure stacku
+Pokud se službou Microsoft Azure Stack teprve začínáte, může být užitečné tyto podmínky a popis funkcí.
 
 ## <a name="personas"></a>Osoby
-Existují dva typy uživatelů pro Microsoft Azure zásobníku, operátor cloudu (zprostředkovatel) a klient (příjemce).
+Existují dva typy prvků uživatelů pro Microsoft Azure Stack, cloudu – operátor (poskytovatel) a tenanta (příjemce).
 
-* A **operátor cloudu** můžete konfigurovat Azure zásobníku a spravovat nabízí, plánů, služby, kvóty a ceny k poskytnutí prostředků pro své klienty.  Operátoři cloudu také spravovat kapacitu a reakce na výstrahy.  
-* A **klienta** (také označované jako uživatel) využívá služby, které nabízí správce cloudu. Klienty můžete zřizovat, sledovat a spravovat služby, které se odebírá, jako jsou webové aplikace, úložiště a virtuálních počítačů.
+* A **operátor cloudu** můžete nakonfigurovat služby Azure Stack a správa nabídek, plánů, služeb, kvóty a ceny k poskytnutí prostředků pro své klienty.  Operátoři cloudů také spravovat kapacity a reakce na výstrahy.  
+* A **tenanta** (také označované jako uživatel) využívá služby, které nabízí správce cloudu. Tenantů můžete zřizovat, monitorovat a spravovat služby, které jsou odběru jste přihlášeni, jako jsou Web Apps, úložiště a virtuální počítače.
 
 ## <a name="portal"></a>Portál
-Primární metody interakci s Microsoft Azure zásobníku jsou portálu správce, portál user portal a prostředí PowerShell.
+Primární metody komunikace s Microsoft Azure Stack se portálu správce portálu user portal a Powershellu.
 
-Portály zásobník Azure jsou každý zajišťované samostatné instance nástroje Azure Resource Manager.  Operátor cloudu pomocí portálu správce ke správě Azure zásobníku a k provádění akcí, jako je vytvoření klienta nabídky.  Portál user portal (také označované jako portál klienta) poskytuje samoobslužné prostředí pro využívání prostředků cloudu, jako jsou virtuální počítače, účty úložiště a webové aplikace. Další informace najdete v tématu [používání Azure zásobníku uživatelů a správců portálů](azure-stack-manage-portals.md).
+Na portálech Azure stacku každého využívají samostatných instancí služby Azure Resource Manageru.  Operátor cloudu pomocí portálu správce ke správě služby Azure Stack a provádět kroky, jako je vytvoření tenanta nabídek.  Portál user portal (také označované jako portál pro klienty) poskytuje samoobslužné prostředí pro používání cloudové prostředky, jako jsou virtuální počítače, účty storage a Web Apps. Další informace najdete v tématu [používání portálů správce a uživatele Azure stacku](azure-stack-manage-portals.md).
 
 ## <a name="identity"></a>Identita 
-Azure zásobníku používá jako zprostředkovatel identity Azure Active Directory (AAD) nebo Active Directory Federation Services (AD FS).  
+Azure Stack používá jako zprostředkovatel identity Azure Active Directory (AAD) nebo Active Directory Federation Services (AD FS).  
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
-Azure Active Directory je poskytovatele cloudové víceklientské identit společnosti Microsoft.  Většina hybridní scénáře použití služby Azure Active Directory jako úložiště identit.
+Azure Active Directory je zprostředkovatel identity založené na cloudu, více tenantů od Microsoftu.  Většina hybridních scénářů používat jako úložiště identit Azure Active Directory.
 
 ### <a name="active-directory-federation-services"></a>Služba AD FS (Active Directory Federation Services)
-Můžete se rozhodnout používat Active Directory Federation Services (AD FS) pro odpojené nasazení Azure zásobníku.  Azure zásobníku, zprostředkovatelé prostředků a další aplikace fungovat stejně jako s Azure Active Directory mnohem stejným způsobem se službou AD FS. Azure Stack zahrnuje svou vlastní instanci služby AD FS a služby Active Directory a Active Directory Graph API. Azure Development Kit zásobníku podporuje následující scénáře služby AD FS:
+Můžete používat Active Directory Federation Services (AD FS) pro odpojené nasazení služby Azure Stack.  Azure Stack, poskytovatelů prostředků a další aplikace fungovat stejně jako s Azure Active Directory téměř stejným způsobem se službou AD FS. Azure Stack zahrnuje svoji vlastní instanci služby AD FS a službou Active Directory a Active Directory Graph API. Azure Stack Development Kit podporuje následující scénáře služby AD FS:
 
 - Přihlaste se k nasazení pomocí služby AD FS.
-- Vytvoření virtuálního počítače pomocí tajných klíčů v Key Vault
-- Vytvoření trezoru pro ukládání nebo přístupu k tajné klíče
-- Vytvořit vlastní role RBAC v předplatném
-- Přiřadit uživatele k rolím RBAC na prostředky
-- Vytvářet systémové role RBAC pomocí prostředí Azure PowerShell
-- Přihlaste se jako uživatel pomocí prostředí Azure PowerShell
-- Vytvoření služby objekty je použít k přihlášení k prostředí Azure PowerShell
+- Vytvoření virtuálního počítače s tajnými kódy ve službě Key Vault
+- Vytvořte trezor pro ukládání a přístup k tajných kódů
+- Vytvoření vlastní role RBAC v předplatném
+- Přiřazení uživatelů k rolím RBAC pro prostředky
+- Vytvoření role RBAC systémová prostřednictvím Azure Powershellu
+- Přihlaste se jako uživatel prostřednictvím Azure Powershellu
+- Vytvoření služby objekty zabezpečení použít pro přihlášení k Azure Powershellu
 
 
-## <a name="regions-services-plans-offers-and-subscriptions"></a>Oblasti, služby, plánů, nabídky a odběry
-V zásobníku Azure se dodávají služby klientům pomocí oblastí, odběry, nabídky a plány. Klienti se mohou přihlásit k více nabídky. Nabízí může mít jeden nebo více plánů a plány může mít jednu nebo více služeb.
+## <a name="regions-services-plans-offers-and-subscriptions"></a>Oblasti, služby, plány, nabídky a předplatné
+Ve službě Azure Stack služby jsou poskytována pro tenanty používající oblastí, předplatná, nabídky a plány. Tenanti mohou přihlásit k několika nabídky. Nabídek může mít jednoho nebo několika plánů a plány může mít jednu nebo víc služeb.
 
 ![](media/azure-stack-key-features/image4.png)
 
-Příklad hierarchie odběrů klienta nabídky, každý s různými plánů a služeb.
+Příklad hierarchie odběrů tenanta nabídky, každý s použitím různých plánů a služeb.
 
 ### <a name="regions"></a>Oblasti
-Zásobník oblasti jsou základní prvek škálování a správu. Organizace může mít více oblastí s prostředky, které jsou k dispozici v každé oblasti. Oblasti mohou mít i jiné služby nabídky, které jsou k dispozici. V Azure zásobníku Development Kit je podporována pouze jedna oblast a automaticky s názvem *místní*.
+Oblasti Azure Stack, které jsou základního prvku objektu škálování a správy. Organizace může mít více oblastí s prostředky, které jsou k dispozici v jednotlivých oblastech. Oblasti mohou mít i jiné služby nabídek, které jsou k dispozici. V Azure Stack Development Kit je podporována pouze jedna oblast a automaticky s názvem *místní*.
 
 ### <a name="services"></a>Služby
-Microsoft Azure zásobníku umožňuje poskytovatelům k poskytování širokou škálu služeb a aplikací, jako je například virtuální počítače, SQL Server databáze, SharePoint, Exchange a další.
+Microsoft Azure Stack umožňuje poskytovatelům poskytovat celou řadu služeb a aplikací, jako jsou virtuální počítače, SQL Server databáze, SharePoint, Exchange a další.
 
 ### <a name="plans"></a>Plány
-Plány jsou seskupení jednu nebo více služeb. Jako zprostředkovatele vytvořte plány, které nabízejí klientům. Vaši tenanti se pak můžou přihlásit k odběru nabídek, aby mohli používat plány a služby, které k nim patří.
+Plány představují seskupení jedné nebo více služeb. Jako poskytovatel můžete vytvořit plány, které nabídnete svým tenantům. Vaši tenanti se pak můžou přihlásit k odběru nabídek, aby mohli používat plány a služby, které k nim patří.
 
-Každá služba, přidat do plánu můžete nakonfigurovat nastavení kvót, které vám pomohou spravovat vaše kapacita cloudu. Kvóty můžou obsahovat omezení, jako je například virtuální počítač, paměti RAM a procesoru omezení a se použijí na uživatele předplatné. Kvóty mohou být rozlišovány podle umístění. Plán obsahující výpočetní služby z oblasti A může mít například kvótu dva virtuální počítače, 4 GB paměti RAM a 10 jader procesoru.
+Každá služba přidány do plánu můžete nakonfigurovat s nastavením kvóta vám pomohou při správě kapacity cloudu. Kvóty může obsahovat omezení, jako je například omezení virtuálních počítačů, RAM a využití procesoru a se vztahují na předplatné uživatele. Kvóty můžou lišit podle umístění. Plán obsahující výpočetních služeb, z oblasti A může mít například kvóty dva virtuální počítače, 4 GB paměti RAM a 10 jader procesoru.
 
-Při vytváření nabídky, můžete použít Správce služby **základního plánu**. Tyto základní plány jsou zahrnuté ve výchozím nastavení, pokud se klient přihlásí k této nabídky. Když se uživatel přihlásí (a vytvoření odběru), má uživatel přístup do všech poskytovatelů prostředků zadaný v těchto plánech základní (s odpovídající kvóty).
+Při vytváření nabídky, Správce služeb můžete zahrnout **základní plán**. Tyto základní plány jsou zahrnuté ve výchozím nastavení, pokud se klient přihlásí k této nabídce. Když uživatel přihlásí (a vytvoření odběru), má uživatel přístup pro všechny poskytovatele prostředků podle těchto základních plánů (s odpovídajícím kvóty).
 
-Správce služeb můžete zahrnout taky **rozšíření plány** v nabídku. Plány rozšíření nejsou zahrnuté ve výchozím nastavení v rámci předplatného. Rozšíření plány jsou další plány (kvóty) k dispozici v nabídku, vlastník předplatného můžete přidat do svých předplatných.
+Správce služeb můžete také zahrnout **doplňkové plány** do nabídky. Doplňkové plány nejsou zahrnuté ve výchozím nastavení v rámci předplatného. Doplňkové plány jsou další plány (kvóty) k dispozici v nabídce, vlastník předplatného můžete přidat do svých předplatných.
 
 ### <a name="offers"></a>Nabídky
-Nabídky jsou skupiny jeden nebo více plánů, které zprostředkovatelé představovat klientům koupit (přihlášení k odběru). Nabízejí Alpha může například obsahovat plán A obsahující sadu výpočetní služby a plánování B obsahující sadu úložiště a síťové služby.
+Nabídky jsou skupiny jednoho nebo několika plánů, které poskytovatelé předkládají tenantům ke koupi (přihlášení k odběru). Alfa nabízí může například obsahovat plánu A který obsahuje sadu výpočetních služeb a plánování B obsahující sadu služeb úložiště a sítě.
 
-Nabídku dodává se sadou základní plány a Správce služeb můžete vytvořit rozšíření plány, které klienty můžete přidat do své předplatné.
+Nabídka obsahuje sadu základních plánů a správci služby můžou vytvářet doplňkové plány, které klienty můžete přidat do svého předplatného.
 
 ### <a name="subscriptions"></a>Předplatná
-Předplatné je, jak klienti koupit vaší nabídky. Předplatné je kombinací klienta s nabídku. Klient může mít odběry více nabídky. Každé předplatné se týká jenom jednu nabídku. Odběry klienta rozhodněte, které plány/služby přístupem.
+Předplatné je, jak zakoupit vaše nabídky tenantů. Předplatné je kombinací tenanta nabídkou. Klient může mít předplatná na více nabídky. Každé předplatné se týká jenom jednu nabídku. Předplatná tenanta rozhodněte, které plány/služby přístupem.
 
-Odběry pomáhají poskytovatelů uspořádání a přístup k službám a prostředkům cloudu.
+Předplatných pomůžou poskytovatelé uspořádat a přístup ke cloudovým prostředkům a službám.
 
-Pro správce vytvoří se během nasazení odběru výchozí zprostředkovatel. Toto předplatné slouží ke správě Azure zásobníku, nasadit další zprostředkovatelé prostředků a vytvořte plány a nabízí pro klienty. Není vhodné používat ke spuštění úloh zákazníka a aplikací. Počínaje verzí 1804, dva další odběry doplnit výchozí zprostředkovatel předplatného; Měření předplatného a spotřeba předplatné. Tyto doplňky usnadnit oddělení správy základní infrastruktury, zprostředkovatelé dalších prostředků a úloh.  
+Pro správce je vytvořen výchozí předplatné poskytovatele. během nasazení. Toto předplatné je možné spravovat služby Azure Stack, nasadit další poskytovatele prostředků a vytvořte plány a nabídky pro klienty. Není vhodné používat pro spouštění úloh zákazníka a aplikací. Počínaje verzí 1804, dva další předplatná doplňují výchozí zprostředkovatel předplatné; předplatné měření a využití předplatného. Tyto doplňky usnadňují oddělení správu základní infrastruktury, poskytovatelů dalších prostředků a úloh.  
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
-Pomocí Azure Resource Manager můžete pracovat s vaše prostředky infrastruktury v modelu na základě šablon, deklarativní.   Poskytuje jednotné rozhraní, které můžete použít k nasazení a správě součástí vašeho řešení. Úplné informace a pokyny najdete v tématu [přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md).
+Pomocí Azure Resource Manageru můžete pracovat s prostředky infrastruktury založené na šablonách, deklarativní modelu.   Poskytuje jednotné rozhraní, který vám pomůže nasadit a spravovat komponenty svého řešení. Úplné informace a pokyny najdete v tématu [přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md).
 
 ### <a name="resource-groups"></a>Skupiny prostředků
-Skupiny prostředků jsou kolekce prostředků, služeb a aplikací – a má každý prostředek typu, například virtuálních počítačů, virtuálních sítí, veřejné IP adresy, účty úložiště a weby. Každý prostředek, musí být ve skupině prostředků a tak skupiny prostředků pomáhají logicky uspořádat prostředky, například zatížení nebo umístění.  V zásobníku Microsoft Azure jsou prostředkům, například plány a nabízí taky spravovat v skupiny prostředků.
+Skupiny prostředků je kolekce prostředků, služeb a aplikací – a každý prostředek má typ, jako jsou virtuální počítače, virtuální sítě, veřejné IP adresy, účty úložiště a websites. Každý prostředek musí být ve skupině prostředků a tak skupiny prostředků pomáhají logicky uspořádat prostředky, jako například úlohy nebo umístění.  Ve službě Microsoft Azure Stack jsou také spravovat prostředky, jako jsou plány a nabídky ve skupinách prostředků.
 
-Na rozdíl od [Azure](../azure-resource-manager/resource-group-move-resources.md), prostředky nelze přesouvat mezi skupinami prostředků. Když máte zobrazeny vlastnosti prostředku nebo skupinu prostředků na portálu správy Azure zásobníku *přesunout* tlačítko je zašedlá a není k dispozici. 
+Na rozdíl od [Azure](../azure-resource-manager/resource-group-move-resources.md), prostředky nelze přesouvat mezi skupinami prostředků. Když máte zobrazeny vlastnosti prostředku nebo skupinu prostředků v portálu pro správu služby Azure Stack *přesunout* šedě a není k dispozici je tlačítko. 
  
 ### <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manageru
-S Azure Resource Manager, můžete vytvořit šablonu (ve formátu JSON), která definuje nasazení a konfiguraci vaší aplikace. Tato šablona se označuje jako šablonu Azure Resource Manageru a nabízí deklarativní způsob, jak definovat nasazení. Pomocí šablony můžete aplikaci opakovaně nasadit v průběhu životního cyklu a mít přitom jistotu, že se prostředky nasadí konzistentně.
+S Azure Resource Manageru můžete vytvořit šablonu (ve formátu JSON), která definuje nasazení a konfiguraci vaší aplikace. Tato šablona se označuje jako šablony Azure Resource Manageru a nabízí deklarativní způsob, jak definovat nasazení. Pomocí šablony můžete aplikaci opakovaně nasadit v průběhu životního cyklu a mít přitom jistotu, že se prostředky nasadí konzistentně.
 
-## <a name="resource-providers-rps"></a>Zprostředkovatelé prostředků (RPs)
-Zprostředkovatelé prostředků jsou webové služby, které tvoří základ pro všechny založené na Azure IaaS a PaaS služby. Azure Resource Manager závisí na jiné RPs poskytnout přístup ke službám.
+## <a name="resource-providers-rps"></a>Poskytovatelé prostředků (předávajících stran)
+Poskytovatelé prostředků jsou webové služby, které tvoří základ pro všechny založené na Azure IaaS a PaaS služby. Azure Resource Manageru závisí na jiné RPs a zajistit tak přístup ke službám.
 
-Existují čtyři základní RPs: sítě, úložiště, výpočetního prostředí a KeyVault. Každý z těchto RPs vám pomůže konfigurovat a řídit její příslušné prostředky. Správce služeb můžete také přidat nové vlastní prostředek zprostředkovatele.
+Existují čtyři základní RPs: sítě, úložiště, výpočetní prostředky a trezor klíčů. Každá z těchto RPs umožňuje konfigurovat a spravovat jeho příslušné prostředky. Správce služeb můžete také přidat nové vlastní prostředek zprostředkovatele.
 
-### <a name="compute-rp"></a>Výpočetní RP
-Výpočetní prostředek zprostředkovatele (CRP) umožňuje klientům zásobník Azure vytvářet své vlastní virtuální počítače. CRP zahrnuje schopnost vytvářet virtuální počítače, jakož i rozšíření virtuálního počítače. Služba rozšíření virtuálního počítače, pomáhá poskytovat schopnosti IaaS pro virtuální počítače Windows a Linux.  Jako příklad můžete zřídit virtuální počítač s Linuxem a spouštění skriptů Bash během nasazení nakonfigurovat virtuální počítač CRP.
+### <a name="compute-rp"></a>COMPUTE RP
+Poskytovatele výpočetních prostředků (CRP) umožňuje klientům služby Azure Stack můžete vytvořit své vlastní virtuální počítače. CRP zahrnuje schopnost vytvářet virtuální počítače, stejně jako rozšíření virtuálního počítače. Do rozšíření služby Virtual Machines pomáhá poskytovat schopnosti IaaS pro virtuální počítače s Windows a Linux.  Jako příklad slouží ke zřízení virtuálního počítače s Linuxem a spouštění skriptů Bash během nasazování do konfigurace virtuálního počítače CRP.
 
-### <a name="network-rp"></a>Sítě RP
-Zprostředkovatel prostředků sítě (NRP) přináší řadu funkcí softwarem definovanou síť (SDN) a síťové funkce virtualizace (NFV) pro daný privátní cloud.  Vytvořit prostředky jako softwaru zatížení vyrovnávání, veřejné IP adresy, skupin zabezpečení sítě, virtuální sítě můžete použít NRP.
+### <a name="network-rp"></a>Síť poskytovatele prostředků
+Poskytovatel prostředků sítě (NRP) nabízí řadu funkce softwarově definované sítě (SDN) a síťové funkce virtualizace (NFV) pro daný privátní cloud.  Vytvoření zdroje, jako jsou softwaru zatížení vyrovnávání, veřejné IP adresy, skupiny zabezpečení sítě, virtuální sítě můžete použít NRP.
 
 ### <a name="storage-rp"></a>Úložiště RP
-RP úložiště nabízí čtyři Azure konzistentní služby úložiště: Objekt blob, tabulky, fronty a Správa účtů. Nabízí také Cloudová služba správy úložiště usnadnit správu služby zprostředkovatele služby Azure konzistentní úložiště. Úložiště Azure poskytuje flexibilitu při uložení a načtení velké objemy nestrukturovaných dat, například dokumentů a mediálních souborů pomocí Azure BLOB, a strukturovaných NoSQL na základě dat pomocí tabulky Azure. Další informace o Azure Storage najdete v tématu [Úvod do Microsoft Azure Storage](../storage/common/storage-introduction.md).
+Poskytovatele prostředků úložiště zajišťuje čtyř služeb konzistentních s Azure storage: Objekt blob, tabulky, fronty a správu účtů. Také nabízí Cloudová služba správy úložiště pro usnadnění správy služeb poskytovatele služeb konzistentních s Azure Storage. Azure Storage nabízí flexibilitu při ukládání a načítání velkého objemu nestrukturovaných dat, jako jsou dokumenty a mediální soubory s objekty BLOB Azure, a strukturované NoSQL na základě dat pomocí tabulek Azure. Další informace o Azure Storage najdete v tématu [Úvod do Microsoft Azure Storage](../storage/common/storage-introduction.md).
 
 #### <a name="blob-storage"></a>Blob Storage
-BLOB storage ukládá žádné datové sady. Objekt blob může být jakýkoli druh textu nebo binárních dat, jako je dokument, soubor médií nebo instalátor aplikace. Table storage ukládá strukturované datové sady. Table Storage je datové úložiště na bázi NoSQL typu klíč-atribut, které umožňuje rychlý vývoj a přístup k velkým objemům dat. Queue storage poskytuje spolehlivé zasílání zpráv pro zpracování pracovního postupu a pro komunikaci mezi součástmi cloudových služeb.
+BLOB storage ukládá všechny datové sady. Objekt blob může být jakýkoli druh textu nebo binárních dat, jako je dokument, soubor médií nebo instalátor aplikace. Table storage ukládá strukturované datové sady. Table Storage je datové úložiště na bázi NoSQL typu klíč-atribut, které umožňuje rychlý vývoj a přístup k velkým objemům dat. Queue storage poskytuje spolehlivé zasílání zpráv pro zpracování úloh a komunikaci mezi komponentami cloudových služeb.
 
-Každý objekt blob se organizuje v kontejneru. Kontejnery také nabízejí praktický způsob přiřazení zásad zabezpečení skupinám objektů. Účet úložiště může obsahovat libovolný počet kontejnerů a kontejner může obsahovat libovolný počet objektů BLOB až do limitu 500 TB kapacity účtu úložiště. Úložiště Blob nabízí tři typy objektů blob – objekty blob bloku, doplňovací objekty blob a objekty blob stránky (disky). Objekty blob bloku jsou optimalizované pro streamování a ukládání cloudových objektů a jsou dobrou volbou pro ukládání dokumentů, souborů médií, záloh atd. Doplňovací objekty blob jsou podobné objektům blob bloku, ale jsou optimalizované pro doplňovací operace. Doplňovací objekt blob se může aktualizovat jen přidáním nového bloku na konec. Doplňovací objekty blob jsou dobrou volbou pro takové scénáře, jako je například protokolování, kde se nová data potřebují zapisovat jen na konec objektu blob. Objekty BLOB stránky jsou optimalizované pro zastoupení disků IaaS a podporují náhodné zapíše a může být až 1 TB. Disk IaaS připojení přes síť k virtuálnímu počítači Azure je virtuální pevný disk uložený jako objekt blob.
+Každý objekt blob se organizuje podle kontejneru. Kontejnery také nabízejí praktický způsob přiřazení zásad zabezpečení skupinám objektů. Účet úložiště může obsahovat libovolný počet kontejnerů a kontejner může obsahovat libovolný počet objektů BLOB až do 500 TB kapacity účtu úložiště. Úložiště Blob nabízí tři typy objektů blob – objekty blob bloku, doplňovací objekty blob a objekty blob stránky (disky). Objekty blob bloku jsou optimalizované pro streamování a ukládání cloudových objektů a jsou dobrou volbou pro ukládání dokumentů, souborů médií, záloh atd. Doplňovací objekty blob jsou podobné objektům blob bloku, ale jsou optimalizované pro doplňovací operace. Doplňovací objekt blob se může aktualizovat jen přidáním nového bloku na konec. Doplňovací objekty blob jsou dobrou volbou pro takové scénáře, jako je například protokolování, kde se nová data potřebují zapisovat jen na konec objektu blob. Objekty BLOB stránky jsou optimalizované pro zastoupení disků IaaS a podporují náhodné zápisy a může mít až 1 TB. Disk IaaS připojení přes síť k virtuálnímu počítači Azure je virtuální pevný disk uložený jako objekt blob.
 
 #### <a name="table-storage"></a>Úložiště Table
-Úložiště Table je úložiště klíčů/atributů NoSQL společnosti Microsoft – má návrh bez schémat, takže je odlišný od tradičních relačních databází. Vzhledem k tomu, že chybí schémata úložiště dat, je snadné data přizpůsobovat potřebám vaší aplikace měnícím. Úložiště Table se snadno používá, takže vývojáři můžou aplikace vytvářet rychle. Úložiště Table je úložiště typu klíč-atribut – to znamená, že každá hodnota v tabulce je uložená se typovým názvem vlastnosti. název vlastnosti se může použít pro filtrování a upřesnění kritérií výběru. Kolekce vlastností a jejich hodnot tvoří entitu. Protože schémata nedostatečná úložiště tabulek dvě entity ve stejné tabulce můžou obsahovat různé kolekce vlastností a tyto vlastnosti můžou být různých typů. Úložiště Table Storage můžete používat k ukládání flexibilních datových sad, například uživatelských dat pro webové aplikace, adresářů, informací o zařízení a dalších typů metadat, které vaše služba vyžaduje. V tabulce můžete uložit libovolný počet entit a účet úložiště může obsahovat libovolný počet tabulek, až do limitu kapacity účtu úložiště.
+Úložiště Table je úložiště klíčů/atributů typu NoSQL od Microsoftu – návrh bez schémat, rozdíl od tradičních relačních databází. Protože schémata nedostatečné úložiště dat, je snadné data přizpůsobovat měnícím potřebám vaší aplikace. Úložiště Table se snadno používá, takže vývojáři můžou aplikace vytvářet rychle. Úložiště Table je úložiště typu klíč-atribut – to znamená, že každá hodnota v tabulce je uložená se typovým názvem vlastnosti. název vlastnosti se může použít pro filtrování a upřesnění kritérií výběru. Kolekce vlastností a jejich hodnot tvoří entitu. Od schémata nedostatečné úložiště tabulek dvě entity ve stejné tabulce můžou obsahovat různé kolekce vlastností a tyto vlastnosti můžou být různých typů. Úložiště Table Storage můžete používat k ukládání flexibilních datových sad, například uživatelských dat pro webové aplikace, adresářů, informací o zařízení a dalších typů metadat, které vaše služba vyžaduje. V tabulce můžete uložit libovolný počet entit a účet úložiště může obsahovat libovolný počet tabulek, až do limitu kapacity účtu úložiště.
 
 #### <a name="queue-storage"></a>Queue Storage
 Úložiště Azure Queue zajišťuje cloudový přenos zpráv mezi součástmi aplikace. Při navrhování aplikací pro škálování ve větším měřítku jsou jednotlivé součásti aplikací často nepropojené, aby je bylo možné škálovat nezávisle. Queue Storage zajišťuje asynchronní přenos zpráv pro komunikaci mezi součástmi aplikace bez ohledu na to, jestli běží v cloudu, na desktopu, na místním serveru nebo na mobilním zařízení. Queue Storage také podporuje správu asynchronních úloh a pracovní postupy procesů sestavování buildů.
 
 ### <a name="keyvault"></a>KeyVault
-KeyVault RP poskytuje správu a auditování tajné údaje, jako jsou hesla a certifikáty. Jako příklad klienta zajistit hesla správce nebo klíče při nasazení virtuálního počítače použít KeyVault RP.
+Trezor klíčů RP poskytuje správu a auditování tajné kódy, jako jsou hesla a certifikáty. Jako příklad tenanta můžete KeyVault RP uvést správce hesel nebo klíčů během nasazení virtuálního počítače.
 
-## <a name="high-availability-for-azure-stack"></a>Vysoká dostupnost pro Azure zásobníku
-*Platí pro: Azure 1802 zásobníku nebo vyšší verze.*
+## <a name="high-availability-for-azure-stack"></a>Vysoká dostupnost pro Azure Stack
+*Platí pro: Azure Stack 1802 nebo vyšší verze*
 
-K dosažení vysoké dostupnosti systému produkční více virtuálních počítačů v Azure, jsou virtuální počítače umístěny v nastavení dostupnosti, který se šíří je napříč více domén selhání a aktualizace domény. Tímto způsobem [virtuálních počítačích nasazených v nastavení dostupnosti](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) jsou fyzicky izolované od sebe navzájem na samostatný server stojany umožňující selhání odolnost, jak je znázorněno v následujícím diagramu:
+Abyste dosáhli vysoké dostupnosti systému produkčního prostředí více virtuálních počítačů v Azure, jsou virtuální počítače umístěné ve skupině dostupnosti, který se šíří mezi různými doménami selhání a aktualizačních doménách. Tímto způsobem [virtuální počítače nasazené ve skupinách dostupnosti](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) jsou fyzicky izolované od sebe navzájem na samostatný server stojany povolit pro odolnost proti chybám selhání, jak je znázorněno v následujícím diagramu:
 
-  ![Azure zásobníku vysokou dostupnost](media/azure-stack-key-features/high-availability.png)
+  ![Vysoká dostupnost služby Azure Stack](media/azure-stack-key-features/high-availability.png)
 
-### <a name="availability-sets-in-azure-stack"></a>Sady dostupnosti v Azure zásobníku
-Při infrastruktury Azure zásobníku již odolné vůči selhání, základní technologii (clustering převzetí služeb při selhání) stále způsobuje výpadky pro virtuální počítače na ovlivněné fyzickém serveru, pokud dojde k selhání hardwaru. Azure zásobníku podporuje, že sada dostupnosti s maximálně tři domén selhání kvůli souladu s Azure.
+### <a name="availability-sets-in-azure-stack"></a>Skupiny dostupnosti ve službě Azure Stack
+Infrastruktury služby Azure Stack je již odolné vůči selhání, základní technologie (clustering převzetí služeb při selhání) stále způsobí některé výpadek pro virtuální počítače na ovlivněné fyzickém serveru, pokud dojde k selhání hardwaru. Azure Stack podporuje s dostupnosti s délkou maximálně tři domény selhání pro zajištění konzistence s Azure.
 
-- **Poruch domény**. Virtuální počítače umístěny v nastavení dostupnosti bude fyzicky izolované od sebe navzájem jako rovnoměrně rozloží přes více domén selhání (zásobník Azure uzlů). Pokud dojde k selhání hardwaru, virtuálních počítačů z domény se nezdařilo selhání bude být restartován v jiných doménách selhání, ale, pokud je to možné, zachovány v domén selhání samostatné z jiných virtuálních počítačů ve stejné sadě dostupnosti. Když hardware přejde do režimu online, virtuálních počítačů bude možné znovu vyrovnána kvůli udržení vysoké dostupnosti. 
+- **Domény selhání**. Virtuální počítače umístěné ve skupině dostupnosti budou fyzicky izolované od sebe navzájem tím, že rozprostírá co nejrovnoměrněji rozložené přes víc domén selhání (uzly Azure Stack). Pokud dojde k selhání hardwaru, virtuálních počítačů z neúspěšných doména bude být restartování v jiných doménách selhání, ale pokud je to možné udržovat v samostatných doménách selhání z jiných virtuálních počítačů ve stejné sadě dostupnosti. Když hardware vrátí do režimu online, virtuálních počítačů bude možné znovu vyrovnána udržet vysokou dostupnost. 
  
-- **Aktualizovat domény**. Aktualizace domény jsou jiné Azure konceptu, které poskytuje vysokou dostupnost v nastavení dostupnosti. Doména aktualizace je logické skupiny základní hardware, který můžete projít údržby ve stejnou dobu. Virtuální počítače umístěné ve stejné doméně, aktualizace se restartuje společně během plánované údržby. Jako klienty, vytvořte virtuální počítače v rámci skupiny dostupnosti, platformu Azure automaticky rozděluje virtuálních počítačů na těchto aktualizaci domény. V zásobníku Azure jsou virtuální počítače za provozu proběhne migrace na jiné online hostitele v clusteru, než jejich základní hostitel je aktualizovat. Vzhledem k tomu, že neexistuje žádné výpadky klienta během hostitele aktualizace, aktualizace domény funkce v zásobníku Azure existuje pouze pro Kompatibilita šablon s Azure. 
+- **Aktualizační domény**. Aktualizační domény jsou jiné Azure pojem, který poskytuje vysokou dostupnost ve skupinách dostupnosti. Aktualizační doména je logická skupina hardwarových komponent, které můžete provést údržbu ve stejnou dobu. Virtuální počítače umístěné ve stejné aktualizační domény je bude během plánované údržby restartují společně. Tenanti vytvářet virtuální počítače v rámci skupiny dostupnosti, Platforma Azure automaticky zajistí distribuci s virtuální počítače mezi nimi aktualizačními doménami. Ve službě Azure Stack jsou virtuální počítače za provozu migrovat na jiné online hostitelích v clusteru předtím, než se aktualizuje jejich základního hostitele. Protože neexistuje žádný výpadek tenanta při aktualizaci hostitele, funkci aktualizace domény ve službě Azure Stack existuje pouze pro šablony kompatibilitu s Azure. 
 
-### <a name="upgrade-scenarios"></a>Scénářích upgradu 
-Virtuální počítače ve skupinách dostupnosti, které byly vytvořeny před zásobník Azure verze 1802 mají výchozí počet selhání a aktualizace domény (1 a 1 v uvedeném pořadí). K dosažení vysoké dostupnosti pro virtuální počítače v těchto existující skupiny dostupnosti, musíte nejprve odstranit stávající virtuální počítače a potom je znovu nasaďte do nové dostupnosti nastavit s správný počet selhání a aktualizace domény, jak je popsáno v [změn sadu dostupnosti pro virtuální počítač s Windows](https://docs.microsoft.com/azure/virtual-machines/windows/change-availability-set). 
+### <a name="upgrade-scenarios"></a>Scénáře upgradu 
+Virtuální počítače ve skupině dostupnosti, které byly vytvořeny před verzí Azure Stack 1802 jsou uvedeny výchozí počet selhání a aktualizačními doménami (1 a 1 v uvedeném pořadí). Abyste dosáhli vysoké dostupnosti pro virtuální počítače v těchto již existující skupiny dostupnosti, musíte nejprve odstranit stávající virtuální počítače a znovu nasadit do novou skupinu s správné počty selhání a aktualizační domény, jak je popsáno v dostupnosti [změnit skupinu dostupnosti pro virtuální počítač s Windows](https://docs.microsoft.com/azure/virtual-machines/windows/change-availability-set). 
 
-Pro sady škálování virtuálního počítače se interně vytvoří skupinu dostupnosti s výchozí doménu a aktualizace počet domén selhání (3 a 5 v uvedeném pořadí). Počty všechny škálovací sady virtuálních počítačů před 1802 aktualizací budou umístěny do sada dostupnosti s vytvořit výchozí selhání a aktualizace domény (1 a 1 v uvedeném pořadí). Pokud chcete aktualizovat tyto instance sady škálování virtuálního počítače k dosažení novější šíření, škálovat sady škálování virtuálního počítače podle počtu instancí, které existovaly před aktualizací 1802 a pak odstraňte starší instance škálovací sady virtuálních počítačů. 
+Pro škálovací sady virtuálních počítačů se interně vytvoří skupinu dostupnosti s výchozí domény a aktualizace počtu domén selhání (3 až 5 v uvedeném pořadí). Vrátí výchozí doména selhání a aktualizačními všechny škálovací sady virtuálních počítačů vytvořené před aktualizace 1802 budou umístěny ve skupině dostupnosti s (1 a 1 v uvedeném pořadí). K aktualizaci těchto instancí škálovací sady virtuálních počítačů k dosažení novější spread, horizontální navýšení kapacity škálovací sady virtuálních počítačů podle počtu instancí, které existovaly před aktualizace 1802 a pak odstranit starší instance škálovací sady virtuálních počítačů. 
 
-## <a name="role-based-access-control-rbac"></a>Řízení přístupu (RBAC) na základě role
-RBAC můžete udělit přístup k systému oprávněným uživatelům, skupinám a službám pomocí jejich přiřazení role v předplatné, skupinu prostředků nebo úrovni jednotlivých prostředků. Každá role určuje úroveň přístupu, které uživatele, skupiny nebo službu má prostředky Microsoft Azure zásobníku.
+## <a name="role-based-access-control-rbac"></a>Řízení přístupu (RBAC) na základě rolí
+Můžete použít RBAC pro udělení přístupu systému oprávněným uživatelům, skupinám a službám přiřazením role na předplatné, skupinu prostředků nebo úrovni jednotlivých prostředků. Každá role určuje požadovanou úroveň přístupu uživatele, skupiny nebo služby má prostředky Microsoft Azure Stack.
 
-Azure RBAC má tři základní rolí, které platí pro všechny typy prostředků: vlastník, Přispěvatel a čtečky. Vlastník má úplný přístup ke všem prostředkům, včetně právo delegovat přístup k ostatním. Přispěvatel můžete vytvořit a spravovat všechny typy prostředků Azure, ale nelze udělit přístup ostatním uživatelům. Čtečka lze zobrazit pouze existující prostředky Azure. Zbytek role RBAC v Azure povolit správu konkrétních prostředků Azure. Pro instanci role Přispěvatel virtuálních počítačů umožňuje vytváření a správu virtuálních počítačů, ale neumožňuje správu virtuální síť nebo podsíť, které se virtuální počítač připojí k.
+Má tři základní role, které se vztahují ke všem typům prostředků Azure RBAC: vlastník, Přispěvatel a čtenář. Vlastník má úplný přístup ke všem prostředkům, včetně práva na delegovat přístup ostatním uživatelům. Přispěvatel můžete vytvořit a spravovat všechny typy prostředků Azure, ale nemůže udělovat přístup ostatním uživatelům. Čtečka lze zobrazit pouze existující prostředky Azure. Ostatní role RBAC v Azure umožňují správu konkrétních prostředků Azure. Pro instanci role Přispěvatel virtuálních počítačů umožňuje vytváření a správa virtuálních počítačů, ale neumožňuje správu virtuální síť nebo podsíť, která se připojí k virtuálnímu počítači.
 
 ## <a name="usage-data"></a>Údaje o využití
-Microsoft Azure zásobníku shromažďuje a agreguje data o využití napříč všech poskytovatelů prostředků a přenáší ho do Azure pro zpracování obchodu Spojených států v Azure. Data o využití shromážděné v zásobníku Azure lze zobrazit pomocí rozhraní REST API. Není Azure konzistentní rozhraní API pro klienty a také zprostředkovatele a delegovat rozhraní API poskytovatele získat data o využití ve všech předplatných klienta. Tato data lze integrovat s externího nástroje nebo služby pro fakturace nebo vrácení peněz. Po použití bylo zpracováno obchodu Azure, lze zobrazit na portálu Azure fakturace.
+Microsoft Azure Stack shromažďuje a agreguje data o využití přes všechny poskytovatele prostředků a je odesílá do Azure pro zpracování službou Azure commerce. Využití dat shromážděných ve službě Azure Stack lze zobrazit pomocí rozhraní REST API. Je konzistentních s Azure rozhraní API pro klienty i poskytovatele a delegované poskytovatele rozhraní API k získání dat o používání napříč všemi předplatnými tenanta. Tato data je možné integrovat pomocí externího nástroje nebo služby pro účely fakturace nebo vrácení peněz. Jakmile se využití se zpracovalo Azure průmyslu, lze zobrazit ve fakturačním portálu Azure.
 
-## <a name="in-development-build-of-azure-stack-development-kit"></a>Sestavení v vývoj Azure zásobníku Development Kit
-Sestavení v vývoj umožní – inovátoři vyhodnotit nejnovější verzi Azure zásobníku Development Kit. Jsou přírůstkové sestavení podle nejnovější hlavní verzi. Zatímco hlavní verze bude dále vydané každých několik měsíců, bude občas verze sestavení v vývoj mezi hlavní verze.
+## <a name="in-development-build-of-azure-stack-development-kit"></a>Sestavení v vývoj pro Azure Stack Development Kit
+Sestavení v development umožňují – inovátoři vyhodnotit nejnovější verzi sady Azure Stack Development Kit. Jsou to přírůstková sestavení založené na nejnovější hlavní verzi. Zatímco hlavní verze budou vydané každých několik měsíců, sestavení v vývoj se přerušovaně vydání mezi hlavními verzemi.
 
-Sestavení v vývoj bude poskytovat následující výhody:
+Vývoj v sestavení bude poskytovat následující výhody:
 - Opravy chyb
 - Nové funkce
 - Další vylepšení
 
 ## <a name="next-steps"></a>Další postup
-[Vyhodnotit Azure zásobníku Development Kit](azure-stack-deploy-overview.md)
+[Základy správy](azure-stack-manage-basics.md)
 

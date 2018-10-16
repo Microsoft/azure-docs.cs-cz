@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 6193a515f0d8136e0d420b7554cf26fee8f50953
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: a80577bb226cbec080edf5e06dbd0f31c80a5890
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173097"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321423"
 ---
 # <a name="how-to-use-multi-value-entities-with-a-conversation-learner-model"></a>Jak používat více hodnotami entity s modelem Learner konverzace
 Tento kurz ukazuje vlastnost "vícehodnotový" entit.
@@ -24,7 +24,7 @@ Tento kurz ukazuje vlastnost "vícehodnotový" entit.
 
 [![Kurz 6 Preview](http://aka.ms/cl-tutorial-06-preview)](http://aka.ms/blis-tutorial-06)
 
-##<a name="requirements"></a>Požadavky
+## <a name="requirements"></a>Požadavky
 Tento kurz vyžaduje, zda je spuštěna obecné kurz bot
 
     npm run tutorial-general

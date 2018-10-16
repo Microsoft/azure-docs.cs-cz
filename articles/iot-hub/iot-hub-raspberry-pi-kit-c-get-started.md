@@ -10,12 +10,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 8962f41d971ac88134f639a61ef0b42c60bbd419
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: c8e2dcfef1db8bfe3d76ac917f8c14a4060e3968
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161488"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318754"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Připojení k Azure IoT Hub (C) Raspberry Pi
 
@@ -61,10 +61,9 @@ Následující položky jsou volitelné:
 * 6 F/milion můstek vodičům stanice.
 * Rozptýlený LED 10 mm.
 
-
 > [!NOTE] 
-Tyto položky jsou volitelné, protože podpora vzorek kódu Simulovaná data ze senzorů.
-
+> Tyto položky jsou volitelné, protože podpora vzorek kódu Simulovaná data ze senzorů.
+>
 
 [!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
 
@@ -97,7 +96,8 @@ Příprava pro instalaci bitové kopie Raspbian karty microSD.
    ![Povolit SPI a SSH v Raspberry Pi](media/iot-hub-raspberry-pi-kit-c-get-started/2_enable-spi-ssh-on-raspberry-pi.png)
 
 > [!NOTE] 
-Pokud chcete povolit SSH a SPI, najdete další referenční dokumenty na [raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) a [RASPI-CONFIG](https://www.raspberrypi.org/documentation/configuration/raspi-config.md).
+> Pokud chcete povolit SSH a SPI, najdete další referenční dokumenty na [raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) a [RASPI-CONFIG](https://www.raspberrypi.org/documentation/configuration/raspi-config.md).
+>
 
 ### <a name="connect-the-sensor-to-pi"></a>Připojit senzor PI
 
@@ -171,6 +171,7 @@ Zapněte pí pomocí USB kabelu micro a napájení. Pomocí kabelu Ethernet Pi p
 
    > [!NOTE] 
    > Pokud jste **nemají fyzické BME280**, můžete použít "--Simulovaná data' jako parametr příkazového řádku pro simulaci teploty a vlhkosti data. `sudo ./setup.sh --simulated-data`
+   >
 
 ### <a name="build-and-run-the-sample-application"></a>Sestavení a spuštění ukázkové aplikace
 
@@ -179,6 +180,7 @@ Zapněte pí pomocí USB kabelu micro a napájení. Pomocí kabelu Ethernet Pi p
    ```bash
    cmake . && make
    ```
+   
    ![Výstup sestavení](media/iot-hub-raspberry-pi-kit-c-get-started/7_build-output.png)
 
 1. Spuštění ukázkové aplikace spuštěním následujícího příkazu:
@@ -188,8 +190,8 @@ Zapněte pí pomocí USB kabelu micro a napájení. Pomocí kabelu Ethernet Pi p
    ```
 
    > [!NOTE] 
-   Ujistěte se, že je kopírování a vkládání připojovací řetězec zařízení v jednoduchých uvozovkách.
-
+   > Ujistěte se, že je kopírování a vkládání připojovací řetězec zařízení v jednoduchých uvozovkách.
+   >
 
 Měli byste vidět následující výstup, který zobrazuje data ze senzorů a zprávy, které se odesílají do služby IoT hub.
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/09/2018
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 78ae04d3c51cf8039dcdd067594afafae606f5e3
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: d9b6f5c08eed5efceafc71feaf654ad8f4fcafa0
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310551"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341119"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrie v Application Insights
 
@@ -105,17 +105,19 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="open-tracing-and-application-insights"></a>Otevřít trasování a Application Insights
 
-[Otevřít trasování](http://opentracing.io/) a vyhledá modely dat Application Insights 
+[Otevřít trasování datového modelu specifikace](http://opentracing.io/) a Application Insights datové modely mapování následujícím způsobem:
 
-- `request`, `pageView` mapuje **rozpětí** s `span.kind = server`
-- `dependency` mapuje **rozpětí** s `span.kind = client`
-- `id` nástroje `request` a `dependency` mapuje **Span.Id**
-- `operation_Id` mapuje **TraceId**
-- `operation_ParentId` mapuje **odkaz** typu `ChildOf`
+| Application Insights                  | Otevřít trasování                                      |
+|------------------------------------   |-------------------------------------------------  |
+| `Request`, `PageView`                 | `Span` s `span.kind = server`                  |
+| `Dependency`                          | `Span` s `span.kind = client`                  |
+| `Id` z `Request` a `Dependency`    | `SpanId`                                          |
+| `Operation_Id`                        | `TraceId`                                         |
+| `Operation_ParentId`                  | `Reference` typ `ChildOf` (nadřazený rozsah)   |
 
-Zobrazit [datový model](application-insights-data-model.md) pro typy a datový model Application Insights.
+Další informace o Application Insights datový model, najdete v části [datový model](application-insights-data-model.md). 
 
-Zobrazit [specifikace](https://github.com/opentracing/specification/blob/master/specification.md) a [semantic_conventions](https://github.com/opentracing/specification/blob/master/semantic_conventions.md) definice otevřít trasování koncepty.
+Zobrazit, otevřít trasování [specifikace](https://github.com/opentracing/specification/blob/master/specification.md) a [semantic_conventions](https://github.com/opentracing/specification/blob/master/semantic_conventions.md) definice otevřít trasování koncepty.
 
 
 ## <a name="telemetry-correlation-in-net"></a>Korelace telemetrie v .NET

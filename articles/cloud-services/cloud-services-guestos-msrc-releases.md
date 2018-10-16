@@ -11,22 +11,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/9/2018
+ms.date: 10/12/2018
 ms.author: raiye
-ms.openlocfilehash: f0fe3d66430c17c417de7ecd808069ba76a57ef5
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: b37600fe8d0616454264b67553149223746318d8
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069535"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49322018"
 ---
 # <a name="azure-guest-os"></a>Azure hostovaného operačního systému
 Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hostovaného operačního systému Azure v následujících tabulkách. Hledání Tento článek k určení, pokud platí konkrétní aktualizace do hostovaného operačního systému, kterou používáte. Aktualizace vždy převést do dalšího období pro konkrétní [řady] [ family-explain] byly zavedeny v.
 
 ## <a name="september-guest-os"></a>Září hostovaného operačního systému
-> [!NOTE]
-> Září hostovaného operačního systému je aktuálně nasazuje pro služby virtuálního počítače v cloudu, které jsou nakonfigurované pro automatické aktualizace. Po dokončení tohoto uvedení se tato verze bude k dispozici ruční aktualizace přes Azure portal a konfigurační soubory. Následující opravy jsou součástí hostovaného operačního systému. září. Tento seznam se může změnit.
-
 | Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 18-09 | [4457131] | Zabezpečení systému Windows 10 | 5.23 | 11. září 2018 |
@@ -740,6 +737,28 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno |[3007054] |Chráněný kódem PIN tisk možnost vždy zobrazí při tisku dokumentu v aplikaci Windows Store ve Windows |4.15, 3.22, 2.34 |13. ledna 2015 |
 | neuvedeno |[2999802] |Pevné řádky namísto tečkované čáry jsou zobrazeny ve Windows |4.15, 3.22, 2.34 |13. ledna 2015 |
 | neuvedeno |[2896881] |Dlouhý čas přihlášení při použití příkazu jazyka AddPrinterConnection VBScript mapovat tiskárny pro uživatele během procesu přihlášení ve Windows |4.15, 3.22, 2.34 |13. ledna 2015 |
+
+[4457131]: http://support.microsoft.com/kb/4457131
+[4457145]: http://support.microsoft.com/kb/4457145
+[4457140]: http://support.microsoft.com/kb/4457140
+[4457143]: http://support.microsoft.com/kb/4457143
+[4457055]: http://support.microsoft.com/kb/4457055
+[4457030]: http://support.microsoft.com/kb/4457030
+[4457053]: http://support.microsoft.com/kb/4457053
+[4457029]: http://support.microsoft.com/kb/4457029
+[4457056]: http://support.microsoft.com/kb/4457056
+[4457028]: http://support.microsoft.com/kb/4457028
+[4457146]: http://support.microsoft.com/kb/4457146
+[4457426]: http://support.microsoft.com/kb/4457426
+[4343900]: http://support.microsoft.com/kb/4343900
+[4344152]: http://support.microsoft.com/kb/4344152
+[4344149]: http://support.microsoft.com/kb/4344149
+[4343901]: http://support.microsoft.com/kb/4343901
+[4344150]: http://support.microsoft.com/kb/4344150
+[4344148]: http://support.microsoft.com/kb/4344148
+[4343898]: http://support.microsoft.com/kb/4343898
+[4344153]: http://support.microsoft.com/kb/4344153
+[4344147]: http://support.microsoft.com/kb/4344147
 
 [4457131]: http://support.microsoft.com/kb/4457131
 [4457145]: http://support.microsoft.com/kb/4457145

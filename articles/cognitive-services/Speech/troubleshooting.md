@@ -10,15 +10,16 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: 532916106f62e0236b8dd53cf7988a648355aef4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 80e39e845ab631ad5cc3ae8af9e2e42f09b521bf
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991857"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342186"
 ---
 # <a name="troubleshooting-bing-speech"></a>Řešení potíží pro zpracování řeči Bingu
+
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 ## <a name="error-http-403-forbidden"></a>Chyba `HTTP 403 Forbidden`
 

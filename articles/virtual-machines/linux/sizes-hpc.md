@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/06/2018
+ms.date: 10/12/2018
 ms.author: jonbeck
-ms.openlocfilehash: 748cb4612b2b5aed26ba8197cfad0782f2645e1e
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 70dca655d5300fcd34b4198093e136f6a971963b
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37902125"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344485"
 ---
 # <a name="high-performance-compute-virtual-machine-sizes"></a>Vysokovýkonné výpočetní velikosti virtuálních počítačů
 
@@ -56,9 +56,21 @@ Nasazení virtuálního počítače náročné na výpočetní z některou k ima
   > Pro Image založené na CentOS HPC aktualizace jádra jsou zakázány ve **yumu** konfigurační soubor. Je to proto, že ovladače RDMA Linuxu se distribuují jako balíček RPM a aktualizace ovladačů nemusí fungovat, pokud se aktualizuje jádra.
   > 
  
-### <a name="cluster-configuration"></a>Konfigurace clusteru 
-    
-Konfigurace dalších systému je potřeba ke spouštění úloh MPI na Clusterované virtuální počítače. Například v clusteru virtuálních počítačů, musíte vytvořit vztah důvěryhodnosti mezi výpočetní uzly. Typické nastavení, najdete v části [nastavení clusteru Linux RDMA pro spouštění aplikací MPI](classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
+### <a name="cluster-configuration-options"></a>Možnosti konfigurace clusteru
+
+Azure poskytuje celou řadu možností pro vytváření clusterů HPC virtuálních počítačů s Linuxem, který může komunikovat pomocí sítě RDMA, včetně: 
+
+* **Virtuální počítače** -nasadit virtuální počítače s podporou RDMA HPC ve stejné skupině dostupnosti (Pokud používáte model nasazení Azure Resource Manageru). Pokud používáte model nasazení classic, nasaďte virtuální počítače ve stejné cloudové službě. 
+
+* **Škálovací sady virtuálních počítačů** - v virtuálního počítače škálovací sady, ujistěte se, že omezíte nasazení do jediné skupiny umístění. Například v šabloně Resource Manageru, nastavte `singlePlacementGroup` vlastnost `true`. 
+
+* **Azure CycleCloud** – vytvoření clusteru prostředí HPC v [Azure CycleCloud](/azure/cyclecloud/) ke spouštění úloh MPI na uzly s Linuxem.
+
+* **Služba Azure Batch** – vytvoření [Azure Batch](/azure/batch/) výpočetní uzly fondu pro spouštění úloh MPI v Linuxu. Další informace najdete v tématu [použití podporující RDMA nebo s podporou grafického procesoru instancí ve fondech Batch](../../batch/batch-pool-compute-intensive-sizes.md). Viz také [Batch loděnice](https://github.com/Azure/batch-shipyard) projekt, pro spouštění úloh kontejneru v Batch.
+
+* **Sady Microsoft HPC Pack** - [sady HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) podporuje několik distribucí systému Linux ke spuštění na nasazených výpočetních uzlů ve virtuálních počítačích Azure podporující RDMA spravuje hlavního uzlu Windows serveru. Ukázkové nasazení, najdete v části [vytvořit prostředí HPC Pack RDMA clusteru s Linuxem v Azure](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam).
+
+V závislosti na vašem výběru nástroj pro správu clusteru může být potřeba další systém konfigurace ke spouštění úloh MPI. Například v clusteru virtuálních počítačů, možná bude nutné k navázání vztahu důvěryhodnosti mezi uzly clusteru generování klíčů SSH nebo vytvoření vztahu důvěryhodnosti passwordless SSH.
 
 ### <a name="network-topology-considerations"></a>Aspekty topologie sítě
 * Na podporou RDMA virtuálních počítačů s Linuxem v Azure je Eth1 vyhrazený pro RDMA síťový provoz. Neměňte nastavení Eth1 nebo jakékoli informace v konfiguračním souboru odkazující na tuto síť. Eth0 je vyhrazený pro pravidelné Azure síťový provoz.
@@ -66,8 +78,7 @@ Konfigurace dalších systému je potřeba ke spouštění úloh MPI na Clustero
 * Sítě RDMA v Azure si vyhrazuje 172.16.0.0/16 prostor adres. 
 
 
-## <a name="using-hpc-pack"></a>Pomocí sady HPC Pack
-[HPC Pack](https://technet.microsoft.com/library/jj899572.aspx), od Microsoftu zdarma HPC clusteru a úlohy řešení správy, je jednou z možností pro použití výpočetně náročných instancí s Linuxem. Nejnovější verze sady HPC Pack podporu několika Linuxových distribucí pro spuštění na nasazených výpočetních uzlů ve virtuálních počítačích Azure, spravuje hlavního uzlu Windows serveru. S podporou RDMA Linuxovými výpočetními uzly s technologií Intel MPI sady HPC Pack můžete naplánovat a spustit Linux MPI aplikace s přístupem k síti přístup RDMA. Zobrazit [začít pracovat s Linuxovými výpočetními uzly v clusteru HPC Pack v Azure](classic/hpcpack-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
+
 
 ## <a name="other-sizes"></a>Další velikosti
 - [Obecné účely](sizes-general.md)
@@ -78,8 +89,6 @@ Konfigurace dalších systému je potřeba ke spouštění úloh MPI na Clustero
 - [Předchozí generace](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>Další postup
-
-- Chcete-li začít nasazovat a RDMA v Linuxu pomocí velikosti náročné na výpočetní prostředky, přečtěte si téma [nastavení clusteru Linux RDMA pro spouštění aplikací MPI](classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
 
 - Další informace o tom [Azure výpočetních jednotek (ACU)](acu.md) můžete porovnat výpočetní výkon jednotlivých SKU v Azure.
 

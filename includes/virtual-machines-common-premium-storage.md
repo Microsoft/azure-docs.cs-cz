@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: 097fc837807d28e02732cf8820afac74c33e16d9
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: a05d0c623c1abdb5713c1d49b0b577298c1d6c7d
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48240042"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49347048"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Vysoce výkonné úložiště úrovně Premium a spravovaným diskům pro virtuální počítače
 
@@ -51,7 +51,7 @@ Tady jsou některé z funkcí úložiště Premium Storage:
 
 * **Disky storage úrovně Premium**
 
-    Premium Storage podporuje disky virtuálních počítačů, které můžou být připojené k virtuálním počítačům konkrétní velikost series. Premium Storage podporuje širokou škálu virtuálních počítačů Azure. Máte možnost volby osm velikostí disku GA: P4 (32 GB), P6 (64 GiB) P10 (128 GB), P15 (256 GB), P20 (512 GB), P30 (1 024 GB), P40 (2 048 GB), P50 (4 095 GB). Stejně jako tři velikosti disků ve verzi preview: P60 8192 GiB (8 TB) P70 16,348 GiB (16 TB), 32 767 GiB P80 (32 TB). Velikosti disků P4 P6, P60, P70 a P80 jsou aktuálně podporuje jenom pro službu Managed Disks. Velikost každého disku má svůj vlastní specifikace výkonu. V závislosti na požadavcích vaší aplikace můžete připojit jeden nebo víc disků k virtuálnímu počítači. Specifikace podrobněji popisujeme [škálovatelnost a výkonnostní cíle Storage úrovně Premium](#scalability-and-performance-targets).
+    Premium Storage podporuje disky virtuálních počítačů, které můžou být připojené k virtuálním počítačům konkrétní velikost series. Premium Storage podporuje širokou škálu virtuálních počítačů Azure. Máte možnost volby osm velikostí disku GA: P4 (32 GB), P6 (64 GiB) P10 (128 GB), P15 (256 GB), P20 (512 GB), P30 (1 024 GB), P40 (2 048 GB), P50 (4 095 GB). Stejně jako tři velikosti disků ve verzi preview: P60 8192 GiB (8 TB) P70 16,348 GiB (16 TB), 32 767 GiB P80 (32 TB). Velikosti disků P4 P6, P15, P60, P70 a P80 jsou aktuálně podporuje jenom pro službu Managed Disks. Velikost každého disku má svůj vlastní specifikace výkonu. V závislosti na požadavcích vaší aplikace můžete připojit jeden nebo víc disků k virtuálnímu počítači. Specifikace podrobněji popisujeme [škálovatelnost a výkonnostní cíle Storage úrovně Premium](#scalability-and-performance-targets).
 
 * **Objekty BLOB stránky úrovně Premium**
 
@@ -149,7 +149,7 @@ Další informace najdete v tématu [škálovatelnost a výkonnostní cíle Azur
 Pokud používáte účty služby premium storage pro nespravované disky a vaše aplikace překračuje cíle škálovatelnosti z jednoho účtu úložiště, může být vhodné k migraci na spravované disky. Pokud už nechcete migrovat do managed disks, sestavení aplikace pro použití více účtů úložiště. Potom data rozdělte mezi tyto účty úložiště. Například pokud chcete připojení disků 51 TB napříč několika virtuálními počítači, rozloženy je dva účty úložiště. 35 TB je limit pro účet úložiště jedné úrovně premium. Ujistěte se, že účet úložiště úrovně premium jeden nikdy zajišťované disky větší než 35 TB.
 
 ### <a name="premium-storage-disk-limits"></a>Limity disk Storage úrovně Premium
-Když si zřídíte disk úložiště úrovně premium, velikost disku určuje maximální IOPS a propustnost (šířka pásma). Azure nabízí osm typů disky storage úrovně premium: P4 (spravované jen disky), P6 (spravované jen disky), P10, P15, P20, P30, P40 nebo P50. Každý typ disku služby premium storage má omezení IOPS a propustnost. Limity pro typy disků jsou popsány v následující tabulce:
+Když si zřídíte disk úložiště úrovně premium, velikost disku určuje maximální IOPS a propustnost (šířka pásma). Azure nabízí osm typů GA disky storage úrovně premium: P4 (spravované jen disky), P6 (spravované jen disky), P10, P15 (spravované jen disky), P20, P30, P40 nebo P50. Stejně jako tři velikosti disků ve verzi preview: P60 P70 a P80. Každý typ disku služby premium storage má omezení IOPS a propustnost. Limity pro typy disků jsou popsány v následující tabulce:
 
 | Disků typu Premium | P4 | P6 | P10 | P15 | P20 | P30 | P40 | P50 | P60 | P70 | P80 | |---|---|---|---|---|---|---|---|---|| -------|| -------|| -------| | Velikost disku | 32 giB | 64 giB | 128 GB | 256 GB | 512 GB | 1024 giB (1 TB) | 2048 giB (2 TB) | 4095 giB (4 TB) | 8192 giB (8 TB) | 16384 giB (16 TB) | 32 767 giB (32 TiB) || IOPS na disk | 120 | 240 | 500 | 1100 | 2300 | 5000 | 7500 | 7500 | 12 500 | 15 000 | 20 000 || Propustnost na disk | 25 MB za sekundu | 50 MB za sekundu | 100 MB za sekundu | 125 MB za sekundu | 150 MB za sekundu | 200 MB za sekundu | 250 MB za sekundu | 250 MB za sekundu | 480 MB za sekundu | 750 MB za sekundu | 750 MB za sekundu |
 

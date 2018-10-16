@@ -10,16 +10,17 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: 75166fcf42943e6c411acb2092272982e2dd1033
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 778a9e1e2767d5bae8d661dcd70a42d0d7d0caae
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963136"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339394"
 ---
 # <a name="bing-speech-client-samples"></a>Ukázky klienta pro zpracování řeči Bingu
 
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
+ 
 Pro zpracování řeči Bingu poskytuje začátku do konce ukázky ukazují různé případy použití, například rozpoznávání příkaz, průběžné rozpoznávání a rozpoznávání záměru. Všechny ukázky jsou k dispozici na Githubu a můžete si je stáhnout na následujících odkazech: The README.md v každém úložišti také [klientské knihovny](GetStarted/GetStartedClientLibraries.md) stránky obsahují podrobné informace o tom, jak sestavit a spustit ukázky.
 
 - [Ukázky rozhraní REST API](https://github.com/Azure-Samples/SpeechToText-REST)
@@ -34,4 +35,4 @@ Pro zpracování řeči Bingu poskytuje začátku do konce ukázky ukazují růz
 
 - [ObjectiveC na ukázky pro iOS](https://github.com/Azure-Samples/Cognitive-Speech-STT-iOS)
 
-Všechny sady Microsoft Cognitive Services SDK a ukázky jsou licencované s licencí MIT. Další informace najdete v tématu [licence](https://github.com/Azure-Samples/SpeechToText-REST/blob/master/LICENSE).
+Všechny sady SDK služeb Microsoft Cognitive Services a ukázky jsou licencovány licencí MIT. Další informace najdete v tématu [licence](https://github.com/Azure-Samples/SpeechToText-REST/blob/master/LICENSE).

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 43d2ba496be90e9e87185e6365dd998adccfa09d
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 3d9d6aef4fafd6013c86fd5d5883222c0f32b34d
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804527"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319366"
 ---
 # <a name="what-is-password-writeback"></a>Co je zpětný zápis hesla?
 
@@ -43,6 +43,7 @@ Zpětný zápis hesla nabízí:
 
 > [!Note]
 > Uživatelské účty, které existují v rámci chráněné skupiny v místní službě Active Directory nelze použít se zpětným zápisem hesla. Další informace o chráněné skupiny, najdete v části [chráněné účty a skupiny ve službě Active Directory](https://technet.microsoft.com/library/dn535499.aspx).
+>
 
 ## <a name="licensing-requirements-for-password-writeback"></a>Licenční požadavky pro zpětný zápis hesla
 
@@ -69,28 +70,30 @@ Při synchronizaci hodnoty hash hesla nebo federované pokusy uživatelů o rese
 1. Kontrola se provádí zjistíte, jaký druh hesel má uživatel. Pokud je heslo spravovaná místně:
    * Kontrola se provádí jestli službu zpětného zápisu je zprovozněný. Pokud se jedná, můžete přejít uživatele.
    * Pokud službu zpětného zápisu je vypnutý, uživatel informován, že nyní nelze resetovat své heslo.
-2. V dalším kroku uživatel prochází příslušný ověřovací brány a dosáhne **resetovat heslo** stránky.
-3. Uživatel vybere nové heslo a potvrdí ji.
-4. Když uživatel vybere **odeslat**, heslo ve formátu prostého textu je zašifrovaný pomocí symetrický klíč vytvořený během procesu instalace zpětného zápisu.
-5. Zašifrované heslo je součástí datové části, který bude posílat přes kanál protokolu HTTPS na vaší specifickým pro tenanta služby Service bus relay (který je nastaven pro vás během procesu instalace zpětný zápis). Toto propojení je chráněn náhodně generované heslo, které zná pouze místní instalace.
-6. Po dosáhne zprávy služby Service bus, koncový bod obnovení hesla automaticky probudí a vidí, že má žádost o resetování čekající.
-7. Služba uživatel pak hledá atributem ukotvení cloudu. Pro toto vyhledávání k úspěšnému:
+1. V dalším kroku uživatel prochází příslušný ověřovací brány a dosáhne **resetovat heslo** stránky.
+1. Uživatel vybere nové heslo a potvrdí ji.
+1. Když uživatel vybere **odeslat**, heslo ve formátu prostého textu je zašifrovaný pomocí symetrický klíč vytvořený během procesu instalace zpětného zápisu.
+1. Zašifrované heslo je součástí datové části, který bude posílat přes kanál protokolu HTTPS na vaší specifickým pro tenanta služby Service bus relay (který je nastaven pro vás během procesu instalace zpětný zápis). Toto propojení je chráněn náhodně generované heslo, které zná pouze místní instalace.
+1. Po dosáhne zprávy služby Service bus, koncový bod obnovení hesla automaticky probudí a vidí, že má žádost o resetování čekající.
+1. Služba uživatel pak hledá atributem ukotvení cloudu. Pro toto vyhledávání k úspěšnému:
 
    * Objekt uživatele musí existovat v prostoru konektoru Active Directory.
    * Objekt uživatele musí být spojen do odpovídajícího objektu úložiště metaverse (MV).
    * Objekt uživatele je potřeba propojit odpovídající objekt konektoru služby Azure Active Directory.
-   * Propojení MV objekt konektoru služby Active Directory musí mít synchronizačního pravidla `Microsoft.InfromADUserAccountEnabled.xxx` na odkaz. <br> <br>
+   * Propojení MV objekt konektoru služby Active Directory musí mít synchronizačního pravidla `Microsoft.InfromADUserAccountEnabled.xxx` na odkaz.
+   
    Při volání pocházejí z cloudu, synchronizační modul používá **cloudAnchor** atribut k vyhledání objekt prostoru konektoru služby Azure Active Directory. Potom následuje odkaz zpět do objektu MV a pak následuje odkaz zpět do objektu služby Active Directory. Vzhledem k tomu může existovat více objektů služby Active Directory (s více doménovými strukturami) pro stejného uživatele, synchronizační modul se může spolehnout `Microsoft.InfromADUserAccountEnabled.xxx` odkaz vybrat tu správnou.
 
    > [!Note]
    > V důsledku této logiky pro heslo zpětného zápisu pro práci s Azure AD Connect musí být schopný komunikovat s emulátoru primárního řadiče domény (PDC). Pokud je potřeba povolit ručně, můžete připojit služby Azure AD Connect k emulátoru primárního řadiče domény. Klikněte pravým tlačítkem myši **vlastnosti** konektoru synchronizace služby Active Directory a potom vyberte **Konfigurovat oddíly adresáře**. Z něj, vyhledejte **nastavení připojení řadiče domény** a vyberte políčko s názvem **použít pouze upřednostňované řadiče domény**. I v případě, že upřednostňovaného řadiče domény není emulátor primárního řadiče domény, Azure AD Connect se pokusí připojit k primární řadič domény pro zpětný zápis hesla.
 
-8. Poté, co uživatel účet nachází, je proveden pokus o resetování hesla přímo v příslušné doménové struktuře služby Active Directory.
-9. Pokud je operace nastavení hesla úspěšné, uživatel je řekli, že se že změnilo heslo.
+1. Poté, co uživatel účet nachází, je proveden pokus o resetování hesla přímo v příslušné doménové struktuře služby Active Directory.
+1. Pokud je operace nastavení hesla úspěšné, uživatel je řekli, že se že změnilo heslo.
    > [!NOTE]
    > Pokud hodnoty hash hesla uživatele synchronizována do služby Azure AD prostřednictvím synchronizace hodnot hash hesel, může se stát, že v místních zásadách hesel je nižší než zásady hesel cloudu. V takovém případě se vynucuje místní zásady. Tato zásada zajistí, že vaše místní je tato zásada vynucená v cloudu, bez ohledu na to používáte synchronizaci hodnot hash hesel nebo federace k poskytování jednotného přihlašování.
+   >
 
-10. Pokud se operace nezdaří nastavit heslo, chybu zobrazí výzvu k akci opakujte. Operace může selhat, protože:
+1. Pokud se operace nezdaří nastavit heslo, chybu zobrazí výzvu k akci opakujte. Operace může selhat, protože:
    * Služba se dolů.
    * Heslo, které vybrali nesplňuje zásad vaší organizace.
    * Nepovedlo se najít uživatele v místní službě Active Directory.
@@ -107,10 +110,10 @@ Zpětný zápis hesla je vysoce zabezpečená služba. K zajištění, že vaše
    * Po vytvoření propojovací service bus se vytvoří silné symetrický klíč, který se používá k šifrování hesla, protože jde o přenosu. Tento klíč se nachází pouze ve vaší společnosti úložiště tajných kódů v cloudu, což je silně uzamčen a auditovat, stejně jako jakékoli jiné heslo v adresáři.
 * **Oborový standard zabezpečení TLS (Transport Layer)**
    1. Když heslo resetovat nebo změnit operace probíhá, v cloudu, heslo jako prostý text je zašifrovaná pomocí veřejného klíče.
-   2. Zašifrované heslo je umístěn do zprávy protokolu HTTPS, který je odeslán přes zašifrovaný kanál pomocí certifikátů SSL společnosti Microsoft do vaší služby Service bus relay.
-   3. Po ve službě Service bus přijde zpráva, místního agenta probudí a provede ověření ke službě service bus pomocí silné heslo, které se dříve vygeneroval.
-   4. Místní agent vybere zašifrovanou zprávu a dešifruje ji pomocí soukromého klíče.
-   5. Místního agenta, pokusí se nastavit heslo prostřednictvím rozhraní API SetPassword služby AD DS. Tento krok je co umožňuje vynucení zásady hesel místní služby Active Directory (například složitost, stáří, historie a filtry) v cloudu.
+   1. Zašifrované heslo je umístěn do zprávy protokolu HTTPS, který je odeslán přes zašifrovaný kanál pomocí certifikátů SSL společnosti Microsoft do vaší služby Service bus relay.
+   1. Po ve službě Service bus přijde zpráva, místního agenta probudí a provede ověření ke službě service bus pomocí silné heslo, které se dříve vygeneroval.
+   1. Místní agent vybere zašifrovanou zprávu a dešifruje ji pomocí soukromého klíče.
+   1. Místního agenta, pokusí se nastavit heslo prostřednictvím rozhraní API SetPassword služby AD DS. Tento krok je co umožňuje vynucení zásady hesel místní služby Active Directory (například složitost, stáří, historie a filtry) v cloudu.
 * **Zásady vypršení platnosti zpráv**
    * Pokud zpráva umístěná ve službě Service bus, protože místní služba je mimo provoz, vyprší časový limit a po několika minutách se odebere. Časový limit a odebrání zprávy zvyšuje úroveň zabezpečení ještě více.
 

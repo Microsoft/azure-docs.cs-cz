@@ -1,6 +1,6 @@
 ---
-title: Správa Azure vyhrazené IP adresy (klasické) – prostředí PowerShell | Microsoft Docs
-description: Pochopit vyhrazené IP adresy (klasické) a jak spravovat pomocí prostředí PowerShell.
+title: Správa Azure rezervované IP adresy (klasické) | Dokumentace Microsoftu
+description: Vysvětlení rezervované IP adresy (klasické) a jak je spravovat pomocí Azure Powershellu a rozhraní příkazového řádku Azure.
 services: virtual-network
 documentationcenter: na
 author: genlin
@@ -12,60 +12,56 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/10/2016
+ms.date: 10/12/2018
 ms.author: genli
-ms.openlocfilehash: 25fe3c5361ff58f8d62d5d083b7a69f517d2a267
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: df48e0dbf5a6c010f659e1019e56b7670c264234
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31798950"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319689"
 ---
-# <a name="reserved-ip-addresses-classic"></a>Vyhrazené IP adresy (klasické)
+# <a name="reserved-ip-addresses-classic-deployment"></a>Rezervované IP adresy (klasické nasazení)
 
-> [!div class="op_single_selector"]
-> * [Azure Portal](virtual-network-deploy-static-pip-arm-portal.md)
-> * [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
-> * [Azure CLI](virtual-network-deploy-static-pip-arm-cli.md)
-> * [PowerShell (Classic)](virtual-networks-reserved-public-ip.md)
+ IP adresy v Azure spadají do dvou kategorií: dynamické a rezervované. Veřejné IP adresy, které spravuje Azure jsou ve výchozím nastavení dynamické. To znamená, že IP adresa použitá pro dané cloudové služby (VIP) nebo pro přístup k virtuálnímu počítači nebo přímo role instance (ILPIP) můžete změnit čas od času, když jsou prostředky vypnout nebo zastaveno (přidělení zrušeno).
 
-IP adresy v Azure lze rozdělit do dvou kategorií: dynamické a vyhrazené. Veřejné IP adresy, které spravuje Azure je dynamická ve výchozím nastavení. To znamená, že IP adresa použít pro dané cloudové služby (VIP) nebo pro přístup k virtuálnímu počítači nebo přímo instance role (splnění) můžete změnit čas od času, když jsou prostředky vypnout nebo zastavena (deallocated).
-
-Abyste zabránili změna IP adresy, je možné rezervovat IP adresu. Vyhrazené IP adresy lze použít pouze jako virtuální IP adresu, zajistíte, že je IP adresa pro cloudové služby zůstane stejný, to i v případě prostředky jsou vypnout nebo zastavená (deallocated). Kromě toho můžete převést existující dynamické IP adresy, které jsou použity jako virtuální IP adresu pro rezervovanou IP adresu.
+Chcete-li zabránit ve změně IP adresy, si můžete rezervovat IP adresu. Rezervované IP adresy lze použít pouze jako virtuální IP adresy, zajištění, že IP adresa pro cloudovou službu zůstává stejné, i když jsou prostředky vypnutý nebo zastaveno (přidělení zrušeno). Kromě toho můžete převést stávající dynamické IP adresy použít jako virtuální IP adresu pro rezervovanou IP adresu.
 
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Zjistěte, jak můžete vyhradit statické veřejné IP adresy pomocí [modelu nasazení Resource Manager](virtual-network-ip-addresses-overview-arm.md).
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Zjistěte, jak rezervovat statické veřejné IP adresy using [modelu nasazení Resource Manager](virtual-network-ip-addresses-overview-arm.md).
 
-Další informace o IP adresách v Azure, najdete [IP adresy](virtual-network-ip-addresses-overview-classic.md) článku.
+Další informace o IP adresách v Azure najdete v článku [IP adresy](virtual-network-ip-addresses-overview-classic.md) článku.
 
-## <a name="when-do-i-need-a-reserved-ip"></a>Co je potřeba vyhrazená IP adresa?
-* **Chcete zajistit, že IP adresa je vyhrazena ve vašem předplatném**. Pokud chcete rezervovat IP adresu, která se neuvolní ze svého předplatného za žádných okolností, používejte vyhrazené veřejné IP adresy.  
-* **Chcete, aby vaše IP adresa zůstat u cloudové služby i napříč zastavena nebo navrácena stavu (VM)**. Pokud chcete, aby služby, ke kterým přistupují pomocí IP adresy, nemění, i když virtuální počítače v rámci cloudové služby jsou vypnut, nebo zastavte (deallocated).
-* **Chcete zajistit, aby používal odchozí provoz z Azure předvídatelný IP adresu**. Můžete mít místní brány firewall nakonfigurovat tak, aby pouze provoz z konkrétní IP adresy. Vyhrazením IP adresy, které znáte zdrojovou IP adresu a není nutné aktualizovat vašich pravidlech brány firewall kvůli změně IP.
+## <a name="when-do-i-need-a-reserved-ip"></a>Kdy je potřeba vyhrazená IP adresa?
+* **Chcete mít jistotu, že IP adresa je vyhrazena ve vašem předplatném**. Pokud chcete rezervovat IP adresu, která se neuvolní ze svého předplatného za žádných okolností, měli byste použít vyhrazené veřejné IP adresy.  
+* **Chcete, aby vaše IP adresa se cloudové služby i napříč zastavena nebo uvolnit stavu (VM)**. Pokud má vaše služba přístup s použitím IP adresy, který nemění, i když virtuální počítače v cloudové službě se vypnout nebo zastaveno (přidělení zrušeno).
+* **Chcete zajistit, aby používal odchozího provozu z Azure předvídatelné IP adresu**. Možná bude vaše místní bráně firewall nakonfigurované tak, aby provoz jenom z konkrétních IP adres. Rezervací integrační balíček, znát IP adresu zdroje a není potřeba aktualizovat pravidla brány firewall kvůli o změnu IP.
 
-## <a name="faq"></a>Nejčastější dotazy
-1. Můžete použít vyhrazenou IP adresu pro všechny služby Azure? <br>
-    Ne. Vyhrazené IP adresy lze použít pouze pro virtuální počítače a instance role cloudové služby vystavenou přes virtuální IP adresu.
-2. Kolik vyhrazené IP adresy, které může mít <br>
-    Podrobnosti najdete v tématu [Azure omezuje](../azure-subscription-service-limits.md#networking-limits) článku.
-3. Je pro vyhrazené IP adresy zdarma? <br>
-    V některých případech. Podrobnosti o cenách najdete v článku [vyhrazené IP adresy podrobnosti o cenách](http://go.microsoft.com/fwlink/?LinkID=398482) stránky.
-4. Jak rezervovat IP adresu? <br>
-    Můžete použít PowerShell, [REST API pro správu Azure](https://msdn.microsoft.com/library/azure/dn722420.aspx), nebo [portál Azure](https://portal.azure.com) rezervovat IP adresu v oblasti Azure. Vyhrazená IP adresa je přidružená k vašemu předplatnému.
-5. Můžete použít vyhrazenou IP adresu na základě skupiny vztahů sítě vnet? <br>
-    Ne. Vyhrazené IP adresy jsou podporovány pouze v regionální virtuální sítě. Vyhrazené IP adresy nejsou podporovány pro virtuální sítě, které jsou přidruženy skupiny vztahů. Další informace o přiřazení virtuální síť s oblast nebo skupinu vztahů, najdete v článku [o virtuální místní sítě a skupiny vztahů](virtual-networks-migrate-to-regional-vnet.md) článku.
+## <a name="faqs"></a>Nejčastější dotazy
+- Můžete použít vyhrazenou IP adresu pro všechny služby Azure?
+    Ne. Rezervované IP adresy jde použít jenom pro virtuální počítače a instance rolí cloudové služby prostřednictvím virtuální IP adresu.
+- Počet vyhrazených IP adres může mít?
+    Podrobnosti najdete v tématu [omezeních Azure](../azure-subscription-service-limits.md#networking-limits) článku.
+- Platí se za pro rezervované IP adresy?
+    V některých případech. Podrobnosti o cenách najdete v článku [rezervované IP adresy – podrobnosti o cenách](http://go.microsoft.com/fwlink/?LinkID=398482) stránky.
+- Jak můžu rezervovat IP adresu?
+    Můžete použít PowerShell, [REST API pro správu Azure](https://msdn.microsoft.com/library/azure/dn722420.aspx), nebo [webu Azure portal](https://portal.azure.com) rezervovat IP adresu v oblasti Azure. Vyhrazená IP adresa je přidružená k vašemu předplatnému.
+- Můžete použít vyhrazenou IP adresu pomocí virtuální sítě založené na skupinu vztahů?
+    Ne. Rezervované IP adresy se podporují jenom v regionální virtuální sítě. Rezervované IP adresy nejsou podporovány pro virtuální sítě, které jsou přidružené skupiny vztahů. Další informace o přidružování oblast nebo skupina vztahů virtuální sítě, najdete v článku [o regionální virtuální sítě a skupin vztahů](virtual-networks-migrate-to-regional-vnet.md) článku.
 
 ## <a name="manage-reserved-vips"></a>Spravovat vyhrazené virtuální IP adresy
 
-Ujistěte se, je nainstalován a nakonfigurován prostředí PowerShell pomocí kroků v [instalace a konfigurace prostředí PowerShell](/powershell/azure/overview) článku. 
+### <a name="using-azure-powershell-classic"></a>Pomocí prostředí Azure PowerShell (classic)
 
-Před použitím vyhrazené IP adresy, je třeba přidat ji do vašeho předplatného. Chcete-li vytvořit vyhrazenou IP adresu z fondu veřejných IP adres k dispozici v *střed USA* umístění, spusťte následující příkaz:
+Před použitím vyhrazené IP adresy, je nutné přidat do vašeho předplatného. Vytvořit vyhrazenou IP adresu z fondu veřejných IP adres k dispozici v *USA (střed)* umístění následujícím způsobem:
 
-```powershell
-New-AzureReservedIP –ReservedIPName MyReservedIP –Location "Central US"
-```
+> [!NOTE]
+> Pro model nasazení classic musíte nainstalovat verzi správy služeb prostředí Azure PowerShell. Další informace najdete v tématu popisujícím [instalaci modulu správy služeb Azure PowerShellu](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0). 
 
-Všimněte si, ale není možné zadat co IP je vyhrazena. Pokud chcete zobrazit, jaké IP adres rezervovaných v rámci vašeho předplatného, spusťte následující příkaz prostředí PowerShell a Všimněte si hodnot pro *ReservedIPName* a *adresu*:
+  ```powershell
+    New-AzureReservedIP –ReservedIPName MyReservedIP –Location "Central US"
+  ```
+Všimněte si však, že nelze zadat, co se ještě IP vyhrazena. Chcete-li zobrazit, jaké IP adresy jsou vyhrazené ve vašem předplatném, spusťte následující příkaz prostředí PowerShell a Všimněte si hodnot pro *ReservedIPName* a *adresu*:
 
 ```powershell
 Get-AzureReservedIP
@@ -87,24 +83,74 @@ Očekávaný výstup:
     OperationStatus      : Succeeded
 
 >[!NOTE]
->Když vytvoříte pomocí prostředí PowerShell vyhrazenou IP adresu, nemůžete zadat skupinu prostředků vytvořit vyhrazenou IP adresu v. Azure místech do skupiny prostředků s názvem *výchozí sítě* automaticky. Pokud vytvoříte vyhrazené IP pomocí [portál Azure](http://portal.azure.com), můžete zadat všechny skupiny prostředků, které zvolíte. Pokud vytvoříte vyhrazenou IP adresu ve skupině prostředků než *výchozí sítě* však vždy, když odkazujete vyhrazenou IP adresu s příkazy, jako `Get-AzureReservedIP` a `Remove-AzureReservedIP`, musí odkazovat na název *vyhrazený název skupiny prostředků ip název skupiny*.  Například pokud vytvoříte vyhrazená IP adresa s názvem *myReservedIP* ve skupině prostředků s názvem *myResourceGroup*, musí odkazovat na název vyhrazenou IP adresu jako *skupiny myResourceGroup myReservedIP*.   
+>Když vytvoříte vyhrazené IP adresy pomocí prostředí PowerShell, nelze zadat skupinu prostředků vytvořit vyhrazenou IP adresu v. Azure umístí do skupiny prostředků s názvem *výchozí sítě* automaticky. Pokud vytvoříte rezervované IP používat [webu Azure portal](http://portal.azure.com), můžete zadat všechny skupiny prostředků, které zvolíte. Pokud vytvoříte vyhrazenou IP adresu ve skupině prostředků než *výchozí sítě* však vždy, když odkazujete vyhrazenou IP adresu s příkazy, jako `Get-AzureReservedIP` a `Remove-AzureReservedIP`, musí odkazovat na název  *Vyhrazené resource-group-name-ip název skupiny*.  Například můžete vytvořit vyhrazenou IP adresu s názvem *myReservedIP* ve skupině prostředků s názvem *myResourceGroup*, musí odkazovat na název vyhrazené IP adresy jako *myResourceGroup skupiny myReservedIP*.   
 
-Jakmile je vyhrazené IP adresy, zůstane přidružený k vašemu předplatnému, dokud ho neodstraníte. Pokud chcete odstranit vyhrazená IP adresa, spusťte následující příkaz prostředí PowerShell:
+
+Jakmile je vyhrazené IP adresy, zůstane přidružený k vašemu předplatnému, dokud je neodstraníte. Odstraňte vyhrazenou IP adresu následujícím způsobem:
 
 ```powershell
 Remove-AzureReservedIP -ReservedIPName "MyReservedIP"
 ```
 
-## <a name="reserve-the-ip-address-of-an-existing-cloud-service"></a>Rezervovat IP adresu existující cloudové služby
-Je možné rezervovat IP adresu existující cloudové služby tak, že přidáte `-ServiceName` parametr. Rezervovat IP adresu cloudové služby *TestService* v *střed USA* umístění, spusťte následující příkaz prostředí PowerShell:
+### <a name="using-azure-cli-classic"></a>Pomocí rozhraní příkazového řádku Azure (classic)
+Vytvořit vyhrazenou IP adresu z fondu veřejných IP adres k dispozici v *USA (střed)* umístění jako Azure pomocí rozhraní příkazového řádku classic řídí:
 
-```powershell
-New-AzureReservedIP –ReservedIPName MyReservedIP –Location "Central US" -ServiceName TestService
+> [!NOTE]
+> Pro nasazení classic je nutné použít Azure classic CLI. Informace o instalaci Azure classic CLI najdete v tématu [instalace Azure classic CLI](https://docs.microsoft.com/cli/azure/install-classic-cli?view=azure-cli-latest)
+  
+ Příkaz:
+ 
+```azurecli
+azure network reserved-ip create <name> <location>
 ```
+Příklad:
+ ```azurecli
+ azure network reserved-ip create MyReservedIP centralus
+ ```
 
-## <a name="associate-a-reserved-ip-to-a-new-cloud-service"></a>Přidružení vyhrazené IP adresy na novou cloudovou službu
-Následující skript vytvoří nové vyhrazená IP adresa a přidruží ji k novou cloudovou službu s názvem *TestService*.
+Můžete zobrazit, jaké IP adresy jsou vyhrazené ve vašem předplatném pomocí rozhraní příkazového řádku Azure následujícím způsobem: 
 
+Příkaz:
+```azurecli
+azure network reserved-ip list
+```
+Jakmile je vyhrazené IP adresy, zůstane přidružený k vašemu předplatnému, dokud je neodstraníte. Odstraňte vyhrazenou IP adresu následujícím způsobem:
+
+Příkaz:
+
+ ```azurecli
+ azure network reserved-ip delete <name>
+ ```
+  Příklad:  
+ ```azurecli
+ azure network reserved-ip delete MyReservedIP
+ ```
+## <a name="reserve-the-ip-address-of-an-existing-cloud-service"></a>Vyhrazení IP adresy existující cloudové služby
+Můžete vyhrazení IP adresy existující cloudové služby tak, že přidáte `-ServiceName` parametru. Vyhrazení IP adresy cloudové služby *TestService* v *USA (střed)* umístění následujícím způsobem:
+
+- Pomocí prostředí Azure PowerShell (classic):
+
+  ```powershell
+  New-AzureReservedIP –ReservedIPName MyReservedIP –Location "Central US" -ServiceName TestService
+  ```
+
+- Pomocí rozhraní příkazového řádku Azure (classic):
+  
+    Příkaz:
+
+    ```azurecli
+     azure network reserved-ip create <name> <location> -r <service-name> -d <deployment-name>
+    ```
+    Příklad:
+
+    ```azurecli
+      azure network reserved-ip create MyReservedIP centralus -r TestService -d asmtest8942
+    ```
+
+## <a name="associate-a-reserved-ip-to-a-new-cloud-service"></a>Přidružení vyhrazené IP adresy k nové cloudové služby
+Následující skript vytvoří nové vyhrazené IP adresy a přidruží ji k nové cloudové službě s názvem *TestService*.
+
+### <a name="using-azure-powershell-classic"></a>Pomocí prostředí Azure PowerShell (classic)
 ```powershell
 New-AzureReservedIP –ReservedIPName MyReservedIP –Location "Central US"
 
@@ -114,24 +160,54 @@ New-AzureVMConfig -Name TestVM -InstanceSize Small -ImageName $image.ImageName `
 | Add-AzureProvisioningConfig -Windows -AdminUsername adminuser -Password MyP@ssw0rd!! `
 | New-AzureVM -ServiceName TestService -ReservedIPName MyReservedIP -Location "Central US"
 ```
-
 > [!NOTE]
-> Když vytvoříte vyhrazená IP adresa pro použití s cloudovou službu, je stále odkazovat na virtuální počítač pomocí *VIP:&lt;číslo portu >* pro příchozí komunikaci. Rezervace IP neznamená, že přímo připojit k virtuálnímu počítači. Vyhrazená IP adresa je přiřazený k cloudovou službu, která byla nasazena do virtuálního počítače. Pokud se chcete připojit k virtuálnímu počítači pomocí IP přímo, budete muset nakonfigurovat úrovni instance veřejnou IP adresu. Veřejná IP adresa úrovni instance je typ veřejné IP (nazývané splnění), který je přiřazen přímo k virtuálnímu počítači. Nelze rezervovat. Další informace najdete v tématu [úrovni Instance veřejné IP splnění](virtual-networks-instance-level-public-ip.md) článku.
+> Při vytváření vyhrazená IP adresa pro použití s cloudovou službu, můžete stále odkazují k virtuálnímu počítači pomocí *virtuálních IP adres:&lt;číslo portu >* pro příchozí komunikaci. Vyhrazení IP neznamená, že se že přímo připojit k virtuálnímu počítači. Rezervovaná IP adresa se přiřadí ke cloudové službě, která byla nasazena do virtuálního počítače. Pokud chcete připojit přímo k virtuálnímu počítači pomocí protokolu IP, budete muset nakonfigurovat veřejnou IP adresu na úrovni instance. Veřejná IP adresa na úrovni instance je typu veřejné IP adresy (označované jako ILPIP), který je přiřazen přímo k virtuálnímu počítači. Nelze rezervovat. Další informace najdete v článku [veřejné IP na úrovni Instance (ILPIP)](virtual-networks-instance-level-public-ip.md) článku.
 > 
 
-## <a name="remove-a-reserved-ip-from-a-running-deployment"></a>Odebrání spuštěného nasazení vyhrazená IP adresa
-Chcete-li odebrat vyhrazenou IP adresu přidat do novou cloudovou službu, spusťte následující příkaz prostředí PowerShell:
+## <a name="remove-a-reserved-ip-from-a-running-deployment"></a>Odstranit vyhrazenou IP adresu v běžícím nasazení
+
+Odstraňte vyhrazenou IP adresu přidat do nové cloudové službě následujícím způsobem: 
+### <a name="using-azure-powershell-classic"></a>Pomocí prostředí Azure PowerShell (classic)
 
 ```powershell
 Remove-AzureReservedIPAssociation -ReservedIPName MyReservedIP -ServiceName TestService
 ```
 
+### <a name="using-azure-cli-classic"></a>Pomocí rozhraní příkazového řádku Azure (classic)
+Příkaz:
+
+```azurecli
+azure network reserved-ip disassociate <name> <service-name> <deployment-name>
+```
+
+Příklad:
+
+```azurecli
+azure network reserved-ip disassociate MyReservedIP TestService asmtest8942
+```
+
 > [!NOTE]
-> Odebrání vyhrazenou IP adresu z spuštěného nasazení neodebere rezervace ze svého předplatného. Uvolní jednoduše IP, který bude používán jiným prostředkem v rámci vašeho předplatného.
+> Odebrání vyhrazená IP adresa v běžícím nasazení neodebere rezervace z vašeho předplatného. Jednoduše uvolnění IP má být použit jiným prostředkem ve vašem předplatném.
 > 
 
-## <a name="associate-a-reserved-ip-to-a-running-deployment"></a>Přidružení vyhrazené IP adresy na spuštěného nasazení
-Následující příkazy vytvoření cloudové služby s názvem *TestService2* s nový virtuální počítač s názvem *TestVM2*. Existující vyhrazené IP adresy s názvem *MyReservedIP* je pak přidružený ke cloudové službě.
+Úplné odebrání vyhrazenou IP adresu z předplatného, spusťte následující příkaz:
+
+Příkaz:
+
+```azurecli
+azure network reserved-ip delete <name>
+```
+Příklad:
+
+```azurecli
+azure network reserved-ip delete MyReservedIP
+```
+
+## <a name="associate-a-reserved-ip-to-a-running-deployment"></a>Přidružení vyhrazené IP adresy na běžícím nasazení
+
+### <a name="using-azure-powershell-classic"></a>Pomocí prostředí Azure PowerShell (classic)
+
+Následující příkazy vytvoří cloudovou službu s názvem *TestService2* pomocí nového virtuálního počítače s názvem *TestVM2*. Existující vyhrazené IP s názvem *MyReservedIP* je pak přidružené ke cloudové službě.
 
 ```powershell
 $image = Get-AzureVMImage|?{$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}
@@ -143,10 +219,21 @@ New-AzureVMConfig -Name TestVM2 -InstanceSize Small -ImageName $image.ImageName 
 Set-AzureReservedIPAssociation -ReservedIPName MyReservedIP -ServiceName TestService2
 ```
 
-## <a name="associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file"></a>Pomocí konfigurační soubor služby přidružit vyhrazenou IP adresu do cloudové služby
-Vyhrazená IP adresa v cloudové službě lze přiřadit pomocí souboru konfigurace (CSCFG) služby. Následující ukázkový kód xml ukazuje, jak nakonfigurovat cloudovou službu používat vyhrazené virtuální IP adresy s názvem *MyReservedIP*:
+### <a name="using-azure-cli-classic"></a>Pomocí rozhraní příkazového řádku Azure (classic)
+Novou vyhrazenou IP adresu můžete přidružit jen k vaší spuštěné nasazení cloudové služby pomocí rozhraní příkazového řádku Azure následujícím způsobem:
 
-    <?xml version="1.0" encoding="utf-8"?>
+Příkaz:
+```azurecli
+azure network reserved-ip associate <name> <service-name> <deployment-name>
+```
+Příklad:
+```azurecli
+azure network reserved-ip associate MyReservedIP TestService asmtest8942
+```
+## <a name="associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file"></a>Přidružení vyhrazené IP adresy pro cloudové služby pomocí konfiguračního souboru služby
+Vyhrazená IP adresa cloudové služby můžete přiřadit také pomocí souboru konfigurace (CSCFG) služby. Následující ukázkový kód xml ukazuje, jak nakonfigurovat cloudovou službu používat vyhrazené virtuální IP adresy s názvem *MyReservedIP*:
+```
+   <?xml version="1.0" encoding="utf-8"?>
     <ServiceConfiguration serviceName="ReservedIPSample" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2014-01.2.3">
       <Role name="WebRole1">
         <Instances count="1" />
@@ -162,9 +249,9 @@ Vyhrazená IP adresa v cloudové službě lze přiřadit pomocí souboru konfigu
         </AddressAssignments>
       </NetworkConfiguration>
     </ServiceConfiguration>
-
+```
 ## <a name="next-steps"></a>Další postup
-* Pochopit, jak [IP adresování](virtual-network-ip-addresses-overview-classic.md) funguje v modelu nasazení classic.
-* Další informace o [vyhrazené soukromé IP adresy](virtual-networks-reserved-private-ip.md).
-* Další informace o [Instance úroveň veřejné IP splnění adresy](virtual-networks-instance-level-public-ip.md).
+* Pochopit, jak [přidělování IP adres](virtual-network-ip-addresses-overview-classic.md) funguje v modelu nasazení classic.
+* Další informace o [vyhrazené privátní IP adresy](virtual-networks-reserved-private-ip.md).
+* Další informace o [Instance úroveň veřejné IP (ILPIP) řeší](virtual-networks-instance-level-public-ip.md).
 

@@ -1,24 +1,25 @@
 ---
-title: Použít vlastní výslovnost – Custom Speech Service
-titlesuffix: Azure Cognitive Services
-description: Naučíte se vytvářet jazykový model pomocí služby Custom Speech Service.
+title: Vlastní výslovnost pomocí služby Custom Speech Service v Azure | Dokumentace Microsoftu
+description: Naučíte se vytvářet jazykový model pomocí služby Custom Speech Service ve službě Cognitive Services.
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: conceptual
+ms.topic: article
 ms.date: 11/23/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: 6442eec3e622282ecf6a3bf884110cd435fc18be
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 1e9de9755ef4baee7e2a0e6c093e2cf27cb4281f
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223470"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339810"
 ---
 # <a name="enable-custom-pronunciation"></a>Povolit vlastní výslovnost
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
+
 Vlastní výslovnost umožňuje uživatelům definovat zapsané ve fonetické formuláře a zobrazení slovo nebo termín. Je vhodný pro zpracování vlastní podmínky, jako jsou názvy produktů nebo zkratky. Vše, co potřebujete je soubor výslovnosti (soubor simple .txt).
 
 Zde je, jak to funguje. V souboru .txt jeden můžete zadat několik položek vlastní výslovnost. Struktura je následujícím způsobem:

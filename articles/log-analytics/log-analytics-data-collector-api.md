@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 297ba626d8b80d9362476ca4578e34140df5f91a
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: f0a982e8a0cb358e29375e05c1752a33b15ec255
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248649"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319706"
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Posílat data do Log Analytics pomocí rozhraní API kolekce dat HTTP (public preview)
 V tomto článku se dozvíte, jak používat rozhraní API kolekce dat HTTP k odesílání dat do Log Analytics z klienta REST API.  Popisuje jak formátovat data shromážděná z vašich skriptů nebo aplikací, zahrnout do požadavku a jste tento požadavek na oprávnění od Log Analytics.  Příklady jsou k dispozici pro prostředí PowerShell, C# a Python.
@@ -56,7 +56,7 @@ Pokud chcete používat rozhraní API kolekce dat HTTP, můžete vytvořit poža
 | Verze rozhraní API |Verze rozhraní API pro použití s touto žádostí. V současné době je 2016-04-01. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
-| Záhlaví | Popis |
+| Hlavička | Popis |
 |:--- |:--- |
 | Autorizace |Ověření podpisu. Později v tomto článku najdete informace o tom, jak vytvořit hlavičku HMAC SHA256. |
 | Typ protokolu |Zadejte typ záznamu dat, která se právě odesílá. Typ protokolu v současné době podporuje pouze alfanumerické znaky. Nepodporuje se číslice a speciální znaky. Omezení velikosti pro tento parametr je 100 znaků. |
@@ -101,7 +101,7 @@ Ukázky v následujících částech obsahovat vzorový kód vám pomůže vytvo
 ## <a name="request-body"></a>Tělo požadavku
 Text zprávy musí být ve formátu JSON. Musí obsahovat jeden nebo více záznamů pomocí dvojice název a hodnotu vlastnosti v tomto formátu:
 
-```
+```json
 [
     {
         "property 1": "value1",
@@ -114,7 +114,7 @@ Text zprávy musí být ve formátu JSON. Musí obsahovat jeden nebo více zázn
 
 Pomocí následujícího formátu může hromadně společně v jedné žádosti více záznamů. Stejný typ záznamu musí být všechny záznamy.
 
-```
+```json
 [
     {
         "property 1": "value1",
@@ -218,7 +218,7 @@ Pro každý vzorek proveďte tyto kroky k nastavení proměnných pro autorizač
 Alternativně můžete změnit proměnné pro typ protokolu a dat JSON.
 
 ### <a name="powershell-sample"></a>Ukázka PowerShellu
-```
+```powershell
 # Replace with your Workspace ID
 $CustomerId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"  
 
@@ -301,7 +301,7 @@ Post-LogAnalyticsData -customerId $customerId -sharedKey $sharedKey -body ([Syst
 ```
 
 ### <a name="c-sample"></a>Ukázka v jazyce C#
-```
+```csharp
 using System;
 using System.Net;
 using System.Net.Http;
@@ -387,7 +387,7 @@ namespace OIAPIExample
 ```
 
 ### <a name="python-2-sample"></a>Ukázka Python 2
-```
+```python
 import json
 import requests
 import datetime

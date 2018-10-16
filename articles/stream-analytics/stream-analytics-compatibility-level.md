@@ -7,13 +7,13 @@ ms.author: jasonh
 manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/03/2018
-ms.openlocfilehash: 136b21f026d208c09b50dfa8601de692e518774e
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.date: 10/15/2018
+ms.openlocfilehash: 661aa85a200d4eafa1c521b06f6e12378d61e93e
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699106"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343573"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Úroveň kompatibility pro úlohy Azure Stream Analytics
  
@@ -68,5 +68,5 @@ V úrovni kompatibility 1.1 byly zavedeny následující hlavní změny:
   * **aktuální verze:** neexistuje žádné další automaticky upcast řetězcových hodnot s informacemi o datum/čas/pásmo na typ DateTime. V důsledku toho se ukládají informace o časovém pásmu. 
 
 ## <a name="next-steps"></a>Další postup
-* [Průvodce odstraňováním potíží pro Azure Stream Analytics](stream-analytics-troubleshooting-guide.md)
+* [Řešení potíží s Azure Stream Analytics vstupy](stream-analytics-troubleshoot-input.md)
 * [Okno Stream Analytics Resource health](stream-analytics-resource-health.md)

@@ -10,15 +10,16 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: a0fa11633efc610407755ebc109649f3fefdcb55
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 2682236ae9f9256b91d1259248e72139c907c8e5
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585811"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345012"
 ---
 # <a name="get-started-with-bing-speech-service-client-libraries"></a>Začínáme s klientskými knihovnami Speech Service Bingu
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 Kromě toho, s přímým přístupem požadavky HTTP přes rozhraní REST API, Speech Service Bingu poskytuje vývojářům klientské knihovny pro rozpoznávání řeči v různých jazycích. Klientské knihovny pro zpracování řeči:
 
@@ -33,9 +34,6 @@ V současné době jsou k dispozici následujících klientských knihoven pro z
 - [Knihovna JavaScript](GetStartedJSWebsockets.md)
 - [Knihovna Java pro Android](GetStartedJavaAndroid.md)
 - [Knihovna jazyka Objective-C pro iOS](Get-Started-ObjectiveC-iOS.md)
-
-> [!NOTE] 
-Od září 2018, nové [Speech Service](../../speech-service/index.yml) stal všeobecně dostupná. Doporučujeme vám [zdarma vyzkoušet](../../speech-service/get-started.md). 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 

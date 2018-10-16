@@ -3,7 +3,7 @@ title: Základy správy Azure Stack | Dokumentace Microsoftu
 description: Zjistěte, co potřebujete vědět o správě služby Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: jeffgilb
 manager: femila
 editor: ''
 ms.assetid: 856738a7-1510-442a-88a8-d316c67c757c
@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2018
-ms.author: mabrigg
-ms.openlocfilehash: ead76fd2f03a5d445f9fdbb6c10edb852fd046cf
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.date: 10/15/2018
+ms.author: jeffgilb
+ms.openlocfilehash: 37b8eff2d4ed89c90f1fa6f128673ed5bacaaa90
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585760"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339946"
 ---
 # <a name="azure-stack-administration-basics"></a>Základy správy Azure Stack
 Existuje několik věcí, které je potřeba vědět, pokud je pro vás nová pro správu služby Azure Stack. Tento návod poskytuje přehled o vaší role jako jejich operátory Azure stacku a co je potřeba říct uživatelům pro ně a být tak produktivní rychle.
@@ -144,6 +144,6 @@ Pro development kit, můžete klást otázky týkající se podpory v [fórech M
 
 ## <a name="next-steps"></a>Další postup
 
-- [Správa oblastí ve službě Azure Stack](azure-stack-region-management.md)
+[Správa oblastí ve službě Azure Stack](azure-stack-region-management.md)
 
 

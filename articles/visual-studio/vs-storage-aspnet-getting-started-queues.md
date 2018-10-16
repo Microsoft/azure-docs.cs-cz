@@ -12,14 +12,15 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/23/2016
 ms.author: ghogen
-ms.openlocfilehash: 26f303318320eb8b039503666841e518f75348e4
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: a114833b40fe834aa0108d1a2f3821f0b7cbddbc
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42055283"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321848"
 ---
 # <a name="get-started-with-azure-queue-storage-and-visual-studio-connected-services-aspnet"></a>Začínáme s Azure queue storage a Visual Studio připojené služby (ASP.NET)
+
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>Přehled
@@ -28,7 +29,7 @@ ms.locfileid: "42055283"
 
 Tento kurz ukazuje, jak napsat kód technologie ASP.NET pro některé běžné scénáře pomocí Azure queue storage entit. Mezi tyto scénáře patří běžné úkoly, jako je například vytváření fronty služby Azure a přidání, úpravy, čtení a odstranění fronty zpráv.
 
-##<a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadavky
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 * [Účet služby Azure Storage](../storage/common/storage-quickstart-create-account.md)
@@ -452,7 +453,7 @@ Tato část ukazuje, jak získat délku fronty (počet zpráv).
     queue.FetchAttributes();
     ```
 
-6. Přístup **CloudQueue.ApproximateMessageCount** vlastnost k získání délky fronty.
+1. Přístup **CloudQueue.ApproximateMessageCount** vlastnost k získání délky fronty.
  
     ```csharp
     int? nMessages = queue.ApproximateMessageCount;

@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 08/06/2018
 ms.author: bahariri
-ms.openlocfilehash: b724ddfc1214ac17c2138dc9875896cf3353f0c7
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 3642c1b7d3de751ecb8a72edaecfe7a15c0acbdb
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746622"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320828"
 ---
 # <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>Použití Apache Flink s Azure Event Hubs pro Apache Kafka
 V tomto kurzu se dozvíte, jak připojit Apache Flink Kafka povolené event hubs, aniž by změna vašim klientům protokolu nebo spuštění vlastní clustery. Podporuje Azure Event Hubs [Apache Kafka verze 1.0.](https://kafka.apache.org/10/documentation.html).
@@ -29,11 +29,14 @@ V tomto kurzu se naučíte:
 > * Spustit Flink výrobce 
 > * Spusťte Flink příjemce
 
+> [!NOTE]
+> Tato ukázka je k dispozici na [GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/flink).
+
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu, nezapomeňte, že jsou splněné následující požadavky:
 
-* Přečtěte si [Event Hubs pro Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) článku. 
+* Přečtěte si článek [Event Hubs pro Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md). 
 * Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * [Java Development Kit (JDK) 1.7+](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
     * Na Ubuntu nainstalujte sadu JDK spuštěním příkazu `apt-get install default-jdk`.
@@ -49,11 +52,11 @@ Obor názvů služby Event Hubs je potřeba odeslat nebo přijmout z jakékoli s
 
 ## <a name="clone-the-example-project"></a>Klonování projektu z příkladu
 
-Teď, když máte připojovací řetězec systému Kafka s podporou služby Event Hubs, naklonujte si úložiště služby Azure Event Hubs a přejděte `flink` podsložky:
+Teď, když máte připojovací řetězec systému Kafka s podporou služby Event Hubs, Azure Event Hubs, Kafka úložiště klonování a přejděte do `flink` podsložky:
 
 ```shell
-git clone https://github.com/Azure/azure-event-hubs.git
-cd azure-event-hubs/samples/kafka/flink
+git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
+cd azure-event-hubs-for-kafka/tutorials/flink
 ```
 
 ## <a name="run-flink-producer"></a>Spustit Flink výrobce
@@ -129,7 +132,10 @@ V tomto kurzu se vaše zkušenosti jak připojit Apache Flink Kafka povolené ev
 > * Spustit Flink výrobce 
 > * Spusťte Flink příjemce
 
-Přejděte k dalším článku se dozvíte víc o službě Event Hubs pro Apache Kafka:
+Další informace o Event Hubs a centra událostí pro systém Kafka, naleznete v následujícím tématu:  
 
-> [!div class="nextstepaction"]
-> [Datové proudy Akka pomocí služby Azure Event Hubs pro systém Kafka](event-hubs-kafka-akka-streams-tutorial.md)
+* [Informace o službě Event Hubs](event-hubs-what-is-event-hubs.md)
+* [Další informace o službě Event Hubs pro systém Kafka](event-hubs-for-kafka-ecosystem-overview.md)
+* [Prozkoumejte další ukázky služby Event Hubs pro Kafka GitHub](https://github.com/Azure/azure-event-hubs-for-kafka)
+* Použití nástroje [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) ke [streamování událostí z místního systému Kafka do služby Event Hubs s podporou Kafka v cloudu.](event-hubs-kafka-mirror-maker-tutorial.md)
+* Naučíte se Streamovat do Kafka povolené služby Event Hubs pomocí [nativních aplikací Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md) nebo [Akka datové proudy](event-hubs-kafka-akka-streams-tutorial.md)

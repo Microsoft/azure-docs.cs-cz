@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.date: 10/10/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 83c23933acf1ed621728991fbdeea088911cf36c
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 7c5316aea2bfdb9a96b9aeb2dd5387b2643a92b2
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078660"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319723"
 ---
 # <a name="common-questions---hyper-v-to-azure-replication"></a>Časté otázky – Hyper-V do Azure replikace
 
@@ -135,7 +135,7 @@ Při replikaci do Azure, provoz replikace dosáhne veřejné koncové body účt
 
 Pro účely replikace virtuálních počítačů Hyper-V musí běžet podporovaný operační systém. Kromě toho virtuální počítač musí splňovat požadavky pro virtuální počítače Azure. [Další informace](hyper-v-azure-support-matrix.md#replicated-vms) v matici podpory.
 
-###<a name="how-often-can-i-replicate-to-azure"></a>Jak často můžete replikovat do Azure?
+### <a name="how-often-can-i-replicate-to-azure"></a>Jak často můžete replikovat do Azure?
 
 Virtuální počítače Hyper-V je možné replikovat každých 30 sekund (s výjimkou storage úrovně premium), 5 minut nebo 15 minut.
 
@@ -207,6 +207,3 @@ Po znovu spuštěn a je v místní infrastruktuře, můžete službu navrátit. 
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>Můžu navrátit služby zpět do jiného umístění?
 Ano, pokud převzetí služeb při selhání do Azure, můžete navrátit služby zpět do jiného umístění Pokud původní není k dispozici. [Další informace](hyper-v-azure-failback.md#failback-to-an-alternate-location-in-hyper-v-environment).
-
-
-

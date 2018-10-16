@@ -1,6 +1,6 @@
 ---
-title: Azure zásobníku integrované systémy připojení modely | Microsoft Docs
-description: Určení plánování rozhodnutí pro více uzly Azure zásobníku nasazení.
+title: Azure Stack integrované systémy připojení modely | Dokumentace Microsoftu
+description: Určení při rozhodování o několika uzly Azure Stack pro plánování nasazení.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,42 +12,42 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: e6c94ef1172ea6380a94d5907c24069ed8c48ff5
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 7509d00815f56dc46bd276ffc67c4c607c54070a
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29118784"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49338892"
 ---
-# <a name="azure-stack-integrated-systems-connection-models"></a>Azure zásobníku integrované systémy připojení modely
-Pokud byste chtěli v systému Azure zásobníku integrované, budete potřebovat zjistit [důležité informace o integraci několik datacenter](azure-stack-datacenter-integration.md) pro nasazení Azure zásobníku k určení, jak v systému se vejde do datového centra. Kromě toho budete muset rozhodnout, přesně jak bude integrace Azure zásobníku do prostředí hybridního cloudu. Tento článek obsahuje přehled těchto hlavní rozhodnutí, včetně připojení k Azure, úložiště identit a fakturace rozhodnutí týkající se modelu.
+# <a name="azure-stack-integrated-systems-connection-models"></a>Azure Stack integrované systémy modely připojení
+Pokud vás zajímá systémech pro Azure Stack integrované, musíte pochopit [důležité informace o integraci několika datacenter](azure-stack-datacenter-integration.md) pro nasazení Azure Stack určit, jak systém, se vejde do vašeho datového centra. Kromě toho bude nutné se rozhodnout, přesně jak můžete integrovat Azure Stack v hybridním cloudovém prostředí. Tento článek obsahuje přehled Tato hlavní rozhodnutí, včetně připojení k Azure, úložiště identit a fakturační model rozhodnutí.
 
-Pokud se rozhodnete koupit integrovaný systém, pomáhá dodavatele hardwaru, výrobce (OEM), vás provede velkou část procesu plánování podrobněji. Také provede skutečné nasazení.
+Pokud se rozhodnete pro nákup integrovaného systému, pomůže dodavatele hardwaru, výrobce OEM (OEM), vás provedou velkou část procesu plánování podrobněji. Také provede nasazování ve skutečnosti.
 
-## <a name="choose-an-azure-stack-deployment-connection-model"></a>Zvolte připojení model nasazení Azure zásobníku
-Můžete nasadit Azure zásobníku buď připojené k Internetu (a do Azure) nebo odpojena. K získání využívat výhod z zásobník Azure, včetně hybridní scénáře mezi zásobník Azure a Azure, by chcete nasadit připojení k Azure. Tato volba definuje, které možnosti jsou k dispozici pro úložiště identit (Azure Active Directory nebo Active Directory Federation Services) a fakturační model (platit jako vám na základě použití fakturace nebo na základě kapacity fakturace) popsaná v následující obrázek a tabulka: 
+## <a name="choose-an-azure-stack-deployment-connection-model"></a>Zvolte připojení modelu nasazení Azure Stack
+Můžete nasadit Azure Stack buď připojené k Internetu (a do Azure) nebo odpojeno. Nejvíce výhod získat z Azure Stack, hybridní scénáře mezi Azure Stack a Azure, včetně byste k nasazení připojení k Azure. Tato volba určuje, jaké možnosti jsou k dispozici pro úložiště identit (Azure Active Directory nebo Active Directory Federation Services) a model fakturace (platit při použití na základě fakturace nebo založená na kapacitě fakturace) dle souhrnu v následující diagram a tabulka: 
 
-![Azure zásobníku nasazení a fakturace scénáře](media/azure-stack-connection-models/azure-stack-scenarios.png)  
+![Azure Stack nasazení a fakturaci scénáře](media/azure-stack-connection-models/azure-stack-scenarios.png)  
   
 > [!IMPORTANT]
-> Toto je bod klíčová rozhodnutí! Jednorázové rozhodnutí, které je nutné provést v době nasazení je výběr Active Directory Federation Services (AD FS) nebo Azure Active Directory (Azure AD). Nedá se změnit později bez opětovného nasazení celého systému.  
+> Toto je klíčová rozhodnutí bod! Výběr Active Directory Federation Services (AD FS) nebo Azure Active Directory (Azure AD) je jednorázový rozhodnutí, které je nutné provést v době nasazení. Nedá se změnit později bez nutnosti nového nasazení celého systému.  
 
 
 |Možnosti|Připojení k Azure|Odpojení od Azure|
 |-----|-----|-----|
 |Azure AD|![Podporováno](media/azure-stack-connection-models/check.png)| |
 |AD FS|![Podporováno](media/azure-stack-connection-models/check.png)|![Podporováno](media/azure-stack-connection-models/check.png)|
-|Na základě spotřeby fakturace|![Podporováno](media/azure-stack-connection-models/check.png)| |
-|Na základě kapacity fakturace|![Podporováno](media/azure-stack-connection-models/check.png)|![Podporováno](media/azure-stack-connection-models/check.png)|
-|Stáhnout balíky aktualizací přímo do Azure zásobníku|![Podporováno](media/azure-stack-connection-models/check.png)|  |
+|Účtování podle využití|![Podporováno](media/azure-stack-connection-models/check.png)| |
+|Účtování podle kapacity|![Podporováno](media/azure-stack-connection-models/check.png)|![Podporováno](media/azure-stack-connection-models/check.png)|
+|Stáhnout balíčky aktualizací přímo do služby Azure Stack|![Podporováno](media/azure-stack-connection-models/check.png)|  |
 
-Poté, co jste se rozhodli na modelu připojení Azure má být použit pro nasazení Azure zásobníku, musí být provedeny závislé na připojení, další rozhodnutí pro úložiště identit a fakturace metodu. 
+Poté, co jste se rozhodli na model Azure připojení budou používat při nasazení Azure Stack, závislé na připojení a další rozhodnutí třeba identity úložiště a fakturace metodu. 
 
 ## <a name="next-steps"></a>Další postup
 
-[Azure rozhodnutí o nasazení Azure zásobníku připojené](azure-stack-connected-deployment.md)
+[Azure připojené rozhodnutí nasazení Azure Stack](azure-stack-connected-deployment.md)
 
-[Azure odpojen rozhodnutí o nasazení Azure zásobníku](azure-stack-disconnected-deployment.md)
+[Azure odpojí rozhodnutí o nasazení služby Azure Stack](azure-stack-disconnected-deployment.md)

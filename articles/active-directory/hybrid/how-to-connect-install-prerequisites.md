@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 09/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: addb99478025757257bce465a02287ebedd40bb1
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: f0791173450d5db3b33762ec9d5ed5c1adf96788
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314976"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321627"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Požadavky pro Azure AD Connect
 Toto téma popisuje požadavky a požadavky na hardware pro Azure AD Connect.
@@ -29,11 +29,11 @@ Toto téma popisuje požadavky a požadavky na hardware pro Azure AD Connect.
 Před instalací Azure AD Connect, existuje několik věcí, které potřebujete.
 
 ### <a name="azure-ad"></a>Azure AD
-* Předplatné Azure nebo [zkušebního předplatného Azure](https://azure.microsoft.com/pricing/free-trial/). Toto předplatné je jenom nutné pro přístup k portálu Azure a ne pomocí služby Azure AD Connect. Pokud používáte PowerShell nebo Office 365, není nutné předplatného Azure k použití služby Azure AD Connect. Pokud máte licenci Office 365, můžete také použít portál Office 365. S placenou licenci Office 365 můžete také získat na webu Azure portal z portálu Office 365.
-  * Můžete také použít [webu Azure portal](https://portal.azure.com). Tento portál nevyžaduje licenci Azure AD.
+* Tenanta Azure AD. Můžete získat pomocí [bezplatnou zkušební verzi Azure](https://azure.microsoft.com/pricing/free-trial/). Ke správě služby Azure AD Connect můžete použít jednu z následujících portály:
+  * [Webu Azure portal](https://portal.azure.com).
+  * [Portál Office](https://portal.office.com).  
 * [Přidání a ověření domény](../active-directory-domains-add-azure-portal.md) plánujete používat ve službě Azure AD. Například pokud máte v úmyslu používat contoso.com pro vaše uživatele a ujistěte se, že tato doména se ověřila a pouze nepoužíváte výchozí doménu contoso.onmicrosoft.com.
 * Klient služby Azure AD umožňuje ve výchozích 50 tisíc objektů. Při ověřování domény limitu je zvýšena na 300 kB objekty. Pokud budete potřebovat ještě více objektů ve službě Azure AD, musíte otevřít případ podpory využití ještě dále zvýšit. Pokud potřebujete více než 500 tisíc objektů, potřebujete licenci, jako je Office 365, Azure AD Basic, Azure AD Premium nebo Enterprise Mobility + Security.
-* ADSyncPrep je modul skriptu Powershellu, který poskytuje funkce, které slouží k přípravě svého prostředí služby Active Directory pro Azure AD Connect.  Vyžaduje ADSyncPrep [Online v1.1 Azure AD Microsoft PowerShell Module](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0).  Verze 2 nebude fungovat. Můžete nainstalovat pomocí modulu `Install-Module` rutiny.  Další informace najdete v článku uvedený odkaz.
 
 ### <a name="prepare-your-on-premises-data"></a>Příprava místních dat.
 * Použití [IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) k identifikaci chyby jako např. duplicitní položky a formátování problémy ve vašem adresáři předtím, než je synchronizujete s Azure AD a Office 365.
@@ -47,7 +47,7 @@ Před instalací Azure AD Connect, existuje několik věcí, které potřebujete
 * Doporučuje se [povolit odpadkový koš služby Active Directory](how-to-connect-sync-recycle-bin.md).
 
 ### <a name="azure-ad-connect-server"></a>Server Azure AD Connect
-* Azure AD Connect nejde nainstalovat na Small Business Server nebo Windows serveru Essentials. Server musí používat Windows Server standard nebo vyšší.
+* Azure AD Connect nejde nainstalovat na Small Business Server nebo Windows serveru Essentials před 2019 (podporuje se Windows Server Essentials 2019). Server musí používat Windows Server standard nebo vyšší.
 * Server Azure AD Connect musí mít úplným grafickým uživatelským rozhraním nainstalované. Je **nepodporuje** instalace jádra serveru.
 * Azure AD Connect musí být nainstalována v systému Windows Server 2008 nebo novější. Tento server může být řadič domény nebo členském serveru, při použití expresního nastavení. Pokud použijete vlastní nastavení, server může být také samostatná a nemusí být připojený k doméně.
 * Pokud Azure AD Connect instalujete na Windows Server 2008 nebo Windows Server 2008 R2, pak nezapomeňte použít nejnovější opravy hotfix z webu Windows Update. Instalace není možné spustit pomocí bez opravy zabezpečení serveru.
@@ -69,8 +69,8 @@ Před instalací Azure AD Connect, existuje několik věcí, které potřebujete
 
 ### <a name="accounts"></a>Účty
 * Účet globálního správce služby Azure AD pro tenanta Azure AD, kterou chcete integrovat s. Tento účet musí být **školní nebo organizaci účet** a nemůže být **účtu Microsoft**.
-* Je-li použít Expresní nastavení nebo upgradu z nástroje DirSync, musíte mít účet správce podnikové sítě pro vaše místní služby Active Directory.
-* [Účty ve službě Active Directory](reference-connect-accounts-permissions.md) Pokud použijete instalační cesta vlastní nastavení.
+* Je-li použít Expresní nastavení nebo upgradu z nástroje DirSync, musíte mít účet správce podnikové sítě pro vaši místní službu Active Directory.
+* [Účty ve službě Active Directory](reference-connect-accounts-permissions.md) Pokud použijete vlastní nastavení Instalační cesta nebo účet správce podnikové sítě pro vaši místní službu Active Directory.
 
 ### <a name="connectivity"></a>Připojení
 * Server Azure AD Connect musí překlad názvů DNS pro intranetu i Internetu. DNS server musí být schopné překládat názvy do koncových bodů služby Azure AD a místní Active Directory.
@@ -184,7 +184,6 @@ Při nasazení služby AD FS nebo Proxy webových aplikací pomocí služby Azur
 Následuje seznam komponent, které Azure AD Connect nainstaluje na server, kde je nainstalovaný Azure AD Connect. Tento seznam je pro základní Expresní instalace. Pokud se rozhodnete použít jiný SQL Server na stránce instalace synchronizační služby, není místně nainstalovaný SQL Express LocalDB.
 
 * Azure AD Connect Health
-* Microsoft Online Services přihlášení Pomocníka pro IT profesionály (nainstalované ale nejsou závislé na ni)
 * Nástroje příkazového řádku Microsoft SQL Server 2012
 * Microsoft SQL Server 2012 Express LocalDB
 * Nativní klient systému Microsoft SQL Server 2012

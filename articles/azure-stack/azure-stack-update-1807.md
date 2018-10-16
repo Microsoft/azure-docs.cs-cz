@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/07/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: bce76827c56fd660b6ab4353fed1c43f88132587
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: b4ee3354d024034fd47ee50ae78d25d5bb4a38f5
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868815"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345267"
 ---
 # <a name="azure-stack-1807-update"></a>Aktualizace služby Azure Stack 1807
 
@@ -232,6 +232,14 @@ Toto jsou známé problémy této verze sestavení po instalaci.
 
 
 ### <a name="health-and-monitoring"></a>Monitorování stavu a
+
+<!-- TBD - IS -->
+- Může se zobrazit následující upozornění se zobrazí opakovaně a zmizí v systému Azure Stack:
+   - *Instance role infrastruktury není k dispozici*
+   - *Uzel jednotka škálování je offline*
+   
+  Spusťte prosím [testovací AzureStack](azure-stack-diagnostic-test.md) rutina pro ověření stavu instance rolí infrastruktury a škálování jednotek uzlů. Pokud nejsou zjištěny žádné problémy podle [testovací AzureStack](azure-stack-diagnostic-test.md), tato upozornění můžete ignorovat. Pokud se zjistí problém, pokuste se spustit instanci role infrastruktury nebo uzlu pomocí portálu pro správu nebo prostředí PowerShell.
+
 <!-- 1264761 - IS ASDK -->  
 - Může se zobrazit upozornění **stavu řadiče** komponenta, která mají následující podrobnosti:  
 

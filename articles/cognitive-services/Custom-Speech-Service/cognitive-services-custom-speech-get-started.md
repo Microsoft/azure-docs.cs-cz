@@ -1,24 +1,24 @@
 ---
-title: Začínáme s Custom Speech Service
-titlesuffix: Azure Cognitive Services
+title: Začínáme s Custom Speech Service v Azure | Dokumentace Microsoftu
 description: K odběru služby Custom Speech a aktivity služby propojit s předplatným Azure pro trénování modelu a nasazení.
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: conceptual
+ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: ae72edd626bd91dea7cd2812a3ef821b905f59a4
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 4bbd4c57556fd4bfd176c915e26be4a4d198418a
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225238"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339929"
 ---
 # <a name="get-started-with-custom-speech-service"></a>Začínáme s Custom Speech Service
+
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
 
 Prozkoumejte hlavní funkce služby Custom Speech Service a zjistěte, jak vytvořit, nasadit a používat akustických a jazykových modelů pro potřeby vaší aplikace. Více si rozsáhlou dokumentaci k a podrobné pokyny najdete po přihlášení na portálu pro vlastní hlasové služby.
 
@@ -34,7 +34,7 @@ Před zobrazením pomocí výše uvedeného příkladu musíte předplatit Custo
 Si můžete stáhnout klientské knihovny a příklad prostřednictvím [SDK](https://www.microsoft.com/cognitive-services/en-us/SDK-Sample?api=bing%20speech&category=sdk). Stažený soubor zip je třeba extrahovat do složky podle vašeho výběru, mnoho uživatelů vyberte složku, Visual Studio 2015.
 
 ## <a name="creating-a-custom-acoustic-model"></a>Vytvoření vlastního akustického modelu
-Chcete-li upravit akustický model k určité doméně, je potřeba kolekce dat řeči. Tato kolekce zahrnuje sadu zvukových souborů s hlasovými daty a textový soubor s přepisy všech zvukových souborů. Zvuková data by měla vystihovat scénáře, ve kterém byste chtěli použít nástroj pro rozpoznávání
+K přizpůsobení akustického modelu pro konkrétní doménu je nutná kolekce hlasových dat. Tato kolekce zahrnuje sadu zvukových souborů s hlasovými daty a textový soubor s přepisy všech zvukových souborů. Zvuková data by měla vystihovat scénáře, ve kterém byste chtěli použít nástroj pro rozpoznávání
 
 Příklad: Pokud chcete lépe rozpoznávat řeč v prostředí hlučného objekt pro vytváření, zvukové soubory by měla sestávat z lidí mluvčí hlučného tovární nastavení.
 Pokud vás zajímají optimalizace výkonu pro jeden mluvčího, například chcete přepisy všechny konverzace Fireside díky technologii FDR společnosti a potom zvukové soubory by měla obsahovat mnoho příkladů pouze tohoto mluvčího.
@@ -52,7 +52,7 @@ Po vytvoření vlastních akustických modelů a/nebo jazykové modely, je možn
 Podrobný popis najdete na tom, jak vytvořit koncový bod vlastní převod řeči na text [tady](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-endpoint.md).
 
 ## <a name="using-a-custom-speech-endpoint"></a>Pomocí koncového bodu vlastní převod řeči
-Požadavky je odeslat do koncového bodu převodu řeči na text CRIS velmi podobným způsobem jako výchozí koncový bod Azure Cognitive Services řeči. Všimněte si, že tyto koncové body jsou funkčně stejný jako výchozí koncové body rozhraní API pro rozpoznávání řeči. Stejné funkce, které jsou k dispozici prostřednictvím klientskou knihovnu nebo rozhraní REST API pro rozhraní API pro rozpoznávání řeči je tedy také k dispozici pro váš vlastní koncový bod.
+Požadavky je odeslat do koncového bodu převodu řeči na text CRIS velmi podobným způsobem jako výchozí koncový bod služby Microsoft Cognitive Services řeči. Všimněte si, že tyto koncové body jsou funkčně stejný jako výchozí koncové body rozhraní API pro rozpoznávání řeči. Stejné funkce, které jsou k dispozici prostřednictvím klientskou knihovnu nebo rozhraní REST API pro rozhraní API pro rozpoznávání řeči je tedy také k dispozici pro váš vlastní koncový bod.
 
 Podrobný popis najdete na použití vlastního koncového bodu převodu řeči na text [tady](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-use-endpoint.md).
 

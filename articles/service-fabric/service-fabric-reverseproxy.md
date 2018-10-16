@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 84869a93dfe2f979e207257ebac80773a172a776
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 04f233384ad0d02cb5b7056df1e5fdfc74b9bec8
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017920"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344621"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Reverzní proxy server v Azure Service Fabric
 Reverzní proxy server, které jsou integrované do Azure Service Fabric pomáhá mikroslužeb spouštěných v clusteru Service Fabric, zjistit a komunikovat s ostatními službami, které mají koncových bodů http.
@@ -155,6 +155,8 @@ Služby uvnitř kontejnerů, můžete použít proměnnou prostředí `Fabric_No
     var serviceUrl = $"http://{fqdn}:19081/DockerSFApp/UserApiContainer";
 ```
 Pro místní cluster `Fabric_NodeIPOrFQDN` je ve výchozím nastavení "localhost". Spusťte místní cluster s `-UseMachineName` parametr Ujistěte se, že kontejnery dosáhnout reverzní proxy server běží na uzlu. Další informace najdete v tématu [nakonfigurovat prostředí pro vývojáře k ladění kontejnery](service-fabric-how-to-debug-windows-containers.md#configure-your-developer-environment-to-debug-containers).
+
+Služby Service Fabric, na kterých běží v kontejnerech Docker Compose vyžadují speciální docker-compose.yml *porty části* http: nebo https: konfigurace. Další informace najdete v tématu [podpora nasazení Docker Compose v Azure Service Fabric](service-fabric-docker-compose.md).
 
 ## <a name="next-steps"></a>Další postup
 * [Nastavení a konfigurace reverzního proxy serveru v clusteru](service-fabric-reverseproxy-setup.md).

@@ -7,14 +7,14 @@ author: erhopf
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 09/24/2018
-ms.author: erhopf
-ms.openlocfilehash: a8e23e971cc0186317a291ecbdd010fc2a3ae1e8
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.date: 10/12/2018
+ms.author: v-jerkin
+ms.openlocfilehash: 2ebdacc8cba5fcf8835da3e73c2c14dbca40fe8e
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167592"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340696"
 ---
 # <a name="about-the-cognitive-services-speech-sdk"></a>Informace o službách Cognitive Services řeči SDK
 
@@ -49,7 +49,7 @@ sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2
 * C#: Můžete odkazovat a používat nejnovější verzi naší balíček NuGet sady SDK pro řeč. K odkazování sadu SDK, přidejte následující odkaz na balíček do projektu:
 
   ```xml
-  <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.0.0" />
+  <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.0.1" />
   ```
 
 * Java: Můžete odkazovat a využívat nejnovější verzi naší řeči SDK Maven balíček. V projektu Maven, přidejte `https://csspeechstorage.blob.core.windows.net/maven/` jako další úložiště a odkaz `com.microsoft.cognitiveservices.speech:client-sdk:0.6.0` jako závislost. 
@@ -68,7 +68,7 @@ sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2
 
 ### <a name="android"></a>Android
 
-Sady Java SDK pro Android je zabalena jako [AAR (knihovna pro Android)](https://developer.android.com/studio/projects/android-library), který obsahuje potřebné knihovny, stejně jako požadovaná Android oprávnění k jeho používání. Je hostován v úložiště Maven v `https://csspeechstorage.blob.core.windows.net/maven/` jako balíček `com.microsoft.cognitiveservices.speech:client-sdk:1.0.0`.
+Sady Java SDK pro Android je zabalena jako [AAR (knihovna pro Android)](https://developer.android.com/studio/projects/android-library), který obsahuje potřebné knihovny, stejně jako požadovaná Android oprávnění k jeho používání. Je hostován v úložiště Maven v `https://csspeechstorage.blob.core.windows.net/maven/` jako balíček `com.microsoft.cognitiveservices.speech:client-sdk:1.0.1`.
 
 Chcete-li využívají balíček z vašeho projektu Android Studio, proveďte následující změny:
 
@@ -81,7 +81,7 @@ Chcete-li využívají balíček z vašeho projektu Android Studio, proveďte n�
 * V souboru build.gradle úrovni modulu, přidejte následující text do `dependencies` části:
 
   ```text
-  implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.0.0'
+  implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.0.1'
   ```
 
 Sada Java SDK je také součástí [sadou SDK pro řeč zařízení](speech-devices-sdk.md).

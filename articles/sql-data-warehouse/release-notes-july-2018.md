@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 08/06/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 5c54505625f40d7c0bd00111e2ff260dc9afaf1c
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: c7d2211ca69fcd18588ea1b20b638b2970b8439c
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288000"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318836"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-july-2018"></a>Co je nového ve službě Azure SQL Data Warehouse? Červenec 2018
 Azure SQL Data Warehouse neustále obdrží vylepšení. Tento článek popisuje nové funkce a změny, které byly zavedeny do července 2018.
@@ -30,7 +30,7 @@ Nad rámec výkonu modulu runtime [společnosti Gigaom Research](https://gigaom.
 ![Azure SQL Data Warehouse je rychlejší a levnější než Amazon Redshift](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/cb76447e-621e-414b-861e-732ffee5345a.png)
 <sub>zdroj: [sestavy analytik společnosti Gigaom Research: datového skladu v cloudu srovnávacích testů](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)</sub>
 
-###<a name="query-concurrency"></a>Dotaz souběžnosti
+### <a name="query-concurrency"></a>Dotaz souběžnosti
 SQL Data Warehouse také zajišťuje, že data jsou přístupné napříč vaší organizací. Microsoft má vylepšenou služba podporovala 128 souběžných dotazů tak, aby více uživatelů stejné databáze můžete dotazovat a nebudou blokovat jiné požadavky. Porovnání Amazon Redshift omezuje maximální počet souběžných dotazů na 50, omezení přístupu k datům v rámci organizace.
 
 SQL Data Warehouse nabízí tyto dotazu výkon a dotaz souběžnosti přínosy bez jakékoli zvýšení ceny a vytváření při jeho jedinečná architektura s oddělující úložiště a výpočetního výkonu.

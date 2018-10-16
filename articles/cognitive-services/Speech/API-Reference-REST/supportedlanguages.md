@@ -1,28 +1,29 @@
 ---
-title: Podpora jazyků – rozhraní Speech API
-titleSuffix: Azure Cognitive Services
-description: Seznam přirozeného jazyka, které podporují rozhraní API pro rozpoznávání řeči.
+title: Podporované jazyky pro zpracování řeči Bingu | Dokumentace Microsoftu
+titlesuffix: Azure Cognitive Services
+description: Seznam mluvené slovo jazyky, které jsou podporovány pro zpracování řeči Bingu.
 services: cognitive-services
 author: zhouwangzw
-manager: cgronlun
+manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: eeb0f475193a43ab8b0b0ca562364cbdef8a21d2
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 961bc2f5d8d619c5a1815b0f4be3b837f72513f4
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433136"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340031"
 ---
-# <a name="language-and-region-support-for-speech-api"></a>Podpora jazyka a oblasti pro API pro rozpoznávání řeči
+# <a name="supported-languages"></a>Podporované jazyky
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 ## <a name="interactive-and-dictation-mode"></a>Interaktivní a diktování režimu
 
-Rozpoznávání řeči Microsoft rozhraní API podporuje následující jazyky v `interactive` a `dictation` režimy.
+Rozpoznávání řeči Microsoft rozhraní API podporuje následující jazyky v `interactive` a `dictation` režimy. 
 
 |Kód | Jazyk | Kód | Jazyk |
 |-----|-----|-----|-----|
@@ -40,12 +41,11 @@ Rozpoznávání řeči Microsoft rozhraní API podporuje následující jazyky v
 | es-MX | Španělština (Mexiko) |zh-CN | Čínština (Mandarínština, zjednodušená čínština)  |
 | fi-FI | Finština (Finsko) |zh-HK | Čínština (Hongkong – zvláštní administrativní oblast) |
 | fr-CA | Francouzština (Kanada) | zh-TW | Čínština (Mandarínština, tchajwanských)|
-| fr-FR | Francouzština (Francie) | gu v | gudžarádština (Indie) |
-| ta v |tamilština (Indie) | te v | telugština (Indie) |
+| fr-FR | Francouzština (Francie) | ||
 
 ## <a name="conversation-mode"></a>Režim konverzace
 
-Rozpoznávání řeči Microsoft rozhraní API podporuje následující jazyky v `conversation` režimy.
+Rozpoznávání řeči Microsoft rozhraní API podporuje následující jazyky v `conversation` režimy. 
 
 | Kód | Jazyk | Kód | Jazyk |
 |-----|-----|-----|-----|

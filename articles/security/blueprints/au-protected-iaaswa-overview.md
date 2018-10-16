@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: meladie
-ms.openlocfilehash: b269a145c78aaf025ef05a4562cf55124c17e2ee
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: f25e054f0273d770807dad6788f184a876a00fe7
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818001"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319196"
 ---
 # <a name="azure-security-and-compliance-blueprint---iaas-web-application-for-australia-protected"></a>Zabezpečení Azure a dodržování předpisů – IaaS webové aplikace pro Austrálii chráněné
 
@@ -79,7 +79,6 @@ Toto řešení vytvoří virtuální počítač jako hostitel typu bašta připo
 -   [Rozšíření Azure Diagnostics](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)
 -   [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) pomocí služby Azure Key Vault
 -   [Automatické vypnutí zásad](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/) ke snížení spotřeby prostředků virtuálního počítače není při použití
--   [Windows Defender Credential Guard](https://docs.microsoft.com/windows/access-protection/credential-guard/credential-guard) povolené tak, aby pověření a dalších tajných kódů je spouštět v chráněném prostředí, která je oddělená od operačního systému
 
 ### <a name="virtual-network"></a>Virtuální síť
 Architektura definuje privátní virtuální síť s adresním prostorem 10.200.0.0/16.
@@ -101,7 +100,7 @@ Pro chráněná data přenášená z sítě vlastněné zákazníkem architektur
 
 Kromě toho všechny transakce do Azure prostřednictvím portálu pro správu Azure dojde k přes HTTPS využívání protokolu TLS 1.2.
 
-### <a name="data-at-rest"></a>Neaktivní uložená data
+### <a name="data-at-rest"></a>Data v klidovém stavu
 Architektura chrání data při nečinnosti pomocí šifrování, auditování databáze a jiné míry.
 
 **Azure Storage**: pro splnění šifrovaná data na požadavky rest, všechny [služby Azure Storage](https://azure.microsoft.com/services/storage/) používá [šifrování služby Storage](https://docs.microsoft.com/azure/storage/storage-service-encryption). To pomáhá zabezpečit a chránit data podporu závazky zabezpečení organizace a požadavky na dodržování předpisů, které jsou určené ISM australské státní správy.

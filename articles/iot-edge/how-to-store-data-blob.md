@@ -9,12 +9,12 @@ ms.date: 10/03/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2a52735a7f573534c6d643e778a898a888dfc81f
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 6fdfc1002528fa48145e577dfee3eac935f31fcd
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114579"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344842"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Store dat na hraničních zařízeních s Azure Blob Storage na hraničních zařízeních IoT (preview)
 
@@ -81,7 +81,7 @@ Pomocí následující šablony JSON pro **možnosti vytvoření kontejneru** po
    }
    ```   
    
-V možnosti vytvořit JSON, aktualizujte `\<your storage account name\>` s názvem. Aktualizace `\<your storage account key\>` s klíčem ve formátu base64 64 bajtů. Vygenerujete nějaký klíč pomocí nástrojů jako [GeneratePlus](https://generate.plus/en/base64) který vám umožní vybrat délka v bajtech. Použijete tyto přihlašovací údaje pro přístup k úložišti objektů blob z jiných modulů.
+V možnosti vytvořit JSON, aktualizujte `\<your storage account name\>` s názvem. Aktualizace `\<your storage account key\>` s klíčem ve formátu base64 64 bajtů. Vygenerujete nějaký klíč pomocí nástrojů jako [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64) který vám umožní vybrat délka v bajtech. Použijete tyto přihlašovací údaje pro přístup k úložišti objektů blob z jiných modulů.
 
 V možnosti vytvořit JSON, aktualizujte `<storage directory bind>` v závislosti na váš kontejner operační systém. Zadejte název [svazku](https://docs.docker.com/storage/volumes/) nebo absolutní cesta do adresáře na zařízení IoT Edge místo modulu objektů blob pro uložení data.  
 
@@ -150,7 +150,7 @@ VS Code přebírá informace k dispozici, vytvoří řešení IoT Edge a nahraje
    STORAGE_ACCOUNT_KEY=
    ```
 
-8. Zadejte libovolný název pro název účtu úložiště a zadat klíč ve formátu base64 64 bajtů pro klíč účtu úložiště. Vygenerujete nějaký klíč pomocí nástrojů jako [GeneratePlus](https://generate.plus/en/base64). Použijete tyto přihlašovací údaje pro přístup k úložišti objektů blob z jiných modulů. 
+8. Zadejte libovolný název pro název účtu úložiště a zadat klíč ve formátu base64 64 bajtů pro klíč účtu úložiště. Vygenerujete nějaký klíč pomocí nástrojů jako [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64). Použijete tyto přihlašovací údaje pro přístup k úložišti objektů blob z jiných modulů. 
 
 9. Uložit **.env**. 
 

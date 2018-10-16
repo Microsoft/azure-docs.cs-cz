@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: c894fed56393e1504f54999e57bba6f9ffed27a7
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 18a6234eb56902625fdcc8f150a41b7551d229cc
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288250"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318533"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Auditování ve službě Azure SQL Data Warehouse
 
@@ -112,7 +112,7 @@ Před nastavením auditování zaškrtněte, pokud používáte auditu ["Starš�
 
 ## <a id="subheading-3"></a>Analýza protokolů auditu a sestavy
 
-###<a name="server-level-policy-audit-logs"></a>Protokoly auditu zásady na úrovni serveru
+### <a name="server-level-policy-audit-logs"></a>Protokoly auditu zásady na úrovni serveru
 Protokoly auditování na úrovni serveru se zapisují do **doplňovací objekty BLOB** ve službě Azure Blob storage v rámci předplatného Azure. Jsou uloženy jako kolekce souborů, objektů blob v kontejneru s názvem **sqldbauditlogs**.
 
 Další podrobnosti o hierarchii složky úložiště konvence pojmenování a formát protokolu, najdete v článku [odkaz na formát protokolu auditování objektů Blob](https://go.microsoft.com/fwlink/?linkid=829599).
@@ -147,7 +147,7 @@ Existuje několik metod, které lze použít k zobrazení protokolů auditován�
 
 
 <br>
-###<a name="database-level-policy-audit-logs"></a>Protokoly auditu zásady na úrovni databáze
+### <a name="database-level-policy-audit-logs"></a>Protokoly auditu zásady na úrovni databáze
 Protokoly auditování na úrovni databáze se agregují v kolekci Store tabulek s **SQLDBAuditLogs** předponu v účtu úložiště Azure, který jste zvolili během instalace. Můžete zobrazit soubory protokolů pomocí nástroje, jako například [Průzkumníka služby Azure Storage](http://azurestorageexplorer.codeplex.com).
 
 Je k dispozici jako šablona sestavy řídicí panel předkonfigurovaného [ke stažení Excelové tabulce](http://go.microsoft.com/fwlink/?LinkId=403540) umožňují rychle analyzovat data protokolů. Použití šablony v protokolech auditu, budete potřebovat Excel 2013 nebo novější a Power Query, který můžete [stáhnete tady](http://www.microsoft.com/download/details.aspx?id=39379).

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 69f6ed7814feacbd5adf60325aae123d388ffb61
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: f523e2e2d55a34825bbb76a5a879c7c046b6b554
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39222784"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318958"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Přizpůsobení funkce služby Azure AD pro samoobslužné resetování hesla
 
@@ -55,7 +55,9 @@ Správce Active Directory Federation Services (AD FS) můžete přidat odkaz na 
 
 Můžete přidat odkaz na přihlašovací stránku služby AD FS, použijte následující příkaz na serveru služby AD FS. Uživatelé můžou na této stránce můžete zadat pracovního postupu samoobslužné resetování HESLA.
 
-``` Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwordreset.microsoftonline.com' target='_blank'>Can’t access your account?</A></p>" ```
+``` powershell
+Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwordreset.microsoftonline.com' target='_blank'>Can’t access your account?</A></p>"
+```
 
 ## <a name="customize-the-sign-in-page-and-access-panel-look-and-feel"></a>Přizpůsobit přihlašovací stránku a přístup k panelu vzhledu a chování
 
@@ -65,8 +67,8 @@ Grafiky, kterou zvolíte, jsou uvedeny v následujících případech:
 
 * Poté, co uživatel zadá své uživatelské jméno
 * Když chce uživatel na přizpůsobenou adresu URL:
-    * Předáním *Wh* parametr heslo resetovat stránky, jako je třeba "https://login.microsoftonline.com/?whr=contoso.com"
-    * Předáním *uživatelské jméno* parametr heslo resetovat stránky, jako je třeba "https://login.microsoftonline.com/?username=admin@contoso.com"
+    * Předáním `whr` parametr heslo resetovat stránky, jako je třeba "https://login.microsoftonline.com/?whr=contoso.com"
+    * Předáním `username` parametr heslo resetovat stránky, jako je třeba "https://login.microsoftonline.com/?username=admin@contoso.com"
 
 Najít podrobnosti o tom, jak nakonfigurovat vlastní firemní branding v článku [přidání firemního brandingu na přihlašovací stránku ve službě Azure AD](../fundamentals/customize-branding.md).
 

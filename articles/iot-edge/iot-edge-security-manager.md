@@ -2,19 +2,19 @@
 title: Správce zabezpečení služby Azure IoT Edge | Dokumentace Microsoftu
 description: Spravuje postoj zabezpečení zařízení IoT Edge a integrity služby zabezpečení.
 services: iot-edge
-keywords: zabezpečení, element, enklávy, IoT Edge
+keywords: zabezpečení, zabezpečené element, enklávy, TEE, IoT Edge
 author: eustacea
 manager: timlt
 ms.author: eustacea
 ms.date: 07/30/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 4594685291396b8b80e62abe57be109f0abbd81d
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: f0e548cdd1c59dc894899ddbac127dd76db7db26
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126339"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321163"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Správce zabezpečení služby Azure IoT Edge
 
@@ -113,7 +113,7 @@ HSM PAL abstrahuje všechny kořenové důvěryhodnosti hardwaru Izolovat uživa
 
 ## <a name="secure-silicon-root-of-trust-hardware"></a>Zabezpečené silicon kořenové důvěryhodnosti hardwaru
 
-Zabezpečené silicon je potřeba ukotvení důvěryhodnosti uvnitř hardwaru zařízení IoT Edge.  Zabezpečené silicon se dělí na různých Trusted Platform Module (TPM), zabezpečené vložený Element (příjemci), ARM Trustzone, Intel SGX a vlastní zabezpečené silicon technologie.  Použití zabezpečeného silicon kořenové důvěryhodnosti v zařízení důrazně doporučujeme zadaný rizika související s usnadněním fyzicky zařízení IoT.
+Zabezpečené silicon je potřeba ukotvení důvěryhodnosti uvnitř hardwaru zařízení IoT Edge.  Zabezpečené silicon se dělí na různých Trusted Platform Module (TPM), zabezpečené vložený Element (technologii eSE), ARM TrustZone, Intel SGX a vlastní zabezpečené silicon technologie.  Použití zabezpečeného silicon kořenové důvěryhodnosti v zařízení důrazně doporučujeme zadaný rizika související s usnadněním fyzicky zařízení IoT.
 
 ## <a name="iot-edge-security-manager-integration-and-maintenance"></a>Integrace správce zabezpečení ve službě IoT Edge a údržba
 

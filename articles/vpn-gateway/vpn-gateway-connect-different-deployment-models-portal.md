@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2018
 ms.author: cherylmc
-ms.openlocfilehash: 5e51027455da1f8be34d99c79bc79bc37df57d14
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 6a585155e1d1050498754f5b9a7ec3dfc82d7a2c
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38721551"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319927"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Připojení virtuálních sítí z různých modelů nasazení pomocí portálu
 
@@ -83,8 +83,8 @@ Následující tabulka uvádí příklad, jak jsou definované příklad virtuá
 
 | Virtual Network | Adresní prostor | Oblast | Se připojí k místní síťové lokality |
 |:--- |:--- |:--- |:--- |
-| ClassicVNet |(10.0.0.0/24) |Západní USA | RMVNetLocal (192.168.0.0/16) |
-| RMVNet | (192.168.0.0/16) |Východ USA |ClassicVNetLocal (10.0.0.0/24) |
+| ClassicVNet |(10.0.0.0/24) |USA – západ | RMVNetLocal (192.168.0.0/16) |
+| RMVNet | (192.168.0.0/16) |USA – východ |ClassicVNetLocal (10.0.0.0/24) |
 
 ## <a name="classicvnet"></a>Oddíl 1 – konfigurace nastavení klasické virtuální sítě
 
@@ -182,8 +182,8 @@ Před vytvořením brány virtuální sítě, musíte nejprve vytvořit podsíť
 
 | Virtual Network | Adresní prostor | Oblast | Se připojí k místní síťové lokality |Veřejné IP adresy brány|
 |:--- |:--- |:--- |:--- |:--- |
-| ClassicVNet |(10.0.0.0/24) |Západní USA | RMVNetLocal (192.168.0.0/16) |Veřejnou IP adresu, která je přiřazena ClassicVNet brány|
-| RMVNet | (192.168.0.0/16) |Východ USA |ClassicVNetLocal (10.0.0.0/24) |Veřejnou IP adresu, která je přiřazena RMVNet brány.|
+| ClassicVNet |(10.0.0.0/24) |USA – západ | RMVNetLocal (192.168.0.0/16) |Veřejnou IP adresu, která je přiřazena ClassicVNet brány|
+| RMVNet | (192.168.0.0/16) |USA – východ |ClassicVNetLocal (10.0.0.0/24) |Veřejnou IP adresu, která je přiřazena RMVNet brány.|
 
 Brána místní sítě určuje rozsah adres a veřejnou IP adresu přidružené k vaší klasickou virtuální sítí a svou bránu virtuální sítě. Pokud byste tyto kroky jako cvičení, podívejte se na ukázkové hodnoty.
 
@@ -230,7 +230,7 @@ V následujícím postupu nakonfigurujte připojení z klasické virtuální sí
 
 ### <a name="1-connect-to-your-azure-account"></a>1. Připojení k účtu Azure
 
-Otevřete konzolu Powershellu se zvýšenými oprávněními a připojte se k účtu Azure. Část 5 – ověření připojení Následující rutina vás vyzve k zadání přihlašovacích údajů pro váš účet Azure pro model nasazení Resource Manager:
+Otevřete konzolu Powershellu se zvýšenými oprávněními a připojte se k účtu Azure. Po přihlášení se stáhnou nastavení svého účtu tak, aby byly k dispozici pro prostředí Azure PowerShell. Následující rutina vás vyzve k zadání přihlašovacích údajů pro váš účet Azure pro model nasazení Resource Manager:
 
 ```powershell
 Connect-AzureRmAccount
@@ -242,7 +242,7 @@ Načtěte seznam předplatných Azure.
 Get-AzureRmSubscription
 ```
 
-Chcete-li ověřit připojení z klasické virtuální sítě k virtuální síti správce prostředků
+Pokud máte více než jedno předplatné, zadejte předplatné, pro kterou chcete použít.
 
 ```powershell
 Select-AzureRmSubscription -SubscriptionName "Name of subscription"
@@ -260,7 +260,7 @@ Získá seznam vašich předplatných. Tento krok může být nutné při přid�
 Get-AzureSubscription
 ```
 
-Chcete-li ověřit připojení z klasické virtuální sítě k virtuální síti správce prostředků
+Pokud máte více než jedno předplatné, zadejte předplatné, pro kterou chcete použít.
 
 ```powershell
 Select-AzureSubscription -SubscriptionName "Name of subscription"
@@ -294,7 +294,7 @@ Set-AzureVNetGatewayKey -VNetName "Group ClassicRG ClassicVNet" `
 -LocalNetworkSiteName "172B9E16_RMVNetLocal" -SharedKey abc123
 ```
 
-##<a name="verify"></a>Část 6 – ověření připojení
+## <a name="verify"></a>Část 6 – ověření připojení
 
 Ověření připojení pomocí webu Azure portal nebo Powershellu. Při ověřování, možná budete muset počkat jednu minutu nebo dvě jako připojení se vytváří. Pokud je připojení úspěšné, stav připojení se změní z "Připojení" na "Připojeno".
 

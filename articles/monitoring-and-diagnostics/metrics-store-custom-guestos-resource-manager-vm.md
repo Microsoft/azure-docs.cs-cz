@@ -8,12 +8,12 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 4ed911766a14dd35ea662326a5d50df11cf81698
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f3076054eb6e18eb5143a34ba558c1f9e43ea4a5
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984060"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345182"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Odeslání metrik operačního systému hosta metriky Azure Monitor ukládat pomocí šablony Resource Manageru pro virtuální počítač Windows
 
@@ -64,7 +64,7 @@ Přidat ID účtu úložiště do **proměnné** část šablony po vstupu pro *
     "accountid": "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]", 
 ```
 
-Toto rozšíření Identity spravované služby (MSI) přidejte do šablony v horní část "resources".  Rozšíření zajistí, že Azure Monitor přijímá metriky probíhá emitovány.  
+Přidáte do šablony v horní část "resources" této spravované identity pro rozšíření prostředků Azure.  Rozšíření zajistí, že Azure Monitor přijímá metriky probíhá emitovány.  
 
 ```json
 //Find this code 

@@ -10,15 +10,16 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: 08790d73dd4fd182d8129c755a291fd99b6136a2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6089f053472faaa7fa8c957904f73c7061cb2d3f
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954105"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344921"
 ---
 # <a name="basic-concepts"></a>Základní koncepty
+
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 Tato stránka popisuje některé základní pojmy v Microsoft službu rozpoznávání řeči. Doporučujeme vám přečíst si téma na této stránce než začnete používat rozhraní API pro rozpoznávání řeči Microsoft ve vaší aplikaci.
 

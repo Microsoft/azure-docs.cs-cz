@@ -10,15 +10,16 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: cf21b11f76592f5df2d81e6bdc10413c79fe895e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 510bc258aae80582e85478936c3281198e89d755
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979222"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343159"
 ---
 # <a name="chunked-transfer-encoding"></a>Blokové kódování přenosu
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 Pro přepisy převod řeči na text, rozhraní API pro rozpoznávání řeči Microsoft vám umožní odeslat zvuk jako jeden celý blok dat nebo jej zvuku do malých bloků. Pro efektivní streamování zvuku a snížení latence přepis, se doporučuje použít [blokového kódování přenosu](https://en.wikipedia.org/wiki/Chunked_transfer_encoding) ke streamování zvuku a služby. V jiných implementacích může vést k vyšší latencí vnímané uživatele. Další informace najdete v tématu [zvukové datové proudy](../concepts.md#audio-streams) stránky.
 

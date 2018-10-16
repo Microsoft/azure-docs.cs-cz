@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/05/2018
-ms.openlocfilehash: 124e936b619e3078c71094156bf91a437a28492b
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 77c761ce72449f91cf91c66219ebc815d1620e94
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48862759"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343670"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Funkce Azure Stream Analytics ve verzi preview
 
@@ -67,9 +67,9 @@ Vývojáři teď můžete implementovat vlastní deserializers v jazyce C# k des
 
 Nyní je možné rozdělit do úložiště objektů Blob podle libovolného sloupce v dotazu výstupu Azure Stream Analytics.
 
-### <a name="managed-service-identity-msi-authentication-to-azure-data-lake-storage"></a>Spravované ověřování identit služby (MSI) do služby Azure Data Lake Storage
+### <a name="managed-identities-for-azure-resources-authentication-to-azure-data-lake-storage"></a>Spravovaných identit pro ověřování prostředků Azure do služby Azure Data Lake Storage
 
-Můžete teď provozu v reálném čase kanály s ověřováním na základě Instalační služby MSI při zápisu do Azure Data Lake Storage Gen1 umožňuje programově vytvářet úlohy. Další informace najdete v článku [použití spravované identity k ověření Azure Stream Analytics úloh do Azure Data Lake Storage Gen1 výstupu](stream-analytics-managed-identities-adls.md).
+Můžete teď provozu v reálném čase kanály pomocí spravované identity pro prostředky Azure na základě ověření při zápisu do Azure Data Lake Storage Gen1 umožňuje programově vytvářet úlohy. Další informace najdete v článku [použití spravovaných identit pro prostředky Azure, které ověřování Azure Stream Analytics úloh do Azure Data Lake Storage Gen1 výstupu](stream-analytics-managed-identities-adls.md).
 
 ## <a name="next-steps"></a>Další postup
 

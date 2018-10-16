@@ -10,12 +10,12 @@ ms.component: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: da5e03e5fd3259157ee33744b614e2be3e284eb8
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 915e2e5a67d068c418ce50eee9d84dc66e61ee00
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901921"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321287"
 ---
 # <a name="calchistogram-method"></a>CalcHistogram – metoda
 
@@ -35,10 +35,12 @@ Název  |Hodnota | Povinné?  |Popis
 **výraz**    |Textový řetězec | Ano  |Výraz dotazu, který určuje entity, přes která chcete vypočítat histogramy.
 **Model** |Textový řetězec | Ne |Vyberte název modelu, který chcete dotazovat.  V současné době má výchozí hodnotu *nejnovější*.
 **Atributy** | Textový řetězec | Ne<br>Výchozí hodnota: | Čárkami oddělený seznam, který určuje hodnoty atributů, které jsou zahrnuty v odpovědi. Názvy atributů rozlišují malá a velká písmena.
-**Počet** |Číslo | Ne<br>Výchozí: 10 |Číslo s vrácenými výsledky.
+**count** |Číslo | Ne<br>Výchozí: 10 |Číslo s vrácenými výsledky.
 **Posun**  |Číslo | Ne<br>Výchozí: 0 |Index první výsledek vrátit.
-<br>
+**časový limit**  |Číslo | Ne<br>Výchozí: 1000 |Časový limit v milisekundách. Jsou vráceny pouze interpretace nalezen předtím, než vypršel časový limit.
+
 ## <a name="response-json"></a>Odpověď (JSON)
+
 Název | Popis
 --------|---------
 **výraz**  |Výraz parametru z požadavku.
@@ -53,7 +55,7 @@ Název | Popis
 **histogramy [.count .histogram [y] x]**  |Počet odpovídajících entit s touto hodnotou atributu.
 **Přerušeno** | True, pokud vypršel časový limit žádosti.
 
- <br>
+
 #### <a name="example"></a>Příklad:
 ```
 https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?expr=And(Composite(AA.AuN=='jaime teevan'),Y>2012)&attributes=Y,F.FN&count=4

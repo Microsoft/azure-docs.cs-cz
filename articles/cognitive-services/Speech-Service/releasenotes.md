@@ -7,16 +7,30 @@ author: wolfma61
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 10/12/2018
 ms.author: wolfma
-ms.openlocfilehash: cfc8f973ac9bced9396a081f7fb2ab6a4a1b2f7f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3a9da3b0f2165dadd99691c6dc9e41cbf3d48620
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963079"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339997"
 ---
 # <a name="release-notes"></a>Poznámky k verzi
+
+## <a name="cognitive-services-speech-sdk-101"></a>Rozpoznávání řeči služeb cognitive Services SDK 1.0.1
+
+Vylepšení spolehlivosti a opravy chyb:
+
+* Opravte potenciální závažná chyba z důvodu časování v uvolňování modulu pro rozpoznávání
+* Opravte potenciální závažná chyba v případě zrušit nastavení vlastnosti.
+* Další chyby a Kontrola parametrů.
+* C: cíl opravit možné závažná chyba způsobená podle názvu v NSString přepsání.
+* Objectice C: nastavit viditelnost rozhraní API
+* Jazyk JavaScript: opravy týkající se událostí a instalační soubory.
+* Dokumentace k vylepšení.
+
+V našem [ukázkové úložiště](https://aka.ms/csspeech/samples), byl přidán nový ukázky pro jazyk JavaScript.
 
 ## <a name="cognitive-services-speech-sdk-100-2018-september-release"></a>Cognitive Services sadou SDK pro řeč 1.0.0: 2018zářijová verze
 

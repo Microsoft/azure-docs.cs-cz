@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2018
+ms.date: 09/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 29517f057599c7bf108d1c4d525b6c67c1b6b46a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 8b45acebf95d5bf24ff2045f5739c8584f374842
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311448"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320454"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure předávací ověřování služby Active Directory: Rychlý start
 
@@ -48,7 +48,7 @@ Ujistěte se, že jsou splněné následující požadavky.
 2. Nainstalujte [nejnovější verzi služby Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) na serveru identifikován v předchozím kroku. Pokud už máte Azure AD Connect běží, ujistěte se, že verze je 1.1.750.0 nebo novější.
 
     >[!NOTE]
-    >Azure AD Connect verze 1.1.557.0, 1.1.558.0, 1.1.561.0 a 1.1.614.0 máte problém související se synchronizace hodnot hash hesel. Pokud jste _není_ používat synchronizaci hodnot hash hesel ve spojení se předávací ověřování, přečtěte si [poznámky k verzi Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470).
+    >Azure AD Connect verze 1.1.557.0, 1.1.558.0, 1.1.561.0 a 1.1.614.0 máte problém související se synchronizace hodnot hash hesel. Pokud jste _není_ používat synchronizaci hodnot hash hesel ve spojení se předávací ověřování, přečtěte si [poznámky k verzi Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-version-history#116470).
 
 3. Identifikujte jednu nebo více dalších serverů (s Windows serverem 2012 R2 nebo novější) kde můžete spouštět samostatný agentů ověřování. Tyto další servery jsou potřebné k zajištění vysoké dostupnosti žádostí o přihlášení. Přidáte servery do stejné doménové struktuře služby Active Directory jako uživatelé, jejichž hesla je potřeba ověřit.
 
@@ -57,13 +57,13 @@ Ujistěte se, že jsou splněné následující požadavky.
 
 4. Pokud je brána firewall mezi servery a službou Azure AD, nakonfigurujte následující položky:
    - Ujistěte se, že můžete provést agentů ověřování *odchozí* žádostí do služby Azure AD prostřednictvím následující porty:
-   
+
     | Číslo portu | Jak se používá |
     | --- | --- |
     | **80** | Soubory ke stažení seznamů odvolaných certifikátů (CRL) při ověřování certifikátu SSL |
     | **443** | Zpracovává všechny odchozí komunikaci se službou |
     | **8080** (volitelné) | Agentů ověřování oznamují svůj stav každých deset minut přes port 8080, pokud je port 443 není k dispozici. Tento stav se zobrazí na portálu Azure AD. Port 8080 je _není_ používá pro přihlašování uživatelů. |
-   
+
     Pokud brána firewall vynucuje pravidla podle původního uživatele, otevřete tyto porty pro provoz služby Windows, na kterých běží jako síťové služby.
    - Pokud je vaše brána firewall nebo proxy server umožňuje DNS na seznam povolených, seznam povolených připojení k  **\*. msappproxy.net** a  **\*. servicebus.windows.net**. Pokud ne, povolit přístup k [rozsahy IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), který se každý týden aktualizuje.
    - Agentů ověřování potřebovat přístup k **login.windows.net** a **login.microsoftonline.com** pro počáteční registraci. Otevřete firewall pro tyto adresy URL také.
@@ -132,13 +132,13 @@ Za druhé můžete vytvořit a spustit skript bezobslužné nasazení. To je už
 
 1. Spusťte následující příkaz k instalaci agenta ověřování: `AADConnectAuthAgentSetup.exe REGISTERCONNECTOR="false" /q`.
 2. Ověřovací Agent můžete zaregistrovat v naší službě pomocí Windows Powershellu. Vytvořte objekt pověření prostředí PowerShell `$cred` , která obsahuje uživatelské jméno globálního správce a heslo pro vašeho tenanta. Spusťte následující příkaz a nahraďte *\<uživatelské jméno\>* a  *\<heslo\>*:
-   
+
         $User = "<username>"
         $PlainPassword = '<password>'
         $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
         $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $User, $SecurePassword
 3. Přejděte na **C:\Program Files\Microsoft Azure AD Connect ověřovací Agent** a spusťte následující skript využívající `$cred` objekt, který jste vytvořili:
-   
+
         RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
 
 ## <a name="next-steps"></a>Další postup
@@ -151,4 +151,3 @@ Za druhé můžete vytvořit a spustit skript bezobslužné nasazení. To je už
 - [Podrobné informace o zabezpečení](how-to-connect-pta-security-deep-dive.md): získat technické informace o funkci předávací ověřování.
 - [Azure AD bezproblémového jednotného přihlašování k](how-to-connect-sso.md): Další informace o této doplňkové funkce.
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): použijte fórum Azure Active Directory do souboru žádostí o nové funkce.
-

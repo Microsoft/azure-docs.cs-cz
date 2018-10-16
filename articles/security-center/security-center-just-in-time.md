@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2018
+ms.date: 10/10/2018
 ms.author: rkarlin
-ms.openlocfilehash: cb13da7ad9387b7170882752b1620c2756bc3675
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 98533e3c1454867ff09c53902f0f575d198452a3
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124146"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320335"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Správa přístupu k virtuálním počítačům pomocí metody právě včas
 
@@ -111,6 +111,33 @@ V části **konfigurace přístupu k virtuálnímu počítači podle potřeby**,
 > [!NOTE]
 >Pokud přístup k virtuálnímu počítači JIT je povolena pro virtuální počítač, Azure Security Center vytvoří zakázat všechna pravidla pro příchozí provoz pro vybrané porty ve skupinách zabezpečení sítě s ním spojená. Pravidla budou buď skupiny zabezpečení sítě s nejvyšší prioritou, nebo nižší prioritu než mají existující pravidla, které jsou již existuje. To závisí na analýzu provádí Azure Security Center, která určuje, zda je pravidlo zabezpečení nebo ne.
 >
+
+
+## <a name="set-just-in-time-within-a-vm"></a>Nastavte just-in-time v rámci virtuálního počítače
+
+Abyste usnadnili snadnou zavedení přístup za běhu na vašich virtuálních počítačích, můžete nastavit virtuální počítač povolit pouze just-in-time přístup přímo z v rámci virtuálního počítače.
+
+1. Na webu Azure Portal, vyberte **virtuálních počítačů**.
+2. Klikněte na virtuální počítač, který chcete omezit přístup just-in-time.
+3. V nabídce klikněte na tlačítko **konfigurace**.
+4. V části **pouze v čase přístupu** klikněte na tlačítko **just-in-time zásadu Povolit**. 
+
+To umožňuje přístup just-in-time pro virtuální počítač pomocí následujících nastavení:
+
+- Windows servery:
+    - Port 3389 pro RDP
+    - 3 hodiny přístupu
+    - Povolené zdrojové IP adresy je nastavena na každý požadavek
+- Servery s Linuxem:
+    - SSH port 22
+    - 3 hodiny přístupu
+    - Povolené zdrojové IP adresy je nastavena na každý požadavek
+     
+Pokud je virtuální počítač už just-in-time povolena, když přejdete na stránku jeho konfigurace bude možné zjistit, že je povolená v čase a odkaz můžete otevřít ve službě Azure Security Center k zobrazení a změna nastavení zásad.
+
+![Konfigurace JIT ve virtuálním počítači](./media/security-center-just-in-time/jit-vm-config.png)
+
+
 ## <a name="requesting-access-to-a-vm"></a>Žádost o přístup k virtuálnímu počítači
 
 Chcete-li požádat o přístup k virtuálnímu počítači:

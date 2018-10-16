@@ -10,15 +10,16 @@ ms.component: translator-speech
 ms.topic: conceptual
 ms.date: 05/18/18
 ms.author: v-jansko
-ROBOTS: NOINDEX
-ms.openlocfilehash: 9fbbba7ed5e81cae1d30c5a480b9f7f7a13342c5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b7005811898df9132be6bc199e26f6c6dc358618
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986417"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345199"
 ---
 # <a name="translator-speech-api-languages"></a>Translator Speech API: jazyků
+
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
 Translator Speech neustále rozšiřuje seznam jazyků podporovaných jeho služeb. Zjistit skupinu jazyků, které jsou aktuálně k dispozici pro použití ve službě Translator Speech pomocí tohoto rozhraní API.
 
@@ -130,7 +131,7 @@ Langagues {řeči (object, volitelné), text (object, volitelné), převod textu
 
 ### <a name="headers"></a>Hlavičky
 
-|Záhlaví|Popis|Typ|
+|Hlavička|Popis|Typ|
 :--|:--|:--|
 X-RequestId|Hodnota generován serverem k identifikaci žádosti a používá pro účely odstraňování potíží.|řetězec|
 

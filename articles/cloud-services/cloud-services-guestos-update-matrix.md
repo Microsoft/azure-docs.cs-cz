@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 9/13/2018
+ms.date: 10/12/2018
 ms.author: raiye
-ms.openlocfilehash: 239482151384ff555d86e3d639bfe1d75b0d0ceb
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 437fc63641ed6a28f34b4b7cb96dbdc0888c50f5
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604888"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321865"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure verzí hostovaného operačního systému a matice kompatibility sady SDK
 Poskytuje že vám aktuální informace o nejnovější verzi operačního systému hosta Azure uvolní pro cloudové služby. Tyto informace pomohou při plánování způsob upgradu, než je zakázáno hostovaného operačního systému. Je-li konfigurovat vaše role používat *automatické* aktualizace hostovaného operačního systému, jak je popsáno v [nastavení aktualizace operačního systému hosta Azure][Azure Guest OS Update Settings], není důležité, abyste si přečetli tuto stránku.
@@ -42,6 +42,9 @@ Poskytuje že vám aktuální informace o nejnovější verzi operačního syst�
 Informace o tom, jak aktualizovat vaše hostovaného operačního systému nejste si jistí? Zkontrolujte [to] [ cloud updates] navýšení kapacity.
 
 ## <a name="news-updates"></a>Aktualizace zprávy
+
+###### <a name="october-12-2018"></a>**12. října 2018**
+Hostovaný operační systém. září vydala.
 
 ###### <a name="september-12-2018"></a>**12. září 2018**
 Hostovaný operační systém. srpna vydala.
@@ -93,8 +96,9 @@ Nainstalované rozhraní .NET framework: 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1 a 4.
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+| WA-GUEST-OS-5.23_201809-01 |12. října 2018 |Příspěvek 5,25 |
 | WA-GUEST-OS-5.22_201808-01 |12. září 2018 |Příspěvek 5,24 |
-| WA-GUEST-OS-5.21_201807-02 |3. srpna 2018 |Příspěvek 5.23 |
+|~~WA-GUEST-OS-5.21_201807-02~~ |3. srpna 2018 |12. října 2018 |
 |~~WA-GUEST-OS-5.20_201806-01~~ |3. července 2018 |12. září 2018 |
 |~~WA-GUEST-OS-5.19_201805-01~~ |1. června 2018 |3. srpna 2018 |
 |~~WA-GUEST-OS-5.18_201804-01~~ |4. května 2018 |3. července 2018 |
@@ -113,8 +117,9 @@ Nainstalované rozhraní .NET framework: 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+| WA-GUEST-OS-4.58_201809-01 |12. října 2018 |Příspěvek 4.60 |
 | WA-GUEST-OS-4.57_201808-01 |12. září 2018 |Příspěvek 4.59 |
-| WA-GUEST-OS-4.56_201807-02 |3. srpna 2018 |Příspěvek 4.58 |
+|~~WA-GUEST-OS-4.56_201807-02~~ |3. srpna 2018 |12. října 2018 |
 |~~WA-GUEST-OS-4.55_201806-01~~ |3. července 2018 |12. září 2018 |
 |~~WA-GUEST-OS-4.54_201805-01~~ |1. června 2018 |3. srpna 2018 |
 |~~WA-GUEST-OS-4.53_201804-01~~ |4. května 2018 |3. července 2018 |
@@ -133,8 +138,9 @@ Nainstalované rozhraní .NET framework: 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+| WA-GUEST-OS-3.65_201809-01 |12. října 2018 |Příspěvek 3.67 |
 | WA-GUEST-OS-3.64_201808-01 |12. září 2018 |Příspěvek 3,66 |
-| WA-GUEST-OS-3.63_201807-02 |3. srpna 2018 |Příspěvek 3.65 |
+|~~WA-GUEST-OS-3.63_201807-02~~ |3. srpna 2018 |12. října 2018 |
 |~~WA-GUEST-OS-3.62_201806-01~~ |3. července 2018 |12. září 2018 |
 |~~WA-GUEST-OS-3.61_201805-01~~ |1. června 2018 |3. srpna 2018 |
 |~~WA-GUEST-OS-3.60_201804-01~~ |4. května 2018 |3. července 2018 |
@@ -153,8 +159,9 @@ Nainstalované rozhraní .NET framework: 3.5, 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+| WA-GUEST-OS-2.78_201809-01 |12. října 2018 |Příspěvek 2,80 |
 | WA-GUEST-OS-2.77_201808-01 |12. září 2018 |Příspěvek 2.79 |
-| WA-GUEST-OS-2.76_201807-02 |3. srpna 2018 |Příspěvek 2.78 |
+|~~WA-GUEST-OS-2.76_201807-02~~ |3. srpna 2018 |12. října 2018 |
 |~~WA-GUEST-OS-2.75_201806-01~~ |3. července 2018 |12. září 2018 |
 |~~WA-GUEST-OS-2.74_201805-01~~ |1. června 2018 |3. srpna 2018|
 |~~WA-GUEST-OS-2.73_201804-01~~ |4. května 2018 |3. července 2018 |

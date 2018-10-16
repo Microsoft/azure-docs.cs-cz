@@ -10,19 +10,20 @@ ms.component: translator-speech
 ms.topic: reference
 ms.date: 05/18/2018
 ms.author: v-jansko
-ROBOTS: NOINDEX
-ms.openlocfilehash: 46aeab52014a28d1a962195de802d0e000b62509
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1fc48687141ea8a7e8cb30d3438d81e8f1088e4f
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978705"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340439"
 ---
 # <a name="translator-speech-api"></a>Translator Speech API
 
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
+
 Tato služba nabízí rozhraní API pro streamování na přepisy konverzační řeči z jednoho jazyka do textu z jiného jazyka. Rozhraní API se také integruje možnosti převod textu na řeč k přečtení přeloženého textu. Rozhraní Translator Speech API umožňuje scénáře, jako jsou překlad v reálném čase konverzací, jak je vidět v Skype Translator.
 
-S rozhraním Translator Speech API klientské aplikace Streamovat zvuk řeči ve službě a získávejte zpět o textové výsledky, které zahrnují rozpoznaný text v Zdrojový jazyk a překladu v cílovém jazyce. Textové výsledky jsou vytvořené pomocí automatického rozpoznávání řeči rozpoznávání (ASR) s využitím hloubkových neurálních sítí pro příchozí zvukový datový proud. Nezpracovaného výstupu Azure Site Recovery je dál vylepšit nové techniky označované jako TrueText, aby bylo možné lépe odrážejí záměru uživatele. Například TrueText odebere disfluencies (hmms a coughs) a interpunkční znaménka správné obnovení a malá a velká písmena. Možnost k maskování nebo vyloučit profanities je také součástí. Rozpoznávání a překladu modulů vyškolení speciálně pro zpracování řeči konverzační. Překlad řeči služba používá nečinnosti detekce k určení konce utterance. Po pozastavení v aktivitě hlasové služby bude Streamovat zpět konečný výsledek pro dokončené utterance. Službu můžete také odeslat zpět částečných výsledků, které poskytují zprostředkující rozpoznávání a překlady pro utterance probíhá. Pro konečných výsledků služba poskytuje možnost tak, aby odpovídaly řeči (převod textu na řeč) z mluveného textu v cílovém jazyce. Převod textu na řeč zvuk se vytvoří ve formátu určená klientem. Formáty zvuku WAV a MP3 jsou k dispozici.
+S rozhraním Translator Speech API klientské aplikace Streamovat zvuk řeči ve službě a získávejte zpět o textové výsledky, které zahrnují rozpoznaný text v Zdrojový jazyk a překladu v cílovém jazyce. Výsledný text se vytváří tak, že se pro příchozí zvukový stream použije automatické rozpoznávání řeči (ASR) na bázi neuronových sítí. Nezpracovaného výstupu Azure Site Recovery je dál vylepšit nové techniky označované jako TrueText, aby bylo možné lépe odrážejí záměru uživatele. Například TrueText odebere disfluencies (hmms a coughs) a interpunkční znaménka správné obnovení a malá a velká písmena. K dispozici je také možnost maskování nebo vyloučení neslušných slov. Moduly pro rozpoznávání a překlad jsou speciálně natrénované tak, aby zvládly zpracování hovorové řeči. Překlad řeči služba používá nečinnosti detekce k určení konce utterance. Po pauze v hlasové aktivitě začne služba streamovat zpět konečný výsledek pro skončenou promluvu. Služba může odesílat zpět také částečné výsledky, které poskytují rozpoznávání a překlady částí probíhající promluvy. Pro konečných výsledků služba poskytuje možnost tak, aby odpovídaly řeči (převod textu na řeč) z mluveného textu v cílovém jazyce. Zvuk se při převodu textu na řeč vytváří ve formátu určeném klientem. K dispozici jsou formáty WAV a MP3.
 
 Translator Speech API využívá protokol WebSocket poskytnout plně duplexní komunikační kanál mezi klientem a serverem. Aplikace vyžaduje tyto kroky k používání služby:
 

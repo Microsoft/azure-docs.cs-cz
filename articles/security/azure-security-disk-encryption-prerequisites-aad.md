@@ -7,12 +7,12 @@ ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
 ms.date: 10/12/2018
-ms.openlocfilehash: 9fefe75d43630a68a2d22bdc3270f255587030d0
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 8b0f682e481ef73019d3371af2b84f6270e021ee
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311002"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341884"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Požadavky Azure Disk Encryption (předchozí verze)
 
@@ -54,8 +54,8 @@ Příklad příkazy, které je možné připojit datové disky a vytvořte nezby
   - Zapsat šifrovací klíče do trezoru klíčů, musí být virtuální počítač IaaS může připojit ke koncovému bodu trezoru klíčů.
   - Virtuální počítač IaaS musí být schopný se připojit k koncový bod služby Azure storage, který je hostitelem úložiště rozšíření Azure a účet úložiště Azure, který je hostitelem souborů virtuálního pevného disku.
   -  Pokud vaše zásady zabezpečení omezuje přístup z virtuálních počítačů Azure na Internetu, můžete vyřešit předchozí identifikátor URI a nakonfigurovat konkrétní pravidlo pro povolení odchozích připojení k IP adres. Další informace najdete v tématu [Azure Key Vault za bránou firewall](../key-vault/key-vault-access-behind-firewall.md).
-  - Na Windows, pokud byl explicitně zakázán protokol TLS 1.0 a verze rozhraní .NET se neaktualizoval na 4.6 nebo novější, následující změny registru povolí ADE vybrat novější verze TLS: "verze 5.00 Editor registru Windows
-
+  - Na Windows Pokud byl explicitně zakázán protokol TLS 1.0 a verze rozhraní .NET se neaktualizoval na 4.6 nebo novější, následující změny registru povolí ADE vybrat novější verze TLS:
+    
         [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
         "SystemDefaultTlsVersions"=dword:00000001
         "SchUseStrongCrypto"=dword:00000001
@@ -63,6 +63,7 @@ Příklad příkazy, které je možné připojit datové disky a vytvořte nezby
         [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
         "SystemDefaultTlsVersions"=dword:00000001
         "SchUseStrongCrypto"=dword:00000001` 
+     
 
  
 

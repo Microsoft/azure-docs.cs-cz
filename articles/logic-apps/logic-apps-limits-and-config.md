@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 10/11/2018
-ms.openlocfilehash: 8aa2627f46be1e375fb3c3e565848a930ba6726b
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 52f30adf1ea383b098d3f187a315257f101e8a9b
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167439"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320426"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a konfigurační informace pro Azure Logic Apps
 
@@ -111,9 +111,22 @@ Tady jsou limity pro běh aplikace logiky jeden:
 
 Ambice tato omezení v normálním zpracování nebo spustit zátěžové testování, který může přejít nad tyto limity [obraťte se na tým Logic Apps](mailto://logicappsemail@microsoft.com) nápovědu k vašim požadavkům.
 
+<a name="sftp"></a>
+
+## <a name="ftp-sftp-and-sftp-ssh-limits"></a>Omezení serveru FTP, SFTP a SFTP-SSH
+
+### <a name="file-size"></a>Velikost souboru
+
+| Název | Omezení | Poznámky |
+|------|-------|-------|
+| FTP | 50 MB | Chcete-li toto omezení obejít, přečtěte si téma [zpracování velkých zpráv s dělením dat do bloků](../logic-apps/logic-apps-handle-large-messages.md). Ale některé konektory a rozhraní API nemusí podporovat bloků nebo dokonce výchozí omezení. | 
+| SFTP | 50 MB | Chcete-li toto omezení obejít, použijte [konektoru SFTP-SSH](../connectors/connectors-sftp-ssh.md) nebo naleznete v tématu [zpracování velkých zpráv s dělením dat do bloků](../logic-apps/logic-apps-handle-large-messages.md). Ale některé konektory a rozhraní API nemusí podporovat bloků nebo dokonce výchozí omezení. | 
+| SFTP-SSH | 1 GB | Chcete-li toto omezení obejít, přečtěte si téma [zpracování velkých zpráv s dělením dat do bloků](../logic-apps/logic-apps-handle-large-messages.md). Ale některé konektory a rozhraní API nemusí podporovat bloků nebo dokonce výchozí omezení. | 
+|||| 
+
 <a name="request-limits"></a>
 
-## <a name="http-request-limits"></a>Omezení požadavku HTTP
+## <a name="http-limits"></a>Omezení protokolu HTTP
 
 Tady jsou limity pro jednoho požadavku HTTP nebo volání synchronní konektoru:
 
@@ -143,18 +156,6 @@ Některé konektor operace asynchronního volání nebo naslouchání požadavk�
 | Opakované pokusy | 90 | Výchozí hodnota je 4. Chcete-li změnit výchozí nastavení, použijte [opakujte parametr zásad](../logic-apps/logic-apps-workflow-actions-triggers.md). | 
 | Maximální zpoždění při opakování | 1 den | Chcete-li změnit výchozí nastavení, použijte [opakujte parametr zásad](../logic-apps/logic-apps-workflow-actions-triggers.md). | 
 | Min zpoždění při opakování | 5 sekund | Chcete-li změnit výchozí nastavení, použijte [opakujte parametr zásad](../logic-apps/logic-apps-workflow-actions-triggers.md). |
-|||| 
-
-<a name="sftp"></a>
-
-## <a name="sftp-and-sftp-ssh-limits"></a>Omezení protokolu SFTP a SFTP-SSH
-
-### <a name="file-size"></a>Velikost souboru
-
-| Název | Omezení | Poznámky |
-|------|-------|-------|
-| SFTP | 50 MB | Chcete-li toto omezení obejít, použijte [konektoru SFTP-SSH](../connectors/connectors-sftp-ssh.md) nebo naleznete v tématu [zpracování velkých zpráv s dělením dat do bloků](../logic-apps/logic-apps-handle-large-messages.md). Ale některé konektory a rozhraní API nemusí podporovat bloků nebo dokonce výchozí omezení. | 
-| SFTP-SSH | 1 GB | Chcete-li toto omezení obejít, přečtěte si téma [zpracování velkých zpráv s dělením dat do bloků](../logic-apps/logic-apps-handle-large-messages.md). Ale některé konektory a rozhraní API nemusí podporovat bloků nebo dokonce výchozí omezení. | 
 |||| 
 
 <a name="custom-connector-limits"></a>

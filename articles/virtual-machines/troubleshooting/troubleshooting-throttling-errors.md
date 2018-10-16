@@ -13,12 +13,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: vashan, rajraj, changov
-ms.openlocfilehash: 7a1c283820b1ddef0c85899d9b56b6dcc3ea4b95
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: d9d9e9cdb791504c864cae20d1248ba78a180a4c
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043131"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320267"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>Řešení potíží s chybami omezení rozhraní API 
 
@@ -32,7 +32,7 @@ Když klienta aplikace Azure API získá omezení chybu, je stav protokolu HTTP 
 
 ## <a name="call-rate-informational-response-headers"></a>Hlavičky odpovědi informační frekvence volání 
 
-| Záhlaví                            | Formát hodnoty                           | Příklad:                               | Popis                                                                                                                                                                                               |
+| Hlavička                            | Formát hodnoty                           | Příklad:                               | Popis                                                                                                                                                                                               |
 |-----------------------------------|----------------------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | x-ms-ratelimit – zbývající prostředků |```<source RP>/<policy or bucket>;<count>```| Microsoft.Compute/HighCostGet3Min;159 | Zbývající počet volání rozhraní API pro zásady omezování pokrývající kontejneru nebo operace skupinu prostředků včetně cíl této žádosti                                                                   |
 | x-ms žádost poplatek               | ```<count>   ```                             | 1                                     | Počet volání vrátí "účtovat" pro tento požadavek HTTP směrem k příslušné zásady omezení. Toto je nejčastěji 1. Požadavky služby batch, například škálování škálovací sady virtuálních počítačů může účtovat více počty. |
@@ -49,7 +49,7 @@ x-ms-ratelimit-remaining-resource: Microsoft.Compute/VMScaleSetBatchedVMRequests
 x-ms-ratelimit-remaining-resource: Microsoft.Compute/VmssQueuedVMOperations;4720 
 ```
 
-##<a name="throttling-error-details"></a>Omezení šířky pásma podrobnosti o chybě
+## <a name="throttling-error-details"></a>Omezení šířky pásma podrobnosti o chybě
 
 Stav protokolu HTTP 429 se běžně používá chcete odmítnout žádost, protože je dosaženo omezení četnosti volání. Typická omezení chybová odpověď z poskytovatele výpočetních prostředků bude vypadat jako následující příklad (jsou zobrazeny pouze relevantní záhlaví):
 

@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: sasolank
-ms.openlocfilehash: ce4fd27c89f529b9c12999689152c3025648d2ce
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: c85aa2f7a41511d809405f3b92c9ded2eb0693ad
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42058641"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319859"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integraci služby API Management v interní virtuální síti pomocí služby Application Gateway
 
-##<a name="overview"> </a> Přehled
+## <a name="overview"> </a> Přehled
 
 Služba API Management je možné nakonfigurovat ve virtuální síti v interní režim, který je přístupný pouze z v rámci virtuální sítě. Azure Application Gateway je služba PAAS, která poskytuje nástroje pro vyrovnávání zatížení vrstvy 7. Funguje jako služba reverzních proxy serverů a poskytuje mezi jeho nabídky Firewall webových aplikací (WAF).
 
@@ -43,7 +43,7 @@ Chcete-li postupovat podle kroků popsaných v tomto článku, budete potřebova
 
 * Certifikáty – pfx a cer pro název hostitele rozhraní API a pfx pro název hostitele portálu pro vývojáře.
 
-##<a name="scenario"> </a> Scénář
+## <a name="scenario"> </a> Scénář
 
 Tento článek popisuje způsob použití jediné služby API Management pro interní a externí uživatele a fungují jako jeden front-endu pro obě místní a cloudové rozhraní API. Zobrazí se také, jak vystavit pouze podmnožinu vašich rozhraní API (v příkladu, které jsou zvýrazněny zeleně) pro externí spotřebu pomocí směrování funkce je dostupná ve službě Application Gateway.
 
@@ -349,7 +349,7 @@ Application Gateway název DNS by měla sloužit k vytvoření záznamu CNAME, k
 Get-AzureRmPublicIpAddress -ResourceGroupName $resGroupName -Name "publicIP01"
 ```
 
-##<a name="summary"> </a> Souhrn
+## <a name="summary"> </a> Souhrn
 Nakonfigurovaná ve virtuální síti Azure API Management poskytuje rozhraní jednu bránu pro všechny nakonfigurované rozhraní API, ať už jsou hostované v místním prostředí nebo v cloudu. Integrace Application Gateway pomocí služby API Management nabízí flexibilitu selektivně povolení konkrétní rozhraní API bude přístupný na Internetu, a také poskytuje firewallu webových aplikací jako front-endu k vaší instanci API Management.
 
 ##<a name="next-steps"> </a> Další kroky

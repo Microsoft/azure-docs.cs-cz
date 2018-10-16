@@ -11,33 +11,37 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2018
+ms.date: 10/15/2018
 ms.author: mabrigg
 ms.reviewer: alfredo
-ms.openlocfilehash: 9396d49f455f8f4af1abf7f0020e95e8fd0a14cc
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 67e1e22bc5569e7d6e20332ee86ffe4c7dd6a354
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729582"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343839"
 ---
 # <a name="manage-tenant-registration-in-azure-stack"></a>Spravovat registraci klientů ve službě Azure Stack
 
 *Platí pro: integrované systémy Azure Stack*
 
-Tento článek obsahuje podrobnosti o operacích, které můžete použít ke správě své registrace tenanta a jak sledovat využití tenanta. Můžete najít podrobnosti o tom, jak přidat, seznamu nebo odebrat mapování tenanta. Ke správě využití sledování můžete použít PowerShell nebo koncové body rozhraní API pro fakturaci.
+Tento článek obsahuje podrobnosti o registraci operace. Můžete použít tyto operace:
+- Spravovat registrace tenanta
+- Správa sledování využití tenanta
+
+Můžete najít podrobnosti o tom, jak přidat, seznamu nebo odebrat mapování tenanta. Ke správě využití sledování můžete použít PowerShell nebo koncové body rozhraní API pro fakturaci. Můžete najít podrobnosti o tom, jak přidat, seznamu nebo odebrat mapování tenanta. Ke správě využití sledování můžete použít PowerShell nebo koncové body rozhraní API pro fakturaci.
 
 ## <a name="add-tenant-to-registration"></a>Přidání tenanta k registraci
 
-Pokud chcete přidat nového tenanta k registraci, aby jejich využití je nahlášeno za předplatné Azure spojené s jejich tenanta Azure Active Directory (Azure AD), pomocí této operace.
+Pokud chcete přidat nového tenanta k registraci pomocí operace. Využití tenanta je nahlášeno za předplatné Azure spojené s jejich tenanta Azure Active Directory (Azure AD).
 
-Můžete také pomocí této operace, pokud chcete změnit předplatné spojené s tenantem, můžete volat PUT/New-AzureRMResource znovu. Staré mapování se přepíšou.
+Pokud chcete změnit předplatné spojené s tenantem, pomocí operace. Voláním PUT/New-AzureRMResource přepsat předchozí mapování.
 
-Všimněte si, že pouze jedno předplatné Azure může být přidružené ke klientovi. Pokud se pokusíte o přidání druhého předplatného do existujícího tenanta, je přepsání první předplatné. 
+V rámci jednoho předplatného Azure můžete přidružit tenanta. Pokud se pokusíte o přidání druhého předplatného do existujícího tenanta, je přepsání první předplatné.
 
 ### <a name="use-api-profiles"></a>Pomocí profilů rozhraní API
 
-Rutiny v tomto článku vyžadují, aby profil aplikace rozhraní API při spuštění PowerShell. Rozhraní API profily představují sadu poskytovatele prostředků Azure a jejich verzí rozhraní API. Umožňují použít správnou verzi rozhraní API při interakci s více cloudy Azure, například při práci s globální Azure a Azure Stack. Profily jsou určena podle názvu, která odpovídá jejich datum vydání. V tomto článku, budete muset použít **2017-09-03** profilu.
+Registrace rutin vyžadují, aby profil aplikace rozhraní API při spuštění PowerShell. Rozhraní API profily představují sadu poskytovatele prostředků Azure a jejich verzí rozhraní API. Pomáhají vám při interakci s více cloudy Azure použít správnou verzi rozhraní API. Například pracujete s několika cloudy při práci s globální Azure a Azure Stack. Profily zadejte název, který odpovídá datum jejich vydání. Budete muset použít **2017-09-03** profilu.
 
 Další informace o službě Azure Stack a profily rozhraní API najdete v tématu [profilů verzí API spravovat ve službě Azure Stack](user/azure-stack-version-profiles.md). Pokyny na zprovoznění s profilem rozhraní API s využitím Powershellu najdete v tématu [profilů verzí API použijte pro prostředí PowerShell ve službě Azure Stack](user/azure-stack-version-profiles-powershell.md).
 
@@ -46,7 +50,7 @@ Další informace o službě Azure Stack a profily rozhraní API najdete v téma
 | Parametr                  | Popis |
 |---                         | --- |
 | registrationSubscriptionID | Předplatné Azure použité pro počáteční registraci. |
-| customerSubscriptionID     | Předplatné Azure (ne Azure Stack) patřící do zákazníků k registraci. Musí být vytvořená v nabídce Cloud Service Provider (CSP). V praxi to znamená prostřednictvím partnerského centra. Pokud zákazník má více než jednoho tenanta, musí se vytvořit toto předplatné v tenantovi, který se použije k přihlášení do služby Azure Stack. |
+| customerSubscriptionID     | Předplatné Azure (ne Azure Stack) patřící do zákazníků k registraci. Musí být vytvořená v nabídce Cloud Service Provider (CSP) prostřednictvím partnerského centra. Pokud zákazník má více než jednoho tenanta, vytvoří předplatné pro příslušného tenanta pro přihlášení ke službě Azure Stack. |
 | Skupina prostředků              | Skupina prostředků v Azure, ve kterém je uložené registrace. |
 | registrationName           | Název registrace služby Azure Stack. Jde o objekt uložená v Azure. Název se obvykle formulář azurestack-CloudID, kde je CloudID ID cloudu nasazení Azure Stack. |
 

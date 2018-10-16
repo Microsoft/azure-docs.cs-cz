@@ -1,6 +1,6 @@
 ---
-title: Pomocí Instalační služby MSI v prostředí cloudu Azure | Microsoft Docs
-description: Ověřování kódu pomocí Instalační služby MSI v prostředí cloudu Azure
+title: Použití spravované identity pro prostředky Azure ve službě Azure Cloud Shell | Dokumentace Microsoftu
+description: Ověřování kódu pomocí Instalační služby MSI ve službě Azure Cloud Shell
 services: azure
 documentationcenter: ''
 author: jluk
@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: juluk
-ms.openlocfilehash: 99577faf7328dc773a9da5f7c1227aa63600aa0a
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 09f54efaf3ff89711c34b7960a271438f38cf224
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31517440"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345080"
 ---
-# <a name="use-msi-in-azure-cloud-shell"></a>Pomocí Instalační služby MSI v prostředí cloudu Azure
+# <a name="use-msi-in-azure-cloud-shell"></a>Použití MSI ve službě Azure Cloud Shell
 
-Prostředí Azure Cloud podporuje autorizace s spravovat identity služby (MSI). Využívat to načíst tokeny přístupu ke zabezpečeně komunikovat se službami Azure.
+Azure Cloud Shell podporuje ověřování pomocí spravované identity služby (MSI). Využijte tuto hodnotu na získání přístupových tokenů zabezpečeně komunikovat se službami Azure.
 
-## <a name="about-managed-service-identity-msi"></a>O identitě spravované služby (MSI)
-Běžné výzvu, při vytváření cloudové aplikace je bezpečně Správa přihlašovacích údajů, musí být v kódu ověřování pro cloudové služby. V prostředí cloudu budete muset ověřit načtení z Key Vault pro přihlašovací údaje, které může být nutné skript.
+## <a name="about-managed-service-identity-msi"></a>O identitu spravované služby (MSI)
+Běžné challenge vytváření cloudových aplikací po tom, jak bezpečně spravovat přihlašovací údaje, které musí být ve vašem kódu za účelem ověřování totožnosti ke cloudovým službám. Ve službě Cloud Shell, budete muset ověřit načtení ze služby Key Vault pro přihlašovací údaj, který možná bude nutné skript.
 
-Identita spravované služby (MSI) usnadňuje řešení tohoto problému jednodušší tím, že služby Azure automaticky spravované identity v Azure Active Directory (Azure AD). Tuto identitu můžete použít k ověření jakoukoli službu, která podporuje ověřování Azure AD, včetně Key Vault, bez nutnosti všechny přihlašovací údaje ve vašem kódu.
+Identita spravované služby (MSI) usnadňuje řešení tohoto problému tím, že poskytuje službám Azure automaticky spravovanou identitu v Azure Active Directory (Azure AD). Tuto identitu můžete použít k ověření pro jakoukoli službu, která podporuje ověřování Azure AD, včetně služby Key Vault, aniž byste ve vašem kódu museli mít přihlašovací údaje.
 
-## <a name="acquire-access-token-in-cloud-shell"></a>Získání tokenu přístupu v prostředí cloudu
+## <a name="acquire-access-token-in-cloud-shell"></a>Získání přístupového tokenu ve službě Cloud Shell
 
-Spuštěním následujících příkazů pro nastavení přístupový token MSI jako proměnné prostředí, `access_token`.
+Spusťte následující příkazy pro nastavení tokenu přístupu MSI jako proměnnou prostředí `access_token`.
 ```
 response=$(curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true -s)
 access_token=$(echo $response | python -c 'import sys, json; print (json.load(sys.stdin)["access_token"])')
@@ -41,14 +41,14 @@ echo The MSI access token is $access_token
 
 ## <a name="handling-token-expiration"></a>Zpracování vypršení platnosti tokenu
 
-Subsystém místní MSI tokeny ukládá do mezipaměti. Proto můžete volat ho tak často, jak se vám líbí a volání na přenosu do služby Azure AD výsledků pouze, pokud:
-- dojde k neúspěšnému přístupu do mezipaměti z důvodu žádné token v mezipaměti
-- vypršela platnost tokenu
+Místní subsystému MSI ukládá do mezipaměti tokenů. Proto můžete volat ho tak často, jak se vám líbí a výsledky volání rozhraní na přenosu do služby Azure AD pouze v případě:
+- z důvodu žádný token v mezipaměti dojde k neúspěšnému přístupu do mezipaměti
+- platnost tokenu vypršela
 
-Pokud jste do mezipaměti tokenu ve vašem kódu, byste měli být připravení zpracovávat scénáře, kde prostředek udává, že vypršela platnost tokenu.
+Pokud mezipaměť tokenu v kódu, byste měli být připraveni zpracování scénářů, ve kterém prostředek označuje, že platnost tokenu vypršela.
 
-Ke zpracování tokenu chyb, navštivte [MSI stránky o kulmy MSI přístupové tokeny](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token#error-handling).
+Zpracování chyb, které token, najdete v tématu [MSI stránky o kulmy MSI přístupové tokeny](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token#error-handling).
 
 ## <a name="next-steps"></a>Další postup
 [Další informace o MSI](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)  
-[Získání přístupových tokenů z virtuálních počítačů MSI](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)
+[Získání přístupových tokenů z MSI virtuálních počítačů](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)

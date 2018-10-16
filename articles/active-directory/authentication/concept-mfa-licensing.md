@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: e5915157c1ff2c1f58779e5c3b1d784241464b32
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 372670a482ec984fcc9bd9c28ca3a8625e959a77
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669042"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320641"
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>Jak získat Azure Multi-Factor Authentication
 
@@ -23,6 +23,7 @@ Pokud jde o chránit vaše účty, by měla být dvoustupňové ověřování st
 
 > [!IMPORTANT]
 > Tento článek slouží jako vodítko, které vám pomohou pochopit různé způsoby, jak koupit Azure Multi-Factor Authentication. Pro konkrétní podrobnosti o cenách a fakturaci, byste měli vždy použít [stránce s cenami služby Multi-Factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/).
+>
 
 ## <a name="available-versions-of-azure-multi-factor-authentication"></a>Dostupné verze služby Azure Multi-Factor Authentication
 
@@ -43,6 +44,7 @@ Následující tabulka obsahuje seznam funkcí, které jsou k dispozici v různ�
 
 > [!NOTE]
 > Tento článek popisuje tuto tabulku s porovnáním funkcí, které jsou součástí jednotlivých verzí služby Multi-Factor Authentication. Pokud máte plnou verzi služby Azure Multi-Factor Authentication, některé funkce nemusí být k dispozici v závislosti na tom, jestli používáte [MFA v cloudu nebo MFA v místním](concept-mfa-whichversion.md).
+>
 
 | Funkce | Služba Multi-Factor Authentication (vícefaktorové ověřování) pro Office 365 | Ověřování službou Multi-Factor Authentication pro správce Azure AD | Azure Multi-Factor Authentication |
 | --- |:---:|:---:|:---:|
@@ -93,11 +95,13 @@ Při použití poskytovatele Azure Multi-Factor Authentication, existují dva mo
   > Fakturace – Příklad 1: máte 5 000 uživatelů s povoleným vícefaktorovým Ověřováním ještě dnes. Vícefaktorové ověřování systému vydělí toto číslo 31 a 161.29 uživatelé sestavy pro daný den. Zítra povolíte 15 více uživatelů, takže systém MFA ohlásí 161.77 uživatelů pro daný den. Na konci fakturačního cyklu přidá celkový počet uživatelů, na které se fakturuje oproti předplatnému Azure až po 5 000.
   >
   > Fakturace příklad 2: máte různé uživatelů s licencemi a uživatele bez, takže budete mít zprostředkovatele Azure MFA na uživatele a společně tvoří rozdíl. Existují 4500 Enterprise Mobility + Security koupím ve svém tenantovi, ale 5 000 uživatelů s povoleným vícefaktorovým Ověřováním. Vaše předplatné Azure se účtuje pro 500 uživatelů, nebo jeho poměrnou část a hlášené každý den jako 16.13 uživatelů.
+  >
 
-2. **Za ověření** – pro podniky, které chcete povolit dvoustupňové ověřování pro velkou skupinu uživatelů, kteří často potřebují ověřování. Fakturace vychází z počtu žádosti o dvoustupňové ověření, bez ohledu na to, zda tyto ověření proběhnou úspěšně, nebo byl odepřen. Toto účtování se objeví ve výpisu využití Azure v balíčcích 10 ověření a je pokud hlášeno každý den.
+1. **Za ověření** – pro podniky, které chcete povolit dvoustupňové ověřování pro velkou skupinu uživatelů, kteří často potřebují ověřování. Fakturace vychází z počtu žádosti o dvoustupňové ověření, bez ohledu na to, zda tyto ověření proběhnou úspěšně, nebo byl odepřen. Toto účtování se objeví ve výpisu využití Azure v balíčcích 10 ověření a je pokud hlášeno každý den.
 
   > [!NOTE]
   > Příklad fakturace 3: v současné době služba Azure MFA přijala 3,105 žádosti o dvoustupňové ověření. Vaše předplatné Azure účtuje 310.5 sady ověřování.
+  >
 
 Je důležité si uvědomit, že může mít licence, ale stále bude fakturována částka pro konfiguraci založenou na skutečné spotřebě. Pokud nastavíte zprostředkovatele Azure MFA na ověřování, fakturovaného pro každý požadavek dvoustupňové ověření, včetně těch, které provádí uživatelé, kteří mají licence. Pokud nastavíte zprostředkovatele Azure MFA na uživatele v doméně, který není přidružený k vašemu tenantovi Azure AD vám účtuje za povoleného uživatele i v případě, že uživatelé mají licence na Azure AD.
 

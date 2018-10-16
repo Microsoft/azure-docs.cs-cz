@@ -1,24 +1,25 @@
 ---
-title: Pokyny pro přepis – Custom Speech Service
-titlesuffix: Azure Cognitive Services
-description: Zjistěte, jak připravit data pro Custom Speech Service.
+title: Pokyny pro přepis ve službě Custom Speech Service v Azure | Dokumentace Microsoftu
+description: Zjistěte, jak připravit data pro Custom Speech Service ve službě Cognitive Services.
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: conceptual
+ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: a5daca2dbb3fc792850264bca7d8b0c59e7c8faa
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 6c64b89c2eb933e9bcc24bdc3097e7a0b2aab368
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220614"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342462"
 ---
 # <a name="transcription-guidelines"></a>Pokyny pro přepis
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
+
 Následující pokyny určené k transkripci byste měli dodržet, aby co nejlíp využít textových dat pro přizpůsobení akustických a jazykových modelu. Tyto pokyny jsou specifické pro konkrétní jazyk.
 
 ## <a name="text-normalization"></a>Normalizace text

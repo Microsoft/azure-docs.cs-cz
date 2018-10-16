@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: negat
-ms.openlocfilehash: 628d407869d24f466b5a7c056d51d76217e29798
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 49414b06010cf83c10bbc9519f2bced2126661a4
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996651"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49322069"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Úprava škálovací sady virtuálních počítačů
 V průběhu životního cyklu aplikací můžete změnit nebo aktualizovat škálovací sadu virtuálních počítačů. Tyto aktualizace může zahrnovat jak aktualizovat konfiguraci škálovací sady nebo změnit konfiguraci aplikace. Tento článek popisuje, jak změnit existující škálovací sady pomocí rozhraní REST API, prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure.
@@ -126,7 +126,7 @@ Tyto vlastnosti nabízí souhrnné informace o aktuální stav modulu runtime vi
 
 
 ### <a name="the-scale-set-vm-model-view"></a>Škálovací sady virtuálních počítačů modelu zobrazení
-Podobně jako u jak škálovací sada obsahovat zobrazení modelu, každý virtuální počítač ve škálovací sadě má svůj vlastní zobrazení modelu. Dotaz ze zobrazení modelu pro škálovací sadu, můžete použít:
+Podobně jako u jak škálovací sada obsahovat zobrazení modelu, všechny instance virtuálních počítačů ve škálovací sadě má vlastní zobrazení modelu. Dotaz ze zobrazení modelu pro konkrétní instanci virtuálního počítače ve škálovací sadě, můžete použít:
 
 - Rozhraní REST API s [výpočetní/virtualmachinescalesetvms/get](/rest/api/compute/virtualmachinescalesetvms/get) následujícím způsobem:
 
@@ -162,11 +162,11 @@ $ az vmss show --resource-group myResourceGroup --name myScaleSet
 }
 ```
 
-Tyto vlastnosti popisují konfiguraci Virtuálního počítače, není konfigurace škálovací sady jako celek. Například modelu škálovací sady má `overprovision` jako vlastnost, ale nikoli modelu pro virtuální počítač ve škálovací sadě. Tento rozdíl je, protože předimenzování je vlastnost škálovací sady jako celá, nikoli jednotlivé virtuální počítače ve škálovací sadě (Další informace o předimenzování najdete v tématu [aspekty návrhu pro škálovací sady](virtual-machine-scale-sets-design-overview.md#overprovisioning)).
+Tyto vlastnosti popis konfigurace instance virtuálního počítače, není konfigurace škálovací sady jako celek. Například modelu škálovací sady má `overprovision` jako vlastnost, ale nikoli model pro instance virtuálních počítačů ve škálovací sadě. Tento rozdíl je, protože předimenzování je vlastnost škálovací sady jako celá, ne u jednotlivých instancí virtuálních počítačů ve škálovací sadě (Další informace o předimenzování najdete v tématu [aspekty návrhu pro škálovací sady](virtual-machine-scale-sets-design-overview.md#overprovisioning)).
 
 
 ### <a name="the-scale-set-vm-instance-view"></a>Zobrazení instance virtuálního počítače škálovací sady
-Podobně jako u jak škálovací sady má zobrazení instance, každý virtuální počítač ve škálovací sadě má svůj vlastní instance zobrazení. K zobrazení instance škálovací sady pro dotazování, můžete použít:
+Podobně jako u jak škálovací sady má zobrazení instance, všechny instance virtuálních počítačů ve škálovací sadě má svůj vlastní zobrazení instance. Dotaz na zobrazení instance pro konkrétní instanci virtuálního počítače ve škálovací sadě, můžete použít:
 
 - Rozhraní REST API s [výpočetní/virtualmachinescalesetvms/getinstanceview](/rest/api/compute/virtualmachinescalesetvms/getinstanceview) následujícím způsobem:
 
@@ -239,7 +239,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 }
 ```
 
-Tyto vlastnosti popisují aktuální stav runtime Virtuálního počítače, obsahující všechna rozšíření u škálovací sady.
+Tyto vlastnosti popisují aktuální stav běhu instance virtuálního počítače, která zahrnuje všechna rozšíření u škálovací sady.
 
 
 ## <a name="how-to-update-global-scale-set-properties"></a>Jak aktualizovat globální škálování nastavit vlastnosti

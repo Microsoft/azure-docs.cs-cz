@@ -6,19 +6,19 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: b4935dc95ccf525c0a40b10dcc8c59ec8aba710e
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: bf412809f9d10296ad600e64abb6d870dbb88d3e
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42055037"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339674"
 ---
 # <a name="azure-stack-datacenter-integration---dns"></a>Integrace datových center Azure Stack – DNS
-Abyste mohli přístup ke koncovým bodům služby Azure Stack (`portal`, `adminportal`, `management`, `adminmanagement`atd.)  z mimo Azure Stack budete muset integraci služeb Azure Stack DNS servery DNS, které jsou hostiteli zóny DNS, který chcete použít ve službě Azure Stack.
+Abyste mohli přístup ke koncovým bodům služby Azure Stack (**portál**, **adminportal**, **správu**, **adminmanagement**atd.)  z mimo Azure Stack budete muset integraci služeb Azure Stack DNS servery DNS, které jsou hostiteli zóny DNS, který chcete použít ve službě Azure Stack.
 
 ## <a name="azure-stack-dns-namespace"></a>Azure Stack DNS – obor názvů
 Je nutné zadat některé důležité informace související s DNS při nasazení Azure Stack.

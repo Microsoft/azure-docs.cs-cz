@@ -11,13 +11,13 @@ author: danimir
 ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/06/2018
-ms.openlocfilehash: 7a83bb527a4ccea10e8d9d59d9b5f8e6e75ae106
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.date: 10/15/2018
+ms.openlocfilehash: fc97aa18328fafc299ad941e6bf12dd21e9029d0
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857801"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345284"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Monitorování a optimalizace výkonu
 

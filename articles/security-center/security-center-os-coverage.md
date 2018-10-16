@@ -1,9 +1,9 @@
 ---
-title: Podporované platformy ve službě Azure Security Center | Dokumentace Microsoftu
-description: Tento dokument obsahuje seznam operatings systémů Windows a Linux podporované ve službě Azure Security Center.
+title: Funkce a platformách podporovaných službou Azure Security Center | Dokumentace Microsoftu
+description: Tento dokument obsahuje seznam funkcí a platformách podporovaných službou Azure Security Center.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2018
-ms.author: terrylan
-ms.openlocfilehash: 54d173caa0e3eb4bbd8bda7c924e56d546a99662
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 10/10/2018
+ms.author: rkarlin
+ms.openlocfilehash: 279818e6b43e53206deb9e33591f75ef381a8962
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297498"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319978"
 ---
-# <a name="supported-platforms-in-azure-security-center"></a>Podporované platformy ve službě Azure Security Center
+# <a name="platforms-and-features-supported-by-azure-security-center"></a>Platformy a funkcí podporovaných službou Azure Security Center
+
 Monitorování stavu zabezpečení a doporučení jsou k dispozici pro virtuální počítače (VM) vytvořené pomocí modelu classic a modely nasazení Resource Manager a počítače.
 
 > [!NOTE]
@@ -29,7 +30,11 @@ Monitorování stavu zabezpečení a doporučení jsou k dispozici pro virtuáln
 >
 >
 
-## <a name="supported-platforms-for-windows-computers-and-vms"></a>Podporované platformy pro Windows, počítačů a virtuálních počítačů
+## <a name="supported-platforms"></a>Podporované platformy 
+
+Tato část uvádí platformy, na kterých agent Azure Security Center můžete spustit a odkud mohla shromažďovat data.
+
+### <a name="supported-platforms-for-windows-computers-and-vms"></a>Podporované platformy pro Windows, počítačů a virtuálních počítačů
 Podporované operační systémy Windows:
 
 * Windows Server 2008
@@ -39,7 +44,7 @@ Podporované operační systémy Windows:
 * Windows Server 2016
 
 
-## <a name="supported-platforms-for-linux-computers-and-vms"></a>Podporované platformy pro virtuální počítače a počítače s Linuxem
+### <a name="supported-platforms-for-linux-computers-and-vms"></a>Podporované platformy pro virtuální počítače a počítače s Linuxem
 Podporované operační systémy Linux:
 
 * Verze Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS
@@ -58,6 +63,62 @@ Podporované operační systémy Linux:
 
 ## <a name="vms-and-cloud-services"></a>Virtuální počítače a cloudové služby
 Podporují se také virtuální počítače spuštěné v cloudové službě. Pouze cloud services – webové a pracovní role běžících v produkčním prostředí, které jsou monitorovány sloty. Další informace o cloudové služby, najdete v článku [Přehled služby Cloud Services](../cloud-services/cloud-services-choose-me.md).
+
+
+## <a name="supported-iaas-features"></a>Podporované funkce IaaS
+
+> [!div class="mx-tableFixed"]
+> 
+
+|Server|Windows||Linux||
+|----|----|----|----|----|
+|Prostředí|Azure|Mimo službu Azure|Azure|Mimo službu Azure|
+|Výstrahy detekce hrozeb VMBA|✔|✔|✔ (o podporovaných verzích)|✔|
+|Výstrahy detekce hrozeb na základě sítě|✔|X|✔|X|
+|Ochrana ATP v programu Windows Defender integrace *|✔ (o podporovaných verzích)|✔|X|X|
+|Chybějící opravy|✔|✔|✔|✔|
+|Konfigurace zabezpečení|✔|✔|✔|✔|
+|Anti-malware|✔|✔|X|X|
+|Přístup k virtuálnímu počítači podle potřeby|✔|X|✔|X|
+|Adaptivní řízení aplikací|✔ (pouze Azure)|X|X|X|
+|FIM|✔|✔|✔|✔|
+|Šifrování disku|✔|X|✔|X|
+|Nasazení třetích stran|✔|X|✔|X|
+|Skupiny NSG|✔|X|✔|X|
+|Filess V1|✔|✔|X|X|
+|Mapování sítě|✔|X|✔|X|
+|Adaptivní posílení zabezpečení sítě|✔|X|✔|X|
+
+* Tyto funkce jsou aktuálně podporované ve verzi public preview.
+
+
+## <a name="supported-paas-features"></a>Podporované funkce PaaS
+
+
+|Služba|Doporučení|Detekce hrozeb|
+|----|----|----|
+|SQL|✔| ✔|
+|PostGreSQL *|✔| ✔|
+|MySQL *|✔| ✔|
+|Účty úložiště BLOB *|✔| ✔|
+|Aplikační služby|✔| ✔|
+|Cloud Services|✔| X|
+|Redis Cache|✔| X|
+|Service fabric|✔| X|
+|Azure Automation|✔| X|
+|Data Lake |✔| X|
+|Trezor klíčů|✔| X|
+|Služby Service bus|✔| X|
+|Stream analytics|✔| X|
+|Batch|✔| X|
+|Logické aplikace|✔| X|
+|Virtuální sítě|✔| Není k dispozici|
+|Podsítě|✔| Není k dispozici|
+|Síťové karty|✔| ✔|
+|Skupiny NSG|✔| Není k dispozici|
+|Předplatné|✔| ✔|
+
+* Tyto funkce jsou aktuálně podporované ve verzi public preview.
 
 ## <a name="next-steps"></a>Další postup
 

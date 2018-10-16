@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 manager: jlembicz
 ms.author: nateko
-ms.openlocfilehash: 579d92f41e41cdb38d4a1eb0bb6e56ce4d4b2a45
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 9f887b065cf4fcc295873ee969030c67d17d9e2f
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093210"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318465"
 ---
 # <a name="synonyms-in-azure-search"></a>Synonyma ve službě Azure Search
 
@@ -148,6 +148,8 @@ Funkce synonym přepíše původní dotaz s synonyma s operátorem OR. Z tohoto 
 Funkce synonym platí pro vyhledávací dotazy a neplatí pro filtry nebo omezující vlastnosti. Obdobně doporučení vycházejí pouze původní termín; synonymum shody se nezobrazují v odpovědi.
 
 Synonymum rozšíření se nedá použít u hledané termíny zástupný znak; Předpona, přibližných shod a regulární výraz podmínky nejsou rozšířit.
+
+Pokud je potřeba udělat pomocí jediného dotazu, který se týká synonymum rozšíření a zástupný znak, regex, vyhledávání přibližných shod, můžete kombinovat pomocí syntaxe nebo dotazy. Synonyma zkombinovat se zástupnými znaky pro jednoduchá syntaxe dotazů, jako by třeba `<query> | <query>*`.
 
 ## <a name="tips-for-building-a-synonym-map"></a>Tipy pro vytváření mapy synonym
 

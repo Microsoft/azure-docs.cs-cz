@@ -1,5 +1,5 @@
 ---
-title: Co je základní ochranu podmíněného přístupu Azure Active Directory? -preview | Dokumentace Microsoftu
+title: Co je základní ochranu podmíněného přístupu Azure Active Directory? – verze Preview | Microsoft Docs
 description: Zjistěte, jak základní ochranu zajistí, že budete mít aspoň základní úroveň zabezpečení povolené ve vašem prostředí Azure Active Directory.
 services: active-directory
 keywords: conditional access to apps, conditional access with Azure AD, secure access to company resources, conditional access policies
@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: ef2b5dd393974ddf700235991b60ec66031e34c2
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 6ee89aa901c9553d22470a0481909e9cd62d60cf
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222263"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345126"
 ---
 # <a name="what-is-baseline-protection-preview"></a>Co je základní ochranu (preview)?  
 
@@ -86,7 +86,7 @@ Při správě vlastní zásady podmíněného přístupu vyžaduje licenci Azure
 
 Role adresáře, které jsou součástí základní zásady jsou nejvíce privilegované role Azure AD. 
 
-Pokud jste privilegovaný účty, které se používají ve skriptech, byste měli vyměnit pomocí [Identity spravované služby (MSI)](../managed-identities-azure-resources/overview.md) nebo [instanční s certifikáty](../../azure-resource-manager/resource-group-authenticate-service-principal.md). Jako dočasné řešení můžete vyloučit konkrétní uživatelské účty z základní zásady. 
+Pokud jste privilegovaný účty, které se používají ve skriptech, byste měli vyměnit pomocí [spravovaných identit pro prostředky Azure](../managed-identities-azure-resources/overview.md) nebo [instanční s certifikáty](../../azure-resource-manager/resource-group-authenticate-service-principal.md). Jako dočasné řešení můžete vyloučit konkrétní uživatelské účty z základní zásady. 
 
 Základní zásady platí pro toky starší verze ověřování jako POP, IMAP, starší klientském počítači Office. 
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 0c2adcfa4e11e444f66e1a9c04bea6e3d352f117
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 38f7f82d293409a49c41381cedaa1f7600068cd3
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077722"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319400"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Koupě a konfigurace certifikátu SSL pro službu Azure App Service
 
@@ -78,7 +78,7 @@ Ze stejného **konfigurace certifikátu** stránky, které jste použili v kroku
 
 Zvolte metodu ověření upřednostňované domény. 
 
-Existují čtyři typy ověření domény nepodporuje certifikáty App Service: služby App Service, domény a ruční ověření. Tyto typy ověřování jsou vysvětlené v další podrobnosti najdete [Advanced části](#advanced).
+Existují tři typy ověřování domény nepodporuje certifikáty App Service: služby App Service, domény a ruční ověření. Tyto typy ověřování jsou vysvětlené v další podrobnosti najdete [Advanced části](#advanced).
 
 > [!NOTE]
 > **Ověřování App Service** je nejpohodlnější možnost, pokud chcete provést ověření domény už je namapovaný na aplikaci služby App Service ve stejném předplatném. Využívá skutečnost, že aplikace služby App Service už ověřit vlastnictví domény.

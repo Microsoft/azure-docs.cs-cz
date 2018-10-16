@@ -1,5 +1,5 @@
 ---
-title: Podporované jazyky ve službě Azure Maps | Microsoft Docs
+title: Podporované jazyky ve službě Azure Maps | Dokumentace Microsoftu
 description: Další informace o podporovaných jazycích pro služby ve službě Azure Maps
 author: juliekohler
 ms.author: julieko
@@ -8,41 +8,41 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 68438a317b33bb7e3e784936cdfd1282ba823ad8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 380bf5cb89a165534d0084758d532613eeff480a
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34600234"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320488"
 ---
-# <a name="azure-maps-supported-languages"></a>Azure mapy podporované jazyky
-Lokalizované Azure mapy v různých jazycích rámci služeb.  Následující tabulka obsahuje podporované jazykové kódy pro každou službu.  
+# <a name="azure-maps-supported-languages"></a>Azure Maps podporované jazyky
+Lokalizované Azure Maps v různých jazycích napříč službami.  Následující tabulka obsahuje kódy podporovaných jazyků pro každou službu.  
   
 
-| ID         | Název                   |  Maps | Search | Směrování | Provoz incidenty | JS mapový ovládací prvek | Časové pásmo |
+| ID         | Název                   |  Maps | Search | Směrování | Provoz incidenty | Mapový ovládací prvek JS | Časové pásmo |
 |------------|------------------------|:-----:|:------:|:-------:|:-----------------:|:--------------:|:---------:|
 | af ZA      | Afrikánština              |       |    ✓   |    ✓    |                   |                |     ✓     |
-| ar (SA)      | arabština                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
+| ar-SA      | arabština                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | Evropa ES      | Baskičtina                 |       |        |         |                   |                |     ✓     |
 | bg-BG      | Bulharština              |   ✓   |    ✓   |    ✓    |                   |        ✓       |     ✓     |
 | ES certifikační autority      | Katalánština                |       |    ✓   |         |                   |                |     ✓     |
 | zh-HanS    | Čínština (zjednodušená)   |       |  zh-CN |         |                   |                |     ✓     |
-| zh-HanT    | Čínština (tradiční)  | zh-TW |  zh-TW |  zh-TW  |                   |      zh-TW.     |     ✓     |
+| zh-HanT    | Čínština (tradiční)  | zh-TW |  zh-TW |  zh-TW  |                   |      zh-TW     |     ✓     |
 | hr-HR      | Chorvatština               |       |    ✓   |         |                   |                |     ✓     |
 | cs-CZ      | Čeština                  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | da-DK      | dánština                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | NL-NL      | Holandština                  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| nl-BE      | Baskičtina        |       |    ✓   |         |                   |                |     ✓     |
+| nl-BE      | Holandština (Belgie)        |       |    ✓   |         |                   |                |     ✓     |
 | en         | Angličtina                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | et EE      | Estonština               |       |    ✓   |         |         ✓         |                |     ✓     |
 | fi-FI      | Finština                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | fr-FR      | Francouzština                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | fr-CA      | Francouzština (Kanada)      |       |    ✓   |         |                   |                |     ✓     |
-| GL-ES      | Galicijština               |       |        |         |                   |                |     ✓     |
+| GL ES      | Galicijština               |       |        |         |                   |                |     ✓     |
 | de-DE      | Němčina                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | el-GR      | Řečtina                  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | he-IL      | Hebrejština                 |       |        |         |         ✓         |                |     ✓     |
-| Dobrý den IN      | Hindština                  |       |        |         |                   |                |     ✓     |
+| Dobrý den – v      | Hindština                  |       |        |         |                   |                |     ✓     |
 | hu-HU      | Maďarština              |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | ID ID      | Indonéština             |   ✓   |        |    ✓    |         ✓         |        ✓       |     ✓     |
 | IT-IT      | italština                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
@@ -52,21 +52,23 @@ Lokalizované Azure mapy v různých jazycích rámci služeb.  Následující t
 | es-419     | Španělština Latinské Ameriky |       |    ✓   |         |                   |                |     ✓     |
 | lv-LV      | Lotyština                |       |    ✓   |         |         ✓         |                |     ✓     |
 | lt-LT      | Litevština             |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| Moje MS      | Malajština (Latina)          |   ✓   |    ✓   |    ✓    |                   |        ✓       |     ✓     |
-| nb-NO      | Norská Bokmål       |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
+| Moje MS      | Malajština (latinka)          |   ✓   |    ✓   |    ✓    |                   |        ✓       |     ✓     |
+| nb-NO      | Norština, Bokmal       |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
+| NGT        | Neutrální země pravdy – oficiální jazyků pro všechny oblasti v místní skripty, pokud je k dispozici |   ✓     |        |         |                   |      ✓          |         |
+| NGT Latn   | Neutrální země pravdy - Latin exonyms. Latince se použije, pokud je k dispozici |   ✓     |        |         |                   |        ✓         |          |
 | pl-PL      | polština                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | pt-BR      | Portugalština (Brazílie)    |   ✓   |    ✓   |    ✓    |                   |        ✓       |     ✓     |
 | pt-PT      | Portugalština (Portugalsko)  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| ro-RO      | Rumunština               |       |        |         |         ✓         |                |     ✓     |
+| ro RO      | Rumunština               |       |        |         |         ✓         |                |     ✓     |
 | ru-RU      | ruština                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | sr-Cyrl-RS | Srbština (cyrilice)     |       |        |         |                   |                |     ✓     |
-| SR-Latn-RS | Srbština (latinka)        |       |        |         |                   |                |     ✓     |
+| rozhraní SR-Latn-RS | Srbština (latinka)        |       |        |         |                   |                |     ✓     |
 | sk-SK      | Slovenština              |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | sl-SL      | Slovinština              |   ✓   |    ✓   |    ✓    |                   |        ✓       |     ✓     |
-| ES-ES      | Španělština                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
+| es-ES      | Španělština                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | es-MX      | Španělština (Mexiko)       |   ✓   |        |    ✓    |                   |        ✓       |     ✓     |
 | sv -SE     | švédština                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| TH TÝ      | Thajština                   |   ✓   |        |    ✓    |         ✓         |        ✓       |     ✓     |
+| th TH      | Thajština                   |   ✓   |        |    ✓    |         ✓         |        ✓       |     ✓     |
 | tr-TR      | turečtina                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| Spojené království – uživatelský Agent      | Ukrajinština               |       |        |         |                   |                |     ✓     |
+| Spojené království UA      | Ukrajinština               |       |        |         |                   |                |     ✓     |
 | vi-VN      | Vietnamština             |       |        |         |                   |                |     ✓     |

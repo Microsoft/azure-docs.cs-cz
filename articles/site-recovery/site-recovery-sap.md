@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: asgang
-ms.openlocfilehash: 95e5c53da2556293fc676fa5b1db9b4585038300
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: a498ac9f973bbcf87bec104f18b542cc7e8b5800
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921427"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318686"
 ---
 # <a name="protect-a-multi-tier-sap-netweaver-application-deployment-by-using-site-recovery"></a>Ochrana nasazení vícevrstvé aplikace SAP NetWeaver pomocí Site Recovery
 
@@ -71,10 +71,10 @@ Pro zotavení po havárii (DR) musíte být schopni převzetí služeb při selh
 #### <a name="vms-running-sap-web-dispatcher-pool"></a>Virtuální počítače se systémem SAP Web Dispatchera fondu 
 Komponenta Web Dispatchera slouží jako nástroj pro vyrovnávání zatížení pro provoz SAP mezi aplikačními servery SAP. K dosažení vysoké dostupnosti pro komponentu Web Dispatchera, nástroje pro vyrovnávání zatížení Azure slouží k implementaci paralelní instalaci Web Dispatchera v konfiguraci kruhové dotazování pro distribuci provozu HTTP (S) mezi dostupné webové dispečerů ve fondu nástroje pro vyrovnávání. To se budou replikovat pomocí Azure Site Recovery (ASR) a skripty pro automatizaci se použije ke konfiguraci nástroje pro vyrovnávání zatížení v oblasti pro zotavení po havárii. 
 
-####<a name="vms-running-application-servers-pool"></a>Virtuální počítače, servery fondu aplikací
+#### <a name="vms-running-application-servers-pool"></a>Virtuální počítače, servery fondu aplikací
 Ke správě skupin přihlášení pro ABAP aplikační servery, je použít SMLG transakce. Jak rozdělit zatížení mezi fond serverů pro aplikace SAP pro SAPGUIs a v dokumentu RFC využívá funkce v rámci zprávy serveru z centrální služby Vyrovnávání zatížení provozu. To se budou replikovat pomocí Azure Site Recovery 
 
-####<a name="vms-running-sap-central-services-cluster"></a>Virtuální počítače se systémem SAP Central Services clusteru
+#### <a name="vms-running-sap-central-services-cluster"></a>Virtuální počítače se systémem SAP Central Services clusteru
 Tato referenční architektura centrální služby běží na virtuálních počítačích v aplikační vrstvě. Centrální služby je možné jediný bod selhání (SPOF) při nasazení na jeden virtuální počítač – typické nasazení při vysoké dostupnosti není povinné.<br>
 
 Při implementaci řešení vysoké dostupnosti, je možné sdílený disk clusteru nebo clusteru sdílené složky souboru. Ke konfiguraci virtuálních počítačů pro cluster sdíleného disku použijte Cluster převzetí služeb při selhání Windows serveru. Disk s kopií cloudu se doporučuje jako určující disk kvora. 
@@ -110,7 +110,7 @@ Níže je doporučení pro zotavení po havárii pro každou vrstvu použitý v 
 **Virtuální počítače služby Active directory** |  Replikace služby Active directory 
 **Servery SQL database** |  SQL AlwaysOn replikace
 
-##<a name="replicate-virtual-machines"></a>Replikace virtuálních počítačů
+## <a name="replicate-virtual-machines"></a>Replikace virtuálních počítačů
 
 Ke spuštění replikace všech SAP aplikací virtuálních počítačů do datacentra pro zotavení po havárii Azure, postupujte podle pokynů v [replikace virtuálního počítače do Azure](azure-to-azure-walkthrough-enable-replication.md).
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.author: cshoe
 ms.component: common
-ms.openlocfilehash: 268459fde7a622079656e637d2c51562cea358a4
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 584db1400ddd2b4f447b7ca397f2c98b701c7848
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730945"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341867"
 ---
 # <a name="azure-storage-security-guide"></a>Průvodci zabezpečením Azure Storage
 
@@ -22,7 +22,7 @@ Azure Storage nabízí komplexní sadu možností zabezpečení, které společn
 - Všechna data zapsaná do služby Azure Storage budou automaticky šifrována pomocí [šifrování služby Storage (SSE)](storage-service-encryption.md). Další informace najdete v tématu [oznamujeme výchozí šifrování objektů BLOB Azure, soubory, tabulky a fronty úložiště](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).
 - Azure Active Directory (Azure AD) a řízení přístupu na základě Role (RBAC) jsou podporovány pro službu Azure Storage pro operace správy zdrojů a operace s daty, následujícím způsobem:   
     - Můžete přiřadit role RBAC omezená na účet úložiště pro objekty zabezpečení a pomocí služby Azure AD povolit operace správy zdrojů, například správu klíčů.
-    - Integrace se službou Azure AD je podporovaná ve verzi preview pro operace s daty ve službách objektů Blob a fronty. Můžete přiřadit role RBAC obor na předplatné, skupinu prostředků, účet úložiště nebo kontejner nebo fronty k objektu zabezpečení a identita spravované služby. Další informace najdete v tématu [ověření přístupu ke službě Azure Storage pomocí Azure Active Directory (Preview)](storage-auth-aad.md).   
+    - Integrace se službou Azure AD je podporovaná ve verzi preview pro operace s daty ve službách objektů Blob a fronty. Můžete přiřadit role RBAC obor na předplatné, skupinu prostředků, účet úložiště nebo kontejner nebo fronty k objektu zabezpečení nebo spravovanou identitu pro prostředky Azure. Další informace najdete v tématu [ověření přístupu ke službě Azure Storage pomocí Azure Active Directory (Preview)](storage-auth-aad.md).   
 - Může být šifrují data přenášená mezi aplikací a službou Azure pomocí [šifrování na straně klienta](../storage-client-side-encryption.md), HTTPS nebo SMB 3.0.  
 - Operační systém a datové disky, které používají virtuální počítače Azure se dají zašifrovat pomocí [Azure Disk Encryption](../../security/azure-security-disk-encryption.md). 
 - Delegovaný přístup k datové objekty ve službě Azure Storage lze udělit prostřednictvím [sdílené přístupové podpisy](../storage-dotnet-shared-access-signature-part-1.md).
