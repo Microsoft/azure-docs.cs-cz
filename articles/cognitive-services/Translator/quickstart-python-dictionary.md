@@ -1,21 +1,21 @@
 ---
-title: Translator Text – vyhledání alternativních překladů s Pythonem | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: V tomto rychlém startu vyhledáte alternativní překlady a příklady termínů v kontextu pomocí služby Translator Text API s Pythonem ve službách Cognitive Services.
+title: 'Rychlý start: Vyhledání alternativních překladů – Translator Text, Python'
+titleSuffix: Azure Cognitive Services
+description: V tomto rychlém startu vyhledáte alternativní překlady a příklady termínů v kontextu pomocí rozhraní Translator Text API a Pythonu.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: nolachar
-ms.openlocfilehash: 4f7c91bfa6fe82f19e84e13b4b7442b59b126cb9
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 9035f718dda4cd1a8b34aa72272cfa376be99cac
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "43768994"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46122718"
 ---
 # <a name="quickstart-find-alternate-translations-and-usage-with-python"></a>Rychlý start: Vyhledání alternativních překladů a použití s Pythonem
 

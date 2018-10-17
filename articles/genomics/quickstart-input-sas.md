@@ -1,24 +1,22 @@
 ---
-title: Odeslání pracovního postupu pomocí SAS místo klíče účtu úložiště | Microsoft Docs
+title: Odeslání pracovního postupu pomocí SAS místo klíče účtu úložiště – Microsoft Genomics
 titleSuffix: Azure
 description: Tento článek předpokládá, že máte nainstalovaného klienta msgen a úspěšně jste ve službě zpracovali ukázková data.
-services: microsoft-genomics
+services: genomics
 author: grhuynh
-manager: jhubbard
-editor: jasonwhowell
+manager: cgronlun
 ms.author: grhuynh
-ms.service: microsoft-genomics
-ms.workload: genomics
+ms.service: genomics
 ms.topic: quickstart
 ms.date: 03/02/2018
-ms.openlocfilehash: 802e300ac453baa4ea9bd9183223315abced2ea1
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9a22e4bb0949544e18237e789ca807e57ed59abf
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32177210"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733493"
 ---
-# <a name="submit-a-workflow-using-a-sas-instead-of-a-storage-account-key"></a>Odeslání pracovního postupu pomocí SAS místo klíče účtu úložiště
+# <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>Odeslání pracovního postupu do služby Microsoft Genomics pomocí SAS místo klíče účtu úložiště 
 
 Tento rychlý start ukazuje, jak odeslat pracovní postup do služby Microsoft Genomics pomocí souboru config.txt, který obsahuje [sdílené přístupové podpisy (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) místo klíčů účtu úložiště. Tato funkce může být užitečná v případě, že existují obavy ohledně zabezpečení kvůli viditelnému klíči účtu úložiště v souboru config.txt. Tento článek předpokládá, že jste už nainstalovali a spustili klienta `msgen` a že víte, jak používat službu Azure Storage. Pokud jste úspěšně odeslali pracovní postup obsahující připravená ukázková data, jste připraveni pokračovat v tomto postupu. 
 

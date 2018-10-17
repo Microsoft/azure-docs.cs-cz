@@ -1,64 +1,65 @@
 ---
-title: Začínáme s rozhraním API Entity propojení | Microsoft Docs
-description: Analýza textu a odkaz pomocí rozhraní API propojení Entity v léčby služby s názvem entity k příslušné položky ve znalostní bázi.
+title: 'Kurz: Sestavení aplikace Entity Linking – C#'
+titlesuffix: Azure Cognitive Services
+description: Pomocí rozhraní Entity Linking API můžete analyzovat text a spojovat pojmenované entity s relevantními položkami ve znalostní bázi.
 services: cognitive-services
 author: DavidLiCIG
-manager: wkwok
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: entity-linking-intelligence
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/06/2016
 ms.author: davl
-ms.openlocfilehash: 54c4a3bbb3637c248bd7705ed291633368b542c9
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 907b4cab483f1bf63a864094530784f9c632a1c8
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342494"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46365634"
 ---
-# <a name="get-started-with-entity-linking-api-in-c35"></a>Začínáme s Entity propojení rozhraní API v jazyce C&#35;
+# <a name="tutorial-build-an-entity-linking-app-with-c"></a>Kurz: Sestavení aplikace Entity Linking pomocí C#
 
-Propojování Entity společnosti Microsoft je nástroj přirozeného jazyka zpracování k analýze textu a propojit s názvem entity příslušné položky ve znalostní bázi. 
+Entity Linking od Microsoftu je nástroj pro zpracování přirozeného jazyka určený k analýze textu a spojování pojmenovaných entit s relevantními položkami ve znalostní bázi. 
 
-V tomto kurzu prozkoumá entity propojení pomocí klientské knihovny propojení Entity jako balíčku NuGet. 
+Tento kurz se věnuje spojování entit za použití klientské knihovny Entity Linking jako balíčku NuGet. 
 
 ### <a name="Prerequisites">Požadavky</a>
 
 - Visual Studio 2015
-- Klíč rozhraní API služby Microsoft kognitivní
-- Nainstalujte klienta knihovny a příklad
-- Balíček NuGet propojení Microsoft Entity
+- Klíč rozhraní API služby Microsoft Cognitive Services
+- Získání klientské knihovny a příkladu
+- Balíček NuGet služby Microsoft Entity Linking
 
-Můžete ho stáhnout Entity propojení Intelligence Service API klientské knihovny prostřednictvím [SDK](https://www.github.com/microsoft/cognitive-entitylinking-windows). Musí být extrahovány do složky podle svého výběru souboru zip staženého, mnoho uživatelů vyberte složku, Visual Studio 2015.
+Klientskou knihovnu rozhraní API služby Entity Linking Intelligence Service si můžete stáhnout prostřednictvím sady [SDK](https://www.github.com/microsoft/cognitive-entitylinking-windows). Stažený soubor ZIP je potřeba extrahovat do složky podle vašeho výběru, velká část uživatelů volí složku sady Visual Studio 2015.
 
-### <a name="step-1-subscribe-entity-linking-intelligence-service-and-get-your-own-key">Krok 1: Přihlášení k odběru do Entity propojení Intelligence služby a získat klíč</a>
-Před použitím služby Intelligence propojení Entity, musíte se zaregistrovat pro klíč rozhraní API. V tématu [odběry](https://www.microsoft.com/cognitive-services/en-us/sign-up). Jak primární a sekundární klíč lze použít v tomto kurzu.
+### <a name="step-1-subscribe-entity-linking-intelligence-service-and-get-your-own-key">Krok 1: Přihlášení k odběru služby Entity Linking Intelligence Service a získání klíče</a>
+Než budete moct službu Entity Linking Intelligence Service používat, musíte se zaregistrovat a získat klíč rozhraní API. Viz [Předplatná](https://www.microsoft.com/cognitive-services/en-us/sign-up). V tomto kurzu můžete použít primární i sekundární klíč.
 
-### <a name="step-2-create-a-new-project-in-visual-studio"> Krok 2: Vytvořte nový projekt v sadě Visual Studio</a>
+### <a name="step-2-create-a-new-project-in-visual-studio">Krok 2: Vytvoření nového projektu v sadě Visual Studio</a>
 
-Začněme vytvořením nového projektu v sadě Visual Studio. Nejprve spusťte Visual Studio 2015 z nabídky Start. Pak vytvořte nový projekt tak, že vyberete **nainstalován → šablon → Visual C# → prázdnou aplikaci pro Windows Universal →** pro vaše šablona projektu:
+Začněme vytvořením nového projektu v sadě Visual Studio. Nejprve v nabídce Start spusťte sadu Visual Studio 2015. Potom vytvořte nový projekt výběrem položek **Nainstalováno → Šablony → Visual C# → Univerzální aplikace pro Windows → Prázdná aplikace** pro šablonu projektu:
 
- ![Vytvoří univerzální aplikace](./Images/CreateUWP.png)
+ ![Vytvoření univerzální aplikace](./Images/CreateUWP.png)
 
-### <a name="step-3-add-the-entity-linking-nuget-package-to-your-project">Krok 3: Přidání Entity propojení balíčku NuGet do projektu</a>
+### <a name="step-3-add-the-entity-linking-nuget-package-to-your-project">Krok 3: Přidání balíčku NuGet služby Entity Linking do vašeho projektu</a>
 
-Propojování entity služby kognitivní Services vydání jako balíček NuGet.org a musí být nainstalovaný, abyste mohli používat.
-Chcete-li ji přidat do projektu, přejděte na **Průzkumníku řešení** , klikněte pravým tlačítkem na projekt a vyberte **spravovat balíčky Nuget**.
+Entity Linking služby Cognitive Services se vydává jako balíček NuGet.org a je potřeba ho před použitím nainstalovat.
+Pokud ho chcete do projektu přidat, přejděte na kartu **Průzkumník řešení**, klikněte na projekt pravým tlačítkem myši a vyberte **Spravovat balíčky NuGet**.
 
-V první **Správce balíčků NuGet** okně vyberte NuGet.org jako vaše **zdroj balíčku** v pravém horním rohu. Vyberte **Procházet** v levém horním rohu a do vyhledávacího pole zadejte "ProjectOxford.EntityLinking". Vyberte **Microsoft.ProjectOxford.EntityLinking** NuGet balíček a klikněte na tlačítko **nainstalovat**.
+Nejprve v okně **Správce balíčků NuGet** vyberte v pravém horním rohu NuGet.org jako **Zdroj balíčku**. V levém horním rohu vyberte **Procházet** a do vyhledávacího pole zadejte „ProjectOxford.EntityLinking“. Vyberte balíček NuGet **Microsoft.ProjectOxford.EntityLinking** a klikněte na **Nainstalovat**.
 
-Hledat v dalším kroku, Newtonsoft.Json a instalaci. Pokud budete vyzváni ke zkontrolování změn, klikněte na tlačítko **OK**. Pokud se zobrazí s licenčními podmínkami EntityLinking, klikněte na tlačítko **souhlasím**.
+Potom vyhledejte a nainstalujte Newtonsoft.Json. Pokud budete vyzváni ke kontrole změn, klikněte na **OK**. Pokud se vám zobrazí licenční podmínky pro Entity Linking, klikněte na **Přijmout**.
 
-Propojování entity je nyní nainstalován jako součást vaší aplikace. Si můžete ověřit kontrolou, která ** Microsoft.ProjectOxford.EntityLinking** odkaz se nachází v rámci projektu v Průzkumníku řešení.
+Nástroj Entity Linking je teď nainstalován jako součást vaší aplikace. Můžete to ověřit tak, že zkontrolujete, jestli je odkaz Microsoft.ProjectOxford.EntityLinking součástí vašeho projektu v Průzkumníku řešení.
 
- ![Knihovna nuget zahrnutý v projektu](./Images/NugetLibraryInProject.png)
+ ![Zahrnutá knihovna NuGet v projektu](./Images/NugetLibraryInProject.png)
  
-### <a name="step-4-add-an-input-and-output-text-block-to-your-apps-xaml">Krok 4: Přidejte vstup a výstup blok textu do vaší aplikace XAML</a>
-Přejděte do ** MainPage.xaml ** v **Průzkumníku**, pak poklikejte na soubor, který se otevře v novém okně. Pro usnadnění práce, můžete dvakrát kliknete na **XAML** tlačítka na **Návrhář** kartě to bude skrýt **vizuálního návrháře** a veškeré místo pro zobrazení kódu rezervovat.
+### <a name="step-4-add-an-input-and-output-text-block-to-your-apps-xaml">Krok 4: Přidání vstupního a výstupního textového bloku do XAML vaší aplikace</a>
+V **Průzkumníku řešení** přejděte na MainPage.xaml a potom na soubor poklikejte. Tím ho otevřete v novém okně. Abyste si práci usnadnili, můžete poklikat na tlačítko **XAML** na kartě **Návrhář**. Skryjete tak **vizuálního návrháře** a vyhradíte celý prostor pro zobrazení kódu.
 
- ![Knihovna nuget zahrnutý v projektu](./Images/UWPMainPage.png)
+ ![Zahrnutá knihovna NuGet v projektu](./Images/UWPMainPage.png)
  
-Jako text služby je nejlepší způsob, jak vizualizovat funkce vytváření vstup a bloku text výstupu. Chcete-li to provést, přidejte následující XAML v **mřížky**. Tento kód přidá tři komponenty, vstupní textové pole, výstupního bloku textu a tlačítko start.
+Vzhledem k tomu, že se jedná o textovou službu, je nejlepším způsobem pro vizualizaci funkce vytvoření vstupního a výstupního textového bloku. Uděláte to tak, že do **mřížky** přidáte následující kód XAML. Tento kód přidá tři komponenty, vstupní textové pole, výstupní textový blok a tlačítko pro spuštění.
  
  ```XAML
  <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -73,17 +74,17 @@ Jako text služby je nejlepší způsob, jak vizualizovat funkce vytváření vs
 </Grid>
  ```
  
-### <a name="step-5-proceed-to-add-entity-linking-intelligence-service">Krok 5: Pokračujte přidat službu Intelligence propojení Entity</a>
+### <a name="step-5-proceed-to-add-entity-linking-intelligence-service">Krok 5: Přidání služby Entity Linking Intelligence Service</a>
  
-Uživatelské rozhraní je nyní vytvořena. Před použitím služby propojení Entity, musíme obslužná rutina kliknutí na tlačítko Přidat. Otevřete **MainPage.xaml** z **Průzkumníku řešení**. Přidejte obslužnou rutinu button_Click na konci tlačítko.
+Uživatelské rozhraní je teď vytvořené. Než budeme moct použít službu Entity Linking, musíte přidat obslužnou rutinu kliknutí na tlačítko. Otevřete soubor **MainPage.xaml** v **Průzkumníku řešení**. Obslužnou rutinu kliknutí na tlačítko přidejte na konec tlačítka.
  
  ```XAML
  <Button x:Name="button" Grid.Row="2" Content="Get Result" Click="button_Click" />
  ```
  
-Obslužná rutina kliknutí na tlačítko musí implementovat v kódu. Otevřete **MainPage.xaml.cs** z **Průzkumníku řešení** implementovat kliknutí na tlačítko. EntityLinkingServiceClient je obálku pro načtení propojení Entity odpovědí. Argument konstruktoru EntityLinkingServiceClient je klíč předplatného kognitivní služby. Vložte klíč předplatného jste získali v **kroku 1** volat službu propojení Entity. 
+Obslužnou rutinu kliknutí na tlačítko je potřeba implementovat do kódu. Otevřete soubor **MainPage.xaml.cs** v **Průzkumníku řešení** a implementujte kliknutí na tlačítko. EntityLinkingServiceClient představuje obálku pro načtení odpovědí služby Entity Linking. Argument konstruktoru pro EntityLinkingServiceClient je klíč předplatného služby Cognitive Services. Vložte klíč předplatného, který jste získali v **kroku 1**, a použijte ho k volání služby Entity Linking. 
 
-Níže je příklad kód, který přidá do odpovědi "wikipediaId" pomocí služby propojení Entity. 
+Níže je příklad kódu, který do odpovědi přidá „wikipediaId“ pomocí služby Entity Linking Service. 
  
  ```csharp
  private async void button_Click(object sender, RoutedEventArgs e)
@@ -96,11 +97,11 @@ Níže je příklad kód, který přidá do odpovědi "wikipediaId" pomocí slu�
 }
  ```
  
-Nyní jste připraveni ke spuštění vaší první přirozeného jazyka zpracování Entity propojení aplikace. Stiskněte **klávesy F5** pro zkompilování a spuštění aplikace. Vložit fragmenty textu nebo odstavců do vstupního pole. Klikněte na tlačítko "Získat výsledky" a sledovat zjištěné entity v bloku výstup.
+Nyní jste připraveni ke spuštění vaší první aplikace Entity Linking pro zpracování přirozeného jazyka. Stisknutím **klávesy F5** kompilujte a spusťte aplikaci. Do vstupního pole vložte fragmenty textu nebo odstavce. Stiskněte tlačítko Get Result (Získat výsledek) a sledujte identifikované entity ve výstupním bloku.
  
- ![Ukázka UWP výsledek](./Images/DemoCodeResult.png)
+ ![Výsledek pro ukázku UWP](./Images/DemoCodeResult.png)
  
 ### <a name="summary">Souhrn</a>
  
-V tomto kurzu jste zjistili, jak vytvořit aplikaci využít Entity propojení Intelligence služby klientské knihovny jenom pár řádků jazyka C# a kód XAML. 
+V tomto kurzu jste se naučili vytvořit aplikaci využívají klientskou knihovnu služby Entity Linking Intelligence Service pomocí několika řádků jazyka C# a kódu XAML. 
 

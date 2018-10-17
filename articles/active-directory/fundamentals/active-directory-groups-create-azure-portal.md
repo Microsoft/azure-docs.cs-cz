@@ -1,59 +1,92 @@
 ---
-title: Vytvoření skupiny pro uživatele ve službě Azure AD | Microsoft Docs
-description: Postup vytvoření skupiny ve službě Azure Active Directory a přidání členů do této skupiny
+title: Vytvoření základní skupiny a přidání členů pomocí Azure Active Directory | Microsoft Docs
+description: Naučte se vytvořit základní skupinu pomocí Azure Active Directory.
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
 ms.topic: quickstart
-ms.date: 08/04/2017
+ms.date: 08/22/2018
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 3c71c9c49413045e3a730c10e90ea3c12648b4cb
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 36bd0ca06859c1952a75b1aa8397fba88dc22d40
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857717"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574908"
 ---
-# <a name="create-a-group-and-add-members-in-azure-active-directory"></a>Vytvoření skupiny a přidání členů ve službě Azure Active Directory
-> [!div class="op_single_selector"]
-> * [Azure Portal](active-directory-groups-create-azure-portal.md)
-> * [PowerShell](../users-groups-roles/groups-settings-v2-cmdlets.md)
+# <a name="how-to-create-a-basic-group-and-add-members-using-azure-active-directory"></a>Postup: Vytvoření základní skupiny a přidání členů pomocí Azure Active Directory
 
-Tento článek vysvětluje, jak vytvořit a naplnit novou skupinu ve službě Azure Active Directory. Pomocí skupiny můžete provádět úlohy správy, jako je přiřazení licencí nebo oprávnění více uživatelům nebo zařízením současně.
+Základní skupinu můžete vytvořit na portálu Azure Active Directory (Azure AD). Pro účely tohoto článku přidá základní skupinu do jednoho prostředku vlastník prostředku (správce) a skupina zahrnuje konkrétní členy (zaměstnance), kteří k danému prostředku potřebují přístup. Složitější scénáře, které zahrnují dynamická členství a vytváření pravidel, najdete v [dokumentaci ke správě uživatelů ve službě Azure Active Directory](../users-groups-roles/index.yml).
 
-## <a name="how-do-i-create-a-group"></a>Vytvoření skupiny
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com) prostřednictvím účtu, který má k adresáři oprávnění globálního správce.
-2. Vyberte **Všechny služby**, do textového pole zadejte **Uživatelé a skupiny** a potom stiskněte **Enter**.
+## <a name="create-a-basic-group-and-add-members"></a>Vytvoření základní skupiny a přidání členů
+Vytvořit základní skupinu a přidat do ní členy můžete současně.
 
-   ![Otevírání správy uživatelů](./media/active-directory-groups-create-azure-portal/search-user-management.png)
-3. V okně **Uživatelé a skupiny** vyberte **Všechny skupiny**.
+### <a name="to-create-a-basic-group-and-add-members"></a>Vytvoření základní skupiny a přidání členů
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí účtu globálního správce daného adresáře.
 
-   ![Otevření okna skupin](./media/active-directory-groups-create-azure-portal/view-groups-blade.png)
-4. V okně **Uživatelé a skupiny – Všechny skupiny** vyberte příkaz **Přidat**.
+2. Vyberte **Azure Active Directory**, **Skupiny** a pak vyberte **Nová skupina**.
 
-   ![Výběr příkazu Přidat](./media/active-directory-groups-create-azure-portal/add-group-command.png)
-5. V okně **Skupina** přidejte název a popis skupiny.
-6. Pokud chcete vybrat členy, kteří se mají přidat do skupiny, vyberte v poli **Typ členství** možnost **Přiřazené** a potom vyberte **Členové**. Další informace o dynamické správě členství ve skupině najdete v článku o [vytvoření rozšířených pravidel pro členství ve skupině pomocí atributů](../users-groups-roles/groups-dynamic-membership.md).
+    ![Azure AD se zobrazenými skupinami](media/active-directory-groups-create-azure-portal/group-full-screen.png)
 
-   ![Výběr členů, kteří se mají přidat](./media/active-directory-groups-create-azure-portal/select-members.png)
-7. V okně **Členové** vyberte minimálně jednoho uživatele nebo zařízení, které chcete přidat do skupiny, a v dolní části okna kliknutím na tlačítko **Vybrat** je přidejte do skupiny. Položky v poli **Uživatel** se filtrují podle toho, jak se vaše zadání shoduje s jakoukoli částí jména uživatele nebo názvu zařízení. V tomto poli není možné používat žádné zástupné znaky.
-8. Po přidání členů do skupiny vyberte v okně **Skupina** možnost **Vytvořit**.    
+3. Na stránce **Skupina** vyplňte požadované informace.
 
-   ![Potvrzení vytvoření skupiny](./media/active-directory-groups-create-azure-portal/create-group-confirmation.png)
+    ![Stránka nové skupiny s vyplněnými ukázkovými informacemi](media/active-directory-groups-create-azure-portal/new-group-blade.png)
 
+    - **Typ skupiny (vyžadováno)**: Vyberte předdefinovaný typ skupiny. To zahrnuje:
+        
+        - **Zabezpečení.** Slouží ke správě členů a přístupu počítače ke sdíleným prostředkům u skupiny uživatelů. Můžete například vytvořit skupinu zabezpečení pro konkrétní zásady zabezpečení. Tímto způsobem můžete udělit sadu oprávnění všem členům najednou a nemusíte přidávat oprávnění členům jednotlivě. Další informace o správě přístupu k prostředkům najdete v článku o [správě přístupu k prostředkům pomocí skupin služby Azure Active Directory](active-directory-manage-groups.md).
+        
+        - **Office 365**: Poskytuje možnosti spolupráce tím, že umožňuje členům přístup ke sdílené poštovní schránce, kalendáři, souborům, sharepointovému webu a dalším prostředkům. Tato možnost vám také umožňuje udělit přístup ke skupině lidem mimo vaši organizaci. Další informace o skupinách Office 365 najdete v článku o [skupinách Office 365](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2).
+
+    - **Název skupiny (vyžadováno)**: Přidejte název skupiny. Zvolte název, který si zapamatujete a který bude dávat smysl.
+
+    - **Popis skupiny**: Volitelně můžete přidat také popis skupiny.
+
+    - **Typ členství (vyžadováno)**: Vyberte předdefinovaný typ členství. To zahrnuje:
+
+        - **Přiřazeno**: Umožňuje přidat konkrétní uživatele jako členy této skupiny s jedinečnými oprávněními. Pro účely tohoto článku používáme tuto možnost.
+
+        - **Dynamický uživatel**: Umožňuje použít dynamická skupinová pravidla a automaticky tak přidávat a odebírat členy. Pokud se změní atributy člena, systém se podívá do pravidel dynamických skupin u adresáře a zjistí, zda člen splňuje požadavky pravidla (je přidán) nebo zda již požadavky pravidel nesplňuje (je odebrán).
+
+        - **Dynamické zařízení**: Umožňuje použít dynamická skupinová pravidla a automaticky tak přidávat a odebírat zařízení. Pokud se změní atributy zařízení, systém se podívá do pravidel dynamických skupin u adresáře a zjistí, zda zařízení splňuje požadavky pravidla (je přidáno) nebo zda již požadavky pravidel nesplňuje (je odebráno).
+
+        >[!Important]
+        >Dynamickou skupinu můžete vytvořit buď pro zařízení, nebo uživatele, ale nikoli pro obojí. Stejně tak nemůžete vytvořit skupinu zařízení na základě atributů vlastníků zařízení. Pravidla členství zařízení mohou odkazovat pouze na atributy zařízení. Další informace o vytvoření dynamické skupiny pro uživatele a zařízení najdete v článku, který se zabývá [vytvořením dynamické skupiny a kontrolou stavu](../users-groups-roles/groups-create-rule.md).
+
+4. Vyberte **Vytvořit**.
+
+    Vaše skupina je vytvořená a připravená na přidání členů.
+
+5. Na stránce **Skupina** vyberte oblast **Členové** a potom na stránce **Vybrat členy** začněte vyhledávat členy, které chcete přidat do skupiny.
+
+    ![Výběr členů pro skupinu během procesu vytváření skupiny](media/active-directory-groups-create-azure-portal/select-members-create-group.png)
+
+6. Po přidání členů zvolte **Vybrat**.
+
+    Stránka **Přehled skupiny** se aktualizuje a zobrazí počet členů, kteří jsou nyní přidaní do skupiny.
+
+    ![Stránka Přehled skupiny se zvýrazněným počtem členů](media/active-directory-groups-create-azure-portal/group-overview-blade-number-highlight.png)
 
 ## <a name="next-steps"></a>Další kroky
-Následující články poskytují další informace o službě Azure Active Directory.
+Teď, když máte přidanou skupinu a alespoň jednoho uživatele, můžete provést tyto akce:
 
-* [Zobrazení existujících skupin](active-directory-groups-view-azure-portal.md)
-* [Správa nastavení skupiny](active-directory-groups-settings-azure-portal.md)
-* [Správa členů skupiny](active-directory-groups-members-azure-portal.md)
-* [Správa členství ve skupině](active-directory-groups-membership-azure-portal.md)
-* [Správa dynamických pravidel pro uživatele ve skupině](../users-groups-roles/groups-dynamic-membership.md)
+- [Zobrazení skupin a členů](active-directory-groups-view-azure-portal.md)
+
+- [Správa členství ve skupinách](active-directory-groups-membership-azure-portal.md)
+
+- [Správa dynamických pravidel pro uživatele ve skupině](../users-groups-roles/groups-create-rule.md)
+
+- [Úprava nastavení skupiny](active-directory-groups-settings-azure-portal.md)
+
+- [Správa přístupu k prostředkům pomocí skupin](active-directory-manage-groups.md)
+
+- [Správa přístupu k aplikacím SaaS pomocí skupin](../users-groups-roles/groups-saasapps.md)
+
+- [Správa skupin pomocí powershellových příkazů](../users-groups-roles/groups-settings-v2-cmdlets.md)
+
+- [Přiřazení nebo přidání předplatného Azure do služby Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)

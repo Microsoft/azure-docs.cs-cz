@@ -1,27 +1,27 @@
 ---
-title: Rychlý start Azure – Vytvoření objektu blob v úložišti objektů pomocí .NET | Microsoft Docs
-description: V tomto rychlém startu vytvoříte v úložišti objektů (blob) účet úložiště a kontejner. Pak použijete klientskou knihovnu pro úložiště pro .NET k nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů blob v kontejneru.
+title: 'Rychlý start: Použití platformy .NET k vytvoření objektu blob v úložišti objektů – Azure Storage'
+description: V tomto rychlém startu se naučíte používat klientskou knihovnu Azure Storage pro .NET k vytvoření kontejneru a objektu blob v úložišti objektů blob. Dále se dozvíte, jak stáhnout objekt blob do místního počítače a jak zobrazit seznam všech objektů blob, které jsou v kontejneru.
 services: storage
 author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 05/22/2018
+ms.date: 08/27/2018
 ms.author: tamram
-ms.openlocfilehash: d5a9c87246a175cc7455113c36caa59d59a79226
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: cde8516b93c2aac0cb74d9c9599168c8e6a70472
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399681"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734129"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-using-net"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí .NET
+# <a name="quickstart-use-net-to-create-a-blob-in-object-storage"></a>Rychlý start: Použití platformy .NET k vytvoření objektu blob v úložišti objektů
 
-V tomto rychlém startu zjistíte, jak pomocí .NET nahrávat, stahovat a vypisovat objekty blob bloku v kontejneru v úložišti objektů blob v Azure.
-
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+V tomto rychlém startu se naučíte používat klientskou knihovnu Azure Storage pro .NET k vytvoření kontejneru a objektu blob v úložišti objektů blob. Dále se dozvíte, jak stáhnout objekt blob do místního počítače a jak zobrazit seznam všech objektů blob, které jsou v kontejneru.
 
 ## <a name="prerequisites"></a>Požadavky
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 Abyste mohli absolvovat tento rychlý start, nejprve na webu [Azure Portal](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM) vytvořte účet úložiště Azure. Nápovědu k vytvoření účtu najdete v tématu [Vytvoření účtu úložiště](../common/storage-quickstart-create-account.md).
 

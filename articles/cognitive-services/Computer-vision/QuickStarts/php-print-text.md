@@ -1,44 +1,56 @@
 ---
-title: Rychlý start k rozhraní API pro počítačové zpracování obrazu s PHP a OCR | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: V tomto rychlém startu budete extrahovat tištěný text v obrázku pomocí počítačového zpracování obrazu s PHP ve službách Cognitive Services.
+title: 'Rychlý start: Extrahování tištěného textu (OCR) – REST, PHP – počítačové zpracování obrazu'
+titleSuffix: Azure Cognitive Services
+description: V tomto rychlém startu budete extrahovat tištěný text z obrázku pomocí rozhraní API pro počítačové zpracování obrazu a PHP.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 85df021357c76330be21ceff77d79491edcc23b0
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 14c03f2079e695fcd3cac8535b2888d71f41c913
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43769247"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45633227"
 ---
-# <a name="quickstart-extract-printed-text-ocr---rest-php"></a>Rychlý start: Extrahování tištěného textu (OCR) – REST, PHP
+# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-php-in-computer-vision"></a>Rychlý start: Extrahování tištěného textu (OCR) pomocí rozhraní REST API a PHP v počítačovém zpracování obrazu
 
-V tomto rychlém startu budete extrahovat tištěný text, což se označuje také jako optické rozpoznávání znaků (OCR), z obrázku pomocí počítačového zpracování obrazu.
+V tomto rychlém startu budete extrahovat tištěný text z obrázku pomocí optického rozpoznávání znaků (OCR) s využitím rozhraní REST API počítačového zpracování obrazu. Pomocí metody [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) můžete detekovat tištěný text v obrázku a extrahovat rozpoznané znaky do znakového proudu, který je strojově využitelný.
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli počítačové zpracování obrazu použít, potřebujete klíč předplatného. Přečtěte si, [jak klíče předplatného získat](../Vision-API-How-to-Topics/HowToSubscribe.md).
+- Musíte mít nainstalovaný [PHP](https://secure.php.net/downloads.php).
+- Musíte mít nainstalovaný [Pear](https://pear.php.net).
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Abyste získali klíč předplatného, přejděte k tématu [Jak získat klíče předplatného](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="ocr-request"></a>Žádost OCR
+## <a name="create-and-run-the-sample"></a>Vytvoření a spuštění ukázky
 
-Pomocí [metody OCR](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) můžete detekovat tištěný text v obrázku a extrahovat rozpoznané znaky do znakového proudu, který je strojově využitelný.
+Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 
-Pokud chcete spustit ukázku, postupujte takto:
+1. Nainstalujte balíček PHP5 [`HTTP_Request2`](http://pear.php.net/package/HTTP_Request2).
+   1. Otevřete okno příkazového řádku jako správce.
+   1. Spusťte následující příkaz:
 
-1. Zkopírujte do editoru následující kód.
-1. Místo `<Subscription Key>` použijte platný klíč předplatného.
-1. V případě potřeby změňte `uriBase` na umístění, kde jste získali klíče předplatného.
-1. Volitelně můžete `imageUrl` nastavit na obrázek, který chcete analyzovat.
-1. Uložte soubor s příponou `.php`.
-1. Soubor otevřete v okně prohlížeče s podporou PHP.
+      ```console
+      pear install HTTP_Request2
+      ```
 
-Tento příklad používá balíček [HTTP_Request2](http://pear.php.net/package/HTTP_Request2) PHP5.
+   1. Po úspěšné instalaci balíčku zavřete okno příkazového řádku.
+
+1. Zkopírujte do textového editoru následující kód.
+1. Proveďte v kódu na příslušných místech následující změny:
+    1. Hodnotu `subscriptionKey` nahraďte klíčem předplatného.
+    1. Hodnotu `uriBase` nahraďte adresou URL koncového bodu metody [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) z oblasti Azure, kde jste získali klíče předplatného, pokud je to potřeba.
+    1. Volitelně můžete hodnotu `imageUrl` nahradit adresou URL jiného obrázku, ze kterého chcete extrahovat tištěný text.
+1. Uložte kód jako soubor s příponou `.php`. Například, `get-printed-text.php`.
+1. Otevřete okno prohlížeče s podporou PHP.
+1. Přetáhněte daný soubor do okna prohlížeče.
 
 ```php
 <?php
@@ -101,9 +113,9 @@ catch (HttpException $ex)
 </html>
 ```
 
-## <a name="ocr-response"></a>Odpověď OCR
+## <a name="examine-the-response"></a>Prozkoumání odpovědi
 
-V případě úspěchu obsahují vrácené výsledky OCR text, ohraničující rámeček pro oblasti, řádky a slova, například:
+Úspěšná odpověď se vrátí ve formátu JSON. Ukázkový web provede analýzu a zobrazí úspěšnou odpověď v okně prohlížeče, podobně jako v následujícím příkladu:
 
 ```json
 {
@@ -204,9 +216,22 @@ V případě úspěchu obsahují vrácené výsledky OCR text, ohraničující r
 }
 ```
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud už tuto ukázku nepotřebujete, odstraňte soubor a pak odinstalujte balíček PHP5 `HTTP_Request2`. Odinstalaci balíčku proveďte takto:
+
+1. Otevřete okno příkazového řádku jako správce.
+2. Spusťte následující příkaz:
+
+   ```console
+   pear uninstall HTTP_Request2
+   ```
+
+3. Po úspěšné odinstalaci balíčku zavřete okno příkazového řádku.
+
 ## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte rozhraní API pro počítačové zpracování obrazu používané pro analýzu obrázku, zjišťování celebrit a památek, vytvoření miniatury a extrahování tištěného a ručně psaného textu. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Prozkoumejte rozhraní API pro počítačové zpracování obrazu, které se používá pro analýzu obrázku, zjišťování celebrit a památek, vytvoření miniatury a extrahování tištěného a ručně psaného textu. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
 > [Prozkoumat rozhraní API pro počítačové zpracování obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

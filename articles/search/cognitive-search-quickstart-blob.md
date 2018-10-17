@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: 3dda4c330f2dc620662c476aa4e5dbfe3a60fa76
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 85016ffb412b9f8773606639eb1496ac8ad251a7
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003692"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729988"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Rychlý start: Vytvoření kanálu kognitivního hledání pomocí dovedností a ukázkových dat
 
@@ -32,6 +32,9 @@ Kognitivní hledání si můžete vyzkoušet ve službě Azure Search vytvořen�
 * Západní Evropa
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+
+> [!NOTE]
+> Cognitive Search je ve veřejné verzi Preview. Funkce spuštění sady dovedností, extrakce a normalizace image jsou v současnosti nabízené zdarma. Ceny těchto funkcí oznámíme později. 
 
 ## <a name="prerequisites"></a>Požadavky
 

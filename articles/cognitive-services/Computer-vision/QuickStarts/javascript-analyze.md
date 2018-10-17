@@ -1,51 +1,45 @@
 ---
-title: Rychlý start k rozhraní API pro počítačové zpracování obrazu v JavaScriptu | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: V tomto rychlém startu analyzujete obrázek pomocí počítačového zpracování obrazu s JavaScriptem ve službách Cognitive Services.
+title: 'Rychlý start: Analýza vzdáleného obrázku – REST, JavaScript – počítačové zpracování obrazu'
+titleSuffix: Azure Cognitive Services
+description: V tomto rychlém startu budete analyzovat obrázek pomocí rozhraní API pro počítačové zpracování obrazu a JavaScriptu.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 5ae39743a812bca9716e8022c192d6a0d06b6fd4
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: e6874bde0231199b6a6805b5f27842d80dab6aaf
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43769313"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45631102"
 ---
-# <a name="quickstart-analyze-a-remote-image---rest-javascript"></a>Rychlý start: Analýza vzdáleného obrázku – REST, JavaScript
+# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-javascript-in-computer-vision"></a>Rychlý start: Analýza vzdáleného obrázku pomocí rozhraní REST API a JavaScriptu v počítačovém zpracování obrazu
 
-V tomto rychlém startu budete analyzovat obrázek pomocí počítačového zpracování obrazu.
+V tomto rychlém startu analyzujete obrázek uložený vzdáleně za účelem extrakce vizuálních prvků pomocí rozhraní REST API počítačového zpracování obrazu. Pomocí metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat vizuální prvky na základě obsahu obrázku.
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli počítačové zpracování obrazu použít, potřebujete klíč předplatného. Přečtěte si, [jak klíče předplatného získat](../Vision-API-How-to-Topics/HowToSubscribe.md).
+Musíte mít klíč předplatného pro počítačové zpracování obrazu. Abyste získali klíč předplatného, přejděte k tématu [Jak získat klíče předplatného](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="analyze-image-request"></a>Žádost Analyze Image
+## <a name="create-and-run-the-sample"></a>Vytvoření a spuštění ukázky
 
-Pomocí [metody Analyze Image](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat vizuální funkce na základě obsahu obrázku. Obrázek můžete nahrát nebo můžete určit jeho adresu URL a vybrat funkce, které se mají vrátit, včetně:
+Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 
-* Podrobného seznamu značek souvisejících s obsahem obrázku
-* Popisu obsahu obrázku v celé větě
-* Souřadnic, pohlaví a věku veškerých obličejů na obrázku
-* Typu obrázku (klipart nebo perokresba)
-* Převládající barvy, doplňkové barvy a toho, jestli je obrázek černobílý
-* Kategorie definované v této [taxonomii](../Category-Taxonomy.md)
-* Je obsah obrázku určený pro dospělé nebo se jedná o sexuálně sugestivní obsah?
-
-Pokud chcete spustit ukázku, postupujte takto:
-
-1. Zkopírujte následující kód a uložte ho do souboru, jako je třeba `analyze.html`.
-1. Místo `<Subscription Key>` použijte platný klíč předplatného.
-1. V případě potřeby změňte hodnotu `uriBase` na umístění, kde jste získali klíče předplatného.
-1. Soubor přetáhněte do prohlížeče.
-1. Klikněte na tlačítko `Analyze image`.
-
-Tato ukázka používá jQuery 1.9.0. Ukázku, která používá JavaScript bez jQuery, najdete v popisu [inteligentního generování miniatury](javascript-thumb.md).
+1. Zkopírujte do textového editoru následující kód.
+1. Proveďte v kódu na příslušných místech následující změny:
+    1. Hodnotu `subscriptionKey` nahraďte klíčem předplatného.
+    1. Hodnotu `uriBase` nahraďte adresou URL koncového bodu metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) z oblasti Azure, kde jste získali klíče předplatného, pokud je to potřeba.
+    1. Volitelně můžete hodnotu atributu `value` pro ovládací prvek `inputImage` nahradit adresou URL jiného obrázku, který chcete analyzovat.
+1. Uložte kód jako soubor s příponou `.html`. Například, `analyze-image.html`.
+1. Otevřete okno prohlížeče.
+1. Přetáhněte daný soubor do okna prohlížeče.
+1. Když se v prohlížeči zobrazí webová stránka, zvolte tlačítko **Analyze Image** (Analyzovat obrázek).
 
 ```html
 <!DOCTYPE html>
@@ -65,11 +59,12 @@ Tato ukázka používá jQuery 1.9.0. Ukázku, která používá JavaScript bez 
         // Replace <Subscription Key> with your valid subscription key.
         var subscriptionKey = "<Subscription Key>";
 
-        // You must use the same region in your REST call as you used to get your
-        // subscription keys. For example, if you got your subscription keys from
-        // westus, replace "westcentralus" in the URI below with "westus".
+        // You must use the same Azure region in your REST API method as you used to
+        // get your subscription keys. For example, if you got your subscription keys
+        // from the West US region, replace "westcentralus" in the URL
+        // below with "westus".
         //
-        // Free trial subscription keys are generated in the westcentralus region.
+        // Free trial subscription keys are generated in the West Central US region.
         // If you use a free trial subscription key, you shouldn't need to change
         // this region.
         var uriBase =
@@ -144,9 +139,9 @@ Image to analyze:
 </html>
 ```
 
-## <a name="analyze-image-response"></a>Odpověď metody Analyze Image
+## <a name="examine-the-response"></a>Prozkoumání odpovědi
 
-Úspěšná odpověď se vrátí ve formátu JSON, například:
+Úspěšná odpověď se vrátí ve formátu JSON. Ukázková webová stránka provede analýzu a zobrazí úspěšnou odpověď v okně prohlížeče, podobně jako v následujícím příkladu:
 
 ```json
 {
@@ -213,6 +208,10 @@ Image to analyze:
   }
 }
 ```
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud už soubor nepotřebujete, odstraňte ho.
 
 ## <a name="next-steps"></a>Další kroky
 

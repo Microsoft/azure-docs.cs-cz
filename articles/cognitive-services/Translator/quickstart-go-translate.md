@@ -1,21 +1,21 @@
 ---
-title: Translator Text – překlad textu s Go | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: V tomto rychlém startu přeložíte text z jednoho jazyka do jiného pomocí služby Translator Text API s Go ve službách Cognitive Services.
+title: 'Rychlý start: Překlad textu – Translator Text, Go'
+titleSuffix: Azure Cognitive Services
+description: V tomto rychlém startu přeložíte text z jednoho jazyka do jiného pomocí služby Translator Text API s Go.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/29/2018
 ms.author: nolachar
-ms.openlocfilehash: 72d4a3bc7563d6427335f1536f787eab6d7a0de4
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: df8b938c9541a4f57a337065af0ab02fe6815c6d
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "43769114"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126696"
 ---
 # <a name="quickstart-translate-text-with-go"></a>Rychlý start: Překlad textu s Go
 

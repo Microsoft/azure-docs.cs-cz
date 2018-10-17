@@ -1,25 +1,25 @@
 ---
-title: 'Rychlý start: Spuštění pracovního postupu ve službě Microsoft Genomics | Dokumentace Microsoftu'
+title: 'Rychlý start: Spuštění pracovního postupu ve službě Microsoft Genomics'
 description: Tento článek ukazuje, jak načíst vstupní data do Azure Blob Storage a jak spustit pracovní postup ve službě Microsoft Genomics.
-services: microsoft-genomics
+services: genomics
 author: grhuynh
-manager: jhubbard
-editor: jasonwhowell
+manager: cgronlun
 ms.author: grhuynh
-ms.service: microsoft-genomics
-ms.workload: genomics
+ms.service: genomics
 ms.topic: quickstart
 ms.date: 12/07/2017
-ms.openlocfilehash: 4387e1c935ada99e1f9c335fb7e1b67905c01188
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: e1d10b578d33ba8d96f43666b82e94ef5503fe77
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42022898"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731083"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Rychlý start: Spuštění pracovního postupu ve službě Microsoft Genomics
 
-Microsoft Genomics je škálovatelná a bezpečná služba pro sekundární analýzu, která dokáže rychle analyzovat genom počínaje od nezpracovaných čtení a vytváří zarovnaná čtení a volání variant. Začátek je rozdělen do několika kroků: 
+V tomto rychlém startu si ukážeme, jak načíst vstupní data do Azure Blob Storage a jak spustit pracovní postup ve službě Microsoft Genomics. Microsoft Genomics je škálovatelná a bezpečná služba pro sekundární analýzu, která dokáže rychle analyzovat genom počínaje od nezpracovaných čtení a vytváří zarovnaná čtení a volání variant. 
+
+Začátek je rozdělen do několika kroků: 
 1.  Příprava: vytvořte účet Microsoft Genomics na webu Azure Portal a nainstalujte pythonového klienta Microsoft Genomics do svého místního prostředí. 
 2.  Nahrání vstupních dat: vytvořte účet úložiště Microsoft Azure na webu Azure Portal a nahrajte do něho vstupní soubory. Vstupní soubory by měly obsahovat sekvence paired-end (soubory fastq nebo bam).
 3.  Spuštění: pomocí rozhraní příkazového řádku služby Microsoft Genomics spusťte pracovní postupy služby Microsoft Genomics. 

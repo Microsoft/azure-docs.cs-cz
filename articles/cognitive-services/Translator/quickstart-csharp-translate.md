@@ -1,25 +1,27 @@
 ---
-title: Translator Text – překlad textu s C# | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: V tomto rychlém startu přeložíte text z jednoho jazyka do jiného pomocí služby Translator Text API s C# ve službách Cognitive Services.
+title: 'Rychlý start: Překlad textu – Translator Text, C#'
+titleSuffix: Azure Cognitive Services
+description: V tomto rychlém startu přeložíte text z jednoho jazyka do jiného pomocí služby Translator Text API pomocí jazyka C#.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
 ms.author: nolachar
-ms.openlocfilehash: 7923cf3249beaf713b91ba0e5ea4f70f34841b3c
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: e60b2a9ea7c56352a1b4dfb65537ba6dc57fcb68
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "43768930"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46365957"
 ---
 # <a name="quickstart-translate-text-with-c35"></a>Rychlý start: Překlad textu s C&#35;
 
 V tomto rychlém startu přeložíte text z jednoho jazyka do jiného pomocí služby Translator Text API.
+
+Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp).
 
 ## <a name="prerequisites"></a>Požadavky
 

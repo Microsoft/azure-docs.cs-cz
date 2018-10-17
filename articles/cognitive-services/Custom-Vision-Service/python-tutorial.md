@@ -1,58 +1,59 @@
 ---
-title: Vytvořit vlastní Vision Service Python kurz – Azure Cognitive Services | Dokumentace Microsoftu
-description: Prozkoumejte základní aplikaci v Pythonu, který používá vlastní rozhraní API pro zpracování obrazu ve službě Microsoft Cognitive Services. Vytvoření projektu, přidání značek, nahrávat obrázky, trénování váš projekt a předpověď pomocí výchozí koncový bod.
+title: 'Kurz: Vytvoření projektu klasifikace obrázku – Custom Vision Service, Python'
+titlesuffix: Azure Cognitive Services
+description: Vytvořte projekt, přidejte značky, nahrajte obrázky, vytrénujte svůj projekt a vytvořte předpověď pomocí výchozího koncového bodu.
 services: cognitive-services
 author: areddish
-manager: chbuehle
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: areddish
-ms.openlocfilehash: df0bdc0bbd2768566336323851f366c9ae280a88
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
-ms.translationtype: MT
+ms.openlocfilehash: 14b805a60637a889698132e169d5a41670a8bce0
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301595"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46363373"
 ---
-# <a name="custom-vision-api-python-tutorial"></a>Vlastní kurz Python API pro zpracování obrazu
+# <a name="tutorial-create-an-image-classification-project-using-the-custom-vision-service-with-python"></a>Kurz: Vytvoření projektu klasifikace obrázku pomocí Custom Vision Service a Pythonu
 
-Zjistěte, jak vytvořit projekt klasifikace obrázků pomocí služby Custom Vision Service a základní skript Pythonu. Po jeho vytvoření je můžete přidat značky, nahrávání obrázků, trénování projektu, získat adresu URL koncového bodu projektu výchozí předpovědi a pomocí něho můžete testovat programově bitovou kopii. Použijte tento příklad open source jako šablonu pro vytváření vlastních aplikací s použitím vlastní rozhraní API pro zpracování obrazu.
+Zjistěte, jak vytvořit projekt klasifikace obrázků pomocí služby Custom Vision Service a základního skriptu Pythonu. Po jeho vytvoření můžete přidat značky, nahrát obrázky, vytrénovat projekt, získat adresu URL výchozího koncového bodu předpovědi projektu a použít jej k programovému testování obrázku. Tento opensourcový příklad použijte jako šablonu pro vytvoření vlastní aplikace pomocí rozhraní Custom Vision API.
 
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Python 2.7 + nebo Python 3.5 +.
-- Nástroje pip.
+- Python 2.7+ nebo Python 3.5+.
+- Nástroj pip.
 
-## <a name="get-the-training-and-prediction-keys"></a>Získání klíčů trénování a predikcí
+## <a name="get-the-training-and-prediction-keys"></a>Získání tréninkového klíče a klíče předpovědi
 
-Klíče používané v tomto příkladu najdete [vizi vlastní webovou stránku](https://customvision.ai) a vyberte __ikonu ozubeného kola__ v pravém horním rohu. V __účty__ tématu, zkopírujte hodnoty z __školení klíč__ a __předpovědi klíč__ pole.
+Klíče používané v tomto příkladu získáte tak, že přejdete na [webovou stránku služby Custom Vision](https://customvision.ai) a vyberte __ikonu ozubeného kola__ v pravém horním rohu. V části __Účty__ zkopírujte hodnoty z polí pro __tréninkový klíč__ a __klíč předpovědi__.
 
-![Obrázek klíče uživatelského rozhraní](./media/python-tutorial/training-prediction-keys.png)
+![Obrázek uživatelského rozhraní klíčů](./media/python-tutorial/training-prediction-keys.png)
 
-## <a name="install-the-custom-vision-service-sdk"></a>Instalace sady SDK služby Custom Vision
+## <a name="install-the-custom-vision-service-sdk"></a>Instalace sady Custom Vision Service SDK
 
-Pokud chcete nainstalovat sadu SDK služby pro zpracování obrazu vlastní, použijte následující příkaz:
+K instalaci sady Custom Vision Service SDK použijte následující příkaz:
 
 ```
 pip install azure-cognitiveservices-vision-customvision
 ```
 
-## <a name="get-example-images"></a>Získat Image příklad
+## <a name="get-example-images"></a>Získání obrázků pro příklad
 
-Tento příklad používá Image z `Samples/Images` adresáři [ https://github.com/Microsoft/Cognitive-CustomVision-Windows ](https://github.com/Microsoft/Cognitive-CustomVision-Windows/tree/master/Samples/Images) projektu. Naklonujte nebo stáhněte a extrahujte projekt do svého vývojového prostředí.
+Tento příklad používá obrázky z adresáře `Samples/Images` projektu [https://github.com/Microsoft/Cognitive-CustomVision-Windows](https://github.com/Microsoft/Cognitive-CustomVision-Windows/tree/master/Samples/Images). Naklonujte nebo stáhněte a extrahujte projekt do svého vývojového prostředí.
 
-## <a name="create-a-custom-vision-service-project"></a>Vytvořte projekt služby Custom Vision Service
+## <a name="create-a-custom-vision-service-project"></a>Vytvoření projektu služby Custom Vision Service
 
-Chcete-li vytvořit nový projekt služby Custom Vision Service, vytvořte nový soubor s názvem `sample.py`. Použijte následující kód jako obsah souboru:
+Nový projekt služby Custom Vision Service vytvoříte tak, že vytvoříte nový soubor s názvem `sample.py`. Jako obsah souboru použijte následující kód:
 
 > [!IMPORTANT]
-> Nastavte `training_key` hodnotě klíče školení, který jste získali dříve.
+> Nastavte pro `training_key` hodnotu tréninkového klíče, kterou jste získali dříve.
 >
-> Nastavte `prediction_key` hodnotě klíče predikcí, který jste získali dříve.
+> Nastavte pro `prediction_key` hodnotu klíče předpovědi, kterou jste získali dříve.
 
 ```python
 from azure.cognitiveservices.vision.customvision.training import training_api
@@ -71,7 +72,7 @@ project = trainer.create_project("My Project")
 
 ## <a name="add-tags-to-your-project"></a>Přidání značek do projektu
 
-Přidání značek do projektu, přidejte následující kód do konce `sample.py` souboru:
+Značky do projektu přidáte připojením následujícího kódu na konec souboru `sample.py`:
 
 ```python
 # Make two tags in the new project
@@ -79,13 +80,13 @@ hemlock_tag = trainer.create_tag(project.id, "Hemlock")
 cherry_tag = trainer.create_tag(project.id, "Japanese Cherry")
 ```
 
-## <a name="upload-images-to-the-project"></a>Nahrávání obrázků do projektu
+## <a name="upload-images-to-the-project"></a>Nahrání obrázků do projektu
 
-Chcete-li přidat do projektu ukázkové obrázky, vložte následující kód po vytvoření značky. Tento kód odešle image s odpovídající značky:
+Ukázkové obrázky do projektu přidáte tak, že po vytvoření značky vložíte následující kód. Tento kód odešle obrázek s odpovídající značkou:
 
 > [!IMPORTANT]
 >
-> Změňte cestu k bitové kopie, podle kterého jste stáhli projekt Cognitive-CustomVision – Windows, dříve.
+> Změňte cestu k obrázku podle toho, kam jste dříve stáhli projekt Cognitive-CustomVision-Windows.
 
 ```python
 base_image_url = "https://raw.githubusercontent.com/Microsoft/Cognitive-CustomVision-Windows/master/Samples/"
@@ -117,7 +118,7 @@ for image_num in range(1,10):
 
 ## <a name="train-the-project"></a>Trénování projektu
 
-K trénování třídění, přidejte následující kód do konce `sample.py` souboru:
+Vytrénujte klasifikátor přidáním následujícího kódu na konec souboru `sample.py`:
 
 ```python
 import time
@@ -134,9 +135,9 @@ trainer.update_iteration(project.id, iteration.id, is_default=True)
 print ("Done!")
 ```
 
-## <a name="get-and-use-the-default-prediction-endpoint"></a>Získat a použít výchozí koncový bod predikcí
+## <a name="get-and-use-the-default-prediction-endpoint"></a>Získání a použití výchozího koncového bodu předpovědi
 
-Odeslat image do koncového bodu předpovědi a načíst do predikce, přidejte následující kód do konce `sample.py` souboru:
+Pokud chcete odeslat obrázek do koncového bodu předpovědi a načíst předpověď, přidejte na konec souboru `sample.py` následující kód:
 
 ```python
 from azure.cognitiveservices.vision.customvision.prediction import prediction_endpoint
@@ -161,15 +162,15 @@ for prediction in results.predictions:
     print ("\t" + prediction.tag_name + ": {0:.2f}%".format(prediction.probability * 100))
 ```
 
-## <a name="run-the-example"></a>Spustit příklad
+## <a name="run-the-example"></a>Spuštění příkladu
 
-Spusťte řešení. V konzole se zobrazí predikované výsledky.
+Spusťte řešení. V konzole se zobrazí výsledky předpovědi.
 
 ```
 python sample.py
 ```
 
-Výstup aplikace se podobá následujícímu textu:
+Výstup aplikace je podobný následujícímu textu:
 
 ```
 Creating project...

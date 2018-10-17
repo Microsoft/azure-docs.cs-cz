@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 8/8/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 179db61777fe60ae53d7fee553c8124d7a9f7abf
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: fe84dfcef2a5dad1c170592f933638b984e16a05
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42023206"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717025"
 ---
 # <a name="what-is-azure-virtual-network"></a>Co je Azure Virtual Network?
 
@@ -47,7 +47,7 @@ Všechny prostředky ve virtuální síti ve výchozím nastavení umožňují o
 Prostředky Azure mezi sebou zabezpečeně komunikují jedním z následujících způsobů:
 
 - **Prostřednictvím virtuální sítě:** Do virtuální sítě můžete nasadit virtuální počítače a několik dalších typů prostředků Azure, jako jsou služby Azure App Service Environment, Azure Kubernetes Service (AKS) a Azure Virtual Machine Scale Sets. Úplný seznam prostředků Azure, které můžete nasadit do virtuální sítě, najdete v tématu věnovaném [integraci virtuální sítě do služeb](virtual-network-for-azure-services.md). 
-- **Prostřednictvím koncového bodu služby virtuální sítě:** Privátní adresní prostor a identitu virtuální sítě můžete přes přímé připojení rozšířit na prostředky služeb Azure, jako jsou účty Azure Storage a služba Azure SQL Database. Koncové body služeb umožňují svázat vaše důležité prostředky služeb Azure pouze s virtuální sítí. Další informace najdete v tématu [Přehled koncových bodů služeb virtuální sítě](virtual-network-service-endpoints-overview.md).
+- **Prostřednictvím koncového bodu služby virtuální sítě**: Privátní adresní prostor a identitu virtuální sítě můžete přes přímé připojení rozšířit na prostředky služeb Azure, jako jsou účty Azure Storage a databáze služby Azure SQL Database. Koncové body služeb umožňují svázat vaše důležité prostředky služeb Azure pouze s virtuální sítí. Další informace najdete v tématu [Přehled koncových bodů služeb virtuální sítě](virtual-network-service-endpoints-overview.md).
  
 ## <a name="communicate-with-on-premises-resources"></a>Komunikace s místními prostředky
 

@@ -1,60 +1,61 @@
 ---
-title: Objekt detekce pomocí Javy a vlastní rozhraní API pro zpracování obrazu – Azure Cognitive Services | Dokumentace Microsoftu
-description: Prozkoumejte základní aplikaci Windows, která používá vlastní rozhraní API pro zpracování obrazu ve službě Microsoft Cognitive Services. Vytvoření projektu, přidání značek, nahrávat obrázky, trénování váš projekt a předpověď pomocí výchozí koncový bod.
+title: 'Kurz: Vytvoření projektu detekce objektů – rozhraní API Custom Vision, Java'
+titlesuffix: Azure Cognitive Services
+description: Vytvořte projekt, přidejte značky, nahrajte obrázky, vytrénujte svůj projekt a vytvořte předpověď pomocí výchozího koncového bodu.
 services: cognitive-services
 author: areddish
-manager: chbuehle
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: areddish
-ms.openlocfilehash: 333447c6390b269d0665a2d00009307105d58996
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
-ms.translationtype: MT
+ms.openlocfilehash: 661242e4962a8218c48d7ea66d8a6f728b5154c8
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44305690"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46365010"
 ---
-# <a name="use-custom-vision-api-to-build-an-object-detection-project-with-java"></a>Použití vlastní rozhraní API pro zpracování obrazu k sestavení projekt zjišťování objektů s Javou
+# <a name="tutorial-build-an-object-detection-project-with-java"></a>Kurz: Sestavení projektu detekce objektů s Javou
 
-Prozkoumejte základní aplikaci v Javě, která používá rozhraní API pro počítačové zpracování obrazu pro vytvoření projektu zjišťování objektu. Po jeho vytvoření, je můžete přidat označený oblastí, nahrávání obrázků, trénování projektu, získat adresu URL koncového bodu projektu výchozí předpovědi a použít koncový bod pro programové testování bitovou kopii. Použijte tento příklad open source jako šablonu pro vytváření vlastních aplikací s použitím vlastní rozhraní API pro zpracování obrazu.
+Prozkoumejte základní aplikaci v Javě, která používá rozhraní API pro počítačové zpracování obrazu k vytvoření projektu detekce objektů. Po jeho vytvoření můžete přidat označené oblasti, nahrát obrázky, vytrénovat projekt, získat adresu URL výchozího koncového bodu předpovědi projektu a použít tento koncový bod k programovému testování obrázku. Tento opensourcový příklad použijte jako šablonu pro vytvoření vlastní aplikace pomocí rozhraní Custom Vision API.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li použít tento kurz, postupujte takto:
+Pro tento kurz budete muset:
 
-- Nainstalujte sadu JDK 7 nebo 8.
-- Instalace nástroje Maven.
+- Nainstalovat sadu JDK 7 nebo 8
+- Nainstalovat Maven
 
-## <a name="install-the-custom-vision-service-sdk"></a>Instalace sady SDK služby Custom Vision
+## <a name="install-the-custom-vision-service-sdk"></a>Nainstalovat sadu Custom Vision Service SDK
 
-Vlastní sada SDK pro zpracování obrazu můžete nainstalovat z centrálního úložiště maven:
-* [Školicí sada SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
-* [Predikce SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-prediction)
+Sadu Custom Vision SDK můžete nainstalovat z centrálního úložiště Mavenu:
+* [Sada SDK pro trénování](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
+* [Sada SDK pro předpověď](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-prediction)
 
-## <a name="get-the-training-and-prediction-keys"></a>Získání klíčů trénování a predikcí
+## <a name="get-the-training-and-prediction-keys"></a>Získání tréninkového klíče a klíče předpovědi
 
-Klíče používané v tomto příkladu najdete [webu Custom Vision](https://customvision.ai) a vyberte __ikonu ozubeného kola__ v pravém horním rohu. V __účty__ tématu, zkopírujte hodnoty z __školení klíč__ a __předpovědi klíč__ pole.
+Klíče používané v tomto příkladu získáte tak, že přejdete na [stránku služby Custom Vision](https://customvision.ai) a v pravém horním rohu vyberete __ikonu ozubeného kola__. V části __Účty__ zkopírujte hodnoty z polí pro __tréninkový klíč__ a __klíč předpovědi__.
 
-![Obrázek klíče uživatelského rozhraní](./media/python-tutorial/training-prediction-keys.png)
+![Obrázek uživatelského rozhraní klíčů](./media/python-tutorial/training-prediction-keys.png)
 
 ## <a name="understand-the-code"></a>Vysvětlení kódu
 
-Úplný projekt, včetně obrázků, je k dispozici [Custom Vision Azure ukázky pro úložiště Java](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master). 
+Úplný projekt, včetně obrázků, je k dispozici v [ukázkách Azure služby Custom Vision pro úložiště Javy](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master). 
 
-Otevřít pomocí oblíbeném Java IDE `Vision/CustomVision` projektu. 
+Projekt `Vision/CustomVision` otevřete pomocí svého oblíbeného prostředí Java IDE. 
 
-Tato aplikace používá školení klíč, který jste získali dříve k vytvoření nového projektu s názvem __ukázkový projekt v jazyce Java OD__. Potom nahrává obrázky a natrénuje a otestuje detektor objektu. Detektor objekt identifikuje oblasti obsahující __forku__ nebo dvojici __nůžek__.
+Tato aplikace používá dříve získaný tréninkový klíč k vytvoření nového projektu s názvem __Sample Java OD Project__. Potom nahraje obrázky k trénování a testování detektoru objektů. Detektor objektů identifikuje oblasti obsahující __vidličku__ nebo __nůžky__.
 
-Následující fragmenty kódu implementovat primární funkce v tomto příkladu:
+Následující fragmenty kódu implementují primární funkci tohoto příkladu:
 
-## <a name="create-a-custom-vision-service-project"></a>Vytvořte projekt služby Custom Vision Service
+## <a name="create-a-custom-vision-service-project"></a>Vytvoření projektu služby Custom Vision Service
 
-Všimněte si rozdílu mezi vytváření zjišťování objektů a projekt klasifikace obrázků je shodný s doménou, která je zadána createProject volání.
+Všimněte si, že vytváření projektu zjišťování objektů a klasifikace obrázků se liší doménou, která je zadána při volání createProject.
 
 > [!IMPORTANT]
-> Nastavte `trainingApiKey` hodnotě klíče školení, který jste získali dříve.
+> Nastavte pro `trainingApiKey` hodnotu tréninkového klíče, kterou jste získali dříve.
 
 ```java
 final String trainingApiKey = "insert your training key here";
@@ -104,9 +105,9 @@ Tag scissorsTag = trainer.createTag()
     .execute();
 ```
 
-## <a name="upload-images-to-the-project"></a>Nahrávání obrázků do projektu
+## <a name="upload-images-to-the-project"></a>Nahrání obrázků do projektu
 
-Pro projekt objektu zjišťování, budete muset nahrát obrázek, oblasti a značky. Oblast je v normalizovaných souřadnice a určuje umístění příznakem objektu.
+U projektu detekce objektů je potřeba nahrát obrázek, oblasti a značky. Oblast je v normalizovaných souřadnicích a určuje umístění označeného objektu.
 
 
 ```java
@@ -175,7 +176,7 @@ for (int i = 1; i <= 20; i++) {
 }
 ```
 
-Předchozí fragment kódu používá dva pomocných funkcí, které načtení obrázků jako datové proudy prostředků a k jejich nahrávání do služby.
+Předchozí fragment kódu používá dvě pomocné funkce, které obrázky načítají jako streamy prostředků a nahrávají je do služby.
 
 ```java
 private static void AddImageToProject(Trainings trainer, Project project, String fileName, byte[] contents, UUID tag, double[] regionValues)
@@ -220,7 +221,7 @@ private static byte[] GetImage(String folder, String fileName)
 
 ## <a name="train-the-project"></a>Trénování projektu
 
-Tím se vytvoří první iterace v projektu a označí tuto iteraci jako výchozí iterace. 
+Vytvoří se tím první iterace v projektu a označí tuto iteraci jako výchozí iteraci. 
 
 ```java
 System.out.println("Training...");
@@ -235,10 +236,10 @@ System.out.println("Training Status: "+ iteration.status());
 trainer.updateIteration(project.id(), iteration.id(), iteration.withIsDefault(true));
 ```
 
-## <a name="get-and-use-the-default-prediction-endpoint"></a>Získat a použít výchozí koncový bod predikcí
+## <a name="get-and-use-the-default-prediction-endpoint"></a>Získání a použití výchozího koncového bodu předpovědi
 
 > [!IMPORTANT]
-> Nastavte `predictionApiKey` hodnotě klíče predikcí, který jste získali dříve.
+> Nastavte pro `predictionApiKey` hodnotu klíče předpovědi, kterou jste získali dříve.
 
 ```java
 final String predictionApiKey = "insert your prediction key here";
@@ -273,11 +274,11 @@ for (Prediction prediction: results.predictions())
 }
 ```
 
-## <a name="run-the-example"></a>Spustit příklad
+## <a name="run-the-example"></a>Spuštění příkladu
 
-V konzole spolu s určité protokolování a zobrazuje průběh se zobrazí predikované výsledky.
+Předpověď se zobrazí v konzole spolu s protokolováním pro zobrazení průběhu.
 
-Kompilace a spuštění řešení pomocí nástroje maven:
+Kompilace a spuštění řešení pomocí Mavenu:
 
 ```
 mvn compile exec:java

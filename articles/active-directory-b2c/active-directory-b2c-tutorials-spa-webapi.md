@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: 54ddafbf0e4fe02bfc1445aad23ac3e20b42acb0
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: efe975fa4f89a262faef82df3cc79820d393b60e
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339382"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605755"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-app-using-azure-active-directory-b2c"></a>Kurz: Poskytnutí přístupu k webovému rozhraní API ASP.NET Core z jednostránkové aplikace pomocí Azure Active Directory B2C
 
@@ -46,9 +46,9 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/) jako globální s
 
 [!INCLUDE [active-directory-b2c-switch-b2c-tenant](../../includes/active-directory-b2c-switch-b2c-tenant.md)]
 
-1. Ze seznamu služeb na webu Azure Portal vyberte **Azure AD B2C**.
+1. Zvolte **Všechny služby** v levém horním rohu portálu Azure Portal a vyhledejte a vyberte **Azure AD B2C**. Teď byste měli používat tenanta, kterého jste vytvořili v předchozím kurzu.
 
-2. V nastavení B2C klikněte na **Aplikace** a pak klikněte na **Přidat**.
+2. Vyberte **Aplikace** a pak **Přidat**.
 
     K registraci ukázkového webového rozhraní API ve vašem tenantovi použijte následující nastavení.
     
@@ -59,7 +59,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/) jako globální s
     | **Název** | Hello Core API | Zadejte **Název**, který popíše vaše webové rozhraní API pro vývojáře. |
     | **Zahrnout webovou aplikaci nebo webové rozhraní API** | Ano | Pro webové rozhraní API vyberte **Ano**. |
     | **Povolit implicitní tok** | Ano | Vyberte **Ano**, protože rozhraní API používá [Přihlášení OpenID Connect](active-directory-b2c-reference-oidc.md). |
-    | **Adresa URL odpovědi** | `http://localhost:44332` | Adresy URL odpovědí jsou koncové body, kam Azure AD B2C vrací všechny tokeny, které vaše rozhraní API požaduje. V tomto kurzu se ukázkové webové rozhraní API spouští místně (localhost) a naslouchá na portu 5000. |
+    | **Adresa URL odpovědi** | `http://localhost:5000` | Adresy URL odpovědí jsou koncové body, kam Azure AD B2C vrací všechny tokeny, které vaše rozhraní API požaduje. V tomto kurzu se ukázkové webové rozhraní API spouští místně (localhost) a naslouchá na portu 5000 (po konfiguraci dále v tomto kurzu). |
     | **Identifikátor URI ID aplikace** | HelloCoreAPI | Tento identifikátor URI jednoznačně identifikuje rozhraní API v tenantovi. Díky tomu můžete v jednom tenantovi registrovat více rozhraní API. [Obory](../active-directory/develop/developer-glossary.md#scopes) řídí přístup k chráněnému prostředku rozhraní API a definují se pro jednotlivé identifikátory URI ID aplikace. |
     | **Nativní klient** | Ne | Vzhledem k tomu, že se jedná o webové rozhraní API, a ne nativního klienta, vyberte Ne. |
     
@@ -111,7 +111,7 @@ Pokud chcete volat chráněné webové rozhraní API z aplikace, musíte aplikac
 
 5. Klikněte na **OK**.
 
-Vaše aplikace **My sample single page app** je zaregistrovaná a může volat chráněné rozhraní **Hello Core API**. Uživatel se [ověří](../active-directory/develop/developer-glossary.md#authentication) v Azure AD B2C, aby mohl použít desktopovou aplikaci WPF. Desktopová aplikace získá z Azure AD B2C [udělení autorizace](../active-directory/develop/developer-glossary.md#authorization-grant) pro přístup k chráněnému webovému rozhraní API.
+Vaše aplikace **My sample single page app** je zaregistrovaná a může volat chráněné rozhraní **Hello Core API**. Uživatel se [ověří](../active-directory/develop/developer-glossary.md#authentication) v Azure AD B2C, aby mohl jednostránkovou aplikaci použít. Jednostránková aplikace získá z Azure AD B2C [udělení autorizace](../active-directory/develop/developer-glossary.md#authorization-grant) pro přístup k chráněnému webovému rozhraní API.
 
 ## <a name="update-code"></a>Aktualizace kódu
 
@@ -158,7 +158,7 @@ Pokud chcete své jednostránkové aplikaci povolit volání webového rozhraní
         builder.WithOrigins("http://localhost:6420").AllowAnyHeader().AllowAnyMethod());
     ```
 
-3. Otevřete soubor **launchSettings.json** v části **Vlastnosti**, vyhledejte nastavení *applicationURL* a poznamenejte si tuto hodnotu pro použití v další části.
+3. Otevřete soubor **launchSettings.json** v části **Vlastnosti**, vyhledejte nastavení **iisSettings** *adresa_URL_aplikace* a potom nastavte číslo portu na port registrovaný pro adresu URL odpovědi rozhraní API `http://localhost:5000`.
 
 ### <a name="configure-the-single-page-app"></a>Konfigurace jednostránkové aplikace
 
@@ -174,7 +174,7 @@ Nastavení aplikace můžete změnit následujícím způsobem:
         clientID: '<Application ID for your SPA obtained from portal app registration>',
         authority: "https://<your-tenant-name>.b2clogin.com/tfp/<your-tenant-name>.onmicrosoft.com/B2C_1_SiUpIn",
         b2cScopes: ["https://<Your tenant name>.onmicrosoft.com/HelloCoreAPI/demo.read"],
-        webApi: 'http://localhost:64791/api/values',
+        webApi: 'http://localhost:5000/api/values',
     };
     ```
 

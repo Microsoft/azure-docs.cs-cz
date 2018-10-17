@@ -1,67 +1,70 @@
 ---
 title: 'Rychlý start: Extrakce rukou psaného textu – REST, Java – Počítačové zpracování obrazu'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu extrahujete rukou psaný text z obrázku pomocí počítačového zpracování obrazu s jazykem Java v Cognitive Services.
+description: V tomto rychlém startu extrahujete rukou psaný text z obrázku pomocí rozhraní API pro počítačové zpracování obrazu a Javy.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: a7f2599853bcc8dc4502ef870a91e2ee131b4667
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: b69d36652838f5d5d6caa3ebb7a3287e234b32cf
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842732"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629431"
 ---
-# <a name="quickstart-extract-handwritten-text---rest-java---computer-vision"></a>Rychlý start: Extrakce rukou psaného textu – REST, Java – Počítačové zpracování obrazu
+# <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-java-in-computer-vision"></a>Rychlý start: Extrakce rukou psaného textu pomocí rozhraní REST API a Javy v Počítačovém zpracování obrazu
 
-V tomto rychlém startu extrahujete rukou psaný text z obrázku pomocí počítačového zpracování obrazu.
+V tomto rychlém startu extrahujete rukou psaný text z obrázku pomocí rozhraní REST API počítačového zpracování obrazu. Pomocí metod [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) (Rozpoznat text) a [Get Recognize Text Operation Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) (Získat výsledky operace rozpoznávání textu) můžete detekovat rukou psaný text v obrázku a extrahovat rozpoznané znaky do strojově použitelného proudu znaků.
+
+> [!IMPORTANT]
+> Metoda [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) běží na rozdíl od metody [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) asynchronně. Tato metoda nevrací žádné informace v textu úspěšné odpovědi. Metoda Recognize Text místo toho vrátí identifikátor URI v hodnotě pole hlavičky odpovědi `Operation-Content`. Voláním tohoto identifikátoru URI, který zastupuje metodu [Get Recognize Text Operation Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201), pak lze zkontrolovat stav i získat výsledky volání metody Recognize Text.
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli počítačové zpracování obrazu použít, potřebujete klíč předplatného. Přečtěte si, [jak klíče předplatného získat](../Vision-API-How-to-Topics/HowToSubscribe.md).
+- Musíte mít nainstalovanou platformu [Java&trade;, Standard Edition Development Kit 7 nebo 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) (JDK 7 nebo 8).
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Abyste získali klíč předplatného, přejděte k tématu [Jak získat klíče předplatného](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="recognize-text-request"></a>Žádost Recognize Text
+## <a name="create-and-run-the-sample-application"></a>Vytvoření a spuštění ukázkové aplikace
 
-Pomocí metod pro [rozpoznávání textu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) a [získání výsledku operace rozpoznávání textu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) můžete zjistit rukou psaný text v obrázku a extrahovat rozpoznané znaky do strojově použitelného proudu znaků.
+Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 
-Pokud chcete spustit ukázku, postupujte takto:
+1. Ve svém oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Java. Vytvořte projekt Java ze šablony aplikace příkazového řádku, pokud je tato možnost k dispozici.
+1. Následující knihovny naimportujte do projektu Java. Pokud používáte Maven, jsou k dispozici souřadnice Maven pro každou knihovnu.
+   - [Klient Apache HTTP](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpclient:4.5.5)
+   - [Jádro Apache HTTP](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpcore:4.4.9)
+   - [Knihovna JSON](https://github.com/stleary/JSON-java) (org.json:json:20180130)
+1. Přidejte následující příkazy `import` do souboru, který obsahuje veřejnou třídu `Main` pro váš projekt.  
 
-1. Vytvořte novou aplikaci příkazového řádku.
-1. Nahraďte třídu Main následujícím kódem (zachovejte všechny příkazy `package`).
-1. Místo `<Subscription Key>` použijte platný klíč předplatného.
-1. V případě potřeby změňte hodnotu `uriBase` na umístění, kde jste získali klíče předplatného.
-1. Volitelně můžete hodnotu `imageToAnalyze` změnit na jiný obrázek.
-1. Následující knihovny stáhněte z úložiště Maven do projektového adresáře `lib`:
-   * `org.apache.httpcomponents:httpclient:4.5.5`
-   * `org.apache.httpcomponents:httpcore:4.4.9`
-   * `org.json:json:20180130`
-1. Spusťte třídu „Main“.
+   ```java
+   import java.net.URI;
+   import org.apache.http.HttpEntity;
+   import org.apache.http.HttpResponse;
+   import org.apache.http.client.methods.HttpGet;
+   import org.apache.http.client.methods.HttpPost;
+   import org.apache.http.client.utils.URIBuilder;
+   import org.apache.http.entity.StringEntity;
+   import org.apache.http.impl.client.CloseableHttpClient;
+   import org.apache.http.impl.client.HttpClientBuilder;
+   import org.apache.http.util.EntityUtils;
+   import org.apache.http.Header;
+   import org.json.JSONObject;
+   ```
+
+1. Nahraďte veřejnou třídu `Main` kódem zobrazeným níže a tam, kde je to potřeba, proveďte následující změny v kódu:
+   1. Hodnotu `subscriptionKey` nahraďte klíčem předplatného.
+   1. Hodnotu `uriBase` nahraďte adresou URL koncového bodu metody [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) z oblasti Azure, kde jste získali klíče předplatného, pokud je to potřeba.
+   1. Volitelně můžete hodnotu `imageToAnalyze` nahradit adresou URL jiného obrázku, ze kterého chcete extrahovat rukou psaný text.
+1. Uložte a sestavte projekt Java.
+1. Pokud používáte integrované vývojové prostředí, spusťte `Main`. V opačném případě otevřete okno příkazového řádku a potom pomocí příkazu `java` spusťte zkompilovanou třídu. Například, `java Main`.
 
 ```java
-// This sample uses the following libraries:
-//  - Apache HTTP client (org.apache.httpcomponents:httpclient:4.5.5)
-//  - Apache HTTP core (org.apache.httpcomponents:httpccore:4.4.9)
-//  - JSON library (org.json:json:20180130).
-
-import java.net.URI;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.utils.URIBuilder;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.EntityUtils;
-import org.apache.http.Header;
-import org.json.JSONObject;
-
 public class Main {
     // **********************************************
     // *** Update or verify the following values. ***
@@ -70,12 +73,14 @@ public class Main {
     // Replace <Subscription Key> with your valid subscription key.
     private static final String subscriptionKey = "<Subscription Key>";
 
-    // You must use the same region in your REST call as you used to get your
-    // subscription keys. For example, if you got your subscription keys from
-    // westus, replace "westcentralus" in the URI below with "westus".
+    // You must use the same Azure region in your REST API method as you used to
+    // get your subscription keys. For example, if you got your subscription keys
+    // from the West US region, replace "westcentralus" in the URL
+    // below with "westus".
     //
-    // Free trial subscription keys are generated in the westcentralus region. If you
-    // use a free trial subscription key, you shouldn't need to change this region.
+    // Free trial subscription keys are generated in the West Central US region.
+    // If you use a free trial subscription key, you shouldn't need to change
+    // this region.
     private static final String uriBase =
         "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/recognizeText";
 
@@ -94,11 +99,9 @@ public class Main {
             URIBuilder builder = new URIBuilder(uriBase);
 
             // Request parameter.
-            // Note: The request parameter changed for APIv2.
-            // For APIv1, it is "handwriting", "true".
             builder.setParameter("mode", "Handwritten");
 
-            // Prepare the URI for the REST API call.
+            // Prepare the URI for the REST API method.
             URI uri = builder.build();
             HttpPost request = new HttpPost(uri);
 
@@ -111,7 +114,11 @@ public class Main {
                     new StringEntity("{\"url\":\"" + imageToAnalyze + "\"}");
             request.setEntity(requestEntity);
 
-            // Make the first REST API call to detect the text.
+            // Two REST API methods are required to extract handwritten text.
+            // One method to submit the image for processing, the other method
+            // to retrieve the text found in the image.
+
+            // Call the first REST API method to detect the text.
             HttpResponse response = httpTextClient.execute(request);
 
             // Check for success.
@@ -125,11 +132,12 @@ public class Main {
                 return;
             }
 
-            // Stores the URI where you can get the text recognition operation result.
+            // Store the URI of the second REST API method.
+            // This URI is where you can get the results of the first REST API method.
             String operationLocation = null;
 
-            // 'Operation-Location' in the response contains the URI to
-            // retrieve the recognized text.
+            // The 'Operation-Location' response header value contains the URI for
+            // the second REST API method.
             Header[] responseHeaders = response.getAllHeaders();
             for (Header header : responseHeaders) {
                 if (header.getName().equals("Operation-Location")) {
@@ -143,16 +151,19 @@ public class Main {
                 System.exit(1);
             }
 
+            // If the first REST API method completes successfully, the second
+            // REST API method retrieves the text written in the image.
+            //
             // Note: The response may not be immediately available. Handwriting
-            // recognition is an asynchronous operation, which takes a variable
-            // amount of time dependent on the length of the text analyzed. You
-            // may need to wait or retry the Get operation.
+            // recognition is an asynchronous operation that can take a variable
+            // amount of time depending on the length of the handwritten text.
+            // You may need to wait or retry this operation.
 
             System.out.println("\nHandwritten text submitted.\n" +
                     "Waiting 10 seconds to retrieve the recognized text.\n");
             Thread.sleep(10000);
 
-            // Make the second REST API call and get the response.
+            // Call the second REST API method and get the response.
             HttpGet resultRequest = new HttpGet(operationLocation);
             resultRequest.setHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
 
@@ -173,11 +184,9 @@ public class Main {
 }
 ```
 
-## <a name="recognize-text-response"></a>Odpověď Rozpoznávání textu
+## <a name="examine-the-response"></a>Prozkoumání odpovědi
 
-Úspěšná odpověď se vrátí ve formátu JSON. Výsledky rozpoznávání textu psaného rukou zahrnují zjištěný text a ohraničující pole pro oblasti, řádky a slova.
-
-Program by měl vygenerovat výstup podobný následujícímu JSON:
+Úspěšná odpověď se vrátí ve formátu JSON. Ukázková aplikace provede analýzu a zobrazí úspěšnou odpověď v okně konzoly, podobně jako v následujícím příkladu:
 
 ```json
 Handwritten text submitted. Waiting 10 seconds to retrieve the recognized text.
@@ -454,6 +463,10 @@ Text recognition result response:
   ]}
 }
 ```
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud projekt Java už nepotřebujete, odstraňte jej včetně zkompilované třídy a importovaných knihoven.
 
 ## <a name="next-steps"></a>Další kroky
 

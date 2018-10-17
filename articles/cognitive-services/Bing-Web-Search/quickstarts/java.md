@@ -1,19 +1,21 @@
 ---
-title: 'Rychlý start: Použití jazyka Java k volání rozhraní API Bingu pro vyhledávání na webu'
+title: 'Rychlý start: Vyhledávání pomocí Javy – rozhraní API Bingu pro vyhledávání na webu'
+titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání na webu. Použijete k tomu Javu a jako odpověď dostanete objekt JSON.
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: erhopf
-ms.openlocfilehash: 8d3e01aef8efdf1503ad7056220e0cba9fb38ed3
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: e0c1a038a0d63bcae8620c89462bdecfd88d8227
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888220"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46121970"
 ---
 # <a name="quickstart-use-java-to-call-the-bing-web-search-api"></a>Rychlý start: Použití jazyka Java k volání rozhraní API Bingu pro vyhledávání na webu  
 
@@ -23,7 +25,7 @@ V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tady je pár věcí, které budete potřebovat na začátku tohoto rychlého startu:
+Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebovat:
 
 * [JDK 7 nebo 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [Knihovna Gson](https://github.com/google/gson)

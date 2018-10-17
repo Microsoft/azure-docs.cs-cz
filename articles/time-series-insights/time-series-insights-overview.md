@@ -10,12 +10,12 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: overview
 ms.date: 01/26/2018
-ms.openlocfilehash: fa66ded9a35109f874bda00a4bde3af78b436cd5
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: f865086a7e57898adb7d43ec0c02c7d38ef0da9c
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630717"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46365566"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Co je Azure Time Series Insights?
 
@@ -33,6 +33,12 @@ Služba Time Series Insights má čtyři klíčové úlohy:
 Pokud vytváříte aplikaci, ať už pro interní použití nebo pro externí zákazníky, můžete službu Time Series Insights využít jako back-end pro indexování, ukládání a agregaci dat časových řad. Nad těmito daty můžete vytvořit vlastní vizualizaci a uživatelské prostředí.  Time Series Insights zveřejňuje rozhraní API pro dotazy, která tento scénář umožňují.  
 
 Pokud si nejste jisti, jestli jsou vaše data časovou řadou, měli byste vědět několik věcí.  Data časových řad představují změnu prostředku nebo procesu v průběhu času.  Jsou jedinečná v tom smyslu, že obsahují časové razítko a čas dává největší smysl jako osa.  Data časových řad typicky přicházejí v pořadí podle času a obvykle se zpracovávají jako vložení do databáze, a ne jako aktualizace databáze.  Vzhledem k tomu, že služba Time Series Insights zachytává a ukládá každou novou událost jako řádek, změny se měří v průběhu času, což vám umožní podívat se zpět a předvídat budoucí změny.  Ukládání, indexování, dotazování, analýza a vizualizace velkých objemů dat časových řad může být náročné.  
+
+## <a name="video"></a>Video: 
+
+### <a name="in-this-video-we-provide-an-overview-of-time-series-insights-a-cloud-based-iot-analytics-platformbr"></a>Toto video přináší přehled služby Time Series Insights, analytické platformy IoT založené na cloudu.</br>
+
+> [!VIDEO https://www.youtube.com/embed/qNc9gQTLROs]
 
 ## <a name="primary-scenarios"></a>Primární scénáře
 

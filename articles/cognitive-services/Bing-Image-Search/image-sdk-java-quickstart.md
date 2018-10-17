@@ -1,33 +1,33 @@
 ---
-title: 'Rychlý start: Vyhledávání obrázků s využitím SDK vyhledávání obrázků Bingu a Java'
-description: V tomto rychlém startu použijte k vyhledání a Image můžete vyhledat na webu pomocí SDK vyhledávání obrázků Bingu a Java.
+title: 'Rychlý start: Hledání obrázků pomocí sady SDK Vyhledávání obrázků Bingu pro Javu'
+description: Pomocí tohoto rychlého startu můžete vytvořit své první vyhledávání obrázků pomocí sady SDK Vyhledávání obrázků Bingu, což je obálka pro rozhraní API a obsahuje stejné funkce. Tato jednoduchá aplikace Javy posílá dotaz pro vyhledání obrázku, parsuje odpověď JSON a zobrazuje adresu URL prvního nalezeného obrázku.
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-image-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: aahi
-ms.openlocfilehash: 12bd6f9a9a0b43b4571a7e0311ffbea54c7b9054
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
-ms.translationtype: MT
+ms.openlocfilehash: 36f59e1c405ef9e5cf69a19e49d69a3adfdc4636
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574057"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298179"
 ---
-# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-and-java"></a>Rychlý start: Vyhledávání obrázků pomocí SDK vyhledávání obrázků Bingu a Javy.
+# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-and-java"></a>Rychlý start: Hledání obrázků pomocí sady SDK Vyhledávání obrázků Bingu a Javy
 
-V tomto rychlém startu používejte k vytvoření vaší první vyhledávání obrázků pomocí SDK vyhledávání Bingu Image, který tvoří obálku pro rozhraní API a obsahuje stejné funkce. Tato jednoduchá aplikace Java odešle dotaz vyhledávání obrázků, analyzuje odpověď JSON a zobrazí adresa URL první obrázku vrátil.
+Pomocí tohoto rychlého startu můžete vytvořit své první vyhledávání obrázků pomocí sady SDK Vyhledávání obrázků Bingu, což je obálka pro rozhraní API a obsahuje stejné funkce. Tato jednoduchá aplikace Javy posílá dotaz pro vyhledání obrázku, parsuje odpověď JSON a zobrazuje adresu URL prvního nalezeného obrázku.
 
-Zdrojový kód pro tuto ukázku je k dispozici [na Githubu](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingImageSearch/Quickstart) zpracování dalších chyb a poznámky. 
+Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingImageSearch/Quickstart) s dalším zpracováním chyb a poznámkami.
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Požadavky
 
-Nejnovější verzi [Java Development Kit](http://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK)
+Nejnovější verze sady [Java Development Kit](http://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK)
 
-Instalace závislostí SDK vyhledávání obrázků Bingu pomocí Maven, Gradle nebo jiný systém správy závislostí. Souboru Maven POM vyžaduje následující deklarace:
+Nainstalujte si závislosti sady SDK Vyhledávání obrázků Bingu pomocí systému Maven, Gradle nebo jiného systému správy závislostí. Soubor POM Mavenu vyžaduje následující deklaraci:
 
 ```xml
  <dependencies>
@@ -36,14 +36,14 @@ Instalace závislostí SDK vyhledávání obrázků Bingu pomocí Maven, Gradle 
       <artifactId>azure-cognitiveservices-imagesearch</artifactId>
       <version>0.0.1-beta-SNAPSHOT</version>
     </dependency>
- </dependencies> 
+ </dependencies>
 ```
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-## <a name="create-and-initialize-the-application"></a>Vytváření a inicializace aplikace
+## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-1. Vytvoření nového projektu v Javě ve vašich oblíbených prostředím IDE nebo editorem a přidejte následující importy do vaší třídy implimentation:
+1. Ve svém oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Javy a přidejte následující importy do implementace třídy:
 
     ```java
     import com.microsoft.azure.cognitiveservices.search.imagesearch.BingImageSearchAPI;
@@ -52,7 +52,7 @@ Instalace závislostí SDK vyhledávání obrázků Bingu pomocí Maven, Gradle 
     import com.microsoft.azure.cognitiveservices.search.imagesearch.models.ImagesModel;
     ```
 
-2. V hlavní metodě vytváření proměnných pro váš klíč předplatného a hledané výrazy. Potom vytvořte instanci klienta Bingu pro vyhledávání obrázků.
+2. V hlavní metodě vytvořte proměnné pro klíč předplatného a hledaný výraz. Potom vytvořte instanci klienta vyhledávání obrázků Bingu.
 
     ```java
     final String subscriptionKey = "COPY_YOUR_KEY_HERE";
@@ -61,9 +61,9 @@ Instalace závislostí SDK vyhledávání obrázků Bingu pomocí Maven, Gradle 
     BingImageSearchAPI client = BingImageSearchManager.authenticate(subscriptionKey);
     ```
 
-## <a name="send-a-search-request-to-the-bing-image-search-api"></a>Odeslat žádost o vyhledávání do rozhraní API Bingu pro vyhledávání obrázků
+## <a name="send-a-search-request-to-the-bing-image-search-api"></a>Odeslání žádostí o vyhledávání do rozhraní API Bingu pro vyhledávání obrázků
 
-1. Pomocí `bingImages().search()`, odeslání požadavku HTTP obsahující vyhledávacího dotazu. Uložit jako odpověď `ImagesModel`.
+1. Pomocí `bingImages().search()` odešlete požadavek HTTP obsahující vyhledávací dotaz. Uložte odpověď jako `ImagesModel`.
     ```java
     ImagesModel imageResults = client.bingImages().search()
                 .withQuery(searchTerm)
@@ -71,10 +71,10 @@ Instalace závislostí SDK vyhledávání obrázků Bingu pomocí Maven, Gradle 
                 .execute();
     ```
 
-## <a name="parse-and-view-the-result"></a>Analyzovat a zobrazit výsledek
+## <a name="parse-and-view-the-result"></a>Parsování a zobrazení výsledku
 
-Analyzovat výsledky hledání obrázků, vrátila v odpovědi.
-Pokud odpověď obsahuje výsledky hledání, uloží první výsledek a vytiskne jeho podrobnosti, jako je například miniatury adresa URL, původní adresu URL, společně s celkový počtem vrátil bitové kopie.  
+Parsujte výsledky obrázků vrácené v odpovědi.
+Pokud odpověď obsahuje výsledky hledání, uloží se první výsledek a vytisknou se jeho podrobnosti, třeba adresa URL miniatury a původní adresa URL, společně s celkovým počtem nalezených obrázků.  
 
 ```java
 if (imageResults != null && imageResults.value().size() > 0) {
@@ -91,16 +91,16 @@ else {
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kurz jednostránkovou aplikaci pro vyhledávání obrázků Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app)
+> [Vyhledávání obrázků Bingu – kurz jednostránkové aplikace](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app)
 
-## <a name="see-also"></a>Další informace najdete v tématech 
+## <a name="see-also"></a>Viz také
 
-* [Co je pro vyhledávání obrázků Bingu?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [Zkuste online interaktivní ukázka](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
-* [Získání bezplatné přístupového klíče služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api) 
-* [Ukázky v Javě pro Azure Cognitive Services SDK](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples) 
-* [Dokumentace ke službě Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
-* [Referenční dokumentace rozhraní API pro vyhledávání obrázků Bingu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+* [Co je Vyhledávání obrázků Bingu?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Vyzkoušet online interaktivní ukázku](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [Získání přístupového klíče služeb Cognitive Services zdarma](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)
+* [Ukázky Java pro sadu Azure Cognitive Services SDK](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
+* [Dokumentace Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
+* [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

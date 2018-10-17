@@ -8,32 +8,32 @@ manager: sumedhb
 ms.service: key-vault
 ms.workload: identity
 ms.topic: quickstart
-ms.date: 08/08/2018
+ms.date: 09/05/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 4592b256dfda75e81a94034545cd54dbf0d71532
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 860294ebc7fbadd3eeefc4298ec740ca7f704587
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42023207"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714390"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-a-node-web-app"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webové aplikace Node 
 
-V tomto rychlém startu se dozvíte, jak uložit tajný klíč ve službě Key Vault a jak ho načíst pomocí webové aplikace. Pokud chcete zobrazit hodnotu tajného klíče, musíte webovou aplikaci spustit v Azure. V tomto rychlém startu se používá Node.js a identity spravovaných služeb (MSI).
+V tomto rychlém startu se dozvíte, jak uložit tajný klíč ve službě Key Vault a jak ho načíst pomocí webové aplikace. Pokud chcete zobrazit hodnotu tajného klíče, musíte webovou aplikaci spustit v Azure. V tomto rychlém startu se používá Node.js a spravované identity pro prostředky Azure.
 
 > [!div class="checklist"]
 > * Vytvoření trezoru klíčů
 > * Uložení tajného kódu ve službě Key Vault
 > * Načtení tajného kódu ze služby Key Vault
 > * Vytvoření webové aplikace Azure
-> * [Povolení identit spravované služby](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)
+> * Povolení [spravované identity](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) pro webovou aplikaci
 > * Udělení požadovaných oprávnění k načtení dat ze služby Key Vault pro webovou aplikaci
 
 Než budete pokračovat, ujistěte se, že znáte [základní koncepty](key-vault-whatis.md#basic-concepts).
 
 >[!NOTE]
-Abyste pochopili, proč následující kurz představuje osvědčený postup, je potřeba porozumět několika konceptům. Služba Key Vault je centrální úložiště pro ukládání tajných klíčů prostřednictvím kódu programu. Aby to bylo možné, aplikace nebo uživatelé se nejprve musí ve službě Key Vault ověřit, tedy předložit tajný klíč. Za účelem dodržení osvědčených postupů zabezpečení je potřeba pravidelně obměňovat také tento první tajný klíč. Při použití [Identity spravované služby](../active-directory/managed-service-identity/overview.md) se však aplikacím spouštěným v Azure udělí identita, kterou automaticky spravuje Azure. To vám pomůže vyřešit **problém se zavedením tajného klíče** a tím umožníte uživatelům a aplikacím dodržovat osvědčené postupy bez starostí o obměňování prvního tajného klíče.
+Abyste pochopili, proč následující kurz představuje osvědčený postup, je potřeba porozumět několika konceptům. Služba Key Vault je centrální úložiště pro ukládání tajných klíčů prostřednictvím kódu programu. Aby to bylo možné, aplikace nebo uživatelé se nejprve musí ve službě Key Vault ověřit, tedy předložit tajný klíč. Za účelem dodržení osvědčených postupů zabezpečení je potřeba pravidelně obměňovat také tento první tajný klíč. Při použití [spravovaných identit pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) se však aplikacím spouštěným v Azure udělí identita, kterou automaticky spravuje Azure. To vám pomůže vyřešit **problém se zavedením tajného klíče** a tím umožníte uživatelům a aplikacím dodržovat osvědčené postupy bez starostí o obměňování prvního tajného klíče.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -156,9 +156,9 @@ Následuje několik kroků, které je potřeba provést.
     git remote add azure <url>
     ```
 
-## <a name="enable-managed-service-identity"></a>Povolení identity spravované služby
+## <a name="enable-a-managed-identity-for-the-web-app"></a>Povolení spravované identity pro webovou aplikaci
 
-Azure Key Vault nabízí možnost bezpečného ukládání přihlašovacích údajů a dalších klíčů a tajných kódů, ale váš kód se musí ověřit ve službě Key Vault, aby je mohl načíst. Identita spravované služby (MSI) usnadňuje řešení tohoto problému tím, že poskytuje službám Azure automaticky spravovanou identitu v Azure Active Directory (Azure AD). Tuto identitu můžete použít k ověření pro jakoukoli službu, která podporuje ověřování Azure AD, včetně služby Key Vault, aniž byste ve vašem kódu museli mít přihlašovací údaje.
+Azure Key Vault nabízí možnost bezpečného ukládání přihlašovacích údajů a dalších klíčů a tajných kódů, ale váš kód se musí ověřit ve službě Key Vault, aby je mohl načíst. [Přehled spravovaných identit pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) tuto překážku usnadňuje tím, že dává službám Azure v Azure Active Directory (Azure AD) automaticky spravovanou identitu. Tuto identitu můžete použít k ověření pro jakoukoli službu, která podporuje ověřování Azure AD, včetně služby Key Vault, aniž byste ve vašem kódu museli mít přihlašovací údaje.
 
 Spusťte příkaz assign-identity a vytvořte identitu pro tuto aplikaci:
 
@@ -166,7 +166,7 @@ Spusťte příkaz assign-identity a vytvořte identitu pro tuto aplikaci:
 az webapp identity assign --name <app_name> --resource-group "<YourResourceGroupName>"
 ```
 
-Tento příkaz je ekvivalentem přechodu na portál a nastavení **Identity spravované služby** na hodnotu **Zapnuto** ve vlastnostech webové aplikace.
+Tento příkaz je ekvivalentem přechodu na portál a přepnutí nastavení **Identita / Přiřazeno systémem** na hodnotu **Zapnuto** ve vlastnostech webové aplikace.
 
 ### <a name="assign-permissions-to-your-application-to-read-secrets-from-key-vault"></a>Přiřazení oprávnění ke čtení tajných kódů ze služby Key Vault vaší aplikaci
 

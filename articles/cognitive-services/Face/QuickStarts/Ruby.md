@@ -1,21 +1,21 @@
 ---
-title: Rychlý start k rozhraní API pro rozpoznávání tváře s Ruby | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: V tomto rychlém startu budete pomocí rozhraní API pro rozpoznávání tváře s Ruby rozpoznávat tváře z obrázku ve službě Cognitive Services.
+title: 'Rychlý start: Rozpoznávání tváří na obrázku – Rozhraní API pro rozpoznávání tváře, Ruby'
+titleSuffix: Azure Cognitive Services
+description: V tomto rychlém startu budete rozpoznávat tváře z obrázku pomocí rozhraní API pro rozpoznávání tváře a Ruby.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: nolachar
-ms.openlocfilehash: b7fc23259475b7d165171ce42f1d0dff90d1069c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a76be6d6afa198762448cea7125b5c49e7fc1009
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "43768909"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124792"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-ruby"></a>Rychlý start: Rozpoznávání tváří na obrázku pomocí Ruby
 
@@ -31,14 +31,14 @@ Pomocí metody [Face - Detect](https://westcentralus.dev.cognitive.microsoft.com
 
 * Face ID: jedinečná hodnota ID používaná v několika scénářích rozhraní API pro rozpoznávání tváře
 * Obdélník tváře: umístění tváře na obrázku vlevo a nahoře a šířka a výška obličeje
-* Rysy: soustava 27 bodů obličejových rysů odkazující na důležité polohy prvků obličeje
+* Rysy: soustava 27 bodů obličejových rysů odkazující na důležité polohy součástí obličeje.
 * Atributy obličeje včetně věku, pohlaví, intenzity úsměvu, pozice hlavy a vousů.
 
-Pokud chcete spustit ukázku, postupujte následovně:
+Pokud chcete spustit ukázku, postupujte takto:
 
 1. Zkopírujte do editoru následující kód.
 1. Místo `<Subscription Key>` použijte platný klíč předplatného.
-1. V případě potřeby změňte hodnotu `uri` na umístění, kde jste získali klíče předplatného.
+1. V případě potřeby změňte hodnotu `uri` na umístění, kde jste klíče předplatného získali.
 1. Volitelně můžete `imageUri` nastavit na obrázek, který chcete analyzovat.
 1. Uložte soubor s příponou `.rb`.
 1. Otevřete příkazový řádek Ruby a soubor spusťte, například: `ruby myfile.rb`.

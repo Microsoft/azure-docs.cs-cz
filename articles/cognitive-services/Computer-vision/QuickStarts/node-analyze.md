@@ -1,53 +1,57 @@
 ---
-title: Rychlý start k analýze obrázku pomocí rozhraní API pro počítačové zpracování obrazu s Node.js | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: V tomto rychlém startu analyzujete obrázek pomocí počítačového zpracování obrazu s Node.js ve službách Cognitive Services.
+title: 'Rychlý start: Analýza vzdáleného obrázku – REST, Node.js – počítačové zpracování obrazu'
+titleSuffix: Azure Cognitive Services
+description: V tomto rychlém startu budete analyzovat obrázek pomocí rozhraní API pro počítačové zpracování obrazu a Node.js.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: dab6547e08b1b01a9090a817d728c86359c680f2
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 76174a14720502a444fb86a337445caf1910ff78
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43769297"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45631579"
 ---
-# <a name="quickstart-analyze-a-remote-image---rest-nodejs"></a>Rychlý start: Analýza vzdáleného obrázku – REST, Node.js
+# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-with-nodejs-in-computer-vision"></a>Rychlý start: Analýza vzdáleného obrázku pomocí rozhraní REST API a Node.js v počítačovém zpracování obrazu
 
-V tomto rychlém startu analyzujete obrázek za účelem extrakce vizuálních prvků pomocí počítačového zpracování obrazu.
+V tomto rychlém startu analyzujete obrázek uložený vzdáleně za účelem extrakce vizuálních prvků pomocí rozhraní REST API počítačového zpracování obrazu. Pomocí metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat vizuální prvky na základě obsahu obrázku.
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli počítačové zpracování obrazu použít, potřebujete klíč předplatného. Přečtěte si, [jak získat klíče předplatného](../Vision-API-How-to-Topics/HowToSubscribe.md).
+- Musíte mít nainstalovaný [Node.js](https://nodejs.org) 4.x nebo novější.
+- Musíte mít nainstalovaný [npm](https://www.npmjs.com/).
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Abyste získali klíč předplatného, přejděte k tématu [Jak získat klíče předplatného](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="analyze-image-request"></a>Žádost Analyze Image
+## <a name="create-and-run-the-sample"></a>Vytvoření a spuštění ukázky
 
-Pomocí [metody Analyze Image](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat vizuální funkce na základě obsahu obrázku. Obrázek můžete nahrát nebo můžete určit jeho adresu URL a vybrat funkce, které se mají vrátit, včetně:
+Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 
-* Podrobného seznamu značek souvisejících s obsahem obrázku
-* Popisu obsahu obrázku v celé větě
-* Souřadnic, pohlaví a věku veškerých obličejů na obrázku
-* Typu obrázku (klipart nebo perokresba)
-* Převládající barvy, doplňkové barvy a toho, jestli je obrázek černobílý
-* Kategorie definované v této [taxonomii](../Category-Taxonomy.md)
-* Je obsah obrázku určený pro dospělé nebo se jedná o sexuálně sugestivní obsah?
+1. Nainstalujte balíček npm [`request`](https://www.npmjs.com/package/request).
+   1. Otevřete okno příkazového řádku jako správce.
+   1. Spusťte následující příkaz:
 
-Pokud chcete spustit ukázku, postupujte následovně:
+      ```console
+      npm install request
+      ```
 
-1. Zkopírujte do editoru následující kód.
-1. Místo `<Subscription Key>` použijte platný klíč předplatného.
-1. V případě potřeby změňte hodnotu `uriBase` na umístění, kde jste získali klíče předplatného.
-1. Volitelně můžete změnit hodnotu `imageUrl` na obrázek, který chcete analyzovat.
-1. Volitelně můžete změnit jazyk odpovědi (`'language': 'en'`).
-1. Uložte soubor s příponou `.js`.
-1. Otevřete příkazový řádek Node.js a spusťte soubor, například: `node myfile.js`.
+   1. Po úspěšné instalaci balíčku zavřete okno příkazového řádku.
 
-Tato ukázka používá balíček [požadavku](https://www.npmjs.com/package/request) npm.
+1. Zkopírujte do textového editoru následující kód.
+1. Proveďte v kódu na příslušných místech následující změny:
+    1. Hodnotu `subscriptionKey` nahraďte klíčem předplatného.
+    1. Hodnotu `uriBase` nahraďte adresou URL koncového bodu metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) z oblasti Azure, kde jste získali klíče předplatného, pokud je to potřeba.
+    1. Volitelně můžete hodnotu `imageUrl` nahradit adresou URL jiného obrázku, který chcete analyzovat.
+    1. Volitelně můžete hodnotu parametru požadavku `language` nahradit jiným jazykem.
+1. Uložte kód jako soubor s příponou `.js`. Například, `analyze-image.js`.
+1. Otevřete okno příkazového řádku.
+1. Ke spuštění souboru na příkazovém řádku použijte příkaz `node`. Například, `node analyze-image.js`.
 
 ```nodejs
 'use strict';
@@ -94,9 +98,9 @@ request.post(options, (error, response, body) => {
 });
 ```
 
-## <a name="analyze-image-response"></a>Odpověď metody Analyze Image
+## <a name="examine-the-response"></a>Prozkoumání odpovědi
 
-Úspěšná odpověď se vrátí ve formátu JSON, například:
+Úspěšná odpověď se vrátí ve formátu JSON. Ukázka provede analýzu a zobrazí úspěšnou odpověď v okně příkazového řádku, podobně jako v následujícím příkladu:
 
 ```json
 {
@@ -164,9 +168,22 @@ request.post(options, (error, response, body) => {
 }
 ```
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud už tuto ukázku nepotřebujete, odstraňte soubor a pak odinstalujte balíček npm `request`. Odinstalaci balíčku proveďte takto:
+
+1. Otevřete okno příkazového řádku jako správce.
+2. Spusťte následující příkaz:
+
+   ```console
+   npm uninstall request
+   ```
+
+3. Po úspěšné odinstalaci balíčku zavřete okno příkazového řádku.
+
 ## <a name="next-steps"></a>Další kroky
 
 Prozkoumejte rozhraní API pro počítačové zpracování obrazu používané pro analýzu obrázku, zjišťování celebrit a památek, vytvoření miniatury a extrahování tištěného a ručně psaného textu. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
-> [Prozkoumejte rozhraní API pro počítačové zpracování obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
+> [Prozkoumat rozhraní API pro počítačové zpracování obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

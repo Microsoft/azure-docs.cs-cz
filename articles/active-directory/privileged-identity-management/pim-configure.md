@@ -13,16 +13,16 @@ ms.topic: overview
 ms.date: 03/07/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: ff4e5322ac9ccc0bbfd0706ca9f4863670bbf1b5
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: af93ade2a7031aeda5b4108649c59a8d6c1393ce
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43186207"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46465856"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Co je Azure AD Privileged Identity Management?
 
-Pomocí aplikace Azure Active Directory (AD) Privileged Identity Management můžete spravovat, řídit a sledovat přístup v rámci organizace. To zahrnuje přístup k prostředkům v Azure AD, prostředků Azure (Preview) a dalším online službách Microsoftu jako Office 365 nebo Microsoft Intune.
+Pomocí služby Azure Active Directory (Azure AD) Privileged Identity Management můžete spravovat, řídit a sledovat přístup v rámci organizace. To zahrnuje přístup k prostředkům v Azure AD, prostředkům Azure a dalším online službám Microsoftu jako Office 365 nebo Microsoft Intune.
 
 > [!NOTE]
 > Když pro svého tenanta povolíte Privileged Identity Management, každý uživatel, který se službou pracuje nebo kterému služba přináší výhody, potřebuje platnou placenou nebo zkušební licenci Azure AD Premium P2 nebo Enterprise Mobility + Security E5. Příkladem můžou být uživatelé a uživatelé ve skupině, kteří:
@@ -35,15 +35,15 @@ Pomocí aplikace Azure Active Directory (AD) Privileged Identity Management mů�
 >
 >Další informace najdete v článku [Edice služby Azure Active Directory](../fundamentals/active-directory-whatis.md).
 
-Organizace chtějí minimalizovat počet lidí, kteří mají přístup k zabezpečeným informacím nebo prostředkům, protože se tím snižuje riziko, že přístup získá uživatel se zlými úmysly nebo že autorizovaný uživatel nevratně ovlivní citlivý prostředek.  Uživatelé však i nadále potřebují provádět privilegované operace v Azure AD, Azure, Office 365 nebo aplikacích SaaS. Organizace můžou uživatelům udělit privilegovaný přístup k prostředkům Azure, jako jsou předplatná a Azure AD. Je potřeba zajistit dohled nad činností těchto uživatelů s oprávněními správce. Azure AD Privileged Identity Management pomáhá zmírnit riziko udělení nadměrných, nepotřebných nebo nesprávně použitých přístupových práv.
+Organizace chtějí minimalizovat počet lidí, kteří mají přístup k zabezpečeným informacím nebo prostředkům, protože se tím snižuje riziko, že přístup získá kyberzločinec nebo že autorizovaný uživatel nevratně ovlivní citlivý prostředek.  Uživatelé však i nadále potřebují provádět privilegované operace v Azure AD, Azure, Office 365 nebo aplikacích SaaS. Organizace můžou uživatelům udělit privilegovaný přístup k prostředkům Azure, jako jsou předplatná a Azure AD. Je potřeba zajistit dohled nad činností těchto uživatelů s oprávněními správce. Azure AD Privileged Identity Management pomáhá zmírnit riziko udělení nadměrných, nepotřebných nebo nesprávně použitých přístupových práv.
 
 Azure AD Privileged Identity Management vaší organizaci pomůže:
 
-- Zjistit, kteří uživatelé mají přiřazené privilegované role pro správu prostředků Azure (Preview) a kteří uživatelé mají přiřazené role pro správu v Azure AD.
-- Povolit za běhu a na vyžádání přístup pro správu k online službám Microsoftu jako Office 365 a Intune a k prostředkům Azure (Preview), mezi které patří předplatná, skupiny prostředků a jednotlivé prostředky, jako jsou například virtuální počítače. 
--   Zobrazit historii aktivací správcem, včetně změn, které správci provedli s prostředky Azure (Preview).
+- Zjistit, kteří uživatelé mají přiřazené privilegované role pro správu prostředků Azure a kteří uživatelé mají přiřazené role pro správu v Azure AD.
+- Povolit za běhu a na vyžádání přístup pro správu k online službám Microsoftu jako Office 365 a Intune a k prostředkům Azure, mezi které patří předplatná, skupiny prostředků a jednotlivé prostředky, jako jsou například virtuální počítače. 
+- Zobrazit historii aktivací správcem, včetně změn, které správci provedli s prostředky Azure.
 - Dostávat upozornění na změny v přiřazeních správců.
-- Vyžadovat schválení k aktivaci privilegovaných rolí správců Azure AD (Preview). 
+- Vyžadovat schválení k aktivaci privilegovaných rolí správců Azure AD.
 - Kontrolovat členství v rolích pro správu a vyžadovat od uživatelů odůvodnění pokračujícího členství.
 
 V Azure AD může Azure AD Privileged Identity Management spravovat uživatele přiřazené k předdefinovaným organizačním rolím Azure AD, jako je globální správce. V Azure může Azure AD Privileged Identity Management spravovat uživatele a skupiny přiřazené prostřednictvím rolí Azure RBAC, včetně vlastníka a přispěvatele.
@@ -100,17 +100,17 @@ V případě rolí Azure RBAC může přiřazení ostatních správců v Azure A
 
 ## <a name="privileged-identity-management-overview-entry-point"></a>Přehled služby Privileged Identity Management (vstupní bod)
 
-Azure AD Privileged Identity Management podporuje správu rolí adresáře Azure AD a rolí pro prostředky Azure (Preview). Funkce rolí u prostředků Azure se od rolí pro správu v Azure AD liší. Role prostředků Azure poskytují různě odstupňovaná oprávnění k prostředku, ke kterému jsou přiřazené, a všem podřízeným prostředkům v hierarchii prostředků (označuje se jako dědičnost). [Další informace o RBAC, hierarchii prostředků a dědičnosti](../../role-based-access-control/role-assignments-portal.md) PIM pro role adresáře Azure AD i prostředky Azure (Preview) můžete spravovat tak, že přejdete na odpovídající odkaz v levé navigační nabídce v části Správa vstupního bodu Přehled PIM.
+Azure AD Privileged Identity Management podporuje správu rolí adresáře Azure AD a rolí pro prostředky Azure. Funkce rolí u prostředků Azure se od rolí pro správu v Azure AD liší. Role prostředků Azure poskytují různě odstupňovaná oprávnění k prostředku, ke kterému jsou přiřazené, a všem podřízeným prostředkům v hierarchii prostředků (označuje se jako dědičnost). [Další informace o RBAC, hierarchii prostředků a dědičnosti](../../role-based-access-control/role-assignments-portal.md) PIM pro role adresáře Azure AD i prostředky Azure můžete spravovat tak, že přejdete na odpovídající odkaz v levé navigační nabídce v části Správa vstupního bodu Přehled PIM.
 
 PIM v části Úlohy v levé navigační nabídce poskytuje pohodlný přístup k aktivaci rolí, zobrazení aktivací a žádostí čekajících na vyřízení, schválení čekajících na vyřízení (v případě rolí adresáře Azure AD) a kontrolám čekajícím na vaši odpověď.
 
-Když ze vstupního bodu Přehled přejdete na některou z položek nabídky Úlohy, bude výsledné zobrazení obsahovat výsledky pro role adresáře Azure AD i role prostředků Azure (Preview).
+Když ze vstupního bodu Přehled přejdete na některou z položek nabídky Úlohy, bude výsledné zobrazení obsahovat výsledky pro role adresáře Azure AD i role prostředků Azure.
 
 ![Rychlý start](./media/pim-configure/quick-start.png)
 
-Část Moje role obsahuje seznam aktivních a oprávněných přiřazení rolí pro role adresáře Azure AD a role prostředků Azure (Preview). [Další informace o aktivaci oprávněných přiřazení rolí](pim-how-to-activate-role.md)
+Část Moje role obsahuje seznam aktivních a oprávněných přiřazení rolí pro role adresáře Azure AD a role prostředků Azure. [Další informace o aktivaci oprávněných přiřazení rolí](pim-how-to-activate-role.md)
 
-Aktivace rolí pro prostředky Azure (Preview) zavádí nové prostředí, které umožňuje oprávněným členům role naplánovat aktivaci na budoucí datum a čas a vybrat konkrétní dobu trvání aktivace až do maximální doby povolené správci.
+Aktivace rolí pro prostředky Azure představuje nové prostředí, které oprávněným členům role umožňuje plánovat aktivaci na budoucí datum/čas a vybrat konkrétní dobu trvání aktivace v rámci maxima povoleného správci.
 
 ![](./media/pim-configure/activations.png)
 
@@ -126,15 +126,15 @@ Privileged Identity Management nabízí řídicí panel pro správu, který posk
 * Počet uživatelů přiřazených k jednotlivým privilegovaným rolím  
 * Počet oprávněných a trvalých správců
 * Graf aktivací privilegovaných rolí ve vašem adresáři
-*   Počet přiřazení za běhu, časově omezených a trvalých přiřazení pro role prostředků Azure (Preview)
-*   Uživatelé a skupiny s novými přiřazeními rolí za posledních 30 dnů (role prostředků Azure)
+* Počet přiřazení za běhu, časově omezených a trvalých přiřazení pro role prostředků Azure
+* Uživatelé a skupiny s novými přiřazeními rolí za posledních 30 dnů (role prostředků Azure)
 
 
 ![Řídicí panel PIM – snímek obrazovky](./media/pim-configure/PIM_Admin_Overview.png)
 
 ## <a name="privileged-role-management"></a>Správa privilegovaných rolí
 
-V případě rolí adresáře Azure AD můžete pomocí služby Azure AD Privileged Identity Management spravovat správce prostřednictvím přidávání nebo odebírání trvalých nebo oprávněných správců k jednotlivým rolím. Pomocí PIM pro prostředky Azure (Preview) můžou vlastníci, správci uživatelského přístupu a globální správci, kteří v tenantovi povolují správu předplatných, přiřazovat uživatele nebo skupiny k rolím prostředků Azure s oprávněným přístupem (přístup za běhu), časově omezeným přístupem (nevyžaduje se aktivace) s počátečním a koncovým datem a časem nebo trvalým přístupem (pokud je povolený v nastavení role).
+V případě rolí adresáře Azure AD můžete pomocí služby Azure AD Privileged Identity Management spravovat správce prostřednictvím přidávání nebo odebírání trvalých nebo oprávněných správců k jednotlivým rolím. Pomocí PIM pro prostředky Azure můžou vlastníci, správci uživatelského přístupu a globální správci, kteří v tenantovi povolují správu předplatných, přiřazovat uživatele nebo skupiny k rolím prostředků Azure s oprávněným přístupem (přístup za běhu), časově omezeným přístupem (nevyžaduje se aktivace) s počátečním a koncovým datem a časem nebo trvalým přístupem (pokud je povolený v nastavení role).
 
 ![Přidávání a odebírání správců v PIM – snímek obrazovky](./media/pim-configure/PIM_AddRemove.png)
 
@@ -146,13 +146,13 @@ Prostřednictvím [nastavení role](pim-how-to-change-default-settings.md) můž
 * Oznámení o aktivaci role
 * Informace, které uživatel musí zadat během procesu aktivace role
 * Lístek služby nebo číslo incidentu
-* [Požadavky na pracovní postup schválení – Preview](./azure-ad-pim-approval-workflow.md)
+* [Požadavky na pracovní postup schválení](./azure-ad-pim-approval-workflow.md)
 
 ![Nastavení PIM – aktivace správce – snímek obrazovky](./media/pim-configure/PIM_Settings_w_Approval_Disabled.png)
 
 Na obrázku si všimněte neaktivních tlačítek pro službu **Multi-Factor Authentication**. U určitých vysoce privilegovaných rolí vyžadujeme kvůli zvýšené ochraně službu MFA.
 
-Nastavení role pro role prostředků Azure (Preview) umožňuje správcům konfigurovat nastavení přiřazení za běhu a přímého přiřazení, včetně následujících:
+Nastavení role pro role prostředků Azure umožňuje správcům konfigurovat nastavení přiřazení za běhu a přímého přiřazení, včetně následujících:
 
 - Možnost přiřadit uživatele nebo skupiny k rolím bez koncového data a času (trvalé přiřazení)
 - Výchozí doba trvání přiřazení (pokud není trvalé)
@@ -173,7 +173,7 @@ Aktivaci role je možné upravit. V nastavení PIM můžete určit délku aktiva
 
 ## <a name="review-role-activity"></a>Kontrola aktivity role
 
-Existují dva způsoby, jak můžete sledovat, jak vaši zaměstnanci a správci používají privilegované role. První možností je použít [historii auditu rolí adresáře](pim-how-to-use-audit-log.md). Protokoly historie auditu sledují změny přiřazení privilegovaných rolí, historii aktivací rolí a změny nastavení pro role prostředků Azure (Preview). 
+Existují dva způsoby, jak můžete sledovat, jak vaši zaměstnanci a správci používají privilegované role. První možností je použít [historii auditu rolí adresáře](pim-how-to-use-audit-log.md). Protokoly historie auditu sledují změny přiřazení privilegovaných rolí, historii aktivací rolí a změny nastavení pro role prostředků Azure. 
 
 ![Historie aktivací v PIM – snímek obrazovky](./media/pim-configure/PIM_ActivationHistory.png)
 

@@ -1,21 +1,21 @@
 ---
-title: Translator Text – identifikace jazyka z textu s Ruby | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: V tomto rychlém startu identifikujete jazyk zdrojového textu pomocí služby Translator Text API s Ruby ve službách Cognitive Services.
+title: 'Rychlý start: Identifikace jazyka z textu – Translator Text, Ruby'
+titleSuffix: Azure Cognitive Services
+description: V tomto rychlém startu identifikujete jazyk zdrojového textu pomocí služby Translator Text API a Ruby.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: nolachar
-ms.openlocfilehash: b692b66454cc86e6d81aec9c3139b39a905d0d66
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e2b138b5c28047487da2ca7a72169a10a125eaf5
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43769041"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46121699"
 ---
 # <a name="quickstart-identify-language-from-text-with-ruby"></a>Rychlý start: Identifikace jazyka z textu s Ruby
 

@@ -1,42 +1,42 @@
 ---
-title: 'Rychlý start: Odeslání vyhledávací dotazy pomocí rozhraní API pro vyhledávání obrázků Bingu a Javy.'
+title: 'Rychlý start: Vyhledávání obrázků pomocí Javy – rozhraní API Bingu pro vyhledávání obrázků'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu použijte k vyhledání a Image můžete vyhledat na webu pomocí rozhraní API webové vyhledávání Bingu.
+description: V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání obrázků a dostanete odpověď ve formátu JSON. Tato jednoduchá aplikace Java odesílá vyhledávací dotaz do rozhraní API a zobrazuje nezpracované výsledky.
 services: cognitive-services
 documentationcenter: ''
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-image-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 8/20/2018
 ms.author: aahi
-ms.openlocfilehash: 519667af255e3c1b39d336e7a399ba215803daa5
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
-ms.translationtype: MT
+ms.openlocfilehash: 5e002de273d50de9095c6e58b8e1a9fb9a05ed4f
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45577475"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295338"
 ---
-# <a name="quickstart-send-search-queries-using-the-bing-image-search-rest-api-and-java"></a>Rychlý start: Odeslání vyhledávací dotazy s využitím REST rozhraní API pro vyhledávání obrázků Bingu a Java
+# <a name="quickstart-send-search-queries-using-the-bing-image-search-rest-api-and-java"></a>Rychlý start: Odesílání vyhledávacích dotazů pomocí rozhraní API pro vyhledávání obrázků Bingu a Javy
 
-V tomto rychlém startu můžete provést první volání do rozhraní API Bingu pro vyhledávání obrázků a získejte odpověď ve formátu JSON. Toto jednoduché aplikace v Javě odešle vyhledávací dotaz na rozhraní API a zobrazí nezpracované výsledky.
+V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání obrázků a dostanete odpověď ve formátu JSON. Tato jednoduchá aplikace Java odesílá vyhledávací dotaz do rozhraní API a zobrazuje nezpracované výsledky.
 
-Zatímco tato aplikace je napsána v jazyce Java, je rozhraní API RESTful webová služba, která je kompatibilní s Většina programovacích jazyků.
+Aplikace je sice napsaná v Javě, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-Zdrojový kód pro tuto ukázku je k dispozici [na Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingImageSearchv7Quickstart.java) zpracování dalších chyb a poznámky kódu.
+Zdrojový kód této ukázky je dostupný na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingImageSearchv7Quickstart.java) s dalším ošetřením chyb a poznámkami ke kódu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Kit(JDK) vývoj Java 7 nebo 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 
+* [Java Development Kit (JDK) 7 nebo 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
-* [Gson knihovny](https://github.com/google/gson)
+* [Knihovna Gson](https://github.com/google/gson)
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-## <a name="create-and-initialize-a-project"></a>Vytváření a inicializace projektu
+## <a name="create-and-initialize-a-project"></a>Vytvoření a inicializace projektu
 
-1. Vytvoření nového projektu v Javě v vaše oblíbené prostředím IDE nebo editorem a importovat následující knihovny.
+1. V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Java a naimportujte následující knihovny.
 
     ```java
     import java.net.*;
@@ -49,7 +49,7 @@ Zdrojový kód pro tuto ukázku je k dispozici [na Githubu](https://github.com/A
     import com.google.gson.JsonParser;
     ```
 
-2. Vytváření proměnných pro koncový bod rozhraní API, váš klíč předplatného a hledané výrazy.
+2. Vytvořte proměnné pro koncový bod rozhraní API, klíč předplatného a hledaný výraz.
 
     ```java
     static String subscriptionKey = "enter key here";
@@ -58,9 +58,9 @@ Zdrojový kód pro tuto ukázku je k dispozici [na Githubu](https://github.com/A
     static String searchTerm = "tropical ocean";
     ```
 
-## <a name="construct-the-search-request-and-query"></a>Vytvořit požadavek hledání a dotaz
+## <a name="construct-the-search-request-and-query"></a>Sestavení žádosti o vyhledávání a dotazu
 
-1. Použití proměnných v posledním kroku k formátování adresa URL pro hledání pro žádosti na rozhraní API. Všimněte si, že hledaný termín musí předcházet zakódovanými do adresy URL se připojí k požadavku.
+1. Pomocí proměnných z posledního kroku naformátujte vyhledávací adresu URL pro žádost rozhraní API. Hledaný termín musí být zakódovaný do adresy URL předtím, než se připojí k této žádosti.
 
     ```java
     // construct the search request URL (in the form of endpoint + query string)
@@ -69,9 +69,9 @@ Zdrojový kód pro tuto ukázku je k dispozici [na Githubu](https://github.com/A
     connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
     ```
 
-## <a name="receive-and-process-the-json-response"></a>Příjem a zpracování odpověď JSON
+## <a name="receive-and-process-the-json-response"></a>Příjem a zpracování odpovědi JSON
 
-1. Přijata odpověď JSON z rozhraní API Bingu pro vyhledávání obrázků a vytvořit objekt výsledku.
+1. Přijměte odpověď JSON od rozhraní API Bingu pro vyhledávání obrázků a sestavte objekt výsledku.
 
     ```java
     // receive JSON body
@@ -80,7 +80,7 @@ Zdrojový kód pro tuto ukázku je k dispozici [na Githubu](https://github.com/A
     // construct result object for return
     SearchResults results = new SearchResults(new HashMap<String, String>(), response);
     ```
-2. Oddělení hlavičky protokolu HTTP související Bingu od datové části JSON
+2. Oddělte hlavičky protokolu HTTP související s Bingem od textu JSON.
     ```java
     // extract Bing-related HTTP headers
     Map<String, List<String>> headers = connection.getHeaderFields();
@@ -92,24 +92,24 @@ Zdrojový kód pro tuto ukázku je k dispozici [na Githubu](https://github.com/A
     }
     ```
 
-3. Zavřete datový proud a analyzovat odpověď. Celkový počet výsledky vráceného vyhledávání a miniaturu získat adresu url k prvnímu výsledku bitové kopie. 
+3. Zavřete stream a parsujte odpověď. Získejte celkový počet vrácených výsledků hledání a adresu URL miniatury pro výsledek s prvním obrázkem.
 
     ```java
     stream.close();
     JsonParser parser = new JsonParser();
     JsonObject json = parser.parse(result.jsonResponse).getAsJsonObject();
-    //get the first image result from the JSON object, along with the total 
-    //number of images returned by the Bing Image Search API. 
+    //get the first image result from the JSON object, along with the total
+    //number of images returned by the Bing Image Search API.
     String total = json.get("totalEstimatedMatches").getAsString();
     JsonArray results = json.getAsJsonArray("value");
     JsonObject first_result = (JsonObject)results.get(0);
     String resultURL = first_result.get("thumbnailUrl").getAsString();
     ```
-4. Nezapomeňte odebrat váš klíč předplatného od kódu aplikace.
+4. Nezapomeňte odebrat klíč předplatného z kódu aplikace.
 
 ## <a name="json-response"></a>Odpověď JSON
 
-Odpovědi z rozhraní API Bingu pro vyhledávání obrázků se vrátí jako JSON. Tato ukázková odpověď byl zkrácen na zobrazit jeden výsledek.
+Odpovědi od rozhraní API Bingu pro vyhledávání obrázků se vrátí jako JSON. Ukázková odpověď je zkrácená, aby zobrazovala jenom jeden výsledek.
 
 ```json
 {
@@ -155,15 +155,15 @@ Odpovědi z rozhraní API Bingu pro vyhledávání obrázků se vrátí jako JSO
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kurz jednostránkovou aplikaci pro vyhledávání obrázků Bingu](../tutorial-bing-image-search-single-page-app.md)
+> [Kurz jednostránkové aplikace pro vyhledávání obrázků Bingu](../tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech 
+## <a name="see-also"></a>Viz také
 
-* [Co je pro vyhledávání obrázků Bingu?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [Zkuste online interaktivní ukázka](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
-* [Získání bezplatné přístupového klíče služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-* [Dokumentace ke službě Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
-* [Referenční dokumentace rozhraní API pro vyhledávání obrázků Bingu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+* [Co je Vyhledávání obrázků Bingu?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Vyzkoušení online interaktivní ukázky](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [Získání přístupového klíče služeb Cognitive Services zdarma](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+* [Dokumentace Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
+* [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

@@ -1,48 +1,47 @@
 ---
-title: Rychlý start k vytvoření miniatury obrázku pomocí rozhraní API pro počítačové zpracování obrazu s C# | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: V tomto rychlém startu vygenerujete ve službách Cognitive Services pomocí počítačového zpracování obrazu s C# miniaturu obrázku.
+title: 'Rychlý start: Vygenerování miniatury – REST, C# – počítačové zpracování obrazu'
+titleSuffix: Azure Cognitive Services
+description: V tomto rychlém startu vygenerujete miniaturu z obrázku pomocí rozhraní API pro počítačové zpracování obrazu a C#.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 0f5e3be75ce34d10c223e6a157a89fca12b9c3dc
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: f6353f0f99d34121e29de46c62e6f840a69806ed
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43769285"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630745"
 ---
-# <a name="quickstart-generate-a-thumbnail---rest-c35"></a>Rychlý start: Vygenerování miniatury – REST, C&#35;
+# <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-c35-in-computer-vision"></a>Rychlý start: Vygenerování miniatury pomocí rozhraní REST API a C&#35; v počítačovém zpracování obrazu
 
-V tomto rychlém startu vygenerujete pomocí počítačového zpracování obrazu miniaturu obrázku.
+V tomto rychlém startu vygenerujete miniaturu z obrázku pomocí rozhraní REST API počítačového zpracování obrazu. Miniaturu obrázku můžete vygenerovat pomocí metody [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb). Zadáte výšku a šířku, které se mohou od poměru stran vstupního obrázku lišit. Počítačové zpracování obrazu použije chytré oříznutí, které inteligentně identifikuje oblast zájmu a na základě této oblasti vygeneruje souřadnice oříznutí.
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli počítačové zpracování obrazu použít, potřebujete klíč předplatného. Přečtěte si, [jak klíče předplatného získat](../Vision-API-How-to-Topics/HowToSubscribe.md).
+- Musíte mít [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) nebo novější.
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Abyste získali klíč předplatného, přejděte k tématu [Jak získat klíče předplatného](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="get-thumbnail-request"></a>Žádost Get Thumbnail
+## <a name="create-and-run-the-sample-application"></a>Vytvoření a spuštění ukázkové aplikace
 
-Miniaturu obrázku můžete vygenerovat pomocí [metody Get Thumbnail](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb). Zadáte výšku a šířku, které se mohou od poměru stran vstupního obrázku lišit. Počítačové zpracování obrazu použije chytré oříznutí, které inteligentně identifikuje oblast zájmu a na základě této oblasti vygeneruje souřadnice oříznutí.
+Když chcete vytvořit ukázku v sadě Visual Studio, postupujte takto:
 
-Pokud chcete spustit ukázku, postupujte takto:
-
-1. V sadě Visual Studio vytvořte novou konzolovou aplikaci Visual C#.
+1. Vytvořte v sadě Visual Studio nové řešení pomocí šablony pro konzolovou aplikaci Visual C#.
 1. Nainstalujte balíček NuGet Newtonsoft.Json.
     1. V nabídce klikněte na **Nástroje** vyberte **Správce balíčků NuGet** a potom **Spravovat balíčky NuGet pro řešení**.
     1. Klikněte na kartu **Procházet** a do pole **Hledat** zadejte Newtonsoft.Json.
     1. Když se zobrazí, vyberte **Newtonsoft.Json**. Pak klikněte na zaškrtávací políčko vedle názvu vašeho projektu a na **Nainstalovat**.
-1. `Program.cs` nahraďte následujícím kódem.
-1. Místo `<Subscription Key>` použijte platný klíč předplatného.
-1. V případě potřeby změňte hodnotu `uriBase` na umístění, kde jste získali klíče předplatného.
+1. Nahraďte kód v `Program.cs` kódem zobrazeným níže a tam, kde je to potřeba, proveďte následující změny v kódu:
+    1. Hodnotu `subscriptionKey` nahraďte klíčem předplatného.
+    1. Hodnotu `uriBase` nahraďte adresou URL koncového bodu metody [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) z oblasti Azure, kde jste získali klíče předplatného, pokud je to potřeba.
 1. Spusťte program.
 1. Do příkazového řádku zadejte cestu k místnímu obrázku.
-
-Miniatura se uloží do stejné složky jako místní obrázek, použije se původní název s příponou _thumb.
 
 ```csharp
 using Newtonsoft.Json.Linq;
@@ -59,12 +58,12 @@ namespace CSHttpClientSample
         // Replace <Subscription Key> with your valid subscription key.
         const string subscriptionKey = "<Subscription Key>";
 
-        // You must use the same region in your REST call as you used to
-        // get your subscription keys. For example, if you got your
-        // subscription keys from westus, replace "westcentralus" in the URL
+        // You must use the same Azure region in your REST API method as you used to
+        // get your subscription keys. For example, if you got your subscription keys
+        // from the West US region, replace "westcentralus" in the URL
         // below with "westus".
         //
-        // Free trial subscription keys are generated in the westcentralus region.
+        // Free trial subscription keys are generated in the West Central US region.
         // If you use a free trial subscription key, you shouldn't need to change
         // this region.
         const string uriBase =
@@ -80,7 +79,7 @@ namespace CSHttpClientSample
 
             if (File.Exists(imageFilePath))
             {
-                // Make the REST API call.
+                // Call the REST API method.
                 Console.WriteLine("\nWait a moment for the results to appear.\n");
                 MakeThumbNailRequest(imageFilePath).Wait();
             }
@@ -108,35 +107,41 @@ namespace CSHttpClientSample
                     "Ocp-Apim-Subscription-Key", subscriptionKey);
 
                 // Request parameters.
+                // The width and height parameters specify a thumbnail that's 
+                // 200 pixels wide and 150 pixels high.
+                // The smartCropping parameter is set to true, to enable smart cropping.
                 string requestParameters = "width=200&height=150&smartCropping=true";
 
-                // Assemble the URI for the REST API Call.
+                // Assemble the URI for the REST API method.
                 string uri = uriBase + "?" + requestParameters;
 
                 HttpResponseMessage response;
 
-                // Request body.
-                // Posts a locally stored JPEG image.
+                // Read the contents of the specified local image
+                // into a byte array.
                 byte[] byteData = GetImageAsByteArray(imageFilePath);
 
+                // Add the byte array as an octet stream to the request body.
                 using (ByteArrayContent content = new ByteArrayContent(byteData))
                 {
-                    // This example uses content type "application/octet-stream".
+                    // This example uses the "application/octet-stream" content type.
                     // The other content types you can use are "application/json"
                     // and "multipart/form-data".
                     content.Headers.ContentType =
                         new MediaTypeHeaderValue("application/octet-stream");
 
-                    // Make the REST API call.
+                    // Asynchronously call the REST API method.
                     response = await client.PostAsync(uri, content);
                 }
 
+                // Check the HTTP status code of the response. If successful, display
+                // display the response and save the thumbnail.
                 if (response.IsSuccessStatusCode)
                 {
                     // Display the response data.
                     Console.WriteLine("\nResponse:\n{0}", response);
 
-                    // Get the image data.
+                    // Get the image data for the thumbnail from the response.
                     byte[] thumbnailImageData =
                         await response.Content.ReadAsByteArrayAsync();
 
@@ -169,9 +174,11 @@ namespace CSHttpClientSample
         /// <returns>The byte array of the image data.</returns>
         static byte[] GetImageAsByteArray(string imageFilePath)
         {
+            // Open a read-only file stream for the specified file.
             using (FileStream fileStream =
                 new FileStream(imageFilePath, FileMode.Open, FileAccess.Read))
             {
+                // Read the file's contents into a byte array.
                 BinaryReader binaryReader = new BinaryReader(fileStream);
                 return binaryReader.ReadBytes((int)fileStream.Length);
             }
@@ -180,9 +187,11 @@ namespace CSHttpClientSample
 }
 ```
 
-## <a name="get-thumbnail-response"></a>Odpověď metody Get Thumbnail
+## <a name="examine-the-response"></a>Prozkoumání odpovědi
 
-Úspěšná odpověď obsahuje binární kód miniatury obrázku. Pokud požadavek selže, bude odpověď obsahovat chybový kód a zprávu, která vám pomůže určit, co se nepovedlo.
+Úspěšná odpověď se vrátí jako binární data, která představují data miniatury obrázku. Pokud je požadavek úspěšný, uloží se miniatura do stejné složky jako místní obrázek, přičemž se použije původní název s příponou _thumb. Pokud požadavek selže, bude odpověď obsahovat chybový kód a zprávu, která vám pomůže určit, co se nepovedlo.
+
+Ukázková aplikace zobrazí úspěšnou odpověď v okně konzoly, podobně jako v následujícím příkladu:
 
 ```text
 Response:
@@ -202,6 +211,10 @@ StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.Stre
   Expires: -1
 }
 ```
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud už řešení sady Visual Studio nepotřebujete, odstraňte je. Uděláte to tak, že otevřete Průzkumníka souborů, přejdete ke složce, ve které jste vytvořili řešení sady Visual Studio, a tuto složku odstraníte.
 
 ## <a name="next-steps"></a>Další kroky
 

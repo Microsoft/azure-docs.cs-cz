@@ -1,31 +1,33 @@
 ---
-title: Translator Text – získání podporovaných jazyků s C# | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: V tomto rychlém startu získáte seznam jazyků podporovaných pro překlad, transkripci a vyhledávání ve slovníku a příklady s použitím služby Translator Text API s C# ve službách Cognitive Services.
+title: 'Rychlý start: Získání podporovaných jazyků – Translator Text API, C#'
+titleSuffix: Azure Cognitive Services
+description: V tomto rychlém startu získáte seznam jazyků podporovaných pro překlad, transkripci a vyhledávání ve slovníku a příklady s použitím služby Translator Text API s C#.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
 ms.author: nolachar
-ms.openlocfilehash: 001f4bc67170d28dd56d6f8a773586c5e6968503
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 967e978518debb5aef071807b1482d6f225c062f
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "43768925"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367708"
 ---
 # <a name="quickstart-get-supported-languages-with-c35"></a>Rychlý start: Získání podporovaných jazyků s C&#35;
 
 V tomto rychlém startu získáte seznam jazyků podporovaných pro překlad, transkripci a vyhledávání ve slovníku a příklady s použitím služby Translator Text API.
 
+Zdrojový kód k této ukázce je dostupný na [GitHubu](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp).
+
 ## <a name="prerequisites"></a>Požadavky
 
 Ke spuštění tohoto kódu ve Windows budete potřebovat [Visual Studio 2017](https://www.visualstudio.com/downloads/). (Bude stačit bezplatná verze Community Edition.)
 
-Abyste mohli použít službu Translator Text API, budete potřebovat klíč předplatného. Přečtěte si [jak se zaregistrovat ve službě Translator Text API](translator-text-how-to-signup.md).
+Abyste mohli použít službu Translator Text API, budete potřebovat klíč předplatného. Přečtěte si, [jak se zaregistrovat ve službě Translator Text API](translator-text-how-to-signup.md).
 
 ## <a name="languages-request"></a>Žádost Languages
 

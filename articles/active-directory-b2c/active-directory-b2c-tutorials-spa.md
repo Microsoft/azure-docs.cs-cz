@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: 4953cb0db428de19268cdd90661f7818b06b6945
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 47589b8cb8aa6e8d1cacaa028948242431f02c44
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43343858"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604786"
 ---
 # <a name="tutorial-enable-single-page-app-authentication-with-accounts-using-azure-active-directory-b2c"></a>Kurz: Povolení ověřování účtů pomocí Azure Active Directory B2C pro jednostránkovou aplikaci
 
@@ -41,7 +41,7 @@ V tomto kurzu se naučíte:
 
 Aby aplikace mohly přijímat [přístupové tokeny](../active-directory/develop/developer-glossary.md#access-token) z Azure Active Directory, musí být [zaregistrované](../active-directory/develop/developer-glossary.md#application-registration) ve vašem adresáři. Registrací se pro aplikaci vytvoří [ID aplikace](../active-directory/develop/developer-glossary.md#application-id-client-id) ve vašem adresáři. 
 
-Přihlaste se k portálu [Azure Portal](https://portal.azure.com/) jako globální správce vašeho adresáře Azure AD B2C.
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/) jako globální správce vašeho adresáře Azure AD B2C.
 
 [!INCLUDE [active-directory-b2c-switch-b2c-tenant](../../includes/active-directory-b2c-switch-b2c-tenant.md)]
 
@@ -145,7 +145,7 @@ Nastavení aplikace můžete změnit následujícím způsobem:
     // The current application coordinates were pre-registered in a B2C directory.
     var applicationConfig = {
         clientID: '<Application ID for your SPA obtained from portal app registration>',
-        authority: "https://fabrikamb2c.b2clogin.com/tfp/fabrikamb2c.onmicrosoft.com/B2C_1_SiUpIn",
+        authority: "https://fabrikamb2c.b2clogin.com/tfp/fabrikamb2c.onmicrosoft.com/B2C_1_<Sign-up or sign-in policy name>",
         b2cScopes: ["https://fabrikamb2c.onmicrosoft.com/demoapi/demo.read"],
         webApi: 'https://fabrikamb2chello.azurewebsites.net/hello',
     };

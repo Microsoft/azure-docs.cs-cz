@@ -1,62 +1,62 @@
 ---
-title: 'Rychlý start: Odeslání vyhledávací dotazy pomocí rozhraní API pro vyhledávání obrázků Bingu a Pythonu.'
-description: V tomto rychlém startu odesíláte vyhledávací dotazy do rozhraní API pro vyhledávání Bingu k získání seznamu obrázků s využitím Pythonu.
+title: 'Rychlý start: Vyhledávání obrázků pomocí Pythonu – rozhraní API Bingu pro vyhledávání obrázků'
+description: V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání obrázků a dostanete odpověď ve formátu JSON. Tato jednoduchá aplikace Pythonu odesílá vyhledávací dotaz do rozhraní API a zobrazuje nezpracované výsledky.
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-image-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 8/20/2018
 ms.author: aahi
-ms.openlocfilehash: 42b9af2d6c7223dc3f5d269dd2003f1c99d8c7da
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
-ms.translationtype: MT
+ms.openlocfilehash: 44cc556e68234fb9957c01fa9f04861293e96e6a
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578323"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298162"
 ---
-# <a name="quickstart-send-search-queries-using-the-rest-api-and-python"></a>Rychlý start: Odeslání vyhledávací dotazy s využitím rozhraní REST API a Python
+# <a name="quickstart-send-search-queries-using-the-rest-api-and-python"></a>Rychlý start: Odeslání vyhledávacích dotazů s využitím rozhraní REST API a Pythonu
 
-V tomto rychlém startu můžete provést první volání do rozhraní API Bingu pro vyhledávání obrázků a získejte odpověď ve formátu JSON. Tato jednoduchá aplikace Python odešle vyhledávací dotaz na rozhraní API a zobrazí nezpracované výsledky.
+V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání obrázků a dostanete odpověď ve formátu JSON. Tato jednoduchá aplikace Pythonu odesílá vyhledávací dotaz do rozhraní API a zobrazuje nezpracované výsledky.
 
-Zatímco tato aplikace je napsaný v Pythonu, je rozhraní API RESTful webová služba, která je kompatibilní s Většina programovacích jazyků.
+Aplikace je sice napsaná v Pythonu, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-Tento příklad lze spustit jako poznámkového bloku Jupyter [MyBinder](https://mybinder.org) kliknutím na spustit vazače označení: 
+Tuto ukázku můžete spustit jako poznámkový blok Jupyter v [MyBinderu](https://mybinder.org) tak, že kliknete na odznáček pro spuštění Binderu:
 
-[![Vazač](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingImageSearchAPI.ipynb)
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingImageSearchAPI.ipynb)
 
 
-Kromě toho je k dispozici zdrojový kód pro tuto ukázku [na Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingImageSearchv7.py).
+Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingImageSearchv7.py).
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-## <a name="running-the-quickstart"></a>Spuštění tohoto rychlého startu
+## <a name="running-the-quickstart"></a>Spuštění rychlého startu
 
-Chcete-li začít, nastavte `subscription_key` ke klíči platné předplatné pro službu rozhraní API Bingu.
+Chcete-li začít, nastavte `subscription_key` na platný klíč předplatného pro službu rozhraní API Bingu.
 
 ```python
 subscription_key = None
 assert subscription_key
 ```
 
-Dále ověřte, že `search_url` koncový bod je správná. Při psaní tohoto návodu se používá pouze jeden koncový bod pro rozhraní API Bingu pro vyhledávání. Pokud narazíte na chyby autorizace, zkontrolujte tuto hodnotu na koncový bod vyhledávání Bingu v řídicím panelu Azure.
+Pak ověřte, že koncový bod `search_url` je správný. V tomto návodu se pro rozhraní API Bingu pro vyhledávání používá pouze jeden koncový bod. Pokud se při autorizaci objeví chyby, znovu zkontrolujte tuto hodnotu a porovnejte ji s koncovým bodem vyhledávání Bingu na řídicím panelu Azure.
 
 
 ```python
 search_url = "https://api.cognitive.microsoft.com/bing/v7.0/images/search"
 ```
 
-Nastavte `search_term` hledání obrázků Štěňata.
+Nastavte `search_term` hledání obrázků štěňat pomocí klíčového slova „puppies“.
 
 
 ```python
 search_term = "puppies"
 ```
 
-Následující blok používá `requests` knihovny v jazyce Python vyžadují pro vyhledávání Bingu, rozhraní API a vrátí výsledky jako objekt JSON. Podívejte se, že předáváme klíč rozhraní API prostřednictvím `headers` slovníku a hledání termín prostřednictvím `params` slovníku. Pokud chcete zobrazit úplný seznam možností, které můžete použít k filtrování výsledků hledání, najdete [rozhraní REST API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) dokumentaci.
+Následující blok používá knihovnu `requests` v Pythonu, pomocí které zavolá rozhraní API Bingu pro vyhledávání a vrátí výsledky jako objekt JSON. Všimněte si, že klíč rozhraní API předáváme prostřednictvím slovníku `headers` a hledaný výraz prostřednictvím slovníku `params`. Pokud si chcete zobrazit úplný seznam možností, které můžete použít k filtrování výsledků hledání, přečtěte si dokumentaci rozhraní [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference).
 
 
 ```python
@@ -69,14 +69,14 @@ response.raise_for_status()
 search_results = response.json()
 ```
 
-`search_results` Objekt obsahuje skutečné obrázků spolu s formátovaným metadat – například související položky. Například následující řádek kódu může extrahovat miniaturu adresy URL pro prvních 16 výsledky.
+Objekt `search_results` obsahuje skutečné obrázky spolu s obsáhlými metadaty, jako jsou například související položky. Například následující řádek kódu může extrahovat adresy URL miniatur pro prvních 16 výsledků.
 
 
 ```python
 thumbnail_urls = [img["thumbnailUrl"] for img in search_results["value"][:16]]
 ```
 
-Potom použijte `PIL` knihovny stáhnout obrázků miniatur a `matplotlib` knihovny k vykreslení do mřížky 4 USD \times 4$.
+Potom pomocí knihovny `PIL` stáhněte obrázky miniatur a pomocí knihovny `matplotlib` je vykreslete do mřížky $4 x 4$.
 
 
 ```python
@@ -98,7 +98,7 @@ plt.show()
 
 ## <a name="sample-json-response"></a>Ukázková odpověď JSON
 
-Odpovědi z rozhraní API Bingu pro vyhledávání obrázků se vrátí jako JSON. Tato ukázková odpověď byl zkrácen na zobrazit jeden výsledek.
+Odpovědi rozhraní API Bingu pro vyhledávání obrázků se vrátí jako objekt JSON. Ukázková odpověď je zkrácená, aby zobrazovala jenom jeden výsledek.
 
 ```json
 {
@@ -144,15 +144,15 @@ Odpovědi z rozhraní API Bingu pro vyhledávání obrázků se vrátí jako JSO
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kurz jednostránkovou aplikaci pro vyhledávání obrázků Bingu](../tutorial-bing-image-search-single-page-app.md)
+> [Vyhledávání obrázků Bingu – kurz jednostránkové aplikace](../tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech 
+## <a name="see-also"></a>Viz také
 
-* [Co je pro vyhledávání obrázků Bingu?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [Zkuste online interaktivní ukázka](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
-* [Získání bezplatné přístupového klíče služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-* [Dokumentace ke službě Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
-* [Referenční dokumentace rozhraní API pro vyhledávání obrázků Bingu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+* [Co je Vyhledávání obrázků Bingu?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Vyzkoušet online interaktivní ukázku](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [Získat zdarma přístupový klíč služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+* [Dokumentace Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
+* [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

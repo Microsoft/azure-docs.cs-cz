@@ -8,12 +8,12 @@ ms.author: tomfitz
 ms.date: 08/13/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: a47beb3e4299c62ec4b7959b4834d0440fee06f7
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 17fba267e85c7b1421e632930c8bea2bfaf6ff5f
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42744581"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736491"
 ---
 # <a name="create-and-route-blob-storage-events-with-the-azure-portal-and-event-grid"></a>Vytvoření a směrování událostí úložiště objektů blob pomocí webu Azure Portal a služby Event Grid
 
@@ -27,7 +27,7 @@ Až budete hotovi, uvidíte, že se data události odeslala do webové aplikace.
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 1. Pokud chcete úložiště objektů blob, vyberte **Vytvořit prostředek**. 
 
@@ -37,7 +37,7 @@ Až budete hotovi, uvidíte, že se data události odeslala do webové aplikace.
 
    ![Výběr úložiště](./media/blob-event-quickstart-portal/create-storage.png)
 
-1. Pro události musíte vytvořit buď [účet úložiště objektů blob](../storage/common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts), nebo [účet úložiště pro obecné účely v2](../storage/common/storage-account-options.md#general-purpose-v2-accounts). V případě aplikací, které vyžadují jenom úložiště objektů blob bloku nebo objektů blob doporučujeme používat účty úložiště objektů blob. Zadejte hodnoty pro účet úložiště objektů blob nebo účet StorageV2. Zadejte jedinečný název účtu. Až budete hotovi se zadáváním hodnot, vyberte **Vytvořit**.
+1. Pokud se chcete přihlásit k odběru událostí, vytvořte si účet úložiště pro obecné účely verze 2 nebo účet úložiště objektů blob. Další informace najdete v článku o [vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md).
 
    ![Počáteční kroky](./media/blob-event-quickstart-portal/provide-blob-values.png)
 

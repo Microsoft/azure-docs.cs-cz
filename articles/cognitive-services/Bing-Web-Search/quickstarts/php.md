@@ -1,19 +1,21 @@
 ---
-title: 'Rychlý start: Použití PHP k volání rozhraní API Bingu pro vyhledávání na webu'
+title: 'Rychlý start: Hledání pomocí PHP – rozhraní API Bingu pro vyhledávání na webu'
+titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání na webu. Použijete k tomu PHP a dostanete odpověď JSON.
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: erhopf
-ms.openlocfilehash: ef5263ce65efccdab0fb461165e66156dd4fce52
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 821d6a1b7df43c3eaddff503f6666e72251deec0
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888425"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127892"
 ---
 # <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>Rychlý start: Použití PHP k volání rozhraní API Bingu pro vyhledávání na webu  
 
@@ -23,7 +25,7 @@ V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tady je pár věcí, které budete potřebovat na začátku tohoto rychlého startu:
+Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebovat:
 
 * [PHP 5.6.x](http://php.net/downloads.php) nebo novější
 * Klíč předplatného  

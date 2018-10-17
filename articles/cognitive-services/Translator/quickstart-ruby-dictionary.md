@@ -1,21 +1,21 @@
 ---
-title: Translator Text – vyhledání alternativních překladů s Ruby | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: V tomto rychlém startu vyhledáte alternativní překlady a příklady termínů v kontextu pomocí služby Translator Text API s Ruby ve službách Cognitive Services.
+title: 'Rychlý start: Vyhledání alternativních překladů – Translator Text, Ruby'
+titleSuffix: Azure Cognitive Services
+description: V tomto rychlém startu vyhledáte alternativní překlady a příklady termínů v kontextu pomocí rozhraní Translator Text API a Ruby.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: nolachar
-ms.openlocfilehash: 6462a48c2f15c8ac4a6b9bce49d23ea3d38dcbd5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 7cd34e3482df666de8b974380302ee6b4c592496
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43769045"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46122803"
 ---
 # <a name="quickstart-find-alternate-translations-and-usage-with-ruby"></a>Rychlý start: Vyhledání alternativních překladů a použití s Ruby
 

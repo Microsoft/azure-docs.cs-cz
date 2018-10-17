@@ -1,21 +1,21 @@
 ---
-title: Rychlý start k rozhraní API pro rozpoznávání tváře s Go | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: V tomto rychlém startu budete pomocí rozhraní API pro rozpoznávání tváře s Go rozpoznávat tváře z obrázku ve službách Cognitive Services.
+title: 'Rychlý start: Rozpoznávání tváří na obrázku – rozhraní API pro rozpoznávání tváře, Go'
+titleSuffix: Azure Cognitive Services
+description: V tomto rychlém startu budete rozpoznávat tváře z obrázku pomocí rozhraní API pro rozpoznávání tváře a Go.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
 ms.date: 06/25/2018
 ms.author: nolachar
-ms.openlocfilehash: e4d7f3f605b110f51488d9a7f483fc2832a149b9
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 0c8a70153ac9a54f3e46e5fb1a2ee3404a960dd3
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "43769093"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125421"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-go"></a>Rychlý start: Rozpoznávání tváří na obrázku pomocí Go
 
@@ -30,7 +30,7 @@ Ke spuštění této ukázky budete potřebovat klíč předplatného. Klíče b
 Pomocí metody [Face - Detect](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) rozpoznejte tváře na obrázku a vraťte atributy tváře, včetně:
 
 * Face ID: jedinečná hodnota ID používaná v několika scénářích rozhraní API pro rozpoznávání tváře
-* Obdélník tváře: umístění tváře na obrázku vlevo a nahoře a šířka a výška obličeje.
+* Obdélník tváře: umístění tváře na obrázku vlevo a nahoře a šířka a výška obličeje
 * Rysy: soustava 27 bodů obličejových rysů odkazující na důležité polohy součástí obličeje.
 * Atributy obličeje včetně věku, pohlaví, intenzity úsměvu, pozice hlavy a vousů.
 

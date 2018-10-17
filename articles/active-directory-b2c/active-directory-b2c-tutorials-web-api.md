@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: 469a3662b5bc4db467dde3285d557ac8bbae368e
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 2b70ed174331b88f9afc9aa30d14a585986496a5
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39609085"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604336"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-from-a-web-app-using-azure-active-directory-b2c"></a>Kurz: Poskytnutí přístupu k webovému rozhraní API ASP.NET z webové aplikace pomocí Azure Active Directory B2C
 
@@ -40,19 +40,13 @@ V tomto kurzu se naučíte:
 
 Prostředky webového rozhraní API je nejprve potřeba zaregistrovat ve vašem tenantovi, a až pak můžou přijímat a reagovat na [požadavky na chráněné prostředky](../active-directory/develop/developer-glossary.md#resource-server) od [klientských aplikací](../active-directory/develop/developer-glossary.md#client-application), které obsahují [přístupový token](../active-directory/develop/developer-glossary.md#access-token) ze služby Azure Active Directory. Registrací se ve vašem tenantovi vytvoří [objekt aplikace a instanční objekt](../active-directory/develop/developer-glossary.md#application-object). 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) jako globální správce vašeho tenanta Azure AD B2C.
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/) jako globální správce vašeho tenanta Azure AD B2C.
 
-2. Přepněte v pravém horním rohu portálu Azure Portal na adresář, který obsahuje tenanta Azure AD B2C, a ujistěte se tak, že používáte správný adresář. Vyberte informace o předplatném a pak **Přepnout adresář**.
+[!INCLUDE [active-directory-b2c-switch-b2c-tenant](../../includes/active-directory-b2c-switch-b2c-tenant.md)]
 
-    ![Přepnutí adresáře](./media/active-directory-b2c-tutorials-web-api/switch-directories.png)
+1. Zvolte **Všechny služby** v levém horním rohu portálu Azure Portal a vyhledejte a vyberte **Azure AD B2C**. Teď byste měli používat tenanta, kterého jste vytvořili v předchozím kurzu.
 
-3. Vyberte adresář, který obsahuje vašeho tenanta.
-
-    ![Výběr adresáře](./media/active-directory-b2c-tutorials-web-api/select-directory.png)
-
-4. Zvolte **Všechny služby** v levém horním rohu portálu Azure Portal a vyhledejte a vyberte **Azure AD B2C**. Teď byste měli používat tenanta, kterého jste vytvořili v předchozím kurzu.
-
-5. Vyberte **Aplikace** a pak **Přidat**.
+2. Vyberte **Aplikace** a pak **Přidat**.
 
     K registraci ukázkového webového rozhraní API ve vašem tenantovi použijte následující nastavení.
     
@@ -67,7 +61,7 @@ Prostředky webového rozhraní API je nejprve potřeba zaregistrovat ve vašem 
     | **Identifikátor URI ID aplikace** | myAPISample | Tento identifikátor URI jednoznačně identifikuje rozhraní API v tenantovi. Díky tomu můžete v jednom tenantovi registrovat více rozhraní API. [Obory](../active-directory/develop/developer-glossary.md#scopes) řídí přístup k chráněnému prostředku rozhraní API a definují se pro jednotlivé identifikátory URI ID aplikace. |
     | **Nativní klient** | Ne | Vzhledem k tomu, že se jedná o webové rozhraní API, a ne nativního klienta, vyberte Ne. |
     
-6. Kliknutím na **Vytvořit** své rozhraní API zaregistrujte.
+3. Kliknutím na **Vytvořit** své rozhraní API zaregistrujte.
 
 Zaregistrovaná rozhraní API se zobrazí v seznamu aplikací pro příslušného tenanta Azure AD B2C. Vyberte ze seznamu vaše webové rozhraní API. Zobrazí se podokno vlastností webového rozhraní API.
 

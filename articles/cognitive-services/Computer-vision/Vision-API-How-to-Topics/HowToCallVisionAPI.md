@@ -1,69 +1,70 @@
 ---
-title: Computer Vision API volat | Dokumentace Microsoftu
-description: Zjistěte, jak volat rozhraní API pro počítačové zpracování obrazu pomocí REST ve službě Cognitive Services.
+title: 'Příklad: Volání rozhraní API pro počítačové zpracování obrazu'
+titlesuffix: Azure Cognitive Services
+description: Přečtěte si, jak použít k volání rozhraní API pro počítačové zpracování obrazu REST v Azure Cognitive Services.
 services: cognitive-services
 author: KellyDF
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: sample
 ms.date: 01/20/2017
 ms.author: kefre
-ms.openlocfilehash: 34705681e665b57a89c43f31ca695e0acb45ae3f
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
-ms.translationtype: MT
+ms.openlocfilehash: e8297fbe59ebe2dea9caf112ebea4517447cf9e0
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35760215"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45981741"
 ---
-# <a name="how-to-call-the-computer-vision-api"></a>Jak volat rozhraní API pro počítačové zpracování obrazu
+# <a name="example-how-to-call-the-computer-vision-api"></a>Příklad: Jak volat rozhraní API pro počítačové zpracování obrazu
 
-Tato příručka ukazuje způsob volání REST pomocí rozhraní API pro počítačové zpracování obrazu. Ukázky jsou napsané v jazyce C# pomocí klientské knihovny rozhraní API pro počítačové zpracování obrazu i jako volání HTTP POST nebo GET. Se zaměříme na:
+V tomto průvodci si ukážeme, jak použít REST k volání rozhraní API pro počítačové zpracování obrazu. Ukázky jsou napsané v jazyce C# pomocí klientské knihovny rozhraní API pro počítačové zpracování obrazu a také jako volání HTTP s operacemi POST/GET. Na co se zaměříme:
 
--   Jak získat "Tags", "Popis" a "Kategorie".
--   Jak získat informace "Domain-specific" (celebrit).
+-   Jak získat značky, popis a kategorie.
+-   Jak získat informace o určité doméně (celebrity).
 
 ### <a name="Prerequisites">Požadavky</a> 
-Adresa URL obrázku nebo cesta k místně uložený obrázek.
-  * Podporované metody zadávání znaků: Nezpracovaná binární ve formě application/octet-stream adresa URL obrázku nebo image
-  * Podporované formáty image: JPEG, PNG, GIF, BMP
-  * Velikost souboru obrázku: menší než 4MB
-  * Obrázek dimenze: větší než 50 × 50 pixelů
+Adresa URL obrázku nebo cesta k místně uloženému obrázku.
+  * Podporované metody vstupů: Nezpracovaný binární obrázek ve tvaru streamu typu application/octet nebo adresa URL obrázku.
+  * Podporované formáty obrázku: JPEG, PNG, GIF, BMP.
+  * Velikost souboru obrázku: méně než 4 MB.
+  * Rozměry obrázku: větší než 50 × 50 pixelů.
   
-V následujících příkladech je ukázán následující funkce:
+V následujících příkladech si ukážeme tyto funkce:
 
-1. Vráceny analýza bitovou kopii a získávání pole značky a popis.
-2. Analýza obrázku s modelem specifického pro doménu (konkrétně model "celebrit to") a získávání odpovídající za následek JSON retune.
+1. analýza obrazu, získání pole značek a vrácení popisu.
+2. Analýza obrazu s použitím modelu určité domény (konkrétně modelu „celebrities“) a získání odpovídajících výsledků ve formátu JSON.
 
-Funkce jsou rozdělené na:
+Funkce můžeme rozdělit na:
 
-  * **Jedna možnost:** obor analýzy – analýza daný model
-  * **Možnost 2:** Rozšířená analýza - analýza poskytnout další podrobnosti se [taxonomie kategorií 86](../Category-Taxonomy.md)
+  * **První možnost:** zúžená analýza – analýza pouze daného modelu
+  * **Druhá možnost:** rozšířená analýza – tato analýza využívá [86 taxonomických kategorií](../Category-Taxonomy.md) a nabízí další podrobnosti
   
-### <a name="Step1">Krok 1: Povolit volání rozhraní API</a> 
-Všechna volání rozhraní API pro počítačové zpracování obrazu vyžadují klíč předplatného. Tento klíč se musí buď předat prostřednictvím parametru řetězce dotazu, nebo zadat v hlavičce požadavku. 
+### <a name="Step1">1. krok: Autorizace volání rozhraní API</a> 
+Ke každému volání rozhraní API pro počítačové zpracování obrazu potřebujete klíč předplatného. Klíč je potřeba předat buď jako parametr řetězce dotazu, nebo ho zadat v hlavičce požadavku. 
 
-Chcete-li získat klíč předplatného, přečtěte si téma [postup získání klíčů předplatného](../Vision-API-How-to-Topics/HowToSubscribe.md
+Informace o získání klíče předplatného najdete v tématu [Jak získat klíče předplatného](../Vision-API-How-to-Topics/HowToSubscribe.md
 ).
 
-**1.** Předání klíč předplatného pomocí řetězce dotazu, níže jsou uvedeny jako příklad rozhraní API pro počítačové zpracování obrazu:
+**1.** Předání klíče předplatného prostřednictvím řetězce dotazu je vidět v následujícím příkladu rozhraní API pro počítačové zpracování obrazu:
 
 ```https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>```
 
-**2.** Předání klíč předplatného je také zadat v hlavičce požadavku protokolu HTTP:
+**2.** Klíč předplatného také můžete zadat v hlavičce požadavku HTTP:
 
 ```ocp-apim-subscription-key: <Your subscription key>```
 
-**3.** Při použití klientské knihovny, klíč předplatného předána do konstruktoru VisionServiceClient:
+**3.** Pokud použijete klientskou knihovnu, předáte klíč předplatného prostřednictvím konstruktoru VisonServiceClient:
 
 ```var visionClient = new VisionServiceClient(“Your subscriptionKey”);```
 
-### <a name="Step2">Krok 2: Nahrání obrázku do rozhraní API pro počítačové zpracování obrazu služby a získat značky, popisy a celebrit</a>
-Základní způsob, jak provádět volání rozhraní API pro počítačové zpracování obrazu je tak, že nahrajete image přímo. To se provádí odesláním požadavku "POST" typu obsahu application/octet-stream s data načtená z image. "Tags" a "Popis" Tato metoda nahrávání bude stejný pro všechna volání rozhraní API pro počítačové zpracování obrazu. Jediný rozdíl bude parametry dotazu, který uživatel zadá. 
+### <a name="Step2">2. krok: Nahrání obrázku do služby rozhraní API pro počítačové zpracování obrazu a vrácení značek, popisů a celebrit</a>
+Základní způsob, jak volat rozhraní API pro počítačové zpracování obrazu, spočívá přímo v nahrání obrázku. Provede se to odesláním požadavku POST s typem obsahu application/octet-stream společně s daty přečtenými z obrázku. V případě značek a popisu bude metoda odeslání stejná pro všechna volání rozhraní API pro počítačové zpracování obrazu. Jediný rozdíl bude v parametrech dotazu, které zadá uživatel. 
 
-Tady je postup pro získání "Tags" a "Popis" pro danou image:
+Tady je postup, jak získat k danému obrázku značky a popis:
 
-**Jedna možnost:** získat seznam "Tags" a jedné "Popis"
+**První možnost:** Získání seznamu „Tags“ (Značek) a jedné položky „Description“ (Popis)
 ```
 POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
 ```
@@ -80,15 +81,15 @@ using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
   analysisResult = await visionClient.AnalyzeImageAsync(fs, features);
 }
 ```
-**Možnost 2** získání seznamu "Tags" pouze, nebo pouze seznam "Popisu":
+**Druhá možnost:** Získání jenom seznamu „Tags“ (Značky) nebo jenom seznamu „Description“ (Popis):
 
-###### <a name="tags-only"></a>Pouze značky:
+###### <a name="tags-only"></a>Jenom značky:
 ```
 POST https://westus.api.cognitive.microsoft.com/vision/v2.0/tag&subscription-key=<Your subscription key>
 var analysisResult = await visionClient.GetTagsAsync("http://contoso.com/example.jpg");
 ```
 
-###### <a name="description-only"></a>Jen pro popis:
+###### <a name="description-only"></a>Jenom popis:
 ```
 POST https://westus.api.cognitive.microsoft.com/vision/v2.0/describe&subscription-key=<Your subscription key>
 using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
@@ -96,29 +97,29 @@ using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
   analysisResult = await visionClient.DescribeAsync(fs);
 }
 ```
-### <a name="here-is-how-to-get-domain-specific-analysis-in-our-case-for-celebrities"></a>Tady je postup, chcete-li získat analýzy specifického pro doménu (v našem případě pro celebrit).
+### <a name="here-is-how-to-get-domain-specific-analysis-in-our-case-for-celebrities"></a>Tady je postup, jak získat analýzu určité domény (v našem případě jsou to celebrity).
 
-**Jedna možnost:** obor analýzy – analýza daný model
+**První možnost:** zúžená analýza – analýza pouze daného modelu
 ```
 POST https://westus.api.cognitive.microsoft.com/vision/v2.0/models/celebrities/analyze
 var celebritiesResult = await visionClient.AnalyzeImageInDomainAsync(url, "celebrities");
 ```
-Pro tuto možnost všechny ostatní parametry dotazu {visualFeatures, podrobnosti} nejsou platné. Pokud chcete zobrazit všechny podporované modely, použijte: 
+U této možnosti jsou všechny ostatní parametry dotazu (visualFeatures, details) neplatné. K zobrazení všech podporovaných modelů použijte: 
 ```
 GET https://westus.api.cognitive.microsoft.com/vision/v2.0/models 
 var models = await visionClient.ListModelsAsync();
 ```
-**Možnost 2:** Rozšířená analýza - analýza poskytnout další podrobnosti se [taxonomie kategorií 86](../Category-Taxonomy.md)
+**Druhá možnost:** rozšířená analýza – tato analýza využívá [86 taxonomických kategorií](../Category-Taxonomy.md) a nabízí další podrobnosti
 
-Pro aplikace, ve které chcete získat analýzy obecný obrázek kromě podrobností z jednoho nebo více doménově specifické modely můžeme rozšířit rozhraní API v1 pomocí parametru dotazu modely.
+Pokud chcete kromě podrobností z jednoho nebo několika modelů určitých domén získat i obecnou analýzu obrázku, rozšířili jsme verzi 1 rozhraní API o parametr dotazu do modelů.
 ```
 POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?details=celebrities
 ```
-Tato metoda po vyvolání, budeme nazývat třídění 86 kategorie nejprve. Pokud některou z kategorií shodovat s modelem známé/odpovídající, dojde k překontrolovat třídění volání. Například pokud "podrobnosti = all", nebo "details" zahrnout "celebrit", budeme nazývat model celebrit poté, co se nazývá třídění 86 kategorie a výsledek bude obsahovat osoba kategorie. Tím se zvýší latence pro uživatele zajímá celebrit ve srovnání s jednu možnost.
+Při volání této metody se napřed volá klasifikátor 86 kategorií. Pokud některé kategorie odpovídají známým/shodným modelům, bude následovat druhé volání klasifikátoru. Například pokud „details=all“ nebo „details“ obsahují „celebrities“, budeme po volání klasifikátoru 86 kategorií volat model celebrit, aby výsledek obsahoval kategorii osob. Tím se u uživatelů, kteří se zajímají o celebrity, zvýší v porovnání s první možností latence.
 
-Všechny parametry dotazu v1 se chová stejně v tomto případě.  Pokud visualFeatures = kategorie není zadán, bude implicitně povoleno.
+Všechny parametry dotazu verze 1 se v tomto případě budou chovat stejně.  Pokud není zadaná možnost visualFeatures=categories, bude povolena implicitně.
 
-### <a name="Step3">Krok 3: Načtení a pochopení výstup JSON pro analyze & visualFeatures značky, popis =</a>
+### <a name="Step3">3. krok: Načtení výstupu JSON a jeho pochopení pro analyze&visualFeatures=Tags, Description</a>
 
 Tady je příklad:
 ```
@@ -150,19 +151,19 @@ Tady je příklad:
 ```
 Pole   | Typ  | Obsah
 ------|------|------|
-Značky    | objekt    | Objekt nejvyšší úrovně pro pole se značkami
-značky []. Jméno | řetězec    | Klíčové slovo z značky třídění
-značky []. Skóre    | číslo    | Skóre spolehlivosti mezi 0 a 1.
+Značky    | objekt    | Objekt nejvyšší úrovně pro pole značek.
+tags[].Name | řetězec    | Klíčové slovo z klasifikátoru značek.
+tags[].Score    | číslo    | Skóre spolehlivosti z intervalu 0 až 1.
 description  | objekt   | Objekt nejvyšší úrovně pro popis.
-[] Description.Tags |    řetězec  | Seznam značek.  Jestliže neexistuje dostatek důvěru v schopnost vytvořit popisek, značky možná pouze informace k dispozici pro volajícího.
-Description.Captions[].text | řetězec    | Fráze popisující bitovou kopii.
-Description.Captions[].CONFIDENCE   | číslo    | Spolehlivost vyhrazeného frázi.
+description.tags[] |    řetězec  | Seznam značek.  Pokud vytvořený popisek není dostatečně spolehlivý, může mít volající k dispozici jenom značky.
+description.captions[].text | řetězec    | Výraz, který popisuje obrázek.
+description.captions[].confidence   | číslo    | Spolehlivost výrazu.
 
-### <a name="Step4">Krok 4: Načtení a pochopení výstup JSON doménově specifické modely</a>
+### <a name="Step4">4. krok: Načtení a pochopení výstupu ve formátu JSON z modelů určitých domén</a>
 
-**Jedna možnost:** obor analýzy – analýza daný model
+**První možnost:** zúžená analýza – analýza pouze daného modelu
 
-Výstup bude pole se značkami, například jako v tomto příkladu:
+Výstupem bude pole značek. Tady je příklad:
 ```
   { 
     "result": [ 
@@ -178,9 +179,9 @@ Výstup bude pole se značkami, například jako v tomto příkladu:
   }
 ```
 
-**Možnost 2:** Rozšířená analýza - analýza taxonomie kategorií 86 poskytnout další podrobnosti
+**Druhá možnost:** rozšířená analýza – tato analýza využívá 86 taxonomických kategorií a nabízí další podrobnosti
 
-Pro doménově specifické modely pomocí dvou možnost (rozšířené analýzy) kategorie návratový typ je rozšířit. Příklad:
+Při použití druhé možnosti (rozšířená analýza) u modelů určitých domén je rozšířený typ vrácených kategorií. Příklad:
 ```
   {
     "requestId": "87e44580-925a-49c8-b661-d1c54d1b83b5",
@@ -206,23 +207,23 @@ Pro doménově specifické modely pomocí dvou možnost (rozšířené analýzy)
   }
 ```
 
-Pole kategorie je seznam jednoho nebo více [86 kategorie](../Category-Taxonomy.md) původní taxonomie. Nezapomeňte, že kategorie s koncovkou podtržítkem bude odpovídat této kategorie a jeho podřízené prvky (například people_ stejně jako people_group pro model celebrit).
+Pole kategorií představuje seznam jedné nebo několika z [86 kategorií](../Category-Taxonomy.md) původní taxonomie. Všimněte si také, že kategorie končící podtržítkem odpovídají dané kategorii a podřízeným prvkům (příklad: people_ a people_group v modelu celebrities).
 
 Pole   | Typ  | Obsah
 ------|------|------|
-Kategorie | objekt | Objekt nejvyšší úrovně
-.name kategorií]    | řetězec   | Název z taxonomie kategorií 86
-kategorie .score]  | číslo    | Skóre spolehlivosti mezi 0 a 1
-kategorie .detail]  | objekt?      | Objekt volitelných podrobností
+categories | objekt | Objekt nejvyšší úrovně
+categories[].name    | řetězec   | Název z taxonomie 86 kategorií
+categories[].score  | číslo    | Skóre spolehlivosti z intervalu 0 až 1
+categories[].detail  | objekt?      | Volitelné podrobnosti o objektu
 
-Všimněte si, že pokud se shodují více kategorií (například třídění 86 kategorie vrátí skóre pro people_ a people_young Pokud model = celebrit), podrobnosti jsou připojeny k nejobecnější úroveň shody (people_ v tomto příkladu).
+Všimněte si, že pokud vyhovuje více kategorií (klasifikátor 86 kategorií například vrátí při použití modelu celebrities skóre pro people_ i people_young), připojí se podrobnosti k nejobecnější shodné značce (v tomto příkladu people_).
 
-### <a name="Errors">Odpovědi na chyby</a>
-Tyto jsou stejné jako vision.analyze, k další chybě NotSupportedModel chyba (HTTP 400), které mohou být vráceny v jedna možnost a možnost dva scénáře. Pro možnost 2 (rozšířené analýzy) Pokud nejsou rozpoznány žádné modely zadané v podrobnostech, rozhraní API vrátí NotSupportedModel, i v případě, že jeden nebo více z nich jsou platné.  Uživatelé mohou volat listModels a zjistěte, jaké modely jsou podporována.
+### <a name="Errors">Chybové odpovědi</a>
+Jsou stejné jako v případě vision.analyze, ale obsahují další chybu NotSupportedModel (HTTP 400), která může být vrácena v obou scénářích (první i druhá možnost). Pokud při druhé možnosti (rozšířená analýza) nejsou rozpoznané žádné zadané modely, vrátí rozhraní API chybu NotSupportedModel i v případě platného modelu nebo více platných modelů.  Pokud uživatelé chtějí zjistit podporované modely, můžou volat listModels.
 
 ### <a name="Summary">Souhrn</a>
 
-Jedná se o základní funkce rozhraní API pro počítačové zpracování obrazu: jak můžete nahrávat obrázky a načíst na oplátku cenné metadat.
+Základními funkcemi rozhraní API pro počítačové zpracování obrazu je nahrání obrázků a následné načtení cenných metadat.
 
-Pokud chcete používat rozhraní REST API, přejděte na [Reference k rozhraní API pro zpracování obrazu počítače](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44).
+Pokud chcete použít REST API, přejděte k [referenčním informacím k rozhraní API pro počítačové zpracování obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44).
  

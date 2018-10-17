@@ -1,90 +1,85 @@
 ---
-title: Co je spolupráce Azure Active Directory s B2B? | Dokumenty Microsoft
-description: Spolupráce Azure Active Directory s B2B podporuje vaše vztahy s ostatními společnostmi tím, že obchodním partnerům umožní selektivní přístup k vašim podnikovým aplikacím.
+title: Co je spolupráce B2B v Azure Active Directory? | Microsoft Docs
+description: Spolupráce B2B v Azure Active Directory podporuje přístup uživatelů typu host, abyste mohli s externími partnery bezpečně sdílet prostředky a spolupracovat s nimi.
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
-ms.date: 04/26/2018
+ms.topic: overview
+ms.date: 09/14/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
-ms.reviewer: sasubram
-ms.openlocfilehash: 51a969ae215583a0be8d75ff1de11173e0696a22
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
-ms.translationtype: MT
+ms.reviewer: mal
+ms.openlocfilehash: 609f48d0c2ba41d658850ade367d9b225941b105
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35643366"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982604"
 ---
-# <a name="what-is-azure-ad-b2b-collaboration"></a>Co je spolupráce B2B ve službě Azure AD?
+# <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Co je přístup uživatelů typu host při spolupráci B2B v Azure Active Directory?
 
-Azure Active Directory (Azure AD) pro mezifiremní (B2B) možnosti spolupráce, které umožňují jakékoli organizaci pomocí služby Azure AD pro práci s uživateli z jakékoli jiné organizace, malé nebo velké bezpečné a spolehlivé. Tyto organizace můžou být i bez Azure AD a dokonce ani není potřeba mít IT oddělení.
+Při spolupráci B2B (business-to-business) v Azure Active Directory (Azure AD) můžete bezpečně sdílet aplikace a služby společnosti s uživateli typu host z libovolné organizace a současně si zachovat kontrolu nad vlastními podnikovými daty. Spolupracujte bezpečně s velkými i malými externími partnery, i když nemají Azure AD ani oddělení IT. Díky jednoduchému postupu založenému na pozvánce a jejím uplatnění můžou partneři, kteří přistupují k vašim firemním prostředkům, používat vlastní přihlašovací údaje. Vývojáři můžou v rozhraní API pro spolupráci B2B v Azure AD přizpůsobit postup pozvání nebo napsat aplikace, jako jsou portály pro samoobslužnou registraci.
 
-Organizace, které používají Azure AD poskytuje přístup k dokumentům, prostředky a aplikace pro své partnery, a přitom plnou kontrolu nad své vlastní firemní data. Vývojáři mohou využít služby Azure AD business-to-business rozhraní API pro psaní aplikací, které spojí dvě organizace ve více bezpečně. Je také snadné pro koncové uživatele pro navigaci.
+Podívejte se na video, ve kterém se dozvíte, jak bezpečně spolupracovat s uživateli typu host tím, že je pozvete, aby k přihlášení do vašich podnikových aplikací a služeb používali vlastní identity.
 
-Následující video přináší přehled užitečné.
+Následující video nabízí praktický přehled.
+
 >[!VIDEO https://www.youtube.com/embed/AhwrweCBdsc]
 
-## <a name="key-benefits-of-azure-ad-b2b-collaboration"></a>Klíčové výhody spolupráce B2B ve službě Azure AD
+## <a name="collaborate-with-any-partner-using-their-identities"></a>Spolupráce s partnery s využitím jejich vlastních identit
+Při spolupráci B2B v Azure AD partner používá ke správě identit vlastní řešení. Vaší organizaci tak v této souvislosti nevznikají další režijní náklady. 
+- Partner používá vlastní identity a přihlašovací údaje, a nepotřebuje k tomu Azure AD. 
+- Nemusíte spravovat externí účty ani hesla. 
+- Nemusíte synchronizovat účty ani spravovat jejich životní cyklus.  
 
-### <a name="work-with-any-user-from-any-partner"></a>Práce s jakýmkoli uživatelem z partnerských
+![Přidání člena](media/what-is-b2b/add-member.png)
 
-- Partneři používat svoje vlastní přihlašovací údaje
-- Nevyžaduje pro partnery pomocí služby Azure AD
-- Bez externích adresářů nebo složité nastavování vyžaduje
+## <a name="invite-guest-users-with-a-simple-invitation-and-redemption-process"></a>Pozvání uživatelů typu host prostřednictvím jednoduché pozvánky a jejího uplatnění
+Uživatelé typu host používají při přihlášení k vašim aplikacím a službám vlastní pracovní, školní nebo sociální identitu. Pokud uživatel typu host nemá účet Microsoft ani účet Azure AD, vytvoří se jim po uplatnění pozvánky. 
+- K pozvání uživatelů typu host použijte e-mailovou identitu, kterou si sami vyberou.
+- Pošlete jim přímo odkaz na aplikaci nebo jim pošlete pozvánku do vlastního přístupového panelu uživatele typu host. 
+- Uživatelé typu host provedou při přihlášení a uplatnění pozvánky několik jednoduchých kroků.
 
-### <a name="simple-and-secure-collaboration"></a>Jednoduchá a bezpečná spolupráce
+![Přístupový panel](media/what-is-b2b/consentscreen.png)
 
-- Poskytnout přístup na všechny podnikové aplikace nebo data, při použití sofistikované, Azure AD s využitím autorizační zásady
-- Snadné pro uživatele
-- Zabezpečení na podnikové úrovni pro aplikace a data
-
-### <a name="no-management-overhead"></a>Bez režie na správu
-
-- Externí správu účtu nebo hesla
-- Žádná synchronizace nebo ruční správa životního cyklu účtu
-- Žádné externí režijní náklady na správu
-
-## <a name="easily-add-b2b-collaboration-users"></a>Snadno přidat uživatele spolupráce B2B
-
-Jako správce, můžete snadno přidat uživatele B2B spolupráce (Host) k vaší organizaci [webu Azure portal](https://portal.azure.com).
-
-![Přidat uživatele typu Host](media/what-is-b2b/adding-b2b-users-admin.png)
-
-### <a name="enable-your-collaborators-to-bring-their-own-identity"></a>Povolit vaši spolupracovníci přenést svoji vlastní identitu
-
-Spolupracovníci B2B se můžete přihlásit pomocí identity podle vlastní volby. Pokud uživatel nemá účet Microsoft nebo účet Azure AD – vytvoří se pro ně bez problémů v době pro uplatnění nabídky.
-
-### <a name="delegate-to-application-and-group-owners"></a>Delegovat na aplikaci a vlastníci skupiny
-
-Jako aplikace nebo vlastník skupiny můžete přidat uživatele B2B přímo do jakékoli aplikace, která vás zajímají, zda je aplikace Microsoft, nebo ne. Správci mohou delegovat oprávnění k přidání uživatelů B2B bez oprávnění správce. Non správci můžou použít [Azure AD aplikace přístupový Panel](https://myapps.microsoft.com) přidat uživatele spolupráce B2B do aplikace nebo skupiny.
-
-![Přístupový panel](media/what-is-b2b/access-panel.png)
-
-![Přidat člena](media/what-is-b2b/add-member.png)
-
-### <a name="authorization-policies-protect-your-corporate-content"></a>Zásady ověřování ochrana vašeho firemního obsahu
-
-Zásady podmíněného přístupu, jako je ověřování službou Multi-Factor Authentication, je možné vynutit:
+## <a name="use-policies-to-securely-share-your-apps-and-services"></a>Použití zásad při bezpečném sdílení aplikací a služeb
+K ochraně firemního obsahu můžete použít zásady autorizace. Zásady podmíněného přístupu, jako je vícefaktorové ověřování, je možné vynutit:
 - Na úrovni tenanta
 - Na úrovni aplikace
-- Pro konkrétní uživatele chránit podnikové aplikace a data
+- Pro konkrétní uživatele typu host, abyste chránili firemní aplikace a data
 
-### <a name="use-apis-and-sample-code-to-easily-build-applications-to-onboard"></a>Použití rozhraní API a ukázkový kód umožňují snadno vytvářet aplikace k připojení
+![Přidání uživatelů typu host](media/what-is-b2b/tutorial-mfa-policy-2.png)
 
-Přeneste externí partnery na palubě způsoby přizpůsobit podle potřeb vaší organizace.
 
-Použití [pozvánku spolupráce B2B rozhraní API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) přizpůsobení připojujeme prostředí, včetně vytváření samoobslužné portály pro registraci. Poskytujeme ukázkový kód pro samoobslužný portál [na Githubu](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web).
+## <a name="easily-add-guest-users-in-the-azure-ad-portal"></a>Jednoduché přidání uživatelů typu host na webu Azure Portal
 
-![registrační portál](media/what-is-b2b/sign-up-portal.png)
+Jako správce můžete do své organizace na webu Azure Portal jednoduše přidat uživatele typu host.
+- V Azure AD můžete vytvořit nového uživatele typu host podobně, jako byste přidávali nového uživatele.
+- Uživateli typu host ihned přijde přizpůsobená pozvánka, ze které se může přihlásit ke svému přístupovému panelu.
+- Uživatele typu host můžete v adresáři přiřazovat k aplikacím nebo skupinám.  
 
-Se spoluprací Azure AD B2B můžete získat plný výkon služby Azure AD k ochraně vašeho vztahů s partnery tak, aby koncoví uživatelé najdou jednoduchou a intuitivní.
+![Přidání uživatelů typu host](media/what-is-b2b/adding-b2b-users-admin.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="let-application-and-group-owners-manage-their-own-guest-users"></a>Nechte vlastníky aplikací a skupin spravovat vlastní uživatele typu host
 
-- [Jak správci služby Azure Active Directory přidat uživatele spolupráce B2B?](add-users-administrator.md)
-- [Jak informačních pracovníků vynutit přidat uživatele spolupráce B2B?](add-users-information-worker.md)
-- [Uplatnění pozvání spolupráce B2B](redemption-experience.md)
-- [Licencování spolupráce v Azure AD B2B](licensing-guidance.md)
-- A jako vždy, spojte se s týmem pro všechny názory, diskuse a návrhy prostřednictvím našich [technické komunitě Microsoftu](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b).
+Správu uživatelů typu host můžete delegovat na vlastníky aplikací, aby do libovolné aplikace, kterou chtějí sdílet, mohli přímo přidávat uživatele typu host. Přitom nezáleží, jestli je aplikace od Microsoftu. 
+ - Správci nastaví samoobslužnou správu aplikace a skupiny.
+ - Uživatelé, kteří nejsou správci, použijí k přidání uživatelů typu host do aplikací nebo skupin [přístupový panel](https://myapps.microsoft.com).
+
+![Přidání uživatelů typu host](media/what-is-b2b/access-panel-manage-app.png)
+
+## <a name="use-apis-and-sample-code-to-easily-build-applications-to-onboard"></a>Použití rozhraní API a ukázkového kódu k jednoduchému připojení vytvořených aplikací
+
+Připojte externí partnery tak, jak to vyhovuje potřebám vaší organizace.
+- K přizpůsobení připojovacího prostředí můžete použít [rozhraní API s pozváním ke spolupráci B2B](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation), včetně vytvoření samoobslužných přihlašovacích portálů. 
+- K vytvoření samoobslužného portálu použijte ukázkový kód, který je [na Githubu](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web).
+
+![Registrační portál](media/what-is-b2b/sign-up-portal.png)
+
+## <a name="next-steps"></a>Další kroky
+
+- [Pokyny k licencování spolupráce B2B v Azure AD](licensing-guidance.md)
+- [Přidání uživatelů typu host na portálu pro spolupráci B2B](add-users-administrator.md)
+- [Vysvětlení postupu při uplatnění pozvánky](redemption-experience.md)
+- A jako vždy se můžete spojit s naším produktovým týmem a sdělit mu své připomínky, diskutovat nebo posílat své návrhy prostřednictvím [technické komunity Microsoftu](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b).

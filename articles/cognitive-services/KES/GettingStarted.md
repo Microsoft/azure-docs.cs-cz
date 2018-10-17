@@ -1,30 +1,31 @@
 ---
-title: Začínáme se službou zkoumání znalostní báze | Microsoft Docs
-description: Znalostní báze zkoumání služby (KES) použijte k vytvoření modulu pro interaktivní vyhledávání prostředí napříč academic publikace v kognitivní služby společnosti Microsoft.
+title: 'Příklad: Začínáme – rozhraní API služby Knowledge Exploration Service'
+titlesuffix: Azure Cognitive Services
+description: Použijte rozhraní API služby KES (Knowledge Exploration Service) k vytvoření modulu pro interaktivní hledání v akademických publikacích.
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: sample
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 02dc9368eef02d6fa507335ef3171e923412acca
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 6cee339793269af0e8060cce56f94fa81db6a6c5
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342741"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124010"
 ---
-<a name="getting-started"></a>
-# <a name="get-started-with-the-knowledge-exploration-service"></a>Začínáme se službou zkoumání znalostní báze
-V tomto návodu použijete k vytvoření modul pro hledání interaktivní prostředí pro publikace, academic Knowledge zkoumání služby (KES). Můžete nainstalovat nástroj příkazového řádku [ `kes.exe` ](CommandLine.md)a všechny soubory příklad z [sady SDK služby zkoumání znalostní báze](https://www.microsoft.com/en-us/download/details.aspx?id=51488).
+# <a name="get-started-with-the-knowledge-exploration-service"></a>Začínáme se službou Knowledge Exploration Service
 
-Příklad academic publikace obsahuje ukázku 1000 academic dokumenty Paper publikovaná odborníky společnosti Microsoft.  Každý dokument je přidružen název, publikace rok, autoři a klíčová slova. Každý Autor je reprezentována ID, názvu a přidružení v době publikace. Každý – klíčové slovo lze přidružit sadu synonyma (například – klíčové slovo "support vector machine" může být přidružen synonymum "svm").
+V tomto článku s návodem použijete službu KES (Knowledge Exploration Service) k vytvoření modulu pro interaktivní hledání pro akademické publikace. Můžete si nainstalovat nástroj příkazového řádku [`kes.exe`](CommandLine.md) a všechny ukázkové soubory ze [sady SDK služby Knowledge Exploration Service](https://www.microsoft.com/en-us/download/details.aspx?id=51488).
 
-<a name="defining-schema"></a>
+Příklad akademických publikací obsahuje ukázku 1 000 akademických dokumentů publikovaných výzkumníky u Microsoftu.  Každý dokument je spojený s názvem, rokem publikování, autory a klíčovými slovy. Každý autor je reprezentován ID, jménem a afilací v době publikování. Každé klíčové slovo může být spojené se sadou synonym (například klíčové slovo „support vector machine“ může být spojené se synonymem „svm“).
+
 ## <a name="define-the-schema"></a>Definování schématu
-Schéma popisuje strukturu atribut objektů v doméně. Určuje název a datový typ pro každý atribut ve formátu souboru JSON. Následující příklad je obsah souboru *Academic.schema*.
+
+Schéma popisuje strukturu atributů objektů v doméně. Určuje název a datový typ každého atributu ve formátu souboru JSON. Následující příklad je obsah souboru *Academic.schema*.
 
 ```json
 {
@@ -40,11 +41,11 @@ Schéma popisuje strukturu atribut objektů v doméně. Určuje název a datový
 }
 ```
 
-Tady můžete definovat *název*, *roku*, a *– klíčové slovo* jako řetězec, celé číslo a řetězec atributu, v uvedeném pořadí. Protože autoři jsou reprezentované pomocí ID, názvu a přidružení, definujete *Autor* jako složený atribut s tři dílčí atributy: *Author.Id*, *Author.Name*, a *Author.Affiliation*.
+Definujete tady atributy *Title* (Název), *Year* (Rok) a *Keyword* (Klíčové slovo) jako atributy typů řetězec (String), celé číslo (Int32) a řetězec (String). Protože autoři jsou reprezentováni ID, jménem a afilací, definujete atribut *Author* jako složený atribut se třemi dílčími atributy: *Author.Id*, *Author.Name* a *Author.Affiliation*.
 
-Ve výchozím nastavení, atributy podporují všechny operace, které jsou k dispozici pro datový typ, včetně *rovná*, *starts_with*, a *is_between*. Vzhledem k tomu, že autor ID se používá pouze interně jako identifikátor, přepsat výchozí nastavení a zadejte *rovná* jako jediný indexované operaci.
+Atributy ve výchozím nastavení podporují všechny operace dostupné pro jejich datový typ, včetně operací *equals*, *starts_with* a *is_between*. Protože se atribut Author.ID používá jako identifikátor jenom interně, přepište výchozí nastavení a jako jedinou indexovanou operaci zadejte *equals*.
 
-Pro *– klíčové slovo* atribut, povolí synonyma k hodnotám kanonický – klíčové slovo zadáním soubor synonymum *Keyword.syn* v definici atributu. Tento soubor obsahuje seznam kanonický synonymum párů a hodnot:
+Pro atribut *Keyword* povolte porovnávání synonym s kanonickými hodnotami klíčových slov – zadáním souboru synonym *Keyword.syn* v definici atributu. Tento soubor obsahuje seznam dvojic kanonická hodnota – hodnota synonyma:
 
 ```json
 ...
@@ -59,11 +60,11 @@ Pro *– klíčové slovo* atribut, povolí synonyma k hodnotám kanonický – 
 ...
 ```
 
-Další informace o definici schématu, najdete v části [formát schématu](SchemaFormat.md).
+Další informace o definování schématu najdete v článku [Formát schématu](SchemaFormat.md).
 
-<a name="generating-data"></a>
 ## <a name="generate-data"></a>Generování dat
-Datový soubor popisuje seznam publikací pro každý řádek zadání hodnot atributů dokumentu v indexu [formátu JSON](http://json.org/).  Následující příklad je jeden řádek z datového souboru *Academic.data*naformátovanou čitelnější:
+
+Datový soubor popisuje seznam publikací k indexování – každý řádek určuje hodnoty atributů dokumentu ve [formátu JSON](http://json.org/).  Následující příklad je jeden řádek ze souboru *Academic.data*, který je formátovaný pro zlepšení čitelnosti:
 
 ```
 ...
@@ -87,23 +88,23 @@ Datový soubor popisuje seznam publikací pro každý řádek zadání hodnot at
 ...
 ```
 
-V tento fragment kódu, můžete zadat *název* a *roku* atribut dokumentu jako řetězce formátu JSON a číslo, v uvedeném pořadí. Více hodnot, jsou reprezentované pomocí pole JSON. Protože *Autor* je atribut složené každá hodnota je reprezentována pomocí objekt JSON, který se skládá z jeho dílčí atributy. Atributy s chybějící hodnoty, jako například *– klíčové slovo* v tomto případě mohou být vyloučeny z reprezentace JSON.
+V tomto fragmentu zadáte atributy *Title* (Název) a *Year* (Rok) dokumentu jako JSON řetězec a číslo (v tomto pořadí). Vícehodnotové atributy jsou reprezentovány pomocí polí JSON. Protože atribut *Author* (Autor) je složený atribut, je každá hodnota reprezentována pomocí objektu JSON skládajícího se z dílčích atributů. Atributy s chybějícími hodnotami, jako je v tomto případě atribut *Keyword* (Klíčové slovo) můžou být v reprezentaci JSON vynechány.
 
-K odlišení pravděpodobnost různé dokumenty Paper, zadejte relativní protokolu pravděpodobnost pomocí integrované *logprob* atribut. Zadané pravděpodobnost *p* mezi 0 a 1, výpočetní pravděpodobnost protokolu jako protokolu (*p*), kde log() je funkce přirozené protokolu.
+K rozlišení pravděpodobnosti různých dokumentů zadejte relativní logaritmickou pravděpodobnost pomocí předdefinovaného atributu *logprob*. Za předpokladu, že pravděpodobnost *p* je mezi 0 a 1, spočítáte logaritmickou pravděpodobnost jako log(*p*), kde log() ke funkce přirozeného logaritmu.
 
-Další informace najdete v tématu [formát dat](DataFormat.md).
+Další informace najdete v článku [Formát dat](DataFormat.md).
 
-<a name="building-index"></a>
-## <a name="build-a-compressed-binary-index"></a>Sestavení komprimované binární indexu
-Až budete mít soubor dat a souboru schématu, můžete vytvořit index na komprimované binární datové objekty pomocí [ `kes.exe build_index` ](CommandLine.md#build_index-command). V tomto příkladu vytvoříte soubor indexu *Academic.index* ze souboru vstupní schéma *Academic.schema* a datový soubor *Academic.data*. Použijte následující příkaz:
+## <a name="build-a-compressed-binary-index"></a>Sestavení komprimovaného binárního indexu
+
+Až budete mít soubor schématu a datový soubor, můžete sestavit komprimovaný binární index datových objektů pomocí příkazu [`kes.exe build_index`](CommandLine.md#build_index-command). V tomto příkladu sestavíte soubor indexu *Academic.index* ze vstupního souboru schématu *Academic.schema* a datového souboru *Academic.data*. Použijte následující příkaz:
 
 `kes.exe build_index Academic.schema Academic.data Academic.index`
 
-Pro rychlé při vytváření prototypu mimo Azure [ `kes.exe build_index` ](CommandLine.md#build_index-command) malé indexy místně, můžete vytvořit z datové soubory obsahující až 10 000 objektů. Pro větší datové soubory, můžete buď spustit příkaz uvnitř [virtuální počítač s Windows v Azure](../../../articles/virtual-machines/windows/quick-create-portal.md), nebo provádět Vzdálená sestavení v Azure. Podrobnosti najdete v tématu [vertikálním navýšení kapacity](#scaling-up).
+Při rychlém vytváření prototypů mimo Azure můžete příkazem [`kes.exe build_index`](CommandLine.md#build_index-command) sestavit malé indexy místně – z datových souborů obsahujících maximálně 10 000 objektů. Pro větší datové soubory můžete příkaz spustit v rámci [virtuálního počítače s Windows v Azure](../../../articles/virtual-machines/windows/quick-create-portal.md) nebo provést vzdálené sestavení indexu v Azure. Podrobnosti najdete v části o [vertikálním navýšení kapacity](#scaling-up).
 
-<a name="authoring-grammar"></a>
-## <a name="use-an-xml-grammar-specification"></a>Pomocí specifikace gramatika XML
-Gramatiky určuje sadu přirozeného jazyka dotazů, které služba dokáže interpretovat, a také jak jsou tyto dotazy v přirozeném jazyce přeložit na výrazy sémantický dotaz. V tomto příkladu použijete gramatika zadaný v *academic.xml*:
+## <a name="use-an-xml-grammar-specification"></a>Použití XML specifikace gramatiky
+
+Gramatika určuje sadu dotazů v přirozeném jazyce, které dokáže služba interpretovat, a také to, jak se tyto dotazy v přirozeném jazyce překládají do sémantických výrazů dotazu. V tomto příkladu použijete gramatiku určenou v souboru *academic.xml*:
 
 ```xml
 <grammar root="GetPapers">
@@ -196,73 +197,73 @@ Gramatiky určuje sadu přirozeného jazyka dotazů, které služba dokáže int
 </grammar>
 ```
 
-Další informace o syntaxi specifikace gramatika najdete v tématu [gramatika formátu](GrammarFormat.md).
+Další informace o syntaxi specifikace gramatiky najdete v článku [Formát gramatiky](GrammarFormat.md).
 
-<a name="compiling-grammar"></a>
 ## <a name="compile-the-grammar"></a>Kompilace gramatiky
-Až budete mít specifikace gramatika XML, můžete ji můžete zkompilovat do binární gramatika pomocí [ `kes.exe build_grammar` ](CommandLine.md#build_grammar-command). Všimněte si, že pokud gramatiky importuje schéma, soubor schématu musí být umístěné ve stejnou cestu jako gramatika XML. V tomto příkladu vytvoříte soubor binární gramatika *Academic.grammar* ze vstupního souboru XML gramatika *Academic.xml*. Použijte následující příkaz:
+
+Až budete mít XML specifikaci gramatiky, můžete ji zkompilovat do binární gramatiky pomocí příkazu [`kes.exe build_grammar`](CommandLine.md#build_grammar-command). Pamatujte na to, že pokud gramatika importuje schéma, musí být soubor schématu umístěný ve stejné cestě jako XML specifikace gramatiky. V tomto příkladu sestavíte binární soubor gramatiky *Academic.grammar* ze vstupního XML souboru gramatiky *Academic.xml*. Použijte následující příkaz:
 
 `kes.exe build_grammar Academic.xml Academic.grammar`
 
-<a name="hosting-index"></a>
-## <a name="host-the-grammar-and-index-in-a-web-service"></a>Hostovat gramatika a index ve webové službě
-Pro rychlé vytváření prototypů, je možné hostovat gramatika a index ve webové službě v místním počítači, pomocí [ `kes.exe host_service` ](CommandLine.md#host_service-command). Potom přístup ke službě přes [webovým rozhraním API](WebAPI.md) ověření dat správnost a gramatické návrhu. V tomto příkladu je soubor gramatika hostovat *Academic.grammar* a soubor indexu *Academic.index* v http://localhost:8000/. Použijte následující příkaz:
+## <a name="host-the-grammar-and-index-in-a-web-service"></a>Hostování gramatiky a indexu ve webové službě
+
+Při rychlém vytváření prototypů můžete gramatiku a index hostovat ve webové službě na místním počítači pomocí příkazu [`kes.exe host_service`](CommandLine.md#host_service-command). Ke službě se pak můžete dostat prostřednictvím [webových rozhraní API](WebAPI.md) a ověřit správnost dat a návrh gramatiky. V tomto příkladu budete hostovat soubor gramatiky *Academic.grammar* a soubor indexu *Academic.index* na http://localhost:8000/. Použijte následující příkaz:
 
 `kes.exe host_service Academic.grammar Academic.index --port 8000`
 
-Tím se vyvolá místní instance webové služby. Můžete interaktivně testovat službu navštivte stránky `http::localhost:<port>` z prohlížeče. Další informace najdete v tématu [testování služby](#testing-service).
+Tím se iniciuje místní instance webové služby. Když navštívíte `http::localhost:<port>` z prohlížeče, můžete službu interaktivně testovat. Další informace najdete v části [Testování služby](#testing-service).
 
-Můžete také přímo volat různé [webovým rozhraním API](WebAPI.md) k testování přirozené Interpretace jazyka, dokončení dotazu, strukturovaných dotazů zkušební a výpočetní histogram. K zastavení služby, zadejte "ukončení" do `kes.exe host_service` příkazový řádek nebo stiskněte kombinaci kláves Ctrl + C. Zde je několik příkladů:
+Můžete také přímo volat různá [webová rozhraní API](WebAPI.md) a testovat interpretaci přirozeného jazyka, kompletaci dotazu, vyhodnocení strukturovaného dotazu a výpočet histogramu. Pokud chcete službu zastavit, zadejte na příkazovém řádku `kes.exe host_service` „quit“ nebo stiskněte Ctrl+C. Zde je několik příkladů:
 
-* [http://localhost:8000/interpret?query=papers podle susan t dumais](http://localhost:8000/interpret?query=papers%20by%20susan%20t%20dumais)
-* [http://localhost:8000/interpret?query=papers podle susan t d & dokončení = 1](http://localhost:8000/interpret?query=papers%20by%20susan%20t%20d&complete=1)
-* [http://localhost:8000/evaluate?expr=Composite(Author.Name=='susan t dumais') & attributes=Title,Year,Author.Name,Author.Id & count = 2](http://localhost:8000/evaluate?expr=Composite%28Author.Name==%27susan%20t%20dumais%27%29&attributes=Title,Year,Author.Name,Author.Id&count=2)
-* [http://localhost:8000/calchistogram?expr=And(Composite(Author.Name=='susan t dumais'), rok > = 2013) & atributy = rok, – klíčové slovo a počet = 4](http://localhost:8000/calchistogram?expr=And%28Composite%28Author.Name=='susan%20t%20dumais'%29,Year>=2013%29&attributes=Year,Keyword&count=4)
+* [http://localhost:8000/interpret?query=papers by susan t dumais](http://localhost:8000/interpret?query=papers%20by%20susan%20t%20dumais)
+* [http://localhost:8000/interpret?query=papers by susan t d&complete=1](http://localhost:8000/interpret?query=papers%20by%20susan%20t%20d&complete=1)
+* [http://localhost:8000/evaluate?expr=Composite(Author.Name=='susan t dumais')&attributes=Title,Year,Author.Name,Author.Id&count=2](http://localhost:8000/evaluate?expr=Composite%28Author.Name==%27susan%20t%20dumais%27%29&attributes=Title,Year,Author.Name,Author.Id&count=2)
+* [http://localhost:8000/calchistogram?expr=And(Composite(Author.Name=='susan t dumais'),Year>=2013)&attributes=Year,Keyword&count=4](http://localhost:8000/calchistogram?expr=And%28Composite%28Author.Name=='susan%20t%20dumais'%29,Year>=2013%29&attributes=Year,Keyword&count=4)
 
-Mimo Azure [ `kes.exe host_service` ](CommandLine.md#host_service-command) je omezený na indexů až 10 000 objektů. Další omezení zahrnují počet požadavků za sekundu, 10 rozhraní API a celkový počet požadavků na 1000 před proces automaticky ukončí. K porušení těchto omezení, spusťte příkaz z uvnitř [virtuální počítač s Windows v Azure](../../../articles/virtual-machines/windows/quick-create-portal.md), nebo nasazení do cloudové služby Azure pomocí [ `kes.exe deploy_service` ](CommandLine.md#deploy_service-command) příkaz. Podrobnosti najdete v tématu [nasazení služby](#deploying-service).
+Mimo Azure je příkaz [`kes.exe host_service`](CommandLine.md#host_service-command) omezený na indexy s maximálně 10 000 objekty. K dalším omezením patří rychlost rozhraní API maximálně 10 žádostí za sekundu a automatické ukončení procesu po celkovém počtu 1 000 žádostí. Pokud chcete tato omezení obejít, spusťte příkaz v rámci [virtuálního počítače s Windows v Azure](../../../articles/virtual-machines/windows/quick-create-portal.md) nebo službu nasaďte do cloudové služby Azure pomocí příkazu [`kes.exe deploy_service`](CommandLine.md#deploy_service-command). Podrobnosti najdete v části [Nasazení služby](#deploying-service).
 
-<a name="scaling-up"></a>
-## <a name="scale-up-to-host-larger-indices"></a>Škálování na větší indexy, které jsou hostiteli
-Pokud používáte `kes.exe` index mimo Azure, je omezený na 10 000 objektů. Můžete sestavit a hostitelů větší indexy pomocí Azure. Zaregistrujte si [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/). Případně, pokud se přihlásíte k sadě Visual Studio nebo MSDN, můžete [aktivovat výhody předplatitele](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/). Tyto nabízejí některé kredity Azure každý měsíc.
+## <a name="scale-up-to-host-larger-indices"></a>Vertikální navýšení kapacity pro hostování větších indexů
 
-Chcete-li povolit `kes.exe` přístup k účtu Azure [stáhněte soubor nastavení publikování Azure](https://portal.azure.com/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) z portálu Azure. Pokud budete vyzváni, přihlaste se k požadovaný účet Azure. Uložte soubor jako *AzurePublishSettings.xml* v pracovním adresáři odkud `kes.exe` běží.
+Když `kes.exe` spustíte mimo Azure, je index omezený na 10 000 objektů. Při použití Azure můžete sestavit a hostovat větší indexy. Zaregistrujte se k [bezplatné zkušební verzi](https://azure.microsoft.com/pricing/free-trial/). Pokud se případně přihlásíte k odběru Visual Studia nebo MSDN, můžete si [aktivovat výhody pro předplatitele](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/). Ty nabízejí každý měsíc nějaké kredity Azure.
 
-Existují dva způsoby, jak vytvářet a hostovat velký indexy. První je Příprava schématu a datových souborů v systému Windows virtuálního počítače v Azure. Spusťte [ `kes.exe build_index` ](#building-index) k sestavení indexu místně na virtuálním počítači bez jakýchkoli omezení velikosti. Výsledný index může být hostitelem místně virtuálního počítače pomocí [ `kes.exe host_service` ](#hosting-service) pro rychlé vytváření prototypů znovu bez jakýchkoli omezení. Podrobné pokyny najdete v tématu [virtuálního počítače Azure kurzu](../../../articles/virtual-machines/windows/quick-create-portal.md).
+Abyste nástroji `kes.exe` umožnili přístup k účtu Azure, [stáhněte si soubor Azure Publish Settings](https://portal.azure.com/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) z portálu Azure Portal. Pokud se zobrazí výzva, přihlaste se k požadovanému účtu Azure. Soubor uložte jako *AzurePublishSettings.xml* do pracovního adresáře, ze kterého spouštíte `kes.exe`.
 
-Druhý způsob spočívá v provést vzdálené Azure sestavení, pomocí [ `kes.exe build_index` ](CommandLine.md#build_index-command) s `--remote` parametr. Toto nastavení určuje velikost virtuálního počítače Azure. Když `--remote` je zadán parametr, příkaz vytvoří dočasný virtuální počítač Azure této velikosti. Potom index je založený na virtuálním počítači, odešle do úložiště objektů blob cílový index a odstraní virtuální počítač po dokončení. Vaše předplatné Azure je účtován nákladů na virtuální počítač při sestavuje index.
+Existují dva způsoby, jak sestavit a hostovat velké indexy. První metodou je připravit schéma a datové soubory ve virtuálním počítači s Windows v Azure. Potom se spuštěním příkazu [`kes.exe build_index`](#building-index) sestaví index místně na virtuálním počítači, bez jakýchkoli omezení velikosti. Výsledný index se může při rychlém vytváření prototypů hostovat místně na virtuálním počítači pomocí příkazu [`kes.exe host_service`](#hosting-service), zase bez jakýchkoli omezení. Podrobný postup najdete v [kurzu virtuálního počítače Azure](../../../articles/virtual-machines/windows/quick-create-portal.md).
 
-Díky této možnosti vzdáleného Azure sestavení [ `kes.exe build_index` ](CommandLine.md#build_index-command) ke spuštění v jakémkoli prostředí. Při provádění vzdálené sestavení, vstupní argumenty schéma a data, může být místní cesty souborů nebo [úložiště objektů blob Azure](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) adresy URL. Argument indexu výstup musí být adresu URL úložiště objektů blob. Pokud chcete vytvořit účet úložiště Azure, najdete v části [účty Azure storage](../../storage/common/storage-create-storage-account.md). Ke zkopírování souborů efektivně do a z úložiště objektů blob, použijte [AzCopy](../../storage/common/storage-use-azcopy.md) nástroj.
+Druhou metodou je provést vzdálené sestavení v Azure pomocí příkazu [`kes.exe build_index`](CommandLine.md#build_index-command) s parametrem `--remote`. Ten určuje velikost virtuálního počítače Azure. Když je zadaný parametr `--remote`, příkaz vytvoří dočasný virtuální počítač Azure této velikosti. Pak na virtuálním počítači sestaví index, nahraje index do cílového úložiště objektů blob a při dokončení odstraní virtuální počítač. U vašeho předplatného Azure budou účtovány náklady na virtuální počítač během sestavování indexu.
 
-V tomto příkladu můžete předpokládat, že již byla vytvořena následující kontejner úložiště objektů blob: http://&lt;*účet*&gt;.blob.core.windows.net/&lt;*kontejneru* &gt;/. Obsahuje schéma *Academic.schema*, soubor odkazované synonymum *Keywords.syn*a po kompletní datový soubor *Academic.full.data*. Můžete vytvořit index úplné vzdáleně pomocí následujícího příkazu:
+Tato schopnost vzdáleného sestavení v Azure umožňuje spustit příkaz [`kes.exe build_index`](CommandLine.md#build_index-command) v libovolném prostředí. Když provádíte vzdálené sestavení, argumenty pro vstupní schéma a data můžou být místní cesty souborů nebo adresy URL [úložiště Azure objektů blob](../../storage/blobs/storage-dotnet-how-to-use-blobs.md). Argument pro výstupní index musí být adresa URL úložiště objektů blob. Informace o vytvoření účtu úložiště Azure najdete v článku [o účtech úložiště Azure](../../storage/common/storage-create-storage-account.md). K efektivnímu kopírování souborů do úložiště objektů blob a opačně použijte nástroj [AzCopy](../../storage/common/storage-use-azcopy.md).
+
+V tomto příkladu můžete předpokládat, že už je vytvořený následující kontejner úložiště objektů blob: http://&lt;*account*&gt;.blob.core.windows.net/&lt;*container*&gt;/. Obsahuje schéma *Academic.schema*, odkazovaný soubor synonym *Keywords.syn* a kompletní datový soubor *Academic.full.data*. Úplný index můžete vzdáleně sestavit pomocí následujícího příkazu:
 
 `kes.exe build_index http://<account>.blob.core.windows.net/<container>/Academic.schema http://<account>.blob.core.windows.net/<container>/Academic.full.data http://<account>.blob.core.windows.net/<container>/Academic.full.index --remote <vm_size>`
 
-Všimněte si, že může trvat 5 až 10 minut ke zřízení temporay virtuálních počítačů k sestavení indexu. Pro rychlé vytváření prototypů můžete:
-- Vývoj s menší datové sady místně na libovolném počítači.
-- Ručně [vytvořit virtuální počítač Azure](../../../articles/virtual-machines/windows/quick-create-portal.md), [k nim připojit](../../../articles/virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) přes vzdálenou plochu, nainstalujte [sady SDK služby zkoumání znalostní báze](https://www.microsoft.com/en-us/download/details.aspx?id=51488)a spusťte [ `kes.exe` ](CommandLine.md) z virtuálního počítače.
+Pamatujte na to, že zřízení dočasného virtuálního počítače k sestavení indexu může trvat 5 až 10 minut. Při rychlém vytváření prototypů můžete:
+- Vyvíjet s menší datovou sadou místně na libovolném počítači.
+- Ručně [vytvořit virtuální počítač Azure](../../../articles/virtual-machines/windows/quick-create-portal.md), [připojit se k němu](../../../articles/virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) přes Vzdálenou plochu, nainstalovat [sadu SDK služby Knowledge Exploration Service](https://www.microsoft.com/en-us/download/details.aspx?id=51488) a spustit [`kes.exe`](CommandLine.md) v rámci virtuálního počítače.
 
-Stránkování zpomaluje procesu sestavení. Abyste se vyhnuli stránkování, používejte virtuální počítač s odpovídající trojnásobku velikosti paměti RAM jako velikost souboru vstupní data pro vytvoření indexu. Použijte virtuální počítač s 1 GB více paměti RAM než velikost indexu pro hostování. Seznam dostupných velikostí virtuálních počítačů najdete v tématu [velikosti virtuálních počítačů](../../../articles/virtual-machines/virtual-machines-windows-sizes.md).
+Stránkování zpomaluje proces sestavení. Abyste stránkování zabránili, použijte k sestavení indexu virtuální počítač s pamětí RAM třikrát větší, než je velikost vstupního datového souboru. Použijte virtuální počítač s pamětí RAM o 1 GB větší, než je velikost indexu, který chcete hostovat. Seznam dostupných velikostí virtuálních počítačů najdete v článku [Velikosti virtuálních počítačů](../../../articles/virtual-machines/virtual-machines-windows-sizes.md).
 
-<a name="deploying-service"></a>
 ## <a name="deploy-the-service"></a>Nasazení služby
-Až budete mít gramatika a indexu, jste připraveni k nasazení služby do cloudové služby Azure. Pokud chcete vytvořit novou službu cloudu Azure, najdete v části [postup vytvoření a nasazení cloudové služby](../../../articles/cloud-services/cloud-services-how-to-create-deploy-portal.md). V tomto okamžiku nezadávejte balíčku pro nasazení.  
 
-Pokud jste vytvořili cloudové službě, můžete použít [ `kes.exe deploy_service` ](CommandLine.md#deploy_service-command) k nasazení služby. Cloudové služby Azure má dva nasazovací sloty: provozní prostředí a Fázování. Pro službu, která přijímá provoz uživatele za provozu měli byste původně nasadit pro přípravný slot. Čekání na spuštění a inicializaci sám sebe služby. Potom můžete odeslat několik požadavků na ověření nasazení a ověřte, že předává základní testy.
+Až budete mít gramatiku a index, můžete službu nasadit do cloudové služby Azure. Informace o vytvoření nové cloudové služby Azure najdete v článku [Jak vytvořit a nasadit cloudovou službu](../../../articles/cloud-services/cloud-services-how-to-create-deploy-portal.md). Teď nezadávejte balíček pro nasazení.  
 
-[Swap –](../../../articles/cloud-services/cloud-services-nodejs-stage-application.md) obsah pracovní pozici s produkční slot tak, aby za provozu je nyní přenášená na nově nasazené služby. Při nasazování aktualizovanou verzi služby s nová data, můžete tento proces opakovat. Jako u všech jiných služeb cloudu Azure, můžete volitelně použít portál Azure ke konfiguraci [automatické škálování](../../../articles/cloud-services/cloud-services-how-to-scale-portal.md).
+Po vytvoření cloudové služby můžete pomocí příkazu [`kes.exe deploy_service`](CommandLine.md#deploy_service-command) službu nasadit. Cloudová služba Azure má dva sloty nasazení: přípravný a produkční. Službu, která bude přijímat živý uživatelský provoz, byste měli nejdříve nasadit do přípravného slotu. Počkejte, až se služba spustí a inicializuje. Pak můžete poslat několik požadavků, abyste ověřili nasazení a zkontrolovali, jestli úspěšně projde základními testy.
 
-V tomto příkladu je nasadit *Academic* index pro přípravný slot stávající cloudovou službu s *< vm_size >* virtuálních počítačů. Použijte následující příkaz:
+[Prohoďte](../../../articles/cloud-services/cloud-services-nodejs-stage-application.md) obsahy přípravného slotu a produkčního slotu, aby byl živý provoz odteď směrovaný na nově nasazenou službu. Když nasadíte aktualizovanou verzi služby s novými daty, můžete tento proces zopakovat. Stejně jako u všech dalších cloudových služeb Azure můžete pomocí portálu Azure Portal nakonfigurovat [automatické škálování](../../../articles/cloud-services/cloud-services-how-to-scale-portal.md).
+
+V tomto příkladu nasadíte index *Academic* do přípravného slotu existující cloudové služby s virtuálními počítači o velikosti *<vm_size>*. Použijte následující příkaz:
 
 `kes.exe deploy_service http://<account>.blob.core.windows.net/<container>/Academic.grammar http://<account>.blob.core.windows.net/<container>/Academic.index <serviceName> <vm_size> --slot Staging`
 
-Seznam dostupných velikostí virtuálních počítačů najdete v tématu [velikosti virtuálních počítačů](../../../articles/virtual-machines/virtual-machines-windows-sizes.md).
+Seznam dostupných velikostí virtuálních počítačů najdete v článku [Velikosti virtuálních počítačů](../../../articles/virtual-machines/virtual-machines-windows-sizes.md).
 
-Poté, co nasadíte službu, můžete volat různé [webovým rozhraním API](WebAPI.md) k testování přirozené Interpretace jazyka, dokončení dotazu, strukturovaných dotazů zkušební a výpočetní histogram.  
+Po nasazení služby můžete volat různá [webová rozhraní API](WebAPI.md) a testovat interpretaci přirozeného jazyka, kompletaci dotazu, vyhodnocení strukturovaného dotazu a výpočet histogramu.  
 
-<a name="testing-service"></a>
 ## <a name="test-the-service"></a>Testování služby
-Ladění za provozu služby, přejděte na hostitelském počítači z webového prohlížeče. Pro místní službu nasadit prostřednictvím [host_service](#hosting-service), navštivte `http://localhost:<port>/`.  Azure cloud služby nasazené prostřednictvím [deploy_service](#deploying-service), navštivte `http://<serviceName>.cloudapp.net/`.
 
-Tato stránka obsahuje odkaz na informace o základní statistické údaje volání rozhraní API, jakož i gramatika a index hostovanou na tuto službu. Tato stránka také obsahuje rozhraní interaktivní vyhledávání, která demonstruje použití webových rozhraní API. Zadejte do vyhledávacího pole zobrazíte výsledky dotazů [interpretovat](interpretMethod.md), [vyhodnotit](evaluateMethod.md), a [calchistogram](calchistogramMethod.md) volání rozhraní API. Podkladovém zdroji HTML části této stránky slouží taky jako příklad toho, jak integrovat webové rozhraní API do aplikace, k vytvoření prostředí bohatý a interaktivní vyhledávání.
+Když chcete ladit živou službu, přejděte ve webovém prohlížeči na hostitelský počítač. Přístup k místní službě nasazené prostřednictvím [host_service](#hosting-service) získáte, když navštívíte `http://localhost:<port>/`.  Přístup ke cloudové službě Azure nasazené prostřednictvím [deploy_service](#deploying-service) získáte, když navštívíte `http://<serviceName>.cloudapp.net/`.
+
+Tato stránka obsahuje odkaz na informace o základní statistice volání rozhraní API a také gramatiku a index, které jsou hostované u této služby. Tato stránka obsahuje také rozhraní pro interaktivní hledání, které ukazuje použití webových rozhraní API. Do vyhledávacího pole zadejte dotazy, aby se zobrazily výsledky volání metod rozhraní API [interpret](interpretMethod.md), [evaluate](evaluateMethod.md) a [calchistogram](calchistogramMethod.md). Podkladový zdroj HTML této stránky také slouží jako příklad, jak webová rozhraní API integrovat do aplikace a vytvořit bohaté prostředí pro interaktivní hledání.
 
 

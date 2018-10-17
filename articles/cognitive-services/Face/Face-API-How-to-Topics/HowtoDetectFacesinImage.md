@@ -1,64 +1,65 @@
 ---
-title: Detekovat tyto řezy v bitové kopie s rozhraním API vzhled | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: Použijte rozhraní API řez ve kognitivní Services ke zjištění řezy do bitových kopií.
+title: 'Příklad: Rozpoznávání tváří v obrázcích – rozhraní API pro rozpoznávání tváře'
+titleSuffix: Azure Cognitive Services
+description: Rozpoznejte tváře v obrázcích pomocí rozhraní API pro rozpoznávání tváře.
 services: cognitive-services
 author: SteveMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
-ms.topic: article
+ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 57cd0915450428399fd680638aa4fae2cdbe17c9
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: a4c74ff70a4426abf97562bf997479a91afbf17a
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342480"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124044"
 ---
-# <a name="how-to-detect-faces-in-image"></a>Jak zjistit, kterým čelí v bitové kopii
+# <a name="example-how-to-detect-faces-in-image"></a>Příklad: Jak rozpoznat tváře v obrázku
 
-Tato příručka popisuje, jak ke zjištění řezy z bitové kopie, s atributy vzhled jako pohlaví, stáří nebo pozice extrahovat. Ukázky jsou napsané v C# pomocí klientské knihovny vzhled rozhraní API. 
+V této příručce vám ukážeme, jak v obrázku rozpoznat tváře pomocí extrahovaných atributů tváří, jako jsou pohlaví, věk a pozice hlavy. Ukázky jsou napsané v jazyce C# pomocí klientské knihovny rozhraní API pro rozpoznávání tváře. 
 
-## <a name="concepts"></a> Koncepty
+## <a name="concepts"></a>Koncepty
 
-Pokud nejste obeznámeni s jakoukoli následující koncepty v této příručce, získáte informace definice v našem [Glosář](../Glossary.md) kdykoli: 
+Pokud nejste obeznámeni s následujícími koncepty v této příručce, můžete se kdykoli podívat na definice v našem [Glosáři](../Glossary.md): 
 
-- Detekce tváře
-- Vzhled zajímavá
-- Představovat HEAD
-- Vzhled atributy
+- Rozpoznávání tváře
+- Orientační body tváře
+- Pozice hlavy
+- Atributy tváře
 
-## <a name="preparation"></a> Příprava
+## <a name="preparation"></a>Příprava
 
-V této ukázce si předvedeme následující funkce: 
+V tomto příkladu ukážeme následující funkce: 
 
-- Zjišťování řezy z bitové kopie a označením pomocí obdélníková rámcovacích
-- Analýza umístění žáků, nos nebo úst a pak označením v bitové kopii
-- Analýza head pozice, pohlaví a stáří písmo
+- Rozpoznání tváří v obrázku a jejich vyznačení pomocí obdélníkových rámců
+- Analýza umístění zorniček, nosu a úst a jejich vyznačení v obrázku
+- Analýza pozice hlavy, pohlaví a věku tváře
 
-Chcete-li provést tyto funkce, je nutné připravit bitovou kopii s nejméně jeden řez zrušte. 
+Aby bylo možné tyto funkce provést, je potřeba připravit obrázek s alespoň jednou zřetelnou tváří. 
 
-## <a name="step1"></a> Krok 1: Autorizovat volání rozhraní API
+## <a name="step-1-authorize-the-api-call"></a>1. krok: Autorizace volání rozhraní API
 
-Každé volání rozhraní API vzhled vyžaduje klíč předplatného. Tento klíč musí být buď předána parametr řetězce dotazu nebo zadaným v hlavičce žádosti. Předat klíč předplatného prostřednictvím řetězec dotazu, naleznete na adrese URL žádosti pro [čelí – zjišťovat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) jako příklad:
+Ke každému volání rozhraní API pro rozpoznávání tváře potřebujete klíč předplatného (subscription key). Klíč je potřeba předat jako řetězcový parametr dotazu nebo ho uvést v hlavičce žádosti. Pokud chcete klíč předplatného předat pomocí řetězce dotazu, použijte jako příklad adresu URL žádosti pro [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236):
 
 ```
 https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes]
 &subscription-key=<Subscription Key>
 ```
 
-Jako alternativu, klíč předplatného můžete také uvést v hlavičce požadavku HTTP: **ocp-apim-subscription-key: &lt;klíč předplatného&gt;**  při použití klientské knihovny, je předaná klíč předplatného pomocí konstruktoru třídy FaceServiceClient. Příklad:
+Klíč předplatného může být případně také uvedený v hlavičce žádosti HTTP: **ocp-apim-subscription-key: &lt;Subscription Key&gt;**. Při použití klientské knihovny se klíč předává prostřednictvím konstruktoru třídy FaceServiceClient. Příklad:
 ```CSharp
 faceServiceClient = new FaceServiceClient("<Subscription Key>");
 ```
 
-## <a name="step2"></a> Krok 2: Odešlete bitovou kopii do této služby a spusťte řez detekce
+## <a name="step-2-upload-an-image-to-the-service-and-execute-face-detection"></a>2. krok: Odeslání obrázku službě a spuštění rozpoznávání tváře
 
-Nejzákladnější způsob k provedení zjišťování řez je tím, že nahrajete image přímo. K tomu je potřeba odesílání "POST" požadavku k typu obsahu application/octet-stream s data načtená z ve formátu JPEG. Maximální velikost bitové kopie je 4 MB volného místa.
+Základním způsobem provádění rozpoznávání tváře je přímé odeslání obrázku. Dělá se to odesláním žádosti POST s typem obsahu aplikace/oktet-stream, s daty vyčtenými z obrázku JPEG. Maximální velikost obrázku jsou 4 MB.
 
-Pomocí klientské knihovny, detekce vzhled prostřednictvím odesílání provádí předáním do datového proudu objektu. Viz následující příklad:
+Při použití klientské knihovny se rozpoznávání tváře prostřednictvím odeslání dělá předáním objektu Stream. Viz následující příklad:
+
 ```CSharp
 using (Stream s = File.OpenRead(@"D:\MyPictures\image1.jpg"))
 {
@@ -72,9 +73,10 @@ using (Stream s = File.OpenRead(@"D:\MyPictures\image1.jpg"))
 }
 ```
 
-Všimněte si, že metodě DetectAsync FaceServiceClient je asynchronní. Volání metody by měl být označen jako asynchronní také, aby bylo možné použít v klauzuli await.
-Pokud bitové kopie již je na webu a s adresou URL, detekce vzhled lze provést také zadáním adresy URL. V tomto příkladu bude textu žádosti řetězec formátu JSON, který obsahuje adresu URL.
-Pomocí klientské knihovny, detekce vzhled prostřednictvím adresy URL lze provést snadno pomocí jiné přetížení metody DetectAsync.
+Všimněte si, že metoda DetectAsync třídy FaceServiceClient je asynchronní. Kvůli použití klauzule await musí být volající metoda také označena jako asynchronní.
+Pokud je obrázek už na webu a má adresu URL, dá se rozpoznávání tváře provést také poskytnutím adresy URL. V tomto příkladu bude textem žádosti řetězec JSON obsahující adresu URL.
+Při použití klientské knihovny se rozpoznávání tváře prostřednictvím adresy URL dá snadno provést dalším přetížením metody DetectAsync.
+
 ```CSharp
 string imageUrl = "http://news.microsoft.com/ceo/assets/photos/06_web.jpg";
 var faces = await faceServiceClient.DetectAsync(imageUrl, true, true);
@@ -86,17 +88,18 @@ foreach (var face in faces)
 }
 ``` 
 
-Vlastnost FaceRectangle, je vrácen s zjištěné řezy, je v podstatě umístění na písmo v pixelech. Obvykle obsahuje obdélníku očí, obočí, nos a úst – začátek head, uší a chin nejsou zahrnuty. Pokud oříznete dokončení head nebo na výšku střední snímek (fotografií ID typu bitová kopie), můžete chtít rozbalte oblast obdélníková vzhled rámečku, protože oblasti písmo, může být příliš malá pro některé aplikace. Přesněji řečeno, vyhledejte řez pomocí vzhled zajímavá (hledání vzhled funkcí nebo čelí směr mechanismy) popsané v další části bude prokázat být užitečné.
+Vlastnost FaceRectangle, která se vrátí s rozpoznanými tvářemi, je v podstatě tvořená umístěními na tváři v pixelech. Tento obdélník obvykle obsahuje oči, obočí, nos a ústa – vršek hlavy, uši a brada nejsou zahrnuté. Pokud oříznete celkový portrét hlavy nebo portrét do pasu (typ obrázku pro fotografickou identifikaci), může být potřeba rozšířit oblast obdélníkového rámce tváře, protože oblast tváře může být pro některé aplikace příliš malá. K přesnějšímu vyhledání tváře může být užitečné použít orientační body tváře (mechanismy vyhledání rysů tváře nebo směru tváře) popisované v další části.
 
-## <a name="step3"></a> Krok 3: Informace o používání zajímavá vzhled
+## <a name="step-3-understanding-and-using-face-landmarks"></a>3. krok: Vysvětlení a použití orientačních bodů tváře
 
-Vzhled zajímavá jsou řadu podrobné bodů na řez; obvykle body součástí vzhled jako žáků, canthus nebo nos. Vzhled zajímavá jsou volitelné atributy, které mohou být analyzovány během zjišťování řez. Při volání metody můžete buď průchodu 'true' jako logická hodnota parametru dotazu returnFaceLandmarks [čelí – zjišťovat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), nebo použijte parametr volitelný returnFaceLandmarks pro třídu FaceServiceClient metoda DetectAsync v pořadí Zahrnout zajímavá vzhled výsledků zjišťování.
+Orientační body tváře jsou řady podrobných bodů na obličeji – obvykle body částí obličeje, jako jsou zorničky, oční koutky a nos. Orientační body tváře jsou volitelné atributy, které můžou být analyzované během rozpoznávání tváře. Abyste zahrnuli orientační body tváře do výsledků rozpoznávání tváře, můžete buď předat logickou hodnotu „true“ do parametru dotazu returnFaceLandmarks při volání [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), nebo použít volitelný parametr returnFaceLandmarks pro metodu DetectAsync třídy FaceServiceClient.
 
-Ve výchozím nastavení jsou 27 předdefinované významné body. Následující obrázek ukazuje způsob, jakým jsou definovány všechny body 27:
+Standardně existuje 27 předdefinovaných orientačních bodů. Následující obrázek ukazuje, jak je všech 27 bodů definovaných:
 
-![HowToDetectFace](../Images/landmarks.1.jpg)
+![Jak se rozpoznává tvář](../Images/landmarks.1.jpg)
 
-Body vrátil jsou v jednotkách pixelů, stejně jako obdélníková vzhled rámečku. Takže je jednodušší označit konkrétní bodů zájmu v bitové kopii. Následující kód ukazuje, načítání umístění nos a žáci:
+Vrácené body jsou v jednotkách pixelů, podobně jako obdélníkový rámec tváře. Jeho vytvořením se proto usnadní vyznačení konkrétních bodů zájmu v obrázku. Následující kód ukazuje získání umístění nosu a zorniček:
+
 ```CSharp
 var faces = await faceServiceClient.DetectAsync(imageUrl, returnFaceLandmarks:true);
  
@@ -116,7 +119,7 @@ foreach (var face in faces)
 }
 ``` 
 
-Kromě označení funkce vzhled obrázku, vzhled zajímavá lze také přesně vypočítat směr písmo. Například můžeme můžete definovat směr tučné vektor z centra úst k centru očí. Následující kód je podrobně toto:
+Kromě vyznačení rysů tváře v obrázku můžou orientační body tváře sloužit také k přesnému výpočtu směru tváře. Směr tváře můžeme například definovat jako vektor ze středu úst do středu očí. Podrobněji to vysvětluje následující kód:
 
 ```CSharp
 var landmarks = face.FaceLandmarks;
@@ -140,21 +143,22 @@ Vector faceDirection = new Vector(
     centerOfTwoEyes.Y - centerOfMouth.Y);
 ``` 
 
-Musíte znát směr, který je písmo v, můžete otočit obdélníková vzhled rámečku pro zarovnání s písmo. Je zřejmé, že pomocí vzhled zajímavá může poskytovat další informace a nástroje.
+Když znáte směr tváře, můžete natočit obdélníkový rámec tváře tak, aby odpovídal směru tváře. Je zřejmé, že orientační body tváře můžou poskytnout více podrobností a užitku.
 
-## <a name="step4"></a> Krok 4: Použití dalších atributů vzhled
+## <a name="step-4-using-other-face-attributes"></a>4. krok: Použití dalších atributů tváře
 
-Kromě zajímavá řez, řez – můžete zjistit rozhraní API také analyzovat několik atributů na řez. Tyto atributy patří:
+Rozhraní API pro rozpoznávání tváře může kromě orientačních bodů tváře analyzovat také několik dalších atributů tváře. K těmto atributům patří:
 
 - Věk
 - Pohlaví
-- Intenzita smajlíka
-- Obličeje kříž
-- 3D head pozice
+- Intenzita úsměvu
+- Vousy
+- 3D pozice hlavy
 
-Tyto atributy jsou předpovědět pomocí statistické algoritmů a nemusí být vždy přesné 100 %. Jsou to ale stále užitečné, pokud chcete klasifikovat řezy podle těchto atributů. Další informace o jednotlivých atributů naleznete [Glosář](../Glossary.md).
+Tyto atributy se předpovídají pomocí statistických algoritmů a nemusí být vždy 100% přesné. Přesto můžou být užitečné, když chcete s jejich pomocí klasifikovat tváře. Další informace o těchto jednotlivých atributech najdete v [Glosáři](../Glossary.md).
 
-Dole je jednoduchý příklad extrahování vzhled atributy během zjišťování řez:
+Níže je příklad extrakce atributů tváře během rozpoznávání tváře:
+
 ```CSharp
 var requiredFaceAttributes = new FaceAttributeType[] {
                 FaceAttributeType.Age,
@@ -180,12 +184,13 @@ foreach (var face in faces)
     var glasses = attributes.Glasses;
 }
 ``` 
-## <a name="summary"></a> Souhrn
 
-V této příručce jste se naučili funkce [čelí – zjišťovat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) rozhraní API, jak může zjistit řezy pro místní nahrán obrázky nebo adresy URL bitové kopie na webu; jak může zjistit řezy vrácením Obdélníkový řez rámce; a jak můžete také analyzovat čelí zajímavá, 3D head představuje a ostatní vzhled atributy.
+## <a name="summary"></a>Shrnutí
 
-Další informace o rozhraní API. Podrobnosti naleznete v příručce referenční dokumentace rozhraní API pro [čelí – zjistit](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+V této příručce jste se seznámili s funkcemi rozhraní API [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) a s tím, jak toto rozhraní může rozpoznat tváře u místně nahraných obrázků nebo u obrázků s adresami URL na webu, jak může rozpoznat tváře vrácením obdélníkových rámců tváří a jak může analyzovat orientační body tváře, 3D pozice hlavy a další atributy tváře.
 
-## <a name="related"></a> Související témata
+Další informace o podrobnostech rozhraní API najdete v referenční příručce k [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
-[Jak identifikovat tyto řezy v bitové kopii](HowtoIdentifyFacesinImage.md)
+## <a name="related-topics"></a>Související témata
+
+[Jak identifikovat tváře v obrázku](HowtoIdentifyFacesinImage.md)

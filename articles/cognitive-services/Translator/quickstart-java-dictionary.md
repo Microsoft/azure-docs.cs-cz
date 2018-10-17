@@ -1,21 +1,21 @@
 ---
-title: Translator Text – vyhledání alternativních překladů s Javou | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: V tomto rychlém startu vyhledáte alternativní překlady a příklady termínů v kontextu pomocí služby Translator Text API s Javou ve službách Cognitive Services.
+title: 'Rychlý start: Vyhledání alternativních překladů – Translator Text, Java'
+titleSuffix: Azure Cognitive Services
+description: V tomto rychlém startu vyhledáte alternativní překlady a příklady termínů v kontextu pomocí rozhraní Translator Text API s Javou.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: nolachar
-ms.openlocfilehash: 0abb9c1a39b8183730bacde285eff05607754191
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c0e7fc3d51772df40bd5da7c762c15c40ad5744f
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43769062"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127070"
 ---
 # <a name="quickstart-find-alternate-translations-and-usage-with-java"></a>Rychlý start: Vyhledání alternativních překladů a použití s Javou
 

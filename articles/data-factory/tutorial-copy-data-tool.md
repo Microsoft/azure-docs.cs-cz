@@ -1,5 +1,5 @@
 ---
-title: Kopírování dat pomocí nástroje pro kopírování dat Azure | Dokumentace Microsoftu
+title: Kopírování dat pomocí nástroje pro kopírování dat Azure | Microsoft Docs
 description: Vytvořte datovou továrnu Azure a pak pomocí nástroje pro kopírování dat zkopírujte data z úložiště objektů blob v Azure do databáze SQL.
 services: data-factory
 documentationcenter: ''
@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
-ms.date: 06/21/2018
+ms.date: 09/11/2018
 ms.author: jingwang
-ms.openlocfilehash: 1be4769a8a07ac5d4a968ed5aa15ed2e0a2b6db2
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: c1f94c04db69ad44203ef1ada1c3b9fa3df2d779
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43086822"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718080"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Kopírování dat z úložiště objektů blob v Azure do databáze SQL pomocí nástroje pro kopírování dat
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -72,13 +72,7 @@ Provedením těchto kroků si připravte úložiště objektů blob a databázi 
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-1. Povolte službám Azure přístup k SQL serveru. Ověřte, že je pro váš server, na kterém běží SQL Server, povolené nastavení **Povolit přístup ke službám Azure**. Toto nastavení umožní službě Data Factory zapisovat data do vaší instance serveru SQL. Toto nastavení můžete zkontrolovat a zapnout podle následujících kroků:
-
-    a. Na levé straně vyberte **Další služby** a pak vyberte **Servery SQL**.
-
-    b. Vyberte svůj server a pak vyberte **NASTAVENÍ** > **Brána firewall**.
-
-    c. Na stránce **Nastavení brány firewall** nastavte možnost **Povolit přístup ke službám Azure** na **ZAPNUTO**.
+2. Povolte službám Azure přístup k SQL Serveru. Ověřte, že je pro váš server, na kterém běží SQL Database, povolené nastavení **Povolit přístup ke službám Azure**. Toto nastavení umožní službě Data Factory zapisovat data do vaší instance databáze. Pokud chcete ověřit a zapnout toto nastavení, přejděte na Azure SQL Server > **Zabezpečení** > **Brány firewall a virtuální sítě** > nastavte možnost **Povolit přístup ke službám Azure** na **ZAPNUTO**.
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 

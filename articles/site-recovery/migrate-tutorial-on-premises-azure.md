@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/16/2018
+ms.date: 09/12/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: bc04483c35162c0b461fd03c63aaa894b1bc199a
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: bd41244192efa1333bc90bec8c00f38aaaa7f612
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070673"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714985"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrace místních počítačů do Azure
 
@@ -40,10 +40,7 @@ Než začnete, doporučujeme zkontrolovat architekturu [VMware](vmware-azure-arc
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Zařízení exportovaná paravirtualizovanými ovladači se nepodporují.
- 
-> [!WARNING]
-> Virtuální počítače je možné migrovat na další virtualizační platformy (jiné než VMware a Hyper-V), jako je XenServer, a to tak, že s nimi budete zacházet jako s fyzickými servery. Tento přístup ale Microsoft neotestoval a neověřil, a proto může a nemusí fungovat. Například virtuální počítače spuštěné na platformě XenServer nemusejí v Azure běžet, pokud se před zahájením migrace z těchto virtuálních počítačů neodinstalovaly nástroje XenServer a paravirtualizované úložiště a síťové ovladače.
+Zařízení exportovaná paravirtualizovanými ovladači se nepodporují.
 
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
@@ -124,10 +121,43 @@ Spusťte převzetí služeb při selhání pro počítače, které chcete migrov
 
 V některých scénářích vyžaduje převzetí služeb při selhání další zpracování, které trvá asi osm až deset minut. Možná si všimnete delšího trvání testovacího převzetí služeb při selhání u fyzických serverů, počítačů VMware s Linuxem, virtuálních počítačů VMware, které nemají povolenou službu DHCP, a virtuálních počítačů VMware, které nemají následující ovladače spuštění: storvsc, vmbus, storflt, intelide, atapi.
 
+## <a name="after-migration"></a>Po migraci
+
+Po migraci počítačů do Azure musíte provést celou řadu kroků.
+
+Některé kroky se dají automatizovat jako součást migračního procesu pomocí integrovaných automatizačních skriptů v [plánech obnovení]( https://docs.microsoft.com/azure/site-recovery/site-recovery-runbook-automation).   
+
+
+### <a name="post-migration-steps-in-azure"></a>Kroky po migraci v Azure
+
+- Proveďte všechna vylepšení aplikace po migraci, například aktualizujte databázové připojovací řetězce a nakonfigurujte webové servery. 
+- U migrované aplikace, která teď běží v Azure, proveďte finální akceptační testování aplikace a migrace.
+- [Agent virtuálního počítače Azure](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) spravuje interakci virtuálního počítače s kontrolerem prostředků infrastruktury Azure. Agent se vyžaduje u některých služeb Azure, jako jsou Azure Backup, Site Recovery a Azure Security.
+    - Pokud migrujete počítače VMware a fyzické servery, instalační program služby mobility nainstaluje dostupného agenta virtuálního počítače Azure na počítače s Windows. Na linuxových virtuálních počítačích doporučujeme nainstalovat agenta po převzetí služeb při selhání. a
+    - Pokud migrujete virtuální počítače Azure do sekundární oblasti, musí být agent virtuálního počítače Azure zřízen na virtuálním počítači ještě před migrací.
+    - Pokud migrujete virtuální počítače Hyper-V do Azure, nainstalujte agenta virtuálního počítače Azure na virtuální počítač Azure po migraci.
+- Ručně odeberte všechny agenty nebo poskytovatele služby Site Recovery z virtuálního počítače. Pokud migrujete virtuální počítače VMware nebo fyzické servery, [odinstalujte službu mobility][vmware-azure-install-mobility-service.md#uninstall-mobility-service-on-a-windows-server-computer] z virtuálního počítače Azure.
+- Pro zvýšení odolnosti:
+    - Zálohujte virtuální počítače Azure pomocí služby Azure Backup, abyste měli data zabezpečená. [Další informace]( https://docs.microsoft.com/azure/backup/quick-backup-vm-portal).
+    - Replikujte virtuální počítače Azure do sekundární oblasti pomocí služby Site Recovery, aby úlohy mohly neustále běžet a byly dostupné. [Další informace](azure-to-azure-quickstart.md).
+- Pro zvýšení zabezpečení:
+    - Uzamkněte a omezte přístup příchozího provozu pomocí [správy za běhu]( https://docs.microsoft.com/azure/security-center/security-center-just-in-time) ve službě Azure Security Center.
+    - Omezte síťový provoz na koncové body správy pomocí [skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/security-overview).
+    - Nasaďte službu [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview), která vám pomůže zabezpečit disky a zajistit bezpečnost dat před krádeží a neoprávněným přístupem.
+    - Přečtěte si další informace o [zabezpečení prostředků IaaS]( https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/ ) a navštivte [Azure Security Center](https://azure.microsoft.com/services/security-center/ ).
+- Pro monitorování a správu:
+    - Zvažte nasazení služby [Azure Cost Management](https://docs.microsoft.com/azure/cost-management/overview), která bude monitorovat využití prostředků a útratu.
+
+### <a name="post-migration-steps-on-premises"></a>Místní kroky po migraci
+
+- Přesuňte provoz aplikace do aplikace, která běží na instanci migrovaného virtuálního počítače Azure.
+- Odeberte místní virtuální počítače z místního inventáře virtuálních počítačů.
+- Odeberte místní virtuální počítače ze záloh.
+- Aktualizujte veškerou interní dokumentaci tak, aby obsahovala nová umístění a IP adresy virtuálních počítačů Azure.
+
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste migrovali místní virtuální počítače na virtuální počítače Azure. Teď když máte virtuální počítače úspěšně migrované:
-- Pro migrované virtuální počítače [nastavte zotavení po havárii](azure-to-azure-replicate-after-migration.md).
-- Ke správě vašich virtuálních počítačů v Azure využijte výhod [zabezpečeného a dobře spravovaného cloudu](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/) Azure.
+V tomto kurzu jste migrovali místní virtuální počítače na virtuální počítače Azure. Nyní můžete pro virtuální počítače Azure [nastavit zotavení po havárii](azure-to-azure-replicate-after-migration.md) do sekundární oblasti Azure.
+
   

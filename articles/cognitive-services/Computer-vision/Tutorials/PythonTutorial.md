@@ -1,36 +1,37 @@
 ---
-title: Kurz vize API Python počítače | Microsoft Docs
-description: Naučte se používat rozhraní API vize počítače s Pythonem pomocí Jupyter notebooks v kognitivní služby společnosti Microsoft. Vizualizace výsledky pomocí Oblíbené knihovny.
+title: 'Kurz: Rozhraní API pro počítačové zpracování obrazu v Pythonu'
+titlesuffix: Azure Cognitive Services
+description: Přečtěte si, jak používat rozhraní API pro počítačové zpracování obrazu v Pythonu s poznámkovými bloky Jupyter. K vizualizaci výsledků můžete použít oblíbené knihovny.
 services: cognitive-services
 author: KellyDF
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: tutorial
 ms.date: 02/25/2017
 ms.author: kefre
-ms.openlocfilehash: a093c2d066e70a8daf1fe1cd33ccf794ecb196af
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 59e88ecb253bc6da803ddf34a4a02229b99e259d
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342696"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45981707"
 ---
-# <a name="computer-vision-api-python-tutorial"></a>Počítač vize API Python kurzu
+# <a name="tutorial-computer-vision-api-python"></a>Kurz: Rozhraní API pro počítačové zpracování obrazu v Pythonu
 
-Tento kurz ukazuje, jak používat rozhraní API vize počítače v Pythonu a jak vizualizovat výsledky použití některých oblíbených knihoven. Použijte Jupyter ke spuštění tohoto kurzu. Zjistěte, jak začít pracovat s interaktivní poznámkové bloky Jupyter, najdete v tématu: [Jupyter Documementation](http://jupyter.readthedocs.io/en/latest/index.html). 
+V tomto kurzu se dozvíte, jak používat rozhraní API pro počítačové zpracování obrazu v Pythonu a jak používat k vizualizaci výsledků některé oblíbené knihovny. Ke spuštění tohoto kurzu použijte Jupyter. Informace o tom, jak začít používat interaktivní poznámkové bloky Jupyter, najdete v [dokumentaci k Jupyteru](http://jupyter.readthedocs.io/en/latest/index.html). 
 
-### <a name="opening-the-tutorial-notebook-in-jupyter"></a>Otevření kurzu poznámkového bloku v Jupyter 
+### <a name="opening-the-tutorial-notebook-in-jupyter"></a>Otevření poznámkového bloku s kurzem v Jupyteru 
 
-1. Přejděte na [kurz poznámkového bloku v Githubu](https://github.com/Microsoft/Cognitive-Vision-Python). 
-2. Kliknutím na zelené tlačítko klonovat nebo stáhnout kurz. 
-3. Otevřete příkazový řádek a přejděte do složky _Cognitive vize Python master\Jupyter Poznámkový blok_. 
-4. Spusťte příkaz **Poznámkový blok jupyter** z příkazového řádku. Tato akce spustí Jupyter.
-5. V okně Jupyter klikněte na _počítače vize rozhraní API Example.ipynb_ otevřete kurz poznámkového bloku 
+1. Přejděte k [poznámkovému bloku s kurzem v GitHubu](https://github.com/Microsoft/Cognitive-Vision-Python). 
+2. Po kliknutí na zelené tlačítko můžete kurz klonovat nebo stáhnout. 
+3. Otevřete příkazový řádek a přejděte ke složce _Cognitive-Vision-Python-master\Jupyter Notebook_. 
+4. Na příkazovém řádku spusťte příkaz **jupyter notebook**. Tím spustíte Jupyter.
+5. V okně Jupyteru klikněte na _Computer Vision API Example.ipynb_. Otevře se poznámkový blok s kurzem. 
 
-### <a name="running-the-tutorial"></a>Spuštění tohoto kurzu
+### <a name="running-the-tutorial"></a>Spuštění kurzu
 
-Pokud chcete použít tento poznámkový blok, budete potřebovat klíč předplatného pro rozhraní API vize počítače. Přejděte [stránku odběru](https://azure.microsoft.com/try/cognitive-services/) k registraci. Na stránce "Přihlášení" přihlášení pomocí účtu Microsoft a bude moci přihlásit a získat volné klíče. Po dokončení procesu registrace, vložte klíč do části proměnné poznámkového bloku (uvedeny níže). Primární nebo sekundární klíč funguje. Ujistěte se, že uzavřete klíč v uvozovkách, aby řetězec.
+K použití poznámkového bloku potřebujete klíč předplatného k rozhraní API pro počítačové zpracování obrazu. Navštivte [stránku předplatného](https://azure.microsoft.com/try/cognitive-services/) a zaregistrujte se. Na přihlašovací stránce použijte svůj účet Microsoft, abyste se mohli přihlásit k odběru a získat bezplatné klíče. Jakmile dokončíte registraci, zkopírujte a vložte klíč do oddílu proměnných v poznámkovém bloku (viz níže). Funguje primární i sekundární klíč. Nezapomeňte dát klíč do uvozovek jako řetězec.
 
 ```python
 # Variables

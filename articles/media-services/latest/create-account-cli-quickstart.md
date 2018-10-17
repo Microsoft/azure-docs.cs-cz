@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: juliako
-ms.openlocfilehash: 9168a66c3afcd8dd0b05de15f5833c516ddb2250
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: abed9fd8d466b582b534b365f4be4257f4986435
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38767098"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735998"
 ---
 # <a name="quickstart-create-an-azure-media-services-account"></a>Rychlý start: Vytvoření účtu Azure Media Services
 
@@ -58,7 +58,7 @@ az group create -n <myresourcegroup> -l westus2
 
 Při vytváření účtu Media Services je nutné zadat ID prostředku účtu Azure Storage. Zadaný účet úložiště se připojí k vašemu účtu Media Services. 
 
-Ke svému účtu Media Services musíte mít přidružený jeden **primární** účet úložiště a můžete mít libovolný počet **sekundárních** účtů úložiště. Služba Media Services podporuje účty **General-purpose v2** (GPv2) nebo **General-purpose v1** (GPv1). Účty jen pro objekty blob nejsou povolené jako **primární**. Další informace o účtech úložiště najdete v článku [Možnosti účtů Azure Storage](../../storage/common/storage-account-options.md). 
+Ke svému účtu Media Services musíte mít přidružený jeden **primární** účet úložiště a libovolný počet **sekundárních** účtů úložiště. Služba Media Services podporuje **účty pro obecné účely verze 2** a **účty pro obecné účely verze 1**. Účty Blob Storage nejsou povolené jako **primární**. Další informace o účtech úložiště najdete v [přehledu účtu úložiště Azure](../../storage/common/storage-account-overview.md). 
 
 Následující příkaz vytvoří účet Storage, který se přidruží k účtu Media Services (primárnímu). V níže uvedeném skriptu nahraďte zástupný text *storageaccountforams*. Název účtu musí mít méně než 24 znaků.
 

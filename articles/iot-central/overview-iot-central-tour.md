@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 69898358026eab716c057f339d8594df43db136f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 11112e01e38f85db9f71280c53c27b130275d86f
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629367"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498262"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Prohlídka uživatelského rozhraní Azure IoT Central
 
@@ -39,7 +39,7 @@ Pomocí levé navigační nabídky můžete získat přístup k různým oblaste
 
 | Nabídka | Popis |
 | ---- | ----------- |
-| ![Levá navigační nabídka](media/overview-iot-central-tour/navigationbar.png) | <ul><li>Tlačítko **Home** (Domů) zobrazí domovskou stránku vaší aplikace. Jako tvůrce můžete tuto domovskou stránku přizpůsobit pro operátory.</li><li>Tlačítkem **Device Explorer** (Průzkumník zařízení) zobrazíte seznam šablon zařízení definovaných ve vaší aplikací a simulovaných i skutečných zařízení přidružených k jednotlivým šablonám zařízení. Jako operátor můžete tlačítko **Device Explorer** (Průzkumník zařízení) použít ke správě připojených zařízení.</li><li>Tlačítko **Device Sets** (Sady zařízení) umožňuje zobrazit a nastavit sady zařízení. Jako operátor můžete vytvořit sady zařízení představující logické kolekce zařízení specifikovaných určitým dotazem.</li><li>Tlačítko **Analytics** (Analýzy) zobrazuje analýzy odvozené z telemetrických dat pro zařízení a sady zařízení. Jako operátor můžete vedle dat zařízení vytvářet vlastní zobrazení, která vám pomůžou získat z aplikace požadované informace.</li><li>Tlačítko **Application Builder** (Tvůrce aplikací) zobrazí nástroje používané tvůrcem, třeba nástroj **Create Device Template** (Vytvořit šablonu zařízení).</li><li>Tlačítko **Administration** (Správa) zobrazí stránky správy aplikace, kde může správce spravovat nastavení aplikace, uživatele a role.</li></ul> |
+| ![Levá navigační nabídka](media/overview-iot-central-tour/navigationbar.png) | <ul><li>Tlačítko **Home** (Domů) zobrazí domovskou stránku vaší aplikace. Jako tvůrce můžete tuto domovskou stránku přizpůsobit pro operátory.</li><li>Tlačítkem **Device Explorer** (Průzkumník zařízení) zobrazíte seznam šablon zařízení definovaných ve vaší aplikací a simulovaných i skutečných zařízení přidružených k jednotlivým šablonám zařízení. Jako operátor můžete tlačítko **Device Explorer** (Průzkumník zařízení) použít ke správě připojených zařízení.</li><li>Tlačítko **Device Sets** (Sady zařízení) umožňuje zobrazit a nastavit sady zařízení. Jako operátor můžete vytvořit sady zařízení představující logické kolekce zařízení specifikovaných určitým dotazem.</li><li>Tlačítko **Analytics** (Analýzy) zobrazuje analýzy odvozené z telemetrických dat pro zařízení a sady zařízení. Jako operátor můžete vedle dat zařízení vytvářet vlastní zobrazení, která vám pomůžou získat z aplikace požadované informace.</li><li>Tlačítko **Jobs** (Úlohy) umožňuje hromadnou správu zařízení tím, že vás nechá vytvořit a spustit úlohy pro provedení aktualizací škálovaně.</li><li>Tlačítko **Application Builder** (Tvůrce aplikací) zobrazí nástroje používané tvůrcem, třeba nástroj **Create Device Template** (Vytvořit šablonu zařízení).</li><li>Tlačítko **Administration** (Správa) zobrazí stránky správy aplikace, kde může správce spravovat nastavení aplikace, uživatele a role.</li></ul> |
 
 ## <a name="search-help-and-support"></a>Hledání, nápověda a podpora
 
@@ -81,6 +81,12 @@ Stránka _Device Sets_ (Sady zařízení) obsahuje sady zařízení vytvořené 
 ![Stránka Analytics (Analýzy)](media/overview-iot-central-tour/analytics.png)
 
 Stránka analýz obsahuje grafy, které vám pomáhají pochopit chování zařízení připojených k aplikaci. Operátor pomocí této stránky monitoruje a zkoumá problémy s připojenými zařízeními. Tvůrce může určit, jaké grafy se mají na této stránce zobrazovat. Další informace najdete v článku [Vytvoření vlastních analýz pro aplikaci Azure IoT Central](howto-create-analytics.md).
+
+## <a name="jobs"></a>Úlohy
+
+![Stránka Jobs (Úlohy)](media/overview-iot-central-tour/jobs.png)
+
+Stránka úloh vám umožňuje provádět operace hromadné správy vašeho zařízení. Tvůrce tuto stránku používá k aktualizaci vlastností zařízení, nastavení a příkazů. Další informace najdete v článku o [spuštění úlohy](howto-run-a-job.md).
 
 ## <a name="application-builder"></a>Tvůrce aplikací
 

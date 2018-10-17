@@ -1,54 +1,56 @@
 ---
-title: Co je služba rozhodnutí vlastní? -Služby azure kognitivní | Microsoft Docs
-description: Tento článek přehledy Azure vlastní rozhodnutí Service rozhraní API založené na cloudu kontextové rozhodnutí, které zvýší prostředí.
+title: Co je Custom Decision Service?
+titlesuffix: Azure Cognitive Services
+description: Tento článek obsahuje přehled služby Custom Decision Service.
 services: cognitive-services
 author: alekh
-manager: slivkins
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: custom-decision-service
+ms.topic: overview
 ms.date: 05/08/2018
-ms.author: slivkins;marcozo;alekh;marossi
-ms.openlocfilehash: 774467446513dcd7ade7255d998b11f41824cafe
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
-ms.translationtype: MT
+ms.author: slivkins
+ms.openlocfilehash: 273f2965a0fcaaa729175c5232da1aba69589eec
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "35343972"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364201"
 ---
-# <a name="what-is-custom-decision-service"></a>Co je služba rozhodnutí vlastní?
+# <a name="what-is-custom-decision-service"></a>Co je Custom Decision Service?
 
-V typické webové nebo mobilních aplikací, titulní stránky odkazy na několik článků nebo jiné typy obsahu. Jako předního stránka načte, může požádat o službu vlastní rozhodnutí rank článků, které jsou zahrnuty na této stránce front. Ano, když uživatel vybere kliknutím na článek, může být druhý požadavek odeslán do služby vlastní rozhodnutí, která bude protokolovat výsledek tohoto uživatele rozhodnutí.
+Úvodní stránka typické webové nebo mobilní aplikace odkazuje na několik článků nebo jiné typy obsahu. Při načítání úvodní stránky může aplikace požádat Custom Decision Service o seřazení článků, které jsou na dané stránce. Když tedy uživatel kliknutím vybere článek, může být do Custom Decision Service odeslána druhá žádost, která bude zaznamenávat výsledky rozhodnutí uživatele.
 
-Vlastní rozhodnutí služba je snadno použitelný, jak to vyžaduje pouze informačního kanálu RSS pro svůj obsah a zadání několika řádků JavaScript přidávaného do vaší aplikace.
+Custom Decision Service se snadno používá, protože vyžaduje pouze informační kanál RSS pro váš obsah a přidání několika řádků kódu JavaScriptu do vaší aplikace.
 
-Vlastní služba rozhodnutí převede obsah na funkce pro machine learning. Systém používá tyto funkce zjistit svůj obsah z hlediska text, obrázky, videa a celkovou představu. Používá několik dalších [kognitivní služby Microsoft](https://www.microsoft.com/cognitive-services), například [propojení Entity](../entitylinking/home.md), [Analýza textu](../text-analytics/overview.md), [rozpoznávání emocí úrovně](../emotion/home.md)a [Počítače vize](../computer-vision/home.md).
+Custom Decision Service převede váš obsah na funkce pro strojové učení. Systém používá tyto funkce k pochopení vašeho obsahu z hlediska jeho textu, obrázků, videí a celkového mínění. Využívá několik dalších služeb [Microsoft Cognitive Services](https://www.microsoft.com/cognitive-services), jako například [spojování entit](../entitylinking/home.md), [analýzu textu](../text-analytics/overview.md), [rozpoznávání emocí](../emotion/home.md) a [počítačové zpracování obrazu](../computer-vision/home.md).
 
-Některé běžné-případy použití pro službu rozhodnutí vlastní patří:
+Mezi případy běžného použití Custom Decision Service patří:
 
-* Přizpůsobení články na webu zprávy
-* Přizpůsobení obsahu videa na portálu média
-* Optimalizace umísťováním ad nebo webové stránky, které by je odkazovalo ad
-* Hodnocení doporučuje položky na nákupní webu.
+* Přizpůsobení článků na webu zpráv
+* Přizpůsobení obsahu videa na portálu médií
+* Optimalizace umístění reklam nebo webových stránek, na které reklamy odkazují
+* Řazení doporučených položek na nákupním webu
 
-Vlastní rozhodnutí služba je aktuálně v *bezplatnou verzi public preview*. Je můžete přizpůsobit seznam články na webu nebo aplikaci. Extrakce funkce funguje nejlépe ve anglických obsahu. [Omezenou funkčnost](../text-analytics/overview.md) se nabízí pro jiné jazyky, jako je španělština, francouzština, němčina, portugalština a japonštině. Tato dokumentace bude změněn, jakmile k dispozici nové funkce.
+Custom Decision Service je nyní ve *verzi Public Preview zdarma*. Umožní přizpůsobení seznamu článků na webu nebo v aplikaci. Nejvhodnější je extrahovat funkce z obsahu v angličtině. [Omezenou funkčnost](../text-analytics/overview.md) nabízíme i pro jiné jazyky, jako je španělština, francouzština, němčina, portugalština a japonština. Tato dokumentace bude při zpřístupnění nových funkcí revidována.
 
-Nejde použít vlastní službu rozhodnutí v aplikacích, které nejsou v doméně obsahu individuální nastavení. Tyto aplikace může být vhodné pro vlastní verzi preview. [Kontaktujte nás](https://azure.microsoft.com/overview/sales-number/) Další informace.
+Custom Decision Service můžete použít v aplikacích, které nejsou v doméně přizpůsobení obsahu. Tyto aplikace můžou být vhodné pro vlastní náhled. [Kontaktujte nás](https://azure.microsoft.com/overview/sales-number/) a dozvíte se víc.
 
 ## <a name="api-usage-modes"></a>Režimy využití rozhraní API
 
-Vlastní rozhodnutí služba je použít pro webové stránky a mobilní aplikace. Rozhraní API je možné volat z prohlížeče nebo aplikace. Využití rozhraní API se podobá na obou, ale některé podrobnosti se liší.
+Custom Decision Service můžete použít pro webové stránky i mobilní aplikace. Rozhraní API mohou být volána z prohlížeče nebo aplikace. Použití rozhraní API je podobné v obou, ale některé podrobnosti se liší.
 
-## <a name="glossary-of-terms"></a>Slovník pojmů
+## <a name="glossary-of-terms"></a>Glosář termínů
 
-V této dokumentaci dojít k často několik podmínek:
+V této dokumentaci se často vyskytuje několik termínů:
 
-* **Akce set**: sadu obsahu položky služby vlastní rozhodnutí pro pořadí. Tato sada lze zadat jako *RSS* nebo *Atom* koncový bod.
-* **Řazení**: každý požadavek pro vlastní rozhodnutí služby určuje jeden nebo více sad akce. Systém odpoví výběrem všech možností obsahu z tyto sady a vrátí je ve seřazený pořadí.
-* **Funkce zpětného volání**: Tato funkce, které zadáte, vykreslí obsah v uživatelském rozhraní. Obsah je seřazené podle pořadí řazení vrácené službou vlastního rozhodnutí.
-* **Potřebu**: míru jak uživatel odpověděl vykreslené obsah. Vlastní služba rozhodnutí měří odpověď uživatele pomocí kliknutí. Kliknutí jsou hlášeny systému pomocí vlastního kódu vložení do aplikace.
+* **Sada akcí**: Sada položek obsahu, které má Custom Decision Service řadit. Tuto sadu lze určit jako koncový bod *RSS* nebo *Atom*.
+* **Řazení**: Každý požadavek na Custom Decision Service určuje jednu nebo více sad akcí. Systém reaguje výběrem všech možností obsahu z těchto sad a vrátí je seřazené.
+* **Funkce zpětného volání**: Tato funkce, kterou specifikujete vy, vykreslí obsah v uživatelském rozhraní. Obsah je seřazený podle pořadí určeného Custom Decision Service.
+* **Odměna**: Míra, jak uživatel reagoval na vykreslený obsah. Custom Decision Service měří odpověď uživatele podle kliknutí. Kliknutí jsou nahlášená do systému pomocí vlastního kódu vloženého do vaší aplikace.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Registrace vaší aplikace](custom-decision-service-get-started-register.md) službou vlastní rozhodnutí
-* Začínáme za účelem optimalizace [webové stránky](custom-decision-service-get-started-browser.md) nebo [aplikace pro smartphone](custom-decision-service-get-started-app.md).
-* Obrátit [referenční dokumentace rozhraní API](custom-decision-service-api-reference.md) Další informace o funkci zadané.
+* [Zaregistrujte si vaši aplikaci](custom-decision-service-get-started-register.md) s Custom Decision Service.
+* Začněte optimalizovat [webovou stránku](custom-decision-service-get-started-browser.md) nebo [aplikaci pro smartphone](custom-decision-service-get-started-app.md).
+* Více informací o podporovaných funkcích se dozvíte v [referenční dokumentaci k rozhraní API](custom-decision-service-api-reference.md).

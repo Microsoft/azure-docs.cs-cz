@@ -1,21 +1,21 @@
 ---
-title: Translator Text – identifikace jazyka z textu s Pythonem | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: V tomto rychlém startu identifikujete jazyk zdrojového textu pomocí služby Translator Text API s Pythonem ve službách Cognitive Services.
+title: 'Rychlý start: Identifikace jazyka z textu – Translator Text, Python'
+titleSuffix: Azure Cognitive Services
+description: V tomto rychlém startu identifikujete jazyk zdrojového textu pomocí služby Translator Text API a Pythonu.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: nolachar
-ms.openlocfilehash: 07a16e419bfdd4d73108fcdaa12695e99fecabee
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 31fb36421dd2aef21f77b4941771e4d3db813730
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "43768989"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124996"
 ---
 # <a name="quickstart-identify-language-from-text-with-python"></a>Rychlý start: Identifikace jazyka z textu s Pythonem
 

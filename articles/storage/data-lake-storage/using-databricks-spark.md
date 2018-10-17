@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 6/27/2018
 ms.author: dineshm
-ms.openlocfilehash: 7d951a959da28187a5971ee218f2bd921d331727
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: fd9dfaa2042cae0923c919f4e76d7b59a170918e
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301794"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46466026"
 ---
 # <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>Kurz: Přístup k datům v Azure Data Lake Storage Gen2 Preview v Azure Databricks pomocí Sparku
 
@@ -22,7 +22,6 @@ V tomto kurzu se naučíte spouštět dotazy Sparku v clusteru Azure Databricks,
 > [!div class="checklist"]
 > * Vytvoření clusteru Databricks
 > * Ingestace nestrukturovaných dat do účtu úložiště
-> * Aktivace funkce Azure kvůli zpracování dat
 > * Spuštění analýzy dat v úložišti objektů blob
 
 ## <a name="prerequisites"></a>Požadavky
@@ -36,11 +35,8 @@ V tomto kurzu si ukážeme, jak využívat a dotazovat se na data o odletech aer
 
 Napřed si vytvořte nový [účet Azure Data Lake Storage Gen2](quickstart-create-account.md) a dejte mu jedinečný název. Pak přejděte k účtu úložiště, abyste mohli načíst konfigurační nastavení.
 
-> [!IMPORTANT]
-> Ve verzi Preview funguje služba Azure Functions jenom s účty Azure Data Lake Storage Gen2 vytvořenými s plochým oborem názvů.
-
 1. V části **Nastavení** klikněte na **Přístupové klíče**.
-3. Klikněte na tlačítko **Kopírovat** vedle **Key1** a zkopírujte hodnotu klíče.
+2. Klikněte na tlačítko **Kopírovat** vedle **Key1** a zkopírujte hodnotu klíče.
 
 Název účtu a klíč budete potřebovat v dalších krocích tohoto kurzu. Otevřete textový editor a poznamenejte si do něj název účtu a klíč k pozdějšímu použití.
 
@@ -74,7 +70,7 @@ V dalším kroku vytvoříte [cluster Databricks](https://docs.azuredatabricks.n
 
 ### <a name="copy-source-data-into-the-storage-account"></a>Zkopírování zdrojových dat do účtu úložiště
 
-Dalším úkolem je zkopírovat data ze souboru *.csv* do úložiště Azure nástrojem AzCopy. Otevřete okno příkazového řádku a zadejte následující příkazy. Nezapomeňte nahradit zástupné znaky `<DOWNLOAD_FILE_PATH>`, `<ACCOUNT_NAME>` a `<ACCOUNT_KEY>` odpovídajícími hodnotami, které jste si poznamenali v předchozím kroku.
+Dalším úkolem je zkopírovat data ze souboru *.csv* do úložiště Azure nástrojem AzCopy. Otevřete okno příkazového řádku a zadejte následující příkazy. Nezapomeňte nahradit zástupné znaky `<DOWNLOAD_FILE_PATH>` a `<ACCOUNT_KEY>` odpovídajícími hodnotami, které jste si poznamenali v předchozím kroku.
 
 ```bash
 set ACCOUNT_NAME=<ACCOUNT_NAME>
@@ -159,7 +155,7 @@ Pokud chcete vytvořit datové rámce zdrojů dat, spusťte následující skrip
 acDF = spark.read.format('csv').options(header='true', inferschema='true').load(accountsource + "/<YOUR_CSV_FILE_NAME>.csv")
 acDF.write.parquet(accountsource + '/parquet/airlinecodes')
 
-#read the existing parquet file for the flights database that was created via the Azure Function
+#read the existing parquet file for the flights database that was created earlier
 flightDF = spark.read.format('parquet').options(header='true', inferschema='true').load(accountsource + "/parquet/flights")
 
 #print the schema of the dataframes

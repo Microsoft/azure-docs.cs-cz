@@ -1,5 +1,5 @@
 ---
-title: Přehled služby Azure Batch pro vývojáře | Dokumentace Microsoftu
+title: Přehled služby Azure Batch pro vývojáře | Microsoft Docs
 description: Informace o funkcích služby Batch a jejích rozhraní API z hlediska vývoje.
 services: batch
 documentationcenter: .net
@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 08/22/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f1c933c9dcb3e3e2c2cb267073386d4b9c4e2022
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 8b6e543a4835410368e752e70e7e8cb6d8805c0e
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746014"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735575"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Vývoj rozsáhlých paralelních výpočetních řešení pomocí služby Batch
 
@@ -79,11 +79,13 @@ Můžete spustit několik dávkových úloh služby Batch v jednom účtu Batch 
 
 Většina řešení Batch pro ukládání souborů prostředků a výstupních souborů používá službu Azure Storage. Například úkoly služby Batch (včetně standardních úkolů, spouštěcích úkolů, úkolů přípravy úloh a úkolů uvolnění úloh) obvykle určují soubory prostředků, které jsou umístěné v účtu úložiště.
 
-Služba Batch podporuje následující [možnosti účtu](../storage/common/storage-account-options.md) Azure Storage:
+Batch podporuje následující typy účtů Azure Storage:
 
 * Účty pro obecné účely verze 2 (GPv2) 
 * Účty pro obecné účely verze 1 (GPv1)
 * Účty úložiště Blob (v současnosti podporuje fondy v konfiguraci virtuálního počítače)
+
+Další informace o účtech úložiště najdete v [přehledu účtu Azure Storage](../storage/common/storage-account-overview.md).
 
 Účet úložiště můžete ke svému účtu Batch přidružit při vytváření účtu Batch nebo později. Při výběru účtu úložiště zvažte své požadavky na náklady a výkon. Například možnosti účtu úložiště GPv2 a účtu úložiště objektů blob podporují ve srovnání s účty GPv1 vyšší [limity kapacity a škálovatelnosti](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/). (Pokud chcete požádat o navýšení limitu úložiště, kontaktujte podporu Azure.) Tyto možnosti účtu můžou zlepšit výkon řešení Batch obsahujících velký počet paralelních úloh, které provádějí čtení z nebo zápis do účtu úložiště.
 
@@ -472,7 +474,7 @@ Selhání úkolů spadá do následujících kategorií:
 Je také možné, že občasný problém způsobí, že se úkol zablokuje nebo že jeho spuštění trvá příliš dlouho. Pro úkol můžete nastavit maximální interval provádění. Pokud dojde k překročení maximálního intervalu provádění, služba Batch přeruší aplikaci úkolu.
 
 ### <a name="connecting-to-compute-nodes"></a>Připojení k výpočetním uzlům
-Další ladění a řešení potíží můžete provádět při vzdáleném přihlášení k výpočetnímu uzlu. Pro uzly Windows si můžete na portálu Azure stáhnout soubor protokolu RDP (Remote Desktop) a pro uzly Linux získat informace o připojení Secure Shell (SSH). Můžete to také provést pomocí rozhraní API služby Batch – například s [Batch .NET][net_rdpfile] nebo [Batch Python](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh).
+Další ladění a řešení potíží můžete provádět při vzdáleném přihlášení k výpočetnímu uzlu. Pro uzly Windows si můžete na portálu Azure Portal stáhnout soubor protokolu RDP (Remote Desktop) a pro uzly Linux získat informace o připojení Secure Shell (SSH). Můžete to také provést pomocí rozhraní API služby Batch – například s [Batch .NET][net_rdpfile] nebo [Batch Python](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh).
 
 > [!IMPORTANT]
 > Pokud se chcete připojit k uzlu prostřednictvím protokolu RDP nebo SSH, musíte na uzlu nejprve vytvořit uživatele. Můžete to provést takto: na webu Azure Portal [přidáte uživatelský účet do uzlu][rest_create_user] pomocí rozhraní Batch REST API a zavoláte metodu [ComputeNode.CreateComputeNodeUser][net_create_user] v Batch .NET nebo zavoláte metodu [add_user][py_add_user] v modulu Batch Python.
@@ -540,7 +542,7 @@ V situacích, kdy některé úkoly selhávají, může klientská aplikace nebo 
 [net_rdpfile]: https://msdn.microsoft.com/library/azure/Mt272127.aspx
 [vnet]: https://msdn.microsoft.com/library/azure/dn820174.aspx#bk_netconf
 
-[py_add_user]: https://docs.microsoft.com/en-us/python/azure/?view=azure-python
+[py_add_user]: https://docs.microsoft.com/python/azure/?view=azure-python
 
 [batch_rest_api]: https://msdn.microsoft.com/library/azure/Dn820158.aspx
 [rest_add_job]: https://msdn.microsoft.com/library/azure/mt282178.aspx

@@ -1,21 +1,21 @@
 ---
-title: Souhrn rychlých startů k počítačovému zpracování obrazu | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: V těchto rychlých startech analyzujete obrázek, vytvoříte miniaturu obrázku a extrahujete tištěný a ručně psaný text pomocí počítačového zpracování obrazu ve službách Cognitive Services.
+title: Souhrn rychlých startů ke službě Custom Vision
+titleSuffix: Azure Cognitive Services
+description: V těchto rychlých startech analyzujete obrázek, vytvoříte miniaturu obrázku a extrahujete tištěný a ručně psaný text pomocí rozhraní API služby Custom Vision.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 94424de3f175e82cf8490bad98f4a775761979e4
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 89502fe49f5eb4b9692d7ee4233c7c46d645b3fb
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43769330"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576880"
 ---
 # <a name="quickstart-summary"></a>Rychlý start: Souhrn
 

@@ -1,5 +1,5 @@
 ---
-title: Sestava zabezpečení Uživatelé označení příznakem rizika na portálu Azure Active Directory | Dokumentace Microsoftu
+title: Sestava zabezpečení Uživatelé označení příznakem rizika na portálu Azure Active Directory | Microsoft Docs
 description: Přečtěte si o sestavě zabezpečení Uživatelé označení příznakem rizika na portálu Azure Active Directory
 services: active-directory
 author: priyamohanram
@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 11/14/2017
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 030774716e1af4a7d6817d64ae66ded2bcaf4081
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: fde063cb593ca1f610dc35cd044fe41e34ab9202
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "41920670"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578352"
 ---
 # <a name="users-flagged-for-risk-security-report-in-the-azure-active-directory-portal"></a>Sestava zabezpečení Uživatelé označení příznakem rizika na portálu Azure Active Directory
 
@@ -29,9 +29,9 @@ Azure Active Directory detekuje podezřelé akce, které souvisejí s vašimi u�
 
 Zjištěné rizikové události se použijí k výpočtu těchto údajů:
 
-- **Riziková přihlášení** –Rizikové přihlášení je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu. Další informace najdete v tématu popisujícím [riziková přihlášení](../identity-protection/overview.md#risky-sign-ins). 
+- **Riziková přihlášení** –Rizikové přihlášení je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu. Další informace najdete v článku, který se zabývá [způsobem konfigurace zásad rizik přihlášení](../identity-protection/howto-sign-in-risk-policy.md). 
 
-- **Uživatelé označení příznakem rizika** – Rizikový uživatel je indikátorem uživatelského účtu, který mohl být ohrožený. Další informace najdete v tématu popisujícím [uživatele označené příznakem rizika](../identity-protection/overview.md#users-flagged-for-risk).  
+- **Uživatelé označení příznakem rizika** – Rizikový uživatel je indikátorem uživatelského účtu, který mohl být ohrožený. Další informace najdete v článku, který se zabývá [způsobem konfigurace zásad rizik uživatelů](../identity-protection/howto-user-risk-policy.md).  
 
 Na webu Azure Portal najdete sestavy zabezpečení v okně **Azure Active Directory** v části **Zabezpečení**.  
 
@@ -78,13 +78,13 @@ V tomto dialogovém okně máte možnost:
 
 Sestava uživatelů označených příznakem rizika v edicích Premium služby Azure Active Directory vám nabízí:
 
-- [Seznam uživatelských účtů](../identity-protection/overview.md#users-flagged-for-risk), které mohly být napadeny nebo vyzrazeny 
+- Seznam uživatelských účtů, které by mohly být ohrožené 
 
 - Agregované informace o [typech rizikových událostí](concept-risk-events.md), které byly zjištěné
 
 - Možnost stažení sestavy
 
-- Možnost konfigurace [zásad odstraňování rizik uživatelů](../identity-protection/overview.md#user-risk-security-policy)  
+- Možnost konfigurace [zásad odstraňování rizik uživatelů](../identity-protection/howto-user-risk-policy.md)  
 
 
 ![Riziková přihlášení](./media/concept-user-at-risk/71.png)
@@ -103,7 +103,7 @@ Po výběru uživatele získáte podrobné zobrazení sestavy pro tohoto uživat
 ![Riziková přihlášení](./media/concept-user-at-risk/324.png)
 
 
-Pokud chcete vyšetřit rizikovou událost, vyberte některou ze seznamu a otevře se okno **Podrobnosti** pro danou rizikovou událost. V okně **Podrobnosti** můžete zvolit [ruční zavření rizikové události](../identity-protection/overview.md#closing-risk-events-manually) nebo reaktivaci ručně zavřené rizikové události. 
+Pokud chcete vyšetřit rizikovou událost, vyberte některou ze seznamu a otevře se okno **Podrobnosti** pro danou rizikovou událost. V okně **Podrobnosti** můžete buď ručně zavřít rizikovou událost, nebo znovu aktivovat ručně zavřenou rizikovou událost. 
 
 
 ![Riziková přihlášení](./media/concept-user-at-risk/325.png)

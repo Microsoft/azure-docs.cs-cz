@@ -1,21 +1,21 @@
 ---
-title: Rychlý start k rozhraní API pro rozpoznávání tváře s PHP | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: V tomto rychlém startu budete pomocí rozhraní API pro rozpoznávání tváře s PHP rozpoznávat tváře z obrázku ve službě Cognitive Services.
+title: 'Rychlý start: Rozpoznávání tváří na obrázku – rozhraní API pro rozpoznávání tváře, PHP'
+titleSuffix: Azure Cognitive Services
+description: V tomto rychlém startu budete rozpoznávat tváře na obrázku pomocí rozhraní API pro rozpoznávání tváře s PHP.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: nolachar
-ms.openlocfilehash: 972def677a8ac0abd86bc436fc1b1373b5496df9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 976cd87ca5637f4ee9b517093b6fbb6b498c5471
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "43768910"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126951"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-php"></a>Rychlý start: Rozpoznávání tváří na obrázku pomocí PHP
 
@@ -31,10 +31,10 @@ Pomocí metody [Face - Detect](https://westcentralus.dev.cognitive.microsoft.com
 
 * Face ID: jedinečná hodnota ID používaná v několika scénářích rozhraní API pro rozpoznávání tváře
 * Obdélník tváře: umístění tváře na obrázku vlevo a nahoře a šířka a výška obličeje
-* Rysy: soustava 27 bodů obličejových rysů odkazující na důležité polohy prvků obličeje
+* Rysy: soustava 27 bodů obličejových rysů odkazující na důležité polohy součástí obličeje.
 * Atributy obličeje včetně věku, pohlaví, intenzity úsměvu, pozice hlavy a vousů.
 
-Pokud chcete spustit ukázku, postupujte následovně:
+Pokud chcete spustit ukázku, postupujte takto:
 
 1. Zkopírujte do editoru následující kód.
 1. Místo `<Subscription Key>` použijte platný klíč předplatného.

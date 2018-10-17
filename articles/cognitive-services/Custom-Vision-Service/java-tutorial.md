@@ -1,56 +1,57 @@
 ---
-title: Custom Vision Service v Javě kurz – vytvoření Azure Cognitive Services | Dokumentace Microsoftu
-description: Prozkoumejte základní aplikace v Javě, která používá vlastní rozhraní API pro zpracování obrazu ve službě Microsoft Cognitive Services. Vytvoření projektu, přidání značek, nahrávat obrázky, trénování váš projekt a předpověď pomocí výchozí koncový bod.
+title: 'Kurz: Vytvoření projektu klasifikace obrázku – Custom Vision Service, Java'
+titlesuffix: Azure Cognitive Services
+description: Vytvořte projekt, přidejte značky, nahrajte obrázky, vytrénujte svůj projekt a vytvořte předpověď pomocí výchozího koncového bodu.
 services: cognitive-services
 author: areddish
-manager: chbuehle
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: areddish
-ms.openlocfilehash: a83a2f5cac9281a4cd79c1a0cead0f2af82d73df
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
-ms.translationtype: MT
+ms.openlocfilehash: 9a7f50e0eb33016d6a2d8f28be047b327135c51f
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44305694"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367351"
 ---
-# <a name="use-custom-vision-api-to-build-an-image-classification-project-with-java"></a>Použití vlastní rozhraní API pro zpracování obrazu k sestavení projekt klasifikace obrázků s Javou
+# <a name="tutorial-build-an-image-classification-project-with-java"></a>Kurz: Vytvoření projektu klasifikace obrázku pomocí Javy
 
-Zjistěte, jak vytvořit projekt klasifikace obrázků s využitím Javy službu Custom Vision Service. Po jeho vytvoření je můžete přidat značky, nahrávání obrázků, trénování projektu, získat adresu URL koncového bodu projektu výchozí předpovědi a pomocí něho můžete testovat programově bitovou kopii. Použijte tento příklad open source jako šablonu pro vytváření vlastních aplikací s použitím vlastní rozhraní API pro zpracování obrazu.
+Zjistěte, jak vytvořit projekt klasifikace obrázků pomocí služby Custom Vision Service a Javy. Po jeho vytvoření můžete přidat značky, nahrát obrázky, vytrénovat projekt, získat adresu URL výchozího koncového bodu předpovědi projektu a použít jej k programovému testování obrázku. Tento opensourcový příklad použijte jako šablonu pro vytvoření vlastní aplikace pomocí rozhraní Custom Vision API.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- JDK 7 nebo 8 nainstalované.
-- Maven nainstalovat.
+- Nainstalovaná sada JDK 7 nebo 8
+- Nainstalovaný Maven
 
-## <a name="get-the-training-and-prediction-keys"></a>Získání klíčů trénování a predikcí
+## <a name="get-the-training-and-prediction-keys"></a>Získání tréninkového klíče a klíče předpovědi
 
-Klíče používané v tomto příkladu najdete [vizi vlastní webovou stránku](https://customvision.ai) a vyberte __ikonu ozubeného kola__ v pravém horním rohu. V __účty__ tématu, zkopírujte hodnoty z __školení klíč__ a __předpovědi klíč__ pole.
+Klíče používané v tomto příkladu získáte tak, že přejdete na [webovou stránku služby Custom Vision](https://customvision.ai) a vyberete __ikonu ozubeného kola__ v pravém horním rohu. V části __Účty__ zkopírujte hodnoty z polí pro __tréninkový klíč__ a __klíč předpovědi__.
 
-![Obrázek klíče uživatelského rozhraní](./media/python-tutorial/training-prediction-keys.png)
+![Obrázek uživatelského rozhraní klíčů](./media/python-tutorial/training-prediction-keys.png)
 
-## <a name="install-the-custom-vision-service-sdk"></a>Instalace sady SDK služby Custom Vision
+## <a name="install-the-custom-vision-service-sdk"></a>Instalace sady Custom Vision Service SDK
 
-Vlastní sada SDK pro zpracování obrazu můžete nainstalovat z centrálního úložiště maven:
-* [Školicí sada SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
-* [Predikce SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-prediction)
+Sadu Custom Vision SDK můžete nainstalovat z centrálního úložiště Mavenu:
+* [Sada SDK pro trénink](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
+* [Sada SDK pro předpověď](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-prediction)
 
 ## <a name="understand-the-code"></a>Vysvětlení kódu
 
-Úplný projekt, včetně obrázků, je k dispozici [Custom Vision Azure ukázky pro úložiště Java](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master). 
+Úplný projekt, včetně obrázků, je k dispozici v [ukázkách Azure služby Custom Vision pro úložiště Javy](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master). 
 
-Otevřít pomocí oblíbeném Java IDE `Vision/CustomVision` projektu. 
+Projekt `Vision/CustomVision` otevřete pomocí svého oblíbeného prostředí Java IDE. 
 
-Tato aplikace používá školení klíč, který jste získali dříve k vytvoření nového projektu s názvem __ukázkový projekt v jazyce Java__. Potom nahrává obrázky a natrénuje a otestuje třídění. Třídění označuje, zda je strom __Hemlock__ nebo __japonské výběru určitých položek__.
+Tato aplikace používá dříve získaný tréninkový klíč k vytvoření nového projektu s názvem __Sample Java Project__. Potom nahraje obrázky k trénování a testování klasifikátoru. Klasifikátor identifikuje, jestli je rostlina __bolehlav__ nebo __japonská třešeň__.
 
-Následující fragmenty kódu implementovat primární funkce v tomto příkladu:
+Následující fragmenty kódu implementují primární funkci tohoto příkladu:
 
-## <a name="create-a-custom-vision-service-project"></a>Vytvořte projekt služby Custom Vision Service
+## <a name="create-a-custom-vision-service-project"></a>Vytvoření projektu služby Custom Vision Service
 
 > [!IMPORTANT]
-> Nastavte `trainingApiKey` hodnotě klíče školení, který jste získali dříve.
+> Nastavte pro `trainingApiKey` hodnotu tréninkového klíče, kterou jste získali dříve.
 
 ```java
 final String trainingApiKey = "insert your training key here";
@@ -80,9 +81,9 @@ Tag cherryTag = trainer.createTag()
     .execute();
 ```
 
-## <a name="upload-images-to-the-project"></a>Nahrávání obrázků do projektu
+## <a name="upload-images-to-the-project"></a>Nahrání obrázků do projektu
 
-Vzorek je nastavení, které mají být zahrnuty do koncového balíčku bitové kopie. Image se číst z oddílu prostředků soubor jar a odešlou do služby.
+Ukázka je nastavení, které zahrnuje obrázky do koncového balíčku. Obrázky se čtou z oddílu prostředků souboru JAR a nahrávají se do služby.
 
 ```java
 System.out.println("Adding images...");
@@ -99,7 +100,7 @@ for (int i = 1; i <= 10; i++) {
 }
 ```
 
-Předchozí fragment kódu používá dva pomocných funkcí, které načtení obrázků jako datové proudy prostředků a k jejich nahrávání do služby.
+Předchozí fragment kódu používá dvě pomocné funkce, které obrázky načítají jako streamy prostředků a nahrávají je do služby.
 
 ```java
 private static void AddImageToProject(Trainings trainer, Project project, String fileName, byte[] contents, UUID tag)
@@ -133,7 +134,7 @@ private static byte[] GetImage(String folder, String fileName)
 
 ## <a name="train-the-project"></a>Trénování projektu
 
-Tím se vytvoří první iterace v projektu a označí tuto iteraci jako výchozí iterace. 
+Vytvoří se tak první iterace v projektu a označí se jako výchozí iterace. 
 
 ```java
 System.out.println("Training...");
@@ -150,10 +151,10 @@ System.out.println("Training Status: "+ iteration.status());
 trainer.updateIteration(project.id(), iteration.id(), iteration.withIsDefault(true));
 ```
 
-## <a name="get-and-use-the-default-prediction-endpoint"></a>Získat a použít výchozí koncový bod predikcí
+## <a name="get-and-use-the-default-prediction-endpoint"></a>Získání a použití výchozího koncového bodu předpovědi
 
 > [!IMPORTANT]
-> Nastavte `predictionApiKey` hodnotě klíče predikcí, který jste získali dříve.
+> Nastavte pro `predictionApiKey` hodnotu klíče předpovědi, kterou jste získali dříve.
 
 ```java
 final String predictionApiKey = "insert your prediction key here";
@@ -181,15 +182,15 @@ for (Prediction prediction: results.predictions())
 }
 ```
 
-## <a name="run-the-example"></a>Spustit příklad
+## <a name="run-the-example"></a>Spuštění příkladu
 
-Kompilace a spuštění řešení pomocí nástroje maven:
+Kompilace a spuštění řešení pomocí Mavenu:
 
 ```
 mvn compile exec:java
 ```
 
-Výstup aplikace se podobá následujícímu textu:
+Výstup aplikace je podobný následujícímu textu:
 
 ```
 Creating project...

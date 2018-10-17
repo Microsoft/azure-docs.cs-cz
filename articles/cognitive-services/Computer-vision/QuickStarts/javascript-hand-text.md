@@ -1,43 +1,48 @@
 ---
-title: Rychlý start k rozhraní API pro počítačové zpracování obrazu v JavaScriptu | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: V tomto rychlém startu extrahujete rukou psaný text z obrázku pomocí počítačového zpracování obrazu s jazykem JavaScript v Cognitive Services.
+title: 'Rychlý start: Extrakce rukou psaného textu – REST, JavaScript – počítačové zpracování obrazu'
+titleSuffix: Azure Cognitive Services
+description: V tomto rychlém startu extrahujete rukou psaný text z obrázku pomocí rozhraní API pro počítačové zpracování obrazu a JavaScriptu.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: c6b52bfdf1c42499772da1e5f72897baa65a4786
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 82c51c95bf8a538ce50dd190cce737b0295abc6e
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43769239"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634669"
 ---
-# <a name="quickstart-extract-handwritten-text---rest-javascript"></a>Rychlý start: Extrakce rukou psaného textu – REST, JavaScript
+# <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-javascript-in-computer-vision"></a>Rychlý start: Extrakce rukou psaného textu pomocí rozhraní REST API a JavaScriptu v počítačovém zpracování obrazu
 
-V tomto rychlém startu extrahujete rukou psaný text z obrázku pomocí počítačového zpracování obrazu.
+V tomto rychlém startu extrahujete rukou psaný text z obrázku pomocí rozhraní REST API počítačového zpracování obrazu. Pomocí metod [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) (Rozpoznat text) a [Get Recognize Text Operation Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) (Získat výsledky operace rozpoznávání textu) můžete detekovat rukou psaný text v obrázku a extrahovat rozpoznané znaky do strojově použitelného proudu znaků.
+
+> [!IMPORTANT]
+> Metoda [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) běží na rozdíl od metody [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) asynchronně. Tato metoda nevrací žádné informace v textu úspěšné odpovědi. Metoda Recognize Text místo toho vrátí identifikátor URI v hodnotě pole hlavičky odpovědi `Operation-Content`. Voláním tohoto identifikátoru URI, který zastupuje metodu [Get Recognize Text Operation Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201), pak lze zkontrolovat stav i získat výsledky volání metody Recognize Text.
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli počítačové zpracování obrazu použít, potřebujete klíč předplatného. Přečtěte si, [jak klíče předplatného získat](../Vision-API-How-to-Topics/HowToSubscribe.md).
+Musíte mít klíč předplatného pro počítačové zpracování obrazu. Abyste získali klíč předplatného, přejděte k tématu [Jak získat klíče předplatného](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="recognize-text-request"></a>Žádost Recognize Text
+## <a name="create-and-run-the-sample"></a>Vytvoření a spuštění ukázky
 
-Pomocí metod pro [rozpoznávání textu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) a [získání výsledku operace rozpoznávání textu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) můžete zjistit rukou psaný text v obrázku a extrahovat rozpoznané znaky do strojově použitelného proudu znaků.
+Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 
-Pokud chcete spustit ukázku, postupujte takto:
-
-1. Zkopírujte následující kód a uložte ho do souboru, jako je třeba `handwriting.html`.
-1. Místo `<Subscription Key>` použijte platný klíč předplatného.
-1. V případě potřeby změňte hodnotu `uriBase` na umístění, kde jste získali klíče předplatného.
-1. Soubor přetáhněte do prohlížeče.
-1. Klikněte na tlačítko `Read image`.
-
-Tato ukázka používá jQuery 1.9.0. Ukázku, která používá JavaScript bez jQuery, najdete v popisu [inteligentního generování miniatury](javascript-thumb.md).
+1. Zkopírujte do textového editoru následující kód.
+1. Proveďte v kódu na příslušných místech následující změny:
+    1. Hodnotu `subscriptionKey` nahraďte klíčem předplatného.
+    1. Hodnotu `uriBase` nahraďte adresou URL koncového bodu metody [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) z oblasti Azure, kde jste získali klíče předplatného, pokud je to potřeba.
+    1. Volitelně můžete hodnotu atributu `value` pro ovládací prvek `inputImage` nahradit adresou URL jiného obrázku, ze kterého chcete extrahovat rukou psaný text.
+1. Uložte kód jako soubor s příponou `.html`. Například, `get-handwriting.html`.
+1. Otevřete okno prohlížeče.
+1. Přetáhněte daný soubor do okna prohlížeče.
+1. Když se v prohlížeči zobrazí webová stránka, zvolte tlačítko **Read image** (Načíst obrázek).
 
 ```html
 <!DOCTYPE html>
@@ -57,19 +62,18 @@ Tato ukázka používá jQuery 1.9.0. Ukázku, která používá JavaScript bez 
         // Replace <Subscription Key> with your valid subscription key.
         var subscriptionKey = "<Subscription Key>";
 
-        // You must use the same region in your REST call as you used to get your
-        // subscription keys. For example, if you got your subscription keys from
-        // westus, replace "westcentralus" in the URI below with "westus".
+        // You must use the same Azure region in your REST API method as you used to
+        // get your subscription keys. For example, if you got your subscription keys
+        // from the West US region, replace "westcentralus" in the URL
+        // below with "westus".
         //
-        // Free trial subscription keys are generated in the westcentralus region.
+        // Free trial subscription keys are generated in the West Central US region.
         // If you use a free trial subscription key, you shouldn't need to change
         // this region.
         var uriBase =
             "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/recognizeText";
 
         // Request parameter.
-        // Note: The request parameter changed for APIv2.
-        // For APIv1, it is "handwriting": "true".
         var params = {
             "mode": "Handwritten",
         };
@@ -186,11 +190,9 @@ Image to read:
 </html>
 ```
 
-## <a name="recognize-text-response"></a>Odpověď metody Recognize Text
+## <a name="examine-the-response"></a>Prozkoumání odpovědi
 
-Úspěšná odpověď se vrátí ve formátu JSON. Vrácené výsledky rukou psaného textu obsahují text, ohraničující rámeček pro oblasti, řádky a slova.
-
-Program vygeneruje výstup podobný následujícímu JSON:
+Úspěšná odpověď se vrátí ve formátu JSON. Ukázková webová stránka provede analýzu a zobrazí úspěšnou odpověď v okně prohlížeče, podobně jako v následujícím příkladu:
 
 ```json
 {
@@ -467,6 +469,10 @@ Program vygeneruje výstup podobný následujícímu JSON:
   }
 }
 ```
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud už soubor nepotřebujete, odstraňte ho.
 
 ## <a name="next-steps"></a>Další kroky
 

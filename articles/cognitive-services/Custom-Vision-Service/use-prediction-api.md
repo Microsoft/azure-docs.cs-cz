@@ -1,52 +1,53 @@
 ---
-title: Použít službě Custom Vision Service předpovědi koncový bod - služeb Azure Cognitive Services | Dokumentace Microsoftu
-description: Další informace o použití rozhraní API prostřednictvím kódu programu testování obrázků s klasifikátoru Custom Vision Service.
+title: 'Příklad: Použití koncového bodu předpovědi k programovému testování obrázků pomocí klasifikátoru – Custom Vision'
+titlesuffix: Azure Cognitive Services
+description: Zjistěte, jak použít rozhraní API k programovému testování obrázků pomocí klasifikátoru služby Custom Vision Service.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: sample
 ms.date: 05/03/2018
 ms.author: anroth
-ms.openlocfilehash: d7f9b90db06811e16cd0cd6ad2b32a27912cfee5
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
-ms.translationtype: MT
+ms.openlocfilehash: 3a81f3cef6aaeb5c98022d9fc93f4d84f3f58a6e
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43341789"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46363645"
 ---
-# <a name="use-the-prediction-endpoint-to-test-images-programmatically-with-a-custom-vision-service-classifier"></a>Použití koncového bodu předpovědi k otestování Image programově pomocí služby Custom Vision Service třídění
+# <a name="use-the-prediction-endpoint-to-test-images-programmatically-with-a-custom-vision-service-classifier"></a>Použití koncového bodu předpovědi k programovému testování obrázků pomocí klasifikátoru služby Custom Vision Service
 
-Po tréninku modelu, můžete otestovat imagí prostřednictvím kódu programu, odešlete jim Predikcí rozhraní API. 
+Po vytrénování modelu můžete programově testovat obrázky jejich odesláním do rozhraní API pro předpovědi. 
 
 > [!NOTE]
-> Tento dokument ukazuje použití jazyka C# k odeslání image do rozhraní API pro předpověď. Další informace a příklady použití rozhraní API najdete v tématu [reference k rozhraní API pro předpověď](https://go.microsoft.com/fwlink/?linkid=865445).
+> Tento dokument ukazuje použití jazyka C# k odeslání obrázku do rozhraní API pro předpovědi. Další informace a příklady použití rozhraní API najdete v tématu pojednávajícím o [referencích k rozhraní API pro předpovědi](https://go.microsoft.com/fwlink/?linkid=865445).
 
-## <a name="get-the-url-and-prediction-key"></a>Získání adresy URL a predikcí klíče
+## <a name="get-the-url-and-prediction-key"></a>Získání adresy URL a klíče předpovědi
 
-Z [vizi vlastní webovou stránku](https://customvision.ai), vyberte svůj projekt a pak vyberte __výkonu__ kartu. K zobrazení informací o použití rozhraní API pro předpověď, včetně __předpovědi klíč__vyberte __předpovědi URL__. Pro projekty, které jsou připojené k prostředku Azure vaše __předpovědi klíč__ najdete také v [webu Azure Portal](https://portal.azure.com) stránky pro přidružený prostředek Azure v rámci __klíče__. Zkopírujte následující informace pro použití v aplikaci:
+Na [webové stránce služby Custom Vision](https://customvision.ai) vyberte svůj projekt a pak vyberte kartu __Výkon__. K zobrazení informací o použití rozhraní API pro předpovědi včetně __klíče předpovědi__ vyberte __URL předpovědi__. Pro projekty, které jsou připojené k prostředku Azure, můžete __klíč předpovědi__  najít také na stránce [Azure Portal](https://portal.azure.com) pro přidružený prostředek Azure v části __Klíče__. Zkopírujte následující informace pro použití v aplikaci:
 
-* __Adresa URL__ pro používání __soubor bitové kopie__.
-* __Predikce klíč__ hodnotu.
+* __URL__ pro použití se __souborem obrázku__.
+* Hodnotu __Prediction-key__.
 
 > [!TIP]
-> Pokud máte více iterací, můžete řídit, která se používá tak, že nastavíte jako výchozí. Vyberte tak iterace z __iterací__ a potom vyberte __nastavit jako výchozí__ v horní části stránky.
+> Pokud máte více iterací, můžete určit používanou iteraci tím, že ji nastavíte jako výchozí. Vyberte iteraci v části __Iterace__ a potom v horní části stránky vyberte __Nastavit jako výchozí__.
 
-![Na kartě výkonu se zobrazí s červenou obdélník, adresa URL předpovědi.](./media/use-prediction-api/prediction-url.png)
+![Karta výkonu zobrazená s červeným obdélníkem kolem adresy URL předpovědi.](./media/use-prediction-api/prediction-url.png)
 
 ## <a name="create-the-application"></a>Vytvoření aplikace
 
-1. Ze sady Visual Studio vytvořte novou aplikaci konzoly C#.
+1. V sadě Visual Studio vytvořte novou konzolovou aplikaci v jazyce C#.
 
-2. Použijte následující kód jako obsah metody __Program.cs__ souboru.
+2. Použijte následující kód jako obsah souboru __Program.cs__.
 
     > [!IMPORTANT]
     > Změňte následující informace:
     >
     > * Nastavte __obor názvů__ na název vašeho projektu.
-    > * Nastavte __předpovědi klíč__ hodnoty, které jste získali dříve v řádku, který začíná `client.DefaultRequestHeaders.Add("Prediction-Key",`.
-    > * Nastavte __URL__ hodnoty, které jste získali dříve v řádku, který začíná `string url =`.
+    > * Nastavte hodnotu __Prediction-Key__, kterou jste získali dříve, v řádku, který začíná `client.DefaultRequestHeaders.Add("Prediction-Key",`.
+    > * Nastavte hodnotu __URL__, kterou jste získali dříve, v řádku, který začíná `string url =`.
 
     ```csharp
     using System;
@@ -105,7 +106,7 @@ Z [vizi vlastní webovou stránku](https://customvision.ai), vyberte svůj proje
 
 ## <a name="use-the-application"></a>Použití aplikace
 
-Při spuštění aplikace, zadejte cestu k souboru obrázku. Odeslání image do rozhraní API a výsledky se vrátí jako dokument JSON. Následující kód JSON je příklad odpovědi
+Při spuštění aplikace zadejte cestu k souboru obrázku. Obrázek je odeslán do rozhraní API a výsledky se vrátí jako dokument JSON. Následující kód JSON je příklad odpovědi.
 
 ```json
 {
@@ -120,6 +121,6 @@ Při spuštění aplikace, zadejte cestu k souboru obrázku. Odeslání image do
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Export modelu pro mobilní použití](export-your-model.md)

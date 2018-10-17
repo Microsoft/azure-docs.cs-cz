@@ -1,53 +1,57 @@
 ---
-title: Rychlý start k analýze obrázku pomocí rozhraní API pro počítačové zpracování obrazu s PHP | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: V tomto rychlém startu analyzujete obrázek pomocí počítačového zpracování obrazu s PHP ve službách Cognitive Services.
+title: 'Rychlý start: Analýza vzdáleného obrázku – REST, PHP – počítačové zpracování obrazu'
+titleSuffix: Azure Cognitive Services
+description: V tomto rychlém startu budete analyzovat obrázek pomocí rozhraní API pro počítačové zpracování obrazu a PHP.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 09/10/2018
 ms.author: v-deken
-ms.openlocfilehash: 114674f47ee945717e866d97ffed747ae45decc8
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: bc7803860e092d23c245bd425fc27f11fac41047
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43769242"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629405"
 ---
-# <a name="quickstart-analyze-a-remote-image---rest-php"></a>Rychlý start: Analýza vzdáleného obrázku – REST, PHP
+# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-php-in-computer-vision"></a>Rychlý start: Analýza vzdáleného obrázku pomocí rozhraní REST API a PHP v počítačovém zpracování obrazu
 
-V tomto rychlém startu analyzujete obrázek za účelem extrakce vizuálních prvků pomocí počítačového zpracování obrazu.
+V tomto rychlém startu analyzujete obrázek uložený vzdáleně za účelem extrakce vizuálních prvků pomocí rozhraní REST API počítačového zpracování obrazu. Pomocí metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat vizuální prvky na základě obsahu obrázku.
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli počítačové zpracování obrazu použít, potřebujete klíč předplatného. Přečtěte si, [jak klíče předplatného získat](../Vision-API-How-to-Topics/HowToSubscribe.md).
+- Musíte mít nainstalovaný [PHP](https://secure.php.net/downloads.php).
+- Musíte mít nainstalovaný [Pear](https://pear.php.net).
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Abyste získali klíč předplatného, přejděte k tématu [Jak získat klíče předplatného](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="analyze-image-request"></a>Žádost Analyze Image
+## <a name="create-and-run-the-sample"></a>Vytvoření a spuštění ukázky
 
-Pomocí [metody Analyze Image](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat vizuální funkce na základě obsahu obrázku. Obrázek můžete nahrát nebo můžete určit jeho adresu URL a vybrat funkce, které se mají vrátit, včetně:
+Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 
-* Podrobného seznamu značek souvisejících s obsahem obrázku
-* Popisu obsahu obrázku v celé větě
-* Souřadnic, pohlaví a věku veškerých obličejů na obrázku
-* Typu obrázku (klipart nebo perokresba)
-* Převládající barvy, doplňkové barvy a toho, jestli je obrázek černobílý
-* Kategorie definované v této [taxonomii](../Category-Taxonomy.md)
-* Je obsah obrázku určený pro dospělé nebo se jedná o sexuálně sugestivní obsah?
+1. Nainstalujte balíček PHP5 [`HTTP_Request2`](http://pear.php.net/package/HTTP_Request2).
+   1. Otevřete okno příkazového řádku jako správce.
+   1. Spusťte následující příkaz:
 
-Pokud chcete spustit ukázku, postupujte takto:
+      ```console
+      pear install HTTP_Request2
+      ```
 
-1. Zkopírujte do editoru následující kód.
-1. Místo `<Subscription Key>` použijte platný klíč předplatného.
-1. V případě potřeby změňte `uriBase` na umístění, kde jste získali klíče předplatného.
-1. Volitelně můžete `imageUrl` nastavit na obrázek, který chcete analyzovat.
-1. Volitelně můžete změnit jazyk odpovědi (`'language' => 'en'`).
-1. Uložte soubor s příponou `.php`.
-1. Soubor otevřete v okně prohlížeče s podporou PHP.
+   1. Po úspěšné instalaci balíčku zavřete okno příkazového řádku.
 
-Tento příklad používá balíček [HTTP_Request2](http://pear.php.net/package/HTTP_Request2) PHP5.
+1. Zkopírujte do textového editoru následující kód.
+1. Proveďte v kódu na příslušných místech následující změny:
+    1. Hodnotu `subscriptionKey` nahraďte klíčem předplatného.
+    1. Hodnotu `uriBase` nahraďte adresou URL koncového bodu metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) z oblasti Azure, kde jste získali klíče předplatného, pokud je to potřeba.
+    1. Volitelně můžete hodnotu `imageUrl` nahradit adresou URL jiného obrázku, který chcete analyzovat.
+    1. Volitelně můžete hodnotu parametru požadavku `language` nahradit jiným jazykem.
+1. Uložte kód jako soubor s příponou `.php`. Například, `analyze-image.php`.
+1. Otevřete okno prohlížeče s podporou PHP.
+1. Přetáhněte daný soubor do okna prohlížeče.
 
 ```php
 <html>
@@ -109,9 +113,9 @@ catch (HttpException $ex)
 </html>
 ```
 
-## <a name="analyze-image-response"></a>Odpověď metody Analyze Image
+## <a name="examine-the-response"></a>Prozkoumání odpovědi
 
-Úspěšná odpověď se vrátí ve formátu JSON, například:
+Úspěšná odpověď se vrátí ve formátu JSON. Ukázkový web provede analýzu a zobrazí úspěšnou odpověď v okně prohlížeče, podobně jako v následujícím příkladu:
 
 ```json
 {
@@ -169,9 +173,22 @@ catch (HttpException $ex)
 }
 ```
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud už tuto ukázku nepotřebujete, odstraňte soubor a pak odinstalujte balíček PHP5 `HTTP_Request2`. Odinstalaci balíčku proveďte takto:
+
+1. Otevřete okno příkazového řádku jako správce.
+2. Spusťte následující příkaz:
+
+   ```console
+   pear uninstall HTTP_Request2
+   ```
+
+3. Po úspěšné odinstalaci balíčku zavřete okno příkazového řádku.
+
 ## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte rozhraní API pro počítačové zpracování obrazu používané pro analýzu obrázku, zjišťování celebrit a památek, vytvoření miniatury a extrahování tištěného a ručně psaného textu. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Prozkoumejte rozhraní API pro počítačové zpracování obrazu, které se používá pro analýzu obrázku, zjišťování celebrit a památek, vytvoření miniatury a extrahování tištěného a ručně psaného textu. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
 > [Prozkoumat rozhraní API pro počítačové zpracování obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

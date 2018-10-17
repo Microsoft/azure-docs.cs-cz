@@ -1,58 +1,53 @@
 ---
-title: Rychlý start k analýze místního obrázku pomocí rozhraní API pro počítačové zpracování obrazu s cURL | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: V tomto rychlém startu analyzujete místní obrázek pomocí počítačového zpracování obrazu s cURL ve službách Cognitive Services.
+title: 'Rychlý start: Analýza místního obrázku – REST, cURL – počítačové zpracování obrazu'
+titleSuffix: Azure Cognitive Services
+description: V tomto rychlém startu budete analyzovat místní obrázek pomocí rozhraní API pro počítačové zpracování obrazu a cURL.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 09/10/2018
 ms.author: v-deken
-ms.openlocfilehash: 93ca3ea6eee3743dfd0c25c9514375ae63a531ee
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 1952d0045550362a242ce1c105c58bd65c815ea6
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43769366"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45631238"
 ---
-# <a name="quickstart-analyze-a-local-image---rest-curl"></a>Rychlý start: Analýza místního obrázku – REST, cURL
+# <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-curl-in-computer-vision"></a>Rychlý start: Analýza místního obrázku pomocí rozhraní REST API a cURL v počítačovém zpracování obrazu
 
-V tomto rychlém startu analyzujete místní obrázek za účelem extrakce vizuálních prvků pomocí počítačového zpracování obrazu. Pokud chcete analyzovat vzdálený obrázek, přečtěte si článek o [analýze vzdáleného obrázku s cURL](curl-analyze.md).
+V tomto rychlém startu analyzujete obrázek uložený místně za účelem extrakce vizuálních prvků pomocí rozhraní REST API počítačového zpracování obrazu. Pomocí metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat vizuální prvky na základě obsahu obrázku.
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli počítačové zpracování obrazu použít, potřebujete klíč předplatného. Přečtěte si, [jak získat klíče předplatného](../Vision-API-How-to-Topics/HowToSubscribe.md).
+- Musíte mít [cURL](https://curl.haxx.se/windows).
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Abyste získali klíč předplatného, přejděte k tématu [Jak získat klíče předplatného](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="analyze-a-local-image"></a>Analýza místního obrázku
+## <a name="create-and-run-the-sample-command"></a>Vytvoření a spuštění ukázkového příkazu
 
-Tento příklad je podobný [analýze vzdáleného obrázku s cURL](curl-analyze.md), s tím rozdílem, že analyzovaný obrázek se načítá místně z disku. Je nutné provést tři změny:
+Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 
-- Typ obsahu změňte na `"Content-Type: application/octet-stream"`.
-- Přepínač `-d` změňte na `--data-binary`.
-- Obrázek, který chcete analyzovat, určete pomocí následující syntaxe: `@C:/Pictures/ImageToAnalyze.jpg`.
+1. Zkopírujte do textového editoru následující příkaz.
+1. Proveďte v příkazu na příslušných místech následující změny:
+    1. Hodnotu `<subscriptionKey>` nahraďte klíčem předplatného.
+    1. Adresu URL požadavku (`https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze`) nahraďte adresou URL koncového bodu metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) z oblasti Azure, kde jste získali klíče předplatného, pokud je to potřeba.
+    1. Hodnotu `<localImage>` nahraďte úplnou cestu a názvem souboru obrázku, který chcete analyzovat. Například, `@C:/Pictures/ImageToAnalyze.jpg`.
+    1. Volitelně můžete změnit parametr jazyka v adrese URL požadavku (`language=en`) a použít jiný podporovaný jazyk.
+1. Otevřete okno příkazového řádku.
+1. Vložte příkaz z textového editoru do okna příkazového řádku a pak příkaz spusťte.
 
-Pokud chcete spustit ukázku, postupujte následovně:
-
-1. Zkopírujte do editoru následující kód.
-1. Místo `<Subscription Key>` použijte platný klíč předplatného.
-1. V případě potřeby změňte adresu URL žádosti (`https://westcentralus.api.cognitive.microsoft.com/vision/v2.0`), aby se použilo umístění, ze kterého jste získali klíče předplatného.
-1. `<Image To Analyze>` nahraďte místním obrázkem, který chcete analyzovat.
-1. Volitelně můžete změnit jazyk odpovědi (`language=en`).
-1. Na počítači s nainstalovaným cURL otevřete příkazové okno.
-1. Kód vložte do tohoto okna a spusťte příkaz.
-
->[!NOTE]
->Ve volání REST musíte použít stejné umístění, které jste použili k získání klíčů předplatného. Pokud jste například získali klíče předplatného z westus, nahraďte westcentralus v adrese URL uvedené níže umístěním westus.
-
-```json
-curl -H "Ocp-Apim-Subscription-Key: <Subscription Key>" -H "Content-Type: application/octet-stream" "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Categories,Description&details=Landmarks&language=en" --data-binary <Image To Analyze>
+```console
+curl -H "Ocp-Apim-Subscription-Key: <Subscription Key>" -H "Content-Type: application/octet-stream" "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Categories,Description&details=Landmarks&language=en" --data-binary "<localImage>"
 ```
 
-## <a name="analyze-image-response"></a>Odpověď metody Analyze Image
+## <a name="examine-the-response"></a>Prozkoumání odpovědi
 
-Úspěšná odpověď se vrátí ve formátu JSON, například:
+Úspěšná odpověď se vrátí ve formátu JSON. Ukázková aplikace provede analýzu a zobrazí úspěšnou odpověď v okně příkazového řádku, podobně jako v následujícím příkladu:
 
 ```json
 {
@@ -110,9 +105,13 @@ curl -H "Ocp-Apim-Subscription-Key: <Subscription Key>" -H "Content-Type: applic
 }
 ```
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud už tuto ukázku nepotřebujete, zavřete okno příkazového řádku a textový editor.
+
 ## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte rozhraní API pro počítačové zpracování obrazu používané pro analýzu obrázku, zjišťování celebrit a památek, vytvoření miniatury a extrahování tištěného a ručně psaného textu. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu rozhraní Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Prozkoumejte rozhraní API pro počítačové zpracování obrazu, které se používá pro analýzu obrázku, zjišťování celebrit a památek, vytvoření miniatury a extrahování tištěného a ručně psaného textu. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
-> [Prozkoumejte rozhraní API pro počítačové zpracování obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
+> [Prozkoumat rozhraní API pro počítačové zpracování obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

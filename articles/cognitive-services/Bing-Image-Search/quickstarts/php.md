@@ -1,44 +1,44 @@
 ---
-title: 'Rychlý start: Odeslání vyhledávací dotazy s API Bingu pro vyhledávání obrázků a PHP'
+title: 'Rychlý start: Vyhledávání obrázků pomocí PHP – rozhraní API Bingu pro vyhledávání obrázků'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu použijte k vyhledání a Image můžete vyhledat na webu pomocí rozhraní API webové vyhledávání Bingu.
+description: V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání obrázků a dostanete odpověď ve formátu JSON. Jednoduchá aplikace v tomto článku odesílá vyhledávací dotaz a zobrazuje nezpracované výsledky.
 services: cognitive-services
 documentationcenter: ''
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-image-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/07/2018
 ms.author: aahi
-ms.openlocfilehash: ebf8c0269e070c9047d730e58b8e2d3824124e1a
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
-ms.translationtype: MT
+ms.openlocfilehash: ac3de25773249119535ac6f3bd063ff6b9b7831e
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574194"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295515"
 ---
-# <a name="quickstart-send-search-queries-using-the-bing-image-search-rest-api-and-php"></a>Rychlý start: Odeslání vyhledávací dotazy s využitím REST rozhraní API pro vyhledávání obrázků Bingu a PHP
+# <a name="quickstart-send-search-queries-using-the-bing-image-search-rest-api-and-php"></a>Rychlý start: Odesílání vyhledávacích dotazů pomocí rozhraní API pro vyhledávání obrázků Bingu a PHP
 
-V tomto rychlém startu můžete provést první volání do rozhraní API Bingu pro vyhledávání obrázků a získejte odpověď ve formátu JSON. Jednoduché aplikace v tomto článku odešle vyhledávací dotaz a zobrazí nezpracované výsledky.
+V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání obrázků a dostanete odpověď ve formátu JSON. Jednoduchá aplikace v tomto článku odesílá vyhledávací dotaz a zobrazuje nezpracované výsledky.
 
-Zatímco tato aplikace je napsaný v jazyce PHP, je rozhraní API RESTful webová služba, která je kompatibilní s programovací jazyk, který může vytvářet požadavky HTTP a parsování formátu JSON.
+V tomto článku je sice aplikace napsaná v jazyce PHP, ale rozhraní API je webová služba RESTful kompatibilní se všemi programovacími jazyky, které dokážou posílat požadavky HTTP a parsovat JSON.
 
-Zdrojový kód pro tuto ukázku je k dispozici [na Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingImageSearchv7.java).
+Zdrojový kód této ukázky je dostupný na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingImageSearchv7.java).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [PHP 5.6.x nebo novější](http://php.net/downloads.php).
+* [PHP 5.6.x nebo novější](http://php.net/downloads.php)
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-## <a name="create-and-initialize-the-application"></a>Vytváření a inicializace aplikace
+## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-Ke spuštění této aplikace, postupujte podle těchto kroků.
+Tuto aplikaci spustíte následujícím postupem.
 
-1. Ujistěte se, že je povoleno zabezpečené podpora protokolu HTTP v vaše `php.ini` souboru. Na Windows, tento soubor je umístěn v `C:\windows`.
-2. Vytvoření nového projektu PHP v Oblíbené prostředí IDE nebo editoru.
-3. definovat koncový bod rozhraní API, váš klíč předplatného a hledané výrazy.
+1. Ověřte, že je v souboru `php.ini` povolená podpora zabezpečeného protokolu HTTP. Ve Windows se tento soubor nachází ve složce `C:\windows`.
+2. V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt PHP.
+3. Definujte koncový bod rozhraní API, klíč předplatného a hledaný výraz.
 
     ```php
     $endpoint = 'https://api.cognitive.microsoft.com/bing/v7.0/images/search';
@@ -46,9 +46,9 @@ Ke spuštění této aplikace, postupujte podle těchto kroků.
     $accessKey = 'enter key here';
     $term = 'tropical ocean';
     ```
-## <a name="construct-and-perform-a-http-request"></a>Vytvoření a provedení požadavku HTTP
+## <a name="construct-and-perform-a-http-request"></a>Sestavení a provedení požadavku HTTP
 
-1. Proměnné z poslední krok slouží k přípravě žádosti HTTP do rozhraní API pro vyhledávání obrázků.
+1. Pomocí proměnných z posledního kroku připravte požadavek HTTP pro rozhraní API pro vyhledávání obrázků.
 
     ```php
     $headers = "Ocp-Apim-Subscription-Key: $key\r\n";
@@ -56,16 +56,16 @@ Ke spuštění této aplikace, postupujte podle těchto kroků.
                             'header' => $headers,
                             'method' => 'GET' ));
     ```
-2. Provést webový požadavek a odpověď JSON.
+2. Proveďte tuto webovou žádost a získejte odpověď JSON.
 
     ```php
     $context = stream_context_create($options);
     $result = file_get_contents($url . "?q=" . urlencode($query), false, $context);
     ```
 
-## <a name="process-and-print-the-json"></a>Proces a tisk ve formátu JSON
+## <a name="process-and-print-the-json"></a>Zpracování a zobrazení JSON
 
-Zpracování a vytisknout vrácená odpověď JSON.
+Zpracujte a zobrazte vrácenou odpověď JSON.
 
     ```php
     $headers = array();
@@ -80,7 +80,7 @@ Zpracování a vytisknout vrácená odpověď JSON.
 
 ## <a name="sample-json-response"></a>Ukázková odpověď JSON
 
-Odpovědi z rozhraní API Bingu pro vyhledávání obrázků se vrátí jako JSON. Tato ukázková odpověď byl zkrácen na zobrazit jeden výsledek.
+Odpovědi od rozhraní API Bingu pro vyhledávání obrázků se vrátí jako JSON. Ukázková odpověď je zkrácená, aby zobrazovala jenom jeden výsledek.
 
 ```json
 {
@@ -126,15 +126,15 @@ Odpovědi z rozhraní API Bingu pro vyhledávání obrázků se vrátí jako JSO
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kurz jednostránkovou aplikaci pro vyhledávání obrázků Bingu](../tutorial-bing-image-search-single-page-app.md)
+> [Kurz jednostránkové aplikace pro vyhledávání obrázků Bingu](../tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech 
+## <a name="see-also"></a>Viz také
 
-* [Co je pro vyhledávání obrázků Bingu?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [Zkuste online interaktivní ukázka](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
-* [Získání bezplatné přístupového klíče služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-* [Dokumentace ke službě Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
-* [Referenční dokumentace rozhraní API pro vyhledávání obrázků Bingu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+* [Co je Vyhledávání obrázků Bingu?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Vyzkoušení online interaktivní ukázky](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [Získání přístupového klíče služeb Cognitive Services zdarma](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+* [Dokumentace Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
+* [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

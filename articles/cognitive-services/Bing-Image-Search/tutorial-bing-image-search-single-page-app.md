@@ -1,86 +1,89 @@
 ---
-title: Hledání bitové kopie Bingu jednostránkovou webovou aplikaci | Microsoft Docs
-description: Ukazuje, jak používat rozhraní API služby Bing Image Search v jednostránkovou webovou aplikaci.
+title: 'Kurz: Vytvoření jednostránkové webové aplikace – rozhraní API Bingu pro vyhledávání obrázků'
+titleSuffix: Azure cognitive services
+description: Rozhraní API Bingu pro vyhledávání obrázků umožňuje hledat na webu vysoce kvalitní relevantní obrázky. V tomto kurzu vytvoříte jednostránkovou webovou aplikaci, která může odesílat vyhledávací dotazy do rozhraní API a zobrazovat výsledky v rámci webové stránky.
 services: cognitive-services
-author: v-jerkin
-manager: ehansen
+author: aahi
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-image-search
-ms.topic: article
-ms.date: 10/04/2017
-ms.author: v-jerkin
-ms.openlocfilehash: d0e1dc24513c8fc3a405cf1c18f531a0c58fad13
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.topic: tutorial
+ms.date: 9/12/2018
+ms.author: aahi
+ms.openlocfilehash: e37cb9b9412d257ab238f23b90e4a1077070b2b6
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343437"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297447"
 ---
-# <a name="tutorial-single-page-web-app"></a>Kurz: Jednostránkovou webovou aplikaci
+# <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Kurz: Vytvoření jednostránkové aplikace pomocí rozhraní API Bingu pro vyhledávání obrázků
 
-Rozhraní API služby Bing Image Search umožňuje hledat na webu a získat výsledky bitové kopie, které jsou relevantní pro vyhledávací dotaz. V tomto kurzu jsme jednostránkovou webovou aplikaci, která používá rozhraní API vyhledávání bitové kopie Bingu pro zobrazení výsledků hledání sestavení přímo na stránce. Aplikace obsahuje součásti HTML, CSS a JavaScript.
+Rozhraní API Bingu pro vyhledávání obrázků umožňuje hledat na webu vysoce kvalitní relevantní obrázky. V tomto kurzu vytvoříte jednostránkovou webovou aplikaci, která může odesílat vyhledávací dotazy do rozhraní API a zobrazovat výsledky v rámci webové stránky. Tento kurz je podobný [odpovídajícímu kurzu](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md) pro rozhraní API Bingu pro vyhledávání na webu.
 
-<!-- Remove until we can sanitize images
-![[Single-page Bing Image Search app]](media/cognitive-services-bing-images-api/image-search-spa-demo.png)
--->
-
-> [!NOTE]
-> Záhlaví JSON a HTTP v dolní části stránky odhalit odpověď JSON a informace o požadavku HTTP při kliknutí na. Tyto podrobnosti jsou užitečné při prozkoumávání služby.
-
-Aplikace kurz ukazuje, jak:
+Ukázková aplikace předvádí, jak:
 
 > [!div class="checklist"]
-> * Provádění volání rozhraní API Search bitové kopie Bingu v jazyce JavaScript
-> * Předat možnosti hledání do rozhraní API vyhledávání bitové kopie Bingu
-> * Zobrazení výsledků
-> * Stránka prostřednictvím výsledky hledání
-> * Popisovač Bing ID a rozhraní API předplatné klíč klienta
-> * Zpracování chyb, které můžou nastat
+> * Provést volání rozhraní API Bingu pro vyhledávání obrázků v JavaScriptu
+> * Zlepšit výsledky hledání pomocí možností hledání
+> * Zobrazit a procházet stránky výsledků hledání
+> * Vyžádat a používat klíč předplatného rozhraní API a ID klienta Bingu
 
-Kurz stránka je zcela samostatné; nepoužívá se žádné externí rozhraní, šablony stylů nebo i soubory bitové kopie. Používá jenom široce podporované funkce jazyka JavaScript a pracuje s aktuálními verzemi všechny hlavní prohlížeče.
+Úplný zdrojový kód k tomuto kurzu je dostupný na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Image-Search).
 
-V tomto kurzu probereme pouze vybrané části zdrojového kódu. Úplný zdrojový kód je k dispozici [na samostatné stránce](tutorial-bing-image-search-single-page-app-source.md). Zkopírujte a vložte tento kód do textového editoru a uložte ho jako `bing.html`.
+## <a name="prerequisites"></a>Požadavky
 
-> [!NOTE]
-> V tomto kurzu je podstatně podobná [jednostránkové vyhledávání Bing webové aplikace kurzu](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md), ale zabývá pouze výsledky hledání bitové kopie.
+* Nejnovější verze [Node.js](https://nodejs.org/).
+* Architektura [Express.js](https://expressjs.com/) pro Node.js. Pokyny k instalaci pro zdrojový kód jsou k dispozici v ukázkovém souboru readme na Githubu.
 
-## <a name="app-components"></a>Součásti aplikace
+[!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-Stejně jako jakoukoli jednostránkovou webovou aplikaci kurz aplikace obsahuje tři části:
+## <a name="manage-and-store-user-subscription-keys"></a>Správa a ukládání uživatelských klíčů předplatného
 
-> [!div class="checklist"]
-> * HTML – definuje struktuře a obsahu stránky
-> * Šablon stylů CSS – definuje vzhled stránky
-> * JavaScript – definuje chování stránky
+Tato aplikace používá k uložení klíčů předplatného rozhraní API trvalé úložiště webových prohlížečů. Pokud není uložen žádný klíč, webová stránka vyzve uživatele, aby zadal svůj klíč a uloží ho pro pozdější použití. Pokud je klíč později odmítnut rozhraním API, aplikace jej odebere z úložiště.
 
-V tomto kurzu nezahrnuje většinu kódu HTML nebo šablon stylů CSS podrobně, protože se jedná o přehledné.
 
-HTML obsahující formulář vyhledávání, ve kterém uživatel zadá dotaz a vybere možností hledání. Formulář je připojený k JavaScript, která ve skutečnosti provádí vyhledávání podle `<form>` tagu `onsubmit` atribut:
-
-```html
-<form name="bing" onsubmit="return newBingImageSearch(this)">
-```
-
-`onsubmit` Obslužná rutina vrátí `false`, který udržuje formuláře z odeslání na server. Kód jazyka JavaScript skutečně funguje shromažďování nezbytné informace z formuláře a provádění hledání.
-
-HTML také obsahuje divizí (HTML `<div>` značky) kde se zobrazí výsledky hledání.
-
-## <a name="managing-subscription-key"></a>Správa klíč předplatného
-
-Abyste se vyhnuli nutnosti obsahovat klíč rozhraní API služby Bing Search předplatného v kódu, používáme k uložení klíče trvalého úložiště v prohlížeči. Pokud žádný klíč je uložený, jsme vyzvat, aby klíče uživatele a uloží jej pro pozdější použití. Pokud později klíč rozhraní API zamítnul, jsme zneplatnit uložené klíč tak, aby uživatel znovu.
-
-Jsme definovali `storeValue` a `retrieveValue` funkce, které používají buď `localStorage` objektu (Pokud je prohlížeč podporuje ji) nebo soubor cookie. Naše `getSubscriptionKey()` funkce používá tyto funkce pro ukládání a načítání klíče uživatele.
+Definujte funkce `storeValue` a `retrieveValue`, které používají buď objekt `localStorage` (když je podporovaný prohlížečem), nebo soubor cookie.
 
 ```javascript
-// cookie names for data we store
+// Cookie names for data being stored
 API_KEY_COOKIE   = "bing-search-api-key";
 CLIENT_ID_COOKIE = "bing-search-client-id";
-
+// The Bing Image Search API endpoint
 BING_ENDPOINT = "https://api.cognitive.microsoft.com/bing/v7.0/images/search";
 
-// ... omitted definitions of storeValue() and retrieveValue()
+try { //Try to use localStorage first
+    localStorage.getItem;   
 
-// get stored API subscription key, or prompt if it's not found
+    window.retrieveValue = function (name) {
+        return localStorage.getItem(name) || "";
+    }
+    window.storeValue = function(name, value) {
+        localStorage.setItem(name, value);
+    }
+} catch (e) {
+    //If the browser doesn't support localStorage, try a cookie
+    window.retrieveValue = function (name) {
+        var cookies = document.cookie.split(";");
+        for (var i = 0; i < cookies.length; i++) {
+            var keyvalue = cookies[i].split("=");
+            if (keyvalue[0].trim() === name) return keyvalue[1];
+        }
+        return "";
+    }
+    window.storeValue = function (name, value) {
+        var expiry = new Date();
+        expiry.setFullYear(expiry.getFullYear() + 1);
+        document.cookie = name + "=" + value.trim() + "; expires=" + expiry.toUTCString();
+    }
+}
+```
+
+Funkce `getSubscriptionKey()` se pokusí načíst dříve uložený klíč pomocí `retrieveValue`. Pokud není nalezen žádný klíč, zobrazí výzvu uživateli k zadání klíče a uloží ho pomocí `storeValue`.
+
+```javascript
+
+// Get the stored API subscription key, or prompt if it's not found
 function getSubscriptionKey() {
     var key = retrieveValue(API_KEY_COOKIE);
     while (key.length !== 32) {
@@ -92,39 +95,46 @@ function getSubscriptionKey() {
 }
 ```
 
-HTML `<form>` značka `onsubmit` volání `bingWebSearch` funkce vracet výsledky vyhledávání. `bingWebSearch` používá `getSubscriptionKey` k ověření každý dotaz. Jak je znázorněno v definici předchozí `getSubscriptionKey` vyzve uživatele k klíč, pokud klíč nebyl zadán. Klíč je pak uloženy pokračovat v používání aplikace.
+Značka HTML `<form>` `onsubmit` volá funkci `bingWebSearch` k vrácení výsledků hledání. `bingWebSearch` používá `getSubscriptionKey` k ověření každého dotazu. Jak je vidět v předchozí definici, `getSubscriptionKey` vyzve uživatele k zadání klíče, pokud klíč nebyl zadán. Klíč se pak uloží pro další používání ze strany aplikace.
 
 ```html
-<form name="bing" onsubmit="this.offset.value = 0; return bingWebSearch(this.query.value, 
-    bingSearchOptions(this), getSubscriptionKey())">
+<form name="bing" onsubmit="this.offset.value = 0; return bingWebSearch(this.query.value,
+bingSearchOptions(this), getSubscriptionKey())">
 ```
 
-## <a name="selecting-search-options"></a>Výběrem možnosti hledání
+## <a name="send-search-requests"></a>Odeslání žádostí o vyhledávání
 
-![[Hledání bitové kopie Bingu formuláře]](media/cognitive-services-bing-images-api/image-search-spa-form.png)
+Tato aplikace používá HTML `<form>` k počátečnímu odeslání uživatelských žádostí o vyhledávání, přičemž k volání `newBingImageSearch()` používá atribut `onsubmit`.
 
-Formuláře HTML obsahuje následující prvky:
+```html
+<form name="bing" onsubmit="return newBingImageSearch(this)">
+```
 
-| | |
-|-|-|
-|`where`|Rozevírací nabídka pro výběr na trhu (umístění a jazyk) používá pro vyhledávání.|
-|`query`|Textové pole, do kterého chcete zadejte hledaný text.|
-|`aspect`|Přepínač tlačítka pro výběr proporce nalezen bitové kopie: zhruba Čtvereček celý nebo instalovat.|
-|`color`|Vybere nebo černobílý nebo na převládá barvu.
-|`when`|Rozevírací nabídky můžete omezit výsledky vyhledávání na poslední den, týden nebo měsíc.|
-|`safe`|Zaškrtávací políčko označující, zda na Bing bezpečné hledání funkce slouží k filtrování "pro dospělé" výsledky.|
-|`count`|Skryté pole. Počet výsledků hledání se vrátíte na každý požadavek. Změna zobrazíte výsledky méně či více na stránce.|
-|`offset`|Skryté pole. Posun první výsledek hledání v požadavku; použít pro stránkování. Se resetují na `0` na novou žádost.|
-|`nextoffset`|Skryté pole. Po přijetí výsledek hledání, v tomto poli je nastavena na hodnotu `nextOffset` v odpovědi. Použití tohoto pole zabraňuje překrývající se výsledky na následných stránkách.|
-|`stack`|Skryté pole. Seznam posunutí předchozích stránkách s výsledky hledání pro přechod zpět na předchozí stránky zakódovaná ve formátu JSON.|
+Ve výchozím nastavení obslužná rutina `onsubmit` vrátí `false`, což zabraňuje odeslání formuláře.
 
-> [!NOTE]
-> Hledání bitové kopie Bingu nabízí mnoho další parametry dotazu. Tady používáme pouze několik z nich.
+## <a name="select-search-options"></a>Výběr možností hledání
 
-Naše JavaScript funkce `bingSearchOptions()` převede těchto polí s řetězcem dotazu částečné ve formátu vyžadují rozhraní API služby Bing Search.
+![[Formulář Bingu pro vyhledávání obrázků]](media/cognitive-services-bing-images-api/image-search-spa-form.png)
+
+Rozhraní API Bingu pro vyhledávání obrázků nabízí několik [parametrů pro filtrování dotazů](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#filter-query-parameters), které umožňují zúžit a filtrovat výsledky hledání. Formulář HTML v této aplikaci používá a zobrazuje následující parametry:
+
+|              |                                                                                                                                                                                    |
+|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `where`      | Rozevírací nabídka pro výběr trhu (polohy a jazyka) pro vyhledávání.                                                                                             |
+| `query`      | Textové pole pro zadání hledaných termínů.                                                                                                                                 |
+| `aspect`     | Přepínač pro výběr poměrů stran nalezených snímků: zhruba čtvercový, široký nebo vysoký.                                                                                     |
+| `color`      |                                                                                                                                                                                    |
+| `when`       | Rozevírací nabídka pro volitelné omezení vyhledávání na poslední den, týden nebo měsíc.                                                                                          |
+| `safe`       | Zaškrtávací políčko označující, jestli se má používat funkce Bingu Bezpečné hledání k filtrování výsledků „pro dospělé“.                                                                                      |
+| `count`      | Skryté pole. Počet výsledků vyhledávání, které se mají vrátit pro jednotlivé požadavky. Můžete změnit, aby se na stránce zobrazovalo méně nebo více výsledků.                                                            |
+| `offset`     | Skryté pole. Posun prvního výsledku hledání v požadavku, sloužící ke stránkování. Při novém požadavku se resetuje na `0`.                                                           |
+| `nextoffset` | Skryté pole. Při přijetí výsledku hledání je toto pole je nastaveno na hodnotu `nextOffset` v odpovědi. Použitím tohoto pole se vyhnete překrývajícím se výsledkům na po sobě jdoucích stránkách. |
+| `stack`      | Skryté pole. Zakódovaný seznam JSON posunu předchozích stránek výsledků hledání, pro přechod zpět na předchozí stránky.                                                      |
+
+Funkce `bingSearchOptions()` tyto možnosti zformátuje na řetězec částečného dotazu, který lze použít v požadavcích rozhraní API aplikace.  
 
 ```javascript
-// build query options from the HTML form
+// Build query options from the HTML form
 function bingSearchOptions(form) {
 
     var options = [];
@@ -146,11 +156,10 @@ function bingSearchOptions(form) {
 }
 ```
 
-Například může být funkci bezpečné hledání `strict`, `moderate`, nebo `off`, s `moderate` se výchozí hodnota. Ale naše formulář používá zaškrtávací políčko, který má jenom dva stavy. Kód jazyka JavaScript převede toto nastavení buď `strict` nebo `off` (jsme nepoužívejte `moderate`).
+## <a name="performing-the-request"></a>Provedení požadavku
 
-## <a name="performing-the-request"></a>Provádění požadavku
+Pomocí vyhledávacího dotazu, řetězce možností a klíče rozhraní API funkce `BingImageSearch()` použije objekt XMLHttpRequest k odeslání požadavku na koncový bod Bingu pro vyhledávání obrázků.
 
-Zadaný dotaz, string možnosti a klíč rozhraní API `BingImageSearch` využívá `XMLHttpRequest` objekt, který má být odeslán požadavek na koncový bod hledání bitové kopie Bingu.
 
 ```javascript
 // perform a search given query, options string, and API key
@@ -169,7 +178,7 @@ function bingImageSearch(query, options, key) {
     // open the request
     try {
         request.open("GET", queryurl);
-    } 
+    }
     catch (e) {
         renderErrorMessage("Bad request (invalid URL)\n" + queryurl);
         return false;
@@ -180,10 +189,10 @@ function bingImageSearch(query, options, key) {
     request.setRequestHeader("Accept", "application/json");
     var clientid = retrieveValue(CLIENT_ID_COOKIE);
     if (clientid) request.setRequestHeader("X-MSEdge-ClientID", clientid);
-    
+
     // event handler for successful response
     request.addEventListener("load", handleBingResponse);
-    
+
     // event handler for erorrs
     request.addEventListener("error", function() {
         renderErrorMessage("Error completing request");
@@ -200,7 +209,7 @@ function bingImageSearch(query, options, key) {
 }
 ```
 
-Po úspěšném požadavku HTTP, volání JavaScriptu naše `load` obslužné rutiny události, `handleBingResponse()` funkce pro zpracování úspěšné žádosti HTTP GET do rozhraní API. 
+Při úspěšném dokončení požadavku HTTP volá JavaScript obslužnou rutinu události `handleBingResponse()` ke zpracování úspěšného požadavku HTTP GET.
 
 ```javascript
 // handle Bing search request results
@@ -219,7 +228,7 @@ function handleBingResponse() {
 
     // show raw JSON and HTTP request
     showDiv("json", preFormat(JSON.stringify(jsobj, null, 2)));
-    showDiv("http", preFormat("GET " + this.responseURL + "\n\nStatus: " + this.status + " " + 
+    showDiv("http", preFormat("GET " + this.responseURL + "\n\nStatus: " + this.status + " " +
         this.statusText + "\n" + this.getAllResponseHeaders()));
 
     // if HTTP response is 200 OK, try to render search results
@@ -267,21 +276,11 @@ function handleBingResponse() {
 ```
 
 > [!IMPORTANT]
-> V případě úspěšné žádosti HTTP nemá *není* nutně znamenají, že celé hledání úspěšné. Pokud dojde k chybě v operaci vyhledávání, rozhraní API služby Bing Image Search vrátí stavový kód 200 HTTP a obsahuje informace o chybě v odpovědi JSON. Kromě toho pokud se požadavek míra limited, rozhraní API vrátí prázdnou odpověď.
+> Úspěšné požadavky HTTP můžou obsahovat informace o neúspěšných hledání. Pokud během operace vyhledávání dojde k chybě, rozhraní API Bingu pro vyhledávání zpráv vrátí stavový kód HTTP jiný než 200 a informace o chybě v odpovědi JSON. Kromě toho, pokud byl požadavek omezený rychlostí, vrátí rozhraní API prázdnou odpověď.
 
-Většinu kódu v obou těchto funkcí jsou vyhrazené pro zpracování chyb. Může dojít k chybám v těchto fází:
+## <a name="display-the-search-results"></a>Zobrazení výsledků hledání
 
-|Krok|Potenciální chyby|Zpracovává|
-|-|-|-|
-|Objekt požadavku sestavení jazyka JavaScript|Neplatná adresa URL|`try`/`catch` blok|
-|Vytvoření požadavku|Chyby sítě, přerušené připojení|`error` a `abort` obslužné rutiny událostí|
-|Provádění hledání|Neplatný požadavek, neplatný formát JSON, omezení přenosové rychlosti|testů v `load` obslužné rutiny události|
-
-Řeší chyby volání `renderErrorMessage()` s nějaké podrobnosti o této chybě známé. Pokud odpověď úspěšně projde úplné gauntlet chyba testů, říkáme `renderSearchResults()` zobrazit výsledky vyhledávání na stránce.
-
-## <a name="displaying-search-results"></a>Zobrazení výsledků vyhledávání
-
-Hlavní funkce pro zobrazení výsledků vyhledávání je `renderSearchResults()`. Tato funkce přebírá JSON vrácený službu vyhledávání bitové kopie Bingu a vykreslí bitové kopie a související hledání, pokud existuje.
+Výsledky hledání se zobrazují pomocí funkce `renderSearchResults()`, která převezme JSON vrácený službou Bingu pro vyhledávání obrázků a vyvolá odpovídající funkci rendereru na všech vrácených obrázcích a souvisejících vyhledáváních.
 
 ```javascript
 function renderSearchResults(results) {
@@ -290,14 +289,14 @@ function renderSearchResults(results) {
     var pagingLinks = renderPagingLinks(results);
     showDiv("paging1", pagingLinks);
     showDiv("paging2", pagingLinks);
-    
+
     showDiv("results", renderImageResults(results.value));
     if (results.relatedSearches)
         showDiv("sidebar", renderRelatedItems(results.relatedSearches));
 }
 ```
 
-Výsledky hledání hlavní bitové kopie se vrátí jako nejvyšší úrovně `value` objektu v odpovědi JSON. Jsme předat do našich funkce `renderImageResults()`, který iteruje je a volá samostatnou funkci k vykreslení každou položku do kódu HTML. Výsledný HTML se vrátí do `renderSearchResults()`, kde je vložen do `results` dělení na stránce.
+Výsledky hledání obrázků jsou obsaženy v objektu `value` nejvyšší úrovně v rámci odpovědi JSON. Ty jsou předány funkci `renderImageResults()`, která prochází výsledky a převádí jednotlivé položky do HTML.
 
 ```javascript
 function renderImageResults(items) {
@@ -315,39 +314,42 @@ function renderImageResults(items) {
 }
 ```
 
-Rozhraní API služby Bing Image Search vrátí až čtyři různé druhy související výsledky, každý svůj vlastní objekt nejvyšší úrovně. Jsou to tyto:
+Rozhraní API Bingu pro vyhledávání obrázků může vrátit čtyři typy návrhů vyhledávání, které pomáhají uživatelům s vyhledáváním, každý ve vlastním objektu nejvyšší úrovně:
 
-|||
-|-|-|
-|`pivotSuggestions`|Dotazy, které nahraďte jiný pivot slova v původní vyhledávání. Například při hledání "red květy", může být pivot slovo "red" a pivot návrhu může být "žlutý květy."|
-|`queryExpansions`|Dotazy, které původní vyhledávání upřesnit tak, že přidáte další podmínky. Pokud hledáte "Microsoft Surface", rozšíření dotazu může být například "Microsoft Surface profesionál."|
-|`relatedSearches`|Dotazy, které byly zadány také uživatelé, kteří zadali původní vyhledávání. Při hledání "Rainier připojení", související vyhledávání může být například "strojový překladů. Svatý Helens."|
-|`similarTerms`|Dotazy, které se podobají význam původní vyhledávání. Při hledání "koťata", podobné termín může být například "cute."|
+| Návrh         | Popis                                                                                                                                                                                                         |
+|--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `pivotSuggestions` | Dotazy, které nahradí pivotové slovo v původním vyhledávání jiným. Pokud třeba vyhledáváte „červené květiny“, pivotové slovo může být „červené“ a pivotový návrh může být „žluté květiny“. |
+| `queryExpansions`  | Dotazy, které původní hledání zúží přidáním dalších výrazů. Pokud třeba vyhledáváte „Microsoft Surface“, rozšíření dotazu může být „Microsoft Surface Pro“.                                   |
+| `relatedSearches`  | Dotazy, které také zadali ostatní uživatelé, kteří zadali původní vyhledávání. Pokud třeba vyhledáváte „Mount Rainier“, související hledání může být „Mt. Saint Helens“.                       |
+| `similarTerms`     | Dotazy, které mají podobný význam jako původní vyhledávání. Pokud třeba vyhledáváte „školy“, podobný výraz může být „vzdělávání“.                                                                   |
 
-Jako dříve zobrazená v `renderSearchResults()`, jsme vykreslení pouze `relatedItems` návrhy a umístěte výsledná odkazy bočním panelu stránky.
+Tato aplikace pouze vykreslí návrhy `relatedItems` a umístí výsledné odkazy na bočním panelu na stránce.
 
-## <a name="rendering-result-items"></a>Vykreslování položky výsledků
+## <a name="rendering-search-results"></a>Vykreslení výsledků hledání
 
-V našem JavaScript kód je objekt, `searchItemRenderers`, který obsahuje *nástroji pro vykreslování:* výsledek hledání funkce, které generují kód HTML pro každý typ.
+V této aplikaci objekt `searchItemRenderers` obsahuje funkce rendereru, které generují kód HTML pro každý druh výsledku hledání.
 
 ```javascript
-searchItemRenderers = { 
+searchItemRenderers = {
     images: function(item, index, count) { ... },
     relatedSearches: function(item) { ... }
 }
 ```
 
-Funkce zobrazovací jednotky může přijímat následující parametry:
+Funkce rendereru může přijímat tyto parametry:
 
-| | |
-|-|-|
-|`item`|JavaScript objekt obsahující vlastnosti položky, například jeho adresa URL a její popis.|
-|`index`|Index položky výsledek v rámci jeho kolekce.|
-|`count`|Počet položek v kolekci položku výsledek hledání.|
+| Parametr         | Popis                                                                                              |
+|---------|----------------------------------------------------------------------------------------------|
+| `item`  | Objekt JavaScriptu obsahující vlastnosti položky, jako je její adresa URL a popis. |
+| `index` | Index položky výsledků v rámci jeho kolekce.                                          |
+| `count` | Počet položek v kolekci položek výsledků hledání.                                  |
 
-`index` a `count` parametry můžete použít k počet výsledků, generovat speciální HTML pro začátku nebo na konec kolekce, chcete-li vložit konce řádků po určitý počet položek a tak dále. Pokud vykreslovací modul není nutné tuto funkci, není nutné přijmout tyto dva parametry.
+Parametry `index` a `count` se používají k vyjádření počtu výsledků, generování kódu HTML pro kolekce a organizaci obsahu. Konkrétně:
 
-Podívejme bližší pohled na `images` zobrazovací jednotky:
+* Vypočítá velikost miniatury obrázku (šířka se liší, minimálně činí 120 pixelů, výška je pevně nastavená na 90 pixelů).
+* Vytvoří značku HTML `<img>` k zobrazení miniatury obrázku.
+* Vytvoří značky HTML `<a>`, které odkazují na obrázek a na stránku, která ho obsahuje.
+* Vytvoří popis, který zobrazuje informace o obrázku a webu, na kterém se nachází.
 
 ```javascript
     images: function (item, index, count) {
@@ -357,7 +359,7 @@ Podívejme bližší pohled na `images` zobrazovací jednotky:
         if (index === 0) html.push("<p class='images'>");
         var title = escape(item.name) + "\n" + getHost(item.hostPageDisplayUrl);
         html.push("<p class='images' style='max-width: " + width + "px'>");
-        html.push("<img src='"+ item.thumbnailUrl + "&h=" + height + "&w=" + width + 
+        html.push("<img src='"+ item.thumbnailUrl + "&h=" + height + "&w=" + width +
             "' height=" + height + " width=" + width + "'>");
         html.push("<br>");
         html.push("<nobr><a href='" + item.contentUrl + "'>Image</a> - ");
@@ -367,51 +369,44 @@ Podívejme bližší pohled na `images` zobrazovací jednotky:
     }, // relatedSearches renderer omitted
 ```
 
-Naše funkce zobrazovací jednotky bitové kopie:
-
-> [!div class="checklist"]
-> * Vypočítá velikost miniatur obrázku (šířka se liší, s nejméně 120 pixelů, zatímco výška vyřešen v 90 pixelů).
-> * Sestavení HTML `<img>` značky zobrazíte miniaturu obrázku. 
-> * Sestavení HTML `<a>` značky, které odkazují na bitovou kopii a stránky, která ji obsahuje.
-> * Popis, který zobrazí informace o bitové kopie a na server, který se nachází na sestavení.
-
-Testujeme `index` proměnné, aby bylo možné vložit `<p>` značky před první výsledek bitové kopie. Jinak miniatur tupý zobrazení sebe navzájem a wrap podle potřeby v okně prohlížeče.
-
-Velikost miniatur se používá v obou `<img>` značky a `h` a `w` pole v adrese URL na miniaturu. [Miniatur služby Bing](resize-and-crop-thumbnails.md) pak doručí na miniaturu přesně této velikosti.
+`height` a `width` obrázku miniatury se používají ve značce `<img>` i v polích `h` a `w` v adrese URL miniatury. To Bingu umožňuje vrátit [miniaturu](resize-and-crop-thumbnails.md) přesně této velikosti.
 
 ## <a name="persisting-client-id"></a>Zachování ID klienta
 
-Může zahrnovat odpovědí z hledání Bing rozhraní API `X-MSEdge-ClientID` záhlaví, který by měly být odeslány zpět do rozhraní API s následující požadavky. Pokud se používají rozhraní API pro vyhledávání více Bing, musí být stejné ID klienta použit s všechny z nich, pokud je to možné.
+Odpovědi z rozhraní API Bingu pro vyhledávání můžou zahrnovat hlavičku `X-MSEdge-ClientID`, která by se měla v následujících požadavcích posílat zpět do rozhraní API. Pokud se používá více rozhraní API pro vyhledávání Bingu, mělo by se pro všechny používat stejné ID klienta, pokud je to možné.
 
-Poskytuje `X-MSEdge-ClientID` záhlaví umožňuje rozhraní API Bingu pro všechny uživatele vyhledávání, která má dvě důležité výhody přidružení.
+Poskytnutí hlavičky `X-MSEdge-ClientID` umožňuje rozhraním API Bingu spojit si všechna uživatelova vyhledávání. To má důležité výhody.
 
-Nejprve umožňuje Bing vyhledávacího webu použít po kontextu hledání nalézt výsledky, které lépe odpovídají uživatele. Pokud uživatel má dříve hledali podmínky týkající se řízení, například novější vyhledejte "uzlů" může přednostně vrácení informací o uzlů použít v řízení.
+Zaprvé to umožňuje, aby vyhledávací web Bing na vyhledávání použil minulý kontext a našel výsledky, které uživatele více uspokojí. Pokud uživatel v minulosti vyhledával třeba výrazy týkající se lodí, pozdější vyhledání „uzlů“ může přednostně vrátit informace o uzlech používaných při plavbě lodí.
 
-Druhý Bing může náhodně vyberte uživatele, můžete vyzkoušet nové funkce dřív, než budou k dispozici. Poskytuje stejné ID klienta s každou žádostí zajistí, že ji uživatelé, které byly vybrány zobrazíte funkce vždy zobrazit. Bez ID klienta může uživatel zobrazit funkci Zobrazit a zmizí, zdánlivě v náhodných v příslušných výsledcích hledání.
+Za druhé může Bing náhodně vybírat uživatele k vyzkoušení nových funkcí, než budou všeobecně dostupné. Poskytnutí stejného ID klienta s každým požadavkem zajistí, že uživatelé vybraní tuto funkci vidět, ji vidí vždy. Bez ID klienta může uživatel funkci ve svých výsledcích hledání zdánlivě náhodně někdy vidět a jindy ne.
 
-Zásady zabezpečení prohlížeče (CORS) může zabránit `X-MSEdge-ClientID` záhlaví dostupný pro JavaScript. Toto omezení nastane při hledání odpovědi má jiný počátek ze stránky, která je požadována. V produkčním prostředí je potřeba vyřešit tuto zásadu hostováním skript na straně serveru, který provede volání rozhraní API ve stejné doméně jako webovou stránku. Vzhledem k tomu, že skript má stejný původ jako webovou stránku, `X-MSEdge-ClientID` záhlaví je pak možné JavaScript.
+Zásady zabezpečení prohlížeče (CORS) můžou bránit tomu, aby byla hlavička `X-MSEdge-ClientID` pro JavaScript dostupná. K tomuto omezení dochází, když odpověď na vyhledávání má jiný zdroj než stránka, která o ni požádala. V produkčním prostředí je potřeba tyto zásady vyřešit hostováním skriptu na straně serveru, který provádí volání rozhraní API ve stejné doméně jako webová stránka. Protože tento skript má stejný původ jako webová stránka, hlavička `X-MSEdge-ClientID` je pak pro JavaScript dostupná.
 
 > [!NOTE]
-> V produkční webové aplikace měli byste provést serverovou žádost přesto. Klíč rozhraní API služby Bing Search, jinak hodnota musí být součástí webové stránky, kde je k dispozici všem uživatelům zobrazení zdroje. Fakturuje se pro všechny využití v rámci předplatného klíč rozhraní API, i požadavkům neoprávněným stranami, proto je důležité, abyste vystavit váš klíč.
+> Při tvorbě webové aplikace byste měli požadavek provádět na straně serveru tak jako tak. Jinak musí být klíč rozhraní API Bingu pro vyhledávání součástí webové stránky, kde je k dispozici každému, kdo si zobrazí zdroj. Účtuje se vám veškeré využívání vašeho klíče předplatného rozhraní API, dokonce i požadavky provedené neoprávněnými stranami, proto je důležité klíč nezveřejňovat.
 
-Pro účely vývoje můžete provést žádost Bing webového vyhledávání rozhraní API prostřednictvím proxy serveru CORS. Odpověď proxy serveru má `Access-Control-Expose-Headers` záhlaví této hlavičky odpovědi povolených programů a jejich zpřístupní JavaScript.
+Pro účely vývoje můžete požadavek na rozhraní API Bingu pro vyhledávání na webu provést prostřednictvím proxy serveru CORS. Odpověď z takového proxy serveru má hlavičku `Access-Control-Expose-Headers`, která přidává hlavičky odpovědí na seznam povolených a zpřístupňuje je pro JavaScript.
 
-Je snadné se má nainstalovat proxy CORS umožňující našem kurzu aplikaci pro přístup klienta do záhlaví ID. První, pokud ještě nemáte, [instalace softwaru Node.js](https://nodejs.org/en/download/). Potom vydejte následující příkaz v příkazovém okně:
+Nainstalovat proxy server CORS a povolit naší ukázkové aplikaci přístup k hlavičce ID klienta je snadné. Nejdřív [nainstalujte Node.js](https://nodejs.org/en/download/), pokud jste to ještě neudělali. Pak zadejte v příkazovém okně tento příkaz:
 
     npm install -g cors-proxy-server
 
-V dalším kroku změňte hledání webové služby Bing koncový bod v souboru HTML na:
+V dalším kroku změňte koncový bod vyhledávání na webu Bingu v souboru HTML na:
 
     http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
 
-Nakonec spusťte CORS proxy pomocí následujícího příkazu:
+Nakonec spusťte proxy server CORS pomocí tohoto příkazu:
 
     cors-proxy-server
 
-Nechte Otevřete příkazové okno při používání kurz aplikace; zavřením okna zastaví proxy serveru. V rozšíření hlavičky protokolu HTTP části níže výsledky hledání, se nyní zobrazí `X-MSEdge-ClientID` hlavičky (mimo jiné) a ověřte, zda je stejný pro každý požadavek.
+Při používání ukázkové aplikace nechte příkazové okno otevřené. Zavřením okna se zastaví proxy server. V rozbalitelné sekci hlaviček HTTP pod výsledky hledání teď uvidíte hlavičku `X-MSEdge-ClientID` (mimo jiné) a můžete zkontrolovat, jestli je stejná pro každý požadavek.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Referenční dokumentace rozhraní API vyhledávání bitové kopie Bingu](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+> [Extrahování podrobností o obrázku pomocí rozhraní API Bingu pro vyhledávání obrázků](tutorial-image-post.md)
 
+## <a name="see-also"></a>Viz také
+
+* [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

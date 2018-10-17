@@ -1,3 +1,20 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: storage
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 09/15/2018
+ms.author: tamram
+ms.custom: include file
+ms.openlocfilehash: 075e19ecb078bbbd5be0d46ed58405b18ebc8334
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45738463"
+---
 ## <a name="set-up-your-development-environment"></a>Nastavení vývojového prostředí
 Potom si nastavte vývojové prostředí v sadě Visual Studio, abyste byli připraveni vyzkoušet příklady kódů z této příručky.
 
@@ -41,7 +58,7 @@ Ke spuštění příkladů z této příručky máte dvě možnosti prostředí:
 * Svůj kód můžete spustit na účtu služby Azure Storage v cloudu. 
 * Svůj kód můžete spustit v emulátoru úložiště Azure. Emulátor úložiště je místní prostředí, které emuluje účet služby Azure Storage v cloudu. Emulátor je bezplatnou možností pro testování a ladění kódu během vývoje aplikace. Emulátor používá známý účet a klíč. Další informace najdete v článku [Použití emulátoru úložiště Azure pro vývoj a testování](../articles/storage/common/storage-use-emulator.md).
 
-Pokud se zaměřujete na účet úložiště v cloudu, zkopírujte z webu Azure Portal primární přístupový klíč svého účtu úložiště. Další informace najdete v článku [Zobrazení a kopírování přístupového klíče k úložišti](../articles/storage/common/storage-create-storage-account.md#view-and-copy-storage-access-keys).
+Pokud se zaměřujete na účet úložiště v cloudu, zkopírujte z webu Azure Portal primární přístupový klíč svého účtu úložiště. Další informace najdete v části [Přístupové klíče](../articles/storage/common/storage-account-manage.md#access-keys).
 
 > [!NOTE]
 > Pokud se chcete vyhnout nákladům spojeným se službou Azure Storage, můžete se zaměřit na emulátor úložiště. I když se zaměříte na účet úložiště Azure v cloudu, budou náklady na vyzkoušení postupů z tohoto kurzu zanedbatelné.

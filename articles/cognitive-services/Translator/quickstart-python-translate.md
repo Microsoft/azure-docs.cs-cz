@@ -1,21 +1,21 @@
 ---
-title: Translator Text – překlad textu s Pythonem | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: V tomto rychlém startu přeložíte text z jednoho jazyka do jiného pomocí služby Translator Text API s Pythonem ve službách Cognitive Services.
+title: 'Rychlý start: Překlad textu – Translator Text, Python'
+titleSuffix: Azure Cognitive Services
+description: V tomto rychlém startu přeložíte text z jednoho jazyka do jiného pomocí služby Translator Text API s Pythonem.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: nolachar
-ms.openlocfilehash: 8f70ffb77e21131990d6b77a1cb13c9d5c054d06
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: cd1941c0a815d959f3e2e98fdd809062f4e01014
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "43768990"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129181"
 ---
 # <a name="quickstart-translate-text-with-python"></a>Rychlý start: Překlad textu s Pythonem
 

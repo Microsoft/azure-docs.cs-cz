@@ -1,42 +1,43 @@
 ---
-title: 'Postupy: postojích analýzy v textu Analytics REST API (kognitivní služeb pro Microsoft v Azure) | Microsoft Docs'
-description: Jak zjistit postojích pomocí Text Analytics REST API v kognitivní služby společnosti Microsoft na platformě Azure v tomto kurzu návod.
+title: 'Příklad: Analýza mínění pomocí rozhraní REST API pro analýzu textu'
+titleSuffix: Azure Cognitive Services
+description: Přečtěte si, jak zjistit mínění pomocí rozhraní REST API pro analýzu textu.
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
-ms.topic: article
-ms.date: 12/11/2017
+ms.topic: sample
+ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: 7ffd8bbe47409b459fdd308cd8d670d32f56649b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 981e663b6a93abed1da9c2765a1b43063c70ad43
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342649"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605891"
 ---
-# <a name="how-to-detect-sentiment-in-text-analytics"></a>K zjištění postojích v Analýza textu
+# <a name="example-how-to-detect-sentiment-in-text-analytics"></a>Příklad: Jak zjistit mínění pomocí analýzy textu
 
-[Postojích Analysis API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) vyhodnotí zadávání textu a vrátí postojích skóre pro každý dokument rozsahu od 0 (záporné) na hodnotu 1 (pozitivní).
+[Rozhraní API pro analýzu mínění](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) vyhodnocuje textový vstup a vrací skóre mínění pro každý dokument v rozsahu 0 (negativní) až 1 (pozitivní).
 
-Tato možnost je užitečná pro zjišťování kladné a záporné postojích v sociálních sítích, zákaznické recenze a diskusní fóra. Obsah je zadaný; modely a Cvičná data jsou poskytovaný službou.
+Tato možnost je užitečná pro rozpoznání pozitivního a negativního mínění v sociálních médiích, zákaznických recenzích a diskuzních fórech. Obsah pochází od vás, modely a trénovací data poskytuje služba.
 
-V současné době podporuje postojích Analysis angličtina, němčina, španělština a francouzštinu. Další jazyky jsou ve verzi preview. Další informace najdete v tématu [podporované jazyky](../text-analytics-supported-languages.md).
+Pro analýzu mínění se momentálně podporuje angličtina, němčina, španělština a francouzština. Další jazyky jsou ve verzi Preview. Další informace najdete v tématu [Podporované jazyky](../text-analytics-supported-languages.md).
 
 ## <a name="concepts"></a>Koncepty
 
-Analýza textu strojového učení klasifikační algoritmus a používá ke generování postojích skóre mezi 0 a 1. Skóre blíže 1 znamenat kladné postojích, zatímco skóre blíže 0 označuje záporné postojích. Model je pretrained rozsáhlé subjektu, textu postojích přidružení. V současné době není možné poskytnout vlastní Cvičná data. Model používá kombinaci technik při analýze textu, včetně text zpracování, analýzu část řeči, word umístění a přidružení aplikace word. Další informace o algoritmus najdete v tématu [představení Analýza textu](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/).
+Analýza textu vygeneruje pomocí algoritmu pro klasifikaci strojového učení skóre mínění v rozsahu 0 až 1. Skóre blížící se 1 značí pozitivní mínění, zatímco skóre blížící se 0 značí negativní mínění. Model je předem natrénovaný pomocí velkého počtu textů s přidruženími mínění. V současné době není možné dodat vlastní trénovací data. Při analýze textu model používá různé postupy, například zpracování textu, analýzu částí řeči, rozmístění slov a asociace slov. Další informace o tomto algoritmu najdete v [základních informacích o analýze textu](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/).
 
-Provedení analýzy postojích na celý dokument a extrahování postojích pro konkrétní entitu v textu. V praxi existuje určitá tendence, že pro vyhodnocování přesnost ke zlepšení při dokumenty obsahují jednu nebo dvě věty spíše než velkou část textu. Během fáze hodnocení objektivity modelu určuje, zda je cílem dokumentu jako celku, nebo obsahuje postojích. A dokumentu, který není většinou cíle nemá průběh k postojích detekce fráze, což vede k.50 skóre, s žádné další zpracování. V další fázi pro dokumenty, budete pokračovat v kanálu, generuje skóre nad nebo pod.50, v závislosti na stupeň postojích zjistil v dokumentu.
+Analýza mínění se provádí pro celý dokument, ne jako extrakce mínění u konkrétní entity v textu. Dá se říct, že v praxi bývá skóre přesnější, když dokumenty obsahují jednu nebo dvě věty, a ne rozsáhlý blok textu. Během fáze hodnocení objektivity model určuje, jestli je dokument jako celek objektivní, nebo obsahuje subjektivní mínění. Dokument, který je převážně objektivní, nepřechází do fáze rozpoznávání mínění, dále se nezpracovává a jeho výsledné skóre bude 0,5. Pro dokumenty pokračující do další fáze se vygeneruje skóre vyšší nebo nižší než 0,5 v závislosti na míře subjektivního mínění rozpoznané v daném dokumentu.
 
 ## <a name="preparation"></a>Příprava
 
-Analýza postojích vytvoří vyšší výsledek kvality mající menší bloky dat textu při práci. Toto je opačné extrakci klíče frázi, která provádí lépe větší bloky textu. K dosažení nejlepších výsledků z obou operace, zvažte změnu struktury vstupy odpovídajícím způsobem.
+Výsledky analýzy mínění jsou kvalitnější pro menší bloky textu. Je to tedy přesně naopak než u extrakce klíčových frází, která vrací lepší výsledky pro větší bloky textu. Zvažte podle toho možnost restrukturalizace vstupů, abyste z obou operací získali co nejlepší výsledky.
 
-Dokumenty JSON musí mít v tomto formátu: id, text, jazyk
+Musíte mít dokumenty JSON v tomto formátu: ID, text, kód jazyka.
 
-Velikost dokumentu musí být v části 5 000 znaků na jednu dokumentu, a může mít až 1 000 položek (ID) na kolekci. Kolekce je odeslán v textu požadavku. Následuje příklad obsahu, který může odeslat pro analýzu postojích.
+Dokument nesmí obsahovat více než 5 000 znaků a v každé kolekci můžete mít až 1 000 položek (ID). Kolekce se posílá v textu žádosti. Následuje příklad obsahu, který můžete odeslat pro analýzu mínění.
 
 ```
     {
@@ -70,35 +71,35 @@ Velikost dokumentu musí být v části 5 000 znaků na jednu dokumentu, a můž
     }
 ```
 
-## <a name="step-1-structure-the-request"></a>Krok 1: Struktury požadavku
+## <a name="step-1-structure-the-request"></a>Krok 1: Struktura žádosti
 
-Podrobnosti o definice žádosti lze nalézt v [jak volat rozhraní API Analytics Text](text-analytics-how-to-call-api.md). Pro usnadnění práce se revidovat následující body:
+Podrobnosti o definici žádosti najdete v článku o [volání rozhraní API pro analýzu textu](text-analytics-how-to-call-api.md). Pro usnadnění znovu uvádíme následující body:
 
-+ Vytvoření **POST** požadavku. Přečtěte si dokumentaci k rozhraní API pro tuto žádost: [postojích Analysis API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9)
++ Vytvořte žádost **POST**. Projděte si dokumentaci k rozhraní API týkající se této žádosti: [Rozhraní API pro analýzu mínění](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9).
 
-+ Nastavte koncový bod HTTP pro extrakci klíče frázi. Musí zahrnovat `/sentiment` prostředků: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment`
++ Nastavte koncový bod HTTP pro extrakci klíčových frází. Musí obsahovat prostředek `/sentiment`: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment`
 
-+ Nastavte hlavičku požadavku zahrnout přístupový klíč pro operace Analýza textu. Další informace najdete v tématu [jak najít koncových bodů a přístupové klíče](text-analytics-how-to-access-key.md).
++ Nastavte hlavičku žádosti tak, aby obsahovala přístupový klíč pro operace analýzy textu. Další informace najdete v článku, který se věnuje [vyhledání koncových bodů a přístupových klíčů](text-analytics-how-to-access-key.md).
 
-+ V těle žádosti zadejte kolekci dokumentů JSON, který jste připravili pro tuto analýzu.
++ V textu požadavku zadejte kolekci dokumentů JSON, kterou jste si připravili pro tuto analýzu.
 
 > [!Tip]
-> Použití [Postman](text-analytics-how-to-call-api.md) nebo otevřít **rozhraní API testování konzoly** v [dokumentace](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) a struktury požadavek POST do služby.
+> Použijte aplikaci [Postman](text-analytics-how-to-call-api.md) nebo otevřete **konzolu pro testování rozhraní API** v [dokumentaci](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) a vytvořte strukturu žádosti a pomocí příkazu POST ji odešlete do služby.
 
-## <a name="step-2-post-the-request"></a>Krok 2: Odeslat požadavek
+## <a name="step-2-post-the-request"></a>Krok 2: Odeslání žádosti
 
-Po přijetí žádosti o provedení analýzy. Služba přijímá až 100 požadavky za minutu. Každý požadavek může být maximálně 1 MB.
+Analýza se provede po přijetí žádosti. Služba přijme maximálně 100 žádostí za minutu. Každá žádost může mít maximální velikost 1 MB.
 
-Odvolat, zda je služba bezstavové. Žádná data se ukládají ve vašem účtu. Výsledky jsou vráceny okamžitě v odpovědi.
+Nezapomeňte, že služba je bezstavová. Ve vašem účtu se neukládají žádná data. Výsledky se vrátí okamžitě v odpovědi.
 
 
 ## <a name="step-3-view-results"></a>Krok 3: Zobrazení výsledků
 
-Analyzátor postojích klasifikuje text jako převážně kladné a záporné, přiřadí skóre v rozsahu od 0 do 1. Hodnoty blízko 0,5 jsou neutrálních nebo neurčitou. Skóre 0,5 označuje neutrality. Pokud řetězec nemůže být analyzován z hlediska postojích nebo nemá žádné postojích, skóre je vždy 0,5 přesně. Pokud předáte ve španělské řetězec s kódem anglickém jazyce, je skóre například 0,5.
+Analýza mínění klasifikuje text jako převážně pozitivní nebo negativní a přiřadí mu skóre v rozsahu 0 až 1. Hodnoty blížící se 0,5 představují neutrální nebo neurčité mínění. Skóre 0,5 indikuje neutralitu. Pokud u řetězce nelze analyzovat mínění nebo v něm žádné mínění není, bude skóre vždycky přesně 0,5. Když například zadáte řetězec ve španělštině s kódem jazyka pro angličtinu, je skóre 0,5.
 
-Výstup se vrátí okamžitě. Stream výsledky do aplikace, která přijímá JSON nebo uložte si výstup do souboru na lokálním systému a následně ho naimportovat do aplikace, která umožňuje řazení, vyhledávání a manipulovat s daty.
+Výstup se vrátí okamžitě. Výsledky můžete streamovat do aplikace, která přijímá JSON, nebo můžete výstup uložit do souboru v místním systému a potom ho naimportovat do aplikace, která umožňuje řadit a vyhledávat data a pracovat s nimi.
 
-Následující příklad ukazuje odpověď pro kolekce dokumentů v tomto článku.
+Následující příklad ukazuje odpověď pro kolekci dokumentů v tomto článku.
 
 ```
 {
@@ -130,20 +131,20 @@ Následující příklad ukazuje odpověď pro kolekce dokumentů v tomto člán
 
 ## <a name="summary"></a>Souhrn
 
-V tomto článku jste se dozvěděli, koncepty a pracovní postup pro analýzu postojích pomocí Analýza textu v kognitivní služby. Shrnutí:
+V tomto článku jste se seznámili s koncepty a pracovním postupem analýzy mínění pomocí funkce Analýza textu ve službě Cognitive Services. Souhrn:
 
-+ [Analýza postojích rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) je k dispozici pro vybrané jazyky.
-+ Dokumenty JSON v textu požadavku zahrnují id, text a jazyk kódu.
-+ Je požadavek POST `/sentiment` koncový bod, pomocí přizpůsobené [přístup klíč a koncový bod](text-analytics-how-to-access-key.md) , je platný pro vaše předplatné.
-+ Odpověď výstupu, který se skládá z postojích skóre pro každý dokument ID, Streamovat k jakékoli aplikaci, která přijímá formát JSON, včetně aplikace Excel a Power BI a další.
++ [Rozhraní API pro analýzu mínění](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) je k dispozici pro vybrané jazyky.
++ Dokumenty JSON obsahují v textu žádosti ID, text a kód jazyka.
++ Žádost POST je určená pro koncový bod `/sentiment` a používá individuální [přístupový klíč a koncový bod](text-analytics-how-to-access-key.md), který je platný pro dané předplatné.
++ Výstup odpovědi, který tvoří skóre mínění pro jednotlivá ID dokumentu, lze streamovat do libovolné aplikace, která přijímá JSON, včetně například Excelu a Power BI.
 
-## <a name="see-also"></a>Další informace najdete v tématech 
+## <a name="see-also"></a>Viz také 
 
- [Přehled analýzy textu](../overview.md)  
- [Nejčastější dotazy (FAQ)](../text-analytics-resource-faq.md)</br>
- [Stránka produktu Analýza textu](//go.microsoft.com/fwlink/?LinkID=759712) 
+ [Přehled rozhraní API pro analýzu textu](../overview.md)  
+ [Nejčastější dotazy](../text-analytics-resource-faq.md)</br>
+ [Produktová stránka pro analýzu textu](//go.microsoft.com/fwlink/?LinkID=759712) 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Rozbalte klíče fráze](text-analytics-how-to-keyword-extraction.md)
+> [Extrakce klíčových frází](text-analytics-how-to-keyword-extraction.md)

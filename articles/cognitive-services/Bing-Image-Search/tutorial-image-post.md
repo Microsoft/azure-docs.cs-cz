@@ -1,185 +1,116 @@
 ---
-title: Odesílání bitové kopie Bingu přehledů | Microsoft Docs
-description: Konzolová aplikace, který používá rozhraní API služby Bing Image Search přehledné bitové kopie a nahrajte image.
+title: 'Kurz: Extrahování podrobností o obrázku pomocí C# – rozhraní API Bingu pro vyhledávání obrázků'
+titleSuffix: Azure Cognitive Services
+description: Pomocí informací v tomto článku vytvořte aplikaci v jazyce C#, která extrahuje podrobnosti o obrázku pomocí rozhraní API Bingu pro vyhledávání obrázků.
 services: cognitive-services
-author: mikedodaro
-manager: rosh
+author: aahill
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-image-search
-ms.topic: article
-ms.date: 12/07/2017
-ms.author: v-gedod
-ms.openlocfilehash: f0bf32a9951527a072fffe464f6b5f50d0f237a2
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.topic: tutorial
+ms.date: 9/14/2018
+ms.author: aahi
+ms.openlocfilehash: 96d011a04c97d309409062a286bdd7a17db9cda5
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342390"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297652"
 ---
-# <a name="tutorial-bing-image-upload-for-insights"></a>Kurz: Bitové kopie Bingu nahrát přehledů
+# <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>Kurz: Extrahování podrobností pomocí rozhraní API Bingu pro vyhledávání obrázků a C#
 
-Poskytuje rozhraní API služby Bing Image Search `POST` možnost odeslat bitové kopie a hledat informace, které jsou relevantní pro bitovou kopii. Tato Konzolová aplikace C# odešle obrázek používá koncový bod hledání bitovou kopii k získání podrobností o bitové kopii.
-Ve výsledcích stručně řečeno, jsou objekty JSON například následující:
+Existuje více [koncových bodů](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-endpoint) dostupných prostřednictvím rozhraní API Bingu pro vyhledávání obrázků. Koncový bod `/details` přijímá s obrázkem požadavek POST a může vrátit různé informace o obrázku. Tato aplikace C# odešle obrázek pomocí tohoto rozhraní API a zobrazí podrobnosti vrácené Bingem, což jsou objekty JSON, například následující:
 
 ![[Výsledky JSON]](media/cognitive-services-bing-images-api/jsonResult.jpg)
 
 Tento kurz vysvětluje následující postupy:
 
 > [!div class="checklist"]
-> * Použijte funkci vyhledávání Image `/details` koncového bodu v `POST` požadavku
-> * Zadejte hlavičky pro dané žádosti
-> * Použijte parametry adresy URL k určení výsledky
-> * Odešle data bitové kopie a odeslat `POST` požadavku
-> * Tisk výsledků JSON do konzoly
+> * Použití koncového bodu `/details` vyhledávání obrázků v požadavku `POST`
+> * Zadání hlaviček pro požadavek
+> * Specifikace výsledků pomocí parametrů adresy URL
+> * Odeslání dat obrázku a odeslání požadavku `POST`
+> * Tisk výsledků JSON v konzole
 
-## <a name="app-components"></a>Součásti aplikace
+Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingGetSimilarImages.cs).
 
-Kurz aplikace obsahuje tři části:
+## <a name="prerequisites"></a>Požadavky
 
-> [!div class="checklist"]
-> * Konfigurace koncového bodu a zadat koncový bod hledání bitové kopie Bingu a požadované hlavičky
-> * Odeslání souboru bitové kopie pro `POST` požadavek na koncový bod
-> * Analýza výsledky JSON, které jsou uvedeny podrobnosti vrácená z `POST` požadavku
+* Libovolná edice sady [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/).
 
-## <a name="scenario-overview"></a>Přehled scénáře
-Existují [tři koncové body Image vyhledávání](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-endpoint). `/details` Koncového bodu můžete použít `POST` žádost s bitové kopie dat v textu požadavku.
+[!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
+
+## <a name="construct-an-image-details-search-request"></a>Vytvoření žádosti o vyhledávání podrobností o snímku
+
+Níže je uvedený koncový bod `/details`, který přijímá požadavky POST s údaji o obrázku v těle požadavku.
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/details
 ```
-`modules` Následující parametr URL `/details?` Určuje, jaký druh podrobnosti výsledky obsahují:
+
+Při vytváření adresy URL žádosti o vyhledávání se parametr `modules` řídí výše uvedeným koncovým bodem a určuje typy podrobností, které budou výsledky obsahovat:
+
 * `modules=All`
-* `modules=RecognizedEntities` (osoby nebo místech viditelné v bitové kopii)
+* `modules=RecognizedEntities` (lidé nebo místa na obrázku)
 
-Zadejte `modules=All` v `POST` požadavek na načtení text JSON, který obsahuje v následujícím seznamu:
-* `bestRepresentativeQuery` -Bing dotaz, který vrátí podobné nahraný obrázek bitové kopie
-* `detectedObjects` například ohraničující pole nebo aktivní body v bitové kopii
-* `image` metadata
-* `imageInsightsToken` -token pro následné `GET` požadavek, který získá `RecognizedEntities` (osoby nebo místech viditelné v bitové kopii) 
-* `imageTags`
-* `pagesIncluding` -Webové stránky, které zahrnují bitovou kopii
-* `relatedSearches`
-* `visuallySimilarImages`
+Zadáním `modules=All` v požadavku POST získáte text JSON, který obsahuje následující informace:
 
-Zadejte `modules=RecognizedEntities` v `POST` požadavek na načtení pouze `imageInsightsToken`, který se používá v následné `GET` požadavku. Ji identifikuje osoby nebo umístí viditelné v bitové kopii.
+* `bestRepresentativeQuery` – dotaz Bingu, který vrátí obrázky podobné odeslanému obrázku
+* `detectedObjects` – objekty nalezené v obrázku
+* `image` – metadata pro obrázek
+* `imageInsightsToken` – token pro pozdější požadavky GET, které získají `RecognizedEntities` (lidé nebo místa na obrázku) z obrázku.
+* `imageTags` – značky pro obrázek
+* `pagesIncluding` – webové stránky, které obsahují daný obrázek
+* `relatedSearches` – hledání na základě podrobností v obrázku
+* `visuallySimilarImages` – podobné obrázky na webu
 
-## <a name="webclient-and-headers-for-the-post-request"></a>Webový klient a hlavičky pro v příspěvku požadavků
-Vytvoření `WebClient` objektu a nastavit hlavičky. Všechny požadavky na rozhraní API služby Bing Search vyžadují `Ocp-Apim-Subscription-Key`. A `POST` žádost odeslat bitovou kopii musíte zadat také `ContentType: multipart/form-data`.
+Zadejte `modules=RecognizedEntities` v požadavku POST, pokud chcete získat pouze `imageInsightsToken`, který je možné použít v následujícím požadavku GET k identifikaci osob nebo míst na obrázku.
 
-```
-            WebClient client = new WebClient();
-            client.Headers["Ocp-Apim-Subscription-Key"] = accessKey;
-            client.Headers["ContentType"] = "multipart/form-data"; 
-```
+## <a name="create-a-webclient-object-and-set-headers-for-the-api-request"></a>Vytvoření objektu WebClient a nastavení hlaviček pro požadavek rozhraní API
 
-## <a name="upload-the-image-and-get-results"></a>Odeslat bitovou kopii a získat výsledky
+Vytvořte objekt `WebClient` a nastavte hlavičky. Všechny požadavky na rozhraní API Bingu pro vyhledávání vyžadují `Ocp-Apim-Subscription-Key`. Požadavek `POST` k nahrání obrázku musí také určovat `ContentType: multipart/form-data`.
 
-`WebClient` Třída zahrnuje `UpLoadFile` metoda, která formáty dat pro `POST` požadavku. Formátuje `RequestStream` a volání `HttpWebRequest`, zabraňující spoustu složitost.
-Volání `WebClient.UpLoadFile` s `/details` koncový bod a soubor bitové kopie k odeslání. Odpověď je binární data, která je snadno převést na JSON. 
-
-Použijte JSON text k chybě při inicializaci instance `SearchResult` struktury (najdete v článku [zdrojovému kódu aplikace](tutorial-image-post-source.md) pro kontext).
-```        
-         const string uriBase = "https://api.cognitive.microsoft.com/bing/v7.0/images/details";
-
-        // The image to upload. Replace with your file and path.
-        const string imageFile = "ansel-adams-tetons-snake-river.jpg";
-            
-        byte[] resp = client.UploadFile(uriBase + "?modules=All", imageFile);
-        var json = System.Text.Encoding.Default.GetString(resp);
-
-        // Create result object for return
-        var searchResult = new SearchResult()
-        {
-            jsonResult = json,
-            relevantHeaders = new Dictionary<String, String>()
-        };
+```javascript
+WebClient client = new WebClient();
+client.Headers["Ocp-Apim-Subscription-Key"] = accessKey;
+client.Headers["ContentType"] = "multipart/form-data";
 ```
 
-## <a name="print-the-results"></a>Tisk výsledků
-Zbytek kód analyzuje výsledku JSON a vytiskne ji do konzoly.
+## <a name="upload-the-image-and-display-the-results"></a>Odeslání obrázku a zobrazení výsledků
 
+Metoda `UpLoadFile()` třídy `WebClient` formátuje data pro požadavek `POST`, včetně formátování `RequestStream` a volání `HttpWebRequest`.
+
+Volejte `WebClient.UpLoadFile()` s koncovým bodem `/details` a souborem obrázku, který chcete nahrát. Pomocí odpovědi JSON inicializujte instanci struktury `SearchResult` a uložte odpověď.
+
+```javascript        
+const string uriBase = "https://api.cognitive.microsoft.com/bing/v7.0/images/details";
+// The image to upload. Replace with your file and path.
+const string imageFile = "your-image.jpg";
+byte[] resp = client.UploadFile(uriBase + "?modules=All", imageFile);
+var json = System.Text.Encoding.Default.GetString(resp);
+// Create result object for return
+var searchResult = new SearchResult()
+{
+    jsonResult = json,
+    relevantHeaders = new Dictionary<String, String>()
+};
 ```
-        /// <summary>
-        /// Formats the given JSON string by adding line breaks and indents.
-        /// </summary>
-        /// <param name="json">The raw JSON string to format.</param>
-        /// <returns>The formatted JSON string.</returns>
-        static string JsonPrettyPrint(string json)
-        {
-            if (string.IsNullOrEmpty(json))
-                return string.Empty;
+Tato odpověď JSON pak může být vytištěna v konzole.
 
-            json = json.Replace(Environment.NewLine, "").Replace("\t", "");
+## <a name="use-an-image-insights-token-in-a-request"></a>Použití tokenu přehledu obrázků v požadavku
 
-            StringBuilder sb = new StringBuilder();
-            bool quote = false;
-            bool ignore = false;
-            char last = ' ';
-            int offset = 0;
-            int indentLength = 2;
+Pokud chcete použít token `ImageInsightsToken` vrácený s výsledky požadavku `POST`, můžete ho přidat do požadavku `GET`. Příklad:
 
-            foreach (char ch in json)
-            {
-                switch (ch)
-                {
-                    case '"':
-                        if (!ignore) quote = !quote;
-                        break;
-                    case '\\':
-                        if (quote && last != '\\') ignore = true;
-                        break;
-                }
-
-                if (quote)
-                {
-                    sb.Append(ch);
-                    if (last == '\\' && ignore) ignore = false;
-                }
-                else
-                {
-                    switch (ch)
-                    {
-                        case '{':
-                        case '[':
-                            sb.Append(ch);
-                            sb.Append(Environment.NewLine);
-                            sb.Append(new string(' ', ++offset * indentLength));
-                            break;
-                        case '}':
-                        case ']':
-                            sb.Append(Environment.NewLine);
-                            sb.Append(new string(' ', --offset * indentLength));
-                            sb.Append(ch);
-                            break;
-                        case ',':
-                            sb.Append(ch);
-                            sb.Append(Environment.NewLine);
-                            sb.Append(new string(' ', offset * indentLength));
-                            break;
-                        case ':':
-                            sb.Append(ch);
-                            sb.Append(' ');
-                            break;
-                        default:
-                            if (quote || ch != ' ') sb.Append(ch);
-                            break;
-                    }
-                }
-                last = ch;
-            }
-
-            return sb.ToString().Trim();
-        }
-```
-## <a name="get-request-using-the-imageinsightstoken"></a>ZÍSKAT žádost o použití ImageInsightsToken
-Použít `ImageInsightsToken` vrátí s výsledky `POST`, vytvoření `GET` požadavek takto:
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/details?InsightsToken="bcid_A2C4BB81AA2C9EF8E049C5933C546449*ccid_osS7gaos*mid_BF7CC4FC4A882A3C3D56E644685BFF7B8BACEAF2
 ```
-Pokud existují osobní osoby nebo místech bitovou kopii, tento požadavek vrátí informace o nich.
-[– Elementy QuickStart](https://docs.microsoft.com/azure/cognitive-services/bing-image-search) obsahovat mnoho příklady kódu.
 
-## <a name="next-steps"></a>Další postup
+Pokud obrázek obsahuje identifikovatelné osoby nebo místa, tento požadavek o nich vrátí informace.
+
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Referenční dokumentace rozhraní API vyhledávání bitové kopie Bingu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+> [Zobrazení obrázků a možnosti vyhledávání v jednostránkové webové aplikaci ](tutorial-bing-image-search-single-page-app.md)
 
+## <a name="see-also"></a>Viz také
+
+* [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

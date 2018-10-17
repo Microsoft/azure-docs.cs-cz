@@ -1,32 +1,33 @@
 ---
-title: 'Postupy: jazyk detekce v textu Analytics REST API (kognitivní služeb pro Microsoft v Azure) | Microsoft Docs'
-description: Jak zjistit jazyk pomocí Text Analytics REST API v kognitivní služby společnosti Microsoft na platformě Azure v tomto kurzu návod.
+title: 'Příklad: Rozpoznávání jazyka pomocí rozhraní REST API pro analýzu textu'
+titleSuffix: Azure Cognitive Services
+description: Přečtěte si, jak rozpoznat jazyk pomocí rozhraní REST API pro analýzu textu.
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
-ms.topic: article
-ms.date: 3/07/2018
+ms.topic: sample
+ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: f8e2d9a36533c298addcf42d3cb2061e9c2d1ac7
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: fa71e4ce2e5cb5967bb583c7314072830de08051
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342647"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604548"
 ---
-# <a name="how-to-detect-language-in-text-analytics"></a>K zjištění jazyk v Analýza textu
+# <a name="example-how-to-detect-language-in-text-analytics"></a>Příklad: Jak rozpoznat jazyk pomocí funkce Analýza textu
 
-[Rozhraní API jazyka detekce](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) vyhodnotí text vstupní a pro každý dokument a vrátí identifikátory jazyka se skóre, která určuje, jaká síla analýzy. Analýza textu rozpozná až 120 jazyky.
+[Rozhraní API pro rozpoznávání jazyka](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) vyhodnotí textový vstup a pro každý dokument vrátí identifikátory jazyka se skóre, které označuje sílu analýzy. Analýza textu rozpozná až 120 jazyků.
 
-Tato funkce se hodí pro obsah ukládá tento shromažďování libovolný text, který jazyk neznámé. Výsledky kontroly k určení, který jazyk je používán vstupní dokument můžete analyzovat. Odpověď se vrátí taky skóre, což odráží spolehlivosti modelu (hodnota mezi 0 a 1).
+Tato schopnost je užitečná pro úložiště obsahu, která shromažďují libovolné texty, u nichž není jazyk znám. Výsledky této analýzy můžete parsovat a určit, v kterém jazyce je vstupní dokument napsaný. Spolu s odpovědí se vrátí také skóre, které odráží spolehlivost modelu (jedná se o hodnotu 0 až 1).
 
 ## <a name="preparation"></a>Příprava
 
-Dokumenty JSON musí mít v tomto formátu: id, text
+Musíte mít dokumenty JSON v tomto formátu: ID, text.
 
-Velikost dokumentu musí být v části 5 000 znaků na jednu dokumentu, a může mít až 1 000 položek (ID) na kolekci. Kolekce je odeslán v textu požadavku. Následuje příklad obsahu, který může odeslat zjišťování jazyka.
+Dokument nesmí obsahovat více než 5 000 znaků a v každé kolekci můžete mít až 1 000 položek (ID). Kolekce se posílá v textu žádosti. Následuje příklad obsahu, který můžete odeslat pro rozpoznání jazyka.
 
    ```
     {
@@ -55,37 +56,37 @@ Velikost dokumentu musí být v části 5 000 znaků na jednu dokumentu, a můž
     }
 ```
 
-## <a name="step-1-structure-the-request"></a>Krok 1: Struktury požadavku
+## <a name="step-1-structure-the-request"></a>Krok 1: Struktura žádosti
 
-Podrobnosti o definice žádosti lze nalézt v [jak volat rozhraní API Analytics Text](text-analytics-how-to-call-api.md). Pro usnadnění práce se revidovat následující body:
+Podrobnosti o definici žádosti najdete v článku o [volání rozhraní API pro analýzu textu](text-analytics-how-to-call-api.md). Pro usnadnění znovu uvádíme následující body:
 
-+ Vytvoření **POST** požadavku. Přečtěte si dokumentaci k rozhraní API pro tuto žádost: [rozhraní API jazyka detekce](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)
++ Vytvořte žádost **POST**. Projděte si dokumentaci k rozhraní API týkající se této žádosti: [Rozhraní API pro rozpoznávání jazyka](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7).
 
-+ Nastavte koncový bod HTTP zjišťování jazyka. Musí zahrnovat `/languages` prostředků: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages`
++ Nastavte koncový bod HTTP pro rozpoznávání jazyka. Musí obsahovat prostředek `/languages`: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages`.
 
-+ Nastavte hlavičku požadavku zahrnout přístupový klíč pro operace Analýza textu. Další informace najdete v tématu [jak najít koncových bodů a přístupové klíče](text-analytics-how-to-access-key.md).
++ Nastavte hlavičku žádosti tak, aby obsahovala přístupový klíč pro operace analýzy textu. Další informace najdete v článku, který se věnuje [vyhledání koncových bodů a přístupových klíčů](text-analytics-how-to-access-key.md).
 
-+ V těle žádosti zadejte kolekci dokumentů JSON, který jste připravili pro tuto analýzu
++ V textu žádosti zadejte kolekci dokumentů JSON, kterou jste si připravili pro tuto analýzu.
 
 > [!Tip]
-> Použití [Postman](text-analytics-how-to-call-api.md) nebo otevřít **rozhraní API testování konzoly** v [dokumentace](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) a struktury požadavek POST do služby.
+> Použijte aplikaci [Postman](text-analytics-how-to-call-api.md) nebo otevřete **konzolu pro testování rozhraní API** v [dokumentaci](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) a vytvořte strukturu žádosti a pomocí příkazu POST ji odešlete do služby.
 
-## <a name="step-2-post-the-request"></a>Krok 2: Odeslat požadavek
+## <a name="step-2-post-the-request"></a>Krok 2: Odeslání žádosti
 
-Po přijetí žádosti o provedení analýzy. Služba přijímá až 100 požadavky za minutu. Každý požadavek může být maximálně 1 MB.
+Analýza se provede po přijetí žádosti. Služba přijme maximálně 100 žádostí za minutu. Každý žádost může mít maximální velikost 1 MB.
 
-Odvolat, zda je služba bezstavové. Žádná data se ukládají ve vašem účtu. Výsledky jsou vráceny okamžitě v odpovědi.
+Nezapomeňte, že služba je bezstavová. Ve vašem účtu se neukládají žádná data. Výsledky se vrátí okamžitě v odpovědi.
 
 
 ## <a name="step-3-view-results"></a>Krok 3: Zobrazení výsledků
 
-Všech požadavků POST vrátí JSON formátu odpovědi ID a zjistila vlastnosti.
+Všechny žádosti POST vrací odpověď ve formátu JSON s ID a zjištěnými vlastnostmi.
 
-Výstup se vrátí okamžitě. Stream výsledky do aplikace, která přijímá JSON nebo uložte si výstup do souboru na lokálním systému a následně ho naimportovat do aplikace, která umožňuje řazení, vyhledávání a manipulovat s daty.
+Výstup se vrátí okamžitě. Výsledky můžete streamovat do aplikace, která přijímá JSON, nebo můžete výstup uložit do souboru v místním systému a potom ho naimportovat do aplikace, která umožňuje řadit a vyhledávat data a pracovat s nimi.
 
-Výsledky pro příklad požadavek by měl vypadat jako následujícím kódu JSON. Všimněte si, že se jedná o jeden dokument s více položek. Výstup je v angličtině. Identifikátory jazyka zahrnují popisný název a kód jazyka v [ISO 639-1](https://www.iso.org/standard/22109.html) formátu.
+Výsledky ukázkové žádosti by měly vypadat jako následující JSON. Všimněte si, že se jedná o jeden dokument s více položkami. Výstup je v angličtině. Identifikátory jazyka zahrnují popisný název a kód jazyka ve formátu [ISO 639-1](https://www.iso.org/standard/22109.html).
 
-Kladné skóre 1.0 vyjadřoval nejvyšší úroveň spolehlivosti možné analýzy.
+Kladné skóre 1.0 vyjadřuje nejvyšší možnou úroveň spolehlivosti analýzy.
 
 
 
@@ -145,9 +146,9 @@ Kladné skóre 1.0 vyjadřoval nejvyšší úroveň spolehlivosti možné analý
     ],
 ```
 
-### <a name="ambiguous-content"></a>Nejednoznačný obsahu
+### <a name="ambiguous-content"></a>Nejednoznačný obsah
 
-Pokud analyzátor nelze analyzovat vstup (například, že jste odeslali bloku textu, který se skládá pouze z číslovky), vrátí `(Unknown)`.
+Pokud analyzátor nemůže parsovat výstup (předpokládejme například, že jste odeslali blok textu, který je tvořen výhradně arabskými číslicemi), vrátí `(Unknown)`.
 
 ```
     {
@@ -160,9 +161,9 @@ Pokud analyzátor nelze analyzovat vstup (například, že jste odeslali bloku t
         }
       ]
 ```
-### <a name="mixed-language-content"></a>Smíšený jazyk obsahu
+### <a name="mixed-language-content"></a>Obsah v různých jazycích
 
-Smíšený jazyk obsahu v rámci stejného dokumentu vrátí jazyk s největší reprezentace obsah, ale s nižší kladné hodnocení odrážející okrajového síla tohoto hodnocení. V následujícím příkladu je vstup blend angličtina, španělština a francouzštinu. Nástroje analyzer vrátí počet znaků v každém segmentu Určuje jazyk, převládá.
+Obsah v různých jazycích v rámci stejného dokumentu vrátí jazyk s nejvyšší mírou zastoupení v obsahu, ale s nižším kladným hodnocením, které odráží nevýznamnou přesvědčivost hodnocení. V následujícím příkladu je vstup směsicí angličtiny, španělštiny a francouzštiny. Analyzátor spočítá znaky v jednotlivých segmentech, aby určil převládající jazyk.
 
 **Input** (Vstup)
 
@@ -179,7 +180,7 @@ Smíšený jazyk obsahu v rámci stejného dokumentu vrátí jazyk s největší
 
 **Výstup**
 
-Výsledný výstup se skládá z převládá jazyk, se skóre menší než 1,0 označující nižší úroveň spolehlivosti.
+Výsledný výstup tvoří převládající jazyk a skóre nižší než 1.0, které označuje nižší úroveň spolehlivosti.
 
 ```
 {
@@ -201,20 +202,20 @@ Výsledný výstup se skládá z převládá jazyk, se skóre menší než 1,0 o
 
 ## <a name="summary"></a>Souhrn
 
-V tomto článku jste se dozvěděli, koncepty a pracovní postup zjišťování jazyka pomocí Analýza textu v kognitivní služby. Tady jsou rychlé připomenutí z hlavních bodů dříve vysvětlené a ukázán:
+V tomto článku jste se seznámili s koncepty a pracovním postupem rozpoznávání jazyka pomocí funkce Analýza textu ve službě Cognitive Services. Následující odkazy slouží jako rychlé připomenutí hlavních bodů, které jsme dříve vysvětlili a demonstrovali:
 
-+ [Zjišťování rozhraní API jazyka](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) je k dispozici pro 120 jazyky.
-+ Dokumenty JSON v textu požadavku patří id a text.
-+ Je požadavek POST `/languages` koncový bod, pomocí přizpůsobené [přístup klíč a koncový bod](text-analytics-how-to-access-key.md) , je platný pro vaše předplatné.
-+ Odpověď výstupu, který se skládá z jazyka identifikátory pro každý dokument ID, Streamovat k jakékoli aplikaci, která přijímá formát JSON, včetně aplikace Excel a Power BI a další.
++ [Rozhraní API pro rozpoznávání jazyka](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) je dostupné pro 120 jazyků.
++ Dokumenty JSON obsahují v textu žádosti ID a text.
++ Žádost POST je určená pro koncový bod `/languages` a používá individuální [přístupový klíč a koncový bod](text-analytics-how-to-access-key.md), které jsou platné pro dané předplatné.
++ Výstup odpovědi, který je tvořen identifikátory jazyka pro jednotlivá ID dokumentu, lze streamovat do libovolné aplikace, která podporuje JSON, včetně například Excelu a Power BI.
 
-## <a name="see-also"></a>Další informace najdete v tématech 
+## <a name="see-also"></a>Viz také 
 
- [Přehled analýzy textu](../overview.md)  
- [Nejčastější dotazy (FAQ)](../text-analytics-resource-faq.md)</br>
- [Stránka produktu Analýza textu](//go.microsoft.com/fwlink/?LinkID=759712) 
+ [Přehled rozhraní API pro analýzu textu](../overview.md)  
+ [Nejčastější dotazy](../text-analytics-resource-faq.md)</br>
+ [Produktová stránka pro analýzu textu](//go.microsoft.com/fwlink/?LinkID=759712) 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Analýza postojích](text-analytics-how-to-sentiment-analysis.md)
+> [Analýza mínění](text-analytics-how-to-sentiment-analysis.md)

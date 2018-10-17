@@ -1,36 +1,36 @@
 ---
-title: Přidat tyto řezy s rozhraním API vzhled | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: Použijte rozhraní API řez v kognitivní služby přidat řezy do bitové kopie.
+title: 'Příklad: Přidání tváří – rozhraní API pro rozpoznávání tváře'
+titleSuffix: Azure Cognitive Services
+description: Použijte rozhraní API pro rozpoznávání tváře k přidání tváří do obrázků.
 services: cognitive-services
 author: SteveMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
-ms.topic: article
+ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 3306c13d6c3d231ddbda38cfcbc5419fcdbd30db
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: fb5d03e2cb3c11daf7a94966fda46345ee910ded
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342428"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125098"
 ---
-# <a name="how-to-add-faces"></a>Postup přidání řezy
+# <a name="example-how-to-add-faces"></a>Příklad: Jak přidat tváře
 
-Tato příručka ukazuje osvědčený postup pro přidání do PersonGroup masivní počet osob a řezy.
-Stejné strategie platí také pro FaceList a LargePersonGroup.
-Ukázky jsou napsané v C# pomocí klientské knihovny vzhled rozhraní API.
+Tento průvodce ukazuje osvědčený postup pro přidání velkého množství osob a tváří do kolekce PersonGroup.
+Stejná strategie platí taky pro kolekce FaceList a LargePersonGroup.
+Ukázky jsou napsané v jazyce C# pomocí klientské knihovny rozhraní API pro rozpoznávání tváře.
 
-## <a name="step1"></a> Krok 1: Inicializace
+## <a name="step-1-initialization"></a>Krok 1: Inicializace
 
-Několik proměnné jsou deklarovány a pomocné funkce je implementována při plánování požadavků.
+Deklaruje se několik proměnných a implementuje se pomocná funkce pro plánování žádostí.
 
-- `PersonCount` je celkový počet lidí.
+- `PersonCount` je celkový počet osob.
 - `CallLimitPerSecond` je maximální počet volání za sekundu podle úrovně předplatného.
-- `_timeStampQueue` je fronty k zaznamenání požadavku časová razítka.
-- `await WaitCallLimitPerSecondAsync()` bude Počkejte, dokud je platná odeslat další požadavek.
+- `_timeStampQueue` je fronta zaznamenávající časová razítka požadavků.
+- `await WaitCallLimitPerSecondAsync()` počká, než bude platné odeslat další požadavek.
 
 ```CSharp
 const int PersonCount = 10000;
@@ -60,20 +60,20 @@ static async Task WaitCallLimitPerSecondAsync()
 }
 ```
 
-## <a name="step2"></a> Krok 2: Autorizovat volání rozhraní API
+## <a name="step-2-authorize-the-api-call"></a>Krok 2: Autorizace volání rozhraní API
 
-Při použití klientské knihovny, klíč předplatného předána v konstruktoru třídy FaceServiceClient. Příklad:
+Když používáte klientskou knihovnu, klíč předplatného se předává prostřednictvím konstruktoru třídy FaceServiceClient. Příklad:
 
 ```CSharp
 FaceServiceClient faceServiceClient = new FaceServiceClient("<Subscription Key>");
 ```
 
-Klíč předplatného je možné získat ze stránky portálu Azure Marketplace. V tématu [odběry](https://www.microsoft.com/cognitive-services/en-us/sign-up).
+Klíč předplatného můžete získat z webu Marketplace nebo z portálu Azure Portal. Viz [předplatná](https://www.microsoft.com/cognitive-services/en-us/sign-up).
 
-## <a name="step3"></a> Krok 3: Vytvoření PersonGroup
+## <a name="step-3-create-the-persongroup"></a>Krok 3: Vytvoření kolekce PersonGroup
 
-PersonGroup, s názvem "MyPersonGroup" se vytvoří pro uložení osoby.
-Doba požadavku je zařazených do fronty pro `_timeStampQueue` zajistit celkové ověření.
+Kolekce PersonGroup s názvem „MyPersonGroup“ slouží k ukládání osob.
+Čas žádosti se zařadí do fronty `_timeStampQueue`, aby se zajistilo celkové ověření.
 
 ```CSharp
 const string personGroupId = "mypersongroupid";
@@ -82,9 +82,9 @@ _timeStampQueue.Enqueue(DateTime.UtcNow);
 await faceServiceClient.CreatePersonGroupAsync(personGroupId, personGroupName);
 ```
 
-## <a name="step4"></a> Krok 4: Vytvoření osoby, které mají PersonGroup
+## <a name="step-4-create-the-persons-to-the-persongroup"></a>Krok 4: Vytvoření osob pro kolekci PersonGroup
 
-Osob vytvářejí souběžně a `await WaitCallLimitPerSecondAsync()` platí také pro nedošlo k překročení limitu volání.
+Osoby se vytváří současně, a aby nedošlo k překročení limitu volání, používá se příkaz `await WaitCallLimitPerSecondAsync()`.
 
 ```CSharp
 CreatePersonResult[] persons = new CreatePersonResult[PersonCount];
@@ -97,10 +97,10 @@ Parallel.For(0, PersonCount, async i =>
 });
 ```
 
-## <a name="step5"></a> Krok 5: Přidejte řezy osobám
+## <a name="step-5-add-faces-to-the-persons"></a>Krok 5: Přidání tváří osobám
 
-Přidání řezy na jiné osoby, jsou zpracovávány současně, zatímco pro jeden konkrétní osoby je sekvenční.
-Znovu `await WaitCallLimitPerSecondAsync()` je vyvolána k zajištění frekvence žádosti se v rámci oboru omezení.
+Přidávání tváří různým osobám se zpracovává souběžně, ale u konkrétní osoby je sekvenční.
+Opět se vyvolává příkaz `await WaitCallLimitPerSecondAsync()`, aby se zajistilo, že frekvence žádostí nepřekročí limit.
 
 ```CSharp
 Parallel.For(0, PersonCount, async i =>
@@ -120,22 +120,23 @@ Parallel.For(0, PersonCount, async i =>
 });
 ```
 
-## <a name="summary"></a> Souhrn
+## <a name="summary"></a>Souhrn
 
-V této příručce jste se naučili procesem vytvoření PersonGroup s ohromnou počet osob a řezy. Několik připomenutí:
+V tomto průvodci jste se naučili vytvořit kolekci PersonGroup s velkým množstvím osob a tváří. Několik připomenutí:
 
-- Tato strategie platí také pro FaceList a LargePersonGroup.
-- Přidání nebo odstranění řezy různých FaceLists nebo osobám v LargePersonGroup lze současně zpracovávat.
-- Stejné operace jeden konkrétní FaceList nebo osobě v LargePersonGroup by mělo být provedeno postupně.
-- Zachovat jednoduchost, zpracování potenciální výjimky vynechání v této příručce. Pokud chcete vylepšit další robustnost, bude použito zásady správné opakování.
+- Tato strategie platí taky u kolekcí FaceList a LargePersonGroup.
+- Přidávání či odstraňování obličejů je možné v různých kolekcích FaceList nebo Person z kolekce LargePersonGroup zpracovávat souběžně.
+- Stejné operace u jedné konkrétní kolekce FaceList nebo Person z kolekce LargePersonGroup byste měli provádět sekvenčně.
+- Abychom zbytečně nezabíhali do podrobností, přeskočili jsme v tomto průvodci potenciální výjimky. Pokud chcete zlepšit robustnost, měli byste použít vhodné zásady opakování.
 
-Tady jsou rychlé připomenutí funkcí dříve vysvětlené a ukázán:
+Následující odkazy slouží jako rychlé připomenutí dříve vysvětlených funkcí:
 
-- Vytváření s použitím PersonGroups [PersonGroup - vytvořit](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) rozhraní API
-- Vytvoření osob pomocí [PersonGroup osoba - vytvořit](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c) rozhraní API
-- Přidání řezy osobám pomocí [PersonGroup osoba - přidat vzhled](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) rozhraní API
+- Vytvoření kolekcí PersonGroups pomocí rozhraní API [PersonGroup - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)
+- Vytvoření osob pomocí rozhraní API [PersonGroup Person - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)
+- Přidání tváří osobám pomocí rozhraní API [PersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)
 
-## <a name="related"></a> Související témata
-- [Jak identifikovat tyto řezy v bitové kopii](HowtoIdentifyFacesinImage.md)
-- [Jak zjistit, kterým čelí v bitové kopii](HowtoDetectFacesinImage.md)
-- [Jak používat funkci ve velkém měřítku](how-to-use-large-scale.md)
+## <a name="related-topics"></a>Související témata
+
+- [Postup identifikace tváří v obrázku](HowtoIdentifyFacesinImage.md)
+- [Postup rozpoznávání tváří v obrázku](HowtoDetectFacesinImage.md)
+- [Postup použití funkce ve velkém měřítku](how-to-use-large-scale.md)

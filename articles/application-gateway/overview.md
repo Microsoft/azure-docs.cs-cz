@@ -8,14 +8,14 @@ ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
 ms.workload: infrastructure-services
-ms.date: 5/15/2018
+ms.date: 10/11/2018
 ms.author: victorh
-ms.openlocfilehash: 045443637c06745472458dd9e33670875a33352b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8352a95fa0701f6d2a0261d8d2fe2431971eccef
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193063"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068090"
 ---
 # <a name="what-is-azure-application-gateway"></a>Co je Azure Application Gateway?
 
@@ -27,7 +27,38 @@ Nástroje pro vyrovnávání zatížení obvykle fungují na přenosové vrstvě
 
 Tento typ směrování se označuje jako vyrovnávání zatížení aplikační vrstvy (vrstva OSI 7). Azure Application Gateway umí směrování na základě adresy URL, ale to není vše. 
 
-Součástí Azure Application Gateway jsou následující funkce: 
+Součástí Azure Application Gateway jsou následující funkce:
+
+## <a name="autoscaling-public-preview"></a>Automatické škálování ve veřejné verzi Preview
+
+Kromě funkcí popsaných v tomto článku nabízí služba Application Gateway také veřejnou verzi Preview nové skladové položky [Standard_V2], která nabízí automatické škálování a další zásadní vylepšení výkonu.
+
+- **Automatické škálování** – nasazení služby Application Gateway nebo WAF na základě automatického škálování skladové položky můžete vertikálně navyšovat nebo snižovat podle změn vzorců provozní zátěže. Automatické škálování také eliminuje nutnost zvolit během zřizování velikost nasazení nebo počet instancí. 
+
+- **Redundance zón** – nasazení služby Application Gateway nebo WAF může zahrnovat více zón dostupnosti Azure, není potřeba zřizovat a otáčet samostatné instance služby Application Gateway v každé zóně pomocí Microsoft Azure Traffic Manageru.
+
+- **Virtuální IP adresy statické** – virtuální IP adresa služby Application Gateway nyní podporuje výhradně statický typ VIP. Tím se zajistí, že se virtuální IP adresy přidružené k službě Application Gateway nezmění ani po restartování počítače.
+
+- **Rychlejší nasazení a aktualizace** v porovnání s obecně dostupnými skladovými položkami. 
+
+- **5 x vyšší výkon přesměrování zpracování SSL** v porovnání s obecně dostupnými skladovými položkami.
+
+Další informace o funkcích Public Preview služby Application Gateway najdete v článku [Automaticky škálovaná a zónově redundantní služba Application Gateway (Public Preview)](application-gateway-autoscaling-zone-redundant.md).
+
+## <a name="azure-kubernetes-service-aks-ingress-controller-preview"></a>Preview řadiče příchozího přenosu dat služby Azure Kubernetes Service (AKS) 
+
+Řadič příchozího přenosu dat služby Application Gateway běží jako pod v rámci clusteru AKS a umožňuje službě Application Gateway fungovat jako příchozí přenos dat pro cluster AKS. 
+
+Další informace najdete v tématu [Řadič příchozího přenosu dat služby Azure Application Gateway](https://azure.github.io/application-gateway-kubernetes-ingress/).
+
+## <a name="connection-draining"></a>Vyprázdnění připojení
+
+Vyprázdnění připojení vám pomůže provést řádné odebrání členů back-endového fondu při plánovaných servisních aktualizacích. Toto nastavení je povoleno prostřednictvím nastavení HTTP back-endu a lze je použít při vytváření pravidla u všech členů back-endového fondu. Je-li služba Application Gateway povolena, zajistí, aby instance back-endového fondu, u nichž se ruší registrace, nedostávaly žádné nové žádosti, a zároveň umožní dokončit stávající žádosti v nakonfigurovaném časovém limitu. To platí jak pro instance back-endu, které jsou výslovně odebrány z back-endového fondu na základě volání rozhraní API, tak pro takové, které jsou podle sond stavu hlášeny jako poškozené.
+
+## <a name="custom-error-pages"></a>Vlastní chybové stránky
+Služba Application Gateway vám umožní vytvořit vlastní chybové stránky místo zobrazení výchozích chybových stránek. U vlastní chybové stránky můžete použít vlastní značky a rozložení.
+
+Další informace najdete v tématu [Vytvoření vlastních chybových stránek služby Application Gateway](custom-error.md).
 
 ## <a name="secure-sockets-layer-ssl-termination"></a>Ukončení protokolu SSL (Secure Sockets Layer)
 

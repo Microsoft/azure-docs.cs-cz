@@ -1,21 +1,21 @@
 ---
-title: Translator Text – získání podporovaných jazyků s PHP | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: V tomto rychlém startu získáte seznam jazyků podporovaných pro překlad, transkripci a vyhledávání ve slovníku a příklady s použitím služby Translator Text API s PHP ve službách Cognitive Services.
+title: 'Rychlý start: Získání podporovaných jazyků – Translator Text, PHP'
+titleSuffix: Azure Cognitive Services
+description: V tomto rychlém startu získáte seznam jazyků podporovaných pro překlad, transkripci a vyhledávání ve slovníku a příklady s použitím služby Translator Text API s PHP.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: nolachar
-ms.openlocfilehash: 95b48f15ffe8cea14f9ffb7612193b819e03f5f3
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2924a61a31037fcf52986d250007b906ffb40b98
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43769046"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46128703"
 ---
 # <a name="quickstart-get-supported-languages-with-php"></a>Rychlý start: Získání podporovaných jazyků s PHP
 

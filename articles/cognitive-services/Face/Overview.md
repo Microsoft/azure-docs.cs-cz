@@ -1,99 +1,99 @@
 ---
-title: Přehled rozhraní API služby čelí | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: Glosáři vysvětluje pojmy, můžete narazit při práci se službou API řez.
+title: Co je služba rozhraní API pro rozpoznávání tváře?
+titleSuffix: Azure Cognitive Services
+description: Tento glosář vysvětluje termíny, na které můžete při práci se službou rozhraní API pro rozpoznávání tváře narazit.
 author: SteveMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
-ms.topic: article
+ms.topic: overview
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: fb1d14ff80bf53adc3008d79cc998739ffffde1b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
-ms.translationtype: MT
+ms.openlocfilehash: 15de899be5ab85e9fe84ba1b6284bc9419fcf8a1
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048665"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123466"
 ---
-# <a name="what-is-face-api"></a>Co je rozhraní API pro rozpoznávání tváře?
+# <a name="what-is-the-face-api-service"></a>Co je služba rozhraní API pro rozpoznávání tváře?
 
-Vítá vás Microsoft vzhled rozhraní API, Cloudová služba, která poskytuje nejmodernější algoritmy vzhled. Vzhled rozhraní API má dvě hlavní funkce: čelí detekce s atributy a čelí rozpoznávání.
+Vítá vás služba rozhraní API pro rozpoznávání tváře – cloudová služba poskytující špičkové algoritmy pro rozpoznávání tváře. Rozhraní API pro rozpoznávání tváře má dvě hlavní funkce: detekce obličeje s atributy a rozpoznávání tváře.
 
-## <a name="face-detection"></a>Rozpoznávání tváře
+## <a name="face-detection"></a>Detekce obličeje
 
-Vzhled rozhraní API zjistí až 64 lidského řezy s vysokou přesnost vzhled umístění v obraze. A bitovou kopii lze zadat pomocí souboru v bajtech nebo platná adresa URL.
+Rozhraní API pro rozpoznávání tváře dokáže na obrázku velmi přesně detekovat až 64 lidských tváří. Obrázek je možné zadat souborem v bytech nebo platnou adresou URL.
 
-![Přehled – vzhled detekce](./Images/Face.detection.jpg)
+![Přehled – Detekce obličeje](./Images/Face.detection.jpg)
 
-Vzhled rámečku (vlevo, top, šířku a výšku) označující vzhled umístění na obrázku je vrácen společně s každou zjistil řez. Volitelně můžete vzhled detekce extrahuje řadu související vzhled atributů, jako jsou třeba pozice, pohlaví, stáří, head pozice, obličeje kříž a skla. Další informace najdete v tématu [čelí – zjistit](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+Spolu s každým detekovaným obličejem se vrátí obličejový obdélník označující umístění obličeje na obrázku (vlevo, nahoře, šířka a výška). Volitelně může detekce obličeje extrahovat řadu atributů souvisejících s obličejem, jako je póza, pohlaví, věk, pozice hlavy, vousy nebo brýle. Další informace najdete v průvodci rozhraním API [Face – Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
-## <a name="face-recognition"></a>Rozpoznávání tváře úrovně
+## <a name="face-recognition"></a>Rozpoznávání tváře
 
-V mnoha případech, včetně zabezpečení, přirozené uživatelské rozhraní, analýzu obsahu bitové kopie a správy, mobilní aplikace a robotics se často používá rozpoznávání tváře na úrovně. Jsou k dispozici čtyři funkce rozpoznávání řez: čelí ověření, podobné řezy hledání, seskupení vzhled a identifikaci osoby.
+Rozpoznávání tváře se běžně používá v mnoha odvětvích včetně zabezpečení, přirozeného uživatelského rozhraní, analýzy a správy obsahu obrázku, mobilních aplikací a robotiky. K dispozici jsou čtyři funkce rozpoznávání tváře: ověření tváře, vyhledání podobných tváří, seskupování tváří a identifikace osob.
 
 ### <a name="face-verification"></a>Ověření tváře
 
-Vzhled rozhraní API ověření provádí ověřování proti dvěma zjištěné řezy nebo ověřování z jednoho zjištěné vzhled jeden objekt osoby. Podrobnější informace najdete v části [čelí – ověření](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a).
+Ověřování pomocí rozhraní API pro rozpoznávání tváře se provádí pomocí dvou detekovaných tváří nebo pomocí jedné detekované tváře a jednoho objektu osob. Další informace najdete v průvodci rozhraním API [Face – Verify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a).
 
-### <a name="finding-similar-face"></a>Hledání podobně jako vzhled
+### <a name="finding-similar-face"></a>Vyhledání podobných tváří
 
-Zadána cíl zjistil vzhled a sadu řezy kandidáta pro vyhledávání s vyhledá službu malého řezy, které vypadají podobně nejvíce jako cíl písmo. Dva režimy pracovní `matchFace` a `matchPerson` jsou podporovány. `matchPerson` režim vrátí podobné řezy po použití prahová hodnota stejná osoba odvozené od [čelí – ověření](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a). `matchFace` režim ignoruje stejná osoba prahovou hodnotu a vrátí nejvyšší podobné candidate řezy. Proveďte následující příklad, jsou uvedeny candidate řezy.
-![Přehled – vzhled Najít podobné](./Images/FaceFindSimilar.Candidates.jpg) a dotaz čelí, je ![přehled – vzhled Najít podobné](./Images/FaceFindSimilar.QueryFace.jpg)
+Pokud službě dáte cílový detekovaný obličej a sadu kandidátských tváří, se kterými může hledat, vybere malou sadu tváří, které se nejvíc podobají cílovému obličeji. Podporují se dva režimy – `matchFace` a `matchPerson`. Režim `matchPerson` vrátí podobné tváře po použití prahové hodnoty pro stejnou osobu odvozené z [ověření obličeje](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a). Režim `matchFace` prahovou hodnotu pro stejnou osobu ignoruje a vrátí nejvíc podobné kandidátské tváře. V následujícím příkladu jsou uvedené kandidátské tváře.
+![Přehled – vyhledání podobné tváře](./Images/FaceFindSimilar.Candidates.jpg) A vyhledávaná tvář je tato ![Přehled – vyhledání podobné tváře](./Images/FaceFindSimilar.QueryFace.jpg)
 
-Najít čtyři podobné řezy, `matchPerson` vrátí režim (a) a (b), který patří do stejné osoba s vzhled dotazu. `matchFace` režim vrátí (a), (b), (c) a (d), přesně čtyři kandidáty to i v případě nízkou podobnosti. Další informace najdete v tématu [vzhled - Najít podobné](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
+Režim `matchPerson` by při vyhledávání čtyř podobných tváří vrátil obrázky (a) a (b), které patří stejné osobě s vyhledávanou tváří. Režim `matchFace` vrátí obrázky (a), (b), (c) a (d) – přesně čtyři kandidáty, přestože podobnost je nízká. Další informace najdete v průvodci rozhraním API [Face – Find Similar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
 
 ### <a name="face-grouping"></a>Seskupování tváří
 
-Zadána jednu sadu neznámé řezy vzhled seskupování API automaticky rozděluje je do několika skupin podle podobnosti. Každou skupinu je podmnožinu odděleném správnou původní neznámé písmo, nastavit a obsahuje podobné řezy. A všechny řezy ve stejné skupině lze považovat za patřit do stejného objektu osoby. Další informace najdete v tématu [čelí – skupina](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238).
+Pokud rozhraní API pro seskupování tváří poskytnete sadu neznámých tváří, rozhraní je automaticky rozdělí do několika skupin podle podobnosti. Každá skupina je oddělená vhodnou podmnožinou původní neznámé sady tváří a obsahuje podobné tváře. A všechny tváře ve stejné skupině můžou patřit do stejného objektu osob. Další informace najdete v průvodci rozhraním API [Face – Group](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238).
 
 ### <a name="face-identification"></a>Identifikace tváře
 
-Vzhled rozhraní API slouží k identifikaci osoby podle zjištěného řez a databázi osoby (definován jako LargePersonGroup/PersonGroup). Předem vytvořit tuto databázi, která se dá upravit v čase.
+Rozhraní API pro rozpoznávání tváře můžete použít k identifikaci lidí na základě detekovaného obličeje a databáze lidí (definované jako kolekce LargePersonGroup/PersonGroup). Vytvořte si tuto databázi předem, později ji můžete upravovat.
 
-Na následujícím obrázku je příkladem LargePersonGroup/PersonGroup s názvem "myfriends". Každá skupina může obsahovat objekty osoba až 1 000 000/10 000. Každý objekt osoba mezitím, může mít až 248 řezy zaregistrován.
+Na následujícím obrázku je příklad kolekce LargePersonGroup/PersonGroup s názvem „myfriends“. Každá kolekce může obsahovat až 1 000 000/10 000 objektů osob a každý objekt osob může registrovat až 248 tváří.
 
 ![Přehled – LargePersonGroup/PersonGroup](./Images/person.group.clare.jpg)
 
-Po LargePersonGroup nebo PersonGroup byla vytvořena a cvičení, identifikace lze provést před skupině a nové zjištěné řez. Pokud řez je identifikován jako objekt osoba ve skupině, je vrácen objekt osoby.
+Po vytvoření a trénování kolekce LargePersonGroup/PersonGroup můžete proti této kolekci provést identifikaci nově detekovaného obličeje. Pokud se tvář identifikuje jako jeden z objektů osob v kolekci, pak se tento objekt osob vrátí.
 
-Další informace o identifikaci osoby najdete v následujících příručkách rozhraní API:
+Další informace o identifikaci osob najdete v následujících průvodcích rozhraní API:
 
-[Čelí – identifikace](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)
-[PersonGroup - vytvořit](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)
-[PersonGroup osoba - vytvořit](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)
-[PersonGroup - Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249) 
- [LargePersonGroup - vytvořit](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)
-[LargePersonGroup osoba - vytvořit](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adcba3a7b9412a4d53f40)
-[LargePersonGroup - Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599ae2d16ac60f11b48b5aa4)
+[Face – Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)
+[PersonGroup – Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)
+[PersonGroup Person – Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)
+[PersonGroup – Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249)
+[LargePersonGroup – Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)
+[LargePersonGroup Person – Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adcba3a7b9412a4d53f40)
+[LargePersonGroup – Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599ae2d16ac60f11b48b5aa4)
 
-### <a name="face-storage"></a>Face Storage
+### <a name="face-storage"></a>Úložiště tváří
 
-Vzhled úložiště umožňuje standardní předplatné ukládá další trvalou řezy při použití LargePersonGroup/PersonGroup osoba objekty ([PersonGroup osoba - přidat vzhled](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)/[LargePersonGroup osoba - Přidat vzhled](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42)) nebo LargeFaceLists/FaceLists ([FaceList - přidat vzhled](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250)/[LargeFaceList - přidat vzhled](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3)) pro identifikaci nebo podobnosti odpovídající pomocí rozhraní API řez. Uložené bitové kopie jsou výši 0,5 na 1000 řezy a tato míra je účtovány poměrnou částí každý den. Předplatné úroveň Free je volné, ale omezen na 1000 celkový osob.
+Úložiště tváří umožňuje předplatnému úrovně Standard při používání objektů Person kolekce LargePersonGroup/PersonGroup ([PersonGroup Person – Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)/[LargePersonGroup Person – Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42)) nebo LargeFaceLists/FaceLists ([FaceList – Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250)/[LargeFaceList – Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3)) ukládat pomocí rozhraní API pro rozpoznávání tváře další trvalé tváře k identifikaci nebo hledání podobného obličeje. Za 1 000 uložených obrázků tváří se účtuje 0,5 USD. Tato sazba se každý den poměrně přepočítává. Předplatná úrovně Free jsou zdarma, ale jsou omezená celkem na 1 000 osob.
 
-Ceny pro úložiště řez je průběžně denně. Například, pokud váš účet používá 10 000 trvalou řezy každý den pro první polovinu měsíce a žádná druhé polovině, by se fakturuje jenom 10 000 řezy dnů uložené. Případně pokud každý den v měsíci zachovat 1000 řezy po několik hodin a odstranit jejich každou noc, by stále se fakturuje 1000 trvalou řezy každý den.
+Ceny za Úložiště tváří se každý den poměrně přepočítávají. Pokud váš účet například v první polovině měsíce využil 10 000 uložených trvalých tváří a v druhé polovině měsíce žádné, bude se vám účtovat 10 000 tváří jenom po dobu, po kterou byly uložené. Případně pokud po celý měsíc každý den na několik hodin trvale uložíte 1 000 tváří a potom je vždycky v noci odstraníte, bude se vám stále za každý den účtovat 1 000 trvale uložených tváří.
 
-## <a name="getting-started-tutorials"></a>Kurzy Začínáme
+## <a name="getting-started-tutorials"></a>Kurzy začínáme
 
-Následující kurzy ukazují základní funkce rozhraní API vzhled a odběry procesy:
+Následující kurzy ukazují základní funkce rozhraní API pro rozpoznávání tváře a procesy předplatných:
 
-- [Začínáme s vzhled rozhraní API v kurzu CSharp](Tutorials/FaceAPIinCSharpTutorial.md)
-- [Začínáme s vzhled rozhraní API v jazyce Java pro Android kurzu](Tutorials/FaceAPIinJavaForAndroidTutorial.md)
-- [Začínáme s vzhled rozhraní API v kurzu Python](Tutorials/FaceAPIinPythonTutorial.md)
+- [Kurz začínáme s rozhraním API pro rozpoznávání tváře v jazyce CSharp](Tutorials/FaceAPIinCSharpTutorial.md)
+- [Kurz začínáme s rozhraním API pro rozpoznávání tváře v Javě pro Android](Tutorials/FaceAPIinJavaForAndroidTutorial.md)
+- [Kurz začínáme s rozhraním API pro rozpoznávání tváře v Pythonu](Tutorials/FaceAPIinPythonTutorial.md)
 
 ## <a name="sample-apps"></a>Ukázkové aplikace
 
-Podívejte se na tyto ukázkové aplikace, které využívají rozhraní API řez.
+Podívejte se na tyto ukázkové aplikace, které využívají rozhraní API pro rozpoznávání tváře.
 
-- [Microsoft vzhled rozhraní API: Klientská knihovna pro Windows & Ukázka](https://github.com/Microsoft/Cognitive-Face-Windows)
-  - WPF ukázkovou aplikaci, která demonstruje několik scénáře vzhled zjišťování, analýze a identifikaci.
-- [Aplikace pro UPW FamilyNotes](https://github.com/Microsoft/Windows-appsample-familynotes)
-  - Univerzální platformu Windows (UWP) ukázkové aplikace, který ukazuje použití rozpoznávání řeči, Cortana, rukopisu a fotoaparát prostřednictvím rodina Poznámka: sdílení scénář.
-- [Ukázkové video rámce analýzy](https://github.com/microsoft/cognitive-samples-videoframeanalysis)
-  - Univerzální platformu Windows (UWP) ukázkové aplikace, který ukazuje Analýza provozu datové proudy videa skoro v reálném čase pomocí vzhled, počítač vize a rozhraní API pro rozpoznávání emocí úrovně.
+- [Rozhraní API Microsoftu pro rozpoznávání tváře: Klientská knihovna Windows a ukázka](https://github.com/Microsoft/Cognitive-Face-Windows)
+  - Ukázková aplikace WPF, která ukazuje několik scénářů detekce, analýzy a identifikace obličeje.
+- [Aplikace pro UWP FamilyNotes](https://github.com/Microsoft/Windows-appsample-familynotes)
+  - Ukázková aplikace pro Univerzální platformu Windows (UWP), která ukazuje použití řeči, Cortany, rukopisu a fotoaparátu na příkladu sdílení rodinných poznámek.
+- [Ukázka analýzy snímků videa](https://github.com/microsoft/cognitive-samples-videoframeanalysis)
+  - Ukázková aplikace pro Univerzální platformu Windows (UWP) ukazující analýzu živě streamovaného videa v téměř reálném čase, která používá rozhraní API pro rozpoznávání tváře, rozpoznávání emocí a počítačové zpracování obrazu.
 
 ## <a name="related-topics"></a>Související témata
 
-- [Poznámky k verzi vzhled rozhraní API verze 1.0](ReleaseNotes.md)
-- [Jak zjistit, kterým čelí v bitové kopii](Face-API-How-to-Topics/HowtoDetectFacesinImage.md)
-- [Jak identifikovat tyto řezy v bitové kopii](Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md)
+- [Poznámky k verzi 1.0 rozhraní API pro rozpoznávání tváře](ReleaseNotes.md)
+- [Postup rozpoznávání tváří v obrázku](Face-API-How-to-Topics/HowtoDetectFacesinImage.md)
+- [Postup identifikace tváří v obrázku](Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md)

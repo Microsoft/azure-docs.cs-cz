@@ -1,52 +1,53 @@
 ---
-title: Použijte službu Custom Vision Service z aplikace v C# – Azure Cognitive Services | Dokumentace Microsoftu
-description: Prozkoumejte základní aplikaci jazyka C#, která používá vlastní rozhraní API pro zpracování obrazu ve službě Microsoft Cognitive Services. Vytvoření projektu, přidání značek, nahrávat obrázky, trénování váš projekt a předpovědím pomocí výchozí koncový bod.
+title: 'Kurz: Vytvoření aplikace Windows pro službu Custom Vision Service s C#'
+titlesuffix: Azure Cognitive Services
+description: Vytvořte projekt, přidejte značky, nahrajte obrázky, vytrénujte svůj projekt a vytvořte předpověď pomocí výchozího koncového bodu.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/03/2018
 ms.author: anroth
-ms.openlocfilehash: d3c2ffb0fd9578458bd07241eed4a87cf70d3c3c
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
-ms.translationtype: MT
+ms.openlocfilehash: 9e5ed71d4620f7ffeac8acb15f90d67964a86870
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617430"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366637"
 ---
-# <a name="use-the-custom-vision-service-from-a-c35-application"></a>Použijte službu Custom Vision Service z C&#35; aplikace
+# <a name="tutorial-use-the-custom-vision-service-from-a-c-application"></a>Kurz: Použití služby Custom Vision Service z aplikace v jazyce C#
 
-Informace o používání služby Custom Vision Service z aplikace v jazyce C#. Po jeho vytvoření, je můžete přidat značky, nahrajte obrázky, trénování projektu, získat adresu URL koncového bodu projektu výchozí předpovědi a použít koncový bod pro programové testování bitovou kopii. Použijte tento příklad open source jako šablonu pro vytvoření vlastní aplikace pro Windows s použitím vlastní rozhraní API služby pro zpracování obrazu.
+Naučte se používat službu Custom Vision Service z aplikace v jazyce C#. Po jeho vytvoření můžete přidat značky, nahrát obrázky, vytrénovat projekt, získat adresu URL výchozího koncového bodu předpovědi projektu a použít tento koncový bod k programovému testování obrázku. Tento opensourcový příklad použijte jako šablonu pro vytvoření vlastní aplikace pro Windows pomocí rozhraní Custom Vision Service API.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Libovolná edice sady Visual Studio 2017 pro Windows.
+* Libovolná edice sady Visual Studio 2017 pro Windows
 
-## <a name="get-the-custom-vision-sdk-and-samples"></a>Získejte Custom Vision SDK a ukázky
-Sestavení tohoto příkladu, budete potřebovat vlastní balíčky NuGet sady SDK pro zpracování obrazu:
+## <a name="get-the-custom-vision-sdk-and-samples"></a>Získání sady Custom Vision SDK a ukázek
+Abyste mohli tento příklad sestavit, potřebujete balíčky NuGet sady Custom Vision SDK:
 
 * [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/)
 * [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)
 
-Můžete si stáhnout Image spolu s [ukázky jazyka C#](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/CustomVision).
+Obrázky si můžete stáhnout společně s [ukázkami jazyka C#](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/CustomVision).
 
-## <a name="get-the-training-and-prediction-keys"></a>Získání klíčů trénování a predikcí
+## <a name="get-the-training-and-prediction-keys"></a>Získání tréninkového klíče a klíče předpovědi
 
-Klíče používané v tomto příkladu najdete [vizi vlastní webovou stránku](https://customvision.ai) a vyberte __ikonu ozubeného kola__ v pravém horním rohu. V __účty__ tématu, zkopírujte hodnoty z __školení klíč__ a __předpovědi klíč__ pole.
+Klíče používané v tomto příkladu získáte tak, že přejdete na [webovou stránku služby Custom Vision](https://customvision.ai) a vyberete __ikonu ozubeného kola__ v pravém horním rohu. V části __Účty__ zkopírujte hodnoty z polí pro __tréninkový klíč__ a __klíč předpovědi__.
 
-![Obrázek klíče uživatelského rozhraní](./media/csharp-tutorial/training-prediction-keys.png)
+![Obrázek uživatelského rozhraní klíčů](./media/csharp-tutorial/training-prediction-keys.png)
 
 ## <a name="understand-the-code"></a>Vysvětlení kódu
 
-V sadě Visual Studio, otevřete projekt v `Samples/CustomVision.Sample/` adresáře projektu sadu SDK.
+V sadě Visual Studio otevřete projekt umístěný v adresáři `Samples/CustomVision.Sample/` projektu sady SDK.
 
-Tato aplikace používá školení klíč, který jste získali dříve k vytvoření nového projektu s názvem __tento nový projekt__. Potom nahrává obrázky a natrénuje a otestuje třídění. Třídění označuje, zda je strom __Hemlock__ nebo __japonské výběru určitých položek__.
+Tato aplikace používá dříve získaný tréninkový klíč k vytvoření nového projektu s názvem __My New Project__. Potom nahraje obrázky k trénování a testování klasifikátoru. Klasifikátor identifikuje, jestli je rostlina __bolehlav__ nebo __japonská třešeň__.
 
-Následující fragmenty kódu implementovat primární funkce v tomto příkladu:
+Následující fragmenty kódu implementují primární funkci tohoto příkladu:
 
-* __Vytvořte nový projekt služby Custom Vision Service__:
+* __Vytvoření nového projektu služby Custom Vision Service__:
 
     ```csharp
      // Create a new project
@@ -54,7 +55,7 @@ Následující fragmenty kódu implementovat primární funkce v tomto příklad
     var project = trainingApi.CreateProject("My New Project");
     ```
 
-* __Vytvoření značky v projektu__:
+* __Vytvoření značek v projektu__:
 
     ```csharp
     // Make two tags in the new project
@@ -62,7 +63,7 @@ Následující fragmenty kódu implementovat primární funkce v tomto příklad
     var japaneseCherryTag = trainingApi.CreateTag(project.Id, "Japanese Cherry");
     ```
 
-* __Nahrání a opatřovat obrázky značkami__:
+* __Nahrání a označení obrázků__:
 
     ```csharp
     // Add some images to the tags
@@ -83,7 +84,7 @@ Následující fragmenty kódu implementovat primární funkce v tomto příklad
     trainingApi.CreateImagesFromFiles(project.Id, new ImageFileCreateBatch(imageFiles, new List<Guid>() { japaneseCherryTag.Id }));
     ```
 
-* __Trénování třídění__:
+* __Vytrénování klasifikátoru__:
 
     ```csharp
     // Now there are images with tags start training the project
@@ -100,7 +101,7 @@ Následující fragmenty kódu implementovat primární funkce v tomto příklad
     }
     ```
 
-* __Nastavit výchozí iterace pro koncový bod předpovědi__:
+* __Nastavení výchozí iterace pro koncový bod předpovědi__:
 
     ```csharp
     // The iteration is now trained. Make it the default project endpoint
@@ -116,7 +117,7 @@ Následující fragmenty kódu implementovat primární funkce v tomto příklad
     PredictionEndpoint endpoint = new PredictionEndpoint() { ApiKey = predictionKey };
     ```
  
-* __Odeslat image do koncového bodu předpovědi__:
+* __Odeslání obrázku do koncového bodu předpovědi__:
 
     ```csharp
     // Make a prediction against the new project
@@ -132,21 +133,21 @@ Následující fragmenty kódu implementovat primární funkce v tomto příklad
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-1. Proveďte následující změny k přidání klíčů, trénování a predikcí k aplikaci:
+1. Proveďte následující změny pro přidání tréninkového klíče a klíče předpovědi do aplikace:
 
-    * Přidat vaše __školení klíč__ na následující řádek:
+    * __Tréninkový klíč__ přidejte na následující řádek:
 
         ```csharp
         string trainingKey = "<your key here>";
         ```
 
-    * Přidat vaše __předpovědi klíč__ na následující řádek:
+    * __Klíč předpovědi__ přidejte na následující řádek:
 
         ```csharp
         string predictionKey = "<your key here>";
         ```
 
-2. Spusťte aplikaci. Jak je aplikace spuštěná, následující výstup je zapsán do konzoly:
+2. Spusťte aplikaci. Když je aplikace spuštěná, do konzoly se zapisuje následující výstup:
 
     ```
     Creating new project:
@@ -159,4 +160,4 @@ Následující fragmenty kódu implementovat primární funkce v tomto příklad
             Japanese Cherry: 0.0%
     ```
 
-3. Stisknutím libovolné klávesy ukončete aplikaci.
+3. Aplikaci ukončete stisknutím libovolné klávesy.

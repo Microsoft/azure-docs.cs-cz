@@ -1,52 +1,49 @@
 ---
-title: Rychlý start k analýze místního obrázku pomocí počítačového zpracování obrazu s Pythonem | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: V tomto rychlém startu budete analyzovat místní obrázek pomocí počítačového zpracování obrazu s Pythonem ve službách Cognitive Services.
+title: 'Rychlý start: Analýza místního obrázku – REST, Python – počítačové zpracování obrazu'
+titleSuffix: Azure Cognitive Services
+description: V tomto rychlém startu budete analyzovat místní obrázek pomocí rozhraní API pro počítačové zpracování obrazu a Pythonu.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: a1f3fce5a547f143f7c4884c6642e78f53d160e9
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 48a6602c9f3029cc008f3db7d4701499c14e7ce1
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43769237"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45633856"
 ---
-# <a name="quickstart-analyze-a-local-image---rest-python"></a>Rychlý start: Analýza místního obrázku – REST, Python
+# <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-python-in-computer-vision"></a>Rychlý start: Analýza místního obrázku pomocí rozhraní REST API a Pythonu v počítačovém zpracování obrazu
 
-V tomto rychlém startu budete analyzovat místní obrázek pomocí počítačového zpracování obrazu. Pokud chcete analyzovat vzdálený obrázek, přečtěte si článek o [analýze vzdáleného obrázku s Pythonem](python-analyze.md).
+V tomto rychlém startu analyzujete obrázek uložený místně za účelem extrakce vizuálních prvků pomocí rozhraní REST API počítačového zpracování obrazu. Pomocí metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat vizuální prvky na základě obsahu obrázku.
 
 Tento rychlý start můžete spustit jako podrobný návod pomocí Jupyter Notebooku na webu [MyBinder](https://mybinder.org). Pokud chcete spustit Binder, vyberte následující tlačítko:
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
+
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli počítačové zpracování obrazu použít, potřebujete klíč předplatného. Přečtěte si, [jak získat klíče předplatného](../Vision-API-How-to-Topics/HowToSubscribe.md).
+- Pokud chcete spustit tuto ukázku místně, musíte mít nainstalovaný [Python](https://www.python.org/downloads/).
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Abyste získali klíč předplatného, přejděte k tématu [Jak získat klíče předplatného](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="analyze-a-local-image"></a>Analýza místního obrázku
+## <a name="create-and-run-the-sample"></a>Vytvoření a spuštění ukázky
 
-Tento příklad je podobný [analýze vzdáleného obrázku s Pythonem](python-analyze.md), s tím rozdílem, že analyzovaný obrázek se načítá místně z disku. Je nutné provést dvě změny:
+Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 
-- Přidejte záhlaví `{"Content-Type": "application/octet-stream"}` do žádosti.
-- Přidejte data obrázku (pole bajtů) do textu žádosti.
-
-Pokud chcete spustit ukázku, postupujte takto:
-
-1. Následující kód zkopírujte do nového souboru pythonového skriptu.
-1. `<Subscription Key>` nahraďte platným klíčem předplatného.
-1. V případě potřeby změňte hodnotu `vision_base_url` na umístění, kde jste získali klíče předplatného.
-1. Změňte hodnotu `image_path` na cestu místního obrázku.
-1. Spusťte skript.
-
-Následující kód používá knihovnu `requests` Pythonu k volání rozhraní API pro analýzu obrázku počítačového zpracování obrazu. Výsledky vrátí jako objekt JSON. Klíč rozhraní API se předává prostřednictvím slovníku `headers`. Typy rozeznávaných funkcí se předávají prostřednictvím slovníku `params`. Binární data obrázku se předávají prostřednictvím parametru `data` do `requests.post`.
-
-## <a name="analyze-image-request"></a>Žádost Analyze Image
+1. Zkopírujte do textového editoru následující kód.
+1. Proveďte v kódu na příslušných místech následující změny:
+    1. Hodnotu `subscription_key` nahraďte klíčem předplatného.
+    1. Hodnotu `vision_base_url` nahraďte adresou URL koncového bodu prostředku počítačového zpracování obrazu z oblasti Azure, kde jste získali klíče předplatného, pokud je to potřeba.
+    1. Volitelně můžete hodnotu `image_path` nahradit cestou a názvem souboru jiného obrázku, který chcete analyzovat.
+1. Uložte kód jako soubor s příponou `.py`. Například, `analyze-local-image.py`.
+1. Otevřete okno příkazového řádku.
+1. Ke spuštění ukázky na příkazovém řádku použijte příkaz `python`. Například, `python analyze-local-image.py`.
 
 ```python
 import requests
@@ -96,9 +93,9 @@ plt.axis("off")
 _ = plt.title(image_caption, size="x-large", y=-0.1)
 ```
 
-## <a name="analyze-image-response"></a>Odpověď metody Analyze Image
+## <a name="examine-the-response"></a>Prozkoumání odpovědi
 
-Úspěšná odpověď se vrátí ve formátu JSON, například:
+Úspěšná odpověď se vrátí ve formátu JSON. Ukázková webová stránka provede analýzu a zobrazí úspěšnou odpověď v okně příkazového řádku, podobně jako v následujícím příkladu:
 
 ```json
 {
@@ -172,9 +169,13 @@ _ = plt.title(image_caption, size="x-large", y=-0.1)
 }
 ```
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud už soubor nepotřebujete, odstraňte ho.
+
 ## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte aplikaci v Pythonu používající počítačové zpracování obrazu k optickému rozpoznávání znaků (OCR), vytváření chytře oříznutých miniatur, zjišťování, kategorizaci, označení a popis vizuálních prvků, včetně obličejů, v obrázku. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu rozhraní Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Prozkoumejte aplikaci v Pythonu používající počítačové zpracování obrazu k optickému rozpoznávání znaků (OCR), vytváření chytře oříznutých miniatur, zjišťování, kategorizaci, označení a popis vizuálních prvků, včetně obličejů, v obrázku. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
 > [Kurz k rozhraní API pro počítačové zpracování obrazu a Pythonu](../Tutorials/PythonTutorial.md)

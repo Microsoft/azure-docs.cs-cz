@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: dd68b65825c9c22453e0191d42a0fcce3b65ca64
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 2e01f61ff915a8fe4327aa78c8867d666dc36fda
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236082"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983214"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Kurz: Přidání skutečného zařízení do aplikace Azure IoT Central
 
@@ -56,7 +56,7 @@ Pokud chcete přidat skutečné zařízení do aplikace, použijete šablonu za�
 
    ![Zahájení přidávání nového skutečného klimatizačního zařízení](media/tutorial-add-device/newreal.png)
 
-3. Nové zařízení můžete také přejmenovat. Zvolte název zařízení a upravte hodnotu:
+3. Zadejte ID zařízení (**musí být malými písmeny**) nebo použijte navrhované ID zařízení. Můžete také zadat název nového zařízení.  
 
    ![Přejmenování zařízení](media/tutorial-add-device/rename.png)
 
@@ -68,23 +68,36 @@ Skutečné zařízení se vytvoří ze šablony **Connected Air Conditioner**. J
 
     ![Nastavení zobrazující synchronizaci](media/tutorial-add-device/settingssyncing.png)
 
-2. Na stránce **Properties** (Vlastnosti) nového skutečného připojeného klimatizačního zařízení nastavte **Serial Number** (Sériové číslo) na **rcac0010** a **Firmware version** (Verze firmwaru) na 9.75. Zvolte **Save** (Uložit):
+2. Na stránce **Properties** (Vlastnosti) nového klimatizačního zařízení, které je skutečně připojené, nastavte **Serial Number** (Sériové číslo) **10001** a **Firmware version** (Verze firmwaru) na 9.75. Potom zvolte **Save** (Uložit):
 
     ![Nastavení vlastností skutečného zařízení](media/tutorial-add-device/setproperties.png)
 
 3. Jako tvůrce můžete zobrazit stránky **Measurements** (Měření), **Rules** (Pravidla) a **Dashboard** (Řídicí panel) pro svoje skutečné zařízení.
 
-## <a name="get-connection-string-for-real-device-from-application"></a>Získání připojovacího řetězce pro skutečné zařízení z aplikace
+## <a name="get-connection-details-for-real-device-from-application"></a>Získání podrobností z aplikace kvůli připojení skutečného zařízení
 
-Vývojář zařízení musí vložit *připojovací řetězec* pro skutečné zařízení do kódu, který běží na zařízení. Připojovací řetězec umožňuje, aby se zařízení bezpečně připojilo k aplikaci Azure IoT Central. Každá instance zařízení má jedinečný připojovací řetězec. Následující postup znázorňuje, jak v aplikaci vyhledat připojovací řetězec pro instanci zařízení:
+Vývojář zařízení musí vložit *podrobnosti o skutečně připojeném zařízení* do kódu, který běží v zařízení. Připojovací řetězec umožňuje, aby se zařízení bezpečně připojilo k aplikaci Azure IoT Central. Následující postup znázorňuje, jak v aplikaci vyhledat připojovací řetězec pro instanci zařízení:
 
 1. Na obrazovce **Device** (Zařízení) skutečného připojeného klimatizačního zařízení zvolte **Connect this device** (Připojit toto zařízení):
 
     ![Stránka zařízení s odkazem pro zobrazení informací o připojení](media/tutorial-add-device/connectionlink.png)
 
-2. Na stránce **Connect** (Připojit) zkopírujte **primární připojovací řetězec** a uložte ho. Tuto hodnotu použijete v druhé polovině tohoto kurzu. Vývojář zařízení použije tuto hodnotu v klientské aplikaci, která běží na zařízení:
+2. Na stránce **Connect** (Připojit) zkopírujte hodnoty **Scope ID, Device ID a Primary key** (ID oboru, ID zařízení a Primární klíč) a uložte je.
 
-    ![Hodnoty připojovacího řetězce](media/tutorial-add-device/connectionstring.png)
+   ![Podrobnosti připojení](media/tutorial-add-device/device-connect.PNG)
+
+   K získání připojovacího řetězce zařízení použijte následující nástroj příkazového řádku:  
+
+    ```cmd/sh
+    npm i -g dps-keygen
+    ```
+    **Použití**
+    
+    K vytvoření připojovacího řetězce potřebujete najít binární hodnotu, která je ve složce kontejneru.
+    ```cmd/sh
+    dps_cstr <scope_id> <device_id> <Primary Key(for device)>
+    ```
+    Další informace o [nástroji příkazového řádku najdete zde](https://www.npmjs.com/package/dps-keygen).
 
 ## <a name="prepare-the-client-code"></a>Příprava klientského kódu
 
@@ -130,14 +143,17 @@ Následující postup popisuje, jak připravit ukázku [Node.js](https://nodejs.
 
 8. Do souboru přidejte následující deklarace proměnných:
 
+ 
+
    ```javascript
    var connectionString = '{your device connection string}';
    var targetTemperature = 0;
    var client = clientFromConnectionString(connectionString);
    ```
+   
 
    > [!NOTE]
-   > Zástupný symbol `{your device connection string}` aktualizujete později.
+   > Zástupný symbol `{your device connection string}` aktualizujete později. 
 
 9. Uložte změny, které jste až dosud provedli, ale ponechejte soubor otevřený.
 
@@ -246,10 +262,9 @@ V předchozí části jste vytvořili kostru projektu Node.js pro aplikaci, kter
 
 5. Uložte změny, které jste až dosud provedli, ale ponechejte soubor otevřený.
 
-## <a name="configure-client-code-for-the-real-device"></a>Konfigurace klientského kódu pro skutečné zařízení
+## <a name="configure-client-code-for-the-real-device"></a>Nakonfigurovat klientský kód pro skutečné zařízení
 
-<!-- Add the connection string to the sample code, build, and run -->
-Pokud chcete nakonfigurovat klientský kód na připojení k aplikaci Azure IoT Central, musíte přidat připojovací řetězec skutečného zařízení, který jste si poznamenali dříve v tomto kurzu.
+<!-- Add the connection string to the sample code, build, and run --> Pokud chcete nakonfigurovat klientský kód na připojení k aplikaci Azure IoT Central, musíte přidat připojovací řetězec skutečného zařízení, který jste si poznamenali v předchozí části tohoto kurzu.
 
 1. V souboru **ConnectedAirConditioner.js** vyhledejte následující řádek kódu:
 

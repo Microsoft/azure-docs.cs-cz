@@ -1,36 +1,38 @@
 ---
-title: Článek přizpůsobení - kognitivní služeb Azure | Microsoft Docs
-description: Kurz pro přizpůsobení článku službou Azure vlastní rozhodnutí, rozhraní API založené na cloudu kontextové rozhodnutí.
+title: 'Kurz: Přizpůsobení článků – Custom Decision Service'
+titlesuffix: Azure Cognitive Services
+description: Tento kurz je určen pro přizpůsobení článků pro kontextové rozhodování.
 services: cognitive-services
 author: slivkins
-manager: slivkins
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: custom-decision-service
+ms.topic: tutorial
 ms.date: 05/08/2018
-ms.author: slivkins;marcozo;alekh;marossi
-ms.openlocfilehash: 35d0567f81a23d4726461059eb6fd31e04228697
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.author: slivkins
+ms.openlocfilehash: b142fe2051c017d0c0ec3c4cac6aaedd563f6cd7
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343433"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366331"
 ---
-# <a name="article-personalization"></a>Přizpůsobení článku
+# <a name="tutorial-article-personalization-for-contextual-decision-making"></a>Kurz: Přizpůsobení článků pro kontextové rozhodování
 
-Tento kurz se zaměřuje na přizpůsobení výběru článků na titulní stránky webu. Ovlivňuje službu rozhodnutí vlastní *více* seznam článků v přední stránky pro instanci. Možná stránky je zprávy web, který obsahuje pouze politika a sportu. By se zobrazit tři seřazený seznam článků: politika, sportu a poslední.
+Tento kurz se zaměřuje na přizpůsobení výběru článků na úvodní stránce webu. Služba Custom Decision Service například ovlivňuje *množství* seznamů článků na přední stránce. Stránka může být webovou stránkou se zprávami, která se zaměřuje pouze na politiku a sport. Měla by zobrazovat tři seřazené seznamy článků: politika, sport a nejnovější.
 
-## <a name="applications-and-action-sets"></a>Aplikace a nastaví akce
+## <a name="applications-and-action-sets"></a>Aplikace a sady akcí
 
-Zde je postup vyhovovat vašemu scénáři do rozhraní. Pojďme Představte si tři aplikace, jeden pro každou seznam, který je právě optimalizovaná: politika aplikace, aplikace sportu a nejnovější aplikace. Pokud chcete zadat candidate články pro každou aplikaci, existují dvě akce sady: jeden pro politika a jeden pro sportu. Sada pro aplikaci poslední akci dodává automaticky jako sjednocení dvou sad.
+Toto je postup, jak scénář vhodně zařadit do architektury. Představme si tři aplikace, jednu pro každý seznam, který se optimalizuje: app-politics (aplikace pro politiku), app-sports (aplikace pro sport) a app-recent (aplikace pro nejnovější zprávy). Pro určení případných článků pro jednotlivé aplikace existují dvě sady akcí: jedna pro politiku a jedna pro sport. Sada akcí pro app-recent (aplikaci pro nejnovější zprávy) se vytvoří automaticky jako spojení dvou ostatních sad.
 
 > [!TIP]
-> Nastaví akce můžete sdílet mezi aplikací ve službě vlastní rozhodnutí.
+> Sady akcí se ve službě Custom Decision Service můžou sdílet napříč aplikacemi.
 
-## <a name="prepare-action-set-feeds"></a>Příprava akce sadu kanálů
+## <a name="prepare-action-set-feeds"></a>Příprava informačních kanálů sad akcí
 
-Vlastní rozhodnutí služba využívá Nastaví akce prostřednictvím informačních kanálů RSS nebo Atom poskytované zákazníkovi. Zadejte dvě informační kanály: jeden pro politika a jeden pro sportu. Předpokládejme, že je zobrazovaná `http://www.domain.com/feeds/<feed-name>`.
+Služba Custom Decision Service využívá sady akcí prostřednictvím informačních kanálů RSS a Atom poskytovaných zákazníkem. Vy poskytujete dva informační kanály: jeden pro politiku a jeden pro sport. Předpokládejme, že jsou obsluhovány z webu `http://www.domain.com/feeds/<feed-name>`.
 
-Každý kanál poskytuje seznam článků. Informační kanály RSS, je zadána každé z nich `<item>` element následujícím způsobem:
+Každý informační kanál poskytuje seznam článků. V RSS je každý z nich určen elementem `<item>` následujícím způsobem:
 
 ```xml
 <rss version="2.0"><channel>
@@ -42,41 +44,41 @@ Každý kanál poskytuje seznam článků. Informační kanály RSS, je zadána 
 </channel></rss>
 ```
 
-Pořadí článků záleží. Určuje výchozí pořadí, což je co nejlepší odhad pro uspořádání články. Výchozí pořadí se pak použije k porovnání výkonu na [řídicí panel](#performance-dashboard).
+Pořadí článků je důležité. Určuje výchozí pořadí, což je váš nejlepší odhad pro uspořádání článků. Výchozí pořadí se pak použije k porovnání výkonu na [řídicím panelu](#performance-dashboard).
 
-Další informace o formátu informačního kanálu najdete v tématu [referenční dokumentace rozhraní API](custom-decision-service-api-reference.md#action-set-api-customer-provided).
+Další informace o formátu informačního kanálu najdete v [referenčních informacích k rozhraní API](custom-decision-service-api-reference.md#action-set-api-customer-provided).
 
-## <a name="register-a-new-app"></a>Zaregistrujte novou aplikaci
+## <a name="register-a-new-app"></a>Registrace nové aplikace
 
-1. Přihlaste se pomocí vaší [účtu Microsoft](https://account.microsoft.com/account). Na pásu karet klikněte na tlačítko **Moje portál**.
+1. Přihlaste se pomocí [účtu Microsoft](https://account.microsoft.com/account). Na pásu karet klikněte na **My Portal** (Můj portál).
 
-2. Chcete-li zaregistrovat nové aplikace, klikněte na tlačítko **novou aplikaci** tlačítko.
+2. Pokud chcete zaregistrovat novou aplikaci, klikněte na tlačítko **New App** (Nová aplikace).
 
     ![Portál Custom Decision Service](./media/custom-decision-service-tutorial/portal.png)
 
-3. Zadejte jedinečný název pro vaši aplikaci ve **ID aplikace** textové pole. Tento název se již používá jiný zákazníka, systém požádá o vyberte ID jiné aplikace. Vyberte **Upřesnit** zaškrtněte políčko a zadejte [připojovací řetězec](../../storage/common/storage-configure-connection-string.md) pro váš účet úložiště Azure. Za normálních okolností použijete stejný účet úložiště pro všechny aplikace.
+3. Do textového pole **App ID** (ID aplikace) zadejte jedinečný název aplikace. Pokud už tento název používá jiný zákazník, systém vás požádá o zadání jiného ID aplikace. Zaškrtněte políčko **Advanced** (Rozšířené) a zadejte [připojovací řetězec](../../storage/common/storage-configure-connection-string.md) pro účet úložiště Azure. Za normálních okolností použijete stejný účet úložiště pro všechny vaše aplikace.
 
-    ![Dialogové okno Nový aplikace](./media/custom-decision-service-tutorial/new-app-dialog.png)
+    ![Dialogové okno nové aplikace](./media/custom-decision-service-tutorial/new-app-dialog.png)
 
-    Po registraci všech tří aplikací ve výše uvedené scénáře, jsou uvedeny:
+    Jakmile si zaregistrujete všechny tři aplikace ve výše uvedeném scénáři, zobrazí se jejich seznam:
 
     ![Seznam aplikací](./media/custom-decision-service-tutorial/apps.png)
 
-    Vám může vraťte do tohoto seznamu kliknutím **aplikace** tlačítko.
+    K tomuto seznamu se můžete vrátit kliknutím na tlačítko **Apps** (Aplikace).
 
-4. V **novou aplikaci** dialogovém okně zadejte akci informačního kanálu. Informační kanály akci lze také kliknutím **kanály** tlačítko a pomocí kliknutím **nový kanál** tlačítko. Zadejte **název** nový kanál, zadejte **adresa URL** z které it je zpracovat a zadejte **aktualizujte čas**. Doba aktualizace Určuje, jak často má vlastní rozhodnutí služby aktualizovat informačního kanálu.
+4. V dialogovém okně **New App** (Nová aplikace) určete informační kanál akce. Informační kanály akcí můžete určit také kliknutím na tlačítko **Feeds** (Informační kanály) a pak kliknutím na tlačítko **New Feed** (Nový informační kanál). Zadejte **název** nového informačního kanálu, zadejte **adresu URL** místa, odkud je obsluhován, a pak zadejte **čas aktualizace**. Čas aktualizace určuje, jak často by služba Custom Decision Service měla informační kanál aktualizovat.
 
-    ![Informačního kanálu dialogové okno Nový](./media/custom-decision-service-tutorial/new-feed-dialog.png)
+    ![Dialogové okno nového informačního kanálu](./media/custom-decision-service-tutorial/new-feed-dialog.png)
 
-    Informační kanály akce slouží žádné aplikace, bez ohledu na to, kde zadal. Po zadání obou akce kanály ve scénáři, jsou uvedeny:
+    Informační kanály akcí může využívat jakákoli aplikace, bez ohledu na to, kde jsou specifikované. Jakmile určíte oba informační kanály akcí ve scénáři, zobrazí se jejich seznam:
 
     ![Seznam informačních kanálů](./media/custom-decision-service-tutorial/feeds.png)
 
-    Vám může vraťte do tohoto seznamu kliknutím **kanály** tlačítko.
+    K tomuto seznamu se můžete vrátit kliknutím na tlačítko **Feeds** (Informační kanály).
 
 ## <a name="use-the-apis"></a>Použití rozhraní API
 
-Službu rozhodnutí vlastní určuje pořadí články prostřednictvím rozhraní API řazení. Pokud chcete používat toto rozhraní API, vložte následující kód do head HTML front stránky:
+Služba Custom Decision Service řadí články pomocí rozhraní Ranking API. Pokud chcete toto rozhraní API použít, vložte následující kód do hlavičky HTML na přední stránce:
 
 ```html
 <!-- Define the "callback function" to render UI -->
@@ -89,7 +91,7 @@ Službu rozhodnutí vlastní určuje pořadí články prostřednictvím rozhran
 <!-- NB: action feeds for 'app-recent' are listed one after another. -->
 ```
 
-Odpověď HTTP z rozhraní API řazení je řetězec ve formátu JSONP. Pro aplikace politika například řetězec vypadá takto:
+Odpovědí HTTP z rozhraní Ranking API je řetězec ve formátu JSONP. Například pro app-politics (aplikaci pro politiku) řetězec vypadá takto:
 
 ```json
 callback({
@@ -99,14 +101,14 @@ callback({
    "actionSets":[{"id":"feed-politics","lastRefresh":"date"}] });
 ```
 
-Prohlížeč pak provede tento řetězec jako volání `callback()` funkce. `data` Argument `callback()` funkce obsahuje ID aplikace a hodnocení adres URL, k vykreslení. Konkrétně `callback()` by měl používat `data.appId` k rozlišení mezi tři aplikace. `eventId` se používá interně službou rozhodnutí vlastní tak, aby odpovídaly zadaná klasifikace odpovídající kliknutím, pokud existuje.
+Prohlížeč pak spustí tento řetězec jako volání funkce `callback()`. Argument `data` ve funkci `callback()` obsahuje ID aplikace a hodnocení adres URL, které se mají vykreslit. Konkrétně funkce `callback()` by měla použít `data.appId`, aby došlo k rozlišení těchto tří aplikací. `eventId` se používá interně službou Custom Decision Service, aby se spárovalo poskytnuté hodnocení s odpovídajícím kliknutím, pokud existuje.
 
 > [!TIP]
-> `callback()` může zkontrolovat každou akci kanálu pro aktuálnosti pomocí `lastRefresh` pole. Pokud daný informačního kanálu není dostatečně aktuální, `callback()` například ignorovat zadané hodnocení, tento informační kanál volat přímo a pomocí hodnocení výchozí obsloužených informačního kanálu.
+> `callback()` může pomocí pole `lastRefresh` zkontrolovat všechny informační kanály, jestli jsou aktuální. Pokud daný informační kanál není dostatečně aktuální, `callback()` může ignorovat zadané hodnocení, zavolat tento informační kanál přímo a použít výchozí hodnocení poskytnuté informačním kanálem.
 
-Další informace o specifikacích a další možnosti poskytovaný rozhraním API řazení, najdete v článku [referenční dokumentace rozhraní API](custom-decision-service-api-reference.md).
+Další informace o specifikacích a dalších možnostech poskytovaných rozhraním Ranking API najdete v [referenčních informacích o rozhraní API](custom-decision-service-api-reference.md).
 
-Volby důležitý článek od uživatele se vrátí při volání rozhraní API potřebu. Po přijetí důležitý článek volba by měla být na stránce front volána následující kód:
+Nejvhodnější volby článků uživatele se vrátí voláním rozhraní Reward API. Při přijetí nejvhodnější volby článku se by měl vyvolat následující kód na přední stránce:
 
 ```javascript
 $.ajax({
@@ -115,7 +117,7 @@ $.ajax({
     contentType: "application/json" })
 ```
 
-Pomocí `appId` a `eventId` kód pro zpracování klikněte na tlačítko vyžaduje některé pozor. Například můžete implementovat `callback()` funkce následujícím způsobem:
+Použití `appId` a `eventId` v kódu pro zpracování kliknutí vyžaduje opatrnost. Funkci `callback()` můžete například implementovat následujícím způsobem:
 
 ```javascript
 function callback(data) {
@@ -133,8 +135,8 @@ function callback(data) {
 }}
 ```
 
-V tomto příkladu implementovat `render()` funkce k vykreslení daný článek k dané aplikaci. Tato funkce uvede ID aplikace a v článku (ve formátu z rozhraní API řazení). `onClick` Parametr je funkce, která by měla být volána z `render()` pro zpracování klikněte na tlačítko. Zkontroluje, jestli kliknutím na horní slot. Pak zavolá rozhraní API potřebu s ID příslušné aplikace a ID události.
+V tomto příkladu implementujte funkci `render()` za účelem vykreslení daného článku pro danou aplikaci. Tato funkce poskytuje vstupy ID aplikace a článek (ve formátu z rozhraní Ranking API). Parametr `onClick` je funkce, která by se měla volat z `render()` pro zpracování kliknutí. Zkontroluje, jestli bylo kliknutí provedeno na horní pozici. Potom zavolá rozhraní Reward API s odpovídajícím ID aplikace a ID události.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Obrátit [referenční dokumentace rozhraní API](custom-decision-service-api-reference.md) Další informace o funkci zadané.
+* Další informace o poskytovaných funkcích najdete v [referenčních informacích o rozhraní API](custom-decision-service-api-reference.md).

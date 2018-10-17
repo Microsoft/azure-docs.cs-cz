@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: apimpm
-ms.openlocfilehash: ea6078088417099045006f81dcaf1f769bbd64d7
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: b5a38b9f16224c8b2b128b464106fe83d018b308
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43246811"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129756"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Import aplikace Azure Function App jako rozhraní API ve službě Azure API Management
 
@@ -71,9 +71,11 @@ Podle následujícího postupu vytvoříte z aplikace Azure Function App nové r
     > [!NOTE]
     > Můžete importovat pouze funkce, které jsou založené na triggeru HTTP a mají úroveň autorizace nastavenou na *Anonymní* nebo *Funkce*.
 
-7. V případě potřeby upravte předem vyplněná pole. Klikněte na možnost **Vytvořit**.
+7. Přepněte do **úplného** zobrazení a přiřaďte **Produkt** k novému rozhraní API. V případě potřeby upravte jiná předvyplněná pole.
 
     ![Přidání z aplikace Function App](./media/import-function-app-as-api/add-06.png)
+
+8. Klikněte na možnost **Vytvořit**.
 
 ## <a name="append-azure-function-app-to-api"></a>Připojení aplikace Azure Function App k existujícímu rozhraní API
 

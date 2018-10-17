@@ -1,51 +1,46 @@
 ---
-title: Rychlý start k analýze obrázku pomocí rozhraní API pro počítačové zpracování obrazu s Ruby | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: V tomto rychlém startu analyzujete obrázek pomocí počítačového zpracování obrazu s Ruby ve službách Cognitive Services.
+title: 'Rychlý start: Analýza vzdáleného obrázku – REST, Ruby – počítačové zpracování obrazu'
+titleSuffix: Azure Cognitive Services
+description: V tomto rychlém startu budete analyzovat obrázek pomocí rozhraní API pro počítačové zpracování obrazu a Ruby.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 3ce89bf29cc7f1f436e54d398e458f559b79a425
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: bf17e8213ad2bbdc793f979471d9861578cac8e2
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43769248"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45628858"
 ---
-# <a name="quickstart-analyze-a-remote-image---rest-ruby"></a>Rychlý start: Analýza vzdáleného obrázku – REST, Ruby
+# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-ruby-in-computer-vision"></a>Rychlý start: Analýza vzdáleného obrázku pomocí rozhraní REST API a Ruby v počítačovém zpracování obrazu
 
-V tomto rychlém startu analyzujete obrázek za účelem extrakce vizuálních prvků pomocí počítačového zpracování obrazu.
+V tomto rychlém startu analyzujete obrázek uložený vzdáleně za účelem extrakce vizuálních prvků pomocí rozhraní REST API počítačového zpracování obrazu. Pomocí metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat vizuální prvky na základě obsahu obrázku.
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli počítačové zpracování obrazu použít, potřebujete klíč předplatného. Přečtěte si, [jak klíče předplatného získat](../Vision-API-How-to-Topics/HowToSubscribe.md).
+- Musíte mít nainstalovaný [Ruby](https://www.ruby-lang.org/en/downloads/) 2.4.x nebo novější.
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Abyste získali klíč předplatného, přejděte k tématu [Jak získat klíče předplatného](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="analyze-image-request"></a>Žádost Analyze Image
+## <a name="create-and-run-the-sample"></a>Vytvoření a spuštění ukázky
 
-Pomocí [metody Analyze Image](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat vizuální funkce na základě obsahu obrázku. Obrázek můžete nahrát nebo můžete určit jeho adresu URL a vybrat funkce, které se mají vrátit, včetně:
+Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 
-* Podrobného seznamu značek souvisejících s obsahem obrázku
-* Popisu obsahu obrázku v celé větě
-* Souřadnic, pohlaví a věku veškerých obličejů na obrázku
-* Typu obrázku (klipart nebo perokresba)
-* Převládající barvy, doplňkové barvy a toho, jestli je obrázek černobílý
-* Kategorie definované v této [taxonomii](../Category-Taxonomy.md)
-* Je obsah obrázku určený pro dospělé nebo se jedná o sexuálně sugestivní obsah?
-
-Pokud chcete spustit ukázku, postupujte takto:
-
-1. Zkopírujte do editoru následující kód.
-1. Místo `<Subscription Key>` použijte platný klíč předplatného.
-1. V případě potřeby změňte hodnotu `uri` na umístění, kde jste získali klíče předplatného.
-1. Volitelně můžete změnit jazyk odpovědi (`'language' => 'en'`).
-1. Volitelně můžete změnit obrázek (`{\"url\":\"...`) pro analýzu.
-1. Uložte soubor s příponou `.rb`.
-1. Otevřete příkazový řádek Ruby a spusťte soubor, například: `ruby myfile.rb`.
+1. Zkopírujte do textového editoru následující kód.
+1. Proveďte v kódu na příslušných místech následující změny:
+    1. Místo `<Subscription Key>` použijte váš klíč předplatného.
+    1. Adresu URL `https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze` nahraďte adresou URL koncového bodu metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) v oblasti Azure, kde jste získali klíče předplatného, pokud je to potřeba.
+    1. Volitelně můžete hodnotu parametru požadavku `language` nahradit jiným jazykem. 
+    1. Volitelně můžete adresu URL `http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg\` nahradit adresou URL jiného obrázku, který chcete analyzovat.
+1. Uložte kód jako soubor s příponou `.rb`. Například, `analyze-image.rb`.
+1. Otevřete okno příkazového řádku.
+1. Ke spuštění ukázky na příkazovém řádku použijte příkaz `ruby`. Například, `ruby analyze-image.rb`.
 
 ```ruby
 require 'net/http'
@@ -78,9 +73,9 @@ end
 puts response.body
 ```
 
-## <a name="analyze-image-response"></a>Odpověď metody Analyze Image
+## <a name="examine-the-response"></a>Prozkoumání odpovědi
 
-Úspěšná odpověď se vrátí ve formátu JSON, například:
+Úspěšná odpověď se vrátí ve formátu JSON. Ukázka provede analýzu a zobrazí úspěšnou odpověď v okně příkazového řádku, podobně jako v následujícím příkladu:
 
 ```json
 {
@@ -183,9 +178,13 @@ puts response.body
 
 ```
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud už soubor nepotřebujete, odstraňte ho.
+
 ## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte rozhraní API pro počítačové zpracování obrazu používané pro analýzu obrázku, zjišťování celebrit a památek, vytvoření miniatury a extrahování tištěného a ručně psaného textu. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Prozkoumejte rozhraní API pro počítačové zpracování obrazu, které se používá pro analýzu obrázku, zjišťování celebrit a památek, vytvoření miniatury a extrahování tištěného a ručně psaného textu. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
 > [Prozkoumat rozhraní API pro počítačové zpracování obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

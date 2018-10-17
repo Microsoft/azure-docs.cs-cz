@@ -1,21 +1,21 @@
 ---
-title: Translator Text – získání délky vět s Node.js | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: V tomto rychlém startu zjistíte délky vět v textu pomocí služby Translator Text API s Node.js ve službách Cognitive Services.
+title: 'Rychlý start: Získání délky vět – Translator Text, Node.js'
+titleSuffix: Azure Cognitive Services
+description: V tomto rychlém startu zjistíte délky vět v textu pomocí služby Translator Text API s Node.js.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: nolachar
-ms.openlocfilehash: 42fe27df2f0d6aacecfe2b9b01ad0061c2fea646
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 9a55642ae41eb311121c9e334472a8afbc8d9925
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "43769014"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127189"
 ---
 # <a name="quickstart-get-sentence-lengths-with-nodejs"></a>Rychlý start: Získání délky vět s Node.js
 
@@ -99,7 +99,7 @@ let content = JSON.stringify ([{'Text' : text}]);
 BreakSentences (content);
 ```
 
-## <a name="breaksentence-response"></a>Odpověď BreakSentence
+## <a name="breaksentence-response"></a>Odpověď metody BreakSentence
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu:
 

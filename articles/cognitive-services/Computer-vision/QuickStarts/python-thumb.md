@@ -1,49 +1,53 @@
 ---
-title: Rychlý start k vytvoření miniatury obrázku pomocí počítačového zpracování obrazu s Pythonem | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: V tomto rychlém startu vygenerujete ve službách Cognitive Services pomocí počítačového zpracování obrazu s Pythonem miniaturu obrázku.
+title: 'Rychlý start: Vygenerování miniatury – REST, Python – počítačové zpracování obrazu'
+titleSuffix: Azure Cognitive Services
+description: V tomto rychlém startu vygenerujete miniaturu z obrázku pomocí rozhraní API pro počítačové zpracování obrazu a Pythonu.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: bc1d01cd4b8f15ba627d917825ee5205c34f5cdf
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: c5809b3dd62d87e2a1f3bde762d17bef6d5732ae
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43769282"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45632921"
 ---
-# <a name="quickstart-generate-a-thumbnail---rest-python"></a>Rychlý start: Vygenerování miniatury – REST, Python
+# <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-python-in-computer-vision"></a>Rychlý start: Vygenerování miniatury pomocí rozhraní REST API a Pythonu v počítačovém zpracování obrazu
 
-V tomto rychlém startu vygenerujete pomocí počítačového zpracování obrazu miniaturu obrázku.
+V tomto rychlém startu vygenerujete miniaturu z obrázku pomocí rozhraní REST API počítačového zpracování obrazu. Miniaturu obrázku můžete vygenerovat pomocí metody [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb). Zadáte výšku a šířku, které se mohou od poměru stran vstupního obrázku lišit. Počítačové zpracování obrazu použije chytré oříznutí, které inteligentně identifikuje oblast zájmu a na základě této oblasti vygeneruje souřadnice oříznutí.
 
 Tento rychlý start můžete spustit jako podrobný návod pomocí Jupyter Notebooku na webu [MyBinder](https://mybinder.org). Pokud chcete spustit Binder, vyberte následující tlačítko:
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
+
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli počítačové zpracování obrazu použít, potřebujete klíč předplatného. Přečtěte si, [jak klíče předplatného získat](../Vision-API-How-to-Topics/HowToSubscribe.md).
+Abyste mohli počítačové zpracování obrazu použít, potřebujete klíč předplatného. Přečtěte si, [jak získat klíče předplatného](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="intelligently-generate-a-thumbnail"></a>Inteligentní vygenerování miniatury
+## <a name="prerequisites"></a>Požadavky
 
-Miniaturu obrázku můžete vygenerovat pomocí [metody Get Thumbnail](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb). Zadáte výšku a šířku, které se mohou od poměru stran vstupního obrázku lišit. Počítačové zpracování obrazu použije chytré oříznutí, které inteligentně identifikuje oblast zájmu a na základě této oblasti vygeneruje souřadnice oříznutí.
+- Pokud chcete spustit tuto ukázku místně, musíte mít nainstalovaný [Python](https://www.python.org/downloads/).
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Abyste získali klíč předplatného, přejděte k tématu [Jak získat klíče předplatného](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-Pokud chcete spustit ukázku, postupujte takto:
+## <a name="create-and-run-the-sample"></a>Vytvoření a spuštění ukázky
 
-1. Následující kód zkopírujte do nového souboru pythonového skriptu.
-1. Místo `<Subscription Key>` použijte platný klíč předplatného.
-1. V případě potřeby změňte hodnotu `vision_base_url` na umístění, kde jste získali klíče předplatného.
-1. Volitelně můžete hodnotu `image_url` změnit na jiný obrázek.
-1. Spusťte skript.
+Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 
-Následující kód používá knihovnu `requests` Pythonu k volání rozhraní API pro analýzu obrázku počítačového zpracování obrazu. Klíč rozhraní API se předává prostřednictvím slovníku `headers`. Velikost miniatury se předává prostřednictvím slovníku `params`. Miniatura se vrátí v odpovědi jako pole bajtů.
-
-## <a name="get-thumbnail-request"></a>Žádost Get Thumbnail
+1. Zkopírujte do textového editoru následující kód.
+1. Proveďte v kódu na příslušných místech následující změny:
+    1. Hodnotu `subscription_key` nahraďte klíčem předplatného.
+    1. Hodnotu `vision_base_url` nahraďte adresou URL koncového bodu prostředku počítačového zpracování obrazu z oblasti Azure, kde jste získali klíče předplatného, pokud je to potřeba.
+    1. Volitelně můžete hodnotu `image_url` nahradit adresou URL jiného obrázku, pro který chcete vygenerovat miniaturu.
+1. Uložte kód jako soubor s příponou `.py`. Například, `get-thumbnail.py`.
+1. Otevřete okno příkazového řádku.
+1. Ke spuštění ukázky na příkazovém řádku použijte příkaz `python`. Například, `python get-thumbnail.py`.
 
 ```python
 import requests
@@ -86,6 +90,10 @@ plt.axis("off")
 # Verify the thumbnail size.
 print("Thumbnail is {0}-by-{1}".format(*thumbnail.size))
 ```
+
+## <a name="examine-the-response"></a>Prozkoumání odpovědi
+
+Úspěšná odpověď se vrátí jako binární data, která představují data miniatury obrázku. Pokud je požadavek úspěšný, vygeneruje se z binárních dat v odpovědi miniatura a ukázka ji zobrazí. Pokud požadavek selže, odpověď se zobrazí v okně příkazového řádku. Odpověď požadavku, který selhal, bude obsahovat chybový kód a zprávu, která vám pomůže určit, co se nepovedlo.
 
 ## <a name="next-steps"></a>Další kroky
 

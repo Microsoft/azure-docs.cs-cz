@@ -1,5 +1,6 @@
 ---
-title: Analýza textu s využitím Power BI – Azure Cognitive Services | Microsoft Docs
+title: 'Kurz: Analýza textu s Power BI'
+titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak pomocí Analýzy textu extrahovat klíčové fráze z textu uloženého v Power BI.
 services: cognitive-services
 author: luiscabrer
@@ -7,105 +8,113 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: tutorial
-ms.date: 3/07/2018
+ms.date: 09/12/2018
 ms.author: luisca
-ms.openlocfilehash: 2cdb93d44218627efdcb0360d8cf4a4eeeca177a
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: fe6bc384e4190cd17df00ddf285701db8c4199a6
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42889329"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733325"
 ---
-# <a name="text-analytics-with-power-bi"></a>Analýza textu s využitím Power BI
+# <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Kurz: Integrace Power BI do Analýzy textu službou Cognitive Service
 
-Microsoft Power BI vytváří z dat organizace působivé sestavy, které můžete distribuovat v rámci organizace a získat tak rychlejší a podrobnější přehled. Služba Analýza textu, která je součástí služeb Cognitive Services v Microsoft Azure, dokáže z textu extrahovat nejdůležitější fráze prostřednictvím rozhraní API pro klíčové fráze, které obsahuje. Společně vám tyto služby můžou pomoct rychle zjistit, o čem mluví vaši zákazníci a jak se při tom cítí.
+Microsoft Power BI Desktop je bezplatná aplikace, se kterou se můžete připojit k datům abyste je mohli transformovat a vizualizovat. Služba Analýza textu je součástí služby Microsoft Azure Cognitive Services. Umožňuje zpracovat jazyk v jeho přirozené podobě. Služba dokáže z nezpracovaného a nestrukturovaného textu extrahovat nejdůležitější fráze, analyzovat mínění a identifikovat známé prvky, jako jsou značky. Společně vám tyto služby můžou pomoct rychle zjistit, o čem mluví vaši zákazníci a jak se při tom cítí.
 
-V tomto kurzu uvidíte, jak integrovat Power BI Desktop a rozhraní API pro klíčové fráze za účelem extrahování nejdůležitějších frází ze zpětné vazby zákazníků pomocí vlastní funkce Power Query. Z těchto frází také vytvoříme Word Cloud.
-
-## <a name="prerequisites"></a>Požadavky
-
-Pro absolvování tohoto kurzu budete potřebovat:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Microsoft Power BI Desktop. [Stáhněte si ho zdarma](https://powerbi.microsoft.com/get-started/).
-> * Účet Microsoft Azure. [Začněte s bezplatnou zkušební verzí](https://azure.microsoft.com/free/) nebo se [přihlaste](https://portal.azure.com/).
-> * Přístupový klíč pro Analýzu textu. [Přihlaste se](../../cognitive-services-apis-create-account.md) a pak [získejte svůj klíč](../how-tos/text-analytics-how-to-access-key.md).
-> * Komentáře zákazníků. [Stáhněte si naše ukázková data](https://aka.ms/cogsvc/ta) nebo použijte vlastní.
+> * Používat Power BI Desktop k importu a transformaci dat
+> * Vytvořit vlastní funkce v Power BI Desktopu
+> * Integrovat Power BI Desktop do rozhraní API pro analýzu klíčových frází v textu
+> * Používat rozhraní API pro analýzu klíčových frází v textu k extrakci nejdůležitějších frází z připomínek zákazníků
+> * Vytvořit z připomínek zákazníků Word Cloud
 
-## <a name="loading-customer-data"></a>Načtení zákaznických dat
+## <a name="prerequisites"></a>Požadavky
+<a name="Prerequisites"></a>
 
-Začněte tím, že otevřete Power BI Desktop a načtete textový soubor s oddělovači (CSV) **FabrikamComments.csv**. Tento soubor představuje denní hypotetickou aktivitu na fóru podpory malé fiktivní společnosti.
+- Microsoft Power BI Desktop. [Stáhněte si ho zdarma](https://powerbi.microsoft.com/get-started/).
+- Účet Microsoft Azure. [Začněte s bezplatnou zkušební verzí](https://azure.microsoft.com/free/) nebo se [přihlaste](https://portal.azure.com/).
+- Účet rozhraní API služby Cognitive Services s rozhraním API pro analýzu textu. Pokud ho nemáte, můžete se [zaregistrovat](../../cognitive-services-apis-create-account.md) a použít pro tento kurz bezplatnou vrstvu 5000 transakcí/měsíc (viz [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)).
+- [Přístupový klíč k Analýze textu](../how-tos/text-analytics-how-to-access-key.md) vygenerovaný během registrace.
+- Komentáře zákazníků. Můžete použít [naše ukázková data](https://aka.ms/cogsvc/ta) nebo vlastní data. V tomto kurzu se předpokládá, že použijete ukázková data.
+
+## <a name="load-customer-data"></a>Načtení zákaznických dat
+<a name="LoadingData"></a>
+
+Začněte tím, že otevřete Power BI Desktop a načtete textový soubor s oddělovači (CSV) `FabrikamComments.csv`, který jste si stáhli v části [Požadavky](#Prerequisites). Tento soubor představuje denní hypotetickou aktivitu na fóru podpory malé fiktivní společnosti.
 
 > [!NOTE]
 > Power BI může využít data z celé řady zdrojů, jako je například Facebook nebo databáze SQL. Další informace najdete v tématech [Integrace Facebooku s Power BI](https://powerbi.microsoft.com/integrations/facebook/) a [Integrace SQL Serveru s Power BI](https://powerbi.microsoft.com/integrations/sql-server/).
 
-V hlavním okně Power BI Desktopu vyhledejte na pásu karet Domů skupinu Externí data. V rozevírací nabídce **Získat data** v této skupině zvolte **Text/CSV**.
+V hlavním okně Power BI Desktopu vyberte pás karet **Domů**. Na pásu karet ve skupině **Externí data** otevřete rozevírací nabídku **Načíst data** a vyberte **Text/CSV**.
 
 ![[Tlačítko Získat data]](../media/tutorials/power-bi/get-data-button.png)
 
-Zobrazí se dialogové okno Otevřít. Přejděte do složky Stažené soubory nebo jiné složky, která obsahuje ukázkový datový soubor. Klikněte na soubor `FabrikamComments.csv` a pak na tlačítko **Otevřít**. Zobrazí se dialogové okno pro import CSV.
+Zobrazí se dialogové okno Otevřít. Přejděte do složky Stažené soubory nebo do složky, kam jste si stáhli soubor `FabrikamComments.csv`. Klikněte na soubor `FabrikamComments.csv` a pak na tlačítko **Otevřít**. Zobrazí se dialogové okno pro import CSV.
 
 ![[Dialogové okno pro import CSV]](../media/tutorials/power-bi/csv-import.png)
 
-V dialogovém okně pro import CSV můžete ověřit, jestli Power BI Desktop správně rozpoznal znakovou sadu, oddělovač, řádky záhlaví a typy sloupců. Všechny tyto údaje jsou správné, takže klikneme na **Načíst**.
+V dialogovém okně pro import CSV můžete ověřit, jestli Power BI Desktop správně rozpoznal znakovou sadu, oddělovač, řádky záhlaví a typy sloupců. Pokud jsou tyto informace správně, klikněte na **Načíst**.
 
-Pokud chcete zobrazit načtená data, pomocí tlačítka Zobrazení dat u levého okraje pracovního prostoru Power BI přepněte na zobrazení dat. Otevře se podobná tabulka jako v aplikaci Microsoft Excel, která obsahuje naše data.
+Pokud chcete zobrazit načtená data, klikněte na tlačítko **Zobrazení dat** na levém okraji pracovního prostoru Power BI. Otevře se tabulka s daty, která vidíte v Microsoft Excelu.
 
 ![[Počáteční zobrazení naimportovaných dat]](../media/tutorials/power-bi/initial-data-view.png)
 
-## <a name="preparing-the-data"></a>Příprava dat
+## <a name="prepare-the-data"></a>Příprava dat
+<a name="PreparingData"></a>
 
-Možná bude potřeba připravit data na zpracování službou Klíčové fráze tím, že je transformujete v Power BI Desktopu.
+Před zpracováním možná budete muset data přeměnit v Power BI Desktopu, abyste je mohli zpracovat rozhraním API pro klíčové fráze služby Analýza textu.
 
-Například naše data obsahují pole `subject` i `comment`. Při extrahování klíčových frází bychom měli zohlednit text v obou těchto polích, ne pouze v poli `comment`. Tento úkol usnadňuje funkce Sloučit sloupce v Power BI Desktopu.
+Ukázková data obsahují sloupec `subject` a sloupec `comment`. Funkce sloučení sloupců v Power BI Desktopu extrahuje klíčové fráze z dat obou sloupců (místo jen ze sloupce `comment`).
 
-Kliknutím na **Upravit dotazy** ve skupině Externí data na pásu karet Domů v hlavním okně Power BI Desktopu otevřete Editor dotazů. 
+V Power BI Desktopu vyberte pás karet **Domů**. Ve skupině **Externí data** klikněte na **Upravit dotazy**.
 
 ![[Skupina Externí data na pásu karet Domů]](../media/tutorials/power-bi/edit-queries.png)
 
-Pokud ještě není vybraný, v seznamu Dotazy na levé straně okna vyberte dotaz FabrikamComments.
+V seznamu **Dotazy** vyberte na levé straně okna soubor `FabrikamComments`, pokud ještě není vybraný.
 
 Teď v tabulce vyberte oba sloupce `subject` a `comment`. Možná budete muset zobrazení vodorovně posunout, aby se tyto sloupce zobrazily. Nejprve klikněte na záhlaví sloupce `subject`, pak podržte stisknutou klávesu Ctrl a klikněte na záhlaví sloupce `comment`.
 
 ![[Výběr polí, která se mají sloučit]](../media/tutorials/power-bi/select-columns.png)
 
-Ve skupině Textové sloupce na pásu karet Transformace klikněte na **Sloučit sloupce**. Zobrazí se dialogové okno Sloučit sloupce.
+Vyberte pás karet **Transformace**. Ve skupině **Textové sloupce** na pásu karet klikněte na **Sloučit sloupce**. Zobrazí se dialogové okno Sloučit sloupce.
 
 ![[Sloučení polí s využitím dialogového okna Sloučit sloupce]](../media/tutorials/power-bi/merge-columns.png)
 
-V dialogovém okně Sloučit sloupce zvolte jako oddělovač tabulátor a pak klikněte na **OK**. Hotovo!
+V dialogovém okně Sloučit sloupce zvolte jako oddělovač `Tab` a klikněte na **OK**.
 
-Můžete také zvážit vyfiltrování prázdných zpráv pomocí filtru Odebrat prázdné nebo odebrání netisknutelných znaků pomocí transformace Vyčistit. Pokud vaše data obsahují sloupec, jako je sloupec `spamscore` v našem ukázkovém souboru, můžete pomocí filtru Číslo přeskočit nevyžádané komentáře.
+Můžete také vyfiltrovat prázdné zprávy filtrem Odebrat prázdné nebo odebrat netisknutelné znaky transformací Vyčistit. Pokud vaše data obsahují podobný sloupec, jako je sloupec `spamscore` v ukázkovém souboru, můžete použít číselný filtr k přeskočení nevyžádaných komentářů.
 
-## <a name="understanding-the-api"></a>Vysvětlení rozhraní API
+## <a name="understand-the-api"></a>Vysvětlení rozhraní API
+<a name="UnderstandingAPI"></a>
 
-Rozhraní API pro klíčové fráze dokáže pro jeden požadavek HTTP zpracovat až tisíc textových dokumentů. Power BI však upřednostňuje postupné zpracování jednotlivých záznamů, takže naše volání rozhraní API budou obsahovat pouze jeden dokument. [Rozhraní API](//westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) vyžaduje, aby každý zpracovávaný dokument obsahoval následující pole.
+[Rozhraní API Klíčové fráze](//westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) služby Analýza textu dokáže v jednom požadavku HTTP zpracovat až tisíc textových dokumentů. Power BI ale upřednostňuje postupné zpracování jednotlivých záznamů. V tomto kurzu bude ve voláních rozhraní API vždy jen jeden dokument. Rozhraní API Klíčové fráze vyžaduje, aby každý zpracovávaný dokument obsahoval následující pole.
 
 | | |
 | - | - |
-| `id`  | Jedinečný identifikátor tohoto dokumentu v rámci požadavku. Odpověď také obsahuje toto pole. Díky tomu můžete v případě, že zpracováváte více dokumentů, snadno přidružit extrahované klíčové fráze k dokumentu, ze kterého pocházejí. My pro každý požadavek zpracováváme jeden dokument, takže už víme, ke kterému dokumentu je odpověď přidružená, a `id` tedy může být ve všech požadavcích stejné.|
-| `text`  | Text, který se má zpracovat. Získáme ho ze sloupce `Merged`, který jsme vytvořili a který obsahuje řádek předmětu sloučený s textem komentáře. Rozhraní API pro klíčové fráze vyžaduje, aby tato data nepřesáhla délku přibližně 5 000 znaků.|
-| `language` | Kód představující jazyk, ve kterém je dokument napsaný. Všechny naše zprávy jsou v angličtině, takže v našem dotazu můžeme pevně zakódovat jazyk `en`.|
+| `id`  | Jedinečný identifikátor tohoto dokumentu v rámci požadavku. Odpověď také obsahuje toto pole. Tímto způsobem můžete v případě zpracování více dokumentů snadno přidružit extrahované klíčové fráze k dokumentu, ze kterého pocházejí. V tomto kurzu zpracováváte pro každou žádost jenom jeden dokument. Proto můžete hodnotu `id` pevně zadat, aby byla pro všechny požadavky stejná.|
+| `text`  | Text, který se má zpracovat. Hodnota tohoto pole pochází ze sloupce `Merged` vytvořeného v [předchozím oddílu](#PreparingData). V tomto sloupci je sloučený řádek předmětu s textem komentáře. Rozhraní API pro klíčové fráze vyžaduje, aby tato data nepřesáhla délku přibližně 5 000 znaků.|
+| `language` | Kód pro přirozený jazyk, ve kterém je dokument napsaný. Všechny zprávy v ukázkových datech jsou v angličtině, takže do tohoto pole můžete pevně zadat hodnotu `en`.|
 
-Pro odeslání do rozhraní API pro klíčové fráze potřebujeme tato pole zkombinovat do dokumentu JSON (JavaScript Object Notation). Odpověď na tento požadavek je také dokument JSON, který musíme parsovat a získat z něj klíčové fráze.
+## <a name="create-a-custom-function"></a>Vytvoření vlastní funkce
+<a name="CreateCustomFunction"></a>
 
-## <a name="creating-a-custom-function"></a>Vytvoření vlastní funkce
-
-Teď jsme připraveni vytvořit vlastní funkci, která provede integraci Power BI a Analýzy textu. Power BI Desktop tuto funkci zavolá pro každý řádek tabulky a vytvoří nový sloupec s výsledky.
-
-Funkce jako parametr přijímá text ke zpracování. Převádí data do a z požadovaného formátu JSON (JavaScript Object Notation) a odesílá požadavky HTTP do koncového bodu rozhraní API pro klíčové fráze. Po dokončení parsování odpovědi vrátí funkce řetězec obsahující čárkami oddělený seznam extrahovaných klíčových frází.
+Teď jste připraveni vytvořit vlastní funkci, která integruje Power BI s Analýzou textu. Funkce jako parametr přijímá text ke zpracování. Převede data do požadovaného formátu JSON (nebo z něj) a vytvoří požadavek HTTP do rozhraní API Klíčové fráze. Dále funkce parsuje odpověď z API a vrátí řetězec, který obsahuje seznam extrahovaných klíčových frází oddělených čárkou.
 
 > [!NOTE]
 > Vlastní funkce Power BI Desktopu se píší v [jazyce vzorců Power Query M](https://msdn.microsoft.com/library/mt211003.aspx) nebo zkráceně jenom M. M je funkcionální programovací jazyk založený na [F#](https://docs.microsoft.com/dotnet/fsharp/). Pro dokončení tohoto kurzu však nemusíte být programátor – požadovaný kód je uvedený níže.
 
-Stále byste měli být v okně Editoru dotazů. Na pásu karet Domů klikněte na **Nový zdroj** (ve skupině Nový dotaz) a v rozevírací nabídce zvolte **Prázdný dotaz**. 
+V Power BI Desktopu se ujistěte, že jste v okně Editoru dotazů. Pokud v něm nejste, vyberte pás karet **Domů** a ve skupině **Externí data** klikněte na **Upravit dotazy**.
 
-V seznamu Dotazy se zobrazí nový dotaz s počátečním názvem Query1. Dvakrát na tuto položku klikněte a zadejte název `KeyPhrases`.
+Na pásu karet **Domů** otevřete ve skupině **Nový dotaz** rozevírací nabídku **Nový zdroj** a vyberte **Prázdný dotaz**. 
 
-Teď kliknutím na **Rozšířený editor** ve skupině Dotaz na pásu karet Domů otevřete okno Rozšířený editor. Odstraňte kód, který okno už obsahuje, a vložte následující kód. 
+V seznamu dotazů se zobrazí nový dotaz s počátečním názvem `Query1`. Dvakrát na tuto položku klikněte a zadejte název `KeyPhrases`.
+
+Na pásu karet **Domů** ve skupině **Dotaz** klikněte na **Rozšířený editor**. Otevře se okno rozšířeného editoru. Odstraňte kód, který okno už obsahuje, a vložte následující kód. 
 
 > [!NOTE]
-> V následujících příkladech předpokládáme, že se koncový bod nachází na adrese https://westus.api.cognitive.microsoft.com.  Analýza textu podporuje vytvoření předplatného ve 13 různých oblastech. Pokud jste si službu zaregistrovali v jiné oblasti, nezapomeňte použít koncový bod pro oblast, kterou jste vybrali. Měl by se zobrazit na stránce Přehled na webu Azure Portal, když vyberete své předplatné Analýzy textu.
+> Následující příklady předpokládají, že koncový bod rozhraní API pro analýzu textu začíná oblastí `https://westus.api.cognitive.microsoft.com`. Analýza textu umožňuje vytvořit předplatné ve 13 různých oblastech. Pokud jste si službu zaregistrovali v jiné oblasti, nezapomeňte použít koncový bod pro oblast, kterou jste vybrali. Tento koncový bod najdete, když se přihlásíte na webu [Azure Portal](https://azure.microsoft.com/features/azure-portal/), vyberete předplatné Analýza textu a vyberete stránku Přehled.
 
 ```fsharp
 // Returns key phrases from the text in a comma-separated list
@@ -122,69 +131,72 @@ Teď kliknutím na **Rozšířený editor** ve skupině Dotaz na pásu karet Dom
 in  keyphrases
 ```
 
-Na řádku začínajícím na `apikey` vložte také svůj klíč rozhraní API pro analýzu textu, který získáte z řídicího panelu Microsoft Azure. (Nezapomeňte ponechat uvozovky před a za klíčem.) Potom klikněte na **Hotovo**.
+Nahraďte `YOUR_API_KEY_HERE` přístupovým klíčem Analýzy textu. Tento klíč také najdete, když se přihlásíte na webu [Azure Portal](https://azure.microsoft.com/features/azure-portal/), vyberete předplatné Analýza textu a vyberete stránku Přehled. Nezapomeňte nechat uvozovky před i za klíčem. Potom klikněte na **Hotovo**.
 
-## <a name="using-the-function"></a>Použití funkce
+## <a name="use-the-custom-function"></a>Použití vlastní funkce
+<a name="UseCustomFunction"></a>
 
-Teď můžeme pomocí vlastní funkce získat klíčové fráze obsažené v jednotlivých komentářích našich zákazníků a uložit je do nového sloupce tabulky. 
+Teď můžete použít vlastní funkci k extrakci klíčových frází ze všech komentářů zákazníků. Získané fráze uložíte do nového sloupce tabulky. 
 
-Stále v Editoru dotazů přepněte zpět na dotaz FabrikamComments, přejděte na pás karet Přidat sloupec a klikněte na tlačítko **Vyvolat vlastní funkci** ve skupině Obecné.
+V Power BI Desktopu se v okně Editoru dotazů vraťte zpět k dotazu `FabrikamComments`. Vyberte pás karet **Přidat sloupec**. Ve skupině **Obecné** klikněte na **Vyvolat vlastní funkci**.
 
 ![[Tlačítko Vyvolat vlastní funkci]](../media/tutorials/power-bi/invoke-custom-function-button.png)<br><br>
 
-V dialogovém okně Vyvolat vlastní funkci jako název nového sloupce zadejte `keyphrases`. Jako Dotaz funkce zvolte naši vlastní funkci `KeyPhrases`. 
+Zobrazí se dialogové okno Vyvolat vlastní funkci. Do pole **Nový název sloupce** zadejte `keyphrases`. V poli **Dotaz na funkci** vyberte vlastní funkci `KeyPhrases`, kterou jste vytvořili.
 
-V dialogovém okně se zobrazí nové pole s dotazem, jaké pole chceme naší funkci předat jako parametr `text`. V rozevírací nabídce zvolte `Merged` (sloupec, který jsme vytvořili dříve sloučením polí s předmětem a zprávou).
+V dialogovém okně se zobrazí nové pole **text (volitelné)**. Toto pole se ptá, jaký sloupec chcete použít k zadání hodnot parametru `text` rozhraní API pro klíčové fráze (nezapomeňte, že jste hodnoty parametrů `language` a `id` už pevně zadali). V rozevírací nabídce vyberte `Merged` (sloupec jste vytvořili [dříve](#PreparingData) sloučením polí předmětu a zprávy).
 
 ![[Vyvolání vlastní funkce]](../media/tutorials/power-bi/invoke-custom-function.png)
 
 Nakonec klikněte na **OK**.
 
-Pokud je vše připravené, Power BI zavolá naši funkci pro každý řádek tabulky, provede dotazy na klíčové fráze a přidá do tabulky nový sloupec. Předtím však možná bude nutné zadat nastavení ověřování a ochrany osobních údajů.
+Pokud je všechno připravené, Power BI volá vaši funkci pro každý řádek tabulky vždy jen jednou. Odešle dotazy rozhraní API pro klíčové fráze a přidá do tabulky nový sloupec s uloženými výsledky. Předtím však možná bude nutné zadat nastavení ověřování a ochrany osobních údajů.
 
 ## <a name="authentication-and-privacy"></a>Ověřování a ochrana osobních údajů
+<a name="Authentication"></a>
 
-Po zavření dialogového okna Vyvolat vlastní funkci se může zobrazit banner s výzvou k určení způsobu připojení ke koncovému bodu služby Klíčová slova.
+Po zavření dialogového okna Vyvolat vlastní funkci se může zobrazit banner s výzvou, abyste upřesnili, jak se připojit k rozhraní API pro klíčová slova.
 
 ![[Banner s výzvou k zadání přihlašovacích údajů]](../media/tutorials/power-bi/credentials-banner.png)
 
-Klikněte na **Upravit přihlašovací údaje**, v dialogovém okně se ujistěte, že je vybraná možnost Anonymní, a pak klikněte na **Připojit**. 
+Klikněte na **Upravit přihlašovací údaje**, v dialogovém okně se ujistěte, že je vybraná možnost `Anonymous`, a pak klikněte na **Připojit**. 
 
 > [!NOTE]
-> Proč anonymní? Služba Analýza textu vás ověří pomocí klíče rozhraní API, takže Power BI nemusí poskytovat přihlašovací údaje pro samotný požadavek HTTP.
+> Vybrali jste `Anonymous`, protože služba Analýza textu použije k vašemu ověření přístupový klíč, aby řešení Power BI nemuselo poskytovat přihlašovací údaje pro samotný požadavek HTTP.
 
 ![[Nastavení ověřování na Anonymní]](../media/tutorials/power-bi/access-web-content.png)
 
-Pokud se banner Upravit přihlašovací údaje zobrazuje i po zvolení anonymního přístupu, možná jste zapomněli vložit svůj klíč rozhraní API. Zkontrolujte vlastní funkci `KeyPhrases` v Rozšířeném editoru a ujistěte se, že obsahuje váš klíč rozhraní API.
+Pokud se banner Upravit přihlašovací údaje zobrazuje i po zvolení anonymního přístupu, možná jste do kódu [vlastní funkce](#CreateCustomFunction) `KeyPhrases` zapomněli vložit svůj přístupový klíč Analýzy textu.
 
 Dále se může zobrazit banner s výzvou k zadání informací o ochraně osobních údajů u vašich zdrojů dat. 
 
 ![[Banner s výzvou k zadání informací o ochraně osobních údajů]](../media/tutorials/power-bi/privacy-banner.png)
 
-Klikněte na **Pokračovat** a pro každý zdroj dat v dialogovém okně zvolte Veřejné. Potom klikněte na **Uložit**.
+Klikněte na **Pokračovat** a pro každý zdroj dat v dialogu zvolte `Public`. Potom klikněte na **Uložit**.
 
 ![[Nastavení ochrany osobních údajů u zdrojů dat]](../media/tutorials/power-bi/privacy-dialog.png)
 
-## <a name="creating-the-word-cloud"></a>Vytvoření Word Cloudu
+## <a name="create-the-word-cloud"></a>Vytvoření Word Cloudu
+<a name="WordCloud"></a>
 
 Jakmile vyřešíte všechny zobrazené bannery, kliknutím na **Zavřít a použít** na pásu karet Domů zavřete Editor dotazů.
 
 Power BI Desktopu chvíli trvá, než provede potřebné požadavky HTTP. Sloupec `keyphrases` pro každý řádek tabulky obsahuje klíčové fráze rozpoznané v textu rozhraním API pro klíčové fráze. 
 
-Teď tento sloupec použijeme k vygenerování Word Cloudu. Začněte kliknutím na tlačítko Sestava nalevo od pracovního prostoru v hlavním okně Power BI Desktopu.
+Teď tento sloupec použijete k vygenerování Word Cloudu. Začněte tím, že v hlavním okně Power BI Desktopu kliknete na tlačítko **Sestava**, které je nalevo od pracovního prostoru.
 
 > [!NOTE]
 > Proč k vygenerování Word Cloudu použít extrahované klíčové fráze, a ne úplný text každého komentáře? Klíčové fráze nám poskytují *důležitá* slova z komentářů našich zákazníků, ne pouze *nejčastější* slova. Navíc nedojde ke zkreslení velikosti slov ve výsledném Cloudu častým používáním určitého slova v relativně malém počtu komentářů.
 
-Pokud ještě nemáte nainstalovaný vlastní vizuál Word Cloud, nainstalujte ho. Na panelu Vizualizace napravo od pracovního prostoru klikněte na tři tečky (**...**) a zvolte **Importovat ze Storu**. Vyhledejte „cloud“ a klikněte na tlačítko **Přidat** vedle vizuálu Word Cloud. Power BI nainstaluje vizuál Word Cloud a bude vás informovat o jeho úspěšném nainstalování.
+Pokud ještě nemáte nainstalovaný vlastní vizuál Word Cloud, nainstalujte ho. Na panelu Vizualizace napravo od pracovního prostoru klikněte na tři tečky (**...**) a zvolte **Importovat ze Storu**. Vyhledejte „cloud“ a klikněte na tlačítko **Přidat** vedle vizuálu Word Cloud. Power BI nainstaluje vizuál Word Cloud a bude vás informovat o úspěšné instalaci.
 
 ![[Přidání vlastního vizuálu]](../media/tutorials/power-bi/add-custom-visuals.png)<br><br>
 
-Teď pojďme vytvořit vlastní Word Cloud!
+Nejprve klikněte na ikonu Word Cloud na panelu Vizualizace.
 
 ![[Ikona Word Cloud na panelu Vizualizace]](../media/tutorials/power-bi/visualizations-panel.png)
 
-Nejprve klikněte na ikonu Word Cloud na panelu Vizualizace. V pracovním prostoru se zobrazí nová sestava. Přetáhněte pole `keyphrases` z panelu Pole do pole Kategorie na panelu Vizualizace. Uvnitř sestavy se zobrazí Word Cloud.
+V pracovním prostoru se zobrazí nová sestava. Přetáhněte pole `keyphrases` z panelu Pole do pole Kategorie na panelu Vizualizace. Uvnitř sestavy se zobrazí Word Cloud.
 
 Teď na panelu Vizualizace přepněte na stránku Formát. V kategorii Nevýznamová slova zapněte **Výchozí nevýznamová slova**. Tím se z Cloudu odstraní běžná krátká slova, jako je například „of“. 
 
@@ -199,10 +211,11 @@ Kliknutím na nástroj Detailní režim v sestavě získáte lepší zobrazení 
 ![[Word Cloud]](../media/tutorials/power-bi/word-cloud.png)
 
 ## <a name="more-text-analytics-services"></a>Další služby Analýzy textu
+<a name="MoreServices"></a>
 
-Služba Analýza textu, což je jedna ze služeb Cognitive Services, které Microsoft Azure nabízí, poskytuje také analýzu mínění a rozpoznávání jazyka. Zejména rozpoznávání jazyka je užitečné v případě, že je zpětná vazba od vašich zákazníků i v jiných jazycích než angličtině.
+Služba Analýza textu, což je jedna ze služeb Cognitive Services, které Microsoft Azure nabízí, poskytuje také analýzu mínění a rozpoznávání jazyka. Rozpoznávání jazyka je užitečné hlavně v případě, že zpětná vazba od vašich zákazníků není vždy v angličtině.
 
-Obě tato rozhraní API jsou velmi podobná rozhraní API pro klíčové fráze. K jejich integraci s Power BI Desktopem je tedy možné použít téměř identické vlastní funkce. Stačí vytvořit prázdný dotaz a stejně jako předtím do Rozšířeného editoru vložit odpovídající kód uvedený níže. (Nezapomeňte na svůj přístupový klíč!) Pak stejně jako předtím použijte funkci, která do tabulky přidá nový sloupec.
+Obě tato rozhraní API jsou podobná rozhraní API pro klíčové fráze. To znamená, že je můžete integrovat do Power BI Desktopu pomocí vlastních funkcí, které jsou skoro stejné jako funkce vytvořená v tomto kurzu. Stačí vytvořit prázdný dotaz a stejně jako předtím do Rozšířeného editoru vložit odpovídající kód uvedený níže. (Nezapomeňte na svůj přístupový klíč!) Pak stejně jako předtím použijte funkci, která do tabulky přidá nový sloupec.
 
 Následující funkce Analýzy mínění vrátí skóre značící, jak pozitivní je mínění vyjádřené v textu.
 
@@ -221,10 +234,10 @@ Následující funkce Analýzy mínění vrátí skóre značící, jak pozitivn
 in  sentiment
 ```
 
-Tady jsou dvě verze funkce Rozpoznávání jazyka. První vrátí kód ISO jazyka (např. `en` pro angličtinu), zatímco druhá vrátí popisný název (např. `English`). Jak si můžete všimnout, tyto dvě verze se liší pouze v posledním řádku těla funkce.
+Tady jsou dvě verze funkce Rozpoznávání jazyka. První vrátí kód ISO jazyka (například pro angličtinu je to `en`), zatímco druhá vrací popisný název (například `English`). Jak si můžete všimnout, tyto dvě verze se liší pouze v posledním řádku těla funkce.
 
 ```fsharp
-// Returns the two-letter language code (e.g. en for English) of the text
+// Returns the two-letter language code (for example, 'en' for English) of the text
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
     endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages",
@@ -238,7 +251,7 @@ Tady jsou dvě verze funkce Rozpoznávání jazyka. První vrátí kód ISO jazy
 in  language
 ```
 ```fsharp
-// Returns the name (e.g. English) of the language in which the text is written
+// Returns the name (for example, 'English') of the language in which the text is written
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
     endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages",
@@ -273,6 +286,7 @@ in  keyphrases
 ```
 
 ## <a name="next-steps"></a>Další kroky
+<a name="NextSteps"></a>
 
 Přečtěte si další informace o službě Analýza textu, jazyce vzorců Power Query M nebo Power BI.
 

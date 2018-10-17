@@ -1,19 +1,21 @@
 ---
-title: 'Rychlý start: Použití jazyka C# k volání rozhraní API Bingu pro vyhledávání na webu'
+title: 'Rychlý start: Hledání pomocí jazyka C# – rozhraní API Bingu pro vyhledávání na webu'
+titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání na webu v jazyce C# a dostanete odpověď ve formátu JSON.
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: erhopf
-ms.openlocfilehash: 9db551f89a3b7834119fe85a22e4cdc8d0402252
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 7f0555a9bb655109ff8786d3a0873d997d715477
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888504"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124758"
 ---
 # <a name="quickstart-use-c-to-call-the-bing-web-search-api"></a>Rychlý start: Použití jazyka C# k volání rozhraní API Bingu pro vyhledávání na webu  
 
@@ -23,7 +25,7 @@ V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tady je pár věcí, které budete potřebovat na začátku tohoto rychlého startu:
+Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebovat:
 
 * Windows: [Visual Studio 2017](https://www.visualstudio.com/downloads/)
 * Linux/macOS: [Mono](http://www.mono-project.com/)  

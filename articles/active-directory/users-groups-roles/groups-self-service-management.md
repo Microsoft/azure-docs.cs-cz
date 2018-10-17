@@ -1,5 +1,5 @@
 ---
-title: Nastavení samoobslužné správy přístupu k aplikacím ve službě Azure Active Directory | Dokumentace Microsoftu
+title: Nastavení samoobslužné správy přístupu k aplikacím ve službě Azure Active Directory | Microsoft Docs
 description: Vytváření a správa skupin zabezpečení nebo skupin Office 365 ve službě Azure Active Directory a žádosti o členství ve skupině zabezpečení nebo skupině Office 365
 services: active-directory
 documentationcenter: ''
@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: get-started-article
-ms.date: 09/07/2017
+ms.date: 09/11/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 8254f6c72141f7a9babfc5af3c319e7e66f30bbf
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 7966705df2a352f2011d5f7611277e92d8e2d11a
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448661"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294233"
 ---
 # <a name="set-up-azure-active-directory-for-self-service-group-management"></a>Nastavení služby Azure Active Directory pro samoobslužnou správu skupin
 Vaši uživatelé můžou vytvářet a spravovat své vlastní skupiny zabezpečení nebo skupiny Office 365 ve službě Azure Active Directory (Azure AD). Uživatelé mohou také požádat o členství ve skupině zabezpečení nebo ve skupině Office 365. Vlastník skupiny pak může členství schválit nebo odepřít. Každodenní řízení členství ve skupině můžete delegovat na uživatele, kteří chápou obchodní kontext takového členství. Funkce samoobslužné správy skupin jsou dostupné jenom pro skupiny zabezpečení a skupiny Office 365. Nejsou dostupné pro skupiny zabezpečení s povoleným e-mailem a pro distribuční seznamy.
@@ -46,6 +46,6 @@ Následující články poskytují další informace o službě Azure Active Dir
 
 * [Správa přístupu k prostředkům pomocí skupin služby Azure Active Directory](../fundamentals/active-directory-manage-groups.md)
 * [Rutiny služby Azure Active Directory pro konfiguraci nastavení skupiny](groups-settings-cmdlets.md)
-* [Rejstřík článků o správě aplikací ve službě Azure Active Directory](../active-directory-apps-index.md)
+* [Správa aplikací ve službě Azure Active Directory](../manage-apps/what-is-application-management.md)
 * [Představení služby Azure Active Directory](../fundamentals/active-directory-whatis.md)
-* [Integrace místních identit do služby Azure Active Directory](../connect/active-directory-aadconnect.md)
+* [Integrace místních identit do služby Azure Active Directory](../hybrid/whatis-hybrid-identity.md)

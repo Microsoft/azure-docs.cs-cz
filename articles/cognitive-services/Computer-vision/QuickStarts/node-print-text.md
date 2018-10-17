@@ -1,44 +1,56 @@
 ---
 title: 'Rychlý start: Extrahování tištěného textu (OCR) – REST, Node.js – Počítačové zpracování obrazu'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu budete extrahovat tištěný text v obrázku pomocí počítačového zpracování obrazu s Node.js v Cognitive Services.
+description: V tomto rychlém startu budete extrahovat tištěný text z obrázku pomocí rozhraní API pro počítačové zpracování obrazu a Node.js.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 540f3ae05fa7049ee5330d613c1c0352e25db57e
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: af22b17d52b654438ae52c1eb85e523dbaf638fa
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842681"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45628909"
 ---
-# <a name="quickstart-extract-printed-text-ocr---rest-nodejs---computer-vision"></a>Rychlý start: Extrahování tištěného textu (OCR) – REST, Node.js – Počítačové zpracování obrazu
+# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-nodejs-in-computer-vision"></a>Rychlý start: Extrahování tištěného textu (OCR) pomocí rozhraní REST API a Node.js v počítačovém zpracování obrazu
 
-V tomto rychlém startu budete extrahovat tištěný text, což se označuje také jako optické rozpoznávání znaků (OCR), z obrázku pomocí počítačového zpracování obrazu.
+V tomto rychlém startu budete extrahovat tištěný text z obrázku pomocí optického rozpoznávání znaků (OCR) s využitím rozhraní REST API počítačového zpracování obrazu. Pomocí metody [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) můžete detekovat tištěný text v obrázku a extrahovat rozpoznané znaky do znakového proudu, který je strojově využitelný.
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli počítačové zpracování obrazu použít, potřebujete klíč předplatného. Přečtěte si, [jak klíče předplatného získat](../Vision-API-How-to-Topics/HowToSubscribe.md).
+- Musíte mít nainstalovaný [Node.js](https://nodejs.org) 4.x nebo novější.
+- Musíte mít nainstalovaný [npm](https://www.npmjs.com/).
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Abyste získali klíč předplatného, přejděte k tématu [Jak získat klíče předplatného](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="ocr-request"></a>Žádost OCR
+## <a name="create-and-run-the-sample"></a>Vytvoření a spuštění ukázky
 
-Pomocí [metody OCR](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) můžete detekovat tištěný text v obrázku a extrahovat rozpoznané znaky do znakového proudu, který je počítačově využitelný.
+Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 
-Pokud chcete spustit ukázku, postupujte takto:
+1. Nainstalujte balíček npm [`request`](https://www.npmjs.com/package/request).
+   1. Otevřete okno příkazového řádku jako správce.
+   1. Spusťte následující příkaz:
 
-1. Zkopírujte do editoru následující kód.
-1. Místo `<Subscription Key>` použijte platný klíč předplatného.
-1. V případě potřeby změňte hodnotu `uriBase` na umístění, kde jste získali klíče předplatného.
-1. Volitelně můžete změnit hodnotu `imageUrl` na obrázek, který chcete analyzovat.
-1. Uložte soubor s příponou `.js`.
-1. Otevřete příkazový řádek Node.js a spusťte soubor, například: `node myfile.js`.
+      ```console
+      npm install request
+      ```
 
-Tato ukázka používá balíček [požadavku](https://www.npmjs.com/package/request) npm.
+   1. Po úspěšné instalaci balíčku zavřete okno příkazového řádku.
+
+1. Zkopírujte do textového editoru následující kód.
+1. Proveďte v kódu na příslušných místech následující změny:
+    1. Hodnotu `subscriptionKey` nahraďte klíčem předplatného.
+    1. Hodnotu `uriBase` nahraďte adresou URL koncového bodu metody [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) z oblasti Azure, kde jste získali klíče předplatného, pokud je to potřeba.
+    1. Volitelně můžete hodnotu `imageUrl` nahradit adresou URL jiného obrázku, ze kterého chcete extrahovat tištěný text.
+1. Uložte kód jako soubor s příponou `.js`. Například, `get-printed-text.js`.
+1. Otevřete okno příkazového řádku.
+1. Ke spuštění souboru na příkazovém řádku použijte příkaz `node`. Například, `node get-printed-text.js`.
 
 ```nodejs
 'use strict';
@@ -84,9 +96,9 @@ request.post(options, (error, response, body) => {
 });
 ```
 
-## <a name="ocr-response"></a>Odpověď OCR
+## <a name="examine-the-response"></a>Prozkoumání odpovědi
 
-V případě úspěchu obsahují vrácené výsledky OCR text, ohraničující rámeček pro oblasti, řádky a slova, například:
+Úspěšná odpověď se vrátí ve formátu JSON. Ukázka provede analýzu a zobrazí úspěšnou odpověď v okně příkazového řádku, podobně jako v následujícím příkladu:
 
 ```json
 {
@@ -187,9 +199,22 @@ V případě úspěchu obsahují vrácené výsledky OCR text, ohraničující r
 }
 ```
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud už tuto ukázku nepotřebujete, odstraňte soubor a pak odinstalujte balíček npm `request`. Odinstalaci balíčku proveďte takto:
+
+1. Otevřete okno příkazového řádku jako správce.
+2. Spusťte následující příkaz:
+
+   ```console
+   npm uninstall request
+   ```
+
+3. Po úspěšné odinstalaci balíčku zavřete okno příkazového řádku.
+
 ## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte rozhraní API pro počítačové zpracování obrazu používané pro analýzu obrázku, zjišťování celebrit a památek, vytvoření miniatury a extrahování tištěného a ručně psaného textu. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Prozkoumejte rozhraní API pro počítačové zpracování obrazu, které se používá pro analýzu obrázku, zjišťování celebrit a památek, vytvoření miniatury a extrahování tištěného a ručně psaného textu. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
 > [Prozkoumat rozhraní API pro počítačové zpracování obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

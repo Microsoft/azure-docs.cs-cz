@@ -1,49 +1,52 @@
 ---
-title: Rychlý start pro počítačové zpracování obrazu s rukou psaným textem v Pythonu | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: V tomto rychlém startu extrahujete rukou psaný text z obrázku pomocí počítačového zpracování obrazu s Pythonem v Cognitive Services.
+title: 'Rychlý start: Extrakce rukou psaného textu – REST, Python – počítačové zpracování obrazu'
+titleSuffix: Azure Cognitive Services
+description: V tomto rychlém startu extrahujete rukou psaný text z obrázku pomocí rozhraní API pro počítačové zpracování obrazu a Pythonu.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 43b541daf8632af7fb8111886b53981c4c646772
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 91cff6205af70968b6397af9756a5385ddb0c989
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43769244"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45631357"
 ---
-# <a name="quickstart-extract-handwritten-text---rest-python"></a>Rychlý start: Extrakce rukou psaného textu – REST, Python
+# <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-python-in-computer-vision"></a>Rychlý start: Extrakce rukou psaného textu pomocí rozhraní REST API a Pythonu v počítačovém zpracování obrazu
 
-V tomto rychlém startu extrahujete rukou psaný text z obrázku pomocí počítačového zpracování obrazu.
+V tomto rychlém startu extrahujete rukou psaný text z obrázku pomocí rozhraní REST API počítačového zpracování obrazu. Pomocí metod [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) (Rozpoznat text) a [Get Recognize Text Operation Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) (Získat výsledky operace rozpoznávání textu) můžete detekovat rukou psaný text v obrázku a extrahovat rozpoznané znaky do strojově použitelného proudu znaků.
+
+> [!IMPORTANT]
+> Metoda [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) běží na rozdíl od metody [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) asynchronně. Tato metoda nevrací žádné informace v textu úspěšné odpovědi. Metoda Recognize Text místo toho vrátí identifikátor URI v hodnotě pole hlavičky odpovědi `Operation-Content`. Voláním tohoto identifikátoru URI, který zastupuje metodu [Get Recognize Text Operation Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201), pak lze zkontrolovat stav i získat výsledky volání metody Recognize Text.
 
 Tento rychlý start můžete spustit jako podrobný návod pomocí Jupyter Notebooku na webu [MyBinder](https://mybinder.org). Pokud chcete spustit Binder, vyberte následující tlačítko:
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
+
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli počítačové zpracování obrazu použít, potřebujete klíč předplatného. Přečtěte si, [jak klíče předplatného získat](../Vision-API-How-to-Topics/HowToSubscribe.md).
+- Pokud chcete spustit tuto ukázku místně, musíte mít nainstalovaný [Python](https://www.python.org/downloads/).
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Abyste získali klíč předplatného, přejděte k tématu [Jak získat klíče předplatného](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="extract-handwritten-text"></a>Extrakce rukou psaného textu
+## <a name="create-and-run-the-sample"></a>Vytvoření a spuštění ukázky
 
-Pomocí metod pro [rozpoznávání textu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) a [získání výsledku operace rozpoznávání textu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) můžete zjistit rukou psaný text v obrázku a extrahovat rozpoznané znaky do strojově použitelného proudu znaků.
+Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 
-Pokud chcete spustit ukázku, postupujte takto:
-
-1. Následující kód zkopírujte do nového souboru pythonového skriptu.
-1. Místo `<Subscription Key>` použijte platný klíč předplatného.
-1. V případě potřeby změňte hodnotu `vision_base_url` na umístění, kde jste získali klíče předplatného.
-1. Volitelně můžete hodnotu `image_url` změnit na jiný obrázek.
-1. Spusťte skript.
-
-Následující kód používá knihovnu `requests` Pythonu k volání rozhraní API pro analýzu obrázku počítačového zpracování obrazu. Výsledky vrátí jako objekt JSON. Klíč rozhraní API se předává prostřednictvím slovníku `headers`.
-
-## <a name="recognize-text-request"></a>Žádost Recognize Text
+1. Zkopírujte do textového editoru následující kód.
+1. Proveďte v kódu na příslušných místech následující změny:
+    1. Hodnotu `subscription_key` nahraďte klíčem předplatného.
+    1. Hodnotu `vision_base_url` nahraďte adresou URL koncového bodu prostředku počítačového zpracování obrazu z oblasti Azure, kde jste získali klíče předplatného, pokud je to potřeba.
+    1. Volitelně můžete hodnotu `image_url` nahradit adresou URL jiného obrázku, ze kterého chcete extrahovat rukou psaný text.
+1. Uložte kód jako soubor s příponou `.py`. Například, `get-handwritten-text.py`.
+1. Otevřete okno příkazového řádku.
+1. Ke spuštění ukázky na příkazovém řádku použijte příkaz `python`. Například, `python get-handwritten-text.py`.
 
 ```python
 import requests
@@ -122,9 +125,9 @@ for polygon in polygons:
 _ = plt.axis("off")
 ```
 
-## <a name="recognize-text-response"></a>Odpověď metody Recognize Text
+## <a name="examine-the-response"></a>Prozkoumání odpovědi
 
-Úspěšná odpověď se vrátí ve formátu JSON, například:
+Úspěšná odpověď se vrátí ve formátu JSON. Ukázková webová stránka provede analýzu a zobrazí úspěšnou odpověď v okně příkazového řádku, podobně jako v následujícím příkladu:
 
 ```json
 {
@@ -401,6 +404,10 @@ _ = plt.axis("off")
   }
 }
 ```
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud už soubor nepotřebujete, odstraňte ho.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: a2601f55bbc7e99321689afdafcab3135b94bd5b
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 7121c83aea75f3b23820a7b0504fa704ec9f3016
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702540"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984301"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Kurz: Definování nového typu zařízení v aplikaci Azure IoT Central
 
@@ -301,7 +301,7 @@ Nastavení, vlastnosti a vlastnosti zařízení a příkazy jsou různé hodnoty
 
     ![Konfigurace vlastností zařízení](./media/tutorial-define-device-type/configureproperties.png)
 
-    Zvolte **Save** (Uložit).
+    Zvolte **Uložit**.
 
 3. Pokud chcete do šablony zařízení přidat vlastnost data poslední údržby, zvolte **Date** (Datum).
 
@@ -316,7 +316,7 @@ Nastavení, vlastnosti a vlastnosti zařízení a příkazy jsou různé hodnoty
 
     ![Konfigurace vlastností zařízení](./media/tutorial-define-device-type/configureproperties2.png)
 
-    Zvolte **Save** (Uložit).
+    Zvolte **Uložit**.
 
 5. Rozložení stránky **Properties** (Vlastnosti) můžete přizpůsobit přesunutím dlaždic vlastností a změnou jejich velikosti:
 
@@ -333,7 +333,7 @@ _Příkazy_ použijete k tomu, abyste operátorovi umožnili spouštět příkaz
 
     Na základě svých požadavků můžete vytvářet příkazy různých typů. 
 
-1. Kliknutím na **New Command** (Nový příkaz) přidejte příkaz do zařízení.
+1. Pokud chcete příkaz přidat do zařízení, klikněte na **New Command** (Nový příkaz).
 
 1. Ke konfiguraci nového příkazu použijte informace v následující tabulce:
 
@@ -427,7 +427,7 @@ Teď máte šablonu **Connected Air Conditioner** definovanou a můžete přizp�
     | Název                   | Sériové číslo |
     | Nastavení a vlastností | Sériové číslo |
 
-    ![Nastavení vlastnosti sériového čísla](./media/tutorial-define-device-type/propertysettings1.png)
+    ![Nastavení vlastnosti sériového čísla](./media/tutorial-define-device-type/propertysettings3.png)
 
     Potom zvolte **Save** (Uložit).
 
@@ -442,7 +442,7 @@ Teď máte šablonu **Connected Air Conditioner** definovanou a můžete přizp�
     | Název                   | Verze firmwaru |
     | Nastavení a vlastností | Verze firmwaru |
 
-    ![Nastavení vlastnosti sériového čísla](./media/tutorial-define-device-type/propertysettings2.png)
+    ![Nastavení vlastnosti sériového čísla](./media/tutorial-define-device-type/propertysettings3.png)
 
     Potom zvolte **Save** (Uložit).
 

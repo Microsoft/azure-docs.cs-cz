@@ -1,53 +1,54 @@
 ---
-title: Webové rozhraní API služby Search úvodní | Microsoft Docs
-description: Ukazuje, jak začít používat rozhraní API služby Bing webové Search.
+title: Rychlý start rozhraní API pro vyhledávání na webu
+titleSuffix: Azure Cognitive Services
+description: V tomto rychlém startu zjistíte, jak začít používat rozhraní API Bingu pro vyhledávání na webu.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
+manager: cgronlun
 ms.assetid: 27B4B51A-D017-44C8-8E4E-9684DC553886
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 0b8c4678a518985a4be3ee426a85b0a85dd2365d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: af32abe1c61c44b14d0f70033aee54aa7eba7c8b
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342486"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126237"
 ---
-# <a name="your-first-bing-search-query"></a>Svůj první dotaz vyhledávání v Bingu
+# <a name="your-first-bing-search-query"></a>Váš první vyhledávací dotaz Bingu
 
-Předtím, než bude možné vytvářet první volání, které je potřeba získat předplatné klíč kognitivní služby. Získat klíč, najdete v části [zkuste kognitivní služby](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
+Než budete moct provést první volání, je nutné nejprve získat klíč předplatného služeb Cognitive Services. Postup, jak klíč získat, najdete v tématu [Zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
 
-Výsledky hledání webové získáte by odeslat požadavek GET na následující koncový bod:  
-  
+Pokud chcete získat výsledky vyhledávání na webu, odešlete požadavek GET následujícímu koncovému bodu:  
+
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/search
 ```  
 
-Žádost musí používat protokol HTTPS.
+Požadavek musí používat protokol HTTPS.
 
-Doporučujeme vám, že všechny požadavky pocházejí ze serveru. Distribuce klíč v rámci klientské aplikace poskytuje další možnost pro škodlivý třetích stran k přístupu. Navíc volání ze serveru poskytuje snadný upgrade pro budoucí verze rozhraní API.  
-  
-Musíte zadat požadavek [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#query) parametr dotazu, který obsahuje uživatele hledaný termín. Přestože je volitelné, žádost by také určit [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#mkt) parametr dotazu, který identifikuje na trhu, kam chcete výsledky pocházet z. Seznam volitelné dotaz parametry `responseFilter` a `textDecorations`, najdete v části [parametry dotazu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#query-parameters). Všechny hodnoty parametru dotazu musí být kódovaná adresou URL.  
-  
-Musíte zadat požadavek [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#subscriptionkey) záhlaví. I když je volitelné, vám doporučujeme, aby se také určit následující hlavičky:  
-  
--   [Uživatelský Agent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#useragent)  
+Doporučujeme, aby všechny požadavky pocházely ze serveru. Distribuce klíče v rámci klientské aplikace poskytuje škodlivým třetím stranám víc příležitostí získat k ní přístup. Voláním ze serveru také zajistíte, že u budoucích verzí rozhraní API bude stačit upgradovat pouze jediný bod.  
+
+Požadavek musí obsahovat parametr dotazu [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#query), který obsahuje hledaný termín daného uživatele. Přestože je volitelný, měl by požadavek obsahovat také parametr dotazu [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#mkt), který identifikuje trh, ze kterého chcete obdržet výsledky. Seznam volitelných parametrů dotazu jako `responseFilter` nebo `textDecorations` naleznete v tématu [Parametry dotazu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#query-parameters). Všechny hodnoty parametru dotazu musí mít kódování URL.  
+
+Požadavek musí obsahovat hlavičku [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#subscriptionkey). Přestože jsou volitelné, doporučujeme, aby požadavek obsahoval i následující hlavičky:  
+
+-   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#useragent)  
 -   [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#clientid)  
--   [X-vyhledávání – když](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#clientip)  
--   [Umístění X vyhledávání](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#location)  
+-   [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#clientip)  
+-   [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#location)  
 
-Hlavičky protokolu IP a umístění klienta jsou důležité pro vrácení obsahu vědět umístění. Například pokud se dotaz uživatele *řízení + lekce*, jsou pravděpodobně zajímat lekce umístěné nedaleko jejich umístění. Pokud chcete výsledky tak, aby obsahovala lekce, které jsou k dispozici blízkosti umístění uživatele, musíte zahrnout hlavička umístění a volitelně záhlaví IP klienta. Je méně důležité, pokud termín dotazu explicitně uvádí umístění (například řízení + lekce + florida + klíčů). 
+Adresa IP a hlavičky klienta jsou důležité pro vrácení obsahu závislého na umístění. Pokud je dotazem uživatelů například *jachting+lekce*, je pravděpodobně, že je zajímají lekce ve svém okolí. Pokud chcete, aby výsledky obsahovaly lekce dostupné v blízkosti umístění uživatele, musíte zahrnout hlavičku umístění a volitelně i hlavičku IP adresy. Pokud výraz dotazu obsahuje i umístění, není to až tak důležité. (například jachting+lekce+florida+keys).
 
-Seznam všech hlaviček žádostí a odpovědí najdete v tématu [hlavičky](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#headers).
+Seznam všech hlaviček žádostí a odpovědí najdete v části s [hlavičkami](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#headers).
 
-## <a name="the-request"></a>Požadavek
+## <a name="the-request"></a>Žádost
 
-Na obrázku je žádost o vyhledávání obsahující všechny parametry navrhované dotazu a hlavičky. Pokud je poprvé volání některé z rozhraní API služby Bing, neobsahují záhlaví ID klienta. Pokud jste dříve volat rozhraní API pro Bing a Bing vrátil ID klienta pro uživatele a zařízení kombinace pouze zahrnují ID klienta. 
-  
+Následuje ukázka požadavku hledání, která obsahuje všechny navrhované parametry a hlavičky dotazu. Pokud voláte některé z rozhraní API Bingu poprvé, nezahrnujte do volání hlavičku ID klienta. ID klienta zahrňte pouze v případě, že jste již dříve volali rozhraní API Bingu a Bing vrátil ID klienta pro příslušnou kombinaci uživatele a zařízení.
+
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+lessons+seattle&mkt=en-us HTTP/1.1  
 Ocp-Apim-Subscription-Key: 123456789ABCDE  
@@ -57,7 +58,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-Následující obrázek znázorňuje odpověď na předchozí požadavek. Tento příklad také ukazuje hlavičky odpovědi specifické pro Bing.
+Následující příklad ukazuje odpověď na předchozí požadavek. Příklad také zobrazuje hlavičky odpovědi specifické pro Bing.
 
 ```
 BingAPIs-TraceId: 76DD2C2549B94F9FB55B4BD6FEB6AC
@@ -263,8 +264,8 @@ BingAPIs-Market: en-US
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Vyzkoušejte rozhraní API. Přejděte na [webové konzole testování vyhledávání rozhraní API](https://dev.cognitive.microsoft.com/docs/services/56b43eeccf5ff8098cef3807/operations/56b4447dcf5ff8098cef380d). 
+Vyzkoušejte si rozhraní API. Přejděte na [testovací konzolu rozhraní API pro vyhledávání na webu](https://dev.cognitive.microsoft.com/docs/services/56b43eeccf5ff8098cef3807/operations/56b4447dcf5ff8098cef380d).
 
-Podrobnosti o spotřebě objektů odpovědi najdete v tématu [vyhledávání na webu](./search-the-web.md).
+Podrobnosti o využití objektů odpovědi naleznete v [dokumentaci k rozhraní API Bingu pro vyhledávání na webu](./search-the-web.md).

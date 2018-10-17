@@ -1,117 +1,44 @@
 ---
-title: Správa aplikací pomocí Azure Active Directory | Dokumentace Microsoftu
-description: Tento článek výhody integrace Azure Active Directory s vaší místní a cloudové aplikace a aplikace SaaS.
+title: Správa aplikací pomocí služby Azure Active Directory | Microsoft Docs
+description: Tento článek popisuje výhody integrace služby Azure Active Directory s místními a cloudovými aplikacemi a aplikacemi SaaS.
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
+ms.topic: overview
 ms.workload: identity
-ms.date: 01/15/2018
+ms.date: 09/11/2018
 ms.author: barbkess
-ms.reviewer: asteen
-ms.openlocfilehash: bf53829a2d2578132f9a3595c0bac5e8eb588916
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
-ms.translationtype: MT
+ms.reviewer: arvinh
+ms.openlocfilehash: 820c6a5cb0bf5fb2d98d27c171c1276866082700
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366767"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716177"
 ---
-# <a name="managing-applications-with-azure-active-directory"></a>Správa aplikací pomocí Azure Active Directory
-Nad rámec samotný pracovní postup nebo obsahu firmy mají dva základní požadavky pro všechny aplikace:
+# <a name="application-management-with-azure-active-directory"></a>Správa aplikací pomocí služby Azure Active Directory
 
-1. Zvýšení produktivity, aplikace by měly být snadno zjistit a přístup
-2. Povolit zabezpečení a zásad správného řízení, tato organizace požaduje řízení a dohled nad kdo má přístup k a kdo je ve skutečnosti používá každá aplikace
+Azure Active Directory (Azure AD) poskytuje zabezpečený a hladký přístup ke cloudovým a místním aplikacím. Uživatelům se stačí přihlásit jednou a získají přístup k Office 365 a dalším obchodním aplikacím od Microsoftu, tisícům aplikací typu software jako služba (SaaS), místním aplikacím a obchodním aplikacím. Automatizací zřizování uživatelů snížíte náklady na správu. K poskytování zabezpečeného přístupu k aplikacím využijte vícefaktorové ověřování a zásady podmíněného přístupu.
 
-V řadě cloudových aplikací, nejlépe jde tohoto dosáhnout pomocí identity na ovládací prvek "*KDO může co*."
+![Aplikace federované přes službu Azure AD](media/migrate-adfs-apps-to-azure/migrate2.png)
 
-Při výpočtu terminologie:
+## <a name="why-manage-applications-with-a-cloud-solution"></a>Proč spravovat aplikace pomocí cloudového řešení?
 
-* *Kdo* se označuje jako *identity* -správu uživatelů a skupin
-* *Co* se označuje jako *správy přístupu* – řízení přístupu k chráněným prostředkům
+Organizace mají často stovky aplikací, které uživatelé potřebují k výkonu své práce. Uživatelé tyto aplikace používají na různých zařízeních a v různých umístěních. Každý den se přidávají, vyvíjejí a vyřazují nové aplikace. S takovým počtem aplikací a přístupových bodů je důležitější než kdy dříve používat cloudové řešení ke správě uživatelského přístupu ke všem aplikacím.
 
-Obě komponenty společně se označují jako *identit a řízení přístupu (IAM)*, který je definován [Gartner](http://www.gartner.com/it-glossary/identity-and-access-management-iam) jako "*obor zabezpečení, která umožňuje jednotlivcům vpravo přístup k prostředkům vpravo na pravé straně časy doprava z důvodu*".
+## <a name="manage-risk-with-conditional-access-policies"></a>Správa rizik pomocí zásad podmíněného přístupu
+Spojení jednotného přihlašování Azure AD se zásadami podmíněného přístupu poskytuje vysoké úrovně zabezpečení při přístupu k aplikacím. Funkce zabezpečení zahrnují ochranu identit v cloudovém měřítku, řízení přístupu na základě rizik, nativní vícefaktorové ověřování a zásady podmíněného přístupu. Tyto funkce umožňují podrobné zásady řízení přístupu na základě aplikací nebo skupin, které potřebují vyšší úroveň zabezpečení.
 
-Dobře, takže v čem je problém? Pokud je IAM *nespravovaných* na jednom místě pomocí integrované řešení:
+## <a name="improve-productivity-with-single-sign-on"></a>Vyšší produktivita pomocí jednotného přihlašování
+Povolením jednotného přihlašování mezi aplikacemi a Office 365 poskytuje stávajícím uživatelům nadstandardní prostředí pro přihlašování, protože snižuje nebo eliminuje počet výzev k přihlášení. Prostředí je tak pro uživatele ucelenější, neruší ho zobrazováním mnoha výzev k přihlášení a uživatel nemusí spravovat mnoho hesel. Obchodní skupiny mohou spravovat a schvalovat přístup prostřednictvím samoobslužného a dynamického členství. Když správu přístupu k aplikacím povolíte správným lidem, zvýšíte zabezpečení systému identit.
 
-* Správci identity mají jednotlivě vytvářet a aktualizovat uživatelské účty ve všech aplikacích samostatně, aktivity, jako je redundantní a časově náročné.
-* Uživatelé se muset učit nazpaměť různých přihlašovacích údajů pro přístup k aplikacím, které potřebují k práci s. Díky tomu uživatelé mají tendenci zapište svá hesla nebo používání jiných řešení pro správu hesel. Tyto alternativy zavést další data bezpečnostní rizika.
-* Redundantní, časově náročné aktivity snížit dobu uživatelé a správci potřebují k práci na obchodní činnosti, které zvyšují zhoršit vaši firmu.
+Jednotné přihlašování zvyšuje zabezpečení. *Bez jednotného přihlašování* musí správci vytvářet a aktualizovat uživatelské účty pro každou jednotlivou aplikaci, což zabere nějaký čas. Uživatelé navíc musí používat pro přístup ke svým aplikacím různé přihlašovací údaje. V důsledku toho uživatelé tíhnou k tomu, aby si zapisovali hesla nebo používali jiná řešení pro správu hesel, což s sebou nese riziko ohrožení zabezpečení dat. 
 
-Ano co obecně organizacím brání v zavedení integrovaná řešení IAM?
+## <a name="address-governance-and-compliance"></a>Zajištění správného řízení a dodržování předpisů
+Pomocí Azure AD můžete monitorovat přihlašování k aplikacím prostřednictvím sestav, které využívají nástroje SIEM (Security Incident and Event Monitoring). K sestavám se dostanete z portálu nebo z rozhraní API. Prostřednictvím kódu programu můžete kontrolovat, kdo má přístup k aplikacím, a přes kontrolu přístupu můžete neaktivním uživatelům přístup odebrat.
 
-* Většina technická řešení jsou založeny na softwarové platformy, které je potřeba nasadit a upravit každé organizace pro jejich vlastních aplikací.
-* Cloudové aplikace jsou často přijata s vyšší rychlostí než IT v organizaci můžete integrovat se stávajícími řešeními IAM.
-* Zabezpečení a monitorování nástroje vyžadují další přizpůsobení a integraci s komplexní scénáře E2E dosáhnout.
-
-## <a name="azure-active-directory-integrated-with-applications"></a>Azure Active Directory integrován v aplikacích
-Azure Active Directory je komplexní Identity od Microsoftu jako služba (IDaaS) řešení, které:
-
-* Jako cloudová služba umožňuje IAM 
-* Poskytuje centrální řízení přístupu, jednotné přihlašování (SSO) a vytváření sestav 
-* Podporuje integrované access management pro službu [nepřeberným množstvím aplikací](https://azure.microsoft.com/marketplace/active-directory/) v galerii aplikací, včetně Salesforce, Google Apps, Box, Concur a další. 
-
-S Azure Active Directory všechny aplikace, můžete publikovat pro partnery a zákazníky (firmy nebo spotřebitele) mají stejnou identitu a přístup k funkcím správy.<br> To umožňuje výrazně snížit provozní náklady.
-
-Co když budete muset implementovat aplikaci, která ještě není uvedená v galerii aplikací? Přestože se jedná o něco náročnější než nakonfigurovat jednotné přihlašování pro aplikace z Galerie aplikací, Azure AD vám poskytne průvodce, který vám pomůže s konfigurací.
-
-Hodnota Azure AD jde nad rámec "pouze" cloudových aplikací. Můžete také ji použijete s místním aplikacím tím, že poskytuje zabezpečený vzdálený přístup. Zabezpečený vzdálený přístup může eliminovat potřebu pro sítě VPN nebo v jiných implementacích správy tradiční vzdáleného přístupu.
-
-Azure AD poskytuje správu centrálního přístupu a jednotné přihlašování (SSO) pro všechny aplikace a nabízí řešení pro hlavní data zabezpečení a produktivitu problémy.
-
-* Uživatelé můžou používat více aplikací jeden přihlašování poskytuje tak více času na příjem při generování nebo obchodní aktivity operace provést.
-* Identita správci můžou spravovat přístup k aplikacím na jednom místě.
-
-Výhoda pro uživatele a pro vaši společnost je zřejmý. Pojďme se na to bližší pohled na výhody pro správce identit a organizaci.
-
-## <a name="integrated-application-benefits"></a>Výhody integrované aplikace
-Jednotné přihlašování proces má dva kroky:
-
-* Ověřování, proces ověření identity uživatele.
-* Autorizace, rozhodnutí o povolení nebo blokování přístupu k prostředku se zásady přístupu.
-
-Při použití služby Azure AD ke správě aplikací a povolení jednotného přihlašování:
-
-* Ověřování se provádí na on-premises (například AD) nebo účet Azure AD daného uživatele.
-* Autorizační spouští na Azure AD přiřazení a ochranu zásadu, kterou zajišťuje konzistentní koncovým a umožňuje přidat přiřazení, umístění a podmínky MFA na všechny aplikace, bez ohledu na jeho vnitřní funkce.
-
-Je důležité pochopit, který způsob, jakým je povolení plnění na cílové aplikace, se liší v závislosti na tom, jak se aplikace integrované s Azure AD.
-
-* **Předem integrovaných aplikací od poskytovatele služeb** jako je Office 365 a Azure, jedná se o aplikace využívající Azure AD a spoléhání se na něm jednat jejich rozsáhlé možnosti správy identit a přístupu. Přístup k těmto aplikacím zajišťuje informace o adresáře a vydávání tokenů.
-* **Předem integrovaných aplikací od Microsoftu a vlastních aplikací** Toto jsou nezávislé cloudových aplikací, které využívají adresář interní aplikace a může pracovat nezávisle na službě Azure AD. Povolení přístupu k těmto aplikacím pomocí pověření specifické pro aplikaci namapován na účet aplikace. V závislosti na možnosti aplikací může být přihlašovací údaje, které federační token nebo uživatelské jméno a heslo pro účet, který byl dříve zřízené v aplikaci.
-* **Místní aplikace** aplikace publikované prostřednictvím proxy aplikací Azure AD, především povolení přístupu k místním aplikacím. Tyto aplikace využívají centrální místní adresář jako Windows Server Active Directory. K doručování obsahu aplikace koncovým uživatelům respektováním požadavek na místní přihlášení je povolen přístup k těmto aplikacím aktivací proxy serveru.
-
-Například pokud se uživatel připojí vaše organizace, musíte vytvořit účet pro uživatele ve službě Azure AD pro operace primární přihlašování. Pokud tento uživatel vyžaduje přístup ke spravované aplikaci, jako je například Salesforce, musíte také vytvořit účet pro tohoto uživatele v Salesforce a připojit ho k účtu Azure, aby fungovat jednotné přihlašování. Pokud uživatel organizaci opustí, se doporučuje odstranit účet služby Azure AD a všechny účty protějšky v IAM ukládá aplikací, které uživatel měl přístup.
-
-## <a name="access-detection"></a>Přístup k detekci
-V moderních podnicích IT oddělení nemají často informace o všech cloudových aplikací, které jsou používány. Ve spojení s Cloud App Discovery Azure AD poskytuje řešení pro detekci těchto aplikací.
-
-## <a name="account-management"></a>Správa účtů
-Tradičně, správu účtů v různých aplikacích provádí ručně prováděné IT nebo pracovníci podpory v organizaci. Správa účtů služby Azure AD plně automatizuje aplikací integrovaných poskytovateli služeb a aplikací integruje společnost Microsoft podporuje zřizování automatizované uživatelů nebo zřizování za běhu SAML.
-
-## <a name="automated-user-provisioning"></a>Zřizování automatizované uživatelů
-Některé aplikace poskytují rozhraní automatizace pro vytváření a odebrání (nebo deaktivace) účtů. Pokud aliance takového rozhraní se využívá Azure AD. To snižuje provozní náklady, protože úlohy správy dojít automaticky a zvyšuje zabezpečení vašeho prostředí, protože snižuje pravděpodobnost neautorizovaného přístupu.
-
-## <a name="access-management"></a>Správa přístupu
-S Azure AD můžete spravovat přístup k aplikacím pomocí jednotlivých nebo pravidlo, které jsou řízené přiřazení. Můžete taky delegovat získat přístup k těm správným lidem v organizaci zajištění nejlepší dohledu a snížit zátěž na helpdesk.
-
-## <a name="on-premises-applications"></a>Místní aplikace
-Proxy integrované aplikace umožňuje publikování aplikací v místním uživatelům výsledkem je konzistentní vzhledem k aplikacím i přístup k prostředí s moderní cloudové aplikace a výhody z možnosti monitorování, vytváření sestav a zabezpečení Azure AD.
-
-## <a name="reporting-and-monitoring"></a>Monitorování a vytváření sestav
-Azure AD poskytuje s předem integrované generování sestav a monitorování, které vám umožní zjistit, kdo má přístup k aplikacím a jejich skutečně spotřebujete.
-
-## <a name="related-capabilities"></a>Související funkce
-S Azure AD můžete zabezpečit vaše aplikace zásady granulární přístup a předem integrované MFA. Další informace o Azure MFA viz [Azure MFA](https://azure.microsoft.com/services/multi-factor-authentication/).
-
-## <a name="getting-started"></a>Začínáme
-Abyste mohli začít, integrace aplikací s Azure AD, podívejte se na [příručku Začínáme s integrací Azure Active Directory s aplikacemi získávání](plan-an-application-integration.md).
-
-## <a name="see-also"></a>Další informace najdete v tématech
-* [Rejstřík článků o správě aplikací ve službě Azure Active Directory](../active-directory-apps-index.md)
-* [Podrobný postup nasazení plánu pro jednotné přihlašování do aplikace SaaS](http://aka.ms/ssodeploymentplan)
+## <a name="manage-costs"></a>Správa nákladů
+Migrací do Azure AD můžete snížit náklady a zbavit se nepříjemností spojených se správou místní infrastruktury. Azure AD navíc poskytuje samoobslužný přístup k aplikacím, což ušetří čas jak správcům, tak i uživatelům. Jednotné přihlašování eliminuje počet hesel pro konkrétní aplikace, což šetří náklady spojené s resetováním hesel pro aplikace a pomáhá předejít ztrátě produktivity při načítání hesel.
 

@@ -1,21 +1,21 @@
 ---
-title: Rychlý start k rozhraní API pro rozpoznávání tváře s Node.js | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
+title: 'Rychlý start: Rozpoznávání tváří na obrázku – Rozhraní API pro rozpoznávání tváře, Node.js'
+titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu budete pomocí rozhraní API pro rozpoznávání tváře s Node.js rozpoznávat tváře z obrázku ve službě Cognitive Services.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
 ms.date: 06/08/2018
 ms.author: nolachar
-ms.openlocfilehash: 15e6db9c9d92e60f18bf2d7708403fd8b0b7a990
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 53d5ed6c13c2f2822374134d8b403493079e1956
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "43768917"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123993"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-nodejs"></a>Rychlý start: Rozpoznávání tváří na obrázku pomocí Node.js
 
@@ -31,10 +31,10 @@ Pomocí metody [Face - Detect](https://westcentralus.dev.cognitive.microsoft.com
 
 * Face ID: jedinečná hodnota ID používaná v několika scénářích rozhraní API pro rozpoznávání tváře
 * Obdélník tváře: umístění tváře na obrázku vlevo a nahoře a šířka a výška obličeje
-* Rysy: soustava 27 bodů obličejových rysů odkazující na důležité polohy prvků obličeje
+* Rysy: soustava 27 bodů obličejových rysů odkazující na důležité polohy součástí obličeje.
 * Atributy obličeje včetně věku, pohlaví, intenzity úsměvu, pozice hlavy a vousů.
 
-Pokud chcete spustit ukázku, postupujte následovně:
+Pokud chcete spustit ukázku, postupujte takto:
 
 1. Zkopírujte do editoru následující kód.
 1. Místo `<Subscription Key>` použijte platný klíč předplatného.

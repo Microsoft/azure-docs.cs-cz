@@ -1,21 +1,21 @@
 ---
-title: Translator Text – zjištění délky věty s Ruby | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: V tomto rychlém startu zjistíte délky vět v textu pomocí služby Translator Text API s Ruby ve službách Cognitive Services.
+title: 'Rychlý start: Získání délky vět – Translator Text, Ruby'
+titleSuffix: Azure Cognitive Services
+description: V tomto rychlém startu zjistíte délky vět v textu pomocí rozhraní Translator Text API a Ruby.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: nolachar
-ms.openlocfilehash: 3a4fc999961e06b084a0d7da42ed5576962e5722
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: a39982555b281cfe0537a0033c9a67a7f5a1fe63
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43769037"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46122565"
 ---
 # <a name="quickstart-get-sentence-lengths-with-ruby"></a>Rychlý start: Získání délky vět s Ruby
 
@@ -76,7 +76,7 @@ json = JSON.pretty_generate(JSON.parse(result))
 puts json
 ```
 
-## <a name="breaksentence-response"></a>Odpověď BreakSentence
+## <a name="breaksentence-response"></a>Odpověď metody BreakSentence
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu:
 
