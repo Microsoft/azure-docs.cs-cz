@@ -38,7 +38,7 @@
 ### [Veřejná IP adresa](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
 
 ### SQL Database
-#### [Zóny dostupnosti pro SQL Database](../sql-database/sql-database-high-availability.md#availability-zones)
+#### [Zóny dostupnosti pro SQL Database](../sql-database/sql-database-high-availability.md#zone-redundant-configuration)
 
 ### Úložiště
 #### [Zónově redundantní úložiště](../storage/common/storage-redundancy-zrs.md)

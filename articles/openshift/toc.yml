@@ -1,21 +1,28 @@
+items:
 - name: Dokumentace k OpenShiftu
   href: index.md
 - name: Šablony Rychlý start
-  expanded: true
   items:
-    - name: 'OpenShift: Komunitní šablona'
-      href: 'https://azure.microsoft.com/en-us/resources/templates/openshift-origin-rhel/'
+  - name: 'OpenShift: Komunitní šablona'
+    href: https://azure.microsoft.com/resources/templates/openshift-origin-rhel/
+  expanded: true
 - name: Kurzy
   items:
-    - name: Nasazení do virtuálních počítačů Azure
-      href: /azure/virtual-machines/linux/openshift-get-started
+  - name: Nasazení do virtuálních počítačů Azure
+    href: /azure/virtual-machines/linux/openshift-get-started
 - name: Zdroje a prostředky
   items:
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Šablona OpenShift Container
-      href: 'https://github.com/Microsoft/openshift-container-platform'
-    - name: OpenShift Origin
-      href: 'https://docs.openshift.org/latest/getting_started/index.html'
-    - name: Web OpenShift
-      href: 'https://docs.openshift.org/latest/welcome/index.html'
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/
+  - name: Šablona OpenShift Container
+    href: https://github.com/Microsoft/openshift-container-platform
+  - name: OpenShift Origin
+    href: https://docs.openshift.org/latest/getting_started/index.html
+  - name: Web OpenShift
+    href: https://docs.openshift.org/latest/welcome/index.html
+ms.openlocfilehash: d0339ac640f7f4f554d99bbff26ca258ed3620c6
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362005"

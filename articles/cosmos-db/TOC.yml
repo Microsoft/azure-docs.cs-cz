@@ -193,6 +193,10 @@ items:
           href: working-with-dates.md
         - name: Geoprostorové
           href: geospatial.md
+        - name: Bulk Executor – knihovna .NET
+          href: bulk-executor-dot-net.md
+        - name: Bulk Executor – knihovna Java
+          href: bulk-executor-java.md
     - name: Referenční informace
       items:
       - name: .NET
@@ -460,10 +464,6 @@ items:
     items:
     - name: Informace o knihovně Bulk Executoru
       href: bulk-executor-overview.md
-    - name: Bulk Executor – knihovna .NET
-      href: bulk-executor-dot-net.md
-    - name: Bulk Executor – knihovna Java
-      href: bulk-executor-java.md
 - name: Zdroje a prostředky
   items:
   - name: Získávání dovedností pomocí Microsoft Learn
@@ -492,9 +492,9 @@ items:
       href: use-cases.md
     - name: Aplikace sociálních médií
       href: social-media-apps.md
-ms.openlocfilehash: dac79ee7d4a8810cce0a2e77e8dcd8d06842454c
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: f87f429439c338809a59a09760fc0c381faaeea9
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888013"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365437"

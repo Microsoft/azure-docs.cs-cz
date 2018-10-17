@@ -1,229 +1,235 @@
+items:
 - name: Dokumentace ke službě Data Factory V1
-  href: null
 - name: Přepnout na aktuální verzi dokumentaci
   href: ../introduction.md
 - name: Přehled
   items:
-    - name: Úvod do Azure Data Factory
-      href: data-factory-introduction.md
-    - name: Koncepty
-      items:
-        - name: Kanály a aktivity
-          href: data-factory-create-pipelines.md
-        - name: Datové sady
-          href: data-factory-create-datasets.md
-        - name: Plánování a provádění
-          href: data-factory-scheduling-and-execution.md
+  - name: Úvod do služby Azure Data Factory
+    href: data-factory-introduction.md
+  - name: Koncepty
+    items:
+    - name: Kanály a aktivity
+      href: data-factory-create-pipelines.md
+    - name: Datové sady
+      href: data-factory-create-datasets.md
+    - name: Plánování a provádění
+      href: data-factory-scheduling-and-execution.md
 - name: Začínáme
-  expanded: true
   items:
-    - name: Vytvoření kanálu pro kopírování dat
-      href: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
-      items:
-        - name: Průvodce kopírováním
-          href: data-factory-copy-data-wizard-tutorial.md
-        - name: Azure Portal
-          href: data-factory-copy-activity-tutorial-using-azure-portal.md
-        - name: Visual Studio
-          href: data-factory-copy-activity-tutorial-using-visual-studio.md
-        - name: Azure PowerShell
-          href: data-factory-copy-activity-tutorial-using-powershell.md
-        - name: REST API
-          href: data-factory-copy-activity-tutorial-using-rest-api.md
-        - name: .NET API
-          href: data-factory-copy-activity-tutorial-using-dotnet-api.md
-    - name: Vytvoření kanálu pro transformaci dat
-      href: data-factory-build-your-first-pipeline.md
-      items:
-        - name: Azure Portal
-          href: data-factory-build-your-first-pipeline-using-editor.md
-        - name: Visual Studio
-          href: data-factory-build-your-first-pipeline-using-vs.md
-        - name: Azure PowerShell
-          href: data-factory-build-your-first-pipeline-using-powershell.md
-        - name: Šablona Azure Resource Manageru
-          href: data-factory-build-your-first-pipeline-using-arm.md
-        - name: REST API
-          href: data-factory-build-your-first-pipeline-using-rest-api.md
-    - name: Přesun dat mezi místním prostředím a cloudem
-      href: data-factory-move-data-between-onprem-and-cloud.md
-    - name: Nejčastější dotazy
-      href: data-factory-faq.md
+  - name: Vytvoření kanálu pro kopírování dat
+    href: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
+    items:
+    - name: Průvodce kopírováním
+      href: data-factory-copy-data-wizard-tutorial.md
+    - name: portál Azure
+      href: data-factory-copy-activity-tutorial-using-azure-portal.md
+    - name: Visual Studio
+      href: data-factory-copy-activity-tutorial-using-visual-studio.md
+    - name: Azure PowerShell
+      href: data-factory-copy-activity-tutorial-using-powershell.md
+    - name: REST API
+      href: data-factory-copy-activity-tutorial-using-rest-api.md
+    - name: .NET API
+      href: data-factory-copy-activity-tutorial-using-dotnet-api.md
+  - name: Vytvoření kanálu pro transformaci dat
+    href: data-factory-build-your-first-pipeline.md
+    items:
+    - name: portál Azure
+      href: data-factory-build-your-first-pipeline-using-editor.md
+    - name: Visual Studio
+      href: data-factory-build-your-first-pipeline-using-vs.md
+    - name: Azure PowerShell
+      href: data-factory-build-your-first-pipeline-using-powershell.md
+    - name: Šablona Azure Resource Manageru
+      href: data-factory-build-your-first-pipeline-using-arm.md
+    - name: REST API
+      href: data-factory-build-your-first-pipeline-using-rest-api.md
+  - name: Přesun dat mezi místním prostředím a cloudem
+    href: data-factory-move-data-between-onprem-and-cloud.md
+  - name: Nejčastější dotazy
+    href: data-factory-faq.md
+  expanded: true
 - name: Postup
   items:
-    - name: Přesun dat
+  - name: Přesun dat
+    items:
+    - name: Přehled aktivit kopírování
+      href: data-factory-data-movement-activities.md
+    - name: Průvodce kopírováním služby Data Factory
+      href: data-factory-azure-copy-wizard.md
       items:
-        - name: Přehled aktivit kopírování
-          href: data-factory-data-movement-activities.md
-        - name: Průvodce kopírováním služby Data Factory
-          href: data-factory-azure-copy-wizard.md
-          items:
-            - name: Načtení 1 TB za 15 minut
-              href: data-factory-load-sql-data-warehouse.md
-        - name: Průvodce laděním a výkonem
-          href: data-factory-copy-activity-performance.md
-        - name: Odolnost proti chybám
-          href: data-factory-copy-activity-fault-tolerance.md
-        - name: Aspekty zabezpečení
-          href: data-factory-data-movement-security-considerations.md
-        - name: Konektory
-          items:
-            - name: Amazon Redshift
-              href: data-factory-amazon-redshift-connector.md
-            - name: Amazon S3
-              href: data-factory-amazon-simple-storage-service-connector.md
-            - name: Azure Blob Storage
-              href: data-factory-azure-blob-connector.md
-            - name: Azure Cosmos DB
-              href: data-factory-azure-documentdb-connector.md
-            - name: Azure Data Lake Storage Gen1
-              href: data-factory-azure-datalake-connector.md
-            - name: Azure Search
-              href: data-factory-azure-search-connector.md
-            - name: Azure SQL Database
-              href: data-factory-azure-sql-connector.md
-            - name: Azure SQL Data Warehouse
-              href: data-factory-azure-sql-data-warehouse-connector.md
-            - name: Azure Table Storage
-              href: data-factory-azure-table-connector.md
-            - name: Cassandra
-              href: data-factory-onprem-cassandra-connector.md
-            - name: DB2
-              href: data-factory-onprem-db2-connector.md
-            - name: Systém souborů
-              href: data-factory-onprem-file-system-connector.md
-            - name: FTP
-              href: data-factory-ftp-connector.md
-            - name: HDFS
-              href: data-factory-hdfs-connector.md
-            - name: HTTP
-              href: data-factory-http-connector.md
-            - name: MongoDB
-              href: data-factory-on-premises-mongodb-connector.md
-            - name: MySQL
-              href: data-factory-onprem-mysql-connector.md
-            - name: OData
-              href: data-factory-odata-connector.md
-            - name: ODBC
-              href: data-factory-odbc-connector.md
-            - name: Oracle
-              href: data-factory-onprem-oracle-connector.md
-            - name: PostgreSQL
-              href: data-factory-onprem-postgresql-connector.md
-            - name: Salesforce
-              href: data-factory-salesforce-connector.md
-            - name: SAP Business Warehouse
-              href: data-factory-sap-business-warehouse-connector.md
-            - name: SAP HANA
-              href: data-factory-sap-hana-connector.md
-            - name: SFTP
-              href: data-factory-sftp-connector.md
-            - name: SQL Server
-              href: data-factory-sqlserver-connector.md
-            - name: Sybase
-              href: data-factory-onprem-sybase-connector.md
-            - name: Teradata
-              href: data-factory-onprem-teradata-connector.md
-            - name: Webová tabulka
-              href: data-factory-web-table-connector.md
-        - name: Brána správy dat
-          href: data-factory-data-management-gateway.md
-    - name: Transformace dat
-      href: data-factory-data-transformation-activities.md
+      - name: Načtení 1 TB za 15 minut
+        href: data-factory-load-sql-data-warehouse.md
+    - name: Průvodce laděním a výkonem
+      href: data-factory-copy-activity-performance.md
+    - name: Odolnost proti chybám
+      href: data-factory-copy-activity-fault-tolerance.md
+    - name: Aspekty zabezpečení
+      href: data-factory-data-movement-security-considerations.md
+    - name: Konektory
       items:
-        - name: Aktivita Hivu služby HDInsight
-          href: data-factory-hive-activity.md
-        - name: Aktivita Pig služby HDInsight
-          href: data-factory-pig-activity.md
-        - name: Aktivita MapReduce služby HDInsight
-          href: data-factory-map-reduce.md
-        - name: Aktivita Streamování služby HDInsight
-          href: data-factory-hadoop-streaming-activity.md
-        - name: Aktivita Spark služby HDInsight
-          href: data-factory-spark.md
-        - name: Aktivita Provedení dávky služby Machine Learning
-          href: data-factory-azure-ml-batch-execution-activity.md
-        - name: Aktivita aktualizace prostředku služby Machine Learning
-          href: data-factory-azure-ml-update-resource-activity.md
-        - name: Aktivita Uložená procedura
-          href: data-factory-stored-proc-activity.md
-        - name: Aktivita U-SQL služby Data Lake Analytics
-          href: data-factory-usql-activity.md
-        - name: Vlastní aktivita .NET
-          href: data-factory-use-custom-activities.md
-        - name: Vyvolání skriptů jazyka R
-          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample'
-        - name: Znovuzpracování modelů v Azure Analysis Services
-          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample'
-        - name: Propojené služby Compute
-          href: data-factory-compute-linked-services.md
-    - name: Vývoj
-      items:
-        - name: Šablona Azure Resource Manageru
-          href: data-factory-how-to-use-resource-manager-templates.md
-        - name: Ukázky
-          href: data-factory-samples.md
-        - name: Funkce a systémové proměnné
-          href: data-factory-functions-variables.md
-        - name: Pravidla pojmenování
-          href: data-factory-naming-rules.md
-        - name: Protokol změn rozhraní .NET API
-          href: data-factory-api-change-log.md
-    - name: Monitorování a správa
-      items:
-        - name: Monitorování a správa aplikací
-          href: data-factory-monitor-manage-app.md
-        - name: Kanály Azure Data Factory
-          href: data-factory-monitor-manage-pipelines.md
-        - name: Pomocí sady .NET SDK
-          href: data-factory-create-data-factories-programmatically.md
-        - name: Poradce při potížích se službou Data Factory
-          href: data-factory-troubleshoot.md
-        - name: Řešení potíží při použití Brány pro správu dat
-          href: data-factory-troubleshoot-gateway-issues.md
-    - name: Vyvolání balíčků SSIS pomocí aktivity uložených procedur
-      href: how-to-invoke-ssis-package-stored-procedure-activity.md
+      - name: Amazon Redshift
+        href: data-factory-amazon-redshift-connector.md
+      - name: Amazon S3
+        href: data-factory-amazon-simple-storage-service-connector.md
+      - name: Azure Blob Storage
+        href: data-factory-azure-blob-connector.md
+      - name: Azure Cosmos DB
+        href: data-factory-azure-documentdb-connector.md
+      - name: Azure Data Lake Storage Gen1
+        href: data-factory-azure-datalake-connector.md
+      - name: Azure Search
+        href: data-factory-azure-search-connector.md
+      - name: Azure SQL Database
+        href: data-factory-azure-sql-connector.md
+      - name: Azure SQL Data Warehouse
+        href: data-factory-azure-sql-data-warehouse-connector.md
+      - name: Azure Table Storage
+        href: data-factory-azure-table-connector.md
+      - name: Cassandra
+        href: data-factory-onprem-cassandra-connector.md
+      - name: DB2
+        href: data-factory-onprem-db2-connector.md
+      - name: Systém souborů
+        href: data-factory-onprem-file-system-connector.md
+      - name: FTP
+        href: data-factory-ftp-connector.md
+      - name: HDFS
+        href: data-factory-hdfs-connector.md
+      - name: HTTP
+        href: data-factory-http-connector.md
+      - name: MongoDB
+        href: data-factory-on-premises-mongodb-connector.md
+      - name: MySQL
+        href: data-factory-onprem-mysql-connector.md
+      - name: OData
+        href: data-factory-odata-connector.md
+      - name: ODBC
+        href: data-factory-odbc-connector.md
+      - name: Oracle
+        href: data-factory-onprem-oracle-connector.md
+      - name: PostgreSQL
+        href: data-factory-onprem-postgresql-connector.md
+      - name: Salesforce
+        href: data-factory-salesforce-connector.md
+      - name: SAP Business Warehouse
+        href: data-factory-sap-business-warehouse-connector.md
+      - name: SAP HANA
+        href: data-factory-sap-hana-connector.md
+      - name: SFTP
+        href: data-factory-sftp-connector.md
+      - name: SQL Server
+        href: data-factory-sqlserver-connector.md
+      - name: Sybase
+        href: data-factory-onprem-sybase-connector.md
+      - name: Teradata
+        href: data-factory-onprem-teradata-connector.md
+      - name: Webová tabulka
+        href: data-factory-web-table-connector.md
+    - name: Brána správy dat
+      href: data-factory-data-management-gateway.md
+  - name: Transformace dat
+    href: data-factory-data-transformation-activities.md
+    items:
+    - name: Aktivita Hivu služby HDInsight
+      href: data-factory-hive-activity.md
+    - name: Aktivita Pig služby HDInsight
+      href: data-factory-pig-activity.md
+    - name: Aktivita MapReduce služby HDInsight
+      href: data-factory-map-reduce.md
+    - name: Aktivita Streamování služby HDInsight
+      href: data-factory-hadoop-streaming-activity.md
+    - name: Aktivita Spark služby HDInsight
+      href: data-factory-spark.md
+    - name: Aktivita Provedení dávky služby Machine Learning
+      href: data-factory-azure-ml-batch-execution-activity.md
+    - name: Aktivita aktualizace prostředku služby Machine Learning
+      href: data-factory-azure-ml-update-resource-activity.md
+    - name: Aktivita Uložená procedura
+      href: data-factory-stored-proc-activity.md
+    - name: Aktivita U-SQL služby Data Lake Analytics
+      href: data-factory-usql-activity.md
+    - name: Vlastní aktivita .NET
+      href: data-factory-use-custom-activities.md
+    - name: Vyvolání skriptů jazyka R
+      href: https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample
+    - name: Znovuzpracování modelů v Azure Analysis Services
+      href: https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample
+    - name: Propojené služby Compute
+      href: data-factory-compute-linked-services.md
+  - name: Vývoj
+    items:
+    - name: Šablona Azure Resource Manageru
+      href: data-factory-how-to-use-resource-manager-templates.md
+    - name: Ukázky
+      href: data-factory-samples.md
+    - name: Funkce a systémové proměnné
+      href: data-factory-functions-variables.md
+    - name: Pravidla pojmenování
+      href: data-factory-naming-rules.md
+    - name: Protokol změn rozhraní .NET API
+      href: data-factory-api-change-log.md
+  - name: Monitorování a správa
+    items:
+    - name: Monitorování a správa aplikací
+      href: data-factory-monitor-manage-app.md
+    - name: Kanály Azure Data Factory
+      href: data-factory-monitor-manage-pipelines.md
+    - name: Pomocí sady .NET SDK
+      href: data-factory-create-data-factories-programmatically.md
+    - name: Poradce při potížích se službou Data Factory
+      href: data-factory-troubleshoot.md
+    - name: Řešení potíží při použití Brány pro správu dat
+      href: data-factory-troubleshoot-gateway-issues.md
+  - name: Vyvolání balíčků SSIS pomocí aktivity uložených procedur
+    href: how-to-invoke-ssis-package-stored-procedure-activity.md
 - name: Referenční informace
   items:
-    - name: Ukázky kódů
-      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=data-factory'
-    - name: Azure PowerShell
-      href: /powershell/module/azurerm.datafactories
-    - name: .NET
-      href: /dotnet/api/microsoft.azure.management.datafactories.models
-    - name: REST
-      href: /rest/api/datafactory/
-    - name: JSON
-      href: data-factory-json-scripting-reference.md
+  - name: Ukázky kódů
+    href: https://azure.microsoft.com/resources/samples/?service=data-factory
+  - name: Azure PowerShell
+    href: /powershell/module/azurerm.datafactories
+  - name: .NET
+    href: /dotnet/api/microsoft.azure.management.datafactories.models
+  - name: REST
+    href: /rest/api/datafactory/
+  - name: JSON
+    href: data-factory-json-scripting-reference.md
 - name: Zdroje a prostředky
   items:
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Případové studie
-      href: data-factory-customer-case-studies.md
-    - name: Postup výuky
-      href: 'https://azure.microsoft.com/documentation/learning-paths/data-factory'
-    - name: Fórum MSDN
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureDataFactory'
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/data-factory/'
-    - name: Cenová kalkulačka
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: "Poznámky k\_verzi pro Bránu pro správu dat"
-      href: data-factory-gateway-release-notes.md
-    - name: Žádost o funkci
-      href: 'https://feedback.azure.com/forums/270578-azure-data-factory'
-    - name: Aktualizace služeb
-      href: 'https://azure.microsoft.com/updates/?product=data-factory'
-    - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/azure-data-factory'
-    - name: Videa
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=data-factory'
-    - name: Zpracování rozsáhlých datových sad pomocí služeb Data Factory a Batch
-      href: data-factory-data-processing-using-batch.md
-    - name: Případové studie
-      items:
-        - name: Profilování zákazníků
-          href: data-factory-customer-profiling-usecase.md
-        - name: Doporučení produktů
-          href: data-factory-product-reco-usecase.md
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/
+  - name: Případové studie
+    href: data-factory-customer-case-studies.md
+  - name: Postup výuky
+    href: https://azure.microsoft.com/documentation/learning-paths/data-factory
+  - name: Fórum MSDN
+    href: https://social.msdn.microsoft.com/Forums/home?forum=AzureDataFactory
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/data-factory/
+  - name: Cenová kalkulačka
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Poznámky k verzi pro Bránu pro správu dat
+    href: data-factory-gateway-release-notes.md
+  - name: Žádost o funkci
+    href: https://feedback.azure.com/forums/270578-azure-data-factory
+  - name: Aktualizace služeb
+    href: https://azure.microsoft.com/updates/?product=data-factory
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-data-factory
+  - name: Videa
+    href: https://azure.microsoft.com/documentation/videos/index/?services=data-factory
+  - name: Zpracování rozsáhlých datových sad pomocí služeb Data Factory a Batch
+    href: data-factory-data-processing-using-batch.md
+  - name: Případové studie
+    items:
+    - name: Profilování zákazníků
+      href: data-factory-customer-profiling-usecase.md
+    - name: Doporučení produktů
+      href: data-factory-product-reco-usecase.md
+ms.openlocfilehash: 5f2c249f5e822b26d7e1cd5a4fe0c340feb108bf
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363028"
