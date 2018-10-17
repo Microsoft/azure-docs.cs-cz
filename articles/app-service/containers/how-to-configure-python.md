@@ -1,6 +1,6 @@
 ---
-title: Konfigurace integrované image Pythonu ve službě Azure App Service
-description: Tento kurz popisuje možnosti pro vytváření a konfiguraci pythonové aplikace ve službě Azure App Service pomocí integrované image Pythonu.
+title: Konfigurace aplikací Pythonu pro službu Azure App Service v Linuxu
+description: Tento kurz popisuje možnosti vytváření a konfigurace aplikací Pythonu pro službu Azure App Service v Linuxu.
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -12,70 +12,103 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/25/2018
-ms.author: astay;cephalin
+ms.date: 10/09/2018
+ms.author: astay;cephalin;kraigb
 ms.custom: mvc
-ms.openlocfilehash: 9316805993b81e4d2511e833e0cc8f240807a1f9
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 71cbf0bb31a72e3b257f25c159d9d9eea31dbfbb
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47228544"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901614"
 ---
-# <a name="configure-built-in-python-image-in-azure-app-service-preview"></a>Konfigurace integrované image Pythonu ve službě Azure App Service (Preview)
+# <a name="configure-your-python-app-for-the-azure-app-service-on-linux"></a>Konfigurace aplikací Pythonu pro službu Azure App Service v Linuxu
 
-V tomto článku se dozvíte, jak nakonfigurovat integrovanou image Pythonu ve službě [App Service v Linuxu](app-service-linux-intro.md) tak, abyste mohli spouštět své pythonové aplikace.
+Tento článek popisuje, jak [služba Azure App Service v Linuxu](app-service-linux-intro.md) spouští aplikace Pythonu a jak můžete podle potřeby přizpůsobit chování služby App Service.
 
-## <a name="python-version"></a>Verze Pythonu
+## <a name="container-characteristics"></a>Vlastnosti kontejneru
 
-Modul runtime Pythonu ve službě App Service v Linuxu používá verzi `python-3.7.0`.
+Aplikace Pythonu nasazené na službu App Service v Linuxu se spouštějí v kontejneru dockeru, který je definovaný v úložišti GitHub jako [Azure-App-Service/python container](https://github.com/Azure-App-Service/python/tree/master/3.7.0).
 
-## <a name="supported-frameworks"></a>Podporované architektury
+Tento kontejner má následující vlastnosti:
 
-Podporují se všechny verze webových architektur, které dodržují rozhraní WSGI (Web Server Gateway Interface) a jsou kompatibilní s modulem runtime `python-3.7`.
+- Základní image kontejneru je `python-3.7.0-slim-stretch`. To znamená, že se aplikace spouštějí v Pythonu 3.7. Pokud potřebujete jinou verzi Pythonu, musíte sestavit a nasadit svoji vlastní image kontejneru. Další informace najdete v [Použití vlastní image dockeru pro Web App for Containers](tutorial-custom-docker-image.md).
 
-## <a name="package-management"></a>Správa balíčků
+- Aplikace se spouštějí pomocí [Gunicorn WSGI HTTP Server](http://gunicorn.org/) za použití dalších argumentů `--bind=0.0.0.0 --timeout 600`.
 
-Během publikování na Git modul Kudu hledá v kořenu úložiště soubor [requirements.txt](https://pip.pypa.io/en/stable/user_guide/#requirements-files) a automaticky instaluje balíčky v Azure pomocí `pip`.
+- Základní image zahrnuje ve výchozím nastavení webovou architekturu Flask, ale kontejner podporuje další formáty, které odpovídají WSGI a jsou kompatibilní s Pythonem 3.7, například Django.
 
-Pokud chcete tento soubor vygenerovat před samotnou publikací, přejděte do kořenu úložiště a spusťte v pythonovém prostředí tento příkaz:
+- Pokud chcete instalovat doplňkové balíčky, jako třeba Django, vytvořte soubor [*requirements.txt*](https://pip.pypa.io/en/stable/user_guide/#requirements-files) v kořenové složce projektu pomocí `pip freeze > requirements.txt`. Pak publikujte projekt na službu App Service nasazením z Gitu. Tím se automaticky spustí `pip install -r requirements.txt` v kontejneru pro instalaci závislostí aplikace.
 
-```bash
-pip freeze > requirements.txt
-```
+## <a name="container-startup-process-and-customizations"></a>Proces spuštění kontejneru a přizpůsobení
 
-## <a name="configure-your-python-app"></a>Konfigurace pythonové aplikace
+V průběhu spuštění služba App Service v kontejneru Linuxu spustí následující kroky:
 
-Integrovaná image Pythonu ve službě App Service používá server [Gunicorn](http://gunicorn.org/), pomocí kterého spouští pythonové aplikace. Gunicorn je pythonový server WSGI HTTP pro Unix. Pro projekty Django a Flask služba App Service konfiguruje Gunicorn automaticky.
+1. Kontrola a použití vlastního spouštěcího příkazu, pokud byl zadaný.
+1. Kontrola existence souboru *wsgi.py* aplikace Django. Když existuje, spuštění serveru Gunicorn za použití tohoto souboru.
+1. Kontrola existence souboru *application.py*. Když existuje, spuštění serveru Gunicorn za použití `application:app`. Předpokládá se, že jde o aplikaci Flask.
+1. Pokud se žádná další aplikace nenajde, následuje spuštění výchozí aplikace sestavené do kontejneru.
+
+Podrobnosti ke každému bodu poskytnou následující oddíly.
 
 ### <a name="django-app"></a>Aplikace Django
 
-Když publikujete projekt Django, který obsahuje modul `wsgi.py`, Azure automaticky zavolá Gunicorn pomocí tohoto příkazu:
+Služba App Service hledá pro aplikace Django soubory se jménem `wsgi.py` v kódu aplikace. Pak spustí server Gunicorn s použitím následujícího příkazu:
 
 ```bash
-gunicorn <path_to_wsgi>
+# <module> is the path to the folder containing wsgi.py
+gunicorn --bind=0.0.0.0 --timeout 600 <module>.wsgi
 ```
+
+Pokud chcete mít přesnější kontrolu nad spouštěcími příkazy, použijte [vlastní spouštěcí příkaz](#custom-startup-command) a nahraďte `<module>` názvem modulu obsahujícího *wsgi.py*.
 
 ### <a name="flask-app"></a>Aplikace Flask
 
-Když publikujete aplikaci Flask a vstupní bod se nachází v modulu `application.py` nebo `app.py`, Azure automaticky zavolá Gunicorn pomocí jednoho z těchto příkazů:
+Služba App Service hledá pro aplikace Flask soubor se jménem *application.py* a spustí server Gunicorn následujícím způsobem:
 
 ```bash
-gunicorn application:app
+gunicorn --bind=0.0.0.0 --timeout 600 application:app
 ```
 
-Nebo 
+Pokud je hlavní modul aplikace v jiném souboru, použijte jiný název objektu aplikace. Když chcete zadat další argumenty serveru Gunicorn, použijte [vlastní spouštěcí příkaz](#custom-startup-command). Tenhle oddíl poskytuje příklad použití vstupního kódu v *hello.py* a objektu aplikace Flask s názvem `myapp`.
+
+### <a name="custom-startup-command"></a>Vlastní spouštěcí příkaz
+
+Zadáním vlastního spouštěcího příkazu serveru Gunicorn můžete řídit chování spuštění kontejneru. Například pokud je hlavní modul aplikace Flask *hello.py* a objekt aplikace Flask se jmenuje `myapp`, vypadá příkaz takto:
 
 ```bash
-gunicorn app:app
+gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
 ```
 
-### <a name="customize-start-up"></a>Přizpůsobení spuštění
+Můžete také k příkazu přidat libovolné další argumenty serveru Gunicorn, jako například `--workers=4`. Další informace najdete v [Running Gunicorn (Spuštění serveru Gunicorn)](http://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org).
 
-Pokud chcete pro svou aplikaci definovat vlastní vstupní bod, nejdříve vytvořte soubor _.txt_ s vlastním příkazem Gunicorn a umístěte ho do kořenu projektu. Pokud chcete například spustit server s modulem _helloworld.py_ a proměnnou `app`, vytvořte _startup.txt_ s tímto obsahem:
+Pokud chcete zadat vlastní příkaz, proveďte následující kroky:
 
-```bash
-gunicorn helloworld:app
-```
+1. Přejděte na stránku [Nastavení aplikace](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) na webu Azure Portal.
 
-Na stránce [Nastavení aplikace](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) vyberte jako **Zásobník modulu runtime** **Python|3.7** a zadejte název **Spouštěcího souboru** z předchozího kroku. Třeba _startup.txt_.
+1. V nastavení **Runtime** nastavte volbu **Stack** na **Python 3.7** a zadejte příkaz přímo do pole **Spouštěcí soubor**.
+
+    Jako alternativní způsob můžete uložit příkaz do textového souboru v kořenové složce projektu pod názvem *startup.txt* (nebo libovolným). Pak tento soubor nasaďte do služby App Service a zadejte tento název souboru místo **Spouštěcí soubor**. Tato volba vám umožní spravovat příkaz v úložišti zdrojového kódu, nikoli prostřednictvím webu Azure Portal.
+
+1. Vyberte **Uložit**. Služba App Service se automaticky restartuje. Za několik sekund si ověříte, jestli se vlastní spouštěcí příkaz provedl.
+
+> [!Note]
+> Služba App Service ignoruje všechny chyby, ke kterým dojde při zpracování souboru vlastního příkazu. Pak proces spuštění pokračuje hledáním aplikací Flask a Django. Pokud neuvidíte očekávané chování, zkontrolujte, že je spouštěcí soubor nasazený do služby App Service a neobsahuje žádné chyby.
+
+### <a name="default-behavior"></a>Výchozí chování
+
+Pokud služba App Service nenajde vlastní příkaz, aplikaci Django nebo aplikaci Flask, spustí výchozí aplikaci jen pro čtení umístěnou ve složce _opt/defaultsite_. Výchozí aplikace se zobrazí takto:
+
+![Výchozí služba App Service na Linuxové webové stránce](media/how-to-configure-python/default-python-app.png)
+
+## <a name="troubleshooting"></a>Řešení potíží
+
+- **Výchozí aplikaci uvidíte po nasazení kódu vlastní aplikace.**  Výchozí aplikace se zobrazí, protože jste buď opravdu nenasadili kód aplikace na službu App Service, nebo se službě App Service nepovedlo najít kód vaší aplikace a spustila místo ní výchozí aplikaci.
+  - Restartujte službu App Service, počkejte 15-20 sekund a znovu zkontrolujte aplikaci.
+  - Připojte se přímo ke službě App Service pomocí SSH nebo konzoly Kudu a ověřte, že vaše soubory v *site/wwwroot* existují. Pokud soubory neexistují, zopakujte proces nasazení a aplikaci znovu nasaďte.
+  - Pokud soubory existují, neidentifikovala služba App Service konkrétní spouštěcí soubor. Zkontrolujte, že má aplikace strukturu, kterou služba App Service očekává u aplikací [Django](#django-app) nebo [Flask](#flask-app), nebo použijte [vlastní spouštěcí příkaz](#custom-startup-command).
+
+- **V prohlížeči se zobrazí zpráva „Služba není dostupná“.** Vypršel časový limit čekání prohlížeče na odpověď služby App Service. To naznačuje, že služba App Service sice spustila server Gunicorn, ale argumenty, které specifikuje kód aplikace, jsou nesprávné.
+  - Aktualizujte okno prohlížeče, zejména v případě, že používáte nejnižší cenové úrovně v Plánu služby App Service. Aplikace se může spouštět pomaleji (když používáte například úrovně free) a po aktualizaci okna prohlížeče začne znovu odpovídat.
+  - Zkontrolujte, že má aplikace strukturu, kterou služba App Service očekává u aplikací [Django](#django-app) nebo [Flask](#flask-app), nebo použijte [vlastní spouštěcí příkaz](#custom-startup-command).
+  - Připojte se ke službě App Service pomocí SSH nebo konzoly Kudu. Zkontrolujte diagnostické protokoly uložené ve složce *LogFiles*. Další informace o protokolování naleznete v [Povolení protokolování diagnostiky pro webové aplikace služby Azure App Service](../web-sites-enable-diagnostic-log.md).

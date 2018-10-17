@@ -1,53 +1,54 @@
 ---
-title: Projekt Akustika ukázkový názorný postup – Cognitive Services
-description: Tento návod popisuje ukázková Scéna Unity pro Akustika projektu, včetně nasazení na ploše a VR.
+title: 'Příklad: Project Acoustics'
+titlesuffix: Azure Cognitive Services
+description: Tento názorný postup popisuje ukázkovou scénu Unity pro Project Acoustics, včetně nasazení na desktopu a platformě VR.
 services: cognitive-services
 author: kegodin
-manager: noelc
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: acoustics
-ms.topic: article
+ms.topic: sample
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: eaf7ff9f7f791fd6d04e6b76d256b4987c50cd13
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
-ms.translationtype: MT
+ms.openlocfilehash: f5ea565e68579dfad601d1037daeb4113e3daa43
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434088"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901154"
 ---
-# <a name="unity-sample-walkthrough"></a>Ukázkový názorný postup Unity
-Jedná se názorného Průvodce ukázkou Akustika projektu. Další informace o jaké Akustika projektu je, přečtěte si [Úvod do projektu Akustika](what-is-acoustics.md). Pomoc při přidání balíčku projektu Akustika do již existující Unity projektu, použijte [příručce Začínáme](getting-started.md).
+# <a name="unity-sample-walkthrough"></a>Unity – ukázkový názorný postup
+Toto je názorný postup ukázkou z Project Acoustics. Další informace o tom co Project Acoustics je, najdete v části [Úvod do Project Acoustics](what-is-acoustics.md). Pokud potřebujete pomoc s přidáním balíčku Project Acoustics do již existujícího projektu Unity, nahlédněte do [příručky Začínáme](getting-started.md).
 
 ## <a name="requirements-for-running-the-sample-project"></a>Požadavky na spuštění ukázkového projektu
-* Unity 2018.2 + pomocí skriptování verze modulu runtime .NET 4.x
+* Unity 2018.2+, s použitím verze .NET 4.x skriptovacího modulu runtime
 * 64bitová verze editoru Unity pro Windows
-* Ukázka podporuje Windows desktop, UPW a cílech Android, včetně hlavu zobrazí (HMDs)
-* Předplatné Azure Batch potřeba která má označení vytvoření procesu
+* Ukázka podporuje počítač s Windows, UPW a cíle Android, včetně displeje připevněného k hlavě (HMD)
+* Předplatné Azure Batch, které proces vypalování požaduje
 
-## <a name="sample-project-setup"></a>Ukázkový projekt instalace
-Stáhnout a naimportovat **MicrosoftAcoustics.Sample.unitypackage**. Při importu nastavení včetně projektu **Spatializer** a **skriptování verze modulu Runtime** se aktualizují, aby modul plug-in požadavkům. Po jejím dokončení, zobrazí se vám Chyba v Unity konzole z **AcousticsGeometry.cs** o změně verze modulu Runtime skriptování pro **.NET 4.x ekvivalent**. Změna tohoto nastavení se provádí jako součást importu balíčku naimportovány, ale vyžaduje restartování Unity se projeví. Restartujte Unity.
+## <a name="sample-project-setup"></a>Nastavení ukázkového projektu
+Stáhněte a naimportujte **MicrosoftAcoustics.Sample.unitypackage**. Při importu se aktualizují nastavení projektu včetně **Spatializéru** a **verze skriptovacího modulu runtime**, aby vyhověly požadavkům pluginu. Když je toto hotové, zobrazí se v konzole projektu Unity chyba z **AcousticsGeometry.cs**, která se týká změny verze skriptovacího modulu runtime na **ekvivalent .NET 4.x**. Tato změna nastavení se provádí jako součást importu balíčku, ale vyžaduje restartování projektu Unity, aby se projevila. Restartujte Unity.
 
 ## <a name="running-the-sample"></a>Spuštění ukázky
-Ukázka zahrnuje Scéna ukázka **Assets/AcousticsDemo/ProjectAcousticsDemo.unity**. Tato scéna má tři zvukové zdroje. Ve výchozím nastavení přehrávání zvuku jenom jeden zdroj a další dvě jako jsou pozastavena. Tyto jsou umístěné v části **zdroje zvuku** v **hierarchie**. Abyste se mohli navigace obecného skriptu, fotoaparátu/kamery hlavní je podřízený objekt CameraHolder. 
+Ukázka zahrnuje ukázkovou scénu **Assets/AcousticsDemo/ProjectAcousticsDemo.unity**. Tato scéna má tři zvukové zdroje. Ve výchozím nastavení se přehrává jenom jeden zdroj zvuku a další dva jsou pozastavené. Jsou umístěné v možnosti **Hierarchie** pod položkou **Zdroje zvuku**. Hlavní kamera je podřízeným prvkem objektu CameraHolder, aby vám usnadnila vytvoření obecného skriptu pro navigaci. 
 
-![Hierarchické zobrazení](media/SampleHierarchyView.png)
+![Zobrazení hierarchie](media/SampleHierarchyView.png)
 
-Scény již byla vloženými a soubor s příponou ACE přidružené **MicrosoftAcoustics** prefab v **hierarchie**. 
+Scény již byla vypálena a má soubor ACE přidružený k přednastavené položce **MicrosoftAcoustics** v **Hierarchii**. 
 
-Naslouchání jak scéně podle názvu dalo čekat po kliknutí na tlačítko Přehrát v Unity editoru. Ve stolním počítači, použijte W, A, S, D a myší uspořádat jinak. Chcete-li porovnat, jak na scéně podle názvu dalo čekat a nemusíte Akustika, stiskněte **R** dokud překrytí text zčervená a uvádí, že tlačítko "Akustika: zakázáno." Chcete-li zobrazit klávesové zkratky pro větší počet kontrolních mechanismů, stiskněte **F1**. Všechny ovládací prvky jsou také nedodržíte kliknutím pravým tlačítkem a vyberte akci chcete provést, pak levým na zbývající k provedení akce.
+Poslechněte si, jak scéna zní. Stačí kliknout na tlačítko přehrávání v editoru Unity. Na počítači použijte k pohybu klávesy W, A, S a D a myš. Pokud chcete zvuk scény porovnat s akustikou a bez ní, stiskněte tlačítko **R**, dokud překryvný text nezčervená a neobjeví se „Akustika: Zakázána“. Pokud zobrazit klávesové zkratky dalších možností ovládání, stiskněte klávesu **F1**. Všechny ovládací prvky jsou také použitelné po kliknutí pravého tlačítka a výběru požadované akce. Poté stačí kliknout levým tlačítkem a akci provést.
 
-## <a name="targeting-other-platforms"></a>Cílení na jiných platformách
-Ukázka obsahuje nastavení pro spuštění na ploše Windows, UPW, smíšené Reality ve Windows, Android a Oculus Go. Projekt je ve výchozím nastavení nakonfigurován for Windows Desktop. Pro platformu VR, přejděte na nastavení player (**Upravit > Nastavení projektu > Player**), najdete **XR nastavení**a zkontrolujte **podporované virtuální realitu** zaškrtávací políčko.
+## <a name="targeting-other-platforms"></a>Cílení na jiné platformy
+Ukázka obsahuje nastavení pro spuštění na počítači s Windows, UPW, Windows Mixed Reality, Androidu a Oculus Go. Projekt je ve výchozím nastavení nakonfigurován pro počítač s Windows. Pokud chcete cílit na platformu VR, přejděte na nastavení přehrávače (**Upravit > Nastavení projektu > Přehrávač**), najděte **Nastavení XR**a zaškrtněte políčko **Virtuální realita podporována**.
 
-![Povolit VR](media/VRSupport.png)  
+![Povolení VR](media/VRSupport.png)  
 
-Sluchátka s mikrofonem VR připojí k vašemu počítači. Přejděte na **soubor > Nastavení sestavení**a klikněte na tlačítko **sestavíte a spustíte** nasazení ukázky do vaší sluchátka s mikrofonem VR. Procházet scény pomocí řadiče pohybu pro vaše sluchátka s mikrofonem, případně zkuste použít S W, A, D na klávesnici.    
-Chcete-li cílit na zařízení s Androidem a Oculus Go, zvolte Android z **nastavení sestavení** nabídky. Klikněte na tlačítko **přepněte cílový**, pak **sestavíte a spustíte**. Ukázková Scéna to bude nasadit do připojených zařízení s Androidem. Informace o vývoji pro Unity pro Android najdete v tématu [dokumentace k Unity](https://docs.unity3d.com/Manual/android-GettingStarted.html).
+Připojte náhlavní soupravu VR k počítači. Přejděte na **Soubor > Nastavení sestavení**a klikněte na **Sestavit a spustit**. Tím ukázku nasadíte do náhlavní soupravy VR. Scénu můžete procházet pomocí ovladačů pohybu na náhlavní soupravě, popřípadě zkuste klávesy W,A,S a D na klávesnici.    
+Pokud chcete cílit na zařízení s Androidem a Oculus Go, zvolte v nabídce **Nastavení sestavení** systém Android. Klikněte na **Přepnout cíl** a pak na **Sestavit a spustit**. Tím ukázkovou scénu nasadíte do připojeného zařízení s Androidem. Informace o vývoji pro Unity pro Android najdete v tématu [Dokumentace k Unity](https://docs.unity3d.com/Manual/android-GettingStarted.html).
 
-![Cíl Android](media/TargetAndroid.png)  
+![Cílení na Android](media/TargetAndroid.png)  
 
-## <a name="next-steps"></a>Další postup
-* [Vytvoření účtu Azure](create-azure-account.md) pro vlastní vytváří
-* Prozkoumejte [návrhu procesu](design-process.md)
+## <a name="next-steps"></a>Další kroky
+* [Vytvoření účtu Azure](create-azure-account.md) pro vlastní vypalování
+* Prozkoumejte [proces návrhu](design-process.md)
 

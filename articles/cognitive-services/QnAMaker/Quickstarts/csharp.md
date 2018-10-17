@@ -1,47 +1,47 @@
 ---
-title: 'Rychlý start: C# pro rozhraní API (V4) nástroje QnA Maker'
+title: 'Rychlý start: Jazyk C# pro rozhraní API služby QnA Maker (v4)'
 titleSuffix: Azure Cognitive Services
-description: Získat informace a ukázky kódu můžete rychle začít používat Microsoft Translator Text API ve službě Microsoft Cognitive Services v Azure.
+description: Získejte informace a vzorky kódy, které vám usnadní začátky práce se službou Microsoft Translator Text API ve službách Microsoft Cognitive Services v Azure.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: qna-maker
-ms.topic: article
+ms.component: qna-maker
+ms.topic: quickstart
 ms.date: 09/12/2018
 ms.author: diberry
-ms.openlocfilehash: 7c79a5c1b65391be1a100efa9e0dcf4e4a0d12ae
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: MT
+ms.openlocfilehash: ec4cd4de2bf662b5ce45803d8b762d44ef243358
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040275"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887526"
 ---
-# <a name="quickstart-for-microsoft-qna-maker-api-with-c"></a>Rychlý start pro rozhraní API pomocí jazyka C# Microsoft QnA Maker 
+# <a name="quickstart-for-microsoft-qna-maker-api-with-c"></a>Rychlý start rozhraní API služby QnA Maker pomocí jazyka C# 
 <a name="HOLTop"></a>
 
-V tomto článku se dozvíte, jak používat [API nástroje QnA Maker Microsoft](../Overview/overview.md) pomocí jazyka C# můžete provádět následující.
+V tomto článku se dozvíte, jak pomocí [rozhraní API služby Microsoft QnA Maker](../Overview/overview.md) a jazyka C# provést následující postupy.
 
-- [Vytvoření nové znalostní báze.](#Create)
-- [Aktualizujte existující znalostní báze.](#Update)
-- [Získáte stav žádosti o vytvoření nebo aktualizace znalostní báze.](#Status)
-- [Publikujte existující znalostní báze.](#Publish)
-- [Nahraďte obsah existujícího znalostní báze.](#Replace)
-- [Stáhněte si obsah znalostní báze.](#GetQnA)
-- [Získejte odpovědi na otázky v znalostní báze.](#GetAnswers)
-- [Získejte informace o znalostní báze.](#GetKB)
-- [Získejte informace o všech znalostních bází, které patří do zadaného uživatele.](#GetKBsByUser)
-- [Odstraňte znalostní báze.](#Delete)
-- [Získejte aktuální klíče koncového bodu.](#GetKeys)
-- [Znovu generujte klíče aktuální koncový bod.](#PutKeys)
-- [Získejte aktuální sadu změn aplikace word.](#GetAlterations)
-- [Nahraďte aktuální sadu změn aplikace word.](#PutAlterations)
+- [Vytvoření nové znalostní báze](#Create)
+- [Aktualizace existující znalostní báze](#Update)
+- [Získání stavu požadavku na vytvoření nebo aktualizaci znalostní báze](#Status)
+- [Publikování existující znalostní báze](#Publish)
+- [Nahrazení obsahu existující znalostní báze](#Replace)
+- [Stažení obsahu znalostní báze](#GetQnA)
+- [Získání odpovědí na otázku s využitím znalostní báze](#GetAnswers)
+- [Získání informací o znalostní bázi](#GetKB)
+- [Získání informací o všech znalostních bázích patřících zadanému uživateli](#GetKBsByUser)
+- [Odstranění znalostní báze](#Delete)
+- [Získání klíčů aktuálního koncového bodu](#GetKeys)
+- [Opětovné vygenerování klíčů aktuálního koncového bodu](#PutKeys)
+- [Získání aktuální sady změn slov](#GetAlterations)
+- [Nahrazení aktuální sady změn slov](#PutAlterations)
 
 [!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-csharp-repo-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-Budete potřebovat [Visual Studio 2017](https://www.visualstudio.com/downloads/) tento kód spustit na Windows. (Bude stačit bezplatná verze Community Edition.)
+Ke spuštění tohoto kódu ve Windows budete potřebovat [Visual Studio 2017](https://www.visualstudio.com/downloads/). (Bude stačit bezplatná verze Community Edition.)
 
 Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraním API služby Microsoft QnA Maker**. Budete potřebovat placené klíče předplatného ze svého [řídicího panelu Azure](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 
@@ -209,7 +209,7 @@ namespace QnAMaker
 
 ```
 
-**Vytvoření znalostní báze odpovědi**
+**Odpověď na vytvoření znalostní báze**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -410,7 +410,7 @@ namespace QnAMaker
 
 ```
 
-**Aktualizace znalostní báze odpovědi**
+**Odpověď na aktualizaci znalostní báze**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -527,7 +527,7 @@ namespace QnAMaker
 
 ```
 
-**Publikování znalostní báze odpovědi**
+**Odpověď na publikování znalostní báze**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -541,9 +541,9 @@ namespace QnAMaker
 
 <a name="Replace"></a>
 
-## <a name="replace-knowledge-base"></a>Nahraďte znalostní báze
+## <a name="replace-knowledge-base"></a>Nahrazení znalostní báze
 
-Nahradí obsah zadané znalostní bázi, pomocí následujícího kódu [nahradit](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_publish) metody.
+Následující kód nahrazuje obsah zadané znalostní báze pomocí metody [Replace](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_publish).
 
 1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt C#.
 2. Přidejte níže uvedený kód.
@@ -644,7 +644,7 @@ namespace QnAMaker
 
 ```
 
-**Nahraďte odpovědi znalostní báze**
+**Odpověď na nahrazení znalostní báze**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -658,9 +658,9 @@ namespace QnAMaker
 
 <a name="GetQnA"></a>
 
-## <a name="download-the-contents-of-a-knowledge-base"></a>Stáhněte si obsah znalostní báze
+## <a name="download-the-contents-of-a-knowledge-base"></a>Stažení obsahu znalostní báze
 
-Následující kód stáhne obsah zadaného znalostní bázi, pomocí [stáhnout znalostní báze](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_download) metody.
+Následující kód stáhne obsah zadané znalostní báze pomocí metody [Download knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_download).
 
 1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt C#.
 2. Přidejte níže uvedený kód.
@@ -736,7 +736,7 @@ namespace QnAMaker
 
 ```
 
-**Stáhněte si odpovědi znalostní báze**
+**Odpověď na stažení znalostní báze**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -775,15 +775,15 @@ namespace QnAMaker
 
 <a name="GetAnswers"></a>
 
-## <a name="get-answers-to-a-question-by-using-a-knowledge-base"></a>Získejte odpovědi na dotaz s použitím znalostní báze
+## <a name="get-answers-to-a-question-by-using-a-knowledge-base"></a>Získání odpovědí na otázku s využitím znalostní báze
 
-Získá odpovědi na dotaz pomocí zadaného znalostní báze, pomocí následujícího kódu **generování odpovědi** metody.
+Následující kód získá odpovědi na dotazy pomocí zadané znalostní báze a pomocí metody **Generate answers**.
 
 1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt C#.
 1. Přidejte níže uvedený kód.
-1. Nahraďte `host` hodnotu s názvem webu pro vaše předplatné nástroje QnA Maker. Další informace najdete v části [vytvořit službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md).
-1. Nahraďte `endpoint_key` hodnotu s klíčem platný koncový bod pro vaše předplatné. Všimněte si, že to není stejné jako váš klíč předplatného. Můžete získat pomocí klíče koncového bodu [získat klíče koncového bodu](#GetKeys) metody.
-1. Nahraďte `kb` hodnotu s ID znalostní báze, který chcete zadat dotaz pro odpovědi. Mějte na paměti tato znalostní báze musí již byly publikovány pomocí [publikovat](#Publish) metody.
+1. Hodnotu `host` nahraďte názvem webu pro vaše předplatné služby QnA Maker. Další informace najdete v tématu [Vytvoření služby QnA Maker](../How-To/set-up-qnamaker-service-azure.md).
+1. Hodnotu `endpoint_key` nahraďte platným klíčem koncového bodu pro vaše předplatné. Všimněte si, že tento klíč není stejný jako klíč vašeho předplatného. Klíče koncového bodu můžete získat pomocí metody [Get endpoint keys](#GetKeys).
+1. Hodnotu `kb` nahraďte pomocí ID znalostní báze, ve které se chcete dotazovat na odpovědi. Mějte na paměti, že tato znalostní báze již musí být publikovaná pomocí metody [Publish](#Publish).
 1. Spusťte program.
 
 ```csharp
@@ -852,7 +852,7 @@ namespace QnAMaker
 }
 ```
 
-**Získání odpovědi odpovědi**
+**Odpověď na získání odpovědi**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -878,9 +878,9 @@ namespace QnAMaker
 
 <a name="GetKB"></a>
 
-## <a name="get-information-about-a-knowledge-base"></a>Získání informací o znalostní báze
+## <a name="get-information-about-a-knowledge-base"></a>Získání informací o znalostní bázi
 
-Následující kód načte informace o zadané znalostní báze základní použití [získat tak podrobné údaje znalostní báze](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) metody.
+Následující kód získá informace o zadané znalostní bázi pomocí metody [Get knowledge base details](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails).
 
 1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt C#.
 2. Přidejte níže uvedený kód.
@@ -952,7 +952,7 @@ namespace QnAMaker
 
 ```
 
-**Získat podrobnosti odpovědi znalostní báze**
+**Odpověď na získání podrobností o znalostní bázi**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -978,9 +978,9 @@ namespace QnAMaker
 
 <a name="GetKBsByUser"></a>
 
-## <a name="get-all-knowledge-bases-for-a-user"></a>Získá všechny znalostních bází pro uživatele.
+## <a name="get-all-knowledge-bases-for-a-user"></a>Získání všech znalostních bází uživatele
 
-Následující kód načte informace o všech znalostních bází pro zadaného uživatele pomocí [získat znalostních bází pro uživatele](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasesforuser) metody.
+Následující kód získá informace o všech znalostních bázích zadaného uživatele pomocí metody [Get knowledge bases for user](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasesforuser).
 
 1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt C#.
 2. Přidejte níže uvedený kód.
@@ -1049,7 +1049,7 @@ namespace QnAMaker
 
 ```
 
-**Získat znalostních bází na odpověď uživatele**
+**Odpověď na získání znalostních bází uživatele**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -1091,9 +1091,9 @@ Press any key to continue.
 
 <a name="Delete"></a>
 
-## <a name="delete-a-knowledge-base"></a>Odstranit znalostní báze
+## <a name="delete-a-knowledge-base"></a>Odstranění znalostní báze
 
-Odstraní zadaný znalostní bázi, pomocí následujícího kódu [odstranit znalostní báze](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_delete) metody.
+Následující kód odstraní zadanou znalostní bázi pomocí metody [Delete knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_delete).
 
 1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt C#.
 2. Přidejte níže uvedený kód.
@@ -1171,7 +1171,7 @@ namespace QnAMaker
 }
 ```
 
-**Odstranit odpověď znalostní báze**
+**Odpověď na odstranění znalostní báze**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -1185,9 +1185,9 @@ namespace QnAMaker
 
 <a name="GetKeys"></a>
 
-## <a name="get-endpoint-keys"></a>Získat klíče koncového bodu
+## <a name="get-endpoint-keys"></a>Získání klíčů koncového bodu
 
-Následující kód načte aktuální klíče koncového bodu pomocí [získat klíče koncového bodu](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys) metody.
+Následující kód získá klíče aktuálního koncového bodu pomocí metody [Get endpoint keys](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys).
 
 1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt C#.
 2. Přidejte níže uvedený kód.
@@ -1255,7 +1255,7 @@ namespace QnAMaker
 }
 ```
 
-**Získání odpovědi klíče koncového bodu**
+**Odpověď na získání klíčů koncového bodu**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -1270,9 +1270,9 @@ namespace QnAMaker
 
 <a name="PutKeys"></a>
 
-## <a name="refresh-endpoint-keys"></a>Aktualizovat klíče koncového bodu
+## <a name="refresh-endpoint-keys"></a>Aktualizace klíčů koncového bodu
 
-Obnoví aktuální klíče koncového bodu pomocí následujícího kódu [aktualizovat klíče koncového bodu](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_refreshendpointkeys) metody.
+Následující kód znovu vygeneruje klíče aktuálního koncového bodu pomocí metody [Refresh endpoint keys](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_refreshendpointkeys).
 
 1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt C#.
 2. Přidejte níže uvedený kód.
@@ -1343,7 +1343,7 @@ namespace QnAMaker
 }
 ```
 
-**Aktualizujte koncový bod klíče odpovědi**
+**Odpověď na aktualizaci klíčů koncového bodu**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -1358,9 +1358,9 @@ namespace QnAMaker
 
 <a name="GetAlterations"></a>
 
-## <a name="get-word-alterations"></a>Získat změny aplikace word
+## <a name="get-word-alterations"></a>Získání změn slov
 
-Následující kód načte aktuální změny slovo pomocí [Stáhnout změny](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc) metody.
+Následující kód získá aktuální změny slov pomocí metody [Download alterations](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc).
 
 1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt C#.
 2. Přidejte níže uvedený kód.
@@ -1428,7 +1428,7 @@ namespace QnAMaker
 }
 ```
 
-**Získání odpovědi změny aplikace word**
+**Odpověď na získání změn slov**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -1449,9 +1449,9 @@ namespace QnAMaker
 
 <a name="PutAlterations"></a>
 
-## <a name="replace-word-alterations"></a>Nahraďte slovo změny
+## <a name="replace-word-alterations"></a>Nahrazení změn slov
 
-Následující kód nahradí aktuální změny slovo pomocí [nahraďte změny](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) metody.
+Následující kód nahradí aktuální změny slov pomocí metody [Replace alterations](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd).
 
 1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt C#.
 2. Přidejte níže uvedený kód.
@@ -1552,7 +1552,7 @@ namespace QnAMaker
 }
 ```
 
-**Nahraďte slovo změny odpovědi**
+**Odpověď na nahrazení změn slov**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -1564,11 +1564,11 @@ namespace QnAMaker
 
 [Zpět na začátek](#HOLTop)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Reference k rozhraní REST API služby QnA Maker (V4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
 
-## <a name="see-also"></a>Další informace najdete v tématech 
+## <a name="see-also"></a>Viz také 
 
 [Přehled služby QnA Maker](../Overview/overview.md)

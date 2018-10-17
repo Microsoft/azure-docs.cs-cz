@@ -1,31 +1,31 @@
 ---
 title: Co je Project Answer Search?
 titlesuffix: Azure Cognitive Services
-description: Úvod k hledání odpovědí projektu.
+description: Úvod k Project Answer Search.
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: project-answer-search
-ms.topic: article
+ms.topic: overview
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: 87fe7b008e3e7c6cd8d1a9a870c0fb8ce2f6a7cd
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
-ms.translationtype: MT
+ms.openlocfilehash: 5658054b3cc77db20edd64f6c560ee5d4a58eb46
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868240"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883716"
 ---
 # <a name="what-is-project-answer-search"></a>Co je Project Answer Search?
-Rozhraní API pro hledání odpovědí projekt používá k získání odpovědi na dotazy interrogative koncový bod Bingu v7. Například otázku A "Jak se obvod všech koutech světa?" vrátí odpověď s konkrétní informace.  Dotaz pro osoby, místa nebo věc, kterou vrátí informace o entitu identifikovanou pomocí dotazu. Tyto scénáře může být užitečný v aplikacích, jako je například konverzační robotů, zasílání zpráv aplikace, čtenáři, atd.  
+Rozhraní API služby Project Answer Search používá k získání odpovědi na zvídavé dotazy koncový bod Bingu v7. Například na otázku „Jaký je obvod Země?“ vrátí odpověď s faktickými informacemi.  Na dotaz týkající se osoby, místa nebo věci, vrátí informace o entitě identifikované dotazem. Tyto scénáře můžou být užitečné v aplikacích, jako jsou například konverzační roboti,aplikace zasílání zpráv, čtenáři, atd.  
 
-Dotazy vracet odpovědi, které závisí na scénáři dotazu: webové stránky jsou vždy vrátí, zatímco [faktů](fact-queries.md) a/nebo [entity](entity-queries.md) jsou vráceny, pokud je to potřeba.
+Dotazy vrací odpovědi, které závisí na povaze dotazu: webové stránky vrátí vždy, zatímco [fakta](fact-queries.md) a nebo [entity](entity-queries.md) vrátí jenom tehdy, pokud jsou relevantní.
 
 ## <a name="endpoint"></a>Koncový bod
-Pokud chcete získat odpovědi na dotaz či informace o osobě, místě nebo věc, odeslat požadavek na koncový bod rozhraní API pro hledání odpovědí. Použijte pro různé specifikace hlaviček a parametrů adresy URL.  Zahrnout *Ocp-Apim-Subscription-Key* záhlaví s platný token.  Na trhu parametr je povinný. Pouze `en-us` momentálně se podporuje na trhu.
+Pokud chcete získat odpovědi na dotaz či informace o osobě, místě nebo věci, odešlete požadavek na koncový bod rozhraní API Answer Search. Můžete použít záhlaví a parametry adresy URL pro různé specifikace.  Použijte hlavičku *Ocp-Apim-Subscription-Key* s platným tokenem.  Parametr market je povinný. V tuto chvíli je podporován jenom market `en-us`.
 
-Následující dotaz načte odpovědi na otázku: "Co je obvod všech koutech světa?"
+Následující dotaz získá odpovědi na otázku: „What is the circumference of the earth?“ (Jaký obvod má Země?)
 
 GET:
 ````
@@ -33,11 +33,11 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=what+is+circ
 
 ````
 
-Parametr adresy URL `q=` je nutné zadat objekt vyhledávání.
+K určení předmětu vyhledávání je nutné zadat parametr adresy URL `q=`.
 
 ## <a name="response-object"></a>Objekt odpovědi
 
-Odpověď obsahuje záhlaví HTTP, webové stránky, faktů nebo entity.
+Odpověď obsahuje záhlaví HTTP, webové stránky, fakta nebo entity.
 
 ````
 BingAPIs-TraceId: AB2E75C998614ADB8EBF5110DF648298
@@ -239,22 +239,22 @@ JSON Response:
 ````
 
 ## <a name="terms-of-use"></a>Podmínky použití
-Hledání odpovědí projektu a projekt Video trendy platí pro ně [požadavky na zobrazení a použití vyhledávání Bingu](use-display-requirements.md).
+Na Project Answer Search a Project Video Trends se uplatňují [požadavky Vyhledávání Bingu pro zobrazení a použití ](use-display-requirements.md).
 
-Jste nebo třetích stran vaším jménem nemusí použít, zachovat, ukládat, ukládat do mezipaměti, sdílet, nebo distribuovat všechna data z rozhraní API ve verzi Preview. adresa URL pro účely testování, vývoje, školení, distribuci nebo zpřístupnění službám jiných společností než Microsoft nebo funkce. 
+Vy nebo třetí strana jednající vaším jménem nesmí používat, uchovávat, ukládat, ukládat do mezipaměti, sdílet, nebo distribuovat jakákoliv data z rozhraní API ve verzi Preview adresy URL pro účely testování, vývoje, školení, distribuce nebo zpřístupnění službám nebo funkcím jiných společností než Microsoft. 
 
 ## <a name="throttling-requests"></a>Omezování požadavků
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../../includes/cognitive-services-bing-throttling-requests.md)]
 
 
-## <a name="data-attribution"></a>Přidělení dat  
+## <a name="data-attribution"></a>Určení zdroje dat  
 
-Odpovědi na vyhledávání odpovědí na projektu obsahovat informace o vlastní třetími stranami. Budete muset zajistit, aby že využití je vhodná, například při dodržení licence creative commons, které využívají ke svému činnost koncového uživatele.  
+Odpovědi Project Answer Search obsahují informace vlastněné třetími stranami. Je vaší zodpovědností zajistit odpovídající použití, například tím, že dodržováním podmínek licencí Creative Commons, na kterých vaše uživatelské prostředí bude stát.  
   
-Pokud odpověď nebo výsledek obsahuje `contractualRules`, `attributions`, nebo `provider` polí, musí atribut data. Pokud odpověď nesmí obsahovat žádný z těchto polí, není třeba žádná přiřazení. V případě, že odpověď obsahuje `contractualRules` pole a `attributions` a/nebo `provider` polí, musíte použít smluvní pravidla pro atribut data.  
+Pokud odpověď nebo výsledek obsahuje pole `contractualRules`, `attributions` nebo `provider`, musíte provést atribuci dat. Pokud odpověď neobsahuje žádné z těchto polí, není atribuce potřeba. Pokud odpověď obsahuje pole `contractualRules` a pole `attributions` nebo `provider`, musíte použít smluvní pravidla pro atribuci dat.  
   
-Následující příklad ukazuje entita, která obsahuje smluvní pravidlo MediaAttribution a bitovou kopii, která zahrnuje `provider` pole. Pravidlo MediaAttribution označuje obrázek, který jako cíl pravidla, takže by ignorovat na obrázku `provider` pole a místo toho použít pravidlo MediaAttribution k označení autorství.  
+Následující příklad ukazuje entitu, která obsahuje smluvní pravidlo MediaAttribution a Image zahrnující pole`provider`. Pravidlo MediaAttribution označuje image jako cíl pravidla, takže v takovém případě ignorujte pole `provider` image a místo toho použijte k určení zdroje pravidlo MediaAttribution.  
   
 ```  
         "value" : [{
@@ -283,10 +283,10 @@ Následující příklad ukazuje entita, která obsahuje smluvní pravidlo Media
         }]
 ```  
   
-Pokud obsahuje smluvní pravidlo `targetPropertyName` pole, se pravidlo vztahuje pouze na cílové pole. V opačném případě se pravidlo vztahuje na nadřazený objekt, který obsahuje `contractualRules` pole.  
+Pokud smluvní pravidlo obsahuje pole `targetPropertyName`, pak se pravidlo vztahuje pouze na cílové pole. V opačném případě se pravidlo vztahuje na nadřazený objekt, který obsahuje pole `contractualRules`.  
   
   
-V následujícím příkladu `LinkAttribution` pravidlo obsahuje `targetPropertyName` pole, aby se pravidlo vztahuje `description` pole. Pro pravidla, které se vztahují na konkrétní pole musí obsahovat řádek bezprostředně následuje cílových dat, která obsahuje hypertextový odkaz na webu poskytovatele. Například kterému budou připsány popis, přidejte řádek bezprostředně následující text, který obsahuje hypertextový odkaz na data na webu poskytovatele, v tomto případě vytvořit odkaz na en.wikipedia.org.  
+V následujícím příkladu pravidlo`LinkAttribution` obsahuje pole `targetPropertyName`, takže se pravidlo vztahuje na pole `description`. Pro pravidla, která se vztahují na určitá pole, musíte bezprostředně za cílová data vložit řádek, který bude obsahovat hypertextový odkaz na web zprostředkovatele. Pokud budete například provádět atribuci popisu, vložte bezprostředně za text popisu řádek, který bude obsahovat hypertextový odkaz na data na webu zprostředkovatele, v tomto případě vytvořte odkaz na en.wikipedia.org.  
   
 ```  
 "entities" : {  
@@ -305,36 +305,36 @@ V následujícím příkladu `LinkAttribution` pravidlo obsahuje `targetProperty
   
 ```  
 
-### <a name="license-attribution"></a>Přiřazení licencí  
+### <a name="license-attribution"></a>Atribuce licencí  
 
-Pokud obsahuje seznam pravidel smluvní [LicenseAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#licenseattribution) pravidlo, je třeba zobrazit oznámení na řádek bezprostředně za obsah, který se vztahuje licence na. `LicenseAttribution` Pravidlo používá `targetPropertyName` pole pro vlastnost, která se vztahuje licence k identifikaci.  
+Pokud obsahuje seznam smluvních pravidel pravidlo [LicenseAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#licenseattribution), musíte uvést poznámku na řádek bezprostředně za obsah, na který se licence vztahuje. Pravidlo`LicenseAttribution` používá pole `targetPropertyName` k identifikaci služby, na kterou se licence vztahuje.  
   
-Následující příklad zobrazuje příklad, který zahrnuje `LicenseAttribution` pravidlo.  
+Následující příklad ukazuje použití pravidla`LicenseAttribution`.  
   
-![Přiřazení licencí](./media/licenseattribution.png)  
+![Atribuce licencí](./media/licenseattribution.png)  
   
-Licence Všimněte si, že zobrazení musí obsahovat hypertextový odkaz na web, který obsahuje informace o licenci. Obvykle vytvořit název licence hypertextový odkaz. Například, pokud je oznámení **Text v rámci licence kopie SA** a kopie SA je název licence, byste vytvořit kopie SA hypertextový odkaz.  
+Poznámky k licencím, které uvádíte, musí obsahovat hypertextový odkaz na web obsahující informace o dané licenci. Obvykle vytvoříte z názvu licence hypertextový odkaz. Pokud je například poznámka **Text je pod licencí CC-BY-SA** a CC-BY-SA je název licence, uděláte z CC-BY-SA hypertextový odkaz.  
   
-### <a name="link-and-text-attribution"></a>Odkaz a Text Attribution  
+### <a name="link-and-text-attribution"></a>Atribuce odkazu a textu  
 
-[LinkAttribution](reference.md#linkattribution) a [TextAttribution](reference.md#textattribution) pravidla se obvykle používají k identifikaci zprostředkovatele data. `targetPropertyName` Pole určuje pole, které se pravidlo vztahuje.  
+Pravidla [LinkAttribution](reference.md#linkattribution) a [TextAttribution](reference.md#textattribution) se obvykle používají k identifikaci zprostředkovatele dat. Pole `targetPropertyName` určuje pole, na které se pravidlo vztahuje.  
   
-Pro atribut zprostředkovatele, přidejte řádek bezprostředně následující obsah, který se použije Poděkování (třeba na cílové pole). Označuje, že zprostředkovatelů je zdroj dat by měly být jasně popsány řádku. Například "Data z: en.wikipedia.org". Pro `LinkAttribution` pravidla, je nutné vytvořit hypertextový odkaz na webu poskytovatele.  
+Pro určení zdroje zprostředkovatelů, vložte řádek bezprostředně za obsah,na který se určení zdroje vztahuje (například za cílové pole). Řádek by měl jasně označovat, že zdrojem dat jsou zprostředkovatelé. Například „Data z: en.wikipedia.org“. Pro pravidla `LinkAttribution` musíte vytvořit hypertextový odkaz na web zprostředkovatele.  
   
-Následující příklad zobrazuje příklad, který zahrnuje `LinkAttribution` a `TextAttribution` pravidla.  
+Následující příklad ukazuje použití pravidel `LinkAttribution` a `TextAttribution`.  
   
-![Attribution text odkazu](./media/linktextattribution.png)  
+![Atribuce odkazu a textu](./media/linktextattribution.png)  
 
-### <a name="media-attribution"></a>Attribution média  
+### <a name="media-attribution"></a>Určení zdroje médií  
 
-Pokud entita obsahuje bitovou kopii a je zobrazit, je nutné zadat odkaz pomocí kliknutí na webu poskytovatele. Pokud obsahuje entitu [MediaAttribution](reference.md#mediaattribution) pravidla, použijte adresu URL pravidla pro vytvoření odkazu pomocí kliknutí. V opačném případě použijte adresu URL do image zahrnout `provider` pole pro vytvoření odkazu pomocí kliknutí.  
+Pokud entita obsahuje image a vy ji zobrazujete, musíte zadat 	klikací odkaz na web zprostředkovatele. Pokud entita obsahuje pravidlo[MediaAttribution](reference.md#mediaattribution), použijte k vytvoření klikacího odkazu adresu URL pravidla. V opačném případě použijte k vytvoření klikacího odkazu adresu URL, která je v poli `provider` dané image.  
   
-Ukazuje následující příklad, který zahrnuje obrazu `provider` pole a smluvní pravidla. Tento příklad zahrnuje smluvní pravidlo, a proto bude ignorovat na obrázku `provider` pole a použít `MediaAttribution` pravidlo.  
+Tady je příklad, který obsahuje pole `provider` pro image a smluvní pravidla. Tento příklad zahrnuje smluvní pravidlo, a proto budete ignorovat pole `provider` pro image a použijete pravidlo `MediaAttribution`.  
   
-![Attribution média](./media/mediaattribution.png)  
+![Atribuce médií](./media/mediaattribution.png)  
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - [Rychlý start C#](c-sharp-quickstart.md)
-- [Rychlý start pro Javu](java-quickstart.md)
-- [Rychlý start uzlu](node-quickstart.md)
+- [Rychlý start Javy](java-quickstart.md)
+- [Rychlý start Nodu](node-quickstart.md)
 - [Rychlý start Pythonu](python-quickstart.md)
