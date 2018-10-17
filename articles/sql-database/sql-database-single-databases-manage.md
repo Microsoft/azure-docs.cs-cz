@@ -11,21 +11,21 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: c2855a9cdbb2abc01b3d3b55b12b979a2dbbf8bb
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/15/2018
+ms.openlocfilehash: f74577a5f8042a7b373d1ff1944088036a0c94f5
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165353"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354202"
 ---
-# <a name="create-and-manage-logical-servers-and-single-databases-in-azure-sql-database"></a>Vytvoření a správa izolovaných databází ve službě Azure SQL Database a logické servery 
+# <a name="create-and-manage-logical-servers-and-single-databases-in-azure-sql-database"></a>Vytvoření a správa izolovaných databází ve službě Azure SQL Database a logické servery
 
 Můžete vytvořit a spravovat logické servery Azure SQL database a izolované databáze pomocí webu Azure portal, Powershellu, rozhraní příkazového řádku Azure, rozhraní REST API a příkazů jazyka Transact-SQL.
 
 ## <a name="azure-portal-manage-logical-servers-and-databases"></a>Azure portal: Správa logických serverů a databází
 
-Můžete vytvořit skupinu prostředků Azure SQL database předem nebo při vytváření samotný server. Existuje několik metod pro získání nového formuláře SQL serveru tak, že vytvoříte nový SQL server nebo jako součást vytváření nové databáze. 
+Můžete vytvořit skupinu prostředků Azure SQL database předem nebo při vytváření samotný server. Existuje několik metod pro získání nového formuláře SQL serveru tak, že vytvoříte nový SQL server nebo jako součást vytváření nové databáze.
 
 ### <a name="create-a-blank-sql-server-logical-server"></a>Vytvoření prázdné SQL serveru (logický server)
 
@@ -33,7 +33,7 @@ K vytvoření serveru (bez databáze) databáze SQL Azure pomocí [webu Azure po
 
 ### <a name="create-a-blank-or-sample-sql-database"></a>Vytvoření prázdné nebo ukázková databáze SQL
 
-K vytvoření databáze Azure SQL pomocí [webu Azure portal](https://portal.azure.com), přejděte na prázdný formulář databáze SQL a zadejte požadované informace. Můžete vytvořit skupinu prostředků a logický server předem nebo při vytváření samotná databáze Azure SQL database. Můžete vytvořit prázdnou databázi nebo vytvoření ukázkové databáze založené na Adventure Works LT. 
+K vytvoření databáze Azure SQL pomocí [webu Azure portal](https://portal.azure.com), přejděte na prázdný formulář databáze SQL a zadejte požadované informace. Můžete vytvořit skupinu prostředků a logický server předem nebo při vytváření samotná databáze Azure SQL database. Můžete vytvořit prázdnou databázi nebo vytvoření ukázkové databáze založené na Adventure Works LT.
 
   ![create database-1](./media/sql-database-get-started-portal/create-database-1.png)
 
@@ -42,28 +42,25 @@ K vytvoření databáze Azure SQL pomocí [webu Azure portal](https://portal.azu
 
 Vytvoření Managed Instance najdete v tématu [vytvoříte Managed Instance](sql-database-managed-instance-get-started.md)
 
-### <a name="manage-an-existing-sql-server"></a>Správa existujícího serveru SQL
+## <a name="manage-an-existing-sql-server"></a>Správa existujícího serveru SQL
 
-Chcete-li spravovat existující server, přejděte na server pomocí několika metod – jako třeba konkrétní stránce databáze SQL, **SQL servery** stránky, nebo **všechny prostředky** stránky. 
+Chcete-li spravovat existující server, přejděte na server pomocí několika metod – jako třeba konkrétní stránce databáze SQL, **SQL servery** stránky, nebo **všechny prostředky** stránky.
 
-Chcete-li spravovat stávající databázi, přejděte na **databází SQL** stránky a klikněte na databázi, kterou chcete spravovat. Následující snímek obrazovky ukazuje, jak začít, nastavení brány firewall úrovni serveru pro databázi z **přehled** stránku pro databázi. 
+Chcete-li spravovat stávající databázi, přejděte na **databází SQL** stránky a klikněte na databázi, kterou chcete spravovat. Následující snímek obrazovky ukazuje, jak začít, nastavení brány firewall úrovni serveru pro databázi z **přehled** stránku pro databázi.
 
-   ![pravidlo brány firewall serveru](./media/sql-database-get-started-portal/server-firewall-rule.png) 
+   ![pravidlo brány firewall serveru](./media/sql-database-get-started-portal/server-firewall-rule.png)
 
 > [!IMPORTANT]
 > Postup konfigurace vlastností výkonu u databáze, najdete v článku [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) a [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md).
->
-
 > [!TIP]
 > Azure portal rychlém startu najdete v části [vytvořit databázi Azure SQL na webu Azure Portal](sql-database-get-started-portal.md).
 
 ## <a name="powershell-manage-logical-servers-and-databases"></a>Prostředí PowerShell: Správa logických serverů a databází
 
-K vytváření a správě serveru Azure SQL, databáze a brány firewall pomocí Azure Powershellu, použijte následující rutiny Powershellu. Pokud potřebujete instalaci nebo upgrade prostředí PowerShell, najdete v článku [instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). 
+K vytváření a správě serveru Azure SQL, databáze a brány firewall pomocí Azure Powershellu, použijte následující rutiny Powershellu. Pokud potřebujete instalaci nebo upgrade prostředí PowerShell, najdete v článku [instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
 > [!TIP]
 > Prostředí PowerShell rychlém startu najdete v části [vytvoření izolované databáze Azure SQL pomocí Powershellu](sql-database-get-started-portal.md). Příklady skriptů Powershellu, najdete v části [použití Powershellu k vytvoření izolované databáze Azure SQL a konfigurace pravidla brány firewall](scripts/sql-database-create-and-configure-database-powershell.md) a [sledování a škálování jednoho SQL database s využitím Powershellu](scripts/sql-database-monitor-and-scale-database-powershell.md).
->
 
 | Rutina | Popis |
 | --- | --- |
@@ -116,13 +113,10 @@ K vytváření a správě serveru Azure SQL, databáze a brány firewall s [rozh
 
 K vytváření a správě serveru Azure SQL, databáze a brány firewall pomocí příkazů jazyka Transact-SQL, použijte následující příkazy T-SQL. Můžete použít tyto příkazy pomocí webu Azure portal, [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [Visual Studio Code](https://code.visualstudio.com/docs), nebo jiný program, který můžete připojit k serveru Azure SQL Database a předat příkazů jazyka Transact-SQL příkazy. Elastické fondy, přečtěte si téma [elastické fondy](sql-database-elastic-pool.md).
 
-
 > [!TIP]
 > Rychlý start pomocí SQL Server Management Studio na Microsoft Windows, naleznete v tématu [Azure SQL Database: použití SQL Server Management Studio k připojení a dotazování dat](sql-database-connect-query-ssms.md). Rychlý start v systému macOS, Linux nebo Windows pomocí Visual Studio Code, naleznete v tématu [Azure SQL Database: použití Visual Studio Code k připojení a dotazování dat](sql-database-connect-query-vscode.md).
-
 > [!IMPORTANT]
 > Nejde vytvořit nebo odstranit server pomocí příkazů jazyka Transact-SQL.
->
 
 | Příkaz | Popis |
 | --- | --- |
@@ -142,29 +136,28 @@ K vytváření a správě serveru Azure SQL, databáze a brány firewall pomocí
 |[sys.database_firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|Vrátí informace o nastavení brány firewall na úrovni databáze, které jsou přidružené k Microsoft Azure SQL Database. |
 |[sp_delete_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|Nastavení brány firewall na úrovni databáze odebere z Azure SQL Database nebo SQL Data Warehouse. |
 
-
-
 ## <a name="rest-api-manage-logical-servers-and-databases"></a>Rozhraní REST API: Správa logických serverů a databází
 
 K vytváření a správě serveru Azure SQL, databází a bran firewall, použijte tyto požadavky rozhraní REST API.
 
 | Příkaz | Popis |
 | --- | --- |
-|[Servery – vytvořit nebo aktualizovat](/rest/api/sql/servers/createorupdate)|Vytvoří nebo aktualizuje nový server.|
-|[Servery – odstranit](/rest/api/sql/servers/delete)|Odstraní systému SQL server.|
-|[Servery – Get](/rest/api/sql/servers/get)|Získá serveru.|
-|[Servery – seznam](/rest/api/sql/servers/list)|Vrátí seznam serverů.|
-|[Servery – seznam podle skupin prostředků](/rest/api/sql/servers/listbyresourcegroup)|Vrátí seznam serverů ve skupině prostředků.|
-|[Servery – aktualizace](/rest/api/sql/servers/update)|Aktualizuje existující server.|
-|[Databáze – vytvořit nebo aktualizovat](/rest/api/sql/databases/createorupdate)|Vytvoří novou databázi nebo aktualizuje existující databázi.|
-|[Databáze - Get](/rest/api/sql/databases/get)|Získá databázi.|
-|[Databáze – seznam podle elastického fondu](/rest/api/sql/databases/listbyelasticpool)|Vrátí seznam databází v elastickém fondu.|
-|[Databáze – seznam serverem](/rest/api/sql/databases/listbyserver)|Vrátí seznam databází na serveru.|
-|[Databáze – aktualizace](/rest/api/sql/databases/update)|Aktualizuje existující databázi.|
-|[Pravidla – brány firewall vytvořit nebo aktualizovat](/rest/api/sql/firewallrules/createorupdate)|Vytvoří nebo aktualizuje pravidla brány firewall.|
-|[Pravidla brány firewall – odstranit](/rest/api/sql/firewallrules/delete)|Odstraní pravidlo brány firewall.|
-|[Pravidla brány firewall – Get](/rest/api/sql/firewallrules/get)|Získá pravidla brány firewall.|
-|[Pravidla brány firewall – seznam serverem](/rest/api/sql/firewallrules/listbyserver)|Vrátí seznam pravidel brány firewall.|
+|[Servery – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/servers/servers_createorupdate/rest/api)|Vytvoří nebo aktualizuje nový server.|
+|[Servery – odstranit](https://docs.microsoft.com/rest/api/sql/servers/servers_delete)|Odstraní systému SQL server.|
+|[Servery – Get](https://docs.microsoft.com/rest/api/sql/servers/servers_get)|Získá serveru.|
+|[Servery – seznam](https://docs.microsoft.com/rest/api/sql/servers/servers_list)|Vrátí seznam serverů.|
+|[Servery – seznam podle skupin prostředků](https://docs.microsoft.com/rest/api/sql/servers/servers_listbyresourcegroup)|Vrátí seznam serverů ve skupině prostředků.|
+|[Servery – aktualizace](https://docs.microsoft.com/rest/api/sql/servers/servers_update)|Aktualizuje existující server.|
+|[Databáze – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate)|Vytvoří novou databázi nebo aktualizuje existující databázi.|
+|[Databáze – odstranit](https://docs.microsoft.com/rest/api/sql/databases/databases_delete)|Odstraní databázi.|
+|[Databáze - Get](https://docs.microsoft.com/rest/api/sql/databases/databases_get)|Získá databázi.|
+|[Databáze – seznam podle elastického fondu](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyelasticpool)|Vrátí seznam databází v elastickém fondu.|
+|[Databáze – seznam serverem](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyserver)|Vrátí seznam databází na serveru.|
+|[Databáze – aktualizace](https://docs.microsoft.com/rest/api/sql/databases/databases_update)|Aktualizuje existující databázi.|
+|[Pravidla – brány firewall vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_createorupdate)|Vytvoří nebo aktualizuje pravidla brány firewall.|
+|[Pravidla brány firewall – odstranit](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_delete)|Odstraní pravidlo brány firewall.|
+|[Pravidla brány firewall – Get](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_get)|Získá pravidla brány firewall.|
+|[Pravidla brány firewall – seznam serverem](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_listbyserver)|Vrátí seznam pravidel brány firewall.|
 
 ## <a name="next-steps"></a>Další postup
 

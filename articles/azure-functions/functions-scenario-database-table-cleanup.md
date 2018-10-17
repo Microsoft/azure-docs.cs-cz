@@ -11,17 +11,20 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 05/22/2017
 ms.author: glenga
-ms.openlocfilehash: a257948c97437d6045f705acb02054928d22ff89
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 024958d8a548313b53fc24ade5805de036a89afb
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092865"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49351911"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Pomocí služby Azure Functions pro připojení ke službě Azure SQL Database
 V tomto tématu se dozvíte, jak používat Azure Functions k vytvoření naplánované úlohy, která vyčistí řádky v tabulce v Azure SQL Database. Nová funkce skriptu jazyka C# je vytvořena na základě předem definovaných časovače triggeru šablony na webu Azure Portal. Pro podporu tohoto scénáře, musíte také nastavit připojovací řetězec databáze jako nastavení aplikace do aplikace function App. Tento scénář využívá hromadnou operaci v databázi. 
 
 Aby proces jednotlivé funkce vytvoření, čtení, aktualizace a odstranění (CRUD) operací v tabulce Mobile Apps, je vhodné použít [vazby Mobile Apps](functions-bindings-mobile-apps.md).
+
+> [!IMPORTANT]
+> Příklady v tomto dokumentu platí pro modul runtime verze 1.x. Informace o tom, jak vytvořit aplikaci funkcí 1.x [najdete tady](./functions-versions.md#creating-1x-apps).
 
 ## <a name="prerequisites"></a>Požadavky
 

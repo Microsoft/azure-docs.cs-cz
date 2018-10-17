@@ -1,21 +1,20 @@
 ---
-title: Přehled knihovny prováděcí modul hromadného služby Azure Cosmos DB | Dokumentace Microsoftu
-description: Další informace o službě Azure Cosmos DB hromadné prováděcí modul knihovny, výhody používání knihovny a jeho architektura.
-keywords: Prováděcí modul hromadného Java
+title: Hromadný import a aktualizace dat ve službě Azure Cosmos DB pomocí knihovny prováděcí modul hromadného | Dokumentace Microsoftu
+description: Provádět hromadné operace ve službě Azure Cosmos DB pomocí hromadného importu a Hromadná aktualizace rozhraní API nabízená hromadně prováděcí modul knihovny.
 services: cosmos-db
 author: tknandu
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 10/16/2018
 ms.author: ramkris
-ms.openlocfilehash: 823cb536a1cd0b8f5da7442906b14447c15ae044
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: a760de998c78ce2afdd24a15d9dd6e5d0cf44dc1
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091349"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363536"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Přehled knihovny prováděcí modul hromadného služby Azure Cosmos DB
  
@@ -27,7 +26,7 @@ Azure Cosmos DB je rychlý, flexibilní a globálně distribuovaná databázová
 Knihovna prováděcí modul hromadného umožňuje využívat tuto obrovskou propustnost a úložiště. Hromadné prováděcí modul knihovny lze provádět hromadné operace ve službě Azure Cosmos DB pomocí hromadného importu a hromadně aktualizovat rozhraní API. Další informace o funkcích hromadné prováděcí modul knihovny v následujících částech. 
 
 > [!NOTE] 
-> V současné době hromadné prováděcí modul knihovny podporuje import a aktualizace operace a tato knihovna je podporován pouze účty SQL API služby Azure Cosmos DB. Zobrazit [.NET](sql-api-sdk-bulk-executor-dot-net.md) a [Java](sql-api-sdk-bulk-executor-java.md) poznámky k verzi pro všechny aktualizace do knihovny.
+> V současné době hromadné prováděcí modul knihovny podporuje import a aktualizace operace a tato knihovna je podporován pouze účty SQL API služby Azure Cosmos DB a Gremlin API nevztahují.
  
 ## <a name="key-features-of-the-bulk-executor-library"></a>Klíčové funkce knihovny hromadné prováděcího modulu  
  

@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2018
+ms.date: 10/12/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 96d8977a63d26576d4d783dd0661409fdcee90f8
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 03f096bf160c44f7a35f54a73cff6ea701b87d22
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314031"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352913"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Účty a oprávnění
 
@@ -113,6 +113,12 @@ Následuje souhrn vlastní installlation stránkách průvodce, přihlašovací 
 | Stránka účtu služby FS služby AD, "Použít možnost účet uživatele domény" |Přihlašovací údaje účtu uživatele AD |Doména uživatel |Uživatelský účet AD jsou k dispozici jehož přihlašovací údaje slouží jako přihlašovací účet služby AD FS. |
 
 ### <a name="create-the-ad-ds-connector-account"></a>Vytvoření konektoru služby AD DS účtu
+
+>[!IMPORTANT]
+>Nový modul prostředí PowerShell s názvem ADSyncConfig.psm1 byla zavedena v systému sestavení **1.1.880.0** (vydané spolu. srpna 2018), který obsahuje kolekci rutin, které vám pomohou nakonfigurovat správné oprávnění služby Active Directory pro Azure AD DS Účet konektoru.
+>
+>Další informace najdete v části [Azure AD Connect: konfigurace AD DS konektor účtu oprávnění](how-to-connect-configure-ad-ds-connector-account.md)
+
 Zadaný účet na **připojení k adresářům** stránky musí být k dispozici ve službě Active Directory před instalací.  Azure AD Connect verze 1.1.524.0 a novější je možnost nechat vytvořit průvodce Azure AD Connect **účet AD DS konektoru** používaná k připojení ke službě Active Directory.  
 
 Také musí mít udělena potřebná oprávnění. Průvodce instalací neověřuje, že oprávnění a všech problémech se nacházejí pouze během synchronizace.

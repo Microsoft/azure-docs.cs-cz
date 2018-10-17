@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/21/2018
 ms.author: genli
-ms.openlocfilehash: 05a8b4a8aa5ed79876a33eb1bd09f7675d4c611d
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 8253c4c84e38fc3b8279aa311c1627a540502a6c
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586885"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49351482"
 ---
 # <a name="troubleshoot-azure-virtual-machines-boot-errors"></a>Řešení potíží s chybami spuštění Azure Virtual Machines
 
@@ -32,5 +32,6 @@ Tento článek uvádí běžné chyby spuštění, které se mohou zobrazit při
 
 ## <a name="next-steps"></a>Další postup
 
+- [Diagnostika spouštění](boot-diagnostics.md)
 - [Konzola sériového portu virtuálního počítače](../windows/serial-console.md)
 - [Řešení potíží s virtuálního počítače s Windows připojením disku s operačním systémem pro virtuální počítač pro obnovení](../windows/troubleshoot-recovery-disks.md)

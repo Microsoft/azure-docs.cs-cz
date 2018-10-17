@@ -11,15 +11,15 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 47a2404361c8ce3f30a0564378857f5a86232a52
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.date: 10/15/2018
+ms.openlocfilehash: 372f1a0b7e2ad07612caaac478aea14693e002fa
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868089"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352298"
 ---
-# <a name="hyperscale-service-tier-preview"></a>Úroveň služeb Hyperškálovatelného (preview)
+# <a name="hyperscale-service-tier-preview-for-up-to-100-tb"></a>Velkokapacitní úrovni služeb (preview) pro až 100 TB
 
 Úroveň mírou škálování služby ve službě Azure SQL Database je nejnovější úroveň služby v nákupní model založený na virtuálních jádrech. Tato úroveň služby je vysoce škálovatelné úložiště a výpočetní úroveň výkonu, který využívá Azure architekturu pro horizontální navýšení kapacity úložiště a výpočetní prostředky pro službu Azure SQL Database podstatně nad limity, které jsou k dispozici pro obecné účely a Business Úrovně důležitých služeb.
 
@@ -30,7 +30,7 @@ ms.locfileid: "48868089"
 > [!IMPORTANT]
 > Úroveň velkokapacitní služby je aktuálně ve verzi public preview. Nedoporučujeme s jakékoli produkčními úlohami v databázích Hyperškálovatelného ještě. Velkokapacitní databáze nelze aktualizovat na další úrovně služeb. Pro testovací účely doporučujeme vytvořit kopii aktuální databáze a aktualizovat kopii Hyperškálovatelného vrstvu služby.
 
-## <a name="what-are-the-capabilities-of-the-hyperscale-service-tier"></a>Jaké jsou možnosti vrstvy služby s Hyperškálováním
+## <a name="what-are-the-hyperscale-capabilities"></a>Jaké jsou možnosti hyperškálovatelný systém
 
 Úroveň mírou škálování služby ve službě Azure SQL Database poskytuje následující funkce:
 
@@ -56,13 +56,13 @@ Velkokapacitní, kterou úroveň služby je primárně určena pro zákazníky, 
 > [!IMPORTANT]
 > Elastické fondy na úrovni služby hyperškálovatelný systém nepodporují.
 
-## <a name="understand-hyperscale-pricing"></a>Lepší pochopení cen Hyperškálováním
+## <a name="hyperscale-pricing-model"></a>Velkokapacitní cenový model
 
 Velkokapacitní úrovně služeb je k dispozici pouze [modelu virt. jader](sql-database-service-tiers-vcore.md). Aby bylo v souladu s novou architekturu, cenový model se mírně liší od úrovně služeb pro obecné účely nebo pro důležité obchodní informace:
 
 - **COMPUTE**:
 
-  Jednotková cena Hyperškálovatelný výpočetní je na repliku. [Benifit hybridní Azure](https://azure.microsoft.com/pricing/hybrid-benefit/) cena se použije ke čtení replik škálování automaticky. Ve verzi public preview vytvoříme dvě repliky na databázi Hyperškálovatelného ve výchozím nastavení.
+  Jednotková cena Hyperškálovatelný výpočetní je na repliku. [Zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/) cena se použije ke čtení replik škálování automaticky. Ve verzi public preview vytvoříme dvě repliky na databázi Hyperškálovatelného ve výchozím nastavení.
 
 - **Úložiště**:
 
@@ -70,9 +70,9 @@ Velkokapacitní úrovně služeb je k dispozici pouze [modelu virt. jader](sql-d
 
 Další informace o cenách hyperškálovatelný systém, najdete v části [Azure SQL Database – ceny](https://azure.microsoft.com/pricing/details/sql-database/single/)
 
-## <a name="architecture-distributing-functions-to-isolate-capabilities"></a>Architektura: Funkce k izolaci možnosti distribuce
+## <a name="distributed-functions-architecture"></a>Funkce distribuovaná architektura
 
-Na rozdíl od tradičních databázovým strojům, které mají centralizované všechny funkce správy dat v jednom umístění/procesu (i tak volaná distribuované databáze v produkčním prostředí ještě dnes mají několik kopií monolitický modul) odděluje mírou škálování databáze modul zpracování dotazů, kde sémantiku různých datových modulů odchýlení od součásti, které poskytují dlouhodobé úložiště a odolnost pro data. Tímto způsobem, kapacita úložiště můžete bez problémů škálovat Pokud, podle potřeby (počáteční cíl je 100 TB). Repliky jen pro čtení sdílí stejné komponenty výpočetní prostředky, proto žádná kopie dat je potřeba aktivovat nový čitelných replik.
+Na rozdíl od tradičních databázovým strojům, které mají centralizované všechny funkce správy dat v jednom umístění/procesu (i tak volaná distribuované databáze v produkčním prostředí ještě dnes mají několik kopií monolitický modul) odděluje mírou škálování databáze modul zpracování dotazů, kde sémantiku různých datových modulů odchýlení od součásti, které poskytují dlouhodobé úložiště a odolnost pro data. Tímto způsobem, kapacita úložiště můžete bez problémů škálovat Pokud, podle potřeby (počáteční cíl je 100 TB). Repliky jen pro čtení sdílí stejné komponenty výpočetní prostředky, proto žádná kopie dat je potřeba aktivovat nový čitelných replik. Během období preview se podporuje jenom 1 repliky jen pro čtení.
 
 Následující diagram znázorňuje různé typy uzlů v Hyperškálovacím databázi:
 
@@ -104,12 +104,60 @@ Zálohy snímků souborů základní a proto jsou téměř okamžité. Oddělen�
 
 Díky možnosti rozjedete směrem nahoru nebo dolů dalších jen pro čtení výpočetních uzlů Hyperškálovatelného architektura umožňuje významné čtení možnosti škálování a můžete také uvolnit primární výpočetní uzel obsluhuje další požadavky na zápis. Také výpočetní uzly je možné škálovat směrem nahoru nebo dolů rychle vzhledem k architektuře úložiště sdíleného v rámci architektury mírou škálování.
 
+## <a name="create-a-hyperscale-database"></a>Vytvoření Hyperškálovatelného databáze
+
+Velkokapacitní databázi lze vytvořit pomocí [webu Azure portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase) nebo [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create). Velkokapacitní databáze jsou k dispozici pouze prostřednictvím [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md).
+
+Pomocí následujícího příkazu T-SQL vytvoří databázi mírou škálování. Je nutné zadat cíl edition i služby v `CREATE DATABASE` příkazu.
+
+```sql
+-- Create a HyperScale Database
+CREATE DATABASE [HyperScaleDB1] (EDITION = 'HyperScale', SERVICE_OBJECTIVE = 'HS_Gen4_4');
+GO
+```
+
+## <a name="migrate-an-existing-azure-sql-database-to-the-hyperscale-service-tier"></a>Migrovat existující databázi SQL Azure na vrstvu služby hyperškálovatelný systém
+
+Můžete přesunout existující databáze Azure SQL do Hyperškálovatelného pomocí [webu Azure portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) nebo [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update). Ve verzi public preview Toto je jednosměrná migrace. Nelze přesunout databáze z Hyperškálovatelného na jinou úroveň služby. Doporučujeme vytvořit kopii provozní databáze a migrace na Hyperškálovatelného pro testování konceptů (upozorníme).
+
+Pomocí následujícího příkazu T-SQL, přesune databázi do vrstvy velkokapacitní služby. Je nutné zadat cíl edition i služby v `ALTER DATABASE` příkazu.
+
+```sql
+-- Alter a database to make it a HyperScale Database
+ALTER DATABASE [DB2] MODIFY (EDITION = 'HyperScale', SERVICE_OBJECTIVE = 'HS_Gen4_4');
+GO
+```
+
+> [!IMPORTANT]
+> [Transparentní šifrování databáze (TDE)](transparent-data-encryption-azure-sql.md) mělo vypnout před změnou databáze hyperškálovatelný systém hyperškálovatelný systém.
+
+## <a name="connect-to-a-read-scale-replica-of-a-hyperscale-database"></a>Připojíte k replice škálování pro čtení mírou škálování databáze
+
+V Hyperškálovacím databází `ApplicationIntent` v připojovacím řetězci, který klient poskytl argument určuje, zda připojení se směruje do repliky zápisu nebo do sekundární repliky jen pro čtení. Pokud `ApplicationIntent` nastavena na `READONLY` a databáze nemá na sekundární repliku, připojení se budou směrovat na primární repliku a výchozí hodnota je `ReadWrite` chování.
+
+```cmd
+-- Connection string with application intent
+Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationIntent=ReadOnly;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
+```
+
 ## <a name="available-regions"></a>Dostupné oblasti
 
 Úroveň velkokapacitní služby je aktuálně ve verzi public preview a je k dispozici v následujících oblastech Azure: EastUS1 EastUS2, WestUS2, CentralUS, NorthCentralUS, WestEurope, NorthEurope, UKWest, AustraliaEast, AustraliaSouthEast, SouthEastAsia, JapanEast, KoreaCentral
 
+## <a name="known-limitations"></a>Známá omezení
+
+| Problém | Popis |
+| :---- | :--------- |
+| Podokno ManageBackups pro logický server nezobrazují Hyperškálovatelného databáze bude filtrováno ze serveru SQL server ->  | Velkokapacitní má samostatné metodě pro správu zálohování a jako takový dlouhodobé uchovávání dat a bod v nastavení uchovávání záloh čas se nevztahují / nejsou zneplatněny. Podle toho Hyperškálovatelného databází se nezobrazují v podokně Správa zálohování. |
+| Obnovení k určitému bodu v čase | Po migraci databáze do vrstvy služby hyperškálovatelný systém se nepodporuje obnovení v daném okamžiku.|
+| Pokud je soubor databáze roste během migrace z důvodu aktivní úlohy a překročí 1 TB za hranice souboru, se migrace nezdaří | Omezení rizik: <br> – Pokud je to možné, migrace databáze, pokud neexistuje žádné aktualizace zátěži.<br> – Zkuste to znovu migrace, bude úspěšné, tak dlouho, dokud není překročí hranice 1 TB během migrace.|
+| Managed Instance se momentálně nepodporuje. | Aktuálně se nepodporuje. |
+| Migrace do Hyperškálovatelného je aktuálně Jednosměrná operace | Po migraci databáze na Hyperškálovatelného, není možné migrovat přímo do úrovně služeb-mírou škálování. V současné době je jediný způsob, jak migrovat databázi z Hyperškálovatelného do bez Hyperškálovatelného export a import pomocí souborů BACPAC.|
+| Migrace databází pomocí objektů v paměti se aktuálně nepodporuje. | Třeba vyřadit a znovu vytvořen jako objekty bez v paměti před migrací databáze na vrstvu služby Hyperškálovatelného objektů v paměti.
+
 ## <a name="next-steps"></a>Další postup
 
+- Nejčastější dotazy na hyperškálovatelný systém, najdete v části [nejčastější dotazy ohledně Hyperškálovatelného](sql-database-service-tier-hyperscale-faq.md).
 - Informace o úrovních služeb najdete v tématu [úrovně služeb](sql-database-service-tiers.md)
 - Zobrazit [Přehled prostředků omezuje na logickém serveru](sql-database-resource-limits-logical-server.md) informace o omezeních na úrovni serveru a předplatné.
 - Zakoupení modelu omezení pro jednu databázi, naleznete v tématu [založený na virtuálních jádrech zakoupení modelu omezení pro jednu databázi Azure SQL Database](sql-database-vcore-resource-limits-single-databases.md).

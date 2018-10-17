@@ -5,16 +5,16 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 8/1/2018
+ms.date: 10/16/2018
 ms.author: victorh
-ms.openlocfilehash: e4b69e6fa587a5d375a1684c982715f8a7ea8166
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: b0bde770e33a08832e7d3a93a745bbba44b04f87
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579625"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353335"
 ---
-# <a name="configure-app-service-web-apps-with-application-gateway"></a>Konfigurace funkce App Service Web Apps pomocí služby Application Gateway 
+# <a name="configure-app-service-web-apps-with-application-gateway"></a>Konfigurace funkce App Service Web Apps pomocí služby Application Gateway
 
 Služba Application Gateway umožňuje mít webovou aplikaci Azure nebo jinou víceklientskou službu jako členy fondu back-end. V tomto článku zjistíte, jak nakonfigurovat webovou aplikaci Azure pomocí služby Application Gateway. V prvním příkladu se dozvíte, jak nakonfigurovat stávající službu Application Gateway pro použití webové aplikace jako člena fondu back-end. V druhém příkladu se dozvíte, jak vytvořit novou službu Application Gateway s webovou aplikací jako členem fondu back-end.
 
@@ -41,7 +41,7 @@ Add-AzureRmApplicationGatewayProbeConfig -name webappprobe2 -ApplicationGateway 
 # Retrieve the newly added probe
 $probe = Get-AzureRmApplicationGatewayProbeConfig -name webappprobe2 -ApplicationGateway $gw
 
-# Configure an existing backend http settings 
+# Configure an existing backend http settings
 Set-AzureRmApplicationGatewayBackendHttpSettings -Name appGatewayBackendHttpSettings -ApplicationGateway $gw -PickHostNameFromBackendAddress -Port 80 -Protocol http -CookieBasedAffinity Disabled -RequestTimeout 30 -Probe $probe
 
 # Add the web app to the backend pool
@@ -116,7 +116,7 @@ $fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name fipconfig01 -Pu
 $listener = New-AzureRmApplicationGatewayHttpListener -Name listener01 -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp
 
 # Create a new rule
-$rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool 
+$rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
 
 # Define the application gateway SKU to use
 $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
@@ -141,7 +141,7 @@ Id                       : /subscriptions/<subscription_id>/resourceGroups/Conto
 Etag                     : W/"00000d5b-54ed-4907-bae8-99bd5766d0e5"
 ResourceGuid             : 00000000-0000-0000-0000-000000000000
 ProvisioningState        : Succeeded
-Tags                     : 
+Tags                     :
 PublicIpAllocationMethod : Dynamic
 IpAddress                : xx.xx.xxx.xx
 PublicIpAddressVersion   : IPv4
@@ -154,6 +154,12 @@ DnsSettings              : {
                                 "Fqdn": "00000000-0000-xxxx-xxxx-xxxxxxxxxxxx.cloudapp.net"
                             }
 ```
+
+## <a name="restrict-access"></a>Omezení přístupu
+
+Webové aplikace nasazené v těchto příkladech použít veřejné IP adresy, které lze přistupovat přímo z Internetu. To pomáhá při řešení potíží, když se budete učit o nové funkce a zkusit nové věci. Ale pokud máte v úmyslu nasadit funkci do produkčního prostředí, budete chtít přidat další omezení.
+
+Jedním ze způsobů, můžete omezit přístup k webovým aplikacím je použití [omezení statických IP adres služby Azure App Service](../app-service/app-service-ip-restrictions.md). Například můžete omezit webové aplikace tak, aby pouze přijímá provoz z aplikační brány. Pomocí funkce app service IP omezení seznamu application gateway virtuální IP adresy jako adresu pouze s přístupem.
 
 ## <a name="next-steps"></a>Další postup
 

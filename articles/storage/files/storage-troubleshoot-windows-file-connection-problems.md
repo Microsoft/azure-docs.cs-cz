@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 935d4a3ba3fc3199177be5bd4e70f82239c3c971
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: a0a330d3ea7362ffabb20a5d390cee87cbf7d8ff
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39530841"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365401"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Řešení potíží s Azure Files problémy ve Windows
 
@@ -32,16 +32,17 @@ Při pokusu o připojení sdílené složky v místním nebo z jiného datového
 
 ### <a name="cause-1-unencrypted-communication-channel"></a>1. příčina: Nešifrované komunikační kanál
 
-Z bezpečnostních důvodů připojení sdílených složek Azure jsou blokovány, pokud není šifrovaný komunikační kanál, a pokud se pokus o připojení není proveden ze stejné datové centrum, kde jsou umístěné sdílených složek Azure. Komunikační kanál šifrování je k dispozici pouze v případě, že uživatele klientský operační systém podporuje šifrování protokolu SMB.
+Z bezpečnostních důvodů připojení sdílených složek Azure jsou blokovány, pokud není šifrovaný komunikační kanál, a pokud se pokus o připojení není proveden ze stejné datové centrum, kde jsou umístěné sdílených složek Azure. Nezašifrované připojení ve stejném datacentru je taky možné zablokovat Pokud [vyžadovat zabezpečený přenos](https://docs.microsoft.com/en-us/azure/storage/common/storage-require-secure-transfer) pro účet úložiště je povolené nastavení. Komunikační kanál šifrování je k dispozici pouze v případě, že uživatele klientský operační systém podporuje šifrování protokolu SMB.
 
 Windows 8, Windows Server 2012 a novějších verzích každý systém vyjednávat požadavky, které obsahují protokolu SMB 3.0, který podporuje šifrování.
 
 ### <a name="solution-for-cause-1"></a>Řešení příčiny 1
 
-Připojení z klienta, která provádí jednu z následujících akcí:
+1. Ověřte, [vyžadovat zabezpečený přenos](https://docs.microsoft.com/en-us/azure/storage/common/storage-require-secure-transfer) je zakázáno v účtu úložiště.
+2. Připojení z klienta, která provádí jednu z následujících akcí:
 
-- Splňuje požadavky na systém Windows 8 a Windows Server 2012 nebo novější verze
-- Připojení z virtuálního počítače ve stejném datacentru jako účet služby Azure storage, který se používá pro sdílené složky Azure
+    - Splňuje požadavky na systém Windows 8 a Windows Server 2012 nebo novější verze
+    - Připojení z virtuálního počítače ve stejném datacentru jako účet služby Azure storage, který se používá pro sdílené složky Azure
 
 ### <a name="cause-2-port-445-is-blocked"></a>2. příčina: Port 445 blokovaný.
 

@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: erhopf
-ms.openlocfilehash: 3d03cd6a5cceb805ed8ee34548bd1a3973e9d78b
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 5a19366f6aeec2422ec8671ba3c32f642b5e01ac
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167080"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49361432"
 ---
 # <a name="about-the-speech-to-text-api"></a>O Speech to Text API
 
@@ -38,7 +38,7 @@ ms.locfileid: "49167080"
 
 ## <a name="api-capabilities"></a>Funkce rozhraní API
 
-Některé možnosti **převod řeči na Text** rozhraní API – zejména v oblasti Vlastní nastavení – jsou k dispozici prostřednictvím REST. V následující tabulce najdete souhrn možností jednotlivých metod přístupu k rozhraní API. 
+Některé z možností **převod řeči na Text** rozhraní API, zejména v oblasti Vlastní nastavení, jsou k dispozici prostřednictvím REST. V následující tabulce najdete souhrn možností jednotlivých metod přístupu k rozhraní API. Úplný seznam možností a podrobnosti o rozhraní API najdete v tématu [Swagger odkaz](https://westus.cris.ai/swagger/ui/index).
 
 | Případ použití | REST | Sady SDK |
 |-----|-----|-----|----|
@@ -55,7 +55,7 @@ Některé možnosti **převod řeči na Text** rozhraní API – zejména v obla
 | Vytvoření a správa model nasazení | Ano | Ne |
 
 > [!NOTE]
-> Rozhraní REST API implementuje tohoto omezení požadavků rozhraní API 25 na 5 sekund. Zpráva hearders informuje omezení
+> Rozhraní REST API implementuje tohoto omezení požadavků rozhraní API 25 na 5 sekund. Záhlaví zpráv bude informovat omezení
 
 \* *Služba LUIS záměry a entity, může být odvozena pomocí samostatné předplatné služby LUIS. S tímto předplatným sady SDK můžete zavolat LUIS a poskytnout výsledky entit a účel, jakož i řeči přepisů. Pomocí rozhraní REST API, můžete volat LUIS sami sebe k odvození záměry a entity ve vašem předplatném služby LUIS.*
 

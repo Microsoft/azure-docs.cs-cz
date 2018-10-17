@@ -1,0 +1,37 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 74743b3e9e32a844098f3097e3c036b38c391c02
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49322991"
+documentType: LandingData
+title: Dokumentace ke službě Azure Digital Twins
+metadata:
+  title: Dokumentace ke službě Azure Digital Twins – kurzy, reference k rozhraní API | Microsoft Docs
+  description: Azure Digital Twins můžete využít k vytváření inteligentních prostorových řešení.
+  author: dsk-2015
+  manager: timlt
+  ms.service: digital-twins
+  services: digital-twins
+  ms.topic: landing-page
+  ms.date: 10/15/2018
+  ms.author: dkshir
+abstract:
+  description: Naučte se využívat Azure Digital Twins k propojování osob, míst a věcí a sestavování řešení IoT s využitím prostorové inteligence. Projděte si rychlé zprovoznění a kurzy, ve kterých můžete monitorovat imaginární inteligentní budovu, seznámit se podrobně s koncepcí a vytvořit řešení IoT další generace, které modeluje vaše fyzické prostředí.
+sections:
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: Zjistěte, jak <a href="quickstart-view-occupancy-dotnet">pomocí ukázek Azure Digital Twins v .NET najít dostupné místnosti s dobrou kvalitou vzduchu</a>.
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: Zjistěte, jak upravit a využít řešení Azure Digital Twins k monitorování vašich objektů.
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/digital-twins/tutorial-facilities-setup">Zřízení ukázkové budovy</a>
+    - html: <a href="/azure/digital-twins/tutorial-facilities-udf">Monitorování podmínek ve vaší budově</a>
+    - html: <a href="/azure/digital-twins/tutorial-facilities-events">Příjem oznámení z vaší budovy</a>
+    - html: <a href="/azure/digital-twins/tutorial-facilities-analyze">Analýza událostí z vaší budovy</a>

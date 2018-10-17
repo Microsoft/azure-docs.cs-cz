@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 79613ab7a0e96405abbb3b380800f5ba951c3bdc
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 44fc04d4788c4381a4922f1335c393e03045900e
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092690"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352389"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Funkce Always Encrypted: Ochrana citlivých dat a ukládání šifrovacích klíčů ve službě Azure Key Vault
 
@@ -89,7 +89,7 @@ Budete potřebovat připojení řetězec později v tomto kurzu, takže po vytvo
 1. Přejděte na **databází SQL** > **Clinic** > **zobrazit databázové připojovací řetězce**.
 2. Zkopírujte připojovací řetězec pro **ADO.NET**.
    
-    ![Zkopírujte připojovací řetězec](./media/sql-database-always-encrypted-azure-key-vault/connection-strings.png)
+    ![Zkopírování připojovacího řetězce](./media/sql-database-always-encrypted-azure-key-vault/connection-strings.png)
 
 ## <a name="connect-to-the-database-with-ssms"></a>Připojit se k databázi pomocí SSMS
 Otevřete SSMS a připojte se k serveru databáze Clinic.
@@ -97,7 +97,7 @@ Otevřete SSMS a připojte se k serveru databáze Clinic.
 1. Otevřete aplikaci SSMS. (Přejít na **připojit** > **databázový stroj** otevřít **připojit k serveru** okno, pokud není otevřený.)
 2. Zadejte název serveru a přihlašovací údaje. Název serveru najdete v okně databáze SQL a v připojovacím řetězci jste si zkopírovali dříve. Zadejte úplný název serveru, včetně *database.windows.net*.
    
-    ![Zkopírujte připojovací řetězec](./media/sql-database-always-encrypted-azure-key-vault/ssms-connect.png)
+    ![Zkopírování připojovacího řetězce](./media/sql-database-always-encrypted-azure-key-vault/ssms-connect.png)
 
 Pokud **nové pravidlo brány Firewall** otevře se okno přihlášení do Azure a umožňují SSMS vytvořit za vás nové pravidlo brány firewall.
 
@@ -605,7 +605,7 @@ Uvidíte, že šifrované sloupce nebudou obsahovat žádná data ve formátu pr
 
    ![Novou konzolovou aplikaci](./media/sql-database-always-encrypted-azure-key-vault/ssms-encrypted.png)
 
-Použití SSMS k přístupu k datům ve formátu prostého textu, je nejprve potřeba zajistit, že uživatel má příslušná oprávnění ke službě Azure Key Vault: *získat*, *unwrapKey*, a *ověřte*. Podrobné informace najdete v tématu [vytvořit a hlavních klíčů sloupce pro Store (Always Encrypted)](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted?view=sql-server-2017).
+Použití SSMS k přístupu k datům ve formátu prostého textu, je nejprve potřeba zajistit, že uživatel má příslušná oprávnění ke službě Azure Key Vault: *získat*, *unwrapKey*, a *ověřte*. Podrobné informace najdete v tématu [vytvořit a hlavních klíčů sloupce pro Store (Always Encrypted)](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted?view=sql-server-2017).
 
 Pak přidejte *nastavení šifrování sloupce = povoleno* parametr během připojení.
 

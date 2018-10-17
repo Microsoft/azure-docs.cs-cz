@@ -12,25 +12,35 @@ ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: a46192c79d32ddf5f178541c3be128893e8f6109
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: ee3b8c274b769cd570d70c5e0dfae939e030ecf5
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159937"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352425"
 ---
 # <a name="manage-file-space-in-azure-sql-database"></a>Správa místo souborů ve službě Azure SQL Database
 Tento článek popisuje různé druhy prostoru úložiště v Azure SQL Database a kroky, které mohou být provedeny, když přidělené místo souborů databáze a elastické fondy je potřeba explicitně spravovat.
 
 ## <a name="overview"></a>Přehled
 
-Většina metrik úložiště prostor zobrazí portálu Azure portal a následující rozhraní API ve službě Azure SQL Database, určovat počet použitých datových stránek pro databáze a elastické fondy:
+Ve službě Azure SQL Database existují vzorce úlohy kde přidělení podkladové datové soubory pro databáze, mívá větší než velikost stránek používaná data. Tato situace může nastat, když používá zvyšuje prostor a následně se odstraní data. Je to proto přidělené místo souboru neuvolní automaticky, když se odstraní data.
+
+Monitorování využití místa na soubor a zmenšení souborů dat může být nutné v následujících scénářích:
+- Maximální velikost fondu dosáhne soubor místo přidělené pro jeho databáze, povolit nárůst dat v elastickém fondu.
+- Povolte snížení maximální velikost elastický fond nebo izolovanou databázi.
+- Povolit změnu elastický fond nebo izolovanou databázi na jinou službu vrstvy nebo úrovně výkonu se nižší maximální velikost.
+
+### <a name="monitoring-file-space-usage"></a>Monitorování využití místa na souboru
+Většina metrik úložiště prostor zobrazí portálu Azure portal a následující rozhraní API měřit pouze velikost stránky používaná data:
 - Metriky rozhraní API využívající Azure Resource Manager včetně Powershellu [get-metrics](https://docs.microsoft.com/powershell/module/azurerm.insights/get-azurermmetric)
 - T-SQL: [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
+
+Ale následující rozhraní API také změřte dobu potřebnou pro místo přidělené pro databáze a elastické fondy:
 - T-SQL: [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
 - T-SQL: [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
-Existují vzorce úlohy kde přidělení podkladové datové soubory pro databáze, mívá větší než velikost stránek používaná data.  Tato situace může nastat, když používá zvyšuje prostor a následně se odstraní data.  Je to proto přidělené místo souboru neuvolní automaticky, když se odstraní data.  V takových scénářích do přiděleného místa pro databáze nebo fondu může podporované limity a zabránit nárůstu objemu dat nebo zabránit úroveň služby compute změny velikosti a vyžadují zmenšení datové soubory ke zmírnění.
+### <a name="shrinking-data-files"></a>Probíhá zmenšování souborů dat
 
 Služba SQL DB automaticky nezmenší datové soubory uvolnění nevyužívaného místa přiděleného kvůli možnému dopadu na výkon databáze.  Zákazníci však může zmenšit datových souborů prostřednictvím samoobslužné v době podle vlastního uvážení pomocí následujících kroků popsaných v [Reclaim nevyužité přidělené místo na](#reclaim-unused-allocated-space). 
 

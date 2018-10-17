@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
-ms.openlocfilehash: f6c2540d8f0bb49491a428b085d20067a36d970a
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: d9db2182c20663cc048a5c9501df2586db25d2f3
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44724014"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364927"
 ---
-# <a name="how-to-select-permissions-for-a-given-api"></a>Jak vybrat oprávnění pro dané rozhraní API
+# <a name="how-to-configure-endpoints"></a>Konfigurace koncových bodů
 
 Můžete najít koncové body ověřování pro vaši aplikaci v [webu Azure portal](https://portal.azure.com).
 

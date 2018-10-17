@@ -1,28 +1,29 @@
 ---
-title: Projekt odpovědí vyhledávací fakt dotaz - kognitivní služby Microsoft | Microsoft Docs
-description: Dotazy na fakta týkající se použití hledání odpovědí projektu
+title: 'Rychlý start: Dotazy na fakta v Project Answer Search'
+titlesuffix: Azure Cognitive Services
+description: Dotazy na fakta pomocí Project Answer Search
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-answer-search
-ms.topic: article
+ms.component: project-answer-search
+ms.topic: quickstart
 ms.date: 04/16/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 0a9d1925d5ae26f40824676fbebdcb0ffc450c53
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.author: rosh
+ms.openlocfilehash: ae8a42b95df70cff9cb845d4d553fbbb33cbdec9
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343223"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868330"
 ---
-# <a name="query-for-facts"></a>Dotaz pro fakty
+# <a name="quickstart-query-for-facts"></a>Rychlý start: Dotaz na fakta
 
-Pokud dotaz je pro fakt, jako je například datum nebo osobní znalostní báze, může obsahovat odpověď `facts` odpovědi. Fakt odpovědi obsahovat relevantní výsledky z odstavců v dokumentech webové extrahovat.  Tyto dotazy vždy vrátí webové stránky, a [fakty](fact-queries.md) nebo [entity](entity-queries.md) jsou závislé na dotazu.
+Pokud se dotaz týká faktu, jako je například datum nebo identifikovatelná znalost, může odpověď obsahovat odpovědi typu `facts`. Odpovědi faktů obsahují relevantní výsledky extrahované z odstavců ve webových dokumentech.  Tyto dotazy vždycky vrací webové stránky. [Fakta](fact-queries.md) nebo [entity](entity-queries.md) jsou závislé na dotazu.
 
-Dotazy, jako je například valentines + 2016, když + je + Ramadánu jsou považovány za dotazů souvisejících s datem. Pokud Bing zjistí, že dotaz je souvisejících s datem, obsahuje odpovědi `facts` odpovědí. 
+Dotazy, jako je například valentines+2016 nebo when+is+easter jsou považovány za dotazy související s datem. Pokud Bing určí, že dotaz souvisí s datem, bude odpověď obsahovat odpověď typu `facts`. 
 
-Následující příklad je datum související `facts` odpovědí. 
+V následujícím příkladu je odpověď typu `facts` související s datem. 
 
 **Dotaz:**
 ````
@@ -30,7 +31,7 @@ https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=valentines+2016
 
 ````
 
-**Odpověď:** `subjectName` pole obsahuje verze zobrazení dotazu uživatele, který můžete použít jako popisek při zobrazení fakt. Pokud řetězec dotazu je valentines + 2016, Bing může změnit Valentýnovi den 2016. Pole popisu obsahuje fakt.
+**Odpověď:** Pole `subjectName` obsahuje zobrazenou verzi dotazu uživatele, kterou můžete použít jako popisek při zobrazení faktu. Pokud je řetězec dotazu valentines+2016, Bing jej může změnit na Valentine's Day 2016. Pole description obsahuje fakt.
 
 ````
 {   
@@ -58,7 +59,7 @@ https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=valentines+2016
 
 ````
 
-Dotaz "Proč je sky blue?" Vrátí příkladem odpovědí se související znalostní báze.
+Dotaz "Why is the sky blue?" vrátí příklad odpovědi na znalostní otázku.
 
 **Dotaz:**
 
@@ -67,7 +68,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=why+is+the+s
 
 ````
 
-**Odpověď:** `value/description` pole obsahuje vědomí nebo dotazem požadované informace.
+**Odpověď:** Pole `value/description` obsahuje znalosti nebo informace vyžádané dotazem.
 
 ````
   "facts": {
@@ -114,13 +115,13 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=why+is+the+s
 ````
 
 ## <a name="tabular-data"></a>Tabulková data
-V některých případech se může vracet fakty jako `_type: StructuredValue/TabularData`. Následující dotaz načte tabulkové data s kontrastní informace o kávy a čaje.
+V některých případech můžou být data vrácena jako typ `_type: StructuredValue/TabularData`. Následující dotaz načte tabulková data s informacemi o rozdílech mezi kávou a čajem.
 
 ````
 https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=coffee+vs+tea&mkt=en-us 
 
 ````
-`facts` Výsledky obsahovat následující řádky a buňky:
+Výsledky `facts` obsahují následující řádky a buňky:
 ````
     "value": [
       {
@@ -197,8 +198,8 @@ https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=coffee+vs+tea&mkt
 
 ````
 
-## <a name="next-steps"></a>Další postup
-- [Rychlý start C#](c-sharp-quickstart.md)
-- [Rychlý start Java](java-quickstart.md)
-- [Rychlé spuštění uzlu](node-quickstart.md)
-- [Rychlý start Python](python-quickstart.md)
+## <a name="next-steps"></a>Další kroky
+- [Rychlý start jazyka C#](c-sharp-quickstart.md)
+- [Rychlý start Javy](java-quickstart.md)
+- [Rychlý start Nodu](node-quickstart.md)
+- [Rychlý start Pythonu](python-quickstart.md)

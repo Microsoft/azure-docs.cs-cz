@@ -97,6 +97,8 @@ items:
         href: sql-database-service-tiers-general-purpose-business-critical.md
       - name: Hyperškálování
         href: sql-database-service-tier-hyperscale.md
+      - name: Nejčastější dotazy k hyperškálování
+        href: sql-database-service-tier-hyperscale-faq.md
     - name: Úrovně služeb DTU
       href: sql-database-service-tiers-dtu.md
     - name: Předplacení záložní kapacity
@@ -161,6 +163,8 @@ items:
       href: sql-database-business-continuity.md
     - name: Vysoká dostupnost
       href: sql-database-high-availability.md
+    - name: Zrychlené obnovení databáze
+      href: sql-database-accelerated-database-recovery.md
     - name: Zálohování databáze
       href: sql-database-automated-backups.md
     - name: Dlouhodobé uchovávání záloh
@@ -179,13 +183,13 @@ items:
         href: sql-database-geo-replication-portal.md
       - name: Konfigurace zabezpečení pro repliky
         href: sql-database-geo-replication-security-config.md
-    - name: Obnovení databáze
+    - name: Možnosti obnovení databáze
       items:
-      - name: Obnovení databáze
+      - name: Obnovení pomocí záloh
         href: sql-database-recovery-using-backups.md
-      - name: Zotavení z výpadku
+      - name: Pokyny k zotavení po výpadku
         href: sql-database-disaster-recovery.md
-      - name: Provedení postupu zotavení
+      - name: Postupy zotavení
         href: sql-database-disaster-recovery-drills.md
     - name: Návrh aplikací
       items:
@@ -319,7 +323,7 @@ items:
         href: sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md
   - name: Porovnání funkcí SQL
     href: sql-database-features.md
-  - name: Výkon a ladění
+  - name: Výkon a sledování
     items:
     - name: Inteligentní výkon
       items:
@@ -630,9 +634,9 @@ items:
     href: /azure/architecture/
   - name: Příběhy zákazníků
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: abafd9d9022b306ce090b618ecc9477cd95c714e
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: e39e94ccbf1da42b10cd8c618cd27c2a7eb214de
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869240"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353506"

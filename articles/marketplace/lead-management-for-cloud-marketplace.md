@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: 47333a7b5ad7d76ee8bbac19884ba8246eadc05e
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 9d2745f1211aa6f818f89d9597867e1b3b2de03f
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855778"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362649"
 ---
 # <a name="lead-management-for-cloud-marketplace"></a>Vedoucí správy pro cloudové Tržiště
 
@@ -214,7 +214,7 @@ Je možné, že je koncový uživatel e-mailovou doménu z .edu. Z důvodů ochr
 
  **Konfiguroval jsem tabulky/Azure BLOB Azure jako cíl Moje potenciálních zákazníků, jak lze zobrazit potenciální zákazníky?** 
 
-Se dá dostat objektů blob nebo tabulek z webu Azure Portal nebo si můžete stáhnout a nainstalovat [Průzkumníka služby Azure Storage](https://azure.microsoft.com/en-us/features/storage-explorer/) zdarma, chcete-li zobrazit svůj účet úložiště Azure tabulek/objektů BLOB. 
+Se dá dostat objektů blob nebo tabulek z webu Azure Portal nebo si můžete stáhnout a nainstalovat [Průzkumníka služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) zdarma, chcete-li zobrazit svůj účet úložiště Azure tabulek/objektů BLOB. 
 
 
 **Konfiguroval jsem Azure Table jako cíl Moje potenciálních zákazníků, může mohu dostat oznámení nového zájemce odesílají Marketplace?** 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: 980a183261c394bd83292170ab133fe17229013d
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 11b399bdbbbe92d1e1544f4cbae0824140ce52c1
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42055040"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364502"
 ---
 # <a name="manage-azure-redis-cache-with-azure-powershell"></a>Správa Azure Redis Cache s využitím Azure Powershellu
 > [!div class="op_single_selector"]
@@ -783,7 +783,7 @@ Další informace o použití prostředí Windows PowerShell s Azure, najdete v 
 * [Azure Redis Cache rutiny dokumentaci na webu MSDN](https://docs.microsoft.com/powershell/module/azurerm.rediscache/?view=azurermps-6.6.0)
 * [Rutiny Azure Resource Manageru](http://go.microsoft.com/fwlink/?LinkID=394765): Zjistěte, jak pomocí rutin v modulu Azure Resource Manageru.
 * [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-template-deploy-portal.md): Zjistěte, jak vytvářet a spravovat skupiny prostředků na webu Azure Portal.
-* [Blog o Azure](https://azure.microsoft.com/en-us/blog/): informace o nových funkcích v Azure.
+* [Blog o Azure](https://azure.microsoft.com/blog/): informace o nových funkcích v Azure.
 * [Blog o Windows Powershellu](http://blogs.msdn.com/powershell): informace o nových funkcích v prostředí Windows PowerShell.
 * ["Hey, Scripting Guy!" Blog](http://blogs.technet.com/b/heyscriptingguy/): Získejte skutečné tipy a triky od komunity prostředí Windows PowerShell.
 

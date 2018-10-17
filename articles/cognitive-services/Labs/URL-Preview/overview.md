@@ -1,25 +1,26 @@
 ---
-title: Co je náhled adresy URL projektu? -Microsoft kognitivní služby | Microsoft Docs
-description: Úvod do verze Preview adresa URL projektu.
+title: Co je Project URL Preview?
+titlesuffix: Azure Cognitive Services
+description: Úvod k Project URL Preview.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: overview
 ms.date: 03/16/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 6b486e0ab4092bef4fe829a5f166311a572a2900
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.author: rosh
+ms.openlocfilehash: 5d0b8260bf1c58af915c1be18c32cec678f4f09c
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343233"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869427"
 ---
-# <a name="what-is-project-url-preview"></a>Co je náhled adresy URL projektu?
-Koncový bod adresy URL Preview přebírá parametr adresy URL dotazu a vrátí odpověď JSON s názvem cílový prostředek, stručný popis a odkaz na obrázek zobrazíte v náhledu. Odpověď obsahuje také [isFamilyFriendly](url-preview-reference.md#query-parameters) příznak označující, zda adresa URL obsahuje neplatný obsah pro dospělé, nelegální či jiných. 
+# <a name="what-is-project-url-preview"></a>Co je Project URL Preview?
+Koncový bod rozhraní URL Preview přebírá parametr dotazu v podobě adresy URL a vrací odpověď ve formátu JSON s názvem cílového prostředku, stručným popisem a odkazem na obrázek, který se zobrazí v náhledu. Odpověď obsahuje také příznak [isFamilyFriendly](url-preview-reference.md#query-parameters), který označuje, zda se na adrese URL nachází obsah pro dospělé, obsah porušující autorská práva nebo jiný nelegální obsah. 
 
-Chcete-li získat adresu URL náhledu výsledků, odešlete požadavek GET a zahrnout *Ocp-Apim-Subscription-Key* hlavička s platný token:  
+Výsledky náhledu adresy URL získáte tak, že pošlete požadavek GET, do kterého zahrnete hlavičku *Ocp-Apim-Subscription-Key* s platným tokenem:  
 ```
 https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=https://swiftkey.com
 
@@ -46,22 +47,22 @@ X-MSEdge-Ref: Ref A: 3CC74C94769440C0851D9DF0869FCE7F Ref B: CO1EDGE0315 Ref C: 
 ````
 ## <a name="scenarios"></a>Scénáře 
 
-Rozhraní API URL Preview podporuje stručný popis webové prostředky. Vývojáři ji použít k vytváření bohatě preview prostředí.  Uživatelé mohou sdílet nebo bookmark webové stránky, zprávy, blogy, fóra, atd. Toto rozhraní API můžete použít také pro obsahu přerušování.    
+Rozhraní API URL Preview podporuje stručné popisy webových prostředků. Vývojářům to umožňuje vytvářet podrobné náhledy.  Uživatelé můžou sdílet nebo si ukládat do záložek webové stránky, zprávy, blogy, fóra atd. Toto rozhraní API také můžete použít k moderování obsahu.    
 
-Aplikací pomocí adresy URL Preview odesílají webové požadavky na koncový bod s dotazem přiřazené k adrese URL si verzi preview.  Odpověď JSON obsahuje informace o verzi preview: název, popis prostředku, *familyFriendly* příznak a odkazy, které poskytují přístup k reprezentativní bitové kopie a k dokončení prostředek online. 
+Aplikace pomocí rozhraní URL Preview odesílají do koncového bodu webové požadavky, které obsahují dotaz přiřazený k adrese URL, jejíž náhled chtějí získat.  Odpověď ve formátu JSON obsahuje informace náhledu: název, popis prostředku, příznak *familyFriendly* a odkazy, které poskytují přístup k reprezentativnímu obrázku a úplnému prostředku online. 
 
 ## <a name="terms-of-use"></a>Podmínky použití
-Použijte pouze data z verze Preview adresa URL projektu můžete zobrazit náhled fragmenty a miniatury s hypertextovým odkazem na jejich zdrojových lokalit ve sdílení na sociálních médií, chatovací robota nebo podobné nabídky URL iniciované koncovým uživatelem. D nelze zkopírovat, uložit, nebo žádná data, které jste získali od Preview adresa URL projektu do mezipaměti. Případném dalším sdílení dodržovat všechny žádosti zakázat verze Preview, které se mohou zobrazit od vlastníků webu nebo obsahu.
+Při sdílení adres URL iniciovaných koncovým uživatelem na sociálních sítích, v chatbotech nebo podobných službách používejte k zobrazení fragmentů náhledu a náhledových obrázků odkazujících na zdrojové stránky pouze data z rozhraní Project URL Preview. Nekopírujte a neukládejte (ani do mezipaměti) žádná data, která z rozhraní Project URL Preview obdržíte. Respektujte všechny případné požadavky na zákaz náhledů, které obdržíte od webových stránek nebo vlastníků obsahu.
 
-Můžete nebo třetích stran vaším jménem nemusí používat, zachovat, ukládat, mezipaměti, sdílet, nebo distribuovat všechna data z rozhraní API Preview adresu URL pro testování, vývoj, školení, distribuci nebo zpřístupnění jakoukoli službu, jiných společností než Microsoft nebo funkci. 
+Vy ani třetí strana jednající vaším jménem nesmí používat, uchovávat, ukládat, ukládat do mezipaměti, sdílet ani distribuovat jakákoliv data z rozhraní API URL Preview pro účely testování, vývoje, školení, distribuce ani zpřístupnění služeb nebo funkcí jiných společností než Microsoft. 
 
 ## <a name="throttling-requests"></a>Omezování požadavků
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../../includes/cognitive-services-bing-throttling-requests.md)]
 
-## <a name="next-steps"></a>Další postup
-- [Rychlý start C#](csharp.md)
-- [Rychlý start Java](java-quickstart.md)
-- [Rychlý start JavaScript](javascript.md)
-- [Rychlé spuštění uzlu](node-quickstart.md)
-- [Rychlý start Python](python-quickstart.md)
+## <a name="next-steps"></a>Další kroky
+- [Rychlý start jazyka C#](csharp.md)
+- [Rychlý start Javy](java-quickstart.md)
+- [Rychlý start JavaScriptu](javascript.md)
+- [Rychlý start Nodu](node-quickstart.md)
+- [Rychlý start Pythonu](python-quickstart.md)

@@ -4,22 +4,21 @@ description: Zpráva k vydání verze služby Media Services
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
-ms.assetid: 3ca2d7af-1cf0-45fa-9585-3b73f3ee057d
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: media
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/24/2018
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: cdfd19f2dfd599eacaa0759b63c94767e760a874
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 860d28aa37f37ed24346e2fba635b9436684114c
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42059413"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353778"
 ---
 # <a name="azure-media-services-release-notes"></a>Poznámky k verzi Azure Media Services
 Tyto poznámky k verzi pro Azure Media Services shrnují změny z předchozích verzí a známých problémů.
@@ -387,7 +386,7 @@ Další informace najdete v tématu [Logika opakování v sadě Media Services S
 
 ## <a id="april_changes_14"></a>Kodér vydání duben 2014
 ### <a name="april_14_enocer_changes"></a>Kodér Media Services aktualizace
-* Přidala se podpora pro ingestování AVI, soubory, které jsou vytvořeny pomocí editoru nelineárních EDIUS travní Valley. V tomto procesu video lehce komprimovaný pomocí tráva Valley HQ a HQX kodek. Další informace najdete v tématu [travní Valley oznamuje EDIUS 7 vysílání datového proudu prostřednictvím cloudu].
+* Přidala se podpora pro ingestování AVI, soubory, které jsou vytvořeny pomocí editoru nelineárních EDIUS travní Valley. V tomto procesu video lehce komprimovaný pomocí tráva Valley HQ a HQX kodek. Další informace najdete v tématu [Tráva Valley oznamuje EDIUS 7 vysílání datového proudu prostřednictvím cloudu].
 *  Chcete-li určit zásady vytváření názvů pro soubory vytvořené jazykem kodér Media Services přidala se podpora. Další informace najdete v tématu [kodér Media Services ovládací prvek výstupní názvy souborů](http://msdn.microsoft.com/library/azure/dn303341.aspx).
 *  Byla přidána podpora pro videa nebo zvukový překrytí. Další informace najdete v tématu [vytvořit překrytí](http://msdn.microsoft.com/library/azure/dn640496.aspx).
 *  Přidala se podpora Pokud chcete spojit dohromady více segmentů videa. Další informace najdete v tématu [spojit videa segmenty](http://msdn.microsoft.com/library/azure/dn640504.aspx).
@@ -534,9 +533,6 @@ Následující funkce byla v listopadu verzi sady SDK:
   
     * Přidala se asynchronní podpora pro všechny metody.
 
-## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
-[!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
-
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
@@ -564,7 +560,7 @@ Následující funkce byla v listopadu verzi sady SDK:
 [Nick Drouin's blog]: http://blog-ndrouin.azurewebsites.net/hls-v3-new-old-thing/
 [Protect Smooth Streaming with PlayReady]: http://msdn.microsoft.com/library/azure/dn189154.aspx
 [Logika opakování v sadě Media Services SDK pro .NET]: http://msdn.microsoft.com/library/azure/dn745650.aspx
-[travní Valley oznamuje EDIUS 7 vysílání datového proudu prostřednictvím cloudu]: http://www.streamingmedia.com/Producer/Articles/ReadArticle.aspx?ArticleID=96351&utm_source=dlvr.it&utm_medium=twitter
+[Tráva Valley oznamuje EDIUS 7 vysílání datového proudu prostřednictvím cloudu]: http://www.streamingmedia.com/Producer/Articles/ReadArticle.aspx?ArticleID=96351&utm_source=dlvr.it&utm_medium=twitter
 [Control Media Services Encoder output file names]: http://msdn.microsoft.com/library/azure/dn303341.aspx
 [Create overlays]: http://msdn.microsoft.com/library/azure/dn640496.aspx
 [Stitch video segments]: http://msdn.microsoft.com/library/azure/dn640504.aspx

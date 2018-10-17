@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 19351d31331431e3b5137676061aadc681c496a7
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 4c5f99ed9d20076e3e25ebca261253e576572786
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166623"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354253"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Rozhraní API protokolu HTTP v Durable Functions (Azure Functions)
 
@@ -92,6 +92,9 @@ Všechna rozhraní API HTTP implementováno rozšíření zkuste následující 
 | systemKey  | Řetězec dotazu    | Autorizační klíč požadované k vyvolání rozhraní API. |
 | showHistory| Řetězec dotazu    | Volitelný parametr. Pokud hodnotu `true`, historie spouštění Orchestrace budou zahrnuty do datové části odpovědi.| 
 | showHistoryOutput| Řetězec dotazu    | Volitelný parametr. Pokud hodnotu `true`, že výstupem aktivity budou zahrnuty do historie spouštění Orchestrace.| 
+| createdTimeFrom  | Řetězec dotazu    | Volitelný parametr. -Li zadána, filtruje seznam vrácená instance, které byly vytvořeny na nebo za dané časové razítko ISO8601.|
+| createdTimeTo    | Řetězec dotazu    | Volitelný parametr. -Li zadána, filtruje seznam vrácená instance, které byly vytvořeny pozici nebo před daným časovým razítkem ISO8601.|
+| runtimeStatus    | Řetězec dotazu    | Volitelný parametr. -Li zadána, filtry seznamu vrácených instancí na základě jejich stav modulu runtime. Pokud chcete zobrazit seznam hodnot stavu modulu runtime je to možné, naleznete v tématu [dotazování instance](durable-functions-instance-management.md) tématu. |
 
 `systemKey` automaticky generované tímto hostitelem Azure Functions je autorizačního klíče. Konkrétně uděluje přístup k rozšíření trvalý úlohy rozhraní API a je možné spravovat stejným způsobem jako [jiných autorizace klíčů](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API). Nejjednodušší způsob, jak zjistit `systemKey` hodnotu s použitím `CreateCheckStatusResponse` API již bylo zmíněno dříve.
 
@@ -194,6 +197,7 @@ Tady je datovou část odpovědi příklad včetně Orchestrace provádění his
 
 **HTTP 202** odpovědi také zahrnují **umístění** hlavička odpovědi, který odkazuje na stejnou adresu URL jako `statusQueryGetUri` pole již bylo zmíněno dříve.
 
+
 ### <a name="get-all-instances-status"></a>Získat stav všech instancí
 
 Dotazovat můžete také stav všech instancí. Odeberte `instanceId` z požadavku "Získat stav instance". Parametry jsou stejné jako "Get stav instance." 
@@ -213,6 +217,22 @@ Formát Functions 2.0 má stejné parametry, ale mírně odlišné předpony adr
 
 ```http
 GET /runtime/webhooks/durabletask/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}
+```
+
+#### <a name="request-with-filters"></a>Žádost s filtry
+
+Můžete filtrovat žádosti.
+
+Pro funkce 1.0 formát požadavku je následující:
+
+```http
+GET /admin/extensions/DurableTaskExtension/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}&createdTimeFrom={createdTimeFrom}&createdTimeTo={createdTimeTo}&runtimeStatus={runtimeStatus,runtimeStatus,...}
+```
+
+Formát Functions 2.0 má stejné parametry, ale mírně odlišné předpony adresy URL: 
+
+```http
+GET /runtime/webhooks/durableTask/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}&createdTimeFrom={createdTimeFrom}&createdTimeTo={createdTimeTo}&runtimeStatus={runtimeStatus,runtimeStatus,...}
 ```
 
 #### <a name="response"></a>Odpověď
@@ -271,6 +291,7 @@ Tady je příklad z datové části odpovědi včetně stavové Orchestrace (ve 
 > [!NOTE]
 > Tato operace může být velmi náročné z hlediska vstupně-výstupních operací Azure Storage, pokud obsahuje mnoho řádků v tabulce instancí. Další podrobnosti o instanci tabulky najdete v [výkon a škálování v Durable Functions (Azure Functions)](https://docs.microsoft.com/azure/azure-functions/durable-functions-perf-and-scale#instances-table) dokumentaci.
 > 
+
 
 ### <a name="raise-event"></a>Vyvolání události
 

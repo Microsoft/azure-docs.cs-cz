@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/10/2018
+ms.date: 10/15/2018
 ms.author: barclayn
-ms.openlocfilehash: af4ab892ab84ba2f1a19e72710f23ce5ba1232f9
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: b5e235221d34434b908d605c9077ae2fede2fe94
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44163103"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365609"
 ---
 # <a name="get-started-with-azure-key-vault"></a>Začínáme s Azure Key Vault
 Tento článek vám pomůže začít s Azure Key Vault pomocí PowerShellu a provede vás těmito aktivitami:
@@ -32,9 +32,9 @@ Azure Key Vault je dostupný ve většině oblastí. Další informace najdete n
 Pokyny pro rozhraní příkazového řádku pro různé platformy najdete v [tomto ekvivalentním kurzu](key-vault-manage-with-cli2.md).
 
 ## <a name="requirements"></a>Požadavky
-Než budete v tomto článku pokračovat dál, potvrďte, že máte:
+Než budete pokračovat, zkontrolujte, že máte:
 
-- **Předplatné Azure**. Pokud žádné nemáte, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/en-us/free/)
+- **Předplatné Azure**. Pokud žádné nemáte, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/)
 - **Azure PowerShell**, **minimálně verze 1.1.0**. Chcete-li nainstalovat Azure PowerShell a přidružit ho ke svému předplatnému Azure, prohlédněte si téma [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview). Pokud jste již Azure PowerShell nainstalovali, ale neznáte jeho verzi, z konzoly Azure PowerShell zadejte `(Get-Module azure -ListAvailable).Version`. Máte-li nainstalovaný Azure PowerShell ve verzi 0.9.1 až 0.9.8, stále můžete tento kurz použít, pouze s menšími změnami. Například musíte použít příkaz `Switch-AzureMode AzureResourceManager` a zároveň se změnily některé příkazy Azure Key Vault. Seznam rutin Key Vault pro verze 0.9.1 až 0.9.8 naleznete v tématu [Rutiny Azure Key Vault](/powershell/module/azurerm.keyvault/#key_vault).
 - **Aplikaci, kterou je možné nakonfigurovat tak, aby používala Key Vault**. Vzorová aplikace je k dispozici ve službě [Microsoft Download Center](http://www.microsoft.com/download/details.aspx?id=45343). Pokyny naleznete v souvisejícím souboru **Readme**.
 
@@ -105,14 +105,14 @@ Pokud například použijete:
 měli byste zadat
 
 ```powershell
-New-AzureRmKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US'
+New-AzureRmKeyVault -Name 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US'
 ```
 ![Výstup po dokončení příkazu pro vytvoření trezoru klíčů](./media/key-vault-get-started/output-after-creating-keyvault.png)
 
 Výstup této rutiny zobrazuje vlastnosti trezoru klíčů, který jste vytvořili. Dvě nejdůležitější vlastnosti jsou:
 
-* **Název trezoru**: V tomto příkladu je to **ContosoKeyVault**. Tento název budete používat pro další rutiny Key Vault.
-* **Identifikátor URI trezoru:** V tomto příkladu je to https://contosokeyvault.vault.azure.net/. Aplikace, které používají váš trezor prostřednictvím REST API musí používat tento identifikátor URI.
+* **Název trezoru**: **ContosoKeyVault** v příkladu. Tento název budete používat pro další rutiny Key Vault.
+* **Identifikátor URI trezoru**: https://contosokeyvault.vault.azure.net/ v příkladu. Aplikace, které používají váš trezor prostřednictvím REST API musí používat tento identifikátor URI.
 
 Váš účet Azure je nyní oprávněn provádět nad tímto trezorem klíčů všechny operace. Zatím k tomu není oprávněn nikdo jiný.
 
@@ -136,11 +136,11 @@ pro zobrazení URI pro tento typ klíče:
 $key.id
 ```
 
-Na klíč, který vytvoříte nebo nahrajete do Azure Key Vaultu, můžete odkazovat pomocí jeho identifikátoru URI. K získání aktuální verze můžete použít **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** a tuto konkrétní verzi získáte pomocí **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87**.  
+Na klíč, který vytvoříte nebo nahrajete do Azure Key Vaultu, můžete odkazovat pomocí jeho identifikátoru URI. Chcete-li získat aktuální verzi, můžete použít **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** a používat **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** získat tuto konkrétní verzi.  
 
 ### <a name="importing-an-existing-pfx-file-into-azure-key-vault"></a>Import existujícího souboru PFX do Azure Key Vaultu
 
-V případě existujících klíčů uložených v souboru pfx, který chcete nahrát do Azure Key Vaultu, se použijí jiné kroky. Příklad:
+Pokud stávající klíče jsou uložené v souboru pfx, který chcete nahrát do služby Azure Key Vault, postup se liší. Příklad:
 - Pokud máte existující softwarově chráněný klíč v souboru .PFX.
 - Soubor pfx má název softkey.pfx. 
 - Tento soubor je uložený v jednotce C.
@@ -167,9 +167,10 @@ Chcete-li zobrazit klíč, zadejte:
 ```powershell
 Get-AzureKeyVaultKey –VaultName 'ContosoKeyVault'
 ```
-Pokud chcete zobrazit vlastnosti souboru PFX na portálu, to, co uvidíte, bude podobné jako na následujícím obrázku.
+Pokud chcete zobrazit vlastnosti souboru PFX na portálu, zobrazí se jako na následujícím obrázku.
 
 ![Jak certifikát vypadá na portálu](./media/key-vault-get-started/imported-pfx.png)
+
 ### <a name="to-add-a-secret-to-azure-key-vault"></a>Přidání tajného kódu do služby Azure Key Vault
 
 Pokud chcete do trezoru služby Azure Key Vault přidat tajný kód v podobě hesla s názvem SQLPassword a hodnotou Pa$$w0rd, nejprve převeďte hodnotu Pa$$w0rd na zabezpečený řetězec zadáním:
@@ -200,27 +201,27 @@ Pokud chcete zobrazit hodnotu v tajném kódu jako prostý text:
 ```powershell
 (get-azurekeyvaultsecret -vaultName "Contosokeyvault" -name "SQLPassword").SecretValueText
 ```
-Nyní jsou váš trezor klíčů a klíč nebo tajný klíč připravené pro použití aplikacemi. Aby aplikace mohly klíče používat, musíte je nejdříve autorizovat.  
+Nyní, váš trezor klíčů a klíče nebo tajného klíče jsou připravené pro použití aplikacemi. Teď můžete povolit aplikací k jejich použití.  
 
 ## <a id="register"></a>Registrace aplikace s Azure Active Directory
-Tento krok obvykle provádí vývojář na samostatném počítači. Není pro Azure Key Vault specifický. Podrobné pokyny k registraci aplikace v Azure Active Directory najdete v článku nazvaném [Integrace aplikací se službou Azure Active Directory](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) nebo v článku věnovaném [použití portálu k vytvoření aplikace Azure Active Directory a instančního objektu, který má přístup k prostředkům](../azure-resource-manager/resource-group-create-service-principal-portal.md).
+Tento krok obvykle provádí vývojář na samostatném počítači. Není pro Azure Key Vault specifický. Pro podrobné pokyny k registraci aplikace s Azure Active Directory, přečtěte si článek s názvem [integrace aplikací s Azure Active Directory](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) nebo [použití portálu k vytvoření aplikace Azure Active Directory aplikace a instanční objekt, který má přístup k prostředkům](../azure-resource-manager/resource-group-create-service-principal-portal.md)
 
 > [!IMPORTANT]
 > Pro dokončení kurzu musí být váš účet, trezor i aplikace, kterou budete v tomto kroku registrovat, ve stejném adresáři Azure.
 
 
-Aplikace, které používají trezor klíčů, se musí ověřit pomocí tokenu z Azure Active Directory. K tomu je potřeba, aby majitel aplikace nejprve zaregistroval aplikaci ve vlastním Azure Active Directory. Na konci registrace obdrží majitel aplikace následující hodnoty:
+Aplikace, které používají trezor klíčů, se musí ověřit pomocí tokenu z Azure Active Directory. Majitel aplikace nejprve musí zaregistrovat aplikaci v Azure Active Directory. Na konci registrace obdrží majitel aplikace následující hodnoty:
 
 - **ID aplikace** 
 - **Ověřovací klíč** (také označovaný jako sdílený tajný kód) 
 
-Pro získání tokenu musí aplikace obě tyto hodnoty poskytnout do Azure Active Directory. Záleží na aplikaci, jak je k tomu nakonfigurovaná. Pro [ukázkovou aplikaci Key Vault](https://www.microsoft.com/download/details.aspx?id=45343) nastavuje majitel tyto hodnoty v souboru app.config.
+Pro získání tokenu musí aplikace obě tyto hodnoty poskytnout do Azure Active Directory. Konfigurace aplikace závisí na aplikaci. Pro [ukázkovou aplikaci Key Vault](https://www.microsoft.com/download/details.aspx?id=45343) nastavuje majitel tyto hodnoty v souboru app.config.
 
 
 Chcete-li zaregistrovat aplikaci v Azure Active Directory:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Nalevo klikněte na **registrace aplikací**. Pokud se registrace aplikací nezobrazí, klikněte na **Další služby** a vyhledejte je tam.  
+2. Nalevo klikněte na **registrace aplikací**. Pokud se registrace aplikací nezobrazí, klikněte na **další služby**.  
 >[!NOTE]
 Musíte vybrat adresář obsahující předplatné Azure, které jste použili pro vytvoření trezoru klíčů. 
 3. Klikněte na **Registrace nové aplikace**.
@@ -231,7 +232,7 @@ Musíte vybrat adresář obsahující předplatné Azure, které jste použili p
     Ověřte, že pokud se v nastavení nezobrazila položka **klíče**, zvolili jste **WEBOVÁ APLIKACE NEBO WEBOVÉ ROZHRANÍ API**.
 
 5. Klikněte na tlačítko **Vytvořit**.
-6. Po dokončení registrace aplikace se zobrazí seznam registrovaných aplikací. Najděte aplikaci, který jste právě zaregistrovali, a klikněte na ni.
+6. Po dokončení registrace aplikace, zobrazí se seznam registrovaných aplikací. Najděte aplikaci, registrované a klikněte na něj.
 7. Klikněte v okně **Registrovaná aplikace** a zkopírujte **ID aplikace**.
 8. Klikněte na **Veškerá nastavení**.
 9. V okně **Nastavení** klikněte na **klíče**.
@@ -244,7 +245,7 @@ Aplikaci můžete autorizovat pro přístup ke klíči nebo tajnému klíči v t
 ### <a name="using-powershell"></a>Pomocí prostředí PowerShell
 Pokud chcete použít PowerShell, použijte rutinu [Set-AzureRmKeyVaultAccessPolicy](/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy).
 
-Máte-li například trezor s názvem **ContosoKeyVault** a ID klienta aplikace, kterou chcete ověřit, má hodnotu 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed, můžete aplikaci autorizovat pro dešifrování a podepisování pomocí klíčů ve vašem trezoru spuštěním následujícího příkazu:
+Například, pokud je název trezoru **ContosoKeyVault** a aplikace, které chcete autorizovat má hodnotu 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed ID klienta a chcete autorizovat aplikaci k dešifrování a podepisování pomocí klíčů ve vaší trezoru, spusťte následující rutinu:
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed -PermissionsToKeys decrypt,sign
@@ -271,7 +272,7 @@ Pokud chcete vytvořit tyto klíče s ochranou HSM, musíte použít [vrstvu slu
 Při vytváření trezoru klíčů přidejte parametr **-SKU**:
 
 ```powershell
-New-AzureRmKeyVault -VaultName 'ContosoKeyVaultHSM' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US' -SKU 'Premium'
+New-AzureRmKeyVault -Name 'ContosoKeyVaultHSM' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US' -SKU 'Premium'
 ```
 
 

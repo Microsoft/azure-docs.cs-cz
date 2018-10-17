@@ -8,16 +8,16 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 87a6ccf61e10a6a8c7feeccad3690cdcb9b63641
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: c851c8a9384acf909dc88d3565d49021e1ee67e9
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857852"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362008"
 ---
 # <a name="service-bus-faq"></a>Nejčastější dotazy k Service Bus
 
-Tento článek popisuje některé nejčastější dotazy o Microsoft Azure Service Bus. Můžete také navštívit [Azure nejčastějších dotazech k podpoře](https://azure.microsoft.com/en-us/support/faq/) obecné informace o Azure ceny a podporu.
+Tento článek popisuje některé nejčastější dotazy o Microsoft Azure Service Bus. Můžete také navštívit [Azure nejčastějších dotazech k podpoře](https://azure.microsoft.com/support/faq/) obecné informace o Azure ceny a podporu.
 
 ## <a name="general-questions-about-azure-service-bus"></a>Obecné dotazy týkající se služby Azure Service Bus
 ### <a name="what-is-azure-service-bus"></a>Co je Azure Service Bus?
@@ -56,7 +56,7 @@ Tato část odpovídá na některé časté otázky ke správě služby Service 
 
 [Služby Service Bus, ceny a fakturace](service-bus-pricing-billing.md) článku vysvětluje měřiče ve službě Service Bus. Konkrétní informace o možnostech cen Service Bus najdete v tématu [podrobnosti o cenách služby Service Bus](https://azure.microsoft.com/pricing/details/service-bus/).
 
-Můžete také navštívit [nejčastější dotazy k podpoře Azure](https://azure.microsoft.com/en-us/support/faq/) obecné informace o cenách Azure. 
+Můžete také navštívit [nejčastější dotazy k podpoře Azure](https://azure.microsoft.com/support/faq/) obecné informace o cenách Azure. 
 
 ### <a name="how-do-you-charge-for-service-bus"></a>Jak se vám účtovat za služby Service Bus?
 Podrobnější informace o cenách služby Service Bus, najdete v článku [podrobnosti o cenách služby Service Bus][Pricing overview]. Kromě ceny uvedené bude vám účtována přidružené datové přenosy pro výchozí přenos dat mimo datové centrum, ve které je zřízená vaší aplikace.

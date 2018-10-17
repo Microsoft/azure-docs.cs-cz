@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: luisca
-ms.openlocfilehash: b428e6e7738c8a9052c3fcfe2ad5284bfd5293d6
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 4dfc4d250cae80e7837db5cfbcc3af15390b2bb4
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39307989"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352332"
 ---
 # <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>Příklad: Vytvoření vlastní dovednosti pomocí rozhraní API převede Text
 
@@ -37,6 +37,8 @@ Přestože tento příklad používá funkci Azure pro hostování webového roz
 1. V sadě Visual Studio, vyberte **nový** > **projektu** z nabídky soubor.
 
 1. V dialogovém okně Nový projekt, vyberte **nainstalováno**, rozbalte **Visual C#** > **cloudu**vyberte **Azure Functions**, zadejte Zadejte název pro váš projekt a vyberte **OK**. Název aplikace funkcí musí být platný jako obor názvů C#, takže nepoužívejte podtržítka, pomlčky nebo jiné nealfanumerické znaky.
+
+1. Vyberte **Azure Functions v2 (.Net Core)**. To může také provést s verzí 1, ale kód napsaný níže je založen na šabloně v2.
 
 1. Vyberte typ, který má být **triggeru HTTP**
 

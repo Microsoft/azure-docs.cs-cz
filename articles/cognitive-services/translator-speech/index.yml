@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 879dd4e9b20a57257dd7b93fddb54168d6bceb33
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: ac2b928e73031adb77616161f844f3f7fabdf146
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095061"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339844"
 documentType: LandingData
 title: Dokumentace k rozhraní Translator Speech API
 metadata:
@@ -21,8 +21,12 @@ metadata:
   ms.date: 3/5/2018
   ms.author: v-jansko
 abstract:
-  description: Rozhraní Microsoft Translator Speech API, které je součástí kolekce rozhraní API služeb Microsoft Cognitive Services, je cloudová služba strojového překladu, která poskytuje překlad řeči na řeč nebo text. Je založené na standardní technologii REST a dá se využít k doplnění kompletních překladů řeči v reálném čase do libovolné aplikace, nástroje nebo řešení, které vyžadují překlad řeči ve více jazycích, a to bez ohledu na použitý operační systém nebo vývojářský jazyk. Seznam podporovaných jazyků najdete v části věnované <a href="languages.md">podporovaným jazykům</a>.
+  description: Rozhraní Microsoft Translator Speech API, které je součástí kolekce rozhraní API služeb Microsoft Cognitive Services, je cloudová služba strojového překladu, která poskytuje překlad řeči na řeč nebo text. Je založené na standardní technologii REST a dá se využít k doplnění kompletních překladů řeči v reálném čase do libovolné aplikace, nástroje nebo řešení, které vyžadují překlad řeči ve více jazycích, a to bez ohledu na použitý operační systém nebo vývojářský jazyk. Seznam podporovaných jazyků najdete v článku věnovaném <a href="languages.md">podporovaným jazykům</a>.
 sections:
+- title: 
+  items:
+  - type: paragraph
+    text: '<b>POZNÁMKA: Nová služba Speech a sada Speech SDK nahrazují rozhraní Translator Speech API, které od 15. října 2019 přestane fungovat. Informace o přechodu ke službě Speech najdete v článku věnovaném <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-translator-speech-api">migraci z rozhraní Translator Speech API do služby Speech</a></b>.'
 - title: Zprovoznění během 5 minut
   items:
   - type: paragraph

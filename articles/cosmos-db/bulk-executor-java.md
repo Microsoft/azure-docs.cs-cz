@@ -1,25 +1,26 @@
 ---
-title: Použití knihovny Java prováděcí modul hromadného budou provádět hromadné operace ve službě Azure Cosmos DB | Dokumentace Microsoftu
-description: Pomocí služby Azure Cosmos DB hromadné prováděcí modul Java knihovna hromadný import a aktualizace dokumentů kontejnery služby Azure Cosmos DB.
-keywords: Prováděcí modul hromadného Java
+title: Použití knihovny Java prováděcí modul hromadného hromadně importovat a aktualizovat operace ve službě Azure Cosmos DB | Dokumentace Microsoftu
+description: Hromadný import a aktualizace pomocí hromadné prováděcí modul Java knihovna dokumenty Azure Cosmos DB.
 services: cosmos-db
 author: tknandu
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 10/16/2018
 ms.author: ramkris
-ms.openlocfilehash: 9285b0ea50b7207aa40cea2dcab50f79863ffda9
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: a22cd65ef5d4ef22038a8506359d1036e829db4d
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050183"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362105"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Použití knihovny Java prováděcí modul hromadného budou provádět hromadné operace s daty služby Azure Cosmos DB
 
 Tento kurz obsahuje pokyny k používání knihovny Java prováděcí modul hromadného rozhraní Azure Cosmos DB importovat a aktualizovat dokumenty Azure Cosmos DB. Další informace o hromadně prováděcí modul knihovny a jak vám může pomoct využít mimořádně velkou propustnost a úložiště, najdete v článku [hromadně přehled knihovny prováděcí modul](bulk-executor-overview.md) článku. V tomto kurzu sestavení aplikace v Javě, která generuje náhodné dokumentů a budou hromadně importovat do kontejneru Azure Cosmos DB. Po naimportování pak hromadně aktualizovat některé vlastnosti dokumentu. 
+
+Hromadné prováděcí modul knihovny je v současné době nepodporuje rozhraní SQL API služby Azure Cosmos DB a pouze účty rozhraní Gremlin API. Tento článek popisuje, jak pomocí hromadné knihovny .net prováděcí modul s účty SQL API. Další informace o použití knihovny hromadné prováděcí modul .NET pomocí rozhraní Gremlin API, najdete v článku [provádět hromadné operace v rozhraní Gremlin API služby Azure Cosmos DB](bulk-executor-graph-dotnet.md).
 
 ## <a name="prerequisites"></a>Požadavky
 

@@ -12,12 +12,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 08854c2f31d86eefa1645269f47bb88659d7e1cb
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 49da7704c3b1c3c119528201f34f1352b0afbba4
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868883"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362122"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-access-control"></a>Řízení přístupu k Azure SQL Database a SQL Data Warehouse
 

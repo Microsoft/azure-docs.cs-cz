@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: ambapat
-ms.openlocfilehash: 58307b25c03202fea63be25136c5a9c5a2d32473
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 4a1de3c011f1f8cfa1ea9246efad4ebb7f9e3a76
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079034"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364519"
 ---
 # <a name="secure-your-key-vault"></a>Zabezpečení trezoru klíčů
 Služba Azure Key Vault je Cloudová služba, která chrání šifrovací klíče a tajné kódy (například certifikáty, připojovací řetězce, hesla). Protože tato data jsou citlivá a pro důležité obchodní informace, musí být zabezpečené přístup k vašim trezorům klíčů, umožňuje pouze oprávnění aplikace a uživatelé získat přístup. 
@@ -183,7 +183,7 @@ Tento skript je ukázkou, jak může bezpečnostní tým vytvořit trezor klíč
 ```
 # Create key vault and enable logging
 $sa = Get-AzureRmStorageAccount -ResourceGroup ContosoAppRG -Name contosologstorage
-$kv = New-AzureRmKeyVault -VaultName ContosoKeyVault -ResourceGroup ContosoAppRG -SKU premium -Location 'westus' -EnabledForDeployment
+$kv = New-AzureRmKeyVault -Name ContosoKeyVault -ResourceGroup ContosoAppRG -SKU premium -Location 'westus' -EnabledForDeployment
 Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent
 
 # Data plane permissions for Security team

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: c3b9422ebdb0a5d93f92644d9fea5d9c5ba9fa29
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: c40229eaa589d696c557d5ac126515576593443c
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47186341"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49367062"
 ---
 Paměťově optimalizované velikosti nabídky virtuálních počítačů vysoký poměr paměti procesoru, které jsou velmi vhodné pro servery relačních databází, střední a velké mezipaměti a analýzu v paměti. Tento článek obsahuje informace o počtu virtuálních procesorů, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro jednotlivé velikosti v této skupině. 
 
@@ -26,7 +26,7 @@ Paměťově optimalizované velikosti nabídky virtuálních počítačů vysok�
 
 * Ev3-series funkce E5-2673 v4 (Broadwell) 2,3 GHz procesor konfigurace technologie hyper-threaded, poskytuje lepší návrh hodnoty pro většinu obecných úloh účel a přináší Ev3 soulad s virtuálními počítači pro obecné účely většina jiných cloudech.  Paměti došlo k rozbalení (ze 7 GiB/virtuální procesor do 8 GiB/virtuálních procesorů) zatímco disku a sítě limity byly upraveny na základě vázané na jádro, aby bylo v souladu s přechodem na hyperthreadingem.  Ev3 je dále až vysoký poměr paměti velikosti virtuálních počítačů řady D/Dv2.
 
-* Azure Compute nabízí velikosti virtuálních počítačů, které jsou izolované na konkrétní typ hardwaru a vyhrazené pro jednoho zákazníka.  Tyto velikosti virtuálních počítačů jsou nejvhodnější pro úlohy, které vyžadují vysoký stupeň izolace od ostatních zákazníků a kterých se týkají například požadavky na dodržování předpisů a zákonné požadavky.  Zákazníci můžou dál rozdělit prostředky těchto virtuálních počítačů izolované pomocí vybrat [podpora Azure pro vnořených virtuálních počítačích](https://azure.microsoft.com/en-us/blog/nested-virtualization-in-azure/).  Projděte si tabulky virtuálních počítačů řady níže pro izolované možnosti virtuálního počítače.
+* Azure Compute nabízí velikosti virtuálních počítačů, které jsou izolované na konkrétní typ hardwaru a vyhrazené pro jednoho zákazníka.  Tyto velikosti virtuálních počítačů jsou nejvhodnější pro úlohy, které vyžadují vysoký stupeň izolace od ostatních zákazníků a kterých se týkají například požadavky na dodržování předpisů a zákonné požadavky.  Zákazníci můžou dál rozdělit prostředky těchto virtuálních počítačů izolované pomocí vybrat [podpora Azure pro vnořených virtuálních počítačích](https://azure.microsoft.com/blog/nested-virtualization-in-azure/).  Projděte si tabulky virtuálních počítačů řady níže pro izolované možnosti virtuálního počítače.
 
 ## <a name="esv3-series"></a>Esv3-series 
 

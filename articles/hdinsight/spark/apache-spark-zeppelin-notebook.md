@@ -9,20 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.openlocfilehash: 9b076709ee24c61b2699672d28bd61204c88a744
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 8e32939f3e253bfdd6f8d989f616f30e1b9f27eb
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048037"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364859"
 ---
 # <a name="use-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Použití poznámkových bloků Zeppelin s clusterem Apache Spark v Azure HDInsight
 
 Clustery HDInsight Spark zahrnují poznámkových bloků Zeppelin, které můžete použít ke spuštění úlohy Spark. V tomto článku se dozvíte, jak používat Poznámkový blok Zeppelin v clusteru HDInsight.
-
-> [!NOTE]
-> Poznámkových bloků Zeppelin jsou k dispozici pouze pro 1.6.3 Spark v HDInsight 3.5 a 2.1.0 Spark v HDInsight 3.6.
->
 
 **Požadavky:**
 
@@ -50,7 +46,7 @@ Clustery HDInsight Spark zahrnují poznámkových bloků Zeppelin, které může
    
     Do prázdné odstavce, který se vytvoří ve výchozím nastavení nový poznámkový blok vložte následující fragment kódu.
    
-        %livy.spark
+        %livy2.spark
         //The above magic instructs Zeppelin to use the Livy Scala interpreter
    
         // Create an RDD using the default Spark context, sc
@@ -77,6 +73,11 @@ Clustery HDInsight Spark zahrnují poznámkových bloků Zeppelin, které může
     ![Vytvořte dočasnou tabulku z nezpracovaných dat](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-load-data.png "vytvořte dočasnou tabulku z nezpracovaných dat")
    
     Můžete také zadat název pro každý odstavec. V pravém rohu klikněte **nastavení** ikonu a pak klikněte na tlačítko **zobrazit nadpis**.
+
+> [!NOTE]
+> překladač spark2 % se nepodporuje v poznámkových bloků Zeppelin ve všech verzích HDInsight a % TV překladač nebudou z HDInsight 4.0 a vyšší podporovány.
+>
+
 1. Teď můžete spustit příkazů Spark SQL **hvac** tabulky. Vložte následující dotaz do nový odstavec. Dotaz načte ID budovy a rozdíl mezi cíl a skutečné teploty pro každou vytváření k danému datu. Stisknutím klávesy **SHIFT + ENTER**.
    
         %sql

@@ -1,39 +1,39 @@
 ---
-title: Vyhledávací entita rychlý start rozhraní API jazyka C# | Microsoft Docs
-description: Instalační program pro vyhledávání Entity SDK konzolové aplikace.
-titleSuffix: Azure cognitive services entity search API C# quickstart
+title: 'Rychlý start: Sada SDK Bingu pro vyhledávání entit, C#'
+titleSuffix: Azure Cognitive Services
+description: Nastavení pro konzolovou aplikaci sady SDK pro vyhledávání entit s použitím jazyka C#.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 01/30/2018
 ms.author: v-gedod
-ms.openlocfilehash: 185e1b4fc1b7ef2aa5964e2e95314727f8e1b0a5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: abf7e4344bea88fd86b86135ffab30672d77922e
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343652"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814096"
 ---
-# <a name="entity-search-sdk-c-quickstart"></a>Entity vyhledávání SDK jazyka C# rychlý start
+# <a name="quickstart-bing-entity-search-sdk-with-c"></a>Rychlý start: Sada SDK Bingu pro vyhledávání entit pomocí jazyka C#
 
-Rozhraní API služby Bing Entity Search obsahuje funkci rozhraní REST API pro vyhledávání entity a analýza výsledků.
+Rozhraní API Bingu pro vyhledávání entit obsahuje funkce rozhraní REST API pro vyhledávání entit a parsování výsledků.
 
-[Zdrojového kódu pro C# Bing Entity vyhledávání SDK ukázky](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingEntitySearch) je k dispozici v centru Git.
+[Zdrojový kód pro ukázky sady SDK Bingu pro vyhledávání entit pomocí jazyka C#](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingEntitySearch) je k dispozici na GitHubu.
 
-## <a name="application-dependencies"></a>Závislosti aplikací
+## <a name="application-dependencies"></a>Závislosti aplikace
 
-Chcete-li nastavit konzolovou aplikaci pomocí sady SDK vyhledávání Entity Bing, procházejte k `Manage NuGet Packages` možnost v Průzkumníku řešení v sadě Visual Studio.  Přidat `Microsoft.Azure.CognitiveServices.Search.EntitySearch` balíčku.
+Pokud chcete nastavit konzolovou aplikaci pomocí sady SDK pro vyhledávání entit Bingu, přejděte v sadě Visual Studio v Průzkumníkovi řešení na možnost `Manage NuGet Packages`.  Přidejte balíček `Microsoft.Azure.CognitiveServices.Search.EntitySearch`.
 
-Instalace [balíček NuGet Entity vyhledávání](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.EntitySearch/1.2.0) také nainstaluje závislosti, včetně následujících sestavení:
+Instalace [balíčku NuGet pro vyhledávání entit](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.EntitySearch/1.2.0) nainstaluje také závislé položky, včetně následujících sestavení:
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.Azure
 * Newtonsoft.Json
 
-## <a name="entity-search-client"></a>Klienta vyhledávání entity
-Chcete-li vytvořit instanci `EntitySearchAPI` klienta, přidání direktivy using:
+## <a name="entity-search-client"></a>Klient pro vyhledávání entit
+Pokud chcete vytvořit instanci klienta `EntitySearchAPI`, přidejte direktivy using:
 ```
 using Microsoft.Azure.CognitiveServices.Search.EntitySearch;
 using Microsoft.Azure.CognitiveServices.Search.EntitySearch.Models;
@@ -45,12 +45,12 @@ var client = new EntitySearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS
 
 
 ```
-Klient použijte při hledání se text dotazu:
+Pomocí klienta vyhledejte text dotazu:
 ```
 var entityData = client.Entities.Search(query: "Satya Nadella");
 
 ```
-Analyzovat výsledky předchozího dotazu:
+Parsujte výsledky předchozího dotazu:
 ```
 if (entityData?.Entities?.Value?.Count > 0)
 {
@@ -74,8 +74,8 @@ else
 
 ```
 
-## <a name="complete-console-application"></a>Dokončení konzolové aplikace
-Následující konzolové aplikace vyhledá jedné entity v dotazu "Satya Nadella" a vytiskne krátký popis.
+## <a name="complete-console-application"></a>Kompletní konzolová aplikace
+Následující konzolová aplikace vyhledá jednu entitu podle dotazu "Satya Nadella" a vypíše krátký popis.
 ```
 using System;
 using System.Linq;
@@ -140,8 +140,8 @@ namespace EntitySrchSDK
 
 ```
 
-## <a name="ambiguous-results"></a>Nejednoznačný výsledky
-Následující kód zpracovává rozlišení více tras výsledků pro dotaz nejednoznačný "William brány".
+## <a name="ambiguous-results"></a>Nejednoznačné výsledky
+Následující kód zpracovává mnohoznačnost výsledků nejednoznačného dotazu "William Gates".
 ```
        public static void HandlingDisambiguation(EntitySearchAPI client)
         {
@@ -197,8 +197,8 @@ Následující kód zpracovává rozlišení více tras výsledků pro dotaz nej
 
 ```
 
-## <a name="entitydata-places"></a>EntityData míst
-Následující kód jedno úložiště "Microsoft Store" a, zobrazí se jeho telefonní číslo.
+## <a name="entitydata-places"></a>Místa EntityData
+Následující kód vyhledá jediný obchod "Microsoft Store" a vypíše jeho telefonní číslo.
 ```
         public static void StoreLookup(EntitySearchAPI client)
         {
@@ -235,7 +235,7 @@ Následující kód jedno úložiště "Microsoft Store" a, zobrazí se jeho tel
 
 ```
 ## <a name="entityscenario-list"></a>Seznam EntityScenario
-Následující kód vyhledá seznam "Restaurace Seattle" a vypíše jejich názvy a telefonních čísel.
+Následující kód vyhledá seznam pražských restaurací "Prague restaurants" a vypíše jejich názvy a telefonní čísla.
 ```
        public static void MultipleRestaurantLookup(EntitySearchAPI client)
         {
@@ -285,8 +285,8 @@ Následující kód vyhledá seznam "Restaurace Seattle" a vypíše jejich názv
         }
 
 ```
-## <a name="error-results"></a>Chyba výsledků
-Následující kód aktivuje chybný požadavek a ukazuje, jak číst odpovědi na chybu.
+## <a name="error-results"></a>Chybové výsledky
+Následující kód spustí špatný požadavek a ukáže, jak číst chybovou odpověď.
 ```
         public static void Error(EntitySearchAPI client)
         {
@@ -314,6 +314,6 @@ Následující kód aktivuje chybný požadavek a ukazuje, jak číst odpovědi 
         }
 
 ```
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Kognitivní services .NET SDK ukázky](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
+[Ukázky kognitivních služeb sady .NET SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 10/16/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 57033de3224b5966b2dfa80dd1cb45fafd83b26b
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: a0a482e44617732c9dc6cd6609672e8204001dbc
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238713"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362054"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Přidání hostitelské servery pro poskytovatele prostředků SQL
 
@@ -173,23 +173,24 @@ Nastavení možnosti serveru ověřování databáze s omezením pro každou ins
    > Samostatné servery nejde kombinovat s instancemi Always On v rámci stejné SKU. Probíhá pokus o různé typy po přidání první výsledky hostování serveru k chybě.
 
 ## <a name="sku-notes"></a>Skladová položka poznámky
-
-SKU můžete použít k rozlišení nabídek služeb. Například můžete mít instanci SQL Enterprise, která má následující vlastnosti:
+Použijte název SKU, která popisuje možnosti servery ve skladové Položce, jako je například kapacitu a výkon. Název slouží jako vodítko k poskytování pomoci uživatelům nasadit své databáze do příslušné SKU. Například můžete použít názvy SKU k rozlišení nabídky služeb následujícími vlastnostmi:
   
 * vysoké kapacity
 * vysoce výkonné
 * Vysoká dostupnost
 
-Skladové položky nelze přiřadit konkrétní uživatelé nebo skupiny v této verzi.
-
- SKU může trvat až hodinu, uvidí na portálu. Uživatelé nemůžou vytvářet databáze, dokud SKU je zcela vytvořen.
-
->[!TIP]
->Použijte název SKU, která odráží popisuje možnosti servery ve skladové Položce, jako je například kapacitu a výkon. Název slouží jako vodítko k poskytování pomoci uživatelům nasadit své databáze do příslušné SKU.
-
 Jako osvědčený postup musí všechny hostitelské servery v SKU mají stejné vlastnosti prostředků a výkonu.
 
-## <a name="make-the-sql-databases-available-to-users"></a>Databáze SQL zpřístupnit uživatelům
+Skladové položky nelze přiřadit konkrétní uživatelé nebo skupiny.
+
+SKU může trvat až hodinu, uvidí na portálu. Uživatelé nemůžou vytvářet databáze, dokud SKU je zcela vytvořen.
+
+Chcete-li upravit skladovou jednotku, přejděte na **všechny služby** > **adaptéru pro SQL** > **SKU**. Vyberte SKU, které chcete změnit, proveďte potřebné změny a klikněte na tlačítko **Uložit** uložte změny. Pokud chcete odstranit skladovou Položku, který už je nepotřebujete, přejděte na **všechny služby** > **adaptéru pro SQL** > **SKU**. Klikněte pravým tlačítkem na název skladové položky a vyberte **odstranit** ho odstranit.
+
+> [!TIP]
+> Můžete upravit nebo odstranit kvóty poskytovatele prostředků SQL ve stejném umístění.
+
+## <a name="make-sql-databases-available-to-users"></a>Databáze SQL zpřístupnit uživatelům
 
 Vytvořte plány a nabídky, aby databáze SQL k dispozici pro uživatele. Přidat **Microsoft.SqlAdapter** služby v plánu a vytvořit novou kvótu.
 

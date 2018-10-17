@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 07/17/2018
+ms.date: 10/15/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 8b91ae9a4f258e52b032dca1484be70469094c2e
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 3a647d9f821007dc0f2b48864b937aee84924d8f
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585726"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353167"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Import dat do úložiště objektů Blob v Azure pomocí služby Azure Import/Export
 
@@ -96,7 +96,7 @@ Proveďte následující kroky k vytvoření úlohy importu na webu Azure Portal
 
     - Vyberte **Import do Azure**.
     - Zadejte popisný název úlohy importu. Použijte název sledovat průběh úlohy.
-        - Název může obsahovat jenom malá písmena, číslice, spojovníky a podtržítka.
+        - Název může obsahovat jenom malá písmena, číslice a pomlčky.
         - Název musí začínat písmenem a nesmí obsahovat mezery.
     - Vyberte předplatné.
     - Zadejte nebo vyberte skupinu prostředků.  

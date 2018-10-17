@@ -1,91 +1,92 @@
 ---
-title: Hledání Entity Bing jednostránkovou webovou aplikaci | Microsoft Docs
-description: Ukazuje, jak používat rozhraní API služby Bing Entity Search v jednostránkovou webovou aplikaci.
+title: 'Kurz: Vyhledávání entit Bingu pomocí jednostránkové webové aplikace'
+titlesuffix: Azure Cognitive Services
+description: Ukazuje, jak používat rozhraní API Bingu pro vyhledávání entit v jednostránkové webové aplikaci.
 services: cognitive-services
 author: v-jerkin
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 12/08/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 91c60913cd806baf100e5511cbf59299bf9a84f0
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 9aabecbec144797b9fbafdff7179213b68921447
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343544"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815541"
 ---
-# <a name="tutorial-single-page-web-app"></a>Kurz: Jednostránkovou webovou aplikaci
+# <a name="tutorial-single-page-web-app"></a>Kurz: Jednostránková webová aplikace
 
-Rozhraní API služby Bing Entity Search umožňuje vyhledávat webu informace o *entity* a *umístí.* Může požádat o buď typ výsledku, nebo obojí, v daný dotaz. Definice místech a entity jsou uvedeny níže.
+Rozhraní API Bingu pro vyhledávání entit umožňuje vyhledávat na webu informace o *entitách* a *místech.* Daným dotazem můžete požadovat jeden z druhů výsledku, nebo oba. Definice míst a entit jsou uvedeny níže.
 
 |||
 |-|-|
-|Entity|Známé osob, míst a věcí, které zjistíte podle názvu|
-|Míst|Restaurace, hotels a jiné místní firmám, které zjistíte podle názvu *nebo* podle typu (italská restaurace)|
+|Entity|Známí lidé, místa a věci, které najdete podle jména|
+|Místa|Restaurace, hotely a další místní firmy, které najdete podle názvu *nebo* podle typu (italské restaurace)|
 
-V tomto kurzu jsme sestavení jednostránkovou webovou aplikaci, která používá rozhraní API služby Bing Entity Search zobrazit výsledky vyhledávání přímo na stránce. Aplikace obsahuje součásti HTML, CSS a JavaScript.
+V tomto kurzu sestavíme jednostránkovou webovou aplikaci, která používá rozhraní API Bingu pro vyhledávání entit k zobrazení výsledků hledání přímo na stránce. Aplikace zahrnuje komponenty HTML, CSS a JavaScriptu.
 
-Rozhraní API umožňuje nastavit prioritu výsledky podle umístění. V mobilní aplikaci můžete pokládat zařízení pro vlastní umístění. Ve webové aplikaci, můžete použít `getPosition()` funkce. Ale toto volání lze použít pouze v kontextu zabezpečení a jeho nemusí poskytnout přesné umístění. Uživatel také potřebovat hledat pro entity blízkosti umístění než vlastní.
+Rozhraní API umožňuje určit prioritu výsledků podle polohy. V mobilní aplikaci můžete požádat zařízení o jeho vlastní polohu. Ve webové aplikaci můžete použít funkci `getPosition()`. Tato funkce ale funguje jenom v zabezpečeném kontextu. Může se stát, že neposkytne přesnou polohu. Uživatel by také mohl chtít hledat entity blízko jiných umístění, než je jeho poloha.
 
-Naše aplikace volá proto při službu Bing Maps získat zeměpisnou šířku a délku z umístění zadanou uživatelem. Uživatel potom můžete zadat název významné ("místo ručička") nebo celé nebo jeho část adresy ("New Yorku") a rozhraní API map Bing poskytuje souřadnice.
+Naše aplikace proto volá službu Map Bingu k získání zeměpisné šířky a délky z umístění zadaného uživatelem. Uživatel může buď zadat název památky (Space Needle) nebo celou či částečnou adresu (New York City). Rozhraní API pro Mapy Bingu poskytne souřadnice.
 
 <!-- Remove until we can replace with a sanitized version.
 ![[Single-page Bing Entity Search app]](media/entity-search-spa-demo.png)
 -->
 
 > [!NOTE]
-> Záhlaví JSON a HTTP v dolní části stránky odhalit odpověď JSON a informace o požadavku HTTP při kliknutí na. Tyto podrobnosti jsou užitečné při prozkoumávání služby.
+> Hlavičky JSON a HTTP v dolní části stránky při kliknutí zobrazí informace o odpovědi JSON a požadavku HTTP. Tyto podrobnosti jsou užitečné při prozkoumávání služby.
 
-Aplikace kurz ukazuje, jak:
+Ukázková aplikace předvádí, jak:
 
 > [!div class="checklist"]
-> * Provádění volání rozhraní API služby Bing Entity Search v jazyce JavaScript
-> * Provedení mapy Bing `locationQuery` volání rozhraní API v jazyce JavaScript
-> * Předat možnosti vyhledávání na volání rozhraní API
-> * Zobrazení výsledků
-> * Zpracování Bing klienta ID a rozhraní API předplatné klíče
-> * Řešit všechny chyby, které můžou nastat
+> * Provést volání rozhraní API Bingu pro vyhledávání entit v JavaScriptu
+> * Provést volání rozhraní API `locationQuery` Map Bing v JavaScriptu
+> * Předat možnosti hledání těmto voláním rozhraní API
+> * Zobrazit výsledky hledání
+> * Používat ID klienta Bingu a klíče předplatného rozhraní API
+> * Vyřešit problémy, které by mohly nastat
 
-Kurz stránka je zcela samostatné; nepoužívá se žádné externí rozhraní, šablony stylů nebo i soubory bitové kopie. Používá jenom široce podporované funkce jazyka JavaScript a pracuje s aktuálními verzemi všechny hlavní prohlížeče.
+Stránka kurzu je zcela samostatná. Nepoužívá žádná externí rozhraní, šablony stylů ani soubory obrázků. Používá jenom běžně podporované funkce jazyka JavaScript a funguje s aktuálními verzemi všech hlavních webových prohlížečů.
 
-V tomto kurzu probereme pouze vybrané části zdrojového kódu. Úplný zdrojový kód je k dispozici [na samostatné stránce](tutorial-bing-entities-search-single-page-app-source.md). Zkopírujte a vložte tento kód do textového editoru a uložte ho jako `bing.html`.
+V tomto kurzu probereme jen vybrané části zdrojového kódu. Úplný zdrojový kód je k dispozici na [samostatné stránce](tutorial-bing-entities-search-single-page-app-source.md). Zkopírujte a vložte tento kód do textového editoru a uložte ho jako `bing.html`.
 
 > [!NOTE]
-> V tomto kurzu je podstatně podobná [jednostránkové vyhledávání Bing webové aplikace kurzu](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md), ale zabývá pouze výsledky hledání entity.
+> Tento kurz je velmi podobný [kurzu Jednostránková aplikace Bingu pro vyhledávání na webu](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md), ale zabývá se jenom výsledky hledání entit.
 
-## <a name="app-components"></a>Součásti aplikace
+## <a name="app-components"></a>Komponenty aplikace
 
-Stejně jako jakoukoli jednostránkovou webovou aplikaci kurz aplikace obsahuje tři části:
+Stejně jako každá jednostránková webová aplikace i tato obsahuje tři části:
 
 > [!div class="checklist"]
-> * HTML – definuje struktuře a obsahu stránky
-> * Šablon stylů CSS – definuje vzhled stránky
+> * HTML – definuje strukturu a obsah stránky
+> * Šablony stylů CSS – definují vzhled stránky
 > * JavaScript – definuje chování stránky
 
-V tomto kurzu nezahrnuje většinu kódu HTML nebo šablon stylů CSS podrobně, protože se jedná o přehledné.
+Tento kurz se většinou nezabývá podrobně kódem HTML nebo šablonami stylů CSS, protože jsou docela jednoduché.
 
-HTML obsahující formulář vyhledávání, ve kterém uživatel zadá dotaz a vybere možností hledání. Formulář je připojený k JavaScript, která ve skutečnosti provádí vyhledávání podle `<form>` tagu `onsubmit` atribut:
+Kód HTML obsahuje vyhledávací formulář, do kterého uživatel zadá dotaz a vybere možnosti hledání. Formulář je propojený s JavaScriptem, který pak skutečně provádí hledání podle atributu `onsubmit` ve značce `<form>`:
 
 ```html
 <form name="bing" onsubmit="return newBingEntitySearch(this)">
 ```
 
-`onsubmit` Obslužná rutina vrátí `false`, který udržuje formuláře z odeslání na server. Kód jazyka JavaScript skutečně funguje shromažďování nezbytné informace z formuláře a provádění hledání.
+Obslužná rutina `onsubmit` vrátí `false`. Díky tomu se formulář neodesílá na server. Kód JavaScriptu shromažďuje nezbytné informace z formuláře a provádí hledání.
 
-Hledání probíhá ve dvou fázích. První Pokud uživatel zadá omezení umístění, mapy Bing dotaz provádí převést na souřadnice. Zpětné volání pro tento dotaz se pak spustí Bing Entity vyhledávací dotaz.
+Hledání probíhá ve dvou fázích. V případě, že uživatel zadal omezení umístění, dotaz Mapám Bing je nejprve převede na souřadnice. Zpětné volání tohoto dotazu pak spustí dotaz rozhraní API Bingu pro vyhledávání entit.
 
-HTML také obsahuje divizí (HTML `<div>` značky) kde se zobrazí výsledky hledání.
+Kód HTML také obsahuje úseky (značky HTML `<div>`), kde se zobrazují výsledky hledání.
 
-## <a name="managing-subscription-keys"></a>Správa předplatného klíče
+## <a name="managing-subscription-keys"></a>Správa klíčů předplatného
 
 > [!NOTE]
-> Tato aplikace vyžaduje předplatné klíče pro rozhraní API služby Bing Search a rozhraní API map Bing. Můžete použít [zkušební klíč hledání Bing](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) a [základní mapy Bing klíč](https://www.microsoft.com/maps/create-a-bing-maps-key).
+> Tato aplikace vyžaduje klíče předplatného jak pro rozhraní API pro vyhledávání Bingu, tak pro rozhraní API Map Bingu. Můžete použít [zkušební klíč vyhledávání Bingu](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) a [základní klíč Map Bing](https://www.microsoft.com/maps/create-a-bing-maps-key).
 
-Abyste nemuseli zahrnout Bing vyhledávání a rozhraní API map Bing předplatné klíče v kódu, používáme k uložení je trvalé úložiště v prohlížeči. Pokud ani jeden klíč nebyl uložený, jsme vyzvat, aby ho a uloží jej pro pozdější použití. Pokud později klíč rozhraní API zamítnul, jsme zneplatnit uložené klíč, uživateli se zobrazí výzva pro něj při své další vyhledávání.
+Aby se nemusely klíče předplatného rozhraní API pro vyhledávání Bingu a Map Bing zahrnout do kódu, používáme k uložení klíčů trvalé úložiště prohlížeče. Pokud není žádný z klíčů uložený, vyzveme k jeho zadání a uložíme ho pro pozdější použití. Když později rozhraní API klíč odmítne, zneplatníme uložený klíč. Uživatel o něj bude při příštím hledání požádán znovu.
 
-Jsme definovali `storeValue` a `retrieveValue` funkce, které používají buď `localStorage` objektu (Pokud je prohlížeč podporuje ji) nebo soubor cookie. Naše `getSubscriptionKey()` funkce používá tyto funkce pro ukládání a načítání klíče uživatele.
+Definujeme funkce `storeValue` a `retrieveValue`, které používají buď objekt `localStorage` (když je podporovaný prohlížečem), nebo soubor cookie. Naše funkce `getSubscriptionKey()` tyto funkce používá k ukládání a načítání uživatelova klíče.
 
 ```javascript
 // cookie names for data we store
@@ -119,30 +120,30 @@ function getSearchSubscriptionKey() {
 }
 ```
 
-HTML `<body>` zahrnuje značky `onload` atribut, který volá `getSearchSubscriptionKey()` a `getMapsSubscriptionKey()` při dokončení načítání stránky. Tyto volání sloužit k okamžitě výzvu uživatele pro jejich klíče v případě, že je ještě nezadali.
+Značka HTML `<body>` obsahuje atribut `onload`, který po dokončení načítání stránky volá funkce `getSearchSubscriptionKey()` a `getMapsSubscriptionKey()`. Toto volání okamžitě vyzve uživatele k zadání klíčů, pokud už je nezadal.
 
 ```html
 <body onload="document.forms.bing.query.focus(); getSearchSubscriptionKey(); getMapsSubscriptionKey();">
 ```
 
-## <a name="selecting-search-options"></a>Výběrem možnosti hledání
+## <a name="selecting-search-options"></a>Výběr možností hledání
 
-![[Vyhledávací Entity Bing formulář]](media/entity-search-spa-form.png)
+![[Formulář rozhraní API Bingu pro vyhledávání entit]](media/entity-search-spa-form.png)
 
-Formuláře HTML obsahuje následující prvky:
+HTML formulář obsahuje následující ovládací prvky:
 
 | | |
 |-|-|
-|`where`|Rozevírací nabídka pro výběr na trhu (umístění a jazyk) používá pro vyhledávání.|
-|`query`|Textové pole, do kterého chcete zadejte hledaný text.|
-|`safe`|Zaškrtávací políčko označující, zda je zapnuta bezpečné hledání (omezuje "pro dospělé" výsledky)|
-|`what`|Nabídka pro výběr pro vyhledávání pro entity a místech.|
-|`mapquery`|Textové pole, ve kterém může uživatel zadat adresu celé nebo jeho část, významné, atd. pomohou návratový více relevantní výsledky hledání Entity Bing.|
+|`where`|Rozevírací nabídka pro výběr trhu (polohy a jazyka) pro vyhledávání.|
+|`query`|Textové pole pro zadání hledaných termínů.|
+|`safe`|Zaškrtávací políčko, které indikuje zapnutí bezpečného hledání (omezení výsledků „pro dospělé“)|
+|`what`|Nabídka výběru hledání entit, míst nebo obou.|
+|`mapquery`|Textové pole, do kterého může uživatel zadat celou nebo částečnou adresu, památku, atd. Tím pomůže rozhraní API Bingu pro vyhledávání entit vracet relevantnější výsledky.|
 
 > [!NOTE]
-> Výsledky míst jsou aktuálně k dispozici pouze ve Spojených státech amerických. `where` a `what` nabídky mají kód vynutit toto omezení. Pokud zvolíte trhu mimo USA míst je vybráno v `what` nabídce `what` změní na jinou hodnotu. Pokud se rozhodnete míst mimo USA trhu vybráno v `where` nabídce `where` změny ve Spojených státech.
+> Výsledky pro místa jsou aktuálně dostupné pouze pro Spojené státy. Nabídky `where` a `what` obsahují kód pro vynucení tohoto omezení. Když zvolíte trh mimo USA při současně vybrané možnosti Places v nabídce `what`, změní se `what`na Anything. Když zvolíte místa při současně vybraném trhu mimo USA v nabídce `where`, změní se `where` na US.
 
-Naše JavaScript funkce `bingSearchOptions()` převede těchto polí s řetězcem dotazu částečné pro rozhraní API služby Bing Search.
+Naše JavaScriptová funkce `bingSearchOptions()` převede tato pole na řetězec částečného dotazu rozhraní API pro vyhledávání Bingu.
 
 ```javascript
 // build query options from the HTML form
@@ -156,17 +157,17 @@ function bingSearchOptions(form) {
 }
 ```
 
-Například může být funkci bezpečné hledání `strict`, `moderate`, nebo `off`, s `moderate` se výchozí hodnota. Ale naše formulář používá zaškrtávací políčko, který má jenom dva stavy. Kód jazyka JavaScript převede toto nastavení buď `strict` nebo `off` (jsme nepoužívejte `moderate`).
+Například funkce bezpečného hledání může být `strict`, `moderate` nebo `off`, s výchozí hodnotou `moderate`. Náš formulář ale používá zaškrtávací políčko, které má jenom dva stavy. Kód JavaScriptu toto nastavení převede na `strict` nebo `off` (`moderate` nepoužíváme).
 
-`mapquery` Pole nejsou zpracovávány v `bingSearchOptions()` protože je používán pro dotaz umístění mapy Bing, ne pro hledání Entity Bing.
+Funkce `bingSearchOptions()` nepracuje s polem `mapquery`. To se použije pro dotaz na polohu Mapám Bing, nikoli rozhraní API Bingu pro vyhledávání entit.
 
-## <a name="obtaining-a-location"></a>Získání umístění
+## <a name="obtaining-a-location"></a>Získání polohy
 
-Rozhraní API map Bing nabízí [ `locationQuery` metoda](//msdn.microsoft.com/library/ff701711.aspx), které jsou používány za účelem vyhledání zeměpisnou a zadání zeměpisné umístění uživatele. Tyto souřadnice jsou předána do rozhraní API pro vyhledávání Bing Entity požadavku uživatele. Výsledky hledání prioritu entity a míst, na které blíží v zadaném umístění.
+Rozhraní API Map Bing nabízí [`locationQuery` metodu](//msdn.microsoft.com/library/ff701711.aspx). Použijeme ji k najití zeměpisné šířky a délky polohy, které zadá uživatel. Tyto souřadnice se pak s požadavkem uživatele předají rozhraní API Bingu pro vyhledávání entit. Výsledky hledání upřednostňují entity a místa, která jsou blízko zadané polohy.
 
-Nemohli jsme získat přístup pomocí běžný rozhraní API map Bing `XMLHttpRequest` dotazu ve webové aplikaci, protože služba nepodporuje dotazy nepůvodního zdroje. Naštěstí podporuje JSONP ("P" je pro "vyplní"). Odpověď JSONP je odpověď obyčejnou JSON zabalené ve volání funkce. Požadavku vložením pomocí `<script>` značka do dokumentu. (Načítání skripty není předmětem zásad zabezpečení prohlížeče.)
+Ve webové aplikaci nemůžeme přistupovat k rozhraní API Map Bing pomocí běžného dotazu `XMLHttpRequest`, protože tato služba nepodporuje dotazy nepůvodního zdroje. JSONP (kde P znamená odsazený (padded)) ji naštěstí podporuje. Odpověď JSONP je běžná odpověď JSON zabalená do volání funkce. Požadavek se vytvoří vložením značky `<script>` do dokumentu. (Načítání skriptů nepodléhá zásadám zabezpečení prohlížeče)
 
-`bingMapsLocate()` Funkce vytvoří a vloží `<script>` značky pro dotaz. `jsonp=bingMapsCallback` Segmentu řetězce dotazu určuje název funkce, která má být volána s odpovědí.
+Funkce `bingMapsLocate()` vytvoří a vloží značku `<script>` pro dotaz. Segment `jsonp=bingMapsCallback` řetězce dotazu určuje název funkce volané s odpovědí.
 
 ```javascript
 function bingMapsLocate(where) {
@@ -197,9 +198,9 @@ function bingMapsLocate(where) {
 ```
 
 > [!NOTE]
-> Pokud rozhraní API map Bing neodpoví, `bingMapsCallBack()` volána funkce. To obvykle znamená, `bingEntitySearch()` není volán, a entity výsledky hledání se nezobrazí. Chcete-li zamezit tomuto scénáři `bingMapsLocate()` také nastaví časovač pro volání `bingEntitySearch()` po pět sekund. Funkce zpětného volání, aby se zabránilo prohledávání dvakrát entity není logiku.
+> Funkce `bingMapsCallBack()` se nevolá, pokud rozhraní API Map Bing neodpovídá. Obvykle by to znamenalo, že se funkce `bingEntitySearch()` nevolá a výsledky hledání entit se nezobrazí. Funkce `bingMapsLocate()` proto také spustí časovač, aby volala po pěti sekundách funkci `bingEntitySearch()`. Tak tomuto scénáři zabrání. Logika funkce zpětného volání zabraňuje provedení dvojnásobného hledání entit.
 
-Po dokončení dotazu `bingMapsCallback()` funkce je volána, jak si vyžádal.
+Po dokončení dotazu se volá funkce `bingMapsCallback()` podle požadavku.
 
 ```javascript
 function bingMapsCallback(response) {
@@ -246,15 +247,15 @@ function bingMapsCallback(response) {
 }
 ```
 
-Společně s zeměpisné šířky a délky, vyžaduje vyhledávací Entity Bing dotaz *radius* určující přesnost informace o umístění. Jsme vypočítat pomocí protokolu radius *ohraničujícího pole* zadaná v odpovědi mapy Bing. Pole ohraničující je obdélníku, která obklopuje celý umístění. Například, pokud uživatel zadá `NYC`, výsledek obsahuje zhruba centrální souřadnice New Yorku a ohraničující pole, která zahrnuje města. 
+Dotaz rozhraní API Bingu pro vyhledávání entit vyžaduje společně se zeměpisnou šířkou a délkou také *poloměr*, který určuje přesnost informací o poloze. Poloměr počítáme pomocí *ohraničujícího rámečku*, který poskytla odpověď Map Bing. Ohraničující rámeček je obdélník, který ohraničuje celé umístění. Když například uživatel zadá `NYC`, výsledkem budou zhruba souřadnice středu města New York a ohraničující rámeček, který město obklopuje. 
 
-Nám nejdřív vypočítat daleko od primární souřadnice všechny čtyři rohy ohraničujícího rámečku pomocí funkce `haversineDistance()` (není vidět). Používáme jako poloměr největší těchto čtyř vzdáleností. Minimální radius je kilometr. Tato hodnota se také používá jako výchozí, pokud je k dispozici žádné ohraničující pole v odpovědi.
+Nejprve spočítáme vzdálenosti primárních souřadnic od všech čtyř rohů ohraničujícího rámečku pomocí funkce `haversineDistance()` (neukázáno). Největší z těchto čtyř vzdáleností použijeme jako poloměr. Nejmenší velikost poloměru je jeden kilometr. Tato hodnota je zároveň použitá jako výchozí, když v odpovědi není ohraničující rámeček.
 
-Po obdržení souřadnice a poloměr, pak říkáme `bingEntitySearch()` skutečné vyhledávání.
+Když jsme získali souřadnice a poloměr, voláním funkce `bingEntitySearch()` provedeme skutečné hledání.
 
-## <a name="performing-the-search"></a>Provádění hledání
+## <a name="performing-the-search"></a>Provedení vyhledávání
 
-Zadaný dotaz, umístění, řetězec možnosti a klíč rozhraní API `BingEntitySearch()` funkce provede požadavek hledání Entity Bing.
+Funkce `BingEntitySearch()` s daným dotazem, polohou, řetězcem možností a klíčem rozhraní API vyšle požadavek rozhraní API Bingu pro vyhledávání entit.
 
 ```javascript
 // perform a search given query, location, options string, and API keys
@@ -307,7 +308,7 @@ function bingEntitySearch(query, latlong, options, key) {
 }
 ```
 
-Po úspěšném požadavku HTTP, volání JavaScriptu naše `load` obslužné rutiny události, `handleBingResponse()` funkce pro zpracování úspěšné žádosti HTTP GET do rozhraní API. 
+Při úspěšném dokončení požadavku HTTP volá JavaScript naši obslužnou rutinu události `load`, funkci `handleBingResponse()`, ke zpracování úspěšného požadavku HTTP GET na rozhraní API. 
 
 ```javascript
 // handle Bing search request results
@@ -375,43 +376,43 @@ function handleBingResponse() {
 ```
 
 > [!IMPORTANT]
-> V případě úspěšné žádosti HTTP nemá *není* nutně znamenají, že celé hledání úspěšné. Pokud dojde k chybě v operaci vyhledávání, rozhraní API služby Bing Entity Search vrátí stavový kód 200 HTTP a obsahuje informace o chybě v odpovědi JSON. Kromě toho pokud se požadavek míra limited, rozhraní API vrátí prázdnou odpověď.
+> Úspěšný požadavek HTTP *nemusí* nutně znamenat, že bylo úspěšné samotné vyhledávání. Pokud v operaci vyhledávání dojde k chybě, rozhraní API Bingu pro vyhledávání entit vrátí stavový kód HTTP jiný než 200 zahrnující informace o chybě v odpovědi JSON. Kromě toho, pokud byl požadavek omezený rychlostí, vrátí rozhraní API prázdnou odpověď.
 
-Většinu kódu v obou těchto funkcí jsou vyhrazené pro zpracování chyb. Může dojít k chybám v těchto fází:
+Velká část kódu v obou předchozích funkcích je vyhrazená zpracování chyb. K chybám může dojít v těchto fázích:
 
-|Krok|Potenciální chyby|Zpracovává|
+|Krok|Potenciální chyby|Čím se zpracuje|
 |-|-|-|
-|Objekt požadavku sestavení jazyka JavaScript|Neplatná adresa URL|`try`/`catch` blok|
-|Vytvoření požadavku|Chyby sítě, přerušené připojení|`error` a `abort` obslužné rutiny událostí|
-|Provádění hledání|Neplatný požadavek, neplatný formát JSON, omezení přenosové rychlosti|testů v `load` obslužné rutiny události|
+|Kompilace JavaScriptu vyžaduje objekt|Neplatná adresa URL|Blok `try`/`catch`|
+|Provedení požadavku|Chyby sítě, přerušená připojení|Obslužné rutiny událostí `error` a `abort`|
+|Provedení vyhledávání|Neplatný požadavek, neplatný JSON, omezení rychlosti|Testy v obslužné rutině události `load`|
 
-Řeší chyby volání `renderErrorMessage()` s nějaké podrobnosti o této chybě známé. Pokud odpověď úspěšně projde úplné gauntlet chyba testů, říkáme `renderSearchResults()` zobrazit výsledky vyhledávání na stránce.
+Chyby se zpracovávají voláním `renderErrorMessage()` se všemi známými podrobnostmi o chybě. Pokud odpověď úspěšné projde kompletní řadou testů chyb, voláme `renderSearchResults()` k zobrazení výsledků hledání na stránce.
 
-## <a name="displaying-search-results"></a>Zobrazení výsledků vyhledávání
+## <a name="displaying-search-results"></a>Zobrazení výsledků hledání
 
-Rozhraní API služby Bing Entity Search [vyžaduje, abyste zobrazit výsledky v zadaném pořadí](use-display-requirements.md). Vzhledem k tomu, že rozhraní API může vrátit dva různé druhy odpovědi, není dostatek k iteraci v rámci nejvyšší úrovně `Entities` nebo `Places` kolekce v odpovědi JSON a zobrazení výsledků. (Pokud chcete, aby pouze jeden typ výsledku, použijte `responseFilter` parametr dotazu.)
+Rozhraní API Bingu pro vyhledávání entit [vyžaduje zobrazení výsledků v určeném pořadí](use-display-requirements.md). Vzhledem k tomu, že rozhraní API může vrátit dva různé druhy odpovědí, nestačí iterovat jenom nejvyšší úroveň kolekce `Entities` nebo `Places` v odpovědi JSON a pak tyto výsledky zobrazit. (Pokud chcete jenom jeden typ výsledku, použijte parametr dotazu `responseFilter`.)
 
-Místo toho používáme `rankingResponse` kolekce ve výsledcích hledání pro řazení výsledků pro zobrazení. Tento objekt odkazuje na položky ve `Entitiess` nebo `Places` kolekce.
+Místo toho použijeme kolekci `rankingResponse` výsledků hledání k řazení výsledků pro zobrazení. Tento objekt odkazuje na položky v kolekcích `Entitiess` nebo `Places`.
 
-`rankingResponse` může obsahovat až tři kolekce výsledky hledání, určené `pole`, `mainline`, a `sidebar`. 
+`rankingResponse` může obsahovat až tři kolekce výsledků hledání označené `pole`, `mainline` a `sidebar`. 
 
-`pole`, pokud existuje, je nejdůležitější výsledek hledání a měla by se zobrazit přednostně. `mainline` odkazuje k hromadnému výsledků vyhledávání. Nejdůležitějších výsledky mají být zobrazeny ihned po `pole` (nebo první, pokud `pole` není k dispozici). 
+`pole`, pokud je k dispozici, je nejvíce relevantní výsledek, který by měl být zobrazený přednostně. `mainline` odkazuje na hlavní skupinu výsledky hledání. Tyto hlavní výsledky by se měly zobrazit hned po `pole` (nebo jako první, když není `pole` k dispozici). 
 
-Nakonec. `sidebar` odkazuje na výsledky pomocného hledání. Může se zobrazit skutečné bočním panelu nebo jednoduše po nejdůležitějších výsledky. Jsme zvolili k tomu pro naše kurz aplikaci.
+A nakonec. `sidebar` odkazuje na pomocné výsledky hledání. Ty se můžou zobrazit buď na skutečném bočním panelu, nebo prostě po hlavních výsledcích. Pro náš kurz jsme zvolili druhou variantu.
 
-Každá položka v `rankingResponse` kolekce odkazuje na položky výsledků vyhledávání skutečné dvěma způsoby jiné, ale ekvivalentní.
+Každá položka v kolekci `rankingResponse` odkazuje k položce skutečných výsledků hledání dvěma různými, ale rovnocennými způsoby.
 
 | | |
 |-|-|
-|`id`|`id` Vypadá jako adresu URL, ale by nemělo být použito pro odkazy. `id` Typ výsledku hodnocení odpovídá `id` buď vyhledávání výsledek položky v kolekci odpovědí *nebo* kolekci celé odpovědi (například `Entities`).
-|`answerType`<br>`resultIndex`|`answerType` Odkazuje na kolekci nejvyšší úrovně odpovědí, která obsahuje výsledek (například `Entities`). `resultIndex` Odkazuje výsledek index v rámci této kolekce. Pokud `resultIndex` je tento parametr vynechán, výsledek hodnocení odkazuje na celou kolekci.
+|`id`|`id` vypadá jako adresa URL, ale pro odkazy by se používat nemělo. `id` typ výsledku hledání odpovídá `id` položky výsledku hledání v kolekci odpovědí, *nebo* celé kolekce odpovědí (jako například `Entities`).
+|`answerType`<br>`resultIndex`|`answerType` odkazuje na nejvyšší úroveň kolekce odpovědí, která obsahuje výsledky (například `Entities`). `resultIndex` odkazuje na index výsledků v této kolekci. Když vynecháme `resultIndex`, bude výsledek hodnocení odkazovat na celou kolekci.
 
 > [!NOTE]
-> Další informace v této části odpovědi vyhledávání najdete v tématu [pořadí výsledky](rank-results.md).
+> Další informace o této části odpovědi hledání naleznete v [Výsledky hodnocení](rank-results.md).
 
-Můžete použít kteroukoli metodu vyhledání položku výsledek odkazované vyhledávání je nejvhodnější pro vaši aplikaci. V našem kódu, použijeme `answerType` a `resultIndex` najít každý výsledek hledání.
+K lokalizaci zmíněné položky výsledku hledání použijte takovou metodu, která bude pro vaši aplikaci nejvhodnější. V našem ukázkovém kódu použijeme `answerType` a `resultIndex` k lokalizaci výsledku hledání.
 
-Nakonec je na čase podívat se na naše funkce `renderSearchResults()`. Tato funkce iteruje nad tří `rankingResponse` kolekce, které představují na tři části výsledků vyhledávání. Pro každý oddíl říkáme `renderResultsItems()` k vykreslení výsledky pro tuto část.
+Konečně je čas podívat se na naši funkci `renderSearchResults()`. Tato funkce iteruje přes tři kolekce `rankingResponse`, které představují tři sekce výsledků hledání. Voláme `renderResultsItems()` pro každou sekci. Zobrazíme tak výsledky každé z nich.
 
 ```javascript
 // render the search results given the parsed JSON response
@@ -429,9 +430,9 @@ function renderSearchResults(results) {
 }
 ```
 
-## <a name="rendering-result-items"></a>Vykreslování položky výsledků
+## <a name="rendering-result-items"></a>Vykreslování položek výsledků
 
-V našem JavaScript kód je objekt, `searchItemRenderers`, který obsahuje *nástroji pro vykreslování:* výsledek hledání funkce, které generují kód HTML pro každý typ.
+V našem kódu JavaScriptu je objekt `searchItemRenderers` obsahující *renderery* - funkce, které generují kód HTML pro každý druh výsledku hledání.
 
 ```javascript
 searchItemRenderers = { 
@@ -440,17 +441,17 @@ searchItemRenderers = {
 }
 ```
 
-Funkce zobrazovací jednotky může přijímat následující parametry:
+Funkce rendereru bude přijímat tyto parametry:
 
 | | |
 |-|-|
-|`item`|JavaScript objekt obsahující vlastnosti položky, například jeho adresa URL a její popis.|
-|`index`|Index položky výsledek v rámci jeho kolekce.|
-|`count`|Počet položek v kolekci položku výsledek hledání.|
+|`item`|Objekt JavaScriptu obsahující vlastnosti položky, jako je její adresa URL a popis.|
+|`index`|Index položky výsledků v rámci jeho kolekce.|
+|`count`|Počet položek v kolekci položek výsledků hledání.|
 
-`index` a `count` parametry můžete použít k počet výsledků, generovat speciální HTML pro začátku nebo na konec kolekce, chcete-li vložit konce řádků po určitý počet položek a tak dále. Pokud vykreslovací modul není nutné tuto funkci, není nutné přijmout tyto dva parametry. Ve skutečnosti jsme nepoužívejte je v nástroji pro vykreslování pro naše kurz aplikaci.
+Parametry `index` a `count` se můžou použít k číslování výsledků, generování zvláštního kódu HTML pro začátek nebo konec kolekce, vložení konců řádků za určitý počet položek a tak dále. Pokud renderer tuto funkci nepotřebuje, nepotřebuje tyto dva parametry přijímat. Fakticky je v rendererech naší ukázkové aplikace nepoužíváme.
 
-Podívejme bližší pohled na `entities` zobrazovací jednotky:
+Podívejme se na renderer `entities` zblízka:
 
 ```javascript
     entities: function(item) {
@@ -501,51 +502,51 @@ Podívejme bližší pohled na `entities` zobrazovací jednotky:
     }, // places renderer omitted
 ```
 
-Naše entity vykreslovací funkce:
+Naše funkce rendereru entity:
 
 > [!div class="checklist"]
-> * Sestavení HTML `<img>` značky zobrazíte miniaturu obrázku, pokud existuje. 
-> * Sestavení HTML `<a>` značky, který odkazuje na stránku, který obsahuje bitovou kopii.
-> * Popis, který zobrazí informace o bitové kopie a na server, který se nachází na sestavení.
-> * Zahrnuje entity klasifikace pomocí Rady k zobrazení, pokud existuje.
-> * Zahrnuje odkaz na hledání Bing získat další informace o entitě.
-> * Zobrazí všechny licenčních smluv nebo porušení informace požaduje zdroje dat.
+> * Vytvoří značku HTML `<img>` k zobrazení miniatury obrázku, pokud existuje. 
+> * Vytvoří značku HTML `<a>` odkazující na stránku, která obsahuje obrázek.
+> * Vytvoří popis, který zobrazuje informace o obrázku a webu, na kterém se nachází.
+> * Obsahuje klasifikaci entity pomocí zobrazení tipů, pokud existují.
+> * Zahrnuje odkaz na hledání Bingu s dalšími informacemi o entitě.
+> * Zobrazí všechna licencování nebo informace o přiřazení podle zdrojů dat.
 
 ## <a name="persisting-client-id"></a>Zachování ID klienta
 
-Může zahrnovat odpovědí z hledání Bing rozhraní API `X-MSEdge-ClientID` záhlaví, který by měly být odeslány zpět do rozhraní API s následující požadavky. Pokud se používají rozhraní API pro vyhledávání více Bing, musí být stejné ID klienta použit s všechny z nich, pokud je to možné.
+Odpovědi z rozhraní API pro vyhledávání Bingu můžou zahrnovat hlavičku `X-MSEdge-ClientID`, která by se měla odesílat zpět do rozhraní API v následných požadavcích. Pokud se používá více rozhraní API pro vyhledávání Bingu, mělo by se pro všechny používat stejné ID klienta, pokud je to možné.
 
-Poskytuje `X-MSEdge-ClientID` záhlaví umožňuje rozhraní API Bingu pro všechny uživatele vyhledávání, která má dvě důležité výhody přidružení.
+Poskytnutí hlavičky `X-MSEdge-ClientID` umožňuje rozhraním API Bingu spojit si všechna uživatelova vyhledávání. To má dvě důležité výhody.
 
-Nejprve umožňuje Bing vyhledávacího webu použít po kontextu hledání nalézt výsledky, které lépe odpovídají uživatele. Pokud uživatel má dříve hledali podmínky týkající se řízení, například novější vyhledejte "přepraviště" může přednostně vrácení informací o místa a ukotvení plachetnice.
+Zaprvé to umožňuje, aby vyhledávací web Bing na vyhledávání aplikoval minulý kontext a našel výsledky, které uživatele více uspokojí. Pokud uživatel v minulosti vyhledával třeba výrazy týkající se lodí, pozdější vyhledání „doků“ může přednostně vrátit informace o docích používaných pro kotvení lodí.
 
-Druhý Bing může náhodně vyberte uživatele, můžete vyzkoušet nové funkce dřív, než budou k dispozici. Poskytuje stejné ID klienta s každou žádostí zajistí, že ji uživatelé, které byly vybrány zobrazíte funkce vždy zobrazit. Bez ID klienta může uživatel zobrazit funkci Zobrazit a zmizí, zdánlivě v náhodných v příslušných výsledcích hledání.
+Za druhé může Bing náhodně vybírat uživatele k vyzkoušení nových funkcí, než budou všeobecně dostupné. Poskytnutí stejného ID klienta s každým požadavkem zajistí, že uživatelé vybraní tuto funkci vidět, ji vidí vždy. Bez ID klienta může uživatel funkci ve svých výsledcích hledání někdy vidět a jindy ne, zdánlivě náhodně.
 
-Zásady zabezpečení prohlížeče (CORS) může zabránit `X-MSEdge-ClientID` záhlaví dostupný pro JavaScript. Toto omezení nastane při hledání odpovědi má jiný počátek ze stránky, která je požadována. V produkčním prostředí je potřeba vyřešit tuto zásadu hostováním skript na straně serveru, který provede volání rozhraní API ve stejné doméně jako webovou stránku. Vzhledem k tomu, že skript má stejný původ jako webovou stránku, `X-MSEdge-ClientID` záhlaví je pak možné JavaScript.
+Zásady zabezpečení prohlížeče (CORS) můžou bránit tomu, aby byla hlavička `X-MSEdge-ClientID` pro JavaScript dostupná. K tomuto omezení dochází, když odpověď na vyhledávání má jiný zdroj než stránka, která o ni požádala. V produkčním prostředí je potřeba tyto zásady vyřešit hostováním skriptu na straně serveru, který provádí volání rozhraní API ve stejné doméně jako webová stránka. Protože tento skript má stejný původ jako webová stránka, hlavička `X-MSEdge-ClientID` je pak pro JavaScript dostupná.
 
 > [!NOTE]
-> V produkční webové aplikace měli byste provést serverovou žádost přesto. Klíč rozhraní API služby Bing Search, jinak hodnota musí být součástí webové stránky, kde je k dispozici všem uživatelům zobrazení zdroje. Fakturuje se pro všechny využití v rámci předplatného klíč rozhraní API, i požadavkům neoprávněným stranami, proto je důležité, abyste vystavit váš klíč.
+> Při tvorbě webové aplikace byste měli požadavek provádět na straně serveru tak jako tak. Jinak musí být klíč rozhraní API pro vyhledávání Bingu součástí webové stránky, kde je k dispozici každému, kdo si zobrazí zdroj. Účtuje se vám veškeré využívání vašeho klíče předplatného rozhraní API, dokonce i požadavky provedené neoprávněnými stranami, proto je důležité klíč nezveřejňovat.
 
-Pro účely vývoje můžete provést žádost Bing webového vyhledávání rozhraní API prostřednictvím proxy serveru CORS. Odpověď proxy serveru má `Access-Control-Expose-Headers` záhlaví této hlavičky odpovědi povolených programů a jejich zpřístupní JavaScript.
+Pro účely vývoje můžete požadavek na rozhraní API Bingu pro vyhledávání na webu provést prostřednictvím proxy serveru CORS. Odpověď z takového proxy serveru má hlavičku `Access-Control-Expose-Headers`, která přidává hlavičky odpovědí na seznam povolených a zpřístupňuje je pro JavaScript.
 
-Je snadné se má nainstalovat proxy CORS umožňující našem kurzu aplikaci pro přístup klienta do záhlaví ID. První, pokud ještě nemáte, [instalace softwaru Node.js](https://nodejs.org/en/download/). Potom vydejte následující příkaz v příkazovém okně:
+Proxy server CORS nainstalovat a povolit naší ukázkové aplikaci přístup k ID klienta je snadné. Nejdřív [nainstalujte Node.js](https://nodejs.org/en/download/), pokud jste to ještě neudělali. Pak zadejte v příkazovém okně tento příkaz:
 
     npm install -g cors-proxy-server
 
-V dalším kroku změňte hledání webové služby Bing koncový bod v souboru HTML na:
+V dalším kroku změňte koncový bod vyhledávání na webu Bingu v souboru HTML na:
 
     http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
 
-Nakonec spusťte CORS proxy pomocí následujícího příkazu:
+Nakonec spusťte proxy server CORS pomocí tohoto příkazu:
 
     cors-proxy-server
 
-Nechte Otevřete příkazové okno při používání kurz aplikace; zavřením okna zastaví proxy serveru. V rozšíření hlavičky protokolu HTTP části níže výsledky hledání, se nyní zobrazí `X-MSEdge-ClientID` hlavičky (mimo jiné) a ověřte, zda je stejný pro každý požadavek.
+Při používání ukázkové aplikace nechte příkazové okno otevřené. Zavřením okna se zastaví proxy server. V rozbalitelné sekci hlaviček HTTP pod výsledky hledání teď uvidíte hlavičku `X-MSEdge-ClientID` (mimo jiné) a můžete zkontrolovat, jestli je stejná pro každý požadavek.
 
-## <a name="next-steps"></a>Další postup
-
-> [!div class="nextstepaction"]
-> [Referenční dokumentace rozhraní API vyhledávání Entity Bing](//docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Dokumentace rozhraní API map Bing](//msdn.microsoft.com/library/dd877180.aspx)
+> [Reference rozhraní API Bingu pro vyhledávání entit](//docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+
+> [!div class="nextstepaction"]
+> [Dokumentace rozhraní API Map Bing](//msdn.microsoft.com/library/dd877180.aspx)

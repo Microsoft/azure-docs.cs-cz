@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: db4f83d0d407ad3d9e895759ea2a687662f5620a
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: fbaf6b92a2605d284a749365d542c223e09f730d
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053291"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362598"
 ---
 # <a name="introduction-to-auto-scaling"></a>Úvod k automatickému škálování
 Automatické škálování je další schopností Service Fabric dynamické škálování služeb na základě zatížení, které služby se hlásí, nebo na základě jejich využití prostředků. Automatické škálování poskytuje skvělé pružnost a umožňuje zřízení dalších instancí nebo oddíly služby na vyžádání. Celý automatické škálování zpracování je automatické a transparentní, a po nastavení zásad pro službu není nutné pro ruční operace škálování na úrovni služby. Automatické škálování je možné zapnout na buď při vytváření služby, nebo kdykoli při aktualizaci.
@@ -120,7 +120,7 @@ Druhý aktivační událost podle zatížení všech oddílů z jedné služby. 
 * _Horní prahová hodnota zatížení_ je hodnota, která určuje, kdy bude služba **škálované**. Pokud je průměrné zatížení všech oddílů služby je vyšší než tato hodnota, bude služba horizontálním navýšení kapacity.
 * _Interval škálování_ Určuje, jak často budou trigger kontrolovat. Po zaškrtnutí aktivační událost, pokud škálování je potřeba mechanismu, který se použije. Podle potřeby škálování není, bude provedena žádná akce. V obou případech se aktivační událost nebude znovu zkontrolovat vypršení platnosti interval škálování znovu.
 
-Tato aktivační událost může být použit s stavové a bezstavové služby. Pouze mechanismus, který lze použít s tímto triggerem je AddRemoveIncrementalNamedParitionScalingMechanism. Služba horizontálně potom je přidán nový oddíl a data služby je škálování v jednom z existující oddíly se odebere. Platí omezení, které budou zkontrolovány, jakmile se vytvoří nebo aktualizuje služba a služba vytvoření/aktualizace se nezdaří, pokud nejsou splněny tyto podmínky:
+Tato aktivační událost může být použit s stavové a bezstavové služby. Pouze mechanismus, který lze použít s tímto triggerem je AddRemoveIncrementalNamedPartitionScalingMechanism. Služba horizontálně potom je přidán nový oddíl a data služby je škálování v jednom z existující oddíly se odebere. Platí omezení, které budou zkontrolovány, jakmile se vytvoří nebo aktualizuje služba a služba vytvoření/aktualizace se nezdaří, pokud nejsou splněny tyto podmínky:
 * Použije schéma s názvem oddílu služby.
 * Názvy oddílů musí být celé číslo po sobě jdoucí čísla, jako je "0", "1"...
 * První název oddílu musí být "0".
@@ -137,7 +137,7 @@ Stejně jako u mechanismus, který používá škálování přidáváním nebo 
 * _Minimální počet instancí_ definuje dolní mez pro škálování. Pokud počet oddílů služby se dosáhne tohoto limitu, nebude možné službu škálovat ve bez ohledu na to, zatížení.
 
 > [!WARNING] 
-> Při použití AddRemoveIncrementalNamedParitionScalingMechanism s stavové služby Service Fabric se přidat nebo odebrat oddíly **bez oznámení a upozornění**. Oddílů dat nebude provedena, když se aktivuje škálování mechanismus. V případě, že o operaci vertikálního navýšení, nových oddílů bude prázdný a v případě vertikálního snižování kapacity operace, **oddílu se odstraní spolu s všechna data, která obsahuje**.
+> Při použití AddRemoveIncrementalNamedPartitionScalingMechanism s stavové služby Service Fabric se přidat nebo odebrat oddíly **bez oznámení a upozornění**. Oddílů dat nebude provedena, když se aktivuje škálování mechanismus. V případě, že o operaci vertikálního navýšení, nových oddílů bude prázdný a v případě vertikálního snižování kapacity operace, **oddílu se odstraní spolu s všechna data, která obsahuje**.
 
 ## <a name="setting-auto-scaling-policy"></a>Nastavení automatického škálování zásad
 
@@ -146,7 +146,7 @@ Stejně jako u mechanismus, který používá škálování přidáváním nebo 
 <ServiceScalingPolicies>
     <ScalingPolicy>
         <AverageServiceLoadScalingTrigger MetricName="servicefabric:/_MemoryInMB" LowerLoadThreshold="300" UpperLoadThreshold="500" ScaleIntervalInSeconds="600"/>
-        <AddRemoveIncrementalNamedParitionScalingMechanism MinPartitionCount="1" MaxPartitionCount="3" ScaleIncrement="1"/>
+        <AddRemoveIncrementalNamedPartitionScalingMechanism MinPartitionCount="1" MaxPartitionCount="3" ScaleIncrement="1"/>
     </ScalingPolicy>
 </ServiceScalingPolicies>
 ```
@@ -155,7 +155,7 @@ Stejně jako u mechanismus, který používá škálování přidáváním nebo 
 FabricClient fabricClient = new FabricClient();
 StatefulServiceUpdateDescription serviceUpdate = new StatefulServiceUpdateDescription();
 AveragePartitionLoadScalingTrigger trigger = new AverageServiceLoadScalingTrigger();
-PartitionInstanceCountScaleMechanism mechanism = new AddRemoveIncrementalNamedParitionScalingMechanism();
+PartitionInstanceCountScaleMechanism mechanism = new AddRemoveIncrementalNamedPartitionScalingMechanism();
 mechanism.MaxPartitionCount = 4;
 mechanism.MinPartitionCount = 1;
 mechanism.ScaleIncrement = 1;
@@ -171,7 +171,7 @@ await fabricClient.ServiceManager.UpdateServiceAsync(new Uri("fabric:/AppName/Se
 ```
 ### <a name="using-powershell"></a>Pomocí Powershellu
 ```posh
-$mechanism = New-Object -TypeName System.Fabric.Description.AddRemoveIncrementalNamedParitionScalingMechanism
+$mechanism = New-Object -TypeName System.Fabric.Description.AddRemoveIncrementalNamedPartitionScalingMechanism
 $mechanism.MinPartitionCount = 1
 $mechanism.MaxPartitionCount = 3
 $mechanism.ScaleIncrement = 2

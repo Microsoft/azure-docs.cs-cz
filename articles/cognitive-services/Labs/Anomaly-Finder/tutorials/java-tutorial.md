@@ -1,56 +1,57 @@
 ---
-title: Detekce anomálií aplikace v Javě – Microsoft Cognitive Services | Dokumentace Microsoftu
-description: Prozkoumejte aplikace v Javě, která používá rozhraní API pro detekci anomálií v Microsoft Cognitive Services. Odeslat původní datové body k rozhraní API a získat očekávanou hodnotu a anomálií body.
+title: 'Kurz: Detekce anomálií, Java'
+titlesuffix: Azure Cognitive Services
+description: Prozkoumejte aplikaci Javy, která používá rozhraní API pro detekci anomálií. Odešlete původní datové body do rozhraní API a získejte očekávanou hodnotu a body anomálie.
 services: cognitive-services
 author: wenya
 manager: bix
 ms.service: cognitive-services
-ms.technology: anomaly-detection
-ms.topic: article
+ms.component: anomaly-detection
+ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: wenya
-ms.openlocfilehash: ac26e29f4a839f69b123489600c2c83fe395c48a
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
-ms.translationtype: MT
+ms.openlocfilehash: 4b544e2e59a40cebf75042c4040b84bceebcecf7
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247892"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887696"
 ---
-# <a name="anomaly-detection-java-application"></a>Aplikace v Javě detekce anomálií
+# <a name="tutorial-anomaly-detection-with-java-application"></a>Kurz: Detekce anomálií pomocí aplikace Javy
 
 [!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
-Tento článek ukazuje použití jednoduché aplikace v Javě pro volání rozhraní API pro detekci anomálií.  
-V příkladu s klíči předplatného odešle data časových řad pro rozhraní API pro detekci anomálií a získá všechny body anomálií a očekávaná hodnota pro každý datový bod z rozhraní API.
+Tento článek ukazuje použití jednoduché aplikace Javy k volání rozhraní API pro detekci anomálií.  
+V příkladu budou do rozhraní API pro detekci anomálií odeslána data časové řady s vaším klíčem předplatného. Poté budou z rozhraní API získány všechny body anomálií a očekávané hodnoty pro každý datový bod.
 
 ## <a name="prerequisites"></a>Požadavky
 
-### <a name="platform-requirements"></a>Požadavky na platformu
+### <a name="platform-requirements"></a>Požadavky platformy
 
-V tomto kurzu byla vyvinuta pomocí [IntelliJ IDEA](https://www.jetbrains.com/idea). A také je potřeba nainstalovat [Java Development Kit (JDK)](http://www.oracle.com/technetwork/java/javase/downloads/index.html) verze 1.8 + a aktuální [nástroje pro Apache Maven](http://maven.apache.org/) nástroj sestavení.
+Tento kurz jsme vyvinuli v [IntelliJ IDEA](https://www.jetbrains.com/idea). Také je potřeba nainstalovat [Java Development Kit (JDK)](http://www.oracle.com/technetwork/java/javase/downloads/index.html) verze 1.8 nebo vyšší a aktuální kompilátor [Apache's Maven](http://maven.apache.org/).
 
-### <a name="subscribe-to-anomaly-detection-and-get-a-subscription-key"></a>Přihlaste se k detekci anomálií odběru a získat klíč předplatného 
+### <a name="subscribe-to-anomaly-detection-and-get-a-subscription-key"></a>Předplaťte si službu detekce anomálií a získejte klíč předplatného 
 
 [!INCLUDE [GetSubscriptionKey](../includes/get-subscription-key.md)]
  
 
-## <a name="download-the-tutorial-project"></a>Stáhněte si kurz projekt
+## <a name="download-the-tutorial-project"></a>Stáhněte si výukový projekt
 
-1. Přejděte MicrosoftAnomalyDetection [Java úložiště](https://github.com/MicrosoftAnomalyDetection/java-sample).
-2. Klon klepněte na tlačítko Stáhnout.
-3. Klikněte na tlačítko Stáhnout ZIP ke stažení souboru .zip kurz projektu.
+1. Přejděte do [repozitáře Javy](https://github.com/MicrosoftAnomalyDetection/java-sample) MicrosoftAnomalyDetection.
+2. Klikněte na tlačítko Naklonovat nebo stáhnout.
+3. Klikněte na možnost Stáhnout ZIP a stáhněte soubor ZIP výukového projektu.
 
 <a name="Step1"></a>
-### <a name="open-the-tutorial-project"></a>Otevřete projekt kurz
+### <a name="open-the-tutorial-project"></a>Otevřete výukový projekt
 
-1. Extrahování souboru ZIP projektu kurz.
-2. V IntelliJ IDEA, klikněte na tlačítko **soubor > Otevřít**, zobrazí se dialogové okno otevření souboru nebo projektu.
-3. Vyberte kořenovou cestu extrahovaný projekt a pak klikněte na tlačítko OK.
-4. Na panelu projekty rozbalte **src > hlavní > java**.
-5. Dvakrát klikněte na panel com.microsoft.cognitiveservice.anomalydetection.Main.java načíst soubor v editoru.
+1. Rozbalte soubor ZIP výukového projektu.
+2. V IntelliJ IDEA klikněte na možnost **Soubor > Otevřít**. Zobrazí se dialog Otevřít soubor nebo projekt.
+3. Vyberte kořenovou cestu extrahovaného projektu a klikněte na tlačítko OK.
+4. Na panelu Projekty rozbalte cestu **src > main > java**.
+5. Dvojitým kliknutím na položku com.microsoft.cognitiveservice.anomalydetection.Main.java načtěte soubor do editoru.
 
 <a name="Step2"></a>
-### <a name="replace-subscriptionkey-and-uri-region"></a>Nahraďte subscriptionKey a identifikátor URI oblasti
+### <a name="replace-subscriptionkey-and-uri-region"></a>Nahraďte hodnoty subscriptionKey a oblast URI
 
 ```
 // **********************************************
@@ -65,17 +66,17 @@ public static final String uriBase = "https://api.labs.cognitive.microsoft.com/a
 ```
 
 <a name="Step3"></a>
-### <a name="build-and-run-the-tutorial-project"></a>Sestavte a spusťte projekt kurz
+### <a name="build-and-run-the-tutorial-project"></a>Sestavte a spusťte výukový projekt
 
-1. V nabídce otevřete kliknutím pravým tlačítkem myši kdekoli v kartě com.microsoft.cognitiveservice.anomalydetection.Main.java zdrojového kódu. 
-2. Vybrat spuštění 'Main.main().
-3. Výsledek ukázkový požadavek se vrátí a zobrazí v terminálu.
+1. Kliknutím kdekoli na kartě zdrojového kódu souboru com.microsoft.cognitiveservice.anomalydetection.Main.java otevřete nabídku. 
+2. Vyberte možnost Spustit 'Main.main()'
+3. Bude vrácen výsledek ukázkového požadavku, který se zobrazí v terminálu.
 
-### <a name="result-of-the-tutorial-project"></a>Výsledek projekt kurz
+### <a name="result-of-the-tutorial-project"></a>Výsledek výukového projektu
 
 [!INCLUDE [diagrams](../includes/diagrams.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [REST API – referenční informace](https://dev.labs.cognitive.microsoft.com/docs/services/anomaly-detection/operations/post-anomalydetection)

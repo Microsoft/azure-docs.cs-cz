@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: adgera
-ms.openlocfilehash: 412e0d42744c9defa3fef6b3ae9643166e6c3b5c
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 28eb8b5dc0f75b5e031070803d35c8a1ceb1f000
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49324069"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364333"
 ---
 # <a name="security-best-practices"></a>Osvědčené postupy zabezpečení
 
@@ -54,7 +54,7 @@ Monitorování prostředků IoT a sledujte odlehlé hodnoty, hrozby nebo paramet
 Azure digitální dvojče používá Azure Active Directory k ověřování uživatelů a ochraně aplikací. Azure Active Directory podporuje ověřování pro širokou škálu moderní architektury, všechny z nich založené na standardních oborových protokolů, jako jsou OAuth 2.0 nebo OpenID Connect. Pár klíčů postupy zabezpečení IoT prostoru pro Azure Active Directory jsou následující:
 
 > [!div class="checklist"]
-> * Store klíčů nebo tajných kódů aplikace Azure Active Directory v zabezpečeném umístění, jako [služby Key Vault](https://azure.microsoft.com/en-us/services/key-vault/).
+> * Store klíčů nebo tajných kódů aplikace Azure Active Directory v zabezpečeném umístění, jako [služby Key Vault](https://azure.microsoft.com/services/key-vault/).
 > * Použít certifikát vydaný důvěryhodný [certifikační autority](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-certificate-based-authentication-get-started) místo tajných kódů aplikace k ověření.
 > * Omezit obor přístupu pro token OAuth 2.0.
 > * Zkontrolujte dobu, kterou je token platný a zda zůstane platný token.

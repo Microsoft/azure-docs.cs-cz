@@ -12,14 +12,14 @@ ms.author: genemi
 ms.reviewer: billgib, stein
 manager: craigg
 ms.date: 04/02/2018
-ms.openlocfilehash: b91960920f0181939e634a221080d493fb8cea63
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: ff09a5f09393ad642ddb2059b58bd69a17591aff
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056654"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352207"
 ---
-# <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>Nasazení a zkoumání horizontálně dělené aplikace více tenanty využívající Azure SQL Database
+# <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Nasazení a zkoumání horizontálně dělené aplikace s více tenanty
 
 V tomto kurzu nasazení a zkoumání ukázkové SaaS aplikace více tenantů, který je pojmenován Wingtip Tickets. Aplikace Wingtip Tickets je určen, aby ukazovala funkce služby Azure SQL Database, které usnadňují provádění scénáře SaaS.
 
@@ -27,7 +27,7 @@ Tato implementace aplikace Wingtip Tickets používá model horizontálně děle
 
 Tento model databáze umožňuje ukládat jednoho nebo více klientů v jednotlivých horizontálních oddílů nebo databáze. Můžete provést optimalizaci nejnižší náklady tím, že každá databáze být sdílen více tenantů. Nebo můžete optimalizovat pro zajištění izolace tak, že každá databáze uložit pouze jednoho tenanta. Podle vašeho výběru optimalizace lze nezávisle pro každý konkrétního tenanta. Podle vašeho výběru můžete vzít v úvahu tenanta nejprve uložená, nebo později změníte své rozhodnutí. Aplikace je navržen pro práci i v obou případech.
 
-#### <a name="app-deploys-quickly"></a>Rychle nasazuje aplikace
+## <a name="app-deploys-quickly"></a>Rychle nasazuje aplikace
 
 Aplikace běží v cloudu Azure a využívá Azure SQL Database. V následující části nasazení poskytuje modrá **nasadit do Azure** tlačítko. Při stisknutí tlačítka se ke svému předplatnému Azure během pěti minut plně nasazení aplikace. Máte plný přístup k práci s jednotlivé součásti aplikace.
 
@@ -35,7 +35,7 @@ Aplikace se nasazuje s daty pro tři ukázkoví tenanti. Klienti jsou uložená 
 
 Každý, stáhněte si zdrojový kód C# a PowerShell pro Wingtip Tickets z [své úložiště GitHub][link-github-wingtip-multitenantdb-55g].
 
-#### <a name="learn-in-this-tutorial"></a>Další informace v tomto kurzu
+## <a name="learn-in-this-tutorial"></a>Další informace v tomto kurzu
 
 > [!div class="checklist"]
 > - Jak nasadit aplikaci SaaS aplikace Wingtip Tickets.
@@ -55,15 +55,15 @@ Předpokladem dokončení tohoto kurzu je splnění následujících požadavků
 
 ## <a name="deploy-the-wingtip-tickets-app"></a>Nasazení Wingtip Tickets aplikace
 
-#### <a name="plan-the-names"></a>Plánování názvy
+### <a name="plan-the-names"></a>Plánování názvy
 
 V krocích v této části zadáte *uživatele* hodnotu, která se používá k zajištění jsou globálně jedinečné názvy prostředků a název *skupiny prostředků* obsahující všechny prostředky vytvořené v rámci nasazení aplikace. Pro osoby s názvem *Ann Finley*, doporučujeme:
-- *Uživatel:* **af1***(její iniciály, a navíc číslici.   Použít jinou hodnotu (například af2) Pokud nasadíte aplikaci podruhé.)*
+- *Uživatel:* **af1***(její iniciály, a navíc číslici. Použít jinou hodnotu (například af2) Pokud nasadíte aplikaci podruhé.)*
 - *Skupina prostředků:* **wingtip-mt – af1** *(wingtip-mt označuje to horizontálně dělené aplikace s více tenanty. Přidávání af1 uživatelské jméno koreluje název skupiny prostředků s názvy prostředků, které obsahuje.)*
 
 Teď zvolte názvy a zapište si. 
 
-#### <a name="steps"></a>Kroky
+### <a name="steps"></a>Kroky
 
 1. Klikněte na následující modrá **nasadit do Azure** tlačítko.
     - Otevře se na webu Azure portal se šablonou nasazení SaaS aplikace Wingtip Tickets.
@@ -133,7 +133,7 @@ Centrální **Centrum akcí** webová stránka obsahuje seznam odkazů na klient
 
    ![Události](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
 
-#### <a name="azure-traffic-manager"></a>Azure Traffic Manager
+### <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
 K řízení distribuce příchozích požadavků, aplikace Wingtip používá [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Stránka události pro každého klienta obsahuje název tenanta v adrese URL. Každá adresa URL obsahuje také vaše konkrétní hodnotu uživatele. Každá adresa URL dodržuje zobrazených formátu pomocí následujících kroků:
 
@@ -144,7 +144,7 @@ K řízení distribuce příchozích požadavků, aplikace Wingtip používá [A
 3. Aplikace vyhledá klíč v katalogu a získá odpovídající umístění databáze tenanta.
 4. Aplikace používá informace o geografickém umístění k vyhledání a přístupu k jedné databázi, která obsahuje veškerá data pro tenanta.
 
-#### <a name="events-hub"></a>Centrum akcí
+### <a name="events-hub"></a>Centrum akcí
 
 1. **Centrum akcí** obsahuje seznam všech tenantů, které jsou zaregistrovány v katalogu a jejich místa.
 2. **Centrum akcí** pomocí rozšířených metadat v katalogu pro načtení názvu tenanta, které jsou spojené s každou mapování k vytvoření adresy URL.
@@ -185,6 +185,7 @@ Aktualizovat **Centrum akcí**, a nového tenanta se zobrazí v seznamu.
 ## <a name="provision-a-new-tenant-in-its-own-database"></a>Zřízení nového tenanta v její vlastní databázi
 
 Horizontálně dělené víceklientského modelu můžete zvolit, jestli se ke zřízení nového tenanta do databáze, která obsahuje jiných klientů nebo do databáze svůj vlastní. Izolovali ve vlastní databázi tenanta má následující výhody:
+
 - Výkon databáze tenanta se dají spravovat bez nutnosti ohrozit uspokojení požadavků ostatních tenantů.
 - V případě potřeby databázi můžete obnovit k dřívějšímu bodu v čase, protože žádní další tenanti by byly ovlivněny.
 
@@ -221,7 +222,6 @@ Teď můžeme podívat na některé z nasazených prostředků:
 
    ![tenanti serveru](./media/saas-multitenantdb-get-started-deploy/tenants-server.png)
 
-
 ## <a name="monitor-the-performance-of-the-database"></a>Monitorování výkonu databáze nástroje
 
 Pokud generátor zatížení běžel několik minut, je podívat se na databázi monitorování součástí na webu Azure portal k dispozici dost telemetrických dat.
@@ -238,7 +238,7 @@ Pokud generátor zatížení běžel několik minut, je podívat se na databázi
 
 Generátor zatížení je ke každému tenantovi, bez ohledu na to, kterou databázi každý tenant je použití podobné zatížení. Pomocí pouze jednoho tenanta v **salixsalsa** databáze, uvidíte, že databáze může tolerovat mnohem větší zatížení než databáze s více tenanty. 
 
-#### <a name="resource-allocations-vary-by-workload"></a>Přidělení prostředků se liší podle úloh
+### <a name="resource-allocations-vary-by-workload"></a>Přidělení prostředků se liší podle úloh
 
 Někdy víceklientskou databázi s vyžaduje víc prostředků pro dobrý výkon, než se databáze s jedním tenantem, ale ne vždy. Optimální přidělení prostředků závisí na charakteristikách konkrétní úloh pro klienty ve vašem systému.
 
@@ -249,8 +249,9 @@ Někdy víceklientskou databázi s vyžaduje víc prostředků pro dobrý výkon
 - Další informace o víceklientské aplikace SaaS, naleznete v tématu [vzory návrhu pro víceklientské aplikace SaaS](saas-tenancy-app-design-patterns.md).
 
 - Další informace o elastických fondech najdete v tématu:
-    - [Elastické fondy umožňují spravovat a škálovat několika databázemi Azure SQL](sql-database-elastic-pool.md)
-    - [Horizontální navýšení kapacity s Azure SQL Database](sql-database-elastic-scale-introduction.md)
+
+  - [Elastické fondy umožňují spravovat a škálovat několika databázemi Azure SQL](sql-database-elastic-pool.md)
+  - [Horizontální navýšení kapacity s Azure SQL Database](sql-database-elastic-scale-introduction.md)
 
 ## <a name="next-steps"></a>Další postup
 

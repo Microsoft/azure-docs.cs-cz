@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: nobun
 ms.custom: mvc
-ms.openlocfilehash: cb143998ac46f7f86b2dbf47b69cee7843418f5d
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: d26e849cf775e0c645ae97e4b67b5918bbbabd55
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43191649"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49361374"
 ---
 # <a name="migrating-from-azure-container-service-acs-to-azure-kubernetes-service-aks"></a>Migrace ze služby Azure Container Service (ACS) do služby Azure Kubernetes Service (AKS)
 
@@ -29,7 +29,7 @@ Služba ACS a AKS se liší mezi klíčové oblasti, které mají vliv migrace. 
     * Vlastní `StorageClass` objekty pro disky Azure bude muset změnit z `unmanaged` do `managed`
     * Žádné `PersistentVolumes` musíte použít `kind: Managed`
 * AKS v současné době podporuje pouze jednoho agenta pro fond
-* Jsou nyní v systému Windows na serveru uzly [ve verzi private preview](https://azure.microsoft.com/en-us/blog/kubernetes-on-azure/)
+* Jsou nyní v systému Windows na serveru uzly [ve verzi private preview](https://azure.microsoft.com/blog/kubernetes-on-azure/)
 * Zkontrolujte seznam AKS [podporované oblasti](https://docs.microsoft.com/azure/aks/container-service-quotas)
 * AKS je spravovaná služba s hostovanou rovina řízení Kubernetes. Budete muset upravit vaše aplikace, pokud jste upravili dříve konfigurace hlavní služby ACS
 

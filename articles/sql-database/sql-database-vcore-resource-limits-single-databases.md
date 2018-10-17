@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 9ad43ecf2aa5649e582f1aa4159352edf9c8fa5b
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.date: 10/15/2018
+ms.openlocfilehash: 12074ad28e27a249a6dc378986f014ede1cd2ab3
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042593"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353575"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Založený na virtuálních jádrech zakoupení modelu omezení pro jednu databázi Azure SQL Database
 
@@ -28,14 +28,12 @@ Založený na DTU nákupní model omezení pro izolované databáze na logickém
 > [!IMPORTANT]
 > Za určitých okolností budete muset zmenšit databázi uvolnění nevyužívaného místa. Další informace najdete v tématu [spravovat místo souborů ve službě Azure SQL Database](sql-database-file-space-management.md).
 
+Můžete nastavit úroveň služby, výpočetního prostředí a velikost úložiště pro izolovanou databázi pomocí [webu Azure portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [příkazů jazyka Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-logical-servers-and-databases), [PowerShell](sql-database-single-databases-manage.md#powershell-manage-logical-servers-and-databases), [ Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-logical-servers-and-databases), nebo [rozhraní REST API](sql-database-single-databases-manage.md#rest-api-manage-logical-servers-and-databases).
 
-## <a name="single-database-storage-sizes-and-compute-sizes"></a>Izolované databáze: velikosti úložiště a výpočty velikostí
+## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>Obecné účely vrstvy služby: velikosti úložiště a výpočty velikostí
 
-Pro izolované databáze následující tabulky ukazují prostředky dostupné pro izolované databáze na jednotlivých úrovních služby a vypočítat velikost. Můžete nastavit úroveň služby, výpočetního prostředí a velikost úložiště pro izolovanou databázi pomocí [webu Azure portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [příkazů jazyka Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-logical-servers-and-databases), [PowerShell](sql-database-single-databases-manage.md#powershell-manage-logical-servers-and-databases), [ Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-logical-servers-and-databases), nebo [rozhraní REST API](sql-database-single-databases-manage.md#rest-api-manage-logical-servers-and-databases).
+### <a name="generation-4-compute-platform"></a>Výpočetní platforma běžící generace 4
 
-### <a name="general-purpose-service-tier"></a>Obecné účely úrovně služeb
-
-#### <a name="generation-4-compute-platform"></a>Výpočetní platforma běžící generace 4
 |Vypočítat velikost|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|GP_Gen4_24
 |:--- | --: |--: |--: |--: |--: |--: |
 |Generování H/W|4|4|4|4|4|4|
@@ -57,7 +55,8 @@ Pro izolované databáze následující tabulky ukazují prostředky dostupné p
 |Zahrnuté úložiště zálohování|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|
 |||
 
-#### <a name="generation-5-compute-platform"></a>Výpočetní platforma běžící generace 5
+### <a name="generation-5-compute-platform"></a>Výpočetní platforma běžící generace 5
+
 |Vypočítat velikost|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40| GP_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |
 |Generování H/W|5|5|5|5|5|5|5|
@@ -79,9 +78,10 @@ Pro izolované databáze následující tabulky ukazují prostředky dostupné p
 |Zahrnuté úložiště zálohování|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|
 |||
 
-### <a name="business-critical-service-tier"></a>Obchodní vrstvy kritické služby
+## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>Obchodní vrstvy služby: velikosti úložiště a výpočty velikostí
 
-#### <a name="generation-4-compute-platform"></a>Výpočetní platforma běžící generace 4
+### <a name="generation-4-compute-platform"></a>Výpočetní platforma běžící generace 4
+
 |Vypočítat velikost|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|BC_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Generování H/W|4|4|4|4|4|4|
@@ -103,7 +103,8 @@ Pro izolované databáze následující tabulky ukazují prostředky dostupné p
 |Zahrnuté úložiště zálohování|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|
 |||
 
-#### <a name="generation-5-compute-platform"></a>Výpočetní platforma běžící generace 5
+### <a name="generation-5-compute-platform"></a>Výpočetní platforma běžící generace 5
+
 |Vypočítat velikost|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |--: |
 |Generování H/W|5|5|5|5|5|5|5|5|
@@ -125,9 +126,10 @@ Pro izolované databáze následující tabulky ukazují prostředky dostupné p
 |Zahrnuté úložiště zálohování|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|
 |||
 
-### <a name="hyperscale-service-tier-preview"></a>Úroveň služeb Hyperškálovatelného (preview)
+## <a name="hyperscale-service-tier-preview"></a>Úroveň služeb Hyperškálovatelného (preview)
 
-#### <a name="generation-4-compute-platform"></a>Výpočetní platforma běžící generace 4
+### <a name="generation-4-compute-platform-storage-sizes-and-compute-sizes"></a>Výpočetní generace 4 platformy: velikosti úložiště a výpočty velikostí
+
 |Úroveň výkonu|HS_Gen4_1|HS_Gen4_2|HS_Gen4_4|HS_Gen4_8|HS_Gen4_16|HS_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |--: |
 |Generování H/W|4|4|4|4|4|4|
@@ -148,7 +150,9 @@ Pro izolované databáze následující tabulky ukazují prostředky dostupné p
 |Přečtěte si horizontální navýšení kapacity|Ano|Ano|Ano|Ano|Ano|Ano|
 |Zahrnuté úložiště zálohování|7|7|7|7|7|7|
 |||
+
 ### <a name="generation-5-compute-platform"></a>Výpočetní platforma běžící generace 5
+
 |Úroveň výkonu|HS_Gen5_2|HS_Gen5_4|HS_Gen5_8|HS_Gen5_16|HS_Gen5_24|HS_Gen5_32|HS_Gen5_40|HS_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |--: |
 |Generování H/W|5|5|5|5|5|5|5|5|

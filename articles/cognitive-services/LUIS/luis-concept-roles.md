@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 033e5e5e054b0a29961ad60e72b1466b51d1df0c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 5fda0ac590e5faeaa8b6ec44a7d649d2c0122eeb
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035194"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352981"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>Entita role ve vzorech jsou kontextové subtypes
 Role jsou pojmenované, kontextové podtypy entity používá pouze v [vzory](luis-concept-patterns.md).
@@ -28,6 +28,8 @@ Role zadejte název těchto rozdílů:
 |--|--|--|
 |Umístění|počátek|kde opustí rovině z|
 |Umístění|cíl|kde jsou rovina|
+|Předem připravené datetimeV2|na|Koncové datum|
+|Předem připravené datetimeV2|od|Počáteční datum|
 
 ## <a name="how-are-roles-used-in-patterns"></a>Jak se používají role ve vzorech?
 Role v utterance vzor šablony, se používají v rámci utterance: 
@@ -47,6 +49,14 @@ Hierarchické entity poskytují stejné kontextové informace jako role, ale pou
 |--|--|
 |hierarchické entity|Záměrů|
 |role|Vzory|
+
+## <a name="roles-with-prebuilt-entities"></a>Role s předem vytvořenými entitami
+
+Použijte role s předem vytvořenými entitami sdělit význam různé instance předem připravených entit v rámci utterance. 
+
+### <a name="roles-with-datetimev2"></a>Role s datetimeV2
+
+Předem připravených entit datetimeV2, dělá skvělou úlohy s principy širokou škálu různých v data a časy projevy. Můžete zadat data a rozsahy kalendářních dat jiným způsobem než výchozí Principy předem připravených entit. 
 
 ## <a name="next-steps"></a>Další postup
 

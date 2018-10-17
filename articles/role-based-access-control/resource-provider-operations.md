@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 09/27/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ee2a72a65902347a2e58f79d0f621c9d08178104
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: d9cf46a1fd28985d9ca98d173bbef17380b7de21
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410302"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354389"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operace poskytovatele prostředků Azure Resource Manageru
 
@@ -3010,7 +3010,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.ManagedLab/labAccounts/read | Čtení účtů testovacího prostředí. |
 > | Akce | Microsoft.ManagedLab/labAccounts/write | Přidat nebo upravit účtů testovacího prostředí. |
 > | Akce | Microsoft.ManagedLab/locations/operations/read | Operace čtení. |
-> | Akce | Microsoft.ManagedLab/register/action | Zaregistruje předplatné |
+> | Akce | Microsoft.ManagedLab/register/action | Zaregistruje předplatné. |
 
 ## <a name="microsoftmanagement"></a>Microsoft.Management
 
@@ -3346,8 +3346,6 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.Network/loadBalancers/backendAddressPools/join/action | Připojí pro fond adres back-endu nástroje pro vyrovnávání zatížení |
 > | Akce | Microsoft.Network/loadBalancers/backendAddressPools/read | Získá definici zatížení adres back-endu nástroje pro vyrovnávání fondu |
 > | Akce | Microsoft.Network/loadBalancers/delete | Odstraní nástroj pro vyrovnávání zatížení |
-> | Akce | Microsoft.Network/loadBalancers/frontendIPConfigurations/join/action | Spojí konfiguraci protokolu IP front-endu nástroje pro vyrovnávání zatížení. |
-> | Akce | Microsoft.Network/loadBalancers/frontendIPConfigurations/read | Získá definici konfigurace IP front-endu nástroje pro vyrovnávání zatížení |
 > | Akce | Microsoft.Network/loadBalancers/inboundNatPools/join/action | Připojí nástroj pro vyrovnávání zatížení příchozí fond nat |
 > | Akce | Microsoft.Network/loadBalancers/inboundNatPools/read | Získá nástroj pro vyrovnávání zatížení příchozího překladu adres definice fondu |
 > | Akce | Microsoft.Network/loadBalancers/inboundNatRules/delete | Odstraní pravidlo příchozí nat služby load balancer |
@@ -3477,10 +3475,6 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.Network/publicIPAddresses/dnsAliases/read | Získá prostředek veřejné Ip adresy Dns Alias |
 > | Akce | Microsoft.Network/publicIPAddresses/dnsAliases/write | Vytvoří prostředek veřejné Ip adresy Dns Alias |
 > | Akce | Microsoft.Network/publicIPAddresses/join/action | Připojí veřejná ip adresa |
-> | Akce | Microsoft.Network/publicIPAddresses/loadBalancerPools/delete | Odstraní veřejnou IP adresu fond Vyrovnávání zatížení back-endu |
-> | Akce | Microsoft.Network/publicIPAddresses/loadBalancerPools/join/action | Spojení veřejnou IP adresu fond Vyrovnávání zatížení back-endu |
-> | Akce | Microsoft.Network/publicIPAddresses/loadBalancerPools/read | Získá veřejnou back-endový fond definici nástroje pro vyrovnávání zatížení IP adresa |
-> | Akce | Microsoft.Network/publicIPAddresses/loadBalancerPools/write | Vytvoří fond back-endu nástroje pro vyrovnávání zatížení veřejnou IP adresu nebo aktualizuje existující veřejnou IP adresu fond Vyrovnávání zatížení back-endu |
 > | Akce | Microsoft.Network/publicIPAddresses/providers/Microsoft.Insights/diagnosticSettings/read | Získat nastavení diagnostiky veřejné IP adresy |
 > | Akce | Microsoft.Network/publicIPAddresses/providers/Microsoft.Insights/diagnosticSettings/write | Vytvoří nebo aktualizuje nastavení diagnostiky veřejné IP adresy |
 > | Akce | Microsoft.Network/publicIPAddresses/providers/Microsoft.Insights/logDefinitions/read | Získat definice protokolu veřejné IP adresy |

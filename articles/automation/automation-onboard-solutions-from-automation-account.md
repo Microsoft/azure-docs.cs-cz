@@ -5,16 +5,16 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/06/2018
+ms.date: 10/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 5b906b4a90dbceb62c6f2381d0ffa8bc1bee7ef1
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 1ed76b0505747831363ea829f1cb91b3e056282a
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033817"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352442"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Začlenění řešení Update Management, Change Tracking a Inventory
 
@@ -93,11 +93,11 @@ Vyberte **spravovat počítače**. Otevře **Správa počítačů** stránky. Ta
 
 ### <a name="all-available-machines"></a>Všechny dostupné počítače
 
-Chcete-li povolit řešení pro všechny dostupné počítače, vyberte **povolit na všech dostupných počítačích**. Zakáže ovládací prvek pro přidání počítače jednotlivě. Tato úloha přidá všechny názvy počítačů odesílajících sestavy do pracovního prostoru do skupiny počítačů uložený vyhledávací dotaz.
+Chcete-li povolit řešení pro všechny dostupné počítače, vyberte **povolit na všech dostupných počítačích**. Zakáže ovládací prvek pro přidání počítače jednotlivě. Tato úloha přidá všechny názvy počítačů odesílajících sestavy do pracovního prostoru do skupiny počítačů uložený vyhledávací dotaz. Pokud je vybráno, zakáže **Správa počítačů** tlačítko.
 
 ### <a name="all-available-and-future-machines"></a>Všech dostupných a budoucích počítačích
 
-Chcete-li povolit řešení pro všechny dostupné i všech budoucích počítačích, vyberte **povolit na všech dostupných a budoucích počítačích**. Tato možnost odstraní z pracovního prostoru uložená hledání a konfigurace oboru. Tím otevřete řešení, aby všechny Azure a jiných počítačích než Azure, která se hlásí k pracovnímu prostoru.
+Chcete-li povolit řešení pro všechny dostupné i všech budoucích počítačích, vyberte **povolit na všech dostupných a budoucích počítačích**. Tato možnost odstraní z pracovního prostoru uložená hledání a konfigurace oboru. Tím otevřete řešení, aby všechny Azure a jiných počítačích než Azure, která se hlásí k pracovnímu prostoru. Pokud je vybráno, zakáže **Správa počítačů** tlačítko.
 
 ### <a name="selected-machines"></a>Vybrané počítače
 
@@ -120,13 +120,13 @@ Po odebrání těchto řešení provedením následujících kroků se zrušit p
 
 1. Z portálu Azure portal otevřete svůj účet Automation, a na automatizaci účtu vyberte stránku **pracovní prostor propojený** části **související prostředky** na levé straně.
 
-1. Na stránce zrušit propojení pracovního prostoru klikněte na tlačítko **zrušit propojení pracovního prostoru**.
+2. Na stránce zrušit propojení pracovního prostoru klikněte na tlačítko **zrušit propojení pracovního prostoru**.
 
    ![Zrušit propojení pracovního prostoru stránky](media/automation-onboard-solutions-from-automation-account/automation-unlink-workspace-blade.png).
 
    Zobrazí se výzva s dotazem, jestli chcete pokračovat.
 
-1. Zatímco bude Azure Automation se pokusí zrušit propojení účtu pracovního prostoru Log Analytics, můžete sledovat průběh **oznámení** z nabídky.
+3. Zatímco bude Azure Automation se pokusí zrušit propojení účtu pracovního prostoru Log Analytics, můžete sledovat průběh **oznámení** z nabídky.
 
 Pokud jste použili řešení Update Management, Volitelně můžete odebrat následující položky, které už nejsou potřeba po odebrání řešení.
 

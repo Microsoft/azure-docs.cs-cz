@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 737a76ba313dddaa58c302f1df501f16a5c4e9e8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e9e88fc9aa3aad902c140ac176e31571b9e55ee3
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966540"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353737"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Nejčastější dotazy pro akcelerátor řešení připojená továrna
 
@@ -140,33 +140,21 @@ Pokud se nezobrazují žádná data odeslaných do služby IoT Hub, je problém 
 
 ### <a name="how-do-i-enable-an-interactive-map-in-my-connected-factory-solution"></a>Jak povolit interaktivní mapu v mém řešení připojená továrna
 
-Povolit interaktivní mapu ve vašem řešení připojená továrna, musíte mít existující API map Bing pro podnikový plán.
+Pokud chcete povolit interaktivní mapu ve vašem řešení připojená továrna, musí mít účet Azure Maps.
 
-Při nasazení z [www.azureiotsolutions.com](http://www.azureiotsolutions.com), procesu nasazení ověřuje, že vaše předplatné má povoleno API map Bing pro podnikový plán a automaticky nasadí do připojená továrna interaktivní mapu. Pokud to není tento případ, můžete stále povolit interaktivní mapu ve vašem nasazení následujícím způsobem:
+Při nasazení z [www.azureiotsolutions.com](http://www.azureiotsolutions.com), procesu nasazení do skupiny prostředků, která obsahuje službu akcelerátor řešení přidá účet Azure Maps.
 
-Při nasazení pomocí `build.ps1` skript v Githubu připojené továrny úložiště a můžete mít rozhraní API map Bing pro plán Enterprise, nastavte proměnnou prostředí `$env:MapApiQueryKey` v okně sestavení na klíč dotazu vašeho plánu. Interaktivní mapu se pak povolí automaticky.
+Při nasazení pomocí `build.ps1` skript proměnnou prostředí v sadě úložiště GitHub připojené továrny `$env:MapApiQueryKey` v okně sestavení [klíče vašeho účtu Azure Maps](../azure-maps/how-to-manage-account-keys.md). Interaktivní mapu se pak povolí automaticky.
 
-Pokud nemáte k dispozici rozhraní API map Bing pro plán Enterprise, nasaďte řešení připojené továrny ze [www.azureiotsolutions.com](http://www.azureiotsolutions.com) nebo pomocí `build.ps1` skriptu. Pak přidejte rozhraní API map Bing pro podnikový plán do vašeho předplatného, jak je vysvětleno v [jak vytvořit rozhraní API map Bing pro účet organizace?](#how-do-i-create-a-bing-maps-api-for-enterprise-account). Vyhledání klíč dotazu tohoto účtu, jak je vysvětleno v [získání rozhraní API map Bing pro Enterprise QueryKey](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey) a uložte tento klíč. Přejděte na web Azure Portal a přístup k prostředku služby App Service v nasazení připojené továrny. Přejděte do **nastavení aplikace**, kde najít oddíl **nastavení aplikace**. Nastavte **MapApiQueryKey** na klíč dotazu, který jste získali. Uložte nastavení a potom přejděte na **přehled** a restartujte služby App Service.
+Po nasazení můžete také přidat klíče účtu služby Azure Maps na akcelerátor řešení. Přejděte na web Azure Portal a přístup k prostředku služby App Service v nasazení připojené továrny. Přejděte do **nastavení aplikace**, kde najít oddíl **nastavení aplikace**. Nastavte **MapApiQueryKey** k [klíče vašeho účtu Azure Maps](../azure-maps/how-to-manage-account-keys.md). Uložte nastavení a potom přejděte na **přehled** a restartujte služby App Service.
 
-### <a name="how-do-i-create-a-bing-maps-api-for-enterprise-account"></a>Jak vytvořit rozhraní API map Bing pro účet organizace
+### <a name="how-do-i-create-a-azure-maps-account"></a>Jak vytvořit účet Azure Maps?
 
-Můžete získat bezplatné *vnitřní transakce úrovně 1 mapy Bing pro podniky* plánu. Ale můžete jenom přidat dvě z těchto plánů s předplatným Azure. Pokud nemáte k dispozici rozhraní API map Bing pro účet organizace, vytvořit na webu Azure Portal kliknutím **+ vytvořit prostředek**. Vyhledejte **rozhraní API map Bing pro podniky** a postupujte podle výzev a vytvořte ho.
+Zobrazit, [jak spravovat účet Azure Maps a klíče](../azure-maps/how-to-manage-account-keys.md).
 
-![Klíč Bing](./media/iot-accelerators-faq-cf/bing.png)
+### <a name="how-to-obtain-your-azure-maps-account-key"></a>Jak získat klíč účtu Azure Maps
 
-### <a name="how-to-obtain-your-bing-maps-api-for-enterprise-querykey"></a>Postup získání rozhraní API map Bing pro Enterprise QueryKey
-
-Po vytvoření rozhraní API map Bing pro plán Enterprise, přidejte do skupiny prostředků vaše řešení připojená továrna na webu Azure Portal mapy Bing pro podnikových zdrojů.
-
-1. Na webu Azure Portal přejděte do skupiny prostředků, který obsahuje rozhraní API map Bing pro podnikový plán.
-
-1. Klikněte na tlačítko **všechna nastavení**, pak **Správa klíčů**.
-
-1. Existují dva klíče: **MasterKey** a **QueryKey**. Kopírovat **QueryKey** hodnotu.
-
-1. Klíč neexistoval `build.ps1` skriptu, nastavte proměnnou prostředí `$env:MapApiQueryKey` ve vašem prostředí PowerShell a **QueryKey** vašeho plánu. Skript sestavení automaticky přidá hodnotu nastavení služby App Service.
-
-1. Spusťte místní nebo cloudové nasazení s použitím `build.ps1` skriptu.
+Zobrazit, [jak spravovat účet Azure Maps a klíče](../azure-maps/how-to-manage-account-keys.md).
 
 ### <a name="how-do-enable-the-interactive-map-while-debugging-locally"></a>Jak povolit interaktivní mapu při místním ladění?
 

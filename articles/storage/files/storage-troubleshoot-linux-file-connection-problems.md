@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 0f99913ab252b94d475f920bd734e68ff5f3b3d3
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 31a0ffc2937f6d93a630bf6ce474d7dcf20c923f
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525116"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364383"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Řešení potíží s Azure Files v Linuxu
 
@@ -82,7 +82,7 @@ Některých Linuxových distribucích zatím nepodporují funkce šifrování v 
 
 ### <a name="solution"></a>Řešení
 
-Funkce šifrování protokolu SMB 3.0 pro Linux byla zavedena v 4.11 jádra. Tato funkce umožňuje připojení sdílené složky Azure v místním nebo jiné oblasti Azure. V době publikování tato funkce byla přeneseny zpět do č. 17.04 Ubuntu a Ubuntu 16.10. Pokud se váš klient Linux SMB nepodporuje šifrování, připojení Azure souborů pomocí protokolu SMB 2.1 z virtuálního počítače Linux Azure, který je ve stejném datacentru jako účet úložiště souborů.
+Funkce šifrování protokolu SMB 3.0 pro Linux byla zavedena v 4.11 jádra. Tato funkce umožňuje připojení sdílené složky Azure v místním nebo jiné oblasti Azure. V době publikování tato funkce byla přeneseny zpět do č. 17.04 Ubuntu a Ubuntu 16.10. Pokud klient Linux SMB nepodporuje šifrování, připojení Azure souborů pomocí protokolu SMB 2.1 z virtuálního počítače Linux Azure, který je ve stejném datacentru jako soubor sdílenou složku a ověřte, [vyžadovat zabezpečený přenos]( https://docs.microsoft.com/en-us/azure/storage/common/storage-require-secure-transfer) je zakázáno v úložišti účet. 
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Nízký výkon na sdílenou složku Azure připojit na virtuálním počítači s Linuxem
@@ -149,7 +149,8 @@ Mezi běžné příčiny tohoto problému patří:
 - V klientském počítači není nainstalována minimální SMB/CIFS verze 2.1.
 - Klient nepodporuje šifrování protokolu SMB 3.0. Šifrování protokolu SMB 3.0 je k dispozici v Ubuntu 16.4 a novější verze, SUSE 12.3 a novější verze. Ostatní distribuce vyžadují jádra 4.11 a novější verze.
 - Pokoušíte se připojit k účtu úložiště přes port TCP 445, který není podporován.
-- Pokoušíte se pokusí připojit ke sdílené složce Azure z virtuálního počítače Azure a virtuální počítač se nenachází ve stejné oblasti jako účet úložiště.
+- Pokoušíte se připojit ke sdílené složce Azure z virtuálního počítače Azure a virtuální počítač se nenachází ve stejné oblasti jako účet úložiště.
+- Pokud [vyžadovat zabezpečený přenos]( https://docs.microsoft.com/en-us/azure/storage/common/storage-require-secure-transfer) pro účet úložiště je povolené nastavení, soubory Azure vám umožní pouze připojení pomocí šifrování SMB 3.0.
 
 ### <a name="solution"></a>Řešení
 

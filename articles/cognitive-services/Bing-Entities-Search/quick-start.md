@@ -1,60 +1,59 @@
 ---
-title: Rychlý start entity rozhraní API služby Search | Microsoft Docs
-description: Ukazuje, jak začít používat rozhraní API služby Bing entity Search.
+title: 'Rychlý start: Rozhraní API Bingu pro vyhledávání entit'
+description: Ukazuje, jak začít používat rozhraní API Bingu pro vyhledávání entit.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: B206A254-B7E9-49FF-AFD5-87B1E4D6D30B
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 07/06/2017
 ms.author: scottwhi
-ms.openlocfilehash: 12031d2447920c7e2d6180f35cf4fb29aa1b6150
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: ffc9ebb21c6646b1a39af4659053adf4157d204b
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342412"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48813953"
 ---
-# <a name="making-your-first-entities-request"></a>Provádění požadavků vaší první entity
+# <a name="quickstart-making-your-first-bing-entity-search-request"></a>Rychlý start: Vytvoření prvního požadavku na vyhledání entit v Bingu
 
-Rozhraní API pro vyhledávání Entity odešle do služby Bing vyhledávací dotaz a získá výsledky, které zahrnují entity a místech. Místní výsledky obsahovat restaurace, hotelů nebo jiné místní podniky. Pro místech dotaz můžete zadat název místní firmy nebo můžete požádat seznam (například restaurace okolí). Entity výsledky obsahovat osob, míst nebo věcí. Místní v tomto kontextu je ubytovací atrakce stavy, zemích, atd. 
+Rozhraní API Bingu pro vyhledávání entit odešle vyhledávací dotaz do Bingu a načte výsledky, které zahrnují entity a místa. Mezi místa patří například restaurace, hotely nebo jiné místní firmy. U míst může dotaz obsahovat název místní firmy nebo může žádat o seznam (například restaurants near me). Mezi výsledky entit patří osoby, místa nebo věci. Místa jsou v tomto kontextu turistické atrakce, státy, země atd. 
 
 ## <a name="first-steps"></a>První kroky
 
-Předtím, než bude možné vytvářet první volání, které je potřeba získat předplatné klíč kognitivní služby. Získat klíč, najdete v části [zkuste kognitivní služby](https://azure.microsoft.com/try/cognitive-services/?api=bing-entities-search-api). (Pokud rozhraní API pro vyhledávání entity není zobrazen v horní části, klepněte **vyhledávání** kartě a posuňte se dolů, dokud je neuvidíte.)
+Než budete moct provést první volání, je nutné nejprve získat klíč předplatného služeb Cognitive Services. Postup, jak získat klíč, naleznete v tématu [Zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-entities-search-api). (Pokud rozhraní API pro vyhledávání entit není v horní části vidět, klikněte na kartu **Hledat** a posouvejte dolů, dokud se nezobrazí.)
 
 ## <a name="the-endpoint"></a>Koncový bod
 
-Pokud chcete získat entity a umístěte výsledky hledání, odeslat požadavek GET na následující koncový bod:  
+Pokud chcete získat výsledky hledání entit a míst, odešlete požadavek GET na následující koncový bod:  
   
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/entities
 ```
 
-Žádost musí používat protokol HTTPS.
+Požadavek musí používat protokol HTTPS.
 
-Doporučujeme vám, že všechny požadavky pocházejí ze serveru. Distribuce klíč v rámci klientské aplikace poskytuje další možnost pro třetí strana k přístupu. Navíc volání ze serveru poskytuje snadný upgrade pro budoucí verze rozhraní API.
+Doporučujeme, aby byly všechny požadavky odeslány ze serveru. Distribuce klíče v rámci klientské aplikace nabízí více příležitostí pro přístup škodlivých třetích stran. Voláním ze serveru také zajistíte, že bude stačit upgradovat pouze jediný bod na budoucí verze rozhraní API.
 
-## <a name="specifying-query-parameters-and-headers"></a>Určení parametrů dotazu a hlavičky
+## <a name="specifying-query-parameters-and-headers"></a>Zadání parametrů a hlaviček dotazu
 
-Musíte zadat požadavek [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#query) parametr dotazu, který obsahuje uživatele hledaný termín. Musíte zadat také požadavek [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#mkt) parametr dotazu, který identifikuje na trhu, kam chcete výsledky pocházet z. Seznam parametrů dotazu volitelné, najdete v tématu [parametry dotazu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#query-parameters). Adresa URL zakódovat všechny parametry dotazu.  
+Požadavek musí obsahovat parametr dotazu [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#query), který obsahuje hledaný termín daného uživatele. Požadavek musí obsahovat také parametr dotazu [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#mkt), který identifikuje trh, ze kterého chcete obdržet výsledky. Seznam volitelných parametrů dotazu najdete v tématu [Parametry dotazu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#query-parameters). Všechny parametry dotazu se v adrese URL kódují.  
   
-Musíte zadat požadavek [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#subscriptionkey) záhlaví. I když je volitelné, vám doporučujeme, aby se také určit následující hlavičky:  
+Požadavek musí obsahovat hlavičku [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#subscriptionkey). Přestože jsou volitelné, doporučujeme, aby požadavek obsahoval i následující hlavičky:  
   
--   [Uživatelský Agent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#useragent)  
+-   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#useragent)  
 -   [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#clientid)  
--   [X-MSEdge když](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#clientip)  
--   [Umístění X vyhledávání](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#location)  
+-   [X-MSEdge-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#clientip)  
+-   [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#location)  
 
-Hlavičky protokolu IP a umístění klienta jsou důležité pro vrácení obsahu vědět umístění.  
+IP a hlavičky klienta jsou důležité pro vrácení obsahu závislého na umístění.  
 
-Seznam všech hlaviček žádostí a odpovědí najdete v tématu [hlavičky](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#headers).
+Seznam všech hlaviček žádostí a odpovědí najdete v tématu [Hlavičky](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#headers).
 
 ## <a name="the-request"></a>Požadavek
 
-Následující obrázek znázorňuje požadavek entity, která zahrnuje všechny parametry navrhované dotazu a hlavičky. 
+Následuje ukázka požadavku na entity, která obsahuje všechny navrhované parametry a hlavičky dotazu. 
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/entities?q=mount+rainier&mkt=en-us HTTP/1.1  
@@ -66,11 +65,11 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-Pokud je poprvé volání některé z rozhraní API služby Bing, neobsahují záhlaví ID klienta. Pokud jste dříve volat rozhraní API pro Bing a Bing vrátil ID klienta pro uživatele a zařízení kombinace pouze zahrnují ID klienta.
+Pokud voláte některé z rozhraní API Bingu poprvé, nezahrnujte do volání hlavičku ID klienta. ID klienta zahrňte pouze v případě, že jste již dříve volali rozhraní API Bingu a Bing vrátil ID klienta pro příslušnou kombinaci uživatele a zařízení.
 
 ## <a name="the-response"></a>Odpověď
 
-Následující obrázek znázorňuje odpověď na předchozí požadavek. Tento příklad také ukazuje hlavičky odpovědi specifické pro Bing. Informace o objektu odpovědi najdete v tématu [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#searchresponse).
+Následující příklad ukazuje odpověď na předchozí požadavek. Příklad také zobrazuje hlavičky odpovědi specifické pro Bing. Informace o objektu odpovědi najdete v části [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#searchresponse).
 
 ```
 BingAPIs-TraceId: 76DD2C2549B94F9FB55B4BD6FEB6AC
@@ -135,10 +134,10 @@ BingAPIs-Market: en-US
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Vyzkoušejte rozhraní API. Přejděte na [entity vyhledávání API testování konzoly](https://dev.cognitive.microsoft.com/docs/services/7a3fb374be374859a823b79fd938cc65/). 
+Vyzkoušejte si rozhraní API. Přejděte na téma [Testovací konzola rozhraní API pro vyhledávání entit](https://dev.cognitive.microsoft.com/docs/services/7a3fb374be374859a823b79fd938cc65/). 
 
-Podrobnosti o spotřebě objektů odpovědi najdete v tématu [vyhledávání na webu pro entity a místech](./search-the-web.md).
+Podrobnosti o využití objektů odpovědi najdete v tématu [Hledání entit a míst na webu](./search-the-web.md).
 
-Nezapomeňte si přečíst [požadavky zobrazení a použití Bing](./use-display-requirements.md) tak, že nemáte žádné z pravidel o používání výsledky hledání rozdělit.
+Nezapomeňte si přečíst [požadavky Bingu na zobrazení a použití](./use-display-requirements.md), abyste neporušili žádná pravidla používání výsledků hledání.

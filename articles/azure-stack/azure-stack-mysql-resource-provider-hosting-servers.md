@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 10/16/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 72824e5afb9f8d77c2f7d3bd01e6ff2035e95a95
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 833d8e7960bfb7ee3c135df57e6d4dfec97af037
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237260"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364657"
 ---
 # <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>Přidání hostitelské servery pro poskytovatele prostředků MySQL
 
@@ -75,6 +75,24 @@ Následující informace platí pro RP a MySQL hostitelské servery:
 ## <a name="increase-backend-database-capacity"></a>Zvýšení kapacity databáze back-endu
 
 Nasazením další servery MySQL na portálu Azure Stack můžete zvýšit kapacitu databáze back-endu. Tyto servery přidáte do nové nebo existující skladové položky. Pokud přidáte server do existující skladové položky, ujistěte se, že vlastnosti serveru jsou stejné jako ostatní servery ve skladové Položce.
+
+## <a name="sku-notes"></a>Skladová položka poznámky
+Použijte název SKU, která popisuje možnosti servery ve skladové Položce, jako je například kapacitu a výkon. Název slouží jako vodítko k poskytování pomoci uživatelům nasadit své databáze do příslušné SKU. Například můžete použít názvy SKU k rozlišení nabídky služeb následujícími vlastnostmi:
+  
+* vysoké kapacity
+* vysoce výkonné
+* Vysoká dostupnost
+
+Jako osvědčený postup musí všechny hostitelské servery v SKU mají stejné vlastnosti prostředků a výkonu.
+
+Skladové položky nelze přiřadit konkrétní uživatelé nebo skupiny.
+
+SKU může trvat až hodinu, uvidí na portálu. Uživatelé nemůžou vytvářet databáze, dokud SKU je zcela vytvořen.
+
+Chcete-li upravit skladovou jednotku, přejděte na **všechny služby** > **MySQL adaptér** > **SKU**. Vyberte SKU, které chcete změnit, proveďte potřebné změny a klikněte na tlačítko **Uložit** uložte změny. Pokud chcete odstranit skladovou Položku, který už je nepotřebujete, přejděte na **všechny služby** > **MySQL adaptér** > **skladové položky**. Klikněte pravým tlačítkem na název skladové položky a vyberte **odstranit** ho odstranit.
+
+> [!TIP]
+> Můžete upravit nebo odstranit kvóty poskytovatele prostředků MySQL ve stejném umístění.
 
 ## <a name="make-mysql-database-servers-available-to-your-users"></a>Servery MySQL database zpřístupnit uživatelům
 

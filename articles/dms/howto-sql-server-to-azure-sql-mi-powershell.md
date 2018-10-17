@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: 6760d2832b6c39759f9287797363fcd5a116ccfb
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 9a0c427b8beec3984a9fdd5d41ba3705fd21fd4c
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883654"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364988"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-db-using-azure-powershell"></a>Migrace místního SQL serveru do služby Azure SQL DB pomocí Azure Powershellu
 V tomto článku, migrujete **Adventureworks2012** databáze obnovit k místní instanci systému SQL Server 2005 nebo novější do Azure SQL Database pomocí prostředí Azure PowerShell. Můžete migrovat databáze z místní instance systému SQL Server do Azure SQL Database s použitím `AzureRM.DataMigration` modulu v prostředí Azure PowerShell.
@@ -195,7 +195,7 @@ $selectedAgentJobs = @("agentJob1", "agentJob2")
 ### <a name="create-and-start-a-migration-task"></a>Vytvoření a spuštění úlohy migrace
 
 Použití `New-AzureRmDataMigrationTask` rutina pro vytvoření a spuštění úlohy migrace. Tato rutina očekává, že následující parametry:
-- *TaskType*. Typ úlohy migrace vytvořte pro SQL Server na instanci Azure SQL Database Managaged migrace typ *MigrateSqlServerSqlDbMi* očekává. 
+- *TaskType*. Typ úlohy migrace k vytvoření SQL serveru do Azure SQL Database Managed Instance, typ migrace *MigrateSqlServerSqlDbMi* očekává. 
 - *Název skupiny prostředků*. Název skupiny prostředků Azure, ve kterém chcete vytvořit úlohu.
 - *ServiceName*. Instance Azure Database Migration Service ve kterém chcete vytvořit úlohu.
 - *ProjectName*. Název projektu Azure Database Migration Service, ve kterém chcete vytvořit úlohu. 

@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 07/09/2018
-ms.openlocfilehash: 935c54cf04854e75c39df55d8063138086be73a6
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.date: 10/15/2018
+ms.openlocfilehash: 94a3a502d5756d57cfebdf6698a4435dc1e19948
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309480"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353018"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transparentní šifrování dat pro SQL Database a Data Warehouse
 
@@ -25,7 +25,7 @@ Transparentní šifrování dat (TDE) pomáhá chránit před hrozbou škodlivý
 
 Transparentní šifrování dat bude nutné ručně povolit pro starší databáze nebo Azure SQL Data Warehouse.  
 
-Transparentní šifrování dat šifruje úložiště celou databázi pomocí symetrický klíč s názvem šifrovací klíč databáze. Tento šifrovací klíč databáze je chráněn ochrana dat transparentní šifrování. Ochranného je buď spravovaný službou certifikát (spravovaný službou transparentní šifrování dat) nebo asymetrický klíč do služby Azure Key Vault (přineste si vlastní klíč). Nastavit ochrana dat transparentní šifrování na úrovni serveru. 
+Transparentní šifrování dat šifruje úložiště celou databázi pomocí symetrický klíč s názvem šifrovací klíč databáze. Tento šifrovací klíč databáze je chráněn ochrana dat transparentní šifrování. Ochranného je buď spravovaný službou certifikát (spravovaný službou transparentní šifrování dat) nebo asymetrický klíč do služby Azure Key Vault (přineste si vlastní klíč). Nastavit ochrana dat transparentní šifrování na úrovni serveru.
 
 Při spuštění databáze je šifrovací klíč šifrovaného databázového dešifrovat a pak použít pro šifrování a znova šifrovat soubory databáze v procesu databázový stroj SQL serveru. Transparentní šifrování dat provádí v reálném čase vstupně-výstupní operace šifrování a dešifrování dat na úrovni stránky. Každou stránku lze dešifrovat, pokud se má načíst do paměti a pak se před zápisem zašifrují na disk. Obecný popis transparentní šifrování dat, naleznete v tématu [transparentní šifrování dat](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption).
 
@@ -35,11 +35,10 @@ SQL Server běžící na virtuálním počítači Azure také můžete použít 
 
 V Azure ve výchozím nastavení transparentní šifrování dat je, že šifrovací klíč databáze je chráněno certifikátem integrovaného serveru. Certifikát integrovaného serveru je jedinečný pro každý server. Pokud je v relaci geografické replikace databáze, primární a geograficky sekundární databáze jsou chráněny primární databáze nadřazeného serveru klíče. Pokud dvě databáze jsou připojené ke stejnému serveru, sdílejí stejný certifikát integrované. Microsoft automaticky otočí tyto certifikáty nejméně každých 90 dní.
 
-Microsoft také bezproblémově přesune a spravuje klíče podle potřeby pro geografickou replikaci a obnoví. 
+Microsoft také bezproblémově přesune a spravuje klíče podle potřeby pro geografickou replikaci a obnoví.
 
 > [!IMPORTANT]
 > Všechny nově vytvořené databáze SQL jsou šifrovány ve výchozím nastavení pomocí spravované službou transparentní šifrování dat. Ve výchozím nastavení nejsou šifrovány existující databáze před. května 2017 a databází vytvořených prostřednictvím obnovení, geografická replikace a kopii databáze.
->
 
 ## <a name="bring-your-own-key"></a>Přineste si vlastní klíč
 
@@ -54,13 +53,14 @@ Pokud chcete začít používat transparentní šifrování dat s podporou vlast
 ## <a name="move-a-transparent-data-encryption-protected-database"></a>Přesunutí databáze chráněné heslem šifrování transparentní dat
 
 Není nutné k dešifrování databáze pro operace v rámci Azure. Nastavení šifrování transparentní dat na zdrojové databázi nebo v primární databázi se transparentně dědí na cíli. Operace, které jsou zahrnuty zahrnují:
-- Geografické obnovení.
-- Samoobslužné obnovení bodu v čase.
-- Obnovení odstraněné databáze.
-- Aktivní geografickou replikaci.
-- Vytvoření kopie databáze.
 
-Při exportu transparentní data šifrování chráněné databáze exportovaný obsah databáze nejsou šifrována. Tento exportovaný obsah uložený v nešifrované souborů BACPAC. Ujistěte se, k ochraně souborů BACPAC odpovídajícím způsobem a povolit transparentní šifrování dat po dokončení importu se nová databáze.
+- Geografické obnovení
+- Samoobslužné obnovení bodu v čase
+- Obnovení odstraněné databáze
+- Aktivní geografická replikace
+- Vytvoření kopie databáze
+
+Při exportu transparentní data šifrování chráněné databáze exportovaný obsah databáze nejsou šifrována. Tento exportovaný obsah uložený v nezašifrované souborů BACPAC. Ujistěte se, k ochraně souborů BACPAC odpovídajícím způsobem a povolit transparentní šifrování dat po dokončení importu se nová databáze.
 
 Například pokud exportu souboru BACPAC z instance SQL serveru v místním, importovaný obsah nové databáze není automaticky šifrují. Podobně pokud soubor BACPAC se exportují do místní instance systému SQL Server, nové databáze také se automaticky šifrují.
 
@@ -68,19 +68,19 @@ Jedinou výjimkou je, když exportujete do a z databáze SQL. Transparentní ši
 
 ## <a name="manage-transparent-data-encryption-in-the-azure-portal"></a>Správa transparentní šifrování dat na webu Azure Portal
 
-Pokud chcete nakonfigurovat transparentní šifrování dat na webu Azure portal, musí být připojen jako Azure vlastníkem, přispěvatelem nebo správce zabezpečení SQL. 
+Pokud chcete nakonfigurovat transparentní šifrování dat na webu Azure portal, musí být připojen jako Azure vlastníkem, přispěvatelem nebo správce zabezpečení SQL.
 
-Nastavit transparentní šifrování dat na úrovni databáze. Pokud chcete povolit transparentní šifrování dat v databázi, přejděte na [webu Azure portal](https://portal.azure.com) a přihlaste se pomocí svého účtu Azure administrátorem nebo přispěvatelem. Najdete nastavení šifrování transparentní dat v uživatelské databázi. Ve výchozím nastavení spravovat službu transparentní šifrování dat se používá. Transparentní datový šifrovací certifikát není automaticky vygenerován pro server, který obsahuje databázi. 
+Nastavit transparentní šifrování dat na úrovni databáze. Pokud chcete povolit transparentní šifrování dat v databázi, přejděte na [webu Azure portal](https://portal.azure.com) a přihlaste se pomocí svého účtu Azure administrátorem nebo přispěvatelem. Najdete nastavení šifrování transparentní dat v uživatelské databázi. Ve výchozím nastavení spravovat službu transparentní šifrování dat se používá. Transparentní datový šifrovací certifikát není automaticky vygenerován pro server, který obsahuje databázi.
 
 ![Spravovat službu transparentní šifrování dat](./media/transparent-data-encryption-azure-sql/service-managed-tde.png)  
 
-Nastavíte hlavní klíč šifrování dat transparentní, označované také jako ochrana šifrování transparentní dat, na úrovni serveru. Transparentní šifrování dat pomocí podpory vlastního klíče a ochrana vašich databází s využitím klíče ze služby Key Vault najdete v tématu Nastavení šifrování transparentní dat v rámci vašeho serveru. 
+Nastavíte hlavní klíč šifrování dat transparentní, označované také jako ochrana šifrování transparentní dat, na úrovni serveru. Transparentní šifrování dat pomocí podpory vlastního klíče a ochrana vašich databází s využitím klíče ze služby Key Vault najdete v tématu Nastavení šifrování transparentní dat v rámci vašeho serveru.
 
-![Transparentní šifrování dat s podporou vlastního klíče](./media/transparent-data-encryption-azure-sql/tde-byok-support.png) 
+![Transparentní šifrování dat s podporou vlastního klíče](./media/transparent-data-encryption-azure-sql/tde-byok-support.png)
 
 ## <a name="manage-transparent-data-encryption-by-using-powershell"></a>Správa transparentní šifrování dat pomocí prostředí PowerShell
 
-Pokud chcete nakonfigurovat transparentní šifrování dat pomocí Powershellu, musíte být připojeni jako Azure vlastníkem, přispěvatelem nebo správce zabezpečení SQL. 
+Pokud chcete nakonfigurovat transparentní šifrování dat pomocí Powershellu, musíte být připojeni jako Azure vlastníkem, přispěvatelem nebo správce zabezpečení SQL.
 
 | Rutina | Popis |
 | --- | --- |
@@ -102,28 +102,28 @@ Připojení k databázi pomocí přihlašovacích údajů, který je správce ne
 | --- | --- |
 | [Příkaz ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) | NASTAVENÍ nebo šifrování vypnout šifruje nebo dešifruje databáze |
 | [Sys.dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) |Vrátí informace o stav šifrování databáze a její přidružené databáze, šifrovacích klíčů |
-| [sys.dm_pdw_nodes_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql) |Vrátí informace o šifrování stavu každého datového skladu uzel a jeho přidružená databáze šifrovací klíče | 
+| [sys.dm_pdw_nodes_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql) |Vrátí informace o šifrování stavu každého datového skladu uzel a jeho přidružená databáze šifrovací klíče |
 |  | |
 
 Ochrana dat transparentní šifrování nelze přepnout na klíč ze služby Key Vault s použitím příkazů jazyka Transact-SQL. Pomocí Powershellu nebo na webu Azure portal.
 
 ## <a name="manage-transparent-data-encryption-by-using-the-rest-api"></a>Spravovat transparentní šifrování dat pomocí rozhraní REST API
- 
-Pokud chcete nakonfigurovat transparentní šifrování dat přes rozhraní REST API, musíte být připojeni jako Azure vlastníkem, přispěvatelem nebo správce zabezpečení SQL. 
+
+Pokud chcete nakonfigurovat transparentní šifrování dat přes rozhraní REST API, musíte být připojeni jako Azure vlastníkem, přispěvatelem nebo správce zabezpečení SQL.
 
 | Příkaz | Popis |
 | --- | --- |
-|[Vytvořit nebo aktualizovat Server](/rest/api/sql/servers/createorupdate)|Přidá do instance systému SQL Server (používá k udělení přístupu ke Key Vault) identity Azure Active Directory|
-|[Vytvořit nebo aktualizovat klíč serveru](/rest/api/sql/serverkeys/createorupdate)|Přidá klíč služby Key Vault k instanci systému SQL Server|
-|[Odstranit klíč serveru](/rest/api/sql/serverkeys/delete)|Odebere klíč služby Key Vault z instance systému SQL Server|
-|[Získat klíče serveru](/rest/api/sql/serverkeys/get)|Získá konkrétní klíč služby Key Vault z instance systému SQL Server|
-|[Vypsat klíče Server serverem](/rest/api/sql/serverkeys/listbyserver)|Získá klíče služby Key Vault pro instanci systému SQL Server |
-|[Vytvořit nebo aktualizovat ochrana šifrování](/rest/api/sql/encryptionprotectors/createorupdate)|Nastaví ochrana dat transparentní šifrování pro instanci systému SQL Server|
-|[Získat ochrana šifrování](/rest/api/sql/encryptionprotectors/get)|Získá data transparentní ochrana šifrování pro instanci systému SQL Server|
-|[Seznam ochrany pomocí šifrování serveru](/rest/api/sql/encryptionprotectors/listbyserver)|Získá ochrany dat transparentní šifrování pro instanci systému SQL Server |
-|[Vytvořit nebo aktualizovat konfiguraci Transparent Data Encryption](/rest/api/sql/transparentdataencryptions/createorupdate)|Povolí nebo zakáže transparentní šifrování dat pro databázi|
-|[Získat konfiguraci Transparent Data Encryption](/rest/api/sql/transparentdataencryptions/get)|Získá konfiguraci šifrování transparentní dat pro databázi|
-|[Seznam Transparent Data Encryption konfigurace výsledků](/rest/api/sql/transparentdataencryptionactivities/ListByConfiguration)|Získá výsledek šifrování pro databázi|
+|[Vytvořit nebo aktualizovat Server](https://docs.microsoft.com/rest/api/sql/servers/servers_createorupdate)|Přidá do instance systému SQL Server (používá k udělení přístupu ke Key Vault) identity Azure Active Directory|
+|[Vytvořit nebo aktualizovat klíč serveru](https://docs.microsoft.com/rest/api/sql/serverkeys/serverkeys_createorupdate)|Přidá klíč služby Key Vault k instanci systému SQL Server|
+|[Odstranit klíč serveru](https://docs.microsoft.com/rest/api/sql/serverkeys/serverkeys_delete)|Odebere klíč služby Key Vault z instance systému SQL Server|
+|[Získat klíče serveru](https://docs.microsoft.com/rest/api/sql/serverkeys/serverkeys_get)|Získá konkrétní klíč služby Key Vault z instance systému SQL Server|
+|[Vypsat klíče Server serverem](https://docs.microsoft.com/rest/api/sql/serverkeys/serverkeys_listbyserver)|Získá klíče služby Key Vault pro instanci systému SQL Server |
+|[Vytvořit nebo aktualizovat ochrana šifrování](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/encryptionprotectors_createorupdate)|Nastaví ochrana dat transparentní šifrování pro instanci systému SQL Server|
+|[Získat ochrana šifrování](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/encryptionprotectors_get)|Získá data transparentní ochrana šifrování pro instanci systému SQL Server|
+|[Seznam ochrany pomocí šifrování serveru](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/encryptionprotectors_listbyserver)|Získá ochrany dat transparentní šifrování pro instanci systému SQL Server |
+|[Vytvořit nebo aktualizovat konfiguraci Transparent Data Encryption](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/transparentdataencryptions_createorupdate)|Povolí nebo zakáže transparentní šifrování dat pro databázi|
+|[Získat konfiguraci Transparent Data Encryption](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/transparentdataencryptions_get)|Získá konfiguraci šifrování transparentní dat pro databázi|
+|[Seznam Transparent Data Encryption konfigurace výsledků](https://docs.microsoft.com/rest/api/sql/transparentdataencryptionactivities/transparentdataencryptionactivities_listbyconfiguration)|Získá výsledek šifrování pro databázi|
 
 ## <a name="next-steps"></a>Další postup
 

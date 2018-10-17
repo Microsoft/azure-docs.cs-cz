@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: a2b9a06e8e3b1bda91050e1607c7265d6fe66bb1
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: eb227b4b4cbdc40a4e708726bbe0f5d0c7eacb74
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931785"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364661"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Použití klienta Windows v Azure pro scénáře vývoje/testování
 Můžete použít Windows 7, Windows 8 nebo Windows 10 Enterprise (x64) v Azure pro scénáře vývoje a testování za předpokladu, že máte příslušné předplatné sady Visual Studio (dříve MSDN). Tento článek popisuje, jak požadavky zakládající nárok pro spouštění Windows 7, Windows 8.1, Windows 10 Enterprise v Azure a použití následujících imagí Galerie Azure.
@@ -48,7 +48,7 @@ Následující tabulka obsahuje podrobnosti o nabídce ID, které jsou vhodné p
 | [Visual Studio Premium with MSDN (výhoda)](https://azure.microsoft.com/offers/ms-azr-0061p/) |0061P |Windows 10 |
 | [Předplatitelé sady Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) |0063P |Windows 10 |
 | [Předplatitelé sady Visual Studio Enterprise (BizSpark)](https://azure.microsoft.com/offers/ms-azr-0064p/) |0064P |Windows 10 |
-| [Enterprise pro vývoj/testování](https://azure.microsoft.com/en-us/offers/ms-azr-0148p/) |0148P |Windows 10 |
+| [Enterprise pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0148p/) |0148P |Windows 10 |
 
 ## <a name="check-your-azure-subscription"></a>Zkontrolujte vaše předplatné Azure
 Pokud si nejste jisti vaše ID nabídky, můžete ho získat prostřednictvím webu Azure portal v jednom z těchto dvou způsobů:  

@@ -1,5 +1,5 @@
 ---
-title: Referenční dokumentace sady SDK pro řeč
+title: Reference rozhraní API sady SDK pro řeč
 description: Odkazy pro zpracování řeči SDK.
 services: cognitive-services
 titleSuffix: Azure Cognitive Services
@@ -7,18 +7,18 @@ author: erhopf
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 09/24/2018
-ms.author: erhopf
-ms.openlocfilehash: cc43d1588f51afadcbecf041870fdaf119bad025
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.date: 10/16/2018
+ms.author: wolfma
+ms.openlocfilehash: 88f0fa66ba48f21e77a6c0319129708cabbc9535
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165568"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362632"
 ---
-# <a name="speech-sdk-reference"></a>Referenční dokumentace sady SDK pro řeč
+# <a name="speech-sdk-api-reference"></a>Reference rozhraní API sady SDK pro řeč
 
-Rozpoznávání řeči Software Development Kit (SDK) poskytuje vaše aplikace přístup k funkce Speech service usnadňují vývoj softwaru podporou řeči. V současné době se sadami SDK poskytují přístup k **převod řeči na Text**, **překlad řeči**, a **rozpoznávání záměru**.
+Rozpoznávání řeči Software Development Kit (SDK) poskytuje vaše aplikace přístup k funkce Speech service usnadňují vývoj softwaru podporou řeči. V současné době se sadami SDK poskytují přístup k **převod řeči na Text**, **překlad řeči**, a **rozpoznávání záměru**. Obecný přehled o možnosti a podporovaných platforem najdete v dokumentaci [položka stránky](http://aka.ms/csspeech).
 
 [!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 

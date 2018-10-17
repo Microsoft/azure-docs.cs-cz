@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 10/16/2018
 ms.author: jeffgilb
-ms.reviewer: jeffgo
-ms.openlocfilehash: ad899739dab1dc51d64368d2136ab87f73f6f3a0
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.reviewer: quying
+ms.openlocfilehash: 360661402289ab9b06eb01be447dc98942c93302
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "36300906"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364083"
 ---
 # <a name="sql-resource-provider-maintenance-operations"></a>Operace údržby poskytovatele prostředků SQL
 
-Poskytovatele prostředků SQL běží na virtuálním počítači s uzamčená. Povolit operace údržby, budete muset aktualizovat zabezpečení virtuálních počítačů. Chcete-li to udělat principu nejnižších možných oprávnění, můžete použít [Powershellu Just Enough Administration (JEA)](https://docs.microsoft.com/en-us/powershell/jea/overview) koncový bod *DBAdapterMaintenance*. Instalační balíček pro poskytovatele prostředků zahrnuje skript pro tuto operaci.
+Poskytovatele prostředků SQL běží na virtuálním počítači s uzamčená. Povolit operace údržby, budete muset aktualizovat zabezpečení virtuálních počítačů. Chcete-li to udělat principu nejnižších možných oprávnění, můžete použít [Powershellu Just Enough Administration (JEA)](https://docs.microsoft.com/powershell/jea/overview) koncový bod *DBAdapterMaintenance*. Instalační balíček pro poskytovatele prostředků zahrnuje skript pro tuto operaci.
 
 ## <a name="patching-and-updating"></a>Opravy a aktualizace
 
@@ -53,9 +53,9 @@ Chcete-li upravit nastavení, vyberte **Procházet** &gt; **prostředky pro spr�
 
 ## <a name="secrets-rotation"></a>Otočení tajných kódů
 
-*Tyto pokyny platí jenom pro Azure Stack integrované systémy verzi 1804 a novější. Nepokoušejte se otočí tajné klíče z verze pre-1804 Azure Stack.*
+*Tyto pokyny platí pouze pro integrované systémy Azure Stack.*
 
-Při použití poskytovatele prostředků SQL nebo MySQL pomocí služby Azure Stack integrované systémy, můžete otočit tyto tajné kódy infrastruktury (nasazení):
+Při použití poskytovatele prostředků SQL nebo MySQL pomocí služby Azure Stack integrované systémy, je zodpovědný za otáčení následující tajemství infrastruktury poskytovatele prostředků k zajištění, že nevyprší platnost operátory Azure stacku:
 
 - Externí certifikát SSL [zadali při nasazení](azure-stack-pki-certs.md).
 - Prostředků poskytovatele virtuálních počítačů heslo místního správce účet zadaný během nasazení.

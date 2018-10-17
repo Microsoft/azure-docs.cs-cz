@@ -3,23 +3,23 @@ title: Mapování virtuálních sítí mezi dvěma oblastmi Azure ve službě Az
 description: Azure Site Recovery koordinuje replikaci, převzetí služeb při selhání a obnovení virtuálních počítačů a fyzických serverů. Další informace o převzetí služeb při selhání do Azure nebo do sekundárního datacentra.
 services: site-recovery
 documentationcenter: ''
-author: mayanknayar
+author: mayurigupta13
 manager: rochakm
 editor: ''
 ms.assetid: 44813a48-c680-4581-a92e-cecc57cc3b1e
 ms.service: site-recovery
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 07/06/2018
-ms.author: manayar
-ms.openlocfilehash: 0e73abf0fc170079d4b2bc093df45c998e68d184
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.date: 10/16/2018
+ms.author: mayg
+ms.openlocfilehash: 95e6a388d0638d2fd477d33aaf7c39cf120e29aa
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320522"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353423"
 ---
 # <a name="map-virtual-networks-in-different-azure-regions"></a>Mapování virtuálních sítí v různých oblastech Azure
 
@@ -106,7 +106,7 @@ Pokud podsíť zdrojové a cílové podsíti máte různé adresních prostorů,
 Převzetím služeb při selhání virtuálního počítače by byli přiřazeni s - další dostupné IP adresy, od konce rozsahu adres podsítě, která je: 10.0.0.254 </br>
 
 **Poznámka:** terminologii **virtuální síť výroby** jsou označovány "Cílová síť" namapované během konfigurace zotavení po havárii.
-#### <a name="2-if-the-target-network-chosen-is-not-the-production-vnet-but-has-the-same-subnet-range-as-production-network"></a>2. Pokud je vybrána Cílová síť není virtuální síť výroby, ale má stejného rozsahu podsítě jako produkční sítě 
+#### <a name="2-if-the-target-network-chosen-is-not-the-production-vnet-but-has-the-same-subnet-range-as-production-network"></a>2. Pokud je vybrána Cílová síť není virtuální síť výroby, ale má stejného rozsahu podsítě jako produkční sítě
 
 - Obnovení IP (cílová IP adresa) bude statické IP adresy s **stejnou IP adresu** (tj, nakonfigurovat statickou IP adresu) jako vyhrazené pro převzetí služeb při selhání. Za předpokladu, že je k dispozici stejné IP adresy.
 - Pokud je nakonfigurovaná statická IP adresa je už přiřazený k jiné virtuální počítač nebo zařízení, budou IP pro zotavení další dostupné IP adresy z konce rozsahu adres podsítě.

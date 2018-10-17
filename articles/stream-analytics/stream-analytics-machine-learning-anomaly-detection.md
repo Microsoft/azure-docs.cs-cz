@@ -9,17 +9,17 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: 045d7623c3f00ee984dad406247e3197a4ecc45a
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 2f35f54c7ec5ad169673aebe08602294270f470a
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586167"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364451"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Detekce anomálií v Azure Stream Analytics
 
 > [!IMPORTANT]
-> Tato funkce se právě přestanou používat, ale nahradí se nové funkce. Další informace najdete [osm nových funkcí ve službě Azure Stream Analytics](https://azure.microsoft.com/en-us/blog/eight-new-features-in-azure-stream-analytics/) blogový příspěvek.
+> Tato funkce se právě přestanou používat, ale nahradí se nové funkce. Další informace najdete [osm nových funkcí ve službě Azure Stream Analytics](https://azure.microsoft.com/blog/eight-new-features-in-azure-stream-analytics/) blogový příspěvek.
 
 **Anomalydetection, který** operátor se používá ke zjišťování různé typy anomálií v datových proudů událostí. Například pomalá pokles volná paměť nad dlouhou dobu může být indikátorem nevracení paměti nebo může výrazně zvýšit nebo snížit počet žádosti webové služby, které jsou stabilní v rozsahu.  
 

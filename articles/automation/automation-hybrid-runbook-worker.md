@@ -6,19 +6,19 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/25/2018
+ms.date: 10/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c4e237af7e85223839b3f26bcc33007f8abb9d0a
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 694327cf7f7331a35a7e18cb68c566932c6231fc
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034225"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363499"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatizace prostředky v datovém centru nebo v cloudu s využitím procesu Hybrid Runbook Worker
 
-Runbooky ve službě Azure Automation, nebudou moct přistupovat k prostředkům v jiných cloudech nebo v místním prostředí, protože běží na cloudovou platformu Azure. Funkce Hybrid Runbook Worker služby Azure Automation můžete použít ke spuštění sady runbook přímo na počítači, který je hostitelem role a s prostředky v prostředí ke správě místních prostředků. Sady Runbook jsou uloženy a spravovaná ve službě Azure Automation a pak doručí jeden nebo více počítačů určené.
+Runbooky ve službě Azure Automation nebudete mít přístup k prostředkům v jiných cloudech nebo v místním prostředí vzhledem k tomu, že jsou spuštěné na cloudovou platformu Azure. Funkce Hybrid Runbook Worker služby Azure Automation můžete použít ke spuštění sady runbook přímo na počítači, který je hostitelem role a s prostředky v prostředí ke správě místních prostředků. Sady Runbook jsou uloženy a spravovaná ve službě Azure Automation a pak doručí jeden nebo více počítačů přiřazených.
 
 Následující obrázek ukazuje tuto funkci:
 
@@ -26,7 +26,7 @@ Následující obrázek ukazuje tuto funkci:
 
 Každá funkce Hybrid Runbook Worker je členem skupiny Hybrid Runbook Worker, který zadáváte při instalaci agenta. Skupina může obsahovat jeden agent, ale můžete nainstalovat více agentů ve skupině pro zajištění vysoké dostupnosti.
 
-Při spuštění sady runbook v procesu Hybrid Runbook Worker, určete skupinu, která se spouští. Každému pracovnímu procesu ve skupině se dotazuje služby Azure Automation, jestli jsou k dispozici žádné úlohy. Pokud úloha je k dispozici, má první pracovního procesu k dosažení ho. Nelze zadat konkrétní pracovního procesu. Úloha [omezení](../azure-subscription-service-limits.md#automation-limits) platí pro Azure karantény a procesy Hybrid Runbook Worker.
+Při spuštění sady runbook v procesu Hybrid Runbook Worker, určete skupinu, která se spouští. Každému pracovnímu procesu ve skupině se dotazuje služby Azure Automation, jestli jsou k dispozici žádné úlohy. Pokud úloha je k dispozici, má první pracovního procesu k dosažení ho. Nelze zadat konkrétní pracovního procesu. Procesy hybrid Runbook Worker Nesdílejte mnoho omezení, které mají Azure karantény. Nemají stejné omezení místa na disku, paměti nebo síťové sokety. Procesy hybrid Runbook Worker jsou omezené jenom k prostředkům v procesu Hybrid Runbook Worker, samotného. Kromě toho Hybrid Runbook Worker nesdílejí 180 minutu [spravedlivé sdílení](automation-runbook-execution.md#fair-share) časový limit, kterou Azure sandboxy provádět. Další informace o omezení služby Azure karantény a procesy Hybrid Runbook Worker, najdete v úloze [omezení](../azure-subscription-service-limits.md#automation-limits) stránky.
 
 ## <a name="install-a-hybrid-runbook-worker"></a>Instalace procesu Hybrid Runbook Worker
 
@@ -48,7 +48,7 @@ Zkontrolujte [informace pro plánování sítě](#network-planning) před zaháj
 
 ## <a name="remove-a-hybrid-runbook-worker"></a>Odebrání funkce Hybrid Runbook Worker
 
-Jeden nebo více procesy Hybrid Runbook Worker můžete odebrat ze skupiny, nebo můžete odebrat skupinu, v závislosti na vašich požadavcích. Odebrání funkce Hybrid Runbook Worker v místním počítači, proveďte následující kroky:
+Jeden nebo více procesy Hybrid Runbook Worker můžete odebrat ze skupiny, nebo můžete odebrat skupinu, v závislosti na vašich požadavcích. Odebrání funkce Hybrid Runbook Worker v místním počítači, použijte následující postup:
 
 1. Na webu Azure Portal přejděte na svůj účet Automation.
 2. V části **nastavení**vyberte **klíče** a poznamenejte si hodnoty pro **URL** a **primární přístupový klíč**. Tyto informace budete potřebovat další krok.
@@ -78,7 +78,7 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 
 ## <a name="remove-a-hybrid-worker-group"></a>Odebrat skupiny Hybrid Worker
 
-Můžete odebrat skupinu, budete nejdřív muset odebrat funkce Hybrid Runbook Worker v každém počítači, který je členem skupiny postupem, jak je uvedeno výše. Potom proveďte následující kroky k odebrání skupiny:
+Můžete odebrat skupinu, budete nejdřív muset odebrat funkce Hybrid Runbook Worker v každém počítači, který je členem skupiny postupem, jak je uvedeno výše. Potom použijte následující kroky k odebrání skupiny:
 
 1. Na webu Azure Portal otevřete účet Automation.
 1. V části **automatizace procesů**vyberte **skupiny hybridních pracovních procesů**. Vyberte skupinu, kterou chcete odstranit. Zobrazí se stránka Vlastnosti pro tuto skupinu.
@@ -95,7 +95,7 @@ Můžete odebrat skupinu, budete nejdřív muset odebrat funkce Hybrid Runbook W
 
 ### <a name="hybrid-worker-role"></a>Role pracovního procesu hybrid
 
-Pro Hybrid Runbook Worker mohl připojit a zaregistrovat pomocí Log Analytics musí mít přístup k portu a adresám URL, které jsou popsány v této části. Tento přístup je kromě [portů a adresám URL požadovaným pro agenta Microsoft Monitoring Agent](../log-analytics/log-analytics-agent-windows.md) pro připojení ke službě Log Analytics. 
+Pro Hybrid Runbook Worker mohl připojit a zaregistrovat pomocí Log Analytics musí mít přístup k portu a adresám URL, které jsou popsány v této části. Tento přístup je v horní části [portů a adresám URL požadovaným pro agenta Microsoft Monitoring Agent](../log-analytics/log-analytics-agent-windows.md) pro připojení ke službě Log Analytics.
 
 Pokud používáte proxy server pro komunikaci mezi agentem a službou Log Analytics, ujistěte se, že jsou dostupné příslušné prostředky. Pokud používáte k omezení přístupu k Internetu bránu firewall, musíte nakonfigurovat bránu firewall, aby povolovala přístup. Pokud používáte bránu OMS jako proxy server, ujistěte se, že je nakonfigurovaný pro proces hybrid Worker. Pokyny, jak to udělat, najdete v části [konfigurace brány OMS pro Automation Hybrid Worker](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway#configure-for-automation-hybrid-workers).
 
@@ -106,7 +106,7 @@ Následující portů a adres URL jsou požadovány pro role Hybrid Runbook Work
 * Globální adresa URL US Gov Virginie: *.azure-automation.us
 * Služba agenta: https://\<ID pracovního prostoru\>.agentsvc.azure-automation.net
 
-Doporučuje se použít adresy, které uvedete při definování výjimky. Pro IP adresy, které si můžete stáhnout [Microsoft Azure rozsahů IP adres Datacentra](https://www.microsoft.com/download/details.aspx?id=41653). Tento soubor se každý týden aktualizuje a zobrazuje aktuálně nasazené rozsahy a všechny nadcházející změny rozsahů IP adres.
+Doporučuje se použít adresy, které uvedete při definování výjimky. Pro IP adresy, které si můžete stáhnout [Microsoft Azure rozsahů IP adres Datacentra](https://www.microsoft.com/download/details.aspx?id=41653). Tento soubor se každý týden aktualizuje a má aktuálně nasazené rozsahy a všechny nadcházející změny rozsahů IP adres.
 
 Pokud máte účet Automation, který je definován pro konkrétní oblasti, můžete omezit komunikaci s místní stejné datové centrum. Následující tabulka obsahuje záznam DNS pro každou oblast:
 
@@ -136,7 +136,7 @@ Seznam oblastí IP adres místo názvů oblast, stáhněte si [IP adresy Datacen
 
 ### <a name="update-management"></a>Update Management
 
-Kromě standardní adresy a porty, které vyžaduje, aby Hybrid Runbook Worker tyto adresy jsou požadovány speciálně pro správu aktualizací. Komunikace na tyto adresy se provádí přes port 443.
+Nad rámec standardních adresy a porty, které vyžaduje, aby Hybrid Runbook Worker jsou požadovány speciálně pro správu aktualizací těchto adres. Komunikace na tyto adresy se provádí přes port 443.
 
 |Veřejné Azure  |Azure Government  |
 |---------|---------|

@@ -8,18 +8,21 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: laevenso
-ms.openlocfilehash: 181a37504569088e44dbe39da9113257bfb35c4e
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 9a096588c5a8fda64343e001fdbd895d02153f58
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068930"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362700"
 ---
 # <a name="http-application-routing"></a>Směrování aplikace HTTP
 
 Přístup k aplikacím, které jsou nasazené na clusteru Azure Kubernetes Service (AKS) usnadňuje řešení směrování aplikace HTTP. Když toto řešení povolené, nakonfiguruje kontroler příchozího přenosu dat ve vašem clusteru AKS. Jak se aplikace nasazují, řešení také vytváří veřejně dostupné názvy DNS pro koncové body aplikace.
 
 Pokud doplněk je povolená, vytvoří zónu DNS ve vašem předplatném. Další informace o nákladech DNS najdete v tématu [DNS ceny][dns-pricing].
+
+> [!CAUTION]
+> Doplněk směrování aplikace HTTP je navržena tak, aby rychle vytvořit řadič příchozího přenosu dat a přístup k vaší aplikace. K tomu tento doplněk se nedoporučuje pro produkční použití. Nasazení příchozího přenosu dat připravené pro produkční prostředí, které obsahují více replik a TLS podporují, najdete v části [vytvořit řadič příchozího přenosu dat protokolu HTTPS](https://docs.microsoft.com/en-us/azure/aks/ingress-tls).
 
 ## <a name="http-routing-solution-overview"></a>Přehled řešení směrování protokolu HTTP
 

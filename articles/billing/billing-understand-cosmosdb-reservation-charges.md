@@ -9,26 +9,27 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: cwatson
 ms.reviewer: sngun
-ms.openlocfilehash: adcd91a8f1b3368d03f4b634e7aef40104d953e3
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 5b15b5f8188f2077b3e9cb17ab3794e881a4deb3
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393634"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353424"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>Vysvětlení, jak sleva za rezervaci se použije ke službě Azure Cosmos DB
 
-Po nákupu Azure Cosmos DB vyhrazené kapacity sleva za rezervaci se automaticky využije na prostředky Azure Cosmos DB, které odpovídají atributy a množství rezervace. Rezervace obsahuje zajištěné propustnosti pro prostředky Azure Cosmos DB a nepopisuje softwaru, sítě, úložiště, nebo předem definovanou kontejneru poplatky.
+Po nákupu Azure Cosmos DB vyhrazené kapacity sleva za rezervaci se automaticky využije na prostředky Azure Cosmos DB, které odpovídají atributy a množství rezervace. Rezervace se věnuje zajištěné propustnosti pro prostředky Azure Cosmos DB. Nezahrnuje softwaru, sítě, úložiště, nebo předdefinované kontejneru poplatky.
 
 ## <a name="reservation-discount-applied-to-azure-cosmos-db-accounts"></a>Sleva za rezervaci použitý k účtům Azure Cosmos DB
 
-Sleva za rezervaci se použije k [zřízená propustnost](../cosmos-db/request-units.md) z hlediska jednotek žádostí za second(RU/s) po hodinu hodinách. Sleva za rezervaci se pro prostředky Azure Cosmos DB, která nepoužívají celou hodinu, automaticky využije na další služby Cosmos DB prostředky, které odpovídají atributy rezervace. Sleva můžete použít pro prostředky Azure Cosmos DB, které jsou spuštěny souběžně. Pokud nemáte k dispozici prostředky Cosmos DB, na kterých běží celou hodinu a které se shodují s atributy rezervace, neobdržíte všech výhod sleva za rezervaci pro určitou hodinu.
+Sleva za rezervaci se použije k [zřízená propustnost](../cosmos-db/request-units.md) z hlediska jednotek žádostí za sekundu (RU/s) na základě hodinu hodinách. Sleva za rezervaci se pro prostředky Azure Cosmos DB, která nepoužívají celou hodinu, automaticky využije na další služby Cosmos DB prostředky, které odpovídají atributy rezervace. Sleva můžete použít pro prostředky Azure Cosmos DB, které jsou spuštěny souběžně. Pokud nemáte k dispozici prostředky Cosmos DB, na kterých běží celou hodinu a které se shodují s atributy rezervace, neobdržíte všech výhod sleva za rezervaci pro určitou hodinu.
 
-* Slevy proběhne to znamená, že rezervace s vyšší jednotkách požadavků poskytují vyšší slevy.  
-* Nákup rezervace se uplatní slevy ke všem oblastem v poměru ekvivalentní místní ceny na vyžádání. Rezervace poměry slevy v jednotlivých oblastech najdete v části [sleva za rezervaci v jedné oblasti](#reservation-discount-per-region) části tohoto článku.
+Proběhne slevy. Rezervace s vyšší jednotkách požadavků poskytují vyšší slevy. 
+
+Nákup rezervace se uplatní slevy ke všem oblastem v poměru ekvivalentní místní ceny na vyžádání. Poměry slevu na rezervaci v jednotlivých oblastech, najdete v článku [sleva za rezervaci v jedné oblasti](#reservation-discount-per-region) části tohoto článku.
 
 ## <a name="reservation-discount-per-region"></a>Sleva za rezervaci na oblast
-Sleva za rezervaci se použije na náklady na služby Azure Cosmos DB propustnosti na základě hodinu hodinu na jedno předplatné nebo rozsahu zaregistrované nebo účtu. Sleva za rezervaci se vztahují na měření využití v různých oblastech v poměru následující:
+Sleva za rezervaci se použije na náklady na propustnost služby Azure Cosmos DB po hodinu hodinách. Použije se na jedno předplatné nebo rozsahu zaregistrované nebo účtu. Sleva za rezervaci se vztahují na měření využití v různých oblastech v poměry následující:
 
 |Popis měřiče  |Oblast |Poměr  |
 |---------|---------|---------|
@@ -70,15 +71,15 @@ Sleva za rezervaci se použije na náklady na služby Azure Cosmos DB propustnos
 Vezměte v úvahu následující požadavky na rezervaci:
 
 * Požadované propustnosti: 50 000 RU/s  
-* Použít oblastí: 2. 
+* Použít oblastí: 2 
 
-V tomto případě jsou vaše celkové náklady na vyžádání pro 500 množství měřiče 100 RU/s v těchto dvou oblastí pro celkový počet RU/s spotřebě 100 000 za hodinu. 
+V tomto případě jsou vaše celkové náklady na vyžádání pro 500 množství měřiče 100 RU/s v těchto dvou oblastech. Celková spotřeba RU/s je 100 000 za hodinu. 
 
 **Scénář 1**
 
-Například pokud potřebujete nasazení služby Azure Cosmos DB v oblastech "USA – Sever střední" a "Oblasti USA – západ", a pokud každá oblast má spotřeby propustnost 50 000 RU/s. Nákup rezervace 100 000 RU/s by zcela zajistit rovnováhu mezi poplatky na vyžádání.
+Předpokládejme například, že je třeba nasazení služby Azure Cosmos DB v oblastech USA – sever – střed a USA – západ. Každá oblast má spotřeby propustnost 50 000 RU/s. Nákup rezervace 100 000 RU/s by zcela zajistit rovnováhu mezi poplatky na vyžádání.
 
-Sleva předmětem rezervace je vypočítán jako (propustnost spotřeby * reservation_discount_ratio_for_that_region). Poměr slevu na rezervaci je pro oblasti "USA – sever – střed" a "Oblasti USA – západ", "1". Proto zlevněné celkem RU/s se 100 000 RU/s (Tato hodnota se vypočítává jako: 50 000 * 1 + 50 000 * 1 = 100 000 RU/s), a nemusíte platit žádné další poplatky za běžné sazby průběžných plateb. 
+Slevy, které pokrývá rezervace se vypočítává jako: využití propustnosti * reservation_discount_ratio_for_that_region. Pro oblasti USA – sever – střed a USA – západ poměr slevu na rezervaci je 1. Zlevněné celkem RU/s, takže jsou 100 000. Tato hodnota se vypočítává jako: 50 000 * 1 + 50 000 * 1 = 100 000 RU/s. Nemusíte platit žádné další poplatky za běžné sazby průběžných plateb. 
 
 |Popis měřiče | Oblast |Využití propustnosti (RU/s) |Sleva za rezervaci u RU/s |
 |---------|---------|---------|---------|
@@ -87,28 +88,28 @@ Sleva předmětem rezervace je vypočítán jako (propustnost spotřeby * reserv
 
 **Scénář 2**
 
-Například pokud potřebujete nasazení služby Azure Cosmos DB v oblastech "Francie – jih" a "Austrálie – střed 2", a pokud každá oblast má spotřeby propustnost 50 000 RU/s. Nákup rezervace 100 000 RU/s by byly použitelné následujícím způsobem (za předpokladu, že využití Austrálie – střed 2 se slevou nejprve):
+Předpokládejme například, že je třeba nasazení služby Azure Cosmos DB v oblastech Austrálie – střed 2 a Francie – jih. Každá oblast má spotřeby propustnost 50 000 RU/s. Nákup rezervace 100 000 RU/s by byly použitelné následujícím způsobem (za předpokladu, že využití Austrálie – střed 2 se slevou nejprve):
 
 |Popis měřiče | Oblast |Využití propustnosti (RU/s) |Sleva za rezervaci u RU/s |
 |---------|---------|---------|---------|
 |Azure Cosmos DB – 100 RU/s/hodina – Austrálie – střed 2  |  Austrálie – střed 2   |  50,000  |  50,000   |
 |Azure Cosmos DB – 100 RU/s/hodina – Francie – jih  |  Francie – jih   |  50,000 |  15,384  |
 
-50 000 jednotek využití v oblasti "Austrálie – střed 2" odpovídá 75 000 RU/s fakturovatelné využití (nebo normalizované využití). Tato hodnota je vypočítán jako (využití propustnosti * reservation_discount_ratio_for_that_region) který se rovná 75 000 RU/s (Tato hodnota se vypočítává jako: 50 000 * 1.5 = 75 000 RU/s) fakturovatelné nebo normalizované využití. 
+Využití 50 000 jednotek v oblasti Austrálie – střed 2 odpovídá 75 000 RU/s fakturovatelné využití (nebo normalizované využití). Tato hodnota se vypočítává jako: využití propustnosti * reservation_discount_ratio_for_that_region. Výpočet rovná 75 000 RU/s fakturovatelné nebo normalizované využití. Tato hodnota se vypočítává jako: 50 000 * 1.5 = 75 000 RU/s.
 
-100 000 RU/s nákup rezervace by posun 75 000 RU/s v "Austrálie – střed 2" a "Francie – jih" oblast opustí 25 000 RU/s. Z zbývajících 25 000 RU/s, sleva za rezervaci 15,384 RU/s (Tato hodnota se vypočítává jako: 25 000 / 1.625 = 15,384 RU/s) se použije pro oblasti "Francie – jih". Zbývající 34,616 RU/s v oblasti "Francie – jih" se účtuje za běžné sazby průběžných plateb. 
+100 000 RU/s nákup rezervace by posun 75 000 RU/s v Austrálie – střed 2. Opuštění 25 000 RU/s oblastí Francie – jih. Ze zbývajících 25 000 RU/s platí sleva za rezervaci 15,384 RU/s pro oblasti Francie – jih. Hodnota slevy se vypočítává jako: 25 000 / 1.625 = 15,384 RU/s. Zbývající 34,616 RU/s v oblasti Francie – jih se účtuje za běžné sazby průběžných plateb. 
 
-Azure fakturační systém přiřadí sníženou sazbou za rezervaci pro první instanci, která je zpracována který by odpovídal rezervace konfigurace (například Austrálie – střed 2 v tomto případě).
+Přiřadí sníženou sazbou za rezervaci pro první instanci, která je zpracována a, který odpovídá konfiguraci rezervace se fakturačního systému Azure. Například je Austrálie – střed 2 v tomto případě.
 
 K pochopení a zobrazení aplikace Azure rezervace na fakturaci využití sestav, naleznete v tématu [pochopit Azure rezervace využití](../billing/billing-understand-reserved-instance-usage-ea.md).
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o rezervacích Azure, najdete v následujících článcích:
+Další informace o Azure rezervace, naleznete v následujících článcích:
 
 * [Co jsou Azure rezervace?](../billing/billing-save-compute-costs-reservations.md)  
 * [Předplatíte prostředky Azure Cosmos DB pomocí služby Azure Cosmos DB vyhrazené kapacity](../cosmos-db/cosmos-db-reserved-capacity.md)  
-* [Předem za výpočetní prostředky, SQL Database s Azure SQL Database vyhrazené kapacity](../sql-database/sql-database-reserved-capacity.md)  
+* [Předplacení výpočetních prostředků SQL Database se záložní kapacitou služby Azure SQL Database](../sql-database/sql-database-reserved-capacity.md)  
 * [Správa rezervací Azure](../billing/billing-manage-reserved-vm-instance.md)  
 * [Vysvětlení využití rezervace pro vaše předplatné s průběžnými platbami](../billing/billing-understand-reserved-instance-usage.md)  
 * [Vysvětlení využití rezervaci u prováděcí smlouvy Enterprise](../billing/billing-understand-reserved-instance-usage-ea.md)  

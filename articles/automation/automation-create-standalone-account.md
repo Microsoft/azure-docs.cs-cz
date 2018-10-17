@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 021ab6cd29634c2e2f17234e188edce2a14449cf
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 02ca9065107b999fa0182c89ae2b9d8ca0c8607a
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42057489"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362870"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Vytvoření samostatného účtu Azure Automation
 
@@ -61,14 +61,15 @@ Chcete-li vytvořit účet Azure Automation na webu Azure Portal, proveďte nás
    ![Vyhledání a výběr Automation and Control na webu Azure Marketplace](media/automation-create-standalone-account/automation-marketplace-select-create-automationacct.png)
 
 1. Na další obrazovce vyberte **vytvořit**.
+
   ![Přidat účet služby Automation](media/automation-create-standalone-account/automation-create-automationacct-properties.png)
 
   > [!NOTE]
   > Pokud se zobrazí následující zpráva **přidat účet Automation** podokno, váš účet není členem role správců předplatného a spolusprávce předplatného.
   >
   > ![Přidání upozornění pro účet služby Automation](media/automation-create-standalone-account/create-account-without-perms.png)
-  >
-1. V **přidat účet Automation** podokno v **název** pole, zadejte název nového účtu Automation. Tento název nedá změnit, jakmile je vybrán.
+
+1. V **přidat účet Automation** podokno v **název** pole, zadejte název nového účtu Automation. Tento název nedá změnit, jakmile je vybrán. *Názvy účtů Automation jsou na oblast a skupinu prostředků jedinečné.*
 1. Pokud máte více než jedno předplatné, v **předplatné** , určete předplatné, které chcete použít pro nový účet.
 1. Pro **skupiny prostředků**, zadejte nebo vyberte skupinu pro nový nebo existující prostředek.
 1. Pro **umístění**, vyberte umístění datového centra Azure.

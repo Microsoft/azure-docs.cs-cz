@@ -147,18 +147,14 @@ items:
       href: stream-analytics-edge-csharp-udf-methods.md
   - name: Řešení potíží
     items:
-    - name: Postup při řešení potíží
-      href: stream-analytics-troubleshooting-guide.md
-    - name: Běžné problémy
-      href: stream-analytics-common-troubleshooting-issues.md
-    - name: Diagram úloh
-      href: stream-analytics-job-diagram-with-metrics.md
+    - name: Vstupní připojení
+      href: stream-analytics-troubleshoot-input.md
+    - name: Výstupní připojení
+      href: stream-analytics-troubleshoot-output.md
+    - name: Logika dotazování
+      href: stream-analytics-troubleshoot-query.md
     - name: Diagnostické protokoly
       href: stream-analytics-job-diagnostic-logs.md
-    - name: Příkaz SELECT INTO
-      href: stream-analytics-select-into.md
-    - name: Přijímače centra událostí
-      href: stream-analytics-event-hub-consumer-groups.md
   - name: Integrace se strojovým učením
     items:
     - name: Analýza subjektivního hodnocení s využitím modelů ML
@@ -167,6 +163,8 @@ items:
       href: stream-analytics-machine-learning-anomaly-detection.md
     - name: Použití rozhraní REST API
       href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
+  - name: Ladění s využitím diagramu úloh
+    href: stream-analytics-job-diagram-with-metrics.md
 - name: Referenční informace
   items:
   - name: Azure PowerShell
@@ -203,9 +201,9 @@ items:
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: Dokument white paper – Zpracování událostí v reálném čase
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: 85e4a1bdc05f48a842a183bfa6db80d0bd3f946f
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: f032292835e01b86fdc9ca0b8a3dd00f8a45cd29
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854758"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340864"

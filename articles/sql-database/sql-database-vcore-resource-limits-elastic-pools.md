@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 7459ae5153434887ade74f841a2239c76a7caef9
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.date: 10/15/2018
+ms.openlocfilehash: 6673fa9d377400d7e80fc95dc7d0ce12f4b2e60e
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043708"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354168"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-elastic-pools"></a>Založený na virtuálních jádrech zakoupení modelu limity pro elastické fondy Azure SQL Database
 
@@ -28,16 +28,15 @@ Založený na DTU nákupní model omezení najdete v tématu [omezení prostřed
 > [!IMPORTANT]
 > Za určitých okolností budete muset zmenšit databázi uvolnění nevyužívaného místa. Další informace najdete v tématu [spravovat místo souborů ve službě Azure SQL Database](sql-database-file-space-management.md).
 
-## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>Elastický fond: velikosti úložiště a výpočty velikostí
-
-Následující tabulky pro elastické fondy SQL Database, zobrazit prostředky dostupné na jednotlivých úrovních služby a vypočítat velikost. Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikost úložiště [webu Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases), [rozhraní příkazového řádku Azure](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases), nebo [rozhraní REST API](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases).
+Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikost úložiště [webu Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases), [rozhraní příkazového řádku Azure](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases), nebo [rozhraní REST API](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases).
 
 > [!NOTE]
 > Omezení prostředků jednotlivých databází v elastických fondech jsou obvykle stejné jako u izolovaných databází mimo fondy, které má stejnou výpočetní velikost. Maximální počet souběžných pracovních procesů pro databázi GP_Gen4_1 je například 200 pracovních procesů. Maximální počet souběžných pracovních procesů pro databáze ve fondu GP_Gen4_1 je tedy také 200 pracovních procesů. Všimněte si, že se celkový počet souběžných pracovních procesů ve fondu GP_Gen4_1 je 210.
 
-### <a name="general-purpose-service-tier"></a>Obecné účely úrovně služeb
+## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>Obecné účely vrstvy služby: velikosti úložiště a výpočty velikostí
 
-#### <a name="generation-4-compute-platform"></a>Výpočetní platforma běžící generace 4
+### <a name="generation-4-compute-platform"></a>Výpočetní platforma běžící generace 4
+
 |Vypočítat velikost|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|GP_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Generování H/W|4|4|4|4|4|4|
@@ -54,14 +53,15 @@ Následující tabulky pro elastické fondy SQL Database, zobrazit prostředky d
 |Maximální počet souběžných pracovních procesů (požadavků)|210|420|840|1680|3360|5040|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|
 |Maximální počet databází pro každý fond|100|200|500|500|500|500|
-|Volby pro elastické fondy – vcore min/max na databázi|0, 0,25, 0,5, 1|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|
+|Volby pro elastické fondy – vCore min/max na databázi|0, 0,25, 0,5, 1|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|
 |Počet replik|1|1|1|1|1|1|
 |Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Přečtěte si horizontální navýšení kapacity|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Zahrnuté úložiště zálohování|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|
 |||
 
-#### <a name="generation-5-compute-platform"></a>Výpočetní platforma běžící generace 5
+### <a name="generation-5-compute-platform"></a>Výpočetní platforma běžící generace 5
+
 |Vypočítat velikost|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
 |:--- | --: |--: |--: |--: |--: |--: |--: |--: |
 |Generování H/W|5|5|5|5|5|5|5|5|
@@ -78,16 +78,17 @@ Následující tabulky pro elastické fondy SQL Database, zobrazit prostředky d
 |Maximální počet souběžných pracovních procesů (požadavků)|210|420|840|1680|2520|3360|4200|8400
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|30000|30000|
 |Maximální počet databází pro každý fond|100|200|500|500|500|500|500|500|
-|Volby pro elastické fondy – vcore min/max na databázi|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|0, 0,5, 1, 2, 4, 8, 16, 24, 32|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 40|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 40, 80|
+|Volby pro elastické fondy – vCore min/max na databázi|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|0, 0,5, 1, 2, 4, 8, 16, 24, 32|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 40|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 40, 80|
 |Počet replik|1|1|1|1|1|1|1|1|
 |Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Přečtěte si horizontální navýšení kapacity|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Zahrnuté úložiště zálohování|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|
 |||
 
-### <a name="business-critical-service-tier"></a>Obchodní vrstvy kritické služby
+## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>Obchodní vrstvy služby: velikosti úložiště a výpočty velikostí
 
-#### <a name="generation-4-compute-platform"></a>Výpočetní platforma běžící generace 4
+### <a name="generation-4-compute-platform"></a>Výpočetní platforma běžící generace 4
+
 |Vypočítat velikost|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|BC_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Generování H/W|4|4|4|4|4|4|
@@ -104,7 +105,7 @@ Následující tabulky pro elastické fondy SQL Database, zobrazit prostředky d
 |Maximální počet souběžných pracovních procesů (požadavků)|210|420|840|1680|3360|5040|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|
 |Maximální počet databází pro každý fond|Pro tato velikost výpočetních jsou podporovány pouze jedné databáze|50|100|100|100|100|
-|Volby pro elastické fondy – vcore min/max na databázi|neuvedeno|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|
+|Volby pro elastické fondy – vCore min/max na databázi|neuvedeno|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|
 |Počet replik|3|3|3|3|3|3|
 |Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Přečtěte si horizontální navýšení kapacity|Ano|Ano|Ano|Ano|Ano|Ano|
@@ -112,6 +113,7 @@ Následující tabulky pro elastické fondy SQL Database, zobrazit prostředky d
 |||
 
 #### <a name="generation-5-compute-platform"></a>Výpočetní platforma běžící generace 5
+
 |Vypočítat velikost|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |--: |--: |--: |--: |
 |Generování H/W|5|5|5|5|5|5|5|5|
@@ -128,7 +130,7 @@ Následující tabulky pro elastické fondy SQL Database, zobrazit prostředky d
 |Maximální počet souběžných pracovních procesů (požadavků)|210|420|840|1680|2520|3360|5040|8400|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|30000|30000|
 |Maximální počet databází pro každý fond|neuvedeno|50|100|100|100|100|100|100|
-|Volby pro elastické fondy – vcore min/max na databázi|neuvedeno|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|0, 0,5, 1, 2, 4, 8, 16, 24, 32|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 40|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 40, 80|
+|Volby pro elastické fondy – vCore min/max na databázi|neuvedeno|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|0, 0,5, 1, 2, 4, 8, 16, 24, 32|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 40|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 40, 80|
 |Počet replik|3|3|3|3|3|3|3|3|
 |Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Přečtěte si horizontální navýšení kapacity|Ano|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
@@ -137,17 +139,17 @@ Následující tabulky pro elastické fondy SQL Database, zobrazit prostředky d
 
 Pokud se všechny virtuální jádra pro elastický fond je zaneprázdněný, každá databáze ve fondu obdrží stejné množství výpočetních prostředků pro zpracování dotazů. Služba SQL Database poskytuje spravedlivé sdílení prostředků mezi databázemi tím, že zajišťuje rovnoměrné rozdělení výpočetního času. Spravedlivé sdílení prostředků elastického fondu je kromě libovolným množstvím prostředků jinak zaručena pro každou databázi, pokud je minimální počet virtuálních jader na databázi nastaven na nenulovou hodnotu.
 
-### <a name="database-properties-for-pooled-databases"></a>Vlastnosti databáze pro databáze ve fondu
+## <a name="database-properties-for-pooled-databases"></a>Vlastnosti databáze pro databáze ve fondu
 
 Následující tabulka popisuje vlastnosti pro databáze ve fondu.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Maximální počet virtuálních jader na databázi |Maximální počet virtuálních jader, které může použít libovolnou databázi ve fondu, pokud jsou dostupné v závislosti na využití ostatními databázemi ve fondu. Maximální počet virtuálních jader na databázi není garancí prostředků pro databázi. Toto nastavení je globální a platí pro všechny databáze ve fondu. Nastavit maximální počet virtuálních jader na databázi dostatečně vysoký, aby se pro zpracování špičky využití databáze. Očekává se určitý stupeň předimenzování, protože fond obecně předpokládá studené a horké vzory používání, při nichž nenastávají špičky u všech databází ve stejnou chvíli.|
+| Maximální počet virtuálních jader na databázi |Maximální počet virtuálních jader, které může použít libovolnou databázi ve fondu, pokud jsou dostupné v závislosti na využití ostatními databázemi ve fondu. Maximální počet virtuálních jader na databázi není garancí prostředků pro databázi. Toto nastavení je globální a platí pro všechny databáze ve fondu. Nastavit maximální počet virtuálních jader na databázi dostatečně vysoký, aby se pro zpracování špičky využití databáze. Určitý stupeň over-pass-the potvrzování očekává se, protože fond obecně předpokládá využití horké a studené vzory pro databáze kde nejsou všechny databáze peaking současně.|
 | Min virtuálních jader na databázi |Minimální počet virtuálních jader, které je zaručeno, že všechny databáze ve fondu. Toto nastavení je globální a platí pro všechny databáze ve fondu. Min virtuálních jader na databázi může být nastaven na hodnotu 0 a výchozí hodnota je také. Tato vlastnost nastavena na libovolné místo mezi 0 a využití průměrné virtuálních jader na databázi. Součinu počtu databází ve fondu a minimální virtuálních jader na databázi nesmí přesáhnout virtuálních jader na fond.|
 | Max. úložiště na databázi |Maximální velikosti databáze nastavena podle uživatele pro databázi ve fondu. Databáze ve fondu sdílejí úložiště přidělené fondu, proto je velikost databáze můžete oslovit omezena na menší zbývající úložiště fondu a velikost databáze. Maximální velikost databáze odkazuje na maximální velikost datových souborů a nezahrnuje místo, které využívají soubory protokolu. |
 |||
- 
+
 ## <a name="next-steps"></a>Další postup
 
 - Zobrazit [nejčastější dotazy k SQL Database](sql-database-faq.md) odpovědi na nejčastější dotazy.

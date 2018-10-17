@@ -22,7 +22,7 @@
 #### [Moduly IoT Edge](./iot-edge-module.md) 
 #### [Konzultační služba](./consulting-services.md)  
 #### [Průvodce publikováním pro Office 365, Dynamics 365 a Power BI](./appsource-offer-publishing-guide.md)
-#### [Povolení uvedení na Microsoft AppSource a Azure Marketplace s využitím Azure Active Directory](./enable-appsource-marketplace-using-azure-ad.md)
+#### [Povolení uvedení na AppSource a Marketplace s využitím Azure Active Directory](./enable-appsource-marketplace-using-azure-ad.md)
 
 ### [Rozvoj vašeho podnikání prostřednictvím marketplace](./grow-your-business-with-azure-marketplace.md)  
 #### [Upřednostňovaná řešení](./preferred-solutions.md) 
@@ -51,7 +51,7 @@
 ### [Vytvoření šablony řešení](./cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish.md)
 ### [Publikování řešení pro správu](./cloud-partner-portal-orig/cloud-partner-portal-management-solution-publish.md)
 ### [Doprovodné materiály pro SEO](./cloud-partner-portal-orig/cloud-partner-portal-seo-guidance.md)
-### [Zpřístupnění nabídky](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-go-live.md)
+### [Zveřejnění nabídky](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-go-live.md)
 ### [Aktualizace stávající nabídky](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-update.md)
 ### [Odstranění nabídky](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-delete.md)
 ### [Migrace nabídek](./cloud-partner-portal-orig/cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)

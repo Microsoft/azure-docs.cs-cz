@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 08/09/2018
-ms.openlocfilehash: 602bbdcd21e56bb64515a19623e08ae617c99a59
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: dfa5929daffb27617d3d1047f044a5af037e42ff
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870906"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362233"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronizace dat napříč několika cloudu a místními databázemi pomocí synchronizace dat SQL
 
@@ -152,7 +152,7 @@ Synchronizace dat nelze synchronizovat jen pro čtení nebo systémem generovan�
 | **Dimenze**                                                      | **Limit**              | **Alternativní řešení**              |
 |-----------------------------------------------------------------|------------------------|-----------------------------|
 | Maximální počet skupin synchronizace všech databází může patřit do.       | 5                      |                             |
-| Maximální počet koncových bodů ve skupině jedním synchronizačním              | 30                     | Vytvořte více skupin synchronizace |
+| Maximální počet koncových bodů ve skupině jedním synchronizačním              | 30                     |                             |
 | Maximální počet místní koncové body ve skupině jedním synchronizačním. | 5                      | Vytvořte více skupin synchronizace |
 | Názvy databáze, tabulky, schéma a sloupce                       | 50 znaky na název |                             |
 | Tabulky ve skupině synchronizace                                          | 500                    | Vytvořte více skupin synchronizace |
@@ -160,6 +160,8 @@ Synchronizace dat nelze synchronizovat jen pro čtení nebo systémem generovan�
 | Velikost dat řádku v tabulce                                        | 24 Mb                  |                             |
 | Interval synchronizace minimální                                           | 5 minut              |                             |
 |||
+> [!NOTE]
+> Může existovat maximálně 30 koncové body ve skupině jedním synchronizačním dojde pouze jednu skupinu synchronizace. Pokud existuje více než jednu skupinu synchronizace, celkový počet koncových bodů ve všech skupinách synchronizace může mít maximálně 30. Pokud databáze náleží do několika skupin synchronizace, počítá se jako několik koncových bodů, není jednou.
 
 ## <a name="faq-about-sql-data-sync"></a>Nejčastější dotazy týkající se synchronizace dat SQL
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: 953a004f48bfd9bd68b9500d312240c45cbf3292
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 634958265193a1dedb7c860c34f712160e4120d2
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321899"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353287"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor řešení v Azure
 
@@ -257,7 +257,7 @@ Všechna data, která je graficky vystavené prostřednictvím řídicího panel
 
 Network Performance Monitor využívá výstrah možnosti [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts).
 
-To znamená, že všechny výstrahy se spravuje pomocí [skupiny akcí](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#overview).  
+To znamená, že všechna oznámení se spravují pomocí [skupiny akcí](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#overview).  
 
 Pokud jste uživatelem NPM vytvořením výstrahy prostřednictvím OMS: 
 1. Zobrazí se odkaz, který vás přesměrují na webu Azure Portal. Klikněte na něj pro přístup k portálu.
@@ -270,6 +270,10 @@ Pokud jste uživatelem NPM vytvořením výstrahy prostřednictvím webu Azure P
 2. Pokud budete chtít přímo, zadejte svůj e-mail, akce skupiny s názvem **NPM e-mailu ActionGroup** se vytvoří a id e-mailu se přidá do této skupiny akcí.
 3. Pokud se rozhodnete použít skupiny akcí, budete muset vybrat skupinu dříve vytvořená akce. Zjistěte, jak vytvořit skupinu akcí [tady.](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal) 
 4. Po úspěšném vytvoření výstrahy můžete spravovat výstrahy odkaz jak spravovat upozornění. 
+
+Pokaždé, když vytvoříte upozornění, NPM vytvoří pravidlo upozornění na základě dotazu protokolu ve službě Azure Monitor. Tento dotaz je triggerred ve výchozím nastavení každých 5 minut. Azure monitor není účtovat prvních 250 pravidel upozornění, které jsou vytvořené protokolů a všechna pravidla upozornění výše uvedené omezení 250 pravidel upozornění protokolů se budou účtovat podle jako [výstrahy ceny ve službě Azure Monitor stránce s cenami](https://azure.microsoft.com/en-us/pricing/details/monitor/).
+Oznámení se účtují samostatně podle [oznámení ceny na stránce Azure Monitor pricig](https://azure.microsoft.com/en-us/pricing/details/monitor/).
+
 
 ## <a name="pricing"></a>Ceny
 

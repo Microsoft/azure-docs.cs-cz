@@ -3,24 +3,24 @@ title: Azure Traffic Manager se službou Azure Site Recovery | Dokumentace Micro
 description: Popisuje, jak používat Azure Traffic Manageru s Azure Site Recovery pro zotavení po havárii a migrace
 services: site-recovery
 documentationcenter: ''
-author: mayanknayar
+author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
-ms.author: manayar
-ms.openlocfilehash: 0be013a1b8d2c619d58034157240eafb241c4e59
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.topic: conceptual
+ms.date: 10/16/2018
+ms.author: mayg
+ms.openlocfilehash: 8f303ec3349b0003ef764e437c6f06cf498dcc57
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919032"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353250"
 ---
 # <a name="azure-traffic-manager-with-azure-site-recovery"></a>Azure Traffic Manager se službou Azure Site Recovery
 
-Azure Traffic Manager umožňuje řídit distribuci provozu mezi koncových bodů vaší aplikace. Koncový bod je všechny internetová služba hostovaná uvnitř nebo mimo Azure.
+Azure Traffic Manager umožňuje řídit distribuci provozu mezi koncových bodů vaší aplikace. Koncový bod je jakákoli internetová služba hostovaná v rámci nebo mimo Azure.
 
-Traffic Manager se používá v systému DNS (Domain Name) přesměrovává klientské žádosti na nejvhodnější koncové na základě metody směrování provozu a stavu koncových bodů. Traffic Manager poskytuje řadu [metody směrování provozu](../traffic-manager/traffic-manager-routing-methods.md) a [možnosti monitorování koncových bodů](../traffic-manager/traffic-manager-monitoring.md) tak, aby vyhovovaly potřebám různých aplikací a modely automatické převzetí služeb při selhání. Klienti připojovat přímo k vybraný koncový bod. Traffic Manager není proxy nebo brány a nezná provoz mezi klientem a služby předávání.
+Traffic Manager se používá v systému DNS (Domain Name) přesměrovává klientské žádosti na nejvhodnější koncové na základě metody směrování provozu a stavu koncových bodů. Traffic Manager poskytuje celou řadu [metod směrování provozu](../traffic-manager/traffic-manager-routing-methods.md) a [možností monitorování koncových bodů](../traffic-manager/traffic-manager-monitoring.md), takže vyhovuje různým požadavkům aplikací a modelům automatického převzetí služeb při selhání. Klienti připojovat přímo k vybraný koncový bod. Traffic Manager není proxy nebo brány a nezná provoz mezi klientem a služby předávání.
 
 Tento článek popisuje, jak můžete kombinovat inteligentního směrování sledování provozu Azure s Azure Site Recovery efektivní zotavení po havárii a možností migrace.
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 935e2b9e861a889bef48c1d7ba119ab694cddfb3
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 4809881276da752ac6eb08773fb8be145dc5f4c7
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43094013"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49367154"
 ---
 ## <a name="create-a-device-identity"></a>Vytvoření identity zařízení
 
@@ -31,11 +31,11 @@ V této části použijete [webu Azure portal](https://portal.azure.com) k vytvo
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
-   ![Přidat nové zařízení](./media/iot-hub-get-started-create-device-identity-portal/add-device.png)
+   ![Přidat nové zařízení](./media/iot-hub-get-started-create-device-identity-portal/create-a-device.png)
 
 1. V seznamu zařízení, klikněte na nově vytvořený zařízení a zkopírujte **připojovací řetězec---primární klíč** pro pozdější použití.
 
-    ![Připojovací řetězec zařízení](./media/iot-hub-get-started-create-device-identity-portal/device-connection-string.png)
+    ![Připojovací řetězec zařízení](./media/iot-hub-get-started-create-device-identity-portal/device-details.png)
 
 > [!NOTE]
 > V registru identit služby IoT Hub se uchovávají pouze identity zařízení za účelem bezpečného přístupu ke službě IoT Hub. Ukládají se zde ID zařízení a jejich klíče, které slouží jako zabezpečené přihlašovací údaje, a příznak povoleno/zakázáno, s jehož pomocí můžete zakázat přístup k jednotlivým zařízením. Pokud aplikace potřebuje pro zařízení ukládat další metadata, měla by používat úložiště pro konkrétní aplikaci. Další informace najdete v tématu [Příručka vývojáře pro IoT Hub](../articles/iot-hub/iot-hub-devguide-identity-registry.md).

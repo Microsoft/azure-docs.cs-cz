@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: jasonh
-ms.openlocfilehash: 1dd0e33b3ec6cc5521d5087d48e9e5467911c2b6
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: f3be4b5e74c0c5cac9acd281b86e55c96b011763
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109759"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363788"
 ---
 # <a name="archived-release-notes-for-azure-hdinsight"></a>Poznámky k verzi archivované pro Azure HDInsight
 
@@ -24,7 +24,7 @@ Pro **nejnovější** distribuovatelných oprav Azure HDInsight, naleznete v té
 > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [článku Správa verzí HDInsight](hdinsight-component-versioning.md).
 
 ## <a name="notes-for-06272018---release-of-new-open-source-versions-adls-gen2-etc-on-hdinsight-36"></a>Poznámky k 27/06/2018 – vydání nové verze opensourcového atd. ADLS Gen2 HDInsight 3.6
-Verze z června 2018 HDInsight je významné verze s velkým množstvím nových aktualizací a možnosti pro naše zákazníky. Podrobnosti najdete v tomto [příspěvku](https://azure.microsoft.com/en-us/blog/enterprises-get-deeper-insights-with-hadoop-and-spark-updates-on-azure-hdinsight/) další podrobnosti.
+Verze z června 2018 HDInsight je významné verze s velkým množstvím nových aktualizací a možnosti pro naše zákazníky. Podrobnosti najdete v tomto [příspěvku](https://azure.microsoft.com/blog/enterprises-get-deeper-insights-with-hadoop-and-spark-updates-on-azure-hdinsight/) další podrobnosti.
 
 Následující části jsou nejdůležitější funkce obsahuje. Podrobné poznámky k verzi, známé problémy a podobně a opravy chyb najdete [poznámky k verzi pro Azure HDInsight](hdinsight-release-notes.md).
 

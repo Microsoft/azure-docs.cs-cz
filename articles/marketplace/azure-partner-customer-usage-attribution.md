@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 10/05/2018
+ms.date: 10/15/2018
 ms.author: yijenj
-ms.openlocfilehash: 99df133b9f626f970189df578c6d107086b9dab9
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: a0b3c220a1cd857bc8bea0eb5ab41625845fcc5d
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854996"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365613"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Attribution využití zákazníka partnerů Azure
 
@@ -44,7 +44,7 @@ Mnoho partnerská řešení jsou nasazené na předplatné zákazníka pomocí �
 
 Chcete-li přidat globálně jedinečný identifikátor (GUID), provedete jeden úpravy souboru hlavní šablony:
 
-1. Vytvořit identifikátor GUID (například eb7927c8 dd66-43e1-b0cf-c346a422063).
+1. [Vytvořit GUID](#create-guids) (například eb7927c8 dd66-43e1-b0cf-c346a422063) a [zaregistrovat GUID](#register-guids-and-offers).
 
 1. Otevřete šablonu Resource Manageru.
 
@@ -55,6 +55,8 @@ Chcete-li přidat globálně jedinečný identifikátor (GUID), provedete jeden 
 1. Zkontrolujte šablonu pro všechny chyby.
 
 1. Znovu publikujte šablony v příslušné úložiště.
+
+1. [Ověření úspěšné identifikátor GUID v nasazení šablony](#verify-the-guid-deployment).
 
 ### <a name="sample-template-code"></a>Vzorový kód šablony
 
@@ -99,6 +101,24 @@ Při použití rozhraní příkazového řádku Azure k připojení vašeho iden
 ```
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
+
+## <a name="create-guids"></a>Vytvořit GUID
+
+Identifikátor GUID je jedinečný referenční číslo, které má 32 šestnáctkových číslic. Vytvořit GUID pro sledování, měli by používat GUID generator. Doporučuje se, že využijete [služby Azure Storage GUID generátor formuláře](https://aka.ms/StoragePartners). Ale pokud nechcete používat Azure Storage GUID generator, jsou více [online GUID generátorů](https://www.bing.com/search?q=guid%20generator) , který vám pomůže.
+
+> [!Note]
+> Je důrazně doporučujeme použít [služby Azure Storage GUID generátor formuláře](https://aka.ms/StoragePartners) vytvořit váš identifikátor GUID. Další informace najdete v tématu naše [nejčastější dotazy k](#faq).
+
+Vytvořte jedinečný GUID pro každou nabídku a distribuční kanál. Pokud nasadíte dvě řešení pomocí šablony a každý z nich je k dispozici na webu Azure Marketplace a na Githubu, je třeba vytvořit čtyři GUID:
+
+*   Nabídky A webu Azure Marketplace 
+*   Nabídky A na Githubu
+*   Nabídky B v Azure Marketplace 
+*   Nabídky B na Githubu
+
+Vytváření sestav se provádí tak, že hodnota partnera (ID partnera společnosti Microsoft) a identifikátor GUID. 
+
+Můžete také sledovat identifikátory GUID na podrobnější úrovni jako SKU, ve kterém se tyto skladové položky varianty nabídky.
 
 ## <a name="register-guids-and-offers"></a>Zaregistrujte identifikátory GUID a nabídky
 
@@ -183,21 +203,6 @@ foreach ($deployment in $deployments){
 }
 ```
 
-## <a name="create-guids"></a>Vytvořit GUID
-
-Identifikátor GUID je jedinečný referenční číslo, které má 32 šestnáctkových číslic. Vytvořit GUID pro sledování, měli by používat GUID generator. Existuje více [online GUID generátorů](https://www.bing.com/search?q=guid%20generator&qs=n&form=QBRE&sp=-1&ghc=2&pq=guid%20g&sc=8-6&sk=&cvid=0BAFAFCD70B34E4296BB97FBFA3E1B4E) , který vám pomůže.
-
-Vytvořte jedinečný GUID pro každou nabídku a distribuční kanál. Pokud nasadíte dvě řešení pomocí šablony a každý z nich je k dispozici na webu Azure Marketplace a na Githubu, je třeba vytvořit čtyři GUID:
-
-*   Nabídky A webu Azure Marketplace 
-*   Nabídky A na Githubu
-*   Nabídky B v Azure Marketplace 
-*   Nabídky B na Githubu
-
-Vytváření sestav se provádí tak, že hodnota partnera (ID partnera společnosti Microsoft) a identifikátor GUID. 
-
-Můžete také sledovat identifikátory GUID na podrobnější úrovni jako SKU, ve kterém se tyto skladové položky varianty nabídky.
-
 ## <a name="notify-your-customers"></a>Informovat vaše zákazníky
 
 Partneři by měla být podkladem zákazníků o nasazení, která používají sledování identifikátor GUID správce prostředků. Společnosti Microsoft sestavy využití Azure, který je spojen s Tato nasazení partnerovi. Následující příklady zahrnují obsah, který můžete použít k upozornění zákazníků o tato nasazení. V příkladech nahraďte \<partnera > s názvem vaší společnosti. Partneři musí Ujistěte se, že oznámení v souladu s jejich data zásady ochrany osobních údajů a kolekce, včetně možnosti pro zákazníky, kteří mají být vyloučeny z sledování. 
@@ -275,3 +280,7 @@ Zákazníci můžou sledovat jejich používání jednotlivé prostředky nebo s
 **Tato metoda sledování se podobá k digitální DPOR Partner of Record ()?**
 
 Tato nová metoda připojování nasazení a využití partnerské řešení poskytuje mechanismus pro propojení partnerského řešení pro využití Azure. Partnera DPOR slouží k přidružení konzultační (systémový integrátor) nebo partnera pro správu (Managed Service Provider) s předplatným Azure zákazníka.   
+
+**Co je výhoda pro použití služby Azure Storage GUID Generator formuláře?**
+
+Azure Storage GUID Generator formuláře je zaručeno, že generování identifikátoru GUID požadovaný formát. Kromě toho pokud používáte některý z metody sledování rovina dat služby Azure Storage, můžete využívat stejný identifikátor GUID pro rovinu řízení Marketplace sledování. To umožňuje využívat jedinou jednotné identifikátor GUID pro partnera attribution aniž byste museli udržovat samostatných GUID.

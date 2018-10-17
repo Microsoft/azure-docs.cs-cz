@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 08/31/2018
 ms.author: danlep
-ms.openlocfilehash: dde40b8f53aa40f1c15fe0efd810889b8c4510fb
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 41c9302d280d6027e12f2516bca26a98d224f301
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854858"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354185"
 ---
 # <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>Použití Azure Container Instances jako Jenkins agenta sestavení
 
@@ -47,7 +47,7 @@ Další informace o službě Azure Container Instances, naleznete v tématu [o s
 
    ![Další nastavení pro nasazení portálu Jenkinse](./media/container-instances-jenkins/jenkins-portal-02.png)
 
-4. Integrace instančního objektu služby, vyberte **Auto(MSI)** mít [Azure Identity spravované služby] [spravovaných identity azure prostředků] automaticky vytvořit identitu ověřování pro instance Jenkinse. Vyberte **ruční** poskytnout vlastní pověření instančního objektu.
+4. Integrace instančního objektu služby, vyberte **Auto(MSI)** mají [spravovat identity pro prostředky Azure] [spravovaných identity azure prostředků] automaticky vytvořit identitu ověřování pro instance Jenkinse. Vyberte **ruční** poskytnout vlastní pověření instančního objektu.
 
 5. Agenti cloud nakonfigurovat cloudové platformy pro úlohy sestavení Jenkinse. Pro účely tohoto článku, vyberte **ACI**. S agentem ACI cloudu Každá úloha sestavení Jenkinse běží v instanci kontejneru.
 

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/21/2018s
+ms.date: 10/10/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 9092629c7bef46cdb7c464fca5e22d4aea0da9fc
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 12b7a605350b07565660e9e4d1334b286aa5ac00
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47041536"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079102"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Rychlý start: Prozkoumání a analýza nákladů pomocí analýzy nákladů
 
@@ -25,22 +25,30 @@ V tomto rychlém startu použijete analýzu nákladů a prozkoumáte a analyzuje
 
 V tomto rychlém startu se naučíte:
 
-- Zkontrolovat náklady v analýze nákladů
+- Kontrola nákladů v analýze nákladů
 - Přizpůsobit zobrazení nákladů
-- Stáhnout data analýzy nákladů
+- Stažení dat analýzy nákladů
 
 
 ## <a name="prerequisites"></a>Požadavky
 
 Analýza nákladů je dostupná pro všechny zákazníky se [smlouvou Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/). Abyste mohli zobrazit data nákladů, musíte mít alespoň přístup pro čtení k nejméně jednomu z následujících oborů.
 
-- Fakturační účet
-- Oddělení
-- Registrační účet
-- Skupina pro správu
-- Předplatné
-- Skupina prostředků
+- Obor *fakturační účet* je definován v https://ea.azure.com a vyžaduje přístup podnikového správce. Není požadováno žádné nastavení EA. Informace o fakturaci jsou v analýze nákladů konsolidovány pro všechna předplatná ve smlouvě Enterprise. Fakturační účet se často označuje jako *smlouva Enterprise* nebo *registrace*.
 
+- Obor *oddělení* je definován v https://ea.azure.com a vyžaduje přístup správce oddělení. Je požadováno, aby na portálu EA bylo povoleno nastavení **DA view charges** (Správce oddělení může zobrazit náklady). Informace o fakturaci jsou v analýze nákladů konsolidovány pro všechna předplatná patřící do registračního účtu spojeného s oddělením.
+
+- Rozsah *registrační účet* je definován v https://ea.azure.com a vyžaduje přístup vlastníka účtu. Je požadováno, aby na portálu EA bylo povoleno nastavení **AO view charges** (Vlastník účtu může zobrazit náklady). Informace o fakturaci jsou v analýze nákladů konsolidovány pro všechna předplatná patřící do daného registračního účtu. Registrační účet s se často označuje jako *vlastník účtu*.
+
+- Obor *skupina pro správu* je definován v https://portal.azure.com a vyžaduje přístup ke čtení správy nákladů (nebo Čtenář). Je požadováno, aby na portálu EA bylo povoleno nastavení **AO view charges** (Vlastník účtu může zobrazit náklady). Informace o fakturaci jsou v analýze nákladů konsolidovány pro všechna předplatná pod skupinou pro správu.
+
+- Obor *předplatné* je definován v https://portal.azure.com a vyžaduje přístup ke čtení správy nákladů (nebo oprávnění Čtenář). Je požadováno, aby na portálu EA bylo povoleno nastavení **AO view charges** (Vlastník účtu může zobrazit náklady). Informace o fakturaci jsou v analýze nákladů konsolidovány pro všechny prostředky a skupiny prostředků v předplatném.
+
+- Obor *skupina prostředků* je definován v https://portal.azure.com a vyžaduje přístup ke čtení správy nákladů (nebo oprávnění Čtenář). Je požadováno, aby na portálu EA bylo povoleno nastavení **AO view charges** (Vlastník účtu může zobrazit náklady). Informace o fakturaci jsou v analýze nákladů konsolidovány pro všechny prostředky ve skupině prostředků.
+
+
+
+Další informace o konfiguraci nastavení **DA view charges** a **AO view charges** najdete v článku [Povolení přístupu k nákladům](../billing/billing-enterprise-mgmt-grp-troubleshoot-cost-view.md#enabling-access-to-costs).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -94,6 +102,11 @@ Kontingenční grafy pod horním celkovým zobrazením znázorňují zobrazení 
 ![Úplná data pro aktuální zobrazení](./media/quick-acm-cost-analysis/full-data-set.png)
 
 Na předchozím obrázku jsou znázorněny názvy skupin prostředků. Zobrazení značek prostředků není dostupné v žádném zobrazení, filtrech ani seskupeních analýzy nákladů.
+
+Při seskupování nákladů podle konkrétního atributu je zobrazeno deset nejvýznamnějších přispěvatelů k nákladům, od nejvyššího k nejnižšímu. Pokud je skupin více než deset, je zobrazeno devět horních přispěvatelů a potom skupina **Ostatní**, která pokrývá všechny zbývající skupiny dohromady.
+
+Prostředky virtuálních počítačů, sítě a úložiště *Classic* (Azure Service Management nebo ASM) nesdílí podrobná data o fakturaci. Ta jsou při seskupování nákladů sloučena do položky **Classic services**.
+
 
 ## <a name="download-cost-analysis-data"></a>Stažení dat analýzy nákladů
 

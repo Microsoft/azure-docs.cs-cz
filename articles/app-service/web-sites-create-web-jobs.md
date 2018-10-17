@@ -4,7 +4,7 @@ description: Zjistěte, jak pomocí WebJobs můžete spouštět úlohy na pozad�
 services: app-service
 documentationcenter: ''
 author: ggailey777
-manager: erikre
+manager: jeconnoc
 editor: jimbe
 ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
 ms.service: app-service
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/09/2017
-ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: c3a41733dd193d10349a0126bfa9c25ce4ba56e7
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.date: 10/16/2018
+ms.author: glenga;msangapu;david.ebbo;suwatch;pbatum;naren.soni;
+ms.openlocfilehash: 901cf32557e0a437e938ceb50ecd500c69c8c3be
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577673"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364026"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Spouštění úloh na pozadí pomocí WebJobs v Azure App Service
 
@@ -37,14 +37,14 @@ Služba Azure Functions poskytuje jiný způsob spouštění programů a skript�
 Následující tabulka popisuje rozdíly mezi *průběžné* a *aktivuje* WebJobs.
 
 
-|Nepřetržitě  |Aktivované  |
+|Průběžný  |Aktivované  |
 |---------|---------|
 | Spustí se okamžitě, když se vytvoří webová úloha. Zabránit koncové úlohy, programu nebo skriptu obvykle provede svou práci v nekonečné smyčce. Je-li ukončit úlohu, můžete ji restartovat. | Spustí pouze v případě, že se aktivuje ručně, nebo podle plánu. |
 | Spustí se všechny instance webové aplikace, na kterých běží. Webové úlohy můžete volitelně omezit na jednu instanci. |Spuštění na jednu instanci, Azure vybere pro vyrovnávání zatížení.|
 | Podporuje vzdálené ladění. | Nepodporuje vzdálené ladění.|
 
 > [!NOTE]
-> Webové aplikace můžete po 20 minutách nečinnosti časový limit. Jenom požadavky k webu scm (nasazení) nebo na stránky webové aplikace v portálu pro resetování časovač. Požadavky na webu skutečné Neobnovovat časovač. Pokud vaše aplikace běží průběžné nebo plánované webové úlohy, povolte **Always On** zajistit spolehlivě spouštět webové úlohy. Tato funkce je dostupná jenom na Basic, Standard a Premium [cenové úrovně](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+> Webové aplikace můžete po 20 minutách nečinnosti časový limit. Jenom požadavky na aplikace skutečný webové resetování časovač. Zobrazení konfigurace aplikace na webu Azure Portal nebo zasílání požadavků na serveru Rozšířené nástroje (https:// < název_aplikace >. scm.azurewebsites.net) Neobnovovat časovač. Pokud vaše aplikace běží průběžné nebo plánované webové úlohy, povolte **Always On** zajistit spolehlivě spouštět webové úlohy. Tato funkce je dostupná jenom na Basic, Standard a Premium [cenové úrovně](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
 ## <a name="acceptablefiles"></a>Podporované typy souborů pro skripty nebo programy
 
@@ -83,7 +83,7 @@ when making changes in one don't forget the other two.
    | ------------ | ----------------- | ------------ |
    | **Název** | myContinuousWebJob | Název, který je jedinečný v rámci aplikace služby App Service. Musí začínat písmenem nebo číslicí a nesmí obsahovat speciální znaky jiné než "-" a "_". |
    | **Nahrání souboru** | ConsoleApp.zip | A *ZIP* soubor, který obsahuje váš soubor spustitelný soubor nebo skript, stejně jako všechny podpůrné soubory potřebné ke spuštění programu nebo skriptu. Podporované typy souborů spustitelný soubor nebo skript jsou uvedeny v [podporované typy souborů](#acceptablefiles) oddílu. |
-   | **Typ** | Nepřetržitě | [WebJob typy](#webjob-types) jsou popsány dříve v tomto článku. |
+   | **Typ** | Průběžný | [WebJob typy](#webjob-types) jsou popsány dříve v tomto článku. |
    | **Škálování** | Více instancí | K dispozici pouze pro průběžné WebJobs. Určuje, jestli se program nebo skript spouští na všech instancích nebo jenom jednu instanci. Možnost spouštět na více instancí se nevztahuje na Free nebo Shared [cenové úrovně](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). | 
 
 4. Klikněte na **OK**.

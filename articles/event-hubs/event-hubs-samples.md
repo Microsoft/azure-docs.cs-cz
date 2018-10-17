@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2018
 ms.author: shvija
-ms.openlocfilehash: fbde6e5a5ed053d6c151b3af25535c397a496ef4
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: ed337689360428d66657e5391ee52bb0ae39dc14
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005330"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365641"
 ---
 # <a name="event-hubs-samples"></a>Ukázky služby Event Hubs 
 Ukázky služby Event Hubs můžete najít na [Githubu](https://github.com/Azure/azure-event-hubs/tree/master/samples). Tyto ukázky ukazují klíčové funkce v [Azure Event Hubs](/azure/event-hubs/). Tento článek slouží ke kategorizaci a popisuje ukázek dostupných s odkazy na každý.
@@ -44,6 +44,23 @@ Ukázky služby Event Hubs můžete najít na [Githubu](https://github.com/Azure
 | [EventProcessorSample](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/EventProcessorSample) |Tento příklad ukazuje, jak přijímat události z centra událostí pomocí třídy event processor host, který poskytuje automatické oddílu výběru a převzetí služeb při selhání mezi několik příjemců souběžných. | 
 | [AutoScaleOnIngress](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Benchmarks/AutoScaleOnIngress) | Tento příklad ukazuje, jak v Centru událostí automaticky vertikálně navýšit kapacitu na vysoké zatížení. Ukázka bude odesílat události s rychlostí, které právě překračují nakonfigurované frekvence centra událostí, způsobí vertikálně navýšit kapacitu centra událostí. | 
 | [IngressBenchmark](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Benchmarks/IngressBenchmark) | Tato ukázka umožňuje měřit rychlost příchozího přenosu dat. | 
+
+## <a name="python-samples"></a>Ukázky Pythonu
+Můžete najít ukázky Pythonu pro Azure Event Hubs [azure event hubs python](https://github.com/Azure/azure-event-hubs-python/tree/master/examples) úložiště GitHub.
+
+## <a name="nodejs-samples"></a>Ukázky Node.js
+Můžete najít ukázky Node.js pro Azure Event Hubs [azure event hubs uzly](https://github.com/Azure/azure-event-hubs-node) úložiště GitHub.
+
+## <a name="go-samples"></a>Ukázky v go
+Můžete najít ukázky Go pro Azure Event Hubs v [azure event hubs průběžně](https://github.com/Azure/azure-event-hubs-go/tree/master/_examples) úložiště GitHub.
+
+## <a name="azure-cli-samples"></a>Ukázky Azure CLI
+Můžete najít ukázky v Azure CLI pro službu Azure Event Hubs v [azure-event-hubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/Management/CLI) úložiště GitHub.
+
+## <a name="azure-powershell-samples"></a>Ukázky Azure PowerShellu
+Můžete najít ukázky Azure Powershellu pro Azure Event Hubs [azure-event-hubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/Management/PowerShell) úložiště GitHub.
+ 
+
 
 ## <a name="next-steps"></a>Další postup
 Dozvíte víc o službě Event Hubs v následujících článcích:

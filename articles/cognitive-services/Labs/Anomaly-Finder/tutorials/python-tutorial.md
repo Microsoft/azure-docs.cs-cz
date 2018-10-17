@@ -1,47 +1,48 @@
 ---
-title: Detekce anomálií aplikace v Pythonu – Microsoft Cognitive Services | Dokumentace Microsoftu
-description: Prozkoumejte Poznámkový blok Python, který používá rozhraní API pro detekci anomálií v Microsoft Cognitive Services. Odeslat původní datové body k rozhraní API a získat očekávanou hodnotu a anomálií body.
+title: 'Kurz: Detekce anomálií, Python'
+titlesuffix: Azure Cognitive Services
+description: Prozkoumejte notebook Pythonu, který používá rozhraní API pro detekci anomálií. Odešlete původní datové body do rozhraní API a získejte očekávanou hodnotu a body anomálie.
 services: cognitive-services
 author: chliang
 manager: bix
 ms.service: cognitive-services
-ms.technology: anomaly-detection
-ms.topic: article
+ms.component: anomaly-detection
+ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 87cd9e976d231291ad13acecf188cfd668d692b6
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
-ms.translationtype: MT
+ms.openlocfilehash: 98f83fbc4db8685526833c3d4f1d15903419ad3f
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248223"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887747"
 ---
-# <a name="anomaly-detection-python-application"></a>Aplikace v Pythonu detekce anomálií
+# <a name="tutorial-anomaly-detection-with-python-application"></a>Kurz: Detekce anomálií pomocí aplikace Pythonu
 
 [!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
-Tento kurz ukazuje, jak používat rozhraní API pro detekci anomálií v Pythonu a tom, jak vizualizovat výsledky pomocí oblíbených knihoven. Použití aplikace Jupyter ke spuštění tohoto kurzu a zkusit svoje vlastní data s klíči předplatného. Zjistěte, jak začít pracovat s interaktivní poznámkové bloky Jupyter, najdete v tématu [Jupyter dokumentaci](http://jupyter.readthedocs.io/en/latest/index.html). 
+V tomto kurzu se dozvíte, jak používat rozhraní API pro detekci anomálií v Pythonu a jak používat k vizualizaci výsledků oblíbené knihovny. Použijte u tohoto kurzu Jupyter a zkuste vlastní data se svým klíčem předplatného. Další informace o tom, jak začít používat interaktivní notebooky Jupyteru, najdete v tématu [Dokumentace k Jupyteru](http://jupyter.readthedocs.io/en/latest/index.html). 
 
 ## <a name="prerequisites"></a>Požadavky
 
-### <a name="subscribe-to-anomaly-detection-and-get-a-subscription-key"></a>Přihlaste se k detekci anomálií odběru a získat klíč předplatného 
+### <a name="subscribe-to-anomaly-detection-and-get-a-subscription-key"></a>Předplaťte si službu detekce anomálií a získejte klíč předplatného 
 
 [!INCLUDE [GetSubscriptionKey](../includes/get-subscription-key.md)]
 
 ## <a name="download-the-example-code"></a>Stáhněte si ukázkový kód
 
-1. Přejděte [výukový program Poznámkový blok v Githubu](https://github.com/MicrosoftAnomalyDetection/python-sample).
-2. Klikněte na zelené tlačítko naklonujte nebo stáhněte si kurz. 
+1. Přejděte k [notebooku s kurzem v Githubu](https://github.com/MicrosoftAnomalyDetection/python-sample).
+2. Po kliknutí na zelené tlačítko můžete kurz klonovat nebo stáhnout. 
 
-## <a name="opening-the-tutorial-notebook-in-jupyter"></a>Otevírání výukový program Poznámkový blok v Jupyter
+## <a name="opening-the-tutorial-notebook-in-jupyter"></a>Otevření notebooku s kurzem v Jupyteru
 
 1. Otevřete příkazový řádek a přejděte do složky python-sample.
-2. Spusťte Poznámkový blok Jupyter příkazu z příkazového řádku, který se spustí Jupyter.
-3. V okně Jupyter, klikněte na <em>Example.ipynb API detekce anomálií</em> otevřete výukový program Poznámkový blok.   
+2. Na příkazovém řádku spusťte příkaz Jupyter notebook, čímž spustíte Jupyter.
+3. V okně Jupyteru klikněte na položku <em>Anomaly Detection API Example.ipynb</em>. Otevře se notebook s kurzem.   
 
-## <a name="running-the-tutorial"></a>Spuštění výukového programu
+## <a name="running-the-tutorial"></a>Spuštění kurzu
 
-Pokud chcete použít tento poznámkový blok, potřebujete klíč předplatného pro rozhraní API pro detekci anomálií. Navštivte stránku předplatné k registraci. Na stránce "Odebrat" přihlaste se pomocí svého účtu Microsoft a bude možné zaregistrovat a získávat klíče. Po dokončení procesu registrace, vložte svůj klíč do části proměnné poznámkového bloku (uvedeno níže). Primární nebo sekundární klíč funguje. Ujistěte se, že k uzavření klíč v uvozovkách, aby byl řetězec.
+K použití notebooku potřebujete klíč předplatného k rozhraní API pro detekci anomálií. Navštivte stránku předplatného a zaregistrujte se. Na přihlašovací stránce se přihlaste pomocí svého účtu Microsoft. Pak si budete moct objednat předplatné a získat klíče. Jakmile dokončíte registraci, zkopírujte a vložte klíč do oddílu proměnných v notebooku (viz níže). Funguje primární i sekundární klíč. Nezapomeňte dát klíč do uvozovek jako řetězec.
 
 ```Python
 
@@ -51,7 +52,7 @@ Pokud chcete použít tento poznámkový blok, potřebujete klíč předplatnéh
 
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [REST API – referenční informace](https://dev.labs.cognitive.microsoft.com/docs/services/anomaly-detection/operations/post-anomalydetection)
