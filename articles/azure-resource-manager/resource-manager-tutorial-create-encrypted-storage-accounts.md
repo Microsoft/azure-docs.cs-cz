@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 08/27/2018
+ms.date: 09/07/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 57d5f7039831c9fd617926f20f3ff001b22ef314
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: d48374d7919be3d141ea199e8238a220dbfe0332
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43097881"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419521"
 ---
 # <a name="tutorial-create-an-azure-resource-manager-template-for-deploying-an-encrypted-storage-account"></a>Kurz: Vytvoření šablony Azure Resource Manageru pro nasazení šifrovaného účtu úložiště
 
@@ -112,9 +112,14 @@ Použití proměnné definované v šabloně:
 Cílem tohoto kurzu je definovat šablonu pro vytvoření šifrovaného účtu úložiště.  Ukázková šablona vytvoří pouze základní nešifrovaný účet úložiště. K vyhledání konfigurace šifrování můžete použít odkaz na šablonu účtu Azure Storage.
 
 1. Přejděte na článek o [šablonách Azure](https://docs.microsoft.com/azure/templates/).
-2. V obsahu vlevo vyberte **Reference (Odkazy)**->**Storage (Úložiště)**->**Storage Accounts (Účty úložiště)**. Můžete také zadat **storage** do pole **Filtrovat podle názvu**.  Na této stránce najdete schéma pro definování informací o účtu úložiště.
-3. Projděte si informace týkající se šifrování.  
-4. Do elementu properties v definici prostředku účtu úložiště přidejte následující kód JSON:
+2. V nabídce **Filtrovat podle názvu**, zadejte **Účty úložiště**.
+3. Vyberte **odkaz / šablonu odkazu / úložiště / úložiště účtů**, jak je znázorněno na následujícím snímku obrazovky:
+
+    ![Odkaz šablony Azure Resource Manageru na účet úložiště](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts.png)
+
+    resource-manager-template-resources-reference-storage-accounts
+1. Projděte si informace týkající se šifrování.  
+1. Do elementu properties v definici prostředku účtu úložiště přidejte následující kód JSON:
 
     ```json
     "encryption": {
@@ -151,7 +156,7 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se dozvěděli, jak přizpůsobit existující šablonu pomocí odkazu na šablonu. Šablona použitá v tomto kurzu obsahuje jenom jeden prostředek Azure.  V dalším kurzu se zaměříte na vývoj šablony s více prostředky. Některé prostředky mají závislé prostředky.
+V tomto kurzu jste se dozvěděli, jak přizpůsobit existující šablonu pomocí odkazu na šablonu. Naučte se, jak vytvořit několik instancí účtu úložiště, viz:
 
 > [!div class="nextstepaction"]
-> [Vytvoření několika prostředků](./resource-manager-tutorial-create-templates-with-dependent-resources.md)
+> [Vytvoření víc instancí](./resource-manager-tutorial-create-multiple-instances.md)

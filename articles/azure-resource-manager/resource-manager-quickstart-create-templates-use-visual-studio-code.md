@@ -10,17 +10,17 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 08/24/2018
+ms.date: 09/07/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 540aabc9164e43776d2166926430f4512dd23f49
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a2b4c4824960c21011876a7c0adf029fc56d93d2
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106045"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419113"
 ---
-# <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Rychlý start: Vytvoření šablon Azure Resource Manageru pomocí nástroje Visual Studio Code
+# <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Rychlé zprovoznění: Vytvoření šablon Azure Resource Manageru pomocí nástroje Visual Studio Code
 
 Naučte se vytvářet šablony pomocí nástroje Visual Studio Code a rozšíření Nástroje Azure Resource Manageru. Šablony Resource Manageru můžete v nástroji Visual Studio Code vytvářet i bez tohoto rozšíření, poskytuje však možnosti automatického dokončování, které vývoj šablon zjednodušují. Abyste porozuměli konceptům spojeným s nasazením a správou řešení Azure, podívejte se na téma [Přehled Azure Resource Manageru](resource-group-overview.md).
 
@@ -96,22 +96,38 @@ Abyste se naučili upravit šablonu v nástroji Visual Studio Code, přidáte da
 
     ![Cloud Shell na portálu Azure Portal](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell.png)
 
-    V dolní části obrazovky se otevře Cloud Shell.
+    V dolní části okna se otevře Cloud Shell.
 
-3. V levém horním rohu služby Cloud Shell se zobrazí buď **PowerShell**, nebo **Bash**. Pokud chcete použít rozhraní příkazového řádku, musíte otevřít relaci Bash. Pokud chcete spustit PowerShell, musíte otevřít relaci PowerShellu. Přepínat mezi nimi můžete tak, že vyberete šipku dolů a pak vyberete interpret. Následující obrázek ukazuje přepnutí z PowerShellu na Bash.
+3. V levém horním rohu služby Cloud Shell se zobrazí buď **PowerShell**, nebo **Bash**. Pokud chcete použít rozhraní příkazového řádku, musíte otevřít relaci Bash. Pokud chcete spustit PowerShell, musíte otevřít relaci PowerShellu. Chcete-li přepnout mezi Bash a PowerShell, vyberte šipku dolů. Následující obrázek ukazuje přepnutí z PowerShellu na Bash.
 
     ![CLI v Cloud Shellu na portálu Azure Portal](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
 
     Po přepnutí se vyžaduje restartování prostředí.
 4. Vyberte **Nahrát nebo stáhnout soubory** a potom vyberte **Nahrát**.
 
+    # <a name="clitabcli"></a>[Rozhraní příkazového řádku](#tab/CLI)
+
     ![Nahrání souboru v Cloud Shellu na portálu Azure Portal](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file.png)
+   
+    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    
+    ![Nahrání souboru v Cloud Shellu na portálu Azure Portal](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file-powershell.png)
+    
+    ---
 
     Soubor šablony musíte nejprve nahrát, a až pak ho můžete nasadit z prostředí.
 5. Vyberte soubor, který jste si uložili dříve v tomto rychlém startu. Výchozí název je **azuredeploy.json**.
 6. V Cloud Shellu spusťte příkaz **ls** a ověřte, že se soubor nahrál úspěšně. Obsah šablony můžete ověřit také pomocí příkazu **cat**. Následující obrázek ukazuje spuštění příkazu v prostředí Bash.  Stejné příkazy se používají i v relaci PowerShellu.
 
+    # <a name="clitabcli"></a>[Rozhraní příkazového řádku](#tab/CLI)
+
     ![Zobrazení souboru v Cloud Shellu na portálu Azure Portal](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file.png)
+   
+    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    
+    ![Zobrazení souboru v Cloud Shellu na portálu Azure Portal](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file-powershell.png)
+    
+    ---
 7. Ve službě Cloud Shell spusťte následující příkazy. Výběrem odpovídající karty zobrazíte kód PowerShellu nebo kód rozhraní příkazového řádku.
 
     # <a name="clitabcli"></a>[Rozhraní příkazového řádku](#tab/CLI)
@@ -131,9 +147,17 @@ Abyste se naučili upravit šablonu v nástroji Visual Studio Code, přidáte da
     
     ---
 
-    Následující snímek obrazovky ukazuje ukázkové nasazení v rozhraní příkazového řádku:
+    Následující snímek obrazovky ukazuje ukázkové nasazení:
+
+    # <a name="clitabcli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
     ![Šablona nasazení v Cloud Shellu na portálu Azure Portal](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template.png)
+   
+    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    
+    ![Šablona nasazení v Cloud Shellu na portálu Azure Portal](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template-powershell.png)
+    
+    ---
 
     Na snímku obrazovky jsou použity tyto hodnoty:
 
@@ -170,7 +194,7 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 
 ## <a name="next-steps"></a>Další kroky
 
-Hlavním cílem tohoto kurzu byla úprava existující šablony z šablon Azure pro rychlý start pomocí editoru Visual Studio Code. Také jste zjistili, jak šablonu nasadit pomocí rozhraní příkazového řádku nebo PowerShellu ve službě Azure Cloud Shell. Šablony Azure pro rychlý start možná nenabízí vše, co potřebujete. V dalším kurzu se dozvíte, jak v referenčních informacích k šablonám vyhledat potřebné informace, abyste mohli vytvořit šifrovaný účet služby Azure Storage.
+Hlavním cílem tohoto rychlého zprovoznění byla úprava existující šablony z šablon Azure pro rychlý start pomocí editoru Visual Studio Code. Také jste zjistili, jak šablonu nasadit pomocí rozhraní příkazového řádku nebo PowerShellu ve službě Azure Cloud Shell. Šablony Azure pro rychlý start možná nenabízí vše, co potřebujete. V dalším kurzu se dozvíte, jak v referenčních informacích k šablonám vyhledat potřebné informace, abyste mohli vytvořit šifrovaný účet služby Azure Storage.
 
 > [!div class="nextstepaction"]
 > [Vytvoření šifrovaného účtu úložiště](./resource-manager-tutorial-create-encrypted-storage-accounts.md)

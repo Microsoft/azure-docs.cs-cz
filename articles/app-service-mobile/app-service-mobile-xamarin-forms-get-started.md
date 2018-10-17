@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 05/25/2018
+ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: b2dafbcf0e41e7387157590e145f74430686321c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: ef371447e851fece207d77fe656283abe3dc4164
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38307115"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063859"
 ---
 # <a name="create-a-xamarinforms-app-with-azure"></a>Vytvoření aplikace na platformě Xamarin.Forms s využitím Azure
 
@@ -181,7 +181,9 @@ Touto akcí se odešle požadavek POST na nový back-end Mobile Apps, jehož hos
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Pokud máte se sestavením řešení problémy, spusťte správce balíčků NuGet a proveďte aktualizaci na nejnovější verzi Xamarin.Forms. V projektu pro Android aktualizujte balíčky pro podporu Xamarin.Android. Projekty Rychlý start nezahrnují vždycky nejnovější verze.
+Pokud máte se sestavením řešení problémy, spusťte správce balíčků NuGet a proveďte aktualizaci na nejnovější verz i`Xamarin.Forms`. V projektu pro Android aktualizujte balíčky pro podporu `Xamarin.Android`. Projekty Rychlý start nezahrnují vždycky nejnovější verze.
+
+Upozorňujeme, že všechny balíčky podporu odkazované ve vašem projektu Android musí mít stejnou verzi. [Balíček NuGet pro mobilní aplikace Azure](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) má závislost `Xamarin.Android.Support.CustomTabs` pro platformu Android, takže pokud váš projekt používá novější balíčky podpory, je nutné nainstalovat přímo tento balíček s požadovanou verzi, aby nedocházelo ke konfliktům.
 
 ## <a name="next-steps"></a>Další kroky
 

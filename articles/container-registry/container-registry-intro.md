@@ -3,18 +3,17 @@ title: Soukromé registry kontejnerů Dockeru v Azure
 description: Úvod do služby Azure Container Registry poskytující cloudové, spravované, privátní registry Dockeru.
 services: container-registry
 author: stevelas
-manager: jeconnoc
 ms.service: container-registry
 ms.topic: overview
-ms.date: 05/08/2018
+ms.date: 09/25/2018
 ms.author: stevelas
 ms.custom: mvc
-ms.openlocfilehash: f282d7d6950278d0c270009256cf054a0d630e60
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 5d60144c6b3aada74e4b89c905085835dd5b32d2
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43120631"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031321"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Seznámení se soukromými registry kontejnerů Dockeru v Azure
 
@@ -28,12 +27,12 @@ Související informace o Dockeru a kontejnerech najdete v [přehledu Dockeru](h
 
 Stažení imagí z registru kontejnerů Azure na různé cíle nasazení:
 
-* **Škálovatelné systémy orchestrace**, které spravují kontejnerizované aplikace napříč clustery hostitelů, včetně [DC/OS](https://docs.mesosphere.com/), [Dockeru Swarm](https://docs.docker.com/swarm/) a [Kubernetes](http://kubernetes.io/docs/).
+* **Škálovatelné systémy orchestrace**, které spravují kontejnerizované aplikace napříč clustery hostitelů, včetně [Kubernetes](http://kubernetes.io/docs/), [DC/OS](https://docs.mesosphere.com/) a [Dockeru Swarm](https://docs.docker.com/swarm/).
 * **Služby Azure**, které podporují vytváření a spouštění škálovaných aplikací, včetně [Azure Kubernetes Service (AKS)](../aks/index.yml), [App Service](../app-service/index.yml), [Batch](../batch/index.yml), [Service Fabric](/azure/service-fabric/) a dalších.
 
-Vývojáři mohou nahrávat do registru kontejnerů také jako součást pracovního postupu vývoje kontejneru. Mohou například určit registr kontejnerů jako cíl v nástroji pro nasazení a nástroji průběžné integrace, jako je například [Visual Studio Team Services](https://www.visualstudio.com/docs/overview) nebo [Jenkins](https://jenkins.io/).
+Vývojáři mohou nahrávat do registru kontejnerů také jako součást pracovního postupu vývoje kontejneru. Mohou například určit registr kontejnerů jako cíl v nástroji pro nasazení a nástroji průběžné integrace, jako je například [Azure DevOps Services](https://www.visualstudio.com/docs/overview) nebo [Jenkins](https://jenkins.io/).
 
-Nakonfigurujte úlohy sestavení [ACR Build](#azure-container-registry-build) tak, aby se image aplikací po aktualizaci jejich základních imagí automaticky znovu sestavily. Použijte ACR Build k automatizaci sestavení imagí po potvrzení kódu vaším týmem v úložišti Git. *ACR Build je v současné době ve verzi Preview.*
+Nakonfigurujte [úlohy ACR](#azure-container-registry-build) tak, aby se image aplikací po aktualizaci jejich základních imagí automaticky znovu sestavily. Použijte úlohy ACR k automatizaci sestavení imagí po potvrzení kódu vaším týmem v úložišti Git.
 
 ## <a name="key-concepts"></a>Klíčové koncepty
 
@@ -51,14 +50,14 @@ Nakonfigurujte úlohy sestavení [ACR Build](#azure-container-registry-build) ta
 
 * **Kontejner** – Kontejner definuje softwarovou aplikaci a její závislosti zabalené do kompletního systému souborů, včetně kódu, modulu runtime, systémových nástrojů a knihoven. Spouštějte kontejnery Dockeru na základě imagí systémů Windows nebo Linux, které si stáhnete z registru kontejnerů. Kontejnery běžící na jednom počítači sdílí jádro operačního systému. Kontejnery Dockeru jsou plně přenositelné na všechny hlavní distribuce Linuxu, macOS i Windows.
 
-## <a name="azure-container-registry-build-preview"></a>Azure Container Registry Build (Preview)
+## <a name="azure-container-registry-tasks"></a>Úlohy Azure Container Registry
 
-[Azure Container Registry Build](container-registry-build-overview.md) (ACR Build) je sada funkcí ve službě Azure Container Registry, která poskytuje zjednodušená a efektivní sestavení imagí kontejnerů Dockeru v Azure. ACR Build umožňuje pomocí přesměrování operací `docker build` do Azure rozšířit váš vývoj do cloudu. Můžete nakonfigurovat úlohy sestavení tak, aby se kanál oprav operačního systému a architektury kontejneru automatizoval a aby se image po potvrzení kódu vaším týmem ve správě zdrojového kódu automaticky sestavovaly.
+[Úlohy Azure Container Registry](container-registry-tasks-overview.md) (úlohy ACR) je sada funkcí ve službě Azure Container Registry, která poskytuje zjednodušená a efektivní sestavení imagí kontejnerů Dockeru v Azure. Úlohy ACR umožňuje pomocí přesměrování operací `docker build` do Azure rozšířit váš vývoj do cloudu. Můžete nakonfigurovat úlohy sestavení tak, aby se kanál oprav operačního systému a architektury kontejneru automatizoval a aby se image po potvrzení kódu vaším týmem ve správě zdrojového kódu automaticky sestavovaly.
 
-[!INCLUDE [container-registry-build-preview-note](../../includes/container-registry-build-preview-note.md)]
+[U vícekrokových úloh](container-registry-tasks-overview.md#multi-step-tasks-preview) funkce Preview úloh ACR poskytuje definice úloh na základě kroků a spuštění pro sestavování, testování a opravy chyb imagí kontejnerů v cloudu. Kroky úlohy definují jednotlivá sestavení image kontejneru a operací nabízených oznámení. Mohou také definovat spuštění jednoho nebo více kontejnerů, u každého kroku pomocí kontejneru jako prostředí pro spuštění.
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Vytvoření registru kontejnerů pomocí webu Azure Portal](container-registry-get-started-portal.md)
 * [Vytvoření registru kontejnerů pomocí Azure CLI](container-registry-get-started-azure-cli.md)
-* [Automatizace oprav operačního systému a architektury pomocí funkce ACR Build](container-registry-build-overview.md) (Preview)
+* [Automatizace oprav operačního systému a architektury pomocí úloh ACR](container-registry-tasks-overview.md)

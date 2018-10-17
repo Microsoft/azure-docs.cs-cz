@@ -6,12 +6,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
-ms.openlocfilehash: 8df9054e069540398c137290e682bb4160b4a799
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 46c65cd7ac5734134fa7c4ad6fd85f39d1188e28
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40036363"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392547"
 ---
 # <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>Kurz: Vykreslení scény Blenderu pomocí nástroje Batch Explorer
 
@@ -24,11 +24,11 @@ V tomto kurzu se naučíte:
 > * Vykreslení několika snímků
 > * Zobrazení a stažení souborů s vykreslenými snímky
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-
 ## <a name="prerequisites"></a>Požadavky
 
-Účet Azure Batch s přidruženým účtem úložiště.  Pokud chcete vytvořit účet Batch, přečtěte si některý z článků Rychlý start pro službu Batch, například [článek věnovaný rozhraní příkazového řádku](https://docs.microsoft.com/azure/batch/quick-create-cli).
+Budete potřebovat předplatné s průběžnými platbami nebo jiné možnosti nákupu Azure, abyste použili vykreslovací aplikace ve službě Batch na základě pay-per-use plateb. Licencování s platbami za na základě využití není podporováno, pokud používáte bezplatnou nabídku Azure, která poskytuje peněžní kredit.
+
+Potřebujete účet Azure Batch s přidruženým účtem úložiště.  Pokud chcete vytvořit účet Batch, přečtěte si některý z článků Rychlý start pro službu Batch, například [článek věnovaný rozhraní příkazového řádku](https://docs.microsoft.com/azure/batch/quick-create-cli).
 
 Velikost a počet virtuálních počítačů uvedené v tomto kurzu vyžadují kvótu pro jádra s nízkou prioritou alespoň 50 jader. Je možné použít výchozí kvótu, ale bude potřeba použít menší velikost virtuálních počítačů, což znamená, že vykreslování obrázků bude trvat déle. Proces pro vyžádání zvýšené kvóty pro jádra je podrobně popsaný v [tomto článku](https://docs.microsoft.com/azure/batch/batch-quota-limit).
 

@@ -4,15 +4,15 @@ description: Toto téma popisuje, jak zjistit místní virtuální počítače V
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 08/20/2018
+ms.date: 09/21/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 00d416d6211d9a67a69eb22620bdac6a501e23e7
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: b2bb6636aef9e26a81988d344f04f23c23ea1622
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666660"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161875"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Zjištění místních virtuálních počítačů VMware a posouzení vhodnosti jejich migrace do Azure
 
@@ -35,7 +35,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 - **VMware:** Virtuální počítače, které chcete migrovat, musí být spravované přes vCenter Server verze 5.5, 6.0, nebo 6.5. Pro vytvoření virtuálního počítače kolektoru budete také potřebovat jednoho hostitele ESXi ve verzi 5.0 nebo vyšší.
 - **Účet vCenter Serveru**: Abyste měli přístup k vCenter Serveru, potřebujete účet jen pro čtení. Azure Migrate ho použije ke zjištění místních virtuálních počítačů.
 - **Oprávnění**: Na vCenter Serveru potřebujete oprávnění k vytvoření virtuálního počítače pomocí importu souboru ve formátu .OVA.
-- **Nastavení statistiky**: Než začnete s nasazením, statistika pro vCenter Server by byla být nastavená na úrovni 3. Pokud bude nižší než na úrovni 3, posouzení bude fungovat, ale neshromáždí se údaje o výkonu úložišť a sítí. Kapacitní doporučení budou v tomto případě vycházet z údajů o výkonu procesoru a paměti a z údajů o konfiguraci disku a síťových adaptérů.
+- **Nastavení statistiky**: Tento požadavek platí pouze pro model jednorázového zjišťování. Aby jednorázové zjišťování fungovalo, tak než začnete s nasazením, statistika pro vCenter Server by byla být nastavená na úrovni 3. Pokud bude nižší než na úrovni 3, posouzení bude fungovat, ale neshromáždí se údaje o výkonu úložišť a sítí. Kapacitní doporučení budou v tomto případě vycházet z údajů o výkonu procesoru a paměti a z údajů o konfiguraci disku a síťových adaptérů.
 
 ## <a name="create-an-account-for-vm-discovery"></a>Vytvoření účtu pro účely zjišťování virtuálních počítačů
 
@@ -47,7 +47,7 @@ Azure Migrate k automatickému zjišťování virtuálních počítačů pro ú�
 - Pokud chcete omezit přístup, přiřaďte podřízeným objektům (hostitelé vSphere, úložiště dat, virtuální počítače a sítě) roli Žádný přístup s objektem Rozšířit na podřízený objekt.
 
 
-## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
+## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
@@ -57,10 +57,9 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyhledejte **Azure Migrate** a ve výsledcích hledání vyberte službu **Azure Migrate**. Poté klikněte na **Vytvořit**.
 3. Zadejte název projektu a předplatné Azure, do kterého spadá.
 4. Vytvořte novou skupinu prostředků.
-5. Zadejte umístění, ve kterém chcete projekt vytvořit, a pak klikněte na **Vytvořit**. Projekt Azure Migrate můžete vytvořit pouze v oblasti Střed USA – západ nebo USA – východ. Přesto ale můžete naplánovat migraci do libovolného cílového umístění Azure. Umístění vybrané pro tento projekt slouží jen k uložení metadat získaných z místních virtuálních počítačů.
+5. Zadejte umístění, ve kterém chcete projekt vytvořit, a pak klikněte na **Vytvořit**. Projekt Azure Migrate můžete vytvořit pouze v zeměpisné oblasti USA. Přesto ale můžete naplánovat migraci do libovolného cílového umístění Azure. Zeměpisné umístění vybrané pro tento projekt slouží jen k uložení metadat získaných z místních virtuálních počítačů.
 
     ![Azure Migrate](./media/tutorial-assessment-vmware/project-1.png)
-
 
 
 ## <a name="download-the-collector-appliance"></a>Stažení zařízení kolektoru
@@ -68,7 +67,15 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 Azure Migrate vytvoří místní virtuální počítač, kterému se říká zařízení kolektoru. Tento virtuální počítač vyhledá místní virtuální počítače VMware a odešle jejich metadata do služby Azure Migrate. Pro nastavení zařízení kolektoru je nutné stáhnout soubor .OVA, importovat ho do místního vCenter Serveru a vytvořit tak virtuální počítač.
 
 1. V projektu služby Azure Migrate klikněte na **Začínáme** > **Zjistit a posoudit** > **Zjistit počítače**.
-2. V nabídce **Zjistit počítače** klikněte na **Stáhnout**. Tím stáhnete soubor .OVA.
+2. V části **Zjistit počítače**, existují dvě možnosti k dispozici pro zařízení, kliknutím na tlačítko **Stáhnout** stáhnete odpovídající zařízení založené na dáváte přednost.
+
+    a. **Jednorázové zjišťování:** Zařízení pro tento model komunikuje s vCenter Server, aby shromažďovalo metadata o virtuálních počítačích. Pro shromažďování dat o výkonu virtuálních počítačů závisí na historických datech o výkonu uložených ve vCenter Server a shromažďuje historii výkonu za poslední měsíc. V tomto modelu Azure Migrate shromažďuje průměrný čítač (oproti čítači ve špičce) pro jednotlivé metriky, [více informací] (https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected). Protože jde o jednorázové zjišťování, změny v místním prostředí se neprojeví, dokud nebude zjišťování dokončeno. Pokud chcete, aby se změny projevily, budete muset provést opakované zjišťování stejného prostředí stejného projektu.
+
+    b. **Průběžné zjišťování:** Zařízení pro tento model průběžně profiluje místní prostředí pro shromažďování dat o využití v reálném čase pro každý virtuální počítač. V tomto modelu se shromažďují čítače ve špičce pro každou metriku (využití procesoru, využití paměti atd.). Tento model není závislý na nastavení statistiky vCenter Server pro shromažďování dat o výkonu. Kdykoli ze zařízení můžete zastavit průběžnou profilaci.
+
+    > [!NOTE]
+    > Průběžné zjišťování funkce je ve verzi Preview.
+
 3. V části **Kopírování přihlašovacích údajů projektu** zkopírujte ID a klíč projektu. Budete je potřebovat při konfiguraci kolektoru.
 
     ![Stažení souboru .OVA](./media/tutorial-assessment-vmware/download-ova.png)
@@ -83,53 +90,50 @@ Než nasadíte soubor .OVA, zkontrolujte, jestli je bezpečný.
     - Příklady použití: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 3. Vygenerovaná hodnota hash by měla odpovídat následujícímu nastavení.
 
+#### <a name="one-time-discovery"></a>Jednorázové zjišťování
+
   Pro soubory OVA verze 1.0.9.14
 
-    **Algoritmus** | **Hodnota hash**
-    --- | ---
-    MD5 | 6d8446c0eeba3de3ecc9bc3713f9c8bd
-    SHA1 | e9f5bdfdd1a746c11910ed917511b5d91b9f939f
-    SHA256 | 7f7636d0959379502dfbda19b8e3f47f3a4744ee9453fc9ce548e6682a66f13c
+  **Algoritmus** | **Hodnota hash**
+  --- | ---
+  MD5 | 6d8446c0eeba3de3ecc9bc3713f9c8bd
+  SHA1 | e9f5bdfdd1a746c11910ed917511b5d91b9f939f
+  SHA256 | 7f7636d0959379502dfbda19b8e3f47f3a4744ee9453fc9ce548e6682a66f13c
 
   Pro soubory OVA verze 1.0.9.12
 
-    **Algoritmus** | **Hodnota hash**
-    --- | ---
-    MD5 | d0363e5d1b377a8eb08843cf034ac28a
-    SHA1 | df4a0ada64bfa59c37acf521d15dcabe7f3f716b
-    SHA256 | f677b6c255e3d4d529315a31b5947edfe46f45e4eb4dbc8019d68d1d1b337c2e
+  **Algoritmus** | **Hodnota hash**
+  --- | ---
+  MD5 | d0363e5d1b377a8eb08843cf034ac28a
+  SHA1 | df4a0ada64bfa59c37acf521d15dcabe7f3f716b
+  SHA256 | f677b6c255e3d4d529315a31b5947edfe46f45e4eb4dbc8019d68d1d1b337c2e
 
   Pro soubory OVA verze 1.0.9.8:
 
-    **Algoritmus** | **Hodnota hash**
-    --- | ---
-    MD5 | b5d9f0caf15ca357ac0563468c2e6251
-    SHA1 | d6179b5bfe84e123fabd37f8a1e4930839eeb0e5
-    SHA256 | 09c68b168719cb93bd439ea6a5fe21a3b01beec0e15b84204857061ca5b116ff
+  **Algoritmus** | **Hodnota hash**
+  --- | ---
+  MD5 | b5d9f0caf15ca357ac0563468c2e6251
+  SHA1 | d6179b5bfe84e123fabd37f8a1e4930839eeb0e5
+  SHA256 | 09c68b168719cb93bd439ea6a5fe21a3b01beec0e15b84204857061ca5b116ff
 
-    Pro soubory OVA verze 1.0.9.7:
 
-    **Algoritmus** | **Hodnota hash**
-    --- | ---
-    MD5 | d5b6a03701203ff556fa78694d6d7c35
-    SHA1 | f039feaa10dccd811c3d22d9a59fb83d0b01151e
-    SHA256 | e5e997c003e29036f62bf3fdce96acd4a271799211a84b34b35dfd290e9bea9c
+  Pro soubory OVA verze 1.0.9.7:
 
-    Pro soubory OVA verze 1.0.9.5:
+  **Algoritmus** | **Hodnota hash**
+  --- | ---
+  MD5 | d5b6a03701203ff556fa78694d6d7c35
+  SHA1 | f039feaa10dccd811c3d22d9a59fb83d0b01151e
+  SHA256 | e5e997c003e29036f62bf3fdce96acd4a271799211a84b34b35dfd290e9bea9c
 
-    **Algoritmus** | **Hodnota hash**
-    --- | ---
-    MD5 | fb11ca234ed1f779a61fbb8439d82969
-    SHA1 | 5bee071a6334b6a46226ec417f0d2c494709a42e
-    SHA256 | b92ad637e7f522c1d7385b009e7d20904b7b9c28d6f1592e8a14d88fbdd3241c  
+#### <a name="continuous-discovery"></a>Průběžné zjišťování
 
-    Pro soubory OVA verze 1.0.9.2:
+  Pro soubory OVA verze 1.0.10.4
 
-    **Algoritmus** | **Hodnota hash**
-    --- | ---
-    MD5 | 7326020e3b83f225b794920b7cb421fc
-    SHA1 | a2d8d496fdca4bd36bfa11ddf460602fa90e30be
-    SHA256 | f3d9809dd977c689dda1e482324ecd3da0a6a9a74116c1b22710acc19bea7bb2  
+  **Algoritmus** | **Hodnota hash**
+  --- | ---
+  MD5 | 2ca5b1b93ee0675ca794dd3fd216e13d
+  SHA1 | 8c46a52b18d36e91daeae62f412f5cb2a8198ee5
+  SHA256 | 3b3dec0f995b3dd3c6ba218d436be003a687710abab9fcd17d4bdc90a11276be
 
 ## <a name="create-the-collector-vm"></a>Vytvoření virtuálního počítače kolektoru
 
@@ -170,7 +174,7 @@ Importujte stažený soubor do vCenter Serveru.
     - V části **Rozsah kolekce** vyberte kolekci pro zjišťování virtuálních počítačů. Kolektor může vyhledat jen virtuální počítače v rámci zadaného rozsahu. Jako rozsah můžete vybrat konkrétní složku, datové centrum nebo cluster. Neměl by obsahovat víc než 1500 virtuálních počítačů. Přečtěte si [další informace](how-to-scale-assessment.md) o zjišťování větších prostředí.
 
 7. V části **Zadejte projekt migrace** zadejte ID projektu služby Azure Migrate a klíč, který jste zkopírovali z portálu. Pokud jste ho nezkopírovali, na virtuálním počítači kolektoru otevřete Azure Portal. Na stránce **Přehled** projektu klikněte na **Zjistit počítače** a zkopírujte příslušné hodnoty.  
-8. V části **Zobrazit průběh shromažďování** můžete sledovat zjišťování a kontrolovat, jestli metadata shromážděná z virtuálních počítačů patří do zadaného rozsahu. Kolektor vás informuje o tom, jak dlouho bude zjišťování přibližně trvat. Přečtěte si [další informace](https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected) o datech, která shromažďuje kolektor Azure Migrate.
+8. V části **Zobrazit průběh shromažďování** sledujete stav zjišťování. více informací](https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected) o datech, která shromažďuje kolektor Azure Migrate.
 
 > [!NOTE]
 > Kolektor podporuje jako jazyk operačního systému a jazyk rozhraní kolektoru jen angličtinu (Spojené státy).
@@ -180,9 +184,11 @@ Importujte stažený soubor do vCenter Serveru.
 
 ### <a name="verify-vms-in-the-portal"></a>Kontrola virtuálních počítačů na portálu
 
-Doba zjišťování závisí na tom, kolik virtuálních počítačů vyhledáváte. Od chvíle, kdy kolektor spustí zjišťování, obvykle trvá vyhledání stovky virtuálních počítačů přibližně hodinu.
+Pro jednorázové zjišťování doba zjišťování závisí na tom, kolik virtuálních počítačů vyhledáváte. Obvykle u 100 virtuálních počítačů po dokončení spuštění kolektoru trvá přibližně hodinu, než se dokončí konfigurace a shromažďování dat o výkonu. Okamžitě po dokončení zjišťování můžete vytvořit interní hodnocení (na základě výkonu a nebo na základě místa).
 
-1. V projektu Azure Migrate klikněte na **Spravovat** > **Počítače**.
+Z důvodu průběžného zjišťování (ve verzi preview), bude kolektor průběžně profilovat místní prostředí a bude posílat data o výkonu v hodinovém intervalu. Za hodinu po zahájení zjišťování můžete zkontrolovat počítače na portálu. Před vytvořením interního hodnocení založeného na výkonu virtuálních počítačů důrazně doporučujeme počkat aspoň jeden den.
+
+1. V projektu migrace klikněte na **Spravovat** > **počítače**.
 2. Zkontrolujte, jestli se virtuální počítače, které jste chtěli vyhledat, zobrazí na portálu.
 
 
@@ -197,6 +203,9 @@ Jakmile vyhledáte požadované virtuální počítače, můžete je seskupit a 
 5. Kliknutím na tlačítko **Vytvořit posouzení** vytvoříte skupinu a posouzení.
 6. Jakmile bude posouzení hotové, zobrazíte ho v části **Přehled** > **Řídicí panel**.
 7. Klikněte na **Exportovat posouzení** a stáhněte ho jako excelový soubor.
+
+> [!NOTE]
+> Před vytvořením interního hodnocení při průběžném zjišťování důrazně doporučujeme počkat aspoň jeden den po spuštění zjišťování. Pokud chcete aktualizovat existující interní hodnocení o nejnovější data o výkonu, můžete použít příkaz **Přepočítat** a hodnocení aktualizovat.
 
 ### <a name="assessment-details"></a>Podrobnosti o posouzení
 
@@ -248,13 +257,23 @@ K určení velikosti na základě výkonu potřebuje Azure Migrate data o využi
    81 až 100 % | 5 hvězdiček
 
 Posouzení nemusí mít k dispozici všechny datové body z některého z následujících důvodů:
-- Statistika v systému vCenter Server není nastavena na úroveň 3. Pokud je nastavení statistiky v systému vCenter Server nižší než úroveň 3, data o výkonu disku a sítě se ze systému vCenter Server neshromažďují. V takovém případě není doporučení služby Azure Migrate týkající se disku a sítě založené na využití. Bez zohlednění vstupně-výstupních operacích za sekundu a propustnosti disku nemůže Azure Migrate určit, jestli disk bude v Azure potřebovat disk Premium, a proto v tomto případě Azure Migrate doporučí pro všechny disky použít disky Standard.
+
+**Jednorázové zjišťování**
+
+- Statistika v systému vCenter Server není nastavena na úroveň 3. Vzhledem k tomu, že model jednorázového zjišťování závisí na statiscice nastavení VCenter Serveru, pokud je nastavení statistiky v systému vCenter Server nižší než úroveň 3, data o výkonu disku a sítě se ze systému vCenter Server neshromažďují. V takovém případě není doporučení služby Azure Migrate týkající se disku a sítě založené na využití. Bez zohlednění vstupně-výstupních operacích za sekundu a propustnosti disku nemůže Azure Migrate určit, jestli disk bude v Azure potřebovat disk Premium, a proto v tomto případě Azure Migrate doporučí pro všechny disky použít disky Standard.
 - Nastavení statistiky v systému vCenter Server bylo před zahájením zjišťování nastavené na úroveň 3 po kratší dobu. Zvažme například scénář, kdy dnes změníte nastavení statistiky na úroveň 3 a zítra (za 24 hodin) zahájíte zjišťování pomocí zařízení kolektoru. Pokud vytváříte posouzení za jeden den, máte všechny datové body a hodnocení spolehlivosti posouzení bude 5 hvězdiček. Pokud však změníte dobu trvání výkonu ve vlastnostech posouzení na jeden měsíc, hodnocení spolehlivosti se sníží, protože data o výkonu disku a sítě za poslední měsíc nebudou k dispozici. Pokud chcete zohlednit data o výkonu za poslední měsíc, doporučujeme ponechat nastavení statistiky systému vCenter Server na úrovni 3 po dobu jednoho měsíce před zahájením zjišťování.
-- Během období, pro které se posouzení počítá, se několik virtuálních počítačů vypnulo. Pokud po nějakou dobu byly některé virtuální počítače vypnuté, vCenter Server nebude mít za toto období data o výkonu.
+
+**Průběžné zjišťování**
+
+- Neprofilovali jste své prostředí po dobu trvání, pro kterou vytváříte interní hodnocení. Například pokud vytváříte interní hodnocení s dobou výkonu nastavenou na 1 den, budete muset počkat aspoň jeden den po spuštění zjišťování, aby se shromáždily všechny datové body.
+
+**Obecné důvody**  
+
+- Během období, pro které se posouzení počítá, se několik virtuálních počítačů vypnulo. Pokud po nějakou dobu byly některé virtuální počítače vypnuté, nebudeme schopni za toto období shromáždit data o výkonu.
 - Během období, pro které se posouzení počítá, se vytvořilo několik virtuálních počítačů. Například pokud vytváříte posouzení historie výkonu za poslední měsíc, ale před týdnem se v prostředí vytvořilo několik virtuálních počítačů. V takových případech nebude k dispozici historie výkonu nových virtuálních počítačů za celé období.
 
 > [!NOTE]
-> Pokud je hodnocení spolehlivosti nějakého posouzení nižší než 4 hvězdičky, doporučujeme změnit nastavení statistiky systému vCenter Server na úroveň 3, počkat po dobu, kterou chcete v posouzení zohlednit (1 den, 1 týden, 1 měsíc), a pak provést zjišťování a posouzení. Pokud to není možné, určení velikosti na základě výkonu nemusí být spolehlivé a doporučuje se změnou vlastností posouzení přepnout na *určování stejné velikosti jako v místním prostředí*.
+> Pokud je u modelu jednorázového zjišťování hodnocení spolehlivosti nějakého posouzení nižší než 4 hvězdičky, doporučujeme změnit nastavení statistiky systému vCenter Server na úroveň 3, počkat po dobu, kterou chcete v posouzení zohlednit (1 den, 1 týden, 1 měsíc), a pak provést zjišťování a posouzení. U modelu průběžného zjišťování počkejte aspoň jeden den na profilování prostředí zařízením a potom interní hodnocení nechte *Přepočítat*. Pokud to není možné, určení velikosti na základě výkonu nemusí být spolehlivé a doporučuje se změnou vlastností posouzení přepnout na *určování stejné velikosti jako v místním prostředí*.
 
 ## <a name="next-steps"></a>Další kroky
 

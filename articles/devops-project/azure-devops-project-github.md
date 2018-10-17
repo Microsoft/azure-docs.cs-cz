@@ -1,5 +1,5 @@
 ---
-title: Vytvoření kanálu CI/CD pro stávající kód pomocí služby Azure DevOps Project | Kurz VSTS
+title: Vytvoření kanálu CI/CD pro stávající kód pomocí projektu Azure DevOps | Kurz Azure DevOps Services
 description: DevOps Project usnadňuje začátek práce v Azure. Pomůže vám v několika rychlých krocích použít vlastní kód a úložiště GitHub ke spuštění aplikace v libovolné službě Azure.
 services: vsts
 documentationcenter: vs-devops-build
@@ -17,12 +17,12 @@ ms.date: 07/09/2018
 author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 192992917432a64c2f9f81761e22bf7d9205703a
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 4e0e28ff9ea14e42e1df7ce35bb90e8720a0d0b6
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205557"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407293"
 ---
 # <a name="create-a-cicd-pipeline-for-your-existing-code-with-the-azure-devops-project"></a>Vytvoření kanálu CI/CD pro stávající kód pomocí služby Azure DevOps Project
 
@@ -33,9 +33,9 @@ Vaším úkolem je:
 > [!div class="checklist"]
 > * Vytvoření projektu Azure DevOps
 > * Konfigurace přístupu k úložišti GitHub a výběr architektury
-> * Konfigurace VSTS a předplatného Azure 
+> * Konfigurace Azure DevOps Services a předplatné Azure 
 > * Potvrzení změn na GitHubu a automatické nasazení do Azure
-> * Prozkoumání kanálu CI/CD VSTS
+> * Prozkoumejte kanály CI/CD Azure DevOps Services
 > * Konfigurace monitorování pomocí Azure Application Insights
 
 ## <a name="prerequisites"></a>Požadavky
@@ -45,7 +45,7 @@ Vaším úkolem je:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Azure DevOps Project vytvoří kanál CI/CD ve VSTS.  Můžete vytvořit **nový účet VSTS** nebo použít **existující účet**.  Azure DevOps Project také vytvoří **prostředky Azure** v **předplatném Azure** podle vašeho výběru.
+Azure DevOps Project vytvoří kanál CI/CD v Azure DevOps Services.  Můžete vytvořit novou organizaci **Azure DevOps Services** nebo použijte **existující organizaci**.  Azure DevOps Project také vytvoří **prostředky Azure** v **předplatném Azure** podle vašeho výběru.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
@@ -65,13 +65,11 @@ Azure DevOps Project vytvoří kanál CI/CD ve VSTS.  Můžete vytvořit **nový
 
 1. Architektura aplikace, kterou jste zvolili v předchozích krocích, určuje typ cíle nasazení služby Azure, který je zde k dispozici.  Vyberte libovolnou **cílovou službu**.  Jakmile budete hotovi, zvolte **Další**.
 
-## <a name="configure-vsts-and-an-azure-subscription"></a>Konfigurace VSTS a předplatného Azure 
+## <a name="configure-azure-devops-services-and-an-azure-subscription"></a>Konfigurace Azure DevOps Services a předplatné Azure 
 
-1. Vytvořte **nový** účet VSTS nebo zvolte **existující** účet.  Zvolte **název** pro váš projekt VSTS.  Vyberte vaše **předplatné Azure**, **umístění** a zvolte **název** pro vaši aplikaci.  Jakmile budete hotovi, zvolte **Hotovo**.
+1. Vytvořte novou organizaci **Azure DevOps Services** nebo zvolte **existující** organizaci.  Zvolte **název** pro váš projekt Azure DevOps.  Vyberte vaše **předplatné Azure**, **umístění** a zvolte **název** pro vaši aplikaci.  Jakmile budete hotovi, zvolte **Hotovo**.
 
-    ![Zadání informací o VSTS](_img/azure-devops-project-github/vstsazureinfo.png)
-
-1. Během několika minut se na webu Azure Portal načte **řídicí panel projektu**.  Ukázková aplikace se nastaví v úložišti ve vašem účtu VSTS, spustí se sestavení a vaše aplikace se nasadí do Azure.  Tento řídicí panel poskytuje přehled o vašem **úložišti kódu** na GitHubu, **kanálu CI/CD VSTS** a vaší **aplikaci v Azure**.  Na pravé straně řídicího panelu vyberte **Procházet** a zobrazte vaši spuštěnou aplikaci.
+1. Za několik minut se na webu Azure Portal načte **řídicí panel projektu Azure DevOps**.  Ukázková aplikace se nastaví v úložišti ve vaší organizaci Azure DevOps Services, spustí se sestavení a vaše aplikace se nasadí do Azure.  Tento řídicí panel poskytuje vhled do vašich **úložišť kódu** GitHub, **kanálu Azure DevOps Services CI/CD**a vaší **aplikace v Azure**.  Na pravé straně řídicího panelu vyberte **Procházet** a zobrazte vaši spuštěnou aplikaci.
 
     ![Zobrazení řídicího panelu](_img/azure-devops-project-github/dashboardnopreview.png) 
     
@@ -79,41 +77,41 @@ Projekt Azure DevOps automaticky nakonfiguruje trigger CI pro sestavení a vydá
 
 ## <a name="commit-changes-to-github-and-automatically-deploy-to-azure"></a>Potvrzení změn na GitHubu a automatické nasazení do Azure 
 
-Teď jste připraveni při práci na vaší aplikaci spolupracovat s týmem s využitím procesu CI/CD, který automaticky nasazuje nejnovější práci na web.  Každá změna v úložišti GitHub spustí sestavení ve VSTS a definice nástroje Release Management pro VSTS provede nasazení do Azure.
+Teď jste připraveni při práci na vaší aplikaci spolupracovat s týmem s využitím procesu CI/CD, který automaticky nasazuje nejnovější práci na web.  Každá změna v úložišti GitHub spustí sestavení v Azure DevOps kanál CD Azure DevOps provede nasazení do Azure.
 
 1.  Proveďte změnu vaší aplikace a **potvrďte** změnu ve vašem úložišti GitHub.
-2.  Za chvíli se ve VSTS spustí sestavení.  Stav sestavení můžete monitorovat na řídicím panelu projektu DevOps nebo ve vašem účtu VSTS v prohlížeči.
+2.  Za chvíli se v Azure DevOps Services spustí sestavení.  Stav sestavení můžete monitorovat na řídicím panelu projektu Azure DevOps nebo v prohlížeči organizace Azure DevOps Services.
 3.  Po dokončení sestavení **aktualizujte aplikaci** v prohlížeči a ověřte, že se zobrazí provedené změny.
 
-## <a name="examine-the-vsts-cicd-pipeline"></a>Prozkoumání kanálu CI/CD VSTS
+## <a name="examine-the-azure-devops-services-cicd-pipeline"></a>Prozkoumejte kanály CI/CD Azure DevOps Services
 
-Projekt Azure DevOps ve vašem účtu VSTS automaticky nakonfiguroval úplný kanál CI/CD VSTS.  Prozkoumejte kanál a podle potřeby ho upravte.  Postupujte podle následujících kroků a seznamte se s definicemi sestavení a verze VSTS.
+Azure DevOps Project automaticky nakonfiguruje kanál CI/CD Azure DevOps Services ve vaší organizaci Azure DevOps Services.  Prozkoumejte kanál a podle potřeby ho upravte.  Postupujte podle následujících kroků a seznamte se s kanály buildu a verze Azure DevOps Services.
 
-1. V **horní** části řídicího panelu projektu Azure DevOps vyberte **Kanály sestavení**.  Tento odkaz na nové kartě prohlížeče otevře definici sestavení VSTS pro váš nový projekt.
+1. V **horní** části řídicího panelu projektu Azure DevOps vyberte **Kanály buildu**.  Tento odkaz na nové kartě prohlížeče otevře kanál buildu Azure DevOps Services pro váš nový projekt.
 
-1. Přesuňte kurzor myši napravo od definice sestavení vedle pole **Stav**. Vyberte **tři tečky**, které se zobrazí.  Tato akce otevře nabídku, ze které můžete spustit několik aktivit, jako je zařazení nového sestavení do fronty, pozastavení sestavení a úprava definice sestavení.
+1. Přesuňte kurzor myši napravo od kanálu buildu vedle pole **Stav**. Vyberte **tři tečky**, které se zobrazí.  Tato akce otevře nabídku, ze které můžete spustit několik aktivit, jako je zařazení nového sestavení do fronty, pozastavení sestavení a úprava kanálu buildu.
 
 1. Vyberte **Upravit**.
 
-1. V tomto zobrazení můžete **prozkoumat různé úlohy** pro vaši definici sestavení.  Sestavení provádí různé úlohy, jako je načtení zdrojů z úložiště Git, obnovení závislostí a publikování výstupů používaných pro nasazení.
+1. V tomto zobrazení můžete **prozkoumat různé úlohy** pro váš kanál buildu.  Sestavení provádí různé úlohy, jako je načtení zdrojů z úložiště Git, obnovení závislostí a publikování výstupů používaných pro nasazení.
 
-1. V horní části definice sestavení vyberte **název definice sestavení**.
+1. V horní části kanálu buildu, vyberte **název kanálu buildu**.
 
-1. Změňte **název** vaší definice sestavení na něco výstižnějšího.  Vyberte **Uložit a zařadit do fronty** a pak vyberte **Uložit**.
+1. Změňte **název** vašeho kanálu buildu na něco výstižnějšího.  Vyberte **Uložit a zařadit do fronty** a pak vyberte **Uložit**.
 
-1. Pod názvem vaší definice sestavení vyberte **Historie**.  Zobrazí se protokol auditu nedávno provedených změn sestavení.  VSTS uchovává informace o všech změnách definice sestavení a umožňuje porovnání verzí.
+1. Pod názvem vašeho kanálu buildu vyberte **Historie**.  Zobrazí se protokol auditu nedávno provedených změn sestavení.  Azure DevOps Services uchovává informace o všech změnách provedených v kanálu buildu a umožňuje porovnávat verze.
 
 1. Vyberte **Triggery**.  Projekt Azure DevOps automaticky vytvořil trigger CI a každé potvrzení v úložišti spustí nové sestavení.  Volitelně můžete zvolit, které větve se do procesu CI zahrnou nebo se z něj vyloučí.
 
 1. Vyberte **Uchování**.  V závislosti na vašem scénáři můžete určit zásady pro zachování nebo odebrání určitého počtu sestavení.
 
-1. Vyberte **Sestavení a vydání** a zvolte **Verze**.  Projekt Azure DevOps vytvořil definici verze VSTS pro správu nasazení do Azure.
+1. Vyberte **Sestavení a vydání** a zvolte **Verze**.  Azure DevOps Project vytvořil kanál verze Azure DevOps Services ke správě nasazení do Azure.
 
-1. Na levé straně prohlížeče vyberte **tři tečky** vedle vaší definice verze a pak zvolte **Upravit**.
+1. Na levé straně prohlížeče, vyberte **tři tečky** vedle kanálu verze, poté zvolte **Upravit**.
 
-1. Definice verze obsahuje **kanál**, který definuje proces vydání.  V části **Artefakty** vyberte **Zahodit**.  Definice sestavení, kterou jste zkoumali v předchozích krocích, vygeneruje výstup, který se použije pro artefakt. 
+1. Kanál verze obsahuje **kanál**, který definuje proces vydání.  V části **Artefakty** vyberte **Zahodit**.  Kanál buildu, který jste prozkoumali v předchozích krocích, vytvoří výstup pro artefakt. 
 
-1. Napravo od ikony **Zahodit** vyberte **Trigger průběžného nasazování**.  Tato definice verze má povolený trigger CD, který spustí nasazení pokaždé, když bude k dispozici nový artefakt sestavení.  Volitelně můžete trigger zakázat, aby vaše nasazení vyžadovala ruční spuštění. 
+1. Napravo od ikony **Zahodit** vyberte **Trigger průběžného nasazování**.  Tento kanál verze aktivoval trigger CD, který spustí nasazení pokaždé, když je k dispozici nový artefakt sestavení.  Volitelně můžete trigger zakázat, aby vaše nasazení vyžadovala ruční spuštění. 
 
 1. Na levé straně prohlížeče vyberte **Úlohy**.  Úlohy jsou aktivity, které se provádí ve vašem procesu nasazení.  V tomto příkladu se vytvořila úloha pro nasazení do služby **Azure App Service**.
 
@@ -159,17 +157,17 @@ Pokud už je nepotřebujete, můžete službu Azure App Service a související 
 
 ## <a name="next-steps"></a>Další kroky
 
-Když jste v tomto kurzu nakonfigurovali proces CI/CD, ve vašem projektu VSTS se automaticky vytvořily definice sestavení a verze. Tyto definice sestavení a verze můžete upravit tak, aby splňovaly požadavky vašeho týmu. Naučili jste se tyto postupy:
+Když jste v tomto kurzu nakonfigurovali proces CI/CD, ve vašem projektu Azure DevOps se automaticky vytvořily kanál buildu a verze. Tyto kanály buildu a verze můžete upravit tak, aby splňovaly požadavky vašeho týmu. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
 > * Vytvoření projektu Azure DevOps
 > * Konfigurace přístupu k úložišti GitHub a výběr architektury
-> * Konfigurace VSTS a předplatného Azure 
+> * Konfigurace Azure DevOps Services a předplatné Azure 
 > * Potvrzení změn na GitHubu a automatické nasazení do Azure
-> * Prozkoumání kanálu CI/CD VSTS
+> * Prozkoumejte kanály CI/CD Azure DevOps Services
 > * Konfigurace monitorování pomocí Azure Application Insights
 
-Další informace o kanálu VSTS najdete v tomto kurzu:
+Další informace o kanálu CI/CD Azure DevOps Services najdete v tomto kurzu:
 
 > [!div class="nextstepaction"]
-> [Přizpůsobení procesu CD](https://docs.microsoft.com/vsts/pipelines/release/define-multistage-release-process?view=vsts)
+> [Přizpůsobení procesu CD](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)

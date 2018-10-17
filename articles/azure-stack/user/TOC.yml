@@ -28,10 +28,6 @@ items:
       href: azure-stack-subscribe-services.md
     - name: Vytvoření virtuálního počítače ze šablony
       href: azure-stack-create-vm-template.md
-    - name: Vytvoření vysoce dostupné databáze SQL
-      href: azure-stack-tutorial-sql.md
-    - name: Vytvoření vysoce dostupné databáze MySQL
-      href: azure-stack-tutorial-mysql.md
   - name: Hybridní cloudové vzory
     items:
     - name: Nasazení aplikací na platformy Azure a Azure Stack
@@ -218,9 +214,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: Školení a certifikace
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 5c4fec260e2b58aa7d34b9f3b7fcaa0d4755abf4
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 2b65408f4d2171d57031a442725df935f1616764
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321644"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364791"

@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/19/2017
+ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 1cbe63184578f7d1e72992577a11c58b9b83a002
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a7e5051248a579b0943fa69620215b060bd1e235
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33937309"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47092689"
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>Publikování několika verzí rozhraní API 
 
@@ -44,7 +44,7 @@ V tomto kurzu se naučíte:
 
 ![Místní nabídka rozhraní API – přidání verze](media/api-management-getstarted-publish-versions/AddVersionMenu.png)
 
-1. V seznamu rozhraní API vyberte rozhraní **Conference API**.
+1. V seznamu rozhraní API vyberte rozhraní **Demo Conference API**.
 2. Vyberte místní nabídku (**...**) vedle něj.
 3. Vyberte **+ Přidat verzi**.
 
@@ -58,37 +58,39 @@ Azure API Management umožňuje zvolit způsob, jakým umožníte volajícím ur
 ![Obrazovka Přidat verzi](media/api-management-getstarted-publish-versions/AddVersion.PNG)
 
 1. Jako **schéma vytváření verzí** ponechte vybranou možnost **cesta**.
-2. Jako **identifikátor verze** přidejte **v1**.
+2. Přidejte **v1** jako **název** a **identifikátor verze**.
 
     > [!TIP]
     > Pokud jako schéma vytváření verzí vyberete **hlavičku** nebo **řetězec dotazu**, je potřeba zadat další hodnotu – název hlavičky nebo parametr řetězce dotazu.
 
-3. Pokud chcete, zadejte popis.
-4. Vyberte **Vytvořit** a nastavte svou novou verzi.
-5. V seznamu rozhraní API se teď pod položkou **Big Conference API** zobrazí dvě různá rozhraní API – **Original** (Původní) a **v1**.
+3. Vyberte **Vytvořit** a nastavte svou novou verzi.
+4. V seznamu rozhraní API se teď pod položkou **Demo Conference API** zobrazí dvě různá rozhraní API – **Original** (Původní) a **v1**.
 
     ![Verze uvedené pod rozhraním API na webu Azure Portal](media/api-management-getstarted-publish-versions/VersionList.PNG)
 
     > [!Note]
     > Pokud přidáte verzi k rozhraní bez správy verzí, automaticky se vytvoří verze **Original**, která odpovídá na výchozí adrese URL. Tím se zajistí, že proces přidání verze negativně neovlivní žádné stávající volající. Pokud vytvoříte nové rozhraní API, které má už od začátku povolené verze, verze Original se nevytvoří.
 
-6. Teď můžete upravit a nakonfigurovat verzi **v1** jako rozhraní API, které je oddělené od verze **Original**. Změny jedné verze nemají vliv na jinou verzi.
+5. Teď můžete upravit a nakonfigurovat verzi **v1** jako rozhraní API, které je oddělené od verze **Original**. Změny jedné verze nemají vliv na jinou verzi.
 
 ## <a name="add-the-version-to-a-product"></a>Přidání verze do produktu
 
 Aby se volajícím zobrazila nová verze, musí se přidat do **produktu**.
 
 1. Na stránce modelu nasazení Classic vyberte **Produkty**.
+
+    ![Produkty API Managementu](media/api-management-getstarted-publish-versions/Products.png)
+
 2. Vyberte **Neomezeno**.
 3. Vyberte **Rozhraní API**.
 4. Vyberte **Přidat**.
-5. Vyberte **Conference API, verze v1**.
+5. Vyberte **Demo Conference API, verze v1**.
 6. Přejděte na stránku pro správu služby a vyberte **Rozhraní API**.
 
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>Zobrazení verze na portálu pro vývojáře
 
 1. V horní nabídce vyberte **Portál pro vývojáře**.
-2. Vyberte **Rozhraní API** a všimněte si, že pro rozhraní **Conference API** se zobrazí verze **Original** a **v1**.
+2. Vyberte **Rozhraní API** a všimněte si, že pro rozhraní **Demo Conference API** se zobrazí verze **Original** a **v1**.
 3. Vyberte **v1**.
 4. Všimněte si **adresy URL požadavku** první operace na seznamu. Ukazuje, že cesta URL rozhraní API zahrnuje **v1**.
 
@@ -107,4 +109,4 @@ V tomto kurzu se naučíte:
 Přejděte k dalšímu kurzu:
 
 > [!div class="nextstepaction"]
-> [Upgrade a škálování](upgrade-and-scale.md)
+> [Přizpůsobení stylu stránek portálu pro vývojáře](api-management-customize-styles.md)

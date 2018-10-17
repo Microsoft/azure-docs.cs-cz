@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/30/2018
+ms.date: 09/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: 24add63639f5fffe18e4b4468bfd78600a38c5f3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: dc73bbd775da31faecf236716a2b028171438b7c
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969287"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220882"
 ---
 # <a name="azure-resource-manager-overview"></a>Přehled Azure Resource Manageru
 Infrastrukturu aplikace obvykle tvoří celá řada komponent, může to být třeba virtuální počítač, účet úložiště a virtuální síť nebo webová aplikace, databáze, databázový server a služby jiných výrobců. Tyto komponenty nevidíte jako samostatné entity, ale jako související a vzájemně provázané části jedné entity. Chcete je nasadit, spravovat a monitorovat jako skupinu. Azure Resource Manager umožňuje pracovat s prostředky ve vašem řešení jako se skupinou. Všechny prostředky pro vaše řešení můžete nasadit, aktualizovat nebo odstranit v rámci jediné koordinované operace. Pro nasazení použijete šablonu a tato šablona může fungovat v různých prostředích, jako například v testovacím, přípravném nebo produkčním prostředí. Resource Manager poskytuje funkce zabezpečení, auditování a označování, které vám po nasazení pomohou prostředky spravovat. 
@@ -155,6 +155,12 @@ Po definování šablony jste připraveni k nasazení prostředků do Azure. Př
 * [Nasazení prostředků pomocí šablon Resource Manageru a webu Azure Portal](resource-group-template-deploy-portal.md)
 * [Nasazení prostředků pomocí šablon Resource Manageru a jeho rozhraní REST API](resource-group-template-deploy-rest.md)
 
+## <a name="safe-deployment-practices"></a>Postupy bezpečného nasazení
+
+Při nasazení komplexní služby pro Azure, můžete potřebovat k nasazení služby do několika oblastí a zkontrolujte jeho stav, než budete pokračovat k dalšímu kroku. Použijte [Azure Deployment Manager](deployment-manager-overview.md) ke koordinaci postupného zavedení služby. Postupným zavedením služby, můžete najít potenciální problémy dříve, než bude nasazena do všech oblastí. Pokud nepotřebujete tato opatření, lepší volbou jsou operace nasazení v předchozím oddílu.
+
+Deployment Manager je momentálně ve verzi Public Preview.
+
 ## <a name="tags"></a>Značky
 Resource Manager nabízí funkci označování, která umožňuje kategorizovat prostředky podle požadavků na správu nebo fakturaci. Značky použijte v případě, že máte komplexní kolekci prostředků a skupin prostředků a potřebujete tyto assety vizualizovat co nejsmysluplnějším způsobem. Můžete například označit prostředky, které mají v rámci organizace podobnou roli nebo které patří do stejného oddělení. Uživatelé ve vaší organizaci mohou vytvořit různé prostředky, které se bez použití značek budou později těžko identifikovat a spravovat. Můžete například chtít odstranit všechny prostředky pro konkrétní projekt. Pokud ale tyto prostředky nejsou označené značkami, musíte je vyhledat ručně. Označení může také hrát důležitou roli při omezení zbytečných nákladů ve vašem předplatném. 
 
@@ -176,20 +182,6 @@ Následující příklad ukazuje značku použitou u virtuálního počítače.
   }
 ]
 ```
-
-Pokud chcete načíst všechny prostředky s určitou hodnotou značky, použijte následující rutinu prostředí PowerShell:
-
-```powershell
-Find-AzureRmResource -TagName costCenter -TagValue Finance
-```
-
-Nebo následující příkaz Azure CLI:
-
-```azurecli
-az resource list --tag costCenter=Finance
-```
-
-Označené prostředky můžete také zobrazit přes Azure Portal.
 
 [Sestava využití](../billing/billing-understand-your-bill.md) pro vaše předplatné obsahuje názvy a hodnoty značek, což umožňuje rozdělit náklady podle značek. Další informace o značkách najdete v tématu [Použití značek k uspořádání prostředků Azure](resource-group-using-tags.md).
 
@@ -228,29 +220,8 @@ V některých případech chcete spustit kód nebo skript, který bude mít př�
 
 Je také možné explicitně zamknout důležité prostředky a zabránit tak uživatelům v jejich změně nebo odstranění. Další informace najdete v tématu [Zamknutí prostředků pomocí Azure Resource Manageru](resource-group-lock-resources.md).
 
-## <a name="activity-logs"></a>Protokoly aktivit
-Resource Manager protokoluje všechny operace vedoucí k vytvoření, úpravě nebo odstranění prostředku. Protokoly aktivit můžete použít k vyhledání chyby při řešení potíží nebo k monitorování, jak uživatel ve vaší organizaci změnil prostředek. Protokoly můžete filtrovat podle mnoha různých hodnot, například podle uživatele, který operaci spustil. Informace o využití protokolů aktivit najdete v tématu [Použití protokolů aktivit při správě prostředků Azure](resource-group-audit.md).
-
 ## <a name="customized-policies"></a>Přizpůsobené zásady
 Resource Manager umožňuje vytvářet vlastní zásady pro správu prostředků. Typy zásad, které vytvoříte, mohou zahrnovat nejrůznější scénáře. Můžete u prostředků vynutit dodržování zásad vytváření názvů, omezit, které typy a instance prostředků lze nasadit, nebo omezit, které oblasti mohou hostovat konkrétní typ prostředku. Můžete od prostředků vyžadovat značky a díky tomu zajistit fakturaci po odděleních. Zásady pomáhají omezit náklady a zajistit konzistenci v rámci předplatného. 
-
-Zásady definujete ve formátu JSON a pak je použijete v celém předplatném nebo u určité skupiny prostředků. Zásady se liší od řízení přístupu na základě role tím, že se uplatňují u typů prostředků.
-
-Následující příklad ukazuje zásadu, která zajišťuje konzistenci značek tím, že specifikuje, že všechny prostředky zahrnují značku costCenter.
-
-```json
-{
-  "if": {
-    "not" : {
-      "field" : "tags",
-      "containsKey" : "costCenter"
-    }
-  },
-  "then" : {
-    "effect" : "deny"
-  }
-}
-```
 
 Existuje mnoho dalších typů zásad, které lze vytvořit. Další informace najdete v tématu [Co je Azure Policy?](../azure-policy/azure-policy-introduction.md).
 

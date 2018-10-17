@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: c0b42c3efd5e015eaf1fbd750f835d8de8818de9
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: d99b76faf618439e51735d5f1096fd4f1cfd2364
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43185847"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038285"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Kurz: Přizpůsobení zobrazení Azure IoT Central pro operátora
 
@@ -50,9 +50,9 @@ Jako tvůrce můžete definovat, které informace se zobrazí na řídicím pane
 
     ![Výběr připojeného klimatizačního zařízení](media/tutorial-customize-operator/selectdevice.png)
 
-    Když provádíte změny zařízení, jako je třeba **Connected Air Conditioner-1**, měníte příslušnou šablonu. Další informace najdete v tématu [Vytvoření nové verze šablony zařízení](howto-version-devicetemplate.md).
+    Když jste uvnitř zařízení, jako je třeba **Connected Air Conditioner-1**, můžete měnit příslušnou šablonu pomocí možnosti **Upravit šablonu**. Další informace najdete v tématu [Vytvoření nové verze šablony zařízení](howto-version-devicetemplate.md).
 
-3. Pokud chcete upravit řídicí panel, zvolte **Dashboard** (Řídicí panel):
+3. Pokud chcete upravit řídicí panel, zvolte **řídicí panel** a vyberte možnost **Upravit šablonu**:
 
     ![Stránka řídicího panelu šablony zařízení](media/tutorial-customize-operator/dashboard.png)
 
@@ -77,11 +77,13 @@ Jako tvůrce můžete definovat, které informace se zobrazí na řídicím pane
 
     ![Úprava rozložení řídicího panelu](media/tutorial-customize-operator/dashboardlayout.png)
 
+7. Po dokončení změn klikněte na tlačítko **Hotovo**.
+
 ## <a name="configure-your-settings-layout"></a>Konfigurace rozložení nastavení
 
 Jako tvůrce můžete také nakonfigurovat zobrazení nastavení zařízení pro operátora. Operátor používá stránku nastavení zařízení ke konfiguraci zařízení. Operátor použije stránku nastavení například k nastavení cílové teploty pro ledničku.
 
-1. Pokud chcete upravit rozložení nastavení pro připojenou klimatizaci, zvolte **Settings** (Nastavení):
+1. Pokud chcete upravit rozložení nastavení pro připojenou klimatizaci, zvolte **Nastavení** a vyberte možnost **Upravit šablonu**:
 
     ![Stránka Nastavení](media/tutorial-customize-operator/settings.png)
 
@@ -89,14 +91,16 @@ Jako tvůrce můžete také nakonfigurovat zobrazení nastavení zařízení pro
 
     ![Úprava rozložení nastavení](media/tutorial-customize-operator/settingslayout.png)
 
+3. Po dokončení změn klikněte na tlačítko **Hotovo**.
+
 > [!NOTE]
-> V režimu **Design Mode** (Režim návrhu) nemůžete upravovat hodnoty nastavení.
+> V režimu **Upravit šablonu** nemůžete upravovat hodnoty nastavení.
 
 ## <a name="configure-your-properties-layout"></a>Konfigurace rozložení vlastností
 
 Kromě řídicího panelu a nastavení můžete zobrazení operátora nakonfigurovat také pro vlastnosti zařízení. Operátor používá stránku vlastností zařízení ke správě metadat zařízení. Operátor použije stránku vlastností například k zobrazení sériového čísla zařízení nebo aktualizaci kontaktních údajů pro výrobce.
 
-1. Pokud chcete upravit rozložení vlastností pro připojenou klimatizaci, zvolte **Properties** (Vlastnosti):
+1. Pokud chcete upravit rozložení vlastností pro připojenou klimatizaci, zvolte **Vlastnosti** a poté vyberte možnost **Upravit šablonu**:
 
     ![Stránka Vlastnosti](media/tutorial-customize-operator/properties.png)
 
@@ -104,16 +108,18 @@ Kromě řídicího panelu a nastavení můžete zobrazení operátora nakonfigur
 
     ![Úprava rozložení vlastností](media/tutorial-customize-operator/propertieslayout.png)
 
+3. Po dokončení změn klikněte na tlačítko **Hotovo**.
+
 > [!NOTE]
-> V režimu **Design Mode** (Režim návrhu) nemůžete upravovat hodnoty vlastností.
+> V režimu **Upravit šablonu** nemůžete upravovat hodnoty vlastností.
 
 ## <a name="preview-the-connected-air-conditioner-device-as-an-operator"></a>Zobrazení náhledu připojeného klimatizačního zařízení jako operátor
 
-V režimu **Design Mode** (Režim návrhu) můžete přizpůsobit řídicí panel, stránku vlastností a stránku nastavení pro operátora. Pokud vypnete režim **Design Mode** (Režim návrhu), můžete aplikaci zobrazit jako operátor.
+V režimu **Upravit šablonu** můžete přizpůsobit řídicí panel, stránku vlastností a stránku nastavení pro operátora. Pokud nejste v režimu **Upravit šablonu**, můžete aplikaci zobrazit jako operátor.
 
-1. Pokud chcete zobrazit připojené klimatizační zařízení jako operátor, musíte vypnout **Design Mode** (Režim návrhu). **Design Mode** můžete vypnout pomocí přepínače **Design Mode** v pravém horním rohu stránky.
+1. Pokud chcete zobrazit připojené klimatizační zařízení jako operátor a chcete odejít z úprav šablony, musíte kliknout na **Hotovo**. Tím se vrátíte do zobrazení operátora zařízení.
 
-2. Pokud chcete aktualizovat sériové číslo tohoto zařízení, upravte hodnotu na dlaždici se sériovým číslem a potom zvolte **Save** (Uložit):
+2. Pokud chcete aktualizovat umístění tohoto zařízení, upravte hodnotu na dlaždici s umístěním a potom zvolte **Uložit**:
 
     ![Úprava nastavení vlastnosti](media/tutorial-customize-operator/editproperty.png)
 
@@ -131,7 +137,7 @@ V režimu **Design Mode** (Režim návrhu) můžete přizpůsobit řídicí pane
 
 Když tvůrce nebo operátor přihlásí k aplikaci Azure IoT Central, uvidí domovskou stránku. Jako tvůrce můžete nakonfigurovat obsah této domovské stránky tak, aby zahrnovala obsah, který je pro operátory nejužitečnější a nejrelevantnější.
 
-1. Pokud chcete přizpůsobit výchozí domovskou stránku, přejděte na stránku **Home** a v pravé horní části stránky zapněte **Design Mode** (Režim návrhu). Po zapnutí režimu **Design Mode** (Režim návrhu) se zprava vysune seznam objektů, které můžete přidat na domovskou stránku.
+1. Pokud chcete přizpůsobit výchozí domovskou stránku, přejděte na stránku **Home** a v pravé horní části stránky vyberte **Upravit**. Po zvolení možnosti **Upravit** se zprava vysune seznam objektů, které můžete přidat na vaši domovskou stránku.
 
     ![Stránka Application Builder (Tvůrce aplikací)](media/tutorial-customize-operator/builderhome.png)
 
@@ -150,7 +156,7 @@ Když tvůrce nebo operátor přihlásí k aplikaci Azure IoT Central, uvidí do
 
 ## <a name="preview-the-default-home-page-as-an-operator"></a>Zobrazení náhledu výchozí domovské stránky jako operátor
 
-Pokud chcete zobrazit náhled domovské stránky tak, jak ji uvidí operátor, vypněte **Design Mode** (Režim návrhu) v pravé horní části stránky:
+Pokud chcete zobrazit náhled domovské stránky tak, jak ji uvidí operátor, a nechcete ji upravovat, zvolte **Hotovo** v pravé horní části stránky
 
 ![Přepnutí režimu návrhu](media/tutorial-customize-operator/operatorviewhome.png)
 

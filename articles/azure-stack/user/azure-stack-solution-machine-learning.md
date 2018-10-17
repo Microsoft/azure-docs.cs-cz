@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: c195f2ee24b61a57c098d5214a37f65e80845074
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 28ff8dbf073596e5f9565c56ae903af6af68f3e2
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410200"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353704"
 ---
 # <a name="tutorial-create-an-edge-machine-learning-solution-with-azure-and-azure-stack"></a>Kurz: Vytvoření edge řešení strojového učení s využitím Azure a Azure Stack
 
@@ -210,7 +210,7 @@ Nové datové VĚDY umístěte do stejné skupiny prostředků jako na nově vyt
 
     d.  Pro **účet úložiště diagnostiky**, vyberte dříve vytvořeného účtu úložiště.
 
-    e.  Poznámka: V AAD povolené a nakonfigurované pro předplatné Azure, identita spravované služby je možné povolit také.
+    e.  Poznámka: V AAD povolené a nakonfigurované pro předplatné Azure, spravované identity pro prostředky Azure je možné povolit také.
 
 2.  Vyberte **OK**.
 
@@ -287,7 +287,7 @@ Pomocí webu Azure portal ke zřízení účtů Azure Machine Learning:
     | Nastavení | Navrhovaná hodnota pro tento kurz | Popis |
     |---------------------------------------|----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Název účtu služby Experimentování | Jedinečný název | Zadejte jedinečný název, který identifikuje tento účet. Použijte název oddělení nebo projekt, který experiment nejlépe identifikuje. Název musí mít délku od 2 do 32 znaků. Může obsahovat jenom alfanumerické znaky a znak spojovníku (-). |
-    | Předplatné | Odběr | Zvolte předplatné Azure, které pro experiment použít. Pokud existuje více předplatných, vyberte odpovídající předplatné, ve kterém se prostředek účtuje. |
+    | Předplatné | Předplatné | Zvolte předplatné Azure, které pro experiment použít. Pokud existuje více předplatných, vyberte odpovídající předplatné, ve kterém se prostředek účtuje. |
     | Skupina prostředků | Skupina prostředků | Použít existující skupinu prostředků v předplatném nebo zadejte název pro vytvoření pro tento účet experimentování novou skupinu prostředků. |
     | Umístění | Oblast nejbližší uživatelům | Zvolte umístění co nejblíže uživatelům a datovým prostředkům. |
     | Počet licencí | 2 | Zadejte počet licencí. Informace o tom, jak [licence ovlivňují ceny](https://azure.microsoft.com/pricing/details/machine-learning/).<br><br>Pro účely tohoto rychlého startu je potřeba jenom dvě licence. Licence je možné podle potřeby přidávat nebo odebírat na webu Azure Portal. |

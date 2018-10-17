@@ -9,13 +9,13 @@ editor: jasonwhowell
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 03/20/2018
-ms.openlocfilehash: dea380378aa1b6c2203c76f5c48e5af400ec8719
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 09/12/2018
+ms.openlocfilehash: f26cadf28205359b111a8f92b8fadcbd9f26f958
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266699"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407617"
 ---
 # <a name="create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Vytvoření serveru Azure Database for MySQL pomocí webu Azure Portal
 
@@ -51,7 +51,7 @@ Server Azure Database for MySQL vytvoříte pomocí tohoto postupu:
     Heslo | *Nějaké si zvolte* | Zadejte nové heslo pro účet správce serveru. Musí se skládat z 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z těchto kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice (0–9) a jiné než alfanumerické znaky (!, $, #, % apod.).
     Potvrzení hesla | *Nějaké si zvolte*| Potvrďte heslo účtu správce.
     Umístění | *Oblast nejbližší vašim uživatelům*| Vyberte umístění co nejblíže vašim uživatelům nebo vašim dalším aplikacím Azure.
-    Verze | *Nejnovější verze*| Nejnovější verze (pokud nemáte specifické požadavky vyžadující jinou verzi).
+    Verze | *Nejnovější hlavní verze*| Nejnovější hlavní verze (pokud nemáte specifické požadavky vyžadující jinou verzi).
     Cenová úroveň | **Obecné účely**, **Gen 4**, **2 virtuální jádra**, **5 GB**, **7 dní**, **Geograficky redundantní** | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte **Cenová úroveň**. Potom vyberte kartu **Obecné účely**. *Gen 4*, *2 virtuální jádra*, *5 GB* a *7 dní* jsou výchozí hodnoty pro **Výpočetní generaci**, **Virtuální jádra**, **Úložiště** a **Období uchování zálohy**. Můžete ponechat tyto posuvníky tak, jak jsou. Pokud chcete povolit zálohování serveru v geograficky redundantním úložišti, vyberte v **Možnosti redundance zálohy** možnost **Geograficky redundantní**. Vyberte **OK** a uložte tento výběr cenové úrovně. Další snímek zachycuje tyto výběry.
   
     > [!IMPORTANT]
@@ -74,17 +74,11 @@ Služba Azure Database for MySQL vytváří bránu firewall na úrovni serveru. 
 
 2. Na stránce serveru vyberte **Zabezpečení připojení**.
 
-3.  Pod nadpisem **Pravidla brány firewall** vyberte prázdné textové pole ve sloupci **Název pravidla** a začněte vytvářet pravidlo brány firewall. 
-
-   Pro účely tohoto rychlého startu povolíme provoz do serveru ze všech IP adres tak, že do pole v každém sloupci vyplníme následující hodnoty:
-
-   Název pravidla | Počáteční IP adresa | Koncová IP adresa 
-   ---|---|---
-   AllowAllIps |  0.0.0.0 | 255.255.255.255
+3.  Pod nadpisem **Pravidla brány firewall** vyberte prázdné textové pole ve sloupci **Název pravidla** a začněte vytvářet pravidlo brány firewall. Zadejte přesný rozsah IP adres klientů, kteří budou mít přístup k tomuto serveru.
    
-   ![Zabezpečení připojení – Pravidla brány firewall](./media/quickstart-create-mysql-server-database-using-azure-portal/5_firewall-settings.png)
+   ![Zabezpečení připojení – Pravidla brány firewall](./media/quickstart-create-mysql-server-database-using-azure-portal/5-firewall-2.png)
 
-   Povolení všech IP adres není bezpečné. Tento příklad je uvedený pro zjednodušení, ale ve skutečném scénáři musíte znát přesné rozsahy IP adres, které máte přidat pro své aplikace a uživatele. 
+
 
 4. Na horním panelu nástrojů na stránce **Zabezpečení připojení** vyberte **Uložit**. Než budete pokračovat, počkejte na zobrazení oznámení o úspěšném dokončení aktualizace. 
 

@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 03/20/2018
-ms.openlocfilehash: 181e31530960f031dd2785b852c0ae15c21af782
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6a3241e15cc72d1d50862a9dec14c23712ec4226
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30186304"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406378"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-the-azure-portal"></a>Kurz: Návrh databáze Azure Database for PostgreSQL pomocí webu Azure Portal
 
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte, jak pomocí webu Azure Portal provést následujíc�
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
-Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-an-azure-database-for-postgresql"></a>Vytvoření Azure Database for PostgreSQL
 
@@ -85,7 +85,7 @@ Služba Azure Database for PostgreSQL využívá bránu firewall na úrovni serv
 
 2.  Na stránce serveru vyberte **Zabezpečení připojení**. 
 
-3.  Klikněte do textového pole pod **Názvem pravidla** a přidejte nové pravidlo brány firewall, kterým povolíte připojení rozsahu IP adres. Pro tento kurz můžeme povolit všechny IP adresy zadáním **Název pravidla = AllowAllIps**, **Počáteční IP adresa = 0.0.0.0** a **Koncová IP adresa = 255.255.255.255**. Pak klikněte na **Uložit**. Abyste se mohli připojit z vaší sítě, můžete nastavit konkrétní pravidlo brány firewall, které pokrývá menší rozsah IP adres.
+3.  Klikněte do textového pole pod **Názvem pravidla** a přidejte nové pravidlo brány firewall, kterým povolíte připojení rozsahu IP adres. Zadejte rozsahu IP adresy. Klikněte na **Uložit**.
 
    ![Azure Database for PostgreSQL – vytvoření pravidla brány firewall](./media/tutorial-design-database-using-azure-portal/5-firewall-2.png)
 

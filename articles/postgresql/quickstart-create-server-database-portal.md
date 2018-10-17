@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 03/20/2018
-ms.openlocfilehash: 002ec2f99e488af76654c2391416e4b90e16e4c0
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: d32fb6e1a85865d89a2f8ee1483eb8fd599b4bb6
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43050223"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408908"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>Rychlý start: Vytvoření serveru Azure Database for PostgreSQL na webu Azure Portal
 
@@ -50,7 +50,7 @@ Server Azure Database for PostgreSQL vytvoříte pomocí tohoto postupu:
     Přihlašovací jméno správce serveru |*myadmin*| Váš vlastní přihlašovací účet, který budete používat pro připojení k serveru. Přihlašovací jméno správce nemůže být **azure_superuser**, **azure_pg_admin**, **admin**, **administrator**, **root**, **guest** ani **public**. Nemůže začínat na **pg_**.
     Heslo |Vaše heslo| Nové heslo pro účet správce serveru. Musí mít 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z těchto kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice (0–9) a jiné než alfanumerické znaky (!, $, #, % apod.).
     Umístění|Oblast nejbližší vašim uživatelům| Umístění co nejblíže vašim uživatelům.
-    Verze|Nejnovější verze| Nejnovější verze PostgreSQL, pokud nemáte jiné specifické požadavky.
+    Verze|Nejnovější hlavní verze| Nejnovější hlavní verze PostgreSQL, pokud nemáte jiné specifické požadavky.
     Cenová úroveň | **Obecné účely**, **Gen 4**, **2 virtuální jádra**, **5 GB**, **7 dní**, **Geograficky redundantní** | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte **Cenová úroveň**. Potom vyberte kartu **Obecné účely**. *Gen 4*, *2 virtuální jádra*, *5 GB* a *7 dní* jsou výchozí hodnoty pro **Výpočetní generaci**, **Virtuální jádra**, **Úložiště** a **Období uchování zálohy**. Můžete ponechat tyto posuvníky tak, jak jsou. Pokud chcete povolit zálohování serveru v geograficky redundantním úložišti, vyberte v **Možnosti redundance zálohy** možnost **Geograficky redundantní**. Vyberte **OK** a uložte tento výběr cenové úrovně. Další snímek zachycuje tyto výběry.
 
     > [!IMPORTANT]
@@ -78,17 +78,10 @@ Azure Database for PostgreSQL vytváří bránu firewall na úrovni serveru. Ta 
 
 3. Pod nadpisem **Pravidla brány firewall** vyberte prázdné textové pole ve sloupci **Název pravidla** a začněte vytvářet pravidlo brány firewall. 
 
-    Pro účely tohoto rychlého startu povolíme provoz do serveru ze všech IP adres. Do textových polí v jednotlivých sloupcích vyplňte následující hodnoty:
+   Vyplňte do textového pole název a začátek a konec rozsahu IP klientů, kteří budou přistupovat k vašemu serveru. Pokud se jedná jednu IP adresu, použijte stejnou hodnotu pro počáteční IP adresu a koncovou IP adresu.
 
-    Název pravidla | Počáteční IP adresa | Koncová IP adresa 
-    ---|---|---
-    AllowAllIps | 0.0.0.0 | 255.255.255.255
-
-     ![Nastavení pravidel brány firewall](./media/quickstart-create-database-portal/5-firewall-2.png)
+   ![Nastavení pravidel brány firewall](./media/quickstart-create-database-portal/5-firewall-2.png)
      
-      > [!NOTE]
-      > Pro produkční instance byste měli pravidla brány firewall nastavit tak, aby umožňovala příjem příchozích požadavků pouze ze známých IP adres.  Tato nastavení slouží pouze pro účely tohoto příkladu.
-      >
 
 4. Na horním panelu nástrojů na stránce **Zabezpečení připojení** vyberte **Uložit**. Než budete pokračovat, počkejte na zobrazení oznámení o úspěšném dokončení aktualizace zabezpečení připojení.
 

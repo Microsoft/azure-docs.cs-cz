@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: spelluru
-ms.openlocfilehash: 4f7aa0b0c5142237f3b6fc66bb8593302c95f5af
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: e66a1651a46cfaeb7fb8b232eeb7cf6a2fb8044d
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41924754"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451218"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-net"></a>Začínáme s požadavky HTTP Relay Hybrid Connections v .NET
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
@@ -64,9 +64,14 @@ Napište v sadě Visual Studio konzolovou aplikaci v jazyce C#, která bude odes
 [!INCLUDE [relay-hybrid-connections-http-requests-dotnet-get-started-client](../../includes/relay-hybrid-connections-http-requests-dotnet-get-started-client.md)]
 
 ## <a name="5-run-the-applications"></a>5. Spuštění aplikací
-1. Spusťte serverovou aplikaci.
-2. Spusťte klientskou aplikaci a napište nějaký text.
-3. Ujistěte se, že konzola serverové aplikace zobrazí text, který jste zadali v klientské aplikaci.
+1. Spusťte serverovou aplikaci. V okně konzoly uvidíte následující text:
+
+    ```
+    Online
+    Server listening
+    ```
+1. Spusťte klientskou aplikaci. Zobrazí `hello!` v okně klienta. Klient odešle požadavek HTTP na server a server odpověděl zprávou `hello!`. 
+3. K zavření oken konzoly, stiskněte **ENTER** v obou oknech konzoly. 
 
 Blahopřejeme, vytvořili jste kompletní aplikaci Hybrid Connections.
 

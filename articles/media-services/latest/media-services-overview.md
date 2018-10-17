@@ -4,7 +4,7 @@ description: Tento článek obsahuje základní přehled služby Media Services 
 services: media-services
 documentationcenter: na
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 tags: ''
 keywords: azure media services, stream, všesměrové vysílání, live, režim offline
@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 07/14/2018
+ms.date: 09/25/2018
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 6c3fb7391c25628ba12526a04c022215bdbd9d40
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 3641806870c3eab0b3a05f538015a72d9a0b34ef
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325927"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221926"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Co jsou Azure Media Services v3?
 
@@ -55,7 +55,7 @@ V3 používá prostor Unified API, který zpřístupňuje funkce pro správu i p
 V této verzi jsou k dispozici následující funkce:  
 
 * **Transformace** – umožňují definovat jednoduché pracovní úlohy zpracování médií a analýzy. Transformace usnadňují zpracování videosouborů a zvukových souborů. Můžete je opakovaně použít ke zpracování všech souborů v knihovně obsahu – stačí odeslat úlohu k transformaci.
-* **Úlohy** na zpracování videí (zakódování nebo analýzu). Vstupní obsah se dá v úloze specifikovat jako HTTP, URL, SAS nebo cesta k souboru v úložišti objektů Blob Azure. 
+* **Úlohy** na zpracování videí (zakódování nebo analýzu). Vstupní obsah se dá v úloze specifikovat jako HTTPS, URL, SAS nebo cesta k souboru v úložišti objektů Blob Azure. AMS v3 v současné době nepodporuje blokového kódování přenosu prostřednictvím adresy URL HTTPS.
 * **Oznámení** – slouží ke sledování průběhu nebo stavu úlohy, ke spuštění nebo zastavení živého kanálu a k oznamování výskytu chybových událostí. Oznámení jsou integrovaná v oznamovacím systému Azure Event Gridu. V Azure Media Services se můžete snadno přihlásit k událostem z několika prostředků. 
 * Šablony **správy prostředků Azure** – lze je použít k vytvoření a nasazení transformací, koncových bodů streamování, kanálů a dalších funkcí.
 * **Řízení přístupu na základě role** – dá se nastavit na úrovni prostředku, a umožňuje tak uzamknout přístup ke konkrétním prostředkům, jako jsou transformace, kanály a další.

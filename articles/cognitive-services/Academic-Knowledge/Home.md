@@ -1,43 +1,44 @@
 ---
-title: Academic Knowledge API pro Microsoft Academic Graph | Microsoft Docs
-description: Academic Knowledge API pomůže interpretovat uživatelských dotazů a načítání informací o bohaté z Academic grafu v kognitivní služby společnosti Microsoft.
+title: Co je rozhraní Academic Knowledge API?
+titlesuffix: Azure Cognitive Services
+description: Pomocí rozhraní Academic Knowledge API můžete interpretovat dotazy uživatelů a načítat velké množství dat ze služby Academic Graph.
 services: cognitive-services
 author: mvorvoreanu
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: overview
 ms.date: 03/27/2017
 ms.author: mivorvor
-ms.openlocfilehash: e241f9a87cd58b62eafd754bd3cb4283aa0a1e92
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: d08cd7124b232e50365e72753eba97c6309f401c
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342685"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901206"
 ---
 # <a name="academic-knowledge-api"></a>Rozhraní Academic Knowledge API
 
-Vítá vás Academic Knowledge API. Pomocí této služby můžete interpretovat dotazy uživatelů z akademického pohledu a načítat bohaté informace ze služby Microsoft Academic Graph (MAG). Znalostní báze MAG je graf heterogenní entity webové škálování skládá z entity, které provádějí vědeckou aktivity modelu: pole studii, autora, instituce, papíru, místo a události. 
+Vítáme vás u rozhraní Academic Knowledge API. Pomocí této služby můžete interpretovat dotazy uživatelů z akademického pohledu a načítat velké množství dat ze služby Microsoft Academic Graph (MAG). Znalostní báze MAG je webový graf heterogenních entit, který se skládá z entit, které modelují odborné aktivity: studijní obor, autor, instituce, dokument, místo a událost. 
 
-MAG data je zaminovaná z indexu webové služby Bing, jakož i interní báze knowledge base ze služby Bing. V důsledku probíhající Bing indexování, bude toto rozhraní API obsahovat čerstvé informace z webu následující vyhledávání a indexování podle Bing. Na základě pro tuto datovou sadu, Academic Knowledge API umožňuje řízené znalostní báze, interaktivní dialog, který bezproblémově kombinuje reaktivní vyhledávání s proaktivní návrhu prostředí, výsledky hledání grafu bohaté research dokumentu a distribuce histogram hodnoty atributů pro sadu dokumenty Paper a související entity.
+Data MAG se dolují z indexu webu Bingu a také z interní znalostní báze z Bingu. V důsledku probíhajícího indexování Bingu bude toto rozhraní API obsahovat čerstvé informace z webu v souladu se zjišťováním a indexováním pomocí Bingu. Na základě této datové sady rozhraní Academic Knowledge API umožňuje znalostmi řízené interaktivní dialogové okno, které bezproblémově kombinuje reaktivní vyhledávání s proaktivními návrhy prostředí, bohatými výsledky vyhledávání v grafech výzkumných dokumentů a distribuci histogramů z hodnot atributů pro sadu dokladů a souvisejících entit.
 
-Další informace o Microsoft Academic Graph najdete v tématu [ http://aka.ms/academicgraph ](http://aka.ms/academicgraph).
+Další informace o Microsoft Academic Graph naleznete na adrese [ http://aka.ms/academicgraph ](http://aka.ms/academicgraph).
 
-Academic Knowledge API přesunula z kognitivní verze Preview služby k testovacímu prostředí kognitivní služby. Nové domovské stránky projektu je: [ https://labs.cognitive.microsoft.com/en-us/project-academic-knowledge ](https://labs.cognitive.microsoft.com/en-us/project-academic-knowledge). Existující klíč rozhraní API bude pokračovat v práci až 24th může 2018. Po tomto datu vygenerujte nový klíč rozhraní API. Upozorňujeme, že placené preview už bude k dispozici po vypršení platnosti existujícího klíče. Pokud úroveň free rozhraní API není dostatečná pro vaše záměry, obraťte se na náš tým. 
+Rozhraní Academic Knowledge API se přesunulo z Cognitive Services ve verzi Preview do Cognitive Services Labs. Nová domovská stránka projektu je: [https://labs.cognitive.microsoft.com/en-us/project-academic-knowledge](https://labs.cognitive.microsoft.com/en-us/project-academic-knowledge). Existující klíč rozhraní API bude funkční až do 24. května 2018. Po tomto datu si vygenerujte nový klíč rozhraní API. Upozorňujeme, že placená verze Preview nebude po vypršení platnosti existujícího klíče k dispozici. Pokud rozhraní API na úrovni Free není pro vaše účely dostatečné, obraťte se na náš tým. 
 
 ## <a name="features"></a>Funkce
-Academic Knowledge API se skládá ze čtyř související koncové body REST:  
-  1. **interpretace** – interpretuje řetězec dotazu přirozeného jazyka uživatele. Vrátí anotované interpretace, které ve vyhledávacím poli zajistí bohaté možnosti automatického dokončování a předvídají, jaký text uživatel zadává.  
-  2. **vyhodnocení** – vyhodnotí výraz dotazu a vrátí výsledky Academic Knowledge entity.  
-  3. **calchistogram** – vypočítá histogram rozdělení hodnoty atributu pro academic entity vrácené výrazu dotazu, jako je například distribuce citace podle roku pro danou autora.  
-  4. **Graf vyhledávání** – hledá daným grafem vzor a vrátí výsledky odpovídající entity.
+Rozhraní Academic Knowledge API se skládá ze čtyř souvisejících koncových bodů REST:  
+  1. **interpretace** – interpretuje řetězec dotazu v přirozeném jazyku uživatele. Vrátí anotované interpretace, které ve vyhledávacím poli zajistí bohaté možnosti automatického dokončování a předvídají, jaký text uživatel zadává.  
+  2. **vyhodnocení**  –vyhodnotí výraz dotazu a vrátí výsledky entit Academic Knowledge.  
+  3. **výpočet histogramu** – vypočte histogram distribuce hodnot atributů pro akademické entity, které vrátil výraz dotazu, jako je třeba distribuce citací konkrétního autora v jednotlivých letech.  
+  4. **hledání grafu** – hledá zadaný vzor grafu a vrátí odpovídající výsledky entit.
 
-Tyto metody rozhraní API se použijí společně, umožňují vytvořit prostředí bohaté sémantického vyhledávání. Zadaný řetězec dotazu uživatele **interpretovat** metoda vám poskytne poznámkou verzi dotaz a výraz strukturovaných dotazů při dokončování volitelně uživatele dotaz založený na sémantika základní academic data. Například, pokud uživatel zadá řetězec *latentní s*, **interpretovat** metoda může poskytnout sadu seřazený interpretace, které naznačují, že uživatel může být hledání pole studie  *latentní sémantického analysis*, papír *latentní struktura analysis*, nebo jiné entity výrazy počínaje *latentní s*. Tyto informace lze rychle Průvodce uživatele požadovaných výsledků hledání.
+Při společném použití tyto metody rozhraní API umožňují vytvářet výkonné sémantické vyhledávání. S ohledem na řetězec dotazu uživatele metoda **interpretace** poskytne anotovanou verzi dotazu a strukturovaný výraz dotazu, zatímco volitelně dokončí dotaz uživatele podle sémantiky základních akademických dat. Pokud uživatel zadá například řetězec *latentní s*, může metoda **interpretace** poskytnout sadu zařazených interpretací a navrhnout, že uživatel hledá studijní obor *latentní sémantická analýza*, dokument *latentní struktura a její analýza* nebo jiné výrazy entity začínající textem *latent s*. Tyto informace můžete použít k rychlému přivedení uživatele k požadovaným výsledkům hledání.
 
-**Vyhodnotit** metoda slouží k načtení sady odpovídající entity dokumentu ze znalostní báze academic a **calchistogram** metoda slouží k výpočtu distribuci hodnot atributů pro sadu entit dokumentu, které se dají použít pro další filtrování výsledků hledání.        
+Metodu **vyhodnocení** můžete použít k načtení sady odpovídajících dokumentů entity ze znalostní báze Academic Knowledge a metodu **výpočtu histogramu** můžete použít k výpočtu distribuce hodnot atributů pro sadu dokumentů entity, které můžete použít k dalšímu filtrování výsledků hledání.        
 
-**Grafu vyhledávání** metoda obsahuje dva režimy: *json* a *lambda*. *Json* režim můžete provádět grafu pro porovnávání podle grafu schémat, zadat objekt JSON. *Lambda* režim můžete provádět výpočty serverové během traversals grafu podle výrazy lambda zadaného uživatelem.
+Metoda **hledání grafu** má dva režimy: *json* a *lambda*. Režim *Json* může provádět porovnávání vzoru grafu se vzory grafů určenými objektem JSON. Režim *Lambda* může během procházení grafu provádět výpočty na straně serveru podle uživatelem zadaných výrazů lambda.
 
 ## <a name="getting-started"></a>Začínáme 
-Najdete v další části v levém pro podrobnou dokumentaci.  Všimněte si, že ke zlepšení čitelnosti příkladů, volání rozhraní REST API obsahovat znaky (například prostory), které nebyly kódovaná adresou URL.  Váš kód bude nutné použít příslušné adresy URL kódování.
+Podrobnou dokumentaci najdete v podtématech na levé straně.  Všimněte si, že ke zlepšení čitelnosti příkladů obsahuje volání rozhraní REST API znaky (například mezery), které nebyly zakódovány do adresy URL.  Váš kód bude muset použít odpovídající kódování adresy URL.

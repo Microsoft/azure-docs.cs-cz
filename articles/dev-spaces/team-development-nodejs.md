@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 manager: douge
-ms.openlocfilehash: b4c355c864f83bcd76c310fecb0f26dd3372e760
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 215807798e6ae15f11302fa647e21238bdfb7751
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162746"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434260"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Týmový vývoj se službou Azure Dev Spaces
 
@@ -62,6 +62,7 @@ Teď napíšeme kód v projektu `webfrontend`, který vygeneruje požadavek do `
        });
     });
     ```
+ 4. *Odeberte* `server.close()` řádek na konci `server.js`
 
 Předchozí příklad kódu předává hlavičku `azds-route-as` z příchozího požadavku do odchozího požadavku. Později si ukážeme, jak to týmům pomáhá při společném vývoji.
 
@@ -76,7 +77,7 @@ Hotovo! Teď máte aplikaci s více kontejnery, kde můžete každý kontejner v
 
 ## <a name="learn-about-team-development"></a>Informace o týmovém vývoji
 
-[!INCLUDE [](includes/team-development-1.md)]
+[!INCLUDE [](../../includes/team-development-1.md)]
 
 Podívejte se, jak to funguje:
 1. Přejděte do okna editoru VS Code s projektem `mywebapi` a upravte kód výchozí obslužné rutiny GET `/` například takto:
@@ -87,11 +88,28 @@ Podívejte se, jak to funguje:
     });
     ```
 
-[!INCLUDE [](includes/team-development-2.md)]
+[!INCLUDE [](../../includes/team-development-2.md)]
 
-[!INCLUDE [](includes/well-done.md)]
+### <a name="well-done"></a>Hotovo!
+Dokončili jste úvodní příručku! Naučili jste se tyto postupy:
 
-[!INCLUDE [](includes/clean-up.md)]
+> [!div class="checklist"]
+> * Nastavit Azure Dev Spaces se spravovaným clusterem Kubernetes v Azure
+> * Iterativně vyvíjet kód v kontejnerech
+> * Vyvíjet nezávisle dvě samostatné služby a pomocí zjišťování služby DNS v Kubernetes volat jinou službu
+> * Produktivně vyvíjet a testovat kód v týmovém prostředí
+
+Teď když jste prozkoumali Azure Dev Spaces, [podělte se o svůj vývojářský prostor se členy týmu](how-to/share-dev-spaces.md) a ukažte jim, jak snadná je vzájemná spolupráce.
+
+## <a name="clean-up"></a>Vyčištění
+Pokud chcete z clusteru úplně odstranit instanci Azure Dev Spaces včetně všech vývojových prostorů a služeb v nich spuštěných, použijte příkaz `az aks remove-dev-spaces`. Mějte na paměti, že tato akce je nevratná. Do clusteru můžete znovu přidat podporu Azure Dev Spaces, ale bude to, jako byste začínali znovu. Vaše staré služby a prostory se neobnoví.
+
+Následující příklad vypíše kontrolery Azure Dev Spaces v aktivním předplatném a pak odstraní kontroler Azure Dev Spaces přidružený ke clusteru AKS myaks ve skupině prostředků myaks-rg.
+
+```cmd
+    azds controller list
+    az aks remove-dev-spaces --name myaks --resource-group myaks-rg
+```
 
 
 

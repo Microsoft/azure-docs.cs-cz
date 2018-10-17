@@ -8,15 +8,15 @@ manager: jeconnoc
 ms.assetid: 60495cc5-1638-4bf0-8174-52786d227734
 ms.service: azure-functions
 ms.topic: tutorial
-ms.date: 12/12/2017
+ms.date: 09/24/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 23db8d307892b100f291a1f32c9b77c73a60f23e
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 0b2e0ff800ab80a2c638293ce23fc1911390f2dd
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44090758"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221108"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Vytvoření funkce, která se integruje s Azure Logic Apps
 
@@ -84,6 +84,8 @@ Funkce poskytují skvělý způsob snižování zátěže úloh zpracování v p
 
     ![Volba triggeru HTTP](./media/functions-twitter-email/select-http-trigger-portal.png)
 
+    Všechny následující funkce přidané do funkční aplikace používají šablony jazyka C#.
+
 3. Zadejte **Název** funkce, jako **[Úroveň ověřování](functions-bindings-http-webhook.md#http-auth)** zvolte `Function` a pak vyberte **Vytvořit**. 
 
     ![Vytvoření funkce aktivované protokolem HTTP](./media/functions-twitter-email/select-http-trigger-portal-2.png)
@@ -93,28 +95,35 @@ Funkce poskytují skvělý způsob snižování zátěže úloh zpracování v p
 4. Nahraďte obsah souboru `run.csx` následujícím kódem a klikněte na **Uložit**:
 
     ```csharp
-    using System.Net;
+    #r "Newtonsoft.Json"
     
-    public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
+    using System;
+    using System.Net;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Primitives;
+    using Newtonsoft.Json;
+    
+    public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
     {
-        // The sentiment category defaults to 'GREEN'. 
         string category = "GREEN";
     
-        // Get the sentiment score from the request body.
-        double score = await req.Content.ReadAsAsync<double>();
-        log.Info(string.Format("The sentiment score received is '{0}'.",
-                    score.ToString()));
+        string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+        log.LogInformation(string.Format("The sentiment score received is '{0}'.", requestBody));
     
-        // Set the category based on the sentiment score.
-        if (score < .3)
+        double score = Convert.ToDouble(requestBody);
+    
+        if(score < .3)
         {
             category = "RED";
         }
-        else if (score < .6)
+        else if (score < .6) 
         {
             category = "YELLOW";
         }
-        return req.CreateResponse(HttpStatusCode.OK, category);
+    
+        return requestBody != null
+            ? (ActionResult)new OkObjectResult(category)
+            : new BadRequestObjectResult("Please pass a value on the query string or in the request body");
     }
     ```
     Tento kód funkce vrátí barevnou kategorii na základě skóre mínění přijatého v požadavku. 
