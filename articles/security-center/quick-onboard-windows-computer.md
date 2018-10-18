@@ -3,7 +3,7 @@ title: Rychlý start Azure Security Center – Připojení počítačů s Window
 description: V tomto rychlém startu se dozvíte, jak zřídit agenta Microsoft Monitoring Agent na počítači s Windows.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2018
-ms.author: terrylan
-ms.openlocfilehash: b872153278810ce92f19c7c71fe473a2b77def35
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.date: 09/2/2018
+ms.author: rkarlin
+ms.openlocfilehash: 55bb7242427bf85d10fac0a44e2b2eac3a5181ad
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38702653"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022996"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Rychlý start: Připojení počítačů s Windows ke službě Azure Security Center
 Po připojení předplatných Azure můžete zřízením agenta Microsoft Monitoring Agent povolit službu Security Center pro prostředky spuštěné mimo Azure, například v místním prostředí nebo jiných cloudech.
@@ -39,14 +39,14 @@ Než začnete s tímto rychlým startem, musíte mít službu Security Center na
 
  ![Přehled služby Security Center][2]
 
-3. V hlavní nabídce služby Security Center vyberte **Připojení k rozšířenému zabezpečení**.
-4. Vyberte možnost **Chcete přidat počítače umístěné mimo Azure**.
+3. V hlavní nabídce služby Security Center vyberte **Začínáme**.
+4. Vyberte kartu **Začínáme**.
 
-   ![Připojení k rozšířenému zabezpečení][3]
+   ![Začínáme][3]
 
-5. V části **Přidat počítače umístěné mimo Azure** se zobrazí seznam vašich pracovních prostorů Log Analytics. Seznam obsahuje i výchozí pracovní prostor, který pro vás vytvořila služba Security Center při povolení automatického zřizování, pokud existuje. Vyberte tento pracovní prostor nebo jiný pracovní prostor, který chcete použít.
+5. V části **Přidat počítače umístěné mimo Azure** klikněte na **Konfigurovat**. Zobrazí se seznam vašich pracovních prostorů Log Analytics. Seznam obsahuje i výchozí pracovní prostor, který pro vás vytvořila služba Security Center při povolení automatického zřizování, pokud existuje. Vyberte tento nebo jiný pracovní prostor, který chcete použít.
 
-    ![Přidání počítače umístěného mimo Azure][4]
+    ![Přidání počítače umístěného mimo Azure](./media/quick-onboard-windows-computer/non-azure.png)
 
   Otevře se okno **Přímý agent** s odkazem na stažení agenta pro Windows a klíči pro ID vašeho pracovního prostoru, které použijete při konfiguraci agenta.
 
@@ -104,7 +104,7 @@ V tomto rychlém startu jste zřídili agenta Microsoft Monitoring Agent na poč
 
 <!--Image references-->
 [2]: ./media/quick-onboard-windows-computer/overview.png
-[3]: ./media/quick-onboard-windows-computer/onboard-windows-computer.png
+[3]: ./media/quick-onboard-windows-computer/get-started.png
 [4]: ./media/quick-onboard-windows-computer/add-computer.png
 [5]: ./media/quick-onboard-windows-computer/log-analytics-mma-setup-laworkspace.png
 [6]: ./media/quick-onboard-windows-computer/compute.png

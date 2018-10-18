@@ -2,24 +2,18 @@
 title: Kopírování dat do Microsoft Azure Data Boxu | Microsoft Docs
 description: Zjistěte, jak zkopírovat data do Azure Data Boxu.
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: pod
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/10/2018
 ms.author: alkohli
-ms.openlocfilehash: d606b7b536147b7e1d96bfb6cebf2522e5b4f85f
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: b59830677ac8c07c6b7adbab24c82ca25d71f5a0
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078846"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093455"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box"></a>Kurz: Kopírování dat do Azure Data Boxu 
 

@@ -9,12 +9,12 @@ ms.component: qna-maker
 ms.topic: quickstart
 ms.date: 09/12/2018
 ms.author: diberry
-ms.openlocfilehash: 85b4630492d5f5b3fb71d563b0947d8a72ae4e1d
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 99f9259c9fa73a9ba4842b2684cde8a44f73145a
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886528"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389662"
 ---
 # <a name="quickstart-create-train-and-publish-your-knowledge-base"></a>Rychlý start: Vytvoření, trénování a publikování znalostní báze
 
@@ -41,7 +41,7 @@ Znalostní bázi služby QnA Maker můžete vytvořit s použitím vlastního ob
 
 5. V kroku 3 pojmenujte znalostní bázi **My Sample QnA KB**.
 
-6. Při přidávání obsahu do znalostní báze máte na výběr ze tří typů zdrojů dat. V kroku 4 v části **Populate your KB** (Naplnění znalostní báze) do pole **URL** přidejte adresu URL s [nejčastějšími dotazy k obnovení nástroje BitLocker](https://docs.microsoft.com/en-us/windows/security/information-protection/bitlocker/bitlocker-overview-and-requirements-faq).
+6. Při přidávání obsahu do znalostní báze máte na výběr ze tří typů zdrojů dat. V kroku 4 v části **Populate your KB** (Naplnění znalostní báze) do pole **URL** přidejte adresu URL s [nejčastějšími dotazy k obnovení nástroje BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview-and-requirements-faq).
 
    ![Výběr služby otázek a odpovědí pro znalostní bázi](../media/qnamaker-quickstart-kb/add-datasources.png)
 

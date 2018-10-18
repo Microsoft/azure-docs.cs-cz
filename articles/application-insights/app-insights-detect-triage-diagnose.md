@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.custom: mvc
 ms.topic: overview
-ms.date: 06/26/2017
+ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: b83d08b9dac4fccc033ad4537afd343a6fbe02c2
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 799593758bf24924d91d38bd6a626b945247183b
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2017
-ms.locfileid: "23947316"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050234"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Přehled Application Insights pro DevOps
 
@@ -50,7 +50,7 @@ Zaměřme se na část cyklu se zpětnou vazbou:
 ## <a name="detect-poor-availability"></a>Zjišťování špatné dostupnosti
 Marcela Markova je vedoucí vývojář v týmu OBS a vede monitorování online výkonu. Nastaví několik [testů dostupnosti](app-insights-monitor-web-app-availability.md):
 
-* Test jediné adresy URL hlavní cílové stránky aplikace – http://fabrikambank.com/onlinebanking/. Marcela nastaví kritéria na kód HTTP 200 a text „Welcome!“. Pokud tento test selže, existuje nějaký závažný problém se sítí nebo servery, případně se může jednat o problém s nasazením. (Nebo někdo na stránce změnil zprávu Welcome!, aniž by ji o tom informoval.)
+* Test jediné adresy URL hlavní vstupní stránky aplikace http://fabrikambank.com/onlinebanking/. Marcela nastaví kritéria na kód HTTP 200 a text „Welcome!“. Pokud tento test selže, existuje nějaký závažný problém se sítí nebo servery, případně se může jednat o problém s nasazením. (Nebo někdo na stránce změnil zprávu Welcome!, aniž by ji o tom informoval.)
 * Hlubší test s více kroky, který se přihlásí, získá výpis aktuálního účtu a na každé stránce zkontroluje několik klíčových podrobností. Tento test ověřuje fungování odkazu na databázi účtů. Marcela používá fiktivní ID zákazníka – několik se jich udržuje pro účely testování.
 
 Díky těmto nastaveným testům si Marcela může být jistá, že se tým rychle dozví o jakémkoli výpadku.  
@@ -64,7 +64,7 @@ Ale co je důležitější, upozornění na jakékoli selhání se odešle e-mai
 ## <a name="monitor-performance"></a>Monitorování výkonu
 Na stránce Přehled v Application Insights je graf zobrazující různé [klíčové metriky](app-insights-web-monitor-performance.md).
 
-![Různé metriky](./media/app-insights-detect-triage-diagnose/05-perfMetrics.png)
+![Snímek obrazovky s přehledem grafů vývoje klíčových ukazatelů výkonu](./media/app-insights-detect-triage-diagnose/overview-graphs.png)
 
 Čas načtení stránky v prohlížeči se odvozuje z telemetrických dat odesílaných přímo z webových stránek. Dobra odezvy serveru, počet požadavků serveru a počet neúspěšných požadavků se měří na webovém serveru a odtud se odesílají do Application Insights.
 
@@ -72,7 +72,7 @@ Marcela je mírně znepokojená grafem odezvy serveru. Tento graf ukazuje prům�
 
 Marcela otevře grafy serverů:
 
-![Různé metriky](./media/app-insights-detect-triage-diagnose/06.png)
+![Různé metriky](./media/app-insights-detect-triage-diagnose/002-servers.png)
 
 Tady se nezdá, že by něco naznačovalo omezení prostředků, takže možná jsou hrboly v grafech odezvy serveru pouze náhodné.
 
@@ -154,7 +154,7 @@ Výjimky a události se zobrazují v okně [Diagnostické vyhledávání](app-in
 ## <a name="monitor-proactively"></a>Proaktivní monitorování
 Marcela jen tak nesedí a nečeká na upozornění. Krátce po každém nasazení si prohlédne [dobu odezvy](app-insights-web-monitor-performance.md), a to jak celkové číslo a tabulku nejpomalejších požadavků, tak i počty výjimek.  
 
-![Graf doby odezvy a mřížka doby odezvy serveru](./media/app-insights-detect-triage-diagnose/09-dependencies.png)
+![Graf doby odezvy a mřížka doby odezvy serveru](./media/app-insights-detect-triage-diagnose/response-time.png)
 
 Marcela může posoudit vliv každého nasazení na výkon, obvykle porovnáním s předchozím týdnem. Pokud dojde k náhlému zhoršení, upozorní na to příslušné vývojáře.
 
@@ -168,8 +168,6 @@ Naopak výrazný a stabilní růst v grafu počtu výjimek nebo doby odezvy je s
 Užitečnou taktikou určení priorit podle dostupnosti zdrojů je: zkuste si to sami. Pokud narazíte na stejný problém, víte, že je skutečný.
 
 Jak velká část uživatelů je ovlivněná? Přibližnou odpověď získáte, když vydělíte míru selhání počtem relací.
-
-![Grafy neúspěšných požadavků a relací](./media/app-insights-detect-triage-diagnose/10-failureRate.png)
 
 Pokud existují pomalé odezvy, porovnejte na každé stránce tabulku požadavků s nejpomalejší odezvou s frekvencí použití.
 
@@ -203,7 +201,6 @@ Vývojový tým banky Fabrikam přistupuje k měření výkonu strukturovaněji 
 * Nastavují cíle výkonu z hlediska konkrétních měřítek na stránce Přehled služby Application Insights.
 * Od samého začátku zahrnují do návrhu aplikace i měřítka výkonu, například metriky měřící postup uživatelů trychtýři.  
 
-
 ## <a name="monitor-user-activity"></a>Monitorování aktivity uživatelů
 Když je doba odezvy konzistentně dobrá a s malým množstvím výjimek, může se vývojový tým přesunout k použitelnosti. Můžou se zamyslet nad tím, jak vylepšit uživatelské prostředí a jak umožnit více uživatelům dosáhnout požadovaných cílů.
 
@@ -211,7 +208,7 @@ Application Insights je také možné použít ke zjištění, co uživatelé s 
 
 Například cesta typického uživatele webem má jasnou podobu trychtýře. Mnoho zákazníků si prohlédne sazby různých typů půjček. Méně jich vyplní poptávkový formulář. Z těch, kteří získají nabídku, si jich jenom pár vezme půjčku.
 
-![Počty zobrazení stránek](./media/app-insights-detect-triage-diagnose/12-funnel.png)
+![Počty zobrazení stránek](./media/app-insights-detect-triage-diagnose/funnel.png)
 
 Na základě informací o tom, kde předčasně odchází největší počet zákazníků, můžou podniky vypracovat plán, aby trychtýřem propadlo více uživatelů. V některých případech může být chyba v uživatelském rozhraní (UX) – například je obtížné najít tlačítko Další nebo jsou nejasné pokyny. Pro předčasný odchod však pravděpodobně existují významnější obchodní důvody – možná jsou úrokové sazby příliš vysoké.
 

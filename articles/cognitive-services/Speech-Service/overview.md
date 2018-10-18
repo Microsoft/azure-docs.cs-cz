@@ -3,18 +3,18 @@ title: Co je služba Speech?
 description: 'Služba Speech, která je součástí služeb Microsoft Cognitive Services, sjednocuje několik hlasových služeb Azure, které byly dříve k dispozici samostatně: Zpracování řeči Bingu (skládající se z rozpoznávání řeči a převodu textu na řeč), Custom Speech a Překlad řeči.'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: v-jerkin
+author: erhopf
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: overview
 ms.date: 09/24/2018
-ms.author: v-jerkin
-ms.openlocfilehash: b014144dd819aa354596175068bfb2c5905a4377
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.author: erhopf
+ms.openlocfilehash: 7a61d85d96b993d49a536c38c2907a3d6ef55e65
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857988"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365454"
 ---
 # <a name="what-is-the-speech-service"></a>Co je služba Speech?
 
@@ -29,11 +29,10 @@ Hlavními funkcemi služby Speech jsou převod řeči na text (označuje se tak�
 
 |Funkce|Funkce|
 |-|-|
-|[Převod řeči na text](speech-to-text.md)| <ul><li>Přepisuje plynulou řeč v reálném čase do textové podoby.<li>Dokáže dávkově přepisovat řeč ze zvukových nahrávek. <li>Podporuje okamžité výsledky, detekci konce řeči, automatické formátování textu a maskování vulgarismů. <li>Může volat službu [Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS), která z přepsané řeči odvodí záměr uživatele.\*|
-|[Převod textu na řeč](text-to-speech.md)| <ul><li>Převádí text do přirozeně znějící řeči. <li>Nabízí několik pohlaví a dialektů pro celou řadu podporovaných jazyků. <li>Podporuje vstup v podobě prostého textu nebo jazyk SSML (Speech Synthesis Markup Language). |
-|[Překlad řeči](speech-translation.md)| <ul><li>Téměř v reálném čase překládá streamovaný zvuk.<li> Dokáže zpracovat také záznam řeči.<li>Poskytuje výsledky v podobě textu nebo syntetizované řeči. |
+|[Převod řeči na text](speech-to-text.md)| <li>Přepisuje plynulou řeč v reálném čase do textové podoby.<li>Dokáže dávkově přepisovat řeč ze zvukových nahrávek. <li>Podporuje okamžité výsledky, detekci konce řeči, automatické formátování textu a maskování vulgarismů. <li>Může volat službu [Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS), která z přepsané řeči odvodí záměr uživatele.\*|
+|[Převod textu na řeč](text-to-speech.md)| <li>Převádí text do přirozeně znějící řeči. <li>Nabízí několik pohlaví a dialektů pro celou řadu podporovaných jazyků. <li>Podporuje vstup v podobě prostého textu nebo jazyk SSML (Speech Synthesis Markup Language). |
+|[Překlad řeči](speech-translation.md)| <li>Téměř v reálném čase překládá streamovaný zvuk.<li> Dokáže zpracovat také záznam řeči.<li>Poskytuje výsledky v podobě textu nebo syntetizované řeči. |
 
-\* *K rozpoznávání záměru se vyžaduje předplatné LUIS.*
 
 ## <a name="customize-speech-features"></a>Přizpůsobení funkcí řeči
 
@@ -69,41 +68,6 @@ Pokud už máte kód využívající Zpracování řeči Bingu nebo Translator S
 
 Sada [Speech Devices SDK](speech-devices-sdk.md) je integrovaná hardwarová a softwarová platforma pro vývojáře zařízení s podporou hlasových služeb. Náš partner pro hardware poskytuje referenční návrhy a vývojové jednotky. Microsoft poskytuje sadu SDK optimalizovanou pro zařízení, která naplno využívá možnosti hardwaru.
 
-## <a name="why-move-to-the-speech-service"></a>Proč přejít na službu Speech?
-
-Služba Speech nabízí mimo jiné všechny funkce rozhraní API pro zpracování řeči Bingu a tří dalších hlasových služeb Azure: Custom Speech, Custom Voice a Translator Speech. Uživatelům těchto služeb doporučujeme migrovat na službu Speech.
-
-Služba Speech zahrnuje řadu upgradů těchto dalších služeb, včetně následujících:
-
-* Přesnější rozpoznávání řeči. Modely, které se ve službě používají, pravidelně vylepšujeme.
-
-* Větší škálovatelnost. Služba dokáže lépe zpracovat více souběžných žádostí a tím snižuje latenci.
-
-* Služba Speech používá cenový model založený na čase. Podrobnosti najdete na stránce s [cenami za službu Speech](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
-
-* Služba Speech je dostupná v [několika oblastech](regions.md) a splní tak požadavky zákazníků po celém světě. Pro každou oblast, kterou vaše aplikace využívá, potřebujete [předplatné Azure](https://docs.microsoft.com/azure/cognitive-services/welcome).
-
-* Jediný klíč předplatného služby Speech poskytuje přístup k následujícím funkcím. Každá z nich se měří zvlášť, takže se vám účtují pouze funkce, které využíváte.
-
-    * [Převod řeči na text](speech-to-text.md)
-    * [Vlastní převod řeči na text](https://cris.ai/CustomSpeech)
-    * [Převod textu na řeč](text-to-speech.md)
-    * [Vlastní hlasy pro převod textu na řeč](https://cris.ai/CustomVoice)
-    * [Překlad řeči](speech-translation.md) (nezahrnuje [Překlad textu](https://docs.microsoft.com/azure/cognitive-services/translator/translator-info-overview))
-
-* Funkce převodu řeči na text služby Speech se integruje se [službou Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS) a umožňuje tak rozpoznávání záměru mluvčího. Se službou Speech je možné použít také klíč koncového bodu služby LUIS. Podrobnosti najdete v [kurzu rozpoznávání záměru](how-to-recognize-intents-from-speech-csharp.md).
-
-* Převod řeči na text už nevyžaduje zadání režimu rozpoznávání.
-
-* Služba Speech podporuje 24kHz hlasy pro převod textu na řeč zajišťující lepší kvalitu zvuku. V době psaní tohoto článku existují dva takové hlasy (pouze v americké angličtině): `Jessa24kRUS` a `Guy24kRUS`.
-
-* [Dávkový přepis](batch-transcription.md) služby Speech umožňuje efektivní přepis velkých objemů záznamů řeči, například nahrávek z call centra, na text, aby se mohly snadno analyzovat a prohledávat.
-
-* Při používání sady Speech SDK neexistuje žádný časový limit streamování přepisu řeči na text.
-
-* Sada [Speech SDK](speech-sdk.md) poskytuje konzistentní rozhraní API pro službu Speech pro různé programovací jazyky a různá spouštěcí prostředí (včetně Windows 10, UPW a .NET Core) a tím usnadňuje vývoj zejména na několika platformách.
-
-* Služba Speech je kompatibilní s rozhraními REST API a protokolem WebSockets, které používají ostatní hlasové služby Azure, a díky tomu usnadňuje migraci stávajících klientských aplikací do služby Speech.
 
 ## <a name="speech-scenarios"></a>Scénáře pro službu Speech
 
@@ -123,8 +87,6 @@ Pokud je vaše aplikace určená pro veřejnost, můžete využít výchozí mod
 Pokud se vaše aplikace používá v určitém oboru, například v medicíně nebo IT, můžete vytvořit [jazykový model](how-to-customize-language-model.md). Pomocí tohoto modelu naučíte službu Speech speciální terminologii, která se v aplikaci používá.
 
 Pokud se vaše aplikace používá v hlučném prostředí, například v továrně, můžete vytvořit vlastní [akustický model](how-to-customize-acoustic-models.md). Tento model pomáhá službě Speech odlišit řeč od hluku.
-
-Začít můžete jednoduše. Stáhněte si sadu [Speech SDK](speech-sdk.md) a postupujte podle příslušného článku s [rychlým startem](quickstart-csharp-dotnet-windows.md).
 
 ### <a name="call-center-transcription"></a>Přepis nahrávek z call centra
 

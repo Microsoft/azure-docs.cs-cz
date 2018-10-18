@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 11/15/2017
 ms.author: alekseys
-ms.openlocfilehash: 2c86cbe2ac9a0611873aca35480af92304abe5b5
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: d9616f87e76231c3bb587c2018572b7526b471a5
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928682"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050336"
 ---
 # <a name="mongodb-api-support-for-mongodb-features-and-syntax"></a>Podpora rozhraní API MongoDB pro funkce a syntaxi MongoDB
 
@@ -310,7 +310,7 @@ cursor.sort() | ```cursor.sort({ "Elevation": -1 })``` | Dokumenty bez klíče �
 
 ## <a name="unique-indexes"></a>Jedinečné indexy
 
-Azure Cosmos DB standardně indexuje všechna pole v dokumentech, která jsou zapsaná do databáze. Jedinečné indexy zajišťují, aby určité pole nemělo duplicitní hodnoty v rámci všech dokumentů v kolekci, což se podobá zachování jedinečnosti u výchozího klíče „_id“. Ve službě Azure Cosmos DB teď můžete vyvářet vlastní indexy příkazem createIndex včetně omezení „unique“.
+Azure Cosmos DB standardně indexuje všechna pole v dokumentech, která jsou zapsaná do databáze. Jedinečné indexy zajišťují, aby určité pole nemělo duplicitní hodnoty v rámci všech dokumentů v kolekci. Je to podobné, jako když má být zachovaná jedinečnost výchozího klíče „_id“. Ve službě Azure Cosmos DB teď můžete vyvářet vlastní indexy příkazem createIndex včetně omezení „unique“.
 
 Jedinečné indexy jsou dostupné pro všechny účty rozhraní MongoDB API.
 
@@ -320,7 +320,7 @@ Azure Cosmos DB podporuje relativní hodnotu TTL (Time-To-Live) založenou na č
 
 ## <a name="user-and-role-management"></a>Správa uživatelů a rolí
 
-Azure Cosmos DB zatím nepodporuje uživatele a role. Azure Cosmos DB podporuje řízení přístupu na základě rolí (RBAC) a hesla/klíče pro čtení a zápis nebo jen pro čtení, které lze získat prostřednictvím [Azure Portalu](https://portal.azure.com) (stránka Připojovací řetězec).
+Azure Cosmos DB zatím nepodporuje uživatele a role. Azure Cosmos DB podporuje řízení přístupu na základě rolí (RBAC) a hesla/klíče pro čtení a zápis nebo jen pro čtení, které lze získat prostřednictvím portálu [Azure Portal](https://portal.azure.com) (stránka Připojovací řetězec).
 
 ## <a name="replication"></a>Replikace
 

@@ -3,7 +3,7 @@ title: Kurz pro Azure Security Center – Definování a vyhodnocení zásad zab
 description: Kurz pro Azure Security Center – Definování a vyhodnocení zásad zabezpečení
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/30/2018
-ms.author: terrylan
-ms.openlocfilehash: 15c69bce87ede96eb3a7bc0bada4e4f6a6669abb
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.date: 08/30/2018
+ms.author: rkarlin
+ms.openlocfilehash: fcd3c2a95cea0a838fc16149a0a74fad95ea3300
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358604"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44027057"
 ---
 # <a name="tutorial-define-and-assess-security-policies"></a>Kurz: Definování a vyhodnocení zásad zabezpečení
 Security Center pomáhá zajišťovat dodržování předpisů společnosti nebo soulad se zákonnými požadavky na zabezpečení pomocí zásad zabezpečení, které definují požadovanou konfiguraci úloh. Jakmile nadefinujete zásady pro vaše předplatná Azure a přizpůsobíte je typům úloh nebo míře citlivosti dat, Security Center vám může poskytnout doporučení k zabezpečení pro vaše výpočetní, aplikační, síťové, datové a úložné prostředky a prostředky identity a přístupu. V tomto kurzu se naučíte, jak:
@@ -42,8 +42,7 @@ Security Center automaticky vytváří výchozí zásady zabezpečení pro každ
 
   ![Zásady zabezpečení](./media/tutorial-security-policy/tutorial-security-policy-fig1.png)  
 
-3. V části **SOUČÁSTI ZÁSAD** vyberte **Zásady zabezpečení**.
-4. Pro každou konfiguraci zabezpečení, kterou chcete sledovat, vyberte **Zapnuto**. Security Center bude nepřetržitě vyhodnocovat konfiguraci vašeho prostředí a pokud nalezne nějakou zranitelnost, vygeneruje doporučení k zabezpečení. Pokud konfiguraci zabezpečení nepovažujete za důležitou, vyberte **Vypnuto**. Například v prostředí pro vývoj/testování nemusíte vyžadovat stejnou úroveň zabezpečení jako v provozním prostředí. Po výběru zásad pro vaše prostředí klikněte na **Uložit**.
+3. V části **Výpočty a aplikace**, **Síť** a **Data** nastavte každou bezpečnostní konfiguraci, kterou chcete monitorovat, na **Zapnuto**. Security Center bude nepřetržitě vyhodnocovat konfiguraci vašeho prostředí a pokud nalezne nějakou zranitelnost, vygeneruje doporučení k zabezpečení. Pokud konfiguraci zabezpečení nepovažujete za důležitou, vyberte **Vypnuto**. Například v prostředí pro vývoj/testování nemusíte vyžadovat stejnou úroveň zabezpečení jako v provozním prostředí. Po výběru zásad pro vaše prostředí klikněte na **Uložit**.
 
   ![Konfigurace zabezpečení](./media/tutorial-security-policy/tutorial-security-policy-fig6.png)  
 

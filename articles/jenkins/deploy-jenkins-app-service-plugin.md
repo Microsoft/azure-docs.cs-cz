@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: a6ad40f90e12bbf4dd85c3cbd22839d39a734ca1
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 5f76d18662105df6d278e09e047baa13773ab4ac
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391161"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319349"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Nasazení do Azure App Service s využitím modulu plug-in Jenkinse 
 
@@ -36,8 +36,10 @@ Pokud ještě nemáte hlavní server Jenkinse, začněte [šablonou řešení](i
 * [Azure App Service](https://plugins.jenkins.io/azure-app-service) verze 0.1
 
 Pomocí modulu plug-in Jenkinse můžete nasadit webovou aplikaci v jakémkoli jazyce, který podporuje funkce Web Apps, jako je například jazyk C#, PHP, Java a Node.js. V tomto kurzu použijeme [jednoduchou webovou aplikaci v Javě pro Azure](https://github.com/azure-devops/javawebappsample). Pokud chcete vytvořit fork úložiště do svého vlastního účtu GitHub, vyberte tlačítko **Fork** (Vytvořit fork) v pravém horním rohu rozhraní GitHubu.  
+
 > [!NOTE]
 > K sestavení projektu v Javě se vyžaduje sada Java JDK a Maven. Nainstalujte tyto komponenty na hlavní server Jenkinse nebo do agenta virtuálního počítače, pokud pro účely průběžné integrace využíváte agenta. Pokud nasazujete aplikaci Java SE, je na sestavovacím serveru potřebný také ZIP.
+>
 
 Pokud chcete tyto komponenty nainstalovat, přihlaste se přes SSH k instanci Jenkinse a spusťte následující příkazy:
 
@@ -48,7 +50,7 @@ sudo apt-get install -y maven
 
 Pokud chcete provést nasazení do funkce Web App for Containers, na hlavní server Jenkinse nebo do agenta virtuálního počítače, který se používá k sestavení, nainstalujte Docker. Pokyny najdete v tématu [Instalace Dockeru v Ubuntu](https://docs.docker.com/engine/installation/linux/ubuntu/).
 
-##<a name="service-principal"></a>Přidání instančního objektu Azure do přihlašovacích údajů Jenkinse
+## <a name="service-principal"></a>Přidání instančního objektu Azure do přihlašovacích údajů Jenkinse
 
 K nasazení do Azure budete potřebovat instanční objekt Azure. 
 

@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: quickstart
 ms.date: 09/12/2018
 ms.author: diberry
-ms.openlocfilehash: b34574ed7d94873a9a01222c944e1b4033848f91
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 1628daa0ffef4c1fd9d8717abbdbdf7d0bbb65fd
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887502"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390121"
 ---
 # <a name="quickstart-for-microsoft-qna-maker-api-with-go"></a>Rychlý start pro rozhraní API služby Microsoft QnA Maker s využitím Go 
 <a name="HOLTop"></a>
@@ -28,9 +28,9 @@ V tomto článku se dozvíte, jak pomocí [rozhraní API služby Microsoft QnA M
 - [Publikování existující znalostní báze](#Publish)
 - [Nahrazení obsahu existující znalostní báze](#Replace)
 - [Stažení obsahu znalostní báze](#GetQnA)
-- [Získání odpovědí na otázku s využitím znalostní báze](#GetAnswers)
+- [Získání odpovědí na otázku pomocí znalostní báze](#GetAnswers)
 - [Získání informací o znalostní bázi](#GetKB)
-- [Získání informací o všech znalostních bázích patřících zadanému uživateli](#GetKBsByUser)
+- [Získání informací o všech znalostních bázích patřících určitému uživateli](#GetKBsByUser)
 - [Odstranění znalostní báze](#Delete)
 - [Získání klíčů aktuálního koncového bodu](#GetKeys)
 - [Opětovné vygenerování klíčů aktuálního koncového bodu](#PutKeys)
@@ -141,8 +141,8 @@ var req string = `{
     }
   ],
   "urls": [
-    "https://docs.microsoft.com/en-in/azure/cognitive-services/qnamaker/faqs",
-    "https://docs.microsoft.com/en-us/bot-framework/resources-bot-framework-faq"
+    "https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs",
+    "https://docs.microsoft.com/bot-framework/resources-bot-framework-faq"
   ],
   "files": []
 }`;
@@ -188,7 +188,7 @@ func main() {
 }
 ```
 
-**Odpověď na vytvoření znalostní báze**
+**Vytvoření odpovědi znalostní báze**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -317,7 +317,7 @@ var req string = `{
       }
     ],
     'urls': [
-      'https://docs.microsoft.com/en-us/azure/cognitive-services/Emotion/FAQ'
+      'https://docs.microsoft.com/azure/cognitive-services/Emotion/FAQ'
     ]
   },
   'update' : {
@@ -499,7 +499,7 @@ func main() {
 
 ## <a name="replace-knowledge-base"></a>Nahrazení znalostní báze
 
-Následující kód nahradí obsah zadané znalostní báze pomocí metody [Replace](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_publish).
+Následující kód nahrazuje obsah zadané znalostní báze pomocí metody [Replace](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_publish).
 
 1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt Go.
 2. Přidejte níže uvedený kód.
@@ -699,7 +699,7 @@ func main() {
     {
       "id": 2,
       "answer": "QnA Maker provides an FAQ data source that you can query from your bot or application. Although developers will find this useful, content owners will especially benefit from this tool. QnA Maker is a completely no-code way of managing the content that powers your bot or application.",
-      "source": "https://docs.microsoft.com/en-in/azure/cognitive-services/qnamaker/faqs",
+      "source": "https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs",
       "questions": [
         "Who is the target audience for the QnA Maker tool?"
       ],
@@ -716,13 +716,13 @@ func main() {
 
 ## <a name="get-answers-to-a-question-by-using-a-knowledge-base"></a>Získání odpovědí na otázku s využitím znalostní báze
 
-Následující kód získá odpovědi na otázku s využitím zadané znalostní báze pomocí metody **Generate answers**.
+Následující kód získá odpovědi na otázku pomocí zadané znalostní báze a pomocí metody **Generate answers**.
 
 1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt Go.
 1. Přidejte níže uvedený kód.
 1. Hodnotu `host` nahraďte názvem webu pro vaše předplatné služby QnA Maker. Další informace najdete v tématu [Vytvoření služby QnA Maker](../How-To/set-up-qnamaker-service-azure.md).
 1. Hodnotu `endpoint_key` nahraďte platným klíčem koncového bodu pro vaše předplatné. Všimněte si, že tento klíč není stejný jako klíč vašeho předplatného. Klíče koncového bodu můžete získat pomocí metody [Get endpoint keys](#GetKeys).
-1. Hodnotu `kb` nahraďte za ID znalostní báze, do které chcete odeslat dotaz na odpovědi. Mějte na paměti, že tato znalostní báze již musí být publikovaná pomocí metody [Publish](#Publish).
+1. Hodnotu `kb` nahraďte pomocí ID znalostní báze, ve které se chcete dotazovat na odpovědi. Upozorňujeme, že tato znalostní báze už musí být publikovaná pomocí metody [Publish](#Publish).
 1. Spusťte program.
 
 ```go
@@ -789,7 +789,7 @@ func main() {
 }
 ```
 
-**Odpověď na získání odpovědí**
+**Odpověď na získání odpovědi**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -803,7 +803,7 @@ func main() {
       "answer": "Yes. However, shadow copies made prior to enabling BitLocker will be automatically deleted when BitLocker is enabled on software-encrypted drives. If you are using a hardware encrypted drive, the shadow copies are retained.",
       "score": 17.3,
       "id": 62,
-      "source": "https://docs.microsoft.com/en-us/windows/security/information-protection/bitlocker/bitlocker-frequently-asked-questions",
+      "source": "https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-frequently-asked-questions",
       "metadata": []
     },
 ...
@@ -894,8 +894,8 @@ func main() {
   "name": "QnA Maker FAQ",
   "userId": "2280ef5917bb4ebfa1aae41fb1cebb4a",
   "urls": [
-    "https://docs.microsoft.com/en-in/azure/cognitive-services/qnamaker/faqs",
-    "https://docs.microsoft.com/en-us/bot-framework/resources-bot-framework-faq"
+    "https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs",
+    "https://docs.microsoft.com/bot-framework/resources-bot-framework-faq"
   ],
   "sources": [
     "Custom Editorial"
@@ -995,8 +995,8 @@ func main() {
       "name": "QnA Maker FAQ",
       "userId": "2280ef5917bb4ebfa1aae41fb1cebb4a",
       "urls": [
-        "https://docs.microsoft.com/en-in/azure/cognitive-services/qnamaker/faqs",
-        "https://docs.microsoft.com/en-us/bot-framework/resources-bot-framework-faq"
+        "https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs",
+        "https://docs.microsoft.com/bot-framework/resources-bot-framework-faq"
       ],
       "sources": [
         "Custom Editorial"

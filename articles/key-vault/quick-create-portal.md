@@ -14,20 +14,20 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/10/2018
 ms.author: barclayn
-ms.openlocfilehash: e7b9b87a7727b75588759d408292419d1fdccb83
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 864c80fe0ab8b061439b5a80a111edbd1b2004b6
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42023807"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44027023"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webu Azure Portal
 
-Azure Key Vault je cloudová služba, která funguje jako zabezpečené úložiště tajných klíčů. Můžete bezpečně ukládat klíče, hesla, certifikáty a další tajné klíče. Další informace o službě Key Vault najdete v tématu [Přehled](key-vault-overview.md). Trezory klíčů Azure můžete vytvářet a spravovat přes web Azure Portal. V tomto rychlém startu vytvoříte trezor klíčů. Po jeho vytvoření uložíte tajný klíč.
+Azure Key Vault je cloudová služba, která funguje jako zabezpečené úložiště tajných kódů. Můžete bezpečně ukládat klíče, hesla, certifikáty a další tajné klíče. Trezory klíčů Azure můžete vytvářet a spravovat přes web Azure Portal. V tomto rychlém startu vytvoříte trezor klíčů, do kterého uložíte tajný kód. Další informace o službě Key Vault najdete v tématu [Přehled](key-vault-overview.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="log-into-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 
@@ -40,8 +40,8 @@ Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 3. V seznamu výsledků zvolte **Key Vault**.
 4. V části Key Vault zvolte **Vytvořit**.
 5. V části **Vytvořit trezor klíčů** zadejte následující informace:
-    - **Název:** V tomto rychlém startu používáme **Contoso-vault2**. Pro své testování musíte zadat jedinečný název.
-    - **Předplatné:** Zvolte předplatné, které budete používat pro tento rychlý start.
+    - **Název:** Je potřeba zadat jedinečný název. V tomto rychlém startu používáme **Contoso-vault2**. 
+    - **Předplatné:** Zvolte předplatné.
     - V části **Skupina prostředků** zvolte **Vytvořit novou** a zadejte název skupiny prostředků.
     - V rozevírací nabídce **Umístění** zvolte umístění.
     - Zaškrtněte políčko **Připnout na řídicí panel**.
@@ -53,7 +53,7 @@ Poznamenejte si hodnoty dvou vlastností uvedených níže:
 * **Název trezoru:** V tomto příkladu je to **Contoso-Vault2**. Tento název budete používat pro další kroky.
 * **Identifikátor URI trezoru:** V tomto příkladu je to https://contoso-vault2.vault.azure.net/. Aplikace, které používají váš trezor prostřednictvím REST API musí používat tento identifikátor URI.
 
-V tuto chvíli je váš účet Azure jediným účtem s oprávněním provádět jakékoli operace s tímto novým trezorem.
+V tuto chvíli je váš účet Azure jediným účtem s oprávněním provádět operace s tímto novým trezorem.
 
 ![Výstup po dokončení vytváření služby Key Vault](./media/quick-create-portal/vault-properties.png)
 
@@ -61,31 +61,31 @@ V tuto chvíli je váš účet Azure jediným účtem s oprávněním provádět
 
 Pokud chcete do trezoru přidat tajný klíč, stačí provést několik dalších kroků. V tomto případě přidáme heslo, které může používat aplikace. Heslo se nazývá **ExamplePassword** a uchovává hodnotu **Pa$$w0rd**.
 
-1. Na stránce vlastností služby Key Vault vyberte **Tajné klíče**.
+1. Na stránce vlastností služby Key Vault vyberte **Tajné kódy**.
 2. Klikněte na **Vygenerovat/importovat**.
-3. Na obrazovce **Vytvořit tajný klíč** zvolte následující:
+3. Na obrazovce **Vytvoření tajného kódu** zvolte následující hodnoty:
     - **Možnosti nahrání:** Ruční
     - **Název:** ExamplePassword
     - **Hodnota:** Pa$$w0rd
     - U ostatních hodnot ponechte jejich výchozí nastavení. Klikněte na možnost **Vytvořit**.
 
-Jakmile se zobrazí zpráva o úspěšném vytvoření tajného klíče, můžete na tajný klíč kliknout v seznamu. Zobrazí se několik jeho vlastností. Pokud kliknete na aktuální verzi, zobrazí se hodnota, kterou jste zadali v předchozím kroku.
+Jakmile se zobrazí zpráva o úspěšném vytvoření tajného kódu, můžete na něj kliknout v seznamu. Zobrazí se několik jeho vlastností. Pokud kliknete na aktuální verzi, zobrazí se hodnota, kterou jste zadali v předchozím kroku.
 
 ![Vlastnosti tajného klíče](./media/quick-create-portal/version.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Další rychlé starty a kurzy týkající se služby Key Vault vycházejí z tohoto rychlého startu. Pokud chcete pokračovat v práci s dalšími rychlými starty a kurzy, možná budete chtít tyto prostředky zachovat.
-Pokud už je nepotřebujete, odstraňte službu Key Vault a související prostředky odstraněním skupiny prostředků. Odstranění skupiny prostředků přes portál:
+Až nebudete prostředky potřebovat, odstraňte jejich skupinu. Tím odstraníte Key Vault i související prostředky. Odstranění skupiny prostředků přes portál:
 
-1. Do pole Hledat v horní části portálu zadejte název vaší skupiny prostředků. Až se ve výsledcích hledání zobrazí skupina prostředků použitá v tomto rychlém startu, vyberte ji.
+1. Do pole Hledat v horní části portálu zadejte název vaší skupiny prostředků. Jakmile se ve výsledcích hledání zobrazí skupina prostředků použitá v tomto rychlém startu, vyberte ji.
 2. Vyberte **Odstranit skupinu prostředků**.
 3. Do pole **ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ:** zadejte název vaší skupiny prostředků a vyberte **Odstranit**.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili službu Key Vault a uložili tajný klíč. Další informace o službě Key Vault a jejím použití s vašimi aplikacemi najdete v kurzu pro webové aplikace pracující se službou Key Vault.
+V tomto rychlém startu jste vytvořili službu Key Vault a uložili tajný klíč. Pokud potřebujete další informace o službě Key Vault a jejím použití v aplikacích, pokračujte kurzem o fungování webových aplikací se službou Key Vault.
 
 > [!div class="nextstepaction"]
-> Informace o načtení tajného kódu ze služby Key Vault z webové aplikace s využitím identit spravované služby najdete v následujícím kurzu [Konfigurace webové aplikace Azure pro čtení tajného kódu ze služby Key Vault](quick-create-net.md).
+> Informace o načtení tajného kódu ze služby Key Vault webovou aplikací pomocí spravovaných identit prostředků Azure najdete v následujícím kurzu [Konfigurace webové aplikace Azure pro čtení tajného kódu ze služby Key Vault](quick-create-net.md).

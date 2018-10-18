@@ -3,7 +3,7 @@ title: Kurz pro Azure Security Center – Ochrana prostředků pomocí Azure Sec
 description: V tomto kurzu se dozvíte, jak nakonfigurovat zásadu přístupu k virtuálním počítačům podle potřeby a zásadu řízení aplikací.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/30/2018
-ms.author: terrylan
-ms.openlocfilehash: b882f9740a9b29cddb2cbe0359056cf66c293717
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.date: 08/30/2018
+ms.author: rkarlin
+ms.openlocfilehash: 1d3d775a13f83ada6ca702eb984262668507f7e9
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39363750"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025442"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Kurz: Ochrana prostředků pomocí Azure Security Center
 Security Center omezuje vaše vystavení hrozbám díky tomu, že pomocí řízení přístupu a aplikací blokuje škodlivé aktivity. Přístup k virtuálním počítačům podle potřeby omezuje vaše vystavení útokům díky tomu, že umožňuje odepření trvalého přístupu k virtuálním počítačům. Místo toho můžete poskytovat řízený a auditovaný přístup k virtuálním počítačům pouze v případě potřeby. Adaptivní řízení aplikací pomáhá posílit ochranu virtuálních počítačů před malwarem díky tomu, že řídí, které aplikace se na virtuálních počítačích můžou spouštět. Služba Security Center pomocí strojového učení analyzuje procesy spuštěné na virtuálním počítači a pomáhá s aplikováním pravidel přidávání na seznam povolených na základě těchto informací.
@@ -41,7 +41,7 @@ Pomocí přístupu k virtuálním počítačům podle potřeby je možné zamezi
 
 Porty pro správu nemusí být otevřené nepřetržitě. Musí být otevřené pouze během připojení k virtuálnímu počítači, například kvůli provádění úloh správy nebo údržby. Když je povolený přístup podle potřeby, Security Center využívá pravidla skupin zabezpečení sítě (NSG) omezující přístup k portům pro správu, aby na ně nemohli cílit útočníci.
 
-1. V hlavní nabídce Security Center v části **POKROČILÁ OBRANA CLOUDU** vyberte **Přístup k virtuálním počítačům podle potřeby**.
+1. V hlavní nabídce služby Security Center vyberte v části **POKROČILÁ OBRANA CLOUDU** možnost **Přístup k virtuálnímu počítači podle potřeby**.
 
   ![Přístup k virtuálním počítačům podle potřeby][1]
 

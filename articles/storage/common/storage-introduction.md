@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 07/11/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 59e6f4126e8a39ab695015fae2a2013529383418
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 693ba07e46900ba6f3e025d97cb34aad9e244ace
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41917929"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44027040"
 ---
 # <a name="introduction-to-azure-storage"></a>Seznámení se službou Azure Storage
 
@@ -93,7 +93,7 @@ Tato tabulka uvádí různé typy účtů úložiště a to, které objekty je p
 
 |**Typ účtu úložiště**|**Standard pro obecné účely**|**Premium pro obecné účely**|**Blob Storage, horká a studená vrstva přístupu**|
 |-----|-----|-----|-----|
-|**Podporované služby**| Služby objektů blob, souborů a tabulek | Služba objektů blob | Služba objektů blob|
+|**Podporované služby**| Služby objektů blob, souborů, front a tabulek | Služba objektů blob | Služba objektů blob|
 |**Typy podporovaných objektů blob**|Objekty blob bloku, objekty blob stránky a doplňovací objekty blob | Objekty blob stránky | Objekty blob bloku a doplňovací objekty blob|
 
 ### <a name="general-purpose-storage-accounts"></a>Účty úložiště pro obecné účely

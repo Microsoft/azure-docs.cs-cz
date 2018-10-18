@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: rafats
 ms.custom: mvc
-ms.openlocfilehash: 1d0a660845052f51af84b78584787760e01f16a6
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 624c5e78287fac57b06f6b5112d2523e31256ae0
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38542642"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44049764"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Nastavení globální distribuce služby Azure Cosmos DB pomocí rozhraní SQL API
 
@@ -153,9 +153,9 @@ Příklad odpovědi
 * Všechny požadavky PUT,POST a DELETE musí směřovat na uvedený identifikátor URI pro zápis.
 * Všechny požadavky GET a další požadavky jen pro čtení (například dotazy) můžou směřovat do koncového bodu podle výběru klienta.
 
-Požadavky na zápis do oblastí jen pro čtení se lžou s kódem chyby HTTP 403 (Zakázáno).
+Požadavky na zápis do oblastí jen pro čtení nebudou úspěšné. Zobrazí se kód chyby HTTP 403 (zakázáno).
 
-Pokud se po počáteční fázi zjišťování klienta oblast pro zápis změní, další zápisy do předchozí oblasti pro zápis selžou s kódem chyby HTTP 403 (Zakázáno). Klient pak musí pomocí požadavku GET znovu získat seznam oblastí, aby získal aktualizovanou oblast pro zápis.
+Pokud se po počáteční fázi zjišťování klienta oblast pro zápis změní, nebudou další zápisy do předchozí oblasti pro zápis úspěšné. Zobrazí se kód chyby HTTP 403 (zakázáno). Klient pak musí pomocí požadavku GET znovu získat seznam oblastí, aby získal aktualizovanou oblast pro zápis.
 
 To je vše, tento kurz je u konce. Informace o správě konzistence vašeho globálně replikovaného účtu najdete v tématu [Úrovně konzistence ve službě Azure Cosmos DB](consistency-levels.md). Další informace o fungování globální replikace databází ve službě Azure Cosmos DB najdete v tématu [Globální distribuce dat pomocí služby Azure Cosmos DB](distribute-data-globally.md).
 

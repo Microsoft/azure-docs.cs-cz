@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 700465279a43a8490c5863e7181c4c4d009ee97b
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: abd751cf867fea2e634161c4cf0b1e84acbe18c6
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857920"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354100"
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Kurz: Vytvoření vazby existujícího vlastního certifikátu SSL k Azure Web Apps
 
@@ -64,45 +64,7 @@ Pokud chcete ve službě App Service použít certifikát, musí splňovat všec
 > [!NOTE]
 > **Certifikáty ECC (elliptic curve cryptography)** můžou fungovat se službou App Service, ale tento článek se jimi nezabývá. Konkrétní pokyny k vytvoření certifikátů ECC vám sdělí vaše certifikační autorita.
 
-## <a name="prepare-your-web-app"></a>Příprava webové aplikace
-
-Pokud chcete vytvořit vazbu vlastního certifikátu SSL ke své webové aplikaci, váš [plán služby App Service](https://azure.microsoft.com/pricing/details/app-service/) musí být na úrovni **Basic**, **Standard** nebo **Premium** nebo **Isolated**. V tomto kroku se ujistíte, že je vaše webová aplikace na podporované cenové úrovni.
-
-### <a name="log-in-to-azure"></a>Přihlášení k Azure
-
-Otevřete web [Azure Portal](https://portal.azure.com).
-
-### <a name="navigate-to-your-web-app"></a>Přechod do webové aplikace
-
-V levé nabídce klikněte na **App Services** a pak klikněte na název vaší webové aplikace.
-
-![Výběr webové aplikace](./media/app-service-web-tutorial-custom-ssl/select-app.png)
-
-Byli jste přesměrování na stránku pro správu vaší webové aplikace.  
-
-### <a name="check-the-pricing-tier"></a>Kontrola cenové úrovně
-
-V levém navigačním panelu na stránce webové aplikace se posuňte do části **Nastavení** a vyberte **Vertikálně navýšit kapacitu (plán služby App Service)**.
-
-![Nabídka Vertikálně navýšit kapacitu](./media/app-service-web-tutorial-custom-ssl/scale-up-menu.png)
-
-Zkontrolujte, že vaše webová aplikace není na úrovni **F1** nebo **D1**. Aktuální úroveň webové aplikace je zvýrazněná tmavě modrým rámečkem.
-
-![Kontrola cenové úrovně](./media/app-service-web-tutorial-custom-ssl/check-pricing-tier.png)
-
-Na úrovni **F1** a **D1** se nepodporuje vlastní SSL. Pokud potřebujete vertikálně navýšit kapacitu, postupujte podle kroků v další části. Jinak zavřete stránku **Vertikálně navýšit kapacitu** a přejděte k části [Nahrání a vytvoření vazby certifikátu SSL](#upload).
-
-### <a name="scale-up-your-app-service-plan"></a>Vertikální navýšení kapacity plánu služby App Service
-
-Vyberte některou z placených úrovní (**B1**, **B2**, **B3** nebo kteroukoli úroveň v kategorii **Produkční**). Další možnosti se zobrazí po kliknutí na odkaz **Zobrazit další možnosti**.
-
-Klikněte na tlačítko **Použít**.
-
-![Výběr cenové úrovně](./media/app-service-web-tutorial-custom-ssl/choose-pricing-tier.png)
-
-Až se zobrazí následující oznámení, operace škálování je dokončená.
-
-![Oznámení vertikálního navýšení kapacity](./media/app-service-web-tutorial-custom-ssl/scale-notification.png)
+[!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
 <a name="upload"></a>
 

@@ -8,57 +8,42 @@ ms.service: cosmos-db
 ms.component: cosmosdb-graph
 ms.devlang: na
 ms.topic: overview
-ms.date: 01/05/2017
+ms.date: 09/05/2018
 ms.author: lbosq
-ms.openlocfilehash: a0eec8aec315eefcbcc859828fa68ea0ccee6190
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 143aa1f26110b68e4dcf417c93b04f65e2993e89
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43695346"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051642"
 ---
 # <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Úvod do služby Azure Cosmos DB: rozhraní Gremlin API
 
-[Azure Cosmos DB](introduction.md) je globálně distribuovaná databázová služba s více modely od Microsoftu pro klíčové aplikace. Azure Cosmos DB poskytuje následující funkce, které jsou zajištěné [nejlepšími smlouvami SLA v oboru](https://azure.microsoft.com/support/legal/sla/cosmos-db/):
+[Azure Cosmos DB](introduction.md) je globálně distribuovaná databázová služba s více modely od Microsoftu pro klíčové aplikace. Databáze pro více modelů podporuje modely dokumentů, klíčových hodnot, grafů a sloupcových dat. Rozhraní Gremlin API databáze Azure Cosmos DB se používá k ukládání dat grafu a práci s nimi. Rozhraní Gremlin API podporuje modelování dat grafu a nabízí rozhraní API k procházení dat grafu.
 
-* [Globální distribuce na klíč](distribute-data-globally.md)
-* [Elastické škálování propustnosti a úložiště](partition-data.md) po celém světě
-* Latence v řádu milisekund na 99. percentilu
-* [Pět jasně definovaných úrovní konzistence](consistency-levels.md)
-* Záruka vysoké dostupnosti 
+Tento článek obsahuje přehled rozhraní Gremlin API služby Azure Cosmos DB a vysvětluje, jak ho můžete použít k ukládání ohromných grafů s miliardami vrcholů a hran. Grafy můžete dotazovat s latencí v řádu milisekund a snadno rozvíjet strukturu a schéma grafu. K dotazování služby Azure Cosmos DB můžete použít jazyk pro procházení grafů [Apache TinkerPop](http://tinkerpop.apache.org) nebo [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps).
 
-Azure Cosmos DB [automaticky indexuje data](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf), aniž by vyžadovala zapojení správy schémat a indexů. Zahrnuje více modelů a podporuje modely dokumentů, klíčových hodnot, grafů a sloupcových dat.
-
-Rozhraní Gremlin API služby Azure Cosmos DB poskytuje:
-
-- Modelování grafů
-- Rozhraní API pro procházení
-- Globální distribuci na klíč
-- Elastické škálování úložiště a propustnosti s méně než 10ms latencemi při čtení a méně než 15 ms na 99. percentilu
-- Automatické indexování s okamžitou dostupností dotazů
-- Nastavitelné úrovně konzistence
-- Obsáhlé smlouvy SLA včetně 99,99% dostupnosti pro všechny účty v jedné oblasti a všechny účty ve více oblastech s mírnější konzistencí a 99,999% dostupnosti čtení pro všechny účty databáze ve více oblastech
-
-K dotazování služby Azure Cosmos DB můžete použít jazyk pro procházení grafů [Apache TinkerPop](http://tinkerpop.apache.org) nebo [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps).
-
-Tento článek obsahuje přehled rozhraní Gremlin API služby Azure Cosmos DB a vysvětluje, jak ho můžete použít k ukládání ohromných grafů s miliardami vrcholů a hran. Grafy můžete dotazovat s latencí v řádu milisekund a snadno rozvíjet strukturu a schéma grafu.
-
-## <a name="graph-database"></a>Databáze grafu
+## <a name="what-is-a-graph-database"></a>Co je databáze grafu
 Data, která existují v reálném světě, jsou přirozeně propojená. Tradiční modelování dat se zaměřuje na entity. U mnoha aplikací je také zapotřebí přirozeně modelovat jak entity, tak vztahy.
 
-[Graf](http://mathworld.wolfram.com/Graph.html) je struktura složená z [vrcholů](http://mathworld.wolfram.com/GraphVertex.html) a [hran](http://mathworld.wolfram.com/GraphEdge.html). Vrcholy i hrany mohou mít libovolný počet vlastností. Vrcholy označují diskrétní objekty, například osobu, místo nebo událost. Hrany označují vztahy mezi vrcholy. Nějaká osoba například může znát jinou osobu, účastnit se nějaké události a nacházet se na určitém místě. Vlastnosti vyjadřují informace o vrcholech a hranách. Příkladem vlastností je vrchol, který má název a stáří, a hrana, která má časové razítko a/nebo váhu. Formálněji se tento model označuje jako [graf vlastností](http://tinkerpop.apache.org/docs/current/reference/#intro). Azure Cosmos DB tento model grafu vlastností podporuje.
+[Graf](http://mathworld.wolfram.com/Graph.html) je struktura složená z [vrcholů](http://mathworld.wolfram.com/GraphVertex.html) a [hran](http://mathworld.wolfram.com/GraphEdge.html). Vrcholy i hrany mohou mít libovolný počet vlastností. 
+
+* **Vrcholy** – znázorňují diskrétní (nespojité) objekty, jako jsou osoby, místa nebo události. 
+
+* **Hrany** – znázorňují vztahy mezi vrcholy. Nějaká osoba například může znát jinou osobu, účastnit se nějaké události a nacházet se na určitém místě. 
+
+* **Vlastnosti** vyjadřují informace o vrcholech a hranách. Příkladem vlastností vrcholu je třeba jméno a věk osoby. Příkladem vlastnosti hrany je třeba časové razítko a/nebo výška. Formálněji se tento model označuje jako [graf vlastností](http://tinkerpop.apache.org/docs/current/reference/#intro). Azure Cosmos DB tento model grafu vlastností podporuje.
 
 Následující ukázkový graf například znázorňuje vztahy mezi lidmi, mobilními zařízeními, zájmy a operačními systémy:
 
 ![Ukázková databáze znázorňující osoby, zařízení a zájmy](./media/graph-introduction/sample-graph.png)
 
-Grafy jsou užitečné pro pochopení široké škály datových sad v oblasti vědy, technologie a podnikání. Databáze grafu umožňují přirozené a efektivní modelování a ukládání grafů, díky čemuž jsou užitečné v mnoha situacích. Databáze grafu jsou zpravidla databázemi NoSQL, protože tyto případy použití často potřebují flexibilní schéma a rychlou iteraci.
-
-Grafy nabízejí novou a výkonnou techniku modelování dat. To ale samo o sobě není dostatečným důvodem k použití databáze grafu. V mnoha případech a způsobech použití, které zahrnují procházení grafu, mají grafy řádově vyšší výkon než tradiční SQL a NoSQL databáze. Tento rozdíl ve výkonu je ještě patrnější při procházení více než jednoho vztahu, jako je „přítel přítele“.
+Databáze grafu umožňují přirozené a efektivní modelování a ukládání grafů, díky čemuž jsou užitečné v mnoha situacích. Databáze grafu jsou zpravidla databázemi NoSQL, protože tyto případy použití často potřebují flexibilní schéma a rychlou iteraci.
 
 Zkombinováním rychlého procházení, které nabízí databáze grafu, s algoritmy grafu, ke kterým patří hledání do hloubky, hledání do šířky a algoritmus Dijkstra, můžete řešit problémy v různých oborech, jako jsou sociální sítě, správa obsahu, geoprostorové úlohy a doporučení.
 
-## <a name="planet-scale-graphs-with-azure-cosmos-db"></a>Grafy globální úrovně s využitím služby Azure Cosmos DB
+## <a name="features-of-azure-cosmos-db-graph-database"></a>Funkce databáze grafu Azure Cosmos DB
+ 
 Azure Cosmos DB je plně spravovaná databáze grafu, která nabízí globální distribuci, elastické škálování úložiště a propustnosti, automatické indexování a dotazování, nastavitelné úrovně konzistence a podporu standardu TinkerPop.
 
 ![Architektura grafu služby Azure Cosmos DB](./media/graph-introduction/cosmosdb-graph-architecture.png)
@@ -96,7 +81,8 @@ Služba Azure Cosmos DB nabízí následující možnosti, kterými se odlišuje
 Azure Cosmos DB dokáže ve stejných kontejnerech/databázích použít několik modelů, například dokument a graf. Kontejner dokumentů můžete použít k uložení dat grafu a zároveň dokumentů. K dotazování stejných dat ve formě grafu můžete použít dotazy SQL přes JSON i dotazy Gremlin.
 
 ## <a name="get-started"></a>Začínáme
-Účty Azure Cosmos DB se dají vytvořit pomocí rozhraní příkazového řádku Azure, Azure PowerShellu nebo webu Azure Portal s podporu rozhraní Gremlin API. Po vytvoření účtů poskytne Azure Portal koncový bod služby (například `https://<youraccount>.gremlin.cosmosdb.azure.com`), který slouží jako front-end webového soketu pro Gremlin. Nástroje kompatibilní s TinkerPop (například [konzolu Gremlin](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console)) můžete nakonfigurovat tak, aby se k tomuto koncovému bodu připojily, a vytvořit aplikace v jazyku Java, Node.js nebo klientský ovladač Gremlin.
+
+K vytvoření účtů rozhraní Gremlin API služby Azure Cosmos DB a připojení k nim použijte rozhraní příkazového řádku Azure (CLI), Azure PowerShell nebo Azure Portal. Po vytvoření účtu budete mít přístup k databázím grafů v rámci tohoto účtu prostřednictvím koncového bodu služby Gremlin API `https://<youraccount>.gremlin.cosmosdb.azure.com`, který nabízí front-end protokolu WebSocket pro Gremlin. Nástroje kompatibilní s TinkerPop (například [konzolu Gremlin](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console)) můžete nakonfigurovat tak, aby se k tomuto koncovému bodu připojily, a vytvořit aplikace v jazyku Java, Node.js nebo klientský ovladač Gremlin.
 
 Následující tabulka ukazuje oblíbené ovladače Gremlin, které můžete použít vůči Azure Cosmos DB:
 
@@ -109,7 +95,33 @@ Následující tabulka ukazuje oblíbené ovladače Gremlin, které můžete pou
 | [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [Gremlin-PHP na GitHubu](https://github.com/PommeVerte/gremlin-php) | [Vytvoření grafu pomocí jazyka PHP](create-graph-php.md) |
 | [Konzola Gremlin](https://tinkerpop.apache.org/downloads.html) | [Dokumentace k TinkerPop](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [Vytvoření grafu pomocí konzoly Gremlin](create-graph-gremlin-console.md) |
 
-## <a name="scenarios-for-graph-support-of-azure-cosmos-db"></a>Scénáře pro podporu grafů služby Azure Cosmos DB
+## <a name="graph-database-design-considerations"></a>Na co si dát pozor při návrhu databáze grafu
+
+Pokud se při návrhu grafu rozhodnete modelovat entitu jako samostatný vrchol, a ne jako vlastnost jiných entit vrcholů, může to mít vliv na výkon a náklady. Při tomto rozhodování má rozhodující význam předpokládaný způsob dotazování na data a také škálovatelnost samotného modelu.
+
+Než začnete plánovat model entity, odpovězte na následující otázky:
+
+* Jaké entity je potřeba u většiny dotazů načíst jako vrcholy?
+
+* Jaké informace zahrnuté v grafu přidám kvůli filtrování dat?
+
+* Jaké entity jsou pouhými spojnicemi jiných entit, které se následně načítají kvůli hodnotám?
+
+* Jaké informace musí dotaz načíst a jaký poplatek za jednotku žádosti (RU) se tím bude generovat?
+
+Představte si třeba následující návrh grafu:
+
+![Příklad důležitých informací při návrhu grafu](./media/graph-introduction/graph-design-considerations-example.png)
+
+* V závislosti na dotazech můžete vztah District->Store (Oblast->Obchod) použít jenom k filtrování vrcholů v podobě obchodů. Dotazy mohou být například ve formátu „získat všechny obchody, které patří do určité oblasti“. Pokud tomu tak je, můžete uvažovat o sbalení entity District (Oblast) z vlastního vrcholu do vlastnosti vrcholu Store (Obchod). 
+
+* Výhodou tohoto přístupu je, že snížíte náklady při na načítání každého vrcholu Store (Obchod) současně ze tří objektů grafu (District, District->Store, Store) na jeden vrchol Store (Obchod). Můžete tím zlepšit výkon a současně snížit náklady na dotaz.
+
+* Vrchol Store (Obchod) je propojený se dvěma různými entitami Employee (Zaměstnanec) a Product (Produkt). Vrchol Store je potřeba, protože nabízí další možnosti procházení.  
+
+
+
+## <a name="scenarios-that-can-use-gremlin-api"></a>Scénáře použití rozhraní Gremlin API
 Tady je několik scénářů, ve kterých je možné využít podporu grafů služby Azure Cosmos DB:
 
 * Sociální sítě
