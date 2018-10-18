@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: a54403b7794d26d87c810f5cd20050db35c078f1
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 3ba8c93d158a6ff80c3db788924503e9d4e87242
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054314"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378115"
 ---
 # <a name="how-to-configure-the-user-risk-policy"></a>Postupy: Konfigurace zásady rizik uživatelů
 
@@ -41,7 +41,7 @@ Všechny rizikové události, které byly zjištěny pro uživatele a nepovedlo 
 Zásady rizik uživatelů je automatické reakce, které můžete konfigurovat pro úroveň rizika konkrétního uživatele. Pomocí zásady rizik uživatelů můžete zablokovat přístup k vašim prostředkům nebo vyžadovat změnu hesla pro uživatelský účet návrat do čistého stavu.
 
 
-## <a name="how-do-i-access-the-sign-in-risk-policy"></a>Jak získám přístup do zásady rizik přihlašování?
+## <a name="how-do-i-access-the-user-risk-policy"></a>Jak získám přístup do zásady rizik uživatelů?
    
 Zásady rizik přihlašování **konfigurovat** části na [stránku služby Azure AD Identity Protection](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy).
    

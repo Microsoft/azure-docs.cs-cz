@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: bryanla
-ms.openlocfilehash: d5cc634451c5412f9a3339c8d2d26654c4d5c1b8
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 60920aaa62d8472eaca8f929c62ce1c0af08f9a4
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298909"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385630"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Začínáme s certifikáty služby Key Vault
 Následující scénáře popisují některé z primární použití služby Key Vault certificate management včetně další kroky potřebné pro vytvoření vaší první certifikát do svého trezoru klíčů.
@@ -83,7 +83,7 @@ Poznámka: Tento proces, krok 3.1, je jednorázová operace.
       -   Informace o obnovení - > např. 90 dní před vypršením platnosti  
 
   - Proces vytvoření certifikátu je obvykle asynchronního procesu a zahrnuje dotazování trezoru klíčů pro stav operace vytvoření certifikátu.  
-[Získat operace certifikátu](https://docs.microsoft.com/en-us/rest/api/keyvault/getcertificateoperation)  
+[Získat operace certifikátu](https://docs.microsoft.com/rest/api/keyvault/getcertificateoperation)  
       -   Stav: dokončeno, se nezdařilo s informace o chybě, nebo zrušené  
       -   Z důvodu zpoždění vytvořit lze inicializovat operaci zrušit. Zrušení může nebo nemusí být účinné.  
 

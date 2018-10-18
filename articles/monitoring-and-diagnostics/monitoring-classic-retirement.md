@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 93bd04ce654b8403ab3cd69ecd6837b97063e5e8
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: ebbb231e7d9eefa8eb681b0e14c711e2c4f1fad7
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363942"
+ms.locfileid: "49386515"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Sjednocené upozorňování a monitorování ve službě Azure Monitor nahradí classic upozorňování a monitorování
 
@@ -49,8 +49,8 @@ Jsou k dispozici jako novější metriky pro prostředky Azure:
 Jak bylo uvedeno dříve, classic monitorování a výstrah z aktuálně použitelné platformy [upozornění (klasická) části](monitoring-overview-alerts-classic.md) Azure portal se vyřadí z provozu v odesílaných měsíců vzhledem, byla nahrazena novější systém.
 Starší classic monitorování a upozorňování se vyřadí z provozu 30. června 2019; včetně uzavření související rozhraní API, rozhraní Azure portal a služby v ní. Konkrétně přestanou používat tyto funkce:
 
-- Starší (classic) metrik a výstrah pro prostředky Azure jako aktuálně k dispozici prostřednictvím [upozornění (klasická) části](monitoring-overview-alerts-classic.md) Azure portal; přístupná jako [microsoft.insights/alertrules](https://docs.microsoft.com/en-us/rest/api/monitor/alertrules) prostředků
-- Starší (classic) platformy a vlastní metriky pro Application Insights jako upozornění na ně jako aktuálně k dispozici prostřednictvím [upozornění (klasická) části](monitoring-overview-alerts-classic.md) z webu Azure portal a dostupné jako [microsoft.insights/ alertrules](https://docs.microsoft.com/en-us/rest/api/monitor/alertrules) prostředků
+- Starší (classic) metrik a výstrah pro prostředky Azure jako aktuálně k dispozici prostřednictvím [upozornění (klasická) části](monitoring-overview-alerts-classic.md) Azure portal; přístupná jako [microsoft.insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules) prostředků
+- Starší (classic) platformy a vlastní metriky pro Application Insights jako upozornění na ně jako aktuálně k dispozici prostřednictvím [upozornění (klasická) části](monitoring-overview-alerts-classic.md) z webu Azure portal a dostupné jako [microsoft.insights/ alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules) prostředků
 - Starší (classic) anomálie selhání výstraha aktuálně k dispozici jako [inteligentního zjišťování v Application Insights,](../application-insights/app-insights-proactive-diagnostics.md) na webu Azure Portal; nakonfigurovaná upozornění ukazuje [upozornění (klasická) části](monitoring-overview-alerts-classic.md) Azure portál
 
 Všechny klasické monitorování a upozorňování systémy včetně odpovídající [API](https://msdn.microsoft.com/library/azure/dn931945.aspx), [PowerShell](insights-alerts-powershell.md), [rozhraní příkazového řádku](insights-alerts-command-line-interface.md), [stránky Azure portal a [šablony Resource](monitoring-enable-alerts-using-template.md) zůstane až do června 2019 použitelné. Po tomto datu classic monitorování a výstrahy služby budou vyřazený a už nebude k dispozici pro použití; Při jakékoli upozornění pravidla, která nadále existovat v upozornění (klasická) nad rámec 2019 dne bude dál spustit, ale není k dispozici pro úpravy.

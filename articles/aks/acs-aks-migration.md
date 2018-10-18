@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: nobun
 ms.custom: mvc
-ms.openlocfilehash: d26e849cf775e0c645ae97e4b67b5918bbbabd55
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: e42b0e7bd1bce40b7c58d75cb07f5a3f8afa5836
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/17/2018
-ms.locfileid: "49361374"
+ms.locfileid: "49385037"
 ---
 # <a name="migrating-from-azure-container-service-acs-to-azure-kubernetes-service-aks"></a>Migrace ze služby Azure Container Service (ACS) do služby Azure Kubernetes Service (AKS)
 
@@ -53,7 +53,7 @@ Příklad:
 | agentpool0 | 3 | Standard_D8_v2 | Linux |
 | agentpool1 | 1 | Standard_D2_v2 | Windows |
 
-Protože další virtuální počítače se nasadí do vašeho předplatného při migraci, je třeba ověřit, že kvóty a omezení jsou dostačující pro tyto prostředky. Další informace o kontrole [předplatného Azure a omezení služeb](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits). Pokud chcete zkontrolovat aktuální kvóty, přejděte na [okně předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) na webu Azure Portal, vyberte své předplatné a pak vyberte `Usage + quotas`.
+Protože další virtuální počítače se nasadí do vašeho předplatného při migraci, je třeba ověřit, že kvóty a omezení jsou dostačující pro tyto prostředky. Další informace o kontrole [předplatného Azure a omezení služeb](https://docs.microsoft.com/azure/azure-subscription-service-limits). Pokud chcete zkontrolovat aktuální kvóty, přejděte na [okně předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) na webu Azure Portal, vyberte své předplatné a pak vyberte `Usage + quotas`.
 
 ### <a name="networking"></a>Sítě
 
@@ -86,7 +86,7 @@ Existuje několik faktorů vzít v úvahu, pokud migrujete existující svazky s
 2. Disky se snímky
 3. Vytvoření nové služby Managed Disks ze snímků
 4. Vytvářet trvalé svazky ve službě AKS
-5. Aktualizovat Pod specifikací [použít existující svazky](https://docs.microsoft.com/en-us/azure/aks/azure-disk-volume) místo PersistentVolumeClaims (statické zřizování)
+5. Aktualizovat Pod specifikací [použít existující svazky](https://docs.microsoft.com/azure/aks/azure-disk-volume) místo PersistentVolumeClaims (statické zřizování)
 6. Nasazení aplikace do AKS
 7. Ověření
 8. Přejděte na provoz clusteru AKS
@@ -112,7 +112,7 @@ Pokud ne, jedním z přístupů je to možné migrace zahrnuje následující kr
 4. Ověření
 5. Přejděte na provoz clusteru AKS
 
-V případech, kde chcete začít s prázdnou sdílenou složku a potom vytvořte kopii zdrojová data, můžete použít [ `az storage file copy` ](https://docs.microsoft.com/en-us/cli/azure/storage/file/copy?view=azure-cli-latest) příkazy migrovat svoje data.
+V případech, kde chcete začít s prázdnou sdílenou složku a potom vytvořte kopii zdrojová data, můžete použít [ `az storage file copy` ](https://docs.microsoft.com/cli/azure/storage/file/copy?view=azure-cli-latest) příkazy migrovat svoje data.
 
 ### <a name="deployment-strategy"></a>Strategie nasazení
 
@@ -134,7 +134,7 @@ Existují také několik open source nástroje, které můžou pomoct podle svý
 
 ### <a name="1-create-an-aks-cluster"></a>1. Vytvoření clusteru AKS
 
-Můžete postupovat podle dokumentace k [vytvoření clusteru AKS](https://docs.microsoft.com/en-us/azure/aks/create-cluster) prostřednictvím webu Azure portal, Azure CLI nebo šablony Resource Manageru.
+Můžete postupovat podle dokumentace k [vytvoření clusteru AKS](https://docs.microsoft.com/azure/aks/create-cluster) prostřednictvím webu Azure portal, Azure CLI nebo šablony Resource Manageru.
 
 > Ukázkové šablony Azure Resource Manageru můžete najít pro AKS na [Azure/AKS](https://github.com/Azure/AKS/tree/master/examples/vnet) úložišti na Githubu
 

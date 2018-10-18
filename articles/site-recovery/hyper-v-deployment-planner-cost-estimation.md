@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: dba323b8cd57dd33c1477027f853cba3c95c8a07
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 40a8e2e6d994608d4aa26f6d9b3723c0ee27d3db
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092503"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387238"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Sestava odhadu nákladů z Plánovače nasazení služby Azure Site Recovery 
 
@@ -143,7 +143,7 @@ Ruční přidání virtuálních počítačů:
 
 **Number of DR-Drills in a year:** Počet, kolikrát za rok provedete postup zotavení po havárii. Ve výchozím nastavení je to čtyřikrát za rok. Můžete změnit období pro konkrétní virtuální počítače nebo použít novou hodnotu pro všechny virtuální počítače. Zadejte novou hodnotu do horního řádku a vyberte **Apply to all** (Použít u všech). Na základě počtu postupů zotavení po havárii za rok a délky trvání jednotlivých postupů se vypočítají celkové náklady na postupy zotavení po havárii. 
 
-**Each DR-Drill duration (Days):** Doba trvání jednotlivých postupů zotavení po havárii ve dnech. Ve výchozím nastavení je to 7 dnů vždy po 90 dnech, v souladu s [výhodou Software Assurance pro zotavení po havárii](https://azure.microsoft.com/en-in/pricing/details/site-recovery). Můžete změnit období pro konkrétní virtuální počítače nebo použít novou hodnotu pro všechny virtuální počítače. Zadejte novou hodnotu do horního řádku a vyberte **Apply to all** (Použít u všech). Celkové náklady na postupy zotavení po havárii se vypočítají na základě počtu postupů zotavení po havárii za rok a délky trvání jednotlivých postupů.
+**Each DR-Drill duration (Days):** Doba trvání jednotlivých postupů zotavení po havárii ve dnech. Ve výchozím nastavení je to 7 dnů vždy po 90 dnech, v souladu s [výhodou Software Assurance pro zotavení po havárii](https://azure.microsoft.com/pricing/details/site-recovery). Můžete změnit období pro konkrétní virtuální počítače nebo použít novou hodnotu pro všechny virtuální počítače. Zadejte novou hodnotu do horního řádku a vyberte **Apply to all** (Použít u všech). Celkové náklady na postupy zotavení po havárii se vypočítají na základě počtu postupů zotavení po havárii za rok a délky trvání jednotlivých postupů.
  
 **OS Type:** Typ operačního systému virtuálního počítače. Je to Windows nebo Linux. Pokud je jako typ operačního systému nastavený systém Windows, je pro příslušný počítač možné využít Zvýhodněné hybridní využití Azure. 
 

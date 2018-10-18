@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: magattus
-ms.openlocfilehash: c5f486498e357927880ae51c1fec13a00296b457
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: d5be292c66a07f43b40d12e10e4939d9d91559e1
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093353"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395237"
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Funkce stroje pravidel Azure CDN
 Tento článek obsahuje podrobný popis funkcí dostupných pro Azure Content Delivery Network (CDN) [stroj pravidel](cdn-rules-engine.md).
@@ -1256,7 +1256,7 @@ Tato adresa URL přesměrování lze dosáhnout pomocí následující konfigura
         - Adresa URL požadavku (po přesměrování): http:\//cdn.mydomain.com/resources/widgets.pdf  
     - Ukázkový scénář #2: 
         - Ukázka požadavku (CNAME Edge adresy URL): http:\//marketing.mydomain.com/brochures/widgets.pdf 
-        - Adresa URL požadavku (po přesměrování): http:\//cdn.mydomain.com/resources/widgets.pdf vzorový scénář
+        - Adresa URL požadavku (po přesměrování): http:\//cdn.mydomain.com/resources/widgets.pdf
     - Ukázkový scénář #3: 
         - Ukázka požadavku (CNAME Edge adresy URL): http:\//brochures.mydomain.com/campaignA/final/productC.ppt 
         - Adresa URL požadavku (po přesměrování): http:\//cdn.mydomain.com/resources/campaignA/final/productC.ppt  

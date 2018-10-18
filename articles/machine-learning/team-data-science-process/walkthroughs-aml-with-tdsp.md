@@ -1,10 +1,10 @@
 ---
-title: Návody pro HDInsight Spark v Azure pomocí PySpark a Scala | Microsoft Docs
-description: Příklady procesu Team dat vědecké účely, které provede prostřednictvím PySpark a Scala v Azure HDInsight Spark pro prediktivní analýzy.
+title: Návody pro HDInsight Spark pomocí Pysparkem a Scalou v Azure | Dokumentace Microsoftu
+description: Příklady vědecké zpracování týmových dat, které se provedou pomocí Pysparkem a Scalou na Azure HDInsight Spark pro prediktivní analýzy.
 services: machine-learning
 documentationcenter: ''
 author: deguhath
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
@@ -15,30 +15,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 55b1fbf3aa7dab9c732dab65661f199c60413b4a
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 278fb386e757b64b35b4d1baaf04dcc54c20ee67
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838445"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49392568"
 ---
-# <a name="team-data-science-structured-projects-in-azure-machine-learning-workbench"></a>Týmové projekty strukturovaná vědecké zpracování dat v nástroji Azure Machine Learning Workbench
+# <a name="team-data-science-structured-projects-in-azure-machine-learning-workbench"></a>Vědecké zpracování týmových dat strukturované projekty v aplikaci Azure Machine Learning Workbench
 
-Tyto kurzy a ukázky ukazují, jak k vytváření projektů strukturovaná Team vědecké zpracování dat pomocí Azure Machine Learning Workbench. Přehled procesu Team dat vědecké účely, najdete v tématu [proces vědecké účely dat](overview.md). Přehled Spark v HDInsight, naleznete v části [Úvod do Spark v HDInsight](../../hdinsight/spark/apache-spark-overview.md).
+Tyto kurzy a ukázky ukazují, jak vytvářet projekty strukturované týmu datové vědy s Azure Machine Learning Workbench. Přehled vědeckého zpracování týmových dat, naleznete v tématu [vědecké zpracování dat](overview.md). Přehled Spark v HDInsight, naleznete v tématu [Představujeme Spark v HDInsight](../../hdinsight/spark/apache-spark-overview.md).
 
-Návody vědecké účely další data, které se spouští proces vědecké účely Team dat jsou seskupené podle **platformy** , které používají. V tématu [návody spouštění procesu tým datové vědy](walkthroughs.md) pro rozpis těchto příkladech.
+Další data science návody, které jsou spouštěny vědecké zpracování týmových dat jsou seskupené podle **platformy** , které používají. Zobrazit [názorné postupy vědeckého zpracování týmových dat provádění](walkthroughs.md) pro rozpis tyto příklady.
 
-## <a name="classify-uci-incomes-in-azure-machine-learning-workbench"></a>Klasifikovat UCI příjmů v nástroji Azure Machine Learning Workbench
+## <a name="classify-uci-incomes-in-azure-machine-learning-workbench"></a>Klasifikace příjmů UCI v aplikaci Azure Machine Learning Workbench
 
-Kurz znázorňující způsob vytvoření projektu TDSP v nástroji Azure Machine Learning Workbench, najdete v části [Team datové vědy proces kurz: klasifikovat UCI příjmů v nástroji Azure Machine Learning Workbench](../desktop-workbench/scenario-tdsp-classifying-us-incomes.md) 
+Kurz znázorňující, jak vytvořit projekt TDSP v Azure Machine Learning Workbench, najdete v části [týmu Data Science procesu kurz: UCI klasifikace příjmů v aplikaci Azure Machine Learning Workbench](../desktop-workbench/scenario-tdsp-classifying-us-incomes.md) 
 
 
-## <a name="biomedical-entity-recognition-using-natural-language-processing-with-deep-learning"></a>Pomocí přirozeného jazyka zpracování hloubkové Learning rozpoznávání biolékařského entity
+## <a name="biomedical-entity-recognition-using-natural-language-processing-with-deep-learning"></a>Rozpoznávání biomedicínských entit rozpoznávání pomocí zpracování přirozeného jazyka s obsáhlým learningem
 
-Příklad, který se používá k vytvoření instance TDSP projektu v Azure Machine Learning Workbench, najdete v části [pomocí přirozeného jazyka zpracování hloubkové Learning rozpoznávání biolékařského entity](../desktop-workbench/scenario-tdsp-biomedical-recognition.md)
+Ukázku, která používá projektu vytvořena instance TDSP v Azure Machine Learning Workbench najdete v tématu [rozpoznávání rozpoznávání Biomedicínských entit pomocí zpracování přirozeného jazyka s obsáhlým learningem](../desktop-workbench/scenario-tdsp-biomedical-recognition.md)
 
 ## <a name="next-steps"></a>Další postup
 
-Informace součástí klíče, které tvoří proces Team dat. vědecké účely, naleznete v [přehled tým datové vědy procesu](overview.md).
+Diskuzi o klíčové součásti, které tvoří vědecké zpracování týmových dat, naleznete v tématu [přehled vědeckého zpracování týmových dat](overview.md).
 
-Informace životního cyklu Team datové vědy procesu, můžete použít pro struktury projekty vědecké účely dat, naleznete v [procesu vědecké účely Team datového cyklu](lifecycle.md). Životní cyklus popisuje kroky, od začátku do konce, projekty obvykle postupujte při jejich spuštění. 
+Diskuzi o životní cyklus vědeckého zpracování týmových dat, který vám pomůže strukturovat vaše projekty datových věd, naleznete v tématu [životní cyklus vědeckého zpracování týmových dat](lifecycle.md). Životní cyklus popisuje kroky, od začátku do konce, projekty obvykle postupujte při jejich spuštění. 

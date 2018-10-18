@@ -12,19 +12,19 @@ ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: ee3b8c274b769cd570d70c5e0dfae939e030ecf5
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 803bab4f0b91e2612abceedfa09baedaaea2a55e
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352425"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377933"
 ---
 # <a name="manage-file-space-in-azure-sql-database"></a>Správa místo souborů ve službě Azure SQL Database
 Tento článek popisuje různé druhy prostoru úložiště v Azure SQL Database a kroky, které mohou být provedeny, když přidělené místo souborů databáze a elastické fondy je potřeba explicitně spravovat.
 
 ## <a name="overview"></a>Přehled
 
-Ve službě Azure SQL Database existují vzorce úlohy kde přidělení podkladové datové soubory pro databáze, mívá větší než velikost stránek používaná data. Tato situace může nastat, když používá zvyšuje prostor a následně se odstraní data. Je to proto přidělené místo souboru neuvolní automaticky, když se odstraní data.
+Ve službě Azure SQL Database existují vzorce úlohy kde přidělení podkladové datové soubory pro databáze, mívá větší než velikost stránek používaná data. Tato situace může nastat, když používá zvyšuje prostor a následně se odstraní data. Důvodem je, protože přidělené místo souboru neuvolní automaticky, když se odstraní data.
 
 Monitorování využití místa na soubor a zmenšení souborů dat může být nutné v následujících scénářích:
 - Maximální velikost fondu dosáhne soubor místo přidělené pro jeho databáze, povolit nárůst dat v elastickém fondu.
@@ -32,11 +32,11 @@ Monitorování využití místa na soubor a zmenšení souborů dat může být 
 - Povolit změnu elastický fond nebo izolovanou databázi na jinou službu vrstvy nebo úrovně výkonu se nižší maximální velikost.
 
 ### <a name="monitoring-file-space-usage"></a>Monitorování využití místa na souboru
-Většina metrik úložiště prostor zobrazí portálu Azure portal a následující rozhraní API měřit pouze velikost stránky používaná data:
+Většina metrik úložiště prostor zobrazí na webu Azure portal a rozhraní API pro následující míru jenom velikost stránky používaná data:
 - Metriky rozhraní API využívající Azure Resource Manager včetně Powershellu [get-metrics](https://docs.microsoft.com/powershell/module/azurerm.insights/get-azurermmetric)
 - T-SQL: [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 
-Ale následující rozhraní API také změřte dobu potřebnou pro místo přidělené pro databáze a elastické fondy:
+Ale následující rozhraní API také měření velikost místa vyhrazeného pro databáze a elastické fondy:
 - T-SQL: [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
 - T-SQL: [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
@@ -110,7 +110,7 @@ Principy následující množství prostoru úložiště jsou důležité pro sp
 |**Využité dat**|Souhrn dat využité všechny databáze v elastickém fondu.||
 |**Přidělené místo na data**|Souhrn dat přidělená všechny databáze v elastickém fondu.||
 |**Data místo přidělené ale nepoužívá se**|Rozdíl mezi množství přidělené místo na data a data využité všechny databáze v elastickém fondu.|Toto množství představuje maximální velikost místa vyhrazeného pro elastický fond, který se nedá uvolnit zmenšením datové soubory databáze.|
-|**Maximální velikost dat**|Maximální množství místa dat, který mohou využívat pro všechny jeho databáze elastického fondu.|Místo přidělené pro elastický fond by neměl být delší než maximální velikosti elastického fondu.  Pokud k tomu dojde, můžete místo přidělené, který se nepoužívá uvolní zmenšením datové soubory databáze.|
+|**Maximální velikost dat**|Maximální množství místa dat, který mohou využívat pro všechny jeho databáze elastického fondu.|Místo přidělené pro elastický fond by neměl být delší než maximální velikosti elastického fondu.  Pokud k tomuto stavu dochází, můžete místo přidělené, který se nepoužívá uvolní zmenšením datové soubory databáze.|
 ||||
 
 ## <a name="query-an-elastic-pool-for-storage-space-information"></a>Dotaz elastického fondu pro informace o úložišti
@@ -131,7 +131,7 @@ ORDER BY end_time DESC
 
 ### <a name="elastic-pool-data-space-allocated-and-unused-allocated-space"></a>Přidělené místo na data elastického fondu a nepoužívané přiděleného místa
 
-Upravte následující skript Powershellu, který vrátí tabulku se seznamem místo přidělené a nevyužité místo přidělené pro každou databázi v elastickém fondu. V tabulce objednávky databáze od těch, které s největší množství nevyužité přidělené místo na minimální množství nevyužité přidělené místo.  Jednotky výsledku dotazu jsou v MB.  
+Upravte následující skript Powershellu, který vrátí tabulku se seznamem místo přidělené a nevyužité místo přidělené pro každou databázi v elastickém fondu. V tabulce objednávky databází z těchto databází s co největší množství nevyužité přidělené místo na minimální množství nevyužité přidělené místo.  Jednotky výsledku dotazu jsou v MB.  
 
 Výsledky dotazu k určení místa pro každou databázi ve fondu je možné přidat společně k určení celkové místo přidělené pro elastický fond. Přidělené místo elastický fond může být maximálně maximální velikosti elastického fondu.  
 
@@ -201,17 +201,35 @@ ORDER BY end_time DESC
 
 ## <a name="reclaim-unused-allocated-space"></a>Uvolnění nevyužívaného místa přiděleného
 
-Po identifikaci databází pro opětovné získání nevyužité místo přidělené upravte následující příkaz pro zmenšení datové soubory pro každou databázi.
+### <a name="dbcc-shrink"></a>Příkaz DBCC zmenšit
+
+Po identifikaci databází pro opětovné získání nevyužité místo přidělené změnit název databáze v následujícím příkazu zmenšení souborů dat pro každou databázi.
 
 ```sql
 -- Shrink database data space allocated.
 DBCC SHRINKDATABASE (N'db1')
 ```
 
+Tento příkaz může ovlivnit výkon databáze, zatímco běží a pokud je to možné by se měl spustit během období s nízkým využitím.  
+
 Další informace o tomto příkazu najdete v tématu [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql). 
 
-> [!IMPORTANT] 
-> Vezměte v úvahu, jsou zmenšit omnovení indexy databáze po datové soubory databáze, může fragmentovat. indexy a přijít o jejich účinnosti optimalizace výkonu. Pokud k tomu dojde, poté indexy, které by měl znovu sestavit. Další informace o fragmentace a nové sestavení indexů, naleznete v tématu [Reorganize a znovu vytvořit indexy](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).
+### <a name="auto-shrink"></a>Auto-shrink
+
+Automatické zmenšení Alternativně je možné povolit pro databázi.  Zmenšení automaticky sníží složitost správy souborů a je menší dopad na výkon databází než SHRINKDATABASE nebo SHRINKFILE.  Zmenšení automaticky může být zvláště užitečné pro Správa elastických fondů pomocí velkého počtu databází.  Je však méně účinný uvolní místo souborů než SHRINKDATABASE a SHRINKFILE zmenšení automaticky.
+Pokud chcete povolit automatické zmenšení, upravte název databáze v následujícím příkazu.
+
+
+```sql
+-- Enable auto-shrink for the database.
+ALTER DATABASE [db1] SET AUTO_SHRINK ON
+```
+
+Další informace o tomto příkazu najdete v tématu [databázi nastavit](https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql-set-options?view=sql-server-2017) možnosti. 
+
+### <a name="rebuild-indexes"></a>Provést nové sestavení indexů
+
+Po datové soubory databáze jsou zmenšit, může fragmentovat. indexy a dojít ke ztrátě jejich účinnosti optimalizace výkonu. Pokud dojde k snížení výkonu, zvažte nové sestavení indexů databáze. Další informace o fragmentace a nové sestavení indexů, naleznete v tématu [Reorganize a znovu vytvořit indexy](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).
 
 ## <a name="next-steps"></a>Další postup
 

@@ -9,12 +9,12 @@ ms.date: 03/05/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f57db00894dab80f96f45111331d47a173520ced
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: ac729963e63bd97c83719e21dad3ad2cfc9b4fee
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39575994"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49392790"
 ---
 # <a name="install-the-iot-edge-runtime-on-windows-iot-core---preview"></a>Nainstalovat Windows IoT Core runtime IoT Edge – preview
 
@@ -27,7 +27,7 @@ Tento článek vás provede zřizování modulu runtime v vývojářská deska s
 ## <a name="install-the-container-runtime"></a>Nainstalovat modul runtime kontejneru
 
 1. Konfigurace panelu s **sestavení 17134 vydaná (RS4)** image IoT Core. 
-1. Zapnutí zařízení, potom [přihlášení s využitím Powershellu][lnk-powershell].
+1. Zapnutí zařízení, potom [přihlášení s využitím Powershellu](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell).
 1. V konzole Powershellu nainstalujte modul runtime kontejneru: 
 
    ```powershell
@@ -45,15 +45,8 @@ Tento článek vás provede zřizování modulu runtime v vývojářská deska s
 
 ## <a name="finish-installing"></a>Dokončení instalace
 
-Démon zabezpečení IoT Edge nainstalujte a nakonfigurujte ho podle pokynů v [v tomto článku][lnk-install-windows-on-windows]
+Démon zabezpečení IoT Edge nainstalujte a nakonfigurujte ho podle pokynů v [v tomto článku](how-to-install-iot-edge-windows-with-windows.md)
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když máte zařízení se systémem modul runtime IoT Edge, zjistěte, jak [nasadit a monitorovat moduly IoT Edge ve velkém měřítku][lnk-deploy].
-
-<!--Links-->
-[lnk-install-windows-on-windows]: how-to-install-iot-edge-windows-with-windows.md
-[lnk-powershell]: https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell
-[lnk-deploy]: how-to-deploy-monitor.md
-[lnk-docker-install]: https://docs.docker.com/engine/installation/linux/docker-ce/binaries#install-server-and-client-binaries-on-windows
-[lnk-docker-containers]: https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10#2-switch-to-windows-containers
+Teď, když máte zařízení se systémem modul runtime IoT Edge, zjistěte, jak [nasadit a monitorovat moduly IoT Edge ve velkém měřítku](how-to-deploy-monitor.md).

@@ -1,82 +1,81 @@
 ---
-title: Transformuje a úlohy ve službě Azure Media Services | Microsoft Docs
-description: Při použití Media Services, budete muset vytvořit transformace pro popis pravidla nebo specifikace pro zpracování videa. Tento článek nabízí přehled transformace je a způsobu jeho použití.
+title: Transformace a úlohy ve službě Azure Media Services | Dokumentace Microsoftu
+description: Při použití služby Media Services, je potřeba vytvořit transformace pro popis pravidla nebo specifikace pro zpracování vašeho videa. Tento článek obsahuje přehled transformace je a jak ji používat.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: b755e0573098d3dbed1bea18a40af634be609f76
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 214d4d3d11255e417f3df1e5f6e648b2a30225ea
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34272076"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377304"
 ---
-# <a name="transforms-and-jobs"></a>Úlohy a transformace
+# <a name="transforms-and-jobs"></a>Transformace a úlohy
 
 ## <a name="overview"></a>Přehled 
 
-Nejnovější verzi Azure Media Services REST API (v3) zavádí nový prostředek šablonované pracovního postupu pro kódování nebo analýza videa, názvem **transformace**. **Transformuje** můžete použít ke konfiguraci běžné úlohy kódování nebo analying videa. Každý **transformace** popisuje jednoduché pracovního postupu úloh pro zpracování video nebo zvuk soubory. 
+Nejnovější verzi Azure Media Services REST API (v3) představuje nového prostředku šablony pracovního postupu pro kódování a/nebo analyzovat videa, volá se **transformace**. **Transformuje** slouží ke konfiguraci běžné úlohy kódování nebo analying videa. Každý **transformace** popisuje jednoduchý pracovní postup úloh zpracování videa nebo zvukových souborů. 
 
-**Transformace** objekt je recepturách a **úlohy** je skutečný požadavek na službu Azure Media Services použít, **transformace** pro daný vstupní video nebo zvuk obsah. **Úloha** určuje informace, jako je umístění vstupního videa a umístění pro výstup. Můžete zadat umístění videa pomocí: adresy URL http (s), SAS adresy URL nebo cestu k souborům místně nebo v Azure Blob storage. Můžete mít až 100 transformací ve vašem účtu Azure Media Services a odesílání úloh v rámci těchto transformací. Potom k odběru události, jako jsou například změny stavu úlohy, používání oznámení, které přímo integrovat oznámení systému Azure událostí mřížky. 
+**Transformace** objekt představuje recept a **úlohy** je skutečnou žádost do služby Azure Media Services použít **transformace** do daného vstupního videa nebo zvukový obsah. **Úloha** určuje informace, jako je umístění vstupního videa a umístění pro výstup. Můžete zadat umístění videa pomocí: adresy URL http (s), adresy URL SAS nebo cesty k souborům umístěným lokálně nebo do úložiště objektů Blob v Azure. Můžete mít až 100 transformace ve vašem účtu Azure Media Services a odesílání úloh v rámci těchto transformací. Potom k odběru události, například změny stavu úlohy pomocí oznámení, které integrovat Azure Event Grid oznámení systému. 
 
-Vzhledem k tomu, že toto rozhraní API vycházejí pomocí Správce prostředků Azure, můžete vytvořit a nasadit transformací ve vašem účtu Media Services šablony Resource Manageru. Řízení přístupu na základě role můžete také nastavit na úrovni prostředků v tomto rozhraní API umožňuje zablokovat přístup ke konkrétním prostředkům jako transformace.
+Protože toto rozhraní API je řízené pomocí Azure Resource Manageru, můžete použít šablony Resource Manageru k vytvoření a nasazení transformace ve vašem účtu Media Services. Řízení přístupu na základě rolí lze také nastavit na úrovni prostředků v tomto rozhraní API, díky tomu umožňuje uzamknout přístup ke konkrétním prostředkům, jako je transformace.
 
 ## <a name="transform-definition"></a>Transformace definice
 
-V následující tabulce se zobrazují vlastnosti transformace a dává jejich definice.
+Následující tabulka uvádí vlastnosti transformace a umožňuje jejich definice.
 
 |Název|Typ|Popis|
 |---|---|---|
-|ID|řetězec|ID plně kvalifikovaný prostředků pro prostředek.|
+|ID|řetězec|Plně kvalifikované ID prostředku pro prostředek.|
 |jméno|řetězec|Název prostředku.|
-|Properties.Created |řetězec|UTC datum a čas, kdy transformovat byl vytvořen, v ' rrrr-MM-ddTHH: formát.|
-|Properties.Description |řetězec|Volitelné podrobný popis pro transformaci.|
-|properties.lastModified |řetězec|UTC datum a čas, kdy transformovat poslední aktualizace, v ' rrrr-MM-ddTHH ' formátu.|
-|Properties.Outputs |[TransformOutput]|Pole jeden nebo více TransformOutputs, které by měl generovat pro transformaci.|
+|Properties.Created |řetězec|Čas UTC datum a čas, kdy transformací, která byla vytvořena, v ' rrrr-MM-: ssZ "formátu.|
+|Properties.Description |řetězec|Podrobný popis transformace.|
+|properties.lastModified |řetězec|Datum a čas UTC při transformaci poslední aktualizace, data v ' rrrr-MM-: ssZ "formátu.|
+|Properties.Outputs |[] TransformOutput|Pole jednoho nebo více TransformOutputs, které transformací, která se má generovat.|
 |type|řetězec|Typ prostředku.|
 
-Úplné definici naleznete v tématu [transformuje](https://docs.microsoft.com/rest/api/media/transforms).
+Kompletní definici, naleznete v tématu [transformuje](https://docs.microsoft.com/rest/api/media/transforms).
 
 ## <a name="job-definition"></a>Definice úlohy
 
-V následující tabulce se zobrazují vlastnosti úlohy a dává jejich definice.
+Následující tabulka uvádí vlastnosti úlohy a umožňuje jejich definice.
 
 |Název|Typ|Popis|
 |---|---|---|
-|ID|řetězec|ID plně kvalifikovaný prostředků pro prostředek.|
+|ID|řetězec|Plně kvalifikované ID prostředku pro prostředek.|
 |jméno|řetězec|Název prostředku.|
-|Properties.Created |řetězec|UTC datum a čas, kdy transformovat byl vytvořen, v ' rrrr-MM-ddTHH: formát.|
-|Properties.Description |řetězec|Volitelný podrobný popis úlohy.|
-|properties.lastModified |řetězec|UTC datum a čas, kdy transformovat poslední aktualizace, v ' rrrr-MM-ddTHH ' formátu.|
-|Properties.Outputs |[JobOutput]: [JobOutputAsset] |Výstupy úlohy.|
-|Properties.priority |Priorita |Priorita, se kterým má být zpracován úlohy. Úlohy s vyšší prioritou se zpracovávají před úlohami s nižší prioritou. Pokud není nastavena, výchozí hodnota je normální.
+|Properties.Created |řetězec|Čas UTC datum a čas, kdy transformací, která byla vytvořena, v ' rrrr-MM-: ssZ "formátu.|
+|Properties.Description |řetězec|Podrobný popis úlohy.|
+|properties.lastModified |řetězec|Datum a čas UTC při transformaci poslední aktualizace, data v ' rrrr-MM-: ssZ "formátu.|
+|Properties.Outputs |[] JobOutput: JobOutputAsset] |Výstupy úlohy.|
+|Properties.priority |Priorita |Priorita, pomocí kterého by se měly zpracovat úlohy. Přenosy s vyšší prioritou se zpracovávají před úlohami s nižší prioritou. Pokud není nastavena, výchozí hodnota je normální.
 |Properties.state |JobState |Aktuální stav úlohy.
 |type|řetězec|Typ prostředku.|
 
-Úplné definici naleznete v tématu [úlohy](https://docs.microsoft.com/rest/api/media/jobs).
+Kompletní definici, naleznete v tématu [úlohy](https://docs.microsoft.com/rest/api/media/jobs).
 
-## <a name="typical-workflow-and-example"></a>Obvyklý pracovní postup a příklad
+## <a name="typical-workflow-and-example"></a>Typický pracovní postup a příklad
 
 1. Vytvoření transformace 
 2. Odesílání úloh v rámci této transformace 
 3. Seznam transformací 
-4. Transformace, odstraňte, pokud nemáte v plánu používat tento "recept" v budoucnu. 
+4. Transformace, odstraňte, pokud nemáte v úmyslu použít tento "předpisu" v budoucnu. 
 
-Předpokládejme, že jste chtěli extrahovat první snímek všech videa jako miniaturu – postup, kterým by se: 
+Předpokládejme, že chcete extrahovat první snímek všech videí jako obrázek miniatury – kroky, které byste prováděli jsou: 
 
-1. Definovat pravidla pro zpracování – třeba, použijte první snímek videa jako miniaturu 
-2. Pro každý video, které máte jako vstup pro službu, pak by zjistit službu: 
-    1. Kde najít video, a 
-    2. Kde má být zapsán výstup – například na miniaturu 
+1. Definovat pravidla pro zpracování – třeba, použijte první snímek video jako miniatury 
+2. Pro každé video, které máte jako vstup do služby, pak budou předávat služby: 
+    1. Kde se mají hledat videa, a 
+    2. Kde má být zapsán výstup – například miniatury 
 
 ## <a name="next-steps"></a>Další postup
 
-> [!div class="nextstepaction"]
-> [Video soubory datového proudu](stream-files-dotnet-quickstart.md)
+[Stream video soubory](stream-files-dotnet-quickstart.md)

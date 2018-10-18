@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 09/24/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 9cc8e1db577859ad7637902a5ccd5a044efcd033
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 768ff899ca2c71cb32fe29bdd5d58654d8f7d431
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978518"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394744"
 ---
 # <a name="use-visual-studio-2017-to-develop-and-debug-c-modules-for-azure-iot-edge-preview"></a>Pomocí sady Visual Studio 2017 na vývoj a ladění modulů jazyka C# pro Azure IoT Edge (Preview)
 
@@ -90,6 +90,21 @@ Nyní máte **AzureIoTEdgeApp1** projektu a **IoTEdgeModule1** projekt v našich
 Výchozí modul kód jazyka C#, která se dodává s řešením je umístěn v **IoTEdgeModule1** > **Program.cs**. V modulu a soubor deployment.template.json nastaveny tak, aby mohli sestavit řešení, ji nasdílet do vašeho registru kontejneru a nasazení do zařízení pro začátek testování bez zásahu do jakéhokoli kódu. Modul je určený pro jednoduše trvat, než vstupní zdroj (v tomto případě tempSensor modulu, která simuluje data) a zřetězit ho do služby IoT Hub. 
 
 Jakmile budete připraveni k přizpůsobení šablony jazyka C# s vlastním kódem, použijte [sady SDK služby Azure IoT Hub](../iot-hub/iot-hub-devguide-sdks.md) vytvářet moduly, které řeší klíč musí pro řešení IoT, jako je zabezpečení, Správa zařízení a spolehlivost. 
+
+## <a name="initialize-iotegehubdev-with-iot-edge-device-connection-string"></a>Inicializovat **iotegehubdev** připojovacím řetězcem zařízení IoT Edge
+
+1. Je potřeba získat připojovací řetězec z libovolného zařízení IoT Edge, můžete kopírovat z Průzkumníku cloudu v sadě Visual Studio 2017 jako postupujte hodnotu "Primární připojovací řetězec". Nekopírovat prosím připojovací řetězec zařízení bez okrajů, ikonu zařízení IoT Edge se liší od jiných hraničních zařízení.
+
+   ![Zkopírujte připojovací řetězec zařízení Edge](./media/how-to-visual-studio-develop-csharp-module/copy-edge-conn-string.png)
+
+2. Budete muset klikněte pravým tlačítkem na **AzureIoTEdgeApp1** projektu otevřete místní nabídku a pak klikněte na **nastavit připojovací řetězec zařízení Edge**, zobrazí se okno nastavení Azure IoT Edge.
+
+   ![Okno sady Edge připojovací řetězec](./media/how-to-visual-studio-develop-csharp-module/set-edge-conn-string.png)
+
+3. V okně Nastavení prosím zadejte připojovací řetězec, který jste získali v prvním kroku a klikněte na tlačítko **OK** tlačítko.
+
+>[!NOTE]
+>Toto je jednorázová práce, stačí potřebovat provedením tohoto kroku jednou na jednom počítači, všechny následné Azure IoT Edge řešení se zobrazí, když se zdarma. Samozřejmě můžete znovu spustit tento krok Pokud připojovací řetězec je neplatný nebo je potřeba změnit na další připojovací řetězec.
 
 ## <a name="build-and-debug-single-c-module"></a>Vytvářejte a laďte jednoho modulu jazyka C#
 
@@ -190,7 +205,10 @@ V článku Rychlý start, pomocí kterého jste nastavili své zařízení IoT E
 
 2. V **Průzkumníka cloudu**, rozšířit vaše předplatné, vyhledání služby Azure IoT Hub a zařízení Azure IoT Edge, které chcete nasadit.
 
-3. Klikněte pravým tlačítkem na zařízení IoT Edge k vytvoření, nasazení, musíte zvolit soubor manifestu nasazení v rámci `$AzureIoTEdgeApp1\config\Debug|Release\deployment.json`.
+3. Klikněte pravým tlačítkem na zařízení IoT Edge k vytvoření, nasazení, musíte zvolit soubor manifestu nasazení v rámci `$AzureIoTEdgeAppSolutionDir\config\deployment.(amd64|amd64.debug|windows-amd64).json`.
+
+>>[!NOTE]
+>>Nesmí vyberete `$AzureIoTEdgeAppSolutionDir\config\deployment_for_local_debug.json`
 
 4. Klikněte na tlačítko pro obnovení. Měli byste vidět nové moduly, spuštěná společně s **TempSensor** modulu a **$edgeAgent** a **$edgeHub**.
 

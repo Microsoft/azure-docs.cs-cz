@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/26/2018
 ms.author: v-jamebr
-ms.openlocfilehash: 97f33a1c0c42b534dafd1e4ed378b655b339395a
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: aa84dc4cb23a0fa2fa854e1f3d6da1234ec00bd6
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42059447"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386633"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Certifikáty a zabezpečení na clusterech s Linuxem
 
@@ -35,7 +35,7 @@ Při instalaci certifikátu ze služby Azure Key Vault pomocí [šablony Resourc
 
 ## <a name="certificates-referenced-in-the-application-manifest"></a>Certifikáty se odkazuje v manifestu aplikace
 
-V aplikaci se zadal manifestu, například prostřednictvím [ **SecretsCertificate** ](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) nebo [ **EndpointCertificate** ](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-service-model-schema-elements#endpointcertificate-element)prvky, musí být součástí */var/lib/sfcerts* adresáře. Prvky, které se používají k určení certifikáty v manifestu aplikace nepřebírají atribut path, aby certifikáty musí být k dispozici ve výchozím adresáři. Tyto prvky provést volitelný **X509StoreName** atribut. Výchozí hodnota je "My", která odkazuje na */var/lib/sfcerts* adresáře na uzly s Linuxem. Jakákoli jiná hodnota není definovaná pro cluster s Linuxem. Doporučujeme vám, že vynecháte **X509StoreName** atribut pro aplikace, které poběží na clusterech s Linuxem. 
+V aplikaci se zadal manifestu, například prostřednictvím [ **SecretsCertificate** ](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) nebo [ **EndpointCertificate** ](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#endpointcertificate-element)prvky, musí být součástí */var/lib/sfcerts* adresáře. Prvky, které se používají k určení certifikáty v manifestu aplikace nepřebírají atribut path, aby certifikáty musí být k dispozici ve výchozím adresáři. Tyto prvky provést volitelný **X509StoreName** atribut. Výchozí hodnota je "My", která odkazuje na */var/lib/sfcerts* adresáře na uzly s Linuxem. Jakákoli jiná hodnota není definovaná pro cluster s Linuxem. Doporučujeme vám, že vynecháte **X509StoreName** atribut pro aplikace, které poběží na clusterech s Linuxem. 
 
 ## <a name="certificates-referenced-in-the-configuration-package-settingsxml"></a>Certifikáty se odkazuje v balíčku pro konfiguraci (Settings.xml)
 

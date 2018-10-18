@@ -10,18 +10,18 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 09/14/2018
 tags: connectors
-ms.openlocfilehash: 13268ec865ec72fce23df550619b199389096360
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: dd86fd1aa8b1dab9f329f12924ff37db1256d1eb
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056501"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377899"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Připojení k systémům SAP v Azure Logic Apps
 
 Tento článek popisuje, jak můžete přístup k prostředkům v místním SAP z uvnitř aplikace logiky s využitím konektoru SAP ERP ústřední součást (ECC). Konektor SAP ECC podporuje integraci zpráv nebo dat do a z systémy SAP Netweaver prostřednictvím zprostředkující dokumentu (IDoc) nebo obchodní aplikace programovací rozhraní (BAPI) nebo vzdálené volání funkce (RFC).
 
-Konektor SAP ECC používá <a href="https://help.sap.com/saphelp_nwpi71/helpdata/en/e9/23c80d66d08c4c8c044a3ea11ca90f/frameset.htm">SAP .net knihovna konektorů (NCo)</a> a poskytuje tyto operace nebo akce:
+Konektor SAP ECC používá <a href="https://support.sap.com/en/product/connectors/msnet.html">SAP .net knihovna konektorů (NCo)</a> a poskytuje tyto operace nebo akce:
 
 - **Poslat SAP**: IDoc odeslání nebo volání funkce BAPI přes tRFC v systémů SAP.
 - **Přijímat od SAPU**: přijímat IDoc nebo BAPI volání funkcí přes tRFC ze systémů SAP.
@@ -44,7 +44,7 @@ Chcete-li postupovat podle tohoto článku, budete potřebovat tyto položky:
 
 * Stáhněte a nainstalujte nejnovější [na místní bránu dat](https://www.microsoft.com/download/details.aspx?id=53127) v libovolném v místním počítači. Ujistěte se, že nastavíte bránu na webu Azure Portal, než budete pokračovat. Brána umožňuje bezpečný přístup k datům a prostředky jsou v místním prostředí. Další informace najdete v tématu [instalace místní brány dat pro Azure Logic Apps](../logic-apps/logic-apps-gateway-install.md).
 
-* Stáhněte a nainstalujte klientské knihovny nejnovější SAP, která je aktuálně <a href="https://softwaredownloads.sap.com/file/0020000000086282018" target="_blank">konektoru SAP (NCo) 3.0.20.0 pro rozhraní Microsoft .NET Framework 4.0 a Windows 64-bit (x64)</a>, ve stejném počítači jako místní brána dat. Instalace této verze nebo novější z těchto důvodů:
+* Stáhněte a nainstalujte klientské knihovny nejnovější SAP, která je aktuálně <a href="https://softwaredownloads.sap.com/file/0020000001865512018" target="_blank">konektoru SAP (NCo) 3.0.21.0 pro rozhraní Microsoft .NET Framework 4.0 a Windows 64-bit (x64)</a>, ve stejném počítači jako místní brána dat. Instalace této verze nebo novější z těchto důvodů:
 
   * Starší verze SAP NCo může stát zablokována odeslání zprávy více než jeden IDoc ve stejnou dobu. 
   Tato podmínka blokuje všechny novější zprávy, které se odesílají do cílového umístění SAP, způsobí zprávy do vypršení časového limitu.

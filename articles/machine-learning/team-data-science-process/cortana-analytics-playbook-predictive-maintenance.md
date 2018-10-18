@@ -4,7 +4,7 @@ description: Úplný popis pro datové vědy, která je základem řešení pred
 services: machine-learning
 author: fboylu
 manager: cgronlun
-editor: ''
+editor: cgronlun
 ms.assetid: 2e8b66db-91eb-432b-b305-6abccca25620
 ms.service: machine-learning
 ms.component: team-data-science-process
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: fboylu
-ms.openlocfilehash: 7802aa8ea9798b18d5424c2342ba63c01406b25a
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 2a5d8540dba491dec8b2da227b0e84c10ff09c77
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221702"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394989"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Průvodce Azure AI pro řešení prediktivní údržby
 
@@ -256,7 +256,7 @@ Tato část popisuje hlavní modelovacích postupů PdM problémů, spolu s jeji
 > byste měli určit ve spolupráci s odborné domény.
 
 ### <a name="binary-classification"></a>Binární klasifikace
-Binární klasifikace se používá k _odhadnout pravděpodobnost, že zařízení se nezdaří v budoucích období_ – voláno _budoucí časový horizont období X_. X se určuje podle obchodního problému a data vždy po ruce, ve spolupráci s odborné domény. Mezi příklady patří:
+Binární klasifikace se používá k _odhadnout pravděpodobnost, že zařízení se nezdaří v budoucích období_ – voláno _budoucí časový horizont období X_. X se určuje podle obchodního problému a data vždy po ruce, ve spolupráci s odborné domény. Můžete například:
 - _minimální doba_ muset nahradit komponenty, nasazení prostředků údržby, provedení údržby tak, aby nedošlo k potížím, která by mohla nastat v daném období.
 - _minimální počet událostí_ , který může dojít předtím, než dojde k potížím.
 

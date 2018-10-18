@@ -1,10 +1,10 @@
 ---
-title: Pomocí U-SQL Azure Data Lake data vědecké účely návody | Microsoft Docs
-description: Příklady, které provede pomocí U-SQL v Azure Data Lake pro prediktivní analýzy.
+title: Azure Data Lake data science návody pomocí U-SQL | Dokumentace Microsoftu
+description: Příklady, které se provedou pomocí U-SQL v Azure Data Lake pro prediktivní analýzy.
 services: machine-learning
 documentationcenter: ''
 author: deguhath
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
@@ -15,27 +15,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: deguhath
-ms.openlocfilehash: c2779fd99c0cce6eb4e8a9d0c3b8b2c886ac99e1
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 6625a2b1e02801a3adea08fc0e301c56d8db3f1b
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838608"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49392419"
 ---
-# <a name="azure-data-lake-data-science-walkthroughs-using-u-sql"></a>Azure Data Lake datové vědy návody pomocí U-SQL
+# <a name="azure-data-lake-data-science-walkthroughs-using-u-sql"></a>Azure Data Lake data science návody pomocí U-SQL
 
-Tyto postupy pomocí U-SQL Azure Data Lake pro prediktivní analýzy. Jejich postupujte podle kroků uvedených v procesu Team dat vědecké účely. Přehled procesu Team dat vědecké účely, najdete v tématu [proces vědecké účely dat](overview.md). Úvod do Azure Data Lake, najdete v části [přehled o Azure Data Lake Store](../../data-lake-store/data-lake-store-overview.md).
+Tyto kurzy používat U-SQL s Azure Data Lake pro prediktivní analýzy. Postupujte podle kroků uvedených v vědecké zpracování týmových dat. Přehled vědeckého zpracování týmových dat, naleznete v tématu [vědecké zpracování dat](overview.md). Úvod do Azure Data Lake najdete v tématu [přehled o Azure Data Lake Store](../../data-lake-store/data-lake-store-overview.md).
 
-Návody vědecké účely další data, které se spouští proces vědecké účely Team dat jsou seskupené podle **platformy** , které používají. V tématu [návody spouštění procesu tým datové vědy](walkthroughs.md) pro rozpis těchto příkladech.
+Další data science návody, které jsou spouštěny vědecké zpracování týmových dat jsou seskupené podle **platformy** , které používají. Zobrazit [názorné postupy vědeckého zpracování týmových dat provádění](walkthroughs.md) pro rozpis tyto příklady.
 
 
-## <a name="predict-taxi-tips-using-u-sql-with-azure-data-lake"></a>Předpověď taxíkem tipy pomocí U-SQL Azure Data Lake
+## <a name="predict-taxi-tips-using-u-sql-with-azure-data-lake"></a>Předpovídání spropitného pro taxikáře pomocí U-SQL s Azure Data Lake
 
-[Pomocí Azure Data Lake pro vědecké zpracování dat](data-lake-walkthrough.md) návod ukazuje, jak udělat zkoumání dat pomocí Azure Data Lake a binární klasifikace úlohy na ukázku NYC taxi datová sada k předvídání, zda je tip placené podle zákazníka. 
+[Použití Azure Data Lake pro datové vědy](data-lake-walkthrough.md) názorný postup ukazuje, jak pomocí Azure Data Lake provádět zkoumání dat a úlohy binární klasifikace k ukázce NYC taxi datovou sadu, která předpovědět, jestli je tip placené ze strany zákazníka. 
 
 
 ## <a name="next-steps"></a>Další postup
 
-Informace součástí klíče, které tvoří proces Team dat. vědecké účely, naleznete v [přehled tým datové vědy procesu](overview.md).
+Diskuzi o klíčové součásti, které tvoří vědecké zpracování týmových dat, naleznete v tématu [přehled vědeckého zpracování týmových dat](overview.md).
 
-Informace životního cyklu Team datové vědy procesu, můžete použít pro struktury projekty vědecké účely dat, naleznete v [procesu vědecké účely Team datového cyklu](lifecycle.md). Životní cyklus popisuje kroky, od začátku do konce, projekty obvykle postupujte při jejich spuštění. 
+Diskuzi o životní cyklus vědeckého zpracování týmových dat, který vám pomůže strukturovat vaše projekty datových věd, naleznete v tématu [životní cyklus vědeckého zpracování týmových dat](lifecycle.md). Životní cyklus popisuje kroky, od začátku do konce, projekty obvykle postupujte při jejich spuštění. 

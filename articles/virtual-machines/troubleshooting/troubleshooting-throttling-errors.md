@@ -13,12 +13,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: vashan, rajraj, changov
-ms.openlocfilehash: d9d9e9cdb791504c864cae20d1248ba78a180a4c
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: b951d0b8d91729340cf382e70f72511fb009053e
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320267"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386548"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>Řešení potíží s chybami omezení rozhraní API 
 
@@ -26,7 +26,7 @@ Požadavky na výpočetní prostředky Azure může omezit na předplatné a na 
 
 ## <a name="throttling-by-azure-resource-manager-vs-resource-providers"></a>Omezení využití sítě pomocí Azure Resource Manageru vs poskytovatelů prostředků  
 
-Jako přední dveře do Azure Azure Resource Manageru nepodporuje ověřování a prvního řádu ověření a omezování všechny příchozí žádosti rozhraní API. Omezení přenosové rychlosti volání služby Azure Resource Manageru a hlavičky související diagnostických odpovědi protokolu HTTP jsou popsány [tady](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-request-limits).
+Jako přední dveře do Azure Azure Resource Manageru nepodporuje ověřování a prvního řádu ověření a omezování všechny příchozí žádosti rozhraní API. Omezení přenosové rychlosti volání služby Azure Resource Manageru a hlavičky související diagnostických odpovědi protokolu HTTP jsou popsány [tady](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-request-limits).
  
 Když klienta aplikace Azure API získá omezení chybu, je stav protokolu HTTP 429 příliš mnoho požadavků. Vysvětlení, pokud omezování žádostí probíhá v Azure Resource Manageru nebo základní poskytovatele prostředků jako CRP, zkontrolujte `x-ms-ratelimit-remaining-subscription-reads` pro požadavky GET a `x-ms-ratelimit-remaining-subscription-writes` hlavičky odpovědi pro požadavky bez GET. Pokud zbývající počet volání se blíží 0, bylo dosaženo limitu předplatného obecné volání definované pomocí Azure Resource Manageru. Aktivity všichni klienti předplatného započítávají dohromady. V opačném případě omezování pochází z poskytovatele prostředků cílového (ten odkazovaného `/providers/<RP>` segment adresy URL požadavku). 
 
@@ -88,4 +88,4 @@ Jak je znázorněno výše, zahrnuje každé chybě omezení `Retry-After` hlavi
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o pokyny k opakování pro ostatní služby v Azure najdete v tématu [pokyny pro opakování pro určité služby](https://docs.microsoft.com/en-us/azure/architecture/best-practices/retry-service-specific)
+Další informace o pokyny k opakování pro ostatní služby v Azure najdete v tématu [pokyny pro opakování pro určité služby](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific)

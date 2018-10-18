@@ -1,10 +1,10 @@
 ---
-title: Migrace ze služby Azure Media Services v2 v3 | Microsoft Docs
+title: Migrace z Azure Media Services v2 na v3 | Dokumentace Microsoftu
 description: Tento článek popisuje změny, které byly zavedeny v Azure Media Services v3 a jsou uvedeny rozdíly mezi dvěma verzemi.
 services: media-services
 documentationcenter: na
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 tags: ''
 keywords: azure media services, stream, všesměrové vysílání, live, režim offline
@@ -13,62 +13,59 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 06/12/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: a382af644d30f9f0ebb586273c982ef1766f50b0
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: a17bad5beb651aaa085c626296c200a00c30647e
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295684"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376358"
 ---
-# <a name="migrate-from-media-services-v2-to-v3"></a>Migrace ze služby Media Services v2 v3
-
-> [!NOTE]
-> Nejnovější verze služby Azure Media Services je ve verzi Preview a může být označována jako v3.
+# <a name="migrate-from-media-services-v2-to-v3"></a>Migrace ze služby Media Services v2 na v3
 
 Tento článek popisuje změny, které byly zavedeny v Azure Media Services (AMS) v3 a jsou uvedeny rozdíly mezi dvěma verzemi.
 
-## <a name="why-should-you-move-to-v3"></a>Proč by měl přesunutí v3?
+## <a name="why-should-you-move-to-v3"></a>Proč byste je přesunout na v3?
 
-### <a name="api-is-more-approachable"></a>Rozhraní API je více přístupný
+### <a name="api-is-more-approachable"></a>Rozhraní API je více přístupné
 
-*  V3 je založena na jednotné rozhraní API prostor, který zveřejňuje operace a Správa funkce, které jsou integrované v Azure Resource Manager. Šablony Azure Resource Manager umožňuje vytvářet a nasazovat transformací, koncové body streamování, LiveEvents a další.
-* Otevřete rozhraní API (neboli Swagger) dokumentu specifikací.
-* Sady SDK k dispozici pro platformu .net, rozhraní .net Core, Node.js, Python, Javy, Ruby.
-* Integrace rozhraní příkazového řádku Azure.
+*  V3 je založená na sjednocené rovinu rozhraní API, která poskytuje správu i provoz funkcí, které jsou integrované v Azure Resource Manageru. Šablony Azure Resource Manageru je možné vytvořit a nasadit transformací, koncové body streamování, LiveEvents a další.
+* Otevřete rozhraní API (označuje se také jako Swagger) specifikace dokumentu.
+* Sady SDK jsou dostupné pro .net,.Net Core, Node.js, Python, Java, Ruby.
+* Integrace s Azure CLI.
 
 ### <a name="new-features"></a>Nové funkce
 
-* Kódování teď podporuje protokol HTTPS ingestování (vstupu na základě adresy Url).
-* Transformace jsou novinkou v v3. Transformace se používá k sdílet konfigurace, vytváření šablon Azure Resource Manageru a izolovat kódování nastavení pro konkrétního zákazníka nebo klienta. 
-* Prostředek může mít několik StreamingLocators s jiným nastavením dynamické balením a dynamickým šifrováním.
-* Ochrana obsahu podporuje více klíčové funkce. 
-* LiveEvent Preview podporuje dynamické balení a dynamické šifrování. To umožňuje ochranu obsahu pro balení Preview a také DASH a HLS.
-* LiveOuput je jednodušší použít než starší Program entity. 
-* Přidala se podpora RBAC na entity.
+* Kódování nyní podporuje HTTPS ingestování (vstupu na základě adresy Url).
+* Transformace jsou nové ve verzi 3. Transformace umožňuje sdílet konfigurace, vytváření šablon Azure Resource Manageru a izolovat nastavení kódování pro konkrétního zákazníka nebo klienta. 
+* Prostředek může mít více StreamingLocators s různými nastaveními dynamického balení a dynamického šifrování.
+* Content protection podporuje více klíčových funkcí. 
+* Livestream ve verzi Preview podporuje dynamické balení a dynamického šifrování. To umožňuje ochranu obsahu pro balení ve verzi Preview a DASH nebo HLS.
+* LiveOuput je snazší než starší Program entity. 
+* Přidala se podpora RBAC u entit.
 
 ## <a name="changes-from-v2"></a>Změny z v2
 
-* Ve službě Media Services v3, je šifrování úložiště (šifrování AES 256) pouze podporována z důvodů zpětné kompatibility při vaše prostředky, které se vytvořily s v2 Media Services. Znamená v3 funguje s existující úložiště šifrovaný prostředky, ale neumožní vytváření nových databází.
+* V Media Services v3 šifrování úložiště (šifrování AES-256) je jenom podporována pro zpětné kompatibility při vaše prostředky se vytvořily pomocí Media Services v2. To znamená v3 spolupracuje s existující úložiště šifrované prostředky, ale nebude umožňovat vytváření nových.
 
-    Pro prostředky vytvořena s v3, služba Media Services podporuje [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) šifrování úložiště na straně serveru.
+    Pro prostředky vytvořené pomocí v3, služba Media Services podporuje [služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) šifrování úložiště na straně serveru.
     
-* Media Services SDK odpojené od sady SDK úložiště, což dává větší kontrolu nad sady SDK úložiště používá a zabraňuje Správa verzí – potíže. 
-* V v3 kódování přenosové rychlosti jsou všechny bity za sekundu. To se liší od v2 REST, který nastaví aplikace Media Encoder Standard. Například přenosovou rychlostí v v2 by byl zadán jako 128, ale v v3 by bylo 128000. 
-* IngestManifests AssetFiles, AccessPolicies, nejsou k dispozici v v3.
-* ContentKeys již nejsou entity, vlastnost StreamingLocator.
-* Podpora mřížky událostí nahradí NotificationEndpoints.
-* Byly přejmenovány některé entity
+* Media Services SDK oddělený od SDK úložiště, který dává větší kontrolu nad sady SDK služby Storage použít a správa verzí – potíže se vyhnete. 
+* Ve verzi 3 kódování přenosové rychlosti jsou všechny bity za sekundu. To se liší od v2 REST, které přednastavení kodéru Media Encoder Standard. Například s přenosovou rychlostí v v2 by byl zadán jako 128, ale ve verzi 3 by 128000. 
+* IngestManifests AssetFiles AccessPolicies, neexistuje ve verzi 3.
+* Klíčů ContentKeys už nejsou entity, vlastnost StreamingLocator.
+* Event Grid podporu nahradí NotificationEndpoints.
+* Některé entity byly přejmenovány.
 
-  * JobOutput nahradí úloh, teď právě část úlohy.
-  * LiveEvent nahradí kanálu.
-  * LiveOutput nahrazuje Program.
-  * StreamingLocator nahradí lokátoru.
+  * JobOutput nahradí úlohy, teď právě součástí projektu.
+  * Livestream nahradí kanálu.
+  * LiveOutput nahradí programu.
+  * StreamingLocator nahradí Lokátor.
 
 ## <a name="code-changes"></a>Změny kódu
 
-### <a name="create-an-asset-and-upload-a-file"></a>Vytvořte asset a nahrajte soubor 
+### <a name="create-an-asset-and-upload-a-file"></a>Vytvoření assetu a nahrání souboru 
 
 #### <a name="v2"></a>v2
 
@@ -133,18 +130,18 @@ new Job {Input = jobInput, Outputs = jobOutputs});
 1. Vytvoření ContentKeyAuthorizationPolicyOption
 2. Vytvoření ContentKeyAuthorizationPolicy
 3. Vytvoření AssetDeliveryPolicy
-4. Vytvoření prostředku a nahrát obsah nebo odeslat úlohu a použít výstupní asset
-5. Přidružit Asset AssetDeliveryPolicy
+4. Vytvoření prostředku a nahrát obsah nebo odeslat úlohu a použití prostředku výstupu
+5. Přiřazení k AssetDeliveryPolicy Assetu
 6. Vytvoření ContentKey
-7. Připojte ContentKey pro prostředek
+7. Připojit ContentKey k Assetu
 8. Vytvoření AccessPolicy
-9. Vytvořit lokátor
+9. Vytvoření lokátoru
 
 #### <a name="v3"></a>v3
 
-1. Vytvoření zásad klíče k obsahu
+1. Vytvoření obsahu klíče zásad
 2. Vytvoření prostředku
-3. Nahrát obsah nebo jako JobOutput použít Asset
+3. Nahrát obsah nebo Asset používat jako JobOutput
 4. Vytvoření StreamingLocator
 
 ## <a name="next-steps"></a>Další postup

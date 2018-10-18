@@ -2,7 +2,7 @@
 title: Azure Media Services s technologií Widevine licence Přehled šablon | Dokumentace Microsoftu
 description: Toto téma obsahuje základní informace o šabloně licence Widevine, který se používá ke konfiguraci licencí Widevine.
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: e54aff6e42d19755d274393d4221578cf5595cc5
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: bd09205d4bdc60891044728cf0dcafa092ae9846
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39112786"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377439"
 ---
 # <a name="widevine-license-template-overview"></a>Přehled šablon licencování Widevine 
 

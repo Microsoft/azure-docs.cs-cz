@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: f79be44d33a327f3ead8d950885cb5d47ce3a015
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 67778a269aa962b3184bf55c692154570e8357ba
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47413392"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387380"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Diagnostika výkonu pro virtuální počítače Azure
 
@@ -103,7 +103,7 @@ Po dokončení nahrávání je uvedena nová sestava Diagnostika na webu Azure P
 Použití **nastavení** tlačítka panelu nástrojů, chcete-li změnit účet úložiště, kde mohou být uloženy diagnostiky přehledů a výstup. Můžete použít stejný účet úložiště pro víc virtuálních počítačů, které používají Diagnostika výkonu. Pokud změníte účet úložiště, se neodstraní původní sestav a přehledů. Ale už se zobrazí v seznamu sestav diagnostiky. 
 
 ## <a name="review-insights-and-performance-diagnostics-report"></a>Kontrola přehledů a sestava Diagnostika výkonu
-Každý diagnostiky obsahuje seznam přehledů a doporučení, ovlivněné prostředky, soubory protokolu a dalších shromážděných informací o plnohodnotnou diagnostiku a sestavy pro prohlížení v režimu offline. Úplný seznam všechna shromážděná diagnostická data, najdete v části [jaké informace se shromažďují ve PerfInsights?](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/how-to-use-perfinsights#what-kind-of-information-is-collected-by-perfinsights) 
+Každý diagnostiky obsahuje seznam přehledů a doporučení, ovlivněné prostředky, soubory protokolu a dalších shromážděných informací o plnohodnotnou diagnostiku a sestavy pro prohlížení v režimu offline. Úplný seznam všechna shromážděná diagnostická data, najdete v části [jaké informace se shromažďují ve PerfInsights?](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-use-perfinsights#what-kind-of-information-is-collected-by-perfinsights) 
 
 ### <a name="select-a-performance-diagnostics-report"></a>Vyberte sestavu Diagnostika výkonu
 Seznam sestav diagnostiky můžete použít k vyhledání všech sestav diagnostiky, které byly spuštěny. Seznam obsahuje podrobnosti o analýzy, která byla použita, přehledy, které nebyly nalezeny a úroveň dopadu. Vyberte nějaký řádek zobrazíte další podrobnosti.
@@ -123,7 +123,7 @@ Můžete vybrat určitý Přehled zobrazíte další podrobnosti o ovlivněné p
 ![Snímek obrazovky podrobností insight Diagnostika výkonu](media/performance-diagnostics/insight-detail.png)
 
 ### <a name="download-and-review-the-full-performance-diagnostics-report"></a>Stáhnout a revidovat diagnostickou zprávu plný výkon
-Můžete použít **stáhnout sestavu** tlačítko a stáhněte si zprávu ve formátu HTML, který obsahuje informace o dalších bohatou diagnostikou, jako je například úložiště a konfiguraci sítě, čítače výkonu, trasování, seznam procesů a protokoly. Obsah závisí na vybrané analýzy. Zpráva o případě pokročilého odstraňování problémů, může obsahovat další informace a interaktivních grafů, které se vztahují k vysoké využití procesoru, vysoké míře využití disku a procesy, které spotřebovávají využívala příliš mnoho paměti. Další informace o sestavě Diagnostika výkonu najdete v tématu [zkontrolovat sestavu diagnostiky](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/how-to-use-perfinsights#review-the-diagnostics-report).
+Můžete použít **stáhnout sestavu** tlačítko a stáhněte si zprávu ve formátu HTML, který obsahuje informace o dalších bohatou diagnostikou, jako je například úložiště a konfiguraci sítě, čítače výkonu, trasování, seznam procesů a protokoly. Obsah závisí na vybrané analýzy. Zpráva o případě pokročilého odstraňování problémů, může obsahovat další informace a interaktivních grafů, které se vztahují k vysoké využití procesoru, vysoké míře využití disku a procesy, které spotřebovávají využívala příliš mnoho paměti. Další informace o sestavě Diagnostika výkonu najdete v tématu [zkontrolovat sestavu diagnostiky](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-use-perfinsights#review-the-diagnostics-report).
 
 ## <a name="manage-performance-diagnostics-reports"></a>Správa sestav Diagnostika výkonu
 Můžete odstranit jednu nebo více sestav Diagnostika výkonu pomocí **odstranit sestavu** tlačítko.

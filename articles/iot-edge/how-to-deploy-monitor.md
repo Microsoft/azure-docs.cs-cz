@@ -9,12 +9,12 @@ ms.date: 07/25/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 28aa2904f63a9802305d24fec1650f84e38601ab
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: c6700dc4bc0cc458e34e129b2468daad88ecc8be
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258429"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393453"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Nasazení a monitorování modulů IoT Edge ve velkém měřítku pomocí webu Azure portal
 
@@ -39,11 +39,11 @@ Před vytvořením nasazení, budete muset mít k určení zařízení, která c
 }
 ```
 
-Další informace o značky a dvojčata zařízení, najdete v části [principy a použití dvojčat zařízení ve službě IoT Hub][lnk-device-twin].
+Další informace o značky a dvojčata zařízení, najdete v části [principy a použití dvojčat zařízení ve službě IoT Hub](../iot-hub/iot-hub-devguide-device-twins.md).
 
 ## <a name="create-a-deployment"></a>Vytvoření nasazení
 
-1. V [webu Azure portal][lnk-portal], přejděte do služby IoT hub. 
+1. V [webu Azure portal](https://portal.azure.com), přejděte do služby IoT hub. 
 1. Vyberte **IoT Edge**.
 1. Vyberte **přidat nasazení IoT Edge**.
 
@@ -77,7 +77,7 @@ Chcete-li přidat vlastní kód jako modul, nebo chcete-li ručně přidat modul
 1. Vyberte **modul IoT Edge**.
 1. Zadejte modul **název**.
 1. Pro **identifikátor URI Image** zadejte image kontejneru pro modul. 
-1. Zadejte libovolné **možnosti vytvoření kontejneru** , který by měly být předány kontejneru. Další informace najdete v tématu [vytvořit docker][lnk-docker-create].
+1. Zadejte libovolné **možnosti vytvoření kontejneru** , který by měly být předány kontejneru. Další informace najdete v tématu [vytvořit docker](https://docs.docker.com/engine/reference/commandline/create/).
 1. Pomocí rozevírací nabídky vyberte **zásady restartování**. Zvolte jednu z následujících možností: 
    * **Vždy** – modul vždy restartuje, pokud z nějakého důvodu vypne.
    * **Nikdy** – modul nikdy restartuje, pokud z nějakého důvodu vypne.
@@ -117,11 +117,11 @@ Zkontrolujte informace o nasazení a pak vyberte **odeslat**.
 
 Chcete-li zobrazit podrobnosti o nasazení a monitorování zařízení, na kterých je spuštěná, použijte následující postup:
 
-1. Přihlaste se k [webu Azure portal] [ lnk-portal] a přejděte do služby IoT hub. 
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com) a přejděte do služby IoT hub. 
 1. Vyberte **IoT Edge**.
 1. Vyberte **nasazení IoT Edge**. 
 
-   ![Zobrazení nasazení IoT Edge][1]
+   ![Zobrazení nasazení IoT Edge](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
 1. Zkontrolujte seznam nasazení. U každého nasazení se zobrazí následující podrobnosti:
    * **ID** – název nasazení.
@@ -144,11 +144,11 @@ Pokud aktualizujete cílovou podmínku, dojde k následující aktualizace:
 
 Pokud chcete upravit nasazení, postupujte následovně: 
 
-1. Přihlaste se k [webu Azure portal] [ lnk-portal] a přejděte do služby IoT hub. 
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com) a přejděte do služby IoT hub. 
 1. Vyberte **IoT Edge**.
 1. Vyberte **nasazení IoT Edge**. 
 
-   ![Zobrazení nasazení IoT Edge][1]
+   ![Zobrazení nasazení IoT Edge](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
 1. Vyberte nasazení, které chcete upravit. 
 1. Proveďte aktualizace na následující pole: 
@@ -156,17 +156,17 @@ Pokud chcete upravit nasazení, postupujte následovně:
    * Popisky 
    * Priorita 
 1. Vyberte **Uložit**.
-1. Postupujte podle kroků v [monitorování nasazení] [ anchor-monitor] sledovat změny zavádět. 
+1. Postupujte podle kroků v [monitorování nasazení](#monitor-a-deployment) sledovat změny zavádět. 
 
 ## <a name="delete-a-deployment"></a>Odstranit nasazení
 
 Při odstranění nasazení nějaká zařízení provést další nejvyšší prioritu nasazení. Pokud vaše zařízení nesplňuje cílová podmínka jakékoli jiné nasazení, moduly se neodeberou při nasazení se odstraní. 
 
-1. Přihlaste se k [webu Azure portal] [ lnk-portal] a přejděte do služby IoT hub. 
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com) a přejděte do služby IoT hub. 
 1. Vyberte **IoT Edge**.
 1. Vyberte **nasazení IoT Edge**. 
 
-   ![Zobrazení nasazení IoT Edge][1]
+   ![Zobrazení nasazení IoT Edge](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
 1. Pomocí zaškrtávacího políčka vyberte nasazení, které chcete odstranit. 
 1. Vyberte **Odstranit**.
@@ -174,16 +174,4 @@ Při odstranění nasazení nějaká zařízení provést další nejvyšší pr
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o [moduly nasazení do hraničních zařízení][lnk-deployments].
-
-<!-- Images -->
-[1]: ./media/how-to-deploy-monitor/iot-edge-deployments.png
-
-<!-- Links -->
-[lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md
-[lnk-portal]: https://portal.azure.com
-[lnk-docker-create]: https://docs.docker.com/engine/reference/commandline/create/
-[lnk-deployments]: module-deployment-monitoring.md
-
-<!-- Anchor links -->
-[anchor-monitor]: #monitor-a-deployment
+Další informace o [moduly nasazení do hraničních zařízení](module-deployment-monitoring.md).

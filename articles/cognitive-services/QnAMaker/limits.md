@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: efdcf57fb0f175be51e6b9f8e72e4a02fcbeb5f3
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 76024266a8ae3eb03e910e140184a07ae363e881
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162317"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49384938"
 ---
 # <a name="qna-maker-limits"></a>Omezení nástroje QnA Maker
 Úplný seznam omezení napříč QnA Maker.
@@ -29,7 +29,7 @@ ms.locfileid: "47162317"
 |(Max. počet indexů – 1 (vyhrazené pro test) povolený maximální počet publikovaných znalostních bází|2|14|49|199|199|2999|
 
 ## <a name="extraction-limits"></a>Extrakce omezení
-* Maximální počet souborů, které může být extrahována a maximální velikost souboru: viz [ceny QnA maker](https://azure.microsoft.com/en-in/pricing/details/cognitive-services/qna-maker/)
+* Maximální počet souborů, které může být extrahována a maximální velikost souboru: viz [ceny QnA maker](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)
 * Maximální počet hloubkové odkazy, které je možné procházet ze stránek HTML – nejčastější dotazy pro extrakci maximálně: 20
 
 ## <a name="metadata-limits"></a>Omezení metadat
@@ -49,7 +49,7 @@ Celkové limitů na obsah znalostní báze knowledge base:
 * Délka názvu souboru: 200
 * Podporované formáty souborů: "TSV", ".pdf", ".txt", ".docx", ".xlsx".
 * Maximální počet alternativní otázek: 100
-* Maximální počet dvojic otázka – odpověď: závisí [vrstva Azure Search](https://docs.microsoft.com/en-in/azure/search/search-limits-quotas-capacity#document-limits) zvolené 
+* Maximální počet dvojic otázka – odpověď: závisí [vrstva Azure Search](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits) zvolené 
 
 ## <a name="create-knowledge-base-call-limits"></a>Vytvoření znalostní báze volání omezení:
 Tyto představují vytvořit omezení pro každou akci znalostní báze; To znamená, že kliknete na *vytvořit KB* nebo volání rozhraní API CreateKnowledgeBase.

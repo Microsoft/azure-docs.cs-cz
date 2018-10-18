@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 08/10/2018
+ms.date: 10/16/2018
 ms.author: spelluru
-ms.openlocfilehash: f13e46b310f4f9048b38ab50ce0241d1b2b3161b
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 00ae254a9e9d40ec88802f2f46666aff72cb242a
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395691"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377629"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs"></a>Postup použití služby Service Bus témata a odběry s využitím Node.js
 
@@ -73,7 +73,7 @@ var azure = require('azure');
 ### <a name="set-up-a-service-bus-connection"></a>Nastavit připojení služby Service Bus
 Modul Azure načte proměnnou prostředí `AZURE_SERVICEBUS_CONNECTION_STRING` pro připojovací řetězec, který jste získali z předchozích kroků, "získání přihlašovacích údajů." Pokud tato proměnná prostředí není nastavená, je nutné zadat informace o účtu, při volání metody `createServiceBusService`.
 
-Příklad nastavení proměnných prostředí pro cloudové služby Azure najdete v tématu [Cloudová služba Node.js s využitím úložiště][Node.js Cloud Service with Storage].
+Příklad nastavení proměnných prostředí pro cloudové služby Azure najdete v tématu [nastavit proměnné prostředí](../container-instances/container-instances-environment-variables.md#azure-cli-example).
 
 
 
@@ -127,7 +127,7 @@ function (returnObject, finalCallback, next)
 
 V tomto zpětném volání a po zpracování `returnObject` (odpovědi z požadavku na server), zpětného volání musí vyvolat další (pokud existuje) Chcete-li pokračovat ve zpracování další filtry, nebo vyvolat `finalCallback` k ukončení volání služby.
 
-Sada Azure SDK pro Node.js obsahuje dva filtry, které implementují logiku opakování: **ExponentialRetryPolicyFilter** a **LinearRetryPolicyFilter**. Vytvoří následující **ServiceBusService** objekt, který se používá **ExponentialRetryPolicyFilter**:
+Sada Azure SDK pro Node.js obsahuje dva filtry, které implementují logiku opakování: **ExponentialRetryPolicyFilter** a **LinearRetryPolicyFilter**. Následující kód vytvoří **ServiceBusService** objekt, který se používá **ExponentialRetryPolicyFilter**:
 
 ```javascript
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
@@ -242,7 +242,7 @@ Odeslat zprávu do tématu služby Service Bus, vaše aplikace musí používat 
 Zprávy odeslané do témat Service Bus jsou **BrokeredMessage** objekty.
 **BrokeredMessage** objekty mají sadu standardních vlastností (jako například `Label` a `TimeToLive`), slovník používaný pro udržení vlastních vlastností specifické pro aplikace a tělo s daty řetězec. Aplikace může tělo zprávy nastavit předáním řetězcové hodnoty `sendTopicMessage` a veškeré požadované standardní vlastnosti jsou vyplněn výchozí hodnoty.
 
-Následující příklad ukazuje, jak odeslat pět zkušebních zpráv do `MyTopic`. `messagenumber` Hodnota vlastnosti každé zprávy se liší v iteraci smyčky (to určuje, které odběry ji přijmou):
+Následující příklad ukazuje, jak odeslat pět zkušebních zpráv do `MyTopic`. `messagenumber` Hodnota vlastnosti každé zprávy se liší v iteraci smyčky (Tato vlastnost určuje, které odběry ji přijmou):
 
 ```javascript
 var message = {
@@ -268,7 +268,7 @@ Témata Service Bus podporují maximální velikost zprávy 256 KB [na úrovni S
 ## <a name="receive-messages-from-a-subscription"></a>Příjem zpráv z odběru
 Přijme zprávy z odběru pomocí `receiveSubscriptionMessage` metodu **ServiceBusService** objektu. Ve výchozím nastavení zprávy odstraněny z předplatného, jako jsou načteny. Však lze nastavit volitelný parametr `isPeekLock` k **true** číst (Náhled) a uzamčení zprávy bez odstranění z předplatného.
 
-Výchozí chování pro čtení a odstranění zprávy jako součást operace receive je nejjednodušší model a funguje nejlépe v situacích, ve kterých aplikace může tolerovat možnost, zprávy v případě selhání. Informace o tom toto chování, vezměte v úvahu scénář, ve kterém spotřebitel požadavek na přijetí a poté dojde k chybě před její zpracování. Vzhledem k tomu, že Service Bus označil zprávu jako spotřebovávanou, pak když aplikace znovu spustí a začne znovu přijímat zprávy, byl vynechán zprávu, která se spotřebovala před pádem vynechá.
+Výchozí chování pro čtení a odstranění zprávy jako součást operace receive je nejjednodušší model a funguje nejlépe v situacích, ve kterých aplikace může tolerovat možnost, není zpracování zprávy, když dojde k selhání. Informace o tom toto chování, vezměte v úvahu scénář, ve kterém spotřebitel požadavek na přijetí a poté dojde k chybě před její zpracování. Vzhledem k tomu, že Service Bus označil zprávu jako spotřebovávanou, pak když aplikace znovu spustí a začne znovu přijímat zprávy, byl vynechán zprávu, která se spotřebovala před pádem vynechá.
 
 Pokud `isPeekLock` parametr je nastaven na **true**, receive stane dvoufázová operaci, která umožňuje to podporuje aplikace, které nemůžou tolerovat chybějících zpráv. Když Service Bus přijme požadavek, najde zprávu, chcete-li využívají, uzamkne ji ostatní uživatelé z dešifrujete proti a vrátí ji do aplikace.
 Poté, co aplikace zpracovává zprávu (nebo spolehlivě uloží pro pozdější zpracování), dokončení druhé fáze přijetí voláním **deleteMessage** metoda a předá zpráva, kterou chcete odstranit jako parametr. **DeleteMessage** metoda označí zprávu jako spotřebovanou a odstraní ji z odběru.

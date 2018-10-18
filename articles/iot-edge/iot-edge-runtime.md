@@ -8,12 +8,12 @@ ms.date: 08/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9c9c04a8310a46605cf5733131db1418b7cb7f7a
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 97a2180aaf236d3541cff30d2151f26ce70b14af
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47218780"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393470"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Pochopení runtime Azure IoT Edge a jeho architektura
 
@@ -23,13 +23,13 @@ Modul runtime IoT Edge zajišťuje následující funkce na zařízeních IoT Ed
 
 * Instaluje a aktualizuje na zařízení úlohy.
 * Udržuje na zařízení standardy zabezpečení Azure IoT Edge.
-* Zajišťuje, že [moduly IoT Edge] [lnk moduly] nepřetržitý provoz.
+* Zajišťuje, že [moduly IoT Edge](iot-edge-modules.md) nepřetržitý provoz.
 * Hlásí do cloudu stav modulů pro účely vzdáleného monitorování.
 * Usnadňuje komunikaci mezi podřízenými zařízeními typu list a zařízení IoT Edge.
 * Usnadňuje komunikaci mezi moduly v příslušném hraničním zařízení IoT.
 * Usnadňuje komunikaci mezi příslušným hraničním zařízením IoT a cloudem.
 
-![Modul runtime IoT Edge. komunikuje přehledy a stav modulů pro službu IoT Hub][1]
+![Modul runtime IoT Edge. komunikuje přehledy a stav modulů pro službu IoT Hub](./media/iot-edge-runtime/Pipeline.png)
 
 Odpovědnosti modul runtime IoT Edge spadají do dvou kategorií: modul komunikaci a správu. Tyto dvě role provádí dvě komponenty, které tvoří modul runtime IoT Edge. Centrum IoT Edge je zodpovědná za komunikaci, zatímco agenta IoT Edge spravuje nasazení a monitorování modulů. 
 
@@ -49,7 +49,7 @@ Centrum Edge není s plnou verzí služby IoT Hub spuštěná místně. Existuje
 
 Používá ke snížení šířky pásma vašeho řešení IoT Edge a Centrum Edge optimalizuje tak počet skutečných připojení probíhají do cloudu. Centrum Edge přebírá logickou připojení od klientů, jako jsou moduly nebo zařízení typu list a kombinuje je pro jedno fyzické připojení ke cloudu. Podrobnosti tohoto procesu je transparentní pro zbytek tohoto řešení. Klienti myslíte, že budou mít svoje vlastní připojení ke cloudu i v případě, že všechny se odešlou přes stejné připojení. 
 
-![Centrum Edge funguje jako brána mezi několik fyzických zařízení a cloudu][2]
+![Centrum Edge funguje jako brána mezi několik fyzických zařízení a cloudu](./media/iot-edge-runtime/Gateway.png)
 
 Centrum Edge můžete určit, jestli je připojený ke službě IoT Hub. Pokud dojde ke ztrátě připojení, Centrum Edge uloží zprávy nebo aktualizace dvojčete místně. Po připojení se obnoví, synchronizuje všechna data. Umístění použité pro tato dočasná mezipaměť se určuje podle vlastnosti tohoto dvojčete modulu Centrum Edge. Velikost mezipaměti není omezené a se zvýší, dokud zařízení má kapacitu úložiště. 
 
@@ -57,7 +57,7 @@ Centrum Edge můžete určit, jestli je připojený ke službě IoT Hub. Pokud d
 
 Centrum Edge usnadňuje komunikaci modulu do modulu. Pomocí Centrum Edge jako zprostředkovatel zpráv uchovává moduly nezávisle na sobě navzájem. Moduly stačí zadat vstupy, na kterých přijetí zprávy a výstupy, ke kterým se zápis zpráv. Pro vývojáře řešení pak spojí tyto vstupy a výstupy dohromady tak, aby moduly zpracovávat data v pořadí, které jsou specifické pro příslušné řešení. 
 
-![Centrum Edge usnadňuje komunikaci modulu modulu][3]
+![Centrum Edge usnadňuje komunikaci modulu modulu](./media/iot-edge-runtime/ModuleEndpoints.png)
 
 K odesílání dat do Centrum Edge, volá modul SendEventAsync metodu. První argument určuje, na které výstupu pro odeslání zprávy. Následujícím pseudokódu odešle zprávu na output1:
 
@@ -77,7 +77,7 @@ Při příjmu zprávy, zaregistrujte zpětné volání, která zpracovává zpr�
 
 <!--- For more info on how to declare routes between modules, see []. --->   
 
-![Trasy mezi moduly][4]
+![Trasy mezi moduly](./media/iot-edge-runtime/ModuleEndpointsWithRoutes.png)
 
 ## <a name="iot-edge-agent"></a>Agenta IoT Edge
 
@@ -117,13 +117,4 @@ Další informace o rozhraní zabezpečení Azure IoT Edge, přečtěte si infor
 
 ## <a name="next-steps"></a>Další postup
 
-[Vysvětlení, že se certifikáty Azure IoT Edge][lnk-certs]
-
-<!-- Images -->
-[1]: ./media/iot-edge-runtime/Pipeline.png
-[2]: ./media/iot-edge-runtime/Gateway.png
-[3]: ./media/iot-edge-runtime/ModuleEndpoints.png
-[4]: ./media/iot-edge-runtime/ModuleEndpointsWithRoutes.png
-
-<!-- Links -->
-[lnk-certs]: iot-edge-certs.md
+[Vysvětlení, že se certifikáty Azure IoT Edge](iot-edge-certs.md)

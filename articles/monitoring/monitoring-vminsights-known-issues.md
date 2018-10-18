@@ -12,19 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/03/2018
+ms.date: 10/15/2018
 ms.author: magoedte
-ms.openlocfilehash: 43000993c6a26ef8d44e941f5235ebad7aeee66f
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 6d1f1d1ae07ec32262f655fd6ed7205a70e252f4
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248053"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385080"
 ---
 # <a name="known-issues-with-azure-monitor-for-vms"></a>Známé problémy s monitorováním Azure pro virtuální počítače
 
 Následující seznam uvádí známé problémy s funkcí stavu služby Azure Monitor pro virtuální počítače:
 
+- Stav funkce je onbaorded pro všechny virtuální počítače připojené k pracovnímu prostoru Log Analytics i v případě, že připojení je zahájeno a ukončeno z jednoho virtuálního počítače.
 - Pokud virtuální počítač Azure neexistuje žádné další, protože byl odebrán nebo odstraněn, se zobrazí v zobrazení seznamu virtuálních počítačů pro tři až sedm dní. Kromě toho by spusťte kliknutím na stav virtuálního počítače odstraněny nebo odstraněné **stav diagnostiky** , zobrazení, které pak přejde do smyčky načítání. Okno s výběrem názvu odstraněného virtuálního počítače spustí a zobrazí se zpráva s informacemi o tom, že virtuální počítač se odstranil.
 - Časové období a četnost kritéria stavu nelze změnit v této vydané verzi. 
 - Kritéria stavu nejde zakázat. 

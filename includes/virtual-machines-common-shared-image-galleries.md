@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/20/2018
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 6a64d85cc476c7494a1730959b96e9480115cd90
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 56f48f6676b3c878effe788316024e642c17ff5a
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047437"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49400301"
 ---
 Sdílené Galerie Imagí je služba, která vám pomůže sestavit strukturu a organizace vlastních imagí virtuálních počítačů. Sdílené Galerie obrázků poskytuje tři hlavní prvky
 - Jednoduchá správa
@@ -75,9 +75,9 @@ Sdílené Galerie obrázků vám také umožní automaticky replikovat vaši Ima
 ## <a name="access"></a>Access
 Jako galerie sdílené bitové kopie sdílené bitové kopie a sdílené bitové kopie verze jsou všechny prostředky, je může sdílet pomocí integrovaného Azure RBAC nativní ovládací prvky. Pomocí RBAC můžete sdílet tyto prostředky pro další uživatele, objektů služby a skupiny ve vaší organizaci. Rozsah sdílení těchto prostředků je ve stejném tenantovi AD. Jakmile uživatel má přístup k verzi sdílené bitové kopie, můžou třeba nasadit virtuální počítač nebo škálovací sady v některém z předplatných, ke kterým mají přístup v rámci stejné AD tenanta jako Shared verze image virtuálních počítačů.  Tady je sdílení, která pomáhá pochopit, co uživatel získá přístup k matici:
 
-| Sdílené s uživatelem     | Sdílené Galerie obrázků | Sdílené bitové kopie | Verze sdílené bitové kopie |
+| Sdílené s uživatelem     | Sdílená galerie obrázků | Sdílené bitové kopie | Verze sdílené bitové kopie |
 |----------------------|----------------------|--------------|----------------------|
-| Sdílené Galerie obrázků | Ano                  | Ano          | Ano                  |
+| Sdílená galerie obrázků | Ano                  | Ano          | Ano                  |
 | Sdílené bitové kopie         | Ne                   | Ano          | Ano                  |
 | Verze sdílené bitové kopie | Ne                   | Ne           | Ano                  |
 
@@ -146,7 +146,7 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
 
 **Otázka:** Můžete vytvořit image verze ze specializovaného disku?
 
- A. Ne, nepodporujeme aktuálně specializované disky jako Image. Pokud budete mít speciální disk, budete muset [vytvoření virtuálního počítače z virtuálního pevného disku](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal#create-a-vm-from-a-disk) připojením specializeddisk k novému virtuálnímu počítači. Jakmile budete mít spuštěný virtuální počítač, budete muset postupovat podle pokynů a vytvořte spravovanou image z [virtuálního počítače Windows] (https://docs.microsoft.com/en-us/azure/virtual-machines/windows/tutorial-custom-images) nebo [virtuálního počítače s Linuxem](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/tutorial-custom-images). Až budete mít generalizované image spravovaného, můžete zahájit proces vytvořit popis sdílené bitové kopie a verze image.
+ A. Ne, nepodporujeme aktuálně specializované disky jako Image. Pokud budete mít speciální disk, budete muset [vytvoření virtuálního počítače z virtuálního pevného disku](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal#create-a-vm-from-a-disk) připojením specializeddisk k novému virtuálnímu počítači. Jakmile budete mít spuštěný virtuální počítač, budete muset postupovat podle pokynů a vytvořte spravovanou image z [virtuálního počítače Windows] (https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-custom-images) nebo [virtuálního počítače s Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images). Až budete mít generalizované image spravovaného, můžete zahájit proces vytvořit popis sdílené bitové kopie a verze image.
 
 
 **Otázka:** Můžete vytvořit sdílené bitové kopie galerie, definici image a verze image na webu Azure portal?

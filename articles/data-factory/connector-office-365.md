@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 8a36053fe3189a72c33ea14445a6b064260eec01
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: c9252380581e77049e9464316ca77cc135f784b6
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318312"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377584"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-preview"></a>Zkopírovat data z Office 365 do Azure pomocí Azure Data Factory (Preview) 
 
@@ -125,7 +125,7 @@ Pokud chcete zkopírovat data z Office 365, jsou podporovány následující vla
 |:--- |:--- |:--- |
 | type | Vlastnost typ datové sady, musí být nastavena na: **Office365Table** | Ano |
 | tableName | Název datové sady, chcete-li extrahovat z Office 365. Přečtěte si [tady](https://github.com/OfficeDev/MS-Graph-Data-Connect/wiki/Capabilities#datasets) seznam k dispozici pro extrahování datových sad Office 365. | Ano |
-| Predikát | Predikátu výraz, který můžete použít k filtrování konkrétní řádky, které mají extrahovat z Office 365.  Najdete zde zjistit sloupce, které lze použít pro filtrování predikát pro každou tabulku a formát výrazu filtru. | Ne<br>(Pokud není zadána žádná predikátu, výchozí hodnota je extrahovat data za posledních 30 dní) |
+| Predikát | Predikátu výraz, který můžete použít k filtrování konkrétní řádky, které mají extrahovat z Office 365.  Přečtěte si [tady](https://github.com/OfficeDev/MS-Graph-Data-Connect/wiki/Capabilities#filters) a zjistěte, sloupce, které lze použít pro filtrování predikát pro každou tabulku a formát výrazu filtru. | Ne<br>(Pokud není zadána žádná predikátu, výchozí hodnota je extrahovat data za posledních 30 dní) |
 
 **Příklad**
 

@@ -11,20 +11,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2018
 ms.author: tomfitz
-ms.openlocfilehash: f19708d232080b53446bedd9316fcf9d7772890d
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: a5a2300bd0b768b4a29b01e75f9558c4923ac11c
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585794"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395119"
 ---
-# <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Povolit postupy bezpečného nasazení s Azure Deployment Manager (Public Preview)
+# <a name="enable-safe-deployment-practices-with-azure-deployment-manager-private-preview"></a>Povolit postupy bezpečného nasazení s Azure Deployment Manager (privátní verze Preview)
 
 K nasazení vaší služby napříč mnoha oblastmi a ujistěte se, že funguje podle očekávání v každé oblasti, můžete použít Azure Deployment Manager pro koordinaci postupné zavedení služby. Stejně jako pro nasazení v Azure, můžete definovat prostředky pro vaši službu v [šablon Resource Manageru](resource-group-authoring-templates.md). Po vytvoření šablony, pomocí Správce nasazení popisující topologii pro vaši službu a jak mají být zahrnuty navýšení kapacity.
 
-Deployment Manager je funkce Resource Manageru. Vaše možnosti rozšiřuje během nasazení. Pomocí Správce nasazení v případě, že máte komplexní služby, který musí být nasazený do několika oblastí. Pracovní nasazení pro vaši službu, můžete najít potenciální problémy dříve, než bude nasazena do všech oblastí. Pokud není nutné další bezpečnostní opatření postupné zavádění, použijte standardní [možnosti nasazení](resource-group-template-deploy-portal.md) pro Resource Manager. Deployment Manager se hladce integrují s všechny stávající nástroje třetích stran, které podporují nasazení Resource Manageru, jako jsou například průběžná integrace a průběžné doručování (CI/CD) nabídky. 
+Deployment Manager je funkce Resource Manageru. Vaše možnosti rozšiřuje během nasazení. Pomocí Správce nasazení v případě, že máte komplexní služby, který musí být nasazený do několika oblastí. Postupným zavedením služby, můžete najít potenciální problémy dříve, než bude nasazena do všech oblastí. Pokud není nutné další bezpečnostní opatření postupné zavádění, použijte standardní [možnosti nasazení](resource-group-template-deploy-portal.md) pro Resource Manager. Deployment Manager se hladce integrují s všechny stávající nástroje třetích stran, které podporují nasazení Resource Manageru, jako jsou například průběžná integrace a průběžné doručování (CI/CD) nabídky. 
 
-Azure Deployment Manager je ve verzi public preview. Chcete-li používat Azure Deployment Manager, proveďte [registrační formulář](https://aka.ms/admsignup). Pomoc se tím, že poskytuje vylepšení funkce [zpětnou vazbu](https://aka.ms/admfeedback).
+Azure Deployment Manager je ve verzi private preview. Chcete-li používat Azure Deployment Manager, proveďte [registrační formulář](https://aka.ms/admsignup). Pomoc se tím, že poskytuje vylepšení funkce [zpětnou vazbu](https://aka.ms/admfeedback).
 
 Pokud chcete použít nástroj Deployment Manager, budete muset vytvořit čtyři soubory:
 
@@ -37,7 +37,7 @@ Nasazení šablony topologie před nasazením šablony nasazení.
 
 ## <a name="supported-locations"></a>Podporovaná umístění
 
-Verze public Preview Deployment Manager prostředky jsou podporovány ve středu USA a východní USA 2. Při definování prostředků v šablonách topologie a uvedení do provozu, jako jsou jednotky služby, zdroje artefaktů a uvedení popsaných v tomto článku musíte zadat jednu z těchto oblastí pro umístění. Prostředky, které nasazujete, vytvoření služby, jako jsou virtuální počítače, účty storage a web apps, jsou však podporovány ve všech svých [standardní umístění](https://azure.microsoft.com/global-infrastructure/services/?products=all).  
+Ve verzi Preview Deployment Manager prostředky jsou podporovány ve středu USA a východní USA 2. Při definování prostředků v šablonách topologie a uvedení do provozu, jako jsou jednotky služby, zdroje artefaktů a uvedení popsaných v tomto článku musíte zadat jednu z těchto oblastí pro umístění. Prostředky, které nasazujete, vytvoření služby, jako jsou virtuální počítače, účty storage a web apps, jsou však podporovány ve všech svých [standardní umístění](https://azure.microsoft.com/global-infrastructure/services/?products=all).  
 
 ## <a name="identity-and-access"></a>Identita a přístup
 

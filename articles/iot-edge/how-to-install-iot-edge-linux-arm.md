@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 9007ee95dc25854a55006284ce6fc574fd8e7968
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 874e72a0c76a5935f4a3451ba5ffbd6e9e3eecd6
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948515"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393843"
 ---
 # <a name="install-azure-iot-edge-runtime-on-linux-arm32v7armhf"></a>Instalace modulu runtime Azure IoT Edge v Linuxu (ARM32v7/armhf)
 
@@ -29,7 +29,7 @@ Tento článek uvádí postup instalace modulu runtime Azure IoT Edge v Linuxu A
 
 ## <a name="install-the-container-runtime"></a>Nainstalovat modul runtime kontejneru
 
-Azure IoT Edge se může spolehnout [OCI kompatibilní] [ lnk-oci] kontejner modulu runtime. Pro produkční scénáře, důrazně doporučujeme vám použít [na základě Moby] [ lnk-moby] níže uvedený modul. Je modul pouze container oficiálně podporované službou Azure IoT Edge. Image kontejnerů dockeru CE/EE jsou kompatibilní s modulem runtime na základě Moby.
+Azure IoT Edge se může spolehnout [OCI kompatibilní](https://www.opencontainers.org/) kontejner modulu runtime. Pro produkční scénáře, důrazně doporučujeme vám použít [na základě Moby](https://mobyproject.org/) níže uvedený modul. Je modul pouze container oficiálně podporované službou Azure IoT Edge. Image kontejnerů dockeru CE/EE jsou kompatibilní s modulem runtime na základě Moby.
 
 Následujících příkazů nainstalujte základě Moby modul a rozhraní příkazového řádku (CLI). Rozhraní příkazového řádku je užitečné pro vývoj, ale volitelný pro nasazení v produkčním prostředí.
 
@@ -78,7 +78,7 @@ Jedno zařízení IoT Edge se dá zřídit ručně pomocí řetězce připojení
 
 ### <a name="option-1-manual-provisioning"></a>Možnost 1: Ruční zřizování
 
-Ruční zřizování zařízení, budete muset zadat ho [připojovací řetězec zařízení] [ lnk-dcs] , můžete vytvořit tak, že zaregistrujete nového zařízení ve službě IoT hub.
+Ruční zřizování zařízení, budete muset zadat ho [připojovací řetězec zařízení](how-to-register-device-portal.md) , můžete vytvořit tak, že zaregistrujete nového zařízení ve službě IoT hub.
 
 
 Otevřete konfigurační soubor. 
@@ -113,7 +113,7 @@ sudo systemctl restart iotedge
 
 ### <a name="option-2-automatic-provisioning"></a>Možnost 2: Automatické zřizování
 
-K automatickému zřízení zařízení, [nastavení služby Device Provisioning a načtení ID registrace zařízení][lnk-dps]. Automatické zřizování funguje jenom u zařízení, která mají čipu Trusted Platform Module (TPM). Například zařízení Raspberry Pi nezahrnují TPM ve výchozím nastavení. 
+K automatickému zřízení zařízení, [nastavení služby Device Provisioning a načtení ID registrace zařízení](how-to-auto-provision-simulated-device-linux.md). Automatické zřizování funguje jenom u zařízení, která mají čipu Trusted Platform Module (TPM). Například zařízení Raspberry Pi nezahrnují TPM ve výchozím nastavení. 
 
 Otevřete konfigurační soubor. 
 
@@ -171,17 +171,10 @@ sudo iotedge list
 
 Ke spouštění příkazů `iotedge` potřebujete zvýšená oprávnění. Po instalaci modulu runtime, odhlaste se z vašeho počítače a znovu se přihlaste automaticky aktualizovat vaše oprávnění. Dokud to neuděláte, použijte **sudo** před všechny `iotedge` příkazy.
 
-Na zařízeních prostředků omezené, důrazně doporučujeme, abyste nastavili *OptimizeForPerformance* proměnnou prostředí, aby *false* podle pokynů v [Průvodce odstraňováním potíží ][lnk-trouble].
+Na zařízeních prostředků omezené, důrazně doporučujeme, abyste nastavili *OptimizeForPerformance* proměnnou prostředí, aby *false* podle pokynů v [Průvodce odstraňováním potíží ](troubleshoot.md#stability-issues-on-resource-constrained-devices).
 
 Pokud vaše síť, která má proxy server, postupujte podle kroků v [nakonfigurujte zařízení IoT Edge pro komunikaci přes proxy server](how-to-configure-proxy-support.md).
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud máte problémy s modulu runtime Edge instalaci správně, podívejte se na [řešení potíží s] [ lnk-trouble] stránky.
-
-<!-- Links -->
-[lnk-dcs]: how-to-register-device-portal.md
-[lnk-dps]: how-to-auto-provision-simulated-device-linux.md
-[lnk-trouble]: https://docs.microsoft.com/azure/iot-edge/troubleshoot#stability-issues-on-resource-constrained-devices
-[lnk-oci]: https://www.opencontainers.org/
-[lnk-moby]: https://mobyproject.org/
+Pokud máte problémy s modulu runtime Edge instalaci správně, podívejte se na [řešení potíží s](troubleshoot.md#stability-issues-on-resource-constrained-devices) stránky.

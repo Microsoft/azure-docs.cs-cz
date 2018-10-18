@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: 8c4ae9c7b8be8cf390ad4ad6d99cd1ec41cd3d08
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: ce4ff33a8af9cf864ad4902599a0ab18b2b27182
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42055643"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387221"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Uložit a konfigurace konfigurace služby API Management pomocí Gitu
 
@@ -219,14 +219,14 @@ Nastavení konečného `$ref-policy`, mapuje příkazy soubor globálních zása
 ### <a name="apis-folder"></a>rozhraní API složky
 `apis` Složka obsahuje složku pro každé rozhraní API v instanci služby, který obsahuje následující položky.
 
-* `apis\<api name>\configuration.json` – To je uvedena konfigurace pro rozhraní API a obsahuje informace o adresu URL back-endové služby a operace. Toto je stejné informace, které by byly vráceny, pokud byste chtěli volání [konkrétní rozhraní API](https://docs.microsoft.com/en-us/rest/api/apimanagement/api/get) s `export=true` v `application/json` formátu.
-* `apis\<api name>\api.description.html` – Toto je popis rozhraní API a odpovídá `description` vlastnost [rozhraní API entity](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.table._entity_property).
-* `apis\<api name>\operations\` – Tato složka obsahuje `<operation name>.description.html` soubory, které se mapují na operace v rozhraní API. Každý soubor obsahuje popis jedné operace v rozhraní API, která se mapuje `description` vlastnost [entity operace](https://docs.microsoft.com/en-us/rest/api/visualstudio/operations/list#operationproperties) v rozhraní REST API.
+* `apis\<api name>\configuration.json` – To je uvedena konfigurace pro rozhraní API a obsahuje informace o adresu URL back-endové služby a operace. Toto je stejné informace, které by byly vráceny, pokud byste chtěli volání [konkrétní rozhraní API](https://docs.microsoft.com/rest/api/apimanagement/api/get) s `export=true` v `application/json` formátu.
+* `apis\<api name>\api.description.html` – Toto je popis rozhraní API a odpovídá `description` vlastnost [rozhraní API entity](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._entity_property).
+* `apis\<api name>\operations\` – Tato složka obsahuje `<operation name>.description.html` soubory, které se mapují na operace v rozhraní API. Každý soubor obsahuje popis jedné operace v rozhraní API, která se mapuje `description` vlastnost [entity operace](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties) v rozhraní REST API.
 
 ### <a name="groups-folder"></a>složka skupiny
 `groups` Složka obsahuje složku pro jednotlivé skupiny definované v instanci služby.
 
-* `groups\<group name>\configuration.json` – Jedná se o konfiguraci pro skupinu. Toto je stejné informace, které by byly vráceny, pokud byste chtěli volání [získání konkrétní skupiny](https://docs.microsoft.com/en-us/rest/api/apimanagement/group/get) operace.
+* `groups\<group name>\configuration.json` – Jedná se o konfiguraci pro skupinu. Toto je stejné informace, které by byly vráceny, pokud byste chtěli volání [získání konkrétní skupiny](https://docs.microsoft.com/rest/api/apimanagement/group/get) operace.
 * `groups\<group name>\description.html` – Toto je popis skupiny a odpovídá `description` vlastnost [skupiny entit](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity).
 
 ### <a name="policies-folder"></a>Složka zásad
@@ -246,7 +246,7 @@ Nastavení konečného `$ref-policy`, mapuje příkazy soubor globálních zása
 ### <a name="products-folder"></a>Složka produkty
 `products` Složka obsahuje složku pro každý produkt definovaný v instanci služby.
 
-* `products\<product name>\configuration.json` – Jedná se o konfiguraci produktu. Toto je stejné informace, které by byly vráceny, pokud byste chtěli volání [získat konkrétní produkt](https://docs.microsoft.com/en-us/rest/api/apimanagement/product/get) operace.
+* `products\<product name>\configuration.json` – Jedná se o konfiguraci produktu. Toto je stejné informace, které by byly vráceny, pokud byste chtěli volání [získat konkrétní produkt](https://docs.microsoft.com/rest/api/apimanagement/product/get) operace.
 * `products\<product name>\product.description.html` – Toto je popis produktu a odpovídá `description` vlastnost [entitou produkt](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity) v rozhraní REST API.
 
 ### <a name="templates"></a>šablony

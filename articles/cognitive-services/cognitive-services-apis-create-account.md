@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 02/01/2018
 ms.author: garye
-ms.openlocfilehash: 9c4aea2493ffed12b90f82113baf81c6c77a0ea2
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 37f53303a3b0c224c1286fb488a796fd5cdee0e5
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801399"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386412"
 ---
 # <a name="quickstart-create-a-cognitive-services-account-in-the-azure-portal"></a>Rychlý start: Vytvoření účtu služeb Cognitive Services na webu Azure Portal
 
@@ -49,7 +49,7 @@ Pokud chcete začít používat Azure Cognitive Services použijte v tomto rychl
 ## <a name="access-your-resource"></a>Přístup k prostředku 
 
 > [!NOTE]
-> Vlastníci předplatného můžete zakázat vytváření účtů služeb Cognitive Services pro skupiny prostředků a předplatná použitím [Azure policy](https://docs.microsoft.com/en-us/azure/governance/policy/overview#policy-definition)přiřazení definice zásady "není povolené typy prostředků" a určení **Microsoft.CognitiveServices/accounts** jako typ cílového prostředku.
+> Vlastníci předplatného můžete zakázat vytváření účtů služeb Cognitive Services pro skupiny prostředků a předplatná použitím [Azure policy](https://docs.microsoft.com/azure/governance/policy/overview#policy-definition)přiřazení definice zásady "není povolené typy prostředků" a určení **Microsoft.CognitiveServices/accounts** jako typ cílového prostředku.
 
 Po vytvoření prostředku můžete přistupovat ji z řídicího panelu Azure Pokud je připnutý. V opačném případě se nachází v **skupiny prostředků**.
 

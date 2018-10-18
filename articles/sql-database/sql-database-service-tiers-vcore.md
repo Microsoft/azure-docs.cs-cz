@@ -11,15 +11,15 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 52f49e0b590219c34750501ae85ccc0def572f44
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 10/17/2018
+ms.openlocfilehash: ddb9e36775a815c07d40cecd61360c3e5b9c2611
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352850"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378767"
 ---
-# <a name="vcore-service-tiers-azure-hybrid-use-benefit-and-migration"></a>vCore úrovně služeb, program Azure Hybrid Use Benefit a migrace
+# <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>vCore úrovně služeb, zvýhodněné hybridní využití Azure a migrace
 
 Nákupní model založený na virtuálních jádrech umožňuje nezávisle na sobě škálovat výpočetní prostředky a prostředky úložiště, odpovídají zajištění místního výkonu a optimalizovat cena. Umožňuje také můžete vybrat generaci:
 
@@ -58,7 +58,7 @@ Následující tabulka vám pomůže pochopit rozdíly mezi těmito dvěma vrstv
 
 Zobrazit [nejčastější dotazy k SQL Database](sql-database-faq.md) odpovědi na nejčastější dotazy.
 
-## <a name="azure-hybrid-use-benefit"></a>Azure Hybrid Use Benefit
+## <a name="azure-hybrid-benefit"></a>Zvýhodněné hybridní využití Azure
 
 V nákupní model založený na virtuálních jádrech mohou vyměňovat své současné licence pro zlevněné sazby pro SQL Database pomocí [zvýhodněné hybridní využití Azure pro SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md). Tato výhoda Azure umožňuje využít vaše licence v místním SQL serveru a Šetřete na Azure SQL Database až 30 % používáte místní licence SQL serveru se Software Assurance.
 

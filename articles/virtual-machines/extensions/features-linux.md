@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: b4e2971b5bb4ed5add2e68c1aabbc82443a61160
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 255fe84f0d155902b2a3ac477a1e677efef42bb4
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363377"
+ms.locfileid: "49386651"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Rozšíření virtuálních počítačů a funkce pro Linux
 
@@ -65,7 +65,7 @@ Balíčky rozšíření se stáhnou z rozšíření úložiště Azure Storage a
 > [!IMPORTANT]
 > Pokud budete mít zablokovaný přístup k *168.63.129.1* pomocí brány firewall hosta, pak rozšíření nezdaří bez ohledu na to, výše uvedené.
 
-Agenti jde použít jenom chcete stáhnout balíčky rozšíření a vykazování stavu. Například, pokud instalaci rozšíření je potřeba stáhnout skript z Githubu (Custom Script) nebo je nutné získat přístup ke službě Azure Storage (Azure Backup), pak další brány firewall nebo sítě zabezpečení musejí být otevřeny porty skupiny. Různá rozšíření mají různé požadavky, protože jsou aplikace samy. Pro rozšíření, které vyžadují přístup ke službě Azure Storage, můžete povolit přístup pomocí značky služeb Azure NSG pro [úložiště](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#service-tags).
+Agenti jde použít jenom chcete stáhnout balíčky rozšíření a vykazování stavu. Například, pokud instalaci rozšíření je potřeba stáhnout skript z Githubu (Custom Script) nebo je nutné získat přístup ke službě Azure Storage (Azure Backup), pak další brány firewall nebo sítě zabezpečení musejí být otevřeny porty skupiny. Různá rozšíření mají různé požadavky, protože jsou aplikace samy. Pro rozšíření, které vyžadují přístup ke službě Azure Storage, můžete povolit přístup pomocí značky služeb Azure NSG pro [úložiště](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
 Pro přesměrování požadavků provoz agenta, má agenta pro Linux podpora proxy serveru. Tato podpora proxy serveru, ale nevztahuje rozšíření. Je nutné nakonfigurovat každé jednotlivé rozšíření pro práci s proxy server.
 
@@ -259,7 +259,7 @@ V předchozím příkladu výstupu k nadřazené nebo "balíček nasazen verze" 
 
 Cílem agenta stavu je automaticky aktualizovanou verzi.
 
-Důrazně doporučujeme mít vždy Automatická aktualizace pro agenta, [AutoUpdate.Enabled=y](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/update-agent). Není to povoleno znamená, že je potřeba nechat ruční aktualizace agenta s a nedostanou opravy chyb a zabezpečení.
+Důrazně doporučujeme mít vždy Automatická aktualizace pro agenta, [AutoUpdate.Enabled=y](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent). Není to povoleno znamená, že je potřeba nechat ruční aktualizace agenta s a nedostanou opravy chyb a zabezpečení.
 
 #### <a name="extension-updates"></a>Aktualizace rozšíření
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: a8bcbc37ffba2caace0934c5414e1ccfd6fbb558
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 67f99e68bc4091d076e27aee06c2851bc77e6fc7
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901987"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378920"
 ---
 # <a name="what-are-authentication-methods"></a>Co jsou metody ověřování?
 
@@ -30,7 +30,7 @@ Společnost Microsoft důrazně doporučuje správcům umožňuje uživatelům v
 | Heslo | Vícefaktorové ověřování a samoobslužné resetování HESLA |
 | Bezpečnostní otázky | Pouze samoobslužné resetování HESLA |
 | E-mailová adresa | Pouze samoobslužné resetování HESLA |
-| Aplikace Microsoft Authenticator | Vícefaktorové ověřování a verze Public Preview pro samoobslužné resetování HESLA |
+| Aplikace Microsoft Authenticator | Vícefaktorové ověřování a verze public preview pro samoobslužné resetování HESLA |
 | Hardwarový token OATH | Verze Public preview pro vícefaktorové ověřování a samoobslužné resetování HESLA |
 | SMS | Vícefaktorové ověřování a samoobslužné resetování HESLA |
 | Hlasový hovor | Vícefaktorové ověřování a samoobslužné resetování HESLA |
@@ -148,11 +148,13 @@ Aplikace Microsoft Authenticator nebo jiným aplikacím třetích stran může s
 > Pro samoobslužné resetování hesla při pouze pro resetování ověřovací kód je jedinou možností, které jsou dostupné pro uživatele se vyžaduje jedna metoda **k zajištění nejvyšší úrovně zabezpečení**.
 >
 
-## <a name="oath-hardware-tokens"></a>Tokeny OATH hardwaru
+## <a name="oath-hardware-tokens-public-preview"></a>Tokeny OATH hardwaru (public preview)
 
 OATH je otevřený standard, která určuje, jak jednorázové heslo (OTP) kódy jsou generovány. Azure AD budou podporovat použití tokenů OATH-TOTP SHA-1 z různých 30sekundovém nebo 60 sekund. Zákazníky můžete pořídit tyto tokeny od dodavatele podle vlastní volby. Všimněte si, že tajné klíče jsou omezené na 128 znaků, které nemusí být kompatibilní s všechny tokeny.
 
 ![Nahrávání tokenů OATH do okna tokeny MFA Server OATH na webu Azure Portal](media/concept-authentication-methods/oath-tokens-azure-ad.png)
+
+Jako součást verze public preview se podporují hardwarové tokeny OATH. Další informace o verzích Preview najdete v tématu [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
 Jakmile jsou získat tokeny musí být odeslán ve formátu souboru hodnot oddělených čárkami (CSV), stejně jako v příkladu níže ukazuje včetně hlavní název uživatele, sériové číslo, tajný klíč, časový interval, výrobce a model.
 

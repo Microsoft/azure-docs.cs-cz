@@ -10,12 +10,12 @@ ms.component: monitor and tune
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 1cf2fcb2ce99d4c6c670e5afdb1c4208158ea4de
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 1d366850bc886dc48afc59ffaf0958b39314ebb1
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44096183"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385528"
 ---
 # <a name="how-to-monitor-the-gen2-cache"></a>Jak monitorovat Gen2 cache
 Architektura úložiště Gen2 automaticky rozprostírá nejčastěji dotazované columnstore segmenty v mezipaměti na NVMe, které jsou založené na SSD určená pro datové sklady Gen2. Vyšší výkon začne vyplácet, když vaše dotazy načítají segmenty, které je umístěný v mezipaměti. Tento článek popisuje, jak monitorovat a řešení potíží s výkonem pomalých dotazů tak, že určíte, jestli vaše úlohy optimální využití mezipaměti Gen2.  
@@ -43,7 +43,7 @@ Matice níže popisuje scénáře na základě hodnot metriky mezipaměti:
 
 **Scénář 2:** aktuální pracovní sady dat nelze umístit do mezipaměti, což způsobí, že s nízkým procento z důvodu fyzických čtení přístupů do mezipaměti. Zvažte možnost škálování nahoru úroveň výkonu a znovu spusťte úlohy k naplnění mezipaměti.
 
-**Scénář 3:** je pravděpodobné, že váš dotaz běží pomalu z nějakého důvodu nesouvisející do mezipaměti. [Řešení potíží s](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) další oblasti, které mohou být zpomalení vaše dotazy. Můžete taky zvážit možnost [škálování instance](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) snížit velikost mezipaměti pro úsporu nákladů. 
+**Scénář 3:** je pravděpodobné, že váš dotaz běží pomalu z nějakého důvodu nesouvisející do mezipaměti. [Řešení potíží s](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) další oblasti, které mohou být zpomalení vaše dotazy. Můžete taky zvážit možnost [škálování instance](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) snížit velikost mezipaměti pro úsporu nákladů. 
 
 **Scénář 4:** jste měli studenou mezipaměť, která může být důvod, proč bylo pomalé v sítích vašich dotazů. Vezměte v úvahu opětovné spuštění dotazu jako datovou sadu pracovních by měl nyní v mezipaměti. 
 

@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: laevenso
-ms.openlocfilehash: 9a096588c5a8fda64343e001fdbd895d02153f58
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: c2f68afb685cb04d456e06cadf378bd1c3ebb1fb
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362700"
+ms.locfileid: "49384951"
 ---
 # <a name="http-application-routing"></a>Směrování aplikace HTTP
 
@@ -22,7 +22,7 @@ Přístup k aplikacím, které jsou nasazené na clusteru Azure Kubernetes Servi
 Pokud doplněk je povolená, vytvoří zónu DNS ve vašem předplatném. Další informace o nákladech DNS najdete v tématu [DNS ceny][dns-pricing].
 
 > [!CAUTION]
-> Doplněk směrování aplikace HTTP je navržena tak, aby rychle vytvořit řadič příchozího přenosu dat a přístup k vaší aplikace. K tomu tento doplněk se nedoporučuje pro produkční použití. Nasazení příchozího přenosu dat připravené pro produkční prostředí, které obsahují více replik a TLS podporují, najdete v části [vytvořit řadič příchozího přenosu dat protokolu HTTPS](https://docs.microsoft.com/en-us/azure/aks/ingress-tls).
+> Doplněk směrování aplikace HTTP je navržena tak, aby rychle vytvořit řadič příchozího přenosu dat a přístup k vaší aplikace. K tomu tento doplněk se nedoporučuje pro produkční použití. Nasazení příchozího přenosu dat připravené pro produkční prostředí, které obsahují více replik a TLS podporují, najdete v části [vytvořit řadič příchozího přenosu dat protokolu HTTPS](https://docs.microsoft.com/azure/aks/ingress-tls).
 
 ## <a name="http-routing-solution-overview"></a>Přehled řešení směrování protokolu HTTP
 

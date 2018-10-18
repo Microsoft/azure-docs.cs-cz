@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 10/17/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: e76097c0d0cbaf14f2fc2b1a407bc2d320a2091d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 73edb518a7e0c89b3ef510c6e528b6fa76f8dca5
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964383"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393417"
 ---
 # <a name="azure-active-directory-code-samples-v2-endpoint"></a>Ukázky kódu Azure Active Directory (koncového bodu V2)
 
@@ -49,8 +49,8 @@ Tato ukázka předvádí, jak psát jednostránkovou aplikaci zabezpečené slu�
  Platforma |  Volání Microsoft Graphu
  -------- |  ---------------------
 ![JavaScript](media/sample-v2-code/logo_js.png) JavaScript (msal.js)  | [JavaScript – graphapi-web-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-web-v2)
-![Angular JS](media/sample-v2-code/logo_angular.png) JavaScript (msal AngularJS) | [MsalAngularjsDemoApp](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-angularjs/samples/MsalAngularjsDemoApp)
-![Úhlová](media/sample-v2-code/logo_angular.png) JavaScript (msal Angular) | [MSALAngularDemoApp](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-angular/samples/MSALAngularDemoApp)
+![Angular JS](media/sample-v2-code/logo_angular.png) JavaScript (MSAL AngularJS) | [MsalAngularjsDemoApp](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-angularjs/samples/MsalAngularjsDemoApp)
+![Úhlová](media/sample-v2-code/logo_angular.png) JavaScript (MSAL Angular) | [MSALAngularDemoApp](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-angular/samples/MSALAngularDemoApp)
 
 ## <a name="web-applications"></a>Webové aplikace
 
@@ -65,15 +65,17 @@ Následující ukázky ukazují webové aplikace, které se přihlásit uživate
 
 ## <a name="desktop-and-mobile-public-client-apps"></a>Desktop a mobile veřejné klientské aplikace.
 
-Následující ukázky ukazují veřejné klientské aplikace (desktop a mobilní aplikace), s přístupem k Microsoft Graphu nebo vlastní webové rozhraní API jménem uživatele pomocí interaktivního přihlášení. Tyto klientské aplikace pomocí knihovny MicroSoft Authentication (MSAL)
+Následující ukázky ukazují veřejné klientské aplikace (desktop a mobilní aplikace), které přistupují k Microsoft Graphu nebo vlastního webového rozhraní API jménem uživatele. Tyto klientské aplikace pomocí knihovny MicroSoft Authentication (MSAL)
 
-Klientská aplikace | Platforma | Volání Microsoft Graphu | Volání webového rozhraní API ASP.NET Core 2.0
------------------- | -------- |  -------------------- | -------------------------
-Plochy (WPF)      | ![.NET / C#](media/sample-v2-code/logo_NET.png) | [DotNet desktopu msgraph v2](http://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) <p/> [DotNet-admin-s omezením pomocí specifikátoru obory v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) | [DotNet – nativní aspnetcore-v2](https://GitHub.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2)
-Mobilní zařízení (UPW)   | ![.NET / C# (UPW)](media/sample-v2-code/logo_windows.png) | [DotNet nativní UPW v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) |
-Mobilní zařízení (Android, iOS, UPW)   | ![.NET / C# (Xamarin)](media/sample-v2-code/logo_xamarin.png) | [xamarin – nativní v2](https://Github.com/azure-samples/active-directory-xamarin-native-v2) |
-Mobilní zařízení (iOS)       | ![iOS / Objective C nebo swiftu.](media/sample-v2-code/logo_iOS.png) | [IOS swift nativní v2](https://github.com/azure-samples/active-directory-ios-swift-native-v2) <p/> [IOS native nxoauth2 v2](https://github.com/azure-samples/active-directory-ios-native-nxoauth2-v2) |
-Mobilní zařízení (Android)   | ![Android / Javu](media/sample-v2-code/logo_Android.png) |   [Android native-v2](https://github.com/azure-samples/active-directory-android-native-v2 ) |
+Klientská aplikace | Platforma | Tok/udělení | Volání Microsoft Graphu | Volání webového rozhraní API ASP.NET Core 2.0
+------------------ | -------- |  ----------| ---------- | -------------------------
+Plochy (WPF)      | ![.NET / C#](media/sample-v2-code/logo_NET.png) | Interaktivní | [DotNet desktopu msgraph v2](http://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) <p/> [DotNet-admin-s omezením pomocí specifikátoru obory v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) | [DotNet – nativní aspnetcore-v2](https://GitHub.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2)
+Plocha (konzola)   | ![.NET / C# (Desktop)](media/sample-v2-code/logo_NET.png) | Integrované ověřování systému Windows |[DotNet – iwa-v2](https://github.com/azure-samples/active-directory-dotnet-iwa-v2)
+Plocha (konzola)   | ![.NET / C# (Desktop)](media/sample-v2-code/logo_NETcore.png) | Uživatelské jméno/heslo |[verze 2 dotnetcore nahoru](https://github.com/azure-samples/active-directory-dotnetcore-up-v2)
+Mobilní zařízení (UPW)   | ![.NET / C# (UPW)](media/sample-v2-code/logo_windows.png) | Interaktivní |[DotNet nativní UPW v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) |
+Mobilní zařízení (Android, iOS, UPW)   | ![.NET / C# (Xamarin)](media/sample-v2-code/logo_xamarin.png) | Interaktivní |[xamarin – nativní v2](https://Github.com/azure-samples/active-directory-xamarin-native-v2) |
+Mobilní zařízení (iOS)       | ![iOS / Objective C nebo swiftu.](media/sample-v2-code/logo_iOS.png) | Interaktivní |[IOS swift nativní v2](https://github.com/azure-samples/active-directory-ios-swift-native-v2) <p/> [IOS native nxoauth2 v2](https://github.com/azure-samples/active-directory-ios-native-nxoauth2-v2) |
+Mobilní zařízení (Android)   | ![Android / Javu](media/sample-v2-code/logo_Android.png) | Interaktivní |  [Android native-v2](https://github.com/azure-samples/active-directory-android-native-v2 ) |
 
 ## <a name="daemon-applications"></a>Démon procesu aplikace
 
@@ -81,9 +83,16 @@ Následující ukázkové aplikace, která má přístup k Microsoft Graphu pomo
 
 Klientská aplikace | Platforma | Tok/udělení | Volání Microsoft Graphu
 ------------------ | -------- | ---------- | --------------------
+Konzola | ![.NET Core](media/sample-v2-code/logo_NETcore.png)<p/> ASP.NET  | Přihlašovací údaje klienta | [dotnetcore – démon v2](https://github.com/azure-samples/active-directory-dotnetcore-daemon-v2)
 Webová aplikace | ![ASP.NET](media/sample-v2-code/logo_NETframework.png)<p/> ASP.NET  | Přihlašovací údaje klienta | [DotNet – démon v2](https://github.com/azure-samples/active-directory-dotnet-daemon-v2)
 
-> Ukázka zobrazující aplikaci klasické pracovní plochy démon, je v nevyřízených položkách.
+## <a name="headless-applications"></a>Bezobslužného aplikací
+
+Následující ukázky ukazují veřejným klientem aplikace běžící na zařízení bez webového prohlížeče. Tyto aplikace může být nástroje příkazového řádku nebo aplikace spuštěné v systému Linux/Mac nebo iOT aplikaci. Ukázky funkcí aplikace přístup k Microsoft Graphu názvu uživatele, který přihlásí interaktivně na jiném zařízení (například mobilní telefon). Tyto klientské aplikace pomocí knihovny MicroSoft Authentication (MSAL)
+
+Klientská aplikace | Platforma | Tok/udělení | Volání Microsoft Graphu
+------------------ | -------- |  ----------| ----------
+Plocha (konzola)   | ![.NET / C# (Desktop)](media/sample-v2-code/logo_NETcore.png) | Tok kódu při zařízení |[dotnetcore. devicecodeflow v2](https://github.com/azure-samples/active-directory-dotnetcore-devicecodeflow-v2)
 
 ## <a name="web-apis"></a>Webová rozhraní API
 

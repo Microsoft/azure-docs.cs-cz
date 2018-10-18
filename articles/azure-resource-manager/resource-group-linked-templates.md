@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/03/2018
+ms.date: 10/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: b4dc1517c909439c499749eaf18dca11983eecee
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: ea926a64e3df853d6845266ff20255b76d9ff387
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069144"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386718"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Použití propojené a vnořené šablony při nasazování prostředků Azure.
 
@@ -167,7 +167,7 @@ Můžete také použít [deployment()](resource-group-template-functions-deploym
 }
 ```
 
-## <a name="get-values-from-linked-template"></a>Získání hodnoty z propojené šablony
+## <a name="get-values-from-linked-template"></a>Získání hodnot z propojené šablony
 
 Výstupní hodnota z propojené šablony získáte načtení hodnoty vlastností se syntaxí, jako jsou: `"[reference('<name-of-deployment>').outputs.<property-name>.value]"`.
 
@@ -401,7 +401,7 @@ Následující šablony odkazuje na předchozí šablonu postupem. Vytvoří tř
 
 Po nasazení můžete načíst výstup hodnot pomocí následujícího skriptu prostředí PowerShell:
 
-```powershell
+```azurepowershell-interactive
 $loopCount = 3
 for ($i = 0; $i -lt $loopCount; $i++)
 {
@@ -411,9 +411,11 @@ for ($i = 0; $i -lt $loopCount; $i++)
 }
 ```
 
-Nebo skript rozhraní příkazového řádku Azure:
+Nebo skript rozhraní příkazového řádku Azure v prostředí Bash:
 
-```azurecli
+```azurecli-interactive
+#!/bin/bash
+
 for i in 0 1 2;
 do
     name="linkedTemplate$i";
@@ -459,16 +461,18 @@ Následující příklad ukazuje, jak předat SAS token při propojování do š
 
 V prostředí PowerShell získání tokenu pro kontejneru a nasazení šablon pomocí následujících příkazů. Všimněte si, **containerSasToken** parametr je definován v šabloně. Není parametrem **New-AzureRmResourceGroupDeployment** příkazu.
 
-```powershell
+```azurepowershell-interactive
 Set-AzureRmCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
 $token = New-AzureStorageContainerSASToken -Name templates -Permission r -ExpiryTime (Get-Date).AddMinutes(30.0)
 $url = (Get-AzureStorageBlob -Container templates -Blob parent.json).ICloudBlob.uri.AbsoluteUri
 New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateUri ($url + $token) -containerSasToken $token
 ```
 
-V rozhraní příkazového řádku Azure získání tokenu pro kontejneru a nasazení šablon pomocí následujícího kódu:
+Azure CLI v prostředí Bash získání tokenu pro kontejneru a nasazení šablon pomocí následujícího kódu:
 
-```azurecli
+```azurecli-interactive
+#!/bin/bash
+
 expiretime=$(date -u -d '30 minutes' +%Y-%m-%dT%H:%MZ)
 connection=$(az storage account show-connection-string \
     --resource-group ManageGroup \

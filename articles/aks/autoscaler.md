@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/18
 ms.author: sakthivetrivel
 ms.custom: mvc
-ms.openlocfilehash: 6ec39116596c7abb7b1d26f864cdb57d839c88be
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: e16c82f7c49bf90fc074732d0a989b9de94a52c5
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365131"
+ms.locfileid: "49375847"
 ---
 # <a name="cluster-autoscaler-on-azure-kubernetes-service-aks---preview"></a>Cluster automatického škálování ve službě Azure Kubernetes Service (AKS) – ve verzi Preview
 
@@ -26,11 +26,22 @@ Tento článek popisuje, jak nasadit cluster automatického škálování na age
 > Integrace automatického škálování clusteru Azure Kubernetes Service (AKS) je aktuálně ve **ve verzi preview**. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Některé aspekty této funkce se můžou před zveřejněním změnit.
 >
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites-and-considerations"></a>Požadavky a důležité informace
 
 Tento dokument předpokládá, že máte cluster AKS RBAC povolena. Pokud potřebujete AKS cluster, přečtěte si [rychlý start Azure Kubernetes Service (AKS)][aks-quick-start].
 
  Použití automatického škálování clusteru, musí váš cluster používat Kubernetes v1.10.X nebo vyšší a musí být povoleny RBAC. K upgradu vašeho clusteru, najdete v článku [upgrade clusteru AKS][aks-upgrade].
+
+Definujte požadavky prostředků pro vaše pody. Vyhledá automatického škálování clusteru na požadavky na jaké zdroje jsou prováděny podů, ne prostředky ve skutečnosti v použití jako horizontální pod automatického škálování. V rámci `spec: containers` část nasazení definice, definovat požadavky na procesor a paměť. Následující příklad fragment kódu požaduje 0,5 virtuálních procesorů a 64Mb paměti na uzlu:
+
+  ```yaml
+  resources:
+    requests:
+      cpu: 500m
+      memory: 64Mb
+  ```
+
+Při použití automatického škálování clusteru, vyhněte se ručního škálování počtu uzlů. Automatického škálování clusteru nemusí být schopen určit správný počet požadovaných výpočetních prostředků a jsou v konfliktu s počtem uzlů, které definujete ručně.
 
 ## <a name="gather-information"></a>Shromážděte informace
 

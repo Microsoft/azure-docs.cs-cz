@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 9170f6f90b9e9b0a310f3b078c82dcab3f179fb3
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 935fef5ea988908787ae04688985606acec41bfd
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321304"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387273"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatizace zřizování a jeho rušení pro aplikace SaaS ve službě Azure Active Directory
 
@@ -267,9 +267,9 @@ Použití dynamických skupin může mít vliv na celkový výkon začátku do k
 
 Ne. Při konfiguraci "synchronizovat jenom přiřazené uživatelům a skupinám", služba zřizování uživatelů Azure AD není schopná přečíst nebo zřídit uživatele, kteří jsou ve vnořené skupiny. Je moct číst a zřizování uživatelů, které jsou okamžitě členy skupiny explicitně přiřazeny.
 
-Jedná se o omezení "na základě skupin přiřazení aplikací", což také ovlivní jednotného přihlašování a je popsána v [pomocí skupiny pro správu přístupu k aplikacím SaaS](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/groups-saasapps ).
+Jedná se o omezení "na základě skupin přiřazení aplikací", což také ovlivní jednotného přihlašování a je popsána v [pomocí skupiny pro správu přístupu k aplikacím SaaS](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-saasapps ).
 
-Jako alternativní řešení můžete by měly explicitně přiřadit (nebo jinak [oboru v](https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)) skupiny, které obsahují uživatele, kteří musí být zřízená.
+Jako alternativní řešení můžete by měly explicitně přiřadit (nebo jinak [oboru v](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)) skupiny, které obsahují uživatele, kteří musí být zřízená.
 
 ## <a name="related-articles"></a>Související články
 

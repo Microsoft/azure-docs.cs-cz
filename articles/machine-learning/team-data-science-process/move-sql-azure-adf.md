@@ -4,7 +4,7 @@ description: Nastavte kanál ADF, která vytvoří dvě aktivity migrace dat, kt
 services: machine-learning
 documentationcenter: ''
 author: deguhath
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 36837c83-2015-48be-b850-c4346aa5ae8a
 ms.service: machine-learning
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: c0a488d34ffe2e5a8e8a3883276c1038039bc785
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: f67bab33413b0048fc93d5f62e88984acaa25fd6
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731289"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393231"
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Přesun dat z místních SQL serveru do SQL Azure s Azure Data Factory
 Toto téma ukazuje, jak pro přesun dat z databáze v místním SQL serveru do databáze SQL Azure prostřednictvím služby Azure Blob Storage pomocí Azure Data Factory (ADF).

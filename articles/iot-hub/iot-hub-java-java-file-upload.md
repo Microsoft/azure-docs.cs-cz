@@ -2,19 +2,18 @@
 title: Nahrání souborů ze zařízení do služby Azure IoT Hub pomocí Javy | Dokumentace Microsoftu
 description: Postup nahrání souborů ze zařízení do cloudu pomocí zařízení Azure IoT SDK pro Javu. Nahrané soubory se ukládají v kontejneru objektů blob v Azure storage.
 author: dominicbetts
-manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
 ms.author: dobett
-ms.openlocfilehash: 57faff3a95e5b4ccdbc44cb7adb77d34694042c9
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 74761448b88daa93e11fe45256c4d2fc75833b0f
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220367"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376443"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Nahrání souborů ze zařízení do cloudu pomocí služby IoT Hub
 
@@ -22,10 +21,11 @@ ms.locfileid: "47220367"
 
 V tomto kurzu vychází z kódu v [odesílat zprávy typu Cloud-zařízení pomocí služby IoT Hub](iot-hub-java-java-c2d.md) kurzu se dozvíte, jak používat [soubor nahrát možnosti služby IoT Hub](iot-hub-devguide-file-upload.md) nahrát soubor do [objektů blob v Azure úložiště](../storage/index.yml). V tomto kurzu získáte informace o následujících postupech:
 
-- Zabezpečeně dodávají zařízení s Azure blob identifikátorů URI pro nahrání souboru.
-- Oznámení o nahrávání souborů služby IoT Hub použijte k aktivaci zpracování souboru v back-endu aplikace.
+* Zabezpečeně dodávají zařízení s Azure blob identifikátorů URI pro nahrání souboru.
 
-[Začínáme se službou IoT Hub](quickstart-send-telemetry-java.md) a [odesílat zprávy typu Cloud-zařízení pomocí služby IoT Hub](iot-hub-java-java-c2d.md) kurzy vám ukážou základní funkce typu zařízení cloud a cloud zařízení zasílání zpráv služby IoT Hub. [Zprávy procesu zařízení-Cloud](tutorial-routing.md) kurz popisuje způsob, jak spolehlivě ukládat zprávy typu zařízení cloud ve službě Azure blob storage. Nicméně v některých scénářích nelze mapovat snadno data, která vaše zařízení odesílají do poměrně málo početnému zpráv typu zařízení cloud, které služby IoT Hub přijímá. Příklad:
+* Oznámení o nahrávání souborů služby IoT Hub použijte k aktivaci zpracování souboru v back-endu aplikace.
+
+[Odesílání telemetrických dat do služby IoT Hub (Java)](quickstart-send-telemetry-java.md) a [odesílat zprávy typu Cloud-zařízení pomocí služby IoT Hub (Java)](iot-hub-java-java-c2d.md) kurzy vám ukážou základní funkce typu zařízení cloud a cloud zařízení zasílání zpráv služby IoT Hub. [Konfigurace směrování zpráv pomocí služby IoT Hub](tutorial-routing.md) kurz popisuje způsob, jak spolehlivě ukládat zprávy typu zařízení cloud ve službě Azure blob storage. Nicméně v některých scénářích nelze mapovat snadno data, která vaše zařízení odesílají do poměrně málo početnému zpráv typu zařízení cloud, které služby IoT Hub přijímá. Příklad:
 
 * Velké soubory, které obsahují obrázky
 * Videa
@@ -37,15 +37,18 @@ Tyto soubory jsou obvykle dávkově zpracovány v cloudu pomocí nástrojů, jak
 Na konci tohoto kurzu spustíte dvě konzolové aplikace Java:
 
 * **simulated-device**, upravenou verzi aplikaci vytvořenou v kurzu [zpráv odesílání typu Cloud-zařízení pomocí služby IoT Hub]. Tato aplikace nahraje soubor do služby storage pomocí SAS URI poskytované služby IoT hub.
+
 * **čtení souboru odesílání oznámení**, který obdrží oznámení o nahrávání souborů ze služby IoT hub.
 
 > [!NOTE]
-> IoT Hub podporuje mnoho platforem zařízení a jazyků (včetně C, .NET a Javascript) prostřednictvím sady SDK pro zařízení Azure IoT. Odkazovat [centrum pro vývojáře Azure IoT] podrobné pokyny o tom, jak připojit zařízení ke službě Azure IoT Hub.
+> IoT Hub podporuje mnoho platforem zařízení a jazyků (včetně C, .NET a Javascript) prostřednictvím sady SDK pro zařízení Azure IoT. Odkazovat [centrum pro vývojáře Azure IoT](http://azure.microsoft.com/develop/iot) podrobné pokyny o tom, jak připojit zařízení ke službě Azure IoT Hub.
 
 Pro absolvování tohoto kurzu potřebujete:
 
 * Nejnovější [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+
 * [Maven 3](https://maven.apache.org/install.html)
+
 * Aktivní účet Azure. (Pokud účet nemáte, můžete vytvořit [bezplatný účet](http://azure.microsoft.com/pricing/free-trial/) během několika minut.)
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
@@ -56,15 +59,15 @@ V této části upravíte zařízení aplikaci, kterou jste vytvořili v [odesí
 
 1. Kopírování souboru obrázku, který `simulated-device` složku a přejmenujte jej `myimage.png`.
 
-1. Pomocí textového editoru, otevřete `simulated-device\src\main\java\com\mycompany\app\App.java` souboru.
+2. Pomocí textového editoru, otevřete `simulated-device\src\main\java\com\mycompany\app\App.java` souboru.
 
-1. Přidat deklaraci proměnných na **aplikace** třídy:
+3. Přidat deklaraci proměnných na **aplikace** třídy:
 
     ```java
     private static String fileName = "myimage.png";
     ```
 
-1. Ke zpracování zprávy zpětné volání stav nahrávání souborů, přidáním následující vnořené třídy **aplikace** třídy:
+4. Ke zpracování zprávy zpětné volání stav nahrávání souborů, přidáním následující vnořené třídy **aplikace** třídy:
 
     ```java
     // Define a callback method to print status codes from IoT Hub.
@@ -76,7 +79,7 @@ V této části upravíte zařízení aplikaci, kterou jste vytvořili v [odesí
     }
     ```
 
-1. Můžete nahrávat obrázky do služby IoT Hub, přidejte následující metodu do **aplikace** třídy k nahrání Image do služby IoT Hub:
+5. Můžete nahrávat obrázky do služby IoT Hub, přidejte následující metodu do **aplikace** třídy k nahrání Image do služby IoT Hub:
 
     ```java
     // Use IoT Hub to upload a file asynchronously to Azure blob storage.
@@ -90,7 +93,7 @@ V této části upravíte zařízení aplikaci, kterou jste vytvořili v [odesí
     }
     ```
 
-1. Upravit **hlavní** metoda se má volat **uploadFile** způsob, jak je znázorněno v následujícím fragmentu kódu:
+6. Upravit **hlavní** metoda se má volat **uploadFile** způsob, jak je znázorněno v následujícím fragmentu kódu:
 
     ```java
     client.open();
@@ -110,7 +113,7 @@ V této části upravíte zařízení aplikaci, kterou jste vytvořili v [odesí
     MessageSender sender = new MessageSender();
     ```
 
-1. Použijte následující příkaz k sestavení **simulated-device** aplikace a zkontrolujte chyby:
+7. Použijte následující příkaz k sestavení **simulated-device** aplikace a zkontrolujte chyby:
 
     ```cmd/sh
     mvn clean package -DskipTests
@@ -128,9 +131,9 @@ Je nutné **iothubowner** připojovací řetězec služby IoT hub k dokončení 
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=read-file-upload-notification -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-1. Na příkazovém řádku přejděte do nové `read-file-upload-notification` složky.
+2. Na příkazovém řádku přejděte do nové `read-file-upload-notification` složky.
 
-1. Pomocí textového editoru otevřete `pom.xml` soubor `read-file-upload-notification` složky a přidejte následující závislost **závislosti** uzlu. Přidat závislost vám umožní použít **iothub-java-service-client** balíčku v aplikaci komunikovat s vaší službou IoT hub:
+3. Pomocí textového editoru otevřete `pom.xml` soubor `read-file-upload-notification` složky a přidejte následující závislost **závislosti** uzlu. Přidat závislost vám umožní použít **iothub-java-service-client** balíčku v aplikaci komunikovat s vaší službou IoT hub:
 
     ```xml
     <dependency>
@@ -143,11 +146,11 @@ Je nutné **iothubowner** připojovací řetězec služby IoT hub k dokončení 
     > [!NOTE]
     > Můžete vyhledat nejnovější verzi **iot-service-client** pomocí [vyhledávání Maven](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
 
-1. Uložte a zavřete `pom.xml` souboru.
+4. Uložte a zavřete `pom.xml` souboru.
 
-1. Pomocí textového editoru, otevřete `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` souboru.
+5. Pomocí textového editoru, otevřete `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` souboru.
 
-1. Do souboru přidejte následující příkazy pro **import**:
+6. Do souboru přidejte následující příkazy pro **import**:
 
     ```java
     import com.microsoft.azure.sdk.iot.service.*;
@@ -157,7 +160,7 @@ Je nutné **iothubowner** připojovací řetězec služby IoT hub k dokončení 
     import java.util.concurrent.Executors;
     ```
 
-1. Přidejte následující proměnné na úrovni třídy pro **aplikace** třídy:
+7. Přidejte následující proměnné na úrovni třídy pro **aplikace** třídy:
 
     ```java
     private static final String connectionString = "{Your IoT Hub connection string}";
@@ -165,7 +168,7 @@ Je nutné **iothubowner** připojovací řetězec služby IoT hub k dokončení 
     private static FileUploadNotificationReceiver fileUploadNotificationReceiver = null;
     ```
 
-1. Můžete vytisknout tak informace o nahrávání souborů do konzoly, přidáním následující vnořené třídy **aplikace** třídy:
+8. Můžete vytisknout tak informace o nahrávání souborů do konzoly, přidáním následující vnořené třídy **aplikace** třídy:
 
     ```java
     // Create a thread to receive file upload notifications.
@@ -192,7 +195,7 @@ Je nutné **iothubowner** připojovací řetězec služby IoT hub k dokončení 
     }
     ```
 
-1. Spustit vlákno, který naslouchá oznámení o nahrávání souborů, přidejte následující kód, který **hlavní** metody:
+9. Spustit vlákno, který naslouchá oznámení o nahrávání souborů, přidejte následující kód, který **hlavní** metody:
 
     ```java
     public static void main(String[] args) throws IOException, URISyntaxException, Exception {
@@ -220,9 +223,9 @@ Je nutné **iothubowner** připojovací řetězec služby IoT hub k dokončení 
     }
     ```
 
-1. Uložte a zavřete `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` souboru.
+10. Uložte a zavřete `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` souboru.
 
-1. Použijte následující příkaz k sestavení **čtení souboru odesílání oznámení** aplikace a zkontrolujte chyby:
+11. Použijte následující příkaz k sestavení **čtení souboru odesílání oznámení** aplikace a zkontrolujte chyby:
 
     ```cmd/sh
     mvn clean package -DskipTests
@@ -260,36 +263,10 @@ Na portálu můžete použít k zobrazení nahraných souborů v kontejneru úlo
 
 V tomto kurzu jste zjistili, jak zjednodušit nahrávání souborů ze zařízení pomocí možnosti nahrávání souborů služby IoT Hub. Můžete pokračovat k prozkoumání funkcí služby IoT hub a scénáře najdete v následujících článcích:
 
-* [Vytvoření centra IoT prostřednictvím kódu programu][lnk-create-hub]
-* [Seznámení s C SDK][lnk-c-sdk]
-* [Sady Azure IoT SDK][lnk-sdks]
+* [Vytvoření centra IoT prostřednictvím kódu programu](iot-hub-rm-template-powershell.md)
+* [Seznámení s C SDK](iot-hub-device-sdk-c-intro.md)
+* [Sady Azure IoT SDK](iot-hub-devguide-sdks.md)
 
 Podrobněji prozkoumat možnosti služby IoT Hub, najdete v tématech:
 
-* [Simulace zařízení pomocí IoT Edge][lnk-iotedge]
-
-<!-- Images. -->
-
-[50]: ./media/iot-hub-csharp-csharp-file-upload/run-apps1.png
-[1]: ./media/iot-hub-csharp-csharp-file-upload/image-properties.png
-[2]: ./media/iot-hub-csharp-csharp-file-upload/file-upload-project-csharp1.png
-[3]: ./media/iot-hub-csharp-csharp-file-upload/enable-file-notifications.png
-
-<!-- Links -->
-
-
-
-[Centrum pro vývojáře Azure IoT]: http://azure.microsoft.com/develop/iot
-
-[Azure Storage]:../storage/common/storage-quickstart-create-account.md
-[lnk-configure-upload]: iot-hub-configure-file-upload.md
-[Azure IoT service SDK NuGet package]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
-[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-
-[lnk-create-hub]: iot-hub-rm-template-powershell.md
-[lnk-c-sdk]: iot-hub-device-sdk-c-intro.md
-[lnk-sdks]: iot-hub-devguide-sdks.md
-
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
-
-
+* [Simulace zařízení pomocí IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)

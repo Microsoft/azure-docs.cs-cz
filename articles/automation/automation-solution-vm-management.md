@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8ae3a2d8dc42944bdea2b3e6ebac0a40029c0540
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 642fc66bff763105e9d5463886474703a9a50781
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817173"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376699"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Spuštění/zastavení virtuálních počítačů v době mimo špičku řešení ve službě Azure Automation
 
@@ -297,6 +297,9 @@ Tady můžete provádět další analýzu záznamů úlohy po kliknutí na dlaž
 ## <a name="configure-email-notifications"></a>Konfigurace e-mailových oznámení
 
 Chcete-li změnit e-mailová oznámení po nasazení řešení, upravte skupinu akcí, které jste vytvořili během nasazení.  
+
+> [!NOTE]
+> Předplatná v cloudu Azure Government nepodporují e-mailové funkce tohoto řešení.
 
 Na webu Azure Portal, přejděte na monitorování -> skupiny akcí. Vyberte skupinu akcí s názvem **StartStop_VM_Notication**.
 

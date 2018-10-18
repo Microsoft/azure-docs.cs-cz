@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/16/2018
-ms.openlocfilehash: dca23940053fa6bf1f716ffa1a6fa0bcd7b41c91
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 5ef15b7a757b87c14bf0bd764bdd6ca6e6da64e0
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362615"
+ms.locfileid: "49379031"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Monitorování a optimalizace výkonu
 
@@ -37,7 +37,7 @@ Pro úlohy s problémy s výkonem, tyto problémy s výkonem pravděpodobně z d
 
   - Moc velký počet spuštěných dotazů
   - Příliš mnoho kompilaci dotazů
-  - Jeden nebo více provádění dotazů používá plán neoptimálním průběhem dotazu
+  - Jeden nebo více provádění dotazů používají plán neoptimálním průběhem dotazu
 
   Pokud tomu tak pro vaše úlohy, je vaším cílem je identifikovat a vyladit přidružené dotazy nebo upgradovat výpočetního prostředí nebo zvyšovat kapacitu databáze Azure SQL a chránit před požadavky na procesor úroveň služby. Další informace o škálování prostředků pro izolované databáze, najdete v části [škálování izolované databáze prostředků ve službě Azure SQL Database](sql-database-single-database-scale.md) a škálování prostředků pro elastické fondy, najdete v části [škálování elastického fondu prostředků ve službě Azure SQL Databáze](sql-database-elastic-pool-scale.md).
 
@@ -62,7 +62,7 @@ Můžete identifikovat problémy s výkonem souvisejících s běžící několi
 
 Nejprve si být jisti, že to není problém vysoké využití procesoru a spuštění související s výkonem. Pokud není, dalším krokem je identifikace nejvyšší čeká přidružené úlohy vaší aplikace.  Běžné metody pro zobrazení na začátek čekání kategorií typů:
 
-- [Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) poskytuje statistiky čekání každý dotaz v čase. Na Query Store čekání typy jsou sloučeny do kategorií čekání. Je k dispozici v mapování kategorií wait čekat typy [sys.query_store_wait_stats](https://docs.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql?view=sql-server-2017#wait-categories-mapping-table).
+- [Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) poskytuje statistiky čekání každý dotaz v čase. Na Query Store čekání typy jsou sloučeny do kategorií čekání. Je k dispozici v mapování kategorií wait čekat typy [sys.query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql?view=sql-server-2017#wait-categories-mapping-table).
 - [Sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) vrátí informace o všech čeká tak vlákna, která provedených během operace. Toto souhrnné zobrazení můžete použít k diagnostice problémů s výkonem s Azure SQL Database a také s konkrétní dotazy a dávek.
 - [Sys.dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) vrátí informace o frontě čekání úlohy, které čekají na některých prostředků.
 

@@ -9,12 +9,12 @@ ms.date: 10/05/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 88ea4b2eab57684bc5455c0d8eb23a5d62f9dd77
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: b04f909d58e1555cad9f34b682f9062bbd96cd0e
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817492"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394727"
 ---
 # <a name="update-the-iot-edge-runtime"></a>Aktualizace modulu runtime IoT Edge
 
@@ -24,10 +24,11 @@ Dvě součásti zařízení IoT Edge je potřeba aktualizovat, pokud chcete pře
 
 Nejnovější verzi služby Azure IoT Edge najdete v tématu [Azure IoT Edge uvolní](https://github.com/Azure/azure-iotedge/releases).
 
-
 ## <a name="update-the-security-daemon"></a>Aktualizace zabezpečení démona
 
 Démon zabezpečení IoT Edge je nativní součást, kterou je potřeba aktualizovat pomocí Správce balíčků na zařízení IoT Edge. 
+
+Zkontrolujte verzi démona zabezpečení běžícího ve vašem zařízení s použitím příkazu `iotedge version`. 
 
 ### <a name="linux-devices"></a>Linux zařízení
 
@@ -59,6 +60,10 @@ Install-SecurityDaemon -Manual -ContainerOS <Windows or Linux>
 ## <a name="update-the-runtime-containers"></a>Aktualizovat kontejnerů modulu runtime
 
 Způsob, jak aktualizovat agenta Edge a kontejnery Centrum Edge závisí na, jestli používáte kumulativní značky (třeba 1.0) nebo konkrétní značky (např. 1.0.2) ve vašem nasazení. 
+
+Kontrola verze agenta IoT Edge a moduly Edge hub aktuálně na vašem zařízení pomocí příkazů `iotedge logs edgeAgent` nebo `iotedge logs edgeHub`. 
+
+  ![Zobrazit verzi kontejneru](./media/how-to-update-iot-edge/container-version.png)
 
 ### <a name="understand-iot-edge-tags"></a>Vysvětlení značky IoT Edge
 
@@ -117,5 +122,4 @@ V manifestu nasazení JSON, aktualizaci bitové kopie modulu v **systemModules**
 
 Zobrazit nejnovější [Azure IoT Edge uvolní](https://github.com/Azure/azure-iotedge/releases).
 
-Aktuální informace s nejnovější aktualizací a oznámení v [blog o Internetu věcí](https://azure.microsoft.com/blog/topics/internet-of-things/
-) 
+Aktuální informace s nejnovější aktualizací a oznámení v [blog o Internetu věcí](https://azure.microsoft.com/blog/topics/internet-of-things/) 

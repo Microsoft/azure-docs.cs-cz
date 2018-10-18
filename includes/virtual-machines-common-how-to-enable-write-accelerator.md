@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 6/8/2018
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: 049c5d86bc78a8861faff13d82a47579ac24c516
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: a7fe2cf151b79b02f4f8996ad938d8fc262a5f77
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39361373"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49400245"
 ---
 # <a name="enable-write-accelerator"></a>Povolení akcelerátoru zápisu
 
@@ -74,23 +74,23 @@ Pokud chcete povolit nebo nasadit disky, které jsou podporovány akcelerátorem
 
 Nového přepínacího parametru **- WriteAccelerator** byla přidána do následujících rutin:
 
-- [Set-AzureRmVMOsDisk](https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmosdisk?view=azurermps-6.0.0)
-- [Add-AzureRmVMDataDisk](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Add-AzureRmVMDataDisk?view=azurermps-6.0.0)
-- [Set-AzureRmVMDataDisk](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Set-AzureRmVMDataDisk?view=azurermps-6.0.0)
-- [Add-AzureRmVmssDataDisk](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Add-AzureRmVmssDataDisk?view=azurermps-6.0.0)
+- [Set-AzureRmVMOsDisk](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmosdisk?view=azurermps-6.0.0)
+- [Add-AzureRmVMDataDisk](https://docs.microsoft.com/powershell/module/AzureRM.Compute/Add-AzureRmVMDataDisk?view=azurermps-6.0.0)
+- [Set-AzureRmVMDataDisk](https://docs.microsoft.com/powershell/module/AzureRM.Compute/Set-AzureRmVMDataDisk?view=azurermps-6.0.0)
+- [Add-AzureRmVmssDataDisk](https://docs.microsoft.com/powershell/module/AzureRM.Compute/Add-AzureRmVmssDataDisk?view=azurermps-6.0.0)
 
 Nesmí mít parametr nastaví vlastnost na hodnotu false a nasadí disky, které nepodporují podle akcelerátorem zápisu.
 
 Nového přepínacího parametru **- OsDiskWriteAccelerator** byl přidán do následujících rutin:
 
-- [Set-AzureRmVmssStorageProfile](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Set-AzureRmVmssStorageProfile?view=azurermps-6.0.0)
+- [Set-AzureRmVmssStorageProfile](https://docs.microsoft.com/powershell/module/AzureRM.Compute/Set-AzureRmVmssStorageProfile?view=azurermps-6.0.0)
 
 Ve výchozím nastavení vrací disky, které nechcete využívat akcelerátorem zápisu bez zadání parametru nastaví vlastnost na hodnotu false.
 
 Nový volitelný parametr logické hodnoty (NULL), **- OsDiskWriteAccelerator** byl přidán do následujících rutin:
 
-- [Update-AzureRmVM](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Update-AzureRmVM?view=azurermps-6.0.0)
-- [Update-AzureRmVmss](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Update-AzureRmVmss?view=azurermps-6.0.0)
+- [Update-AzureRmVM](https://docs.microsoft.com/powershell/module/AzureRM.Compute/Update-AzureRmVM?view=azurermps-6.0.0)
+- [Update-AzureRmVmss](https://docs.microsoft.com/powershell/module/AzureRM.Compute/Update-AzureRmVmss?view=azurermps-6.0.0)
 
 Zadejte $true nebo $false řídit podpora akcelerátor zápisu Azure s disky.
 
@@ -165,13 +165,13 @@ Prostřednictvím portálu, kde můžete určit nastavení mezipaměti disku mů
 
 ## <a name="enabling-write-accelerator-using-the-azure-cli"></a>Povolení akcelerátoru zápisu pomocí Azure CLI
 
-Můžete použít [rozhraní příkazového řádku Azure](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) umožňující akcelerátorem zápisu.
+Můžete použít [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) umožňující akcelerátorem zápisu.
 
-Chcete-li povolit akcelerátorem zápisu na stávající disk, použijte [az vm update](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-update), můžete použít následující příklady Pokud nahradíte diskName, VMName a skupina prostředků s vlastními hodnotami: `az vm update -g group1 -n vm1 -write-accelerator 1=true`
+Chcete-li povolit akcelerátorem zápisu na stávající disk, použijte [az vm update](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-update), můžete použít následující příklady Pokud nahradíte diskName, VMName a skupina prostředků s vlastními hodnotami: `az vm update -g group1 -n vm1 -write-accelerator 1=true`
 
-Připojení disku s akcelerátorem zápisu povolené použití [az vm disk attach](https://docs.microsoft.com/en-us/cli/azure/vm/disk?view=azure-cli-latest#az-vm-disk-attach), můžete použít následující příklad je-li změnit v vlastními hodnotami: `az vm disk attach -g group1 -vm-name vm1 -disk d1 --enable-write-accelerator`
+Připojení disku s akcelerátorem zápisu povolené použití [az vm disk attach](https://docs.microsoft.com/cli/azure/vm/disk?view=azure-cli-latest#az-vm-disk-attach), můžete použít následující příklad je-li změnit v vlastními hodnotami: `az vm disk attach -g group1 -vm-name vm1 -disk d1 --enable-write-accelerator`
 
-Chcete-li zakázat akcelerátorem zápisu, použijte [az vm update](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-update), nastavení vlastnosti na hodnotu false: `az vm update -g group1 -n vm1 -write-accelerator 0=false 1=false`
+Chcete-li zakázat akcelerátorem zápisu, použijte [az vm update](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-update), nastavení vlastnosti na hodnotu false: `az vm update -g group1 -n vm1 -write-accelerator 0=false 1=false`
 
 ## <a name="enabling-write-accelerator-using-rest-apis"></a>Povolení akcelerátoru zápisu pomocí rozhraní Rest API
 

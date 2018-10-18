@@ -7,19 +7,19 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/26/2018
-ms.openlocfilehash: c449aaff9741250cfcfaaa4ee490aafc857c4369
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 54a86a7ea1852efba0776451291820f4174a1f1f
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395300"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377568"
 ---
 # <a name="best-practices-for-query-store"></a>Osvědčené postupy pro Query Store
 
 **Platí pro:** Azure Database for PostgreSQL 9.6 a 10
 
 > [!IMPORTANT]
-> Funkce Query Store je ve verzi Public Preview v omezeném počtu oblastí.
+> Funkce Query Store je ve verzi Public Preview.
 
 
 Tento článek popisuje doporučené postupy pro používání Query Store ve službě Azure Database for PostgreSQL.

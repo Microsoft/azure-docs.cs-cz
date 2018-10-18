@@ -4,25 +4,25 @@ description: Tento článek popisuje, jak služba Media Services využívá úč
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: 883aecaa82f1a83af22bf345d364c2b43776e559
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: dbd8dea32bbd4cacefd64e91541ab20b1056731e
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732205"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49379023"
 ---
 # <a name="storage-accounts"></a>Účty úložiště
 
 Při vytváření účtu Media Services je nutné zadat název prostředku účtu Azure Storage. Zadaný účet úložiště se připojí k vašemu účtu Media Services. 
 
-Musí mít jeden **primární** účtu úložiště a můžete mít libovolný počet **sekundární** účty úložiště přidružené k účtu Media Services. Služba Media Services podporuje účty **General-purpose v2** (GPv2) nebo **General-purpose v1** (GPv1). 
+Ke svému účtu Media Services musíte mít přidružený jeden **primární** účet úložiště a libovolný počet **sekundárních** účtů úložiště. Služba Media Services podporuje účty **General-purpose v2** (GPv2) nebo **General-purpose v1** (GPv1). 
 
 >[!NOTE]
 > Účty jen pro objekty blob nejsou povolené jako **primární**. 

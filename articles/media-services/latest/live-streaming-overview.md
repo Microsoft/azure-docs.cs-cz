@@ -4,29 +4,29 @@ description: Toto téma poskytuje přehled živého streamování využívajíc�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/06/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: e9ecf1ba3022ca057fa09bad2413aa19d902ae23
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 533aa505c38d3cbfb46d70acecd43cc66614b13d
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972175"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378132"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Živé streamování pomocí služby Azure Media Services v3
 
 Při doručování živě streamovaných událostí pomocí Azure Media Services se běžně podílejí následující komponenty:
 
 * Kamera používaná k vysílání události.
-* Živé video kodér, který převádí signály z kamery (nebo jiné zařízení, jako jsou přenosné počítače) pro datové proudy, které se odesílají do Media Services živého streamování služby. Signály mohou zahrnovat také inzerování SCTE 35 a Ad pomůcky. 
-* Živé streamování služby Media Services umožňuje ingestovat, ve verzi preview, balení, záznamu, šifrování a všesměrového vysílání obsahu vašim zákazníkům nebo do sítě CDN pro další distribuci.
+* Živé video encoder, který převádí signály z kamery (nebo jiné zařízení, jako jsou přenosné počítače) pro datové proudy, které se odesílají do služby flikty streamování. Signály mohou zahrnovat také inzerování SCTE 35 a Ad pomůcky. 
+* Služba Media Services Live Streaming vám umožňuje ingestovat, ve verzi preview, balení, záznamu, šifrování a všesměrového vysílání obsahu vašim zákazníkům nebo do sítě CDN pro další distribuci.
 
 Tento článek poskytuje podrobný přehled a zahrnuje diagramy hlavní součásti účastnící se živé streamování pomocí služby Media Services.
 
@@ -40,6 +40,17 @@ Služba Media Services umožňuje doručovat obsah zašifrovaný dynamicky (**dy
 
 V případě potřeby můžete také použít **dynamické filtrování**, které je možné řídit počet stop, formátů, přenosových rychlostí, který společností zašleme hráči. Služba Media Services také podporuje vkládání reklam.
 
+### <a name="new-live-encoding-improvements"></a>Nová vylepšení migrace za provozu kódování
+
+Následující nová vylepšení byly dokončeny v nejnovější verzi.
+
+- Nový režim s nízkou latencí pro živé (10 sekund end-to-end).
+- (Zvýšení stability a další podporu zdrojového kodér) Vylepšená podpora RTMP ve službě.
+- Ingestování RTMPS zabezpečené.
+
+    Při vytváření Livestream nyní získáte 4 ingestované adresy URL. Ingestování 4 adresy URL jsou téměř identické, mít stejný token streamování (AppId), jenom část čísla portu se liší. Dva z adres URL jsou primární a záložní pro RTMPS.   
+- Podpora překódování 24 hodin. 
+- Vylepšená podpora ad signalizace v RTMP prostřednictvím SCTE35.
 
 ## <a name="liveevent-types"></a>Typy Livestream
 

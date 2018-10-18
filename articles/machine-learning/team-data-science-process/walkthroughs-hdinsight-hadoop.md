@@ -1,10 +1,10 @@
 ---
-title: Používání Hive v Azure HDInsight Hadoop data vědecké účely návody | Microsoft Docs
-description: Příklady procesu Team dat vědecké účely, které provede pomocí Hive v Azure HDInsight Hadoop pro prediktivní analýzy.
+title: Pomocí Hivu v Azure HDInsight Hadoop data science návody | Dokumentace Microsoftu
+description: Příklady vědecké zpracování týmových dat, které se provedou pomocí Hivu v Azure HDInsight Hadoop pro prediktivní analýzy.
 services: machine-learning
 documentationcenter: ''
 author: deguhath
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
@@ -15,37 +15,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 8b7eead12b6546ad86f6ff0aa48f4754c00a4734
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 2aa64d6dc144e85e1a0f03b8548fa47dba91a2eb
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838751"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393155"
 ---
-# <a name="hdinsight-hadoop-data-science-walkthroughs-using-hive-on-azure"></a>Používání Hive v Azure HDInsight Hadoop data vědecké účely návody 
+# <a name="hdinsight-hadoop-data-science-walkthroughs-using-hive-on-azure"></a>Pomocí Hivu v Azure HDInsight Hadoop data science návody 
 
-Tyto postupy použijte Hive s clusteru HDInsight Hadoop pro prediktivní analýzy. Jejich postupujte podle kroků uvedených v procesu Team dat vědecké účely. Přehled procesu Team dat vědecké účely, najdete v tématu [proces vědecké účely dat](overview.md). Úvod do Azure HDInsight, naleznete v části [Úvod do Azure HDInsight, technologie zásobníku Hadoop a clustery systému Hadoop](../../hdinsight/hadoop/apache-hadoop-introduction.md).
+Tyto kurzy použití Hivu s clusterem HDInsight Hadoop pro prediktivní analýzy. Postupujte podle kroků uvedených v vědecké zpracování týmových dat. Přehled vědeckého zpracování týmových dat, naleznete v tématu [vědecké zpracování dat](overview.md). Úvod do Azure HDInsight, naleznete v tématu [Úvod do služby Azure HDInsight, technologie hadoop a clustery systému Hadoop](../../hdinsight/hadoop/apache-hadoop-introduction.md).
 
-Návody vědecké účely další data, které se spouští proces vědecké účely Team dat jsou seskupené podle **platformy** , které používají. V tématu [návody spouštění procesu tým datové vědy](walkthroughs.md) pro rozpis těchto příkladech.
+Další data science návody, které jsou spouštěny vědecké zpracování týmových dat jsou seskupené podle **platformy** , které používají. Zobrazit [názorné postupy vědeckého zpracování týmových dat provádění](walkthroughs.md) pro rozpis tyto příklady.
 
 
-## <a name="predict-taxi-tips-using-hive-with-hdinsight-hadoop"></a>Předpověď taxíkem tipy pro používání Hive s HDInsight Hadoop
+## <a name="predict-taxi-tips-using-hive-with-hdinsight-hadoop"></a>Předpovídání spropitného pro taxikáře používání Hive s HDInsight Hadoopem
 
-[Clusterů systému HDInsight Hadoop pomocí](hive-walkthrough.md) návod používá data z New Yorku taxislužby k předvídání: 
+[Clusterů systému HDInsight Hadoop použijte](hive-walkthrough.md) návod používá data z New Yorku taxi předpovědět: 
 
-- Jestli je placené tip 
-- Rozdělení objemu tipu
+- Určuje, zda je placené tip 
+- Distribuce částky tip
 
-Tento scénář je implementovaná pomocí Hive se [clusteru Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/). Zjistíte, jak k uložení prozkoumat, a funkce pracovníka data z veřejně dostupné NYC taxi služební cestě a tarif datovou sadu. Je také použít k vytváření a nasazování modely Azure Machine Learning.
+Tento scénář je implementována pomocí Hivu s [clusteru Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/). Zjistíte, jak ukládat, prozkoumejte a funkce zpětnou analýzu dat z veřejně dostupné NYC taxi cesty a tarif datové sady. Můžete také používat Azure Machine Learning pro sestavování a nasazování modelů.
 
-## <a name="predict-advertisement-clicks-using-hive-with-hdinsight-hadoop"></a>Předpověď klikne na oznámení o inzerovaném programu používání Hive s HDInsight Hadoop
+## <a name="predict-advertisement-clicks-using-hive-with-hdinsight-hadoop"></a>Předpověď kliknutí oznámení o inzerovaném programu pomocí Hivu se službou HDInsight Hadoop
 
-[Použití Azure HDInsight Hadoop clusterů v sadě dat 1 TB](hive-criteo-walkthrough.md) návod používá veřejně dostupné [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) klikněte na datovou sadu, která předvídat, jestli je tip placené a rozsah objemy očekává. Tento scénář je implementovaná pomocí Hive se [clusteru Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/) k uložení, prozkoumejte, funkci pracovníka a dolů ukázková data. Azure Machine Learning používá pro vytváření, trénování a určení skóre modelu binární klasifikace predikci, zda uživatel klikne na oznámení o inzerovaném programu. Průvodce se ukončí znázorňující k publikování některého z těchto modelů jako webovou službu.
+[Použití Azure HDInsight Hadoop clusterů v datové sadě 1 TB](hive-criteo-walkthrough.md) názorný postup využívá veřejně dostupné [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) klikněte na datovou sadu, která předpovědět, jestli jde placenou tip a rozsah částky očekávání. Tento scénář je implementována pomocí Hivu s [clusteru Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/) k ukládání, prozkoumejte, funkce technik a dolů ukázková data. Využívá Azure Machine Learning k vytváření, trénování a stanovíte jeho skóre binární klasifikační model predikci, jestli uživatel klikne na reklamu. Dojde k závěru návodu ukazuje, jak publikování některého z těchto modelů jako webové služby.
 
 
 ## <a name="next-steps"></a>Další postup
 
-Informace součástí klíče, které tvoří proces Team dat. vědecké účely, naleznete v [přehled tým datové vědy procesu](overview.md).
+Diskuzi o klíčové součásti, které tvoří vědecké zpracování týmových dat, naleznete v tématu [přehled vědeckého zpracování týmových dat](overview.md).
 
-Informace životního cyklu Team datové vědy procesu, můžete použít pro struktury projekty vědecké účely dat, naleznete v [procesu vědecké účely Team datového cyklu](lifecycle.md). Životní cyklus popisuje kroky, od začátku do konce, projekty obvykle postupujte při jejich spuštění. 
+Diskuzi o životní cyklus vědeckého zpracování týmových dat, který vám pomůže strukturovat vaše projekty datových věd, naleznete v tématu [životní cyklus vědeckého zpracování týmových dat](lifecycle.md). Životní cyklus popisuje kroky, od začátku do konce, projekty obvykle postupujte při jejich spuštění. 
 

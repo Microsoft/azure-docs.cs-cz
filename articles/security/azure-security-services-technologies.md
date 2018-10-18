@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2018
 ms.author: barclayn
-ms.openlocfilehash: 0addad1db4d9f897736a7793c5489897bca2cd38
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 32174af9edcd6da7b87b6b38c0824fa7f07aa8f9
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093422"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49384883"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Zabezpečení služeb a technologií, které jsou k dispozici v Azure
 
@@ -48,7 +48,7 @@ Tento seznam bude v průběhu času změnit a růst, stejně jako Azure. Ujistě
 | [Sdílené přístupové podpisy úložiště Azure](../storage/common/storage-dotnet-shared-access-signature-part-1.md)|Sdílený přístupový podpis poskytuje Delegovaný přístup k prostředkům ve vašem účtu úložiště.  |
 |[Klíče účtu úložiště Azure](../storage/common/storage-create-storage-account.md)| Metodu řízení přístupu pro Azure storage, který se používá k ověřování při přístupu k účtu úložiště. |
 |[Sdílené složky Azure pomocí šifrování SMB 3.0](../storage/files/storage-files-introduction.md)|Technologie zabezpečení sítě, která umožňuje automatické šifrování pro protokol sdílení zprávy bloku SMB (Server) souborů sítě. |
-|[Analýza úložiště Azure](https://docs.microsoft.com/en-us/rest/api/storageservices/Storage-Analytics)| Protokolování a generování metriky technologie pro data ve vašem účtu úložiště. |
+|[Analýza úložiště Azure](https://docs.microsoft.com/rest/api/storageservices/Storage-Analytics)| Protokolování a generování metriky technologie pro data ve vašem účtu úložiště. |
 
 <!------>
 
@@ -58,8 +58,8 @@ Tento seznam bude v průběhu času změnit a růst, stejně jako Azure. Ujistě
 | [Azure&nbsp;SQL&nbsp;brány Firewall](../sql-database/sql-database-firewall-configure.md)|Funkce řízení přístupu síť, která chrání před útoky ze sítě do databáze. |
 |[Azure&nbsp;SQL&nbsp;buňky&nbsp;úrovně šifrování](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/)| Technologie zabezpečení databáze, která zajišťuje šifrování na jemné úrovni.  |
 | [Azure&nbsp;SQL&nbsp;šifrování připojení](../sql-database/sql-database-control-access.md)|Služba SQL Database zajišťuje zabezpečení řízením přístupu pomocí pravidel brány firewall omezujících připojení podle IP adresy, ověřovacích mechanismů vyžadujících po uživatelích prokázání identity a autorizačních mechanismů omezujících uživatelům přístup ke konkrétním akcím a datům. |
-| [Azure SQL vždy šifrování](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017)|Chrání citlivá data, třeba čísla platebních karet nebo národní identifikační čísla (například USA čísla sociálního pojištění), uložená v databázích Azure SQL Database nebo SQL Server.  |
-| [Azure&nbsp;SQL&nbsp;transparentní šifrování dat](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current)| Funkce zabezpečení databáze, která šifruje úložiště celou databázi. |
+| [Azure SQL vždy šifrování](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017)|Chrání citlivá data, třeba čísla platebních karet nebo národní identifikační čísla (například USA čísla sociálního pojištění), uložená v databázích Azure SQL Database nebo SQL Server.  |
+| [Azure&nbsp;SQL&nbsp;transparentní šifrování dat](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current)| Funkce zabezpečení databáze, která šifruje úložiště celou databázi. |
 | [Azure SQL Database auditování](../sql-database/sql-database-auditing.md)|Funkce, která sleduje události databáze a zapisuje je do auditování ve vašem účtu úložiště Azure protokolu auditování databáze.  |
 
 

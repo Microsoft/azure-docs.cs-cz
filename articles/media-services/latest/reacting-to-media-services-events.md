@@ -9,16 +9,16 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 09/19/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: 143fec2ddb168b0fff0e419fa5767e9718637241
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 3541a5b33aa0bb98d9381b51caefc63b6aa677ad
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465533"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377544"
 ---
-# <a name="reacting-to-media-services-events"></a>Reakce na události služby Media Services
+# <a name="handling-event-grid-events"></a>Zpracování událostí služby Event Grid
 
 Události služby Media Services umožňují aplikacím reagovat na různé události (například úloha události změny stavu) pomocí moderní architektury bez serveru. Dělá to bez nutnosti složité kódu nebo nákladné a neefektivní cyklického dotazování služby. Místo toho události se nasdílejí [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) do obslužné rutiny událostí, jako [Azure Functions](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/), nebo dokonce vlastní Webhook a budete platit pouze podle co můžete použít. Informace o cenách najdete v tématu [ceny služby Event Grid](https://azure.microsoft.com/pricing/details/event-grid/).
 

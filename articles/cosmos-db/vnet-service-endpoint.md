@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: govindk
-ms.openlocfilehash: a4758e5597876112fa7a85850786491e22af8c83
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 868f465cc651043d3ef4b1735b4b528252572dbb
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47037131"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378081"
 ---
 # <a name="secure-access-to-an-azure-cosmos-db-account-by-using-azure-virtual-network-service-endpoint"></a>Zabezpečený přístup k účtu služby Azure Cosmos DB s využitím koncového bodu služby virtuální sítě Azure
 
@@ -226,7 +226,7 @@ Ano, virtuálními sítěmi v různých oblastech můžou používat tak novou f
 
 Ano, koncový bod služby virtuální sítě a brány firewall může existovat vedle sebe. Obecně platí je třeba zajistit, že přístup k portálu je vždy povoleno před konfigurací koncového bodu služby virtuální sítě umožňují zobrazit metriky související s kontejnerem.
 
-### <a name="can-i-allow-access-to-other-azure-services-from-a-given-azure-region-when-service-endpoint-access-is-enabled-for-azure-cosmos-db"></a>Můžu "Povolit přístup k jiným službám Azure z dané oblasti Azure" když je povolen přístup koncových bodů služby pro službu Azure Cosmos DB?  
+### <a name="can-i-accept-connections-from-within-public-azure-datacenters-when-service-endpoint-access-is-enabled-for-azure-cosmos-db"></a>Můžete mi "Přijímat připojení z v rámci veřejných datových centrech Azure" když je povolen přístup koncových bodů služby pro službu Azure Cosmos DB?  
 
 To je potřeba, pouze když chcete svůj účet služby Azure Cosmos DB ke kterým přistupují jiné Azure od služby jako Azure Data factory, Azure Search nebo některý službu, která je nasazena v dané oblasti Azure.
 

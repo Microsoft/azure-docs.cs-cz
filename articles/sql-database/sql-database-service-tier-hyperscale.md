@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 372f1a0b7e2ad07612caaac478aea14693e002fa
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 10/17/2018
+ms.openlocfilehash: 526b6ac9c510b13461181d76c0032602d8f3f435
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352298"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377978"
 ---
 # <a name="hyperscale-service-tier-preview-for-up-to-100-tb"></a>Velkokapacitní úrovni služeb (preview) pro až 100 TB
 
@@ -148,8 +148,8 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 
 | Problém | Popis |
 | :---- | :--------- |
-| Podokno ManageBackups pro logický server nezobrazují Hyperškálovatelného databáze bude filtrováno ze serveru SQL server ->  | Velkokapacitní má samostatné metodě pro správu zálohování a jako takový dlouhodobé uchovávání dat a bod v nastavení uchovávání záloh čas se nevztahují / nejsou zneplatněny. Podle toho Hyperškálovatelného databází se nezobrazují v podokně Správa zálohování. |
-| Obnovení k určitému bodu v čase | Po migraci databáze do vrstvy služby hyperškálovatelný systém se nepodporuje obnovení v daném okamžiku.|
+| V podokně Správa zálohování pro logický server nezobrazují Hyperškálovatelného databáze bude filtrováno ze serveru SQL server ->  | Velkokapacitní má samostatné metodě pro správu zálohování a jako takový dlouhodobé uchovávání dat a bod v nastavení uchovávání záloh čas se nevztahují / nejsou zneplatněny. Podle toho Hyperškálovatelného databází se nezobrazují v podokně Správa zálohování. |
+| Obnovení k určitému bodu v čase | Po migraci databáze do vrstvy služby hyperškálovatelný systém se nepodporuje obnovení k určitému bodu v čase před migrací.|
 | Pokud je soubor databáze roste během migrace z důvodu aktivní úlohy a překročí 1 TB za hranice souboru, se migrace nezdaří | Omezení rizik: <br> – Pokud je to možné, migrace databáze, pokud neexistuje žádné aktualizace zátěži.<br> – Zkuste to znovu migrace, bude úspěšné, tak dlouho, dokud není překročí hranice 1 TB během migrace.|
 | Managed Instance se momentálně nepodporuje. | Aktuálně se nepodporuje. |
 | Migrace do Hyperškálovatelného je aktuálně Jednosměrná operace | Po migraci databáze na Hyperškálovatelného, není možné migrovat přímo do úrovně služeb-mírou škálování. V současné době je jediný způsob, jak migrovat databázi z Hyperškálovatelného do bez Hyperškálovatelného export a import pomocí souborů BACPAC.|
