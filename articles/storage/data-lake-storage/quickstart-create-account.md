@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 034731ac2c965d6b9b682c62b9866870e558ff6d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4c3354786d7320caee0dfe2f0eca44909d77f2fe
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964663"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386847"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-preview-storage-account"></a>Rychlý start: Vytvoření účtu úložiště Azure Data Lake Storage Gen2 Preview
 
@@ -224,4 +224,4 @@ az group delete --name myResourceGroup
 
 V tomto rychlém startu jste vytvořili účet úložiště Data Lake Storage Gen2. Pokud chcete zjistit, jak v účtu úložiště nahrávat a stahovat objekty blob, pokračujte k rychlému startu pro úložiště objektů blob.
 
-* [Přesun dat do nebo ze služby Azure Blob Storage nástrojem AzCopy](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/move-data-to-azure-blob-using-azcopy)
+* [Přesun dat do nebo ze služby Azure Blob Storage nástrojem AzCopy](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/move-data-to-azure-blob-using-azcopy)

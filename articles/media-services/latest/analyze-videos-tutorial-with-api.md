@@ -4,20 +4,20 @@ description: Pokud chcete analyzovat video pomocí služby Azure Media Services,
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 06/28/2018
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 314ffce8a9f8dde62cac670099afbc2223df37e4
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 96ed5c17501aeb195ee584ce6d41a84fc2118bac
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971994"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376648"
 ---
 # <a name="tutorial-analyze-videos-with-azure-media-services"></a>Kurz: Analýza videa pomocí služby Azure Media Services 
 

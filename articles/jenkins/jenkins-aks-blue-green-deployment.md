@@ -7,13 +7,13 @@ author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 07/23/2018
-ms.openlocfilehash: d3d3ed8aaac16bc0a8cf817f4972ed3b771ed8d0
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 10/11/2018
+ms.openlocfilehash: 6cd3938844d7f6977c7b0912acffbfb1679dc42e
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093550"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387376"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Nasazení do služby Azure Kubernetes Service (AKS) s využitím Jenkinse a vzoru modrého/zeleného nasazení
 
@@ -32,7 +32,7 @@ V tomto kurzu zjistíte, jak provést následující úlohy:
 
 ## <a name="prerequisites"></a>Požadavky
 - [Účet GitHub:](https://github.com) Účet GitHub potřebujete k naklonování ukázkového úložiště.
-- [Azure CLI 2.0:](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) Pomocí Azure CLI 2.0 vytvoříte cluster Kubernetes.
+- [Azure CLI 2.0:](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) Pomocí Azure CLI 2.0 vytvoříte cluster Kubernetes.
 - [Chocolatey:](https://chocolatey.org) Správce balíčků, pomocí kterého nainstalujete kubectl.
 - [kubectl:](https://kubernetes.io/docs/tasks/tools/install-kubectl/) Rozhraní příkazového řádku, pomocí kterého můžete spouštět příkazy pro clustery Kubernetes.
 - [jq:](https://stedolan.github.io/jq/download/) Jednoduchý procesor JSON v příkazovém řádku.
@@ -82,9 +82,6 @@ V této části provedete následující kroky:
 - Pomocí Azure CLI 2.0 vytvoříte spravovaný cluster Kubernetes.
 - Zjistíte, jak pomocí instalačního skriptu nebo ručně nastavit cluster.
 - Vytvoříte instanci služby Azure Container Registry.
-
-> [!NOTE]   
-> AKS je v současné době ve verzi Preview. Informace o povolení verze Preview pro vaše předplatné Azure najdete v článku [Rychlý start: Nasazení clusteru Azure Kubernetes Service (AKS)](/azure/aks/kubernetes-walkthrough#enabling-aks-preview-for-your-azure-subscription).
 
 ### <a name="use-the-azure-cli-20-to-create-a-managed-kubernetes-cluster"></a>Vytvoření spravovaného clusteru Kubernetes pomocí Azure CLI 2.0
 Pokud chcete vytvořit spravovaný cluster Kubernetes pomocí [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), ujistěte se, že používáte Azure CLI verze 2.0.25 nebo novější.

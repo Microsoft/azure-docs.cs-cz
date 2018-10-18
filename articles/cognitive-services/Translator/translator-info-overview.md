@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: overview
 ms.date: 05/10/2018
 ms.author: nolachar
-ms.openlocfilehash: 47ac3c81b85424a5cacab00863cd88fab9463fb9
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: c0004960b7a234d374ec0ae1bdc2f6576b197705
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124656"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385020"
 ---
 # <a name="what-is-translator-text-api"></a>Co je Translator Text API?
 
@@ -27,7 +27,7 @@ Translator Text API je součástí [kolekce Azure Cognitive Services API](https:
 
 Microsoft Translator je cloudová služba pro strojový překlad. Jádrem této služby jsou služby Translator Text API a [Translator Speech API](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-translation), které se využívají v různých produktech a službách Microsoftu a v aplikacích a pracovních postupech tisíců firem po celém světě, kde umožňují šíření obsahu k cílové skupině po celém světě.
 
-Překlad řeči je k dispozici také prostřednictvím služby [Cognitive Services Speech Preview](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/), která kombinuje stávající služby Translator Speech API, Zpracování řeči Bingu a Custom Speech (Preview) do jednotné a plně přizpůsobitelné služby.  
+Překlad řeči je k dispozici také prostřednictvím služby [Cognitive Services Speech Preview](https://docs.microsoft.com/azure/cognitive-services/speech-service/), která kombinuje stávající služby Translator Speech API, Zpracování řeči Bingu a Custom Speech (Preview) do jednotné a plně přizpůsobitelné služby.  
 
 Další informace o [službě Microsoft Translator](https://www.microsoft.com/en-us/translator/home.aspx)
 
