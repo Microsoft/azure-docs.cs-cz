@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/12/2018
+ms.date: 10/16/2018
 ms.author: raiye
-ms.openlocfilehash: b37600fe8d0616454264b67553149223746318d8
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 7540f12f888108ed7091cece575b6d25131ef47b
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49322018"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377510"
 ---
 # <a name="azure-guest-os"></a>Azure hostovaného operačního systému
 Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hostovaného operačního systému Azure v následujících tabulkách. Hledání Tento článek k určení, pokud platí konkrétní aktualizace do hostovaného operačního systému, kterou používáte. Aktualizace vždy převést do dalšího období pro konkrétní [řady] [ family-explain] byly zavedeny v.
 
-## <a name="september-guest-os"></a>Září hostovaného operačního systému
+## <a name="september-2018-guest-os"></a>Hostovaný operační systém. září 2018
 | Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 18-09 | [4457131] | Zabezpečení systému Windows 10 | 5.23 | 11. září 2018 |
@@ -45,7 +45,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno | [4344153] | Aktualizace ze srpna zabezpečením .NET 3.5 | 4.58 | 14. srpna 2018 |
 | neuvedeno | [4344147] | X rollup srpna zabezpečením .NET 4 | 4.58 | 14. srpna 2018 |
 
-## <a name="august-guest-os"></a>Srpen hostovaného operačního systému
+## <a name="august-2018-guest-os"></a>Hostovaný operační systém. srpna 2018
 | Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 18-08 | [4343887] | Zabezpečení systému Windows 10 | 5.22 | 14. srpna 2018 |
@@ -68,7 +68,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno | [4338424] |Aktualizace z července zabezpečením .NET 3.5 |3.64 | 10. července 2018 |
 | neuvedeno | [4338415] |X rollup dne zabezpečením .NET 4 |3.64 | 10. července 2018 |
 
-## <a name="july-guest-os"></a>Červenec hostovaného operačního systému
+## <a name="july-2018-guest-os"></a>Hostovaný operační systém. července 2018
 | Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 18 07 | [4338814] |Zabezpečení systému Windows 10 |5.21 |10. července 2018 |
@@ -88,7 +88,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno | [4284855] |Souhrn bez zabezpečení dne |3.63 |12. června 2018 |
 | neuvedeno | [4284815] |Souhrn bez zabezpečení dne |hodnotu 4,56 |12. června 2018 |
 
-## <a name="june-guest-os"></a>Červen hostovaného operačního systému
+## <a name="june-2018-guest-os"></a>Hostovaný operační systém. června 2018
 | Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 18 06 | [4284880] |Zabezpečení systému Windows 10 |5.20 |12. června 2018 |
@@ -113,7 +113,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno | [4096417] |Může .NET 4.5 x nesouvisí se zabezpečením verzi |4.55 |8. května 2018 |
 | neuvedeno | [4132216] |Může SSU |5.20 |8. května 2018 |
 
-## <a name="may-guest-os"></a>Může hostovaný operační systém
+## <a name="may-2018-guest-os"></a>Hostovaný operační systém. května 2018.
 | Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 18 05 | [4103721], [4103727], [4103723] |Zabezpečení systému Windows 10 |5.19 |8. května 2018 |
@@ -133,7 +133,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno | [4093753] |Aktualizace časového pásma |2.74, 3.61, 4.74 |10. dubna 2018 |
 
 
-## <a name="april-guest-os"></a>Duben hostovaného operačního systému
+## <a name="april-2018-guest-os"></a>Hostovaný operační systém. dubna 2018
 | Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 18 04 | [4093119] |Zabezpečení systému Windows 10 |5.18 |10. dubna 2018 |
@@ -147,7 +147,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno | [4088877] |Březen kumulativní nesouvisí se zabezpečením |3.60 |13. března 2018 |
 | neuvedeno | [4088876] |Březen kumulativní nesouvisí se zabezpečením |4,53 |13. března 2018 |
 
-## <a name="march-guest-os"></a>Březen hostovaného operačního systému
+## <a name="march-2018-guest-os"></a>Hostovaný operační systém. března 2018
 | Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 18-03 | [4088787], [4088776] |Zabezpečení systému Windows 10 |činí 5,17 |13. března 2018 |
@@ -160,7 +160,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno | [4074837] |Aktualizace časového pásma |2.72, 3.59, 4.52 |13. února 2018 |
 
 
-## <a name="february-guest-os"></a>Únor hostovaného operačního systému
+## <a name="february-2018-guest-os"></a>Hostovaný operační systém. února 2018
 | Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 18-02 | [4074590], [4074588] |Zabezpečení systému Windows 10 |5.16 |13. února 2018 |
@@ -174,7 +174,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno | [4054175], [4054171] |Souhrn ledna .NET |3,58 |4. ledna 2018 |
 | neuvedeno | [4054177], [4054170] |Souhrn ledna .NET |4.51 |4. ledna 2018 |
 
-## <a name="january-guest-os"></a>Leden hostovaného operačního systému
+## <a name="january-2018-guest-os"></a>Hostovaný operační systém. ledna 2018
 | Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 18-01 | [4056898], [4056897], [4056899] |Pouze zabezpečení Windows |2.70, 3.57, 4.50 |3. ledna 2018 |
@@ -186,7 +186,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 
 
 
-## <a name="december-guest-os"></a>Prosinec hostovaného operačního systému
+## <a name="december-2017-guest-os"></a>Hostovaný operační systém. prosince 2017
 | Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 17. až 12. | [4053579], [4054517] |Aktualizace zabezpečení Windows 10 |4.49, 5.14 |12. prosince 2017 |
@@ -198,7 +198,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno | [4048958] |Souhrn nesouvisí se zabezpečením. listopadu |4.49 |14. listopadu 2017 |
 | neuvedeno | [4049068] |Aktualizace z prosince časové pásmo |2.69, 3.56, 4.49 |12. prosince 2017 |
 
-## <a name="november-guest-os"></a>Listopad hostovaného operačního systému
+## <a name="november-2017-guest-os"></a>Hostovaný operační systém. listopadu 2017
 | Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 17 – 11 | [4048953] |Aktualizace Windows 10 |5.13 |14. listopadu 2017 |
@@ -212,7 +212,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno | [3191565] |Aktualizace pro Windows Management Framework 5.1  |3.55 |14. listopadu 2017 |
 | neuvedeno | [3191564] |Aktualizace pro Windows Management Framework 5.1  |4.48 |14. listopadu 2017 |
 
-## <a name="october-guest-os"></a>Říjen hostovaného operačního systému
+## <a name="october-2017-guest-os"></a>Hostovaný operační systém. října 2017
 | Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 17 10 | [4041691] |Aktualizace Windows 10 |5.12 |10. října 2017 |
@@ -226,7 +226,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno | [4040979] |Souhrn bez zabezpečení září .NET |3.54 |12. září 2017 |
 | neuvedeno | [4040981] |Souhrn bez zabezpečení září .NET |4.47 |12. září 2017 |
 
-## <a name="september-guest-os"></a>Září hostovaného operačního systému
+## <a name="september-2017-guest-os"></a>Hostovaný operační systém. září 2017
 | Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 17-09 | [4038782] |Aktualizace Windows 10 |5.11 |12. září 2017 |
@@ -238,7 +238,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno | [4034665] |Souhrn nesouvisí se zabezpečením. srpna |5.11 |8. srpna 2017 |
 | neuvedeno | [4034681] |Souhrn nesouvisí se zabezpečením. srpna |4.46 |8. srpna 2017 |
 
-## <a name="august-guest-os"></a>Srpen hostovaného operačního systému
+## <a name="august-2017-guest-os"></a>Hostovaný operační systém. srpna 2017
 | Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 17 07 | [4034658] |Aktualizace Windows 10 |5.10 |8. srpna 2017 |
@@ -252,7 +252,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | Rel 17 07 | [4025331] |Souhrn bez zabezpečení dne |3.52 |11. července 2017 |
 | Rel 17 07 | [4025336] |Souhrn bez zabezpečení dne |4.45 |11. července 2017 |
 
-## <a name="july-guest-os"></a>Červenec hostovaného operačního systému
+## <a name="july-2017-guest-os"></a>Hostovaný operační systém. července 2017
 | Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 17 07 | [4025339] |Aktualizace Windows 10 |5.9 |11. července 2017 |
@@ -266,7 +266,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno | [4022724] |Souhrn bez zabezpečení dne |3.51 |13. června 2017 |
 | neuvedeno | [4022726] |Souhrn bez zabezpečení dne |4.44 |13. června 2017 |
 
-## <a name="june-guest-os"></a>Červen hostovaného operačního systému
+## <a name="june-2017-guest-os"></a>Hostovaný operační systém. června 2017
 | Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 17 06 | [4019472] |Vylepšení kvality OS WS 2016 |5.8 |9. května 2017 |
@@ -294,7 +294,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno | [4014510] |Může souhrn bez zabezpečení rozhraní .NET |4.43 |9. května 2017 |
 | neuvedeno | [4014512] |Může souhrn bez zabezpečení rozhraní .NET |4.43 |9. května 2017 |
 
-## <a name="may-guest-os"></a>Může hostovaný operační systém
+## <a name="may-2017-guest-os"></a>Hostovaný operační systém. května 2017
 | Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 17 05 | [4019472] |Vylepšení kvality OS WS 2016 |5.7 | 9. května 2017 |
@@ -322,7 +322,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno | [4015550] |Souhrn dubna nesouvisí se zabezpečením |4.42 | 11. dubna 2017 |
 | neuvedeno | [4013418] |Servisní aktualizace zásobníku |5.7 | 14. března 2017 |
 
-## <a name="april-guest-os"></a>Duben hostovaného operačního systému
+## <a name="april-2017-guest-os"></a>Hostovaný operační systém. dubna 2017
 | Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 17-04 |  [4015217]  |Vylepšení kvality OS WS 2016 | 5.6 | 11. dubna 2017 |
@@ -342,7 +342,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | Rel 17-04 |  [4012217]  |Březen 2017 měsíční kvality souhrn zabezpečení pro systém Windows Server 2012 |3.48 | 11. dubna 2017 |
 | Rel 17-04 |  [4012216]  |Březen 2017 měsíční kvality souhrn zabezpečení pro Windows 8.1 a Windows Server 2012 R2 |4.41 | 11. dubna 2017 |
 
-## <a name="march-guest-os"></a>Březen hostovaného operačního systému
+## <a name="march-2017-guest-os"></a>Hostovaný operační systém. března 2017
 | Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 17-03 |  [4013429] |Vylepšení a oprav | 5.5 | 14. března 2017 |
@@ -356,12 +356,12 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno |  [3205401] |Prosinec 2016 měsíční kvality souhrn zabezpečení pro Windows 8.1 a Windows Server 2012 R2 |4.40 |14. března 2017 |
 | neuvedeno |  [3211320] |Údržba stack – aktualizace pro Windows 10 verze 1607 a Windows serveru 2016: 24. ledna 2017 |5.5 |14. března 2017 |
 
-## <a name="january-guest-os"></a>Leden hostovaného operačního systému
+## <a name="january-2017-guest-os"></a>Hostovaný operační systém. ledna 2017
 | ID bulletinu | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | MS17-004 | [3216771] |Aktualizace zabezpečení pro místní Security Authority Subsystem Service |2.59 |10. ledna 2017 |
 
-## <a name="december-guest-os"></a>Prosinec hostovaného operačního systému
+## <a name="december-2016-guest-os"></a>Hostovaný operační systém. prosince 2016
 | ID bulletinu | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | MS16-144 |[3204059] |Kumulativní aktualizace zabezpečení pro Internet Explorer |2.58, 3.46, 4.39 |13. prosince 2016 |
@@ -378,7 +378,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno |[3197877] |Listopad 2016 měsíční kvality souhrn zabezpečení pro systém Windows Server 2012 |3.46 |13. prosince 2016 |
 | neuvedeno |[3197874] |Listopad 2016 měsíční kvality souhrn zabezpečení pro Windows 8.1 a Windows Server 2012 R2 |4.39 |13. prosince 2016 |
 
-## <a name="november-guest-os"></a>Listopad hostovaného operačního systému
+## <a name="november-2016-guest-os"></a>Hostovaný operační systém. listopadu 2016
 | ID bulletinu | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | MS16-129 |[3199057] |Kumulativní aktualizace zabezpečení pro Microsoft Edge |5.3 |8. listopadu 2016 |
@@ -403,7 +403,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno |[3199986] |Údržba stack – aktualizace pro Windows 10 verze 1607: 27. října 2016 |5.3 |8. listopadu 2016 |
 | neuvedeno |[3197954] |Kumulativní aktualizace pro Windows 10 verze 1607 a Windows serveru 2016: 27. října 2016 |5.3 |8. listopadu 2016 |
 
-## <a name="october-guest-os"></a>Říjen hostovaného operačního systému
+## <a name="october-2016-guest-os"></a>Říjen 2016 hostovaného operačního systému
 | ID bulletinu | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | MS16-118 |[3192887] |Kumulativní aktualizace zabezpečení pro Internet Explorer |4.37, 3.44, 2.56 |11. října 2016 |
@@ -418,7 +418,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno |[3185279] |Kumulativní aktualizace ze září 2016 pro Windows 8.1 a Windows Server 2012 R2 |4.37 |11. října 2016 |
 | neuvedeno |[3194798] |Kumulativní aktualizace pro Windows 10 verze 1607 a Windows serveru 2016 |5.2 |11. října 2016 |
 
-## <a name="september-guest-os"></a>Září hostovaného operačního systému
+## <a name="september-2016-guest-os"></a>Hostovaný operační systém. září 2016
 | ID bulletinu | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | MS16-104 |[3183038] |Kumulativní aktualizace zabezpečení pro Internet Explorer |4.36, 3.43, 2.55 |13. září 2016 |
@@ -435,7 +435,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno |[3179575] |Kumulativní aktualizace ze srpna 2016 pro Windows Server 2012 |3.43 |13. září 2016 |
 | neuvedeno |[3179574] |Kumulativní aktualizace ze srpna 2016 pro Windows RT 8.1, Windows 8.1 a Windows Server 2012 R2 |4.36 |13. září 2016 |
 
-## <a name="august-guest-os"></a>Srpen hostovaného operačního systému
+## <a name="august-2016-guest-os"></a>Hostovaný operační systém. srpna 2016
 | ID bulletinu | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | MS16-095 |[3177356] |Kumulativní aktualizace zabezpečení pro Internet Explorer |4.35, 3.42, 2.54 |9. srpna 2016 |
@@ -449,7 +449,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno |[3172615] |Kumulativní aktualizace z července 2016 pro Windows Server 2012 |3.42 |9. srpna 2016 |
 | neuvedeno |[3172614] |Kumulativní aktualizaci z července 2016 pro Windows RT 8.1, Windows 8.1 a Windows Server 2012 R2 |4.35 |9. srpna 2016 |
 
-## <a name="july-guest-os"></a>Červenec hostovaného operačního systému
+## <a name="july-2016-guest-os"></a>Červenec 2016 hostovaného operačního systému
 | ID bulletinu | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | MS16-084 |[3169991] |Kumulativní aktualizace zabezpečení pro Internet Explorer |4.34, 3.41, 2.53 |12. července 2016 |
@@ -465,7 +465,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno |[3161606] |Kumulativní aktualizace. června 2016 pro Windows RT 8.1, Windows 8.1 a Windows Server 2012 R2 |4.34 |12. července 2016 |
 | neuvedeno |[3139923] |Windows installer (MSI) oprava nefunguje při instalaci balíčku MSI na protokolu HTTP sdílet ve Windows |4.34 |12. července 2016 |
 
-## <a name="june-guest-os"></a>Červen hostovaného operačního systému
+## <a name="june-2016-guest-os"></a>Hostovaný operační systém. června 2016
 | ID bulletinu | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | MS16-035 |[3141780] |Aktualizace zabezpečení pro .NET Framework k vyřešení obcházení funkce zabezpečení |4.33, 3.40, 2.52 |14. června 2016 |
@@ -492,7 +492,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno |[3156418] |Kumulativní aktualizace. května 2016 pro Windows RT 8.1, Windows 8.1 a Windows Server 2012 R2 |4.33 |14. června 2016 |
 | neuvedeno |[3153731] |Aktualizaci z května 2016 letního času pro Ázerbájdžán, Chile, Haiti a Maroko ve Windows |4.33, 3.40, 2.52 |14. června 2016 |
 
-## <a name="may-guest-os"></a>Může hostovaný operační systém
+## <a name="may-2016-guest-os"></a>Hostovaný operační systém. května 2016
 | ID bulletinu | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | MS16-051 |[3155533] |Kumulativní aktualizace zabezpečení pro Internet Explorer |4.32, 3.39, 2.51 |10. května 2016 |
@@ -510,7 +510,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno |[3123245] |Aktualizace zlepšuje identifikace vyčerpání portů ve Windows serveru 2012 R2  |4.32 |10. května 2016 |
 | neuvedeno |[Zakázat RC4] | Informační zpravodaj zabezpečení společnosti Microsoft: aktualizace pro zákazu RC4  |4.32, 3.39, 2.51 |10. května 2016 |
 
-## <a name="april-guest-os"></a>Duben hostovaného operačního systému
+## <a name="april-2016-guest-os"></a>Hostovaný operační systém. dubna 2016
 | ID bulletinu | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | MS16-037 |[3148531] |Kumulativní aktualizace zabezpečení pro Internet Explorer |4.31, 3.38, 2.50 |12. dubna 2016 |
@@ -521,7 +521,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | MS16-047 |[3148527] |Aktualizace zabezpečení pro Security Account Manager Remote Protocol |4.31, 3.38, 2.50 |12. dubna 2016 |
 | MS16-048 |[3148528] |Aktualizace zabezpečení pro CSRSS |4.31, 3.38 |12. dubna 2016 |
 
-## <a name="march-guest-os"></a>Březen hostovaného operačního systému
+## <a name="march-2016-guest-os"></a>Březen 2016 hostovaného operačního systému
 | ID bulletinu | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | MS16-023 |[3142015] |Kumulativní aktualizace zabezpečení pro Internet Explorer |4.30, 3.37, 2.49 |8. března 2016 |
@@ -534,7 +534,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | MS16-033 |[3143142] |Aktualizace zabezpečení do třídy ovladač velkokapacitního paměťového zařízení USB k vyřešení zvýšení úrovně oprávnění |4.30, 3.37, 2.49 |8. března 2016 |
 | MS16-034 |[3143145] |Aktualizace zabezpečení pro ovladač režimu jádra na adresu zvýšení úrovně oprávnění |4.30, 3.37, 2.49 |8. března 2016 |
 
-## <a name="february-guest-os"></a>Únor hostovaného operačního systému
+## <a name="february-2016-guest-os"></a>Hostovaný operační systém. února 2016
 | ID bulletinu | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | MS16-009 |[3134220] |Kumulativní aktualizace zabezpečení pro Internet Explorer |4.29, 3.36, 2.48 |9. února 2016 |
@@ -549,7 +549,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | Znovu Release-MS15-118 |[3104507] |Aktualizace zabezpečení pro .NET Framework k vyřešení zvýšení úrovně oprávnění |4.29, 3.36, 2.48 |9. února 2016 |
 | Znovu Release-MS15-128 |[3104503] |Aktualizace zabezpečení pro komponentu Microsoft grafiky k vyřešení vzdálené spuštění kódu |4.29, 3.36, 2.48 |9. února 2016 |
 
-## <a name="january-guest-os"></a>Leden hostovaného operačního systému
+## <a name="january-2016-guest-os"></a>Leden 2016 hostovaného operačního systému
 | ID bulletinu | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | MS16-001 |[3124903] |Kumulativní aktualizace zabezpečení pro Internet Explorer |4.28, 3.35, 2.47 |12. ledna 2016 |
@@ -562,7 +562,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | Informační zpravodaj zabezpečení společnosti Microsoft |[3123479] |Vyřazení algoritmu hash SHA-1 pro Microsoft Root Certificate Program |4.28, 3.35, 2.47 |12. ledna 2016 |
 | Informační zpravodaj zabezpečení společnosti Microsoft |[2736233] |Aktualizace pro službu Bits ActiveX Kill |4.28, 3.35, 2.47 |12. ledna 2016 |
 
-## <a name="december-guest-os"></a>Prosinec hostovaného operačního systému
+## <a name="december-2015-guest-os"></a>Hostovaný operační systém. prosince 2015
 | ID bulletinu | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | MS15-124 |[3116180] |Kumulativní aktualizace zabezpečení pro Internet Explorer |4.27, 3.34, 2.46 |8. prosince 2015 |
@@ -574,7 +574,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | MS15-134 |[3108669] |Aktualizace zabezpečení pro aplikace Windows Media Center k vyřešení vzdálené spuštění kódu |4.27, 3.34, 2.46 |8. prosince 2015 |
 | MS15-135 |[3119075] |Aktualizace zabezpečení pro ovladače režimu jádra Windows k vyřešení zvýšení úrovně oprávnění |4.27, 3.34, 2.46 |8. prosince 2015 |
 
-## <a name="november-guest-os"></a>Listopad hostovaného operačního systému
+## <a name="november-2015-guest-os"></a>Hostovaný operační systém. listopadu 2015
 | ID bulletinu | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | MS15-112 |[3104517] |Kumulativní aktualizace zabezpečení pro Internet Explorer |4.26, 3.33, 2.45 |10. listopadu 2015 |
@@ -588,7 +588,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | MS15-122 |[3105256] |Aktualizace zabezpečení pro ověřování pomocí protokolu Kerberos adres obcházení funkce zabezpečení |4.26, 3.33, 2.45 |10. listopadu 2015 |
 | Informační zpravodaj zabezpečení společnosti Microsoft |[3097966] |Digitální certifikáty by mohlo znamenat falšování neúmyslně známou |4.26, 3.33, 2.45 |10. listopadu 2015 |
 
-## <a name="october-guest-os"></a>Říjen hostovaného operačního systému
+## <a name="october-2015-guest-os"></a>Hostovaný operační systém. října 2015
 | ID bulletinu | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | MS15-106 |[3096441] |Kumulativní aktualizace zabezpečení pro Internet Explorer |4.25, 3.32, 2.44 |13. října 2015 |
@@ -597,7 +597,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | MS15-111 |[3096447] |Aktualizace zabezpečení pro jádra Windows k vyřešení zvýšení úrovně oprávnění |4.25, 3.32, 2.44 |13. října 2015 |
 | Informační zpravodaj zabezpečení společnosti Microsoft |[3092627] |Aktualizace ze září 2015 opravit Windows nebo aplikace zamrzne po instalaci aktualizace zabezpečení 3076895 |4.25, 3.32, 2.44 |13. října 2015 |
 
-## <a name="september-guest-os"></a>Září hostovaného operačního systému
+## <a name="september-2015-guest-os"></a>Hostovaný operační systém. září 2015
 | ID bulletinu | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | MS15-093 |[3088903] |Aktualizace zabezpečení pro Internet Explorer |4.24, 3.31, 2.43 |8. září 2015 |
@@ -609,7 +609,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | MS15-102 |[3089657] |Chyby zabezpečení ve službě Windows Management úloh umožňují zvýšení úrovně oprávnění |4.24, 3.31, 2.43 |8. září 2015 |
 | MS15-105 |[3091287] |Chyba zabezpečení Windows technologie Hyper-v umožňuje obcházení funkce zabezpečení |4.24 |8. září 2015 |
 
-## <a name="august-guest-os"></a>Srpen hostovaného operačního systému
+## <a name="august-2015-guest-os"></a>Hostovaný operační systém. srpna 2015
 | ID bulletinu | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | MS15-079 |[3082442] |Kumulativní aktualizace zabezpečení pro Internet Explorer |4.23, 3.30, 2.42 |11. srpna 2015 |
@@ -621,7 +621,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | MS15-089 |[3060716] |Chyby zabezpečení v Microsoft Windows umožňují zvýšení úrovně oprávnění |4.23, 3.30, 2.42 |11. srpna 2015 |
 | MS15-090 |[3076949] |Chyba v protokolu WebDAV by mohla umožnit zpřístupnění informací |4.23, 3.30, 2.42 |11. srpna 2015 |
 
-## <a name="july-guest-os"></a>Červenec hostovaného operačního systému
+## <a name="july-2015-guest-os"></a>Hostovaný operační systém. července 2015
 | ID bulletinu | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | MS15-065 |[3076321] |Kumulativní aktualizace zabezpečení pro Internet Explorer |4.22, 3.29, 2.41 |14. července 2015 |
@@ -638,7 +638,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | MS15-077 |[3077657] |Ohrožení zabezpečení v ovladač ATM písmo by mohlo znamenat zvýšení úrovně oprávnění |4.22, 3.29, 2.41 |14. července 2015 |
 | Není k dispozici |[3057154] |Aktualizace k omezení použití šifrování DES |4.22, 3.29, 2.41 |14. července 2015 |
 
-## <a name="june-guest-os"></a>Červen hostovaného operačního systému
+## <a name="june-2015-guest-os"></a>Červen 2015 hostovaného operačního systému
 | ID bulletinu | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | MS15-056 |[3058515] |Kumulativní aktualizace zabezpečení pro Internet Explorer |4.21, 3.28, 2.40 |9. června 2015 |
@@ -648,7 +648,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | MS15-062 |[3062577] |Ohrožení zabezpečení v Active Directory Federation Services by mohlo znamenat zvýšení úrovně oprávnění |4.21, 3.28, 2.40 |9. června 2015 |
 | MS15-063 |[3063858] |Ohrožení zabezpečení v jádra Windows by mohlo znamenat zvýšení úrovně oprávnění |4.21, 3.28, 2.40 |9. června 2015 |
 
-## <a name="may-guest-os"></a>Může hostovaný operační systém
+## <a name="may-2015-guest-os"></a>Hostovaný operační systém. května 2015
 | ID bulletinu | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | MS15-043 |[3049563] |Kumulativní aktualizace zabezpečení pro Internet Explorer |4.20, 3.27, 2.39 |12. května 2015 |
@@ -671,12 +671,12 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | MS15-042 |[3047234] |Ohrožení zabezpečení Windows technologie Hyper-v by mohlo znamenat útok DoS |4.20, 3.27, 2.39 |17. dubna 2015 |
 | Není k dispozici |[3045755] |Aktualizace pro zlepšení ověřování PKU2U |4.20, 3.27, 2.39 |17. dubna 2015 |
 
-## <a name="april-guest-os"></a>Duben hostovaného operačního systému
+## <a name="april-2015-guest-os"></a>Hostovaný operační systém. dubna 2015
 | ID bulletinu | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | [MS15-034] |[3042553] |Ohrožení zabezpečení v HTTP.sys by mohla umožnit vzdálené spuštění kódu |4.19, 3.26, 2.38 |17. dubna 2015 |
 
-## <a name="march-guest-os"></a>Březen hostovaného operačního systému
+## <a name="march-2015-guest-os"></a>Hostovaný operační systém. března 2015
 | ID bulletinu | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | MS15-018 |[3032359] |Kumulativní aktualizace zabezpečení pro Internet Explorer |4.18, 3.25, 2.37 |neuvedeno |
@@ -696,7 +696,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 >
 >
 
-## <a name="february-guest-os"></a>Únor hostovaného operačního systému
+## <a name="february-2015-guest-os"></a>Hostovaný operační systém. února 2015
 | ID bulletinu | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | MS15-009 |[3034682] |Aktualizace zabezpečení pro Internet Explorer |4.17, 3.24, 2.36 |neuvedeno |
@@ -707,7 +707,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | MS15-016 |[3029944] |Ohrožení zabezpečení v součásti grafické Microsoft může umožnit vyzrazení informací |4.17, 3.24, 2.36 |neuvedeno |
 | neuvedeno |[3004375] |Aktualizace pro zlepšení Windows příkazového řádku auditování<p/>**Poznámka:**: to je nainstalovaná, ale klíče registru, aby je vypnutý. |4.17, 3.24, 2.36 |neuvedeno |
 
-## <a name="january-guest-os"></a>Leden hostovaného operačního systému
+## <a name="january-2015-guest-os"></a>Leden 2015 hostovaného operačního systému
 | ID bulletinu | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | MS15-001 |[3023266] |Ohrožení zabezpečení ve Windows AppCompatCache by mohlo znamenat zvýšení úrovně oprávnění |4.16, 3.23, 2.35 |19. ledna 2015 |
@@ -723,7 +723,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | MS15-002 |[3020393] |Způsobit ohrožení zabezpečení ve službě Windows Telnet vzdálené spuštění kódu |4.16, 3.23, 2.35 |19. ledna 2015 |
 
 
-## <a name="december-guest-os"></a>Prosinec hostovaného operačního systému
+## <a name="december-2014-guest-os"></a>Hostovaný operační systém. prosince 2014
 | ID bulletinu | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | neuvedeno |[3013776] |Systém se zablokuje při spuštění aplikace, pomocí účtu domény |4.15, 3.22, 2.34 |13. ledna 2015 |
