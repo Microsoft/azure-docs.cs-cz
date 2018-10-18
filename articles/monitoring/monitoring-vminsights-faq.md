@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 308a447ff99cd11ad6a28df0bdb515764b0f546b
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 282620342d2348868ceab5257de7415a9cb2147c
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063451"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388353"
 ---
 # <a name="azure-monitor-for-vms-frequently-asked-questions"></a>Nejčastější dotazy k Azure Monitor pro virtuální počítače
 Tato FAQ Microsoft je uveden seznam nejčastější dotazy týkající se Azure Monitor pro virtuální počítače v Microsoft Azure. Pokud máte nějaké další dotazy ohledně řešení, přejděte [diskusní fórum](https://feedback.azure.com/forums/34192--general-feedback) a zveřejněte své dotazy. Pokud je dotaz pokládán často, přidáme ji k tomuto článku tak, aby jej lze rychle a snadno najít.
@@ -76,7 +76,7 @@ Azure Monitor pro virtuální počítače mapování funkce je založená na map
 Tato situace může nastat z několika důvodů.  V případech, ve kterých je mezera v shromažďování dat jsme znázornění řádky jako tečkovaná.  Pokud změníte data vzorkovací frekvence pro čítače výkonu povoleno (výchozí nastavení je ke shromažďování dat každých 60 sekund), uvidíte tečkované čáry v grafu, pokud zvolíte úzký časový rozsah pro graf a vzorkovací frekvence je menší než velikost kbelíku používaných v grafu (například vzorkovací frekvence je každých 10 minut a každý blok v grafu je 5 minut).  Výběr širší časový rozsah pro zobrazení by se měl grafu řádky v tomto případě se zobrazí jako čar spíše než tečky.
 
 ## <a name="are-groups-supported-with-azure-monitor-for-vms"></a>Skupiny podporovaných službou Azure Monitor pro virtuální počítače?
-Funkce výkonu podporuje skupiny založené na zvýrazněný prostředky v rámci konkrétní pracovní prostor, jakož i seskupení založené na konkrétní virtuální počítač Azure škálovací sadu a cloudové služby.
+Ano, po instalaci agenta závislostí můžeme shromažďovat informace z virtuálních počítačů k zobrazení skupin na základě předplatného, skupiny prostředků, virtuálního počítače škálovací sady a cloudové služby.  Pokud jste dosud používali řešení Service Map a vytvořili skupiny počítačů, se zobrazí také.  Skupiny počítačů se také zobrazí ve filtru skupiny, pokud jste vytvořili pro pracovní prostor, který si prohlížíte. 
 
 ## <a name="how-do-i-see-the-details-for-what-is-driving-the-95th-percentile-line-in-the-aggregate-performance-charts"></a>Jak můžu zobrazit podrobnosti pro co ovlivňuje 95. percentil řádek v agregované grafy výkonu?
 Ve výchozím nastavení je seznam seřazen k zobrazení virtuálních počítačů, které mají nejvyšší hodnotu 95. percentil pro vybranou metriku, s výjimkou grafu dostupné paměti, která zobrazuje počítače s nejnižší hodnotu 5. percentil.  Otevře se kliknutím na graf **N nejlepších** zobrazení s odpovídající vybranou metrikou.

@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: meladie
-ms.openlocfilehash: d16bb218526a6768ed9f8a6babf5feb186a2b225
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: bd6ac05da5f60fdbe86897ce03ccd6646e6bf191
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321593"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390258"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-australia-protected"></a>Zabezpečení Azure a dodržování předpisů – chráněné PaaS webovou aplikaci pro Austrálii
 
@@ -201,7 +201,7 @@ Následující Log Analytics [řešení pro správu](https://docs.microsoft.com/
 
 **Azure Monitor**: [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) pomáhá uživatelům sledování výkonu, zabezpečení a rozpoznávání trendů tím, že umožňuje organizacím auditovat, vytvářet upozornění a archivovat data, včetně sledování volání rozhraní API v Azure prostředky.
 
-Azure Network Watcher: [Azure Network Watcher] 9 https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview) poskytuje nástroje pro monitorování, Diagnostika, zobrazujte metriky, zakázání nebo povolení protokolů pro prostředky ve službě Azure virtual network.  Společenství severních entit by měly implementovat protokoly toku Network Watcher pro skupiny zabezpečení sítě a virtuální počítače. Tyto protokoly by být uloženy v účtu úložiště vyhrazené jenom zabezpečení protokoly se ukládají v, který by měl být zabezpečený přístup k účtu úložiště pomocí řízení přístupu na základě rolí.
+Azure Network Watcher: [Azure Network Watcher] 9 https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) poskytuje nástroje pro monitorování, Diagnostika, zobrazujte metriky, zakázání nebo povolení protokolů pro prostředky ve službě Azure virtual network.  Společenství severních entit by měly implementovat protokoly toku Network Watcher pro skupiny zabezpečení sítě a virtuální počítače. Tyto protokoly by být uloženy v účtu úložiště vyhrazené jenom zabezpečení protokoly se ukládají v, který by měl být zabezpečený přístup k účtu úložiště pomocí řízení přístupu na základě rolí.
 
 ## <a name="threat-model"></a>Model hrozeb
 

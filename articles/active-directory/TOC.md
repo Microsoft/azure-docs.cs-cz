@@ -105,6 +105,7 @@
 #### [Archivace protokolů aktivit do účtu úložiště Azure](reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)
 #### [Integrace protokolů aktivit s využitím Splunku pomocí Azure Monitoru](reports-monitoring/tutorial-integrate-activity-logs-with-splunk.md)
 #### [Integrace protokolů aktivit s využitím SumoLogicu pomocí Azure Monitoru](reports-monitoring/howto-integrate-activity-logs-with-sumologic.md)
+#### [Integrace protokolů aktivit s využitím Log Analytics pomocí Azure Monitoru](reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 ### Referenční informace
 #### [Uchování](reports-monitoring/reference-reports-data-retention.md)

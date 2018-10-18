@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/11/2018
 ms.author: kuhussai
 ms.component: blobs
-ms.openlocfilehash: 6acea70ca929310fe37f36fe98698e6adb76101b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 922e7ed5d55f50b2069dad71ead73d9ef4475ed0
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997824"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389900"
 ---
 # <a name="azure-blob-storage-premium-preview-hot-cool-and-archive-storage-tiers"></a>Azure Blob storage: úrovně Premium (preview), horká, studená a archivní úroveň úložiště
 
@@ -113,7 +113,7 @@ V rámci jednoho účtu mohou současně existovat objekty blob ve všech třech
 Data uložená na úrovni Premium přístupu nemůže být rozvrstvena na horkou, studenou nebo archivní pomocí [Set Blob Tier](/rest/api/storageservices/set-blob-tier) nebo pomocí správy životního cyklu úložiště objektů Blob v Azure. Pro přesun dat, je nutné synchronně zkopírovat objekty BLOB ze Premium přístup k výměně pomocí [Vložit blok z adresy URL rozhraní API](/rest/api/storageservices/put-block-from-url) nebo verzi AzCopy, který podporuje toto rozhraní API. *Vložit blok z adresy URL* rozhraní API synchronně zkopíruje data na serveru, což znamená dokončení volání pouze jednou všechna data se přesunou z původního umístění serveru do cílového umístění.
 
 ### <a name="blob-lifecycle-management"></a>Správa životního cyklu objektu BLOB
-Správa životního cyklu úložiště objektů BLOB (Preview) nabízí bohatě vybaveným a podle pravidel zásad, který vám pomůže se převést vaše data, aby nejlepší úroveň přístupu a vypršení platnosti dat na konci svého životního cyklu. Zobrazit [Správa životního cyklu úložiště objektů Blob v Azure](https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts) Další informace.  
+Správa životního cyklu úložiště objektů BLOB (Preview) nabízí bohatě vybaveným a podle pravidel zásad, který vám pomůže se převést vaše data, aby nejlepší úroveň přístupu a vypršení platnosti dat na konci svého životního cyklu. Zobrazit [Správa životního cyklu úložiště objektů Blob v Azure](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts) Další informace.  
 
 ### <a name="blob-level-tiering-billing"></a>Fakturace ovládání datových vrstev na úrovni objektů blob
 

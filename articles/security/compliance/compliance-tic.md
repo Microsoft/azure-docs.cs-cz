@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: 637f837ec2421f0bef5131a33c709087b891aa0f
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: d52785dd7569560f4b6986080b14723762537ec8
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505107"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388303"
 ---
 # <a name="trusted-internet-connections-guidance"></a>Pokyny k důvěryhodné připojení k Internetu
 
@@ -223,7 +223,7 @@ Následující ukázkové zásady je možné pro scénáře PIŠKVORKY dodržov�
 
 ### <a name="network-watcher-traffic-analytics"></a>Network Watcher analýzy provozu
 
-Network Watcher [traffic analytics](https://azure.microsoft.com/en-in/blog/traffic-analytics-in-preview/) využívají data protokolů toku a další protokoly poskytnout podrobný přehled síťový provoz. Data jsou užitečná pro auditování dodržování předpisů PIŠKVORKY a k identifikaci míst. Podrobný řídicí panel můžete použít na virtuální počítače, které komunikují s Internetem a získat podrobný přehled směrování PIŠKVORKY rychle obrazovku.
+Network Watcher [traffic analytics](https://azure.microsoft.com/blog/traffic-analytics-in-preview/) využívají data protokolů toku a další protokoly poskytnout podrobný přehled síťový provoz. Data jsou užitečná pro auditování dodržování předpisů PIŠKVORKY a k identifikaci míst. Podrobný řídicí panel můžete použít na virtuální počítače, které komunikují s Internetem a získat podrobný přehled směrování PIŠKVORKY rychle obrazovku.
 
 ![Analýza provozu](media/tic-traffic-analytics-1.png)
 

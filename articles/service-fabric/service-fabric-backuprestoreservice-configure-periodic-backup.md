@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2018
 ms.author: hrushib
-ms.openlocfilehash: 4aeb37d656dcb5ebca1a48253c418186dfca0a7a
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: eeaa0e9a940f16c2416418959c98cd17e4816afc
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575408"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387629"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Principy pravidelné zálohování konfigurace v Azure Service Fabric
 
@@ -155,23 +155,23 @@ Předpokládají, že jsou požadavky na tyto aplikace dat záloh následující
 
 Pokud chcete vyřešit tyto požadavky pro zálohování dat, se vytvoří zásady zálohování k BP_5 BP_1 a zásadu povolíte následujícím způsobem.
 1. MyApp_A
-    1. Vytvořit zásadu zálohování, _BP_1_, s frekvencí podle plánu zálohování kde frequency je nastavená na 24 hodin. a úložiště, které umožňují použít umístění úložiště zálohování _BackupStore1_. Tuto zásadu Povolit pro aplikaci _MyApp_A_ pomocí [povolit zálohování aplikace](https://docs.microsoft.com/en-in/rest/api/servicefabric/sfclient-api-enableapplicationbackup) rozhraní API. Tato akce povolí zálohování dat pomocí zásad zálohování _BP_1_ pro všechny oddíly _Reliable Stateful services_ a _Reliable Actors_ které patří k aplikaci  _MyApp_A_.
+    1. Vytvořit zásadu zálohování, _BP_1_, s frekvencí podle plánu zálohování kde frequency je nastavená na 24 hodin. a úložiště, které umožňují použít umístění úložiště zálohování _BackupStore1_. Tuto zásadu Povolit pro aplikaci _MyApp_A_ pomocí [povolit zálohování aplikace](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableapplicationbackup) rozhraní API. Tato akce povolí zálohování dat pomocí zásad zálohování _BP_1_ pro všechny oddíly _Reliable Stateful services_ a _Reliable Actors_ které patří k aplikaci  _MyApp_A_.
 
-    2. Vytvořit zásadu zálohování, _BP_2_, kde frequency je nastavená na 1 na základě četnosti zálohování plánu hodin. a úložiště, které umožňují použít umístění úložiště zálohování _BackupStore1_. Povolit tyto zásady pro službu _SvcA3_ pomocí [povolit službu Backup](https://docs.microsoft.com/en-in/rest/api/servicefabric/sfclient-api-enableservicebackup) rozhraní API. Tato akce přepíše rozšíří zásady _BP_1_ ve explicitně povolené zásady zálohování _BP_2_ pro všechny oddíly služby _SvcA3_ což vede k zálohování dat pomocí služby backup zásady _BP_2_ pro tyto oddíly.
+    2. Vytvořit zásadu zálohování, _BP_2_, kde frequency je nastavená na 1 na základě četnosti zálohování plánu hodin. a úložiště, které umožňují použít umístění úložiště zálohování _BackupStore1_. Povolit tyto zásady pro službu _SvcA3_ pomocí [povolit službu Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableservicebackup) rozhraní API. Tato akce přepíše rozšíří zásady _BP_1_ ve explicitně povolené zásady zálohování _BP_2_ pro všechny oddíly služby _SvcA3_ což vede k zálohování dat pomocí služby backup zásady _BP_2_ pro tyto oddíly.
 
-    3. Vytvořit zásadu zálohování, _BP_3_, s frekvencí podle plánu zálohování kde frequency je nastavená na 24 hodin. a úložiště, které umožňují použít umístění úložiště zálohování _BackupStore2_. Povolit tyto zásady pro oddíl _SvcA1_P2_ pomocí [povolit zálohování oddílu](https://docs.microsoft.com/en-in/rest/api/servicefabric/sfclient-api-enablepartitionbackup) rozhraní API. Tato akce přepíše rozšíří zásady _BP_1_ ve explicitně povolené zásady zálohování _BP_3_ pro oddíl _SvcA1_P2_.
+    3. Vytvořit zásadu zálohování, _BP_3_, s frekvencí podle plánu zálohování kde frequency je nastavená na 24 hodin. a úložiště, které umožňují použít umístění úložiště zálohování _BackupStore2_. Povolit tyto zásady pro oddíl _SvcA1_P2_ pomocí [povolit zálohování oddílu](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enablepartitionbackup) rozhraní API. Tato akce přepíše rozšíří zásady _BP_1_ ve explicitně povolené zásady zálohování _BP_3_ pro oddíl _SvcA1_P2_.
 
 2. MyApp_B
-    1. Vytvořit zásadu zálohování, _BP_4_, s časovou synchronizací plán zálohování kde je plán frekvence typu nastaven na každý týden, spuštění dnů je nastavena na neděli, a doba spuštění nastavený na 8:00:00. Úložiště nakonfigurovaná tak, aby používal umístění úložiště zálohování _BackupStore1_. Povolit tyto zásady pro službu _SvcB1_ pomocí [povolit službu Backup](https://docs.microsoft.com/en-in/rest/api/servicefabric/sfclient-api-enableservicebackup) rozhraní API. Tato akce povolí zálohování dat pomocí zásad zálohování _BP_4_ pro všechny oddíly služby _SvcB1_.
+    1. Vytvořit zásadu zálohování, _BP_4_, s časovou synchronizací plán zálohování kde je plán frekvence typu nastaven na každý týden, spuštění dnů je nastavena na neděli, a doba spuštění nastavený na 8:00:00. Úložiště nakonfigurovaná tak, aby používal umístění úložiště zálohování _BackupStore1_. Povolit tyto zásady pro službu _SvcB1_ pomocí [povolit službu Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableservicebackup) rozhraní API. Tato akce povolí zálohování dat pomocí zásad zálohování _BP_4_ pro všechny oddíly služby _SvcB1_.
 
-    2. Vytvořit zásadu zálohování, _BP_5_, s časovou synchronizací plán zálohování kde typ frekvenci plánu je nastavena na každý den a čas spuštění je nastavená na 8:00:00. Úložiště nakonfigurovaná tak, aby používal umístění úložiště zálohování _BackupStore1_. Povolit tyto zásady pro oddíl _SvcB2_P1_ pomocí [povolit zálohování oddílu](https://docs.microsoft.com/en-in/rest/api/servicefabric/sfclient-api-enablepartitionbackup) rozhraní API. Tato akce povolí zálohování dat pomocí zásad zálohování _BP_5_ pro oddíl _SvcB2_P1_.
+    2. Vytvořit zásadu zálohování, _BP_5_, s časovou synchronizací plán zálohování kde typ frekvenci plánu je nastavena na každý den a čas spuštění je nastavená na 8:00:00. Úložiště nakonfigurovaná tak, aby používal umístění úložiště zálohování _BackupStore1_. Povolit tyto zásady pro oddíl _SvcB2_P1_ pomocí [povolit zálohování oddílu](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enablepartitionbackup) rozhraní API. Tato akce povolí zálohování dat pomocí zásad zálohování _BP_5_ pro oddíl _SvcB2_P1_.
 
 Následující diagram znázorňuje explicitně povolené zásady zálohování a rozšíří zásady zálohování.
 
 ![Hierarchie aplikace Service Fabric][0]
 
 ## <a name="disable-backup"></a>Zakázat zálohování
-Pokud není nutné k zálohování dat, můžete zásady zálohování zakázáno. Zásady povolené na zálohování _aplikace_ se dá deaktivovat jenom na stejné _aplikace_ pomocí [zakázat zálohu aplikace](https://docs.microsoft.com/en-in/rest/api/servicefabric/sfclient-api-disableapplicationbackup) rozhraní API, zásady zálohování povoleno _služby_ současně se dají zakázat _služby_ pomocí [zakázat službu Backup](https://docs.microsoft.com/en-in/rest/api/servicefabric/sfclient-api-disableservicebackup) rozhraní API a aktivovat na zásady zálohování _oddílu_ současně se dají zakázat _oddílu_ pomocí [zakázat zálohování oddílu](https://docs.microsoft.com/en-in/rest/api/servicefabric/sfclient-api-disablepartitionbackup) rozhraní API.
+Pokud není nutné k zálohování dat, můžete zásady zálohování zakázáno. Zásady povolené na zálohování _aplikace_ se dá deaktivovat jenom na stejné _aplikace_ pomocí [zakázat zálohu aplikace](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableapplicationbackup) rozhraní API, zásady zálohování povoleno _služby_ současně se dají zakázat _služby_ pomocí [zakázat službu Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableservicebackup) rozhraní API a aktivovat na zásady zálohování _oddílu_ současně se dají zakázat _oddílu_ pomocí [zakázat zálohování oddílu](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disablepartitionbackup) rozhraní API.
 
 * Zakázání zásady zálohování pro _aplikace_ zastaví všechny zálohy periodických dat. děje oddílů spolehlivé stavové služby nebo oddíly Reliable Actors v důsledku šíření zásady zálohování.
 

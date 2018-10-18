@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/06/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f3b80af1dfaca921efbe656356e85aeb353a576b
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 93bd141b591cda5ec6ff1d9d042222070d3146e6
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46315305"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390308"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým služby Azure Active Directory (Azure AD) pravidelně aktualizuje s novými funkcemi a funkce služby Azure AD Connect. Ne všechny položky se vztahují na všechny cílové skupiny.
@@ -112,7 +112,7 @@ Nové funkce a vylepšení
 
 ### <a name="fixed-issues"></a>Oprava potíží 
 
-- Tato verze aktualizuje instalaci systému SQL Server Express k SQL serveru 2012 SP4, které mimo jiné, poskytuje opravy pro několik ohrožení zabezpečení.  Podrobnosti najdete na [tady](https://support.microsoft.com/en-ca/help/4018073/sql-server-2012-service-pack-4-release-information) Další informace o SQL Server 2012 SP4.
+- Tato verze aktualizuje instalaci systému SQL Server Express k SQL serveru 2012 SP4, které mimo jiné, poskytuje opravy pro několik ohrožení zabezpečení.  Podrobnosti najdete na [tady](https://support.microsoft.com/help/4018073/sql-server-2012-service-pack-4-release-information) Další informace o SQL Server 2012 SP4.
 - Zpracování pravidla synchronizace: odchozí pravidla synchronizace spojení se žádná podmínka spojení by mělo být zrušit použité, pokud nadřazené pravidlo synchronizace není nadále vhodné
 - Několik oprav usnadnění se použily rozhraní Synchronization Service Manager a Editor pravidel synchronizace
 - Azure AD Connect průvodce: Chyba při vytváření účtu AD Connector. Pokud Azure AD Connect je v pracovní skupině

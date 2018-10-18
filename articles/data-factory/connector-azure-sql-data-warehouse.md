@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 03f02d9d36ffc6a14334cdcccf2d1455db34e2bc
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: d7a7b87f0d7915692b5a4a8c2233f543bb4c9e1d
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815797"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389322"
 ---
 #  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure SQL Data Warehouse pomocí Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -210,7 +210,7 @@ Pokud chcete používat ověřování tokenu aplikací Azure AD na základě Ins
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](https://docs.microsoft.com/en-us/azure/data-factory/concepts-datasets-linked-services) článku. Tato část obsahuje seznam vlastností, které podporuje datová sada Azure SQL Data Warehouse.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](https://docs.microsoft.com/azure/data-factory/concepts-datasets-linked-services) článku. Tato část obsahuje seznam vlastností, které podporuje datová sada Azure SQL Data Warehouse.
 
 Chcete-li kopírovat data z nebo do služby Azure SQL Data Warehouse, nastavte **typ** vlastnosti datové sady na **AzureSqlDWTable**. Podporovány jsou následující vlastnosti:
 
@@ -383,7 +383,7 @@ Další informace o tom, jak pomocí funkce PolyBase načteme efektivně SQL Dat
 
 ## <a name="use-polybase-to-load-data-into-azure-sql-data-warehouse"></a>Použijte PolyBase k načítání dat do Azure SQL Data Warehouse
 
-Pomocí [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) je účinný způsob, jak načíst větší množství dat do Azure SQL Data Warehouse s vysokou propustností. Zobrazí se vám velké zvýšení propustnosti pomocí PolyBase místo výchozího mechanismu hromadné vložení. Zobrazit [výkonu](copy-activity-performance.md#performance-reference) podrobné porovnání. Návod s případu použití, naleznete v tématu [načtení 1 TB do Azure SQL Data Warehouse](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-load-sql-data-warehouse).
+Pomocí [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) je účinný způsob, jak načíst větší množství dat do Azure SQL Data Warehouse s vysokou propustností. Zobrazí se vám velké zvýšení propustnosti pomocí PolyBase místo výchozího mechanismu hromadné vložení. Zobrazit [výkonu](copy-activity-performance.md#performance-reference) podrobné porovnání. Návod s případu použití, naleznete v tématu [načtení 1 TB do Azure SQL Data Warehouse](https://docs.microsoft.com/azure/data-factory/v1/data-factory-load-sql-data-warehouse).
 
 * Pokud vaše zdrojová data jsou v Azure Blob storage nebo Azure Data Lake Store a formát je kompatibilní s technologií PolyBase, kopii přímo do Azure SQL Data Warehouse pomocí PolyBase. Podrobnosti najdete v tématu  **[přímé kopírování pomocí PolyBase](#direct-copy-by-using-polybase)**.
 * Pokud zdrojové úložiště dat a formát polybase původně nepodporuje, použijte **[fázovaného kopírování pomocí PolyBase](#staged-copy-by-using-polybase)** místo toho funkci. Funkce dvoufázové instalace kopírování také poskytuje vyšší propustnost. Automaticky převádí data do formátu kompatibilním PolyBase. A ukládá data do úložiště objektů Blob v Azure. Pak načte data do SQL Data Warehouse.
@@ -556,13 +556,13 @@ Při kopírování dat z nebo do služby Azure SQL Data Warehouse, se používaj
 | Binární | Byte] |
 | Bit | Logická hodnota |
 | Char | Řetězec, Char] |
-| datum | DateTime |
+| date | DateTime |
 | Datum a čas | DateTime |
 | datetime2 | DateTime |
 | DateTimeOffset | DateTimeOffset |
 | Decimal | Decimal |
 | Atribut FILESTREAM (varbinary(max)) | Byte] |
-| Float | Double |
+| plovoucí desetinnou čárkou | Double |
 | image | Byte] |
 | int | Datový typ Int32 |
 | peníze | Decimal |

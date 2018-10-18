@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: danlep
-ms.openlocfilehash: 1df251522c6ca14c5eb8967771fd609c04ffe2ea
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: af1fbe66c805517c07975b2e4cf6e13e87ec661c
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114939"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388268"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Připojit svazek gitRepo ve službě Azure Container Instances
 
@@ -112,7 +112,7 @@ Zjistěte, jak připojit další typy svazku ve službě Azure Container Instanc
 <!-- LINKS - External -->
 [aci-helloworld]: https://github.com/Azure-Samples/aci-helloworld
 [pat-github]: https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
-[pat-repos]: https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate
+[pat-repos]: https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate
 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create

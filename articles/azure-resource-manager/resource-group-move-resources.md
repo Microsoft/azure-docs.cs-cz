@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 10/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: 33d5560f2bfef04678cf7a2236fd920385d68aac
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: c32c4f97a963485e87e36afc44e9cea2ebcebd90
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452152"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394405"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -110,7 +110,7 @@ Kontakt [podporují](https://portal.azure.com/#blade/Microsoft_Azure_Support/Hel
 
 ## <a name="validate-move"></a>Ověří přesun
 
-[Ověření operace přesunu](/rest/api/resources/resources/validatemoveresources) umožňuje testovat váš scénář přesunu bez skutečně přesouvání prostředků. Pomocí této operace můžete zjistit, pokud bude úspěšné přesunutí. K provedení této operace, je nutné:
+[Ověření operace přesunu](/rest/api/resources/resources/resources_validatemoveresources) umožňuje testovat váš scénář přesunu bez skutečně přesouvání prostředků. Pomocí této operace můžete zjistit, pokud bude úspěšné přesunutí. K provedení této operace, je nutné:
 
 * Název zdrojové skupiny prostředků
 * ID prostředku cílová skupina prostředků
@@ -219,7 +219,7 @@ Následující seznam obsahuje obecný přehled služby Azure, které lze přesu
 * Search
 * Service Bus
 * Service Fabric
-* Service Fabric sítě
+* Service Fabric Mesh
 * Služba SignalR
 * Úložiště – účty úložiště v různých oblastech se nedají přesouvat v rámci jedné operace. Místo toho použijte samostatné operace pro každou oblast.
 * Úložiště (classic) – viz [omezení klasického nasazení](#classic-deployment-limitations)

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.component: compliance
 ms.date: 09/04/2018
 ms.author: rolyon
-ms.openlocfilehash: 9fa966999e220ea4357d5b5c37f0038c75fe2339
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: b6cc81a49875739a61aa397a65eb70c6b4f082ef
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45607924"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393979"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkce Azure Active Directory Terms of Use
 Azure AD Terms of Use poskytuje organizacím jednoduchý způsob předkládání informací koncovým uživatelům. Toto předkládání zajistí, že se uživatelům zobrazí příslušná právní omezení pro zákonné požadavky nebo požadavky dodržování předpisů. Tento článek popisuje, jak začít s funkcí Azure AD Terms of Use.
@@ -128,7 +128,7 @@ Uživatelé pouze musí přijmout podmínky použití jednou a neuvidí podmínk
 ### <a name="how-users-can-review-their-terms-of-use"></a>Jak si uživatelé můžou zobrazit a přečíst své podmínky použití
 Uživatelé si můžou zobrazit a přečíst podmínky použití, které přijali, pomocí následujícího postupu.
 
-1. Přihlaste se k [ https://myapps.microsoft.com ](https://myapps.microsoft.com).
+1. Přihlaste se k webu [https://myapps.microsoft.com](https://myapps.microsoft.com).
 
 1. V pravém horním rohu klikněte na své jméno a v rozevírací nabídce vyberte **Profil**.
 
@@ -242,4 +242,4 @@ Odpověď: můžete [kontrola dříve přijali podmínky použití](#how-users-c
 
 ## <a name="next-steps"></a>Další postup
 
-- [Osvědčené postupy pro podmíněný přístup v Azure Active Directory](../../cognitive-services/qnamaker/concepts/best-practices.md)
+- [Osvědčené postupy pro podmíněný přístup v Azure Active Directory](../../active-directory/conditional-access/best-practices.md)

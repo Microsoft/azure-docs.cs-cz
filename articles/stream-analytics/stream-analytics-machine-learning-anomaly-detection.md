@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: 2f35f54c7ec5ad169673aebe08602294270f470a
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 3cd9b5a2bfed49ee712b89040477389ba9ea7715
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364451"
+ms.locfileid: "49389628"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Detekce anomálií v Azure Stream Analytics
 
@@ -243,7 +243,7 @@ Pokud vstupní datový proud není jednotné, může pomoct krok agregace transf
 ## <a name="references"></a>Odkazy
 
 * [Detekce anomálií – použití strojového učení pro detekci anomálií v datech časové řady](https://blogs.technet.microsoft.com/machinelearning/2014/11/05/anomaly-detection-using-machine-learning-to-detect-abnormalities-in-time-series-data/)
-* [Ve službě Machine learning API pro detekci anomálií](https://docs.microsoft.com/en-gb/azure/machine-learning/machine-learning-apps-anomaly-detection-api)
+* [Ve službě Machine learning API pro detekci anomálií](https://docs.microsoft.com/azure/machine-learning/machine-learning-apps-anomaly-detection-api)
 * [Čas detekce anomálií řady](https://msdn.microsoft.com/library/azure/mt775197.aspx)
 
 ## <a name="next-steps"></a>Další postup

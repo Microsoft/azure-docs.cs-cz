@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/08/2018
+ms.date: 10/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 66f3558a4314b1639d54d4e8ea6814eea9064073
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 2b1a6e2921fdaf9ede1184cfc02c3f61f63c60ac
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113882"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393758"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Spuštění Runbooku ve službě Azure Automation
 
@@ -135,19 +135,11 @@ Get-AzureRmLog -ResourceId $JobResourceID -MaxRecord 1 | Select Caller
 
 ## <a name="fair-share"></a>Spravedlivé sdílení
 
-Pokud chcete sdílení prostředků mezi všechny runbooky v cloudu, Azure Automation dočasně uvolní všechny úlohy za běhu pro tři hodiny. Během této doby úlohy pro [sady runbook pomocí prostředí PowerShell](automation-runbook-types.md#powershell-runbooks) se zastaví a nejsou ji restartovat. U úlohy zobrazí stav **Zastaveno**. Tento typ runbooku je vždy restartován od začátku nepodporují kontrolní body.
+Pokud chcete sdílení prostředků mezi všechny runbooky v cloudu, služby Azure Automation bude dočasně uvolnit nebo zastavit všechny úlohy, který byl spuštěný déle než tři hodiny. Úlohy pro [sady runbook pomocí prostředí PowerShell](automation-runbook-types.md#powershell-runbooks) a [runbooky Python](automation-runbook-types.md#python-runbooks) se zastaví a ne restartuje, a stav úlohy zobrazuje zastaveno.
 
-[Sady runbook pomocí pracovních postupů prostředí PowerShell](automation-runbook-types.md#powershell-workflow-runbooks) nedojde k přerušení od jejich poslední [kontrolního bodu](https://docs.microsoft.com/system-center/sma/overview-powershell-workflows#bk_Checkpoints). Po spuštění tři hodiny, je pozastavené úlohy runbooku ve službě a její stav zobrazí **spuštěna, čekání na prostředky**. Jakmile izolovaném prostoru k dispozici, se automaticky restartuje sadu runbook služby Automation a probuzení z posledního kontrolního bodu. Toto chování je běžné chování pracovního postupu Powershellu pro pozastavení a restartování. Pokud sada runbook znovu překročí tři hodiny modulu runtime, proces se opakuje, až třikrát. Za třetí restart, pokud je runbook ještě nebyla dokončena v tři hodiny, pak úlohy runbooku se nezdařila a stav úlohy zobrazuje **nebyl úspěšný, čekání na prostředky**. V takovém případě se zobrazí následující výjimku kvůli chybě.
+Pro dlouho běžící úlohy se doporučuje použít funkci [Hybrid Runbook Worker](automation-hrw-run-runbooks.md#job-behavior). Procesy hybrid Runbook Worker není omezena spravedlivé sdílení a nemají omezení můžete spustit na jak dlouho sady runbook. Další úlohy [omezení](../azure-subscription-service-limits.md#automation-limits) platí pro Azure karantény a procesy Hybrid Runbook Worker. Zatímco proces Hybrid Runbook Worker nejsou omezeny limit spravedlivé sdílení 3 hodiny, sady runbook spustil na nich by měl být stále vyvinutý za účelem podpory chování restartování z problémů s neočekávaným místní infrastrukturou.
 
-*Úloha nemůže pokračovat se spuštěným protože opakovaně byl vyřazen z stejné kontrolního bodu. Ujistěte se prosím, že vaše sada Runbook neprovádí zdlouhavé činnosti bez zachování stavu.*
-
-Toto chování je k ochraně služby z runbooky, které běží po neomezenou dobu bez dokončení, nejsou schopna provést do následujícího kontrolního bodu bez uvolňován znovu.
-
-Pokud sada runbook nemá žádné kontrolní body nebo úloha nedosáhla první kontrolní bod před uvolňován, pak restartuje od začátku.
-
-Pro dlouho běžící úlohy se doporučuje použít funkci [Hybrid Runbook Worker](automation-hrw-run-runbooks.md#job-behavior). Procesy hybrid Runbook Worker není omezena spravedlivé sdílení a nemají omezení můžete spustit na jak dlouho sady runbook. Další úlohy [omezení](../azure-subscription-service-limits.md#automation-limits) platí pro Azure karantény a procesy Hybrid Runbook Worker.
-
-Pokud použijete runbook pracovního postupu Powershellu v Azure, při vytváření sady runbook, by se zkontrolujte, zda čas ke spuštění všech aktivit mezi dvěma body obnovení není delší než tři hodiny. Budete muset přidání kontrolních bodů do sady runbook a ujistěte se, že není dosažení maximálního počtu 3 hodiny nebo rozdělte dlouho běžící operace. Vaše sada runbook může například spustit reindex velké databáze SQL. Pokud tento jedné operace nedokončí v rámci limitu spravedlivé sdílení, je tato úloha byla uvolněna a spuštěno znovu od začátku. V takovém případě by měl rozdělte reindex operace do více kroků, jako je například Reindexace jedné tabulky v době a vložte kontrolní bod po každé operaci, úloha může pokračovat po poslední operaci dokončit.
+Další možností je Optimalizujte sady runbook pomocí runbooků. Pokud vaše sada runbook prochází stejnou funkci na celé řadě zdrojů, jako je například databázová operace na několik databází, můžete přesunout na tuto funkci [podřízeného runbooku](automation-child-runbooks.md) a volání s [ Start-AzureRMAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) rutiny. Každý z těchto podřízených runbooků se bude provádět paralelně v samostatném procesu a tím se sníží celková doba zpracování nadřazeného runbooku. Můžete použít [Get-AzureRmAutomationJob](/powershell/module/azurerm.automation/Get-AzureRmAutomationJob) rutina v sadě runbook, a zkontrolujte stav úlohy pro každou podřízenou, pokud operace, které je třeba provést po dokončení podřízeného runbooku.
 
 ## <a name="next-steps"></a>Další postup
 

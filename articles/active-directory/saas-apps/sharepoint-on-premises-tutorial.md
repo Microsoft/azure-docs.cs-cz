@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2018
 ms.author: jeedes
-ms.openlocfilehash: e2037ff2f1b95a5ce5de69d76d66ec81cc9badb4
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 100ea0147bf56242ba15bee39e4bda1b65af27da
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064199"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390087"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Kurz: Integrace Azure Active Directory s místní SharePoint
 
@@ -144,7 +144,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     Přihlásit k serveru SharePoint Server 2016 a otevřete prostředí pro správu služby SharePoint 2016. Zadejte hodnoty $realm (hodnota identifikátoru SharePoint místní domény a adresy URL v části webu Azure portal), $wsfedurl (jednotné přihlašování – adresa URL služby) a $filepath (cesta k souboru do které jste stáhli soubor certifikátu) z webu Azure portal a spuštění Následující příkazy, které nakonfigurují nový důvěryhodného zprostředkovatele identity.
 
     > [!TIP]
-    > Pokud pro vás nová pomocí Powershellu nebo chcete další informace o tom, jak funguje Powershellu, přečtěte si téma [SharePoint Powershellu](https://docs.microsoft.com/en-us/powershell/sharepoint/overview?view=sharepoint-ps). 
+    > Pokud pro vás nová pomocí Powershellu nebo chcete další informace o tom, jak funguje Powershellu, přečtěte si téma [SharePoint Powershellu](https://docs.microsoft.com/powershell/sharepoint/overview?view=sharepoint-ps). 
 
     ```
     $realm = "<Identifier value from the SharePoint on-premises Domain and URLs section in the Azure portal>"
@@ -310,7 +310,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
-* [Používání služby Azure AD pro ověřování serveru SharePoint](https://docs.microsoft.com/en-us/office365/enterprise/using-azure-ad-for-sharepoint-server-authentication)
+* [Používání služby Azure AD pro ověřování serveru SharePoint](https://docs.microsoft.com/office365/enterprise/using-azure-ad-for-sharepoint-server-authentication)
 
 <!--Image references-->
 

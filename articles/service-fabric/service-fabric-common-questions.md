@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: fe86e94e745ae9ba65636ab0d1ccfead83261515
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 70372f30ffaea1fafda3f76d4754489ae89a0a7c
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094254"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390172"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Nejčastější dotazy k Service Fabric
 
@@ -126,7 +126,7 @@ Ne. Virtuální počítače s nízkou prioritou se nepodporují.
 Tady jsou prostředky pro vaše aplikace za účelem získání přihlašovacích údajů pro ověření v trezoru klíčů:
 
 A. Během úlohy sestavení a zabalení aplikace můžete vyžádat certifikát do vaší aplikace SF data balíčku a použijte ji k ověření do trezoru klíčů.
-B. Pro škálovací sady virtuálních počítačů hostitele MSI povolené, vám umožní vytvářet jednoduché SetupEntryPoint prostředí PowerShell pro vaši aplikaci SF získat [přístupový token z koncového bodu MSI](https://docs.microsoft.com/en-us/azure/active-directory/managed-service-identity/how-to-use-vm-token)a potom [načíst tajné kódy z trezoru klíčů](https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/Get-AzureKeyVaultSecret?view=azurermps-6.5.0)
+B. Pro škálovací sady virtuálních počítačů hostitele MSI povolené, vám umožní vytvářet jednoduché SetupEntryPoint prostředí PowerShell pro vaši aplikaci SF získat [přístupový token z koncového bodu MSI](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)a potom [načíst tajné kódy z trezoru klíčů](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Get-AzureKeyVaultSecret?view=azurermps-6.5.0)
 
 ## <a name="application-design"></a>Návrh aplikace
 

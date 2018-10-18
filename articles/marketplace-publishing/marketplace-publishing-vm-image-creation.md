@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 893b0ee70f577d9240d577e76062eea36b704058
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2a3c317dc9abdb861a007be9aaed714089e9f453
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989868"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388190"
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Příručka k vytvoření image virtuálního počítače pro Azure Marketplace
 Tento článek **kroku 2**, vás provede přípravou virtuálních pevných disků (VHD), které nasadíte do Azure Marketplace. Virtuální pevné disky jsou základem pro vaši skladovou jednotku. Proces se liší v závislosti na tom, jestli poskytujete skladovou jednotku založených na Linuxu nebo Windows. Tento článek popisuje oba scénáře. Tento proces se dá provádět zároveň s [vytváření účtů a registraci][link-acct-creation].
@@ -433,7 +433,7 @@ Toto jsou kroky pro vygenerování adresy URL SAS pomocí příkazového řádku
 
 [!INCLUDE [outdated-cli-content](../../includes/contains-classic-cli-content.md)]
 
-1.  Stáhnout Azure CLI classic z [tady](https://azure.microsoft.com/en-in/documentation/articles/xplat-cli-install/). Můžete také vyhledat odkazy na různé **[Windows](http://aka.ms/webpi-azure-cli)** a  **[MAC OS](http://aka.ms/mac-azure-cli)**.
+1.  Stáhnout Azure CLI classic z [tady](https://azure.microsoft.com/documentation/articles/xplat-cli-install/). Můžete také vyhledat odkazy na různé **[Windows](http://aka.ms/webpi-azure-cli)** a  **[MAC OS](http://aka.ms/mac-azure-cli)**.
 
 2.  Po stažení, nainstalujte
 

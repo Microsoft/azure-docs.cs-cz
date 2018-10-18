@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: msfussell
-ms.openlocfilehash: 9072a25b55bf461ad7dcc8393b98a66d87866d48
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: ae7eba9997c4f567eb7b07e23ab42c9ac7740698
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42056606"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388105"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Dělení Service Fabric reliable services
 Tento článek obsahuje úvod do základních konceptech služby dělení reliable services v Azure Service Fabric. Je také k dispozici na zdrojového kódu v článku [Githubu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
@@ -365,7 +365,7 @@ Jelikož chceme doslova mít jeden oddíl na písmeno, můžeme použít 0 jako 
 Celý zdrojový kód ukázku je k dispozici na [Githubu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
 
 ## <a name="reliable-services-and-actor-forking-subprocesses"></a>Spolehlivé služby a větvení podprocesů, které se objekt Actor
-Service Fabric se modelu reliable services a následně reliable actors větvení podprocesů, které se nepodporuje. Je například proč není podporována [CodePackageActivationContext](https://docs.microsoft.com/en-us/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) nelze použít k registraci nepodporované podproces a tokeny zrušení se odesílají jenom registrovaných procesy, výsledkem jsou nejrůznější problémy, jako například selhání upgradu, při podprocesů, které nezavírejte, jakmile obdrží token zrušení nadřazeného procesu. 
+Service Fabric se modelu reliable services a následně reliable actors větvení podprocesů, které se nepodporuje. Je například proč není podporována [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) nelze použít k registraci nepodporované podproces a tokeny zrušení se odesílají jenom registrovaných procesy, výsledkem jsou nejrůznější problémy, jako například selhání upgradu, při podprocesů, které nezavírejte, jakmile obdrží token zrušení nadřazeného procesu. 
 
 ## <a name="next-steps"></a>Další postup
 Informace o konceptech Service Fabric naleznete v následujících tématech:

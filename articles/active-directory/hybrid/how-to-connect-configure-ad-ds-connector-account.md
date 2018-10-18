@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 10/12/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a14462ec5311a9b82293ba7f6e9ae76dc1972b36
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: a12549a52171afc1c95588f9a2b259829e170fcc
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49355417"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389951"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Konfigurace oprávnění účtu AD DS konektoru 
 
@@ -42,7 +42,7 @@ Následující tabulka obsahuje souhrn oprávnění vyžadovaných pro objekty A
 | Zpětný zápis skupin |Přečtěte si, vytvoření, aktualizace a odstranění skupiny objektů, pro synchronizována **skupiny Office 365**.  Další informace najdete v části [zpětný zápis skupin](how-to-connect-preview.md#group-writeback).|
 
 ## <a name="using-the-adsyncconfig-powershell-module"></a>Pomocí modulu ADSyncConfig PowerShell 
-Modul ADSyncConfig vyžaduje [vzdálenou správu serveru (RSAT) pro službu AD DS](https://docs.microsoft.com/en-us/windows-server/remote/remote-server-administration-tools) protože závisí na modulu Powershellu pro AD DS a nástroje. K instalaci pro vzdálenou správu serveru pro službu AD DS, otevřete okno Windows Powershellu s "Spustit jako správce" a spusťte: 
+Modul ADSyncConfig vyžaduje [vzdálenou správu serveru (RSAT) pro službu AD DS](https://docs.microsoft.com/windows-server/remote/remote-server-administration-tools) protože závisí na modulu Powershellu pro AD DS a nástroje. K instalaci pro vzdálenou správu serveru pro službu AD DS, otevřete okno Windows Powershellu s "Spustit jako správce" a spusťte: 
 
 ``` powershell
 Install-WindowsFeature RSAT-AD-Tools 

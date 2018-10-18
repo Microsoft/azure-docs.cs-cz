@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 293b6af1d591c0c9763c2914713fe892392ae7ea
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: d25142cecd62fc34a08939d5f1915ba9b2cee749
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578136"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387425"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>Najít adresu pomocí služby vyhledávání Azure Maps
 
@@ -59,7 +59,7 @@ Většinu vyhledávacích dotazů ve výchozím nastavení `maxFuzzyLevel=1` zí
 
 4. Klikněte na tlačítko **odeslat** a zkontrolujte text odpovědi.
 
-    Vrátí řetězec dotazu nejednoznačný "pizza" 10 [bodu zájmu výsledek](https://docs.microsoft.com/en-us/rest/api/maps/search/getsearchpoi#searchpoiresponse) výsledky (POI) s kategorií, které spadají do "pizza" a "restaurace". Každý výsledek vrátí adresu, zeměpisné šířky / délky hodnoty view portu a vstupní bod pro umístění.
+    Vrátí řetězec dotazu nejednoznačný "pizza" 10 [bodu zájmu výsledek](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi#searchpoiresponse) výsledky (POI) s kategorií, které spadají do "pizza" a "restaurace". Každý výsledek vrátí adresu, zeměpisné šířky / délky hodnoty view portu a vstupní bod pro umístění.
   
     Výsledky jsou nastaveny pro tento dotaz nejsou vázané na libovolný odkaz na konkrétní umístění. Můžete použít **countrySet** parametr zadat jenom v zemích, u kterých vaše aplikace potřebuje pokrytí, jako je výchozí chování pro celý svět, vrací potenciálně zbytečné výsledky hledání.
 

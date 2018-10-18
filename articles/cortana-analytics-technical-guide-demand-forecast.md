@@ -1,26 +1,21 @@
 ---
-title: Vyžadují předpovědi v technické příručce energie | Dokumentace Microsoftu
+title: Požadovat předpovědi v energetické – technický průvodce
 description: Technický průvodce do šablony řešení s Microsoft Cortana Intelligence pro energie prognózy poptávky.
 services: machine-learning
-documentationcenter: ''
-author: yijichen
+author: garyericson
 manager: cgronlun
-editor: yijichen
-ms.assetid: 7f1a866b-79b7-4b97-ae3e-bc6bebe8c756
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/16/2016
-ms.author: yijichen
-ms.openlocfilehash: ebf037a139b3e443238bc2fc5d0ed73e697dddf5
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.author: garye
+ms.openlocfilehash: 8ff5c52b324c95bb48de0f9bbb1011ede737efb0
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842545"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387656"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>Technický průvodce do šablony řešení Cortana Intelligence pro energie prognózy poptávky
 ## <a name="overview"></a>**Přehled**

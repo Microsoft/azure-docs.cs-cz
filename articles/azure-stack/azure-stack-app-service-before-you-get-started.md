@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: anwestg
-ms.openlocfilehash: e5fc6b5d396a45d15548cfdd8f445158147ad12f
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 08fcaa44fc807f986324b8304010792af99fd838
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42055691"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387991"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Před zahájením práce s App Service ve službě Azure Stack
 
@@ -310,7 +310,7 @@ Postupujte následovně:
 3. [Instalace Powershellu pro Azure Stack](azure-stack-powershell-install.md).
 4. Spustit **vytvořit AADIdentityApp.ps1** skriptu. Jakmile budete vyzváni, zadejte ID tenanta Azure AD, který používáte pro nasazení Azure Stack. Zadejte například **myazurestack.onmicrosoft.com**.
 5. V **přihlašovacích údajů** okno, zadejte účet správce služby Azure AD a heslo. Vyberte **OK**.
-6. Zadejte cestu k souboru certifikátu a heslo certifikátu pro [certifikát vytvořený dříve](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack). Certifikát vytvořený pro tento krok ve výchozím nastavení je **sso.appservice.local.azurestack.external.pfx**.
+6. Zadejte cestu k souboru certifikátu a heslo certifikátu pro [certifikát vytvořený dříve](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack). Certifikát vytvořený pro tento krok ve výchozím nastavení je **sso.appservice.local.azurestack.external.pfx**.
 7. Tento skript vytvoří novou aplikaci v instanci tenanta Azure AD. Poznamenejte si ID aplikace, který je vrácen ve výstupu prostředí PowerShell. Tyto informace během instalace budete potřebovat.
 8. Otevřete nové okno prohlížeče a přihlaste se k [webu Azure portal](https://portal.azure.com) jako správce služby Azure Active Directory
 9. Otevřete poskytovatele prostředků služby Azure AD.
@@ -350,11 +350,11 @@ Správci musí nakonfigurovat jednotné přihlašování pro:
 Postupujte následovně:
 
 1. Otevřete prostředí PowerShell instanci jako azurestack\AzureStackAdmin.
-2. Přejděte do umístění skripty, které jste stažené a rozbalené v [požadovaný krok](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#download-the-azure-app-service-on-azure-stack-installer-and-helper-scripts).
+2. Přejděte do umístění skripty, které jste stažené a rozbalené v [požadovaný krok](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started#download-the-azure-app-service-on-azure-stack-installer-and-helper-scripts).
 3. [Instalace Powershellu pro Azure Stack](azure-stack-powershell-install.md).
 4. Spustit **vytvořit ADFSIdentityApp.ps1** skriptu.
 5. V **přihlašovacích údajů** okno, zadejte účet správce cloudu služby AD FS a heslo. Vyberte **OK**.
-6. Zadejte cestu k souboru certifikátu a certifikát heslo pro [certifikát vytvořený dříve](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack). Certifikát vytvořený pro tento krok ve výchozím nastavení je **sso.appservice.local.azurestack.external.pfx**.
+6. Zadejte cestu k souboru certifikátu a certifikát heslo pro [certifikát vytvořený dříve](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack). Certifikát vytvořený pro tento krok ve výchozím nastavení je **sso.appservice.local.azurestack.external.pfx**.
 
 ```PowerShell
     Create-ADFSIdentityApp.ps1

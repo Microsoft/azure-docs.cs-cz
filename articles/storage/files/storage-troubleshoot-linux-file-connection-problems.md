@@ -6,19 +6,19 @@ author: jeffpatt24
 tags: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 31a0ffc2937f6d93a630bf6ce474d7dcf20c923f
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 87190a7f46a209ae66ca47d9346ed4b5929ac8fd
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364383"
+ms.locfileid: "49394197"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Řešení potíží s Azure Files v Linuxu
 
-Tento článek uvádí běžné problémy, které se vztahují k Microsoft Azure Files, když se připojíte z klientů Linux. Poskytuje také možné příčiny a řešení těchto problémů.
+Tento článek uvádí běžné problémy, které se vztahují k Microsoft Azure Files, když se připojíte z klientů Linux. Poskytuje také možné příčiny a řešení těchto problémů. Kromě použijte kroky v tomto článku, můžete také použít [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089) zajistit Linuxový klienta má správné požadavky. AzFileDiagnostics automatizuje zjišťování většiny příznaků uvedených v tomto článku a pomáhá nastavení prostředí, abyste získali optimální výkon. Můžete také najít tyto informace [Azure sdíleným složkám Poradce při potížích](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) , který vysvětluje, jak vám pomoci problémy připojení/mapování nebo připojení Azure sdíleným složkám.
 
 <a id="permissiondenied"></a>
 ## <a name="permission-denied-disk-quota-exceeded-when-you-try-to-open-a-file"></a>"[bylo odepřeno oprávnění]: překročena kvóta disku" při pokusu o otevření souboru
@@ -82,7 +82,7 @@ Některých Linuxových distribucích zatím nepodporují funkce šifrování v 
 
 ### <a name="solution"></a>Řešení
 
-Funkce šifrování protokolu SMB 3.0 pro Linux byla zavedena v 4.11 jádra. Tato funkce umožňuje připojení sdílené složky Azure v místním nebo jiné oblasti Azure. V době publikování tato funkce byla přeneseny zpět do č. 17.04 Ubuntu a Ubuntu 16.10. Pokud klient Linux SMB nepodporuje šifrování, připojení Azure souborů pomocí protokolu SMB 2.1 z virtuálního počítače Linux Azure, který je ve stejném datacentru jako soubor sdílenou složku a ověřte, [vyžadovat zabezpečený přenos]( https://docs.microsoft.com/en-us/azure/storage/common/storage-require-secure-transfer) je zakázáno v úložišti účet. 
+Funkce šifrování protokolu SMB 3.0 pro Linux byla zavedena v 4.11 jádra. Tato funkce umožňuje připojení sdílené složky Azure v místním nebo jiné oblasti Azure. V době publikování tato funkce byla přeneseny zpět do č. 17.04 Ubuntu a Ubuntu 16.10. Pokud klient Linux SMB nepodporuje šifrování, připojení Azure souborů pomocí protokolu SMB 2.1 z virtuálního počítače Linux Azure, který je ve stejném datacentru jako soubor sdílenou složku a ověřte, [vyžadovat zabezpečený přenos]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) je zakázáno v úložišti účet. 
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Nízký výkon na sdílenou složku Azure připojit na virtuálním počítači s Linuxem
@@ -150,7 +150,7 @@ Mezi běžné příčiny tohoto problému patří:
 - Klient nepodporuje šifrování protokolu SMB 3.0. Šifrování protokolu SMB 3.0 je k dispozici v Ubuntu 16.4 a novější verze, SUSE 12.3 a novější verze. Ostatní distribuce vyžadují jádra 4.11 a novější verze.
 - Pokoušíte se připojit k účtu úložiště přes port TCP 445, který není podporován.
 - Pokoušíte se připojit ke sdílené složce Azure z virtuálního počítače Azure a virtuální počítač se nenachází ve stejné oblasti jako účet úložiště.
-- Pokud [vyžadovat zabezpečený přenos]( https://docs.microsoft.com/en-us/azure/storage/common/storage-require-secure-transfer) pro účet úložiště je povolené nastavení, soubory Azure vám umožní pouze připojení pomocí šifrování SMB 3.0.
+- Pokud [vyžadovat zabezpečený přenos]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) pro účet úložiště je povolené nastavení, soubory Azure vám umožní pouze připojení pomocí šifrování SMB 3.0.
 
 ### <a name="solution"></a>Řešení
 
@@ -191,7 +191,7 @@ Aby bylo možné používat symbolických odkazů, přidejte následující na k
 Proto bude příkaz vypadat podobně jako:
 
 ```
-sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <mount-point> -o vers=<smb-version>,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino,mfsynlinks
+sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <mount-point> -o vers=<smb-version>,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino,mfsymlinks
 ```
 
 Po přidání, budete moct vytvořit symbolických odkazů na jako navrhované [Wiki](https://wiki.samba.org/index.php/UNIX_Extensions#Storing_symlinks_on_Windows_servers).

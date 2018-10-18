@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 7e73f676f47de8256928224aae55ea30eb414ddf
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 708b80787337d549ebc5e66bca21e734620616ac
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344746"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388287"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Zpráva k vydání verze Microsoft Azure Storage Explorer
 
@@ -72,7 +72,7 @@ Tento článek obsahuje poznámky k verzi Azure Storage Explorer 1.4.3, stejně 
 ./StorageExplorer.exe --disable-gpu
 ```
 
-* Pro uživatele systému Linux, budete muset nainstalovat [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* Pro uživatele systému Linux, budete muset nainstalovat [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
 * Pro uživatele v Ubuntu 14.04, budete muset ověřte, že je aktuální GCC – to můžete udělat spuštěním následujících příkazů a následného restartování počítače:
 
     ```
@@ -160,7 +160,7 @@ Tento článek obsahuje poznámky k verzi Azure Storage Explorer 1.4.3, stejně 
 ./StorageExplorer.exe --disable-gpu
 ```
 
-* Pro uživatele systému Linux, budete muset nainstalovat [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* Pro uživatele systému Linux, budete muset nainstalovat [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
 * Pro uživatele v Ubuntu 14.04, budete muset ověřte, že je aktuální GCC – to můžete udělat spuštěním následujících příkazů a následného restartování počítače:
 
     ```
@@ -215,7 +215,7 @@ Tento článek obsahuje poznámky k verzi Azure Storage Explorer 1.4.3, stejně 
 ./StorageExplorer.exe --disable-gpu
 ```
 
-* Pro uživatele systému Linux, budete muset nainstalovat [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* Pro uživatele systému Linux, budete muset nainstalovat [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
 * Pro uživatele v Ubuntu 14.04, budete muset ověřte, že je aktuální GCC – to můžete udělat spuštěním následujících příkazů a následného restartování počítače:
 
     ```
@@ -275,7 +275,7 @@ Tento článek obsahuje poznámky k verzi Azure Storage Explorer 1.4.3, stejně 
 ./StorageExplorer.exe --disable-gpu
 ```
 
-* Pro uživatele systému Linux, budete muset nainstalovat [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* Pro uživatele systému Linux, budete muset nainstalovat [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
 * Pro uživatele v Ubuntu 14.04, budete muset ověřte, že je aktuální GCC – to můžete udělat spuštěním následujících příkazů a následného restartování počítače:
 
     ```
@@ -332,7 +332,7 @@ Tento článek obsahuje poznámky k verzi Azure Storage Explorer 1.4.3, stejně 
 ./StorageExplorer.exe --disable-gpu
 ```
 
-* Pro uživatele systému Linux, budete muset nainstalovat [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* Pro uživatele systému Linux, budete muset nainstalovat [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
 * Pro uživatele v Ubuntu 14.04, budete muset ověřte, že je aktuální GCC – to můžete udělat spuštěním následujících příkazů a následného restartování počítače:
 
     ```
@@ -389,7 +389,7 @@ Tento článek obsahuje poznámky k verzi Azure Storage Explorer 1.4.3, stejně 
 ./StorageExplorer.exe --disable-gpu
 ```
 
-* Pro uživatele systému Linux, budete muset nainstalovat [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* Pro uživatele systému Linux, budete muset nainstalovat [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
 * Pro uživatele v Ubuntu 14.04, budete muset ověřte, že je aktuální GCC – to můžete udělat spuštěním následujících příkazů a následného restartování počítače:
 
     ```
@@ -410,7 +410,7 @@ Tento článek obsahuje poznámky k verzi Azure Storage Explorer 1.4.3, stejně 
 
 ### <a name="new"></a>Nová
 * Průzkumník služby Storage teď podporuje použití Azurite. Poznámka: připojení k Azurite je pevně nastavená na výchozí koncové body vývoje.
-* Průzkumník služby Storage teď podporuje úrovně přístupu pro pouze objektů Blob a účty úložiště GPV2. Další informace o úrovních přístupu [tady](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers).
+* Průzkumník služby Storage teď podporuje úrovně přístupu pro pouze objektů Blob a účty úložiště GPV2. Další informace o úrovních přístupu [tady](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers).
 * Čas spuštění se už nevyžaduje při generování SAS.
 
 ### <a name="fixes"></a>Opravy
@@ -443,7 +443,7 @@ Tento článek obsahuje poznámky k verzi Azure Storage Explorer 1.4.3, stejně 
 ./StorageExplorer.exe --disable-gpu
 ```
 
-* Pro uživatele systému Linux, budete muset nainstalovat [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* Pro uživatele systému Linux, budete muset nainstalovat [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
 * Pro uživatele v Ubuntu 14.04, budete muset ověřte, že je aktuální GCC – to můžete udělat spuštěním následujících příkazů a následného restartování počítače:
 
     ```
@@ -470,7 +470,7 @@ Tento článek obsahuje poznámky k verzi Azure Storage Explorer 1.4.3, stejně 
 * Storage Explorer zpětné vazby se nyní nachází na Githubu. Naši stránku problémy dostat kliknutím na tlačítko zpětná vazba v dolní části vlevo nebo tak, že přejdete do [ https://github.com/Microsoft/AzureStorageExplorer/issues ](https://github.com/Microsoft/AzureStorageExplorer/issues). Nebojte se posílat návrhy na vylepšení, hlášení problémů, klást otázky nebo ponechte jakoukoli jinou formu zpětnou vazbu.
 * Pokud dochází k problémům certifikát SSL a nepovedlo se najít problematický certifikát, teď můžete spustit Průzkumníka služby Storage z příkazového řádku pomocí `--ignore-certificate-errors` příznak. Při spuštění s tímto příznakem, Průzkumníka služby Storage se bude ignorovat chyby certifikátů SSL.
 * Teď je k dispozici možnost "Stáhnout" v místní nabídce pro objekt blob a souboru položky.
-* Lepší dostupnost a podpora čtečky obrazovky. Pokud se spoléháte na funkce pro usnadnění přístupu, přečtěte si naše [dokumentace k usnadnění](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-accessibility) Další informace.
+* Lepší dostupnost a podpora čtečky obrazovky. Pokud se spoléháte na funkce pro usnadnění přístupu, přečtěte si naše [dokumentace k usnadnění](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-accessibility) Další informace.
 * Průzkumník služby Storage teď používá elektronovým 1.8.3
 
 ### <a name="breaking-changes"></a>Zásadní změny
@@ -509,7 +509,7 @@ Tento článek obsahuje poznámky k verzi Azure Storage Explorer 1.4.3, stejně 
 ./StorageExplorer.exe --disable-gpu
 ```
 
-* Pro uživatele systému Linux, budete muset nainstalovat [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* Pro uživatele systému Linux, budete muset nainstalovat [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
 * Pro uživatele v Ubuntu 14.04, budete muset ověřte, že je aktuální GCC – to můžete udělat spuštěním následujících příkazů a následného restartování počítače:
 
     ```

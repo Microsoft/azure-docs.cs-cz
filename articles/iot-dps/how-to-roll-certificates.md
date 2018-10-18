@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: a40f4489e63c30a101dd708b5a175c25788fb04b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 51e96065f726fadd528323157609034b5bb3f151
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976750"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387884"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>Jak chcete-li vrátit zařízení certifikáty X.509
 
@@ -52,7 +52,7 @@ Když zařízení je zpočátku zřídit prostřednictvím automatického zřizo
 
 Jakmile byla vrácena nového listového certifikátu do zařízení, se můžete už připojit ke službě IoT hub protože ho používá nový certifikát pro připojení. IoT hub rozpozná pouze zařízení s starého certifikátu. Výsledek pokusu o připojení zařízení bude chybu "neoprávněné" připojení. Chcete-li vyřešit tuto chybu, je nutné aktualizovat položku registrace pro zařízení pro zařízení nového listového certifikátu. Pak službu zřizování můžete aktualizovat podle potřeby je znovu zajištěny zařízení informace registru zařízení služby IoT Hub. 
 
-Jedinou možnou výjimkou k tomuto selhání připojení bude scénář, ve kterém jste vytvořili [skupinu registrací](concepts-service.md#enrollment-group) pro vaše zařízení ve zřizovací službě. V takovém případě pokud kořenový nebo zprostředkující certifikáty nejsou zavádění v zařízení řetěz certifikátů, pak zařízení bude rozpoznán, pokud je součástí řetězce důvěryhodnosti definované ve skupině pro registraci nového certifikátu. V případě tohoto scénáře jako reakce na porušení zabezpečení by měl aspoň blokovaných konkrétní zařízení certifikáty ve skupině, které jsou považovány za být dojde k porušení zabezpečení. Další informace najdete v tématu [seznam zakázaných konkrétní zařízení ve skupině pro registraci](https://docs.microsoft.com/en-us/azure/iot-dps/how-to-revoke-device-access-portal#blacklist-specific-devices-in-an-enrollment-group).
+Jedinou možnou výjimkou k tomuto selhání připojení bude scénář, ve kterém jste vytvořili [skupinu registrací](concepts-service.md#enrollment-group) pro vaše zařízení ve zřizovací službě. V takovém případě pokud kořenový nebo zprostředkující certifikáty nejsou zavádění v zařízení řetěz certifikátů, pak zařízení bude rozpoznán, pokud je součástí řetězce důvěryhodnosti definované ve skupině pro registraci nového certifikátu. V případě tohoto scénáře jako reakce na porušení zabezpečení by měl aspoň blokovaných konkrétní zařízení certifikáty ve skupině, které jsou považovány za být dojde k porušení zabezpečení. Další informace najdete v tématu [seznam zakázaných konkrétní zařízení ve skupině pro registraci](https://docs.microsoft.com/azure/iot-dps/how-to-revoke-device-access-portal#blacklist-specific-devices-in-an-enrollment-group).
 
 Aktualizuje se registrace položky pro souhrn certifikátů se provádí na **Správa registrací** stránky. Pro přístup k této stránce, postupujte podle těchto kroků:
 

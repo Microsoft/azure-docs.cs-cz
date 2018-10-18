@@ -4,20 +4,20 @@ description: Postupujte podle kroků tento návod pro přístup k rozhraní API 
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cflower
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: mvc
-ms.date: 03/19/2018
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: e20cac5f1063589bdbfee0f384ac6af5a39811ed
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 5d7c338dc9d5028552d9b33802982ffda97a56f0
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47096787"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389838"
 ---
 # <a name="access-azure-media-services-api-with-the-azure-cli"></a>Přístup k Azure Media Services rozhraní API pomocí Azure CLI
  
@@ -34,9 +34,9 @@ Tento článek popisuje, jak používat rozhraní příkazového řádku Azure k
 
 Vytvořit si nový účet služby Azure Media Services podle popisu [v tomto rychlém startu](create-account-cli-quickstart.md)
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu [Azure Portal](http://portal.azure.com) a spusťte **CloudShell**, abyste mohli provést příkazy CLI, jak můžete vidět v dalších krocích.
+Přihlaste se k [webu Azure portal](http://portal.azure.com) a spusťte **cloud Shell** provádět příkazy rozhraní příkazového řádku, jak je znázorněno v dalších krocích.
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
@@ -51,4 +51,4 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku m
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-[Azure CLI](https://docs.microsoft.com/en-us/cli/azure/ams?view=azure-cli-latest)
+[Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)

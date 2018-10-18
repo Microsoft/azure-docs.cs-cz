@@ -4,21 +4,21 @@ description: Tento článek přináší přehled ochrany obsahu pomocí služby 
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/30/2018
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 2a3e94d37a926bd36b780b45eb3d6cb29fb73597
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: f8ef92a335dd6faee076356dbffc873b08afbdc0
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521750"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394256"
 ---
 # <a name="content-protection-overview"></a>Přehled ochrany obsahu
 
@@ -149,9 +149,7 @@ Příklad ukazuje postup:
 
 2. Vytvoření StreamingLocator, nakonfigurovaný tak, aby Streamovat prostředek šifrované. 
 
-  V tomto příkladu jsme nastavili **StreamingPolicyName** k **PredefinedStreamingPolicy.SecureStreaming** které podporuje šifrování obálky a cenc a nastaví dva klíče obsahu pro StreamingLocator. 
-
-  Pokud chcete šifrovat pomocí FairPlay, nastavte **StreamingPolicyName** k **PredefinedStreamingPolicy.SecureStreamingWithFairPlay**.
+  Můžete například nastavit StreamingLocator.StreamingPolicyName zásady "Predefined_MultiDrmCencStreaming". Tato zásada udává, že chcete vygenerovat a nastavit v lokátoru dva symetrické klíče (obálku a CENC). Tím dojde k nastavení obálky a šifrování PlayReady a Widevine (klíč se doručí klientovi pro přehrávání na základě nakonfigurovaných licencí DRM). Pokud chcete zašifrovat datový proud s CBCS (FairPlay), použijte "Predefined_MultiDrmStreaming".
 
 3. Vytvořte token testu.
 

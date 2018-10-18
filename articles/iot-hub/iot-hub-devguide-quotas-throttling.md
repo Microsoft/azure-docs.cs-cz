@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: dobett
-ms.openlocfilehash: 377f28f4798a1ffb6423c1f4d9f4e34b4fc60234
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: b7ef5d2853cdf4a7b09aa52c510c268cb42a245f
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018838"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395152"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Reference – IoT Hub kvóty a omezování
 
@@ -75,9 +75,9 @@ IoT Hub vynucuje Další provozní omezení:
 | Zasílání zpráv typu zařízení cloud | Maximální velikost 256 KB |
 | Zasílání zpráv typu cloud zařízení<sup>1</sup> | Maximální velikost 64 KB. Maximální počet čekajících zpráv pro doručování je 50. |
 | Přímá metoda<sup>1</sup> | Přímé metody maximální velikost datové části je 128 KB. |
-| Konfigurace | konfigurace, 20 za rozbočovač. |
-| Nasazení hrany | 20 nasazení na rozbočovači. 20 modulů na nasazení. |
-| Dvojčata | Maximální velikost dvojčete oddílu (značky, požadovaných vlastností, ohlášených vlastností) je 8 KB |
+| Konfigurace automatického zařízení<sup>1</sup> | 100 konfigurace na placené SKU rozbočovače. 20 konfigurace na bezplatné Centrum SKU. |
+| Automatické nasazení Edge<sup>1</sup> | 20 modulů na nasazení. 100 nasazení na placené SKU rozbočovače. 20 nasazení na bezplatné Centrum SKU. |
+| Dvojčata<sup>1</sup> | Maximální velikost dvojčete oddílu (značky, požadovaných vlastností, ohlášených vlastností) je 8 KB |
 
 <sup>1</sup>tato funkce není k dispozici na úrovni basic služby IoT Hub. Další informace najdete v tématu [návodu k výběru správné služby IoT Hub](iot-hub-scaling.md).
 

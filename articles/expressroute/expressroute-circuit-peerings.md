@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: cherylmc
-ms.openlocfilehash: c1fbc99702e077e600f01959224f3321e7543e59
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 8ef231982cfdc9a2c4387ee47e651fdf1af0baaf
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044395"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388421"
 ---
 # <a name="expressroute-circuits-and-routing-domains"></a>Okruhy ExpressRoute a domény směrování
  Můžete uspořádat *okruh ExpressRoute* připojení vaší místní infrastruktury společnosti Microsoft prostřednictvím poskytovatele připojení. Následující obrázek znázorňuje logickou reprezentaci připojení mezi vaší sítě WAN a Microsoftem.
@@ -82,7 +82,7 @@ Pokud budete chtít mít všechny tři partnerské relace, musíte mít tři pá
 ## <a name="expressroute-health"></a>Stav ExpressRoute
 Okruhy ExpressRoute může monitorovat dostupnost, připojení k virtuálním sítím a pomocí využití šířky pásma [Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM).
 
-NPM monitoruje stav soukromý partnerský vztah Azure a partnerský vztah Microsoftu.  Podívejte se na naše [příspěvku](https://azure.microsoft.com/en-in/blog/monitoring-of-azure-expressroute-in-preview/) Další informace.
+NPM monitoruje stav soukromý partnerský vztah Azure a partnerský vztah Microsoftu.  Podívejte se na naše [příspěvku](https://azure.microsoft.com/blog/monitoring-of-azure-expressroute-in-preview/) Další informace.
 
 ## <a name="next-steps"></a>Další postup
 * Vyhledejte poskytovatele služeb. Zobrazit [poskytovatelé a umístění služby ExpressRoute](expressroute-locations.md).

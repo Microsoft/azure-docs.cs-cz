@@ -9,12 +9,12 @@ author: hning86
 ms.author: haining
 ms.reviewer: j-martens
 ms.date: 03/28/2018
-ms.openlocfilehash: c45ce91735dc47ecb5a2741395ed79d4fa7b6f3f
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 58d0d028c920faa7e86884c85f8fb677ce67c390
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321782"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389917"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
@@ -46,7 +46,7 @@ V tomto článku najdete další informace o vydaných verzích služby Azure Ma
 Zobrazit [seznam známých problémů](resource-known-issues.md) Další informace o známých chyb a jejich řešení.
 
 #### <a name="breaking-changes"></a>Změny způsobující chyby
- * Workspace.experiments Workspace.models, Workspace.compute_targets, Workspace.images Workspace.web_services návratový slovníku. Tím se předtím vrátila seznam. Zobrazit [azureml.core.Workspace](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) dokumentace k rozhraní API.
+ * Workspace.experiments Workspace.models, Workspace.compute_targets, Workspace.images Workspace.web_services návratový slovníku. Tím se předtím vrátila seznam. Zobrazit [azureml.core.Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) dokumentace k rozhraní API.
 
  * Automatizované Machine Learning odebrán směrodatná normalizované chyba primární metriky.
 

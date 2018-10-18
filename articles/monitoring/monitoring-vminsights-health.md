@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 10/15/2018
 ms.author: magoedte
-ms.openlocfilehash: 5c9211486fa40e49afd91eba7c432990b0ee860b
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 84314f64d8a96e65f63cb5c6051f7f5e902cd682
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160617"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387817"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms"></a>Vysvětlení stavu virtuálních počítačů Azure pomocí Azure monitoru pro virtuální počítače
 Azure obsahuje několik služeb, které jednotlivě provádět konkrétní role nebo úkolu v prostoru pro monitorování, ale poskytuje perspektivy podrobný stav operačního systému hostované na Azure virtual machines nebyl k dispozici.  V průběhu monitorování může pro různé podmínky použití Log Analytics nebo Azure Monitor, nejsou určeny pro modelování a představují stavu základní součásti nebo celkového stavu virtuálního počítače.  Prostřednictvím služby Azure Monitor pro funkci stav virtuálních počítačů aktivně Monitoruje dostupnost a výkon Windows nebo Linuxem hostovaného operačního systému s modelem, které představují klíčových komponent a jejich vztahů kritéria, která určuje, jak měřit kvalitu ty komponenty, a upozorní vás při zjištění není v pořádku podmínky.  
@@ -31,7 +31,7 @@ Tento článek vám pomůže pochopit, jak rychle posoudit, prozkoumat a vyřeš
 Informace o konfiguraci monitorování Azure pro virtuální počítače najdete v tématu [povolit monitorování Azure pro virtuální počítače](monitoring-vminsights-onboard.md).
 
 ## <a name="monitoring-configuration-details"></a>Podrobnosti o konfiguraci monitorování
-Tato část popisuje výchozí stav kritéria definovat za účelem monitorování Windows Azure a virtuální počítače s Linuxem.
+Tato část popisuje výchozí stav kritéria definovat za účelem monitorování Windows Azure a virtuální počítače s Linuxem. Všechna kritéria stavu jsou nakonfigurovaná tak, aby upozornění, když je splněna podmínka není v pořádku. 
 
 ### <a name="windows-vms"></a>Virtuální počítače s Windows
 
@@ -110,7 +110,7 @@ Chcete-li zobrazit shromažďování stavu pro všechny virtuální počítače 
 
 ![Virtuální počítač statistiky, sledování zobrazení ze služby Azure Monitor](./media/monitoring-vminsights-health/vminsights-aggregate-health.png)
 
-Z **předplatné** a **skupiny prostředků** rozevírací seznamy, vyberte příslušné předplatné obsahující virtuální počítače připojit cílové zobrazení jejich stavu. 
+Z **předplatné** a **skupiny prostředků** rozevíracích seznamech vyberte odpovídající prostředek skupiny, která zahrnuje virtuální počítače vztahuje ke skupině, chcete-li zobrazit stav jejich ohlášené.  Výběr pouze se vztahuje na funkce stavu a není přenesou na výkon nebo mapy.
 
 Na **stavu** kartu, je možné získat následující:
 
@@ -253,21 +253,29 @@ Celkový počet zařazených do kategorií podle závažnosti upozornění na st
 
 ![Příklad všech 1. úrovně závažnosti výstrah](./media/monitoring-vminsights-health/vminsights-sev1-alerts-01.png)
 
+Na **výstrahy** stránky, není pouze v oboru zobrazení výstrahy odpovídající váš výběr, ale také se filtrují podle **typ prostředku** pouze zobrazíte stav výstrahy vyvolané prostředku virtuálního počítače.  Toto je zohledněno v seznamu výstrah, ve sloupci **cílový prostředek**, kde se zobrazuje při byla splněna podmínka stavu konkrétní kritéria není v pořádku, byla výstraha vyvolána pro virtuální počítač Azure.  
+
+Upozornění z jiných typů prostředků nebo služeb nejsou určeny mají být zahrnuty v tomto zobrazení, například podle upozornění protokolů v Log Analytics dotazů nebo metriky upozornění, která by obvykle zobrazení z výchozího Azure Monitor [všechny výstrahy](../monitoring-and-diagnostics/monitoring-overview-alerts.md#all-alerts-page) stránky. 
+
 Toto zobrazení můžete filtrovat výběrem hodnoty v rozevíracích nabídek v horní části stránky.
 
 |Sloupec |Popis | 
 |-------|------------| 
 |Předplatné |Vyberte předplatné služby Azure. Pouze výstrahy ve vybraném předplatném se nastavují v zobrazení. | 
 |Skupina prostředků |Výběr jedné skupiny prostředků. V zobrazení jsou zahrnuty pouze výstrahy s cíli ve vybrané skupině prostředků. | 
-|Typ prostředku |Vyberte jeden nebo více typů prostředků. Pouze výstrahy s cíli vybraného typu jsou zahrnuty v zobrazení. Tento sloupec je k dispozici pouze po zadal skupinu prostředků. | 
+|Typ prostředku |Vyberte jeden nebo více typů prostředků. Ve výchozím nastavení pouze výstrahy cíle **virtuálních počítačů** nebude vybrána a zahrnuté v tomto zobrazení. Tento sloupec je k dispozici pouze po zadal skupinu prostředků. | 
 |Prostředek |Vyberte prostředek. V zobrazení jsou zahrnuty pouze výstrahy s tento prostředek jako cíl. Tento sloupec je k dispozici pouze po byl zadán typ prostředku. | 
 |Severity |rozhodnout závažnost výstrahy, nebo vyberte *všechny* zahrnout všechny závažnosti výstrahy. | 
 |Stav monitorování |Vybrat podmínku monitorování pro filtrování upozorní, pokud byly *Fired* systém nebo *Vyřešeno* systém, pokud podmínka není už aktivní. Nebo vyberte *všechny* zahrnout všechny podmínky upozornění. | 
 |Stav upozornění |Vyberte stav výstrahy *nový*, *potvrzení*, *uzavřeno*, nebo vyberte *všechny* zahrnout výstrahy všechny stavy. | 
-|Monitorovat službu |Vyberte službu, nebo vyberte *všechny* zahrnout všechny služby. K použití této funkce jsou podporovány pouze výstrahy z Infrastructure Insights. | 
+|Monitorovat službu |Vyberte službu, nebo vyberte *všechny* zahrnout všechny služby. Pouze výstrahy z *VM Insights* jsou podporovány pro tuto funkci.| 
 |Časové rozmezí| Pouze výstrahy vyvolané v rámci vybrané časové období se nastavují v zobrazení. Podporované hodnoty jsou uplynulou hodinu, posledních 24 hodin, posledních 7 dní a posledních 30 dní. | 
 
-**Podrobností výstrahy** stránky se zobrazí, když vyberete výstrahu, kterým poskytuje podrobnosti výstrahy a díky tomu umožňuje změnit její stav. Další informace o práci s pravidla upozornění a Správa výstrah najdete v tématu [vytvoření, zobrazení a Správa výstrah pomocí Azure monitoru](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).
+**Podrobností výstrahy** stránky se zobrazí, když vyberete výstrahu, kterým poskytuje podrobnosti výstrahy a díky tomu umožňuje změnit její stav. Další informace o správě výstrah naleznete v tématu [vytvoření, zobrazení a Správa výstrah pomocí Azure monitoru](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).  
+
+>[!NOTE]
+>V tuto chvíli není možné vytvořit nové výstrahy na základě kritérií stavu nebo upravit existující stavu pravidla výstrah ve službě Azure Monitor z portálu.  
+>
 
 ![Panelu podrobností výstrahy pro vybrané výstrahy](./media/monitoring-vminsights-health/alert-details-pane-01.png)
 

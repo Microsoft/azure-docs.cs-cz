@@ -5,6 +5,8 @@ items:
   items:
   - name: Co jsou sestavy Azure AD?
     href: overview-reports.md
+  - name: Co je sledování služby Azure AD?
+    href: overview-monitoring.md
 - name: Šablony Rychlý start
   items:
   - name: Reports
@@ -68,6 +70,12 @@ items:
       href: howto-configure-prerequisites-for-reporting-api.md
   - name: Monitorování
     items:
+    - name: Integrace protokolů aktivit s využitím Log Analytics
+      href: howto-integrate-activity-logs-with-log-analytics.md
+    - name: Analýza protokolů aktivit ve službě Log Analytics
+      href: howto-analyze-activity-logs-log-analytics.md
+    - name: Instalace a použití zobrazení Log Analytics pro Azure AD
+      href: howto-install-use-log-analytics-views.md
     - name: Integrace protokolů aktivit s využitím SumoLogic
       href: howto-integrate-activity-logs-with-sumologic.md
   - name: Řešení potíží
@@ -102,9 +110,9 @@ items:
     - name: Schéma protokolu přihlašování
       href: reference-azure-monitor-sign-ins-log-schema.md
   expanded: true
-ms.openlocfilehash: 20321358f74157bda02740d536dd30e7a21f5588
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 1ab811294846ae59c0d83efe658b7b9b4f7f8a9a
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45740282"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395050"

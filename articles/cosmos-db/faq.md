@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: sngun
-ms.openlocfilehash: 85d8eb555d96b1c50da0ed00ae1f06c3eec1a5ba
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: de67d71a209ea0889b4dc5c87fed254700cb9916
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44722199"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395124"
 ---
 # <a name="azure-cosmos-db-faq"></a>Nejčastější dotazy k Azure Cosmos DB
 ## <a name="azure-cosmos-db-fundamentals"></a>Základy služby Azure Cosmos DB
@@ -100,7 +100,7 @@ Vyzkoušejte Azure Cosmos DB odběratelům platí následující podmínky:
 Azure Cosmos DB je k dispozici na webu Azure Portal. Nejprve si zaregistrujte předplatné Azure. Poté, co jste se zaregistrovali, můžete přidat rozhraní SQL API, Gremlin API, rozhraní Table API, rozhraní MongoDB API služby nebo účet Cassandra API k předplatnému Azure.
 
 ### <a name="what-is-a-master-key"></a>Co je hlavní klíč?
-Hlavní klíč je token zabezpečení pro přístup ke všem prostředkům účtu. Uživatelé, kteří mají klíč, čtení a zápisu přístup ke všem prostředkům v databázovém účtu. Při distribuci hlavního klíče buďte opatrní. Primární hlavní klíč a sekundární hlavní klíč jsou k dispozici na **klíče** okně [webu Azure portal][azure-portal]. Další informace o klíčích najdete v tématu [zobrazení, kopírování a obnovení přístupových klíčů](manage-account.md#keys).
+Hlavní klíč je token zabezpečení pro přístup ke všem prostředkům účtu. Uživatelé, kteří mají klíč, čtení a zápisu přístup ke všem prostředkům v databázovém účtu. Při distribuci hlavního klíče buďte opatrní. Primární hlavní klíč a sekundární hlavní klíč jsou k dispozici na **klíče** okně [webu Azure portal][azure-portal]. Další informace o klíčích najdete v tématu [Zobrazení, kopírování a obnovení přístupových klíčů](manage-account.md#keys).
 
 ### <a name="what-are-the-regions-that-preferredlocations-can-be-set-to"></a>Co jsou oblasti, které je možné nastavit PreferredLocations? 
 Hodnota PreferredLocations můžete nastavit na některou z oblasti Azure, ve kterých je k dispozici služby Cosmos DB. Seznam dostupných oblastí naleznete v tématu [oblastí Azure](https://azure.microsoft.com/regions/).
@@ -127,7 +127,7 @@ Ano, služby Azure cosmos DB podporuje analýzu časových řad, tady je ukázka
 ### <a name="how-do-i-start-developing-against-the-sql-api"></a>Jak můžu začít vyvíjet s využitím rozhraní SQL API?
 Nejprve musí přihlásit k odběru služeb Azure. Po registraci předplatného Azure můžete ke svému předplatnému Azure přidat kontejner rozhraní SQL API. Pokyny k přidání účtu služby Azure Cosmos DB najdete v tématu [vytvoření účtu databáze Azure Cosmos DB](create-sql-api-dotnet.md#create-account). 
 
-[Sady SDK](sql-api-sdk-dotnet.md) jsou dostupné pro .NET, Python, Node.js, JavaScript a Java. Vývojáři také mohou použít [rozhraní RESTful HTTP API](/rest/api/cosmos-db/) k interakci s prostředky Azure Cosmos DB z různých platforem a jazyků.
+Pro .NET, Python, Node.js, JavaScript a Javu jsou k dispozici sady [SDK](sql-api-sdk-dotnet.md). Vývojáři také mohou použít [rozhraní RESTful HTTP API](/rest/api/cosmos-db/) k interakci s prostředky Azure Cosmos DB z různých platforem a jazyků.
 
 ### <a name="can-i-access-some-ready-made-samples-to-get-a-head-start"></a>Můžete přistupovat k některé předem připravené ukázky, které se připravit?
 Ukázky pro rozhraní SQL API [.NET](sql-api-dotnet-samples.md), [Java](https://github.com/Azure/azure-documentdb-java), [Node.js](sql-api-nodejs-samples.md), a [Python](sql-api-python-samples.md) sady SDK jsou k dispozici na Githubu.
@@ -466,7 +466,7 @@ Azure Cosmos DB využívá [horizontální dělení](partition-data.md) automati
 
 ### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>Jak můžete chránit před útoky prostřednictvím injektáže pomocí Gremlin ovladače? 
 
-Nejvíce nativní ovladače Tinkerpop Gremlin povolí možnost zadat slovník parametrů pro spuštění dotazu. Toto je příklad toho, jak to udělat v [Gremlin.Net]((http://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet)) a [Gremlin-Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js).
+Nejvíce nativní ovladače Tinkerpop Gremlin povolí možnost zadat slovník parametrů pro spuštění dotazu. Toto je příklad toho, jak to udělat v [Gremlin.Net](http://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) a [Gremlin-Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js).
 
 ### <a name="why-am-i-getting-the-gremlin-query-compilation-error-unable-to-find-any-method-error"></a>Proč se zobrazuje "chybě kompilace dotazu Gremlin: nepovedlo se najít žádné metody" Chyba?
 

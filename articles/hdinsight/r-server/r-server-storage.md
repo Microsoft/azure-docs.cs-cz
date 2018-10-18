@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 5bd5919efa84f2dd22929075b806747b413ac346
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 4c3b36891030ae97f382d5e1d0623fa7c698dbf6
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051789"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395074"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Řešení Azure Storage pro ML služeb v Azure HDInsight
 
@@ -159,7 +159,7 @@ Ke konfiguraci účtu Data Lake Store se službou directory RevoShare a přidejt
 
 ## <a name="use-azure-file-storage-with-ml-services-on-hdinsight"></a>Azure File storage pomocí služby ML v HDInsight
 
-Je také možnost úložiště dat. vhodné pro použití na hraniční uzel s názvem [Azure Files] ((https://azure.microsoft.com/services/storage/files/). Umožňuje připojení sdílené složky Azure Storage k systému souborů v Linuxu. Tato možnost může být užitečná pro ukládání datových souborů, skripty jazyka R a objektech výsledků, které bude potřeba provést později, zejména v případě, že je vhodné použít systém nativní soubor na hraničním uzlu namísto HDFS. 
+Je také možnost vhodná datová úložiště pro použití na hraniční uzel s názvem [Azure Files](https://azure.microsoft.com/services/storage/files/). Umožňuje připojení sdílené složky Azure Storage k systému souborů v Linuxu. Tato možnost může být užitečná pro ukládání datových souborů, skripty jazyka R a objektech výsledků, které bude potřeba provést později, zejména v případě, že je vhodné použít systém nativní soubor na hraničním uzlu namísto HDFS. 
 
 Hlavní výhodou souborů Azure je, že sdílené složky můžete připojit a používat jakýkoli systém, který je podporovaný operační systém, jako je například Windows nebo Linux. Například můžete použít jiný cluster HDInsight, který má vy nebo někdo z vašeho týmu, ve Virtuálním počítači Azure nebo dokonce místního systému. Další informace naleznete v tématu:
 

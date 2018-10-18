@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: acd9d9ff0b97bf0eaaca2f8ae9a6909e18e320d6
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: ad21754b3f55a0d14bb43a2898d5bd4b8b8150ae
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47168099"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385902"
 ---
 # <a name="tutorial-luis-bot-in-nodejs"></a>Kurz: Robot LUIS v Node.js
 Pomocí Node.js můžete vytvořit chatovacího robota integrovaného se službou Language Understanding (LUIS). Tento robot používá k implementaci řešení robota aplikaci HomeAutomation. K vytvoření robota se používá [Web App Bot](https://docs.microsoft.com/azure/bot-service/) Azure a [Bot Framework ve verzi](https://github.com/Microsoft/botbuilder-js) v4.
@@ -84,7 +84,7 @@ https://github.com/Microsoft/BotBuilder-Samples/tree/v4/javascript_nodejs/12.nlp
 Přidejte do modelu předem připravenou aplikaci HomeAutomation, která má zpracovávat promluvy jako: `Turn off the living room lights`
 
 1. Přejděte na portál [LUIS](https://www.luis.ai) a přihlaste se.
-2. Na stránce **My Apps** (Moje aplikace) vyberte sloupec **Created date** (Datum vytvoření) k seřazení podle data, kdy byla aplikace vytvořena. Služba Azure Bot Serice vytvořila novou aplikaci v předchozí části. Její název je `luis-nodejs-bot-` + `<your-name>` + 4 náhodné znaky.
+2. Na stránce **My Apps** (Moje aplikace) vyberte sloupec **Created date** (Datum vytvoření) k seřazení podle data, kdy byla aplikace vytvořena. Služba Azure Bot Service vytvořila novou aplikaci v předchozí části. Její název je `luis-nodejs-bot-` + `<your-name>` + 4 náhodné znaky.
 3. Otevřete aplikaci a vyberte část **Build** (Sestavení) v horním navigačním panelu.
 4. V levém navigačním panelu vyberte **Prebuilt Domains** (Předem připravené domény).
 5. Vyberte doménu **HomeAutomation** vybráním možnosti **Add domain** (Přidat doménu) na kartě.
@@ -350,9 +350,9 @@ Do souboru `bot.js` přidejte kód pro zpracování nových záměrů.
 ## <a name="learn-more-about-bot-framework"></a>Další informace o Bot Frameworku
 Azure Bot Service využívá sadu SDK Bot Frameworku. Přečtěte si další informace o sadě SDK a Bot Frameworku:
 
-* Dokumentace pro [Azure Bot Service](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0) v4
+* Dokumentace pro [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0) v4
 * [Ukázky Bot Builderu](https://github.com/Microsoft/botbuilder-samples)
-* [Sada SK Bot Builderu](https://docs.microsoft.com/en-us/javascript/api/botbuilder-core/?view=botbuilder-ts-latest)
+* [Sada SK Bot Builderu](https://docs.microsoft.com/javascript/api/botbuilder-core/?view=botbuilder-ts-latest)
 * [Nástroje Bot Builderu](https://github.com/Microsoft/botbuilder-tools):
 
 ## <a name="next-steps"></a>Další kroky

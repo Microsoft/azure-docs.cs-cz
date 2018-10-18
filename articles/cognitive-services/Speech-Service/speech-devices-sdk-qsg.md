@@ -9,12 +9,12 @@ ms.component: speech
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: erhopf
-ms.openlocfilehash: 53e159c7fc357d0c3776102294f4871863cbf4a5
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 300e2d593dfe00b2d7348c7eaf15b0f26ec7e0dd
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167371"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389883"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>Začínáme se sadou SDK pro řeč zařízení
 
@@ -39,9 +39,9 @@ Než začnete s vývojem pomocí sady SDK zařízení řeči, shromážděte inf
 
 * Získání [klíč předplatného služba Speech](get-started.md). Můžete získat 30denní bezplatnou zkušební verzi nebo získat klíč z řídicího panelu Azure.
 
-* Pokud chcete použít rozpoznání záměru řeči service, přihlášení k odběru [služby Language Understanding](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) (LUIS) a [získat klíč předplatného](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/azureibizasubscription). 
+* Pokud chcete použít rozpoznání záměru řeči service, přihlášení k odběru [služby Language Understanding](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) (LUIS) a [získat klíč předplatného](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription). 
 
-    Je možné [vytvoření jednoduchého modelu LUIS](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/) nebo použijte ukázku, model LUIS, LUIS example.json. Ukázka je k dispozici z modelu LUIS [serveru pro stahování sadou SDK pro řeč zařízení](https://shares.datatransfer.microsoft.com/). K nahrání souboru JSON modelu [LUIS portál](https://www.luis.ai/home)vyberte **Import novou aplikaci**a potom vyberte soubor JSON.
+    Je možné [vytvoření jednoduchého modelu LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/) nebo použijte ukázku, model LUIS, LUIS example.json. Ukázka je k dispozici z modelu LUIS [serveru pro stahování sadou SDK pro řeč zařízení](https://shares.datatransfer.microsoft.com/). K nahrání souboru JSON modelu [LUIS portál](https://www.luis.ai/home)vyberte **Import novou aplikaci**a potom vyberte soubor JSON.
 
 ## <a name="set-up-the-development-kit"></a>Nastavení sady development kit
 

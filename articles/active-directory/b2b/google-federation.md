@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.openlocfilehash: 4ffe6cf3f1da4c149d1cb39856d02fc40acd20cf
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 396fb947a95ebc634ab0dea24d20f35126bc006e
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984788"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389441"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Přidat služby Google jako zprostředkovatele identity pro uživatele typu Host B2B
 
@@ -84,7 +84,7 @@ Teď budete klienta vyberete hodnotu Google ID a tajný kód klienta, tak, že z
    `New-AzureADMSIdentityProvider -Type Google -Name Google -ClientId [Client ID] -ClientSecret [Client secret]`
  
    > [!NOTE]
-   > Použít id klienta a klienta, tajného kódu z aplikace, kterou jste vytvořili v "krok 1: konfigurace projektu pro vývojáře Google." Další informace najdete v tématu [New-AzureADMSIdentityProvider](https://docs.microsoft.com/en-us/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview) článku. 
+   > Použít id klienta a klienta, tajného kódu z aplikace, kterou jste vytvořili v "krok 1: konfigurace projektu pro vývojáře Google." Další informace najdete v tématu [New-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview) článku. 
  
 ## <a name="how-do-i-remove-google-federation"></a>Jak odeberu federační služby Google?
 Můžete odstranit nastavení federace služby Google. Pokud tak učiníte, nebudou moct přihlásit Google uživatele typu Host, kteří už využili svou pozvánku, ale můžete poskytnout jim přístup k vašim prostředkům znovu tak, že jejich odstranění z adresáře a znovu vyzývající. 
@@ -108,4 +108,4 @@ Můžete odstranit nastavení federace služby Google. Pokud tak učiníte, nebu
     `Remove-AzureADMSIdentityProvider -Id Google-OAUTH`
 
    > [!NOTE]
-   > Další informace najdete v tématu [odebrat AzureADMSIdentityProvider](https://docs.microsoft.com/en-us/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview). 
+   > Další informace najdete v tématu [odebrat AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview). 

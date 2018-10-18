@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: cd0af3bc9489452dfc98efaa3ded768a8ca775ab
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 71d96d7e88404c1f8b617370ef5cc841aad882f8
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079476"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390036"
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery: Časté otázky (FAQ)
 Tento článek obsahuje nejčastější dotazy týkající se Azure Site Recovery. Pokud po přečtení tohoto článku máte dotazy, zveřejněte na [fóru Azure Recovery Services](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
@@ -70,7 +70,7 @@ Pokud chcete ochránit virtuální počítače VMware, potřebujete hypervisor v
 Ano. Když použijete Site Recovery pro orchestraci replikace a převzetí služeb při selhání ve firemních pobočkách, získáte jednotný Orchestrace a zobrazit všechny úlohy poboček v centrálním umístění. Z centrály můžete snadno provádět převzetí služeb při selhání a spravovat zotavení po havárii na všech pobočkách, aniž byste na nich museli být přítomni.
 
 ## <a name="pricing"></a>Ceny
-Ceny za dotazy související s hesly, najdete v části Nejčastější dotazy na [ceny za Azure Site Recovery](https://azure.microsoft.com/en-in/pricing/details/site-recovery/).
+Ceny za dotazy související s hesly, najdete v části Nejčastější dotazy na [ceny za Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/).
 
 ## <a name="security"></a>Zabezpečení
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>Posílají se replikační data do služby Site Recovery?

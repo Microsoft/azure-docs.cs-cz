@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
-ms.reviewer: carlrab, jovanpop
+ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
-ms.date: 10/04/2018
-ms.openlocfilehash: 3f571a8d8a138656fc8bae5d6f45d183a8819bc3
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.date: 10/17/2018
+ms.openlocfilehash: 97c141b6e0c071a8cea27f9a873f28a6c5113a18
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803201"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394857"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Přehled limity prostředků Azure SQL Database Managed Instance
 
@@ -140,6 +140,7 @@ Pokud potřebujete více spravovaných instancí v aktuální oblasti, můžete 
      > - Oblasti, které předplatné limit musí být zvýšena
      > - Požadovaný počet instancí na úroveň služby v existující podsítě po kvótu zvýšit (je-li žádné existující podsítě potřeba rozšířit
      > - Požadované číslo nové podsítě a celkový počet instancí na úrovni služby v rámci nové podsítě (Pokud je potřeba nasadit spravované instance v nové podsítě).
+     
 5. Klikněte na **Další**.
 6. Na kartě kontaktní informace pro novou žádost o podporu zadejte upřednostňovaný způsob kontaktu (e-mail nebo telefon) a kontaktní údaje.
 7. Klikněte na možnost **Vytvořit**.

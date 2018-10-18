@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: b53be5a5683ca8fcc8760a2d4cb7e766904a44a3
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: d240bafa543633999a74ef66efcfd7130a4a7b7a
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167660"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389271"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -133,8 +133,8 @@ Chcete-li vyřešit tento problém, proveďte následující kroky:
 
 1. Otevřete Správce úloh na serveru a ověřte, zda že je spuštěn proces synchronizace monitorování úložiště (AzureStorageSyncMonitor.exe). Pokud proces není spuštěn, nejprve zkuste restartovat server. Pokud restartování serveru problém nevyřeší, upgradujte agenta Azure File Sync verze [3.3.0.0]( https://support.microsoft.com/help/4457484/update-rollup-for-azure-file-sync-agent-september-2018) Pokud aktuálně nenainstalovaná.
 2. Ověřte, zda je správně nakonfigurované nastavení brány Firewall a proxy serveru:
-    - Pokud je server za bránou firewall, ověřte, že je povolené odchozím portu 443. Pokud brána firewall omezuje provoz na konkrétní domény, zkontrolujte domén uvedené v bráně Firewall [dokumentaci](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall) jsou k dispozici.
-    - Pokud je za proxy server, nakonfigurujte nastavení proxy celý počítač nebo konkrétní aplikace podle postupu v proxy serveru [dokumentaci](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy).
+    - Pokud je server za bránou firewall, ověřte, že je povolené odchozím portu 443. Pokud brána firewall omezuje provoz na konkrétní domény, zkontrolujte domén uvedené v bráně Firewall [dokumentaci](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall) jsou k dispozici.
+    - Pokud je za proxy server, nakonfigurujte nastavení proxy celý počítač nebo konkrétní aplikace podle postupu v proxy serveru [dokumentaci](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy).
 
 <a id="endpoint-noactivity-sync"></a>**Koncový bod serveru je ve stavu stavu "Žádná aktivita" a "Online" je stav serveru v okně registrované servery**  
 
@@ -343,7 +343,7 @@ Tato chyba nastane, pokud dojde k nějakému problému s interní databází pou
 | **Text chyby** | ECS_E_AGENT_VERSION_BLOCKED |
 | **Požadována náprava** | Ano |
 
-K této chybě dochází, pokud není podporován na serveru nainstalovaná verze agenta Azure File Sync. Chcete-li vyřešit tento problém [upgradovat]( https://docs.microsoft.com/en-us/azure/storage/files/storage-files-release-notes#upgrade-paths) k [podporovaná verze agenta]( https://docs.microsoft.com/en-us/azure/storage/files/storage-files-release-notes#supported-versions).
+K této chybě dochází, pokud není podporován na serveru nainstalovaná verze agenta Azure File Sync. Chcete-li vyřešit tento problém [upgradovat]( https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#upgrade-paths) k [podporovaná verze agenta]( https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#supported-versions).
 
 <a id="-2134351810"></a>**Dosáhli jste limitu úložiště sdílené složky Azure file.**  
 | | |

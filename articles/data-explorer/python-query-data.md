@@ -2,18 +2,18 @@
 title: 'Rychlý start: Dotazování dat pomocí knihovny Python Azure Data Exploreru'
 description: V tomto rychlém startu se naučíte dotazovat data z Azure Data Exploreru pomocí Pythonu.
 services: data-explorer
-author: mgblythe
-ms.author: mblythe
+author: orspod
+ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: fee982812456548ed6d1e15d86151df88532389f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 17504cec6ddf98aca8ddfc6c91d21d34055902f6
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956094"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394846"
 ---
 # <a name="quickstart-query-data-using-the-azure-data-explorer-python-library"></a>Rychlý start: Dotazování dat pomocí knihovny Python Azure Data Exploreru
 
@@ -32,7 +32,7 @@ Tento rychlý start je dostupný také v podobě [poznámkového bloku Azure](ht
 Nainstalujte *azure-kusto-data*.
 
 ```python
-pip install azure-kusto-data
+pip install azure-kusto-data==0.0.13
 ```
 
 ## <a name="add-import-statements-and-constants"></a>Přidání příkazů a konstant pro import
@@ -42,6 +42,7 @@ Naimportujte z knihovny třídy a *pandas*, což je knihovna pro analýzu dat.
 ```python
 from azure.kusto.data.request import KustoClient, KustoConnectionStringBuilder
 from azure.kusto.data.exceptions import KustoServiceError
+from azure.kusto.data.helpers import dataframe_from_result_table
 import pandas as pd
 ```
 
@@ -51,10 +52,10 @@ K ověření aplikace používá Azure Data Explorer ID vašeho tenanta AAD. ID 
 https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
 ```
 
-Pokud je vaše doména například *contoso.com*, je adresa URL [https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/). Kliknutím na tuto adresu URL zobrazte výsledky. První řádek vypadá jako v následujícím příkladu. 
+Pokud je vaše doména například *contoso.com*, je adresa URL [https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/). Kliknutím na tuto adresu URL zobrazte výsledky. První řádek vypadá jako v následujícím příkladu.
 
 ```
-`"authorization_endpoint":"https://login.windows.net/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"`
+"authorization_endpoint":"https://login.windows.net/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"
 ```
 
 ID tenanta je v tomto případě `6babcaad-604b-40ac-a9d7-9fd97c0b779f`. Před spuštěním tohoto kódu nastavte hodnotu AAD_TENANT_ID.
@@ -80,7 +81,7 @@ Spusťte dotaz vůči clusteru a uložte výstup do datového rámce. Když se t
 KUSTO_CLIENT  = KustoClient(KCSB)
 KUSTO_QUERY  = "StormEvents | sort by StartTime desc | take 10"
 
-df = KUSTO_CLIENT.execute_query(KUSTO_DATABASE, KUSTO_QUERY).primary_results[0].to_dataframe()
+RESPONSE = KUSTO_CLIENT.execute(KUSTO_DATABASE, KUSTO_QUERY)
 ```
 
 ## <a name="explore-data-in-dataframe"></a>Zkoumání dat v datovém rámci
@@ -88,6 +89,7 @@ df = KUSTO_CLIENT.execute_query(KUSTO_DATABASE, KUSTO_QUERY).primary_results[0].
 Po přihlášení vrátí tento dotaz výsledky, které jsou uložené v datovém rámci. S výsledky můžete pracovat stejně jako s jakýmkoli jiným datovým rámcem.
 
 ```python
+df = dataframe_from_result_table(RESPONSE.primary_results[0])
 df
 ```
 

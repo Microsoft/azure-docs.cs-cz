@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/10/2018
 ms.author: genli
-ms.openlocfilehash: d3e5eb6157b474fc7b7057022bffa3eb5d36cae2
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: f9b950b1d85f50331d556a54b4237d78ec5c07ac
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068381"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388151"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Příprava Windows VHD nebo VHDX, který chcete nahrát do Azure
 Před odesláním Windows virtuálních počítačů (VM) z místního na Microsoft Azure, musíte připravit virtuální pevný disk (VHD nebo VHDX). Azure podporuje **pouze virtuální počítače generace 1** , které jsou ve formátu souboru virtuálního pevného disku a mají pevnou velikostí disku. Maximální velikost povolenou pro virtuální pevný disk je 1,023 GB. Můžete převést generace 1 virtuální počítač z VHDX souborový systém pro virtuální pevný disk a z dynamicky se zvětšující disku na pevnou velikostí. Nelze však změnit generaci Virtuálního počítače. Další informace najdete v tématu [bych si měl vytvořit generace 1 nebo 2 virtuálních počítačů Hyper-v](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
@@ -375,7 +375,7 @@ Pokud místo toho chcete jenom pro účely vytvoření jednoho virtuálního po�
 Další informace o vytvoření virtuálního počítače ze specializovaného disku najdete v tématu:
 
 - [Vytvoření virtuálního počítače ze specializovaného disku](create-vm-specialized.md)
-- [Vytvoření virtuálního počítače ze specializovaného disku VHD](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/create-vm-specialized-portal?branch=master)
+- [Vytvoření virtuálního počítače ze specializovaného disku VHD](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal?branch=master)
 
 Pokud chcete vytvořit generalizované image, budete muset spustit nástroj sysprep. Další informace o nástroji Sysprep najdete v tématu [použití nástroje Sysprep: Úvod](http://technet.microsoft.com/library/bb457073.aspx). 
 

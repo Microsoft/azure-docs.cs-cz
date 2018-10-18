@@ -2,18 +2,18 @@
 title: 'Rychlý start: Ingestování dat z centra událostí do Azure Data Exploreru'
 description: V tomto rychlém startu se dozvíte, jak ingestovat (načíst) data do Azure Data Exploreru z centra událostí.
 services: data-explorer
-author: mgblythe
-ms.author: mblythe
+author: orspod
+ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: acc18b6414e62a1f8239562158b4b80219c5d7c1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: efaf551d134d339205d40966cb84f41b408559bd
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976818"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394174"
 ---
 # <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>Rychlý start: Ingestování dat z centra událostí do Azure Data Exploreru
 
@@ -106,7 +106,7 @@ Teď se z Azure Data Exploreru připojíte k centru událostí, aby se data teko
 
 1. Vyberte **Ingestace dat** a pak **Přidat datové připojení**.
 
-    ![Ingestace dat](media/ingest-data-event-hub/data-ingestion-create.png)
+    ![Přijímání dat](media/ingest-data-event-hub/data-ingestion-create.png)
 
 1. Do formuláře zadejte následující informace a vyberte **Vytvořit**.
 
@@ -118,7 +118,7 @@ Teď se z Azure Data Exploreru připojíte k centru událostí, aby se data teko
     | Obor názvů centra událostí | Jedinečný název oboru názvů | Název, který jste zvolili dříve a který identifikuje váš obor názvů |
     | Centrum událostí | *test-hub* | Centrum událostí, které jste vytvořili |
     | Skupina uživatelů | *test-group* | Skupina uživatelů, kterou jste definovali v centrum událostí, které jste vytvořili |
-    | Tabulka | *TestTable* | Tabulka, kterou jste vytvořili v databázi **TestDatabase** |
+    | Table | *TestTable* | Tabulka, kterou jste vytvořili v databázi **TestDatabase** |
     | Formát dat | *JSON* | Jsou podporované formáty JSON a CSV. |
     | Mapování sloupců | *TestMapping* | Mapování, které jste vytvořili v databázi **TestDatabase**. |
 
@@ -185,7 +185,7 @@ Pokud už centrum událostí nebudete chtít dál používat, vyčistěte **test
 
 1. Úplně nalevo na webu Azure Portal vyberte **Skupiny prostředků** a pak vyberte skupinu prostředků, kterou jste vytvořili.  
 
-    Pokud je nabídka vlevo sbalená, výběrem ![tlačítka Rozbalit](media/ingest-data-event-hub/expand.png) ji rozbalte.
+    Pokud je nabídka vlevo sbalená, výběrem ![tlačítko Rozbalit](media/ingest-data-event-hub/expand.png) ji rozbalte.
 
    ![Výběr skupiny prostředků k odstranění](media/ingest-data-event-hub/delete-resources-select.png)
 

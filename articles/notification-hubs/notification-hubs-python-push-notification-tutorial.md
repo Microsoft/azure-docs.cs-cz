@@ -14,12 +14,12 @@ ms.devlang: php
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 339029f14c4fd9a0158f2b7a4fb80bf03bd83cf3
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: b0aa61c86b08a4fe2eddb5eb1fb5b33c4cb901a0
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42054220"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386583"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>Jak používat Notification Hubs z Pythonu
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
@@ -49,7 +49,7 @@ Můžete postupovat podle [kurz Začínáme](notification-hubs-windows-store-dot
 ## <a name="client-interface"></a>Rozhraní klienta
 Hlavní klientského rozhraní můžete zadat stejné metody, které jsou k dispozici v [sadu SDK serveru .NET Notification Hubs](http://msdn.microsoft.com/library/jj933431.aspx). Toto rozhraní umožňuje přímo přeložit těchto kurzů a ukázek aktuálně k dispozici na tomto webu a přispěla komunita na Internetu.
 
-K dispozici v kódu lze najít [ukázkové Python REST obálky].
+K dispozici v kódu lze najít [Ukázky Pythonu REST obálky].
 
 Chcete-li například vytvořit klienta:
 
@@ -261,7 +261,7 @@ Teď s touto třídou zapsat odeslat oznámení metody uvnitř **NotificationHub
 Tyto metody odeslat požadavek HTTP POST /messages koncovému bodu vašeho centra oznámení, s textem správné a hlavičky k odesílání oznámení.
 
 ### <a name="using-debug-property-to-enable-detailed-logging"></a>Pomocí vlastnosti ladění povolit podrobné protokolování
-Povolení ladění vlastnost při inicializaci v centru oznámení zapíše podrobné protokolování informací o požadavku HTTP a odpovědí s výpisem paměti, stejně jako podrobné zprávy oznámení odeslat výsledek. [Notification Hubs TestSend vlastnost](https://docs.microsoft.com/en-us/previous-versions/azure/reference/dn495827(v=azure.100)) vrátí podrobné informace o výsledek odesílání oznámení. Použije-inicializovat pomocí následujícího kódu:
+Povolení ladění vlastnost při inicializaci v centru oznámení zapíše podrobné protokolování informací o požadavku HTTP a odpovědí s výpisem paměti, stejně jako podrobné zprávy oznámení odeslat výsledek. [Notification Hubs TestSend vlastnost](https://docs.microsoft.com/previous-versions/azure/reference/dn495827(v=azure.100)) vrátí podrobné informace o výsledek odesílání oznámení. Použije-inicializovat pomocí následujícího kódu:
 
     hub = NotificationHub("myConnectionString", "myNotificationHubName", isDebug)
 
@@ -374,15 +374,15 @@ Všimněte si, že změní záhlaví formátu HTTP a text datové části je ode
 ## <a name="next-steps"></a>Další kroky
 Tento článek vám ukázal, jak vytvořit klienta Python REST pro Notification Hubs. Odsud můžete:
 
-* Stáhněte si kompletní [ukázkové Python REST obálky], které obsahuje veškerý kód v tomto článku.
-* Pokračujte ve čtení o Notification Hubs označování příznaky funkcí [novinkách kurz]
-* Pokračujte ve čtení o Notification Hubs šablony funkce [kurzu lokalizace zpráv]
+* Stáhněte si kompletní [Ukázky Pythonu REST obálky], které obsahuje veškerý kód v tomto článku.
+* Pokračujte ve čtení o Notification Hubs označování příznaky funkcí [Zásadní novinky kurz]
+* Pokračujte ve čtení o Notification Hubs šablony funkce [Lokalizace kurzu zpráv]
 
 <!-- URLs -->
-[ukázkové Python REST obálky]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-python
+[Ukázky Pythonu REST obálky]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-python
 [Kurz Začínáme]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
-[novinkách kurz]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/
-[kurzu lokalizace zpráv]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/
+[Zásadní novinky kurz]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/
+[Lokalizace kurzu zpráv]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/
 
 <!-- Images. -->
 [1]: ./media/notification-hubs-python-backend-how-to/DetailedLoggingInfo.png

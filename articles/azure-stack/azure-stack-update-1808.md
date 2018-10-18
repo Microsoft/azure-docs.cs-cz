@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/12/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 2e40f0520c0f5e605974f883b3327699ff26313e
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 3843898ba2d7cdd3697236a9f4cc19070c6f07c3
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321814"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395169"
 ---
 # <a name="azure-stack-1808-update"></a>Aktualizace služby Azure Stack. 1808
 
@@ -261,6 +261,10 @@ Toto jsou známé problémy této verze sestavení po instalaci.
    2. Pokud jste nakonfigurovali prostředí s více tenanty, nasazování virtuálních počítačů v rámci služby předplacené asociovaná s adresářem hosta může selhat s interní chybovou zprávu. Chcete-li chybu vyřešit, postupujte takto:
       1. Použít [. 1808 Azure Stack opravu Hotfix](https://support.microsoft.com/help/4467062/).
       2. Postupujte podle kroků v [v tomto článku](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) změna konfigurace všech vašich adresářů hosta.
+      
+<!-- 3179561 - IS --> 
+- Použití spravovaných disků se ohlásí v hodinách, jako je popsáno v [nejčastější dotazy k využití Azure Stack](azure-stack-usage-related-faq.md#managed-disks). Fakturace Azure Stack však používá měsíční cena místo, které může získat nesprávně účtovány poplatky za využití Managed Disks nebo před 27. září. Jsme jste dočasně pozastavili poplatky za spravované disky po dne 27 dokud fakturační problém je vyřešen. Pokud budete mít byla účtovat nesprávně využití Managed Disks, kontaktujte prosím podporu Microsoftu fakturace.
+Sestavy využití vytvořenými využití rozhraní API služby Azure Stack zobrazit správné množství a můžou používat.
 
 <!-- 2869209 – IS, ASDK --> 
 - Při použití [ **přidat AzsPlatformImage** rutiny](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0), je nutné použít **- OsUri** parametr jako identifikátor URI, kde je odeslána na disk účtu úložiště. Pokud používáte místní cesta na disku, rutina selže s následující chybou: *dlouho běžící operace se nezdařila se stavem "Failed"*. 

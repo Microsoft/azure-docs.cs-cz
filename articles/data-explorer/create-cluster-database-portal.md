@@ -2,18 +2,18 @@
 title: 'Rychlý start: Vytvoření clusteru a databáze Azure Data Exploreru'
 description: V tomto rychlém startu se dozvíte, jak vytvořit cluster a databázi Azure Data Exploreru a ingestovat (načíst) data.
 services: data-explorer
-author: mgblythe
-ms.author: mblythe
+author: orspod
+ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 3280709c59edfd5d8e810c7ab33aa615e13f4b93
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6aff31c662a845028a02cecd7a99837f92bc87e5
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974710"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394217"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Rychlý start: Vytvoření clusteru a databáze Azure Data Exploreru
 
@@ -95,7 +95,7 @@ Teď, když máte cluster a databázi, můžete spouštět dotazy a příkazy. V
 
     Sada výsledků dotazu obsahuje databázi **TestDatabase**, což je jediná databáze v clusteru.
 
-1. Do okna dotazu vložte následující příkaz: `.show tables` a tento příkaz pak vyberte v okně. Vyberte **Spustit**.
+1. Do okna dotazu vložte následující příkaz: `.show tables` a tento příkaz pak vyberte v okně. Vyberte **Run** (Spustit).
 
     Tento příkaz vrátí prázdnou sadu výsledků dotazu, protože zatím nemáte žádné tabulky. Tabulku přidáte v dalším článku v této sérii.
 
@@ -117,7 +117,7 @@ Pokud plánujete postupovat podle našich dalších rychlých startů a kurzů, 
 
 1. Úplně nalevo na webu Azure Portal vyberte **Skupiny prostředků** a pak vyberte skupinu prostředků, kterou jste vytvořili.  
 
-    Pokud je nabídka vlevo sbalená, výběrem ![tlačítka Rozbalit](media/create-cluster-database-portal/expand.png) ji rozbalte.
+    Pokud je nabídka vlevo sbalená, výběrem ![tlačítko Rozbalit](media/create-cluster-database-portal/expand.png) ji rozbalte.
 
    ![Výběr skupiny prostředků k odstranění](media/create-cluster-database-portal/delete-resources-select.png)
 

@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: luisca
-ms.openlocfilehash: 4dfc4d250cae80e7837db5cfbcc3af15390b2bb4
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: d78959ba415c837e931edcc0278de84daa879bc1
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352332"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393946"
 ---
 # <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>Příklad: Vytvoření vlastní dovednosti pomocí rozhraní API převede Text
 
@@ -245,14 +245,6 @@ Pokud jste spokojeni s chováním funkce, můžete ho publikovat.
 1. Po dokončení nasazení se Poznámka: adresa URL webu. Je to adresa vaší aplikace function App v Azure. 
 
 1. V [webu Azure portal](https://portal.azure.com), přejděte do skupiny prostředků a oblast pro funkci překladu jste publikovali. V části **spravovat** oddílu, měli byste vidět klíče hostitele. Vyberte **kopírování** ikonu *výchozí* klíč hostitele.  
-
-## <a name="update-ssl-settings"></a>Aktualizovat nastavení SSL
-
-Všechny funkce Azure vytvořené po 30. června 2018 zakázali protokol TLS 1.0, která není momentálně kompatibilní s vlastních dovedností.
-
-1. V [webu Azure portal](https://portal.azure.com), přejděte do skupiny prostředků a oblast pro funkci překladu jste publikovali. V části **funkce platformy** části by se měla zobrazit protokol SSL.
-
-1. Po výběru SSL, byste měli změnit **TLS minimální verze** 1.0. Protokol TLS 1.2 funkce zatím nepodporují jako vlastních dovedností.
 
 ## <a name="test-the-function-in-azure"></a>Testování funkce v Azure
 

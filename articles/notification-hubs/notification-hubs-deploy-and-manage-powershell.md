@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 5a134e14768e0576c501232b6aedb1f836bc05b1
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 8312841b5f8e4b9979de8abf32ce1009b4243f06
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42054232"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388146"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>Nasazení a správa Notification Hubs pomocí PowerShellu
 ## <a name="overview"></a>Přehled
@@ -34,7 +34,7 @@ Správa centra oznámení nepodporuje přímo rutin obsažených v prostředí A
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Azure je platforma založená na předplatném. Další informace o získání předplatného najdete v tématu [možnosti nákupu], [nabídky pro členy], nebo [bezplatnou zkušební verzi].
+* Předplatné Azure. Azure je platforma založená na předplatném. Další informace o získání předplatného najdete v tématu [možnosti nákupu], [nabídky pro členy], nebo [Bezplatná zkušební verze].
 * Počítače s prostředím Azure PowerShell. Pokyny najdete v tématu [Nainstalujte a nakonfigurujte Azure PowerShell].
 * Obecné principy skripty prostředí PowerShell, balíčky NuGet a rozhraní .NET Framework.
 
@@ -146,7 +146,7 @@ else
 
 
 ## <a name="additional-resources"></a>Další prostředky
-* [Správa služby Service Bus pomocí Powershellu](../service-bus-messaging/service-bus-powershell-how-to-provision.md)
+* [Správa služby Service Bus pomocí PowerShellu](../service-bus-messaging/service-bus-powershell-how-to-provision.md)
 * [Vytvoření fronty, témata a odběry pomocí skriptu prostředí PowerShell služby Service Bus](http://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
 * [Jak vytvořit Namespace služby Service Bus a centra událostí pomocí skriptu prostředí PowerShell](http://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
 
@@ -156,9 +156,9 @@ Některé předdefinované skripty jsou také k dispozici ke stažení:
 
 [Možnosti nákupu]: http://azure.microsoft.com/pricing/purchase-options/
 [Nabídky pro členy]: http://azure.microsoft.com/pricing/member-offers/
-[bezplatnou zkušební verzi]: http://azure.microsoft.com/pricing/free-trial/
+[Bezplatná zkušební verze]: http://azure.microsoft.com/pricing/free-trial/
 [Nainstalujte a nakonfigurujte Azure PowerShell]: /powershell/azureps-cmdlets-docs
-[Rozhraní .NET API pro Notification Hubs]: https://docs.microsoft.com/en-us/dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
+[Rozhraní .NET API pro Notification Hubs]: https://docs.microsoft.com/dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
 [Get-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azuresbnamespace
 [New-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azuresbnamespace
 [Get-AzureSBAuthorizationRule]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azuresbauthorizationrule

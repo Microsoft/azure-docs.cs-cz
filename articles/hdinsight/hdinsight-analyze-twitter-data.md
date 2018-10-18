@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: abf9cd311af141a646c56f452ded77a914bc1d2f
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 294353cfcfba617ab19e703f11f35402bcf7ea82
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093294"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387576"
 ---
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>Analýza dat Twitteru pomocí Hivu ve službě HDInsight
 Sociální weby jsou jedním z hlavních dodávala vynutí pro velké objemy dat přijetí. Veřejné rozhraní API pomocí Twitteru, jako jsou k dispozici jsou užitečné zdroje dat pro analýzu a pochopení trendů Oblíbené.
@@ -72,7 +72,7 @@ Prvním krokem při používání OAuth je vytvoření nové aplikace na webu v�
 
 **Vytvoření aplikace Twitter**
 
-1. Přihlaste se k [ https://apps.twitter.com/ ](https://apps.twitter.com/). Klikněte na tlačítko **zaregistrujte se hned teď** propojení, pokud nemáte účet na Twitteru.
+1. Přihlaste se k webu [https://apps.twitter.com/](https://apps.twitter.com/). Klikněte na tlačítko **zaregistrujte se hned teď** propojení, pokud nemáte účet na Twitteru.
 2. Klikněte na tlačítko **vytvořte novou aplikaci**.
 3. Zadejte **název**, **popis**, **webu**. Můžete společně tvoří adresu URL, **webu** pole. V následující tabulce jsou uvedeny některé ukázkové hodnoty pro použití:
 
@@ -95,7 +95,7 @@ V tomto kurzu použijete prostředí Windows PowerShell provádět volání webo
 
 **Chcete-li získat tweetů**
 
-1. Otevřete Windows PowerShell Integrované skriptovací prostředí (ISE). (Na obrazovce Start systému Windows 8, zadejte **PowerShell_ISE** a potom klikněte na tlačítko **Windows PowerShell ISE**. Zobrazit [spusťte prostředí Windows PowerShell v systému Windows 8 a Windows](https://docs.microsoft.com/en-us/powershell/scripting/setup/starting-windows-powershell?view=powershell-6)
+1. Otevřete Windows PowerShell Integrované skriptovací prostředí (ISE). (Na obrazovce Start systému Windows 8, zadejte **PowerShell_ISE** a potom klikněte na tlačítko **Windows PowerShell ISE**. Zobrazit [spusťte prostředí Windows PowerShell v systému Windows 8 a Windows](https://docs.microsoft.com/powershell/scripting/setup/starting-windows-powershell?view=powershell-6)
 2. V podokně skriptu zkopírujte následující skript:
 
     ```powershell

@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 10/9/2018
-ms.openlocfilehash: 93a6480cdab0153d0febad376c93b9321a87deda
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 851fa7c6a970d725a52bc84d7d057472e09c3ee9
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114889"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388336"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurace clusteru HDInsight s balíčkem Enterprise Security Package pomocí Azure Active Directory Domain Services
 
@@ -53,7 +53,7 @@ Zobrazit stav Azure Active Directory Domain Services tak, že vyberete **stavu**
 
 ![Stav služby Azure Active Directory Domain Services](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-health.png)
 
-Ujistěte se, že všechny [požadované porty](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers) jsou povolené v podsíti služby AAD DS pravidla skupiny zabezpečení sítě, pokud AAD DS je zabezpečena pomocí skupiny zabezpečení sítě. 
+Ujistěte se, že všechny [požadované porty](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers) jsou povolené v podsíti služby AAD DS pravidla skupiny zabezpečení sítě, pokud AAD DS je zabezpečena pomocí skupiny zabezpečení sítě. 
 
 ## <a name="create-and-authorize-a-managed-identity"></a>Vytvořit a autorizovat spravované identity
 > [!NOTE]

@@ -4,20 +4,20 @@ description: Příklady Azure CLI pro službu Azure Media Services
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: ''
-ms.date: 04/15/2018
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 3328403f5366f168f979a14951da938f26e1aee9
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 5559f9055da3a2a852427c0f27d367159cdc7655
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093855"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388501"
 ---
 # <a name="azure-cli-examples-for-azure-media-services"></a>Příklady Azure CLI pro službu Azure Media Services
 
@@ -39,4 +39,4 @@ Následující tabulka obsahuje odkazy na příklady Azure CLI pro službu Azure
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-[Azure CLI](https://docs.microsoft.com/en-us/cli/azure/ams?view=azure-cli-latest)
+[Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)

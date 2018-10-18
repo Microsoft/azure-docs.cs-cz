@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: alkohli
-ms.openlocfilehash: bbaf1f10284fb520cc3a52a6c04c4150de3b6546
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 1a4fe30881f06d8af851a67f389a6faafbe3dfef
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092010"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389458"
 ---
 # <a name="azure-data-box-disk-limits-preview"></a>Omezení pro Azure Data Box Disk (Preview)
 
@@ -57,7 +57,7 @@ Nejnovější informace o omezení služby Azure storage a osvědčené postupy 
 
 ## <a name="azure-storage-account-size-limits"></a>Omezení velikosti účtu úložiště Azure
 
-Tady jsou omezení velikosti dat, která je zkopírován do účtu úložiště. Ujistěte se, že data, která nahrajete odpovídá tato omezení. Nejaktuálnější informace o těchto omezeních najdete v části [cíle škálování Azure blob storage](https://docs.microsoft.com/en-us/azure/storage/common/storage-scalability-targets#azure-blob-storage-scale-targets) a [soubory Azure škálovat cíle](https://docs.microsoft.com/en-us/azure/storage/common/storage-scalability-targets#azure-files-scale-targets).
+Tady jsou omezení velikosti dat, která je zkopírován do účtu úložiště. Ujistěte se, že data, která nahrajete odpovídá tato omezení. Nejaktuálnější informace o těchto omezeních najdete v části [cíle škálování Azure blob storage](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#azure-blob-storage-scale-targets) a [soubory Azure škálovat cíle](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#azure-files-scale-targets).
 
 | Velikost dat zkopírována do účtu úložiště Azure                      | Výchozí omezení          |
 |---------------------------------------------------------------------|------------------------|

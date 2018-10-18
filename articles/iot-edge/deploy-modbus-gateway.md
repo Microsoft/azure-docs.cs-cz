@@ -8,12 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: kgremban
-ms.openlocfilehash: b5316479011a432f3822448f03b8ad6ecddd4fe1
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 031524f4ef00b57f598c1114d594fb70eeedd15b
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39590580"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393996"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Připojení zařízení Modbus TCP přes zařízení brány IoT Edge
 
@@ -23,7 +23,7 @@ Pokud chcete připojit zařízení IoT využívající protokol Modbus TCP ke sl
 
 Tento článek popisuje vytvoření vlastní bitové kopie kontejneru pro modul Modbus (nebo můžete použít připravený vzor) a jeho nasazení do zařízení IoT Edge, které bude sloužit jako brána. 
 
-V tomto článku se předpokládá, že používáte protokol Modbus TCP. Další informace o tom, jak nakonfigurovat modul pro podporu Modbus RTU najdete v projektu [Modulu Azure IoT Edge Modbus](https://github.com/Azure/iot-edge-modbus) na Githubu. 
+V tomto článku se předpokládá, že používáte protokol Modbus TCP. Další informace o tom, jak nakonfigurovat modul pro podporu Modbus RTU najdete v článku [modulu Azure IoT Edge Modbus](https://github.com/Azure/iot-edge-modbus) projektu na Githubu. 
 
 ## <a name="prerequisites"></a>Požadavky
 * Zařízení Azure IoT Edge. Postup vytvoření tohoto zařízení najdete v článku [Nasazení Azure IoT Edge na simulovaném zařízení ve Windows](quickstart.md) nebo [na Linuxu](quickstart-linux.md). 
@@ -38,7 +38,7 @@ Chcete-li otestovat funkci brány Modbus, Microsoft nabízí jednoduchý modul, 
 mcr.microsoft.com/azureiotedge/modbus:1.0
 ```
 
-Pokud chcete vytvořit vlastní modul a přizpůsobit ho pro vaše prostředí, použijte open source [modul Azure IoT Edge Modbus](https://github.com/Azure/iot-edge-modbus) na Githubu. Podle pokynů uvedených v projektu na GitHubu vytvořte vlastní bitovou kopii kontejneru. Když vytvoříte vlastní bitovou kopii kontejneru, vyhledejte pokyny k jejímu publikování do registru a nasazení vlastního modulu do zařízení v článku [Vývoj a nasazení modulu IoT Edge v jazyce C#](tutorial-csharp-module.md). 
+Pokud chcete vytvořit vlastní modul a přizpůsobit pro vaše prostředí, je open source [modulu Azure IoT Edge Modbus](https://github.com/Azure/iot-edge-modbus) projektu na Githubu. Podle pokynů uvedených v projektu na GitHubu vytvořte vlastní bitovou kopii kontejneru. Když vytvoříte vlastní bitovou kopii kontejneru, vyhledejte pokyny k jejímu publikování do registru a nasazení vlastního modulu do zařízení v článku [Vývoj a nasazení modulu IoT Edge v jazyce C#](tutorial-csharp-module.md). 
 
 
 ## <a name="run-the-solution"></a>Spuštění řešení
@@ -54,13 +54,12 @@ Pokud chcete vytvořit vlastní modul a přizpůsobit ho pro vaše prostředí, 
 
       ```JSON
       {  
-        "properties.desired":{  
+        "properties.desired":{
           "PublishInterval":"2000",
-          "SlaveConfigs":{  
-            "Slave01":{  
-              "SlaveConnection":"<IPV4 address>",
-              "HwId":"PowerMeter-0a:01:01:01:01:01",
-              "Operations":{  
+          "SlaveConfigs":{
+            "Slave01":{
+              "SlaveConnection":"<IPV4 address>","HwId":"PowerMeter-0a:01:01:01:01:01",
+              "Operations":{
                 "Op01":{  
                   "PollingInterval": "1000",
                   "UnitId":"1",
@@ -96,12 +95,9 @@ Takto si můžete prohlédnout data přicházející z modulu modbus:
 docker logs -f modbus
 ```
 
-Můžete také zobrazit telemetrická data odeslaná ze zařízení s použitím [rozšíření Azure IoT Toolkit pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit). 
+K zobrazení telemetrických údajů, které zařízení odesílá, můžete použít také [rozšíření Azure IoT Toolkit pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit). 
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o tom, jak zařízení IoT Edge může fungovat jako brána najdete v tématu [vytvoření zařízení IoT Edge, který funguje jako transparentní brána][lnk-transparent-gateway-linux]
+- Další informace o tom, jak zařízení IoT Edge může fungovat jako brána najdete v článku [Vytvoření zařízení IoT Edge které slouží jako transparentní brána](./how-to-create-transparent-gateway-linux.md).
 - Další informace o fungování modulů IoT Edge najdete v tématu [Vysvětlení modulů Azure IoT Edge](iot-edge-modules.md).
-
-<!-- Links -->
-[lnk-transparent-gateway-linux]: ./how-to-create-transparent-gateway-linux.md

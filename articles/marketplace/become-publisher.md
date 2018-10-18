@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 745b26661d34357e44b6a7c2ed6e40f3195781f1
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 35feb1b2aa593d403b3b54781ddbba41964d15e5
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237989"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394829"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Stát vydavatelem cloudové Tržiště
 
@@ -97,7 +97,7 @@ Jednotlivé registrace v [Dev Center](https://developer.microsoft.com/store/regi
 Po dokončení [Dev Center](https://developer.microsoft.com/store/register) registrace, propojte svůj profil partnerů cloudu s vaší [Dev Center](https://developer.microsoft.com/store/register) účtu (viz podrobné kroky). Tento krok je třeba provést před publikování vaší nabídky v transact. 
 
 >[!Note]
->Vzdát poplatek za zápis $99 středisko pro vývojáře, vyplňte registraci webu marketplace a obdržíte e-mail obsahující propagační kód. 
+>Pokud chcete vzdát poplatek za zápis $99 středisko pro vývojáře, proveďte [marketplace registrační formulář](https://azuremarketplace.microsoft.com/en-us/sell/signup) a obdržíte e-mail obsahující propagační kód. 
 
 >[!Important]
 >Než začnete vytvářet účet Microsoft Dev Center, ověřte prosím, že vaše organizace ještě nemá účet Dev Center, aby duplicitní účty. Další informace najdete [registraci v centru vývojářů pro](https://docs.microsoft.com/azure/marketplace/register-dev-center) oddílu.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: fe8cf752337bdb3fcd61ce6aa9f3e5cb834fb0aa
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: a870c99718ecafe8af33e13be9aa46631888c8cb
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310959"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389679"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Agregace událostí a kolekce pomocí Windows Azure Diagnostics
 > [!div class="op_single_selector"]
@@ -65,7 +65,7 @@ Teď, když máte agregaci událostí ve službě Azure Storage [nastavení Log 
 ## <a name="deploy-the-diagnostics-extension-through-azure-resource-manager"></a>Nasazení rozšíření diagnostiky prostřednictvím Azure Resource Manageru
 
 ### <a name="create-a-cluster-with-the-diagnostics-extension"></a>Vytvoření clusteru s diagnostickým rozšířením
-K vytvoření clusteru pomocí Resource Manageru, musíte přidat konfiguraci diagnostiky JSON do úplné šablony Resource Manageru, před vytvořením clusteru. Poskytujeme Ukázka šablony Resource Manageru cluster pět virtuálních počítačů s konfiguraci diagnostiky, které jsou přidány jako součást naší ukázkové šablony Resource Manageru. Zobrazí se na této pozici ve Galerii ukázek Azure: [cluster s pěti uzly s ukázkou šablony Resource Manageru diagnostiky](https://azure.microsoft.com/en-in/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/).
+K vytvoření clusteru pomocí Resource Manageru, musíte přidat konfiguraci diagnostiky JSON do úplné šablony Resource Manageru, před vytvořením clusteru. Poskytujeme Ukázka šablony Resource Manageru cluster pět virtuálních počítačů s konfiguraci diagnostiky, které jsou přidány jako součást naší ukázkové šablony Resource Manageru. Zobrazí se na této pozici ve Galerii ukázek Azure: [cluster s pěti uzly s ukázkou šablony Resource Manageru diagnostiky](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/).
 
 Pokud chcete zobrazit nastavení diagnostiky v šabloně Resource Manageru, otevřete soubor azuredeploy.json a vyhledejte **IaaSDiagnostics**. Pokud chcete vytvořit cluster pomocí této šablony, vyberte **nasadit do Azure** tlačítko, které jsou k dispozici na na předchozí odkaz.
 

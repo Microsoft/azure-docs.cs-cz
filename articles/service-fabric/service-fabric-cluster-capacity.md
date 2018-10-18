@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: chackdan
-ms.openlocfilehash: 86099c5385c14ce7cf10bbc84ebe1b5e70b2b3e6
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: d8f2dbe4885f1cb85ab5eb78ae4f06b2ad702d53
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094203"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389577"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Co zvážit při plánování kapacity clusteru Service Fabric
 Pro každého produkčního nasazení plánování kapacity je důležitý krok. Tady jsou některé položky, které musíte zvážit jako součást tohoto procesu.
@@ -83,7 +83,7 @@ V clusteru s více typy uzlů jeden primární typ uzlu a zbývající jsou jin�
 > [!WARNING]
 > Získat typy uzlů s bronzovou odolnosti _žádná oprávnění_. To znamená, že úlohy infrastruktury, které ovlivnit Bezstavová zatížení nebude mohly zastavit nebo zpoždění, které může mít vliv na vaše úlohy. Použijte bronzová pouze pro typy uzlů, na kterých běží pouze Bezstavová zatížení. Pro produkční úlohy Silver spuštěna nebo k výše se doporučuje. 
 
-> Bez ohledu na libovolné úrovni odolnosti [zrušení přidělení](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachinescalesets/deallocate) operace na Škálovací sadu virtuálních počítačů se odstranit cluster
+> Bez ohledu na libovolné úrovni odolnosti [zrušení přidělení](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/deallocate) operace na Škálovací sadu virtuálních počítačů se odstranit cluster
 
 **Mezi výhody používání stříbrné nebo zlaté úrovně odolnosti**
  

@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.author: ramamill
 ms.date: 09/19/2018
-ms.openlocfilehash: 22c01f2bd9c763eeb681bf2d60e0ccffe1154d85
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 4c57d048f4c3222ac180355a6a700562415f601c
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46497616"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390189"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Řešení potíží s nabízenou instalací služby Mobility
 
@@ -73,7 +73,7 @@ Pro **windows 2008 R2 a v předchozích verzích**,
 * Povolit sdílení pomocí zásad skupiny souborů
   * Přejít na začátek zadejte gpmc.msc a hledání.
   * V navigačním podokně otevřete následující složky: zásady místního počítače, konfigurace uživatele, šablony pro správu, součásti Windows a sdílení v síti.
-  * V podokně podrobností klikněte dvakrát na **zabránit uživatelům ve sdílení souborů v rámci jejich profilu**. Zakázání nastavení zásad skupiny a povolení uživatele umožňují sdílet soubory, klikněte na možnost zakázáno. Klikněte na tlačítko OK uložte provedené změny. Další informace, klikněte na tlačítko [tady](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10)).
+  * V podokně podrobností klikněte dvakrát na **zabránit uživatelům ve sdílení souborů v rámci jejich profilu**. Zakázání nastavení zásad skupiny a povolení uživatele umožňují sdílet soubory, klikněte na možnost zakázáno. Klikněte na tlačítko OK uložte provedené změny. Další informace, klikněte na tlačítko [tady](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10)).
 
 Pro **novější verze**, postupujte podle pokynů uvedených [tady](vmware-azure-install-mobility-service.md#install-mobility-service-by-push-installation-from-azure-site-recovery) umožňující sdílení souborů a tiskáren
 

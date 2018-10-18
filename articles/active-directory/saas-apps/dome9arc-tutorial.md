@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 934520764749b5abce9aefe22b8eb9a5d8e490f2
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 0b6730d6c365484dc19273069785e6824218113e
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746487"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387850"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dome9-arc"></a>Kurz: Integrace Azure Active Directory se službou Dome9 oblouk
 
@@ -150,7 +150,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     d. Klikněte na tlačítko **OK**.
     
     > [!NOTE]
-    > Tomto [odkaz](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-enterprise-app-role-management) o tom, jak konfigurovat a nastavit role pro aplikaci.
+    > Tomto [odkaz](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management) o tom, jak konfigurovat a nastavit role pro aplikaci.
 
 7. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
 

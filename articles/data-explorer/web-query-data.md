@@ -2,18 +2,18 @@
 title: 'Rychlý start: Dotazování na data v Azure Data Exploreru'
 description: V tomto rychlém startu se naučíte dotazovat na data v Azure Data Exploreru a sdílet je v něm.
 services: data-explorer
-author: mgblythe
-ms.author: mblythe
+author: orspod
+ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: ab29152dde4d567e8552295b3dff4f4088bdf5b8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7b9bc52e07bccf931593cd2dbddd68e973d1b26c
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977651"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394353"
 ---
 # <a name="quickstart-query-data-in-azure-data-explorer"></a>Rychlý start: Dotazování na data v Azure Data Exploreru
 

@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: magoedte
-ms.openlocfilehash: e75409e791c00dc0a5bec591aecfbaa019df8f81
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 5d9aa8e144109b41144bb8b09447b8701d04f87e
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225158"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389985"
 ---
 # <a name="using-azure-monitor-for-vms-map-to-understand-application-components"></a>Pomocí Azure monitoru pro virtuální počítače mapu pochopit součásti aplikace
-Zobrazení zjištěnou aplikaci, kterou může být dodržen součásti pro Windows a Linuxem virtuální počítače spuštěné v prostředí Azure dvě možnosti, jak pomocí Azure monitoru pro virtuální počítače z virtuálního počítače přímo nebo přes skupiny virtuálních počítačů ze služby Azure Monitor. 
+Zobrazení komponenty zjištěnou aplikaci ve Windows a Linuxu, virtuální počítače provozované v Azure máte prostředí můžete pozorovat dvě možnosti, jak pomocí Azure monitoru pro virtuální počítače z virtuálního počítače přímo nebo přes skupiny virtuálních počítačů ze služby Azure Monitor. 
 
 Tento článek vám pomůže pochopit prostředí mezi dvěma perspektivy a jak používat funkci Mapa. Informace o konfiguraci monitorování Azure pro virtuální počítače najdete v tématu [povolit monitorování Azure pro virtuální počítače](monitoring-vminsights-onboard.md).
 
@@ -107,7 +107,9 @@ Funkci Mapa ze služby Azure Monitor poskytuje globální přehled o vašich vir
 
 ![Mapa Přehled služby Azure Monitor více virtuálních počítačů](./media/monitoring-vminsights-maps/map-multivm-azure-monitor-01.png)
 
-Z **pracovní prostor** selektoru v horní části stránky, pokud máte více než jednomu pracovnímu prostoru Log Analytics, vyberte ten, který se integruje s řešením a má virtuální počítače, které jí reportují.  Vyberte z **skupiny** selektor, předplatné nebo skupinu prostředků Chcete-li zobrazit sadu virtuálních počítačů a jejich závislostí odpovídající skupině v zadaném časovém období.  Ve výchozím nastavení zobrazí na mapě posledních 30 minut.  Použití **TimeRange** selektor, můžete zadat dotaz na historické časových rozsahů až jednu hodinu, než ukazují, jak závislosti hledá v minulosti (například během incident nebo předtím, než došlo ke změně).   
+Z **pracovní prostor** selektoru v horní části stránky, pokud máte více než jednomu pracovnímu prostoru Log Analytics vyberte pracovní prostor, který je povolená s řešením a má virtuální počítače, které mu podává zprávy. **Skupiny** výběr předplatného, skupiny prostředků, vrátí [skupiny počítačů](../log-analytics/log-analytics-computer-groups.md)a VM scale sets počítačů související s vybraný pracovní prostor. Výběr pouze se vztahuje na funkce mapování a není přenesou na výkon nebo mapy.
+
+Ve výchozím nastavení zobrazí na mapě posledních 30 minut. Použití **TimeRange** selektor, můžete zadat dotaz na historické časových rozsahů až jednu hodinu, než ukazují, jak závislosti hledá v minulosti (například během incident nebo předtím, než došlo ke změně).   
 
 ## <a name="next-steps"></a>Další postup
 Další informace o použití funkce stavu, najdete v článku [zobrazení stavu virtuálních počítačů Azure](monitoring-vminsights-health.md), nebo pokud chcete identifikovat problémová místa a celkové využití výkonu vašich virtuálních počítačů, přečtěte si téma [zobrazení Azure monitoru výkonu virtuálních počítačů](monitoring-vminsights-performance.md). 

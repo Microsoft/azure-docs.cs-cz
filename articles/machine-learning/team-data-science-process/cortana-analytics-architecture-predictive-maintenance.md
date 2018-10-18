@@ -1,12 +1,13 @@
 ---
-title: Pro letecký s Azure – architektura Cortana Intelligence řešení prediktivní údržby | Microsoft Docs
-description: Diagram architektury řešení Microsoft Cortana Intelligence šablony pro prediktivní údržby letecký nástrojů, Transport
+title: Prediktivní Údržba pro letectví s Azure – Architektura řešení Cortana Intelligence | Dokumentace Microsoftu
+description: Diagram architektury šablony Microsoft Cortana Intelligence řešení prediktivní údržby v leteckém průmyslu, nástroje, dopravy
 services: machine-learning
 documentationcenter: ''
 author: garyericson
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 759746a5-388a-42cf-bccf-435bf9b53251
+ms.service: machine-learning
 ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: garye
-ms.openlocfilehash: 11d6eebca71998056dbe00702a740a21cf14c158
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: b378ec41a7c13e0887fe35aa49b09490f7304b39
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35247899"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395098"
 ---
-# <a name="architecture-of-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>Architektura šablony Cortana Intelligence řešení prediktivní údržby v letecký a jiné firmy
-Následující obrázek poskytuje přehled architektury aplikace [Cortana Intelligence šablonu řešení prediktivní údržby](https://gallery.cortanaanalytics.com/SolutionTemplate/Predictive-Maintenance-for-Aerospace-1).
+# <a name="architecture-of-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>Architektura šablony řešení Cortana Intelligence pro prediktivní údržby v leteckém průmyslu a další provozovny
+Následující diagram obsahuje přehled architektury aplikace [šablony řešení Cortana Intelligence pro prediktivní údržbu](https://gallery.cortanaanalytics.com/SolutionTemplate/Predictive-Maintenance-for-Aerospace-1).
 
-Plné velikosti verzi diagramu Zde si můžete stáhnout: [diagram architektury: Šablona řešení pro prediktivní údržby](http://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-maintenance-prediction.png).
+Reklamy verzi zde diagram můžete stáhnout: [diagram architektury: Šablona řešení pro prediktivní údržbu](http://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-maintenance-prediction.png).
 
-![Diagram architektury Microsoft Cortana Intelligence řešení šablony pro prediktivní údržby][image]
+![Diagram architektury šablony řešení Cortana Intelligence Microsoft pro účely prediktivní údržby][image]
 
 [image]: ./media/cortana-analytics-architecture-predictive-maintenance/ca-topologies-maintenance-prediction.png

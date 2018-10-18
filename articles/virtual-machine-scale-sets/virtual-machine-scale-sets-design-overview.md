@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: negat
-ms.openlocfilehash: 1716ebf1d3490511d7102c8c756c78c0f0c55291
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: e03016b80b0a7043a72e55b6c8b68b67b55283b1
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669852"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388122"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Aspekty návrhu pro Škálovací sady
 Tento článek popisuje aspekty návrhu pro Škálovací sady virtuálních počítačů. Informace o tom, co jsou Škálovací sady virtuálních počítačů, [přehled škálovacích sad virtuálních počítačů](virtual-machine-scale-sets-overview.md).
@@ -33,8 +33,8 @@ Obecně platí, škálovací sady jsou užitečné při nasazování infrastrukt
 
 - Až zadáte škálovací sady konfigurace, můžete aktualizovat *kapacity* vlastnost nasazení více virtuálních počítačů současně. Tento proces je lepší než psaní skriptu pro orchestraci nasazování mnoho jednotlivých virtuálních počítačů současně.
 - Je možné [automatické škálování škálovací sady pomocí Azure Autoscale](./virtual-machine-scale-sets-autoscale-overview.md) , ale nikoli jednotlivým virtuálním počítačům.
-- Je možné [obnovení z Image škálovací sady virtuálních počítačů](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachinescalesets/reimage) ale [není jednotlivým virtuálním počítačům](https://docs.microsoft.com/rest/api/compute/virtualmachines).
-- Je možné [nadměrné](https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview#overprovisioning) pro zvýšení spolehlivosti a rychlejší doba nasazení škálovací sady virtuálních počítačů. Jednotlivé virtuální počítače nelze značných, není-li napsat vlastní kód k provedení této akce.
+- Je možné [obnovení z Image škálovací sady virtuálních počítačů](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage) ale [není jednotlivým virtuálním počítačům](https://docs.microsoft.com/rest/api/compute/virtualmachines).
+- Je možné [nadměrné](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview#overprovisioning) pro zvýšení spolehlivosti a rychlejší doba nasazení škálovací sady virtuálních počítačů. Jednotlivé virtuální počítače nelze značných, není-li napsat vlastní kód k provedení této akce.
 - Můžete zadat [zásad upgradu](./virtual-machine-scale-sets-upgrade-scale-set.md) usnadňuje zavedení upgrady napříč virtuálními počítači ve škálovací sadě. S jednotlivými virtuálními počítači je nutné orchestraci aktualizací sami.
 
 ### <a name="vm-specific-features"></a>Funkce specifické pro virtuální počítač
