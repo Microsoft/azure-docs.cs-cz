@@ -6,15 +6,15 @@ author: vhorne
 manager: jpconnock
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 10/5/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: ff8df51011ef664950ecfeb9eef0b201306c8ad5
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 8fb459d197c15cf7760a924c7161fed59cc1caac
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221639"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801875"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Kurz: Nasazení a konfigurace brány Azure Firewall pomocí webu Azure Portal
 
@@ -186,6 +186,10 @@ U podsítě **Workload-SN** nakonfigurujete výchozí trasu v odchozím směru, 
 10. Klikněte na **Podsítě** a pak na **Přidružit**.
 11. Klikněte na **Virtuální síť** a potom vyberte **Test-FW-VN**.
 12. V části **Podsíť** klikněte na **Workload-SN**.
+
+    > [!IMPORTANT]
+    > Dbejte na to, abyste pro tuto trasu vybrali jenom podsíť **Workload-SN**, jinak nebude vaše brána firewall pracovat správně.
+
 13. Klikněte na **OK**.
 14. Klikněte na **Trasy** a pak na **Přidat**.
 15. Jako **Název trasy** zadejte **FW-DG**.
@@ -193,8 +197,8 @@ U podsítě **Workload-SN** nakonfigurujete výchozí trasu v odchozím směru, 
 17. V části **Typ dalšího směrování** vyberte **Virtuální zařízení**.
 
     Brána Azure Firewall je ve skutečnosti spravovaná služba, ale v tomto případě bude virtuální zařízení fungovat.
-1. V části **Adresa dalšího směrování** zadejte dříve poznamenanou privátní IP adresu brány firewall.
-2. Klikněte na **OK**.
+18. V části **Adresa dalšího směrování** zadejte dříve poznamenanou privátní IP adresu brány firewall.
+19. Klikněte na **OK**.
 
 
 ## <a name="configure-application-rules"></a>Konfigurace pravidel aplikace

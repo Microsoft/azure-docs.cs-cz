@@ -9,18 +9,18 @@ author: nacharya1
 ms.author: nilesha
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 1db13ee31ea826833d2b13f20b3b0a2be8ef4444
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: df1c19c0e16b9862b09dcc652ef2831e0c5bf3a5
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220864"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802351"
 ---
-# <a name="tutorial-train-a-classification-model-with-automated-machine-learning-in-azure-machine-learning"></a>Kurz: Trénování klasifikačního modelu pomocí automatizovaného strojového učení ve službě Azure Machine Learning
+# <a name="tutorial-train-a-classification-model-with-automated-machine-learning-in-azure-machine-learning-service"></a>Kurz: Trénování klasifikačního modelu pomocí automatizovaného strojového učení ve službě Azure Machine Learning
 
-V tomto kurzu se dozvíte, jak vytvořit model strojového učení pomocí automatizovaného strojového učení.  Azure Machine Learning může automatizovaně za vás provádět předzpracování dat, výběr algoritmů a výběr hyperparameterů. Finální model je pak možné nasadit podle pracovního postupu v kurzu [Nasazení modelu](tutorial-deploy-models-with-aml.md).
+V tomto kurzu se dozvíte, jak vytvořit model strojového učení pomocí automatizovaného strojového učení.  Službu Azure Machine Learning můžete využít k automatizovanému předzpracování dat, výběru algoritmů a výběru hyperparameterů. Finální model je pak možné nasadit podle pracovního postupu v kurzu [Nasazení modelu](tutorial-deploy-models-with-aml.md).
 
-[ ![Vývojový diagram](./media/tutorial-auto-train-models/flow2.png) ](./media/tutorial-auto-train-models/flow2.png#lightbox)
+![vývojový diagram](./media/tutorial-auto-train-models/flow2.png)
 
 Podobně jako v [kurzu modelů trénování](tutorial-train-models-with-aml.md) tento kurz klasifikuje ručně psané obrázky číslic (0–9) z datové sady [MNIST](http://yann.lecun.com/exdb/mnist/). Tentokrát ale nemusíte určovat algoritmus nebo ladit hyperparametry. Technika automatizovaného strojového učení prochází (iteruje) mnoho kombinací algoritmů a hyperparametrů, dokud nenajde nejlepší model podle vašich kritérií.
 
@@ -38,7 +38,8 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="get-the-notebook"></a>Získání poznámkového bloku
 
-V rámci usnadnění práce je tento kurz k dispozici jako poznámkový blok Jupyter. Ke spuštění poznámkového bloku `tutorials/03.auto-train-models.ipynb` použijte některou z těchto metod:
+V zájmu usnadnění práce je tento kurz dostupný jako [poznámkový blok Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/03.auto-train-models.ipynb). Spusťte poznámkový blok `03.auto-train-models.ipynb` ve službě Azure Notebooks nebo na vlastním serveru poznámkového bloku Jupyter.
+
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
@@ -104,13 +105,9 @@ from sklearn import datasets
 
 digits = datasets.load_digits()
 
-# only take the first 100 rows if you want the training steps to run faster
-X_digits = digits.data[:100,:]
-y_digits = digits.target[:100]
-
-# use full dataset
-#X_digits = digits.data
-#y_digits = digits.target
+# Exclude the first 100 rows from training so that they can be used for test.
+X_train = digits.data[100:,:]
+y_train = digits.target[100:]
 ```
 
 ### <a name="display-some-sample-images"></a>Zobrazení některých ukázkových obrázků
@@ -121,13 +118,13 @@ Načtěte data do polí `numpy`. Pak pomocí `matplotlib` vykreslete 30 náhodn�
 count = 0
 sample_size = 30
 plt.figure(figsize = (16, 6))
-for i in np.random.permutation(X_digits.shape[0])[:sample_size]:
+for i in np.random.permutation(X_train.shape[0])[:sample_size]:
     count = count + 1
     plt.subplot(1, sample_size, count)
     plt.axhline('')
     plt.axvline('')
-    plt.text(x = 2, y = -2, s = y_digits[i], fontsize = 18)
-    plt.imshow(X_digits[i].reshape(8, 8), cmap = plt.cm.Greys)
+    plt.text(x = 2, y = -2, s = y_train[i], fontsize = 18)
+    plt.imshow(X_train[i].reshape(8, 8), cmap = plt.cm.Greys)
 plt.show()
 ```
 Náhodná ukázka obrázků:
@@ -153,7 +150,7 @@ Definujte nastavení experimentu a nastavení modelu.
 |**iterations**|20|Počet iterací. V každé iteraci se model učí s daty s konkrétním kanálem.|
 |**n_cross_validations**|3|Počet rozdělení křížových ověření|
 |**preprocess**|False| *True/False* Umožňuje experimentu provádět předběžné zpracování na vstupu.  Předzpracování zpracovává *chybějící data* a provádí některé běžné *extrakce funkcí*.|
-|**exit_score**|0,995|Hodnota *double*, která označuje cíl pro *primary_metric*. Po překročení cíle se běh ukončí.|
+|**exit_score**|0,9985|Hodnota *double*, která označuje cíl pro *primary_metric*. Po překročení cíle se běh ukončí.|
 |**blacklist_algos**|['kNN','LinearSVM']|*Pole* *řetězců* označující algoritmy, které se mají ignorovat
 |
 
@@ -167,14 +164,14 @@ Automl_config = AutoMLConfig(task = 'classification',
                              iterations = 20,
                              n_cross_validations = 3,
                              preprocess = False,
-                             exit_score = 0.995,
+                             exit_score = 0.9985,
                              blacklist_algos = ['kNN','LinearSVM'],
-                             X = X_digits,
-                             y = y_digits,
+                             X = X_train,
+                             y = y_train,
                              path=project_folder)
 ```
 
-### <a name="run-the-experiment"></a>Spuštění experimentu
+### <a name="run-the-experiment"></a>Spusťte experiment.
 
 Spusťte experiment místně. Definujte výpočetní cíl jako místní a nastavte výstup na hodnotu true (pravda), abyste viděli průběh experimentu.
 
@@ -314,7 +311,7 @@ V této tabulce najdete výsledky:
         <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row5_col0" class="data row5 col0" >0,929167</td> 
         <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row5_col1" class="data row5 col1" >0,786258</td> 
         <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row5_col2" class="data row5 col2" >0,961497</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row5_col3" class="data row5 col3" >0,1</td> 
+        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row5_col3" class="data row5 col3" >0.1</td> 
         <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row5_col4" class="data row5 col4" >0,917486</td> 
         <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row5_col5" class="data row5 col5" >0,685547</td> 
         <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row5_col6" class="data row5 col6" >0,906611</td> 
@@ -434,7 +431,7 @@ V této tabulce najdete výsledky:
         <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row17_col0" class="data row17 col0" >0,852234</td> 
         <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row17_col1" class="data row17 col1" >0,666102</td> 
         <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row17_col2" class="data row17 col2" >0,901151</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row17_col3" class="data row17 col3" >0,1</td> 
+        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row17_col3" class="data row17 col3" >0.1</td> 
         <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row17_col4" class="data row17 col4" >0,83688</td> 
         <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row17_col5" class="data row17 col5" >0,699966</td> 
         <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row17_col6" class="data row17 col6" >0,833265</td> 
@@ -497,8 +494,10 @@ Přesnost modelu je vysoká, takže než se objeví chybně klasifikovaný vzore
 ```python
 # find 30 random samples from test set
 n = 30
-sample_indices = np.random.permutation(X_digits.shape[0])[0:n]
-test_samples = X_digits[sample_indices]
+X_test = digits.data[:100, :]
+y_test = digits.target[:100]
+sample_indices = np.random.permutation(X_test.shape[0])[0:n]
+test_samples = X_test[sample_indices]
 
 
 # predict using the  model
@@ -514,11 +513,11 @@ for s in sample_indices:
     plt.axvline('')
     
     # use different color for misclassified sample
-    font_color = 'red' if y_digits[s] != result[i] else 'black'
-    clr_map = plt.cm.gray if y_digits[s] != result[i] else plt.cm.Greys
+    font_color = 'red' if y_test[s] != result[i] else 'black'
+    clr_map = plt.cm.gray if y_test[s] != result[i] else plt.cm.Greys
     
     plt.text(x = 2, y = -2, s = result[i], fontsize = 18, color = font_color)
-    plt.imshow(X_digits[s].reshape(8, 8), cmap = clr_map)
+    plt.imshow(X_test[s].reshape(8, 8), cmap = clr_map)
     
     i = i + 1
 plt.show()

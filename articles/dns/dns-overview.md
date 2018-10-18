@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: e3e04bf7e35b22a56465810f476323ed217e047a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f68281f71ed525798410fb80b0d0175d38050c40
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967621"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48829915"
 ---
 # <a name="what-is-azure-dns"></a>Co je Azure DNS?
 
@@ -28,7 +28,7 @@ DNS domény v Azure DNS jsou hostované na globální síti názvových serverů
 
 ## <a name="security"></a>Zabezpečení
 
-Služba Azure DNS je postavená na Azure Resource Manageru, takže získáte funkce jako například:
+Služba Azure DNS je postavená na Azure Resource Manageru a poskytuje funkce, jako například:
 
 * [řízení přístupu na základě role](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#access-control) – abyste mohli určit, kdo má přístup ke konkrétním akcím v organizaci.
 
@@ -41,9 +41,9 @@ Další informace najdete v tématu o [ochraně záznamů a zón DNS](dns-protec
 
 ## <a name="ease-of-use"></a>Snadné používání
 
-Služba Azure DNS může spravovat záznamy DNS vašich služeb Azure a může poskytnout DNS i externím prostředkům. Služba Azure DNS je integrovaná na webu Azure Portal a používá stejné přihlašovací údaje, smlouvu o podpoře i fakturaci jako ostatní služby Azure. 
+Služba Azure DNS může spravovat záznamy DNS vašich služeb Azure a poskytovat DNS i externím prostředkům. Služba Azure DNS je integrovaná na webu Azure Portal a používá stejné přihlašovací údaje, smlouvu o podpoře i fakturaci jako ostatní služby Azure. 
 
-Služba Azure DNS se fakturuje na základě počtu zón DNS, které jsou v Azure hostované, a počtu dotazů DNS. Další informace o cenách najdete na stránce [Ceny za Azure DNS](https://azure.microsoft.com/pricing/details/dns/).
+DNS se fakturuje na základě počtu zón DNS hostovaných v Azure a počtu přijatých dotazů DNS. Další informace o cenách najdete na stránce [Ceny za Azure DNS](https://azure.microsoft.com/pricing/details/dns/).
 
 Své domény a záznamy můžete spravovat pomocí webu Azure Portal, rutin Azure PowerShellu nebo Azure CLI pro různé platformy. Aplikace vyžadující automatizovanou správu DNS můžete do služby integrovat pomocí rozhraní REST API a sad SDK.
 

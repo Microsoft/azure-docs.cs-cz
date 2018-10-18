@@ -1,42 +1,42 @@
 ---
-title: Rychlý start Python SDK vyhledávání entity | Microsoft Docs
-description: Instalační program pro vyhledávání Entity SDK konzolové aplikace.
-titleSuffix: Azure Entity Search SDK Python quickstart
+title: 'Rychlý start: Sada SDK Bingu pro vyhledávání entit, Python'
+titlesuffix: Azure Cognitive Services
+description: Nastavení pro konzolovou aplikaci sady SDK Bingu pro vyhledávání entit.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/15/2018
 ms.author: v-gedod
-ms.openlocfilehash: 95449fa3753291269e1a83d1431df3bf0cbe372f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 908373a216d0b14bb2dd41d3bb740b5582ac3ab1
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343654"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814232"
 ---
-# <a name="entity-search-sdk-python-quickstart"></a>Rychlý start Python SDK vyhledávání entity
+# <a name="quickstart-bing-entity-search-sdk-with-python"></a>Rychlý start: Sada SDK Bingu pro vyhledávání entit s využitím Pythonu
 
-Sada SDK vyhledávání Entity obsahuje funkci rozhraní REST API pro webové dotazy a analýzy výsledků.
+Sada SDK pro vyhledávání entit obsahuje funkce rozhraní REST API pro dotazy na webu a analýzu výsledků.
 
-[Zdrojový kód pro Python SDK služby Search Entity Bing ukázky](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/entity_search_samples.py) je k dispozici v centru Git.
+[Zdrojový kód ukázek sady SDK Bingu pro vyhledávání entit v Pythonu](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/entity_search_samples.py) je dostupný na GitHubu.
 
-## <a name="application-dependencies"></a>Závislosti aplikací
-Pokud ji nemáte, nainstalujte Python. Sada SDK je kompatibilní s Python 2.7, 3.3, 3.4, 3.5 a 3.6.
+## <a name="application-dependencies"></a>Závislosti aplikace
+Pokud nemáte Python, nainstalujte si ho. Sada SDK je kompatibilní s Pythonem 2.7, 3.3, 3.4, 3.5 a 3.6.
 
-Obecná doporučení pro vývoj Python je použití [virtuální prostředí](https://docs.python.org/3/tutorial/venv.html). Instalace a inicializace virtuálního prostředí s [venv modulu](https://pypi.python.org/pypi/virtualenv). Je nutné nainstalovat virtualenv pro Python 2.7.
+Obecně se pro vývoj v jazyce Python doporučuje používat [virtuální prostředí](https://docs.python.org/3/tutorial/venv.html). Nainstalujte a inicializujte virtuální prostředí s [modulem venv](https://pypi.python.org/pypi/virtualenv). Je potřeba nainstalovat prostředí virtualenv pro Python 2.7.
 ```
 python -m venv mytestenv
 ```
-Instalace sady SDK vyhledávání Entity Bing závislosti:
+Nainstalujte závislosti sady SDK Bingu pro vyhledávání entit:
 ```
 cd mytestenv
 python -m pip install azure-cognitiveservices-search-entitysearch
 ```
-## <a name="entity-search-client"></a>Klienta vyhledávání entity
-Získání [kognitivní služby přístupový klíč](https://azure.microsoft.com/try/cognitive-services/) pod *vyhledávání*. Přidejte importy:
+## <a name="entity-search-client"></a>Klient pro vyhledávání entit
+Načtěte si pod *Search* (Hledání) [přístupový klíč služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/). Přidejte importy:
 ```
 from azure.cognitiveservices.search.entitysearch import EntitySearchAPI
 from azure.cognitiveservices.search.entitysearch.models import Place, ErrorResponseException
@@ -44,11 +44,11 @@ from msrest.authentication import CognitiveServicesCredentials
 
 subscription_key = "YOUR-SUBSCRIPTION-KEY"
 ```
-Vytvoření instance `CognitiveServicesCredentials`. Vytvořte instanci klienta:
+Vytvořte instanci `CognitiveServicesCredentials`. Vytvořte instanci klienta:
 ```
 client = EntitySearchAPI(CognitiveServicesCredentials(subscription_key))
 ```
-Vyhledejte jedné entity (Gibralter) a vytiskněte krátký popis:
+Vyhledejte jednu entitu (Gibralter) a zobrazte krátký popis:
 ```
 entity_data = client.entities.search(query="Gibralter")
 
@@ -68,7 +68,7 @@ else:
     print("Didn't see any data..")
 
 ```
-Hledání a popisovač výsledky rozlišení více tras pro dotaz nejednoznačný (William brány).
+Vyhledejte a zpracujte mnohoznačnost výsledků nejednoznačného dotazu (William Gates).
 ```
 def handling_disambiguation(subscription_key):
 
@@ -112,7 +112,7 @@ def handling_disambiguation(subscription_key):
         print("Encountered exception. {}".format(err))
 
 ```
-Vyhledejte jedno úložiště (Microsoft Store) a vytiskněte jeho telefonní číslo.
+Vyhledejte jeden obchod (Microsoft Store) a zobrazte jeho telefonní číslo.
 ```
 def store_lookup(subscription_key):
 
@@ -153,7 +153,7 @@ def store_lookup(subscription_key):
         print("Encountered exception. {}".format(err))
 
 ```
-Hledat seznam restaurace (Praha restaurace) a tisku jejich názvy a telefonních čísel.
+Vyhledejte seznam restaurací (restaurace Seattle) a zobrazte jejich názvy a telefonní čísla.
 ```
 def multiple_restaurant_lookup(subscription_key):
 
@@ -192,7 +192,7 @@ def multiple_restaurant_lookup(subscription_key):
         print("Encountered exception. {}".format(err))
 
 ```
-Aktivovat chybný požadavek a přečtěte si chybové odpovědi.
+Aktivujte chybný požadavek a přečtěte si odpověď na chybu.
 ```
 def error(subscription_key):
 
@@ -214,7 +214,7 @@ def error(subscription_key):
         else:
             print("There was no details on the error.")
 ```
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Ukázky kognitivní služby Python SDK](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
+[Ukázky kognitivních služeb sady Python SDK](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 

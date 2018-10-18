@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/27/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 1ee3000ab26dbb0eea33de828812959fe709aaa2
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 2f503a534f79440e6e6c572b7fb29ce3048ee7bc
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410013"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831565"
 ---
 # <a name="tutorial-deploy-a-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>Kurz: Nasazení clusteru Service Fabric s Windows do virtuální sítě Azure
 
@@ -88,7 +88,7 @@ Tato šablona nasadí do virtuální sítě a skupiny zabezpečení sítě zabez
 
 ### <a name="service-fabric-cluster"></a>Cluster Service Fabric
 
-Cluster s Windows je nasazen s následujícími charakteristikami:
+V prostředku **Microsoft.ServiceFabric/clusters** se konfiguruje cluster s Windows s těmito charakteristikami:
 
 * jeden typ uzlu
 * pět uzlů primárního typu (možnost konfigurace v parametrech šablony)
@@ -103,7 +103,7 @@ Cluster s Windows je nasazen s následujícími charakteristikami:
 
 ### <a name="azure-load-balancer"></a>Nástroj pro vyrovnávání zatížení Azure
 
-Nasazení nástroje pro vyrovnávání zatížení a nastavení sond a pravidel se provádí pro následující porty:
+V prostředku **Microsoft.Network/loadBalancers** dochází ke konfiguraci nástroje pro vyrovnávání zatížení a k nastavení sond a pravidel pro následující porty:
 
 * koncový bod připojení klienta: 19000
 * koncový bod brány HTTP: 19080
@@ -111,16 +111,16 @@ Nasazení nástroje pro vyrovnávání zatížení a nastavení sond a pravidel 
 * port aplikací: 443
 * reverzní proxy server Service Fabric: 19081
 
-Pokud jsou potřebné další porty aplikací, je třeba upravit prostředky Microsoft.Network/loadBalancers prostředků a Microsoft.Network/networkSecurityGroups, aby byl povolen příchozí provoz.
+Pokud jsou potřebné další porty aplikací, je potřeba upravit prostředky **Microsoft.Network/loadBalancers** a **Microsoft.Network/networkSecurityGroups**, aby byl povolený příchozí provoz.
 
 ### <a name="virtual-network-subnet-and-network-security-group"></a>Virtuální síť, podsíť a skupina zabezpečení sítě
 
-Názvy virtuální sítě, podsítě a skupiny zabezpečení sítě jsou deklarované v parametrech šablony.  Adresní prostory virtuální sítě a podsítě jsou také deklarované v parametrech šablony:
+Názvy virtuální sítě, podsítě a skupiny zabezpečení sítě jsou deklarované v parametrech šablony.  Adresní prostory virtuální sítě a podsítě se taky deklarují v parametrech šablony a konfigurují v prostředku **Microsoft.Network/virtualNetworks**:
 
 * adresní prostor virtuální sítě: 172.16.0.0/20
 * adresní prostor podsítě Service Fabric: 172.16.2.0/23
 
-Následující pravidla pro příchozí provoz jsou ve skupině zabezpečení sítě povolená. Hodnoty portů můžete změnit změnou proměnných šablony.
+V prostředku **Microsoft.Network/networkSecurityGroups** jsou povolená následující pravidla pro příchozí provoz. Hodnoty portů můžete změnit změnou proměnných šablony.
 
 * ClientConnectionEndpoint (TCP): 19000
 * HttpGatewayEndpoint (HTTP/TCP): 19080
@@ -131,7 +131,7 @@ Následující pravidla pro příchozí provoz jsou ve skupině zabezpečení s�
 * Rozsah portů aplikací – 49152 až 65534 (používají se pro komunikaci služeb, nejsou však otevírány v nástroji pro vyrovnávání zatížení)
 * Všechny ostatní porty jsou blokované
 
-Pokud jsou potřebné další porty aplikací, je třeba upravit prostředky Microsoft.Network/loadBalancers prostředků a Microsoft.Network/networkSecurityGroups, aby byl povolen příchozí provoz.
+Pokud jsou potřebné další porty aplikací, je potřeba upravit prostředky **Microsoft.Network/loadBalancers** a **Microsoft.Network/networkSecurityGroups**, aby byl povolený příchozí provoz.
 
 ## <a name="set-template-parameters"></a>Nastavení parametrů šablony
 

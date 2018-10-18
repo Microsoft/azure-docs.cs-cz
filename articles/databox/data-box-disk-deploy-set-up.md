@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/24/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: e4a913aaeb6eeb3c58b70dbcd714f1360875594f
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: b1e647c6aee251bebd257db5e4e631deba0be3fa
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161524"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068804"
 ---
 # <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>Kurz: Rozbalení, připojení a odemknutí Azure Data Box Disku
 
@@ -30,9 +30,9 @@ V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Rozbalit váš Data Box Disk
-> * Připojit se k diskům a získat klíč
+> * Připojení k diskům a získání klíče
 > * Odemknout disky v klientovi pro Windows
-> * Odemknout disky v klientovi pro Linux
+> * Odemknutí disků v klientovi pro Linux
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -76,12 +76,14 @@ Postup odemknutí disků se liší v závislosti na tom, jestli jste připojeni 
 Disky připojíte a odemknete pomocí následujících kroků.
      
 1. Na webu Azure Portal přejděte na **Obecné > Podrobnosti zařízení**. 
-2. Stáhněte si sadu nástrojů Data Box Disk odpovídající klientovi pro Windows. 
+2. Stáhněte si sadu nástrojů Data Box Disk odpovídající klientovi pro Windows. Tato sada nástrojů obsahuje 3 nástroje: Data Box Disk Unlock, Data Box Disk Validation a Data Box Disk Split Copy. 
+
+    V tomto postupu použijete jenom nástroj Data Box Disk Unlock. Ostatní dva nástroje použijeme později.
 
     > [!div class="nextstepaction"]
     > [Stáhnout sadu nástrojů Data Box Disk pro Windows](http://aka.ms/databoxdisktoolswin)         
 
-3. Rozbalte nástroj na stejném počítači, který budete používat ke kopírování dat.
+3. Rozbalte sadu nástrojů na stejném počítači, který budete používat ke kopírování dat. 
 4. Ve stejném počítači otevřete okno příkazového řádku nebo spusťte Windows PowerShell jako správce.
 5. (Volitelné) Chcete-li ověřit, že počítač, který používáte k odemknutí disku, splňuje požadavky na operační systém, spusťte příkaz kontroly systému. Ukázkový výstup najdete níž. 
 
@@ -264,9 +266,9 @@ V tomto kurzu jste se dozvěděli o tématech spojených s Azure Data Box Diskem
 
 > [!div class="checklist"]
 > * Rozbalit váš Data Box Disk
-> * Připojit se k diskům a získat klíč
+> * Připojení k diskům a získání klíče
 > * Odemknout disky v klientovi pro Windows
-> * Odemknout disky v klientovi pro Linux
+> * Odemknutí disků v klientovi pro Linux
 
 
 V dalším kurzu se dozvíte, jak na Data Box Disk zkopírovat data.

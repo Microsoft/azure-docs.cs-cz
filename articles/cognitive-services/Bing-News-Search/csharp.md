@@ -1,40 +1,41 @@
 ---
-title: Rychlý start C# pro Azure kognitivní služby vyhledávání zprávy Bing rozhraní API | Microsoft Docs
-description: Get informace a ukázky kódu můžete rychle začít používat rozhraní API služby Bing zprávy Search v kognitivní služby společnosti Microsoft na platformě Azure.
+title: 'Rychlý start: Rozhraní API Bingu pro vyhledávání zpráv, C#'
+titlesuffix: Azure Cognitive Services
+description: Umožňuje získat informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API Bingu pro vyhledávání zpráv.
 services: cognitive-services
-documentationcenter: ''
 author: v-jerkin
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 0364d5754539c0e83318d595fd00b3e7b7e79c08
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 48c6bf413ab2b5a45b5daa54ad31afe2c0fdf8f1
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343522"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804262"
 ---
-# <a name="quickstart-for-bing-news-search-api-with-c"></a>Rychlý start pro vyhledávání zprávy Bing rozhraní API pomocí jazyka C#
+# <a name="quickstart-bing-news-search-api-with-c"></a>Rychlý start: Rozhraní API Bingu pro vyhledávání zpráv s využitím C#
 
-Tento článek ukazuje, jak pomocí rozhraní API služby Bing vyhledávání, součástí kognitivní služby společnosti Microsoft na platformě Azure. Při tomto článku aktivuje C#, rozhraní API je kompatibilní s žádný programovací jazyk, který můžete nastavit požadavků HTTP a analyzovat JSON RESTful webová služba. 
+Tento článek vám ukazuje, jak používat rozhraní API pro vyhledávání Bingu, což je součást Microsoft Cognitive Services v Azure. V tomto článku se sice používá C#, ale rozhraní API je webová služba RESTful kompatibilní s každým programovacím jazykem, který dokáže provádět požadavky HTTP a parsovat JSON. 
 
-Příklad kódu se aplikace .NET Core, s minimálním externí závislosti, takže je možné také spustit v systému Linux nebo Mac OS X pomocí Mono napsané v C#.
+Ukázkový kód je napsaný v jazyce C# jako aplikace .NET Core s minimálními externími závislostmi, můžete ho tedy spustit také na systému Linux nebo Mac OS X pomocí architektury Mono.
 
-Odkazovat [referenční dokumentace rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) technické podrobnosti o rozhraní API.
+Technické podrobnosti o rozhraních API najdete v [referenci k rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Musíte mít [kognitivní rozhraní API služby účet](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraní API pro Bing vyhledávání**. [Bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) stačí pro tento rychlý start. Budete potřebovat přístupový klíč zadaný při aktivaci bezplatné zkušební verze, nebo může použít klíč placené předplatné z řídicího panelu Azure.
+Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s přístupem k **rozhraním API pro vyhledávání Bingu**. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Pro aktivaci bezplatné zkušební verze budete potřebovat přístupový klíč nebo můžete použít klíč placeného předplatného z řídicího panelu Azure.
 
-## <a name="bing-news-search"></a>Zprávy Bing vyhledávání
+## <a name="bing-news-search"></a>Vyhledávání zpráv Bingu
 
-[Rozhraní API služby Bing zprávy Search](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) vrátí výsledky hledání zprávy z Bing vyhledávací web.
+[Rozhraní API Bingu pro vyhledávání zpráv](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) vrací výsledky hledání zpráv z vyhledávače Bing.
 
-1. Vytvořte nové řešení konzoly v sadě Visual Studio (Community Edition je v pořádku).
-1. Nahraďte kód níže uvedenou Program.cs.
-1. Nahraďte `accessKey` hodnotu s přístupový klíč platný pro vaše předplatné.
+1. Vytvořte nové konzolové řešení v sadě Visual Studio (Community Edition je v pořádku).
+1. Nahraďte soubor Program.cs níže uvedeným kódem.
+1. Hodnotu `accessKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
 1. Spusťte program.
 
 ```csharp
@@ -283,10 +284,10 @@ namespace BingNewsSearchCSharpCore
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Příspěvky stránkování](paging-news.md)
-> [pomocí decoration značky zvýraznění textu](hit-highlighting.md)
-> [vyhledávání na webu pro zprávy](search-the-web.md)  
+> [Stránkování zpráv](paging-news.md)
+> [Zvýraznění textu pomocí dekoračních značek](hit-highlighting.md)
+> [Hledání zpráv na internetu](search-the-web.md)  
 > [Vyzkoušet](https://azure.microsoft.com/services/cognitive-services/bing-news-search-api/)

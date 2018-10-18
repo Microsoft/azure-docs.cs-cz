@@ -1,30 +1,30 @@
 ---
-title: Rychlý start Java SDK vyhledávání zprávy Bing | Microsoft Docs
-description: Zjistěte, jak nastavit SDK Search zprávy Bing konzolové aplikace.
+title: 'Rychlý start: Sada SDK Bingu pro vyhledávání zpráv, Java'
 titleSuffix: Azure Cognitive Services
+description: Zjistěte, jak nastavit konzolovou aplikaci sady SDK Bingu pro vyhledávání zpráv.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/16/2018
 ms.author: v-gedod
-ms.openlocfilehash: a6d4baf307fa3edcc0886d32204f2872fe310ce2
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 7919f13e8c5aaa592a416190d3cd11edbf31af2c
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343659"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802473"
 ---
-# <a name="bing-news-search-sdk-java-quickstart"></a>Java SDK vyhledávání zprávy Bing rychlý start
+# <a name="quickstart-bing-news-search-sdk-with-java"></a>Rychlý start: Sada SDK Bingu pro vyhledávání zpráv s využitím Javy
 
-Sada SDK vyhledávání zprávy Bing poskytuje funkce rozhraní API REST pro zprávy dotazy a analýzy výsledků. 
+Sada SDK Bingu pro vyhledávání zpráv poskytuje funkce rozhraní REST API pro dotazy na zprávy a parsování výsledků. 
 
-[Zdrojový kód pro Java SDK služby Search zprávy Bing ukázky](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch) je k dispozici v centru Git.
+[Zdrojový kód ukázek sady SDK Bingu pro vyhledávání zpráv v Javě](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch) je k dispozici na GitHubu.
 
-## <a name="application-dependencies"></a>Závislosti aplikací
-Získání [kognitivní služby přístupový klíč](https://azure.microsoft.com/try/cognitive-services/) pod **vyhledávání**. Závislosti SDK Search zprávy Bing nainstalujte pomocí nástroje Maven, Gradle nebo jinému systému pro správu závislostí. Soubor Maven POM vyžaduje deklaraci:
+## <a name="application-dependencies"></a>Závislosti aplikace
+Načtěte si pod **Search** (Hledání) [přístupový klíč služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/). Nainstalujte si závislosti sady SDK Bingu pro vyhledávání zpráv pomocí systému Maven, Gradle nebo jiného systému správy závislostí. Soubor POM Mavenu vyžaduje deklaraci:
 ```
   <dependencies>
     <dependency>
@@ -34,8 +34,8 @@ Získání [kognitivní služby přístupový klíč](https://azure.microsoft.co
     </dependency>
   </dependencies>
 ```
-## <a name="news-search-client"></a>Příspěvky hledání klienta
-Přidejte importy pro implementaci třídy.
+## <a name="news-search-client"></a>Klient pro vyhledávání zpráv
+Přidání importů do implementace třídy.
 ```
 import com.microsoft.azure.cognitiveservices.newssearch.*;
 import com.microsoft.azure.cognitiveservices.newssearch.implementation.NewsInner;
@@ -48,7 +48,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 import java.io.IOException;
 ```
-Implementace **NewsSearchAPIImpl** klienta, které vyžaduje instanci systému **ServiceClientCredentials** třídy.
+Implementace klienta **NewsSearchAPIImpl**, který vyžaduje instanci třídy **ServiceClientCredentials**.
 ```
 public static NewsSearchAPIImpl getClient(final String subscriptionKey) {
     return new NewsSearchAPIImpl("https://api.cognitive.microsoft.com/bing/v7.0/",
@@ -74,7 +74,7 @@ public static NewsSearchAPIImpl getClient(final String subscriptionKey) {
 
 
 ```
-Hledat zprávy s jeden dotaz "Quantum Computing." Filtrovat hledání se *trhu* a *počet* parametry. Zkontrolujte počet výsledků. Tisk – informace o první výsledek zprávy: název, URL, datum publikace, popis, název zprostředkovatele a celkový počet odhadované odpovídá.
+Vyhledání zpráv pomocí jednoho dotazu „Quantum Computing“. Filtrování hledání s využitím parametrů *market* a *count*. Kontrola počtu výsledků. Vypsání informací o prvním výsledku hledání zpráv: název, adresa URL, datum publikování, popis, název zprostředkovatele a celkový počet odhadovaných shod.
 ```
 public static void newsSearch(String subscriptionKey)
 {
@@ -121,7 +121,7 @@ public static void newsSearch(String subscriptionKey)
 }
 
 ```
-Vyhledat nejnovější zprávy o "Umělé inteligence." Filtrovat hledání se *aktuálnosti* a *sortBy* parametry. Zkontrolujte počet výsledků. Tisk – informace o první výsledek zprávy: název, URL, datum publikace, popis, název zprostředkovatele a celkový počet odhadované odpovídá.
+Vyhledání nejnovějších zpráv pro výraz „Artificial Intelligence“ (Umělá inteligence). Filtrování hledání s využitím parametrů *freshness* a *sortBy*. Kontrola počtu výsledků. Vypsání informací o prvním výsledku hledání zpráv: název, adresa URL, datum publikování, popis, název zprostředkovatele a celkový počet odhadovaných shod.
 ```
 /**
  * Search recent news for (Artificial Intelligence) with the freshness and sortBy parameters.
@@ -172,7 +172,7 @@ public static void newsSearchWithFilters(String subscriptionKey)
 }
 
 ```
-Vyhledávání zprávy **kategorie** pro *film a TV Zábava* témata a použití *bezpečné vyhledávání* funkce. Zkontrolujte počet výsledků. Tisk – kategorie, název, URL, popis, datum publikace a název zprostředkovatele pro první výsledek zprávy.
+Vyhledání zpráv z **kategorie** *filmů a televizní zábavy* a použití funkce *bezpečného hledání*. Kontrola počtu výsledků. Vypsání kategorie, názvu, adresy URL, popisu, data publikování a názvu zprostředkovatele prvního výsledku hledání zpráv.
 ```
 /**
  * Search the news category for (movie and TV entertainment) with safe search. Verify the number of results. 
@@ -223,7 +223,7 @@ public static void newsCategory(String subscriptionKey)
 }
 
 ```
-Hledání trendů témata zprávy. Zkontrolujte počet výsledků. Tisk – název, text dotazu, adresa URL webové vyhledávání a adresa URL hledání zprávy pro první výsledek zprávy.
+Vyhledání populárních témat zpráv. Kontrola počtu výsledků. Vypsání názvu, textu dotazu, adresy URL webu a adresy URL zprávy pro první výsledek hledání zpráv.
 ```
 public static void trendingTopics(String subscriptionKey)
 {
@@ -265,7 +265,7 @@ public static void trendingTopics(String subscriptionKey)
     }
 }
 ```
-Přidejte metody popsané v tomto článku do třídy se hlavní funkce pro provádění kódu.
+Přidání metod popsaných v tomto článku do třídy s hlavní funkcí pro provádění kódu.
 ```
 package javaNewsSDK;
 import com.microsoft.azure.cognitiveservices.newssearch.*;
@@ -284,8 +284,8 @@ public class NewsSearchSDK {
     // Include the methods described in this article.
 }
 ```
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Ukázky kognitivní Services Java SDK](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
+[Ukázky kognitivních služeb sady Java SDK](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
 
 

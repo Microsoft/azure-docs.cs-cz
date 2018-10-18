@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Trénování modelu klasifikace obrázků s Azure Machine Learning'
+title: 'Kurz: Trénování modelu klasifikace obrázků pomocí služby Azure Machine Learning'
 description: Tento kurz ukazuje, jak pomocí služby Azure Machine Learning trénovat model klasifikace obrázků s využitím knihovny scikit-learn v poznámkovém bloku Python Jupyter. Tento kurz je první částí z dvoudílné série.
 services: machine-learning
 ms.service: machine-learning
@@ -9,18 +9,18 @@ author: hning86
 ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 6fbca5e83d8ab4b3c34c6448c7a2303697da623b
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 7110d8df5ee837829f97fec8ab26d929689e3436
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181394"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785134"
 ---
-# <a name="tutorial-1-train-an-image-classification-model-with-azure-machine-learning"></a>Kurz 1: Trénování modelu klasifikace obrázků s Azure Machine Learning
+# <a name="tutorial-1-train-an-image-classification-model-with-azure-machine-learning-service"></a>Kurz 1: Trénování modelu klasifikace obrázků pomocí služby Azure Machine Learning
 
 V tomto kurzu budete trénovat model strojového učení místně i pomocí vzdálených výpočetních prostředků. Budete používat pracovní postup pro trénování a nasazení pro službu Azure Machine Learning (Preview) v poznámkovém bloku Python Jupyter.  Poznámkový blok poté můžete použít jako šablonu k trénování vlastního modelu strojového učení s vlastními daty. Tento kurz je **první částí z dvoudílné série kurzů**.  
 
-Tento kurz je zaměřený na trénování jednoduché logistické regrese pomocí datové sady [MNIST](http://yann.lecun.com/exdb/mnist/) datové sady a knihovny [scikit-learn](http://scikit-learn.org) pomocí služby Azure Machine Learning.  MNIST je oblíbená datová sada obsahující 70 000 obrázků ve stupních šedi. Každý obrázek je ručně psaná číslice o velikosti 28x28 pixelů představující číslo od 0 do 9. Cílem je vytvoření klasifikátoru s více třídami pro identifikaci číslice, kterou představuje daný obrázek. 
+Tento kurz je zaměřený na trénování jednoduché logistické regrese pomocí datové sady [MNIST](http://yann.lecun.com/exdb/mnist/) a knihovny [scikit-learn](http://scikit-learn.org) pomocí služby Azure Machine Learning.  MNIST je oblíbená datová sada obsahující 70 000 obrázků ve stupních šedi. Každý obrázek je ručně psaná číslice o velikosti 28x28 pixelů představující číslo od 0 do 9. Cílem je vytvoření klasifikátoru s více třídami pro identifikaci číslice, kterou představuje daný obrázek. 
 
 Naučte se:
 
@@ -37,7 +37,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="get-the-notebook"></a>Získání poznámkového bloku
 
-Pro usnadnění práce je tento kurz k dispozici jako poznámkový blok Jupyter. Použijte některou ze dvou níže uvedených metod pro klonování [úložiště GitHubu s ukázkovými poznámkovými bloky strojového učení](https://github.com/Azure/MachineLearningNotebooks) a spusťte poznámkový blok `tutorials/01.train-models.ipynb`:
+V zájmu usnadnění práce je tento kurz dostupný jako [poznámkový blok Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/01.train-models.ipynb). Spusťte poznámkový blok `01.train-models.ipynb` ve službě Azure Notebooks nebo na vlastním serveru poznámkového bloku Jupyter.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 

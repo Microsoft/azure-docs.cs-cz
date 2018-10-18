@@ -1,38 +1,38 @@
 ---
-title: Hledání entity rychlé spuštění uzlu SDK | Microsoft Docs
-description: Instalační program pro vyhledávání Entity SDK konzolové aplikace.
-titleSuffix: Azure cognitive services
+title: 'Rychlý start: Sada SDK Bingu pro vyhledávání entit, Node'
+titleSuffix: Azure Cognitive Services
+description: Nastavení pro konzolovou aplikaci sady SDK pro vyhledávání entit za použití jazyka Node.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/12/2018
 ms.author: v-gedod
-ms.openlocfilehash: 2904ecfed33334458f9b6a9ca2500cd0bfef13bc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.openlocfilehash: 1f2a5f6a1473cde40928ada6e30f6bd9b780543d
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35343816"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814878"
 ---
-# <a name="entity-search-sdk-node-quickstart"></a>Rychlé spuštění vyhledávání SDK uzlu entity
+# <a name="quickstart-bing-entity-search-sdk-with-node"></a>Rychlý start: Sada SDK Bingu pro vyhledávání entit pomocí Node
 
-Sada SDK vyhledávání Entity Bing obsahuje funkci rozhraní REST API pro dotazy na entity a analýza výsledků. 
+Sada SDK Bingu pro vyhledávání entit obsahuje funkce rozhraní REST API pro dotazy na entity a analýzu výsledků. 
 
-[Zdrojového kódu pro C# Bing Entity vyhledávání SDK ukázky](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/entitySearch.js) je k dispozici v centru Git.
-## <a name="application-dependencies"></a>Závislosti aplikací
+[Zdrojový kód pro ukázky sady SDK Bingu pro vyhledávání entit v C#](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/entitySearch.js) je k dispozici na GitHubu.
+## <a name="application-dependencies"></a>Závislosti aplikace
 
-Chcete-li nastavit konzolovou aplikaci pomocí sady SDK vyhledávání Entity Bing, spusťte `npm install azure-cognitiveservices-entitysearch` ve vašem vývojovém prostředí.
+Pokud chcete nastavit konzolovou aplikaci pomocí sady SDK Bingu pro vyhledávání entit, spusťte `npm install azure-cognitiveservices-entitysearch` ve vašem vývojovém prostředí.
 
-## <a name="entity-search-client"></a>Klienta vyhledávání entity
-Získání [kognitivní služby přístupový klíč](https://azure.microsoft.com/try/cognitive-services/) pod *vyhledávání*. Vytvoření instance `CognitiveServicesCredentials`:
+## <a name="entity-search-client"></a>Klient pro vyhledávání entit
+Načtěte si pod *Search* (Hledání) [přístupový klíč služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/). Vytvoření instance `CognitiveServicesCredentials`:
 ```
 const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
 let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
 ```
-Pak vytvořte instanci klienta a hledat výsledky:
+Potom vytvořte instanci klienta a vyhledejte výsledky:
 ```
 const EntitySearchAPIClient = require('azure-cognitiveservices-entitysearch');
 
@@ -47,14 +47,14 @@ entitySearchApiClient.entitiesOperations.search('seahawks').then((result) => {
 });
 
 ```
-Kód zobrazí `result.value` položky ke konzole bez Analýza textu.  Výsledky, pokud existuje podle kategorií, bude zahrnovat:
-- _zadejte: 'věcí.
-- _zadejte: 'ImageObject.
+Kód vytiskne položky `result.value` do konzoly bez analýzy textu.  Případné výsledky podle kategorií budou zahrnovat tyto položky:
+- _type: 'Thing'
+- _type: 'ImageObject'
 
 <!-- Removing until we can replace with a sanitized version.
 ![Entity results](media/entity-search-sdk-node-quickstart-results.png)
 -->
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Kognitivní služby ukázky Node.js SDK](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+[Ukázky kognitivních služeb sady Node.js SDK](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)

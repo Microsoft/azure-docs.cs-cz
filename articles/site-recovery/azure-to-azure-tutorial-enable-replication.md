@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 10/10/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 4638b697dcaa0d4c11bae1878a94f76f6237d4a4
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 0404774f1cb347ceead8b78d1a9a6506712dea5c
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42154777"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069093"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>Nastavení zotavení po havárii pro virtuální počítače Azure do sekundární oblasti Azure
 
@@ -169,6 +169,19 @@ Pokud chcete přepsat výchozí nastavení zásad replikace, klikněte na **Při
 
 > [!IMPORTANT]
   Pokud povolíte konzistenci napříč několika virtuálními počítači, budou spolu počítače v replikační skupině komunikovat přes port 20004. Ujistěte se, že žádné zařízení brány firewall neblokuje interní komunikaci mezi virtuálními počítači přes port 20004. Pokud chcete do replikační skupiny zahrnout virtuální počítače s Linuxem, nezapomeňte ručně otevřít odchozí provoz na portu 20004 podle pokynů ke konkrétní verzi Linuxu.
+
+### <a name="configure-encryption-settings"></a>Konfigurace nastavení šifrování
+
+Pokud je pro zdrojový virtuální počítač povolená služba Azure Disk Encryption (ADE), zobrazí se následující sekce nastavení šifrování.
+
+- **Trezory klíčů pro šifrování disků:** Azure Site Recovery ve výchozím nastavení vytvoří v cílové oblasti nový trezor klíčů s příponou názvu „asr“ na základě klíčů pro šifrování disků zdrojového virtuálního počítače. Pokud již existuje trezor klíčů vytvořený službou Azure Site Recovery, použije se tento trezor.
+- **Trezory klíčů pro šifrování klíčů:** Azure Site Recovery ve výchozím nastavení vytvoří v cílové oblasti nový trezor klíčů s příponou názvu „asr“ na základě klíčových šifrovacích klíčů zdrojového virtuálního počítače. Pokud již existuje trezor klíčů vytvořený službou Azure Site Recovery, použije se tento trezor.
+
+Kliknutím na Upravit vedle nastavení šifrování přepište výchozí hodnoty a vyberte vlastní trezory klíčů.
+
+>[!NOTE]
+>Azure Site Recovery v současné době podporuje pouze virtuální počítače Azure s operačním systémem Windows a [povoleným šifrováním pomocí aplikace Azure AD](https://aka.ms/ade-aad-app).
+>
 
 ### <a name="track-replication-status"></a>Sledování stavu replikace
 

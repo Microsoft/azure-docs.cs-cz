@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 6997d40603bd6ebf39f8797a3e354e92c04da58d
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: de856aed32b596209f7af2861b76ed6648d0caca
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47422741"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067818"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module-preview"></a>Kurz: Nasazení služby Azure Stream Analytics jako modulu IoT Edge (Preview)
 
@@ -139,7 +139,9 @@ V této části se s využitím těchto tří prvků (vstup, výstup a dotaz) vy
 
 Pokud chcete úlohu Stream Analytics připravit k nasazení na zařízení IoT Edge, musíte úlohu přidružit ke kontejneru v účtu úložiště. Až přejdete k nasazení úlohy, definice úlohy se exportuje do kontejneru úložiště. 
 
-1. V části **Konfigurovat** vyberte **Nastavení IoT Edge**.
+1. V části **Konfigurovat**vyberte **Nastavení účtu úložiště**.
+
+1. Vyberte **Přidat účet úložiště**. 
 
 1. Z rozevíracího seznamu vyberte svůj **účet úložiště**.
 

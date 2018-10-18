@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 09/19/2018
 ms.author: cshoe
-ms.openlocfilehash: a325029ded60a1cd8274743a88f7a4d410466dea
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6e23e888a1c90e1c6c7eecf25491f048e9077f11
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987573"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857886"
 ---
 # <a name="quickstart-upload-download-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascript-preview"></a>Rychlý start: Nahrání, stažení, vypsání a odstranění objektů blob pomocí sady Azure Storage v10 SDK pro JavaScript (verze Preview)
 
@@ -128,7 +128,7 @@ Další sada konstant pomáhá odhalit záměr výpočtů velikosti souborů bě
 const ONE_MEGABYTE = 1024 * 1024;
 const FOUR_MEGABYTES = 4 * ONE_MEGABYTE;
 ```
-Žádosti tohoto rozhraní API lze nastavit tak, aby jim po daném intervalu vypršel časový limit. Třída *Aborter* se stará o vypršení časového limitu žádostí a následující konstanta slouží k definování časových limitů použitých v této ukázce.
+Žádosti tohoto rozhraní API lze nastavit tak, aby jim po daném intervalu vypršel časový limit. Třída [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-preview) se stará o vypršení časového limitu žádostí a následující konstanta slouží k definování časových limitů použitých v této ukázce.
 ```javascript
 const ONE_MINUTE = 60 * 1000;
 ```
@@ -163,13 +163,13 @@ const serviceURL = new ServiceURL(`https://${STORAGE_ACCOUNT_NAME}.blob.core.win
 ```
 V tomto bloku kódu se používají následující třídy:
 
-- Třída *SharedKeyCredential* má na starosti zabalení přihlašovacích údajů k účtu úložiště a jejich poskytnutí kanálu žádosti.
+- Třída [SharedKeyCredential](/javascript/api/%40azure/storage-blob/sharedkeycredential?view=azure-node-preview) má na starosti zabalení přihlašovacích údajů k účtu úložiště a jejich poskytnutí kanálu žádosti.
 
-- Třída *StorageURL* zajišťuje vytvoření nového kanálu.
+- Třída [StorageURL](/javascript/api/%40azure/storage-blob/storageurl?view=azure-node-preview) zajišťuje vytvoření nového kanálu.
 
-- Třída *ServiceURL* sestavuje adresu URL použitou v rozhraní REST API. Instance této třídy vám umožňují provádět akce, jako je výpis kontejnerů, a poskytují kontextové informace pro generování adres URL kontejnerů.
+- Třída [ServiceURL](/javascript/api/%40azure/storage-blob/serviceurl?view=azure-node-preview) sestavuje adresu URL použitou v rozhraní REST API. Instance této třídy vám umožňují provádět akce, jako je výpis kontejnerů, a poskytují kontextové informace pro generování adres URL kontejnerů.
 
-Instance *ServiceURL* se používá s instancemi *ContainerURL* a *BlockBlobURL* ke správě kontejnerů a objektů blob v účtu úložiště.
+Instance *ServiceURL* se používá s instancemi [ContainerURL](/javascript/api/%40azure/storage-blob/containerurl?view=azure-node-preview) a [BlockBlobURL](/javascript/api/%40azure/storage-blob/blockbloburl?view=azure-node-preview) ke správě kontejnerů a objektů blob v účtu úložiště.
 
 ```javascript
 const containerURL = ContainerURL.fromServiceURL(serviceURL, containerName);
@@ -202,7 +202,7 @@ Prvky Aborter vám poskytují kontrolu nad žádostmi, protože umožňují:
 - Určit množství času uděleného pro dávku žádostí
 - Určit, jak dlouho se jednotlivá žádost má v dávce provádět
 - Zrušit žádosti
-- Zastavit vypršení časového limitu najednou u všech žádostí pomocí statického člena *Aborter.None*
+- Zastavit vypršení časového limitu najednou u všech žádostí pomocí statického člena *Aborter.none*
 
 ### <a name="show-container-names"></a>Zobrazení názvů kontejnerů
 V účtech může být uložený ohromný počet kontejnerů. Následující kód ukazuje, jak vypsat kontejnery segmentovaným způsobem, který umožňuje cyklicky procházet velké množství kontejnerů. Funkce *showContainerNames* se předává instancím *ServiceURL* a *Aborter*.

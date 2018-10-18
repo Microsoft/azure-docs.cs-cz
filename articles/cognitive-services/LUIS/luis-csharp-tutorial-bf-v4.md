@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/25/2018
 ms.author: diberry
-ms.openlocfilehash: f8350d46fecff726dd9f591fe3df0272f556b3e7
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: ce5b704a7ac251621698352608ea3eefa4629aea
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47168103"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886537"
 ---
 # <a name="tutorial-luis-bot-in-c"></a>Kurz: Robot LUIS v jazyce C#
 Pomocí jazyka C# můžete vytvořit chatovacího robota integrovaného se službou Language Understanding (LUIS). Tento robot používá k implementaci řešení robota aplikaci HomeAutomation. K vytvoření robota se používá [Web App Bot](https://docs.microsoft.com/azure/bot-service/) Azure a [Bot Framework ve verzi](https://github.com/Microsoft/botbuilder-js) v4.
@@ -286,20 +286,20 @@ Do souboru `BasicBot.cs` přidejte kód pro zpracování nových záměrů.
 
     ```JSON
     TurnOn intent found, JSON response: {"$instance":{“HomeAutomation_Device”:[{“startIndex”:23,“endIndex”:29,“score”:0.9776345,“text”:“lights”,“type”:“HomeAutomation.Device”}],“HomeAutomation_Room”:[{“startIndex”:12,“endIndex”:22,“score”:0.9079433,“text”:“livingroom”,“type”:“HomeAutomation.Room”}]},“HomeAutomation_Device”:[“lights”],“HomeAutomation_Room”:[“livingroom”]}
-    ```    ```
+    ```    
 
-## Learn more about Bot Framework
-Azure Bot service uses the Bot Framework SDK. Learn more about the SDK and bot framework:
+## <a name="learn-more-about-bot-framework"></a>Další informace o Bot Frameworku
+Azure Bot Service využívá sadu SDK Bot Frameworku. Přečtěte si další informace o sadě SDK a Bot Frameworku:
 
-* [Azure Bot Service](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0) v4 documentation
-* [Bot Builder Samples](https://github.com/Microsoft/botbuilder-samples)
-* [Bot Builder SDK](https://docs.microsoft.com/en-us/javascript/api/botbuilder-core/?view=botbuilder-ts-latest)
-* [Bot Builder tools](https://github.com/Microsoft/botbuilder-tools):
+* Dokumentace pro [Azure Bot Service](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0) v4
+* [Ukázky Bot Builderu](https://github.com/Microsoft/botbuilder-samples)
+* [Sada SK Bot Builderu](https://docs.microsoft.com/en-us/javascript/api/botbuilder-core/?view=botbuilder-ts-latest)
+* [Nástroje Bot Builderu](https://github.com/Microsoft/botbuilder-tools):
 
-## Next steps
+## <a name="next-steps"></a>Další kroky
 
-You created an Azure bot service, copied the bot secret and `.bot` file path, downloaded the zip file of the code. You added the prebuilt HomeAutomation domain to the LUIS app created as part of the new Azure bot service, then trained and published the app again. You extracted the code project, created an environment file (`.env`), and set the bot secret and the `.bot` file path. In the bot.js file, you added code to handle the two new intents. Then you tested the bot in the bot emulator to see the LUIS response for an utterance of one of the new intents. 
+Vytvořili jste službu Azure Bot Service, zkopírovali jste tajný klíč robota a cestu k souboru `.bot` a stáhli jste soubor ZIP kódu. Přidali jste předem připravenou doménu HomeAutomation do aplikace LUIS vytvořené v rámci nové služby Azure Bot Service a pak aplikaci vyškolili a znovu publikovali. Extrahovali jste projekt kódu, vytvořili soubor prostředí (`.env`) a nastavili tajný kód robota a cestu k souboru `.bot`. Do souboru bot.js jste přidali kód pro zpracování dvou nových záměrů. Pak jste robota otestovali v emulátoru robota, abyste viděli odpověď služby LUIS pro promluvu jednoho z nových záměrů. 
 
 
 > [!div class="nextstepaction"]
-> [Build a custom domain in LUIS](luis-quickstart-intents-only.md)
+> [Vytvoření vlastní domény v LUIS](luis-quickstart-intents-only.md)

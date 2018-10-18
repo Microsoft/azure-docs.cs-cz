@@ -1,53 +1,53 @@
 ---
-title: Rychlý start Python SDK vyhledávání zprávy | Microsoft Docs
-description: Nastavení pro zprávy vyhledávání SDK konzolové aplikace.
-titleSuffix: Azure News Search SDK Python quickstart
+title: 'Rychlý start: Sada SDK Bingu pro vyhledávání zpráv, Python'
+titleSuffix: Azure Cognitive Services
+description: Nastavení pro konzolovou aplikaci sady SDK Bingu pro vyhledávání zpráv.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/14/2018
 ms.author: v-gedod
-ms.openlocfilehash: 6d212d1477ecf583a038e33e72aab3d60f6aa050
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 8e4343b053835c0fc2219373ad60f96c7b80636a
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343661"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803337"
 ---
-# <a name="news-search-sdk-python-quickstart"></a>Rychlý start Python SDK vyhledávání zprávy
+# <a name="quickstart-bing-news-search-sdk-with-python"></a>Rychlý start: Sada SDK Bingu pro vyhledávání zpráv s využitím Pythonu
 
-Sada SDK vyhledávání zprávy obsahuje funkci rozhraní REST API pro webové dotazy a analýzy výsledků. 
+Sada SDK pro vyhledávání zpráv obsahuje funkce rozhraní REST API pro dotazy na webu a parsování výsledků. 
 
-[Zdrojový kód pro Python SDK služby Search zprávy Bing ukázky](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/news_search_samples.py) je k dispozici v centru Git.
+[Zdrojový kód ukázek sady SDK Bingu pro vyhledávání zpráv v Pythonu](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/news_search_samples.py) je k dispozici na GitHubu.
 
-## <a name="application-dependencies"></a>Závislosti aplikací
-Pokud ji nemáte, nainstalujte Python. Sada SDK je kompatibilní s Python 2.7, 3.3, 3.4, 3.5 a 3.6.
+## <a name="application-dependencies"></a>Závislosti aplikace
+Pokud nemáte Python, nainstalujte si ho. Sada SDK je kompatibilní s Pythonem 2.7, 3.3, 3.4, 3.5 a 3.6.
 
-Obecná doporučení pro vývoj Python je použití [virtuální prostředí](https://docs.python.org/3/tutorial/venv.html). Instalace a inicializace virtuálního prostředí s [venv modulu](https://pypi.python.org/pypi/virtualenv). Je nutné nainstalovat virtualenv pro Python 2.7.
+Obecně se pro vývoj v jazyce Python doporučuje používat [virtuální prostředí](https://docs.python.org/3/tutorial/venv.html). Nainstalujte a inicializujte virtuální prostředí s [modulem venv](https://pypi.python.org/pypi/virtualenv). Je potřeba nainstalovat prostředí virtualenv pro Python 2.7.
 ```
 python -m venv mytestenv
 ```
-Instalace sady SDK vyhledávání zprávy Bing závislosti:
+Nainstalujte závislosti sady SDK Bingu pro vyhledávání zpráv:
 ```
 cd mytestenv
 python -m pip install azure-cognitiveservices-search-newssearch
 ```
-## <a name="news-search-client"></a>Příspěvky hledání klienta
-Získání [kognitivní služby přístupový klíč](https://azure.microsoft.com/try/cognitive-services/) pod *vyhledávání*. Přidejte importy:
+## <a name="news-search-client"></a>Klient pro vyhledávání zpráv
+Načtěte si pod *Search* (Hledání) [přístupový klíč služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/). Přidejte importy:
 ```
 from azure.cognitiveservices.search.newssearch import NewsSearchAPI
 from msrest.authentication import CognitiveServicesCredentials
 
 subscription_key = "YOUR-SUBSCRIPTION-KEY"
 ```
-Vytvoření instance `CognitiveServicesCredentials`. Vytvořte instanci klienta:
+Vytvořte instanci `CognitiveServicesCredentials`. Vytvořte instanci klienta:
 ```
 client = NewsSearchAPI(CognitiveServicesCredentials(subscription_key))
 ```
-Hledat výsledky a tisku první výsledek webové stránky:
+Vyhledejte výsledky a vypište první výsledek hledávání webových stránek:
 ```
 news_result = client.news.search(query="Quantum Computing", market="en-us", count=10)
 print("Search news for query \"Quantum Computing\" with market and count")
@@ -65,7 +65,7 @@ else:
     print("Didn't see any news result data..")
 
 ```
-Hledání s filtry pro nejnovější informace o "Umělé Intelligence" s `freshness` a `sortBy` parametry. Ověřte počet výsledků a vytiskněte `totalEstimatedMatches`, `name`, `url`, `description`, `published time`, a `name of provider` z první položky výsledek zprávy.
+Použijte filtry a vyhledejte nejnovější zprávy pro výraz „Artificial Intelligence“ (Umělá inteligence) s využitím parametrů `freshness` a `sortBy`. Zkontrolujte počet výsledků a pro první položku výsledků hledání zpráv vypište celkový odhadovaný počet shod (`totalEstimatedMatches`), název (`name`), adresu URL (`url`), popis (`description`), datum publikování (`published time`) a název zprostředkovatele (`name of provider`).
 ```
 def news_search_with_filtering(subscription_key):
 
@@ -95,7 +95,7 @@ def news_search_with_filtering(subscription_key):
         print("Encountered exception. {}".format(err))
 
 ```
-Prohledat kategorie příspěvky film a TV Zábava s bezpečné vyhledávání. Ověřte počet výsledků a vytiskněte `category`, `name`, `url`, `description`, `published time`, a `name of provider` z první položky výsledek zprávy.
+Vyhledejte zprávy z kategorie filmů a televizní zábavy s využitím bezpečného hledání. Zkontrolujte počet výsledků a pro první položku výsledků hledání zpráv vypište kategorii (`category`), název (`name`), adresu URL (`url`), popis (`description`), datum publikování (`published time`) a název zprostředkovatele (`name of provider`).
 ```
 def news_category(subscription_key):
 
@@ -126,7 +126,7 @@ def news_category(subscription_key):
 
 
 ```
-Hledání trendů témata zprávy v Bing.  Ověřte počet výsledků a vytiskněte `name`, `text of query`, `webSearchUrl`, `newsSearchUrl`, a `image Url` první zprávy výsledku.
+Vyhledejte populární témata zpráv v Bingu.  Zkontrolujte počet výsledků a pro první výsledek hledání zpráv vypište název (`name`), text dotazu (`text of query`), adresu URL webu (`webSearchUrl`), adresu URL zprávy (`newsSearchUrl`) a adresu URL obrázku (`image Url`).
 ```
 def news_trending(subscription_key):
 
@@ -152,8 +152,8 @@ def news_trending(subscription_key):
 
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Ukázky kognitivní služby Python SDK](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
+[Ukázky kognitivních služeb sady Python SDK](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
 

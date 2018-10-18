@@ -1,135 +1,136 @@
 ---
-title: 'Vlastní vyhledávání Bingu: Vytvoření vlastního vyhledávání webové stránky | Dokumentace Microsoftu'
-description: Popisuje, jak nakonfigurovat instanci vlastního vyhledávání a integrují je do webové stránky
+title: 'Kurz: Vytvoření webové stránky pro vlastní vyhledávání – Vlastní vyhledávání Bingu'
+titlesuffix: Azure Cognitive Services
+description: Tento kurz popisuje postup konfigurace instance vlastního vyhledávání a její integrace do webové stránky.
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/16/2017
 ms.author: v-brapel
-ms.openlocfilehash: 8bc1520325afc256ac62cc1f1dfaf24c53da4b83
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: MT
+ms.openlocfilehash: 3e892131a0109d2fff924940542b5d8b2b701950
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979994"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815371"
 ---
-# <a name="build-a-custom-search-web-page"></a>Vytvoření webové stránky pro vlastní vyhledávání
+# <a name="tutorial-build-a-custom-search-web-page"></a>Kurz: Vytvoření webové stránky pro vlastní vyhledávání
 
-Vlastní vyhledávání Bingu umožňuje vytvořit míru vyhledávací prostředí pro témata, které vás zajímají. Například pokud vlastníte bojová umění web, který poskytuje možnosti vyhledávání, určíte domén, podřízené weby a webové stránky, které vyhledává Bing. Uživatelům se zobrazí výsledky hledání přizpůsobená pro obsah, na kterých záleží místo procházení obecné výsledky, které mohou obsahovat irelevantní obsah. 
+Vlastní vyhledávání Bingu umožňuje vytvářet přizpůsobená vyhledávací prostředí pro témata, o která máte zájem. Pokud například vlastníte web věnovaný bojovým uměním, který poskytuje možnosti vyhledávání, můžete určit domény, podřízené weby a webové stránky, které Bing prohledává. Uživatelům se budou zobrazovat výsledky hledání přizpůsobené obsahu, který je zajímá, a nebudou tak muset procházet obecné výsledky hledání, které můžou obsahovat irelevantní obsah. 
 
-Tento kurz ukazuje, jak nakonfigurovat instanci vlastního vyhledávání a integrují je do nové webové stránky.
+Tento kurz ukazuje postup konfigurace instance vlastního vyhledávání a její integrace do nové webové stránky.
 
-Úlohy popsané jsou:
+Probírají se tyto úlohy:
 
 > [!div class="checklist"]
 > - Vytvoření instance vlastního vyhledávání
-> - Přidat aktivní položky
-> - Přidat blokovaných položek
-> - Přidání připojených položek
+> - Přidání aktivních položek
+> - Přidání blokovaných položek
+> - Přidání připnutých položek
 > - Integrace vlastního vyhledávání do webové stránky
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud chcete postupovat v kurzu, budete potřebovat klíč předplatného pro rozhraní API pro vlastní vyhledávání Bingu.  Chcete-li získat klíče, naleznete v tématu [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search).
+- Abyste mohli postupovat podle tohoto kurzu, potřebujete klíč předplatného pro rozhraní API pro vlastní vyhledávání Bingu.  Postup, jak získat klíč, naleznete v tématu [Zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search).
 - Pokud ještě nemáte nainstalovanou sadu Visual Studio 2017, můžete stáhnout a použít **bezplatnou verzi** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-a-custom-search-instance"></a>Vytvoření instance vlastního vyhledávání
 
-K vytvoření instance vlastního vyhledávání Bingu:
+Vytvoření instance vlastního vyhledávání Bingu:
 
 1. Otevřete internetový prohlížeč.  
   
-2. Přejděte do vlastního vyhledávání [portál](https://customsearch.ai).  
+2. Přejděte na [portál](https://customsearch.ai) vlastního vyhledávání.  
   
-3. Přihlaste se k portálu pomocí účtu Microsoft (MSA). Pokud nemáte MSA, klikněte na tlačítko **vytvořit účet Microsoft**. Pokud je vaše první přihlášení pomocí portálu, požádá o zadání oprávnění pro přístup k datům. Klikněte na **Ano**.  
+3. Přihlaste se k portálu pomocí účtu Microsoft. Pokud účet Microsoft nemáte, klikněte na **Vytvořit účet Microsoft**. Pokud portál používáte poprvé, zobrazí se výzva k udělení oprávnění pro přístup k vašim datům. Klikněte na **Ano**.  
   
-4. Po přihlášení klikněte na tlačítko **nové vlastní vyhledávání**. V **vytvořit novou instanci vlastního vyhledávání** okno, zadejte název, který má smysl a popisuje typ obsahu, které vrátí vyhledávání. Kdykoli můžete změnit název.  
+4. Po přihlášení klikněte na **Nové vlastní vyhledávání**. V okně **Vytvořit novou instanci vlastního vyhledávání** zadejte smysluplný název popisující typ obsahu, který vyhledávání vrací. Název můžete kdykoli změnit.  
   
-  ![Snímek obrazovky s vytvořením nového vlastního vyhledávacího pole instance](../media/newCustomSrch.png)  
+  ![Snímek obrazovky s oknem Vytvořit novou instanci vlastního vyhledávání](../media/newCustomSrch.png)  
   
-5. Klikněte na tlačítko OK, zadejte adresu URL a jestli se mají zahrnout podstránky adresy URL.  
+5. Klikněte na OK, zadejte adresu URL a určete, jestli se mají zahrnout i podstránky této adresy URL.  
   
-  ![Stránka definice – snímek obrazovky z adresy URL](../media/newCustomSrch1-a.png)  
+  ![Snímek obrazovky se stránkou pro definici adresy URL](../media/newCustomSrch1-a.png)  
 
 
-## <a name="add-active-entries"></a>Přidat aktivní položky
+## <a name="add-active-entries"></a>Přidání aktivních položek
 
-Chcete-li zahrnout výsledky od určitých webů nebo adresy URL, přidejte je do **aktivní** kartu.
+Pokud chcete zahrnout výsledky z konkrétních webů nebo adres URL, přidejte je na kartě **Aktivní**.
 
-1.  Na **konfigurace** stránky, klikněte na tlačítko **aktivní** kartě a zadejte adresu URL jedna nebo více stránek, které chcete zahrnout při hledání.
+1.  Na stránce **Konfigurace** klikněte na kartu **Aktivní** a zadejte adresy URL webů, které chcete do vyhledávání zahrnout.
 
-    ![Snímek obrazovky na aktivní kartu Editor definic](../media/customSrchEditor.png)
+    ![Snímek obrazovky editoru definice s kartou Aktivní](../media/customSrchEditor.png)
 
-2.  Pokud chcete potvrdit, že vaše instance vrátí výsledky, zadejte dotaz v podokně náhledu na pravé straně. Bing vrátí pouze výsledky pro veřejné weby, které se má indexovat.
+2.  Pokud chcete ověřit, že vaše instance vrací výsledky, zadejte dotaz do podokna náhledu na pravé straně. Bing vrátí výsledky pouze pro veřejné weby, které indexoval.
 
-## <a name="add-blocked-entries"></a>Přidat blokovaných položek
+## <a name="add-blocked-entries"></a>Přidání blokovaných položek
 
-Pokud chcete výsledky vyloučit ze konkrétní weby nebo adresy URL, přidejte je do **blokováno** kartu.
+Pokud chcete vyloučit výsledky z konkrétních webů nebo adres URL, přidejte je na kartě **Blokované**.
 
-1. Na **konfigurace** stránky, klikněte na tlačítko **blokováno** kartě a zadejte adresu URL jedna nebo více stránek, které chcete vyloučit z hledání.
+1. Na stránce **Konfigurace** klikněte na kartu **Blokované** a zadejte adresy URL webů, které chcete z vyhledávání vyloučit.
 
-    ![Snímek obrazovky blokované kartu Editor definic](../media/blockedCustomSrch.png)
+    ![Snímek obrazovky editoru definice s kartou Blokované](../media/blockedCustomSrch.png)
 
 
-2. Pokud chcete potvrdit, že vaše instance není vrácení výsledků z blokovaných webů, zadejte dotaz v podokně náhledu na pravé straně. 
+2. Pokud chcete ověřit, že vaše instance nevrací výsledky z blokovaných webů, zadejte dotaz do podokna náhledu na pravé straně. 
 
-## <a name="add-pinned-entries"></a>Přidání připojených položek
+## <a name="add-pinned-entries"></a>Přidání připnutých položek
 
-Pro Připnutí konkrétní webové stránky do horní části výsledků vyhledávání přidat webovou stránku a dotaz termín, který **Pinned** kartu. **Pinned** karta obsahuje seznam webové stránky a dotaz páry termín zadejte webovou stránku, která se zobrazí jako nejlepší výsledek pro konkrétní dotaz. Webová stránka je připnutá pouze v případě, že řetězec dotazu odpovídající řetězec dotazu PIN kódu na základě podmínky shody PIN kód. [Přečtěte si další informace](../define-your-custom-view.md#pin-to-top).
+Pokud chcete určitou webovou stránku připnout na začátek výsledků hledání, přidejte danou webovou stránku a termín dotazu na kartě **Připnuté**. Karta **Připnuté** obsahuje seznam párů webových stránek a termínů dotazu určujících webové stránky, které se zobrazí jako nejlepší výsledek pro konkrétní dotaz. Webová stránka se připne pouze v případě, že řetězec dotazu uživatele odpovídá řetězci dotazu připnuté webové stránky na základě podmínky shody připnuté webové stránky. [Další informace](../define-your-custom-view.md#pin-to-top).
 
-1. Na **konfigurace** stránky, klikněte na tlačítko **Pinned** kartě a zadejte výraz webové stránky a dotaz webové stránky, které se mají vracet jako nejlepší výsledek.  
+1. Na stránce **Konfigurace** klikněte na kartu **Připnuté** a zadejte webovou stránku, kterou chcete vrátit jako nejlepší výsledek, a její termín dotazu.  
   
-2. Ve výchozím nastavení řetězce dotazu musí přesně odpovídat řetězec dotazu svůj PIN kód pro Bing se vraťte na webovou stránku jako nejlepší výsledek. Chcete-li změnit podmínky shody, upravte kód pin (klikněte na ikonu tužky), klikněte na tlačítko Exact v **podmínce shody dotazu** sloupci a vyberte podmínce shody, které je nejvhodnější pro vaši aplikaci.  
+2. Ve výchozím nastavení musí řetězec dotazu uživatele přesně odpovídat řetězci dotazu připnuté webové stránky, aby Bing tuto webovou stránku vrátil jako nejlepší výsledek. Pokud chcete podmínku shody změnit, upravte připnutou webovou stránku (kliknutím na ikonu tužky), ve sloupci **Podmínka shody dotazu** klikněte na Přesná a vyberte podmínku shody vhodnou pro vaši aplikaci.  
   
-    ![Snímek obrazovky Editor definic připnuté karty](../media/pinnedCustomSrch.png)
+    ![Snímek obrazovky editoru definice s kartou Připnuté](../media/pinnedCustomSrch.png)
   
-3. Potvrďte, že vaše instance jako nejlepší výsledek vrátí Zadaná webová stránka, zadejte výraz dotazu, které jste připnuli v podokně náhledu na pravé straně.
+3. Pokud chcete ověřit, že vaše instance jako nejlepší výsledek vrací zadanou webovou stránku, zadejte připnutý termín dotazu do podokna náhledu na pravé straně.
 
-## <a name="configure-hosted-ui"></a>Konfigurace prostředí uživatelského rozhraní
+## <a name="configure-hosted-ui"></a>Konfigurace hostovaného uživatelského rozhraní
 
-Vlastní vyhledávání poskytuje hostované uživatelské rozhraní k vykreslení odpovědi JSON vaší instance vlastního hledání. Definování uživatelského rozhraní:
+Vlastní vyhledávání poskytuje hostované uživatelské rozhraní pro vykreslení odpovědi JSON vaší instance vlastního vyhledávání. Definice uživatelského rozhraní:
 
-1. Klikněte na tlačítko **hostované uživatelského rozhraní** kartu.  
+1. Klikněte na kartu **Hostované uživatelské rozhraní**.  
   
 2. Vyberte rozložení.  
   
-  ![Snímek obrazovky uživatelského rozhraní hostované vyberte krok rozložení](./media/custom-search-hosted-ui-select-layout.png)  
+  ![Snímek obrazovky s kartou Hostované uživatelské rozhraní a krokem Výběr rozložení](./media/custom-search-hosted-ui-select-layout.png)  
   
-3. Vyberte barvu motivu.  
+3. Vyberte barevný motiv.  
   
-  ![Snímek obrazovky uživatelského rozhraní hostované vyberte barevný motiv](./media/custom-search-hosted-ui-select-color-theme.png)  
+  ![Snímek obrazovky s kartou Hostované uživatelské rozhraní a výběrem barevného motivu](./media/custom-search-hosted-ui-select-color-theme.png)  
 
-  Pokud je potřeba optimalizovat barevný motiv k lepší integraci s vaší webovou aplikací, klikněte na tlačítko **vlastní motiv**. Ne všechny barva vaše konfigurace vztahovat na všechny motivy rozložení. Chcete-li změnit barvu, zadejte do příslušného textového pole barvy RGB HEXADECIMÁLNÍ hodnotu (například #366eb8). Nebo, klikněte na tlačítko barvy a potom klikněte na odstín, který vám vyhovuje. Vždy uvažovat o usnadnění přístupu, při výběru barvy.
+  Pokud potřebujete barevný motiv doladit, aby se lépe integroval s vaší webovou aplikací, klikněte na **Přizpůsobit motiv**. Ne všechny konfigurace barev je možné použít ve všech motivech rozložení. Pokud chcete změnit barvu, zadejte do odpovídajícího textového pole šestnáctkovou hodnotu RGB barvy (například #366eb8). Případně můžete kliknout na tlačítko barvy a pak kliknout na odstín, který vám vyhovuje. Při výběru barev mějte vždy na paměti přístupnost.
   
-  ![Snímek obrazovky uživatelského rozhraní hostované přizpůsobit barevný motiv](./media/custom-search-hosted-ui-customize-color-theme.png)  
+  ![Snímek obrazovky s kartou Hostované uživatelské rozhraní a přizpůsobením barevného motivu](./media/custom-search-hosted-ui-customize-color-theme.png)  
 
   
 4. Zadejte další možnosti konfigurace.  
   
-  ![Snímek obrazovky s dalším konfiguracím krok hostované uživatelského rozhraní](./media/custom-search-hosted-ui-additional-configurations.png)  
+  ![Snímek obrazovky s kartou Hostované uživatelské rozhraní a krokem Další konfigurace](./media/custom-search-hosted-ui-additional-configurations.png)  
   
-  Chcete-li získat pokročilou konfiguraci, klikněte na tlačítko **Zobrazit pokročilou konfiguraci**. Tento postup přidá konfigurace, jako *cíl odkazu* na webové vyhledávání možnosti *Povolit filtry* možností Image a videa, a *zástupný text pole hledání* na různé Možnosti.
+  Pokud chcete zobrazit pokročilou konfiguraci, klikněte na **Zobrazit pokročilou konfiguraci**. Tím se přidají například konfigurace *Cíl odkazu* mezi možnosti Vyhledávání na webu, *Povolit filtry* mezi možnosti Vyhledávání obrázků a videí a *Zástupný text ve vyhledávacím poli* mezi možnosti Různé.
 
-  ![Snímek obrazovky rozšířených konfigurací kroku hostované uživatelského rozhraní](./media/custom-search-hosted-ui-advanced-configurations.png)  
+  ![Snímek obrazovky s kartou Hostované uživatelské rozhraní a krokem Pokročilá konfigurace](./media/custom-search-hosted-ui-advanced-configurations.png)  
   
-5. Vyberte klíče předplatného z rozevíracích seznamů. Nebo můžete ručně zadat klíč předplatného. Informace o získávání klíčů najdete v tématu [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api).  
+5. V rozevíracím seznamu vyberte klíče svého předplatného. Případně můžete klíč předplatného zadat ručně. Informace o získání klíčů najdete v tématu [Zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api).  
   
-  ![Snímek obrazovky s dalším konfiguracím krok hostované uživatelského rozhraní](./media/custom-search-hosted-ui-subscription-key.png)
+  ![Snímek obrazovky s kartou Hostované uživatelské rozhraní a krokem Další konfigurace](./media/custom-search-hosted-ui-subscription-key.png)
 
 [!INCLUDE[publish or revert](../includes/publish-revert.md)]
 
 <a name="consuminghostedui"></a>
-## <a name="consuming-hosted-ui"></a>Použití prostředí uživatelského rozhraní
+## <a name="consuming-hosted-ui"></a>Používání hostovaného uživatelského rozhraní
 
-Existují dva způsoby, jak používat prostředí uživatelského rozhraní.  
+Hostované uživatelské rozhraní můžete používat dvěma způsoby.  
 
-- Možnost 1: Integrace zadaný fragment kódu jazyka JavaScript do vaší aplikace.
-- Možnost 2: Použití koncového bodu ve formátu HTML za předpokladu.
+- Možnost 1: Integrace poskytnutého fragmentu kódu JavaScriptu do aplikace
+- Možnost 2: Použití poskytnutého koncového bodu HTML
 
-Zbývající část tohoto kurzu ukazuje **možnost 1: fragment kódu jazyka Javascript**.  
+Zbývající část tohoto kurzu ilustruje **Možnost 1: Fragment kódu JavaScriptu**.  
 
 ## <a name="set-up-your-visual-studio-solution"></a>Nastavení řešení v sadě Visual Studio
 
@@ -137,21 +138,21 @@ Zbývající část tohoto kurzu ukazuje **možnost 1: fragment kódu jazyka Jav
   
 2. V nabídce **Soubor** vyberte **Nový** a zvolte **Projekt**.  
   
-3. V **nový projekt** okně **Visual C# / Web / webové aplikace ASP.NET Core**, pojmenujte svůj projekt a potom klikněte na tlačítko **OK**.  
+3. V okně **Nový projekt** vyberte **Visual C# > Web > Webová aplikace ASP.NET Core**, zadejte název projektu a pak klikněte na **OK**.  
   
-  ![Snímek obrazovky okna Nový projekt](./media/custom-search-new-project.png)  
+  ![Snímek obrazovky s oknem Nový projekt](./media/custom-search-new-project.png)  
   
-4. V **nová webová aplikace ASP.NET Core** okně **webovou aplikaci** a klikněte na tlačítko **OK**.  
+4. V okně **Nová webová aplikace ASP.NET Core** vyberte **Webová aplikace** a klikněte na **OK**.  
   
-  ![Snímek obrazovky okna Nový projekt](./media/custom-search-new-webapp.png)  
+  ![Snímek obrazovky s oknem Nový projekt](./media/custom-search-new-webapp.png)  
 
-## <a name="edit-indexcshtml"></a>Upravit index.cshtml
+## <a name="edit-indexcshtml"></a>Úprava souboru index.cshtml
 
-1. V **Průzkumníka řešení**, rozbalte **stránky** a dvakrát klikněte na panel **index.cshtml** k otevření souboru.  
+1. V **Průzkumníku řešení** rozbalte **Stránky** a dvojím kliknutím na soubor **index.cshtml** ho otevřete.  
   
-  ![Snímek obrazovky Průzkumníka řešení rozšířit stránky a vybrali index.cshtml](./media/custom-search-visual-studio-webapp-solution-explorer-index.png)  
+  ![Snímek obrazovky Průzkumníka řešení s rozbalenou položkou Stránky a vybraným souborem index.cshtml](./media/custom-search-visual-studio-webapp-solution-explorer-index.png)  
   
-2. V index.cshtml vymazat úplně všechno od z řádku 7 a níže.  
+2. V souboru index.cshtml odstraňte vše od řádku 7 dál.  
   
   ```razor
   @page
@@ -161,7 +162,7 @@ Zbývající část tohoto kurzu ukazuje **možnost 1: fragment kódu jazyka Jav
   }    
   ```  
   
-3. Přidáte element zalomení řádku a div tak, aby fungoval jako kontejner.  
+3. Přidejte element zalomení řádku a element div, který bude fungovat jako kontejner.  
   
   ```html
   @page
@@ -173,13 +174,13 @@ Zbývající část tohoto kurzu ukazuje **možnost 1: fragment kódu jazyka Jav
   <div id="customSearch"></div>
   ```  
   
-4. V **hostované uživatelského rozhraní** stránky, přejděte dolů k části s názvem **využívání rozhraní**. Klikněte na tlačítko *koncové body* pro přístup k fragment kódu jazyka JavaScript. Můžete také získáte fragment kódu kliknutím **produkční** a pak **hostované uživatelského rozhraní** kartu.
+4. Na stránce **Hostované uživatelské rozhraní** se posuňte dolů do části **Používání uživatelského rozhraní**. Kliknutím na *Koncové body* přejděte k fragmentu kódu JavaScriptu. K fragmentu kódu můžete přejít také kliknutím na **Produkce** a pak na kartu **Hostované uživatelské rozhraní**.
   
   <!-- Get new screenshot after prod gets new bits
   ![Screenshot of the Hosted UI save button](./media/custom-search-hosted-ui-consuming-ui.png)  
   -->
   
-5. Script element umožňuje vložte do kontejneru, který jste přidali.  
+5. Vložte element script do kontejneru, který jste přidali.  
   
   ``` html
   @page
@@ -196,19 +197,19 @@ Zbývající část tohoto kurzu ukazuje **možnost 1: fragment kódu jazyka Jav
   </div>
   ```  
   
-6. V **Průzkumníka řešení**, klikněte pravým tlačítkem na **wwwroot** a klikněte na tlačítko **zobrazit v prohlížeči**.  
+6. V **Průzkumníku řešení** klikněte pravým tlačítkem na **wwwroot** a pak na **Zobrazit v prohlížeči**.  
   
-  ![Snímek obrazovky Průzkumníka řešení vyberete zobrazení v místní nabídce wwwroot v prohlížeči](./media/custom-search-webapp-view-in-browser.png)  
+  ![Snímek obrazovky Průzkumníka řešení s výběrem možnosti Zobrazit v prohlížeči v místní nabídce wwwroot](./media/custom-search-webapp-view-in-browser.png)  
 
-Nové webové stránky pro vlastní vyhledávání by měl vypadat nějak takto:
+Vaše nová webová stránka pro vlastní vyhledávání by měla vypadat nějak takto:
 
-![Snímek obrazovky webové stránky, vlastní vyhledávání](./media/custom-search-webapp-browse-index.png)
+![Snímek obrazovky webové stránky pro vlastní vyhledávání](./media/custom-search-webapp-browse-index.png)
 
-Prohledávání vykreslí výsledky takto:
+Při vyhledávání se následujícím způsobem budou vykreslovat výsledky:
 
-![Snímek obrazovky s vlastní výsledky hledání](./media/custom-search-webapp-results.png)
+![Snímek obrazovky s výsledky vlastního vyhledávání](./media/custom-search-webapp-results.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Volání koncového bodu pro vlastní vyhledávání Bingu (C#)](../call-endpoint-csharp.md)
+> [Volání koncového bodu vlastního vyhledávání Bingu (C#)](../call-endpoint-csharp.md)

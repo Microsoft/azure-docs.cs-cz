@@ -3,18 +3,18 @@ title: Vyhledání trasy s využitím Azure Maps | Microsoft Docs
 description: Trasa k bodu zájmu s využitím Azure Maps
 author: dsk-2015
 ms.author: dkshir
-ms.date: 09/04/2018
+ms.date: 10/02/2018
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 68d7df575e3d413780b8181c11dd59a22469708b
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 3bf1aa6d1b9bd65c28ef99ddbac71fb75daf99e7
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578933"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816714"
 ---
 # <a name="route-to-a-point-of-interest-using-azure-maps"></a>Trasa k bodu zájmu s využitím Azure Maps
 
@@ -126,14 +126,16 @@ Pro účely tohoto kurzu nastavte jako počáteční bod Microsoft a jako cílov
         padding: 50
     });
 
-    // Add pins to the map for the start and end point of the route
-    map.addPins([startPin, destinationPin], {
-        name: "route-pins",
-        textFont: "SegoeUi-Regular",
-        textOffset: [0, -20]
+    map.addEventListener("load", function () { 
+        // Add pins to the map for the start and end point of the route
+        map.addPins([startPin, destinationPin], {
+            name: "route-pins",
+            textFont: "SegoeUi-Regular",
+            textOffset: [0, -20]
+        });
     });
     ```
-    **map.setCameraBounds** upraví okno mapy podle souřadnic počátečního a koncového bodu. Rozhraní API **map.addPins** přidá do mapového ovládacího prvku body jako vizuální součásti.
+    **map.setCameraBounds** upraví okno mapy podle souřadnic počátečního a koncového bodu. **map.addEventListener** zajišťuje načtení všech funkcí map přidaných do mapy po plném načtení mapy. Rozhraní API **map.addPins** v naslouchacím procesu událostí přidá do mapového ovládacího prvku body jako vizuální součásti.
 
 3. Uložte soubor **MapRoute.html** a aktualizujte prohlížeč. Teď se ve středu mapy zobrazí Seattle a můžete si všimnou modrých špendlíků, které označují počáteční a koncový bod.
 
@@ -143,7 +145,7 @@ Pro účely tohoto kurzu nastavte jako počáteční bod Microsoft a jako cílov
 
 ## <a name="get-directions"></a>Získání pokynů
 
-Tato část ukazuje způsob použití rozhraní API Maps Route Service k vyhledání trasy z daného počátečního bodu do cíle. Route Service poskytuje rozhraní API pro plánování *nejrychlejší*, *nejkratší*, *úsporné* nebo *vzrušující* trasy mezi dvěma místy. Umožňuje uživatelům také plánovat trasy v budoucnu s použitím rozsáhlé databáze Azure s historickými dopravními informacemi a předvídat dobu trvání trasy pro kterýkoli den a čas. Další informace najdete v tématu [Získání pokynů k trase](https://docs.microsoft.com/rest/api/maps/route/getroutedirections).
+Tato část ukazuje způsob použití rozhraní API Maps Route Service k vyhledání trasy z daného počátečního bodu do cíle. Route Service poskytuje rozhraní API pro plánování *nejrychlejší*, *nejkratší*, *úsporné* nebo *vzrušující* trasy mezi dvěma místy. Umožňuje uživatelům také plánovat trasy v budoucnu s použitím rozsáhlé databáze Azure s historickými dopravními informacemi a předvídat dobu trvání trasy pro kterýkoli den a čas. Další informace najdete v tématu [Získání pokynů k trase](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Všechny následující funkce by se měly přidat **do modulu eventListener pro načtení mapy**, aby se zajistilo jejich načtení po plném načtení mapy.
 
 1. Nejprve do mapy přidejte novou vrstvu, na které se zobrazí cesta trasy neboli *LineString*. Do bloku *script* přidejte následující kód jazyka JavaScript.
 
@@ -204,6 +206,10 @@ V tomto kurzu jste se naučili:
 > * Vytvoření nové webové stránky s použitím rozhraní API pro mapové ovládací prvky
 > * Nastavit souřadnice pro adresu
 > * Zadat dotaz na službu Route Service ohledně trasy k bodu zájmu
+
+Přístup k ukázce kódu pro tento kurz můžete získat tady:
+
+> [Vyhledání trasy pomocí Azure Maps](https://github.com/Azure-Samples/azure-maps-samples/blob/master/src/route.html)
 
 V dalším kurzu se dozvíte, jak vytvořit dotaz na trasu s omezeními, jako jsou režim dopravy nebo typ nákladu, a pak na stejné mapě zobrazit více tras.
 

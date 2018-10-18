@@ -1,5 +1,5 @@
 ---
-title: Přehled virtuálních počítačů s Windows | Dokumentace Microsoftu
+title: Přehled virtuálních počítačů s Windows – Azure | Microsoft Docs
 description: Zjistěte, jak vytvářet a spravovat virtuální počítače s Windows v Azure.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/17/2017
+ms.date: 10/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e12b8153494eaefb1f7e2d27fc667ef0070c68d0
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 6ec151222bda3d87386cc3be4c54821775880795
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41917920"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816833"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Přehled virtuálních počítačů s Windows v Azure
 
@@ -83,9 +83,9 @@ Tato tabulka ukazuje několik způsobů, jak můžete najít informace o imagi.
 | Metoda | Popis |
 | --- | --- |
 | portál Azure |Hodnoty se pro vás zadají automaticky, když vyberete image, která se má použít. |
-| Azure PowerShell |[Get-AzureRMVMImagePublisher](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmimagepublisher) -Location "umístění"<BR>[Get-AzureRMVMImageOffer](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmimageoffer) -Location "umístění" -Publisher "název_vydavatele"<BR>[Get-AzureRMVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) -Location "umístění" -Publisher "název_vydavatele" -Offer "název_nabídky" |
+| Azure PowerShell |[Get-AzureRMVMImagePublisher](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmimagepublisher) -Location *umístění*<BR>[Get-AzureRMVMImageOffer](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmimageoffer) -Location *umístění* -Publisher *název_vydavatele*<BR>[Get-AzureRMVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) -Location *umístění* -Publisher *název_vydavatele* -Offer *název_nabídky* |
 | Rozhraní REST API |[Vypsat vydavatele imagí](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publishers)<BR>[Vypsat nabídky imagí](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[Vypsat skladové jednotky (SKU) imagí](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
-| Azure CLI |[az vm image list-publishers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_publishers) --location "umístění"<BR>[az vm image list-offers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_offers) --location "umístění" --publisher "název_vydavatele"<BR>[az vm image list-skus](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az_vm_list_skus) --location "umístění" --publisher "název_vydavatele" --offer "název_nabídky"|
+| Azure CLI |[az vm image list-publishers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_publishers) --location *umístění*<BR>[az vm image list-offers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_offers) --location *umístění* --publisher *název_vydavatele*<BR>[az vm image list-skus](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az_vm_list_skus) --location *umístění* --publisher *název_vydavatele* --offer *název_nabídky*|
 
 Můžete se rozhodnout [nahrát a použít vlastní image](upload-generalized-managed.md#upload-the-vhd-to-your-storage-account). Pokud tak učiníte, název vydavatele, nabídka a skladová jednotka (SKU) se nepoužijí.
 
@@ -124,7 +124,7 @@ Tato tabulka obsahuje informace, které vám pomůžou začít vytvářet virtu�
 | Rozhraní REST API |[Vytvořit nebo aktualizovat virtuální počítač](https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines-create-or-update) |
 | Azure CLI |[Vytvoření virtuálního počítače pomocí Azure CLI](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-cli-sample-create-vm) |
 
-Věříte, že se to nikdy nestane, ale občas dojde k nějaké chybě. Pokud taková situace nastane u vás, podívejte se na informace v tématu [Řešení potíží v nasazení Resource Manager s vytvářením virtuálního počítače s Windows v Azure](troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Věříte, že se to nikdy nestane, ale občas dojde k nějaké chybě. Pokud taková situace nastane u vás, podívejte se na informace v tématu [Řešení potíží v nasazení Resource Manager s vytvářením virtuálního počítače s Windows v Azure](../troubleshooting/troubleshoot-deployment-new-vm-windows.md).
 
 ## <a name="how-do-i-manage-the-vm-that-i-created"></a>Jak můžu spravovat vytvořený virtuální počítač?
 Virtuální počítače můžete spravovat pomocí portálu (přes prohlížeč), nástrojů příkazového řádku s podporou pro skriptování, nebo přímo prostřednictvím rozhraní API. Mezi obvyklé úlohy správy, které můžete provádět, patří získávání informací o virtuálním počítači, připojování k virtuálnímu počítači, správa dostupnosti a provádění zálohování.
@@ -141,10 +141,10 @@ Tato tabulka uvádí některé způsoby, jakými můžete získat informace o vi
 | Azure CLI |Informace o použití Azure CLI ke správě virtuálních počítačů najdete v tématu [Referenční informace k Azure CLI](https://docs.microsoft.com/cli/azure/vm). |
 
 ### <a name="log-on-to-the-vm"></a>Přihlášení k virtuálnímu počítači
-Pomocí tlačítka [Připojit](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) na webu Azure Portal spouštíte relaci Vzdálené plochy (protokol RDP). Při pokusu o použití vzdáleného připojení se občas může něco pokazit. Pokud taková situace nastane u vás, podívejte se na informace nápovědy v tématu [Řešení potíží s připojením ke vzdálené ploše virtuálního počítače Azure s Windows](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Pomocí tlačítka [Připojit](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) na webu Azure Portal spouštíte relaci Vzdálené plochy (protokol RDP). Při pokusu o použití vzdáleného připojení se občas může něco pokazit. Pokud taková situace nastane u vás, podívejte se na informace nápovědy v tématu [Řešení potíží s připojením ke vzdálené ploše virtuálního počítače Azure s Windows](../troubleshooting/troubleshoot-rdp-connection.md).
 
 ### <a name="manage-availability"></a>Správa dostupnosti
-Je důležité, abyste porozuměli tomu, jak pro svoji aplikaci [zajistit vysokou dostupnost](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Tato konfigurace zahrnuje vytvoření více virtuálních počítačů pro zajištění, že je alespoň jeden spuštěný.
+Je důležité, abyste porozuměli tomu, jak pro svoji aplikaci [zajistit vysokou dostupnost](manage-availability.md). Tato konfigurace zahrnuje vytvoření více virtuálních počítačů pro zajištění, že je alespoň jeden spuštěný.
 
 Aby se na vaše nasazení vztahovala záruka 99,95% dostupnosti virtuálního počítače podle smlouvy SLA, je nutné nasadit alespoň dva virtuální počítače, které vaši úlohu spouští v rámci [skupiny dostupnosti](tutorial-availability-sets.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Tato konfigurace zajišťuje distribuci vašich virtuálních počítačů mezi více domén selhání a jejich nasazení na hostitele s různými časovými obdobími údržby. Úplná smlouva [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) vysvětluje garantovanou dostupnost Azure jako celku.
 
@@ -152,5 +152,5 @@ Aby se na vaše nasazení vztahovala záruka 99,95% dostupnosti virtuálního po
 [Trezor služby Recovery Services](../../backup/backup-introduction-to-azure-backup.md) slouží k ochraně dat a assetů ve službě Backup a službách Azure Site Recovery. Pomocí trezoru služby Recovery Services můžete [nasadit a spravovat zálohy virtuálních počítačů nasazených Resource Managerem pomocí prostředí PowerShell](../../backup/backup-azure-vms-automation.md). 
 
 ## <a name="next-steps"></a>Další kroky
-* Pokud máte v úmyslu pracovat s virtuálními počítači s Linuxem, podívejte se na téma [Azure a Linux](../linux/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Další informace o pokynech ohledně nastavení infrastruktury najdete v tématu [Průvodce ukázkovou infrastrukturou Azure](infrastructure-example.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Pokud máte v úmyslu pracovat s virtuálními počítači s Linuxem, podívejte se na téma [Azure a Linux](../linux/overview.md).
+* Další informace o pokynech ohledně nastavení infrastruktury najdete v tématu [Průvodce ukázkovou infrastrukturou Azure](infrastructure-example.md).

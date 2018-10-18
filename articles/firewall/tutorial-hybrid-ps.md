@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 9/25/2018
+ms.date: 10/2/2018
 ms.author: victorh
-ms.openlocfilehash: 919051a945d423a104b286e9c5703c5b749cf026
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 27221ac4b23f52dd6976a959e6e5529eb0cc89fa
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946455"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48856067"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Kurz: Nasazení a konfigurace služby Azure Firewall v hybridní síti pomocí Azure PowerShellu
 
@@ -134,6 +134,28 @@ $VNetSpoke = New-AzureRmVirtualNetwork -Name $VnetNameSpoke -ResourceGroupName $
 -Location $Location1 -AddressPrefix $VNetSpokePrefix -Subnet $Spokesub,$GWsubSpoke
 ```
 
+## <a name="create-and-configure-the-onprem-vnet"></a>Vytvoření a konfigurace místní virtuální sítě
+
+Definujte podsítě, které se mají zahrnout do virtuální sítě:
+
+```azurepowershell
+$Onpremsub = New-AzureRmVirtualNetworkSubnetConfig -Name $SNNameOnprem -AddressPrefix $SNOnpremPrefix
+$GWOnpremsub = New-AzureRmVirtualNetworkSubnetConfig -Name $SNnameGW -AddressPrefix $SNGWOnpremPrefix
+```
+
+Teď vytvořte místní virtuální síť:
+
+```azurepowershell
+$VNetOnprem = New-AzureRmVirtualNetwork -Name $VNetnameOnprem -ResourceGroupName $RG1 `
+-Location $Location1 -AddressPrefix $VNetOnpremPrefix -Subnet $Onpremsub,$GWOnpremsub
+```
+Vyžádejte si veřejnou IP adresu, která se přidělí bráně, kterou vytvoříte pro příslušnou virtuální síť. Všimněte si, že metoda *AllocationMethod* je **dynamická**. Není možné určit IP adresu, kterou chcete používat. Přiděluje se pro bránu dynamicky. 
+
+  ```azurepowershell
+  $gwOnprempip = New-AzureRmPublicIpAddress -Name $GWOnprempipName -ResourceGroupName $RG1 `
+  -Location $Location1 -AllocationMethod Dynamic
+```
+
 ## <a name="configure-and-deploy-the-firewall"></a>Konfigurace a nasazení brány firewall
 
 Teď do virtuální sítě rozbočovače nasaďte bránu firewall.
@@ -154,11 +176,13 @@ $AzfwPrivateIP
 
 ### <a name="configure-network-rules"></a>Konfigurace pravidel sítě
 
+<!--- $Rule2 = New-AzureRmFirewallNetworkRule -Name "AllowPing" -Protocol ICMP -SourceAddress $SNOnpremPrefix `
+   -DestinationAddress $VNetSpokePrefix -DestinationPort *--->
+
 ```azurepowershell
 $Rule1 = New-AzureRmFirewallNetworkRule -Name "AllowWeb" -Protocol TCP -SourceAddress $SNOnpremPrefix `
    -DestinationAddress $VNetSpokePrefix -DestinationPort 80
-$Rule2 = New-AzureRmFirewallNetworkRule -Name "AllowPing" -Protocol ICMP -SourceAddress $SNOnpremPrefix `
-   -DestinationAddress $VNetSpokePrefix -DestinationPort *
+
 $Rule3 = New-AzureRmFirewallNetworkRule -Name "AllowRDP" -Protocol TCP -SourceAddress $SNOnpremPrefix `
    -DestinationAddress $VNetSpokePrefix -DestinationPort 3389
 
@@ -262,27 +286,7 @@ Po dokončení zpracování rutiny si prohlédněte hodnoty. V následujícím p
 "egressBytesTransferred": 4142431
 ```
 
-## <a name="create-and-configure-the-onprem-vnet"></a>Vytvoření a konfigurace místní virtuální sítě
 
-Definujte podsítě, které se mají zahrnout do virtuální sítě:
-
-```azurepowershell
-$Onpremsub = New-AzureRmVirtualNetworkSubnetConfig -Name $SNNameOnprem -AddressPrefix $SNOnpremPrefix
-$GWOnpremsub = New-AzureRmVirtualNetworkSubnetConfig -Name $SNnameGW -AddressPrefix $SNGWOnpremPrefix
-```
-
-Teď vytvořte místní virtuální síť:
-
-```azurepowershell
-$VNetOnprem = New-AzureRmVirtualNetwork -Name $VNetnameOnprem -ResourceGroupName $RG1 `
--Location $Location1 -AddressPrefix $VNetOnpremPrefix -Subnet $Onpremsub,$GWOnpremsub
-```
-Vyžádejte si veřejnou IP adresu, která se přidělí bráně, kterou vytvoříte pro příslušnou virtuální síť. Všimněte si, že metoda *AllocationMethod* je **dynamická**. Není možné určit IP adresu, kterou chcete používat. Přiděluje se pro bránu dynamicky. 
-
-  ```azurepowershell
-  $gwOnprempip = New-AzureRmPublicIpAddress -Name $GWOnprempipName -ResourceGroupName $RG1 `
-  -Location $Location1 -AllocationMethod Dynamic
-```
 
 ## <a name="peer-the-hub-and-spoke-vnets"></a>Vytvoření partnerského vztahu mezi virtuální sítí rozbočovače a paprsku
 
@@ -300,6 +304,9 @@ Add-AzureRmVirtualNetworkPeering -Name SpoketoHub -VirtualNetwork $VNetSpoke -Re
 Dále vytvořte několik tras: 
 - Trasa z podsítě brány rozbočovače do podsítě paprsku přes IP adresu brány firewall
 - Výchozí trasa z podsítě paprsku přes IP adresu brány firewall
+
+> [!NOTE]
+> Azure Firewall se učí vaše místní sítě pomocí protokolu BGP. To může zahrnovat výchozí trasu, která bude přesměrovávat přenosy z internetu zpátky přes vaši místní síť. Pokud místo toho chcete, aby se přenosy z internetu odesílaly z brány firewall přímo na internet, přidejte do sítě AzureFirewallSubnet uživatelsky definovanou výchozí trasu (0.0.0.0/0) s typem dalšího segmentu směrování **Internet**. Přenosy určené do místního prostředí budou dál putovat přes vynucené tunelové připojení bránou VPN/ExpressRoute za použití konkrétnějších tras naučených z protokolu BGP.
 
 ```azurepowershell
 #Create a route table
@@ -397,8 +404,9 @@ Set-AzureRmVMExtension `
     -TypeHandlerVersion 1.4 `
     -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server"}' `
     -Location $Location1
+```
 
-#Create a host firewall rule to allow ping in
+<!---#Create a host firewall rule to allow ping in
 Set-AzureRmVMExtension `
     -ResourceGroupName $RG1 `
     -ExtensionName IIS `
@@ -407,8 +415,8 @@ Set-AzureRmVMExtension `
     -ExtensionType CustomScriptExtension `
     -TypeHandlerVersion 1.4 `
     -SettingString '{"commandToExecute":"powershell New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4"}' `
-    -Location $Location1
-```
+    -Location $Location1--->
+
 
 ### <a name="create-the-onprem-virtual-machine"></a>Vytvoření místního virtuálního počítače
 Toto je jednoduchý virtuální počítač, ke kterému se můžete připojit pomocí Vzdálené plochy s použitím jeho veřejné IP adresy. Odtud se pak můžete připojit místnímu serveru přes bránu firewall. Po zobrazení výzvy zadejte pro virtuální počítač uživatelské jméno a heslo.
@@ -431,10 +439,10 @@ $NIC.IpConfigurations.privateipaddress
 ```
 
 1. Na webu Azure Portal se připojte k virtuálnímu počítači **VM-Onprem**.
-2. Na virtuálním počítači **VM-Onprem** otevřete příkazový řádek Windows PowerShellu a příkazem Ping otestujte privátní IP adresu virtuálního počítače **VM-spoke-01**.
+<!---2. Open a Windows PowerShell command prompt on **VM-Onprem**, and ping the private IP for **VM-spoke-01**.
 
-   Měli byste obdržet odpověď.
-1. Na virtuálním počítači **VM-Onprem** otevřete webový prohlížeč a přejděte na adresu http://\<privátní IP adresa virtuálního počítače VM-spoke-01\>.
+   You should get a reply.--->
+2. Na virtuálním počítači **VM-Onprem** otevřete webový prohlížeč a přejděte na adresu http://\<privátní IP adresa virtuálního počítače VM-spoke-01\>.
 
    Měla by se zobrazit výchozí stránka Internetové informační služby.
 
@@ -444,7 +452,7 @@ $NIC.IpConfigurations.privateipaddress
 
 Nyní jste ověřili, že pravidla brány firewall fungují:
 
-- Příkazem Ping můžete otestovat server ve virtuální síti paprsku.
+<!---- You can ping the server on the spoke VNet.--->
 - Můžete procházet webový server ve virtuální síti paprsku.
 - Pomocí protokolu RDP se můžete připojit k serveru ve virtuální síti paprsku.
 

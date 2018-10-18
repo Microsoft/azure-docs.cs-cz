@@ -1,52 +1,52 @@
 ---
-title: Rychlý start pro rozhraní API pro vyhledávání zpráv | Dokumentace Microsoftu
-description: Ukazuje, jak začít používat rozhraní API pro vyhledávání zpráv Bingu.
+title: 'Rychlý start: Rozhraní API Bingu pro vyhledávání zpráv'
+titlesuffix: Azure Cognitive Services
+description: Ukazuje, jak začít používat rozhraní API Bingu pro vyhledávání zpráv.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: 9CF6EAF3-42D8-4321-983C-4AC3896E8E03
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: b3f2b36034ab33b4f5eec2d138103c3e4d8e21f4
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: MT
+ms.openlocfilehash: bc3d2e43983791cf8f666660675a7dd537f04d77
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034327"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802521"
 ---
-# <a name="your-first-news-search-query"></a>Svůj první dotaz vyhledávání zpráv
+# <a name="quickstart-your-first-news-search-query"></a>Rychlý start: První dotaz pro vyhledávání zpráv
 
-Předtím, než můžete provést první volání, je nutné získat klíč předplatného služeb Cognitive Services. Chcete-li získat klíče, naleznete v tématu [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api).
+Před prvním voláním je potřeba získat klíč předplatného služeb Cognitive Services. Postup, jak získat klíč, naleznete v tématu [Zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api).
 
-Chcete-li získat výsledky hledání jen zprávy, bude posílat požadavek GET na následující koncový bod:
+Pokud chcete získat výsledky hledání, které se týkají jenom zpráv, odešlete požadavek GET na následující koncový bod:
 
 ```http
 https://api.cognitive.microsoft.com/bing/v7.0/news/search
 ```
 
-Žádost musí používat protokol HTTPS.
+Požadavek musí používat protokol HTTPS.
 
-Doporučujeme vám, že všechny požadavky pocházejí ze serveru. Distribuce klíč v rámci klientské aplikace nabízí další možnost pro třetí strana pro přístup k ní. Kromě toho volání ze serveru umožňuje jednorázovou upgradu pro budoucí verze rozhraní API.
+Doporučujeme, aby byly všechny požadavky odeslány ze serveru. Distribuce klíče v rámci klientské aplikace nabízí více příležitostí pro přístup kyberzločinců. Voláním ze serveru také zajistíte, že bude stačit upgradovat pouze jediný bod na budoucí verze rozhraní API.
 
-Musíte zadat požadavek [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query) parametr dotazu, který obsahuje hledaný termín daného uživatele. I když je volitelné, byste zadat také požadavek [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#mkt) parametr dotazu, který identifikuje na trhu, kde chcete výsledky pocházet z. Seznam volitelných parametrů dotazu, jako `freshness` a `textDecorations`, naleznete v tématu [parametry dotazu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query-parameters). Všechny hodnoty parametru dotazu musí mít kódování URL.
+Požadavek musí obsahovat parametr dotazu [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query), který obsahuje hledaný termín daného uživatele. Přestože je volitelný, měl by požadavek obsahovat také parametr [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#mkt) dotazu, který identifikuje trh, ze kterého chcete obdržet výsledky. Seznam volitelných parametrů dotazu jako `freshness` nebo `textDecorations` najdete v tématu [Parametry dotazu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query-parameters). Všechny hodnoty parametru dotazu musí mít kódování URL.
 
-Musíte zadat požadavek [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#subscriptionkey) záhlaví. I když je volitelné, jsou ukončena. doporučujeme zadat také následující hlavičky:
+Požadavek musí obsahovat hlavičku [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#subscriptionkey). Přestože jsou volitelné, doporučujeme, aby požadavek obsahoval i následující hlavičky:
 
-- [Uživatelský Agent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#useragent)
-- [X-MSEdge ClientID](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#clientid)
+- [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#useragent)
+- [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#clientid)
 - [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#clientip)
-- [X-Search umístění](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#location)
+- [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#location)
 
-Záhlaví IP a umístění klienta jsou důležité pro vrácení vědět umístění obsahu.
+IP a hlavičky klienta jsou důležité pro vrácení obsahu závislého na umístění.
 
-Seznam všech hlaviček žádostí a odpovědí najdete v tématu [záhlaví](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#headers).
+Seznam všech hlaviček žádostí a odpovědí najdete v tématu [Hlavičky](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#headers).
 
-## <a name="the-request"></a>Žádost
+## <a name="the-request"></a>Požadavek
 
-Následuje ukázka zprávy žádosti, která zahrnuje všechny parametry navrhovaných dotazů a hlaviček. Pokud voláte některé z rozhraní API Bingu poprvé, nezahrnujte do volání hlavičku ID klienta. ID klienta zahrňte pouze v případě, že jste již dříve volali rozhraní API Bingu a Bing vrátil ID klienta pro příslušnou kombinaci uživatele a zařízení.
+Následuje ukázka požadavku na zprávy, která obsahuje všechny navrhované parametry a hlavičky dotazu. Pokud voláte některé z rozhraní API Bingu poprvé, nezahrnujte do volání hlavičku ID klienta. ID klienta zahrňte pouze v případě, že jste již dříve volali rozhraní API Bingu a Bing vrátil ID klienta pro příslušnou kombinaci uživatele a zařízení.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies&mkt=en-us HTTP/1.1
@@ -60,7 +60,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="the-response"></a>Odpověď
 
-Následující příklad ukazuje odpověď na předchozí požadavek. Příklad také ukazuje hlavičky odpovědi.
+Následující příklad ukazuje odpověď na předchozí požadavek. Příklad taky zobrazuje hlavičky odpovědi.
 
 ```
 BingAPIs-TraceId: 994974CC8D994C95A5C31387296A510A
@@ -280,12 +280,12 @@ X-MSEdge-Ref: Ref A: 994974CC8D994C95A5C31387296A510A Ref B: BY3EDGE0207 Ref C: 
 
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Vyzkoušejte si rozhraní API. Přejděte na [konzole testování rozhraní API pro vyhledávání zpráv](https://dev.cognitive.microsoft.com/docs/services/56b43f72cf5ff8098cef380a/operations/56f02400dbe2d91900c68553).
+Vyzkoušejte si rozhraní API. Přejděte na [testovací konzolu rozhraní API pro vyhledávání zpráv](https://dev.cognitive.microsoft.com/docs/services/56b43f72cf5ff8098cef380a/operations/56f02400dbe2d91900c68553).
 
-Podrobnosti o použití objekty odpovědi najdete v tématu [co je pro vyhledávání zpráv Bingu?](./search-the-web.md). Také zjistíte další informace o následující běžné akce:
+Podrobnosti o využití objektů odpovědi najdete v článku [Co je Vyhledávání zpráv Bingu?](./search-the-web.md). Taky můžete získat podrobnější informace o následujících běžných akcích:
 
-- [Získání dnešní hlavní zprávy](./search-the-web.md#getting-todays-top-news)
+- [Získání dnešních nejčtenějších zpráv](./search-the-web.md#getting-todays-top-news)
 - [Získání zpráv podle kategorie](./search-the-web.md#getting-news-by-category)
-- [Získávání nejsledovanější zprávy](./search-the-web.md#getting-trending-news)
+- [Získání zpráv na vzestupu](./search-the-web.md#getting-trending-news)

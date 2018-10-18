@@ -1,30 +1,30 @@
 ---
-title: Rychlý start Java SDK vyhledávání Entity Bing | Microsoft Docs
-description: Nastavte Bing Entity Search SDK konzolové aplikace.
-titleSuffix: Azure Cognitive Services
+title: 'Rychlý start: Sada SDK Bingu pro vyhledávání entit, Java'
+titlesuffix: Azure Cognitive Services
+description: Nastavení konzolové aplikace sady SDK Bingu pro vyhledávání entit.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/19/2018
 ms.author: v-gedod
-ms.openlocfilehash: ebfabc00b5dc031ac4e5284450a9d639c383e78f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: eeb8e6e0ac132ef2d927aa2de03817389230191e
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343650"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814487"
 ---
-# <a name="bing-entity-search-sdk-java-quickstart"></a>Java SDK vyhledávání Entity Bing rychlý start
+# <a name="quickstart-bing-entity-search-sdk-with-java"></a>Rychlý start: Sada SDK Bingu pro vyhledávání entit s využitím Javy
 
-Sada SDK vyhledávání Entity Bing poskytuje funkci rozhraní REST API pro dotazy na entity a analýza výsledků. 
+Sada SDK Bingu pro vyhledávání entit poskytuje funkce rozhraní REST API pro dotazy na entity a parsování výsledků. 
 
-[Zdrojový kód pro Java SDK služby Search Entity Bing ukázky](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingEntitySearch) je k dispozici v centru Git. 
+[Zdrojový kód ukázek sady SDK Bingu pro vyhledávání entit v Javě](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingEntitySearch) je k dispozici na GitHubu. 
 
-## <a name="application-dependencies"></a>Závislosti aplikací
-Získání [kognitivní služby přístupový klíč](https://azure.microsoft.com/try/cognitive-services/) pod **vyhledávání**. Závislosti Bing Entity Search SDK nainstalujte pomocí nástroje Maven, Gradle nebo jinému systému pro správu závislostí. Soubor Maven POM vyžaduje deklaraci:
+## <a name="application-dependencies"></a>Závislosti aplikace
+Načtěte si pod **Search** (Hledání) [přístupový klíč služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/). Nainstalujte si závislosti sady SDK Bingu pro vyhledávání entit pomocí systému Maven, Gradle nebo jiného systému správy závislostí. Soubor POM Mavenu vyžaduje deklaraci:
 ```
   <dependencies>
     <dependency>
@@ -34,8 +34,8 @@ Získání [kognitivní služby přístupový klíč](https://azure.microsoft.co
     </dependency>
   </dependencies>
 ```
-## <a name="entity-search-client"></a>Klienta vyhledávání entity
-Přidejte importy pro implementaci třídy.
+## <a name="entity-search-client"></a>Klient pro vyhledávání entit
+Přidání importů do implementace třídy.
 ```
 import com.microsoft.azure.cognitiveservices.entitysearch.*;
 import com.microsoft.azure.cognitiveservices.entitysearch.implementation.EntitySearchAPIImpl;
@@ -50,7 +50,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 ```
-Implementace **EntitySearchAPIImpl** klienta, které vyžaduje instanci systému **ServiceClientCredentials** třídy.
+Implementace klienta **EntitySearchAPIImpl**, který vyžaduje instanci třídy **ServiceClientCredentials**.
 ```
 public static EntitySearchAPIImpl getClient(final String subscriptionKey) {
     return new EntitySearchAPIImpl("https://api.cognitive.microsoft.com/bing/v7.0/",
@@ -75,7 +75,7 @@ public static EntitySearchAPIImpl getClient(final String subscriptionKey) {
 }
 
 ```
-Vyhledejte jedné entity "Satya Nadella" a tisku a jejich popis.
+Vyhledání jedné entity „Satya Nadella“ a vypsání krátkého popisu.
 ```
 public static void dominantEntityLookup(final String subscriptionKey)
 {
@@ -115,7 +115,7 @@ public static void dominantEntityLookup(final String subscriptionKey)
 }
 
 ```
-Vyhledejte "William brány" a popisovač výsledky rozlišení více tras pro nejednoznačný dotazu.
+Vyhledání výrazu „William Gates“ a zpracování mnohoznačnosti výsledků nejednoznačného dotazu.
 ```
 public static void handlingDisambiguation(String subscriptionKey)
 {
@@ -182,7 +182,7 @@ public static void handlingDisambiguation(String subscriptionKey)
 }
 
 ```
-Vyhledejte jedno úložiště s dotazem "Microsoft ukládání" a tisk telefonní číslo pro výsledek.
+Vyhledání jednoho úložiště pomocí dotazu „Microsoft Store“ a vypsání telefonního čísla z výsledku.
 ```
 public static void storeLookup(String subscriptionKey)
 {
@@ -220,7 +220,7 @@ public static void storeLookup(String subscriptionKey)
 }
 
 ```
-Hledat seznam restaurace s dotazem "Seattle restaurace." Tisk – názvy a telefonních čísel pro výsledky.
+Vyhledání seznamu restaurací pomocí dotazu „Seattle restaurants“. Vypsání názvů a telefonních čísel z výsledků.
 ```
 public static void multipleRestaurantLookup(String subscriptionKey)
 {
@@ -276,7 +276,7 @@ public static void multipleRestaurantLookup(String subscriptionKey)
 }
 
 ```
-Přidejte metody popsané v tomto článku do třídy se hlavní funkce pro provádění kódu.
+Přidání metod popsaných v tomto článku do třídy s hlavní funkcí pro provádění kódu.
 ```
 package entitySDK;
 import com.microsoft.azure.cognitiveservices.entitysearch.*;
@@ -294,7 +294,7 @@ public class EntitySearchSDK {
     // Include the methods described in this article.
 }
 ```
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Ukázky kognitivní Services Java SDK](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
+[Ukázky kognitivních služeb sady Java SDK](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
 

@@ -1,49 +1,51 @@
 ---
-title: Převzetí služeb při selhání a navrácení služeb po obnovení virtuálních počítačů Hyper-V replikovat do Azure pomocí Site Recovery | Dokumentace Microsoftu
-description: Další informace o převzetí služeb při selhání virtuálních počítačů Hyper-V do Azure a navrácení služeb po obnovení místní lokality pomocí Azure Site Recovery
+title: Převzetí služeb při selhání a navrácení služeb po obnovení virtuálních počítačů Hyper-V replikovaných do Azure pomocí Site Recovery | Microsoft Docs
+description: Zjistěte, jak provést převzetí služeb při selhání virtuálních počítačů Hyper-V do Azure a navrácení služeb po obnovení do místní lokality pomocí Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: tutorial
+ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: f758939964045ed373703a211d4cbef00f0e42e7
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
-ms.translationtype: MT
+ms.custom: MVC
+ms.openlocfilehash: 31de654e6746cecf5aedabbfe481ab99b2aa3510
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919542"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49076979"
 ---
-# <a name="failover-and-failback-hyper-v-vms-replicated-to-azure"></a>Převzetí služeb při selhání a navrácení služeb po obnovení virtuálních počítačů Hyper-V replikovat do Azure
+# <a name="failover-and-failback-hyper-v-vms-replicated-to-azure"></a>Převzetí služeb při selhání a navrácení služeb po obnovení virtuálních počítačů Hyper-V replikovaných do Azure
 
-Tento kurz popisuje, jak převzetí služeb při selhání virtuálních počítačů Hyper-V do Azure. Poté, co jste převzetí služeb při selhání, které navrácení služeb po obnovení do místní lokality až bude k dispozici. V tomto kurzu se naučíte:
+Tento kurz popisuje, jak provést převzetí služeb při selhání virtuálního počítače Hyper-V do Azure. Po převzetí služeb při selhání navrátíte služby po obnovení do místní lokality, až bude dostupná. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Ověřte vlastnosti virtuálního počítače Hyper-V ke kontrole splňovaly požadavky Azure
+> * Ověření vlastností virtuálního počítače Hyper-V a kontrola, že odpovídá požadavkům Azure
 > * Spuštění převzetí služeb při selhání do Azure
-> * Navrácení služeb po obnovení z Azure do místního
-> * Zpětná replikace místních virtuálních počítačů, spusťte znovu replikaci do Azure
+> * Navrácení služeb po obnovení z Azure do místní lokality
+> * Zpětná replikace místních virtuálních počítačů a opětovné spuštění replikace do Azure
 
-Tento kurz je páté kurz ze specializované série. Předpokládá, že jste už dokončili úlohy z předchozích kurzů.    
+Tento kurz je pátou částí série. Předpokládá se, že jste už dokončili úlohy z předchozích kurzů.    
 
 1. [Příprava Azure](tutorial-prepare-azure.md)
 2. [Příprava místního Hyper-V](tutorial-prepare-on-premises-hyper-v.md)
-3. Nastavení zotavení po havárii pro [virtuálních počítačů Hyper-V](tutorial-hyper-v-to-azure.md), nebo pro [virtuálních počítačů Hyper-V spravovaných v cloudech System Center VMM](tutorial-hyper-v-vmm-to-azure.md)
+3. Nastavení zotavení po havárii pro [virtuální počítače Hyper-V](tutorial-hyper-v-to-azure.md) nebo [virtuální počítače Hyper-V spravované v cloudech System Center VMM](tutorial-hyper-v-vmm-to-azure.md)
 4. [Spuštění postupu zotavení po havárii](tutorial-dr-drill-azure.md)
 
 ## <a name="prepare-for-failover-and-failback"></a>Příprava na převzetí služeb při selhání a navrácení služeb po obnovení
 
-Ujistěte se, že nejsou žádné snímky ve virtuálním počítači a že místní virtuální počítač je vypnutý během navrácení služeb po obnovení. Pomáhá zajistit konzistenci dat během replikace. Nikdy nezapínat na místní virtuální počítač během navrácení služeb po obnovení. 
+Ujistěte se, že virtuální počítač neobsahuje žádné snímky a že je místní virtuální počítač během navracení služeb po obnovení vypnutý. Pomáhá to zajistit konzistenci dat během replikace. Během navracení služeb po obnovení místní počítač nezapínejte. 
 
-Převzetí služeb při selhání a navrácení služeb po obnovení mají tři fáze:
+Převzetí služeb při selhání a navrácení služeb po obnovení probíhá ve třech fázích:
 
-1. **Převzetí služeb při selhání do Azure**: převzetí služeb při selhání Hyper-V virtuálních počítačů z místní lokality do Azure.
-2. **Navrácení služeb po obnovení do místní**: převzetí služeb při selhání virtuálních počítačů Azure do místní lokality, pokud je k dispozici v místní lokalitě. Spustí synchronizaci dat z Azure do místního a dokončení, přináší zprovoznit virtuální počítače na místní.  
-3. **Zpětná replikace místních virtuálních počítačů**: po selhání zpátky do místního, zpětnou replikaci místních virtuálních počítačů ke spuštění replikace do Azure.
+1. **Převzetí služeb při selhání do Azure:** Proběhne převzetí služeb při selhání virtuálních počítačů Hyper-V z místní lokality do Azure.
+2. **Navrácení služeb po obnovení do místní lokality:** Jakmile bude dostupná místní lokalita, proběhne převzetí služeb při selhání virtuálních počítačů Azure do místní lokality. Spustí se synchronizace dat z Azure do místní lokality a po dokončení se zprovozní virtuální počítače v místní lokalitě.  
+3. **Zpětná replikace místních virtuálních počítačů:** Po navrácení služeb po obnovení do místní lokality se provede zpětná replikace místních virtuálních počítačů a spustí se jejich replikace do Azure.
 
 ## <a name="verify-vm-properties"></a>Ověření vlastností virtuálního počítače
 
-Před převzetí služeb při selhání ověřte vlastnosti virtuálního počítače a ujistěte se, že virtuální počítač splňuje s [požadavky služby Azure](hyper-v-azure-support-matrix.md#replicated-vms).
+Před převzetím služeb při selhání ověřte vlastnosti virtuálního počítače a ujistěte se, že splňuje [požadavky Azure](hyper-v-azure-support-matrix.md#replicated-vms).
 
 V části **Chráněné položky** klikněte na **Replikované položky** a pak na virtuální počítač.
 
@@ -57,23 +59,23 @@ V části **Chráněné položky** klikněte na **Replikované položky** a pak 
 
 ## <a name="failover-to-azure"></a>Převzetí služeb při selhání do Azure
 
-1. V **nastavení** > **replikované položky**, klikněte na virtuální počítač > **převzetí služeb při selhání**.
-2. V **převzetí služeb při selhání**, vyberte **nejnovější** bod obnovení. 
-3. Vyberte **Před spuštěním převzetí služeb při selhání vypnout počítač**. Site Recovery se pokusí provést před aktivací převzetí služeb při selhání vypnout zdrojové virtuální počítače. Převzetí služeb při selhání bude pokračovat i v případě, že se vypnutí nepovede. Průběh převzetí služeb při selhání můžete sledovat na stránce **Úlohy**.
-4. Po ověření, převzetí služeb při selhání, klikněte na tlačítko **potvrzení**. Odstraní se všechny dostupné body obnovení.
+1. V části **Nastavení** > **Replikované položky** klikněte na virtuální počítač a pak na **Převzetí služeb při selhání**.
+2. V části **Převzetí služeb při selhání** vyberte **Nejnovější** bod obnovení. 
+3. Vyberte **Před spuštěním převzetí služeb při selhání vypnout počítač**. Site Recovery se před aktivací převzetí služeb při selhání pokusí vypnout zdrojové virtuální počítače. Převzetí služeb při selhání bude pokračovat i v případě, že se vypnutí nepovede. Průběh převzetí služeb při selhání můžete sledovat na stránce **Úlohy**.
+4. Po ověření převzetí služeb při selhání klikněte na **Potvrdit**. Tím se odstraní všechny dostupné body obnovení.
 
 > [!WARNING]
-> **Nepřerušujte převzetí služeb při selhání v průběhu**: Pokud můžete zrušit probíhající převzetí služeb při selhání zastaví, ale virtuální počítač se znovu nereplikuje.
+> **Nepřerušujte v průběhu proces převzetí služeb při selhání:** Pokud proces převzetí služeb při selhání v průběhu přerušíte, tak se sice zastaví, ale virtuální počítač se znovu nereplikuje.
 
-## <a name="failback-azure-vm-to-on-premises-and-reverse-replicate-the-on-premises-vm"></a>Navrácení služeb po obnovení virtuálního počítače Azure na místní a naopak replikovat místní virtuální počítač
+## <a name="failback-azure-vm-to-on-premises-and-reverse-replicate-the-on-premises-vm"></a>Navrácení služeb po obnovení virtuálního počítače Azure do místní lokality a zpětná replikace místního virtuálního počítače
 
 Operace navrácení služeb po obnovení je v podstatě převzetí služeb při selhání z Azure do místní lokality a zpětná replikace znovu spustí replikaci virtuálních počítačů z místní lokality do Azure.
 
-1. V **nastavení** > **replikované položky**, klikněte na virtuální počítač > **plánované převzetí služeb při selhání**.
-2. V **potvrďte plánované převzetí služeb při selhání**zkontrolujte směr převzetí služeb při selhání (z Azure) a vyberte zdrojovým a cílovým umístěním.
-3. Vyberte **synchronizovat data před převzetí služeb při selhání (synchronizovat jenom rozdílové změny)**. Tato možnost minimalizuje výpadky virtuálních počítačů, protože synchronizuje bez vypnutí virtuálního počítače.
-4. Zahajte převzetí služeb při selhání. Průběh převzetí služeb při selhání, můžete postupovat podle **úlohy** kartu.
-5. Po počáteční data se provádí pro synchronizace a budete připraveni pro ukončení klikněte na virtuální počítače Azure **úlohy** > plánované převzetí služeb při selhání úlohy název--> **dokončení převzetí služeb při selhání**. Vypne virtuální počítač Azure, přenese nejnovější změny v místním a spustí místní virtuální počítač.
-6. Přihlaste se k místní virtuální počítač, zkontrolujte, že je k dispozici podle očekávání.
-7. Místní virtuální počítač je teď v **čekajícího potvrzení** stavu. Klikněte na tlačítko **potvrzení**. Odstraní virtuální počítače Azure a jeho disky a připraví místní virtuální počítač na zpětnou replikaci.
-Ke spuštění replikace místních virtuálních počítačů do Azure, povolte **reverzní replikaci**. Aktivuje replikace rozdílových dat, ke kterým došlo od se vypnout virtuální počítač Azure.  
+1. V části **Nastavení** > **Replikované položky** klikněte na virtuální počítač a pak na **Plánované převzetí služeb při selhání**.
+2. V části **Potvrdit plánované převzetí služeb při selhání** ověřte směr převzetí služeb při selhání (z Azure) a vyberte zdrojové a cílové umístění.
+3. Vyberte **Před převzetím služeb při selhání synchronizovat data (synchronizovat pouze rozdílové změny)**. Tato možnost minimalizuje výpadky virtuálních počítačů, protože se synchronizace provedete bez vypnutí virtuálního počítače.
+4. Zahajte převzetí služeb při selhání. Průběh převzetí služeb při selhání můžete sledovat na kartě **Úlohy**.
+5. Jakmile po dokončení počáteční synchronizace dat budete připraveni vypnout virtuální počítače Azure, klikněte na **Úlohy** > název_úlohy_plánovaného_převzetí_služeb_při_selhání > **Dokončit převzetí služeb při selhání**. Tím se vypne virtuální počítač Azure, nejnovější změny se přenesou do místní lokality a spustí se místní virtuální počítač.
+6. Přihlaste se k místnímu virtuálnímu počítači a ověřte, že je dostupný podle očekávání.
+7. Místní virtuální počítač je teď ve stavu **Čekání na potvrzení**. Klikněte na **Potvrdit**. Tím se odstraní virtuální počítač Azure a jeho disky a místní virtuální počítač se připraví na zpětnou replikaci.
+Pokud chcete spustit replikaci místního virtuálního počítače do Azure, povolte **zpětnou replikaci**. Tím se aktivuje replikace rozdílových změn, ke kterým došlo od vypnutí virtuálního počítače Azure.  

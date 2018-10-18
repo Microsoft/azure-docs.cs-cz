@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 06/28/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 4aac44d46b6c5d202431aa34a1dc7b962466c799
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 1af74cc44391c95fba781cbce14e9118ca36c14b
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346184"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078490"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Kurz: Vytvoření a nasazení aplikace s front-end službou webového rozhraní API pro ASP.NET Core a stavovou back-end službou
 
@@ -40,7 +40,7 @@ V této sérii kurzů se naučíte:
 > * Sestavit aplikaci .NET pro Service Fabric
 > * [Nasadit aplikaci do vzdáleného clusteru](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 > * [Přidat koncový bod HTTPS do front-end služby ASP.NET Core](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md)
-> * [Nakonfigurovat CI/CD pomocí Visual Studio Team Services](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
+> * [Nakonfigurovat CI/CD s využitím služby Azure Pipelines](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * [Nastavit monitorování a diagnostiku aplikace](service-fabric-tutorial-monitoring-aspnet.md)
 
 ## <a name="prerequisites"></a>Požadavky
@@ -72,7 +72,7 @@ Nejprve vytvořte webový front-end hlasovací aplikace pomocí ASP.NET Core. AS
    
    ![Volba typu projektu ASP.NET](./media/service-fabric-tutorial-create-dotnet-app/vs-new-aspnet-project-dialog.png)
 
-   Sada Visual Studio vytvoří aplikaci a projekt služby a zobrazí je v Průzkumníkovi řešení.
+   Sada Visual Studio vytvoří aplikaci a projekt služby a zobrazí je v Průzkumníku řešení.
 
    ![Průzkumník řešení po vytvoření aplikace se službou webového rozhraní API pro ASP.NET Core]( ./media/service-fabric-tutorial-create-dotnet-app/solution-explorer-aspnetcore-service.png)
 
@@ -311,7 +311,7 @@ namespace VotingWeb.Controllers
 
 Po vytvoření front-end služby VotingWeb sada Visual Studio náhodně vybere port, na kterém bude služba naslouchat.  Služba VotingWeb se chová jako front-end této aplikace a přijímá externí provoz, takže tuto službu svážeme s pevným a dobře známým portem.  [Manifest služby](service-fabric-application-and-service-manifests.md) deklaruje koncové body služby.
 
-V Průzkumníkovi řešení otevřete soubor *VotingWeb/PackageRoot/ServiceManifest.xml*.  V části **Resources** (Prostředky) vyhledejte element **Endpoint** (Koncový bod) a změňte hodnotu **Port** na **8080**. Pokud chcete aplikaci nasadit a spustit místně, port pro naslouchání aplikace musí být otevřený a dostupný na vašem počítači.
+V Průzkumníku řešení otevřete soubor *VotingWeb/PackageRoot/ServiceManifest.xml*.  V části **Resources** (Prostředky) vyhledejte element **Endpoint** (Koncový bod) a změňte hodnotu **Port** na **8080**. Pokud chcete aplikaci nasadit a spustit místně, port pro naslouchání aplikace musí být otevřený a dostupný na vašem počítači.
 
 ```xml
 <Resources>
@@ -455,6 +455,9 @@ V tomto kroku propojíte tyto dvě služby a nastavíte front-end webovou aplika
 Service Fabric nabízí naprostou flexibilitu způsobu, jakým komunikujete se spolehlivými službami. V rámci jedné aplikace můžete mít služby přístupné přes protokol TCP. Další služby můžou být přístupné přes rozhraní HTTP REST API a ještě další služby můžou být přístupné přes webové sokety. Další informace o dostupných možnostech a souvisejících kompromisech najdete v tématu [Komunikace se službami](service-fabric-connect-and-communicate-with-services.md).
 
 Tento kurz používá rozhraní [ASP.NET Core Web API](service-fabric-reliable-services-communication-aspnetcore.md) a [reverzní proxy Service Fabric](service-fabric-reverseproxy.md), aby front-end webová služba VotingWeb mohla komunikovat s back-end službou VotingData. Reverzní proxy server je ve výchozím nastavení nakonfigurovaný na použití portu 19081 a měl by v tomto kurzu fungovat. Port je nastavený v šabloně ARM používané k nastavení clusteru. Pokud chcete najít port, který se používá, podívejte se do šablony clusteru v prostředku **Microsoft.ServiceFabric/clusters** nebo na element HttpApplicationGatewayEndpoint v manifestu clusteru.
+
+> [!NOTE]
+> Reverzní proxy server je podporovaný jenom v clusteru se systémem Windows 8 a novějším nebo Windows Server 2012 a novějším.
 
 <u>Prostředek Microsoft.ServiceFabric/clusters reverseProxyEndpointPort</u>
 

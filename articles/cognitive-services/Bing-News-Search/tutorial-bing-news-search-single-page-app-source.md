@@ -1,25 +1,26 @@
 ---
-title: Hledání zprávy Bing jednostránkovou webovou aplikaci (zdrojový kód) | Microsoft Docs
-description: Zdrojový kód pro kurz znázorňující použití rozhraní API služby Bing zprávy Search v jednostránkovou webovou aplikaci.
+title: 'Kurz: Vyhledávání zpráv Bingu pomocí jednostránkové webové aplikace (zdrojový kód)'
+titlesuffix: Azure Cognitive Services
+description: Zdrojový kód pro kurz, který ukazuje, jak používat rozhraní API Bingu pro vyhledávání zpráv v jednostránkové webové aplikaci.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: rosh
 ms.reviewer: v-gedod
-ms.openlocfilehash: c16c7b6018ad7ef3e2f7786e7ef9fa477c666914
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: b8c3e022c93acd0a6e5a6dc96cc0375114093b87
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342807"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804289"
 ---
-# <a name="tutorial-single-page-news-search-app"></a>Kurz: Hledání zprávy jednostránkové aplikace
+# <a name="tutorial-single-page-news-search-app"></a>Kurz: Jednostránková aplikace s vyhledáváním zpráv
 
-Toto je popsané v úplný zdrojový kód [kurzu jednostránkové aplikace](tutorial-bing-news-search-single-page-app.md) pro vyhledávání zprávy Bing. Pokud chcete spustit aplikaci, zdrojový kód zkopírujte do programu Poznámkový blok nebo jiném textovém editoru a uložte ho jako `bing.html`. Otevřete soubor uložený v Microsoft Edge nebo jiný prohlížeč oblíbených.
+Toto je úplný zdrojový kód probíraný v [kurzu o jednostránkové aplikaci](tutorial-bing-news-search-single-page-app.md) pro vyhledávání zpráv Bingu. Pokud chcete aplikaci spustit, zkopírujte zdrojový kód do Poznámkového bloku nebo jiného textového editoru a uložte ho jako `bing.html`. Potom otevřete uložený soubor v Microsoft Edgi nebo jiném oblíbeném prohlížeči.
 
 ```html
 <!DOCTYPE html>

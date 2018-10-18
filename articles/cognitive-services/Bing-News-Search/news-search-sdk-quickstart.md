@@ -1,39 +1,39 @@
 ---
-title: Hledání zprávy rychlý start SDK jazyka C# | Microsoft Docs
-description: Nastavení pro zprávy vyhledávání SDK konzolové aplikace.
-titleSuffix: Azure cognitive services News search SDK C# quickstart
+title: 'Rychlý start: Sada SDK Bingu pro vyhledávání zpráv, C#'
+titleSuffix: Azure Cognitive Services
+description: Nastavení pro konzolovou aplikaci sady SDK Bingu pro vyhledávání zpráv.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 01/30/2018
 ms.author: v-gedod
-ms.openlocfilehash: e803fd579c6b71b8b1754546446715795a12087a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 416557b11ebef953411fb6fabcddb72d08dcb5af
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343662"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802980"
 ---
-# <a name="news-search-sdk-c-quickstart"></a>Příspěvky hledání SDK jazyka C# rychlý start
+# <a name="quickstart-bing-news-search-sdk-with-c"></a>Rychlý start: Sada SDK Bingu pro vyhledávání zpráv s využitím jazyka C#
 
-Sada SDK vyhledávání zprávy Bing obsahuje funkci rozhraní REST API pro zprávy dotazy a analýzy výsledků. 
+Sada SDK Bingu pro vyhledávání zpráv obsahuje funkce rozhraní REST API pro dotazy na zprávy a parsování výsledků. 
 
-[Zdrojového kódu pro C# Bing zprávy vyhledávání SDK ukázky](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingNewsSearch) je k dispozici v centru Git.
+[Zdrojový kód ukázek sady SDK Bingu pro vyhledávání zpráv v jazyce C#](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingNewsSearch) je k dispozici na GitHubu.
 
-## <a name="application-dependencies"></a>Závislosti aplikací
+## <a name="application-dependencies"></a>Závislosti aplikace
 
-Chcete-li nastavit konzolovou aplikaci pomocí sady SDK vyhledávání zprávy Bing, procházejte k `Manage NuGet Packages` možnost v Průzkumníku řešení v sadě Visual Studio.  Přidat `Microsoft.Azure.CognitiveServices.Search.NewsSearch` balíčku.
+Pokud chcete nastavit konzolovou aplikaci pomocí sady SDK Bingu pro vyhledávání zpráv, přejděte v sadě Visual Studio v Průzkumníku řešení na možnost `Manage NuGet Packages`.  Přidejte balíček `Microsoft.Azure.CognitiveServices.Search.NewsSearch`.
 
-Instalace [balíčku NuGet zprávy vyhledávání SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.NewsSearch/1.2.0) nainstaluje taky závislosti, včetně:
+Instalací [balíčku NuGet sady SDK Bingu pro vyhledávání zpráv](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.NewsSearch/1.2.0) se také nainstalují závislosti, včetně:
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.Azure
 * Newtonsoft.Json
 
-## <a name="news-search-client"></a>Příspěvky hledání klienta
-Chcete-li vytvořit instanci `NewsSearchAPI` klienta, přidání direktivy using – direktiva:
+## <a name="news-search-client"></a>Klient pro vyhledávání zpráv
+Pokud chcete vytvořit instanci klienta `NewsSearchAPI`, přidejte direktivu using:
 ```
 using Microsoft.Azure.CognitiveServices.Search.NewsSearch;
 
@@ -44,13 +44,13 @@ var client = new NewsSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-K
 
 
 ```
-Klient použijte při hledání se text dotazu:
+Pomocí klienta vyhledejte text dotazu:
 ```
 var newsResults = client.News.SearchAsync(query: "Quantum  Computing", market: "en-us", count: 10).Result;
 Console.WriteLine("Search news for query \"Quantum  Computing\" with market and count");
 
 ```
-Analyzovat zprávy, vrátila ve výsledcích předchozího dotazu:
+Parsujte zprávy vrácené ve výsledcích předchozího dotazu:
 ```
 if (newsResults.Value.Count > 0)
 {
@@ -71,9 +71,9 @@ else
 }
 
 ```
-## <a name="complete-console-application"></a>Dokončení konzolové aplikace
+## <a name="complete-console-application"></a>Kompletní konzolová aplikace
 
-Následující konzolové aplikace provede dříve definovaném dotaz a hledá zprávy "Quantum Computing". Požadavek obsahuje `market` a `count` parametry. Kód ověřuje počet výsledků a vytiskne `totalEstimatedMatches`, `name`, `url`, `description`, `published time` a `name` z `provider` pro první výsledek zprávy.
+Následující konzolová aplikace spustí dříve definovaný dotaz a vyhledá zprávy pro výraz „Quantum Computing“ (Kvantové výpočty). Požadavek obsahuje parametry `market` a `count`. Kód zkontroluje počet výsledků a pro první výsledek hledání zpráv vypíše celkový odhadovaný počet shod (`totalEstimatedMatches`), název (`name`), adresu URL (`url`), popis (`description`), datum publikování (`published time`) a název (`name`) zprostředkovatele (`provider`).
 
 ```
 using System;
@@ -136,8 +136,8 @@ namespace NewsSrchSDK
 }
 
 ```
-## <a name="recent-news-freshness-and-sortby-parameters"></a>Poslední novinky, aktuálnosti a sortBy parametry
-Následující kód vyhledá nejnovější příspěvky "Umělé Intelligence" s `freshness` a `sortBy` parametry. Se ověřuje počet výsledků a vytiskne `totalEstimatedMatches`, `name`, `url`, `description`, `published time`, a `name` zprostředkovatele první výsledek zprávy.
+## <a name="recent-news-freshness-and-sortby-parameters"></a>Nejnovější zprávy a parametry freshness a sortBy
+Následující kód vyhledá nejnovější zprávy pro výraz „Artificial Intelligence“ (Umělá inteligence) s využitím parametrů `freshness` a `sortBy`. Kód zkontroluje počet výsledků a pro první výsledek hledání zpráv vypíše celkový odhadovaný počet shod (`totalEstimatedMatches`), název (`name`), adresu URL (`url`), popis (`description`), datum publikování (`published time`) a název (`name`) zprostředkovatele.
 ```
         public static void NewsSearchWithFilters(NewsSearchAPI client)
         {
@@ -179,8 +179,8 @@ Následující kód vyhledá nejnovější příspěvky "Umělé Intelligence" s
 
 ```
 
-## <a name="category-news-safe-search"></a>Kategorie zprávy, bezpečné vyhledávání
-Následující kód vyhledá kategorie zprávy pro film a TV Zábava s bezpečné vyhledávání.  Se ověřuje počet výsledků a vytiskne `category`, `name`, `url`, `description`, `published time`, a `name` zprostředkovatele první výsledek zprávy.
+## <a name="category-news-safe-search"></a>Zprávy z kategorie a bezpečné hledání
+Následující kód vyhledá zprávy z kategorie filmů a televizní zábavy s využitím bezpečného hledání.  Kód zkontroluje počet výsledků a pro první výsledek hledání zpráv vypíše kategorii (`category`), název (`name`), adresu URL (`url`), popis (`description`), datum publikování (`published time`) a název (`name`) zprostředkovatele.
 ```
         public static void NewsCategory(NewsSearchAPI client)
         {
@@ -221,8 +221,8 @@ Následující kód vyhledá kategorie zprávy pro film a TV Zábava s bezpečn�
         }
 
 ```
-## <a name="trending-topics"></a>Témata týkající se trendů
-Následující kód vyhledá trendů témata zprávy v Bing. Se ověřuje počet výsledků a vytiskne `name`, `text of query`, `webSearchUrl`, `newsSearchUrl`, a `image.Url` první zprávy výsledku.
+## <a name="trending-topics"></a>Populární témata
+Následující kód vyhledá populární témata zpráv v Bingu. Kód zkontroluje počet výsledků a pro první výsledek hledání zpráv vypíše název (`name`), text dotazu (`text of query`), adresu URL webu (`webSearchUrl`), adresu URL zprávy (`newsSearchUrl`) a adresu URL obrázku(`image.Url`).
 ```
         public static void TrendingTopics(NewsSearchAPI client)
         {
@@ -263,6 +263,6 @@ Následující kód vyhledá trendů témata zprávy v Bing. Se ověřuje počet
 
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Kognitivní services .NET SDK ukázky](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
+[Ukázky kognitivních služeb sady .NET SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

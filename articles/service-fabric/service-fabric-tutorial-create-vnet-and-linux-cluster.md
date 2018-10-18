@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/27/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 27600cd4656f70b4cd01745667c0e0fd2a2f4997
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 33b95c1b0e3d654ce8bb6eda3e96b7b3e9c9bc13
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405815"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831479"
 ---
 # <a name="tutorial-deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Kurz: Nasazení clusteru Service Fabric s Linuxem do virtuální sítě Azure
 
@@ -85,7 +85,7 @@ Tato šablona nasadí do virtuální sítě zabezpečený cluster pěti virtuál
 
 ### <a name="service-fabric-cluster"></a>Cluster Service Fabric
 
-Cluster s Linuxem je nasazen s následujícími charakteristikami:
+V prostředku **Microsoft.ServiceFabric/clusters** se nasazuje cluster s Linuxem s těmito charakteristikami:
 
 * jeden typ uzlu
 * pět uzlů primárního typu (možnost konfigurace v parametrech šablony)
@@ -99,7 +99,7 @@ Cluster s Linuxem je nasazen s následujícími charakteristikami:
 
 ### <a name="azure-load-balancer"></a>Nástroj pro vyrovnávání zatížení Azure
 
-Nasazení nástroje pro vyrovnávání zatížení a nastavení testů a pravidel se provádí pro následující porty:
+V prostředku **Microsoft.Network/loadBalancers** dochází ke konfiguraci nástroje pro vyrovnávání zatížení a k nastavení sond a pravidel pro následující porty:
 
 * koncový bod připojení klienta: 19000
 * koncový bod brány HTTP: 19080
@@ -108,7 +108,7 @@ Nasazení nástroje pro vyrovnávání zatížení a nastavení testů a pravide
 
 ### <a name="virtual-network-and-subnet"></a>Virtuální síť a podsíť
 
-Názvy virtuální sítě a podsítě jsou deklarované v parametrech šablony.  Adresní prostory virtuální sítě a podsítě jsou také deklarované v parametrech šablony:
+Názvy virtuální sítě a podsítě jsou deklarované v parametrech šablony.  Adresní prostory virtuální sítě a podsítě se taky deklarují v parametrech šablony a konfigurují v prostředku **Microsoft.Network/virtualNetworks**:
 
 * adresní prostory virtuální sítě: 10.0.0.0/16
 * adresní prostor podsítě Service Fabric: 10.0.2.0/24

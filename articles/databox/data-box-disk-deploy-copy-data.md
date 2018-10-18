@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/28/2018
+ms.date: 10/09/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 776f70b6b24288006d52cb0e91797d1074180160
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 7eb17138f42cdada10edd5ef08873eb2afee91fe
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452611"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068974"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Kurz: Kopírování dat na Azure Data Box Disk a jejich ověření
 
@@ -163,7 +163,75 @@ Pokud chcete připojit počítač k Data Box Disku a zkopírovat z něj data, pr
 > -  Při kopírování dat se ujistěte, že velikost dat odpovídá omezením velikosti popsaným v článku [Omezení Azure Storage a Data Box Disku](data-box-disk-limits.md). 
 > - Pokud data nahrávaná Data Box Diskem zároveň nahrávají jiné aplikace mimo Data Box Disk, může to způsobit selhání úlohy nahrávání a poškození dat.
 
-## <a name="verify-data"></a>Ověření dat 
+### <a name="split-and-copy-data-to-disks"></a>Rozdělení a kopírování dat na disky
+
+Tento volitelný postup můžete použít v případě, že používáte více disků a máte velkou datovou sadu, kterou je potřeba rozdělit a zkopírovat mezi všechny disky. Nástroj Data Box Split Copy pomáhá rozdělit a kopírovat data na počítači s Windows.
+
+1. Ujistěte se, že na počítači s Windows máte stažený nástroj Data Box Split Copy, který je extrahovaný v místní složce. Tento nástroj se stáhnul při stahování sady nástrojů Data Box Disk pro Windows.
+2. Otevřete Průzkumníka souborů. Poznamenejte si písmeno jednotky zdroje dat a písmeno jednotky přiřazené k Data Box Disku. 
+
+     ![Rozdělení kopírování dat ](media/data-box-disk-deploy-copy-data/split-copy-1.png)
+ 
+3. Identifikujte zdrojová data, která se mají zkopírovat. Například v tomto případě:
+    - Identifikovala se následující data objektu blob bloku.
+
+         ![Rozdělení kopírování dat ](media/data-box-disk-deploy-copy-data/split-copy-2.png)    
+
+    - Identifikovala se následující data objektu blob stránky.
+
+         ![Rozdělení kopírování dat ](media/data-box-disk-deploy-copy-data/split-copy-3.png)
+ 
+4. Přejděte do složky s extrahovaným softwarem. V této složce vyhledejte soubor SampleConfig.json. Jedná se o soubor jen pro čtení, který můžete upravit a uložit.
+
+   ![Rozdělení kopírování dat ](media/data-box-disk-deploy-copy-data/split-copy-4.png)
+ 
+5. Upravte soubor SampleConfig.json.
+ 
+    - Zadejte název úlohy. Tím se na Data Box Disku vytvoří složka, ze které se nakonec stane kontejner v účtu úložiště Azure přidruženém k těmto diskům. Název úlohy musí být v souladu se zásadami vytváření názvů kontejnerů v Azure. 
+    - Do souboru SampleConfigFile.json zadejte zdrojovou cestu a poznamenejte si její formát. 
+    - Zadejte písmena jednotek odpovídající cílovým diskům. Data se načtou ze zdrojové cesty a zkopírují se mezi několik disků.
+    - Zadejte cestu pro soubory protokolů. Ve výchozím nastavení se odesílají do aktuálního adresáře, ve kterém se nachází soubor .exe.
+
+     ![Rozdělení kopírování dat ](media/data-box-disk-deploy-copy-data/split-copy-5.png)
+
+6. Pokud chcete zkontrolovat formát souboru, přejděte do nástroje JSONlint. Uložte soubor jako ConfigFile.json. 
+
+     ![Rozdělení kopírování dat ](media/data-box-disk-deploy-copy-data/split-copy-6.png)
+ 
+7. Otevřete okno příkazového řádku. 
+
+8. Spusťte DataBoxDiskSplitCopy.exe. Typ
+
+    `DataBoxDiskSplitCopy.exe PrepImport /config:<Your-config-file-name.json>`
+
+     ![Rozdělení kopírování dat ](media/data-box-disk-deploy-copy-data/split-copy-7.png)
+ 
+9. Stiskněte Enter a pokračujte v provádění skriptu.
+
+    ![Rozdělení kopírování dat ](media/data-box-disk-deploy-copy-data/split-copy-8.png)
+  
+10. Jakmile se datová sada rozdělí a zkopíruje, zobrazí se souhrn nástroje Split Copy pro relaci kopírování. Ukázkový výstup najdete níž.
+
+    ![Rozdělení kopírování dat ](media/data-box-disk-deploy-copy-data/split-copy-9.png)
+ 
+11. Ověřte, že se data rozdělila mezi cílové disky. 
+ 
+    ![Rozdělení kopírování dat](media/data-box-disk-deploy-copy-data/split-copy-10.png)
+    ![Rozdělení kopírování dat](media/data-box-disk-deploy-copy-data/split-copy-11.png)
+     
+    Když blíže prozkoumáte obsah jednotky n:, uvidíte, že se vytvořily dvě podsložky odpovídající datům ve formátu objektu blob bloku a objektu blob stránky.
+    
+     ![Rozdělení kopírování dat ](media/data-box-disk-deploy-copy-data/split-copy-12.png)
+
+12. Pokud operace kopírování selže, použijte k obnovení a pokračování následující příkaz:
+
+    `DataBoxDiskSplitCopy.exe PrepImport /config:<configFile.json> /ResumeSession`
+
+
+Po dokončení kopírování dat je dalším krokem ověření dat. 
+
+
+## <a name="validate-data"></a>Ověření dat 
 
 Data ověříte následujícím postupem.
 

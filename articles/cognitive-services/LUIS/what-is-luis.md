@@ -7,14 +7,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: overview
-ms.date: 08/15/2018
+ms.date: 10/06/2018
 ms.author: diberry
-ms.openlocfilehash: a8e9deb7c677d04634b223045adc2d31fa74ba6e
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 0520c00ab20ca7210b3bb13567f9998e7231be43
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033035"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867649"
 ---
 # <a name="what-is-language-understanding-luis"></a>Co je Language Understanding (LUIS)?
 
@@ -151,7 +151,7 @@ Odpověď koncového bodu JSON obsahuje minimálně promluvu dotazu a záměr s 
 
 ## <a name="improve-model-prediction"></a>Vylepšení předpovědí modelu
 
-Jakmile je model LUIS publikovaný a přijímá skutečné promluvy uživatelů, poskytuje služba LUIS několik metod, jak zlepšit přesnost předpovědí: [aktivní učení](#active-learning) promluv koncového bodu, [seznamy frází](#phrase-lists) pro zahrnutí doménových slov a [vzory](#patterns) pro snížení počtu potřebných promluv.
+Jakmile je model LUIS publikovaný a přijímá skutečné promluvy uživatelů, poskytuje služba LUIS několik metod, jak zlepšit přesnost předpovědí: [aktivní učení](luis-concept-review-endpoint-utterances.md) promluv koncového bodu, [seznamy frází](luis-concept-feature.md) pro zahrnutí doménových slov a [vzory](luis-concept-patterns.md) pro snížení počtu potřebných promluv.
 <!--
 ### Active learning
 
@@ -171,25 +171,37 @@ Patterns allow you to simplify an intent's utterance collection into common [tem
 Author LUIS from the [authoring](https://aka.ms/luis-authoring-apis) APIs or from the LUIS portal. Query the published prediction endpoint of the model from the [endpoint](https://aka.ms/luis-endpoint-apis) APIs.
 -->
 
-## <a name="integrating-with-luis"></a>Integrace se službou LUIS
+## <a name="development-lifecycle"></a>Životní cyklus vývoje
+Služba LUIS poskytuje nástroje, správu verzí a spolupráci s jinými autory služby LUIS, čímž umožňuje začlenění do plného životního cyklu vývoje na úrovni klientské aplikace a jazykového modelu. 
+
+## <a name="implementing-luis"></a>Implementace služby LUIS
 Služba LUIS jako rozhraní REST API umožňuje použití s jakýmkoli produktem, službou nebo architekturou odesílající požadavky HTTP. Následující seznam obsahuje produkty a služby Microsoftu nejčastěji používané se službou LUIS.
 
-Mezi klientské aplikace Microsoftu pro službu LUIS patří:
+Hlavní klientská aplikace služby LUIS je následující:
 * [Robot webové aplikace](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-3.0) umožňující rychlé vytvoření chatbota s podporou služby LUIS, který bude s uživatelem komunikovat prostřednictvím textového vstupu. Úplné funkce chatbota zajišťuje rozhraní [Bot Framework][bot-framework] verze [3.x](https://github.com/Microsoft/BotBuilder) nebo [4.x](https://github.com/Microsoft/botbuilder-dotnet).
-* [Windows Mixed Reality](https://docs.microsoft.com/windows/mixed-reality/) – Další informace najdete v tomto [kurzu smíšené reality](https://docs.microsoft.com/windows/mixed-reality/mr-azure-303) s využitím služby LUIS. 
 
-Nástroje Microsoftu pro použití služby LUIS v chatbotu:
+Nástroje pro rychlé a snadné používání služby LUIS s využitím robota:
+* [Rozhraní příkazového řádku služby LUIS](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS) – balíček NPM poskytuje vytváření a předpovědi jak s použitím samostatného nástroje příkazového řádku, tak v rámci importu. 
+* [LUISGen](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUISGen) – LUISGen je nástroj pro generování zdrojového kódu C# se silnými typy a zdrojového kódu TypeScript z exportovaného modelu LUIS.
 * [Dispatch](https://aka.ms/dispatch-tool) umožňuje používat z nadřazené aplikace několik aplikací LUIS a QnA Maker s využitím modelu dispečera.
-* [Conversation learner](https://docs.microsoft.com/azure/cognitive-services/labs/conversation-learner/overview) umožňuje ve službě LUIS rychleji vytvářet konverzace chatbota.
-* [Project personality chat](https://docs.microsoft.com/azure/cognitive-services/project-personality-chat/overview) zpracovává nezávaznou konverzaci chatbota.
+* [LUDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) – LUDown je nástroj příkazového řádku, který pomáhá spravovat jazykové modely pro vašeho robota.
 
 Další služby Cognitive Services používané se službou LUIS:
 * [QnA Maker][qnamaker] umožňuje kombinovat několik typů textu do znalostní báze otázek a odpovědí.
 * [Rozhraní API Bingu pro kontrolu pravopisu](../bing-spell-check/proof-text.md) zajišťuje opravu textu před vytvořením předpovědi. 
 * [Služba Speech](../Speech-Service/overview.md) převádí mluvené požadavky na text. 
+* [Conversation learner](https://docs.microsoft.com/azure/cognitive-services/labs/conversation-learner/overview) umožňuje ve službě LUIS rychleji vytvářet konverzace chatbota.
+* [Project personality chat](https://docs.microsoft.com/azure/cognitive-services/project-personality-chat/overview) zpracovává nezávaznou konverzaci chatbota.
+<!--
+## Other ways of implementing LUIS
+
+A client application for LUIS is:
+* [Windows Mixed Reality](https://docs.microsoft.com/windows/mixed-reality/) - learn more with this [Mixed reality course](https://docs.microsoft.com/windows/mixed-reality/mr-azure-303) with LUIS. 
 
 
+Labs: 
 
+-->
 ## <a name="next-steps"></a>Další kroky
 
 Vytvořte novou aplikaci LUIS s využitím [předem připravené](luis-get-started-create-app.md) nebo [vlastní](luis-quickstart-intents-only.md) domény. [Odešlete dotaz na koncový bod předpovědi](luis-get-started-cs-get-intent.md) veřejné aplikace IoT.

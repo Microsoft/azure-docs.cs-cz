@@ -1,40 +1,41 @@
 ---
-title: Node.js rychlý úvodní kurz pro Azure kognitivní služby vyhledávání zprávy Bing rozhraní API | Microsoft Docs
-description: Get informace a ukázky kódu můžete rychle začít používat rozhraní API služby Bing zprávy Search v kognitivní služby společnosti Microsoft na platformě Azure.
+title: 'Rychlý start: Rozhraní API Bingu pro vyhledávání zpráv, Node.js'
+titlesuffix: Azure Cognitive Services
+description: Umožňuje získat informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API Bingu pro vyhledávání zpráv.
 services: cognitive-services
-documentationcenter: ''
 author: v-jerkin
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 1c68e75319a34f4ac9726c047fc7d6d0269634ba
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 923566dc2764037164725f795e411beef939d92a
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343523"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802066"
 ---
-# <a name="quickstart-for-bing-news-search-api-with-nodejs"></a>Rychlý start pro vyhledávání zprávy Bing rozhraní API pomocí Node.js
+# <a name="quickstart-for-bing-news-search-api-with-nodejs"></a>Rychlý start pro rozhraní API pro vyhledávání zpráv v Node.js
 
-Tento článek ukazuje, jak pomocí rozhraní API týkající se hledání zprávy Bing, součástí kognitivní služby společnosti Microsoft na platformě Azure. Při tomto článku aktivuje Node.js, rozhraní API je kompatibilní s žádný programovací jazyk, který můžete nastavit požadavků HTTP a analyzovat JSON RESTful webová služba. 
+Tento článek vám ukazuje, jak používat rozhraní API Bingu pro vyhledávání zpráv, které je součástí služby Microsoft Cognitive Services v Azure. V tomto článku se sice používá Node.js, ale rozhraní API je webová služba RESTful kompatibilní s každým programovacím jazykem, který dokáže provádět požadavky HTTP a parsovat JSON. 
 
-V příkladu je napsána v jazyce JavaScript a běží pod Node.js 6.
+Příklad je napsaný v JavaScriptu a běží pod Node.js 6.
 
-Odkazovat [referenční dokumentace rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) technické podrobnosti o rozhraní API.
+Technické podrobnosti o rozhraních API najdete v [referenci k rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Musíte mít [kognitivní rozhraní API služby účet](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraní API pro Bing vyhledávání**. [Bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) stačí pro tento rychlý start. Budete potřebovat přístupový klíč zadaný při aktivaci bezplatné zkušební verze, nebo může použít klíč placené předplatné z řídicího panelu Azure.
+Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s přístupem k **rozhraním API pro vyhledávání Bingu**. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Pro aktivaci bezplatné zkušební verze budete potřebovat přístupový klíč nebo můžete použít klíč placeného předplatného z řídicího panelu Azure.
 
-## <a name="bing-news-search"></a>Zprávy Bing vyhledávání
+## <a name="bing-news-search"></a>Vyhledávání zpráv Bingu
 
-[Rozhraní API služby Bing zprávy Search](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) vrátí výsledky zprávy z Bing vyhledávací web.
+[Rozhraní API Bingu pro vyhledávání zpráv](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) vrací výsledky zpráv z vyhledávače Bing.
 
-1. Vaše oblíbené IDE nebo editoru vytvořte nový projekt Node.js.
-2. Přidejte kód níže uvedenou.
-3. Nahraďte `subscriptionKey` hodnotu s přístupový klíč platný pro vaše předplatné.
+1. Ve svém oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Node.js.
+2. Přidejte níže uvedený kód.
+3. Hodnotu `subscriptionKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
 4. Spusťte program.
 
 ```javascript
@@ -190,11 +191,11 @@ bing_news_search(term);
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Příspěvky stránkování](paging-news.md)
-> [pomocí decoration značky zvýraznění textu](hit-highlighting.md)
-> [vyhledávání na webu pro zprávy](search-the-web.md)  
+> [Stránkování zpráv](paging-news.md)
+> [Zvýraznění textu pomocí dekoračních značek](hit-highlighting.md)
+> [Hledání zpráv na internetu](search-the-web.md)  
 > [Vyzkoušet](https://azure.microsoft.com/services/cognitive-services/bing-news-search-api/)
 

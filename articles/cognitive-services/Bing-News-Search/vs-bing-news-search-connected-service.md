@@ -1,60 +1,60 @@
 ---
-title: Kurzy k Bingu News Search C# | Dokumentace Microsoftu
-titleSuffix: Microsoft Cognitive Services
-description: Připojení k vyhledávání zpráv Bingu Cognitive Services z webové aplikace ASP.NET Core.
+title: 'Kurz: rozhraní API Bingu pro vyhledávání zpráv, C#'
+titleSuffix: Azure Cognitive Services
+description: Připojte se k rozhraní API Bingu pro vyhledávání zpráv z webové aplikace ASP.NET Core.
 services: cognitive-services
 author: ghogen
-manager: douge
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 03/01/2018
 ms.author: ghogen
-ms.openlocfilehash: 5cfa82067d28b05f32bd87e0e83d55a03da8d508
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
-ms.translationtype: MT
+ms.openlocfilehash: f1f5c590216975ce6b0813da6d9d98279d591454
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095425"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804340"
 ---
-# <a name="connect-to-bing-news-search-api-by-using-connected-services-in-visual-studio"></a>Připojení k rozhraní API pro vyhledávání zpráv Bingu pomocí připojené služby v sadě Visual Studio
+# <a name="tutorial-connect-to-bing-news-search-api-by-using-connected-services-in-visual-studio"></a>Kurz: Připojení k rozhraní API Bingu pro vyhledávání zpráv pomocí připojených služeb v sadě Visual Studio
 
-Pomocí Bingu pro vyhledávání zpráv můžete povolit aplikacím a službám využít výkon modulu vyhledávání bez reklam omezená na webu. Vyhledávání zpráv Bingu je jedním z vyhledávací služby, který je k dispozici pomocí služeb Cognitive Services.
+S využitím rozhraní API Bingu pro vyhledávání zpráv můžete aplikacím a službám umožnit využívat výkon vyhledávacího webu, který je bez reklam a omezený na web. Rozhraní API Bingu pro vyhledávání zpráv je jednou z vyhledávacích služeb dostupných v rámci služeb Cognitive Services.
 
-Tento článek obsahuje podrobnosti o použití funkce připojené služby sady Visual Studio pro vyhledávání zpráv Bingu. Možnost je dostupná ve verzi Visual Studio 2017 15.7 nebo novější, s nainstalované rozšíření služeb Cognitive Services.
+Tento článek obsahuje podrobnosti o používání funkce připojené služby sady Visual Studio pro rozhraní API Bingu pro vyhledávání zpráv. Tato možnost je dostupná v sadě Visual Studio 2017 15.7 nebo novější s nainstalovaným rozšířením Cognitive Services.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud žádné nemáte, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/)
-- Visual Studio 2017 verze 15.7, s nainstalovaná úloha vývoj pro Web. [Stáhnout nyní](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- Sada Visual Studio 2017 verze 15.7 s nainstalovanou sadou funkcí Vývoj pro web. [Stáhnout](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
-## <a name="add-support-to-your-project-for-bing-news-search-api"></a>Přidání podpory pro váš projekt pro rozhraní API pro vyhledávání zpráv Bingu
+## <a name="add-support-to-your-project-for-bing-news-search-api"></a>Přidání podpory rozhraní API Bingu pro vyhledávání zpráv do projektu
 
-1. Vytvořte nový webový projekt ASP.NET Core s názvem MyWebApplication. Použití **webové aplikace (Model-View-Controller)** šablony projektu, s výchozím nastavením. Je důležité pro pojmenování projektu MyWebApplication, takže obor názvů odpovídá, pokud kód zkopírujete do projektu. 
+1. Vytvořte nový webový projekt ASP.NET Core s názvem MyWebApplication. Použijte šablonu projektu **Webová aplikace (Model-View-Controller)** a ponechte výchozí nastavení. Je důležité projekt pojmenovat MyWebApplication, aby se při kopírování kódu do projektu shodovaly obory názvů. 
 
-1. V **Průzkumníka řešení**, zvolte **přidat** > **připojenou službu**.
-   Zobrazí se stránka připojené služby se službami, které můžete přidat do projektu.
+1. V **Průzkumníku řešení** zvolte **Přidat**  > **Připojená služba**.
+   Zobrazí se stránka Připojená služba se službami, které můžete přidat do projektu.
 
-   ![Snímek obrazovky z přidat připojenou službu položky nabídky](../media/vs-common/Connected-Service-Menu.PNG)
+   ![Snímek obrazovky s položkou nabídky Přidat připojenou službu](../media/vs-common/Connected-Service-Menu.PNG)
 
-1. V nabídce dostupné služby, zvolte **přenést inteligentní vyhledávání pro vaše aplikace**.
+1. V nabídce dostupných služeb zvolte **Bring Intelligent Search To Your Apps** (Integrace inteligentního vyhledávání do aplikací).
 
-   ![Snímek připojené služby](./media/vs-bing-news-search-connected-service/Cog-Search-Connected-Service-0.PNG)
+   ![Snímek obrazovky se seznamem připojených služeb](./media/vs-bing-news-search-connected-service/Cog-Search-Connected-Service-0.PNG)
 
-   Pokud jste se přihlašovali do sady Visual Studio a mít předplatné Azure spojené s vaším účtem, se zobrazí stránka s rozevíracím seznamu k vašemu předplatnému. Vyberte předplatné, které chcete použít a pak zvolte název pro rozhraní API pro vyhledávání zpráv Bingu. Můžete také zvolit **upravit** upravit automaticky vygenerovaným názvem.
+   Pokud jste přihlášení k sadě Visual Studio a máte ke svému účtu přidružené předplatné Azure, zobrazí se stránka s rozevíracím seznamem vašich předplatných. Vyberte předplatné, které chcete použít, a pak zvolte název rozhraní API Bingu pro vyhledávání zpráv. Můžete také zvolit **Upravit** a upravit automaticky vygenerovaný název.
 
-   ![Snímek obrazovky předplatného a název pole](media/vs-bing-news-search-connected-service/Cog-Search-Connected-Service-1.PNG)
+   ![Snímek obrazovky s poli Předplatné a Název](media/vs-bing-news-search-connected-service/Cog-Search-Connected-Service-1.PNG)
 
 1. Zvolte skupinu prostředků a cenovou úroveň.
 
-   ![Snímek obrazovky skupinu prostředků a cenové úrovně pole](media/vs-bing-news-search-connected-service/Cog-Search-Connected-Service-2.PNG)
+   ![Snímek obrazovky s poli Skupina prostředků a Cenová úroveň](media/vs-bing-news-search-connected-service/Cog-Search-Connected-Service-2.PNG)
 
-   Pokud chcete další informace o cenových úrovní, vyberte **ceny kontroly**.
+   Pokud chcete zobrazit další podrobnosti o cenových úrovních, vyberte **Zkontrolovat ceny**.
 
-1. Zvolte **přidat** přidání podpory pro připojenou službu.
-   Visual Studio změní projekt tak, aby přidat balíčky NuGet, položky konfiguračního souboru a další změny pro podporu připojení k rozhraní API pro vyhledávání zpráv Bingu. Výstup zobrazuje protokol, co se děje do projektu. By měl vypadat přibližně takto:
+1. Výběrem možnosti **Přidat** přidejte podporu této připojené služby.
+   Sada Visual Studio upraví projekt tak, že přidá balíčky NuGet, položky konfiguračního souboru a další změny pro podporu připojení k rozhraní API Bingu pro vyhledávání zpráv. Ve výstupu se zobrazí protokol, který ukazuje, co se s projektem děje. Mělo by se zobrazit něco podobného:
 
    ```output
    [5/4/2018 12:41:21.084 PM] Adding Intelligent Search to the project.
@@ -71,7 +71,7 @@ Tento článek obsahuje podrobnosti o použití funkce připojené služby sady 
    [5/4/2018 12:42:10.217 PM] Successfully added Intelligent Search to the project.
    ```
 
-   Soubor appsettings.json nyní obsahuje následující nová nastavení:
+   Soubor appsettings.json teď obsahuje následující nové nastavení:
 
    ```json
    "CognitiveServices": {
@@ -83,11 +83,11 @@ Tento článek obsahuje podrobnosti o použití funkce připojené služby sady 
    }
    ```
  
-## <a name="use-the-bing-news-search-api-to-add-search-functionality-to-a-web-page"></a>Použití rozhraní API pro vyhledávání zpráv Bingu pro vyhledávání na webovou stránku
+## <a name="use-the-bing-news-search-api-to-add-search-functionality-to-a-web-page"></a>Přidání vyhledávacích funkcí do webové stránky s využitím rozhraní API Bingu pro vyhledávání zpráv
 
-Teď, když jste přidali podporu pro rozhraní API pro vyhledávání zpráv Bingu do projektu, tady je postup pomocí rozhraní API můžete přidat inteligentní vyhledávání do webové stránky.
+Do projektu jste přidali podporu rozhraní API Bingu pro vyhledávání zpráv. Tady je postup použití rozhraní API k přidání inteligentního vyhledávání do webové stránky.
 
-1.  V *Startup.cs*v `ConfigureServices` metodu, přidejte volání do `IServiceCollection.AddSingleton`. Díky tomu konfigurační objekt, který obsahuje nastavení klíče, které je k dispozici pro kód ve vašem projektu.
+1.  V souboru *Startup.cs* přidejte do metody `ConfigureServices` volání `IServiceCollection.AddSingleton`. Tím se vytvoří objekt konfigurace obsahující klíčová nastavení, která jsou k dispozici pro kód ve vašem projektu.
  
    ```csharp
         public void ConfigureServices(IServiceCollection services)
@@ -98,7 +98,7 @@ Teď, když jste přidali podporu pro rozhraní API pro vyhledávání zpráv Bi
    ```
 
 
-1. Přidejte nový soubor třídy v rámci **modely** složka s názvem *BingNewsModel.cs*. Pokud váš projekt pojmenujete jinak, použijte místo MyWebApplication názvů vlastním projektu. Nahraďte obsah následujícím kódem:
+1. Do složky **Models** přidejte nový soubor třídy *BingNewsModel.cs*. Pokud jste projekt pojmenovali jinak, místo MyWebApplication použijte obor názvů vlastního projektu. Obsah souboru nahraďte následujícím kódem:
  
     ```csharp
     using Microsoft.Azure.CognitiveServices.Search.NewsSearch.Models;
@@ -117,9 +117,9 @@ Teď, když jste přidali podporu pro rozhraní API pro vyhledávání zpráv Bi
     }
     ```
 
-   Tento model se používá k uložení výsledků volání služby vyhledávání zpráv Bingu.
+   Tento model slouží k ukládání výsledků volání služby Vyhledávání zpráv Bingu.
  
-1. V **řadiče** složky, přidejte nový soubor třídy *IntelligentSearchController.cs*. Nahraďte obsah následujícím kódem:
+1. Do složky **Controllers** přidejte nový soubor třídy *IntelligentSearchController.cs*. Obsah souboru nahraďte následujícím kódem:
 
    ```csharp
     using System.Net.Http;
@@ -177,9 +177,9 @@ Teď, když jste přidali podporu pro rozhraní API pro vyhledávání zpráv Bi
     }
    ```
 
-   V tomto kódu nastaví konstruktor objekt konfigurace obsahující vaše klíče. Metoda `Search` trasy je přesměrování na `BingSearchResult` funkce. Volá `GetNewsSearchClient` metodu k získání `NewsSearchAPI` objektu klienta.  `NewsSearchAPI` Obsahuje objekt klienta `SearchAsync` metodu, která ve skutečnosti zavolá službu a vrátí výsledky v `SearchResult` model, který jste právě vytvořili. 
+   Konstruktor v tomto kódu nastaví objekt konfigurace, který obsahuje vaše klíče. Metoda trasy `Search` je prostým přesměrováním do funkce `BingSearchResult`. Tato funkce volá metodu `GetNewsSearchClient` a získá objekt klienta `NewsSearchAPI`.  Objekt klienta `NewsSearchAPI` obsahuje metodu `SearchAsync`, která ve skutečnosti volá službu a vrací výsledky v modelu `SearchResult`, který jste právě vytvořili. 
 
-1. Přidat třídu, `MyHandler`, které bylo odkazováno v předchozím kódu. To deleguje asynchronní volání služby vyhledávání se svou základní třídou `DelegatingHandler`.
+1. Přidejte třídu `MyHandler`, na kterou se odkazovalo v předchozím kódu. Tato třída deleguje asynchronní volání vyhledávací služby do základní třídy `DelegatingHandler`.
 
    ```csharp
     using System.Net.Http;
@@ -199,7 +199,7 @@ Teď, když jste přidali podporu pro rozhraní API pro vyhledávání zpráv Bi
     }
    ```
 
-1. Přidání podpory pro odeslání vyhledávání a zobrazení výsledků v **zobrazení** složku, vytvořte novou složku s názvem **IntelligentSearch**. V této nové složky, přidat zobrazení *BingSearchResult.cshtml*. Zkopírujte následující kód:
+1. Přidejte podporu odesílání hledaných termínů a zobrazení výsledků tím, že ve složce **Views** vytvoříte novou složku **IntelligentSearch**. Do této nové složky přidejte zobrazení *BingSearchResult.cshtml*. Do tohoto souboru zkopírujte následující kód:
 
     ```cshtml
     @using System
@@ -254,18 +254,18 @@ Teď, když jste přidali podporu pro rozhraní API pro vyhledávání zpráv Bi
     </div>
     ```
 
-1. Spustit webovou aplikaci místně, zadejte adresu URL pro stránku, kterou jste právě vytvořili (/ IntelligentSearch/BingSearchResult) a odeslat žádost o vyhledávání s použitím tlačítko hledání.
+1. Spusťte místně webovou aplikaci, zadejte adresu URL stránky, kterou jste právě vytvořili (/IntelligentSearch/BingSearchResult), a pomocí tlačítka Search (Hledat) odešlete požadavek hledání.
 
-   ![Snímek obrazovky vyhledávání zpráv Bingu výsledky](media/vs-bing-news-search-connected-service/Cog-News-Search-Results.PNG)
+   ![Snímek obrazovky s výsledky hledání zpráv Bingu](media/vs-bing-news-search-connected-service/Cog-News-Search-Results.PNG)
            
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud skupina prostředků je už nepotřebujete, můžete ho odstranit. Tím se odstraní služby cognitive Services a související prostředky. Odstranění skupiny prostředků přes portál:
+Pokud už skupinu prostředků nepotřebujete, můžete ji odstranit. Tím se odstraní služba Cognitive Services a související prostředky. Odstranění skupiny prostředků přes portál:
 
 1. Do vyhledávacího pole v horní části portálu zadejte název vaší skupiny prostředků. Vyberte skupinu prostředků, kterou chcete odstranit.
 2. Vyberte **Odstranit skupinu prostředků**.
-3. V **zadejte název skupiny prostředků** pole, zadejte název skupiny prostředků a vyberte **odstranit**.
+3. Do pole **Zadejte název skupiny prostředků** zadejte název skupiny prostředků a vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o rozhraní API pro vyhledávání zpráv Bingu, naleznete v tématu [co je pro vyhledávání zpráv Bingu?](index.yml).
+Další informace o rozhraní API Bingu pro vyhledávání zpráv najdete v tématu [Co je Vyhledávání zpráv Bingu?](index.yml).

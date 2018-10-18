@@ -9,14 +9,14 @@ ms.assetid: 9b7d065e-1979-4397-8298-eeba3aec4792
 ms.service: key-vault
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/20/2018
+ms.date: 10/09/2018
 ms.author: barclayn
-ms.openlocfilehash: ff59e39e54433aa673b093e2ee1fbe8c74010e54
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: b66c9912ba0b6508c2beb786d2327efa779c6645
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171319"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079459"
 ---
 # <a name="tutorial-use-azure-key-vault-from-a-web-application"></a>Kurz: Použití služby Azure Key Vault z webové aplikace
 
@@ -42,8 +42,7 @@ K dokončení tohoto kurzu potřebujete následující položky:
 
 Proveďte kroky v tématu [Začínáme s Azure Key Vault](key-vault-get-started.md) a získejte identifikátor URI pro tajný klíč, ID klienta a tajný klíč klienta a zaregistrujte aplikaci. Webová aplikace bude mít přístup k trezoru a musí být zaregistrovaná v Azure Active Directory. Kromě toho musí mít přístupová práva ke službě Key Vault. Pokud tomu tak není, vraťte se k části Registrace aplikace v kurzu Začínáme a zopakujte uvedené kroky. Další informace o vytvoření služby Azure Web Apps najdete v [přehledu Web Apps](../app-service/app-service-web-overview.md).
 
-Tato ukázka se spoléhá na ruční zřizování identit Azure Active Directory. Ale místo něj byste měli použít [Identitu spravované služby (MSI)](https://docs.microsoft.com/azure/active-directory/msi-overview). Identita spravované služby může identity Azure AD zřizovat automaticky. Další informace najdete v ukázce na [GitHubu](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) a v souvisejícím [kurzu k MSI se službami App Service a Functions](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity). Konkrétní informace o službě Key Vault najdete v kurzu [Konfigurace webové aplikace Azure pro čtení tajného kódu ze služby Key Vault](tutorial-web-application-keyvault.md).
-
+Tato ukázka se spoléhá na ruční zřizování identit Azure Active Directory. Vy byste ale měli místo toho použít [spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md), které umožňují automatické zřizování identit Azure AD. Další informace najdete v [ukázce na GitHubu](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) a v souvisejícím [kurzu o službách App Service a Functions](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity). Můžete se taky podívat na kurz [Konfigurace webové aplikace Azure pro čtení tajného kódu ze služby Key Vault](tutorial-web-application-keyvault.md), který se týká konkrétně služby Key Vault.
 
 ## <a id="packages"></a>Přidání balíčků NuGet
 
@@ -145,14 +144,19 @@ Teď, když rozumíte ověřování aplikace Azure AD pomocí ID klienta a tajn�
 
 ```powershell
 #Create self-signed certificate and export pfx and cer files 
-$PfxFilePath = "c:\data\KVWebApp.pfx" 
-$CerFilePath = "c:\data\KVWebApp.cer" 
-$DNSName = "MyComputer.Contoso.com" 
-$Password ="MyPassword" 
+$PfxFilePath = 'KVWebApp.pfx'
+$CerFilePath = 'KVWebApp.cer'
+$DNSName = 'MyComputer.Contoso.com'
+$Password = 'MyPassword"'
+
+$StoreLocation = 'CurrentUser' #be aware that LocalMachine requires elevated privileges
+$CertBeginDate = Get-Date
+$CertExpiryDate = $CertBeginDate.AddYears(1)
+
 $SecStringPw = ConvertTo-SecureString -String $Password -Force -AsPlainText 
-$Cert = New-SelfSignedCertificate -DnsName $DNSName -CertStoreLocation "cert:\LocalMachine\My" -NotBefore 05/15/2018 -NotAfter 05/15/2019 
-Export-PfxCertificate -cert $cert -FilePath $PFXFilePath -Password $SecStringPw 
-Export-Certificate -cert $cert -FilePath $CerFilePath 
+$Cert = New-SelfSignedCertificate -DnsName $DNSName -CertStoreLocation "cert:\$StoreLocation\My" -NotBefore $CertBeginDate -NotAfter $CertExpiryDate -KeySpec Signature
+Export-PfxCertificate -cert $Cert -FilePath $PFXFilePath -Password $SecStringPw 
+Export-Certificate -cert $Cert -FilePath $CerFilePath 
 ```
 
 Poznamenejte si koncové datum a heslo pro soubor .pfx (v tomto příkladu je to 15. května 2019 a MyPassword). Budete je potřebovat pro následující skript. 
@@ -172,7 +176,7 @@ $adapp = New-AzureRmADApplication -DisplayName "KVWebApp" -HomePage "http://kvwe
 $sp = New-AzureRmADServicePrincipal -ApplicationId $adapp.ApplicationId
 
 
-Set-AzureRmKeyVaultAccessPolicy -VaultName 'contosokv' -ServicePrincipalName "http://kvwebapp" -PermissionsToSecrets all -ResourceGroupName 'contosorg'
+Set-AzureRmKeyVaultAccessPolicy -VaultName 'contosokv' -ServicePrincipalName "http://kvwebapp" -PermissionsToSecrets get,list,set,delete,backup,restore,recover,purge -ResourceGroupName 'contosorg'
 
 # get the thumbprint to use in your app settings
 $x509.Thumbprint

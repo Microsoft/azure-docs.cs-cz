@@ -3,20 +3,20 @@ title: Provedení online migrace MySQL do služby Azure Database for MySQL pomoc
 description: Zjistěte, jak pomocí služby Azure Database Migration Service provést online migraci z místního MySQL do služby Azure Database for MySQL.
 services: dms
 author: HJToland3
-ms.author: jtoland
+ms.author: scphang
 manager: craigg
 ms.reviewer: ''
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 08/31/2018
-ms.openlocfilehash: c36a771266f595f6d8dc8575d100fa5bb9496584
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.date: 10/06/2018
+ms.openlocfilehash: 4825985253f5525314a496f2adbc40657231f5d5
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714920"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48829847"
 ---
 # <a name="migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Online migrace MySQL do služby Azure Database for MySQL pomocí DMS
 Pomocí služby Azure Database Migration Service můžete migrovat databáze z místní instance MySQL do služby [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) s minimálními výpadky. Jinými slovy, můžete dosáhnout migrace s minimálními výpadky aplikace. V tomto kurzu provedete migraci ukázkové databáze **Employees** (Zaměstnanci) z místní instance MySQL verze 5.7 do služby Azure Database for MySQL pomocí aktivity online migrace ve službě Azure Database Migration Service.
@@ -50,13 +50,23 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 - Azure Database for MySQL podporuje pouze tabulky InnoDB. Informace o převodu tabulek MyISAM na tabulky InnoDB najdete v článku [Převod tabulek z MyISAM na InnoDB](https://dev.mysql.com/doc/refman/5.7/en/converting-tables-to-innodb.html). 
 
 - V souboru my.ini (Windows) nebo my.cnf (Unix) ve zdrojové databázi povolte binární protokolování pomocí následující konfigurace:
+
+    - **server_id** = 1 nebo větší (relevantní jenom pro MySQL 5.6)
+    - **log-bin**  = <path> (relevantní jenom pro MySQL 5.6)
+
+        Příklad: log-bin = E:\MySQL_logs\BinLog
+    - **binlog_format** = row
+    - **Expire_logs_days** = 5 (doporučujeme nepoužívat nulovou hodnotu; relevantní jenom pro MySQL 5.6)
+    - **Binlog_row_image** = full (relevantní jenom pro MySQL 5.6)
+    - **log_slave_updates** = 1
+ 
 - Uživatel musí mít roli ReplicationAdmin s následujícími oprávněními:
     - **KLIENT REPLIKACE** – Vyžaduje se pouze u úloh zpracování změn. Jinými slovy, úlohy pouze s úplným načtením toto oprávnění nevyžadují.
     - **REPLIKA REPLIKACE** – Vyžaduje se pouze u úloh zpracování změn. Jinými slovy, úlohy pouze s úplným načtením toto oprávnění nevyžadují.
     - **SUPER** – Vyžaduje se pouze ve verzích MySQL starších než 5.6.6.
 
 ## <a name="migrate-the-sample-schema"></a>Migrace ukázkového schématu
-K dokončení všech databázových objektů, jako jsou schémata tabulek, indexy a uložené procedury, potřebujeme extrahovat schéma ze zdrojové databáze a použít ho na databázi. K extrahování schématu můžete použít nástroj mysqldump s parametrem --no-data.
+K dokončení všech databázových objektů, jako jsou schémata tabulek, indexy a uložené procedury, potřebujeme extrahovat schéma ze zdrojové databáze a použít ho na databázi. K extrahování schématu můžete použít nástroj mysqldump s parametrem `--no-data`.
  
 Za předpokladu, že máte ukázkovou databázi zaměstnanců MySQL v místním systému, bude příkaz k provedení migrace schématu pomocí nástroje mysqldump vypadat takto:
 ```

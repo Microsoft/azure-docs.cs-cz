@@ -1,27 +1,27 @@
 ---
-title: Rychlý start rozhraní API pro automatické návrhy | Microsoft Docs
-description: Ukazuje, jak začít používat rozhraní API pro automatické návrhy v Bingu.
+title: 'Rychlý start: Rozhraní API pro automatické návrhy Bingu'
+titlesuffix: Azure Cognitive Services
+description: Ukazuje, jak začít používat rozhraní API pro automatické návrhy Bingu.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: 1482E781-7352-4A3F-B1D5-B896381348C4
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-autosuggest
-ms.topic: article
+ms.topic: quickstart
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: a7b54a1fb0b7c76eb72097357a6b51aa02e6e2fd
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 446d271854a4e45bcea8c261a0dc078e549f8229
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343430"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830749"
 ---
-# <a name="making-your-first-autosuggest-query"></a>Provedení svůj první dotaz automatických návrhů
+# <a name="quickstart-making-your-first-autosuggest-query"></a>Rychlý start: Odeslání prvního dotazu rozhraní API pro automatické návrhy Bingu
 
-Předtím, než bude možné vytvářet první volání, které je potřeba získat předplatné klíč kognitivní služby. Získat klíč, najdete v části [zkuste kognitivní služby](https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api).
+Před prvním voláním je potřeba získat klíč předplatného služeb Cognitive Services. Postup, jak získat klíč, naleznete v tématu [Zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api).
 
-Výsledky hledání webové získáte by odeslat požadavek GET na následující koncový bod:
+Pokud chcete získat výsledky hledávání na webu, odešlete požadavek GET na následující koncový bod:
 
 ```http
 https://api.cognitive.microsoft.com/bing/v5.0/Suggestions
@@ -34,28 +34,28 @@ https://api.cognitive.microsoft.com/bing/v5.0/Suggestions
 > https://api.cognitive.microsoft.com/bing/v7.0/Suggestions
 > ```
 
-Žádost musí používat protokol HTTPS.
+Požadavek musí používat protokol HTTPS.
 
-Doporučujeme vám, že všechny požadavky pocházejí ze serveru. Distribuce klíč v rámci klientské aplikace poskytuje další možnost pro škodlivý třetích stran k přístupu. Navíc volání ze serveru poskytuje snadný upgrade pro budoucí verze rozhraní API.
+Doporučujeme, aby byly všechny požadavky odeslány ze serveru. Distribuce klíče v rámci klientské aplikace nabízí více příležitostí pro přístup škodlivých třetích stran. Voláním ze serveru také zajistíte, že bude stačit upgradovat pouze jediný bod na budoucí verze rozhraní API.
 
-Musíte zadat požadavek [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query) parametr dotazu, který obsahuje uživatele částečné hledaný termín. Přestože je volitelné, žádost by také určit [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#mkt) parametr dotazu, který identifikuje na trhu, kam chcete výsledky pocházet z. Seznam parametrů dotazu volitelné, najdete v tématu [parametry dotazu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query-parameters). Všechny hodnoty parametru dotazu musí být kódovaná adresou URL.
+Požadavek musí obsahovat parametr dotazu [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query), který obsahuje částečný hledaný termín daného uživatele. Přestože je volitelný, měl by požadavek obsahovat také parametr [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#mkt) dotazu, který identifikuje trh, ze kterého chcete obdržet výsledky. Seznam volitelných parametrů dotazu najdete v tématu [Parametry dotazu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query-parameters). Všechny hodnoty parametru dotazu musí mít kódování URL.
 
-Musíte zadat požadavek [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#subscriptionkey) záhlaví. I když je volitelné, vám doporučujeme, aby se také určit následující hlavičky:
+Požadavek musí obsahovat hlavičku [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#subscriptionkey). Přestože jsou volitelné, doporučujeme, aby požadavek obsahoval i následující hlavičky:
 
-- [Uživatelský Agent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#useragent)
+- [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#useragent)
 - [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#clientid)
-- [X-vyhledávání – když](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#clientip)
-- [Umístění X vyhledávání](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#location)
+- [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#clientip)
+- [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#location)
 
-Hlavičky protokolu IP a umístění klienta jsou důležité pro vrácení obsahu vědět umístění.
+IP a hlavičky klienta jsou důležité pro vrácení obsahu závislého na umístění.
 
-Seznam všech hlaviček žádostí a odpovědí najdete v tématu [hlavičky](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#headers).
+Seznam všech hlaviček žádostí a odpovědí najdete v tématu [Hlavičky](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#headers).
 
 ## <a name="the-request"></a>Požadavek
 
-Požadavek by měly obsahovat všechny parametry navrhované dotazu a hlavičky. Toto rozhraní API by volání pokaždé, když uživatel zadá znak nového do vyhledávacího pole. Vrátí úplnosti dopad řetězec dotazu, relevance navrhovaných dotazu podmínek, které rozhraní API. Čím více dokončit řetězce dotazu, více relevantní, seznam navrhované, že jsou podmínky dotazu. Například návrhy, které můžou vrátit rozhraní API pro *s* by mohly být méně důležité než dotazy vrátí pro *řízení dinghies*. 
+Požadavek by měl obsahovat všechny navrhované parametry dotazu a hlavičky. Toto rozhraní API byste volali pokaždé, když uživatel do vyhledávacího pole zadá nový znak. Úplnost řetězce dotazu má vliv na relevanci navrhovaných termínů dotazu, které rozhraní API vrátí. Čím je řetězec dotazu úplnější, tím relevantnější seznam navrhovaných termínů dotazu se zobrazí. Například návrhy, které může rozhraní API vrátit pro *s*, budou pravděpodobně méně relevantní než dotazy, které vrátí pro *sailing dinghies*. 
 
-Následující příklad ukazuje požadavek, který vrátí řetězce dotazu navržené pro *vedení*.
+Následující příklad ukazuje požadavek, který vrací navrhované řetězce dotazu pro *sail*.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v5.0/suggestions?q=sail&mkt=en-us HTTP/1.1  
@@ -67,7 +67,7 @@ Host: api.cognitive.microsoft.com
 ```
 
 > [!NOTE]
-> Žádost o v7 Preview:
+> Požadavek v7 Preview:
 
 > ```http
 > GET https://api.cognitive.microsoft.com/bing/v7.0/suggestions?q=sail&mkt=en-us HTTP/1.1
@@ -78,13 +78,13 @@ Host: api.cognitive.microsoft.com
 > Host: api.cognitive.microsoft.com
 > ```
 
-Pokud je poprvé volání některé z rozhraní API služby Bing, neobsahují záhlaví ID klienta. Zahrnout pouze záhlaví ID klienta, pokud jste dříve volat rozhraní API pro Bing a Bing vrátil ID klienta pro uživatele a zařízení kombinaci.
+Pokud voláte některé z rozhraní API Bingu poprvé, nezahrnujte do volání hlavičku ID klienta. Hlavičku ID klienta zahrňte pouze v případě, že jste již dříve volali rozhraní API Bingu a Bing vrátil ID klienta pro příslušnou kombinaci uživatele a zařízení.
 
-Následující obrázek znázorňuje odpovědi na předchozí požadavek. Odpověď obsahuje skupinu webových návrhu, která obsahuje seznam návrhy vyhledávání dotazu. Zahrnuje každého návrhu `displayText`, `query`, a `url` pole.
+Následující příklad ukazuje odpověď na předchozí požadavek. Odpověď zahrnuje skupinu návrhů webů, která obsahuje seznam návrhů vyhledávacích dotazů. Každý návrh obsahuje pole `displayText`, `query` a `url`.
 
-`displayText` Pole obsahuje navrhované dotaz, který byste použili k naplnění rozevíracího seznamu vyhledávacího pole. Je třeba zobrazit všechny návrhy, které jsou zahrnuty v odpovědi, a v uvedeném pořadí.  
+Pole `displayText` obsahuje navrhovaný dotaz, který můžete použít k vyplnění rozevíracího seznamu vašeho vyhledávacího pole. Musíte zobrazit všechny návrhy, které odpověď obsahuje, v uvedeném pořadí.  
 
-Pokud uživatel vybere dotazu z rozevíracího seznamu, můžete použít řetězce dotazu v `query` pole k volání [rozhraní API služby Bing Search](../bing-web-search/search-the-web.md) a zobrazit výsledky. Nebo můžete použít adresu URL v `url` pole, které chcete uživateli odeslat do služby Bing search stránka s výsledky.
+Pokud uživatel vybere dotaz z rozevíracího seznamu, můžete řetězec dotazu použít v poli `query` k volání [rozhraní API pro vyhledávání Bingu](../bing-web-search/search-the-web.md) a zobrazení výsledků. Nebo můžete použít adresu URL v poli `url` a přesměrovat uživatele na stránku s výsledky hledání Bingu.
 
 ```  
 BingAPIs-TraceId: 76DD2C2549B94F9FB55B4BD6FEB6AC
@@ -150,8 +150,8 @@ BingAPIs-Market: en-US
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Vyzkoušejte rozhraní API. Přejděte na [testování konzoly rozhraní API pro automatické návrhy](https://dev.cognitive.microsoft.com/docs/services/56c7694ecf5ff801a090fbd1/operations/56c769a2cf5ff801a090fbd2).
+Vyzkoušejte si rozhraní API. Přejděte do [testovací konzoly rozhraní API pro automatické návrhy Bingu](https://dev.cognitive.microsoft.com/docs/services/56c7694ecf5ff801a090fbd1/operations/56c769a2cf5ff801a090fbd2).
 
-Podrobnosti o spotřebě objektů odpovědi najdete v tématu [získávání navrhované hledaných termínů](./get-suggested-search-terms.md).
+Podrobnosti o využití objektů odpovědi najdete v tématu [Získání navrhovaných hledaných termínů](./get-suggested-search-terms.md).

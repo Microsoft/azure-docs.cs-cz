@@ -1,40 +1,41 @@
 ---
-title: Volání koncového bodu s využitím Javy – vlastní vyhledávání Bingu – Microsoft Cognitive Services
-description: Tento rychlý start ukazuje, jak si vyžádat výsledky hledání s použitím jazyka Java k volání koncového bodu pro vlastní vyhledávání Bingu z vaší instance vlastního hledání.
+title: 'Rychlý start: Volání koncového bodu pomocí Javy – vlastní vyhledávání Bingu'
+titlesuffix: Azure Cognitive Services
+description: Tento rychlý start ukazuje, jak si z instance vlastního vyhledávání vyžádat výsledky hledání za použití Javy k volání koncového bodu pro vlastní vyhledávání Bingu.
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 7ef4de749d5b9152bbe043a26d3c60fe7f09f869
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: MT
+ms.openlocfilehash: ba1eb9799bc95dede081c6f1a6d972896c126da6
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46951810"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814107"
 ---
-# <a name="call-bing-custom-search-endpoint-java"></a>Volání koncového bodu pro vlastní vyhledávání Bingu (Java)
+# <a name="quickstart-call-bing-custom-search-endpoint-java"></a>Rychlý start: Volání koncového bodu pro vlastní vyhledávání Bingu (Java)
 
-Tento rychlý start ukazuje, jak si vyžádat výsledky hledání z vaší instance vlastního hledání pomocí Javy k volání koncového bodu pro vlastní vyhledávání Bingu. 
+Tento rychlý start ukazuje, jak si z instance vlastního vyhledávání vyžádat výsledky hledání za použití Javy k volání koncového bodu pro vlastní vyhledávání Bingu. 
 
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto rychlého startu je potřeba:
 
-- Instanci vlastního vyhledávání připravené k použití. Zobrazit [vytvořit první instanci vlastního vyhledávání Bingu](quick-start.md).
-- [Java](https://www.java.com) nainstalované.
-- Klíč předplatného. Klíč předplatného můžete získat, když aktivujete vaše [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search), nebo můžete použít klíč placené předplatné z řídicího panelu Azure (naleznete v tématu [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).    
+- Instance vlastního vyhledávání připravená k použití. Přečtěte si téma [Vytvoření první instance vlastního vyhledávání Bingu](quick-start.md).
+- Nainstalovaný jazyk [Java](https://www.java.com).
+- Klíč předplatného. Klíč předplatného můžete získat aktivací [bezplatné zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) nebo můžete použít klíč placeného předplatného z řídicího panelu Azure (informace najdete v tématu [Účet rozhraní API služby Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).    
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
-Chcete-li spustit tento příklad, postupujte podle těchto kroků:
+Pokud chcete tuto ukázku spustit, postupujte takto:
 
-1. Pomocí své prostředí Java IDE podle výběru vytvořte balíček.  
+1. Pomocí svého oblíbeného vývojového prostředí Javy vytvořte balíček.  
   
-2. Vytvořte soubor s názvem CustomSrchJava.java v balíčku a zkopírujte do něj následující kód. Nahraďte **YOUR-SUBSCRIPTION-KEY** a **YOUR-vlastní-CONFIG-ID** s klíč předplatného a konfigurací ID.  
+2. V tomto balíčku vytvořte soubor s názvem CustomSrchJava.java a zkopírujte do něj následující kód. Položky **YOUR-SUBSCRIPTION-KEY** a **YOUR-CUSTOM-CONFIG-ID** nahraďte klíčem předplatného a ID konfigurace.  
   
     ```java
     import java.io.InputStream;
@@ -134,7 +135,7 @@ Chcete-li spustit tento příklad, postupujte podle těchto kroků:
   
 4. Spusťte program.
     
-## <a name="next-steps"></a>Další postup
-- [Konfigurace prostředí uživatelského rozhraní](./hosted-ui.md)
-- [Použití dekorace značek zvýraznění textu](./hit-highlighting.md)
-- [Stránka webové stránky](./page-webpages.md)
+## <a name="next-steps"></a>Další kroky
+- [Konfigurace prostředí pro hostované uživatelské rozhraní](./hosted-ui.md)
+- [Zvýraznění textu pomocí dekoračních značek](./hit-highlighting.md)
+- [Stránkování webových stránek](./page-webpages.md)

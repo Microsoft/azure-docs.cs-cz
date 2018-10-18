@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 2aca366e6a433e3e71cccb49a13638dedacc38d6
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 700465279a43a8490c5863e7181c4c4d009ee97b
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42887502"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857920"
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Kurz: Vytvoření vazby existujícího vlastního certifikátu SSL k Azure Web Apps
 
@@ -66,7 +66,7 @@ Pokud chcete ve službě App Service použít certifikát, musí splňovat všec
 
 ## <a name="prepare-your-web-app"></a>Příprava webové aplikace
 
-Pokud chcete vytvořit vazbu vlastního certifikátu SSL ke své webové aplikaci, váš [plán služby App Service](https://azure.microsoft.com/pricing/details/app-service/) musí být na úrovni **Basic**, **Standard** nebo **Premium**. V tomto kroku se ujistíte, že je vaše webová aplikace na podporované cenové úrovni.
+Pokud chcete vytvořit vazbu vlastního certifikátu SSL ke své webové aplikaci, váš [plán služby App Service](https://azure.microsoft.com/pricing/details/app-service/) musí být na úrovni **Basic**, **Standard** nebo **Premium** nebo **Isolated**. V tomto kroku se ujistíte, že je vaše webová aplikace na podporované cenové úrovni.
 
 ### <a name="log-in-to-azure"></a>Přihlášení k Azure
 

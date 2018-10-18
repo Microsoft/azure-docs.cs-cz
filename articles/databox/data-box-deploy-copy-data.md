@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/25/2018
+ms.date: 10/10/2018
 ms.author: alkohli
-ms.openlocfilehash: 9bc84a9b08c4cfbdf7f24416c923e0dbd7076556
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: d606b7b536147b7e1d96bfb6cebf2522e5b4f85f
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161926"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078846"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box"></a>Kurz: Kopírování dat do Azure Data Boxu 
 
@@ -88,11 +88,11 @@ Pokud používáte hostitelský počítač s Windows Serverem, připojte se k Da
     The command completed successfully.
     ```
 
-4. Stiskněte Windows + R. V okně **Spustit** zadejte `\\<device IP address>`. Klikněte na **OK**. Tím se otevře Průzkumník souborů.
+4. Stiskněte Windows + R. V okně **Spustit** zadejte `\\<device IP address>`. Klikněte na **OK**. Tím se otevře Průzkumník souborů. Sdílené složky by se teď měly zobrazit jako složky.
     
     ![Připojení ke sdílené složce přes Průzkumníka souborů 2](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
 
-5. Sdílené složky by se teď měly zobrazit jako složky. Vytvořte složku pro soubory, které chcete zkopírovat (v tomto případě je to složka templates). Občas se u složek může zobrazit šedý křížek. Křížek neoznačuje chybový stav. Aplikace složky označuje příznakem kvůli sledování stavu.
+5.  **Vždy vytvořte složku pro soubory, které chcete kopírovat, v rámci sdílené složky a potom je zkopírujte do této složky**. Občas se u složek může zobrazit šedý křížek. Křížek neoznačuje chybový stav. Aplikace složky označuje příznakem kvůli sledování stavu.
     
     ![Připojení ke sdílené složce přes Průzkumníka souborů 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png) ![Připojení ke sdílené složce přes Průzkumníka souborů 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png) 
 
@@ -239,11 +239,14 @@ Pokud používáte možnost rsync ke kopírování s více vlákny, postupujte p
 
  - V závislosti na systému souborů, který používá váš klient Linuxu, nainstalujte balíček **CIFS Utils** nebo **NFS Utils**.
 
-    `sudo apt-get install cifs-utils` `sudo apt-get install nfs-utils`
+    `sudo apt-get install cifs-utils`
+
+    `sudo apt-get install nfs-utils`
 
  -  Nainstalujte **Rsync** a **Parallel** (liší se v závislosti na distribuované verzi Linuxu).
 
     `sudo apt-get install rsync`
+   
     `sudo apt-get install parallel` 
 
  - Vytvořte přípojný bod.

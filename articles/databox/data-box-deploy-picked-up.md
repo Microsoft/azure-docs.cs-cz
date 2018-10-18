@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 10/03/2018
 ms.author: alkohli
-ms.openlocfilehash: d649095a6b1b9f692a6795e96c9f15631d36e3e2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 05bfba9fffa7db75ef4e1a1167b3170a775e1d34
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974506"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785456"
 ---
 # <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>Kurz: Vrácení Azure Data Boxu a ověření nahrání dat do Azure
 
@@ -39,7 +39,10 @@ Než začnete, ujistěte se, že jste dokončili [kurz, který se týká kopíro
 ## <a name="ship-data-box-back"></a>Vrácení Data Boxu
 
 1. Ujistěte se, že je zařízení vypnuté a nejsou k němu zapojené žádné kabely. Smotejte napájecí kabel, který jste dostali se zařízením, a bezpečně ho umístěte do zadní části zařízení.
-2. Ujistěte se, že se na displeji s elektronickým inkoustem zobrazuje expediční štítek, a naplánujte vyzvednutí přepravcem. Pokud se tento štítek ztratil, je poškozený nebo se nezobrazuje na displeji s elektronickým inkoustem, stáhněte si expediční štítek z webu Azure Portal a připevněte ho k zařízení. Přejděte na **Přehled > Stáhnout expediční štítek**.
+2. Pokud zařízení posíláte v rámci USA, ujistěte se, že se na displeji s elektronickým inkoustem zobrazuje expediční štítek, a naplánujte vyzvednutí přepravcem. Pokud se tento štítek ztratil, je poškozený nebo se nezobrazuje na displeji s elektronickým inkoustem, stáhněte si expediční štítek z webu Azure Portal a připevněte ho k zařízení. Přejděte na **Přehled > Stáhnout expediční štítek**. 
+
+    Pokud zařízení posíláte v Evropě, displej s elektronickým inkoustem nezobrazuje expediční štítek. Místo toho najdete zpětný expediční štítek v průhledném pouzdře pod příchozím expedičním štítkem. Vyjměte starý expediční štítek a ujistěte se, že je expediční štítek dobře vidět.
+    
 3. Pokud zařízení vracíte v USA, domluvte si vyzvednutí s UPS. Pokud zařízení vracíte v Evropě prostřednictvím DHL, vyžádejte si vyzvednutí tak, že navštívíte web DHL a zadáte číslo přepravního lístku. Přejděte na web DHL Express a zvolte **Naplánovat vyzvednutí pro zpáteční zásilku**. 
 
     Zadejte číslo nákladového listu a kliknutím na tlačítko **Naplánovat vyzvednutí** zařiďte vyzvednutí.

@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/28/2018
+ms.date: 10/04/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e984dc985100bcdabbee4fb86bd1819a329301a5
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 95a0ffc6deecb7fd3bd6fce740f578352fdf2d66
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452628"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888090"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Vlastní instalace služby Azure AD Connect
 **Vlastní nastavení** Azure AD Connect se používá, pokud chcete využít další možnosti instalace. Používá se, pokud máte víc doménových struktur, nebo pokud chcete nakonfigurovat volitelné funkce, které nejsou zahrnuty v rychlé instalaci. Používá se ve všech případech, kde možnost [**rychlá instalace**](how-to-connect-install-express.md) nevyhovuje nasazení nebo topologii.
@@ -156,12 +156,19 @@ V plnohodnotném produkčním nasazení bude obtížné spravovat jenom jednu sk
 ### <a name="optional-features"></a>Volitelné funkce
 Na této obrazovce můžete vybrat volitelné funkce pro konkrétní scénáře.
 
+>[!WARNING]
+>Azure AD Connect verze **1.0.8641.0** a starší využívá pro zpětný zápis hesla službu Azure Access Control.  Dne **7. listopadu 2018** dojde k vyřazení této služby z provozu.  Pokud používáte některou z těchto verzí služby Azure AD Connect a máte povolený zpětný zápis hesla, můžou uživatelé po vyřazení této služby z provozu přijít o možnost změny nebo resetování hesel. Zpětný zápis hesla v těchto verzích služby Azure AD Connect už se nebude podporovat.
+>
+>Další informace o službě Azure Access Control najdete v tématu [Postupy: Migrace ze služby Azure Access Control Service](../develop/active-directory-acs-migration.md)
+>
+>Nejnovější verzi služby Azure AD Connect si můžete stáhnout po kliknutí [sem](https://www.microsoft.com/en-us/download/details.aspx?id=47594).
+
 ![Volitelné funkce](./media/how-to-connect-install-custom/optional2.png)
 
 > [!WARNING]
 > Pokud máte aktuálně aktivní nástroj DirSync nebo Azure AD Sync, neaktivujte žádnou z funkcí zpětného zápisu v Azure AD Connect.
->
->
+
+
 
 | Volitelné funkce | Popis |
 | --- | --- |
@@ -190,6 +197,9 @@ Na základě služeb vybraných v předchozím kroku tato stránka zobrazuje vš
 
 ### <a name="directory-extension-attribute-sync"></a>Synchronizace atributů rozšíření adresáře
 Schéma v Azure AD můžete rozšířit vlastními atributy, které přidala vaše organizace, nebo dalšími atributy ve službě Active Directory. Pokud chcete tuto funkci použít, vyberte možnost **Synchronizace atributů rozšíření adresáře** na stránce **Volitelné funkce**. Na této stránce můžete vybrat víc atributů k synchronizaci.
+
+>[!NOTE]
+>Pole Dostupné atributy rozlišuje velká a malá písmena.
 
 ![Rozšíření adresáře](./media/how-to-connect-install-custom/extension2.png)
 

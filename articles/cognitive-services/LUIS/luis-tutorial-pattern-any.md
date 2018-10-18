@@ -1,149 +1,149 @@
 ---
-title: 'Kurz 5: Pattern.any entity pro textu volného tvaru'
+title: 'Kurz 5: Entita Pattern.any pro text volného tvaru'
 titleSuffix: Azure Cognitive Services
-description: Použijte pattern.any entity extrahovat data z projevy, kde je správně naformátovaný projevy a kde konec dat může snadno zaměnitelná s zbývající slova utterance.
+description: Pomocí entity Pattern.any můžete extrahovat data ze správně naformátovaných promluv, kde je možné snadno zaměnit konec dat se zbývajícími slovy promluvy.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: language-understanding
-ms.topic: article
+ms.component: language-understanding
+ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 4ff4a7085a8caeedebe2a734014afb1cb46d9fbf
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
-ms.translationtype: MT
+ms.openlocfilehash: 90dc7b8bc69c86128b65c16920886b7c4af5c5cf
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47164391"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888301"
 ---
-# <a name="tutorial-5-extract-free-form-data"></a>5. kurz: Extrakce dat volného tvaru
+# <a name="tutorial-5-extract-free-form-data"></a>Kurz 5: Extrakce dat volného tvaru
 
-V tomto kurzu použijte pattern.any entity extrahovat data z projevy, kde jsou správně naformátovaný projevy a kde konec dat může snadno zaměnitelná s zbývající slova utterance. 
+V tomto kurzu použijete entitu Pattern.any k extrakci dat ze správně naformátovaných promluv, kde je možné snadno zaměnit konec dat se zbývajícími slovy promluvy. 
 
-Pattern.any entity umožňuje najít data volného tvaru, kde znění entity ztěžuje zjistit koncové entity od zbytku utterance. 
+Entita Pattern.any umožňuje vyhledat data volného tvaru, kde je kvůli formulaci entity obtížné odlišit konec entity od zbytku promluvy. 
 
-Tuto aplikaci lidských zdrojů pomáhá zaměstnancům najít firemní formuláře. 
-
-|Promluva|
-|--|
-|Kde je **HRF 123456**?|
-|Autora **HRF 123234**?|
-|**HRF 456098** je publikovaná ve francouzštině?|
-
-Každý formulář má však obě formátovaný název, použít v předchozí tabulce, stejně jako popisný název, například `Request relocation from employee new to the company 2018 version 5`. 
-
-Projevy s názvem popisný formulář vypadat takto:
+Tato aplikace pro lidské zdroje pomáhá zaměstnancům najít formuláře společnosti. 
 
 |Promluva|
 |--|
-|Kde je **žádat nová verze 5 společnosti 2018 zaměstnance přemístění**?|
-|Autora **"Žádat přemístění zaměstnance nové verze 5 společnosti 2018"**?|
-|**Žádat nová verze 5 společnosti 2018 zaměstnance přemístění** je publikovaná ve francouzštině?|
+|Where is **HRF-123456**? (Kde je HRF-123456?)|
+|Who authored **HRF 123234**? (Kdo vytvořil HRF 123234?)|
+|**HRF-456098** is published in French? (Je HRF-456098 ve francouzštině?)|
 
-Různé délky obsahuje slova, které může matou LUIS o ukončení entity. Použijete Pattern.any entitu ve vzorci můžete zadat začátek a konec název formuláře, LUIS správně extrahuje název formuláře.
+Každý formulář však má formátovaný název použitý v předchozí tabulce i popisný název, jako je například `Request relocation from employee new to the company 2018 version 5`. 
 
-|Příklad utterance šablony|
+Projevy s popisnými názvy formulářů vypadají takto:
+
+|Promluva|
 |--|
-|Kde je {FormName} [?]|
-|Autora {FormName} [?]|
-|{FormName} je publikovaná ve francouzštině [?]|
+|Where is **Request relocation from employee new to the company 2018 version 5**? (Kde je Žádost o přeložení nového zaměstnance společnosti z roku 2018 verze 5?)|
+|Who authored **Request relocation from employee new to the company 2018 version 5**? (Kdo vytvořil Žádost o přeložení nového zaměstnance společnosti z roku 2018 verze 5?)|
+|**Request relocation from employee new to the company 2018 version 5**? (Je Žádost o přeložení nového zaměstnance společnosti z roku 2018 verze 5 ve francouzštině?)|
 
-**V tomto kurzu se dozvíte, jak:**
+Různá délka promluv zahrnuje slova, která můžou službě LUIS komplikovat určení konce entity. Když ve vzoru použijete entitu Pattern.any, můžete určit začátek a konec názvu formuláře, aby služba LUIS mohla správně extrahovat název formuláře.
+
+|Příklad šablony promluvy|
+|--|
+|Where is {FormName}[?] (Kde je {FormName}[?])|
+|Who authored {FormName}[?] (Kdo vytvořil {FormName}[?])|
+|{FormName} is published in French[?] (Je {FormName} ve francouzštině[?])|
+
+**V tomto kurzu se naučíte:**
 
 > [!div class="checklist"]
-> * Použít existující ukázková aplikace
-> * Přidání projevů příklad do existující entity
-> * Vytvoření Pattern.any entity
-> * Vytvoření modelu
+> * Používat existující ukázkovou aplikaci
+> * Přidání ukázkových promluv do stávající entity
+> * Vytvoření entity Pattern.any
+> * Vytvoření vzoru
 > * Trénování
-> * Nový vzor testu
+> * Test nového vzoru
 
 [!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>Použití existující aplikace
-Pokračovat s aplikací vytvořili v posledním kurzu s názvem **Lidskézdroje**. 
+Pokračujte s aplikací **HumanResources**, kterou jste vytvořili v posledním kurzu. 
 
-Pokud nemáte aplikaci lidských zdrojů z předchozí kurz o službě, použijte následující kroky:
+Pokud aplikaci HumanResources z předchozího kurzu nemáte, postupujte takto:
 
-1.  Stáhněte a uložte [souboru JSON aplikace](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-roles-HumanResources.json).
+1.  Stáhněte si [soubor JSON aplikace](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-roles-HumanResources.json) a uložte si ho.
 
-2. Importujte ve formátu JSON do nové aplikace.
+2. Naimportujte soubor JSON do nové aplikace.
 
-3. Z **spravovat** části na **verze** kartu, naklonujte na verzi a pojmenujte ho `patt-any`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze, protože se používají jako součást trasu adresy URL název nesmí obsahovat žádné znaky, které nejsou platné v adrese URL.
+3. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `patt-any`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto smí obsahovat jenom znaky, které jsou platné v adresách URL.
 
-## <a name="add-example-utterances"></a>Přidání projevů příklad 
-Odeberte keyPhrase předem připravených entit, pokud je těžké vytvořit a označovat FormName entity. 
+## <a name="add-example-utterances"></a>Přidat ukázkové promluvy 
+Pokud je obtížné vytvořit a označit entitu FormName, odeberte předem připravenou entitu keyPhrase. 
 
-1. Vyberte **sestavení** v horním navigačním panelu vyberte **záměry** z levého navigačního panelu.
+1. V horní navigaci vyberte **Build** (Sestavení) a pak v levé navigaci vyberte **Intents** (Záměry).
 
-2. Vyberte **FindForm** ze seznamu záměry.
+2. V seznamu záměrů vyberte **FindForm** (Vyhledat formulář).
 
-3. Přidání projevů některé příklad:
+3. Přidejte několik ukázkových promluv:
 
-    |Příklad utterance|
+    |Ukázková promluva|
     |--|
-    |Kde je formulář **co dělat, když je dělí v testovacím prostředí** a který je potřeba po jsem si jej podepsat?|
-    |Kde je **žádat přemístění zaměstnance, nová společnost** na serveru?|
-    |Autora "**stavu a duševní pohoda požadavky v hlavním campusech**" a jaká je nejnovější verze?|
-    |Dívám se tam pro daný formulář s názvem "**Office přesunout žádosti včetně fyzické prostředky**". |
+    |Where is the form **What to do when a fire breaks out in the Lab** and who needs to sign it after I read it? (Kde je formulář „Co dělat, když v laboratoři vypukne požár“ a kdo ho musí podepsat, až ho přečtu?)|
+    |Where is **Request relocation from employee new to the company** on the server? (Kde na serveru je Žádost o přeložení nového zaměstnance společnosti?)|
+    |Who authored **Health and wellness requests on the main campus** and what is the most current version? (Kdo vytvořil „Zásady zachování zdraví a duševní pohody v hlavním kampusu“ a jaká je nejnovější verze?)|
+    |I'm looking for the form named **Office move request including physical assets**. (Hledám formulář s názvem „Žádost o přesun kanceláře včetně fyzických prostředků“.) |
 
-    Bez Pattern.any entity by bylo obtížné pro LUIS pochopit, kde končí název formuláře z důvodu mnoho variant názvy formulářů.
+    Bez entity Pattern.any by pro službu LUIS bylo kvůli mnoha variantám názvů formulářů obtížné zjistit, kde končí název formuláře.
 
-## <a name="create-a-patternany-entity"></a>Vytvoření Pattern.any entity
-Pattern.any entity extrahuje entity různou délku. Funguje pouze v vzor protože vzor označuje začátek a konec entity. Pokud zjistíte, že váš model, pokud obsahuje Pattern.any, výpisy entity nesprávně, použijte [explicitní seznam](luis-concept-patterns.md#explicit-lists) abyste tento problém opravili. 
+## <a name="create-a-patternany-entity"></a>Vytvoření entity Pattern.any
+Entita Pattern.any extrahuje entity různé délky. Funguje pouze ve vzoru, protože vzor označuje začátek a konec entity. Pokud zjistíte, že váš vzor zahrnující entitu Pattern.any neextrahuje entity správně, můžete tento problém opravit pomocí [explicitního seznamu](luis-concept-patterns.md#explicit-lists). 
 
-1. Vyberte **entity** v levém navigačním panelu.
+1. V levé navigaci vyberte **Entities** (Entity).
 
-2. Vyberte **vytvořit novou entitu**, zadejte název `FormName`a vyberte **Pattern.any** jako typ. Vyberte **Done** (Hotovo). 
+2. Vyberte **Create new entity** (Vytvořit novou entitu), zadejte název `FormName` a jako typ vyberte **Pattern.any**. Vyberte **Done** (Hotovo). 
 
-    Entity v záměr nelze popisek, protože Pattern.any platí pouze ve vzorku. 
+    Entitu není možné označit v záměru, protože entita Pattern.any je platná pouze ve vzoru. 
 
-    Pokud chcete extrahovaná data k začlenění jinými entitami, jako je číslo nebo datetimeV2, musíte vytvořit složenou entitu, která zahrnuje Pattern.any, stejně jako číslo a datetimeV2.
+    Pokud chcete, aby extrahovaná data zahrnovala i další entity, jako jsou entity number nebo datetimeV2, budete muset vytvořit složenou entitu obsahující entity Pattern.any i number a datetimeV2.
 
-## <a name="add-a-pattern-that-uses-the-patternany"></a>Přidejte vzor, který se používá Pattern.any
+## <a name="add-a-pattern-that-uses-the-patternany"></a>Přidání vzoru využívajícího entitu Pattern.any
 
-1. Vyberte **vzory** z levé navigace.
+1. V levé navigaci vyberte **Patterns** (Vzory).
 
-2. Vyberte **FindForm** záměr.
+2. Vyberte záměr **FindForm** (Vyhledat formulář).
 
-3. Zadejte následující šablony projevy, které používají nové entity:
+3. Zadejte následující šablony promluv, které používají novou entitu:
 
-    |Projevy šablony|
+    |Šablony promluv|
     |--|
-    |Kde je formulář ["] {FormName} ["] a kdo potřebuje podepište ho po jsem si ho [?]|
-    |Kde je ["] {FormName} ["] na serveru [?]|
-    |Autora ["] {FormName} ["] a jaká je nejnovější verze [?]|
-    |Dívám se tam pro daný formulář s názvem ["] {FormName} ["] [.]|
+    |Where is the form ["]{FormName}["] and who needs to sign it after I read it[?] (Kde je formulář ["]{FormName}["] a kdo ho musí podepsat, až ho přečtu[?])|
+    |Where is ["]{FormName}["] on the server[?] (Kde na serveru je ["]{FormName}["][?])|
+    |Who authored ["]{FormName}["] and what is the most current version[?] (Kdo vytvořil ["]{FormName}["] a jaká je nejnovější verze[?])|
+    |I'm looking for the form named ["]{FormName}["][.] (Hledám formulář s názvem ["]{FormName}["][.])|
 
-    Pokud chcete účet každodenně formu jako je například jednoduchých uvozovek a být místo dvojitých uvozovek nebo období místo otazník, vytvořte nový vzor pro každou změnu.
+    Pokud chcete zohlednit různé varianty formuláře, jako je použití jednoduchých uvozovek místo dvojitých nebo tečky místo otazníku, vytvořte pro každou variantu nový vzor.
 
-4. Pokud jste odebrali keyPhrase entity, můžete ji přidáte do aplikace. 
+4. Pokud jste odebrali entitu keyPhrase, přidejte ji zpátky do aplikace. 
 
 ## <a name="train-the-luis-app"></a>Trénování aplikace LUIS
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="test-the-new-pattern-for-free-form-data-extraction"></a>Testování nový vzor pro extrakci dat volného tvaru
-1. Vyberte **testování** v horním panelu otevřete panel testů. 
+## <a name="test-the-new-pattern-for-free-form-data-extraction"></a>Test nového vzoru pro extrakci dat volného tvaru
+1. Výběrem možnosti **Test** na horním panelu otevřete panel testování. 
 
-2. Zadejte následující utterance: 
+2. Zadejte následující promluvu: 
 
     `Where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?`
 
-3. Vyberte **zkontrolujte, jestli se** podle výsledku zobrazíte výsledky testů pro entitu a záměr.
+3. Pod výsledkem vyberte **Inspect** (Prozkoumat) a zobrazte výsledky testu pro entitu a záměr.
 
-    Entita `FormName` je nalezena jako první, pak se najde vzorek, určení záměr. Pokud máte výsledku testu, kde entity, které nejsou zjištěny, a proto není nalezen vzor, budete muset přidat další příklad projevy na záměr (ne vzor).
+    Jako první se našla entita `FormName` a pak vzor určující záměr. Pokud máte výsledek testu, kde se nezjistily entity a tedy se ani nenašel vzor, musíte do záměru (ne do vzoru) přidat více ukázkových promluv.
 
-4. Zavřít panel testů tak, že vyberete **testování** tlačítko v horním navigačním panelu.
+4. Zavřete panel testování výběrem tlačítka **Test** v horní navigaci.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu přidá příklad projevy na existující záměr, pak vytvoří nové Pattern.any pro název formuláře. Tento kurz vytvoří vzor pro existující záměr s novou příklad projevy a entity. Interaktivní testování jsme si ukázali, že vzor a jejímu záměru byly předvídat, protože entita byla nalezena. 
+V tomto kurzu se do stávajícího záměru přidaly ukázkové promluvy a pak se vytvořila nová entita Pattern.any pro název formuláře. Pak se vytvořil vzor pro stávající záměr s novými ukázkovými promluvami a entitou. Interaktivní testování ukázalo, že se předpověděl vzor a jeho záměr, protože se našla entita. 
 
 > [!div class="nextstepaction"]
-> [Další informace o použití rolí pomocí vzoru](luis-tutorial-pattern-roles.md)
+> [Naučte se, jak používat role spolu se vzorem](luis-tutorial-pattern-roles.md)

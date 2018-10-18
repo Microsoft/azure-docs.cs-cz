@@ -1,24 +1,25 @@
 ---
-title: Získávání pravopisu zkontrolujte výsledky pomocí Bingu pravopisu zkontrolujte rozhraní API (kognitivní služeb pro Microsoft v Azure) | Microsoft Docs
-description: Zdrojový kód pro kurz znázorňující použití rozhraním API služby Bing pravopisu zkontrolujte v jednostránkovou webovou aplikaci.
+title: 'Kurz: Získání výsledků kontroly pravopisu pomocí rozhraní API Bingu pro kontrolu pravopisu'
+titlesuffix: Azure Cognitive Services
+description: Zdrojový kód pro kurz, který ukazuje, jak používat rozhraní API Bingu pro kontrolu pravopisu v jednostránkové webové aplikaci.
 services: cognitive-services
 author: v-jaswel
-manager: kamrani
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-spell-check
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/04/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 1f2f75a51324bb05e1b95dc3a3c4e438f3aa593c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: baa618929b1f7b401c619681dce4e085b16543e7
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342362"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48800957"
 ---
-# <a name="tutorial-single-page-web-app"></a>Kurz: Jednostránkovou webovou aplikaci
+# <a name="tutorial-single-page-web-app"></a>Kurz: Jednostránková webová aplikace
 
-Toto je popsané v úplný zdrojový kód [kurzu jednostránkové aplikace](spellcheck.md) pro API kontrola pravopisu Bing. Ke spuštění aplikace, do textového editoru, zkopírujte zdrojový kód a soubor uložte jako `spellcheck.html`. Poté otevřete soubor uložený ve webovém prohlížeči.
+Toto je úplný zdrojový kód probíraný v [kurzu o jednostránkové aplikaci](spellcheck.md) pro rozhraní API Bingu pro kontrolu pravopisu. Pokud chcete aplikaci spustit, zkopírujte zdrojový kód do textového editoru a uložte soubor jako `spellcheck.html`. Potom otevřete uložený soubor ve webovém prohlížeči.
 
 ```html
 <!DOCTYPE html>

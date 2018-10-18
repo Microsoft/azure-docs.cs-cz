@@ -3,21 +3,20 @@ title: Vytvoření a publikování spravované aplikace katalogu služeb Azure |
 description: Ukazuje, jak vytvořit spravovanou aplikaci Azure, která je určená pro členy vaší organizace.
 services: managed-applications
 author: tfitzmac
-manager: timlt
 ms.service: managed-applications
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.date: 06/08/2018
+ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3b1da6e9068be3c96cce5973f29344fe7e4b4872
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: a2e6e78268f97136533b4f72ce28373642b6c394
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095836"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801263"
 ---
-# <a name="publish-a-managed-application-for-internal-consumption"></a>Publikování spravované aplikace pro interní účely
+# <a name="create-and-publish-a-managed-application-definition"></a>Vytvoření a publikování definice spravované aplikace
 
 Můžete vytvořit a publikovat [spravovanou aplikaci](overview.md) Azure, která je určená pro členy vaší organizace. Oddělení IT může například publikovat spravované aplikace, které vyhovují standardům organizace. Tyto spravované aplikace jsou k dispozici prostřednictvím katalogu služeb, ne prostřednictvím Azure Marketplace.
 
@@ -215,80 +214,7 @@ New-AzureRmManagedApplicationDefinition `
 
 Máte přístup k definici spravované aplikace, ale je potřeba zajistit přístup i pro ostatní uživatele ve vaší organizaci. Udělte jim k definici alespoň přístup role Čtenář. Je možné, že tuto úroveň přístupu zdědili z předplatného nebo skupiny prostředků. Informace o tom, kdo má přístup k definici, a o přidání uživatelů nebo skupin najdete v tématu [Použití řízení přístupu na základě rolí ke správě přístupu k prostředkům předplatného Azure](../role-based-access-control/role-assignments-portal.md).
 
-## <a name="create-the-managed-application"></a>Vytvoření spravované aplikace
-
-Spravovanou aplikaci můžete nasadit prostřednictvím portálu, prostředí PowerShell nebo rozhraní příkazového řádku Azure.
-
-### <a name="powershell"></a>PowerShell
-
-Nejdřív použijeme k nasazení spravované aplikace prostředí PowerShell.
-
-```powershell
-# Create resource group
-New-AzureRmResourceGroup -Name applicationGroup -Location westcentralus
-
-# Get ID of managed application definition
-$appid=(Get-AzureRmManagedApplicationDefinition -ResourceGroupName appDefinitionGroup -Name ManagedStorage).ManagedApplicationDefinitionId
-
-# Create the managed application
-New-AzureRmManagedApplication `
-  -Name storageApp `
-  -Location westcentralus `
-  -Kind ServiceCatalog `
-  -ResourceGroupName applicationGroup `
-  -ManagedApplicationDefinitionId $appid `
-  -ManagedResourceGroupName "InfrastructureGroup" `
-  -Parameter "{`"storageAccountNamePrefix`": {`"value`": `"demostorage`"}, `"storageAccountType`": {`"value`": `"Standard_LRS`"}}"
-```
-
-Spravovaná aplikace a spravovaná infrastruktura teď existuje v rámci předplatného.
-
-### <a name="portal"></a>Portál
-
-Teď použijeme k nasazení spravované aplikace portál. Zobrazí se uživatelské rozhraní, které jste vytvořili v balíčku.
-
-1. Přejděte na web Azure Portal. Vyberte **+ Vytvořit prostředek** a vyhledejte **katalog služeb**.
-
-   ![Hledání katalogu služeb](./media/publish-service-catalog-app/create-new.png)
-
-1. Vyberte **Spravovaná aplikace katalogu služeb**.
-
-   ![Výběr katalogu služeb](./media/publish-service-catalog-app/select-service-catalog-managed-app.png)
-
-1. Vyberte **Vytvořit**.
-
-   ![Výběr možnosti vytvoření](./media/publish-service-catalog-app/select-create.png)
-
-1. Najděte spravovanou aplikaci, kterou chcete vytvořit ze seznamu dostupných řešení, a vyberte ji. Vyberte **Vytvořit**.
-
-   ![Nalezení spravované aplikace](./media/publish-service-catalog-app/find-application.png)
-
-   Pokud nevidíte definici spravované aplikace na portálu, bude možná potřeba nastavení portálu změnit. Vyberte **Filtr adresářů a předplatných**.
-
-   ![Výběr filtru předplatného](./media/publish-service-catalog-app/select-filter.png)
-
-   Zkontrolujte, že filtr serverového odběru obsahuje předplatné, ve kterém je definice spravované aplikace.
-
-   ![Kontrola filtru předplatného](./media/publish-service-catalog-app/check-global-filter.png)
-
-   Po výběru předplatného začněte vytvářet spravovanou aplikaci katalogu služeb. Teď byste ji měli vidět.
-
-1. Zadejte základní informace, které jsou potřeba pro spravovanou aplikaci. Zadejte předplatné a novou skupinu prostředků, která má spravovanou aplikaci obsahovat. Jako umístění vyberte **USA – středozápad**. Až budete hotovi, vyberte **OK**.
-
-   ![Zadání parametrů spravované aplikace](./media/publish-service-catalog-app/add-basics.png)
-
-1. Zadejte hodnoty, které jsou specifické pro prostředky ve spravované aplikaci. Až budete hotovi, vyberte **OK**.
-
-   ![Zadání parametrů prostředků](./media/publish-service-catalog-app/add-storage-settings.png)
-
-1. Šablona ověří hodnoty, které jste zadali. V případě úspěšného ověření spusťte nasazení výběrem **OK**.
-
-   ![Ověření spravované aplikace](./media/publish-service-catalog-app/view-summary.png)
-
-Po dokončení nasazení existuje spravovaná aplikace ve skupině prostředků s názvem applicationGroup. Účet úložiště existuje ve skupině prostředků s názvem applicationGroup a připojenou hodnotou hash řetězce.
-
 ## <a name="next-steps"></a>Další kroky
 
-* Úvod ke spravovaným aplikacím najdete v [přehledu spravovaných aplikací](overview.md).
-* Příklady projektů najdete v tématu [Ukázkové projekty pro spravované aplikace Azure](sample-projects.md).
-* Pokud chcete zjistit, jak vytvořit definiční soubor uživatelského rozhraní pro spravovanou aplikaci, přečtěte si téma [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
+* Informace o publikování spravované aplikace na webu Azure Marketplace najdete v tématu [Spravované aplikace Azure v Marketplace](publish-marketplace-app.md).
+* Informace o nasazení instance spravované aplikace najdete v tématu [Nasazení aplikace z katalogu služeb prostřednictvím webu Azure Portal](deploy-service-catalog-quickstart.md).

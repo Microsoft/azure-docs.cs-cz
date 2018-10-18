@@ -9,12 +9,12 @@ author: hning86
 ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: eda4a1dabd20eee73cfbfa4dc0dd2b0eaa56788e
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: b1ae3fb5de3e28f44ef39731f49a33e2086255a1
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031233"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785337"
 ---
 # <a name="tutorial-2--deploy-an-image-classification-model-in-azure-container-instance-aci"></a>Kurz 2: Nasazení modelu klasifikace obrázků v Azure Container Instance (ACI)
 
@@ -35,14 +35,14 @@ Služba ACI není pro produkční nasazení ideální, ale hodí se pro účely 
 
 ## <a name="get-the-notebook"></a>Získání poznámkového bloku
 
-Pro usnadnění práce je tento kurz k dispozici jako poznámkový blok Jupyter. Ke spuštění poznámkového bloku `tutorials/02.deploy-models.ipynb` použijte některou z těchto metod:
+V zájmu usnadnění práce je tento kurz dostupný jako [poznámkový blok Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/02.deploy-models.ipynb). Spusťte poznámkový blok `02.deploy-models.ipynb` ve službě Azure Notebooks nebo na vlastním serveru poznámkového bloku Jupyter.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Dokončete trénování modelu v poznámkovém bloku [Kurz 1: Trénování modelu klasifikace obrázků pomocí Azure Machine Learning](tutorial-train-models-with-aml.md).  
+Dokončete trénování modelu v poznámkovém bloku [Kurz 1: Trénování modelu klasifikace obrázků pomocí služby Azure Machine Learning](tutorial-train-models-with-aml.md).  
 
 
 ## <a name="set-up-the-environment"></a>Nastavení prostředí
@@ -383,4 +383,4 @@ V tomto kurzu ke službě Azure Machine Learning jste pomocí Pythonu provedli n
 > * Nasazení modelu do služby ACI
 > * Testování nasazeného modelu
  
-Můžete vyzkoušet také kurz [Automatický výběr algoritmu](), abyste viděli, jak může Azure Machine Learning automaticky vybrat a vyladit nejlepší algoritmus pro daný model a sestavit tento model pro vás.
+Můžete taky vyzkoušet kurz [Automatický výběr algoritmu](), abyste viděli, jak může služba Azure Machine Learning automaticky vybrat a vyladit nejlepší algoritmus pro daný model a tento model vám sestavit.

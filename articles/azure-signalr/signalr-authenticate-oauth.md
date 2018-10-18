@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: 696139a3e37f7bd1e32b4e7cec836b3c66df16a6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8751e3485b97b67fd8dd4821480fecd7735c08cd
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974319"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268508"
 ---
 # <a name="tutorial-azure-signalr-service-authentication"></a>Kurz: Ověřování pomocí služby Azure SignalR
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte implementovat vlastní ověřování a integrovat ho 
 
 Ověřování původně použité v aplikaci chatovací místnosti z rychlého startu je pro reálné scénáře moc jednoduché. Tato aplikace umožňuje každému klientovi, aby deklaroval svou identitu, a server ji jednoduše přijme. Tento přístup ale není moc užitečný pro reálné aplikace, kde by neautorizovaný uživatel mohl zosobnit jiného uživatele a zajistit si tak přístup k citlivým datům. 
 
-[GitHub](https://github.com/) poskytuje ověřovací rozhraní API založená na oblíbeném standardním protokolu nazvaném [OAuth](https://oauth.net/). Tato rozhraní API umožňují aplikacím třetích stran ověřovat účty GitHub. V tomto kurzu použijete tato rozhraní API k implementaci ověřování prostřednictvím účtu GitHub před povolením klienta přihlášení do aplikace chatovací místnosti. Po ověření účtu GitHub se informace o něm přidají jako soubor cookie, který bude webový klient používat k ověřování informací o tomto účtu.
+[GitHub](https://github.com/) poskytuje ověřovací rozhraní API založená na oblíbeném standardním protokolu nazvaném [OAuth](https://oauth.net/). Tato rozhraní API umožňují aplikacím třetích stran ověřovat účty GitHub. V tomto kurzu pomocí těchto rozhraní API implementujete ověřování prostřednictvím účtu GitHubu před tím, než se klientům povolí přihlášení do aplikace chatovací místnosti. Po ověření účtu GitHub se informace o něm přidají jako soubor cookie, který bude webový klient používat k ověřování informací o tomto účtu.
 
 Další informace o rozhraních API pro ověřování OAuth poskytovaných prostřednictvím GitHubu najdete v tématu [Základy ověřování](https://developer.github.com/v3/guides/basics-of-authentication/).
 

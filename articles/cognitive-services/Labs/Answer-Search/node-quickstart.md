@@ -1,41 +1,42 @@
 ---
-title: Rychlý start uzel pro kognitivní služby společnosti Microsoft, vyhledání odpovědí projektu | Microsoft Docs
-description: Začněte používat projektu odpovědí hledání, kognitivní služby společnosti Microsoft na platformě Azure.
+title: 'Rychlý start: Project Answer Search, Node'
+description: Začněte používat Project Answer Search s jazykem Node.
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-answer-search
-ms.topic: article
+ms.component: project-answer-search
+ms.topic: quickstart
 ms.date: 04/13/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 36b2709d39230aae7929164ba4c9306f57043b43
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.author: rosh
+ms.openlocfilehash: 99dba482c9dec4448110301201c7c9e79a7a6380
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343228"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867421"
 ---
-# <a name="project-answer-search-node-quickstart"></a>Rychlé spuštění uzlu vyhledávání odpovědí projektu
+# <a name="quickstart-project-answer-search-with-node"></a>Rychlý start: Project Answer Search s jazykem Node
 
-Následující příklad uzlu vytvoří dotaz na informace o Yosemite národním parku.
+Následující příklad kódu Node vytvoří dotaz na informace o Yosemitském národním parku.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Získat přístupový klíč pro bezplatné zkušební verze [kognitivní Labs služby](https://aka.ms/answersearchsubscription)
+Získání přístupového klíče k bezplatné zkušební verzi služby [Cognitive Services Labs](https://aka.ms/answersearchsubscription)
 
-Tento příklad používá v8.9.4 uzlu
+Tento příklad používá jazyk Node verze 8.9.4.
 
 ## <a name="code-scenario"></a>Scénář kódu 
 
-Následující kód získá odpovědi.
-Jsou implementované v následujících krocích:
-1. Deklarujte proměnné zadat koncový bod hostitele a cestu.
-2. Zadejte adresu URL dotazu si verzi preview a přidat parametr dotazu.  
+Následující kód načítá odpovědi.
+Implementuje se v následujících krocích:
+1. Deklarujte proměnné, které za použití hostitele a cesty určují koncový bod.
+2. Zadejte adresu URL dotazu k náhledu a přidejte parametr dotazu.  
 3. Vytvořte obslužnou rutinu pro odpověď.
-4. Definování funkce vyhledávání, která vytvoří žádost a přidá *Ocp-Apim-Subscription-Key* záhlaví.
-5. Spusťte funkci hledání. 
+4. Definujte funkci vyhledávání, který vytvoří požadavek a přidá hlavičku *Ocp-Apim-Subscription-Key*.
+5. Spusťte funkci vyhledávání. 
 
-Kód dokončení v této ukázce takto:
+Následuje celý kód pro tuto ukázku:
 
 ````
 'use strict';
@@ -86,7 +87,7 @@ Search();
 
 ````
 
-## <a name="next-steps"></a>Další postup
-- [Příklad kódu C#](c-sharp-quickstart.md)
+## <a name="next-steps"></a>Další kroky
+- [Ukázkový kód v jazyce C#](c-sharp-quickstart.md)
 - [Rychlý start Java](java-quickstart.md)
 - [Rychlý start Python](python-quickstart.md)

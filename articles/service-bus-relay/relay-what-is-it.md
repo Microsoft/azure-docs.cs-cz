@@ -1,10 +1,9 @@
 ---
-title: Přehled služby Azure Relay a důvodů pro její používání | Dokumentace Microsoftu
-description: Přehled služby Azure Relay
+title: Co je Azure Relay? | Microsoft Docs
+description: Tento článek obsahuje přehled služby Azure Relay, která umožňuje vyvíjet cloudové aplikace využívající místní služby spuštěné v podnikové síti, a to bez nutnosti otevírat připojení brány firewall nebo provádět výraznější změny síťové infrastruktury.
 services: service-bus-relay
-documentationcenter: .net
 author: spelluru
-manager: timlt
+manager: ''
 editor: ''
 ms.assetid: 1e3e971d-2a24-4f96-a88a-ce3ea2b1a1cd
 ms.service: service-bus-relay
@@ -12,71 +11,85 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: get-started-article
-ms.date: 05/02/2018
+ms.date: 10/08/2018
 ms.author: spelluru
-ms.openlocfilehash: dc616f18033014a5dcc9e5d15434497978484bc1
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 46a9045cdf422ed4f14e5588b3342e8bfde2e4c8
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43695961"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888078"
 ---
 # <a name="what-is-azure-relay"></a>Co je Azure Relay?
+Služba Azure Relay umožňuje bezpečně zpřístupnit služby spuštěné v podnikové síti pro veřejný cloud. Můžete to provést bez nutnosti otevírat připojení brány firewall nebo provádět výraznější změny infrastruktury podnikové sítě. 
 
-Služba Azure Relay hybridním aplikacím usnadňuje práci tím, že vám umožní bezpečně vystavit veřejnému cloudu služby, které se nacházejí v podnikové síti, a to bez nutnosti otevřít připojení brány firewall nebo provést výraznější změny v infrastruktuře podnikové sítě. Služba Relay podporuje různé přenosové protokoly a standardy webových služeb.
+Služba Relay podporuje následující scénáře mezi místními službami a aplikacemi spuštěnými v cloudu nebo v jiném místním prostředí. 
 
-Služba Relay podporuje tradiční jednosměrný provoz, provoz typu požadavek/odpověď a provoz peer-to-peer. Taky podporuje distribuci událostí na úrovni internetu, která umožňuje scénáře typu publikování+odběr a obousměrnou soketovou komunikací pro zvýšenou účinnost mezi body.
+- Tradiční jednosměrná komunikace, komunikace typu požadavek/odpověď a komunikace peer-to-peer 
+- Distribuce událostí na úrovni internetu, která umožňuje scénáře typu publikování/odběr 
+- Obousměrná soketová komunikace bez vyrovnávací paměti přes hranice sítí
 
-V přenosu dat s předáváním se lokální služba připojí k službě Relay přes port pro odchozí spojení a vytvoří obousměrný soket pro komunikaci vázanou na konkrétní potkávací adresu. Klient pak může komunikovat s místní službou odesíláním provozu do služby Relay s tím, že cílem je potkávací adresa. Služba Relay pak data „předá“ místní službě přes obousměrný soket vyhrazený pro jednotlivé klienty. Klient nepotřebuje přímé spojení s lokální službou, nemusí ani vědět, kde se služba nachází, a lokální služba nepotřebuje mít ve firewallu otevřené žádné příchozí porty.
+Azure Relay se liší od integračních technologií na úrovni sítě, jako je například síť VPN. Službu Azure Relay je možné omezit na jediný koncový bod aplikace na jednom počítači. Technologie sítě VPN se spoléhá na upravování síťového prostředí a mnohem víc do něj zasahuje. 
 
-Mezi klíčové schopnosti, které služba Relay nabízí, patří obousměrná komunikace bez vyrovnávací paměti přes hranice sítí s omezováním toku dat (podobně jako u protokolu TCP), zjišťování koncových bodů, stav připojení a překrývající se zabezpečení koncových bodů.
+## <a name="basic-flow"></a>Základní tok
+Přenos dat s předáváním zahrnuje následující základní kroky:
 
-Schopnosti služby Relay se liší od integračních technologií na úrovni sítě, jako je například síť VPN, tím, že službu Relay lze omezit na jediný koncový bod aplikace na jednom počítači, zatímco technologie sítě VPN se spoléhá na upravování síťového prostředí a mnohem víc do něj zasahuje.
+1. Místní služba se připojí k službě Relay přes odchozí port. 
+2. Vytvoří obousměrný soket pro komunikaci vázanou na konkrétní adresu. 
+3. Klient pak může komunikovat s místní službou odesíláním provozu do služby Relay s tím, že cílem je tato adresa. 
+4. Služba Relay pak data *předá* místní službě přes obousměrný soket vyhrazený pro daného klienty. Klient nepotřebuje přímé připojení k místní službě. Nemusí ani vědět, kde se služba nachází. A místní služba nepotřebuje mít v bráně firewall otevřené žádné příchozí porty.
 
+
+## <a name="features"></a>Funkce 
 Azure Relay má dvě funkce:
 
-1. [Hybridní připojení](#hybrid-connections) – Pomocí otevřených webových soketů umožňuje scénáře s podporou více platforem.
-2. [Přenosy WCF](#wcf-relays) – Pomocí technologie Windows Communication Foundation (WCF) umožňuje vzdálená volání procedur. WCF Relay je starší verze nabídky přenosu, kterou již mnozí uživatelé používají ve svých programovacích modelech WCF.
+- [Hybridní připojení](#hybrid-connections) – Pomocí otevřených webových soketů umožňuje scénáře s podporou více platforem.
+- [Přenosy WCF](#wcf-relays) – Pomocí technologie Windows Communication Foundation (WCF) umožňuje vzdálená volání procedur. WCF Relay je starší verze nabídky přenosu, kterou již mnozí uživatelé používají ve svých programovacích modelech WCF.
 
-Hybridní připojení i přenosy WCF umožňují zabezpečené připojení k prostředkům existujícím v rámci podnikové sítě. Použití jedné nebo druhé funkce závisí na konkrétních požadavcích, jak je popsáno v následující tabulce:
+## <a name="hybrid-connections"></a>Hybridní připojení
+
+Zabezpečená funkce Hybrid Connections s podporou otevřených protokolů ve službě Azure Relay je důsledkem vývoje funkcí služby Relay, které existovaly dříve. Můžete ji používat na jakékoli platformě a v libovolném jazyce. Funkce Hybrid Connections ve službě Azure Relay je založená na protokolech HTTP a WebSockets. Umožňuje odesílat požadavky a přijímat odpovědi přes webové sokety nebo protokol HTTP nebo HTTPS. Tato funkce je kompatibilní s rozhraním API WebSocket v běžných webových prohlížečích. 
+
+Podrobnosti o protokolu pro hybridní připojení najdete v [příručce k protokolům Hybrid Connections](relay-hybrid-connections-protocol.md). Hybrid Connections můžete používat s jakoukoli knihovnou webových soketů pro všechny moduly runtime a jazyky.
+
+> [!NOTE]
+> Funkce Hybrid Connections služby Azure Relay nahrazuje starší funkci hybridních připojení služby BizTalk Services. Funkce Hybrid Connections ve službě BizTalk Services využívala službu Azure Service Bus WCF Relay. Schopnost Hybrid Connections ve službě Azure Relay doplňuje již dříve existující funkci WCF Relay. Tyto dvě schopnosti služeb (WCF Relay a Hybrid Connections) existují ve službě Azure Relay vedle sebe. Sdílejí sice společnou bránu, jinak se ale jedná o rozdílné implementace.
+
+## <a name="wcf-relay"></a>WCF Relay
+WCF Relay funguje v celém rozhraní .NET Framework a funguje i s technologií WCF. Propojení místní služby se službou Relay vytvoříte pomocí skupiny „předávacích“ vazeb WCF. Na pozadí se děje to, že předávací vazby mapují do nových elementů přenosové vazby určené k vytvoření komponentů kanálu WCF, které se integrují se službou Service Bus v cloudu. Další informace najdete v článku [Začínáme s přenosy WCF](relay-wcf-dotnet-get-started.md).
+
+## <a name="hybrid-connections-vs-wcf-relay"></a>Hybrid Connections vs. WCF Relay
+Hybrid Connections i WCF Relay umožňují zabezpečené připojení k prostředkům existujícím v rámci podnikové sítě. Použití jedné nebo druhé funkce závisí na konkrétních požadavcích, jak je popsáno v následující tabulce:
 
 |  | WCF Relay | Hybridní připojení |
 | --- |:---:|:---:|
 | **WCF** |x | |
 | **.NET Core** | |x |
 | **.NET Framework** |x |x |
-| **JavaScript/NodeJS** | |x |
+| **JavaScript/Node.js** | |x |
 | **Otevřený protokol založený na standardech** | |x |
 | **Několik programovacích modelů protokolu RPC** | |x |
 
-## <a name="hybrid-connections"></a>Hybridní připojení
-
-Schopnost zabezpečených hybridních připojení služby Azure Relay s podporou otevřených protokolů je důsledkem vývoje stávajících funkcí služby Relay a dá se nasadit na jakékoli platformě a v libovolném jazyce. Hybridní připojení můžou přenášet protokoly WebSocket i požadavky a odpovědi HTTP(S). Tyto schopnosti jsou kompatibilní s rozhraním API WebSocket v běžných webových prohlížečích. Hybridní připojení jsou založená na protokolech HTTP a WebSocket.
-
-Protokol je plně zdokumentovaný v [průvodci protokolem hybridních připojení](relay-hybrid-connections-protocol.md) a umožňuje používání služby Relay hybridních připojení s prakticky jakoukoli knihovnou WebSocketů pro všechny moduly runtime a jazyky.
-
-### <a name="service-history"></a>Historie služby
-
-Hybridní připojení nahrazuje starší funkci služby BizTalk Services s podobným názvem, která byla postavená na službě Azure Service Bus WCF Relay. Nová schopnost Hybrid Connections doplňuje stávající funkci WCF Relay a tyto dvě schopnosti existují ve službě Azure Relay vedle sebe. Sdílejí sice společnou bránu, jinak se ale jedná o rozdílné implementace.
-
-## <a name="wcf-relay"></a>WCF Relay
-
-Přenos WCF funguje v celém rozhraní .NET Framework (NETFX) a funguje i s technologií WCF. Propojení místní služby se službou Relay vytvoříte pomocí skupiny „předávacích“ vazeb WCF. Na pozadí se děje to, že předávací vazby mapují do nových elementů přenosové vazby určené k vytvoření komponentů kanálu WCF, které se integrují se službou Service Bus v cloudu. Další informace najdete v článku [Začínáme s přenosy WCF](relay-wcf-dotnet-get-started.md).
-
 ## <a name="architecture-processing-of-incoming-relay-requests"></a>Architektura: Zpracování příchozích požadavků na předání
-
-Když klient odešle požadavek do služby [Azure Relay](/azure/service-bus-relay/), nástroj pro vyrovnávání zatížení Azure ho přesměruje do některého z uzlů brány. Pokud se jedná o požadavek na poslech, uzel brány vytvoří nové propojení. Pokud se jedná o požadavek na připojení ke konkrétnímu propojení, uzel brány předá požadavek na spojení uzlu brány, který vlastní požadované propojení. Uzel brány, který vlastní požadované propojení, pošle čekajícímu klientovi požadavek na setkání a pokyn, aby klient vytvořil dočasný kanál pro uzel brány, který obdržel požadavek na připojení.
-
-Když se vytvoří předávací spojení, klienti si můžou vyměňovat zprávy přes uzel brány, který se používá pro setkání.
+Následující diagram ukazuje, jak služba Azure Relay zpracovává příchozí požadavky na předání:
 
 ![Zpracování příchozích událostí požadavků na předání WCF](./media/relay-what-is-it/ic690645.png)
 
-## <a name="next-steps"></a>Další kroky
+1. Čekající klient odešle do služby Azure Relay požadavek na poslech. Nástroj pro vyrovnávání zatížení Azure požadavek přesměruje do jednoho z uzlů brány. 
+2. Služba Azure Relay vytvoří předání v úložišti brány. 
+3. Odesílající klient odešle požadavek na připojení k čekající službě. 
+4. Brána, která tento požadavek přijme, vyhledá předání v úložišti brány. 
+5. Brána přesměruje požadavek na připojení do správné brány uvedené v úložišti brány. 
+6. Brána odešle do čekajícího klienta požadavek na vytvoření dočasného kanálu k uzlu brány, která je nejblíže odesílajícímu klientovi. 
+7. Čekající klient teď vytvoří dočasný kanál a odešle zprávu s odpovědí do brány, která je nejblíže odesílajícímu klientovi.
+8. Brána přesměruje zprávu s odpovědí do odesílajícího klienta. 
 
-* [Přenos – nejčastější dotazy](relay-faq.md)
-* [Vytvoření oboru názvů](relay-create-namespace-portal.md)
+Když se vytvoří předávací spojení, klienti si můžou vyměňovat zprávy přes uzel brány, který se používá pro setkání.
+
+## <a name="next-steps"></a>Další kroky
 * [Začínáme s WebSockety v .NET](relay-hybrid-connections-dotnet-get-started.md)
 * [Začínáme s požadavky HTTP v .NET](relay-hybrid-connections-http-requests-dotnet-get-started.md)
 * [Začínáme s WebSockety v Node](relay-hybrid-connections-node-get-started.md)
 * [Začínáme s požadavky HTTP v Node](relay-hybrid-connections-http-requests-node-get-started.md)
+* [Přenos – nejčastější dotazy](relay-faq.md)
 

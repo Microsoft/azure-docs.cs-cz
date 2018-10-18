@@ -1,6 +1,6 @@
 ---
 title: Nastavení Azure Data Boxu | Microsoft Docs
-description: Seznamte se s požadavky vašeho Azure Data Boxu na software a síť.
+description: Postup zapojení kabeláže a připojení k Azure Data Boxu
 services: databox
 documentationcenter: NA
 author: alkohli
@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 10/03/2018
 ms.author: alkohli
-ms.openlocfilehash: 6623744a26d79ccbc8b68ba84baf3a37024e0ed7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f9671e3acdb71affe2187258582254561785780e
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952303"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785628"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Kurz: Zapojení kabeláže a připojení k Azure Data Boxu
 
@@ -36,17 +36,17 @@ V tomto kurzu se naučíte:
 Než začnete, ujistěte se, že:
 
 1. Dokončili jste [Kurz: Objednání Azure Data Boxu](data-box-deploy-ordered.md).
-2. Obdrželi jste Data Box a stav objednávky na portálu je **Doručeno**. 
+2. Obdrželi jste Data Box a stav objednávky na portálu je **Doručeno**. V průhledném pouzdře připevněném k zařízení pod elektrickým kabelem najdete expediční štítek. Tento štítek bezpečně uschovejte, protože ho budete potřebovat pro zpáteční zásilku.
 3. Prostudovali jste si [bezpečnostní pokyny k Data Boxu](data-box-safety.md).
-4. Obdrželi jste jeden uzemněný napájecí kabel pro použití s vaším 100TB úložným zařízením.
+4. Obdrželi jste jeden uzemněný napájecí kabel pro použití s 100TB úložným zařízením.
 5. Máte hostitelský počítač, který obsahuje data, která chcete zkopírovat do Data Boxu. Hostitelský počítač musí splňovat tyto požadavky:
     - Musí na něm běžet [podporovaný operační systém](data-box-system-requirements.md).
-    - Musí být připojený k vysokorychlostní síti. Důrazně doporučujeme, abyste měli připojení alespoň 10 GbE. Pokud nemáte k dispozici připojení 10 GbE, je možné použít datové propojení 1 GbE, což ale bude mít vliv na rychlosti kopírování. 
-6. Data Box je potřeba umístit na plochý povrch. Pokud chcete zařízení umístit na standardní polici v racku, potřebujete v racku datového centra slot 7U. Zařízení můžete v racku umístit na plocho nebo na výšku.
+    - Musí být připojený k vysokorychlostní síti. Důrazně doporučujeme, abyste měli připojení minimálně 10 GbE. Pokud nemáte připojení 10 GbE, je možné použít datové propojení 1 GbE, což ale bude mít vliv na rychlosti kopírování. 
+6. Data Box je potřeba umístit na rovnou plochu. Pokud chcete zařízení umístit na standardní polici v racku, potřebujete v racku datového centra slot 7U. Zařízení můžete v racku umístit na plocho nebo na výšku.
 7. Pro připojení Data Boxu k hostitelském počítači je potřeba pořídit následující kabely.
     - Dva měděné kabely 10 GbE SFP+ Twinax (pro síťová rozhraní DATA 1, DATA 2)
     - Jeden síťový kabel RJ-45 kategorie 6 (pro síťové rozhraní MGMT)
-    - Jeden síťový kabel RJ-45 kategorie 6A NEBO jeden síťový kabel RJ-45 kategorie 6 (pro síťové rozhraní DATA 3 konfigurované jako 10 GB/s a 1 GB/s v tomto pořadí)
+    - Jeden síťový kabel RJ-45 kategorie 6A NEBO jeden síťový kabel RJ-45 kategorie 6 (pro síťové rozhraní DATA 3 konfigurované jako 10 Gb/s a 1 Gb/s v tomto pořadí)
 
 ## <a name="cable-your-device"></a>Zapojení kabeláže zařízení
 

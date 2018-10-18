@@ -1,102 +1,102 @@
 ---
-title: Služba luis umožňuje využít řeč C# SDK
+title: Použití sady C# SDK služby Speech se službou LUIS
 titleSuffix: Azure Cognitive Services
-description: Služba Speech umožňuje používat jeden požadavek přijímat zvuk a vrátit LUIS předpovědi objekty JSON. V tomto článku stažení a použití projektu v jazyce C# v sadě Visual Studio mluvit utterance do mikrofon a přijímat informace predikcí služby LUIS. Projekt používá balíček NuGet řeči, již zahrnut jako odkaz.
+description: Služba Speech umožňuje pomocí jednoho požadavku přijímat zvuk a vracet objekty JSON s předpověďmi služby LUIS. V tomto článku stáhnete projekt jazyka C# v sadě Visual Studio a použijete ho k vyslovení promluvy do mikrofonu a přijetí informací o předpovědi služby LUIS. V tomto projektu se používá balíček NuGet služby Speech, který je již zahrnutý jako odkaz.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: language-understanding
-ms.topic: article
+ms.component: language-understanding
+ms.topic: tutorial
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: fb17e2d8c0ef1df5a6d4965730d3ddd3764d58f5
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
-ms.translationtype: MT
+ms.openlocfilehash: f98d640f032fed5f91df8e9d4fb55d3f20550339
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868747"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883920"
 ---
-# <a name="integrate-speech-service"></a>Integrace Speech service
-[Speech service](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) umožňuje použití jednoho požadavku a přijímat zvuk vrátit LUIS předpovědi objekty JSON. V tomto článku stažení a použití projektu v jazyce C# v sadě Visual Studio mluvit utterance do mikrofon a přijímat informace predikcí služby LUIS. Projekt používá Řeč [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) balíčku již zahrnut jako odkaz. 
+# <a name="integrate-speech-service"></a>Integrace služby Speech
+[Služba Speech](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) umožňuje pomocí jednoho požadavku přijímat zvuk a vracet objekty JSON s předpověďmi služby LUIS. V tomto článku stáhnete projekt jazyka C# v sadě Visual Studio a použijete ho k vyslovení promluvy do mikrofonu a přijetí informací o předpovědi služby LUIS. V tomto projektu se používá balíček [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) služby Speech, který je již zahrnutý jako odkaz. 
 
-Pro účely tohoto článku budete potřebovat bezplatný [LUIS] [ LUIS] webu účtu, aby bylo možné importovat aplikaci.
+Pro účely tohoto článku potřebujete bezplatný webový účet [LUIS][LUIS], abyste mohli aplikaci importovat.
 
 ## <a name="create-luis-endpoint-key"></a>Vytvoření klíče koncového bodu služby LUIS
-Na webu Azure Portal [vytvořit](luis-how-to-azure-subscription.md#create-luis-endpoint-key) **Language Understanding** klíč (LUIS). 
+Na webu Azure Portal [vytvořte](luis-how-to-azure-subscription.md#create-luis-endpoint-key) klíč služby **Language Understanding** (LUIS). 
 
-## <a name="import-human-resources-luis-app"></a>Importovat lidských zdrojů LUIS aplikace
-Záměry a projevy pro účely tohoto článku pocházejí z aplikace LUIS lidské zdroje, k dispozici [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples) úložiště Github. Stáhněte si [HumanResources.json](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources.json) soubor, uložte ji `.json` rozšíření, a [importovat](luis-how-to-start-new-app.md#import-new-app) ji do služby LUIS. 
+## <a name="import-human-resources-luis-app"></a>Import aplikace LUIS pro lidské zdroje
+Záměry a promluvy v tomto článku pocházejí z aplikace LUIS pro lidské zdroje, která je k dispozici v úložišti [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples) na GitHubu. Stáhněte soubor [HumanResources.json](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources.json), uložte ho s příponou `.json` a [importujte](luis-how-to-start-new-app.md#import-new-app) ho do služby LUIS. 
 
-Tato aplikace nemá záměrů, entit a projevy související s domény lidských zdrojů. Příklad projevy patří:
+Tato aplikace obsahuje záměry, entity a promluvy související s doménou lidských zdrojů. Mezi ukázkové promluvy patří:
 
 |Ukázkové promluvy|
 |--|
-|Kdo je správce John Smith?|
-|Tím, kdo spravovat John Smith?|
+|Kdo je manažer Jana Nováka?|
+|Čí manažer je Jan Novák?|
 |Kde je formulář 123456?|
-|Mám placené kdykoli?|
+|Mám nějaké placené volno?|
 
 
-## <a name="add-keyphrase-prebuilt-entity"></a>Přidat KeyPhrase předem připravených entit
-Po importu aplikace, vyberte **entity**, pak **spravovat předem připravených entit**. Přidat **KeyPhrase** entity. KeyPhrase entity extrahuje klíče odborník na danou z utterance.
+## <a name="add-keyphrase-prebuilt-entity"></a>Přidání předem připravené entity klíčové fráze
+Po importu aplikace vyberte **Entities** (Entity) a pak **Manage prebuilt entities** (Spravovat předem připravené entity). Přidejte entitu **klíčové fráze**. Entita klíčové fráze extrahuje z promluvy klíčové téma.
 
 ## <a name="train-and-publish-the-app"></a>Trénování a publikování aplikace
-1. V horní, pravé navigační panel, vyberte **trénování** tlačítko tak moct trénovat aplikace LUIS.
+1. Na pravém horním navigačním panelu vyberte tlačítko **Train** (Trénovat) a natrénujte aplikaci LUIS.
 
-2. Vyberte **spravovat** v pravém horním rohu panelu, vyberte **klíče a koncových bodů** v levém navigačním panelu. 
+2. Na pravém horním panelu vyberte **Manage** (Spravovat) a pak v levé navigaci vyberte **Keys and endpoints** (Klíče a koncové body). 
 
-3. Na **klíče a koncových bodů** stránce, přiřaďte LUIS klíče vytvořeného v [klíče koncového bodu služby LUIS vytvořit](#create-luis-endpoint-key) oddílu.
+3. Na stránce **Keys and endpoints** (Klíče a koncové body) přiřaďte klíč služby LUIS, který jste vytvořili v části [Vytvoření klíče koncového bodu služby LUIS](#create-luis-endpoint-key).
 
-  Na této stránce shromažďování ID aplikace, publikovat oblasti a ID předplatného služby LUIS klíče vytvořené v [klíče koncového bodu služby LUIS vytvořit](#create-luis-endpoint-key) oddílu. Budete muset upravit kód, který použije tyto hodnoty dále v tomto článku. 
+  Na této stránce si poznamenejte ID aplikace, oblast publikování a ID předplatného pro klíč služby LUIS, který jste vytvořili v části [Vytvoření klíče koncového bodu služby LUIS](#create-luis-endpoint-key). V pozdější části tohoto článku budete muset upravit kód s použitím těchto hodnot. 
   
-  Proveďte **není** použít bezplatnou úvodní klíč pro toto cvičení. Pouze **Language Understanding** klíče vytvořeného na webu Azure Portal bude fungovat pro účely tohoto cvičení. 
+  Pro účely tohoto cvičení **nepoužívejte** bezplatný počáteční klíč. V tomto cvičení bude fungovat pouze klíč služby **Language Understanding** vytvořený na webu Azure Portal. 
 
-  https://**oblasti**.api.cognitive.microsoft.com/luis/v2.0/apps/**APPID**? klíč předplatného =**LUISKEY**& q =
+  https://**OBLAST**.api.cognitive.microsoft.com/luis/v2.0/apps/**ID_APLIKACE**?subscription-key=**KLÍČ_SLUŽBY_LUIS**&q=
 
 
-4. Publikování aplikace LUIS tak, že vyberete **publikovat** tlačítko v horní části pravého panelu. 
+4. Publikujte aplikaci LUIS výběrem tlačítka **Publish** (Publikovat) na pravém horním panelu. 
 
 ## <a name="audio-device"></a>Zvukové zařízení
-Tento článek používá zvukové zařízení ve vašem počítači. Který může být sluchátka s mikrofonem mikrofon nebo integrované zvukové zařízení. Zkontrolujte vstupní úrovně hlasitosti zobrazíte, pokud jste měli mluvit hlasitost, než byste obvykle mají řeč detekoval zvukové zařízení. 
+V tomto článku se používá zvukové zařízení na vašem počítači. Tímto zařízením může být náhlavní souprava s mikrofonem nebo integrované zvukové zařízení. Zkontrolujte úrovně zvukového vstupu a zjistěte, jestli je potřeba mluvit hlasitěji než normálně, aby zvukové zařízení rozpoznalo váš projev. 
 
-## <a name="download-the-luis-sample-project"></a>Stáhněte si ukázkový LUIS projekt
- Klonovat nebo stáhnout [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples) úložiště. Otevřít [převod řeči na záměr projektu](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-speech-intent-recognition) pomocí sady Visual Studio a obnovte balíčky NuGet. Soubor řešení VS je.\LUIS-Samples-master\documentation-samples\tutorial-speech-intent-recognition\csharp\csharp_samples.sln.
+## <a name="download-the-luis-sample-project"></a>Stažení ukázkového projektu LUIS
+ Naklonujte nebo si stáhněte úložiště [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples). V sadě Visual Studio otevřete [projekt převodu řeči na záměr](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-speech-intent-recognition) a obnovte balíčky NuGet. Soubor řešení sady Visual Studio je .\LUIS-Samples-master\documentation-samples\tutorial-speech-intent-recognition\csharp\csharp_samples.sln.
 
-Sadou SDK pro řeč je již zahrnut jako odkaz. 
+Sada SDK služby Speech je již zahrnutá jako odkaz. 
 
-[![](./media/luis-tutorial-speech-to-intent/nuget-package.png "Zobrazení balíčku Microsoft.CognitiveServices.Speech NuGet snímek obrazovky sady Visual Studio 2017")](./media/luis-tutorial-speech-to-intent/nuget-package.png#lightbox)
+[![](./media/luis-tutorial-speech-to-intent/nuget-package.png "Snímek obrazovky sady Visual Studio 2017 se zobrazeným balíčkem NuGet Microsoft.CognitiveServices.Speech")](./media/luis-tutorial-speech-to-intent/nuget-package.png#lightbox)
 
-## <a name="modify-the-c-code"></a>Upravte kód jazyka C#
-Otevřít `Program.cs` soubor a změňte následující proměnné:
+## <a name="modify-the-c-code"></a>Úprava kódu jazyka C#
+Otevřete soubor `Program.cs` a změňte následující proměnné:
 
 |Název proměnné|Účel|
 |--|--|
-|LUIS_assigned_endpoint_key|Odpovídá koncový bod adresy URL přiřazena hodnota klíč předplatného ze stránky publikovat|
-|LUIS_endpoint_key_region|Adresa URL koncového bodu první subdomény, odpovídá například `westus`|
-|LUIS_app_ID|Odpovídá na trasu URL koncového bodu po **aplikace /**|
+|LUIS_assigned_endpoint_key|Odpovídá hodnotě klíče předplatného přiřazeného k adrese URL koncového bodu ze stránky publikování|
+|LUIS_endpoint_key_region|Odpovídá první subdoméně adresy URL koncového bodu, například `westus`|
+|LUIS_app_ID|Odpovídá trase adresy URL koncového bodu, která následuje za **apps/**|
 
-`Program.cs` Soubor už má záměry lidských zdrojů namapována.
+Soubor `Program.cs` již obsahuje namapované záměry pro lidské zdroje.
 
 Sestavte a spusťte aplikaci. 
 
-## <a name="test-code-with-utterance"></a>Testovací kód s utterance
-Do mikrofonu "Kdo jsou schválené dentistů v Redmondu?".
+## <a name="test-code-with-utterance"></a>Test kódu pomocí promluvy
+Řekněte do mikrofonu „Kdo jsou osvědčení zubní lékaři v Redmondu?“.
 
 [!code-console[Command line response from spoken utterance](~/samples-luis/documentation-samples/tutorial-speech-intent-recognition/console-output.txt "Command line response from spoken utterance")]
 
-Správné záměr **GetEmployeeBenefits**, byl nalezen s jistotou 85 %. Byl vrácen keyPhrase entity. 
+S 85% spolehlivostí se zjistil správný záměr **GetEmployeeBenefits**. Vrátila se entita klíčové fráze. 
 
-Sadou SDK pro řeč vrátí celé odpovědi služby LUIS. 
+Sada SDK služby Speech vrací úplnou odpověď služby LUIS. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud už je nepotřebujete, odstraňte aplikaci LUIS Lidskézdroje. Uděláte to tak, vyberte aplikaci, a potom v kontextové panelu nástrojů nad seznamem, vyberte **odstranit**. V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
+Pokud už ji nepotřebujete, odstraňte aplikaci LUIS pro lidské zdroje. Provedete to tak, že vyberete aplikaci a pak na kontextovém panelu nástrojů nad seznamem vyberete **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
 
-Nezapomeňte odstranit LUIS-Samples directory po dokončení pomocí ukázkového kódu.
+Až se vzorovým kódem skončíte, nezapomeňte odstranit adresář LUIS-Samples.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Integrace LUIS s využitím BOTU](luis-csharp-tutorial-build-bot-framework-sample.md)
+> [Integrace služby LUIS s chatbotem](luis-csharp-tutorial-build-bot-framework-sample.md)
 
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
