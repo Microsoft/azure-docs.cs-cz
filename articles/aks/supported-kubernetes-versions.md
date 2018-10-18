@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: saudas
-ms.openlocfilehash: 6b55825107ae8872b146b3ad4fde0ef4b917b71d
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: d8da717b83b43395309c695a4f9edaeda8144a8b
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047315"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49379191"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Podporované verze Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -32,6 +32,29 @@ Například, pokud představuje AKS *1.11.x* v současné době také poskytuje 
 Pokud je zavedená nová podverze, byly ukončeny nejstarší vedlejší verze a opravy verze nepodporuje. 15 dnů před vydáním nové podverze a nadcházející verzi vyřazení, oznámení se provádí prostřednictvím Azure aktualizačních kanálech. V příkladu výše where *1.11.x* je všeobecně dostupné, jsou vyřazené verze *1.7.g* + *1.7.h*.
 
 Když nasadíte cluster AKS na portálu nebo pomocí Azure CLI, clusteru je vždycky nastavený na n-1 podverze a nejnovější opravy. Například, pokud podporuje AKS *1.11.x*, *1.10.a* + *1.10.b*, *1.9.c* + *1.9 d* , *1.8.e* + *1.8F*, je výchozí verze nových clusterů *1.10.b*.
+
+## <a name="list-currently-supported-versions"></a>Seznam aktuálně podporované verze
+
+Chcete-li zjistit, jaké verze jsou aktuálně dostupné pro vaše předplatné a oblast, použijte [az aks get-versions] [ az-aks-get-versions] příkazu. Následující příklad zobrazí seznam dostupných verzí Kubernetes pro *EastUS* oblasti:
+
+```azurecli-interactive
+az aks get-versions --location eastus --output table
+```
+
+Výstup je podobný následujícím příkladu, který ukazuje, že Kubernetes verze *1.11.3* je k dispozici nejnovější verze:
+
+```
+KubernetesVersion    Upgrades
+-------------------  ----------------------
+1.11.3               None available
+1.11.2               1.11.3
+1.10.8               1.11.2, 1.11.3
+1.10.7               1.10.8, 1.11.2, 1.11.3
+1.9.10               1.10.7, 1.10.8
+1.9.9                1.9.10, 1.10.7, 1.10.8
+1.8.15               1.9.9, 1.9.10
+1.8.14               1.8.15, 1.9.9, 1.9.10
+```
 
 ## <a name="faq"></a>Nejčastější dotazy
 
@@ -65,3 +88,4 @@ Informace o tom, jak upgradovat váš cluster najdete v tématu [Upgrade cluster
 
 <!-- LINKS - Internal -->
 [aks-upgrade]: upgrade-cluster.md
+[az-aks-get-versions]: /cli/azure/aks#az-aks-get-versions

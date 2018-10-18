@@ -4,7 +4,7 @@ description: K vytvoření transformace použijte skript Azure CLI.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: ''
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/11/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: cbe20c4b75fff27fad60446fb933a9c8ba2e3312
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 57079e1086b473347ff027a98b794f4c9baeb1c0
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091774"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376563"
 ---
 # <a name="cli-example-create-a-transform"></a>Ukázka CLI: Vytvoření transformace
 

@@ -7,14 +7,14 @@ author: wolfma61
 ms.service: cognitive-services
 ms.component: Speech
 ms.topic: quickstart
-ms.date: 09/24/2018
+ms.date: 10/12/2018
 ms.author: wolfma
-ms.openlocfilehash: f3bcbc7bcbd57e9baa5a01f3a2ef572b09128260
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: f23e25ec117d798bae81945104fa3fb53f320f1c
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886241"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344079"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v C++ v Linuxu s využitím sady Speech SDK
 
@@ -30,7 +30,7 @@ K dokončení tohoto rychlého startu potřebujete klíč předplatného služby
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Aktuální verze sady Cognitive Services Speech SDK je `1.0.0`.
+Aktuální verze sady Cognitive Services Speech SDK je `1.0.1`.
 
 Sadu Speech SDK pro Linux můžete použít k sestavení 64bitových i 32bitových aplikací. Požadované knihovny a soubory hlaviček si můžete stáhnout jako soubor tarfile z https://aka.ms/csspeech/linuxbinary.
 

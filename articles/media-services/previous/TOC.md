@@ -64,6 +64,7 @@
 ##### [Přizpůsobení předvoleb Media Encoderu Standard](media-services-custom-mes-presets-with-dotnet.md)
 ##### [Postup generování miniatur pomocí kodéru Media Encoder Standard a .NET](media-services-dotnet-generate-thumbnail-with-mes.md)
 ##### [Oříznutí videa pomocí kodéru Media Encoder Standard](media-services-crop-video.md)
+##### [Vytvoření spritu miniatury](generate-thumbnail-sprite.md)
 #### Schémata MES
 ##### [Schéma Media Encoderu Standard](media-services-mes-schema.md)
 ##### [Vstupní metadata](media-services-input-metadata-schema.md)

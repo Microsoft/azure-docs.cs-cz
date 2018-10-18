@@ -4,21 +4,21 @@ description: V tomto tématu najdete přehled scénářů využití služby Micr
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 07/10/2017
-ms.author: juliako;anilmur
-ms.openlocfilehash: 8381cdfffd34ffa25d1b87be3a3aca3de69c2802
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.date: 10/15/2018
+ms.author: juliako
+ms.openlocfilehash: 0e9537f09049d5fe056819e6f8b9718cfc52f489
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809274"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352803"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scénáře a dostupnost funkcí služby Media Services v datových centrech
 
@@ -158,7 +158,7 @@ Zákazníci AMS můžou ve svých účtech AMS škálovat koncové body streamov
     Další informace najdete v tématu [Škálování zpracování médií](media-services-portal-scale-media-processing.md).
 * Svůj účet Media Services můžete škálovat také tím, že k němu přidáte účty úložiště. Každý účet úložiště je omezen na 500 TB. Pokud chcete úložiště rozšířit nad jeho výchozí omezení, můžete k jednomu účtu Media Services připojit více účtů úložiště. Další informace najdete v tématu [Správa účtů úložiště](meda-services-managing-multiple-storage-accounts.md).
 
-##<a id="availability"></a>Dostupnost funkcí služby Media Services v datových centrech
+## <a id="availability"></a>Dostupnost funkcí služby Media Services v datových centrech
 
 V této části najdete podrobnosti o dostupnosti funkcí služby Media Services v datových centrech.
 

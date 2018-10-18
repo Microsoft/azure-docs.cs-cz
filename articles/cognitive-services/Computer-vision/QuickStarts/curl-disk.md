@@ -3,19 +3,19 @@ title: 'Rychlý start: Analýza místního obrázku – REST, cURL – počíta�
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu budete analyzovat místní obrázek pomocí rozhraní API pro počítačové zpracování obrazu a cURL.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/10/2018
-ms.author: v-deken
-ms.openlocfilehash: 1952d0045550362a242ce1c105c58bd65c815ea6
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: c7c3cf2bae66e1739c4a62e1ce823542d0dfce36
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45631238"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339912"
 ---
 # <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-curl-in-computer-vision"></a>Rychlý start: Analýza místního obrázku pomocí rozhraní REST API a cURL v počítačovém zpracování obrazu
 

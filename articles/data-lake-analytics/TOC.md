@@ -71,7 +71,7 @@
 ## [Azure PowerShell](/powershell/module/azurerm.datalakeanalytics)
 ## [.NET](/dotnet/api/microsoft.azure.management.datalake.analytics)
 ## [Node.js](https://www.npmjs.com/package/azure-arm-datalake-analytics)
-## [Python](https://docs.microsoft.com/en-us/python/api/overview/azure/data-lake-analytics?view=azure-python)
+## [Python](https://docs.microsoft.com/python/api/overview/azure/data-lake-analytics?view=azure-python)
 ## [REST](/rest/api/datalakeanalytics/)
 ## [Rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/dla)
 
@@ -79,7 +79,7 @@
 ## [Blog služby Azure Data Lake](https://blogs.msdn.microsoft.com/azuredatalake/)
 ## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/?category=intelligence-analytics)
 ## [Vyžádání změn](https://feedback.azure.com/forums/327234-data-lake)
-## [Fórum na webu MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)
+## [Fórum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)
 ## [Ceny](https://azure.microsoft.com/pricing/details/data-lake-analytics/)
 ## [ Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)
 ## [Aktualizace služeb](https://azure.microsoft.com/updates/?product=data-lake-analytics)

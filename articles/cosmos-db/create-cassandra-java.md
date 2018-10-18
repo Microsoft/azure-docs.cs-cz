@@ -10,12 +10,12 @@ ms.custom: quick start connect, mvc
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: fcb707f886b960335e69a6af3e485634ebb0a506
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 89271385ad7d8d1e4290ce95b977ea4e43a8c2f2
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974030"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167564"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-java-and-azure-cosmos-db"></a>Rychlý start: Sestavení aplikace Cassandra pomocí Javy a Azure Cosmos DB
 
@@ -164,7 +164,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
     Řádek 2 souboru config.properties by teď měl vypadat nějak takto: 
 
-    `cassandra_host=cosmos-db-quickstarts.cassandra.cosmosdb.azure.com`
+    `cassandra_host=cosmos-db-quickstart.cassandra.cosmosdb.azure.com`
 
 3. Přejděte zpátky na portál a zkopírujte hodnotu UŽIVATELSKÉ JMÉNO. Vložte hodnotu UŽIVATELSKÉ JMÉNO z portálu místo `<cassandra endpoint username>` na řádku 4.
 
@@ -210,7 +210,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
 4. Na portálu Azure Portal otevřete **Data Explorer**, abyste se mohli na tato nová data dotazovat, měnit je a pracovat s nimi. 
 
-    ![Zobrazení dat v Data Exploreru](./media/create-cassandra-java/data-explorer.png)
+    ![Zobrazení dat v Průzkumníku dat](./media/create-cassandra-java/data-explorer.png)
 
 ## <a name="review-slas-in-the-azure-portal"></a>Ověření podmínek SLA na portálu Azure Portal
 
@@ -222,7 +222,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se seznámili s postupem vytvoření účtu služby Azure Cosmos DB, databáze Cassandra a kontejneru pomocí Data Exploreru a spuštění aplikace, která to samé udělá programově. Teď můžete do kontejneru Azure Cosmos DB importovat další data. 
+V tomto rychlém startu jste se seznámili s postupem vytvoření účtu služby Azure Cosmos DB, databáze Cassandra a kontejneru pomocí Průzkumníku dat a spuštění aplikace, která to samé udělá programově. Teď můžete do kontejneru Azure Cosmos DB importovat další data. 
 
 > [!div class="nextstepaction"]
 > [Import dat Cassandra do služby Azure Cosmos DB](cassandra-import-data.md)

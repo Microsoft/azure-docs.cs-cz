@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 860d28aa37f37ed24346e2fba635b9436684114c
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 531cdf9a69e0ecfa2d2d8ae02f8f88fd5f400479
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353778"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378937"
 ---
 # <a name="azure-media-services-release-notes"></a>Poznámky k verzi Azure Media Services
 Tyto poznámky k verzi pro Azure Media Services shrnují změny z předchozích verzí a známých problémů.
@@ -44,6 +44,16 @@ Tyto poznámky k verzi pro Azure Media Services shrnují změny z předchozích 
 
 ## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>Historie verzí rozhraní REST API
 Informace o historii verzí rozhraní API REST služby Media Services, najdete v článku [Referenční informace k Azure Media Services REST API].
+
+## <a name="october-2018"></a>. Října 2018
+
+### <a name="cmaf-support"></a>Podpora CMAF
+
+Podpora šifrování CMAF a "cbcs" (iOS 11 +) Apple HLS a MPEG-DASH přehrávačů, které podporují CMAF.
+
+### <a name="web-vtt-thumbnail-sprites"></a>Web VTT miniatur prvky, které budou
+
+Služba Media Services teď můžete generovat webové VTT miniatur prvky, které budou pomocí našich rozhraní API v2. Další informace najdete v tématu [generování miniatur sprite](generate-thumbnail-sprite.md).
 
 ## <a name="july-2018"></a>Červenec 2018
 

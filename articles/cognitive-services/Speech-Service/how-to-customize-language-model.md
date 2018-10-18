@@ -8,12 +8,12 @@ ms.component: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: panosper
-ms.openlocfilehash: 01a386d37841c78e4aae96111e4671ec33b87e00
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: d74a5ded7d86969b3ca2cc20a59ddc20af7dc932
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017547"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364111"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>Kurz: Vytvoření vlastního jazykového modelu
 
@@ -98,8 +98,6 @@ Před provedením jakékoli akce je nutné vybrat odpovídající národní pros
 Na stránce Vytvořit jazykový model zadejte **Název** a **Popis**, které vám pomůžou sledovat důležité informace o tomto modelu, například použitou sadu dat. Pak v rozevírací nabídce vyberte **Základní jazykový model**. Tento model je výchozím bodem pro vaše přizpůsobení. 
 
 Můžete si vybrat ze dvou základních jazykových modelů. Model pro vyhledávání a diktování je vhodný pro řeč určenou přímo pro aplikaci, jako jsou příkazy, vyhledávací dotazy nebo diktování. Konverzační model je vhodný pro rozpoznávání hovorové řeči. Tento typ řeči je obvykle určený pro jinou osobu a vyskytuje se v call centrech nebo na schůzkách. 
-
-Na stránce Vytvořit jazykový model zadejte **Název** a **Popis**, které vám pomůžou sledovat důležité informace o tomto modelu, například sadu dat, kterou jste použili. Pak v rozevírací nabídce vyberte **Základní jazykový model**. Tento model je výchozím bodem pro vaše přizpůsobení. Můžete si vybrat ze dvou základních jazykových modelů. 
 
 Model pro vyhledávání a diktování je vhodný pro řeč určenou přímo pro aplikaci, jako jsou příkazy, vyhledávací dotazy nebo diktování. Konverzační model je vhodný pro rozpoznávání hovorové řeči. Tento typ řeči je obvykle určený pro jinou osobu a vyskytuje se v call centrech nebo na schůzkách. Veřejně dostupný je i nový model s názvem Universal (Univerzální). Univerzální model má za cíl poradit si se všemi scénáři a nakonec nahradit model pro vyhledávání a diktování i konverzační model.
 

@@ -17,7 +17,7 @@
 ##  Koncepty
 ### [Virtuální sítě](../virtual-network/virtual-networks-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Vyrovnávání zatížení sítě](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
-### [Vyrovnávání zatížení aplikace](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### [Vyrovnávání zatížení aplikace](../application-gateway/overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [DNS](../dns/dns-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Distribuce přenosu na základě DNS](../traffic-manager/traffic-manager-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Místní připojení k síti VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fnetworking%2ftoc.json)

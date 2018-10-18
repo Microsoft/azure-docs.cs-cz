@@ -1,26 +1,19 @@
 ---
 title: Řešení potíží s Azure Data Box Gateway | Micruse Azure Portal do Microsoft Docs
 description: Popisuje postup řešení potíží s Azure Data Box Gateway.
-services: databox-edge-gateway
-documentationcenter: NA
+services: databox
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: gateway
 ms.topic: overview
-ms.custom: ''
-ms.tgt_pltfrm: NA
-ms.workload: TBD
 ms.date: 10/09/2018
 ms.author: alkohli
-ms.openlocfilehash: d6c6cf4d8eea9eafeab78dbecbf27fb99182554b
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 00797cdf50104b41777cc8b537c140045677c1a5
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49070442"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167320"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Vyřešte potíže s Azure Data Box Gateway 
 

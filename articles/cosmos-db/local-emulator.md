@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/20/2018
 ms.author: danoble
-ms.openlocfilehash: a5481f9b2b443a0860ce0df5643427f357e1c294
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: ce42d30b816599f7eaf90ce5a92164c6b85cfa36
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785367"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49094169"
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Použití emulátoru služby Azure Cosmos DB pro místní vývoj a testování
 
@@ -35,7 +35,9 @@ ms.locfileid: "48785367"
 </tr>
 </table>
   
-Emulátor služby Azure Cosmos DB zajistí místní prostředí, které emuluje službu Azure Cosmos DB pro účely vývoje. Pomocí emulátoru služby Azure Cosmos DB můžete vyvíjet a testovat aplikace místně bez vytváření předplatného Azure a bez jakýchkoli nákladů. Jakmile budete spokojeni s fungováním aplikace v emulátoru, můžete přejít na účet služby Azure Cosmos DB v cloudu. Emulátor služby Azure Cosmos DB můžete použít se všemi rozhraními API – SQL, MongoDB, Cassandra, Gremlin a Table.
+Emulátor služby Azure Cosmos DB zajistí místní prostředí, které emuluje službu Azure Cosmos DB pro účely vývoje. Pomocí emulátoru služby Azure Cosmos DB můžete vyvíjet a testovat aplikace místně bez vytváření předplatného Azure a bez jakýchkoli nákladů. Jakmile budete spokojeni s fungováním aplikace v emulátoru, můžete přejít na účet služby Azure Cosmos DB v cloudu. 
+
+V tuto chvíli Průzkumník dat v emulátoru plně podporuje pouze kolekce rozhraní SQL API a kolekce MongoDB. Kontejnery Table, Graph a Cassandra nejsou plně podporovány. 
 
 Tento článek se zabývá následujícími úkony: 
 

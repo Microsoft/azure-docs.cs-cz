@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: cherylmc
-ms.openlocfilehash: fc8abee93983ce4ea06d0b433eb35ed22e0f61b4
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: fcdaf10ad30cee0e7b79304ff21d67560522875c
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47218067"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377793"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>Monitorování, metriky a výstrahy služby ExpressRoute
 
@@ -20,15 +20,15 @@ ms.locfileid: "47218067"
 
 ## <a name="circuit-metrics"></a>Metriky okruh
 
-Přejít na **metriky**, klikněte na stránce ExpressRoute pro okruh, kterou chcete monitorovat. V části **monitorování** můžete zobrazit **metriky**.
+Přejít na **metriky**, klikněte na stránce ExpressRoute pro okruh, kterou chcete monitorovat. V části **monitorování** můžete zobrazit **metriky**. Vyberte BitsInPerSecond nebo BitsOutPerSecond a agregaci. Volitelně můžete použít, dělení, která bude zobrazovat metrika na typ partnerského vztahu.
 
-![metriky okruh](./media/expressroute-monitoring-metrics-alerts/ermetricspeering.jpg)
+![Metriky okruh](./media/expressroute-monitoring-metrics-alerts/ermetricspeering.jpg)
 
 ## <a name="metrics-per-peering"></a>Metriky na partnerský vztah
 
 Můžete zobrazit metriky pro privátní, veřejný a Microsoftu partnerský vztah v bitech za sekundu.
 
-![metriky na partnerský vztah](./media/expressroute-monitoring-metrics-alerts/erpeeringmetrics.jpg) 
+![Metriky na partnerský vztah](./media/expressroute-monitoring-metrics-alerts/erpeeringmetrics.jpg) 
 
 ## <a name="expressroute-gateway-connections-in-bitsseconds"></a>Připojení brány ExpressRoute v bitů/sekundách
 

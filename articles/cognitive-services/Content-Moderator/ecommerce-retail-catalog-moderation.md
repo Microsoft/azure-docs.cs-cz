@@ -10,12 +10,12 @@ ms.component: content-moderator
 ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: 2405ba9087e63b57c7bd6bc6f290cdafacaf7a49
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 0bd61c3f1a4f660076be4e87bb5443302e5dc013
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227346"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363990"
 ---
 # <a name="tutorial-ecommerce-catalog-moderation-with-machine-learning"></a>Kurz: Moderování katalogu elektronického obchodování pomocí strojového učení
 
@@ -159,7 +159,7 @@ V našem případě definujeme tyto vlastní značky (**celebrity**, **flag**, *
 
 ## <a name="classify-into-flags-toys-and-pens"></a>Klasifikace na vlajky, hračky a pera
 
-1. [Přihlaste se](https://azure.microsoft.com/en-us/services/cognitive-services/custom-vision-service/) k [rozhraní Custom Vision API Preview](https://www.customvision.ai/).
+1. [Přihlaste se](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/) k [rozhraní Custom Vision API Preview](https://www.customvision.ai/).
 2. Pomocí [Rychlého startu](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) vytvořte vlastní klasifikátor, který zjistí případnou přítomnost značek, hraček a per.
    ![Trénovací obrázky pro Custom Vision](images/tutorial-ecommerce-custom-vision.PNG)
 3. [Získejte adresu URL koncového bodu pro predikce](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api) pro váš vlastní klasifikátor.

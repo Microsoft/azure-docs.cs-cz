@@ -1,68 +1,71 @@
 ---
-title: Dokumentace rozhraní API překlad řeči | Microsoft Docs
-titleSuffix: Cognitive Services
-description: Pomocí rozhraní API služby Microsoft překladač řeči překlad přidat řeči na rozpoznávání řeči a převod řeči na text překlad, aby vaše aplikace.
+title: Co je služba Translator Speech?
+titleSuffix: Azure Cognitive Services
+description: Rozhraní Translator Speech API se používá k přidání překladu řeči na řeč a řeči na text do aplikací.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-speech
-ms.topic: article
+ms.topic: overview
 ms.date: 3/5/2018
 ms.author: v-jansko
-ms.openlocfilehash: 15f27e6b5b2fd7384958a660156855fc65f4e558
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 77e60fe39f7cbb985ee0e7ed2785805e80c389ae
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342714"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341136"
 ---
-# <a name="microsoft-translator-speech-api"></a>Microsoft Translator Speech API
-Rozhraní API pro rozpoznávání řeči překladač Microsoft slouží k přidání začátku do konce, v reálném čase, řeči překlady do aplikace, nástroje nebo jakéhokoli řešení vyžádání překladu vícejazyčné řeči bez ohledu na cílové operačního systému nebo programovacích jazyků. Rozhraní API můžete použít pro obě převod řeči na rozpoznávání řeči a převod řeči na text překlad.
+# <a name="what-is-translator-speech-api"></a>Co je rozhraní Translator Speech API?
 
-Rozhraní API služby Microsoft překladač textu je služba Azure, část [kognitivní API služby Microsoft kolekce](https://docs.microsoft.com/azure/#pivot=products&panel=cognitive) strojové učení a algoritmy AI v cloudu, snadno použití ve vašich projektů vývoj.
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
-Klientské aplikace s rozhraním API Microsoft překladač řeči stream řeči zvuk ke službě a zobrazí zpět na základě text a zvuk výsledků, které zahrnují rozpoznaný text v source jazyk a jeho překlad v jazyce cílový datový proud s. Textové výsledky vytváří použitím automatické rozpoznávání řeči rozpoznávání (ASR) používá technologii hluboké neuronové sítě pro příchozí datový proud zvuku. Nezpracovaná automatické obnovení systému výstup další lepší pomocí nové počítačového názvem PravdivýText tak, aby odrážela přesněji záměru uživatele. Například PravdivýText odebere disfluencies (hmms a coughs), opakovaná slova a správné interpunkce obnovení a velkých písmen. Možnost maskování nebo vyloučit profanities je rovněž obsažena. Moduly rozpoznávání a překlad probíhá Trénink speciálně pro zpracování konverzačního řeči. 
+Rozhraní Translator Speech API se dá využít k přidání kompletních překladů řeči v reálném čase do aplikací, nástrojů nebo řešení, které vyžadují překlad řeči ve více jazycích, a to bez ohledu na cílový operační systém nebo vývojářský jazyk. Toto rozhraní API lze použít pro překlad řeči na řeč i řeči na text.
 
-Služba překladu řeči používá interval detekce určit konec utterance. Po pozastavení hlasové aktivity bude služba zpět stream konečný výsledek pro dokončené utterance. Službu můžete také odeslat zpět částečné výsledky, která poskytnou zprostředkující uznání a překladů pro utterance v průběhu. 
+Translator Text API je služba Azure, která je součástí [kolekce Azure Cognitive Services API](https://docs.microsoft.com/azure/#pivot=products&panel=cognitive) obsahující algoritmy strojového učení a umělé inteligence v cloudu a je připravená k použití ve vašich vývojových projektech.
 
-Pro překlad řeči na rozpoznávání řeči služba poskytuje možnost syntetizovat rozpoznávání řeči (převod textu na řeč) z mluvené textu v jazycích cíl. Převod textu na řeč zvuk se vytvoří ve formátu určeném klientem. Formáty WAV a MP3 nejsou k dispozici.
+Pomocí rozhraní Translator Speech API streamují klientské aplikace do služby mluvený zvuk a dostávají zpět výsledný textový a zvukový stream, který obsahuje rozpoznaný text ve zdrojovém jazyku a jeho překlad do cílového jazyka. Výsledný text se vytváří tak, že se pro příchozí zvukový stream použije automatické rozpoznávání řeči (ASR) na bázi neuronových sítí. Základní výstup ASR se pomocí nové technologie TrueText dále vylepšuje, aby přesněji vyjadřoval záměr uživatele. TrueText například z textu odebírá nepravidelnosti (třeba citoslovce jako hm a zakašlání) a opakovaná slova a nastavuje správnou interpunkci a malá a velká písmena. K dispozici je také možnost maskování nebo vyloučení neslušných slov. Moduly pro rozpoznávání a překlad jsou speciálně natrénované tak, aby zvládly zpracování hovorové řeči. 
 
-Rozhraní API pro překlad řeči používá protokol WebSocket k poskytnutí plně duplexní komunikační kanál mezi klientem a serverem. 
+Služba Translator Speech používá k určení konce promluvy detekci ticha. Po pauze v hlasové aktivitě začne služba streamovat zpět konečný výsledek pro skončenou promluvu. Služba může odesílat zpět také částečné výsledky, které poskytují rozpoznávání a překlady částí probíhající promluvy. 
 
-## <a name="about-microsoft-translator"></a>O překladač Microsoft
-Microsoft Translator je služba založená na cloudu strojového překladu. Jádrem této služby se [Text API překladač] (https://www.microsoft.com/en-us/translator/translatorapi.aspx) a překladač řeči rozhraní API což spotřeby různých produktů a služeb Microsoftu a používá tisíce firmy po celém světě v jejich aplikace a pracovní postupy, že jejich obsahu dosažení po celém světě cílovou skupinu.
+U překladu řeči na řeč poskytuje tato služba možnost syntetizace řeči (převodu textu na řeč) z mluveného textu v cílových jazycích. Zvuk se při převodu textu na řeč vytváří ve formátu určeném klientem. K dispozici jsou formáty WAV a MP3.
 
-Další informace o [služby Microsoft Translator](https://www.microsoft.com/en-us/translator/home.aspx)
+Rozhraní Translator Speech API používá k zajištění plně duplexního komunikačního kanálu mezi klientem a serverem protokol WebSocket. 
 
-## <a name="microsoft-translator-neural-machine-translation-nmt"></a>Překladač Microsoft Neural strojový překlad (NMT)
-Rozhraní API pro rozpoznávání řeči překladač Microsoft používá k poskytnutí překlady starší verze statistické strojový překlad (SMT) i novější neuronové strojový překlad (NMT).
+## <a name="about-microsoft-translator"></a>Informace o službě Microsoft Translator
+Microsoft Translator je cloudová služba pro strojový překlad. Jádrem této služby jsou rozhraní [Translator Text API] (https://www.microsoft.com/en-us/translator/translatorapi.aspx) a Translator Speech API, která se využívají v různých produktech a službách Microsoftu a v aplikacích a pracovních postupech tisíců firem po celém světě, kde umožňují šíření obsahu k cílové skupině po celém světě.
 
-Statistické strojový překlad, bylo dosaženo plateau z hlediska výkonu v přírůstcích. Překlad kvality již nebudou zlepšují žádným způsobem významné pro obecné systémy s SMT. Novou technologií na základě AI překlad je získání výkonnosti založené na Neuronové sítě (NN).
+Další informace o [službě Microsoft Translator](https://www.microsoft.com/en-us/translator/home.aspx)
 
-NMT poskytuje lepší překlady nejen z nezpracovaná překlad kvality, ale i vyhodnocování hlediska, protože zvukových více fluent, více lidí, než SMT ty. Z důvodu klíče pro tuto přenositelnost je, že NMT používá kontext úplné věty překládat slova. SMT pouze trvá bezprostřednímu kontextu pár slov před a po jednotlivých slov.
+## <a name="microsoft-translator-neural-machine-translation-nmt"></a>Neuronový strojový překlad (NMT) služby Microsoft Translator
+Rozhraní Translator Speech API používá k překladům starší statistický strojový překlad (SMT) i novější neuronový strojový překlad (NMT).
 
-NMT modely jsou jádrem rozhraní API a nejsou viditelné pro koncové uživatele. Pouze znatelné rozdíly jsou:
-* Vylepšené překlad kvality, zejména pro jazyky, jako je například čínštiny, japonštiny a arabské
-* Nekompatibilita s stávajících funkcí přizpůsobení centra (pro použití s rozhraním API pro Microsoft překladač Text)
+U statistického strojového překladu bylo z hlediska zvyšování výkonu dosaženo limitu. Kvalita překladu se u obecných systémů s SMT už nijak významně nezvyšuje. Nová technologie překladu na základě umělé inteligence využívá neuronové sítě.
 
-Všechny jazyky podporované řeči překlad jsou zapnuté podle NMT. Proto všechny překlad řeči na rozpoznávání řeči používá NMT. 
+NMT poskytuje lepší překlady než SMT nejen z hlediska prostého hodnocení kvality překladu, ale také proto, že překlady zní plynuleji a lidštěji. Hlavním důvodem této plynulosti je, že NMT při překladu slov využívá úplný kontext věty. SMT využívá jenom bezprostřední kontext několika slov před a za každým slovem.
 
-Převod řeči na text překlad může použít kombinaci NMT a SMT v závislosti na pár jazyk. Pokud cílový jazyk je podporovaná NMT, úplná překlad je NMT zapnuté. Pokud cílový jazyk nepodporuje NMT, překlad je hybridní NMT a SMT pomocí angličtina jako "pivot" mezi nimi. 
+Modely NMT jsou v jádru rozhraní API a nejsou viditelné pro koncové uživatele. Jedinými patrnými rozdíly jsou:
+* Zlepšení kvality překladu, zejména u jazyků jako čínština, japonština a arabština
+* Nekompatibilita se stávajícími funkcemi centra pro úpravy (pro použití s rozhraním Microsoft Translator Text API)
 
-Zobrazení podporované jazyky na [Microsoft.com](https://www.microsoft.com/en-us/translator/languages.aspx). 
+Všechny podporované jazyky pro překlad řeči využívají NMT. Při všech překladech řeči na řeč se proto používá NMT. 
 
-Další informace o [fungování NMT](https://www.microsoft.com/en-us/translator/mt.aspx#nnt)
+Při překladu řeči na text se může v závislosti na jazykovém páru používat kombinace NMT a SMT. Pokud NMT podporuje cílový jazyk, využívá celý překlad NMT. Pokud NMT nepodporuje cílový jazyk, bude překlad hybridní kombinací NMT a SMT, přičemž jako „pivot“ mezi oběma jazyky se použije angličtina. 
 
-## <a name="next-steps"></a>Další postup
+Zobrazit podporované jazyky na [Microsoft.com](https://www.microsoft.com/en-us/translator/languages.aspx) 
+
+Další informace o tom, [jak NMT funguje](https://www.microsoft.com/en-us/translator/mt.aspx#nnt)
+
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Registrace](translator-speech-how-to-signup.md)
+> [Zaregistrovat se](translator-speech-how-to-signup.md)
 
 > [!div class="nextstepaction"]
-> [Psaní](quickstarts/csharp.md)
+> [Pustit se do psaní kódu](quickstarts/csharp.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech
-- [Kognitivní stránky dokumentace služby](https://docs.microsoft.com/azure/#pivot=products&panel=cognitive)
-- [Kognitivní stránka služby produktu](https://azure.microsoft.com/services/cognitive-services/)
-- [Řešení a informace o cenách](https://www.microsoft.com/en-us/translator/home.aspx) 
+## <a name="see-also"></a>Viz také
+- [Stránka dokumentace ke službám Cognitive Services](https://docs.microsoft.com/azure/#pivot=products&panel=cognitive)
+- [Produktová stránka služeb Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)
+- [Informace o řešení a cenách](https://www.microsoft.com/en-us/translator/home.aspx) 

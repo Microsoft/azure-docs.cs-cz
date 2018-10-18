@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 660252c987c06a7afd8974a65cd57009b4973a25
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.date: 10/17/2018
+ms.openlocfilehash: 3b2359564020eeeb209a7eb78d81782a675f125d
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868288"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49379283"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Azure SQL Database zakoupení modelů
 

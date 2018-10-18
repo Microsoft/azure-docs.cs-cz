@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: jdial
-ms.openlocfilehash: c20375d42786b817f677be22dee8f4e71e710bc5
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 493beb254852464765d506c61c7ae6ce3b3835d3
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41920527"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362887"
 ---
 # <a name="virtual-network-peering"></a>Partnerské vztahy virtuálních sítí
 
@@ -92,7 +92,7 @@ Informace o oprávněních požadovaných k vytvoření partnerského vztahu vir
 
 Za příchozí a výchozí přenos využívající partnerské propojení virtuálních sítí se účtuje nominální poplatek. Další informace o cenách partnerských vztahů virtuálních sítí a globálních partnerských vztahů virtuálních sítí najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/virtual-network).
 
-Průchod bránou je vlastnost partnerského uzlu, která umožňuje, aby virtuální síť využila bránu VPN v partnerské virtuální síti pro připojení mezi více umístěními nebo virtuálními sítěmi. Datové přenosy procházející v takové situaci vzdálenou bránou podléhají [poplatkům za bránu VPN](https://azure.microsoft.com/en-us/pricing/details/vpn-gateway/), ale ne [poplatkům za partnerský vztah virtuální sítě](https://azure.microsoft.com/pricing/details/virtual-network). Například pokud má virtuální síť VNetA bránu VPN pro připojení k místní síti a virtuální síť VNetB je v partnerském vztahu k virtuální síti VNetA s nakonfigurovanými příslušnými vlastnostmi, datové přenosy ze sítě VNetB do místní sítě se účtují jenom podle ceníku výchozích přenosů na bránu VPN. V této situaci se neúčtují poplatky za partnerský vztah virtuálních sítí. Zjistěte, jak [nakonfigurovat průchod bránou VPN pro partnerský vztah virtuální sítě](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Průchod bránou je vlastnost partnerského uzlu, která umožňuje, aby virtuální síť využila bránu VPN v partnerské virtuální síti pro připojení mezi více umístěními nebo virtuálními sítěmi. Datové přenosy procházející v takové situaci vzdálenou bránou podléhají [poplatkům za bránu VPN](https://azure.microsoft.com/pricing/details/vpn-gateway/), ale ne [poplatkům za partnerský vztah virtuální sítě](https://azure.microsoft.com/pricing/details/virtual-network). Například pokud má virtuální síť VNetA bránu VPN pro připojení k místní síti a virtuální síť VNetB je v partnerském vztahu k virtuální síti VNetA s nakonfigurovanými příslušnými vlastnostmi, datové přenosy ze sítě VNetB do místní sítě se účtují jenom podle ceníku výchozích přenosů na bránu VPN. V této situaci se neúčtují poplatky za partnerský vztah virtuálních sítí. Zjistěte, jak [nakonfigurovat průchod bránou VPN pro partnerský vztah virtuální sítě](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="next-steps"></a>Další kroky
 

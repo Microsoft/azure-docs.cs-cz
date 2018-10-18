@@ -1,24 +1,24 @@
 ---
-title: 'Kurz: Vytvoření jazykového modelu – Custom Speech Service'
-titlesuffix: Azure Cognitive Services
-description: V tomto kurzu se dozvíte, jak vytvořit jazykový model pomocí služby Custom Speech Service.
+title: Kurz vytvoření jazykového modelu s využitím služby Custom Speech Service – Microsoft Cognitive Services | Microsoft Docs
+description: V tomto kurzu zjistíte, jak vytvořit jazykový model s využitím služby Custom Speech Service ve službách Microsoft Cognitive Services.
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
 ms.topic: tutorial
 ms.date: 05/03/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: b7216688efb6a2124748cd08111d57b122085143
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 6af2da9ffc7678a58fcf1c647ba89c586066d2ad
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219309"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339092"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>Kurz: Vytvoření vlastního jazykového modelu
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
 
 V tomto kurzu vytvoříte vlastní jazykový model pro textové dotazy nebo promluvy, které očekáváte, že uživatelé řeknou nebo zadají do aplikace. Tento vlastní jazykový model pak můžete spolu s existujícími špičkovými modely řeči od Microsoftu využít k přidání hlasové interakce do aplikace.
 

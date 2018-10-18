@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: ffb0b9ceeb181e2d9922ab8e257a4df7f3d51ee0
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 67299955e00f2bb5fb409420dd951357f89e1996
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364444"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49384918"
 documentType: LandingData
 title: Dokumentace k řešení Azure IoT Central
 metadata:
@@ -23,7 +23,7 @@ sections:
 - title: Upozornění na funkce
   items:
   - type: paragraph
-    text: Aplikace Azure IoT Central přešla na využívání služby Azure IoT Hub Device Provisioning Service (DPS) pro všechna připojená zařízení. Pro registraci a připojení zařízení k aplikaci Azure IoT Central budete muset používat DPS SDK. <a href="https://docs.microsoft.com/en-us/azure/iot-central/concepts-connectivity">Další informace o možnostech připojení zařízení v aplikaci Azure IoT Central</a> Pro všechny aplikace používající funkci průběžného exportu dat a/nebo šablonu řešení Power BI se bude muset změnit cílový kontejner úložiště a vytvořit nová šablona řešení.
+    text: Aplikace Azure IoT Central přešla na využívání služby Azure IoT Hub Device Provisioning Service (DPS) pro všechna připojená zařízení. Pro registraci a připojení zařízení k aplikaci Azure IoT Central budete muset používat DPS SDK. <a href="https://docs.microsoft.com/azure/iot-central/concepts-connectivity">Další informace o možnostech připojení zařízení v aplikaci Azure IoT Central</a> Pro všechny aplikace používající funkci průběžného exportu dat a/nebo šablonu řešení Power BI se bude muset změnit cílový kontejner úložiště a vytvořit nová šablona řešení.
 - title: Zprovoznění během 5 minut
   items:
   - type: paragraph

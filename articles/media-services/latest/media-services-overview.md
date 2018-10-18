@@ -13,24 +13,17 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 09/25/2018
+ms.date: 10/16/2018
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 3641806870c3eab0b3a05f538015a72d9a0b34ef
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 66c9b8297254b41156131d795376857029424e97
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221926"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377895"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Co jsou Azure Media Services v3?
-
-> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
-> * [Verze 2 – GA](../previous/media-services-overview.md)
-> * [Verze 3 – Preview](media-services-overview.md)
-
-> [!NOTE]
-> Nejnovější verze služby Azure Media Services je ve verzi Preview a může být označována jako v3.
 
 Azure Media Services je cloudová platforma, která umožňuje vytvářet řešení zajišťující streamování videa ve vysílací kvalitě, vylepšovat dostupnost a distribuci, analyzovat obsah a nejenom to. Ať už vyvíjíte aplikace, provozujete call centrum, zastupujete orgán státní správy nebo pracujete v zábavním průmyslu, služba Media Services vám pomůže vytvořit aplikace, ve kterých zpřístupníte svůj mediální obsah široké základně uživatelů, v nejoblíbenějších mobilních zařízeních a prohlížečích, jaké dnes existují, a v prvotřídní kvalitě. 
 
@@ -133,6 +126,7 @@ Microsoft generuje a podporuje následující klientské knihovny:
 |[Referenční informace k Node.js](https://aka.ms/ams-v3-nodejs-ref)|[Node.js SDK](https://aka.ms/ams-v3-nodejs-sdk)|[Ukázky Node.js](https://github.com/Azure-Samples/media-services-v3-node-tutorials)||
 |[Referenční informace k Pythonu](https://aka.ms/ams-v3-python-ref)|[Python SDK](https://aka.ms/ams-v3-python-sdk)||
 |[Referenční informace k jazyku Go](https://aka.ms/ams-v3-go-ref)|[Go SDK](https://aka.ms/ams-v3-go-sdk)||
+|Ruby|[Ruby SDK](https://aka.ms/ams-v3-ruby-sdk)||
 
 ## <a name="next-steps"></a>Další kroky
 

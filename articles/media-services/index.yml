@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: fd3b48648ca0b8f7ce1d134bc7a40a7b1f5ed348
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 0f249cfc604a31a29f6b2e3c0380e6591ec8b4e6
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35759197"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378821"
 documentType: LandingData
 title: Dokumentace ke službě Azure Media Services
 metadata:
@@ -13,73 +13,82 @@ metadata:
   meta.description: Azure Media Services is a cloud-based platform that enables you to build solutions that achieve broadcast-quality video streaming, enhance accessibility and distribution, analyze content, and much more.
   services: media-services
   author: juliako
-  manager: cfowler
+  manager: femila
   ms.service: media-services
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 04-21-2018
+  ms.date: 09-24-2018
   ms.author: juliako
 abstract:
-  description: Azure Media Services je cloudová platforma, která umožňuje vytvářet řešení zajišťující streamování videa ve vysílací kvalitě, vylepšovat dostupnost a distribuci, analyzovat obsah a nejenom to.
+  description: Azure Media Services (AMS) je cloudová platforma, která umožňuje vytvářet řešení pro kódování videa ve vysokém rozlišení a streamování videa ve vysílací kvalitě a oslovit cílové skupiny na nejoblíbenějších zařízeních. AMS v3 také umožňuje extrahovat přehledy z vašich videí a zvukových souborů pomocí Video Indexeru, a to s využitím předvoleb analyzátoru AMS v3. Pokud chcete získat podrobnější přehledy, použijte přímo Video Indexer.<br/> Informace o tom, kdy je vhodnější použít Video Indexer a kdy předvolby analyzátoru Media Services, najdete v <a href="/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets">dokumentu, který je porovnává</a>.
 sections:
 - items:
   - type: list
     style: cards
     className: cardsM
-    columns: 2
+    columns: 3
     items:
     - href: /azure/media-services/latest/
       html: <p>Naučíte se kódovat, streamovat na vyžádání, živě vysílat a analyzovat vaše videa pomocí Media Services v3.</p>
       image:
         src: media/index/AMSIcons-media_servicesV3.svg
-      title: Azure Media Services v3 (Preview)
+      title: Azure Media Services v3
     - href: /azure/media-services/previous/
       html: <p>Naučíte se kódovat, streamovat na vyžádání a živě vysílat vaše videa pomocí Media Services v2.</p>
       image:
         src: media/index/AMSIcons-media_servicesV2.svg
-      title: Azure Media Services v2 (GA)
+      title: Azure Media Services v2 (starší verze)
+    - href: /azure/media-services/video-indexer/
+      html: <p>Naučte se extrahovat přehledy z videí a zvukových souborů pomocí Video Indexeru.</p>
+      image:
+        src: media/index/AMSIcons-media_analytics.svg
+      title: Video Indexer
 - title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: 'Další informace o kódování a streamování pomocí Media Services:'
-  - type: table
-    style: dataMatrix
-    columns:
+    text: 'Další informace o kódování a streamování pomocí Media Services V3:'
+  - type: list
+    style: icon48
+    items:
     - image:
         src: media/index/AMSIcons-encoding.svg
-      title: Streamování souborů
-    rows:
-    - title: Media Services v3
-      values:
-      - href: /azure/media-services/latest/stream-files-dotnet-quickstart
-    - title: Media Services v2
-      values:
-      - href: /azure/media-services/previous/media-services-portal-vod-get-started
+      text: Streamování souborů
+      href: /azure/media-services/latest/stream-files-dotnet-quickstart
+  - type: paragraph
+    text: 'Naučte se extrahovat přehledy z videí pomocí Video Indexeru:'
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/index/AMSIcons-media_analytics.svg
+      text: Extrahování přehledů
+      href: ../cognitive-services/video-indexer/video-indexer-get-started.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json
 - title: Podrobné kurzy
   items:
   - type: paragraph
-    text: 'Naučte se streamovat soubory a analyzovat videa s využitím Media Services:'
-  - type: table
-    style: dataMatrix
-    columns:
+    text: 'Naučte se streamovat soubory na vyžádání, živě vysílat a analyzovat vaše videa pomocí Media Services v3:'
+  - type: list
+    style: icon48
+    items:
     - image:
         src: media/index/AMSIcons-encoding.svg
-      title: Kódování a streamování
+      text: Nahrávání, kódování a streamování videí
+      href: /azure/media-services/latest/stream-files-tutorial-with-api
     - image:
         src: media/index/AMSIcons-live.svg
-      title: Živé streamování
+      text: Živé vysílání
+      href: /azure/media-services/latest/stream-live-tutorial-with-api
     - image:
         src: media/index/AMSIcons-media_analytics.svg
-      title: Analýza videí
-    rows:
-    - title: Media Services v3
-      values:
-      - href: /azure/media-services/latest/stream-files-tutorial-with-api
-      - href: /azure/media-services/latest/stream-live-tutorial-with-api
-      - href: /azure/media-services/latest/analyze-videos-tutorial-with-api
-    - title: Media Services v2
-      values:
-      - href: /azure/media-services/previous/media-services-dotnet-get-started
-      - href: /azure/media-services/previous/media-services-portal-live-passthrough-get-started
-      - href: 
+      text: Analýza videí
+      href: /azure/media-services/latest/analyze-videos-tutorial-with-api
+  - type: paragraph
+    text: 'Naučte se extrahovat přehledy z videí pomocí rozhraní API Video Indexeru:'
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/index/AMSIcons-media_analytics.svg
+      text: Extrahování přehledů
+      href: ../cognitive-services/video-indexer/video-indexer-use-apis.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json

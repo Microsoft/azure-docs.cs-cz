@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 2eb6bda7066a01e5532fe7c0e20b0ee13f4289b6
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: d9a90869e060d2f8f1a1c522a4528e74841caada
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432983"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339610"
 ---
 # <a name="quickstart-recognize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v aplikaci pro UPW s využitím sady Speech SDK
 
@@ -69,7 +69,7 @@ K dokončení tohoto rychlého startu potřebujete klíč předplatného služby
 1. V konzole Správce balíčků se zobrazí následující řádek výstupu.
 
    ```text
-   Successfully installed 'Microsoft.CognitiveServices.Speech 1.0.0' to helloworld
+   Successfully installed 'Microsoft.CognitiveServices.Speech 1.0.1' to helloworld
    ```
 
 1. Protože aplikace používá mikrofon pro hlasový vstup, přidejte do projektu schopnost **Mikrofon**. V Průzkumníku řešení dvakrát klikněte na **Package.appxmanifest** a upravte manifest aplikace. Přepněte na kartu **Schopnosti**, zaškrtněte políčko u schopnosti **Mikrofon** a uložte provedené změny.

@@ -4,19 +4,19 @@ description: Toto téma popisuje proces kódování při použití služby Azure
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/21/2018
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 69c5516ee503d774b143bb2d83f09ea863a00b31
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 452502d5d6a0a35f642de7e14b2a7ee7fc573bfa
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091545"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378665"
 ---
 # <a name="encoding-with-azure-media-services"></a>Kódování pomocí Azure Media Services
 
@@ -26,9 +26,7 @@ Kódování pomocí Media Services v3, budete muset vytvořit transformace a úl
 
 Kódování pomocí Azure Media Services, použijete přednastavení kodér zjistit, jak by se měly zpracovat vstupními multimediálními soubory. Můžete například zadat rozlišení a/nebo počet zvukové kanály, které chcete v kódovaném obsahu. 
 
-Můžete začít rychle s jedním z doporučených předdefinované předvolby založená na osvědčených postupech oboru nebo můžete vytvářet vlastní přednastavení cílit na konkrétní scénář nebo zařízení požadavky. 
-
-Najdete podrobnosti o kodér v [specifikace OpenAPI](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2018-03-30-preview). 
+Můžete začít rychle s jedním z doporučených předdefinované předvolby založená na osvědčených postupech oboru nebo můžete vytvářet vlastní přednastavení cílit na konkrétní scénář nebo zařízení požadavky. Další informace najdete v tématu [kódování pomocí Azure Media Services](encoding-concept.md). 
 
 ## <a name="built-in-presets"></a>Předdefinované předvolby
 

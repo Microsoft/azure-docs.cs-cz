@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2018
+ms.date: 10/10/2018
 ms.author: rkarlin
-ms.openlocfilehash: bd0e517845b9cfcbe6090dff8d656edcca782c83
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 1b0a6c6d6daa686404021afb2e10b25bb9f54191
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126288"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319380"
 ---
 # <a name="what-is-azure-security-center"></a>Co je Azure Security Center?
 Azure Security Center zajišťuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami napříč hybridními cloudovými úlohami. Se službou Security Center můžete používat zásady zabezpečení napříč úlohami, omezit vystavení hrozbám a detekovat útoky a reagovat na ně.

@@ -11,19 +11,16 @@ ms.service: media-services
 ms.workload: media
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 09/25/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: 8bef52bb7cb56646b0f09e2cb7910bab3f55e0c0
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 92321b5e919f6703cb481d88f312a20fc7c62826
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223538"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49375458"
 ---
 # <a name="quickstart-stream-video-files---net"></a>Rychlý start: Streamování videosouborů – .NET
-
-> [!NOTE]
-> Nejnovější verze služby Azure Media Services je ve verzi Preview a může být označována jako v3. Pokud chcete začít používat rozhraní API v3, měli byste vytvořit nový účet služby Media Services, jak je popsáno v tomto rychlém startu. 
 
 Toto rychlé zprovoznění předvádí, jak je jednoduché kódovat a začít se streamováním videí pomocí služby Azure Media Services v široké škále prohlížečů a zařízení. Vstupní obsah se dá specifikovat jako HTTPS, URL, SAS nebo cesta k souboru v úložišti objektů Blob Azure.
 Ukázka v tomto tématu kóduje obsah, který zpřístupníte prostřednictvím adresy URL protokolu HTTPS. Upozorňujeme, že AMS v3 v současné době nepodporuje blokového kódování přenosu prostřednictvím adresy URL HTTPS.

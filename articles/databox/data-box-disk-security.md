@@ -2,25 +2,18 @@
 title: Microsoft Azure Data Box Disk – přehled | Microsoft Docs
 description: Tento článek popisuje Azure Data Box Disk, cloudové řešení, které umožňuje přenést do Azure velké objemy dat
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: disk
 ms.topic: overview
-ms.custom: mvc
-ms.tgt_pltfrm: NA
-ms.workload: TBD
 ms.date: 07/10/2018
 ms.author: alkohli
-ms.openlocfilehash: ecdf604cf15ec68875b67f2a4c990103b3375243
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 569442f5dfdf96f03a95f7210bfe1ed7dc3af8de
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009735"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091483"
 ---
 # <a name="azure-data-box-disk-security-and-data-protection-preview"></a>Zabezpečení a ochrana dat Azure Data Box Disku (Preview)
 
@@ -83,11 +76,11 @@ Azure Data Box Disk shromažďuje a zobrazuje osobní údaje v následujících 
 
     - Jméno kontaktu
     - Telefonní číslo
-    - E-mail
+    - Email
     - Ulice a číslo
     - Město
     - PSČ
-    - Stát
+    - Stav
     - Provincie/kraj/oblast
     - ID disku
     - Číslo účtu dopravce
@@ -102,6 +95,6 @@ Další informace najdete v Zásadách ochrany osobních údajů společnosti Mi
 
 ## <a name="next-steps"></a>Další kroky
 
-- Projděte si [Požadavky služby Data Box Disk](data-box-disk-system-requirements.md).
+- Projděte si [požadavky služby Data Box Disk](data-box-disk-system-requirements.md).
 - Seznamte se s [omezeními služby Data Box Disk](data-box-disk-limits.md).
-- Proveďte rychlé nasazení služby [Azure Data Box Disk ](data-box-disk-quickstart-portal.md) na webu Azure Portal.
+- Rychlé nasazení řešení [Azure Data Box Disk](data-box-disk-quickstart-portal.md) na webu Azure Portal

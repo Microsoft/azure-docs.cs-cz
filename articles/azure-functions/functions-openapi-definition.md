@@ -12,12 +12,12 @@ ms.date: 12/15/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: a085d7e25854a928778802d2b4ef50cf9e57eff9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 70eda1d69bdbdc969c5d6bc1774820b50ddc7c83
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960919"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093388"
 ---
 # <a name="create-an-openapi-definition-for-a-function"></a>Vytvoření definice OpenAPI pro funkci
 Rozhraní REST API se často popisují pomocí definice OpenAPI (dříve označované jako soubor [Swagger](http://swagger.io/)). Tato definice obsahuje informace o tom, jaké operace jsou v rozhraní API dostupné a jakou strukturu by měla mít data požadavku a odpovědi pro toto rozhraní API.
@@ -61,17 +61,22 @@ Tento kurz používá funkci aktivovanou protokolem HTTP, která přijímá dva 
 1. Nahraďte obsah souboru run.csx následujícím kódem a klikněte na **Uložit**:
 
     ```csharp
+    #r "Newtonsoft.Json"
+
     using System.Net;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Primitives;
+    using Newtonsoft.Json;
 
     const double revenuePerkW = 0.12; 
     const double technicianCost = 250; 
     const double turbineCost = 100;
 
-    public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
+    public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
     {   
-
         //Get request body
-        dynamic data = await req.Content.ReadAsAsync<object>();
+        string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+        dynamic data = JsonConvert.DeserializeObject(requestBody);
         int hours = data.hours;
         int capacity = data.capacity;
 
@@ -87,7 +92,7 @@ Tento kurz používá funkci aktivovanou protokolem HTTP, která přijímá dva 
             repairTurbine = "No";
         }
 
-        return req.CreateResponse(HttpStatusCode.OK, new{
+        return (ActionResult) new OkObjectResult(new{
             message = repairTurbine,
             revenueOpportunity = "$"+ revenueOpportunity,
             costToFix = "$"+ costToFix         

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: jdial
-ms.openlocfilehash: 1ec60300d179edf69e32dc07653b6c69c7cc8e52
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: cf540caebd5f993cdba0d85f4109a6e78e201658
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42056597"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378750"
 ---
 # <a name="plan-virtual-networks"></a>Plánování virtuální sítě
 
@@ -93,7 +93,7 @@ Virtuální sítě můžete připojit k jiným virtuálním sítím pomocí part
 
 ### <a name="peering"></a>Partnerské vztahy
 
-Při použití [partnerský vztah virtuální sítě](virtual-network-peering-overview.md), virtuální sítě můžou být ve stejném, nebo jiné, podporovaných oblastech Azure. Virtuální sítě může být ve stejném ani jiném předplatná Azure, jakož i předplatným jsou přiřazeny ke stejnému tenantovi Azure Active Directory. Před vytvořením partnerského vztahu, se doporučuje, aby měli seznámit se všemi vytvoření partnerského vztahu [požadavky a omezení](virtual-network-manage-peering.md#requirements-and-constraints). Šířka pásma mezi prostředky ve virtuálních sítích s partnerskými uzly ve stejné oblasti je stejná, jako kdyby byly ve stejné virtuální síti.
+Při použití [partnerský vztah virtuální sítě](virtual-network-peering-overview.md), virtuální sítě můžou být ve stejném, nebo jiné, podporovaných oblastech Azure. Virtuální sítě může být ve stejném nebo jiném předplatná Azure (patří do různých tenantů Azure Active Directory i předplatná). Před vytvořením partnerského vztahu, se doporučuje, aby měli seznámit se všemi vytvoření partnerského vztahu [požadavky a omezení](virtual-network-manage-peering.md#requirements-and-constraints). Šířka pásma mezi prostředky ve virtuálních sítích s partnerskými uzly ve stejné oblasti je stejná, jako kdyby byly ve stejné virtuální síti.
 
 ### <a name="vpn-gateway"></a>VPN Gateway
 

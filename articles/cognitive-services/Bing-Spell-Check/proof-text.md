@@ -10,12 +10,12 @@ ms.component: bing-spell-check
 ms.topic: overview
 ms.date: 05/03/2018
 ms.author: nolachar
-ms.openlocfilehash: 81c80ab6c8d10d263de96566f5554709a2404a24
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 4caa05ffa96dbc15922fed85edfdefdb68ead68b
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802589"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49361707"
 ---
 # <a name="what-is-bing-spell-check-api"></a>Co je rozhraní API Bingu pro kontrolu pravopisu?
 
@@ -36,7 +36,7 @@ Tato kontrola pravopisu zvládne jakýkoli scénář zpracování textu:
 
 ## <a name="spell-check-modes"></a>Režimy kontroly pravopisu
 
-Rozhraní API podporuje dva režimy kontroly, `Proof` a `Spell`.  Příklady najdete [tady](https://azure.microsoft.com/en-us/services/cognitive-services/spell-check/).
+Rozhraní API podporuje dva režimy kontroly, `Proof` a `Spell`.  Příklady najdete [tady](https://azure.microsoft.com/services/cognitive-services/spell-check/).
 ### <a name="proof---for-documents-scenario"></a>Proof – pro scénář s dokumenty
 Výchozí režim je `Proof`. Režim kontroly pravopisu `Proof` poskytuje během vytváření dokumentu nejkomplexnější kontroly, opravuje velká písmena, přidává základní interpunkci a další. Je ale k dispozici jenom pro trhy en-US (americká angličtina), es-ES (španělština) a pt-BR (portugalština). (Poznámka: Pro španělštinu a portugalštinu pouze v beta verzi.) Pro všechny ostatní trhy nastavte parametr režimu na Spell. 
 <br /><br/>**Poznámka:** Pokud délka textu dotazu přesáhne 4096 znaků, bude před zpracováním zkrácena na 4096 znaků. 

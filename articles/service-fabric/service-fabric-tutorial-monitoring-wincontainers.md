@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 06/08/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 9eea0cabebb67095d4c6c813e7d13c885a447db4
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 24b4cbe0eb13a41ccd6ae98db90d4bf0cf7d22a7
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378886"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311214"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>Kurz: Monitorování kontejnerů Windows na platformě Service Fabric pomocí Log Analytics
 
@@ -42,7 +42,7 @@ Než začnete s tímto kurzem, musíte mít splněné následující požadavky:
 
 ## <a name="setting-up-log-analytics-with-your-cluster-in-the-resource-manager-template"></a>Nastavení Log Analytics pro cluster v šabloně Resource Manageru
 
-V případě, že jste použili [šablonu poskytnutou](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Tutorial) v první části tohoto kurzu, měla by v obecné šabloně Azure Resource Manageru pro Service Fabric už zahrnovat následující položky. V případě, že máte vlastní cluster, který chcete nastavit pro monitorování kontejnerů pomocí Log Analytics:
+V případě, že jste použili [šablonu poskytnutou](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-OMS-UnSecure) v první části tohoto kurzu, měla by v obecné šabloně Azure Resource Manageru pro Service Fabric už zahrnovat následující položky. V případě, že máte vlastní cluster, který chcete nastavit pro monitorování kontejnerů pomocí Log Analytics:
 
 * Proveďte následující změny šablony Resource Manageru.
 * Nasaďte ji pomocí PowerShellu a upgradujte tak svůj cluster prostřednictvím [nasazení šablony](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm). Azure Resource Manager rozpozná, že prostředky existují, takže ji zavede jako upgrade.

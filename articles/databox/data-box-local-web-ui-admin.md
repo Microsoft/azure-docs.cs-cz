@@ -2,25 +2,18 @@
 title: Správa místního webového uživatelského rozhraní Microsoft Azure Data Box | Microsoft Docs v datech
 description: Popisuje, jak používat místní webové uživatelské rozhraní při správě zařízení Data Box
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: pod
 ms.topic: overview
-ms.custom: ''
-ms.tgt_pltfrm: NA
-ms.workload: TBD
 ms.date: 09/11/2018
 ms.author: alkohli
-ms.openlocfilehash: a5f3f1b4d0d67a12ee0ebaa40935b8494e53dab3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9dd519f8efc9700f7a747aa37a9c02414f3e1865
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956298"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093880"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box"></a>Použití místního webového uživatelského rozhraní při správě Data Boxu
 

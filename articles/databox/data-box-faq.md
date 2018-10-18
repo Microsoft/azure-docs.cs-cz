@@ -2,25 +2,18 @@
 title: Microsoft Azure Data Box – nejčastější dotazy | Microsoft Docs
 description: Článek obsahuje nejčastější otázky a odpovědi týkající se cloudového řešení Azure Data Box, které umožňuje přenos velkých objemů dat do Azure.
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: pod
 ms.topic: overview
-ms.custom: ''
-ms.tgt_pltfrm: NA
-ms.workload: TBD
 ms.date: 09/27/2018
 ms.author: alkohli
-ms.openlocfilehash: e47ffbe15291275a7104d5e201a597d084cdbdd9
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 5a95675d5e37adec5fb1f1542daad329484a2a4c
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47422860"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092606"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: nejčastější dotazy
 
@@ -181,7 +174,7 @@ A. Pokud zařízení přišlo poškozené nebo s ním někdo nedovoleným způso
 ### <a name="q-can-i-use-my-own-shipping-carrier-to-ship-data-box"></a>Otázka: Můžu k dodání zařízení Data Box použít vlastního dopravce?
 A. U služby Data Box zajišťuje dopravu do datacentra Azure i z něj Microsoft. Pokud chcete použít vlastního dopravce, můžete použít službu Azure Import/Export. Další informace najdete v článku o [službě Azure Import/Export](../storage/common/storage-import-export-service.md).
 
-### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>Otázka: Na displeji s elektronickým inkoustem se nezobrazuje expediční štítek pro vrácení zásilky. Co mám dělat?
+### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>Otázka: Na displeji s elektronickým inkoustem se nezobrazuje expediční štítek pro vrácení zásilky. Co bych měl/a dělat?
 A. Pokud se na displeji s elektronickým inkoustem nezobrazuje štítek pro vrácení zásilky, postupujte takto:
 - Odstraňte starý expediční štítek a všechny ostatní štítky, které se týkají minulé přepravy.
 - Na webu Azure Portal přejděte ke své objednávce. Přejděte na **Přehled** > **Stáhnout expediční štítek**. Další informace najdete v článku o [stažení expedičního štítku](data-box-portal-admin.md#download-shipping-label).

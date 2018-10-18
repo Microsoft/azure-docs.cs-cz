@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: d0f2669610f2086c29d52d95c9796e6a2939622e
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 9d2fa8ec96f629ff85d785897398bc9af52ab3bc
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985437"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165755"
 ---
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Kód a ukázky PowerShellu spolupráce B2B služby Azure Active Directory
 
@@ -34,14 +34,14 @@ Externí uživatele můžete do organizace pozvat hromadně pomocí e-mailových
 
 3. Přihlášení k tenantovi
 
-    ```
+    ```powershell
     $cred = Get-Credential
     Connect-AzureAD -Credential $cred
     ```
 
 4. Spuštění rutiny PowerShellu
 
-  ```
+  ```powershell
   $invitations = import-csv C:\data\invitations.csv
   $messageInfo = New-Object Microsoft.Open.MSGraph.Model.InvitedUserMessageInfo
   $messageInfo.customizedMessageBody = "Hey there! Check this out. I created an invitation through PowerShell"
@@ -56,7 +56,7 @@ Tato rutina odešle pozvánku e-mailovým adresám v souboru invitations.csv. Me
 ## <a name="code-sample"></a>Ukázka kódu
 Zde si ukážeme, jak zavolat rozhraní API pro pozvánky v režimu „výhradně pro aplikaci“, abyste získali adresu URL pro uplatnění pozvánky k prostředku, ke kterému uživatele B2B zvete. Cílem je odeslat vlastní e-mail s pozvánkou. E-mail je možné sestavit pomocí klienta HTTP, abyste mohli přizpůsobit jeho vzhled a odeslat ho prostřednictvím rozhraní Graph API.
 
-```
+```csharp
 namespace SampleInviteApp
 {
     using System;
