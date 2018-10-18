@@ -13,16 +13,16 @@ ms.topic: quickstart
 ms.date: 05/22/2018
 ms.author: glenga
 ms.custom: mvc, devcenter, , vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: 582e949c6fdf4333690264dfd5b1cf04234efdd4
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: b7c9b08d1f6cb1c52419519658765ab687a234fc
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092848"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116585"
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Vytvoření první funkce pomocí sady Visual Studio
 
-Služba Azure Functions umožňuje spuštění kódu v prostředí [bez serveru](https://azure.microsoft.com/overview/serverless-computing/), aniž byste nejdřív museli vytvořit virtuální počítač nebo publikovat webovou aplikaci.
+Služba Azure Functions umožňuje spuštění kódu v prostředí [bez serveru](https://azure.microsoft.com/solutions/serverless/), aniž byste nejdřív museli vytvořit virtuální počítač nebo publikovat webovou aplikaci.
 
 V tomto článku se dozvíte, jak pomocí nástrojů sady Visual Studio 2017 pro službu Azure Functions místně vytvořit a otestovat funkci Hello World. Kód funkce potom publikujete do Azure. Tyto nástroje jsou dostupné jako součást sady funkcí Azure – vývoj v sadě Visual Studio 2017.
 

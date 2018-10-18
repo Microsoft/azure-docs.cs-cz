@@ -4,29 +4,23 @@ description: Tento článek popisuje službu Azure Data Box, což je cloudové �
 services: databox
 documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: pod
 ms.topic: overview
-ms.custom: ''
-ms.tgt_pltfrm: NA
-ms.workload: TBD
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 9c27efa133ab093c6aaae85d976d08cf16147233
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1beecd4c37ef333464e96b93294c25d182ffdf91
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967502"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49090802"
 ---
 # <a name="what-is-azure-data-box"></a>Co je Azure Data Box?
 
 Cloudové řešení Microsoft Azure Data Box umožňuje do Azure odeslat rychle, levně a bezpečně terabajty dat. Zabezpečený a rychlý přenos dat se zajišťuje zasláním speciálního zařízení úložiště Data Box. Každé zařízení úložiště má maximální využitelnou kapacitu úložiště 80 TB a do datového centra ho transportuje místní přepravce. Zařízení má robustní obal, který data během převozu chrání a zabezpečí.
 
-Zařízení Data Box si můžete objednat na webu Azure Portal. Jakmile vám zařízení přijde, můžete ho rychle nastavit. Použijete k tomu místní webové uživatelské rozhraní. Zkopírujte data ze serverů do zařízení a pošlete ho zpět do Azure. V datacentru Azure se vaše data nahrají ze zařízení do Azure automaticky. Celý proces se na webu Azure Portal sleduje od začátku do konce službou Data Box.
+Zařízení Data Box si můžete objednat na webu Azure Portal. Jakmile vám zařízení přijde, můžete ho rychle nastavit. Použijete k tomu místní webové uživatelské rozhraní. Zkopírujte data ze serverů do zařízení a pošlete ho zpět do Azure. V datacentru Azure se vaše data nahrají ze zařízení do Azure automaticky. Celý proces se od začátku do konce sleduje ve službě Data Box na webu Azure Portal.
 
 
 ## <a name="use-cases"></a>Případy použití

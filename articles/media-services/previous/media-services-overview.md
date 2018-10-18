@@ -4,22 +4,21 @@ description: Toto téma nabízí přehled Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
-ms.assetid: 7a5e9723-c379-446b-b4d6-d0e41bd7d31f
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 09/24/2018
-ms.author: juliako;anilmur
-ms.openlocfilehash: 65f38ca477cf1a861c1285e6195598be705005d7
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/15/2018
+ms.author: juliako
+ms.openlocfilehash: cc6cb768e9403a09ea09309e0ffd85ce9012cb41
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163745"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352082"
 ---
 # <a name="azure-media-services-overview"></a>Přehled služby Azure Media Services 
 

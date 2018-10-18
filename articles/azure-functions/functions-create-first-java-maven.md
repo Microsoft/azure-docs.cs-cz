@@ -12,18 +12,18 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 16d6dd6a589256ad98a37465e64e847778d0cc7e
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 7483ac4521b0b997111dcc5705ba8c28a8443299
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092589"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116398"
 ---
 # <a name="create-your-first-function-with-java-and-maven-preview"></a>Vytvoření první funkce pomocí Javy a Mavenu (Preview)
 
 [!INCLUDE [functions-java-preview-note](../../includes/functions-java-preview-note.md)]
 
-Tento rychlý start vás provede vytvořením funkce [bez serveru](https://azure.microsoft.com/overview/serverless-computing/) pomocí Mavenu, jejím místním otestováním a nasazením do služby Azure Functions. Až budete hotovi, budete mít aplikaci funkcí aktivovanou protokolem HTTP spuštěnou v Azure.
+Tento rychlý start vás provede vytvořením funkce [bez serveru](https://azure.microsoft.com/solutions/serverless/) pomocí Mavenu, jejím místním otestováním a nasazením do služby Azure Functions. Až budete hotovi, budete mít aplikaci funkcí aktivovanou protokolem HTTP spuštěnou v Azure.
 
 ![Přístup k funkci Hello World z příkazového řádku pomocí cUrl](media/functions-create-java-maven/hello-azure.png)
 

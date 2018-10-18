@@ -12,14 +12,14 @@ ms.topic: get-started-article
 ms.date: 09/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1fdfea3ac6b84088002521700e1d50d17398be31
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 04d950b0a8001fd76e3754b73a9d7c4c5fe2893d
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46303090"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318635"
 ---
-#<a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Plán instalace Azure AD Connect a Azure AD Connect Health
+# <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Plán instalace Azure AD Connect a Azure AD Connect Health
 
 ## <a name="install-azure-ad-connect"></a>Instalace služby Azure AD Connect
 
@@ -169,7 +169,6 @@ Portál služby Azure AD Connect Health umožňuje zobrazovat upozornění, moni
 
 ## <a name="next-steps"></a>Další kroky
 
-
 - [Hardware a předpoklady](how-to-connect-install-prerequisites.md) 
 - [Expresní nastavení](how-to-connect-install-express.md)
 - [Vlastní nastavení](how-to-connect-install-custom.md)
@@ -178,6 +177,3 @@ Portál služby Azure AD Connect Health umožňuje zobrazovat upozornění, moni
 - [Azure AD Connect a federace](how-to-connect-fed-whatis.md)
 - [Instalace agentů Azure AD Connect Health](how-to-connect-health-agent-install.md) 
 - [Synchronizace služby Azure AD Connect](how-to-connect-sync-whatis.md)
-
-
-

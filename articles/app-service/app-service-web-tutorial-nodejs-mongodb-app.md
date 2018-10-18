@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 70b7af1701c13e6a5d7644f04e4502f76ef7743a
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 2363f7f2e17bfc451ea9fd5486ba60fbc8ccb993
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43187841"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364281"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-web-app-in-azure"></a>Kurz: Vytvoření webové aplikace Node.js využívající MongoDB v Azure
 
@@ -136,7 +136,7 @@ Pro MongoDB tento kurz používá službu [Azure Cosmos DB](/azure/documentdb/).
 ### <a name="create-a-cosmos-db-account"></a>Vytvoření účtu služby Cosmos DB
 
 > [!NOTE]
-> Za vytvoření databází Azure Cosmos DB z tohoto kurzu ve vlastním předplatném Azure se účtuje poplatek. Pokud chcete použít bezplatný účet služby Azure Cosmos DB po dobu sedmi dnů, můžete využít [bezplatné vyzkoušení služby Azure Cosmos DB](https://azure.microsoft.com/en-us/try/cosmosdb/). Stačí kliknout na tlačítko **Vytvořit** na dlaždici MongoDB a vytvořit v Azure bezplatnou databázi MongoDB. Po vytvoření databáze přejděte na portálu do části **Připojovací řetězec** a získejte připojovací řetězec vaší služby Azure Cosmos DB, který použijete v pozdější části tohoto kurzu.
+> Za vytvoření databází Azure Cosmos DB z tohoto kurzu ve vlastním předplatném Azure se účtuje poplatek. Pokud chcete použít bezplatný účet služby Azure Cosmos DB po dobu sedmi dnů, můžete využít [bezplatné vyzkoušení služby Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/). Stačí kliknout na tlačítko **Vytvořit** na dlaždici MongoDB a vytvořit v Azure bezplatnou databázi MongoDB. Po vytvoření databáze přejděte na portálu do části **Připojovací řetězec** a získejte připojovací řetězec vaší služby Azure Cosmos DB, který použijete v pozdější části tohoto kurzu.
 >
 
 Ve službě Cloud Shell vytvořte účet služby Cosmos DB pomocí příkazu [`az cosmosdb create`](/cli/azure/cosmosdb?view=azure-cli-latest#az-cosmosdb-create).
