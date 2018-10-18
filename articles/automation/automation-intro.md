@@ -10,12 +10,12 @@ keywords: azure automation, DSC, powershell, desired state configuration, update
 ms.date: 03/15/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: ce30a9eb11cd951ca7d8197c15c3becba333f5a9
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: e09a1b1c1a849e9957c2969da2b8e4c1d00347ff
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34053772"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297686"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Seznámení s Azure Automation
 
@@ -65,7 +65,7 @@ V [Galerii služby Automation](automation-runbook-gallery.md) najdete runbooky a
 
 Azure Automation spravuje životní cyklus vaší infrastruktury i aplikací. Přeneste do systému znalosti o způsobu, jakým organizace doručuje a udržuje úlohy. Tvořte v běžných jazycích jako PowerShell, konfigurace požadovaného stavu, Python a grafické runbooky. Získejte kompletní inventář nasazených prostředků pro účely cílení, generování sestav a dodržování předpisů. Identifikujte změny, které můžou způsobit chybnou konfiguraci, a zlepšete provozní dodržování předpisů.
 
-* **Sestavování a nasazování prostředků** – Nasazujte virtuální počítače napříč hybridním prostředím pomocí runbooků a šablon Azure Resource Manageru. Můžete provést integraci s vývojovými nástroji, jako je Jenkins a Visual Studio Team Services.
+* **Sestavování a nasazování prostředků** – Nasazujte virtuální počítače napříč hybridním prostředím pomocí runbooků a šablon Azure Resource Manageru. Zajistěte integraci do vývojových nástrojů, jako je Jenkins a Azure DevOps.
 * **Konfigurace virtuálních počítačů** – Vyhodnocujte a konfigurujte počítače s Windows a Linuxem s využitím požadované konfigurace pro infrastrukturu a aplikaci.
 * **Monitorování** – Identifikujte na počítačích změny, které způsobují problémy, a opravte je nebo je eskalujte do systémů pro správu.
 * **Ochrana** – Když se vyvolá výstraha zabezpečení, virtuální počítač se umístí do karantény. Nastavte požadavky na hostovi.

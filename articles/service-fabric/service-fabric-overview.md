@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/20/2017
 ms.author: msfussell
 ms.custom: mvc
-ms.openlocfilehash: fdb710868a75f64c3fe9f3742482c70ff86f4365
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 5c7586ae2ff1a648348c1155a528035fa72c7744
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207831"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299810"
 ---
 # <a name="overview-of-azure-service-fabric"></a>Přehled Azure Service Fabric
 Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb a kontejnerů. Service Fabric se také zaměřuje na problematiku vývoje a správy nativních cloudových aplikací. Vývojáři a správci se můžou vyhnout problémům se složitou infrastrukturou a místo toho se soustředit na implementaci zásadních a náročných úloh, které jsou škálovatelné, spolehlivé a spravovatelné. Service Fabric představuje novou generaci platforem pro vytváření a správu těchto podnikových cloudových aplikací 1. úrovně spouštěných v kontejnerech.
@@ -66,7 +66,7 @@ Možnosti správy životního cyklu aplikací Service Fabric umožňují správc
 
 Většina aplikací se skládá z kombinace bezstavových a stavových mikroslužeb, kontejnerů a dalších spustitelných souborů, které se nasazují společně. Díky vynucování silných typů aplikací umožňuje Service Fabric nasazení více instancí aplikace. Každá instance se spravuje a upgraduje samostatně. Důležité je, že Service Fabric dokáže nasadit kontejnery nebo jakékoli spustitelné soubory a zajistit jejich spolehlivost. Service Fabric dokáže nasadit například kód v .NET, ASP.NET Core nebo Node.js, kontejnery Windows, kontejnery Linuxu, virtuální počítače Java, skripty, kód Angular nebo prakticky cokoli, z čeho se vaše aplikace skládá.
 
-Platforma Service Fabric je integrovaná v nástrojích CI/CD, jako jsou [Visual Studio Team Services](https://www.visualstudio.com/team-services/), [Jenkins](https://jenkins.io/index.html) a [Octopus Deploy](https://octopus.com/), a můžete ji používat s jakýmkoli jiným oblíbeným nástrojem CI/CD.
+Platforma Service Fabric je integrovaná s nástroji CI/CD, jako jsou [Azure Pipelines](https://www.visualstudio.com/team-services/), [Jenkins](https://jenkins.io/index.html) a [Octopus Deploy](https://octopus.com/), a můžete ji používat s jakýmkoli jiným oblíbeným nástrojem CI/CD.
 
 Další informace o správě životního cyklu aplikací najdete v tématu [Životní cyklus aplikace](service-fabric-application-lifecycle.md). Další informace o nasazení jakéhokoli kódu najdete v tématu popisujícím [nasazení hostujícího spustitelného souboru](service-fabric-deploy-existing-app.md).
 

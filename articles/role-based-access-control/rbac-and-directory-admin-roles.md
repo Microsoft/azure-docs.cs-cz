@@ -1,5 +1,5 @@
 ---
-title: Role klasického správce předplatného vs. role Azure RBAC vs. Role správce Azure AD | Microsoft Docs
+title: Role klasického správce předplatného, role Azure RBAC a role správce Azure AD | Microsoft Docs
 description: Tento článek popisuje různé role v Azure – role klasického správce předplatného, role řízení přístupu na základě role (RBAC) Azure a role správce služby Azure AD (Azure Active Directory).
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.date: 08/07/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 8c00476078d4e16b649296be42795b92ebbfd9c4
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 401c9a3df4cb132769e05cb0487a763f4080dd23
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714090"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304063"
 ---
-# <a name="classic-subscription-administrator-roles-vs-azure-rbac-roles-vs-azure-ad-administrator-roles"></a>Role klasického správce předplatného vs. role Azure RBAC vs. role správce Azure AD
+# <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>Role klasického správce předplatného, role Azure RBAC a role správce Azure AD
 
 Pokud s Azure teprve začínáte, může být pro vás trochu obtížné vyznat se v různých rolích v Azure. Tento článek vám pomůže porozumět následujícím rolím a tomu, kdy je použít:
 - Role klasického správce předplatného
@@ -44,15 +44,15 @@ Správce účtu, správce služeb a spolusprávce jsou tři role klasického spr
 
 | Klasický správce předplatného | Omezení | Oprávnění | Poznámky |
 | --- | --- | --- | --- |
-| Správce účtu | 1 na účet Azure | <ul><li>Přístup do [Centra účtů Azure](https://account.azure.com/Subscriptions)</li><li>Správa všech předplatných v účtu</li><li>Vytváření nových předplatných</li><li>Rušení předplatných</li><li>Změna fakturace předplatného</li><li>Změna správce služeb</li></ul> | Koncepčně se jedná o vlastníka fakturace předplatného.|
-| Správce služeb | 1 na předplatné Azure | <ul><li>Správa služeb na portálu [Azure Portal](https://portal.azure.com)</li><li>Přiřazení role spolusprávce uživatelům</li></ul> | Ve výchozím nastavení u nového předplatného je správce účtu současně i správcem služeb.<br>Správce služeb má stejný přístup jako uživatel, který má přidělenu roli vlastníka v oboru předplatného. |
+| Správce účtu | 1 na účet Azure | <ul><li>Přístup do [Centra účtů Azure](https://account.azure.com/Subscriptions)</li><li>Správa všech předplatných v účtu</li><li>Vytváření nových předplatných</li><li>Rušení předplatných</li><li>Změna fakturace předplatného</li><li>Změna správce služeb</li></ul> | Koncepčně se jedná o vlastníka fakturace předplatného.<br>Správce účtu nemá přístup k webu Azure Portal. |
+| Správce služeb | 1 na předplatné Azure | <ul><li>Správa služeb na portálu [Azure Portal](https://portal.azure.com)</li><li>Přiřazení role spolusprávce uživatelům</li></ul> | Ve výchozím nastavení u nového předplatného je správce účtu současně i správcem služeb.<br>Správce služeb má stejný přístup jako uživatel, který má přidělenu roli vlastníka v oboru předplatného.<br>Správce služeb má úplný přístup k webu Azure Portal. |
 | Spolusprávce | 200 na předplatné | <ul><li>Má stejná přístupová oprávnění jako správce služeb, ale nemůže měnit přidružení předplatných k adresářům Azure.</li><li>Může uživatelům přiřazovat role spolusprávce, ale nemůže měnit správce služeb.</li></ul> | Spolusprávce má stejný přístup jako uživatel, který má přidělenu roli vlastníka v oboru předplatného. |
 
 Na portálu Azure Portal ve vlastnostech předplatného se můžete podívat, kdo má přiřazenu roli správce účtu a roli správce služeb.
 
 ![Správce účtu a správce služeb na portálu Azure Portal](./media/rbac-and-directory-admin-roles/account-admin-service-admin.png)
 
-Informace o tom, jak přidat nebo změnit správce předplatného, najdete v dokumentaci k fakturaci Azure v části o [přidávání nebo změně správců předplatného](../billing/billing-add-change-azure-subscription-administrator.md).
+Informace o tom, jak přidat nebo změnit klasického správce předplatného, najdete v článku [Přidávání a změna správců předplatného Azure](../billing/billing-add-change-azure-subscription-administrator.md) v dokumentaci k fakturaci Azure.
 
 ### <a name="azure-account-and-azure-subscriptions"></a>Účet Azure a předplatná Azure
 

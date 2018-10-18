@@ -1,6 +1,6 @@
 ---
-title: Zabezpečení připojení ke službě Azure SQL Database ze služby App Service s využitím identity spravované služby | Microsoft Docs
-description: Zjistěte, jak zvýšit zabezpečení připojení k databázi s využitím identity spravované služby a jak tento postup aplikovat u ostatních služeb Azure.
+title: Zabezpečení připojení ke službě Azure SQL Database ze služby App Service s využitím spravované identity | Microsoft Docs
+description: Zjistěte, jak zvýšit zabezpečení připojení k databázi s využitím spravované identity a jak tento postup aplikovat u ostatních služeb Azure.
 services: app-service\web
 documentationcenter: dotnet
 author: cephalin
@@ -14,24 +14,24 @@ ms.topic: tutorial
 ms.date: 04/17/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 173588c0200666c52f3ac0a5d2e70d667cfe3294
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3125db03dc13f70524fd094736f50b563ef712a4
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445557"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44379923"
 ---
-# <a name="tutorial-secure-sql-database-connection-with-managed-service-identity"></a>Kurz: Zabezpečení připojení ke službě SQL Database s využitím identity spravované služby
+# <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Kurz: Zabezpečení připojení ke službě Azure SQL Database ze služby App Service s využitím spravované identity
 
-[App Service ](app-service-web-overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů v Azure. Poskytuje také [identitu spravované služby](app-service-managed-service-identity.md) pro vaši aplikaci, což je řešení na klíč pro zabezpečení přístupu ke službě [Azure SQL Database](/azure/sql-database/) a dalším službám Azure. Identity spravovaných služeb ve službě App Service zvyšují zabezpečení vaší aplikace tím, že z aplikace odstraňují tajné klíče, jako jsou například přihlašovací údaje v připojovacích řetězcích. V tomto kurzu přidáte identitu spravované služby do ukázkové webové aplikace ASP.NET, kterou jste vytvořili v kurzu [Vytvoření aplikace ASP.NET se službou SQL Database v Azure](app-service-web-tutorial-dotnet-sqldatabase.md). Až budete hotovi, vaše ukázková aplikace se bezpečně připojí ke službě SQL Database bez potřeby uživatelského jména a hesla.
+[App Service ](app-service-web-overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů v Azure. Poskytuje také [spravovanou identitu](app-service-managed-service-identity.md) pro vaši aplikaci, což je řešení na klíč pro zabezpečení přístupu ke službě [Azure SQL Database](/azure/sql-database/) a dalším službám Azure. Spravované identity ve službě App Service zvyšují zabezpečení vaší aplikace tím, že z aplikace odstraňují tajné kódy, jako jsou přihlašovací údaje v připojovacích řetězcích. V tomto kurzu přidáte spravovanou identitu do ukázkové webové aplikace ASP.NET, kterou jste vytvořili v článku [Kurz: Vytvoření aplikace ASP.NET se službou SQL Database v Azure](app-service-web-tutorial-dotnet-sqldatabase.md). Až budete hotovi, vaše ukázková aplikace se bezpečně připojí ke službě SQL Database bez potřeby uživatelského jména a hesla.
 
 Naučíte se:
 
 > [!div class="checklist"]
-> * Povolení identity spravované služby
-> * Udělení přístupu k identitě služby službě SQL Database
-> * Konfigurace kódu aplikace tak, aby k ověřování ve službě SQL Database používala ověřování Azure Active Directory
-> * Udělení minimálních oprávnění ve službě SQL Database identitě služby
+> * Povolit spravované identity
+> * Udělit přístup ke spravované identitě službě SQL Database
+> * Nakonfigurovat kód aplikace tak, aby k ověřování ve službě SQL Database používala ověřování Azure Active Directory
+> * Udělit minimální oprávnění ke spravované identitě ve službě SQL Database
 
 > [!NOTE]
 > Ověřování pomocí Azure Active Directory se _liší_ od [integrovaného ověřování systému Windows](/previous-versions/windows/it-pro/windows-server-2003/cc758557(v=ws.10)) v místní službě Active Directory (služba AD DS). Služba AD DS a Azure Active Directory využívají k ověřování zcela odlišné protokoly. Další informace najdete v tématu popisujícím [rozdíly mezi službou AD DS Windows Serveru a Azure AD](../active-directory/fundamentals/understand-azure-identity-solutions.md#the-difference-between-windows-server-ad-ds-and-azure-ad).
@@ -46,9 +46,9 @@ Tento článek pokračuje tam, kde jste přestali v kurzu [Vytvoření aplikace 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="enable-managed-service-identity"></a>Povolení identity spravované služby
+## <a name="enable-managed-identities"></a>Povolení spravovaných identit
 
-Pokud chcete povolit identitu služby pro vaši aplikaci Azure, použijte příkaz [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) ve službě Cloud Shell. V následujícím příkazu nahraďte *\<app name>* názvem aplikace.
+K povolení spravované identity u aplikace Azure použijte příkaz [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) v prostředí Cloud Shell. V následujícím příkazu nahraďte *\<app name>* názvem aplikace.
 
 ```azurecli-interactive
 az webapp identity assign --resource-group myResourceGroup --name <app name>
@@ -73,13 +73,13 @@ az ad sp show --id <principalid>
 
 ## <a name="grant-database-access-to-identity"></a>Udělení přístupu k databázi identitě
 
-Dále identitě služby vaší aplikace udělíte přístup k databázi pomocí příkazu [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin_create) ve službě Cloud Shell. V následujícím příkazu nahraďte *\<server_name>* názvem serveru a <principalid_from_last_step> za ID instančního objektu z předchozího kroku. Místo *\<admin_user>* zadejte jméno správce.
+Dále spravované identitě vaší aplikace udělíte přístup k databázi pomocí příkazu [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin_create) v prostředí Cloud Shell. V následujícím příkazu nahraďte *\<server_name>* názvem serveru a <principalid_from_last_step> za ID instančního objektu z předchozího kroku. Místo *\<admin_user>* zadejte jméno správce.
 
 ```azurecli-interactive
 az sql server ad-admin create --resource-group myResourceGroup --server-name <server_name> --display-name <admin_user> --object-id <principalid_from_last_step>
 ```
 
-Identita spravované služby má teď přístup k vašemu serveru služby Azure SQL Database.
+Spravovaná identita má teď přístup k vašemu serveru služby Azure SQL Database.
 
 ## <a name="modify-connection-string"></a>Úprava připojovacího řetězce
 
@@ -119,7 +119,7 @@ public MyDatabaseContext(SqlConnection conn) : base(conn, true)
 }
 ```
 
-Tento konstruktor nakonfiguruje vlastní objekt SqlConnection tak, aby používal přístupový token pro službu Azure SQL Database ze služby App Service. Pomocí přístupového tokenu se vaše aplikace App Service ověří ve službě Azure SQL Database s použitím svojí identity spravované služby. Další informace najdete v tématu popisujícím [získání tokenů pro prostředky Azure](app-service-managed-service-identity.md#obtaining-tokens-for-azure-resources). Příkaz `if` umožňuje pokračovat v místním testováním aplikace s místní databází.
+Tento konstruktor nakonfiguruje vlastní objekt SqlConnection tak, aby používal přístupový token pro službu Azure SQL Database ze služby App Service. S přístupovým tokenem se vaše aplikace App Service ověří ve službě Azure SQL Database pomocí své spravované identity. Další informace najdete v tématu popisujícím [získání tokenů pro prostředky Azure](app-service-managed-service-identity.md#obtaining-tokens-for-azure-resources). Příkaz `if` umožňuje pokračovat v místním testováním aplikace s místní databází.
 
 > [!NOTE]
 > `SqlConnection.AccessToken` se aktuálně podporuje pouze v rozhraní .NET Framework 4.6 a novějším, nikoli v [.NET Core](https://www.microsoft.com/net/learn/get-started/windows).
@@ -141,7 +141,7 @@ V **Průzkumníku řešení** klikněte pravým tlačítkem na projekt **DotNetA
 
 ![Publikování z Průzkumníka řešení](./media/app-service-web-tutorial-dotnet-sqldatabase/solution-explorer-publish.png)
 
-Na stránce publikování klikněte na **Publikovat**. Pokud se na nové webové stránce zobrazí seznam úkolů, vaše aplikace se připojuje k databázi s použitím identity spravované služby.
+Na stránce publikování klikněte na **Publikovat**. Pokud se na nové webové stránce zobrazí seznam úkolů, připojuje se vaše aplikace k databázi pomocí spravované identity.
 
 ![Webová aplikace Azure po migraci Code First](./media/app-service-web-tutorial-dotnet-sqldatabase/this-one-is-done.png)
 
@@ -151,11 +151,11 @@ Teď byste měli mít možnost upravovat seznam úkolu stejně jako předtím.
 
 ## <a name="grant-minimal-privileges-to-identity"></a>Udělení minimálních oprávnění identitě
 
-Během dřívějších kroků jste si pravděpodobně všimli, že je vaše identita spravované služby připojená k SQL Serveru jako správce Azure AD. Pokud chcete identitě spravované služby udělit minimální oprávnění, musíte se přihlásit k serveru služby Azure SQL Database jako správce Azure AD a pak přidat skupinu Azure Active Directory, která obsahuje identitu služby. 
+V předchozích krocích jste si pravděpodobně všimli, že je vaše spravovaná identita připojená k SQL Serveru jako správce Azure AD. Pokud chcete spravované identitě udělit minimální oprávnění, musíte se přihlásit k serveru služby Azure SQL Database jako správce Azure AD a pak přidat skupinu Azure Active Directory, která obsahuje tuto spravovanou identitu. 
 
-### <a name="add-managed-service-identity-to-an-azure-active-directory-group"></a>Přidání identity spravované služby do skupiny Azure Active Directory
+### <a name="add-managed-identity-to-an-azure-active-directory-group"></a>Přidání spravované identity do skupiny Azure Active Directory
 
-Ve službě Cloud Shell přidejte identitu spravované služby pro vaši aplikaci do nové skupiny Azure Active Directory _myAzureSQLDBAccessGroup_, jak je znázorněno v následujícím skriptu:
+V prostředí Cloud Shell přidejte spravovanou identitu vaší aplikace do nové skupiny Azure Active Directory s názvem _myAzureSQLDBAccessGroup_, jak je znázorněno v následujícím skriptu:
 
 ```azurecli-interactive
 groupid=$(az ad group create --display-name myAzureSQLDBAccessGroup --mail-nickname myAzureSQLDBAccessGroup --query objectId --output tsv)
@@ -168,7 +168,7 @@ Pokud chcete zobrazit úplný výstup JSON pro jednotlivé příkazy, vynechte p
 
 ### <a name="reconfigure-azure-ad-administrator"></a>Překonfigurování správce Azure AD
 
-Dříve jste přiřadili identitu spravované služby jako správce Azure AD pro vaši službu SQL Database. Tuto identitu nemůžete použít k interaktivnímu přihlášení (pro přidání uživatelů databáze), takže musíte použít skutečného uživatele Azure AD. Pokud chcete přidat uživatele Azure AD, postupujte podle kroků uvedených v tématu popisujícím [zřízení správce Azure Active Directory pro server služby Azure SQL Database](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server). 
+Dříve jste přiřadili spravovanou identitu jako správce Azure AD pro vaši službu SQL Database. Tuto identitu nemůžete použít k interaktivnímu přihlášení (pro přidání uživatelů databáze), takže musíte použít skutečného uživatele Azure AD. Pokud chcete přidat uživatele Azure AD, postupujte podle kroků uvedených v tématu popisujícím [zřízení správce Azure Active Directory pro server služby Azure SQL Database](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server). 
 
 ### <a name="grant-permissions-to-azure-active-directory-group"></a>Udělení oprávnění skupině Azure Active Directory
 
@@ -204,10 +204,10 @@ GO
 Naučili jste se:
 
 > [!div class="checklist"]
-> * Povolení identity spravované služby
-> * Udělení přístupu k identitě služby službě SQL Database
-> * Konfigurace kódu aplikace tak, aby k ověřování ve službě SQL Database používala ověřování Azure Active Directory
-> * Udělení minimálních oprávnění ve službě SQL Database identitě služby
+> * Povolit spravované identity
+> * Udělit přístup ke spravované identitě službě SQL Database
+> * Nakonfigurovat kód aplikace tak, aby k ověřování ve službě SQL Database používala ověřování Azure Active Directory
+> * Udělit minimální oprávnění ke spravované identitě ve službě SQL Database
 
 V dalším kurzu se dozvíte, jak namapovat vlastní název DNS na webovou aplikaci.
 

@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 7c2e67605cd2489f2c8d9da5ac80386056464afa
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: f45cb6a47756fae7b75d8c3df80a0bc754742063
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42815109"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298995"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Vyhledání a diagnostika výjimek za běhu pomocí Azure Application Insights
 
@@ -101,6 +101,15 @@ Všechna data shromážděná pomocí Application Insights jsou uložená ve slu
     ![Kód](media/app-insights-tutorial-runtime-exceptions/codelens.png)
 
 9. Kliknutím na **Analyzovat dopad** otevřete analýzu Application Insights Analytics.  Otevře se s několika dotazy, které poskytují podrobné informace o neúspěšných požadavcích, například počet ovlivněných uživatelů, prohlížeče a oblasti.<br><br>![Analýzy](media/app-insights-tutorial-runtime-exceptions/analytics.png)<br>
+
+## <a name="add-work-item"></a>Přidání pracovní položky
+Pokud propojíte Application Insights se sledovacím systémem, jako je Azure DevOps nebo GitHub, můžete pracovní položky vytvářet přímo z Application Insights.
+
+1. Vraťte se na panel **Vlastnosti výjimky** ve službě Application Insights.
+2. Klikněte na **Nová pracovní položka**.
+3. Otevře se panel **Nová pracovní položka** s předvyplněnými podrobnostmi o výjimce.  Před uložením můžete doplnit další údaje.
+
+    ![Nová pracovní položka](media/app-insights-tutorial-runtime-exceptions/new-work-item.png)
 
 ## <a name="next-steps"></a>Další kroky
 Nyní, když jste se naučili, jak identifikovat výjimky za běhu, můžete přejít k dalšímu kurzu, ve kterém zjistíte, jak identifikovat a diagnostikovat potíže s výkonem.

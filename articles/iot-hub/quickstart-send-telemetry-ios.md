@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/20/2018
 ms.author: kgremban
-ms.openlocfilehash: dbc1cc4a72d0346c92d506358c39a66a4d780b32
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: aecb9a1819060e0da6338e8e16bf681fad42dd22
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38309741"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44161913"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>Rychlý start: Odesílání telemetrických dat ze zařízení do centra IoT (iOS)
 
@@ -33,16 +33,10 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 - Stažení vzorového kódu z [ukázek Azure](https://github.com/Azure-Samples/azure-iot-samples-ios/archive/master.zip). 
 - Nejnovější verze [XCode](https://developer.apple.com/xcode/) používající nejnovější verzi sady SDK pro iOS. Tento rychlý start byl testován s XCode 9.3 a iOS 11.3.
 - Nejnovější verze [CocoaPods](https://guides.cocoapods.org/using/getting-started.html).
-- Nástroj příkazového řádku iothub-explorer, který čte telemetrická data ze služby IoT Hub. Pokud ho chcete nainstalovat, nainstalujte nejprve [Node.js](https://nodejs.org) verze 4.x.x nebo novější a pak spusťte následující příkaz: 
-
-   ```sh
-   sudo npm install -g iothub-explorer
-   ```
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 [!INCLUDE [iot-hub-quickstarts-create-hub](../../includes/iot-hub-quickstarts-create-hub.md)]
-
 
 ## <a name="register-a-device"></a>Registrování zařízení
 
@@ -64,14 +58,6 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
    ```
 
    Poznamenejte si připojovací řetězec zařízení, který vypadá nějak takto: `Hostname=...=`. Tuto hodnotu použijete později v tomto článku.
-
-1. Potřebujete také _připojovací řetězec služby_, který back-endovým aplikacím umožní připojení k vašemu centru IoT a načtení zpráv ve směru zařízení-cloud. Následující příkaz načte připojovací řetězec služby pro vaše centrum IoT:
-
-   ```azurecli-interactive
-   az iot hub show-connection-string --hub-name {YourIoTHubName} --output table
-   ```
-
-   Poznamenejte si připojovací řetězec služby, který vypadá nějak takto: `Hostname=...=`. Tuto hodnotu použijete později v tomto článku.
 
 ## <a name="send-simulated-telemetry"></a>Odesílání simulovaných telemetrických dat
 
@@ -119,19 +105,19 @@ Následující snímek obrazovky ukazuje příklad výstupu, zatímco aplikace o
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Čtení telemetrických dat z centra
 
-Ukázková aplikace, kterou jste spustili v emulátoru XCode, ukazuje data o zprávách odeslaných ze zařízení. Můžete zobrazit také přijatá data procházející přes vaše centrum IoT. Nástroj příkazového řádku `iothub-explorer` se připojí ke koncovému bodu **Events** (Události) na straně služby ve vaší službě IoT Hub. 
+Ukázková aplikace, kterou jste spustili v emulátoru XCode, ukazuje data o zprávách odeslaných ze zařízení. Můžete zobrazit také přijatá data procházející přes vaše centrum IoT. Rozšíření rozhraní příkazového řádku IoT Hub se může připojit ke koncovému bodu **Události** na straně služby v IoT Hubu. Toto rozšíření přijímá zprávy ve směru zařízení-cloud odesílané ze simulovaného zařízení. Back-endová aplikace služby IoT Hub se obvykle spouští v cloudu, aby mohla přijímat a zpracovávat zprávy typu zařízení-cloud.
 
-Otevřete nové okno terminálu. Spusťte následující příkaz, ve kterém nahraďte {your hub service connection string} připojovacím řetězcem služby, který jste získali na začátku tohoto článku:
+Spusťte následující příkazy Azure CLI a `{YourIoTHubName}` nahraďte názvem IoT Hubu:
 
-```sh
-iothub-explorer monitor-events myiOSdevice --login "{your hub service connection string}"
+```azurecli-interactive
+az iot hub monitor-events --device-id myiOSdevice --hub-name {YourIoTHubName}
 ```
+
+Následující snímek obrazovky ukazuje výstup, když rozšíření přijímá telemetrická data odesílaná simulovaným zařízením do centra:
 
 Následující snímek obrazovky ukazuje typ telemetrických dat, která se zobrazí v okně terminálu:
 
 ![Zobrazení telemetrických dat](media/quickstart-send-telemetry-ios/view-telemetry.png)
-
-Pokud při spuštění příkazu iothub-explorer dojde k chybě, pečlivě zkontrolujte, že používáte *připojovací řetězec služby* pro vaše centrum IoT, a ne *připojovací řetězec zařízení* pro vaše zařízení IoT. Oba připojovací řetězce začínají na **Hostname={iothubname}**, ale připojovací řetězec služby obsahuje vlastnost **SharedAccessKeyName**, zatímco připojovací řetězec zařízení obsahuje **DeviceID**. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 49fa4cf9b24c432b0956f930a1429e1cdf827f1b
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 7451d6ade7f8b042a68f456e604e2919cacab0a5
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34304874"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378427"
 ---
 # <a name="quickstart-create-a-public-basic-load-balancer-by-using-the-azure-portal"></a>Rychlý start: Vytvoření veřejného Load Balanceru úrovně Basic pomocí webu Azure Portal
 
@@ -36,7 +36,7 @@ U všech úloh v tomto rychlém startu je nutné být přihlášený k webu [Azu
 
 ## <a name="create-a-basic-load-balancer"></a>Vytvoření Load Balanceru úrovně Basic
 
-V této části pomocí webu Azure Portal vytvoříte veřejný Load Balancer úrovně Basic. Když pomocí portálu vytvoříte veřejnou IP adresu a prostředek nástroje pro vyrovnávání zatížení, veřejná IP adresa se automaticky nakonfiguruje jako front-end nástroje pro vyrovnávání zatížení. Název tohoto front-endu je **LoadBalancerFrontend**.
+V této části pomocí webu Azure Portal vytvoříte veřejný Load Balancer úrovně Basic. Když pomocí portálu vytvoříte veřejnou IP adresu a prostředek nástroje pro vyrovnávání zatížení, veřejná IP adresa se automaticky nakonfiguruje jako front-end nástroje pro vyrovnávání zatížení. Název front-endu je **myLoadBalancer**.
 
 1. V levém horním rohu webu Azure Portal klikněte na **Vytvořit prostředek** > **Sítě** > **Nástroj pro vyrovnávání zatížení**.
 2. Do podokna **Nástroj pro vyrovnávání zatížení** zadejte tyto hodnoty:
@@ -198,4 +198,4 @@ Pokud už je nepotřebujete, můžete skupinu prostředků, nástroj pro vyrovn�
 V tomto rychlém startu jste vytvořili skupinu prostředků, síťové prostředky a back-end servery. Pomocí těchto prostředků jste pak vytvořili službu Load Balancer úrovně Basic. Chcete-li zjistit další informace o službě Azure Load Balancer, přejděte ke kurzům pro Azure Load Balancer.
 
 > [!div class="nextstepaction"]
-> [Kurzy služby Azure Load Balancer](tutorial-load-balancer-basic-internal-portal.md)
+> [Kurzy o službě Azure Load Balancer](tutorial-load-balancer-basic-internal-portal.md)

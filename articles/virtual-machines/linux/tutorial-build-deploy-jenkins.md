@@ -1,5 +1,5 @@
 ---
-title: Kurz – CI/CD z Jenkins na virtuální počítače Azure pomocí služby Team Services | Microsoft Docs
+title: Kurz – CI/CD z Jenkins na virtuální počítače Azure pomocí služby Azure DevOps Services | Microsoft Docs
 description: V tomto kurzu se naučíte, jak nastavit kontinuální integraci (CI) a průběžné nasazování (CD) aplikace Node.js pomocí Jenkins na virtuální počítače Azure ze správy vydaných verzí v produktech Visual Studio Team Services nebo Microsoft Team Foundation Server.
 author: tomarcher
 manager: jpconnock
@@ -13,38 +13,40 @@ ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: d3a4a81f60f4e70c2c7576c3176e2b4d6de08d04
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: cfe67fbed61b4af9b4a4f5b490397ca1a6e1d752
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390591"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299487"
 ---
-# <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-visual-studio-team-services"></a>Kurz: Nasazení aplikace na linuxové virtuální počítače v Azure pomocí Jenkins a Visual Studio Team Services
+# <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Kurz: Nasazení aplikace na linuxové virtuální počítače v Azure pomocí Jenkins a Azure DevOps Services
 
-Kontinuální integrace (CI) a průběžné nasazování (CD) tvoří kanál, s jehož pomocí můžete sestavovat, vydávat a nasazovat kód. Visual Studio Team Services poskytuje kompletní plnohodnotnou sadu nástrojů pro automatizaci CI/CD umožňující nasazení do Azure. Jenkins je populární serverový nástroj CI/CD od jiného výrobce, který rovněž nabízí automatizaci CI/CD. Kombinací produktů Team Services a Jenkins můžete přizpůsobit způsob, jakým dodáváte cloudovou aplikaci nebo službu.
+Kontinuální integrace (CI) a průběžné nasazování (CD) tvoří kanál, s jehož pomocí můžete sestavovat, vydávat a nasazovat kód. Azure DevOps Services poskytuje kompletní plnohodnotnou sadu nástrojů pro automatizaci CI/CD umožňující nasazení do Azure. Jenkins je populární serverový nástroj CI/CD od jiného výrobce, který rovněž nabízí automatizaci CI/CD. Kombinací produktů Azure DevOps Services a Jenkins můžete přizpůsobit způsob, jakým dodáváte cloudovou aplikaci nebo službu.
 
-V tomto kurzu použijete Jenkins k sestavení webové aplikace Node.js. Pak ji přes Team Services nebo Team Foundation Server nasadíte do [skupiny nasazení](https://www.visualstudio.com/docs/build/concepts/definitions/release/deployment-groups/), která obsahuje linuxové virtuální počítače. Získáte informace o těchto tématech:
+V tomto kurzu použijete Jenkins k sestavení webové aplikace Node.js. Pomocí Azure DevOps ji pak nasadíte
+
+do [skupiny nasazení](https://docs.microsoft.com/en-us/azure/devops/pipelines/release/deployment-groups/index?view=vsts), která obsahuje linuxové virtuální počítače. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Získání ukázkové aplikace
 > * Konfigurace modulů plug-in Jenkins
 > * Konfigurace projektu Jenkins Freestyle pro Node.js
-> * Konfigurace Jenkins pro integraci se službou Team Services
+> * Konfigurace Jenkins pro integraci Azure DevOps Services
 > * Vytvoření koncového bodu služby Jenkins
 > * Vytvoření skupiny nasazení pro virtuální počítače Azure
-> * Vytvoření definice verze Team Services
+> * Vytvoření kanálu verze Azure Pipelines
 > * Ruční nasazení nebo nasazení aktivované přes CI
 
 ## <a name="before-you-begin"></a>Než začnete
 
 * Potřebujete přístup k serveru Jenkins. Pokud jste ještě nevytvořili server Jenkins, přečtěte si článek o [vytvoření hlavní databáze Jenkins ve virtuálním počítači Azure](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template). 
 
-* Přihlaste se ke svému účtu služby Team Services (**https://{váš-účet}.visualstudio.com**). 
-  Můžete získat [bezplatný účet služby Team Services](https://go.microsoft.com/fwlink/?LinkId=307137&clcid=0x409&wt.mc_id=o~msft~vscom~home-vsts-hero~27308&campaign=o~msft~vscom~home-vsts-hero~27308).
+* Přihlaste se ke své organizaci služby Azure DevOps Services (**https://{vaše organizace}.visualstudio.com**). 
+  Můžete si opatřit [bezplatnou organizaci služby Azure DevOps Services](https://go.microsoft.com/fwlink/?LinkId=307137&clcid=0x409&wt.mc_id=o~msft~vscom~home-vsts-hero~27308&campaign=o~msft~vscom~home-vsts-hero~27308).
 
   > [!NOTE]
-  > Další informace najdete v tématu o [připojení ke službě Team Services](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services).
+  > Další informace najdete v článku o [připojení ke službě Azure DevOps Services](https://docs.microsoft.com/azure/devops/organizations/projects/connect-to-projects?view=vsts).
 
 *  Potřebujete linuxový virtuální počítač jako cíl nasazení.  Další informace najdete v článku o [vytvoření a správě linuxových virtuálních počítačů pomocí rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm).
 
@@ -89,22 +91,22 @@ Nejprve musíte nakonfigurovat dva moduly plug-in Jenkins: **NodeJS** a **VS Tea
 6. Na kartě **Build** (Sestavení) vyberte **Execute shell** (Spustit prostředí) a zadáním příkazu `npm install` zajistěte aktualizaci všech závislostí.
 
 
-## <a name="configure-jenkins-for-team-services-integration"></a>Konfigurace Jenkins pro integraci se službou Team Services
+## <a name="configure-jenkins-for-azure-devops-services-integration"></a>Konfigurace Jenkins pro integraci Azure DevOps Services
 
 > [!NOTE]
-> Zajistěte, aby token PAT, který použijete v následujících krocích, obsahoval ve službě Team Services oprávnění k *vydání verze* (čtení, zápis, spuštění a správa).
+> Zajistěte, aby token PAT, který použijete v následujících krocích, obsahoval ve službě Azure DevOps Services oprávnění k *vydání verze* (čtení, zápis, spuštění a správa).
  
-1.  Vytvořte token PAT v účtu služby Team Services, pokud ho ještě nemáte. Jenkins tyto informace vyžaduje pro přístup k vašemu účtu služby Team Services. Nezapomeňte informace tohoto tokenu uložit pro nadcházející kroky této části.
+1.  Pokud token PAT ještě nemáte, vytvořte ho ve své organizaci služby Azure DevOps Services. Jenkins vyžaduje tyto údaje pro přístup k organizaci služby Azure DevOps Services. Nezapomeňte informace tohoto tokenu uložit pro nadcházející kroky této části.
   
-    Informace o vygenerován tokenu najdete v článku o [vytvoření tokenu PAT pro VSTS a TFS](https://www.visualstudio.com/docs/setup-admin/team-services/use-personal-access-tokens-to-authenticate).
+    Informace o vygenerován tokenu najdete v článku o [vytvoření tokenu PAT pro Azure DevOps Services](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=vsts).
 2. Na kartě **Post-build Actions** (Akce po sestavení) vyberte **Add post-build action** (Přidat akci po sestavení). Vyberte **Archive the artifacts** (Archivovat artefakty).
 3. Do pole **Files to archive** (Soubory k archivaci) zadejte `**/*`, čímž zahrnete všechny soubory.
 4. Pokud chcete vytvořit další akci, vyberte **Add post-build action** (Přidat akci po sestavení).
-5. Vyberte **Trigger release in TFS/Team Services** (Aktivovat vydanou verzi v TFS/Team Services). Zadejte identifikátor URI účtu služby Team Services, například **https://{název-vašeho-účtu}.visualstudio.com**.
-6. Zadejte název pro **Team Project** (Týmový projekt).
-7. Zvolte název definice verze. (Tuto definici verze vytvoříte později ve službě Team Services.)
-8. Zvolte přihlašovací údaje pro připojení k prostředí Team Services nebo Team Foundation Serveru:
-   - Pokud používáte službu Team Services, nechejte pole **Username** (Uživatelské jméno) prázdné. 
+5. Vyberte **Trigger release in TFS/Team Services** (Aktivovat vydanou verzi v TFS/Team Services). Zadejte identifikátor URI organizace služby Azure DevOps Services, například **https://{název vaší organizace}.visualstudio.com**.
+6. Zadejte název **projektu**.
+7. Zvolte název pro kanál verze. (Tento kanál verze vytvoříte ve službě Azure DevOps Services později.)
+8. Zvolte přihlašovací údaje pro připojení k prostředí Azure DevOps Services nebo Team Foundation Server:
+   - Pokud používáte Azure DevOps Services, nechejte **Uživatelské jméno** prázdné. 
    - Pokud používáte místní verzi Team Foundation Serveru, zadejte uživatelské jméno a heslo.    
    ![Konfigurace akcí po sestavení v Jenkins](media/tutorial-build-deploy-jenkins/trigger-release-from-jenkins.png)
 5. Uložte projekt Jenkins.
@@ -112,9 +114,9 @@ Nejprve musíte nakonfigurovat dva moduly plug-in Jenkins: **NodeJS** a **VS Tea
 
 ## <a name="create-a-jenkins-service-endpoint"></a>Vytvoření koncového bodu služby Jenkins
 
-Koncový bod služby umožňuje službě Team Services připojení k Jenkins.
+Koncový bod služby umožňuje službě Azure DevOps Services připojení k Jenkins.
 
-1. Ve službě Team Services otevřete stránku **Služby**, otevřete seznam **Nový koncový bod služby** a vyberte **Jenkins**.
+1. Ve službě Azure DevOps Services otevřete stránku **Služby**, otevřete seznam **Nový koncový bod služby** a vyberte **Jenkins**.
    ![Přidání koncového bodu Jenkins](media/tutorial-build-deploy-jenkins/add-jenkins-endpoint.png)
 2. Zadejte název tohoto připojení.
 3. Zadejte adresu URL serveru Jenkins a vyberte možnost **Přijmout nedůvěryhodné certifikáty SSL**. Příklad adresy URL: **http://{vaše-adresa-URL-Jenkins}.westcentralus.cloudapp.azure.com**.
@@ -124,7 +126,7 @@ Koncový bod služby umožňuje službě Team Services připojení k Jenkins.
 
 ## <a name="create-a-deployment-group-for-azure-virtual-machines"></a>Vytvoření skupiny nasazení pro virtuální počítače Azure
 
-Potřebujete [skupinu nasazení](https://www.visualstudio.com/docs/build/concepts/definitions/release/deployment-groups/) pro registraci agenta služby Team Services, aby se definice verze dala nasadit do virtuálního počítače. Skupiny nasazení usnadňují definování logických skupin cílových počítačů pro nasazení a instalaci požadovaných agentů na jednotlivé počítače.
+[Skupinu nasazení](https://www.visualstudio.com/docs/build/concepts/definitions/release/deployment-groups/) potřebujete k registraci agenta služby Azure DevOps Services, aby se kanál verze dal nasadit do virtuálního počítače. Skupiny nasazení usnadňují definování logických skupin cílových počítačů pro nasazení a instalaci požadovaných agentů na jednotlivé počítače.
 
    > [!NOTE]
    > V následujícím postupu nainstalujte všechno, co je potřeba, a *nespouštějte skript s oprávněními sudo*.
@@ -137,15 +139,15 @@ Potřebujete [skupinu nasazení](https://www.visualstudio.com/docs/build/concept
 6. Výběrem příkazu **Zkopírovat skript do schránky** skript zkopírujte.
 7. Přihlaste se k virtuálnímu počítači cíle nasazení a spusťte tento skript. Nespouštějte skript s oprávněními sudo.
 8. Po instalaci budete vyzváni k zadání značek skupiny nasazení. Přijměte výchozí hodnoty.
-9. Ve službě Team Services vyhledejte v seznamu **Cíle** v oblasti **Skupiny nasazení** nově registrovaný virtuální počítač.
+9. Ve službě Azure DevOps Services vyhledejte v seznamu **Cíle** v oblasti **Skupiny nasazení** nově registrovaný virtuální počítač.
 
-## <a name="create-a-team-services-release-definition"></a>Vytvoření definice verze ve službě Team Services
+## <a name="create-a-azure-pipelines-release-pipeline"></a>Vytvoření kanálu verze Azure Pipelines
 
-Definice verze určuje proces, který služba Team Services používá k nasazení aplikace. V tomto příkladu spustíte skript prostředí.
+Kanál verze určuje proces, který Azure Pipelines používá k nasazení aplikace. V tomto příkladu spustíte skript prostředí.
 
-Definici verze vytvoříte ve službě Team Services takto:
+Kanál verze vytvoříte v Azure Pipelines takto:
 
-1. Otevřete kartu **Vydání** centra **Sestavení a vydání** a vyberte **Vytvořit definici verze**. 
+1. Otevřete kartu **Vydání** centra **Sestavení a vydání** a vyberte **Vytvořit kanál verze**. 
 2. Zvolte, že chcete začít **prázdným procesem** a vyberte **prázdnou** šablonu.
 3. V části **Artefakty** vyberte **+ Přidat artefakt** a jako **Typ zdroje** zvolte **Jenkins**. Vyberte připojení ke koncovému bodu služby Jenkins. Pak vyberte zdrojovou úlohu Jenkins a vyberte **Přidat**.
 4. Vyberte tři tečky vedle **Prostředí 1**. Vyberte **Přidat fázi skupiny nasazení**.
@@ -155,8 +157,8 @@ Definici verze vytvoříte ve službě Team Services takto:
 8. Do pole **Cesta ke skriptu** zadejte **$(System.DefaultWorkingDirectory)/Fabrikam-Node/deployscript.sh**.
 9. Vyberte **Upřesnit** a povolte **Zadat pracovní adresář**.
 10. Do pole **Pracovní adresář** zadejte **$(System.DefaultWorkingDirectory)/Fabrikam-Node**.
-11. Název definice verze změňte na název, který jste pro sestavení v Jenkins zadali na kartě **Post-build Actions** (Akce po sestavení). Služba Jenkins tento název vyžaduje, aby mohla při aktualizaci zdrojových artefaktů aktivovat novou vydanou verzi.
-12. Výběrem příkazů **Uložit** a **OK** definici verze uložte.
+11. Název kanálu verze změňte na název, který jste pro sestavení v Jenkins zadali na kartě **Post-build Actions** (Akce po sestavení). Služba Jenkins tento název vyžaduje, aby mohla při aktualizaci zdrojových artefaktů aktivovat novou vydanou verzi.
+12. Výběrem příkazů **Uložit** a **OK** kanál verze uložte.
 
 ## <a name="execute-manual-and-ci-triggered-deployments"></a>Ruční nasazení nebo nasazení aktivované přes CI
 
@@ -167,7 +169,7 @@ Definici verze vytvoříte ve službě Team Services takto:
 5. V prohlížeči otevřete adresu URL jednoho ze serverů, který jste přidali do skupiny nasazení. Zadejte například **http://{IP-adresa-vašeho-serveru}**.
 6. Přejděte do zdrojového úložiště Gitu a změňte text nadpisu **h1** v souboru app/views/index.jade.
 7. Potvrďte tuto změnu.
-8. Po několika minutách uvidíte na stránce **Vydání** služby Team Services nebo Team Foundation Serveru vytvořenou novou vydanou verzi. Otevřete tuto vydanou verzi a zjistěte, jestli probíhá nasazení. Blahopřejeme!
+8. Po několika minutách uvidíte novou verzi vytvořenou na stránce **Vydání** v Azure DevOps. Otevřete tuto vydanou verzi a zjistěte, jestli probíhá nasazení. Blahopřejeme!
 
 ## <a name="troubleshooting-the-jenkins-plugin"></a>Řešení potíží s modulem plug-in Jenkinse
 
@@ -175,13 +177,13 @@ Pokud v modulech plug-in Jenkinse narazíte na nějaké chyby, založte problém
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste automatizovali nasazení aplikace do Azure pomocí služby Jenkins pro sestavení a služby Team Services pro vydanou verzi. Naučili jste se tyto postupy:
+V tomto kurzu jste automatizovali nasazení aplikace do Azure pomocí služby Jenkins pro build a služby Azure DevOps Services pro verzi. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
 > * Sestavení aplikace v Jenkins
-> * Konfigurace Jenkins pro integraci se službou Team Services
+> * Konfigurace Jenkins pro integraci Azure DevOps Services
 > * Vytvoření skupiny nasazení pro virtuální počítače Azure
-> * Vytvoření definice verze, která nakonfiguruje virtuální počítače a nasadí aplikaci
+> * Vytvoření kanálu verze, který nakonfiguruje virtuální počítače a nasadí aplikaci
 
 Pokud chcete zjistit, jak nasadit sadu LAMP (Linux, Apache, MySQL a PHP), přejděte k dalšímu kurzu.
 

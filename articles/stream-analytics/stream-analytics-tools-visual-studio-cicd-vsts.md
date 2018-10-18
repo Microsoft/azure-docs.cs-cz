@@ -1,6 +1,6 @@
 ---
-title: Kurz nasazení úlohy Azure Stream Analytics s CI/CD pomocí VSTS
-description: Tento článek popisuje, jak nasadit úlohu Stream Analytics s CI/CD pomocí VSTS.
+title: Kurz nasazení úlohy Azure Stream Analytics s CI/CD pomocí Azure DevOps Services
+description: Tento článek popisuje, jak nasadit úlohu Stream Analytics s CI/CD pomocí služby Azure DevOps Services.
 services: stream-analytics
 author: su-jie
 ms.author: sujie
@@ -9,22 +9,22 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 7/10/2018
-ms.openlocfilehash: d4f1e188a1a145ba3be5fb45d2b0ea4d0bfd57a7
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: adacbaf718c5ef293b4ee3fa833083704aa41f5c
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41918185"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297936"
 ---
-# <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-vsts"></a>Kurz: Nasazení úlohy Azure Stream Analytics s CI/CD pomocí VSTS
-Tento kurz popisuje, jak nastavit kontinuální integraci a nasazení pro úlohu Azure Stream Analytics s použitím Visual Studio Team Services. 
+# <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>Kurz: Nasazení úlohy Azure Stream Analytics s CI/CD pomocí Azure Pipelines
+Tento kurz popisuje, jak nastavit kontinuální integraci a nasazení pro úlohu Azure Stream Analytics pomocí služby Azure Pipelines. 
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Přidání správy zdrojového kódu do projektu
-> * Vytvoření definice sestavení v Team Services
-> * Vytvoření definice verze v Team Services
+> * Vytvoření kanálu buildu v Azure Pipelines
+> * Vytvoření kanálu verze v Azure Pipelines
 > * Automatické nasazení a upgrade aplikace
 
 ## <a name="prerequisites"></a>Požadavky
@@ -33,7 +33,7 @@ Než začnete, ujistěte se, že jste provedli následující akce:
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Nainstalujte [Visual Studio](stream-analytics-tools-for-visual-studio-install.md) a úlohy **Vývoj pro Azure** nebo **Ukládání a zpracování dat**.
 * Vytvořte [projekt Stream Analytics v sadě Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-vs).
-* Vytvořte [účet služby Visual Studio Team Services](https://visualstudio.microsoft.com/team-services/).
+* Vytvořte organizaci [Azure DevOps](https://visualstudio.microsoft.com/team-services/).
 
 ## <a name="configure-nuget-package-dependency"></a>Nakonfigurujte závislost balíčku NuGet
 Pokud chcete provádět automatické sestavení a automatické nasazení na libovolný počítač, je potřeba použít balíček NuGet `Microsoft.Azure.StreamAnalytics.CICD`. Poskytuje nástroj MSBuild, místní spuštění a nástroje pro nasazení, které podporují kontinuální integraci a proces nasazení projektů Stream Analytics v sadě Visual Studio. Další informace obsahuje článek o [nástrojích CI/CD pro Stream Analytics](stream-analytics-tools-for-visual-studio-cicd.md).
@@ -47,34 +47,35 @@ Přidejte **packages.config** do adresáře projektu.
 </packages>
 ```
 
-## <a name="share-your-visual-studio-solution-to-a-new-team-services-git-repo"></a>Sdílení řešení sady Visual Studio do nového úložiště Team Services Git
-Zdrojové soubory své aplikace můžete sdílet do týmového projektu v Team Services, abyste mohli generovat sestavení.  
+## <a name="share-your-visual-studio-solution-to-a-new-azure-repos-git-repo"></a>Sdílení řešení sady Visual Studio do nového úložiště Gitu Azure Repos
+
+Nasdílejte zdrojové soubory své aplikace do projektu v Azure DevOps, abyste mohli generovat buildy.  
 
 1. Vytvořte pro svůj projekt nové místní úložiště Git tím, že na stavovém řádku v pravém dolním rohu sady Visual Studio vyberete **Přidat do správy zdrojového kódu** a pak **Git**. 
 
-2. V zobrazení **Synchronizace** v **Team Exploreru** vyberte v části **Nasdílet do Visual Studio Team Services** tlačítko **Publikovat úložiště Git**.
+2. V zobrazení **Synchronizace** v **Team Exploreru** vyberte v části **Doručovat do Azure DevOps Services** tlačítko **Publikovat úložiště Git**.
 
    ![Nasdílení úložiště Git](./media/stream-analytics-tools-visual-studio-cicd-vsts/publishgitrepo.png)
 
-3. Ověřte svůj e-mail a v rozevíracím seznamu **Doména Team Services** vyberte svůj účet. Zadejte název svého úložiště a vyberte **Publikovat úložiště**.
+3. Ověřte svůj e-mail a vyberte svoji organizaci v rozevíracího seznamu **Doména Azure DevOps Services**. Zadejte název svého úložiště a vyberte **Publikovat úložiště**.
 
    ![Nasdílení úložiště Git](./media/stream-analytics-tools-visual-studio-cicd-vsts/publishcode.png)
 
-    Publikováním úložiště se ve vašem účtu vytvoří nový týmový projekt se stejným názvem jako místní úložiště. Pokud chcete úložiště vytvořit v existujícím týmovém projektu, klikněte na **Upřesnit** vedle **názvu úložiště** a vyberte týmový projekt. Svůj kód můžete zobrazit v prohlížeči výběrem možnosti **Podívejte se na webu**.
+    Publikováním úložiště se ve vaší organizaci vytvoří nový projekt se stejným názvem jako místní úložiště. Pokud chcete úložiště vytvořit v existujícím projektu, klikněte na **Upřesnit** vedle **názvu úložiště** a vyberte projekt. Svůj kód můžete zobrazit v prohlížeči výběrem možnosti **Podívejte se na webu**.
  
-## <a name="configure-continuous-delivery-with-vsts"></a>Konfigurace průběžného doručování s VSTS
-Definice sestavení Team Services popisuje pracovní postup, který se skládá z řady postupně prováděných kroků sestavení. Další informace o [definicích sestavení Team Services](https://www.visualstudio.com/docs/build/define/create). 
+## <a name="configure-continuous-delivery-with-azure-devops"></a>Konfigurace průběžného doručování pomocí Azure DevOps
+Kanál buildu Azure Pipelines popisuje pracovní postup složený z postupně prováděných kroků buildu. Přečtěte si další informace o [kanálech buildu Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav). 
 
-Definice verze Team Services popisuje pracovní postup, který nasadí balíček aplikace do clusteru. Při společném použití definice sestavení a definice verze provedou celý pracovní postup od zdrojových souborů až po spuštění aplikace v clusteru. Další informace o [definicích verzí](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition) Team Services.
+Kanál verze Azure Pipelines popisuje pracovní postup, který nasadí balíček aplikace do clusteru. Při společném použití provedou kanál buildu a kanál verze celý pracovní postup od zdrojových souborů až po spuštění aplikace v clusteru. Přečtěte si další informace o [kanálech verze](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts) Azure Pipelines.
 
-### <a name="create-a-build-definition"></a>Vytvoření definice sestavení
-Otevřete webový prohlížeč a přejděte do týmového projektu, který jste právě vytvořili ve službě [Visual Studio Team Services](https://app.vsaex.visualstudio.com/). 
+### <a name="create-a-build-pipeline"></a>Vytvoření kanálu buildu
+Otevřete webový prohlížeč a přejděte na projekt, který jste právě vytvořili v [Azure DevOps](https://app.vsaex.visualstudio.com/). 
 
-1. Na kartě **Sestavení a vydání** vyberte **Sestavení** a nakonec **+Nové**.  Vyberte **VSTS Git** a **Pokračovat**.
+1. Na kartě **Sestavení a vydání** vyberte **Sestavení** a nakonec **+Nové**.  Vyberte **Git Azure DevOps Services** a **Pokračovat**.
     
     ![Výběr zdroje](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-select-source.png)
 
-2. V části **Vyberte šablonu** kliknutím na **Prázdný proces** začněte od prázdné definice.
+2. V oblasti **Vybrat šablonu** klikněte na **Prázdný proces**. Začnete tak s prázdným kanálem.
     
     ![Výběr šablony sestavení](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-select-template.png)
 
@@ -82,7 +83,7 @@ Otevřete webový prohlížeč a přejděte do týmového projektu, který jste 
     
     ![Stav triggeru](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-trigger.png)
 
-4. Sestavení se aktivují také pro nasdílení změn nebo vrácení se změnami. Pokud chcete zkontrolovat průběh sestavení, přepněte na kartu **Sestavení**.  Jakmile ověříte, že se sestavení úspěšně provádí, je třeba určit definici verze, která nasadí vaši aplikaci do clusteru. Klikněte pravým tlačítkem na tři tečky vedle definice sestavení a vyberte **Upravit**.
+4. Sestavení se aktivují také pro nasdílení změn nebo vrácení se změnami. Pokud chcete zkontrolovat průběh sestavení, přepněte na kartu **Sestavení**.  Jakmile ověříte, že se build úspěšně spouští, musíte definovat kanál verze, který nasadí vaši aplikaci do clusteru. Klikněte pravým tlačítkem na tři tečky vedle kanálu buildu a vyberte **Upravit**.
 
 5.  V části **Úlohy** zadejte do pole **Fronta agenta** „Hosted“.
     
@@ -125,17 +126,17 @@ Otevřete webový prohlížeč a přejděte do týmového projektu, který jste 
     
     ![Nastavení vlastností](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-deploy-2.png)
 
-12. Kliknutím na **Uložit a zařadit do fronty** otestujte definici sestavení.
+12. Kliknutím na **Uložit a zařadit do fronty** kanál buildu otestujte.
     
     ![Nastavení přepsání parametrů](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-save-queue.png)
 
 ### <a name="failed-build-process"></a>Selhání procesu sestavení
-Pokud nepřepíšete parametry šablony v úloze **nasazení skupiny prostředků Azure** vaší definice sestavení, může dojít k chybám parametrů nasazení s hodnotou null. Vraťte se k definici sestavení a přepište parametry null, abyste chybu vyřešili.
+Pokud nepřepíšete parametry šablony v úloze **nasazení skupiny prostředků Azure** kanálu buildu, může dojít k chybám kvůli parametrům nasazení s hodnotou null. Tuto chybu opravíte tak, že se vrátíte ke kanálu buildu a přepíšete parametry s hodnotou null.
 
    ![Selhání procesu sestavení](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-process-failed.png)
 
 ### <a name="commit-and-push-changes-to-trigger-a-release"></a>Potvrzení a nasdílení změn s cílem aktivace vydání
-Ověřte fungování kanálu průběžné integrace tím, že do Team Services vrátíte nějaké změny kódu.    
+Ověřte fungování kanálu kontinuální integrace tím, že do Azure DevOps vrátíte se změnami nějaký kód.    
 
 Při psaní kódu sada Visual Studio automaticky sleduje provedené změny. Potvrďte změny do svého místního úložiště Git výběrem ikony probíhajících změn na stavovém řádku vpravo dole.
 
@@ -143,11 +144,11 @@ Při psaní kódu sada Visual Studio automaticky sleduje provedené změny. Potv
 
     ![Potvrzení a nasdílení změn](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-push-changes.png)
 
-2. Vyberte na stavovém řádku nebo v zobrazení Synchronizace v Team Exploreru ikonu nepublikovaných změn. Vyberte **Nasdílet změny** a aktualizujte svůj kód v Team Services nebo v sadě TFS.
+2. Vyberte na stavovém řádku nebo v zobrazení Synchronizace v Team Exploreru ikonu nepublikovaných změn. Výběrem možnosti **Nasdílet změny** aktualizujte kód v Azure DevOps.
 
     ![Potvrzení a nasdílení změn](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-push-changes-2.png)
 
-Nasdílením změn do Team Services se automaticky aktivuje sestavení.  Po úspěšném dokončení definice sestavení se automaticky vytvoří vydaná verze a začne se aktualizovat aplikace v clusteru.
+Nasdílením změn do Azure DevOps Services se automaticky aktivuje build.  Po úspěšném dokončení kanálu buildu se automaticky vytvoří verze a začne se aktualizovat úloha v clusteru.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

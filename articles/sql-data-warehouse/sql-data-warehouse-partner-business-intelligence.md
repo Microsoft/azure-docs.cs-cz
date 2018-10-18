@@ -10,12 +10,12 @@ ms.component: consume
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: 36f0b1c0ac503efb13f69b489557af891e1286fa
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: d8c0effe8c23a852fb720ea263803efa5e6b15b5
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301485"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387182"
 ---
 # <a name="sql-data-warehouse-business-intelligence-partners"></a>Partneři business intelligence SQL Data Warehouse
 K vytvoření vašeho řešení začátku do konce datového skladu, vyberte z široké škály špičkové nástroje.  Tento článek se soustředí partnerských společností Microsoft s Azure SQL Data Warehouse podporuje řešení pro business intelligence (BI).
@@ -84,7 +84,7 @@ Další informace o některých z našich partnerů, naleznete v tématu [partne
 [yellowfin_datasheet]:http://www.yellowfinbi.com/Document.i4?DocumentId=877299
 
 <!--Marketplace Links -->
-[birst_marketplace]:https://azure.microsoft.com/en-gb/marketplace/partners/birst/birst/
+[birst_marketplace]:https://azure.microsoft.com/marketplace/partners/birst/birst/
 <!--[clearstory_marketplace]:-->
 <!--[dell_statistica_marketplace]:https://azure.microsoft.com/marketplace/partners/dell-software/statistica-data-miner/--> [dundas_bi_marketplace]:https://azure.microsoft.com/marketplace/partners/dundas/dundas-bi/ <!--[jinfonet_marketplace]:-->
 <!--[logianalytics_marketplace]:https://azure.microsoft.com/marketplace/partners/logi-analytics/logi-info-11/--> 

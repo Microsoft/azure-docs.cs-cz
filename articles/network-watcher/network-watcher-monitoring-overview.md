@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 31a3a0618330b74c611afcdf70560ce47eeb85e3
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 7cccb47bd7489e88649ee82c4d52c72af0d91e8e
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42022825"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44390941"
 ---
 # <a name="what-is-azure-network-watcher"></a>Co je Azure Network Watcher?
 
@@ -36,6 +36,8 @@ Koncovým bodem může být jiný virtuální počítač, plně kvalifikovaný n
 Pokud se koncový bod stane nedostupným, řešení potíží s připojením vám poskytne informace o důvodu. Mezi možné důvody patří problém s překladem názvů DNS, procesor, paměť nebo brána firewall v operačním systému virtuálního počítače, typ segmentu směrování vlastní trasy, pravidlo zabezpečení pro virtuální počítač nebo podsíť odchozího připojení. Další informace o [pravidlech zabezpečení](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#security-rules) a [typech segmentů směrování tras](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) v Azure.
 
 Monitorování připojení také poskytuje minimální, průměrnou a maximální zjištěnou latenci v průběhu času. Po zjištění latence připojení můžete zjistit, že se latence dá snížit přesunem vašich prostředků Azure do jiných oblastí Azure. Další informace o určování [relativních latencí mezi oblastmi Azure a poskytovateli internetových služeb](#determine-relative-latencies-between-azure-regions-and-internet-service-providers) a způsobu monitorování komunikace mezi virtuálním počítačem a koncovým bodem pomocí [monitorování připojení](connection-monitor.md). Pokud místo monitorování připojení v průběhu času chcete otestovat připojení k určitému bodu v čase, můžete podobným způsobem jako v případě monitorování připojení použít funkci [řešení potíží s připojením](#connection-troubleshoot).
+
+Network Performance Monitor je cloudové hybridní řešení pro monitorování sítě, které vám pomáhá monitorovat výkon sítě mezi různými body vaší síťové infrastruktury. Umožňuje rovněž monitorovat síťové připojení ke službě a koncovým bodům aplikace a monitorovat výkon Azure ExpressRoute. Network Performance Monitor zjišťuje problémy se sítí, jako je ztráta přenosů, chyby směrování a problémy, které konvenční metody monitorování sítě nedokážou odhalit. Toto řešení generuje výstrahy a upozorní vás, když u síťové linky dojde k překročení prahové hodnoty. Zajišťuje také včasné zjištění problémů s výkonem sítě a lokalizuje příčinu problému na konkrétní segment sítě nebo zařízení. Přečtěte si další informace o řešení [Network Performance Monitor](../log-analytics/log-analytics-network-performance-monitor.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
 ### <a name="view-resources-in-a-virtual-network-and-their-relationships"></a>Zobrazení prostředků ve virtuální síti a jejich vztahů
 

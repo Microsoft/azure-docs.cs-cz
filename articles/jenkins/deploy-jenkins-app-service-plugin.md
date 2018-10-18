@@ -8,22 +8,22 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: b364dfb033c3af640892bb305d7df3c916dd3fef
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a6ad40f90e12bbf4dd85c3cbd22839d39a734ca1
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43095763"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391161"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Nasazení do Azure App Service s využitím modulu plug-in Jenkinse 
 
 K nasazení webové aplikace v Javě do Azure můžete použít Azure CLI v [kanálu Jenkinse](/azure/jenkins/execute-cli-jenkins-pipeline) nebo [modul plug-in Jenkinse pro Azure App Service](https://plugins.jenkins.io/azure-app-service). Modul plug-in Jenkinse verze 1.0 podporuje průběžné nasazování s využitím funkce Web Apps v Azure App Service přes:
-* Git nebo protokol FTP.
+* Nahrání souboru.
 * Docker pro webové aplikace v Linuxu.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
-> * Konfigurace Jenkinse pro nasazení do funkce Web Apps přes Git nebo protokol FTP.
+> * Konfigurace Jenkinse pro nasazení webových aplikací nahráním souborů
 > * Konfigurace Jenkinse pro nasazení do funkce Web App for Containers.
 
 ## <a name="create-and-configure-a-jenkins-instance"></a>Vytvoření a konfigurace instance Jenkinse
@@ -37,7 +37,7 @@ Pokud ještě nemáte hlavní server Jenkinse, začněte [šablonou řešení](i
 
 Pomocí modulu plug-in Jenkinse můžete nasadit webovou aplikaci v jakémkoli jazyce, který podporuje funkce Web Apps, jako je například jazyk C#, PHP, Java a Node.js. V tomto kurzu použijeme [jednoduchou webovou aplikaci v Javě pro Azure](https://github.com/azure-devops/javawebappsample). Pokud chcete vytvořit fork úložiště do svého vlastního účtu GitHub, vyberte tlačítko **Fork** (Vytvořit fork) v pravém horním rohu rozhraní GitHubu.  
 > [!NOTE]
-> K sestavení projektu v Javě se vyžaduje sada Java JDK a Maven. Nainstalujte tyto komponenty na hlavní server Jenkinse nebo do agenta virtuálního počítače, pokud pro účely průběžné integrace využíváte agenta. 
+> K sestavení projektu v Javě se vyžaduje sada Java JDK a Maven. Nainstalujte tyto komponenty na hlavní server Jenkinse nebo do agenta virtuálního počítače, pokud pro účely průběžné integrace využíváte agenta. Pokud nasazujete aplikaci Java SE, je na sestavovacím serveru potřebný také ZIP.
 
 Pokud chcete tyto komponenty nainstalovat, přihlaste se přes SSH k instanci Jenkinse a spusťte následující příkazy:
 
@@ -60,7 +60,11 @@ K nasazení do Azure budete potřebovat instanční objekt Azure.
 
 ## <a name="configure-jenkins-to-deploy-web-apps-by-uploading-files"></a>Konfigurace Jenkinse pro nasazení do funkce Web Apps nahráním souborů
 
-Pokud chcete svůj projekt nasadit do funkce Web Apps, můžete pomocí Gitu nebo protokolu FTP nahrát artefakty sestavení (například soubor WAR v Javě).
+Pokud chcete projekt nasadit do Web Apps, můžete nahráním souborů nahrát artefakty buildu. Azure App Service podporuje několik možností nasazení. Modul plug-in Jenkins pro Azure App Service to zjednodušuje a odvozuje možnost nasazení na základě typu souboru. 
+
+* Pro aplikace Java EE se používá [nasazení přes WAR](/azure/app-service/app-service-deploy-zip#deploy-war-file).
+* Pro aplikace Java SE se používá [nasazení přes ZIP](/azure/app-service/app-service-deploy-zip#deploy-zip-file).
+* Pro jiné jazyky se používá [nasazení přes Git](/azure/app-service/app-service-deploy-local-git).
 
 Před nastavením úlohy v Jenkinsu potřebujete plán služby Azure App Service a webovou aplikaci, ve kterých se aplikace v Javě spustí.
 
@@ -127,7 +131,7 @@ Modul plug-in Jenkinse pro Azure App Service je připravený k použití v kaná
 
 Web Apps on Linux podporuje nasazení s využitím Dockeru. Pokud chcete k nasazení webové aplikace využít Docker,je potřeba určit soubor Dockerfile, který zabalí vaši webovou aplikaci s modulem runtime služby do image Dockeru. Modul plug-in Jenkinse pak image sestaví, odešle do registru Dockeru a nasadí do vaší webové aplikace.
 
-Web App on Linux podporuje také tradiční způsoby nasazení, jako je Git a protokol FTP, ale pouze pro integrované jazyky (.NET Core, Node.js, PHP a Ruby). V případě ostatních jazyků je potřeba kód aplikace a modul runtime služby zabalit do image Dockeru a pomocí Dockeru ji nasadit.
+Web App on Linux podporuje také tradiční způsoby nasazení, jako je Git a nahrání souborů, ale pouze pro integrované jazyky (.NET Core, Node.js, PHP a Ruby). V případě ostatních jazyků je potřeba kód aplikace a modul runtime služby zabalit do image Dockeru a pomocí Dockeru ji nasadit.
 
 Před nastavením úlohy v Jenkinsu budete potřebovat webovou aplikaci v Linuxu. Budete potřebovat také registr kontejneru, ve kterém se budou ukládat a spravovat vaše privátní image kontejneru Dockeru. K vytvoření registru kontejneru můžete použít DockerHub. V tomto příkladu použijeme službu Azure Container Registry.
 
@@ -232,5 +236,5 @@ V tomto kurzu jste s využitím modulu plug-in Jenkinse pro Azure App Service pr
 Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
-> * Konfigurace Jenkinse pro nasazení do Azure App Service přes protokol FTP 
+> * Konfigurace Jenkinse pro nasazení Azure App Service nahráním souborů 
 > * Konfigurace Jenkinse pro nasazení do funkce Web App for Containers 

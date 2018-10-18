@@ -1,5 +1,5 @@
 ---
-title: Přehled Web Apps | Microsoft Docs
+title: Přehled Web Apps | Dokumentace Microsoftu
 description: Zjistěte, jak služba Azure App Service pomáhá nasazovat, hostovat a používat webové aplikace
 services: app-service\web
 documentationcenter: ''
@@ -15,18 +15,18 @@ ms.topic: overview
 ms.date: 01/04/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 68c3306656ade6ce95a3f18fec19de32bd9cf319
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: c8d72e473831da13e05598256bcb24660003368a
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39170833"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300779"
 ---
 # <a name="web-apps-overview"></a>Přehled Web Apps
 
 *Azure App Service Web Apps* (nebo jenom Web Apps) je služba pro hostování webových aplikací, rozhraní REST API a mobilních back-endů. Můžete vyvíjet ve svém oblíbeném jazyce, ať už jde o .NET, .NET Core, Javu, Ruby, Node.js, PHP nebo Python. Aplikace se snadno spouštějí a škálují v prostředích založených na Windows. Informace o prostředích založených na Linuxu najdete v tématu [App Service v Linuxu](containers/app-service-linux-intro.md). 
 
-Služba Web Apps nejen že do vaší aplikace přináší výkon Microsoft Azure v podobě zabezpečení, vyrovnávání zatížení, automatického škálování nebo automatizované správy. Můžete také využívat její možnosti DevOps, jako jsou průběžné nasazování z VSTS, GitHubu, Docker Hubu a dalších zdrojů, správa balíčků, přípravná prostředí, vlastní doména a certifikáty SSL. 
+Služba Web Apps nejen že do vaší aplikace přináší výkon Microsoft Azure v podobě zabezpečení, vyrovnávání zatížení, automatického škálování nebo automatizované správy. Můžete také využívat její možnosti DevOps, jako jsou průběžné nasazování z Azure DevOps, GitHubu, Docker Hubu a dalších zdrojů, správa balíčků, přípravná prostředí, vlastní doména a certifikáty SSL. 
 
 Se službou App Service platíte jenom za výpočetní prostředky Azure, které využijete. Výpočetní prostředky, které využijete, se určují podle _plánu služby App Service_, ve které službu Web Apps spouštíte. Další informace najdete v tématu [Plány služby App Service v Azure Web Apps](azure-web-sites-web-hosting-plans-in-depth-overview.md).
 
@@ -35,7 +35,7 @@ Se službou App Service platíte jenom za výpočetní prostředky Azure, které
 Toto jsou některé klíčové funkce služby App Service Web Apps:
 
 * **Více jazyků a rozhraní** – Služba Web Apps zahrnuje prvotřídní podporu jazyků ASP.NET, ASP.NET Core, Java, Ruby, Node.js, PHP nebo Python. Můžete také spouštět [PowerShell a další skripty nebo spustitelné soubory](web-sites-create-web-jobs.md) jako služby na pozadí.
-* **Optimalizace DevOps** – Můžete nastavit [průběžnou integraci a nasazování](app-service-continuous-deployment.md) pomocí služeb Visual Studio Team Services, GitHub, BitBucket, Docker Hub nebo Azure Container Registry. Aktualizace lze podporovat prostřednictvím [testovacího a přípravného prostředí](web-sites-staged-publishing.md). Aplikace ve službě Web Apps můžete spravovat pomocí [Azure PowerShellu](/powershell/azureps-cmdlets-docs) nebo [multiplatformního rozhraní příkazového řádku (CLI)](/cli/azure/install-azure-cli).
+* **Optimalizace DevOps** – Můžete nastavit [kontinuální integraci a nasazování](app-service-continuous-deployment.md) pomocí služeb Azure DevOps, GitHub, BitBucket, Docker Hub nebo Azure Container Registry. Aktualizace lze podporovat prostřednictvím [testovacího a přípravného prostředí](web-sites-staged-publishing.md). Aplikace ve službě Web Apps můžete spravovat pomocí [Azure PowerShellu](/powershell/azureps-cmdlets-docs) nebo [multiplatformního rozhraní příkazového řádku (CLI)](/cli/azure/install-azure-cli).
 * **Globální škálování s vysokou dostupností:** Můžete ručně i automaticky škálovat pro účely [vertikálního](web-sites-scale.md) nebo [horizontálního](../monitoring-and-diagnostics/insights-how-to-scale.md) navýšení kapacity. Aplikace je možné hostovat kdekoli v globální infrastruktuře datacenter Microsoftu a smlouva [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) pro App Service zaručuje vysokou dostupnost.
 * **Připojení k platformám SaaS a místním datům** – Můžete si vybírat z více než 50 [konektorů](../connectors/apis-list.md) pro podnikové systémy (například SAP), služby SaaS (například Salesforce) a internetové služby (například Facebook). Získejte přístup k místním datům pomocí [hybridních připojení](../biztalk-services/integration-hybrid-connection-overview.md) a [virtuálních sítí Azure](web-sites-integrate-with-vnet.md).
 * **Zabezpečení a dodržování předpisů** – Služba App Service je [kompatibilní se standardy ISO, SOC a PCI](https://www.microsoft.com/en-us/trustcenter). Uživatele můžete ověřovat pomocí služby [Azure Active Directory](app-service-mobile-how-to-configure-active-directory-authentication.md) nebo přes přihlášení prostřednictvím sociální sítě ([Google](app-service-mobile-how-to-configure-google-authentication.md), [Facebook](app-service-mobile-how-to-configure-facebook-authentication.md), [Twitter](app-service-mobile-how-to-configure-twitter-authentication.md) a [Microsoft](app-service-mobile-how-to-configure-microsoft-authentication.md)). Můžete vytvořit [omezení IP adres](app-service-ip-restrictions.md) a [spravovat identity služby](app-service-managed-service-identity.md).

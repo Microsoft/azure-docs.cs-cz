@@ -1,10 +1,16 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 0183261a561e139105a93421af06f581b67fb926
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393586"
 documentType: LandingData
 title: Dokumentace operátora k Azure Stacku
 metadata:
   document_id: cbf798da-6f1a-7d4d-7707-5d5e02589e22
   title: Dokumentace operátora k Azure Stacku – kurzy, reference k rozhraní API
-  description: Naučte se používat Azure zásobníku k poskytování služeb Azure z vašeho datového centra. Další informace a předvedení funkcí z Development Kit nebo v prostředí integrované systémy.
+  description: Zjistěte, jak použít službu Azure Stack k doručování služeb Azure z vašeho datového centra. Další informace a předvedení funkcí z Development Kit nebo prostředí pro integrované systémy.
   services: azure-stack
   author: jeffgilb
   manager: femila
@@ -12,21 +18,15 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 04/13/2018
+  ms.date: 10/16/2018
   ms.author: jeffgilb
-  ms.openlocfilehash: 9da39d733c51c637fdf13d1fb9c5649276ea8a23
-  ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-  ms.translationtype: MT
-  ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/23/2018
-  ms.locfileid: "31786532"
 abstract:
-  description: Microsoft Azure Stack je hybridní cloudová platforma, která umožňuje zřizovat služby Azure z vašeho datového centra. Zjistěte, jak ke správě infrastruktury integrované systémy zásobník Azure a jak nabízet služby s naše kurzy a quickstarts.<br/><br/>Pokud jste zásobník Azure uživatele, který používá služby nebo sestavení aplikací pro Azure zásobníku, přečtěte si naše <a href="/azure/azure-stack/user">dokumentaci pro uživatele</a>.<br/><br/>Pokud jste Azure zásobníku operátor zúčastněným v Azure zásobníku Development Kit (ASDK), nasazení jeden uzel zásobníku Azure, která můžete stáhnout a použít zdarma, najdete v našich <a href="/azure/azure-stack/asdk">ASDK dokumentaci</a>.
+  description: Microsoft Azure Stack je hybridní cloudová platforma, která umožňuje zřizovat služby Azure z vašeho datového centra. Zjistěte, jak spravovat infrastrukturu integrované systémy Azure Stack a nabízet služby prostřednictvím našich šablon rychlý start a kurzů.<br/><br/>Pokud patříte mezi uživatele služby Azure Stack, který používá služby nebo vytváření aplikací pro Azure Stack, přečtěte si naše <a href="/azure/azure-stack/user">dokumentaci pro uživatele</a>.<br/><br/>Pokud jsou operátory Azure stacku chtěli v Azure Stack Development Kit (ASDK), nasazení v jednom uzlu služby Azure Stack, kterou můžete stáhnout a používat zdarma, přečtěte si naše <a href="/azure/azure-stack/asdk">ASDK dokumentaci</a>.
 sections:
 - title: Rychlý start
   items:
   - type: paragraph
-    text: Nastavení hardwaru a nasazení Azure zásobníku Development Kit.
+    text: Nastavení hardwaru a nasazení Azure Stack Development Kit.
   - type: list
     style: icon48
     items:
@@ -37,13 +37,15 @@ sections:
 - title: Podrobné kurzy
   items:
   - type: paragraph
-    text: Zjistěte, jak na přidání služeb do vašeho nasazení Azure zásobníku.
+    text: Zjistěte, jak přidat služby do vašeho nasazení Azure stacku.
   - type: list
     style: ordered
     items:
-    - html: <a href="/azure/azure-stack/azure-stack-tutorial-tenant-vm">Nabízí virtuální počítače v Azure zásobníku</a>
-    - html: <a href="/azure/azure-stack/azure-stack-tutorial-sql-server">Nabízejí databází SQL v Azure zásobníku</a>
-    - html: <a href="/azure/azure-stack/azure-stack-tutorial-app-service">Nabízejí webové aplikace v Azure zásobníku</a>
+    - html: <a href="/azure/azure-stack/azure-stack-tutorial-tenant-vm">Nabídka virtuálních počítačů v Azure stacku</a>
+    - html: <a href="/azure/azure-stack/azure-stack-tutorial-sql-server">Nabídka databází SQL v Azure stacku</a>
+    - html: <a href="/azure/azure-stack/azure-stack-tutorial-sql">Vytvoření vysoce dostupné databáze SQL</a>
+    - html: <a href="/azure/azure-stack/azure-stack-tutorial-mysql">Vytvoření vysoce dostupné databáze MySQL</a>
+    - html: <a href="/azure/azure-stack/azure-stack-tutorial-app-service">Nabídka webových aplikací v Azure stacku</a>
 - title: Bezplatné školicí video od Pluralsightu
   items:
   - type: list

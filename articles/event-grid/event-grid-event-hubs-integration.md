@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: tutorial
 ms.date: 08/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 432436ee13519cf342313ad369c168ba764f9264
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: aad7a24d8b0e0bc74815cad3604db1cc21a6db96
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616511"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44163222"
 ---
 # <a name="stream-big-data-into-a-data-warehouse"></a>Streamování velkých objemů dat do datového skladu
 
@@ -184,6 +184,7 @@ Nastavili jste centrum událostí, datový sklad SQL, aplikaci Azure Function Ap
 
 ## <a name="next-steps"></a>Další kroky
 
+* Pokud chcete poznat rozdíly ve službách Azure pro zasílání zpráv, přečtěte si článek [Výběr mezi službami Azure, které doručují zprávy](compare-messaging-services.md).
 * Úvod do Event Gridu najdete v článku [Informace o službě Event Grid](overview.md).
 * Úvod do služby Event Hubs Capture najdete v článku o [povolení služby Event Hubs Capture na webu Azure Portal](../event-hubs/event-hubs-capture-enable-through-portal.md).
 * Další informace o nastavení a spuštění ukázky najdete v článku s [ukázkou služeb Event Hubs Capture a Event Grid](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo).

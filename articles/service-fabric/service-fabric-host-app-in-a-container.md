@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: a1e8c53263093554bb616ec130cd17a0d6d4339c
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 7573746b91f057d83a299d54801785118cc1c878
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302911"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380127"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Kurz: Nasazení aplikace .NET v kontejneru Windows do Azure Service Fabricu
 
@@ -225,7 +225,7 @@ Postupujte podle pokynů k nasazení v okně výstupu.  Po nasazení aplikace ot
 ![Ukázka webu Fabrikam][fabrikam-web-page-deployed]
 
 ## <a name="set-up-continuous-integration-and-deployment-cicd-with-a-service-fabric-cluster"></a>Nastavení průběžné integrace a nasazování (CI/CD) s využitím clusteru Service Fabric
-Informace o použití VSTS ke konfiguraci nasazení aplikace s CI/CD do clusteru Service Fabric najdete v [kurzu Nasazení aplikace s CI/CD do clusteru Service Fabric](service-fabric-tutorial-deploy-app-with-cicd-vsts.md). Postup popsaný v tomto kurzu je stejný i pro tento projekt (FabrikamFiber), stačí přeskočit stažení ukázky Voting a místo názvu úložiště Voting použít FabrikamFiber.
+Informace o použití Azure DevOps ke konfiguraci nasazení aplikace s CI/CD do clusteru Service Fabric najdete v článku [Kurz: Nasazení aplikace s CI/CD do clusteru Service Fabric](service-fabric-tutorial-deploy-app-with-cicd-vsts.md). Postup popsaný v tomto kurzu je stejný i pro tento projekt (FabrikamFiber), stačí přeskočit stažení ukázky Voting a místo názvu úložiště Voting použít FabrikamFiber.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Po skončení nezapomeňte odebrat všechny prostředky, které jste vytvořili.  Nejjednodušší způsob, jak to udělat, je odebrat skupiny prostředků, které obsahují cluster Service Fabricu, databázi SQL Azure a Azure Container Registry.
@@ -254,8 +254,7 @@ V tomto kurzu jste se naučili:
 > * Vytvořit registr kontejneru Azure
 > * Nasadit aplikaci Service Fabricu v Azure
 
-V další části kurzu se dozvíte, jak nastavit [monitorování vašeho kontejneru](service-fabric-tutorial-monitoring-wincontainers.md).
-
+V další části tohoto kurzu se dozvíte, jak [nasadit aplikaci typu kontejner s CI/CD do clusteru Service Fabric](service-fabric-tutorial-deploy-container-app-with-cicd-vsts.md).
 
 [link-fabrikam-github]: https://aka.ms/fabrikamcontainer
 [link-azure-powershell-install]: /powershell/azure/install-azurerm-ps

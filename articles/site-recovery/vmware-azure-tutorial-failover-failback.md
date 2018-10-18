@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 09/11/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1f7856edef3bb93300fce0ff00d9434400e239f8
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: e9ed0ba8d24f30f67dbb315848dc4c260cae4f50
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917037"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391364"
 ---
 # <a name="fail-over-and-fail-back-vmware-vms-and-physical-servers-replicated-to-azure"></a>Převzetí služeb při selhání a navrácení služeb po obnovení virtuálních počítačů VMware a fyzických serverů replikovaných do Azure
 
@@ -67,7 +67,7 @@ Ověřte vlastnosti virtuálního počítače a ujistěte se, že splňuje [pož
 1. V části **Nastavení** > **Replikované položky** klikněte na virtuální počítač a pak na **Převzetí služeb při selhání**.
 
 2. V části **Převzetí služeb při selhání** vyberte **Bod obnovení**, ke kterému se mají převzít služby při selhání. Můžete použít jednu z následujících možností:
-   - **Nejnovější (výchozí):** Tato možnost nejprve zpracuje veškerá data odeslaná do Site Recovery. Poskytuje nejnižší cíl bodu obnovení (RPO), protože se virtuální počítač Azure vytvoří teprve tehdy, až převzetí služeb při selhání bude mít veškerá data, která se do Site Recovery replikovala při aktivaci převzetí služeb při selhání.
+   - **Nejnovější:** Tato možnost nejprve zpracuje veškerá data odeslaná do Site Recovery. Poskytuje nejnižší cíl bodu obnovení (RPO), protože se virtuální počítač Azure vytvoří teprve tehdy, až převzetí služeb při selhání bude mít veškerá data, která se do Site Recovery replikovala při aktivaci převzetí služeb při selhání.
    - **Nejnovější zpracovaný:** Tato možnost převezme služby při selhání virtuálního počítače k nejnovějšímu bodu obnovení zpracovanému službou Site Recovery. Tato možnost poskytuje nízkou plánovanou dobu obnovení (RTO), protože se neztrácí žádný čas zpracováním nezpracovaných dat.
    - **Nejnovější konzistentní vzhledem k aplikacím:** Tato možnost převezme služby při selhání virtuálního počítače k nejnovějšímu bodu obnovení konzistentnímu vzhledem k aplikacím zpracovanému službou Site Recovery.
    - **Vlastní:** Zadáte vlastní bod obnovení.
@@ -82,11 +82,14 @@ V některých scénářích vyžaduje převzetí služeb při selhání další 
 
 ## <a name="connect-to-failed-over-virtual-machine-in-azure"></a>Připojení k virtuálnímu počítači v Azure, pro který bylo provedeno převzetí služeb při selhání
 
-1. Po převzetí služeb při selhání přejděte k virtuálnímu počítači a ověřte ho tím, že se k němu [připojíte](../virtual-machines/windows/connect-logon.md).
-2. Po ověření kliknutím na **Potvrdit** dokončete bod obnovení virtuálního počítače po převzetí služeb při selhání. Po potvrzení se odstraní všechny ostatní dostupné body obnovení. Tím se dokončí aktivita převzetí služeb při selhání.
+1. Pokud se chcete připojit k virtuálním počítačům Azure pomocí protokolů RDP/SSH po převzetí služeb při selhání, musíte dodržet požadavky shrnuté v této [tabulce](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
+2. Po převzetí služeb při selhání přejděte k virtuálnímu počítači a ověřte ho tím, že se k němu [připojíte](../virtual-machines/windows/connect-logon.md).
+3. Po ověření kliknutím na **Potvrdit** dokončete bod obnovení virtuálního počítače po převzetí služeb při selhání. Po potvrzení se odstraní všechny ostatní dostupné body obnovení. Tím se dokončí aktivita převzetí služeb při selhání.
 
 >[!TIP]
 > **Změna bodu obnovení** vám pomůže zvolit jiný bod obnovení po převzetí služeb při selhání, pokud nejste spokojeni s virtuálním počítačem, pro který bylo provedeno. Po **potvrzení** už tato možnost nebude dostupná.
+
+Při řešení problémů s připojením po převzetí služeb při selhání použijte [zde](site-recovery-failover-to-azure-troubleshoot.md) popsaný postup.
 
 ## <a name="preparing-for-reprotection-of-azure-vm"></a>Příprava na znovunastavení ochrany virtuálního počítače Azure
 

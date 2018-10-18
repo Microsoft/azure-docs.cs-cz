@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/16/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: cb659a79f374b7a48cd3cc29f9f46bc6598c04dc
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 17f06a08388720c4483ef1c187edf20ec8359121
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/17/2018
-ms.locfileid: "49366595"
+ms.locfileid: "49386379"
 ---
 # <a name="tutorial-offer-highly-available-sql-databases"></a>Kurz: Nabízí vysoce dostupné databáze SQL
 
@@ -123,7 +123,7 @@ Na sekundární instance SQL (nahraďte < availability_group_name > je název sk
 >  ![Sekundární instance skript SQL](./media/azure-stack-tutorial-sqlrp/sql2.png)
 
 ### <a name="configure-contained-database-authentication"></a>Konfigurace ověřování databáze s omezením
-Před přidáním do skupiny dostupnosti databáze s omezením, ujistěte se, že možnost serveru ověřování databáze s omezením je nastavená na 1 na každou instanci serveru, který je hostitelem replika dostupnosti pro skupinu dostupnosti. Další informace najdete v tématu [ověřování databáze s omezením](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/contained-database-authentication-server-configuration-option?view=sql-server-2017).
+Před přidáním do skupiny dostupnosti databáze s omezením, ujistěte se, že možnost serveru ověřování databáze s omezením je nastavená na 1 na každou instanci serveru, který je hostitelem replika dostupnosti pro skupinu dostupnosti. Další informace najdete v tématu [ověřování databáze s omezením](https://docs.microsoft.com/sql/database-engine/configure-windows/contained-database-authentication-server-configuration-option?view=sql-server-2017).
 
 Nastavení možnosti serveru ověřování databáze s omezením pro každou instanci serveru SQL Server ve skupině dostupnosti použijte tyto příkazy:
 

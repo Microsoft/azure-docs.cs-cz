@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 09/06/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b2a96aad793d956b3ea3de06fba74bcf68e50786
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: afee9450bc1485f781eb0d70b5d4dd2f50424573
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30197026"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44343205"
 ---
 Můžete použít buď kořenový certifikát vygenerovaný pomocí podnikového řešení (doporučeno), nebo můžete vygenerovat certifikát podepsaný svým držitelem. Po vytvoření kořenového certifikátu vyexportujte data veřejného certifikátu (ne privátní klíč) jako soubor .cer X.509 v kódování Base-64 nahrajte data veřejného certifikátu do Azure.
 
@@ -22,3 +22,4 @@ Můžete použít buď kořenový certifikát vygenerovaný pomocí podnikového
 
   * [Pokyny pro Windows 10 PowerShell:](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md) Tyto pokyny pro generování certifikátů vyžadují Windows 10 a PowerShell. Klientské certifikáty vygenerované pomocí kořenového certifikátu můžete nainstalovat na jakémkoli podporovaném klientu Point-to-Site.
   * [Pokyny pro MakeCert:](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md) Použijte MakeCert, pokud nemáte přístup k počítači s Windows 10, který byste mohli použít ke generování certifikátů. Nástroj MakeCert je zastaralý, ale stále ho můžete použít ke generování certifikátů. Klientské certifikáty vygenerované pomocí kořenového certifikátu můžete nainstalovat na jakémkoli podporovaném klientu Point-to-Site.
+  * [Pokyny pro Linux](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md)

@@ -1,6 +1,6 @@
 ## <a name="create-a-project-zip-file"></a>Vytvořit souboru ZIP projektu
 
-Vytvořte archiv ZIP se všemi položkami ve vašem projektu. Následující příkaz využívá základní nástroj vašeho terminálu:
+Ověřte, že jste pořád v kořenovém adresáři ukázkového projektu. Vytvořte archiv ZIP se všemi položkami ve vašem projektu. Následující příkaz využívá základní nástroj vašeho terminálu:
 
 ```
 # Bash

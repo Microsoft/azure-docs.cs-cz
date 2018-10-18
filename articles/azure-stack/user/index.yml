@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: e10dbc5ef0899134a1d629a058412b1eb36df335
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 88bc55bfcf1fef825ab7475f6008d49ed274d534
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163405"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393214"
 documentType: LandingData
 title: Uživatelská dokumentace k Azure Stacku
 metadata:
@@ -18,7 +18,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/25/2018
+  ms.date: 10/16/2018
   ms.author: jeffgilb
 abstract:
   description: Azure Stack je hybridní cloudová platforma, která umožňuje využívat služby Azure z datového centra vaší společnosti nebo vašeho poskytovatele služeb. Jako vývojář můžete v Azure Stacku vytvářet aplikace. Můžete je potom nasadit do Azure Stacku, do Azure, nebo můžete vytvořit skutečně hybridní aplikace, které využívají možnosti připojení mezi cloudem Azure Stack a Azure. Prostřednictvím našich šablon Rychlý start a kurzů se naučíte, jak vytvářet prostředky a nasazovat aplikace.<br/><br/>Pokud je pro vás, operátorovi služby Azure Stack, který spravuje infrastrukturu a nabízí služby, přečtěte si naše <a href="/azure/azure-stack/">dokumentace operátora k</a>.<br/><br/>Pokud jsou operátory Azure stacku chtěli v Azure Stack Development Kit (ASDK), nasazení v jednom uzlu služby Azure Stack, kterou můžete stáhnout a používat zdarma, přečtěte si naše <a href="/azure/azure-stack/asdk">ASDK dokumentaci</a>.
@@ -73,8 +73,6 @@ sections:
     - html: <a href="/azure/azure-stack/user/azure-stack-solution-staged-data-analytics">Vytvořit řešení analýzy pracovních dat s využitím Azure a Azure Stack </a>
     - html: <a href="/azure/azure-stack/user/azure-stack-solution-cloud-burst">Vytvoření řešení škálování cloudu s Azure</a>
     - html: <a href="/azure/azure-stack/user/azure-stack-solution-geo-distributed">Vytvoření řešení geograficky distribuované aplikace s využitím Azure a Azure Stack</a>
-    - html: <a href="/azure/azure-stack/user/azure-stack-tutorial-sql">Vytvoření vysoce dostupné databáze SQL</a>
-    - html: <a href="/azure/azure-stack/user/azure-stack-tutorial-mysql">Vytvoření vysoce dostupné databáze MySQL</a>
 - title: Referenční informace
   items:
   - type: list

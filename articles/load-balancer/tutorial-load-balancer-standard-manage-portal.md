@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 08/20/18
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: be80c637a250e8a86727ce34f86832fef10426b7
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 7c3e5c0cc8297ba60925d36d667e0b72a5072553
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616391"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380042"
 ---
 # <a name="tutorial-create-and-manage-standard-load-balancer-using-the-azure-portal"></a>Kurz: Vytvoření a správa Standard Load Balanceru pomocí webu Azure Portal
 
@@ -204,11 +204,11 @@ Když budete chtít přidat *myVM1* zpátky do back-endového fondu, postupujte 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, odstraňte skupinu prostředků, nástroj pro vyrovnávání zatížení a všechny související prostředky. Provedete to výběrem skupiny prostředků, která obsahuje nástroj pro vyrovnávání zatížení, a kliknutím na **Odstranit**.
+Pokud už je nepotřebujete, odstraňte skupinu prostředků, nástroj pro vyrovnávání zatížení a všechny další související prostředky. Provedete to výběrem skupiny prostředků, která obsahuje nástroj pro vyrovnávání zatížení, a kliknutím na **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V rámci tohoto kurzu jste vytvořili službu Standard Load Balancer, připojili jste k ní virtuální počítače, nakonfigurovali jste pravidlo pro přenosy u nástroje pro vyrovnávání zatížení a sondu stavu a pak jste nástroj pro vyrovnávání zatížení otestovali. Také jste odebrali virtuální počítač ze skupiny s vyrovnáváním zatížení a přidali jste virtuální počítač zpátky do back-endového fondu adres. Další informace o službě Azure Load Balancer najdete v kurzech týkajících se služby Azure Load Balancer.
+V rámci tohoto kurzu jste vytvořili službu Standard Load Balancer, připojili jste k ní virtuální počítače, nakonfigurovali jste pravidlo pro přenosy u nástroje pro vyrovnávání zatížení a sondu stavu a pak jste nástroj pro vyrovnávání zatížení otestovali. Také jste odebrali virtuální počítač ze skupiny s vyrovnáváním zatížení a přidali jste virtuální počítač zpátky do fondu back-endových adres. Další informace o službě Azure Load Balancer najdete v kurzech týkajících se služby Azure Load Balancer.
 
 > [!div class="nextstepaction"]
 > [Kurzy o službě Azure Load Balancer](tutorial-load-balancer-standard-public-zone-redundant-portal.md)

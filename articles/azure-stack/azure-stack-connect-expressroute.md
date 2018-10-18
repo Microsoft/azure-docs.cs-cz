@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 09/12/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: eee4407af8d7def94061002941d758a99237645f
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: c30e70802d125744432f428f903f6ac6789f631e
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078694"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389221"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>Připojení k Azure pomocí Azure ExpressRoute Azure Stack
 
@@ -313,7 +313,7 @@ Prostředky, které nasazují v Azure jsou podobné prostředky, které jste nas
 
 Azure síťovou infrastrukturu příklad je nakonfigurován takto:
 
-* Standardní centra (192.168.2.0/24) a model virtuální sítě paprsků (10.100.0.0./16). Další informace o síťové topologie centra s paprsky, naleznete v tématu [implementace síťové topologie centra s rameny v Azure](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/hybrid-networking/hub-spoke).
+* Standardní centra (192.168.2.0/24) a model virtuální sítě paprsků (10.100.0.0./16). Další informace o síťové topologie centra s paprsky, naleznete v tématu [implementace síťové topologie centra s rameny v Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke).
 * Úlohy se nasazují do virtuální sítě paprsků a okruh ExpressRoute je připojen k virtuální síti centra.
 * Dvě virtuální sítě jsou propojené pomocí VNet peering.
 

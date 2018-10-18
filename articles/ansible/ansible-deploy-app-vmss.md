@@ -7,13 +7,13 @@ author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 08/24/2018
-ms.openlocfilehash: 762c14b5b6e30f6410a8d572d69651c803f079c2
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.date: 09/11/2018
+ms.openlocfilehash: 3512cb7eda9f9e5a6e18dc83f6523029b17a9de2
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918082"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391466"
 ---
 # <a name="deploy-applications-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Nasazování aplikací do škálovacích sad virtuálních počítačů v Azure pomocí Ansible
 Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vašem prostředí. Pomocí Ansible můžete nasadit své aplikace do Azure. V tomto článku se dozvíte, jak do škálovací sady virtuálních počítačů (VMSS) Azure nasadit aplikaci v Javě.  
