@@ -1,55 +1,57 @@
 ---
-title: Volání rozpoznávání emocí úrovně rozhraní API pro Video | Microsoft Docs
-description: Zjistěte, jak volat rozhraní API pro rozpoznávání emocí úrovně pro Video v kognitivní služby.
+title: 'Příklad: Volání rozhraní API pro rozpoznávání emocí ve videu'
+titlesuffix: Azure Cognitive Services
+description: Zjistěte, jak volat rozhraní API pro rozpoznávání emocí ve videu v rámci služeb Cognitive Services.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: sample
 ms.date: 02/06/2017
 ms.author: anroth
-ms.openlocfilehash: 0875013b2061a84e3e23ae90c1106382672fdca6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2687145a89c11efb4a3bcb1494a39806e9aae551
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342719"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238603"
 ---
-# <a name="how-to-call-emotion-api-for-video"></a>Jak volat rozpoznávání emocí úrovně rozhraní API pro Video
+# <a name="example-call-emotion-api-for-video"></a>Příklad: Volání rozhraní API pro rozpoznávání emocí ve videu
 
 > [!IMPORTANT]
-> 30. října 2017 ukončen video Preview rozhraní API. Vyzkoušet nový [Preview rozhraní API Indexer Video](https://azure.microsoft.com/services/cognitive-services/video-indexer/) k snadno rozbalte statistiky z videa a vylepšení možnosti zjišťování obsahu, jako je například výsledky hledání, pomocí zjišťování mluvené slovo, řezy, znaků a emoce. [Další informace](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview).
+> Rozhraní API pro rozpoznávání emocí se přestane používat 15. února 2019. Funkce rozpoznávání emocí je teď obecně dostupná v rámci [rozhraní API pro rozpoznávání tváře](https://docs.microsoft.com/azure/cognitive-services/face/). 
 
-Tato příručka ukazuje, jak volat rozhraní API pro rozpoznávání emocí úrovně pro Video. Ukázky jsou napsané v C# pomocí rozhraní API pro rozpoznávání emocí úrovně Video klienta knihovny.
+Tato příručka ukazuje, jak volat rozhraní API pro rozpoznávání emocí ve videu. Ukázky jsou napsané v jazyce C# pomocí klientské knihovny rozhraní API pro rozpoznávání emocí ve videu.
 
-### <a name="Prep">Příprava</a> 
-Chcete-li použít rozhraní API pro rozpoznávání emocí úrovně pro Video, budete potřebovat video, které zahrnuje osob, ideálně video, kde uživatele, kteří se setkávají fotoaparát.
+### <a name="Prep">Příprava</a>
+Pokud chcete použít rozhraní API pro rozpoznávání emocí ve videu, budete potřebovat video s lidmi, ideálně video s lidmi, kteří stojí tváří ke kameře.
 
-### <a name="Step1">Krok 1: Autorizovat volání rozhraní API</a> 
-Každé volání rozhraní API pro rozpoznávání emocí úrovně pro Video vyžaduje klíč předplatného. Tento klíč musí být buď předána parametr řetězce dotazu nebo zadaným v hlavičce žádosti. Při předat klíč předplatného pomocí řetězce dotazu, použijte následující adresu URL požadavku pro rozhraní API pro rozpoznávání emocí úrovně pro Video jako příklad:
+### <a name="Step1">Krok 1: Autorizace volání rozhraní API</a>
+Ke každému volání rozhraní API pro rozpoznávání emocí ve videu potřebujete klíč předplatného. Tento klíč je potřeba předat buď jako parametr řetězce dotazu, nebo ho zadat v hlavičce požadavku. Pokud chcete klíč předplatného předat pomocí řetězce dotazu, použijte jako příklad následující adresu URL požadavku na rozhraní API pro rozpoznávání emocí ve videu:
 
 ```
 https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognizeInVideo&subscription-key=<Your subscription key>
 ```
 
-Jako alternativu klíč předplatného můžete také uvést v hlavičce požadavku HTTP:
+Klíč předplatného můžete alternativně zadat také v hlavičce požadavku HTTP:
 
 ```
 ocp-apim-subscription-key: <Your subscription key>
 ```
 
-Při použití klientské knihovny, klíč předplatného předána v konstruktoru třídy VideoServiceClient. Příklad:
+Pokud používáte klientskou knihovnu, klíč předplatného se předává prostřednictvím konstruktoru třídy VideoServiceClient. Příklad:
 
 ```
 var emotionServiceClient = new emotionServiceClient("Your subscription key");
 ```
-Získat klíč předplatného, najdete v tématu [odběry] (https://azure.microsoft.com/try/cognitive-services/). 
+Informace o získání klíče předplatného najdete v tématu [Předplatná] (https://azure.microsoft.com/try/cognitive-services/).
 
-### <a name="Step2">Krok 2: Nahrání video ke službě a zkontrolujte stav</a>
-Nejzákladnější možnost provádět všechny rozhraní API pro rozpoznávání emocí úrovně Video volání je tím, že nahrajete video přímo. K tomu je potřeba odeslání žádosti o "POST" se typ obsahu application/octet-stream společně s data načtená z videosouboru. Maximální velikost videa je 100MB.
+### <a name="Step2">Krok 2: Nahrání videa do služby a kontrola stavu</a>
+Základním způsobem, jak volat rozhraní API pro rozpoznávání emocí ve videu, je přímo nahrát video. Provede se to odesláním požadavku POST s typem obsahu application/octet-stream společně s daty přečtenými z videosouboru. Maximální velikost videa je 100 MB.
 
-Pomocí klientské knihovny, ustálení prostřednictvím odesílání provádí předáním do datového proudu objektu. Viz následující příklad:
+Při použití klientské knihovny se předáním objektu datového proudu provádí stabilizace prostřednictvím nahrávání. Viz následující příklad:
 
 ```
 Operation videoOperation;
@@ -59,10 +61,10 @@ using (var fs = new FileStream(@"C:\Videos\Sample.mp4", FileMode.Open))
 }
 ```
 
-Upozorňujeme, že metodě CreateOperationAsync VideoServiceClient je asynchronní. Volání metody by měl být označen jako asynchronní také chcete-li použít klauzuli await.
-Pokud na video již je na webu a má veřejnou adresu URL, rozpoznávání emocí úrovně rozhraní API pro Video přístupná zadáním adresy URL. V tomto příkladu bude textu žádosti řetězec formátu JSON, který obsahuje adresu URL.
+Mějte na paměti, že metoda CreateOperationAsync objektu VideoServiceClient je asynchronní. Kvůli použití klauzule await musí být jako asynchronní označená také volající metoda.
+Pokud je video již na webu a má veřejnou adresu URL, můžete k rozhraní API pro rozpoznávání emocí ve videu přistupovat zadáním této adresy URL. V tomto příkladu bude textem žádosti řetězec JSON obsahující adresu URL.
 
-Pomocí klientské knihovny, ustálení prostřednictvím adresy URL se dají snadno provádět pomocí jiné přetížení metody CreateOperationAsync.
+Při použití klientské knihovny je možné snadno provést stabilizaci prostřednictvím adresy URL s využitím dalšího přetížení metody CreateOperationAsync.
 
 
 ```
@@ -71,18 +73,18 @@ Operation videoOperation = await videoServiceClient.CreateOperationAsync(videoUr
 
 ```
 
-Tato metoda nahrávání budou stejné pro všechny rozhraní API pro rozpoznávání emocí úrovně pro volání Video. 
+Tato metoda nahrávání bude stejná pro všechna volání rozhraní API pro rozpoznávání emocí ve videu.
 
-Jakmile jste nahráli video, je další operace, kterou budete chtít provést zkontrolujte stav. Protože video soubory jsou obvykle větší a více různých než ostatní soubory, uživatelé mohou očekávat s dlouhým doba zpracování v tomto kroku. Doba závisí na velikosti a délku souboru.
+Po nahrání videa bude další operací, kterou budete chtít provést, kontrola stavu. Vzhledem k tomu, že videosoubory jsou obvykle větší a různorodější než jiné soubory, můžou uživatelé v tomto kroku očekávat dlouhou dobu zpracování. Tato doba závisí na velikosti a délce souboru.
 
-Pomocí klientské knihovny, je možné načíst stav operace a výsledek metodou GetOperationResultAsync.
+Při použití klientské knihovny můžete načíst stav a výsledek operace pomocí metody GetOperationResultAsync.
 
 
 ```
 var operationResult = await videoServiceClient.GetOperationResultAsync(videoOperation);
 
 ```
-Obvykle na straně klienta by měl pravidelně načíst stav operace dokud je stav zobrazen jako "Succeeded" nebo "Failed".
+Obvykle by se na straně klienta měl pravidelně načítat stav operace, dokud nebude Succeeded (Úspěch) nebo Failed (Neúspěch).
 
 ```
 OperationResult operationResult;
@@ -99,48 +101,48 @@ while (true)
 
 ```
 
-Stav VideoOperationResult, když je zobrazena jako "Bylo úspěšně dokončeno" výsledek může načíst přetypování VideoOperationResult k VideoOperationInfoResult<VideoAggregateRecognitionResult> a přístup k poli ProcessingResult.
+Jakmile se stav operace VideoOperationResult změní na Succeeded (Úspěch), můžete výsledek načíst přetypováním VideoOperationResult na VideoOperationInfoResult<VideoAggregateRecognitionResult> a přistupovat k němu v poli ProcessingResult.
 
 ```
 var emotionRecognitionJsonString = ((VideoOperationInfoResult<VideoAggregateRecognitionResult>)operationResult).ProcessingResult;
 ```
 
-### <a name="Step3">Krok 3: Načítání a pochopení rozpoznávání rozpoznávání emocí úrovně a sledování výstup JSON</a>
+### <a name="Step3">Krok 3: Načtení a porozumění výstupu JSON rozpoznávání a sledování emocí</a>
 
-Výsledek výstup obsahuje metadata z tyto řezy v dané souboru ve formátu JSON.
+Výstup výsledku obsahuje metadata o tvářích v daném souboru ve formátu JSON.
 
-Jak je popsáno v kroku 2, výstup JSON je dostupná v poli ProcessingResult výsledek, když jeho stav se zobrazí jako "Succeeded".
+Jak je popsáno v kroku 2, jakmile se stav změní na Succeeded (Úspěch), výstup JSON bude k dispozici v poli ProcessingResult objektu OperationResult.
 
-Detekce vzhled a sledování JSON obsahuje následující atributy:
+Kód JSON rozpoznávání a sledování emocí obsahuje následující atributy:
 
 Atribut | Popis
 -------------|-------------
-Verze | Odkazuje na verzi rozhraní API pro rozpoznávání emocí úrovně pro formát JSON Video.
-Časová osa | "Rysky" za sekundu videa.
-Posun  |Časový posun pro časová razítka. Ve verzi 1.0 rozpoznávání emocí úrovně rozhraní API pro videa bude vždy 0. V budoucích Podporované scénáře tato hodnota může změnit.
-Kmitočet snímků | Počet snímků za sekundu videa.
-Fragmenty   | Metadata se Vyjmout na jiné menší části názvem fragmenty. Každý fragment obsahuje počáteční, doba trvání, číslo intervalu a událostí.
-Start   | Čas zahájení první událost v rysky.
-Doba trvání |  Délka fragment v rysky.
-Interval |  Délka všechny události v rámci fragment v rysky.
-Události  | Pole události. Vnější pole představuje jeden časový interval. Vnitřní pole se skládá z 0 nebo více událostí, které bylo provedeno v tomto bodě v čase.
-windowFaceDistribution |    Procento otočená tak, aby měl konkrétní rozpoznávání emocí úrovně během události.
-windowMeanScores |  Střední skóre pro každý emoce tyto řezy v bitové kopii.
+Verze | Odkazuje na verzi JSON rozhraní API pro rozpoznávání emocí ve videu.
+Timescale | Počet impulzů ve videu za sekundu.
+Posun  |Posun času pro časová razítka. Ve verzi 1.0 rozhraní API pro rozpoznávání emocí ve videu bude tato hodnota vždy 0. V budoucích podporovaných scénářích se tato hodnota může změnit.
+Framerate | Počet snímků ve videu za sekundu.
+Fragments   | Metadata se rozdělují na různé menší části, které se označují jako fragmenty. Každý fragment obsahuje začátek, dobu trvání, číslo intervalu a události.
+Start   | Čas zahájení první události vyjádřený v impulzech.
+Doba trvání |  Délka fragmentu vyjádřená v impulzech.
+Interval |  Délka jednotlivých událostí v rámci fragmentu vyjádřená v impulzech.
+Události  | Pole hodnot. Vnější pole představuje jeden časový interval. Vnitřní pole se skládá z 0 nebo více událostí, které se v tomto bodu v čase odehrály.
+windowFaceDistribution |    Procento tváří, v jejichž výrazu byla během události konkrétní emoce.
+windowMeanScores |  Průměrné skóre jednotlivých emocí ve výrazech tváří na snímku.
 
-Z důvodu pro formátování JSON tímto způsobem je nastavit rozhraní API pro budoucí scénáře, kde bude potřeba načíst metadata rychle a spravovat velké proud výsledky. Formátování v aplikaci je pomocí technik fragmentace (umožňuje rozdělit metadat v části založené na čase, kde si můžete stáhnout pouze to, co potřebujete) a segmentace (umožňuje rozdělit události, pokud se zobrazí příliš velký). Některé jednoduché výpočty můžete transformovat data. Například, pokud událost zahájená 6300 (rysky), s časovou 2997 (rysky za sekundu) a kmitočet snímků 29,97 (snímků za sekundu), pak:
+Důvodem formátování JSON tímto způsobem je připravit rozhraní API na budoucí scénáře, kde bude důležité načítat rychle metadata a spravovat velké datové proudy výsledků. Toto formátování využívá techniky fragmentace (umožňující rozdělit metadata na části podle času a stahovat pouze to, co potřebujete) i segmentace (umožňující rozdělit události v případě, že najednou budou příliš velké). S transformací dat vám pomůže několik jednoduchých výpočtů. Pokud se například událost zahájila v čase 6 300 (impulzů) a má časovou osu 2 997 (impulzů za sekundu) a snímkovou frekvenci 29,97 (snímků za sekundu), pak:
 
-*   Spuštění nebo časový rámec = 2.1 sekund
-*   Sekund x (kmitočet snímků nebo časová osa) = 63 rámce
+*   Zahájení / časová osa = 2,1 sekund
+*   Počet sekund × (snímková frekvence / časová osa) = 63 snímků
 
-Níže je jednoduchý příklad extrahování JSON do za formát rámce pro detekci vzhled a sledování:
+Níže je jednoduchý příklad extrakce JSON do formátu jednotlivých snímků pro účely rozpoznávání a sledování emocí:
 
 ```
 var emotionRecognitionTrackingResultJsonString = operationResult.ProcessingResult;
 var emotionRecognitionTracking = JsonConvert.DeserializeObject<EmotionRecognitionResult>(emotionRecognitionTrackingResultJsonString, settings);
 ```
-Protože emoce vyhlazení v čase, pokud někdy vytvořit vizualizaci do překrytí výsledky nahoře na původní video, odečtena 250 milisekund ze zadané časová razítka.
+Emoce se v průběhu času vyrovnávají, proto pokud někdy budete vytvářet vizualizaci, která vašimi výsledky překryje původní video, odečtěte od uvedených časových značek 250 milisekund.
 
 ### <a name="Summary">Souhrn</a>
-V této příručce jste se naučili o funkce rozhraní API pro rozpoznávání emocí úrovně pro Video: jak můžete nahrát video, zkontrolujte stav, načítání metadat rozpoznávání rozpoznávání emocí úrovně.
+V této příručce jste se seznámili s funkcemi rozhraní API pro rozpoznávání emocí ve videu: postup nahrání videa, kontrola jeho stavu a načtení metadat rozpoznávání emocí.
 
-Další informace o rozhraní API. Podrobnosti najdete v tématu Referenční příručka rozhraní API "[rozpoznávání emocí úrovně rozhraní API pro odkaz na Video](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/56f8d40e1984551ec0a0984e)".
+Další podrobnosti o rozhraní API najdete v referenční příručce k rozhraní API: [Referenční informace k rozhraní API pro rozpoznávání emocí ve videu](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/56f8d40e1984551ec0a0984e).

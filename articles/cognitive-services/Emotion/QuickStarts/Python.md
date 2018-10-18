@@ -1,36 +1,37 @@
 ---
-title: Rychlý start rozpoznávání emocí úrovně rozhraní API Python | Microsoft Docs
-description: Get informace a ukázky kódu můžete rychle začít pracovat s Pythonem v kognitivní služby pomocí rozhraní API pro rozpoznávání emocí úrovně.
+title: 'Rychlý start: Rozpoznávání emocí ve výrazech tváří na obrázku – rozhraní API pro rozpoznávání emocí, Python'
+description: Získejte informace a vzorové kódy, které vám pomůžou rychle začít používat rozhraní API pro rozpoznávání emocí pomocí Pythonu.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/05/2018
 ms.author: anroth
-ms.openlocfilehash: ff1f6b2ddc872d0ee63d9885b04b1f007bc86e33
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ROBOTS: NOINDEX
+ms.openlocfilehash: c7611628918cf40800d173dc9404b0948b9a68a4
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342447"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48236563"
 ---
-# <a name="emotion-api-python-quickstart"></a>Rychlý start rozpoznávání emocí úrovně rozhraní API Python
+# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Rychlý start: Vytvoření aplikace pro rozpoznávání emocí ve výrazech tváří na obrázku
 
 > [!IMPORTANT]
-> Video Preview rozhraní API skončila 30 říjen 2017. Vyzkoušet nový [Preview rozhraní API Indexer Video](https://azure.microsoft.com/services/cognitive-services/video-indexer/) k snadno rozbalte statistiky z videa a vylepšení možnosti zjišťování obsahu, jako je například výsledky hledání, pomocí zjišťování mluvené slovo, řezy, znaků a emoce. [Další informace](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview).
+> Rozhraní API pro rozpoznávání emocí se přestane používat 15. února 2019. Funkce rozpoznávání emocí je teď obecně dostupná v rámci [rozhraní API pro rozpoznávání tváře](https://docs.microsoft.com/azure/cognitive-services/face/). 
 
-Tento názorný postup obsahuje informace a ukázky kódu, které vám pomohou rychle začít používat [rozpoznávání emocí úrovně rozhraní API rozpoznat metoda](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) s Pythonem rozpoznat emoce vyjádřená jeden nebo více osob v obraze. 
+Tento návod obsahuje informace a vzorové kódy, které vám pomůžou rychle začít používat [metodu Recognize rozhraní API pro rozpoznávání emocí](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) s Pythonem k rozpoznávání emocí vyjadřovaných jedním člověkem nebo několika lidmi na obrázku.
 
-V tomto příkladu můžete spustit jako poznámkového bloku Jupyter na [MyBinder](https://mybinder.org) kliknutím na spuštění vazač oznámení: [ ![vazače](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=EmotionAPI.ipynb)
+Tuto ukázku můžete spustit jako poznámkový blok Jupyter v [MyBinderu](https://mybinder.org) tak, že kliknete na odznáček pro spuštění Binderu: [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=EmotionAPI.ipynb)
 
 
 ## <a name="prerequisite"></a>Požadavek
-Získat klíč bezplatné předplatné [sem](https://azure.microsoft.com/try/cognitive-services/)
+[Tady](https://azure.microsoft.com/try/cognitive-services/) získejte klíč svého bezplatného předplatného.
 
-## <a name="running-the-walkthrough"></a>Spuštění Průvodce
-Chcete-li pokračovat v tomto průvodci, nahraďte `subscription_key` s klíčem rozhraní API, který jste dříve získali.
+## <a name="running-the-walkthrough"></a>Spuštění návodu
+Abyste mohli pokračovat v tomto návodu, nahraďte `subscription_key` klíčem rozhraní API, který jste získali dříve.
 
 
 ```python
@@ -38,16 +39,16 @@ subscription_key = None
 assert subscription_key
 ```
 
-Dále ověřte, že adresa URL služby odpovídá oblast, kterou jste použili při nastavování klíč rozhraní API. Pokud používáte zkušební klíč, není nutné žádné změny.
+Dále ověřte, že adresa URL služby odpovídá oblasti, kterou jste použili při nastavování klíče rozhraní API. Pokud používáte zkušební klíč, není potřeba provádět jakékoli změny.
 
 
 ```python
 emotion_recognition_url = "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize"
 ```
 
-Tento návod používá Image, které jsou uložené na disku. Můžete také použít bitové kopie, které jsou k dispozici prostřednictvím veřejně přístupné adresy URL. Další informace najdete v tématu [dokumentace k REST API](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa).
+V tomto návodu se používají obrázky uložené na disku. Můžete použít i obrázky, které jsou dostupné přes veřejně přístupnou adresu URL. Další informace najdete v [dokumentaci k rozhraní REST API](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa).
 
-Vzhledem k tomu, že data bitové kopie se předá jako část obsahu žádosti, Všimněte si, že je nutné nastavit `Content-Type` hlavičky k `application/octet-stream`. Pokud jsou předávání v bitovou kopii prostřednictvím adresy URL, nezapomeňte nastavit hlavičku na:
+Vzhledem k tomu, že se data obrázků předávají v textu požadavku, mějte na paměti, že je potřeba nastavit hlavičku `Content-Type` na `application/octet-stream`. Pokud předáváte obrázek přes adresu URL, nezapomeňte tuto hlavičku nastavit na:
 ```python
 header = {'Ocp-Apim-Subscription-Key': subscription_key }
 ```
@@ -55,12 +56,12 @@ Vytvořte slovník obsahující adresu URL:
 ```python
 data = {'url': image_url}
 ```
-a předejte to `requests` pomocí knihovny:
+Předejte tyto hodnoty knihovně `requests` pomocí následujícího příkazu:
 ```python
 requests.post(emotion_recognition_url, headers=headers, json=image_data)
 ```
 
-Nejdřív stáhnout několik ukázkových bitové kopie z [rozhraní API pro rozpoznávání emocí úrovně](https://azure.microsoft.com/services/cognitive-services/emotion/) lokality.
+Nejprve z webu [rozhraní API pro rozpoznávání emocí](https://azure.microsoft.com/services/cognitive-services/emotion/) stáhněte několik ukázkových obrázků.
 
 
 ```bash
@@ -101,9 +102,9 @@ analysis
 
 
 
-Vrácený objekt JSON obsahuje ohraničující políčka řezy, které byly rozpoznány společně s zjištěné emoce. Každý rozpoznávání emocí úrovně je přidružen skóre mezi 0 a 1, kde je vyšší skóre lépe popisuje rozpoznávání emocí úrovně než nižší skóre. 
+Vrácený objekt JSON obsahuje ohraničující rámečky rozpoznaných tváří společně se zjištěnými emocemi. Ke každé emoci je přidružené skóre od 0 do 1, přičemž vyšší skóre značí spolehlivější rozpoznání emoce než nižší skóre.
 
-Následující řádky kódu zjištěné emoce na tyto řezy v pomocí bitové kopie `matplotlib` knihovny. Pro lepší přehlednost jsou zobrazeny pouze nejvyšší tři emoce.
+Následující řádky kódu pomocí knihovny `matplotlib` označí zjištěné emoce ve výrazech tváří na obrázku. Pro lepší přehlednost se zobrazí pouze tři hlavní emoce.
 
 
 ```python
@@ -129,7 +130,7 @@ for face in analysis:
 _ = plt.axis("off")
 ```
 
-`annotate_image` Ukazuje další funkce slouží k překrytí emoce nad souborem bitové kopie základě její cesty v systému souborů. Je založena na kód pro volání do rozhraní API rozpoznávání emocí úrovně uvedena výše.
+Pomocí následující funkce `annotate_image` můžete obrázek překrýt emocemi – stačí, když funkci předáte cestu k tomuto souboru v systému souborů. Tato funkce vychází z výše uvedeného kódu pro volání rozhraní API pro rozpoznávání emocí.
 
 
 ```python
@@ -156,7 +157,7 @@ def annotate_image(image_path):
     _ = plt.axis("off")
 ```
 
-Nakonec `annotate_image` funkce lze volat na soubor obrázku, jak je znázorněno na následujícím řádku:
+Nakonec můžete funkci `annotate_image` zavolat pro soubor obrázku, jak je znázorněno na následujícím řádku:
 
 
 ```python

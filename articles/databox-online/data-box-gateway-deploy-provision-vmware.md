@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/26/2018
+ms.date: 10/01/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: 5a173340be424c74c76da659816b1b95b74c465f
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: a96aa2ee8b474bcc4e3e9362d6b1ba755e3fdbc3
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419538"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017444"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware-preview"></a>Kurz: Zřízení služby Azure Data Box Gateway ve VMware (Preview)
 
@@ -96,7 +96,7 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte virtuální zaří
 
 1. Zkopírujte do svého systému image virtuálního zařízení. Tuto virtuální image (dva soubory) jste si stáhli přes Azure Portal. Poznamenejte si umístění, do kterého jste image zkopírovali, protože tuto image použijete v pozdější části tohoto postupu.
 
-2. Pomocí klienta vSphere se přihlaste k serveru ESXi. K vytvoření virtuálního počítače potřebujete mít oprávnění správce.
+2. Pomocí webového klienta vSphere se přihlaste k serveru ESXi. K vytvoření virtuálního počítače potřebujete mít oprávnění správce.
 
    ![](./media/data-box-gateway-deploy-provision-vmware/image1.png)
   
@@ -104,7 +104,10 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte virtuální zaří
 
    ![](./media/data-box-gateway-deploy-provision-vmware/image2.png)
 
-4. V pravém podokně v části **Úložiště dat** vyberte úložiště dat, do kterého chcete VMDK nahrát. Úložiště dat musí být typů VMFS 5. Úložiště dat také musí mít dostatek volného místa na disk s operačním systémem a datový disk.
+4. V pravém podokně v části **Úložiště dat** vyberte úložiště dat, do kterého chcete VMDK nahrát. 
+
+    - Úložiště dat musí být typu VMFS5. 
+    - Úložiště dat také musí mít dostatek volného místa na disk s operačním systémem a datový disk.
    
 5. Klikněte pravým tlačítkem a vyberte **Procházet úložiště dat**.
 
@@ -145,11 +148,11 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte virtuální zaří
 15. Na stránce **Vyberte úložiště** vyberte úložiště dat, které chcete ke zřízení virtuálního počítače použít. Klikněte na **Další**.
 
     ![](./media/data-box-gateway-deploy-provision-vmware/image12.png)
-16. Na stránce **Přizpůsobit nastavení** nastavte počet **CPU** na 4, velikost **paměti** na 8 192 MB (nebo více) a velikost **pevného disku 1** na 2 TB (nebo více). Zvolte typ **pevného disku SCSI**, který chcete přidat. V tomto případě to byl typ LSI Logic SAS. **Statické disky IDE se nepodporují.** **Pevný disk 1** je virtuální pevný disk. Mějte na paměti, že disk po zřízení už není možné zmenšit.
+16. Na stránce **Přizpůsobit nastavení** nastavte počet **CPU** na 4, velikost **paměti** na 8 192 MB (nebo více) a velikost **pevného disku 1** na 2 TB (nebo více). Zvolte **pevný disk SCSI**, který chcete přidat. V tomto případě to byl typ LSI Logic SAS. **Statické disky IDE se nepodporují.** **Pevný disk 1** je virtuální pevný disk. Mějte na paměti, že disk po zřízení už není možné zmenšit.
 
     ![](./media/data-box-gateway-deploy-provision-vmware/image13.png)
 
-    Na stejné stránce klikněte na **Přidat pevný disk** a vyberte **Existující pevný disk**. Tím se přidá disk s operačním systémem. 
+    Na stejné stránce klikněte na **Přidat pevný disk** a vyberte **Existující pevný disk**. V úložišti dat vyberte soubor VMDK. Tím přidáte disk s operačním systémem. 
 
      ![](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 

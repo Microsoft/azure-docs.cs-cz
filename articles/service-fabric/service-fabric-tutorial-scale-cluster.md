@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/06/2018
+ms.date: 010/01/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: da9e1ce17e21f4d87286c0be5d425419f6ed0300
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 1af4cdb361c1db378991201fc42f17dcbf67fe67
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408506"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238761"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Kurz: Škálování clusteru Service Fabric v Azure
 
@@ -114,14 +114,14 @@ az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 6
 
 ## <a name="scale-in"></a>Horizontální snížení kapacity
 
-Horizontální snížení kapacity je stejné jako horizontální zvýšení kapacity. Jediný rozdíl je, že použijete nižší hodnotu **kapacity**. Když horizontálně snížíte kapacitu škálovací sady, odeberete instance virtuálních počítačů ze škálovací sady. Za normálních okolností Service Fabric nepozná, co se stalo, a domnívá se, že se uzel ztratil. Service Fabric pak hlásí, že stav clusteru není v pořádku. Pokud chcete tomuto nežádoucímu stavu zabránit, musíte Service Fabric informovat, že očekáváte, že uzel zmizí.
+Horizontální snížení kapacity je stejné jako horizontální zvýšení kapacity. Jediný rozdíl je, že použijete nižší hodnotu **kapacity**. Když horizontálně snížíte kapacitu škálovací sady, odeberete instance virtuálních počítačů ze škálovací sady. Za normálních okolností Service Fabric nepozná, co se stalo, a domnívá se, že se uzel ztratil. Service Fabric pak hlásí, že stav clusteru není v pořádku. Pokud chcete tomuto nežádoucímu stavu zabránit, je potřeba Service Fabric informovat, že očekáváte, že uzel zmizí.
 
 ### <a name="remove-the-service-fabric-node"></a>Odebrání uzlu Service Fabric
 
 > [!NOTE]
 > Tato část se vztahuje jenom na *bronzovou* úroveň odolnosti. Další informace o odolnosti najdete v článku [Plánování kapacity clusteru Service Fabric][durability].
 
-Když horizontálně snížíte kapacitu škálovací sady virtuálních počítačů, sada (ve většině případů) odebere instanci virtuálního počítače, který byl vytvořen naposledy. Proto musíte najít odpovídající, naposledy vytvořený uzel Service Fabric. Tento poslední uzel můžete najít kontrolou největší hodnoty vlastnosti `NodeInstanceId` na uzlech Service Fabric. Příklady kódu níže jsou seřazené podle instance uzlu a vrátí podrobnosti o instanci s největší hodnotou ID.
+V zájmu toho, aby byly uzly clusteru rovnoměrně rozdělené v doménách upgradu a doménách selhání a aby se tedy i rovnoměrně využívaly, je potřeba jako první odebrat naposledy vytvořený uzel. Jinak řečeno, uzly by se měly odebírat v opačném pořadí, než v jakém došlo k jejich vytvoření. Naposledy vytvořený uzel je uzel s nejvyšší hodnotou vlastnosti `virtual machine scale set InstanceId`. Následující příklady kódu vracejí naposledy vytvořený uzel.
 
 ```powershell
 Get-ServiceFabricNode | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending | Select-Object -First 1
@@ -131,7 +131,7 @@ Get-ServiceFabricNode | Sort-Object { $_.NodeName.Substring($_.NodeName.LastInde
 sfctl node list --query "sort_by(items[*], &name)[-1]"
 ```
 
-Cluster Service Fabric potřebuje vědět, že tento uzel se odebere. Musíte provést tři kroky:
+Cluster Service Fabric potřebuje vědět, že se tento uzel odebere. Musíte provést tři kroky:
 
 1. Zakázat uzel, aby už nefungoval jako replika pro data.  
 PowerShell: `Disable-ServiceFabricNode`  

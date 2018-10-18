@@ -10,14 +10,14 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.openlocfilehash: 4ac5861dabbc473099886b4f099824cde60f38b9
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 96a151b3de5d59ad74eaf7061b1a3ff91d602759
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122865"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044412"
 ---
-# <a name="manage-mailing-list-requests-with-a-logic-app"></a>Správa požadavků na seznam adresátů s využitím aplikace logiky
+# <a name="manage-mailing-list-requests-with-azure-logic-apps"></a>Správa požadavků na seznam adresátů pomocí Azure Logic Apps
 
 Služba Azure Logic Apps pomáhá automatizovat pracovní postupy a integrovat data napříč službami Azure, službami Microsoftu a dalšími aplikacemi SaaS (software jako služba) a místními systémy. V tomto kurzu se dozvíte, jak vytvořit [aplikaci logiky](../logic-apps/logic-apps-overview.md), která zpracovává žádosti o přihlášení do seznamu adresátů spravovaného službou [MailChimp](https://mailchimp.com/).
 Tato aplikace logiky monitoruje tyto žádosti v e-mailovém účtu, odesílá je ke schválení a přidává schválené členy do seznamu adresátů.

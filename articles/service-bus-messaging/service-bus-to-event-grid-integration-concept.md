@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: get-started-article
-ms.date: 02/15/2018
+ms.date: 09/15/2018
 ms.author: spelluru
-ms.openlocfilehash: 2b6f46c10603e54f0f77a635b3233073aadac0cd
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 9e7e853ad7562bf5d449479ad730a5dabd6a97b8
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700119"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585420"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Přehled integrace služby Azure Service Bus do služby Event Grid
 
@@ -129,9 +129,9 @@ Nový odběr služby Event Grid vytvoříte následovně:
 2. V levém podokně vyberte **Event Grid**. 
 3. Vyberte **Odběr události**.  
 
-   Následující obrázek ukazuje obor názvů obsahující několik odběrů služby Event Grid:
+   Následující obrázek představuje obor názvů obsahující předplatné služby Event Grid:
 
-   ![20][]
+   ![Předplatná Event Gridu](./media/service-bus-to-event-grid-integration-concept/sbtoeventgridportal.png)
 
    Následující obrázek ukazuje vytvoření odběru funkce nebo webhooku bez konkrétního filtrování:
 
@@ -176,7 +176,7 @@ Teď můžete prozkoumat další možnosti instalace nebo [otestovat tok událos
 ## <a name="next-steps"></a>Další kroky
 
 * [Příklady](service-bus-to-event-grid-integration-example.md) pro službu Service Bus a Event Grid.
-* Další informace o službě [Event Grid](https://docs.microsoft.com/azure/azure-functions/).
+* Další informace o službě [Event Grid](https://docs.microsoft.com/azure/event-grid/).
 * Další informace o službě [Azure Functions](https://docs.microsoft.com/azure/azure-functions/).
 * Další informace o [Logic Apps](https://docs.microsoft.com/azure/logic-apps/).
 * Další informace o službě [Service Bus](https://docs.microsoft.com/azure/azure-functions/).

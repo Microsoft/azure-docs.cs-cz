@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: anithaa
 ms.custom: ''
-ms.openlocfilehash: dcc0456637c17e779593b121025596149398afba
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 3bae20a7d6eea298dd09d24c0c5b53365784b3d0
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410217"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239179"
 ---
 # <a name="virtual-network-service-endpoints"></a>Koncové body služby virtuální sítě
 
@@ -49,7 +49,7 @@ Nejaktuálnější oznámení najdete na stránce [Aktualizace služby Azure Vir
 
 Koncové body služby poskytují následující výhody:
 
-- **Zlepšení zabezpečení prostředků služeb Azure:** Pomocí koncových bodů služby je možné svázat prostředky služeb Azure s vaší virtuální sítí. Svázání prostředků služeb s virtuálními sítěmi poskytuje lepší zabezpečení díky úplnému odebrání veřejného internetového přístupu k prostředkům a povolení provozu pouze z vaší virtuální sítě.
+- **Zlepšení zabezpečení prostředků služeb Azure:** Privátní adresní prostor virtuální sítě se může překrývat, takže se nedá použít k jednoznačné identifikaci provozu pocházejícího z vaší virtuální sítě. Koncové body služeb umožňují zabezpečit prostředky služeb Azure ve vaší virtuální síti tím, že rozšíří identitu virtuální sítě na službu. Jakmile budou ve vaší virtuální síti povolené koncové body služby, můžete svázat prostředky služeb Azure s virtuální sítí tím, že do prostředků přidáte pravidlo virtuální sítě. Získáte tak lepší zabezpečení díky úplnému odebrání veřejného internetového přístupu k prostředkům a povolení provozu jenom z vaší virtuální sítě.
 - **Optimální směrování provozu služeb Azure z vaší virtuální sítě:** V současné době všechny trasy, které vynucují internetový provoz přes místní nebo virtuální zařízení, což se označuje jako vynucené tunelování, vynucují také směrování provozu služeb Azure stejnou trasou jako internetový provoz. Koncové body služby poskytují optimální směrování provozu Azure. 
 
   Koncové body vždy směrují provoz služby přímo z vaší virtuální sítě do služby v páteřní síti Microsoft Azure. Udržování provozu na páteřní síti Azure umožňuje pokračovat v auditování a monitorování odchozího internetového provozu z vašich virtuálních sítí prostřednictvím vynuceného tunelování, aniž by to mělo vliv na provoz služby. Další informace o [trasách definovaných uživatelem a vynuceném tunelování](virtual-networks-udr-overview.md)

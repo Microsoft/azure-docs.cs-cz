@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: c9350704943bebada217338488e51b97acc550ca
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 188e3c0e8b9a9d421b40e142e534aca2741fee56
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423608"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248875"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Kurz: Nasazení Azure Machine Learning jako modulu IoT Edge (Preview)
 
@@ -46,11 +46,8 @@ Zařízení Azure IoT Edge:
 Cloudové prostředky:
 
 * [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) úrovně Free v Azure. 
-* Účet služby Azure Machine Learning. Postupujte podle pokynů v části o [vytvoření účtů služeb Azure Machine Learning a instalaci aplikace Azure Machine Learning Workbench](../machine-learning/desktop-workbench/quickstart-installation.md). Kvůli tomuto kurzu nemusíte aplikaci Workbench instalovat. 
+* Pracovní prostor služby Azure Machine Learning. Můžete ho vytvořit podle pokynů v tématu [Příprava na nasazení modelů v IoT Edge](../machine-learning/service/how-to-deploy-to-iot.md).
 
-Prostředky pro vývoj:
-
-* Správa modelů pro Azure ML. K nastavení prostředí a vytvoření účtu použijte pokyny v [nastavení Správy modelů](../machine-learning/desktop-workbench/deployment-setup-configuration.md). Při nastavení nasazení doporučujeme místo clusteru zvolit místní kroky (kde je to možné).
 
 ### <a name="disable-process-identification"></a>Zakázání identifikace procesů
 
@@ -94,18 +91,7 @@ export IOTEDGE_HOST="http://172.17.0.1:15580"
 ## <a name="create-the-azure-ml-container"></a>Vytvoření kontejneru Azure ML
 V této části si stáhnete soubory trénovaného modelu a převedete je na kontejner Azure ML.
 
-Na počítači, na kterém běží Správa modelů pro Azure ML, si stáhněte ze sady nástrojů Azure ML IoT Toolkit na GitHubu soubory [iot_score.py](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/iot_score.py) a [model.pkl](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/model.pkl) a uložte je. Tyto soubory definují trénovaný model strojového učení, který nasadíte na svém zařízení IoT Edge.
-
-Trénovaný model použijte k vytvoření kontejneru, který můžete nasadit na zařízeních IoT Edge. Následující příkaz použijte k:
-
-   * Registraci modelu.
-   * Vytvořte manifest.
-   * Vytvoření image kontejneru Docker s názvem *machinelearningmodule*.
-   * Nasazení image v clusteru Azure Kubernetes Service (AKS).
-
-```cmd
-az ml service create realtime --model-file model.pkl -f iot_score.py -n machinelearningmodule -r python
-```
+Podle pokynů v dokumentaci [Příprava na nasazení modelů v IoT Edge](../machine-learning/service/how-to-deploy-to-iot.md) vytvořte kontejner Dockeru s vaším modelem strojového učení.  Veškeré komponenty potřebné pro image Dockeru najdete v [úložišti Git AI Toolkit pro Azure IoT Edge](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial).
 
 ### <a name="view-the-container-repository"></a>Zobrazení úložiště kontejnerů
 

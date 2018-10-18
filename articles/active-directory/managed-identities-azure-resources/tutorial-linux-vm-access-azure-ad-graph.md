@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/20/2018
 ms.author: daveba
-ms.openlocfilehash: 548111a6c2b9e0cf8c5b20eee5cc8fa45fe02da8
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 1d1e0d8f5a030daadb8dab1233dee52d5485c8fb
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47453107"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237479"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Linuxem pro přístup k rozhraní Azure AD Graph API
 
@@ -61,7 +61,7 @@ az login
 
 ## <a name="add-your-vms-identity-to-a-group-in-azure-ad"></a>Přidání identity virtuálního počítače do skupiny ve službě Azure AD
 
-Když jste u virtuálního počítače s Linuxem povolili spravovanou identitu přiřazenou systémem, vytvořil se ve službě Azure AD instanční objekt.  Tento virtuální počítač potřebujete přidat do nějaké skupiny. Postup přidání virtuálního počítače do skupiny ve službě Azure AD najdete v následujícím článku:
+Když jste u virtuálního počítače s Linuxem povolili spravovanou identitu přiřazenou systémem, vytvořil se ve službě Azure AD instanční objekt.  Virtuální počítač je potřeba přidat do nějaké skupiny. Postup přidání virtuálního počítače do skupiny ve službě Azure AD najdete v následujícím článku:
 
 - [Přidání členů skupiny](/cli/azure/ad/group/member?view=azure-cli-latest#az-ad-group-member-add)
 
@@ -137,7 +137,7 @@ Azure AD Graph:
    curl "https://graph.windows.net/myorganization/servicePrincipals/<VM Object ID>/appRoleAssignments?api-version=1.6" -X POST -d '{"id":"5778995a-e1bf-45b8-affa-663a9f3f4d04","principalId":"<VM Object ID>","resourceId":"81789304-ff96-402b-ae73-07ec0db26721"}'-H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
    ``` 
  
-## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-ad-graph"></a>Získání přístupového tokenu pomocí identity virtuálního počítače a jeho použití k volání Azure AD Graphu 
+## <a name="get-an-access-token-using-the-vms-identity-to-call-azure-ad-graph"></a>Získání přístupového tokenu pomocí identity virtuálního počítače k volání služby Azure AD Graph 
 
 K dokončení tohoto postupu budete potřebovat klienta SSH. Pokud používáte Windows, můžete použít klienta SSH v [subsystému Windows pro Linux](https://msdn.microsoft.com/commandline/wsl/about). Pokud potřebujete pomoc při konfiguraci klíčů klienta SSH, přečtěte si, [jak na počítači s Windows v Azure používat klíče SSH](../../virtual-machines/linux/ssh-from-windows.md) nebo [jak na linuxových virtuálních počítačích v Azure vytvářet a používat pár veřejného a privátního klíče SSH](../../virtual-machines/linux/mac-create-ssh-keys.md).
 

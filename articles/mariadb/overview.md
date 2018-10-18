@@ -9,12 +9,12 @@ ms.service: mariadb
 ms.topic: overview
 ms.date: 09/24/2018
 ms.custom: mvc
-ms.openlocfilehash: 1ba4a9bd597473b71ac7561c41b81783b899766a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3649a173d5707179ca8547a8169b7d308c4f7f1c
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971599"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249158"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Co je Azure Database for MariaDB?
 Azure Database for MariaDB je relační databázová služba v cloudu Microsoftu založená na databázovém stroji [MariaDB Community Edition](https://mariadb.org/download/). Tato služba je ve verzi Public Preview. Azure Database for MariaDB nabízí:
@@ -51,7 +51,7 @@ Databázové služby Azure mají tradici zabezpečení dat, kterou služba Azure
 
 Služba Azure Database for MariaDB používá pro neaktivní uložená data šifrování úložiště. Data včetně záloh se šifrují na disku (s výjimkou dočasných souborů vytvořených databázovým strojem při spouštění dotazů). Služba používá 256bitové šifrování AES, které je součástí šifrování úložiště Azure, a klíče jsou spravované systémem. Šifrování úložiště je vždycky aktivní a není možné ho zakázat.
 
-Ve výchozím nastavení je ve službě Azure Database for MariaDB nakonfigurované vyžadování zabezpečení připojení protokolem SSL<!--[SSL connection security](./concepts-ssl-connection-security.md)--> pro data přenášená přes síť. Díky vynucování připojení SSL mezi databázovým serverem a klientskými aplikacemi se šifruje datový proud mezi serverem a vaší aplikací, což pomáhá chránit před napadením útočníky, kteří se vydávají za prostředníky. Volitelně můžete vyžadování SSL pro připojení k vaší databázové službě zakázat, pokud vaše klientská aplikace nepodporuje připojení SSL.
+Ve výchozím nastavení je ve službě Azure Database for MariaDB nakonfigurované vyžadování [zabezpečení připojení protokolem SSL](./concepts-ssl-connection-security.md) pro data přenášená přes síť. Díky vynucování připojení SSL mezi databázovým serverem a klientskými aplikacemi se šifruje datový proud mezi serverem a vaší aplikací, což pomáhá chránit před napadením útočníky, kteří se vydávají za prostředníky. Volitelně můžete vyžadování SSL pro připojení k vaší databázové službě zakázat, pokud vaše klientská aplikace nepodporuje připojení SSL.
 
 ## <a name="contacts"></a>Kontakty
 Jakékoli dotazy nebo návrhy k používání Azure Database for MariaDB zasílejte e-mailem týmu Azure Database for MariaDB ([@AskAzure Database for MariaDB](mailto:AskAzureDBforMariaDB@service.microsoft.com)). Poznámka: Tento alias neslouží k poskytování technické podpory.

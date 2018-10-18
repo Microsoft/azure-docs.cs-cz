@@ -1,35 +1,36 @@
 ---
-title: Spustit TensorFlow model v kognitivní služeb Azure Python - Service vize vlastní - | Microsoft Docs
-description: Spustit TensorFlow model v Pythonu
+title: 'Kurz: Spuštění modelu TensorFlow v Pythonu – Custom Vision Service'
+titlesuffix: Azure Cognitive Services
+description: Spusťte model TensorFlow v Pythonu.
 services: cognitive-services
 author: areddish
-manager: chbuehle
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/17/2018
 ms.author: areddish
-ms.openlocfilehash: d31036404604104ca28328b6c8bc5d3ca74d83ea
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 26427406b045b96f2f3f612e4444b7dc2afcefc6
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343716"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247308"
 ---
-# <a name="run-tensorflow-model-in-python"></a>Spustit TensorFlow model v Pythonu
+# <a name="tutorial-run-tensorflow-model-in-python"></a>Kurz: Spuštění modelu TensorFlow v Pythonu
 
-Až budete mít [exportovat modelu TensorFlow](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) ze služby vize vlastní tento rychlý start vám ukáže, jak používat tento model místně klasifikovat bitové kopie.
+V tomto rychlém startu se dozvíte, jak po [exportování modelu TensorFlow](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) ze služby Custom Vision Service použít tento model místně ke klasifikaci obrázků.
 
 ## <a name="install-required-components"></a>Instalace požadovaných součástí
 
 ### <a name="prerequisites"></a>Požadavky
 
-Pokud chcete použít tento kurz, musíte udělat následující:
+K použití tohoto kurzu potřebujete:
 
-- Nainstalujte aplikaci Python 2.7 + nebo Python 3.5 +.
-- Nainstalujte pip.
+- Nainstalovat Python 2.7 nebo novější nebo Python 3.5 nebo novější.
+- Nainstalovat pip.
 
-Také budete muset nainstalovat následující balíčky:
+Budete muset nainstalovat také následující balíčky:
 
 ```
 pip install tensorflow
@@ -38,9 +39,9 @@ pip install numpy
 pip install opencv-python
 ```
 
-## <a name="load-your-model-and-tags"></a>Načtení modelu a značky
+## <a name="load-your-model-and-tags"></a>Načtení modelu a značek
 
-Tento soubor stažený zip obsahuje model.pb a labels.txt. Tyto soubory představují pro cvičný model a klasifikační štítky. Prvním krokem je načíst model do projektu.
+Stažený soubor ZIP obsahuje soubory model.pb a labels.txt. Tyto soubory představují natrénovaný model a popisky klasifikace. Prvním krokem je načíst model do projektu.
 
 ```Python
 import tensorflow as tf
@@ -60,11 +61,11 @@ with open(labels_filename, 'rt') as lf:
         labels.append(l.strip())
 ```
 
-## <a name="prepare-an-image-for-prediction"></a>Příprava image pro předpověď
+## <a name="prepare-an-image-for-prediction"></a>Příprava obrázku pro předpověď
 
-Existuje několik kroků při přípravě image tak, aby se správného tvaru pro předpověď. Tyto kroky napodobovat zpracování obrázků provést během cvičení:
+Příprava obrázku, aby měl správný tvar pro předpověď, se skládá z několika kroků. Tyto kroky napodobují manipulaci s obrázkem, která se provádí během trénování:
 
-### <a name="open-the-file-and-create-an-image-in-the-bgr-color-space"></a>Otevřete soubor a vytvořit bitovou kopii v BGR barevný prostor
+### <a name="open-the-file-and-create-an-image-in-the-bgr-color-space"></a>Otevření souboru a vytvoření obrázku v barevném prostoru BGR
 
 ```Python
 from PIL import Image
@@ -82,7 +83,7 @@ image = update_orientation(image)
 image = convert_to_opencv(image)
 ```
 
-### <a name="deal-with-images-with-a-dimension-1600"></a>Řešení s obrázky s dimenzí > 1 600
+### <a name="deal-with-images-with-a-dimension-1600"></a>Zpracování obrázků s rozměry většími než 1 600 pixelů
 
 ```Python
 # If the image has either w or h greater than 1600 we resize it down respecting
@@ -90,7 +91,7 @@ image = convert_to_opencv(image)
 image = resize_down_to_1600_max_dim(image)
 ```
 
-### <a name="crop-the-largest-center-square"></a>Oříznutí největší hranaté center
+### <a name="crop-the-largest-center-square"></a>Oříznutí největšího středového čtverce
 
 ```Python
 # We next get the largest center square
@@ -99,7 +100,7 @@ min_dim = min(w,h)
 max_square_image = crop_center(image, min_dim, min_dim)
 ```
 
-### <a name="resize-down-to-256x256"></a>Změnit velikost dolů 256 x 256
+### <a name="resize-down-to-256x256"></a>Zmenšení na 256 × 256 pixelů
 
 ```Python
 # Resize that square down to 256x256
@@ -107,7 +108,7 @@ augmented_image = resize_to_256_square(max_square_image)
 ```
 
 
-### <a name="crop-the-center-for-the-specific-input-size-for-the-model"></a>Oříznutí center pro konkrétní vstupní velikost pro model
+### <a name="crop-the-center-for-the-specific-input-size-for-the-model"></a>Oříznutí středu na konkrétní velikost vstupu pro model
 
 ```Python
 # The compact models have a network size of 227x227, the model requires this size.
@@ -118,7 +119,7 @@ augmented_image = crop_center(augmented_image, network_input_size, network_input
 
 ```
 
-Tento postup použijte následující podpůrné funkce:
+Ve výše uvedených krocích se používají následující pomocné funkce:
 
 ```Python
 def convert_to_opencv(image):
@@ -162,9 +163,9 @@ def update_orientation(image):
     return image
 ```
 
-## <a name="predict-an-image"></a>Předpověď bitovou kopii
+## <a name="predict-an-image"></a>Předpověď obrázku
 
-Jakmile bitová kopie je připravená jako tensor, které vám můžeme poslat prostřednictvím modelu pro předpovědi:
+Jakmile bude obrázek připravený jako tensor, můžeme ho odeslat do modelu a získat předpověď:
 
 ```Python
 
@@ -179,7 +180,7 @@ with tf.Session() as sess:
 
 ## <a name="view-the-results"></a>Zobrazení výsledků
 
-Výsledky spuštění tensor bitovou kopii prostřednictvím modelu pak muset být mapována na štítky.
+Výsledky zpracování tensoru obrázku modelem pak bude potřeba namapovat zpět na popisky.
 
 ```Python
     # Print the highest probability label
@@ -189,15 +190,15 @@ Výsledky spuštění tensor bitovou kopii prostřednictvím modelu pak muset b�
 
     # Or you can print out all of the results mapping labels to probabilities.
     label_index = 0
-    for p in predictions:
-        truncated_probablity = np.float64(round(p,8))
+    for p in predictions[0]:
+        truncated_probablity = np.float64(np.round(p,8))
         print (labels[label_index], truncated_probablity)
         label_index += 1
 ```
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Můžete také zabalit modelu do mobilní aplikace:
-* [Použít exportovaný Tensorflow modelu v aplikaci pro Android](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)
-* [Použít exportovaný CoreML modelu v aplikaci Swift iOS](https://go.microsoft.com/fwlink/?linkid=857726)
-* [Použít exportovaný CoreML modelu v aplikaci pro systém iOS pomocí Xamarinu](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)
+Model můžete také zabalit do mobilní aplikace:
+* [Použití exportovaného modelu Tensorflow v aplikaci pro Android](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)
+* [Použití exportovaného modelu CoreML v aplikaci Swift pro iOS](https://go.microsoft.com/fwlink/?linkid=857726)
+* [Použití exportovaného modelu CoreML v aplikaci pro iOS s Xamarinem](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)
 

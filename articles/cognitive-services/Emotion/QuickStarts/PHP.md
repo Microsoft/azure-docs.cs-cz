@@ -1,34 +1,36 @@
 ---
-title: Rychlý start rozpoznávání emocí úrovně rozhraní API PHP | Microsoft Docs
-description: Get informace a ukázky kódu můžete rychle začít pracovat s PHP v kognitivní služby pomocí rozhraní API pro rozpoznávání emocí úrovně.
+title: 'Rychlý start: Rozpoznávání emocí ve výrazech tváří na obrázku – rozhraní API pro rozpoznávání emocí, PHP'
+titlesuffix: Azure Cognitive Services
+description: Získejte informace a vzorky kódu, které vám pomůžou rychle začít používat rozhraní API pro rozpoznávání emocí pomocí PHP.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: quickstart
 ms.date: 05/23/2017
 ms.author: anroth
-ms.openlocfilehash: 987d5a3eedaa17f1127be34e5f90ec2456fab99b
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
-ms.translationtype: MT
+ROBOTS: NOINDEX
+ms.openlocfilehash: c3dffa3c42df4a30b634417b551dd0e8af04145b
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37019393"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239502"
 ---
-# <a name="emotion-api-php-quick-start"></a>Rozpoznávání emocí úrovně rozhraní API PHP rychlý Start
+# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Rychlý start: Vytvoření aplikace pro rozpoznávání emocí ve výrazech tváří na obrázku
 
 > [!IMPORTANT]
-> 30. října 2017 ukončen video Preview rozhraní API. Vyzkoušet nový [Preview rozhraní API Indexer Video](https://azure.microsoft.com/services/cognitive-services/video-indexer/) k snadno rozbalte statistiky z videa a vylepšení možnosti zjišťování obsahu, jako je například výsledky hledání, pomocí zjišťování mluvené slovo, řezy, znaků a emoce. [Další informace](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview).
+> Rozhraní API pro rozpoznávání emocí se přestane používat 15. února 2019. Funkce rozpoznávání emocí je teď obecně dostupná v rámci [rozhraní API pro rozpoznávání tváře](https://docs.microsoft.com/azure/cognitive-services/face/). 
 
-Tento článek obsahuje informace a ukázky kódu, které vám pomohou rychle začít používat PHP a [rozpoznávání emocí úrovně rozhraní API rozpoznat metoda](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) rozpoznat emoce vyjádřená jeden nebo více osob v obraze. 
+Tento článek obsahuje informace a ukázky kódu, které vám pomůžou rychle začít používat PHP a [metodu Recognize rozhraní API pro rozpoznávání emocí](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) k rozpoznávání emocí vyjadřovaných jedním člověkem nebo několika lidmi na obrázku.
 
 ## <a name="prerequisite"></a>Požadavek
-* Získat klíč bezplatné předplatné [sem](https://azure.microsoft.com/try/cognitive-services/)
+* [Tady](https://azure.microsoft.com/try/cognitive-services/) získejte klíč svého bezplatného předplatného.
 
-## <a name="recognize-emotions-php-example-request"></a>Rozpoznat emoce PHP příklad požadavku
+## <a name="recognize-emotions-php-example-request"></a>Ukázka požadavku na rozpoznávání emocí s PHP
 
-Změňte adresu URL REST a použít tak umístění, kde získat klíče pro předplatné, změňte obsah na adresu URL obrázku, který chcete testovat a nahraďte hodnotu "Ocp-Apim-Subscription-Key" klíč platné předplatné.
+Změňte adresu URL REST na umístění, ve kterém jste získali klíče předplatného, tělo změňte na adresu URL obrázku, který chcete vyzkoušet, a hodnotu „Ocp-Apim-Subscription-Key“ nahraďte platným klíčem předplatného.
 
 ```php
 <?php
@@ -36,7 +38,7 @@ Změňte adresu URL REST a použít tak umístění, kde získat klíče pro př
 require_once 'HTTP/Request2.php';
 
 // NOTE: You must use the same region in your REST call as you used to obtain your subscription keys.
-//   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the 
+//   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the
 //   URL below with "westcentralus".
 $request = new Http_Request2('https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize');
 $url = $request->getUrl();
@@ -75,13 +77,13 @@ catch (HttpException $ex)
 ?>
 ```
 
-## <a name="recognize-emotions-sample-response"></a>Rozpoznat emoce ukázková odpověď
-Úspěšné volání vrátí pole položek vzhled a jejich přidružené rozpoznávání emocí úrovně skóre podle velikosti obdélníku řez v sestupném pořadí. Prázdnou odpověď označuje, že nebyly zjištěny žádné řezy. Položka rozpoznávání emocí úrovně obsahuje následující pole:
-* faceRectangle - obdélníku umístění řez v bitové kopii.
-* skóre - rozpoznávání emocí úrovně skóre pro každý řez v bitové kopii. 
+## <a name="recognize-emotions-sample-response"></a>Ukázka odpovědi rozpoznávání emocí
+Úspěšné volání vrátí pole položek tváří s přidruženým skóre rozpoznávání emocí, které bude seřazené podle velikosti obdélníku s tváří v sestupném pořadí. Prázdná odpověď znamená, že se nezjistily žádné tváře. Položka rozpoznávání emocí obsahuje následující pole:
+* faceRectangle – umístění obdélníku tváře na obrázku.
+* scores – skóre rozpoznávání emocí pro jednotlivé tváře na obrázku.
 
 ```json
-application/json 
+application/json
 [
   {
     "faceRectangle": {
@@ -102,4 +104,3 @@ application/json
     }
   }
 ]
-

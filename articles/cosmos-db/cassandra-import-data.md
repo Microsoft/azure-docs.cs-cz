@@ -9,12 +9,12 @@ ms.author: govindk
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 0bf5e47513ded4b2c65e7291db497e53a42776a8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f73a201a25bb2f975e8a261a6c21aa7b066c3a7c
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976172"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247846"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-cassandra-api-account"></a>Migrace dat do účtu rozhraní API Cassandra služby Azure Cosmos DB
 
@@ -62,7 +62,7 @@ Po identifikování požadavků vaší existující úlohy byste měli podle zji
 
 ## <a name="prerequisites-for-migration"></a>Požadavky na migraci
 
-* **Vytvořené tabulky v rámci účtu rozhraní API Cassandra služby Azure Cosmos DB:** Před zahájením migrace dat si předem vytvořte všechny tabulky z portálu Azure Portal nebo z cqlsh.
+* **Vytvořené tabulky v rámci účtu rozhraní API Cassandra služby Azure Cosmos DB:** Před zahájením migrace dat si předem vytvořte všechny tabulky z portálu Azure Portal nebo z cqlsh. Pokud provádíte migraci na účet služby Azure Cosmos DB, který má propustnost na úrovni databáze, nezapomeňte při vytváření kontejnerů Azure Cosmos DB zadat klíč oddílu.
 
 * **Zvýšená propustnost:** Doba trvání migrace dat závisí na propustnosti, kterou pro tabulky v Azure Cosmos DB zřídíte. Po dobu trvání migrace propustnost zvyšte. Vyšší propustnost vám umožní zabránit omezování rychlosti a zkrátit dobu migrace. Po dokončení migrace propustnost snižte, abyste dosáhli nižších nákladů. Další informace o zvýšení propustnosti najdete v tématu věnovaném [nastavení propustnosti](set-throughput.md) pro kontejnery Azure Cosmos DB. Také se doporučuje mít účet služby Azure Cosmos DB ve stejné oblasti, v jaké je zdrojová databáze. 
 

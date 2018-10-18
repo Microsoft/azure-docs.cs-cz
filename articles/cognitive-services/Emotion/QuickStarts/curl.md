@@ -1,35 +1,37 @@
 ---
-title: Rychlý start cURL rozpoznávání emocí úrovně rozhraní API | Microsoft Docs
-description: Get informace a ukázky kódu můžete rychle začít, pomocí rozhraní API pro rozpoznávání emocí úrovně cURL v kognitivní služby.
+title: 'Rychlý start: Rozpoznávání emocí ve výrazech tváří na obrázku – rozhraní API pro rozpoznávání emocí, cURL'
+titlesuffix: Azure Cognitive Services
+description: Získejte informace a vzorky kódu, které vám pomůžou rychle začít používat rozhraní API pro rozpoznávání emocí pomocí nástroje cURL.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: quickstart
 ms.date: 05/23/2017
 ms.author: anroth
-ms.openlocfilehash: a7ca2cac718797462bb4dc889b3f1361b252435e
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
-ms.translationtype: MT
+ROBOTS: NOINDEX
+ms.openlocfilehash: dfdaa89c9d29e419539f385f601dc7f264bf838e
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37021094"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237071"
 ---
-# <a name="emotion-api-curl-quick-start"></a>Rozpoznávání emocí úrovně rozhraní API cURL rychlý Start
+# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Rychlý start: Vytvoření aplikace pro rozpoznávání emocí ve výrazech tváří na obrázku
 
 > [!IMPORTANT]
-> 30. října 2017 ukončen video Preview rozhraní API. Vyzkoušet nový [Preview rozhraní API Indexer Video](https://azure.microsoft.com/services/cognitive-services/video-indexer/) k snadno rozbalte statistiky z videa a vylepšení možnosti zjišťování obsahu, jako je například výsledky hledání, pomocí zjišťování mluvené slovo, řezy, znaků a emoce. [Další informace](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview).
+> Rozhraní API pro rozpoznávání emocí se přestane používat 15. února 2019. Funkce rozpoznávání emocí je teď obecně dostupná v rámci [rozhraní API pro rozpoznávání tváře](https://docs.microsoft.com/azure/cognitive-services/face/).
 
-Tento článek obsahuje informace a ukázky kódu, které vám pomohou rychle začít používat [rozpoznávání emocí úrovně rozhraní API rozpoznat metoda](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) s cURL rozpoznat emoce vyjádřená jeden nebo více osob v obraze. 
+Tento článek obsahuje informace a ukázky kódu, které vám pomůžou rychle začít používat [metodu Recognize rozhraní API pro rozpoznávání emocí](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) s nástrojem cURL k rozpoznávání emocí vyjadřovaných jedním člověkem nebo několika lidmi na obrázku.
 
 ## <a name="prerequisite"></a>Požadavek
-* Získat klíč bezplatné předplatné [sem](https://azure.microsoft.com/try/cognitive-services/)
+* [Tady](https://azure.microsoft.com/try/cognitive-services/) získejte klíč svého bezplatného předplatného.
 
-## <a name="recognize-emotions-curl-example-request"></a>Rozpoznat, že cURL emoce příklad požadavku
+## <a name="recognize-emotions-curl-example-request"></a>Ukázka požadavku na rozpoznávání emocí s nástrojem cURL
 
 > [!NOTE]
-> Ve volání REST jako jste použili k získání klíče pro odběr je nutné použít stejné umístění. Například pokud vaše předplatné klíče se získají z westcentralus, nahraďte "westus" v adrese URL níže "westcentralus".
+> Ve volání REST musíte použít stejné umístění, které jste použili k získání klíčů předplatného. Pokud jste třeba získali klíče předplatného z oblasti westcentralus, nahraďte oblast westus v následující adrese URL oblastí westcentralus.
 
 ```json
 @ECHO OFF
@@ -38,16 +40,16 @@ curl -v -X POST "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recogni
 -H "Content-Type: application/json"
 -H "Ocp-Apim-Subscription-Key: {subscription key}"
 
---data-ascii "{body}" 
+--data-ascii "{body}"
 ```
 
-## <a name="recognize-emotions-sample-response"></a>Rozpoznat emoce ukázková odpověď
-Úspěšné volání vrátí pole položek vzhled a jejich přidružené rozpoznávání emocí úrovně skóre podle velikosti obdélníku řez v sestupném pořadí. Prázdnou odpověď označuje, že nebyly zjištěny žádné řezy. Položka rozpoznávání emocí úrovně obsahuje následující pole:
-* faceRectangle - obdélníku umístění řez v bitové kopii.
-* skóre - rozpoznávání emocí úrovně skóre pro každý řez v bitové kopii. 
+## <a name="recognize-emotions-sample-response"></a>Ukázka odpovědi rozpoznávání emocí
+Úspěšné volání vrátí pole položek tváří s přidruženým skóre rozpoznávání emocí, které bude seřazené podle velikosti obdélníku s tváří v sestupném pořadí. Prázdná odpověď znamená, že se nezjistily žádné tváře. Položka rozpoznávání emocí obsahuje následující pole:
+* faceRectangle – umístění obdélníku tváře na obrázku.
+* scores – skóre rozpoznávání emocí pro jednotlivé tváře na obrázku.
 
 ```json
-application/json 
+application/json
 [
   {
     "faceRectangle": {
@@ -68,4 +70,3 @@ application/json
     }
   }
 ]
-

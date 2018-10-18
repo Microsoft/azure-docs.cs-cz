@@ -10,12 +10,12 @@ ms.component: video-indexer
 ms.topic: sample
 ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: 0d75a58ddf0607286d41867828119fdd05e07d22
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 3d9e00a97355c03da5360846d4cd9f27a8540ed6
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985576"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017428"
 ---
 # <a name="example-embed-video-indexer-widgets-into-your-applications"></a>Příklad: Vložení widgetů Video Indexeru do vašich aplikací
 
@@ -47,15 +47,16 @@ Widget **Player** umožňuje streamovat video pomocí adaptivní přenosové ryc
 ## <a name="embedding-public-content"></a>Vkládání veřejného obsahu
 
 1. Přejděte na web [Video Indexer](https://www.videoindexer.ai/) a přihlaste se.
-2. Klikněte na tlačítko „vložení“, které se zobrazuje pod videem.
+2. Klikněte na video, se kterým chcete pracovat.
+3. Klikněte na tlačítko „vložení“, které se zobrazuje pod videem.
 
     ![Widget](./media/video-indexer-embed-widgets/video-indexer-widget01.png)
 
     Po kliknutí na tlačítko se na obrazovce zobrazí modální okno vložení, kde můžete zvolit, který widget chcete do aplikace vložit.
     Výběrem widgetu (**Player** nebo **Cognitive Insights**) se vygeneruje kód pro vložení do aplikace.
  
-3. Zvolte typ požadovaného widgetu (**Cognitive Insights** nebo **Player**).
-4. Zkopírujte kód pro vložení a přidejte ho do své aplikace. 
+4. Zvolte typ požadovaného widgetu (**Cognitive Insights** nebo **Player**).
+5. Zkopírujte kód pro vložení a přidejte ho do své aplikace. 
 
     ![Widget](./media/video-indexer-embed-widgets/video-indexer-widget02.png)
 

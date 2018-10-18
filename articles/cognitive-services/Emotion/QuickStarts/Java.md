@@ -1,33 +1,34 @@
 ---
-title: Java rozpoznávání emocí úrovně rozhraní API pro Android rychlý start | Microsoft Docs
-description: Získat informace a ukázku kódu můžete rychle začít, pomocí rozhraní API pro rozpoznávání emocí úrovně Java pro Android v kognitivní služby.
+title: 'Rychlý start: Rozpoznávání emocí ve výrazech tváří na obrázku – rozhraní API pro rozpoznávání emocí, Java'
+description: Získáte informace a ukázku kódu, které vám pomůžou rychle začít používat rozhraní API pro rozpoznávání emocí založené na Javě pro Android.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: quickstart
 ms.date: 05/23/2017
 ms.author: anroth
-ms.openlocfilehash: 0e7d3991b195a83a8b87e306b3b34fbed2098581
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
-ms.translationtype: MT
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5c845c07eff2d4627dd756a49f4b3fee2fca6a7a
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018022"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237616"
 ---
-# <a name="emotion-api-java-for-android-quick-start"></a>Java rozpoznávání emocí úrovně rozhraní API pro Android rychlý Start
+# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Rychlý start: Vytvoření aplikace pro rozpoznávání emocí ve výrazech tváří na obrázku
 
 > [!IMPORTANT]
-> 30. října 2017 ukončen video Preview rozhraní API. Vyzkoušet nový [Preview rozhraní API Indexer Video](https://azure.microsoft.com/services/cognitive-services/video-indexer/) k snadno rozbalte statistiky z videa a vylepšení možnosti zjišťování obsahu, jako je například výsledky hledání, pomocí zjišťování mluvené slovo, řezy, znaků a emoce. [Další informace](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview).
+> Rozhraní API pro rozpoznávání emocí se přestane používat 15. února 2019. Funkce rozpoznávání emocí je teď obecně dostupná v rámci [rozhraní API pro rozpoznávání tváře](https://docs.microsoft.com/azure/cognitive-services/face/). 
 
-Tento článek obsahuje informace a ukázku kódu můžete rychle začít pracovat s [rozpoznávání emocí úrovně rozpoznat metoda](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) v knihovně klienta rozpoznávání emocí úrovně rozhraní API systému Android. Ukázka ukazuje, jak můžete použít Java rozpoznat emoce vyjádřená osoby. 
+Tento článek obsahuje informace a ukázku kódu, které vám pomůžou rychle začít pracovat s [metodou Recognize pro rozpoznávání emocí](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) v klientské knihovně rozhraní API pro rozpoznávání emocí pro Android. Ukázka předvádí, jak použít jazyk Java k rozpoznávání emocí vyjadřovaných různými lidmi.
 
 ## <a name="prerequisites"></a>Požadavky
-* Získat Java rozpoznávání emocí úrovně rozhraní API pro Android SDK [sem](https://github.com/Microsoft/Cognitive-emotion-android)
-* Získat klíč bezplatné předplatné [sem](https://azure.microsoft.com/try/cognitive-services/)
+* Rozhraní API pro rozpoznávání emocí v Javě pro sadu Android SDK najdete [tady](https://github.com/Microsoft/Cognitive-emotion-android).
+* Klíč předplatného můžete bezplatně získat [tady](https://azure.microsoft.com/try/cognitive-services/).
 
-## <a name="recognize-emotions-java-for-android-example-request"></a>Rozpoznat emoce Java pro Android příklad požadavek
+## <a name="recognize-emotions-java-for-android-example-request"></a>Příklad požadavku na rozpoznávání emocí v Javě pro Android
 
 ```java
 // // This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)
@@ -50,7 +51,7 @@ public class Main
         try
         {
             // NOTE: You must use the same region in your REST call as you used to obtain your subscription keys.
-            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the 
+            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the
             //   URL below with "westcentralus".
             URIBuilder uriBuilder = new URIBuilder("https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize");
 
@@ -81,13 +82,13 @@ public class Main
 }
 ```
 
-## <a name="recognize-emotions-sample-response"></a>Rozpoznat emoce ukázková odpověď
-Úspěšné volání vrátí pole položek vzhled a jejich přidružené rozpoznávání emocí úrovně skóre podle velikosti obdélníku řez v sestupném pořadí. Prázdnou odpověď označuje, že nebyly zjištěny žádné řezy. Položka rozpoznávání emocí úrovně obsahuje následující pole:
-* faceRectangle - obdélníku umístění řez v bitové kopii.
-* skóre - rozpoznávání emocí úrovně skóre pro každý řez v bitové kopii. 
+## <a name="recognize-emotions-sample-response"></a>Ukázka odpovědi rozpoznávání emocí
+Úspěšné volání vrátí pole položek tváří s přidruženým skóre rozpoznávání emocí, které bude seřazené podle velikosti obdélníku s tváří v sestupném pořadí. Prázdná odpověď znamená, že se nezjistily žádné tváře. Položka rozpoznávání emocí obsahuje následující pole:
+* faceRectangle – umístění obdélníku tváře na obrázku.
+* scores – skóre rozpoznávání emocí pro jednotlivé tváře na obrázku.
 
 ```json
-application/json 
+application/json
 [
   {
     "faceRectangle": {

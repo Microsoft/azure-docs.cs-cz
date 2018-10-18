@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/10/2018
 ms.author: douglasl
-ms.openlocfilehash: c6817fa20d4177efd3e38f1454f3142f6d40a07d
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: f1cc1b728a91c22f9b4b2062ed5c423314e561c8
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108614"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017580"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Transformace dat v cloudu pomocí aktivity Sparku ve službě Azure Data Factory
 V tomto kurzu vytvoříte pomocí webu Azure Portal kanál služby Azure Data Factory. Tento kanál transformuje data pomocí aktivity Sparku a propojené služby Azure HDInsight na vyžádáni. 
@@ -34,6 +34,10 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 * **Účet služby Azure Storage**. Vytvoříte skript Pythonu a vstupní soubor a nahrajete je do Azure Storage. V tomto účtu úložiště se ukládá výstup z programu Sparku. Cluster Spark na vyžádání používá stejný účet úložiště jako primární úložiště.  
+
+> [!NOTE]
+> HdInsight podporuje jenom účty úložiště pro obecné účely s úrovní Standard. Ujistěte se, že účet úložiště nemá úroveň Premium nebo není určený jenom pro objekty blob.
+
 * **Azure PowerShell**. Postupujte podle pokynů v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
 
@@ -99,11 +103,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 1. Jako **Umístění** vyberte umístění datové továrny. 
 
    Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:** [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (třeba Azure Storage a Azure SQL Database) a výpočetní prostředí (jako HDInsight) používaná službou Data Factory můžou být v jiných oblastech.
-1. Zaškrtněte **Připnout na řídicí panel**.     
-1. Vyberte **Vytvořit**.
-1. Na řídicím panelu se zobrazí následující dlaždice se stavem **Nasazování datové továrny**: 
 
-   ![Dlaždice Nasazování datové továrny](media//tutorial-transform-data-spark-portal/deploying-data-factory.png)
+1. Vyberte **Vytvořit**.
+
 1. Po vytvoření se zobrazí stránka **Datová továrna**. Kliknutím na dlaždici **Vytvořit a monitorovat** spusťte na samostatné kartě aplikaci uživatelského rozhraní služby Data Factory.
 
     ![Domovská stránka datové továrny s dlaždici Vytvořit a monitorovat](./media/tutorial-transform-data-spark-portal/data-factory-home-page.png)
@@ -157,11 +159,11 @@ V této části vytvoříte tyto dvě propojené služby:
    
    h. Rozbalte **Typ operačního systému**.
    
-   i. Zadejte jméno pro uživatele clusteru. 
+   i. Zadejte **Jméno uživatele clusteru**. 
    
-   j. Zadejte heslo pro tohoto uživatele. 
+   j. Zadejte **Heslo clusteru** pro tohoto uživatele. 
    
-   k. Vyberte **Uložit**. 
+   k. Vyberte **Finish** (Dokončit). 
 
    ![Nastavení propojené služby HDInsight](./media/tutorial-transform-data-spark-portal/azure-hdinsight-linked-service-settings.png)
 

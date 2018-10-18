@@ -1,38 +1,40 @@
 ---
-title: Přehled rozhraní API pro rozpoznávání emocí | Dokumentace Microsoftu
-description: Použijte algoritmus rozpoznávání Microsoft nejmodernější, založené na cloudu pro rozpoznávání emocí vytvářet víc personalizované aplikace s rozhraním API pro rozpoznávání Emocí ve službě Cognitive Services.
+title: Co je rozhraní API pro rozpoznávání emocí?
+titlesuffix: Azure Cognitive Services
+description: Využijte cloudové algoritmy pro rozpoznávání emocí k vytváření lépe přizpůsobených aplikací.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: overview
 ms.date: 02/06/2017
 ms.author: anroth
-ms.openlocfilehash: 210990b0f436fd75cb36e71ea28928c457a5232e
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
-ms.translationtype: MT
+ROBOTS: NOINDEX
+ms.openlocfilehash: abf94e0ab6ebb3df649b1958503c086feb4fa19e
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45573550"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237122"
 ---
-# <a name="what-is-emotion-api"></a>Co je rozhraní API pro rozpoznávání emocí?
+# <a name="what-is-the-emotion-api"></a>Co je rozhraní API pro rozpoznávání emocí?
 
 > [!IMPORTANT]
-> 30. října 2017 se přestala nabízet rozhraní API pro rozpoznávání emocí. Funkce je teď součástí [API pro rozpoznávání tváře](https://docs.microsoft.com/azure/cognitive-services/face/).
+> Rozhraní API pro rozpoznávání emocí se přestane používat 15. února 2019. Funkce rozpoznávání emocí je teď obecně dostupná v rámci [rozhraní API pro rozpoznávání tváře](https://docs.microsoft.com/azure/cognitive-services/face/). 
 
-Vítá vás rozhraní API pro rozpoznávání Emocí Microsoft, které umožňuje vytvářet víc personalizované aplikace s algoritmem rozpoznávání emocí založené na cloudu od Microsoftu.
+Vítá vás rozhraní API Microsoftu pro rozpoznávání emocí, které vám umožní vytvářet lépe přizpůsobené aplikace s využitím cloudových algoritmů Microsoftu pro rozpoznávání emocí.
 
 ### <a name="emotion-recognition"></a>Rozpoznávání emocí
 
-Beta verze rozhraní API pro rozpoznávání Emocí přijímá jako vstup image a vrací sadu pro každou tvář na obrázku, jakož i rámeček ohraničující konkrétní obličej z rozhraní API pro rozpoznávání tváře. Rozpoznávanými emocemi jsou štěstí, smutek, překvapení, hněv, strach, opovržení, znechucení nebo neutrální. Tyto pocity se předávají napříč kulturami a univerzálně prostřednictvím stejné základní výrazů tváře, kde se identifikují pomocí rozhraní API pro rozpoznávání Emocí. 
+Beta verze rozhraní API pro rozpoznávání emocí přijímá jako vstup obrázek a s využitím rozhraní API pro rozpoznávání tváře vrací pro každý obličej na obrázku míru pravděpodobnosti výskytu celé řady emocí a rámeček ohraničující konkrétní obličej. Rozpoznávanými emocemi jsou štěstí, smutek, překvapení, hněv, strach, opovržení, odpor a neutrální pocity. Tyto emoce jsou univerzální a v různých kulturách se vyznačují stejnými základními výrazy tváře, které rozhraní API pro rozpoznávání emocí identifikuje.
 
-**Interpretace výsledků:** 
+**Interpretace výsledků:**
 
-Při interpretaci výsledky z rozhraní API pro rozpoznávání Emocí, pro rozpoznávání emocí zjistil by měl být interpretován jako pro rozpoznávání emocí s nejvyšším skóre, jako jsou normalizovány skóre, které se mají sečíst do jednoho. Uživatelé se můžou rozhodnout nastavit prahovou hodnotu vyšší spolehlivosti do své aplikace podle jejich potřeb. 
+Při interpretaci výsledků z rozhraní API pro rozpoznávání emocí by se rozpoznaná emoce měla interpretovat jako emoce s nejvyšším skóre, protože všechna skóre se normalizují, aby jejich celkový součet byl 1. Uživatelé můžou podle svých potřeb ve své aplikaci nastavit vyšší prahovou hodnotu spolehlivosti.
 
-Další informace o rozpoznávání emocí z výrazu najdete v referenci rozhraní API: 
-  * Základní: Pokud uživatel již volal rozhraní API pro rozpoznávání tváře, mohou jako vstup obličejový obdélník odeslat a použít na úrovni basic. [Referenční materiály k rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/56f23eb019845524ec61c4d7)
-  * Standard: Pokud uživatel není odeslat obdélníku pro rozpoznávání tváře, musí používat standardní režim.  [Referenční materiály k rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa)
+Další informace o rozpoznávání emocí najdete v referenčních informacích k rozhraní API:
+  * Basic: Pokud uživatel již volal rozhraní API pro rozpoznávání tváře, může jako vstup odeslat obdélník tváře a použít úroveň Basic. [Referenční materiály k rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/56f23eb019845524ec61c4d7)
+  * Standard: Pokud uživatel neodešle obdélník tváře, měl by použít standardní režim.  [Referenční materiály k rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa)
 
-Příklad o tom, jak interpretovat streamování videa s rozhraním API pro rozpoznávání Emocí, naleznete v tématu [jak analyzovat videa v reálném čase](https://docs.microsoft.com/azure/cognitive-services/emotion/emotion-api-how-to-topics/howtoanalyzevideo_emotion).
+Ukázku interpretace streamovaného videa pomocí rozhraní API pro rozpoznávání emocí najdete v tématu [Analýza videí v reálném čase](https://docs.microsoft.com/azure/cognitive-services/emotion/emotion-api-how-to-topics/howtoanalyzevideo_emotion).

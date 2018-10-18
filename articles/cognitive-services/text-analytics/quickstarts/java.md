@@ -1,45 +1,45 @@
 ---
-title: 'Rychlý start: Volání rozhraní Text Analytics API pomocí Javy | Dokumentace Microsoftu'
+title: 'Rychlý start: Volání rozhraní API pro analýzu textu pomocí Javy'
 titleSuffix: Azure Cognitive Services
-description: Získat informace a ukázky kódu můžete rychle začít používat rozhraní API pro analýzu textu ve službě Microsoft Cognitive Services v Azure.
+description: Získejte informace a vzorové kódy, které vám usnadní začátky práce s rozhraním API pro analýzu textu ve službách Microsoft Cognitive Services v Azure.
 services: cognitive-services
-documentationcenter: ''
-author: ashmaka
+author: noellelacharite
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
-ms.topic: article
-ms.date: 05/02/2018
-ms.author: ashmaka
-ms.openlocfilehash: 9c08536c8bf5fc4d27c896c7eed00999d14b8872
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
-ms.translationtype: MT
+ms.topic: quickstart
+ms.date: 10/01/2018
+ms.author: nolachar
+ms.openlocfilehash: 8ea45d202e550e16a7afd11e056738b2b21bd963
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300496"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267711"
 ---
-# <a name="quickstart-using-java-to-call-the-text-analytics-cognitive-service"></a>Rychlé zprovoznění: Použití Javy k volání Text Analytics služby Cognitive Services
+# <a name="quickstart-using-java-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Volání rozhraní API pro analýzu textu ve službách Cognitive Services pomocí Javy
 <a name="HOLTop"></a>
 
-Tento článek vám ukáže, jak k [rozpoznání jazyka](#Detect), [analýza sentimentu](#SentimentAnalysis), [extrakce klíčových frází](#KeyPhraseExtraction), a [identifikovat propojených entit](#Entities) pomocí [rozhraní Text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711) pomocí Javy.
+Tento článek vás seznámí s tím, jak [rozpoznat jazyk](#Detect), [analyzovat mínění](#SentimentAnalysis), [extrahovat klíčové fráze](#KeyPhraseExtraction) a [identifikovat propojené entity](#Entities) pomocí [rozhraní API pro analýzu textu](//go.microsoft.com/fwlink/?LinkID=759711) s využitím Javy.
 
-Odkazovat [definice rozhraní API](//go.microsoft.com/fwlink/?LinkID=759346) technickou dokumentaci pro rozhraní API.
+Technickou dokumentaci pro tato rozhraní API najdete v [definicích rozhraní API](//go.microsoft.com/fwlink/?LinkID=759346).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraní Text Analytics API**. Můžete použít **bezplatná úroveň 5 000 transakcí za měsíc** k dokončení tohoto rychlého startu.
-Je také nutné mít [koncový bod a přístupový klíč](../How-tos/text-analytics-how-to-access-key.md) , která byla vygenerována během přihlašování nahoru. 
+Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraním API analýzu textu**. Pro provedení tohoto rychlého startu můžete použít **bezplatnou úroveň 5 000 transakcí za měsíc**.
+Kromě toho potřebujete [koncový bod a přístupový klíč](../How-tos/text-analytics-how-to-access-key.md) vygenerovaný během registrace. 
 
 <a name="Detect"></a>
 
 ## <a name="detect-language"></a>Zjištění jazyka
 
-Rozhraní API pro detekci jazyk zjistí jazyk textu dokumentu, pomocí [rozpoznat jazyk metoda](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7).
+Rozhraní API pro rozpoznávání jazyka rozpozná jazyk textového dokumentu pomocí [metody Detect Language](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7).
 
-1. Vytvoření nového projektu v Javě v oblíbeném prostředí IDE.
+1. Ve svém oblíbeném integrovaném vývojovém prostředí vytvořte nový projekt Javy.
 2. Přidejte níže uvedený kód.
-3. Nahraďte `accessKey` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Nahraďte umístění v `host` (aktuálně `westus`) do oblasti registrovanou službu.
-5. Spuštění programu.
+3. Hodnotu `accessKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
+4. Nahraďte umístění v `host` (momentálně `westus`) oblastí, kterou jste si zaregistrovali.
+5. Spusťte program.
 
 ```java
 import java.io.*;
@@ -159,7 +159,7 @@ public class DetectLanguage {
 }
 ```
 
-**Odpověď detekce jazyka**
+**Odpověď na rozpoznávání jazyka**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -207,13 +207,13 @@ public class DetectLanguage {
 
 ## <a name="analyze-sentiment"></a>Analýza mínění
 
-Rozhraní API pro analýzu mínění detexts mínění sadu záznamů text, použití [mínění metoda](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9). Následující příklad stanoví skóre dva dokumenty, jednu v angličtině a druhý ve španělštině.
+Rozhraní API pro analýzu mínění rozpozná mínění v sadě textových záznamů pomocí [metody Sentiment](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9). Následující příklad vyhodnotí dva dokumenty, jeden v angličtině a druhý ve španělštině.
 
-1. Vytvoření nového projektu v Javě v oblíbeném prostředí IDE.
+1. Ve svém oblíbeném integrovaném vývojovém prostředí vytvořte nový projekt Javy.
 2. Přidejte níže uvedený kód.
-3. Nahraďte `accessKey` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Nahraďte umístění v `uriBase` (aktuálně `westus`) do oblasti registrovanou službu.
-5. Spuštění programu.
+3. Hodnotu `accessKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
+4. Nahraďte umístění v `uriBase` (momentálně `westus`) oblastí, kterou jste si zaregistrovali.
+5. Spusťte program.
 
 ```java
 import java.io.*;
@@ -332,7 +332,7 @@ public class GetSentiment {
     }
 }
 ```
-**Odpověď analýzy mínění**
+**Odpověď na analýzu mínění**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -356,13 +356,13 @@ public class GetSentiment {
 
 ## <a name="extract-key-phrases"></a>Extrakce klíčových frází
 
-Rozhraní API Key frázi extrakci extrahuje klíčových frází z textu dokumentu, pomocí [klíčových frází metoda](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). Následující příklad extrahuje klíčových frází pro angličtinu a slovenštinu dokumenty.
+Rozhraní API pro extrakci klíčových frází extrahuje klíčové fráze z textového dokumentu pomocí [metody Key Phrases](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). Následující příklad extrahuje klíčové fráze z anglického i španělského dokumentu.
 
-1. Vytvoření nového projektu v Javě v oblíbeném prostředí IDE.
+1. Ve svém oblíbeném integrovaném vývojovém prostředí vytvořte nový projekt Javy.
 2. Přidejte níže uvedený kód.
-3. Nahraďte `accessKey` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Nahraďte umístění v `uriBase` (aktuálně `westus`) do oblasti registrovanou službu.
-5. Spuštění programu.
+3. Hodnotu `accessKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
+4. Nahraďte umístění v `uriBase` (momentálně `westus`) oblastí, kterou jste si zaregistrovali.
+5. Spusťte program.
 
 ```java
 import java.io.*;
@@ -482,7 +482,7 @@ public class GetKeyPhrases {
     }
 }
 ```
-**Odpověď extrakce klíčových frází**
+**Odpověď na extrakci klíčových frází**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -523,15 +523,15 @@ public class GetKeyPhrases {
 ```
 <a name="Entities"></a>
 
-## <a name="identify-linked-entities"></a>Identifikujte propojených entit
+## <a name="identify-entities"></a>Identifikace entit
 
-Rozhraní Entity Linking API identifikuje dobře známé entity v textu dokumentu, pomocí [propojování entit metoda](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634). Následující příklad určuje entity pro anglickou dokumenty.
+Rozhraní API pro entity identifikuje dobře známé entity v textovém dokumentu pomocí [metody Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634). Následující příklad identifikuje entity pro anglické dokumenty.
 
-1. Vytvoření nového projektu v Javě v oblíbeném prostředí IDE.
+1. Ve svém oblíbeném integrovaném vývojovém prostředí vytvořte nový projekt Javy.
 2. Přidejte níže uvedený kód.
-3. Nahraďte `accessKey` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Nahraďte umístění v `uriBase` (aktuálně `westus`) do oblasti registrovanou službu.
-5. Spuštění programu.
+3. Hodnotu `accessKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
+4. Nahraďte umístění v `uriBase` (momentálně `westus`) oblastí, kterou jste si zaregistrovali.
+5. Spusťte program.
 
 ```java
 import java.io.*;
@@ -598,7 +598,7 @@ public class GetEntities {
 // a free trial access key, you should not need to change this region.
     static String host = "https://westus.api.cognitive.microsoft.com";
 
-    static String path = "/text/analytics/v2.0/entities";
+    static String path = "/text/analytics/v2.1-preview/entities";
     
     public static String GetEntities (Documents documents) throws Exception {
         String text = new Gson().toJson(documents);
@@ -638,8 +638,8 @@ public class GetEntities {
     public static void main (String[] args) {
         try {
             Documents documents = new Documents ();
-            documents.add ("1", "en", "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.");
-            documents.add ("2", "en", "The Seattle Seahawks won the Super Bowl in 2014.");
+            documents.add ("1", "en", "Jeff bought three dozen eggs because there was a 50% discount.");
+            documents.add ("2", "en", "The Great Depression began in 1929. By 1933, the GDP in America fell by 25%.");
 
             String response = GetEntities (documents);
             System.out.println (prettify (response));
@@ -650,76 +650,172 @@ public class GetEntities {
     }
 }
 ```
-**Propojení odpovědi entity**
+**Odpověď na extrakci entit**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
 ```json
 {
-    "documents": [
+    "Documents": [
         {
-            "id": "1",
-            "entities": [
+            "Id": "1",
+            "Entities": [
                 {
-                    "name": "Xbox One",
-                    "matches": [
+                    "Name": "Jeff",
+                    "Matches": [
                         {
-                            "text": "XBox One",
-                            "offset": 23,
-                            "length": 8
+                            "Text": "Jeff",
+                            "Offset": 0,
+                            "Length": 4
                         }
                     ],
-                    "wikipediaLanguage": "en",
-                    "wikipediaId": "Xbox One",
-                    "wikipediaUrl": "https://en.wikipedia.org/wiki/Xbox_One",
-                    "bingId": "446bb4df-4999-4243-84c0-74e0f6c60e75"
+                    "Type": "Person"
                 },
                 {
-                    "name": "Ultra-high-definition television",
-                    "matches": [
+                    "Name": "three dozen",
+                    "Matches": [
                         {
-                            "text": "4K",
-                            "offset": 63,
-                            "length": 2
+                            "Text": "three dozen",
+                            "Offset": 12,
+                            "Length": 11
                         }
                     ],
-                    "wikipediaLanguage": "en",
-                    "wikipediaId": "Ultra-high-definition television",
-                    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ultra-high-definition_television",
-                    "bingId": "7ee02026-b6ec-878b-f4de-f0bc7b0ab8c4"
+                    "Type": "Quantity",
+                    "SubType": "Number"
+                },
+                {
+                    "Name": "50",
+                    "Matches": [
+                        {
+                            "Text": "50",
+                            "Offset": 49,
+                            "Length": 2
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Number"
+                },
+                {
+                    "Name": "50%",
+                    "Matches": [
+                        {
+                            "Text": "50%",
+                            "Offset": 49,
+                            "Length": 3
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Percentage"
                 }
             ]
         },
         {
-            "id": "2",
-            "entities": [
+            "Id": "2",
+            "Entities": [
                 {
-                    "name": "2013 Seattle Seahawks season",
-                    "matches": [
+                    "Name": "Great Depression",
+                    "Matches": [
                         {
-                            "text": "Seattle Seahawks",
-                            "offset": 4,
-                            "length": 16
+                            "Text": "The Great Depression",
+                            "Offset": 0,
+                            "Length": 20
                         }
                     ],
-                    "wikipediaLanguage": "en",
-                    "wikipediaId": "2013 Seattle Seahawks season",
-                    "wikipediaUrl": "https://en.wikipedia.org/wiki/2013_Seattle_Seahawks_season",
-                    "bingId": "eb637865-4722-4eca-be9e-0ac0c376d361"
+                    "WikipediaLanguage": "en",
+                    "WikipediaId": "Great Depression",
+                    "WikipediaUrl": "https://en.wikipedia.org/wiki/Great_Depression",
+                    "BingId": "d9364681-98ad-1a66-f869-a3f1c8ae8ef8"
+                },
+                {
+                    "Name": "1929",
+                    "Matches": [
+                        {
+                            "Text": "1929",
+                            "Offset": 30,
+                            "Length": 4
+                        }
+                    ],
+                    "Type": "DateTime",
+                    "SubType": "DateRange"
+                },
+                {
+                    "Name": "By 1933",
+                    "Matches": [
+                        {
+                            "Text": "By 1933",
+                            "Offset": 36,
+                            "Length": 7
+                        }
+                    ],
+                    "Type": "DateTime",
+                    "SubType": "DateRange"
+                },
+                {
+                    "Name": "Gross domestic product",
+                    "Matches": [
+                        {
+                            "Text": "GDP",
+                            "Offset": 49,
+                            "Length": 3
+                        }
+                    ],
+                    "WikipediaLanguage": "en",
+                    "WikipediaId": "Gross domestic product",
+                    "WikipediaUrl": "https://en.wikipedia.org/wiki/Gross_domestic_product",
+                    "BingId": "c859ed84-c0dd-e18f-394a-530cae5468a2"
+                },
+                {
+                    "Name": "United States",
+                    "Matches": [
+                        {
+                            "Text": "America",
+                            "Offset": 56,
+                            "Length": 7
+                        }
+                    ],
+                    "WikipediaLanguage": "en",
+                    "WikipediaId": "United States",
+                    "WikipediaUrl": "https://en.wikipedia.org/wiki/United_States",
+                    "BingId": "5232ed96-85b1-2edb-12c6-63e6c597a1de",
+                    "Type": "Location"
+                },
+                {
+                    "Name": "25",
+                    "Matches": [
+                        {
+                            "Text": "25",
+                            "Offset": 72,
+                            "Length": 2
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Number"
+                },
+                {
+                    "Name": "25%",
+                    "Matches": [
+                        {
+                            "Text": "25%",
+                            "Offset": 72,
+                            "Length": 3
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Percentage"
                 }
             ]
         }
     ],
-    "errors": []
+    "Errors": []
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Analýza textu s využitím Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech 
+## <a name="see-also"></a>Viz také 
 
- [Přehled analýzy textu](../overview.md)  
+ [Přehled rozhraní API pro analýzu textu](../overview.md)  
  [Nejčastější dotazy](../text-analytics-resource-faq.md)

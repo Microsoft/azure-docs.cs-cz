@@ -1,42 +1,44 @@
 ---
-title: Rychlý start API JavaScript pro rozpoznávání emocí | Dokumentace Microsoftu
-description: Získat informace a ukázky kódu můžete rychle začít používat rozhraní API pro rozpoznávání Emocí na jazyce JavaScript ve službě Cognitive Services.
+title: 'Rychlý start: Rozpoznávání emocí ve výrazech tváří na obrázku – rozhraní API pro rozpoznávání emocí, JavaScript'
+titlesuffix: Azure Cognitive Services
+description: Získejte informace a vzorové kódy, které vám pomůžou rychle začít používat rozhraní API pro rozpoznávání emocí pomocí JavaScriptu.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: quickstart
 ms.date: 05/23/2017
 ms.author: anroth
-ms.openlocfilehash: fb9cc2335582c4ec75ec45635e519346d65d7e08
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
-ms.translationtype: MT
+ROBOTS: NOINDEX
+ms.openlocfilehash: eeaf2ea080d8c0b604b9831532028e31b8306169
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072088"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239485"
 ---
-# <a name="emotion-api-javascript-quick-start"></a>Rychlý Start API JavaScript pro rozpoznávání emocí
+# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Rychlý start: Vytvoření aplikace pro rozpoznávání emocí ve výrazech tváří na obrázku
 
 > [!IMPORTANT]
-> Verze Preview rozhraní Video API se ukončí 30. října 2017. Vyzkoušejte novou [verze Preview rozhraní Video Indexer API](https://azure.microsoft.com/services/cognitive-services/video-indexer/) snadno extrahovat přehledy z videí a k vylepšení možností zjišťování obsahu, jako jsou výsledky hledání podle detekce mluveného slova, tváří, charakteristik a emocí. [Další informace](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview).
+> Rozhraní API pro rozpoznávání emocí se přestane používat 15. února 2019. Funkce rozpoznávání emocí je teď obecně dostupná v rámci [rozhraní API pro rozpoznávání tváře](https://docs.microsoft.com/azure/cognitive-services/face/). 
 
-Tento článek obsahuje informace a ukázky kódu, které vám pomohou rychle začít používat [rozpoznat rozhraní API pro rozpoznávání Emocí metoda](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) s použitím jazyka JavaScript pro rozpoznávání emocí vyjádřena pomocí jednoho nebo víc uživatelů v obraze.
+Tento článek obsahuje informace a ukázky kódu, které vám pomůžou rychle začít používat [metodu Recognize rozhraní API pro rozpoznávání emocí](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) s JavaScriptem k rozpoznávání emocí vyjadřovaných jedním člověkem nebo několika lidmi na obrázku.
 
 ## <a name="prerequisite"></a>Požadavek
-* Získejte bezplatný klíč předplatného [tady](https://azure.microsoft.com/try/cognitive-services/), nebo pokud máte předplatné Azure, vytvoření prostředku rozhraní API pro rozpoznávání Emocí a získat klíč předplatného a koncový bod existuje.
+* [Tady](https://azure.microsoft.com/try/cognitive-services/) získejte klíč svého bezplatného předplatného. Případně, pokud už máte předplatné Azure, vytvořte prostředek rozhraní API pro rozpoznávání emocí a klíč předplatného a koncový bod získejte z tohoto prostředku.
 
-![Vytvoření prostředku rozhraní API pro rozpoznávání Emocí](../Images/create-resource.png)
+![Vytvoření prostředku rozhraní API pro rozpoznávání emocí](../Images/create-resource.png)
 
-## <a name="recognize-emotions-javascript-example-request"></a>Rozpoznávání Emocí požadavek příklad v jazyce JavaScript
+## <a name="recognize-emotions-javascript-example-request"></a>Ukázka požadavku na rozpoznávání emocí s JavaScriptem
 
-Zkopírujte do něj následující a uložte ho do souboru jako `test.html`. Žádost o změnu `url` použít tak umístění, kde jste získali klíče předplatného a nahraďte hodnotu "Ocp-Apim-Subscription-Key" klíčem platné předplatné. Ty najdete na webu Azure Portal v části Přehled a klíče vašeho prostředku rozhraní API pro rozpoznávání Emocí v uvedeném pořadí. 
+Zkopírujte následující kód a uložte ho do souboru, jako je třeba `test.html`. Změňte adresu `url` požadavku na umístění, ve kterém jste získali klíče předplatného, a hodnotu Ocp-Apim-Subscription-Key nahraďte platným klíčem předplatného. Tyto hodnoty najdete na webu Azure Portal v částech Přehled a Klíče vašeho prostředku rozhraní API pro rozpoznávání emocí.
 
 ![Koncový bod rozhraní API](../Images/api-url.png)
 
-![Klíč rozhraní API předplatného](../Images/keys.png)
+![Klíč předplatného rozhraní API](../Images/keys.png)
 
-Změňte text požadavku na umístění obrázku, který chcete použít. Ke spuštění souboru vzorek, přetáhněte myší do prohlížeče.
+Změňte text požadavku na umístění obrázku, který chcete použít. Ukázku spustíte přetažením souboru do prohlížeče.
 
 ```html
 <!DOCTYPE html>
@@ -62,10 +64,10 @@ Změňte text požadavku na umístění obrázku, který chcete použít. Ke spu
     $(function() {
         // No query string parameters for this API call.
         var params = { };
-      
+
         $.ajax({
             // NOTE: You must use the same location in your REST call as you used to obtain your subscription keys.
-            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the 
+            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the
             //   URL below with "westcentralus".
             url: "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize?" + $.param(params),
             beforeSend: function(xhrObj){
@@ -87,7 +89,7 @@ Změňte text požadavku na umístění obrázku, který chcete použít. Ke spu
             for (var prop in faceRectangle) {
                 faceRectangleList.append("<li> " + prop + ": " + faceRectangle[prop] + "</li>");
             }
-            
+
             // Get emotion confidence scores
             var scores = data[0].scores;
             var scoresList = $('#scores');
@@ -105,13 +107,13 @@ Změňte text požadavku na umístění obrázku, který chcete použít. Ke spu
 </html>
 ```
 
-## <a name="recognize-emotions-sample-response"></a>Rozpoznávání Emocí ukázková odpověď
-Úspěšné volání vrátí pole položek pro rozpoznávání tváře a jejich přidružené pro rozpoznávání emocí skóre, seřazené podle velikosti obdélník tváří v sestupném pořadí. Odpověď je prázdná označuje, že nebyly zjištěny žádné tváře. Záznam pro rozpoznávání emocí obsahuje následující pole:
-* faceRectangle - obdélník umístění tvář na obrázku.
-* skóre - skóre pro rozpoznávání Emocí pro každou tvář na obrázku. 
+## <a name="recognize-emotions-sample-response"></a>Ukázka odpovědi rozpoznávání emocí
+Úspěšné volání vrátí pole položek tváří s přidruženým skóre rozpoznávání emocí, které bude seřazené podle velikosti obdélníku tváře v sestupném pořadí. Prázdná odpověď znamená, že se nezjistily žádné tváře. Položka rozpoznávání emocí obsahuje následující pole:
+* faceRectangle – umístění obdélníku tváře na obrázku.
+* scores – skóre rozpoznávání emocí pro jednotlivé tváře na obrázku.
 
 ```json
-application/json 
+application/json
 [
   {
     "faceRectangle": {
