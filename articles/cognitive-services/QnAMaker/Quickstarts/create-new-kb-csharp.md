@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: diberry
-ms.openlocfilehash: 260ec46d292e244dfe51a3714e8b97e9d4689068
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: e6b8c769082b688b07bac78bca5e2dca59a2d9c2
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883411"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389407"
 ---
 # <a name="quickstart-create-a-qna-maker-knowledge-base-in-c"></a>Rychlý start: Vytvoření znalostní báze QnA Maker v C#
 
@@ -69,8 +69,8 @@ static string kb = @"
     }
   ],
   'urls': [
-    'https://docs.microsoft.com/en-in/azure/cognitive-services/qnamaker/faqs',
-    'https://docs.microsoft.com/en-us/bot-framework/resources-bot-framework-faq'
+    'https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs',
+    'https://docs.microsoft.com/bot-framework/resources-bot-framework-faq'
   ],
   'files': []
 }

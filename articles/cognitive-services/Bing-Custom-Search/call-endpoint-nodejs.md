@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Volání koncového bodu pomocí C# – vlastní vyhledávání Bingu'
+title: 'Rychlý start: Volání koncového bodu pomocí Node.js – vlastní vyhledávání Bingu'
 titlesuffix: Azure Cognitive Services
-description: Tento rychlý start ukazuje, jak si z instance vlastního vyhledávání vyžádat výsledky hledání za použití C# k volání koncového bodu pro vlastní vyhledávání Bingu.
+description: Tento rychlý start ukazuje, jak si z instance vlastního vyhledávání vyžádat výsledky hledání za použití Node.js k volání koncového bodu pro vlastní vyhledávání Bingu.
 services: cognitive-services
 author: brapel
 manager: cgronlun
@@ -10,25 +10,24 @@ ms.component: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 1c3b1031c2d08b1f346216b54d351c99f01db933
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: af77b4c06b61cda4fd18d19ac3578129004c4914
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48814861"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167201"
 ---
-# <a name="quickstart-call-bing-custom-search-endpoint-c"></a>Rychlý start: Volání koncového bodu pro vlastní vyhledávání Bingu (C#)
+# <a name="quickstart-call-bing-custom-search-endpoint-nodejs"></a>Rychlý start: Volání koncového bodu pro vlastní vyhledávání Bingu (Node.js)
 
-Tento rychlý start ukazuje, jak si z instance vlastního vyhledávání vyžádat výsledky hledání za použití C# k volání koncového bodu pro vlastní vyhledávání Bingu. 
+Tento rychlý start ukazuje, jak si z instance vlastního vyhledávání vyžádat výsledky hledání za použití Node.js k volání koncového bodu pro vlastní vyhledávání Bingu. 
 
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto rychlého startu je potřeba:
 
 - Instance vlastního vyhledávání připravená k použití. Přečtěte si téma [Vytvoření první instance vlastního vyhledávání Bingu](quick-start.md).
-- Nainstalované rozhraní [.Net Core](https://www.microsoft.com/net/download/core).
+- Nainstalovaný jazyk [Node.js](https://www.nodejs.org/).
 - Klíč předplatného. Klíč předplatného můžete získat aktivací [bezplatné zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) nebo můžete použít klíč placeného předplatného z řídicího panelu Azure (informace najdete v tématu [Účet rozhraní API služby Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).    
-
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
@@ -38,99 +37,48 @@ Pokud chcete tuto ukázku spustit, postupujte takto:
   
 2. Z příkazového řádku nebo terminálu přejděte do složky, kterou jste právě vytvořili.  
   
-3. Spusťte následující příkazy:
-    ```
-    dotnet new console -o BingCustomSearch
-    cd BingCustomSearch
-    dotnet add package Newtonsoft.Json
-    dotnet restore
-    ```
+3. Nainstalujte modul uzlu **request**:
+    <pre>
+    npm install request
+    </pre>  
+    
+4. Ve vytvořené složce vytvořte soubor s názvem BingCustomSearch.js a zkopírujte do něj následující kód. Položky **YOUR-SUBSCRIPTION-KEY** a **YOUR-CUSTOM-CONFIG-ID** nahraďte klíčem předplatného a ID konfigurace.  
   
-4. Do souboru Program.cs zkopírujte následující kód. Položky **YOUR-SUBSCRIPTION-KEY** a **YOUR-CUSTOM-CONFIG-ID** nahraďte klíčem předplatného a ID konfigurace.
-
-    ```csharp
-    using System;
-    using System.Net.Http;
-    using System.Web;
-    using Newtonsoft.Json;
+    ``` javascript
+    var request = require("request");
     
-    namespace bing_custom_search_example_dotnet
-    {
-        class Program
-        {
-            static void Main(string[] args)
-            {
-                var subscriptionKey = "YOUR-SUBSCRIPTION-KEY";
-                var customConfigId = "YOUR-CUSTOM-CONFIG-ID";
-                var searchTerm = args.Length > 0 ? args[0]: "microsoft";            
+    var subscriptionKey = 'YOUR-SUBSCRIPTION-KEY';
+    var customConfigId = 'YOUR-CUSTOM-CONFIG-ID';
+    var searchTerm = 'microsoft';
     
-                var url = "https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?" +
-                    "q=" + searchTerm +
-                    "&customconfig=" + customConfigId;
-    
-                var client = new HttpClient();
-                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
-                var httpResponseMessage = client.GetAsync(url).Result;
-                var responseContent = httpResponseMessage.Content.ReadAsStringAsync().Result;
-                BingCustomSearchResponse response = JsonConvert.DeserializeObject<BingCustomSearchResponse>(responseContent);
-                
-                for(int i = 0; i < response.webPages.value.Length; i++)
-                {                
-                    var webPage = response.webPages.value[i];
-                    
-                    Console.WriteLine("name: " + webPage.name);
-                    Console.WriteLine("url: " + webPage.url);                
-                    Console.WriteLine("displayUrl: " + webPage.displayUrl);
-                    Console.WriteLine("snippet: " + webPage.snippet);
-                    Console.WriteLine("dateLastCrawled: " + webPage.dateLastCrawled);
-                    Console.WriteLine();
-                }            
-            }
-        }
-    
-        public class BingCustomSearchResponse
-        {        
-            public string _type{ get; set; }            
-            public WebPages webPages { get; set; }
-        }
-    
-        public class WebPages
-        {
-            public string webSearchUrl { get; set; }
-            public int totalEstimatedMatches { get; set; }
-            public WebPage[] value { get; set; }        
-        }
-    
-        public class WebPage
-        {
-            public string name { get; set; }
-            public string url { get; set; }
-            public string displayUrl { get; set; }
-            public string snippet { get; set; }
-            public DateTime dateLastCrawled { get; set; }
-            public string cachedPageUrl { get; set; }
-            public OpenGraphImage openGraphImage { get; set; }        
-        }
-        
-        public class OpenGraphImage
-        {
-            public string contentUrl { get; set; }
-            public int width { get; set; }
-            public int height { get; set; }
+    var options = {
+        url: 'https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?' + 
+          'q=' + searchTerm + 
+          '&customconfig=' + customConfigId,
+        headers: {
+            'Ocp-Apim-Subscription-Key' : subscriptionKey
         }
     }
-    ```
-6. Sestavte aplikaci pomocí následujícího příkazu. Poznamenejte si cestu ke knihovně DLL, na kterou odkazuje výstup příkazu.
-
-    <pre>
-    dotnet build 
-    </pre>
     
-7. Spusťte aplikaci pomocí následujícího příkazu, ve kterém položku **PATH TO OUTPUT** nahradíte cestou ke knihovně DLL zmíněnou v kroku 6.
-
-    <pre>    
-    dotnet **PATH TO OUTPUT**
-    </pre>
+    request(options, function(error, response, body){
+        var searchResponse = JSON.parse(body);
+        for(var i = 0; i < searchResponse.webPages.value.length; ++i){
+            var webPage = searchResponse.webPages.value[i];
+            console.log('name: ' + webPage.name);
+            console.log('url: ' + webPage.url);
+            console.log('displayUrl: ' + webPage.displayUrl);
+            console.log('snippet: ' + webPage.snippet);
+            console.log('dateLastCrawled: ' + webPage.dateLastCrawled);
+            console.log();
+        }
+    })
+    ```  
+  
+6. Spusťte kód pomocí následujícího příkazu:  
+  
+    ```    
+    node BingCustomSearch.js
+    ``` 
 
 ## <a name="next-steps"></a>Další kroky
 - [Konfigurace prostředí pro hostované uživatelské rozhraní](./hosted-ui.md)
