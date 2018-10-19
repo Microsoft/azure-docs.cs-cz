@@ -1,5 +1,0 @@
-## <a name="pricing"></a>Ceny
-
-Azure Batch je bezplatná služba. Za účet Batch samotný vám žádné poplatky neúčtujeme. Účtujeme je za výpočetní prostředky Azure, které váš účet Batch spotřebuje, a za prostředky spotřebované jinými službami, když jsou spuštěné vaše úlohy. Poplatky účtujeme například za výpočetní uzly (virtuální počítače) ve fondech a za data ukládaná ve službě Azure Storage, která využíváte jako vstup nebo výstup úkolů. Podobně pokud v účtu Batch používáte funkci [balíčků aplikací](../articles/batch/batch-application-packages.md), budeme vám účtovat prostředky služby Azure Storage, které využíváte k ukládání balíčků aplikací. Další informace najdete v článku [Ceny služby Batch](https://azure.microsoft.com/pricing/details/batch/).
-
-[Virtuální počítače s nízkou prioritou](../articles/batch/batch-low-pri-vms.md) můžou výrazně snížit náklady na úlohy služby Batch. Informace o cenách virtuálních počítačů s nízkou prioritou najdete v tématu [Ceny služby Batch](https://azure.microsoft.com/pricing/details/batch/). 

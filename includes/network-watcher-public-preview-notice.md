@@ -1,2 +1,0 @@
-> [!IMPORTANT]
-> Kontrola připojení k síti sledovacích procesů je aktuálně ve verzi public preview a nemusí dosahovat stejné úrovně dostupnosti a spolehlivosti jako funkce, které jsou obecně dostupné verzi. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech [oblastech Azure](https://azure.microsoft.com/regions/). Nejaktuálnější oznámení o dostupnosti a stavu této funkce najdete [Azure Network Watcher aktualizuje](https://azure.microsoft.com/updates/?product=network-watcher) stránky. 
